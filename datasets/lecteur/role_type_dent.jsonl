@@ -1,0 +1,5 @@
+{"_relation": "role_type_dent", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (type de dent -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "canine", "valeur": "déchirer"}
+{"entite": "incisive", "valeur": "couper les aliments"}
+{"entite": "molaire", "valeur": "broyer"}
+{"entite": "prémolaire", "valeur": "écraser"}

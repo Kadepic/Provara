@@ -1,0 +1,11 @@
+{"_relation": "type_inflorescence_definition", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (définition de type d'inflorescence ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "capitule", "valeur": "inflorescence à fleurs sessiles serrées sur un réceptacle élargi"}
+{"entite": "chaton", "valeur": "épi souple et retombant de fleurs unisexuées"}
+{"entite": "corymbe", "valeur": "grappe dont les fleurs atteignent toutes le même niveau"}
+{"entite": "cyme", "valeur": "inflorescence dont l'axe se termine par une fleur"}
+{"entite": "épi", "valeur": "inflorescence à fleurs sessiles disposées le long d'un axe allongé"}
+{"entite": "grappe", "valeur": "inflorescence à fleurs pédicellées disposées le long d'un axe allongé"}
+{"entite": "ombelle", "valeur": "inflorescence dont les pédicelles partent tous d'un même point"}
+{"entite": "ombelle composée", "valeur": "ombelle dont chaque rayon porte une petite ombelle"}
+{"entite": "panicule", "valeur": "grappe composée de grappes"}
+{"entite": "spadice", "valeur": "épi à axe charnu entouré d'une spathe"}

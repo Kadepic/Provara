@@ -1,0 +1,5 @@
+{"_relation": "definition_terme_oncologie", "_categorie": "physique", "_source": "Modèle (Claude) — médecine textbook curée (terme oncologie -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "métastase", "valeur": "propagation d'un cancer à distance"}
+{"entite": "tumeur", "valeur": "masse de cellules anormales"}
+{"entite": "tumeur bénigne", "valeur": "tumeur non cancéreuse"}
+{"entite": "tumeur maligne", "valeur": "tumeur cancéreuse"}

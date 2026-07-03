@@ -1,0 +1,6 @@
+{"_relation": "niveau_organisation_vivant", "_categorie": "physique", "_source": "Modèle (Claude) — biologie textbook curée (définition de niveau d'organisation du vivant ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "appareil", "valeur": "ensemble d'organes concourant à une grande fonction"}
+{"entite": "cellule", "valeur": "unité structurale et fonctionnelle de base du vivant"}
+{"entite": "organe", "valeur": "ensemble de tissus assurant une fonction"}
+{"entite": "organisme", "valeur": "être vivant complet"}
+{"entite": "tissu", "valeur": "ensemble de cellules semblables assurant une même fonction"}

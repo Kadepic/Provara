@@ -1,0 +1,3 @@
+{"_relation": "mode_acquisition_immunite", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (immunité acquise -> mode ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "immunité active", "valeur": "production d'anticorps par l'organisme"}
+{"entite": "immunité passive", "valeur": "réception d'anticorps produits par un autre organisme"}

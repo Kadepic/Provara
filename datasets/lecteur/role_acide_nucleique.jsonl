@@ -1,0 +1,3 @@
+{"_relation": "role_acide_nucleique", "_categorie": "physique", "_source": "Modèle (Claude) — biologie moléculaire textbook curée (acide nucléique -> rôle ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "ADN", "valeur": "conservation de l'information génétique"}
+{"entite": "ARN", "valeur": "expression de l'information génétique"}

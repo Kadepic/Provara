@@ -1,0 +1,69 @@
+{"_relation": "nom_scientifique_animal", "_categorie": "convention", "_source": "Modèle (Claude) — zoologie textbook curée (nom vernaculaire FR -> binôme latin ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "Apis mellifera"}
+{"entite": "aigle royal", "valeur": "Aquila chrysaetos"}
+{"entite": "âne", "valeur": "Equus asinus"}
+{"entite": "autruche", "valeur": "Struthio camelus"}
+{"entite": "baleine bleue", "valeur": "Balaenoptera musculus"}
+{"entite": "belette", "valeur": "Mustela nivalis"}
+{"entite": "bison d'Europe", "valeur": "Bison bonasus"}
+{"entite": "blaireau européen", "valeur": "Meles meles"}
+{"entite": "bouquetin des Alpes", "valeur": "Capra ibex"}
+{"entite": "carpe commune", "valeur": "Cyprinus carpio"}
+{"entite": "castor d'Europe", "valeur": "Castor fiber"}
+{"entite": "chamois", "valeur": "Rupicapra rupicapra"}
+{"entite": "chat", "valeur": "Felis catus"}
+{"entite": "cheval", "valeur": "Equus caballus"}
+{"entite": "chèvre", "valeur": "Capra hircus"}
+{"entite": "chien", "valeur": "Canis lupus familiaris"}
+{"entite": "chimpanzé", "valeur": "Pan troglodytes"}
+{"entite": "cobaye", "valeur": "Cavia porcellus"}
+{"entite": "crocodile du Nil", "valeur": "Crocodylus niloticus"}
+{"entite": "dromadaire", "valeur": "Camelus dromedarius"}
+{"entite": "écureuil roux", "valeur": "Sciurus vulgaris"}
+{"entite": "éléphant d'Afrique", "valeur": "Loxodonta africana"}
+{"entite": "éléphant d'Asie", "valeur": "Elephas maximus"}
+{"entite": "être humain", "valeur": "Homo sapiens"}
+{"entite": "faucon pèlerin", "valeur": "Falco peregrinus"}
+{"entite": "fouine", "valeur": "Martes foina"}
+{"entite": "furet", "valeur": "Mustela putorius furo"}
+{"entite": "girafe", "valeur": "Giraffa camelopardalis"}
+{"entite": "grand dauphin", "valeur": "Tursiops truncatus"}
+{"entite": "grand requin blanc", "valeur": "Carcharodon carcharias"}
+{"entite": "grenouille rousse", "valeur": "Rana temporaria"}
+{"entite": "guépard", "valeur": "Acinonyx jubatus"}
+{"entite": "hérisson d'Europe", "valeur": "Erinaceus europaeus"}
+{"entite": "hermine", "valeur": "Mustela erminea"}
+{"entite": "hippopotame", "valeur": "Hippopotamus amphibius"}
+{"entite": "hyène tachetée", "valeur": "Crocuta crocuta"}
+{"entite": "jaguar", "valeur": "Panthera onca"}
+{"entite": "koala", "valeur": "Phascolarctos cinereus"}
+{"entite": "lapin européen", "valeur": "Oryctolagus cuniculus"}
+{"entite": "léopard", "valeur": "Panthera pardus"}
+{"entite": "lion", "valeur": "Panthera leo"}
+{"entite": "loup gris", "valeur": "Canis lupus"}
+{"entite": "loutre d'Europe", "valeur": "Lutra lutra"}
+{"entite": "lynx boréal", "valeur": "Lynx lynx"}
+{"entite": "manchot empereur", "valeur": "Aptenodytes forsteri"}
+{"entite": "marmotte alpine", "valeur": "Marmota marmota"}
+{"entite": "moineau domestique", "valeur": "Passer domesticus"}
+{"entite": "morse", "valeur": "Odobenus rosmarus"}
+{"entite": "morue", "valeur": "Gadus morhua"}
+{"entite": "mouche domestique", "valeur": "Musca domestica"}
+{"entite": "mouton", "valeur": "Ovis aries"}
+{"entite": "ornithorynque", "valeur": "Ornithorhynchus anatinus"}
+{"entite": "orque", "valeur": "Orcinus orca"}
+{"entite": "oryctérope", "valeur": "Orycteropus afer"}
+{"entite": "ours brun", "valeur": "Ursus arctos"}
+{"entite": "ours polaire", "valeur": "Ursus maritimus"}
+{"entite": "panda géant", "valeur": "Ailuropoda melanoleuca"}
+{"entite": "pigeon biset", "valeur": "Columba livia"}
+{"entite": "rat brun", "valeur": "Rattus norvegicus"}
+{"entite": "renard roux", "valeur": "Vulpes vulpes"}
+{"entite": "renne", "valeur": "Rangifer tarandus"}
+{"entite": "rhinocéros blanc", "valeur": "Ceratotherium simum"}
+{"entite": "sanglier", "valeur": "Sus scrofa"}
+{"entite": "saumon atlantique", "valeur": "Salmo salar"}
+{"entite": "souris domestique", "valeur": "Mus musculus"}
+{"entite": "thon rouge", "valeur": "Thunnus thynnus"}
+{"entite": "tigre", "valeur": "Panthera tigris"}
+{"entite": "vache", "valeur": "Bos taurus"}

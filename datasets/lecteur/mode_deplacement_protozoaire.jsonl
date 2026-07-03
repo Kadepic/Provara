@@ -1,0 +1,8 @@
+{"_relation": "mode_deplacement_protozoaire", "_categorie": "physique", "_source": "Modèle (Claude) — protistologie textbook curée (locomotion ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amibe", "valeur": "pseudopodes"}
+{"entite": "Entamoeba histolytica", "valeur": "pseudopodes"}
+{"entite": "euglène", "valeur": "flagelle"}
+{"entite": "Giardia lamblia", "valeur": "flagelle"}
+{"entite": "paramécie", "valeur": "cils"}
+{"entite": "Trypanosoma cruzi", "valeur": "flagelle"}
+{"entite": "trypanosome", "valeur": "flagelle"}

@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mémoire de conversation</title>
+<title>VERAX — l'IA qui n'invente jamais</title>
 <style>
   :root {
     --bg: #faf9f7; --panneau: #ffffff; --bord: #e7e4df; --texte: #2b2a27;
@@ -67,8 +67,8 @@
 <body>
   <aside id="cote">
     <header>
-      <h1>Conversations</h1>
-      <p>local &amp; souverain · rien ne sort de la machine</p>
+      <h1>VERAX</h1>
+      <p>assistant local &amp; souverain · rien ne sort de la machine</p>
     </header>
     <button id="btn-nouvelle">+ Nouvelle conversation</button>
     <div id="liste"><div class="vide">Chargement…</div></div>
@@ -76,8 +76,10 @@
 
   <main id="fil">
     <div id="titre"><h2>—</h2><span class="scope"></span></div>
-    <div id="tours"><div class="centre">Sélectionne une conversation, ou crée-en une.</div></div>
+    <div id="tours"><div class="centre">Bonjour, je suis <strong>VERAX</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais, ou je le dis honnêtement.</div></div>
     <div id="saisie">
+      <input type="file" id="fichier" style="display:none">
+      <button id="btn-fichier" title="Importer un fichier (json, csv, xml, sqlite, zip…)" disabled>📎</button>
       <textarea id="champ" placeholder="Écris un message…" disabled></textarea>
       <button id="envoyer" disabled>Envoyer</button>
     </div>
@@ -135,13 +137,18 @@ async function ouvre(id) {
       const el = document.createElement("div");
       el.className = "tour" + (t.role === "user" ? " user" : "");
       el.innerHTML = `<div class="qui"></div><div class="corps"></div>`;
-      el.querySelector(".qui").textContent = t.role + " · " + horodate(t.ts);
-      el.querySelector(".corps").textContent = t.texte;   // VERBATIM, jamais reformulé
+      el.querySelector(".qui").textContent = (t.role === "user" ? "vous" : "VERAX") + " · " + horodate(t.ts);
+      const corps = el.querySelector(".corps");
+      if (t.role !== "user" && t.texte.trim().startsWith("<svg")) {
+        corps.innerHTML = t.texte;                        // schéma SVG généré par VERAX (contrôlé côté serveur, sûr)
+      } else {
+        corps.textContent = t.texte;                      // VERBATIM, jamais reformulé
+      }
       flux.appendChild(el);
     }
     flux.scrollTop = flux.scrollHeight;
   }
-  $("#champ").disabled = false; $("#envoyer").disabled = false; $("#champ").focus();
+  $("#champ").disabled = false; $("#envoyer").disabled = false; $("#btn-fichier").disabled = false; $("#champ").focus();
   chargeListe();
 }
 
@@ -172,6 +179,24 @@ $("#envoyer").onclick = envoie;
 $("#champ").addEventListener("keydown", (e) => {
   if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); envoie(); }   // Entrée = envoyer, Maj+Entrée = saut de ligne
 });
+
+// — importer un fichier (lu localement, jamais envoyé ailleurs) —
+$("#btn-fichier").onclick = () => $("#fichier").click();
+$("#fichier").onchange = async (e) => {
+  const f = e.target.files[0];
+  if (!f || !actif) return;
+  const b64 = await new Promise((res, rej) => {
+    const r = new FileReader();
+    r.onload = () => res(r.result.split(",")[1]);        // retire le préfixe « data:...;base64, »
+    r.onerror = rej;
+    r.readAsDataURL(f);
+  });
+  await api("/api/fichier", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id: actif, nom: f.name, contenu: b64 }) });
+  e.target.value = "";
+  if (actif === neuve) neuve = null;
+  ouvre(actif);
+};
 
 // — retirer de l'historique (ARCHIVE : caché de l'UI, mais l'IA s'en souvient toujours) —
 async function archive(id) {

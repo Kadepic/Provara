@@ -1,0 +1,7 @@
+{"_relation": "deplacement_piece", "_categorie": "convention", "_source": "règles des échecs (pièce -> déplacement)", "_articles": true}
+{"entite": "cavalier", "valeur": "en L (deux cases puis une perpendiculaire)"}
+{"entite": "dame", "valeur": "dans toutes les directions"}
+{"entite": "fou", "valeur": "en diagonale"}
+{"entite": "pion", "valeur": "avance d'une case (capture en diagonale)"}
+{"entite": "roi", "valeur": "d'une case dans toutes les directions"}
+{"entite": "tour", "valeur": "en ligne droite (lignes et colonnes)"}

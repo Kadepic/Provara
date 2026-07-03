@@ -1,0 +1,35 @@
+{"_relation": "pays_marque_tech", "_categorie": "convention", "_source": "économie de référence (marque tech -> pays d'origine)", "_articles": true}
+{"entite": "acer", "valeur": "Taïwan"}
+{"entite": "alibaba", "valeur": "Chine"}
+{"entite": "amd", "valeur": "États-Unis"}
+{"entite": "apple", "valeur": "États-Unis"}
+{"entite": "asml", "valeur": "Pays-Bas"}
+{"entite": "asus", "valeur": "Taïwan"}
+{"entite": "bosch", "valeur": "Allemagne"}
+{"entite": "canon", "valeur": "Japon"}
+{"entite": "dell", "valeur": "États-Unis"}
+{"entite": "ericsson", "valeur": "Suède"}
+{"entite": "google", "valeur": "États-Unis"}
+{"entite": "hp", "valeur": "États-Unis"}
+{"entite": "huawei", "valeur": "Chine"}
+{"entite": "ibm", "valeur": "États-Unis"}
+{"entite": "intel", "valeur": "États-Unis"}
+{"entite": "lenovo", "valeur": "Chine"}
+{"entite": "lg", "valeur": "Corée du Sud"}
+{"entite": "microsoft", "valeur": "États-Unis"}
+{"entite": "nikon", "valeur": "Japon"}
+{"entite": "nintendo", "valeur": "Japon"}
+{"entite": "nokia", "valeur": "Finlande"}
+{"entite": "nvidia", "valeur": "États-Unis"}
+{"entite": "oracle", "valeur": "États-Unis"}
+{"entite": "panasonic", "valeur": "Japon"}
+{"entite": "philips", "valeur": "Pays-Bas"}
+{"entite": "samsung", "valeur": "Corée du Sud"}
+{"entite": "sap", "valeur": "Allemagne"}
+{"entite": "siemens", "valeur": "Allemagne"}
+{"entite": "sony", "valeur": "Japon"}
+{"entite": "spotify", "valeur": "Suède"}
+{"entite": "tencent", "valeur": "Chine"}
+{"entite": "toshiba", "valeur": "Japon"}
+{"entite": "tsmc", "valeur": "Taïwan"}
+{"entite": "xiaomi", "valeur": "Chine"}

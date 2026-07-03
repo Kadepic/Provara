@@ -1,0 +1,10 @@
+{"_relation": "stimulus_recepteur", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie sensorielle textbook curée (récepteur -> stimulus ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "barorécepteur", "valeur": "pression artérielle"}
+{"entite": "chimiorécepteur", "valeur": "substances chimiques"}
+{"entite": "électrorécepteur", "valeur": "champ électrique"}
+{"entite": "mécanorécepteur", "valeur": "pression"}
+{"entite": "nocicepteur", "valeur": "douleur"}
+{"entite": "osmorécepteur", "valeur": "osmolarité"}
+{"entite": "photorécepteur", "valeur": "lumière"}
+{"entite": "propriocepteur", "valeur": "position du corps"}
+{"entite": "thermorécepteur", "valeur": "température"}

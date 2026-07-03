@@ -1,0 +1,26 @@
+{"_relation": "respiration_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (respiration ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "trachées"}
+{"entite": "aigle royal", "valeur": "poumons"}
+{"entite": "baleine bleue", "valeur": "poumons"}
+{"entite": "carpe commune", "valeur": "branchies"}
+{"entite": "criquet", "valeur": "trachées"}
+{"entite": "crocodile du Nil", "valeur": "poumons"}
+{"entite": "dauphin", "valeur": "poumons"}
+{"entite": "escargot", "valeur": "poumons"}
+{"entite": "fourmi", "valeur": "trachées"}
+{"entite": "grand requin blanc", "valeur": "branchies"}
+{"entite": "hippocampe", "valeur": "branchies"}
+{"entite": "lion", "valeur": "poumons"}
+{"entite": "manchot empereur", "valeur": "poumons"}
+{"entite": "morue", "valeur": "branchies"}
+{"entite": "papillon", "valeur": "trachées"}
+{"entite": "poisson", "valeur": "branchies"}
+{"entite": "python", "valeur": "poumons"}
+{"entite": "raie manta", "valeur": "branchies"}
+{"entite": "sangsue", "valeur": "peau"}
+{"entite": "saumon atlantique", "valeur": "branchies"}
+{"entite": "sauterelle", "valeur": "trachées"}
+{"entite": "scarabée", "valeur": "trachées"}
+{"entite": "thon rouge", "valeur": "branchies"}
+{"entite": "tortue marine", "valeur": "poumons"}
+{"entite": "ver de terre", "valeur": "peau"}

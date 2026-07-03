@@ -1,0 +1,23 @@
+{"_relation": "type_lipide_classe", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (classe de lipide ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "blanc de baleine", "valeur": "cire"}
+{"entite": "cardiolipine", "valeur": "phospholipide"}
+{"entite": "céramide", "valeur": "sphingolipide"}
+{"entite": "cérébroside", "valeur": "sphingolipide"}
+{"entite": "cholestérol", "valeur": "stérol"}
+{"entite": "cire d'abeille", "valeur": "cire"}
+{"entite": "cire de carnauba", "valeur": "cire"}
+{"entite": "diglycéride", "valeur": "glycéride"}
+{"entite": "ergostérol", "valeur": "stérol"}
+{"entite": "ganglioside", "valeur": "sphingolipide"}
+{"entite": "lanoline", "valeur": "cire"}
+{"entite": "lanostérol", "valeur": "stérol"}
+{"entite": "lécithine", "valeur": "phospholipide"}
+{"entite": "monoglycéride", "valeur": "glycéride"}
+{"entite": "phosphatidylcholine", "valeur": "phospholipide"}
+{"entite": "phosphatidyléthanolamine", "valeur": "phospholipide"}
+{"entite": "phosphatidylinositol", "valeur": "phospholipide"}
+{"entite": "phosphatidylsérine", "valeur": "phospholipide"}
+{"entite": "phytostérol", "valeur": "stérol"}
+{"entite": "sitostérol", "valeur": "stérol"}
+{"entite": "sphingomyéline", "valeur": "sphingolipide"}
+{"entite": "triglycéride", "valeur": "glycéride"}

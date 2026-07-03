@@ -1,0 +1,6 @@
+{"_relation": "sens_organe", "_categorie": "convention", "_source": "physiologie de référence (organe sensoriel -> sens)", "_articles": true}
+{"entite": "œil", "valeur": "la vue"}
+{"entite": "langue", "valeur": "le goût"}
+{"entite": "nez", "valeur": "l'odorat"}
+{"entite": "oreille", "valeur": "l'ouïe"}
+{"entite": "peau", "valeur": "le toucher"}

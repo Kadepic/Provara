@@ -1,0 +1,3 @@
+{"_relation": "caractere_fruit_sec", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (fruit sec -> caractère ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "fruit sec déhiscent", "valeur": "s'ouvre à maturité"}
+{"entite": "fruit sec indéhiscent", "valeur": "reste fermé à maturité"}

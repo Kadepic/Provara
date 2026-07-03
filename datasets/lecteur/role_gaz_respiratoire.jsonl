@@ -1,0 +1,3 @@
+{"_relation": "role_gaz_respiratoire", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (gaz respiratoire -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "dioxyde de carbone", "valeur": "déchet de la respiration cellulaire"}
+{"entite": "dioxygène", "valeur": "utilisé par les cellules pour produire de l'énergie"}

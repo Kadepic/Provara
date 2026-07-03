@@ -1,0 +1,5 @@
+{"_relation": "definition_regime_alimentaire", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (régime -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "carnivore", "valeur": "se nourrit d'animaux"}
+{"entite": "herbivore", "valeur": "se nourrit de végétaux"}
+{"entite": "insectivore", "valeur": "se nourrit d'insectes"}
+{"entite": "omnivore", "valeur": "se nourrit de végétaux et d'animaux"}

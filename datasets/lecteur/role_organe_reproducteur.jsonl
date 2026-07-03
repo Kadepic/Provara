@@ -1,0 +1,4 @@
+{"_relation": "role_organe_reproducteur", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (organe reproducteur -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "ovaire", "valeur": "production des ovules"}
+{"entite": "testicule", "valeur": "production des spermatozoïdes"}
+{"entite": "utérus", "valeur": "développement de l'embryon"}

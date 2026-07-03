@@ -1,0 +1,112 @@
+{"_relation": "ordre_mammifere", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (ordre de mammifère ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "addax", "valeur": "artiodactyle"}
+{"entite": "agouti", "valeur": "rongeur"}
+{"entite": "alpaga", "valeur": "artiodactyle"}
+{"entite": "âne", "valeur": "périssodactyle"}
+{"entite": "aye-aye", "valeur": "primate"}
+{"entite": "babouin", "valeur": "primate"}
+{"entite": "baleine à bosse", "valeur": "cétacé"}
+{"entite": "baleine bleue", "valeur": "cétacé"}
+{"entite": "baleine franche", "valeur": "cétacé"}
+{"entite": "belette", "valeur": "carnivore"}
+{"entite": "béluga", "valeur": "cétacé"}
+{"entite": "bison", "valeur": "artiodactyle"}
+{"entite": "blaireau", "valeur": "carnivore"}
+{"entite": "bouquetin", "valeur": "artiodactyle"}
+{"entite": "buffle", "valeur": "artiodactyle"}
+{"entite": "cachalot", "valeur": "cétacé"}
+{"entite": "campagnol", "valeur": "rongeur"}
+{"entite": "capucin", "valeur": "primate"}
+{"entite": "castor", "valeur": "rongeur"}
+{"entite": "cerf", "valeur": "artiodactyle"}
+{"entite": "chameau", "valeur": "artiodactyle"}
+{"entite": "chamois", "valeur": "artiodactyle"}
+{"entite": "chat", "valeur": "carnivore"}
+{"entite": "chauve-souris", "valeur": "chiroptère"}
+{"entite": "cheval", "valeur": "périssodactyle"}
+{"entite": "chèvre", "valeur": "artiodactyle"}
+{"entite": "chien", "valeur": "carnivore"}
+{"entite": "chimpanzé", "valeur": "primate"}
+{"entite": "chinchilla", "valeur": "rongeur"}
+{"entite": "civette", "valeur": "carnivore"}
+{"entite": "cobaye", "valeur": "rongeur"}
+{"entite": "cochon", "valeur": "artiodactyle"}
+{"entite": "dauphin", "valeur": "cétacé"}
+{"entite": "dromadaire", "valeur": "artiodactyle"}
+{"entite": "écureuil", "valeur": "rongeur"}
+{"entite": "écureuil volant", "valeur": "rongeur"}
+{"entite": "élan", "valeur": "artiodactyle"}
+{"entite": "éléphant d'Afrique", "valeur": "proboscidien"}
+{"entite": "éléphant d'Asie", "valeur": "proboscidien"}
+{"entite": "être humain", "valeur": "primate"}
+{"entite": "fouine", "valeur": "carnivore"}
+{"entite": "furet", "valeur": "carnivore"}
+{"entite": "galago", "valeur": "primate"}
+{"entite": "gazelle", "valeur": "artiodactyle"}
+{"entite": "genette", "valeur": "carnivore"}
+{"entite": "gerbille", "valeur": "rongeur"}
+{"entite": "gerboise", "valeur": "rongeur"}
+{"entite": "gibbon", "valeur": "primate"}
+{"entite": "girafe", "valeur": "artiodactyle"}
+{"entite": "glouton", "valeur": "carnivore"}
+{"entite": "gorille", "valeur": "primate"}
+{"entite": "guépard", "valeur": "carnivore"}
+{"entite": "hamster", "valeur": "rongeur"}
+{"entite": "hermine", "valeur": "carnivore"}
+{"entite": "hippopotame", "valeur": "artiodactyle"}
+{"entite": "hyène tachetée", "valeur": "carnivore"}
+{"entite": "impala", "valeur": "artiodactyle"}
+{"entite": "koudou", "valeur": "artiodactyle"}
+{"entite": "lama", "valeur": "artiodactyle"}
+{"entite": "lapin", "valeur": "lagomorphe"}
+{"entite": "lemming", "valeur": "rongeur"}
+{"entite": "lémur", "valeur": "primate"}
+{"entite": "léopard", "valeur": "carnivore"}
+{"entite": "lièvre", "valeur": "lagomorphe"}
+{"entite": "lion", "valeur": "carnivore"}
+{"entite": "loir", "valeur": "rongeur"}
+{"entite": "loup", "valeur": "carnivore"}
+{"entite": "loutre", "valeur": "carnivore"}
+{"entite": "macaque", "valeur": "primate"}
+{"entite": "mandrill", "valeur": "primate"}
+{"entite": "mangouste", "valeur": "carnivore"}
+{"entite": "marmotte", "valeur": "rongeur"}
+{"entite": "marsouin", "valeur": "cétacé"}
+{"entite": "mouflon", "valeur": "artiodactyle"}
+{"entite": "mouton", "valeur": "artiodactyle"}
+{"entite": "narval", "valeur": "cétacé"}
+{"entite": "noctule", "valeur": "chiroptère"}
+{"entite": "okapi", "valeur": "artiodactyle"}
+{"entite": "ondatra", "valeur": "rongeur"}
+{"entite": "orang-outan", "valeur": "primate"}
+{"entite": "orque", "valeur": "cétacé"}
+{"entite": "oryx", "valeur": "artiodactyle"}
+{"entite": "otarie", "valeur": "carnivore"}
+{"entite": "ouistiti", "valeur": "primate"}
+{"entite": "ours brun", "valeur": "carnivore"}
+{"entite": "ours polaire", "valeur": "carnivore"}
+{"entite": "panda roux", "valeur": "carnivore"}
+{"entite": "pécari", "valeur": "artiodactyle"}
+{"entite": "phoque", "valeur": "carnivore"}
+{"entite": "pipistrelle", "valeur": "chiroptère"}
+{"entite": "porc-épic", "valeur": "rongeur"}
+{"entite": "putois", "valeur": "carnivore"}
+{"entite": "ragondin", "valeur": "rongeur"}
+{"entite": "rat", "valeur": "rongeur"}
+{"entite": "ratel", "valeur": "carnivore"}
+{"entite": "raton laveur", "valeur": "carnivore"}
+{"entite": "renard roux", "valeur": "carnivore"}
+{"entite": "renne", "valeur": "artiodactyle"}
+{"entite": "rhinocéros blanc", "valeur": "périssodactyle"}
+{"entite": "rorqual", "valeur": "cétacé"}
+{"entite": "roussette", "valeur": "chiroptère"}
+{"entite": "souris", "valeur": "rongeur"}
+{"entite": "springbok", "valeur": "artiodactyle"}
+{"entite": "suricate", "valeur": "carnivore"}
+{"entite": "tamarin", "valeur": "primate"}
+{"entite": "tapir", "valeur": "périssodactyle"}
+{"entite": "tarsier", "valeur": "primate"}
+{"entite": "tigre", "valeur": "carnivore"}
+{"entite": "vache", "valeur": "artiodactyle"}
+{"entite": "vampire", "valeur": "chiroptère"}
+{"entite": "zèbre", "valeur": "périssodactyle"}

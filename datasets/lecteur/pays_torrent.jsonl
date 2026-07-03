@@ -1,0 +1,910 @@
+{"_relation": "pays_torrent", "_categorie": "physique", "_source": "Wikidata/QLever — pays_torrent P17, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Acquacheta", "valeur": "Italie"}
+{"entite": "Acqualina", "valeur": "Italie"}
+{"entite": "Adam Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Adamson Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Akatore Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "al-Chibritiyah", "valeur": "Irak"}
+{"entite": "Alantas", "valeur": "Lituanie"}
+{"entite": "Albina", "valeur": "Italie"}
+{"entite": "Alente", "valeur": "Italie"}
+{"entite": "Alexander Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Alkupis", "valeur": "Lituanie"}
+{"entite": "Alma", "valeur": "Italie"}
+{"entite": "Alpha Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Amphitheatre Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ampio", "valeur": "Italie"}
+{"entite": "Ancelle", "valeur": "France"}
+{"entite": "Anzac Creek", "valeur": "Australie"}
+{"entite": "Appletree Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Arbonne", "valeur": "France"}
+{"entite": "Arcade Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Arda", "valeur": "Italie"}
+{"entite": "Ardo river", "valeur": "Italie"}
+{"entite": "Argentine", "valeur": "France"}
+{"entite": "Arno", "valeur": "Italie"}
+{"entite": "Arrondine", "valeur": "France"}
+{"entite": "Arroyo de la Femosa", "valeur": "Espagne"}
+{"entite": "Arthur Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Arvette", "valeur": "France"}
+{"entite": "Arveyron", "valeur": "France"}
+{"entite": "As Safawiyat", "valeur": "Irak"}
+{"entite": "Atahaua Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Attone", "valeur": "Italie"}
+{"entite": "Aurora Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Avisio", "valeur": "Italie"}
+{"entite": "Awahōhonu Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Awamutu Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Awarau Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Aynsley Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Baber Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Baby Creek", "valeur": "Australie"}
+{"entite": "Back Creek", "valeur": "Australie"}
+{"entite": "Back Waterhole Creek", "valeur": "Australie"}
+{"entite": "Bagpipe Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Bainham Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Bakers Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Balrudgery Creek", "valeur": "Australie"}
+{"entite": "Banna", "valeur": "Italie"}
+{"entite": "Barranc d'Aiguaoliva", "valeur": "Espagne"}
+{"entite": "Barranc de Biniaraix", "valeur": "Espagne"}
+{"entite": "Barranc de l'Horteta", "valeur": "Espagne"}
+{"entite": "Barranc de la Pegunta", "valeur": "Espagne"}
+{"entite": "barranc de la Pena", "valeur": "Espagne"}
+{"entite": "Barranc de les Forques", "valeur": "Espagne"}
+{"entite": "barranc de Ruixou", "valeur": "Espagne"}
+{"entite": "Barranc del Lleó", "valeur": "Espagne"}
+{"entite": "barranc dels Tortells", "valeur": "Espagne"}
+{"entite": "Barranco de Rigallanz", "valeur": "Espagne"}
+{"entite": "Barranco de Vayart", "valeur": "Espagne"}
+{"entite": "Bartletts Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Barton Creek", "valeur": "Australie"}
+{"entite": "Bauckes Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Beardy Creek", "valeur": "Australie"}
+{"entite": "Bebakine Creek", "valeur": "Australie"}
+{"entite": "Beef Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Beehive Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Belar Creek", "valeur": "Australie"}
+{"entite": "Belerada Creek", "valeur": "Australie"}
+{"entite": "Belgravia Creek", "valeur": "Australie"}
+{"entite": "Bena Billa Creek", "valeur": "Australie"}
+{"entite": "Bendola", "valeur": "Italie"}
+{"entite": "Benya Creek", "valeur": "Australie"}
+{"entite": "Bevera", "valeur": "Italie"}
+{"entite": "Bickerstaffe Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Bisagno", "valeur": "Italie"}
+{"entite": "Bistrica (Sava Bohinjka)", "valeur": "Slovénie"}
+{"entite": "Black Bulga Creek", "valeur": "Australie"}
+{"entite": "Black Flat Creek", "valeur": "Australie"}
+{"entite": "Black Jack Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Black Jacks Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Black Spring Creek", "valeur": "Australie"}
+{"entite": "Black Spring Gully", "valeur": "Australie"}
+{"entite": "Black Springs Creek", "valeur": "Australie"}
+{"entite": "Black Springs Gully", "valeur": "Australie"}
+{"entite": "Black Waterhole Creek", "valeur": "Australie"}
+{"entite": "Blackboy Gully", "valeur": "Australie"}
+{"entite": "Blackfellows Gully", "valeur": "Australie"}
+{"entite": "Blake Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Blé", "valeur": "Italie"}
+{"entite": "Blind Gully", "valeur": "Australie"}
+{"entite": "Bo Prukan Tingni", "valeur": "Nicaragua"}
+{"entite": "Bobs Creek", "valeur": "Australie"}
+{"entite": "Bocoble Creek", "valeur": "Australie"}
+{"entite": "Bocobra Creek", "valeur": "Australie"}
+{"entite": "Boggione", "valeur": "Italie"}
+{"entite": "Bogolong Creek", "valeur": "Australie"}
+{"entite": "Bolam Creek", "valeur": "États-Unis"}
+{"entite": "Bon Nant", "valeur": "France"}
+{"entite": "Bonabosc", "valeur": "France"}
+{"entite": "Boree Creek", "valeur": "Australie"}
+{"entite": "Boree Hollow", "valeur": "Australie"}
+{"entite": "Borenore Creek", "valeur": "Australie"}
+{"entite": "Bormida di Millesimo", "valeur": "Italie"}
+{"entite": "Botro Barroccina", "valeur": "Italie"}
+{"entite": "Boundary Gully", "valeur": "Australie"}
+{"entite": "Bourimbla Creek", "valeur": "Australie"}
+{"entite": "Bovis Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Box Cowal", "valeur": "Australie"}
+{"entite": "Brasimone", "valeur": "Italie"}
+{"entite": "Brassknocker Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Bratica", "valeur": "Italie"}
+{"entite": "Brays Flat Creek", "valeur": "Australie"}
+{"entite": "Brickmakers Creek", "valeur": "Australie"}
+{"entite": "Broken Dam Creek", "valeur": "Australie"}
+{"entite": "Broken Shaft Gully", "valeur": "Australie"}
+{"entite": "Brook of Egypt", "valeur": "Égypte"}
+{"entite": "Brook, Syniakovo", "valeur": "Ukraine"}
+{"entite": "Brothers Creek", "valeur": "Australie"}
+{"entite": "Brown Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Browns Creek", "valeur": "Australie"}
+{"entite": "Brummagen Creek", "valeur": "Australie"}
+{"entite": "Buckinbah Creek", "valeur": "Australie"}
+{"entite": "Budgebegambil Creek", "valeur": "Australie"}
+{"entite": "Bulbodney Creek", "valeur": "Australie"}
+{"entite": "Bulldog Creek", "valeur": "Australie"}
+{"entite": "Bulls Gully", "valeur": "Australie"}
+{"entite": "Bundara Creek", "valeur": "Australie"}
+{"entite": "Bungle Creek", "valeur": "Australie"}
+{"entite": "Burabadji Creek", "valeur": "Australie"}
+{"entite": "Burabadji Creek North", "valeur": "Australie"}
+{"entite": "Burra Burra Creek", "valeur": "Australie"}
+{"entite": "Burra Creek", "valeur": "Australie"}
+{"entite": "Burrangong Creek", "valeur": "Australie"}
+{"entite": "Burrawong Creek", "valeur": "Australie"}
+{"entite": "Butlers Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Cactus Gully", "valeur": "Australie"}
+{"entite": "Cadia Creek", "valeur": "Australie"}
+{"entite": "Cairn Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Calamo", "valeur": "Italie"}
+{"entite": "Calanchi del Cannizzola", "valeur": "Italie"}
+{"entite": "Calcinara", "valeur": "Italie"}
+{"entite": "Calula Creek", "valeur": "Australie"}
+{"entite": "Camaro", "valeur": "Italie"}
+{"entite": "Camp Gully", "valeur": "Australie"}
+{"entite": "Canal de l'Herrétang", "valeur": "France"}
+{"entite": "Canali", "valeur": "Italie"}
+{"entite": "Caño Sirpi", "valeur": "Nicaragua"}
+{"entite": "Canomodine Creek", "valeur": "Australie"}
+{"entite": "Canongle Creek", "valeur": "Australie"}
+{"entite": "Cant", "valeur": "Italie"}
+{"entite": "Capsize Gully", "valeur": "Australie"}
+{"entite": "Captains Station Creek", "valeur": "Australie"}
+{"entite": "Carança", "valeur": "France"}
+{"entite": "Cargo Creek", "valeur": "Australie"}
+{"entite": "Cargo Gully", "valeur": "Australie"}
+{"entite": "Castagno", "valeur": "Italie"}
+{"entite": "Casternone", "valeur": "Italie"}
+{"entite": "Caves Gully", "valeur": "Australie"}
+{"entite": "Cedar Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Cedra", "valeur": "Italie"}
+{"entite": "Čerkšnė", "valeur": "Lituanie"}
+{"entite": "Ceronda", "valeur": "Italie"}
+{"entite": "Chain of Ponds Creek", "valeur": "Australie"}
+{"entite": "Chatto Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Chauselle", "valeur": "Italie"}
+{"entite": "Cheeseman Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Cheesemans Creek", "valeur": "Australie"}
+{"entite": "Chiamogna", "valeur": "Italie"}
+{"entite": "Chiavenna", "valeur": "Italie"}
+{"entite": "Chieppena", "valeur": "Italie"}
+{"entite": "le Chinaillon", "valeur": "France"}
+{"entite": "Chisola", "valeur": "Italie"}
+{"entite": "Christmas Tree Creek", "valeur": "Australie"}
+{"entite": "Cinghio River", "valeur": "Italie"}
+{"entite": "Cinisco", "valeur": "Italie"}
+{"entite": "Cinyana", "valeur": "Espagne"}
+{"entite": "Clagger Creek", "valeur": "Australie"}
+{"entite": "Coates Creek", "valeur": "Australie"}
+{"entite": "Cobbolds Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Cockabulla Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Cockatoo Gully", "valeur": "Australie"}
+{"entite": "Cockle Creek", "valeur": "Australie"}
+{"entite": "Coffee Hill Creek", "valeur": "Australie"}
+{"entite": "Colemans Creek", "valeur": "Australie"}
+{"entite": "Cookamobil Creek", "valeur": "Australie"}
+{"entite": "Coolumbalo Creek", "valeur": "Australie"}
+{"entite": "Coopers Creek", "valeur": "Australie"}
+{"entite": "Coppa", "valeur": "Italie"}
+{"entite": "Coppermine Gully", "valeur": "Australie"}
+{"entite": "Còrrec de la Pedra Foradada", "valeur": "France"}
+{"entite": "còrrec del Mas Cornet", "valeur": "France"}
+{"entite": "Cosgroves Creek", "valeur": "Australie"}
+{"entite": "Cottage Creek", "valeur": "Australie"}
+{"entite": "Coups Creek", "valeur": "Australie"}
+{"entite": "Cow Creek", "valeur": "Australie"}
+{"entite": "Cox Creek", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Crater Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Crooked Creek", "valeur": "Australie"}
+{"entite": "Crostolo", "valeur": "Italie"}
+{"entite": "Cucumber Creek", "valeur": "Australie"}
+{"entite": "Cuddil Creek", "valeur": "Australie"}
+{"entite": "Curone", "valeur": "Italie"}
+{"entite": "Daddys Hole Creek", "valeur": "Australie"}
+{"entite": "Dardagna", "valeur": "Italie"}
+{"entite": "Dark Corner Creek", "valeur": "Australie"}
+{"entite": "Davey Creek", "valeur": "Australie"}
+{"entite": "Dead Horse Creek", "valeur": "Australie"}
+{"entite": "Dead Horse Gully", "valeur": "Australie"}
+{"entite": "Dead Mans Creek", "valeur": "Australie"}
+{"entite": "Dee Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Deighton Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Delaney Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Dellavedova Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Dendropotamos", "valeur": "Grèce"}
+{"entite": "Diakoniaris", "valeur": "Grèce"}
+{"entite": "Diamond Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Didžioji Sruoja", "valeur": "Lituanie"}
+{"entite": "Diggers Creek", "valeur": "Australie"}
+{"entite": "Dirt Hole Creek", "valeur": "Australie"}
+{"entite": "Dog Box Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Doire de Ferret", "valeur": "Italie"}
+{"entite": "Doire de Vény", "valeur": "Italie"}
+{"entite": "Doire du Nivolet", "valeur": "Italie"}
+{"entite": "Doppia", "valeur": "Italie"}
+{"entite": "Doron de Beaufort", "valeur": "France"}
+{"entite": "Doron de Champagny", "valeur": "France"}
+{"entite": "Doron de Pralognan", "valeur": "France"}
+{"entite": "Doron de Prémou", "valeur": "France"}
+{"entite": "Doughboy Creek", "valeur": "Australie"}
+{"entite": "Doyles Creek", "valeur": "Australie"}
+{"entite": "Dranse de Ferret", "valeur": "Suisse"}
+{"entite": "Drapers Creek", "valeur": "Australie"}
+{"entite": "Driselpoh", "valeur": "Slovénie"}
+{"entite": "Droanello", "valeur": "Italie"}
+{"entite": "Dry Creek", "valeur": "Australie"}
+{"entite": "Dry Ravine", "valeur": "Dominique"}
+{"entite": "Dublin Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Duck Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Dungaroo Creek", "valeur": "Australie"}
+{"entite": "Dungeon Creek", "valeur": "Australie"}
+{"entite": "Dürrbach (Main, Wurtzbourg)", "valeur": "Allemagne"}
+{"entite": "Duwaykhlat ash Shaykh", "valeur": "Irak"}
+{"entite": "Eagle Creek", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "East Pangee Creek", "valeur": "Australie"}
+{"entite": "Eau d'Olle", "valeur": "France"}
+{"entite": "Eau de Bérard", "valeur": "France"}
+{"entite": "Eau De Cologne Gully", "valeur": "Australie"}
+{"entite": "Eau Noire", "valeur": "France"}
+{"entite": "Eight Mile Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Eight Mile Creek or Boundary Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Éimeschbaach (stream)", "valeur": "Luxembourg"}
+{"entite": "Ekenui Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Eldorado Gully", "valeur": "Australie"}
+{"entite": "empierrement du Cruy Bonnet", "valeur": "France"}
+{"entite": "Enza", "valeur": "Italie"}
+{"entite": "Eulimore Creek", "valeur": "Australie"}
+{"entite": "Eulomogo Creek", "valeur": "Australie"}
+{"entite": "Fabians Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Farrells Grave Creek", "valeur": "Australie"}
+{"entite": "Fereggiano", "valeur": "Italie"}
+{"entite": "Fern Creek", "valeur": "Australie"}
+{"entite": "Ferns Creek", "valeur": "Australie"}
+{"entite": "Ferrand", "valeur": "France"}
+{"entite": "Fiddlers Creek", "valeur": "Australie"}
+{"entite": "Fileris", "valeur": "Grèce"}
+{"entite": "Finchs Flat Creek", "valeur": "Australie"}
+{"entite": "Fiumarella", "valeur": "Italie"}
+{"entite": "Flash Jacks Creek", "valeur": "Australie"}
+{"entite": "Forest Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Foron du Reposoir", "valeur": "France"}
+{"entite": "Forsyth Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Fossa", "valeur": "Italie"}
+{"entite": "Fossaccia Scannabecco", "valeur": "Italie"}
+{"entite": "Frenchmans Gully", "valeur": "Australie"}
+{"entite": "Freshwater Creek", "valeur": "Australie"}
+{"entite": "Gabbyquoiquoi Creek", "valeur": "Australie"}
+{"entite": "Gamma Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Gap Creek", "valeur": "Australie"}
+{"entite": "Gap Gully", "valeur": "Australie"}
+{"entite": "Gargždupis", "valeur": "Lituanie"}
+{"entite": "Genaren Creek", "valeur": "Australie"}
+{"entite": "Gerdaujė", "valeur": "Lituanie"}
+{"entite": "Ghiandone", "valeur": "Italie"}
+{"entite": "Gibbers Creek", "valeur": "Australie"}
+{"entite": "Giffre des Fonts", "valeur": "France"}
+{"entite": "Gillenbine Creek", "valeur": "Australie"}
+{"entite": "Gillgilbury Creek", "valeur": "Australie"}
+{"entite": "Gin Gin Creek", "valeur": "Australie"}
+{"entite": "Glasseye Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Glennie Creek", "valeur": "Australie"}
+{"entite": "Glitupis", "valeur": "Lituanie"}
+{"entite": "Goldbiddie Cowal", "valeur": "Australie"}
+{"entite": "Golden Gully", "valeur": "Australie"}
+{"entite": "Goobang Creek", "valeur": "Australie"}
+{"entite": "Googodery Creek", "valeur": "Australie"}
+{"entite": "Goonigal Creek", "valeur": "Australie"}
+{"entite": "Goonumbla Creek", "valeur": "Australie"}
+{"entite": "Gospers Creek", "valeur": "Australie"}
+{"entite": "Gotra river", "valeur": "Italie"}
+{"entite": "Goutte Valmolina", "valeur": "Italie"}
+{"entite": "Goveznyanka", "valeur": "Biélorussie"}
+{"entite": "Grail Creek", "valeur": "Australie"}
+{"entite": "Grana del Monferrato", "valeur": "Italie"}
+{"entite": "le Grand Ruisseau", "valeur": "France"}
+{"entite": "Grassy Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Gratten Creek", "valeur": "Australie"}
+{"entite": "Greenbah Creek", "valeur": "Australie"}
+{"entite": "Greenbar Creek", "valeur": "Australie"}
+{"entite": "Greendale Creek", "valeur": "Australie"}
+{"entite": "Greentrees Creek", "valeur": "Australie"}
+{"entite": "Grey Duck Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Grigno", "valeur": "Italie"}
+{"entite": "Grove Creek", "valeur": "Australie"}
+{"entite": "Gruodė", "valeur": "Lituanie"}
+{"entite": "Gulf Creek", "valeur": "Australie"}
+{"entite": "Gullengambel Creek", "valeur": "Australie"}
+{"entite": "Gum Creek", "valeur": "Australie"}
+{"entite": "Gumble Creek", "valeur": "Australie"}
+{"entite": "Gundong Creek", "valeur": "Australie"}
+{"entite": "la Gurre du Bois", "valeur": "France"}
+{"entite": "Hallinans Creek", "valeur": "Australie"}
+{"entite": "Harris Wash", "valeur": "États-Unis"}
+{"entite": "Hart Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Hatters Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Hawkes Creek", "valeur": "Australie"}
+{"entite": "Heifer Station Creek", "valeur": "Australie"}
+{"entite": "Horní Ploučnice", "valeur": "Tchéquie"}
+{"entite": "Horse Ridges Creek", "valeur": "Australie"}
+{"entite": "Hot Springs Creek", "valeur": "Australie"}
+{"entite": "Houlaghans Creek", "valeur": "Australie"}
+{"entite": "Humbug Creek", "valeur": "États-Unis"}
+{"entite": "Hunts Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Hyandra Creek", "valeur": "Australie"}
+{"entite": "Inachos", "valeur": "Grèce"}
+{"entite": "Indera Creek", "valeur": "Australie"}
+{"entite": "Irishman Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Irishmans Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ironbark Gully", "valeur": "Australie"}
+{"entite": "Isaacs Creek", "valeur": "Australie"}
+{"entite": "Italian Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Italians Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Jacks Creek", "valeur": "Australie"}
+{"entite": "Jackson Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Jacky Bairds Gunyah Creek", "valeur": "Australie"}
+{"entite": "Jelonka", "valeur": "Pologne"}
+{"entite": "Jenga", "valeur": "Italie"}
+{"entite": "Jenny Lind Creek", "valeur": "Australie"}
+{"entite": "Jerino", "valeur": "Italie"}
+{"entite": "Jerrys Creek", "valeur": "Australie"}
+{"entite": "Jews Creek", "valeur": "Australie"}
+{"entite": "Junyell", "valeur": "Espagne"}
+{"entite": "Kadina Creek", "valeur": "Australie"}
+{"entite": "Kadungle Creek", "valeur": "Australie"}
+{"entite": "Kalguddering Creek", "valeur": "Australie"}
+{"entite": "Kamenice", "valeur": "Tchéquie"}
+{"entite": "Kartenalė II", "valeur": "Lituanie"}
+{"entite": "Kawhaki Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Kelkering Creek", "valeur": "Australie"}
+{"entite": "Kellys Creek", "valeur": "Australie"}
+{"entite": "Kelso Creek", "valeur": "Australie"}
+{"entite": "Kerrs Creek", "valeur": "Australie"}
+{"entite": "Killonbutta Creek", "valeur": "Australie"}
+{"entite": "Kittys Creek", "valeur": "Australie"}
+{"entite": "Kiwi Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Kleitor River", "valeur": "Grèce"}
+{"entite": "Kookaburra Creek", "valeur": "Australie"}
+{"entite": "Kremushe", "valeur": "Biélorussie"}
+{"entite": "Krios", "valeur": "Grèce"}
+{"entite": "Kroparica", "valeur": "Slovénie"}
+{"entite": "Kūlupis", "valeur": "Lituanie"}
+{"entite": "Lafayette Creek", "valeur": "États-Unis"}
+{"entite": "Lagoon Creek", "valeur": "Australie"}
+{"entite": "Lamanère", "valeur": "France"}
+{"entite": "Lašiupis", "valeur": "Lituanie"}
+{"entite": "Leg Of Mutton Creek", "valeur": "Australie"}
+{"entite": "Leno", "valeur": "Italie"}
+{"entite": "Lenta (rivière)", "valeur": "France"}
+{"entite": "Lewis Ponds Creek", "valeur": "Australie"}
+{"entite": "Licking Hole Creek", "valeur": "Australie"}
+{"entite": "Lightning Creek", "valeur": "Australie"}
+{"entite": "Limestone Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Lipuda", "valeur": "Italie"}
+{"entite": "Little Bald Creek", "valeur": "Australie"}
+{"entite": "Little Welshmans Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "llau de Granollers", "valeur": "Espagne"}
+{"entite": "Llau de la Coma (Llimiana)", "valeur": "Espagne"}
+{"entite": "Long Plain Creek", "valeur": "Australie"}
+{"entite": "Lorno", "valeur": "Italie"}
+{"entite": "Lucas Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Lucky Swamp Creek", "valeur": "Australie"}
+{"entite": "Lukna", "valeur": "Lituanie"}
+{"entite": "Lygias", "valeur": "Grèce"}
+{"entite": "Mackenzie Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Mackeys Creek", "valeur": "Australie"}
+{"entite": "Maè", "valeur": "Italie"}
+{"entite": "Mahogany Creek", "valeur": "Australie"}
+{"entite": "Maira", "valeur": "Italie"}
+{"entite": "Makaka Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Mallabine Creek", "valeur": "Australie"}
+{"entite": "Malnome", "valeur": "Italie"}
+{"entite": "Malone", "valeur": "Italie"}
+{"entite": "Mandagery Creek", "valeur": "Australie"}
+{"entite": "Mangahou Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Manildra Creek", "valeur": "Australie"}
+{"entite": "Manning Spring Creek", "valeur": "Australie"}
+{"entite": "Margaret Creek", "valeur": "Australie"}
+{"entite": "Marmore", "valeur": "Italie"}
+{"entite": "Maso", "valeur": "Italie"}
+{"entite": "Massangla", "valeur": "Italie"}
+{"entite": "Maxwells Creek", "valeur": "Australie"}
+{"entite": "Mazzarrà", "valeur": "Italie"}
+{"entite": "Mcdowals Creek", "valeur": "Australie"}
+{"entite": "Mckellars Creek", "valeur": "Australie"}
+{"entite": "Meenaar South Creek", "valeur": "Australie"}
+{"entite": "Meilichos", "valeur": "Grèce"}
+{"entite": "Meledrio", "valeur": "Italie"}
+{"entite": "Meleta", "valeur": "Italie"}
+{"entite": "Meletta", "valeur": "Italie"}
+{"entite": "Mensola", "valeur": "Italie"}
+{"entite": "Merungle Creek", "valeur": "Australie"}
+{"entite": "Meyer Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Middle Arm Creek", "valeur": "Australie"}
+{"entite": "Milpose Creek", "valeur": "Australie"}
+{"entite": "Miscano", "valeur": "Italie"}
+{"entite": "Mistake Creek", "valeur": "Australie"}
+{"entite": "Mobigamy Creek", "valeur": "Australie"}
+{"entite": "Mogong Creek", "valeur": "Australie"}
+{"entite": "Molong Creek", "valeur": "Australie"}
+{"entite": "Momo Creek", "valeur": "Australie"}
+{"entite": "Monument Creek", "valeur": "Australie"}
+{"entite": "Moonlight Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Moore Creek", "valeur": "Australie"}
+{"entite": "Mortlock Creek", "valeur": "Australie"}
+{"entite": "Mosquito Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Moss Hollow Creek", "valeur": "Australie"}
+{"entite": "Mount Hummock Creek", "valeur": "Australie"}
+{"entite": "Mouse Hole Creek", "valeur": "Australie"}
+{"entite": "Mozzola", "valeur": "Italie"}
+{"entite": "Mt Anvil Gully", "valeur": "Australie"}
+{"entite": "Muddy Creek", "valeur": "Australie"}
+{"entite": "Mudgingar Creek", "valeur": "Australie"}
+{"entite": "Mulgoa Creek", "valeur": "Australie"}
+{"entite": "Mullion Creek", "valeur": "Australie"}
+{"entite": "Muluckine Creek", "valeur": "Australie"}
+{"entite": "Mulyan Creek", "valeur": "Australie"}
+{"entite": "Mungilan Creek", "valeur": "Australie"}
+{"entite": "Munyerring Brook", "valeur": "Australie"}
+{"entite": "Myall Creek", "valeur": "Australie"}
+{"entite": "Myrangle Creek", "valeur": "Australie"}
+{"entite": "Nahal Zimri", "valeur": "Israël"}
+{"entite": "Nambling Creek", "valeur": "Australie"}
+{"entite": "Nangerybone Creek", "valeur": "Australie"}
+{"entite": "Nant Benin", "valeur": "France"}
+{"entite": "nant d'Aillon", "valeur": "France"}
+{"entite": "Nant de Balmette", "valeur": "France"}
+{"entite": "Nant de Dranse", "valeur": "Suisse"}
+{"entite": "Nant de Grenant", "valeur": "France"}
+{"entite": "nant de Montmin", "valeur": "France"}
+{"entite": "Nant de Sallier", "valeur": "France"}
+{"entite": "Nant Debout", "valeur": "France"}
+{"entite": "nant des Lautarets", "valeur": "France"}
+{"entite": "Nant du Cruet", "valeur": "France"}
+{"entite": "nant du Dard", "valeur": "France"}
+{"entite": "Nant Perrou", "valeur": "France"}
+{"entite": "Nant Pisse", "valeur": "France"}
+{"entite": "Nant Sec", "valeur": "France"}
+{"entite": "Native Dog Creek", "valeur": "Australie"}
+{"entite": "Neuvachette", "valeur": "France"}
+{"entite": "Nevola", "valeur": "Italie"}
+{"entite": "new riverbed of Torrent de la Riera", "valeur": "Espagne"}
+{"entite": "Niggs Creek, Tennessee", "valeur": "États-Unis"}
+{"entite": "Nikova", "valeur": "Slovénie"}
+{"entite": "Nimbalto", "valeur": "Italie"}
+{"entite": "Noce", "valeur": "Italie"}
+{"entite": "Nom", "valeur": "France"}
+{"entite": "Norman Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Nubrigyn Creek", "valeur": "Australie"}
+{"entite": "Nuggetty Gully", "valeur": "Australie"}
+{"entite": "Nure", "valeur": "Italie"}
+{"entite": "Nyrang Creek", "valeur": "Australie"}
+{"entite": "O'Rourkes Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Oaks Creek", "valeur": "Australie"}
+{"entite": "Oaky Creek", "valeur": "Australie"}
+{"entite": "Olderog Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Olustee Creek", "valeur": "États-Unis"}
+{"entite": "Ongina", "valeur": "Italie"}
+{"entite": "Ooma Creek", "valeur": "Australie"}
+{"entite": "Orco", "valeur": "Italie"}
+{"entite": "Origil Creek", "valeur": "Australie"}
+{"entite": "l'Ormente", "valeur": "France"}
+{"entite": "Orrenaye", "valeur": "France"}
+{"entite": "Orsenigo", "valeur": "Italie"}
+{"entite": "Oteha Stream", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ozhe", "valeur": "Biélorussie"}
+{"entite": "Paling Yard Creek", "valeur": "Australie"}
+{"entite": "Paliourolagkado", "valeur": "Grèce"}
+{"entite": "Paltis", "valeur": "Lituanie"}
+{"entite": "Palvico", "valeur": "Italie"}
+{"entite": "Panagitsa", "valeur": "Grèce"}
+{"entite": "Panuara Rivulet", "valeur": "Australie"}
+{"entite": "Paos", "valeur": "Grèce"}
+{"entite": "Parma", "valeur": "Italie"}
+{"entite": "Parmossa", "valeur": "Italie"}
+{"entite": "Parola", "valeur": "Italie"}
+{"entite": "Pessola river", "valeur": "Italie"}
+{"entite": "Peter Ward Creek", "valeur": "Australie"}
+{"entite": "Petit Foron", "valeur": "France"}
+{"entite": "Petit Tabuc", "valeur": "France"}
+{"entite": "Petronio", "valeur": "Italie"}
+{"entite": "Piktvardė", "valeur": "Lituanie"}
+{"entite": "Pinal Creek", "valeur": "États-Unis"}
+{"entite": "Pinks Creek", "valeur": "Australie"}
+{"entite": "Pipeclay Creek", "valeur": "Australie"}
+{"entite": "Pipeclay Gully", "valeur": "Australie"}
+{"entite": "Plain Creek", "valeur": "Australie"}
+{"entite": "Pontaiba", "valeur": "Italie"}
+{"entite": "Ponturin", "valeur": "France"}
+{"entite": "Poplar Gully", "valeur": "Australie"}
+{"entite": "Porcària", "valeur": "Italie"}
+{"entite": "Posina", "valeur": "Italie"}
+{"entite": "Le Poucet (afflurent de l'Arc)", "valeur": "France"}
+{"entite": "Pournarolagkado", "valeur": "Grèce"}
+{"entite": "Priest Creek", "valeur": "Australie"}
+{"entite": "Pullens Gully", "valeur": "Australie"}
+{"entite": "Punelė", "valeur": "Lituanie"}
+{"entite": "Puzzle Flat Creek", "valeur": "Australie"}
+{"entite": "le Py", "valeur": "France"}
+{"entite": "Quarry Creek", "valeur": "Australie"}
+{"entite": "Quart Pot Creek", "valeur": "Australie"}
+{"entite": "Quazzola", "valeur": "Italie"}
+{"entite": "Quiliano", "valeur": "Italie"}
+{"entite": "Rabbies", "valeur": "Italie"}
+{"entite": "Racosa", "valeur": "Italie"}
+{"entite": "Raddigan Gully", "valeur": "Australie"}
+{"entite": "Raspberry Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ravella", "valeur": "Italie"}
+{"entite": "ravin Saint-Julien", "valeur": "France"}
+{"entite": "Rays Creek", "valeur": "Australie"}
+{"entite": "Recchio", "valeur": "Italie"}
+{"entite": "le Reclard", "valeur": "France"}
+{"entite": "Reculaz", "valeur": "France"}
+{"entite": "Redbank Creek", "valeur": "Australie"}
+{"entite": "Reedy Creek", "valeur": "Australie"}
+{"entite": "Regans Creek", "valeur": "Australie"}
+{"entite": "Rennys Gully", "valeur": "Australie"}
+{"entite": "Reramurs", "valeur": "Espagne"}
+{"entite": "Revegler river", "valeur": "Italie"}
+{"entite": "Reventa", "valeur": "Italie"}
+{"entite": "Ri di Ronco", "valeur": "Suisse"}
+{"entite": "Riale delle Selve", "valeur": "Italie"}
+{"entite": "ribera de la Fou", "valeur": "France"}
+{"entite": "Ribon", "valeur": "France"}
+{"entite": "Ridgey Creek", "valeur": "Australie"}
+{"entite": "Riera d'en Font", "valeur": "Espagne"}
+{"entite": "riera del Munt", "valeur": "Espagne"}
+{"entite": "rif de Chamoissière", "valeur": "France"}
+{"entite": "Rif de la Planche", "valeur": "France"}
+{"entite": "Rif des Balmes", "valeur": "France"}
+{"entite": "Rif Tort", "valeur": "France"}
+{"entite": "Rijlat ad Dab'", "valeur": "Irak"}
+{"entite": "Rio Barescione", "valeur": "Italie"}
+{"entite": "Rio Carenda", "valeur": "Italie"}
+{"entite": "Rio Carpine", "valeur": "Italie"}
+{"entite": "Rio Casazza", "valeur": "Italie"}
+{"entite": "Rio Cigna", "valeur": "Italie"}
+{"entite": "Rio Costalunga", "valeur": "Italie"}
+{"entite": "Rio di Valle Maggiore", "valeur": "Italie"}
+{"entite": "Rio Dolce", "valeur": "Italie"}
+{"entite": "Rio Lusina", "valeur": "Italie"}
+{"entite": "Rio Lusso", "valeur": "Italie"}
+{"entite": "Rio Negro", "valeur": "Italie"}
+{"entite": "Rio Sache", "valeur": "Italie"}
+{"entite": "Rio Secco", "valeur": "Italie"}
+{"entite": "Riobasco", "valeur": "Italie"}
+{"entite": "rivière des Aravis", "valeur": "France"}
+{"entite": "Rock Creek", "valeur": "États-Unis"}
+{"entite": "Rock Flat Creek", "valeur": "Australie"}
+{"entite": "Rocky Creek", "valeur": "Australie"}
+{"entite": "Rocky Ponds Creek", "valeur": "Australie"}
+{"entite": "Rotaldo", "valeur": "Italie"}
+{"entite": "Rovacchia", "valeur": "Italie"}
+{"entite": "Ruf d'Antermont", "valeur": "Italie"}
+{"entite": "Ruf de Ciavazes", "valeur": "Italie"}
+{"entite": "Ruf de Duron", "valeur": "Italie"}
+{"entite": "Ruf de Ncisles", "valeur": "Italie"}
+{"entite": "ruisseau d'Ambin", "valeur": "France"}
+{"entite": "ruisseau d'Entre Deux Ris", "valeur": "France"}
+{"entite": "ruisseau d'Isertan", "valeur": "France"}
+{"entite": "ruisseau de Bellecombe", "valeur": "France"}
+{"entite": "ruisseau de Bonnegarde", "valeur": "France"}
+{"entite": "ruisseau de Bornette", "valeur": "France"}
+{"entite": "ruisseau de Craponoz", "valeur": "France"}
+{"entite": "ruisseau de Crolles", "valeur": "France"}
+{"entite": "ruisseau de Flumet", "valeur": "France"}
+{"entite": "ruisseau de l'Arc", "valeur": "France"}
+{"entite": "ruisseau de l'Arcelin", "valeur": "France"}
+{"entite": "ruisseau de l'Arpire", "valeur": "France"}
+{"entite": "ruisseau de l'Iseran", "valeur": "France"}
+{"entite": "ruisseau de la Glière Derrière", "valeur": "France"}
+{"entite": "ruisseau de la Louze", "valeur": "France"}
+{"entite": "ruisseau de la Lovatière", "valeur": "France"}
+{"entite": "ruisseau de la Mariande", "valeur": "France"}
+{"entite": "ruisseau de la Muande", "valeur": "France"}
+{"entite": "ruisseau de la Pisse", "valeur": "France"}
+{"entite": "ruisseau de la Raja", "valeur": "France"}
+{"entite": "ruisseau de la Sassière", "valeur": "France"}
+{"entite": "ruisseau de la Savinaz", "valeur": "France"}
+{"entite": "ruisseau de la Terrasse", "valeur": "France"}
+{"entite": "ruisseau de la Tovière", "valeur": "France"}
+{"entite": "ruisseau de la Vanoise", "valeur": "France"}
+{"entite": "ruisseau de Montfort", "valeur": "France"}
+{"entite": "ruisseau de Ronce", "valeur": "France"}
+{"entite": "ruisseau de Saint-Benoît", "valeur": "France"}
+{"entite": "ruisseau de Teppié", "valeur": "France"}
+{"entite": "ruisseau de Treicol", "valeur": "France"}
+{"entite": "ruisseau des Balmes", "valeur": "France"}
+{"entite": "ruisseau des Lacs Verdet", "valeur": "France"}
+{"entite": "ruisseau des Tufs", "valeur": "France"}
+{"entite": "ruisseau du Bard", "valeur": "France"}
+{"entite": "ruisseau du Carre", "valeur": "France"}
+{"entite": "ruisseau du Clou", "valeur": "France"}
+{"entite": "ruisseau du Colombier", "valeur": "France"}
+{"entite": "ruisseau du Dorinet", "valeur": "France"}
+{"entite": "ruisseau du Grand Lac", "valeur": "France"}
+{"entite": "ruisseau du Lac", "valeur": "France"}
+{"entite": "ruisseau du Lac Noir", "valeur": "France"}
+{"entite": "ruisseau du Mont Pourri", "valeur": "France"}
+{"entite": "ruisseau du Plan de la Chevalière", "valeur": "France"}
+{"entite": "ruisseau du Vallon des Étages", "valeur": "France"}
+{"entite": "ruisseau du Vallonnet", "valeur": "France"}
+{"entite": "Sabbiena", "valeur": "Italie"}
+{"entite": "Salsola", "valeur": "Italie"}
+{"entite": "Saltwater Creek", "valeur": "Australie"}
+{"entite": "Samoggia", "valeur": "Italie"}
+{"entite": "San Giovanni", "valeur": "Italie"}
+{"entite": "Sandy Creek", "valeur": "Australie"}
+{"entite": "Sangone", "valeur": "Italie"}
+{"entite": "Sansobbia", "valeur": "Italie"}
+{"entite": "Santa Gertrudis Creek", "valeur": "États-Unis"}
+{"entite": "Sarantapotamos", "valeur": "Grèce"}
+{"entite": "Sarca di Campiglio", "valeur": "Italie"}
+{"entite": "Sarenne", "valeur": "France"}
+{"entite": "Savara", "valeur": "Italie"}
+{"entite": "Sawpit Gully", "valeur": "Australie"}
+{"entite": "Sawyers Creek", "valeur": "Australie"}
+{"entite": "Scarlett Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Scodogna", "valeur": "Italie"}
+{"entite": "Scotcheys Creek", "valeur": "Australie"}
+{"entite": "Scott Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Scrubby Creek", "valeur": "Australie"}
+{"entite": "Scuropasso", "valeur": "Italie"}
+{"entite": "Seal Creek", "valeur": "Canada"}
+{"entite": "Sedountas", "valeur": "Grèce"}
+{"entite": "Segno", "valeur": "Italie"}
+{"entite": "Seiraios", "valeur": "Grèce"}
+{"entite": "Selvaspessa", "valeur": "Italie"}
+{"entite": "Sentino", "valeur": "Italie"}
+{"entite": "Serpentine Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Serretelle", "valeur": "Italie"}
+{"entite": "Sessi", "valeur": "Italie"}
+{"entite": "Seven Mile Creek", "valeur": "Australie"}
+{"entite": "Shades Creek", "valeur": "Australie"}
+{"entite": "Shamrock Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Sheep Station Creek", "valeur": "Australie"}
+{"entite": "Shem Creek", "valeur": "États-Unis"}
+{"entite": "Shepherds Gully", "valeur": "Australie"}
+{"entite": "Shingle Ridge Creek", "valeur": "Australie"}
+{"entite": "Siburys Creek", "valeur": "Australie"}
+{"entite": "Silla", "valeur": "Italie"}
+{"entite": "Šilupė (Neman, Gelgaudiškis)", "valeur": "Lituanie"}
+{"entite": "Six Mile Creek", "valeur": "Australie"}
+{"entite": "Sloanes Creek", "valeur": "Australie"}
+{"entite": "Snake Creek", "valeur": "Australie"}
+{"entite": "Sobuva (Neman)", "valeur": "Lituanie"}
+{"entite": "Soldiers Creek", "valeur": "Australie"}
+{"entite": "Sonna", "valeur": "Italie"}
+{"entite": "Sori", "valeur": "Italie"}
+{"entite": "Spencers Creek", "valeur": "Australie"}
+{"entite": "Spicers Creek", "valeur": "Australie"}
+{"entite": "Splitstuff Creek", "valeur": "Australie"}
+{"entite": "Sporzana", "valeur": "Italie"}
+{"entite": "Spring Creek", "valeur": "Australie"}
+{"entite": "Springdale Creek", "valeur": "Australie"}
+{"entite": "St Germains Creek", "valeur": "Australie"}
+{"entite": "Stables Creek", "valeur": "Australie"}
+{"entite": "Stanfords Creek", "valeur": "Australie"}
+{"entite": "Stavrolagkado", "valeur": "Grèce"}
+{"entite": "Stirone", "valeur": "Italie"}
+{"entite": "Stockroute Creek", "valeur": "Australie"}
+{"entite": "Stony Creek", "valeur": "Australie"}
+{"entite": "Strangers Creek", "valeur": "Australie"}
+{"entite": "Stura del Monferrato", "valeur": "Italie"}
+{"entite": "Stura del Mugello", "valeur": "Italie"}
+{"entite": "Sugarloaf Creek", "valeur": "Australie"}
+{"entite": "Šukėtas", "valeur": "Lituanie"}
+{"entite": "Šventoji (Neman)", "valeur": "Lituanie"}
+{"entite": "Tag Creek", "valeur": "États-Unis"}
+{"entite": "Tanners Creek", "valeur": "Australie"}
+{"entite": "Tarca", "valeur": "Italie"}
+{"entite": "Tarodine", "valeur": "Italie"}
+{"entite": "Taylor Creek", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Te Hihi Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ten Mile Creek", "valeur": "Australie"}
+{"entite": "Tenandra Creek", "valeur": "Australie"}
+{"entite": "Tepice", "valeur": "Italie"}
+{"entite": "Terarra Creek", "valeur": "Australie"}
+{"entite": "Terdoppio", "valeur": "Italie"}
+{"entite": "Terzolle", "valeur": "Italie"}
+{"entite": "Thirsty Creek", "valeur": "Australie"}
+{"entite": "Thirteen Mile Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Tidal River", "valeur": "Australie"}
+{"entite": "Tidone", "valeur": "Italie"}
+{"entite": "Timaldrie Creek", "valeur": "Australie"}
+{"entite": "Timby Creek", "valeur": "Australie"}
+{"entite": "Tinella", "valeur": "Italie"}
+{"entite": "Tipperary Creek", "valeur": "Australie"}
+{"entite": "Tokakoriri Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Tomingley Creek", "valeur": "Australie"}
+{"entite": "Toms Creek", "valeur": "Australie"}
+{"entite": "Toms Waterholes Creek", "valeur": "Australie"}
+{"entite": "Toodyay Creek", "valeur": "Australie"}
+{"entite": "Toporovitis", "valeur": "Grèce"}
+{"entite": "Torrent d'Alfàbia", "valeur": "Espagne"}
+{"entite": "Torrent d'Almadrà", "valeur": "Espagne"}
+{"entite": "torrent d'Avérole", "valeur": "France"}
+{"entite": "Torrent d'en Barberà", "valeur": "Espagne"}
+{"entite": "Torrent d'en Barres", "valeur": "Espagne"}
+{"entite": "Torrent d'en Roig", "valeur": "Espagne"}
+{"entite": "Torrent d'en Simonet", "valeur": "Espagne"}
+{"entite": "torrent de Bénétant", "valeur": "France"}
+{"entite": "Torrent de Biniatró", "valeur": "Espagne"}
+{"entite": "Torrent de Binificat", "valeur": "Espagne"}
+{"entite": "Torrent de Binimorat", "valeur": "Espagne"}
+{"entite": "torrent de Bionnassay", "valeur": "France"}
+{"entite": "torrent de Blaitière", "valeur": "France"}
+{"entite": "torrent de Boscodon", "valeur": "France"}
+{"entite": "Torrent de Bresson", "valeur": "France"}
+{"entite": "torrent de Brudour", "valeur": "France"}
+{"entite": "Torrent de ca n'Amer", "valeur": "Espagne"}
+{"entite": "Torrent de Cala Pi", "valeur": "Espagne"}
+{"entite": "Torrent de Canyelles", "valeur": "Espagne"}
+{"entite": "Torrent de Ferrutxelles", "valeur": "Espagne"}
+{"entite": "Torrent de Galatzó", "valeur": "Espagne"}
+{"entite": "torrent de Garonda", "valeur": "Espagne"}
+{"entite": "Torrent de l'Aragall", "valeur": "Espagne"}
+{"entite": "torrent de l'Eyssalette", "valeur": "France"}
+{"entite": "torrent de l'Homme", "valeur": "France"}
+{"entite": "torrent de la Creuse", "valeur": "France"}
+{"entite": "torrent de la Crosette", "valeur": "France"}
+{"entite": "torrent de la Gittaz", "valeur": "France"}
+{"entite": "torrent de la Glière", "valeur": "France"}
+{"entite": "torrent de la Leisse", "valeur": "France"}
+{"entite": "torrent de la Rocheure", "valeur": "France"}
+{"entite": "torrent de la Sassière", "valeur": "France"}
+{"entite": "torrent de la Seille Vieille", "valeur": "France"}
+{"entite": "Torrent de Lluc", "valeur": "Espagne"}
+{"entite": "Torrent de Merola", "valeur": "Espagne"}
+{"entite": "torrent de Miage", "valeur": "France"}
+{"entite": "Torrent de Mortitx", "valeur": "Espagne"}
+{"entite": "Torrent de Muro", "valeur": "Espagne"}
+{"entite": "Torrent de na Borges", "valeur": "Espagne"}
+{"entite": "Torrent de Païssa", "valeur": "Espagne"}
+{"entite": "Torrent de Pareis", "valeur": "Espagne"}
+{"entite": "torrent de Péclet", "valeur": "France"}
+{"entite": "torrent de Poncellamont", "valeur": "France"}
+{"entite": "torrent de Saint-Antoine", "valeur": "France"}
+{"entite": "torrent de Sales", "valeur": "France"}
+{"entite": "Torrent de Sant Jordi", "valeur": "Espagne"}
+{"entite": "Torrent de Sant Magí", "valeur": "Espagne"}
+{"entite": "Torrent de Sant Miquel", "valeur": "Espagne"}
+{"entite": "Torrent de ses Coves del Rei", "valeur": "Espagne"}
+{"entite": "Torrent de ses Talaioles", "valeur": "Espagne"}
+{"entite": "Torrent de Siurana", "valeur": "Espagne"}
+{"entite": "Torrent de Soldevila", "valeur": "Espagne"}
+{"entite": "Torrent de Son Catlar", "valeur": "Espagne"}
+{"entite": "Torrent de Son Jordi", "valeur": "Espagne"}
+{"entite": "Torrent de Son Verí", "valeur": "Espagne"}
+{"entite": "torrent de Taconnaz", "valeur": "France"}
+{"entite": "Torrent de Thorens", "valeur": "France"}
+{"entite": "Torrent de Xiclatí", "valeur": "Espagne"}
+{"entite": "Torrent del Barranc d'Algendar", "valeur": "Espagne"}
+{"entite": "torrent del Cargol", "valeur": "Espagne"}
+{"entite": "Torrent del Gorg dels Diners", "valeur": "Espagne"}
+{"entite": "Torrent del Lli", "valeur": "Espagne"}
+{"entite": "Torrent del Mal Pas", "valeur": "Espagne"}
+{"entite": "torrent del Paradís", "valeur": "Espagne"}
+{"entite": "Torrent del Racó", "valeur": "Espagne"}
+{"entite": "torrent del Tortuguer", "valeur": "Espagne"}
+{"entite": "torrent des Bossons", "valeur": "France"}
+{"entite": "Torrent des Drus", "valeur": "France"}
+{"entite": "torrent des Étançons", "valeur": "France"}
+{"entite": "Torrent des Fangar", "valeur": "Espagne"}
+{"entite": "torrent des Faverands", "valeur": "France"}
+{"entite": "Torrent des Glaciers", "valeur": "France"}
+{"entite": "Torrent des Gorg Blau", "valeur": "Espagne"}
+{"entite": "Torrent des Grands Montets", "valeur": "France"}
+{"entite": "Torrent des Jueus", "valeur": "Espagne"}
+{"entite": "torrent des Moulins", "valeur": "France"}
+{"entite": "Torrent des Pèlag", "valeur": "Espagne"}
+{"entite": "Torrent des Saluet", "valeur": "Espagne"}
+{"entite": "torrent du Barnafret", "valeur": "France"}
+{"entite": "Torrent du Bourgeat", "valeur": "France"}
+{"entite": "torrent du Clot-des-Cavales", "valeur": "France"}
+{"entite": "torrent du Cormet d'Arêches", "valeur": "France"}
+{"entite": "torrent du Dard", "valeur": "France"}
+{"entite": "torrent du Diable", "valeur": "France"}
+{"entite": "Torrent du Gâ", "valeur": "France"}
+{"entite": "torrent du Glacier-du-Casset", "valeur": "France"}
+{"entite": "torrent du Grépon", "valeur": "France"}
+{"entite": "torrent du Lautaret", "valeur": "France"}
+{"entite": "torrent du Lou", "valeur": "France"}
+{"entite": "Torrent du Manival", "valeur": "France"}
+{"entite": "Torrent du Nant Blanc", "valeur": "France"}
+{"entite": "torrent du Réal", "valeur": "France"}
+{"entite": "torrent du Vigny", "valeur": "France"}
+{"entite": "Torrente Aposa - Grada", "valeur": "Italie"}
+{"entite": "Torrente Aposa - Piazza Minghetti", "valeur": "Italie"}
+{"entite": "Torrente Aposa - Ponte romano", "valeur": "Italie"}
+{"entite": "Torrente Aposa - San Martino", "valeur": "Italie"}
+{"entite": "Torrente Esino", "valeur": "Italie"}
+{"entite": "Torrente Leona", "valeur": "Italie"}
+{"entite": "Torrente San Leo", "valeur": "Italie"}
+{"entite": "Towac Creek", "valeur": "Australie"}
+{"entite": "Trangie Cowal", "valeur": "Australie"}
+{"entite": "Tranolagkado", "valeur": "Grèce"}
+{"entite": "Trëtterbaach", "valeur": "Luxembourg"}
+{"entite": "Tripally Creek", "valeur": "Australie"}
+{"entite": "Tuckwells Creek", "valeur": "Australie"}
+{"entite": "Tuning Fork Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Tupa Creek", "valeur": "Australie"}
+{"entite": "Tūtaka", "valeur": "Lituanie"}
+{"entite": "Tverkta", "valeur": "Lituanie"}
+{"entite": "Ugione", "valeur": "Italie"}
+{"entite": "Ugumjil Creek", "valeur": "Australie"}
+{"entite": "Uošna", "valeur": "Lituanie"}
+{"entite": "Uzkaya", "valeur": "Russie"}
+{"entite": "Vachères", "valeur": "France"}
+{"entite": "Valduce", "valeur": "Italie"}
+{"entite": "Valle Molinera", "valeur": "Italie"}
+{"entite": "Valleggia", "valeur": "Italie"}
+{"entite": "Vanoi", "valeur": "Italie"}
+{"entite": "Varaita", "valeur": "Italie"}
+{"entite": "Varrone", "valeur": "Italie"}
+{"entite": "Vénéon", "valeur": "France"}
+{"entite": "Vergellus river", "valeur": "Italie"}
+{"entite": "Versa", "valeur": "Italie"}
+{"entite": "Vervenikos", "valeur": "Grèce"}
+{"entite": "Viešdauba", "valeur": "Lituanie"}
+{"entite": "Vilka", "valeur": "Lituanie"}
+{"entite": "Virangė", "valeur": "Lituanie"}
+{"entite": "la Vogealle", "valeur": "France"}
+{"entite": "Volovnya", "valeur": "Biélorussie"}
+{"entite": "Vulgano", "valeur": "Italie"}
+{"entite": "Wadi Abi Shinin", "valeur": "Irak"}
+{"entite": "Wadi al Muhirah", "valeur": "Irak"}
+{"entite": "Wadi al Wirk", "valeur": "Irak"}
+{"entite": "Wadi ar Rahb", "valeur": "Irak"}
+{"entite": "Wadi Ash Shukayk", "valeur": "Irak"}
+{"entite": "Wadi Mahah", "valeur": "Irak"}
+{"entite": "Waihali Gulch", "valeur": "États-Unis"}
+{"entite": "Waikokopu Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Waikoriri Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Walkers Creek", "valeur": "Australie"}
+{"entite": "Wallaby Creek", "valeur": "Australie"}
+{"entite": "Wallace Creek", "valeur": "Australie"}
+{"entite": "Wallurally Creek", "valeur": "Australie"}
+{"entite": "Wandabadgery Creek", "valeur": "Australie"}
+{"entite": "Wandawandong Creek", "valeur": "Australie"}
+{"entite": "Waokauri Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Warree Creek", "valeur": "Australie"}
+{"entite": "Washbourne Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Washout Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Washpen Creek", "valeur": "Australie"}
+{"entite": "Waterfall Creek", "valeur": "Australie"}
+{"entite": "Wattle Creek", "valeur": "Australie"}
+{"entite": "Wattle Flat Gully", "valeur": "Australie"}
+{"entite": "Weandre Creek", "valeur": "Australie"}
+{"entite": "Well Creek", "valeur": "Australie"}
+{"entite": "Welshmans Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "West Arm", "valeur": "Australie"}
+{"entite": "West Fork Quilceda Creek", "valeur": "États-Unis"}
+{"entite": "Whakapirau Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Whitbarrow Creek", "valeur": "Australie"}
+{"entite": "Whitecoomb Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Whylandra Creek", "valeur": "Australie"}
+{"entite": "Winding Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Wines Creek", "valeur": "Philippines"}
+{"entite": "Wittecarra Creek", "valeur": "Australie"}
+{"entite": "Woolandara Creek", "valeur": "Australie"}
+{"entite": "Woormenning Gully", "valeur": "Australie"}
+{"entite": "Wuuluman Creek", "valeur": "Australie"}
+{"entite": "Xeropotamos", "valeur": "Grèce"}
+{"entite": "Xirórema", "valeur": "Grèce"}
+{"entite": "Xovrios", "valeur": "Grèce"}
+{"entite": "Xylokera", "valeur": "Grèce"}
+{"entite": "Yarrabandai Creek", "valeur": "Australie"}
+{"entite": "Yarran Creek", "valeur": "Australie"}
+{"entite": "Yellow Creek", "valeur": "Australie"}
+{"entite": "Ymilsa", "valeur": "Lituanie"}
+{"entite": "Yongee Creek", "valeur": "Australie"}
+{"entite": "Yosemite Creek", "valeur": "États-Unis"}
+{"entite": "Yuranigh Creek", "valeur": "Australie"}
+{"entite": "Zambra River", "valeur": "Italie"}
+{"entite": "Zancona", "valeur": "Italie"}
+{"entite": "Žarna", "valeur": "Lituanie"}
+{"entite": "Zealandia Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Zemola", "valeur": "Italie"}
+{"entite": "Žiegždris", "valeur": "Lituanie"}
+{"entite": "Zoedone Creek", "valeur": "Nouvelle-Zélande"}
+{"entite": "Іzva", "valeur": "Biélorussie"}

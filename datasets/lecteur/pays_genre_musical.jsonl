@@ -1,0 +1,19 @@
+{"_relation": "pays_genre_musical", "_categorie": "convention", "_source": "histoire de la musique (genre -> pays d'origine)", "_articles": true}
+{"entite": "blues", "valeur": "États-Unis"}
+{"entite": "bossa nova", "valeur": "Brésil"}
+{"entite": "calypso", "valeur": "Trinité-et-Tobago"}
+{"entite": "country", "valeur": "États-Unis"}
+{"entite": "fado", "valeur": "Portugal"}
+{"entite": "flamenco", "valeur": "Espagne"}
+{"entite": "hip-hop", "valeur": "États-Unis"}
+{"entite": "jazz", "valeur": "États-Unis"}
+{"entite": "k-pop", "valeur": "Corée du Sud"}
+{"entite": "merengue", "valeur": "République dominicaine"}
+{"entite": "polka", "valeur": "République tchèque"}
+{"entite": "raï", "valeur": "Algérie"}
+{"entite": "reggae", "valeur": "Jamaïque"}
+{"entite": "rock", "valeur": "États-Unis"}
+{"entite": "samba", "valeur": "Brésil"}
+{"entite": "ska", "valeur": "Jamaïque"}
+{"entite": "soul", "valeur": "États-Unis"}
+{"entite": "tango", "valeur": "Argentine"}

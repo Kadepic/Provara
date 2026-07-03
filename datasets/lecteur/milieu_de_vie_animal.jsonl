@@ -1,0 +1,64 @@
+{"_relation": "milieu_de_vie_animal", "_categorie": "physique", "_source": "Modèle (Claude) — écologie textbook curée (milieu de vie aquatique/terrestre ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "anémone de mer", "valeur": "aquatique"}
+{"entite": "anguille", "valeur": "aquatique"}
+{"entite": "araignée", "valeur": "terrestre"}
+{"entite": "baleine bleue", "valeur": "aquatique"}
+{"entite": "brochet", "valeur": "aquatique"}
+{"entite": "calmar", "valeur": "aquatique"}
+{"entite": "carpe", "valeur": "aquatique"}
+{"entite": "chameau", "valeur": "terrestre"}
+{"entite": "cloporte", "valeur": "terrestre"}
+{"entite": "congre", "valeur": "aquatique"}
+{"entite": "corail", "valeur": "aquatique"}
+{"entite": "crabe", "valeur": "aquatique"}
+{"entite": "crevette", "valeur": "aquatique"}
+{"entite": "criquet", "valeur": "terrestre"}
+{"entite": "dauphin", "valeur": "aquatique"}
+{"entite": "écrevisse", "valeur": "aquatique"}
+{"entite": "éléphant d'Afrique", "valeur": "terrestre"}
+{"entite": "éponge de mer", "valeur": "aquatique"}
+{"entite": "escargot", "valeur": "terrestre"}
+{"entite": "étoile de mer", "valeur": "aquatique"}
+{"entite": "fourmi", "valeur": "terrestre"}
+{"entite": "gecko", "valeur": "terrestre"}
+{"entite": "girafe", "valeur": "terrestre"}
+{"entite": "hareng", "valeur": "aquatique"}
+{"entite": "hérisson", "valeur": "terrestre"}
+{"entite": "hippocampe", "valeur": "aquatique"}
+{"entite": "homard", "valeur": "aquatique"}
+{"entite": "koala", "valeur": "terrestre"}
+{"entite": "langouste", "valeur": "aquatique"}
+{"entite": "lézard", "valeur": "terrestre"}
+{"entite": "limace", "valeur": "terrestre"}
+{"entite": "lion", "valeur": "terrestre"}
+{"entite": "loup", "valeur": "terrestre"}
+{"entite": "méduse", "valeur": "aquatique"}
+{"entite": "mérou", "valeur": "aquatique"}
+{"entite": "mille-pattes", "valeur": "terrestre"}
+{"entite": "morue", "valeur": "aquatique"}
+{"entite": "moule", "valeur": "aquatique"}
+{"entite": "murène", "valeur": "aquatique"}
+{"entite": "ours brun", "valeur": "terrestre"}
+{"entite": "oursin", "valeur": "aquatique"}
+{"entite": "perche", "valeur": "aquatique"}
+{"entite": "pieuvre", "valeur": "aquatique"}
+{"entite": "poisson", "valeur": "aquatique"}
+{"entite": "raie manta", "valeur": "aquatique"}
+{"entite": "renard roux", "valeur": "terrestre"}
+{"entite": "requin", "valeur": "aquatique"}
+{"entite": "sardine", "valeur": "aquatique"}
+{"entite": "saumon atlantique", "valeur": "aquatique"}
+{"entite": "sauterelle", "valeur": "terrestre"}
+{"entite": "scarabée", "valeur": "terrestre"}
+{"entite": "scorpion", "valeur": "terrestre"}
+{"entite": "seiche", "valeur": "aquatique"}
+{"entite": "serpent", "valeur": "terrestre"}
+{"entite": "souris", "valeur": "terrestre"}
+{"entite": "taupe", "valeur": "terrestre"}
+{"entite": "termite", "valeur": "terrestre"}
+{"entite": "thon rouge", "valeur": "aquatique"}
+{"entite": "tigre", "valeur": "terrestre"}
+{"entite": "tortue marine", "valeur": "aquatique"}
+{"entite": "varan", "valeur": "terrestre"}
+{"entite": "ver de terre", "valeur": "terrestre"}
+{"entite": "zèbre", "valeur": "terrestre"}

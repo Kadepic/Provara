@@ -1,0 +1,4 @@
+{"_relation": "milieu_respiration", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (organe respiratoire -> milieu ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "branchies", "valeur": "milieu aquatique"}
+{"entite": "poumons", "valeur": "milieu aérien"}
+{"entite": "trachées", "valeur": "milieu aérien"}

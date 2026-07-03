@@ -1,0 +1,212 @@
+{"_relation": "createur_logiciel", "_categorie": "convention", "_source": "connaissance modèle (Claude) — canon haute-confiance — créateur unique incontesté d'un logiciel emblématique (jeux exclus -> concepteur_jeu ; duos/équipes écartés)", "_articles": true}
+{"entite": "7-Zip", "valeur": "Igor Pavlov"}
+{"entite": "ADOM", "valeur": "Thomas Biskup"}
+{"entite": "Aircrack-ng", "valeur": "Thomas d'Otreppe"}
+{"entite": "Alacritty", "valeur": "Joe Wilm"}
+{"entite": "Alpine.js", "valeur": "Caleb Porzio"}
+{"entite": "Anki", "valeur": "Damien Elmes"}
+{"entite": "Ansible", "valeur": "Michael DeHaan"}
+{"entite": "Arch Linux", "valeur": "Judd Vinet"}
+{"entite": "Ardour", "valeur": "Paul Davis"}
+{"entite": "Aseprite", "valeur": "David Capello"}
+{"entite": "AutoHotkey", "valeur": "Chris Mallett"}
+{"entite": "Autoprefixer", "valeur": "Andrey Sitnik"}
+{"entite": "Axios", "valeur": "Matt Zabriskie"}
+{"entite": "Babel", "valeur": "Sebastian McKenzie"}
+{"entite": "Bash", "valeur": "Brian Fox"}
+{"entite": "bat", "valeur": "David Peter"}
+{"entite": "Battle for Wesnoth", "valeur": "David White"}
+{"entite": "BeautifulSoup", "valeur": "Leonard Richardson"}
+{"entite": "Bitcoin", "valeur": "Satoshi Nakamoto"}
+{"entite": "Bitwarden", "valeur": "Kyle Spearrin"}
+{"entite": "Blender", "valeur": "Ton Roosendaal"}
+{"entite": "Bun", "valeur": "Jarred Sumner"}
+{"entite": "Burp Suite", "valeur": "Dafydd Stuttard"}
+{"entite": "Caddy", "valeur": "Matt Holt"}
+{"entite": "Calibre", "valeur": "Kovid Goyal"}
+{"entite": "Celery", "valeur": "Ask Solem"}
+{"entite": "Celestia", "valeur": "Chris Laurel"}
+{"entite": "Chart.js", "valeur": "Nick Downie"}
+{"entite": "Cogmind", "valeur": "Josh Ge"}
+{"entite": "curl", "valeur": "Daniel Stenberg"}
+{"entite": "D3.js", "valeur": "Mike Bostock"}
+{"entite": "Dear ImGui", "valeur": "Omar Cornut"}
+{"entite": "Debian", "valeur": "Ian Murdock"}
+{"entite": "Deno", "valeur": "Ryan Dahl"}
+{"entite": "Docker", "valeur": "Solomon Hykes"}
+{"entite": "Drupal", "valeur": "Dries Buytaert"}
+{"entite": "Elasticsearch", "valeur": "Shay Banon"}
+{"entite": "Eleventy", "valeur": "Zach Leatherman"}
+{"entite": "esbuild", "valeur": "Evan Wallace"}
+{"entite": "Everything", "valeur": "David Carpenter"}
+{"entite": "Express.js", "valeur": "TJ Holowaychuk"}
+{"entite": "Far Manager", "valeur": "Eugene Roshal"}
+{"entite": "FastAPI", "valeur": "Sebastián Ramírez"}
+{"entite": "fd", "valeur": "David Peter"}
+{"entite": "FFmpeg", "valeur": "Fabrice Bellard"}
+{"entite": "FileZilla", "valeur": "Tim Kosse"}
+{"entite": "Fish", "valeur": "Axel Liljencrantz"}
+{"entite": "Flask", "valeur": "Armin Ronacher"}
+{"entite": "foobar2000", "valeur": "Peter Pawłowski"}
+{"entite": "Formik", "valeur": "Jared Palmer"}
+{"entite": "fzf", "valeur": "Junegunn Choi"}
+{"entite": "gallery-dl", "valeur": "Mike Fährmann"}
+{"entite": "GCC", "valeur": "Richard Stallman"}
+{"entite": "Gentoo Linux", "valeur": "Daniel Robbins"}
+{"entite": "Git", "valeur": "Linus Torvalds"}
+{"entite": "GNU Emacs", "valeur": "Richard Stallman"}
+{"entite": "GnuPG", "valeur": "Werner Koch"}
+{"entite": "Gnutella", "valeur": "Justin Frankel"}
+{"entite": "Grafana", "valeur": "Torkel Ödegaard"}
+{"entite": "Grunt", "valeur": "Ben Alman"}
+{"entite": "Gulp", "valeur": "Eric Schoffstall"}
+{"entite": "HAProxy", "valeur": "Willy Tarreau"}
+{"entite": "Hashcat", "valeur": "Jens Steube"}
+{"entite": "Helix", "valeur": "Blaž Hrastnik"}
+{"entite": "Hexo", "valeur": "Tommy Chen"}
+{"entite": "Homebrew", "valeur": "Max Howell"}
+{"entite": "Howler.js", "valeur": "James Simpson"}
+{"entite": "htmx", "valeur": "Carson Gross"}
+{"entite": "htop", "valeur": "Hisham Muhammad"}
+{"entite": "HTTPie", "valeur": "Jakub Roztočil"}
+{"entite": "Hugo", "valeur": "Steve Francia"}
+{"entite": "HWiNFO", "valeur": "Martin Malík"}
+{"entite": "i3", "valeur": "Michael Stapelberg"}
+{"entite": "ImageMagick", "valeur": "John Cristy"}
+{"entite": "IPython", "valeur": "Fernando Pérez"}
+{"entite": "IrfanView", "valeur": "Irfan Skiljan"}
+{"entite": "Jekyll", "valeur": "Tom Preston-Werner"}
+{"entite": "Jenkins", "valeur": "Kohsuke Kawaguchi"}
+{"entite": "John the Ripper", "valeur": "Alexander Peslyak"}
+{"entite": "Joplin", "valeur": "Laurent Cozic"}
+{"entite": "Jotai", "valeur": "Daishi Kato"}
+{"entite": "jq", "valeur": "Stephen Dolan"}
+{"entite": "jQuery", "valeur": "John Resig"}
+{"entite": "KeePass", "valeur": "Dominik Reichl"}
+{"entite": "KiCad", "valeur": "Jean-Pierre Charras"}
+{"entite": "Kitty", "valeur": "Kovid Goyal"}
+{"entite": "Laravel", "valeur": "Taylor Otwell"}
+{"entite": "LaTeX", "valeur": "Leslie Lamport"}
+{"entite": "Leaflet", "valeur": "Volodymyr Agafonkin"}
+{"entite": "Lektor", "valeur": "Armin Ronacher"}
+{"entite": "less", "valeur": "Mark Nudelman"}
+{"entite": "Linux", "valeur": "Linus Torvalds"}
+{"entite": "Lodash", "valeur": "John-David Dalton"}
+{"entite": "MAME", "valeur": "Nicola Salmoria"}
+{"entite": "Matplotlib", "valeur": "John D. Hunter"}
+{"entite": "Matter.js", "valeur": "Liam Brummitt"}
+{"entite": "Memcached", "valeur": "Brad Fitzpatrick"}
+{"entite": "Mercurial", "valeur": "Matt Mackall"}
+{"entite": "Metafont", "valeur": "Donald Knuth"}
+{"entite": "Metasploit", "valeur": "H. D. Moore"}
+{"entite": "MicroPython", "valeur": "Damien George"}
+{"entite": "MINIX", "valeur": "Andrew Tanenbaum"}
+{"entite": "MobX", "valeur": "Michel Weststrate"}
+{"entite": "Moment.js", "valeur": "Tim Wood"}
+{"entite": "Mono", "valeur": "Miguel de Icaza"}
+{"entite": "MuseScore", "valeur": "Werner Schweer"}
+{"entite": "Mutt", "valeur": "Michael Elkins"}
+{"entite": "Nginx", "valeur": "Igor Sysoev"}
+{"entite": "ngrok", "valeur": "Alan Shreve"}
+{"entite": "Nmap", "valeur": "Gordon Lyon"}
+{"entite": "Node.js", "valeur": "Ryan Dahl"}
+{"entite": "Nodemon", "valeur": "Remy Sharp"}
+{"entite": "Notepad++", "valeur": "Don Ho"}
+{"entite": "npm", "valeur": "Isaac Schlueter"}
+{"entite": "Nuitka", "valeur": "Kay Hayen"}
+{"entite": "NumPy", "valeur": "Travis Oliphant"}
+{"entite": "OBS Studio", "valeur": "Hugh Bailey"}
+{"entite": "OpenSCAD", "valeur": "Marius Kintel"}
+{"entite": "OpenShot", "valeur": "Jonathan Thomas"}
+{"entite": "OpenVPN", "valeur": "James Yonan"}
+{"entite": "p5.js", "valeur": "Lauren McCarthy"}
+{"entite": "Paint.NET", "valeur": "Rick Brewster"}
+{"entite": "pandas", "valeur": "Wes McKinney"}
+{"entite": "Pandoc", "valeur": "John MacFarlane"}
+{"entite": "Parcel", "valeur": "Devon Govett"}
+{"entite": "Phaser", "valeur": "Richard Davey"}
+{"entite": "PICO-8", "valeur": "Joseph White"}
+{"entite": "PlatformIO", "valeur": "Ivan Kravets"}
+{"entite": "PM2", "valeur": "Alexandre Strzelewicz"}
+{"entite": "pnpm", "valeur": "Zoltan Kochan"}
+{"entite": "Poetry", "valeur": "Sébastien Eustace"}
+{"entite": "PostCSS", "valeur": "Andrey Sitnik"}
+{"entite": "Preact", "valeur": "Jason Miller"}
+{"entite": "Prettier", "valeur": "James Long"}
+{"entite": "Process Explorer", "valeur": "Mark Russinovich"}
+{"entite": "PuTTY", "valeur": "Simon Tatham"}
+{"entite": "Pydantic", "valeur": "Samuel Colvin"}
+{"entite": "Pygame", "valeur": "Pete Shinners"}
+{"entite": "pytest", "valeur": "Holger Krekel"}
+{"entite": "qBittorrent", "valeur": "Christophe Dumez"}
+{"entite": "QEMU", "valeur": "Fabrice Bellard"}
+{"entite": "REAPER", "valeur": "Justin Frankel"}
+{"entite": "Redis", "valeur": "Salvatore Sanfilippo"}
+{"entite": "Ren'Py", "valeur": "Tom Rothamel"}
+{"entite": "Requests", "valeur": "Kenneth Reitz"}
+{"entite": "Rich", "valeur": "Will McGugan"}
+{"entite": "ripgrep", "valeur": "Andrew Gallant"}
+{"entite": "Rollup", "valeur": "Rich Harris"}
+{"entite": "Ruby on Rails", "valeur": "David Heinemeier Hansson"}
+{"entite": "Rufus", "valeur": "Pete Batard"}
+{"entite": "Samba", "valeur": "Andrew Tridgell"}
+{"entite": "Sed", "valeur": "Lee McMahon"}
+{"entite": "Shotcut", "valeur": "Dan Dennedy"}
+{"entite": "SHOUTcast", "valeur": "Justin Frankel"}
+{"entite": "Simutrans", "valeur": "Hansjörg Malthaner"}
+{"entite": "Sinatra", "valeur": "Blake Mizerany"}
+{"entite": "Slackware", "valeur": "Patrick Volkerding"}
+{"entite": "Snort", "valeur": "Martin Roesch"}
+{"entite": "Socket.IO", "valeur": "Guillermo Rauch"}
+{"entite": "SolidJS", "valeur": "Ryan Carniato"}
+{"entite": "SQLite", "valeur": "D. Richard Hipp"}
+{"entite": "SQLModel", "valeur": "Sebastián Ramírez"}
+{"entite": "Starlette", "valeur": "Tom Christie"}
+{"entite": "Stellarium", "valeur": "Fabien Chéreau"}
+{"entite": "structlog", "valeur": "Hynek Schlawack"}
+{"entite": "Sublime Text", "valeur": "Jon Skinner"}
+{"entite": "Svelte", "valeur": "Rich Harris"}
+{"entite": "Sweet Home 3D", "valeur": "Emmanuel Puybaret"}
+{"entite": "Syncthing", "valeur": "Jakob Borg"}
+{"entite": "Synfig", "valeur": "Robert Quattlebaum"}
+{"entite": "Tailwind CSS", "valeur": "Adam Wathan"}
+{"entite": "Tampermonkey", "valeur": "Jan Biniok"}
+{"entite": "TanStack Query", "valeur": "Tanner Linsley"}
+{"entite": "TanStack Table", "valeur": "Tanner Linsley"}
+{"entite": "Tasker", "valeur": "João Dias"}
+{"entite": "Termux", "valeur": "Fredrik Fornwall"}
+{"entite": "Terraform", "valeur": "Mitchell Hashimoto"}
+{"entite": "TeX", "valeur": "Donald Knuth"}
+{"entite": "Textual", "valeur": "Will McGugan"}
+{"entite": "Three.js", "valeur": "Ricardo Cabello"}
+{"entite": "tmux", "valeur": "Nicholas Marriott"}
+{"entite": "Tone.js", "valeur": "Yotam Mann"}
+{"entite": "Total Commander", "valeur": "Christian Ghisler"}
+{"entite": "Traefik", "valeur": "Emile Vauge"}
+{"entite": "tRPC", "valeur": "Alex Johansson"}
+{"entite": "Turborepo", "valeur": "Jared Palmer"}
+{"entite": "Tux Paint", "valeur": "Bill Kendrick"}
+{"entite": "Twine", "valeur": "Chris Klimas"}
+{"entite": "Typer", "valeur": "Sebastián Ramírez"}
+{"entite": "uBlock Origin", "valeur": "Raymond Hill"}
+{"entite": "Uvicorn", "valeur": "Tom Christie"}
+{"entite": "Vagrant", "valeur": "Mitchell Hashimoto"}
+{"entite": "Valtio", "valeur": "Daishi Kato"}
+{"entite": "Varnish", "valeur": "Poul-Henning Kamp"}
+{"entite": "Vim", "valeur": "Bram Moolenaar"}
+{"entite": "Vite", "valeur": "Evan You"}
+{"entite": "Vue.js", "valeur": "Evan You"}
+{"entite": "Webpack", "valeur": "Tobias Koppers"}
+{"entite": "WezTerm", "valeur": "Wez Furlong"}
+{"entite": "Wget", "valeur": "Hrvoje Nikšić"}
+{"entite": "Winamp", "valeur": "Justin Frankel"}
+{"entite": "Wings 3D", "valeur": "Björn Gustavsson"}
+{"entite": "WinRAR", "valeur": "Eugene Roshal"}
+{"entite": "WinSCP", "valeur": "Martin Přikryl"}
+{"entite": "WireGuard", "valeur": "Jason A. Donenfeld"}
+{"entite": "Wireshark", "valeur": "Gerald Combs"}
+{"entite": "youtube-dl", "valeur": "Ricardo Garcia"}
+{"entite": "Zod", "valeur": "Colin McDonnell"}
+{"entite": "zoxide", "valeur": "Ajeet D'Souza"}
+{"entite": "Zsh", "valeur": "Paul Falstad"}
+{"entite": "Zustand", "valeur": "Daishi Kato"}

@@ -1,0 +1,6 @@
+{"_relation": "base_azotee_type", "_categorie": "physique", "_source": "Modèle (Claude) — biologie moléculaire textbook curée (purine/pyrimidine ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "adénine", "valeur": "purine"}
+{"entite": "cytosine", "valeur": "pyrimidine"}
+{"entite": "guanine", "valeur": "purine"}
+{"entite": "thymine", "valeur": "pyrimidine"}
+{"entite": "uracile", "valeur": "pyrimidine"}

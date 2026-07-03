@@ -1,0 +1,40 @@
+{"_relation": "pays_marque_auto", "_categorie": "convention", "_source": "économie de référence (marque auto -> pays d'origine)", "_articles": true}
+{"entite": "alfa romeo", "valeur": "Italie"}
+{"entite": "aston martin", "valeur": "Royaume-Uni"}
+{"entite": "audi", "valeur": "Allemagne"}
+{"entite": "bentley", "valeur": "Royaume-Uni"}
+{"entite": "bmw", "valeur": "Allemagne"}
+{"entite": "bugatti", "valeur": "France"}
+{"entite": "cadillac", "valeur": "États-Unis"}
+{"entite": "chevrolet", "valeur": "États-Unis"}
+{"entite": "citroën", "valeur": "France"}
+{"entite": "ds", "valeur": "France"}
+{"entite": "ferrari", "valeur": "Italie"}
+{"entite": "fiat", "valeur": "Italie"}
+{"entite": "ford", "valeur": "États-Unis"}
+{"entite": "honda", "valeur": "Japon"}
+{"entite": "hyundai", "valeur": "Corée du Sud"}
+{"entite": "jaguar", "valeur": "Royaume-Uni"}
+{"entite": "jeep", "valeur": "États-Unis"}
+{"entite": "kia", "valeur": "Corée du Sud"}
+{"entite": "lamborghini", "valeur": "Italie"}
+{"entite": "land rover", "valeur": "Royaume-Uni"}
+{"entite": "maserati", "valeur": "Italie"}
+{"entite": "mazda", "valeur": "Japon"}
+{"entite": "mercedes", "valeur": "Allemagne"}
+{"entite": "mini", "valeur": "Royaume-Uni"}
+{"entite": "mitsubishi", "valeur": "Japon"}
+{"entite": "nissan", "valeur": "Japon"}
+{"entite": "opel", "valeur": "Allemagne"}
+{"entite": "peugeot", "valeur": "France"}
+{"entite": "porsche", "valeur": "Allemagne"}
+{"entite": "renault", "valeur": "France"}
+{"entite": "rolls-royce", "valeur": "Royaume-Uni"}
+{"entite": "seat", "valeur": "Espagne"}
+{"entite": "skoda", "valeur": "République tchèque"}
+{"entite": "subaru", "valeur": "Japon"}
+{"entite": "suzuki", "valeur": "Japon"}
+{"entite": "tesla", "valeur": "États-Unis"}
+{"entite": "toyota", "valeur": "Japon"}
+{"entite": "volkswagen", "valeur": "Allemagne"}
+{"entite": "volvo", "valeur": "Suède"}

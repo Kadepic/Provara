@@ -1,0 +1,37 @@
+{"_relation": "nature_hormone", "_categorie": "physique", "_source": "Modèle (Claude) — endocrinologie textbook curée (nature d'hormone ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "adrénaline", "valeur": "dérivée d'acide aminé"}
+{"entite": "aldostérone", "valeur": "stéroïde"}
+{"entite": "calcitonine", "valeur": "peptidique"}
+{"entite": "calcitriol", "valeur": "stéroïde"}
+{"entite": "cholécystokinine", "valeur": "peptidique"}
+{"entite": "corticostérone", "valeur": "stéroïde"}
+{"entite": "cortisol", "valeur": "stéroïde"}
+{"entite": "cortisone", "valeur": "stéroïde"}
+{"entite": "désoxycorticostérone", "valeur": "stéroïde"}
+{"entite": "DHEA", "valeur": "stéroïde"}
+{"entite": "dopamine", "valeur": "dérivée d'acide aminé"}
+{"entite": "érythropoïétine", "valeur": "peptidique"}
+{"entite": "gastrine", "valeur": "peptidique"}
+{"entite": "ghréline", "valeur": "peptidique"}
+{"entite": "glucagon", "valeur": "peptidique"}
+{"entite": "hormone antidiurétique", "valeur": "peptidique"}
+{"entite": "hormone de croissance", "valeur": "peptidique"}
+{"entite": "inhibine", "valeur": "peptidique"}
+{"entite": "insuline", "valeur": "peptidique"}
+{"entite": "leptine", "valeur": "peptidique"}
+{"entite": "mélatonine", "valeur": "dérivée d'acide aminé"}
+{"entite": "motiline", "valeur": "peptidique"}
+{"entite": "noradrénaline", "valeur": "dérivée d'acide aminé"}
+{"entite": "ocytocine", "valeur": "peptidique"}
+{"entite": "parathormone", "valeur": "peptidique"}
+{"entite": "progestérone", "valeur": "stéroïde"}
+{"entite": "prolactine", "valeur": "peptidique"}
+{"entite": "relaxine", "valeur": "peptidique"}
+{"entite": "sécrétine", "valeur": "peptidique"}
+{"entite": "œstradiol", "valeur": "stéroïde"}
+{"entite": "œstrogène", "valeur": "stéroïde"}
+{"entite": "testostérone", "valeur": "stéroïde"}
+{"entite": "thyréostimuline", "valeur": "peptidique"}
+{"entite": "thyroxine", "valeur": "dérivée d'acide aminé"}
+{"entite": "triiodothyronine", "valeur": "dérivée d'acide aminé"}
+{"entite": "vasopressine", "valeur": "peptidique"}

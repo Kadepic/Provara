@@ -1,0 +1,13 @@
+{"_relation": "raccourci_clavier", "_categorie": "convention", "_source": "conventions logicielles standard (action -> raccourci)", "_articles": true}
+{"entite": "annuler", "valeur": "Ctrl+Z"}
+{"entite": "coller", "valeur": "Ctrl+V"}
+{"entite": "copier", "valeur": "Ctrl+C"}
+{"entite": "couper", "valeur": "Ctrl+X"}
+{"entite": "enregistrer", "valeur": "Ctrl+S"}
+{"entite": "fermer la fenêtre", "valeur": "Alt+F4"}
+{"entite": "imprimer", "valeur": "Ctrl+P"}
+{"entite": "nouvel onglet", "valeur": "Ctrl+T"}
+{"entite": "ouvrir le gestionnaire des tâches", "valeur": "Ctrl+Alt+Suppr"}
+{"entite": "rechercher", "valeur": "Ctrl+F"}
+{"entite": "rétablir", "valeur": "Ctrl+Y"}
+{"entite": "tout sélectionner", "valeur": "Ctrl+A"}

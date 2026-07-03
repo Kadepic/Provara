@@ -1,0 +1,17 @@
+{"_relation": "nombre_ailes_insecte", "_categorie": "physique", "_source": "Modèle (Claude) — entomologie textbook curée (nombre d'ailes ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "4"}
+{"entite": "cigale", "valeur": "4"}
+{"entite": "coccinelle", "valeur": "4"}
+{"entite": "criquet", "valeur": "4"}
+{"entite": "frelon", "valeur": "4"}
+{"entite": "guêpe", "valeur": "4"}
+{"entite": "hanneton", "valeur": "4"}
+{"entite": "libellule", "valeur": "4"}
+{"entite": "mouche", "valeur": "2"}
+{"entite": "moustique", "valeur": "2"}
+{"entite": "papillon", "valeur": "4"}
+{"entite": "sauterelle", "valeur": "4"}
+{"entite": "scarabée", "valeur": "4"}
+{"entite": "syrphe", "valeur": "2"}
+{"entite": "taon", "valeur": "2"}
+{"entite": "tipule", "valeur": "2"}

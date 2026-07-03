@@ -1,0 +1,5 @@
+{"_relation": "definition_terme_pharmacologie", "_categorie": "physique", "_source": "Modèle (Claude) — pharmacologie textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "effet secondaire", "valeur": "effet non recherché d'un médicament"}
+{"entite": "excipient", "valeur": "substance sans effet thérapeutique"}
+{"entite": "posologie", "valeur": "dose et fréquence de prise d'un médicament"}
+{"entite": "principe actif", "valeur": "substance responsable de l'effet thérapeutique"}

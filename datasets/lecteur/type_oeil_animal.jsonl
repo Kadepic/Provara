@@ -1,0 +1,42 @@
+{"_relation": "type_oeil_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (œil composé/simple ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "composé"}
+{"entite": "aigle royal", "valeur": "simple"}
+{"entite": "araignée", "valeur": "simple"}
+{"entite": "calmar", "valeur": "simple"}
+{"entite": "chat", "valeur": "simple"}
+{"entite": "cheval", "valeur": "simple"}
+{"entite": "chien", "valeur": "simple"}
+{"entite": "cigale", "valeur": "composé"}
+{"entite": "coccinelle", "valeur": "composé"}
+{"entite": "crabe", "valeur": "composé"}
+{"entite": "crevette", "valeur": "composé"}
+{"entite": "criquet", "valeur": "composé"}
+{"entite": "crocodile du Nil", "valeur": "simple"}
+{"entite": "écrevisse", "valeur": "composé"}
+{"entite": "escargot", "valeur": "simple"}
+{"entite": "être humain", "valeur": "simple"}
+{"entite": "fourmi", "valeur": "composé"}
+{"entite": "frelon", "valeur": "composé"}
+{"entite": "grenouille", "valeur": "simple"}
+{"entite": "guêpe", "valeur": "composé"}
+{"entite": "hanneton", "valeur": "composé"}
+{"entite": "homard", "valeur": "composé"}
+{"entite": "krill", "valeur": "composé"}
+{"entite": "lézard", "valeur": "simple"}
+{"entite": "libellule", "valeur": "composé"}
+{"entite": "lion", "valeur": "simple"}
+{"entite": "mouche", "valeur": "composé"}
+{"entite": "moustique", "valeur": "composé"}
+{"entite": "papillon", "valeur": "composé"}
+{"entite": "pieuvre", "valeur": "simple"}
+{"entite": "poisson", "valeur": "simple"}
+{"entite": "requin", "valeur": "simple"}
+{"entite": "sauterelle", "valeur": "composé"}
+{"entite": "scarabée", "valeur": "composé"}
+{"entite": "scorpion", "valeur": "simple"}
+{"entite": "seiche", "valeur": "simple"}
+{"entite": "serpent", "valeur": "simple"}
+{"entite": "souris", "valeur": "simple"}
+{"entite": "tigre", "valeur": "simple"}
+{"entite": "tortue marine", "valeur": "simple"}
+{"entite": "vache", "valeur": "simple"}

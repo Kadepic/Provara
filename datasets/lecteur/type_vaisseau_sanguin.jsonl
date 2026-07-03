@@ -1,0 +1,39 @@
+{"_relation": "type_vaisseau_sanguin", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (type de vaisseau sanguin ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aorte", "valeur": "artère"}
+{"entite": "artère axillaire", "valeur": "artère"}
+{"entite": "artère brachiale", "valeur": "artère"}
+{"entite": "artère carotide", "valeur": "artère"}
+{"entite": "artère cérébrale", "valeur": "artère"}
+{"entite": "artère coronaire", "valeur": "artère"}
+{"entite": "artère fémorale", "valeur": "artère"}
+{"entite": "artère hépatique", "valeur": "artère"}
+{"entite": "artère iliaque", "valeur": "artère"}
+{"entite": "artère mésentérique", "valeur": "artère"}
+{"entite": "artère ophtalmique", "valeur": "artère"}
+{"entite": "artère poplitée", "valeur": "artère"}
+{"entite": "artère pulmonaire", "valeur": "artère"}
+{"entite": "artère radiale", "valeur": "artère"}
+{"entite": "artère rénale", "valeur": "artère"}
+{"entite": "artère sous-clavière", "valeur": "artère"}
+{"entite": "artère splénique", "valeur": "artère"}
+{"entite": "capillaire glomérulaire", "valeur": "capillaire"}
+{"entite": "capillaire pulmonaire", "valeur": "capillaire"}
+{"entite": "capillaire sanguin", "valeur": "capillaire"}
+{"entite": "tronc cœliaque", "valeur": "artère"}
+{"entite": "veine axillaire", "valeur": "veine"}
+{"entite": "veine azygos", "valeur": "veine"}
+{"entite": "veine basilique", "valeur": "veine"}
+{"entite": "veine cave", "valeur": "veine"}
+{"entite": "veine cave supérieure", "valeur": "veine"}
+{"entite": "veine céphalique", "valeur": "veine"}
+{"entite": "veine fémorale", "valeur": "veine"}
+{"entite": "veine iliaque", "valeur": "veine"}
+{"entite": "veine jugulaire", "valeur": "veine"}
+{"entite": "veine mésentérique", "valeur": "veine"}
+{"entite": "veine ombilicale", "valeur": "veine"}
+{"entite": "veine poplitée", "valeur": "veine"}
+{"entite": "veine porte", "valeur": "veine"}
+{"entite": "veine pulmonaire", "valeur": "veine"}
+{"entite": "veine rénale", "valeur": "veine"}
+{"entite": "veine saphène", "valeur": "veine"}
+{"entite": "veine sous-clavière", "valeur": "veine"}

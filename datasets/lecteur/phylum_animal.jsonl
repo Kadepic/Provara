@@ -1,0 +1,93 @@
+{"_relation": "phylum_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (embranchement/phylum ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "arthropodes"}
+{"entite": "agrion", "valeur": "arthropodes"}
+{"entite": "aigle royal", "valeur": "chordés"}
+{"entite": "anatife", "valeur": "arthropodes"}
+{"entite": "anémone de mer", "valeur": "cnidaires"}
+{"entite": "anolis", "valeur": "chordés"}
+{"entite": "aplysie", "valeur": "mollusques"}
+{"entite": "araignée", "valeur": "arthropodes"}
+{"entite": "arénicole", "valeur": "annélides"}
+{"entite": "argonaute", "valeur": "mollusques"}
+{"entite": "ascaris", "valeur": "nématodes"}
+{"entite": "baleine bleue", "valeur": "chordés"}
+{"entite": "bigorneau", "valeur": "mollusques"}
+{"entite": "calmar", "valeur": "mollusques"}
+{"entite": "capricorne", "valeur": "arthropodes"}
+{"entite": "cétoine", "valeur": "arthropodes"}
+{"entite": "cloporte", "valeur": "arthropodes"}
+{"entite": "coccinelle", "valeur": "arthropodes"}
+{"entite": "comatule", "valeur": "échinodermes"}
+{"entite": "concombre de mer", "valeur": "échinodermes"}
+{"entite": "coquille Saint-Jacques", "valeur": "mollusques"}
+{"entite": "corail", "valeur": "cnidaires"}
+{"entite": "crabe", "valeur": "arthropodes"}
+{"entite": "crevette", "valeur": "arthropodes"}
+{"entite": "crinoïde", "valeur": "échinodermes"}
+{"entite": "criquet", "valeur": "arthropodes"}
+{"entite": "crocodile du Nil", "valeur": "chordés"}
+{"entite": "daphnie", "valeur": "arthropodes"}
+{"entite": "dauphin", "valeur": "chordés"}
+{"entite": "douve du foie", "valeur": "plathelminthes"}
+{"entite": "écrevisse", "valeur": "arthropodes"}
+{"entite": "éléphant d'Afrique", "valeur": "chordés"}
+{"entite": "éponge de mer", "valeur": "spongiaires"}
+{"entite": "escargot", "valeur": "mollusques"}
+{"entite": "étoile de mer", "valeur": "échinodermes"}
+{"entite": "être humain", "valeur": "chordés"}
+{"entite": "fourmi", "valeur": "arthropodes"}
+{"entite": "gardon", "valeur": "chordés"}
+{"entite": "gendarme", "valeur": "arthropodes"}
+{"entite": "gorgone", "valeur": "cnidaires"}
+{"entite": "grand requin blanc", "valeur": "chordés"}
+{"entite": "grenouille rousse", "valeur": "chordés"}
+{"entite": "guêpe", "valeur": "arthropodes"}
+{"entite": "hippocampe", "valeur": "chordés"}
+{"entite": "holothurie", "valeur": "échinodermes"}
+{"entite": "homard", "valeur": "arthropodes"}
+{"entite": "huître", "valeur": "mollusques"}
+{"entite": "hydre", "valeur": "cnidaires"}
+{"entite": "krill", "valeur": "arthropodes"}
+{"entite": "lamantin", "valeur": "chordés"}
+{"entite": "langouste", "valeur": "arthropodes"}
+{"entite": "libellule", "valeur": "arthropodes"}
+{"entite": "limace", "valeur": "mollusques"}
+{"entite": "lion", "valeur": "chordés"}
+{"entite": "manchot empereur", "valeur": "chordés"}
+{"entite": "mante religieuse", "valeur": "arthropodes"}
+{"entite": "méduse", "valeur": "cnidaires"}
+{"entite": "mille-pattes", "valeur": "arthropodes"}
+{"entite": "mouche", "valeur": "arthropodes"}
+{"entite": "moule", "valeur": "mollusques"}
+{"entite": "narval", "valeur": "chordés"}
+{"entite": "nautile", "valeur": "mollusques"}
+{"entite": "néréis", "valeur": "annélides"}
+{"entite": "nudibranche", "valeur": "mollusques"}
+{"entite": "ophiure", "valeur": "échinodermes"}
+{"entite": "opilion", "valeur": "arthropodes"}
+{"entite": "oursin", "valeur": "échinodermes"}
+{"entite": "oxyure", "valeur": "nématodes"}
+{"entite": "palourde", "valeur": "mollusques"}
+{"entite": "papillon", "valeur": "arthropodes"}
+{"entite": "pélican", "valeur": "chordés"}
+{"entite": "physalie", "valeur": "cnidaires"}
+{"entite": "pieuvre", "valeur": "mollusques"}
+{"entite": "planaire", "valeur": "plathelminthes"}
+{"entite": "praire", "valeur": "mollusques"}
+{"entite": "python", "valeur": "chordés"}
+{"entite": "raie manta", "valeur": "chordés"}
+{"entite": "salamandre", "valeur": "chordés"}
+{"entite": "sangsue", "valeur": "annélides"}
+{"entite": "scarabée", "valeur": "arthropodes"}
+{"entite": "scolopendre", "valeur": "arthropodes"}
+{"entite": "scorpion", "valeur": "arthropodes"}
+{"entite": "seiche", "valeur": "mollusques"}
+{"entite": "serpent", "valeur": "chordés"}
+{"entite": "sole", "valeur": "chordés"}
+{"entite": "telline", "valeur": "mollusques"}
+{"entite": "ténia", "valeur": "plathelminthes"}
+{"entite": "thon rouge", "valeur": "chordés"}
+{"entite": "tique", "valeur": "arthropodes"}
+{"entite": "tortue marine", "valeur": "chordés"}
+{"entite": "tubifex", "valeur": "annélides"}
+{"entite": "ver de terre", "valeur": "annélides"}

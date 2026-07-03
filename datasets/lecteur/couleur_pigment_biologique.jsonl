@@ -1,0 +1,20 @@
+{"_relation": "couleur_pigment_biologique", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (pigment -> couleur ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "astaxanthine", "valeur": "rose"}
+{"entite": "bétalaïne", "valeur": "rouge"}
+{"entite": "bilirubine", "valeur": "jaune"}
+{"entite": "biliverdine", "valeur": "vert"}
+{"entite": "carotène", "valeur": "orange"}
+{"entite": "chlorophylle", "valeur": "vert"}
+{"entite": "chlorophylle b", "valeur": "vert"}
+{"entite": "eumélanine", "valeur": "noir"}
+{"entite": "fucoxanthine", "valeur": "brun"}
+{"entite": "hémocyanine", "valeur": "bleu"}
+{"entite": "hémoglobine", "valeur": "rouge"}
+{"entite": "lutéine", "valeur": "jaune"}
+{"entite": "lycopène", "valeur": "rouge"}
+{"entite": "mélanine", "valeur": "noir"}
+{"entite": "phycocyanine", "valeur": "bleu"}
+{"entite": "phycoérythrine", "valeur": "rouge"}
+{"entite": "urobiline", "valeur": "jaune"}
+{"entite": "xanthophylle", "valeur": "jaune"}
+{"entite": "zéaxanthine", "valeur": "jaune"}

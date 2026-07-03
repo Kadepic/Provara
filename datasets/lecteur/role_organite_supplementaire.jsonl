@@ -1,0 +1,5 @@
+{"_relation": "role_organite_supplementaire", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (organite -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "centriole", "valeur": "organisation de la division cellulaire"}
+{"entite": "cytosquelette", "valeur": "soutien et forme de la cellule"}
+{"entite": "réticulum endoplasmique", "valeur": "synthèse et transport des molécules"}
+{"entite": "vacuole", "valeur": "stockage et maintien de la turgescence"}

@@ -1,0 +1,2022 @@
+{"_relation": "continent_peninsule", "_categorie": "physique", "_source": "Wikidata/QLever — continent_peninsule P30, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Abenante", "valeur": "Antarctique"}
+{"entite": "Ablation Point", "valeur": "Antarctique"}
+{"entite": "Abovedada", "valeur": "Antarctique"}
+{"entite": "Abrupt Point", "valeur": "Antarctique"}
+{"entite": "Aburto", "valeur": "Antarctique"}
+{"entite": "Access Point", "valeur": "Antarctique"}
+{"entite": "Ackley Point", "valeur": "Antarctique"}
+{"entite": "Aconcagua", "valeur": "Antarctique"}
+{"entite": "Acuña", "valeur": "Antarctique"}
+{"entite": "Agat Point", "valeur": "Antarctique"}
+{"entite": "Ageno", "valeur": "Antarctique"}
+{"entite": "Agglomerate Point", "valeur": "Antarctique"}
+{"entite": "Aglen Point", "valeur": "Antarctique"}
+{"entite": "Agneta", "valeur": "Antarctique"}
+{"entite": "Agrimbau", "valeur": "Antarctique"}
+{"entite": "Aguayo", "valeur": "Antarctique"}
+{"entite": "Aguda Point", "valeur": "Antarctique"}
+{"entite": "Agüedo Point", "valeur": "Antarctique"}
+{"entite": "Agüero Point", "valeur": "Antarctique"}
+{"entite": "Akebono Point", "valeur": "Antarctique"}
+{"entite": "Akra Peninsula", "valeur": "Antarctique"}
+{"entite": "Albatros Point", "valeur": "Antarctique"}
+{"entite": "Albena Peninsula", "valeur": "Antarctique"}
+{"entite": "Albinos", "valeur": "Antarctique"}
+{"entite": "Albornoz", "valeur": "Antarctique"}
+{"entite": "Alderete", "valeur": "Antarctique"}
+{"entite": "Alegre", "valeur": "Antarctique"}
+{"entite": "Alejandro Álvarez", "valeur": "Antarctique"}
+{"entite": "Aleko Rock", "valeur": "Antarctique"}
+{"entite": "Aleut", "valeur": "Asie"}
+{"entite": "Alexandra", "valeur": "Antarctique"}
+{"entite": "Alfatar Peninsula", "valeur": "Antarctique"}
+{"entite": "Almonacid", "valeur": "Antarctique"}
+{"entite": "Almond Point", "valeur": "Antarctique"}
+{"entite": "Altamirano", "valeur": "Antarctique"}
+{"entite": "Alvarez", "valeur": "Antarctique"}
+{"entite": "Alvear", "valeur": "Antarctique"}
+{"entite": "Amadok Point", "valeur": "Antarctique"}
+{"entite": "América", "valeur": "Antarctique"}
+{"entite": "Amoroso", "valeur": "Antarctique"}
+{"entite": "Amphibolite Point", "valeur": "Antarctique"}
+{"entite": "Amundsen Arm", "valeur": "Antarctique"}
+{"entite": "Anadon", "valeur": "Antarctique"}
+{"entite": "Anatolie", "valeur": "Asie"}
+{"entite": "Anchorena", "valeur": "Antarctique"}
+{"entite": "Anderson Peninsula", "valeur": "Antarctique"}
+{"entite": "Andreassen Point", "valeur": "Antarctique"}
+{"entite": "Andressen", "valeur": "Antarctique"}
+{"entite": "Andrews Point", "valeur": "Antarctique"}
+{"entite": "Andrus Point", "valeur": "Antarctique"}
+{"entite": "Anelio", "valeur": "Antarctique"}
+{"entite": "Angamos Promontory", "valeur": "Antarctique"}
+{"entite": "Angot Point", "valeur": "Antarctique"}
+{"entite": "Appleby", "valeur": "Antarctique"}
+{"entite": "Aprilov Point", "valeur": "Antarctique"}
+{"entite": "Aramayo", "valeur": "Antarctique"}
+{"entite": "Araos", "valeur": "Antarctique"}
+{"entite": "Archar Peninsula", "valeur": "Antarctique"}
+{"entite": "Archer Point", "valeur": "Antarctique"}
+{"entite": "Archibald Point", "valeur": "Antarctique"}
+{"entite": "Argo Point", "valeur": "Antarctique"}
+{"entite": "Armour Peninsula", "valeur": "Antarctique"}
+{"entite": "Arrowsmith Peninsula", "valeur": "Antarctique"}
+{"entite": "Arroyo Point", "valeur": "Antarctique"}
+{"entite": "Ash Point", "valeur": "Antarctique"}
+{"entite": "Asie mineure", "valeur": "Asie"}
+{"entite": "Asimutodden", "valeur": "Antarctique"}
+{"entite": "ASTRO Point", "valeur": "Antarctique"}
+{"entite": "Atrevida", "valeur": "Antarctique"}
+{"entite": "Augen Bluffs", "valeur": "Antarctique"}
+{"entite": "Auster Point", "valeur": "Antarctique"}
+{"entite": "Austhovde Headland", "valeur": "Antarctique"}
+{"entite": "Austnes Peninsula", "valeur": "Antarctique"}
+{"entite": "Austpynten", "valeur": "Antarctique"}
+{"entite": "Aviatorov Peninsula", "valeur": "Antarctique"}
+{"entite": "Avitohol Point", "valeur": "Antarctique"}
+{"entite": "Awl Point", "valeur": "Antarctique"}
+{"entite": "Aytos Point", "valeur": "Antarctique"}
+{"entite": "Azcuénaga", "valeur": "Antarctique"}
+{"entite": "Azcurra", "valeur": "Antarctique"}
+{"entite": "Azufre Point", "valeur": "Antarctique"}
+{"entite": "Azurduy", "valeur": "Antarctique"}
+{"entite": "Bacacay", "valeur": "Antarctique"}
+{"entite": "Bachstrom Point", "valeur": "Antarctique"}
+{"entite": "Bagliani Point", "valeur": "Antarctique"}
+{"entite": "Bagnold Point", "valeur": "Antarctique"}
+{"entite": "Bahamonde Point", "valeur": "Antarctique"}
+{"entite": "Bajada", "valeur": "Antarctique"}
+{"entite": "Bajos", "valeur": "Antarctique"}
+{"entite": "Båkeneset Headland", "valeur": "Antarctique"}
+{"entite": "Baker Point", "valeur": "Antarctique"}
+{"entite": "Balcón", "valeur": "Antarctique"}
+{"entite": "Bald Head", "valeur": "Antarctique"}
+{"entite": "Balder Point", "valeur": "Antarctique"}
+{"entite": "Baldwin Point", "valeur": "Antarctique"}
+{"entite": "Balija Point", "valeur": "Antarctique"}
+{"entite": "Balin Point", "valeur": "Antarctique"}
+{"entite": "Balkans", "valeur": "Europe"}
+{"entite": "Ball Peninsula", "valeur": "Antarctique"}
+{"entite": "Ballena", "valeur": "Antarctique"}
+{"entite": "Ballester Point", "valeur": "Antarctique"}
+{"entite": "Ballvé", "valeur": "Antarctique"}
+{"entite": "Balvan Point", "valeur": "Antarctique"}
+{"entite": "Bandal Cape", "valeur": "Antarctique"}
+{"entite": "Banshan Jiao", "valeur": "Antarctique"}
+{"entite": "Baoshi Jiao", "valeur": "Antarctique"}
+{"entite": "Barison Peninsula", "valeur": "Antarctique"}
+{"entite": "Barnard Point", "valeur": "Antarctique"}
+{"entite": "Barrel Point", "valeur": "Antarctique"}
+{"entite": "Barrier Cache", "valeur": "Antarctique"}
+{"entite": "Barros", "valeur": "Antarctique"}
+{"entite": "Barton Peninsula", "valeur": "Antarctique"}
+{"entite": "Basalt Point", "valeur": "Antarctique"}
+{"entite": "Bascopé", "valeur": "Antarctique"}
+{"entite": "Batak Point", "valeur": "Antarctique"}
+{"entite": "Bates Point", "valeur": "Antarctique"}
+{"entite": "Battke Point", "valeur": "Antarctique"}
+{"entite": "Battle Point", "valeur": "Antarctique"}
+{"entite": "Batuliya Point", "valeur": "Antarctique"}
+{"entite": "Bay Point", "valeur": "Antarctique"}
+{"entite": "Baykal Point", "valeur": "Antarctique"}
+{"entite": "Beacon Head", "valeur": "Antarctique"}
+{"entite": "Bebresh Point", "valeur": "Antarctique"}
+{"entite": "Becco", "valeur": "Antarctique"}
+{"entite": "Becker Point", "valeur": "Antarctique"}
+{"entite": "Begg Point", "valeur": "Antarctique"}
+{"entite": "Begichev", "valeur": "Antarctique"}
+{"entite": "Belemnite Point", "valeur": "Antarctique"}
+{"entite": "Belitsa Peninsula", "valeur": "Antarctique"}
+{"entite": "Bell Point", "valeur": "Antarctique"}
+{"entite": "Belousov Point", "valeur": "Antarctique"}
+{"entite": "Beltrán", "valeur": "Antarctique"}
+{"entite": "Belyj", "valeur": "Antarctique"}
+{"entite": "Beneden Head", "valeur": "Antarctique"}
+{"entite": "Benedict Point", "valeur": "Antarctique"}
+{"entite": "Benítez", "valeur": "Antarctique"}
+{"entite": "Benlein Point", "valeur": "Antarctique"}
+{"entite": "Benson Point", "valeur": "Antarctique"}
+{"entite": "Bermel Peninsula", "valeur": "Antarctique"}
+{"entite": "Bernacchi Head", "valeur": "Antarctique"}
+{"entite": "Berntsen Point", "valeur": "Antarctique"}
+{"entite": "Berón", "valeur": "Antarctique"}
+{"entite": "Beron Point", "valeur": "Antarctique"}
+{"entite": "Berr Point", "valeur": "Antarctique"}
+{"entite": "Berry Head", "valeur": "Antarctique"}
+{"entite": "Beruti", "valeur": "Antarctique"}
+{"entite": "Besnard Point", "valeur": "Antarctique"}
+{"entite": "Beyl Head", "valeur": "Antarctique"}
+{"entite": "Bezmer Point", "valeur": "Antarctique"}
+{"entite": "Bibby Point", "valeur": "Antarctique"}
+{"entite": "Bier Point", "valeur": "Antarctique"}
+{"entite": "Bieringmulen", "valeur": "Antarctique"}
+{"entite": "Bills Point", "valeur": "Antarctique"}
+{"entite": "Bilyar Point", "valeur": "Antarctique"}
+{"entite": "Binkos Point", "valeur": "Antarctique"}
+{"entite": "Bird Peninsula", "valeur": "Antarctique"}
+{"entite": "Birdwell Point", "valeur": "Antarctique"}
+{"entite": "Birthday Point", "valeur": "Antarctique"}
+{"entite": "Biscoe Point", "valeur": "Antarctique"}
+{"entite": "Biser Point", "valeur": "Antarctique"}
+{"entite": "Bishop Peninsula", "valeur": "Océanie"}
+{"entite": "Biyu Jiao", "valeur": "Antarctique"}
+{"entite": "Bjalokoza", "valeur": "Antarctique"}
+{"entite": "Bjerkø Peninsula", "valeur": "Antarctique"}
+{"entite": "Black Head", "valeur": "Antarctique"}
+{"entite": "Blackface Point", "valeur": "Antarctique"}
+{"entite": "Blackrock Head", "valeur": "Antarctique"}
+{"entite": "Blagoevgrad Peninsula", "valeur": "Antarctique"}
+{"entite": "Blakeney Point", "valeur": "Antarctique"}
+{"entite": "Blanche Point", "valeur": "Antarctique"}
+{"entite": "Block Point", "valeur": "Antarctique"}
+{"entite": "Bodman Point", "valeur": "Antarctique"}
+{"entite": "Boeritsa Point", "valeur": "Antarctique"}
+{"entite": "Bogepynten", "valeur": "Antarctique"}
+{"entite": "Boil Point", "valeur": "Antarctique"}
+{"entite": "Bolt Head", "valeur": "Europe"}
+{"entite": "Bond Point", "valeur": "Antarctique"}
+{"entite": "Bone Point", "valeur": "Antarctique"}
+{"entite": "Bonete", "valeur": "Antarctique"}
+{"entite": "Boney Point", "valeur": "Antarctique"}
+{"entite": "Bongrain Point", "valeur": "Antarctique"}
+{"entite": "Bonnier Point", "valeur": "Antarctique"}
+{"entite": "Booth Peninsula", "valeur": "Antarctique"}
+{"entite": "Boreal", "valeur": "Antarctique"}
+{"entite": "Boreal Point", "valeur": "Antarctique"}
+{"entite": "Borge Point", "valeur": "Antarctique"}
+{"entite": "Boruta Point", "valeur": "Antarctique"}
+{"entite": "Botany Point", "valeur": "Antarctique"}
+{"entite": "Botev Point", "valeur": "Antarctique"}
+{"entite": "Botnneset Peninsula", "valeur": "Antarctique"}
+{"entite": "Bottrill Head", "valeur": "Antarctique"}
+{"entite": "Boulder Point", "valeur": "Antarctique"}
+{"entite": "Bov Point", "valeur": "Antarctique"}
+{"entite": "Bowman Peninsula", "valeur": "Antarctique"}
+{"entite": "Boy Point", "valeur": "Antarctique"}
+{"entite": "Boyd Head", "valeur": "Antarctique"}
+{"entite": "Boynik Point", "valeur": "Antarctique"}
+{"entite": "Brabazon Point", "valeur": "Antarctique"}
+{"entite": "Bradley", "valeur": "Antarctique"}
+{"entite": "Braillard Point", "valeur": "Antarctique"}
+{"entite": "Brattebotthalsen", "valeur": "Antarctique"}
+{"entite": "Brattnevet", "valeur": "Antarctique"}
+{"entite": "Braun Point", "valeur": "Antarctique"}
+{"entite": "Bregare Point", "valeur": "Antarctique"}
+{"entite": "Breidnes Peninsula", "valeur": "Antarctique"}
+{"entite": "Breiodden", "valeur": "Antarctique"}
+{"entite": "Briggs Peninsula", "valeur": "Antarctique"}
+{"entite": "Briggs Point", "valeur": "Antarctique"}
+{"entite": "British Point", "valeur": "Antarctique"}
+{"entite": "Broknes", "valeur": "Antarctique"}
+{"entite": "Brookman Point", "valeur": "Antarctique"}
+{"entite": "Brooks Point", "valeur": "Antarctique"}
+{"entite": "Brouardel Point", "valeur": "Antarctique"}
+{"entite": "Browning Peninsula", "valeur": "Antarctique"}
+{"entite": "Browns", "valeur": "Antarctique"}
+{"entite": "Bruce Point", "valeur": "Antarctique"}
+{"entite": "Brusen Point", "valeur": "Antarctique"}
+{"entite": "Buchanan Point", "valeur": "Antarctique"}
+{"entite": "Buell Peninsula", "valeur": "Antarctique"}
+{"entite": "Bulnes", "valeur": "Antarctique"}
+{"entite": "Buneva Point", "valeur": "Antarctique"}
+{"entite": "Bunster", "valeur": "Antarctique"}
+{"entite": "Burgas Peninsula", "valeur": "Antarctique"}
+{"entite": "Buri Cape", "valeur": "Antarctique"}
+{"entite": "Burney Point", "valeur": "Antarctique"}
+{"entite": "Burton Point", "valeur": "Antarctique"}
+{"entite": "Burya Point", "valeur": "Antarctique"}
+{"entite": "Butrointsi Point", "valeur": "Antarctique"}
+{"entite": "Butter Point", "valeur": "Antarctique"}
+{"entite": "Byaga Point", "valeur": "Antarctique"}
+{"entite": "Byers Peninsula", "valeur": "Antarctique"}
+{"entite": "Byewater Point", "valeur": "Antarctique"}
+{"entite": "Byrd Head", "valeur": "Antarctique"}
+{"entite": "Cabassa", "valeur": "Antarctique"}
+{"entite": "Cabo Conscripto Cerisola", "valeur": "Antarctique"}
+{"entite": "Cabo del Medio", "valeur": "Antarctique"}
+{"entite": "Cabo Depósito", "valeur": "Antarctique"}
+{"entite": "Cabo Gran Roca", "valeur": "Antarctique"}
+{"entite": "Cabo Ledo", "valeur": "Afrique"}
+{"entite": "Cabo Light", "valeur": "Antarctique"}
+{"entite": "Cabo Winter", "valeur": "Antarctique"}
+{"entite": "Cachorros", "valeur": "Antarctique"}
+{"entite": "Cadena", "valeur": "Antarctique"}
+{"entite": "Cadle Monolith", "valeur": "Antarctique"}
+{"entite": "Café", "valeur": "Antarctique"}
+{"entite": "Café Point", "valeur": "Antarctique"}
+{"entite": "Calderón", "valeur": "Antarctique"}
+{"entite": "Calf Point", "valeur": "Antarctique"}
+{"entite": "Camp Point", "valeur": "Antarctique"}
+{"entite": "Campbell Head", "valeur": "Antarctique"}
+{"entite": "Campichuelo", "valeur": "Antarctique"}
+{"entite": "Canisteo Peninsula", "valeur": "Antarctique"}
+{"entite": "Cañón Point", "valeur": "Antarctique"}
+{"entite": "Canso", "valeur": "Antarctique"}
+{"entite": "Canty Point", "valeur": "Antarctique"}
+{"entite": "cap Adams", "valeur": "Antarctique"}
+{"entite": "cap Adare", "valeur": "Antarctique"}
+{"entite": "cap Alava", "valeur": "Amérique du Nord"}
+{"entite": "cap Albert-de-Monaco", "valeur": "Antarctique"}
+{"entite": "cap Albert Lancaster", "valeur": "Antarctique"}
+{"entite": "cap André-Prud'homme", "valeur": "Antarctique"}
+{"entite": "Cap Andreas", "valeur": "Antarctique"}
+{"entite": "cap Anna", "valeur": "Antarctique"}
+{"entite": "cap Armitage", "valeur": "Antarctique"}
+{"entite": "cap Barne", "valeur": "Antarctique"}
+{"entite": "cap Bird", "valeur": "Antarctique"}
+{"entite": "cap Bruce", "valeur": "Antarctique"}
+{"entite": "cap Burks", "valeur": "Antarctique"}
+{"entite": "cap Calmette", "valeur": "Antarctique"}
+{"entite": "cap Chavanne", "valeur": "Antarctique"}
+{"entite": "cap Colbeck", "valeur": "Antarctique"}
+{"entite": "Cap Conway", "valeur": "Antarctique"}
+{"entite": "cap Crozier", "valeur": "Antarctique"}
+{"entite": "cap Daniell", "valeur": "Antarctique"}
+{"entite": "cap Dart", "valeur": "Antarctique"}
+{"entite": "cap Denison", "valeur": "Antarctique"}
+{"entite": "Cap des Barres", "valeur": "Antarctique"}
+{"entite": "Cap des Éléphants", "valeur": "Antarctique"}
+{"entite": "Cap des Entailles", "valeur": "Antarctique"}
+{"entite": "cap des Trois-Pointes", "valeur": "Afrique"}
+{"entite": "cap Ducorps", "valeur": "Antarctique"}
+{"entite": "cap Eivind Astrup", "valeur": "Antarctique"}
+{"entite": "cap Evans", "valeur": "Antarctique"}
+{"entite": "cap Evensen", "valeur": "Antarctique"}
+{"entite": "cap Fanning", "valeur": "Antarctique"}
+{"entite": "cap Froward", "valeur": "Amérique du Sud"}
+{"entite": "cap Geology", "valeur": "Antarctique"}
+{"entite": "cap Gray", "valeur": "Antarctique"}
+{"entite": "cap Hallett", "valeur": "Antarctique"}
+{"entite": "cap Hattersley-Smith", "valeur": "Antarctique"}
+{"entite": "cap Herlacher", "valeur": "Antarctique"}
+{"entite": "cap Hodgson", "valeur": "Antarctique"}
+{"entite": "cap Idokopas", "valeur": "Europe"}
+{"entite": "cap Jacobsen", "valeur": "Antarctique"}
+{"entite": "cap Jaune", "valeur": "Afrique"}
+{"entite": "cap Kamenjak", "valeur": "Europe"}
+{"entite": "Cap Lamas", "valeur": "Antarctique"}
+{"entite": "cap Lamb", "valeur": "Antarctique"}
+{"entite": "cap Legoupil", "valeur": "Antarctique"}
+{"entite": "cap MacDonald", "valeur": "Antarctique"}
+{"entite": "cap Mawson", "valeur": "Antarctique"}
+{"entite": "cap Murray", "valeur": "Antarctique"}
+{"entite": "cap Nelson", "valeur": "Océanie"}
+{"entite": "cap Pépin", "valeur": "Antarctique"}
+{"entite": "cap Poinsett", "valeur": "Antarctique"}
+{"entite": "cap Roux", "valeur": "Antarctique"}
+{"entite": "cap Royds", "valeur": "Antarctique"}
+{"entite": "cap Tennyson", "valeur": "Antarctique"}
+{"entite": "cap Tuxen", "valeur": "Antarctique"}
+{"entite": "cap Waite", "valeur": "Antarctique"}
+{"entite": "cap Washington", "valeur": "Antarctique"}
+{"entite": "cap Williams", "valeur": "Antarctique"}
+{"entite": "Cape Adriasola", "valeur": "Antarctique"}
+{"entite": "Cape Agassiz", "valeur": "Antarctique"}
+{"entite": "Cape Akarui", "valeur": "Antarctique"}
+{"entite": "Cape Alexander", "valeur": "Antarctique"}
+{"entite": "Cape Allen", "valeur": "Antarctique"}
+{"entite": "Cape Anderson", "valeur": "Antarctique"}
+{"entite": "Cape Andreyev", "valeur": "Antarctique"}
+{"entite": "Cape Ann", "valeur": "Antarctique"}
+{"entite": "Cape Annawan", "valeur": "Antarctique"}
+{"entite": "Cape Anne", "valeur": "Antarctique"}
+{"entite": "Cape Archer", "valeur": "Antarctique"}
+{"entite": "Cape Astafyeva", "valeur": "Asie"}
+{"entite": "Cape Bage", "valeur": "Antarctique"}
+{"entite": "Cape Barlas", "valeur": "Antarctique"}
+{"entite": "Cape Barrow", "valeur": "Antarctique"}
+{"entite": "Cape Batterbee", "valeur": "Antarctique"}
+{"entite": "Cape Bayle", "valeur": "Antarctique"}
+{"entite": "Cape Beale", "valeur": "Antarctique"}
+{"entite": "Cape Beck", "valeur": "Antarctique"}
+{"entite": "Cape Bellue", "valeur": "Antarctique"}
+{"entite": "Cape Belsham", "valeur": "Antarctique"}
+{"entite": "Cape Bennett", "valeur": "Antarctique"}
+{"entite": "Cape Bernacchi", "valeur": "Antarctique"}
+{"entite": "Cape Berteaux", "valeur": "Antarctique"}
+{"entite": "Cape Betbeder", "valeur": "Antarctique"}
+{"entite": "Cape Bickerton", "valeur": "Antarctique"}
+{"entite": "Cape Bienvenue", "valeur": "Antarctique"}
+{"entite": "Cape Birchall", "valeur": "Antarctique"}
+{"entite": "Cape Blake", "valeur": "Antarctique"}
+{"entite": "Cape Bliznetsov", "valeur": "Antarctique"}
+{"entite": "Cape Boggs", "valeur": "Antarctique"}
+{"entite": "Cape Boothby", "valeur": "Antarctique"}
+{"entite": "Cape Borley", "valeur": "Antarctique"}
+{"entite": "Cape Bowles", "valeur": "Antarctique"}
+{"entite": "Cape Braathen", "valeur": "Antarctique"}
+{"entite": "Cape Broms", "valeur": "Antarctique"}
+{"entite": "Cape Brooks", "valeur": "Antarctique"}
+{"entite": "Cape Brown", "valeur": "Antarctique"}
+{"entite": "Cape Bryant", "valeur": "Antarctique"}
+{"entite": "Cape Burd", "valeur": "Antarctique"}
+{"entite": "Cape Buromskiy", "valeur": "Antarctique"}
+{"entite": "Cape Byrd", "valeur": "Antarctique"}
+{"entite": "Cape Canwe", "valeur": "Antarctique"}
+{"entite": "Cape Carr", "valeur": "Antarctique"}
+{"entite": "Cape Casey", "valeur": "Antarctique"}
+{"entite": "Cape Cesney", "valeur": "Antarctique"}
+{"entite": "Cape Charcot", "valeur": "Antarctique"}
+{"entite": "Cape Cheetham", "valeur": "Antarctique"}
+{"entite": "Cape Chocolate", "valeur": "Antarctique"}
+{"entite": "Cape Christmas", "valeur": "Antarctique"}
+{"entite": "Cape Church", "valeur": "Antarctique"}
+{"entite": "Cape Cloos", "valeur": "Antarctique"}
+{"entite": "Cape Close", "valeur": "Antarctique"}
+{"entite": "Cape Cockburn", "valeur": "Antarctique"}
+{"entite": "Cape Collier", "valeur": "Antarctique"}
+{"entite": "Cape Confusion", "valeur": "Antarctique"}
+{"entite": "Cape Cornely", "valeur": "Antarctique"}
+{"entite": "Cape Cornish", "valeur": "Antarctique"}
+{"entite": "Cape Cox", "valeur": "Antarctique"}
+{"entite": "Cape Crossfire", "valeur": "Antarctique"}
+{"entite": "Cape Dalton", "valeur": "Antarctique"}
+{"entite": "Cape Daly", "valeur": "Antarctique"}
+{"entite": "Cape Danger", "valeur": "Antarctique"}
+{"entite": "Cape Darlington", "valeur": "Antarctique"}
+{"entite": "Cape Darnley", "valeur": "Antarctique"}
+{"entite": "Cape Davidson", "valeur": "Antarctique"}
+{"entite": "Cape Davies", "valeur": "Antarctique"}
+{"entite": "Cape Davis", "valeur": "Antarctique"}
+{"entite": "Cape Davydov", "valeur": "Antarctique"}
+{"entite": "Cape Day", "valeur": "Antarctique"}
+{"entite": "Cape Dayman", "valeur": "Antarctique"}
+{"entite": "Cape De la Motte", "valeur": "Antarctique"}
+{"entite": "Cape Deacon", "valeur": "Antarctique"}
+{"entite": "Cape Découverte", "valeur": "Antarctique"}
+{"entite": "Cape Disappointment", "valeur": "Antarctique"}
+{"entite": "Cape Dmitriev", "valeur": "Antarctique"}
+{"entite": "Cape Douglas", "valeur": "Antarctique"}
+{"entite": "Cape Dovers", "valeur": "Antarctique"}
+{"entite": "Cape Drakon", "valeur": "Antarctique"}
+{"entite": "Cape Dubouzet", "valeur": "Antarctique"}
+{"entite": "Cape Dumoutier", "valeur": "Antarctique"}
+{"entite": "Cape Dundas", "valeur": "Antarctique"}
+{"entite": "Cape Elliott", "valeur": "Antarctique"}
+{"entite": "Cape Ellsworth", "valeur": "Antarctique"}
+{"entite": "Cape Errera", "valeur": "Antarctique"}
+{"entite": "Cape Eva", "valeur": "Antarctique"}
+{"entite": "Cape Fairweather", "valeur": "Antarctique"}
+{"entite": "Cape Faraday", "valeur": "Antarctique"}
+{"entite": "Cape Felt", "valeur": "Antarctique"}
+{"entite": "Cape Filchner", "valeur": "Antarctique"}
+{"entite": "Cape Fiske", "valeur": "Antarctique"}
+{"entite": "Cape Fletcher", "valeur": "Antarctique"}
+{"entite": "Cape Flying Fish", "valeur": "Antarctique"}
+{"entite": "Cape Folger", "valeur": "Antarctique"}
+{"entite": "Cape Fortress", "valeur": "Antarctique"}
+{"entite": "Cape Foster", "valeur": "Antarctique"}
+{"entite": "Cape Fothergill", "valeur": "Antarctique"}
+{"entite": "Cape Framnes", "valeur": "Antarctique"}
+{"entite": "Cape Frances", "valeur": "Antarctique"}
+{"entite": "Cape Freeman", "valeur": "Antarctique"}
+{"entite": "Cape Freshfield", "valeur": "Antarctique"}
+{"entite": "Cape Gage", "valeur": "Antarctique"}
+{"entite": "Cape Garcia", "valeur": "Antarctique"}
+{"entite": "Cape Garrod", "valeur": "Antarctique"}
+{"entite": "Cape Garry", "valeur": "Antarctique"}
+{"entite": "Cape Gates", "valeur": "Antarctique"}
+{"entite": "Cape Geddes", "valeur": "Antarctique"}
+{"entite": "Cape Géodésie", "valeur": "Antarctique"}
+{"entite": "Cape Gerlache", "valeur": "Antarctique"}
+{"entite": "Cape Goldie", "valeur": "Antarctique"}
+{"entite": "Cape Goldschmidt", "valeur": "Antarctique"}
+{"entite": "Cape Goodenough", "valeur": "Antarctique"}
+{"entite": "Cape Gordon", "valeur": "Antarctique"}
+{"entite": "Cape Gotley", "valeur": "Antarctique"}
+{"entite": "Cape Granat", "valeur": "Antarctique"}
+{"entite": "Cape Green", "valeur": "Antarctique"}
+{"entite": "Cape Grönland", "valeur": "Antarctique"}
+{"entite": "Cape Hammersly", "valeur": "Antarctique"}
+{"entite": "Cape Hansen", "valeur": "Antarctique"}
+{"entite": "Cape Harrisson", "valeur": "Antarctique"}
+{"entite": "Cape Hartree", "valeur": "Antarctique"}
+{"entite": "Cape Healy", "valeur": "Antarctique"}
+{"entite": "Cape Henderson", "valeur": "Antarctique"}
+{"entite": "Cape Herdman", "valeur": "Antarctique"}
+{"entite": "Cape Hickey", "valeur": "Antarctique"}
+{"entite": "Cape Hinks", "valeur": "Antarctique"}
+{"entite": "Cape Hinode", "valeur": "Antarctique"}
+{"entite": "Cape Hoadley", "valeur": "Antarctique"}
+{"entite": "Cape Hooker", "valeur": "Antarctique"}
+{"entite": "Cape Hordern", "valeur": "Antarctique"}
+{"entite": "Cape Howard", "valeur": "Antarctique"}
+{"entite": "Cape Hudson", "valeur": "Antarctique"}
+{"entite": "Cape Huinga", "valeur": "Antarctique"}
+{"entite": "Cape Hunter", "valeur": "Antarctique"}
+{"entite": "Cape Hurley", "valeur": "Antarctique"}
+{"entite": "Cape Ingrid", "valeur": "Antarctique"}
+{"entite": "Cape Irizar", "valeur": "Antarctique"}
+{"entite": "Cape Irwyn", "valeur": "Antarctique"}
+{"entite": "Cape James", "valeur": "Antarctique"}
+{"entite": "Cape Jeremy", "valeur": "Antarctique"}
+{"entite": "Cape Johnson", "valeur": "Antarctique"}
+{"entite": "Cape Jones", "valeur": "Antarctique"}
+{"entite": "Cape Jules", "valeur": "Antarctique"}
+{"entite": "Cape Juncal", "valeur": "Antarctique"}
+{"entite": "Cape Kaiser", "valeur": "Antarctique"}
+{"entite": "Cape Kater", "valeur": "Antarctique"}
+{"entite": "Cape Keeler", "valeur": "Antarctique"}
+{"entite": "Cape Keltie", "valeur": "Antarctique"}
+{"entite": "Cape Kemp", "valeur": "Antarctique"}
+{"entite": "Cape Kennedy", "valeur": "Antarctique"}
+{"entite": "Cape Kerr", "valeur": "Antarctique"}
+{"entite": "Cape Kidson", "valeur": "Antarctique"}
+{"entite": "Cape King", "valeur": "Antarctique"}
+{"entite": "Cape Kinnes", "valeur": "Antarctique"}
+{"entite": "Cape Kinsey", "valeur": "Antarctique"}
+{"entite": "Cape Kjellman", "valeur": "Antarctique"}
+{"entite": "Cape Klovstad", "valeur": "Antarctique"}
+{"entite": "Cape Knowles", "valeur": "Antarctique"}
+{"entite": "Cape Kolosov", "valeur": "Antarctique"}
+{"entite": "Cape Koyubi", "valeur": "Antarctique"}
+{"entite": "Cape Krasinskiy", "valeur": "Antarctique"}
+{"entite": "Cape Lachman", "valeur": "Antarctique"}
+{"entite": "Cape Lagrange", "valeur": "Antarctique"}
+{"entite": "Cape Laird", "valeur": "Antarctique"}
+{"entite": "Cape Langeron", "valeur": "Europe"}
+{"entite": "Cape Lankester", "valeur": "Antarctique"}
+{"entite": "Cape Lazara", "valeur": "Antarctique"}
+{"entite": "Cape Leahy", "valeur": "Antarctique"}
+{"entite": "Cape LeBlanc", "valeur": "Antarctique"}
+{"entite": "Cape Leblond", "valeur": "Antarctique"}
+{"entite": "Cape Leguillou", "valeur": "Antarctique"}
+{"entite": "Cape Lewis", "valeur": "Antarctique"}
+{"entite": "Cape Lindsey", "valeur": "Antarctique"}
+{"entite": "Cape Little", "valeur": "Antarctique"}
+{"entite": "Cape Lloyd", "valeur": "Antarctique"}
+{"entite": "Cape Longing", "valeur": "Antarctique"}
+{"entite": "Cape Lookout", "valeur": "Antarctique"}
+{"entite": "Cape Lyttelton", "valeur": "Antarctique"}
+{"entite": "Cape Mabel", "valeur": "Antarctique"}
+{"entite": "Cape MacKay", "valeur": "Antarctique"}
+{"entite": "Cape Mackintosh", "valeur": "Antarctique"}
+{"entite": "Cape Main", "valeur": "Antarctique"}
+{"entite": "Cape Maksimov", "valeur": "Antarctique"}
+{"entite": "Cape Marchesi", "valeur": "Antarctique"}
+{"entite": "Cape Margerie", "valeur": "Antarctique"}
+{"entite": "Cape Markov", "valeur": "Antarctique"}
+{"entite": "Cape Marsh", "valeur": "Antarctique"}
+{"entite": "Cape Mascart", "valeur": "Antarctique"}
+{"entite": "Cape Maude", "valeur": "Antarctique"}
+{"entite": "Cape May", "valeur": "Antarctique"}
+{"entite": "Cape Mayo", "valeur": "Antarctique"}
+{"entite": "Cape McCormick", "valeur": "Antarctique"}
+{"entite": "Cape McNab", "valeur": "Antarctique"}
+{"entite": "Cape Melville", "valeur": "Antarctique"}
+{"entite": "Cape Menzel", "valeur": "Antarctique"}
+{"entite": "Cape Mikhaylov", "valeur": "Antarctique"}
+{"entite": "Cape Monakov", "valeur": "Antarctique"}
+{"entite": "Cape Moneta", "valeur": "Antarctique"}
+{"entite": "Cape Moore", "valeur": "Antarctique"}
+{"entite": "Cape Morris", "valeur": "Antarctique"}
+{"entite": "Cape Morse", "valeur": "Antarctique"}
+{"entite": "Cape Mousse", "valeur": "Antarctique"}
+{"entite": "Cape Moyes", "valeur": "Antarctique"}
+{"entite": "Cape Murdoch", "valeur": "Antarctique"}
+{"entite": "Cape Murmanskiy", "valeur": "Antarctique"}
+{"entite": "Cape Murray", "valeur": "Antarctique"}
+{"entite": "Cape Musselman", "valeur": "Antarctique"}
+{"entite": "Cape Nakayubi", "valeur": "Antarctique"}
+{"entite": "Cape Neumayer", "valeur": "Antarctique"}
+{"entite": "Cape North", "valeur": "Antarctique"}
+{"entite": "Cape Northrop", "valeur": "Antarctique"}
+{"entite": "Cape Norvegia", "valeur": "Antarctique"}
+{"entite": "Cape Nutt", "valeur": "Antarctique"}
+{"entite": "Cape Oakeley", "valeur": "Antarctique"}
+{"entite": "Cape Obelisk", "valeur": "Antarctique"}
+{"entite": "Cape Omega", "valeur": "Antarctique"}
+{"entite": "Cape Page", "valeur": "Antarctique"}
+{"entite": "Cape Parr", "valeur": "Antarctique"}
+{"entite": "Cape Penck", "valeur": "Antarctique"}
+{"entite": "Cape Peremennyy", "valeur": "Antarctique"}
+{"entite": "Cape Perez", "valeur": "Antarctique"}
+{"entite": "Cape Petersen", "valeur": "Antarctique"}
+{"entite": "Cape Philippi", "valeur": "Antarctique"}
+{"entite": "Cape Phillips", "valeur": "Antarctique"}
+{"entite": "Cape Plenty", "valeur": "Antarctique"}
+{"entite": "Cape Polar Sea", "valeur": "Antarctique"}
+{"entite": "Cape Polar Star", "valeur": "Antarctique"}
+{"entite": "Cape Pollock", "valeur": "Antarctique"}
+{"entite": "Cape Possession", "valeur": "Antarctique"}
+{"entite": "Cape Ptichje", "valeur": "Antarctique"}
+{"entite": "Cape Purvis", "valeur": "Antarctique"}
+{"entite": "Cape Reclus", "valeur": "Antarctique"}
+{"entite": "Cape Reichelderfer", "valeur": "Antarctique"}
+{"entite": "Cape Renard", "valeur": "Antarctique"}
+{"entite": "Cape Rey", "valeur": "Antarctique"}
+{"entite": "Cape Reynolds", "valeur": "Antarctique"}
+{"entite": "Cape Robert", "valeur": "Antarctique"}
+{"entite": "Cape Roberts", "valeur": "Antarctique"}
+{"entite": "Cape Robertson", "valeur": "Antarctique"}
+{"entite": "Cape Robinson", "valeur": "Antarctique"}
+{"entite": "Cape Roca", "valeur": "Antarctique"}
+{"entite": "Cape Roget", "valeur": "Antarctique"}
+{"entite": "Cape Roquemaurel", "valeur": "Antarctique"}
+{"entite": "Cape Ross", "valeur": "Antarctique"}
+{"entite": "Cape Rouse", "valeur": "Antarctique"}
+{"entite": "Cape Russell", "valeur": "Antarctique"}
+{"entite": "Cape Rymill", "valeur": "Antarctique"}
+{"entite": "Cape Ryugu", "valeur": "Antarctique"}
+{"entite": "Cape Sabine", "valeur": "Amérique du Nord"}
+{"entite": "Cape Saenz", "valeur": "Antarctique"}
+{"entite": "Cape Saint Paul", "valeur": "Afrique"}
+{"entite": "cape San Román", "valeur": "Amérique du Sud"}
+{"entite": "Cape Sastrugi", "valeur": "Antarctique"}
+{"entite": "Cape Schlossbach", "valeur": "Antarctique"}
+{"entite": "Cape Scoresby", "valeur": "Antarctique"}
+{"entite": "Cape Scott", "valeur": "Antarctique"}
+{"entite": "Cape Scrymgeour", "valeur": "Antarctique"}
+{"entite": "Cape Sedov", "valeur": "Antarctique"}
+{"entite": "Cape Selborne", "valeur": "Antarctique"}
+{"entite": "Cape Sharbonneau", "valeur": "Antarctique"}
+{"entite": "Cape Sheffield", "valeur": "Antarctique"}
+{"entite": "Cape Shirreff", "valeur": "Antarctique"}
+{"entite": "Cape Sibbald", "valeur": "Antarctique"}
+{"entite": "Cape Simpson", "valeur": "Antarctique"}
+{"entite": "Cape Smith", "valeur": "Antarctique"}
+{"entite": "Cape Smyth", "valeur": "Antarctique"}
+{"entite": "Cape Sobral", "valeur": "Antarctique"}
+{"entite": "Cape Sorlle", "valeur": "Antarctique"}
+{"entite": "Cape Southard", "valeur": "Antarctique"}
+{"entite": "Cape Spencer", "valeur": "Antarctique"}
+{"entite": "Cape Spencer-Smith", "valeur": "Antarctique"}
+{"entite": "Cape Spieden", "valeur": "Antarctique"}
+{"entite": "Cape Spirit", "valeur": "Antarctique"}
+{"entite": "Cape Sterneck", "valeur": "Antarctique"}
+{"entite": "Cape Streten", "valeur": "Antarctique"}
+{"entite": "Cape Surovyj", "valeur": "Antarctique"}
+{"entite": "Cape Surprise", "valeur": "Antarctique"}
+{"entite": "Cape Teall", "valeur": "Antarctique"}
+{"entite": "Cape Tennyson", "valeur": "Antarctique"}
+{"entite": "Cape Timberlake", "valeur": "Antarctique"}
+{"entite": "Cape Timblón", "valeur": "Antarctique"}
+{"entite": "Cape Torson", "valeur": "Antarctique"}
+{"entite": "Cape Vahsel", "valeur": "Antarctique"}
+{"entite": "Cape Valavielle", "valeur": "Antarctique"}
+{"entite": "Cape Valentine", "valeur": "Antarctique"}
+{"entite": "Cape Variable", "valeur": "Antarctique"}
+{"entite": "Cape Vestkapp", "valeur": "Antarctique"}
+{"entite": "Cape Vik", "valeur": "Antarctique"}
+{"entite": "Cape Vostok", "valeur": "Antarctique"}
+{"entite": "Cape Wadworth", "valeur": "Antarctique"}
+{"entite": "Cape Walcott", "valeur": "Antarctique"}
+{"entite": "Cape Walden", "valeur": "Antarctique"}
+{"entite": "Cape Waldron", "valeur": "Antarctique"}
+{"entite": "Cape Walker", "valeur": "Antarctique"}
+{"entite": "Cape Wallace", "valeur": "Antarctique"}
+{"entite": "Cape Webb", "valeur": "Antarctique"}
+{"entite": "Cape Well-met", "valeur": "Antarctique"}
+{"entite": "Cape Westbrook", "valeur": "Antarctique"}
+{"entite": "Cape Wheatstone", "valeur": "Antarctique"}
+{"entite": "Cape Wheeler", "valeur": "Antarctique"}
+{"entite": "Cape Whitson", "valeur": "Antarctique"}
+{"entite": "Cape Wild", "valeur": "Antarctique"}
+{"entite": "Cape Wilkins", "valeur": "Antarctique"}
+{"entite": "Cape Willems", "valeur": "Antarctique"}
+{"entite": "Cape Wilson", "valeur": "Antarctique"}
+{"entite": "Cape Wiman", "valeur": "Antarctique"}
+{"entite": "Cape Wollaston", "valeur": "Antarctique"}
+{"entite": "Cape Wood", "valeur": "Antarctique"}
+{"entite": "Cape Worsley", "valeur": "Antarctique"}
+{"entite": "Cape Yelcho", "valeur": "Antarctique"}
+{"entite": "Cape Yevgenov", "valeur": "Antarctique"}
+{"entite": "Cape Zarzuela", "valeur": "Antarctique"}
+{"entite": "Cape Zumberge", "valeur": "Antarctique"}
+{"entite": "Carbajal", "valeur": "Antarctique"}
+{"entite": "Carbone", "valeur": "Antarctique"}
+{"entite": "Cariz", "valeur": "Antarctique"}
+{"entite": "Carlitos", "valeur": "Antarctique"}
+{"entite": "Carmen", "valeur": "Antarctique"}
+{"entite": "Carse Point", "valeur": "Antarctique"}
+{"entite": "Casco", "valeur": "Antarctique"}
+{"entite": "Casey Point", "valeur": "Antarctique"}
+{"entite": "Castelli", "valeur": "Antarctique"}
+{"entite": "Castex, cabo", "valeur": "Antarctique"}
+{"entite": "Castillo", "valeur": "Antarctique"}
+{"entite": "Castillo Point", "valeur": "Antarctique"}
+{"entite": "Catharina Point", "valeur": "Antarctique"}
+{"entite": "Caution Point", "valeur": "Antarctique"}
+{"entite": "Cavarus Point", "valeur": "Antarctique"}
+{"entite": "La Caverna", "valeur": "Antarctique"}
+{"entite": "Cerda", "valeur": "Antarctique"}
+{"entite": "Cervantes", "valeur": "Antarctique"}
+{"entite": "Chacao", "valeur": "Antarctique"}
+{"entite": "Chapman Point", "valeur": "Antarctique"}
+{"entite": "Charles Point", "valeur": "Antarctique"}
+{"entite": "Chaucheprat Point", "valeur": "Antarctique"}
+{"entite": "Chaura", "valeur": "Antarctique"}
+{"entite": "Chauveau Point", "valeur": "Antarctique"}
+{"entite": "Chavdar Peninsula", "valeur": "Antarctique"}
+{"entite": "Cheal Point", "valeur": "Antarctique"}
+{"entite": "Cherkovna Point", "valeur": "Antarctique"}
+{"entite": "Chertigrad Point", "valeur": "Antarctique"}
+{"entite": "Chichil Point", "valeur": "Antarctique"}
+{"entite": "Chiclana", "valeur": "Antarctique"}
+{"entite": "Chiprovtsi Point", "valeur": "Antarctique"}
+{"entite": "Cholchol", "valeur": "Antarctique"}
+{"entite": "Chorul Peninsula", "valeur": "Antarctique"}
+{"entite": "Choyce", "valeur": "Antarctique"}
+{"entite": "Choyce Point", "valeur": "Antarctique"}
+{"entite": "Christiansen Point", "valeur": "Antarctique"}
+{"entite": "Christie", "valeur": "Antarctique"}
+{"entite": "Christmas Point", "valeur": "Antarctique"}
+{"entite": "Church Point", "valeur": "Antarctique"}
+{"entite": "Churchill Peninsula", "valeur": "Antarctique"}
+{"entite": "Churchill Point", "valeur": "Antarctique"}
+{"entite": "Cieslak Point", "valeur": "Antarctique"}
+{"entite": "Clark Point", "valeur": "Antarctique"}
+{"entite": "Clarkson", "valeur": "Antarctique"}
+{"entite": "Claro", "valeur": "Antarctique"}
+{"entite": "Claude Point", "valeur": "Antarctique"}
+{"entite": "Cleft Point", "valeur": "Antarctique"}
+{"entite": "Cockerell Peninsula", "valeur": "Antarctique"}
+{"entite": "Colastiné", "valeur": "Antarctique"}
+{"entite": "Cold Point", "valeur": "Antarctique"}
+{"entite": "Cole Peninsula", "valeur": "Antarctique"}
+{"entite": "Coleman Bluffs", "valeur": "Antarctique"}
+{"entite": "Colina", "valeur": "Antarctique"}
+{"entite": "Collins Point", "valeur": "Antarctique"}
+{"entite": "Conception Point", "valeur": "Antarctique"}
+{"entite": "Condor Peninsula", "valeur": "Antarctique"}
+{"entite": "Condyle Point", "valeur": "Antarctique"}
+{"entite": "Conesa", "valeur": "Antarctique"}
+{"entite": "Connors Point", "valeur": "Antarctique"}
+{"entite": "Conroy Point", "valeur": "Antarctique"}
+{"entite": "Consecuencia", "valeur": "Antarctique"}
+{"entite": "Constitución", "valeur": "Antarctique"}
+{"entite": "Construction Point", "valeur": "Antarctique"}
+{"entite": "Contact Point", "valeur": "Antarctique"}
+{"entite": "Contreras", "valeur": "Antarctique"}
+{"entite": "Coppermine Peninsula", "valeur": "Antarctique"}
+{"entite": "Corbetta", "valeur": "Antarctique"}
+{"entite": "Corbyn Head", "valeur": "Europe"}
+{"entite": "Cordero", "valeur": "Antarctique"}
+{"entite": "Corne de l'Afrique", "valeur": "Afrique"}
+{"entite": "Cornes", "valeur": "Antarctique"}
+{"entite": "Corral Point", "valeur": "Antarctique"}
+{"entite": "Correa Point", "valeur": "Antarctique"}
+{"entite": "Cossio", "valeur": "Antarctique"}
+{"entite": "Coughtrey Peninsula", "valeur": "Antarctique"}
+{"entite": "Countess Peninsula", "valeur": "Antarctique"}
+{"entite": "Coupvent Point", "valeur": "Antarctique"}
+{"entite": "Cox Point", "valeur": "Antarctique"}
+{"entite": "Coyer Point", "valeur": "Antarctique"}
+{"entite": "Crabeater Point", "valeur": "Antarctique"}
+{"entite": "Crabiers", "valeur": "Antarctique"}
+{"entite": "Creeping Slope", "valeur": "Antarctique"}
+{"entite": "Crépin Point", "valeur": "Antarctique"}
+{"entite": "Crimée", "valeur": "Europe"}
+{"entite": "Crosbie Point", "valeur": "Antarctique"}
+{"entite": "Crouch", "valeur": "Antarctique"}
+{"entite": "Crown Head", "valeur": "Antarctique"}
+{"entite": "Cuadrilátero", "valeur": "Antarctique"}
+{"entite": "Cuerno", "valeur": "Antarctique"}
+{"entite": "Cueva", "valeur": "Antarctique"}
+{"entite": "Cuff Cape", "valeur": "Antarctique"}
+{"entite": "Curie Point", "valeur": "Antarctique"}
+{"entite": "Curuzú Cuatiá", "valeur": "Antarctique"}
+{"entite": "Curva", "valeur": "Antarctique"}
+{"entite": "Czeslaw Point", "valeur": "Antarctique"}
+{"entite": "Dalrymple Point", "valeur": "Antarctique"}
+{"entite": "Damocles Point", "valeur": "Antarctique"}
+{"entite": "Dan", "valeur": "Antarctique"}
+{"entite": "Daniell Peninsula", "valeur": "Antarctique"}
+{"entite": "Darwin", "valeur": "Antarctique"}
+{"entite": "Daskot Point", "valeur": "Antarctique"}
+{"entite": "Davey Point", "valeur": "Antarctique"}
+{"entite": "Davis Peninsula", "valeur": "Antarctique"}
+{"entite": "Dawson Head", "valeur": "Antarctique"}
+{"entite": "Debelyanov Point", "valeur": "Antarctique"}
+{"entite": "Dedo", "valeur": "Antarctique"}
+{"entite": "Defrancisco", "valeur": "Antarctique"}
+{"entite": "Dejima", "valeur": "Asie"}
+{"entite": "Del Pozo", "valeur": "Antarctique"}
+{"entite": "Del Romero", "valeur": "Antarctique"}
+{"entite": "Delay Point", "valeur": "Antarctique"}
+{"entite": "Delfín", "valeur": "Antarctique"}
+{"entite": "Deliradev Point", "valeur": "Antarctique"}
+{"entite": "Deliverance Point", "valeur": "Antarctique"}
+{"entite": "Delusion Point", "valeur": "Antarctique"}
+{"entite": "Delyan Point", "valeur": "Antarctique"}
+{"entite": "DeMaster Point", "valeur": "Antarctique"}
+{"entite": "Demay Point", "valeur": "Antarctique"}
+{"entite": "Denax", "valeur": "Antarctique"}
+{"entite": "Dennes Point", "valeur": "Antarctique"}
+{"entite": "Depeaux Point", "valeur": "Antarctique"}
+{"entite": "Derocher Peninsula", "valeur": "Antarctique"}
+{"entite": "Derrick Point", "valeur": "Antarctique"}
+{"entite": "Deschampsia Point", "valeur": "Antarctique"}
+{"entite": "Descubierta Point", "valeur": "Antarctique"}
+{"entite": "Devene Point", "valeur": "Antarctique"}
+{"entite": "Devils Point", "valeur": "Antarctique"}
+{"entite": "Diaz", "valeur": "Antarctique"}
+{"entite": "Dickson", "valeur": "Antarctique"}
+{"entite": "Diebel", "valeur": "Antarctique"}
+{"entite": "Dilemma Point", "valeur": "Antarctique"}
+{"entite": "Diralo Point", "valeur": "Antarctique"}
+{"entite": "Discovery Bluff", "valeur": "Antarctique"}
+{"entite": "Disilitsa Point", "valeur": "Antarctique"}
+{"entite": "Divotino Point", "valeur": "Antarctique"}
+{"entite": "Djupvik Point", "valeur": "Antarctique"}
+{"entite": "Djupvikneset Peninsula", "valeur": "Antarctique"}
+{"entite": "Dlinnyj Peninsula", "valeur": "Antarctique"}
+{"entite": "Dodson Peninsula", "valeur": "Antarctique"}
+{"entite": "Dometa Point", "valeur": "Antarctique"}
+{"entite": "Dominguez", "valeur": "Antarctique"}
+{"entite": "Donati", "valeur": "Antarctique"}
+{"entite": "Donovan Promontory", "valeur": "Antarctique"}
+{"entite": "Doris", "valeur": "Antarctique"}
+{"entite": "Dos Monjes", "valeur": "Antarctique"}
+{"entite": "Dos Peñones", "valeur": "Antarctique"}
+{"entite": "Dostupnyj", "valeur": "Antarctique"}
+{"entite": "Douglas Point", "valeur": "Antarctique"}
+{"entite": "Doyle Point", "valeur": "Antarctique"}
+{"entite": "Drake Head", "valeur": "Antarctique"}
+{"entite": "Dralfa Point", "valeur": "Antarctique"}
+{"entite": "Draves Point", "valeur": "Antarctique"}
+{"entite": "Dreadnought Point", "valeur": "Antarctique"}
+{"entite": "Dreikanter Head", "valeur": "Antarctique"}
+{"entite": "Driencourt Point", "valeur": "Antarctique"}
+{"entite": "Driscoll Point", "valeur": "Antarctique"}
+{"entite": "Drygalski", "valeur": "Antarctique"}
+{"entite": "Drying Point", "valeur": "Antarctique"}
+{"entite": "Duclaux Point", "valeur": "Antarctique"}
+{"entite": "Dufek Head", "valeur": "Antarctique"}
+{"entite": "Duff Point", "valeur": "Antarctique"}
+{"entite": "Dunbar Head", "valeur": "Antarctique"}
+{"entite": "Duncan Peninsula", "valeur": "Antarctique"}
+{"entite": "Duncans Point", "valeur": "Amérique du Nord"}
+{"entite": "Dunlop", "valeur": "Antarctique"}
+{"entite": "Dupnitsa Point", "valeur": "Antarctique"}
+{"entite": "Durán", "valeur": "Antarctique"}
+{"entite": "Durham Point", "valeur": "Antarctique"}
+{"entite": "Durl Head", "valeur": "Europe"}
+{"entite": "Duthiers Point", "valeur": "Antarctique"}
+{"entite": "Duthoit Point", "valeur": "Antarctique"}
+{"entite": "Duyvis Point", "valeur": "Antarctique"}
+{"entite": "Dvergetunga", "valeur": "Antarctique"}
+{"entite": "Dyer Point", "valeur": "Antarctique"}
+{"entite": "Dyke Point", "valeur": "Antarctique"}
+{"entite": "Dykeman Point", "valeur": "Antarctique"}
+{"entite": "East Cape (Antarctica)", "valeur": "Antarctique"}
+{"entite": "East of Nelly Point Important Bird Area", "valeur": "Antarctique"}
+{"entite": "Eckener Point", "valeur": "Antarctique"}
+{"entite": "Les Eclaireurs", "valeur": "Antarctique"}
+{"entite": "Eddy Point", "valeur": "Antarctique"}
+{"entite": "Edholm Point", "valeur": "Antarctique"}
+{"entite": "Edmonson Point", "valeur": "Antarctique"}
+{"entite": "Edward VIII Plateau", "valeur": "Antarctique"}
+{"entite": "Edwards Peninsula", "valeur": "Antarctique"}
+{"entite": "Edwards Point", "valeur": "Antarctique"}
+{"entite": "Egreso", "valeur": "Antarctique"}
+{"entite": "Eielson Peninsula", "valeur": "Antarctique"}
+{"entite": "Eijkman Point", "valeur": "Antarctique"}
+{"entite": "Eisberg Head", "valeur": "Antarctique"}
+{"entite": "Ejército", "valeur": "Antarctique"}
+{"entite": "Ekehalsen", "valeur": "Antarctique"}
+{"entite": "Ekelöf Point", "valeur": "Antarctique"}
+{"entite": "El Hallazgo", "valeur": "Antarctique"}
+{"entite": "Eldred Point", "valeur": "Antarctique"}
+{"entite": "Elemag Point", "valeur": "Antarctique"}
+{"entite": "Elevation Point", "valeur": "Antarctique"}
+{"entite": "Elin Pelin Point", "valeur": "Antarctique"}
+{"entite": "Emel'janova", "valeur": "Antarctique"}
+{"entite": "Emerald Point", "valeur": "Antarctique"}
+{"entite": "Emperor Point", "valeur": "Antarctique"}
+{"entite": "Enano", "valeur": "Antarctique"}
+{"entite": "Enden Point", "valeur": "Antarctique"}
+{"entite": "Endurance Point", "valeur": "Antarctique"}
+{"entite": "Engaño", "valeur": "Antarctique"}
+{"entite": "Entrance Point", "valeur": "Antarctique"}
+{"entite": "Eolovyj", "valeur": "Antarctique"}
+{"entite": "Ereby Point", "valeur": "Antarctique"}
+{"entite": "Ermak", "valeur": "Antarctique"}
+{"entite": "Eroica Peninsula", "valeur": "Antarctique"}
+{"entite": "Escalonado", "valeur": "Antarctique"}
+{"entite": "Escandé", "valeur": "Antarctique"}
+{"entite": "Escarpada Point", "valeur": "Antarctique"}
+{"entite": "Escobar", "valeur": "Antarctique"}
+{"entite": "Esfinge", "valeur": "Antarctique"}
+{"entite": "Eskimo Point", "valeur": "Antarctique"}
+{"entite": "Essex Point", "valeur": "Antarctique"}
+{"entite": "Este", "valeur": "Antarctique"}
+{"entite": "Esteverena Point", "valeur": "Antarctique"}
+{"entite": "Eubanks Point", "valeur": "Antarctique"}
+{"entite": "Europe as a continent", "valeur": "Europe"}
+{"entite": "Eurydice Peninsula", "valeur": "Antarctique"}
+{"entite": "Eusebione", "valeur": "Antarctique"}
+{"entite": "Evans Peninsula", "valeur": "Antarctique"}
+{"entite": "Evans Point", "valeur": "Antarctique"}
+{"entite": "Exotic Point", "valeur": "Antarctique"}
+{"entite": "Falsa Punta Rancho", "valeur": "Antarctique"}
+{"entite": "False Cape Renard", "valeur": "Antarctique"}
+{"entite": "False Island Point", "valeur": "Antarctique"}
+{"entite": "False Round Point", "valeur": "Antarctique"}
+{"entite": "Farther India", "valeur": "Asie"}
+{"entite": "Feicui Bandao", "valeur": "Antarctique"}
+{"entite": "Félicie Point", "valeur": "Antarctique"}
+{"entite": "Felipe Solo Peninsula", "valeur": "Antarctique"}
+{"entite": "Fellow", "valeur": "Antarctique"}
+{"entite": "Felton Head", "valeur": "Antarctique"}
+{"entite": "Fenghuang Jiao", "valeur": "Antarctique"}
+{"entite": "Feoktistov", "valeur": "Antarctique"}
+{"entite": "Ferguslie Peninsula", "valeur": "Antarctique"}
+{"entite": "Ferin Head", "valeur": "Antarctique"}
+{"entite": "Fernandez, punta", "valeur": "Antarctique"}
+{"entite": "Ferré", "valeur": "Antarctique"}
+{"entite": "Ferreira", "valeur": "Antarctique"}
+{"entite": "Ferrer Point", "valeur": "Antarctique"}
+{"entite": "Ferrier Peninsula", "valeur": "Antarctique"}
+{"entite": "Ficheto Point", "valeur": "Antarctique"}
+{"entite": "Fierro Point", "valeur": "Antarctique"}
+{"entite": "Figueroa", "valeur": "Antarctique"}
+{"entite": "Fildes Point", "valeur": "Antarctique"}
+{"entite": "Findlay Point", "valeur": "Antarctique"}
+{"entite": "Finger Point", "valeur": "Antarctique"}
+{"entite": "First View Point", "valeur": "Antarctique"}
+{"entite": "Fisher Point", "valeur": "Antarctique"}
+{"entite": "Fishtail Point", "valeur": "Antarctique"}
+{"entite": "Fitzmaurice Point", "valeur": "Antarctique"}
+{"entite": "Fitzroy Point", "valeur": "Antarctique"}
+{"entite": "Flag Point", "valeur": "Antarctique"}
+{"entite": "Flagon Point", "valeur": "Antarctique"}
+{"entite": "Flagpole Point", "valeur": "Antarctique"}
+{"entite": "Flagstaff", "valeur": "Antarctique"}
+{"entite": "Flagstaff Point", "valeur": "Antarctique"}
+{"entite": "Flame Point", "valeur": "Antarctique"}
+{"entite": "Flåodden Cape", "valeur": "Antarctique"}
+{"entite": "Flat Top Peninsula", "valeur": "Antarctique"}
+{"entite": "Flatcap Point", "valeur": "Antarctique"}
+{"entite": "Flauta", "valeur": "Antarctique"}
+{"entite": "Fleet Point", "valeur": "Antarctique"}
+{"entite": "Fleming", "valeur": "Antarctique"}
+{"entite": "Fleming Head", "valeur": "Antarctique"}
+{"entite": "Fletcher Ice Rise", "valeur": "Antarctique"}
+{"entite": "Fliess", "valeur": "Antarctique"}
+{"entite": "Flint Rock Head", "valeur": "Amérique du Nord"}
+{"entite": "Foca Point", "valeur": "Antarctique"}
+{"entite": "Föhnhalbinsel", "valeur": "Antarctique"}
+{"entite": "Forbes Point", "valeur": "Antarctique"}
+{"entite": "Forefinger Point", "valeur": "Antarctique"}
+{"entite": "Fork Point", "valeur": "Antarctique"}
+{"entite": "Fort William Point", "valeur": "Antarctique"}
+{"entite": "Fortuna", "valeur": "Antarctique"}
+{"entite": "Fossil Wood Point", "valeur": "Antarctique"}
+{"entite": "Foster Peninsula", "valeur": "Antarctique"}
+{"entite": "Fothergill Point", "valeur": "Antarctique"}
+{"entite": "Foul Point", "valeur": "Antarctique"}
+{"entite": "Fowler Peninsula", "valeur": "Antarctique"}
+{"entite": "Foyn Point", "valeur": "Antarctique"}
+{"entite": "Framnes Head", "valeur": "Antarctique"}
+{"entite": "Framranten Point", "valeur": "Antarctique"}
+{"entite": "Franklin Point", "valeur": "Antarctique"}
+{"entite": "Fraser Point", "valeur": "Antarctique"}
+{"entite": "Freeman Point", "valeur": "Antarctique"}
+{"entite": "Freytag", "valeur": "Antarctique"}
+{"entite": "Frolosh Point", "valeur": "Antarctique"}
+{"entite": "Funzi Island", "valeur": "Afrique"}
+{"entite": "Furmanczyk Point", "valeur": "Antarctique"}
+{"entite": "GAARlandia", "valeur": "Amérique du Sud"}
+{"entite": "Gabriel", "valeur": "Antarctique"}
+{"entite": "Gagge Point", "valeur": "Antarctique"}
+{"entite": "Gallows Point", "valeur": "Antarctique"}
+{"entite": "Gam", "valeur": "Antarctique"}
+{"entite": "Gamage Point", "valeur": "Antarctique"}
+{"entite": "Gammon Head", "valeur": "Europe"}
+{"entite": "Gamova", "valeur": "Asie"}
+{"entite": "Gamova Peninsula", "valeur": "Asie"}
+{"entite": "Garcia Point", "valeur": "Antarctique"}
+{"entite": "Gargoyle Bastion", "valeur": "Antarctique"}
+{"entite": "Garmen Point", "valeur": "Antarctique"}
+{"entite": "Garnerin Point", "valeur": "Antarctique"}
+{"entite": "Garnet Point", "valeur": "Antarctique"}
+{"entite": "Garra de León", "valeur": "Antarctique"}
+{"entite": "Garrochategui", "valeur": "Antarctique"}
+{"entite": "Garvan Point", "valeur": "Antarctique"}
+{"entite": "Garwood Point", "valeur": "Antarctique"}
+{"entite": "Garzón Point", "valeur": "Antarctique"}
+{"entite": "Gassano", "valeur": "Antarctique"}
+{"entite": "Gaudin Point", "valeur": "Antarctique"}
+{"entite": "Gaudis", "valeur": "Antarctique"}
+{"entite": "Gauthier Point", "valeur": "Antarctique"}
+{"entite": "Gauthier, punta", "valeur": "Antarctique"}
+{"entite": "Gaviota", "valeur": "Antarctique"}
+{"entite": "Gaydarov Point", "valeur": "Antarctique"}
+{"entite": "Gdynia Point", "valeur": "Antarctique"}
+{"entite": "Gega Point", "valeur": "Antarctique"}
+{"entite": "Gela Point", "valeur": "Antarctique"}
+{"entite": "Gentile Point", "valeur": "Antarctique"}
+{"entite": "Geografov Peninsula", "valeur": "Antarctique"}
+{"entite": "Geomorfologov Peninsula", "valeur": "Antarctique"}
+{"entite": "Georges Point", "valeur": "Antarctique"}
+{"entite": "German Peninsula", "valeur": "Antarctique"}
+{"entite": "Gerof Point", "valeur": "Antarctique"}
+{"entite": "Giard Point", "valeur": "Antarctique"}
+{"entite": "Glacier", "valeur": "Antarctique"}
+{"entite": "Glandaz Point", "valeur": "Antarctique"}
+{"entite": "Glass Point", "valeur": "Antarctique"}
+{"entite": "Gneiss Point", "valeur": "Antarctique"}
+{"entite": "Gnezdovoj", "valeur": "Antarctique"}
+{"entite": "Godfroy Point", "valeur": "Antarctique"}
+{"entite": "Gonzalez Point", "valeur": "Antarctique"}
+{"entite": "Gorbatyj", "valeur": "Antarctique"}
+{"entite": "Gostun Point", "valeur": "Antarctique"}
+{"entite": "Goten Peninsula", "valeur": "Antarctique"}
+{"entite": "Goubat", "valeur": "Antarctique"}
+{"entite": "Gourdon Peninsula", "valeur": "Antarctique"}
+{"entite": "Gourlay Peninsula", "valeur": "Antarctique"}
+{"entite": "Gourlay Point", "valeur": "Antarctique"}
+{"entite": "Goyena", "valeur": "Antarctique"}
+{"entite": "Grano", "valeur": "Antarctique"}
+{"entite": "Green Point", "valeur": "Antarctique"}
+{"entite": "Greene Point", "valeur": "Antarctique"}
+{"entite": "Greenstone Point", "valeur": "Antarctique"}
+{"entite": "Gregory Point", "valeur": "Antarctique"}
+{"entite": "Grikurov Point", "valeur": "Antarctique"}
+{"entite": "Guéguen Point", "valeur": "Antarctique"}
+{"entite": "Guerrabut", "valeur": "Antarctique"}
+{"entite": "Guesalaga Peninsula", "valeur": "Antarctique"}
+{"entite": "Gurney Point", "valeur": "Antarctique"}
+{"entite": "Gurnon Peninsula", "valeur": "Antarctique"}
+{"entite": "Gurruchaga", "valeur": "Antarctique"}
+{"entite": "Høgskavlnasen Point", "valeur": "Antarctique"}
+{"entite": "Høgskeidet", "valeur": "Antarctique"}
+{"entite": "Hadley Point", "valeur": "Antarctique"}
+{"entite": "Haigh Point", "valeur": "Antarctique"}
+{"entite": "Haihun Jiao", "valeur": "Antarctique"}
+{"entite": "Haizhu Bandao", "valeur": "Antarctique"}
+{"entite": "Halfthree Point", "valeur": "Antarctique"}
+{"entite": "Hall Peninsula, Snow Island", "valeur": "Antarctique"}
+{"entite": "Hallett Peninsula", "valeur": "Antarctique"}
+{"entite": "Halpern Point", "valeur": "Antarctique"}
+{"entite": "Hamilton Point", "valeur": "Antarctique"}
+{"entite": "Hammer Point", "valeur": "Antarctique"}
+{"entite": "Hamnenabben Head", "valeur": "Antarctique"}
+{"entite": "Hanessian Foreland", "valeur": "Antarctique"}
+{"entite": "Hannah Point", "valeur": "Antarctique"}
+{"entite": "Hardy", "valeur": "Antarctique"}
+{"entite": "Harmony Point", "valeur": "Antarctique"}
+{"entite": "Harpoon Point", "valeur": "Antarctique"}
+{"entite": "Harris Peninsula", "valeur": "Antarctique"}
+{"entite": "Harris Point", "valeur": "Antarctique"}
+{"entite": "Harrison Bluff", "valeur": "Antarctique"}
+{"entite": "Haulaway Point", "valeur": "Antarctique"}
+{"entite": "Havilland Point", "valeur": "Antarctique"}
+{"entite": "Hayes Head", "valeur": "Antarctique"}
+{"entite": "Hel", "valeur": "Antarctique"}
+{"entite": "Helm Point", "valeur": "Antarctique"}
+{"entite": "Henryk Peak", "valeur": "Antarctique"}
+{"entite": "Hermaion Akron", "valeur": "Europe"}
+{"entite": "Hermes Point", "valeur": "Antarctique"}
+{"entite": "Hermosilla", "valeur": "Antarctique"}
+{"entite": "Heros Peninsula", "valeur": "Antarctique"}
+{"entite": "Herring Point", "valeur": "Antarctique"}
+{"entite": "Hervéou Point", "valeur": "Antarctique"}
+{"entite": "Hespérides Point", "valeur": "Antarctique"}
+{"entite": "Hildegard", "valeur": "Antarctique"}
+{"entite": "Hippolyte Point", "valeur": "Antarctique"}
+{"entite": "Hiroe Point", "valeur": "Antarctique"}
+{"entite": "Hjelmkalven Point", "valeur": "Antarctique"}
+{"entite": "Hljustina", "valeur": "Antarctique"}
+{"entite": "Hobbs Point", "valeur": "Antarctique"}
+{"entite": "Hodges Point", "valeur": "Antarctique"}
+{"entite": "Hoffman Point", "valeur": "Antarctique"}
+{"entite": "Holdfast Point", "valeur": "Antarctique"}
+{"entite": "Hole Peninsula", "valeur": "Antarctique"}
+{"entite": "Hollick-Kenyon Peninsula", "valeur": "Antarctique"}
+{"entite": "Holst Point", "valeur": "Antarctique"}
+{"entite": "Holt Point", "valeur": "Antarctique"}
+{"entite": "Homeward Point", "valeur": "Antarctique"}
+{"entite": "Homing Head", "valeur": "Antarctique"}
+{"entite": "Hooke Point", "valeur": "Antarctique"}
+{"entite": "Hope Point", "valeur": "Antarctique"}
+{"entite": "Hospital Point", "valeur": "Antarctique"}
+{"entite": "Houlihans Point", "valeur": "Amérique du Nord"}
+{"entite": "Howard Heights", "valeur": "Antarctique"}
+{"entite": "Howard-Williams Point", "valeur": "Antarctique"}
+{"entite": "Hoyt Head", "valeur": "Antarctique"}
+{"entite": "Huashan Bandao", "valeur": "Antarctique"}
+{"entite": "Huaxi Bandao", "valeur": "Antarctique"}
+{"entite": "Hughes Peninsula", "valeur": "Antarctique"}
+{"entite": "Hughes Point", "valeur": "Antarctique"}
+{"entite": "Huitfeldt Point", "valeur": "Antarctique"}
+{"entite": "Hull Point", "valeur": "Antarctique"}
+{"entite": "Hulot Peninsula", "valeur": "Antarctique"}
+{"entite": "Humann Point", "valeur": "Antarctique"}
+{"entite": "Humble Point", "valeur": "Antarctique"}
+{"entite": "Hummer Point", "valeur": "Antarctique"}
+{"entite": "Hurd Peninsula", "valeur": "Antarctique"}
+{"entite": "Hut Point", "valeur": "Antarctique"}
+{"entite": "Huxian Jiao", "valeur": "Antarctique"}
+{"entite": "Ibarguren", "valeur": "Antarctique"}
+{"entite": "Iceberg Point", "valeur": "Antarctique"}
+{"entite": "Imshaug Peninsula", "valeur": "Antarctique"}
+{"entite": "Inca Point", "valeur": "Antarctique"}
+{"entite": "Index Point", "valeur": "Antarctique"}
+{"entite": "Innhovde Point", "valeur": "Antarctique"}
+{"entite": "Inoceramus Point", "valeur": "Antarctique"}
+{"entite": "Inott Point", "valeur": "Antarctique"}
+{"entite": "Insteodden Point", "valeur": "Antarctique"}
+{"entite": "Intrusion Point", "valeur": "Antarctique"}
+{"entite": "Invencible", "valeur": "Antarctique"}
+{"entite": "Ioannes Paulus II Peninsula", "valeur": "Antarctique"}
+{"entite": "Iratais Point", "valeur": "Antarctique"}
+{"entite": "Irnik Point", "valeur": "Antarctique"}
+{"entite": "Isbul Point", "valeur": "Antarctique"}
+{"entite": "Ituzaingó", "valeur": "Antarctique"}
+{"entite": "Ivan Alexander Point", "valeur": "Antarctique"}
+{"entite": "Ivan Asen Point", "valeur": "Antarctique"}
+{"entite": "Ivan Vladislav Point", "valeur": "Antarctique"}
+{"entite": "Ivanoff Head", "valeur": "Antarctique"}
+{"entite": "Ives Tongue", "valeur": "Antarctique"}
+{"entite": "Jacobs Peninsula", "valeur": "Antarctique"}
+{"entite": "Jade Point", "valeur": "Antarctique"}
+{"entite": "Jameson Point", "valeur": "Antarctique"}
+{"entite": "Jaraquemada", "valeur": "Antarctique"}
+{"entite": "Jason Peninsula", "valeur": "Antarctique"}
+{"entite": "Jasper Point", "valeur": "Antarctique"}
+{"entite": "Jaume", "valeur": "Antarctique"}
+{"entite": "Jebsen Point", "valeur": "Antarctique"}
+{"entite": "Jeffery Head", "valeur": "Antarctique"}
+{"entite": "Jefford Point", "valeur": "Antarctique"}
+{"entite": "Jensenhovden", "valeur": "Antarctique"}
+{"entite": "Jetty Peninsula", "valeur": "Antarctique"}
+{"entite": "Joerg Peninsula", "valeur": "Antarctique"}
+{"entite": "John O'Groats", "valeur": "Antarctique"}
+{"entite": "John Rodgers", "valeur": "Antarctique"}
+{"entite": "Jones Bluffs", "valeur": "Antarctique"}
+{"entite": "Jones Peninsula", "valeur": "Antarctique"}
+{"entite": "Jones Point", "valeur": "Antarctique"}
+{"entite": "Jorobada", "valeur": "Antarctique"}
+{"entite": "Jougla Point", "valeur": "Antarctique"}
+{"entite": "Jurva Point", "valeur": "Antarctique"}
+{"entite": "Kado Point", "valeur": "Antarctique"}
+{"entite": "Kalicki Point", "valeur": "Antarctique"}
+{"entite": "Kap Lewald", "valeur": "Antarctique"}
+{"entite": "Karamete Point", "valeur": "Antarctique"}
+{"entite": "Karavelova Point", "valeur": "Antarctique"}
+{"entite": "Kardzhali Point", "valeur": "Antarctique"}
+{"entite": "Karpf Point", "valeur": "Antarctique"}
+{"entite": "Karposh Point", "valeur": "Antarctique"}
+{"entite": "Kaspichan Point", "valeur": "Antarctique"}
+{"entite": "Kearns Peninsula", "valeur": "Antarctique"}
+{"entite": "Keltie Head", "valeur": "Antarctique"}
+{"entite": "Kemp Peninsula", "valeur": "Antarctique"}
+{"entite": "Kendall Point", "valeur": "Antarctique"}
+{"entite": "Kennicutt Point", "valeur": "Antarctique"}
+{"entite": "Kenyon", "valeur": "Antarctique"}
+{"entite": "Kermen Peninsula", "valeur": "Antarctique"}
+{"entite": "Kerr Point", "valeur": "Antarctique"}
+{"entite": "Ketley Point", "valeur": "Antarctique"}
+{"entite": "Keys Point", "valeur": "Antarctique"}
+{"entite": "King Point", "valeur": "Antarctique"}
+{"entite": "Kiridasi Misaki", "valeur": "Antarctique"}
+{"entite": "Kirkby Head", "valeur": "Antarctique"}
+{"entite": "Kitchen Point", "valeur": "Antarctique"}
+{"entite": "Kiten Point", "valeur": "Antarctique"}
+{"entite": "Kjuka Headland", "valeur": "Antarctique"}
+{"entite": "Kjukevågsodden", "valeur": "Antarctique"}
+{"entite": "Kloa Point", "valeur": "Antarctique"}
+{"entite": "Knack Point", "valeur": "Antarctique"}
+{"entite": "Knife Point", "valeur": "Antarctique"}
+{"entite": "Knob Point", "valeur": "Antarctique"}
+{"entite": "Knobble Head", "valeur": "Antarctique"}
+{"entite": "Kogot'", "valeur": "Antarctique"}
+{"entite": "Kohler Head", "valeur": "Antarctique"}
+{"entite": "Kokalyane Point", "valeur": "Antarctique"}
+{"entite": "Kolich Point", "valeur": "Antarctique"}
+{"entite": "Koloc Point", "valeur": "Antarctique"}
+{"entite": "Kolosov Point", "valeur": "Antarctique"}
+{"entite": "Komsomol'skij", "valeur": "Antarctique"}
+{"entite": "Koposova", "valeur": "Antarctique"}
+{"entite": "Kosar Point", "valeur": "Antarctique"}
+{"entite": "Kosistyy", "valeur": "Antarctique"}
+{"entite": "Kostur Point", "valeur": "Antarctique"}
+{"entite": "Kotick Point", "valeur": "Antarctique"}
+{"entite": "Kotis Point", "valeur": "Antarctique"}
+{"entite": "Krajnij Peninsula", "valeur": "Antarctique"}
+{"entite": "Krakow Peninsula", "valeur": "Antarctique"}
+{"entite": "Kran Peninsula", "valeur": "Antarctique"}
+{"entite": "Kranevo Point", "valeur": "Antarctique"}
+{"entite": "Krause Point", "valeur": "Antarctique"}
+{"entite": "Krogmann Point", "valeur": "Antarctique"}
+{"entite": "Krug", "valeur": "Antarctique"}
+{"entite": "Krutoj", "valeur": "Antarctique"}
+{"entite": "Krylatyj Peninsula", "valeur": "Antarctique"}
+{"entite": "Krzyminski Point", "valeur": "Antarctique"}
+{"entite": "Kujira Point", "valeur": "Antarctique"}
+{"entite": "Kuklen Point", "valeur": "Antarctique"}
+{"entite": "Kuno Point", "valeur": "Antarctique"}
+{"entite": "Kurilo Point", "valeur": "Antarctique"}
+{"entite": "Kusunoki Point", "valeur": "Antarctique"}
+{"entite": "Kutyba Point", "valeur": "Antarctique"}
+{"entite": "Kvassodden", "valeur": "Antarctique"}
+{"entite": "Kvinge Peninsula", "valeur": "Antarctique"}
+{"entite": "Kwarecki Point", "valeur": "Antarctique"}
+{"entite": "Kyiv Peninsula", "valeur": "Antarctique"}
+{"entite": "Laager Point", "valeur": "Antarctique"}
+{"entite": "Labbé Point", "valeur": "Antarctique"}
+{"entite": "Lachal Bluffs", "valeur": "Antarctique"}
+{"entite": "LaFratta Point", "valeur": "Antarctique"}
+{"entite": "Lagrelius Point", "valeur": "Antarctique"}
+{"entite": "Lainez Point", "valeur": "Antarctique"}
+{"entite": "Lair Point", "valeur": "Antarctique"}
+{"entite": "Lakatnik Point", "valeur": "Antarctique"}
+{"entite": "Lamb Point", "valeur": "Antarctique"}
+{"entite": "Land's End", "valeur": "Antarctique"}
+{"entite": "Landauer Point", "valeur": "Antarctique"}
+{"entite": "Landmark Point", "valeur": "Antarctique"}
+{"entite": "Lands End", "valeur": "Antarctique"}
+{"entite": "Langhovde-kita Point", "valeur": "Antarctique"}
+{"entite": "Langnes Peninsula", "valeur": "Antarctique"}
+{"entite": "Lanusse", "valeur": "Antarctique"}
+{"entite": "Lapidary Point", "valeur": "Antarctique"}
+{"entite": "Laprida", "valeur": "Antarctique"}
+{"entite": "Las Torres", "valeur": "Antarctique"}
+{"entite": "Lasala", "valeur": "Antarctique"}
+{"entite": "Laure", "valeur": "Antarctique"}
+{"entite": "Lava Point", "valeur": "Antarctique"}
+{"entite": "Lavallee Point", "valeur": "Antarctique"}
+{"entite": "Lavrenov Point", "valeur": "Antarctique"}
+{"entite": "Lawrance", "valeur": "Antarctique"}
+{"entite": "Lecuyer Point", "valeur": "Antarctique"}
+{"entite": "Leech", "valeur": "Antarctique"}
+{"entite": "Lefevre-Utile Point", "valeur": "Antarctique"}
+{"entite": "Legrú", "valeur": "Antarctique"}
+{"entite": "Lehaie Point", "valeur": "Antarctique"}
+{"entite": "Leniz Point", "valeur": "Antarctique"}
+{"entite": "Lenton Point", "valeur": "Antarctique"}
+{"entite": "Léopards", "valeur": "Antarctique"}
+{"entite": "Lermanda", "valeur": "Antarctique"}
+{"entite": "Levalle", "valeur": "Antarctique"}
+{"entite": "Lewandowski Point", "valeur": "Antarctique"}
+{"entite": "Lewis Point", "valeur": "Antarctique"}
+{"entite": "Lianhua Jiao", "valeur": "Antarctique"}
+{"entite": "Lichen Promontory", "valeur": "Antarctique"}
+{"entite": "Lied Promontory", "valeur": "Antarctique"}
+{"entite": "Lillo", "valeur": "Antarctique"}
+{"entite": "Limets Peninsula", "valeur": "Antarctique"}
+{"entite": "Linsley Peninsula", "valeur": "Antarctique"}
+{"entite": "Lions Rump", "valeur": "Antarctique"}
+{"entite": "Liouville Point", "valeur": "Antarctique"}
+{"entite": "Lis Point", "valeur": "Antarctique"}
+{"entite": "Lista Point", "valeur": "Antarctique"}
+{"entite": "Lively Point", "valeur": "Antarctique"}
+{"entite": "Lizard Point", "valeur": "Antarctique"}
+{"entite": "Llano Point", "valeur": "Antarctique"}
+{"entite": "Lockley Point", "valeur": "Antarctique"}
+{"entite": "Lofgren Peninsula", "valeur": "Antarctique"}
+{"entite": "Loma", "valeur": "Antarctique"}
+{"entite": "Longing Peninsula", "valeur": "Antarctique"}
+{"entite": "Longridge Head", "valeur": "Antarctique"}
+{"entite": "Longyan Jiao", "valeur": "Antarctique"}
+{"entite": "López", "valeur": "Antarctique"}
+{"entite": "Loqui Point", "valeur": "Antarctique"}
+{"entite": "Losardo", "valeur": "Antarctique"}
+{"entite": "Loubat Point", "valeur": "Antarctique"}
+{"entite": "Lovegrove Point", "valeur": "Antarctique"}
+{"entite": "Lovers Point", "valeur": "Amérique du Nord"}
+{"entite": "Low Head", "valeur": "Antarctique"}
+{"entite": "Low Tongue", "valeur": "Antarctique"}
+{"entite": "Luck Point", "valeur": "Antarctique"}
+{"entite": "Luis Cruz", "valeur": "Antarctique"}
+{"entite": "Luisoni", "valeur": "Antarctique"}
+{"entite": "Lukovit Point", "valeur": "Antarctique"}
+{"entite": "Lunik Point", "valeur": "Antarctique"}
+{"entite": "Lynch Point", "valeur": "Antarctique"}
+{"entite": "M'Kean Point", "valeur": "Antarctique"}
+{"entite": "Mabus Point", "valeur": "Antarctique"}
+{"entite": "Macaroni Point", "valeur": "Antarctique"}
+{"entite": "MacDonald Point", "valeur": "Antarctique"}
+{"entite": "Macey Peninsula", "valeur": "Antarctique"}
+{"entite": "Mackay Point", "valeur": "Antarctique"}
+{"entite": "Mackemer Point", "valeur": "Antarctique"}
+{"entite": "Mackenzie Peninsula", "valeur": "Antarctique"}
+{"entite": "Macleod Point", "valeur": "Antarctique"}
+{"entite": "MacMillan Point", "valeur": "Antarctique"}
+{"entite": "Madell Point", "valeur": "Antarctique"}
+{"entite": "Madzharovo Point", "valeur": "Antarctique"}
+{"entite": "Magnitologov", "valeur": "Antarctique"}
+{"entite": "Maignan Point", "valeur": "Antarctique"}
+{"entite": "Maipú", "valeur": "Antarctique"}
+{"entite": "Malczewski Point", "valeur": "Antarctique"}
+{"entite": "Mallory Point", "valeur": "Antarctique"}
+{"entite": "Mamelon Point", "valeur": "Antarctique"}
+{"entite": "Mancilla", "valeur": "Antarctique"}
+{"entite": "Manczarski Point", "valeur": "Antarctique"}
+{"entite": "Mango", "valeur": "Antarctique"}
+{"entite": "Manhue", "valeur": "Antarctique"}
+{"entite": "Mann", "valeur": "Antarctique"}
+{"entite": "Manquilef Head", "valeur": "Antarctique"}
+{"entite": "Mansfield Point", "valeur": "Antarctique"}
+{"entite": "Marble Point", "valeur": "Antarctique"}
+{"entite": "Marescot Point", "valeur": "Antarctique"}
+{"entite": "De Margerie", "valeur": "Antarctique"}
+{"entite": "Marina Point", "valeur": "Antarctique"}
+{"entite": "Marinelli Head", "valeur": "Antarctique"}
+{"entite": "Marjan Peninsula", "valeur": "Europe"}
+{"entite": "Markeli Point", "valeur": "Antarctique"}
+{"entite": "Marks Point", "valeur": "Antarctique"}
+{"entite": "Marr Point", "valeur": "Antarctique"}
+{"entite": "Martillo", "valeur": "Antarctique"}
+{"entite": "Martínez", "valeur": "Antarctique"}
+{"entite": "Martins Head", "valeur": "Antarctique"}
+{"entite": "Maruhana", "valeur": "Antarctique"}
+{"entite": "Mary", "valeur": "Antarctique"}
+{"entite": "Mast Point", "valeur": "Antarctique"}
+{"entite": "Mather Peninsula", "valeur": "Antarctique"}
+{"entite": "Mathewson Point", "valeur": "Antarctique"}
+{"entite": "Matkah Point", "valeur": "Antarctique"}
+{"entite": "Maurstad Point", "valeur": "Antarctique"}
+{"entite": "Mazurek Point", "valeur": "Antarctique"}
+{"entite": "Mazza Point", "valeur": "Antarctique"}
+{"entite": "Mazzei", "valeur": "Antarctique"}
+{"entite": "McCall Point", "valeur": "Antarctique"}
+{"entite": "McCann Point", "valeur": "Antarctique"}
+{"entite": "McCarthy Point", "valeur": "Antarctique"}
+{"entite": "McDonald Point", "valeur": "Antarctique"}
+{"entite": "McGann Point", "valeur": "Antarctique"}
+{"entite": "McLean Point", "valeur": "Antarctique"}
+{"entite": "McSweeney Point", "valeur": "Antarctique"}
+{"entite": "Meier Point", "valeur": "Antarctique"}
+{"entite": "Melba Peninsula", "valeur": "Antarctique"}
+{"entite": "Melta Point", "valeur": "Antarctique"}
+{"entite": "Melville Peninsula", "valeur": "Antarctique"}
+{"entite": "Melville Point", "valeur": "Antarctique"}
+{"entite": "Meneses", "valeur": "Antarctique"}
+{"entite": "Mercury Point", "valeur": "Antarctique"}
+{"entite": "Merrick Point", "valeur": "Antarctique"}
+{"entite": "Mersey Spit", "valeur": "Antarctique"}
+{"entite": "Messera", "valeur": "Antarctique"}
+{"entite": "Metchnikoff Point", "valeur": "Antarctique"}
+{"entite": "Meusnier Point", "valeur": "Antarctique"}
+{"entite": "Mezdra Point", "valeur": "Antarctique"}
+{"entite": "Michajlovodden", "valeur": "Antarctique"}
+{"entite": "Micou Point", "valeur": "Antarctique"}
+{"entite": "Miers Bluff", "valeur": "Antarctique"}
+{"entite": "Miletich Point", "valeur": "Antarctique"}
+{"entite": "Milkov Point", "valeur": "Antarctique"}
+{"entite": "Miller Bluffs", "valeur": "Antarctique"}
+{"entite": "Miller Point", "valeur": "Antarctique"}
+{"entite": "Milosz Point", "valeur": "Antarctique"}
+{"entite": "Minna Bluff", "valeur": "Antarctique"}
+{"entite": "Minna Hook", "valeur": "Antarctique"}
+{"entite": "Minot Point", "valeur": "Antarctique"}
+{"entite": "Minstrel Point", "valeur": "Antarctique"}
+{"entite": "Mirnyj", "valeur": "Antarctique"}
+{"entite": "Miró", "valeur": "Antarctique"}
+{"entite": "Mirounga Point", "valeur": "Antarctique"}
+{"entite": "Mirror Point", "valeur": "Antarctique"}
+{"entite": "Misiones", "valeur": "Antarctique"}
+{"entite": "Misnomer Point", "valeur": "Antarctique"}
+{"entite": "Mitchell Peninsula", "valeur": "Antarctique"}
+{"entite": "Mitchell Point", "valeur": "Antarctique"}
+{"entite": "Möbius", "valeur": "Antarctique"}
+{"entite": "Moe Point", "valeur": "Antarctique"}
+{"entite": "Mohaupt Point", "valeur": "Antarctique"}
+{"entite": "Molina", "valeur": "Antarctique"}
+{"entite": "Molina Point", "valeur": "Antarctique"}
+{"entite": "Monflier Point", "valeur": "Antarctique"}
+{"entite": "Monnier Point", "valeur": "Antarctique"}
+{"entite": "Monroe Point, South Shetland Islands", "valeur": "Antarctique"}
+{"entite": "Monteverdi Peninsula", "valeur": "Antarctique"}
+{"entite": "Monti", "valeur": "Antarctique"}
+{"entite": "Moody Point", "valeur": "Antarctique"}
+{"entite": "Moonlight Point", "valeur": "Antarctique"}
+{"entite": "Moore Point", "valeur": "Antarctique"}
+{"entite": "Mooring Point", "valeur": "Antarctique"}
+{"entite": "Moraine Point", "valeur": "Antarctique"}
+{"entite": "Moreno, punta", "valeur": "Antarctique"}
+{"entite": "Moreton Point", "valeur": "Antarctique"}
+{"entite": "Morris Head", "valeur": "Antarctique"}
+{"entite": "Morro", "valeur": "Antarctique"}
+{"entite": "Morro del Medio", "valeur": "Antarctique"}
+{"entite": "Mossman Peninsula", "valeur": "Antarctique"}
+{"entite": "Mothes Point", "valeur": "Antarctique"}
+{"entite": "Motian Jiao", "valeur": "Antarctique"}
+{"entite": "Moureaux Point", "valeur": "Antarctique"}
+{"entite": "Moutonnée Point", "valeur": "Antarctique"}
+{"entite": "Moyes Point", "valeur": "Antarctique"}
+{"entite": "Mule Peninsula", "valeur": "Antarctique"}
+{"entite": "Mule Point", "valeur": "Antarctique"}
+{"entite": "Munita", "valeur": "Antarctique"}
+{"entite": "Muñoz", "valeur": "Antarctique"}
+{"entite": "Munoz Point", "valeur": "Antarctique"}
+{"entite": "Murray Foreland", "valeur": "Antarctique"}
+{"entite": "Muskeg Gap", "valeur": "Antarctique"}
+{"entite": "Mys Goldobina", "valeur": "Asie"}
+{"entite": "Nagagutsu Point", "valeur": "Antarctique"}
+{"entite": "Naitou Jiao", "valeur": "Antarctique"}
+{"entite": "Narębski Point", "valeur": "Antarctique"}
+{"entite": "Nautilus Head", "valeur": "Antarctique"}
+{"entite": "Navarrete", "valeur": "Antarctique"}
+{"entite": "Navy Point", "valeur": "Antarctique"}
+{"entite": "Nebbet", "valeur": "Antarctique"}
+{"entite": "Nebles Point", "valeur": "Antarctique"}
+{"entite": "Nedelya Point", "valeur": "Antarctique"}
+{"entite": "Negra Point", "valeur": "Antarctique"}
+{"entite": "Nelson Point", "valeur": "Antarctique"}
+{"entite": "Neozhidannyj Peninsula", "valeur": "Antarctique"}
+{"entite": "Neumayer", "valeur": "Antarctique"}
+{"entite": "Neves", "valeur": "Antarctique"}
+{"entite": "Newburgh Point", "valeur": "Antarctique"}
+{"entite": "Newell Point", "valeur": "Antarctique"}
+{"entite": "Newport Point", "valeur": "Antarctique"}
+{"entite": "Neyt Point", "valeur": "Antarctique"}
+{"entite": "Niban-higasi Iwa", "valeur": "Antarctique"}
+{"entite": "Niban-nisi Iwa", "valeur": "Antarctique"}
+{"entite": "Nicholson Peninsula", "valeur": "Antarctique"}
+{"entite": "Nicolás", "valeur": "Antarctique"}
+{"entite": "Nigger Head", "valeur": "Antarctique"}
+{"entite": "Nikopol Point", "valeur": "Antarctique"}
+{"entite": "Nikyup Point", "valeur": "Antarctique"}
+{"entite": "Niutou Bandao", "valeur": "Antarctique"}
+{"entite": "Niuzui Jiao", "valeur": "Antarctique"}
+{"entite": "Noble", "valeur": "Antarctique"}
+{"entite": "Nordkap", "valeur": "Antarctique"}
+{"entite": "Norsel Point", "valeur": "Antarctique"}
+{"entite": "Norseman Point", "valeur": "Antarctique"}
+{"entite": "North Foreland", "valeur": "Antarctique"}
+{"entite": "North Point", "valeur": "Antarctique"}
+{"entite": "Northrup Head", "valeur": "Antarctique"}
+{"entite": "Norway Point", "valeur": "Amérique du Nord"}
+{"entite": "Notter Point", "valeur": "Antarctique"}
+{"entite": "Noville Peninsula", "valeur": "Antarctique"}
+{"entite": "Novosilskiy", "valeur": "Antarctique"}
+{"entite": "Nunez Point", "valeur": "Antarctique"}
+{"entite": "Nygren Point", "valeur": "Antarctique"}
+{"entite": "O'Cain Point", "valeur": "Antarctique"}
+{"entite": "O'Neal Point", "valeur": "Antarctique"}
+{"entite": "O'Neill Point", "valeur": "Antarctique"}
+{"entite": "Obitel Peninsula", "valeur": "Antarctique"}
+{"entite": "Ocoa Point", "valeur": "Antarctique"}
+{"entite": "Odontoceto", "valeur": "Antarctique"}
+{"entite": "Oeste", "valeur": "Antarctique"}
+{"entite": "Ogosta Point", "valeur": "Antarctique"}
+{"entite": "Old Mans Head", "valeur": "Antarctique"}
+{"entite": "Oliva", "valeur": "Antarctique"}
+{"entite": "Olivine Point", "valeur": "Antarctique"}
+{"entite": "Opornyy Point", "valeur": "Antarctique"}
+{"entite": "Ore Point", "valeur": "Antarctique"}
+{"entite": "Organpipe Point", "valeur": "Antarctique"}
+{"entite": "Orheim Point", "valeur": "Antarctique"}
+{"entite": "Orión Point", "valeur": "Antarctique"}
+{"entite": "Ortiz Point", "valeur": "Antarctique"}
+{"entite": "Óscar", "valeur": "Antarctique"}
+{"entite": "Oscar Point", "valeur": "Antarctique"}
+{"entite": "Ostryj, mys", "valeur": "Antarctique"}
+{"entite": "Ostryy Point", "valeur": "Antarctique"}
+{"entite": "Otome Point", "valeur": "Antarctique"}
+{"entite": "Oyayubi Point", "valeur": "Antarctique"}
+{"entite": "Pacheco", "valeur": "Antarctique"}
+{"entite": "Pageant Point", "valeur": "Antarctique"}
+{"entite": "Palaver Point", "valeur": "Antarctique"}
+{"entite": "Palermo", "valeur": "Antarctique"}
+{"entite": "Palmer", "valeur": "Antarctique"}
+{"entite": "Palmer Point", "valeur": "Antarctique"}
+{"entite": "Paloma", "valeur": "Antarctique"}
+{"entite": "Pandemonium Point", "valeur": "Antarctique"}
+{"entite": "Panorama Point", "valeur": "Antarctique"}
+{"entite": "Panova", "valeur": "Antarctique"}
+{"entite": "Pantomime Point", "valeur": "Antarctique"}
+{"entite": "Paragon Point", "valeur": "Antarctique"}
+{"entite": "Parker Peninsula", "valeur": "Antarctique"}
+{"entite": "Parry Peninsula", "valeur": "Antarctique"}
+{"entite": "Parvenu Point", "valeur": "Antarctique"}
+{"entite": "Pasillo", "valeur": "Antarctique"}
+{"entite": "Paso", "valeur": "Antarctique"}
+{"entite": "Pata de perro", "valeur": "Antarctique"}
+{"entite": "Patcha Point", "valeur": "Antarctique"}
+{"entite": "Patrick Point", "valeur": "Antarctique"}
+{"entite": "Paumelle Point", "valeur": "Antarctique"}
+{"entite": "Pavie", "valeur": "Antarctique"}
+{"entite": "Pavlikeni Point", "valeur": "Antarctique"}
+{"entite": "Pazardzhik Point", "valeur": "Antarctique"}
+{"entite": "Pefaur Peninsula", "valeur": "Antarctique"}
+{"entite": "Pegmatite Point", "valeur": "Antarctique"}
+{"entite": "Pelayo", "valeur": "Antarctique"}
+{"entite": "Pelletan Point", "valeur": "Antarctique"}
+{"entite": "Pelusa", "valeur": "Antarctique"}
+{"entite": "Peña", "valeur": "Antarctique"}
+{"entite": "Penelope Point", "valeur": "Antarctique"}
+{"entite": "Penfold Point", "valeur": "Antarctique"}
+{"entite": "Penglai Bandao", "valeur": "Antarctique"}
+{"entite": "Penguin Point", "valeur": "Antarctique"}
+{"entite": "péninsule Adare", "valeur": "Antarctique"}
+{"entite": "péninsule Antarctique", "valeur": "Antarctique"}
+{"entite": "péninsule Arctowski", "valeur": "Antarctique"}
+{"entite": "Péninsule Bailey", "valeur": "Antarctique"}
+{"entite": "péninsule Beethoven", "valeur": "Antarctique"}
+{"entite": "Péninsule Bonaparte", "valeur": "Antarctique"}
+{"entite": "péninsule Brown", "valeur": "Antarctique"}
+{"entite": "péninsule d'Allison", "valeur": "Antarctique"}
+{"entite": "péninsule de Clark", "valeur": "Antarctique"}
+{"entite": "péninsule de Fletcher", "valeur": "Antarctique"}
+{"entite": "péninsule de Guest", "valeur": "Antarctique"}
+{"entite": "péninsule de Hut Point", "valeur": "Antarctique"}
+{"entite": "péninsule de Kabetogama", "valeur": "Amérique du Nord"}
+{"entite": "péninsule de King", "valeur": "Antarctique"}
+{"entite": "péninsule de la Trinité", "valeur": "Antarctique"}
+{"entite": "péninsule de Mawson", "valeur": "Antarctique"}
+{"entite": "Péninsule de Merz", "valeur": "Antarctique"}
+{"entite": "péninsule de Riiser-Larsen", "valeur": "Antarctique"}
+{"entite": "péninsule de Rydberg", "valeur": "Antarctique"}
+{"entite": "péninsule du Bear", "valeur": "Antarctique"}
+{"entite": "péninsule du Morrazo", "valeur": "Europe"}
+{"entite": "péninsule Fildes", "valeur": "Antarctique"}
+{"entite": "péninsule Ibérique", "valeur": "Europe"}
+{"entite": "Péninsule Krylov", "valeur": "Antarctique"}
+{"entite": "Péninsule Magnier", "valeur": "Antarctique"}
+{"entite": "péninsule Martin", "valeur": "Antarctique"}
+{"entite": "péninsule Mouraviov-Amourski", "valeur": "Asie"}
+{"entite": "Péninsule Pasteur", "valeur": "Antarctique"}
+{"entite": "péninsule Scandinave", "valeur": "Europe"}
+{"entite": "péninsule Schmidt", "valeur": "Antarctique"}
+{"entite": "péninsule supérieure du Michigan", "valeur": "Amérique du Nord"}
+{"entite": "Penny Point", "valeur": "Antarctique"}
+{"entite": "Peñón de Vélez de la Gomera", "valeur": "Afrique"}
+{"entite": "Perce Point", "valeur": "Antarctique"}
+{"entite": "Perekhodnyj", "valeur": "Antarctique"}
+{"entite": "Perelik Point", "valeur": "Antarctique"}
+{"entite": "Pernik Peninsula", "valeur": "Antarctique"}
+{"entite": "Pescadero Point", "valeur": "Amérique du Nord"}
+{"entite": "Pesce Peninsula", "valeur": "Antarctique"}
+{"entite": "Petra Chaplina", "valeur": "Antarctique"}
+{"entite": "Petroff Point", "valeur": "Antarctique"}
+{"entite": "Phantom Point", "valeur": "Antarctique"}
+{"entite": "Phare", "valeur": "Antarctique"}
+{"entite": "Phoques de Weddel", "valeur": "Antarctique"}
+{"entite": "Photogrammetry Point", "valeur": "Antarctique"}
+{"entite": "Piggott Peninsula", "valeur": "Antarctique"}
+{"entite": "Pincer Point", "valeur": "Antarctique"}
+{"entite": "Pinel Point", "valeur": "Antarctique"}
+{"entite": "Pingüino", "valeur": "Antarctique"}
+{"entite": "Pique", "valeur": "Antarctique"}
+{"entite": "Pirie Peninsula", "valeur": "Antarctique"}
+{"entite": "Piris", "valeur": "Antarctique"}
+{"entite": "Pissano", "valeur": "Antarctique"}
+{"entite": "Pitt Point", "valeur": "Antarctique"}
+{"entite": "Pjatnenkova", "valeur": "Antarctique"}
+{"entite": "Planck Point", "valeur": "Antarctique"}
+{"entite": "La Plata Point", "valeur": "Antarctique"}
+{"entite": "Platt Point", "valeur": "Antarctique"}
+{"entite": "Plaza Point", "valeur": "Antarctique"}
+{"entite": "Plumb Bob Point", "valeur": "Antarctique"}
+{"entite": "Plunket Point", "valeur": "Antarctique"}
+{"entite": "Poblete", "valeur": "Antarctique"}
+{"entite": "point Alden", "valeur": "Antarctique"}
+{"entite": "point Berlioz", "valeur": "Antarctique"}
+{"entite": "Point Davis", "valeur": "Antarctique"}
+{"entite": "Point de Cézembre", "valeur": "Antarctique"}
+{"entite": "Point Disappointment", "valeur": "Antarctique"}
+{"entite": "Point Hennequin", "valeur": "Antarctique"}
+{"entite": "Point Joe", "valeur": "Amérique du Nord"}
+{"entite": "Point Lola", "valeur": "Antarctique"}
+{"entite": "Point Martin", "valeur": "Antarctique"}
+{"entite": "Point Moreno", "valeur": "Antarctique"}
+{"entite": "Point of Arches", "valeur": "Amérique du Nord"}
+{"entite": "Point Rae", "valeur": "Antarctique"}
+{"entite": "Point Retreat", "valeur": "Antarctique"}
+{"entite": "Point Smellie", "valeur": "Antarctique"}
+{"entite": "Point Thomas", "valeur": "Antarctique"}
+{"entite": "Point Widdows", "valeur": "Antarctique"}
+{"entite": "Point Wild", "valeur": "Antarctique"}
+{"entite": "Point Williams", "valeur": "Antarctique"}
+{"entite": "Point Wordie", "valeur": "Antarctique"}
+{"entite": "pointe Brennan", "valeur": "Antarctique"}
+{"entite": "Pointe Cole", "valeur": "Antarctique"}
+{"entite": "Pointe Damoy", "valeur": "Antarctique"}
+{"entite": "pointe de Chassiron", "valeur": "Europe"}
+{"entite": "pointe de Langevin", "valeur": "Afrique"}
+{"entite": "Pointe des Embruns", "valeur": "Antarctique"}
+{"entite": "Pointe du Pourquoi-Pas ?", "valeur": "Antarctique"}
+{"entite": "pointe du Tremblet", "valeur": "Afrique"}
+{"entite": "Pointe Ebba", "valeur": "Antarctique"}
+{"entite": "Pointe Noire", "valeur": "Antarctique"}
+{"entite": "Pointe Pfrogner", "valeur": "Antarctique"}
+{"entite": "Pointe Saine Anne", "valeur": "Europe"}
+{"entite": "Polar-3-Halbinsel", "valeur": "Antarctique"}
+{"entite": "Polar Bear Point", "valeur": "Antarctique"}
+{"entite": "Polish Navy Point", "valeur": "Antarctique"}
+{"entite": "Poljarnika Romanova", "valeur": "Antarctique"}
+{"entite": "Polls Head", "valeur": "Amérique du Nord"}
+{"entite": "Polynesia Point", "valeur": "Antarctique"}
+{"entite": "Pomorie Point", "valeur": "Antarctique"}
+{"entite": "Popova", "valeur": "Antarctique"}
+{"entite": "Portal Point", "valeur": "Antarctique"}
+{"entite": "Porteous Point", "valeur": "Antarctique"}
+{"entite": "Poste Point", "valeur": "Antarctique"}
+{"entite": "Potter Peninsula", "valeur": "Antarctique"}
+{"entite": "Pottinger Point", "valeur": "Antarctique"}
+{"entite": "Powell Point", "valeur": "Antarctique"}
+{"entite": "Pram Point", "valeur": "Antarctique"}
+{"entite": "Predel Point", "valeur": "Antarctique"}
+{"entite": "Prehn Peninsula", "valeur": "Antarctique"}
+{"entite": "President Head", "valeur": "Antarctique"}
+{"entite": "Presque Isle", "valeur": "Amérique du Nord"}
+{"entite": "Preston Point", "valeur": "Antarctique"}
+{"entite": "Priddy Promontory", "valeur": "Antarctique"}
+{"entite": "Prime Head", "valeur": "Antarctique"}
+{"entite": "Primera Junta", "valeur": "Antarctique"}
+{"entite": "Principal Point", "valeur": "Antarctique"}
+{"entite": "Pripek Point", "valeur": "Antarctique"}
+{"entite": "Proa", "valeur": "Antarctique"}
+{"entite": "Prong Point", "valeur": "Antarctique"}
+{"entite": "Prospect Point", "valeur": "Antarctique"}
+{"entite": "Provadiya Hook", "valeur": "Antarctique"}
+{"entite": "Punta Antonelli", "valeur": "Antarctique"}
+{"entite": "Punta Antonio", "valeur": "Antarctique"}
+{"entite": "Punta de la Galera", "valeur": "Europe"}
+{"entite": "Punta de las Entinas", "valeur": "Europe"}
+{"entite": "Punta Fidelidad", "valeur": "Antarctique"}
+{"entite": "Punta Gloria", "valeur": "Antarctique"}
+{"entite": "Punta Guzmán", "valeur": "Antarctique"}
+{"entite": "Punta Lavalle", "valeur": "Antarctique"}
+{"entite": "Punta Lobos", "valeur": "Antarctique"}
+{"entite": "Punta Maruja", "valeur": "Antarctique"}
+{"entite": "Punta Popa", "valeur": "Antarctique"}
+{"entite": "Punta Sommers", "valeur": "Antarctique"}
+{"entite": "Purdy Point", "valeur": "Antarctique"}
+{"entite": "Pursuit Point", "valeur": "Antarctique"}
+{"entite": "Py Point", "valeur": "Antarctique"}
+{"entite": "Pylon Point", "valeur": "Antarctique"}
+{"entite": "Pynten", "valeur": "Antarctique"}
+{"entite": "Pyroxenite Promontory", "valeur": "Antarctique"}
+{"entite": "Quartermain Point", "valeur": "Antarctique"}
+{"entite": "Quebrada", "valeur": "Antarctique"}
+{"entite": "Quetin Head", "valeur": "Antarctique"}
+{"entite": "Quinton Point", "valeur": "Antarctique"}
+{"entite": "Rabot Point", "valeur": "Antarctique"}
+{"entite": "Radev Point", "valeur": "Antarctique"}
+{"entite": "Radibosh Point", "valeur": "Antarctique"}
+{"entite": "Radigan Point", "valeur": "Antarctique"}
+{"entite": "Raduil Point", "valeur": "Antarctique"}
+{"entite": "Rahir Point", "valeur": "Antarctique"}
+{"entite": "Raketa Peninsula", "valeur": "Antarctique"}
+{"entite": "Rakusa Point", "valeur": "Antarctique"}
+{"entite": "Ramage Point", "valeur": "Antarctique"}
+{"entite": "Ramirez", "valeur": "Antarctique"}
+{"entite": "Rancho Point", "valeur": "Antarctique"}
+{"entite": "Randy Point", "valeur": "Antarctique"}
+{"entite": "Ranfurly Point", "valeur": "Antarctique"}
+{"entite": "Rapa Nui Point", "valeur": "Antarctique"}
+{"entite": "Rasmussen Peninsula", "valeur": "Antarctique"}
+{"entite": "Raven Peninsula", "valeur": "Antarctique"}
+{"entite": "Ray Promontory", "valeur": "Antarctique"}
+{"entite": "Rayner Point", "valeur": "Antarctique"}
+{"entite": "Raz", "valeur": "Antarctique"}
+{"entite": "Razlom Point", "valeur": "Antarctique"}
+{"entite": "Rebrovo Point", "valeur": "Antarctique"}
+{"entite": "Reclus Peninsula", "valeur": "Antarctique"}
+{"entite": "Red Rock Ridge", "valeur": "Antarctique"}
+{"entite": "Redondo Point", "valeur": "Antarctique"}
+{"entite": "Redshaw Point", "valeur": "Antarctique"}
+{"entite": "Reeves Peninsula", "valeur": "Antarctique"}
+{"entite": "Regreso", "valeur": "Antarctique"}
+{"entite": "Relyovo Peninsula", "valeur": "Antarctique"}
+{"entite": "Remetalk Point", "valeur": "Antarctique"}
+{"entite": "René", "valeur": "Antarctique"}
+{"entite": "Renier Point", "valeur": "Antarctique"}
+{"entite": "Renzo", "valeur": "Antarctique"}
+{"entite": "Rescue Point", "valeur": "Antarctique"}
+{"entite": "Rethval Point", "valeur": "Antarctique"}
+{"entite": "Return Point", "valeur": "Antarctique"}
+{"entite": "Revsnes", "valeur": "Antarctique"}
+{"entite": "Reyes", "valeur": "Antarctique"}
+{"entite": "Rhodes Head", "valeur": "Antarctique"}
+{"entite": "Rhyolite Head", "valeur": "Antarctique"}
+{"entite": "Richard Point", "valeur": "Antarctique"}
+{"entite": "Rieckvorgebirge", "valeur": "Antarctique"}
+{"entite": "Rila Point", "valeur": "Antarctique"}
+{"entite": "Rink Point", "valeur": "Antarctique"}
+{"entite": "Rip Point", "valeur": "Antarctique"}
+{"entite": "Riquelme Point", "valeur": "Antarctique"}
+{"entite": "Rish Point", "valeur": "Antarctique"}
+{"entite": "Ritchie Point", "valeur": "Antarctique"}
+{"entite": "Robert Point", "valeur": "Antarctique"}
+{"entite": "Robles", "valeur": "Antarctique"}
+{"entite": "Roca Roja", "valeur": "Antarctique"}
+{"entite": "Rock Pile Point", "valeur": "Antarctique"}
+{"entite": "Rocky Point", "valeur": "Antarctique"}
+{"entite": "Rocosa", "valeur": "Antarctique"}
+{"entite": "Rodgers Point", "valeur": "Antarctique"}
+{"entite": "Rog, mys", "valeur": "Antarctique"}
+{"entite": "Rojas", "valeur": "Antarctique"}
+{"entite": "Rol", "valeur": "Antarctique"}
+{"entite": "Roman Four Promontory", "valeur": "Antarctique"}
+{"entite": "Romero", "valeur": "Antarctique"}
+{"entite": "Rondel", "valeur": "Antarctique"}
+{"entite": "Rongel Point", "valeur": "Antarctique"}
+{"entite": "Rootes Point", "valeur": "Antarctique"}
+{"entite": "Roper Point", "valeur": "Antarctique"}
+{"entite": "Rosario", "valeur": "Antarctique"}
+{"entite": "Roscoe Promontory", "valeur": "Antarctique"}
+{"entite": "Rose Point", "valeur": "Antarctique"}
+{"entite": "Rosenau Head", "valeur": "Antarctique"}
+{"entite": "Ross Point", "valeur": "Antarctique"}
+{"entite": "Rossa Point", "valeur": "Antarctique"}
+{"entite": "Rossini Point", "valeur": "Antarctique"}
+{"entite": "Rothera Point", "valeur": "Antarctique"}
+{"entite": "Rouch Point", "valeur": "Antarctique"}
+{"entite": "Roullin Point", "valeur": "Antarctique"}
+{"entite": "Round Point", "valeur": "Antarctique"}
+{"entite": "Roundel Point", "valeur": "Antarctique"}
+{"entite": "Roundham Head", "valeur": "Europe"}
+{"entite": "Route Point", "valeur": "Antarctique"}
+{"entite": "Rowe Point", "valeur": "Antarctique"}
+{"entite": "Royak Point", "valeur": "Antarctique"}
+{"entite": "Rozhen Peninsula", "valeur": "Antarctique"}
+{"entite": "Rozo Point", "valeur": "Antarctique"}
+{"entite": "Rubio", "valeur": "Antarctique"}
+{"entite": "Rudolphy Point", "valeur": "Antarctique"}
+{"entite": "Ruin Point", "valeur": "Antarctique"}
+{"entite": "Rundingen", "valeur": "Antarctique"}
+{"entite": "Rundvågs Head", "valeur": "Antarctique"}
+{"entite": "Ruso", "valeur": "Antarctique"}
+{"entite": "Russeskaget", "valeur": "Antarctique"}
+{"entite": "Ryan Point", "valeur": "Antarctique"}
+{"entite": "Rybachiy", "valeur": "Antarctique"}
+{"entite": "Rybij Khvost Gulf", "valeur": "Antarctique"}
+{"entite": "Ryswyck Point", "valeur": "Antarctique"}
+{"entite": "Ryûgû-kita Misaki", "valeur": "Antarctique"}
+{"entite": "Ryûgû-nisi Misaki", "valeur": "Antarctique"}
+{"entite": "Saavedra", "valeur": "Antarctique"}
+{"entite": "Sadala Point", "valeur": "Antarctique"}
+{"entite": "Saddleback Point", "valeur": "Antarctique"}
+{"entite": "Sadler Point", "valeur": "Antarctique"}
+{"entite": "Saint Rita Point", "valeur": "Antarctique"}
+{"entite": "Sakellari Peninsula", "valeur": "Antarctique"}
+{"entite": "Salas", "valeur": "Antarctique"}
+{"entite": "Salvesen", "valeur": "Antarctique"}
+{"entite": "Samojlova", "valeur": "Antarctique"}
+{"entite": "Samuel Point", "valeur": "Antarctique"}
+{"entite": "San Bernardo", "valeur": "Antarctique"}
+{"entite": "San Carlos Point", "valeur": "Antarctique"}
+{"entite": "San Eladio Point", "valeur": "Antarctique"}
+{"entite": "San Luis", "valeur": "Antarctique"}
+{"entite": "Sandanski Point", "valeur": "Antarctique"}
+{"entite": "Sandneset Point", "valeur": "Antarctique"}
+{"entite": "Sanhueza", "valeur": "Antarctique"}
+{"entite": "Sanjiao Bandao", "valeur": "Antarctique"}
+{"entite": "Santa Cruz Point", "valeur": "Antarctique"}
+{"entite": "Sartorius Point", "valeur": "Antarctique"}
+{"entite": "Saunders Point", "valeur": "Antarctique"}
+{"entite": "Sawadowskij Hukk", "valeur": "Antarctique"}
+{"entite": "Scalpel Point", "valeur": "Antarctique"}
+{"entite": "Scesa Point", "valeur": "Antarctique"}
+{"entite": "Schist Point", "valeur": "Antarctique"}
+{"entite": "Schulz Point", "valeur": "Antarctique"}
+{"entite": "Scorseby Head", "valeur": "Antarctique"}
+{"entite": "Scott Peninsula", "valeur": "Antarctique"}
+{"entite": "Seabee Hook", "valeur": "Antarctique"}
+{"entite": "Seal Point", "valeur": "Antarctique"}
+{"entite": "Seaplane Point", "valeur": "Antarctique"}
+{"entite": "Seaver", "valeur": "Antarctique"}
+{"entite": "Sejong Cape", "valeur": "Antarctique"}
+{"entite": "Senia Point", "valeur": "Antarctique"}
+{"entite": "Sepúlveda Point", "valeur": "Antarctique"}
+{"entite": "Serrano Point", "valeur": "Antarctique"}
+{"entite": "Serrucho", "valeur": "Antarctique"}
+{"entite": "Seryj", "valeur": "Antarctique"}
+{"entite": "Sevar Point", "valeur": "Antarctique"}
+{"entite": "Shag Point", "valeur": "Antarctique"}
+{"entite": "Shandong Bandao", "valeur": "Antarctique"}
+{"entite": "Shanty Point", "valeur": "Antarctique"}
+{"entite": "Shelton Head", "valeur": "Antarctique"}
+{"entite": "Sheppard Point", "valeur": "Antarctique"}
+{"entite": "Sherlac Point", "valeur": "Antarctique"}
+{"entite": "Sherrell Point", "valeur": "Antarctique"}
+{"entite": "Shimen Bandao", "valeur": "Antarctique"}
+{"entite": "Shiver Point", "valeur": "Antarctique"}
+{"entite": "Shmidt Point", "valeur": "Antarctique"}
+{"entite": "Shostakovich Peninsula", "valeur": "Antarctique"}
+{"entite": "Shults Peninsula", "valeur": "Antarctique"}
+{"entite": "Siccar Point", "valeur": "Europe"}
+{"entite": "Siddins Point", "valeur": "Antarctique"}
+{"entite": "Siffrey Point", "valeur": "Antarctique"}
+{"entite": "Sigma Point", "valeur": "Antarctique"}
+{"entite": "Sigritsa Point", "valeur": "Antarctique"}
+{"entite": "Simitli Point", "valeur": "Antarctique"}
+{"entite": "Simonov", "valeur": "Antarctique"}
+{"entite": "Simpson Head", "valeur": "Antarctique"}
+{"entite": "Sinaï", "valeur": "Asie"}
+{"entite": "Sindel Point", "valeur": "Antarctique"}
+{"entite": "Skagen Point", "valeur": "Antarctique"}
+{"entite": "Skal'nyj", "valeur": "Antarctique"}
+{"entite": "Skalina Point", "valeur": "Antarctique"}
+{"entite": "Skallevik Point", "valeur": "Antarctique"}
+{"entite": "Skarvsnes Foreland", "valeur": "Antarctique"}
+{"entite": "Skep Point", "valeur": "Antarctique"}
+{"entite": "Skottsberg Point", "valeur": "Antarctique"}
+{"entite": "Skrjabina", "valeur": "Antarctique"}
+{"entite": "Skvarca Headland", "valeur": "Antarctique"}
+{"entite": "Slab Point", "valeur": "Antarctique"}
+{"entite": "Sladun Peninsula", "valeur": "Antarctique"}
+{"entite": "Slav Point", "valeur": "Antarctique"}
+{"entite": "Slichter Foreland", "valeur": "Antarctique"}
+{"entite": "Småskeidet", "valeur": "Antarctique"}
+{"entite": "Smirnenski Point", "valeur": "Antarctique"}
+{"entite": "Smirnova", "valeur": "Antarctique"}
+{"entite": "Smitch Point", "valeur": "Antarctique"}
+{"entite": "Smith Peninsula", "valeur": "Antarctique"}
+{"entite": "Smith Point", "valeur": "Antarctique"}
+{"entite": "Smolyan Point", "valeur": "Antarctique"}
+{"entite": "Snowy Point", "valeur": "Antarctique"}
+{"entite": "Snyder Peninsula", "valeur": "Antarctique"}
+{"entite": "Sobral Peninsula", "valeur": "Antarctique"}
+{"entite": "Soffia, Punta", "valeur": "Antarctique"}
+{"entite": "Soldaditos", "valeur": "Antarctique"}
+{"entite": "De Solier", "valeur": "Antarctique"}
+{"entite": "Solnik Point", "valeur": "Antarctique"}
+{"entite": "Somovit Point", "valeur": "Antarctique"}
+{"entite": "Sonia Point", "valeur": "Antarctique"}
+{"entite": "Sotos Point", "valeur": "Antarctique"}
+{"entite": "Sotovyj", "valeur": "Antarctique"}
+{"entite": "South Cape", "valeur": "Antarctique"}
+{"entite": "South East Point", "valeur": "Antarctique"}
+{"entite": "South Point", "valeur": "Antarctique"}
+{"entite": "South-west Point", "valeur": "Antarctique"}
+{"entite": "Southard Promontory", "valeur": "Antarctique"}
+{"entite": "Spallanzani Point", "valeur": "Antarctique"}
+{"entite": "Spanish Point", "valeur": "Antarctique"}
+{"entite": "Sparadok Point", "valeur": "Antarctique"}
+{"entite": "Spark Point", "valeur": "Antarctique"}
+{"entite": "Spath Peninsula", "valeur": "Antarctique"}
+{"entite": "Spaulding Peninsula", "valeur": "Antarctique"}
+{"entite": "Spaull Point", "valeur": "Antarctique"}
+{"entite": "Speerschneider Point", "valeur": "Antarctique"}
+{"entite": "Speil Point", "valeur": "Antarctique"}
+{"entite": "Sperring Point", "valeur": "Antarctique"}
+{"entite": "Spike Cape", "valeur": "Antarctique"}
+{"entite": "Spit", "valeur": "Antarctique"}
+{"entite": "Spit Point", "valeur": "Antarctique"}
+{"entite": "Spring Point", "valeur": "Antarctique"}
+{"entite": "Spur Point", "valeur": "Antarctique"}
+{"entite": "Square Rock Point", "valeur": "Antarctique"}
+{"entite": "Stansbury Peninsula", "valeur": "Antarctique"}
+{"entite": "Stark Point", "valeur": "Antarctique"}
+{"entite": "Starr Peninsula", "valeur": "Antarctique"}
+{"entite": "Start Point", "valeur": "Antarctique"}
+{"entite": "Steeple Point", "valeur": "Antarctique"}
+{"entite": "Steinheil Point", "valeur": "Antarctique"}
+{"entite": "Steinnes", "valeur": "Antarctique"}
+{"entite": "Stene Point", "valeur": "Antarctique"}
+{"entite": "Stepana Murav'ëva", "valeur": "Antarctique"}
+{"entite": "Steregushchyy", "valeur": "Antarctique"}
+{"entite": "Stigant Point", "valeur": "Antarctique"}
+{"entite": "Stigsnæs", "valeur": "Europe"}
+{"entite": "Stinear Peninsula", "valeur": "Antarctique"}
+{"entite": "Stinker Point", "valeur": "Antarctique"}
+{"entite": "Stone Point", "valeur": "Antarctique"}
+{"entite": "Stonehocker Point", "valeur": "Antarctique"}
+{"entite": "Stoneley Point", "valeur": "Antarctique"}
+{"entite": "Stopes Point", "valeur": "Antarctique"}
+{"entite": "Store Point", "valeur": "Antarctique"}
+{"entite": "Stornes peninsula", "valeur": "Antarctique"}
+{"entite": "Storozhevoj Peninsula", "valeur": "Antarctique"}
+{"entite": "Stranger Point", "valeur": "Antarctique"}
+{"entite": "Strath Point", "valeur": "Antarctique"}
+{"entite": "Stresher Peninsula", "valeur": "Antarctique"}
+{"entite": "Stripes Promontory", "valeur": "Antarctique"}
+{"entite": "Stuart Point", "valeur": "Antarctique"}
+{"entite": "Studena Point", "valeur": "Antarctique"}
+{"entite": "Sucia", "valeur": "Antarctique"}
+{"entite": "Suffield Point", "valeur": "Antarctique"}
+{"entite": "Suhindol Point", "valeur": "Antarctique"}
+{"entite": "Suipacha", "valeur": "Antarctique"}
+{"entite": "Sustipan", "valeur": "Europe"}
+{"entite": "Svilengrad Peninsula", "valeur": "Antarctique"}
+{"entite": "Swan Point", "valeur": "Antarctique"}
+{"entite": "Swyers Point", "valeur": "Antarctique"}
+{"entite": "Sygit Point", "valeur": "Antarctique"}
+{"entite": "T'ulenij", "valeur": "Antarctique"}
+{"entite": "Tabarin Peninsula", "valeur": "Antarctique"}
+{"entite": "Tac", "valeur": "Antarctique"}
+{"entite": "Tachimachi Point", "valeur": "Antarctique"}
+{"entite": "Talbott Point", "valeur": "Antarctique"}
+{"entite": "Tama Point", "valeur": "Antarctique"}
+{"entite": "Tambor", "valeur": "Antarctique"}
+{"entite": "Tanxianjia Jiao", "valeur": "Antarctique"}
+{"entite": "Tarakchiev Point", "valeur": "Antarctique"}
+{"entite": "Tashtego Point", "valeur": "Antarctique"}
+{"entite": "Tay Head", "valeur": "Antarctique"}
+{"entite": "Taylor Point", "valeur": "Antarctique"}
+{"entite": "Tektonicheskij", "valeur": "Antarctique"}
+{"entite": "Telefon Point", "valeur": "Antarctique"}
+{"entite": "Terme Sud", "valeur": "Antarctique"}
+{"entite": "Terrada Point", "valeur": "Antarctique"}
+{"entite": "Terre d'Olav V", "valeur": "Europe"}
+{"entite": "Terre du Roi-Édouard-VII", "valeur": "Antarctique"}
+{"entite": "Terror Point", "valeur": "Antarctique"}
+{"entite": "Thanaron Point", "valeur": "Antarctique"}
+{"entite": "The Decanter", "valeur": "Antarctique"}
+{"entite": "The Divide", "valeur": "Antarctique"}
+{"entite": "The Flatiron", "valeur": "Antarctique"}
+{"entite": "The Spit", "valeur": "Antarctique"}
+{"entite": "The Toe", "valeur": "Antarctique"}
+{"entite": "The Turret", "valeur": "Antarctique"}
+{"entite": "Thompson Peninsula", "valeur": "Antarctique"}
+{"entite": "Thompson Point", "valeur": "Antarctique"}
+{"entite": "Thomson Head", "valeur": "Antarctique"}
+{"entite": "Thomson Point", "valeur": "Antarctique"}
+{"entite": "Thorne Point", "valeur": "Antarctique"}
+{"entite": "Three Sisters Point", "valeur": "Antarctique"}
+{"entite": "Thulla Point", "valeur": "Antarctique"}
+{"entite": "Thumb Point", "valeur": "Antarctique"}
+{"entite": "Tianlong Bandao", "valeur": "Antarctique"}
+{"entite": "Tickell Head", "valeur": "Antarctique"}
+{"entite": "Tierney Peninsula", "valeur": "Antarctique"}
+{"entite": "Tigrovy", "valeur": "Asie"}
+{"entite": "Tinglof Peninsula", "valeur": "Antarctique"}
+{"entite": "Tioga Point", "valeur": "Antarctique"}
+{"entite": "Tisné", "valeur": "Antarctique"}
+{"entite": "Tokarev", "valeur": "Antarctique"}
+{"entite": "Tonagh Promontory", "valeur": "Antarctique"}
+{"entite": "Toro Point", "valeur": "Antarctique"}
+{"entite": "Tottsuki Point", "valeur": "Antarctique"}
+{"entite": "Towle Point", "valeur": "Antarctique"}
+{"entite": "Tracy Point", "valeur": "Antarctique"}
+{"entite": "Transposition Point", "valeur": "Antarctique"}
+{"entite": "Traverso", "valeur": "Antarctique"}
+{"entite": "Trëh Valunov", "valeur": "Antarctique"}
+{"entite": "Trenholm Point", "valeur": "Antarctique"}
+{"entite": "Tret'jakova", "valeur": "Antarctique"}
+{"entite": "Trethewry Point", "valeur": "Antarctique"}
+{"entite": "Triangle Peak", "valeur": "Antarctique"}
+{"entite": "Triangle Point", "valeur": "Antarctique"}
+{"entite": "Triton Point", "valeur": "Antarctique"}
+{"entite": "Trollkjelneset Headland", "valeur": "Antarctique"}
+{"entite": "Trolltunga", "valeur": "Antarctique"}
+{"entite": "Tronador", "valeur": "Antarctique"}
+{"entite": "Troncoso", "valeur": "Antarctique"}
+{"entite": "Tryggve Point", "valeur": "Antarctique"}
+{"entite": "Tryne Peninsula", "valeur": "Antarctique"}
+{"entite": "Tryne Point", "valeur": "Antarctique"}
+{"entite": "Trypiti", "valeur": "Europe"}
+{"entite": "Tucker Point", "valeur": "Antarctique"}
+{"entite": "Tucumán", "valeur": "Antarctique"}
+{"entite": "Tula Point", "valeur": "Antarctique"}
+{"entite": "Turks Head", "valeur": "Antarctique"}
+{"entite": "Turnbull Point", "valeur": "Antarctique"}
+{"entite": "Turquet Point", "valeur": "Antarctique"}
+{"entite": "Turret Point", "valeur": "Antarctique"}
+{"entite": "Tuttell Point", "valeur": "Antarctique"}
+{"entite": "Tutton Point", "valeur": "Antarctique"}
+{"entite": "Tyree Head", "valeur": "Antarctique"}
+{"entite": "Tyuleniy Point", "valeur": "Antarctique"}
+{"entite": "Uchatka Point", "valeur": "Antarctique"}
+{"entite": "Ugain Point", "valeur": "Antarctique"}
+{"entite": "Ugarchin Point", "valeur": "Antarctique"}
+{"entite": "Ula Point", "valeur": "Antarctique"}
+{"entite": "Ullmann Point", "valeur": "Antarctique"}
+{"entite": "Ulu Peninsula", "valeur": "Antarctique"}
+{"entite": "Unión", "valeur": "Antarctique"}
+{"entite": "Uragannyy Point", "valeur": "Antarctique"}
+{"entite": "D'Ursel Point", "valeur": "Antarctique"}
+{"entite": "Urtubey", "valeur": "Antarctique"}
+{"entite": "Ustina Point", "valeur": "Antarctique"}
+{"entite": "Utës", "valeur": "Antarctique"}
+{"entite": "Utrinden Point", "valeur": "Antarctique"}
+{"entite": "Valdivia Point", "valeur": "Antarctique"}
+{"entite": "Valenzuela", "valeur": "Antarctique"}
+{"entite": "Valle", "valeur": "Antarctique"}
+{"entite": "Vampiro", "valeur": "Antarctique"}
+{"entite": "Van'kova", "valeur": "Antarctique"}
+{"entite": "Vapour Point", "valeur": "Antarctique"}
+{"entite": "Varadero Point", "valeur": "Antarctique"}
+{"entite": "Varas", "valeur": "Antarctique"}
+{"entite": "Varcoe Headland", "valeur": "Antarctique"}
+{"entite": "Varna Peninsula", "valeur": "Antarctique"}
+{"entite": "Vaughan Promontory", "valeur": "Antarctique"}
+{"entite": "Vazov Point", "valeur": "Antarctique"}
+{"entite": "Vazquez", "valeur": "Antarctique"}
+{"entite": "Veier", "valeur": "Antarctique"}
+{"entite": "Veier Head", "valeur": "Antarctique"}
+{"entite": "Veitch Point", "valeur": "Antarctique"}
+{"entite": "Velikan Point", "valeur": "Antarctique"}
+{"entite": "Velingrad Peninsula", "valeur": "Antarctique"}
+{"entite": "Venev Point", "valeur": "Antarctique"}
+{"entite": "Vent Point", "valeur": "Antarctique"}
+{"entite": "Ventana", "valeur": "Antarctique"}
+{"entite": "Verleger Point", "valeur": "Antarctique"}
+{"entite": "Vernadskogo", "valeur": "Antarctique"}
+{"entite": "Vertoletnyj Peninsula", "valeur": "Antarctique"}
+{"entite": "Vesconte Point", "valeur": "Antarctique"}
+{"entite": "Vesthovde Headland", "valeur": "Antarctique"}
+{"entite": "Victoria", "valeur": "Antarctique"}
+{"entite": "Vidal", "valeur": "Antarctique"}
+{"entite": "Vidaurre", "valeur": "Antarctique"}
+{"entite": "View Point", "valeur": "Antarctique"}
+{"entite": "Vieytes", "valeur": "Antarctique"}
+{"entite": "Villagra Point", "valeur": "Antarctique"}
+{"entite": "Villard Point", "valeur": "Antarctique"}
+{"entite": "Virto", "valeur": "Antarctique"}
+{"entite": "Vitjaz'", "valeur": "Antarctique"}
+{"entite": "Vitkovskogo", "valeur": "Antarctique"}
+{"entite": "Vize", "valeur": "Antarctique"}
+{"entite": "Vokil Point", "valeur": "Antarctique"}
+{"entite": "Von der Wall Point", "valeur": "Antarctique"}
+{"entite": "Von Tunzelman Point", "valeur": "Antarctique"}
+{"entite": "Vorweg Point", "valeur": "Antarctique"}
+{"entite": "Voyteh Point", "valeur": "Antarctique"}
+{"entite": "Vulcanello", "valeur": "Europe"}
+{"entite": "Vund Point", "valeur": "Antarctique"}
+{"entite": "Vyvodnoj", "valeur": "Antarctique"}
+{"entite": "Wade Point", "valeur": "Antarctique"}
+{"entite": "Walker Point", "valeur": "Antarctique"}
+{"entite": "Warnes", "valeur": "Antarctique"}
+{"entite": "Waterboat Point", "valeur": "Antarctique"}
+{"entite": "Watson Peninsula", "valeur": "Antarctique"}
+{"entite": "Wauters Point", "valeur": "Antarctique"}
+{"entite": "Wayne Head", "valeur": "Antarctique"}
+{"entite": "Weaver Peninsula", "valeur": "Antarctique"}
+{"entite": "Weaver Point", "valeur": "Antarctique"}
+{"entite": "Weiss Point", "valeur": "Antarctique"}
+{"entite": "Wendell", "valeur": "Antarctique"}
+{"entite": "Wennersgaard Point", "valeur": "Antarctique"}
+{"entite": "Wensley", "valeur": "Antarctique"}
+{"entite": "Werenskiold Bastion", "valeur": "Antarctique"}
+{"entite": "West Arm", "valeur": "Antarctique"}
+{"entite": "West Point", "valeur": "Antarctique"}
+{"entite": "Westwood Point", "valeur": "Antarctique"}
+{"entite": "Whitmer Peninsula", "valeur": "Antarctique"}
+{"entite": "Whitney Point", "valeur": "Antarctique"}
+{"entite": "Whittle Peninsula", "valeur": "Antarctique"}
+{"entite": "Willey Point", "valeur": "Antarctique"}
+{"entite": "Williams Point", "valeur": "Antarctique"}
+{"entite": "Williamson Head", "valeur": "Antarctique"}
+{"entite": "Williamson Peninsula", "valeur": "Antarctique"}
+{"entite": "Winship Point", "valeur": "Antarctique"}
+{"entite": "Wirth Peninsula", "valeur": "Antarctique"}
+{"entite": "Wood Point", "valeur": "Antarctique"}
+{"entite": "Worley Point", "valeur": "Antarctique"}
+{"entite": "Wright Peninsula", "valeur": "Antarctique"}
+{"entite": "Wright Point", "valeur": "Antarctique"}
+{"entite": "Wuyue Bandao", "valeur": "Antarctique"}
+{"entite": "Wyandot Point", "valeur": "Antarctique"}
+{"entite": "Xiaoxitian Jiao", "valeur": "Antarctique"}
+{"entite": "Xishi Jiao", "valeur": "Antarctique"}
+{"entite": "Yaglou Point", "valeur": "Antarctique"}
+{"entite": "Yana Point", "valeur": "Antarctique"}
+{"entite": "Yankovsky Peninsula", "valeur": "Asie"}
+{"entite": "Yatasto", "valeur": "Antarctique"}
+{"entite": "Yatrus Promontory", "valeur": "Antarctique"}
+{"entite": "Yeco", "valeur": "Antarctique"}
+{"entite": "Yellow Point", "valeur": "Antarctique"}
+{"entite": "Yemel'Yanov", "valeur": "Antarctique"}
+{"entite": "Yerbal", "valeur": "Antarctique"}
+{"entite": "Young Head", "valeur": "Antarctique"}
+{"entite": "Young Point", "valeur": "Antarctique"}
+{"entite": "Yovkov Point", "valeur": "Antarctique"}
+{"entite": "Yuseff", "valeur": "Antarctique"}
+{"entite": "Zahari Point", "valeur": "Antarctique"}
+{"entite": "Zajceva", "valeur": "Antarctique"}
+{"entite": "Zanni", "valeur": "Antarctique"}
+{"entite": "Zapato Point", "valeur": "Antarctique"}
+{"entite": "Zappert Point", "valeur": "Antarctique"}
+{"entite": "Ziegler Point", "valeur": "Antarctique"}
+{"entite": "Zircon Point", "valeur": "Antarctique"}
+{"entite": "Zufriategui", "valeur": "Antarctique"}
+{"entite": "Zurueta", "valeur": "Antarctique"}

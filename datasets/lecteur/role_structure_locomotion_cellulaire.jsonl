@@ -1,0 +1,4 @@
+{"_relation": "role_structure_locomotion_cellulaire", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (structure de locomotion -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cil", "valeur": "déplacement et brassage des liquides"}
+{"entite": "flagelle", "valeur": "propulsion de la cellule"}
+{"entite": "pseudopode", "valeur": "déplacement par reptation"}

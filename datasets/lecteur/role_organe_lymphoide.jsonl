@@ -1,0 +1,4 @@
+{"_relation": "role_organe_lymphoide", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (organe lymphoïde -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "ganglion lymphatique", "valeur": "filtration de la lymphe"}
+{"entite": "rate", "valeur": "filtration du sang et réponse immunitaire"}
+{"entite": "thymus", "valeur": "maturation des lymphocytes T"}

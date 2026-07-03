@@ -1,0 +1,10 @@
+{"_relation": "role_partie_cerveau", "_categorie": "physique", "_source": "Modèle (Claude) — neuroanatomie textbook curée (région du cerveau -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amygdale cérébrale", "valeur": "traitement des émotions"}
+{"entite": "bulbe olfactif", "valeur": "olfaction"}
+{"entite": "bulbe rachidien", "valeur": "contrôle des fonctions vitales"}
+{"entite": "cervelet", "valeur": "équilibre et coordination des mouvements"}
+{"entite": "corps calleux", "valeur": "connexion des deux hémisphères"}
+{"entite": "cortex cérébral", "valeur": "fonctions cognitives supérieures"}
+{"entite": "hippocampe", "valeur": "mémoire"}
+{"entite": "hypothalamus", "valeur": "régulation du milieu interne"}
+{"entite": "thalamus", "valeur": "relais des informations sensorielles"}

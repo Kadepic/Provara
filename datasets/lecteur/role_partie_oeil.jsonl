@@ -1,0 +1,6 @@
+{"_relation": "role_partie_oeil", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie sensorielle textbook curée (partie de l'œil -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cornée", "valeur": "réfraction de la lumière"}
+{"entite": "cristallin", "valeur": "mise au point de l'image"}
+{"entite": "iris", "valeur": "régulation de la quantité de lumière"}
+{"entite": "nerf optique", "valeur": "transmission du signal au cerveau"}
+{"entite": "rétine", "valeur": "formation de l'image"}

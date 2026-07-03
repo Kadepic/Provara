@@ -1,0 +1,4 @@
+{"_relation": "constituant_paroi_cellulaire", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (cellule -> constituant de la paroi ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cellule bactérienne", "valeur": "peptidoglycane"}
+{"entite": "cellule fongique", "valeur": "chitine"}
+{"entite": "cellule végétale", "valeur": "cellulose"}

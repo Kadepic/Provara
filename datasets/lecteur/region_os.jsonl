@@ -1,0 +1,20 @@
+{"_relation": "region_os", "_categorie": "convention", "_source": "anatomie de référence (os -> région du corps)", "_articles": true}
+{"entite": "bassin", "valeur": "le bassin"}
+{"entite": "calcanéum", "valeur": "le talon"}
+{"entite": "clavicule", "valeur": "l'épaule"}
+{"entite": "côte", "valeur": "le thorax"}
+{"entite": "crâne", "valeur": "la tête"}
+{"entite": "cubitus", "valeur": "l'avant-bras"}
+{"entite": "fémur", "valeur": "la cuisse"}
+{"entite": "humérus", "valeur": "le bras"}
+{"entite": "mandibule", "valeur": "la mâchoire"}
+{"entite": "métacarpe", "valeur": "la main"}
+{"entite": "métatarse", "valeur": "le pied"}
+{"entite": "omoplate", "valeur": "l'épaule"}
+{"entite": "péroné", "valeur": "la jambe"}
+{"entite": "phalange", "valeur": "les doigts"}
+{"entite": "radius", "valeur": "l'avant-bras"}
+{"entite": "rotule", "valeur": "le genou"}
+{"entite": "sternum", "valeur": "le thorax"}
+{"entite": "tibia", "valeur": "la jambe"}
+{"entite": "vertèbre", "valeur": "la colonne vertébrale"}

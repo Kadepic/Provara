@@ -1,0 +1,33 @@
+{"_relation": "medecin_specialiste_organe", "_categorie": "convention", "_source": "Modèle (Claude) — médecine textbook curée (organe -> spécialiste ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "anus", "valeur": "proctologue"}
+{"entite": "appareil digestif", "valeur": "gastro-entérologue"}
+{"entite": "appareil génital féminin", "valeur": "gynécologue"}
+{"entite": "appareil locomoteur", "valeur": "orthopédiste"}
+{"entite": "appareil respiratoire", "valeur": "pneumologue"}
+{"entite": "appareil urinaire", "valeur": "urologue"}
+{"entite": "articulation", "valeur": "rhumatologue"}
+{"entite": "articulations", "valeur": "rhumatologue"}
+{"entite": "cœur", "valeur": "cardiologue"}
+{"entite": "cancer", "valeur": "oncologue"}
+{"entite": "cerveau", "valeur": "neurologue"}
+{"entite": "dent", "valeur": "dentiste"}
+{"entite": "enfant", "valeur": "pédiatre"}
+{"entite": "estomac", "valeur": "gastro-entérologue"}
+{"entite": "foie", "valeur": "hépatologue"}
+{"entite": "glande endocrine", "valeur": "endocrinologue"}
+{"entite": "grossesse", "valeur": "obstétricien"}
+{"entite": "œil", "valeur": "ophtalmologue"}
+{"entite": "nez", "valeur": "oto-rhino-laryngologiste"}
+{"entite": "oreille", "valeur": "oto-rhino-laryngologiste"}
+{"entite": "peau", "valeur": "dermatologue"}
+{"entite": "personne âgée", "valeur": "gériatre"}
+{"entite": "pied", "valeur": "podologue"}
+{"entite": "poumon", "valeur": "pneumologue"}
+{"entite": "rectum", "valeur": "proctologue"}
+{"entite": "rein", "valeur": "néphrologue"}
+{"entite": "sang", "valeur": "hématologue"}
+{"entite": "sein", "valeur": "sénologue"}
+{"entite": "système immunitaire", "valeur": "immunologue"}
+{"entite": "système nerveux", "valeur": "neurologue"}
+{"entite": "vaisseau sanguin", "valeur": "angiologue"}
+{"entite": "veine", "valeur": "phlébologue"}

@@ -1,0 +1,6 @@
+{"_relation": "organe_plante_fonction", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (fonction d'organe végétal ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "feuille", "valeur": "photosynthèse"}
+{"entite": "fleur", "valeur": "reproduction"}
+{"entite": "fruit", "valeur": "protection de la graine"}
+{"entite": "racine", "valeur": "absorption de l'eau"}
+{"entite": "tige", "valeur": "soutien"}

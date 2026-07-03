@@ -1,0 +1,6 @@
+{"_relation": "role_leucocyte", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (globule blanc -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "basophile", "valeur": "réaction allergique"}
+{"entite": "éosinophile", "valeur": "lutte contre les parasites"}
+{"entite": "lymphocyte", "valeur": "réponse immunitaire spécifique"}
+{"entite": "monocyte", "valeur": "phagocytose des débris"}
+{"entite": "neutrophile", "valeur": "phagocytose des bactéries"}

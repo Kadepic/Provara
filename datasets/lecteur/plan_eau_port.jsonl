@@ -1,0 +1,1607 @@
+{"_relation": "plan_eau_port", "_categorie": "physique", "_source": "Wikidata/QLever — plan_eau_port P206, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "1e Katendrechtsehaven", "valeur": "Nouvelle Meuse"}
+{"entite": "2e Katendrechtsehaven", "valeur": "Nouvelle Meuse"}
+{"entite": "6e Petroleumhaven", "valeur": "canal de Beer"}
+{"entite": "8ᵉ port pétrolier", "valeur": "canal de Beer"}
+{"entite": "Abadan Port", "valeur": "Chatt-el-Arab"}
+{"entite": "Abaskun", "valeur": "mer Caspienne"}
+{"entite": "Abu Musa Naval Base", "valeur": "golfe Persique"}
+{"entite": "Abu Musa Port", "valeur": "golfe Persique"}
+{"entite": "ACI Marina Dubrovnik", "valeur": "mer Adriatique"}
+{"entite": "Acre Port", "valeur": "mer Méditerranée"}
+{"entite": "Adriatic LNG terminal", "valeur": "mer Adriatique"}
+{"entite": "Afrikahaven", "valeur": "canal de la Mer du Nord"}
+{"entite": "Al Burayqah", "valeur": "mer Méditerranée"}
+{"entite": "Al Faw Port", "valeur": "Chatt-el-Arab"}
+{"entite": "Al Hoceima Port", "valeur": "mer d'Alboran"}
+{"entite": "Alberthafen Dresden", "valeur": "Elbe"}
+{"entite": "Alblashaven", "valeur": "Delfshavense Schie"}
+{"entite": "Allemanshaven", "valeur": "Vieille Meuse"}
+{"entite": "Amderma", "valeur": "mer de Kara"}
+{"entite": "Amerikahaven", "valeur": "canal de la Mer du Nord"}
+{"entite": "Amirauté d'Alger", "valeur": "mer Méditerranée"}
+{"entite": "Ammunitiehaven", "valeur": "Spui"}
+{"entite": "ancien port de pêche de Sfax", "valeur": "mer Méditerranée"}
+{"entite": "ancora Marina", "valeur": "Baie de Neustadt"}
+{"entite": "Andoany", "valeur": "océan Indien"}
+{"entite": "Anholt Harbour", "valeur": "Cattégat"}
+{"entite": "Anotsu", "valeur": "baie d'Ise"}
+{"entite": "Anse du Mont", "valeur": "mer des Caraïbes"}
+{"entite": "Antsohim Bondrona", "valeur": "océan Indien"}
+{"entite": "Anzali Naval Base", "valeur": "mer Caspienne"}
+{"entite": "Anzali Port", "valeur": "mer Caspienne"}
+{"entite": "Apra Harbor", "valeur": "océan Pacifique"}
+{"entite": "Årøsund Harbour", "valeur": "Petit Belt"}
+{"entite": "Arrecife Port", "valeur": "océan Atlantique"}
+{"entite": "arsenal de Naples", "valeur": "mer Tyrrhénienne"}
+{"entite": "arsenal de Venise", "valeur": "darsena Grande"}
+{"entite": "arsenal militaire maritime de La Spezia", "valeur": "golfe de La Spezia"}
+{"entite": "arsenal militaire maritime de Tarente", "valeur": "mer Ionienne"}
+{"entite": "arsenal naval de Yokosuka", "valeur": "port de Yokosuka"}
+{"entite": "Arsenale", "valeur": "mer Tyrrhénienne"}
+{"entite": "Arvandkenar Port", "valeur": "Chatt-el-Arab"}
+{"entite": "Arzew El Djedid", "valeur": "mer Méditerranée"}
+{"entite": "Arzew LNG", "valeur": "mer Méditerranée"}
+{"entite": "As Sidr", "valeur": "mer Méditerranée"}
+{"entite": "Asaluyeh Fishing Port", "valeur": "golfe Persique"}
+{"entite": "Asamogawa Fishing Port", "valeur": "mer du Japon"}
+{"entite": "Ashdod Marina", "valeur": "mer Méditerranée"}
+{"entite": "Assan Port Iskenderun", "valeur": "golfe d'Alexandrette"}
+{"entite": "Assens Harbour", "valeur": "Petit Belt"}
+{"entite": "Astara Port", "valeur": "mer Caspienne"}
+{"entite": "Asyaport", "valeur": "mer de Marmara"}
+{"entite": "Atama Marina", "valeur": "mer de Sagami"}
+{"entite": "Außenbezirk und Bauhof Geesthacht", "valeur": "Elbe"}
+{"entite": "Autrischehaven", "valeur": "canal Gand-Terneuzen"}
+{"entite": "Az Zawiya", "valeur": "mer Méditerranée"}
+{"entite": "Azhikal", "valeur": "océan Indien"}
+{"entite": "Bønnerup Harbour", "valeur": "Cattégat"}
+{"entite": "Babolsar Port", "valeur": "mer Caspienne"}
+{"entite": "Bad Essen ports", "valeur": "Mittellandkanal"}
+{"entite": "BAGFAŞ Bandırma Piers", "valeur": "mer de Marmara"}
+{"entite": "Bahman Port", "valeur": "golfe Persique"}
+{"entite": "Bakauheni", "valeur": "détroit de la Sonde"}
+{"entite": "Bamberg port", "valeur": "canal Rhin-Main-Danube"}
+{"entite": "Bandar Abbas Fishing Port", "valeur": "golfe Persique"}
+{"entite": "Bandar Abbas Naval Base", "valeur": "golfe Persique"}
+{"entite": "Bankside Pier", "valeur": "Tamise"}
+{"entite": "Baobab Marine Terminal", "valeur": "océan Atlantique"}
+{"entite": "Barentsburg Port", "valeur": "océan Arctique"}
+{"entite": "Barking Riverside Pier", "valeur": "Tamise"}
+{"entite": "Barnaul River Port", "valeur": "Ob"}
+{"entite": "Base Naval de Aratu", "valeur": "baie de Tous les Saints"}
+{"entite": "base navale de Bizerte", "valeur": "mer Méditerranée"}
+{"entite": "base navale de Crète", "valeur": "baie de Soúda"}
+{"entite": "base navale de Mers El-Kébir", "valeur": "mer Méditerranée"}
+{"entite": "base navale de Rota", "valeur": "baie de Cadix"}
+{"entite": "base navale de Subic Bay", "valeur": "baie de Subic"}
+{"entite": "Base navale de Yokosuka", "valeur": "port de Yokosuka"}
+{"entite": "base navale de Zapadnaïa Litsa", "valeur": "Zapadnaïa Litsa"}
+{"entite": "base navale de Zeebruges", "valeur": "Port de Zeebruges"}
+{"entite": "Bassa Anchorage", "valeur": "océan Atlantique"}
+{"entite": "Battersea Power Station Pier", "valeur": "Tamise"}
+{"entite": "Batumi seaport", "valeur": "mer Noire"}
+{"entite": "Baybay", "valeur": "mer des Camotes"}
+{"entite": "Bayernhafen Nürnberg", "valeur": "canal Rhin-Main-Danube"}
+{"entite": "Beatrixhaven", "valeur": "canal Juliana"}
+{"entite": "Beaucette Marina", "valeur": "Manche"}
+{"entite": "Bedi", "valeur": "océan Indien"}
+{"entite": "Belcrumhaven", "valeur": "Mark"}
+{"entite": "Belekeri", "valeur": "océan Indien"}
+{"entite": "Belleport", "valeur": "Cromarty Firth"}
+{"entite": "Belvédère-haven", "valeur": "Zuid-Willemsvaart"}
+{"entite": "Beneluxhaven", "valeur": "canal Caland"}
+{"entite": "Benti", "valeur": "océan Atlantique"}
+{"entite": "Beris Port", "valeur": "golfe d'Oman"}
+{"entite": "Berliner Osthafen", "valeur": "Spree"}
+{"entite": "Bessarabska Branch", "valeur": "Bras de Chilia"}
+{"entite": "Bhavnagar Port", "valeur": "océan Indien"}
+{"entite": "Bierhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Binckhorsthaven", "valeur": "La Haye Trekvliet"}
+{"entite": "Binnenhaven Marineterrein", "valeur": "Oosterdok"}
+{"entite": "Blackfriars Millennium Pier", "valeur": "Tamise"}
+{"entite": "Böbs-Werft", "valeur": "Trave"}
+{"entite": "Boekhoute harbour", "valeur": "Braakman"}
+{"entite": "Boerengat", "valeur": "Nouvelle Meuse"}
+{"entite": "Bogense Harbour", "valeur": "Cattégat"}
+{"entite": "Bolkheyr Port", "valeur": "golfe Persique"}
+{"entite": "Bonthe", "valeur": "océan Atlantique"}
+{"entite": "Bootssportclub Gandersum", "valeur": "Ems-Seitenkanal"}
+{"entite": "Bornissehaven", "valeur": "Delfshavense Schie"}
+{"entite": "Botaş Saros FSRU Terminal", "valeur": "golfe de Saros"}
+{"entite": "Braakmanhaven", "valeur": "Escaut occidental"}
+{"entite": "Braefoot Terminal", "valeur": "Firth of Forth"}
+{"entite": "Bremerton Marina", "valeur": "Puget Sound"}
+{"entite": "Bremervörde harbour", "valeur": "Oste"}
+{"entite": "Brentford Dock", "valeur": "Tamise"}
+{"entite": "Brest river port", "valeur": "Moukhavets"}
+{"entite": "Brighton Marina", "valeur": "Manche"}
+{"entite": "Brinker Hafen", "valeur": "Mittellandkanal"}
+{"entite": "Brittanniëhaven", "valeur": "canal Caland"}
+{"entite": "Brunsbüttel LNG Terminal", "valeur": "Elbe"}
+{"entite": "Buchanan", "valeur": "océan Atlantique"}
+{"entite": "Buizenwaal", "valeur": "Arrière-port"}
+{"entite": "Burgas Naval Base", "valeur": "mer Noire"}
+{"entite": "Burgemeester Jansenhaven", "valeur": "Burgemeester Delenkanaal"}
+{"entite": "Burgemeester Van Veldhuizenhaven", "valeur": "Burgemeester Delenkanaal"}
+{"entite": "Bushehr Port", "valeur": "golfe Persique"}
+{"entite": "Cadogan Pier", "valeur": "Tamise"}
+{"entite": "Cais do Tojo", "valeur": "Tage"}
+{"entite": "Cala Galera", "valeur": "mer Tyrrhénienne"}
+{"entite": "calanque de Port-Miou", "valeur": "mer Méditerranée"}
+{"entite": "Calicut", "valeur": "océan Indien"}
+{"entite": "Callao", "valeur": "océan Pacifique"}
+{"entite": "Canary Wharf Pier", "valeur": "Tamise"}
+{"entite": "Cantiere Navale Triestino", "valeur": "mer Adriatique"}
+{"entite": "Cape Palmas", "valeur": "océan Atlantique"}
+{"entite": "Cartago Boat Landing", "valeur": "lac Owens"}
+{"entite": "Casamicciola Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "Caspian Port", "valeur": "mer Caspienne"}
+{"entite": "Castellammare di Stabia", "valeur": "baie de Naples"}
+{"entite": "Cavo Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "Ceiba Terminal", "valeur": "océan Atlantique"}
+{"entite": "Cementhaven", "valeur": "Oostervaart"}
+{"entite": "Cesenatico Port", "valeur": "mer Adriatique"}
+{"entite": "Ceuta Port", "valeur": "détroit de Gibraltar"}
+{"entite": "Chabahar Port", "valeur": "golfe d'Oman"}
+{"entite": "Chake Chake", "valeur": "océan Indien"}
+{"entite": "Charleroi Dry Port", "valeur": "Sambre"}
+{"entite": "Chellanam Fishing Harbour", "valeur": "océan Indien"}
+{"entite": "Chelsea Harbour", "valeur": "Tamise"}
+{"entite": "Chelsea Harbour Pier", "valeur": "Tamise"}
+{"entite": "Chennai Port", "valeur": "océan Indien"}
+{"entite": "City Harbor of Goes", "valeur": "canal Goes - Goese Sas"}
+{"entite": "Civitas Classis", "valeur": "mer Adriatique"}
+{"entite": "Cogo", "valeur": "océan Atlantique"}
+{"entite": "Colachel Seaport", "valeur": "océan Indien"}
+{"entite": "Coles Bay Oil Terminal", "valeur": "mer des Caraïbes"}
+{"entite": "Colombo Harbour", "valeur": "océan Indien"}
+{"entite": "Como harbour", "valeur": "lac de Côme"}
+{"entite": "Coolhaven", "valeur": "Parkhaven"}
+{"entite": "Corenno Plinio harbour", "valeur": "lac de Côme"}
+{"entite": "Les Croisettes", "valeur": "Passage des Croisettes"}
+{"entite": "Cuddalore", "valeur": "océan Indien"}
+{"entite": "Cuxhaven Offshore Base Port", "valeur": "Elbe"}
+{"entite": "Dabhol LNG Terminal", "valeur": "océan Indien"}
+{"entite": "Dadanpatrabar Port", "valeur": "golfe du Bengale"}
+{"entite": "Dahej", "valeur": "océan Indien"}
+{"entite": "Dahej LNG Terminal", "valeur": "océan Indien"}
+{"entite": "Darnah", "valeur": "mer Méditerranée"}
+{"entite": "La Darsena Marina Vieste", "valeur": "mer Adriatique"}
+{"entite": "débarcadère de Gorham", "valeur": "Windy Lake"}
+{"entite": "Deptford Dockyard", "valeur": "Tamise"}
+{"entite": "Derde Petroleumhaven", "valeur": "Scheur"}
+{"entite": "Develhaven", "valeur": "Vieille Meuse"}
+{"entite": "Deylam Port", "valeur": "golfe Persique"}
+{"entite": "Deyr Port", "valeur": "golfe Persique"}
+{"entite": "Dhamra Port", "valeur": "océan Indien"}
+{"entite": "Dharamtar", "valeur": "océan Indien"}
+{"entite": "Dhiba Port", "valeur": "mer Rouge"}
+{"entite": "Dhubri Port", "valeur": "Brahmapoutre"}
+{"entite": "Dighi Port", "valeur": "océan Indien"}
+{"entite": "Dintelhaven", "valeur": "canal Hartel"}
+{"entite": "Djurgårdshamnen", "valeur": "Djurgårdsbrunnsviken"}
+{"entite": "Docks de St Katharine", "valeur": "Tamise"}
+{"entite": "Dokhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Donauhaven", "valeur": "canal Caland"}
+{"entite": "Dragør Harbour", "valeur": "Øresund"}
+{"entite": "Dragon LNG terminal", "valeur": "estuaire de Milford Haven"}
+{"entite": "Drechthaven", "valeur": "Vieille Meuse"}
+{"entite": "Dreverna Harbour", "valeur": "lagune de Courlande"}
+{"entite": "Dugarajapatnam Port", "valeur": "océan Indien"}
+{"entite": "Dundee Harbour", "valeur": "Firth of Tay"}
+{"entite": "Duquesa Port", "valeur": "mer d'Alboran"}
+{"entite": "E-Harbour", "valeur": "Duivendrechtsevaart"}
+{"entite": "Eastland Port", "valeur": "Turanganui (fleuve)"}
+{"entite": "Edincik Etibank Pier", "valeur": "mer de Marmara"}
+{"entite": "Eemhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Eerste Werkhaven", "valeur": "Scheur"}
+{"entite": "EG LNG", "valeur": "océan Atlantique"}
+{"entite": "Ekomarina in Iława", "valeur": "Jeziorak"}
+{"entite": "El Ketf", "valeur": "mer Méditerranée"}
+{"entite": "Elbehaven", "valeur": "canal Caland"}
+{"entite": "Embankment Pier", "valeur": "Tamise"}
+{"entite": "Emporium", "valeur": "Tibre"}
+{"entite": "Energiehaven", "valeur": "canal d'Amsterdam au Rhin"}
+{"entite": "Engeldrum Bluff", "valeur": "The Narrows"}
+{"entite": "Ennore Port", "valeur": "océan Indien"}
+{"entite": "Enns harbour", "valeur": "Enns"}
+{"entite": "Entrepothaven", "valeur": "IJ"}
+{"entite": "Erlangen river port", "valeur": "canal Rhin-Main-Danube"}
+{"entite": "Es Portitxol", "valeur": "mer Méditerranée"}
+{"entite": "ESPOIR MARINE TERMINAL", "valeur": "océan Atlantique"}
+{"entite": "Eurohafen Emsland", "valeur": "canal Dortmund-Ems"}
+{"entite": "Europahafen", "valeur": "Weser"}
+{"entite": "Europoort", "valeur": "canal Caland"}
+{"entite": "Exmouth Submarine Base", "valeur": "golfe d'Exmouth"}
+{"entite": "Ez Zueitina", "valeur": "mer Méditerranée"}
+{"entite": "Farasakou Port", "valeur": "golfe Persique"}
+{"entite": "Feijenoordhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Festival Pier", "valeur": "Tamise"}
+{"entite": "Fishing Harbour Visakhapatnam", "valeur": "océan Indien"}
+{"entite": "fluviale intercommunale de Châteauneuf-du-Pape", "valeur": "Rhône"}
+{"entite": "Former harbour Šunychl", "valeur": "Oder"}
+{"entite": "Fort Bay", "valeur": "mer des Caraïbes"}
+{"entite": "Frankfurter Osthafen", "valeur": "Main"}
+{"entite": "Frauenaurach river port", "valeur": "canal Rhin-Main-Danube"}
+{"entite": "Fray Bentos", "valeur": "rio Uruguay"}
+{"entite": "Fredericia harbour", "valeur": "Petit Belt"}
+{"entite": "Frederikshavn Port", "valeur": "Cattégat"}
+{"entite": "Frederikssund Harbour", "valeur": "fjord de Roskilde"}
+{"entite": "Freeport of Monrovia", "valeur": "océan Atlantique"}
+{"entite": "Galatheese Haven", "valeur": "Volkerak"}
+{"entite": "Ganaveh Port", "valeur": "golfe Persique"}
+{"entite": "Gangavaram Port", "valeur": "océan Indien"}
+{"entite": "Gantelhaven", "valeur": "Delfshavense Schie"}
+{"entite": "Gate terminal", "valeur": "Yangtzekanaal"}
+{"entite": "Gedser Port", "valeur": "mer Baltique"}
+{"entite": "Gemeentehaven Tiel", "valeur": "canal d'Amsterdam au Rhin"}
+{"entite": "Geulhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Gilleleje Harbour", "valeur": "Cattégat"}
+{"entite": "Glencaple Quay", "valeur": "Nith (Écosse)"}
+{"entite": "Glykys", "valeur": "Achéron"}
+{"entite": "Godorfer Hafen", "valeur": "Rhin"}
+{"entite": "Gomel River Port", "valeur": "Soj"}
+{"entite": "GOTO OIL TERMINAL", "valeur": "mer des Caraïbes"}
+{"entite": "Grand Faw Port", "valeur": "golfe Persique"}
+{"entite": "Greenland Pier", "valeur": "Tamise"}
+{"entite": "Greenwich Pier", "valeur": "Tamise"}
+{"entite": "Grenaa Port", "valeur": "Cattégat"}
+{"entite": "Grindhaven", "valeur": "Oostervaart"}
+{"entite": "Grossensiel harbour", "valeur": "Weser"}
+{"entite": "Güllük Port", "valeur": "mer Égée"}
+{"entite": "Gwadar Fishing Port", "valeur": "mer d'Arabie"}
+{"entite": "Haßmersheimer Hafen", "valeur": "Neckar"}
+{"entite": "HaDarom Port", "valeur": "mer Méditerranée"}
+{"entite": "Haderslev Harbour", "valeur": "Haderslev Fjord"}
+{"entite": "Hafen Braunschweig", "valeur": "Mittellandkanal"}
+{"entite": "Hafen Deggendorf", "valeur": "Danube"}
+{"entite": "Hafen Gemünden am Main", "valeur": "Main"}
+{"entite": "Hafen Halle", "valeur": "Saale"}
+{"entite": "Hafen Hann. Münden", "valeur": "Weser"}
+{"entite": "Hafen Konstanz", "valeur": "lac de Constance"}
+{"entite": "Hafen Spelle-Venhaus", "valeur": "canal Dortmund-Ems"}
+{"entite": "Hafen Tempelhof", "valeur": "canal de Teltow"}
+{"entite": "Hafen Velten", "valeur": "canal de la branche de Velten"}
+{"entite": "Hafen Zöbigker", "valeur": "lac de Cospuden"}
+{"entite": "Hakone Seikisho Ato Port", "valeur": "lac Ashi"}
+{"entite": "Hakonemachi Port", "valeur": "lac Ashi"}
+{"entite": "Haldensleben harbour", "valeur": "Mittellandkanal"}
+{"entite": "Haldia Dock Complex", "valeur": "océan Indien"}
+{"entite": "Hammerhavn", "valeur": "mer Baltique"}
+{"entite": "Hampton Court Pier", "valeur": "Tamise"}
+{"entite": "Hansehafen", "valeur": "Schwinge"}
+{"entite": "harbor of Veghel", "valeur": "Zuid-Willemsvaart"}
+{"entite": "Harbour in Königs Wusterhausen", "valeur": "Notte"}
+{"entite": "Harbour in Schwedt", "valeur": "Hohensaaten-Friedrichsthaler Wasserstraße"}
+{"entite": "Harbour of Bisceglie", "valeur": "mer Adriatique"}
+{"entite": "harbour of Cuijk", "valeur": "Meuse"}
+{"entite": "Harbour of Francavilla al Mare", "valeur": "mer Adriatique"}
+{"entite": "Harbour of Laaxum", "valeur": "IJsselmeer"}
+{"entite": "harbour of Ouddorp", "valeur": "Grevelingenmeer"}
+{"entite": "harbour of Papendrecht", "valeur": "Merwede inférieure"}
+{"entite": "harbour of Sint Eustatius", "valeur": "mer des Caraïbes"}
+{"entite": "Harbour of Spijkenisse", "valeur": "Vieille Meuse"}
+{"entite": "Harbour of Stein", "valeur": "canal Juliana"}
+{"entite": "harbour of Termoli", "valeur": "mer Adriatique"}
+{"entite": "Harbour, Ptolemais", "valeur": "mer Méditerranée"}
+{"entite": "Harwich International Port", "valeur": "Stour"}
+{"entite": "Hashaven", "valeur": "canal Gand-Terneuzen"}
+{"entite": "Haven", "valeur": "canal de Twente"}
+{"entite": "Havnsø Harbour", "valeur": "baie de Sejerø"}
+{"entite": "HaYovel Port", "valeur": "mer Méditerranée"}
+{"entite": "Hazira Port", "valeur": "océan Indien"}
+{"entite": "Heather Civic Marina", "valeur": "False Creek"}
+{"entite": "Hejlsminde Harbour", "valeur": "Petit Belt"}
+{"entite": "Helsingør Nordhavn", "valeur": "Øresund"}
+{"entite": "Hille harbour", "valeur": "Mittellandkanal"}
+{"entite": "Hilton Beach Marina", "valeur": "rivière Ste-Marie"}
+{"entite": "Himi Fishing Port", "valeur": "baie de Toyama"}
+{"entite": "Hiruga Fishing Port", "valeur": "baie de Wakasa"}
+{"entite": "Hjo harbour", "valeur": "Vättern"}
+{"entite": "HMNB Clyde", "valeur": "Gare Loch"}
+{"entite": "Holbæk Harbour", "valeur": "fjord de Holbæk"}
+{"entite": "Holešovický přístav", "valeur": "Vltava"}
+{"entite": "Hook of Holland Port", "valeur": "Nieuwe Waterweg"}
+{"entite": "Hörn", "valeur": "Fœrde de Kiel"}
+{"entite": "Hotel Port 110", "valeur": "Jeziorak"}
+{"entite": "Houthaven", "valeur": "IJ"}
+{"entite": "Hunzehaven", "valeur": "canal de l'Ems"}
+{"entite": "Husvik", "valeur": "baie de Stromness"}
+{"entite": "Hutchison Ports Belgium", "valeur": "canal maritime de Bruxelles à l'Escaut"}
+{"entite": "Hutchison Ports ECT Euromax", "valeur": "Yangtzekanaal"}
+{"entite": "Hutchison Ports Venlo", "valeur": "Meuse"}
+{"entite": "Iława Harbour", "valeur": "Jeziorak"}
+{"entite": "Ibo", "valeur": "océan Indien"}
+{"entite": "IHARANA", "valeur": "océan Indien"}
+{"entite": "IJselhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "île aux Basques", "valeur": "fleuve Saint-Laurent"}
+{"entite": "Ȋle de Gorée Port", "valeur": "océan Atlantique"}
+{"entite": "île Kekerten", "valeur": "baie Cumberland"}
+{"entite": "Imam Khomeini Port", "valeur": "golfe Persique"}
+{"entite": "Inhambane", "valeur": "océan Indien"}
+{"entite": "INHS Patanjali", "valeur": "océan Indien"}
+{"entite": "Inkoo LNG terminal", "valeur": "golfe de Finlande"}
+{"entite": "INS Dwarka", "valeur": "océan Indien"}
+{"entite": "INS Jarawa", "valeur": "océan Indien"}
+{"entite": "INS Kadamba", "valeur": "océan Indien"}
+{"entite": "INS Kalinga", "valeur": "océan Indien"}
+{"entite": "INS Kattabomman", "valeur": "océan Indien"}
+{"entite": "INS Sardar Patel", "valeur": "océan Indien"}
+{"entite": "INS Satavahana", "valeur": "océan Indien"}
+{"entite": "INS Vajrabahu", "valeur": "océan Indien"}
+{"entite": "INS Varsha", "valeur": "océan Indien"}
+{"entite": "INS Venduruthy", "valeur": "océan Indien"}
+{"entite": "INS Virbahu", "valeur": "océan Indien"}
+{"entite": "Ischia Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "Ishikari port", "valeur": "rivière Ishikari"}
+{"entite": "Iskenderun Naval Base", "valeur": "golfe d'Alexandrette"}
+{"entite": "Israel Shipyards", "valeur": "mer Méditerranée"}
+{"entite": "Iwa Fishing Port", "valeur": "baie de Sagami"}
+{"entite": "İzmir Marina", "valeur": "golfe d'Izmir"}
+{"entite": "Jachthaven De Koenen", "valeur": "Nieuwe Meer"}
+{"entite": "Jaigad Port", "valeur": "océan Indien"}
+{"entite": "Jeddah Islamic Port", "valeur": "mer Rouge"}
+{"entite": "Jijel", "valeur": "mer Méditerranée"}
+{"entite": "Jizan Port", "valeur": "mer Rouge"}
+{"entite": "Jofreh Port", "valeur": "golfe Persique"}
+{"entite": "Jose Panganiban", "valeur": "mer des Philippines"}
+{"entite": "Jubail Commercial Port", "valeur": "golfe Persique"}
+{"entite": "Kakinada Port", "valeur": "océan Indien"}
+{"entite": "Kamakuragashi", "valeur": "rivière Nihonbashi"}
+{"entite": "Kanaalkom", "valeur": "canal Albert"}
+{"entite": "Kangan Fishing Port", "valeur": "golfe Persique"}
+{"entite": "Kapellskär", "valeur": "mer Baltique"}
+{"entite": "Karasu Port", "valeur": "mer Noire"}
+{"entite": "Karljohansvern", "valeur": "Oslofjord"}
+{"entite": "Karperkuil", "valeur": "IJsselmeer"}
+{"entite": "Karwar", "valeur": "océan Indien"}
+{"entite": "Kåseberga Port", "valeur": "Bornholmsgat"}
+{"entite": "Kastrup Harbour", "valeur": "Øresund"}
+{"entite": "Katase Fishing Port", "valeur": "baie de Sagami"}
+{"entite": "Kąty Rybackie harbour", "valeur": "lagune de la Vistule"}
+{"entite": "Keilehaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Kerteminde Harbour", "valeur": "Grand Belt"}
+{"entite": "Kew Pier", "valeur": "Tamise"}
+{"entite": "Kharg Oil Terminal", "valeur": "golfe Persique"}
+{"entite": "Khoms", "valeur": "mer Méditerranée"}
+{"entite": "Khorramshahr Port", "valeur": "Chatt-el-Arab"}
+{"entite": "Kilwa Kivinje", "valeur": "océan Indien"}
+{"entite": "King Abdulaziz Port Dammam", "valeur": "golfe Persique"}
+{"entite": "King Abdullah Port", "valeur": "mer Rouge"}
+{"entite": "King Fahad Industrial Port Jubail", "valeur": "golfe Persique"}
+{"entite": "King Fahad Industrial Port Yanbu", "valeur": "mer Rouge"}
+{"entite": "King's Lynn", "valeur": "Great Ouse"}
+{"entite": "Kingston Town End Pier", "valeur": "Tamise"}
+{"entite": "Kingston Turks Pier", "valeur": "Tamise"}
+{"entite": "Kish Marina", "valeur": "golfe Persique"}
+{"entite": "Kish Port", "valeur": "golfe Persique"}
+{"entite": "Kishon Port", "valeur": "mer Méditerranée"}
+{"entite": "Kołobrzeg Naval Base", "valeur": "Parsęta"}
+{"entite": "Kochi", "valeur": "océan Indien"}
+{"entite": "Kochi International Marina", "valeur": "océan Indien"}
+{"entite": "Kochi LNG terminal", "valeur": "océan Indien"}
+{"entite": "Koge Port", "valeur": "baie de Køge"}
+{"entite": "Kojima Sightseeing Port", "valeur": "détroit de Bisan"}
+{"entite": "Kojiri Port", "valeur": "lac Ashi"}
+{"entite": "Kolachel", "valeur": "océan Indien"}
+{"entite": "Kolenhaven", "valeur": "Delftsche Vliet"}
+{"entite": "Kolkata Inland Port", "valeur": "Hooghly"}
+{"entite": "Koma Fishing Port", "valeur": "mer du Japon"}
+{"entite": "Konarak Fishing Port", "valeur": "golfe d'Oman"}
+{"entite": "Konarak Naval Base", "valeur": "golfe d'Oman"}
+{"entite": "Kong Port", "valeur": "golfe Persique"}
+{"entite": "Koningin Wilhelminahaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Korsør Harbour", "valeur": "Grand Belt"}
+{"entite": "Koshigoe Fishing Port", "valeur": "baie de Sagami"}
+{"entite": "Koushaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Krasnojarsk", "valeur": "Ienisseï"}
+{"entite": "Kreishafen Rendsburg", "valeur": "canal de Kiel"}
+{"entite": "Krishnapatnam Port", "valeur": "océan Indien"}
+{"entite": "Kuh Mobarak Fishing Port", "valeur": "golfe Persique"}
+{"entite": "Kuhmoinen Marina", "valeur": "Päijänne"}
+{"entite": "Kuki Fishing Port", "valeur": "mer de Kumano"}
+{"entite": "Laft Ancient Port", "valeur": "golfe Persique"}
+{"entite": "Laft Port", "valeur": "golfe Persique"}
+{"entite": "Laghill Quay", "valeur": "Nith (Écosse)"}
+{"entite": "Lände Drömling", "valeur": "Mittellandkanal"}
+{"entite": "Landing stage 1 (Meilihalle) for SGV ships", "valeur": "lac des Quatre-Cantons"}
+{"entite": "Lassan harbour", "valeur": "Peenestrom"}
+{"entite": "Leuvehaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Libeňský přístav", "valeur": "Vltava"}
+{"entite": "Lindenauer Hafen", "valeur": "Canal Karl Heine"}
+{"entite": "Lindenberghaven", "valeur": "Waal"}
+{"entite": "Lindener Hafen", "valeur": "canal de dérivation Hanovre-Linden"}
+{"entite": "Lipari Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "Lippe harbour", "valeur": "baie d'Hohwacht"}
+{"entite": "Lippehafen Wesel", "valeur": "Lippe"}
+{"entite": "Lisbonnehaven", "valeur": "Schippershaven"}
+{"entite": "Liuskasaari", "valeur": "golfe de Finlande"}
+{"entite": "Lo Pagán marina", "valeur": "Mar Menor"}
+{"entite": "Lomé", "valeur": "océan Atlantique"}
+{"entite": "Londenhaven", "valeur": "canal Caland"}
+{"entite": "London Bridge City Pier", "valeur": "Tamise"}
+{"entite": "London Eye Pier", "valeur": "Tamise"}
+{"entite": "London Gateway", "valeur": "Tamise"}
+{"entite": "Loschwitzer Hafen", "valeur": "Elbe"}
+{"entite": "Louisiana Offshore Oil Port", "valeur": "golfe du Mexique"}
+{"entite": "Luba", "valeur": "océan Atlantique"}
+{"entite": "Lubmin LNG Terminal", "valeur": "baie de Greifswald"}
+{"entite": "Luka Pula", "valeur": "mer Adriatique"}
+{"entite": "Lyttelton Marina", "valeur": "Lyttelton Harbour"}
+{"entite": "Lyttelton Port", "valeur": "Lyttelton Harbour"}
+{"entite": "Maasvlakte", "valeur": "canal Caland"}
+{"entite": "Maasvlakte 2", "valeur": "delta"}
+{"entite": "Machilipatnam Port", "valeur": "océan Indien"}
+{"entite": "Madagascarhaven", "valeur": "Afrikahaven"}
+{"entite": "Madroelhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Magdeburg Winterhafen", "valeur": "Elbe"}
+{"entite": "Mahajanga", "valeur": "océan Indien"}
+{"entite": "Mahiliow river port", "valeur": "Dniepr"}
+{"entite": "Mainhafen Wertheim", "valeur": "Main"}
+{"entite": "Mainhaven", "valeur": "Westhaven"}
+{"entite": "Malabo", "valeur": "océan Atlantique"}
+{"entite": "Malmö", "valeur": "Øresund"}
+{"entite": "Manakara", "valeur": "océan Indien"}
+{"entite": "Mandraki Marina", "valeur": "mer Ionienne"}
+{"entite": "Mandvi", "valeur": "océan Indien"}
+{"entite": "marina Baie des Anges", "valeur": "mer Méditerranée"}
+{"entite": "Marina Braunsbedra", "valeur": "Geiseltalsee"}
+{"entite": "Marina Cabo Roig", "valeur": "mer Méditerranée"}
+{"entite": "Marina D'Arechi", "valeur": "mer Tyrrhénienne"}
+{"entite": "Marina de Albufeira", "valeur": "golfe de Cadix"}
+{"entite": "marina de Hull", "valeur": "rivière des Outaouais"}
+{"entite": "marina de Tadoussac", "valeur": "baie de Tadoussac"}
+{"entite": "marina de Val-Brillant", "valeur": "lac Matapédia"}
+{"entite": "Marina de Vilamoura", "valeur": "golfe de Cadix"}
+{"entite": "Marina degli Estensi", "valeur": "mer Adriatique"}
+{"entite": "Marina Dei Cesari", "valeur": "mer Adriatique"}
+{"entite": "Marina del Rey", "valeur": "océan Pacifique"}
+{"entite": "Marina di Capitana", "valeur": "mer Méditerranée"}
+{"entite": "Marina di Forio", "valeur": "mer Tyrrhénienne"}
+{"entite": "Marina di Porto San Giorgio", "valeur": "mer Adriatique"}
+{"entite": "Marina Dorćol", "valeur": "Danube"}
+{"entite": "Marina Duisburg", "valeur": "Rhin"}
+{"entite": "Marina Fuestrup", "valeur": "canal Dortmund-Ems"}
+{"entite": "Marina Havelauen", "valeur": "Großer Zernsee"}
+{"entite": "Marina Herzliya", "valeur": "mer Méditerranée"}
+{"entite": "Marina Meppen", "valeur": "canal Dortmund-Ems"}
+{"entite": "Marina Mönkebude", "valeur": "lagune de Szczecin"}
+{"entite": "Marina Muiderzand", "valeur": "IJmeer"}
+{"entite": "Marina Nowa Sól", "valeur": "Oder"}
+{"entite": "Marina of Deventer", "valeur": "IJssel"}
+{"entite": "Marina of Stabia", "valeur": "baie de Naples"}
+{"entite": "Marina Opatija", "valeur": "baie de Rijeka"}
+{"entite": "Marina Palamós", "valeur": "mer Méditerranée"}
+{"entite": "Marina Punat", "valeur": "mer Adriatique"}
+{"entite": "Marina Recke", "valeur": "Mittellandkanal"}
+{"entite": "Marina Rünthe", "valeur": "canal Datteln-Hamm"}
+{"entite": "Marina Zadar", "valeur": "mer Adriatique"}
+{"entite": "Marine de Langevin", "valeur": "océan Indien"}
+{"entite": "Marine Port Kagoshima", "valeur": "baie de Kagoshima"}
+{"entite": "Marinebasis Parera", "valeur": "Schottegat"}
+{"entite": "Marinevliegkamp Veere", "valeur": "canal de Walcheren"}
+{"entite": "Marktbreit port", "valeur": "Main"}
+{"entite": "Marsá ar Raḩá", "valeur": "mer Méditerranée"}
+{"entite": "Marsa El Brega LNG", "valeur": "mer Méditerranée"}
+{"entite": "Marsa Sabratah", "valeur": "mer Méditerranée"}
+{"entite": "Masthouse Terrace Pier", "valeur": "Tamise"}
+{"entite": "Mercuriushaven", "valeur": "IJ"}
+{"entite": "Mers El Kebir", "valeur": "mer Méditerranée"}
+{"entite": "Mersa Sfax", "valeur": "mer Méditerranée"}
+{"entite": "Merwedehaven", "valeur": "Merwede inférieure"}
+{"entite": "Merwehaven", "valeur": "Nouvelle Meuse"}
+{"entite": "le Meulee Fishing Port", "valeur": "détroit de Malacca"}
+{"entite": "Mevissen harbour", "valeur": "Rhin"}
+{"entite": "Meyer's Pier Marina", "valeur": "baie de Quinte"}
+{"entite": "Mijnheerkenshaven", "valeur": "Schippershaven"}
+{"entite": "Mikindani", "valeur": "océan Indien"}
+{"entite": "Millbank Millennium Pier", "valeur": "Tamise"}
+{"entite": "Mīnā' al ‘Azīzīyah", "valeur": "golfe Persique"}
+{"entite": "Mīnā' al Khubar", "valeur": "golfe Persique"}
+{"entite": "Mīnā' ash Shuqayq", "valeur": "mer Rouge"}
+{"entite": "Misburger Hafen", "valeur": "Stichkanal Misburg"}
+{"entite": "Misenum", "valeur": "mer Tyrrhénienne"}
+{"entite": "Misratah", "valeur": "mer Méditerranée"}
+{"entite": "Mississippihaven", "valeur": "canal de Beer"}
+{"entite": "Mjimwema Terminal", "valeur": "océan Indien"}
+{"entite": "Mocambique", "valeur": "océan Indien"}
+{"entite": "Moerdijk harbour and industrial park", "valeur": "Hollands Diep"}
+{"entite": "Moezelhaven", "valeur": "Westhaven"}
+{"entite": "Mohammad Ameri Port", "valeur": "golfe Persique"}
+{"entite": "Morgiou", "valeur": "calanque de Morgiou"}
+{"entite": "Morondava", "valeur": "océan Indien"}
+{"entite": "Mosselkreekhaven", "valeur": "Krabbenkreek"}
+{"entite": "Moto-Hakone Port", "valeur": "lac Ashi"}
+{"entite": "Mtwara Port", "valeur": "océan Indien"}
+{"entite": "Mumbai", "valeur": "océan Indien"}
+{"entite": "Mumbai Port", "valeur": "océan Indien"}
+{"entite": "Mundra Port", "valeur": "océan Indien"}
+{"entite": "Musée port Greifswald", "valeur": "Ryck"}
+{"entite": "musée portuaire de Lübeck", "valeur": "Trave"}
+{"entite": "Museumhaven", "valeur": "Leuvehaven"}
+{"entite": "Museumhaven Zeeland", "valeur": "Escaut oriental"}
+{"entite": "Mustalahti harbour", "valeur": "Mustalahti"}
+{"entite": "Nador Port", "valeur": "mer d'Alboran"}
+{"entite": "Nador West Med", "valeur": "mer Méditerranée"}
+{"entite": "Nagapattinam Port", "valeur": "océan Indien"}
+{"entite": "Nagappattinam", "valeur": "océan Indien"}
+{"entite": "Nakahama Fishing Port", "valeur": "mer du Japon"}
+{"entite": "Nakhl Taqi Port", "valeur": "golfe Persique"}
+{"entite": "Naniwa no Tsu", "valeur": "baie d'Osaka"}
+{"entite": "Naryan Mar", "valeur": "Petchora"}
+{"entite": "Nassauhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "NATO naval base", "valeur": "mer Tyrrhénienne"}
+{"entite": "Naval Base Alexishafen", "valeur": "mer de Bismarck"}
+{"entite": "Nekselø Harbour", "valeur": "baie de Sejerø"}
+{"entite": "Nelson Dock Pier", "valeur": "Tamise"}
+{"entite": "Neustädter Hafen", "valeur": "Elbe"}
+{"entite": "New Energy", "valeur": "Danube"}
+{"entite": "New Mangalore", "valeur": "océan Indien"}
+{"entite": "New Port", "valeur": "baie de Kagoshima"}
+{"entite": "Nhava Sheva", "valeur": "océan Indien"}
+{"entite": "Nieuwehaven", "valeur": "Oude haven"}
+{"entite": "Nihonbashi Uogashi", "valeur": "rivière Nihonbashi"}
+{"entite": "Nijlhaven", "valeur": "canal Caland"}
+{"entite": "Nimitz Marine Facility", "valeur": "baie de San Diego"}
+{"entite": "Nitti", "valeur": "océan Atlantique"}
+{"entite": "Nivå Havn", "valeur": "Øresund"}
+{"entite": "Noordkanaalhaven", "valeur": "Waal"}
+{"entite": "Nordhafen Walsum", "valeur": "Rhin"}
+{"entite": "North Greenwich Pier", "valeur": "Tamise"}
+{"entite": "North Harbour", "valeur": "canal de Kiel"}
+{"entite": "Northeast Gateway Deepwater Port", "valeur": "baie du Massachusetts"}
+{"entite": "Nouadhibou", "valeur": "océan Atlantique"}
+{"entite": "nouveau port de Metz", "valeur": "Moselle"}
+{"entite": "nouveau port de Sfax", "valeur": "mer Méditerranée"}
+{"entite": "Nowa Sól Port", "valeur": "Oder"}
+{"entite": "Nowshahr Port", "valeur": "mer Caspienne"}
+{"entite": "Numana Port", "valeur": "mer Adriatique"}
+{"entite": "Ny-Ålesund Port", "valeur": "océan Arctique"}
+{"entite": "Nyborg Harbour", "valeur": "Grand Belt"}
+{"entite": "Nykøbing Falster Havn", "valeur": "Guldborgsund"}
+{"entite": "Ochsenfurt port", "valeur": "Main"}
+{"entite": "Odense Harbour", "valeur": "canal d'Odense"}
+{"entite": "Ofunagura", "valeur": "rivière Sumida"}
+{"entite": "Okha", "valeur": "océan Indien"}
+{"entite": "Okhotsk", "valeur": "mer d'Okhotsk"}
+{"entite": "Old port of Luino", "valeur": "lac Majeur"}
+{"entite": "Oostkanaalhaven", "valeur": "canal de la Meuse au Waal"}
+{"entite": "Ormoc Port", "valeur": "baie d'Ormoc"}
+{"entite": "Otsu port, Shiga prefecture", "valeur": "lac Biwa"}
+{"entite": "Oude Houthaven", "valeur": "IJ"}
+{"entite": "Overnachtingshaven Haaften", "valeur": "Waal"}
+{"entite": "Pacific Boulevard Marina", "valeur": "False Creek"}
+{"entite": "Paducah–McCracken County Riverport", "valeur": "Tennessee"}
+{"entite": "Pahel Port", "valeur": "golfe Persique"}
+{"entite": "La Paloma", "valeur": "océan Atlantique"}
+{"entite": "Panaji", "valeur": "océan Indien"}
+{"entite": "Pandu Port", "valeur": "Brahmapoutre"}
+{"entite": "Panigaglia LNG terminal", "valeur": "golfe de La Spezia"}
+{"entite": "Panmure Ferry Landing", "valeur": "Tamaki"}
+{"entite": "Paradip Port", "valeur": "océan Indien"}
+{"entite": "Pars Petrochemical Port", "valeur": "golfe Persique"}
+{"entite": "Pasabandar Port", "valeur": "golfe d'Oman"}
+{"entite": "Pascual Ledesma Naval Station", "valeur": "baie de Manille"}
+{"entite": "Peake’s Quay Marina", "valeur": "rivière Hillsborough"}
+{"entite": "Pebane", "valeur": "océan Indien"}
+{"entite": "Peine port", "valeur": "Mittellandkanal"}
+{"entite": "Pelabuhan Lirung", "valeur": "mer de Célèbes"}
+{"entite": "Pelabuhan Penyeberangan Tobaku", "valeur": "golfe de Bone"}
+{"entite": "Pelabuhan Perikanan Pantai Eretan", "valeur": "mer de Java"}
+{"entite": "Pelabuhan Trikora Tidore", "valeur": "mer d'Halmahera"}
+{"entite": "Pelserthaven", "valeur": "Delfshavense Schie"}
+{"entite": "Pemba", "valeur": "océan Indien"}
+{"entite": "Penton Hook Marina", "valeur": "Tamise"}
+{"entite": "Pepel", "valeur": "océan Atlantique"}
+{"entite": "Persoonshaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Pescallo port", "valeur": "lac de Côme"}
+{"entite": "Petkumer Wassersportverein", "valeur": "Ems-Seitenkanal"}
+{"entite": "Petrov Marina", "valeur": "Canal de Baťa"}
+{"entite": "Phuket Deep Sea Port", "valeur": "mer d'Andaman"}
+{"entite": "Pieschener Hafen", "valeur": "Elbe"}
+{"entite": "Pistoolhaven", "valeur": "canal de Beer"}
+{"entite": "Piushaven", "valeur": "canal Wilhelmine"}
+{"entite": "Plantation Wharf Pier", "valeur": "Tamise"}
+{"entite": "Plaquemines Port", "valeur": "Mississippi"}
+{"entite": "Plötzenseer Kolk", "valeur": "canal navigable Berlin-Spandau"}
+{"entite": "Podporozhsky port", "valeur": "Svir"}
+{"entite": "Pondicherry", "valeur": "océan Indien"}
+{"entite": "ponte de San Cipriano", "valeur": "mer Adriatique"}
+{"entite": "Ponthaven", "valeur": "IJ"}
+{"entite": "Ponza Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porbandar", "valeur": "océan Indien"}
+{"entite": "Port Anson", "valeur": "océan Indien"}
+{"entite": "Port area, Sabratha", "valeur": "mer Méditerranée"}
+{"entite": "Port autonome d'Abidjan", "valeur": "océan Atlantique"}
+{"entite": "Port autonome de Dakar", "valeur": "océan Atlantique"}
+{"entite": "Port autonome de Liège", "valeur": "Meuse"}
+{"entite": "Port autonome de Namur", "valeur": "Meuse"}
+{"entite": "Port autonome de San-Pedro", "valeur": "océan Atlantique"}
+{"entite": "port autonome de Strasbourg", "valeur": "Rhin"}
+{"entite": "port autonome de Tamatave", "valeur": "océan Indien"}
+{"entite": "Port autonome du Pirée", "valeur": "mer Méditerranée"}
+{"entite": "Port Bainbridge", "valeur": "Flint"}
+{"entite": "Port Balís", "valeur": "mer Méditerranée"}
+{"entite": "Port Baranyata", "valeur": "Kama"}
+{"entite": "Port Binanga", "valeur": "baie de Subic"}
+{"entite": "Port Blair Port", "valeur": "océan Indien"}
+{"entite": "Port Blanc de Calp", "valeur": "mer Méditerranée"}
+{"entite": "port Bouët", "valeur": "océan Atlantique"}
+{"entite": "Port Bowen", "valeur": "bras du Prince Regent"}
+{"entite": "Port-Cergy", "valeur": "Oise"}
+{"entite": "Port Credit Harbour Marina", "valeur": "lac Ontario"}
+{"entite": "Port Czerniakowski", "valeur": "Vistule"}
+{"entite": "port d'Aghir", "valeur": "mer Méditerranée"}
+{"entite": "Port d'Aiguadolç", "valeur": "mer Méditerranée"}
+{"entite": "port d'Ajim", "valeur": "mer Méditerranée"}
+{"entite": "Port d'Aktaou", "valeur": "mer Caspienne"}
+{"entite": "Port d'Alcanar", "valeur": "mer Méditerranée"}
+{"entite": "port d'Alexandrie", "valeur": "mer Méditerranée"}
+{"entite": "port d'Alger", "valeur": "mer Méditerranée"}
+{"entite": "Port d'Alicante", "valeur": "mer Méditerranée"}
+{"entite": "Port d'Amirabad", "valeur": "mer Caspienne"}
+{"entite": "port d'Amsterdam", "valeur": "canal de la Mer du Nord"}
+{"entite": "port d'Ancône", "valeur": "mer Adriatique"}
+{"entite": "port d'Anvers", "valeur": "Escaut"}
+{"entite": "port d'Aomori", "valeur": "baie d'Aomori"}
+{"entite": "Port d'Arenys", "valeur": "mer Méditerranée"}
+{"entite": "port d'Argenton", "valeur": "mer Celtique"}
+{"entite": "port d'Arkhangelsk", "valeur": "Dvina septentrionale"}
+{"entite": "Port d'Ashdod", "valeur": "mer Méditerranée"}
+{"entite": "port d'Austerlitz", "valeur": "Seine"}
+{"entite": "port d'Azov", "valeur": "Don"}
+{"entite": "port d'Ehoala", "valeur": "océan Indien"}
+{"entite": "port d'Eilat", "valeur": "golfe d'Aqaba"}
+{"entite": "port d'El Attaya", "valeur": "mer Méditerranée"}
+{"entite": "port d'El Hamdania", "valeur": "mer Méditerranée"}
+{"entite": "port d'El Haouaria", "valeur": "mer Méditerranée"}
+{"entite": "port d'Eupatoria", "valeur": "mer Noire"}
+{"entite": "Port d'Inkoo", "valeur": "golfe de Finlande"}
+{"entite": "port d'Itajaí", "valeur": "baie de Sepetiba"}
+{"entite": "port d'Izmaïl", "valeur": "Bras de Chilia"}
+{"entite": "port d'Izmir", "valeur": "golfe d'Izmir"}
+{"entite": "Port d'Odessa", "valeur": "mer Noire"}
+{"entite": "port d'Oran", "valeur": "mer Méditerranée"}
+{"entite": "port d'Ortona", "valeur": "mer Adriatique"}
+{"entite": "Port d'Osaka", "valeur": "baie d'Osaka"}
+{"entite": "port d'Ostende", "valeur": "mer du Nord"}
+{"entite": "port d'Oulu", "valeur": "baie de Botnie"}
+{"entite": "Port de Agadir", "valeur": "océan Atlantique"}
+{"entite": "Port de Badalone", "valeur": "mer Méditerranée"}
+{"entite": "Port de Bakou", "valeur": "mer Caspienne"}
+{"entite": "port de Baltimore", "valeur": "Patapsco"}
+{"entite": "port de Barcelone", "valeur": "mer Méditerranée"}
+{"entite": "port de Barendrecht", "valeur": "Nouvelle Meuse"}
+{"entite": "Port de Bargny-Sendou", "valeur": "océan Atlantique"}
+{"entite": "Port de Barletta", "valeur": "mer Adriatique"}
+{"entite": "Port de Beira", "valeur": "océan Indien"}
+{"entite": "port de Béjaïa", "valeur": "mer Méditerranée"}
+{"entite": "port de Bekalta", "valeur": "mer Méditerranée"}
+{"entite": "port de Belgrade", "valeur": "Danube"}
+{"entite": "port de Benghazi", "valeur": "mer Méditerranée"}
+{"entite": "port de Béni Khiar", "valeur": "mer Méditerranée"}
+{"entite": "port de Béni Saf", "valeur": "mer Méditerranée"}
+{"entite": "port de Beyrouth", "valeur": "bassin Levantin"}
+{"entite": "port de Bizerte", "valeur": "mer Méditerranée"}
+{"entite": "Port de Blanes", "valeur": "mer Méditerranée"}
+{"entite": "port de Blankenberghe", "valeur": "mer du Nord"}
+{"entite": "port de Boston", "valeur": "baie du Massachusetts"}
+{"entite": "port de Boughrara", "valeur": "mer Méditerranée"}
+{"entite": "port de Bratislava", "valeur": "Danube"}
+{"entite": "port de Brest", "valeur": "rade de Brest"}
+{"entite": "Port de Cala Bona", "valeur": "mer Méditerranée"}
+{"entite": "Port de Cala Canyelles", "valeur": "mer Méditerranée"}
+{"entite": "Port de Calafat", "valeur": "mer Méditerranée"}
+{"entite": "port de Calcutta", "valeur": "océan Indien"}
+{"entite": "Port de Cambrils", "valeur": "mer Méditerranée"}
+{"entite": "Port de Capri", "valeur": "baie de Naples"}
+{"entite": "Port de Carthagène", "valeur": "mer Méditerranée"}
+{"entite": "Port de Catane", "valeur": "mer Ionienne"}
+{"entite": "port de Chartrettes", "valeur": "Seine"}
+{"entite": "port de Chebba", "valeur": "mer Méditerranée"}
+{"entite": "port de Chvaletice", "valeur": "Elbe"}
+{"entite": "Port de Civitavecchia", "valeur": "mer Tyrrhénienne"}
+{"entite": "port de Cochin", "valeur": "océan Indien"}
+{"entite": "Port de Collo", "valeur": "mer Méditerranée"}
+{"entite": "Port de Coma-ruga", "valeur": "mer Méditerranée"}
+{"entite": "Port de Comillas", "valeur": "mer Cantabrique"}
+{"entite": "port de Conakry", "valeur": "océan Atlantique"}
+{"entite": "port de Constanta", "valeur": "mer Noire"}
+{"entite": "Port de Cotonou", "valeur": "océan Atlantique"}
+{"entite": "port de de Bilhorod-Dnistrovskyï", "valeur": "mer Noire"}
+{"entite": "Port de Deltebre", "valeur": "Èbre"}
+{"entite": "port de Djen Djen", "valeur": "mer Méditerranée"}
+{"entite": "Port de Dortmund", "valeur": "canal Dortmund-Ems"}
+{"entite": "port de Douvres", "valeur": "Manche"}
+{"entite": "port de Dublin", "valeur": "Liffey"}
+{"entite": "Port de Durrës", "valeur": "mer Adriatique"}
+{"entite": "Port de Esbjerg", "valeur": "mer des Wadden"}
+{"entite": "port de Ettwaycha", "valeur": "golfe de Boughrara"}
+{"entite": "port de Felixtowe", "valeur": "Orwell"}
+{"entite": "Port de Freetown", "valeur": "océan Atlantique"}
+{"entite": "port de Freudenau", "valeur": "Danube"}
+{"entite": "Port de Friedrichshafen", "valeur": "lac de Constance"}
+{"entite": "Port de Gaeta", "valeur": "mer Tyrrhénienne"}
+{"entite": "port de Galați", "valeur": "Danube"}
+{"entite": "port de Gand", "valeur": "canal Gand-Terneuzen"}
+{"entite": "Port de Gaza", "valeur": "bassin Levantin"}
+{"entite": "port de Gênes", "valeur": "mer ligure"}
+{"entite": "port de Gennevilliers", "valeur": "Seine"}
+{"entite": "port de Ghannouch", "valeur": "mer Méditerranée"}
+{"entite": "port de Ghar El Melh", "valeur": "mer Méditerranée"}
+{"entite": "port de Ghazaouet", "valeur": "mer Méditerranée"}
+{"entite": "port de Givet", "valeur": "Meuse"}
+{"entite": "Port de Gwadar", "valeur": "mer d'Arabie"}
+{"entite": "port de Haïfa", "valeur": "mer Méditerranée"}
+{"entite": "port de Hakata", "valeur": "baie de Hakata"}
+{"entite": "port de Hambourg", "valeur": "Unterelbe"}
+{"entite": "port de Hanchia", "valeur": "mer Méditerranée"}
+{"entite": "port de Helsingborg", "valeur": "Øresund"}
+{"entite": "port de Hergla", "valeur": "mer Méditerranée"}
+{"entite": "port de Hessi Jellâba", "valeur": "mer Méditerranée"}
+{"entite": "port de Houmt Souk", "valeur": "mer Méditerranée"}
+{"entite": "port de Jaffa", "valeur": "mer Méditerranée"}
+{"entite": "port de Jorf", "valeur": "mer Méditerranée"}
+{"entite": "port de Jyväskylä", "valeur": "Jyväsjärvi"}
+{"entite": "port de Karachi", "valeur": "mer d'Arabie"}
+{"entite": "Port de Karikal", "valeur": "océan Indien"}
+{"entite": "port de Kavkaz", "valeur": "détroit de Kertch"}
+{"entite": "port de Kélibia", "valeur": "mer Méditerranée"}
+{"entite": "port de Kerascoët", "valeur": "Frout"}
+{"entite": "port de Kertch", "valeur": "mer Noire"}
+{"entite": "Port de Klaipėda", "valeur": "mer Baltique"}
+{"entite": "port de Kobé", "valeur": "baie d'Osaka"}
+{"entite": "port de Kraten", "valeur": "mer Méditerranée"}
+{"entite": "port de Krym", "valeur": "détroit de Kertch"}
+{"entite": "port de Ksibet el-Médiouni", "valeur": "mer Méditerranée"}
+{"entite": "port de l'Amazone", "valeur": "canal de Beer"}
+{"entite": "Port de l'Ametlla de Mar", "valeur": "mer Méditerranée"}
+{"entite": "Port de l'amitié de Nouakchott", "valeur": "océan Atlantique"}
+{"entite": "Port de l'Ampolla", "valeur": "mer Méditerranée"}
+{"entite": "port de l'Épervière", "valeur": "Rhône"}
+{"entite": "Port de l'Escala", "valeur": "mer Méditerranée"}
+{"entite": "port de l'Europe", "valeur": "canal de Beer"}
+{"entite": "Port de l'Hospitalet de l'Infant", "valeur": "mer Méditerranée"}
+{"entite": "Port de l'Illa de Mar", "valeur": "mer Méditerranée"}
+{"entite": "Port de la baie d'Algésiras", "valeur": "Baie d'Algésiras"}
+{"entite": "port de la baie de Cadix", "valeur": "baie de Cadix"}
+{"entite": "port de La Baule - Le Pouliguen", "valeur": "étier du Pouliguen"}
+{"entite": "port de La Galite", "valeur": "mer Méditerranée"}
+{"entite": "port de La Goulette", "valeur": "mer Méditerranée"}
+{"entite": "port de La Louata", "valeur": "mer Méditerranée"}
+{"entite": "port de La Louza", "valeur": "mer Méditerranée"}
+{"entite": "port de la Nouvelle-Orléans", "valeur": "Mississippi"}
+{"entite": "Port de la Ràpita", "valeur": "mer Méditerranée"}
+{"entite": "port de la Viguerie", "valeur": "Garonne"}
+{"entite": "port de Lahesuu", "valeur": "baie de Tallinn"}
+{"entite": "port de Leixões", "valeur": "océan Atlantique"}
+{"entite": "port de Lekki", "valeur": "océan Atlantique"}
+{"entite": "Port de les Bassetes", "valeur": "mer Méditerranée"}
+{"entite": "Port de les Cases d'Alcanar", "valeur": "mer Méditerranée"}
+{"entite": "Port de Livourne", "valeur": "mer ligure"}
+{"entite": "Port de Llançà", "valeur": "mer Méditerranée"}
+{"entite": "port de Locquirec", "valeur": "baie de Locquirec"}
+{"entite": "Port de Londonderry", "valeur": "Foyle"}
+{"entite": "port de Londres", "valeur": "Tamise"}
+{"entite": "Port de Loviisa", "valeur": "golfe de Finlande"}
+{"entite": "Port de Luleå", "valeur": "mer Baltique"}
+{"entite": "port de Mahdia", "valeur": "mer Méditerranée"}
+{"entite": "port de Mahrès", "valeur": "mer Méditerranée"}
+{"entite": "port de Málaga", "valeur": "mer d'Alboran"}
+{"entite": "Port de Manaus", "valeur": "rio Negro"}
+{"entite": "port de Mangalia", "valeur": "mer Noire"}
+{"entite": "port de Manille", "valeur": "baie de Manille"}
+{"entite": "Port de Mar i Muntanya", "valeur": "mer Méditerranée"}
+{"entite": "port de Marioupol", "valeur": "mer d'Azov"}
+{"entite": "Port de Marsa Ben M'Hidi", "valeur": "mer d'Alboran"}
+{"entite": "Port de Mazatlán", "valeur": "océan Pacifique"}
+{"entite": "Port de Melilla", "valeur": "mer d'Alboran"}
+{"entite": "port de Melloulèche", "valeur": "mer Méditerranée"}
+{"entite": "port de Menzel Abderrahmane", "valeur": "mer Méditerranée"}
+{"entite": "port de Menzel Bourguiba", "valeur": "mer Méditerranée"}
+{"entite": "Port de Mersin", "valeur": "mer Méditerranée"}
+{"entite": "port de Miami", "valeur": "baie de Biscayne"}
+{"entite": "Port de Middelbourg", "valeur": "canal de Walcheren"}
+{"entite": "port de Midia", "valeur": "mer Noire"}
+{"entite": "Port de Mohammedia", "valeur": "océan Atlantique"}
+{"entite": "port de Montréal", "valeur": "fleuve Saint-Laurent"}
+{"entite": "Port de Nacala", "valeur": "océan Indien"}
+{"entite": "Port de Nagasaki", "valeur": "baie de Nagasaki"}
+{"entite": "port de Nagoya", "valeur": "baie d'Ise"}
+{"entite": "Port de Naha", "valeur": "mer de Chine orientale"}
+{"entite": "port de Naples", "valeur": "baie de Naples"}
+{"entite": "Port de Neukölln", "valeur": "canal de navigation Neukölln"}
+{"entite": "port de Nieuport", "valeur": "Yser"}
+{"entite": "Port de Palamós", "valeur": "mer Méditerranée"}
+{"entite": "port de Palerme", "valeur": "mer Tyrrhénienne"}
+{"entite": "port de Papeete", "valeur": "rade de Papeete"}
+{"entite": "port de pêche d'Ajim", "valeur": "mer Méditerranée"}
+{"entite": "Port de Pêche de Boulbinet", "valeur": "océan Atlantique"}
+{"entite": "port de pêche de Gabès", "valeur": "mer Méditerranée"}
+{"entite": "port de pêche de Menzel Abderrahmane", "valeur": "mer Méditerranée"}
+{"entite": "port de pêche de Zarzis", "valeur": "mer Méditerranée"}
+{"entite": "port de Peñíscola", "valeur": "golfe de Valence"}
+{"entite": "Port de Petrozavodsk", "valeur": "lac Onega"}
+{"entite": "port de plaisance d'Enoshima", "valeur": "baie de Sagami"}
+{"entite": "port de plaisance Nancy Saint-Georges", "valeur": "canal de la Marne au Rhin"}
+{"entite": "Port de Pomègues", "valeur": "mer Méditerranée"}
+{"entite": "Port de Portoferraio", "valeur": "mer Tyrrhénienne"}
+{"entite": "port de Poti", "valeur": "mer Noire"}
+{"entite": "Port de Premià", "valeur": "mer Méditerranée"}
+{"entite": "port de Puno", "valeur": "lac Titicaca"}
+{"entite": "port de Québec", "valeur": "fleuve Saint-Laurent"}
+{"entite": "Port de Quilon", "valeur": "océan Indien"}
+{"entite": "port de Radès", "valeur": "mer Méditerranée"}
+{"entite": "Port de Ras Kebdana", "valeur": "mer d'Alboran"}
+{"entite": "port de Ravenne", "valeur": "mer Adriatique"}
+{"entite": "port de Renory", "valeur": "Meuse"}
+{"entite": "Port de Riesa", "valeur": "Elbe"}
+{"entite": "Port de Rijeka", "valeur": "mer Adriatique"}
+{"entite": "port de Rio de Janeiro", "valeur": "baie de Guanabara"}
+{"entite": "Port de Ripetta", "valeur": "Tibre"}
+{"entite": "Port de Roda de Berà", "valeur": "mer Méditerranée"}
+{"entite": "port de Rosario", "valeur": "rivière Paraná"}
+{"entite": "Port de Rostock", "valeur": "Unterwarnow"}
+{"entite": "port de Rotterdam", "valeur": "mer du Nord"}
+{"entite": "Port de sa Calobra", "valeur": "mer Méditerranée"}
+{"entite": "Port de Safi", "valeur": "océan Atlantique"}
+{"entite": "port de Saint-Pétersbourg", "valeur": "mer Baltique"}
+{"entite": "port de Saint-Pierre", "valeur": "océan Indien"}
+{"entite": "Port de Sainte-Marie", "valeur": "océan Indien"}
+{"entite": "port de Sainte-Rose", "valeur": "océan Indien"}
+{"entite": "port de Salakta", "valeur": "mer Méditerranée"}
+{"entite": "Port de Salou", "valeur": "mer Méditerranée"}
+{"entite": "port de Salvador", "valeur": "baie de Tous les Saints"}
+{"entite": "Port de Sant Jordi d'Alfama", "valeur": "mer Méditerranée"}
+{"entite": "port de Sayada", "valeur": "mer Méditerranée"}
+{"entite": "port de Sébastopol", "valeur": "mer Noire"}
+{"entite": "Port de Segur de Calafell", "valeur": "mer Méditerranée"}
+{"entite": "Port de Sendai", "valeur": "baie de Sendai"}
+{"entite": "port de Séville", "valeur": "Guadalquivir"}
+{"entite": "port de Sfax", "valeur": "mer Méditerranée"}
+{"entite": "port de Shahid Rajaï", "valeur": "golfe Persique"}
+{"entite": "Port de Shimizu", "valeur": "baie de Suruga"}
+{"entite": "port de Sidi Bou Saïd", "valeur": "mer Méditerranée"}
+{"entite": "port de Sidi Daoud", "valeur": "mer Méditerranée"}
+{"entite": "port de Sidi Mechreg", "valeur": "mer Méditerranée"}
+{"entite": "port de Skhira", "valeur": "mer Méditerranée"}
+{"entite": "port de Skikda", "valeur": "mer Méditerranée"}
+{"entite": "port de Sorrente", "valeur": "baie de Naples"}
+{"entite": "port de Sousse", "valeur": "mer Méditerranée"}
+{"entite": "port de Tabarka", "valeur": "mer Méditerranée"}
+{"entite": "Port de Taichung", "valeur": "détroit de Taïwan"}
+{"entite": "Port de Tanger", "valeur": "détroit de Gibraltar"}
+{"entite": "Port de Tarragone", "valeur": "mer Méditerranée"}
+{"entite": "Port de Tchornomorsk", "valeur": "mer Noire"}
+{"entite": "port de Téboulba", "valeur": "mer Méditerranée"}
+{"entite": "port de Tel Aviv", "valeur": "mer Méditerranée"}
+{"entite": "Port de Tema", "valeur": "océan Atlantique"}
+{"entite": "port de Théodosie", "valeur": "mer Noire"}
+{"entite": "Port de Thessalonique", "valeur": "golfe Thermaïque"}
+{"entite": "port de Toba", "valeur": "baie d'Ise"}
+{"entite": "Port de Tornio", "valeur": "baie de Botnie"}
+{"entite": "Port de Torredembarra", "valeur": "mer Méditerranée"}
+{"entite": "port de Toulon", "valeur": "mer Méditerranée"}
+{"entite": "port de Trajan", "valeur": "mer Tyrrhénienne"}
+{"entite": "port de Trieste", "valeur": "golfe de Trieste"}
+{"entite": "port de Tripoli", "valeur": "mer Méditerranée"}
+{"entite": "port de Tubarão", "valeur": "océan Atlantique"}
+{"entite": "port de Tunis", "valeur": "mer Méditerranée"}
+{"entite": "port de Turku", "valeur": "Aura"}
+{"entite": "port de Valence", "valeur": "golfe de Valence"}
+{"entite": "Port de Vallcarca", "valeur": "mer Méditerranée"}
+{"entite": "port de Vancouver", "valeur": "océan Pacifique"}
+{"entite": "port de Venables", "valeur": "Seine"}
+{"entite": "port de Venise", "valeur": "lagune de Venise"}
+{"entite": "port de Visakhapatnam", "valeur": "océan Indien"}
+{"entite": "port de Yokohama", "valeur": "baie de Tokyo"}
+{"entite": "port de Yokosuka", "valeur": "baie de Tokyo"}
+{"entite": "port de Zabboussa", "valeur": "mer Méditerranée"}
+{"entite": "port de Zarat", "valeur": "mer Méditerranée"}
+{"entite": "port de Zarzis", "valeur": "mer Méditerranée"}
+{"entite": "Port del Masnou", "valeur": "mer Méditerranée"}
+{"entite": "Port del Port de la Selva", "valeur": "mer Méditerranée"}
+{"entite": "Port Dienville", "valeur": "lacs Amance et du Temple"}
+{"entite": "Port douanier et fluvial de Mayence", "valeur": "Rhin"}
+{"entite": "port du cap Zebib", "valeur": "mer Méditerranée"}
+{"entite": "Port du Frioul", "valeur": "baie de Marseille"}
+{"entite": "port du Havre", "valeur": "Manche"}
+{"entite": "port du Lauberlac'h", "valeur": "anse de l'Auberlach"}
+{"entite": "port du Lek", "valeur": "Nouvelle Meuse"}
+{"entite": "port du Moulin-blanc", "valeur": "rade de Brest"}
+{"entite": "port du Waal", "valeur": "Nouvelle Meuse"}
+{"entite": "port Édouard-Herriot", "valeur": "Rhône"}
+{"entite": "port en eau profonde d'Omišalj", "valeur": "mer Adriatique"}
+{"entite": "Port esportiu Campomanes", "valeur": "mer Méditerranée"}
+{"entite": "Port Esportiu de Tarragona", "valeur": "mer Méditerranée"}
+{"entite": "Port Famine", "valeur": "Colorado"}
+{"entite": "port fatimide de Mahdia", "valeur": "mer Méditerranée"}
+{"entite": "Port Flechtingen", "valeur": "Mittellandkanal"}
+{"entite": "port fluvial d’Arles", "valeur": "Rhône"}
+{"entite": "port fluvial de commerce de la Drôme", "valeur": "Rhône"}
+{"entite": "port fluvial de Frouard", "valeur": "Moselle"}
+{"entite": "port fluvial de Kiev", "valeur": "Dniepr"}
+{"entite": "port fluvial sud de Moscou", "valeur": "Moskova"}
+{"entite": "Port Fòrum", "valeur": "mer Méditerranée"}
+{"entite": "Port Ginesta", "valeur": "mer Méditerranée"}
+{"entite": "port Hercule", "valeur": "mer Méditerranée"}
+{"entite": "port historique de Berlin", "valeur": "Spree"}
+{"entite": "Port Hug", "valeur": "océan Atlantique"}
+{"entite": "Port intérieur de Duisbourg", "valeur": "Rhin"}
+{"entite": "Port intérieur, ou occidental", "valeur": "mer Méditerranée"}
+{"entite": "port Karlin", "valeur": "Vltava"}
+{"entite": "Port Levshino", "valeur": "Kama"}
+{"entite": "Port Lichterfelde", "valeur": "canal de Teltow"}
+{"entite": "Port Maputo", "valeur": "océan Indien"}
+{"entite": "Port Marina Port d'Aro", "valeur": "mer Méditerranée"}
+{"entite": "Port maritime de Halmstad", "valeur": "Cattégat"}
+{"entite": "port maritime de Rouen", "valeur": "Seine"}
+{"entite": "Port Methanier", "valeur": "mer Méditerranée"}
+{"entite": "port militaire de Toulon", "valeur": "mer Méditerranée"}
+{"entite": "Port Mohács", "valeur": "Danube"}
+{"entite": "Port Muhammad Bin Qasim", "valeur": "mer d'Arabie"}
+{"entite": "Port of Aalbaek", "valeur": "baie d'Ålbæk"}
+{"entite": "Port of Aalborg", "valeur": "Limfjord"}
+{"entite": "Port of Aburatsu", "valeur": "mer de Hyūga"}
+{"entite": "Port of Acciaroli", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Adra", "valeur": "mer d'Alboran"}
+{"entite": "Port of Aguadulce", "valeur": "mer d'Alboran"}
+{"entite": "Port of Águilas", "valeur": "mer Méditerranée"}
+{"entite": "Port of Ain Barbar", "valeur": "mer Méditerranée"}
+{"entite": "Port of Akashi", "valeur": "détroit d'Akashi"}
+{"entite": "Port of Akasuka", "valeur": "Ibi-gawa"}
+{"entite": "Port of Akita", "valeur": "mer du Japon"}
+{"entite": "Port of Albany–Rensselaer", "valeur": "Hudson"}
+{"entite": "Port of Aliağa", "valeur": "mer Égée"}
+{"entite": "Port of Almeria", "valeur": "mer d'Alboran"}
+{"entite": "Port of Altea", "valeur": "mer Méditerranée"}
+{"entite": "Port of Ambarlı", "valeur": "mer de Marmara"}
+{"entite": "Port of Annaba", "valeur": "mer Méditerranée"}
+{"entite": "Port of Antalya", "valeur": "mer Méditerranée"}
+{"entite": "Port of Anzio", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Ashuganj", "valeur": "Meghna"}
+{"entite": "Port of Astrakhan", "valeur": "Volga"}
+{"entite": "Port of Atami", "valeur": "mer de Sagami"}
+{"entite": "Port of Azeffoun", "valeur": "mer Méditerranée"}
+{"entite": "Port of Bandırma", "valeur": "mer de Marmara"}
+{"entite": "Port of Bechet", "valeur": "Danube"}
+{"entite": "Port of Benalmádena", "valeur": "mer d'Alboran"}
+{"entite": "Port of Bendorf", "valeur": "Rhin"}
+{"entite": "Port of Beni Ksila", "valeur": "mer Méditerranée"}
+{"entite": "Port of Benicarló", "valeur": "golfe de Valence"}
+{"entite": "Port of Benidorm", "valeur": "mer Méditerranée"}
+{"entite": "Port of Beppu", "valeur": "baie de Beppu"}
+{"entite": "Port of Bissau", "valeur": "océan Atlantique"}
+{"entite": "Port of Bonn", "valeur": "Rhin"}
+{"entite": "Port of Borriana", "valeur": "golfe de Valence"}
+{"entite": "Port of Brăila", "valeur": "Danube"}
+{"entite": "Port of Brčko", "valeur": "Save"}
+{"entite": "port of Breda", "valeur": "Mark"}
+{"entite": "Port of Brindisi", "valeur": "mer Adriatique inférieure"}
+{"entite": "Port of Cabo de Palos", "valeur": "mer Méditerranée"}
+{"entite": "Port of Cabopino", "valeur": "mer d'Alboran"}
+{"entite": "Port of Cagliari", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Calafat", "valeur": "Danube"}
+{"entite": "Port of Caleta del Sebo", "valeur": "océan Atlantique"}
+{"entite": "Port of Calp", "valeur": "mer Méditerranée"}
+{"entite": "Port of Campoamor", "valeur": "mer Méditerranée"}
+{"entite": "Port of Çandarlı", "valeur": "golfe de Çandarlı"}
+{"entite": "Port of Caniçal", "valeur": "océan Atlantique Nord"}
+{"entite": "Port of Cartagena", "valeur": "baie de Carthagène des Indes"}
+{"entite": "Port of Casablanca", "valeur": "Canal impérial d'Aragon"}
+{"entite": "Port of Castelló", "valeur": "golfe de Valence"}
+{"entite": "Port of Castro Urdiales", "valeur": "mer Cantabrique"}
+{"entite": "Port of Cernavodă", "valeur": "Danube"}
+{"entite": "Port of Çeşme", "valeur": "mer Égée"}
+{"entite": "Port of Changsha", "valeur": "Xiang"}
+{"entite": "Port of Chiba", "valeur": "baie de Tokyo"}
+{"entite": "Port of Chikubushima", "valeur": "lac Biwa"}
+{"entite": "port of Chioggia", "valeur": "mer Adriatique"}
+{"entite": "Port of Chipiona", "valeur": "golfe de Cadix"}
+{"entite": "port of Civitanova Marche", "valeur": "mer Adriatique"}
+{"entite": "Port of Coeymans", "valeur": "Hudson"}
+{"entite": "Port of Colera", "valeur": "mer Méditerranée"}
+{"entite": "Port of Conil", "valeur": "golfe de Cadix"}
+{"entite": "Port of Corabia", "valeur": "Danube"}
+{"entite": "Port of Dar es Salaam", "valeur": "océan Indien"}
+{"entite": "Port of Darin", "valeur": "golfe Persique"}
+{"entite": "Port of Davao", "valeur": "golfe de Davao"}
+{"entite": "port of Delfzijl", "valeur": "Ems"}
+{"entite": "Port of Dellys", "valeur": "mer Méditerranée"}
+{"entite": "Port of Dénia", "valeur": "golfe de Valence"}
+{"entite": "Port of Detroit", "valeur": "rivière Détroit"}
+{"entite": "Port of Djinet", "valeur": "mer Méditerranée"}
+{"entite": "Port of Drobeta Turnu Severin", "valeur": "Danube"}
+{"entite": "Port of Dubuque", "valeur": "Mississippi"}
+{"entite": "Port of El Astillero", "valeur": "baie de Santander"}
+{"entite": "Port of El Campello", "valeur": "mer Méditerranée"}
+{"entite": "Port of el Candado", "valeur": "mer d'Alboran"}
+{"entite": "Port of El Puerto de Santa María", "valeur": "Guadalete"}
+{"entite": "Port of El Rompido", "valeur": "río Piedras"}
+{"entite": "Port of El Terrón", "valeur": "río Piedras"}
+{"entite": "Port of Erdek", "valeur": "mer de Marmara"}
+{"entite": "Port of Erdemir", "valeur": "mer Noire"}
+{"entite": "Port of Estepona", "valeur": "mer d'Alboran"}
+{"entite": "Port of Faro", "valeur": "ria Formosa"}
+{"entite": "Port of Filyos", "valeur": "mer Noire"}
+{"entite": "Port of Fiumicino", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Flensburg", "valeur": "fjord de Flensbourg"}
+{"entite": "Port of Fuengirola", "valeur": "mer d'Alboran"}
+{"entite": "Port of Fukuda", "valeur": "mer de Harima"}
+{"entite": "Port of Funaura", "valeur": "mer de Chine orientale"}
+{"entite": "Port of Funchal", "valeur": "océan Atlantique Nord"}
+{"entite": "Port of Fushimi", "valeur": "rivière Yodo"}
+{"entite": "Port of Galveston", "valeur": "baie de Galveston"}
+{"entite": "Port of Gandia", "valeur": "golfe de Valence"}
+{"entite": "port of Garraf", "valeur": "mer Méditerranée"}
+{"entite": "Port of Garrucha", "valeur": "mer Méditerranée"}
+{"entite": "Port of Gernsheim", "valeur": "Rhin"}
+{"entite": "Port of Gibraltar", "valeur": "Baie d'Algésiras"}
+{"entite": "Port of Gilimanuk", "valeur": "mer de Java"}
+{"entite": "Port of Giresun", "valeur": "mer Noire"}
+{"entite": "Port of Giurgiu", "valeur": "Danube"}
+{"entite": "Port of Hadera", "valeur": "mer Méditerranée"}
+{"entite": "Port of Hagi", "valeur": "mer du Japon"}
+{"entite": "Port of Hamakanaya", "valeur": "chenal d'Uraga"}
+{"entite": "Port of Hannan", "valeur": "baie d'Osaka"}
+{"entite": "Port of Hanshin", "valeur": "baie d'Osaka"}
+{"entite": "Port of Harlingen", "valeur": "mer des Wadden"}
+{"entite": "Port of Hasle", "valeur": "mer Baltique"}
+{"entite": "Port of Hastings", "valeur": "détroit de Bass"}
+{"entite": "Port of Haydarpaşa", "valeur": "Bosphore"}
+{"entite": "Port of Heda", "valeur": "baie de Suruga"}
+{"entite": "Port of Heilbronn", "valeur": "Neckar"}
+{"entite": "Port of Heiligenhafen", "valeur": "mer Baltique"}
+{"entite": "Port of Helsingør", "valeur": "Øresund"}
+{"entite": "Port of Helsinki", "valeur": "mer Baltique"}
+{"entite": "port of Hengelo", "valeur": "canal de Twente"}
+{"entite": "Port of Hereke", "valeur": "mer de Marmara"}
+{"entite": "Port of Hidaka", "valeur": "mer des Philippines"}
+{"entite": "Port of Higashi-Hazu", "valeur": "baie de Mikawa"}
+{"entite": "Port of Hilongos", "valeur": "mer des Camotes"}
+{"entite": "Port of Hirado", "valeur": "détroit de Hirado"}
+{"entite": "Port of Hirara", "valeur": "mer de Chine orientale"}
+{"entite": "Port of Hobart", "valeur": "Derwent River"}
+{"entite": "Port of Hopa", "valeur": "mer Noire"}
+{"entite": "Port of Horikiri", "valeur": "lac Biwa"}
+{"entite": "Port of Huludao", "valeur": "baie de Liaodong"}
+{"entite": "Port of Huntington-Tristate", "valeur": "rivière Ohio"}
+{"entite": "Port of Iida", "valeur": "baie d'Iida"}
+{"entite": "Port of Inatori", "valeur": "mer de Sagami"}
+{"entite": "Port of Indiana", "valeur": "lac Michigan"}
+{"entite": "Port of Inebolu", "valeur": "mer Noire"}
+{"entite": "Port of Ipswich", "valeur": "Orwell"}
+{"entite": "Port of Isdemir", "valeur": "golfe d'Alexandrette"}
+{"entite": "Port of İskenderun", "valeur": "golfe d'Alexandrette"}
+{"entite": "Port of Istanbul", "valeur": "mer de Marmara"}
+{"entite": "Port of Itō", "valeur": "mer de Sagami"}
+{"entite": "Port of Itsukushima", "valeur": "détroit Ōno"}
+{"entite": "Port of Iwafune", "valeur": "mer du Japon"}
+{"entite": "Port of Izuhara", "valeur": "détroit de Tsushima"}
+{"entite": "Port of Jakhau", "valeur": "océan Indien"}
+{"entite": "Port of Jiangyin", "valeur": "Yangzi Jiang"}
+{"entite": "Port of Kagoshima", "valeur": "baie de Kagoshima"}
+{"entite": "Port of Kametoku", "valeur": "mer des Philippines"}
+{"entite": "Port of Kamo", "valeur": "mer du Japon"}
+{"entite": "Port of Kamsar", "valeur": "océan Atlantique"}
+{"entite": "Port of Kanazawa", "valeur": "mer du Japon"}
+{"entite": "Port of Kanmon", "valeur": "détroit de Kammon"}
+{"entite": "Port of Kansas City", "valeur": "rivière Missouri"}
+{"entite": "Port of Kappeln", "valeur": "Schlei"}
+{"entite": "Port of Karlstad", "valeur": "Main"}
+{"entite": "Port of Kawasaki", "valeur": "baie de Tokyo"}
+{"entite": "Port of Kiel", "valeur": "Fœrde de Kiel"}
+{"entite": "Port of Kitadaitō", "valeur": "mer des Philippines"}
+{"entite": "Port of Kołobrzeg", "valeur": "Parsęta"}
+{"entite": "Port of Koblenz", "valeur": "Rhin"}
+{"entite": "Port of Kohama", "valeur": "mer de Chine orientale"}
+{"entite": "Port of Konan", "valeur": "lac Inawashiro"}
+{"entite": "Port of Koper", "valeur": "mer Adriatique"}
+{"entite": "Port of Kralendijk", "valeur": "mer des Caraïbes"}
+{"entite": "Port of Kuji", "valeur": "océan Pacifique"}
+{"entite": "Port of Kuşadası", "valeur": "golfe de Kuşadası"}
+{"entite": "Port of La Atunara", "valeur": "mer d'Alboran"}
+{"entite": "Port of la Caleta", "valeur": "mer d'Alboran"}
+{"entite": "Port of La Línea de la Concepción", "valeur": "Baie d'Algésiras"}
+{"entite": "Port of La Spezia", "valeur": "golfe de La Spezia"}
+{"entite": "Port of La Vila Joiosa", "valeur": "mer Méditerranée"}
+{"entite": "Port of Larache", "valeur": "océan Atlantique"}
+{"entite": "Port of Las Palmas", "valeur": "océan Atlantique"}
+{"entite": "Port of Latakia", "valeur": "mer Méditerranée"}
+{"entite": "Port of Lidköping", "valeur": "Vänern"}
+{"entite": "Port of Llafranc", "valeur": "mer Méditerranée"}
+{"entite": "Port of Lübeck", "valeur": "Trave"}
+{"entite": "Port of Luminița", "valeur": "canal Danube-Mer Noire"}
+{"entite": "Port of Maassluis", "valeur": "Scheur"}
+{"entite": "Port of Magdalla", "valeur": "océan Indien"}
+{"entite": "Port of Malmö", "valeur": "Øresund"}
+{"entite": "Port of Marina di Grosseto", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Marugame", "valeur": "détroit de Bisan"}
+{"entite": "Port of Mataró", "valeur": "mer Méditerranée"}
+{"entite": "Port of Matola", "valeur": "océan Indien"}
+{"entite": "Port of Matoya", "valeur": "océan Pacifique"}
+{"entite": "Port of Matsuzaki", "valeur": "baie de Suruga"}
+{"entite": "port of Mattinata", "valeur": "mer Adriatique"}
+{"entite": "Port of Mazarrón", "valeur": "mer Méditerranée"}
+{"entite": "Port of Medgidia", "valeur": "canal Danube-Mer Noire"}
+{"entite": "Port of Memphis", "valeur": "Mississippi"}
+{"entite": "Port of Miike", "valeur": "mer d'Ariake"}
+{"entite": "Port of Minamidaitō", "valeur": "mer des Philippines"}
+{"entite": "Port of Mitsu", "valeur": "mer du Japon"}
+{"entite": "port of Mola", "valeur": "mer Adriatique"}
+{"entite": "Port of Moldova Veche", "valeur": "Danube"}
+{"entite": "Port of Montevideo", "valeur": "río de la Plata"}
+{"entite": "Port of Moraira", "valeur": "mer Méditerranée"}
+{"entite": "Port of Mormugao", "valeur": "océan Indien"}
+{"entite": "Port of Motobu", "valeur": "mer de Chine orientale"}
+{"entite": "Port of Motril", "valeur": "mer d'Alboran"}
+{"entite": "Port of Murfatlar", "valeur": "canal Danube-Mer Noire"}
+{"entite": "Port of Mustola", "valeur": "canal de Saimaa"}
+{"entite": "Port of Nagahama", "valeur": "lac Biwa"}
+{"entite": "Port of Nanjing", "valeur": "Yangzi Jiang"}
+{"entite": "Port of Nantong", "valeur": "Yangzi Jiang"}
+{"entite": "Port of Naryū", "valeur": "baie de Wakasa"}
+{"entite": "Port of Navlakhi", "valeur": "océan Indien"}
+{"entite": "Port of Neksø", "valeur": "mer Baltique"}
+{"entite": "Port of Nemuro", "valeur": "baie de Nemuro"}
+{"entite": "Port of Nhāva-Sheba", "valeur": "océan Indien"}
+{"entite": "Port of Niigata", "valeur": "mer du Japon"}
+{"entite": "Port of Nishinoomote", "valeur": "Détroit d'Osumi"}
+{"entite": "Port of Novi Sad", "valeur": "Danube"}
+{"entite": "Port of Nueva Palmira", "valeur": "rio Uruguay"}
+{"entite": "Port of Numazu", "valeur": "baie de Suruga"}
+{"entite": "Port of Oarai", "valeur": "océan Pacifique"}
+{"entite": "Port of Obe", "valeur": "mer de Harima"}
+{"entite": "Port of Ogi", "valeur": "détroit de Sado"}
+{"entite": "Port of Oki", "valeur": "mer des Philippines"}
+{"entite": "Port of Okinajima", "valeur": "lac Inawashiro"}
+{"entite": "Port of Oldenburg", "valeur": "Hunte"}
+{"entite": "Port of Olhão", "valeur": "ria Formosa"}
+{"entite": "Port of Oltenița", "valeur": "Danube"}
+{"entite": "Port of Ōma", "valeur": "détroit de Tsugaru"}
+{"entite": "Port of Omaha", "valeur": "rivière Missouri"}
+{"entite": "Port of Onehunga", "valeur": "port de Manukau"}
+{"entite": "Port of Oropesa del Mar", "valeur": "golfe de Valence"}
+{"entite": "Port of Orșova", "valeur": "Danube"}
+{"entite": "Port of Oryahovo", "valeur": "Danube"}
+{"entite": "Port of Ovidiu", "valeur": "canal Danube-Mer Noire"}
+{"entite": "Port of Palinuro", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Pangaon", "valeur": "Buriganga"}
+{"entite": "Port of Pasni", "valeur": "mer d'Arabie"}
+{"entite": "Port of Paulsboro", "valeur": "Delaware"}
+{"entite": "Port of Paysandu", "valeur": "rio Uruguay"}
+{"entite": "Port of Pedreña", "valeur": "baie de Santander"}
+{"entite": "Port of Pesaro", "valeur": "mer Adriatique"}
+{"entite": "Port of Pescara", "valeur": "mer Adriatique"}
+{"entite": "Port of Philadelphia", "valeur": "Delaware"}
+{"entite": "Port of Pilar de la Horadada", "valeur": "mer Méditerranée"}
+{"entite": "Port of Piombino", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Ploče", "valeur": "mer Adriatique"}
+{"entite": "Port of Portbou", "valeur": "mer Méditerranée"}
+{"entite": "Port of Portimão", "valeur": "Arade"}
+{"entite": "Port of Porto Alegre", "valeur": "rio Guaíba"}
+{"entite": "port of Porto Ercole", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Porto Santo", "valeur": "océan Atlantique Nord"}
+{"entite": "Port of Puck", "valeur": "baie de Puck"}
+{"entite": "port of Puntone di Scarlino", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Råå", "valeur": "Øresund"}
+{"entite": "Port of Ramsgate", "valeur": "Manche"}
+{"entite": "Port of Ras Al Mishab", "valeur": "golfe Persique"}
+{"entite": "Port of Ras Tanura", "valeur": "golfe Persique"}
+{"entite": "port of Rhenen", "valeur": "Rhin inférieur"}
+{"entite": "Port of Richmond", "valeur": "James River"}
+{"entite": "port of Rijswijk", "valeur": "Delftsche Vliet"}
+{"entite": "Port of Rize", "valeur": "mer Noire"}
+{"entite": "Port of Romo", "valeur": "mer des Wadden"}
+{"entite": "Port of Roses", "valeur": "mer Méditerranée"}
+{"entite": "Port of Rota", "valeur": "baie de Cadix"}
+{"entite": "Port of Rousse", "valeur": "Danube"}
+{"entite": "Port of Sagunt", "valeur": "golfe de Valence"}
+{"entite": "Port of Sakai-Senboku", "valeur": "baie d'Osaka"}
+{"entite": "Port of Sakurajima", "valeur": "baie de Kagoshima"}
+{"entite": "Port of Salerno", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of San Benedetto del Tronto", "valeur": "mer Adriatique"}
+{"entite": "Port of San José", "valeur": "mer Méditerranée"}
+{"entite": "Port of San Nicolas", "valeur": "rivière Paraná"}
+{"entite": "Port of Santa Cruz de Tenerife", "valeur": "océan Atlantique"}
+{"entite": "Port of Santa Pola", "valeur": "mer Méditerranée"}
+{"entite": "Port of Santander", "valeur": "baie de Santander"}
+{"entite": "Port of Savona", "valeur": "golfe de Gênes"}
+{"entite": "Port of Scheveningen", "valeur": "mer du Nord"}
+{"entite": "Port of Seiano", "valeur": "baie de Naples"}
+{"entite": "Port of Seneffe", "valeur": "Braç de Bellecourt"}
+{"entite": "Port of Shikinejima", "valeur": "océan Pacifique"}
+{"entite": "Port of Shimonoseki", "valeur": "détroit de Kammon"}
+{"entite": "Port of Shiriyamisaki", "valeur": "détroit de Tsugaru"}
+{"entite": "Port of Sōma", "valeur": "océan Pacifique"}
+{"entite": "Port of Sonai", "valeur": "mer de Chine orientale"}
+{"entite": "Port of Sōya", "valeur": "détroit de La Pérouse"}
+{"entite": "Port of Split", "valeur": "mer Adriatique"}
+{"entite": "Port of Stockton", "valeur": "San Joaquin"}
+{"entite": "Port of Subic", "valeur": "baie de Subic"}
+{"entite": "Port of Suzhou", "valeur": "Yangzi Jiang"}
+{"entite": "Port of Svishtov", "valeur": "Danube"}
+{"entite": "Port of Tabarca", "valeur": "mer Méditerranée"}
+{"entite": "Port of Tabira", "valeur": "détroit de Hirado"}
+{"entite": "Port of Tagonoura", "valeur": "baie de Suruga"}
+{"entite": "Port of Takamatsu", "valeur": "détroit de Bisan"}
+{"entite": "Port of Taketomi", "valeur": "mer de Chine orientale"}
+{"entite": "Port of Tala Yilef", "valeur": "mer Méditerranée"}
+{"entite": "Port of Talamone", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Tamentfoust", "valeur": "mer Méditerranée"}
+{"entite": "Port of Tanga", "valeur": "océan Indien"}
+{"entite": "Port of Taranto", "valeur": "mer Ionienne"}
+{"entite": "Port of Tarifa", "valeur": "détroit de Gibraltar"}
+{"entite": "Port of Tauranga", "valeur": "baie de Tauranga"}
+{"entite": "Port of Tavira", "valeur": "ria Formosa"}
+{"entite": "Port of Tekirdağ", "valeur": "mer de Marmara"}
+{"entite": "Port of Termini Imerese", "valeur": "mer Tyrrhénienne"}
+{"entite": "Port of Terneuzen", "valeur": "Escaut occidental"}
+{"entite": "Port of Texas City", "valeur": "baie de Galveston"}
+{"entite": "Port of Tigzirt", "valeur": "mer Méditerranée"}
+{"entite": "Port of Tilbury", "valeur": "Tamise"}
+{"entite": "Port of Timișoara", "valeur": "canal de Bega"}
+{"entite": "Port of Tobruk", "valeur": "mer Méditerranée"}
+{"entite": "Port of Tokushima-Komatsushima", "valeur": "canal de Kii"}
+{"entite": "Port of Tonoshō", "valeur": "mer intérieure de Seto"}
+{"entite": "Port of Torre Annunziata", "valeur": "baie de Naples"}
+{"entite": "Port of Torrevieja", "valeur": "mer Méditerranée"}
+{"entite": "Port of Toyohama", "valeur": "baie d'Ise"}
+{"entite": "Port of Travemünde", "valeur": "Trave"}
+{"entite": "Port of Tripoli", "valeur": "mer Méditerranée"}
+{"entite": "Port of Trisakti", "valeur": "Barito"}
+{"entite": "Port of Tulcea", "valeur": "Danube"}
+{"entite": "Port of Tuzla", "valeur": "mer de Marmara"}
+{"entite": "Port of Tyne", "valeur": "Tyne"}
+{"entite": "Port of Uno", "valeur": "détroit de Bisan"}
+{"entite": "Port of Unten", "valeur": "mer de Chine orientale"}
+{"entite": "Port of Vado Ligure", "valeur": "golfe de Gênes"}
+{"entite": "Port of Vahldorf", "valeur": "Mittellandkanal"}
+{"entite": "Port of Van", "valeur": "lac de Van"}
+{"entite": "Port of Vancouver USA", "valeur": "fleuve Columbia"}
+{"entite": "Port of Varna", "valeur": "mer Noire"}
+{"entite": "Port of Vasto", "valeur": "mer Adriatique"}
+{"entite": "Port of Vico Equense", "valeur": "baie de Naples"}
+{"entite": "Port of Vidin", "valeur": "Danube"}
+{"entite": "Port of Vienna", "valeur": "Danube"}
+{"entite": "Port of Villaricos", "valeur": "mer Méditerranée"}
+{"entite": "Port of Vinaròs", "valeur": "golfe de Valence"}
+{"entite": "Port of Vlissingen", "valeur": "Escaut occidental"}
+{"entite": "Port of Władysławowo", "valeur": "mer Baltique"}
+{"entite": "Port of Waalwijk", "valeur": "Meuse de Bergen"}
+{"entite": "Port of Wadomari", "valeur": "mer des Philippines"}
+{"entite": "port of Wijk bij Duurstede", "valeur": "Rhin inférieur"}
+{"entite": "Port of Wismar", "valeur": "baie de Wismar"}
+{"entite": "Port of Wolgast", "valeur": "Peene"}
+{"entite": "Port of Xàbia", "valeur": "golfe de Valence"}
+{"entite": "Port of Yakutsk", "valeur": "Léna"}
+{"entite": "Port of Yatsushiro", "valeur": "mer de Yatsushiro"}
+{"entite": "Port of Yoron", "valeur": "mer de Chine orientale"}
+{"entite": "Port of Ystad", "valeur": "mer Baltique"}
+{"entite": "Port of Yura", "valeur": "canal de Kii"}
+{"entite": "Port of Zemmouri", "valeur": "mer Méditerranée"}
+{"entite": "Port olympique de Barcelone", "valeur": "mer Méditerranée"}
+{"entite": "Port Otago", "valeur": "Otago Harbour"}
+{"entite": "Port Passau", "valeur": "Danube"}
+{"entite": "Port pétrolier de Gênes", "valeur": "mer ligure"}
+{"entite": "Port Pipavav", "valeur": "océan Indien"}
+{"entite": "port Rambaud", "valeur": "Saône"}
+{"entite": "Port Regensburg", "valeur": "Danube"}
+{"entite": "Port Romblon", "valeur": "mer de Sibuyan"}
+{"entite": "Port Royal", "valeur": "Nouvelle Meuse"}
+{"entite": "port Saint-Michel", "valeur": "golfe de Gascogne"}
+{"entite": "port Stéphane-Mallarmé", "valeur": "Seine"}
+{"entite": "Port touristique de Rome", "valeur": "mer Tyrrhénienne"}
+{"entite": "port Van Gogh", "valeur": "Seine"}
+{"entite": "Port William / Potirepo", "valeur": "détroit de Foveaux"}
+{"entite": "Port Zaostrovskiy", "valeur": "Kama"}
+{"entite": "Portet de l'Olla", "valeur": "mer Méditerranée"}
+{"entite": "Porticciolo di San Vito", "valeur": "mer Adriatique"}
+{"entite": "Porto Arona", "valeur": "lac Majeur"}
+{"entite": "Porto Baratti", "valeur": "mer ligure"}
+{"entite": "Porto Belo", "valeur": "océan Indien"}
+{"entite": "Porto Canale", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto Canale Leonardesco", "valeur": "mer Adriatique"}
+{"entite": "Porto de Ana Chaves", "valeur": "océan Atlantique"}
+{"entite": "Porto de Pesca da Baleeira, Sagres", "valeur": "golfe de Cadix"}
+{"entite": "Porto del Valle", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto dell'Acquasanta", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto di Acciaroli", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto di Capraia", "valeur": "canal de Corse"}
+{"entite": "Porto di Castiglione della Pescaia", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto di Cazzago Brabbia", "valeur": "lac de Varèse"}
+{"entite": "Porto di Cefalù", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto di Giulianova", "valeur": "mer Adriatique"}
+{"entite": "porto di Lampedusa", "valeur": "mer Méditerranée"}
+{"entite": "porto di Lido-San Nicolò", "valeur": "mer Adriatique"}
+{"entite": "porto di Maratea", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto di Reno", "valeur": "lac Majeur"}
+{"entite": "Porto di San Leone Mosè", "valeur": "mer Méditerranée"}
+{"entite": "Porto di San Marco", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto fluviale di Mediolanum", "valeur": "Seveso"}
+{"entite": "Porto Foxi", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto Lido", "valeur": "lac Majeur"}
+{"entite": "Porto Marghera", "valeur": "mer Adriatique"}
+{"entite": "Porto Molfetta", "valeur": "mer Adriatique"}
+{"entite": "Porto Nuovo", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto Odescaichi", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto Riva di Traiano", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto Romano", "valeur": "mer Adriatique"}
+{"entite": "Porto San Rocco", "valeur": "mer Adriatique"}
+{"entite": "Porto Stresa", "valeur": "lac Majeur"}
+{"entite": "Porto Sul", "valeur": "océan Atlantique"}
+{"entite": "Porto Trani", "valeur": "mer Adriatique"}
+{"entite": "porto turistico di Calasetta", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto Turistico di Manfredonia", "valeur": "mer Adriatique"}
+{"entite": "Porto Turistico Di Roma", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto turistico di Sant'Antioco", "valeur": "mer Tyrrhénienne"}
+{"entite": "Porto Turistico Marina di Ragusa", "valeur": "mer Méditerranée"}
+{"entite": "Porto Turistico \"Marina Sveva\"", "valeur": "mer Adriatique"}
+{"entite": "Porto Vecchio", "valeur": "mer Tyrrhénienne"}
+{"entite": "Portolabieno", "valeur": "lac Majeur"}
+{"entite": "Portovesme", "valeur": "mer Tyrrhénienne"}
+{"entite": "Ports of Emmerich am Rhein", "valeur": "Rhin"}
+{"entite": "Ports of Krefeld", "valeur": "Rhin"}
+{"entite": "Ports of Ludwigshafen Rhein", "valeur": "Rhin"}
+{"entite": "ports puniques de Carthage", "valeur": "mer Méditerranée"}
+{"entite": "Portus", "valeur": "mer Tyrrhénienne"}
+{"entite": "Pozzuoli Port", "valeur": "golfe de Pouzzoles"}
+{"entite": "Premier port Pétrolier", "valeur": "Nouvelle Meuse"}
+{"entite": "Preußenhafen", "valeur": "canal Datteln-Hamm"}
+{"entite": "Prinses Arianehaven", "valeur": "Yangtzekanaal"}
+{"entite": "Procida port", "valeur": "mer Tyrrhénienne"}
+{"entite": "public harbour in Darsena street", "valeur": "lac de Côme"}
+{"entite": "public harbour in Santa Cecilia", "valeur": "lac de Côme"}
+{"entite": "Puerto Aguirre", "valeur": "canal Tamengo"}
+{"entite": "Puerto Banús", "valeur": "mer d'Alboran"}
+{"entite": "Puerto de Colonia del Sacramento", "valeur": "río de la Plata"}
+{"entite": "Puerto de Fray Bentos", "valeur": "rio Uruguay"}
+{"entite": "Puerto de la Bajadilla", "valeur": "mer d'Alboran"}
+{"entite": "Puerto de Piriápolis", "valeur": "río de la Plata"}
+{"entite": "Puerto de Salinetas", "valeur": "océan Atlantique"}
+{"entite": "Puerto de Taliarte", "valeur": "océan Atlantique"}
+{"entite": "Puerto del Buceo", "valeur": "río de la Plata"}
+{"entite": "Puerto del Rosario Port", "valeur": "océan Atlantique Nord"}
+{"entite": "Puerto Deportivo de Marbella", "valeur": "mer d'Alboran"}
+{"entite": "Puerto Deportivo de Mazagón", "valeur": "golfe de Cadix"}
+{"entite": "Puerto Deportivo Pobla Marina", "valeur": "golfe de Valence"}
+{"entite": "Puerto Puntas de Sayago", "valeur": "río de la Plata"}
+{"entite": "Puerto Sauce", "valeur": "río de la Plata"}
+{"entite": "Puerto Sherry", "valeur": "baie de Cadix"}
+{"entite": "Punta Europa Terminal", "valeur": "océan Atlantique"}
+{"entite": "Putney Pier", "valeur": "Tamise"}
+{"entite": "Qeshm Fishing Port", "valeur": "golfe Persique"}
+{"entite": "quai des Matériaux", "valeur": "Bassin Béco"}
+{"entite": "Quelimane", "valeur": "océan Indien"}
+{"entite": "Quilon", "valeur": "océan Indien"}
+{"entite": "Rønne Harbour", "valeur": "mer Baltique"}
+{"entite": "Ra's al Ghār Port", "valeur": "golfe Persique"}
+{"entite": "Ramp of Mercado Modelo", "valeur": "baie de Tous les Saints"}
+{"entite": "Ramsar Recreational Port", "valeur": "mer Caspienne"}
+{"entite": "Randers Harbour", "valeur": "Randers Fjord"}
+{"entite": "Ras Al-khair Port", "valeur": "golfe Persique"}
+{"entite": "Ras Lanuf", "valeur": "mer Méditerranée"}
+{"entite": "Rashielee Quay", "valeur": "Clyde"}
+{"entite": "Ratnagiri", "valeur": "océan Indien"}
+{"entite": "Rausu Fishing Port", "valeur": "détroit de Nemuro"}
+{"entite": "Rederijhaven", "valeur": "Leuvehaven"}
+{"entite": "Rendsburg Port", "valeur": "canal de Kiel"}
+{"entite": "Revadanda Port", "valeur": "océan Indien"}
+{"entite": "Revithoussa LNG terminal", "valeur": "golfe Saronique"}
+{"entite": "Rhein-Ruhr-Hafen", "valeur": "Ruhr"}
+{"entite": "Rheinhafen Andernach", "valeur": "Rhin"}
+{"entite": "Rheinhafen Ossenberg", "valeur": "Rhin"}
+{"entite": "Rheinhafen Weil am Rhein", "valeur": "Rhin"}
+{"entite": "Richmond Landing Stage", "valeur": "Tamise"}
+{"entite": "Richmond St. Helena Pier", "valeur": "Tamise"}
+{"entite": "Rijnhaven", "valeur": "Rhin inférieur"}
+{"entite": "Ringkøbing Harbour", "valeur": "Ringkøbing Fjord"}
+{"entite": "RIO CACHEU", "valeur": "océan Atlantique"}
+{"entite": "Rio Marina Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "River port of Auenheim", "valeur": "Rhin"}
+{"entite": "River Port of Caesaraugusta", "valeur": "Èbre"}
+{"entite": "Robbenoordsehaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Robertson Quay", "valeur": "rivière Singapour"}
+{"entite": "Roquetas de Mar port", "valeur": "mer d'Alboran"}
+{"entite": "Roskilde Harbour", "valeur": "fjord de Roskilde"}
+{"entite": "Rosneath naval base", "valeur": "Gare Loch"}
+{"entite": "Royal Wharf pier", "valeur": "Tamise"}
+{"entite": "Rufisque", "valeur": "océan Atlantique"}
+{"entite": "Rumoi Port", "valeur": "mer du Japon"}
+{"entite": "Rungsted Havn", "valeur": "Øresund"}
+{"entite": "Ruovesi Marina", "valeur": "Ruovesi"}
+{"entite": "Sæby Harbour", "valeur": "Cattégat"}
+{"entite": "Søminestationen", "valeur": "Isefjord"}
+{"entite": "Sahebganj Multi-Model Port", "valeur": "Gange"}
+{"entite": "Saint-Cado", "valeur": "rivière d'Étel"}
+{"entite": "Salina Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "Saltpond", "valeur": "océan Atlantique"}
+{"entite": "Samara passenger port", "valeur": "Volga"}
+{"entite": "Samsunport", "valeur": "mer Noire"}
+{"entite": "San Domino harbour", "valeur": "mer Adriatique"}
+{"entite": "Sangley Point Naval Station", "valeur": "baie de Manille"}
+{"entite": "Santo Antonio", "valeur": "océan Atlantique"}
+{"entite": "Sassoon Docks", "valeur": "océan Indien"}
+{"entite": "Scharprode marina", "valeur": "mer Baltique"}
+{"entite": "Scheepmakershaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Scheurhaven", "valeur": "canal Caland"}
+{"entite": "Scheveningen", "valeur": "mer du Nord"}
+{"entite": "Schiehaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Schiemond", "valeur": "Nouvelle Meuse"}
+{"entite": "Schiersteiner Hafen", "valeur": "Rhin"}
+{"entite": "Schippershaven", "valeur": "Meuse"}
+{"entite": "Schokhaven", "valeur": "Vieille Meuse"}
+{"entite": "Seaport Marina IJmuiden", "valeur": "canal de la Mer du Nord"}
+{"entite": "Sehnde harbors", "valeur": "Mittellandkanal"}
+{"entite": "Seinehaven", "valeur": "canal Hartel"}
+{"entite": "Sekondi", "valeur": "océan Atlantique"}
+{"entite": "Serpentina Terminal", "valeur": "océan Atlantique"}
+{"entite": "Sethehaven", "valeur": "Meppelerdiep"}
+{"entite": "Setúbal Port", "valeur": "océan Atlantique"}
+{"entite": "Sevastopol Sea Fishing Port", "valeur": "mer Noire"}
+{"entite": "Sewri Port", "valeur": "océan Indien"}
+{"entite": "Shahid Bahonar Port", "valeur": "golfe Persique"}
+{"entite": "Shahid Haghani Port", "valeur": "golfe Persique"}
+{"entite": "Shahid Zakeri Port", "valeur": "golfe Persique"}
+{"entite": "Shell Haven", "valeur": "Estuaire de la Tamise"}
+{"entite": "Shenjiamen", "valeur": "mer de Chine orientale"}
+{"entite": "Shiba Fishing Port", "valeur": "baie de Tokyo"}
+{"entite": "Shinagawa Minato", "valeur": "baie de Edo"}
+{"entite": "Shoreham-by-Sea", "valeur": "Manche"}
+{"entite": "Sikka Port", "valeur": "océan Indien"}
+{"entite": "Sint-Janshaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Sint Jobshaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Sint Pieterspolder bij 4", "valeur": "Escaut oriental"}
+{"entite": "Siraf Port", "valeur": "golfe Persique"}
+{"entite": "Siroco", "valeur": "mer Méditerranée"}
+{"entite": "Skikda LNG", "valeur": "mer Méditerranée"}
+{"entite": "Sleepboothaven", "valeur": "port du Waal"}
+{"entite": "Sleepboothaven Maassluis", "valeur": "Nieuwe Waterweg"}
+{"entite": "Sloehaven", "valeur": "Escaut occidental"}
+{"entite": "Sokol", "valeur": "Soukhona"}
+{"entite": "Sophienhafen", "valeur": "Saale"}
+{"entite": "Sormiou", "valeur": "calanque de Sormiou"}
+{"entite": "Sotogrande Port", "valeur": "mer d'Alboran"}
+{"entite": "South Hook LNG terminal", "valeur": "estuaire de Milford Haven"}
+{"entite": "Spa Marina Atami", "valeur": "mer de Sagami"}
+{"entite": "De Spaanjerd", "valeur": "Meuse"}
+{"entite": "Spoorwegbassin", "valeur": "IJ"}
+{"entite": "Sportboothafen Ückeritz", "valeur": "Achterwasser"}
+{"entite": "Spruce Harbour Marina", "valeur": "False Creek"}
+{"entite": "Spuihaven", "valeur": "Nouvelle Meuse"}
+{"entite": "St. George Wharf pier", "valeur": "Tamise"}
+{"entite": "St Louis", "valeur": "océan Atlantique"}
+{"entite": "Stade LNG Terminal", "valeur": "Elbe"}
+{"entite": "Stadshaven", "valeur": "Meppelerdiep"}
+{"entite": "Stadthafen Halle", "valeur": "Saale"}
+{"entite": "Stadthafen Senftenberg", "valeur": "lac de Senftenberg"}
+{"entite": "Städtischer Rheinhafen Wesel", "valeur": "Rhin"}
+{"entite": "Stapel", "valeur": "Leine"}
+{"entite": "Stichting Jachthaven Hoorn", "valeur": "Markermeer"}
+{"entite": "Stölting Marina", "valeur": "canal Rhin-Herne"}
+{"entite": "Strandby Havn", "valeur": "Cattégat"}
+{"entite": "Straubing-Sand port", "valeur": "Danube"}
+{"entite": "Stuttgarter Hafen", "valeur": "Neckar"}
+{"entite": "Südhafen Spandau", "valeur": "Havel"}
+{"entite": "Südhafen Walsum", "valeur": "Rhin"}
+{"entite": "Swinhaven", "valeur": "Vieille Meuse"}
+{"entite": "Taarbæk Harbour", "valeur": "Øresund"}
+{"entite": "Tabaco Port", "valeur": "Baie de Tabaco"}
+{"entite": "Taganrog", "valeur": "mer d'Azov"}
+{"entite": "Tajpur Port", "valeur": "océan Indien"}
+{"entite": "Takahama Quay", "valeur": "port de Kobé"}
+{"entite": "Takoradi Harbour", "valeur": "océan Atlantique"}
+{"entite": "Tang Port", "valeur": "golfe d'Oman"}
+{"entite": "Tanger Med", "valeur": "détroit de Gibraltar"}
+{"entite": "Tanjung Langsat Port", "valeur": "détroit de Johor"}
+{"entite": "Tanzania Liquefied Natural Gas Project", "valeur": "océan Indien"}
+{"entite": "Taşucu Seka Harbor", "valeur": "mer Méditerranée"}
+{"entite": "Tatvan Port", "valeur": "lac de Van"}
+{"entite": "Tauberhafen Wertheim", "valeur": "Tauber"}
+{"entite": "Tel Aviv Marina", "valeur": "mer Méditerranée"}
+{"entite": "Tenes", "valeur": "mer Méditerranée"}
+{"entite": "Tennesseehaven", "valeur": "canal de Beer"}
+{"entite": "terminal Didon", "valeur": "mer Méditerranée"}
+{"entite": "Terminal Logística M'Bopicuá", "valeur": "rio Uruguay"}
+{"entite": "terminal pétrolier Ashtart", "valeur": "mer Méditerranée"}
+{"entite": "terminal pétrolier de Tazarka", "valeur": "mer Méditerranée"}
+{"entite": "The Port of Willemstad", "valeur": "Schottegat"}
+{"entite": "Thisted Harbour", "valeur": "Thisted Bredning"}
+{"entite": "Thorsminde Harbour", "valeur": "fjord de Nissum"}
+{"entite": "Tis Port", "valeur": "golfe d'Oman"}
+{"entite": "Tobelo Fishing Port", "valeur": "mer d'Halmahera"}
+{"entite": "Tobelo Port", "valeur": "mer d'Halmahera"}
+{"entite": "Togliatti river port", "valeur": "réservoir de Kouïbychev"}
+{"entite": "Tokyo Yumenoshima Marina", "valeur": "canal de Sunamachi"}
+{"entite": "Tolanaro", "valeur": "océan Indien"}
+{"entite": "Toliara", "valeur": "océan Indien"}
+{"entite": "Tomogaura", "valeur": "mer du Japon"}
+{"entite": "Tomonoura", "valeur": "mer Bingo"}
+{"entite": "Topsham Quay", "valeur": "Exe"}
+{"entite": "Torgau harbour", "valeur": "Elbe"}
+{"entite": "Torre del Greco port", "valeur": "baie de Naples"}
+{"entite": "Tosaminato", "valeur": "lac Jūsan"}
+{"entite": "Tower Bridge Quay", "valeur": "Tamise"}
+{"entite": "Tower Millennium Pier", "valeur": "Tamise"}
+{"entite": "Trintelhaven", "valeur": "IJsselmeer"}
+{"entite": "Trivandrum", "valeur": "océan Indien"}
+{"entite": "Tuborg Havn", "valeur": "Øresund"}
+{"entite": "Turkmenbashi international seaport", "valeur": "mer Caspienne"}
+{"entite": "Tuscumbia Landing Site", "valeur": "Tennessee"}
+{"entite": "Tweede Petroleumhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Uilenhaven", "valeur": "Vieille Meuse"}
+{"entite": "Ultramarin", "valeur": "lac de Constance"}
+{"entite": "Ulyanovsk river port", "valeur": "réservoir de Kouïbychev"}
+{"entite": "Utoro Fishing Port", "valeur": "mer d'Okhotsk"}
+{"entite": "V.O. Chidambaranar Port Authority", "valeur": "océan Indien"}
+{"entite": "Vadinar Terminal", "valeur": "océan Indien"}
+{"entite": "Varanasi Port", "valeur": "Gange"}
+{"entite": "Varberg Port", "valeur": "Cattégat"}
+{"entite": "Varel habour", "valeur": "baie de Jade"}
+{"entite": "Varna Naval Base", "valeur": "mer Noire"}
+{"entite": "Veilinghaven", "valeur": "canal de la Merwede"}
+{"entite": "Vejle Harbour", "valeur": "Vejle Fjord"}
+{"entite": "Ventotene Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "Veraval Port", "valeur": "océan Indien"}
+{"entite": "Veselí nad Moravou Marina", "valeur": "Canal de Baťa"}
+{"entite": "Victor Port", "valeur": "océan Indien"}
+{"entite": "Vierde Petroleumhaven", "valeur": "canal Caland"}
+{"entite": "vieux port de Monastir", "valeur": "mer Méditerranée"}
+{"entite": "Vieux-Port de Montréal", "valeur": "fleuve Saint-Laurent"}
+{"entite": "Vijaydurg Port", "valeur": "océan Indien"}
+{"entite": "Vijfde Petroleumhaven", "valeur": "canal Caland"}
+{"entite": "Vijfsluizerhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Vishakhapatnam", "valeur": "océan Indien"}
+{"entite": "Vispoorthaven Zutphen", "valeur": "IJssel"}
+{"entite": "Vliethaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Voorhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Voorhaven en Scheepmakershaven", "valeur": "Lek"}
+{"entite": "Vulcaanhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Vulcano Port", "valeur": "mer Tyrrhénienne"}
+{"entite": "W.s.v. St. Annaland", "valeur": "Krabbenkreek"}
+{"entite": "Waalhaven", "valeur": "Waal"}
+{"entite": "Waalhaven basin 2", "valeur": "port du Waal"}
+{"entite": "Waalhaven basin 4", "valeur": "port du Waal"}
+{"entite": "Wallwitzhafen", "valeur": "Elbe"}
+{"entite": "Wandsworth Riverside Quarter Pier", "valeur": "Tamise"}
+{"entite": "Wangerooge harbour", "valeur": "mer des Wadden"}
+{"entite": "Washington Navy Yard", "valeur": "Anacostia"}
+{"entite": "Wassersportverein Dykhausen", "valeur": "Canal Ems-Jade"}
+{"entite": "Wassersportzentrum Großkoschen", "valeur": "lac de Senftenberg"}
+{"entite": "Watanabe no Tsu", "valeur": "ancienne rivière Yodo"}
+{"entite": "Werkshafen Johnson-Lände", "valeur": "Rhin"}
+{"entite": "Werkshafen Schwelgern", "valeur": "Rhin"}
+{"entite": "Westhaven", "valeur": "canal de la Mer du Nord"}
+{"entite": "Westhaven Marina", "valeur": "Waitemata Harbour"}
+{"entite": "Westminster Millennium Pier", "valeur": "Tamise"}
+{"entite": "Wezerhaven", "valeur": "canal Caland"}
+{"entite": "White Beach Area", "valeur": "baie de Nakagusuku"}
+{"entite": "Wilhelminahaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Wiltonhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Winterhafen Wertheim", "valeur": "Main"}
+{"entite": "Wocherhafen", "valeur": "lac de Constance"}
+{"entite": "Wolfsburg ports", "valeur": "Mittellandkanal"}
+{"entite": "Woolwich Arsenal Pier", "valeur": "Tamise"}
+{"entite": "Woolwich Ferry North Pier", "valeur": "Tamise"}
+{"entite": "Woolwich Ferry South Pier", "valeur": "Tamise"}
+{"entite": "De Woudhaven", "valeur": "Alkmaardermeer"}
+{"entite": "Yacht-Club Unterems", "valeur": "Ems-Seitenkanal"}
+{"entite": "Yachthafen Breitenbrunn", "valeur": "lac de Neusiedl"}
+{"entite": "Yachthafen Hannover", "valeur": "Mittellandkanal"}
+{"entite": "Yachthafen Idensen", "valeur": "Mittellandkanal"}
+{"entite": "Yanbu Commercial Port", "valeur": "mer Rouge"}
+{"entite": "Yeşilovacık Fishing Port", "valeur": "mer Méditerranée"}
+{"entite": "Yokohama Port Museum", "valeur": "port de Yokohama"}
+{"entite": "Ystad Marina", "valeur": "mer Baltique"}
+{"entite": "Yukonhaven", "valeur": "Yangtzekanaal"}
+{"entite": "Zaandam", "valeur": "Zaan"}
+{"entite": "Zakątek wodny Trzebuskie Łęgi", "valeur": "lac de Dąbie"}
+{"entite": "Zalmhaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Zandhaven", "valeur": "Oostervaart"}
+{"entite": "Zanzibar", "valeur": "océan Indien"}
+{"entite": "Zeebrugge LNG terminal", "valeur": "Port de Zeebruges"}
+{"entite": "Zeehavengebied", "valeur": "Vieille Meuse"}
+{"entite": "Zevende Petroleumhaven", "valeur": "canal Caland"}
+{"entite": "Zevenmanshaven", "valeur": "Nouvelle Meuse"}
+{"entite": "Zuiderhaven", "valeur": "Noord-Willemskanaal"}

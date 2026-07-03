@@ -1,0 +1,5 @@
+{"_relation": "definition_terme_appareil_locomoteur", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (terme locomoteur -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "articulation", "valeur": "jonction entre deux os"}
+{"entite": "ligament", "valeur": "structure reliant deux os"}
+{"entite": "muscle", "valeur": "organe contractile"}
+{"entite": "tendon", "valeur": "structure reliant un muscle à un os"}

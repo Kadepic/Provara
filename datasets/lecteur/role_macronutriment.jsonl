@@ -1,0 +1,6 @@
+{"_relation": "role_macronutriment", "_categorie": "physique", "_source": "Modèle (Claude) — nutrition textbook curée (macronutriment -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "eau", "valeur": "hydratation de l'organisme"}
+{"entite": "fibres alimentaires", "valeur": "transit intestinal"}
+{"entite": "glucides", "valeur": "source d'énergie"}
+{"entite": "lipides", "valeur": "réserve d'énergie"}
+{"entite": "protéines", "valeur": "construction des tissus"}

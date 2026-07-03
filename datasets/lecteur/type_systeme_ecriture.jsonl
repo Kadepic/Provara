@@ -1,0 +1,33 @@
+{"_relation": "type_systeme_ecriture", "_categorie": "convention", "_source": "Claude (connaissances entraînées) — typologie des systèmes d'écriture (réf. Daniels & Bright), faits certains", "_articles": true}
+{"entite": "alphabet arabe", "valeur": "abjad"}
+{"entite": "alphabet arménien", "valeur": "alphabet"}
+{"entite": "alphabet étrusque", "valeur": "alphabet"}
+{"entite": "alphabet grec", "valeur": "alphabet"}
+{"entite": "alphabet hébreu", "valeur": "abjad"}
+{"entite": "alphabet perso-arabe", "valeur": "abjad"}
+{"entite": "alphasyllabaire bengali", "valeur": "abugida"}
+{"entite": "alphasyllabaire birman", "valeur": "abugida"}
+{"entite": "alphasyllabaire guèze", "valeur": "abugida"}
+{"entite": "alphasyllabaire odia", "valeur": "abugida"}
+{"entite": "alphasyllabaire télougou", "valeur": "abugida"}
+{"entite": "brahmi", "valeur": "abugida"}
+{"entite": "devanagari", "valeur": "abugida"}
+{"entite": "écriture arabe", "valeur": "abjad"}
+{"entite": "écriture assamaise", "valeur": "abugida"}
+{"entite": "écriture birmane", "valeur": "abugida"}
+{"entite": "écriture copte", "valeur": "alphabet"}
+{"entite": "écriture cyrillique", "valeur": "alphabet"}
+{"entite": "écriture gotique", "valeur": "alphabet"}
+{"entite": "écriture hébraïque", "valeur": "abjad"}
+{"entite": "écriture khmère", "valeur": "abugida"}
+{"entite": "écriture laotienne", "valeur": "abugida"}
+{"entite": "écriture latine", "valeur": "alphabet"}
+{"entite": "écriture nabatéenne", "valeur": "abjad"}
+{"entite": "écriture phénicienne", "valeur": "abjad"}
+{"entite": "écriture samaritaine", "valeur": "abjad"}
+{"entite": "écriture thaïe", "valeur": "abugida"}
+{"entite": "écriture tibétaine", "valeur": "abugida"}
+{"entite": "hiragana", "valeur": "syllabaire"}
+{"entite": "kanjis", "valeur": "logographique"}
+{"entite": "sinogrammes", "valeur": "logographique"}
+{"entite": "sinogrammes simplifiés", "valeur": "logographique"}

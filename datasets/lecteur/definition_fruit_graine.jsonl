@@ -1,0 +1,3 @@
+{"_relation": "definition_fruit_graine", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (fruit/graine -> origine ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "fruit", "valeur": "organe issu de la transformation de l'ovaire"}
+{"entite": "graine", "valeur": "organe issu de l'ovule contenant l'embryon"}

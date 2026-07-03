@@ -1,0 +1,28 @@
+{"_relation": "substrat_enzyme", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (substrat enzymatique ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amylase", "valeur": "amidon"}
+{"entite": "ATPase", "valeur": "ATP"}
+{"entite": "cellulase", "valeur": "cellulose"}
+{"entite": "chitinase", "valeur": "chitine"}
+{"entite": "chymotrypsine", "valeur": "protéines"}
+{"entite": "collagénase", "valeur": "collagène"}
+{"entite": "désoxyribonucléase", "valeur": "ADN"}
+{"entite": "élastase", "valeur": "élastine"}
+{"entite": "gélatinase", "valeur": "gélatine"}
+{"entite": "glucoamylase", "valeur": "amidon"}
+{"entite": "hyaluronidase", "valeur": "acide hyaluronique"}
+{"entite": "invertase", "valeur": "saccharose"}
+{"entite": "kératinase", "valeur": "kératine"}
+{"entite": "lactase", "valeur": "lactose"}
+{"entite": "lipase", "valeur": "lipides"}
+{"entite": "lysozyme", "valeur": "peptidoglycane"}
+{"entite": "maltase", "valeur": "maltose"}
+{"entite": "nucléase", "valeur": "acides nucléiques"}
+{"entite": "pectinase", "valeur": "pectine"}
+{"entite": "pepsine", "valeur": "protéines"}
+{"entite": "peptidase", "valeur": "peptides"}
+{"entite": "phospholipase", "valeur": "phospholipides"}
+{"entite": "plasmine", "valeur": "fibrine"}
+{"entite": "ribonucléase", "valeur": "ARN"}
+{"entite": "sucrase", "valeur": "saccharose"}
+{"entite": "trypsine", "valeur": "protéines"}
+{"entite": "uréase", "valeur": "urée"}

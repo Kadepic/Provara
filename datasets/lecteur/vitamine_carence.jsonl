@@ -1,0 +1,10 @@
+{"_relation": "vitamine_carence", "_categorie": "physique", "_source": "Modèle (Claude) — nutrition textbook curée (maladie de carence ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "vitamine A", "valeur": "héméralopie"}
+{"entite": "vitamine B1", "valeur": "béribéri"}
+{"entite": "vitamine B12", "valeur": "anémie pernicieuse"}
+{"entite": "vitamine B2", "valeur": "ariboflavinose"}
+{"entite": "vitamine B3", "valeur": "pellagre"}
+{"entite": "vitamine B9", "valeur": "anémie mégaloblastique"}
+{"entite": "vitamine C", "valeur": "scorbut"}
+{"entite": "vitamine D", "valeur": "rachitisme"}
+{"entite": "vitamine K", "valeur": "syndrome hémorragique"}

@@ -1,0 +1,35 @@
+{"_relation": "type_symetrie_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (symétrie corporelle adulte ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "bilatérale"}
+{"entite": "anémone de mer", "valeur": "radiaire"}
+{"entite": "calmar", "valeur": "bilatérale"}
+{"entite": "cheval", "valeur": "bilatérale"}
+{"entite": "chien", "valeur": "bilatérale"}
+{"entite": "comatule", "valeur": "radiaire"}
+{"entite": "concombre de mer", "valeur": "radiaire"}
+{"entite": "corail", "valeur": "radiaire"}
+{"entite": "crabe", "valeur": "bilatérale"}
+{"entite": "criquet", "valeur": "bilatérale"}
+{"entite": "éponge de mer", "valeur": "asymétrique"}
+{"entite": "escargot", "valeur": "bilatérale"}
+{"entite": "étoile de mer", "valeur": "radiaire"}
+{"entite": "être humain", "valeur": "bilatérale"}
+{"entite": "fourmi", "valeur": "bilatérale"}
+{"entite": "grenouille", "valeur": "bilatérale"}
+{"entite": "homard", "valeur": "bilatérale"}
+{"entite": "hydre", "valeur": "radiaire"}
+{"entite": "libellule", "valeur": "bilatérale"}
+{"entite": "lion", "valeur": "bilatérale"}
+{"entite": "méduse", "valeur": "radiaire"}
+{"entite": "mouche", "valeur": "bilatérale"}
+{"entite": "ophiure", "valeur": "radiaire"}
+{"entite": "oursin", "valeur": "radiaire"}
+{"entite": "papillon", "valeur": "bilatérale"}
+{"entite": "pieuvre", "valeur": "bilatérale"}
+{"entite": "poisson", "valeur": "bilatérale"}
+{"entite": "sangsue", "valeur": "bilatérale"}
+{"entite": "scarabée", "valeur": "bilatérale"}
+{"entite": "scorpion", "valeur": "bilatérale"}
+{"entite": "seiche", "valeur": "bilatérale"}
+{"entite": "serpent", "valeur": "bilatérale"}
+{"entite": "souris", "valeur": "bilatérale"}
+{"entite": "ver de terre", "valeur": "bilatérale"}

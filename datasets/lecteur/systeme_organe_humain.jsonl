@@ -1,0 +1,9 @@
+{"_relation": "systeme_organe_humain", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (organe -> système ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cœur", "valeur": "système circulatoire"}
+{"entite": "cerveau", "valeur": "système nerveux"}
+{"entite": "estomac", "valeur": "système digestif"}
+{"entite": "ovaire", "valeur": "système reproducteur"}
+{"entite": "peau", "valeur": "système tégumentaire"}
+{"entite": "poumon", "valeur": "système respiratoire"}
+{"entite": "rein", "valeur": "système urinaire"}
+{"entite": "testicule", "valeur": "système reproducteur"}

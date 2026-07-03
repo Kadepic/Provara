@@ -1,0 +1,1507 @@
+{"_relation": "type_aeroport", "_categorie": "physique", "_source": "Wikidata/QLever — type_aeroport sous-type P31 de Q1248784 (FAUX=0), COALESCE flux TSV", "_articles": true}
+{"entite": "aérodrome Alfonso López Pumarejo", "valeur": "aéroport international"}
+{"entite": "aérodrome Almirante Padilla", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Akron Fulton Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Alice Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Antsiranana Arrachart", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Arkansas Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Assab", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Avey Field", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "aérodrome d'East Texas Rgnl", "valeur": "aéroport régional"}
+{"entite": "aérodrome d'Erie-Ottawa Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Hengchun", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome d'Hořovice", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome d'Ijevsk", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome d'Inhambane", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Intl Peace Garden", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "aérodrome d'Invercargill", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Itaipu", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Itanagar", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "aérodrome d'Ivanovo", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome d'Oakland County Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome d'Ocala Intl-Jim Taylor Field", "valeur": "aérodrome d'aviation générale"}
+{"entite": "aérodrome d'Orsk", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome d'Oulyanovsk Baratayevka", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Bancasi", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Baudette Intl", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "aérodrome de Benjamin Taisacan Manglona Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Birmingham-Shuttlesworth Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Bisbee Douglas Intl", "valeur": "aérodrome d'aviation générale"}
+{"entite": "aérodrome de Bocas del Toro", "valeur": "aéroport international"}
+{"entite": "aérodrome de Bohuňovice", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Bozeman Yellowstone Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Brownsville/South Padre Island", "valeur": "aéroport international"}
+{"entite": "aérodrome de Brunswick", "valeur": "aéroport allemand"}
+{"entite": "aérodrome de Cabo Frio", "valeur": "aéroport international"}
+{"entite": "aérodrome de Cagayan North International", "valeur": "aéroport international"}
+{"entite": "aérodrome de Calexico Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Chennault Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Cherepovets", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Chiclayo", "valeur": "aéroport international"}
+{"entite": "aérodrome de Chippewa County Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Coleman A Young Muni", "valeur": "aéroport international"}
+{"entite": "aérodrome de Corpus Christi Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Corumbá", "valeur": "aéroport international"}
+{"entite": "aérodrome de Cuiabá", "valeur": "aéroport international"}
+{"entite": "aérodrome de Danielson", "valeur": "aérodrome d'aviation générale"}
+{"entite": "aérodrome de Del Rio Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Dobrá Niva", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Dubová", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Duluth Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Falls Intl-Einarson Field", "valeur": "aéroport international"}
+{"entite": "aérodrome de Fort-Dauphin", "valeur": "aéroport international"}
+{"entite": "aérodrome de Fort Wayne Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Fort Worth Meacham Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Fribourg-Ecuvillens", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de General Downing - Peoria Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Gerardo Tobar López", "valeur": "aéroport international"}
+{"entite": "aérodrome de Glacier Park Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Gorno-Altaïsk", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Grand Turk", "valeur": "aéroport international"}
+{"entite": "aérodrome de Grant Co Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Griffiss Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Gulu", "valeur": "aéroport international"}
+{"entite": "aérodrome de Huntsville Intl-Carl T Jones Field", "valeur": "aéroport international"}
+{"entite": "aérodrome de Jefferson County Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Kaieteur", "valeur": "aéroport international"}
+{"entite": "aérodrome de Kalamazoo/Battle Creek Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Kasane", "valeur": "aéroport international"}
+{"entite": "aérodrome de Kavieng", "valeur": "aéroport international"}
+{"entite": "aérodrome de Ketchikan Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Khanty-Mansiysk", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Kinmen", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Kostroma", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Kunovice", "valeur": "aéroport international"}
+{"entite": "aérodrome de La Vanguardia", "valeur": "aéroport international"}
+{"entite": "aérodrome de Lanyu-île des Orchidées", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Lawrenceville-Vincennes Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Leesburg Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Loring Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Lubbock Preston Smith Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de M'fuwe", "valeur": "aéroport international"}
+{"entite": "aérodrome de Mahajanga/Philibert Tsiranana", "valeur": "aéroport international"}
+{"entite": "aérodrome de Maverick County Memorial Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Mc Allen Miller Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Minot Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Murfreesboro Muni", "valeur": "aérodrome d'aviation générale"}
+{"entite": "aérodrome de Mwanza", "valeur": "aéroport international"}
+{"entite": "aérodrome de Nampula", "valeur": "aéroport international"}
+{"entite": "aérodrome de Nazran-Magas", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Neubrandembourg", "valeur": "aéroport allemand"}
+{"entite": "aérodrome de Newport News/Williamsburg Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Nogales", "valeur": "aéroport international"}
+{"entite": "aérodrome de Pardubice", "valeur": "aéroport international"}
+{"entite": "aérodrome de Pemba Karume", "valeur": "aéroport international"}
+{"entite": "aérodrome de Penza", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Piedmont Triad Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Piešťany", "valeur": "aéroport international"}
+{"entite": "aérodrome de Piney Pinecreek Border", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "aérodrome de Poti", "valeur": "aéroport international"}
+{"entite": "aérodrome de Prague-Vodochody", "valeur": "aérodrome d'aviation générale"}
+{"entite": "aérodrome de Puerto Maldonado", "valeur": "aéroport international"}
+{"entite": "aérodrome de Quad City Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Rick Husband Amarillo Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Rochester Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Ross", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "aérodrome de Roswell Intl Air Center", "valeur": "aéroport international"}
+{"entite": "aérodrome de San Bernardino Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Saransk", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Satu Mare", "valeur": "aéroport international"}
+{"entite": "aérodrome de Sawyer Intl", "valeur": "aéroport régional"}
+{"entite": "aérodrome de Scholes Intl At Galveston", "valeur": "aéroport international"}
+{"entite": "aérodrome de Scobey Border Station /East Poplar Intl/", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "aérodrome de Sloulin Fld Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de St Clair County Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Stavropol", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Sullivan County Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Surat", "valeur": "aéroport international"}
+{"entite": "aérodrome de Syktyvkar", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Tábor", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Tabubil", "valeur": "aéroport international"}
+{"entite": "aérodrome de Tacna", "valeur": "aéroport international"}
+{"entite": "aérodrome de Takoradi", "valeur": "aéroport international"}
+{"entite": "aérodrome de Tanga", "valeur": "aéroport international"}
+{"entite": "aérodrome de Tchéboksary", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Terre Haute Rgnl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Tete-Chingozi", "valeur": "aéroport international"}
+{"entite": "aérodrome de Toliara", "valeur": "aéroport international"}
+{"entite": "aérodrome de Treasure Coast Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Trenčín", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Trent Lott Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Tulsa Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Vilanculos", "valeur": "aéroport international"}
+{"entite": "aérodrome de Vittel - Champ de courses", "valeur": "aéroport abandonné"}
+{"entite": "aérodrome de Vladikavkaz", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Vologda", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome de Wa", "valeur": "aéroport international"}
+{"entite": "aérodrome de Wang-an", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome de Warroad Intl Memorial", "valeur": "aéroport international"}
+{"entite": "aérodrome de Whetstone", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "aérodrome de William R Fairchild Intl", "valeur": "aéroport international"}
+{"entite": "aérodrome de Williston Basin", "valeur": "aéroport international"}
+{"entite": "aérodrome de Yoshkar-Ola", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome Holíč", "valeur": "aéroport intérieur"}
+{"entite": "aérodrome international de Valley", "valeur": "aéroport international"}
+{"entite": "aérodrome Kaluga", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome municipal de Winsted", "valeur": "aérodrome d'aviation générale"}
+{"entite": "aérodrome Pedro Juan Caballero", "valeur": "aéroport international"}
+{"entite": "aérodrome Princesse Olga de Pskov", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome Salerno Costa d'Amalfi", "valeur": "aéroport international"}
+{"entite": "aérodrome Sokol de Magadan", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome Vostochny d'Oulianovsk", "valeur": "aéroport fédéral"}
+{"entite": "aérodrome Vostochny de Koursk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport Adisutjipto", "valeur": "aéroport international"}
+{"entite": "aéroport Adnan-Menderes", "valeur": "aéroport international"}
+{"entite": "aéroport Agadir - Al Massira", "valeur": "aéroport international"}
+{"entite": "aéroport Ambalamanasy de Toamasina", "valeur": "aéroport international"}
+{"entite": "aéroport Antonio Roldán Betancourt", "valeur": "aéroport international"}
+{"entite": "aéroport Astor Piazzolla de Mar del Plata", "valeur": "aéroport international"}
+{"entite": "aéroport Benito Salas", "valeur": "aéroport international"}
+{"entite": "aéroport Changi de Singapour", "valeur": "aéroport international"}
+{"entite": "aéroport Charles Kirkconnell", "valeur": "aéroport international"}
+{"entite": "aéroport Cheikh Zayed de Rahim Yar Khan", "valeur": "aéroport international"}
+{"entite": "aéroport Cochabamba Jorge Wilstermann", "valeur": "aéroport international"}
+{"entite": "aéroport Comandante Armando Tola", "valeur": "aéroport international"}
+{"entite": "aéroport Constantin-le-Grand de Niš", "valeur": "aéroport international"}
+{"entite": "aéroport Coronel Felipe Varela", "valeur": "aéroport international"}
+{"entite": "aéroport d'Aberdeen", "valeur": "aéroport international"}
+{"entite": "aéroport d'Achgabat", "valeur": "aéroport international"}
+{"entite": "aéroport d'Addis-Abeba Bishoftu", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "aéroport d'Aden", "valeur": "aéroport international"}
+{"entite": "aéroport d'Adrar - Touat - Cheikh Sidi Mohamed Belkebir", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ahvaz", "valeur": "aéroport international"}
+{"entite": "aéroport d'Akwa Ibom", "valeur": "aéroport international"}
+{"entite": "aéroport d'Al Abraq", "valeur": "aéroport international"}
+{"entite": "aéroport d'Al-Ahsa", "valeur": "aéroport international"}
+{"entite": "aéroport d'Al-Alamein", "valeur": "aéroport international"}
+{"entite": "aéroport d'Al Bahah", "valeur": "aéroport intérieur"}
+{"entite": "aéroport d'Al-Jawf", "valeur": "aéroport intérieur"}
+{"entite": "aéroport d'Alexandroúpoli", "valeur": "aéroport international"}
+{"entite": "aéroport d'Alicante", "valeur": "aéroport international"}
+{"entite": "aéroport d'Allentown-Bethlehem-Easton", "valeur": "aéroport international"}
+{"entite": "aéroport d'Amaala", "valeur": "aéroport international"}
+{"entite": "aéroport d'Amsterdam-Schiphol", "valeur": "aéroport international"}
+{"entite": "aéroport d'Anapa", "valeur": "aéroport fédéral"}
+{"entite": "aéroport d'Ancône-Falconara", "valeur": "aéroport international"}
+{"entite": "aéroport d'Annaba - Rabah-Bitat", "valeur": "aéroport international"}
+{"entite": "aéroport d'Antalya", "valeur": "aéroport international"}
+{"entite": "aéroport d'Anvers", "valeur": "aéroport international"}
+{"entite": "aéroport d'Apia", "valeur": "aéroport international"}
+{"entite": "aéroport d'Arica Chacalluta", "valeur": "aéroport international"}
+{"entite": "aéroport d'Arua", "valeur": "aéroport international"}
+{"entite": "aéroport d'Arusha", "valeur": "aéroport international"}
+{"entite": "aéroport d'Assiout", "valeur": "aéroport international"}
+{"entite": "aéroport d'Auckland", "valeur": "aéroport international"}
+{"entite": "aéroport d'East London", "valeur": "aéroport international"}
+{"entite": "aéroport d'Édimbourg", "valeur": "aéroport international"}
+{"entite": "aéroport d'Eindhoven", "valeur": "aéroport international"}
+{"entite": "aéroport d'El Oued - Guemar", "valeur": "aéroport international"}
+{"entite": "aéroport d'El Paso", "valeur": "aéroport international"}
+{"entite": "aéroport d'Eldoret", "valeur": "aéroport international"}
+{"entite": "aéroport d'Elista", "valeur": "aéroport fédéral"}
+{"entite": "aéroport d'Ellington", "valeur": "aéroport international"}
+{"entite": "aéroport d'Enugu", "valeur": "aéroport international"}
+{"entite": "aéroport d'Erfurt-Weimar", "valeur": "aéroport allemand"}
+{"entite": "aéroport d'Hassi Messaoud - Oued Irara - Krim Belkacem", "valeur": "aéroport international"}
+{"entite": "aéroport d'Helsinki-Vantaa", "valeur": "aéroport international"}
+{"entite": "aéroport d'Hérat", "valeur": "aéroport international"}
+{"entite": "aéroport d'Holguín", "valeur": "aéroport international"}
+{"entite": "aéroport d'Iakoutsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport d'Ibiza", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ignatyevo", "valeur": "aéroport fédéral"}
+{"entite": "aéroport d'Ilopango", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ilorin", "valeur": "aéroport international"}
+{"entite": "aéroport d'Innsbruck", "valeur": "aéroport international"}
+{"entite": "aéroport d'Iquique", "valeur": "aéroport international"}
+{"entite": "aéroport d'Iquitos", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ivalo", "valeur": "aéroport international"}
+{"entite": "aéroport d'Izmaïl", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ölgii", "valeur": "aéroport international"}
+{"entite": "aéroport d'Olsztyn-Mazurie", "valeur": "aéroport international"}
+{"entite": "aéroport d'Omsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport d'Oran - Ahmed Ben Bella", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ordu-Giresun", "valeur": "aérodrome sur une île artificielle"}
+{"entite": "aéroport d'Orenbourg Tsentralni", "valeur": "aéroport fédéral"}
+{"entite": "aéroport d'Orlando-Melbourne", "valeur": "aéroport international"}
+{"entite": "aéroport d'Oslo-Fornebu", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ostende-Bruges", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ougolny", "valeur": "aéroport fédéral"}
+{"entite": "aéroport d'Oulu", "valeur": "aéroport international"}
+{"entite": "aéroport d'Ourguentch", "valeur": "aéroport international"}
+{"entite": "aéroport d'Umeå", "valeur": "aéroport international"}
+{"entite": "aéroport Daniel-Oduber-Quirós", "valeur": "aéroport international"}
+{"entite": "aéroport de Baia Mare", "valeur": "aéroport international"}
+{"entite": "aéroport de Bangkok-Suvarnabhumi", "valeur": "aéroport international"}
+{"entite": "aéroport de Bari", "valeur": "aéroport international"}
+{"entite": "aéroport de Barnaoul", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Batna - Mostepha Ben Boulaid", "valeur": "aéroport international"}
+{"entite": "aéroport de Beigan", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Beira", "valeur": "aéroport international"}
+{"entite": "aéroport de Béjaïa - Soummam - Abane Ramdane", "valeur": "aéroport international"}
+{"entite": "aéroport de Bellingham", "valeur": "aéroport international"}
+{"entite": "aéroport de Berlin-Brandebourg", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Berlin-Tempelhof", "valeur": "aéroport international"}
+{"entite": "aéroport de Billund", "valeur": "aéroport international"}
+{"entite": "aéroport de Biskra - Mohamed Khider", "valeur": "aéroport international"}
+{"entite": "aéroport de Bobo-Dioulasso", "valeur": "aéroport international"}
+{"entite": "aéroport de Bodrum-Milas", "valeur": "aéroport international"}
+{"entite": "aéroport de Bohol–Panglao", "valeur": "aéroport international"}
+{"entite": "aéroport de Bokeo", "valeur": "aéroport international"}
+{"entite": "aéroport de Bologne", "valeur": "aéroport international"}
+{"entite": "aéroport de Bordeaux-Mérignac", "valeur": "aéroport international"}
+{"entite": "aéroport de Boukhara", "valeur": "aéroport international"}
+{"entite": "aéroport de Bourgas", "valeur": "aéroport international"}
+{"entite": "aéroport de Bournemouth", "valeur": "aéroport international"}
+{"entite": "aéroport de Brême", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Brest", "valeur": "aéroport international"}
+{"entite": "aéroport de Brno", "valeur": "aéroport international"}
+{"entite": "aéroport de Bruxelles", "valeur": "aéroport international"}
+{"entite": "aéroport de Cabo San Lucas", "valeur": "aéroport international"}
+{"entite": "aéroport de Cam Ranh", "valeur": "aéroport international"}
+{"entite": "aéroport de Canberra", "valeur": "aéroport international"}
+{"entite": "aéroport de Carlsbad", "valeur": "aéroport international"}
+{"entite": "aéroport de Casper-Comté de Natrona", "valeur": "aéroport international"}
+{"entite": "aéroport de Cassel", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Cat Bi", "valeur": "aéroport international"}
+{"entite": "aéroport de Catane-Fontanarossa", "valeur": "aéroport international"}
+{"entite": "aéroport de Cerro Largo", "valeur": "aéroport international"}
+{"entite": "aéroport de České Budějovice", "valeur": "aéroport international"}
+{"entite": "aéroport de Chabahar-Konarak", "valeur": "aéroport international"}
+{"entite": "aéroport de Chambéry-Savoie", "valeur": "aéroport international"}
+{"entite": "aéroport de Chandigarh", "valeur": "aéroport international"}
+{"entite": "aéroport de Cheongju", "valeur": "aéroport international"}
+{"entite": "aéroport de Chlef", "valeur": "aéroport international"}
+{"entite": "aéroport de Chu Lai", "valeur": "aéroport international"}
+{"entite": "aéroport de Cologne/Bonn", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Constantine - Mohamed Boudiaf", "valeur": "aéroport international"}
+{"entite": "aéroport de Copenhague", "valeur": "aéroport international"}
+{"entite": "aéroport de Cordoba", "valeur": "aéroport international"}
+{"entite": "aéroport de Corfou", "valeur": "aéroport international"}
+{"entite": "aéroport de Corisco", "valeur": "aéroport international"}
+{"entite": "aéroport de Cortina", "valeur": "aéroport abandonné"}
+{"entite": "aéroport de Courtrai-Wevelgem", "valeur": "aéroport international"}
+{"entite": "aéroport de Cracovie-Jean-Paul-II", "valeur": "aéroport international"}
+{"entite": "aéroport de Croydon", "valeur": "aéroport international"}
+{"entite": "aéroport de Dakhla", "valeur": "aéroport international"}
+{"entite": "aéroport de Dalaman", "valeur": "aéroport international"}
+{"entite": "aéroport de Daugavpils", "valeur": "aéroport international"}
+{"entite": "aéroport de Daytona Beach", "valeur": "aéroport international"}
+{"entite": "aéroport de Domingo Faustino Sarmiento", "valeur": "aéroport international"}
+{"entite": "aéroport de Doncaster-Sheffield Robin Hood", "valeur": "aéroport international"}
+{"entite": "aéroport de Dortmund", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Dresde", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Duqm", "valeur": "aéroport international"}
+{"entite": "aéroport de Dzaoudzi-Pamandzi", "valeur": "aéroport international"}
+{"entite": "aéroport de Faro", "valeur": "aéroport international"}
+{"entite": "aéroport de Ferghana", "valeur": "aéroport international"}
+{"entite": "aéroport de Florence-Peretola", "valeur": "aéroport international"}
+{"entite": "Aéroport de Forlì", "valeur": "aéroport international"}
+{"entite": "aéroport de Formosa", "valeur": "aéroport international"}
+{"entite": "aéroport de Francazal", "valeur": "aéroport international"}
+{"entite": "aéroport de Franceville", "valeur": "aéroport international"}
+{"entite": "aéroport de Friedrichshafen", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Fuerteventura", "valeur": "aéroport international"}
+{"entite": "aéroport de Fukuoka", "valeur": "aéroport international"}
+{"entite": "aéroport de Funchal", "valeur": "aéroport international"}
+{"entite": "aéroport de Gaya", "valeur": "aéroport international"}
+{"entite": "aéroport de Gerald R Ford de Grand Rapids", "valeur": "aéroport international"}
+{"entite": "aéroport de Ghardaïa - Noumérat - Moufdi Zakaria", "valeur": "aéroport international"}
+{"entite": "aéroport de Glasgow-Prestwick", "valeur": "aéroport international"}
+{"entite": "aéroport de Golosón", "valeur": "aéroport international"}
+{"entite": "aéroport de Göteborg-Landvetter", "valeur": "aéroport international"}
+{"entite": "aéroport de Gran Canaria", "valeur": "aéroport international"}
+{"entite": "aéroport de Granges", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Graz", "valeur": "aéroport international"}
+{"entite": "aéroport de Grozny", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Gwangju", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Hahn", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Heringsdorf", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Hermosillo", "valeur": "aéroport international"}
+{"entite": "aéroport de Hrodna", "valeur": "aéroport international"}
+{"entite": "aéroport de Ioujno-Sakhalinsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Jardines del Rey", "valeur": "aéroport international"}
+{"entite": "aéroport de Jijel - Ferhat Abbas", "valeur": "aéroport international"}
+{"entite": "aéroport de Johannesbourg-Lanséria", "valeur": "aéroport international"}
+{"entite": "aéroport de Kalamata", "valeur": "aéroport international"}
+{"entite": "aéroport de Karakol", "valeur": "aéroport international"}
+{"entite": "aéroport de Karlsruhe-Baden-Baden", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Katowice-Pyrzowice", "valeur": "aéroport international"}
+{"entite": "aéroport de Katsina", "valeur": "aéroport international"}
+{"entite": "aéroport de Key West", "valeur": "aéroport international"}
+{"entite": "aéroport de Khabarovsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Kiev Boryspil", "valeur": "aéroport international"}
+{"entite": "aéroport de Kirov", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Kismayo", "valeur": "aéroport international"}
+{"entite": "aéroport de Kisumu", "valeur": "aéroport international"}
+{"entite": "aéroport de Kitakyushu", "valeur": "aérodrome sur une île artificielle"}
+{"entite": "aéroport de Klagenfurt", "valeur": "aéroport international"}
+{"entite": "aéroport de Knock", "valeur": "aéroport international"}
+{"entite": "aéroport de Kōbe", "valeur": "aérodrome sur une île artificielle"}
+{"entite": "aéroport de Kogalym", "valeur": "aéroport international"}
+{"entite": "aéroport de Kokchetaou", "valeur": "aéroport international"}
+{"entite": "aéroport de Kourgan", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Kristiansand Kjevik", "valeur": "aéroport international"}
+{"entite": "aéroport de Kryvyi Rih", "valeur": "aéroport international"}
+{"entite": "aéroport de Kuala Terengganu", "valeur": "aéroport international"}
+{"entite": "aéroport de Kukës", "valeur": "aéroport international"}
+{"entite": "aéroport de Kuopio", "valeur": "aéroport international"}
+{"entite": "aéroport de Kyzyl", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de l'île de Kish", "valeur": "aéroport international"}
+{"entite": "aéroport de la baie de Providenia", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de LaGuardia", "valeur": "aéroport international"}
+{"entite": "aéroport de Lamezia Terme", "valeur": "aéroport international"}
+{"entite": "aéroport de Lankaran", "valeur": "aéroport international"}
+{"entite": "aéroport de Lansing", "valeur": "aéroport international"}
+{"entite": "aéroport de Lanzarote", "valeur": "aéroport international"}
+{"entite": "aéroport de Lanzhou Zhongchuan", "valeur": "aéroport international"}
+{"entite": "aéroport de Leipzig/Halle", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Lemnos", "valeur": "aéroport international"}
+{"entite": "aéroport de Liepāja", "valeur": "aéroport international"}
+{"entite": "aéroport de Limón", "valeur": "aéroport international"}
+{"entite": "aéroport de Linz", "valeur": "aéroport international"}
+{"entite": "aéroport de Lipetsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Lisbonne-Humberto Delgado", "valeur": "aéroport international"}
+{"entite": "aéroport de Liverpool John Lennon", "valeur": "aéroport international"}
+{"entite": "aéroport de Londres City", "valeur": "aéroport international"}
+{"entite": "aéroport de Londres Gatwick", "valeur": "aéroport international"}
+{"entite": "aéroport de Londres Heathrow", "valeur": "aéroport international"}
+{"entite": "aéroport de Londres Luton", "valeur": "aéroport international"}
+{"entite": "aéroport de Londres Stansted", "valeur": "aéroport international"}
+{"entite": "aéroport de Longyearbyen", "valeur": "aéroport international"}
+{"entite": "aéroport de Lubango", "valeur": "aéroport international"}
+{"entite": "aéroport de Lübeck", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Lutao", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Luxembourg-Findel", "valeur": "aéroport international"}
+{"entite": "aéroport de Madrid-Barajas", "valeur": "aéroport international"}
+{"entite": "aéroport de Madurai", "valeur": "aéroport international"}
+{"entite": "aéroport de Magong", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Makhatchkala", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Malabo", "valeur": "aéroport international"}
+{"entite": "aéroport de Málaga-Costa del Sol", "valeur": "aéroport international"}
+{"entite": "aéroport de Malakal", "valeur": "aéroport international"}
+{"entite": "aéroport de Manchester", "valeur": "aéroport international"}
+{"entite": "aéroport de Manzhouli Xijiao", "valeur": "aéroport international"}
+{"entite": "aéroport de Marioupol", "valeur": "aéroport international"}
+{"entite": "aéroport de Marrakech-Ménara", "valeur": "aéroport international"}
+{"entite": "aéroport de Marsa Matruh", "valeur": "aéroport international"}
+{"entite": "aéroport de Marsh Harbour", "valeur": "aéroport international"}
+{"entite": "aéroport de Massaoua", "valeur": "aéroport international"}
+{"entite": "aéroport de Matsu Nangan", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Maun", "valeur": "aéroport international"}
+{"entite": "aéroport de Medellín-E. Olaya Herrera", "valeur": "aéroport international"}
+{"entite": "aéroport de Melbourne-Avalon", "valeur": "aéroport international"}
+{"entite": "aéroport de Melbourne-Tullamarine", "valeur": "aéroport international"}
+{"entite": "aéroport de Memmingen", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Mendoza", "valeur": "aéroport international"}
+{"entite": "aéroport de Milan Linate", "valeur": "aéroport international"}
+{"entite": "aéroport de Milan Malpensa", "valeur": "aéroport international"}
+{"entite": "aéroport de Mineralnye Vody", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Minna", "valeur": "aéroport international"}
+{"entite": "aéroport de Minorque", "valeur": "aéroport international"}
+{"entite": "aéroport de Mitiga", "valeur": "aéroport international"}
+{"entite": "aéroport de Morava", "valeur": "aéroport international"}
+{"entite": "aéroport de Mostar", "valeur": "aéroport international"}
+{"entite": "aéroport de Mount Gambier", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Mourmansk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Munich-Riem", "valeur": "aéroport international"}
+{"entite": "aéroport de Münster/Osnabrück", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Nador - Al Aroui", "valeur": "aéroport international"}
+{"entite": "aéroport de Naltchik", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Nantes Atlantique", "valeur": "aéroport international"}
+{"entite": "aéroport de Naples-Capodichino", "valeur": "aéroport international"}
+{"entite": "aéroport de Narian-Mar", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Nassiriya", "valeur": "aéroport international"}
+{"entite": "aéroport de Navoï", "valeur": "aéroport international"}
+{"entite": "aéroport de Newburgh-Stewart", "valeur": "aéroport international"}
+{"entite": "aéroport de Nice-Côte d'Azur", "valeur": "aéroport international"}
+{"entite": "aéroport de Nijnevartovsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de North Eleuthera", "valeur": "aéroport international"}
+{"entite": "aéroport de Novokouznetsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Novossibirsk-Tolmachevo", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Novy Ourengoï", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Nuremberg", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Nuuk", "valeur": "aéroport international"}
+{"entite": "aéroport de Ouagadougou-Donsin", "valeur": "aéroport international"}
+{"entite": "aéroport de Paderborn/Lippstadt", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Pago Pago", "valeur": "aéroport international"}
+{"entite": "aéroport de Paksé", "valeur": "aéroport international"}
+{"entite": "aéroport de Pakyong", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "aéroport de Palenque", "valeur": "aéroport international"}
+{"entite": "aéroport de Palerme", "valeur": "aéroport international"}
+{"entite": "aéroport de Palma de Majorque", "valeur": "aéroport international"}
+{"entite": "aéroport de Palmerston North", "valeur": "aéroport international"}
+{"entite": "aéroport de Panama City–Bay County", "valeur": "aéroport international"}
+{"entite": "aéroport de Panamá Pacífico", "valeur": "aéroport international"}
+{"entite": "aéroport de Paris-Beauvais", "valeur": "aéroport international"}
+{"entite": "aéroport de Paris-Orly", "valeur": "aéroport international"}
+{"entite": "aéroport de Pattaya-U-Tapao", "valeur": "aéroport international"}
+{"entite": "aéroport de Payam", "valeur": "aéroport international"}
+{"entite": "aéroport de Pensacola", "valeur": "aéroport international"}
+{"entite": "aéroport de Pérouse-Sant'Egidio", "valeur": "aéroport international"}
+{"entite": "aéroport de Perth", "valeur": "aéroport international"}
+{"entite": "aéroport de Petropavlovsk-Kamtchatski", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Petrozavodsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Phitsanulok", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Pilanesberg", "valeur": "aéroport international"}
+{"entite": "aéroport de Piura", "valeur": "aéroport international"}
+{"entite": "aéroport de Plovdiv", "valeur": "aéroport international"}
+{"entite": "aéroport de Polokwane/Pietersburg", "valeur": "aéroport international"}
+{"entite": "aéroport de Port Blair", "valeur": "aéroport international"}
+{"entite": "aéroport de Port Hedland", "valeur": "aéroport international"}
+{"entite": "aéroport de Port Moresby-Jacksons", "valeur": "aéroport international"}
+{"entite": "aéroport de Port-Soudan", "valeur": "aéroport international"}
+{"entite": "aéroport de Porto", "valeur": "aéroport international"}
+{"entite": "aéroport de Portorož", "valeur": "aéroport international"}
+{"entite": "aéroport de Prague-Václav-Havel", "valeur": "aéroport international"}
+{"entite": "aéroport de Pucallpa", "valeur": "aéroport international"}
+{"entite": "aéroport de Puerto Vallarta", "valeur": "aéroport international"}
+{"entite": "aéroport de Pune", "valeur": "aéroport international"}
+{"entite": "aéroport de Rabat-Salé", "valeur": "aéroport international"}
+{"entite": "aéroport de Rabil", "valeur": "aéroport international"}
+{"entite": "aéroport de Rafha", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Rajkot", "valeur": "aéroport abandonné"}
+{"entite": "aéroport de Resistencia", "valeur": "aéroport international"}
+{"entite": "aéroport de Rhodes", "valeur": "aéroport international"}
+{"entite": "aéroport de Rivera", "valeur": "aéroport international"}
+{"entite": "aéroport de Rivne", "valeur": "aéroport international"}
+{"entite": "aéroport de Rize-Artvin", "valeur": "aérodrome sur une île artificielle"}
+{"entite": "aéroport de Roatán", "valeur": "aéroport international"}
+{"entite": "aéroport de Rogue Valley Intl - Medford", "valeur": "aéroport international"}
+{"entite": "aéroport de Rosario", "valeur": "aéroport international"}
+{"entite": "aéroport de Rostock", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Rotterdam La Haye", "valeur": "aéroport international"}
+{"entite": "aéroport de Rovaniemi", "valeur": "aéroport international"}
+{"entite": "aéroport de Sainte-Hélène", "valeur": "aéroport international"}
+{"entite": "aéroport de Salekhard", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Samarcande", "valeur": "aéroport international"}
+{"entite": "aéroport de San José del Cabo", "valeur": "aéroport international"}
+{"entite": "aéroport de Sandefjord", "valeur": "aéroport international"}
+{"entite": "aéroport de Santa-Clara", "valeur": "aéroport international"}
+{"entite": "aéroport de Santiago de Cuba", "valeur": "aéroport international"}
+{"entite": "aéroport de Santo-Pekoa", "valeur": "aéroport international"}
+{"entite": "aéroport de Sarasota-Bradenton", "valeur": "aéroport international"}
+{"entite": "aéroport de Sarrebruck", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Sétif - 08 Mai 1945", "valeur": "aéroport international"}
+{"entite": "aéroport de Séville", "valeur": "aéroport international"}
+{"entite": "aéroport de Shannon", "valeur": "aéroport international"}
+{"entite": "aéroport de Sherbro", "valeur": "aéroport international"}
+{"entite": "aéroport de Shirdi", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "aéroport de Sienne", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Sofia", "valeur": "aéroport international"}
+{"entite": "aéroport de Sohag", "valeur": "aéroport international"}
+{"entite": "aéroport de Southampton", "valeur": "aéroport international"}
+{"entite": "aéroport de St. Petersburg-Clearwater", "valeur": "aéroport international"}
+{"entite": "aéroport de Stavanger", "valeur": "aéroport international"}
+{"entite": "aéroport de Stockholm-Arlanda", "valeur": "aéroport international"}
+{"entite": "aéroport de Stockholm-Bromma", "valeur": "aéroport international"}
+{"entite": "aéroport de Stockholm-Västerås", "valeur": "aéroport international"}
+{"entite": "aéroport de Stuttgart", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Sudbury", "valeur": "aéroport autorisé pour l'entrée d'étrangers"}
+{"entite": "aéroport de Sukothaï", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Suva-Nausori", "valeur": "aéroport international"}
+{"entite": "aéroport de Sydney", "valeur": "aéroport international"}
+{"entite": "aéroport de Sylt", "valeur": "aéroport allemand"}
+{"entite": "aéroport de Taitung", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Tamale", "valeur": "aéroport international"}
+{"entite": "aéroport de Tampere-Pirkkala", "valeur": "aéroport international"}
+{"entite": "aéroport de Tanjung Pinang", "valeur": "aéroport international"}
+{"entite": "aéroport de Tcheliabinsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Tchimeï", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Tébessa - Cheikh Larbi Tébessi", "valeur": "aéroport international"}
+{"entite": "aéroport de Ténérife-Nord", "valeur": "aéroport international"}
+{"entite": "aéroport de Ténérife Sud", "valeur": "aéroport international"}
+{"entite": "Aéroport de Tétouan Saniat R'mel", "valeur": "aéroport international"}
+{"entite": "aéroport de Thessalonique-Makédonia", "valeur": "aéroport international"}
+{"entite": "aéroport de Tlemcen - Zenata - Messali El Hadj", "valeur": "aéroport international"}
+{"entite": "aéroport de Tobago", "valeur": "aéroport international"}
+{"entite": "aéroport de Tomsk", "valeur": "aéroport fédéral"}
+{"entite": "aéroport de Toulouse-Blagnac", "valeur": "aéroport international"}
+{"entite": "aéroport de Trat", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Tromsø", "valeur": "aéroport international"}
+{"entite": "aéroport de Turku", "valeur": "aéroport international"}
+{"entite": "aéroport de Tuxtla", "valeur": "aéroport international"}
+{"entite": "aéroport de Vágar", "valeur": "aéroport international"}
+{"entite": "aéroport de Valence", "valeur": "aéroport international"}
+{"entite": "aéroport de Vân Đồn", "valeur": "aéroport international"}
+{"entite": "aéroport de Varna", "valeur": "aéroport international"}
+{"entite": "aéroport de Varsovie-Chopin", "valeur": "aéroport international"}
+{"entite": "aéroport de Vavaʻu", "valeur": "aéroport international"}
+{"entite": "aéroport de Venise - Marco-Polo", "valeur": "aéroport international"}
+{"entite": "aéroport de Victoria Falls", "valeur": "aéroport international"}
+{"entite": "aéroport de Vienne-Schwechat", "valeur": "aéroport international"}
+{"entite": "aéroport de Vilo Acuña", "valeur": "aéroport international"}
+{"entite": "aéroport de Vinnitsia", "valeur": "aéroport international"}
+{"entite": "aéroport de Visakhapatnam", "valeur": "aéroport avec douanes"}
+{"entite": "aéroport de Vlorë", "valeur": "aéroport international"}
+{"entite": "Aéroport de Vyškov", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Waalhaven", "valeur": "aéroport international"}
+{"entite": "aéroport de Wallblake", "valeur": "aéroport international"}
+{"entite": "aéroport de Walvis Bay", "valeur": "aéroport international"}
+{"entite": "aéroport de Watertown", "valeur": "aéroport international"}
+{"entite": "aéroport de Yanbu", "valeur": "aéroport intérieur"}
+{"entite": "aéroport de Yazd", "valeur": "aéroport international"}
+{"entite": "aéroport de Zagreb", "valeur": "aéroport international"}
+{"entite": "aéroport de Zaqatala", "valeur": "aéroport international"}
+{"entite": "aéroport de Zarzaïtine - In Amenas", "valeur": "aéroport international"}
+{"entite": "aéroport de Žilina", "valeur": "aéroport international"}
+{"entite": "aéroport des Asturies", "valeur": "aéroport international"}
+{"entite": "aéroport des chutes d'Iguazú", "valeur": "aéroport international"}
+{"entite": "aéroport des Midlands de l'Est", "valeur": "aéroport international"}
+{"entite": "aéroport des plages de Floride du Nord-Ouest", "valeur": "aéroport international"}
+{"entite": "aéroport domestique de Najran", "valeur": "aéroport intérieur"}
+{"entite": "aéroport Dr. Luis María Argaña", "valeur": "aéroport international"}
+{"entite": "aéroport du comté de Santa Clara", "valeur": "aérodrome d'aviation générale"}
+{"entite": "aéroport du Cotopaxi", "valeur": "aéroport international"}
+{"entite": "aéroport du Gobernador Horacio Guzmán", "valeur": "aéroport international"}
+{"entite": "aéroport du Kruger Mpumalanga", "valeur": "aéroport international"}
+{"entite": "aéroport du Niederrhein", "valeur": "aéroport allemand"}
+{"entite": "aéroport du Président Perón", "valeur": "aéroport international"}
+{"entite": "aéroport El Nouzha", "valeur": "aéroport international"}
+{"entite": "aéroport Eloy Alfaro de Manta", "valeur": "aéroport international"}
+{"entite": "aéroport et port spatial de Midland", "valeur": "aéroport international"}
+{"entite": "aéroport F. D. Roosevelt", "valeur": "aéroport international"}
+{"entite": "aéroport Federico Fellini", "valeur": "aéroport international"}
+{"entite": "aéroport Federico-García-Lorca de Grenade-Jaén", "valeur": "aéroport international"}
+{"entite": "aéroport Fès - Saïss", "valeur": "aéroport international"}
+{"entite": "aéroport Flesland de Bergen", "valeur": "aéroport international"}
+{"entite": "aéroport Gagarine de Saratov", "valeur": "aéroport fédéral"}
+{"entite": "aéroport Garad Wilwal", "valeur": "aéroport international"}
+{"entite": "aéroport General Enrique Mosconi", "valeur": "aéroport international"}
+{"entite": "aéroport George Best de Belfast", "valeur": "aéroport international"}
+{"entite": "aéroport Guadeloupe - Maryse Condé", "valeur": "aéroport international"}
+{"entite": "aéroport Guaraní de Ciudad del Este", "valeur": "aéroport international"}
+{"entite": "aéroport Harry Mwanga Nkumbula", "valeur": "aéroport international"}
+{"entite": "aéroport Houari-Boumédiène", "valeur": "aéroport international"}
+{"entite": "aéroport intercontinental George-Bush de Houston", "valeur": "aéroport international"}
+{"entite": "aéroport Internacional Dr. António Agostinho Neto", "valeur": "aéroport international"}
+{"entite": "aéroport international Abdullahi-Yusuf", "valeur": "aéroport international"}
+{"entite": "aéroport international Abraham González", "valeur": "aéroport international"}
+{"entite": "aéroport international Achmad-Yani", "valeur": "aéroport international"}
+{"entite": "aéroport international Adisumarmo", "valeur": "aéroport international"}
+{"entite": "aéroport international Adolfo López Mateos", "valeur": "aéroport international"}
+{"entite": "aéroport international Ahmed-Sékou-Touré", "valeur": "aéroport international"}
+{"entite": "aéroport international Albrook Marcos A. Gelabert de Panama", "valeur": "aéroport international"}
+{"entite": "aéroport international Alejandro-Velasco-Astete", "valeur": "aéroport international"}
+{"entite": "aéroport international Alfonso-Bonilla-Aragón", "valeur": "aéroport international"}
+{"entite": "aéroport international Alfredo-Vásquez-Cobo", "valeur": "aéroport international"}
+{"entite": "aéroport international Allama Iqbal", "valeur": "aéroport international"}
+{"entite": "aéroport international Alluri Sitarama Raju", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "aéroport international Ambouli", "valeur": "aéroport international"}
+{"entite": "aéroport international Amílcar-Cabral", "valeur": "aéroport international"}
+{"entite": "aéroport international Antonio-B.-Won-Pat de Guam", "valeur": "aéroport international"}
+{"entite": "aéroport international Arturo-Merino-Benítez", "valeur": "aéroport international"}
+{"entite": "aéroport international Arturo Michelena", "valeur": "aéroport international"}
+{"entite": "aéroport international Aurel-Vlaicu", "valeur": "aéroport international"}
+{"entite": "aéroport international Austin-Bergstrom", "valeur": "aéroport international"}
+{"entite": "aéroport international Austin-Straubel", "valeur": "aéroport international"}
+{"entite": "aéroport international Bacolod-Silay", "valeur": "aéroport international"}
+{"entite": "aéroport international Baïkal", "valeur": "aéroport fédéral"}
+{"entite": "aéroport international Bandaranaike", "valeur": "aéroport international"}
+{"entite": "aéroport international Bauerfield", "valeur": "aéroport international"}
+{"entite": "aéroport international Benazir-Bhutto", "valeur": "aéroport international"}
+{"entite": "aéroport international Bender Qassim", "valeur": "aéroport international"}
+{"entite": "aéroport international Bishop de Flint", "valeur": "aéroport international"}
+{"entite": "aéroport international Blaise-Diagne", "valeur": "aéroport international"}
+{"entite": "aéroport international Bradley", "valeur": "aéroport international"}
+{"entite": "aéroport international Capitán de Corbeta Carlos A. Curbelo", "valeur": "aéroport international"}
+{"entite": "aéroport international Capitán FAP Carlos Martinez de Pinillos", "valeur": "aéroport international"}
+{"entite": "aéroport international Carriel Sur", "valeur": "aéroport international"}
+{"entite": "aéroport international Casa de Campo", "valeur": "aéroport international"}
+{"entite": "aéroport international Cassidy", "valeur": "aéroport international"}
+{"entite": "aéroport international Cesária-Évora", "valeur": "aéroport international"}
+{"entite": "aéroport international Charlotte-Douglas", "valeur": "aéroport international"}
+{"entite": "aéroport international Cheddi Jagan", "valeur": "aéroport international"}
+{"entite": "aéroport international Chhatrapati-Shivaji", "valeur": "aéroport international"}
+{"entite": "aéroport international Chota-Roustavéli de Tbilissi", "valeur": "aéroport international"}
+{"entite": "aéroport international Cúcuta-Camilo Daza", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Aba Tenna Dejazmach Yilma", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Abbotsford", "valeur": "aéroport international"}
+{"entite": "Aéroport international d'Accra", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Adana-Sakirpasa", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Adélaïde", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Aguascalientes", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Al Ain", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Albany", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Albuquerque", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Alep", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Alexandria", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Almaty", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Anchorage Ted-Stevens", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Appleton", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Argyle", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Asaba", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Asmara", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Assouan", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Atar", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Athènes Elefthérios-Venizélos", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Atlantic City", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Edmonton", "valeur": "aéroport international"}
+{"entite": "aéroport international d'El-Arich", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Entebbe", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Erbil", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Ercan", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Erenhot Saiwusu", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Erkilet", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Exeter", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Exuma", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Harare", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Héraklion Níkos-Kazantzákis", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Hilo", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Honolulu", "valeur": "aéroport international"}
+{"entite": "aéroport international d’Iloïlo", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Imphal", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Incheon", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Indianapolis", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Islamkot", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Ivano-Frankivsk", "valeur": "aéroport international"}
+{"entite": "aéroport international d’Ixtapa-Zihuatanejo", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Oakland", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Oaxaca", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Odessa", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Ontario", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Oradea", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Orlando", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Osaka", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Oslo-Gardermoen", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Oulan-Bator", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Udon Thani", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Uruapan", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Ürümqi Diwopu", "valeur": "aéroport international"}
+{"entite": "aéroport international d'Ushuaïa", "valeur": "aéroport international"}
+{"entite": "aéroport international David-Ben-Gourion", "valeur": "aéroport international"}
+{"entite": "aéroport international David-IV de Koutaïssi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Đà Nẵng", "valeur": "aéroport international"}
+{"entite": "aéroport international de Alexandrie", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bagdad", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bahreïn", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bălți-Leadoveni", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bamako-Sénou", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bandar Abbas", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bandung", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bangor", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bangui", "valeur": "aéroport international"}
+{"entite": "aéroport international de Banja Luka", "valeur": "aéroport international"}
+{"entite": "aéroport international de Banjul", "valeur": "aéroport international"}
+{"entite": "aéroport international de Barcelone-El Prat", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bassorah", "valeur": "aéroport international"}
+{"entite": "aéroport international de Batam", "valeur": "aéroport international"}
+{"entite": "aéroport international de Batoumi-Alexandre-Kartveli", "valeur": "aéroport international"}
+{"entite": "aéroport International de Bayelsa", "valeur": "aéroport intérieur"}
+{"entite": "aéroport international de Belém", "valeur": "aéroport international"}
+{"entite": "aéroport international de Belfast", "valeur": "aéroport international"}
+{"entite": "aéroport international de Belo Horizonte", "valeur": "aéroport international"}
+{"entite": "aéroport international de Benina", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bérénice", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bergame-Orio al Serio", "valeur": "aéroport international"}
+{"entite": "aéroport international de Berlin-Schönefeld", "valeur": "aéroport international"}
+{"entite": "aéroport international de Beyrouth - Rafic Hariri", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bicol", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bilbao", "valeur": "aéroport international"}
+{"entite": "aéroport international de Billings Logan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Birjand", "valeur": "aéroport international"}
+{"entite": "aéroport international de Birmingham", "valeur": "aéroport international"}
+{"entite": "aéroport international de Boa Vista", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bokhtar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bole", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bonriki", "valeur": "aéroport international"}
+{"entite": "aéroport international de Brasília", "valeur": "aéroport international"}
+{"entite": "aéroport international de Brisbane", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bristol", "valeur": "aéroport international"}
+{"entite": "aéroport international de Broome", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bucaramanga-Palonegro", "valeur": "aéroport international"}
+{"entite": "aéroport international de Budapest-Ferenc Liszt", "valeur": "aéroport international"}
+{"entite": "aéroport international de Buffalo-Niagara", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bugesera", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bujumbura", "valeur": "aéroport international"}
+{"entite": "aéroport international de Bulawayo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Burlington", "valeur": "aéroport international"}
+{"entite": "aéroport international de Buyant Ukhaa", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cahul", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cairns", "valeur": "aéroport international"}
+{"entite": "aéroport international de Calgary", "valeur": "aéroport international"}
+{"entite": "aéroport international de Calicut", "valeur": "aéroport international"}
+{"entite": "aéroport international de Campeche", "valeur": "aéroport international"}
+{"entite": "aéroport international de Campo Grande", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cần Thơ", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cancún", "valeur": "aéroport international"}
+{"entite": "aéroport international de Canton Baiyun", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cap-Haïtien", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cardiff", "valeur": "aéroport international"}
+{"entite": "aéroport international de Carrasco", "valeur": "aéroport international"}
+{"entite": "aéroport international de Céphalonie « Ánna Pollátou »", "valeur": "aéroport international"}
+{"entite": "aéroport international de Changchun Longjia", "valeur": "aéroport international"}
+{"entite": "aéroport international de Changsha Huanghua", "valeur": "aéroport international"}
+{"entite": "aéroport international de Charjah", "valeur": "aéroport international"}
+{"entite": "aéroport international de Charleston", "valeur": "aéroport international"}
+{"entite": "aéroport international de Charm el-Cheikh", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chavel", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chengdu-Shuangliu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chernivtsi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chetumal", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chiang Mai", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chiang Rai", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chichen Itza", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chileka", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chimkent", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chișinău", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chongqing", "valeur": "aéroport international"}
+{"entite": "aéroport international de Christchurch", "valeur": "aéroport international"}
+{"entite": "aéroport international de Chuuk", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cincinnati-Northern Kentucky", "valeur": "aéroport international"}
+{"entite": "aéroport international de Ciudad Acuña", "valeur": "aéroport international"}
+{"entite": "aéroport international de Ciudad Del Carmen", "valeur": "aéroport international"}
+{"entite": "aéroport international de Ciudad Obregón", "valeur": "aéroport international"}
+{"entite": "aéroport international de Ciudad Victoria", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cleveland-Hopkins", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cluj", "valeur": "aéroport international"}
+{"entite": "aéroport international de Coimbatore", "valeur": "aéroport international"}
+{"entite": "aéroport international de Coni", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cork", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cotonou", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cozumel", "valeur": "aéroport international"}
+{"entite": "aéroport international de Cruzeiro do Sul", "valeur": "aéroport international"}
+{"entite": "Aéroport international de Cukurova", "valeur": "aéroport international"}
+{"entite": "aéroport international de Culiacán", "valeur": "aéroport international"}
+{"entite": "aéroport international de Curitiba", "valeur": "aéroport international"}
+{"entite": "aéroport international de Daegu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dalian", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dallas-Fort Worth", "valeur": "aéroport international"}
+{"entite": "aéroport international de Damas", "valeur": "aéroport international"}
+{"entite": "aéroport international de Darwin", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dayton", "valeur": "aéroport international"}
+{"entite": "aéroport international de Debrecen", "valeur": "aéroport international"}
+{"entite": "aéroport international de Denpasar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Denver", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dera Ghazi Khan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Des Moines", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dili", "valeur": "aéroport international"}
+{"entite": "aéroport international de Diosdado Macapagal", "valeur": "aéroport international"}
+{"entite": "aéroport international de Djouba", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dnipropetrovsk", "valeur": "aéroport international"}
+{"entite": "aéroport international de Douala", "valeur": "aéroport international"}
+{"entite": "aéroport international de Douchanbé", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dubaï", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dublin", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dunédin", "valeur": "aéroport international"}
+{"entite": "aéroport international de Durango", "valeur": "aéroport international"}
+{"entite": "aéroport international de Durban", "valeur": "aéroport international"}
+{"entite": "aéroport international de Dutse", "valeur": "aéroport international"}
+{"entite": "aéroport international de Fairbanks", "valeur": "aéroport international"}
+{"entite": "aéroport international de Faisalabad", "valeur": "aéroport international"}
+{"entite": "aéroport international de Fort Lauderdale-Hollywood", "valeur": "aéroport international"}
+{"entite": "aéroport international de Fort McMurray", "valeur": "aéroport international"}
+{"entite": "aéroport international de Fortaleza", "valeur": "aéroport international"}
+{"entite": "aéroport international de Foz do Iguaçu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Francisco C Ada/Saipan Intl", "valeur": "aéroport international"}
+{"entite": "aéroport international de Frédéricton", "valeur": "aéroport international"}
+{"entite": "aéroport international de Fresno Yosemite", "valeur": "aéroport international"}
+{"entite": "aéroport international de Fujaïrah", "valeur": "aéroport international"}
+{"entite": "aéroport international de Funafuti", "valeur": "aéroport international"}
+{"entite": "aéroport international de Fuzhou Changle", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gaborone", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gafsa-Ksar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gander", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gandja", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gao Korogoussou", "valeur": "aéroport international"}
+{"entite": "aéroport international de Garoua", "valeur": "aéroport international"}
+{"entite": "aéroport international de Garowe", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gary/Chicago", "valeur": "aéroport international"}
+{"entite": "aéroport international de General Santos", "valeur": "aéroport international"}
+{"entite": "aéroport international de Genève", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gibraltar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gimhae", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gimpo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Glasgow", "valeur": "aéroport international"}
+{"entite": "aéroport international de Goma", "valeur": "aéroport international"}
+{"entite": "aéroport International de Gombe Lawanti", "valeur": "aéroport international"}
+{"entite": "aéroport international de Grand Bahama", "valeur": "aéroport international"}
+{"entite": "aéroport international de Grand Forks Intl", "valeur": "aéroport international"}
+{"entite": "aéroport international de Great Falls", "valeur": "aéroport international"}
+{"entite": "aéroport international de Greenville-Spartanburg", "valeur": "aéroport international"}
+{"entite": "aéroport international de Guadalajara", "valeur": "aéroport international"}
+{"entite": "aéroport international de Guaymas", "valeur": "aéroport international"}
+{"entite": "aéroport international de Guilin Liangjiang", "valeur": "aéroport international"}
+{"entite": "aéroport international de Guiyang Longdongbao", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gulfport-Biloxi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Gwadar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Haïfa", "valeur": "aéroport international"}
+{"entite": "aéroport international de Haikou Meilan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hangzhou Xiaoshan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hanovre Langenhagen", "valeur": "aéroport allemand"}
+{"entite": "aéroport international de Harbin Taiping", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hargeisa", "valeur": "aéroport international"}
+{"entite": "aéroport international de Harrisburg", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hat Yai", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hefei Xinqiao", "valeur": "aéroport international"}
+{"entite": "aéroport international de Herrera", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hewanorra", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hobart", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hohhot Baita", "valeur": "aéroport international"}
+{"entite": "aéroport international de Honiara", "valeur": "aéroport international"}
+{"entite": "aéroport international de Huangshan Tunxi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Huatulco", "valeur": "aéroport international"}
+{"entite": "aéroport international de Hurghada", "valeur": "aéroport international"}
+{"entite": "aéroport international de Iași", "valeur": "aéroport international"}
+{"entite": "aéroport international de Jacksonville", "valeur": "aéroport international"}
+{"entite": "aéroport international de Jakarta", "valeur": "aéroport international"}
+{"entite": "aéroport international de Jeju", "valeur": "aéroport international"}
+{"entite": "aéroport international de Jinan Yaoqiang", "valeur": "aéroport international"}
+{"entite": "aéroport international de Juneau", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kaboul", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kalibo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kandahar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kansas City", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kaohsiung", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kavala", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kebbi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Keflavík", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kelowna", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kertajati", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kharkiv", "valeur": "aéroport international"}
+{"entite": "aéroport international de Khartoum", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kherson", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kigali", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kisangani Bangoka", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kona", "valeur": "aéroport international"}
+{"entite": "aéroport international de Košice/Cassovie", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kosrae", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kota Kinabalu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Koweït", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kuala Lumpur", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kualanamu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kuching", "valeur": "aéroport international"}
+{"entite": "aéroport international de Kunming Changshui", "valeur": "aéroport international"}
+{"entite": "aéroport international de l'île de Cos", "valeur": "aéroport international"}
+{"entite": "aéroport international de La Canée", "valeur": "aéroport international"}
+{"entite": "aéroport international de la mer Rouge", "valeur": "aéroport international"}
+{"entite": "aéroport international de la région de Murcie", "valeur": "aéroport international"}
+{"entite": "aéroport international de la région de Waterloo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Laguindingan International", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lambert-Saint-Louis", "valeur": "aéroport international"}
+{"entite": "aéroport international de Langkawi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Laoag International", "valeur": "aéroport international"}
+{"entite": "aéroport international de Laredo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Larestan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Larnaca", "valeur": "aéroport international"}
+{"entite": "aéroport international de Las Cruces Intl", "valeur": "aéroport international"}
+{"entite": "aéroport international de Latchine", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lattaquié", "valeur": "aéroport international"}
+{"entite": "aéroport international de Laughlin/Bullhead", "valeur": "aéroport international"}
+{"entite": "aéroport international de Leeds-Bradford", "valeur": "aéroport international"}
+{"entite": "aéroport international de León", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lilongwe", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lombok", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lomé-Tokoin", "valeur": "aéroport international"}
+{"entite": "aéroport international de London", "valeur": "aéroport international"}
+{"entite": "aéroport international de Loreto", "valeur": "aéroport international"}
+{"entite": "aéroport international de Los Angeles", "valeur": "aéroport international"}
+{"entite": "aéroport international de Los Mochis", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lougansk", "valeur": "aéroport international"}
+{"entite": "aéroport international de Louisville", "valeur": "aéroport international"}
+{"entite": "aéroport international de Louxor", "valeur": "aéroport international"}
+{"entite": "aéroport international de Luang Prabang", "valeur": "aéroport international"}
+{"entite": "aéroport international de Luau", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lubumbashi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lungi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lusaka", "valeur": "aéroport international"}
+{"entite": "aéroport international de Lviv", "valeur": "aéroport international"}
+{"entite": "aéroport international de Macapá", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mactan-Cebu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Madras", "valeur": "aéroport international"}
+{"entite": "aéroport international de Maiduguri", "valeur": "aéroport international"}
+{"entite": "aéroport international de Makassar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Malacca", "valeur": "aéroport international"}
+{"entite": "aéroport international de Malé", "valeur": "aéroport international"}
+{"entite": "aéroport international de Malte", "valeur": "aéroport international"}
+{"entite": "aéroport international de Managua", "valeur": "aéroport international"}
+{"entite": "aéroport international de Manas", "valeur": "aéroport international"}
+{"entite": "aéroport international de Manaus", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mandalay", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mangalore", "valeur": "aéroport intérieur"}
+{"entite": "aéroport international de Maputo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mar de Cortés", "valeur": "aéroport international"}
+{"entite": "aéroport international de Margaret Ekpo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Marsa Alam", "valeur": "aéroport international"}
+{"entite": "aéroport international de Martinique Aimé-Césaire", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mascate", "valeur": "aéroport international"}
+{"entite": "aéroport international de Maseru", "valeur": "aéroport international"}
+{"entite": "aéroport international de Matamoros", "valeur": "aéroport international"}
+{"entite": "aéroport international de Memphis", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mérida Manuel Crecencio Rejón", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mexicali", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mexico", "valeur": "aéroport international"}
+{"entite": "aéroport international de Miami", "valeur": "aéroport international"}
+{"entite": "aéroport international de Minangkabau", "valeur": "aéroport international"}
+{"entite": "aéroport international de Minneapolis-Saint-Paul", "valeur": "aéroport international"}
+{"entite": "aéroport international de Minsk", "valeur": "aéroport international"}
+{"entite": "aéroport international de Missoula Intl", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mogadiscio", "valeur": "aéroport international"}
+{"entite": "aéroport international de Monclova", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mont-Tremblant", "valeur": "aéroport international"}
+{"entite": "aéroport international de Monterrey", "valeur": "aéroport international"}
+{"entite": "aéroport international de Morelia", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mossoul", "valeur": "aéroport international"}
+{"entite": "aéroport international de Muan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mudanjiang", "valeur": "aéroport international"}
+{"entite": "aéroport international de Multan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Myrtle Beach", "valeur": "aéroport international"}
+{"entite": "aéroport international de Mytilène", "valeur": "aéroport international"}
+{"entite": "aéroport international de N'Djaména", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nadi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nagasaki", "valeur": "aérodrome sur une île artificielle"}
+{"entite": "aéroport international de Najaf", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nanchang Changbei", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nankin Lukou", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nanning Wuxu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Narita", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nashville", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nauru", "valeur": "aéroport international"}
+{"entite": "aéroport international de Navi Mumbai", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "aéroport international de Naypyidaw", "valeur": "aéroport international"}
+{"entite": "Aéroport International de Ndjili", "valeur": "aéroport international"}
+{"entite": "aéroport international de Newcastle", "valeur": "aéroport international"}
+{"entite": "aéroport international de Niagara Falls", "valeur": "aéroport international"}
+{"entite": "aéroport international de Niamtougou", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nicosie", "valeur": "aéroport international"}
+{"entite": "aéroport international de Ningbo Lishe", "valeur": "aéroport international"}
+{"entite": "aéroport international de Niue", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nogales", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nội Bài", "valeur": "aéroport international"}
+{"entite": "aéroport international de Noida", "valeur": "aéroport international"}
+{"entite": "aéroport international de Norfolk", "valeur": "aéroport international"}
+{"entite": "aéroport international de Norwich", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nosy Be Fascene", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nouakchott-Oumtounsy", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nouméa-La Tontouta", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nueva Hesperides", "valeur": "aéroport international"}
+{"entite": "aéroport international de Nuevo Laredo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Palanga", "valeur": "aéroport international"}
+{"entite": "aéroport international de Palm Beach", "valeur": "aéroport international"}
+{"entite": "aéroport international de Palm Springs", "valeur": "aéroport international"}
+{"entite": "aéroport international de Paphos", "valeur": "aéroport international"}
+{"entite": "aéroport international de Paro", "valeur": "aéroport international"}
+{"entite": "aéroport international de Pécs-Pogány", "valeur": "aéroport international"}
+{"entite": "aéroport international de Pékin-Capitale", "valeur": "aéroport international"}
+{"entite": "aéroport international de Pelotas", "valeur": "aéroport international"}
+{"entite": "aéroport international de Penang", "valeur": "aéroport international"}
+{"entite": "aéroport international de Perm", "valeur": "aéroport fédéral"}
+{"entite": "aéroport international de Peshawar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Philadelphie", "valeur": "aéroport international"}
+{"entite": "aéroport international de Phnom Penh", "valeur": "aéroport international"}
+{"entite": "aéroport international de Phú Bài", "valeur": "aéroport international"}
+{"entite": "aéroport international de Phú Quốc", "valeur": "aéroport international"}
+{"entite": "aéroport international de Phuket", "valeur": "aéroport international"}
+{"entite": "aéroport international de Piarco", "valeur": "aéroport international"}
+{"entite": "aéroport international de Piedras Negras", "valeur": "aéroport international"}
+{"entite": "aéroport international de Pittsburgh", "valeur": "aéroport international"}
+{"entite": "aéroport international de Plattsburgh", "valeur": "aéroport international"}
+{"entite": "aéroport international de Pohnpei", "valeur": "aéroport international"}
+{"entite": "aéroport international de Pokhara", "valeur": "aéroport international"}
+{"entite": "aéroport international de Port-Gentil", "valeur": "aéroport international"}
+{"entite": "aéroport international de Port Harcourt", "valeur": "aéroport international"}
+{"entite": "aéroport international de Portland", "valeur": "aéroport international"}
+{"entite": "aéroport international de Porto Alegre", "valeur": "aéroport international"}
+{"entite": "aéroport international de Porto Velho", "valeur": "aéroport international"}
+{"entite": "aéroport international de Praia", "valeur": "aéroport international"}
+{"entite": "aéroport international de Pristina", "valeur": "aéroport international"}
+{"entite": "aéroport international de Provendiciales", "valeur": "aéroport international"}
+{"entite": "aéroport international de Puebla", "valeur": "aéroport international"}
+{"entite": "aéroport international de Puerto Escondido", "valeur": "aéroport international"}
+{"entite": "aéroport international de Puerto Princesa", "valeur": "aéroport international"}
+{"entite": "aéroport international de Puerto Suárez", "valeur": "aéroport international"}
+{"entite": "aéroport international de Punta Cana", "valeur": "aéroport international"}
+{"entite": "aéroport international de Qamichli", "valeur": "aéroport international"}
+{"entite": "aéroport international de Qingdao Liuting", "valeur": "aéroport international"}
+{"entite": "aéroport international de Queenstown", "valeur": "aéroport international"}
+{"entite": "aéroport international de Querétaro", "valeur": "aéroport international"}
+{"entite": "aéroport international de Quetta", "valeur": "aéroport international"}
+{"entite": "aéroport international de Raja Sansi", "valeur": "aéroport international"}
+{"entite": "aéroport international de Raleigh-Durham", "valeur": "aéroport international"}
+{"entite": "aéroport international de Rangoun", "valeur": "aéroport international"}
+{"entite": "aéroport international de Rarotonga", "valeur": "aéroport international"}
+{"entite": "aéroport international de Ras el Khaïmah", "valeur": "aéroport international"}
+{"entite": "aéroport international de Recife", "valeur": "aéroport international"}
+{"entite": "aéroport international de Regina", "valeur": "aéroport international"}
+{"entite": "aéroport international de Reno-Tahoe", "valeur": "aéroport international"}
+{"entite": "aéroport international de Reynosa", "valeur": "aéroport international"}
+{"entite": "aéroport international de Richmond", "valeur": "aéroport international"}
+{"entite": "aéroport international de Riga", "valeur": "aéroport international"}
+{"entite": "aéroport international de Rio Branco", "valeur": "aéroport international"}
+{"entite": "aéroport international de Rio de Janeiro/Galeão", "valeur": "aéroport international"}
+{"entite": "aéroport international de Rochester", "valeur": "aéroport international"}
+{"entite": "aéroport international de Rockford/Chicago", "valeur": "aéroport international"}
+{"entite": "aéroport international de Rome-Ciampino", "valeur": "aéroport international"}
+{"entite": "aéroport international de Rotorua", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sacramento", "valeur": "aéroport international"}
+{"entite": "aéroport international de Salt Lake City", "valeur": "aéroport international"}
+{"entite": "aéroport International de Saltillo", "valeur": "aéroport international"}
+{"entite": "aéroport international de Salvador", "valeur": "aéroport international"}
+{"entite": "aéroport international de Samarinda", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sámos", "valeur": "aéroport international"}
+{"entite": "aéroport international de San Antonio", "valeur": "aéroport international"}
+{"entite": "aéroport international de San Diego", "valeur": "aéroport international"}
+{"entite": "aéroport international de San Fernando", "valeur": "aéroport international"}
+{"entite": "aéroport international de San Francisco", "valeur": "aéroport international"}
+{"entite": "aéroport international de San José", "valeur": "aéroport international"}
+{"entite": "aéroport international de San Luis Potosí", "valeur": "aéroport international"}
+{"entite": "aéroport international de San Salvador", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sanaa", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sanya-Hongtangwan", "valeur": "aérodrome sur une île artificielle"}
+{"entite": "aéroport international de Sanya Phénix", "valeur": "aéroport international"}
+{"entite": "aéroport international de São Paulo-Guarulhos", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sao Tomé", "valeur": "aéroport international"}
+{"entite": "Aéroport international de Sarajevo (SJJ)", "valeur": "aéroport international"}
+{"entite": "aéroport international de Savannah/Hilton Head", "valeur": "aéroport international"}
+{"entite": "aéroport international de Seattle-Tacoma", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sébastopol", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sebha", "valeur": "aéroport international"}
+{"entite": "aéroport international de Senai", "valeur": "aéroport international"}
+{"entite": "aéroport international de Shanghai Hongqiao", "valeur": "aéroport international"}
+{"entite": "aéroport international de Shanghai-Pudong", "valeur": "aéroport international"}
+{"entite": "aéroport international de Shenyang Taoxian", "valeur": "aéroport international"}
+{"entite": "aéroport international de Shenzhen Bao'an", "valeur": "aéroport international"}
+{"entite": "aéroport international de Shijiazhuang Zhengding", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sialkot", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sibiu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Siem Reap", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sihanoukville", "valeur": "aéroport international"}
+{"entite": "aéroport international de Souleimaniye", "valeur": "aéroport international"}
+{"entite": "aéroport international de St. John's", "valeur": "aéroport international"}
+{"entite": "aéroport international de Stephenville", "valeur": "aéroport international"}
+{"entite": "aéroport international de Subic Bay International", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sunan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Sunan Shuofang", "valeur": "aéroport international"}
+{"entite": "aéroport international de Surabaya", "valeur": "aéroport international"}
+{"entite": "aéroport international de Syracuse-Hancock", "valeur": "aéroport international"}
+{"entite": "aéroport international de Taba", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tabatinga", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tabriz", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tachkent", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tahiti-Fa'a'ā", "valeur": "aéroport international"}
+{"entite": "aéroport international de Taiyuan Wusu", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tallahassee", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tampa", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tampico", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tân Sơn Nhất", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tapachula", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tarakan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Târgu Mureș", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tcherkassy", "valeur": "aéroport international"}
+{"entite": "aéroport international de Techo à Phnom Penh", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tepic", "valeur": "aéroport international"}
+{"entite": "aéroport international de Thunder Bay", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tianjin Binhai", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tinian", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tirana", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tocumen", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tokyo-Haneda", "valeur": "aéroport international"}
+{"entite": "aéroport international de Toncontín", "valeur": "aéroport international"}
+{"entite": "aéroport international de Trichy", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tripoli", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tucson", "valeur": "aéroport international"}
+{"entite": "aéroport international de Tuzla", "valeur": "aéroport international"}
+{"entite": "aéroport international de Vancouver", "valeur": "aéroport international"}
+{"entite": "aéroport international de Ventspils", "valeur": "aéroport international"}
+{"entite": "aéroport international de Véracruz", "valeur": "aéroport international"}
+{"entite": "aéroport international de Victoria", "valeur": "aéroport international"}
+{"entite": "aéroport international de Villahermosa", "valeur": "aéroport international"}
+{"entite": "aéroport international de Vilnius", "valeur": "aéroport international"}
+{"entite": "aéroport international de Viracopos/Campinas", "valeur": "aéroport international"}
+{"entite": "aéroport international de Washington-Dulles", "valeur": "aéroport international"}
+{"entite": "aéroport international de Wattay", "valeur": "aéroport international"}
+{"entite": "aéroport international de Wellington", "valeur": "aéroport international"}
+{"entite": "aéroport international de Wenzhou Longwan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Whitehorse", "valeur": "aéroport international"}
+{"entite": "aéroport international de Wilkes-Barre/Scranton", "valeur": "aéroport international"}
+{"entite": "aéroport international de Wilmington", "valeur": "aéroport international"}
+{"entite": "aéroport international de Windsor", "valeur": "aéroport international"}
+{"entite": "aéroport international de Wuhan Tianhe", "valeur": "aéroport international"}
+{"entite": "aéroport international de Xi'an Xianyang", "valeur": "aéroport international"}
+{"entite": "aéroport international de Xiàmén Gāoqí", "valeur": "aéroport international"}
+{"entite": "aéroport international de Xiamen-Xiang'an", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "aéroport international de Yangyang", "valeur": "aéroport international"}
+{"entite": "aéroport international de Yantai Penglai", "valeur": "aéroport international"}
+{"entite": "aéroport international de Yaoundé-Nsimalen", "valeur": "aéroport international"}
+{"entite": "aéroport international de Yap", "valeur": "aéroport international"}
+{"entite": "aéroport international de Yinchuan Hedong", "valeur": "aéroport international"}
+{"entite": "aéroport international de Yogyakarta", "valeur": "aéroport international"}
+{"entite": "aéroport international de Yuma", "valeur": "aéroport international"}
+{"entite": "aéroport international de Zahedan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Zamboanga", "valeur": "aéroport international"}
+{"entite": "aéroport international de Zangilan", "valeur": "aéroport international"}
+{"entite": "aéroport international de Zante", "valeur": "aéroport international"}
+{"entite": "aéroport international de Zanzibar", "valeur": "aéroport international"}
+{"entite": "aéroport international de Zaporijia", "valeur": "aéroport international"}
+{"entite": "aéroport international de Zhengzhou Xinzheng", "valeur": "aéroport international"}
+{"entite": "aéroport international de Zurich", "valeur": "aéroport international"}
+{"entite": "aéroport international del Bajío", "valeur": "aéroport international"}
+{"entite": "aéroport international del Caribe", "valeur": "aéroport international"}
+{"entite": "aéroport International del Norte", "valeur": "aéroport international"}
+{"entite": "aéroport international des îles Marshall", "valeur": "aéroport international"}
+{"entite": "aéroport international des Rocheuses canadiennes", "valeur": "aéroport international"}
+{"entite": "aéroport international des Seychelles", "valeur": "aéroport international"}
+{"entite": "aéroport international Diori-Hamani", "valeur": "aéroport international"}
+{"entite": "aéroport international Don Muang", "valeur": "aéroport international"}
+{"entite": "aéroport international Donald-Sangster", "valeur": "aéroport international"}
+{"entite": "aéroport international Dr. Babasaheb Ambedkar de Nagpur", "valeur": "aéroport international"}
+{"entite": "aéroport international Dr. Joaquin Balaguer", "valeur": "aéroport international"}
+{"entite": "aéroport international du Caire", "valeur": "aéroport international"}
+{"entite": "aéroport international du Cap", "valeur": "aéroport international"}
+{"entite": "aéroport international du Cibao", "valeur": "aéroport international"}
+{"entite": "aéroport international du Grand Moncton", "valeur": "aéroport international"}
+{"entite": "aéroport international du Grand Natal", "valeur": "aéroport international"}
+{"entite": "aéroport international du Kilimandjaro", "valeur": "aéroport international"}
+{"entite": "aéroport international du roi Fahd", "valeur": "aéroport international"}
+{"entite": "aéroport international du roi Hussein", "valeur": "aéroport international"}
+{"entite": "aéroport international du roi Khaled", "valeur": "aéroport international"}
+{"entite": "aéroport international du roi Mswati III", "valeur": "aéroport international"}
+{"entite": "aéroport international du Sphinx", "valeur": "aéroport international"}
+{"entite": "aéroport international du sud-ouest de la Floride", "valeur": "aéroport international"}
+{"entite": "aéroport international du Teniente Luis Candelaria", "valeur": "aéroport international"}
+{"entite": "aéroport international El Alto", "valeur": "aéroport international"}
+{"entite": "aéroport international El Catey", "valeur": "aéroport international"}
+{"entite": "aéroport international El Dorado", "valeur": "aéroport international"}
+{"entite": "aéroport international El Edén", "valeur": "aéroport international"}
+{"entite": "aéroport international Ernesto Cortissoz", "valeur": "aéroport international"}
+{"entite": "aéroport international Esenboğa", "valeur": "aéroport international"}
+{"entite": "aéroport international Eugene Correia", "valeur": "aéroport international"}
+{"entite": "aéroport international Ezeiza", "valeur": "aéroport international"}
+{"entite": "aéroport international Félix-Houphouët-Boigny", "valeur": "aéroport international"}
+{"entite": "aéroport international Flamingo-Bonaire", "valeur": "aéroport international"}
+{"entite": "aéroport international Francisco Bangoy", "valeur": "aéroport international"}
+{"entite": "aéroport international Francisco Sarabia", "valeur": "aéroport international"}
+{"entite": "aéroport international Franz-Josef-Strauss de Munich", "valeur": "aéroport allemand"}
+{"entite": "aéroport international Fuaʻamotu", "valeur": "aéroport international"}
+{"entite": "aéroport international Galileo Galilei de Pise", "valeur": "aéroport international"}
+{"entite": "aéroport international Général José Antonio Anzoátegui", "valeur": "aéroport international"}
+{"entite": "aéroport international général Juan N. Álvarez", "valeur": "aéroport international"}
+{"entite": "aéroport international général Leobardo C. Ruiz", "valeur": "aéroport international"}
+{"entite": "aéroport international General Mitchell de Milwaukee", "valeur": "aéroport international"}
+{"entite": "aéroport international général Rafael Buelna", "valeur": "aéroport international"}
+{"entite": "aéroport international général Roberto Fierro Villalobos", "valeur": "aéroport international"}
+{"entite": "aéroport international Georges-Enesco", "valeur": "aéroport international"}
+{"entite": "aéroport international Grantley-Adams", "valeur": "aéroport international"}
+{"entite": "aéroport international Gregorio-Luperón", "valeur": "aéroport international"}
+{"entite": "aéroport international Gustavo Rojas Pinilla", "valeur": "aéroport international"}
+{"entite": "aéroport international Harry Reid", "valeur": "aéroport international"}
+{"entite": "aéroport international Hartsfield-Jackson d'Atlanta", "valeur": "aéroport international"}
+{"entite": "aéroport international Hato", "valeur": "aéroport international"}
+{"entite": "aéroport international Hector", "valeur": "aéroport international"}
+{"entite": "aéroport international Henri-Coandă", "valeur": "aéroport international"}
+{"entite": "aéroport international Hercílio-Luz", "valeur": "aéroport international"}
+{"entite": "aéroport international Hévíz-Balaton", "valeur": "aéroport international"}
+{"entite": "aéroport international Heydar Aliyev de Bakou", "valeur": "aéroport international"}
+{"entite": "aéroport international Hosea Kutako de Windhoek", "valeur": "aéroport international"}
+{"entite": "aéroport international Ian Fleming", "valeur": "aéroport international"}
+{"entite": "aéroport international Ignacio Agramonte", "valeur": "aéroport international"}
+{"entite": "aéroport international Imam-Khomeini", "valeur": "aéroport international"}
+{"entite": "aéroport international Inca Manco Cápac", "valeur": "aéroport international"}
+{"entite": "aéroport international Indira-Gandhi", "valeur": "aéroport international"}
+{"entite": "aéroport international J. A. Richardson de Winnipeg", "valeur": "aéroport international"}
+{"entite": "aéroport international Jacinto Lara", "valeur": "aéroport international"}
+{"entite": "aéroport international Jackson-Medgar Wiley Evers", "valeur": "aéroport international"}
+{"entite": "aéroport international Jean-Lesage de Québec", "valeur": "aéroport international"}
+{"entite": "aéroport international Jinnah", "valeur": "aéroport international"}
+{"entite": "aéroport international Johan Adolf Pengel", "valeur": "aéroport international"}
+{"entite": "aéroport international John C. Munro Hamilton", "valeur": "aéroport international"}
+{"entite": "aéroport international John-F.-Kennedy de New York", "valeur": "aéroport international"}
+{"entite": "aéroport international John Glenn Columbus", "valeur": "aéroport international"}
+{"entite": "aéroport international Jomo-Kenyatta", "valeur": "aéroport international"}
+{"entite": "aéroport international Jorge Chávez", "valeur": "aéroport international"}
+{"entite": "aéroport international José Joaquín de Olmedo", "valeur": "aéroport international"}
+{"entite": "aéroport international José-María-Córdova", "valeur": "aéroport international"}
+{"entite": "aéroport international José-Martí", "valeur": "aéroport international"}
+{"entite": "aéroport international José Tadeo Monagas", "valeur": "aéroport international"}
+{"entite": "aéroport international Josefa Camejo", "valeur": "aéroport international"}
+{"entite": "aéroport international Juan Santamaría de San José", "valeur": "aéroport international"}
+{"entite": "aéroport international Julius-Nyerere", "valeur": "aéroport international"}
+{"entite": "aéroport international King Shaka", "valeur": "aéroport international"}
+{"entite": "aéroport international L.F. Wade", "valeur": "aéroport international"}
+{"entite": "aéroport international La Aurora", "valeur": "aéroport international"}
+{"entite": "aéroport international La Chinita", "valeur": "aéroport international"}
+{"entite": "aéroport international Laâyoune - Hassan Ier", "valeur": "aéroport international"}
+{"entite": "aéroport international Las Américas", "valeur": "aéroport international"}
+{"entite": "aéroport international Léon-Mba", "valeur": "aéroport international"}
+{"entite": "aéroport international Léopold-Sédar-Senghor", "valeur": "aéroport international"}
+{"entite": "aéroport international Liberty de Newark", "valeur": "aéroport international"}
+{"entite": "aéroport international Logan", "valeur": "aéroport international"}
+{"entite": "aéroport international Lokpriya Gopinath Bordoloi", "valeur": "aéroport international"}
+{"entite": "aéroport international Louis Armstrong de La Nouvelle-Orléans", "valeur": "aéroport international"}
+{"entite": "aéroport international Luis-Muñoz-Marín", "valeur": "aéroport international"}
+{"entite": "aéroport international Lynden Pindling", "valeur": "aéroport international"}
+{"entite": "aéroport international Mallam Aminu de Kano", "valeur": "aéroport international"}
+{"entite": "aéroport international Mano-Dayak", "valeur": "aéroport international"}
+{"entite": "aéroport international Marechal Cunha Machado", "valeur": "aéroport international"}
+{"entite": "aéroport international María-Montez", "valeur": "aéroport international"}
+{"entite": "aéroport international Mariscal Sucre", "valeur": "aéroport international"}
+{"entite": "aéroport international Martín Miguel de Güemes", "valeur": "aéroport international"}
+{"entite": "aéroport international Mataveri", "valeur": "aéroport international"}
+{"entite": "aéroport international Matecaña", "valeur": "aéroport international"}
+{"entite": "aéroport international Maurice-Bishop", "valeur": "aéroport international"}
+{"entite": "aéroport international Midway de Chicago", "valeur": "aéroport international"}
+{"entite": "aéroport international Mihail-Kogălniceanu", "valeur": "aéroport international"}
+{"entite": "aéroport international Ministro Victor Konder", "valeur": "aéroport international"}
+{"entite": "aéroport international Moi", "valeur": "aéroport international"}
+{"entite": "aéroport international Montréal-Mirabel", "valeur": "aéroport international"}
+{"entite": "aéroport international Montréal-Trudeau", "valeur": "aéroport international"}
+{"entite": "aéroport international Mundo Maya", "valeur": "aéroport international"}
+{"entite": "aéroport international Murtala-Muhammed", "valeur": "aéroport international"}
+{"entite": "aéroport international Ninoy-Aquino", "valeur": "aéroport international"}
+{"entite": "aéroport international Nnamdi Azikiwe", "valeur": "aéroport international"}
+{"entite": "aéroport international Norman Manley de Kingston", "valeur": "aéroport international"}
+{"entite": "aéroport international Noursoultan-Nazarbaïev", "valeur": "aéroport international"}
+{"entite": "aéroport international O'Hare de Chicago", "valeur": "aéroport international"}
+{"entite": "aéroport international OR Tambo", "valeur": "aéroport international"}
+{"entite": "aéroport international Osmani", "valeur": "aéroport international"}
+{"entite": "aéroport international Osvaldo Vieira de Bissau", "valeur": "aéroport international"}
+{"entite": "aéroport international Owen Roberts", "valeur": "aéroport international"}
+{"entite": "aéroport international Pearson de Toronto", "valeur": "aéroport international"}
+{"entite": "aéroport international Philip S. W. Goldson", "valeur": "aéroport international"}
+{"entite": "aéroport international Piloto Civil Norberto Fernández", "valeur": "aéroport international"}
+{"entite": "aéroport international Playa de Oro", "valeur": "aéroport international"}
+{"entite": "aéroport international Presidente Carlos Ibáñez del Campo", "valeur": "aéroport international"}
+{"entite": "aéroport international Presidente Castro Pinto", "valeur": "aéroport international"}
+{"entite": "aéroport international Prince Mohammad Bin Abdulaziz", "valeur": "aéroport international"}
+{"entite": "aéroport international Prince Saïd Ibrahim", "valeur": "aéroport international"}
+{"entite": "aéroport international Princesse-Juliana", "valeur": "aéroport international"}
+{"entite": "aéroport international Rafael-Núñez", "valeur": "aéroport international"}
+{"entite": "aéroport international Ramón-Villeda-Morales", "valeur": "aéroport international"}
+{"entite": "aéroport international Reine Alia", "valeur": "aéroport international"}
+{"entite": "aéroport international Reine-Beatrix", "valeur": "aéroport international"}
+{"entite": "aéroport international Rickenbacker", "valeur": "aéroport international"}
+{"entite": "aéroport international Roberts", "valeur": "aéroport international"}
+{"entite": "aéroport international Roi-Abdelaziz", "valeur": "aéroport international"}
+{"entite": "aéroport international Roman-Tmetuchl", "valeur": "aéroport international"}
+{"entite": "aéroport international Rubem Berta", "valeur": "aéroport international"}
+{"entite": "aéroport international Sabiha-Gökçen", "valeur": "aéroport international"}
+{"entite": "aéroport international Sam Ratulangi", "valeur": "aéroport international"}
+{"entite": "aéroport international Sanford d'Orlando", "valeur": "aéroport international"}
+{"entite": "aéroport international Sardar Vallabhbhai Patel", "valeur": "aéroport international"}
+{"entite": "aéroport international Shah Amanat", "valeur": "aéroport international"}
+{"entite": "aéroport international Shah Jalal", "valeur": "aéroport international"}
+{"entite": "aéroport international Shahid Beheshti", "valeur": "aéroport international"}
+{"entite": "aéroport international Shahid Dastghaib", "valeur": "aéroport international"}
+{"entite": "aéroport international Shahid Hashemi Nejad", "valeur": "aéroport international"}
+{"entite": "aéroport international Shaikh Zayed", "valeur": "aéroport international"}
+{"entite": "aéroport international Shirak", "valeur": "aéroport international"}
+{"entite": "aéroport international Sikorski de Kiev", "valeur": "aéroport international"}
+{"entite": "aéroport international Silvio Pettirossi", "valeur": "aéroport international"}
+{"entite": "aéroport international Simón-Bolívar", "valeur": "aéroport international"}
+{"entite": "aéroport international Simon Mwansa Kapwepwe", "valeur": "aéroport international"}
+{"entite": "aéroport international Sir Seewoosagur Ramgoolam", "valeur": "aéroport international"}
+{"entite": "aéroport international Sky Harbor de Phoenix", "valeur": "aéroport international"}
+{"entite": "aéroport international Stanfield d'Halifax", "valeur": "aéroport international"}
+{"entite": "aéroport international Sultan Aboubakar III", "valeur": "aéroport international"}
+{"entite": "aéroport international Sultan-Aji-Muhammad-Sulaiman", "valeur": "aéroport international"}
+{"entite": "aéroport international Sultan-Mahmud-Badaruddin-II", "valeur": "aéroport international"}
+{"entite": "aéroport international Sultan-Syarif-Qasim-II", "valeur": "aéroport international"}
+{"entite": "aéroport international Taïwan-Taoyuan", "valeur": "aéroport international"}
+{"entite": "aéroport international Teniente Benjamín Matienzo", "valeur": "aéroport international"}
+{"entite": "aéroport international Thurgood Marshall de Baltimore-Washington", "valeur": "aéroport international"}
+{"entite": "aéroport International Toussaint-Louverture", "valeur": "aéroport international"}
+{"entite": "aéroport international Traian-Vuia", "valeur": "aéroport international"}
+{"entite": "aéroport international Tribhuvan", "valeur": "aéroport international"}
+{"entite": "aéroport international Trivandrum", "valeur": "aéroport international"}
+{"entite": "aéroport international V. C. Bird", "valeur": "aéroport international"}
+{"entite": "aéroport international Vance W. Amory", "valeur": "aéroport international"}
+{"entite": "aéroport international Yasser Arafat", "valeur": "aéroport international"}
+{"entite": "aéroport international Zayed", "valeur": "aéroport international"}
+{"entite": "aéroport international Zumbi-dos-Palmares", "valeur": "aéroport international"}
+{"entite": "aéroport international Zvartnots", "valeur": "aéroport international"}
+{"entite": "aéroport Jaime González", "valeur": "aéroport international"}
+{"entite": "aéroport Jindřichův Hradec", "valeur": "aéroport intérieur"}
+{"entite": "aéroport John G. Diefenbaker", "valeur": "aéroport international"}
+{"entite": "aéroport John-Wayne", "valeur": "aéroport international"}
+{"entite": "aéroport Jože Pučnik de Ljubljana", "valeur": "aéroport international"}
+{"entite": "aéroport Juan Gualberto Gómez", "valeur": "aéroport international"}
+{"entite": "aéroport Juan Vicente Gómez", "valeur": "aéroport international"}
+{"entite": "aéroport Juancho E. Yrausquin", "valeur": "aéroport international"}
+{"entite": "aéroport Khrabrovo", "valeur": "aéroport fédéral"}
+{"entite": "aéroport Kingston-Norman Rogers", "valeur": "aéroport autorisé pour l'entrée d'étrangers"}
+{"entite": "aéroport Lech-Wałęsa de Gdańsk", "valeur": "aéroport international"}
+{"entite": "aéroport Léonard-de-Vinci de Rome-Fiumicino", "valeur": "aéroport international"}
+{"entite": "aéroport Leoš Janáček", "valeur": "aéroport international"}
+{"entite": "aéroport Lyon-Saint-Exupéry", "valeur": "aéroport international"}
+{"entite": "aéroport M. R. Štefánik", "valeur": "aéroport international"}
+{"entite": "aéroport Mariscal Lamar de Cuenca", "valeur": "aéroport international"}
+{"entite": "aéroport Marseille-Provence", "valeur": "aéroport international"}
+{"entite": "aéroport métropolitain de Détroit", "valeur": "aéroport international"}
+{"entite": "aéroport Mohammed V", "valeur": "aéroport international"}
+{"entite": "aéroport Narimanovo", "valeur": "aéroport fédéral"}
+{"entite": "aéroport Néstor Arias", "valeur": "aéroport international"}
+{"entite": "aéroport Nikola-Tesla de Belgrade", "valeur": "aéroport international"}
+{"entite": "aéroport Oujda - Angad", "valeur": "aéroport international"}
+{"entite": "aéroport Paris-Charles-de-Gaulle", "valeur": "aéroport international"}
+{"entite": "aéroport Poprad-Tatry", "valeur": "aéroport international"}
+{"entite": "aéroport Quatro de Fevereiro", "valeur": "aéroport international"}
+{"entite": "aéroport régional d'Abha", "valeur": "aéroport international"}
+{"entite": "aéroport régional d'Ha'il", "valeur": "aéroport intérieur"}
+{"entite": "aéroport régional de Jizan", "valeur": "aéroport intérieur"}
+{"entite": "aéroport régional de Ta'if", "valeur": "aéroport intérieur"}
+{"entite": "aéroport Robert L. Bradshaw", "valeur": "aéroport international"}
+{"entite": "aéroport Rock Sound de South Eleuthera", "valeur": "aéroport international"}
+{"entite": "aéroport Rodriguez Ballon", "valeur": "aéroport international"}
+{"entite": "aéroport Sentani", "valeur": "aéroport international"}
+{"entite": "aéroport Talagi", "valeur": "aéroport fédéral"}
+{"entite": "aéroport Tanger - Ibn Battouta", "valeur": "aéroport international"}
+{"entite": "aéroport Temindung", "valeur": "aéroport abandonné"}
+{"entite": "aéroport Terrance B. Lettsome", "valeur": "aéroport international"}
+{"entite": "aéroport Tounochna", "valeur": "aéroport fédéral"}
+{"entite": "aéroport Wolfgang-Amadeus-Mozart de Salzbourg", "valeur": "aéroport international"}
+{"entite": "Airport of the Pacific", "valeur": "aéroport international"}
+{"entite": "ancien aéroport d'Hefei", "valeur": "aéroport international"}
+{"entite": "ancien aéroport de Bangalore", "valeur": "aéroport international"}
+{"entite": "ancien aéroport de Canton", "valeur": "aéroport international"}
+{"entite": "ancien aéroport de Kunming Wujiaba", "valeur": "aéroport international"}
+{"entite": "ancien aéroport de Natal", "valeur": "aéroport international"}
+{"entite": "ancien aéroport international de Beyrouth", "valeur": "aéroport international"}
+{"entite": "ancien aéroport international Francisco-Mendes", "valeur": "aéroport international"}
+{"entite": "Andros Town International Airport", "valeur": "aéroport international"}
+{"entite": "Argos airfield", "valeur": "aéroport abandonné"}
+{"entite": "Asimenio airfield", "valeur": "aéroport abandonné"}
+{"entite": "B F Goodlife Airstrip (historical)", "valeur": "aéroport abandonné"}
+{"entite": "Barth airport", "valeur": "aéroport allemand"}
+{"entite": "Base aérienne 160 Dakar-Ouakam", "valeur": "aéroport international"}
+{"entite": "Bethany Airport", "valeur": "aéroport régional"}
+{"entite": "Birrfeld airfield", "valeur": "aéroport intérieur"}
+{"entite": "Biwako Airport", "valeur": "aéroport avorté"}
+{"entite": "Boleráz aerodrome", "valeur": "aéroport intérieur"}
+{"entite": "Boľkovce-Lucenec", "valeur": "aéroport intérieur"}
+{"entite": "Břeclav Airport", "valeur": "aéroport intérieur"}
+{"entite": "Broumov Airport", "valeur": "aéroport intérieur"}
+{"entite": "Bubovice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Capital International Airport", "valeur": "aéroport international"}
+{"entite": "Caracas-Simón Bolívar", "valeur": "aéroport international"}
+{"entite": "Carmelo Airport", "valeur": "aéroport international"}
+{"entite": "Česká Lípa airport", "valeur": "aéroport intérieur"}
+{"entite": "Cheb Airport", "valeur": "aéroport intérieur"}
+{"entite": "Chotěboř Airport", "valeur": "aéroport intérieur"}
+{"entite": "Chrudim Airport", "valeur": "aéroport intérieur"}
+{"entite": "Cluff Lake Airport", "valeur": "aéroport abandonné"}
+{"entite": "Dominica International Airport", "valeur": "aéroport international"}
+{"entite": "Dubnica Airport", "valeur": "aéroport intérieur"}
+{"entite": "Duhok International Airport", "valeur": "aéroport international"}
+{"entite": "Dvůr Králové Airport", "valeur": "aéroport intérieur"}
+{"entite": "Eduard Alexander Gummels Airport", "valeur": "aéroport international"}
+{"entite": "Erpuzice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Frýdlant Airport", "valeur": "aéroport intérieur"}
+{"entite": "Futaysi Airport", "valeur": "aéroport abandonné"}
+{"entite": "Gia Binh International Airport", "valeur": "aéroport international"}
+{"entite": "Greater Southwest International Airport", "valeur": "aéroport international"}
+{"entite": "Hainan Prefecture Gonghe Airport", "valeur": "aéroport intérieur"}
+{"entite": "Harima Airport", "valeur": "aéroport avorté"}
+{"entite": "Harrington Flying Service Airport", "valeur": "aéroport abandonné"}
+{"entite": "Hejlák Airport", "valeur": "aéroport abandonné"}
+{"entite": "Hodeïda", "valeur": "aéroport international"}
+{"entite": "Hodkovice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Hořice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Hosín Airport", "valeur": "aéroport intérieur"}
+{"entite": "Hradčany Airport", "valeur": "aéroport abandonné"}
+{"entite": "Hranice Airport", "valeur": "aéroport intérieur"}
+{"entite": "hydroaéroport de Fort Frances", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "Ing. Fernando Espinosa Gutiérrez International Airport", "valeur": "aéroport international"}
+{"entite": "International Pan American Airport", "valeur": "aéroport international"}
+{"entite": "Jacobsen Airport", "valeur": "aéroport abandonné"}
+{"entite": "Jaroměř Airport", "valeur": "aéroport intérieur"}
+{"entite": "Jičín Airport", "valeur": "aéroport intérieur"}
+{"entite": "Jihlava Airport", "valeur": "aéroport intérieur"}
+{"entite": "Kalyan International Airport", "valeur": "aéroport international"}
+{"entite": "Kamenica nad Cirochou", "valeur": "aéroport intérieur"}
+{"entite": "Kidepo International Airport", "valeur": "aéroport international"}
+{"entite": "King Salman International Airport", "valeur": "aéroport international"}
+{"entite": "Kladno Airport", "valeur": "aéroport intérieur"}
+{"entite": "Klatovy Airport", "valeur": "aéroport intérieur"}
+{"entite": "Ko Pha-ngan Airport", "valeur": "aéroport avorté"}
+{"entite": "Kolín Airport", "valeur": "aéroport intérieur"}
+{"entite": "Křižanov Airport", "valeur": "aéroport intérieur"}
+{"entite": "Krnov Airport", "valeur": "aéroport intérieur"}
+{"entite": "Kromeriz Airport", "valeur": "aéroport intérieur"}
+{"entite": "Kvetoslavov Airport", "valeur": "aéroport intérieur"}
+{"entite": "Kyjov Airport", "valeur": "aéroport intérieur"}
+{"entite": "Kyushu International Airport", "valeur": "aéroport international"}
+{"entite": "Letiště Slaný", "valeur": "aéroport intérieur"}
+{"entite": "Letkov Airport", "valeur": "aéroport intérieur"}
+{"entite": "Luhačovice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Magdeburg-Cochstedt Airport", "valeur": "aéroport allemand"}
+{"entite": "Male Bielice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Martin Airfield", "valeur": "aéroport intérieur"}
+{"entite": "Medlánky Airport", "valeur": "aéroport intérieur"}
+{"entite": "Mikulovice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Militärflugplatz Seyring", "valeur": "aéroport abandonné"}
+{"entite": "Mlada Boleslav Airport", "valeur": "aéroport intérieur"}
+{"entite": "Mokha International Airport", "valeur": "aéroport international"}
+{"entite": "Mopa Airport", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "Moravská Třebová Airport", "valeur": "aéroport intérieur"}
+{"entite": "Most Airport", "valeur": "aéroport intérieur"}
+{"entite": "Nouvel Aéroport International d'Héraklion Crete", "valeur": "aéroport international"}
+{"entite": "Nové Město Airport", "valeur": "aéroport intérieur"}
+{"entite": "Nové Zámky Airport", "valeur": "aéroport intérieur"}
+{"entite": "Nürnberg-Fürth Industry Airfield", "valeur": "aéroport international"}
+{"entite": "Nusantara Airport", "valeur": "aéroport international"}
+{"entite": "Očová", "valeur": "aéroport intérieur"}
+{"entite": "Old N-S-Runway", "valeur": "aéroport abandonné"}
+{"entite": "Olomouc Airport", "valeur": "aéroport intérieur"}
+{"entite": "Panenský Týnec Airport", "valeur": "aéroport intérieur"}
+{"entite": "piste d'Abqaïq", "valeur": "aéroport intérieur"}
+{"entite": "piste d'aviation de Kourou-Arkenne", "valeur": "aéroport à cheval sur des frontières"}
+{"entite": "piste de Pepeekeo", "valeur": "aéroport abandonné"}
+{"entite": "Plasy Airport", "valeur": "aéroport intérieur"}
+{"entite": "Podhorany Airport", "valeur": "aéroport intérieur"}
+{"entite": "Polička Airport", "valeur": "aéroport intérieur"}
+{"entite": "Portsmouth International Airport at Pease", "valeur": "aéroport international"}
+{"entite": "Presidente Médici International Airport", "valeur": "aéroport international"}
+{"entite": "Pribram Airport", "valeur": "aéroport intérieur"}
+{"entite": "Přibyslav Airport", "valeur": "aéroport intérieur"}
+{"entite": "projet d'aéroport du Grand Ouest", "valeur": "aéroport avorté"}
+{"entite": "Projet de troisième aéroport en région parisienne", "valeur": "aéroport avorté"}
+{"entite": "Prostějov Airport", "valeur": "aéroport intérieur"}
+{"entite": "RAF Breighton", "valeur": "aérodrome d'aviation générale"}
+{"entite": "Rakovnik Airport", "valeur": "aéroport intérieur"}
+{"entite": "Raná", "valeur": "aéroport intérieur"}
+{"entite": "Ražňany", "valeur": "aéroport intérieur"}
+{"entite": "Rokycany Airport", "valeur": "aéroport intérieur"}
+{"entite": "Ružomberok", "valeur": "aéroport intérieur"}
+{"entite": "San Felipe International Airport", "valeur": "aéroport international"}
+{"entite": "San Patricio International Airport", "valeur": "aéroport international"}
+{"entite": "Santa Bernardina International Airport", "valeur": "aérodrome d'aviation générale"}
+{"entite": "Sazená Airport", "valeur": "aéroport intérieur"}
+{"entite": "Schwerin-Parchim Airport", "valeur": "aéroport allemand"}
+{"entite": "Sea-Airport Cuxhaven/Nordholz", "valeur": "aéroport allemand"}
+{"entite": "Senica Airport", "valeur": "aéroport intérieur"}
+{"entite": "Shuozhou Zirun", "valeur": "aéroport intérieur"}
+{"entite": "Siegerland Airport", "valeur": "aéroport allemand"}
+{"entite": "Siem Reap-Angkor International Airport", "valeur": "aéroport international"}
+{"entite": "Skuteč Airport", "valeur": "aéroport intérieur"}
+{"entite": "Soběslav Airport", "valeur": "aéroport intérieur"}
+{"entite": "Soledad International Airport", "valeur": "aéroport international"}
+{"entite": "Spišská Nová Ves Airport", "valeur": "aéroport intérieur"}
+{"entite": "Stichovice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Strakonice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Strunkovice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Šumperk Airport", "valeur": "aéroport intérieur"}
+{"entite": "Sunyani Airport", "valeur": "aéroport international"}
+{"entite": "Šurany", "valeur": "aéroport intérieur"}
+{"entite": "Svidnik Airport", "valeur": "aéroport intérieur"}
+{"entite": "Syangboche Airport", "valeur": "aéroport intérieur"}
+{"entite": "Tachov Airport", "valeur": "aéroport intérieur"}
+{"entite": "Tadepalligudem Airport", "valeur": "aéroport abandonné"}
+{"entite": "Taïz", "valeur": "aéroport international"}
+{"entite": "Točná Airport", "valeur": "aéroport intérieur"}
+{"entite": "Touzim Airport", "valeur": "aéroport intérieur"}
+{"entite": "Unayzah Airport", "valeur": "aéroport intérieur"}
+{"entite": "US Naval Air Station 1935", "valeur": "aéroport abandonné"}
+{"entite": "US Seaplane Base pre-WW2", "valeur": "aéroport abandonné"}
+{"entite": "Ústí nad Labem Airport", "valeur": "aéroport intérieur"}
+{"entite": "Ústí nad Orlicí Airport", "valeur": "aéroport intérieur"}
+{"entite": "Valle Alto International Airport", "valeur": "aéroport international"}
+{"entite": "Velké Poříčí Airport", "valeur": "aéroport intérieur"}
+{"entite": "Vlasim Airport", "valeur": "aéroport intérieur"}
+{"entite": "Vrchlabi Airport", "valeur": "aéroport intérieur"}
+{"entite": "Vysoke Myto Airport", "valeur": "aéroport intérieur"}
+{"entite": "Weedpatch International Airport", "valeur": "aéroport international"}
+{"entite": "Western Sydney Airport", "valeur": "aéroport construit à partir de zéro"}
+{"entite": "Zábřeh", "valeur": "aéroport intérieur"}
+{"entite": "Žamberk Airport", "valeur": "aéroport intérieur"}
+{"entite": "Zbraslavice Airport", "valeur": "aéroport intérieur"}
+{"entite": "Zlín Airport", "valeur": "aéroport intérieur"}
+{"entite": "Znojmo", "valeur": "aéroport intérieur"}

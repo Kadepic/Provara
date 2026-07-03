@@ -1,0 +1,249 @@
+{"_relation": "code_iso_pays", "_categorie": "convention", "_source": "mledoze/countries — ISO 3166-1 alpha-2 (cca2)", "_articles": true}
+{"entite": "Afghanistan", "valeur": "AF"}
+{"entite": "Afrique du Sud", "valeur": "ZA"}
+{"entite": "Ahvenanmaa", "valeur": "AX"}
+{"entite": "Albanie", "valeur": "AL"}
+{"entite": "Algérie", "valeur": "DZ"}
+{"entite": "Allemagne", "valeur": "DE"}
+{"entite": "Andorre", "valeur": "AD"}
+{"entite": "Angola", "valeur": "AO"}
+{"entite": "Anguilla", "valeur": "AI"}
+{"entite": "Antarctique", "valeur": "AQ"}
+{"entite": "Antigua-et-Barbuda", "valeur": "AG"}
+{"entite": "Arabie Saoudite", "valeur": "SA"}
+{"entite": "Argentine", "valeur": "AR"}
+{"entite": "Arménie", "valeur": "AM"}
+{"entite": "Aruba", "valeur": "AW"}
+{"entite": "Australie", "valeur": "AU"}
+{"entite": "Autriche", "valeur": "AT"}
+{"entite": "Azerbaïdjan", "valeur": "AZ"}
+{"entite": "Bahamas", "valeur": "BS"}
+{"entite": "Bahreïn", "valeur": "BH"}
+{"entite": "Bangladesh", "valeur": "BD"}
+{"entite": "Barbade", "valeur": "BB"}
+{"entite": "Belgique", "valeur": "BE"}
+{"entite": "Belize", "valeur": "BZ"}
+{"entite": "Bénin", "valeur": "BJ"}
+{"entite": "Bermudes", "valeur": "BM"}
+{"entite": "Bhoutan", "valeur": "BT"}
+{"entite": "Biélorussie", "valeur": "BY"}
+{"entite": "Birmanie", "valeur": "MM"}
+{"entite": "Bolivie", "valeur": "BO"}
+{"entite": "Bosnie-Herzégovine", "valeur": "BA"}
+{"entite": "Botswana", "valeur": "BW"}
+{"entite": "Brésil", "valeur": "BR"}
+{"entite": "Brunei", "valeur": "BN"}
+{"entite": "Bulgarie", "valeur": "BG"}
+{"entite": "Burkina Faso", "valeur": "BF"}
+{"entite": "Burundi", "valeur": "BI"}
+{"entite": "Cambodge", "valeur": "KH"}
+{"entite": "Cameroun", "valeur": "CM"}
+{"entite": "Canada", "valeur": "CA"}
+{"entite": "Chili", "valeur": "CL"}
+{"entite": "Chine", "valeur": "CN"}
+{"entite": "Chypre", "valeur": "CY"}
+{"entite": "Cité du Vatican", "valeur": "VA"}
+{"entite": "Colombie", "valeur": "CO"}
+{"entite": "Comores", "valeur": "KM"}
+{"entite": "Congo", "valeur": "CG"}
+{"entite": "Congo (Rép. dém.)", "valeur": "CD"}
+{"entite": "Corée du Nord", "valeur": "KP"}
+{"entite": "Corée du Sud", "valeur": "KR"}
+{"entite": "Costa Rica", "valeur": "CR"}
+{"entite": "Côte d'Ivoire", "valeur": "CI"}
+{"entite": "Croatie", "valeur": "HR"}
+{"entite": "Cuba", "valeur": "CU"}
+{"entite": "Curaçao", "valeur": "CW"}
+{"entite": "Danemark", "valeur": "DK"}
+{"entite": "Djibouti", "valeur": "DJ"}
+{"entite": "Dominique", "valeur": "DM"}
+{"entite": "Égypte", "valeur": "EG"}
+{"entite": "Émirats arabes unis", "valeur": "AE"}
+{"entite": "Équateur", "valeur": "EC"}
+{"entite": "Érythrée", "valeur": "ER"}
+{"entite": "Espagne", "valeur": "ES"}
+{"entite": "Estonie", "valeur": "EE"}
+{"entite": "Eswatini", "valeur": "SZ"}
+{"entite": "États-Unis", "valeur": "US"}
+{"entite": "Éthiopie", "valeur": "ET"}
+{"entite": "Fidji", "valeur": "FJ"}
+{"entite": "Finlande", "valeur": "FI"}
+{"entite": "France", "valeur": "FR"}
+{"entite": "Gabon", "valeur": "GA"}
+{"entite": "Gambie", "valeur": "GM"}
+{"entite": "Géorgie", "valeur": "GE"}
+{"entite": "Géorgie du Sud-et-les Îles Sandwich du Sud", "valeur": "GS"}
+{"entite": "Ghana", "valeur": "GH"}
+{"entite": "Gibraltar", "valeur": "GI"}
+{"entite": "Grèce", "valeur": "GR"}
+{"entite": "Grenade", "valeur": "GD"}
+{"entite": "Groenland", "valeur": "GL"}
+{"entite": "Guadeloupe", "valeur": "GP"}
+{"entite": "Guam", "valeur": "GU"}
+{"entite": "Guatemala", "valeur": "GT"}
+{"entite": "Guernesey", "valeur": "GG"}
+{"entite": "Guinée", "valeur": "GN"}
+{"entite": "Guinée-Bissau", "valeur": "GW"}
+{"entite": "Guinée équatoriale", "valeur": "GQ"}
+{"entite": "Guyana", "valeur": "GY"}
+{"entite": "Guyane", "valeur": "GF"}
+{"entite": "Haïti", "valeur": "HT"}
+{"entite": "Honduras", "valeur": "HN"}
+{"entite": "Hong Kong", "valeur": "HK"}
+{"entite": "Hongrie", "valeur": "HU"}
+{"entite": "Île Bouvet", "valeur": "BV"}
+{"entite": "Île Christmas", "valeur": "CX"}
+{"entite": "Île de Man", "valeur": "IM"}
+{"entite": "Île Maurice", "valeur": "MU"}
+{"entite": "Île Norfolk", "valeur": "NF"}
+{"entite": "Îles Caïmans", "valeur": "KY"}
+{"entite": "Îles Cocos", "valeur": "CC"}
+{"entite": "Îles Cook", "valeur": "CK"}
+{"entite": "Îles du Cap-Vert", "valeur": "CV"}
+{"entite": "Îles Féroé", "valeur": "FO"}
+{"entite": "Îles Heard-et-MacDonald", "valeur": "HM"}
+{"entite": "Îles Malouines", "valeur": "FK"}
+{"entite": "Îles Mariannes du Nord", "valeur": "MP"}
+{"entite": "Îles Marshall", "valeur": "MH"}
+{"entite": "Îles mineures éloignées des États-Unis", "valeur": "UM"}
+{"entite": "Îles Pitcairn", "valeur": "PN"}
+{"entite": "Îles Salomon", "valeur": "SB"}
+{"entite": "Îles Turques-et-Caïques", "valeur": "TC"}
+{"entite": "Îles Vierges britanniques", "valeur": "VG"}
+{"entite": "Îles Vierges des États-Unis", "valeur": "VI"}
+{"entite": "Inde", "valeur": "IN"}
+{"entite": "Indonésie", "valeur": "ID"}
+{"entite": "Irak", "valeur": "IQ"}
+{"entite": "Iran", "valeur": "IR"}
+{"entite": "Irlande", "valeur": "IE"}
+{"entite": "Islande", "valeur": "IS"}
+{"entite": "Israël", "valeur": "IL"}
+{"entite": "Italie", "valeur": "IT"}
+{"entite": "Jamaïque", "valeur": "JM"}
+{"entite": "Japon", "valeur": "JP"}
+{"entite": "Jersey", "valeur": "JE"}
+{"entite": "Jordanie", "valeur": "JO"}
+{"entite": "Kazakhstan", "valeur": "KZ"}
+{"entite": "Kenya", "valeur": "KE"}
+{"entite": "Kirghizistan", "valeur": "KG"}
+{"entite": "Kiribati", "valeur": "KI"}
+{"entite": "Kosovo", "valeur": "XK"}
+{"entite": "Koweït", "valeur": "KW"}
+{"entite": "Laos", "valeur": "LA"}
+{"entite": "Lesotho", "valeur": "LS"}
+{"entite": "Lettonie", "valeur": "LV"}
+{"entite": "Liban", "valeur": "LB"}
+{"entite": "Liberia", "valeur": "LR"}
+{"entite": "Libye", "valeur": "LY"}
+{"entite": "Liechtenstein", "valeur": "LI"}
+{"entite": "Lituanie", "valeur": "LT"}
+{"entite": "Luxembourg", "valeur": "LU"}
+{"entite": "Macao", "valeur": "MO"}
+{"entite": "Macédoine du Nord", "valeur": "MK"}
+{"entite": "Madagascar", "valeur": "MG"}
+{"entite": "Malaisie", "valeur": "MY"}
+{"entite": "Malawi", "valeur": "MW"}
+{"entite": "Maldives", "valeur": "MV"}
+{"entite": "Mali", "valeur": "ML"}
+{"entite": "Malte", "valeur": "MT"}
+{"entite": "Maroc", "valeur": "MA"}
+{"entite": "Martinique", "valeur": "MQ"}
+{"entite": "Mauritanie", "valeur": "MR"}
+{"entite": "Mayotte", "valeur": "YT"}
+{"entite": "Mexique", "valeur": "MX"}
+{"entite": "Micronésie", "valeur": "FM"}
+{"entite": "Moldavie", "valeur": "MD"}
+{"entite": "Monaco", "valeur": "MC"}
+{"entite": "Mongolie", "valeur": "MN"}
+{"entite": "Monténégro", "valeur": "ME"}
+{"entite": "Montserrat", "valeur": "MS"}
+{"entite": "Mozambique", "valeur": "MZ"}
+{"entite": "Namibie", "valeur": "NA"}
+{"entite": "Nauru", "valeur": "NR"}
+{"entite": "Népal", "valeur": "NP"}
+{"entite": "Nicaragua", "valeur": "NI"}
+{"entite": "Niger", "valeur": "NE"}
+{"entite": "Nigéria", "valeur": "NG"}
+{"entite": "Niue", "valeur": "NU"}
+{"entite": "Norvège", "valeur": "NO"}
+{"entite": "Nouvelle-Calédonie", "valeur": "NC"}
+{"entite": "Nouvelle-Zélande", "valeur": "NZ"}
+{"entite": "Oman", "valeur": "OM"}
+{"entite": "Ouganda", "valeur": "UG"}
+{"entite": "Ouzbékistan", "valeur": "UZ"}
+{"entite": "Pakistan", "valeur": "PK"}
+{"entite": "Palaos (Palau)", "valeur": "PW"}
+{"entite": "Palestine", "valeur": "PS"}
+{"entite": "Panama", "valeur": "PA"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "PG"}
+{"entite": "Paraguay", "valeur": "PY"}
+{"entite": "Pays-Bas", "valeur": "NL"}
+{"entite": "Pays-Bas caribéens", "valeur": "BQ"}
+{"entite": "Pérou", "valeur": "PE"}
+{"entite": "Philippines", "valeur": "PH"}
+{"entite": "Pologne", "valeur": "PL"}
+{"entite": "Polynésie française", "valeur": "PF"}
+{"entite": "Porto Rico", "valeur": "PR"}
+{"entite": "Portugal", "valeur": "PT"}
+{"entite": "Qatar", "valeur": "QA"}
+{"entite": "République centrafricaine", "valeur": "CF"}
+{"entite": "République dominicaine", "valeur": "DO"}
+{"entite": "Réunion", "valeur": "RE"}
+{"entite": "Roumanie", "valeur": "RO"}
+{"entite": "Royaume-Uni", "valeur": "GB"}
+{"entite": "Russie", "valeur": "RU"}
+{"entite": "Rwanda", "valeur": "RW"}
+{"entite": "Sahara Occidental", "valeur": "EH"}
+{"entite": "Saint-Barthélemy", "valeur": "BL"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": "KN"}
+{"entite": "Saint-Marin", "valeur": "SM"}
+{"entite": "Saint-Pierre-et-Miquelon", "valeur": "PM"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "VC"}
+{"entite": "Sainte-Hélène, Ascension et Tristan da Cunha", "valeur": "SH"}
+{"entite": "Sainte-Lucie", "valeur": "LC"}
+{"entite": "Salvador", "valeur": "SV"}
+{"entite": "Samoa", "valeur": "WS"}
+{"entite": "Samoa américaines", "valeur": "AS"}
+{"entite": "São Tomé et Príncipe", "valeur": "ST"}
+{"entite": "Sénégal", "valeur": "SN"}
+{"entite": "Serbie", "valeur": "RS"}
+{"entite": "Seychelles", "valeur": "SC"}
+{"entite": "Sierra Leone", "valeur": "SL"}
+{"entite": "Singapour", "valeur": "SG"}
+{"entite": "Slovaquie", "valeur": "SK"}
+{"entite": "Slovénie", "valeur": "SI"}
+{"entite": "Somalie", "valeur": "SO"}
+{"entite": "Soudan", "valeur": "SD"}
+{"entite": "Soudan du Sud", "valeur": "SS"}
+{"entite": "Sri Lanka", "valeur": "LK"}
+{"entite": "Suède", "valeur": "SE"}
+{"entite": "Suisse", "valeur": "CH"}
+{"entite": "Surinam", "valeur": "SR"}
+{"entite": "Svalbard et Jan Mayen", "valeur": "SJ"}
+{"entite": "Syrie", "valeur": "SY"}
+{"entite": "Tadjikistan", "valeur": "TJ"}
+{"entite": "Taïwan", "valeur": "TW"}
+{"entite": "Tanzanie", "valeur": "TZ"}
+{"entite": "Tchad", "valeur": "TD"}
+{"entite": "Tchéquie", "valeur": "CZ"}
+{"entite": "Terres australes et antarctiques françaises", "valeur": "TF"}
+{"entite": "Territoire britannique de l'océan Indien", "valeur": "IO"}
+{"entite": "Thaïlande", "valeur": "TH"}
+{"entite": "Timor oriental", "valeur": "TL"}
+{"entite": "Togo", "valeur": "TG"}
+{"entite": "Tokelau", "valeur": "TK"}
+{"entite": "Tonga", "valeur": "TO"}
+{"entite": "Trinité-et-Tobago", "valeur": "TT"}
+{"entite": "Tunisie", "valeur": "TN"}
+{"entite": "Turkménistan", "valeur": "TM"}
+{"entite": "Turquie", "valeur": "TR"}
+{"entite": "Tuvalu", "valeur": "TV"}
+{"entite": "Ukraine", "valeur": "UA"}
+{"entite": "Uruguay", "valeur": "UY"}
+{"entite": "Vanuatu", "valeur": "VU"}
+{"entite": "Venezuela", "valeur": "VE"}
+{"entite": "Viêt Nam", "valeur": "VN"}
+{"entite": "Wallis-et-Futuna", "valeur": "WF"}
+{"entite": "Yémen", "valeur": "YE"}
+{"entite": "Zambie", "valeur": "ZM"}
+{"entite": "Zimbabwe", "valeur": "ZW"}

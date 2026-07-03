@@ -1,0 +1,31 @@
+{"_relation": "comportement_migrateur_oiseau", "_categorie": "physique", "_source": "Modèle (Claude) — ornithologie textbook curée (migrateur/sédentaire ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "bécasse", "valeur": "migrateur"}
+{"entite": "buse", "valeur": "sédentaire"}
+{"entite": "chouette", "valeur": "sédentaire"}
+{"entite": "cigogne", "valeur": "migrateur"}
+{"entite": "corbeau", "valeur": "sédentaire"}
+{"entite": "coucou", "valeur": "migrateur"}
+{"entite": "faisan", "valeur": "sédentaire"}
+{"entite": "fauvette", "valeur": "migrateur"}
+{"entite": "geai", "valeur": "sédentaire"}
+{"entite": "gobemouche", "valeur": "migrateur"}
+{"entite": "grue", "valeur": "migrateur"}
+{"entite": "grue cendrée", "valeur": "migrateur"}
+{"entite": "hirondelle", "valeur": "migrateur"}
+{"entite": "huppe", "valeur": "migrateur"}
+{"entite": "loriot", "valeur": "migrateur"}
+{"entite": "martinet", "valeur": "migrateur"}
+{"entite": "merle", "valeur": "sédentaire"}
+{"entite": "mésange", "valeur": "sédentaire"}
+{"entite": "moineau", "valeur": "sédentaire"}
+{"entite": "oie cendrée", "valeur": "migrateur"}
+{"entite": "oie sauvage", "valeur": "migrateur"}
+{"entite": "perdrix", "valeur": "sédentaire"}
+{"entite": "pic épeiche", "valeur": "sédentaire"}
+{"entite": "pic vert", "valeur": "sédentaire"}
+{"entite": "pigeon", "valeur": "sédentaire"}
+{"entite": "pouillot", "valeur": "migrateur"}
+{"entite": "rossignol", "valeur": "migrateur"}
+{"entite": "sittelle", "valeur": "sédentaire"}
+{"entite": "sterne arctique", "valeur": "migrateur"}
+{"entite": "troglodyte", "valeur": "sédentaire"}

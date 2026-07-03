@@ -1,0 +1,5 @@
+{"_relation": "definition_terme_digestion", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (terme digestion -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "bol alimentaire", "valeur": "aliments mâchés et imprégnés de salive"}
+{"entite": "chyme", "valeur": "bouillie alimentaire issue de l'estomac"}
+{"entite": "digestion chimique", "valeur": "transformation des aliments par les enzymes"}
+{"entite": "digestion mécanique", "valeur": "fragmentation des aliments"}

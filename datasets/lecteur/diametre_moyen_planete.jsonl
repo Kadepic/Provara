@@ -1,0 +1,9 @@
+{"_relation": "diametre_moyen_planete", "_categorie": "physique", "_source": "NASA/UAI — valeurs de référence (diamètre moyen ; cross-validé QLever P2120)", "_articles": true}
+{"entite": "jupiter", "valeur": "139820"}
+{"entite": "mars", "valeur": "6779"}
+{"entite": "mercure", "valeur": "4879"}
+{"entite": "neptune", "valeur": "49244"}
+{"entite": "saturne", "valeur": "116460"}
+{"entite": "terre", "valeur": "12742"}
+{"entite": "uranus", "valeur": "50724"}
+{"entite": "vénus", "valeur": "12104"}

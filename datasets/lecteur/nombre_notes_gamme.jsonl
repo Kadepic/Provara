@@ -1,0 +1,7 @@
+{"_relation": "nombre_notes_gamme", "_categorie": "convention", "_source": "théorie musicale (gamme -> nombre de notes)", "_articles": true}
+{"entite": "gamme chromatique", "valeur": "12"}
+{"entite": "gamme diatonique", "valeur": "7"}
+{"entite": "gamme majeure", "valeur": "7"}
+{"entite": "gamme mineure", "valeur": "7"}
+{"entite": "gamme par tons", "valeur": "6"}
+{"entite": "gamme pentatonique", "valeur": "5"}

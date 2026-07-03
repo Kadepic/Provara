@@ -1,0 +1,4 @@
+{"_relation": "role_segment_digestif", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (segment digestif -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "bouche", "valeur": "mastication et insalivation"}
+{"entite": "rectum", "valeur": "stockage des matières fécales"}
+{"entite": "œsophage", "valeur": "transport des aliments vers l'estomac"}

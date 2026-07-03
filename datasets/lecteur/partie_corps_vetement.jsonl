@@ -1,0 +1,20 @@
+{"_relation": "partie_corps_vetement", "_categorie": "convention", "_source": "usage courant (vêtement -> partie du corps)", "_articles": true}
+{"entite": "bague", "valeur": "le doigt"}
+{"entite": "bonnet", "valeur": "la tête"}
+{"entite": "botte", "valeur": "les pieds"}
+{"entite": "boucle d'oreille", "valeur": "les oreilles"}
+{"entite": "bracelet", "valeur": "le poignet"}
+{"entite": "casquette", "valeur": "la tête"}
+{"entite": "ceinture", "valeur": "la taille"}
+{"entite": "chapeau", "valeur": "la tête"}
+{"entite": "chaussette", "valeur": "les pieds"}
+{"entite": "chaussure", "valeur": "les pieds"}
+{"entite": "collier", "valeur": "le cou"}
+{"entite": "cravate", "valeur": "le cou"}
+{"entite": "écharpe", "valeur": "le cou"}
+{"entite": "gant", "valeur": "les mains"}
+{"entite": "lunettes", "valeur": "les yeux"}
+{"entite": "montre", "valeur": "le poignet"}
+{"entite": "moufle", "valeur": "les mains"}
+{"entite": "pantalon", "valeur": "les jambes"}
+{"entite": "soutien-gorge", "valeur": "la poitrine"}

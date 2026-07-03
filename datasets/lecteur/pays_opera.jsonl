@@ -1,0 +1,768 @@
+{"_relation": "pays_opera", "_categorie": "physique", "_source": "Wikidata/QLever — pays_opera P17, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Aalto Theatre", "valeur": "Allemagne"}
+{"entite": "Abbeville Opera House", "valeur": "États-Unis"}
+{"entite": "Academic Musical and Drama Theater of Lesya Ukrainka", "valeur": "Ukraine"}
+{"entite": "Academy of Music", "valeur": "États-Unis"}
+{"entite": "Aguascalientes Theatre", "valeur": "Mexique"}
+{"entite": "Alberto Maranhão Theatre", "valeur": "Brésil"}
+{"entite": "Alexis Opera House", "valeur": "États-Unis"}
+{"entite": "Alice Bush Opera Theatre", "valeur": "États-Unis"}
+{"entite": "Allee-Theater", "valeur": "Allemagne"}
+{"entite": "Allen's Opera House", "valeur": "États-Unis"}
+{"entite": "Altes Stadttheater Nürnberg", "valeur": "Allemagne"}
+{"entite": "Amadey", "valeur": "Russie"}
+{"entite": "Amargosa Opera House and Hotel", "valeur": "États-Unis"}
+{"entite": "Ángela Peralta Theatre", "valeur": "Mexique"}
+{"entite": "Anna C. Diller Opera House", "valeur": "États-Unis"}
+{"entite": "Antalya State Opera and Ballet", "valeur": "Turquie"}
+{"entite": "arènes de Vérone", "valeur": "Italie"}
+{"entite": "Artscape Theatre Centre", "valeur": "Afrique du Sud"}
+{"entite": "Asmara Cinema-Teatro", "valeur": "Érythrée"}
+{"entite": "Astana Opéra", "valeur": "Kazakhstan"}
+{"entite": "Astor Opera House", "valeur": "États-Unis"}
+{"entite": "Atatürk Cultural Center", "valeur": "Turquie"}
+{"entite": "auditorium de Ténérife", "valeur": "Espagne"}
+{"entite": "Aula Simfonia Jakarta", "valeur": "Indonésie"}
+{"entite": "AUM Opera House", "valeur": "Koweït"}
+{"entite": "Aurora Opera House in Gozo", "valeur": "Malte"}
+{"entite": "Avar Musical-Dramatic Theatre Gamzat Tsadasa", "valeur": "Russie"}
+{"entite": "Baden Court Theatre", "valeur": "Allemagne"}
+{"entite": "Badisches Staatstheater Karlsruhe", "valeur": "Allemagne"}
+{"entite": "Baltic State Opera", "valeur": "Pologne"}
+{"entite": "BAM Howard Gilman Opera House", "valeur": "États-Unis"}
+{"entite": "Bardavon 1869 Opera House", "valeur": "États-Unis"}
+{"entite": "Barre City Hall and Opera House", "valeur": "États-Unis"}
+{"entite": "Batcher Opera House Block", "valeur": "États-Unis"}
+{"entite": "Batumi State Musical Center", "valeur": "Géorgie"}
+{"entite": "Bayerische Kammeroper", "valeur": "Allemagne"}
+{"entite": "Bayview Opera House", "valeur": "États-Unis"}
+{"entite": "Beardstown Grand Opera House", "valeur": "États-Unis"}
+{"entite": "Beaver Opera House", "valeur": "États-Unis"}
+{"entite": "Bell's Opera House", "valeur": "États-Unis"}
+{"entite": "Bent's Opera House", "valeur": "États-Unis"}
+{"entite": "Boston Opera House", "valeur": "États-Unis"}
+{"entite": "Brown Grand Theatre", "valeur": "États-Unis"}
+{"entite": "Bühnen der Stadt Gera", "valeur": "Allemagne"}
+{"entite": "Building of the Macedonian Opera and Ballet", "valeur": "Macédoine du Nord"}
+{"entite": "Bürgertheater", "valeur": "Autriche"}
+{"entite": "Buxton Opera House", "valeur": "Royaume-Uni"}
+{"entite": "California Theatre", "valeur": "États-Unis"}
+{"entite": "Calumet Theatre", "valeur": "États-Unis"}
+{"entite": "Cardiff Bay Opera House", "valeur": "Royaume-Uni"}
+{"entite": "Carltheater", "valeur": "Autriche"}
+{"entite": "Casa de Ópera do Cabo Espichel", "valeur": "Portugal"}
+{"entite": "Cedarville Opera House", "valeur": "États-Unis"}
+{"entite": "Central City Opera House", "valeur": "États-Unis"}
+{"entite": "Centre culturel de la fondation Stávros-Niárchos", "valeur": "Grèce"}
+{"entite": "centre des arts Margo-Fournier", "valeur": "Canada"}
+{"entite": "centre national des arts du spectacle", "valeur": "République populaire de Chine"}
+{"entite": "Chester City Hall and Opera House", "valeur": "États-Unis"}
+{"entite": "Chicago Opera House", "valeur": "États-Unis"}
+{"entite": "China National Opera", "valeur": "République populaire de Chine"}
+{"entite": "Cincinnati Music Hall", "valeur": "États-Unis"}
+{"entite": "City Opera House", "valeur": "États-Unis"}
+{"entite": "City Theater", "valeur": "États-Unis"}
+{"entite": "Civic Opera House", "valeur": "États-Unis"}
+{"entite": "Clarkson Opera House", "valeur": "États-Unis"}
+{"entite": "Clem's Opera House", "valeur": "États-Unis"}
+{"entite": "Cluj-Napoca National Theatre", "valeur": "Roumanie"}
+{"entite": "Coliseo Albia", "valeur": "Espagne"}
+{"entite": "Coliseum Theatre", "valeur": "Royaume-Uni"}
+{"entite": "Colville Opera House and Odd Fellows Hall", "valeur": "États-Unis"}
+{"entite": "Cork Opera House", "valeur": "Irlande"}
+{"entite": "Corning Opera House", "valeur": "États-Unis"}
+{"entite": "Costa Rican Center of Science and Culture", "valeur": "Costa Rica"}
+{"entite": "Cottbus State Theatre", "valeur": "Allemagne"}
+{"entite": "Cottrill Opera House", "valeur": "États-Unis"}
+{"entite": "Craigmiles Hall", "valeur": "États-Unis"}
+{"entite": "Cresco Opera House", "valeur": "États-Unis"}
+{"entite": "Crosby's Opera House", "valeur": "États-Unis"}
+{"entite": "Crosby Theatre", "valeur": "États-Unis"}
+{"entite": "Croswell Opera House", "valeur": "États-Unis"}
+{"entite": "Culture Waitaki", "valeur": "Nouvelle-Zélande"}
+{"entite": "Daegu Opera House", "valeur": "Corée du Sud"}
+{"entite": "Dagestan State Opera and Ballet", "valeur": "Russie"}
+{"entite": "Damanhur Opera House", "valeur": "Égypte"}
+{"entite": "Danuta Baduszkowa Musical Theatre", "valeur": "Pologne"}
+{"entite": "Darlington City Hall", "valeur": "États-Unis"}
+{"entite": "David H. Koch Theater", "valeur": "États-Unis"}
+{"entite": "Dayton Opera House", "valeur": "États-Unis"}
+{"entite": "DeGive's Opera House", "valeur": "États-Unis"}
+{"entite": "Detroit Opera House", "valeur": "États-Unis"}
+{"entite": "Deutsche Oper Berlin", "valeur": "Allemagne"}
+{"entite": "Devine Opera House", "valeur": "États-Unis"}
+{"entite": "Divadlo F. X. Šaldy", "valeur": "Tchéquie"}
+{"entite": "Divadlo v Kotcích", "valeur": "Tchéquie"}
+{"entite": "Dorothy Chandler Pavilion", "valeur": "États-Unis"}
+{"entite": "Dothan Opera House", "valeur": "États-Unis"}
+{"entite": "E.M. Loew's State Theatre", "valeur": "États-Unis"}
+{"entite": "Earlville Opera House", "valeur": "États-Unis"}
+{"entite": "Edinburgh Festival Theatre", "valeur": "Royaume-Uni"}
+{"entite": "Eduard-von-Winterstein-Theater", "valeur": "Allemagne"}
+{"entite": "Elgin Opera House", "valeur": "États-Unis"}
+{"entite": "Elkader Opera House", "valeur": "États-Unis"}
+{"entite": "Ellendale Opera House", "valeur": "États-Unis"}
+{"entite": "Enosburg Opera House", "valeur": "États-Unis"}
+{"entite": "Erik Sapaev Mari Opera and Ballet Theatre", "valeur": "Russie"}
+{"entite": "Esplanade – Theatres on the Bay", "valeur": "Singapour"}
+{"entite": "Fairmont Opera House", "valeur": "États-Unis"}
+{"entite": "La Fenice", "valeur": "Italie"}
+{"entite": "Festspielhaus Bregenz", "valeur": "Autriche"}
+{"entite": "Festspielhaus Erl", "valeur": "Autriche"}
+{"entite": "Festspielhaus Neuschwanstein", "valeur": "Allemagne"}
+{"entite": "Fife Opera House", "valeur": "États-Unis"}
+{"entite": "Finke Opera House", "valeur": "États-Unis"}
+{"entite": "Finnish National Opera House", "valeur": "Finlande"}
+{"entite": "First Methodist Church", "valeur": "États-Unis"}
+{"entite": "Folketeatret", "valeur": "Norvège"}
+{"entite": "Folkoperan", "valeur": "Suède"}
+{"entite": "Forbidden City Concert Hall", "valeur": "République populaire de Chine"}
+{"entite": "Forest Opera", "valeur": "Pologne"}
+{"entite": "Fort Payne Opera House", "valeur": "États-Unis"}
+{"entite": "Forum Cultural Guanajuato", "valeur": "Mexique"}
+{"entite": "Fountain Hill Opera House", "valeur": "États-Unis"}
+{"entite": "Fox Theatre", "valeur": "États-Unis"}
+{"entite": "Fromberg Opera House", "valeur": "États-Unis"}
+{"entite": "Fulton Opera House", "valeur": "États-Unis"}
+{"entite": "Gallo Center for the Arts", "valeur": "États-Unis"}
+{"entite": "Galva Opera House", "valeur": "États-Unis"}
+{"entite": "Garcia Opera House", "valeur": "États-Unis"}
+{"entite": "Garsington Opera", "valeur": "Royaume-Uni"}
+{"entite": "Glyndebourne Opera House", "valeur": "Royaume-Uni"}
+{"entite": "Goodspeed Musicals", "valeur": "États-Unis"}
+{"entite": "Gorby Opera Theater", "valeur": "États-Unis"}
+{"entite": "Grainfield Opera House", "valeur": "États-Unis"}
+{"entite": "Grand 1894 Opera House", "valeur": "États-Unis"}
+{"entite": "Grand building of the Tyrolean state theatre", "valeur": "Autriche"}
+{"entite": "Grand opéra de Zhuhai", "valeur": "République populaire de Chine"}
+{"entite": "Grand Opera House (Toronto)", "valeur": "Canada"}
+{"entite": "Grand palais des festivals de Salzbourg", "valeur": "Autriche"}
+{"entite": "Grand-Théâtre de Bordeaux", "valeur": "France"}
+{"entite": "Grand Théâtre de La Havane", "valeur": "Cuba"}
+{"entite": "Grand Théâtre de Lodz", "valeur": "Pologne"}
+{"entite": "Grand Théâtre de Luxembourg", "valeur": "Luxembourg"}
+{"entite": "Grand Théâtre de Lyon", "valeur": "France"}
+{"entite": "grand théâtre de Poznań", "valeur": "Pologne"}
+{"entite": "grand théâtre de Tours", "valeur": "France"}
+{"entite": "Grand Théâtre de Varsovie", "valeur": "Pologne"}
+{"entite": "Grand théâtre du Liceu", "valeur": "Espagne"}
+{"entite": "Grange Park Opera", "valeur": "Royaume-Uni"}
+{"entite": "Gustavianska operan", "valeur": "Suède"}
+{"entite": "Guyer Opera House", "valeur": "États-Unis"}
+{"entite": "Hafez Hall", "valeur": "Iran"}
+{"entite": "Haiphong Opera House", "valeur": "Vietnam"}
+{"entite": "Halle Opera House", "valeur": "Allemagne"}
+{"entite": "Harlan Hall", "valeur": "États-Unis"}
+{"entite": "Harmony Opera House", "valeur": "États-Unis"}
+{"entite": "Harrington Bank Block & Opera House", "valeur": "États-Unis"}
+{"entite": "Harrison Opera House", "valeur": "États-Unis"}
+{"entite": "Hawkinsville Opera House", "valeur": "États-Unis"}
+{"entite": "Hayesville Opera House", "valeur": "États-Unis"}
+{"entite": "Her Majesty's Theatre", "valeur": "Canada"}
+{"entite": "Hessisches Staatstheater", "valeur": "Allemagne"}
+{"entite": "Hidalgo Theatre", "valeur": "Mexique"}
+{"entite": "Hoftheater Kassel", "valeur": "Allemagne"}
+{"entite": "Hoftheater Stuttgart", "valeur": "Allemagne"}
+{"entite": "hôtel de ville et opéra de Wolseley", "valeur": "Canada"}
+{"entite": "hôtel Vale et Grand Opéra", "valeur": "États-Unis"}
+{"entite": "Howell Opera House", "valeur": "États-Unis"}
+{"entite": "Huong River Opera House", "valeur": "Vietnam"}
+{"entite": "Indianapolis Opera", "valeur": "États-Unis"}
+{"entite": "Interimstheater Dresden", "valeur": "Allemagne"}
+{"entite": "IOOF Hall and Opera House", "valeur": "États-Unis"}
+{"entite": "IOOF Opera House", "valeur": "États-Unis"}
+{"entite": "Iraqi Opera House", "valeur": "Irak"}
+{"entite": "Irkutsk regional musical theater. N. M. Zagursky", "valeur": "Russie"}
+{"entite": "Island Falls Opera House", "valeur": "États-Unis"}
+{"entite": "Istana Budaya", "valeur": "Malaisie"}
+{"entite": "İzmir Opera House", "valeur": "Turquie"}
+{"entite": "Jaffa Opera House", "valeur": "États-Unis"}
+{"entite": "Jeddah Opera House", "valeur": "Arabie saoudite"}
+{"entite": "Jersey City Opera House", "valeur": "États-Unis"}
+{"entite": "Kaliningrad Regional Musical Theater", "valeur": "Russie"}
+{"entite": "Kamol Khudzhandi Musical and Drama Theatre", "valeur": "Tadjikistan"}
+{"entite": "Karl Knipper Theatre", "valeur": "Russie"}
+{"entite": "Kauffman Center for the Performing Arts", "valeur": "États-Unis"}
+{"entite": "Kaunas State Musical Theatre", "valeur": "Lituanie"}
+{"entite": "Kazan Opera and Ballet Theatre", "valeur": "Russie"}
+{"entite": "Kentucky Center", "valeur": "États-Unis"}
+{"entite": "Kiel Opera House", "valeur": "Allemagne"}
+{"entite": "Klaipeda Musical Theatre", "valeur": "Lituanie"}
+{"entite": "Kölner Opernhaus", "valeur": "Allemagne"}
+{"entite": "Komische Oper", "valeur": "Allemagne"}
+{"entite": "Koninklijke Vlaamse Opera", "valeur": "Belgique"}
+{"entite": "Krasnodar Music Theatre", "valeur": "Russie"}
+{"entite": "Krasnodarsk State Opera and Ballet Theatre", "valeur": "Russie"}
+{"entite": "Krasnoyarsk Music Theatre", "valeur": "Russie"}
+{"entite": "Kyiv Municipal Academic Opera and Ballet Theatre for Children and Youth", "valeur": "Ukraine"}
+{"entite": "Kyiv Opera House", "valeur": "Ukraine"}
+{"entite": "Kyrgyz Opera and Ballet Theatre", "valeur": "Kirghizistan"}
+{"entite": "Läckö Castle Opera", "valeur": "Suède"}
+{"entite": "Landesbühnen Sachsen", "valeur": "Allemagne"}
+{"entite": "Landestheater Coburg", "valeur": "Allemagne"}
+{"entite": "Landestheater Detmold", "valeur": "Allemagne"}
+{"entite": "Landestheater Neustrelitz", "valeur": "Allemagne"}
+{"entite": "Latvian National Opera House", "valeur": "Lettonie"}
+{"entite": "Lawrence Opera House", "valeur": "États-Unis"}
+{"entite": "Lee Theatre", "valeur": "République populaire de Chine"}
+{"entite": "Lehártheater", "valeur": "Autriche"}
+{"entite": "Lexington Opera House", "valeur": "États-Unis"}
+{"entite": "Lisbon Opera House", "valeur": "États-Unis"}
+{"entite": "Litchfield Opera House", "valeur": "États-Unis"}
+{"entite": "Lodgepole Opera House", "valeur": "États-Unis"}
+{"entite": "Loew's Grand Theatre", "valeur": "États-Unis"}
+{"entite": "Longborough Festival Opera", "valeur": "Royaume-Uni"}
+{"entite": "Love-Larson Opera House", "valeur": "États-Unis"}
+{"entite": "Luzerner Theater", "valeur": "Suisse"}
+{"entite": "Lyric Opera House", "valeur": "États-Unis"}
+{"entite": "Magadan Music and Drama Theater", "valeur": "Russie"}
+{"entite": "main building of the National Theatre in Prague", "valeur": "Tchéquie"}
+{"entite": "Mainfranken Theater Würzburg", "valeur": "Allemagne"}
+{"entite": "mairie de Hazel Green", "valeur": "États-Unis"}
+{"entite": "Maison Al-Assad pour la culture et les arts", "valeur": "Syrie"}
+{"entite": "Maison pour Mozart", "valeur": "Autriche"}
+{"entite": "Mancos Opera House", "valeur": "États-Unis"}
+{"entite": "Manila Grand Opera House", "valeur": "Philippines"}
+{"entite": "Mannheim Court and National Theatre", "valeur": "Allemagne"}
+{"entite": "Mannheim Court Opera House", "valeur": "Allemagne"}
+{"entite": "Marcus Performing Arts Center", "valeur": "États-Unis"}
+{"entite": "Margot and Bill Winspear Opera House", "valeur": "États-Unis"}
+{"entite": "Marquis Opera House", "valeur": "États-Unis"}
+{"entite": "Marysville Opera House", "valeur": "États-Unis"}
+{"entite": "Masonic Opera House", "valeur": "États-Unis"}
+{"entite": "McCaw Hall", "valeur": "États-Unis"}
+{"entite": "McHaffey Opera House", "valeur": "États-Unis"}
+{"entite": "McPherson Opera House", "valeur": "États-Unis"}
+{"entite": "Mecklenburg State Theatre", "valeur": "Allemagne"}
+{"entite": "Memorial Opera House", "valeur": "États-Unis"}
+{"entite": "Menominee Opera House", "valeur": "États-Unis"}
+{"entite": "Mersin Halkevi", "valeur": "Turquie"}
+{"entite": "Městské divadlo Jablonec nad Nisou", "valeur": "Tchéquie"}
+{"entite": "Metronom Theater", "valeur": "Allemagne"}
+{"entite": "Metropolitan Opera", "valeur": "États-Unis"}
+{"entite": "Metropolitan Opera House", "valeur": "États-Unis"}
+{"entite": "Mikhailo Starytsky Music and Drama Theatre", "valeur": "Ukraine"}
+{"entite": "Millett Opera House", "valeur": "États-Unis"}
+{"entite": "Mitchell Opera House", "valeur": "États-Unis"}
+{"entite": "Moghrabi Theatre", "valeur": "Israël"}
+{"entite": "Montgomery Opera House", "valeur": "États-Unis"}
+{"entite": "Morettisches Opernhaus", "valeur": "Allemagne"}
+{"entite": "Moroni Opera House", "valeur": "États-Unis"}
+{"entite": "Moscow Chamber Musical Theatre", "valeur": "Russie"}
+{"entite": "MUMUTH", "valeur": "Autriche"}
+{"entite": "Music, Drama and Comedy Theatre", "valeur": "Russie"}
+{"entite": "Music Hall at Fair Park", "valeur": "États-Unis"}
+{"entite": "Music Hall Center for the Performing Arts", "valeur": "États-Unis"}
+{"entite": "Musical Dome", "valeur": "Allemagne"}
+{"entite": "Musical Theater Bremen", "valeur": "Allemagne"}
+{"entite": "Musical Theatre of Khabarovsk Krai", "valeur": "Russie"}
+{"entite": "Musikalische Komödie", "valeur": "Allemagne"}
+{"entite": "Musiktheater im Revier", "valeur": "Allemagne"}
+{"entite": "Musiktheater Linz", "valeur": "Autriche"}
+{"entite": "Napa Valley Opera House", "valeur": "États-Unis"}
+{"entite": "Národný dom", "valeur": "Slovaquie"}
+{"entite": "Natalya Sats Childrens' Musical Theater", "valeur": "Russie"}
+{"entite": "National Academic Theatre of Opera and Ballet of Mongolia", "valeur": "Mongolie"}
+{"entite": "National Opera and Ballet Theatre Oleg Danovski", "valeur": "Roumanie"}
+{"entite": "National Theatre Mannheim", "valeur": "Allemagne"}
+{"entite": "National Theatre of Opera and Ballet of Albania", "valeur": "Albanie"}
+{"entite": "National Theatre of Panama", "valeur": "Panama"}
+{"entite": "National Theatre of Venezuela", "valeur": "Venezuela"}
+{"entite": "Neue Flora", "valeur": "Allemagne"}
+{"entite": "Neue Trinkhalle", "valeur": "Allemagne"}
+{"entite": "Neues Königliches Opernhaus Berlin", "valeur": "Allemagne"}
+{"entite": "Neues Theater", "valeur": "Allemagne"}
+{"entite": "Neuköllner Oper", "valeur": "Allemagne"}
+{"entite": "New building of the Slovak National Theatre", "valeur": "Slovaquie"}
+{"entite": "New Opera House", "valeur": "États-Unis"}
+{"entite": "New Opera House (Auburn, Nebraska)", "valeur": "États-Unis"}
+{"entite": "New Orleans Opera", "valeur": "États-Unis"}
+{"entite": "Newark Opera House", "valeur": "États-Unis"}
+{"entite": "Newark Symphony Hall", "valeur": "États-Unis"}
+{"entite": "Newberry Opera House", "valeur": "États-Unis"}
+{"entite": "Nobile Teatro di San Giacomo di Corfù", "valeur": "Grèce"}
+{"entite": "North Bohemian Theater of Opera and Ballet", "valeur": "Tchéquie"}
+{"entite": "Norton Hall", "valeur": "États-Unis"}
+{"entite": "Norway Opera House", "valeur": "États-Unis"}
+{"entite": "Nouveau théâtre national de Tokyo", "valeur": "Japon"}
+{"entite": "Nouvel Opéra de Moscou", "valeur": "Russie"}
+{"entite": "Odd Fellows Opera Block", "valeur": "États-Unis"}
+{"entite": "Odesa Opera House", "valeur": "Ukraine"}
+{"entite": "Ohio Theatre", "valeur": "États-Unis"}
+{"entite": "Old Petaluma Opera House", "valeur": "États-Unis"}
+{"entite": "Old Stafford Opera House", "valeur": "États-Unis"}
+{"entite": "Omsk State Musical Theater", "valeur": "Russie"}
+{"entite": "Onawa IOOF Opera House", "valeur": "États-Unis"}
+{"entite": "Oper am Brühl", "valeur": "Allemagne"}
+{"entite": "Oper Bonn", "valeur": "Allemagne"}
+{"entite": "opéra Abaï", "valeur": "Kazakhstan"}
+{"entite": "Opera and Ballet Theatre", "valeur": "Kazakhstan"}
+{"entite": "Opera and Ballet Theatre of Astrakhan", "valeur": "Russie"}
+{"entite": "Opera and Ballet Theatre of Dnipro", "valeur": "Ukraine"}
+{"entite": "opéra Bastille", "valeur": "France"}
+{"entite": "opéra Berlioz", "valeur": "France"}
+{"entite": "Opera Carlo Felice Genova", "valeur": "Italie"}
+{"entite": "opéra Comédie", "valeur": "France"}
+{"entite": "Opera Comică pentru Copii", "valeur": "Roumanie"}
+{"entite": "Opéra comique de Berlin", "valeur": "Allemagne"}
+{"entite": "opéra confluence d'Avignon", "valeur": "France"}
+{"entite": "Opéra d'Alger Boualem Bessaïh", "valeur": "Algérie"}
+{"entite": "opéra d'Avignon", "valeur": "France"}
+{"entite": "opéra d'Erevan", "valeur": "Arménie"}
+{"entite": "opéra d'État de Hambourg", "valeur": "Allemagne"}
+{"entite": "opéra d’État de Prague", "valeur": "Tchéquie"}
+{"entite": "opéra d'État de Vienne", "valeur": "Autriche"}
+{"entite": "opéra d'État hongrois", "valeur": "Hongrie"}
+{"entite": "opéra d'Oslo", "valeur": "Norvège"}
+{"entite": "Ópera de Arame", "valeur": "Brésil"}
+{"entite": "opéra de Canton", "valeur": "République populaire de Chine"}
+{"entite": "Opéra de chambre de Varsovie", "valeur": "Pologne"}
+{"entite": "opéra de Chemnitz", "valeur": "Allemagne"}
+{"entite": "opéra de Cologne", "valeur": "Allemagne"}
+{"entite": "opéra de Copenhague", "valeur": "Danemark"}
+{"entite": "opéra de Dijon", "valeur": "France"}
+{"entite": "opéra de Donetsk", "valeur": "Ukraine"}
+{"entite": "opéra de Dubai", "valeur": "Émirats arabes unis"}
+{"entite": "Opéra de Florence", "valeur": "Italie"}
+{"entite": "opéra de Francfort", "valeur": "Allemagne"}
+{"entite": "opéra de Göteborg", "valeur": "Suède"}
+{"entite": "opéra de Hanovre", "valeur": "Allemagne"}
+{"entite": "opéra de Leipzig", "valeur": "Allemagne"}
+{"entite": "opéra de Lille", "valeur": "France"}
+{"entite": "opéra de Limoges", "valeur": "France"}
+{"entite": "Opéra de Ljubljana", "valeur": "Slovénie"}
+{"entite": "opéra de Lviv", "valeur": "Ukraine"}
+{"entite": "opéra de Lyon", "valeur": "France"}
+{"entite": "Opéra de Malmö", "valeur": "Suède"}
+{"entite": "opéra de Massy", "valeur": "France"}
+{"entite": "opéra de Monte-Carlo", "valeur": "Monaco"}
+{"entite": "opéra de Nice", "valeur": "France"}
+{"entite": "opéra de Rennes", "valeur": "France"}
+{"entite": "Opéra de Saint-Étienne", "valeur": "France"}
+{"entite": "opéra de Shanghai", "valeur": "République populaire de Chine"}
+{"entite": "opéra de Strasbourg", "valeur": "France"}
+{"entite": "opéra de Sureyya", "valeur": "Turquie"}
+{"entite": "opéra de Sydney", "valeur": "Australie"}
+{"entite": "opéra de Tachkent", "valeur": "Ouzbékistan"}
+{"entite": "opéra de Tbilissi", "valeur": "Géorgie"}
+{"entite": "opéra de Tel Aviv", "valeur": "Israël"}
+{"entite": "Opéra de Timisoara", "valeur": "Roumanie"}
+{"entite": "opéra de Toulon", "valeur": "France"}
+{"entite": "opéra de Vichy", "valeur": "France"}
+{"entite": "Opéra de Wrocław", "valeur": "Pologne"}
+{"entite": "opéra de Zurich", "valeur": "Suisse"}
+{"entite": "opéra des Margraves", "valeur": "Allemagne"}
+{"entite": "Ópera do Tejo", "valeur": "Portugal"}
+{"entite": "opéra et théâtre Madlenianum", "valeur": "Serbie"}
+{"entite": "opéra Hélikon", "valeur": "Russie"}
+{"entite": "Opera house at Hagenmarkt", "valeur": "Allemagne"}
+{"entite": "opera house in Bytom", "valeur": "Pologne"}
+{"entite": "Opera House, Royal Tunbridge Wells", "valeur": "Royaume-Uni"}
+{"entite": "opéra Khédival du Caire", "valeur": "Égypte"}
+{"entite": "Opera Krakowska", "valeur": "Pologne"}
+{"entite": "opéra Kroll", "valeur": "Allemagne"}
+{"entite": "opéra Le Peletier", "valeur": "France"}
+{"entite": "Opera Lubelska", "valeur": "Pologne"}
+{"entite": "opéra municipal de Marseille", "valeur": "France"}
+{"entite": "Opera na Zamku", "valeur": "Pologne"}
+{"entite": "Opéra national d'Estonie", "valeur": "Estonie"}
+{"entite": "opéra national de Bucarest", "valeur": "Roumanie"}
+{"entite": "Opéra national de Grèce", "valeur": "Grèce"}
+{"entite": "opéra national de Lorraine", "valeur": "France"}
+{"entite": "Opéra national du Capitole", "valeur": "France"}
+{"entite": "Opera Nova", "valeur": "Pologne"}
+{"entite": "opéra populaire", "valeur": "Autriche"}
+{"entite": "Opéra privé de Moscou", "valeur": "Russie"}
+{"entite": "opéra royal de Bombay", "valeur": "Inde"}
+{"entite": "opéra royal de Mascate", "valeur": "Oman"}
+{"entite": "opéra royal de Stockholm", "valeur": "Suède"}
+{"entite": "opéra royal de Wallonie", "valeur": "Belgique"}
+{"entite": "opéra royal du château de Versailles", "valeur": "France"}
+{"entite": "Opéra St. Marys", "valeur": "Canada"}
+{"entite": "Opera Stage", "valeur": "Turquie"}
+{"entite": "Opéra-Théâtre de Clermont-Ferrand", "valeur": "France"}
+{"entite": "opéra-théâtre de Metz", "valeur": "France"}
+{"entite": "Operahuset Nordfjord", "valeur": "Norvège"}
+{"entite": "Operalnia", "valeur": "Pologne"}
+{"entite": "Operetta Theatre of Stavropol Krai", "valeur": "Russie"}
+{"entite": "Opernhaus am Salvatorplatz", "valeur": "Allemagne"}
+{"entite": "Opernhaus am Taschenberg", "valeur": "Allemagne"}
+{"entite": "Opernhaus am Zwinger", "valeur": "Allemagne"}
+{"entite": "Opernhaus auf der Cortina", "valeur": "Autriche"}
+{"entite": "Opernhaus Dortmund", "valeur": "Allemagne"}
+{"entite": "Opernhaus Düsseldorf", "valeur": "Allemagne"}
+{"entite": "Opernhaus Graz", "valeur": "Autriche"}
+{"entite": "Opernhaus Magdeburg", "valeur": "Allemagne"}
+{"entite": "Opernhaus Nürnberg", "valeur": "Allemagne"}
+{"entite": "Opernhaus Wuppertal", "valeur": "Allemagne"}
+{"entite": "Oradea State Theatre", "valeur": "Roumanie"}
+{"entite": "Ordway Center for the Performing Arts", "valeur": "États-Unis"}
+{"entite": "Orillia Opera House", "valeur": "Canada"}
+{"entite": "Orpheum Theatre", "valeur": "États-Unis"}
+{"entite": "Ossian Opera House", "valeur": "États-Unis"}
+{"entite": "Palais de la musique d'Athènes", "valeur": "Grèce"}
+{"entite": "palais des Arts Reina Sofía", "valeur": "Espagne"}
+{"entite": "palais des beaux-arts de Mexico", "valeur": "Mexique"}
+{"entite": "palais des festivals de Baden-Baden", "valeur": "Allemagne"}
+{"entite": "palais des festivals de Bayreuth", "valeur": "Allemagne"}
+{"entite": "palais Garnier", "valeur": "France"}
+{"entite": "Papageno Musiktheater", "valeur": "Allemagne"}
+{"entite": "Paramount Theatre", "valeur": "États-Unis"}
+{"entite": "Parker's Opera House", "valeur": "États-Unis"}
+{"entite": "Pemberville Opera House", "valeur": "États-Unis"}
+{"entite": "Performing Arts Center", "valeur": "États-Unis"}
+{"entite": "Perkins Opera House", "valeur": "États-Unis"}
+{"entite": "Permaisuri Zarith Sofiah Opera House", "valeur": "Malaisie"}
+{"entite": "Pfalztheater", "valeur": "Allemagne"}
+{"entite": "Philadelphia Opera", "valeur": "États-Unis"}
+{"entite": "Phoenix Opera House Block", "valeur": "États-Unis"}
+{"entite": "Piccola Scala", "valeur": "Italie"}
+{"entite": "Plains Theatre", "valeur": "États-Unis"}
+{"entite": "Pocahontas County Opera House", "valeur": "États-Unis"}
+{"entite": "Podlachian Opera and Philharmonic Hall", "valeur": "Pologne"}
+{"entite": "Politeama Duca di Genova", "valeur": "Italie"}
+{"entite": "Port Said Cultural Entertainment Center", "valeur": "Égypte"}
+{"entite": "Preußisches Staatstheater Kassel", "valeur": "Allemagne"}
+{"entite": "Pueblo Opera House", "valeur": "États-Unis"}
+{"entite": "Pulse Opera House", "valeur": "États-Unis"}
+{"entite": "Pythian Opera House", "valeur": "États-Unis"}
+{"entite": "Qesem Cinema", "valeur": "Israël"}
+{"entite": "Qingdao Grand Theatre", "valeur": "République populaire de Chine"}
+{"entite": "Quetzaltenango Municipal Theatre", "valeur": "Guatemala"}
+{"entite": "Raimundtheater", "valeur": "Autriche"}
+{"entite": "Ralston Opera House", "valeur": "États-Unis"}
+{"entite": "Ramsdell Theatre", "valeur": "États-Unis"}
+{"entite": "Ray Opera House", "valeur": "États-Unis"}
+{"entite": "Reed Opera House and McCornack Block Addition", "valeur": "États-Unis"}
+{"entite": "Regional Academic Musical-Dramatic Theatre Mykola Kulish", "valeur": "Ukraine"}
+{"entite": "Repertory of the Vienna Court Opera under Gustav Mahler", "valeur": "Autriche"}
+{"entite": "Riley Center", "valeur": "États-Unis"}
+{"entite": "Robinson-Schwenn Building", "valeur": "États-Unis"}
+{"entite": "Romanian National Opera, Cluj-Napoca", "valeur": "Roumanie"}
+{"entite": "Romanian National Opera, Iași", "valeur": "Roumanie"}
+{"entite": "Rostov State Musical Theater", "valeur": "Russie"}
+{"entite": "Rousse State Opera", "valeur": "Bulgarie"}
+{"entite": "Royal Diriyah Opera House", "valeur": "Arabie saoudite"}
+{"entite": "Royal Opera", "valeur": "Belgique"}
+{"entite": "Royal theatre Dresden", "valeur": "Allemagne"}
+{"entite": "Rubén Darío National Theatre", "valeur": "Nicaragua"}
+{"entite": "Rutland House", "valeur": "Royaume-Uni"}
+{"entite": "Saint Petersburg Chamber Opera", "valeur": "Russie"}
+{"entite": "Sakha Opera and Ballet Theater", "valeur": "Russie"}
+{"entite": "Salle du Bel-Air", "valeur": "France"}
+{"entite": "Salle Favart", "valeur": "France"}
+{"entite": "salle Vahdat", "valeur": "Iran"}
+{"entite": "Samarkand Opera House", "valeur": "Ouzbékistan"}
+{"entite": "San Francisco War Memorial Opera House", "valeur": "États-Unis"}
+{"entite": "Sandwich City Hall", "valeur": "États-Unis"}
+{"entite": "Santa Fe Opera Theater", "valeur": "États-Unis"}
+{"entite": "Sarasota Opera House", "valeur": "États-Unis"}
+{"entite": "Saratov Operetta Theatre", "valeur": "Russie"}
+{"entite": "La Scala", "valeur": "Italie"}
+{"entite": "Schlossopernhaus", "valeur": "Allemagne"}
+{"entite": "Schlosstheater Schwetzingen", "valeur": "Allemagne"}
+{"entite": "Schneider's Opera House", "valeur": "États-Unis"}
+{"entite": "Schuster Performing Arts Center", "valeur": "États-Unis"}
+{"entite": "Selby Opera House", "valeur": "États-Unis"}
+{"entite": "Semperoper", "valeur": "Allemagne"}
+{"entite": "Seongnam Arts Center", "valeur": "Corée du Sud"}
+{"entite": "Sequim Opera House", "valeur": "États-Unis"}
+{"entite": "Serbian National Theatre", "valeur": "Serbie"}
+{"entite": "Sesser Opera House", "valeur": "États-Unis"}
+{"entite": "Shanghai Opera Theater", "valeur": "République populaire de Chine"}
+{"entite": "Shangyin Opera House", "valeur": "République populaire de Chine"}
+{"entite": "Sheikh Jaber Al Ahmad Cultural Centre", "valeur": "Koweït"}
+{"entite": "Shirley Opera House", "valeur": "États-Unis"}
+{"entite": "SI-Centrum", "valeur": "Allemagne"}
+{"entite": "Silas P. Smith Opera House", "valeur": "États-Unis"}
+{"entite": "Smith's Opera House", "valeur": "États-Unis"}
+{"entite": "Smyrna Town Hall-Opera House", "valeur": "États-Unis"}
+{"entite": "Solodovnikov theatre", "valeur": "Russie"}
+{"entite": "Springer Opera House", "valeur": "États-Unis"}
+{"entite": "St. George Opera House", "valeur": "États-Unis"}
+{"entite": "St. Louis Municipal Opera Theatre", "valeur": "États-Unis"}
+{"entite": "Staatsoper Stuttgart", "valeur": "Allemagne"}
+{"entite": "Staatsoper Unter den Linden", "valeur": "Allemagne"}
+{"entite": "Staatsoperette Dresden", "valeur": "Allemagne"}
+{"entite": "Staatsoperette Dresden - Haus Leuben", "valeur": "Allemagne"}
+{"entite": "Staatstheater am Gärtnerplatz de Munich", "valeur": "Allemagne"}
+{"entite": "Staatstheater Braunschweig", "valeur": "Allemagne"}
+{"entite": "Staatstheater Kassel", "valeur": "Allemagne"}
+{"entite": "Staatstheater Mainz", "valeur": "Allemagne"}
+{"entite": "Städtebundtheater Hof", "valeur": "Allemagne"}
+{"entite": "Stadttheater Basel", "valeur": "Suisse"}
+{"entite": "Stadttheater Bern", "valeur": "Suisse"}
+{"entite": "Stadttheater Bremerhaven", "valeur": "Allemagne"}
+{"entite": "Stadttheater Dortmund", "valeur": "Allemagne"}
+{"entite": "Stadttheater Düsseldorf", "valeur": "Allemagne"}
+{"entite": "Stadttheater Klagenfurt", "valeur": "Autriche"}
+{"entite": "Stadttheater Krefeld", "valeur": "Allemagne"}
+{"entite": "Stadttheater Mönchengladbach", "valeur": "Allemagne"}
+{"entite": "Stadttheater St. Gallen", "valeur": "Suisse"}
+{"entite": "Stålboga Summer Opera", "valeur": "Suède"}
+{"entite": "Starlight Express theatre", "valeur": "Allemagne"}
+{"entite": "State Academic Opera and Ballet Theatre of Tajikistan Sadriddin Ayni", "valeur": "Tadjikistan"}
+{"entite": "State Musical Theatre", "valeur": "Russie"}
+{"entite": "State Opera Burgas", "valeur": "Bulgarie"}
+{"entite": "State Opera of the Komi Republic", "valeur": "Russie"}
+{"entite": "State Opera Stara Zagora", "valeur": "Bulgarie"}
+{"entite": "State Theatre", "valeur": "États-Unis"}
+{"entite": "State Theatre of Gaziantep", "valeur": "Turquie"}
+{"entite": "Steinway Hall", "valeur": "États-Unis"}
+{"entite": "Stephenville Chamber of Commerce", "valeur": "États-Unis"}
+{"entite": "Sterling Opera House", "valeur": "États-Unis"}
+{"entite": "Steyer Opera House", "valeur": "États-Unis"}
+{"entite": "Stifel Theatre", "valeur": "États-Unis"}
+{"entite": "Stoll Theatre", "valeur": "Royaume-Uni"}
+{"entite": "Straz Center for the Performing Arts", "valeur": "États-Unis"}
+{"entite": "Stuart's Opera House", "valeur": "États-Unis"}
+{"entite": "Studio Buffo", "valeur": "Pologne"}
+{"entite": "Sumgayit State Musical Drama Theater", "valeur": "Azerbaïdjan"}
+{"entite": "Sumter Town Hall-Opera House", "valeur": "États-Unis"}
+{"entite": "Sumy National Academic Drama and Musical Comedy Theatre M. S. Shchepkin", "valeur": "Ukraine"}
+{"entite": "Surprise Opera House", "valeur": "États-Unis"}
+{"entite": "Table Rock Opera House", "valeur": "États-Unis"}
+{"entite": "Tabor Grand Opera House", "valeur": "États-Unis"}
+{"entite": "Tabor Opera House", "valeur": "États-Unis"}
+{"entite": "Teatr Muzyczny", "valeur": "Pologne"}
+{"entite": "Teatr Muzyczny Roma", "valeur": "Pologne"}
+{"entite": "Teatre Principal de Maó", "valeur": "Espagne"}
+{"entite": "Teatrino di Corte", "valeur": "Italie"}
+{"entite": "Teatro Alessandro Bonci", "valeur": "Italie"}
+{"entite": "Teatro Alfieri", "valeur": "Italie"}
+{"entite": "Teatro alle Zattere", "valeur": "Italie"}
+{"entite": "Teatro Argentina", "valeur": "Italie"}
+{"entite": "Teatro Argentino de La Plata", "valeur": "Argentine"}
+{"entite": "Teatro Arriaga", "valeur": "Espagne"}
+{"entite": "Teatro Bellini", "valeur": "Italie"}
+{"entite": "Teatro Bellini (Acireale)", "valeur": "Italie"}
+{"entite": "Teatro Caio Melisso", "valeur": "Italie"}
+{"entite": "Teatro Carignano", "valeur": "Italie"}
+{"entite": "Teatro Coccia", "valeur": "Italie"}
+{"entite": "Teatro comunale", "valeur": "Italie"}
+{"entite": "Teatro comunale Luciano Pavarotti", "valeur": "Italie"}
+{"entite": "Teatro Comunale Mario Del Monaco", "valeur": "Italie"}
+{"entite": "Teatro Cressoni", "valeur": "Italie"}
+{"entite": "Teatro da Paz", "valeur": "Brésil"}
+{"entite": "Teatro dal Verme", "valeur": "Italie"}
+{"entite": "Teatro de la República", "valeur": "Mexique"}
+{"entite": "Teatro degli Arcimboldi", "valeur": "Italie"}
+{"entite": "Teatro Degollado", "valeur": "Mexique"}
+{"entite": "Teatro dei Fiorentini", "valeur": "Italie"}
+{"entite": "Teatro del Lago", "valeur": "Chili"}
+{"entite": "Teatro del Libertador General San Martín", "valeur": "Argentine"}
+{"entite": "Teatro Donizetti", "valeur": "Italie"}
+{"entite": "Teatro El Círculo", "valeur": "Argentine"}
+{"entite": "Teatro Flavio Vespasiano", "valeur": "Italie"}
+{"entite": "Teatro Giuseppe Verdi", "valeur": "Italie"}
+{"entite": "Teatro Grande", "valeur": "Italie"}
+{"entite": "Teatro Isauro Martínez", "valeur": "Mexique"}
+{"entite": "Teatro José Rosas Moreno", "valeur": "Mexique"}
+{"entite": "Teatro Juárez", "valeur": "Mexique"}
+{"entite": "Teatro lirico di Cagliari", "valeur": "Italie"}
+{"entite": "Teatro Macedonio Alcalá", "valeur": "Mexique"}
+{"entite": "Teatro Malibran", "valeur": "Italie"}
+{"entite": "Teatro Massimo Vincenzo Bellini", "valeur": "Italie"}
+{"entite": "Teatro Massimo Vittorio Emanuele", "valeur": "Italie"}
+{"entite": "Teatro Metastasio", "valeur": "Italie"}
+{"entite": "Teatro Morelos de Maravatío", "valeur": "Mexique"}
+{"entite": "Teatro Municipal de Santiago de Chile", "valeur": "Chili"}
+{"entite": "Teatro Municipal Rafael Aguiar", "valeur": "Argentine"}
+{"entite": "Teatro Nacional de San Salvador", "valeur": "Salvador"}
+{"entite": "Teatro Nacional de São Carlos", "valeur": "Portugal"}
+{"entite": "Teatro Nacional Eduardo Brito", "valeur": "République dominicaine"}
+{"entite": "Teatro Nacional São João", "valeur": "Portugal"}
+{"entite": "Teatro Nazas", "valeur": "Mexique"}
+{"entite": "Teatro Obrero de Zamora", "valeur": "Mexique"}
+{"entite": "Teatro Ocampo de Morelia", "valeur": "Mexique"}
+{"entite": "Teatro Onigo", "valeur": "Italie"}
+{"entite": "Teatro Peón Contreras", "valeur": "Mexique"}
+{"entite": "Teatro Persio Flacco", "valeur": "Italie"}
+{"entite": "Teatro Petruzzelli", "valeur": "Italie"}
+{"entite": "Teatro Politeama", "valeur": "Italie"}
+{"entite": "Teatro Principal", "valeur": "Venezuela"}
+{"entite": "Teatro Quirino", "valeur": "Italie"}
+{"entite": "Teatro Regio", "valeur": "Italie"}
+{"entite": "Teatro Regio Ducal", "valeur": "Italie"}
+{"entite": "Teatro Roma", "valeur": "Argentine"}
+{"entite": "Teatro Rossini", "valeur": "Italie"}
+{"entite": "Teatro San Bartolomeo", "valeur": "Italie"}
+{"entite": "Teatro San Benedetto", "valeur": "Italie"}
+{"entite": "Teatro San Carlo", "valeur": "Italie"}
+{"entite": "Teatro San Cassiano", "valeur": "Italie"}
+{"entite": "Teatro San Moisè", "valeur": "Italie"}
+{"entite": "Teatro San Samuele", "valeur": "Italie"}
+{"entite": "Teatro Sant 'Apollinare", "valeur": "Italie"}
+{"entite": "Teatro Sociale", "valeur": "Italie"}
+{"entite": "Teatro Verdi", "valeur": "Italie"}
+{"entite": "Teatro Vittorio Emanuele II", "valeur": "Italie"}
+{"entite": "Teatrul Liric", "valeur": "Roumanie"}
+{"entite": "Teatrul Național de Operă și Operetă Nae Leonard", "valeur": "Roumanie"}
+{"entite": "The Met", "valeur": "États-Unis"}
+{"entite": "Theater Aachen", "valeur": "Allemagne"}
+{"entite": "Theater am Kärntnertor", "valeur": "Autriche"}
+{"entite": "Theater am Marientor", "valeur": "Allemagne"}
+{"entite": "Theater am Potsdamer Platz", "valeur": "Allemagne"}
+{"entite": "Theater an der Elbe", "valeur": "Allemagne"}
+{"entite": "Theater an der Rott", "valeur": "Allemagne"}
+{"entite": "Theater auf der Wieden", "valeur": "Autriche"}
+{"entite": "Theater Bielefeld", "valeur": "Allemagne"}
+{"entite": "Theater Duisburg", "valeur": "Allemagne"}
+{"entite": "Theater Erfurt", "valeur": "Allemagne"}
+{"entite": "Theater Freiburg", "valeur": "Allemagne"}
+{"entite": "Theater für Niedersachsen", "valeur": "Allemagne"}
+{"entite": "Theater Giessen", "valeur": "Allemagne"}
+{"entite": "Theater Hagen", "valeur": "Allemagne"}
+{"entite": "Theater Hof", "valeur": "Allemagne"}
+{"entite": "Theater im Hafen", "valeur": "Allemagne"}
+{"entite": "Theater Landshut", "valeur": "Allemagne"}
+{"entite": "Theater Lübeck", "valeur": "Allemagne"}
+{"entite": "Theater Lüneburg", "valeur": "Allemagne"}
+{"entite": "Theater Mönchengladbach", "valeur": "Allemagne"}
+{"entite": "Theater & Orchester Heidelberg", "valeur": "Allemagne"}
+{"entite": "Theater Pforzheim", "valeur": "Allemagne"}
+{"entite": "Theater Quedlinburg", "valeur": "Allemagne"}
+{"entite": "Theater Regensburg", "valeur": "Allemagne"}
+{"entite": "Theater St. Gallen", "valeur": "Suisse"}
+{"entite": "Theater und Stadthalle", "valeur": "Allemagne"}
+{"entite": "théâtre académique d'opéra et de ballet", "valeur": "Russie"}
+{"entite": "théâtre académique musical de Moscou", "valeur": "Russie"}
+{"entite": "Théâtre académique national d'opéra et de ballet de Kharkiv Mykola Lyssenko", "valeur": "Ukraine"}
+{"entite": "théâtre Aleksander", "valeur": "Finlande"}
+{"entite": "théâtre Amazonas", "valeur": "Brésil"}
+{"entite": "théâtre Bolchoï Kamenny", "valeur": "Russie"}
+{"entite": "théâtre Campoamor", "valeur": "Espagne"}
+{"entite": "Théâtre Canadian Opera Company", "valeur": "Canada"}
+{"entite": "théâtre Carrera", "valeur": "Guatemala"}
+{"entite": "théâtre Chevtchenko", "valeur": "Ukraine"}
+{"entite": "théâtre Colón", "valeur": "Argentine"}
+{"entite": "théâtre Cristóbal Colón", "valeur": "Colombie"}
+{"entite": "théâtre Cuvilliés", "valeur": "Allemagne"}
+{"entite": "théâtre d'État d'Oldenbourg", "valeur": "Allemagne"}
+{"entite": "théâtre d'État de Cassovie", "valeur": "Slovaquie"}
+{"entite": "Théâtre d'État de Nuremberg", "valeur": "Allemagne"}
+{"entite": "théâtre d’État de Salzbourg", "valeur": "Autriche"}
+{"entite": "théâtre d'opéra et de ballet d'Iekaterinbourg", "valeur": "Russie"}
+{"entite": "théâtre d'opéra et de ballet d'Odessa", "valeur": "Ukraine"}
+{"entite": "Théâtre d'opéra et de ballet de Bashkir", "valeur": "Russie"}
+{"entite": "Théâtre d'opéra et de ballet de Magnitogorsk", "valeur": "Russie"}
+{"entite": "théâtre d'opéra et de ballet de Novossibirsk", "valeur": "Russie"}
+{"entite": "Théâtre d'opéra et de ballet de Perm", "valeur": "Russie"}
+{"entite": "théâtre d'opéra et de ballet de Saratov", "valeur": "Russie"}
+{"entite": "théâtre d'opéra et de ballet de Tchouvachie", "valeur": "Russie"}
+{"entite": "théâtre d'opéra et de ballet de Voronej", "valeur": "Russie"}
+{"entite": "Théâtre d'opéra et de ballet Glinka", "valeur": "Russie"}
+{"entite": "Théâtre d'opérette de Kiev", "valeur": "Ukraine"}
+{"entite": "Théâtre d'Orléans", "valeur": "États-Unis"}
+{"entite": "théâtre d'Osnabrück", "valeur": "Allemagne"}
+{"entite": "théâtre Dante Alighieri", "valeur": "Italie"}
+{"entite": "théâtre de Caen", "valeur": "France"}
+{"entite": "théâtre de Darmstadt", "valeur": "Allemagne"}
+{"entite": "théâtre de l'Opéra", "valeur": "États-Unis"}
+{"entite": "théâtre de la Maestranza", "valeur": "Espagne"}
+{"entite": "théâtre de Leopoldstadt", "valeur": "Autriche"}
+{"entite": "théâtre de Naum", "valeur": "Turquie"}
+{"entite": "Théâtre de Rosimond", "valeur": "Suisse"}
+{"entite": "Théâtre de Trèves", "valeur": "Allemagne"}
+{"entite": "théâtre des Arts de Rouen", "valeur": "France"}
+{"entite": "théâtre des États", "valeur": "Tchéquie"}
+{"entite": "théâtre des Muses", "valeur": "Italie"}
+{"entite": "Théâtre du château de Drottningholm", "valeur": "Suède"}
+{"entite": "théâtre du Châtelet", "valeur": "France"}
+{"entite": "théâtre Erkel", "valeur": "Hongrie"}
+{"entite": "théâtre Favart", "valeur": "France"}
+{"entite": "théâtre Garcia-Barbon", "valeur": "Espagne"}
+{"entite": "théâtre Graslin", "valeur": "France"}
+{"entite": "Théâtre-Italien", "valeur": "France"}
+{"entite": "théâtre Janáček", "valeur": "Tchéquie"}
+{"entite": "théâtre Juliusz-Słowacki", "valeur": "Pologne"}
+{"entite": "théâtre lyrique de Milan", "valeur": "Italie"}
+{"entite": "théâtre Mahen", "valeur": "Tchéquie"}
+{"entite": "théâtre Manoel", "valeur": "Malte"}
+{"entite": "théâtre Mariinsky", "valeur": "Russie"}
+{"entite": "théâtre Massenet", "valeur": "France"}
+{"entite": "théâtre Michel", "valeur": "Russie"}
+{"entite": "théâtre Morlacchi", "valeur": "Italie"}
+{"entite": "théâtre municipal", "valeur": "Italie"}
+{"entite": "théâtre municipal de Corfou", "valeur": "Grèce"}
+{"entite": "théâtre municipal de Hanoï", "valeur": "Vietnam"}
+{"entite": "théâtre municipal de Hô Chi Minh-Ville", "valeur": "Vietnam"}
+{"entite": "théâtre national académique azerbaïdjanais d'opéra et de ballet", "valeur": "Azerbaïdjan"}
+{"entite": "théâtre national allemand", "valeur": "Allemagne"}
+{"entite": "théâtre national croate", "valeur": "Croatie"}
+{"entite": "Théâtre national d'opéra et de ballet", "valeur": "Bulgarie"}
+{"entite": "théâtre national d'opéra et de ballet de Minsk", "valeur": "Biélorussie"}
+{"entite": "Théâtre national d'opéra et de ballet Maria Bieșu", "valeur": "Moldavie"}
+{"entite": "Théâtre national d'opérette et de comédie musicale Ion Dacian", "valeur": "Roumanie"}
+{"entite": "Théâtre national de Catalogne", "valeur": "Espagne"}
+{"entite": "théâtre national de la Sarre", "valeur": "Allemagne"}
+{"entite": "théâtre national du Costa Rica", "valeur": "Costa Rica"}
+{"entite": "Théâtre national et Salle de concert nationale", "valeur": "Taïwan"}
+{"entite": "Théâtre national lituanien d'opéra et de ballet", "valeur": "Lituanie"}
+{"entite": "théâtre national slovaque", "valeur": "Slovaquie"}
+{"entite": "Théâtre national Vasile Alecsandri de Iași", "valeur": "Roumanie"}
+{"entite": "théâtre Olha-Kobylianska de Tchernivtsi", "valeur": "Ukraine"}
+{"entite": "théâtre Olýmpia", "valeur": "Grèce"}
+{"entite": "théâtre philharmonique de Vérone", "valeur": "Italie"}
+{"entite": "théâtre provisoire", "valeur": "Tchéquie"}
+{"entite": "Theatre Royal, Covent Garden", "valeur": "Royaume-Uni"}
+{"entite": "théâtre royal danois", "valeur": "Danemark"}
+{"entite": "Théâtre royal de la Monnaie", "valeur": "Belgique"}
+{"entite": "théâtre royal de Madrid", "valeur": "Espagne"}
+{"entite": "Theatre Royal, Gibraltar", "valeur": "Royaume-Uni"}
+{"entite": "Theatre Royal, Wexford", "valeur": "Irlande"}
+{"entite": "Théâtre Sayed Darwish", "valeur": "Égypte"}
+{"entite": "théâtre Sunbeam", "valeur": "République populaire de Chine"}
+{"entite": "théâtre Teresa-Carreño", "valeur": "Venezuela"}
+{"entite": "Théâtres impériaux", "valeur": "Empire russe"}
+{"entite": "Theatro D. Pedro II", "valeur": "Brésil"}
+{"entite": "Theatro Lyrico Fluminense", "valeur": "Brésil"}
+{"entite": "Theatro Municipal", "valeur": "Brésil"}
+{"entite": "Thomaston Opera House", "valeur": "États-Unis"}
+{"entite": "Thompson's Opera House", "valeur": "États-Unis"}
+{"entite": "Thorpe's Opera House", "valeur": "États-Unis"}
+{"entite": "Thrall’s Opera House", "valeur": "États-Unis"}
+{"entite": "Thrasher Opera House", "valeur": "États-Unis"}
+{"entite": "Timișoara Palace of Culture", "valeur": "Roumanie"}
+{"entite": "Tivoli Theatre", "valeur": "États-Unis"}
+{"entite": "Toitoi", "valeur": "Nouvelle-Zélande"}
+{"entite": "Trabzon Opera House", "valeur": "Turquie"}
+{"entite": "Transcarpathain academic regional Ukrainian Musical and Drama Theatre Brothers Yuri-Augustin and Yevgeni Seregij", "valeur": "Ukraine"}
+{"entite": "Trocadero Theatre", "valeur": "États-Unis"}
+{"entite": "Tsaritsyn Opera", "valeur": "Russie"}
+{"entite": "Tulsa Performing Arts Center", "valeur": "États-Unis"}
+{"entite": "Udmurt Opera and Ballet Theatre", "valeur": "Russie"}
+{"entite": "Ukrainian Theater of Drama and Musical Comedy", "valeur": "Ukraine"}
+{"entite": "Urumqi peking Opera House", "valeur": "République populaire de Chine"}
+{"entite": "Vadstena Academy", "valeur": "Suède"}
+{"entite": "Van Cleve Opera House", "valeur": "États-Unis"}
+{"entite": "Variété Theatre in Kraków", "valeur": "Pologne"}
+{"entite": "Varna Opera Theatre", "valeur": "Bulgarie"}
+{"entite": "Vermontville Opera House", "valeur": "États-Unis"}
+{"entite": "vieil opéra de Francfort", "valeur": "Allemagne"}
+{"entite": "Vienna Parlor Opera", "valeur": "Autriche"}
+{"entite": "Volksoper Hamburg", "valeur": "Allemagne"}
+{"entite": "Volkstheater Rostock", "valeur": "Allemagne"}
+{"entite": "Vurpillat's Opera House", "valeur": "États-Unis"}
+{"entite": "Wakefield Town Hall and Opera House", "valeur": "États-Unis"}
+{"entite": "Warren Opera House Block and Hetherington Block", "valeur": "États-Unis"}
+{"entite": "Warren's Opera House", "valeur": "États-Unis"}
+{"entite": "Washington National Opera", "valeur": "États-Unis"}
+{"entite": "Washington Opera House", "valeur": "États-Unis"}
+{"entite": "Waterville Opera House", "valeur": "États-Unis"}
+{"entite": "Waterville Opera House and City Hall", "valeur": "États-Unis"}
+{"entite": "Wermland Opera", "valeur": "Suède"}
+{"entite": "Wessington Springs Opera House", "valeur": "États-Unis"}
+{"entite": "Wexford Opera House", "valeur": "Irlande"}
+{"entite": "Wheeler Opera House", "valeur": "États-Unis"}
+{"entite": "Wiener Kammeroper", "valeur": "Autriche"}
+{"entite": "Wilgus Block (Ithaca)", "valeur": "États-Unis"}
+{"entite": "Woodland Opera House", "valeur": "États-Unis"}
+{"entite": "Woodstock Opera House", "valeur": "États-Unis"}
+{"entite": "Woodsville Opera House", "valeur": "États-Unis"}
+{"entite": "Woodward Opera House", "valeur": "États-Unis"}
+{"entite": "Wright's Opera House", "valeur": "États-Unis"}
+{"entite": "Yaushev State Music Theater", "valeur": "Russie"}
+{"entite": "Yokosuka Arts Theatre", "valeur": "Japon"}
+{"entite": "Z.C.B.J. Opera House", "valeur": "États-Unis"}
+{"entite": "ZCBJ Hall", "valeur": "États-Unis"}

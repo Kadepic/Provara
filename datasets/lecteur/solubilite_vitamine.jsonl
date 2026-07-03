@@ -1,0 +1,10 @@
+{"_relation": "solubilite_vitamine", "_categorie": "physique", "_source": "Modèle (Claude) — nutrition textbook curée (solubilité de vitamine ; ensemble fermé ; FAUX=0)", "_articles": true}
+{"entite": "vitamine A", "valeur": "liposoluble"}
+{"entite": "vitamine B1", "valeur": "hydrosoluble"}
+{"entite": "vitamine B12", "valeur": "hydrosoluble"}
+{"entite": "vitamine B6", "valeur": "hydrosoluble"}
+{"entite": "vitamine B9", "valeur": "hydrosoluble"}
+{"entite": "vitamine C", "valeur": "hydrosoluble"}
+{"entite": "vitamine D", "valeur": "liposoluble"}
+{"entite": "vitamine E", "valeur": "liposoluble"}
+{"entite": "vitamine K", "valeur": "liposoluble"}

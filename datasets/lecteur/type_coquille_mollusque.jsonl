@@ -1,0 +1,37 @@
+{"_relation": "type_coquille_mollusque", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (type de coquille ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "anodonte", "valeur": "bivalve"}
+{"entite": "aplysie", "valeur": "sans coquille"}
+{"entite": "bigorneau", "valeur": "univalve"}
+{"entite": "buccin", "valeur": "univalve"}
+{"entite": "bulot", "valeur": "univalve"}
+{"entite": "calmar", "valeur": "coquille interne"}
+{"entite": "clam", "valeur": "bivalve"}
+{"entite": "colimaçon", "valeur": "univalve"}
+{"entite": "cône", "valeur": "univalve"}
+{"entite": "conque", "valeur": "univalve"}
+{"entite": "coque", "valeur": "bivalve"}
+{"entite": "coquille Saint-Jacques", "valeur": "bivalve"}
+{"entite": "couteau", "valeur": "bivalve"}
+{"entite": "escargot", "valeur": "univalve"}
+{"entite": "huître", "valeur": "bivalve"}
+{"entite": "limace", "valeur": "sans coquille"}
+{"entite": "lucine", "valeur": "bivalve"}
+{"entite": "moule", "valeur": "bivalve"}
+{"entite": "moule zébrée", "valeur": "bivalve"}
+{"entite": "murex", "valeur": "univalve"}
+{"entite": "mye", "valeur": "bivalve"}
+{"entite": "nautile", "valeur": "univalve"}
+{"entite": "nudibranche", "valeur": "sans coquille"}
+{"entite": "ormeau", "valeur": "univalve"}
+{"entite": "palourde", "valeur": "bivalve"}
+{"entite": "patelle", "valeur": "univalve"}
+{"entite": "pétoncle", "valeur": "bivalve"}
+{"entite": "pieuvre", "valeur": "sans coquille"}
+{"entite": "planorbe", "valeur": "univalve"}
+{"entite": "porcelaine", "valeur": "univalve"}
+{"entite": "praire", "valeur": "bivalve"}
+{"entite": "seiche", "valeur": "coquille interne"}
+{"entite": "sépiole", "valeur": "coquille interne"}
+{"entite": "troque", "valeur": "univalve"}
+{"entite": "turritelle", "valeur": "univalve"}
+{"entite": "vignot", "valeur": "univalve"}

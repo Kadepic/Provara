@@ -1,0 +1,119 @@
+{"_relation": "configuration_electronique", "_categorie": "physique", "_source": "Periodic-Table-JSON (Bowserinator, CC-BY-SA 3.0) — configuration électronique de l'état fondamental (notation gaz noble)", "_articles": true}
+{"entite": "actinium", "valeur": "[Rn] 6d1 7s2"}
+{"entite": "aluminium", "valeur": "[Ne] 3s2 3p1"}
+{"entite": "américium", "valeur": "[Rn] 5f7 7s2"}
+{"entite": "antimoine", "valeur": "[Kr] 4d10 5s2 5p3"}
+{"entite": "argent", "valeur": "[Kr] 4d10 5s1"}
+{"entite": "argon", "valeur": "[Ne] 3s2 3p6"}
+{"entite": "arsenic", "valeur": "[Ar] 3d10 4s2 4p3"}
+{"entite": "astate", "valeur": "[Xe] 4f14 5d10 6s2 6p5"}
+{"entite": "azote", "valeur": "[He] 2s2 2p3"}
+{"entite": "baryum", "valeur": "[Xe] 6s2"}
+{"entite": "berkélium", "valeur": "[Rn] 5f9 7s2"}
+{"entite": "béryllium", "valeur": "[He] 2s2"}
+{"entite": "bismuth", "valeur": "[Xe] 4f14 5d10 6s2 6p3"}
+{"entite": "bohrium", "valeur": "*[Rn] 5f14 6d5 7s2"}
+{"entite": "bore", "valeur": "[He] 2s2 2p1"}
+{"entite": "brome", "valeur": "[Ar] 3d10 4s2 4p5"}
+{"entite": "cadmium", "valeur": "[Kr] 4d10 5s2"}
+{"entite": "calcium", "valeur": "[Ar] 4s2"}
+{"entite": "californium", "valeur": "[Rn] 5f10 7s2"}
+{"entite": "carbone", "valeur": "[He] 2s2 2p2"}
+{"entite": "cérium", "valeur": "[Xe] 4f1 5d1 6s2"}
+{"entite": "césium", "valeur": "[Xe] 6s1"}
+{"entite": "chlore", "valeur": "[Ne] 3s2 3p5"}
+{"entite": "chrome", "valeur": "[Ar] 3d5 4s1"}
+{"entite": "cobalt", "valeur": "[Ar] 3d7 4s2"}
+{"entite": "copernicium", "valeur": "*[Rn] 5f14 6d10 7s2"}
+{"entite": "cuivre", "valeur": "[Ar] 3d10 4s1"}
+{"entite": "curium", "valeur": "[Rn] 5f7 6d1 7s2"}
+{"entite": "darmstadtium", "valeur": "*[Rn] 5f14 6d9 7s1"}
+{"entite": "dubnium", "valeur": "*[Rn] 5f14 6d3 7s2"}
+{"entite": "dysprosium", "valeur": "[Xe] 4f10 6s2"}
+{"entite": "einsteinium", "valeur": "[Rn] 5f11 7s2"}
+{"entite": "erbium", "valeur": "[Xe] 4f12 6s2"}
+{"entite": "étain", "valeur": "[Kr] 4d10 5s2 5p2"}
+{"entite": "europium", "valeur": "[Xe] 4f7 6s2"}
+{"entite": "fer", "valeur": "[Ar] 3d6 4s2"}
+{"entite": "fermium", "valeur": "[Rn] 5f12 7s2"}
+{"entite": "flérovium", "valeur": "*[Rn] 5f14 6d10 7s2 7p2"}
+{"entite": "fluor", "valeur": "[He] 2s2 2p5"}
+{"entite": "francium", "valeur": "[Rn] 7s1"}
+{"entite": "gadolinium", "valeur": "[Xe] 4f7 5d1 6s2"}
+{"entite": "gallium", "valeur": "[Ar] 3d10 4s2 4p1"}
+{"entite": "germanium", "valeur": "[Ar] 3d10 4s2 4p2"}
+{"entite": "hafnium", "valeur": "[Xe] 4f14 5d2 6s2"}
+{"entite": "hassium", "valeur": "*[Rn] 5f14 6d6 7s2"}
+{"entite": "hélium", "valeur": "1s2"}
+{"entite": "holmium", "valeur": "[Xe] 4f11 6s2"}
+{"entite": "hydrogène", "valeur": "1s1"}
+{"entite": "indium", "valeur": "[Kr] 4d10 5s2 5p1"}
+{"entite": "iode", "valeur": "[Kr] 4d10 5s2 5p5"}
+{"entite": "iridium", "valeur": "[Xe] 4f14 5d7 6s2"}
+{"entite": "krypton", "valeur": "[Ar] 3d10 4s2 4p6"}
+{"entite": "lanthane", "valeur": "[Xe] 5d16s2"}
+{"entite": "lawrencium", "valeur": "[Rn] 5f14 7s2 7p1"}
+{"entite": "lithium", "valeur": "[He] 2s1"}
+{"entite": "livermorium", "valeur": "*[Rn] 5f14 6d10 7s2 7p4"}
+{"entite": "lutécium", "valeur": "[Xe] 4f14 5d1 6s2"}
+{"entite": "magnésium", "valeur": "[Ne] 3s2"}
+{"entite": "manganèse", "valeur": "[Ar] 3d5 4s2"}
+{"entite": "meitnérium", "valeur": "*[Rn] 5f14 6d7 7s2"}
+{"entite": "mendélévium", "valeur": "[Rn] 5f13 7s2"}
+{"entite": "mercure", "valeur": "[Xe] 4f14 5d10 6s2"}
+{"entite": "molybdène", "valeur": "[Kr] 4d5 5s1"}
+{"entite": "moscovium", "valeur": "*[Rn] 5f14 6d10 7s2 7p3"}
+{"entite": "néodyme", "valeur": "[Xe] 4f4 6s2"}
+{"entite": "néon", "valeur": "[He] 2s2 2p6"}
+{"entite": "neptunium", "valeur": "[Rn] 5f4 6d1 7s2"}
+{"entite": "nickel", "valeur": "[Ar] 3d8 4s2"}
+{"entite": "nihonium", "valeur": "*[Rn] 5f14 6d10 7s2 7p1"}
+{"entite": "niobium", "valeur": "[Kr] 4d4 5s1"}
+{"entite": "nobélium", "valeur": "[Rn] 5f14 7s2"}
+{"entite": "oganesson", "valeur": "*[Rn] 5f14 6d10 7s2 7p6"}
+{"entite": "or", "valeur": "[Xe] 4f14 5d10 6s1"}
+{"entite": "osmium", "valeur": "[Xe] 4f14 5d6 6s2"}
+{"entite": "oxygène", "valeur": "[He] 2s2 2p4"}
+{"entite": "palladium", "valeur": "[Kr] 4d10"}
+{"entite": "phosphore", "valeur": "[Ne] 3s2 3p3"}
+{"entite": "platine", "valeur": "[Xe] 4f14 5d9 6s1"}
+{"entite": "plomb", "valeur": "[Xe] 4f14 5d10 6s2 6p2"}
+{"entite": "plutonium", "valeur": "[Rn] 5f6 7s2"}
+{"entite": "polonium", "valeur": "[Xe] 4f14 5d10 6s2 6p4"}
+{"entite": "potassium", "valeur": "[Ar] 4s1"}
+{"entite": "praséodyme", "valeur": "[Xe] 4f3 6s2"}
+{"entite": "prométhéum", "valeur": "[Xe] 4f5 6s2"}
+{"entite": "protactinium", "valeur": "[Rn] 5f2 6d1 7s2"}
+{"entite": "radium", "valeur": "[Rn] 7s2"}
+{"entite": "radon", "valeur": "[Xe] 4f14 5d10 6s2 6p6"}
+{"entite": "rhénium", "valeur": "[Xe] 4f14 5d5 6s2"}
+{"entite": "rhodium", "valeur": "[Kr] 4d8 5s1"}
+{"entite": "roentgenium", "valeur": "*[Rn] 5f14 6d10 7s1"}
+{"entite": "rubidium", "valeur": "[Kr] 5s1"}
+{"entite": "ruthénium", "valeur": "[Kr] 4d7 5s1"}
+{"entite": "rutherfordium", "valeur": "[Rn] 5f14 6d2 7s2"}
+{"entite": "samarium", "valeur": "[Xe] 4f6 6s2"}
+{"entite": "scandium", "valeur": "[Ar] 3d1 4s2"}
+{"entite": "seaborgium", "valeur": "*[Rn] 5f14 6d4 7s2"}
+{"entite": "sélénium", "valeur": "[Ar] 3d10 4s2 4p4"}
+{"entite": "silicium", "valeur": "[Ne] 3s2 3p2"}
+{"entite": "sodium", "valeur": "[Ne] 3s1"}
+{"entite": "soufre", "valeur": "[Ne] 3s2 3p4"}
+{"entite": "strontium", "valeur": "[Kr] 5s2"}
+{"entite": "tantale", "valeur": "[Xe] 4f14 5d3 6s2"}
+{"entite": "technétium", "valeur": "[Kr] 4d5 5s2"}
+{"entite": "tellure", "valeur": "[Kr] 4d10 5s2 5p4"}
+{"entite": "tennesse", "valeur": "*[Rn] 5f14 6d10 7s2 7p5"}
+{"entite": "terbium", "valeur": "[Xe] 4f9 6s2"}
+{"entite": "thallium", "valeur": "[Xe] 4f14 5d10 6s2 6p1"}
+{"entite": "thorium", "valeur": "[Rn] 6d2 7s2"}
+{"entite": "thulium", "valeur": "[Xe] 4f13 6s2"}
+{"entite": "titane", "valeur": "[Ar] 3d2 4s2"}
+{"entite": "tungstène", "valeur": "[Xe] 4f14 5d4 6s2"}
+{"entite": "uranium", "valeur": "[Rn] 5f3 6d1 7s2"}
+{"entite": "vanadium", "valeur": "[Ar] 3d3 4s2"}
+{"entite": "xénon", "valeur": "[Kr] 4d10 5s2 5p6"}
+{"entite": "ytterbium", "valeur": "[Xe] 4f14 6s2"}
+{"entite": "yttrium", "valeur": "[Kr] 4d1 5s2"}
+{"entite": "zinc", "valeur": "[Ar] 3d10 4s2"}
+{"entite": "zirconium", "valeur": "[Kr] 4d2 5s2"}

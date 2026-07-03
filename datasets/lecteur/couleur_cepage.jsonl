@@ -1,0 +1,23 @@
+{"_relation": "couleur_cepage", "_categorie": "convention", "_source": "œnologie de référence (cépage -> couleur du vin)", "_articles": true}
+{"entite": "aligoté", "valeur": "blanc"}
+{"entite": "cabernet franc", "valeur": "rouge"}
+{"entite": "cabernet sauvignon", "valeur": "rouge"}
+{"entite": "carignan", "valeur": "rouge"}
+{"entite": "chardonnay", "valeur": "blanc"}
+{"entite": "chenin", "valeur": "blanc"}
+{"entite": "gamay", "valeur": "rouge"}
+{"entite": "gewurztraminer", "valeur": "blanc"}
+{"entite": "grenache", "valeur": "rouge"}
+{"entite": "malbec", "valeur": "rouge"}
+{"entite": "marsanne", "valeur": "blanc"}
+{"entite": "merlot", "valeur": "rouge"}
+{"entite": "mourvèdre", "valeur": "rouge"}
+{"entite": "muscat", "valeur": "blanc"}
+{"entite": "pinot noir", "valeur": "rouge"}
+{"entite": "riesling", "valeur": "blanc"}
+{"entite": "sangiovese", "valeur": "rouge"}
+{"entite": "sauvignon", "valeur": "blanc"}
+{"entite": "sémillon", "valeur": "blanc"}
+{"entite": "syrah", "valeur": "rouge"}
+{"entite": "tempranillo", "valeur": "rouge"}
+{"entite": "viognier", "valeur": "blanc"}

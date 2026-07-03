@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_immunologie", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "agent pathogène", "valeur": "agent responsable d'une maladie"}
+{"entite": "anticorps", "valeur": "protéine qui neutralise un antigène"}
+{"entite": "antigène", "valeur": "substance étrangère reconnue par le système immunitaire"}

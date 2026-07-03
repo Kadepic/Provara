@@ -1,0 +1,137 @@
+{"_relation": "pKa_chimie", "_categorie": "physique", "_source": "Wikidata/QLever — constante d'acidité pKa P1117 (sans dimension)", "_articles": true}
+{"entite": "2,2,2-Trichloréthanol", "valeur": "12.24"}
+{"entite": "2,2,2-trifluoroéthanol", "valeur": "12.37"}
+{"entite": "2,6-diméthylpyridine", "valeur": "6.67"}
+{"entite": "2-chloroéthanol", "valeur": "14.31"}
+{"entite": "2-Méthoxyéthanol", "valeur": "14.8"}
+{"entite": "2-méthylpropan-2-ol", "valeur": "17"}
+{"entite": "acétanilide", "valeur": "13.39"}
+{"entite": "acétarsol", "valeur": "3.78"}
+{"entite": "acétone", "valeur": "19.16"}
+{"entite": "acétylène", "valeur": "25"}
+{"entite": "acide 2,4-dichlorophénoxyacétique", "valeur": "2.81"}
+{"entite": "acide 3-nitrobenzoïque", "valeur": "3.47"}
+{"entite": "acide 4-chlorobenzoïque", "valeur": "3.98"}
+{"entite": "Acide 4-méthoxybenzoïque", "valeur": "4.49"}
+{"entite": "acide acétylacétique", "valeur": "3.58"}
+{"entite": "acide acétylsalicylique", "valeur": "3.49"}
+{"entite": "acide acrylique", "valeur": "4.25"}
+{"entite": "acide γ-aminobutyrique", "valeur": "4.05"}
+{"entite": "acide arachidonique", "valeur": "4.752"}
+{"entite": "acide arsanilique", "valeur": "4.13"}
+{"entite": "acide aspartique", "valeur": "3.86"}
+{"entite": "acide azothydrique", "valeur": "4.64"}
+{"entite": "acide benzoïque", "valeur": "4.204"}
+{"entite": "acide carbonique", "valeur": "6.37"}
+{"entite": "acide citraconique", "valeur": "2.42"}
+{"entite": "acide citrique", "valeur": "3.14"}
+{"entite": "acide crotonique", "valeur": "4.69"}
+{"entite": "acide désoxycholique", "valeur": "6.58"}
+{"entite": "acide dichloroacétique", "valeur": "1.3"}
+{"entite": "acide diméthylphosphorique", "valeur": "1.29"}
+{"entite": "acide folique", "valeur": "2.35"}
+{"entite": "acide gamma-hydroxybutyrique", "valeur": "4.71"}
+{"entite": "acide iodique", "valeur": "0.77"}
+{"entite": "acide isonicotinique", "valeur": "4.6"}
+{"entite": "acide méthanoïque", "valeur": "3.81"}
+{"entite": "acide nitreux", "valeur": "3.2"}
+{"entite": "acide nitrique", "valeur": "-1.64"}
+{"entite": "acide oxalique", "valeur": "1.19"}
+{"entite": "acide pentanoïque", "valeur": "4.82"}
+{"entite": "acide peracétique", "valeur": "8.2"}
+{"entite": "acide perchlorique", "valeur": "-10"}
+{"entite": "acide perfluorooctanoïque", "valeur": "-0.27"}
+{"entite": "acide performique", "valeur": "7.1"}
+{"entite": "acide pyruvique", "valeur": "2.5"}
+{"entite": "acide tannique", "valeur": "6"}
+{"entite": "acide trans-cinnamique", "valeur": "4.44"}
+{"entite": "acide trichloroacétique", "valeur": "0.64"}
+{"entite": "acide trifluorométhanesulfonique", "valeur": "-14.27"}
+{"entite": "alanine", "valeur": "2.61"}
+{"entite": "alcool allylique", "valeur": "15.5"}
+{"entite": "alcool benzylique", "valeur": "15.4"}
+{"entite": "alcool isopropylique", "valeur": "16.5"}
+{"entite": "Allylamine", "valeur": "9.49"}
+{"entite": "ammoniac", "valeur": "9.21"}
+{"entite": "Aziridine", "valeur": "8.01"}
+{"entite": "benzylamine", "valeur": "9.34"}
+{"entite": "bromure d'ammonium", "valeur": "5"}
+{"entite": "butan-1-ol", "valeur": "16"}
+{"entite": "butane-1,4-diol", "valeur": "14.5"}
+{"entite": "carbonate de calcium", "valeur": "9"}
+{"entite": "carbonate de sodium", "valeur": "10.33"}
+{"entite": "cocaïne", "valeur": "8.41"}
+{"entite": "cyanamide hydrogène", "valeur": "10.3"}
+{"entite": "cyanoforme", "valeur": "5.1"}
+{"entite": "cyanure d'hydrogène", "valeur": "9.21"}
+{"entite": "cyclohexylamine", "valeur": "10.64"}
+{"entite": "l-cystéine", "valeur": "1.96"}
+{"entite": "diéthylamine", "valeur": "10.98"}
+{"entite": "Diiodotyrosine", "valeur": "6.48"}
+{"entite": "Diisopropylamine", "valeur": "11.05"}
+{"entite": "diméthylamine", "valeur": "10.64"}
+{"entite": "diméthylsulfoxyde", "valeur": "35.1"}
+{"entite": "Diméthyltryptamine", "valeur": "8.68"}
+{"entite": "dinosèbe", "valeur": "4.4"}
+{"entite": "estradiol", "valeur": "10.46"}
+{"entite": "éthanal", "valeur": "13.57"}
+{"entite": "éthanol", "valeur": "16"}
+{"entite": "éthanolamine", "valeur": "9.5"}
+{"entite": "éthylamine", "valeur": "10.65"}
+{"entite": "ethylcysteine", "valeur": "2.03"}
+{"entite": "éthylène glycol", "valeur": "15.1"}
+{"entite": "éthylènediamine", "valeur": "9.98"}
+{"entite": "favipiravir", "valeur": "5.1"}
+{"entite": "fluorure de calcium", "valeur": "1"}
+{"entite": "glycérol", "valeur": "14.15"}
+{"entite": "glycine", "valeur": "2.35"}
+{"entite": "guanine", "valeur": "9.92"}
+{"entite": "harmaline", "valeur": "4.2"}
+{"entite": "harmine", "valeur": "7.7"}
+{"entite": "L-histidine", "valeur": "9.18"}
+{"entite": "hydrazine", "valeur": "8.1"}
+{"entite": "hydrogénosulfate ion", "valeur": "1.92"}
+{"entite": "Hydrogénosulfure", "valeur": "11.96"}
+{"entite": "Hydroxylamine", "valeur": "5.97"}
+{"entite": "hydrure de sodium", "valeur": "36"}
+{"entite": "iodure d'hydrogène", "valeur": "-11"}
+{"entite": "ion hydronium", "valeur": "0"}
+{"entite": "isoleucine", "valeur": "9.758"}
+{"entite": "isopropylamine", "valeur": "10.63"}
+{"entite": "isoquinoléine", "valeur": "5.4"}
+{"entite": "isoxazole", "valeur": "-3.01"}
+{"entite": "méthanol", "valeur": "15.5"}
+{"entite": "l-méthionine", "valeur": "9.21"}
+{"entite": "méthylamine", "valeur": "10.62"}
+{"entite": "mops", "valeur": "7.2"}
+{"entite": "N-Butylamine", "valeur": "10.59"}
+{"entite": "N-éthylmorpholine", "valeur": "7.7"}
+{"entite": "N-méthylpyrrolidine", "valeur": "10.46"}
+{"entite": "nitrométhane", "valeur": "10.21"}
+{"entite": "phénol", "valeur": "9.89"}
+{"entite": "phénylalanine", "valeur": "9.24"}
+{"entite": "phényléthylamine", "valeur": "9.83"}
+{"entite": "Phényléthyne", "valeur": "28.8"}
+{"entite": "pipéridine", "valeur": "11.22"}
+{"entite": "l-proline", "valeur": "10.6"}
+{"entite": "Propylamine", "valeur": "10.53"}
+{"entite": "pyrazinamide", "valeur": "0.5"}
+{"entite": "Pyrazine", "valeur": "0.65"}
+{"entite": "Pyrrole", "valeur": "-3.8"}
+{"entite": "Pyrrolidine", "valeur": "11.27"}
+{"entite": "roxarsone", "valeur": "3.46"}
+{"entite": "(S)-(−)-colchicine", "valeur": "12.36"}
+{"entite": "saccharine", "valeur": "1.31"}
+{"entite": "salicylaldéhyde", "valeur": "8.37"}
+{"entite": "sérotonine", "valeur": "10.4"}
+{"entite": "strychnine", "valeur": "8.26"}
+{"entite": "sulfate de cuivre", "valeur": "0.005"}
+{"entite": "sulfure d'hydrogène", "valeur": "7.04"}
+{"entite": "triéthanolamine", "valeur": "7.77"}
+{"entite": "triéthylamine", "valeur": "10.65"}
+{"entite": "triméthylamine", "valeur": "9.76"}
+{"entite": "tryptophane", "valeur": "9.39"}
+{"entite": "L-tyrosine", "valeur": "9.11"}
+{"entite": "uracile", "valeur": "9.45"}
+{"entite": "urée", "valeur": "0.18"}
+{"entite": "valine", "valeur": "9.719"}

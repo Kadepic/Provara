@@ -1,0 +1,367 @@
+{"_relation": "type_mime_format", "_categorie": "convention", "_source": "Wikidata/QLever — type MIME (P1163) d'un format de fichier", "_articles": true}
+{"entite": "3D Construction Kit 2 World Data (Amiga)", "valeur": "application/octet-stream"}
+{"entite": "3D XML", "valeur": "application/x-3dxmlplugin"}
+{"entite": "42.zip", "valeur": "application/zip"}
+{"entite": "ACE (format de fichier)", "valeur": "application/x-ace-compressed"}
+{"entite": "Activity Streams", "valeur": "application/activity+json"}
+{"entite": "Adaptive Multi Rate", "valeur": "audio/AMR"}
+{"entite": "Adlib Tracker II instrument", "valeur": "application/octet-stream"}
+{"entite": "ALTO (XML)", "valeur": "text/xml"}
+{"entite": "AMV Format Video", "valeur": "video/x-amv"}
+{"entite": "Apache Parquet", "valeur": "application/vnd.apache.parquet"}
+{"entite": "APML", "valeur": "application/xml+apml"}
+{"entite": "Apple Icon Image", "valeur": "image/x-icns"}
+{"entite": "Apple Watch Face", "valeur": "application/vnd.apple.watchface"}
+{"entite": "ARC (format de fichier)", "valeur": "application/x-arc"}
+{"entite": "Archive de site Web par Konqueror", "valeur": "application/x-webarchive"}
+{"entite": "archive Stuffit", "valeur": "application/x-stuffit"}
+{"entite": "Art ANSI", "valeur": "text/x-ansi"}
+{"entite": "asciicast (v2)", "valeur": "application/x-asciicast"}
+{"entite": "AsciiDoc", "valeur": "text/asciidoc"}
+{"entite": "Au", "valeur": "audio/basic"}
+{"entite": "Audio Video Interleave", "valeur": "video/vnd.avi"}
+{"entite": "AutoCAD Database File Locking Information", "valeur": "application/octet-stream"}
+{"entite": "AZW", "valeur": "application/vnd.amazon.mobi8-ebook"}
+{"entite": "B3D", "valeur": "text/plain"}
+{"entite": ".bat", "valeur": "application/x-bat"}
+{"entite": "BBCode", "valeur": "text/x-bbcode"}
+{"entite": ".beancount", "valeur": "text/plain"}
+{"entite": "BED", "valeur": "text/plain"}
+{"entite": "Bitstream Speedo", "valeur": "application/x-font-speedo"}
+{"entite": ".blend", "valeur": "application/x-blender"}
+{"entite": "BNTX", "valeur": "application/octet-stream"}
+{"entite": "Broadcast Wave Format, version 0", "valeur": "audio/x-wav"}
+{"entite": "Broadcast Wave Format, version 1", "valeur": "audio/x-wav"}
+{"entite": "Broadcast Wave Format, version 2", "valeur": "audio/x-wav"}
+{"entite": "bzip2", "valeur": "application/x-bzip2"}
+{"entite": "Cabinet", "valeur": "application/vnd.ms-cab-compressed"}
+{"entite": "cahier Jupyter", "valeur": "application/x-ipynb+json"}
+{"entite": "Camera Image File Format", "valeur": "image/x-canon-crw"}
+{"entite": "Canon Original RAW, version 2", "valeur": "image/x-canon-cr2"}
+{"entite": "CB7", "valeur": "application/x-cb7"}
+{"entite": "CBOR", "valeur": "application/cbor"}
+{"entite": "CBR", "valeur": "application/vnd.comicbook-rar"}
+{"entite": "CBT", "valeur": "application/x-cbt"}
+{"entite": "Citation Style Language", "valeur": "application/vnd.citationstyles.style+xml"}
+{"entite": "Citrine", "valeur": "text/plain"}
+{"entite": "classeur Excel au format binaire", "valeur": "application/vnd.ms-excel.sheet.binary.macroenabled.12"}
+{"entite": "Clé cloud 1Password", "valeur": "application/octet-stream"}
+{"entite": ".com", "valeur": "application/x-dosexec"}
+{"entite": "comma-separated values", "valeur": "text/csv"}
+{"entite": "Computable Document Format", "valeur": "application/cdf"}
+{"entite": "Core Audio Format", "valeur": "audio/x-caf"}
+{"entite": "courriel Microsoft Outlook", "valeur": "application/vnd.ms-outlook"}
+{"entite": "Creative Voice File", "valeur": "audio/x-voc"}
+{"entite": "Crystal", "valeur": "text/x-crystal"}
+{"entite": "Crystallographic Information File", "valeur": "chemical/x-cif"}
+{"entite": "Csh", "valeur": "application/x-csh"}
+{"entite": "CSS 1", "valeur": "text/css"}
+{"entite": "CSS 2", "valeur": "text/css"}
+{"entite": "CSS 2.1", "valeur": "text/css"}
+{"entite": "CSS 3", "valeur": "text/css"}
+{"entite": "DAE", "valeur": "model/vnd.collada+xml"}
+{"entite": "Darwin Information Typing Architecture", "valeur": "application/dita+xml"}
+{"entite": "Data Interchange Format", "valeur": "application/x-dif"}
+{"entite": "Deb", "valeur": "application/vnd.debian.binary-package"}
+{"entite": "Demande de signature de certificat", "valeur": "application/pkcs10"}
+{"entite": "Descripteur de style de couche", "valeur": "text/xml"}
+{"entite": "Description archivistique encodée", "valeur": "text/xml"}
+{"entite": "Design Web Format", "valeur": "model/vnd-dwf"}
+{"entite": "DGCA", "valeur": "application/x-dgc-compressed"}
+{"entite": "diagramme entité-relation", "valeur": "text/xml"}
+{"entite": "DICOM", "valeur": "application/dicom"}
+{"entite": "Diffusion en flux adaptatif dynamique sur HTTP", "valeur": "application/dash+xml"}
+{"entite": "Direct Stream Digital", "valeur": "audio/x-dsf"}
+{"entite": "DocBook", "valeur": "application/docbook+xml"}
+{"entite": "document AbiWord", "valeur": "application/x-abiword"}
+{"entite": "document Krita", "valeur": "application/x-krita"}
+{"entite": "document Microsoft Word pour Windows, version 1", "valeur": "application/msword"}
+{"entite": "document Microsoft Word pour Windows, version 2", "valeur": "application/msword"}
+{"entite": "Document Scribus", "valeur": "application/vnd.scribus"}
+{"entite": "Document Type Definition", "valeur": "application/xml-dtd"}
+{"entite": "Docx", "valeur": "application/vnd.openxmlformats-officedocument.wordprocessingml.document"}
+{"entite": "Données cryptées 1Password", "valeur": "application/octet-stream"}
+{"entite": "DOT", "valeur": "text/vnd.graphviz"}
+{"entite": ".DS_Store", "valeur": "application/octet-stream"}
+{"entite": "DVI (TeX)", "valeur": "application/x-dvi"}
+{"entite": "EAR", "valeur": "application/java-archive"}
+{"entite": "EBU STL", "valeur": "application/x-ebu-stl"}
+{"entite": "EBU-TT", "valeur": "application/ttml+xml"}
+{"entite": "Éditions de L'Œuf", "valeur": "text/plain"}
+{"entite": "Elixir", "valeur": "text/x-elixir"}
+{"entite": "Embedded OpenType", "valeur": "application/vnd.ms-fontobject"}
+{"entite": "Exécutable .NET Micro Framework PE", "valeur": "application/octet-stream"}
+{"entite": "Extensible 3D", "valeur": "model/x3d+xml"}
+{"entite": "Extensible Business Reporting Language", "valeur": "application/xml"}
+{"entite": "Extensible HyperText Markup Language", "valeur": "application/xhtml+xml"}
+{"entite": "Extensible Stylesheet Language", "valeur": "application/xslt+xml"}
+{"entite": "F4V", "valeur": "video/mp4"}
+{"entite": "FASTQ", "valeur": "text/plain"}
+{"entite": "FBX", "valeur": "application/octet-stream"}
+{"entite": "feuille de calcul Microsoft Excel 2.x", "valeur": "application/octet-stream"}
+{"entite": "feuille de style en cascade", "valeur": "text/css"}
+{"entite": "feuille de style QGIS", "valeur": "test/xml"}
+{"entite": "FFV1", "valeur": "video/FFV1"}
+{"entite": "fichier INI", "valeur": "text/plain"}
+{"entite": "Fichier STEP", "valeur": "application/octet-stream"}
+{"entite": "fichier texte", "valeur": "text/plain"}
+{"entite": "FILE_ID.DIZ", "valeur": "text/plain"}
+{"entite": "FlashPix", "valeur": "image/vnd.fpx"}
+{"entite": "FLV", "valeur": "video/x-flv"}
+{"entite": "Format de document portable pdf/au", "valeur": "application/pdf"}
+{"entite": "Format de fichier image AV1", "valeur": "image/avif"}
+{"entite": "Format de fichier LAS", "valeur": "application/vnd.las"}
+{"entite": "Format de fichier Quicktime", "valeur": "video/quicktime"}
+{"entite": "format de fichier Telegram Desktop (gen)", "valeur": "application/octet-stream"}
+{"entite": "Format HTTP Archive", "valeur": "text/json"}
+{"entite": "Format SubRip", "valeur": "application/x-subrip"}
+{"entite": "Format .xyz", "valeur": "chemical/x-xyz"}
+{"entite": "format ZIPX", "valeur": "application/zip"}
+{"entite": "Free Lossless Image Format", "valeur": "image/flif"}
+{"entite": "Fxg", "valeur": "text/xml"}
+{"entite": "GCA", "valeur": "application/x-gca-compressed"}
+{"entite": "Geography Markup Language", "valeur": "application/gml+xml"}
+{"entite": "GeoJSON", "valeur": "application/geo+json"}
+{"entite": "Geometric Description Language", "valeur": "model/vnd.gdl"}
+{"entite": "GeoTIFF", "valeur": "image/tiff"}
+{"entite": "Gerber", "valeur": "application/vnd.gerber"}
+{"entite": "GIF", "valeur": "image/gif"}
+{"entite": "Glulx", "valeur": "application/x-glulx"}
+{"entite": "GZIP", "valeur": "application/gzip"}
+{"entite": "H.261", "valeur": "video/H261"}
+{"entite": "H.264", "valeur": "video/H264"}
+{"entite": "H.265/HEVC", "valeur": "video/H265"}
+{"entite": "Haml", "valeur": "text/x-haml"}
+{"entite": "HDF5", "valeur": "application/vnd.hdfgroup.hdf5"}
+{"entite": "HDT", "valeur": "application/vnd.hdt"}
+{"entite": "Hewlett Packard Graphic Language", "valeur": "application/vnd.hp-HPGL"}
+{"entite": "HTML", "valeur": "text/html"}
+{"entite": "HTML Application", "valeur": "application/hta"}
+{"entite": "HTML5", "valeur": "text/html"}
+{"entite": "iCalendar", "valeur": "text/calendar"}
+{"entite": "ICO", "valeur": "image/vnd.microsoft.icon"}
+{"entite": "IFC", "valeur": "application/octet-stream"}
+{"entite": "IGC", "valeur": "text/plain"}
+{"entite": "image disque Apple", "valeur": "application/x-apple-diskimage"}
+{"entite": "IMelody", "valeur": "audio/imelody"}
+{"entite": "IMG", "valeur": "application/vnd.efi.img"}
+{"entite": "InkML", "valeur": "application/inkml+xml"}
+{"entite": "Interchange file format", "valeur": "application/x-iff"}
+{"entite": "Internationalization Tag Set", "valeur": "application/its+xml"}
+{"entite": "IPSW", "valeur": "application/x-itunes-ipsw"}
+{"entite": ".ipynb", "valeur": "application/x-ipynb+json"}
+{"entite": "IRCAM", "valeur": "audio/x-ircam"}
+{"entite": "JAR", "valeur": "application/java-archive"}
+{"entite": "JavaScript Object Notation", "valeur": "application/json"}
+{"entite": "JavaServer Pages", "valeur": "application/jsp"}
+{"entite": "JBIG", "valeur": "image/jbig"}
+{"entite": "JBIG2", "valeur": "image/x-jbig2"}
+{"entite": "JHTML", "valeur": "java-internal/java-html"}
+{"entite": "Job Definition Format", "valeur": "application/vnd.cip4-jdf+xml"}
+{"entite": "JP2", "valeur": "image/jp2"}
+{"entite": "JPEG-LS", "valeur": "image/jls"}
+{"entite": "JPEG XL", "valeur": "image/jxl"}
+{"entite": "JPX", "valeur": "image/jpx"}
+{"entite": "JS", "valeur": "text/javascript"}
+{"entite": "JSON-LD", "valeur": "application/ld+json"}
+{"entite": "JSON Lines", "valeur": "application/jsonl"}
+{"entite": "JsonML", "valeur": "application/jsonml+json"}
+{"entite": "Julia", "valeur": "text/julia"}
+{"entite": "Kaitai Struct", "valeur": "text/plain"}
+{"entite": "langage de balisage des émotions", "valeur": "application/emotionml+xml"}
+{"entite": "LaTeX", "valeur": "application/x-latex"}
+{"entite": "Lha", "valeur": "application/x-lzh-compressed"}
+{"entite": "Lightwright 6 Show File", "valeur": "application/octet-stream"}
+{"entite": "liste de propriétés", "valeur": "application/x-plist"}
+{"entite": "liste de révocation de certificats", "valeur": "application/pkix-crl"}
+{"entite": "Liste éclair", "valeur": "text/plain"}
+{"entite": "LiveScript", "valeur": "text/ls"}
+{"entite": ".lnk", "valeur": "application/x-ms-shortcut"}
+{"entite": "lrz", "valeur": "application/x-lrzip"}
+{"entite": "Lua", "valeur": "text/x-lua"}
+{"entite": "LZIP compressed archive", "valeur": "application/x-lzip"}
+{"entite": ".m2ts", "valeur": "video/MP2T"}
+{"entite": "M4v", "valeur": "video/x-m4v"}
+{"entite": "Machine-Readable Cataloging", "valeur": "application/marc"}
+{"entite": "MAFF", "valeur": "application/x-maff"}
+{"entite": "MAT4", "valeur": "application/x-matlab-data"}
+{"entite": "Material Exchange Format", "valeur": "application/mxf"}
+{"entite": "Matroska", "valeur": "application/x-matroska"}
+{"entite": "Mbox", "valeur": "application/mbox"}
+{"entite": "Meridian Lossless Packing", "valeur": "audio/vnd.dolby.mlp"}
+{"entite": "Microsoft Compressed HTML", "valeur": "application/vnd.ms-htmlhelp"}
+{"entite": "Microsoft Document Imaging Format", "valeur": "image/vnd.ms-modi"}
+{"entite": "Microsoft Management Console", "valeur": "text/xml"}
+{"entite": "Microsoft PST", "valeur": "application/vnd.ms-outlook"}
+{"entite": "Microsoft WinHelp", "valeur": "application/winhlp"}
+{"entite": "Microsoft Word Document", "valeur": "application/msword"}
+{"entite": "MIME Encapsulation of Aggregate Documents, such as HTML", "valeur": "message/rfc822"}
+{"entite": "Mixed raster content", "valeur": "image/mrc"}
+{"entite": "MJPEG 2000", "valeur": "video/mj2"}
+{"entite": "MOBI", "valeur": "application/x-mobipocket-ebook"}
+{"entite": "Motion JPEG", "valeur": "video/x-mjpeg"}
+{"entite": "MPEG-4", "valeur": "video/mp4"}
+{"entite": "MPEG Transport Stream", "valeur": "video/mp2t"}
+{"entite": "MusicXML", "valeur": "application/vnd.recordare.musicxml+xml"}
+{"entite": "N-Triples", "valeur": "application/n-triples"}
+{"entite": "NDJSON", "valeur": "application/x-ndjson"}
+{"entite": ".NET Micro Framework TinyFont", "valeur": "application/octet-stream"}
+{"entite": "Nexus (format de fichier)", "valeur": "text/plain"}
+{"entite": ".nfo", "valeur": "text/x-nfo"}
+{"entite": "Nim", "valeur": "text/x-nim"}
+{"entite": "NITF", "valeur": "text/vnd.iptc.nitf"}
+{"entite": "Notation3", "valeur": "text/n3"}
+{"entite": "NUT Container", "valeur": "application/x-nut"}
+{"entite": "NZB", "valeur": "application/x-nzb"}
+{"entite": "OFS", "valeur": "application/octet-stream"}
+{"entite": "OPC", "valeur": "application/octet-stream"}
+{"entite": "OPDS", "valeur": "application/atom+xml;profile=opds-catalog"}
+{"entite": "Open Diagnostic Data Exchange", "valeur": "text/xml"}
+{"entite": "Open eBook", "valeur": "application/oebps-package+xml"}
+{"entite": "Open Virtual Machine Format", "valeur": "application/ovf"}
+{"entite": "OpenCL", "valeur": "text/x-opencl-src"}
+{"entite": "OpenDocument", "valeur": "application/vnd.oasis.opendocument.text"}
+{"entite": "OpenEXR", "valeur": "image/x-exr"}
+{"entite": "OpenRaster", "valeur": "image/openraster"}
+{"entite": "OpenSearch", "valeur": "application/opensearchdescription+xml"}
+{"entite": "Opus", "valeur": "audio/ogg"}
+{"entite": "Paint.NET image", "valeur": "image/x-paintnet"}
+{"entite": "PCAP", "valeur": "application/vnd.tcpdump.pcap"}
+{"entite": "PCX", "valeur": "image/vnd.zbrush.pcx"}
+{"entite": "PDF/E", "valeur": "application/pdf"}
+{"entite": "PFB", "valeur": "font/x-postscript-pfb"}
+{"entite": "PhyloXML", "valeur": "text/x-phyloxml+xml"}
+{"entite": "PICT", "valeur": "image/x-pict"}
+{"entite": "PKPass", "valeur": "application/vnd.apple.pkpass"}
+{"entite": "PLS", "valeur": "audio/x-scpls"}
+{"entite": "PLY", "valeur": "application/octet-stream"}
+{"entite": "Portable Compiled Font", "valeur": "application/x-font-pcf"}
+{"entite": "Portable Document Format", "valeur": "application/pdf"}
+{"entite": "Portable Document Format, version 1.0", "valeur": "application/pdf"}
+{"entite": "Portable Document Format, version 1.1", "valeur": "application/pdf"}
+{"entite": "Portable Document Format, version 1.2", "valeur": "application/pdf"}
+{"entite": "Portable Document Format, version 1.3", "valeur": "application/pdf"}
+{"entite": "Portable Document Format, version 1.4", "valeur": "application/pdf"}
+{"entite": "Portable Document Format, version 1.5", "valeur": "application/pdf"}
+{"entite": "Portable Network Graphics", "valeur": "image/png"}
+{"entite": "PowerPoint Show", "valeur": "application/vnd.ms-powerpoint"}
+{"entite": "Printer Command Language", "valeur": "application/vnd.hp-PCL"}
+{"entite": "Printer Postscript Description", "valeur": "application/vnd.cups-ppd"}
+{"entite": "profil ICC", "valeur": "application/vnd.iccprofile"}
+{"entite": "Profil ICC version 4.3.0.0", "valeur": "application/vnd.iccprofile"}
+{"entite": "Program database", "valeur": "application/x-ms-pdb"}
+{"entite": "Progressive Graphics File", "valeur": "image/x-pgf"}
+{"entite": ".properties", "valeur": "text/plain"}
+{"entite": "qcow", "valeur": "application/x-qemu-disk"}
+{"entite": "qcow2", "valeur": "application/octet-stream"}
+{"entite": "qgs", "valeur": "text/xml"}
+{"entite": "QML", "valeur": "text/x-qml"}
+{"entite": "Quark Xpress Data", "valeur": "application/vnd.Quark.QuarkXPress"}
+{"entite": "QuarkXPress Document 4", "valeur": "application/vnd.Quark.QuarkXPress"}
+{"entite": "QuarkXPress Document 5", "valeur": "application/vnd.Quark.QuarkXPress"}
+{"entite": "QuarkXPress Project 9.1", "valeur": "application/vnd.Quark.QuarkXPress"}
+{"entite": "QuickTime VR", "valeur": "video/quicktime"}
+{"entite": "raccourci", "valeur": "text/plain"}
+{"entite": "RDF/XML", "valeur": "application/rdf+xml"}
+{"entite": "RealMedia", "valeur": "application/vnd.rn-realmedia"}
+{"entite": "RealVideo", "valeur": "application/vnd.rn-realmedia"}
+{"entite": "Resource Interchange File Format", "valeur": "application/x-riff"}
+{"entite": "Ressource de données .NET Framework", "valeur": "application/octet-stream"}
+{"entite": "RF64", "valeur": "audio/vnd.wave"}
+{"entite": "RIS", "valeur": "application/x-research-info-systems"}
+{"entite": "RMVB", "valeur": "application/vnd.rn-realmedia-vbr"}
+{"entite": "RSS", "valeur": "application/rss+xml"}
+{"entite": "Sass", "valeur": "text/x-sass"}
+{"entite": "Scratch", "valeur": "application/x.scratch.sb3"}
+{"entite": "script PHP", "valeur": "text/x-php"}
+{"entite": "Sfv", "valeur": "text/x-sfv"}
+{"entite": "ShEx", "valeur": "text/shex"}
+{"entite": "Shorten", "valeur": "application/x-shorten"}
+{"entite": "SID", "valeur": "audio/x-psid"}
+{"entite": "SILK", "valeur": "audio/SILK"}
+{"entite": "Simplified Molecular Input Line Entry Specification", "valeur": "chemical/x-daylight-smiles"}
+{"entite": "Sixel", "valeur": "image/x-sixel"}
+{"entite": "SMIL", "valeur": "application/smil+xml"}
+{"entite": "Snappy", "valeur": "application/x-snappy-framed"}
+{"entite": "Sound Description Interchange Format", "valeur": "application/octet-stream"}
+{"entite": "Standard MIDI File", "valeur": "audio/midi"}
+{"entite": "STL", "valeur": "model/stl"}
+{"entite": "SVG Font", "valeur": "image/svg+xml"}
+{"entite": "SWC", "valeur": "application/octet-stream"}
+{"entite": "SXW", "valeur": "application/vnd.sun.xml.writer"}
+{"entite": "Symbolic Link", "valeur": "application/x-sylk"}
+{"entite": "SyncML", "valeur": "application/vnd.syncml+xml"}
+{"entite": "tar", "valeur": "application/x-tar"}
+{"entite": "Tcl", "valeur": "application/x-tcl"}
+{"entite": "TeX Font Metric", "valeur": "application/x-tex-tfm"}
+{"entite": "Theora", "valeur": "video/theora"}
+{"entite": "Thumbs.db", "valeur": "application/vnd.microsoft.windows.thumbnail-cache"}
+{"entite": "TIFF/EP", "valeur": "image/tiff"}
+{"entite": "TNEF", "valeur": "application/vnd.ms-tnef"}
+{"entite": "Tom's Obvious, Minimal Language", "valeur": "application/toml"}
+{"entite": "TopoJSON", "valeur": "application/json"}
+{"entite": "torrent", "valeur": "application/x-bittorrent"}
+{"entite": "TriG", "valeur": "application/trig"}
+{"entite": "TrueType", "valeur": "font/ttf"}
+{"entite": "TSV", "valeur": "text/tab-separated-values"}
+{"entite": "Turtle", "valeur": "text/turtle"}
+{"entite": "U3D", "valeur": "model/u3d"}
+{"entite": "UBJSON", "valeur": "application/ubjson"}
+{"entite": "UHA", "valeur": "application/x-uha-compressed"}
+{"entite": "UTZ", "valeur": "application/vnd.uiq.theme"}
+{"entite": "Uuencode", "valeur": "text/x-uuencode"}
+{"entite": "VC-1", "valeur": "video/vc1"}
+{"entite": "vCard", "valeur": "text/vcard"}
+{"entite": "Vector Markup Language", "valeur": "application/vnd.openxmlformats-officedocument.vmlDrawing"}
+{"entite": "Veg", "valeur": "application/octet-stream"}
+{"entite": "Versatile Video Coding", "valeur": "video/H266"}
+{"entite": "VGM", "valeur": "application/octet-stream"}
+{"entite": "Vim script", "valeur": "text/vimscript"}
+{"entite": "Visual Basic Extension", "valeur": "application/octet-stream"}
+{"entite": "VP8", "valeur": "video/VP8"}
+{"entite": "VP9", "valeur": "video/VP9"}
+{"entite": "WAR", "valeur": "application/java-archive"}
+{"entite": "WARC", "valeur": "application/warc"}
+{"entite": "Waveform Audio File Format", "valeur": "audio/vnd.wave"}
+{"entite": "WBFS", "valeur": "application/octet-stream"}
+{"entite": "Web Ontology Language", "valeur": "application/owl+xml"}
+{"entite": "Web Open Font Format", "valeur": "font/woff"}
+{"entite": "Web Open Font Format 2", "valeur": "font/woff2"}
+{"entite": "Web Services Description Language", "valeur": "application/wsdl+xml"}
+{"entite": "Webarchive", "valeur": "application/x-webarchive"}
+{"entite": "WebAssembly", "valeur": "application/wasm"}
+{"entite": "WebP", "valeur": "image/webp"}
+{"entite": "WebP avec pertes", "valeur": "image/webp"}
+{"entite": "WebP Étendu", "valeur": "image/webp"}
+{"entite": "WebP sans pertes", "valeur": "image/webp"}
+{"entite": "WebVTT", "valeur": "text/vtt"}
+{"entite": "Windows Imaging Format", "valeur": "application/x-ms-wim"}
+{"entite": "Windows Installer Package", "valeur": "application/x-msi"}
+{"entite": "Windows Media Audio", "valeur": "audio/x-ms-wma"}
+{"entite": "Windows Metafile", "valeur": "image/wmf"}
+{"entite": "Wireless Application Protocol Bitmap Format", "valeur": "image/vnd.wap.wbmp"}
+{"entite": "Wireless Markup Language", "valeur": "text/vnd.wap.wml"}
+{"entite": "WMLScript", "valeur": "text/vnd.wap.wmlscript"}
+{"entite": "WMV HD", "valeur": "video/x-ms-wmv"}
+{"entite": "WPG", "valeur": "application/x-wpg"}
+{"entite": "WPL", "valeur": "application/vnd.ms-wpl"}
+{"entite": "WS-Policy", "valeur": "application/wspolicy+xml"}
+{"entite": "X BitMap", "valeur": "image/x-xbitmap"}
+{"entite": "XAML", "valeur": "application/xaml+xml"}
+{"entite": "Xar", "valeur": "application/x-xar"}
+{"entite": "Xcursor", "valeur": "image/x-xcursor"}
+{"entite": "XHTML Mobile Profile", "valeur": "application/vnd.wap.xhtml+xml"}
+{"entite": "XLIFF", "valeur": "application/xliff+xml"}
+{"entite": "XLS", "valeur": "application/vnd.ms-excel"}
+{"entite": "XLSM", "valeur": "application/vnd.ms-excel.sheet.macroEnabled.12"}
+{"entite": "XLSX", "valeur": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"}
+{"entite": "XM", "valeur": "audio/xm"}
+{"entite": "XML-based User interface Language", "valeur": "application/vnd.mozilla.xul+xml"}
+{"entite": "XML Bookmark Exchange Language", "valeur": "application/xbel+xml"}
+{"entite": "XML Metadata Interchange", "valeur": "application/vnd.xmi+xml"}
+{"entite": "XPInstall", "valeur": "application/x-xpinstall"}
+{"entite": "XProc", "valeur": "application/xproc+xml"}
+{"entite": "XSPF", "valeur": "application/xspf+xml"}
+{"entite": "XZ", "valeur": "application/x-xz"}
+{"entite": "YAML", "valeur": "application/yaml"}
+{"entite": "YM", "valeur": "application/octet-stream"}

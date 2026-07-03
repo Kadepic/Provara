@@ -1,0 +1,11 @@
+{"_relation": "code_hex_couleur", "_categorie": "convention", "_source": "modèle sRGB / couleurs nommées standard — valeurs canoniques", "_articles": true}
+{"entite": "blanc", "valeur": "#FFFFFF"}
+{"entite": "bleu", "valeur": "#0000FF"}
+{"entite": "cyan", "valeur": "#00FFFF"}
+{"entite": "gris", "valeur": "#808080"}
+{"entite": "jaune", "valeur": "#FFFF00"}
+{"entite": "magenta", "valeur": "#FF00FF"}
+{"entite": "noir", "valeur": "#000000"}
+{"entite": "orange", "valeur": "#FFA500"}
+{"entite": "rouge", "valeur": "#FF0000"}
+{"entite": "vert", "valeur": "#00FF00"}

@@ -1,0 +1,1836 @@
+{"_relation": "callsign_compagnie", "_categorie": "convention", "_source": "Wikidata/QLever — indicatif radio de la compagnie aérienne (Q46970) P432", "_articles": true}
+{"entite": "1Time", "valeur": "NEXTIME"}
+{"entite": "224e brigade volante", "valeur": "CARGOUNIT"}
+{"entite": "9 Air", "valeur": "TRANS JADE"}
+{"entite": "L.A.B. Flying Service", "valeur": "LAB"}
+{"entite": "AB Airlines", "valeur": "AZTEC AIR"}
+{"entite": "AB Aviation", "valeur": "COMOROS AIRLINE"}
+{"entite": "Abacus Air", "valeur": "ABACUS"}
+{"entite": "ABC Air Hungary", "valeur": "ABC HUNGARY"}
+{"entite": "Abelag Aviation", "valeur": "ABG"}
+{"entite": "ABS Jets", "valeur": "BAIR"}
+{"entite": "ABX Air", "valeur": "ABEX"}
+{"entite": "AccessAir", "valeur": "CYCLONE"}
+{"entite": "ACES Colombia", "valeur": "ACES"}
+{"entite": "ACM Air Charter", "valeur": "BAVARIAN"}
+{"entite": "Acvila Air", "valeur": "AIR ROMANIA"}
+{"entite": "Ada Air", "valeur": "ADA AIR"}
+{"entite": "Adam Air", "valeur": "ADAM SKY"}
+{"entite": "Adria Airways", "valeur": "ADRIA"}
+{"entite": "Aegean Airlines", "valeur": "AEGEAN"}
+{"entite": "Aer Arann", "valeur": "AER ARANN"}
+{"entite": "Aer Arann Islands", "valeur": "AER ARANN"}
+{"entite": "Aer Lingus", "valeur": "SHAMROCK"}
+{"entite": "Aer Lingus Regional", "valeur": "AER ARANN"}
+{"entite": "Aer Lingus UK", "valeur": "GREEN FLIGHT"}
+{"entite": "Aeris", "valeur": "FRANCE CHARTER"}
+{"entite": "Aero Africa", "valeur": "AERO AFRICA"}
+{"entite": "Aero Airlines", "valeur": "REVAL"}
+{"entite": "Aero Asia", "valeur": "AERO ASIA"}
+{"entite": "Aero Business Charter", "valeur": "GLOBAL JET"}
+{"entite": "Aero California", "valeur": "AEROCALIFORNIA"}
+{"entite": "Aero Cóndor", "valeur": "CONDOR-PERU"}
+{"entite": "Aero Costa Rica", "valeur": "ACORISA"}
+{"entite": "Aero-Dienst", "valeur": "AERODIENST"}
+{"entite": "Aero-Kamov", "valeur": "AERAFKAM"}
+{"entite": "Aero Lloyd", "valeur": "AERO LLOYD"}
+{"entite": "Aero Mongolia", "valeur": "AERO MONGOLIA"}
+{"entite": "Aéro-Service", "valeur": "CONGOSERV"}
+{"entite": "Aero Services Executive", "valeur": "BIRD EXPRESS"}
+{"entite": "Aero Trasporti Italiani", "valeur": "ATI"}
+{"entite": "Aero Tropical", "valeur": "AERO TROPICAL"}
+{"entite": "Aero VIP", "valeur": "AEROVIP"}
+{"entite": "Aero4M", "valeur": "AEROCUTTER"}
+{"entite": "Aeroamerica", "valeur": "AEROAMERICA"}
+{"entite": "Aeroasis", "valeur": "AEROASIS"}
+{"entite": "Aerocaribbean", "valeur": "AEROCARIBBEAN"}
+{"entite": "Aerocon", "valeur": "AEROCON"}
+{"entite": "Aerocondor", "valeur": "AEROCONDOR"}
+{"entite": "AeroContractors of Nigeria", "valeur": "AEROLINE"}
+{"entite": "AeroEjecutivos", "valeur": "VENEJECUTIV"}
+{"entite": "Aeroflot", "valeur": "AEROFLOT"}
+{"entite": "Aerogaviota", "valeur": "AEROGAVIOTA"}
+{"entite": "Aeroitalia", "valeur": "AEROITALIA"}
+{"entite": "Aerolínea de Antioquia", "valeur": "ANTIOQUIA"}
+{"entite": "Aerolíneas de Baleares", "valeur": "QUANTUM"}
+{"entite": "Aerolíneas Internacionales", "valeur": "LINEAINT"}
+{"entite": "Aerolíneas Mas", "valeur": "AERO MAS"}
+{"entite": "Aerolíneas Sosa", "valeur": "SOSA"}
+{"entite": "AeroLogic", "valeur": "GERMAN CARGO"}
+{"entite": "Aeroméxico", "valeur": "AEROMEXICO"}
+{"entite": "Aeromost-Kharkov", "valeur": "AEROMIST"}
+{"entite": "Aeronica", "valeur": "AERONICA"}
+{"entite": "Aeropelican Air Services", "valeur": "PELICAN"}
+{"entite": "Aeroperu", "valeur": "AEROPERU"}
+{"entite": "Aeropostal Alas", "valeur": "AEROPOSTAL"}
+{"entite": "Aéropro", "valeur": "AEROPRO"}
+{"entite": "Aeroregional", "valeur": "REGAIR"}
+{"entite": "Aerosucre", "valeur": "AEROSUCRE"}
+{"entite": "AeroSur", "valeur": "AEROSUR"}
+{"entite": "Aerosvit", "valeur": "AEROSVIT"}
+{"entite": "AeroTACA", "valeur": "AEROTACA"}
+{"entite": "Aerotal", "valeur": "AEROTAL"}
+{"entite": "Aerotranscargo", "valeur": "MOLDCARGO"}
+{"entite": "Aerovis Airlines", "valeur": "AEROVIZ"}
+{"entite": "Affretair", "valeur": "AFRO"}
+{"entite": "Afghan Jet International", "valeur": "AJA"}
+{"entite": "Africa West Cargo", "valeur": "WEST TOGO"}
+{"entite": "African Express Airways", "valeur": "EXPRESS JET"}
+{"entite": "African International Airways", "valeur": "FLY CARGO"}
+{"entite": "African Safari Airways", "valeur": "ZEBRA"}
+{"entite": "Afrijet Airlines", "valeur": "AFRIJET"}
+{"entite": "Afrik Air Links", "valeur": "AFRICA LINKS"}
+{"entite": "Aigle Azur", "valeur": "AIGLE AZUR"}
+{"entite": "Air 2000", "valeur": "JETSET"}
+{"entite": "Air Affaires Gabon", "valeur": "NOUVELLE AFFAIRES"}
+{"entite": "Air Afrique", "valeur": "AIRAFRIC"}
+{"entite": "Air Åland", "valeur": "NORVIND"}
+{"entite": "Air Albania", "valeur": "AIR ALBANIA"}
+{"entite": "Air Algérie", "valeur": "AIR ALGERIE"}
+{"entite": "Air Alliance", "valeur": "LIAISON"}
+{"entite": "Air Alliance Express", "valeur": "LUPUS"}
+{"entite": "Air Alpes", "valeur": "AIRALPES"}
+{"entite": "Air Alpha Greenland", "valeur": "AIR ALPHA"}
+{"entite": "Air Alps Aviation", "valeur": "ALPAV"}
+{"entite": "Air America", "valeur": "AIR AMERICA"}
+{"entite": "Air Anglia", "valeur": "ANGLIA"}
+{"entite": "Air Antilles", "valeur": "GREEN BIRD"}
+{"entite": "Air Antwerp", "valeur": "DEVIL"}
+{"entite": "Air Arabia", "valeur": "ARABIA"}
+{"entite": "Air Arabia Egypt", "valeur": "ARABIA EGYPT"}
+{"entite": "Air Arabia Maroc", "valeur": "ARABIA MAROC"}
+{"entite": "Air Armenia", "valeur": "AIR ARMENIA"}
+{"entite": "Air Aruba", "valeur": "ARUBA"}
+{"entite": "Air Astana", "valeur": "ASTANALINE"}
+{"entite": "Air Atlanta Europe", "valeur": "EUROVIKING"}
+{"entite": "Air Atlanta Icelandic", "valeur": "ATLANTA"}
+{"entite": "Air Atlantis", "valeur": "AIR ATLANTIS"}
+{"entite": "Air Austral", "valeur": "REUNION"}
+{"entite": "Air Australia", "valeur": "STRATEGIC"}
+{"entite": "Air Bagan", "valeur": "AIR BAGAN"}
+{"entite": "Air Bashkortostan", "valeur": "AGYDAL"}
+{"entite": "Air Batumi", "valeur": "AIR BATUMI"}
+{"entite": "Air Bee", "valeur": "AIRBEE"}
+{"entite": "Air Berlin", "valeur": "AIR BERLIN"}
+{"entite": "Air Bishkek", "valeur": "EASTOK"}
+{"entite": "Air Botswana", "valeur": "BOTSWANA"}
+{"entite": "Air Bourbon", "valeur": "BOURBON"}
+{"entite": "Air Bucharest", "valeur": "AIR BUCHAREST"}
+{"entite": "Air Burkina", "valeur": "BURKINA"}
+{"entite": "Air Burundi", "valeur": "AIR-BURUNDI"}
+{"entite": "Air Busan", "valeur": "AIR BUSAN"}
+{"entite": "Air Cairo", "valeur": "AIR CAIRO"}
+{"entite": "Air Calédonie", "valeur": "AIRCAL"}
+{"entite": "Air California", "valeur": "AIRCAL"}
+{"entite": "Air Canada", "valeur": "AIR CANADA"}
+{"entite": "Air Canada Rouge", "valeur": "ROUGE"}
+{"entite": "Air Caraïbes", "valeur": "FRENCH WEST"}
+{"entite": "Air Cargo Carriers", "valeur": "NIGHT CARGO"}
+{"entite": "Air Cargo Germany", "valeur": "LOADMASTER"}
+{"entite": "Air Cargo Global", "valeur": "GLOBAL CARGO"}
+{"entite": "Air Caribbean", "valeur": "IBIS"}
+{"entite": "Air Changan", "valeur": "CHANGAN"}
+{"entite": "Air Charter", "valeur": "AIR CHARTER"}
+{"entite": "Air Charter Scotland", "valeur": "SALTIRE"}
+{"entite": "Air Chathams", "valeur": "CHATHAM"}
+{"entite": "Air China", "valeur": "AIR CHINA"}
+{"entite": "Air China Cargo", "valeur": "AIRCHINA FREIGHT"}
+{"entite": "Air Columbus", "valeur": "AIR COLUMBUS"}
+{"entite": "Air Comet", "valeur": "RED COMET"}
+{"entite": "Air Comet Chile", "valeur": "DEL SUR"}
+{"entite": "Air Commerz", "valeur": "AIRCOMER"}
+{"entite": "Air Corridor", "valeur": "AIR CORRIDOR"}
+{"entite": "Air Corsica", "valeur": "CORSICA"}
+{"entite": "Air Costa Rica", "valeur": "TICA"}
+{"entite": "Air Côte d'Ivoire", "valeur": "COTE D'IVOIRE"}
+{"entite": "Air Creebec", "valeur": "CREE"}
+{"entite": "Air Deccan", "valeur": "DECCAN"}
+{"entite": "Air Dilijans", "valeur": "ARMENIA"}
+{"entite": "Air Djibouti", "valeur": "AIR DJIB"}
+{"entite": "Air Do", "valeur": "AIR DO"}
+{"entite": "Air Dolomiti", "valeur": "DOLOMITI"}
+{"entite": "Air Ecosse", "valeur": "AIR ECOSSE"}
+{"entite": "Air Efata", "valeur": "EFATA"}
+{"entite": "Air Europa", "valeur": "EUROPA"}
+{"entite": "Air Europa Express", "valeur": "AERONOVA"}
+{"entite": "Air Europe", "valeur": "AIR EUROPE"}
+{"entite": "Air Evex", "valeur": "SUNBEAM"}
+{"entite": "Air Exel", "valeur": "EXEL COMMUTER"}
+{"entite": "Air Express Sweden", "valeur": "LUNA"}
+{"entite": "Air Fiji", "valeur": "FIJIAIR"}
+{"entite": "Air Finland", "valeur": "AIR FINLAND"}
+{"entite": "Air Florida", "valeur": "PALM"}
+{"entite": "Air France", "valeur": "AIRFRANS"}
+{"entite": "Air Gabon", "valeur": "GOLF NOVEMBER"}
+{"entite": "Air Georgian", "valeur": "GEORGIAN"}
+{"entite": "Air-Glaciers", "valeur": "AIR GLACIERS"}
+{"entite": "Air Greenland", "valeur": "GREENLAND"}
+{"entite": "Air Guinée", "valeur": "AIR GUINEE"}
+{"entite": "Air Guyane Express", "valeur": "GREEN BIRD"}
+{"entite": "Air Hamburg", "valeur": "AIR HAMBURG"}
+{"entite": "Air Holland", "valeur": "ORANGE"}
+{"entite": "Air Hong Kong", "valeur": "AIR HONG KONG"}
+{"entite": "Air Horizon", "valeur": "HORIZON TOGO"}
+{"entite": "Air Iceland Connect", "valeur": "FAXI"}
+{"entite": "Air Independence", "valeur": "DAILY"}
+{"entite": "Air India", "valeur": "AIRINDIA"}
+{"entite": "Air India Cargo", "valeur": "AIR INDIA"}
+{"entite": "Air India Express", "valeur": "EXPRESS INDIA"}
+{"entite": "Air India Regional", "valeur": "ALLIED"}
+{"entite": "Air Inter", "valeur": "AIR INTER"}
+{"entite": "Air Inuit", "valeur": "INUIT"}
+{"entite": "Air Italy", "valeur": "AIR ITALY"}
+{"entite": "Air Ivoire", "valeur": "AIRIVOIRE"}
+{"entite": "Air Japan", "valeur": "AIR JAPAN"}
+{"entite": "Air Kazakhstan", "valeur": "AIR KAZAKHSTAN"}
+{"entite": "Air Kiribati", "valeur": "KIRIBATI"}
+{"entite": "Air Kokshetau", "valeur": "KOKTA"}
+{"entite": "Air Koryo", "valeur": "AIR KORYO"}
+{"entite": "Air Kyrgyzstan", "valeur": "ALTYN AVIA"}
+{"entite": "Air Leap", "valeur": "LEAP"}
+{"entite": "Air Liberté", "valeur": "LIBERTE"}
+{"entite": "Air Libya", "valeur": "AIR LIBYA"}
+{"entite": "Air Lithuania", "valeur": "KAUNAS"}
+{"entite": "Air Lituanica", "valeur": "LITUANICA"}
+{"entite": "Air Luxor", "valeur": "AIRLUXOR"}
+{"entite": "Air Macau", "valeur": "AIR MACAU"}
+{"entite": "Air Madagascar", "valeur": "MADAGASCAR"}
+{"entite": "Air Madrid", "valeur": "ALADA AIR"}
+{"entite": "Air Malawi", "valeur": "MALAWI"}
+{"entite": "Air Mali", "valeur": "CAMALI"}
+{"entite": "Air Malta", "valeur": "AIR MALTA"}
+{"entite": "Air Manas", "valeur": "AIR MANAS"}
+{"entite": "Air Manchester", "valeur": "SUREWAY"}
+{"entite": "Air Mandalay", "valeur": "AIR MANDALAY"}
+{"entite": "Air Marshall Islands", "valeur": "MARSHALL ISLANDS"}
+{"entite": "Air Mascareignes", "valeur": "CATOVAIR"}
+{"entite": "Air Mauritanie", "valeur": "MIKE ROMEO"}
+{"entite": "Air Mauritius", "valeur": "AIRMAURITIUS"}
+{"entite": "Air Mediterranean", "valeur": "HELLASMED"}
+{"entite": "Air Méditerranée", "valeur": "MEDITERRANEE"}
+{"entite": "Air Mekong", "valeur": "MEKONG"}
+{"entite": "Air Memphis", "valeur": "AIR MEMPHIS"}
+{"entite": "Air Moldova", "valeur": "AIR MOLDOVA"}
+{"entite": "Air Montenegro", "valeur": "MOUNT EAGLE"}
+{"entite": "Air Moorea", "valeur": "AIR MOOREA"}
+{"entite": "Air Namibia", "valeur": "NAMIBIA"}
+{"entite": "Air Nelson", "valeur": "LINK"}
+{"entite": "Air Nepal International", "valeur": "AIR NEPAL"}
+{"entite": "Air New Zealand", "valeur": "NEW ZEALAND"}
+{"entite": "Air New Zealand Link", "valeur": "EAGLEMOUNTCOOKLINK"}
+{"entite": "Air Next", "valeur": "BLUE-DOLPHIN"}
+{"entite": "Air Niamey", "valeur": "AIR NIAMEY"}
+{"entite": "Air Nigeria", "valeur": "NICON FLIERS"}
+{"entite": "Air Nippon", "valeur": "ANK AIR"}
+{"entite": "Air Nippon Network", "valeur": "ALPHA WING"}
+{"entite": "Air Niugini", "valeur": "NIUGINI"}
+{"entite": "Air North", "valeur": "AIR NORTH"}
+{"entite": "Air Norway", "valeur": "NORTH FLYING"}
+{"entite": "Air Nostrum", "valeur": "NOSTRUM AIR"}
+{"entite": "Air Nunavut", "valeur": "AIR BAFFIN"}
+{"entite": "Air Omega", "valeur": "WARLOCK"}
+{"entite": "Air One", "valeur": "HERON"}
+{"entite": "Air Onix", "valeur": "ONIXAIR"}
+{"entite": "Air Ontario", "valeur": "ONTARIO"}
+{"entite": "Air Orient", "valeur": "AIR ORIENT"}
+{"entite": "Air Panama Internacional", "valeur": "ARPA"}
+{"entite": "Air Paradise", "valeur": "RADISAIR"}
+{"entite": "Air Peace", "valeur": "PEACE BIRD"}
+{"entite": "Air People International", "valeur": "AIR PEOPLE"}
+{"entite": "Air Philippines", "valeur": "AIRPHIL"}
+{"entite": "Air Poland", "valeur": "POLISH BIRD"}
+{"entite": "Air Polonia", "valeur": "AIR POLONIA"}
+{"entite": "Air Queensland", "valeur": "BUSHAIR"}
+{"entite": "Air Rarotonga", "valeur": "RAROTONGA"}
+{"entite": "Air Rum", "valeur": "AIR RUM"}
+{"entite": "Air Saint-Pierre", "valeur": "SAINT-PIERRE"}
+{"entite": "Air Samarkand", "valeur": "SAMARKAND"}
+{"entite": "Air Scotland", "valeur": "GREECE AIRWAYS"}
+{"entite": "Air Sénégal International", "valeur": "AIR SENEGAL"}
+{"entite": "Air Serbia", "valeur": "AIR SERBIA"}
+{"entite": "Air Seychelles", "valeur": "SEYCHELLES"}
+{"entite": "Air Sinai", "valeur": "AIR SINAI"}
+{"entite": "Air Slovakia", "valeur": "SLOVAKIA"}
+{"entite": "Air Sofia", "valeur": "AIR SOFIA"}
+{"entite": "Air South", "valeur": "KHAKI BLUE"}
+{"entite": "Air Southwest", "valeur": "SWALLOW"}
+{"entite": "Air Srpska", "valeur": "AIR SRPSKA"}
+{"entite": "Air Sunshine", "valeur": "AIR SUNSHINE"}
+{"entite": "Air Sweden", "valeur": "SNOWFLAKE"}
+{"entite": "Air Sylhet", "valeur": "SYLHET"}
+{"entite": "Air Tahiti", "valeur": "AIR TAHITI"}
+{"entite": "Air Tahiti Nui", "valeur": "TAHITI AIRLINES"}
+{"entite": "Air Tanzania", "valeur": "TANZANIA"}
+{"entite": "Air Togo", "valeur": "AIR TOHO"}
+{"entite": "Air Traffic", "valeur": "SNOOPY"}
+{"entite": "Air Transat", "valeur": "AIR TRANSAT"}
+{"entite": "Air – Transport Europe", "valeur": "TRANS EUROPE"}
+{"entite": "Air Transport International", "valeur": "AIR TRANSPORT"}
+{"entite": "Air UK", "valeur": "UKAY"}
+{"entite": "Air UK Leisure", "valeur": "LEISURE"}
+{"entite": "Air Ukraine", "valeur": "AIR UKRAINE"}
+{"entite": "Air Urga", "valeur": "URGA"}
+{"entite": "Air Vallée", "valeur": "AIR VALLEE"}
+{"entite": "Air Vanuatu", "valeur": "AIR VAN"}
+{"entite": "Air Vendee", "valeur": "AIR VENDEE"}
+{"entite": "Air Via", "valeur": "AIR VIA"}
+{"entite": "Air Wales", "valeur": "RED DRAGON"}
+{"entite": "Air Zermatt", "valeur": "AIR ZERMATT"}
+{"entite": "Air Zimbabwe", "valeur": "AIR ZIMBABWE"}
+{"entite": "AirAsia", "valeur": "ASIAN EXPRESS"}
+{"entite": "AirAsia Japan", "valeur": "WING ASIA"}
+{"entite": "AirAsia X", "valeur": "XANADU"}
+{"entite": "AirBaltic", "valeur": "AIR BALTIC"}
+{"entite": "Airblue", "valeur": "AIRBLUE"}
+{"entite": "AirBorneo", "valeur": "MASWINGS"}
+{"entite": "AirBridgeCargo Airlines", "valeur": "AIRBRIDGE CARGO"}
+{"entite": "Airbus Transport International", "valeur": "BELOUGA"}
+{"entite": "Aircalin", "valeur": "AIRCALIN"}
+{"entite": "AirClass Airways", "valeur": "VISIG"}
+{"entite": "Airest", "valeur": "AIREST CARGO"}
+{"entite": "Airfast Indonesia", "valeur": "AIRFAST"}
+{"entite": "Airhub Airlines", "valeur": "AIRHUB"}
+{"entite": "Airkenya Express", "valeur": "SUNEXPRESS"}
+{"entite": "Airlinair", "valeur": "AIRLINAIR"}
+{"entite": "Airlines of Tasmania", "valeur": "AIRTAS"}
+{"entite": "AirNet Express", "valeur": "STAR CHECK"}
+{"entite": "Airnorth", "valeur": "TOPEND"}
+{"entite": "AirNow", "valeur": "RATTLER"}
+{"entite": "AirQuarius Aviation", "valeur": "QUARIUS"}
+{"entite": "Airstars", "valeur": "MOROZOV"}
+{"entite": "AirTanker Services Limited", "valeur": "TOWLINE"}
+{"entite": "Airtours", "valeur": "KESTREL"}
+{"entite": "AirTran Airways", "valeur": "CITRUS"}
+{"entite": "Airtransse", "valeur": "AIRTRA"}
+{"entite": "Airways International Cymru", "valeur": "WELSHAIR"}
+{"entite": "Airworld", "valeur": "ENVOY"}
+{"entite": "AIS Airlines", "valeur": "SPINNER"}
+{"entite": "AJet", "valeur": "AJET"}
+{"entite": "AJV", "valeur": "AYJAY CARGO"}
+{"entite": "Akdeniz Airlines", "valeur": "AKDENIZ AIRLINES"}
+{"entite": "Aklak Air", "valeur": "AKLAK"}
+{"entite": "Alada", "valeur": "AIR ALADA"}
+{"entite": "Alajnihah Airways", "valeur": "ALAJNIHAH"}
+{"entite": "Alaska Airlines", "valeur": "ALASKA"}
+{"entite": "Albanian Airlines MAK", "valeur": "ALBANIAN"}
+{"entite": "AlbaStar", "valeur": "ALBASTAR"}
+{"entite": "Albatros Airways", "valeur": "ALBANWAYS"}
+{"entite": "Albawings", "valeur": "ALBAWINGS"}
+{"entite": "Albinati Aeronautics", "valeur": "ALBI"}
+{"entite": "Alexandair", "valeur": "ALEXANDROS"}
+{"entite": "Alidaunia", "valeur": "ALIDA"}
+{"entite": "Alitalia", "valeur": "ALITALIA"}
+{"entite": "Alitalia CityLiner", "valeur": "CITYLINER"}
+{"entite": "Alitalia Express", "valeur": "ALIEXPRESS"}
+{"entite": "Alk Airlines", "valeur": "AIR LUBO"}
+{"entite": "All Nippon Airways", "valeur": "ALL NIPPON"}
+{"entite": "Allegheny Airlines", "valeur": "ALLEGHENY"}
+{"entite": "Allegiance Air", "valeur": "AIR ALLEGIANCE"}
+{"entite": "Allegiant Air", "valeur": "ALLEGIANT"}
+{"entite": "Alliance Air", "valeur": "JAMBO"}
+{"entite": "Alliance Airlines", "valeur": "UNITY"}
+{"entite": "Allied Air", "valeur": "BAMBI"}
+{"entite": "ALM Antillean Airlines", "valeur": "ANTILLEAN"}
+{"entite": "Alma de Mexico", "valeur": "ALMA"}
+{"entite": "AlMasria Universal Airlines", "valeur": "ALMASRIA"}
+{"entite": "Aloha Air Cargo", "valeur": "ALOHA"}
+{"entite": "Aloha Airlines", "valeur": "ALOHA"}
+{"entite": "Alpi Eagles", "valeur": "ALPI EAGLES"}
+{"entite": "Alpine Air Express", "valeur": "ALPINE AIR"}
+{"entite": "Alpine Flight Service", "valeur": "FALCO"}
+{"entite": "Alrosa", "valeur": "MIRNY"}
+{"entite": "Alsie Express", "valeur": "MERMAID"}
+{"entite": "Altair", "valeur": "SIERRA MIKE"}
+{"entite": "Altair Airlines", "valeur": "ALTAIR"}
+{"entite": "Altair Linee Aeree", "valeur": "SIERRA MIKE"}
+{"entite": "Alyemda", "valeur": "ALYEMDA"}
+{"entite": "Amapola Flyg", "valeur": "AMAPOLA"}
+{"entite": "Amber Air", "valeur": "GINTA"}
+{"entite": "Amerer Air", "valeur": "AMER AIR"}
+{"entite": "American Airlines", "valeur": "AMERICAN"}
+{"entite": "American Falcon", "valeur": "AMERICAN FALCON"}
+{"entite": "American Overseas Airlines", "valeur": "AM EX"}
+{"entite": "Ameriflight", "valeur": "AMFLIGHT"}
+{"entite": "Amsterdam Airlines", "valeur": "AMSTEL"}
+{"entite": "ANA Wings", "valeur": "ALFA WING"}
+{"entite": "Anda Air", "valeur": "ANDA AIR"}
+{"entite": "Ándalus", "valeur": "ANDALUS"}
+{"entite": "Angara Airlines", "valeur": "SARMA"}
+{"entite": "Angel Air", "valeur": "ANGEL AIR"}
+{"entite": "Angkor Airways", "valeur": "ANGKORWAYS"}
+{"entite": "Angola Air Charter", "valeur": "ANGOLA CHARTER"}
+{"entite": "Ankair", "valeur": "WORLDFOCUS"}
+{"entite": "Antares Airtransport", "valeur": "ANTARES"}
+{"entite": "Antinea Airlines", "valeur": "ANTINEA"}
+{"entite": "Antonov Airlines", "valeur": "ANTONOV BUREAU"}
+{"entite": "Antrak Air", "valeur": "ANTRAK"}
+{"entite": "Apatas Air", "valeur": "APATAS"}
+{"entite": "APSA Colombia", "valeur": "AEROEXPRESO"}
+{"entite": "Arab Wings", "valeur": "ARAB WINGS"}
+{"entite": "Ararat International Airlines", "valeur": "ARARAT AVIA"}
+{"entite": "Arctic Circle Air", "valeur": "AIR ARCTIC"}
+{"entite": "Arcus-Air Logistic", "valeur": "ARCUS AIR"}
+{"entite": "Aria", "valeur": "ARIABIRD"}
+{"entite": "Aria Tour", "valeur": "ARIA"}
+{"entite": "Ariana Afghan Airlines", "valeur": "ARIANA"}
+{"entite": "Arik Air", "valeur": "ARIK"}
+{"entite": "Arkia", "valeur": "ARKIA"}
+{"entite": "Armavia", "valeur": "ARMAVIA"}
+{"entite": "Armenia Airways", "valeur": "ARMENIA"}
+{"entite": "Armenian Airlines", "valeur": "ARMENIAN"}
+{"entite": "ARP 410 Airlines", "valeur": "AIR-ARP"}
+{"entite": "Aruba Airlines", "valeur": "ARUBA"}
+{"entite": "Aserca", "valeur": "ASERCA"}
+{"entite": "Asia Cargo Airlines", "valeur": "TRILINES"}
+{"entite": "Asia Pacific Airlines", "valeur": "MAGELLAN"}
+{"entite": "Asiana Airlines", "valeur": "ASIANA"}
+{"entite": "Asky", "valeur": "ASKY"}
+{"entite": "ASL Airlines Belgium", "valeur": "QUALITY"}
+{"entite": "ASL Airlines France", "valeur": "FRENCH POST"}
+{"entite": "ASL Airlines Hungary", "valeur": "BLUE STRIP"}
+{"entite": "ASL Airlines Ireland", "valeur": "CONTRACT"}
+{"entite": "ASL Airlines Spain", "valeur": "SKYJET"}
+{"entite": "Asman Airlines", "valeur": "MANAS BIRD"}
+{"entite": "Associated Aviation", "valeur": "ASSOCIATED"}
+{"entite": "Astra Airlines", "valeur": "GREEK STAR"}
+{"entite": "Astraeus", "valeur": "FLYSTAR"}
+{"entite": "Astral Aviation", "valeur": "ASTRAL CARGO"}
+{"entite": "ATA Airlines", "valeur": "AMTRAN"}
+{"entite": "Athens Airways", "valeur": "ATHENSAIR"}
+{"entite": "Atlant-Soyuz Airlines", "valeur": "ATLANT-SOYUZMOSCOW AIRLINES"}
+{"entite": "Atlantic AirLift", "valeur": "HIGHER"}
+{"entite": "Atlantic Airlines", "valeur": "NEPTUNE"}
+{"entite": "Atlantic Airways", "valeur": "FAROELINE"}
+{"entite": "Atlantic Express", "valeur": "RIPPLE"}
+{"entite": "Atlantic Southeast Airlines", "valeur": "ACEY"}
+{"entite": "Atlantis", "valeur": "ATLANTIS"}
+{"entite": "Atlas Air", "valeur": "GIANT"}
+{"entite": "Atlas Atlantique Airlines", "valeur": "TRIPLE ALPHA"}
+{"entite": "Atlas Blue", "valeur": "ATLAS BLUE"}
+{"entite": "Atlasjet Airlines", "valeur": "ATLASGLOBAL"}
+{"entite": "ATRAN", "valeur": "ATRAN"}
+{"entite": "Atsa Airlines", "valeur": "ATSA"}
+{"entite": "Augsburg Airways", "valeur": "AUGSBURG AIR"}
+{"entite": "Augusta Air", "valeur": "AUGUSTA"}
+{"entite": "Aura Airlines", "valeur": "LEMON"}
+{"entite": "Aurela", "valeur": "AURELA"}
+{"entite": "Auric Air", "valeur": "AURIC SERVICES"}
+{"entite": "Aurigny Air Services", "valeur": "AYLINE"}
+{"entite": "Aurora", "valeur": "SATAIR"}
+{"entite": "Aurora Airlines", "valeur": "AIR AURORA"}
+{"entite": "Australian Airlines", "valeur": "AUSTRALIAN"}
+{"entite": "Austrian Airlines", "valeur": "AUSTRIAN"}
+{"entite": "Austrojet", "valeur": "AUSTROJET"}
+{"entite": "Auvia Air", "valeur": "AUVIA"}
+{"entite": "Avantair", "valeur": "AVANTAIR"}
+{"entite": "Avanti Air", "valeur": "AVANTI AIR"}
+{"entite": "AVE.com", "valeur": "PHOENIX SHARJAH"}
+{"entite": "Avensa", "valeur": "AVENSA"}
+{"entite": "Avia Traffic Company", "valeur": "ATOMIC"}
+{"entite": "Aviaco", "valeur": "AVIACO"}
+{"entite": "Aviacsa", "valeur": "AVIACSA"}
+{"entite": "Aviaenergo", "valeur": "AVIAENERGO"}
+{"entite": "Avialeasing", "valeur": "TWINARROW"}
+{"entite": "Avianca", "valeur": "AVIANCA"}
+{"entite": "Avianca Costa Rica", "valeur": "LACSA"}
+{"entite": "Avianca Ecuador", "valeur": "GALAPAGOS"}
+{"entite": "Avianova", "valeur": "NOVA"}
+{"entite": "Aviaprad", "valeur": "AVIAPRAD"}
+{"entite": "Aviastar", "valeur": "AVIASTAR"}
+{"entite": "Aviastar-TU", "valeur": "TUPOLEVAIR"}
+{"entite": "Aviation Development Company", "valeur": "ADCO"}
+{"entite": "Aviavilsa", "valeur": "AVIAVILSA"}
+{"entite": "Avient Aviation", "valeur": "AV AVIA"}
+{"entite": "Avies", "valeur": "AVIES"}
+{"entite": "Aviogenex", "valeur": "GENEX"}
+{"entite": "Avioimpex", "valeur": "IMPEX"}
+{"entite": "Aviolet", "valeur": "AIR SERBIA"}
+{"entite": "L'Avion", "valeur": "ELYSAIR"}
+{"entite": "Avion Express", "valeur": "NORDVIND"}
+{"entite": "Avion Express Malta", "valeur": "SOUTH WIND"}
+{"entite": "Avior", "valeur": "AVIOR"}
+{"entite": "Avitrans Nordic", "valeur": "EXTRANS"}
+{"entite": "Ayit Aviation", "valeur": "AYIT"}
+{"entite": "Azerbaijan Airlines", "valeur": "AZAL"}
+{"entite": "Azimuth", "valeur": "IGAVIA"}
+{"entite": "Azmar Airlines", "valeur": "AZMAR"}
+{"entite": "Azores Airlines", "valeur": "AZORES"}
+{"entite": "Azov Avia Airlines", "valeur": "AZOV AVIA"}
+{"entite": "Azur Air", "valeur": "AZUR AIR"}
+{"entite": "Azza Transport", "valeur": "AZZA TRANSPORT"}
+{"entite": "B-Air Charter", "valeur": "SPEEDCHARTER"}
+{"entite": "B&H Airlines", "valeur": "BOSNIA"}
+{"entite": "BA CityFlyer", "valeur": "FLYER"}
+{"entite": "BA Connect", "valeur": "BRITISH"}
+{"entite": "Baboo", "valeur": "BABOO"}
+{"entite": "Badr Airlines", "valeur": "BADR AIR"}
+{"entite": "Bahrain Air", "valeur": "BAHRAIN AIR"}
+{"entite": "Bakhtar Afghan Airlines", "valeur": "BAKHTAR"}
+{"entite": "Balkan Bulgarian Airlines", "valeur": "BALKAN"}
+{"entite": "Bamboo Airways", "valeur": "BAMBOO"}
+{"entite": "Bangkok Airways", "valeur": "BANGKOK AIR"}
+{"entite": "Bar Harbor Airlines", "valeur": "BAR HARBOR"}
+{"entite": "Barents AirLink", "valeur": "NORDFLIGHT"}
+{"entite": "Bashkir Airlines", "valeur": "BRAVO TANGO CHARLIE"}
+{"entite": "Batavia Air", "valeur": "BATAVIA"}
+{"entite": "Batik Air", "valeur": "BATIK"}
+{"entite": "Batik Air Malaysia", "valeur": "MALINDO EXPRESS"}
+{"entite": "Bavaria Germanair", "valeur": "BAVARIA"}
+{"entite": "Bearskin Airlines", "valeur": "BEARSKIN"}
+{"entite": "Bees Airline", "valeur": "SKYBEES"}
+{"entite": "Beijing Airlines", "valeur": "AIR JINGHUA"}
+{"entite": "Beijing Capital Airlines", "valeur": "CAPITAL JET"}
+{"entite": "Bek Air", "valeur": "BEKAIR"}
+{"entite": "Belair", "valeur": "BELAIR"}
+{"entite": "Belavia", "valeur": "BELARUS AVIA"}
+{"entite": "Belle Air", "valeur": "ALBAN-BELLE"}
+{"entite": "Bellview Airlines", "valeur": "BELLVIEW AIRLINES"}
+{"entite": "Bemidji Airlines", "valeur": "BEMIDJI"}
+{"entite": "Benin Golf Air", "valeur": "BENIN GOLF"}
+{"entite": "Bergen Air Transport", "valeur": "BERGEN AIR"}
+{"entite": "Bering Air", "valeur": "BERING AIR"}
+{"entite": "Berjaya Air", "valeur": "BERJAYA"}
+{"entite": "Berlin European UK", "valeur": "ECHO JET"}
+{"entite": "Berline", "valeur": "BEROLINER"}
+{"entite": "Bestair", "valeur": "BARBIE"}
+{"entite": "BH Air", "valeur": "BALKAN HOLIDAYS"}
+{"entite": "Bhoja Air", "valeur": "BHOJA"}
+{"entite": "Bighorn Airways", "valeur": "BIGHORN AIR"}
+{"entite": "Bin Air", "valeur": "BINAIR"}
+{"entite": "Bingo Airways", "valeur": "SKIMMER"}
+{"entite": "Binter Canarias", "valeur": "BINTER"}
+{"entite": "Binter CV", "valeur": "MORABEZA"}
+{"entite": "Birdy Airlines", "valeur": "BEL-BIRD"}
+{"entite": "Birgenair", "valeur": "ALFA LIMA WHISKEY"}
+{"entite": "Bizair", "valeur": "BERLIN BEAR"}
+{"entite": "Blink", "valeur": "BLINKAIR"}
+{"entite": "Blue Air", "valeur": "BLUE AIR"}
+{"entite": "Blue Bird Aviation", "valeur": "BLUEBIRD SUDAN"}
+{"entite": "Blue Dart Aviation", "valeur": "BLUE DART"}
+{"entite": "Blue Islands", "valeur": "BLUE ISLAND"}
+{"entite": "Blue Line", "valeur": "BLUE BERRY"}
+{"entite": "Blue Panorama Airlines", "valeur": "BLUE PANORAMA"}
+{"entite": "Blue Sky Airlines", "valeur": "BLUE ARMENIA"}
+{"entite": "Blue Sky Aviation", "valeur": "BLUE SKY MONGOLIA"}
+{"entite": "Blue Wing Airlines", "valeur": "BLUE TAIL"}
+{"entite": "Blue Wings", "valeur": "BLUE WINGS"}
+{"entite": "Blue1", "valeur": "BLUEFINN"}
+{"entite": "Bluebird Airways", "valeur": "CANDIA BIRD"}
+{"entite": "Bluebird Cargo", "valeur": "BLUE CARGO"}
+{"entite": "BMI Regional", "valeur": "MIDLAND"}
+{"entite": "Bmibaby", "valeur": "BABY"}
+{"entite": "Boliviana de Aviación", "valeur": "BOLIVIANA"}
+{"entite": "Bonair Business Charter", "valeur": "TWISTER"}
+{"entite": "Bonaire Express", "valeur": "BONAIRE"}
+{"entite": "Boston-Maine Airways", "valeur": "CLIPPER CONNECTION"}
+{"entite": "Botir-Avia", "valeur": "BOTIR-AVIA"}
+{"entite": "BRA Transportes Aéreos", "valeur": "BRA-TRANSPAEREOS"}
+{"entite": "Braniff", "valeur": "BRANIFF"}
+{"entite": "Braniff International Airways", "valeur": "BRANIFF"}
+{"entite": "Bravo Air Congo", "valeur": "BRAVO AIRCONGO"}
+{"entite": "Bravo Airlines", "valeur": "BRAVO EUROPE"}
+{"entite": "Bremenfly", "valeur": "BORGWARDT"}
+{"entite": "Brit Air", "valeur": "BRITAIR"}
+{"entite": "Britannia Airways", "valeur": "BRITANNIA"}
+{"entite": "British Air Ferries", "valeur": "AIR FERRY"}
+{"entite": "British Airways", "valeur": "SPEEDBIRD"}
+{"entite": "British Airways Limited", "valeur": "GHERKIN"}
+{"entite": "British Caledonian", "valeur": "CALEDONIAN"}
+{"entite": "British European Airways", "valeur": "BEALINE"}
+{"entite": "British Gulf International Airlines", "valeur": "BRITISH GULF"}
+{"entite": "British Island Airways", "valeur": "BRITISLAND"}
+{"entite": "British Mediterranean Airways", "valeur": "BEE MED"}
+{"entite": "British Overseas Airways Corporation", "valeur": "SPEEDBIRD"}
+{"entite": "British United Air Ferries", "valeur": "AIR FERRY"}
+{"entite": "BritishJET", "valeur": "FLYHELLO"}
+{"entite": "Brussels Airlines", "valeur": "BEELINE"}
+{"entite": "Budapest Aircraft Service", "valeur": "BASE"}
+{"entite": "Buddha Air", "valeur": "BUDDHA AIR"}
+{"entite": "Buffalo Airways", "valeur": "BUFFALO"}
+{"entite": "Bukovyna Airlines", "valeur": "BUKOVYNA"}
+{"entite": "Bural", "valeur": "BURAL"}
+{"entite": "Buraq Air", "valeur": "BURAQAIR"}
+{"entite": "Business Aviation", "valeur": "AFRICAN BUSINESS"}
+{"entite": "Buta Airways", "valeur": "AZAL"}
+{"entite": "Buzz", "valeur": "BUZZ"}
+{"entite": "BWIA West Indies Airways", "valeur": "WEST INDIAN"}
+{"entite": "CAAC Airlines", "valeur": "CAAC"}
+{"entite": "Cabo Verde Airlines", "valeur": "CABOVERDE"}
+{"entite": "Cabo Verde Express", "valeur": "KABEX"}
+{"entite": "CAL Cargo Airlines", "valeur": "CAL"}
+{"entite": "Calair", "valeur": "CALAIR"}
+{"entite": "California Pacific Airlines", "valeur": "AERODYNAMICS"}
+{"entite": "Calm Air", "valeur": "CALM AIR"}
+{"entite": "Camair-Co", "valeur": "CAMAIRCO"}
+{"entite": "Cambodia Airways", "valeur": "GIANT IBIS"}
+{"entite": "Cambodia Angkor Air", "valeur": "ANGKOR AIR"}
+{"entite": "Cameroon Airlines", "valeur": "CAM-AIR"}
+{"entite": "Canadian North", "valeur": "EMPRESS"}
+{"entite": "Canadian Pacific Airlines", "valeur": "EMPRESS"}
+{"entite": "CanaryFly", "valeur": "CANARYFLY"}
+{"entite": "CanJet", "valeur": "CANJET"}
+{"entite": "Cape Air", "valeur": "CAIR"}
+{"entite": "Capital Airlines", "valeur": "CAPITAL"}
+{"entite": "Cargo Air", "valeur": "CLEVER"}
+{"entite": "Cargo B Airlines", "valeur": "CARGO-BEE"}
+{"entite": "Cargoitalia", "valeur": "CARGOITALIA"}
+{"entite": "Cargojet Airways", "valeur": "CARGOJET"}
+{"entite": "CargoLogic Germany", "valeur": "SAXONIAN"}
+{"entite": "CargoLogicAir", "valeur": "FIREBIRD"}
+{"entite": "Cargolux", "valeur": "CARGOLUX"}
+{"entite": "Cargolux Italia", "valeur": "CARGO MED"}
+{"entite": "Carib Aviation", "valeur": "RED TAIL"}
+{"entite": "Caribbean Airlines", "valeur": "CARIBBEAN AIRLINES"}
+{"entite": "Carpatair", "valeur": "CARPATAIR"}
+{"entite": "Cat Aviation", "valeur": "EUROCAT"}
+{"entite": "Cat Island Air", "valeur": "CAT ISLAND"}
+{"entite": "CATA Línea Aérea", "valeur": "CATA"}
+{"entite": "Cathay Dragon", "valeur": "DRAGON"}
+{"entite": "Cathay Pacific", "valeur": "CATHAY"}
+{"entite": "Caucasus Airlines", "valeur": "CAUCASUS"}
+{"entite": "Cayman Airways", "valeur": "CAYMAN"}
+{"entite": "CCAir", "valeur": "CAROLINA"}
+{"entite": "Cebu Pacific Air", "valeur": "CEBU"}
+{"entite": "CEIBA Intercontinental", "valeur": "CEIBA LINE"}
+{"entite": "Central Connect Airlines", "valeur": "JOBAIR"}
+{"entite": "Central Mountain Air", "valeur": "GLACIER"}
+{"entite": "Centralwings", "valeur": "CENTRALWINGS"}
+{"entite": "Centre-Avia", "valeur": "AVIACENTRE"}
+{"entite": "Centrum Air", "valeur": "WHITEBIRD"}
+{"entite": "Centurion Air Cargo", "valeur": "CHALLENGE CARGO"}
+{"entite": "Chabahar Airlines", "valeur": "CHABAHAR"}
+{"entite": "Chalair Aviation", "valeur": "CHALLAIR"}
+{"entite": "Chalk's Ocean Airways", "valeur": "CHALKS"}
+{"entite": "Cham Wings Airlines", "valeur": "SHAMWING"}
+{"entite": "Champion Air", "valeur": "CHAMPION AIR"}
+{"entite": "Chanchangi Airlines", "valeur": "CHANCHANGI"}
+{"entite": "Channel Express", "valeur": "CHANNEX"}
+{"entite": "Chautauqua Airlines", "valeur": "CHAUTAUQUA"}
+{"entite": "CHC Helikopter Service", "valeur": "HELIBUS"}
+{"entite": "Chengdu Airlines", "valeur": "JINGXIU"}
+{"entite": "Chicago Express Airlines", "valeur": "WINDY CITY"}
+{"entite": "China Airlines", "valeur": "DYNASTY"}
+{"entite": "China Cargo Airlines", "valeur": "CARGO KING"}
+{"entite": "China Eastern Airlines", "valeur": "CHINA EASTERN"}
+{"entite": "China Express Airlines", "valeur": "CHINA EXPRESS"}
+{"entite": "China National Aviation Corporation", "valeur": "CNAC"}
+{"entite": "China Northern Airlines", "valeur": "CHINA NORTHERN"}
+{"entite": "China Northwest Airlines", "valeur": "CHINA NORTHWEST"}
+{"entite": "China Postal Airlines", "valeur": "CHINA POST"}
+{"entite": "China Southern Airlines", "valeur": "CHINA SOUTHERN"}
+{"entite": "China Southwest Airlines", "valeur": "CHINA SOUTHWEST"}
+{"entite": "China United Airlines", "valeur": "LIANHANG"}
+{"entite": "China West Air", "valeur": "WEST CHINA"}
+{"entite": "China Xinhua Airlines", "valeur": "XINHUA"}
+{"entite": "China Yunnan Airlines", "valeur": "YUNNAN"}
+{"entite": "Chinguetti Airlines", "valeur": "CHINGUETTI"}
+{"entite": "Chongqing Airlines", "valeur": "CHONG QING"}
+{"entite": "Cielos del Peru", "valeur": "CIELOS"}
+{"entite": "Cimber Air", "valeur": "CIMBER"}
+{"entite": "Cimber Sterling", "valeur": "CIMBER"}
+{"entite": "Cinnamon Air", "valeur": "CINNAMON"}
+{"entite": "Cirrus Airlines", "valeur": "CIRRUS"}
+{"entite": "Citilink", "valeur": "SUPERGREEN"}
+{"entite": "City-air Germany", "valeur": "CITYWAYS"}
+{"entite": "City Airline", "valeur": "SWEDESTAR"}
+{"entite": "City Airways", "valeur": "CITY AIRWAYS"}
+{"entite": "CityJet", "valeur": "CITY-IRELAND"}
+{"entite": "CityLine Hungary", "valeur": "CITYHUN"}
+{"entite": "Civair", "valeur": "CIVFLIGHT"}
+{"entite": "Clic Air", "valeur": "EASYFLY"}
+{"entite": "Clickair", "valeur": "CLICKJET"}
+{"entite": "CMA CGM Air Cargo", "valeur": "FRENCH CARGO"}
+{"entite": "Coast Aero Center", "valeur": "COAST CENTER"}
+{"entite": "Coast Air", "valeur": "COAST CENTER"}
+{"entite": "Cobalt Air", "valeur": "APOLLO"}
+{"entite": "Cobham Aviation Services Australia", "valeur": "JETEX"}
+{"entite": "Colgan Air", "valeur": "COLGAN"}
+{"entite": "Comair", "valeur": "COMAIR"}
+{"entite": "Comair Limited", "valeur": "COMMERCIAL"}
+{"entite": "Comfort Air", "valeur": "COMFORT AIR"}
+{"entite": "Comlux", "valeur": "COMLUXKAZLUXLUXMALTA"}
+{"entite": "CommuteAir", "valeur": "COMMUTAIR"}
+{"entite": "Comoro Islands Airline", "valeur": "VANILLA"}
+{"entite": "La Compagnie", "valeur": "DREAMJET"}
+{"entite": "Compagnie aérienne impériale japonaise", "valeur": "IMPERIAL"}
+{"entite": "Compass Airlines", "valeur": "COMPASS ROSE"}
+{"entite": "Conair of Scandinavia", "valeur": "CONAIR"}
+{"entite": "Condor Flugdienst", "valeur": "CONDOR"}
+{"entite": "Congo Express", "valeur": "EXPRESSWAYS"}
+{"entite": "Constanta Airline", "valeur": "CONSTANTA"}
+{"entite": "Contact Air", "valeur": "CONTACTAIR"}
+{"entite": "Continental Airlines", "valeur": "CONTINENTAL"}
+{"entite": "Continental Micronesia", "valeur": "AIR MIKE"}
+{"entite": "Contour Airlines", "valeur": "VOLUNTEER"}
+{"entite": "Conviasa", "valeur": "CONVIASA"}
+{"entite": "Copa Airlines", "valeur": "COPA"}
+{"entite": "Copa Airlines Colombia", "valeur": "AEROREPUBLICA"}
+{"entite": "Copenhagen Air Taxi", "valeur": "AIRCAT"}
+{"entite": "Copterline", "valeur": "COPTERLINE"}
+{"entite": "Coral Sun Airways", "valeur": "CORAL SUN"}
+{"entite": "Corendon Airlines", "valeur": "CORENDON"}
+{"entite": "Corendon Airlines Europe", "valeur": "TOURISTIC"}
+{"entite": "Corendon Dutch Airlines", "valeur": "DUTCH CORENDON"}
+{"entite": "Corporate Air", "valeur": "AIR SPUR"}
+{"entite": "Corporate Flight Management", "valeur": "VOLUNTEER"}
+{"entite": "Corsair International", "valeur": "CORSAIR"}
+{"entite": "Cosmic Air", "valeur": "COSMIC AIR"}
+{"entite": "La Costeña", "valeur": "LACOSTENA"}
+{"entite": "Cougar Helicopters", "valeur": "COUGAR"}
+{"entite": "Court Line", "valeur": "COURTLINE"}
+{"entite": "Croatia Airlines", "valeur": "CROATIA"}
+{"entite": "Crossair", "valeur": "CROSSAIR"}
+{"entite": "CSA Czech Airlines", "valeur": "CSA-LINES"}
+{"entite": "Cubana", "valeur": "CUBANA"}
+{"entite": "Cyprus Airways", "valeur": "CYPRUS"}
+{"entite": "Cyprus Turkish Airlines", "valeur": "AIRKIBRIS"}
+{"entite": "Czech Connect Airlines", "valeur": "CZECH CONNECT"}
+{"entite": "Daallo Airlines", "valeur": "DAALO AIRLINES"}
+{"entite": "Dalavia", "valeur": "DALAVIA"}
+{"entite": "Dalian Airlines", "valeur": "XIANGJIAN"}
+{"entite": "Dana Air", "valeur": "DANACO"}
+{"entite": "Danish Air Transport", "valeur": "DANISH"}
+{"entite": "Danube Wings", "valeur": "VIP TAXI"}
+{"entite": "Darwin Airline", "valeur": "DARWIN"}
+{"entite": "DAS Air Cargo", "valeur": "DAIRAIR"}
+{"entite": "Dauair", "valeur": "DAUAIR"}
+{"entite": "Dba", "valeur": "SPEEDWAY"}
+{"entite": "DC Aviation", "valeur": "TWIN STAR"}
+{"entite": "Deccan 360", "valeur": "DECCAN CARGO"}
+{"entite": "Delta Air", "valeur": "SPEEDWAY"}
+{"entite": "Delta Air Lines", "valeur": "DELTA"}
+{"entite": "Delta Air Transport", "valeur": "DELTAIR"}
+{"entite": "Delta Express", "valeur": "DELTA"}
+{"entite": "Delta Private Jets", "valeur": "ELITE JET"}
+{"entite": "Denim Air", "valeur": "DENIM"}
+{"entite": "DETA Air", "valeur": "SAMAL"}
+{"entite": "DHL Aero Expreso", "valeur": "YELLOW"}
+{"entite": "DHL Air UK", "valeur": "WORLD EXPRESS"}
+{"entite": "Dinar Líneas Aéreas", "valeur": "AERO DINAR"}
+{"entite": "Direct Fly", "valeur": "EXPRESS SKY"}
+{"entite": "Dirgantara Air Service", "valeur": "DIRGANTARA"}
+{"entite": "Discover Airlines", "valeur": "OCEAN"}
+{"entite": "Discovery Airways", "valeur": "DISCOVERY AIRWAYS"}
+{"entite": "Divi Divi Airlines", "valeur": "DIVI AIR"}
+{"entite": "DIX Aviation", "valeur": "DIXFLIGHT"}
+{"entite": "Djibouti Airlines", "valeur": "DJIBOUTI AIR"}
+{"entite": "DLT Deutsche Luftverkehrsgesellschaft", "valeur": "DLT"}
+{"entite": "Dniproavia", "valeur": "DNIEPRO"}
+{"entite": "Dobrolet", "valeur": "DOBROLET"}
+{"entite": "Dolphin Air", "valeur": "FLYING DOLPHIN"}
+{"entite": "Domodedovo Airlines", "valeur": "DOMODEDOVO"}
+{"entite": "Donavia", "valeur": "DONAVIA"}
+{"entite": "Donbassaero", "valeur": "DONBASS AERO"}
+{"entite": "Donghai Airlines", "valeur": "DONGHAI AIR"}
+{"entite": "Dornier Aviation Nigeria", "valeur": "DANA AIR"}
+{"entite": "DOT LT", "valeur": "DANU"}
+{"entite": "Druk Air", "valeur": "ROYAL BHUTAN"}
+{"entite": "Dubai Royal Air Wing", "valeur": "DUBAI"}
+{"entite": "Dubrovnik Airline", "valeur": "DUBROVNIK AIR"}
+{"entite": "Duo Airways", "valeur": "FLY DUO"}
+{"entite": "Dutch Antilles Express", "valeur": "DUTCH ANTILLES"}
+{"entite": "Dutch Caribbean Airline", "valeur": "DUTCH CARIBBEAN"}
+{"entite": "DutchBird", "valeur": "DUTCHBIRD"}
+{"entite": "Dynamic Airlines", "valeur": "DYNAMIC"}
+{"entite": "Eagle Air Iceland", "valeur": "ARCTIC EAGLE"}
+{"entite": "Eagle Airways", "valeur": "EAGLE"}
+{"entite": "Eagle Aviation", "valeur": "GERMAN EAGLE"}
+{"entite": "Eagle Aviation France", "valeur": "FRENCH EAGLE"}
+{"entite": "East African Safari Air", "valeur": "DUMA"}
+{"entite": "East Air", "valeur": "EAST TAJIK"}
+{"entite": "East Star Airlines", "valeur": "EAST STAR"}
+{"entite": "Eastar Jet", "valeur": "EASTARJET"}
+{"entite": "Eastern Air", "valeur": "EASAIR"}
+{"entite": "Eastern Air Lines", "valeur": "EASTERN"}
+{"entite": "Eastern Airlines, LLC", "valeur": "EASTERN"}
+{"entite": "Eastern Airways", "valeur": "EASTFLIGHT"}
+{"entite": "Eastern Australia Airlines", "valeur": "Q-LINK"}
+{"entite": "Eastwest Airlines", "valeur": "E-WEST"}
+{"entite": "Eastwind Airlines", "valeur": "STINGER"}
+{"entite": "easyJet", "valeur": "EASY"}
+{"entite": "EasyJet Europe", "valeur": "ALPINE"}
+{"entite": "EasyJet Switzerland", "valeur": "TOPSWISS"}
+{"entite": "Ecuato Guineana", "valeur": "ECUATO GUINEA"}
+{"entite": "Ecuatoriana de Aviación", "valeur": "ECUATORIANA"}
+{"entite": "Edelweiss Air", "valeur": "EDELWEISS"}
+{"entite": "EFS Flug-Service", "valeur": "FLUGSERVICE"}
+{"entite": "EgyptAir", "valeur": "EGYPTAIR"}
+{"entite": "EgyptAir Cargo", "valeur": "EGYPTAIR CARGO"}
+{"entite": "EgyptAir Express", "valeur": "EGYPTAIR EXPRESS"}
+{"entite": "Eirjet", "valeur": "EIRJET"}
+{"entite": "El Al", "valeur": "ELAL"}
+{"entite": "Elbe Air", "valeur": "MOTION"}
+{"entite": "Elbrus-Avia", "valeur": "ELAVIA"}
+{"entite": "Electra Airways", "valeur": "ELECTRA"}
+{"entite": "Ellinair", "valeur": "ELLINAIR HELLAS"}
+{"entite": "Emerald Airways", "valeur": "GEMSTONE"}
+{"entite": "Emirates", "valeur": "EMIRATES"}
+{"entite": "Emirates SkyCargo", "valeur": "EMIRATES"}
+{"entite": "Empire Airlines", "valeur": "EMPIRE"}
+{"entite": "Enimex", "valeur": "ENIMEX"}
+{"entite": "Enter Air", "valeur": "ENTERAIR"}
+{"entite": "Envoy Air", "valeur": "ENVOY"}
+{"entite": "Eos Airlines", "valeur": "NEW DAWN"}
+{"entite": "Equaflight", "valeur": "EQUAFLIGHT"}
+{"entite": "Era Aviation", "valeur": "ERAH"}
+{"entite": "Eram Air", "valeur": "ERAM AIR"}
+{"entite": "Eritrean Airlines", "valeur": "ERITREAN"}
+{"entite": "Ernest Airlines", "valeur": "ERNEST"}
+{"entite": "ESS Luftfahrtunternehmen", "valeur": "TWEEDY"}
+{"entite": "Estafeta Carga Aérea", "valeur": "ESTAFETA"}
+{"entite": "Estonian Air", "valeur": "ESTONIAN"}
+{"entite": "Ethiopian Airlines", "valeur": "ETHIOPIAN"}
+{"entite": "Etihad Airways", "valeur": "ETIHAD"}
+{"entite": "EUJet", "valeur": "UNION JET"}
+{"entite": "Euro-Asia Air", "valeur": "EAKAZ"}
+{"entite": "EuroAir", "valeur": "EUROSTAR"}
+{"entite": "EuroAtlantic Airways", "valeur": "EUROATLANTIC"}
+{"entite": "Eurocypria Airlines", "valeur": "EUROCYPRIA"}
+{"entite": "Eurofly", "valeur": "E-FLY"}
+{"entite": "Eurojet Romania", "valeur": "JET-ARROW"}
+{"entite": "EuroLOT", "valeur": "EUROLOT"}
+{"entite": "Euromanx", "valeur": "EUROMANX"}
+{"entite": "European 2000 Airlines", "valeur": "FIESTA"}
+{"entite": "European Air Charter", "valeur": "EUROCHARTER"}
+{"entite": "European Air Express", "valeur": "STAR WING"}
+{"entite": "European Air Transport", "valeur": "EUROTRANS"}
+{"entite": "European Air Transport Leipzig", "valeur": "POSTMAN"}
+{"entite": "European Aviation", "valeur": "EUROCHARTER"}
+{"entite": "Eurowings", "valeur": "EUROWINGS"}
+{"entite": "Eurowings Austria", "valeur": "EUROPWINGS"}
+{"entite": "Eurowings Europe", "valeur": "BLACK PEARL"}
+{"entite": "EVA Air", "valeur": "EVA"}
+{"entite": "Evelop Airlines", "valeur": "EVELOP"}
+{"entite": "Evergreen International Airlines", "valeur": "EVERGREEN"}
+{"entite": "Everts Air", "valeur": "EVERTS"}
+{"entite": "Excellent Air", "valeur": "EXCELLENT AIR"}
+{"entite": "Executive Aerospace", "valeur": "AEROSPACE"}
+{"entite": "Executive Airlines", "valeur": "EAGLE FLIGHT"}
+{"entite": "Express Air Cargo", "valeur": "TUNISIA CARGO"}
+{"entite": "Express Freighters Australia", "valeur": "EXPRESS FREIGHT"}
+{"entite": "Express One International", "valeur": "LONGHORN"}
+{"entite": "ExpressJet Airlines", "valeur": "ACEY"}
+{"entite": "Eznis Airways", "valeur": "EZNIS"}
+{"entite": "FAI rent-a-jet", "valeur": "RED ANGEL"}
+{"entite": "Fairjets", "valeur": "FAIRJETS"}
+{"entite": "Falcon Air", "valeur": "FALCON"}
+{"entite": "Farnair Switzerland", "valeur": "FARNER"}
+{"entite": "FaroeJet", "valeur": "ROCKROSE"}
+{"entite": "Fastjet", "valeur": "GREYBIRD"}
+{"entite": "Fastjet Zimbabwe", "valeur": "ZIMBIRD"}
+{"entite": "Faucett Peru", "valeur": "FAUCETT"}
+{"entite": "Federal Air", "valeur": "FEDAIR"}
+{"entite": "FedEx Express", "valeur": "FEDEX"}
+{"entite": "Felix Airways", "valeur": "FELIX"}
+{"entite": "Fiji Airways", "valeur": "FIJI"}
+{"entite": "Finistair", "valeur": "FINISTAIR"}
+{"entite": "Finnair", "valeur": "FINNAIR"}
+{"entite": "Finncomm Airlines", "valeur": "FINNCOMM"}
+{"entite": "Firefly", "valeur": "FIREFLY"}
+{"entite": "First Air", "valeur": "FIRST AIR"}
+{"entite": "First Choice Airways", "valeur": "JETSET"}
+{"entite": "First Nation Airways", "valeur": "FIRST NATION"}
+{"entite": "FitsAir", "valeur": "EXPOAVIA"}
+{"entite": "Flair Airlines", "valeur": "FLAIR"}
+{"entite": "Flash Airlines", "valeur": "FLASH"}
+{"entite": "Fleet Air International", "valeur": "FAIRFLEET"}
+{"entite": "Flex Linhas Aéreas", "valeur": "FLEX BRASIL"}
+{"entite": "Flight West Airlines", "valeur": "UNITY"}
+{"entite": "Flightline", "valeur": "FLIGHTLINE"}
+{"entite": "Flitestar", "valeur": "FLITESTAR"}
+{"entite": "Florida West International Airways", "valeur": "FLO WEST"}
+{"entite": "Fly Aruba", "valeur": "ARUBA"}
+{"entite": "Fly Gangwon", "valeur": "GANGWON"}
+{"entite": "Fly Georgia", "valeur": "GEORGIAN WING"}
+{"entite": "Fly Hellas", "valeur": "DELPHI"}
+{"entite": "Fly Lappeenranta", "valeur": "HIGHWAY"}
+{"entite": "Fly Linhas Aéreas", "valeur": "AEREAFLY"}
+{"entite": "Fly Nordic", "valeur": "NORDIC"}
+{"entite": "Fly Viking", "valeur": "BALDER"}
+{"entite": "Fly Wex", "valeur": "FLYWEX"}
+{"entite": "Fly540", "valeur": "SWIFT TANGO"}
+{"entite": "FlyArystan", "valeur": "ASTANALINE"}
+{"entite": "Flybe", "valeur": "JERSEY"}
+{"entite": "Flybe Nordic", "valeur": "FINNCOMM"}
+{"entite": "FlyBosnia", "valeur": "BOSNIAAIR"}
+{"entite": "Flydubai", "valeur": "SKY DUBAI"}
+{"entite": "FlyEgypt", "valeur": "SKY EGYPT"}
+{"entite": "Flyglobespan", "valeur": "GLOBESPAN"}
+{"entite": "Flying Carpet Airlines", "valeur": "FLYING CARPET"}
+{"entite": "Flying Finn", "valeur": "FLYINGFINN"}
+{"entite": "FlyMe", "valeur": "FLYBIRD"}
+{"entite": "FlyMontserrat", "valeur": "MONTSERRAT"}
+{"entite": "Flynas", "valeur": "NAS EXPRESS"}
+{"entite": "Flyr", "valeur": "GREENSTAR"}
+{"entite": "Free Bird Airlines", "valeur": "FREEBIRD AIR"}
+{"entite": "Freedom Air", "valeur": "FREE AIR"}
+{"entite": "Freedom Airlines", "valeur": "FREEDOM AIR"}
+{"entite": "French Bee", "valeur": "FRENCH BLUE"}
+{"entite": "Frontier Airlines", "valeur": "FRONTIER FLIGHT"}
+{"entite": "Fuji Dream Airlines", "valeur": "FUJI DREAM"}
+{"entite": "Futura Gael", "valeur": "APPLEWOOD"}
+{"entite": "Futura International Airways", "valeur": "FUTURA"}
+{"entite": "Fuzhou Airlines", "valeur": "STRAIT AIR"}
+{"entite": "Gabon Airlines", "valeur": "GABON AIRLINES"}
+{"entite": "Galaxy Air", "valeur": "GALAXY"}
+{"entite": "Galaxy Airlines", "valeur": "GALAX"}
+{"entite": "Gambia Bird", "valeur": "GAMBIA BIRD"}
+{"entite": "Gambia International Airlines", "valeur": "GAMBIA INTERNATIONAL"}
+{"entite": "Garuda Indonesia", "valeur": "INDONESIA"}
+{"entite": "Gatari Air Service", "valeur": "GATARI"}
+{"entite": "Gazpromavia", "valeur": "GAZPROM"}
+{"entite": "GB Airways", "valeur": "GEEBEE"}
+{"entite": "General Air", "valeur": "GENERAL AIR"}
+{"entite": "Genex", "valeur": "AEROGENEX"}
+{"entite": "Georgian Airways", "valeur": "TAMAZI"}
+{"entite": "Georgian International Airlines", "valeur": "GEO-LINE"}
+{"entite": "GeorgiaSkies", "valeur": "TSUNAMI"}
+{"entite": "German Cargo", "valeur": "GERMAN CARGO"}
+{"entite": "German Sky Airlines", "valeur": "GERMAN SKY"}
+{"entite": "German Wings", "valeur": "GERMAN WINGS"}
+{"entite": "Germanair", "valeur": "GERMANAIR"}
+{"entite": "Germania", "valeur": "GERMANIA"}
+{"entite": "Germania Express", "valeur": "CORGI"}
+{"entite": "Germania Flug", "valeur": "EIGER"}
+{"entite": "Germanwings", "valeur": "GERMANWINGS"}
+{"entite": "GetJet Airlines", "valeur": "GETJET"}
+{"entite": "Ghadames Air", "valeur": "GHT"}
+{"entite": "Girjet", "valeur": "BANJET"}
+{"entite": "Global Airways", "valeur": "LITGLOBE"}
+{"entite": "Global Aviation", "valeur": "GLOBE"}
+{"entite": "Global Supply Systems", "valeur": "JET LIFT"}
+{"entite": "GlobeAir", "valeur": "DREAM TEAM"}
+{"entite": "Globus Airlines", "valeur": "GLOBUS"}
+{"entite": "GMG Airlines", "valeur": "BANGLADESH"}
+{"entite": "Go!", "valeur": "AIR SHUTTLE"}
+{"entite": "Go Fly", "valeur": "GO FLIGHT"}
+{"entite": "Go! Mokulele", "valeur": "MOKULELE"}
+{"entite": "Go2Sky", "valeur": "RELAX"}
+{"entite": "GoAir", "valeur": "GO AIR"}
+{"entite": "GoJet Airlines", "valeur": "LINDBERGH"}
+{"entite": "GOL Transportes Aéreos", "valeur": "GOL"}
+{"entite": "Golden International Airlines", "valeur": "GOLDEN WINGS"}
+{"entite": "Golden Rule Airlines", "valeur": "GOLDEN RULE"}
+{"entite": "Golden West Airlines", "valeur": "GOLDEN WEST"}
+{"entite": "Gomelavia", "valeur": "GOMEL"}
+{"entite": "Gorkha Airlines", "valeur": "GORKHA AIRLINES"}
+{"entite": "GP Aviation", "valeur": "IVORY"}
+{"entite": "Grand China Air", "valeur": "GRAND CHINA"}
+{"entite": "Grand Cru Airlines", "valeur": "GRAND CRU"}
+{"entite": "Grandstar Cargo", "valeur": "GRANDSTAR CARGO"}
+{"entite": "Great Barrier Airlines", "valeur": "GREAT BARRIER"}
+{"entite": "Great Dane Airlines", "valeur": "GREAT DANE"}
+{"entite": "Great Lakes Airlines", "valeur": "LAKES AIR"}
+{"entite": "Great Wall Airlines", "valeur": "GREAT WALL"}
+{"entite": "Grossmann Jet Service", "valeur": "GROSSJET"}
+{"entite": "Grozny Avia", "valeur": "GROZNYY AVIA"}
+{"entite": "Guernsey Airlines", "valeur": "GUERNSEY"}
+{"entite": "Gulf Air", "valeur": "GULF AIR"}
+{"entite": "Gulf Traveller", "valeur": "GULF AIR"}
+{"entite": "Gulfstream International", "valeur": "SILVER WINGS"}
+{"entite": "GX Airlines", "valeur": "SPRAY"}
+{"entite": "Hageland Aviation Services", "valeur": "HAGELAND"}
+{"entite": "Hahn Air", "valeur": "ROOSTER"}
+{"entite": "Hainan Airlines", "valeur": "HAINAN"}
+{"entite": "Halcyonair", "valeur": "CREOLE"}
+{"entite": "Hamburg Airways", "valeur": "HAMBURG AIRWAYS"}
+{"entite": "Hamburg International", "valeur": "HAMBURG JET"}
+{"entite": "Hans Airways", "valeur": "SWARN"}
+{"entite": "Hanseflug", "valeur": "HANSEFLUG"}
+{"entite": "Hapag-Lloyd Executive", "valeur": "EXCELLENCE"}
+{"entite": "Hapag-Lloyd Express", "valeur": "YELLOW CAB"}
+{"entite": "Happy Air", "valeur": "HAPPY TRAVEL"}
+{"entite": "Harbour Air", "valeur": "HARBOUR EXPRESS"}
+{"entite": "Harmony Airways", "valeur": "HARMONY"}
+{"entite": "Hawaiian Airlines", "valeur": "HAWAIIAN"}
+{"entite": "Hawkair", "valeur": "HAWKAIR"}
+{"entite": "HD Air", "valeur": "RAPEX"}
+{"entite": "HeavyLift Cargo Airlines", "valeur": "HEAVY CARGO"}
+{"entite": "Hebei Airlines", "valeur": "HEBEI AIR"}
+{"entite": "Helgoland Airlines", "valeur": "HELGOLAND"}
+{"entite": "Heli Air Monaco", "valeur": "HELI AIR"}
+{"entite": "Heli Air Services", "valeur": "HELI BULGARIA"}
+{"entite": "Helijet", "valeur": "HELIJET"}
+{"entite": "Helios Airways", "valeur": "HELIOS"}
+{"entite": "Heliswiss", "valeur": "HELISWISS"}
+{"entite": "Helitt", "valeur": "ALBORAN"}
+{"entite": "Hellenic Imperial Airways", "valeur": "IMPERIAL"}
+{"entite": "Hello", "valeur": "FLYHELLO"}
+{"entite": "Helvetic Airways", "valeur": "HELVETIC"}
+{"entite": "Hemus Air", "valeur": "HEMUS AIR"}
+{"entite": "Henan Airlines", "valeur": "KUN PENG"}
+{"entite": "Hermes Airlines", "valeur": "HERMES"}
+{"entite": "Heston Airlines", "valeur": "HESTON"}
+{"entite": "Hex'air", "valeur": "HEX AIRLINE"}
+{"entite": "Hi Fly", "valeur": "SKY FLYER"}
+{"entite": "Highland Airways", "valeur": "HIWAY"}
+{"entite": "Highland Express", "valeur": "TARTAN"}
+{"entite": "HiSky", "valeur": "SKY MOLDOVA"}
+{"entite": "Höga Kusten Flyg", "valeur": "GOLDEN"}
+{"entite": "Hokkaido Air System", "valeur": "NORTH AIR"}
+{"entite": "Hola Airlines", "valeur": "HOLA"}
+{"entite": "Holiday Express", "valeur": "HOLIDAY EXPRESS"}
+{"entite": "Holidays Czech Airlines", "valeur": "CZECH HOLIDAYS"}
+{"entite": "Hong Kong Airlines", "valeur": "BAUHINIA"}
+{"entite": "Hong Kong Express Airways", "valeur": "HONGKONG SHUTTLE"}
+{"entite": "Horizon Air", "valeur": "HORIZON AIR"}
+{"entite": "Hunnu Air", "valeur": "TRANS MONGOLIA"}
+{"entite": "I-Fly", "valeur": "RUSSIAN SKY"}
+{"entite": "IAero Airways", "valeur": "SWIFTFLIGHT"}
+{"entite": "Iberia Express", "valeur": "IBEREXPRES"}
+{"entite": "Iberia Líneas Aéreas de España", "valeur": "IBERIA"}
+{"entite": "Ibex Airlines", "valeur": "IBEX"}
+{"entite": "Iceland Express", "valeur": "FLY STAR"}
+{"entite": "Icelandair", "valeur": "ICEAIR"}
+{"entite": "IGavion", "valeur": "IGUANA"}
+{"entite": "Ilyich-Avia", "valeur": "ILLICHAVIA"}
+{"entite": "ImagineAir", "valeur": "IMAGINE"}
+{"entite": "Imair Airlines", "valeur": "IMPROTEX"}
+{"entite": "Independence Air", "valeur": "INDEPENDENCE"}
+{"entite": "Indian Airlines", "valeur": "INDAIR"}
+{"entite": "IndiGo", "valeur": "IFLY"}
+{"entite": "Indochina Airlines", "valeur": "AIRSPUP"}
+{"entite": "Indonesia Air Transport", "valeur": "INTRA"}
+{"entite": "Indonesia AirAsia", "valeur": "WAGON AIR"}
+{"entite": "Insel Air", "valeur": "INSELAIR"}
+{"entite": "Int'Air Îles", "valeur": "INTER ILES"}
+{"entite": "Inter Airlines", "valeur": "INTER-EURO"}
+{"entite": "Interair SouthAfrica", "valeur": "INLINE"}
+{"entite": "Interavia Airlines", "valeur": "INTERAVIA"}
+{"entite": "InterCaribbean Airways", "valeur": "ISLANDWAYS"}
+{"entite": "Intercontinental de Aviación", "valeur": "INTER"}
+{"entite": "Interlink Airlines", "valeur": "INTERLINK"}
+{"entite": "International Business Air", "valeur": "INTERBIZ"}
+{"entite": "InterSky", "valeur": "INTERSKY"}
+{"entite": "Interstate Airlines", "valeur": "FREEWAYAIR"}
+{"entite": "Inversija", "valeur": "INVERS"}
+{"entite": "IrAero", "valeur": "IRAERO"}
+{"entite": "Iraqi Airways", "valeur": "IRAQI"}
+{"entite": "IRS Airlines", "valeur": "SILVERBIRD"}
+{"entite": "Irtysh Air", "valeur": "AZAMAT"}
+{"entite": "Island Air", "valeur": "MOKU"}
+{"entite": "Islandsflug", "valeur": "ICEBIRD"}
+{"entite": "Islas Airways", "valeur": "PINTADERA"}
+{"entite": "Isles of Scilly Skybus", "valeur": "SCILLONIA"}
+{"entite": "Israir Airlines", "valeur": "ISRAIR"}
+{"entite": "ITA Airways", "valeur": "ITARROW"}
+{"entite": "Italfly", "valeur": "ITALFLY"}
+{"entite": "ItAli Airlines", "valeur": "ITALI"}
+{"entite": "Italy First", "valeur": "RIVIERA"}
+{"entite": "Itavia", "valeur": "ITAVIA"}
+{"entite": "Itek Air", "valeur": "ITEK-AIR"}
+{"entite": "Izair", "valeur": "IZMIR"}
+{"entite": "Izhavia", "valeur": "IZHAVIA"}
+{"entite": "J-Air", "valeur": "J-AIR"}
+{"entite": "Jade Cargo International", "valeur": "JADE CARGO"}
+{"entite": "JAL Express", "valeur": "JANEX"}
+{"entite": "JALways", "valeur": "JALWAYS"}
+{"entite": "Janet", "valeur": "JANET"}
+{"entite": "Japan Air Commuter", "valeur": "COMMUTER"}
+{"entite": "Japan Air System", "valeur": "AIR SYSTEM"}
+{"entite": "Japan Airlines", "valeur": "JAPAN AIR"}
+{"entite": "Japan Asia Airways", "valeur": "ASIA"}
+{"entite": "Japan Transocean Air", "valeur": "JAY OCEAN"}
+{"entite": "Jasmin Airways", "valeur": "JASMIN"}
+{"entite": "Jat Airways", "valeur": "JAT"}
+{"entite": "Jatayu Airlines", "valeur": "JATAYU"}
+{"entite": "Jazeera Airways", "valeur": "JAZEERA"}
+{"entite": "JC International Airlines", "valeur": "CAMBO"}
+{"entite": "Jeju Air", "valeur": "JEJU AIR"}
+{"entite": "Jet 2", "valeur": "CHANNEX"}
+{"entite": "Jet Airways", "valeur": "JET AIRWAYS"}
+{"entite": "Jet Asia Airways", "valeur": "JET ASIA"}
+{"entite": "Jet Express", "valeur": "AVIREX-GABON"}
+{"entite": "Jet Time", "valeur": "NEW JET"}
+{"entite": "Jet4you", "valeur": "ARGAN"}
+{"entite": "Jetalliance", "valeur": "JETALLIANCE"}
+{"entite": "JetBlue Airways", "valeur": "JETBLUE"}
+{"entite": "Jetconnect", "valeur": "QANTAS JETCONNECT"}
+{"entite": "JetLink Express", "valeur": "KEN JET"}
+{"entite": "JetLite", "valeur": "LITE JET"}
+{"entite": "JeTran Air", "valeur": "JETRAN AIR"}
+{"entite": "Jetsgo", "valeur": "JETSGO"}
+{"entite": "JetSmart", "valeur": "ROCKSMART"}
+{"entite": "Jetstar Airways", "valeur": "JETSTAR"}
+{"entite": "Jetstar Asia", "valeur": "JETSTAR ASIA"}
+{"entite": "Jetstar Japan", "valeur": "ORANGE LINER"}
+{"entite": "Jetstar Pacific", "valeur": "PACIFIC"}
+{"entite": "Jetstream Express", "valeur": "VANNIN"}
+{"entite": "Jiangxi Air", "valeur": "AIR CRANE"}
+{"entite": "Jin Air", "valeur": "JIN AIR"}
+{"entite": "JOON", "valeur": "JOON"}
+{"entite": "Jordan Aviation", "valeur": "JORDAN AVIATION"}
+{"entite": "Jota Aviation", "valeur": "ENZO"}
+{"entite": "Joy Air", "valeur": "JOY AIR"}
+{"entite": "Jubba Airways", "valeur": "JUBBA"}
+{"entite": "Jump Air", "valeur": "JUMP AIR"}
+{"entite": "Jupiter-Avia", "valeur": "JUPITER"}
+{"entite": "Kabo Air", "valeur": "KABO"}
+{"entite": "Kalitta Air", "valeur": "CONNIE"}
+{"entite": "Kalstar Aviation", "valeur": "KALSTAR"}
+{"entite": "Kam Air", "valeur": "KAM AIR"}
+{"entite": "Kan Air", "valeur": "KAN AIR"}
+{"entite": "Karthago Airlines", "valeur": "KARTHAGO"}
+{"entite": "Kartika Airlines", "valeur": "KARTIKA"}
+{"entite": "Kato Airline", "valeur": "KATO-AIR"}
+{"entite": "Kavminvodyavia", "valeur": "AIR MINVODY"}
+{"entite": "Kazakhstan Airlines", "valeur": "KAZAKH"}
+{"entite": "KD Avia", "valeur": "KALININGRAD AIR"}
+{"entite": "Kendell Airlines", "valeur": "KENDELL"}
+{"entite": "Kenmore Air", "valeur": "KENMORE"}
+{"entite": "Kenn Borek Air", "valeur": "BOREK AIR"}
+{"entite": "Kenya Airways", "valeur": "KENYA"}
+{"entite": "Keystone Air Service", "valeur": "KEYSTONE"}
+{"entite": "Khalifa Airways", "valeur": "KHALIFA AIR"}
+{"entite": "Khors Air", "valeur": "AIRCOMPANY KHORS"}
+{"entite": "Khyber Afghan Airlines", "valeur": "KHYBER"}
+{"entite": "Kingfisher Airlines", "valeur": "KINGFISHER"}
+{"entite": "KLM Cityhopper", "valeur": "KLM"}
+{"entite": "KLM Royal Dutch Airlines", "valeur": "KLM"}
+{"entite": "KLM uk", "valeur": "UKAY"}
+{"entite": "KM Malta Airlines", "valeur": "SKY KNIGHT"}
+{"entite": "Komiaviatrans", "valeur": "KOMI AVIA"}
+{"entite": "KoralBlue Airlines", "valeur": "KORAL BLUE"}
+{"entite": "Korongo Airlines", "valeur": "CONGO STAR"}
+{"entite": "Kosmos Airlines", "valeur": "KOSMOS"}
+{"entite": "KrasAir", "valeur": "KRASNOYARSK AIR"}
+{"entite": "KrasAvia", "valeur": "KRASAVIA"}
+{"entite": "Kuban Airlines", "valeur": "AIR KUBAN"}
+{"entite": "Kulula.com", "valeur": "COMMERCIAL"}
+{"entite": "Kunming Airlines", "valeur": "KUNMING AIR"}
+{"entite": "Kuwait Airways", "valeur": "KUWAITI"}
+{"entite": "LAC Colombia", "valeur": "LAC"}
+{"entite": "Lacsa", "valeur": "LACSA"}
+{"entite": "Lagun Air", "valeur": "LAGUNAIR"}
+{"entite": "Laker Airways", "valeur": "LAKER"}
+{"entite": "LaMia", "valeur": "LAMIA"}
+{"entite": "LAN Cargo", "valeur": "LAN CARGO"}
+{"entite": "Lanmei Airlines", "valeur": "AIR LANME"}
+{"entite": "Lao Airlines", "valeur": "LAO"}
+{"entite": "Lao Central Airlines", "valeur": "NAKLAO"}
+{"entite": "Laser Airlines", "valeur": "LASER"}
+{"entite": "LATAM Airlines", "valeur": "LAN CHILE"}
+{"entite": "LATAM Airlines Brasil", "valeur": "TAM"}
+{"entite": "LATAM Airlines Colombia", "valeur": "LAN COLOMBIA"}
+{"entite": "LATAM Airlines Ecuador", "valeur": "AEROLANE"}
+{"entite": "LATAM Airlines Paraguay", "valeur": "PARAGUAYA"}
+{"entite": "LATAM Cargo Colombia", "valeur": "LANCO"}
+{"entite": "Latavio", "valeur": "LATAVIO"}
+{"entite": "Lauda Air", "valeur": "AUSTRIAN"}
+{"entite": "Lauda Air Italia", "valeur": "LAUDA ITALY"}
+{"entite": "Lauda Europe", "valeur": "BEAUFORT"}
+{"entite": "Laudamotion", "valeur": "LAUDA MOTION"}
+{"entite": "Leav Aviation", "valeur": "YODA"}
+{"entite": "Lesotho Airways", "valeur": "LESOTOAIR"}
+{"entite": "Level Europe", "valeur": "AUSTROJET"}
+{"entite": "LIAT", "valeur": "LIAT"}
+{"entite": "Liberia Airways", "valeur": "LIBERIA AIRWAYS"}
+{"entite": "Libyan Airlines", "valeur": "LIBAIR"}
+{"entite": "Libyan Arab Air Cargo", "valeur": "LIBAC"}
+{"entite": "Lignes aériennes Canadien International", "valeur": "CANADIAN"}
+{"entite": "Lignes aériennes congolaises", "valeur": "CONGOLAISE"}
+{"entite": "Lina Congo", "valeur": "LINACONGO"}
+{"entite": "Línea Aérea Amaszonas", "valeur": "AMASZONAS"}
+{"entite": "Linea Aeropostal Venezolana", "valeur": "AEROPOSTAL"}
+{"entite": "Línea Turística Aereotuy", "valeur": "AEREOTUY"}
+{"entite": "Líneas Aéreas Azteca", "valeur": "LINEAS AZTECA"}
+{"entite": "Lineas Aereas Canedo – LAC", "valeur": "CANEDO"}
+{"entite": "Líneas Aéreas del Estado", "valeur": "LADE"}
+{"entite": "Líneas Aéreas Paraguayas", "valeur": "PARAGUAYA"}
+{"entite": "Líneas Aereas Peruanas", "valeur": "APSA"}
+{"entite": "Líneas Aéreas Suramericanas", "valeur": "SURAMERICANO"}
+{"entite": "Linhas Aéreas de Moçambique", "valeur": "MOZAMBIQUE"}
+{"entite": "Linjeflyg", "valeur": "SWEDLINE"}
+{"entite": "Link Air Express", "valeur": "MUTTLEY"}
+{"entite": "Linus Airways", "valeur": "AIRLINUS"}
+{"entite": "Lion Air", "valeur": "LION INTER"}
+{"entite": "Lions Air", "valeur": "LIONSAIR"}
+{"entite": "Lithuanian Airlines", "valeur": "LITHUANIAN"}
+{"entite": "Livingston", "valeur": "SEAGULL"}
+{"entite": "Livingston Energy Flight", "valeur": "LIVINGSTON"}
+{"entite": "Lloyd Aereo Boliviano", "valeur": "LLOYDAEREO"}
+{"entite": "Loganair", "valeur": "LOGAN"}
+{"entite": "Loong Air", "valeur": "HUALONG"}
+{"entite": "LOT Polish Airlines", "valeur": "POLLOT"}
+{"entite": "Lotus Air", "valeur": "LOTUS FLOWER"}
+{"entite": "LTE International Airways", "valeur": "FUN JET"}
+{"entite": "LTU Austria", "valeur": "BILLA TRANSPORT"}
+{"entite": "LTU International Airways", "valeur": "LTU"}
+{"entite": "Lucky Air", "valeur": "LUCKY AIR"}
+{"entite": "Luftfahrtgesellschaft Walter", "valeur": "WALTER"}
+{"entite": "Lufthansa", "valeur": "LUFTHANSA"}
+{"entite": "Lufthansa Cargo", "valeur": "LUFTHANSA CARGO"}
+{"entite": "Lufthansa CityLine", "valeur": "HANSALINE"}
+{"entite": "Lufthansa Italia", "valeur": "LUFTHANSA"}
+{"entite": "Lufthansa Regional", "valeur": "LUFTHANSA"}
+{"entite": "Lufttransport", "valeur": "LUFT TRANSPORT"}
+{"entite": "Lugansk Airlines", "valeur": "ENTERPRISE LUHANSK"}
+{"entite": "LUKoil-Avia", "valeur": "LUKOIL"}
+{"entite": "Lumiwings", "valeur": "LUMI"}
+{"entite": "Luxair", "valeur": "LUXAIR"}
+{"entite": "Luxaviation", "valeur": "RED LION"}
+{"entite": "Luzair", "valeur": "LISBON JET"}
+{"entite": "Lviv Airlines", "valeur": "UKRAINE WEST"}
+{"entite": "LyddAir", "valeur": "LYDDAIR"}
+{"entite": "Lynx Air", "valeur": "ENERJET AIR"}
+{"entite": "Lynx Aviation", "valeur": "SHASTA"}
+{"entite": "Macair Airlines", "valeur": "MACAIR"}
+{"entite": "Magnicharters", "valeur": "GRUPOMONTERREY"}
+{"entite": "Mahan Air", "valeur": "MAHAN AIR"}
+{"entite": "Mahfooz Aviation", "valeur": "MAHFOOZ"}
+{"entite": "Malawi Airlines", "valeur": "MALAWIAN"}
+{"entite": "Malaysia Airlines", "valeur": "MALAYSIAN"}
+{"entite": "Malaysia-Singapore Airlines", "valeur": "MALAYSIAN"}
+{"entite": "Maldivian", "valeur": "ISLAND AVIATION"}
+{"entite": "Maldivian Air Taxi", "valeur": "AIR-TAXI"}
+{"entite": "Malév", "valeur": "MALEV"}
+{"entite": "Mali Air", "valeur": "MALI AIREXPRESS"}
+{"entite": "Malmö Aviation", "valeur": "SCANWING"}
+{"entite": "Mandala Airlines", "valeur": "MANDALA"}
+{"entite": "Mandarin Airlines", "valeur": "MANDARIN"}
+{"entite": "Mango", "valeur": "TULCA"}
+{"entite": "Manunggal Air Service", "valeur": "MANUNGGAL"}
+{"entite": "Manx Airlines", "valeur": "MANX"}
+{"entite": "MAP Linhas Aéreas", "valeur": "MAP AIR"}
+{"entite": "Marabu Airlines", "valeur": "MARABU"}
+{"entite": "Marathon Airlines", "valeur": "MARATHON"}
+{"entite": "MarcoPolo Airways", "valeur": "MARCOPOLO"}
+{"entite": "Mars RK", "valeur": "AVIAMARS"}
+{"entite": "Marsland Aviation", "valeur": "MARSLANDAIR"}
+{"entite": "Martinair Holland", "valeur": "MARTINAIR"}
+{"entite": "Martinaire", "valeur": "MARTEX"}
+{"entite": "MasAir", "valeur": "MAS CARGA"}
+{"entite": "MASkargo", "valeur": "MALAYSIAN"}
+{"entite": "MAT Macedonian Airlines", "valeur": "MAKAVIO"}
+{"entite": "Maui Air", "valeur": "VALLEY"}
+{"entite": "Mauritania Airlines", "valeur": "MAURITANIA AIRLINES"}
+{"entite": "Mauritania Airways", "valeur": "MAURITANIA AIRWAYS"}
+{"entite": "Maximus Air Cargo", "valeur": "CARGO MAX"}
+{"entite": "Maya Island Air", "valeur": "MYLAND"}
+{"entite": "MCA Airlines", "valeur": "CALSON"}
+{"entite": "MDLR Airlines", "valeur": "MDLR"}
+{"entite": "Med-View Airline", "valeur": "MED-VIEW"}
+{"entite": "Medallion Air", "valeur": "MEDALS"}
+{"entite": "Medavia", "valeur": "MEDAVIA"}
+{"entite": "Mega Maldives", "valeur": "SANDBAR"}
+{"entite": "Melilia Airlines", "valeur": "MELILLA"}
+{"entite": "MenaJet", "valeur": "MENAJET"}
+{"entite": "Meridiana", "valeur": "MERIDIANA"}
+{"entite": "Merpati Nusantara Airlines", "valeur": "MERPATI"}
+{"entite": "Mesa Airlines", "valeur": "AIR SHUTTLE"}
+{"entite": "Mesaba Airlines", "valeur": "MESABA"}
+{"entite": "Metrojet", "valeur": "KOGALYM"}
+{"entite": "Mexicana", "valeur": "MEXICANA"}
+{"entite": "Mexicana de Aviación", "valeur": "MEXICANA"}
+{"entite": "MexicanaClick", "valeur": "CLICK"}
+{"entite": "Miami Air International", "valeur": "BISCAYNE"}
+{"entite": "MIAT Mongolian Airlines", "valeur": "MONGOL AIR"}
+{"entite": "Mid Airlines", "valeur": "NILE"}
+{"entite": "Mid Pacific Air", "valeur": "MID PAC"}
+{"entite": "Middle East Airlines", "valeur": "CEDAR JET"}
+{"entite": "Midstate Airlines", "valeur": "MIDSTATE"}
+{"entite": "Midway Airlines", "valeur": "MIDWAY"}
+{"entite": "Mihin Lanka", "valeur": "MIHIN LANKA"}
+{"entite": "MiniLiner", "valeur": "MINILINER"}
+{"entite": "Mint Airways", "valeur": "MINT AIRWAYS"}
+{"entite": "MNG Airlines", "valeur": "BLACK SEA"}
+{"entite": "Moçambique Expresso", "valeur": "MOZAMBIQUE EXPRESS"}
+{"entite": "Moldavian Airlines", "valeur": "MOLDAVIAN"}
+{"entite": "Mombasa Air Safari", "valeur": "SKYROVER"}
+{"entite": "Monarch Airlines", "valeur": "MONARCH"}
+{"entite": "Montenegro Airlines", "valeur": "MONTENEGRO"}
+{"entite": "Morningstar Air Express", "valeur": "MORNINGSTAR"}
+{"entite": "Moskovia Airlines", "valeur": "GROMOV AIRLINE"}
+{"entite": "Motor Sich Airlines", "valeur": "MOTOR SICH"}
+{"entite": "Mount Cook Airline", "valeur": "MOUNTCOOK"}
+{"entite": "MTM Aviation", "valeur": "AVITRANS"}
+{"entite": "My Freighter Airlines", "valeur": "WHITEBIRD"}
+{"entite": "MyAir", "valeur": "FRANKY"}
+{"entite": "MYAirline", "valeur": "MYAIR"}
+{"entite": "Myanmar Airways", "valeur": "UNIONAIR"}
+{"entite": "Myanmar Airways International", "valeur": "MYANMAR"}
+{"entite": "Mýflug", "valeur": "MYFLUG"}
+{"entite": "MyTravel Airways", "valeur": "KESTREL"}
+{"entite": "MyWay Airlines", "valeur": "MY SKY"}
+{"entite": "Nakanihon Airlines", "valeur": "AIR CENTRAL"}
+{"entite": "Nantucket Airlines", "valeur": "ACK AIR"}
+{"entite": "Nasair", "valeur": "NASAIRWAYS"}
+{"entite": "National Airways Corporation", "valeur": "NATCHAIR"}
+{"entite": "Nationale régionale transport", "valeur": "LA NATIONALE"}
+{"entite": "Nationwide Airlines", "valeur": "NATIONWIDE"}
+{"entite": "Nature Air", "valeur": "NATUREAIR"}
+{"entite": "Nauru Airlines", "valeur": "AIR NAURU"}
+{"entite": "Naysa", "valeur": "NAYSA"}
+{"entite": "Necon Air", "valeur": "NECON AIR"}
+{"entite": "Neos", "valeur": "MOONFLOWER"}
+{"entite": "Nepal Airlines", "valeur": "ROYAL NEPAL"}
+{"entite": "Netherlines", "valeur": "NETHERLINES"}
+{"entite": "NetJets", "valeur": "EXECJET"}
+{"entite": "Network Aviation", "valeur": "AIRCRAFT REGISTRATION"}
+{"entite": "New Axis Airways", "valeur": "AXIS"}
+{"entite": "New Central Airservice", "valeur": "CHUOH AIR"}
+{"entite": "New England Airlines", "valeur": "NEW ENGLAND"}
+{"entite": "New Japan Aviation", "valeur": "SHIN NIHON"}
+{"entite": "New Mexico Airlines", "valeur": "TSUNAMI"}
+{"entite": "New York Air", "valeur": "APPLE"}
+{"entite": "Nextjet", "valeur": "NEXTJET"}
+{"entite": "Nicaragüense de Aviación", "valeur": "NICA"}
+{"entite": "Nigeria Airways", "valeur": "NIGERIA"}
+{"entite": "Niki", "valeur": "NIKI"}
+{"entite": "Nile Air", "valeur": "NILEBIRD"}
+{"entite": "Nippon Cargo Airlines", "valeur": "NIPPON CARGO"}
+{"entite": "NLM CityHopper", "valeur": "CITY"}
+{"entite": "NLM Nederlandse Luchtvaart Maatschappij", "valeur": "CITY"}
+{"entite": "Noar Linhas Aéreas", "valeur": "NOAR"}
+{"entite": "Nobil Air", "valeur": "NOBIL AIR"}
+{"entite": "Nok Air", "valeur": "NOK AIR"}
+{"entite": "Nolinor", "valeur": "NOLINOR"}
+{"entite": "Nordic Airways", "valeur": "NORTH RIDER"}
+{"entite": "Nordic Global Airlines", "valeur": "NORDIC GLOBAL"}
+{"entite": "Nordica", "valeur": "REVAL"}
+{"entite": "NordStar", "valeur": "TAIMYR"}
+{"entite": "Nordwind Airlines", "valeur": "NORDLAND"}
+{"entite": "Norrlandsflyg", "valeur": "LIFEGUARD SWEDEN"}
+{"entite": "Norse Air", "valeur": "NORSE AIR"}
+{"entite": "Norse Atlantic Airways", "valeur": "LONGSHIP"}
+{"entite": "North American Airlines", "valeur": "NORTH AMERICAN"}
+{"entite": "North Cariboo Air", "valeur": "NORTH CARIBOO"}
+{"entite": "North Coast Air Services", "valeur": "NORTH COAST"}
+{"entite": "North-Wright Airways", "valeur": "NORTHWRIGHT"}
+{"entite": "Northeastern International Airways", "valeur": "NORTHEASTER"}
+{"entite": "Northern Air Cargo", "valeur": "YUKON"}
+{"entite": "Northern Thunderbird Air", "valeur": "THUNDERBIRD"}
+{"entite": "Northwest Airlines", "valeur": "NORTHWEST"}
+{"entite": "Northwestern Air", "valeur": "POLARIS"}
+{"entite": "Norwegian Air Norway", "valeur": "NORSHIP"}
+{"entite": "Norwegian Air UK", "valeur": "REDNOSE"}
+{"entite": "Nouvelair Tunisie", "valeur": "NOUVELAIR"}
+{"entite": "Novair", "valeur": "NAVIGATOR"}
+{"entite": "Nurman Avia", "valeur": "NURVINDO"}
+{"entite": "Nyxair", "valeur": "NYX AIR"}
+{"entite": "O'Connor Airlines", "valeur": "OCONNOR"}
+{"entite": "Oasis Hong Kong Airlines", "valeur": "OASIS"}
+{"entite": "Ocean Airlines", "valeur": "BRESCIAMAIL"}
+{"entite": "Odessa Airlines", "valeur": "ODESSA AIR"}
+{"entite": "Ohana by Hawaiian", "valeur": "EMPIRE"}
+{"entite": "Okada Air", "valeur": "OKADA AIR"}
+{"entite": "Okay Airways", "valeur": "OKAYJET"}
+{"entite": "OLT Ostfriesische Lufttransport", "valeur": "OLTRA"}
+{"entite": "Olympic Air", "valeur": "OLYMPIC"}
+{"entite": "Olympic Airlines", "valeur": "OLYMPIC"}
+{"entite": "Olympic Aviation", "valeur": "OLAVIA"}
+{"entite": "Oman Air", "valeur": "OMAN AIR"}
+{"entite": "Oman aviation services", "valeur": "OMAN AVIATION"}
+{"entite": "Omni Air International", "valeur": "OMNI-EXPRESS"}
+{"entite": "Omni Aviation", "valeur": "OMNI"}
+{"entite": "Omskavia Airlines", "valeur": "OMSK"}
+{"entite": "One-Two-Go Airlines", "valeur": "THAI EXPRESS"}
+{"entite": "Onur Air", "valeur": "ONUR AIR"}
+{"entite": "OpenSkies", "valeur": "MISTRAL"}
+{"entite": "Orange2Fly", "valeur": "ORANGESKY"}
+{"entite": "Orbest", "valeur": "ORBEST"}
+{"entite": "Orca Airways", "valeur": "ORCA"}
+{"entite": "Orenburg Airlines", "valeur": "ORENBURG"}
+{"entite": "Orient Thai Airlines", "valeur": "ORIENT THAI"}
+{"entite": "Oriental Air Bridge", "valeur": "ORIENTAL BRIDGE"}
+{"entite": "Origin Pacific Airways", "valeur": "ORIGIN"}
+{"entite": "Orion Airways", "valeur": "ORION"}
+{"entite": "Overland Airways", "valeur": "OVERLAND"}
+{"entite": "Ozark Air Lines", "valeur": "OZARK"}
+{"entite": "OzJet", "valeur": "AUSJET"}
+{"entite": "Pacific Air Lines", "valeur": "PACIFIC"}
+{"entite": "Pacific Blue Airlines", "valeur": "BLUEBIRD"}
+{"entite": "Pacific Coastal Airlines", "valeur": "PASCO"}
+{"entite": "Pacific Island Aviation", "valeur": "PACIFIC ISLE"}
+{"entite": "Pacific Southwest Airlines", "valeur": "PSA"}
+{"entite": "Pacific Sun", "valeur": "FIJI LINK"}
+{"entite": "Pacific Wings", "valeur": "TSUNAMI"}
+{"entite": "Pakistan International Airlines", "valeur": "PAKISTAN"}
+{"entite": "PAL Airlines", "valeur": "PROVINCIAL"}
+{"entite": "Palestinian Airlines", "valeur": "PALESTINIAN"}
+{"entite": "Pamir Airways", "valeur": "PAMIR"}
+{"entite": "Pan Am", "valeur": "CLIPPER"}
+{"entite": "Pan Européenne Air Service", "valeur": "PEACH"}
+{"entite": "Panair do Brasil", "valeur": "BANDEIRANTE"}
+{"entite": "PANH", "valeur": "PANH"}
+{"entite": "Pantanal Linhas Aéreas", "valeur": "PANTANAL"}
+{"entite": "Paramount Airways", "valeur": "PARAWAY"}
+{"entite": "Partnair", "valeur": "PARTNAIR"}
+{"entite": "Pascan Aviation", "valeur": "PASCAN"}
+{"entite": "PauknAir", "valeur": "PAUKNAIR"}
+{"entite": "Payam Air", "valeur": "PAYAMAIR"}
+{"entite": "PBAir", "valeur": "PEEBEE AIR"}
+{"entite": "Peach", "valeur": "AIR PEACH"}
+{"entite": "Pearl Air", "valeur": "PEARL LINE"}
+{"entite": "Pearl Airways", "valeur": "PEARL AIRWAYS"}
+{"entite": "Pegas Fly", "valeur": "KRASJET"}
+{"entite": "Pegasus Airlines", "valeur": "SUNTURK"}
+{"entite": "Pel-Air", "valeur": "PELFLIGHT"}
+{"entite": "Pelican Air Services", "valeur": "PELICAN AIRWAYS"}
+{"entite": "Pelita Air", "valeur": "PELITA"}
+{"entite": "Penair", "valeur": "PENINSULA"}
+{"entite": "People's", "valeur": "PEOPLES"}
+{"entite": "PEOPLExpress", "valeur": "PEOPLE"}
+{"entite": "Perimeter Aviation", "valeur": "PERIMETER"}
+{"entite": "Perm Airlines", "valeur": "PERM AIR"}
+{"entite": "Pet Airways", "valeur": "SUB AIR"}
+{"entite": "Petra Airlines", "valeur": "PETRA AIRLINES"}
+{"entite": "Petroleum Air Services", "valeur": "PAPA-ECHO-ROMEO"}
+{"entite": "Philippine Airlines", "valeur": "PHILIPPINE"}
+{"entite": "Philippines AirAsia", "valeur": "COOL RED"}
+{"entite": "Phoebus Apollo Aviation", "valeur": "PHOEBUS"}
+{"entite": "Phuket Airlines", "valeur": "PHUKET AIR"}
+{"entite": "Piedmont Airlines", "valeur": "PIEDMONT"}
+{"entite": "Pinnacle Airlines", "valeur": "FLAGSHIP"}
+{"entite": "Pluna", "valeur": "PLUNA"}
+{"entite": "PMTair", "valeur": "MULTITRADE"}
+{"entite": "PNG Air", "valeur": "BALUS"}
+{"entite": "Pobeda", "valeur": "POBEDA"}
+{"entite": "Polar Air Cargo", "valeur": "POLAR"}
+{"entite": "Polar Airlines", "valeur": "AIR SAKHA"}
+{"entite": "Polet Airlines", "valeur": "POLET"}
+{"entite": "Polynesian Airlines", "valeur": "POLYNESIAN"}
+{"entite": "Porter Airlines", "valeur": "PORTER DASH"}
+{"entite": "Portugália", "valeur": "AIR PORTUGAL"}
+{"entite": "Poste Air Cargo", "valeur": "MISTRAL WINGS"}
+{"entite": "Precision Air", "valeur": "PRECISION AIR"}
+{"entite": "PRiMA Aero Trasporti Italiani", "valeur": "EAGLES"}
+{"entite": "Primera Air", "valeur": "PRIMERA"}
+{"entite": "Prince Edward Air", "valeur": "COMET"}
+{"entite": "PrivatAir", "valeur": "PRIVATAIR"}
+{"entite": "Private Wings", "valeur": "PRIVATE WINGS"}
+{"entite": "Privilege Style", "valeur": "PRIVILEGE"}
+{"entite": "Pronair", "valeur": "PRONAIR"}
+{"entite": "Pronto Airways", "valeur": "PRONTO"}
+{"entite": "Provincetown-Boston Airlines", "valeur": "PBA"}
+{"entite": "PSA Airlines", "valeur": "BLUE STREAK"}
+{"entite": "Qanot Sharq", "valeur": "QANOT SHARQ"}
+{"entite": "Qantas", "valeur": "QANTAS"}
+{"entite": "Qantas Freight", "valeur": "QANTAS"}
+{"entite": "Qatar Airways", "valeur": "QATARI"}
+{"entite": "Qazaq Air", "valeur": "SAMRUK"}
+{"entite": "Qingdao Airlines", "valeur": "SKY LEGEND"}
+{"entite": "Quebecair", "valeur": "QUEBECAIR"}
+{"entite": "R1 Airlines", "valeur": "TRANSCANADA"}
+{"entite": "RAF-Avia", "valeur": "MITAVIA"}
+{"entite": "RAK Airways", "valeur": "RAKAIR"}
+{"entite": "RAS Flug", "valeur": "RHEINLAND"}
+{"entite": "Red Wings Airlines", "valeur": "RED WINGS"}
+{"entite": "Reeve Aleutian Airways", "valeur": "REEVE"}
+{"entite": "Regent Airways", "valeur": "REGENT"}
+{"entite": "Régional", "valeur": "REGIONAL EUROPE"}
+{"entite": "Regional Air", "valeur": "BLUERAY"}
+{"entite": "Regional Express", "valeur": "REX"}
+{"entite": "Reno Air", "valeur": "RENO AIR"}
+{"entite": "RFG – Regionalflug", "valeur": "RFG"}
+{"entite": "Riau Airlines", "valeur": "RIAU AIR"}
+{"entite": "Rio Linhas Aereas", "valeur": "RIO"}
+{"entite": "Rivne Universal Avia", "valeur": "RIVNE UNIVERSAL"}
+{"entite": "Robin Hood Aviation", "valeur": "SHERWOOD"}
+{"entite": "Romavia", "valeur": "AEROMAVIA"}
+{"entite": "Rossiya", "valeur": "ROSSIYA"}
+{"entite": "Rovos Air", "valeur": "ROVOS"}
+{"entite": "Royal Air Cambodge", "valeur": "AIR CAMBODGE"}
+{"entite": "Royal Air Maroc", "valeur": "ROYAL AIR MAROC"}
+{"entite": "Royal Air Maroc Express", "valeur": "EXPRESS MAROC"}
+{"entite": "Royal Bengal Airline", "valeur": "ROYAL BENGAL"}
+{"entite": "Royal Brunei Airlines", "valeur": "BRUNEI"}
+{"entite": "Royal Daisy Airlines", "valeur": "DARLINES"}
+{"entite": "Royal Jet", "valeur": "ROYALJET"}
+{"entite": "Royal Jordanian", "valeur": "JORDANIAN"}
+{"entite": "Royal Swazi National Airways", "valeur": "ROYAL SWAZI"}
+{"entite": "Royal Tongan Airlines", "valeur": "TONGA ROYAL"}
+{"entite": "Royal Wings", "valeur": "ROYAL WINGS"}
+{"entite": "RusLine", "valeur": "RUSLINE AIR"}
+{"entite": "Russian Sky Airlines", "valeur": "RADUGA"}
+{"entite": "RVL Aviation", "valeur": "ENDURANCE"}
+{"entite": "Rwandair", "valeur": "RWANDAIR"}
+{"entite": "Ryan Air Services", "valeur": "RYAN AIR"}
+{"entite": "Ryan International Airlines", "valeur": "RYAN"}
+{"entite": "Ryanair", "valeur": "RYANAIR"}
+{"entite": "Ryanair UK", "valeur": "BLUEMAX"}
+{"entite": "Ryukyu Air Commuter", "valeur": "RYUKYU AIR"}
+{"entite": "Sabah Air", "valeur": "SABAH AIR"}
+{"entite": "Sabena", "valeur": "SABENA"}
+{"entite": "Safair", "valeur": "CARGO"}
+{"entite": "Safarilink Aviation", "valeur": "SAFARILINK"}
+{"entite": "Safi Airways", "valeur": "SAFI"}
+{"entite": "Safiran Airlines", "valeur": "SAFIRAN"}
+{"entite": "Saga Airlines", "valeur": "SAGA"}
+{"entite": "SAHSA", "valeur": "SAHSA"}
+{"entite": "Salsa d'Haïti", "valeur": "SALSA"}
+{"entite": "SAM Colombia", "valeur": "SAM"}
+{"entite": "Samoa Air", "valeur": "SAMOA"}
+{"entite": "SAN Ecuador", "valeur": "AEREOS"}
+{"entite": "SANSA", "valeur": "SANSA"}
+{"entite": "Saratov Airlines", "valeur": "SARATOV AIR"}
+{"entite": "SAS Commuter", "valeur": "SCANDINAVIAN"}
+{"entite": "SAS Link", "valeur": "DISCOVER"}
+{"entite": "SAT Airlines", "valeur": "SATAIR"}
+{"entite": "SATA Air Açores", "valeur": "SATA"}
+{"entite": "SATENA", "valeur": "SATENA"}
+{"entite": "Saturn Airways", "valeur": "SATURN"}
+{"entite": "Saudia", "valeur": "SAUDIA"}
+{"entite": "Saudia Cargo", "valeur": "SAUDIA"}
+{"entite": "Sayakhat Air Company", "valeur": "SAYAKHAT"}
+{"entite": "SBA Airlines", "valeur": "SANTA BARBARA"}
+{"entite": "Scandinavian Airlines Connect", "valeur": "SPINNAKER"}
+{"entite": "Scandinavian Airlines System", "valeur": "SCANDINAVIAN"}
+{"entite": "SCAT Airlines", "valeur": "VLASTA"}
+{"entite": "Scoot", "valeur": "SCOOTER"}
+{"entite": "Scot Airways", "valeur": "SUCKLING"}
+{"entite": "Seaboard World Airlines", "valeur": "SEABOARD"}
+{"entite": "Seaborne Airlines", "valeur": "SEABORNE"}
+{"entite": "Seagle Air", "valeur": "SEAGLE"}
+{"entite": "SeaPort Airlines", "valeur": "SASQUATCH"}
+{"entite": "Sempati Air", "valeur": "SPIROW"}
+{"entite": "Sénégal Airlines", "valeur": "SENEGAL AIR"}
+{"entite": "Servicios Aéreos Profesionales", "valeur": "PROSERVICIOS"}
+{"entite": "Severstal Air Company", "valeur": "SEVERSTAL"}
+{"entite": "SF Airlines", "valeur": "SHUN FENG"}
+{"entite": "Shaheen Air", "valeur": "SHAHEEN AIR"}
+{"entite": "Shandong Airlines", "valeur": "SHANDONG"}
+{"entite": "Shanghai Airlines", "valeur": "SHANGHAI AIR"}
+{"entite": "Shanghai Airlines Cargo", "valeur": "SHANGHAI CARGO"}
+{"entite": "Shanxi Airlines", "valeur": "SHANXI"}
+{"entite": "Sharp Airlines", "valeur": "SHARP"}
+{"entite": "Shenzhen Airlines", "valeur": "SHENZHEN AIR"}
+{"entite": "Shuttle America", "valeur": "MERCURY"}
+{"entite": "Sichuan Airlines", "valeur": "SICHUAN"}
+{"entite": "Siem Reap Airways International", "valeur": "SIEMREAP AIR"}
+{"entite": "Sierra Pacific Airlines", "valeur": "SIERRA PACIFIC"}
+{"entite": "Silesia Air", "valeur": "AIR SILESIA"}
+{"entite": "Silk Air", "valeur": "SILKAIR"}
+{"entite": "Silk Avia", "valeur": "SILK"}
+{"entite": "Silk Way Airlines", "valeur": "SILK LINE"}
+{"entite": "Silk Way West Airlines", "valeur": "SILK WEST"}
+{"entite": "Silver Air", "valeur": "SILVERLINE"}
+{"entite": "Silverjet", "valeur": "SILVERJET"}
+{"entite": "Simmons Airlines", "valeur": "SIMMONS"}
+{"entite": "Singapore Airlines", "valeur": "SINGAPORE"}
+{"entite": "Singapore Airlines Cargo", "valeur": "SINGCARGO"}
+{"entite": "Sirius-Aero", "valeur": "SIRIUS AERO"}
+{"entite": "Sita Air", "valeur": "SITA AIR"}
+{"entite": "Skol Airlines", "valeur": "SKOL"}
+{"entite": "Sky Airline", "valeur": "AEROSKY"}
+{"entite": "Sky Airlines", "valeur": "SKY POWER"}
+{"entite": "Sky Angkor Airlines", "valeur": "SKY WINGS"}
+{"entite": "Sky Aviation", "valeur": "SKY"}
+{"entite": "Sky Gabon", "valeur": "SKY GABON"}
+{"entite": "Sky Gates Airlines", "valeur": "SKY PATH"}
+{"entite": "Sky Georgia", "valeur": "NATIONAL"}
+{"entite": "Sky Regional Airlines", "valeur": "MAPLE"}
+{"entite": "Sky Work Airlines", "valeur": "SKYFOX"}
+{"entite": "SkyAirWorld", "valeur": "SKY AIR"}
+{"entite": "SkyBahamas", "valeur": "TROPICAL SKY"}
+{"entite": "Skybridge AirOps", "valeur": "SKY AIROPS"}
+{"entite": "Skybus Airlines", "valeur": "SKYBUS"}
+{"entite": "SkyEurope Airlines", "valeur": "RELAX"}
+{"entite": "SkyExpress", "valeur": "SKYSTORM"}
+{"entite": "Skyjet Airlines", "valeur": "SKYJET"}
+{"entite": "Skyline", "valeur": "SKYLIMIT"}
+{"entite": "Skyline Airways", "valeur": "SKYLINE"}
+{"entite": "Skyline Express Airline", "valeur": "UT-UKRAINE"}
+{"entite": "Skymark Airlines", "valeur": "SKYMARK"}
+{"entite": "Skynet Airlines", "valeur": "BLUEJET"}
+{"entite": "Skyservice Airlines", "valeur": "SKYTOUR"}
+{"entite": "SkyTaxi", "valeur": "IGUANA"}
+{"entite": "SkyTeam Luftfahrtunternehmen", "valeur": "SKYTEAM"}
+{"entite": "Skytrans Airlines", "valeur": "SKYTRANS"}
+{"entite": "SkyUp", "valeur": "SKYUP"}
+{"entite": "Skyways", "valeur": "SKY EXPRESS"}
+{"entite": "SkyWest Airlines", "valeur": "SKYWEST"}
+{"entite": "Slok Air International", "valeur": "SLOK GAMBIA"}
+{"entite": "Slovak Airlines", "valeur": "SLOV LINE"}
+{"entite": "Slovenian Spirit", "valeur": "SLOVENIAN"}
+{"entite": "SmartLynx Airlines", "valeur": "SMART LYNX"}
+{"entite": "SmartLynx Airlines Malta", "valeur": "MALTA CAT"}
+{"entite": "Smartwings", "valeur": "SKYTRAVEL"}
+{"entite": "Smartwings Hungary", "valeur": "TRAVELAIR"}
+{"entite": "Smartwings Poland", "valeur": "JETTRAVEL"}
+{"entite": "Smartwings Slovakia", "valeur": "SLOVAKTRAVEL"}
+{"entite": "SN Brussels Airlines", "valeur": "S-TAIL"}
+{"entite": "Snowbird Airlines", "valeur": "SNOWMAN"}
+{"entite": "Sobelair", "valeur": "SOBELAIR"}
+{"entite": "Sol del Paraguay", "valeur": "SOLPARAGUAYO"}
+{"entite": "Sol Lineas Aereas", "valeur": "FLIGHT SOL"}
+{"entite": "Sol Linhas Aéreas", "valeur": "SOL"}
+{"entite": "Solaseed Air", "valeur": "NEWSKY"}
+{"entite": "Solenta Aviation", "valeur": "SOLENTA"}
+{"entite": "Solomon Airlines", "valeur": "SOLOMON"}
+{"entite": "Somali Airlines", "valeur": "SOMALAIR"}
+{"entite": "Somon Air", "valeur": "SOMON AIR"}
+{"entite": "SonAir", "valeur": "SONAIR"}
+{"entite": "Song", "valeur": "DELTA"}
+{"entite": "Songbird Airways", "valeur": "SONGBIRD"}
+{"entite": "Sosoliso Airlines", "valeur": "SOSOLISO"}
+{"entite": "South African Airways", "valeur": "SPRINGBOK"}
+{"entite": "South African Express Airways", "valeur": "EXPRESSWAYS"}
+{"entite": "South Airlines", "valeur": "SOUTHLINE"}
+{"entite": "Southern Air", "valeur": "SOUTHERN"}
+{"entite": "Southern Airways", "valeur": "SOUTHERN"}
+{"entite": "Southwest Airlines", "valeur": "SOUTHWEST"}
+{"entite": "Southwind Airlines", "valeur": "MOON STAR"}
+{"entite": "Spanair", "valeur": "SPANAIR"}
+{"entite": "Spantax", "valeur": "SPANTAX"}
+{"entite": "SpiceJet", "valeur": "SPICEJET"}
+{"entite": "Spirit Airlines", "valeur": "SPIRIT WINGS"}
+{"entite": "Spring Airlines", "valeur": "AIR SPRING"}
+{"entite": "Spring Airlines Japan", "valeur": "JEY SPRING"}
+{"entite": "SprintAir", "valeur": "SPRINTAIR"}
+{"entite": "SriLankan Airlines", "valeur": "SRILANKAN"}
+{"entite": "Sriwijaya Air", "valeur": "SRIWIJAYA"}
+{"entite": "St Barth Commuter", "valeur": "BLACK FIN"}
+{"entite": "Star Air", "valeur": "WHITESTAR"}
+{"entite": "Star Air Cargo", "valeur": "BRIGHTSTAR"}
+{"entite": "Star Perú", "valeur": "STAR UP"}
+{"entite": "Star Wings Dortmund", "valeur": "STARTREK"}
+{"entite": "StarFlyer", "valeur": "STARFLYER"}
+{"entite": "Starline.kz", "valeur": "ALUNK"}
+{"entite": "StarLux Airlines", "valeur": "STARWALKER"}
+{"entite": "Sterling Airlines", "valeur": "STERLING"}
+{"entite": "Stobart Air", "valeur": "STOBART"}
+{"entite": "STP Airways", "valeur": "SAOTOME AIRWAYS"}
+{"entite": "Stuttgarter Flugdienst", "valeur": "FIRST FLIGHT"}
+{"entite": "Styrian Spirit", "valeur": "STYRIAN"}
+{"entite": "Sud Airlines", "valeur": "SUD LINES"}
+{"entite": "Sudan Airways", "valeur": "SUDANAIR"}
+{"entite": "Südavia", "valeur": "SUDAVIA"}
+{"entite": "Summit Air", "valeur": "SUMMIT"}
+{"entite": "Sun Air of Scandinavia", "valeur": "SUNSCAN"}
+{"entite": "Sun Country Airlines", "valeur": "SUN COUNTRY"}
+{"entite": "Sun d'Or", "valeur": "ECHO ROMEO"}
+{"entite": "SUNAIR", "valeur": "SUNAIR"}
+{"entite": "Sunbird Airlines", "valeur": "SUNBIRD"}
+{"entite": "Sunclass Airlines", "valeur": "VIKING"}
+{"entite": "Sundair", "valeur": "SUNDAIR"}
+{"entite": "SunExpress", "valeur": "SUNEXPRESS"}
+{"entite": "SunExpress Deutschland", "valeur": "SUNRISE"}
+{"entite": "Sunstate Airlines", "valeur": "Q LINK"}
+{"entite": "Sunwest Aviation", "valeur": "CHINOOK"}
+{"entite": "Sunwing Airlines", "valeur": "SUNWING"}
+{"entite": "Suparna Airlines", "valeur": "YANGTZE RIVER"}
+{"entite": "Surinam Airways", "valeur": "SURINAM"}
+{"entite": "Susi Air", "valeur": "SKYQUEEN"}
+{"entite": "Swaziland Airlink", "valeur": "SWAZILINK"}
+{"entite": "Swiftair", "valeur": "SWIFT"}
+{"entite": "Swiss Global Air Lines", "valeur": "EUROSWISS"}
+{"entite": "Swiss International Air Lines", "valeur": "SWISS"}
+{"entite": "Swiss Private Aviation", "valeur": "SWISSBIRD"}
+{"entite": "Swissair", "valeur": "SWISSAIR"}
+{"entite": "Swoop", "valeur": "SWOOP"}
+{"entite": "Sylt Air", "valeur": "SYLT AIR"}
+{"entite": "Syphax Airlines", "valeur": "SYPHAXAIR"}
+{"entite": "Syrian Arab Airlines", "valeur": "SYRIANAIR"}
+{"entite": "T'way Airlines", "valeur": "TEEWAY"}
+{"entite": "TAAG", "valeur": "ANGOLA"}
+{"entite": "Taca International Airlines", "valeur": "TACA"}
+{"entite": "Tadair", "valeur": "TADAIR"}
+{"entite": "TAF", "valeur": "TAFI"}
+{"entite": "Tailwind Airlines", "valeur": "TAILWIND"}
+{"entite": "Tajikistan Airlines", "valeur": "TAJIKAIR"}
+{"entite": "TAM Air", "valeur": "TBILAVIA"}
+{"entite": "TAME", "valeur": "TAME"}
+{"entite": "Tandem Aero", "valeur": "TANDEM"}
+{"entite": "TANS Peru", "valeur": "AEREOS SELVA"}
+{"entite": "TAP Air Portugal", "valeur": "AIR PORTUGAL"}
+{"entite": "TAP Express", "valeur": "PORTUGAL EXPRESS"}
+{"entite": "Tara Air", "valeur": "TARA AIR"}
+{"entite": "Taron Avia", "valeur": "TARONAVIA"}
+{"entite": "Tasman Cargo Airlines", "valeur": "TASMAN"}
+{"entite": "Tatarstan Airlines", "valeur": "TATARSTAN"}
+{"entite": "Tavrey Airlines", "valeur": "TAVREY"}
+{"entite": "Tayaranjet", "valeur": "ALADIN"}
+{"entite": "Tchadia Airlines", "valeur": "TOUMAI AIR"}
+{"entite": "TEAL", "valeur": "TEAL"}
+{"entite": "Teamline Air", "valeur": "TEAMLINE"}
+{"entite": "Ted", "valeur": "UNITED"}
+{"entite": "Tempelhof Airways", "valeur": "TEMPELHOF"}
+{"entite": "Texas International Airlines", "valeur": "TEXAS INTERNATIONAL"}
+{"entite": "TezJet Airlines", "valeur": "TEZJET"}
+{"entite": "Thai AirAsia", "valeur": "THAI ASIA"}
+{"entite": "Thai Airways", "valeur": "THAI"}
+{"entite": "Thai Airways Company", "valeur": "THAI AIR"}
+{"entite": "Thai Lion Air", "valeur": "MENTARI"}
+{"entite": "Thai Smile", "valeur": "THAI SMILE"}
+{"entite": "Thai Vietjet Air", "valeur": "THAIVIET JET"}
+{"entite": "Thomas Cook Airlines", "valeur": "THOMAS COOK"}
+{"entite": "Thomas Cook Airlines Belgium", "valeur": "THOMAS COOK"}
+{"entite": "Thomsonfly", "valeur": "TOMSON"}
+{"entite": "Tianjin Airlines", "valeur": "BOHAI"}
+{"entite": "Tiara Air", "valeur": "TIARA"}
+{"entite": "Tibet Airlines", "valeur": "TIBET"}
+{"entite": "Tiger Airways", "valeur": "GO CAT"}
+{"entite": "Tiger Airways Australia", "valeur": "GO CAT"}
+{"entite": "Titan Airways", "valeur": "ZAP"}
+{"entite": "Toa Domestic Airlines", "valeur": "TOA DOMES"}
+{"entite": "Tomsk Avia", "valeur": "TOMSK-AVIA"}
+{"entite": "TonleSap Airlines", "valeur": "TONLESAP AIR"}
+{"entite": "Tor Air", "valeur": "TORLINE"}
+{"entite": "Trade Air", "valeur": "TRADEAIR"}
+{"entite": "Trans Air Benin", "valeur": "TRANS-BENIN"}
+{"entite": "Trans Australia Airlines", "valeur": "TRANSAIR"}
+{"entite": "Trans Guyana Airways", "valeur": "TRANS GUYANA"}
+{"entite": "Trans International Airlines", "valeur": "TRANSAMERICA"}
+{"entite": "Trans Mediterranean Airways", "valeur": "TANGO LIMA"}
+{"entite": "Trans Nation Airways", "valeur": "TRANS-NATION"}
+{"entite": "Trans States Airlines", "valeur": "WATERSKI"}
+{"entite": "Trans World Airlines", "valeur": "TWA"}
+{"entite": "Transaero", "valeur": "TRANS SOVIET"}
+{"entite": "TransAsia Airways", "valeur": "TRANSASIA"}
+{"entite": "Transavia Airlines", "valeur": "TRANSAVIA"}
+{"entite": "Transavia Denmark", "valeur": "TDK"}
+{"entite": "Transavia France S.A.S.", "valeur": "FRANCE SOLEIL"}
+{"entite": "Transaviabaltika", "valeur": "TRANSBALTIKA"}
+{"entite": "Transcarga", "valeur": "TIACA"}
+{"entite": "Transeast Airlines", "valeur": "LATTRANS"}
+{"entite": "TransGlobal Airways", "valeur": "TRANSGLOBAL"}
+{"entite": "Transmile Air Services", "valeur": "RAYA EXPRESS"}
+{"entite": "TransNusa", "valeur": "TRANSNUSA"}
+{"entite": "Transporte Aereo Militar", "valeur": "TAMEP"}
+{"entite": "Transportes Aéreos Guatemaltecos", "valeur": "CHAPIN"}
+{"entite": "Transports aériens intercontinentaux", "valeur": "TAI"}
+{"entite": "Trigana Air Service", "valeur": "TRIGANA"}
+{"entite": "Trip Linhas Aéreas", "valeur": "TRIP"}
+{"entite": "Triple Alpha Luftfahrtgesellschaft", "valeur": "CAROLUS"}
+{"entite": "Tristar Air", "valeur": "TRIPLE STAR"}
+{"entite": "Tropic Air", "valeur": "TROPISER"}
+{"entite": "Trump Shuttle", "valeur": "TRUMP"}
+{"entite": "TUI Airways", "valeur": "TUI AIR"}
+{"entite": "TUI fly Belgium", "valeur": "BEAUTY"}
+{"entite": "TUI fly Netherlands", "valeur": "ARKE"}
+{"entite": "TUIfly", "valeur": "TUIJET"}
+{"entite": "TUIfly Nordic", "valeur": "BLUESCAN"}
+{"entite": "Tunisair", "valeur": "TUNAIR"}
+{"entite": "Tunisair Express", "valeur": "TUNEXPRESS"}
+{"entite": "Tunisavia", "valeur": "TUNISAVIA"}
+{"entite": "Turan Air", "valeur": "TURAN"}
+{"entite": "Turkish Airlines", "valeur": "TURKISH"}
+{"entite": "Turkmenistan Airlines", "valeur": "TURKMENISTAN"}
+{"entite": "Turkuaz Airlines", "valeur": "TURKU"}
+{"entite": "Turpial Airlines", "valeur": "TURPIAL"}
+{"entite": "Tus Airways", "valeur": "TUSAIR"}
+{"entite": "Twin Jet", "valeur": "TWINJET"}
+{"entite": "Tyrol Air Ambulance", "valeur": "TYROL AMBULANCE"}
+{"entite": "Tyrolean Jet Services", "valeur": "TYROLJET"}
+{"entite": "Uganda Air Cargo", "valeur": "UGANDA CARGO"}
+{"entite": "Ukraine Air Alliance", "valeur": "UKRAINE ALLIANCE"}
+{"entite": "Ukraine International Airlines", "valeur": "UKRAIINE"}
+{"entite": "Ukrainian Cargo Airways", "valeur": "CARGOTRANS"}
+{"entite": "UM Air", "valeur": "UKRAINE MEDITERRANEE"}
+{"entite": "Uni Air", "valeur": "GLORY"}
+{"entite": "Union de transports aériens", "valeur": "UTA"}
+{"entite": "United Airlines", "valeur": "UNITED"}
+{"entite": "United Airways", "valeur": "UNITED BANGLADESH"}
+{"entite": "Up", "valeur": "EL AL"}
+{"entite": "UPS Airlines", "valeur": "UPS"}
+{"entite": "Ural Airlines", "valeur": "SVERDLOVSK AIR"}
+{"entite": "US Airways", "valeur": "CACTUS"}
+{"entite": "US Airways Shuttle", "valeur": "CACTUS"}
+{"entite": "USA 3000 Airlines", "valeur": "GETAWAY"}
+{"entite": "UTair", "valeur": "UTAIR"}
+{"entite": "Uzbekistan Airways", "valeur": "UZBEKISTAN"}
+{"entite": "V Australia", "valeur": "VEE-OZ"}
+{"entite": "Valuair", "valeur": "VALUAIR"}
+{"entite": "ValuJet", "valeur": "CRITTER"}
+{"entite": "Vanilla Air", "valeur": "VANILLA"}
+{"entite": "Varig", "valeur": "VARIG"}
+{"entite": "Vaso Airlines", "valeur": "VASO"}
+{"entite": "Velvet Sky", "valeur": "VELVET"}
+{"entite": "Venezolana", "valeur": "VENEZOLANA"}
+{"entite": "Vertir Airlines", "valeur": "VERTIR"}
+{"entite": "VG Airlines", "valeur": "NICO"}
+{"entite": "VHM Damme", "valeur": "EARLY BIRD"}
+{"entite": "VHM Schul- und Charterflug", "valeur": "EARLY BIRD"}
+{"entite": "Viação Aérea do São Paulo", "valeur": "VASP"}
+{"entite": "Viaggio Air", "valeur": "VIAGGIO"}
+{"entite": "VIASA", "valeur": "VIASA"}
+{"entite": "Vibroair", "valeur": "VITUS"}
+{"entite": "VietJet Air", "valeur": "VIETJET"}
+{"entite": "Vietnam Air Service Company", "valeur": "VASCO AIR"}
+{"entite": "Vietnam Airlines", "valeur": "VIETNAM AIRLINES"}
+{"entite": "Viking Airlines", "valeur": "SWEDJET"}
+{"entite": "VIM Airlines", "valeur": "MOV AIR"}
+{"entite": "Vincent Aviation", "valeur": "VINCENT"}
+{"entite": "VIP-Flights", "valeur": "VIP FLIGHT"}
+{"entite": "Virgin America", "valeur": "REDWOOD"}
+{"entite": "Virgin Atlantic", "valeur": "VIRGIN"}
+{"entite": "Virgin Australia", "valeur": "VELOCITY"}
+{"entite": "Virgin Australia Regional Airlines", "valeur": "VELOCITY"}
+{"entite": "Virgin Express", "valeur": "VIRGIN EXPRESS"}
+{"entite": "Virgin Sun Airlines", "valeur": "VIRGIN"}
+{"entite": "Vision Airlines", "valeur": "RUBY"}
+{"entite": "VistaJet", "valeur": "VISTA JET"}
+{"entite": "Viva Aerobus", "valeur": "VIVA"}
+{"entite": "Viva Macau", "valeur": "JACKPOT"}
+{"entite": "Vladivostok Avia", "valeur": "VLADAIR"}
+{"entite": "VLM Airlines", "valeur": "RUBENS"}
+{"entite": "Vnukovo Airlines", "valeur": "VNUKOVO"}
+{"entite": "Voepass Linhas Aéreas", "valeur": "PASSAREDO"}
+{"entite": "VolAir", "valeur": "VOLAIR"}
+{"entite": "Volare Airlines", "valeur": "UKRAINE VOLARE"}
+{"entite": "Volare Web", "valeur": "VOLA"}
+{"entite": "Volaris", "valeur": "VOLARIS"}
+{"entite": "Volaris Costa Rica", "valeur": "COSTA RICAN"}
+{"entite": "Voldirect", "valeur": "VOLDIR"}
+{"entite": "Volga-Dnepr Airline", "valeur": "VOLGA DNIPR"}
+{"entite": "Volkswagen Air Service", "valeur": "BEETLE"}
+{"entite": "Volotea", "valeur": "VOLOTEA"}
+{"entite": "Vostok Airlines", "valeur": "VOSTOK"}
+{"entite": "Voyageur Airways", "valeur": "VOYAGEUR"}
+{"entite": "Vueling Airlines", "valeur": "VUELING"}
+{"entite": "Wardair", "valeur": "WARDAIR"}
+{"entite": "Wasaya Airways", "valeur": "WASAYA"}
+{"entite": "Wataniya Airways", "valeur": "WATANIYA"}
+{"entite": "WDL Aviation", "valeur": "WDL"}
+{"entite": "WebJet Linhas Aéreas", "valeur": "WEBJET"}
+{"entite": "Welcome Air", "valeur": "WELCOMEAIR"}
+{"entite": "West Air Luxembourg", "valeur": "WEST LUX"}
+{"entite": "West Air Sweden", "valeur": "AIR SWEDEN"}
+{"entite": "West Caribbean Airways", "valeur": "WEST"}
+{"entite": "West Coast Air", "valeur": "COAST AIR"}
+{"entite": "West Wind Aviation", "valeur": "WESTWIND"}
+{"entite": "Western Airlines", "valeur": "WESTERN"}
+{"entite": "WestJet Airlines", "valeur": "WESTJET"}
+{"entite": "WestJet Encore", "valeur": "ENCORE"}
+{"entite": "White Airways", "valeur": "WHITE JET"}
+{"entite": "White Eagle Aviation", "valeur": "WHITE EAGLE"}
+{"entite": "Widerøe", "valeur": "WIDEROE"}
+{"entite": "Wimbi Dira Airways", "valeur": "WIMBI DIRA"}
+{"entite": "Wind Jet", "valeur": "GHIBLI"}
+{"entite": "Windrose Air", "valeur": "QUADRIGA"}
+{"entite": "Windrose Aviation", "valeur": "WIND ROSE"}
+{"entite": "Windward Islands Airways", "valeur": "WINDWARD"}
+{"entite": "Wingo", "valeur": "AEROREPUBLICA"}
+{"entite": "Wings Air", "valeur": "WINGS ABADI"}
+{"entite": "Wizz Air", "valeur": "WIZZ AIR"}
+{"entite": "Wizz Air Abu Dhabi", "valeur": "WIZZ SKY"}
+{"entite": "Wizz Air Bulgaria", "valeur": "WIZZAIR BULGARIA"}
+{"entite": "Wizz Air UK", "valeur": "WIZZ GO"}
+{"entite": "Wizz Air Ukraine", "valeur": "WIZZAIR UKRAINE"}
+{"entite": "Wondair", "valeur": "WONDAIR"}
+{"entite": "World Airways", "valeur": "WORLD"}
+{"entite": "WOW air", "valeur": "NORDVIND"}
+{"entite": "Wright Air Service", "valeur": "WRIGHT FLYER"}
+{"entite": "Wright Airlines", "valeur": "WRIGHT"}
+{"entite": "Xfly", "valeur": "REVAL"}
+{"entite": "Xiamen Air", "valeur": "XIAMEN AIR"}
+{"entite": "XL Airways France", "valeur": "STARWAY"}
+{"entite": "XL Airways Germany", "valeur": "STARDUST"}
+{"entite": "XL Airways UK", "valeur": "EXPO"}
+{"entite": "Xtra airways", "valeur": "AVELO"}
+{"entite": "Yakutia Airlines", "valeur": "AIR YAKUTIA"}
+{"entite": "Yamal Airlines", "valeur": "YAMAL"}
+{"entite": "Yanair", "valeur": "YANAIR"}
+{"entite": "Yemenia", "valeur": "YEMENI"}
+{"entite": "Yeongnam Air", "valeur": "YEONGNAM AIR"}
+{"entite": "Yerevan-Avia", "valeur": "YEREVAN-AVIA"}
+{"entite": "Yeti Airlines", "valeur": "YETI AIRLINES"}
+{"entite": "Zambezi Airlines", "valeur": "ZAMBEZI WINGS"}
+{"entite": "Zambian Airways", "valeur": "ZAMBIANA"}
+{"entite": "ZanAir", "valeur": "ZANAIR"}
+{"entite": "Zest Air", "valeur": "ZEST"}
+{"entite": "Zimex Aviation", "valeur": "ZIMEX"}
+{"entite": "ZIPAIR Tokyo", "valeur": "ZIPPY"}
+{"entite": "Zoom Airlines", "valeur": "ZOOM"}
+{"entite": "Zoom Airways", "valeur": "ZED AIR"}

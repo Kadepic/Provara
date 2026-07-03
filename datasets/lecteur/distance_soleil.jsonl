@@ -1,0 +1,9 @@
+{"_relation": "distance_soleil", "_categorie": "physique", "_source": "NASA (distance moyenne au Soleil, millions de km)", "_articles": true}
+{"entite": "jupiter", "valeur": "778"}
+{"entite": "mars", "valeur": "228"}
+{"entite": "mercure", "valeur": "58"}
+{"entite": "neptune", "valeur": "4500"}
+{"entite": "saturne", "valeur": "1430"}
+{"entite": "terre", "valeur": "150"}
+{"entite": "uranus", "valeur": "2870"}
+{"entite": "vénus", "valeur": "108"}

@@ -1,0 +1,16 @@
+{"_relation": "nom_groupe_animal", "_categorie": "convention", "_source": "lexique français (animal -> nom collectif)", "_articles": true}
+{"entite": "abeille", "valeur": "un essaim"}
+{"entite": "baleine", "valeur": "un banc"}
+{"entite": "cheval", "valeur": "un troupeau"}
+{"entite": "chien", "valeur": "une meute"}
+{"entite": "corbeau", "valeur": "une nuée"}
+{"entite": "éléphant", "valeur": "un troupeau"}
+{"entite": "fourmi", "valeur": "une colonie"}
+{"entite": "lion", "valeur": "une troupe"}
+{"entite": "loup", "valeur": "une meute"}
+{"entite": "mouton", "valeur": "un troupeau"}
+{"entite": "oie", "valeur": "une volée"}
+{"entite": "oiseau", "valeur": "une volée"}
+{"entite": "poisson", "valeur": "un banc"}
+{"entite": "sauterelle", "valeur": "un nuage"}
+{"entite": "vache", "valeur": "un troupeau"}

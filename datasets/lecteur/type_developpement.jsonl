@@ -1,0 +1,30 @@
+{"_relation": "type_developpement", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (développement direct/indirect ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "indirect"}
+{"entite": "aigle royal", "valeur": "direct"}
+{"entite": "araignée", "valeur": "direct"}
+{"entite": "cheval", "valeur": "direct"}
+{"entite": "chien", "valeur": "direct"}
+{"entite": "coccinelle", "valeur": "indirect"}
+{"entite": "crabe", "valeur": "indirect"}
+{"entite": "crapaud", "valeur": "indirect"}
+{"entite": "escargot", "valeur": "direct"}
+{"entite": "étoile de mer", "valeur": "indirect"}
+{"entite": "être humain", "valeur": "direct"}
+{"entite": "grenouille rousse", "valeur": "indirect"}
+{"entite": "guêpe", "valeur": "indirect"}
+{"entite": "homard", "valeur": "indirect"}
+{"entite": "libellule", "valeur": "indirect"}
+{"entite": "lion", "valeur": "direct"}
+{"entite": "mouche", "valeur": "indirect"}
+{"entite": "moustique", "valeur": "indirect"}
+{"entite": "oursin", "valeur": "indirect"}
+{"entite": "papillon", "valeur": "indirect"}
+{"entite": "pigeon", "valeur": "direct"}
+{"entite": "python", "valeur": "direct"}
+{"entite": "salamandre", "valeur": "indirect"}
+{"entite": "scarabée", "valeur": "indirect"}
+{"entite": "scorpion", "valeur": "direct"}
+{"entite": "serpent", "valeur": "direct"}
+{"entite": "souris", "valeur": "direct"}
+{"entite": "tortue marine", "valeur": "direct"}
+{"entite": "vache", "valeur": "direct"}

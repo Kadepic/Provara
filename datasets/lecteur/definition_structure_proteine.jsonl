@@ -1,0 +1,5 @@
+{"_relation": "definition_structure_proteine", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (structure protéique -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "structure primaire", "valeur": "séquence des acides aminés"}
+{"entite": "structure quaternaire", "valeur": "assemblage de plusieurs chaînes"}
+{"entite": "structure secondaire", "valeur": "hélices alpha et feuillets bêta"}
+{"entite": "structure tertiaire", "valeur": "repliement tridimensionnel de la chaîne"}

@@ -1,0 +1,481 @@
+{"_relation": "code_linguasphere_langue", "_categorie": "convention", "_source": "Wikidata/QLever — CODE LINGUASPHERE DE LA LANGUE P1396", "_articles": true}
+{"entite": "adangbe", "valeur": "96-MAA-ade"}
+{"entite": "adangme", "valeur": "96-LAA-c"}
+{"entite": "afar", "valeur": "14-BAA-b"}
+{"entite": "afrikaans", "valeur": "52-ACB-ba"}
+{"entite": "albanais", "valeur": "55-AAA-a"}
+{"entite": "aléoute", "valeur": "60-AA"}
+{"entite": "allemand de Pennsylvanie", "valeur": "52-ACB-he"}
+{"entite": "allemand huttérite", "valeur": "52-ACB-hc"}
+{"entite": "allemand standard", "valeur": "52-ACB-dl"}
+{"entite": "alsacien", "valeur": "52-ACB-el"}
+{"entite": "Aluku", "valeur": "52-ABB-ayd"}
+{"entite": "aluku-ndjuka-paramaka", "valeur": "52-ABB-ay"}
+{"entite": "alutiiq", "valeur": "60-ABA-d"}
+{"entite": "amami du Nord", "valeur": "45-CAC-ab"}
+{"entite": "amami du Sud", "valeur": "45-CAC-ac"}
+{"entite": "amharique", "valeur": "12-ACB-a"}
+{"entite": "amis", "valeur": "30-KAA-a"}
+{"entite": "andoquero", "valeur": "83-BAE-aa"}
+{"entite": "angevin", "valeur": "51-AAA-hne"}
+{"entite": "anglais", "valeur": "52-ABA"}
+{"entite": "anii", "valeur": "96-GAB-b"}
+{"entite": "arabe", "valeur": "12-AAC"}
+{"entite": "arabe levantin", "valeur": "12-AAC-eh"}
+{"entite": "arabe standard", "valeur": "12-AAC-a"}
+{"entite": "arabe standard moderne", "valeur": "12-AAC-ab"}
+{"entite": "arakanais", "valeur": "77-AAA-abb"}
+{"entite": "araméen", "valeur": "12-AAA"}
+{"entite": "aranais", "valeur": "51-AAA-ff"}
+{"entite": "ari", "valeur": "24-JBB-aa"}
+{"entite": "arménien", "valeur": "57-AAA-a"}
+{"entite": "arménien classique", "valeur": "57-AAA-aa"}
+{"entite": "assamais", "valeur": "59-AAF-w"}
+{"entite": "atayal", "valeur": "30-AAA"}
+{"entite": "auregnais", "valeur": "51-AAA-hcg"}
+{"entite": "austral", "valeur": "39-CAQ-ja"}
+{"entite": "bachkir", "valeur": "44-AAB-bg"}
+{"entite": "bafaw-balong", "valeur": "99-AJB-a"}
+{"entite": "bakoko", "valeur": "99-AUB-c"}
+{"entite": "bapen", "valeur": "90-JAA-ac"}
+{"entite": "baré", "valeur": "82-AHA-b"}
+{"entite": "barma", "valeur": "03-AAA-a"}
+{"entite": "bas allemand", "valeur": "52-ACB-c"}
+{"entite": "bas allemand mennonite", "valeur": "52-ACB-hd"}
+{"entite": "basque", "valeur": "40-AAA-a"}
+{"entite": "bassa", "valeur": "99-AUB-b"}
+{"entite": "batak angkola", "valeur": "31-MDC-ac"}
+{"entite": "bebele", "valeur": "99-AUD-ce"}
+{"entite": "bedja", "valeur": "13-AAA-aa"}
+{"entite": "bemba", "valeur": "99-AUR-r"}
+{"entite": "bena", "valeur": "99-AUS-ub"}
+{"entite": "bengali", "valeur": "59-AAF-u"}
+{"entite": "béria", "valeur": "02-CAA-aa"}
+{"entite": "biélorusse", "valeur": "53-AAA-eb"}
+{"entite": "birman", "valeur": "77-AAA-a"}
+{"entite": "biyo", "valeur": "77-BCA-ai"}
+{"entite": "bokmål", "valeur": "52-AAA-cda"}
+{"entite": "bole", "valeur": "19-BAB-a"}
+{"entite": "Bonan", "valeur": "44-BAA-eb"}
+{"entite": "Bono", "valeur": "96-FCC-a"}
+{"entite": "boulou", "valeur": "99-AUC-cm"}
+{"entite": "bourbonnais", "valeur": "51-AAA-hma"}
+{"entite": "breton", "valeur": "50-ABB-b"}
+{"entite": "brittonique", "valeur": "50-AB"}
+{"entite": "bulgare", "valeur": "53-AAA-hb"}
+{"entite": "buli", "valeur": "19-ECB-e"}
+{"entite": "byali", "valeur": "91-GGE-a"}
+{"entite": "campidanien", "valeur": "51-AAA-sd"}
+{"entite": "catalan", "valeur": "51-AAA-e"}
+{"entite": "catawba", "valeur": "64-ABA-ab"}
+{"entite": "cébouano", "valeur": "31-CKG-p"}
+{"entite": "cham", "valeur": "31-MAC-c"}
+{"entite": "cham de Phan Rang", "valeur": "31-MAC-ca"}
+{"entite": "chamorro", "valeur": "31-RAA-a"}
+{"entite": "champenois", "valeur": "51-AAA-hg"}
+{"entite": "chaná", "valeur": "85-DCA-d"}
+{"entite": "chewa", "valeur": "99-AUS-xa"}
+{"entite": "chhattisgarhi", "valeur": "59-AAF-ta"}
+{"entite": "chuuk", "valeur": "38-AAB-h"}
+{"entite": "cimbre", "valeur": "52-ACB-eg"}
+{"entite": "colville-okanagan", "valeur": "66-FCB-a"}
+{"entite": "coréen", "valeur": "45-AAA-a"}
+{"entite": "cornique", "valeur": "50-ABB-a"}
+{"entite": "créole anglais nicaraguayen", "valeur": "52-ABB-af"}
+{"entite": "créole antiguais-et-barbudien", "valeur": "52-ABB-apf"}
+{"entite": "créole australien", "valeur": "52-ABB-ca"}
+{"entite": "créole barbadien", "valeur": "52-ABB-ar"}
+{"entite": "créole bélizien", "valeur": "52-ABB-ad"}
+{"entite": "créole cap-verdien", "valeur": "51-AAC-aa"}
+{"entite": "créole dominiquais", "valeur": "51-AAC-cce"}
+{"entite": "créole grenadais", "valeur": "52-ABB-as"}
+{"entite": "créole hollandais de Berbice", "valeur": "52-ACB-bd"}
+{"entite": "créole indo-portugais de Cochin", "valeur": "51-AAC-agd"}
+{"entite": "créole indo-portugais de Daman et Diu", "valeur": "51-AAC-agb"}
+{"entite": "créole jamaïcain", "valeur": "52-ABB-am"}
+{"entite": "créole louisianais", "valeur": "51-AAC-ca"}
+{"entite": "créole marie-galantais", "valeur": "51-AAC-ccd"}
+{"entite": "créole martiniquais", "valeur": "51-AAC-ccf"}
+{"entite": "créole réunionnais", "valeur": "51-AAC-cf"}
+{"entite": "créole sainte-lucien", "valeur": "51-AAC-ccg"}
+{"entite": "créole srilankais", "valeur": "51-AAC-age"}
+{"entite": "créole trinidadien", "valeur": "51-AAC-cck"}
+{"entite": "créoles indo-portugais", "valeur": "51-AAC-ag"}
+{"entite": "cri de l’Est, dialecte du Nord", "valeur": "62-ADA-af"}
+{"entite": "cri de l’Est, dialecte du Sud", "valeur": "62-ADA-ag"}
+{"entite": "cri des plaines", "valeur": "62-ADA-aa"}
+{"entite": "danois", "valeur": "52-AAA-cc"}
+{"entite": "dari", "valeur": "58-AAC-ce"}
+{"entite": "daur", "valeur": "44-BAA-ca"}
+{"entite": "dazaga-kara", "valeur": "02-BAA-ab"}
+{"entite": "dialectes dalécarliens", "valeur": "52-AAA-cs"}
+{"entite": "dogosé", "valeur": "91-GEA-a"}
+{"entite": "dogoso", "valeur": "91-FAA-a"}
+{"entite": "Duala", "valeur": "99-AUA-ba"}
+{"entite": "égyptien ancien", "valeur": "11-AAA-a"}
+{"entite": "ekpeye", "valeur": "98-GAB-a"}
+{"entite": "énètse", "valeur": "41-CAA-ac"}
+{"entite": "erzya", "valeur": "41-AAD-aa"}
+{"entite": "espagnol", "valeur": "51-AAA-b"}
+{"entite": "espagnol mexicain", "valeur": "51-AAA-bha"}
+{"entite": "espagnol philippin", "valeur": "51-AAA-bhw"}
+{"entite": "espéranto", "valeur": "51-AAB-da"}
+{"entite": "eton", "valeur": "99-AUC-b"}
+{"entite": "etsako", "valeur": "98-FAC-c"}
+{"entite": "évène", "valeur": "44-CAA-a"}
+{"entite": "evenki", "valeur": "44-CAA-b"}
+{"entite": "ewondo", "valeur": "99-AUC-ca"}
+{"entite": "fá d'Ambô", "valeur": "51-AAC-ae"}
+{"entite": "fang", "valeur": "99-AUC-ct"}
+{"entite": "féroïen", "valeur": "52-AAA-ab"}
+{"entite": "finnois", "valeur": "41-AAA-a"}
+{"entite": "flamand occidental", "valeur": "52-ACB-ag"}
+{"entite": "four", "valeur": "05-CAA-aa"}
+{"entite": "franc-comtois", "valeur": "51-AAA-hj"}
+{"entite": "français", "valeur": "51-AAA-i"}
+{"entite": "français cadien", "valeur": "51-AAA-hp"}
+{"entite": "français de Nouvelle-Angleterre", "valeur": "51-AAA-iid"}
+{"entite": "francique ripuaire", "valeur": "52-ACB-da"}
+{"entite": "frioulan", "valeur": "51-AAA-m"}
+{"entite": "frison oriental", "valeur": "52-ACA-c"}
+{"entite": "frison saterlandais", "valeur": "52-ACA-ca"}
+{"entite": "galicien", "valeur": "51-AAA-ab"}
+{"entite": "gallo", "valeur": "51-AAA-hb"}
+{"entite": "gallois", "valeur": "50-ABA-a"}
+{"entite": "géorgien", "valeur": "42-CAB"}
+{"entite": "ghomala’", "valeur": "99-AGE-e"}
+{"entite": "gilbertin", "valeur": "39-DAA-aa"}
+{"entite": "gorontalo", "valeur": "31-NJA-a"}
+{"entite": "gotique", "valeur": "52-ADA"}
+{"entite": "gotique de Crimée", "valeur": "52-ADA-a"}
+{"entite": "grebo", "valeur": "95-ABA-l"}
+{"entite": "grec démotique", "valeur": "56-AAA-ac"}
+{"entite": "groenlandais", "valeur": "60-ABB-g"}
+{"entite": "guègue", "valeur": "55-AAA-aa"}
+{"entite": "gujarati", "valeur": "59-AAF-h"}
+{"entite": "gujari", "valeur": "59-AAF-go"}
+{"entite": "gullah", "valeur": "52-ABB-aa"}
+{"entite": "hainanais", "valeur": "79-AAA-k"}
+{"entite": "hare", "valeur": "61-BAE-cb"}
+{"entite": "haut-valaisan", "valeur": "52-ACB-fd"}
+{"entite": "hawaïen", "valeur": "39-CAQ-e"}
+{"entite": "hébreu", "valeur": "12-AAB-a"}
+{"entite": "hébreu biblique", "valeur": "12-AAB-aa"}
+{"entite": "hébreu moderne", "valeur": "12-AAB-ab"}
+{"entite": "hébreu samaritain", "valeur": "12-AAB"}
+{"entite": "hehe", "valeur": "99-AUS-ua"}
+{"entite": "héréro", "valeur": "99-AUR-ld"}
+{"entite": "hindi des Fidji", "valeur": "59-AAF-raf"}
+{"entite": "hindoustani des Caraïbes", "valeur": "59-AAF-sc"}
+{"entite": "hindoustani du Suriname", "valeur": "59-AAF-scc"}
+{"entite": "hiri motou", "valeur": "34-GBC-b"}
+{"entite": "hokkaidō-ben", "valeur": "45-CAA-abf"}
+{"entite": "hongrois", "valeur": "41-BAA-a"}
+{"entite": "hungana", "valeur": "99-AUR-gt"}
+{"entite": "iaai", "valeur": "37-DAA-aa"}
+{"entite": "ido", "valeur": "51-AAB-db"}
+{"entite": "igbo", "valeur": "98-GAA-a"}
+{"entite": "ikwere", "valeur": "98-GAA-e"}
+{"entite": "ilocano", "valeur": "31-CBA-a"}
+{"entite": "inuktitut", "valeur": "60-ABB-d"}
+{"entite": "irlandais", "valeur": "50-AA"}
+{"entite": "islandais", "valeur": "52-AAA-aa"}
+{"entite": "italien", "valeur": "51-AAA-q"}
+{"entite": "izon", "valeur": "97-AAA-a"}
+{"entite": "japonais", "valeur": "45-CAA"}
+{"entite": "judéo-géorgien", "valeur": "42-CAB-bal"}
+{"entite": "jurchen", "valeur": "44-CAA-cc"}
+{"entite": "kado", "valeur": "75-BAA-aaa"}
+{"entite": "kagoro", "valeur": "00-AAA-ag"}
+{"entite": "kalaallisut", "valeur": "60-ABB-gb"}
+{"entite": "kalaamaya", "valeur": "29-BFB-ae"}
+{"entite": "kalabari", "valeur": "97-AAD-a"}
+{"entite": "kalarko", "valeur": "29-BFC-aa"}
+{"entite": "kalasha", "valeur": "59-AAB-ab"}
+{"entite": "kamasse", "valeur": "41-CAB-ab"}
+{"entite": "kangéanique", "valeur": "31-MFL-b"}
+{"entite": "kannara", "valeur": "49-EBA-a"}
+{"entite": "kansai-ben", "valeur": "45-CAA-af"}
+{"entite": "karekare", "valeur": "19-CAA-a"}
+{"entite": "karipuna", "valeur": "51-AAC-cdd"}
+{"entite": "khassonké", "valeur": "00-AAA-af"}
+{"entite": "khowar", "valeur": "59-AAB-aa"}
+{"entite": "kikai", "valeur": "45-CAC-aa"}
+{"entite": "kinyarwanda", "valeur": "99-AUS-df"}
+{"entite": "kisi", "valeur": "99-AUS-re"}
+{"entite": "kohistani de Kalam", "valeur": "59-AAC-c"}
+{"entite": "koihoma", "valeur": "83-BAG-aa"}
+{"entite": "kom", "valeur": "99-AGD-bc"}
+{"entite": "komi-permiak", "valeur": "41-AAE-ab"}
+{"entite": "komi yazva", "valeur": "41-AAE-aac"}
+{"entite": "komi-zyriène", "valeur": "41-AAE-aa"}
+{"entite": "korku", "valeur": "46-CAA-a"}
+{"entite": "krio", "valeur": "52-ABB-bb"}
+{"entite": "kristang", "valeur": "51-AAC-aha"}
+{"entite": "kunigami", "valeur": "45-CAC-ah"}
+{"entite": "kurde", "valeur": "58-AAA"}
+{"entite": "kurima", "valeur": "45-CAC-bad"}
+{"entite": "kwa'", "valeur": "99-AGE-h"}
+{"entite": "lahndi", "valeur": "59-AAF-ed"}
+{"entite": "laki", "valeur": "58-AAC-aac"}
+{"entite": "langue bildt", "valeur": "52-ACB-ada"}
+{"entite": "laragia", "valeur": "28-HBA-a"}
+{"entite": "latino sine flexione", "valeur": "51-AAB-ab"}
+{"entite": "laze", "valeur": "42-CAA-b"}
+{"entite": "léonais", "valeur": "51-AAA-cc"}
+{"entite": "letton", "valeur": "54-AAB-a"}
+{"entite": "ligure", "valeur": "51-AAA-oh"}
+{"entite": "limbum", "valeur": "99-AGE-ba"}
+{"entite": "lingala", "valeur": "99-AUI-f"}
+{"entite": "lituanien", "valeur": "54-AAA-a"}
+{"entite": "lobiri", "valeur": "91-GGA-al"}
+{"entite": "lorrain", "valeur": "51-AAA-hh"}
+{"entite": "lowa", "valeur": "70-AAA-ea"}
+{"entite": "luo", "valeur": "04-ACC-ab"}
+{"entite": "luxembourgeois", "valeur": "52-ACB-db"}
+{"entite": "macédonien", "valeur": "53-AAA-ha"}
+{"entite": "maka", "valeur": "19-BAA-a"}
+{"entite": "malais", "valeur": "31-MFA-a"}
+{"entite": "malais baba", "valeur": "31-MFB-a"}
+{"entite": "malayâlam", "valeur": "49-EBE-ba"}
+{"entite": "malinké de Kita", "valeur": "00-AAA-aha"}
+{"entite": "malinké de l'Ouest", "valeur": "00-AAA-ac"}
+{"entite": "maltais", "valeur": "12-AAC-c"}
+{"entite": "manda", "valeur": "99-AUS-ra"}
+{"entite": "mandarin", "valeur": "79-AAA-b"}
+{"entite": "mangarévien", "valeur": "39-CAQ-k"}
+{"entite": "maninkakan de l'Est", "valeur": "00-AAA-ah"}
+{"entite": "mannois", "valeur": "50-AAA-aj"}
+{"entite": "manyjilyjara", "valeur": "29-BGE-aa"}
+{"entite": "māori", "valeur": "39-CAQ-a"}
+{"entite": "marathi", "valeur": "59-AAF-o"}
+{"entite": "mari", "valeur": "41-AAC-a"}
+{"entite": "marma", "valeur": "77-AAA-abc"}
+{"entite": "marquisien du Nord", "valeur": "39-CAQ-f"}
+{"entite": "marquisien du Sud", "valeur": "39-CAQ-g"}
+{"entite": "martu wangka", "valeur": "29-BGE-a"}
+{"entite": "matengo", "valeur": "99-AUS-rc"}
+{"entite": "mayennais", "valeur": "51-AAA-hnf"}
+{"entite": "mbembe tigon", "valeur": "98-IBE-a"}
+{"entite": "mbugu", "valeur": "15-ACA-aa"}
+{"entite": "mekè", "valeur": "99-AUC-cv"}
+{"entite": "mengaka", "valeur": "99-AGE-dc"}
+{"entite": "mesmes", "valeur": "12-ACC-bd"}
+{"entite": "miao chuanqiandian", "valeur": "48-AAA-a"}
+{"entite": "min de Leizhou", "valeur": "79-AAA-jj"}
+{"entite": "mindong", "valeur": "79-AAA-ic"}
+{"entite": "mingrélien", "valeur": "42-CAA-a"}
+{"entite": "minnan", "valeur": "79-AAA-j"}
+{"entite": "minnan du Chaoshan", "valeur": "79-AAA-ji"}
+{"entite": "miyako", "valeur": "45-CAC-ba"}
+{"entite": "moksa", "valeur": "41-AAD-ab"}
+{"entite": "môn", "valeur": "46-GAA-a"}
+{"entite": "mono", "valeur": "93-ABA-fa"}
+{"entite": "moriori", "valeur": "39-CAQ-af"}
+{"entite": "mortlock", "valeur": "38-AAB-i"}
+{"entite": "muong", "valeur": "46-EAA-aa"}
+{"entite": "Mvaï", "valeur": "99-AUC-cw"}
+{"entite": "mwesen", "valeur": "38-HAD-bc"}
+{"entite": "namonuito", "valeur": "38-AAB-f"}
+{"entite": "nanaï", "valeur": "44-CAA-ea"}
+{"entite": "naténi", "valeur": "91-GGD-fa"}
+{"entite": "naukan", "valeur": "60-ABA-bb"}
+{"entite": "nauruan", "valeur": "38-EAA-aa"}
+{"entite": "navarro-aragonais", "valeur": "51-AAA-da"}
+{"entite": "nda'nda'", "valeur": "99-AGE-g"}
+{"entite": "néerlandais", "valeur": "52-ACB-a"}
+{"entite": "néguidale", "valeur": "44-CAA-ca"}
+{"entite": "nénètse", "valeur": "41-CAA-aa"}
+{"entite": "nénètse de la toundra", "valeur": "41-CAA-aa"}
+{"entite": "nénètse des forêts", "valeur": "41-CAA-ab"}
+{"entite": "ngadjunmaya", "valeur": "29-BFC-ab"}
+{"entite": "ngamo", "valeur": "19-BAC-a"}
+{"entite": "nganassane", "valeur": "41-CAA-ad"}
+{"entite": "ngiemboon", "valeur": "99-AGE-db"}
+{"entite": "ngizim", "valeur": "19-DAA-a"}
+{"entite": "ngomba", "valeur": "99-AGE-dd"}
+{"entite": "ngombale", "valeur": "99-AGE-da"}
+{"entite": "ngwe", "valeur": "99-AGE-ca"}
+{"entite": "niçois", "valeur": "51-AAA-gd"}
+{"entite": "nitinaht", "valeur": "66-CAB-ab"}
+{"entite": "niuéen", "valeur": "39-CAP-a"}
+{"entite": "nivaklé", "valeur": "85-ABB-a"}
+{"entite": "norfolk", "valeur": "52-ABB-ddb"}
+{"entite": "normand continental", "valeur": "51-AAA-hd"}
+{"entite": "norne", "valeur": "52-AAA-ac"}
+{"entite": "nouveau-bargu", "valeur": "44-BAA-bbo"}
+{"entite": "novial", "valeur": "51-AAB-dc"}
+{"entite": "nuer", "valeur": "04-AAB-a"}
+{"entite": "nufi", "valeur": "99-AGE-f"}
+{"entite": "nuxalk", "valeur": "66-EAA-a"}
+{"entite": "nyahkur", "valeur": "46-GAA-b"}
+{"entite": "nynorsk", "valeur": "52-AAA-be"}
+{"entite": "obanliku", "valeur": "98-JEA-cd"}
+{"entite": "ogba", "valeur": "98-GAA-db"}
+{"entite": "Okak", "valeur": "99-AUC-ct"}
+{"entite": "oki-no-erabu", "valeur": "45-CAC-ae"}
+{"entite": "okinawaïen", "valeur": "45-CAC-ai"}
+{"entite": "olonetsien", "valeur": "41-AAA-bc"}
+{"entite": "orléanais", "valeur": "51-AAA-hna"}
+{"entite": "orok", "valeur": "44-CAA-ef"}
+{"entite": "oroqen", "valeur": "44-CAA-bd"}
+{"entite": "orotche", "valeur": "44-CAA-db"}
+{"entite": "oudihe", "valeur": "44-CAA-da"}
+{"entite": "oudmourte", "valeur": "41-AAE-ac"}
+{"entite": "oultche", "valeur": "44-CAA-eea"}
+{"entite": "ourdou", "valeur": "59-AAF-q"}
+{"entite": "paafang", "valeur": "38-AAB-g"}
+{"entite": "pachto", "valeur": "58-ABD-a"}
+{"entite": "pahari-pothwari", "valeur": "59-AAF-ba"}
+{"entite": "palembang", "valeur": "31-MFA-dh"}
+{"entite": "pali", "valeur": "59-AAF-pb"}
+{"entite": "pangassinais", "valeur": "31-CGA-f"}
+{"entite": "papiamento", "valeur": "51-AAC-be"}
+{"entite": "papiamento d'Aruba", "valeur": "51-AAC-beb"}
+{"entite": "pasemah", "valeur": "31-MFA-dr"}
+{"entite": "patois macanais", "valeur": "51-AAC-ai"}
+{"entite": "pawnee", "valeur": "64-BAB-b"}
+{"entite": "pendjabi", "valeur": "59-AAF-e"}
+{"entite": "penesak", "valeur": "31-MFA-dk"}
+{"entite": "percheron", "valeur": "51-AAA-hnl"}
+{"entite": "piaroa", "valeur": "87-FAA-a"}
+{"entite": "picard", "valeur": "51-AAA-he"}
+{"entite": "pidgin camerounais", "valeur": "52-ABB-bg"}
+{"entite": "pidgin des îles Salomon", "valeur": "52-ABB-cd"}
+{"entite": "pigdin nauruan", "valeur": "52-ABB-db"}
+{"entite": "pinghua", "valeur": "79-AAA-o"}
+{"entite": "pipil", "valeur": "65-AGB-b"}
+{"entite": "pitcairnais", "valeur": "52-ABB-dd"}
+{"entite": "pongo", "valeur": "99-AUA-be"}
+{"entite": "portugais", "valeur": "51-AAA-a"}
+{"entite": "pouyouma", "valeur": "30-JAA-a"}
+{"entite": "pove", "valeur": "99-APB-ea"}
+{"entite": "principense", "valeur": "51-AAC-acb"}
+{"entite": "provençal", "valeur": "51-AAA-gc"}
+{"entite": "puditara", "valeur": "29-BGE-ac"}
+{"entite": "puguli", "valeur": "91-GFB-ba"}
+{"entite": "pukapuka", "valeur": "39-CAN-a"}
+{"entite": "puluwat", "valeur": "38-AAB-e"}
+{"entite": "putonghua", "valeur": "79-AAA-bbc"}
+{"entite": "puxian", "valeur": "79-AAA-id"}
+{"entite": "rapanui", "valeur": "39-CAR"}
+{"entite": "rejang", "valeur": "31-MFI-a"}
+{"entite": "rekhta", "valeur": "59-AAF-qaa"}
+{"entite": "riksmål", "valeur": "52-AAA-cdb"}
+{"entite": "romanche", "valeur": "51-AAA-k"}
+{"entite": "ronga", "valeur": "99-AUT-dd"}
+{"entite": "rotuman", "valeur": "39-AAA-aa"}
+{"entite": "roumain", "valeur": "51-AAD-c"}
+{"entite": "rukai", "valeur": "30-HAA-a"}
+{"entite": "russe", "valeur": "53-AAA-ea"}
+{"entite": "rusyn", "valeur": "53-AAA-ec"}
+{"entite": "sabir", "valeur": "51-AAB-c"}
+{"entite": "saisiyat", "valeur": "30-CAA-a"}
+{"entite": "same d'Inari", "valeur": "41-AAB-bb"}
+{"entite": "same d'Ume", "valeur": "41-AAB-ca"}
+{"entite": "same de Kildin", "valeur": "41-AAB-bd"}
+{"entite": "same de Lule", "valeur": "41-AAB-ab"}
+{"entite": "same de Pite", "valeur": "41-AAB-ac"}
+{"entite": "same de Ter", "valeur": "41-AAB-bc"}
+{"entite": "same du Nord", "valeur": "41-AAB-aa"}
+{"entite": "same skolt", "valeur": "41-AAB-ba"}
+{"entite": "saraiki", "valeur": "59-AAF-eq"}
+{"entite": "sarthois", "valeur": "51-AAA-hnd"}
+{"entite": "sassarais", "valeur": "51-AAA-pe"}
+{"entite": "satawal", "valeur": "38-AAB-da"}
+{"entite": "seediq", "valeur": "30-AAB"}
+{"entite": "serbo-croate", "valeur": "53-AAA-g"}
+{"entite": "settla", "valeur": "99-AUS-my"}
+{"entite": "shan", "valeur": "47-AAA-ae"}
+{"entite": "shaojiang", "valeur": "79-AAA-l"}
+{"entite": "shelta", "valeur": "50-ACA-a"}
+{"entite": "shona", "valeur": "99-AUT-a"}
+{"entite": "sikkimais", "valeur": "70-AAA-bb"}
+{"entite": "silt’e", "valeur": "12-ACC-bc"}
+{"entite": "sindhi", "valeur": "59-AAF-f"}
+{"entite": "sindhi bhil", "valeur": "59-AAF-fh"}
+{"entite": "siraya", "valeur": "30-FAA-b"}
+{"entite": "sirenik", "valeur": "60-ABA-a"}
+{"entite": "sirionó", "valeur": "88-AAI-aa"}
+{"entite": "sisaala", "valeur": "91-GFB-c"}
+{"entite": "sisaala tumulung", "valeur": "91-GFB-ca"}
+{"entite": "sisaali", "valeur": "91-GFB-ca"}
+{"entite": "slovaque", "valeur": "53-AAA-db"}
+{"entite": "slovince", "valeur": "53-AAA-ca"}
+{"entite": "somali", "valeur": "14-GAG-a"}
+{"entite": "sonsorolais", "valeur": "38-AAB-a"}
+{"entite": "sotho du Nord", "valeur": "99-AUT-ed"}
+{"entite": "sotho du Sud", "valeur": "99-AUT-ee"}
+{"entite": "souabe", "valeur": "52-ACB-ej"}
+{"entite": "soundanais", "valeur": "31-MFN-a"}
+{"entite": "spokane", "valeur": "66-FCB-bd"}
+{"entite": "sranan", "valeur": "52-ABB-aw"}
+{"entite": "sui", "valeur": "47-ABB-b"}
+{"entite": "suki", "valeur": "24-JAA-a"}
+{"entite": "svane", "valeur": "42-CB"}
+{"entite": "swahili", "valeur": "99-AUS-m"}
+{"entite": "swati", "valeur": "99-AUT-fe"}
+{"entite": "sylheti", "valeur": "59-AAF-ui"}
+{"entite": "tagalog", "valeur": "31-CKA-a"}
+{"entite": "tahitien", "valeur": "39-CAQ-h"}
+{"entite": "taivoan", "valeur": "30-FAA-bb"}
+{"entite": "taïwanais", "valeur": "79-AAA-jh"}
+{"entite": "tamahaq", "valeur": "10-AAA-ba"}
+{"entite": "tamajeq de l'Aïr", "valeur": "10-AAA-bbe"}
+{"entite": "tamasheq", "valeur": "10-AAA-b"}
+{"entite": "tamoul", "valeur": "49-EBE-a"}
+{"entite": "tanapag", "valeur": "38-AAB-dc"}
+{"entite": "tedaga", "valeur": "02-BAA-aa"}
+{"entite": "télougou", "valeur": "49-DBA-aa"}
+{"entite": "tem", "valeur": "91-GFC-c"}
+{"entite": "teochew", "valeur": "79-AAA-ji"}
+{"entite": "thaï du Sud", "valeur": "47-AAA-bd"}
+{"entite": "tibétain", "valeur": "70-AAA-ac"}
+{"entite": "tigrigna", "valeur": "12-ACA-c"}
+{"entite": "tiwa du Sud", "valeur": "64-CAA-b"}
+{"entite": "tōhoku-ben", "valeur": "45-CAA-ae"}
+{"entite": "tokelau", "valeur": "39-CAK-c"}
+{"entite": "toku-no-shima", "valeur": "45-CAC-ad"}
+{"entite": "tongareva", "valeur": "39-CAQ-d"}
+{"entite": "toscan", "valeur": "51-AAA-qa"}
+{"entite": "tourangeau", "valeur": "51-AAA-hnc"}
+{"entite": "tsonga", "valeur": "99-AUT-dc"}
+{"entite": "tswana", "valeur": "99-AUT-eg"}
+{"entite": "tumbuka", "valeur": "99-AUS-wc"}
+{"entite": "tunumiit", "valeur": "60-ABB-gc"}
+{"entite": "ukrainien", "valeur": "53-AAA-ed"}
+{"entite": "ukwuani-aboh-ndoni", "valeur": "98-GAA-c"}
+{"entite": "ulithi", "valeur": "38-AAB-b"}
+{"entite": "unami", "valeur": "62-AEB-bb"}
+{"entite": "unserdeutsch", "valeur": "52-ACB-hu"}
+{"entite": "Ɗuwai", "valeur": "19-DAC-a"}
+{"entite": "venda", "valeur": "99-AUT-b"}
+{"entite": "vénitien", "valeur": "51-AAA-nb"}
+{"entite": "vieil irlandais", "valeur": "50-AAA-ad"}
+{"entite": "vieux-bargu", "valeur": "44-BAA-bbp"}
+{"entite": "vieux breton", "valeur": "50-ABB-ba"}
+{"entite": "vwanji", "valeur": "99-AUS-ue"}
+{"entite": "wadjiginy", "valeur": "28-FBB-a"}
+{"entite": "wanga", "valeur": "99-AUS-fg"}
+{"entite": "wendat", "valeur": "63-AAA-ba"}
+{"entite": "westphalien", "valeur": "52-ACB-ce"}
+{"entite": "wolane", "valeur": "12-ACC-bb"}
+{"entite": "woleai", "valeur": "38-AAB-c"}
+{"entite": "wolof", "valeur": "90-AAA-a"}
+{"entite": "xhosa", "valeur": "99-AUT-fa"}
+{"entite": "xiang", "valeur": "79-AAA-e"}
+{"entite": "xibe", "valeur": "44-CAA-cbe"}
+{"entite": "yaeyama", "valeur": "45-CAC-bb"}
+{"entite": "yami", "valeur": "31-CAA-a"}
+{"entite": "yemsa", "valeur": "16-BCA-aa"}
+{"entite": "yévanique", "valeur": "56-AAA-am"}
+{"entite": "yiddish", "valeur": "52-ACB-g"}
+{"entite": "yola", "valeur": "52-ABA-bd"}
+{"entite": "yonaguni", "valeur": "45-CAC-bc"}
+{"entite": "yoron", "valeur": "45-CAC-af"}
+{"entite": "yupik de l'Alaska central", "valeur": "60-ABA-c"}
+{"entite": "yupik sibérien central", "valeur": "60-ABA-ba"}
+{"entite": "zandé", "valeur": "99-AUI-f"}
+{"entite": "zélandais", "valeur": "52-ACB-af"}
+{"entite": "zoulou", "valeur": "99-AUT-fg"}
+{"entite": "zul", "valeur": "19-ECB-b"}

@@ -1,0 +1,4 @@
+{"_relation": "role_constituant_membrane", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (constituant membranaire -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cholestérol", "valeur": "régulation de la fluidité de la membrane"}
+{"entite": "phospholipides", "valeur": "formation de la bicouche"}
+{"entite": "protéines membranaires", "valeur": "transport et communication"}

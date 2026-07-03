@@ -1,0 +1,9 @@
+{"_relation": "anneaux_planete", "_categorie": "physique", "_source": "présence d'un système d'anneaux (oui/non)", "_articles": true}
+{"entite": "jupiter", "valeur": "oui"}
+{"entite": "mars", "valeur": "non"}
+{"entite": "mercure", "valeur": "non"}
+{"entite": "neptune", "valeur": "oui"}
+{"entite": "saturne", "valeur": "oui"}
+{"entite": "terre", "valeur": "non"}
+{"entite": "uranus", "valeur": "oui"}
+{"entite": "vénus", "valeur": "non"}

@@ -1,0 +1,3 @@
+{"_relation": "localisation_materiel_genetique", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (cellule -> localisation de l'ADN ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cellule eucaryote", "valeur": "noyau"}
+{"entite": "cellule procaryote", "valeur": "cytoplasme"}

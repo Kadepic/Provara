@@ -1,0 +1,5 @@
+{"_relation": "composition_vaccin", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (type de vaccin -> antigène ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "vaccin à ARN messager", "valeur": "ARN codant un antigène"}
+{"entite": "vaccin inactivé", "valeur": "agent infectieux tué"}
+{"entite": "vaccin sous-unitaire", "valeur": "fragment de l'agent infectieux"}
+{"entite": "vaccin vivant atténué", "valeur": "agent infectieux vivant affaibli"}

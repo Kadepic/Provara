@@ -1,0 +1,3 @@
+{"_relation": "sexe_caryotype_humain", "_categorie": "physique", "_source": "Modèle (Claude) — génétique humaine textbook curée (caryotype sexuel -> sexe ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "XX", "valeur": "féminin"}
+{"entite": "XY", "valeur": "masculin"}

@@ -1,0 +1,666 @@
+{"_relation": "pays_crique", "_categorie": "physique", "_source": "Wikidata/QLever — pays_crique P17, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Abalawidji Inlet", "valeur": "Australie"}
+{"entite": "Abramova Cove", "valeur": "Ukraine"}
+{"entite": "Achata bay", "valeur": "Grèce"}
+{"entite": "Afuli Cove", "valeur": "États-Unis"}
+{"entite": "Agia Anna bay, Mykonos", "valeur": "Grèce"}
+{"entite": "Agkáli Menídi", "valeur": "Grèce"}
+{"entite": "Aiguafreda", "valeur": "Espagne"}
+{"entite": "Aleksandrovsk Bay", "valeur": "Ukraine"}
+{"entite": "Alert Cove", "valeur": "Royaume-Uni"}
+{"entite": "Aleut", "valeur": "Russie"}
+{"entite": "Aleutka", "valeur": "Russie"}
+{"entite": "Alfred Cove", "valeur": "Australie"}
+{"entite": "American Cove", "valeur": "États-Unis"}
+{"entite": "Anahō", "valeur": "France"}
+{"entite": "Anapskaya Cove", "valeur": "Russie"}
+{"entite": "Andreev Cove", "valeur": "Russie"}
+{"entite": "Ansa de Cervera", "valeur": "France"}
+{"entite": "Ansa de la Valeta", "valeur": "France"}
+{"entite": "Ansa de Perafita", "valeur": "France"}
+{"entite": "Ansa de Terrimbou", "valeur": "France"}
+{"entite": "Anse à Bois Meré", "valeur": "Canada"}
+{"entite": "Anse à Digue", "valeur": "Canada"}
+{"entite": "Anse à Frédéric", "valeur": "Canada"}
+{"entite": "Anse à la Chaloupe", "valeur": "Canada"}
+{"entite": "Anse à la Digue", "valeur": "Canada"}
+{"entite": "Anse à Mallet", "valeur": "Canada"}
+{"entite": "Anse à Petit Homme", "valeur": "Canada"}
+{"entite": "Anse à Richard", "valeur": "Canada"}
+{"entite": "Anse Amirault", "valeur": "Canada"}
+{"entite": "Anse au Poulamon", "valeur": "Canada"}
+{"entite": "Anse aux Cannes", "valeur": "Canada"}
+{"entite": "anse Cosy", "valeur": "Canada"}
+{"entite": "Anse Couleuvre", "valeur": "France"}
+{"entite": "anse Crawfish", "valeur": "Canada"}
+{"entite": "anse de Govillo", "valeur": "France"}
+{"entite": "anse de Kerhervy", "valeur": "France"}
+{"entite": "anse de Kerhuon", "valeur": "France"}
+{"entite": "Anse de la fausse monnaie", "valeur": "France"}
+{"entite": "Anse de Maldormé", "valeur": "France"}
+{"entite": "anse de Mancel", "valeur": "France"}
+{"entite": "anse de Sillery", "valeur": "Canada"}
+{"entite": "Anse des Abraham", "valeur": "Canada"}
+{"entite": "Anse des Arsenault", "valeur": "Canada"}
+{"entite": "Anse des Barges", "valeur": "Canada"}
+{"entite": "Anse des Basile", "valeur": "Canada"}
+{"entite": "Anse des Delaney", "valeur": "Canada"}
+{"entite": "Anse des Dosithée", "valeur": "Canada"}
+{"entite": "Anse des Doucet", "valeur": "Canada"}
+{"entite": "Anse des LeBlanc", "valeur": "Canada"}
+{"entite": "L'Anse des Maréchal", "valeur": "Canada"}
+{"entite": "Anse des Philibert", "valeur": "Canada"}
+{"entite": "Anse du Cannier", "valeur": "France"}
+{"entite": "anse du Dellec", "valeur": "France"}
+{"entite": "anse du Guéric", "valeur": "France"}
+{"entite": "anse du Guip", "valeur": "France"}
+{"entite": "Anse du Livre", "valeur": "France"}
+{"entite": "Anse du Loup", "valeur": "Canada"}
+{"entite": "Anse du Mugel", "valeur": "France"}
+{"entite": "anse du Port", "valeur": "Canada"}
+{"entite": "Anse du Sec", "valeur": "France"}
+{"entite": "Anse Gaméou", "valeur": "France"}
+{"entite": "Anstey's Cove", "valeur": "Royaume-Uni"}
+{"entite": "Apollonova Bay", "valeur": "Ukraine"}
+{"entite": "Aquatic Cove", "valeur": "États-Unis"}
+{"entite": "Arnold's Cove", "valeur": "Canada"}
+{"entite": "Arthur Inlet", "valeur": "Australie"}
+{"entite": "Artyleriyska Bay", "valeur": "Ukraine"}
+{"entite": "Astafyev Cove", "valeur": "Russie"}
+{"entite": "Auauli Cove", "valeur": "États-Unis"}
+{"entite": "Avatele Cove", "valeur": "États-Unis"}
+{"entite": "Ayan", "valeur": "Russie"}
+{"entite": "Backways Cove", "valeur": "Royaume-Uni"}
+{"entite": "Bahía El Ánima", "valeur": "Nicaragua"}
+{"entite": "Bahía Marsella", "valeur": "Nicaragua"}
+{"entite": "Bahía Ostional", "valeur": "Nicaragua"}
+{"entite": "Bahía Toro", "valeur": "Chili"}
+{"entite": "baie ANZAC", "valeur": "Turquie"}
+{"entite": "baie d'Atuona", "valeur": "France"}
+{"entite": "baie de Gertner", "valeur": "Russie"}
+{"entite": "baie de Kracheninnikov", "valeur": "Russie"}
+{"entite": "baie de La Paz", "valeur": "Mexique"}
+{"entite": "baie de Newark", "valeur": "États-Unis"}
+{"entite": "baie de Phalère", "valeur": "Grèce"}
+{"entite": "baie de Striletska", "valeur": "Ukraine"}
+{"entite": "baie de Tsemes", "valeur": "Russie"}
+{"entite": "baie des Cormorans", "valeur": "Russie"}
+{"entite": "baie des cosaques", "valeur": "Ukraine"}
+{"entite": "baie Double", "valeur": "Ukraine"}
+{"entite": "Baie Maria", "valeur": "France"}
+{"entite": "Baie Slavianka", "valeur": "Russie"}
+{"entite": "Bajo Blanco", "valeur": "Chili"}
+{"entite": "La Balcaccia", "valeur": "Italie"}
+{"entite": "Balmain Cove", "valeur": "Australie"}
+{"entite": "Barber Cove", "valeur": "Royaume-Uni"}
+{"entite": "Barretto Cove", "valeur": "États-Unis"}
+{"entite": "Basin in Bukhta Nakhodka", "valeur": "Russie"}
+{"entite": "Bay of Garitsa", "valeur": "Grèce"}
+{"entite": "Bay of Navarino", "valeur": "Grèce"}
+{"entite": "Beacon Cove", "valeur": "Royaume-Uni"}
+{"entite": "Beaufort Creek", "valeur": "Australie"}
+{"entite": "Beeman Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Belliveaus Cove", "valeur": "Canada"}
+{"entite": "Bíldudalsvogur", "valeur": "Islande"}
+{"entite": "Bjørvika bay", "valeur": "Norvège"}
+{"entite": "Boat Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Boat Harbour", "valeur": "Nouvelle-Zélande"}
+{"entite": "Boat Haven Loop", "valeur": "Australie"}
+{"entite": "Bolshaya Sarannaya Cove", "valeur": "Russie"}
+{"entite": "Bossiney Haven", "valeur": "Royaume-Uni"}
+{"entite": "Boulder Wash Cove", "valeur": "États-Unis"}
+{"entite": "Bowleaze Cove", "valeur": "Royaume-Uni"}
+{"entite": "Brandt Cove", "valeur": "Royaume-Uni"}
+{"entite": "Brandy Cove", "valeur": "Royaume-Uni"}
+{"entite": "Brazhnikov Cove", "valeur": "Russie"}
+{"entite": "Bream Cove", "valeur": "Royaume-Uni"}
+{"entite": "Brickyard Cove", "valeur": "États-Unis"}
+{"entite": "Broadsands Beach", "valeur": "Royaume-Uni"}
+{"entite": "Bukhta Kozina", "valeur": "Russie"}
+{"entite": "Bukhta Lesnaya", "valeur": "Russie"}
+{"entite": "Bukhta Litovka", "valeur": "Russie"}
+{"entite": "Bukhta Lososey", "valeur": "Russie"}
+{"entite": "Bukhta Neizvestnaya", "valeur": "Russie"}
+{"entite": "Bukhta Otrada", "valeur": "Russie"}
+{"entite": "Bukhta Popova", "valeur": "Russie"}
+{"entite": "Bukhta Prozrachnaya", "valeur": "Russie"}
+{"entite": "Bukhta Tungus", "valeur": "Russie"}
+{"entite": "Burton Cove", "valeur": "Royaume-Uni"}
+{"entite": "Cadgwith Cove", "valeur": "Royaume-Uni"}
+{"entite": "Cairns Cove", "valeur": "Royaume-Uni"}
+{"entite": "Cala Alga", "valeur": "Espagne"}
+{"entite": "Cala Ametller", "valeur": "Espagne"}
+{"entite": "Cala Barques", "valeur": "Espagne"}
+{"entite": "Cala Berretta", "valeur": "Italie"}
+{"entite": "Cala Boix", "valeur": "Espagne"}
+{"entite": "Cala Bona", "valeur": "Espagne"}
+{"entite": "Cala Bóquer", "valeur": "Espagne"}
+{"entite": "Cala Bóta", "valeur": "Espagne"}
+{"entite": "Cala Carbó", "valeur": "Espagne"}
+{"entite": "Cala Civette", "valeur": "Italie"}
+{"entite": "Cala Culip", "valeur": "Espagne"}
+{"entite": "Cala d’Albarca", "valeur": "Espagne"}
+{"entite": "cala d'en Massoni", "valeur": "Espagne"}
+{"entite": "cala de Bea", "valeur": "Espagne"}
+{"entite": "Cala de Cabres", "valeur": "Espagne"}
+{"entite": "Cala de Giverola", "valeur": "Espagne"}
+{"entite": "Cala de la Invencible", "valeur": "Espagne"}
+{"entite": "Cala de n'Aromir", "valeur": "Espagne"}
+{"entite": "Cala de n'Oliu", "valeur": "Espagne"}
+{"entite": "Cala de Sant Llorenç", "valeur": "Espagne"}
+{"entite": "Cala de ses Mongetes", "valeur": "Espagne"}
+{"entite": "Cala de Tetuan", "valeur": "Espagne"}
+{"entite": "Cala degli Infreschi", "valeur": "Italie"}
+{"entite": "Cala degli Inglesi", "valeur": "Italie"}
+{"entite": "Cala del Cap de Mort", "valeur": "Espagne"}
+{"entite": "Cala del Cargolet", "valeur": "Espagne"}
+{"entite": "Cala del Molí", "valeur": "Espagne"}
+{"entite": "Cala del Pedrigolet", "valeur": "Espagne"}
+{"entite": "Cala del Peix", "valeur": "Espagne"}
+{"entite": "Cala del Racó de Garbí", "valeur": "Espagne"}
+{"entite": "Cala del Turco", "valeur": "Italie"}
+{"entite": "Cala del Vino", "valeur": "Italie"}
+{"entite": "Cala Delfino", "valeur": "Italie"}
+{"entite": "Cala delle Arene", "valeur": "Italie"}
+{"entite": "Cala delle Roselle", "valeur": "Italie"}
+{"entite": "Cala dello Spido", "valeur": "Italie"}
+{"entite": "Cala dels Frares", "valeur": "Espagne"}
+{"entite": "Cala dels Guíxols", "valeur": "Espagne"}
+{"entite": "Cala dels Músics", "valeur": "Espagne"}
+{"entite": "Cala dels Mussols", "valeur": "Espagne"}
+{"entite": "Cala dels Rampells", "valeur": "Espagne"}
+{"entite": "Cala des Bordims", "valeur": "Espagne"}
+{"entite": "Cala des Cranc", "valeur": "Espagne"}
+{"entite": "Cala Domingos", "valeur": "Espagne"}
+{"entite": "Cala Dragunara", "valeur": "Italie"}
+{"entite": "cala Ebi Dozzi", "valeur": "Italie"}
+{"entite": "Cala en Beltran", "valeur": "Espagne"}
+{"entite": "Cala es Codolar", "valeur": "Espagne"}
+{"entite": "Cala es Matzoc", "valeur": "Espagne"}
+{"entite": "Cala Falcó", "valeur": "Espagne"}
+{"entite": "Cala Figuera port", "valeur": "Espagne"}
+{"entite": "Cala Galladera", "valeur": "Espagne"}
+{"entite": "Cala Incina", "valeur": "Italie"}
+{"entite": "Cala Jonca", "valeur": "Espagne"}
+{"entite": "Cala Jugadora", "valeur": "Espagne"}
+{"entite": "Cala Llonga", "valeur": "Espagne"}
+{"entite": "Cala Magraner", "valeur": "Espagne"}
+{"entite": "Cala Marquesa", "valeur": "Espagne"}
+{"entite": "Cala Martina", "valeur": "Italie"}
+{"entite": "Cala Maset", "valeur": "Espagne"}
+{"entite": "Cala Matano", "valeur": "Italie"}
+{"entite": "Cala Mitjana", "valeur": "Espagne"}
+{"entite": "Cala Moltó", "valeur": "Espagne"}
+{"entite": "Cala Mondragó", "valeur": "Espagne"}
+{"entite": "Cala Morisca", "valeur": "Espagne"}
+{"entite": "Cala Murada", "valeur": "Espagne"}
+{"entite": "Cala Murta", "valeur": "Espagne"}
+{"entite": "Cala Nova", "valeur": "Espagne"}
+{"entite": "Cala Paura", "valeur": "Italie"}
+{"entite": "Cala Petita", "valeur": "Espagne"}
+{"entite": "Cala Pi", "valeur": "Espagne"}
+{"entite": "Cala Pilota", "valeur": "Espagne"}
+{"entite": "Cala Prona", "valeur": "Espagne"}
+{"entite": "Cala Ravener", "valeur": "Espagne"}
+{"entite": "cala Roja", "valeur": "Espagne"}
+{"entite": "Cala Romaguer", "valeur": "Espagne"}
+{"entite": "Cala Sant Vicenç", "valeur": "Espagne"}
+{"entite": "Cala Sequer", "valeur": "Espagne"}
+{"entite": "Cala Sisine", "valeur": "Italie"}
+{"entite": "Cala Torta", "valeur": "Espagne"}
+{"entite": "Cala Tramontana", "valeur": "Italie"}
+{"entite": "Cala Tuent", "valeur": "Espagne"}
+{"entite": "Cala Varques", "valeur": "Espagne"}
+{"entite": "Cala Ventosa", "valeur": "Espagne"}
+{"entite": "Cala Viola", "valeur": "Italie"}
+{"entite": "Cala Violina", "valeur": "Italie"}
+{"entite": "Cala Virgili", "valeur": "Espagne"}
+{"entite": "calanque d'En-Vau", "valeur": "France"}
+{"entite": "calanque de Callelongue", "valeur": "France"}
+{"entite": "Calanque de Figuerolles", "valeur": "France"}
+{"entite": "Calanque de l'Aiglon", "valeur": "France"}
+{"entite": "Calanque de l'Eissadon", "valeur": "France"}
+{"entite": "Calanque de l'Escu", "valeur": "France"}
+{"entite": "calanque de l'Œil de Verre", "valeur": "France"}
+{"entite": "calanque de l'Oule", "valeur": "France"}
+{"entite": "Calanque de la Baume", "valeur": "France"}
+{"entite": "Calanque de la Melette", "valeur": "France"}
+{"entite": "calanque de la Mounine", "valeur": "France"}
+{"entite": "Calanque de la Piade", "valeur": "France"}
+{"entite": "Calanque de la Poulidette", "valeur": "France"}
+{"entite": "calanque de la Redonne", "valeur": "France"}
+{"entite": "calanque de la Triperie", "valeur": "France"}
+{"entite": "calanque de la Vesse", "valeur": "France"}
+{"entite": "calanque de Marseilleveyre", "valeur": "France"}
+{"entite": "calanque de Méjean", "valeur": "France"}
+{"entite": "calanque de Morgiou", "valeur": "France"}
+{"entite": "Calanque de Morgiret", "valeur": "France"}
+{"entite": "calanque de Podestat", "valeur": "France"}
+{"entite": "calanque de Port-Miou", "valeur": "France"}
+{"entite": "calanque de Port-Pin", "valeur": "France"}
+{"entite": "calanque de Sormiou", "valeur": "France"}
+{"entite": "calanque de Sugiton", "valeur": "France"}
+{"entite": "Calanque des Cambrettes", "valeur": "France"}
+{"entite": "Calanque des Pierres-Tombées", "valeur": "France"}
+{"entite": "Calanque des Queyrons", "valeur": "France"}
+{"entite": "Calanque du Brégançonnet", "valeur": "France"}
+{"entite": "calanque du Devenson", "valeur": "France"}
+{"entite": "Calanque du Maure", "valeur": "France"}
+{"entite": "calanques de Piana", "valeur": "France"}
+{"entite": "Caleta d'Ariant", "valeur": "Espagne"}
+{"entite": "Caleta del Agua", "valeur": "Espagne"}
+{"entite": "Caleta Topocalma", "valeur": "Chili"}
+{"entite": "Caleta Toro", "valeur": "Chili"}
+{"entite": "Caleta Torres", "valeur": "Chili"}
+{"entite": "Caleta Yungay", "valeur": "Chili"}
+{"entite": "Caleta Yutuy", "valeur": "Chili"}
+{"entite": "Caló Blanc", "valeur": "Espagne"}
+{"entite": "Caló d’en Garrot", "valeur": "Espagne"}
+{"entite": "Caló d'en Perdiu", "valeur": "Espagne"}
+{"entite": "Caló d'en Rafelino", "valeur": "Espagne"}
+{"entite": "Caló de la Bella Dona", "valeur": "Espagne"}
+{"entite": "Caló de s'Oli", "valeur": "Espagne"}
+{"entite": "Caló de ses Agulles", "valeur": "Espagne"}
+{"entite": "Caló del Llamp", "valeur": "Espagne"}
+{"entite": "Caló del Pou", "valeur": "Espagne"}
+{"entite": "Caló des Borgit", "valeur": "Espagne"}
+{"entite": "Caló des Serral", "valeur": "Espagne"}
+{"entite": "Caló s’Amarador", "valeur": "Espagne"}
+{"entite": "Campbell's Cove", "valeur": "Australie"}
+{"entite": "Careening Cove", "valeur": "Australie"}
+{"entite": "Castle Cove", "valeur": "Royaume-Uni"}
+{"entite": "Cat Cove", "valeur": "États-Unis"}
+{"entite": "Cave Bay", "valeur": "Australie"}
+{"entite": "Cave Cove", "valeur": "Royaume-Uni"}
+{"entite": "Cedar Cove", "valeur": "Canada"}
+{"entite": "Chapel Porth", "valeur": "Royaume-Uni"}
+{"entite": "Chapman's Pool", "valeur": "Royaume-Uni"}
+{"entite": "Charco de la Morena", "valeur": "Espagne"}
+{"entite": "Charltons Cove", "valeur": "Canada"}
+{"entite": "Chesil Cove", "valeur": "Royaume-Uni"}
+{"entite": "Chichagof Harbor", "valeur": "États-Unis"}
+{"entite": "Chimney Cove", "valeur": "Canada"}
+{"entite": "Church Cove", "valeur": "Royaume-Uni"}
+{"entite": "Churston Cove", "valeur": "Royaume-Uni"}
+{"entite": "Čikat", "valeur": "Croatie"}
+{"entite": "Clam Pond", "valeur": "États-Unis"}
+{"entite": "Cobblers Cove", "valeur": "Royaume-Uni"}
+{"entite": "Compass Cove", "valeur": "Royaume-Uni"}
+{"entite": "Coroa Vermelha", "valeur": "Brésil"}
+{"entite": "Cossack Creek", "valeur": "Australie"}
+{"entite": "Coverack Cove", "valeur": "Royaume-Uni"}
+{"entite": "Coyote Cove", "valeur": "États-Unis"}
+{"entite": "Coyote Spring Cove", "valeur": "États-Unis"}
+{"entite": "Crater Cove", "valeur": "Australie"}
+{"entite": "la Creu", "valeur": "Espagne"}
+{"entite": "Cripp's Cove", "valeur": "Royaume-Uni"}
+{"entite": "crique de Futami", "valeur": "Japon"}
+{"entite": "crique de l'Anau", "valeur": "France"}
+{"entite": "crique de Pa'ako", "valeur": "États-Unis"}
+{"entite": "Cubbyhole Cove", "valeur": "Royaume-Uni"}
+{"entite": "Cwmtydu", "valeur": "Royaume-Uni"}
+{"entite": "Cypress Cove", "valeur": "États-Unis"}
+{"entite": "Deadman’s Cove", "valeur": "Canada"}
+{"entite": "Deep Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Diaz Cove", "valeur": "Royaume-Uni"}
+{"entite": "Dimitrov Cove", "valeur": "Russie"}
+{"entite": "Dolphin Cove", "valeur": "États-Unis"}
+{"entite": "Dove Cove", "valeur": "Royaume-Uni"}
+{"entite": "Dynjandavogur", "valeur": "Islande"}
+{"entite": "East Arm", "valeur": "Australie"}
+{"entite": "Elberry Cove", "valeur": "Royaume-Uni"}
+{"entite": "Elephant Cove", "valeur": "Royaume-Uni"}
+{"entite": "Elephant Seal Cove", "valeur": "États-Unis"}
+{"entite": "Elliðaárvogur", "valeur": "Islande"}
+{"entite": "English Navy Cove", "valeur": "États-Unis"}
+{"entite": "Enseada do Cabrito", "valeur": "Brésil"}
+{"entite": "Enseada dos Tainheiros", "valeur": "Brésil"}
+{"entite": "Ensenada de Tichaná", "valeur": "Nicaragua"}
+{"entite": "Ensenada Jacomar", "valeur": "Espagne"}
+{"entite": "Ensenada La Mosea", "valeur": "Nicaragua"}
+{"entite": "Eshelby Inlet", "valeur": "Australie"}
+{"entite": "Evermann Cove", "valeur": "Royaume-Uni"}
+{"entite": "Expedition Cove", "valeur": "Russie"}
+{"entite": "Faasamene Cove", "valeur": "États-Unis"}
+{"entite": "Factory Cove", "valeur": "États-Unis"}
+{"entite": "Fauntleroy Cove", "valeur": "États-Unis"}
+{"entite": "Fergusons Cove", "valeur": "Canada"}
+{"entite": "Fishcombe Cove", "valeur": "Royaume-Uni"}
+{"entite": "Fletchings Cove", "valeur": "Royaume-Uni"}
+{"entite": "Florence Cove", "valeur": "États-Unis"}
+{"entite": "Forse Cove", "valeur": "Royaume-Uni"}
+{"entite": "Fox Cove", "valeur": "Royaume-Uni"}
+{"entite": "Freshwater Cove", "valeur": "Canada"}
+{"entite": "Friar’s Cove", "valeur": "Canada"}
+{"entite": "Frye Cove", "valeur": "États-Unis"}
+{"entite": "Galaxidi cove", "valeur": "Grèce"}
+{"entite": "Gaydamak", "valeur": "Russie"}
+{"entite": "Glass Beach", "valeur": "Russie"}
+{"entite": "Glen Cove", "valeur": "États-Unis"}
+{"entite": "Glyde Inlet", "valeur": "Australie"}
+{"entite": "Godrevy Cove", "valeur": "Royaume-Uni"}
+{"entite": "Gollandiya Bay", "valeur": "Ukraine"}
+{"entite": "Gornostay", "valeur": "Russie"}
+{"entite": "Le Gouffre", "valeur": "France"}
+{"entite": "Grande Anse", "valeur": "Canada"}
+{"entite": "Grande Calanque", "valeur": "France"}
+{"entite": "Grattos Cove", "valeur": "Canada"}
+{"entite": "Green Head Cove", "valeur": "Canada"}
+{"entite": "Greene Peninsula", "valeur": "Royaume-Uni"}
+{"entite": "Grunnafjördur", "valeur": "Islande"}
+{"entite": "Gulf of Heraklion", "valeur": "Grèce"}
+{"entite": "Gunston Cove", "valeur": "États-Unis"}
+{"entite": "Hamnviken", "valeur": "Suède"}
+{"entite": "Hana Vave", "valeur": "France"}
+{"entite": "Hardy Inlet", "valeur": "Australie"}
+{"entite": "Häxvassen", "valeur": "Suède"}
+{"entite": "Haycock Creek", "valeur": "Australie"}
+{"entite": "Heddon's Mouth", "valeur": "Royaume-Uni"}
+{"entite": "Helianthus Cove", "valeur": "États-Unis"}
+{"entite": "Hicks Cove", "valeur": "États-Unis"}
+{"entite": "High Water Inlet", "valeur": "Australie"}
+{"entite": "Holiday Cove", "valeur": "États-Unis"}
+{"entite": "Holly Inlet", "valeur": "Australie"}
+{"entite": "Hope Cove", "valeur": "Royaume-Uni"}
+{"entite": "Hope Inlet", "valeur": "Australie"}
+{"entite": "Hudder Cove", "valeur": "Royaume-Uni"}
+{"entite": "Jackmans Cove", "valeur": "Canada"}
+{"entite": "Johnson Cove", "valeur": "Royaume-Uni"}
+{"entite": "Joke Cove", "valeur": "Royaume-Uni"}
+{"entite": "La Jolla Cove", "valeur": "États-Unis"}
+{"entite": "Jordan Cove", "valeur": "Royaume-Uni"}
+{"entite": "Jumbo Cove", "valeur": "Royaume-Uni"}
+{"entite": "Juniper Cove", "valeur": "États-Unis"}
+{"entite": "Kaasix", "valeur": "États-Unis"}
+{"entite": "Kalvfjärden", "valeur": "Suède"}
+{"entite": "Kamenistaya Cove", "valeur": "Russie"}
+{"entite": "Karaga Cove", "valeur": "Russie"}
+{"entite": "Karantynna Bay", "valeur": "Ukraine"}
+{"entite": "Keyling Inlet", "valeur": "Australie"}
+{"entite": "King Edward Cove", "valeur": "Royaume-Uni"}
+{"entite": "Kittyhawk Creek", "valeur": "Australie"}
+{"entite": "Kölvikstjärnet", "valeur": "Suède"}
+{"entite": "Konobe Cove", "valeur": "Croatie"}
+{"entite": "Korabelna Cove", "valeur": "Ukraine"}
+{"entite": "Krabovaya Cove", "valeur": "Russie"}
+{"entite": "Kraken Cove", "valeur": "Royaume-Uni"}
+{"entite": "Krugla Bay", "valeur": "Ukraine"}
+{"entite": "Kryshtaleva Cove", "valeur": "Ukraine"}
+{"entite": "Kuzachin Cove", "valeur": "Russie"}
+{"entite": "Kynance Cove", "valeur": "Royaume-Uni"}
+{"entite": "Kyrkfjärden", "valeur": "Suède"}
+{"entite": "Lagoon Cove, British Columbia", "valeur": "Canada"}
+{"entite": "Lalzi Bay", "valeur": "Albanie"}
+{"entite": "Lambulambu Cove", "valeur": "Îles Salomon"}
+{"entite": "Lambwe Bay", "valeur": "Kenya"}
+{"entite": "Larvik", "valeur": "Royaume-Uni"}
+{"entite": "Lavsa Cove", "valeur": "Croatie"}
+{"entite": "Laxárvogur", "valeur": "Islande"}
+{"entite": "Lightning Creek", "valeur": "Australie"}
+{"entite": "Likuwa Inlet", "valeur": "Australie"}
+{"entite": "Lingo Cove", "valeur": "États-Unis"}
+{"entite": "Listvenichnaya Cove", "valeur": "Russie"}
+{"entite": "Little Lagoon", "valeur": "Australie"}
+{"entite": "Little Parks Cove", "valeur": "États-Unis"}
+{"entite": "Little Starvation Cove", "valeur": "États-Unis"}
+{"entite": "Loch Beag", "valeur": "Royaume-Uni"}
+{"entite": "Long Harry Cove", "valeur": "Canada"}
+{"entite": "Long Slough", "valeur": "Royaume-Uni"}
+{"entite": "Lulworth Cove", "valeur": "Royaume-Uni"}
+{"entite": "Lye Cove", "valeur": "Royaume-Uni"}
+{"entite": "Macdonald Cove", "valeur": "Royaume-Uni"}
+{"entite": "Mackenzie Arm", "valeur": "Australie"}
+{"entite": "Madford Inlet", "valeur": "Australie"}
+{"entite": "Maiden's Cove", "valeur": "Afrique du Sud"}
+{"entite": "Main Bay", "valeur": "Royaume-Uni"}
+{"entite": "Maiviken", "valeur": "Royaume-Uni"}
+{"entite": "Makarov Cove", "valeur": "Russie"}
+{"entite": "Malaya Sarannaya Cove", "valeur": "Russie"}
+{"entite": "Malivu Bay", "valeur": "Fidji"}
+{"entite": "Malokurilskaya Cove", "valeur": "Russie"}
+{"entite": "Malumu Bay", "valeur": "Fidji"}
+{"entite": "Martin Cove", "valeur": "États-Unis"}
+{"entite": "Martingana", "valeur": "Italie"}
+{"entite": "Matanivanua Bay", "valeur": "Fidji"}
+{"entite": "Mawson Inlet", "valeur": "Australie"}
+{"entite": "Medina Inlet", "valeur": "Australie"}
+{"entite": "Megalo Vathy cove", "valeur": "Grèce"}
+{"entite": "Melkovodnaya", "valeur": "Russie"}
+{"entite": "Milingimbi Inlet", "valeur": "Australie"}
+{"entite": "Milne Inlet", "valeur": "Australie"}
+{"entite": "Minim Cove", "valeur": "Australie"}
+{"entite": "Moodie Cove", "valeur": "Canada"}
+{"entite": "Moonstone Cove", "valeur": "États-Unis"}
+{"entite": "Mosman Bay", "valeur": "Australie"}
+{"entite": "Mrtvaška", "valeur": "Croatie"}
+{"entite": "Muggs Mistake", "valeur": "Australie"}
+{"entite": "Muravyinaya Cove", "valeur": "Russie"}
+{"entite": "Murder Cove", "valeur": "États-Unis"}
+{"entite": "Mutton Cove", "valeur": "Royaume-Uni"}
+{"entite": "Nakhodka Cove", "valeur": "Russie"}
+{"entite": "Naval Base Milne Bay", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Naveindamu Bay", "valeur": "Fidji"}
+{"entite": "Ndaku Bay", "valeur": "Fidji"}
+{"entite": "Ndakuni Bay", "valeur": "Fidji"}
+{"entite": "Nelly's Cove", "valeur": "Royaume-Uni"}
+{"entite": "New Moon Inlet", "valeur": "Australie"}
+{"entite": "Newton's Cove", "valeur": "Royaume-Uni"}
+{"entite": "Niolon", "valeur": "France"}
+{"entite": "North Haven", "valeur": "Royaume-Uni"}
+{"entite": "Norton Inlet", "valeur": "Royaume-Uni"}
+{"entite": "Nousa cove", "valeur": "Grèce"}
+{"entite": "Novgorod Cove", "valeur": "Russie"}
+{"entite": "Novitsky Cove", "valeur": "Russie"}
+{"entite": "Number Two Cove", "valeur": "Canada"}
+{"entite": "Occasional Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ochre Pit Cove", "valeur": "Canada"}
+{"entite": "Ogo-dour Cove", "valeur": "Royaume-Uni"}
+{"entite": "Oliver's Cove", "valeur": "Canada"}
+{"entite": "Opunga Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Oregon Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ormískos Lákka", "valeur": "Grèce"}
+{"entite": "Orzán Bay", "valeur": "Espagne"}
+{"entite": "Osborn Cove", "valeur": "Canada"}
+{"entite": "Ossora Cove", "valeur": "Russie"}
+{"entite": "Pa Cove", "valeur": "États-Unis"}
+{"entite": "Paradise Cove", "valeur": "États-Unis"}
+{"entite": "Parches Cove", "valeur": "États-Unis"}
+{"entite": "Patrokl", "valeur": "Russie"}
+{"entite": "Peach Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Penberth Cove", "valeur": "Royaume-Uni"}
+{"entite": "Pendour Cove", "valeur": "Royaume-Uni"}
+{"entite": "Penn Cove", "valeur": "États-Unis"}
+{"entite": "Pepper Cove", "valeur": "Royaume-Uni"}
+{"entite": "Perprean Cove", "valeur": "Royaume-Uni"}
+{"entite": "Peschanaya Cove", "valeur": "Russie"}
+{"entite": "Pestchanaïa", "valeur": "Russie"}
+{"entite": "Pestsovaya Cove", "valeur": "Russie"}
+{"entite": "Petite Anse", "valeur": "Canada"}
+{"entite": "Picnic Cove", "valeur": "Australie"}
+{"entite": "Pilot Cove", "valeur": "États-Unis"}
+{"entite": "Pirate Cove", "valeur": "États-Unis"}
+{"entite": "Pirates Cove", "valeur": "États-Unis"}
+{"entite": "Pitsunda Bay", "valeur": "Géorgie"}
+{"entite": "Pivdenna Bay", "valeur": "Ukraine"}
+{"entite": "Plage Cala Gat", "valeur": "Espagne"}
+{"entite": "plage de la Calobra", "valeur": "Espagne"}
+{"entite": "plage de Paulilles", "valeur": "France"}
+{"entite": "plage de Troc Pinel", "valeur": "France"}
+{"entite": "Platja de Portals Nous", "valeur": "Espagne"}
+{"entite": "Poa Cove", "valeur": "Royaume-Uni"}
+{"entite": "Pokonji Dol Cove", "valeur": "Croatie"}
+{"entite": "Pol Gwarra", "valeur": "Royaume-Uni"}
+{"entite": "Poldhu Cove", "valeur": "Royaume-Uni"}
+{"entite": "Polgwidden Cove", "valeur": "Royaume-Uni"}
+{"entite": "Polnare Cove", "valeur": "Royaume-Uni"}
+{"entite": "Polurrian Cove", "valeur": "Royaume-Uni"}
+{"entite": "Pondfield Cove", "valeur": "Royaume-Uni"}
+{"entite": "Port de l'Eoube", "valeur": "France"}
+{"entite": "Port de Pomègues", "valeur": "France"}
+{"entite": "port du Rat", "valeur": "France"}
+{"entite": "Port Grenaugh", "valeur": "Royaume-Uni"}
+{"entite": "Port Longaig", "valeur": "Royaume-Uni"}
+{"entite": "Port of Porto Cristo", "valeur": "Espagne"}
+{"entite": "Port War", "valeur": "Australie"}
+{"entite": "Portgiskey", "valeur": "Royaume-Uni"}
+{"entite": "Porthallow Cove", "valeur": "Royaume-Uni"}
+{"entite": "Porthbeer Cove", "valeur": "Royaume-Uni"}
+{"entite": "Porthilly Cove", "valeur": "Royaume-Uni"}
+{"entite": "Porthluney Cove", "valeur": "Royaume-Uni"}
+{"entite": "Porthoustock", "valeur": "Royaume-Uni"}
+{"entite": "Porthpean", "valeur": "Royaume-Uni"}
+{"entite": "Portloe Harbour", "valeur": "Royaume-Uni"}
+{"entite": "Porto Palmas", "valeur": "Italie"}
+{"entite": "Pot Cove", "valeur": "États-Unis"}
+{"entite": "Precipice Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Predatelskaya Cove", "valeur": "Russie"}
+{"entite": "Pridmouth Cove", "valeur": "Royaume-Uni"}
+{"entite": "Priest Cove", "valeur": "Royaume-Uni"}
+{"entite": "Providence Cove", "valeur": "États-Unis"}
+{"entite": "Puerto Calderón", "valeur": "Espagne"}
+{"entite": "Puerto Zapallar", "valeur": "Chili"}
+{"entite": "Pulpit Cove", "valeur": "Canada"}
+{"entite": "Punat Cove", "valeur": "Croatie"}
+{"entite": "Quathiaski Cove", "valeur": "Canada"}
+{"entite": "Racó de les Àguiles", "valeur": "Espagne"}
+{"entite": "Ranvik", "valeur": "Royaume-Uni"}
+{"entite": "Rapparee Cove", "valeur": "Royaume-Uni"}
+{"entite": "Rawali Inlet", "valeur": "Australie"}
+{"entite": "Razboynik Cove", "valeur": "Russie"}
+{"entite": "Readymoney Cove", "valeur": "Royaume-Uni"}
+{"entite": "Refuge Cove", "valeur": "Australie"}
+{"entite": "Reyd Pallad Cove", "valeur": "Russie"}
+{"entite": "Risdon Cove", "valeur": "Australie"}
+{"entite": "Robinson Inlet", "valeur": "Australie"}
+{"entite": "Rome Bay", "valeur": "Fidji"}
+{"entite": "Ropehaven", "valeur": "Royaume-Uni"}
+{"entite": "Rudnaya", "valeur": "Russie"}
+{"entite": "Rynda", "valeur": "Russie"}
+{"entite": "S’Almadrava", "valeur": "Espagne"}
+{"entite": "Sa Banyera dels Ermitans", "valeur": "Espagne"}
+{"entite": "Saco do Tororó", "valeur": "Brésil"}
+{"entite": "Safe Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Saint Nicholas Inlet", "valeur": "Australie"}
+{"entite": "Salt Water Arm", "valeur": "Australie"}
+{"entite": "Saltern Cove", "valeur": "Royaume-Uni"}
+{"entite": "Sand Cove", "valeur": "États-Unis"}
+{"entite": "Sandebugten", "valeur": "Royaume-Uni"}
+{"entite": "Sarannaya Cove", "valeur": "Russie"}
+{"entite": "Saunders Cove", "valeur": "Canada"}
+{"entite": "Le Scathe Cove", "valeur": "Royaume-Uni"}
+{"entite": "Sea Serpent Cove", "valeur": "Royaume-Uni"}
+{"entite": "Sealers Cove", "valeur": "Australie"}
+{"entite": "Sealing Cove", "valeur": "États-Unis"}
+{"entite": "Second Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Seek Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "September Cove", "valeur": "Russie"}
+{"entite": "Ses Balandres", "valeur": "Espagne"}
+{"entite": "Severnaya Bay", "valeur": "Ukraine"}
+{"entite": "Severnaya Cove", "valeur": "Russie"}
+{"entite": "Shag Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Shallop Cove", "valeur": "Royaume-Uni"}
+{"entite": "Shark Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Shaws Cove", "valeur": "États-Unis"}
+{"entite": "Shell Cove", "valeur": "Australie"}
+{"entite": "Shelter Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Shoal Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Short Creek", "valeur": "Australie"}
+{"entite": "Sibir", "valeur": "Russie"}
+{"entite": "Sirius Cove", "valeur": "Australie"}
+{"entite": "Skrytaya Cove", "valeur": "Russie"}
+{"entite": "Smaaland Cove", "valeur": "Royaume-Uni"}
+{"entite": "Smuggler Cove", "valeur": "États-Unis"}
+{"entite": "Sobolevka", "valeur": "Russie"}
+{"entite": "Soline Cove", "valeur": "Croatie"}
+{"entite": "Solona Bay", "valeur": "Ukraine"}
+{"entite": "Songjŏn-man", "valeur": "Corée du Nord"}
+{"entite": "Sooty Cove", "valeur": "Royaume-Uni"}
+{"entite": "Spernic Cove", "valeur": "Royaume-Uni"}
+{"entite": "Sportsman Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Squally Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Srednyaya Cove", "valeur": "Russie"}
+{"entite": "St Loy's Cove", "valeur": "Royaume-Uni"}
+{"entite": "Stair Hole", "valeur": "Royaume-Uni"}
+{"entite": "Stara Baška Cove", "valeur": "Croatie"}
+{"entite": "Staropivnichna Cove", "valeur": "Ukraine"}
+{"entite": "Steephill Cove", "valeur": "Royaume-Uni"}
+{"entite": "Stevens Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Stockyard Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Strahan Harbour", "valeur": "Fidji"}
+{"entite": "Stroms Hellier", "valeur": "Royaume-Uni"}
+{"entite": "Stuart Cove", "valeur": "États-Unis"}
+{"entite": "Su Riu e sa Ide", "valeur": "Italie"}
+{"entite": "Sukhumi Bay", "valeur": "Géorgie"}
+{"entite": "Sullivans Cove", "valeur": "Australie"}
+{"entite": "Sunday Cove", "valeur": "Nouvelle-Zélande"}
+{"entite": "Svetlaya Cove", "valeur": "Russie"}
+{"entite": "Sydney Cove", "valeur": "Australie"}
+{"entite": "Taʻa ʻOa", "valeur": "France"}
+{"entite": "Taha Uku", "valeur": "France"}
+{"entite": "Tahlee Inlet", "valeur": "Australie"}
+{"entite": "Talofofo Bay", "valeur": "États-Unis"}
+{"entite": "Tarska vala", "valeur": "Croatie"}
+{"entite": "Tavuki Bay", "valeur": "Fidji"}
+{"entite": "Tayana", "valeur": "Russie"}
+{"entite": "Taygonos", "valeur": "Russie"}
+{"entite": "Telyakovsky Cove", "valeur": "Russie"}
+{"entite": "Tervu", "valeur": "Russie"}
+{"entite": "Thomas Cove", "valeur": "Royaume-Uni"}
+{"entite": "Thoms Cove", "valeur": "États-Unis"}
+{"entite": "Three Fathoms Cove", "valeur": "République populaire de Chine"}
+{"entite": "Thuvu Bay", "valeur": "Fidji"}
+{"entite": "Tikhaya", "valeur": "Russie"}
+{"entite": "Tithy Cove", "valeur": "Royaume-Uni"}
+{"entite": "Toa Cove", "valeur": "États-Unis"}
+{"entite": "Tobacco Bay", "valeur": "Royaume-Uni"}
+{"entite": "Toms Cove", "valeur": "États-Unis"}
+{"entite": "Toolinna Cove", "valeur": "Australie"}
+{"entite": "Tortula Cove", "valeur": "Royaume-Uni"}
+{"entite": "Trapana Cove", "valeur": "Espagne"}
+{"entite": "Treen Cove", "valeur": "Royaume-Uni"}
+{"entite": "Triangle Cove", "valeur": "États-Unis"}
+{"entite": "Triozyorye", "valeur": "Russie"}
+{"entite": "Triton Cove", "valeur": "États-Unis"}
+{"entite": "Troitsy Cove", "valeur": "Russie"}
+{"entite": "Tufts Cove", "valeur": "Canada"}
+{"entite": "Tunnels Beaches", "valeur": "Royaume-Uni"}
+{"entite": "Twilight Cove", "valeur": "Australie"}
+{"entite": "Udalls Cove", "valeur": "États-Unis"}
+{"entite": "Ugolnaya Cove", "valeur": "Russie"}
+{"entite": "Upper New York Bay", "valeur": "États-Unis"}
+{"entite": "Utusegisegi Cove", "valeur": "États-Unis"}
+{"entite": "Uvala Maslinova", "valeur": "Croatie"}
+{"entite": "Vathy cove", "valeur": "Grèce"}
+{"entite": "Vela Luka Bay", "valeur": "Croatie"}
+{"entite": "Venus Bay", "valeur": "Nouvelle-Zélande"}
+{"entite": "Veor Cove", "valeur": "Royaume-Uni"}
+{"entite": "Vestnik", "valeur": "Russie"}
+{"entite": "Vuatu Bay", "valeur": "Fidji"}
+{"entite": "Vuelta de Los Sauces", "valeur": "Nicaragua"}
+{"entite": "Vunatongo Bay", "valeur": "Fidji"}
+{"entite": "Wainikati Bay", "valeur": "Fidji"}
+{"entite": "Wallsend Cove", "valeur": "Royaume-Uni"}
+{"entite": "Walvis Bay", "valeur": "Namibie"}
+{"entite": "Warrick's Cove", "valeur": "Canada"}
+{"entite": "Watermill Cove", "valeur": "Royaume-Uni"}
+{"entite": "Watermouth Cove", "valeur": "Royaume-Uni"}
+{"entite": "Watongo Bay", "valeur": "Fidji"}
+{"entite": "Watson Inlet", "valeur": "Australie"}
+{"entite": "Wattamolla", "valeur": "Australie"}
+{"entite": "Wequetequock Cove", "valeur": "États-Unis"}
+{"entite": "West Arm", "valeur": "Australie"}
+{"entite": "Whalers Cove", "valeur": "États-Unis"}
+{"entite": "Whistle Cove", "valeur": "Royaume-Uni"}
+{"entite": "White Cove", "valeur": "États-Unis"}
+{"entite": "White's Cove", "valeur": "États-Unis"}
+{"entite": "Williams Cove", "valeur": "Royaume-Uni"}
+{"entite": "Willow Cove", "valeur": "États-Unis"}
+{"entite": "Wine Cove", "valeur": "Royaume-Uni"}
+{"entite": "Wirraway Creek", "valeur": "Australie"}
+{"entite": "Woods Inlet", "valeur": "Australie"}
+{"entite": "Wrangel Cove", "valeur": "Russie"}
+{"entite": "Yarnarndu Inlet", "valeur": "Australie"}
+{"entite": "Yerba Buena Cove", "valeur": "États-Unis"}
+{"entite": "Zerkalnaya Cove", "valeur": "Russie"}
+{"entite": "Zmeinoe Lake (Bolshoy Utrish)", "valeur": "Russie"}
+{"entite": "Zolotaya Cove", "valeur": "Russie"}

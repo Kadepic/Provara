@@ -1,0 +1,5 @@
+{"_relation": "fonction_dent", "_categorie": "convention", "_source": "anatomie dentaire (type de dent -> fonction)", "_articles": true}
+{"entite": "canine", "valeur": "déchirer les aliments"}
+{"entite": "incisive", "valeur": "couper les aliments"}
+{"entite": "molaire", "valeur": "broyer les aliments"}
+{"entite": "prémolaire", "valeur": "écraser les aliments"}

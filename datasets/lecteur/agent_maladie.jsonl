@@ -1,0 +1,36 @@
+{"_relation": "agent_maladie", "_categorie": "convention", "_source": "microbiologie de référence (maladie -> type d'agent pathogène)", "_articles": true}
+{"entite": "amibiase", "valeur": "parasite"}
+{"entite": "angine bactérienne", "valeur": "bactérie"}
+{"entite": "aspergillose", "valeur": "champignon"}
+{"entite": "botulisme", "valeur": "bactérie"}
+{"entite": "candidose", "valeur": "champignon"}
+{"entite": "choléra", "valeur": "bactérie"}
+{"entite": "coqueluche", "valeur": "bactérie"}
+{"entite": "covid-19", "valeur": "virus"}
+{"entite": "dengue", "valeur": "virus"}
+{"entite": "diphtérie", "valeur": "bactérie"}
+{"entite": "ebola", "valeur": "virus"}
+{"entite": "gale", "valeur": "parasite"}
+{"entite": "grippe", "valeur": "virus"}
+{"entite": "hépatite b", "valeur": "virus"}
+{"entite": "herpès", "valeur": "virus"}
+{"entite": "leishmaniose", "valeur": "parasite"}
+{"entite": "lèpre", "valeur": "bactérie"}
+{"entite": "mycose", "valeur": "champignon"}
+{"entite": "oreillons", "valeur": "virus"}
+{"entite": "paludisme", "valeur": "parasite"}
+{"entite": "peste", "valeur": "bactérie"}
+{"entite": "poliomyélite", "valeur": "virus"}
+{"entite": "rage", "valeur": "virus"}
+{"entite": "rougeole", "valeur": "virus"}
+{"entite": "salmonellose", "valeur": "bactérie"}
+{"entite": "sida", "valeur": "virus"}
+{"entite": "syphilis", "valeur": "bactérie"}
+{"entite": "teigne", "valeur": "champignon"}
+{"entite": "téniase", "valeur": "parasite"}
+{"entite": "tétanos", "valeur": "bactérie"}
+{"entite": "toxoplasmose", "valeur": "parasite"}
+{"entite": "tuberculose", "valeur": "bactérie"}
+{"entite": "varicelle", "valeur": "virus"}
+{"entite": "variole", "valeur": "virus"}
+{"entite": "zona", "valeur": "virus"}

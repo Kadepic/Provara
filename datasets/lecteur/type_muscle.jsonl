@@ -1,0 +1,31 @@
+{"_relation": "type_muscle", "_categorie": "physique", "_source": "Modèle (Claude) — histologie textbook curée (type de muscle ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abdominaux", "valeur": "strié squelettique"}
+{"entite": "biceps", "valeur": "strié squelettique"}
+{"entite": "deltoïde", "valeur": "strié squelettique"}
+{"entite": "diaphragme", "valeur": "strié squelettique"}
+{"entite": "gastrocnémien", "valeur": "strié squelettique"}
+{"entite": "grand dorsal", "valeur": "strié squelettique"}
+{"entite": "grand glutéal", "valeur": "strié squelettique"}
+{"entite": "grand pectoral", "valeur": "strié squelettique"}
+{"entite": "ischio-jambiers", "valeur": "strié squelettique"}
+{"entite": "langue", "valeur": "strié squelettique"}
+{"entite": "masséter", "valeur": "strié squelettique"}
+{"entite": "muscle brachial", "valeur": "strié squelettique"}
+{"entite": "muscle ciliaire", "valeur": "lisse"}
+{"entite": "muscle de l'estomac", "valeur": "lisse"}
+{"entite": "muscle de l'intestin", "valeur": "lisse"}
+{"entite": "muscle de l'iris", "valeur": "lisse"}
+{"entite": "muscle de l'œsophage", "valeur": "lisse"}
+{"entite": "muscle de l'urètre", "valeur": "lisse"}
+{"entite": "muscle de l'utérus", "valeur": "lisse"}
+{"entite": "muscle de la trachée", "valeur": "lisse"}
+{"entite": "muscle de la vessie", "valeur": "lisse"}
+{"entite": "muscle des artères", "valeur": "lisse"}
+{"entite": "muscle des bronches", "valeur": "lisse"}
+{"entite": "muscle du côlon", "valeur": "lisse"}
+{"entite": "myocarde", "valeur": "cardiaque"}
+{"entite": "quadriceps", "valeur": "strié squelettique"}
+{"entite": "sartorius", "valeur": "strié squelettique"}
+{"entite": "soléaire", "valeur": "strié squelettique"}
+{"entite": "trapèze", "valeur": "strié squelettique"}
+{"entite": "triceps", "valeur": "strié squelettique"}

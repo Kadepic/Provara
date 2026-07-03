@@ -1,0 +1,16 @@
+{"_relation": "nom_groupe_animaux", "_categorie": "convention", "_source": "Modèle (Claude) — lexique zoologique FR curé (nom collectif ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "essaim"}
+{"entite": "buffle", "valeur": "troupeau"}
+{"entite": "cerf", "valeur": "harde"}
+{"entite": "chien", "valeur": "meute"}
+{"entite": "éléphant", "valeur": "troupeau"}
+{"entite": "fourmi", "valeur": "colonie"}
+{"entite": "lion", "valeur": "troupe"}
+{"entite": "loup", "valeur": "meute"}
+{"entite": "manchot", "valeur": "colonie"}
+{"entite": "mouton", "valeur": "troupeau"}
+{"entite": "oiseau", "valeur": "volée"}
+{"entite": "perdrix", "valeur": "compagnie"}
+{"entite": "poisson", "valeur": "banc"}
+{"entite": "sanglier", "valeur": "compagnie"}
+{"entite": "vache", "valeur": "troupeau"}

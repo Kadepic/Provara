@@ -1,0 +1,33 @@
+{"_relation": "appareil_circulatoire_type", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (circulation ouverte/fermée ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "ouverte"}
+{"entite": "aigle royal", "valeur": "fermée"}
+{"entite": "araignée", "valeur": "ouverte"}
+{"entite": "calmar", "valeur": "fermée"}
+{"entite": "carpe", "valeur": "fermée"}
+{"entite": "chien", "valeur": "fermée"}
+{"entite": "coccinelle", "valeur": "ouverte"}
+{"entite": "crabe", "valeur": "ouverte"}
+{"entite": "crevette", "valeur": "ouverte"}
+{"entite": "criquet", "valeur": "ouverte"}
+{"entite": "dauphin", "valeur": "fermée"}
+{"entite": "écrevisse", "valeur": "ouverte"}
+{"entite": "escargot", "valeur": "ouverte"}
+{"entite": "être humain", "valeur": "fermée"}
+{"entite": "fourmi", "valeur": "ouverte"}
+{"entite": "grenouille", "valeur": "fermée"}
+{"entite": "homard", "valeur": "ouverte"}
+{"entite": "huître", "valeur": "ouverte"}
+{"entite": "libellule", "valeur": "ouverte"}
+{"entite": "lion", "valeur": "fermée"}
+{"entite": "mouche", "valeur": "ouverte"}
+{"entite": "moule", "valeur": "ouverte"}
+{"entite": "néréis", "valeur": "fermée"}
+{"entite": "papillon", "valeur": "ouverte"}
+{"entite": "pieuvre", "valeur": "fermée"}
+{"entite": "requin", "valeur": "fermée"}
+{"entite": "sangsue", "valeur": "fermée"}
+{"entite": "scarabée", "valeur": "ouverte"}
+{"entite": "scorpion", "valeur": "ouverte"}
+{"entite": "seiche", "valeur": "fermée"}
+{"entite": "serpent", "valeur": "fermée"}
+{"entite": "ver de terre", "valeur": "fermée"}

@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_sang", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (terme du sang -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "hématocrite", "valeur": "proportion de globules rouges dans le sang"}
+{"entite": "plasma", "valeur": "partie liquide du sang"}
+{"entite": "sérum", "valeur": "plasma dépourvu de facteurs de coagulation"}

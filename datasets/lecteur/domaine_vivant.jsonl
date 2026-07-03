@@ -1,0 +1,26 @@
+{"_relation": "domaine_vivant", "_categorie": "physique", "_source": "Modèle (Claude) — biologie textbook curée (domaine de Woese ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amibe", "valeur": "eucaryote"}
+{"entite": "blé", "valeur": "eucaryote"}
+{"entite": "champignon de Paris", "valeur": "eucaryote"}
+{"entite": "chêne", "valeur": "eucaryote"}
+{"entite": "chien", "valeur": "eucaryote"}
+{"entite": "cyanobactérie", "valeur": "bactérie"}
+{"entite": "Escherichia coli", "valeur": "bactérie"}
+{"entite": "être humain", "valeur": "eucaryote"}
+{"entite": "euglène", "valeur": "eucaryote"}
+{"entite": "halobactérie", "valeur": "archée"}
+{"entite": "Helicobacter pylori", "valeur": "bactérie"}
+{"entite": "levure de boulanger", "valeur": "eucaryote"}
+{"entite": "lion", "valeur": "eucaryote"}
+{"entite": "Listeria", "valeur": "bactérie"}
+{"entite": "méthanogène", "valeur": "archée"}
+{"entite": "moisissure", "valeur": "eucaryote"}
+{"entite": "mouche", "valeur": "eucaryote"}
+{"entite": "Mycobacterium tuberculosis", "valeur": "bactérie"}
+{"entite": "paramécie", "valeur": "eucaryote"}
+{"entite": "pneumocoque", "valeur": "bactérie"}
+{"entite": "rosier", "valeur": "eucaryote"}
+{"entite": "salmonelle", "valeur": "bactérie"}
+{"entite": "staphylocoque", "valeur": "bactérie"}
+{"entite": "streptocoque", "valeur": "bactérie"}
+{"entite": "Vibrio cholerae", "valeur": "bactérie"}

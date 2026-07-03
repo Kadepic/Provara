@@ -1,0 +1,30 @@
+{"_relation": "pays_plat", "_categorie": "convention", "_source": "gastronomie de référence (plat -> pays d'origine) — non contesté", "_articles": true}
+{"entite": "biryani", "valeur": "Inde"}
+{"entite": "burrito", "valeur": "Mexique"}
+{"entite": "canard laqué", "valeur": "Chine"}
+{"entite": "ceviche", "valeur": "Pérou"}
+{"entite": "curry", "valeur": "Inde"}
+{"entite": "dim sum", "valeur": "Chine"}
+{"entite": "falafel", "valeur": "Liban"}
+{"entite": "feijoada", "valeur": "Brésil"}
+{"entite": "fondue", "valeur": "Suisse"}
+{"entite": "gaspacho", "valeur": "Espagne"}
+{"entite": "goulash", "valeur": "Hongrie"}
+{"entite": "guacamole", "valeur": "Mexique"}
+{"entite": "houmous", "valeur": "Liban"}
+{"entite": "kebab", "valeur": "Turquie"}
+{"entite": "lasagnes", "valeur": "Italie"}
+{"entite": "moussaka", "valeur": "Grèce"}
+{"entite": "pad thai", "valeur": "Thaïlande"}
+{"entite": "paella", "valeur": "Espagne"}
+{"entite": "pizza", "valeur": "Italie"}
+{"entite": "poutine", "valeur": "Canada"}
+{"entite": "raclette", "valeur": "Suisse"}
+{"entite": "ramen", "valeur": "Japon"}
+{"entite": "risotto", "valeur": "Italie"}
+{"entite": "sashimi", "valeur": "Japon"}
+{"entite": "sushi", "valeur": "Japon"}
+{"entite": "tacos", "valeur": "Mexique"}
+{"entite": "tempura", "valeur": "Japon"}
+{"entite": "tiramisu", "valeur": "Italie"}
+{"entite": "tortilla", "valeur": "Espagne"}

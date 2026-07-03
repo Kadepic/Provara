@@ -1,0 +1,4 @@
+{"_relation": "type_neurone_role", "_categorie": "physique", "_source": "Modèle (Claude) — neurophysiologie textbook curée (rôle de type de neurone ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "interneurone", "valeur": "connexion entre neurones au sein du système nerveux central"}
+{"entite": "neurone moteur", "valeur": "transmission du message nerveux vers les organes effecteurs"}
+{"entite": "neurone sensitif", "valeur": "transmission du message nerveux des récepteurs vers le système nerveux central"}

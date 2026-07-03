@@ -1,0 +1,27 @@
+{"_relation": "type_digestion_animal", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie animale textbook curée (ruminant/monogastrique ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "antilope", "valeur": "ruminant"}
+{"entite": "bison", "valeur": "ruminant"}
+{"entite": "bouquetin", "valeur": "ruminant"}
+{"entite": "buffle", "valeur": "ruminant"}
+{"entite": "cerf", "valeur": "ruminant"}
+{"entite": "chat", "valeur": "monogastrique"}
+{"entite": "cheval", "valeur": "monogastrique"}
+{"entite": "chèvre", "valeur": "ruminant"}
+{"entite": "chien", "valeur": "monogastrique"}
+{"entite": "cochon", "valeur": "monogastrique"}
+{"entite": "élan", "valeur": "ruminant"}
+{"entite": "éléphant d'Afrique", "valeur": "monogastrique"}
+{"entite": "être humain", "valeur": "monogastrique"}
+{"entite": "girafe", "valeur": "ruminant"}
+{"entite": "gnou", "valeur": "ruminant"}
+{"entite": "lapin", "valeur": "monogastrique"}
+{"entite": "lion", "valeur": "monogastrique"}
+{"entite": "loup", "valeur": "monogastrique"}
+{"entite": "mouton", "valeur": "ruminant"}
+{"entite": "ours brun", "valeur": "monogastrique"}
+{"entite": "rat", "valeur": "monogastrique"}
+{"entite": "renne", "valeur": "ruminant"}
+{"entite": "souris", "valeur": "monogastrique"}
+{"entite": "tigre", "valeur": "monogastrique"}
+{"entite": "vache", "valeur": "ruminant"}
+{"entite": "yack", "valeur": "ruminant"}

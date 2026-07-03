@@ -1,0 +1,4 @@
+{"_relation": "role_partie_feuille", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (partie de feuille -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "limbe", "valeur": "surface de photosynthèse"}
+{"entite": "nervure", "valeur": "conduction de la sève"}
+{"entite": "pétiole", "valeur": "relie le limbe à la tige"}

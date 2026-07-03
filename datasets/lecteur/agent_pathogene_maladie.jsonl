@@ -1,0 +1,109 @@
+{"_relation": "agent_pathogene_maladie", "_categorie": "physique", "_source": "Modèle (Claude) — microbiologie textbook curée à la main, étiologies monocausales (FAUX=0 vérifié)", "_articles": true}
+{"entite": "actinomycose", "valeur": "Actinomyces israelii"}
+{"entite": "amibiase", "valeur": "Entamoeba histolytica"}
+{"entite": "anaplasmose", "valeur": "Anaplasma"}
+{"entite": "angine streptococcique", "valeur": "Streptococcus pyogenes"}
+{"entite": "anguillulose", "valeur": "Strongyloides stercoralis"}
+{"entite": "ascaridiose", "valeur": "Ascaris lumbricoides"}
+{"entite": "aspergillose", "valeur": "Aspergillus fumigatus"}
+{"entite": "babésiose", "valeur": "Babesia"}
+{"entite": "bartonellose", "valeur": "Bartonella bacilliformis"}
+{"entite": "bilharziose", "valeur": "Schistosoma"}
+{"entite": "botulisme", "valeur": "Clostridium botulinum"}
+{"entite": "brucellose", "valeur": "Brucella"}
+{"entite": "campylobactériose", "valeur": "Campylobacter jejuni"}
+{"entite": "cancer du col de l'utérus", "valeur": "papillomavirus humain"}
+{"entite": "candidose", "valeur": "Candida albicans"}
+{"entite": "chancre mou", "valeur": "Haemophilus ducreyi"}
+{"entite": "charbon", "valeur": "Bacillus anthracis"}
+{"entite": "chikungunya", "valeur": "virus chikungunya"}
+{"entite": "chlamydiose", "valeur": "Chlamydia trachomatis"}
+{"entite": "choléra", "valeur": "Vibrio cholerae"}
+{"entite": "colite pseudomembraneuse", "valeur": "Clostridioides difficile"}
+{"entite": "coqueluche", "valeur": "Bordetella pertussis"}
+{"entite": "COVID-19", "valeur": "SARS-CoV-2"}
+{"entite": "cryptococcose", "valeur": "Cryptococcus neoformans"}
+{"entite": "cryptosporidiose", "valeur": "Cryptosporidium"}
+{"entite": "dengue", "valeur": "virus de la dengue"}
+{"entite": "diphtérie", "valeur": "Corynebacterium diphtheriae"}
+{"entite": "distomatose hépatique", "valeur": "Fasciola hepatica"}
+{"entite": "donovanose", "valeur": "Klebsiella granulomatis"}
+{"entite": "ehrlichiose", "valeur": "Ehrlichia"}
+{"entite": "encéphalite japonaise", "valeur": "virus de l'encéphalite japonaise"}
+{"entite": "érysipèle", "valeur": "Streptococcus pyogenes"}
+{"entite": "érythème infectieux", "valeur": "parvovirus B19"}
+{"entite": "fièvre boutonneuse méditerranéenne", "valeur": "Rickettsia conorii"}
+{"entite": "fièvre de la vallée du Rift", "valeur": "virus de la fièvre de la vallée du Rift"}
+{"entite": "fièvre de Lassa", "valeur": "virus Lassa"}
+{"entite": "fièvre de Marburg", "valeur": "virus de Marburg"}
+{"entite": "fièvre de Pontiac", "valeur": "Legionella pneumophila"}
+{"entite": "fièvre des tranchées", "valeur": "Bartonella quintana"}
+{"entite": "fièvre jaune", "valeur": "virus de la fièvre jaune"}
+{"entite": "fièvre pourprée des montagnes Rocheuses", "valeur": "Rickettsia rickettsii"}
+{"entite": "fièvre Q", "valeur": "Coxiella burnetii"}
+{"entite": "fièvre typhoïde", "valeur": "Salmonella Typhi"}
+{"entite": "filariose lymphatique", "valeur": "Wuchereria bancrofti"}
+{"entite": "gale", "valeur": "Sarcoptes scabiei"}
+{"entite": "gangrène gazeuse", "valeur": "Clostridium perfringens"}
+{"entite": "gastrite à Helicobacter", "valeur": "Helicobacter pylori"}
+{"entite": "giardiase", "valeur": "Giardia lamblia"}
+{"entite": "gonorrhée", "valeur": "Neisseria gonorrhoeae"}
+{"entite": "granulome vénérien", "valeur": "Klebsiella granulomatis"}
+{"entite": "grippe", "valeur": "virus de la grippe"}
+{"entite": "hépatite A", "valeur": "virus de l'hépatite A"}
+{"entite": "hépatite B", "valeur": "virus de l'hépatite B"}
+{"entite": "hépatite C", "valeur": "virus de l'hépatite C"}
+{"entite": "hépatite D", "valeur": "virus de l'hépatite D"}
+{"entite": "hépatite E", "valeur": "virus de l'hépatite E"}
+{"entite": "herpès", "valeur": "virus herpes simplex"}
+{"entite": "histoplasmose", "valeur": "Histoplasma capsulatum"}
+{"entite": "hydatidose", "valeur": "Echinococcus granulosus"}
+{"entite": "kala-azar", "valeur": "Leishmania donovani"}
+{"entite": "légionellose", "valeur": "Legionella pneumophila"}
+{"entite": "leishmaniose", "valeur": "Leishmania"}
+{"entite": "lèpre", "valeur": "Mycobacterium leprae"}
+{"entite": "leptospirose", "valeur": "Leptospira interrogans"}
+{"entite": "listériose", "valeur": "Listeria monocytogenes"}
+{"entite": "maladie à virus Ebola", "valeur": "virus Ebola"}
+{"entite": "maladie de Chagas", "valeur": "Trypanosoma cruzi"}
+{"entite": "maladie de Lyme", "valeur": "Borrelia burgdorferi"}
+{"entite": "maladie des griffes du chat", "valeur": "Bartonella henselae"}
+{"entite": "maladie du sommeil", "valeur": "Trypanosoma brucei"}
+{"entite": "mélioïdose", "valeur": "Burkholderia pseudomallei"}
+{"entite": "méningite à méningocoque", "valeur": "Neisseria meningitidis"}
+{"entite": "mononucléose infectieuse", "valeur": "virus d'Epstein-Barr"}
+{"entite": "morve", "valeur": "Burkholderia mallei"}
+{"entite": "nocardiose", "valeur": "Nocardia"}
+{"entite": "onchocercose", "valeur": "Onchocerca volvulus"}
+{"entite": "oreillons", "valeur": "virus ourlien"}
+{"entite": "oxyurose", "valeur": "Enterobius vermicularis"}
+{"entite": "paludisme", "valeur": "Plasmodium"}
+{"entite": "peste", "valeur": "Yersinia pestis"}
+{"entite": "pian", "valeur": "Treponema pallidum pertenue"}
+{"entite": "pneumocystose", "valeur": "Pneumocystis jirovecii"}
+{"entite": "pneumonie à pneumocoque", "valeur": "Streptococcus pneumoniae"}
+{"entite": "poliomyélite", "valeur": "poliovirus"}
+{"entite": "psittacose", "valeur": "Chlamydia psittaci"}
+{"entite": "rage", "valeur": "virus de la rage"}
+{"entite": "roséole", "valeur": "herpèsvirus humain 6"}
+{"entite": "rougeole", "valeur": "virus de la rougeole"}
+{"entite": "rubéole", "valeur": "virus de la rubéole"}
+{"entite": "salmonellose", "valeur": "Salmonella"}
+{"entite": "scarlatine", "valeur": "Streptococcus pyogenes"}
+{"entite": "shigellose", "valeur": "Shigella"}
+{"entite": "sida", "valeur": "virus de l'immunodéficience humaine"}
+{"entite": "syndrome de choc toxique", "valeur": "Staphylococcus aureus"}
+{"entite": "syphilis", "valeur": "Treponema pallidum"}
+{"entite": "téniase", "valeur": "Taenia"}
+{"entite": "tétanos", "valeur": "Clostridium tetani"}
+{"entite": "toxoplasmose", "valeur": "Toxoplasma gondii"}
+{"entite": "trachome", "valeur": "Chlamydia trachomatis"}
+{"entite": "trichinose", "valeur": "Trichinella spiralis"}
+{"entite": "tuberculose", "valeur": "Mycobacterium tuberculosis"}
+{"entite": "tularémie", "valeur": "Francisella tularensis"}
+{"entite": "typhus épidémique", "valeur": "Rickettsia prowazekii"}
+{"entite": "ulcère de Buruli", "valeur": "Mycobacterium ulcerans"}
+{"entite": "varicelle", "valeur": "virus varicelle-zona"}
+{"entite": "variole", "valeur": "virus de la variole"}
+{"entite": "variole du singe", "valeur": "virus de la variole du singe"}
+{"entite": "zona", "valeur": "virus varicelle-zona"}

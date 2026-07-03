@@ -1,0 +1,2939 @@
+{"_relation": "proteine_du_gene", "_categorie": "physique", "_source": "Wikidata/QLever — produit protéique du gène P688 (vocab ouvert fonctionnel ; multi-produit -> HORS)", "_articles": true}
+{"entite": "DES", "valeur": "Desmine"}
+{"entite": "0610010F05Rik", "valeur": "protéine non caractérisée KIAA1841"}
+{"entite": "0610040J01Rik", "valeur": "protéine non caractérisée C4orf19 homologue"}
+{"entite": "1110008F13Rik", "valeur": "protéine non caractérisée C20orf24 homologue"}
+{"entite": "1110012L19Rik", "valeur": "protéine non caractérisée CXorf40 homologue"}
+{"entite": "1110034G24Rik", "valeur": "protéine non caractérisée C20orf196 homologue"}
+{"entite": "1110059E24Rik", "valeur": "protéine non caractérisée C9orf85 homologue"}
+{"entite": "1110059G10Rik", "valeur": "protéine non caractérisée KIAA1143 homologue"}
+{"entite": "1110065P20Rik", "valeur": "protéine non caractérisée C1orf122 homologue"}
+{"entite": "1190005I06Rik", "valeur": "protéine non caractérisée C16orf74 homologue"}
+{"entite": "1190007I07Rik", "valeur": "protéine non caractérisée C12orf73 homologue"}
+{"entite": "1600002H07Rik", "valeur": "protéine non caractérisée C16orf59 homologue"}
+{"entite": "1700001L19Rik", "valeur": "protéine non caractérisée C5orf49 homologue"}
+{"entite": "1700001P01Rik", "valeur": "protéine non caractérisée C17orf98 homologue"}
+{"entite": "1700003E16Rik", "valeur": "protéine non caractérisée C2orf81 homologue"}
+{"entite": "1700006E09Rik", "valeur": "protéine non caractérisée C17orf105 homologue"}
+{"entite": "1700007G11Rik", "valeur": "protéine non caractérisée C4orf22 homologue"}
+{"entite": "1700007K09Rik", "valeur": "protéine FAM24A-like"}
+{"entite": "1700011H14Rik", "valeur": "protéine non caractérisée C14orf105 homologue"}
+{"entite": "1700011L22Rik", "valeur": "protéine non caractérisée C4orf51 homologue"}
+{"entite": "1700012P22Rik", "valeur": "protéine non caractérisée C1orf158 homologue"}
+{"entite": "1700013F07Rik", "valeur": "protéine non caractérisée C1orf194 homologue"}
+{"entite": "1700016C15Rik", "valeur": "protéine non caractérisée C1orf100 homologue"}
+{"entite": "1700016H13Rik", "valeur": "protéine non caractérisée C4orf36 homologue"}
+{"entite": "1700016K19Rik", "valeur": "protéine LIAT1"}
+{"entite": "1700017B05Rik", "valeur": "protéine non caractérisée C15orf39 homologue"}
+{"entite": "1700019N19Rik", "valeur": "protéine non caractérisée C10orf82 homologue"}
+{"entite": "1700020L24Rik", "valeur": "protéine non caractérisée C17orf50 homologue"}
+{"entite": "1700021F05Rik", "valeur": "protéine non caractérisée C6orf203 homologue"}
+{"entite": "1700021F07Rik", "valeur": "protéine non caractérisée C20orf85 homologue"}
+{"entite": "1700022I11Rik", "valeur": "protéine non caractérisée C9orf131 homologue"}
+{"entite": "1700025G04Rik", "valeur": "protéine non caractérisée C1orf21 homologue"}
+{"entite": "1700028K03Rik", "valeur": "protéine non caractérisée C1orf146 homologue"}
+{"entite": "1700028P14Rik", "valeur": "protéine non caractérisée C9orf135 homologue"}
+{"entite": "1700029I15Rik", "valeur": "protéine non caractérisée C11orf94 homologue"}
+{"entite": "1700030F18Rik", "valeur": "protéine FAM186A"}
+{"entite": "1700030J22Rik", "valeur": "protéine non caractérisée C16orf46 homologue"}
+{"entite": "1700030K09Rik", "valeur": "protéine non caractérisée C19orf44 homologue"}
+{"entite": "1700034J05Rik", "valeur": "protéine non caractérisée C12orf71 homologue"}
+{"entite": "1700034O15Rik", "valeur": "protéine non caractérisée C7orf34 homologue"}
+{"entite": "1700037C18Rik", "valeur": "protéine non caractérisée C16orf90 homologue"}
+{"entite": "1700040L02Rik", "valeur": "protéine non caractérisée C10orf107 homologue"}
+{"entite": "1700047I17Rik2", "valeur": "protéine FAM177A1"}
+{"entite": "1700093K21Rik", "valeur": "protéine non caractérisée C2orf74 homologue"}
+{"entite": "1700094D03Rik", "valeur": "protéine non caractérisée C1orf189 homologue"}
+{"entite": "1700102P08Rik", "valeur": "protéine non caractérisée C3orf62 homologue"}
+{"entite": "1700123O20Rik", "valeur": "protéine non caractérisée C14orf119 homologue"}
+{"entite": "1700125H20Rik", "valeur": "protéine non caractérisée C17orf64 homologue"}
+{"entite": "1810009A15Rik", "valeur": "protéine non caractérisée C11orf98 homologue"}
+{"entite": "1810022K09Rik", "valeur": "protéine non caractérisée C8orf59 homologue"}
+{"entite": "1810030O07Rik", "valeur": "protéine non caractérisée CXorf38 homologue"}
+{"entite": "1810037I17Rik", "valeur": "protéine non caractérisée C4orf3 homologue"}
+{"entite": "1810041L15Rik", "valeur": "protéine non caractérisée KIAA1644"}
+{"entite": "1810046K07Rik", "valeur": "protéine non caractérisée C11orf53 homologue"}
+{"entite": "1810055G02Rik", "valeur": "protéine non caractérisée C11orf24 homologue"}
+{"entite": "2010003K11Rik", "valeur": "protéine non caractérisée C11orf86 homologue"}
+{"entite": "2010107G23Rik", "valeur": "protéine non caractérisée C10orf35 homologue"}
+{"entite": "2010111I01Rik", "valeur": "aminopeptidase O"}
+{"entite": "2210016L21Rik", "valeur": "protéine non caractérisée C12orf43 homologue"}
+{"entite": "2210408I21Rik", "valeur": "protéine non caractérisée KIAA0825 homologue"}
+{"entite": "2300002M23Rik", "valeur": "protéine non caractérisée C6orf15 homologue"}
+{"entite": "2300009A05Rik", "valeur": "protéine non caractérisée C15orf61 homologue"}
+{"entite": "2310007B03Rik", "valeur": "protéine non caractérisée C2orf54 homologue"}
+{"entite": "2310022A10Rik", "valeur": "protéine non caractérisée C19orf47 homologue"}
+{"entite": "2310022B05Rik", "valeur": "protéine non caractérisée C1orf198 homologue"}
+{"entite": "2310030G06Rik", "valeur": "protéine non caractérisée C11orf52 homologue"}
+{"entite": "2310036O22Rik", "valeur": "protéine non caractérisée C19orf43 homologue"}
+{"entite": "2310039H08Rik", "valeur": "protéine non caractérisée C6orf226 homologue"}
+{"entite": "2310057M21Rik", "valeur": "protéine non caractérisée C10orf88 homologue"}
+{"entite": "2410089E03Rik", "valeur": "protéine non caractérisée C5orf42 homologue"}
+{"entite": "2510039O18Rik", "valeur": "protéine non caractérisée KIAA2013"}
+{"entite": "2610507B11Rik", "valeur": "protéine KIAA0100"}
+{"entite": "2700049A03Rik", "valeur": "protéine TALPID3"}
+{"entite": "2700081O15Rik", "valeur": "protéine non caractérisée C11orf95 homologue"}
+{"entite": "2810004N23Rik", "valeur": "protéine non caractérisée C1orf131 homologue"}
+{"entite": "2810428I15Rik", "valeur": "protéine non caractérisée C19orf60 homologue"}
+{"entite": "2810459M11Rik", "valeur": "protéine non caractérisée C2orf72 homologue"}
+{"entite": "2810474O19Rik", "valeur": "protéine non caractérisée KIAA1551"}
+{"entite": "2900011O08Rik", "valeur": "protéine non caractérisée C16orf45 homologue"}
+{"entite": "2900026A02Rik", "valeur": "protéine non caractérisée KIAA1671"}
+{"entite": "3110002H16Rik", "valeur": "protéine non caractérisée C18orf8 homologue"}
+{"entite": "3110035E14Rik", "valeur": "protéine non caractérisée C8orf46 homologue"}
+{"entite": "3110079O15Rik", "valeur": "protéine non caractérisée C2orf82 homologue"}
+{"entite": "3110082I17Rik", "valeur": "protéine non caractérisée C7orf50 homologue"}
+{"entite": "3632451O06Rik", "valeur": "protéine non caractérisée C14orf37 homologue"}
+{"entite": "3830406C13Rik", "valeur": "protéine non caractérisée C3orf14 homologue"}
+{"entite": "4833420G17Rik", "valeur": "protéine non caractérisée C5orf34 homologue"}
+{"entite": "4921507P07Rik", "valeur": "protéine non caractérisée C7orf31 homologue"}
+{"entite": "4921511H03Rik", "valeur": "protéine non caractérisée C7orf62 homologue"}
+{"entite": "4921536K21Rik", "valeur": "protéine non caractérisée C5orf52 homologue"}
+{"entite": "4921539E11Rik", "valeur": "protéine non caractérisée C1orf141 homologue"}
+{"entite": "4930402H24Rik", "valeur": "protéine non caractérisée C20orf194 homologue"}
+{"entite": "4930404N11Rik", "valeur": "protéine non caractérisée C19orf71 homologue"}
+{"entite": "4930415F15Rik", "valeur": "protéine non caractérisée C7orf72 homologue"}
+{"entite": "4930427A07Rik", "valeur": "protéine non caractérisée C14orf80 homologue"}
+{"entite": "4930430F08Rik", "valeur": "protéine non caractérisée C12orf29 homologue"}
+{"entite": "4930432K21Rik", "valeur": "protéine non caractérisée C19orf57 homologue"}
+{"entite": "4930447C04Rik", "valeur": "protéine SIX6OS1"}
+{"entite": "4930452B06Rik", "valeur": "protéine non caractérisée C3orf67 homologue"}
+{"entite": "4930453N24Rik", "valeur": "protéine non caractérisée C3orf38 homologue"}
+{"entite": "4930505A04Rik", "valeur": "protéine non caractérisée C2orf73 homologue"}
+{"entite": "4930522H14Rik", "valeur": "protéine non caractérisée C1orf185 homologue"}
+{"entite": "4930524B15Rik", "valeur": "protéine non caractérisée C5orf47 homologue"}
+{"entite": "4930539E08Rik", "valeur": "protéine non caractérisée C6orf222 homologue"}
+{"entite": "4930550C14Rik", "valeur": "protéine non caractérisée C11orf65 homologue"}
+{"entite": "4930562C15Rik", "valeur": "protéine non caractérisée C16orf96 homologue"}
+{"entite": "4930563D23Rik", "valeur": "protéine non caractérisée C21orf140 homologue"}
+{"entite": "4930563E22Rik", "valeur": "protéine non caractérisée C17orf100 homologue"}
+{"entite": "4930578I06Rik", "valeur": "protéine non caractérisée C8orf74 homologue"}
+{"entite": "4930579G24Rik", "valeur": "protéine non caractérisée C4orf46 homologue"}
+{"entite": "4930590J08Rik", "valeur": "protéine non caractérisée C3orf20 homologue"}
+{"entite": "4931414P19Rik", "valeur": "protéine non caractérisée C14orf93 homologue"}
+{"entite": "4931428F04Rik", "valeur": "protéine non caractérisée KIAA0895-like"}
+{"entite": "4932438A13Rik", "valeur": "protéine non caractérisée KIAA1109"}
+{"entite": "4932438H23Rik", "valeur": "protéine non caractérisée C21orf62 homologue"}
+{"entite": "4933402P03Rik", "valeur": "protéine non caractérisée C17orf74 homologue"}
+{"entite": "4933405L10Rik", "valeur": "protéine non caractérisée C16orf86 homologue"}
+{"entite": "4933411K16Rik", "valeur": "protéine non caractérisée C10orf62 homologue"}
+{"entite": "4933412E24Rik", "valeur": "protéine non caractérisée CXorf49 homologue"}
+{"entite": "4933413G19Rik", "valeur": "protéine non caractérisée ENSP00000372125 homologue"}
+{"entite": "4933417A18Rik", "valeur": "protéine non caractérisée C6orf201 homologue"}
+{"entite": "4933427D14Rik", "valeur": "protéine moonraker"}
+{"entite": "4933434E20Rik", "valeur": "protéine non caractérisée C1orf43 homologue"}
+{"entite": "5031439G07Rik", "valeur": "protéine non caractérisée KIAA0930 homologue"}
+{"entite": "5430427O19Rik", "valeur": "protéine non caractérisée CXorf21 homologue"}
+{"entite": "5730455P16Rik", "valeur": "protéine Njmu-R1"}
+{"entite": "5730508B09Rik", "valeur": "protéine non caractérisée C4orf32 homologue"}
+{"entite": "5730559C18Rik", "valeur": "protéine non caractérisée C1orf106 homologue"}
+{"entite": "6030468B19Rik", "valeur": "protéine non caractérisée C17orf99 homologue"}
+{"entite": "6330408A02Rik", "valeur": "protéine non caractérisée C19orf68 homologue"}
+{"entite": "6430548M08Rik", "valeur": "protéine non caractérisée KIAA0513"}
+{"entite": "6430571L13Rik", "valeur": "protéine non caractérisée C3orf18 homologue"}
+{"entite": "8030462N17Rik", "valeur": "protéine non caractérisée C18orf25 homologue"}
+{"entite": "8430408G22Rik", "valeur": "protéine DEPP"}
+{"entite": "9130401M01Rik", "valeur": "protéine non caractérisée C8orf76 homologue"}
+{"entite": "9530077C05Rik", "valeur": "protéine non caractérisée KIAA0895"}
+{"entite": "9930012K11Rik", "valeur": "protéine non caractérisée C8orf58 homologue"}
+{"entite": "9930104L06Rik", "valeur": "protéine non caractérisée C1orf109 homologue"}
+{"entite": "A430105I19Rik", "valeur": "protéine non caractérisée C15orf52 homologue"}
+{"entite": "A830010M20Rik", "valeur": "protéine non caractérisée KIAA1107"}
+{"entite": "A830018L16Rik", "valeur": "protéine non caractérisée C8orf34 homologue"}
+{"entite": "A830080D01Rik", "valeur": "protéine non caractérisée CXorf23 homologue"}
+{"entite": "A930018P22Rik", "valeur": "protéine non caractérisée C11orf91 homologue"}
+{"entite": "AAK1", "valeur": "Protéine-kinase 1 associée à l'AP-2"}
+{"entite": "AATF", "valeur": "protéine AATF"}
+{"entite": "AB124611", "valeur": "protéine HIDE1"}
+{"entite": "ABCA1", "valeur": "ATP binding cassette sous-famille A membre 1"}
+{"entite": "ABCA10", "valeur": "ATP binding cassette sous-famille A membre 10"}
+{"entite": "ABCA12", "valeur": "ATP binding cassette sous-famille A membre 12"}
+{"entite": "ABCA13", "valeur": "ATP binding cassette sous-famille A membre 13"}
+{"entite": "ABCA2", "valeur": "ATP binding cassette sous-famille A membre 2"}
+{"entite": "ABCA3", "valeur": "ATP binding cassette sous-famille A membre 3"}
+{"entite": "ABCA5", "valeur": "ATP binding cassette sous-famille A membre 5"}
+{"entite": "ABCA6", "valeur": "ATP binding cassette sous-famille A membre 6"}
+{"entite": "ABCA7", "valeur": "ATP binding cassette sous-famille A membre 7"}
+{"entite": "ABCA8", "valeur": "ATP binding cassette sous-famille A membre 8"}
+{"entite": "Abca8a", "valeur": "ATP binding cassette sous-famille A membre 8-A"}
+{"entite": "Abca8b", "valeur": "ATP binding cassette sous-famille A membre 8-B"}
+{"entite": "ABCA9", "valeur": "ATP binding cassette sous-famille A membre 9"}
+{"entite": "ABCB1", "valeur": "Glycoprotéine P"}
+{"entite": "ABCB10", "valeur": "ATP binding cassette sous-famille B membre 10, mitochondrial"}
+{"entite": "Abcb5", "valeur": "ATP binding cassette sous-famille B membre 5"}
+{"entite": "ABCB6", "valeur": "ATP binding cassette sous-famille B membre 6, mitochondrial"}
+{"entite": "ABCB7", "valeur": "ATP binding cassette sous-famille B membre 7, mitochondrial"}
+{"entite": "ABCB8", "valeur": "ATP binding cassette sous-famille B membre 8, mitochondrial"}
+{"entite": "ABCB9", "valeur": "ATP binding cassette sous-famille B membre 9"}
+{"entite": "ABCC6", "valeur": "ABCC6"}
+{"entite": "ABCC8", "valeur": "ATP binding cassette sous-famille C membre 8"}
+{"entite": "ABCC9", "valeur": "ATP binding cassette sous-famille C membre 9"}
+{"entite": "ABCD1", "valeur": "ATP binding cassette sous-famille D membre 1"}
+{"entite": "ABCD2", "valeur": "ATP binding cassette sous-famille D membre 2"}
+{"entite": "ABCD3", "valeur": "ATP binding cassette sous-famille D membre 3"}
+{"entite": "ABCD4", "valeur": "ATP binding cassette sous-famille D membre 4"}
+{"entite": "ABCE1", "valeur": "ATP binding cassette sous-famille E membre 1"}
+{"entite": "ABCF1", "valeur": "ATP binding cassette sous-famille F membre 1"}
+{"entite": "ABCF2", "valeur": "ATP binding cassette sous-famille F membre 2"}
+{"entite": "ABCF3", "valeur": "ATP binding cassette sous-famille F membre 3"}
+{"entite": "ABCG1", "valeur": "ATP binding cassette sous-famille G membre 1"}
+{"entite": "ABCG2", "valeur": "ATP binding cassette sous-famille G membre 2"}
+{"entite": "Abcg3", "valeur": "ATP binding cassette sous-famille G membre 3"}
+{"entite": "ABCG4", "valeur": "ATP binding cassette sous-famille G membre 4"}
+{"entite": "ABCG5", "valeur": "ATP binding cassette sous-famille G membre 5"}
+{"entite": "Abcg8", "valeur": "ATP binding cassette sous-famille G membre 8"}
+{"entite": "ABHD1", "valeur": "protéine ABHD1"}
+{"entite": "ABHD11", "valeur": "protéine ABHD11"}
+{"entite": "ABHD12B", "valeur": "protéine ABHD12B"}
+{"entite": "ABHD13", "valeur": "protéine ABHD13"}
+{"entite": "ABHD14A", "valeur": "protéine ABHD14A"}
+{"entite": "ABHD14B", "valeur": "protéine ABHD14B"}
+{"entite": "ABHD15", "valeur": "protéine ABHD15"}
+{"entite": "ABHD16A", "valeur": "protéine ABHD16A"}
+{"entite": "ABHD16B", "valeur": "protéine ABHD16B"}
+{"entite": "ABHD17A", "valeur": "protéine ABHD17A"}
+{"entite": "ABHD17B", "valeur": "protéine ABHD17B"}
+{"entite": "ABHD17C", "valeur": "protéine ABHD17C"}
+{"entite": "ABHD18", "valeur": "protéine ABHD18"}
+{"entite": "ABHD4", "valeur": "protéine ABHD4"}
+{"entite": "ABHD8", "valeur": "protéine ABHD8"}
+{"entite": "ACAN", "valeur": "Aggrécane"}
+{"entite": "ACE", "valeur": "enzyme de conversion de l'angiotensine"}
+{"entite": "ACE2", "valeur": "Enzyme de conversion de l'angiotensine 2"}
+{"entite": "ACKR1", "valeur": "système Duffy"}
+{"entite": "ACR", "valeur": "Acrosine"}
+{"entite": "ACVR1B", "valeur": "ACVR1B"}
+{"entite": "ACYP1", "valeur": "Acylphosphatase-1"}
+{"entite": "ACYP2", "valeur": "Acylphosphatase-2"}
+{"entite": "ADA", "valeur": "Adénosine désaminase"}
+{"entite": "ADAMTS13", "valeur": "ADAMTS13"}
+{"entite": "ADCY1", "valeur": "adénylate cyclase type 1"}
+{"entite": "ADCY10", "valeur": "adénylate cyclase type 10"}
+{"entite": "ADCY2", "valeur": "adénylate cyclase type 2"}
+{"entite": "ADCY3", "valeur": "adénylate cyclase type 3"}
+{"entite": "ADCY4", "valeur": "adénylate cyclase type 4"}
+{"entite": "ADCY5", "valeur": "adénylate cyclase type 5"}
+{"entite": "ADCY6", "valeur": "adénylate cyclase type 6"}
+{"entite": "ADCY7", "valeur": "adénylate cyclase type 7"}
+{"entite": "ADCY8", "valeur": "adénylate cyclase type 8"}
+{"entite": "ADCY9", "valeur": "adénylate cyclase type 9"}
+{"entite": "ADGRD2", "valeur": "ADGRD2"}
+{"entite": "ADGRE5", "valeur": "protéine ADGRE5"}
+{"entite": "ADGRG1", "valeur": "protéine ADGRG1"}
+{"entite": "ADGRG6", "valeur": "protéine ADGRG6"}
+{"entite": "Adh1", "valeur": "alcool déshydrogénase 1"}
+{"entite": "ADH1A", "valeur": "alcool déshydrogénase 1A"}
+{"entite": "ADH1B", "valeur": "alcool déshydrogénase 1B"}
+{"entite": "ADH1C", "valeur": "alcool déshydrogénase 1C"}
+{"entite": "ADH4", "valeur": "alcool déshydrogénase 4"}
+{"entite": "ADH6", "valeur": "alcool déshydrogénase 6"}
+{"entite": "ADIPOQ", "valeur": "Adiponectine"}
+{"entite": "ADM", "valeur": "Adrenomedullin"}
+{"entite": "ADORA1", "valeur": "Récepteur A1 de l'adénosine"}
+{"entite": "ADSS", "valeur": "adénylosuccinate synthétase isozyme 2"}
+{"entite": "ADSSL1", "valeur": "adénylosuccinate synthétase isozyme 1"}
+{"entite": "AEBP2", "valeur": "protéine à doigt de zinc AEBP2"}
+{"entite": "AFP", "valeur": "Alpha-fœtoprotéine"}
+{"entite": "AGL", "valeur": "Enzyme de débranchement du glycogène"}
+{"entite": "Agouti (gène)", "valeur": "Agouti (gène)"}
+{"entite": "AGT", "valeur": "angiotensine"}
+{"entite": "AGTR1", "valeur": "AGTR1"}
+{"entite": "AHCTF1", "valeur": "protéine ELYS"}
+{"entite": "AHNAK2", "valeur": "protéine AHNAK2"}
+{"entite": "AHR", "valeur": "Récepteur d'aryl hydrocarbone"}
+{"entite": "AI413582", "valeur": "protéine non caractérisée C6orf1 homologue"}
+{"entite": "AI429214", "valeur": "protéine non caractérisée C8orf48 homologue"}
+{"entite": "AI593442", "valeur": "protéine non caractérisée C11orf87 homologue"}
+{"entite": "AI661453", "valeur": "protéine non caractérisée C6orf132 homologue"}
+{"entite": "AI846148", "valeur": "protéine non caractérisée C11orf84 homologue"}
+{"entite": "AIRE", "valeur": "Auto-immune regulator"}
+{"entite": "AKNAD1", "valeur": "protéine AKNAD1"}
+{"entite": "ALB", "valeur": "albumine humaine"}
+{"entite": "ALDH16A1", "valeur": "aldéhyde déshydrogénase famille 16 membre A1"}
+{"entite": "ALDH1A3", "valeur": "aldéhyde déshydrogénase famille 1 membre A3"}
+{"entite": "ALDH2", "valeur": "Aldéhyde déshydrogénase 2"}
+{"entite": "ALDH3B1", "valeur": "aldéhyde déshydrogénase famille 3 membre B1"}
+{"entite": "ALDH3B2", "valeur": "aldéhyde déshydrogénase famille 3 membre B2"}
+{"entite": "ALDH8A1", "valeur": "aldéhyde déshydrogénase famille 8 membre A1"}
+{"entite": "ALDOA", "valeur": "Aldolase A"}
+{"entite": "ALDOB", "valeur": "aldolase B"}
+{"entite": "ALKAL1", "valeur": "protéine FAM150A"}
+{"entite": "ALKAL2", "valeur": "protéine FAM150B"}
+{"entite": "Alpha-2 macroglobuline", "valeur": "Alpha-2-macroglobuline"}
+{"entite": "AMBN", "valeur": "Améloblastine"}
+{"entite": "AMBP", "valeur": "protéine AMBP"}
+{"entite": "AMPD1", "valeur": "AMP désaminase"}
+{"entite": "AMPH", "valeur": "amphiphysine"}
+{"entite": "AMY1A", "valeur": "α-amylase"}
+{"entite": "AMY1B", "valeur": "α-amylase"}
+{"entite": "AMY1C", "valeur": "α-amylase"}
+{"entite": "ANG", "valeur": "Angiogénine"}
+{"entite": "ANKUB1", "valeur": "protéine ANKUB1"}
+{"entite": "ANXA1", "valeur": "Annexine A1"}
+{"entite": "ANXA2", "valeur": "Annexin II"}
+{"entite": "ANXA5", "valeur": "Annexine V"}
+{"entite": "APAF1", "valeur": "APAF1"}
+{"entite": "APC", "valeur": "APC"}
+{"entite": "APCDD1", "valeur": "protéine APCDD1"}
+{"entite": "APCDD1L", "valeur": "protéine APCDD1-like"}
+{"entite": "APELA", "valeur": "Elabela"}
+{"entite": "APLN", "valeur": "Apeline"}
+{"entite": "APOA1", "valeur": "Apolipoprotéine A1"}
+{"entite": "APOB", "valeur": "Apolipoprotéine B"}
+{"entite": "APOC2", "valeur": "Apolipoprotéine C-II"}
+{"entite": "APOC3", "valeur": "Apolipoprotéine C-III"}
+{"entite": "APOD", "valeur": "Apolipoprotéine D"}
+{"entite": "APOE", "valeur": "Apolipoprotéine E"}
+{"entite": "APP", "valeur": "protéine précurseur de l'amyloïde"}
+{"entite": "AQP3", "valeur": "AQP3"}
+{"entite": "AR", "valeur": "récepteur des androgènes"}
+{"entite": "ARHGAP42", "valeur": "protéine transmembranaire 133"}
+{"entite": "ARIH2OS", "valeur": "protéine non caractérisée ARIH2OS"}
+{"entite": "ARMCX5", "valeur": "ARMCX5"}
+{"entite": "ARMCX6", "valeur": "protéine ARMCX6"}
+{"entite": "ARN ribosomique 16S mitochondrial", "valeur": "humanine"}
+{"entite": "ARPC2", "valeur": "ACTR2"}
+{"entite": "ARSA", "valeur": "Arylsulfatase A"}
+{"entite": "ARV1", "valeur": "protéine ARV1"}
+{"entite": "ASL", "valeur": "Argininosuccinate lyase"}
+{"entite": "ASMT", "valeur": "Acétylsérotonine O-méthyltransférase"}
+{"entite": "ASPM", "valeur": "ASPM"}
+{"entite": "Ass1", "valeur": "argininosuccinate synthase"}
+{"entite": "ATF4", "valeur": "ATF4"}
+{"entite": "ATM", "valeur": "Protéine ATM"}
+{"entite": "ATP1B4", "valeur": "protéine ATP1B4"}
+{"entite": "ATRX", "valeur": "régulateur de la transcription ATRX"}
+{"entite": "AU022252", "valeur": "protéine non caractérisée C1orf50 homologue"}
+{"entite": "AVPR1A", "valeur": "Gène Avpr1"}
+{"entite": "AW554918", "valeur": "protéine hinderin"}
+{"entite": "B230118H07Rik", "valeur": "protéine non caractérisée C11orf74 homologue"}
+{"entite": "B2M", "valeur": "Bêta-2 microglobuline"}
+{"entite": "BACE1", "valeur": "BACE1"}
+{"entite": "BANP", "valeur": "protéine BANP"}
+{"entite": "BAX", "valeur": "Bcl-2–associated X protein"}
+{"entite": "BBS9", "valeur": "protéine PTHB1"}
+{"entite": "BC003965", "valeur": "protéine CCSMST1"}
+{"entite": "BC005537", "valeur": "protéine non caractérisée C6orf62 homologue"}
+{"entite": "BC005624", "valeur": "protéine non caractérisée C9orf78 homologue"}
+{"entite": "BC017643", "valeur": "protéine non caractérisée C17orf62 homologue"}
+{"entite": "BC022687", "valeur": "protéine non caractérisée C14orf79 homologue"}
+{"entite": "BC027072", "valeur": "protéine non caractérisée C2orf71 homologue"}
+{"entite": "BC028528", "valeur": "protéine non caractérisée C1orf54 homologue"}
+{"entite": "BC029214", "valeur": "protéine PAXX"}
+{"entite": "BC030336", "valeur": "protéine non caractérisée C16orf52 homologue"}
+{"entite": "BC030867", "valeur": "protéine non caractérisée C17orf53 homologue"}
+{"entite": "BC037034", "valeur": "protéine non caractérisée C7orf43 homologue"}
+{"entite": "BC048671", "valeur": "protéine non caractérisée C3orf22 homologue"}
+{"entite": "BC049715", "valeur": "protéine non caractérisée C12orf60 homologue"}
+{"entite": "BC051019", "valeur": "protéine non caractérisée C11orf16 homologue"}
+{"entite": "BC052040", "valeur": "protéine non caractérisée C15orf41 homologue"}
+{"entite": "BC055324", "valeur": "protéine non caractérisée C1orf112 homologue"}
+{"entite": "BCHE", "valeur": "butyrylcholinestérase"}
+{"entite": "BCL2", "valeur": "Bcl-2"}
+{"entite": "Bcl6", "valeur": "BCL6"}
+{"entite": "BDNF", "valeur": "Facteur neurotrophique dérivé du cerveau"}
+{"entite": "BEAN1", "valeur": "protéine BEAN1"}
+{"entite": "BEX1", "valeur": "protéine BEX1"}
+{"entite": "BEX2", "valeur": "protéine BEX2"}
+{"entite": "BEX3", "valeur": "protéine BEX3"}
+{"entite": "BEX4", "valeur": "protéine BEX4"}
+{"entite": "BEX5", "valeur": "protéine BEX5"}
+{"entite": "Bex6", "valeur": "protéine BEX6"}
+{"entite": "BGLAP", "valeur": "Ostéocalcine"}
+{"entite": "BHLHB9", "valeur": "protéine BHLHb9"}
+{"entite": "BMP2", "valeur": "Dibotermine alfa"}
+{"entite": "BMPR1A", "valeur": "BMPR1A"}
+{"entite": "Bmyc", "valeur": "protéine B-Myc"}
+{"entite": "BNC1", "valeur": "protéine à doigt de zinc basonuclin-1"}
+{"entite": "BNC2", "valeur": "protéine à doigt de zinc basonuclin-2"}
+{"entite": "BORCS8", "valeur": "protéine MEF2BNB"}
+{"entite": "BRCA1", "valeur": "BRCA1"}
+{"entite": "BRCA2", "valeur": "BRCA2"}
+{"entite": "BRK1", "valeur": "protéine BRICK1"}
+{"entite": "BSG", "valeur": "Basigin"}
+{"entite": "BTG1", "valeur": "protéine BTG1"}
+{"entite": "BTG2", "valeur": "protéine BTG2"}
+{"entite": "BTG3", "valeur": "protéine BTG3"}
+{"entite": "BTG4", "valeur": "protéine BTG4"}
+{"entite": "BTK", "valeur": "tyrosine-kinase de Bruton"}
+{"entite": "C10orf10", "valeur": "protéine DEPP"}
+{"entite": "C10orf105", "valeur": "protéine non caractérisée C10orf105"}
+{"entite": "C10orf107", "valeur": "protéine non caractérisée C10orf107"}
+{"entite": "C10orf111", "valeur": "protéine non caractérisée C10orf111"}
+{"entite": "C10orf12", "valeur": "protéine non caractérisée C10orf12"}
+{"entite": "C10orf120", "valeur": "protéine non caractérisée C10orf120"}
+{"entite": "C10orf131", "valeur": "protéine non caractérisée C10orf131"}
+{"entite": "C10orf142", "valeur": "protéine non caractérisée C10orf142"}
+{"entite": "C10orf25", "valeur": "protéine non caractérisée C10orf25"}
+{"entite": "C10orf35", "valeur": "protéine non caractérisée C10orf35"}
+{"entite": "C10orf55", "valeur": "protéine non caractérisée C10orf55"}
+{"entite": "C10orf62", "valeur": "protéine non caractérisée C10orf62"}
+{"entite": "C10orf67", "valeur": "protéine non caractérisée C10orf67"}
+{"entite": "C10orf71", "valeur": "protéine non caractérisée C10orf71"}
+{"entite": "C10orf82", "valeur": "protéine non caractérisée C10orf82"}
+{"entite": "C10orf88", "valeur": "protéine non caractérisée C10orf88"}
+{"entite": "C10orf91", "valeur": "protéine non caractérisée C10orf91"}
+{"entite": "C10orf95", "valeur": "protéine non caractérisée C10orf95"}
+{"entite": "C11orf16", "valeur": "protéine non caractérisée C11orf16"}
+{"entite": "C11orf21", "valeur": "protéine non caractérisée C11orf21"}
+{"entite": "C11orf24", "valeur": "protéine non caractérisée C11orf24"}
+{"entite": "C11orf42", "valeur": "protéine non caractérisée C11orf42"}
+{"entite": "C11orf44", "valeur": "protéine non caractérisée C11orf44"}
+{"entite": "C11orf52", "valeur": "protéine non caractérisée C11orf52"}
+{"entite": "C11orf53", "valeur": "protéine non caractérisée C11orf53"}
+{"entite": "C11orf57", "valeur": "protéine non caractérisée C11orf57"}
+{"entite": "C11orf63", "valeur": "protéine non caractérisée C11orf63"}
+{"entite": "C11orf65", "valeur": "protéine non caractérisée C11orf65"}
+{"entite": "C11orf70", "valeur": "protéine non caractérisée C11orf70"}
+{"entite": "C11orf71", "valeur": "protéine non caractérisée C11orf71"}
+{"entite": "C11orf74", "valeur": "protéine non caractérisée C11orf74"}
+{"entite": "C11orf80", "valeur": "protéine non caractérisée C11orf80"}
+{"entite": "C11orf84", "valeur": "protéine non caractérisée C11orf84"}
+{"entite": "C11orf86", "valeur": "protéine non caractérisée C11orf86"}
+{"entite": "C11orf87", "valeur": "protéine non caractérisée C11orf87"}
+{"entite": "C11orf91", "valeur": "protéine non caractérisée C11orf91"}
+{"entite": "C11orf94", "valeur": "protéine non caractérisée C11orf94"}
+{"entite": "C11orf95", "valeur": "protéine non caractérisée C11orf95"}
+{"entite": "C11orf96", "valeur": "protéine non caractérisée C11orf96"}
+{"entite": "C11orf98", "valeur": "protéine non caractérisée C11orf98"}
+{"entite": "C12orf29", "valeur": "protéine non caractérisée C12orf29"}
+{"entite": "C12orf4", "valeur": "protéine C12orf4"}
+{"entite": "C12orf40", "valeur": "protéine non caractérisée C12orf40"}
+{"entite": "C12orf42", "valeur": "protéine non caractérisée C12orf42"}
+{"entite": "C12orf43", "valeur": "protéine non caractérisée C12orf43"}
+{"entite": "C12orf45", "valeur": "protéine non caractérisée C12orf45"}
+{"entite": "C12orf50", "valeur": "protéine non caractérisée C12orf50"}
+{"entite": "C12orf54", "valeur": "protéine non caractérisée C12orf54"}
+{"entite": "C12orf56", "valeur": "protéine non caractérisée C12orf56"}
+{"entite": "C12orf57", "valeur": "protéine C10"}
+{"entite": "C12orf60", "valeur": "protéine non caractérisée C12orf60"}
+{"entite": "C12orf71", "valeur": "protéine non caractérisée C12orf71"}
+{"entite": "C12orf73", "valeur": "protéine non caractérisée C12orf73"}
+{"entite": "C12orf76", "valeur": "protéine non caractérisée C12orf76"}
+{"entite": "C130074G19Rik", "valeur": "protéine non caractérisée C1orf115 homologue"}
+{"entite": "C14orf105", "valeur": "protéine non caractérisée C14orf105"}
+{"entite": "C14orf119", "valeur": "protéine non caractérisée C14orf119"}
+{"entite": "C14orf132", "valeur": "protéine non caractérisée C14orf132"}
+{"entite": "C14orf142", "valeur": "protéine non caractérisée C14orf142"}
+{"entite": "C14orf178", "valeur": "protéine non caractérisée C14orf178"}
+{"entite": "C14orf28", "valeur": "protéine non caractérisée C14orf28"}
+{"entite": "C14orf37", "valeur": "protéine non caractérisée C14orf37"}
+{"entite": "C14orf39", "valeur": "protéine SIX6OS1"}
+{"entite": "C14orf79", "valeur": "protéine non caractérisée C14orf79"}
+{"entite": "C14orf80", "valeur": "protéine non caractérisée C14orf80"}
+{"entite": "C14orf93", "valeur": "protéine non caractérisée C14orf93"}
+{"entite": "C15orf32", "valeur": "protéine non caractérisée C15orf32"}
+{"entite": "C15orf38-AP3S2", "valeur": "protéine C15orf38-AP3S2"}
+{"entite": "C15orf39", "valeur": "protéine non caractérisée C15orf39"}
+{"entite": "C15orf41", "valeur": "protéine non caractérisée C15orf41"}
+{"entite": "C15orf52", "valeur": "protéine non caractérisée C15orf52"}
+{"entite": "C15orf53", "valeur": "protéine non caractérisée C15orf53"}
+{"entite": "C15orf57", "valeur": "protéine non caractérisée C15orf57"}
+{"entite": "C15orf61", "valeur": "protéine non caractérisée C15orf61"}
+{"entite": "C15orf62", "valeur": "protéine non caractérisée C15orf62, mitochondrial"}
+{"entite": "C15orf65", "valeur": "protéine non caractérisée C15orf65"}
+{"entite": "C16orf45", "valeur": "protéine non caractérisée C16orf45"}
+{"entite": "C16orf46", "valeur": "protéine non caractérisée C16orf46"}
+{"entite": "C16orf52", "valeur": "protéine non caractérisée C16orf52"}
+{"entite": "C16orf54", "valeur": "protéine transmembranaire C16orf54"}
+{"entite": "C16orf59", "valeur": "protéine non caractérisée C16orf59"}
+{"entite": "C16orf71", "valeur": "protéine non caractérisée C16orf71"}
+{"entite": "C16orf74", "valeur": "protéine non caractérisée C16orf74"}
+{"entite": "C16orf78", "valeur": "protéine non caractérisée C16orf78"}
+{"entite": "C16orf82", "valeur": "protéine TNT"}
+{"entite": "C16orf86", "valeur": "protéine non caractérisée C16orf86"}
+{"entite": "C16orf90", "valeur": "protéine non caractérisée C16orf90"}
+{"entite": "C16orf91", "valeur": "protéine CCSMST1"}
+{"entite": "C16orf92", "valeur": "protéine non caractérisée C16orf92"}
+{"entite": "C16orf95", "valeur": "protéine non caractérisée C16orf95"}
+{"entite": "C16orf96", "valeur": "protéine non caractérisée C16orf96"}
+{"entite": "C16orf97", "valeur": "protéine non caractérisée C16orf97"}
+{"entite": "C17orf100", "valeur": "protéine non caractérisée C17orf100"}
+{"entite": "C17orf102", "valeur": "protéine non caractérisée C17orf102"}
+{"entite": "C17orf105", "valeur": "protéine non caractérisée C17orf105"}
+{"entite": "C17orf107", "valeur": "protéine non caractérisée C17orf107"}
+{"entite": "C17orf112", "valeur": "protéine non caractérisée C17orf112"}
+{"entite": "C17orf47", "valeur": "protéine non caractérisée C17orf47"}
+{"entite": "C17orf50", "valeur": "protéine non caractérisée C17orf50"}
+{"entite": "C17orf51", "valeur": "protéine non caractérisée C17orf51"}
+{"entite": "C17orf53", "valeur": "protéine non caractérisée C17orf53"}
+{"entite": "C17orf62", "valeur": "protéine non caractérisée C17orf62"}
+{"entite": "C17orf64", "valeur": "protéine non caractérisée C17orf64"}
+{"entite": "C17orf67", "valeur": "protéine non caractérisée C17orf67"}
+{"entite": "C17orf74", "valeur": "protéine non caractérisée C17orf74"}
+{"entite": "C17orf75", "valeur": "protéine Njmu-R1"}
+{"entite": "C17orf77", "valeur": "protéine non caractérisée C17orf77"}
+{"entite": "C17orf78", "valeur": "protéine non caractérisée C17orf78"}
+{"entite": "C17orf80", "valeur": "protéine non caractérisée C17orf80"}
+{"entite": "C17orf96", "valeur": "protéine non caractérisée C17orf96"}
+{"entite": "C17orf97", "valeur": "protéine LIAT1"}
+{"entite": "C17orf98", "valeur": "protéine non caractérisée C17orf98"}
+{"entite": "C17orf99", "valeur": "protéine non caractérisée C17orf99"}
+{"entite": "C18orf25", "valeur": "protéine non caractérisée C18orf25"}
+{"entite": "C18orf63", "valeur": "protéine non caractérisée C18orf63"}
+{"entite": "C18orf8", "valeur": "protéine non caractérisée C18orf8"}
+{"entite": "C19orf12", "valeur": "protéine C19orf12"}
+{"entite": "C19orf18", "valeur": "protéine non caractérisée C19orf18"}
+{"entite": "C19orf38", "valeur": "protéine HIDE1"}
+{"entite": "C19orf43", "valeur": "protéine non caractérisée C19orf43"}
+{"entite": "C19orf44", "valeur": "protéine non caractérisée C19orf44"}
+{"entite": "C19orf47", "valeur": "protéine non caractérisée C19orf47"}
+{"entite": "C19orf48", "valeur": "protéine non caractérisée C19orf48"}
+{"entite": "C19orf57", "valeur": "protéine non caractérisée C19orf57"}
+{"entite": "C19orf60", "valeur": "protéine non caractérisée C19orf60"}
+{"entite": "C19orf68", "valeur": "protéine non caractérisée C19orf68"}
+{"entite": "C19orf71", "valeur": "protéine non caractérisée C19orf71"}
+{"entite": "C19orf84", "valeur": "protéine non caractérisée C19orf84"}
+{"entite": "C1orf100", "valeur": "protéine non caractérisée C1orf100"}
+{"entite": "C1orf105", "valeur": "protéine non caractérisée C1orf105"}
+{"entite": "C1orf106", "valeur": "protéine non caractérisée C1orf106"}
+{"entite": "C1orf109", "valeur": "protéine non caractérisée C1orf109"}
+{"entite": "C1orf112", "valeur": "protéine non caractérisée C1orf112"}
+{"entite": "C1orf115", "valeur": "protéine non caractérisée C1orf115"}
+{"entite": "C1orf122", "valeur": "protéine non caractérisée C1orf122"}
+{"entite": "C1orf127", "valeur": "protéine non caractérisée C1orf127"}
+{"entite": "C1orf131", "valeur": "protéine non caractérisée C1orf131"}
+{"entite": "C1orf141", "valeur": "protéine non caractérisée C1orf141"}
+{"entite": "C1orf146", "valeur": "protéine non caractérisée C1orf146"}
+{"entite": "C1orf158", "valeur": "protéine non caractérisée C1orf158"}
+{"entite": "C1orf159", "valeur": "protéine non caractérisée C1orf159"}
+{"entite": "C1orf162", "valeur": "protéine transmembranaire C1orf162"}
+{"entite": "C1orf167", "valeur": "protéine non caractérisée C1orf167"}
+{"entite": "C1orf168", "valeur": "protéine non caractérisée C1orf168"}
+{"entite": "C1orf185", "valeur": "protéine non caractérisée C1orf185"}
+{"entite": "C1orf186", "valeur": "protéine non caractérisée C1orf186"}
+{"entite": "C1orf189", "valeur": "protéine non caractérisée C1orf189"}
+{"entite": "C1orf194", "valeur": "protéine non caractérisée C1orf194"}
+{"entite": "C1orf198", "valeur": "protéine non caractérisée C1orf198"}
+{"entite": "C1orf21", "valeur": "protéine non caractérisée C1orf21"}
+{"entite": "C1orf226", "valeur": "protéine non caractérisée C1orf226"}
+{"entite": "C1orf228", "valeur": "protéine non caractérisée C1orf228"}
+{"entite": "C1orf43", "valeur": "protéine non caractérisée C1orf43"}
+{"entite": "C1orf50", "valeur": "protéine non caractérisée C1orf50"}
+{"entite": "C1orf53", "valeur": "protéine non caractérisée C1orf53"}
+{"entite": "C1orf54", "valeur": "protéine non caractérisée C1orf54"}
+{"entite": "C1orf56", "valeur": "protéine MENT"}
+{"entite": "C1orf61", "valeur": "protéine CROC-4"}
+{"entite": "C1orf64", "valeur": "protéine non caractérisée C1orf64"}
+{"entite": "C1orf87", "valeur": "protéine non caractérisée C1orf87"}
+{"entite": "C1orf94", "valeur": "protéine non caractérisée C1orf94"}
+{"entite": "C20orf141", "valeur": "protéine non caractérisée C20orf141"}
+{"entite": "C20orf144", "valeur": "protéine non caractérisée C20orf144"}
+{"entite": "C20orf173", "valeur": "protéine non caractérisée C20orf173"}
+{"entite": "C20orf194", "valeur": "protéine non caractérisée C20orf194"}
+{"entite": "C20orf196", "valeur": "protéine non caractérisée C20orf196"}
+{"entite": "C20orf197", "valeur": "protéine non caractérisée C20orf197"}
+{"entite": "C20orf202", "valeur": "protéine non caractérisée C20orf202"}
+{"entite": "C20orf203", "valeur": "protéine non caractérisée C20orf203"}
+{"entite": "C20orf24", "valeur": "protéine non caractérisée C20orf24"}
+{"entite": "C20orf85", "valeur": "protéine non caractérisée C20orf85"}
+{"entite": "C20orf96", "valeur": "protéine non caractérisée C20orf96"}
+{"entite": "C21orf140", "valeur": "protéine non caractérisée C21orf140"}
+{"entite": "C21orf2", "valeur": "protéine C21orf2"}
+{"entite": "C21orf58", "valeur": "protéine non caractérisée C21orf58"}
+{"entite": "C21orf62", "valeur": "protéine non caractérisée C21orf62"}
+{"entite": "C22orf15", "valeur": "protéine non caractérisée C22orf15"}
+{"entite": "C22orf24", "valeur": "protéine non caractérisée C22orf24"}
+{"entite": "C22orf29", "valeur": "protéine Bop"}
+{"entite": "C22orf31", "valeur": "protéine non caractérisée C22orf31"}
+{"entite": "C22orf34", "valeur": "protéine non caractérisée C22orf34"}
+{"entite": "C22orf42", "valeur": "protéine non caractérisée C22orf42"}
+{"entite": "C22orf46", "valeur": "protéine non caractérisée C22orf46"}
+{"entite": "C2orf15", "valeur": "protéine non caractérisée C2orf15"}
+{"entite": "C2orf16", "valeur": "protéine non caractérisée C2orf16"}
+{"entite": "C2orf27A", "valeur": "protéine non caractérisée C2orf27"}
+{"entite": "C2orf27B", "valeur": "protéine non caractérisée C2orf27"}
+{"entite": "C2orf42", "valeur": "protéine non caractérisée C2orf42"}
+{"entite": "C2orf48", "valeur": "protéine non caractérisée C2orf48"}
+{"entite": "C2orf50", "valeur": "protéine non caractérisée C2orf50"}
+{"entite": "C2orf54", "valeur": "protéine non caractérisée C2orf54"}
+{"entite": "C2orf66", "valeur": "protéine non caractérisée C2orf66"}
+{"entite": "C2orf71", "valeur": "protéine non caractérisée C2orf71"}
+{"entite": "C2orf72", "valeur": "protéine non caractérisée C2orf72"}
+{"entite": "C2orf73", "valeur": "protéine non caractérisée C2orf73"}
+{"entite": "C2orf74", "valeur": "protéine non caractérisée C2orf74"}
+{"entite": "C2orf78", "valeur": "protéine non caractérisée C2orf78"}
+{"entite": "C2orf80", "valeur": "protéine non caractérisée C2orf80"}
+{"entite": "C2orf81", "valeur": "protéine non caractérisée C2orf81"}
+{"entite": "C2orf82", "valeur": "protéine non caractérisée C2orf82"}
+{"entite": "C2orf91", "valeur": "protéine non caractérisée C2orf91"}
+{"entite": "C330027C09Rik", "valeur": "protéine CIP2A"}
+{"entite": "C3orf14", "valeur": "protéine non caractérisée C3orf14"}
+{"entite": "C3orf18", "valeur": "protéine non caractérisée C3orf18"}
+{"entite": "C3orf20", "valeur": "protéine non caractérisée C3orf20"}
+{"entite": "C3orf22", "valeur": "protéine non caractérisée C3orf22"}
+{"entite": "C3orf30", "valeur": "protéine non caractérisée C3orf30"}
+{"entite": "C3orf33", "valeur": "protéine C3orf33"}
+{"entite": "C3orf36", "valeur": "protéine non caractérisée C3orf36"}
+{"entite": "C3orf38", "valeur": "protéine non caractérisée C3orf38"}
+{"entite": "C3orf62", "valeur": "protéine non caractérisée C3orf62"}
+{"entite": "C3orf67", "valeur": "protéine non caractérisée C3orf67"}
+{"entite": "C3orf84", "valeur": "protéine non caractérisée C3orf84"}
+{"entite": "C4orf17", "valeur": "protéine non caractérisée C4orf17"}
+{"entite": "C4orf19", "valeur": "protéine non caractérisée C4orf19"}
+{"entite": "C4orf22", "valeur": "protéine non caractérisée C4orf22"}
+{"entite": "C4orf26", "valeur": "protéine non caractérisée C4orf26"}
+{"entite": "C4orf3", "valeur": "protéine non caractérisée C4orf3"}
+{"entite": "C4orf32", "valeur": "protéine non caractérisée C4orf32"}
+{"entite": "C4orf36", "valeur": "protéine non caractérisée C4orf36"}
+{"entite": "C4orf45", "valeur": "protéine non caractérisée C4orf45"}
+{"entite": "C4orf51", "valeur": "protéine non caractérisée C4orf51"}
+{"entite": "C530008M17Rik", "valeur": "protéine non caractérisée KIAA1211"}
+{"entite": "C5AR1", "valeur": "Récepteur C5a"}
+{"entite": "C5orf34", "valeur": "protéine non caractérisée C5orf34"}
+{"entite": "C5orf38", "valeur": "protéine CEI"}
+{"entite": "C5orf42", "valeur": "protéine non caractérisée C5orf42"}
+{"entite": "C5orf46", "valeur": "protéine non caractérisée C5orf46"}
+{"entite": "C5orf47", "valeur": "protéine non caractérisée C5orf47"}
+{"entite": "C5orf49", "valeur": "protéine non caractérisée C5orf49"}
+{"entite": "C5orf52", "valeur": "protéine non caractérisée C5orf52"}
+{"entite": "C5orf64", "valeur": "protéine non caractérisée C5orf64"}
+{"entite": "C5orf67", "valeur": "protéine non caractérisée C5orf67"}
+{"entite": "C6orf1", "valeur": "protéine non caractérisée C6orf1"}
+{"entite": "C6orf10", "valeur": "protéine non caractérisée C6orf10"}
+{"entite": "C6orf106", "valeur": "protéine non caractérisée C6orf106"}
+{"entite": "C6orf118", "valeur": "protéine non caractérisée C6orf118"}
+{"entite": "C6orf132", "valeur": "protéine non caractérisée C6orf132"}
+{"entite": "C6orf136", "valeur": "protéine non caractérisée C6orf136"}
+{"entite": "C6orf141", "valeur": "protéine non caractérisée C6orf141"}
+{"entite": "C6orf15", "valeur": "protéine non caractérisée C6orf15"}
+{"entite": "C6orf163", "valeur": "protéine non caractérisée C6orf163"}
+{"entite": "C6orf201", "valeur": "protéine non caractérisée C6orf201"}
+{"entite": "C6orf203", "valeur": "protéine non caractérisée C6orf203"}
+{"entite": "C6orf222", "valeur": "protéine non caractérisée C6orf222"}
+{"entite": "C6orf223", "valeur": "protéine non caractérisée C6orf223"}
+{"entite": "C6orf226", "valeur": "protéine non caractérisée C6orf226"}
+{"entite": "C6orf229", "valeur": "protéine non caractérisée C6orf229"}
+{"entite": "C6orf25", "valeur": "protéine G6b"}
+{"entite": "C6orf47", "valeur": "protéine non caractérisée C6orf47"}
+{"entite": "C6orf48", "valeur": "protéine G8"}
+{"entite": "C6orf62", "valeur": "protéine non caractérisée C6orf62"}
+{"entite": "C77080", "valeur": "protéine non caractérisée KIAA1522"}
+{"entite": "C77370", "valeur": "protéine KIAA2022"}
+{"entite": "C7orf26", "valeur": "protéine non caractérisée C7orf26"}
+{"entite": "C7orf31", "valeur": "protéine non caractérisée C7orf31"}
+{"entite": "C7orf33", "valeur": "protéine non caractérisée C7orf33"}
+{"entite": "C7orf34", "valeur": "protéine non caractérisée C7orf34"}
+{"entite": "C7orf43", "valeur": "protéine non caractérisée C7orf43"}
+{"entite": "C7orf50", "valeur": "protéine non caractérisée C7orf50"}
+{"entite": "C7orf57", "valeur": "protéine non caractérisée C7orf57"}
+{"entite": "C7orf61", "valeur": "protéine non caractérisée C7orf61"}
+{"entite": "C7orf65", "valeur": "protéine non caractérisée C7orf65"}
+{"entite": "C7orf66", "valeur": "protéine non caractérisée C7orf66"}
+{"entite": "C7orf69", "valeur": "protéine non caractérisée C7orf69"}
+{"entite": "C7orf73", "valeur": "protéine non caractérisée C7orf73"}
+{"entite": "C7orf77", "valeur": "protéine non caractérisée C7orf77"}
+{"entite": "C87436", "valeur": "protéine non caractérisée C2orf42 homologue"}
+{"entite": "C8orf31", "valeur": "protéine non caractérisée C8orf31"}
+{"entite": "C8orf34", "valeur": "protéine non caractérisée C8orf34"}
+{"entite": "C8orf37", "valeur": "protéine C8orf37"}
+{"entite": "C8orf4", "valeur": "protéine C8orf4"}
+{"entite": "C8orf46", "valeur": "protéine non caractérisée C8orf46"}
+{"entite": "C8orf48", "valeur": "protéine non caractérisée C8orf48"}
+{"entite": "C8orf58", "valeur": "protéine non caractérisée C8orf58"}
+{"entite": "C8orf59", "valeur": "protéine non caractérisée C8orf59"}
+{"entite": "C8orf74", "valeur": "protéine non caractérisée C8orf74"}
+{"entite": "C8orf76", "valeur": "protéine non caractérisée C8orf76"}
+{"entite": "C8orf86", "valeur": "protéine non caractérisée C8orf86"}
+{"entite": "C8orf87", "valeur": "protéine non caractérisée C8orf87"}
+{"entite": "C8orf88", "valeur": "protéine non caractérisée C8orf88"}
+{"entite": "C9orf131", "valeur": "protéine non caractérisée C9orf131"}
+{"entite": "C9orf135", "valeur": "protéine non caractérisée C9orf135"}
+{"entite": "C9orf139", "valeur": "protéine non caractérisée C9orf139"}
+{"entite": "C9orf142", "valeur": "protéine PAXX"}
+{"entite": "C9orf152", "valeur": "protéine non caractérisée C9orf152"}
+{"entite": "C9orf153", "valeur": "protéine non caractérisée C9orf153"}
+{"entite": "C9orf170", "valeur": "protéine non caractérisée C9orf170"}
+{"entite": "C9orf172", "valeur": "protéine non caractérisée C9orf172"}
+{"entite": "C9orf3", "valeur": "aminopeptidase O"}
+{"entite": "C9orf40", "valeur": "protéine non caractérisée C9orf40"}
+{"entite": "C9orf43", "valeur": "protéine non caractérisée C9orf43"}
+{"entite": "C9orf47", "valeur": "protéine non caractérisée C9orf47"}
+{"entite": "C9orf50", "valeur": "protéine non caractérisée C9orf50"}
+{"entite": "C9orf57", "valeur": "protéine non caractérisée C9orf57"}
+{"entite": "C9orf66", "valeur": "protéine non caractérisée C9orf66"}
+{"entite": "C9orf72", "valeur": "protéine C9orf72"}
+{"entite": "C9orf78", "valeur": "protéine non caractérisée C9orf78"}
+{"entite": "C9orf84", "valeur": "protéine non caractérisée C9orf84"}
+{"entite": "C9orf85", "valeur": "protéine non caractérisée C9orf85"}
+{"entite": "CALB2", "valeur": "Calrétinine"}
+{"entite": "calcitonine", "valeur": "calcitonine"}
+{"entite": "CALD1", "valeur": "CALD1"}
+{"entite": "CALR", "valeur": "Calreticulin"}
+{"entite": "CAMP", "valeur": "Veli Paloheimo"}
+{"entite": "CANX", "valeur": "Calnexin"}
+{"entite": "CASC1", "valeur": "protéine CASC1"}
+{"entite": "CASC10", "valeur": "protéine CASC10"}
+{"entite": "CASC3", "valeur": "protéine CASC3"}
+{"entite": "CASC4", "valeur": "protéine CASC4"}
+{"entite": "CASP1", "valeur": "Caspase 1"}
+{"entite": "CASP14", "valeur": "Caspase 14"}
+{"entite": "CASP2", "valeur": "Caspase 2"}
+{"entite": "CASP3", "valeur": "Caspase 3"}
+{"entite": "CASP4", "valeur": "Caspase 4"}
+{"entite": "CASP5", "valeur": "Caspase 5"}
+{"entite": "CASP8", "valeur": "Caspase 8"}
+{"entite": "CASP9", "valeur": "Caspase 9"}
+{"entite": "CASR", "valeur": "Récepteur sensible au calcium"}
+{"entite": "CASZ1", "valeur": "protéine à doigt de zinc castor homologue 1"}
+{"entite": "CAT", "valeur": "catalase"}
+{"entite": "CATSPERE", "valeur": "protéine non caractérisée C1orf101"}
+{"entite": "CBARP", "valeur": "protéine CBARP"}
+{"entite": "CBFA2T2", "valeur": "protéine CBFA2T2"}
+{"entite": "CBFA2T3", "valeur": "protéine CBFA2T3"}
+{"entite": "CC2D2B", "valeur": "protéine CC2D2B"}
+{"entite": "CCDC155", "valeur": "protéine KASH5"}
+{"entite": "Ccdc32", "valeur": "protéine non caractérisée C15orf57 homologue"}
+{"entite": "CCDC7", "valeur": "protéine non caractérisée C10orf68"}
+{"entite": "CCDC88C", "valeur": "protéine Daple"}
+{"entite": "CCK", "valeur": "Cholécystokinine"}
+{"entite": "Ccl12", "valeur": "Ccl2"}
+{"entite": "CCL17", "valeur": "CCL17"}
+{"entite": "CCL19", "valeur": "CCL19"}
+{"entite": "CCL2", "valeur": "CCL2"}
+{"entite": "CCL21", "valeur": "CCL21"}
+{"entite": "CCL23", "valeur": "CCL23"}
+{"entite": "CCR2", "valeur": "CCR2"}
+{"entite": "CCR4", "valeur": "CCR4"}
+{"entite": "CCR5", "valeur": "CCR5"}
+{"entite": "CD14", "valeur": "CD14"}
+{"entite": "CD19", "valeur": "CD19"}
+{"entite": "CD2", "valeur": "CD2"}
+{"entite": "CD22", "valeur": "CD22"}
+{"entite": "CD226", "valeur": "CD226"}
+{"entite": "CD24", "valeur": "CD24"}
+{"entite": "CD27", "valeur": "CD27"}
+{"entite": "CD274", "valeur": "PD-L1"}
+{"entite": "CD33", "valeur": "CD33"}
+{"entite": "CD36", "valeur": "CD36"}
+{"entite": "CD38", "valeur": "CD38"}
+{"entite": "CD4", "valeur": "CD4"}
+{"entite": "CD40", "valeur": "CD40"}
+{"entite": "CD40LG", "valeur": "CD154"}
+{"entite": "CD44", "valeur": "CD44"}
+{"entite": "CD47", "valeur": "CD47"}
+{"entite": "CD48", "valeur": "CD48"}
+{"entite": "CD5", "valeur": "CD5"}
+{"entite": "CD55", "valeur": "Facteur accélérant le déclin"}
+{"entite": "CD58", "valeur": "CD58"}
+{"entite": "CD59", "valeur": "CD59"}
+{"entite": "CD68", "valeur": "CD68"}
+{"entite": "CD69", "valeur": "CD69"}
+{"entite": "CD7", "valeur": "CD7"}
+{"entite": "CD74", "valeur": "CD74"}
+{"entite": "CD84", "valeur": "CD84"}
+{"entite": "CD9", "valeur": "CD9"}
+{"entite": "CDA", "valeur": "Cytidine désaminase"}
+{"entite": "CDKN1A", "valeur": "P21"}
+{"entite": "CDKN1B", "valeur": "CDKN1B"}
+{"entite": "Cdv3", "valeur": "protéine CDV3"}
+{"entite": "CEBPZOS", "valeur": "protéine CEBPZOS"}
+{"entite": "CED9", "valeur": "CED9"}
+{"entite": "CETP", "valeur": "protéine de transfert des esters de cholestérol"}
+{"entite": "CFAP126", "valeur": "protéine Flattop"}
+{"entite": "CFAP161", "valeur": "protéine CFAP161"}
+{"entite": "CFAP65", "valeur": "protéine CFAP65"}
+{"entite": "CFAP77", "valeur": "protéine non caractérisée C9orf171"}
+{"entite": "CFLAR", "valeur": "C-FLIP"}
+{"entite": "CFTR", "valeur": "Gène et protéine CFTR"}
+{"entite": "CHAT", "valeur": "Choline acétyltransférase"}
+{"entite": "CHEK2", "valeur": "CHEK2"}
+{"entite": "CHGA", "valeur": "Chromogranine A"}
+{"entite": "CHGB", "valeur": "Secrétoneurine"}
+{"entite": "CHURC1", "valeur": "protéine Churchill"}
+{"entite": "CKLF-CMTM1", "valeur": "protéine CKLF-CMTM1"}
+{"entite": "CLEC16A", "valeur": "protéine CLEC16A"}
+{"entite": "CLN3", "valeur": "CLN3"}
+{"entite": "CLN8", "valeur": "protéine CLN8"}
+{"entite": "CMSS1", "valeur": "protéine CMSS1"}
+{"entite": "CNPPD1", "valeur": "protéine CNPPD1"}
+{"entite": "CNR1", "valeur": "Récepteur cannabinoïde de type 1"}
+{"entite": "CNTNAP2", "valeur": "Caspr2"}
+{"entite": "COMT", "valeur": "Catéchol-O-méthyltransférase"}
+{"entite": "CORIN", "valeur": "Corine (protéine)"}
+{"entite": "CORT", "valeur": "Cortistatin"}
+{"entite": "CP", "valeur": "céruloplasmine"}
+{"entite": "CPB2", "valeur": "TAFI"}
+{"entite": "CPS1", "valeur": "Synthétase I de carbamyl-phosphate"}
+{"entite": "CR2", "valeur": "CD21"}
+{"entite": "Crat", "valeur": "CRAT"}
+{"entite": "CREG1", "valeur": "protéine CREG1"}
+{"entite": "CREG2", "valeur": "protéine CREG2"}
+{"entite": "CRH", "valeur": "corticolibérine"}
+{"entite": "CRY1", "valeur": "Cryptochrome 1"}
+{"entite": "CS", "valeur": "citrate synthase"}
+{"entite": "CSF1", "valeur": "Facteur de stimulation des colonies de macrophages"}
+{"entite": "CSF2", "valeur": "CSF2"}
+{"entite": "CSH1", "valeur": "Somatomammotrophine chorionique humaine"}
+{"entite": "CST3", "valeur": "Cystatin C"}
+{"entite": "CTCF", "valeur": "CTCF"}
+{"entite": "Ctla2a", "valeur": "protéine CTLA-2-alpha"}
+{"entite": "Ctla2b", "valeur": "protéine CTLA-2-beta"}
+{"entite": "CTLA4", "valeur": "CTLA-4"}
+{"entite": "CTNNB1", "valeur": "Β-caténine"}
+{"entite": "CUBN", "valeur": "Cubilin"}
+{"entite": "CUTA", "valeur": "protéine CutA"}
+{"entite": "CUX1", "valeur": "protéine CASP"}
+{"entite": "CX3CL1", "valeur": "CX3CL1"}
+{"entite": "CXCL12", "valeur": "CXCL12"}
+{"entite": "CXCL13", "valeur": "CXCL13"}
+{"entite": "CXCL14", "valeur": "CXCL14"}
+{"entite": "CXCL16", "valeur": "CXCL16"}
+{"entite": "CXCL8", "valeur": "Interleukine 8"}
+{"entite": "CXCR2", "valeur": "CXCR2"}
+{"entite": "CXCR3", "valeur": "CXCR3"}
+{"entite": "CXCR4", "valeur": "CXCR4"}
+{"entite": "CXCR5", "valeur": "CXCR5"}
+{"entite": "CXorf21", "valeur": "protéine non caractérisée CXorf21"}
+{"entite": "CXorf23", "valeur": "protéine non caractérisée CXorf23"}
+{"entite": "CXorf38", "valeur": "protéine non caractérisée CXorf38"}
+{"entite": "CXorf40A", "valeur": "protéine CXorf40A"}
+{"entite": "CXorf40B", "valeur": "protéine CXorf40B"}
+{"entite": "CXorf49", "valeur": "protéine non caractérisée CXorf49"}
+{"entite": "CXorf49B", "valeur": "protéine non caractérisée CXorf49"}
+{"entite": "CXorf57", "valeur": "protéine non caractérisée CXorf57"}
+{"entite": "CXorf65", "valeur": "protéine non caractérisée CXorf65"}
+{"entite": "CXorf66", "valeur": "protéine non caractérisée CXorf66"}
+{"entite": "CXorf67", "valeur": "protéine non caractérisée CXorf67"}
+{"entite": "CYCS", "valeur": "cytochrome C"}
+{"entite": "CYGB", "valeur": "Cytoglobine"}
+{"entite": "Cym", "valeur": "chymosine"}
+{"entite": "CYP11A1", "valeur": "enzyme de clivage de la chaîne latérale du cholestérol"}
+{"entite": "CYP19A1", "valeur": "aromatase"}
+{"entite": "CYP21A2", "valeur": "21-Hydroxylase"}
+{"entite": "CYP24A1", "valeur": "CYP24A1"}
+{"entite": "CYP27B1", "valeur": "25-Hydroxyvitamine D 1-alpha-hydroxylase"}
+{"entite": "CYP2D6", "valeur": "Cytochrome CYP2D6"}
+{"entite": "CYP2R1", "valeur": "CYP2R1"}
+{"entite": "CYP3A4", "valeur": "CYP3A4"}
+{"entite": "CYR61", "valeur": "protéine CYR61"}
+{"entite": "D030056L22Rik", "valeur": "protéine non caractérisée C9orf40 homologue"}
+{"entite": "D10Wsu102e", "valeur": "protéine non caractérisée C12orf45 homologue"}
+{"entite": "D11Wsu47e", "valeur": "protéine non caractérisée C17orf80 homologue"}
+{"entite": "D17H6S53E", "valeur": "protéine non caractérisée C6orf47 homologue"}
+{"entite": "D17Wsu92e", "valeur": "protéine non caractérisée C6orf106 homologue"}
+{"entite": "D330045A20Rik", "valeur": "protéine non caractérisée CXorf57 homologue"}
+{"entite": "D430042O09Rik", "valeur": "protéine non caractérisée KIAA0556"}
+{"entite": "D5Ertd579e", "valeur": "protéine non caractérisée KIAA0232"}
+{"entite": "D630003M21Rik", "valeur": "protéine non caractérisée KIAA1755 homologue"}
+{"entite": "D630023F18Rik", "valeur": "protéine non caractérisée C2orf80 homologue"}
+{"entite": "D930015E06Rik", "valeur": "protéine transmembranaire 131-like"}
+{"entite": "DAB1", "valeur": "Disabled1"}
+{"entite": "DAGLA", "valeur": "Diacylglycérol lipase"}
+{"entite": "DAXX", "valeur": "Daxx"}
+{"entite": "DBH", "valeur": "Dopamine bêta-hydroxylase"}
+{"entite": "DCAF1", "valeur": "protéine VPRBP"}
+{"entite": "DCLRE1C", "valeur": "protéine artemis"}
+{"entite": "DCN", "valeur": "Décorine"}
+{"entite": "DCT", "valeur": "Dopachrome tautomérase"}
+{"entite": "DEK", "valeur": "protéine DEK"}
+{"entite": "DENND6A", "valeur": "protéine DENND6A"}
+{"entite": "DENND6B", "valeur": "protéine DENND6B"}
+{"entite": "DGCR14", "valeur": "protéine DGCR14"}
+{"entite": "DGCR6", "valeur": "protéine DGCR6"}
+{"entite": "DGCR6L", "valeur": "protéine DGCR6L"}
+{"entite": "DHFR", "valeur": "Dihydrofolate réductase"}
+{"entite": "DICER1", "valeur": "Dicer"}
+{"entite": "DIO3", "valeur": "Thyroxine 5-désiodase"}
+{"entite": "DLAT", "valeur": "Dihydrolipoamide S-acétyltransférase"}
+{"entite": "DLD", "valeur": "Dihydrolipoyl déshydrogénase"}
+{"entite": "DMD", "valeur": "dystrophine"}
+{"entite": "DNAAF2", "valeur": "protéine kintoun"}
+{"entite": "Dnase1", "valeur": "DNASE1"}
+{"entite": "DOK7", "valeur": "protéine Dok-7"}
+{"entite": "DOPEY1", "valeur": "protéine dopey-1"}
+{"entite": "DOPEY2", "valeur": "protéine dopey-2"}
+{"entite": "DPCD", "valeur": "protéine DPCD"}
+{"entite": "DPF1", "valeur": "protéine à doigt de zinc neuro-d4"}
+{"entite": "DPF2", "valeur": "protéine à doigt de zinc ubi-d4"}
+{"entite": "DPF3", "valeur": "protéine à doigt de zinc DPF3"}
+{"entite": "DPP4", "valeur": "Dipeptidyl peptidase-4"}
+{"entite": "DR1", "valeur": "protéine Dr1"}
+{"entite": "DROSHA", "valeur": "Protéine cationique des éosinophiles"}
+{"entite": "DSP", "valeur": "Desmoplakine"}
+{"entite": "DSPP", "valeur": "Dentin sialophosphoprotein"}
+{"entite": "DTNBP1", "valeur": "Dysbindine"}
+{"entite": "DUOX2", "valeur": "Dual oxydase 2"}
+{"entite": "DZIP1", "valeur": "protéine à doigt de zinc DZIP1"}
+{"entite": "DZIP1L", "valeur": "protéine à doigt de zinc DZIP1L"}
+{"entite": "E130308A19Rik", "valeur": "protéine non caractérisée KIAA1958 homologue"}
+{"entite": "E130309D02Rik", "valeur": "protéine non caractérisée C7orf26 homologue"}
+{"entite": "E330009J07Rik", "valeur": "protéine LCHN"}
+{"entite": "ECT2", "valeur": "protéine ECT2"}
+{"entite": "EDN1", "valeur": "Endothéline"}
+{"entite": "EFEMP1", "valeur": "Fibuline-3"}
+{"entite": "EGF", "valeur": "facteur de croissance épidermique"}
+{"entite": "EGFLAM", "valeur": "Pikachurine"}
+{"entite": "EGFR", "valeur": "récepteur de l'EGF"}
+{"entite": "ELFN1", "valeur": "protéine ELFN1"}
+{"entite": "ELN", "valeur": "élastine"}
+{"entite": "ELOA3B", "valeur": "protéine LOC101930171"}
+{"entite": "ENG", "valeur": "Endogline"}
+{"entite": "ENO2", "valeur": "Énolase 2"}
+{"entite": "ENTPD1", "valeur": "ENTPD1"}
+{"entite": "EPO", "valeur": "érythropoïétine"}
+{"entite": "Epop", "valeur": "protéine non caractérisée C17orf96 homologue"}
+{"entite": "ERBB2", "valeur": "HER2"}
+{"entite": "ERBIN", "valeur": "protéine LAP2"}
+{"entite": "ERG", "valeur": "régulateur de la transcription ERG"}
+{"entite": "ERVW-1", "valeur": "Syncytine"}
+{"entite": "érythropoïétine", "valeur": "érythropoïétine"}
+{"entite": "ESPL1", "valeur": "Séparase"}
+{"entite": "ETFBKMT", "valeur": "protéine ETFBKMT"}
+{"entite": "ETS1", "valeur": "protéine C-ets-1"}
+{"entite": "ETS2", "valeur": "protéine C-ets-2"}
+{"entite": "EVI2A", "valeur": "protéine EVI2A"}
+{"entite": "EVI2B", "valeur": "protéine EVI2B"}
+{"entite": "F10", "valeur": "facteur Stuart"}
+{"entite": "F11", "valeur": "Facteur Rosenthal"}
+{"entite": "F12", "valeur": "Facteur Hageman"}
+{"entite": "F3", "valeur": "Facteur tissulaire"}
+{"entite": "F5", "valeur": "Proaccélérine"}
+{"entite": "F7", "valeur": "proconvertine"}
+{"entite": "F8", "valeur": "Facteur VIII"}
+{"entite": "FAAH", "valeur": "Hydrolase des amides d'acides gras"}
+{"entite": "FABP4", "valeur": "adipocyte proteine"}
+{"entite": "Facteur anti-hémophilique B", "valeur": "Facteur anti-hémophilique B"}
+{"entite": "facteur de nécrose tumorale", "valeur": "Facteur de nécrose tumorale"}
+{"entite": "FADD", "valeur": "FADD"}
+{"entite": "FAM102A", "valeur": "protéine FAM102A"}
+{"entite": "FAM102B", "valeur": "protéine FAM102B"}
+{"entite": "FAM104A", "valeur": "protéine FAM104A"}
+{"entite": "FAM104B", "valeur": "protéine FAM104B"}
+{"entite": "FAM106A", "valeur": "protéine FAM106A"}
+{"entite": "FAM107A", "valeur": "protéine FAM107A"}
+{"entite": "FAM107B", "valeur": "protéine FAM107B"}
+{"entite": "FAM110A", "valeur": "protéine FAM110A"}
+{"entite": "FAM110B", "valeur": "protéine FAM110B"}
+{"entite": "FAM110C", "valeur": "protéine FAM110C"}
+{"entite": "FAM110D", "valeur": "protéine FAM110D"}
+{"entite": "FAM111A", "valeur": "protéine FAM111A"}
+{"entite": "FAM111B", "valeur": "protéine FAM111B"}
+{"entite": "FAM114A2", "valeur": "protéine FAM114A2"}
+{"entite": "FAM117A", "valeur": "protéine FAM117A"}
+{"entite": "FAM117B", "valeur": "protéine FAM117B"}
+{"entite": "FAM118A", "valeur": "protéine FAM118A"}
+{"entite": "FAM118B", "valeur": "protéine FAM118B"}
+{"entite": "FAM122A", "valeur": "protéine FAM122A"}
+{"entite": "FAM122B", "valeur": "protéine FAM122B"}
+{"entite": "FAM122C", "valeur": "protéine FAM122C"}
+{"entite": "FAM124A", "valeur": "protéine FAM124A"}
+{"entite": "FAM124B", "valeur": "protéine FAM124B"}
+{"entite": "FAM126B", "valeur": "protéine FAM126B"}
+{"entite": "FAM127A", "valeur": "protéine FAM127A"}
+{"entite": "FAM127B", "valeur": "protéine FAM127B"}
+{"entite": "FAM127C", "valeur": "protéine FAM127C"}
+{"entite": "FAM129A", "valeur": "protéine Niban"}
+{"entite": "FAM131A", "valeur": "protéine FAM131A"}
+{"entite": "FAM131B", "valeur": "protéine FAM131B"}
+{"entite": "FAM131C", "valeur": "protéine FAM131C"}
+{"entite": "FAM133A", "valeur": "protéine FAM133A"}
+{"entite": "FAM133B", "valeur": "protéine FAM133B"}
+{"entite": "Fam134a", "valeur": "protéine FAM134A"}
+{"entite": "Fam134c", "valeur": "protéine FAM134C"}
+{"entite": "FAM135A", "valeur": "protéine FAM135A"}
+{"entite": "FAM135B", "valeur": "protéine FAM135B"}
+{"entite": "FAM136A", "valeur": "protéine FAM136A"}
+{"entite": "FAM13A", "valeur": "protéine FAM13A"}
+{"entite": "FAM13B", "valeur": "protéine FAM13B"}
+{"entite": "FAM13C", "valeur": "protéine FAM13C"}
+{"entite": "FAM149A", "valeur": "protéine FAM149A"}
+{"entite": "Fam149b", "valeur": "protéine FAM149B1"}
+{"entite": "FAM149B1", "valeur": "protéine FAM149B1"}
+{"entite": "Fam150b", "valeur": "protéine FAM150B"}
+{"entite": "FAM151A", "valeur": "protéine FAM151A"}
+{"entite": "FAM151B", "valeur": "protéine FAM151B"}
+{"entite": "FAM153A", "valeur": "protéine FAM153A"}
+{"entite": "FAM153B", "valeur": "protéine FAM153B"}
+{"entite": "FAM155A", "valeur": "protéine transmembranaire FAM155A"}
+{"entite": "FAM155B", "valeur": "protéine transmembranaire FAM155B"}
+{"entite": "FAM156A", "valeur": "protéine FAM156A/FAM156B"}
+{"entite": "FAM156B", "valeur": "protéine FAM156A/FAM156B"}
+{"entite": "FAM160A1", "valeur": "protéine FAM160A1"}
+{"entite": "FAM160B1", "valeur": "protéine FAM160B1"}
+{"entite": "FAM160B2", "valeur": "protéine FAM160B2"}
+{"entite": "FAM161A", "valeur": "protéine FAM161A"}
+{"entite": "FAM161B", "valeur": "protéine FAM161B"}
+{"entite": "FAM162A", "valeur": "protéine FAM162A"}
+{"entite": "FAM162B", "valeur": "protéine FAM162B"}
+{"entite": "FAM163A", "valeur": "protéine FAM163A"}
+{"entite": "FAM163B", "valeur": "protéine FAM163B"}
+{"entite": "FAM166A", "valeur": "protéine FAM166A"}
+{"entite": "FAM166B", "valeur": "protéine FAM166B"}
+{"entite": "FAM167A", "valeur": "protéine FAM167A"}
+{"entite": "FAM167B", "valeur": "protéine FAM167B"}
+{"entite": "FAM168A", "valeur": "protéine FAM168A"}
+{"entite": "FAM169B", "valeur": "protéine FAM169B"}
+{"entite": "FAM170A", "valeur": "protéine FAM170A"}
+{"entite": "FAM170B", "valeur": "protéine FAM170B"}
+{"entite": "FAM171A1", "valeur": "protéine FAM171A1"}
+{"entite": "FAM171A2", "valeur": "protéine FAM171A2"}
+{"entite": "FAM171B", "valeur": "protéine FAM171B"}
+{"entite": "FAM172A", "valeur": "protéine FAM172A"}
+{"entite": "FAM173A", "valeur": "protéine FAM173A"}
+{"entite": "FAM173B", "valeur": "protéine FAM173B"}
+{"entite": "Fam177a", "valeur": "protéine FAM177A1"}
+{"entite": "FAM177A1", "valeur": "protéine FAM177A1"}
+{"entite": "FAM177B", "valeur": "protéine FAM177B"}
+{"entite": "FAM178B", "valeur": "protéine FAM178B"}
+{"entite": "Fam179a", "valeur": "protéine FAM179A"}
+{"entite": "Fam179b", "valeur": "protéine FAM179B"}
+{"entite": "FAM180A", "valeur": "protéine FAM180A"}
+{"entite": "FAM180B", "valeur": "protéine FAM180B"}
+{"entite": "FAM181A", "valeur": "protéine FAM181A"}
+{"entite": "FAM181B", "valeur": "protéine FAM181B"}
+{"entite": "FAM183A", "valeur": "protéine FAM183A"}
+{"entite": "Fam183b", "valeur": "protéine FAM183B"}
+{"entite": "FAM184A", "valeur": "protéine FAM184A"}
+{"entite": "FAM184B", "valeur": "protéine FAM184B"}
+{"entite": "FAM185A", "valeur": "protéine FAM185A"}
+{"entite": "FAM186A", "valeur": "protéine FAM186A"}
+{"entite": "FAM186B", "valeur": "protéine FAM186B"}
+{"entite": "FAM187B", "valeur": "protéine FAM187B"}
+{"entite": "Fam188a", "valeur": "protéine FAM188A"}
+{"entite": "Fam188b", "valeur": "protéine FAM188B"}
+{"entite": "FAM189A1", "valeur": "protéine FAM189A1"}
+{"entite": "FAM189A2", "valeur": "protéine FAM189A2"}
+{"entite": "FAM189B", "valeur": "protéine FAM189B"}
+{"entite": "FAM192A", "valeur": "protéine FAM192A"}
+{"entite": "FAM193A", "valeur": "protéine FAM193A"}
+{"entite": "FAM193B", "valeur": "protéine FAM193B"}
+{"entite": "Fam195a", "valeur": "protéine FAM195A"}
+{"entite": "Fam195b", "valeur": "protéine FAM195B"}
+{"entite": "FAM196A", "valeur": "protéine FAM196A"}
+{"entite": "FAM196B", "valeur": "protéine FAM196B"}
+{"entite": "FAM198A", "valeur": "protéine FAM198A"}
+{"entite": "FAM198B", "valeur": "protéine FAM198B"}
+{"entite": "FAM199X", "valeur": "protéine FAM199X"}
+{"entite": "FAM19A1", "valeur": "protéine FAM19A1"}
+{"entite": "FAM19A2", "valeur": "protéine FAM19A2"}
+{"entite": "FAM19A3", "valeur": "protéine FAM19A3"}
+{"entite": "FAM19A4", "valeur": "protéine FAM19A4"}
+{"entite": "FAM19A5", "valeur": "protéine FAM19A5"}
+{"entite": "FAM200A", "valeur": "protéine FAM200A"}
+{"entite": "FAM200B", "valeur": "protéine FAM200B"}
+{"entite": "FAM204A", "valeur": "protéine FAM204A"}
+{"entite": "FAM205A", "valeur": "protéine FAM205A"}
+{"entite": "Fam205a2", "valeur": "protéine FAM205A"}
+{"entite": "Fam205a3", "valeur": "protéine FAM205A"}
+{"entite": "Fam205a4", "valeur": "protéine FAM205A"}
+{"entite": "FAM205C", "valeur": "protéine FAM205C"}
+{"entite": "FAM206A", "valeur": "protéine Simiate"}
+{"entite": "FAM207A", "valeur": "protéine FAM207A"}
+{"entite": "FAM208A", "valeur": "protéine TASOR"}
+{"entite": "FAM208B", "valeur": "protéine FAM208B"}
+{"entite": "FAM209A", "valeur": "protéine FAM209A"}
+{"entite": "FAM209B", "valeur": "protéine FAM209B"}
+{"entite": "FAM210A", "valeur": "protéine FAM210A"}
+{"entite": "FAM210B", "valeur": "protéine FAM210B"}
+{"entite": "FAM212A", "valeur": "protéine FAM212A"}
+{"entite": "FAM212B", "valeur": "protéine FAM212B"}
+{"entite": "FAM214A", "valeur": "protéine FAM214A"}
+{"entite": "FAM214B", "valeur": "protéine FAM214B"}
+{"entite": "FAM216A", "valeur": "protéine FAM216A"}
+{"entite": "FAM216B", "valeur": "protéine FAM216B"}
+{"entite": "FAM217A", "valeur": "protéine FAM217A"}
+{"entite": "FAM217B", "valeur": "protéine FAM217B"}
+{"entite": "FAM218A", "valeur": "protéine FAM218A"}
+{"entite": "FAM219A", "valeur": "protéine FAM219A"}
+{"entite": "FAM219B", "valeur": "protéine FAM219B"}
+{"entite": "FAM220A", "valeur": "protéine FAM220A"}
+{"entite": "FAM221A", "valeur": "protéine FAM221A"}
+{"entite": "FAM221B", "valeur": "protéine FAM221B"}
+{"entite": "FAM222A", "valeur": "protéine FAM222A"}
+{"entite": "FAM222B", "valeur": "protéine FAM222B"}
+{"entite": "FAM227A", "valeur": "protéine FAM227A"}
+{"entite": "FAM227B", "valeur": "protéine FAM227B"}
+{"entite": "FAM228A", "valeur": "protéine FAM228A"}
+{"entite": "FAM228B", "valeur": "protéine FAM228B"}
+{"entite": "FAM229A", "valeur": "protéine FAM229A"}
+{"entite": "FAM229B", "valeur": "protéine FAM229B"}
+{"entite": "FAM231A", "valeur": "protéine FAM231C"}
+{"entite": "FAM231B", "valeur": "protéine FAM231B"}
+{"entite": "FAM231C", "valeur": "protéine FAM231C"}
+{"entite": "FAM231D", "valeur": "protéine FAM231D"}
+{"entite": "FAM234A", "valeur": "protéine FAM234A"}
+{"entite": "FAM234B", "valeur": "protéine FAM234B"}
+{"entite": "FAM24A", "valeur": "protéine FAM24A"}
+{"entite": "FAM24B", "valeur": "protéine FAM24B"}
+{"entite": "FAM25E", "valeur": "protéine FAM25D/E"}
+{"entite": "FAM26D", "valeur": "protéine FAM26D"}
+{"entite": "FAM26E", "valeur": "protéine FAM26E"}
+{"entite": "FAM26F", "valeur": "protéine FAM26F"}
+{"entite": "FAM32A", "valeur": "protéine FAM32A"}
+{"entite": "FAM35A", "valeur": "protéine FAM35A"}
+{"entite": "FAM3A", "valeur": "protéine FAM3A"}
+{"entite": "FAM3B", "valeur": "protéine FAM3B"}
+{"entite": "FAM3C", "valeur": "protéine FAM3C"}
+{"entite": "FAM3D", "valeur": "protéine FAM3D"}
+{"entite": "FAM43A", "valeur": "protéine FAM43A"}
+{"entite": "FAM43B", "valeur": "protéine FAM43B"}
+{"entite": "FAM45A", "valeur": "protéine FAM45A"}
+{"entite": "FAM46A", "valeur": "protéine FAM46A"}
+{"entite": "FAM46B", "valeur": "protéine FAM46B"}
+{"entite": "FAM46C", "valeur": "protéine FAM46C"}
+{"entite": "FAM46D", "valeur": "protéine FAM46D"}
+{"entite": "FAM47A", "valeur": "protéine FAM47A"}
+{"entite": "FAM47B", "valeur": "protéine FAM47B"}
+{"entite": "FAM47E", "valeur": "protéine FAM47E"}
+{"entite": "FAM49A", "valeur": "protéine FAM49A"}
+{"entite": "FAM49B", "valeur": "protéine FAM49B"}
+{"entite": "FAM50A", "valeur": "protéine FAM50A"}
+{"entite": "FAM50B", "valeur": "protéine FAM50B"}
+{"entite": "FAM53A", "valeur": "protéine FAM53A"}
+{"entite": "FAM53B", "valeur": "protéine FAM53B"}
+{"entite": "FAM53C", "valeur": "protéine FAM53C"}
+{"entite": "FAM57A", "valeur": "protéine FAM57A"}
+{"entite": "FAM57B", "valeur": "protéine FAM57B"}
+{"entite": "FAM60A", "valeur": "protéine FAM60A"}
+{"entite": "Fam63a", "valeur": "protéine FAM63A"}
+{"entite": "Fam63b", "valeur": "protéine FAM63B"}
+{"entite": "Fam64a", "valeur": "protéine FAM64A"}
+{"entite": "FAM65A", "valeur": "protéine FAM65A"}
+{"entite": "FAM65B", "valeur": "protéine FAM65B"}
+{"entite": "FAM65C", "valeur": "protéine FAM65C"}
+{"entite": "FAM69A", "valeur": "protéine FAM69A"}
+{"entite": "FAM69B", "valeur": "protéine FAM69B"}
+{"entite": "FAM69C", "valeur": "protéine FAM69C"}
+{"entite": "FAM71A", "valeur": "protéine FAM71A"}
+{"entite": "FAM71B", "valeur": "protéine FAM71B"}
+{"entite": "FAM71C", "valeur": "protéine FAM71C"}
+{"entite": "FAM71D", "valeur": "protéine FAM71D"}
+{"entite": "FAM71E1", "valeur": "protéine FAM71E1"}
+{"entite": "FAM71E2", "valeur": "protéine FAM71E2"}
+{"entite": "FAM71F1", "valeur": "protéine FAM71F1"}
+{"entite": "FAM71F2", "valeur": "protéine FAM71F2"}
+{"entite": "FAM72A", "valeur": "protéine FAM72A"}
+{"entite": "FAM72B", "valeur": "protéine FAM72B"}
+{"entite": "FAM72C", "valeur": "protéine FAM72C"}
+{"entite": "FAM72D", "valeur": "protéine FAM72D"}
+{"entite": "FAM76A", "valeur": "protéine FAM76A"}
+{"entite": "FAM76B", "valeur": "protéine FAM76B"}
+{"entite": "FAM78A", "valeur": "protéine FAM78A"}
+{"entite": "FAM78B", "valeur": "protéine FAM78B"}
+{"entite": "FAM81A", "valeur": "protéine FAM81A"}
+{"entite": "FAM81B", "valeur": "protéine FAM81B"}
+{"entite": "FAM83A", "valeur": "protéine FAM83A"}
+{"entite": "FAM83B", "valeur": "protéine FAM83B"}
+{"entite": "FAM83C", "valeur": "protéine FAM83C"}
+{"entite": "FAM83D", "valeur": "protéine FAM83D"}
+{"entite": "FAM83E", "valeur": "protéine FAM83E"}
+{"entite": "FAM83F", "valeur": "protéine FAM83F"}
+{"entite": "FAM83G", "valeur": "protéine FAM83G"}
+{"entite": "FAM83H", "valeur": "protéine FAM83H"}
+{"entite": "FAM84A", "valeur": "protéine FAM84A"}
+{"entite": "FAM84B", "valeur": "protéine FAM84B"}
+{"entite": "FAM86C1", "valeur": "protéine FAM86C1"}
+{"entite": "FAM89A", "valeur": "protéine FAM89A"}
+{"entite": "FAM89B", "valeur": "protéine FAM89B"}
+{"entite": "FAM8A1", "valeur": "protéine FAM8A1"}
+{"entite": "FAM90A1", "valeur": "protéine FAM90A1"}
+{"entite": "FAM91A1", "valeur": "protéine FAM91A1"}
+{"entite": "FAM92A", "valeur": "protéine FAM92A1"}
+{"entite": "FAM92B", "valeur": "protéine FAM92B"}
+{"entite": "FAM98A", "valeur": "protéine FAM98A"}
+{"entite": "FAM98B", "valeur": "protéine FAM98B"}
+{"entite": "FAM98C", "valeur": "protéine FAM98C"}
+{"entite": "FAM9A", "valeur": "protéine FAM9A"}
+{"entite": "FAM9B", "valeur": "protéine FAM9B"}
+{"entite": "FAM9C", "valeur": "protéine FAM9C"}
+{"entite": "FAS", "valeur": "récepteur Fas"}
+{"entite": "FASLG", "valeur": "Fas"}
+{"entite": "FASN", "valeur": "acide gras synthase"}
+{"entite": "FBXO32", "valeur": "Atrogine 1"}
+{"entite": "FDFT1", "valeur": "farnésyltransférase 1 de farnésyle diphosphate"}
+{"entite": "FDPS", "valeur": "Diméthylallyltranstransférase"}
+{"entite": "FDX1", "valeur": "Ferredoxin 1"}
+{"entite": "FECH", "valeur": "Ferrochélatase"}
+{"entite": "FEV", "valeur": "protéine FEV"}
+{"entite": "FGF23", "valeur": "facteur 23 de croissance du fibroblaste"}
+{"entite": "FH", "valeur": "Fumarase"}
+{"entite": "FKTN", "valeur": "Fukutin"}
+{"entite": "FLG", "valeur": "Profilaggrine"}
+{"entite": "FLT3", "valeur": "FLT3"}
+{"entite": "FMR1", "valeur": "le gene fmr1"}
+{"entite": "FN1", "valeur": "fibronectine"}
+{"entite": "FNDC5", "valeur": "Irisine"}
+{"entite": "FOS", "valeur": "C-Fos"}
+{"entite": "FOSB", "valeur": "protéine fosB"}
+{"entite": "FOXO3", "valeur": "FOXO3A"}
+{"entite": "FOXP2", "valeur": "Protéine FOXP2"}
+{"entite": "FOXP3", "valeur": "FOXP3"}
+{"entite": "FRA10AC1", "valeur": "protéine FRA10AC1"}
+{"entite": "Frg1", "valeur": "protéine FRG1"}
+{"entite": "FRG2", "valeur": "protéine FRG2"}
+{"entite": "FRG2B", "valeur": "protéine FRG2-like-1"}
+{"entite": "FRG2C", "valeur": "protéine FRG2-like-2"}
+{"entite": "FST", "valeur": "Follistatine"}
+{"entite": "FTO", "valeur": "FTO"}
+{"entite": "FURIN", "valeur": "Furine"}
+{"entite": "FXN", "valeur": "frataxine"}
+{"entite": "G6PD", "valeur": "glucose-6-phosphate déshydrogénase"}
+{"entite": "GAL", "valeur": "Galanin"}
+{"entite": "GALC", "valeur": "Galactosylcéramidase"}
+{"entite": "Galnt10", "valeur": "protéine"}
+{"entite": "GALT", "valeur": "Galactose-1-phosphate uridylyltransférase"}
+{"entite": "GAPT", "valeur": "protéine GAPT"}
+{"entite": "GARS", "valeur": "Glycyl-ARNt synthétase"}
+{"entite": "GAST", "valeur": "gastrine"}
+{"entite": "GATA1", "valeur": "GATA1"}
+{"entite": "GBA", "valeur": "Glucosylcéramidase"}
+{"entite": "GC", "valeur": "Protéine de liaison à la vitamine D"}
+{"entite": "GCK", "valeur": "Glucokinase"}
+{"entite": "GDF15", "valeur": "GDF15"}
+{"entite": "GDNF", "valeur": "Facteur neurotrophe dérivé de la glie"}
+{"entite": "Gène XCC1773", "valeur": "Protéine hypothétique XCC1773"}
+{"entite": "GFAP", "valeur": "GFAP"}
+{"entite": "GFI1", "valeur": "protéine à doigt de zinc Gfi-1"}
+{"entite": "GFI1B", "valeur": "protéine à doigt de zinc Gfi-1b"}
+{"entite": "GGPS1", "valeur": "Géranylgéranyle diphosphate synthase"}
+{"entite": "GHRH", "valeur": "hormone de libération de l'hormone de croissance"}
+{"entite": "GIF", "valeur": "Facteur intrinsèque"}
+{"entite": "GJA1", "valeur": "Connexine 43"}
+{"entite": "GJB2", "valeur": "connexine 26"}
+{"entite": "GLA", "valeur": "alpha-galactosidase"}
+{"entite": "GLI4", "valeur": "protéine à doigt de zinc GLI4"}
+{"entite": "GLIS1", "valeur": "protéine à doigt de zinc GLIS1"}
+{"entite": "GLIS2", "valeur": "protéine à doigt de zinc GLIS2"}
+{"entite": "GLIS3", "valeur": "protéine à doigt de zinc GLIS3"}
+{"entite": "GLO1", "valeur": "Lactoylglutathion lyase"}
+{"entite": "GLP1R", "valeur": "Récepteur du glucagon-like peptide-1"}
+{"entite": "GLUT4", "valeur": "GLUT4"}
+{"entite": "GLUT5", "valeur": "GLUT5"}
+{"entite": "Gm11437", "valeur": "protéine non caractérisée C17orf78 homologue"}
+{"entite": "Gm11492", "valeur": "protéine non caractérisée C17orf47 homologue"}
+{"entite": "Gm11992", "valeur": "protéine non caractérisée C7orf57 homologue"}
+{"entite": "Gm12695", "valeur": "protéine non caractérisée C1orf87 homologue"}
+{"entite": "Gm128", "valeur": "protéine MENT"}
+{"entite": "Gm136", "valeur": "protéine non caractérisée C6orf163 homologue"}
+{"entite": "Gm13889", "valeur": "protéine non caractérisée C11orf96 homologue"}
+{"entite": "Gm14137", "valeur": "protéine non caractérisée C15orf62 homologue, mitochondrial"}
+{"entite": "Gm21975", "valeur": "protéine EVI2B"}
+{"entite": "Gm38495", "valeur": "protéine non caractérisée FLJ45252 homologue"}
+{"entite": "Gm38999", "valeur": "protéine non caractérisée C19orf84 homologue"}
+{"entite": "Gm4705", "valeur": "protéine ribosomale 60S L34"}
+{"entite": "Gm525", "valeur": "protéine non caractérisée C17orf67 homologue"}
+{"entite": "Gm527", "valeur": "protéine non caractérisée C14orf28 homologue"}
+{"entite": "Gm5592", "valeur": "protéine non caractérisée C2orf78 homologue"}
+{"entite": "Gm5617", "valeur": "protéine non caractérisée C11orf71 homologue"}
+{"entite": "Gm614", "valeur": "protéine non caractérisée CXorf65 homologue"}
+{"entite": "Gm8210", "valeur": "protéine ribosomale 60S L29"}
+{"entite": "Gm94", "valeur": "protéine non caractérisée C5orf46 homologue"}
+{"entite": "Gm996", "valeur": "protéine non caractérisée C9orf172 homologue"}
+{"entite": "GMNN", "valeur": "Géminine"}
+{"entite": "GMPS", "valeur": "GMP synthase"}
+{"entite": "GNAS", "valeur": "protéine ALEX"}
+{"entite": "GNRH1", "valeur": "Gonadolibérine"}
+{"entite": "Gon7", "valeur": "protéine non caractérisée C14orf142 homologue"}
+{"entite": "GPHN", "valeur": "Gephyrin"}
+{"entite": "GPI", "valeur": "glucose-6-phosphate isomérase"}
+{"entite": "GPR107", "valeur": "protéine GPR107"}
+{"entite": "GPR108", "valeur": "protéine GPR108"}
+{"entite": "GPR75-ASB3", "valeur": "protéine GPR75-ASB3"}
+{"entite": "Grcc10", "valeur": "protéine C10"}
+{"entite": "GREB1", "valeur": "protéine GREB1"}
+{"entite": "GRP", "valeur": "Bombésine"}
+{"entite": "Grrp1", "valeur": "protéine FAM110D"}
+{"entite": "GSR", "valeur": "Glutathion réductase"}
+{"entite": "GSTO1", "valeur": "GSTO1"}
+{"entite": "GUCD1", "valeur": "protéine GUCD1"}
+{"entite": "GUSB", "valeur": "beta Glucuronidase"}
+{"entite": "GVQW2", "valeur": "protéine GVQW2"}
+{"entite": "HABP2", "valeur": "HABP2"}
+{"entite": "HAL", "valeur": "histidine ammonia-lyase"}
+{"entite": "HAMP", "valeur": "Hepcidine"}
+{"entite": "HCG22", "valeur": "protéine PBMUCL2"}
+{"entite": "HDAC4", "valeur": "HDAC4"}
+{"entite": "HDC", "valeur": "Histidine décarboxylase"}
+{"entite": "HEATR9", "valeur": "protéine HEATR9"}
+{"entite": "HERC2", "valeur": "HERC2"}
+{"entite": "HEXA", "valeur": "Hexosaminase A"}
+{"entite": "HEXIM1", "valeur": "protéine HEXIM1"}
+{"entite": "HEXIM2", "valeur": "protéine HEXIM2"}
+{"entite": "HFE", "valeur": "HFE"}
+{"entite": "HGF", "valeur": "Facteur de croissance des hépatocytes"}
+{"entite": "HID1", "valeur": "protéine HID1"}
+{"entite": "HIKESHI", "valeur": "protéine Hikeshi"}
+{"entite": "HIRA", "valeur": "protéine HIRA"}
+{"entite": "Hist1h4a", "valeur": "Histone H4"}
+{"entite": "Hist1h4b", "valeur": "Histone H4"}
+{"entite": "Hist1h4c", "valeur": "Histone H4"}
+{"entite": "Hist1h4d", "valeur": "Histone H4"}
+{"entite": "Hist1h4f", "valeur": "Histone H4"}
+{"entite": "Hist1h4h", "valeur": "Histone H4"}
+{"entite": "Hist1h4i", "valeur": "Histone H4"}
+{"entite": "Hist1h4j", "valeur": "Histone H4"}
+{"entite": "Hist1h4k", "valeur": "Histone H4"}
+{"entite": "Hist1h4m", "valeur": "Histone H4"}
+{"entite": "Hist1h4n", "valeur": "Histone H4"}
+{"entite": "Hist2h4", "valeur": "Histone H4"}
+{"entite": "Hist4h4", "valeur": "Histone H4"}
+{"entite": "HIVEP1", "valeur": "protéine à doigt de zinc 40"}
+{"entite": "HLA-B", "valeur": "HLA-B"}
+{"entite": "HLA-G", "valeur": "HLA-G"}
+{"entite": "HMGB1", "valeur": "HMGB1"}
+{"entite": "HMGCR", "valeur": "Hydroxyméthylglutaryl-CoA réductase"}
+{"entite": "HMOX1", "valeur": "Hème oxygénase 1"}
+{"entite": "HNMT", "valeur": "Histamine N-méthyltransférase"}
+{"entite": "Hormone antimullérienne", "valeur": "Hormone de régression müllérienne"}
+{"entite": "Hoxa9", "valeur": "HOXA9"}
+{"entite": "HP", "valeur": "haptoglobine"}
+{"entite": "HPRT1", "valeur": "Hypoxanthine-guanine phosphoribosyltransférase"}
+{"entite": "HPSE", "valeur": "Heparanase"}
+{"entite": "HPX", "valeur": "hémopexine"}
+{"entite": "HSD11B1", "valeur": "11β-hydroxysteroid dehydrogenase type 1"}
+{"entite": "HSD11B2", "valeur": "11β-hydroxystéroïde deshydrogénase (type 2)"}
+{"entite": "HSPB1", "valeur": "Hsp27"}
+{"entite": "HSPD1", "valeur": "GroEL"}
+{"entite": "HSPG2", "valeur": "Perlecan"}
+{"entite": "HTR1A", "valeur": "Récepteur 5-HT1A"}
+{"entite": "HTT", "valeur": "Huntingtine"}
+{"entite": "hypothetical protein BT9727_2480", "valeur": "protéine hypothétique BT9727_2480"}
+{"entite": "hypothetical protein CA_C0649", "valeur": "protéine hypothétique CA_C0649"}
+{"entite": "hypothetical protein CBO0811", "valeur": "protéine hypothétique CLC_0866"}
+{"entite": "hypothetical protein CT1095", "valeur": "protéine hypothétique CT1095"}
+{"entite": "hypothetical protein DVU0472", "valeur": "protéine hypothétique DVU0472"}
+{"entite": "hypothetical protein ECIAI39_2549", "valeur": "protéine hypothétique ECIAI39_2549"}
+{"entite": "hypothetical protein ECIAI39_2686", "valeur": "protéine hypothétique ECIAI39_2686"}
+{"entite": "hypothetical protein PP_4132", "valeur": "protéine hypothétique PP_4132"}
+{"entite": "hypothetical protein RP218", "valeur": "protéine hypothétique RP218"}
+{"entite": "hypothetical protein RSP_3986", "valeur": "protéine hypothétique RSP_3986"}
+{"entite": "hypothetical protein SAG0229", "valeur": "protéine hypothétique SAG0229"}
+{"entite": "hypothetical protein VP0522", "valeur": "protéine hypothétique VP0522"}
+{"entite": "hypothetical protein VPA0918", "valeur": "protéine hypothétique VPA0918"}
+{"entite": "IAPP", "valeur": "Amyline"}
+{"entite": "ICAM1", "valeur": "ICAM-1"}
+{"entite": "IDH2", "valeur": "IDH2"}
+{"entite": "IDO1", "valeur": "Indoleamine 2,3-dioxygénase"}
+{"entite": "Iduronidase", "valeur": "laronidase"}
+{"entite": "IFNG", "valeur": "Interféron gamma"}
+{"entite": "IGF1", "valeur": "IGF-1"}
+{"entite": "Igf2", "valeur": "IGF2"}
+{"entite": "IK", "valeur": "protéine Red"}
+{"entite": "IKZF2", "valeur": "protéine à doigt de zinc Helios"}
+{"entite": "IKZF3", "valeur": "protéine à doigt de zinc Aiolos"}
+{"entite": "IKZF4", "valeur": "protéine à doigt de zinc Eos"}
+{"entite": "IKZF5", "valeur": "protéine à doigt de zinc Pegasus"}
+{"entite": "IL10", "valeur": "Interleukine 10"}
+{"entite": "IL13", "valeur": "Interleukin 13"}
+{"entite": "IL1B", "valeur": "Interleukine 1 bêta"}
+{"entite": "IL1RL1", "valeur": "ST2"}
+{"entite": "IL2", "valeur": "interleukine 2"}
+{"entite": "IL24", "valeur": "Interleukine 24"}
+{"entite": "IL2RA", "valeur": "CD25"}
+{"entite": "IL3RA", "valeur": "CD123"}
+{"entite": "Il4", "valeur": "IL4"}
+{"entite": "IL4R", "valeur": "Récepteur à l'interleukine 4"}
+{"entite": "IL5", "valeur": "Interleukine 5"}
+{"entite": "IL6", "valeur": "Interleukine 6"}
+{"entite": "IL7", "valeur": "Interleukine 7"}
+{"entite": "IMPACT", "valeur": "protéine IMPACT"}
+{"entite": "INCA1", "valeur": "protéine INCA1"}
+{"entite": "INTS6L", "valeur": "protéine DDX26B"}
+{"entite": "IQCJ-SCHIP1", "valeur": "protéine IQCJ-SCHIP1"}
+{"entite": "Itch", "valeur": "ITCH"}
+{"entite": "ITGA6", "valeur": "VLA-6"}
+{"entite": "ITGAL", "valeur": "CD11a"}
+{"entite": "ITGAM", "valeur": "ITGAM"}
+{"entite": "ITGAX", "valeur": "CD11c"}
+{"entite": "ITGB2", "valeur": "CD18"}
+{"entite": "IVL", "valeur": "Involucrine"}
+{"entite": "JADE1", "valeur": "protéine Jade-1"}
+{"entite": "JADE2", "valeur": "protéine Jade-2"}
+{"entite": "JADE3", "valeur": "protéine Jade-3"}
+{"entite": "Jag1", "valeur": "protéine jagged-1"}
+{"entite": "JAG2", "valeur": "protéine jagged-2"}
+{"entite": "JAK2", "valeur": "Janus kinase 2"}
+{"entite": "JARID2", "valeur": "protéine Jumonji"}
+{"entite": "JTB", "valeur": "protéine JTB"}
+{"entite": "JUP", "valeur": "Plakoglobine"}
+{"entite": "KCNH2", "valeur": "HERG"}
+{"entite": "KCNJ1", "valeur": "ROMK"}
+{"entite": "KCNJ18", "valeur": "Kir2.6"}
+{"entite": "KCNQ4", "valeur": "KCNQ4"}
+{"entite": "KEAP1", "valeur": "KEAP1"}
+{"entite": "KHNYN", "valeur": "protéine KHNYN"}
+{"entite": "KIAA0040", "valeur": "protéine non caractérisée KIAA0040"}
+{"entite": "KIAA0100", "valeur": "protéine KIAA0100"}
+{"entite": "KIAA0232", "valeur": "protéine non caractérisée KIAA0232"}
+{"entite": "KIAA0355", "valeur": "protéine non caractérisée KIAA0355"}
+{"entite": "KIAA0408", "valeur": "protéine non caractérisée KIAA0408"}
+{"entite": "KIAA0513", "valeur": "protéine non caractérisée KIAA0513"}
+{"entite": "KIAA0556", "valeur": "protéine non caractérisée KIAA0556"}
+{"entite": "KIAA0586", "valeur": "protéine TALPID3"}
+{"entite": "KIAA0753", "valeur": "protéine moonraker"}
+{"entite": "KIAA0754", "valeur": "protéine non caractérisée KIAA0754"}
+{"entite": "KIAA0825", "valeur": "protéine non caractérisée KIAA0825"}
+{"entite": "KIAA0895", "valeur": "protéine non caractérisée KIAA0895"}
+{"entite": "KIAA0895L", "valeur": "protéine non caractérisée KIAA0895-like"}
+{"entite": "KIAA0922", "valeur": "protéine transmembranaire 131-like"}
+{"entite": "KIAA0930", "valeur": "protéine non caractérisée KIAA0930"}
+{"entite": "KIAA1107", "valeur": "protéine non caractérisée KIAA1107"}
+{"entite": "KIAA1109", "valeur": "protéine non caractérisée KIAA1109"}
+{"entite": "KIAA1143", "valeur": "protéine non caractérisée KIAA1143"}
+{"entite": "KIAA1147", "valeur": "protéine LCHN"}
+{"entite": "KIAA1210", "valeur": "protéine non caractérisée KIAA1210"}
+{"entite": "KIAA1211", "valeur": "protéine non caractérisée KIAA1211"}
+{"entite": "KIAA1211L", "valeur": "protéine non caractérisée KIAA1211-like"}
+{"entite": "KIAA1257", "valeur": "protéine non caractérisée KIAA1257"}
+{"entite": "KIAA1328", "valeur": "protéine hinderin"}
+{"entite": "KIAA1456", "valeur": "protéine non caractérisée KIAA1456 isoform"}
+{"entite": "KIAA1522", "valeur": "protéine non caractérisée KIAA1522"}
+{"entite": "KIAA1524", "valeur": "protéine CIP2A"}
+{"entite": "KIAA1551", "valeur": "protéine non caractérisée KIAA1551"}
+{"entite": "KIAA1614", "valeur": "protéine non caractérisée KIAA1614"}
+{"entite": "KIAA1644", "valeur": "protéine non caractérisée KIAA1644"}
+{"entite": "KIAA1671", "valeur": "protéine non caractérisée KIAA1671"}
+{"entite": "KIAA1683", "valeur": "protéine non caractérisée KIAA1683"}
+{"entite": "KIAA1755", "valeur": "protéine non caractérisée KIAA1755"}
+{"entite": "KIAA1841", "valeur": "protéine non caractérisée KIAA1841"}
+{"entite": "KIAA1958", "valeur": "protéine non caractérisée KIAA1958"}
+{"entite": "KIAA2012", "valeur": "protéine non caractérisée KIAA2012"}
+{"entite": "KIAA2013", "valeur": "protéine non caractérisée KIAA2013"}
+{"entite": "KIAA2022", "valeur": "protéine KIAA2022"}
+{"entite": "KIAA2026", "valeur": "protéine non caractérisée KIAA2026"}
+{"entite": "KIF1B", "valeur": "KIF1B"}
+{"entite": "KISS1", "valeur": "Kisspeptin"}
+{"entite": "KIT", "valeur": "CD117"}
+{"entite": "KITLG", "valeur": "Stem Cell Factor"}
+{"entite": "KL", "valeur": "Gène klotho"}
+{"entite": "KLHL40", "valeur": "KLHL40"}
+{"entite": "KLK3", "valeur": "antigène prostatique spécifique"}
+{"entite": "KLRC1", "valeur": "NKG2A"}
+{"entite": "KNDC1", "valeur": "protéine very KIND"}
+{"entite": "KNL1", "valeur": "protéine CASC5"}
+{"entite": "KRAS", "valeur": "KRAS"}
+{"entite": "KRBA1", "valeur": "protéine KRBA1"}
+{"entite": "KRT8", "valeur": "Kératine 8"}
+{"entite": "KYNU", "valeur": "Kynureninase"}
+{"entite": "LACRT", "valeur": "Lacritin"}
+{"entite": "LALBA", "valeur": "Alpha-lactalbumine"}
+{"entite": "LBH", "valeur": "protéine LBH"}
+{"entite": "LCAT", "valeur": "lécithine-cholestérol acyltransférase"}
+{"entite": "LCT", "valeur": "lactase"}
+{"entite": "LDLR", "valeur": "LDLR"}
+{"entite": "LDOC1", "valeur": "protéine LDOC1"}
+{"entite": "LDOC1L", "valeur": "protéine LDOC1L"}
+{"entite": "LEP", "valeur": "leptine"}
+{"entite": "LGALS3", "valeur": "Galectine-3"}
+{"entite": "LINC00493", "valeur": "protéine LINC00493"}
+{"entite": "lipase pancréatique", "valeur": "Lipase pancréatique"}
+{"entite": "LIPC", "valeur": "Lipase hépatique"}
+{"entite": "LIPE", "valeur": "lipase hormonosensible"}
+{"entite": "LIPF", "valeur": "Lipase linguale"}
+{"entite": "LKAAEAR1", "valeur": "protéine LKAAEAR1"}
+{"entite": "LMAN1", "valeur": "protéine ERGIC-53"}
+{"entite": "LMAN1L", "valeur": "protéine ERGIC-53-like"}
+{"entite": "LMBR1L", "valeur": "protéine LMBR1L"}
+{"entite": "LMNA", "valeur": "LMNA"}
+{"entite": "LNPK", "valeur": "protéine lunapark"}
+{"entite": "LOC100044627", "valeur": "protéine ribosomale 60S L23"}
+{"entite": "LOC100862324", "valeur": "protéine FAM205A"}
+{"entite": "LOC100862455", "valeur": "protéine ribosomale 60S L23"}
+{"entite": "LOC100996721", "valeur": "protéine FAM231D"}
+{"entite": "LOC101929469", "valeur": "protéine non caractérisée ENSP00000372125"}
+{"entite": "LOC101930165", "valeur": "protéine LOC101930171"}
+{"entite": "LOC102723383", "valeur": "protéine FAM231C"}
+{"entite": "LOC102723451", "valeur": "protéine non caractérisée C21orf140"}
+{"entite": "LOC102724023", "valeur": "protéine LOC102724023"}
+{"entite": "LOC102725121", "valeur": "protéine LOC102725121"}
+{"entite": "LOC102725138", "valeur": "protéine non caractérisée C16orf52"}
+{"entite": "LOC105369241", "valeur": "protéine LOC101930171"}
+{"entite": "LOC105369277", "valeur": "protéine transmembranaire C16orf54"}
+{"entite": "LOC108167922", "valeur": "protéine ribosomale 60S L27"}
+{"entite": "LOR", "valeur": "Loricrine"}
+{"entite": "LPA", "valeur": "lipoprotéine(a)"}
+{"entite": "LPL", "valeur": "Lipoprotéine lipase"}
+{"entite": "LPO", "valeur": "Lactoperoxydase"}
+{"entite": "LRRTM1", "valeur": "LRRTM1"}
+{"entite": "LSS", "valeur": "Lanostérol synthase"}
+{"entite": "LTF", "valeur": "Lactoferrine"}
+{"entite": "LVRN", "valeur": "aminopeptidase Q"}
+{"entite": "LYL1", "valeur": "protéine lyl-1"}
+{"entite": "LYN", "valeur": "LYN"}
+{"entite": "LYZ", "valeur": "Lysozyme"}
+{"entite": "LZIC", "valeur": "protéine LZIC"}
+{"entite": "MAATS1", "valeur": "protéine MAATS1"}
+{"entite": "MAL2", "valeur": "protéine MAL2"}
+{"entite": "MANBAL", "valeur": "protéine MANBAL"}
+{"entite": "MAPT", "valeur": "protéine tau"}
+{"entite": "MAX", "valeur": "protéine max"}
+{"entite": "MB", "valeur": "myoglobine"}
+{"entite": "MB21D1", "valeur": "GMP-AMP cyclique synthase"}
+{"entite": "MB21D2", "valeur": "protéine MB21D2"}
+{"entite": "MBD1", "valeur": "MBD1"}
+{"entite": "MBL2", "valeur": "MBL (immunologie)"}
+{"entite": "MC1R", "valeur": "MC1R"}
+{"entite": "MC4R", "valeur": "MC4R"}
+{"entite": "MCRIP2", "valeur": "protéine FAM195A"}
+{"entite": "MDM4", "valeur": "protéine Mdm4"}
+{"entite": "Memo1", "valeur": "protéine MEMO1"}
+{"entite": "Mfsd13a", "valeur": "protéine transmembranaire 180"}
+{"entite": "Mfsd14b", "valeur": "MFSD14B"}
+{"entite": "MFSD4A", "valeur": "protéine MFSD4A"}
+{"entite": "MGARP", "valeur": "protéine MGARP"}
+{"entite": "Mgea5", "valeur": "N-acétyl-β-d-glucosaminidase"}
+{"entite": "MGMT", "valeur": "6-O-Méthylguanine-ADN méthyltransférase"}
+{"entite": "MIF", "valeur": "MIF"}
+{"entite": "MINDY1", "valeur": "protéine FAM63A"}
+{"entite": "MINDY2", "valeur": "protéine FAM63B"}
+{"entite": "MINDY3", "valeur": "protéine FAM188A"}
+{"entite": "MINDY4", "valeur": "protéine FAM188B"}
+{"entite": "MIR1-1HG", "valeur": "protéine non caractérisée MIR1-1HG"}
+{"entite": "MIS18A", "valeur": "protéine Mis18-alpha"}
+{"entite": "MISP3", "valeur": "protéine non caractérisée LOC113230"}
+{"entite": "MITF", "valeur": "Microphthalmia-associated transcription factor"}
+{"entite": "MKI67", "valeur": "Ki-67"}
+{"entite": "MKKS", "valeur": "protéine alternative MKKS"}
+{"entite": "MLLT1", "valeur": "protéine ENL"}
+{"entite": "MLLT10", "valeur": "protéine AF-10"}
+{"entite": "MLLT11", "valeur": "protéine AF1q"}
+{"entite": "MLLT3", "valeur": "protéine AF-9"}
+{"entite": "MLLT6", "valeur": "protéine AF-17"}
+{"entite": "MME", "valeur": "Neprilysin"}
+{"entite": "Mmp14", "valeur": "MMP14"}
+{"entite": "MMS22L", "valeur": "protéine MMS22-like"}
+{"entite": "MPO", "valeur": "Myéloperoxidase"}
+{"entite": "MPV17", "valeur": "protéine Mpv17"}
+{"entite": "MRE11", "valeur": "MRE11A"}
+{"entite": "MROH8", "valeur": "protéine MROH8"}
+{"entite": "MRVI1", "valeur": "protéine MRVI1"}
+{"entite": "MS4A1", "valeur": "CD20"}
+{"entite": "MSLN", "valeur": "Mésothéline"}
+{"entite": "MSTN", "valeur": "Myostatine"}
+{"entite": "MTCP1", "valeur": "protéine p13 MTCP-1"}
+{"entite": "MTDH", "valeur": "protéine LYRIC"}
+{"entite": "MTHFR", "valeur": "5,10-méthylènetétrahydrofolate réductase"}
+{"entite": "mTOR", "valeur": "mTOR"}
+{"entite": "MTR", "valeur": "Méthionine synthase"}
+{"entite": "MTTP", "valeur": "MTTP"}
+{"entite": "MUC1", "valeur": "MUC1"}
+{"entite": "MUC16", "valeur": "CA 125"}
+{"entite": "MUT", "valeur": "Méthylmalonyl-CoA mutase"}
+{"entite": "MVK", "valeur": "Mévalonate kinase"}
+{"entite": "MVP", "valeur": "Protéine de voûte majeure"}
+{"entite": "MYC", "valeur": "Myc"}
+{"entite": "MYCL", "valeur": "protéine L-Myc"}
+{"entite": "Mycs", "valeur": "protéine S-Myc"}
+{"entite": "MYD88", "valeur": "MYD88"}
+{"entite": "MYH7", "valeur": "MYH7"}
+{"entite": "MYOD1", "valeur": "MyoD"}
+{"entite": "MYOG", "valeur": "Myogenin"}
+{"entite": "MYOT", "valeur": "Myotilin"}
+{"entite": "NANOG", "valeur": "Homeobox protein NANOG"}
+{"entite": "NATD1", "valeur": "protéine NATD1"}
+{"entite": "NCALD", "valeur": "Neurocalcine"}
+{"entite": "NCAM1", "valeur": "CD56"}
+{"entite": "NCOA3", "valeur": "Nuclear receptor coactivator 3"}
+{"entite": "NDNF", "valeur": "protéine NDNF"}
+{"entite": "NDRG1", "valeur": "protéine NDRG1"}
+{"entite": "NDRG2", "valeur": "protéine NDRG2"}
+{"entite": "NDRG3", "valeur": "protéine NDRG3"}
+{"entite": "NDRG4", "valeur": "protéine NDRG4"}
+{"entite": "NEDD1", "valeur": "protéine NEDD1"}
+{"entite": "Nepro", "valeur": "protéine nepro"}
+{"entite": "NF1", "valeur": "Neurofibromine 1"}
+{"entite": "NF2", "valeur": "merlin"}
+{"entite": "NFAT5", "valeur": "NFAT5"}
+{"entite": "NGB", "valeur": "Neuroglobine"}
+{"entite": "NGF", "valeur": "facteur de croissance nerveuse"}
+{"entite": "NID1", "valeur": "Nidogène"}
+{"entite": "NKG7", "valeur": "protéine NKG7"}
+{"entite": "NKX2-1", "valeur": "Thyroid Transcription Factor -1"}
+{"entite": "NLRC3", "valeur": "protéine NLRC3"}
+{"entite": "NLRC5", "valeur": "protéine NLRC5"}
+{"entite": "NLRP3", "valeur": "NLRP3"}
+{"entite": "NOD2", "valeur": "NOD2"}
+{"entite": "NOS3", "valeur": "NOS3"}
+{"entite": "NPAT", "valeur": "protéine NPAT"}
+{"entite": "NPC1", "valeur": "NPC1"}
+{"entite": "NPC1L1", "valeur": "NPC1L1"}
+{"entite": "NPHS1", "valeur": "néphrine"}
+{"entite": "NPPA", "valeur": "facteur natriurétique auriculaire"}
+{"entite": "NPY", "valeur": "Neuropeptide Y"}
+{"entite": "NR0B2", "valeur": "Small heterodimer partner"}
+{"entite": "NR1H4", "valeur": "Farnesoid X receptor"}
+{"entite": "NR1I2", "valeur": "Pregnane X receptor"}
+{"entite": "NR1I3", "valeur": "Récepteur constitutif des androstanes"}
+{"entite": "NR3C1", "valeur": "Récepteur des glucocorticoïdes"}
+{"entite": "NR3C2", "valeur": "récepteur des minéralocorticoïdes"}
+{"entite": "NSMAF", "valeur": "protéine FAN"}
+{"entite": "NT5E", "valeur": "CD73"}
+{"entite": "NTF3", "valeur": "Neurotrophin-3"}
+{"entite": "NTS", "valeur": "neurotensin"}
+{"entite": "NUAK2", "valeur": "NUAK2"}
+{"entite": "NUDT16L1", "valeur": "protéine syndesmos"}
+{"entite": "NXF1", "valeur": "NXF1"}
+{"entite": "NYNRIN", "valeur": "protéine NYNRIN"}
+{"entite": "OCLN", "valeur": "Occludin"}
+{"entite": "OGDH", "valeur": "Alpha-Cétoglutarate déshydrogénase"}
+{"entite": "OIP5", "valeur": "protéine Mis18-beta"}
+{"entite": "Oit1", "valeur": "protéine FAM3D"}
+{"entite": "OPN4", "valeur": "Mélanopsine"}
+{"entite": "ORAI2", "valeur": "protéine orai-2"}
+{"entite": "ORAI3", "valeur": "protéine orai-3"}
+{"entite": "OS9", "valeur": "protéine OS-9"}
+{"entite": "OSCP1", "valeur": "protéine OSCP1"}
+{"entite": "OTC", "valeur": "Ornithine carbamoyltransférase"}
+{"entite": "OXT", "valeur": "ocytocine"}
+{"entite": "P2RY12", "valeur": "P2Y12"}
+{"entite": "PAH", "valeur": "Phénylalanine hydroxylase"}
+{"entite": "PARK2", "valeur": "Parkine"}
+{"entite": "PARK7", "valeur": "protéine deglycase DJ-1"}
+{"entite": "PARP1", "valeur": "Poly(ADP-ribose) polymérase 1"}
+{"entite": "PARP4", "valeur": "PARP4"}
+{"entite": "PAX3", "valeur": "Gène Pax3"}
+{"entite": "PAX6", "valeur": "Pax6"}
+{"entite": "PAX8", "valeur": "PAX8"}
+{"entite": "PBDC1", "valeur": "protéine PBDC1"}
+{"entite": "PBRM1", "valeur": "protéine polybromo-1"}
+{"entite": "PC", "valeur": "Pyruvate carboxylase"}
+{"entite": "PCF11", "valeur": "PCF11"}
+{"entite": "PCLO", "valeur": "protéine piccolo"}
+{"entite": "PCNA", "valeur": "PCNA"}
+{"entite": "PCNX1", "valeur": "protéine PCNX1"}
+{"entite": "PCNX2", "valeur": "protéine PCNX2"}
+{"entite": "PCNX4", "valeur": "protéine PCNX4"}
+{"entite": "PCSK9", "valeur": "PCSK9"}
+{"entite": "PDCD1", "valeur": "Programmed cell death 1"}
+{"entite": "PDPN", "valeur": "Podoplanine"}
+{"entite": "PDYN", "valeur": "prodynorphine"}
+{"entite": "PECAM1", "valeur": "PECAM1"}
+{"entite": "peptide insulinotrope dépendant du glucose", "valeur": "peptide insulinotrope dépendant du glucose"}
+{"entite": "PET117", "valeur": "protéine alternative CSRP2BP"}
+{"entite": "PF3D7_0108400.2", "valeur": "PF3D7_0108400.1"}
+{"entite": "PF3D7_0205700.2", "valeur": "PF3D7_0205700.1"}
+{"entite": "PF3D7_0206900.2", "valeur": "PF3D7_0206900.1"}
+{"entite": "PF3D7_0208100.2", "valeur": "PF3D7_0208100.1"}
+{"entite": "PF3D7_0208700.2", "valeur": "PF3D7_0208700.1"}
+{"entite": "PF3D7_0210100.1", "valeur": "PF3D7_0210100.2"}
+{"entite": "PF3D7_0216700.1", "valeur": "PF3D7_0216700.2"}
+{"entite": "PF3D7_0219400.2", "valeur": "PF3D7_0219400.1"}
+{"entite": "PF3D7_0310600.2", "valeur": "PF3D7_0310600.1"}
+{"entite": "PF3D7_0313700.2", "valeur": "PF3D7_0313700.1"}
+{"entite": "PF3D7_0314100.2", "valeur": "PF3D7_0314100.1"}
+{"entite": "PF3D7_0401600.2", "valeur": "PF3D7_0401600.1"}
+{"entite": "PF3D7_0526200.2", "valeur": "PF3D7_0526200.1"}
+{"entite": "PF3D7_0529400.2", "valeur": "PF3D7_0529400.1"}
+{"entite": "PF3D7_0730800.2", "valeur": "PF3D7_0730800.1"}
+{"entite": "PF3D7_0810900.2", "valeur": "PF3D7_0810900.1"}
+{"entite": "PF3D7_0832200.2", "valeur": "PF3D7_0832200.1"}
+{"entite": "PF3D7_0903600.2", "valeur": "PF3D7_0903600.1"}
+{"entite": "PF3D7_0911500.2", "valeur": "PF3D7_0911500.1"}
+{"entite": "PF3D7_0921000.2", "valeur": "PF3D7_0921000.1"}
+{"entite": "PF3D7_0928000.2", "valeur": "PF3D7_0928000.1"}
+{"entite": "PF3D7_1002400.2", "valeur": "PF3D7_1002400.1"}
+{"entite": "PF3D7_1011200.2", "valeur": "PF3D7_1011200.1"}
+{"entite": "PF3D7_1015200.2", "valeur": "PF3D7_1015200.1"}
+{"entite": "PF3D7_1015700.2", "valeur": "PF3D7_1015700.1"}
+{"entite": "PF3D7_1036600.2", "valeur": "PF3D7_1036600.1"}
+{"entite": "PF3D7_1104700.2", "valeur": "PF3D7_1104700.1"}
+{"entite": "PF3D7_1114100.2", "valeur": "PF3D7_1114100.1"}
+{"entite": "PF3D7_1128000.2", "valeur": "PF3D7_1128000.1"}
+{"entite": "PF3D7_1135000.3", "valeur": "PF3D7_1135000.1"}
+{"entite": "PF3D7_1139500.2", "valeur": "PF3D7_1139500.1"}
+{"entite": "PF3D7_1149100.1", "valeur": "PF3D7_1149100.2"}
+{"entite": "PF3D7_1209500.2", "valeur": "PF3D7_1209500.1"}
+{"entite": "PF3D7_1212600.2", "valeur": "PF3D7_1212600.1"}
+{"entite": "PF3D7_1233200.1", "valeur": "PF3D7_1233200.2"}
+{"entite": "PF3D7_1303200.2", "valeur": "PF3D7_1303200.1"}
+{"entite": "PF3D7_1304200.2", "valeur": "PF3D7_1304200.1"}
+{"entite": "PF3D7_1330000.2", "valeur": "PF3D7_1330000.1"}
+{"entite": "PF3D7_1330400.2", "valeur": "PF3D7_1330400.1"}
+{"entite": "PF3D7_1361500.2", "valeur": "PF3D7_1361500.1"}
+{"entite": "PF3D7_1411100.2", "valeur": "PF3D7_1411100.1"}
+{"entite": "PF3D7_1419800.2", "valeur": "PF3D7_1419800.1"}
+{"entite": "PF3D7_1427400.2", "valeur": "PF3D7_1427400.1"}
+{"entite": "PF3D7_1435700.2", "valeur": "PF3D7_1435700.1"}
+{"entite": "PF3D7_1455200.2", "valeur": "PF3D7_1455200.1"}
+{"entite": "PF4", "valeur": "CXCL4"}
+{"entite": "PGM2", "valeur": "Phosphoglucomutase 2"}
+{"entite": "PGR", "valeur": "Récepteur de la progestérone"}
+{"entite": "PIEZO2", "valeur": "PIEZO2"}
+{"entite": "PIFO", "valeur": "protéine pitchfork"}
+{"entite": "PIGBOS1", "valeur": "protéine PIGBOS1"}
+{"entite": "PIGZ", "valeur": "mannosyltransférase"}
+{"entite": "PIH1D3", "valeur": "protéine PIH1D3"}
+{"entite": "PIMREG", "valeur": "protéine FAM64A"}
+{"entite": "PINK1", "valeur": "PINK1"}
+{"entite": "PIP", "valeur": "PIP (gène)"}
+{"entite": "PKD1", "valeur": "Polycystine-1"}
+{"entite": "PKHD1", "valeur": "Fibrocystin"}
+{"entite": "PLA1A", "valeur": "Phospholipase A1"}
+{"entite": "PLAG1", "valeur": "protéine à doigt de zinc PLAG1"}
+{"entite": "PLAGL1", "valeur": "protéine à doigt de zinc PLAGL1"}
+{"entite": "PLAGL2", "valeur": "protéine à doigt de zinc PLAGL2"}
+{"entite": "PLAT", "valeur": "Activateur tissulaire du plasminogène"}
+{"entite": "PLAU", "valeur": "urokinase"}
+{"entite": "PLB1", "valeur": "Phospholipase B"}
+{"entite": "PLEC", "valeur": "Plectine"}
+{"entite": "PLG", "valeur": "plasmine"}
+{"entite": "PLIN1", "valeur": "perilipin"}
+{"entite": "PLN", "valeur": "Phospholambane"}
+{"entite": "PLP1", "valeur": "PLP1"}
+{"entite": "PMEPA1", "valeur": "protéine TMEPAI"}
+{"entite": "PMF1-BGLAP", "valeur": "protéine PMF1-BGLAP"}
+{"entite": "PML", "valeur": "protéine PML"}
+{"entite": "PMVK", "valeur": "Phosphomévalonate kinase"}
+{"entite": "PNMT", "valeur": "Phényléthanolamine N-méthyltransférase"}
+{"entite": "PNP", "valeur": "Purine nucléoside phosphorylase"}
+{"entite": "POF1B", "valeur": "protéine POF1B"}
+{"entite": "POLB", "valeur": "ADN polymérase bêta"}
+{"entite": "POLH", "valeur": "ADN-polymérase êta"}
+{"entite": "POLL", "valeur": "ADN polymérase lambda"}
+{"entite": "POR", "valeur": "Cytochrome P450 réductase"}
+{"entite": "POU5F1", "valeur": "Oct-4"}
+{"entite": "PPAT", "valeur": "Amidophosphoribosyltransferase"}
+{"entite": "PPOX", "valeur": "Protoporphyrinogène oxydase"}
+{"entite": "PPP5D1", "valeur": "protéine PPP5D1"}
+{"entite": "PPY", "valeur": "polypeptide pancréatique"}
+{"entite": "PRF1", "valeur": "Perforine"}
+{"entite": "PRKCZ", "valeur": "pkmzeta"}
+{"entite": "PRL", "valeur": "prolactine"}
+{"entite": "PROC", "valeur": "Protéine C"}
+{"entite": "PROCA1", "valeur": "protéine PROCA1"}
+{"entite": "PROS1", "valeur": "Protéine S"}
+{"entite": "protéine C réactive", "valeur": "protéine C réactive"}
+{"entite": "Protéine hypothétique Rv0095c", "valeur": "protéine hypothétique Rv0095c"}
+{"entite": "PROZ", "valeur": "Protéine Z"}
+{"entite": "PRR14L", "valeur": "protéine PRR14L"}
+{"entite": "PRR16", "valeur": "protéine Largen"}
+{"entite": "PRR5-ARHGAP8", "valeur": "protéine PRR5-ARHGAP8"}
+{"entite": "PRRC1", "valeur": "protéine PRRC1"}
+{"entite": "PRRC2A", "valeur": "protéine PRRC2A"}
+{"entite": "PRRC2B", "valeur": "protéine PRRC2B"}
+{"entite": "PRRC2C", "valeur": "protéine PRRC2C"}
+{"entite": "PRTN3", "valeur": "protéinase III"}
+{"entite": "PSEN1", "valeur": "Préséniline 1"}
+{"entite": "PTEN", "valeur": "PTEN"}
+{"entite": "PTGS1", "valeur": "Cyclooxygénase 1"}
+{"entite": "PTGS2", "valeur": "Cyclooxygénase 2"}
+{"entite": "PTH", "valeur": "parathormone"}
+{"entite": "PTK2", "valeur": "Focal adhesion kinase"}
+{"entite": "PTN", "valeur": "Pleiotrophine"}
+{"entite": "PTPRC", "valeur": "CD45"}
+{"entite": "PTX3", "valeur": "Pentraxine 3"}
+{"entite": "PVALB", "valeur": "Parvalbumine"}
+{"entite": "PVR", "valeur": "CD155"}
+{"entite": "PVRIG", "valeur": "protéine transmembranaire PVRIG"}
+{"entite": "PXN", "valeur": "Paxilline"}
+{"entite": "PYY", "valeur": "PYY-36"}
+{"entite": "Qk", "valeur": "protéine quaking"}
+{"entite": "QKI", "valeur": "protéine quaking"}
+{"entite": "RACK1", "valeur": "protéine RACK1"}
+{"entite": "RAD1", "valeur": "ERCC4"}
+{"entite": "RAD51", "valeur": "RAD51"}
+{"entite": "RAF1", "valeur": "RAF1"}
+{"entite": "RB1", "valeur": "Protéine du rétinoblastome"}
+{"entite": "RBL1", "valeur": "Retinoblastoma-like protein 1"}
+{"entite": "RBP4", "valeur": "RBP4"}
+{"entite": "RCC2", "valeur": "protéine RCC2"}
+{"entite": "RD3", "valeur": "protéine RD3"}
+{"entite": "RD3L", "valeur": "protéine RD3-like"}
+{"entite": "RECQL4", "valeur": "RECQL4"}
+{"entite": "RELN", "valeur": "reelin"}
+{"entite": "REN", "valeur": "rénine"}
+{"entite": "RER1", "valeur": "protéine RER1"}
+{"entite": "RETN", "valeur": "Résistine"}
+{"entite": "RETREG2", "valeur": "protéine FAM134A"}
+{"entite": "RETREG3", "valeur": "protéine FAM134C"}
+{"entite": "RHO", "valeur": "Rhodopsine"}
+{"entite": "RIC3", "valeur": "protéine RIC-3"}
+{"entite": "RIDA", "valeur": "protéine RIDA"}
+{"entite": "RIPPLY1", "valeur": "protéine ripply1"}
+{"entite": "RIPPLY2", "valeur": "protéine ripply2"}
+{"entite": "RIPPLY3", "valeur": "protéine ripply3"}
+{"entite": "RLF", "valeur": "protéine à doigt de zinc Rlf"}
+{"entite": "RNASE2", "valeur": "Neurotoxine dérivée des éosinophiles"}
+{"entite": "RNASE3", "valeur": "Protéine cationique des éosinophiles"}
+{"entite": "Rnaset2b", "valeur": "Ribonucléase T2"}
+{"entite": "Rnf146", "valeur": "RNF146"}
+{"entite": "RNLS", "valeur": "Renalase"}
+{"entite": "RNMT", "valeur": "ARNm (guanine-N7-)-méthyltransférase"}
+{"entite": "RNPEP", "valeur": "aminopeptidase B"}
+{"entite": "RP2", "valeur": "protéine XRP2"}
+{"entite": "RPL10", "valeur": "protéine ribosomale 60S L10"}
+{"entite": "RPL10A", "valeur": "protéine ribosomale 60S L10a"}
+{"entite": "RPL10L", "valeur": "protéine ribosomale 60S L10-like"}
+{"entite": "RPL11", "valeur": "protéine ribosomale 60S L11"}
+{"entite": "RPL12", "valeur": "protéine ribosomale 60S L12"}
+{"entite": "RPL13", "valeur": "protéine ribosomale 60S L13"}
+{"entite": "RPL13A", "valeur": "protéine ribosomale 60S L13a"}
+{"entite": "Rpl14", "valeur": "protéine ribosomale 60S L14"}
+{"entite": "RPL15", "valeur": "protéine ribosomale 60S L15"}
+{"entite": "RPL17", "valeur": "protéine ribosomale 60S L17"}
+{"entite": "RPL18", "valeur": "protéine ribosomale 60S L18"}
+{"entite": "RPL18A", "valeur": "protéine ribosomale 60S L18a"}
+{"entite": "RPL19", "valeur": "protéine ribosomale 60S L19"}
+{"entite": "RPL21", "valeur": "protéine ribosomale 60S L21"}
+{"entite": "RPL22", "valeur": "protéine ribosomale 60S L22"}
+{"entite": "RPL22L1", "valeur": "protéine ribosomale 60S L22-like 1"}
+{"entite": "RPL23", "valeur": "protéine ribosomale 60S L23"}
+{"entite": "RPL23A", "valeur": "protéine ribosomale 60S L23a"}
+{"entite": "RPL24", "valeur": "protéine ribosomale 60S L24"}
+{"entite": "RPL26", "valeur": "protéine ribosomale 60S L26"}
+{"entite": "RPL26L1", "valeur": "protéine ribosomale 60S L26-like 1"}
+{"entite": "RPL27", "valeur": "protéine ribosomale 60S L27"}
+{"entite": "RPL27A", "valeur": "protéine ribosomale 60S L27a"}
+{"entite": "Rpl28", "valeur": "protéine ribosomale 60S L28"}
+{"entite": "RPL29", "valeur": "protéine ribosomale 60S L29"}
+{"entite": "RPL3", "valeur": "protéine ribosomale 60S L3"}
+{"entite": "RPL30", "valeur": "protéine ribosomale 60S L30"}
+{"entite": "RPL32", "valeur": "protéine ribosomale 60S L32"}
+{"entite": "RPL34", "valeur": "protéine ribosomale 60S L34"}
+{"entite": "Rpl34-ps1", "valeur": "protéine ribosomale 60S L34"}
+{"entite": "Rpl35", "valeur": "protéine ribosomale 60S L35"}
+{"entite": "RPL35A", "valeur": "protéine ribosomale 60S L35a"}
+{"entite": "RPL36", "valeur": "protéine ribosomale 60S L36"}
+{"entite": "RPL36A", "valeur": "protéine ribosomale 60S L36a"}
+{"entite": "RPL37", "valeur": "protéine ribosomale 60S L37"}
+{"entite": "RPL37A", "valeur": "protéine ribosomale 60S L37a"}
+{"entite": "Rpl37rt", "valeur": "protéine ribosomale 60S L37"}
+{"entite": "Rpl38", "valeur": "protéine ribosomale 60S L38"}
+{"entite": "RPL39", "valeur": "protéine ribosomale 60S L39"}
+{"entite": "RPL39L", "valeur": "protéine ribosomale 60S L39-like"}
+{"entite": "RPL3L", "valeur": "protéine ribosomale 60S L3-like"}
+{"entite": "RPL4", "valeur": "protéine ribosomale 60S L4"}
+{"entite": "Rpl41", "valeur": "protéine ribosomale 60S L41"}
+{"entite": "RPL5", "valeur": "protéine ribosomale 60S L5"}
+{"entite": "RPL6", "valeur": "protéine ribosomale 60S L6"}
+{"entite": "RPL7", "valeur": "protéine ribosomale 60S L7"}
+{"entite": "RPL7A", "valeur": "protéine ribosomale 60S L7a"}
+{"entite": "RPL7L1", "valeur": "protéine ribosomale 60S L7-like 1"}
+{"entite": "RPL8", "valeur": "protéine ribosomale 60S L8"}
+{"entite": "RPL9", "valeur": "protéine ribosomale 60S L9"}
+{"entite": "RPLP0", "valeur": "protéine ribosomale 60S acidic P0"}
+{"entite": "RPLP1", "valeur": "protéine ribosomale 60S acidic P1"}
+{"entite": "RPLP2", "valeur": "protéine ribosomale 60S acidic P2"}
+{"entite": "RPRM", "valeur": "protéine reprimo"}
+{"entite": "RRNAD1", "valeur": "protéine RRNAD1"}
+{"entite": "RUBCNL", "valeur": "protéine non caractérisée KIAA0226-like"}
+{"entite": "RUFY3", "valeur": "protéine RUFY3"}
+{"entite": "RUNX1", "valeur": "RUNX1"}
+{"entite": "RUNX1T1", "valeur": "protéine CBFA2T1"}
+{"entite": "RYR2", "valeur": "RYR2"}
+{"entite": "S100A1", "valeur": "protéine S100-A1"}
+{"entite": "S100A10", "valeur": "protéine S100-A10"}
+{"entite": "S100A11", "valeur": "protéine S100-A11"}
+{"entite": "S100A12", "valeur": "protéine S100-A12"}
+{"entite": "S100A13", "valeur": "protéine S100-A13"}
+{"entite": "S100A14", "valeur": "protéine S100-A14"}
+{"entite": "S100A16", "valeur": "protéine S100-A16"}
+{"entite": "S100A2", "valeur": "protéine S100-A2"}
+{"entite": "S100A3", "valeur": "protéine S100-A3"}
+{"entite": "S100A4", "valeur": "protéine S100-A4"}
+{"entite": "S100A5", "valeur": "protéine S100-A5"}
+{"entite": "S100A6", "valeur": "protéine S100-A6"}
+{"entite": "S100A7", "valeur": "protéine S100-A7"}
+{"entite": "S100A8", "valeur": "protéine S100-A8"}
+{"entite": "S100A9", "valeur": "protéine S100-A9"}
+{"entite": "S100B", "valeur": "protéine S100-B"}
+{"entite": "S100G", "valeur": "protéine S100-G"}
+{"entite": "S100P", "valeur": "protéine S100-P"}
+{"entite": "S100Z", "valeur": "protéine S100-Z"}
+{"entite": "SAA2-SAA4", "valeur": "protéine SAA2-SAA4"}
+{"entite": "SAAL1", "valeur": "protéine SAAL1"}
+{"entite": "SCAF11", "valeur": "protéine SCAF11"}
+{"entite": "SCAF8", "valeur": "protéine SCAF8"}
+{"entite": "SCAI", "valeur": "protéine SCAI"}
+{"entite": "SCARB1", "valeur": "SCARB1"}
+{"entite": "SCD", "valeur": "Stéaryl-CoA 9-désaturase"}
+{"entite": "SCG2", "valeur": "Secrétoneurine"}
+{"entite": "SCGB1C1", "valeur": "SCGB1C1"}
+{"entite": "SCGB1C2", "valeur": "SCGB1C1"}
+{"entite": "SCGB2A2", "valeur": "SCGB2A2"}
+{"entite": "SCN5A", "valeur": "SCN5A"}
+{"entite": "SCT", "valeur": "sécrétine"}
+{"entite": "SDK1", "valeur": "protéine sidekick-1"}
+{"entite": "SDK2", "valeur": "protéine sidekick-2"}
+{"entite": "SELP", "valeur": "Sélectine P"}
+{"entite": "SERAC1", "valeur": "protéine SERAC1"}
+{"entite": "SERPINA1", "valeur": "alpha 1-antitrypsine"}
+{"entite": "SERPINA6", "valeur": "Transcortine"}
+{"entite": "SERPINA7", "valeur": "Globuline liant la thyroxine"}
+{"entite": "SERPINC1", "valeur": "antithrombine"}
+{"entite": "SERPINE1", "valeur": "PAI-1"}
+{"entite": "SERPING1", "valeur": "C1-Inhibiteur"}
+{"entite": "Set", "valeur": "protéine SET"}
+{"entite": "SETSIP", "valeur": "protéine SETSIP"}
+{"entite": "SHBG", "valeur": "sex hormone-binding globulin"}
+{"entite": "SHH", "valeur": "Sonic hedgehog"}
+{"entite": "SHISA4", "valeur": "protéine shisa-4"}
+{"entite": "SHISA5", "valeur": "protéine shisa-5"}
+{"entite": "SHISA7", "valeur": "protéine shisa-7"}
+{"entite": "SHISA9", "valeur": "protéine shisa-9"}
+{"entite": "SHOX", "valeur": "SHOX"}
+{"entite": "SHROOM1", "valeur": "protéine Shroom1"}
+{"entite": "SHROOM2", "valeur": "protéine Shroom2"}
+{"entite": "SHROOM3", "valeur": "protéine Shroom3"}
+{"entite": "SHROOM4", "valeur": "protéine Shroom4"}
+{"entite": "SI", "valeur": "Saccharase-isomaltase"}
+{"entite": "SIRT1", "valeur": "Sirtuine 1"}
+{"entite": "SLC12A3", "valeur": "NCC"}
+{"entite": "SLC18A2", "valeur": "VMAT2"}
+{"entite": "SLC1A1", "valeur": "EAAT3"}
+{"entite": "SLC25A13", "valeur": "Citrine"}
+{"entite": "SLC25A20", "valeur": "Carnitine-acylcarnitine translocase"}
+{"entite": "SLC26A4", "valeur": "Pendrine"}
+{"entite": "SLC26A5", "valeur": "Prestine"}
+{"entite": "SLC2A1", "valeur": "GLUT1"}
+{"entite": "SLC2A2", "valeur": "GLUT2"}
+{"entite": "SLC2A3", "valeur": "GLUT3"}
+{"entite": "SLC40A1", "valeur": "Ferroportin"}
+{"entite": "SLC5A1", "valeur": "Cotransporteur sodium-glucose 1"}
+{"entite": "SLC5A2", "valeur": "SGLT2"}
+{"entite": "SLC5A5", "valeur": "Symport Na/I"}
+{"entite": "SLC6A19", "valeur": "B0AT1"}
+{"entite": "SLIT1", "valeur": "Slit"}
+{"entite": "SLX4IP", "valeur": "protéine SLX4IP"}
+{"entite": "SMAD4", "valeur": "Smad 4"}
+{"entite": "SMAD7", "valeur": "SMAD7"}
+{"entite": "SMG5", "valeur": "protéine SMG5"}
+{"entite": "SMG7", "valeur": "protéine SMG7"}
+{"entite": "SMG8", "valeur": "protéine SMG8"}
+{"entite": "SMG9", "valeur": "protéine SMG9"}
+{"entite": "SNAI1", "valeur": "protéine à doigt de zinc SNAI1"}
+{"entite": "SNAI2", "valeur": "protéine à doigt de zinc SNAI2"}
+{"entite": "SNAI3", "valeur": "protéine à doigt de zinc SNAI3"}
+{"entite": "SNAP25", "valeur": "SNAP25"}
+{"entite": "SNCA", "valeur": "alpha-synucléine"}
+{"entite": "SOCS1", "valeur": "SOCS1"}
+{"entite": "SOD1", "valeur": "SOD1"}
+{"entite": "SOGA1", "valeur": "protéine SOGA1"}
+{"entite": "SOGA3", "valeur": "protéine SOGA3"}
+{"entite": "SON", "valeur": "protéine SON"}
+{"entite": "SOST", "valeur": "Sclérostine"}
+{"entite": "SOX15", "valeur": "protéine SOX-15"}
+{"entite": "SOX2", "valeur": "SOX2"}
+{"entite": "SPARC", "valeur": "Osteonectin"}
+{"entite": "SPDL1", "valeur": "protéine Spindly"}
+{"entite": "SPP1", "valeur": "Osteopontin"}
+{"entite": "SPR", "valeur": "Sépiaptérine réductase"}
+{"entite": "SREK1IP1", "valeur": "protéine SREK1IP1"}
+{"entite": "SRF", "valeur": "Serum response factor"}
+{"entite": "Srrm3", "valeur": "Serine/arginine repetitive matrix 3"}
+{"entite": "Sry", "valeur": "SRY"}
+{"entite": "SS18", "valeur": "protéine SSXT"}
+{"entite": "SST", "valeur": "somatostatine"}
+{"entite": "SSX1", "valeur": "protéine SSX1"}
+{"entite": "SSX2", "valeur": "protéine SSX2"}
+{"entite": "SSX2B", "valeur": "protéine SSX2"}
+{"entite": "SSX3", "valeur": "protéine SSX3"}
+{"entite": "SSX4", "valeur": "protéine SSX4"}
+{"entite": "SSX4B", "valeur": "protéine SSX4"}
+{"entite": "SSX5", "valeur": "protéine SSX5"}
+{"entite": "SSX7", "valeur": "protéine SSX7"}
+{"entite": "STAT3", "valeur": "STAT3"}
+{"entite": "STAT4", "valeur": "STAT4"}
+{"entite": "STON1-GTF2A1L", "valeur": "protéine STON1-GTF2A1L"}
+{"entite": "STPG3", "valeur": "protéine non caractérisée C9orf173"}
+{"entite": "STX1A", "valeur": "syntaxine-1A"}
+{"entite": "SUOX", "valeur": "Sulfite oxydase"}
+{"entite": "SYNJ2BP-COX16", "valeur": "protéine SYNJ2BP-COX16"}
+{"entite": "SYVN1", "valeur": "synovioline 1"}
+{"entite": "SZT2", "valeur": "protéine SZT2"}
+{"entite": "TANC1", "valeur": "protéine TANC1"}
+{"entite": "TANC2", "valeur": "protéine TANC2"}
+{"entite": "TAT", "valeur": "tyrosine aminotransferase"}
+{"entite": "TBATA", "valeur": "protéine TBATA"}
+{"entite": "TBRG4", "valeur": "protéine TBRG4"}
+{"entite": "TCAP", "valeur": "Téléthonine"}
+{"entite": "Tcl1b1", "valeur": "protéine TCL1B1"}
+{"entite": "Tcl1b2", "valeur": "protéine TCL1B2"}
+{"entite": "Tcl1b4", "valeur": "protéine TCL1B4"}
+{"entite": "Tcl1b5", "valeur": "protéine TCL1B5"}
+{"entite": "TCN1", "valeur": "Haptocorrine"}
+{"entite": "TESPA1", "valeur": "protéine TESPA1"}
+{"entite": "Tex24", "valeur": "protéine Tex24"}
+{"entite": "TEX261", "valeur": "protéine TEX261"}
+{"entite": "TEX35", "valeur": "protéine TEX35"}
+{"entite": "TEX45", "valeur": "protéine non caractérisée C19orf45"}
+{"entite": "TEX46", "valeur": "protéine non caractérisée C1orf234"}
+{"entite": "TEX47", "valeur": "protéine non caractérisée C7orf62"}
+{"entite": "TF", "valeur": "transferrine"}
+{"entite": "TFG", "valeur": "protéine TFG"}
+{"entite": "TFPI", "valeur": "Tissue factor pathway inhibitor"}
+{"entite": "TG", "valeur": "Thyroglobuline"}
+{"entite": "TH", "valeur": "Tyrosine hydroxylase"}
+{"entite": "THBD", "valeur": "Thrombomoduline"}
+{"entite": "THEM6", "valeur": "protéine THEM6"}
+{"entite": "Themis", "valeur": "protéine THEMIS"}
+{"entite": "THEMIS2", "valeur": "protéine THEMIS2"}
+{"entite": "Themis3", "valeur": "protéine THEMIS3"}
+{"entite": "THPO", "valeur": "thrombopoïétine"}
+{"entite": "TIGIT", "valeur": "TIGIT"}
+{"entite": "TKTL1", "valeur": "Transketolase-like-1"}
+{"entite": "TLR1", "valeur": "TLR1"}
+{"entite": "TLR2", "valeur": "TLR2"}
+{"entite": "TLR4", "valeur": "TLR4"}
+{"entite": "TMED7-TICAM2", "valeur": "protéine TMED7-TICAM2"}
+{"entite": "TMED8", "valeur": "protéine TMED8"}
+{"entite": "TMEM100", "valeur": "protéine transmembranaire 100"}
+{"entite": "TMEM101", "valeur": "protéine transmembranaire 101"}
+{"entite": "TMEM102", "valeur": "protéine transmembranaire 102"}
+{"entite": "TMEM104", "valeur": "protéine transmembranaire 104"}
+{"entite": "TMEM105", "valeur": "protéine transmembranaire 105"}
+{"entite": "TMEM106A", "valeur": "protéine transmembranaire 106A"}
+{"entite": "TMEM106B", "valeur": "protéine transmembranaire 106B"}
+{"entite": "TMEM106C", "valeur": "protéine transmembranaire 106C"}
+{"entite": "TMEM107", "valeur": "protéine transmembranaire 107"}
+{"entite": "TMEM108", "valeur": "protéine transmembranaire 108"}
+{"entite": "TMEM109", "valeur": "protéine transmembranaire 109"}
+{"entite": "TMEM114", "valeur": "protéine transmembranaire 114"}
+{"entite": "TMEM115", "valeur": "protéine transmembranaire 115"}
+{"entite": "TMEM116", "valeur": "protéine transmembranaire 116"}
+{"entite": "TMEM117", "valeur": "protéine transmembranaire 117"}
+{"entite": "TMEM119", "valeur": "protéine transmembranaire 119"}
+{"entite": "TMEM120A", "valeur": "protéine transmembranaire 120A"}
+{"entite": "TMEM120B", "valeur": "protéine transmembranaire 120B"}
+{"entite": "TMEM121", "valeur": "protéine transmembranaire 121"}
+{"entite": "TMEM125", "valeur": "protéine transmembranaire 125"}
+{"entite": "TMEM126A", "valeur": "protéine transmembranaire 126A"}
+{"entite": "TMEM127", "valeur": "protéine transmembranaire 127"}
+{"entite": "TMEM128", "valeur": "protéine transmembranaire 128"}
+{"entite": "TMEM130", "valeur": "protéine transmembranaire 130"}
+{"entite": "TMEM131", "valeur": "protéine transmembranaire 131"}
+{"entite": "TMEM132A", "valeur": "protéine transmembranaire 132A"}
+{"entite": "TMEM132B", "valeur": "protéine transmembranaire 132B"}
+{"entite": "TMEM132C", "valeur": "protéine transmembranaire 132C"}
+{"entite": "TMEM132D", "valeur": "protéine transmembranaire 132D"}
+{"entite": "TMEM132E", "valeur": "protéine transmembranaire 132E"}
+{"entite": "TMEM133", "valeur": "protéine transmembranaire 133"}
+{"entite": "TMEM134", "valeur": "protéine transmembranaire 134"}
+{"entite": "TMEM135", "valeur": "protéine transmembranaire 135"}
+{"entite": "TMEM136", "valeur": "protéine transmembranaire 136"}
+{"entite": "TMEM138", "valeur": "protéine transmembranaire 138"}
+{"entite": "TMEM139", "valeur": "protéine transmembranaire 139"}
+{"entite": "TMEM140", "valeur": "protéine transmembranaire 140"}
+{"entite": "TMEM141", "valeur": "protéine transmembranaire 141"}
+{"entite": "TMEM143", "valeur": "protéine transmembranaire 143"}
+{"entite": "TMEM144", "valeur": "protéine transmembranaire 144"}
+{"entite": "TMEM145", "valeur": "protéine transmembranaire 145"}
+{"entite": "TMEM147", "valeur": "protéine transmembranaire 147"}
+{"entite": "TMEM14A", "valeur": "protéine transmembranaire 14A"}
+{"entite": "TMEM14B", "valeur": "protéine transmembranaire 14B"}
+{"entite": "TMEM14C", "valeur": "protéine transmembranaire 14C"}
+{"entite": "TMEM150A", "valeur": "protéine transmembranaire 150A"}
+{"entite": "TMEM150B", "valeur": "protéine transmembranaire 150B"}
+{"entite": "TMEM150C", "valeur": "protéine transmembranaire 150C"}
+{"entite": "TMEM151A", "valeur": "protéine transmembranaire 151A"}
+{"entite": "TMEM151B", "valeur": "protéine transmembranaire 151B"}
+{"entite": "TMEM154", "valeur": "protéine transmembranaire 154"}
+{"entite": "TMEM155", "valeur": "protéine TMEM155"}
+{"entite": "TMEM156", "valeur": "protéine transmembranaire 156"}
+{"entite": "TMEM158", "valeur": "protéine transmembranaire 158"}
+{"entite": "TMEM160", "valeur": "protéine transmembranaire 160"}
+{"entite": "TMEM161A", "valeur": "protéine transmembranaire 161A"}
+{"entite": "TMEM161B", "valeur": "protéine transmembranaire 161B"}
+{"entite": "TMEM163", "valeur": "protéine transmembranaire 163"}
+{"entite": "TMEM164", "valeur": "protéine transmembranaire 164"}
+{"entite": "TMEM165", "valeur": "protéine transmembranaire 165"}
+{"entite": "Tmem167", "valeur": "protéine kish-A"}
+{"entite": "TMEM167A", "valeur": "protéine kish-A"}
+{"entite": "TMEM167B", "valeur": "protéine kish-B"}
+{"entite": "TMEM168", "valeur": "protéine transmembranaire 168"}
+{"entite": "TMEM169", "valeur": "protéine transmembranaire 169"}
+{"entite": "TMEM17", "valeur": "protéine transmembranaire 17"}
+{"entite": "Tmem170", "valeur": "protéine transmembranaire 170A"}
+{"entite": "TMEM170A", "valeur": "protéine transmembranaire 170A"}
+{"entite": "TMEM170B", "valeur": "protéine transmembranaire 170B"}
+{"entite": "TMEM171", "valeur": "protéine transmembranaire 171"}
+{"entite": "TMEM174", "valeur": "protéine transmembranaire 174"}
+{"entite": "TMEM176A", "valeur": "protéine transmembranaire 176A"}
+{"entite": "TMEM176B", "valeur": "protéine transmembranaire 176B"}
+{"entite": "TMEM177", "valeur": "protéine transmembranaire 177"}
+{"entite": "Tmem178", "valeur": "protéine transmembranaire 178A"}
+{"entite": "TMEM178A", "valeur": "protéine transmembranaire 178A"}
+{"entite": "TMEM178B", "valeur": "protéine transmembranaire 178B"}
+{"entite": "TMEM179", "valeur": "protéine transmembranaire 179"}
+{"entite": "TMEM179B", "valeur": "protéine transmembranaire 179B"}
+{"entite": "TMEM18", "valeur": "protéine transmembranaire 18"}
+{"entite": "TMEM181", "valeur": "protéine transmembranaire 181"}
+{"entite": "TMEM182", "valeur": "protéine transmembranaire 182"}
+{"entite": "TMEM183B", "valeur": "protéine transmembranaire 183B"}
+{"entite": "TMEM184A", "valeur": "protéine transmembranaire 184A"}
+{"entite": "TMEM184B", "valeur": "protéine transmembranaire 184B"}
+{"entite": "TMEM184C", "valeur": "protéine transmembranaire 184C"}
+{"entite": "TMEM185A", "valeur": "protéine transmembranaire 185A"}
+{"entite": "TMEM185B", "valeur": "protéine transmembranaire 185B"}
+{"entite": "TMEM186", "valeur": "protéine transmembranaire 186"}
+{"entite": "TMEM187", "valeur": "protéine transmembranaire 187"}
+{"entite": "TMEM189", "valeur": "protéine transmembranaire 189"}
+{"entite": "TMEM189-UBE2V1", "valeur": "protéine transmembranaire 189"}
+{"entite": "TMEM19", "valeur": "protéine transmembranaire 19"}
+{"entite": "TMEM190", "valeur": "protéine transmembranaire 190"}
+{"entite": "TMEM191B", "valeur": "protéine transmembranaire 191B"}
+{"entite": "TMEM191C", "valeur": "protéine transmembranaire 191C"}
+{"entite": "TMEM192", "valeur": "protéine transmembranaire 192"}
+{"entite": "TMEM196", "valeur": "protéine transmembranaire 196"}
+{"entite": "TMEM198", "valeur": "protéine transmembranaire 198"}
+{"entite": "Tmem199", "valeur": "protéine transmembranaire 199"}
+{"entite": "TMEM2", "valeur": "protéine transmembranaire 2"}
+{"entite": "TMEM200A", "valeur": "protéine transmembranaire 200A"}
+{"entite": "TMEM200B", "valeur": "protéine transmembranaire 200B"}
+{"entite": "TMEM200C", "valeur": "protéine transmembranaire 200C"}
+{"entite": "TMEM201", "valeur": "protéine transmembranaire 201"}
+{"entite": "TMEM202", "valeur": "protéine transmembranaire 202"}
+{"entite": "TMEM203", "valeur": "protéine transmembranaire 203"}
+{"entite": "TMEM204", "valeur": "protéine transmembranaire 204"}
+{"entite": "TMEM205", "valeur": "protéine transmembranaire 205"}
+{"entite": "TMEM206", "valeur": "protéine transmembranaire 206"}
+{"entite": "TMEM207", "valeur": "protéine transmembranaire 207"}
+{"entite": "TMEM208", "valeur": "protéine transmembranaire 208"}
+{"entite": "TMEM209", "valeur": "protéine transmembranaire 209"}
+{"entite": "TMEM210", "valeur": "protéine transmembranaire 210"}
+{"entite": "TMEM211", "valeur": "protéine transmembranaire 211"}
+{"entite": "TMEM212", "valeur": "protéine transmembranaire 212"}
+{"entite": "TMEM213", "valeur": "protéine transmembranaire 213"}
+{"entite": "TMEM214", "valeur": "protéine transmembranaire 214"}
+{"entite": "TMEM215", "valeur": "protéine transmembranaire 215"}
+{"entite": "TMEM216", "valeur": "protéine transmembranaire 216"}
+{"entite": "TMEM217", "valeur": "protéine transmembranaire 217"}
+{"entite": "TMEM218", "valeur": "protéine transmembranaire 218"}
+{"entite": "TMEM220", "valeur": "protéine transmembranaire 220"}
+{"entite": "TMEM221", "valeur": "protéine transmembranaire 221"}
+{"entite": "Tmem222", "valeur": "protéine transmembranaire 222"}
+{"entite": "TMEM223", "valeur": "protéine transmembranaire 223"}
+{"entite": "TMEM225", "valeur": "protéine transmembranaire 225"}
+{"entite": "TMEM229A", "valeur": "protéine transmembranaire 229A"}
+{"entite": "TMEM229B", "valeur": "protéine transmembranaire 229B"}
+{"entite": "TMEM230", "valeur": "protéine transmembranaire 230"}
+{"entite": "TMEM231", "valeur": "protéine transmembranaire 231"}
+{"entite": "TMEM232", "valeur": "protéine transmembranaire 232"}
+{"entite": "TMEM233", "valeur": "protéine transmembranaire 233"}
+{"entite": "TMEM234", "valeur": "protéine transmembranaire 234"}
+{"entite": "TMEM235", "valeur": "protéine transmembranaire 235"}
+{"entite": "TMEM236", "valeur": "protéine transmembranaire 236"}
+{"entite": "TMEM237", "valeur": "protéine transmembranaire 237"}
+{"entite": "TMEM238", "valeur": "protéine transmembranaire 238"}
+{"entite": "TMEM239", "valeur": "protéine transmembranaire 239"}
+{"entite": "TMEM240", "valeur": "protéine transmembranaire 240"}
+{"entite": "TMEM241", "valeur": "protéine transmembranaire 241"}
+{"entite": "TMEM242", "valeur": "protéine transmembranaire 242"}
+{"entite": "TMEM243", "valeur": "protéine transmembranaire 243"}
+{"entite": "TMEM244", "valeur": "protéine transmembranaire 244"}
+{"entite": "TMEM245", "valeur": "protéine transmembranaire 245"}
+{"entite": "TMEM246", "valeur": "protéine transmembranaire 246"}
+{"entite": "TMEM247", "valeur": "protéine transmembranaire 247"}
+{"entite": "TMEM248", "valeur": "protéine transmembranaire 248"}
+{"entite": "TMEM249", "valeur": "protéine transmembranaire 249"}
+{"entite": "TMEM25", "valeur": "protéine transmembranaire 25"}
+{"entite": "TMEM250", "valeur": "protéine C9orf69"}
+{"entite": "TMEM251", "valeur": "protéine transmembranaire 251"}
+{"entite": "TMEM252", "valeur": "protéine transmembranaire 252"}
+{"entite": "TMEM253", "valeur": "protéine transmembranaire 253"}
+{"entite": "TMEM254", "valeur": "protéine transmembranaire 254"}
+{"entite": "Tmem254a", "valeur": "protéine transmembranaire 254"}
+{"entite": "Tmem254b", "valeur": "protéine transmembranaire 254"}
+{"entite": "Tmem254c", "valeur": "protéine transmembranaire 254"}
+{"entite": "TMEM255A", "valeur": "protéine transmembranaire 255A"}
+{"entite": "TMEM255B", "valeur": "protéine transmembranaire 255B"}
+{"entite": "TMEM256", "valeur": "protéine transmembranaire 256"}
+{"entite": "TMEM257", "valeur": "protéine transmembranaire 257"}
+{"entite": "TMEM258", "valeur": "protéine transmembranaire 258"}
+{"entite": "TMEM26", "valeur": "protéine transmembranaire 26"}
+{"entite": "TMEM260", "valeur": "protéine transmembranaire 260"}
+{"entite": "TMEM261", "valeur": "protéine transmembranaire 261"}
+{"entite": "TMEM262", "valeur": "protéine transmembranaire 262"}
+{"entite": "TMEM263", "valeur": "protéine transmembranaire 263"}
+{"entite": "TMEM265", "valeur": "protéine transmembranaire 265"}
+{"entite": "TMEM266", "valeur": "protéine transmembranaire 266"}
+{"entite": "TMEM267", "valeur": "protéine transmembranaire C5orf28"}
+{"entite": "TMEM268", "valeur": "protéine transmembranaire C9orf91"}
+{"entite": "Tmem28", "valeur": "protéine transmembranaire FAM155B"}
+{"entite": "TMEM31", "valeur": "protéine transmembranaire 31"}
+{"entite": "TMEM33", "valeur": "protéine transmembranaire 33"}
+{"entite": "TMEM35A", "valeur": "protéine transmembranaire 35"}
+{"entite": "TMEM35B", "valeur": "protéine non caractérisée ZMYM6NB"}
+{"entite": "TMEM39A", "valeur": "protéine transmembranaire 39A"}
+{"entite": "TMEM39B", "valeur": "protéine transmembranaire 39B"}
+{"entite": "TMEM40", "valeur": "protéine transmembranaire 40"}
+{"entite": "TMEM41A", "valeur": "protéine transmembranaire 41A"}
+{"entite": "TMEM41B", "valeur": "protéine transmembranaire 41B"}
+{"entite": "TMEM42", "valeur": "protéine transmembranaire 42"}
+{"entite": "TMEM43", "valeur": "protéine transmembranaire 43"}
+{"entite": "TMEM44", "valeur": "protéine transmembranaire 44"}
+{"entite": "TMEM45A", "valeur": "protéine transmembranaire 45A"}
+{"entite": "TMEM45B", "valeur": "protéine transmembranaire 45B"}
+{"entite": "TMEM47", "valeur": "protéine transmembranaire 47"}
+{"entite": "TMEM5", "valeur": "protéine transmembranaire 5"}
+{"entite": "TMEM50A", "valeur": "protéine transmembranaire 50A"}
+{"entite": "TMEM50B", "valeur": "protéine transmembranaire 50B"}
+{"entite": "TMEM51", "valeur": "protéine transmembranaire 51"}
+{"entite": "TMEM52", "valeur": "protéine transmembranaire 52"}
+{"entite": "TMEM52B", "valeur": "protéine transmembranaire 52B"}
+{"entite": "Tmem53", "valeur": "protéine transmembranaire 53"}
+{"entite": "TMEM54", "valeur": "protéine transmembranaire 54"}
+{"entite": "TMEM56", "valeur": "protéine transmembranaire 56"}
+{"entite": "TMEM59", "valeur": "protéine transmembranaire 59"}
+{"entite": "TMEM59L", "valeur": "protéine transmembranaire 59-like"}
+{"entite": "TMEM60", "valeur": "protéine transmembranaire 60"}
+{"entite": "TMEM61", "valeur": "protéine transmembranaire 61"}
+{"entite": "TMEM62", "valeur": "protéine transmembranaire 62"}
+{"entite": "TMEM64", "valeur": "protéine transmembranaire 64"}
+{"entite": "TMEM65", "valeur": "protéine transmembranaire 65"}
+{"entite": "TMEM68", "valeur": "protéine transmembranaire 68"}
+{"entite": "TMEM69", "valeur": "protéine transmembranaire 69"}
+{"entite": "TMEM71", "valeur": "protéine transmembranaire 71"}
+{"entite": "TMEM72", "valeur": "protéine transmembranaire 72"}
+{"entite": "TMEM74", "valeur": "protéine transmembranaire 74"}
+{"entite": "TMEM74B", "valeur": "protéine transmembranaire 74B"}
+{"entite": "TMEM79", "valeur": "protéine transmembranaire 79"}
+{"entite": "Tmem8", "valeur": "protéine transmembranaire 8A"}
+{"entite": "TMEM80", "valeur": "protéine transmembranaire 80"}
+{"entite": "TMEM81", "valeur": "protéine transmembranaire 81"}
+{"entite": "TMEM82", "valeur": "protéine transmembranaire 82"}
+{"entite": "TMEM87A", "valeur": "protéine transmembranaire 87A"}
+{"entite": "TMEM87B", "valeur": "protéine transmembranaire 87B"}
+{"entite": "TMEM88", "valeur": "protéine transmembranaire 88"}
+{"entite": "TMEM88B", "valeur": "protéine transmembranaire 88B"}
+{"entite": "TMEM89", "valeur": "protéine transmembranaire 89"}
+{"entite": "TMEM8A", "valeur": "protéine transmembranaire 8A"}
+{"entite": "TMEM8B", "valeur": "protéine transmembranaire 8B"}
+{"entite": "TMEM8C", "valeur": "protéine myomaker"}
+{"entite": "TMEM9", "valeur": "protéine transmembranaire 9"}
+{"entite": "TMEM91", "valeur": "protéine transmembranaire 91"}
+{"entite": "TMEM92", "valeur": "protéine transmembranaire 92"}
+{"entite": "TMEM94", "valeur": "protéine transmembranaire 94"}
+{"entite": "TMEM95", "valeur": "protéine transmembranaire 95"}
+{"entite": "TMEM97", "valeur": "protéine transmembranaire 97"}
+{"entite": "TMEM98", "valeur": "protéine transmembranaire 98"}
+{"entite": "TMEM99", "valeur": "protéine transmembranaire 99"}
+{"entite": "TMEM9B", "valeur": "protéine transmembranaire 9B"}
+{"entite": "TNFRSF10A", "valeur": "TRAIL-R1"}
+{"entite": "TNFRSF10B", "valeur": "TRAIL-R2"}
+{"entite": "TNFRSF11A", "valeur": "RANK"}
+{"entite": "TNFRSF11B", "valeur": "Ostéoprotégérine"}
+{"entite": "TNFRSF8", "valeur": "CD30"}
+{"entite": "TNFRSF9", "valeur": "CD137"}
+{"entite": "TNFSF10", "valeur": "TRAIL"}
+{"entite": "TNFSF11", "valeur": "RANKL"}
+{"entite": "TNFSF13B", "valeur": "BAFF"}
+{"entite": "TNK1", "valeur": "TNK1"}
+{"entite": "TOB1", "valeur": "protéine Tob1"}
+{"entite": "TOB2", "valeur": "protéine Tob2"}
+{"entite": "TOGARAM1", "valeur": "protéine FAM179B"}
+{"entite": "TOGARAM2", "valeur": "protéine FAM179A"}
+{"entite": "TP53", "valeur": "P53"}
+{"entite": "TRAF6", "valeur": "TRAF6"}
+{"entite": "transposase YE3497", "valeur": "transposase YE3497"}
+{"entite": "TRDN", "valeur": "TRDN"}
+{"entite": "TRIM27", "valeur": "protéine à doigt de zinc RFP"}
+{"entite": "TRIM5", "valeur": "TRIM5"}
+{"entite": "Trmt61a", "valeur": "protéine"}
+{"entite": "TRPM2", "valeur": "TRPM2"}
+{"entite": "TRPV1", "valeur": "TRPV1"}
+{"entite": "TRPV4", "valeur": "TRPV4"}
+{"entite": "Tsc2", "valeur": "tubérine"}
+{"entite": "Tsen15", "valeur": "TSEN15"}
+{"entite": "TSHR", "valeur": "Récepteur de la TSH"}
+{"entite": "TSLP", "valeur": "TSLP"}
+{"entite": "TSSC1", "valeur": "protéine TSSC1"}
+{"entite": "TSSC4", "valeur": "protéine TSSC4"}
+{"entite": "Ttll10", "valeur": "protéine polyglycylase TTLL10"}
+{"entite": "Ttn", "valeur": "Titine"}
+{"entite": "TTR", "valeur": "Transthyrétine"}
+{"entite": "TUBB8", "valeur": "TUBB8"}
+{"entite": "TUFM", "valeur": "EF-Tu"}
+{"entite": "TvY486_1101590", "valeur": "protéine de transport vésiculaire (CDC48 homologue), putative"}
+{"entite": "TXN", "valeur": "Thiorédoxine"}
+{"entite": "TXNRD3NB", "valeur": "protéine TXNRD3NB"}
+{"entite": "TYMS", "valeur": "Thymidylate synthase"}
+{"entite": "Tyrosinase", "valeur": "Tyrosinase"}
+{"entite": "UCP1", "valeur": "thermogénine"}
+{"entite": "UGT1A1", "valeur": "UGT1A1"}
+{"entite": "UMOD", "valeur": "uromoduline"}
+{"entite": "UMPS", "valeur": "Uridine monophosphate synthétase"}
+{"entite": "UNG", "valeur": "Uracile-ADN glycosylase"}
+{"entite": "URGCP-MRPS24", "valeur": "protéine URGCP-MRPS24"}
+{"entite": "UTRN", "valeur": "utrophine"}
+{"entite": "UXT", "valeur": "protéine UXT"}
+{"entite": "VCL", "valeur": "Vinculine"}
+{"entite": "VDR", "valeur": "Récepteur de la vitamine D"}
+{"entite": "VIM", "valeur": "vimentine"}
+{"entite": "VIP", "valeur": "Peptide vasoactif intestinal"}
+{"entite": "VLDLR", "valeur": "récepteur VLDL"}
+{"entite": "Vprbp", "valeur": "protéine VPRBP"}
+{"entite": "VTN", "valeur": "Vitronectine"}
+{"entite": "VWF", "valeur": "Facteur de von Willebrand"}
+{"entite": "WAS", "valeur": "WASP"}
+{"entite": "WDR83OS", "valeur": "protéine Asterix"}
+{"entite": "WFDC10B", "valeur": "protéine WFDC10B"}
+{"entite": "WFDC11", "valeur": "protéine WFDC11"}
+{"entite": "Wfdc21", "valeur": "protéine Wfdc21"}
+{"entite": "WFDC9", "valeur": "protéine WFDC9"}
+{"entite": "WIZ", "valeur": "protéine Wiz"}
+{"entite": "WNT10A", "valeur": "protéine Wnt-10a"}
+{"entite": "WNT10B", "valeur": "protéine Wnt-10b"}
+{"entite": "WNT11", "valeur": "protéine Wnt-11"}
+{"entite": "WNT16", "valeur": "protéine Wnt-16"}
+{"entite": "WNT2", "valeur": "protéine Wnt-2"}
+{"entite": "WNT2B", "valeur": "protéine Wnt-2b"}
+{"entite": "WNT3A", "valeur": "protéine Wnt-3a"}
+{"entite": "WNT4", "valeur": "protéine Wnt-4"}
+{"entite": "WNT5B", "valeur": "protéine Wnt-5b"}
+{"entite": "WNT6", "valeur": "protéine Wnt-6"}
+{"entite": "WNT7A", "valeur": "protéine Wnt-7a"}
+{"entite": "WNT7B", "valeur": "protéine Wnt-7b"}
+{"entite": "WNT8A", "valeur": "protéine Wnt-8a"}
+{"entite": "WNT8B", "valeur": "protéine Wnt-8b"}
+{"entite": "WNT9A", "valeur": "protéine Wnt-9a"}
+{"entite": "WNT9B", "valeur": "protéine Wnt-9b"}
+{"entite": "WWC1", "valeur": "protéine KIBRA"}
+{"entite": "WWC2", "valeur": "protéine WWC2"}
+{"entite": "WWC3", "valeur": "protéine WWC3"}
+{"entite": "XIAP", "valeur": "Protéine inhibitrice de l’apoptose liée au chromosome X"}
+{"entite": "YIF1A", "valeur": "protéine YIF1A"}
+{"entite": "YIF1B", "valeur": "protéine YIF1B"}
+{"entite": "YIPF1", "valeur": "protéine YIPF1"}
+{"entite": "YIPF2", "valeur": "protéine YIPF2"}
+{"entite": "YIPF3", "valeur": "protéine YIPF3"}
+{"entite": "YIPF4", "valeur": "protéine YIPF4"}
+{"entite": "YIPF6", "valeur": "protéine YIPF6"}
+{"entite": "YIPF7", "valeur": "protéine YIPF7"}
+{"entite": "ZBED8", "valeur": "protéine ZBED8"}
+{"entite": "ZBTB33", "valeur": "régulateur de la transcription Kaiso"}
+{"entite": "ZEB1", "valeur": "ZEB1"}
+{"entite": "ZFAT", "valeur": "protéine à doigt de zinc ZFAT"}
+{"entite": "Zfp106", "valeur": "protéine à doigt de zinc 106"}
+{"entite": "Zfp11", "valeur": "protéine à doigt de zinc 11"}
+{"entite": "Zfp112", "valeur": "protéine à doigt de zinc 112"}
+{"entite": "Zfp12", "valeur": "protéine à doigt de zinc 12"}
+{"entite": "Zfp120", "valeur": "protéine à doigt de zinc 120"}
+{"entite": "Zfp13", "valeur": "protéine à doigt de zinc 13"}
+{"entite": "Zfp131", "valeur": "protéine à doigt de zinc 131"}
+{"entite": "Zfp143", "valeur": "protéine à doigt de zinc 143"}
+{"entite": "Zfp146", "valeur": "protéine à doigt de zinc OZF"}
+{"entite": "Zfp148", "valeur": "protéine à doigt de zinc 148"}
+{"entite": "Zfp182", "valeur": "protéine à doigt de zinc 182"}
+{"entite": "Zfp184", "valeur": "protéine à doigt de zinc 184"}
+{"entite": "Zfp185", "valeur": "protéine à doigt de zinc 185"}
+{"entite": "Zfp239", "valeur": "protéine à doigt de zinc 239"}
+{"entite": "Zfp24", "valeur": "protéine à doigt de zinc 24"}
+{"entite": "Zfp26", "valeur": "protéine à doigt de zinc 26"}
+{"entite": "Zfp260", "valeur": "protéine à doigt de zinc 260"}
+{"entite": "Zfp27", "valeur": "protéine à doigt de zinc 27"}
+{"entite": "Zfp276", "valeur": "protéine à doigt de zinc 276"}
+{"entite": "Zfp280c", "valeur": "protéine à doigt de zinc 280C"}
+{"entite": "Zfp280d", "valeur": "protéine à doigt de zinc 280D"}
+{"entite": "Zfp281", "valeur": "protéine à doigt de zinc 281"}
+{"entite": "Zfp287", "valeur": "protéine à doigt de zinc 287"}
+{"entite": "Zfp292", "valeur": "protéine à doigt de zinc 292"}
+{"entite": "Zfp316", "valeur": "protéine à doigt de zinc 316"}
+{"entite": "Zfp318", "valeur": "protéine à doigt de zinc 318"}
+{"entite": "Zfp319", "valeur": "protéine à doigt de zinc 319"}
+{"entite": "Zfp322a", "valeur": "protéine à doigt de zinc 322"}
+{"entite": "Zfp329", "valeur": "protéine à doigt de zinc 329"}
+{"entite": "Zfp330", "valeur": "protéine à doigt de zinc 330"}
+{"entite": "Zfp335", "valeur": "protéine à doigt de zinc 335"}
+{"entite": "Zfp346", "valeur": "protéine à doigt de zinc 346"}
+{"entite": "Zfp35", "valeur": "protéine à doigt de zinc 271"}
+{"entite": "Zfp354a", "valeur": "protéine à doigt de zinc 354A"}
+{"entite": "Zfp354b", "valeur": "protéine à doigt de zinc 354B"}
+{"entite": "Zfp354c", "valeur": "protéine à doigt de zinc 354C"}
+{"entite": "Zfp365", "valeur": "protéine ZNF365"}
+{"entite": "Zfp367", "valeur": "protéine à doigt de zinc 367"}
+{"entite": "Zfp382", "valeur": "protéine à doigt de zinc 382"}
+{"entite": "Zfp385a", "valeur": "protéine à doigt de zinc 385A"}
+{"entite": "Zfp385b", "valeur": "protéine à doigt de zinc 385B"}
+{"entite": "Zfp385c", "valeur": "protéine à doigt de zinc 385C"}
+{"entite": "Zfp39", "valeur": "protéine à doigt de zinc 39"}
+{"entite": "Zfp410", "valeur": "protéine à doigt de zinc 410"}
+{"entite": "Zfp414", "valeur": "protéine à doigt de zinc 414"}
+{"entite": "Zfp422", "valeur": "protéine à doigt de zinc 22"}
+{"entite": "Zfp423", "valeur": "protéine à doigt de zinc 423"}
+{"entite": "Zfp426", "valeur": "protéine à doigt de zinc 426"}
+{"entite": "Zfp428", "valeur": "protéine à doigt de zinc 428"}
+{"entite": "Zfp445", "valeur": "protéine à doigt de zinc 445"}
+{"entite": "Zfp458", "valeur": "protéine à doigt de zinc 728"}
+{"entite": "Zfp46", "valeur": "protéine à doigt de zinc 436"}
+{"entite": "Zfp467", "valeur": "protéine à doigt de zinc 467"}
+{"entite": "Zfp473", "valeur": "protéine à doigt de zinc 473 homologue"}
+{"entite": "Zfp474", "valeur": "protéine à doigt de zinc 474"}
+{"entite": "Zfp488", "valeur": "protéine à doigt de zinc 488"}
+{"entite": "Zfp503", "valeur": "protéine à doigt de zinc 503"}
+{"entite": "Zfp507", "valeur": "protéine à doigt de zinc 507"}
+{"entite": "Zfp511", "valeur": "protéine à doigt de zinc 511"}
+{"entite": "Zfp512", "valeur": "protéine à doigt de zinc 512"}
+{"entite": "Zfp513", "valeur": "protéine à doigt de zinc 513"}
+{"entite": "Zfp516", "valeur": "protéine à doigt de zinc 516"}
+{"entite": "Zfp518a", "valeur": "protéine à doigt de zinc 518A"}
+{"entite": "Zfp518b", "valeur": "protéine à doigt de zinc 518B"}
+{"entite": "Zfp521", "valeur": "protéine à doigt de zinc 521"}
+{"entite": "Zfp523", "valeur": "protéine à doigt de zinc 76"}
+{"entite": "Zfp524", "valeur": "protéine à doigt de zinc 524"}
+{"entite": "Zfp526", "valeur": "protéine à doigt de zinc 526"}
+{"entite": "Zfp532", "valeur": "protéine à doigt de zinc 532"}
+{"entite": "Zfp536", "valeur": "protéine à doigt de zinc 536"}
+{"entite": "Zfp541", "valeur": "protéine à doigt de zinc 541"}
+{"entite": "Zfp551", "valeur": "protéine à doigt de zinc 551"}
+{"entite": "Zfp553", "valeur": "protéine à doigt de zinc 48"}
+{"entite": "Zfp574", "valeur": "protéine à doigt de zinc 574"}
+{"entite": "Zfp575", "valeur": "protéine à doigt de zinc 575"}
+{"entite": "Zfp579", "valeur": "protéine à doigt de zinc 579"}
+{"entite": "Zfp58", "valeur": "protéine à doigt de zinc 58"}
+{"entite": "Zfp580", "valeur": "protéine à doigt de zinc 580"}
+{"entite": "Zfp583", "valeur": "protéine à doigt de zinc 583"}
+{"entite": "Zfp59", "valeur": "protéine à doigt de zinc 59"}
+{"entite": "Zfp592", "valeur": "protéine à doigt de zinc 592"}
+{"entite": "Zfp593", "valeur": "protéine à doigt de zinc 593"}
+{"entite": "Zfp598", "valeur": "protéine à doigt de zinc 598"}
+{"entite": "Zfp60", "valeur": "protéine à doigt de zinc 60"}
+{"entite": "Zfp608", "valeur": "protéine à doigt de zinc 608"}
+{"entite": "Zfp609", "valeur": "protéine à doigt de zinc 609"}
+{"entite": "Zfp618", "valeur": "protéine à doigt de zinc 618"}
+{"entite": "Zfp622", "valeur": "protéine à doigt de zinc 622"}
+{"entite": "Zfp628", "valeur": "protéine à doigt de zinc 628"}
+{"entite": "Zfp629", "valeur": "protéine à doigt de zinc 629"}
+{"entite": "Zfp637", "valeur": "protéine à doigt de zinc 32"}
+{"entite": "Zfp638", "valeur": "protéine à doigt de zinc 638"}
+{"entite": "Zfp639", "valeur": "protéine à doigt de zinc 639"}
+{"entite": "Zfp64", "valeur": "protéine à doigt de zinc 64"}
+{"entite": "Zfp641", "valeur": "protéine à doigt de zinc 641"}
+{"entite": "Zfp647", "valeur": "protéine à doigt de zinc 250"}
+{"entite": "Zfp652", "valeur": "protéine à doigt de zinc 652"}
+{"entite": "Zfp653", "valeur": "protéine à doigt de zinc 653"}
+{"entite": "Zfp654", "valeur": "protéine à doigt de zinc 654"}
+{"entite": "Zfp661", "valeur": "protéine à doigt de zinc 2"}
+{"entite": "Zfp664", "valeur": "protéine à doigt de zinc 664"}
+{"entite": "Zfp667", "valeur": "protéine à doigt de zinc 667"}
+{"entite": "Zfp668", "valeur": "protéine à doigt de zinc 668"}
+{"entite": "Zfp672", "valeur": "protéine à doigt de zinc 672"}
+{"entite": "Zfp687", "valeur": "protéine à doigt de zinc 687"}
+{"entite": "Zfp689", "valeur": "protéine à doigt de zinc 689"}
+{"entite": "ZFP69", "valeur": "protéine à doigt de zinc ZFP69"}
+{"entite": "Zfp691", "valeur": "protéine à doigt de zinc 691"}
+{"entite": "Zfp692", "valeur": "protéine à doigt de zinc 692"}
+{"entite": "Zfp697", "valeur": "protéine à doigt de zinc 697"}
+{"entite": "ZFP69B", "valeur": "protéine à doigt de zinc ZFP69B"}
+{"entite": "Zfp703", "valeur": "protéine à doigt de zinc 703"}
+{"entite": "Zfp704", "valeur": "protéine à doigt de zinc 704"}
+{"entite": "Zfp706", "valeur": "protéine à doigt de zinc 706"}
+{"entite": "Zfp710", "valeur": "protéine à doigt de zinc 710"}
+{"entite": "Zfp711", "valeur": "protéine à doigt de zinc 711"}
+{"entite": "Zfp74", "valeur": "protéine à doigt de zinc 569"}
+{"entite": "Zfp740", "valeur": "protéine à doigt de zinc 740"}
+{"entite": "Zfp746", "valeur": "protéine à doigt de zinc 746"}
+{"entite": "Zfp750", "valeur": "protéine à doigt de zinc 750"}
+{"entite": "Zfp768", "valeur": "protéine à doigt de zinc 768"}
+{"entite": "Zfp770", "valeur": "protéine à doigt de zinc 770"}
+{"entite": "Zfp771", "valeur": "protéine à doigt de zinc 771"}
+{"entite": "Zfp775", "valeur": "protéine à doigt de zinc 775"}
+{"entite": "Zfp784", "valeur": "protéine à doigt de zinc 784"}
+{"entite": "Zfp786", "valeur": "protéine à doigt de zinc 786"}
+{"entite": "Zfp787", "valeur": "protéine à doigt de zinc 787"}
+{"entite": "Zfp800", "valeur": "protéine à doigt de zinc 800"}
+{"entite": "Zfp804a", "valeur": "protéine à doigt de zinc 804A"}
+{"entite": "Zfp809", "valeur": "protéine à doigt de zinc 809"}
+{"entite": "Zfp821", "valeur": "protéine à doigt de zinc 821"}
+{"entite": "Zfp827", "valeur": "protéine à doigt de zinc 827"}
+{"entite": "Zfp830", "valeur": "protéine à doigt de zinc 830"}
+{"entite": "Zfp865", "valeur": "protéine à doigt de zinc 865"}
+{"entite": "Zfp879", "valeur": "protéine à doigt de zinc 879"}
+{"entite": "Zfp93", "valeur": "protéine à doigt de zinc 235"}
+{"entite": "Zfp932", "valeur": "protéine à doigt de zinc 431"}
+{"entite": "ZFPM1", "valeur": "protéine à doigt de zinc ZFPM1"}
+{"entite": "ZFPM2", "valeur": "protéine à doigt de zinc ZFPM2"}
+{"entite": "ZGRF1", "valeur": "protéine ZGRF1"}
+{"entite": "ZIC1", "valeur": "protéine à doigt de zinc ZIC 1"}
+{"entite": "ZIC2", "valeur": "protéine à doigt de zinc ZIC 2"}
+{"entite": "ZIC3", "valeur": "protéine à doigt de zinc ZIC 3"}
+{"entite": "ZIC4", "valeur": "protéine à doigt de zinc ZIC 4"}
+{"entite": "ZIC5", "valeur": "protéine à doigt de zinc ZIC 5"}
+{"entite": "Zkscan14", "valeur": "protéine à doigt de zinc 394"}
+{"entite": "Zkscan17", "valeur": "protéine à doigt de zinc 496"}
+{"entite": "Zkscan6", "valeur": "protéine à doigt de zinc 18"}
+{"entite": "ZMPSTE24", "valeur": "ZMPSTE24"}
+{"entite": "ZNF10", "valeur": "protéine à doigt de zinc 10"}
+{"entite": "ZNF100", "valeur": "protéine à doigt de zinc 100"}
+{"entite": "ZNF101", "valeur": "protéine à doigt de zinc 101"}
+{"entite": "ZNF106", "valeur": "protéine à doigt de zinc 106"}
+{"entite": "ZNF107", "valeur": "protéine à doigt de zinc 107"}
+{"entite": "ZNF112", "valeur": "protéine à doigt de zinc 112"}
+{"entite": "ZNF114", "valeur": "protéine à doigt de zinc 114"}
+{"entite": "ZNF117", "valeur": "protéine à doigt de zinc 117"}
+{"entite": "ZNF12", "valeur": "protéine à doigt de zinc 12"}
+{"entite": "ZNF121", "valeur": "protéine à doigt de zinc 121"}
+{"entite": "ZNF124", "valeur": "protéine à doigt de zinc 124"}
+{"entite": "ZNF131", "valeur": "protéine à doigt de zinc 131"}
+{"entite": "ZNF132", "valeur": "protéine à doigt de zinc 132"}
+{"entite": "ZNF133", "valeur": "protéine à doigt de zinc 133"}
+{"entite": "ZNF134", "valeur": "protéine à doigt de zinc 134"}
+{"entite": "ZNF135", "valeur": "protéine à doigt de zinc 135"}
+{"entite": "ZNF136", "valeur": "protéine à doigt de zinc 136"}
+{"entite": "ZNF138", "valeur": "protéine à doigt de zinc 138"}
+{"entite": "ZNF14", "valeur": "protéine à doigt de zinc 14"}
+{"entite": "ZNF140", "valeur": "protéine à doigt de zinc 140"}
+{"entite": "ZNF141", "valeur": "protéine à doigt de zinc 141"}
+{"entite": "ZNF142", "valeur": "protéine à doigt de zinc 142"}
+{"entite": "ZNF143", "valeur": "protéine à doigt de zinc 143"}
+{"entite": "ZNF146", "valeur": "protéine à doigt de zinc OZF"}
+{"entite": "ZNF148", "valeur": "protéine à doigt de zinc 148"}
+{"entite": "ZNF154", "valeur": "protéine à doigt de zinc 154"}
+{"entite": "ZNF157", "valeur": "protéine à doigt de zinc 157"}
+{"entite": "ZNF16", "valeur": "protéine à doigt de zinc 16"}
+{"entite": "ZNF160", "valeur": "protéine à doigt de zinc 160"}
+{"entite": "ZNF165", "valeur": "protéine à doigt de zinc 165"}
+{"entite": "ZNF169", "valeur": "protéine à doigt de zinc 169"}
+{"entite": "ZNF17", "valeur": "protéine à doigt de zinc 17"}
+{"entite": "ZNF174", "valeur": "protéine à doigt de zinc 174"}
+{"entite": "ZNF175", "valeur": "protéine à doigt de zinc 175"}
+{"entite": "ZNF177", "valeur": "protéine à doigt de zinc 177"}
+{"entite": "ZNF18", "valeur": "protéine à doigt de zinc 18"}
+{"entite": "ZNF180", "valeur": "protéine à doigt de zinc 180"}
+{"entite": "ZNF181", "valeur": "protéine à doigt de zinc 181"}
+{"entite": "ZNF182", "valeur": "protéine à doigt de zinc 182"}
+{"entite": "ZNF184", "valeur": "protéine à doigt de zinc 184"}
+{"entite": "ZNF185", "valeur": "protéine à doigt de zinc 185"}
+{"entite": "ZNF189", "valeur": "protéine à doigt de zinc 189"}
+{"entite": "ZNF19", "valeur": "protéine à doigt de zinc 19"}
+{"entite": "ZNF195", "valeur": "protéine à doigt de zinc 195"}
+{"entite": "ZNF197", "valeur": "protéine à doigt de zinc 197"}
+{"entite": "ZNF2", "valeur": "protéine à doigt de zinc 2"}
+{"entite": "ZNF20", "valeur": "protéine à doigt de zinc 20"}
+{"entite": "ZNF200", "valeur": "protéine à doigt de zinc 200"}
+{"entite": "ZNF202", "valeur": "protéine à doigt de zinc 202"}
+{"entite": "ZNF205", "valeur": "protéine à doigt de zinc 205"}
+{"entite": "ZNF208", "valeur": "protéine à doigt de zinc 208"}
+{"entite": "ZNF211", "valeur": "protéine à doigt de zinc 211"}
+{"entite": "ZNF212", "valeur": "protéine à doigt de zinc 212"}
+{"entite": "ZNF213", "valeur": "protéine à doigt de zinc 213"}
+{"entite": "ZNF214", "valeur": "protéine à doigt de zinc 214"}
+{"entite": "ZNF215", "valeur": "protéine à doigt de zinc 215"}
+{"entite": "ZNF217", "valeur": "protéine à doigt de zinc 217"}
+{"entite": "ZNF219", "valeur": "protéine à doigt de zinc 219"}
+{"entite": "ZNF22", "valeur": "protéine à doigt de zinc 22"}
+{"entite": "ZNF221", "valeur": "protéine à doigt de zinc 221"}
+{"entite": "ZNF222", "valeur": "protéine à doigt de zinc 222"}
+{"entite": "ZNF223", "valeur": "protéine à doigt de zinc 223"}
+{"entite": "ZNF224", "valeur": "protéine à doigt de zinc 224"}
+{"entite": "ZNF225", "valeur": "protéine à doigt de zinc 225"}
+{"entite": "ZNF226", "valeur": "protéine à doigt de zinc 226"}
+{"entite": "ZNF227", "valeur": "protéine à doigt de zinc 227"}
+{"entite": "ZNF229", "valeur": "protéine à doigt de zinc 229"}
+{"entite": "ZNF23", "valeur": "protéine à doigt de zinc 23"}
+{"entite": "ZNF230", "valeur": "protéine à doigt de zinc 230"}
+{"entite": "ZNF232", "valeur": "protéine à doigt de zinc 232"}
+{"entite": "ZNF233", "valeur": "protéine à doigt de zinc 233"}
+{"entite": "ZNF234", "valeur": "protéine à doigt de zinc 234"}
+{"entite": "ZNF235", "valeur": "protéine à doigt de zinc 235"}
+{"entite": "ZNF236", "valeur": "protéine à doigt de zinc 236"}
+{"entite": "ZNF239", "valeur": "protéine à doigt de zinc 239"}
+{"entite": "ZNF24", "valeur": "protéine à doigt de zinc 24"}
+{"entite": "ZNF248", "valeur": "protéine à doigt de zinc 248"}
+{"entite": "ZNF25", "valeur": "protéine à doigt de zinc 25"}
+{"entite": "ZNF250", "valeur": "protéine à doigt de zinc 250"}
+{"entite": "ZNF251", "valeur": "protéine à doigt de zinc 251"}
+{"entite": "ZNF253", "valeur": "protéine à doigt de zinc 253"}
+{"entite": "ZNF254", "valeur": "protéine à doigt de zinc 254"}
+{"entite": "ZNF256", "valeur": "protéine à doigt de zinc 256"}
+{"entite": "ZNF257", "valeur": "protéine à doigt de zinc 257"}
+{"entite": "ZNF26", "valeur": "protéine à doigt de zinc 26"}
+{"entite": "ZNF260", "valeur": "protéine à doigt de zinc 260"}
+{"entite": "ZNF263", "valeur": "protéine à doigt de zinc 263"}
+{"entite": "ZNF264", "valeur": "protéine à doigt de zinc 264"}
+{"entite": "ZNF266", "valeur": "protéine à doigt de zinc 266"}
+{"entite": "ZNF267", "valeur": "protéine à doigt de zinc 267"}
+{"entite": "ZNF268", "valeur": "protéine à doigt de zinc 268"}
+{"entite": "ZNF273", "valeur": "protéine à doigt de zinc 273"}
+{"entite": "ZNF275", "valeur": "protéine à doigt de zinc 275"}
+{"entite": "ZNF276", "valeur": "protéine à doigt de zinc 276"}
+{"entite": "ZNF277", "valeur": "protéine à doigt de zinc 277"}
+{"entite": "ZNF28", "valeur": "protéine à doigt de zinc 28"}
+{"entite": "ZNF280A", "valeur": "protéine à doigt de zinc 280A"}
+{"entite": "ZNF280B", "valeur": "protéine à doigt de zinc 280B"}
+{"entite": "ZNF280C", "valeur": "protéine à doigt de zinc 280C"}
+{"entite": "ZNF280D", "valeur": "protéine à doigt de zinc 280D"}
+{"entite": "ZNF281", "valeur": "protéine à doigt de zinc 281"}
+{"entite": "ZNF282", "valeur": "protéine à doigt de zinc 282"}
+{"entite": "ZNF283", "valeur": "protéine à doigt de zinc 283"}
+{"entite": "ZNF284", "valeur": "protéine à doigt de zinc 284"}
+{"entite": "ZNF285", "valeur": "protéine à doigt de zinc 285"}
+{"entite": "ZNF286A", "valeur": "protéine à doigt de zinc 286A"}
+{"entite": "ZNF287", "valeur": "protéine à doigt de zinc 287"}
+{"entite": "ZNF292", "valeur": "protéine à doigt de zinc 292"}
+{"entite": "ZNF296", "valeur": "protéine à doigt de zinc 296"}
+{"entite": "ZNF3", "valeur": "protéine à doigt de zinc 3"}
+{"entite": "ZNF30", "valeur": "protéine à doigt de zinc 30"}
+{"entite": "ZNF300", "valeur": "protéine à doigt de zinc 300"}
+{"entite": "ZNF302", "valeur": "protéine à doigt de zinc 302"}
+{"entite": "ZNF304", "valeur": "protéine à doigt de zinc 304"}
+{"entite": "ZNF311", "valeur": "protéine à doigt de zinc 311"}
+{"entite": "ZNF316", "valeur": "protéine à doigt de zinc 316"}
+{"entite": "ZNF317", "valeur": "protéine à doigt de zinc 317"}
+{"entite": "ZNF318", "valeur": "protéine à doigt de zinc 318"}
+{"entite": "ZNF319", "valeur": "protéine à doigt de zinc 319"}
+{"entite": "ZNF32", "valeur": "protéine à doigt de zinc 32"}
+{"entite": "ZNF320", "valeur": "protéine à doigt de zinc 320"}
+{"entite": "ZNF322", "valeur": "protéine à doigt de zinc 322"}
+{"entite": "ZNF324", "valeur": "protéine à doigt de zinc 324A"}
+{"entite": "ZNF324B", "valeur": "protéine à doigt de zinc 324B"}
+{"entite": "ZNF329", "valeur": "protéine à doigt de zinc 329"}
+{"entite": "ZNF330", "valeur": "protéine à doigt de zinc 330"}
+{"entite": "ZNF331", "valeur": "protéine à doigt de zinc 331"}
+{"entite": "ZNF333", "valeur": "protéine à doigt de zinc 333"}
+{"entite": "ZNF334", "valeur": "protéine à doigt de zinc 334"}
+{"entite": "ZNF335", "valeur": "protéine à doigt de zinc 335"}
+{"entite": "ZNF337", "valeur": "protéine à doigt de zinc 337"}
+{"entite": "ZNF33A", "valeur": "protéine à doigt de zinc 33A"}
+{"entite": "ZNF33B", "valeur": "protéine à doigt de zinc 33B"}
+{"entite": "ZNF34", "valeur": "protéine à doigt de zinc 34"}
+{"entite": "ZNF341", "valeur": "protéine à doigt de zinc 341"}
+{"entite": "ZNF343", "valeur": "protéine à doigt de zinc 343"}
+{"entite": "ZNF345", "valeur": "protéine à doigt de zinc 345"}
+{"entite": "ZNF346", "valeur": "protéine à doigt de zinc 346"}
+{"entite": "ZNF347", "valeur": "protéine à doigt de zinc 347"}
+{"entite": "ZNF35", "valeur": "protéine à doigt de zinc 35"}
+{"entite": "ZNF350", "valeur": "protéine à doigt de zinc 350"}
+{"entite": "ZNF354A", "valeur": "protéine à doigt de zinc 354A"}
+{"entite": "ZNF354B", "valeur": "protéine à doigt de zinc 354B"}
+{"entite": "ZNF354C", "valeur": "protéine à doigt de zinc 354C"}
+{"entite": "ZNF358", "valeur": "protéine à doigt de zinc 358"}
+{"entite": "ZNF362", "valeur": "protéine à doigt de zinc 362"}
+{"entite": "ZNF365", "valeur": "protéine ZNF365"}
+{"entite": "ZNF366", "valeur": "protéine à doigt de zinc 366"}
+{"entite": "ZNF367", "valeur": "protéine à doigt de zinc 367"}
+{"entite": "ZNF37A", "valeur": "protéine à doigt de zinc 37A"}
+{"entite": "ZNF382", "valeur": "protéine à doigt de zinc 382"}
+{"entite": "ZNF383", "valeur": "protéine à doigt de zinc 383"}
+{"entite": "ZNF384", "valeur": "protéine à doigt de zinc 384"}
+{"entite": "ZNF385A", "valeur": "protéine à doigt de zinc 385A"}
+{"entite": "ZNF385B", "valeur": "protéine à doigt de zinc 385B"}
+{"entite": "ZNF385C", "valeur": "protéine à doigt de zinc 385C"}
+{"entite": "ZNF385D", "valeur": "protéine à doigt de zinc 385D"}
+{"entite": "ZNF391", "valeur": "protéine à doigt de zinc 391"}
+{"entite": "ZNF394", "valeur": "protéine à doigt de zinc 394"}
+{"entite": "ZNF395", "valeur": "protéine à doigt de zinc 395"}
+{"entite": "ZNF396", "valeur": "protéine à doigt de zinc 396"}
+{"entite": "ZNF397", "valeur": "protéine à doigt de zinc 397"}
+{"entite": "ZNF398", "valeur": "protéine à doigt de zinc 398"}
+{"entite": "ZNF404", "valeur": "protéine à doigt de zinc 404"}
+{"entite": "ZNF407", "valeur": "protéine à doigt de zinc 407"}
+{"entite": "ZNF408", "valeur": "protéine à doigt de zinc 408"}
+{"entite": "ZNF41", "valeur": "protéine à doigt de zinc 41"}
+{"entite": "ZNF410", "valeur": "protéine à doigt de zinc 410"}
+{"entite": "ZNF414", "valeur": "protéine à doigt de zinc 414"}
+{"entite": "ZNF415", "valeur": "protéine à doigt de zinc 415"}
+{"entite": "ZNF416", "valeur": "protéine à doigt de zinc 416"}
+{"entite": "ZNF417", "valeur": "protéine à doigt de zinc 417"}
+{"entite": "ZNF418", "valeur": "protéine à doigt de zinc 418"}
+{"entite": "ZNF419", "valeur": "protéine à doigt de zinc 419"}
+{"entite": "ZNF420", "valeur": "protéine à doigt de zinc 420"}
+{"entite": "ZNF423", "valeur": "protéine à doigt de zinc 423"}
+{"entite": "ZNF425", "valeur": "protéine à doigt de zinc 425"}
+{"entite": "ZNF426", "valeur": "protéine à doigt de zinc 426"}
+{"entite": "ZNF428", "valeur": "protéine à doigt de zinc 428"}
+{"entite": "ZNF429", "valeur": "protéine à doigt de zinc 429"}
+{"entite": "ZNF43", "valeur": "protéine à doigt de zinc 43"}
+{"entite": "ZNF430", "valeur": "protéine à doigt de zinc 430"}
+{"entite": "ZNF431", "valeur": "protéine à doigt de zinc 431"}
+{"entite": "ZNF432", "valeur": "protéine à doigt de zinc 432"}
+{"entite": "ZNF433", "valeur": "protéine à doigt de zinc 433"}
+{"entite": "ZNF436", "valeur": "protéine à doigt de zinc 436"}
+{"entite": "ZNF438", "valeur": "protéine à doigt de zinc 438"}
+{"entite": "ZNF439", "valeur": "protéine à doigt de zinc 439"}
+{"entite": "ZNF44", "valeur": "protéine à doigt de zinc 44"}
+{"entite": "ZNF440", "valeur": "protéine à doigt de zinc 440"}
+{"entite": "ZNF441", "valeur": "protéine à doigt de zinc 441"}
+{"entite": "ZNF442", "valeur": "protéine à doigt de zinc 442"}
+{"entite": "ZNF443", "valeur": "protéine à doigt de zinc 443"}
+{"entite": "ZNF444", "valeur": "protéine à doigt de zinc 444"}
+{"entite": "ZNF445", "valeur": "protéine à doigt de zinc 445"}
+{"entite": "ZNF446", "valeur": "protéine à doigt de zinc 446"}
+{"entite": "ZNF449", "valeur": "protéine à doigt de zinc 449"}
+{"entite": "ZNF45", "valeur": "protéine à doigt de zinc 45"}
+{"entite": "ZNF451", "valeur": "protéine à doigt de zinc 451"}
+{"entite": "ZNF454", "valeur": "protéine à doigt de zinc 454"}
+{"entite": "ZNF460", "valeur": "protéine à doigt de zinc 460"}
+{"entite": "ZNF461", "valeur": "protéine à doigt de zinc 461"}
+{"entite": "ZNF462", "valeur": "protéine à doigt de zinc 462"}
+{"entite": "ZNF467", "valeur": "protéine à doigt de zinc 467"}
+{"entite": "ZNF468", "valeur": "protéine à doigt de zinc 468"}
+{"entite": "ZNF469", "valeur": "protéine à doigt de zinc 469"}
+{"entite": "ZNF470", "valeur": "protéine à doigt de zinc 470"}
+{"entite": "ZNF471", "valeur": "protéine à doigt de zinc 471"}
+{"entite": "ZNF473", "valeur": "protéine à doigt de zinc 473"}
+{"entite": "ZNF474", "valeur": "protéine à doigt de zinc 474"}
+{"entite": "ZNF479", "valeur": "protéine à doigt de zinc 479"}
+{"entite": "ZNF48", "valeur": "protéine à doigt de zinc 48"}
+{"entite": "ZNF480", "valeur": "protéine à doigt de zinc 480"}
+{"entite": "ZNF483", "valeur": "protéine à doigt de zinc 483"}
+{"entite": "ZNF484", "valeur": "protéine à doigt de zinc 484"}
+{"entite": "ZNF485", "valeur": "protéine à doigt de zinc 485"}
+{"entite": "ZNF486", "valeur": "protéine à doigt de zinc 486"}
+{"entite": "ZNF488", "valeur": "protéine à doigt de zinc 488"}
+{"entite": "ZNF490", "valeur": "protéine à doigt de zinc 490"}
+{"entite": "ZNF491", "valeur": "protéine à doigt de zinc 491"}
+{"entite": "ZNF492", "valeur": "protéine à doigt de zinc 492"}
+{"entite": "ZNF493", "valeur": "protéine à doigt de zinc 493"}
+{"entite": "ZNF496", "valeur": "protéine à doigt de zinc 496"}
+{"entite": "ZNF497", "valeur": "protéine à doigt de zinc 497"}
+{"entite": "ZNF500", "valeur": "protéine à doigt de zinc 500"}
+{"entite": "ZNF501", "valeur": "protéine à doigt de zinc 501"}
+{"entite": "ZNF502", "valeur": "protéine à doigt de zinc 502"}
+{"entite": "ZNF503", "valeur": "protéine à doigt de zinc 503"}
+{"entite": "ZNF506", "valeur": "protéine à doigt de zinc 506"}
+{"entite": "ZNF507", "valeur": "protéine à doigt de zinc 507"}
+{"entite": "ZNF510", "valeur": "protéine à doigt de zinc 510"}
+{"entite": "ZNF511", "valeur": "protéine à doigt de zinc 511"}
+{"entite": "ZNF512", "valeur": "protéine à doigt de zinc 512"}
+{"entite": "ZNF512B", "valeur": "protéine à doigt de zinc 512B"}
+{"entite": "ZNF513", "valeur": "protéine à doigt de zinc 513"}
+{"entite": "ZNF514", "valeur": "protéine à doigt de zinc 514"}
+{"entite": "ZNF516", "valeur": "protéine à doigt de zinc 516"}
+{"entite": "ZNF517", "valeur": "protéine à doigt de zinc 517"}
+{"entite": "ZNF518A", "valeur": "protéine à doigt de zinc 518A"}
+{"entite": "ZNF518B", "valeur": "protéine à doigt de zinc 518B"}
+{"entite": "ZNF519", "valeur": "protéine à doigt de zinc 519"}
+{"entite": "ZNF521", "valeur": "protéine à doigt de zinc 521"}
+{"entite": "ZNF524", "valeur": "protéine à doigt de zinc 524"}
+{"entite": "ZNF525", "valeur": "protéine à doigt de zinc 525"}
+{"entite": "ZNF526", "valeur": "protéine à doigt de zinc 526"}
+{"entite": "ZNF527", "valeur": "protéine à doigt de zinc 527"}
+{"entite": "ZNF528", "valeur": "protéine à doigt de zinc 528"}
+{"entite": "ZNF529", "valeur": "protéine à doigt de zinc 529"}
+{"entite": "ZNF530", "valeur": "protéine à doigt de zinc 530"}
+{"entite": "ZNF532", "valeur": "protéine à doigt de zinc 532"}
+{"entite": "ZNF534", "valeur": "protéine à doigt de zinc 534"}
+{"entite": "ZNF536", "valeur": "protéine à doigt de zinc 536"}
+{"entite": "ZNF540", "valeur": "protéine à doigt de zinc 540"}
+{"entite": "ZNF541", "valeur": "protéine à doigt de zinc 541"}
+{"entite": "ZNF543", "valeur": "protéine à doigt de zinc 543"}
+{"entite": "ZNF544", "valeur": "protéine à doigt de zinc 544"}
+{"entite": "ZNF546", "valeur": "protéine à doigt de zinc 546"}
+{"entite": "ZNF547", "valeur": "protéine à doigt de zinc 547"}
+{"entite": "ZNF548", "valeur": "protéine à doigt de zinc 548"}
+{"entite": "ZNF549", "valeur": "protéine à doigt de zinc 549"}
+{"entite": "ZNF550", "valeur": "protéine à doigt de zinc 550"}
+{"entite": "ZNF551", "valeur": "protéine à doigt de zinc 551"}
+{"entite": "ZNF552", "valeur": "protéine à doigt de zinc 552"}
+{"entite": "ZNF554", "valeur": "protéine à doigt de zinc 554"}
+{"entite": "ZNF555", "valeur": "Zinc finger protein 555"}
+{"entite": "ZNF556", "valeur": "protéine à doigt de zinc 556"}
+{"entite": "ZNF557", "valeur": "protéine à doigt de zinc 557"}
+{"entite": "ZNF558", "valeur": "protéine à doigt de zinc 558"}
+{"entite": "ZNF559", "valeur": "protéine à doigt de zinc 559"}
+{"entite": "ZNF560", "valeur": "protéine à doigt de zinc 560"}
+{"entite": "ZNF561", "valeur": "protéine à doigt de zinc 561"}
+{"entite": "ZNF562", "valeur": "protéine à doigt de zinc 562"}
+{"entite": "ZNF563", "valeur": "protéine à doigt de zinc 563"}
+{"entite": "ZNF564", "valeur": "protéine à doigt de zinc 564"}
+{"entite": "ZNF565", "valeur": "protéine à doigt de zinc 565"}
+{"entite": "ZNF566", "valeur": "protéine à doigt de zinc 566"}
+{"entite": "ZNF567", "valeur": "protéine à doigt de zinc 567"}
+{"entite": "ZNF568", "valeur": "protéine à doigt de zinc 568"}
+{"entite": "ZNF569", "valeur": "protéine à doigt de zinc 569"}
+{"entite": "ZNF57", "valeur": "protéine à doigt de zinc 57"}
+{"entite": "ZNF570", "valeur": "protéine à doigt de zinc 570"}
+{"entite": "ZNF571", "valeur": "protéine à doigt de zinc 571"}
+{"entite": "ZNF572", "valeur": "protéine à doigt de zinc 572"}
+{"entite": "ZNF573", "valeur": "protéine à doigt de zinc 573"}
+{"entite": "ZNF574", "valeur": "protéine à doigt de zinc 574"}
+{"entite": "ZNF575", "valeur": "protéine à doigt de zinc 575"}
+{"entite": "ZNF576", "valeur": "protéine à doigt de zinc 576"}
+{"entite": "ZNF577", "valeur": "protéine à doigt de zinc 577"}
+{"entite": "ZNF578", "valeur": "protéine à doigt de zinc 578"}
+{"entite": "ZNF579", "valeur": "protéine à doigt de zinc 579"}
+{"entite": "ZNF580", "valeur": "protéine à doigt de zinc 580"}
+{"entite": "ZNF581", "valeur": "protéine à doigt de zinc 581"}
+{"entite": "ZNF582", "valeur": "protéine à doigt de zinc 582"}
+{"entite": "ZNF583", "valeur": "protéine à doigt de zinc 583"}
+{"entite": "ZNF584", "valeur": "protéine à doigt de zinc 584"}
+{"entite": "ZNF585A", "valeur": "protéine à doigt de zinc 585A"}
+{"entite": "ZNF585B", "valeur": "protéine à doigt de zinc 585B"}
+{"entite": "ZNF586", "valeur": "protéine à doigt de zinc 586"}
+{"entite": "ZNF587", "valeur": "protéine à doigt de zinc 587"}
+{"entite": "ZNF587B", "valeur": "protéine à doigt de zinc 587B"}
+{"entite": "ZNF589", "valeur": "protéine à doigt de zinc 589"}
+{"entite": "ZNF592", "valeur": "protéine à doigt de zinc 592"}
+{"entite": "ZNF593", "valeur": "protéine à doigt de zinc 593"}
+{"entite": "ZNF594", "valeur": "protéine à doigt de zinc 594"}
+{"entite": "ZNF595", "valeur": "protéine à doigt de zinc 595"}
+{"entite": "ZNF596", "valeur": "protéine à doigt de zinc 596"}
+{"entite": "ZNF597", "valeur": "protéine à doigt de zinc 597"}
+{"entite": "ZNF598", "valeur": "protéine à doigt de zinc 598"}
+{"entite": "ZNF599", "valeur": "protéine à doigt de zinc 599"}
+{"entite": "ZNF600", "valeur": "protéine à doigt de zinc 600"}
+{"entite": "ZNF605", "valeur": "protéine à doigt de zinc 605"}
+{"entite": "ZNF606", "valeur": "protéine à doigt de zinc 606"}
+{"entite": "ZNF607", "valeur": "protéine à doigt de zinc 607"}
+{"entite": "ZNF608", "valeur": "protéine à doigt de zinc 608"}
+{"entite": "ZNF609", "valeur": "protéine à doigt de zinc 609"}
+{"entite": "ZNF610", "valeur": "protéine à doigt de zinc 610"}
+{"entite": "ZNF611", "valeur": "protéine à doigt de zinc 611"}
+{"entite": "ZNF613", "valeur": "protéine à doigt de zinc 613"}
+{"entite": "ZNF614", "valeur": "protéine à doigt de zinc 614"}
+{"entite": "ZNF615", "valeur": "protéine à doigt de zinc 615"}
+{"entite": "ZNF616", "valeur": "protéine à doigt de zinc 616"}
+{"entite": "ZNF618", "valeur": "protéine à doigt de zinc 618"}
+{"entite": "ZNF619", "valeur": "protéine à doigt de zinc 619"}
+{"entite": "ZNF620", "valeur": "protéine à doigt de zinc 620"}
+{"entite": "ZNF621", "valeur": "protéine à doigt de zinc 621"}
+{"entite": "ZNF622", "valeur": "protéine à doigt de zinc 622"}
+{"entite": "ZNF623", "valeur": "protéine à doigt de zinc 623"}
+{"entite": "ZNF624", "valeur": "protéine à doigt de zinc 624"}
+{"entite": "ZNF625", "valeur": "protéine à doigt de zinc 625"}
+{"entite": "ZNF626", "valeur": "protéine à doigt de zinc 626"}
+{"entite": "ZNF627", "valeur": "protéine à doigt de zinc 627"}
+{"entite": "ZNF628", "valeur": "protéine à doigt de zinc 628"}
+{"entite": "ZNF629", "valeur": "protéine à doigt de zinc 629"}
+{"entite": "ZNF630", "valeur": "protéine à doigt de zinc 630"}
+{"entite": "ZNF638", "valeur": "protéine à doigt de zinc 638"}
+{"entite": "ZNF639", "valeur": "protéine à doigt de zinc 639"}
+{"entite": "ZNF641", "valeur": "protéine à doigt de zinc 641"}
+{"entite": "ZNF644", "valeur": "protéine à doigt de zinc 644"}
+{"entite": "ZNF646", "valeur": "protéine à doigt de zinc 646"}
+{"entite": "ZNF648", "valeur": "protéine à doigt de zinc 648"}
+{"entite": "ZNF649", "valeur": "protéine à doigt de zinc 649"}
+{"entite": "ZNF652", "valeur": "protéine à doigt de zinc 652"}
+{"entite": "ZNF653", "valeur": "protéine à doigt de zinc 653"}
+{"entite": "ZNF654", "valeur": "protéine à doigt de zinc 654"}
+{"entite": "ZNF655", "valeur": "protéine à doigt de zinc 655"}
+{"entite": "ZNF658", "valeur": "protéine à doigt de zinc 658"}
+{"entite": "ZNF660", "valeur": "protéine à doigt de zinc 660"}
+{"entite": "ZNF662", "valeur": "protéine à doigt de zinc 662"}
+{"entite": "ZNF664", "valeur": "protéine à doigt de zinc 664"}
+{"entite": "ZNF665", "valeur": "protéine à doigt de zinc 665"}
+{"entite": "ZNF667", "valeur": "protéine à doigt de zinc 667"}
+{"entite": "ZNF668", "valeur": "protéine à doigt de zinc 668"}
+{"entite": "ZNF669", "valeur": "protéine à doigt de zinc 669"}
+{"entite": "ZNF670", "valeur": "protéine à doigt de zinc 670"}
+{"entite": "ZNF671", "valeur": "protéine à doigt de zinc 671"}
+{"entite": "ZNF672", "valeur": "protéine à doigt de zinc 672"}
+{"entite": "ZNF674", "valeur": "protéine à doigt de zinc 674"}
+{"entite": "ZNF675", "valeur": "protéine à doigt de zinc 675"}
+{"entite": "ZNF676", "valeur": "protéine à doigt de zinc 676"}
+{"entite": "ZNF677", "valeur": "protéine à doigt de zinc 677"}
+{"entite": "ZNF679", "valeur": "protéine à doigt de zinc 679"}
+{"entite": "ZNF680", "valeur": "protéine à doigt de zinc 680"}
+{"entite": "ZNF681", "valeur": "protéine à doigt de zinc 681"}
+{"entite": "ZNF682", "valeur": "protéine à doigt de zinc 682"}
+{"entite": "ZNF683", "valeur": "protéine à doigt de zinc 683"}
+{"entite": "ZNF684", "valeur": "protéine à doigt de zinc 684"}
+{"entite": "ZNF687", "valeur": "protéine à doigt de zinc 687"}
+{"entite": "ZNF688", "valeur": "protéine à doigt de zinc 688"}
+{"entite": "ZNF689", "valeur": "protéine à doigt de zinc 689"}
+{"entite": "ZNF69", "valeur": "protéine à doigt de zinc 69"}
+{"entite": "ZNF691", "valeur": "protéine à doigt de zinc 691"}
+{"entite": "ZNF692", "valeur": "protéine à doigt de zinc 692"}
+{"entite": "ZNF695", "valeur": "protéine à doigt de zinc 695"}
+{"entite": "ZNF696", "valeur": "protéine à doigt de zinc 696"}
+{"entite": "ZNF697", "valeur": "protéine à doigt de zinc 697"}
+{"entite": "ZNF699", "valeur": "protéine à doigt de zinc 699"}
+{"entite": "ZNF7", "valeur": "protéine à doigt de zinc 7"}
+{"entite": "ZNF70", "valeur": "protéine à doigt de zinc 70"}
+{"entite": "ZNF700", "valeur": "protéine à doigt de zinc 700"}
+{"entite": "ZNF701", "valeur": "protéine à doigt de zinc 701"}
+{"entite": "ZNF703", "valeur": "protéine à doigt de zinc 703"}
+{"entite": "ZNF704", "valeur": "protéine à doigt de zinc 704"}
+{"entite": "ZNF705A", "valeur": "protéine à doigt de zinc 705A"}
+{"entite": "ZNF705D", "valeur": "protéine à doigt de zinc 705D"}
+{"entite": "ZNF706", "valeur": "protéine à doigt de zinc 706"}
+{"entite": "ZNF707", "valeur": "protéine à doigt de zinc 707"}
+{"entite": "ZNF708", "valeur": "protéine à doigt de zinc 708"}
+{"entite": "ZNF709", "valeur": "protéine à doigt de zinc 709"}
+{"entite": "ZNF710", "valeur": "protéine à doigt de zinc 710"}
+{"entite": "ZNF711", "valeur": "protéine à doigt de zinc 711"}
+{"entite": "ZNF713", "valeur": "protéine à doigt de zinc 713"}
+{"entite": "ZNF714", "valeur": "protéine à doigt de zinc 714"}
+{"entite": "ZNF716", "valeur": "protéine à doigt de zinc 716"}
+{"entite": "ZNF717", "valeur": "protéine à doigt de zinc 717"}
+{"entite": "ZNF718", "valeur": "protéine à doigt de zinc 718"}
+{"entite": "ZNF721", "valeur": "protéine à doigt de zinc 721"}
+{"entite": "ZNF726", "valeur": "protéine à doigt de zinc 726"}
+{"entite": "ZNF728", "valeur": "protéine à doigt de zinc 728"}
+{"entite": "ZNF729", "valeur": "protéine à doigt de zinc 729"}
+{"entite": "ZNF73", "valeur": "protéine à doigt de zinc 73"}
+{"entite": "ZNF732", "valeur": "protéine à doigt de zinc 732"}
+{"entite": "ZNF736", "valeur": "protéine à doigt de zinc 736"}
+{"entite": "ZNF737", "valeur": "protéine à doigt de zinc 737"}
+{"entite": "ZNF74", "valeur": "protéine à doigt de zinc 74"}
+{"entite": "ZNF740", "valeur": "protéine à doigt de zinc 740"}
+{"entite": "ZNF746", "valeur": "protéine à doigt de zinc 746"}
+{"entite": "ZNF749", "valeur": "protéine à doigt de zinc 749"}
+{"entite": "ZNF750", "valeur": "protéine à doigt de zinc 750"}
+{"entite": "ZNF75A", "valeur": "protéine à doigt de zinc 75A"}
+{"entite": "ZNF75D", "valeur": "protéine à doigt de zinc 75D"}
+{"entite": "ZNF76", "valeur": "protéine à doigt de zinc 76"}
+{"entite": "ZNF761", "valeur": "protéine à doigt de zinc 761"}
+{"entite": "ZNF763", "valeur": "protéine à doigt de zinc 763"}
+{"entite": "ZNF764", "valeur": "protéine à doigt de zinc 764"}
+{"entite": "ZNF765", "valeur": "protéine à doigt de zinc 765"}
+{"entite": "ZNF766", "valeur": "protéine à doigt de zinc 766"}
+{"entite": "ZNF768", "valeur": "protéine à doigt de zinc 768"}
+{"entite": "ZNF77", "valeur": "protéine à doigt de zinc 77"}
+{"entite": "ZNF770", "valeur": "protéine à doigt de zinc 770"}
+{"entite": "ZNF771", "valeur": "protéine à doigt de zinc 771"}
+{"entite": "ZNF772", "valeur": "protéine à doigt de zinc 772"}
+{"entite": "ZNF773", "valeur": "protéine à doigt de zinc 773"}
+{"entite": "ZNF774", "valeur": "protéine à doigt de zinc 774"}
+{"entite": "ZNF775", "valeur": "protéine à doigt de zinc 775"}
+{"entite": "ZNF776", "valeur": "protéine à doigt de zinc 776"}
+{"entite": "ZNF777", "valeur": "protéine à doigt de zinc 777"}
+{"entite": "ZNF778", "valeur": "protéine à doigt de zinc 778"}
+{"entite": "ZNF780A", "valeur": "protéine à doigt de zinc 780A"}
+{"entite": "ZNF780B", "valeur": "protéine à doigt de zinc 780B"}
+{"entite": "ZNF781", "valeur": "protéine à doigt de zinc 781"}
+{"entite": "ZNF782", "valeur": "protéine à doigt de zinc 782"}
+{"entite": "ZNF783", "valeur": "protéine ZNF783"}
+{"entite": "ZNF784", "valeur": "protéine à doigt de zinc 784"}
+{"entite": "ZNF785", "valeur": "protéine à doigt de zinc 785"}
+{"entite": "ZNF786", "valeur": "protéine à doigt de zinc 786"}
+{"entite": "ZNF787", "valeur": "protéine à doigt de zinc 787"}
+{"entite": "ZNF788", "valeur": "protéine à doigt de zinc 788"}
+{"entite": "ZNF789", "valeur": "protéine à doigt de zinc 789"}
+{"entite": "ZNF79", "valeur": "protéine à doigt de zinc 79"}
+{"entite": "ZNF790", "valeur": "protéine à doigt de zinc 790"}
+{"entite": "ZNF791", "valeur": "protéine à doigt de zinc 791"}
+{"entite": "ZNF792", "valeur": "protéine à doigt de zinc 792"}
+{"entite": "ZNF793", "valeur": "protéine à doigt de zinc 793"}
+{"entite": "ZNF799", "valeur": "protéine à doigt de zinc 799"}
+{"entite": "ZNF8", "valeur": "protéine à doigt de zinc 8"}
+{"entite": "ZNF80", "valeur": "protéine à doigt de zinc 80"}
+{"entite": "ZNF800", "valeur": "protéine à doigt de zinc 800"}
+{"entite": "ZNF804A", "valeur": "protéine à doigt de zinc 804A"}
+{"entite": "ZNF804B", "valeur": "protéine à doigt de zinc 804B"}
+{"entite": "ZNF805", "valeur": "protéine à doigt de zinc 805"}
+{"entite": "ZNF806", "valeur": "protéine à doigt de zinc 806"}
+{"entite": "ZNF808", "valeur": "protéine à doigt de zinc 808"}
+{"entite": "ZNF81", "valeur": "protéine à doigt de zinc 81"}
+{"entite": "ZNF813", "valeur": "protéine à doigt de zinc 813"}
+{"entite": "ZNF816", "valeur": "protéine à doigt de zinc 816"}
+{"entite": "ZNF821", "valeur": "protéine à doigt de zinc 821"}
+{"entite": "ZNF823", "valeur": "protéine à doigt de zinc 823"}
+{"entite": "ZNF827", "valeur": "protéine à doigt de zinc 827"}
+{"entite": "ZNF829", "valeur": "protéine à doigt de zinc 829"}
+{"entite": "ZNF830", "valeur": "protéine à doigt de zinc 830"}
+{"entite": "ZNF831", "valeur": "protéine à doigt de zinc 831"}
+{"entite": "ZNF835", "valeur": "protéine à doigt de zinc 835"}
+{"entite": "ZNF836", "valeur": "protéine à doigt de zinc 836"}
+{"entite": "ZNF837", "valeur": "protéine à doigt de zinc 837"}
+{"entite": "ZNF839", "valeur": "protéine à doigt de zinc 839"}
+{"entite": "ZNF84", "valeur": "protéine à doigt de zinc 84"}
+{"entite": "ZNF841", "valeur": "protéine à doigt de zinc 841"}
+{"entite": "ZNF843", "valeur": "protéine à doigt de zinc 843"}
+{"entite": "ZNF844", "valeur": "protéine à doigt de zinc 844"}
+{"entite": "ZNF845", "valeur": "protéine à doigt de zinc 845"}
+{"entite": "ZNF846", "valeur": "protéine à doigt de zinc 846"}
+{"entite": "ZNF85", "valeur": "protéine à doigt de zinc 85"}
+{"entite": "ZNF850", "valeur": "protéine à doigt de zinc 850"}
+{"entite": "ZNF852", "valeur": "protéine à doigt de zinc 852"}
+{"entite": "ZNF853", "valeur": "protéine à doigt de zinc 853"}
+{"entite": "ZNF860", "valeur": "protéine à doigt de zinc 860"}
+{"entite": "ZNF862", "valeur": "protéine à doigt de zinc 862"}
+{"entite": "ZNF865", "valeur": "protéine à doigt de zinc 865"}
+{"entite": "ZNF878", "valeur": "protéine à doigt de zinc 878"}
+{"entite": "ZNF879", "valeur": "protéine à doigt de zinc 879"}
+{"entite": "ZNF880", "valeur": "protéine à doigt de zinc 880"}
+{"entite": "ZNF883", "valeur": "protéine à doigt de zinc 883"}
+{"entite": "ZNF888", "valeur": "protéine à doigt de zinc 888"}
+{"entite": "ZNF891", "valeur": "protéine à doigt de zinc 891"}
+{"entite": "ZNF90", "valeur": "protéine à doigt de zinc 90"}
+{"entite": "ZNF91", "valeur": "protéine à doigt de zinc 91"}
+{"entite": "ZNF92", "valeur": "protéine à doigt de zinc 92"}
+{"entite": "ZNF93", "valeur": "protéine à doigt de zinc 93"}
+{"entite": "ZNF98", "valeur": "protéine à doigt de zinc 98"}
+{"entite": "ZNF99", "valeur": "protéine à doigt de zinc 99"}
+{"entite": "ZPR1", "valeur": "protéine à doigt de zinc ZPR1"}
+{"entite": "ZXDC", "valeur": "protéine à doigt de zinc ZXDC"}
+{"entite": "ZYX", "valeur": "zyxine"}

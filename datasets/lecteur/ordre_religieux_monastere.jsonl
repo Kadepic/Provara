@@ -1,0 +1,1666 @@
+{"_relation": "ordre_religieux_monastere", "_categorie": "convention", "_source": "Wikidata/QLever — ordre religieux du monastère P611 (ensemble fermé d'ordres)", "_articles": true}
+{"entite": "abbatiale de Romainmôtier", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye-aux-Bois", "valeur": "ordre cistercien"}
+{"entite": "abbaye aux Dames de Caen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye aux Dames de Saintes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye bénédictine", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye bénédictine de Mariastein", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye bénédictine de Saalfeld", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Cirencester", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye cistercienne d'Arques", "valeur": "ordre cistercien"}
+{"entite": "abbaye cistercienne de Hradiště", "valeur": "ordre cistercien"}
+{"entite": "abbaye cistercienne de L'Olive", "valeur": "ordre cistercien"}
+{"entite": "abbaye cistercienne de la Maigrauge", "valeur": "ordre cistercien"}
+{"entite": "abbaye cistercienne de Loccum", "valeur": "ordre cistercien"}
+{"entite": "abbaye cistercienne de Marens", "valeur": "moniales cisterciennes"}
+{"entite": "abbaye cistercienne de Montheron", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Abbeydorney", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Abbeylara", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Abbeyleix", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Abbeymahon", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Aberconwy", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Abingdon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Abington", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Ábrahám", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Acqualunga", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Admont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Affligem", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Aldeneik", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Alet-les-Bains", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Almenêches", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Alpirsbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Altenberg", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Altenburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Altmünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Altorf", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Altzelle", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Alvastra", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Amay", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Amelungsborn", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Ammensleben", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Amorbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Andechs", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Andenne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Andlau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Anhausen an der Brenz", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Arbroath", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Ardenne", "valeur": "Prémontrés"}
+{"entite": "abbaye d'Argenton", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Arnoldstein", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Arthous", "valeur": "Prémontrés"}
+{"entite": "abbaye d'Ås", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Asbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Assaroe", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Attel", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Audembourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Auhausen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Aulps", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Aura", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Averbode", "valeur": "Prémontrés"}
+{"entite": "abbaye d'Aywiers", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Æbelholt", "valeur": "augustins"}
+{"entite": "abbaye d'Eberbach", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Ebersberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Ebersmunster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Ebrach", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Echternach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Écurey", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Egmont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Einsiedeln", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Élan", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Elchingen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Eldena", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Ellwangen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Engelberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Esrum", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Ettal", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Ettenheimmünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Evesham", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Évrecy", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Eynsham", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Hasnon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Hasungen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Heiligengrabe", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Henryków", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Hersfeld", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Heylissem", "valeur": "Prémontrés"}
+{"entite": "abbaye d'Igriș", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Ilmmünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Ilsenburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Inchcolm", "valeur": "ordre de Saint-Augustin"}
+{"entite": "abbaye d'Inislounaght", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Irsee", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Isova", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Oberalteich", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Obermarsberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Ochsenhausen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Öhningen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Oliva", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Osek", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Otterberg", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Ottobeuren", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye d'Ulmet", "valeur": "ordre cistercien"}
+{"entite": "abbaye d'Yvetot", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bafor", "valeur": "Cisterciennes bernardines d'Esquermes"}
+{"entite": "abbaye de Bakonybél", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Baltinglass", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Banz", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Barbeau", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bardney", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Barona", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Battle", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Baumgarten", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Beaugerais", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Beaupré", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Beaurepart", "valeur": "Prémontrés"}
+{"entite": "abbaye de Bective", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bélakút", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bélapátfalva", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bellerive", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Belval au Bois-des-Dames", "valeur": "Prémontrés"}
+{"entite": "abbaye de Benediktbeuern", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Benet Lake", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bénévent", "valeur": "augustins"}
+{"entite": "abbaye de Berge", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Berryville", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Bertholdstein", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Beuron", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Biburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Biddlesden", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bindon", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bival", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Blanchelande", "valeur": "Prémontrés"}
+{"entite": "abbaye de Blaubeuren", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Blue Cloud", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bobbio", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bohéries", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bois-Seigneur-Isaac", "valeur": "Ordre libanais maronite"}
+{"entite": "abbaye de Boke", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bolton", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Bondeville", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bonlieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bonmoutier", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bonne-Espérance", "valeur": "Prémontrés"}
+{"entite": "abbaye de Bonnecombe", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bonnefontaine", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bons", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bordesley", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Boschaud", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bouillas", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Boulaur", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bourras", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Bouxières", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Boxley", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Brauweiler", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Breitenau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Breuil-Herbaud", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bronnbach", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Broumov", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bruern", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Brunshausen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Buckfast", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Buckland", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Burtscheid", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bury St Edmunds", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Bussières-les-Nonains", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Butende", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Buzay", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cadouin", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Calder", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Calers", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cambron", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Candeil", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cantimpré", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye de Cârța", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Casanova", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cavatigozzi", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cercanceaux", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cerisy-la-Forêt", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Cerne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Chalivoy", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Chaloché", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Chammünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Champagne", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Chassagne", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Château-Chalon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Chaumont", "valeur": "Prémontrés"}
+{"entite": "abbaye de Chevetogne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Chézery", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Chiaravalle", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Chiaravalle di Fiastra", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Chiemsee", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Chortaïton", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cikádor", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cismar", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Civate", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Clairefontaine", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Clairvaux", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Clare Island", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Clausonne", "valeur": "Ordre monastique de Chalais"}
+{"entite": "abbaye de Clavas", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cleeve", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Collegeville", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Comburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Conception", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Cong", "valeur": "augustins"}
+{"entite": "abbaye de Corazzo", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Cormery", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Corrupt", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Corvey", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Crespin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Crowland", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Croxden", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Culross", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Déols", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Deutz", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Dieleghem", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye de Dinklage", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Disentis", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Disibodenberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Dobbertin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Dore", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Douai", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Downside", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Drübeck", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Dunbrody", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Dundrennan", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Dunfermline", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Fabas", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Falleri", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Farfa", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Faversham", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Féniers", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fermoy", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fiecht", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Flaxley", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Flines", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Flône", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye de Florennes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Foigny", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fontaine-André", "valeur": "Frères des écoles chrétiennes"}
+{"entite": "abbaye de Fontaine-les-Blanches", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fontainejean", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fontdouce", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Fontenay", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fontevraud", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Fontguilhem", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Forest", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Fountains", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Frauenberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Frienisberg", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fruttuaria", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Fulda", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Fultenbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Furness", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fürstenberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Fürstenfeld", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Fürstenzell", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Garendon", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Gars", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gellone", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gembloux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gengenbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Geras", "valeur": "Prémontrés"}
+{"entite": "abbaye de Gérgeri", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Gerleve", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gerode", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Glanawydan", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Glastonbury", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gloucester", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Göllingen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gorze", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Göss", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gotteszell", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Göttweig", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Grace Dieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Grandchamp", "valeur": "Prémontrés"}
+{"entite": "abbaye de Grandmont", "valeur": "Ordre de Grandmont"}
+{"entite": "abbaye de Grandpré", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Grandselve", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Graufthal", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Grimbergen", "valeur": "Prémontrés"}
+{"entite": "abbaye de Groeninghe", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Gronau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gröningen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Gudsberga", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Güigüe", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Guimaras", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Hagenrode", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Hailes", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Hardehausen", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Harsefeld", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Hautefontaine", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Heggbach", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Heidenheim", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Heiligenkreuz", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Heilsbronn", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Herford", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Herrenalb", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Herrevad", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Herstelle", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Hesse", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Hiddensee", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Hillersleben", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Himmelpfort", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Hirsau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Hocht", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Hofen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Holmcultram", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Holme", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Holy Cross", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Holzkirchen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Honau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Honcourt", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Hore", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Hulton", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Huntsville", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Innichen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Jedburgh", "valeur": "ordre de Saint-Augustin"}
+{"entite": "abbaye de Jervaulx", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Julita", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Kappel", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Kärkna", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Kelso", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Kemnade", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Kempten", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Keur Guilaye", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Keur Moussa", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Kilbeggan", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Kilshane", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Kingswood", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Kirkstall", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Kirkstead", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Kladruby", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Klarenthal", "valeur": "ordre de Sainte-Claire"}
+{"entite": "abbaye de Klosterneuburg", "valeur": "ordre de Saint-Augustin"}
+{"entite": "abbaye de Kniebis", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Knockmoy", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Koenigsbrück", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Königsmünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Kopua", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Kornelimünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Koutaba", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Kremsmünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Kylemore", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de l'Assomption d'Ava", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de l'Aumône", "valeur": "ordre cistercien"}
+{"entite": "abbaye de l'Éclache", "valeur": "ordre cistercien"}
+{"entite": "abbaye de l'Escaladieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye de l'Escarp", "valeur": "ordre cistercien"}
+{"entite": "abbaye de l'Estrée", "valeur": "ordre cistercien"}
+{"entite": "abbaye de l'Étanche", "valeur": "Prémontrés"}
+{"entite": "abbaye de Løgumkloster", "valeur": "ordre cistercien"}
+{"entite": "abbaye de l'Isle-Dieu", "valeur": "Prémontrés"}
+{"entite": "abbaye de la Boissière", "valeur": "ordre cistercien"}
+{"entite": "abbaye de La Boulaye", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Brayelle", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Bussière", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Cambre", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Case-Dieu", "valeur": "Prémontrés"}
+{"entite": "abbaye de La Celle", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de la Charité", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Charmoye", "valeur": "ordre cistercien"}
+{"entite": "abbaye de La Colombe", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Dormition de Jérusalem", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de La Ferté", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Fille-Dieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Garde-Dieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Joie", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Joie Notre-Dame", "valeur": "ordre cistercien"}
+{"entite": "abbaye de La Lucerne", "valeur": "Prémontrés"}
+{"entite": "abbaye de la Merci-Dieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Noë", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Novalaise", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de la Paix Notre-Dame", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de la Rode", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Sainte-Croix", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de la Sauve-Bénite", "valeur": "ordre cistercien"}
+{"entite": "abbaye de La Trappe", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de la Trinité de Vendôme", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de la Trinité de Venosa", "valeur": "ordre des Trinitaires"}
+{"entite": "abbaye de la Valroy", "valeur": "ordre cistercien"}
+{"entite": "abbaye de la Woestyne", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Lacey", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Lachalade", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Lahonce", "valeur": "Prémontrés"}
+{"entite": "abbaye de Lamanabi", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Lambach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Lambrecht", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Langheim", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Latroun", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Lautenbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Laval-Bénite", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Lehnin", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Léoncel", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Leyme", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Lichtenthal", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Liesborn", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Lilienfeld", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Limburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Lobbes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Lonlay", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Lorch", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Louroux", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Louth Park", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Lubiąż", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Lucelle", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Lulworth", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Luxeuil", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Maagdendale", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Macheret", "valeur": "Ordre de Grandmont"}
+{"entite": "abbaye de Maizières", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Mallersdorf", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Malmedy", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Malmesbury", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Marche-les-Dames", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Marchtal", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Maredret", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Maredsous", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Margam", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Maria Laach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mariánská Týnice", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Mariawald", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Marienberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Marienmünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Marienthal", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Marmosoglio", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Marmoutier", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Maroilles", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Maubec", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Maubuisson", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Maulbronn", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Mazan", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Meaux", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Medmenham", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Mègemont", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Melk", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Melrose", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Menat", "valeur": "ordre de Cluny"}
+{"entite": "abbaye de Mepkin", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Mercoire", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Merevale", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Metten", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mettlach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Michaelsberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Michaelstein", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Michelfeld", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mogila", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Monasteranenagh", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Monasterevin", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Mönchberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mönchröden", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mönchsdeggingen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mondaye", "valeur": "Prémontrés"}
+{"entite": "abbaye de Mondsee", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mont-Sainte-Marie", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Montivilliers", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Montmartre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Montpeyroux", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Morimond", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Morristown", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mortemer", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Mottisfont", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye de Mount Angel", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mount Melleray", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Mount Michael", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mount Saviour", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Moutier-d'Ahun", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Moutier-Grandval", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Moyenmoutier", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Muenster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Münchaurach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Münchsmünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Münchsteinach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Munster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Munster de Ruremonde", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Munsterbilzen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Münsterschwarzach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Murbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Mureau", "valeur": "Prémontrés"}
+{"entite": "abbaye de Muri", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Nazareth", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Ndanda", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Nepomuk", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Neresheim", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Netley", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Netlieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Neuberg", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Neubourg", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Neuburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Neuenberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Neuendorf", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Neufmoustier", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye de Neustadt am Main", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Neuwiller-lès-Saverne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Neuzelle", "valeur": "ordre cistercien"}
+{"entite": "abbaye de New Clairvaux", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de New Melleray", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Newark", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Newenham", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Newminster", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Newry", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Niederaltaich", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Nienburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Ninove", "valeur": "Prémontrés"}
+{"entite": "abbaye de Nivelles", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Nogent-l'Artaud", "valeur": "Clarisses urbanistes"}
+{"entite": "abbaye de Nogent-sous-Coucy", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Noirlac", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Nonantola", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Nonenque", "valeur": "Moniales chartreuses"}
+{"entite": "abbaye de Nonnberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Notre-Dame-de-la-Paix", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Notre-Dame des Anges à Saint-Cyr", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Novacella", "valeur": "Chanoines réguliers du Latran de la congrégation d'Autriche"}
+{"entite": "abbaye de Nsugbe", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Padis", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Pairis", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Pannonhalma", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Pansath", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Parc", "valeur": "Prémontrés"}
+{"entite": "abbaye de Parc-les-Dames", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Paring", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Paulinzella", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Pavilly", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Pegau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Percheio", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Pérignac", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Petershausen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Pfäfers", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Pfaffenmünster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Pforta", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Pipewell", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Plankstetten", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Planselve", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Plasy", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Pluscardine", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Polling", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Pomposa", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Pont-Aux-Dames", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Pontigny", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Pontlevoy", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Port-Royal de Paris", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Port-Royal-des-Champs à Magny-les-Hameaux", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Posa", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Postel", "valeur": "Prémontrés"}
+{"entite": "abbaye de Preallo", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Prémontré", "valeur": "Prémontrés"}
+{"entite": "abbaye de Preuilly", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Prinknash", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Prüfening", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Prüm", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Quin", "valeur": "ordre des Frères mineurs"}
+{"entite": "abbaye de Raitenhaslach", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Ramsey", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Rastede", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Ravensberg", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Realvalle", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Redwoods", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Regina Laudis", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Reichenau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Reigny", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Rein", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Reinhausen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Remiremont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Rewley", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Rheinau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Ribnitz", "valeur": "ordre de Sainte-Claire"}
+{"entite": "abbaye de Richardton", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Richmond", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Rievaulx", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Rinchnach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Robertsbridge", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Roche", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Rohr", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Rohrbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Roosenberg", "valeur": "Chanoinesses de Saint-Augustin de la Congrégation Notre-Dame"}
+{"entite": "abbaye de Roscrea", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Rott", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Royallieu", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Royaumont", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Rufford", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Rufinianes", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Rupertsberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Rushen", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Saarn", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Säben", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Albans", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Amand", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-André-aux-Bois", "valeur": "Prémontrés"}
+{"entite": "abbaye de Saint-Arnould", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Benoît-sur-Loire", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Bernard-sur-l'Escaut", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Saint-Claude", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Cybard", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Denis-en-Broqueroie", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint Eutizio", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Florent-le-Vieil", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Florian", "valeur": "Chanoines réguliers du Latran de la congrégation d'Autriche"}
+{"entite": "abbaye de Saint-Fuscien", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Gall", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Génis-des-Fontaines", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Gervais de Fos", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Ghislain", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Gilles", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Hilaire", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Hubert", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Jacut", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint Lambert", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Léon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Martin d'Autun", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Maur", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Maurice d'Agaune", "valeur": "Congrégation des chanoines réguliers de Saint-Maurice d'Agaune"}
+{"entite": "abbaye de Saint-Maurin", "valeur": "ordre de Cluny"}
+{"entite": "abbaye de Saint-Méen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Michel", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Mihiel", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Paul-hors-les-Murs", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Père", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint Pierre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Pierre-les-Nonnains de Lyon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Pierre-sur-Dives", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Pons de Gémenos", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Saint-Pons-de-Thomières", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Sauveur", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Seine", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Sever", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Symphorien d'Autun", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Symphorien de Metz", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Trond", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Valery", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Saint-Wulmer", "valeur": "Congrégation de Saint-Maur"}
+{"entite": "abbaye de Sainte-Marie-au-Bois", "valeur": "Prémontrés"}
+{"entite": "abbaye de Sainte-Odile", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sala", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Salem", "valeur": "ordre cistercien"}
+{"entite": "abbaye de San Giorgio Maggiore", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de San Giusto in Tuscania", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Sandau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sankt Oswald", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sankt Veit", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sant'Elena", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Santes Creus", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Sawtry", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Schäftlarn", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Scharnitz", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Scheyern", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Schienen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Schinna", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Schlehdorf", "valeur": "ordre des Prêcheurs"}
+{"entite": "abbaye de Schliersee", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Schönau", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Schöntal", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Schuttern", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Schweiklberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Scourmont", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Seckau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sedlec", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Seeon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Seitenstetten", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Seligenstadt", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Seligenthal", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Seltz", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Seuilly", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sever", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Shaftesbury", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Shap", "valeur": "Prémontrés"}
+{"entite": "abbaye de Shrewsbury", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sibton", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Silly-en-Gouffern", "valeur": "Prémontrés"}
+{"entite": "abbaye de Silvacane", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Singeverga", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Skalice", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Snowmass", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Söflingen", "valeur": "ordre de Sainte-Claire"}
+{"entite": "abbaye de Solnhofen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sorø", "valeur": "ordre cistercien"}
+{"entite": "abbaye de St Bavon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Stams", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Stanley", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Stapehill", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Stavelot", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Stična", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Stiepel", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Still River", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Stoneleigh", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Strowry", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Sturzelbronn", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Subiaco", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Sulejów", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Süsteren", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Svaté Pole", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Syon", "valeur": "Ordre de Sainte-Brigitte"}
+{"entite": "abbaye de Szczyrzyc", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Szentgotthárd", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Tavistock", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Tegernsee", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Tennenbach", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Teplá", "valeur": "Prémontrés"}
+{"entite": "abbaye de Ter Doest", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Tewkesbury", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Thame", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Theres", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Tholey", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Thorney", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Tiglieto", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Tihany", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Tilty", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Tinterne", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Tinternparva", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Tironneau", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Titchfield", "valeur": "Prémontrés"}
+{"entite": "abbaye de Tokwon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Tongerlo", "valeur": "Prémontrés"}
+{"entite": "abbaye de Torigny", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Torre", "valeur": "Prémontrés"}
+{"entite": "abbaye de Tre Fontane", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Trizay", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Trois-Fontaines", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Tronchiennes", "valeur": "Prémontrés"}
+{"entite": "abbaye de Tulebras", "valeur": "Ordre des religieuses cisterciennes de la stricte observance"}
+{"entite": "abbaye de Tyniec", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Vaals", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Vabres", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Vadstena", "valeur": "Ordre de Sainte-Brigitte"}
+{"entite": "abbaye de Valcroissant", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Vale Royal", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Valence", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Valette", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Vallombrosa", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Valmont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Valsaintes", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Valserena", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Valyermo", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Varennes", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Varensell", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Varlar", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Varnhem", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Vaudey", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Vauluisant", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Venière", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Victoria", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Vignogoul", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Viktring", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Villeneuve", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Villers", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Villers-Bettnach", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Vlierbeek", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Vorau", "valeur": "Chanoines réguliers du Latran de la congrégation d'Autriche"}
+{"entite": "abbaye de Vornbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Vyšší Brod", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Wąchock", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Waegwan", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Wągrowiec", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Waldsassen", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Walkenried", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Warden", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Watten", "valeur": "augustins"}
+{"entite": "abbaye de Waulsort", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Waverley", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Wearmouth-Jarrow", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Weißenohe", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Weihenstephan", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Weingarten", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Weltenbourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Werden", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Westmalle", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Westminster", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Westvleteren", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye de Wettingen", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Whalley", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Whitby", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Wiblingen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Wigmore", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye de Wilhering", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Wilten", "valeur": "Prémontrés"}
+{"entite": "abbaye de Wimmelburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye de Windberg", "valeur": "Prémontrés"}
+{"entite": "abbaye de Wörschweiler", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Zaraka", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Zbraslav", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Zirc", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Zwettl", "valeur": "ordre cistercien"}
+{"entite": "abbaye de Zwiefalten", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye des Allois", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye des Ayes", "valeur": "ordre cistercien"}
+{"entite": "abbaye des Chambons", "valeur": "ordre cistercien"}
+{"entite": "abbaye des Dames d'Étrun", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye des Dunes", "valeur": "ordre cistercien"}
+{"entite": "abbaye des Écharlis", "valeur": "ordre cistercien"}
+{"entite": "abbaye des Isles d'Auxerre", "valeur": "ordre cistercien"}
+{"entite": "abbaye des Oblats de Sarrebruck", "valeur": "Oblats de Marie-Immaculée"}
+{"entite": "abbaye des Prémontrés de Pont-à-Mousson", "valeur": "Prémontrés"}
+{"entite": "abbaye des Prés de Douai", "valeur": "ordre cistercien"}
+{"entite": "abbaye des Roches", "valeur": "ordre cistercien"}
+{"entite": "abbaye des Ternes", "valeur": "ordre des Célestins"}
+{"entite": "abbaye des Vaux-de-Cernay", "valeur": "ordre cistercien"}
+{"entite": "abbaye du Bouschet-Vauluisant", "valeur": "ordre cistercien"}
+{"entite": "abbaye du Breuil-Benoît", "valeur": "ordre cistercien"}
+{"entite": "abbaye du Chambon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Joug-Dieu", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Lieu-Dieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye du Lys", "valeur": "ordre cistercien"}
+{"entite": "abbaye du Mont-Cassin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Mont-César", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Mont-Saint-Michel", "valeur": "Fraternités monastiques de Jérusalem"}
+{"entite": "abbaye du Mont Thabor", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Prince de la Paix", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Sacré-Cœur d'Oriocourt", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Saint-Esprit de Mvimwa", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Saint-Esprit de Sulmona", "valeur": "ordre des Célestins"}
+{"entite": "abbaye du Saint-Mont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Sauvoir", "valeur": "ordre cistercien"}
+{"entite": "abbaye du Thoronet", "valeur": "ordre cistercien"}
+{"entite": "abbaye du Trésor-Notre-Dame", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye du Val des Choues", "valeur": "ordre cistercien"}
+{"entite": "abbaye et Altenmünster de Lorsch", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Maria-Rickenbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Mariacron", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Marmion", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Mater Ecclesiae", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame à Nieuwe Plant", "valeur": "augustins"}
+{"entite": "abbaye Notre-Dame d'Ambronay", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame d'Ardorel", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame d'Argentan", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame d'Ivry", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame d'Olivet", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame d'Yerres", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Bœuil", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Barbery", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Barzelle", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Beauchêne", "valeur": "Ordre des chanoines réguliers du Latran"}
+{"entite": "abbaye Notre-Dame de Beaulieu", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye Notre-Dame de Beaupré-sur-la-Lys", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Beauvoir", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Bellavaux de Charenton", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Belleau", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Bellefontaine", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de Belloc", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Bellozanne", "valeur": "Prémontrés"}
+{"entite": "abbaye Notre-Dame de Bithaine", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Bon Secours de Blauvac", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de Bonlieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Bonne-Espérance d'Échourgnac", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de Bonport", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Boscodon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Bourbourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame-de-Chalais", "valeur": "Ordre monastique de Chalais"}
+{"entite": "abbaye Notre-Dame de Chambon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Chancelade", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye Notre-Dame de Clairefontaine", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Cormeilles", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Coulombs", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Délivrance", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Donezan", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Faverney", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Fontgombault", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Ganagobie", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Gaussan", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Gethsemani", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de Glastonbury", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Gondon", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame-de-Grâce de Bricquebec", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame-de-Guadalupe", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de Hambye", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Josaphat", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Jouarre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Jouy", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Koningshoeven", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de Koningsoord", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame-de-l'Annonciation de Clear Creek", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame-de-l'Annonciation du Barroux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de l'Assomption du Bournet", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de l'Atlas", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de l'Épeau", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de la Blanche", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de la Chaume", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de la Clarté-Dieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de la Consolation de Vaise", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de la Coudre", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de La Couronne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de la Faise", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de la Grainetière", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de la Joie", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame-de-la-Paix de Castagniers", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame-de-la-Paix de Chimay", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de la Paix-Dieu", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de la Plaine", "valeur": "Cisterciennes bernardines d'Esquermes"}
+{"entite": "abbaye Notre-Dame de Lanthénac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Larrivour", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Licques", "valeur": "Prémontrés"}
+{"entite": "abbaye Notre-Dame de Longpont", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Loroy", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Lyre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Marcilly", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Montier-en-Der", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame-de-Montserrat de Manille", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Mores", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Morienval", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Paimpont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Pontifroid", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Pontron", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame-de-Protection", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Quarr", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Randol", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame-de-Ré dite des Châteliers", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Saint-Dizier", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Sénanque", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame de Timadeuc", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame de Tournay", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame-de-Toute-Confiance", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame de Triors", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame-des-Anges de Saint-Just-de-Claix", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame-des-Hautes-Bruyères", "valeur": "ordre de Fontevraud"}
+{"entite": "abbaye Notre-Dame-des-Neiges", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame du Bec", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame du Calvaire", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame du Landais", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame-du-Lieu", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame du Miroir", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame du Mississippi", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame du Palais", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame du Pesquié", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame du Reclus", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame-du-Réconfort de Saizy", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame du Sacré-Cœur de Mâcon", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Notre-Dame du Tronchet", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Notre-Dame du Val", "valeur": "ordre cistercien"}
+{"entite": "abbaye Notre-Dame et Saint-Paul de Bellevaux", "valeur": "Prémontrés"}
+{"entite": "abbaye pontificale de Saint-Jérôme", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royal deSaint-Laumer de Blois", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royale aux Hommes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royale d'Aniane", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Bourgueil", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royale de Caunes-Minervois", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royale de Ferrières", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de l'Épau", "valeur": "ordre cistercien"}
+{"entite": "abbaye Royale de la Chaise-Dieu", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Longchamp", "valeur": "ordre de Sainte-Claire"}
+{"entite": "abbaye Royale de Molesme", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Notre-Dame et Toussaints de Chaalis", "valeur": "ordre cistercien"}
+{"entite": "abbaye royale de Poulangy", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Saint-Alyre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royale de Saint-Corneille", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Saint-Denis", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Saint-Germain d'Auxerre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royale de Saint-Germain-des-Prés", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Saint-Gildas de Rhuys", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Saint-Médard de Soissons", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royale de Saint-Remi de Reims", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Saint-Riquier", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Saint-Wandrille de Fontenelle", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale de Sainte-Marie de Lagrasse", "valeur": "Chanoines réguliers de la Mère de Dieu"}
+{"entite": "abbaye Royale du Mont Saint-Quentin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Royale Notre-Dame de Bernay", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye royale Notre-Dame de Lieu-Dieu", "valeur": "Prémontrés"}
+{"entite": "abbaye Royale Saint-Pierre de Jumièges", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Alban devant Mayence", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Amand", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Andoche d'Autun", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-André de Bruges", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-André de Cleveland", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-André de Lavaudieu", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-André de Meymac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-André de Villeneuve-lès-Avignon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Ange de Pétra", "valeur": "ordre cistercien"}
+{"entite": "abbaye Saint-Anselme", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Antoine-des-Champs", "valeur": "ordre cistercien"}
+{"entite": "abbaye Saint-Aubin des Bois", "valeur": "ordre cistercien"}
+{"entite": "abbaye Saint-Ausone", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Barthélemy de Noyon", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye Saint-Bède", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Bénigne de Dijon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Benoît de Bahia", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Benoît de Peramiho", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Benoît de Port-Valais", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Benoît de Rio de Janeiro", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Benoît de São Paulo", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Benoît-du-Lac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Bernard", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Bertin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Blaise", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Blaise de Northeim", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Boniface de Munich", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Calixte de Cysoing", "valeur": "augustins"}
+{"entite": "abbaye Saint-Corentin à Septeuil", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Cyprien de Poitiers", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Cyriaque de Naumburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Dominique de Silos", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Emmeran", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Étienne d'Augsbourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Étienne de Baignes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Étienne de Bassac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Étienne de Heidelberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Eustase de Vergaville", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Faron de Meaux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Feuillen de Fosses", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Feuillien du Rœulx", "valeur": "Prémontrés"}
+{"entite": "abbaye Saint-Florent de Saumur", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Fructueux-de-Tarragone", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Genest de Nevers", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Genou", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Georges d'Isny", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Georges de Boscherville", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Georges de Rennes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Gérard de Brogne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Géraud d'Aurillac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Germer-de-Fly", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Gildas-des-Bois", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Guénolé de Landévennec", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Guy de Freising", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jacques de Liège", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jacques de Mayence", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jacques de Ratisbonne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jacques de Wurtzbourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jean-Baptiste de Valenciennes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jean d'Orbestier", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jean-de-Cerlier", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jean de Sorde", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jean-du-Mont de Thérouanne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Jean-le-Grand d'Autun", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Joseph", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Saint-Joseph de Clairval", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Joseph de Saint Benedict", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Josse de Dommartin", "valeur": "Prémontrés"}
+{"entite": "abbaye Saint-Junien de Nouaillé-Maupertuis", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Laurent d'Ampleforth", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Laurent de Liège", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Lazare de Seedorf", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Léger de Préaux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Léonard de Corbigny", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Léonard de Guînes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Louis-du-Temple de Vauhallan", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Ludger de Helmstedt", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Magloire de Paris", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Magne de Füssen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Marcel", "valeur": "ordre cistercien"}
+{"entite": "abbaye Saint-Marcel-lès-Chalon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martial de Limoges", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Chore", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin-de-Glandières", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Laon", "valeur": "Prémontrés"}
+{"entite": "abbaye Saint-Martin de Ligugé", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Pontoise", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Savigny", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Sées", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Tournai", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Trèves", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Troarn", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin de Vertou", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Martin-et-Saint-Vulgain", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Mathieu de Fine-Terre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Matthias de Trèves", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Maur de Hanga", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Maurice de Carnoët", "valeur": "ordre cistercien"}
+{"entite": "abbaye Saint-Maurice de Minden", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Maurice-et-Saint-Maur", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Maximin de Trèves", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Meinrad", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Mesmin de Micy", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Michel de Cuxa", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Michel de Farnborough", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Michel de Frigolet", "valeur": "Prémontrés"}
+{"entite": "abbaye Saint-Michel de Heidelberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Michel de Kergonan", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Michel de Tonnerre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Nicolas d'Angers", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Nicolas d'Arrouaise", "valeur": "augustins"}
+{"entite": "abbaye Saint-Paul", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Paul d'Oosterhout", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Paul de Wisques", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Paul du Lavanttal", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Père-en-Vallée", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Philibert de Tournus", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre d'Hautvillers", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre dans la Forêt-Noire", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Baume-les-Messieurs", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Beaulieu-sur-Dordogne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Brantôme", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Corbie", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Flavigny-sur-Ozerain", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Gand", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Gigny", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Honnecourt", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de l'Almanarre", "valeur": "ordre cistercien"}
+{"entite": "abbaye Saint-Pierre de Lo", "valeur": "augustins"}
+{"entite": "abbaye Saint-Pierre de Meobecq", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Moissac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Montmajour", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Pradines", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Préaux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Ratisbonne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Rebais", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Rompon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Senones", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre de Solesmes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre du Vigeois", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre et Saint-Paul de Châtillon-lès-Conches", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre-et-Saint-Paul de Pothières", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre-et-Saint-Paul de Wissembourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre-le-Vif de Sens", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre-les-Dames", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pierre sur Madron", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Pons de Nice", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Procope", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Rémi-des-Landes à Clairefontaine", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Rigaud", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Ruf d'Avignon", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye Saint-Sauveur d'Anchin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Sauveur d'Anvers", "valeur": "ordre cistercien"}
+{"entite": "abbaye Saint-Sauveur de Ham", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Sauveur de Redon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Sauveur de Villeloin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Sernin du Monastère", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Trudpert", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Vaast", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Vanne de Verdun", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Vincent de Latrobe", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Vincent de Metz", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Vincent de Senlis", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye Saint-Vincent du Volturne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Winoc de Bergues", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saint-Zénon d'Isen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Anne de Kergonan", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Anne de Moutons", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Brigitte", "valeur": "Ordre de Sainte-Brigitte"}
+{"entite": "abbaye Sainte-Catherine de Laval", "valeur": "ordre cistercien"}
+{"entite": "abbaye Sainte-Catherine du Mont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Cécile de Ryde", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Cécile de Solesmes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Claire", "valeur": "Clarisses urbanistes"}
+{"entite": "abbaye Sainte-Croix de Bouzonville", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Croix de Donauwörth", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Croix de Guingamp", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye Sainte-Croix de Talmond", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Érentrude de Kellenried", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Gertrude", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Hildegarde d'Eibingen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Irmine", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Madeleine de Geneston", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "abbaye Sainte-Madeleine du Barroux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie d'Arles-sur-Tech", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie d'York", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de Fulda", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de la Pierre-Qui-Vire", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de la Règle", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de la Résurrection d'Abu Gosh", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de Lacock", "valeur": "augustins"}
+{"entite": "abbaye Sainte-Marie de Longues", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de Paris", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de Pierredon", "valeur": "Ordre monastique de Chalais"}
+{"entite": "abbaye Sainte-Marie de Pignerol", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de Rieunette", "valeur": "ordre cistercien"}
+{"entite": "abbaye Sainte-Marie de Saint-Jean-le-Grand d'Autun à Colonne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de Souillac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de Trèves", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie de Villelongue", "valeur": "ordre cistercien"}
+{"entite": "abbaye Sainte-Marie des Deux-Montagnes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Marie du Désert", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "abbaye Sainte-Odile", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Rictrude et Saint-Pierre de Marchiennes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Trinité de Lessay", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Sainte-Wivine", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saints-Crisant-et-Daria de Bad Münstereifel", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saints-Pierre-et-Paul de Cobourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Saints-Pierre-et-Paul de Paderborn", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye San Salvatore", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye San Tommaso dei Borgognoni", "valeur": "ordre cistercien"}
+{"entite": "abbaye Sant'Ambrogio della Vittoria", "valeur": "ordre cistercien"}
+{"entite": "abbaye Santa Anastasia", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye Santa Maria dell'Arco", "valeur": "ordre cistercien"}
+{"entite": "abbaye Santissima Trinità del Legno", "valeur": "ordre cistercien"}
+{"entite": "abbaye Santo Spirito di Zannone", "valeur": "ordre cistercien"}
+{"entite": "abbaye Santo Stefano al Corno", "valeur": "ordre cistercien"}
+{"entite": "L'Abbaye-sous-Dol", "valeur": "ordre de Saint-Benoît"}
+{"entite": "abbaye St. Georgenberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Abbotsbury Abbey", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Abdij Onze-Lieve-Vrouw", "valeur": "augustins"}
+{"entite": "Abdij van Doornzele", "valeur": "ordre cistercien"}
+{"entite": "Abdij van Oosteeklo te Gent", "valeur": "ordre cistercien"}
+{"entite": "Abdij van Sint-Niklaas te Veurne", "valeur": "Prémontrés"}
+{"entite": "ancien cloître dominicain de Mayence", "valeur": "ordre des Prêcheurs"}
+{"entite": "ancien couvent de clarisses Paradies Unterschlatt", "valeur": "ordre de Sainte-Claire"}
+{"entite": "ancien couvent de Saint-Louis-de-France", "valeur": "Congrégation de Notre-Dame de Montréal"}
+{"entite": "ancien couvent des Capucins de Tarascon", "valeur": "Frères mineurs capucins"}
+{"entite": "ancien couvent des Filippini", "valeur": "Congrégation de l'Oratoire"}
+{"entite": "ancien couvent des Récollets de Cassel", "valeur": "Ordre des récollets frères mineurs"}
+{"entite": "ancien couvent des Sœurs franciscaines cloîtrées de l'Immaculée-Conception de Champfleur", "valeur": "Ordre de l'Immaculée Conception"}
+{"entite": "ancien couvent des Ursulines de Tarascon", "valeur": "Ordre de Sainte-Ursule"}
+{"entite": "ancien monastère du Beyart", "valeur": "Tiers-Ordre franciscain"}
+{"entite": "ancien Prieuré bénédictin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "ancienne abbaye de Tous-les-Saints de Schaffhouse", "valeur": "ordre de Saint-Benoît"}
+{"entite": "ancienne abbaye Saint-Denis", "valeur": "ordre de Saint-Benoît"}
+{"entite": "ancienne Chartreuse de la Part-Dieu avec porterie et chapelle, ancienne maison des frères et ruines du moulin", "valeur": "ordre des Chartreux"}
+{"entite": "ancienne prévôté du couvent Saint-Blaise", "valeur": "ordre de Saint-Benoît"}
+{"entite": "ancienne synagogue de Ségovie", "valeur": "ordre de Sainte-Claire"}
+{"entite": "Annonciades de Meulan", "valeur": "Sœurs de l'Annonciade"}
+{"entite": "archi-abbaye Saint-Pierre de Salzbourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Bâle Saint-Alban", "valeur": "ordre de Saint-Benoît"}
+{"entite": "basilique Saint-Martin de Tours", "valeur": "ordre de Saint-Benoît"}
+{"entite": "basilique Saint-Ulrich-et-Sainte-Afre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "basilique Sainte-Claire de Naples", "valeur": "ordre de Sainte-Claire"}
+{"entite": "basilique Sainte-Marie-Madeleine", "valeur": "ordre de Saint-Benoît"}
+{"entite": "basilique San Domenico", "valeur": "ordre des Prêcheurs"}
+{"entite": "basilique Sant'Andrea delle Fratte", "valeur": "ordre des Minimes"}
+{"entite": "béguinage de Bruges", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Bénédictines de Mantes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Berlai monastère", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Bermondsey Abbey", "valeur": "ordre de Saint-Benoît"}
+{"entite": "carmel de Fourvière", "valeur": "ordre du Carmel"}
+{"entite": "Carmel du Saint-Sang", "valeur": "ordre des Moniales déchaussées de la bienheureuse Vierge Marie du Mont-Carmel"}
+{"entite": "cathédrale de Maribo", "valeur": "Ordre de Sainte-Brigitte"}
+{"entite": "Centre international Eugène-de-Mazenod", "valeur": "Oblats de Marie-Immaculée"}
+{"entite": "Certosa della Trinità", "valeur": "Moniales chartreuses"}
+{"entite": "chapelle des Bernardines d'Orgelet", "valeur": "Bernardines réformées"}
+{"entite": "chapitre de Poussay", "valeur": "ordre de Saint-Benoît"}
+{"entite": "chartreuse d'Aubevoye", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse d'Aula Dei", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse d'Évora", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Bellary", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Bereza", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Champmol", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Coblence", "valeur": "ordre de Saint-Benoît"}
+{"entite": "chartreuse de Coventry", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Farneta", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Gaming", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Güterstein", "valeur": "ordre de Saint-Benoît"}
+{"entite": "chartreuse de Hildesheim", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Hinton", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de la Sainte-Trinité", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de la Transfiguration", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de La Valsainte", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Marienau", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Nonenque", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Paris", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Parkminster", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Parme", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Pise", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Pleterje", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Pomier", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Porta Cœli", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Portes", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Prague", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Rettel", "valeur": "ordre de Saint-Benoît"}
+{"entite": "chartreuse de Sélignac", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Valdice", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse de Witham", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse Nossa Senhora Medianeira", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse Notre-Dame de Corée", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse Notre-Dame de Montalegre", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse Notre-Dame du Val de Bénédiction", "valeur": "ordre de Saint-Benoît"}
+{"entite": "chartreuse Saint-Joseph de Deán Funes", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse Saint-Lazare d'Orléans", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse Saint-Philippe-et-Saint-Jacques d'Asti", "valeur": "ordre des Chartreux"}
+{"entite": "chartreuse Sainte-Marthe d'Aix-en-Provence", "valeur": "ordre de Saint-Benoît"}
+{"entite": "chartreuse Santa María de Miraflores", "valeur": "ordre des Chartreux"}
+{"entite": "château de Loarre", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "château de Montearagón", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "château de Seußlitz", "valeur": "ordre de Sainte-Claire"}
+{"entite": "château de Thouzon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "château de Třebíč", "valeur": "ordre de Saint-Benoît"}
+{"entite": "château et abbaye d'Iburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Châtellenie d'Amposta", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "Chertsey Abbey", "valeur": "ordre de Saint-Benoît"}
+{"entite": "cloître d'Emmaüs", "valeur": "ordre de Saint-Benoît"}
+{"entite": "cloître de Graefenthal", "valeur": "ordre cistercien"}
+{"entite": "cloître de Montargis", "valeur": "ordre des Prêcheurs"}
+{"entite": "cloître dominicain de Tallinn", "valeur": "ordre des Prêcheurs"}
+{"entite": "collège des carmes déchaussés", "valeur": "ordre des Carmes déchaux"}
+{"entite": "collège des Jésuites Saint Salvator", "valeur": "Compagnie de Jésus"}
+{"entite": "collège jésuite d'Erfurt", "valeur": "Compagnie de Jésus"}
+{"entite": "collège jésuite d'Ingolstadt", "valeur": "Compagnie de Jésus"}
+{"entite": "collège jésuite de Münster", "valeur": "Compagnie de Jésus"}
+{"entite": "collège jésuite de Passau", "valeur": "Compagnie de Jésus"}
+{"entite": "collège Saint-Michel", "valeur": "Compagnie de Jésus"}
+{"entite": "collège Stella Matutina", "valeur": "Compagnie de Jésus"}
+{"entite": "Collégiale de Herrieden", "valeur": "ordre de Saint-Benoît"}
+{"entite": "commanderie de l'ordre Teutonique de Brême", "valeur": "ordre teutonique"}
+{"entite": "commanderie de l'Ordre Teutonique de Coblence", "valeur": "ordre teutonique"}
+{"entite": "commanderie de Muffendorf", "valeur": "ordre teutonique"}
+{"entite": "Commanderie de Temple Bruer", "valeur": "ordre du Temple"}
+{"entite": "commanderie de Wissembourg", "valeur": "ordre teutonique"}
+{"entite": "Convento de la Victoria o Centro Cultural", "valeur": "ordre des Minimes"}
+{"entite": "Convento de las Mercedarias", "valeur": "ordre de Notre-Dame-de-la-Merci"}
+{"entite": "Convento de Regina Coeli", "valeur": "Clarisses capucines"}
+{"entite": "Convento de San José", "valeur": "ordre des Moniales déchaussées de la bienheureuse Vierge Marie du Mont-Carmel"}
+{"entite": "Convento della Presentazione al Tempio", "valeur": "congrégation de la Passion de Jésus-Christ"}
+{"entite": "Convento di Montecasale", "valeur": "Frères mineurs capucins"}
+{"entite": "Corcelles", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Counvent des Moniales de Saint Jean à Malte", "valeur": "Religieuses de l'Ordre de Saint-Jean de Jérusalem"}
+{"entite": "couvent Albertinum et chapelle Saint-Albert-le-Grand", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Barsinghausen", "valeur": "Chanoinesses de Saint-Augustin de la Congrégation Notre-Dame"}
+{"entite": "couvent bénédictin de Saint-Jean-des-Sœurs", "valeur": "ordre de Saint-Benoît"}
+{"entite": "couvent bénédictin de Saint-Martin", "valeur": "ordre de Saint-Benoît"}
+{"entite": "couvent carmélite d'Anvers", "valeur": "ordre du Carmel"}
+{"entite": "couvent d'Ebernach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "couvent d'Inzigkofen", "valeur": "Chanoinesses de Saint-Augustin de la Congrégation Notre-Dame"}
+{"entite": "couvent d'Ursberg", "valeur": "ordre des Frères mineurs"}
+{"entite": "couvent d'Ursulines Sainte-Ursule", "valeur": "Ordre de Sainte-Ursule"}
+{"entite": "couvent de Bardel", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "couvent de Fraubrunnen", "valeur": "ordre cistercien"}
+{"entite": "couvent de Gössweinstein", "valeur": "Frères mineurs capucins"}
+{"entite": "couvent de la Madeleine (Lausanne)", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent de la Providence de Ruillé-sur-Loir", "valeur": "Sœurs de la Providence de Ruillé-sur-Loir"}
+{"entite": "couvent de la Reine", "valeur": "Chanoinesses de Saint-Augustin de la Congrégation Notre-Dame"}
+{"entite": "couvent de la Résurrection de Saragosse", "valeur": "Chanoinesses régulières du Saint-Sépulcre"}
+{"entite": "couvent de la Vierge du Rosaire", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent de las Dueñas", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent de Meran", "valeur": "Frères mineurs capucins"}
+{"entite": "couvent de Palais", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent de Reisach", "valeur": "ordre des Carmes déchaux"}
+{"entite": "couvent de Saint Paul", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent de Saint-Pierre-Martyr", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent de Sainte Claire", "valeur": "Ordo Sanctae Clarae reformationis ab Coleta"}
+{"entite": "couvent de Santa Lucia alla Castellina", "valeur": "ordre des Carmes déchaux"}
+{"entite": "couvent de Santa Maria la Nova", "valeur": "ordre des Frères mineurs"}
+{"entite": "couvent de Santo Antônio de Rio de Janeiro", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "couvent de Schwarzenberg", "valeur": "frères mineurs conventuels"}
+{"entite": "couvent de Töss", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent des Anglaises", "valeur": "ordre de Saint-Benoît"}
+{"entite": "couvent des Augustins", "valeur": "augustins"}
+{"entite": "couvent des Augustins de Mortemart", "valeur": "augustins"}
+{"entite": "couvent des Augustins de Prague", "valeur": "augustins"}
+{"entite": "couvent des Bénédictines de Notre-Dame-de-Consolation", "valeur": "ordre de Saint-Benoît"}
+{"entite": "couvent des Bénédictines du Bon-Secours", "valeur": "ordre de Saint-Benoît"}
+{"entite": "couvent des Bernardines de Manosque", "valeur": "ordre cistercien"}
+{"entite": "couvent des bernardines de Rumilly", "valeur": "Bernardines réformées"}
+{"entite": "couvent des Bernardines de Seyssel", "valeur": "Bernardines réformées"}
+{"entite": "couvent des Capucins de Coblence", "valeur": "Frères mineurs capucins"}
+{"entite": "couvent des Capucins de Malines", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "couvent des Capucins Saint-Honoré", "valeur": "Frères mineurs capucins"}
+{"entite": "couvent des Carmélites de Châtillon-sur-Seine", "valeur": "ordre du Carmel"}
+{"entite": "couvent des Carmes de Lisbonne", "valeur": "ordre du Carmel"}
+{"entite": "couvent des Célestins", "valeur": "ordre des Célestins"}
+{"entite": "couvent des Célestins de Vichy", "valeur": "ordre des Célestins"}
+{"entite": "couvent des Cellites de Malines", "valeur": "Alexiens"}
+{"entite": "couvent des Clarisses d'Egra", "valeur": "ordre de Sainte-Claire"}
+{"entite": "couvent des Cordelières", "valeur": "ordre de Sainte-Claire"}
+{"entite": "couvent des Cordeliers de Châtillon-sur-Seine", "valeur": "ordre des Frères mineurs"}
+{"entite": "couvent des Cordeliers de Paris", "valeur": "frères mineurs conventuels"}
+{"entite": "couvent des Dames de la Croix, rue du Cherche-Midi", "valeur": "Filles de la Croix de Paris"}
+{"entite": "couvent des Dominicaines de Monteils", "valeur": "Dominicaines de la congrégation de Notre-Dame du Très Saint Rosaire"}
+{"entite": "couvent des Dominicains de Cologne", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent des Dominicains de Greifswald", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent des Dominicains de Vienne", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent des Dominicains de Wissembourg", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent des Feuillants", "valeur": "ordre cistercien"}
+{"entite": "couvent des Filles-de-la-Croix, rue de Charonne", "valeur": "Filles de la Croix de Paris"}
+{"entite": "couvent des Frères mineurs d'Anvers", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "couvent des Frères mineurs de Haarlem", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "couvent des Grands-Augustins", "valeur": "augustins"}
+{"entite": "couvent des Guillemites de Noordpeene", "valeur": "Ordre de Saint-Guillaume"}
+{"entite": "couvent des Jacobins de Paris de la rue Saint-Honoré", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent des Jacobins de Toulouse", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent des Mères carmélites déchaussées", "valeur": "ordre des Moniales déchaussées de la bienheureuse Vierge Marie du Mont-Carmel"}
+{"entite": "couvent des Minimes de Vranov", "valeur": "ordre des Minimes"}
+{"entite": "couvent des Piaristes à Peralta de la Sal", "valeur": "ordre des frères des écoles pies"}
+{"entite": "couvent des Théatins", "valeur": "Ordre des Théatins"}
+{"entite": "couvent des Ursulines de Paris", "valeur": "Ordre de Sainte-Ursule"}
+{"entite": "couvent des Ursulines de Toulouse", "valeur": "Ordre de Sainte-Ursule"}
+{"entite": "couvent du Père Éternel", "valeur": "Tiers-Ordre franciscain"}
+{"entite": "couvent du Sacré-Cœur de Jésus et San José", "valeur": "ordre des Moniales déchaussées de la bienheureuse Vierge Marie du Mont-Carmel"}
+{"entite": "couvent du Saint-Nom-de-Jésus", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent franciscain de Šćit", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "couvent franciscain de Wurtzbourg", "valeur": "frères mineurs conventuels"}
+{"entite": "couvent Saint-Boniface", "valeur": "Oblats de Marie-Immaculée"}
+{"entite": "couvent Saint-Dominique de Montpellier", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Saint-Dominique de Paris", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Saint-Dominique de Poitiers", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Saint-Étienne", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Saint-François de Paris", "valeur": "ordre des Frères mineurs"}
+{"entite": "couvent Saint-Lazare", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Saint-Thomas d'Aquin", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Saint-Thomas-d'Aquin de Chémeré-le-Roi", "valeur": "Fraternité Saint-Vincent-Ferrier"}
+{"entite": "couvent Sainte-Anne de Rennes", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Sainte-Catherine-de-Sienne de San Cristóbal de la Laguna", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Sainte-Claire", "valeur": "ordre de Sainte-Claire"}
+{"entite": "couvent sainte-Claire de Nuremberg", "valeur": "ordre de Sainte-Claire"}
+{"entite": "couvent Sainte-Claire de Perpignan", "valeur": "ordre de Sainte-Claire"}
+{"entite": "couvent Sainte-Claire de Saint-Jacques-de-Compostelle", "valeur": "ordre de Sainte-Claire"}
+{"entite": "couvent Sainte-Garde-des-Champs de Saint-Didier", "valeur": "Institut Notre-Dame de Vie"}
+{"entite": "couvent Sainte-Marie de La Tourette", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent Sainte-Marie-des-Anges", "valeur": "Frères mineurs capucins"}
+{"entite": "couvent San Cosimato", "valeur": "ordre des Frères mineurs"}
+{"entite": "couvent San Domenico", "valeur": "ordre des Prêcheurs"}
+{"entite": "couvent San Francisco", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "couvent San Lucchese", "valeur": "ordre des Frères mineurs"}
+{"entite": "Dominikanerkloster", "valeur": "ordre des Prêcheurs"}
+{"entite": "Dominikanerkloster Mergentheim", "valeur": "ordre des Prêcheurs"}
+{"entite": "Duitse Huis", "valeur": "ordre teutonique"}
+{"entite": "Eastminster", "valeur": "ordre cistercien"}
+{"entite": "église abbatiale Saint-Benoît d'En-Calcat", "valeur": "ordre de Saint-Benoît"}
+{"entite": "église de Santo-Spirito", "valeur": "augustins"}
+{"entite": "église des Camaldules de Bielany", "valeur": "Ordre camaldule"}
+{"entite": "église des Carmes de Bruges", "valeur": "ordre du Carmel"}
+{"entite": "église franciscaine de Vienne", "valeur": "ordre des Frères mineurs"}
+{"entite": "église Notre-Dame de Montserrat", "valeur": "ordre de Saint-Benoît"}
+{"entite": "église Saint-Gumbertus d'Ansbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "église Saint Jean-Baptiste d'Holszany", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "église Saint-Michel de Hildesheim", "valeur": "ordre de Saint-Benoît"}
+{"entite": "église Saint-Pierre de Carennac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "église Saint-Pierre de Vienne", "valeur": "ordre de Saint-Benoît"}
+{"entite": "église Sainte-Catherine de Vilnius", "valeur": "ordre de Saint-Benoît"}
+{"entite": "église Sainte-Walburge de Walbourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "ensemble conventuel des Franciscains", "valeur": "ordre des Frères mineurs"}
+{"entite": "Ex monastère de Santa Chiara", "valeur": "ordre de Sainte-Claire"}
+{"entite": "Foswerd", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Frauenalb", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Grand prieuré d'Auvergne", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "grand prieuré de Castille et León", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "grand prieuré de Champagne", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "Grand prieuré de France", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "grand prieuré de Portugal", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "Grand prieuré de Provence", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "Grande Chartreuse", "valeur": "ordre des Chartreux"}
+{"entite": "De Grote Sleutel", "valeur": "Société du Sacré-Cœur de Jésus"}
+{"entite": "Het Predikheren", "valeur": "ordre des Prêcheurs"}
+{"entite": "Holyrood Abbey", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "hôtel abbatial Saint-Rémy de Lunéville", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "Johanitská komenda", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "Kathok", "valeur": "nyingmapa"}
+{"entite": "klooster van de Alexianen", "valeur": "Alexiens"}
+{"entite": "Klooster van de Annuntiaten", "valeur": "Sœurs de l'Annonciade"}
+{"entite": "Klooster van de Arme Klaren te Hoogstraten", "valeur": "ordre de Sainte-Claire"}
+{"entite": "Klooster van de Arrme Klaren te Antwerpen", "valeur": "ordre de Sainte-Claire"}
+{"entite": "Klooster van de Bogaarden (Derde Orde van Sint-Franciscus) te Antwerpen", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "Klooster van de Dominicanen te Lier", "valeur": "ordre des Prêcheurs"}
+{"entite": "Klooster van de Jezuïeten", "valeur": "Compagnie de Jésus"}
+{"entite": "Klooster van de Jezuïeten Mechelen", "valeur": "Compagnie de Jésus"}
+{"entite": "Klooster van de Kapucijnen Antwerpen", "valeur": "Frères mineurs capucins"}
+{"entite": "Klooster van de Kapucijnen te Mechelen", "valeur": "Frères mineurs capucins"}
+{"entite": "Klooster van de Kapucinessen te Gent", "valeur": "Frères mineurs capucins"}
+{"entite": "Klooster van de Kartuizers (Sint-Catharina) te Lier", "valeur": "ordre des Chartreux"}
+{"entite": "Klooster van de Kartuizers te Gent", "valeur": "ordre des Chartreux"}
+{"entite": "Klooster van de Urbanisten (Klooster van de Derde Orde van Sint-Franciscus, Sint-Agneten) te Antwerpen", "valeur": "ordre de Sainte-Claire"}
+{"entite": "Klooster van de Ursulinen te Antwerpen", "valeur": "Ordre de Sainte-Ursule"}
+{"entite": "Klooster van de Zwartzusters te Antwerpen", "valeur": "Alexiens"}
+{"entite": "Klooster van Sint-Salvator genaamd Thabor (of Tabor) van de Reguliere Kanunnikessen van Sint-Augustinus van de Congregatie van Windesheim", "valeur": "Congrégation de Windesheim"}
+{"entite": "Kloster Engelthal", "valeur": "ordre des Prêcheurs"}
+{"entite": "Kloster Ensdorf", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Kloster Ewig", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "Kloster Neuendorf", "valeur": "ordre cistercien"}
+{"entite": "Kloster St. Egidien. Nuremberg, R.F.A.", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Kloster Wöltingerode", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Konradsburg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Kostanjevica", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "Kulturforum Burgkloster", "valeur": "ordre des Prêcheurs"}
+{"entite": "Kulturhistorisches Museum. Stralsund, Allemagne", "valeur": "ordre des Prêcheurs"}
+{"entite": "Kurisumala Ashram", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "Lamayuru", "valeur": "Drikung Kagyu"}
+{"entite": "Likir Gompa", "valeur": "Gelugpa"}
+{"entite": "Lingshed Gompa", "valeur": "Gelugpa"}
+{"entite": "Little Dunmow Priory", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "Llanthony Priory", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "Madonna del Sasso", "valeur": "Frères mineurs capucins"}
+{"entite": "mairie de Châteauguay", "valeur": "Congrégation de Notre-Dame de Montréal"}
+{"entite": "maison mère de la congrégation des Sœurs de Notre-Dame-du-Saint-Rosaire", "valeur": "Sœurs de Notre Dame du saint Rosaire"}
+{"entite": "maison-mère des Missionnaires de la Charité", "valeur": "Missionnaires de la Charité"}
+{"entite": "Maison provinciale des Religieuses de Jésus-Marie de Sillery", "valeur": "Congrégation des Religieuses de Jésus-Marie"}
+{"entite": "Matho Gompa", "valeur": "Sakyapa"}
+{"entite": "monastère Allerheiligen", "valeur": "Prémontrés"}
+{"entite": "monastère bénédictin de Fahr", "valeur": "religieuses de l'ordre de saint Benoît"}
+{"entite": "monastère bénédictin de Fujimi", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère bénédictin de Schlüchtern", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère cistercien de Zlatá Koruna", "valeur": "ordre cistercien"}
+{"entite": "monastère Corpus Domini", "valeur": "ordre de Sainte-Claire"}
+{"entite": "monastère d'Alcobaça", "valeur": "ordre cistercien"}
+{"entite": "monastère d'El Paular", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère d'Herbrechtingen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère d'Oelinghausen", "valeur": "Prémontrés"}
+{"entite": "monastère d'Opatovice", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère d'Uclés", "valeur": "ordre de Santiago"}
+{"entite": "monastère de Břevnov", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de Cappenberg", "valeur": "Prémontrés"}
+{"entite": "monastère de Collombey", "valeur": "Bernardines réformées"}
+{"entite": "monastère de Doksany", "valeur": "Prémontrés"}
+{"entite": "monastère de Gottstatt", "valeur": "Prémontrés"}
+{"entite": "monastère de Grafschaft", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de Hanle", "valeur": "Drukpa"}
+{"entite": "monastère de Königsbronn", "valeur": "ordre cistercien"}
+{"entite": "monastère de l'Annonciade céleste", "valeur": "Ordre de l'Annonciation céleste"}
+{"entite": "monastère de l'Annonciation de Notre-Dame des Carmes Déchaussées d'Alba de Tormes", "valeur": "ordre des Moniales déchaussées de la bienheureuse Vierge Marie du Mont-Carmel"}
+{"entite": "monastère de l'Ascension", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de l’Immaculée Conception de Belley", "valeur": "ordre cistercien"}
+{"entite": "monastère de la Rábida", "valeur": "ordre des Frères mineurs"}
+{"entite": "monastère de la Sainte-Trinité", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de Leça do Balio", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "monastère de Liebenau", "valeur": "ordre des Prêcheurs"}
+{"entite": "monastère de Loosduinen", "valeur": "ordre cistercien"}
+{"entite": "monastère de Marienthal", "valeur": "moines dominicaines"}
+{"entite": "monastère de Nénang", "valeur": "Karma-kagyu"}
+{"entite": "monastère de Pedralbes", "valeur": "ordre de Sainte-Claire"}
+{"entite": "monastère de Poblet", "valeur": "ordre cistercien"}
+{"entite": "monastère de Riwoché", "valeur": "nyingmapa"}
+{"entite": "monastère de Saint Benoît à Conversano", "valeur": "ordre cistercien"}
+{"entite": "monastère de Saint-François de Cuburien", "valeur": "ordre des Frères mineurs"}
+{"entite": "monastère de Saint-Jérôme de Cotalba", "valeur": "Ordre de Saint-Jérôme"}
+{"entite": "monastère de Saint-Léonard de Bœrsch", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de Saint Marie de la Victoire à Batalha", "valeur": "ordre des Prêcheurs"}
+{"entite": "monastère de Saint-Vincent de Fora", "valeur": "augustins"}
+{"entite": "monastère de Sainte-Claire de Camerino", "valeur": "ordre de Sainte-Claire"}
+{"entite": "monastère de Sainte-Claire de Murcie", "valeur": "ordre de Sainte-Claire"}
+{"entite": "monastère de Sainte-Enimie", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de San Francisco", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "monastère de San Giorgio Maggiore", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de San Tommaso Apostolo", "valeur": "ordre de Sainte-Claire"}
+{"entite": "monastère de Sant Pere de Rodes", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de Santa Maria degli Angeli, Florence", "valeur": "Ordre camaldule"}
+{"entite": "monastère de Sázava", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de Schönau im Taunus", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de Strahov", "valeur": "Prémontrés"}
+{"entite": "monastère de Tibães", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère de Traunkirchen", "valeur": "Compagnie de Jésus"}
+{"entite": "monastère de Tsourphou", "valeur": "Karma-kagyu"}
+{"entite": "monastère de Volkenroda", "valeur": "ordre cistercien"}
+{"entite": "monastère des Amalfitains de l'Athos", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère des Bénédictines de Caen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère des Capucines de Montorge, église Saint-Joseph et chapelles du jardin", "valeur": "Frères mineurs capucins"}
+{"entite": "monastère des Capucins de Hradčany", "valeur": "Frères mineurs capucins"}
+{"entite": "monastère des Clarisses de Millau", "valeur": "ordre de Sainte-Claire"}
+{"entite": "monastère des Déchaussées royales", "valeur": "Ordo Sanctae Clarae reformationis ab Coleta"}
+{"entite": "monastère des Franciscains", "valeur": "ordre des Frères mineurs"}
+{"entite": "monastère des Hiéronymites", "valeur": "Ordre de Saint-Jérôme"}
+{"entite": "monastère des Minorites de Český Krumlov", "valeur": "frères mineurs conventuels"}
+{"entite": "monastère des Minorites de Prague", "valeur": "frères mineurs conventuels"}
+{"entite": "monastère des Ursulines de Québec", "valeur": "Ordre de Sainte-Ursule"}
+{"entite": "monastère des Ursulines de Trois-Rivières", "valeur": "Ordre de Sainte-Ursule"}
+{"entite": "monastère dominicain de Friesach", "valeur": "ordre des Prêcheurs"}
+{"entite": "monastère dominicain de Ratibor", "valeur": "ordre des Prêcheurs"}
+{"entite": "monastère minoritaire", "valeur": "frères mineurs conventuels"}
+{"entite": "monastère moderne de San Juan de la Peña", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Notre-Dame d'Hurtebise", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Notre-Dame de Beaufort", "valeur": "ordre des Prêcheurs"}
+{"entite": "monastère Notre-Dame de Benifaçà", "valeur": "Moniales chartreuses"}
+{"entite": "monastère Notre-Dame-de-Bourbon d'Auzon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Notre-Dame de l’Assomption de Claro", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Notre-Dame de Pitié de Roquebrune-sur-Argens", "valeur": "ordre des Carmes déchaux"}
+{"entite": "monastère paulin", "valeur": "Pères paulins"}
+{"entite": "monastère royal de Sainte Marie de Veruela", "valeur": "ordre cistercien"}
+{"entite": "monastère Saint-André de Clerlande", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère saint-Basile de Yavoriv", "valeur": "Sœurs de l'ordre de Saint Basile le Grand"}
+{"entite": "monastère Saint-Cucufa", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Saint-Jean de la Peña", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Saint-Nicolas de Saint-Bernard", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Saint-Pierre-des-Puelles de Barcelone", "valeur": "religieuses de l'ordre de saint Benoît"}
+{"entite": "monastère Saint-Pierre-le-Vieux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Saint-Remacle de Wavreumont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Sainte-Claire de Nantes", "valeur": "ordre de Sainte-Claire"}
+{"entite": "monastère Sainte-Engrâce", "valeur": "Ordre de Saint-Jérôme"}
+{"entite": "monastère Sainte-Françoise-Romaine", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Sainte-Marie de Prouilhe", "valeur": "ordre des Prêcheurs"}
+{"entite": "monastère Sainte-Marie de Stade", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère Sainte-Walburge", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère San Vicente de Oviedo", "valeur": "ordre de Saint-Benoît"}
+{"entite": "monastère São Dinis d'Odivelas", "valeur": "ordre cistercien"}
+{"entite": "Monasterio de San Bernardo", "valeur": "Congrégation cistercienne de saint Bernard"}
+{"entite": "Monasterio Santa María de la Paz", "valeur": "Ordre des religieuses cisterciennes de la stricte observance"}
+{"entite": "Newbattle Abbey", "valeur": "ordre cistercien"}
+{"entite": "Niepokalanów", "valeur": "frères mineurs conventuels"}
+{"entite": "Our Lady of Dallas Abbey", "valeur": "ordre cistercien"}
+{"entite": "Pálosszentkút", "valeur": "Pères paulins"}
+{"entite": "Palyul", "valeur": "nyingmapa"}
+{"entite": "petit monastère Lumière de l'Immaculée des Petites sœurs de l'Agneau", "valeur": "communauté de l'Agneau"}
+{"entite": "petit séminaire de Consolation", "valeur": "ordre des Minimes"}
+{"entite": "Portsmouth Abbey School", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prévôté bénédictin de Wissembourg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré bénédictin Saint-Christophe, Aclens VD", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré Buire, Montreux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré clunisien Bevaix", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré clunisien de Souvigny", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré clunisien Rüeggisberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré d'Abbetesrode", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré d'Alvecote", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré d'Ardevon", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré de Belecke", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Bonne-Nouvelle", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Castle Acre", "valeur": "ordre de Cluny"}
+{"entite": "prieuré de Chanteuges", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Christ Church", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Clare", "valeur": "ordre de Saint-Augustin"}
+{"entite": "Prieuré de Corsendonk", "valeur": "augustins"}
+{"entite": "prieuré de Fischingen", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Flavigny-sur-Moselle", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Flers-en-Escrebieux", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Fore", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Gempe", "valeur": "Prémontrés"}
+{"entite": "Prieuré de Hirzenach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Jakobsberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré de Johannesberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de La Réole", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de la Sainte-Trinité de Marcigny-lès-Nonnains", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Lanercost", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "prieuré de Lanvern", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré de Letheringham", "valeur": "augustins"}
+{"entite": "prieuré de Lully", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Marienthal", "valeur": "Compagnie de Jésus"}
+{"entite": "prieuré de Meillerie", "valeur": "Congrégation du Grand-Saint-Bernard"}
+{"entite": "prieuré de Ménil à Lunéville", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Mouthier-Haute-Pierre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Norton", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "prieuré de Nütschau", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Pont-aux-Moines", "valeur": "ordre de Cluny"}
+{"entite": "prieuré de Reichenbach", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Romainmôtier", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Saint-Laurent en Comminges", "valeur": "ordre de Fontevraud"}
+{"entite": "prieuré de Sankt Gerold", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Sept Fontaines", "valeur": "augustins"}
+{"entite": "prieuré de Serrabone", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "prieuré de Trizay", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Vausse", "valeur": "abbaye du Val des Choues"}
+{"entite": "prieuré de Weston", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré de Woodbridge", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "prieuré du Jassonneix", "valeur": "ordre cistercien de la Stricte Observance"}
+{"entite": "prieuré hospitalier de Manosque", "valeur": "ordre de Saint-Jean de Jérusalem"}
+{"entite": "Prieuré Île Saint-Pierre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Notre-Dame", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Notre-Dame-de-Grâce", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Notre-Dame-de-l'Aumône de Rumilly", "valeur": "Congrégation du Grand-Saint-Bernard"}
+{"entite": "prieuré Notre-Dame des Beaumes", "valeur": "Ordre monastique de Chalais"}
+{"entite": "prieuré Saint-Benoît de Néville-sur-Mer", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Benoît de Palendriai", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Gabriel", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Gabriel (Sankt Johann bei Herberstein)", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Grégoire de Douai", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Jean-Baptiste", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Louis de Poissy", "valeur": "ordre des Prêcheurs"}
+{"entite": "prieuré Saint-Martin-des-Champs", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré Saint-Nicolas de Rougemont", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Prieuré Saint-Pierre", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Pierre d'Antioche de Montambert", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Remi de Haschbach am Remigiusberg", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Saint-Victor de Genève", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Sainte-Croix", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Sainte-Croix de Lavoûte-Chilhac", "valeur": "ordre de Saint-Benoît"}
+{"entite": "prieuré Sainte-Frideswide", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "prieuré Sainte-Lioba de Copenhague", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Quatrième maison mère des sœurs de la Congrégation de Notre-Dame de Montréal", "valeur": "Congrégation de Notre-Dame de Montréal"}
+{"entite": "Rauden", "valeur": "ordre cistercien"}
+{"entite": "Rizong Gompa", "valeur": "Gelugpa"}
+{"entite": "Rouge Cloître", "valeur": "chanoines réguliers de saint Augustin"}
+{"entite": "Royal Botanic", "valeur": "Compagnie de Jésus"}
+{"entite": "Saccidananda Ashram", "valeur": "Ordre camaldule"}
+{"entite": "Sacro Convento", "valeur": "frères mineurs conventuels"}
+{"entite": "Saint-François de Palma", "valeur": "ordre des Frères mineurs"}
+{"entite": "Saint Gregory's University", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Saint-Ulric en Forêt Noire", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Sainte-Catherine du Jorat", "valeur": "ordre du Carmel"}
+{"entite": "San Giorgio", "valeur": "ordre de Saint-Benoît"}
+{"entite": "sanctuaire d'Arantzazu", "valeur": "ordre des Frères mineurs"}
+{"entite": "sanctuaire de Cura", "valeur": "Tiers-Ordre Régulier de Saint François"}
+{"entite": "sanctuaire de Lluc", "valeur": "Congrégation des Sacrés-Cœurs de Jésus et de Marie"}
+{"entite": "sanctuaire du Sacro Speco", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Santo Toribio de Liébana", "valeur": "ordre des Frères mineurs"}
+{"entite": "Schottenklöster d'Eichstätt", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Schottenstift", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Sint Annaklooster", "valeur": "Tiers-Ordre franciscain"}
+{"entite": "Sint-Elisabethklooster", "valeur": "Ordre des Frères Mineurs"}
+{"entite": "St. Procopius Abbey", "valeur": "ordre de Saint-Benoît"}
+{"entite": "St-Sulpice, bénédictins", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Ter Hunnepe", "valeur": "ordre cistercien"}
+{"entite": "Thiksey", "valeur": "Gelugpa"}
+{"entite": "Tom Roden", "valeur": "ordre de Saint-Benoît"}
+{"entite": "Trois sœurs provençales", "valeur": "ordre cistercien"}
+{"entite": "Villa Saffi", "valeur": "Compagnie de Jésus"}
+{"entite": "Wat Phra That Phanom", "valeur": "Grand Ordre"}
+{"entite": "Weerd", "valeur": "Prémontrés"}
+{"entite": "Zusters van de Kindsheid van Maria ter Spermalie", "valeur": "ordre cistercien"}

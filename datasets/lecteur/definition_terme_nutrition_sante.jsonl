@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_nutrition_sante", "_categorie": "physique", "_source": "Modèle (Claude) — nutrition textbook curée (terme santé -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "malnutrition", "valeur": "déséquilibre alimentaire"}
+{"entite": "obésité", "valeur": "excès de masse grasse"}
+{"entite": "régime équilibré", "valeur": "apports adaptés aux besoins de l'organisme"}

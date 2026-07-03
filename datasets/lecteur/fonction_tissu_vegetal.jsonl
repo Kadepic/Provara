@@ -1,0 +1,5 @@
+{"_relation": "fonction_tissu_vegetal", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (fonction des tissus végétaux ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "épiderme", "valeur": "protection"}
+{"entite": "méristème", "valeur": "croissance"}
+{"entite": "phloème", "valeur": "conduction de la sève élaborée"}
+{"entite": "xylème", "valeur": "conduction de la sève brute"}

@@ -1,0 +1,18 @@
+{"_relation": "type_astre", "_categorie": "physique", "_source": "astronomie de référence (astre -> type)", "_articles": true}
+{"entite": "andromède", "valeur": "galaxie"}
+{"entite": "bételgeuse", "valeur": "étoile"}
+{"entite": "cérès", "valeur": "planète naine"}
+{"entite": "éris", "valeur": "planète naine"}
+{"entite": "ganymède", "valeur": "satellite naturel"}
+{"entite": "halley", "valeur": "comète"}
+{"entite": "jupiter", "valeur": "planète"}
+{"entite": "lune", "valeur": "satellite naturel"}
+{"entite": "mars", "valeur": "planète"}
+{"entite": "pluton", "valeur": "planète naine"}
+{"entite": "proxima du centaure", "valeur": "étoile"}
+{"entite": "saturne", "valeur": "planète"}
+{"entite": "sirius", "valeur": "étoile"}
+{"entite": "soleil", "valeur": "étoile"}
+{"entite": "terre", "valeur": "planète"}
+{"entite": "titan", "valeur": "satellite naturel"}
+{"entite": "voie lactée", "valeur": "galaxie"}

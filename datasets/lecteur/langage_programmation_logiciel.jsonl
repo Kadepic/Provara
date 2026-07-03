@@ -1,0 +1,1650 @@
+{"_relation": "langage_programmation_logiciel", "_categorie": "convention", "_source": "Wikidata/QLever — langage de programmation (P277) d'un logiciel", "_articles": true}
+{"entite": "1C:Enterprise", "valeur": "Structured Query Language"}
+{"entite": "1Password", "valeur": "Electron"}
+{"entite": "2048+", "valeur": "Locomotive BASIC"}
+{"entite": "299Ko", "valeur": "PHP"}
+{"entite": "3-D Maze", "valeur": "Locomotive BASIC"}
+{"entite": "386MAX", "valeur": "assembleur"}
+{"entite": "3DMLW", "valeur": "Lua"}
+{"entite": "3DSlicer", "valeur": "Tcl"}
+{"entite": "51-FORTH", "valeur": "assembleur"}
+{"entite": "86-DOS", "valeur": "assembleur"}
+{"entite": "99ko", "valeur": "PHP"}
+{"entite": "A Better CD Encoder", "valeur": "script shell"}
+{"entite": "Aave", "valeur": "Solidity"}
+{"entite": "Abc-Map", "valeur": "TypeScript"}
+{"entite": "AC3Filter", "valeur": "assembleur"}
+{"entite": "Academia Helm", "valeur": "TypeScript"}
+{"entite": "Acorn MOS", "valeur": "assembleur"}
+{"entite": "ACT-R", "valeur": "Common Lisp"}
+{"entite": "ActiveVFP", "valeur": "Visual FoxPro"}
+{"entite": "ada-mode", "valeur": "Emacs Lisp"}
+{"entite": "Adminer", "valeur": "PHP"}
+{"entite": "Adobe Captivate", "valeur": "Object Pascal"}
+{"entite": "Adobe Flash", "valeur": "ActionScript"}
+{"entite": "Adobe Photoshop Lightroom", "valeur": "Lua"}
+{"entite": "Adobe Shockwave", "valeur": "Lingo"}
+{"entite": "adoc-mode", "valeur": "Emacs Lisp"}
+{"entite": "ADOdb", "valeur": "PHP"}
+{"entite": "ADOdb Lite", "valeur": "PHP"}
+{"entite": "ADRIFT", "valeur": "Visual Basic"}
+{"entite": "Advanced SystemCare", "valeur": "Delphi"}
+{"entite": "Adventure", "valeur": "assembleur"}
+{"entite": "AETHERNA", "valeur": "TypeScript"}
+{"entite": "After Dark", "valeur": "assembleur"}
+{"entite": "Agavi", "valeur": "PHP"}
+{"entite": "AIDA64", "valeur": "Delphi"}
+{"entite": "Aidermacs", "valeur": "Emacs Lisp"}
+{"entite": "Aigaion", "valeur": "PHP"}
+{"entite": "Aiki Framework", "valeur": "PHP"}
+{"entite": "AIMP", "valeur": "Delphi"}
+{"entite": "Aircrack", "valeur": "assembleur"}
+{"entite": "Airtime", "valeur": "PHP"}
+{"entite": "AisleRiot", "valeur": "GNU Guile"}
+{"entite": "Akeneo PIM", "valeur": "PHP"}
+{"entite": "Akira", "valeur": "Vala"}
+{"entite": "Aleph", "valeur": "Cobol"}
+{"entite": "ALGOL 68C", "valeur": "Algol 68"}
+{"entite": "Alien Swarm : Reactive Drop", "valeur": "Squirrel"}
+{"entite": "AllegroGraph", "valeur": "Common Lisp"}
+{"entite": "AlphaBasic", "valeur": "assembleur"}
+{"entite": "Alt-Ergo", "valeur": "OCaml"}
+{"entite": "AlterLab", "valeur": "TypeScript"}
+{"entite": "Altium Designer", "valeur": "Delphi"}
+{"entite": "ALZip", "valeur": "Delphi"}
+{"entite": "AMAPress", "valeur": "PHP"}
+{"entite": "Amazon Lumberyard", "valeur": "Lua"}
+{"entite": "Amber Smalltalk", "valeur": "Smalltalk"}
+{"entite": "AME Accounting Software", "valeur": "Visual Basic"}
+{"entite": "AMETEK Crank", "valeur": "Lua"}
+{"entite": "AmfPHP", "valeur": "PHP"}
+{"entite": "AmigaDOS", "valeur": "BCPL"}
+{"entite": "Amikumu", "valeur": "Ruby on Rails"}
+{"entite": "Amiro.CMS", "valeur": "PHP"}
+{"entite": "Ampache", "valeur": "PHP"}
+{"entite": "aMSN", "valeur": "Tcl"}
+{"entite": "Analyse des pages vues", "valeur": "PHP"}
+{"entite": "Analyseur de l’usage du disque", "valeur": "Vala"}
+{"entite": "ANDOS", "valeur": "assembleur"}
+{"entite": "Angular", "valeur": "TypeScript"}
+{"entite": "Animate.css", "valeur": "feuille de style en cascade"}
+{"entite": "Anna Kournikova", "valeur": "VBScript"}
+{"entite": "Anodyne", "valeur": "ActionScript"}
+{"entite": "Another World", "valeur": "assembleur"}
+{"entite": "Ansible", "valeur": "shell Unix"}
+{"entite": "Ant Design", "valeur": "TypeScript"}
+{"entite": "Apache ActiveMQ", "valeur": "PHP"}
+{"entite": "Apache Avro", "valeur": "PHP"}
+{"entite": "Apache Cordova", "valeur": "Node.js"}
+{"entite": "Apache Flex", "valeur": "ActionScript"}
+{"entite": "Apache Forrest", "valeur": "Extensible Markup Language"}
+{"entite": "Apache Phoenix", "valeur": "Structured Query Language"}
+{"entite": "Apache Storm", "valeur": "Clojure"}
+{"entite": "Apel", "valeur": "Emacs Lisp"}
+{"entite": "APEL originel", "valeur": "Emacs Lisp"}
+{"entite": "ApexKB", "valeur": "PHP"}
+{"entite": "API Platform", "valeur": "PHP"}
+{"entite": "Apigility", "valeur": "PHP"}
+{"entite": "Apollo Guidance Computer", "valeur": "assembleur"}
+{"entite": "Apophysis", "valeur": "Object Pascal"}
+{"entite": "Apple DOS", "valeur": "assembleur"}
+{"entite": "Application mobile PeerTube", "valeur": "Dart"}
+{"entite": "Appserver.io", "valeur": "PHP"}
+{"entite": "APSOLU", "valeur": "PHP"}
+{"entite": "ApusGameEngine", "valeur": "Delphi"}
+{"entite": "Aquamacs", "valeur": "Emacs Lisp"}
+{"entite": "Arbitrum", "valeur": "Solidity"}
+{"entite": "ArcGIS", "valeur": "Visual C++"}
+{"entite": "Archifiltre", "valeur": "TypeScript"}
+{"entite": "Archive of Our Own", "valeur": "Ruby on Rails"}
+{"entite": "Archon", "valeur": "PHP"}
+{"entite": "Arduino IDE", "valeur": "Electron"}
+{"entite": "arduino-mode", "valeur": "Emacs Lisp"}
+{"entite": "Ares Galaxy", "valeur": "Object Pascal"}
+{"entite": "ARexx", "valeur": "assembleur"}
+{"entite": "ARIS MashZone", "valeur": "Adobe Flash"}
+{"entite": "AROUNDMe", "valeur": "PHP"}
+{"entite": "Artanis LLM", "valeur": "GNU Guile"}
+{"entite": "ARX", "valeur": "Modula-2+"}
+{"entite": "ASDF", "valeur": "Common Lisp"}
+{"entite": "Asido", "valeur": "PHP"}
+{"entite": "AsmBB", "valeur": "assembleur"}
+{"entite": "Asmutils", "valeur": "assembleur"}
+{"entite": "ASP.NET MVC Framework", "valeur": "Visual Basic .NET"}
+{"entite": "ASuite", "valeur": "Object Pascal"}
+{"entite": "At-ease", "valeur": "PHP"}
+{"entite": "Atari Message Information System", "valeur": "Atari BASIC"}
+{"entite": "AtariWriter", "valeur": "assembleur"}
+{"entite": "Atom Package Manager", "valeur": "CoffeeScript"}
+{"entite": "ATutor", "valeur": "PHP"}
+{"entite": "AUCTeX", "valeur": "Emacs Lisp"}
+{"entite": "Augur", "valeur": "Solidity"}
+{"entite": "auto-dictionary-mode", "valeur": "Emacs Lisp"}
+{"entite": "Autocar", "valeur": "Locomotive BASIC"}
+{"entite": "Autochem", "valeur": "Fortran 90"}
+{"entite": "Autoconf", "valeur": "m4"}
+{"entite": "AutoREALM", "valeur": "Object Pascal"}
+{"entite": "AutoTheme", "valeur": "PHP"}
+{"entite": "Avant Browser", "valeur": "Delphi"}
+{"entite": "Avant Window Navigator", "valeur": "Vala"}
+{"entite": "Away3D", "valeur": "ActionScript"}
+{"entite": "Awesome", "valeur": "Lua"}
+{"entite": "B2evolution", "valeur": "PHP"}
+{"entite": "Babylon.js", "valeur": "TypeScript"}
+{"entite": "Baïkal", "valeur": "PHP"}
+{"entite": "Balancer", "valeur": "Solidity"}
+{"entite": "Barcode of Life Data System", "valeur": "PHP"}
+{"entite": "Barebox", "valeur": "assembleur"}
+{"entite": "BareMetal", "valeur": "assembleur"}
+{"entite": "Barrelfish", "valeur": "assembleur"}
+{"entite": "La Bataille pour Wesnoth", "valeur": "Lua"}
+{"entite": "Batavi", "valeur": "PHP"}
+{"entite": "Bazaar", "valeur": "Pyrex"}
+{"entite": "BBDB", "valeur": "Emacs Lisp"}
+{"entite": "BbPress", "valeur": "PHP"}
+{"entite": "BCX", "valeur": "Basic"}
+{"entite": "BDS C", "valeur": "assembleur"}
+{"entite": "Beamer", "valeur": "TeX"}
+{"entite": "BEdita", "valeur": "PHP"}
+{"entite": "BEEP", "valeur": "PHP"}
+{"entite": "Behat", "valeur": "PHP"}
+{"entite": "Belenios", "valeur": "OCaml"}
+{"entite": "Beneath a Steel Sky", "valeur": "assembleur"}
+{"entite": "Berkeley DB", "valeur": "interface de programmation"}
+{"entite": "Bharatpedia", "valeur": "PHP"}
+{"entite": "BibTeX", "valeur": "WEB"}
+{"entite": "BioBIKE", "valeur": "Common Lisp"}
+{"entite": "BioPHP", "valeur": "PHP"}
+{"entite": "BirdFont", "valeur": "Vala"}
+{"entite": "Bitweaver", "valeur": "PHP"}
+{"entite": "BlackBox Component Builder", "valeur": "Component Pascal"}
+{"entite": "bladerf", "valeur": "VHDL"}
+{"entite": "BLAST model checker", "valeur": "OCaml"}
+{"entite": "Bleem!", "valeur": "assembleur"}
+{"entite": "BlindWrite", "valeur": "Delphi"}
+{"entite": "BLIS/COBOL", "valeur": "assembleur"}
+{"entite": "BlogoText", "valeur": "PHP"}
+{"entite": "Bluemix", "valeur": "PHP"}
+{"entite": "BlueSpice", "valeur": "PHP"}
+{"entite": "Bokeh", "valeur": "TypeScript"}
+{"entite": "Bolio", "valeur": "MacLisp"}
+{"entite": "BookStack", "valeur": "PHP"}
+{"entite": "Boomerang", "valeur": "OCaml"}
+{"entite": "Boostnote", "valeur": "TypeScript"}
+{"entite": "Boot", "valeur": "Clojure"}
+{"entite": "Bootman", "valeur": "assembleur"}
+{"entite": "borgbackup", "valeur": "Cython"}
+{"entite": "BOS/360", "valeur": "assembleur"}
+{"entite": "Bos Wars", "valeur": "Lua"}
+{"entite": "Botan", "valeur": "C++11"}
+{"entite": "Bower", "valeur": "Mercury"}
+{"entite": "Brevio", "valeur": "TypeScript"}
+{"entite": "Bricx Command Center", "valeur": "Delphi"}
+{"entite": "bridgeOS", "valeur": "assembleur"}
+{"entite": "BRIEF Editor Emulator", "valeur": "Emacs Lisp"}
+{"entite": "Browsertrix", "valeur": "TypeScript"}
+{"entite": "BSch", "valeur": "Visual C++"}
+{"entite": "Bubble Ghost", "valeur": "assembleur"}
+{"entite": "BuddyPress", "valeur": "PHP"}
+{"entite": "Budgie", "valeur": "Vala"}
+{"entite": "@builder.io/partytown", "valeur": "TypeScript"}
+{"entite": "Bulk Synchronous Parallel ML", "valeur": "OCaml"}
+{"entite": "Burroughs MCP", "valeur": "NEWP"}
+{"entite": "Byobu", "valeur": "Bourne shell"}
+{"entite": "C-evo", "valeur": "Object Pascal"}
+{"entite": "c12", "valeur": "TypeScript"}
+{"entite": "Cachet", "valeur": "PHP"}
+{"entite": "Cacti", "valeur": "PHP"}
+{"entite": "Cairngorm", "valeur": "ActionScript"}
+{"entite": "CakePHP", "valeur": "PHP"}
+{"entite": "Calibrd", "valeur": "TypeScript"}
+{"entite": "California", "valeur": "Vala"}
+{"entite": "Calmira", "valeur": "Object Pascal"}
+{"entite": "Caml-Mode", "valeur": "Emacs Lisp"}
+{"entite": "Cantera", "valeur": "MATLAB"}
+{"entite": "Cappuccino", "valeur": "Objective-J"}
+{"entite": "Cascade", "valeur": "assembleur"}
+{"entite": "CBASIC", "valeur": "PL/M"}
+{"entite": "CBterm", "valeur": "assembleur"}
+{"entite": "CDBurnerXP", "valeur": "Visual Basic"}
+{"entite": "CDisplayEx", "valeur": "Object Pascal"}
+{"entite": "CDLaTeX", "valeur": "Emacs Lisp"}
+{"entite": "CEDET", "valeur": "Emacs Lisp"}
+{"entite": "CEFRHub", "valeur": "TypeScript"}
+{"entite": "CelerCOM", "valeur": "assembleur"}
+{"entite": "Celeste Classic", "valeur": "Lua"}
+{"entite": "Centreon", "valeur": "PHP"}
+{"entite": "Ceph", "valeur": "TypeScript"}
+{"entite": "cflow-mode", "valeur": "Emacs Lisp"}
+{"entite": "Chainlink", "valeur": "Solidity"}
+{"entite": "Chamilo", "valeur": "PHP"}
+{"entite": "ChantierFlow", "valeur": "TypeScript"}
+{"entite": "Charon", "valeur": "Limbo"}
+{"entite": "Chasse au Wumpus", "valeur": "Basic"}
+{"entite": "ChatFuse", "valeur": "TypeScript"}
+{"entite": "Cheese", "valeur": "Vala"}
+{"entite": "Chia", "valeur": "assembleur"}
+{"entite": "Chris Sawyer's Locomotion", "valeur": "assembleur"}
+{"entite": "Chyrp", "valeur": "PHP"}
+{"entite": "Circe", "valeur": "Emacs Lisp"}
+{"entite": "CircuitMaker", "valeur": "Delphi"}
+{"entite": "CiteMe", "valeur": "TypeScript"}
+{"entite": "citoid", "valeur": "PHP"}
+{"entite": "CiviCRM", "valeur": "PHP"}
+{"entite": "CL-HTTP", "valeur": "Common Lisp"}
+{"entite": "Claroline", "valeur": "PHP"}
+{"entite": "ClearHealth", "valeur": "PHP"}
+{"entite": "CleVR", "valeur": "ActionScript"}
+{"entite": "client inventaire.io", "valeur": "CoffeeScript"}
+{"entite": "CLiki", "valeur": "Common Lisp"}
+{"entite": "Cliqz", "valeur": "Groovy"}
+{"entite": "clojure-mode", "valeur": "Emacs Lisp"}
+{"entite": "ClojureScript", "valeur": "Clojure"}
+{"entite": "Clonezilla", "valeur": "shell Unix"}
+{"entite": "CLPython", "valeur": "Common Lisp"}
+{"entite": "CLSQL", "valeur": "Common Lisp"}
+{"entite": "CLX", "valeur": "Common Lisp"}
+{"entite": "CMS Made Simple", "valeur": "PHP"}
+{"entite": "CMSilla", "valeur": "PHP"}
+{"entite": "CMSimple", "valeur": "PHP"}
+{"entite": "Cobian Backup", "valeur": "Object Pascal"}
+{"entite": "Coccinella", "valeur": "Tcl"}
+{"entite": "Coccinelle", "valeur": "OCaml"}
+{"entite": "CodeCharge Studio", "valeur": "PHP"}
+{"entite": "CodeIgniter", "valeur": "PHP"}
+{"entite": "CodeMirror", "valeur": "TypeScript"}
+{"entite": "CodeMyShop", "valeur": "TypeScript"}
+{"entite": "CodePress", "valeur": "PHP"}
+{"entite": "CodingTeam", "valeur": "PHP"}
+{"entite": "CoffeeScript", "valeur": "CoffeeScript"}
+{"entite": "Collabtive", "valeur": "PHP"}
+{"entite": "CollectiveAccess", "valeur": "PHP"}
+{"entite": "Color Lines", "valeur": "Turbo Pascal"}
+{"entite": "Colwiz", "valeur": "ActionScript"}
+{"entite": "ComiXed", "valeur": "TypeScript"}
+{"entite": "Commo", "valeur": "assembleur"}
+{"entite": "Common Lisp Interface Manager", "valeur": "Common Lisp"}
+{"entite": "Communecter", "valeur": "PHP"}
+{"entite": "Composer", "valeur": "PHP"}
+{"entite": "ComputerCraft", "valeur": "Lua"}
+{"entite": "Concrete CMS", "valeur": "PHP"}
+{"entite": "Conkeror", "valeur": "XML-based User interface Language"}
+{"entite": "consola", "valeur": "TypeScript"}
+{"entite": "Consultant Plus", "valeur": "Visual C++"}
+{"entite": "ContactForm", "valeur": "PHP"}
+{"entite": "Contao", "valeur": "PHP"}
+{"entite": "Contrail", "valeur": "GNU Bash"}
+{"entite": "Control Program/Monitor", "valeur": "PL/M"}
+{"entite": "cookie-es", "valeur": "TypeScript"}
+{"entite": "Copix", "valeur": "PHP"}
+{"entite": "Coppermine Photo Gallery", "valeur": "PHP"}
+{"entite": "Copycat", "valeur": "Common Lisp"}
+{"entite": "coreboot", "valeur": "assembleur"}
+{"entite": "Cotonti", "valeur": "PHP"}
+{"entite": "Counter-Strike 2D", "valeur": "BlitzMax"}
+{"entite": "Crackdown", "valeur": "Lua"}
+{"entite": "CrawlTrack", "valeur": "PHP"}
+{"entite": "Cream", "valeur": "Vim script"}
+{"entite": "CRiSP Editor Emulator", "valeur": "Emacs Lisp"}
+{"entite": "CryEngine", "valeur": "Lua"}
+{"entite": "Cryptomatte", "valeur": "Lua"}
+{"entite": "CryptoVerif", "valeur": "OCaml"}
+{"entite": "csharp-mode", "valeur": "Emacs Lisp"}
+{"entite": "CSS 1", "valeur": "CSS 1"}
+{"entite": "CSS 2", "valeur": "CSS 2"}
+{"entite": "CSS 2.1", "valeur": "CSS 2.1"}
+{"entite": "CSS 3", "valeur": "Cascading Style Sheet/Appliquer un style à un élément"}
+{"entite": "csv2ledger", "valeur": "Emacs Lisp"}
+{"entite": "Cura", "valeur": "QML"}
+{"entite": "Customer Information Control System", "valeur": "assembleur"}
+{"entite": "CVSup", "valeur": "Modula-3"}
+{"entite": "Cx Web Framework", "valeur": "React"}
+{"entite": "CyberUnits", "valeur": "Object Pascal"}
+{"entite": "Cypht", "valeur": "PHP"}
+{"entite": "DaDaBIK", "valeur": "PHP"}
+{"entite": "DaFont", "valeur": "PHP"}
+{"entite": "Dai", "valeur": "Solidity"}
+{"entite": "DanNet", "valeur": "Web Ontology Language"}
+{"entite": "Darling", "valeur": "assembleur"}
+{"entite": "Das U-Boot", "valeur": "assembleur"}
+{"entite": "Datalife engine", "valeur": "PHP"}
+{"entite": "dav1d", "valeur": "assembleur"}
+{"entite": "DAViCal", "valeur": "PHP"}
+{"entite": "dBase", "valeur": "assembleur"}
+{"entite": "DBG", "valeur": "PHP"}
+{"entite": "Dead Cells", "valeur": "Haxe"}
+{"entite": "Deep Q-Network", "valeur": "Lua"}
+{"entite": "Defender", "valeur": "assembleur"}
+{"entite": "defu", "valeur": "TypeScript"}
+{"entite": "Déjà Dup", "valeur": "Vala"}
+{"entite": "DejaGnu", "valeur": "Tcl"}
+{"entite": "DelphiDoom", "valeur": "Delphi"}
+{"entite": "Deltacms", "valeur": "PHP"}
+{"entite": "Deno", "valeur": "TypeScript"}
+{"entite": "DerrickOS", "valeur": "FASM"}
+{"entite": "DeskMate", "valeur": "assembleur"}
+{"entite": "Desmos", "valeur": "TypeScript"}
+{"entite": "destr", "valeur": "TypeScript"}
+{"entite": "Dev-C++", "valeur": "Object Pascal"}
+{"entite": "Dev-Pascal", "valeur": "Delphi"}
+{"entite": "DevDocs.el", "valeur": "Emacs Lisp"}
+{"entite": "Dexos", "valeur": "assembleur"}
+{"entite": "Dframe Framework", "valeur": "PHP"}
+{"entite": "DGLux5", "valeur": "Dart"}
+{"entite": "diaspora*", "valeur": "Ruby on Rails"}
+{"entite": "DictEm", "valeur": "Emacs Lisp"}
+{"entite": "Diem", "valeur": "PHP"}
+{"entite": "DigiQuali", "valeur": "PHP"}
+{"entite": "DigiRisk", "valeur": "PHP"}
+{"entite": "Diïa", "valeur": "React"}
+{"entite": "Dino", "valeur": "Vala"}
+{"entite": "DinoPHP", "valeur": "PHP"}
+{"entite": "Diodon", "valeur": "Vala"}
+{"entite": "DIPS", "valeur": "Max/MSP"}
+{"entite": "DipTrace", "valeur": "Delphi"}
+{"entite": "dired-du", "valeur": "Emacs Lisp"}
+{"entite": "Discuz!", "valeur": "PHP"}
+{"entite": "Disk Inlay", "valeur": "Locomotive BASIC"}
+{"entite": "DISLIN", "valeur": "Fortran 90"}
+{"entite": "Dismal", "valeur": "Emacs Lisp"}
+{"entite": "djot.js", "valeur": "TypeScript"}
+{"entite": "dnd", "valeur": "TUTOR"}
+{"entite": "DoceboLMS", "valeur": "PHP"}
+{"entite": "Doctrine", "valeur": "PHP"}
+{"entite": "Dojo", "valeur": "TypeScript"}
+{"entite": "Dokeos", "valeur": "PHP"}
+{"entite": "DokuWiki", "valeur": "PHP"}
+{"entite": "DOLLx8", "valeur": "assembleur"}
+{"entite": "Don't Starve", "valeur": "Lua"}
+{"entite": "DONKEY.BAS", "valeur": "GW-BASIC"}
+{"entite": "Doom Emacs", "valeur": "Emacs Lisp"}
+{"entite": "DoomRL", "valeur": "Free Pascal"}
+{"entite": "DOS/360", "valeur": "assembleur"}
+{"entite": "DOS Plus", "valeur": "assembleur"}
+{"entite": "Dotclear", "valeur": "PHP"}
+{"entite": "DotNetNuke", "valeur": "Structured Query Language"}
+{"entite": "DotProject", "valeur": "PHP"}
+{"entite": "Double Commander", "valeur": "Free Pascal"}
+{"entite": "DR-DOS", "valeur": "assembleur"}
+{"entite": "Dr.wait", "valeur": "TypeScript"}
+{"entite": "Dracut", "valeur": "script shell"}
+{"entite": "Drupal 8", "valeur": "PHP"}
+{"entite": "Drupal Commerce", "valeur": "PHP"}
+{"entite": "Drush", "valeur": "PHP"}
+{"entite": "DSpace", "valeur": "Angular"}
+{"entite": "dts-mode", "valeur": "Emacs Lisp"}
+{"entite": "Duck Attack!", "valeur": "assembleur"}
+{"entite": "Duden (dictionnaire en ligne)", "valeur": "PHP"}
+{"entite": "dungeon-mode", "valeur": "Emacs Lisp"}
+{"entite": "Duniter", "valeur": "TypeScript"}
+{"entite": "DVBViewer", "valeur": "Delphi"}
+{"entite": "DVD Flick", "valeur": "Visual Basic"}
+{"entite": "DWSIM", "valeur": "Visual Basic"}
+{"entite": "Dynamic Kernel Module Support", "valeur": "GNU Bash"}
+{"entite": "DYNAMO", "valeur": "assembleur"}
+{"entite": "e107", "valeur": "PHP"}
+{"entite": "EAccelerator", "valeur": "PHP"}
+{"entite": "Easy!Appointments", "valeur": "PHP"}
+{"entite": "EasyPG", "valeur": "Emacs Lisp"}
+{"entite": "EasyPHP", "valeur": "PHP"}
+{"entite": "EasyWriter", "valeur": "Forth"}
+{"entite": "EBDB", "valeur": "Emacs Lisp"}
+{"entite": "Edebug", "valeur": "Emacs Lisp"}
+{"entite": "eFront Learning", "valeur": "PHP"}
+{"entite": "Eggdrop", "valeur": "Tcl"}
+{"entite": "EGroupWare", "valeur": "PHP"}
+{"entite": "EINE", "valeur": "Lisp Machine Lisp"}
+{"entite": "EK", "valeur": "Delphi"}
+{"entite": "EKA1", "valeur": "assembleur"}
+{"entite": "Electron", "valeur": "TypeScript"}
+{"entite": "elementary OS", "valeur": "Vala"}
+{"entite": "Elgg", "valeur": "PHP"}
+{"entite": "eliom", "valeur": "OCaml"}
+{"entite": "Elixir", "valeur": "Elixir"}
+{"entite": "Elpher", "valeur": "Emacs Lisp"}
+{"entite": "emacs-annotate", "valeur": "Emacs Lisp"}
+{"entite": "Emacs Artist Mode", "valeur": "Emacs Lisp"}
+{"entite": "emacs-bind-key", "valeur": "Emacs Lisp"}
+{"entite": "emacs-chess", "valeur": "Emacs Lisp"}
+{"entite": "emacs-code-cells", "valeur": "Emacs Lisp"}
+{"entite": "emacs-consult", "valeur": "Emacs Lisp"}
+{"entite": "emacs-consult-recoll", "valeur": "Emacs Lisp"}
+{"entite": "emacs-cpupower", "valeur": "Emacs Lisp"}
+{"entite": "emacs-debbugs", "valeur": "Emacs Lisp"}
+{"entite": "emacs-denote", "valeur": "Emacs Lisp"}
+{"entite": "emacs-denote-menu", "valeur": "Emacs Lisp"}
+{"entite": "emacs-devdocs", "valeur": "Emacs Lisp"}
+{"entite": "emacs-dirvish", "valeur": "Emacs Lisp"}
+{"entite": "emacs-doom-themes", "valeur": "Emacs Lisp"}
+{"entite": "emacs-dracula-theme", "valeur": "Emacs Lisp"}
+{"entite": "emacs-embark", "valeur": "Emacs Lisp"}
+{"entite": "emacs-ggtags", "valeur": "Emacs Lisp"}
+{"entite": "emacs-gnuplot", "valeur": "Emacs Lisp"}
+{"entite": "emacs-hcel", "valeur": "Emacs Lisp"}
+{"entite": "Emacs Info", "valeur": "Emacs Lisp"}
+{"entite": "emacs-ledger-mode", "valeur": "Emacs Lisp"}
+{"entite": "emacs-listen", "valeur": "Emacs Lisp"}
+{"entite": "emacs-lv", "valeur": "Emacs Lisp"}
+{"entite": "emacs-marginalia", "valeur": "Emacs Lisp"}
+{"entite": "emacs-osm", "valeur": "Emacs Lisp"}
+{"entite": "emacs-persist", "valeur": "Emacs Lisp"}
+{"entite": "Emacs PHP Mode", "valeur": "Emacs Lisp"}
+{"entite": "emacs-poke", "valeur": "Emacs Lisp"}
+{"entite": "emacs-rec-mode", "valeur": "Emacs Lisp"}
+{"entite": "emacs-repology", "valeur": "Emacs Lisp"}
+{"entite": "emacs-slime-volleyball", "valeur": "Emacs Lisp"}
+{"entite": "emacs-sly", "valeur": "Emacs Lisp"}
+{"entite": "emacs-soap-client", "valeur": "Emacs Lisp"}
+{"entite": "emacs-sokoban", "valeur": "Emacs Lisp"}
+{"entite": "Emacs Speaks Statistics", "valeur": "Emacs Lisp"}
+{"entite": "emacs-systemd-mode", "valeur": "Emacs Lisp"}
+{"entite": "emacs-treeview", "valeur": "Emacs Lisp"}
+{"entite": "Emacs/URL", "valeur": "Emacs Lisp"}
+{"entite": "emacs-vc-jj", "valeur": "Emacs Lisp"}
+{"entite": "Emacs/W3", "valeur": "Emacs Lisp"}
+{"entite": "emacs-w3m", "valeur": "Emacs Lisp"}
+{"entite": "emacs-web-mode", "valeur": "Emacs Lisp"}
+{"entite": "Emacs Web Wowser", "valeur": "Emacs Lisp"}
+{"entite": "emacs-wgrep", "valeur": "Emacs Lisp"}
+{"entite": "Emacs-wiki", "valeur": "Emacs Lisp"}
+{"entite": "emacs-with-simulated-input", "valeur": "Emacs Lisp"}
+{"entite": "Emacspeak", "valeur": "Tcl"}
+{"entite": "Embeddable Common Lisp", "valeur": "Common Lisp"}
+{"entite": "Ement", "valeur": "Emacs Lisp"}
+{"entite": "EMMS", "valeur": "Emacs Lisp"}
+{"entite": "Enterprise Dynamics", "valeur": "Delphi"}
+{"entite": "Environment Modules", "valeur": "Tcl"}
+{"entite": "Eoserv", "valeur": "PHP"}
+{"entite": "EPANET", "valeur": "Object Pascal"}
+{"entite": "Epesi", "valeur": "PHP"}
+{"entite": "Epi Map", "valeur": "Visual Basic"}
+{"entite": "Epic Pinball", "valeur": "assembleur"}
+{"entite": "Erable", "valeur": "RPL"}
+{"entite": "ERC", "valeur": "Emacs Lisp"}
+{"entite": "Erythros", "valeur": "HolyC"}
+{"entite": "ESET antivirus", "valeur": "assembleur"}
+{"entite": "Eshell", "valeur": "Emacs Lisp"}
+{"entite": "Ethereum Classic", "valeur": "Go!"}
+{"entite": "Euro-Office", "valeur": "PHP"}
+{"entite": "Evercam", "valeur": "Elixir"}
+{"entite": "Evergreen", "valeur": "TypeScript"}
+{"entite": "Evidencia", "valeur": "React"}
+{"entite": "Evoland", "valeur": "Haxe"}
+{"entite": "Evoland 2", "valeur": "Haxe"}
+{"entite": "Excelsior JET", "valeur": "Modula-2"}
+{"entite": "Exodus", "valeur": "Object Pascal"}
+{"entite": "Expect", "valeur": "Tcl"}
+{"entite": "Exponent CMS", "valeur": "PHP"}
+{"entite": "expressors", "valeur": "Visual C++"}
+{"entite": "Extension:Translate", "valeur": "PHP"}
+{"entite": "EXWM", "valeur": "Emacs Lisp"}
+{"entite": "eyeOS", "valeur": "PHP"}
+{"entite": "EZ Publish", "valeur": "PHP"}
+{"entite": "ezPAARSE", "valeur": "Node.js"}
+{"entite": "F*", "valeur": "F#"}
+{"entite": "F-Droid server", "valeur": "PHP"}
+{"entite": "Fabrik", "valeur": "Smalltalk"}
+{"entite": "Factor", "valeur": "Factor"}
+{"entite": "Fandom", "valeur": "PHP"}
+{"entite": "Far-Play", "valeur": "PHP"}
+{"entite": "farmOS", "valeur": "PHP"}
+{"entite": "FASM", "valeur": "assembleur"}
+{"entite": "Fastfetch", "valeur": "Et cetera"}
+{"entite": "fastText", "valeur": "C++11"}
+{"entite": "FastTracker", "valeur": "Turbo Assembler"}
+{"entite": "Fat-Free Framework", "valeur": "PHP"}
+{"entite": "FeedDemon", "valeur": "Delphi"}
+{"entite": "FeedReader", "valeur": "Vala"}
+{"entite": "Fellow", "valeur": "assembleur"}
+{"entite": "FetLife", "valeur": "Ruby on Rails"}
+{"entite": "FFTW", "valeur": "OCaml"}
+{"entite": "FieldTrip", "valeur": "MATLAB"}
+{"entite": "Filzip", "valeur": "Object Pascal"}
+{"entite": "Final Fantasy", "valeur": "assembleur"}
+{"entite": "FINDERR", "valeur": "Dart"}
+{"entite": "FINE", "valeur": "BLISS"}
+{"entite": "Fire Soft Board", "valeur": "PHP"}
+{"entite": "Firefox Mobile", "valeur": "XML-based User interface Language"}
+{"entite": "FireHOL", "valeur": "script shell"}
+{"entite": "FireMonkey", "valeur": "Delphi"}
+{"entite": "Fish Fillets NG", "valeur": "Lua"}
+{"entite": "Fishes and Flying Things", "valeur": "HTML"}
+{"entite": "flam3", "valeur": "shell Unix"}
+{"entite": "Flame", "valeur": "Lua"}
+{"entite": "Flare3D", "valeur": "ActionScript"}
+{"entite": "Flashcard", "valeur": "Emacs Lisp"}
+{"entite": "FlDigi", "valeur": "FLTK"}
+{"entite": "FlexWiki", "valeur": "Smalltalk"}
+{"entite": "Flight of the Amazon Queen", "valeur": "AMOS BASIC"}
+{"entite": "FlightPath", "valeur": "PHP"}
+{"entite": "Flixel", "valeur": "ActionScript"}
+{"entite": "Floorp", "valeur": "TypeScript"}
+{"entite": "Fluent Design System", "valeur": "TypeScript"}
+{"entite": "Flus", "valeur": "PHP"}
+{"entite": "Fluxerworld", "valeur": "TypeScript"}
+{"entite": "Flyspell", "valeur": "Emacs Lisp"}
+{"entite": "Flyspray", "valeur": "PHP"}
+{"entite": "FMRIB Software Library", "valeur": "Tcl"}
+{"entite": "FOG", "valeur": "PHP"}
+{"entite": "Fossil", "valeur": "Structured Query Language"}
+{"entite": "Foswiki", "valeur": "shell Unix"}
+{"entite": "Foxmail", "valeur": "Object Pascal"}
+{"entite": "FPDF", "valeur": "PHP"}
+{"entite": "FpGUI", "valeur": "Object Pascal"}
+{"entite": "Frama-C", "valeur": "OCaml"}
+{"entite": "FrameGang", "valeur": "Visual Basic"}
+{"entite": "Framework", "valeur": "assembleur"}
+{"entite": "Free Radio Network", "valeur": "Delphi"}
+{"entite": "FreeBasic", "valeur": "Basic"}
+{"entite": "Freemacs", "valeur": "Emacs Lisp"}
+{"entite": "FreeMED", "valeur": "PHP"}
+{"entite": "FreeNX", "valeur": "script shell"}
+{"entite": "FreeSpacer", "valeur": "Delphi"}
+{"entite": "Friday Night Funkin'", "valeur": "Haxe"}
+{"entite": "Friendica", "valeur": "PHP"}
+{"entite": "Frigate", "valeur": "Object Pascal"}
+{"entite": "Froxlor", "valeur": "PHP"}
+{"entite": "FSDPC", "valeur": "Cobol"}
+{"entite": "FUDforum", "valeur": "PHP"}
+{"entite": "FuelPHP", "valeur": "PHP"}
+{"entite": "FusionDirectory", "valeur": "PHP"}
+{"entite": "FusionDirectory Orchestrator", "valeur": "PHP"}
+{"entite": "FusionForge", "valeur": "PHP"}
+{"entite": "Fuzix OS", "valeur": "programme assembleur"}
+{"entite": "g4l", "valeur": "shell Unix"}
+{"entite": "Gabile.com", "valeur": "Active Server Pages"}
+{"entite": "Galette", "valeur": "PHP"}
+{"entite": "Gallery Project", "valeur": "PHP"}
+{"entite": "Ganglia", "valeur": "PHP"}
+{"entite": "GATE", "valeur": "Object Pascal"}
+{"entite": "GBBS", "valeur": "Applesoft BASIC"}
+{"entite": "GCompris", "valeur": "QML"}
+{"entite": "GCP Community", "valeur": "PHP"}
+{"entite": "GDevelop", "valeur": "WebAssembly"}
+{"entite": "Geary", "valeur": "Vala"}
+{"entite": "Geeklog", "valeur": "PHP"}
+{"entite": "Geiser", "valeur": "Emacs Lisp"}
+{"entite": "geiser-chez", "valeur": "Emacs Lisp"}
+{"entite": "geiser-chibi", "valeur": "Emacs Lisp"}
+{"entite": "geiser-chicken", "valeur": "Emacs Lisp"}
+{"entite": "geiser-gambit", "valeur": "Emacs Lisp"}
+{"entite": "geiser-gauche", "valeur": "Emacs Lisp"}
+{"entite": "geiser-guile", "valeur": "Emacs Lisp"}
+{"entite": "geiser-kawa", "valeur": "Emacs Lisp"}
+{"entite": "geiser-mit", "valeur": "Emacs Lisp"}
+{"entite": "geiser-stklos", "valeur": "Emacs Lisp"}
+{"entite": "Gemstone", "valeur": "Smalltalk"}
+{"entite": "Geneawiki", "valeur": "PHP"}
+{"entite": "General Problem Solver", "valeur": "Information Processing Language"}
+{"entite": "Geneweb", "valeur": "OCaml"}
+{"entite": "Genexus", "valeur": "Prolog"}
+{"entite": "GenoCAD", "valeur": "PHP"}
+{"entite": "Gensim", "valeur": "Cython"}
+{"entite": "GeoDin", "valeur": "Delphi"}
+{"entite": "GeoGebra", "valeur": "HTML5"}
+{"entite": "Geoplan", "valeur": "Delphi"}
+{"entite": "GeoWorks", "valeur": "assembleur"}
+{"entite": "GeSHi", "valeur": "PHP"}
+{"entite": "Gest-HVSL", "valeur": "PHP"}
+{"entite": "GestAssoPhp", "valeur": "PHP"}
+{"entite": "gestion libre de parc informatique", "valeur": "PHP"}
+{"entite": "get-port-please", "valeur": "TypeScript"}
+{"entite": "GetSimple CMS", "valeur": "PHP"}
+{"entite": "GFW MapBuilder", "valeur": "TypeScript"}
+{"entite": "Ghostty", "valeur": "Zig"}
+{"entite": "giget", "valeur": "TypeScript"}
+{"entite": "git2html", "valeur": "GNU Bash"}
+{"entite": "gited", "valeur": "Emacs Lisp"}
+{"entite": "Glide API", "valeur": "assembleur"}
+{"entite": "Glossword", "valeur": "PHP"}
+{"entite": "GLScene", "valeur": "Object Pascal"}
+{"entite": "Glulx", "valeur": "Inform"}
+{"entite": "GM-NAA I/O", "valeur": "assembleur"}
+{"entite": "GnGeo", "valeur": "assembleur"}
+{"entite": "GNOME Calculator", "valeur": "Vala"}
+{"entite": "GNOME Chess", "valeur": "Vala"}
+{"entite": "GNOME Contacts", "valeur": "Vala"}
+{"entite": "GNOME Games", "valeur": "Vala"}
+{"entite": "gnome-guile", "valeur": "GNU Guile"}
+{"entite": "GNOME Machines", "valeur": "Vala"}
+{"entite": "GNOME Musique", "valeur": "Extensible Markup Language"}
+{"entite": "GNOME Terminal", "valeur": "Vala"}
+{"entite": "Gnomine", "valeur": "Vala"}
+{"entite": "GNU 8sync", "valeur": "GNU Guile"}
+{"entite": "GNU Alive", "valeur": "GNU Guile"}
+{"entite": "GNU Artanis", "valeur": "GNU Guile"}
+{"entite": "GNU Ball and Paddle", "valeur": "GNU Guile"}
+{"entite": "GNU Beacon", "valeur": "PHP"}
+{"entite": "GNU Emacs", "valeur": "Emacs Lisp"}
+{"entite": "GNU FM", "valeur": "PHP"}
+{"entite": "GNU Freetalk", "valeur": "GNU Guile"}
+{"entite": "GNU GRUB", "valeur": "assembleur"}
+{"entite": "GNU Guile-OpenGL", "valeur": "GNU Guile"}
+{"entite": "GNU Hyperbole", "valeur": "Emacs Lisp"}
+{"entite": "GNU Libtool", "valeur": "script shell"}
+{"entite": "GNU Mach", "valeur": "assembleur"}
+{"entite": "GNU Mcron", "valeur": "GNU Guile"}
+{"entite": "GNU MP", "valeur": "assembleur"}
+{"entite": "GNU remotecontrol", "valeur": "PHP"}
+{"entite": "GNU RPGE", "valeur": "GNU Guile"}
+{"entite": "GNU Shepherd", "valeur": "GNU Guile"}
+{"entite": "GNU Smalltalk", "valeur": "Smalltalk"}
+{"entite": "GNU social", "valeur": "PHP"}
+{"entite": "GNUe DCL", "valeur": "PHP"}
+{"entite": "GNUmed", "valeur": "wxPython"}
+{"entite": "gnuplot-mode", "valeur": "Emacs Lisp"}
+{"entite": "Gnus", "valeur": "Emacs Lisp"}
+{"entite": "go", "valeur": "assembleur"}
+{"entite": "GODI", "valeur": "OCaml"}
+{"entite": "Godot", "valeur": "GLSL"}
+{"entite": "Gogs", "valeur": "feuille de style en cascade"}
+{"entite": "GoldSrc", "valeur": "assembleur"}
+{"entite": "Gollum", "valeur": "PHP"}
+{"entite": "Google Docs", "valeur": "HTML"}
+{"entite": "Google Wave", "valeur": "Google Web Toolkit"}
+{"entite": "Gorilla", "valeur": "QBasic"}
+{"entite": "GOsa²", "valeur": "PHP"}
+{"entite": "Gosling Emacs", "valeur": "Mocklisp"}
+{"entite": "Gpg4win", "valeur": "script shell"}
+{"entite": "GPUOpen", "valeur": "GLSL"}
+{"entite": "Gradio", "valeur": "Vala"}
+{"entite": "Gradle", "valeur": "Groovy"}
+{"entite": "Grafana", "valeur": "TypeScript"}
+{"entite": "Grails", "valeur": "Groovy"}
+{"entite": "Grands gars libres", "valeur": "PHP"}
+{"entite": "Grav", "valeur": "PHP"}
+{"entite": "Greasemonkey", "valeur": "XML-based User interface Language"}
+{"entite": "Group-Office", "valeur": "PHP"}
+{"entite": "gRPC", "valeur": "Elixir"}
+{"entite": "Grunt", "valeur": "Node.js"}
+{"entite": "gtags-mode", "valeur": "Emacs Lisp"}
+{"entite": "Guile Config", "valeur": "GNU Guile"}
+{"entite": "Guile-CV", "valeur": "GNU Guile"}
+{"entite": "Guile-Debbugs", "valeur": "GNU Guile"}
+{"entite": "Guile-Gcrypt", "valeur": "GNU Guile"}
+{"entite": "Guile-Git", "valeur": "GNU Guile"}
+{"entite": "Guile-Gnome", "valeur": "GNU Guile"}
+{"entite": "Guile-JSON", "valeur": "GNU Guile"}
+{"entite": "guile-kernel", "valeur": "GNU Guile"}
+{"entite": "Guile-Lib", "valeur": "GNU Guile"}
+{"entite": "guile-sly", "valeur": "GNU Guile"}
+{"entite": "Guile-WWW", "valeur": "GNU Guile"}
+{"entite": "Guile-xmlrpc", "valeur": "GNU Guile"}
+{"entite": "Guillaume Sorensen", "valeur": "français"}
+{"entite": "Guix-Jupyter", "valeur": "GNU Guile"}
+{"entite": "Guix System", "valeur": "GNU Guile"}
+{"entite": "Guix Workflow Language", "valeur": "GNU Guile"}
+{"entite": "Guppy", "valeur": "PHP"}
+{"entite": "Gush", "valeur": "Adobe Flash"}
+{"entite": "Gyroscope", "valeur": "PHP"}
+{"entite": "h3", "valeur": "TypeScript"}
+{"entite": "H5P", "valeur": "PHP"}
+{"entite": "Habari", "valeur": "PHP"}
+{"entite": "Habrahabr", "valeur": "PHP"}
+{"entite": "Hack", "valeur": "OCaml"}
+{"entite": "Hacker News", "valeur": "Arc"}
+{"entite": "Halo 2600", "valeur": "assembleur"}
+{"entite": "haml-mode", "valeur": "Emacs Lisp"}
+{"entite": "Handbook Emission Factors for Road Transport", "valeur": "Visual Basic for Applications"}
+{"entite": "Harmony", "valeur": "assembleur"}
+{"entite": "Harmor", "valeur": "Delphi"}
+{"entite": "Harvest Templates", "valeur": "PHP"}
+{"entite": "Haxe", "valeur": "OCaml"}
+{"entite": "HCL Notes", "valeur": "HTML"}
+{"entite": "HDOS", "valeur": "assembleur"}
+{"entite": "HDWiki", "valeur": "PHP"}
+{"entite": "Heaps", "valeur": "Haxe"}
+{"entite": "HedgeDoc", "valeur": "TypeScript"}
+{"entite": "Hedgehog Engine", "valeur": "Lua"}
+{"entite": "HeidiSQL", "valeur": "Object Pascal"}
+{"entite": "HelpNDoc", "valeur": "Object Pascal"}
+{"entite": "Heurist", "valeur": "PHP"}
+{"entite": "High Level Assembly", "valeur": "assembleur"}
+{"entite": "High Orbit Ion Cannon", "valeur": "Visual Basic"}
+{"entite": "High Performance File System", "valeur": "assembleur"}
+{"entite": "Hoa", "valeur": "PHP"}
+{"entite": "Homepak", "valeur": "Action!"}
+{"entite": "hookable", "valeur": "TypeScript"}
+{"entite": "Horde", "valeur": "PHP"}
+{"entite": "HostCMS", "valeur": "PHP"}
+{"entite": "HOSxP", "valeur": "Delphi"}
+{"entite": "HotSpot", "valeur": "assembleur"}
+{"entite": "HRHIS", "valeur": "PHP"}
+{"entite": "HTTP File Server", "valeur": "Object Pascal"}
+{"entite": "Hubzilla", "valeur": "PHP"}
+{"entite": "HuMo-gen", "valeur": "PHP"}
+{"entite": "Hurd", "valeur": "assembleur"}
+{"entite": "HxD", "valeur": "Object Pascal"}
+{"entite": "hyla", "valeur": "TypeScript"}
+{"entite": "i-doit", "valeur": "PHP"}
+{"entite": "I love you", "valeur": "VBScript"}
+{"entite": "IBM Administrative Terminal System", "valeur": "assembleur"}
+{"entite": "IBM Db2", "valeur": "assembleur"}
+{"entite": "IBM STAIRS", "valeur": "assembleur"}
+{"entite": "IBM Tivoli System Automation", "valeur": "Restructured Extended Executor"}
+{"entite": "ICA-AtoM", "valeur": "PHP"}
+{"entite": "Ical", "valeur": "Tcl"}
+{"entite": "IceBB", "valeur": "PHP"}
+{"entite": "ICL VME", "valeur": "S3"}
+{"entite": "id Tech 1", "valeur": "assembleur"}
+{"entite": "IDEDOS", "valeur": "assembleur"}
+{"entite": "IDempiere", "valeur": "Structured Query Language"}
+{"entite": "IDLWAVE", "valeur": "Emacs Lisp"}
+{"entite": "IGG0CLCA", "valeur": "assembleur"}
+{"entite": "IGraph/M", "valeur": "Wolfram"}
+{"entite": "Ikariam", "valeur": "PHP"}
+{"entite": "Iko", "valeur": "PHP"}
+{"entite": "Image Reduction and Analysis Facility", "valeur": "Ratfor"}
+{"entite": "Impact CO₂", "valeur": "TypeScript"}
+{"entite": "ImpressCMS", "valeur": "PHP"}
+{"entite": "Impression", "valeur": "assembleur"}
+{"entite": "ImpressPages", "valeur": "PHP"}
+{"entite": "Impulse Tracker", "valeur": "assembleur"}
+{"entite": "Incompatible Timesharing System", "valeur": "assembleur"}
+{"entite": "Indexhibit", "valeur": "PHP"}
+{"entite": "Inferno", "valeur": "Limbo"}
+{"entite": "Info", "valeur": "TECO"}
+{"entite": "Inno Setup", "valeur": "Object Pascal"}
+{"entite": "Inoreader", "valeur": "PHP"}
+{"entite": "InstallJammer", "valeur": "Tcl"}
+{"entite": "INSTEAD", "valeur": "Lua"}
+{"entite": "Integer BASIC", "valeur": "assembleur"}
+{"entite": "Internet Direct", "valeur": "Object Pascal"}
+{"entite": "Internet Messaging Program", "valeur": "PHP"}
+{"entite": "InternetArchiveBot", "valeur": "PHP"}
+{"entite": "Invidious", "valeur": "Crystal"}
+{"entite": "Invision Power Board", "valeur": "PHP"}
+{"entite": "Ionic", "valeur": "TypeScript"}
+{"entite": "iPodLinux", "valeur": "assembleur"}
+{"entite": "IS4C", "valeur": "PHP"}
+{"entite": "Isabelle", "valeur": "Standard ML"}
+{"entite": "ISPConfig", "valeur": "PHP"}
+{"entite": "ITop", "valeur": "PHP"}
+{"entite": "J-Pilot", "valeur": "GTK"}
+{"entite": "Jahia CMS", "valeur": "React"}
+{"entite": "jami-bot", "valeur": "Emacs Lisp"}
+{"entite": "Jamroom", "valeur": "PHP"}
+{"entite": "JavaFX", "valeur": "JavaFX Script"}
+{"entite": "JCalG1", "valeur": "assembleur"}
+{"entite": "Jelix", "valeur": "PHP"}
+{"entite": "JerryScript", "valeur": "C99"}
+{"entite": "Jigoshop", "valeur": "PHP"}
+{"entite": "Jirafeau", "valeur": "PHP"}
+{"entite": "jiti", "valeur": "TypeScript"}
+{"entite": "John the Ripper", "valeur": "assembleur"}
+{"entite": "joomla!", "valeur": "PHP"}
+{"entite": "Joplin", "valeur": "TypeScript"}
+{"entite": "js2-mode", "valeur": "Emacs Lisp"}
+{"entite": "JSON for Modern C++", "valeur": "C++11"}
+{"entite": "K-9 Mail", "valeur": "Extensible Markup Language"}
+{"entite": "K-Box", "valeur": "PHP"}
+{"entite": "Kaidan", "valeur": "QML"}
+{"entite": "Kajona", "valeur": "PHP"}
+{"entite": "Kanagram", "valeur": "QML"}
+{"entite": "Kaspersky Anti-Virus", "valeur": "Nemerle"}
+{"entite": "Katalon Studio", "valeur": "Groovy"}
+{"entite": "KDE Connect", "valeur": "QML"}
+{"entite": "Kepler", "valeur": "Lua"}
+{"entite": "KeyRus", "valeur": "assembleur"}
+{"entite": "Kingsoft Office", "valeur": "Delphi"}
+{"entite": "Kirigami", "valeur": "QML"}
+{"entite": "Kitabu", "valeur": "Xcode"}
+{"entite": "Kitodo.Presentation", "valeur": "PHP"}
+{"entite": "Kitodo.Publication", "valeur": "PHP"}
+{"entite": "KIVA", "valeur": "Fortran 95"}
+{"entite": "Kivy", "valeur": "Cython"}
+{"entite": "kiwix.el", "valeur": "Emacs Lisp"}
+{"entite": "knitwork", "valeur": "TypeScript"}
+{"entite": "Known", "valeur": "PHP"}
+{"entite": "Koha", "valeur": "Structured Query Language"}
+{"entite": "Kohana", "valeur": "PHP"}
+{"entite": "Koishi.js", "valeur": "TypeScript"}
+{"entite": "KolibriOS", "valeur": "assembleur"}
+{"entite": "KonaWiki", "valeur": "PHP"}
+{"entite": "Kopern", "valeur": "TypeScript"}
+{"entite": "kotlin-mode", "valeur": "Emacs Lisp"}
+{"entite": "Kresus", "valeur": "TypeScript"}
+{"entite": "KrISS-feed", "valeur": "PHP"}
+{"entite": "KTouch", "valeur": "QML"}
+{"entite": "Kumbia PHP Framework", "valeur": "PHP"}
+{"entite": "KWeather", "valeur": "QML"}
+{"entite": "Kyiv Digital", "valeur": "TypeScript"}
+{"entite": "Kyma", "valeur": "Smalltalk"}
+{"entite": "Laravel", "valeur": "PHP"}
+{"entite": "LaTeX", "valeur": "TeX"}
+{"entite": "Launchpad", "valeur": "ajax"}
+{"entite": "Lazarus", "valeur": "Object Pascal"}
+{"entite": "Lazarus Component Library", "valeur": "Object Pascal"}
+{"entite": "LdapSaisie", "valeur": "PHP"}
+{"entite": "Lean", "valeur": "Lean"}
+{"entite": "LeechFTP", "valeur": "Delphi"}
+{"entite": "Leed", "valeur": "PHP"}
+{"entite": "Leiningen", "valeur": "Clojure"}
+{"entite": "Lemmy", "valeur": "TypeScript"}
+{"entite": "Levka", "valeur": "TypeScript"}
+{"entite": "LexA", "valeur": "TypeScript"}
+{"entite": "li₃", "valeur": "PHP"}
+{"entite": "libaom", "valeur": "Assembleur x86"}
+{"entite": "Libav", "valeur": "assembleur"}
+{"entite": "libfixmath", "valeur": "C99"}
+{"entite": "libgee", "valeur": "Vala"}
+{"entite": "libgit2", "valeur": "ANSI C"}
+{"entite": "libjpeg-turbo", "valeur": "assembleur"}
+{"entite": "libmng", "valeur": "ANSI C"}
+{"entite": "LibreSSL", "valeur": "assembleur"}
+{"entite": "libvpx", "valeur": "assembleur"}
+{"entite": "LifeType", "valeur": "PHP"}
+{"entite": "Light Alloy", "valeur": "Delphi"}
+{"entite": "Lightwright", "valeur": "REALbasic"}
+{"entite": "Lightwright Version 1", "valeur": "QuickBasic"}
+{"entite": "Lightwright Version 6", "valeur": "Xojo"}
+{"entite": "Lilith", "valeur": "Crystal"}
+{"entite": "Lime", "valeur": "PHP"}
+{"entite": "LimeSurvey", "valeur": "PHP"}
+{"entite": "Linphone", "valeur": "C++11"}
+{"entite": "Linux-libre", "valeur": "assembleur"}
+{"entite": "Linux loader", "valeur": "assembleur"}
+{"entite": "LinuxCNC", "valeur": "programmation de commande numérique"}
+{"entite": "LinuxLive USB Creator", "valeur": "Extensible Markup Language"}
+{"entite": "Liquidsoap", "valeur": "OCaml"}
+{"entite": "Lisk", "valeur": "Node.js"}
+{"entite": "Listaller", "valeur": "Vala"}
+{"entite": "Listeria", "valeur": "PHP"}
+{"entite": "listhen", "valeur": "TypeScript"}
+{"entite": "Lit", "valeur": "TypeScript"}
+{"entite": "Lizmap", "valeur": "PHP"}
+{"entite": "LLVM", "valeur": "assembleur"}
+{"entite": "Loadlin", "valeur": "assembleur"}
+{"entite": "Lodel", "valeur": "PHP"}
+{"entite": "Lofi", "valeur": "TypeScript"}
+{"entite": "Logic Theorist", "valeur": "Information Processing Language"}
+{"entite": "logiciel système de la Nintendo Switch", "valeur": "HTML"}
+{"entite": "Logtalk", "valeur": "Prolog"}
+{"entite": "Lotus 1-2-3", "valeur": "assembleur"}
+{"entite": "LPeg", "valeur": "Lua"}
+{"entite": "Luanti", "valeur": "Lua"}
+{"entite": "LuaRocks", "valeur": "Lua"}
+{"entite": "Lumen", "valeur": "PHP"}
+{"entite": "LUnix", "valeur": "assembleur"}
+{"entite": "Luwak", "valeur": "Emacs Lisp"}
+{"entite": "LXC", "valeur": "Bourne shell"}
+{"entite": "Lyceum", "valeur": "PHP"}
+{"entite": "Lynis", "valeur": "script shell"}
+{"entite": "LyricsWeb", "valeur": "TypeScript"}
+{"entite": "lzmat", "valeur": "ANSI C"}
+{"entite": "lzo", "valeur": "ANSI C"}
+{"entite": "Lzop", "valeur": "ANSI C"}
+{"entite": "Mac OS X Server", "valeur": "HTML"}
+{"entite": "MacApp", "valeur": "Object Pascal"}
+{"entite": "Mach", "valeur": "assembleur"}
+{"entite": "Machine à écrire germanique", "valeur": "jQuery"}
+{"entite": "MacPaint", "valeur": "assembleur"}
+{"entite": "Magento", "valeur": "PHP"}
+{"entite": "Magit", "valeur": "Emacs Lisp"}
+{"entite": "MagLev", "valeur": "Smalltalk"}
+{"entite": "Magma CMS", "valeur": "PHP"}
+{"entite": "Magrit", "valeur": "TypeScript"}
+{"entite": "Mahara", "valeur": "PHP"}
+{"entite": "MailTools", "valeur": "Raku"}
+{"entite": "MakerDAO", "valeur": "Solidity"}
+{"entite": "Malware Information Sharing Platform", "valeur": "PHP"}
+{"entite": "Mambo", "valeur": "PHP"}
+{"entite": "Mapbender", "valeur": "PHP"}
+{"entite": "Mapbox GL JS", "valeur": "GLSL"}
+{"entite": "Mapbox GL Native", "valeur": "GLSL"}
+{"entite": "Mari0", "valeur": "Lua"}
+{"entite": "Marionnet", "valeur": "OCaml"}
+{"entite": "Martine", "valeur": "assembleur"}
+{"entite": "MassMessage", "valeur": "PHP"}
+{"entite": "Materialize", "valeur": "feuille de style en cascade"}
+{"entite": "Matheass", "valeur": "Object Pascal"}
+{"entite": "Mathematica", "valeur": "Wolfram"}
+{"entite": "Matita", "valeur": "OCaml"}
+{"entite": "matlab-mode", "valeur": "Emacs Lisp"}
+{"entite": "Matomo", "valeur": "PHP"}
+{"entite": "Max", "valeur": "TypeScript"}
+{"entite": "MBrace", "valeur": "F#"}
+{"entite": "MCU 8051 IDE", "valeur": "Tcl"}
+{"entite": "Meatspace Chat", "valeur": "Node.js"}
+{"entite": "MediaWiki shell framework", "valeur": "PHP"}
+{"entite": "Mediboard", "valeur": "PHP"}
+{"entite": "MediEvil", "valeur": "assembleur"}
+{"entite": "Mednafen", "valeur": "assembleur"}
+{"entite": "mempool.space", "valeur": "TypeScript"}
+{"entite": "MemTest86", "valeur": "assembleur"}
+{"entite": "MEMZ trojan", "valeur": "assembleur"}
+{"entite": "Mentor", "valeur": "Emacs Lisp"}
+{"entite": "MenuetOS", "valeur": "assembleur"}
+{"entite": "Mes Adresses", "valeur": "TypeScript"}
+{"entite": "Messenger", "valeur": "PHP"}
+{"entite": "Metabase", "valeur": "Clojure"}
+{"entite": "MetroDreamin'", "valeur": "Next.js"}
+{"entite": "Meurs Challenger", "valeur": "ActionScript"}
+{"entite": "Mezzano", "valeur": "Common Lisp"}
+{"entite": "MiaCMS", "valeur": "PHP"}
+{"entite": "Mibbit", "valeur": "HTML"}
+{"entite": "MicroAlg", "valeur": "PicoLisp"}
+{"entite": "Micronoyau L4", "valeur": "assembleur"}
+{"entite": "Microsoft Bing", "valeur": "ASP.NET"}
+{"entite": "Microsoft Sort", "valeur": "Cobol"}
+{"entite": "Microsoft Windows", "valeur": "assembleur"}
+{"entite": "MikroSim", "valeur": "Visual Basic"}
+{"entite": "minibuffer-header", "valeur": "Emacs Lisp"}
+{"entite": "MiniGL", "valeur": "assembleur"}
+{"entite": "MINIX 3", "valeur": "assembleur"}
+{"entite": "Minsky", "valeur": "Tcl"}
+{"entite": "MiOffice", "valeur": "TypeScript"}
+{"entite": "Miosix", "valeur": "assembleur"}
+{"entite": "Mir@bel", "valeur": "PHP"}
+{"entite": "Miraculix", "valeur": "assembleur"}
+{"entite": "MirageOS", "valeur": "OCaml"}
+{"entite": "Mirai", "valeur": "Common Lisp"}
+{"entite": "Mirakurun", "valeur": "TypeScript"}
+{"entite": "Mirek's Cellebration", "valeur": "Delphi"}
+{"entite": "Miro", "valeur": "TypeScript"}
+{"entite": "mkws", "valeur": "script shell"}
+{"entite": "mlly", "valeur": "TypeScript"}
+{"entite": "Mobicoop Platform", "valeur": "PHP"}
+{"entite": "Module:Carte", "valeur": "Lua"}
+{"entite": "Module:CarteLignes", "valeur": "Lua"}
+{"entite": "Module:Formatnum", "valeur": "Lua"}
+{"entite": "Module:LienTéléphone", "valeur": "Lua"}
+{"entite": "Module:OSM", "valeur": "Lua"}
+{"entite": "module Scribunto", "valeur": "Lua"}
+{"entite": "Module:TemplateData", "valeur": "Lua"}
+{"entite": "Module:TemplUtl", "valeur": "Lua"}
+{"entite": "Module:Text", "valeur": "Lua"}
+{"entite": "Module:Wikibase", "valeur": "Lua"}
+{"entite": "Module:WLink", "valeur": "Lua"}
+{"entite": "modus-themes", "valeur": "Emacs Lisp"}
+{"entite": "MODx", "valeur": "PHP"}
+{"entite": "Mono", "valeur": "Extensible Markup Language"}
+{"entite": "Moodle", "valeur": "PHP"}
+{"entite": "Moose", "valeur": "Smalltalk"}
+{"entite": "more", "valeur": "assembleur"}
+{"entite": "Movable Type", "valeur": "PHP"}
+{"entite": "Movim", "valeur": "PHP"}
+{"entite": "MoziloCMS", "valeur": "PHP"}
+{"entite": "MozJPEG", "valeur": "assembleur"}
+{"entite": "MPack", "valeur": "PHP"}
+{"entite": "MPDired", "valeur": "Emacs Lisp"}
+{"entite": "Mpg123", "valeur": "assembleur"}
+{"entite": "MpressGUI", "valeur": "Visual Basic"}
+{"entite": "MSN", "valeur": "ASP.NET"}
+{"entite": "MTASC", "valeur": "OCaml"}
+{"entite": "mu4e-dashboard", "valeur": "Emacs Lisp"}
+{"entite": "Multi Theft Auto", "valeur": "Lua"}
+{"entite": "MultiOTP", "valeur": "PHP"}
+{"entite": "MUME", "valeur": "Mudlle"}
+{"entite": "Music Business Worldwide", "valeur": "PHP"}
+{"entite": "MusicBee", "valeur": "Visual Basic .NET"}
+{"entite": "MXE", "valeur": "Make"}
+{"entite": "My Boyfriend Came Back From The War", "valeur": "HTML"}
+{"entite": "MyBulletinBoard", "valeur": "PHP"}
+{"entite": "MyCoRe", "valeur": "Extensible Stylesheet Language Transformations"}
+{"entite": "MyDLP", "valeur": "Apache Flex"}
+{"entite": "MyNETS", "valeur": "PHP"}
+{"entite": "myQLM", "valeur": "AQASM"}
+{"entite": "MySQLi", "valeur": "PHP"}
+{"entite": "Naeon", "valeur": "GNU Bash"}
+{"entite": "Name Suggestion Index", "valeur": "Node.js"}
+{"entite": "NativeScript", "valeur": "TypeScript"}
+{"entite": "NaviServer", "valeur": "Tcl"}
+{"entite": "Nconf", "valeur": "PHP"}
+{"entite": "NekoAI", "valeur": "TypeScript"}
+{"entite": "NeoChat", "valeur": "QML"}
+{"entite": "NestJS", "valeur": "TypeScript"}
+{"entite": "Net2ftp", "valeur": "PHP"}
+{"entite": "Netlify CMS", "valeur": "React"}
+{"entite": "Netsukuku", "valeur": "Vala"}
+{"entite": "Nette Framework", "valeur": "PHP"}
+{"entite": "Nettle", "valeur": "assembleur"}
+{"entite": "NeuraScale", "valeur": "TypeScript"}
+{"entite": "Neurophysiological Biomarker Toolbox", "valeur": "MATLAB"}
+{"entite": "Newscoop", "valeur": "PHP"}
+{"entite": "Nextcloud", "valeur": "PHP"}
+{"entite": "NexusDB", "valeur": "Delphi"}
+{"entite": "NICMOSlook", "valeur": "IDL"}
+{"entite": "Nim", "valeur": "Nim"}
+{"entite": "nitropack", "valeur": "TypeScript"}
+{"entite": "Nitter", "valeur": "Nim"}
+{"entite": "nix-mode", "valeur": "Emacs Lisp"}
+{"entite": "Nmap", "valeur": "Lua"}
+{"entite": "NME", "valeur": "Haxe"}
+{"entite": "Noalyss", "valeur": "PHP"}
+{"entite": "NOCC", "valeur": "PHP"}
+{"entite": "node-fetch-native", "valeur": "TypeScript"}
+{"entite": "normalize.css", "valeur": "feuille de style en cascade"}
+{"entite": "Norton Commander", "valeur": "assembleur"}
+{"entite": "Notes-Mode", "valeur": "Emacs Lisp"}
+{"entite": "Notes on the Voyage of Owl and Girl", "valeur": "HTML"}
+{"entite": "Notifications center", "valeur": "PHP"}
+{"entite": "notmuch-emacs", "valeur": "Emacs Lisp"}
+{"entite": "notmuch-indicator", "valeur": "Emacs Lisp"}
+{"entite": "Noverfly", "valeur": "TypeScript"}
+{"entite": "Novius OS", "valeur": "PHP"}
+{"entite": "Noweb", "valeur": "TeX"}
+{"entite": "Nqthm", "valeur": "Common Lisp"}
+{"entite": "Nucleus CMS", "valeur": "PHP"}
+{"entite": "NumaHOP", "valeur": "AngularJS"}
+{"entite": "Numista", "valeur": "PHP"}
+{"entite": "Nuxt.js", "valeur": "Vue.js"}
+{"entite": "O-live", "valeur": "PHP"}
+{"entite": "Obeya Cloud", "valeur": "TypeScript"}
+{"entite": "OCaml", "valeur": "OCaml"}
+{"entite": "Ocsigen", "valeur": "OCaml"}
+{"entite": "Octopus", "valeur": "Fortran 90"}
+{"entite": "Odnoklassniki", "valeur": "PHP"}
+{"entite": "Odysee", "valeur": "Sass"}
+{"entite": "ofetch", "valeur": "TypeScript"}
+{"entite": "OGame", "valeur": "PHP"}
+{"entite": "ohash", "valeur": "TypeScript"}
+{"entite": "Omeka", "valeur": "PHP"}
+{"entite": "Omeka S", "valeur": "PHP"}
+{"entite": "omn-mode", "valeur": "Emacs Lisp"}
+{"entite": "oneye", "valeur": "PHP"}
+{"entite": "OnlyOffice", "valeur": "HTML"}
+{"entite": "OntoWiki", "valeur": "PHP"}
+{"entite": "OOUI", "valeur": "PHP"}
+{"entite": "opam", "valeur": "OCaml"}
+{"entite": "Open 3D Engine", "valeur": "Lua"}
+{"entite": "Open-AudIT", "valeur": "PHP"}
+{"entite": "Open Cobalt", "valeur": "Squeak"}
+{"entite": "Open Firmware", "valeur": "Forth"}
+{"entite": "Open Journal Systems", "valeur": "PHP"}
+{"entite": "Open JTAG", "valeur": "VHDL"}
+{"entite": "Open PC Server Integration", "valeur": "shell Unix"}
+{"entite": "Open Power Template", "valeur": "PHP"}
+{"entite": "Open Semantic Framework", "valeur": "PHP"}
+{"entite": "Open VSX", "valeur": "TypeScript"}
+{"entite": "Open Web Analytics", "valeur": "PHP"}
+{"entite": "OpenAutonomy", "valeur": "PHP"}
+{"entite": "OpenBiblio", "valeur": "PHP"}
+{"entite": "OpenBLAS", "valeur": "assembleur"}
+{"entite": "OpenBUGS", "valeur": "Component Pascal"}
+{"entite": "OpenCA", "valeur": "script shell"}
+{"entite": "OpenCart", "valeur": "PHP"}
+{"entite": "Opencast", "valeur": "TypeScript"}
+{"entite": "OpenConf", "valeur": "PHP"}
+{"entite": "OpenDHT", "valeur": "C++14"}
+{"entite": "OpenEMR", "valeur": "PHP"}
+{"entite": "OpenFL", "valeur": "Haxe"}
+{"entite": "OpenGL", "valeur": "GLSL"}
+{"entite": "OpenH264", "valeur": "assembleur"}
+{"entite": "OpenMS", "valeur": "C++11"}
+{"entite": "openparliament", "valeur": "Django"}
+{"entite": "OpenPipeline", "valeur": "Mel"}
+{"entite": "OpenPlaG", "valeur": "PHP"}
+{"entite": "OpenQRM", "valeur": "PHP"}
+{"entite": "OpenQwaq", "valeur": "Squeak"}
+{"entite": "OpenRegistry", "valeur": "TypeScript"}
+{"entite": "OpenStreetMap Wiki", "valeur": "PHP"}
+{"entite": "OpenThesaurus", "valeur": "Groovy"}
+{"entite": "OpenUI5", "valeur": "LESS"}
+{"entite": "OpenWire", "valeur": "Object Pascal"}
+{"entite": "OpenWrt", "valeur": "Lua"}
+{"entite": "OpenX", "valeur": "PHP"}
+{"entite": "Opera Mini", "valeur": "Pike"}
+{"entite": "Operation Flashpoint: Dragon Rising", "valeur": "Lua"}
+{"entite": "OPNsense", "valeur": "PHP"}
+{"entite": "OPUS", "valeur": "PHP"}
+{"entite": "Oracle Application Express", "valeur": "PL/SQL"}
+{"entite": "Oracle Forms", "valeur": "PL/SQL"}
+{"entite": "Orange", "valeur": "Cython"}
+{"entite": "ORCA/Modula-2", "valeur": "Modula-2"}
+{"entite": "Orchard Project", "valeur": "ASP.NET"}
+{"entite": "OrfeoGPL", "valeur": "PHP"}
+{"entite": "Org-Drill", "valeur": "Emacs Lisp"}
+{"entite": "Org-mode", "valeur": "Emacs Lisp"}
+{"entite": "Org-remark", "valeur": "Emacs Lisp"}
+{"entite": "org-roam", "valeur": "Emacs Lisp"}
+{"entite": "org-translate", "valeur": "Emacs Lisp"}
+{"entite": "OS4000", "valeur": "Babbage"}
+{"entite": "OsCommerce", "valeur": "PHP"}
+{"entite": "Outline VPN", "valeur": "TypeScript"}
+{"entite": "Ovidentia", "valeur": "PHP"}
+{"entite": "OXID eShop", "valeur": "PHP"}
+{"entite": "Oxwall", "valeur": "PHP"}
+{"entite": "p4-16-mode", "valeur": "Emacs Lisp"}
+{"entite": "Paheko", "valeur": "PHP"}
+{"entite": "PancakeSwap", "valeur": "Solidity"}
+{"entite": "Pandora FMS", "valeur": "PHP"}
+{"entite": "Pantheon", "valeur": "Vala"}
+{"entite": "Parsoid", "valeur": "PHP"}
+{"entite": "Pass", "valeur": "GNU Bash"}
+{"entite": "pathe", "valeur": "TypeScript"}
+{"entite": "PC-DOS", "valeur": "assembleur"}
+{"entite": "PC-MOS/386", "valeur": "assembleur"}
+{"entite": "PChart", "valeur": "PHP"}
+{"entite": "pdf-tools", "valeur": "Emacs Lisp"}
+{"entite": "PDOS", "valeur": "assembleur"}
+{"entite": "PEAR", "valeur": "PHP"}
+{"entite": "PearPC", "valeur": "assembleur"}
+{"entite": "Peek", "valeur": "Vala"}
+{"entite": "PeerTracker", "valeur": "PHP"}
+{"entite": "Penpot", "valeur": "Clojure"}
+{"entite": "Pensées vagabondes", "valeur": "HTML"}
+{"entite": "perfect-debounce", "valeur": "TypeScript"}
+{"entite": "Phalcon", "valeur": "PHP"}
+{"entite": "Pharo", "valeur": "Smalltalk"}
+{"entite": "PhET Interactive Simulations", "valeur": "HTML5"}
+{"entite": "Phoenix", "valeur": "Elixir"}
+{"entite": "Phoronix Test Suite", "valeur": "PHP"}
+{"entite": "Phorum", "valeur": "PHP"}
+{"entite": "PhoX", "valeur": "OCaml"}
+{"entite": "PHP-Fusion", "valeur": "PHP"}
+{"entite": "PHP-GTK", "valeur": "PHP"}
+{"entite": "PHP-Nuke", "valeur": "PHP"}
+{"entite": "phpBB", "valeur": "PHP"}
+{"entite": "PHPBoost", "valeur": "PHP"}
+{"entite": "PhpGedView", "valeur": "PHP"}
+{"entite": "PhpGrabComics", "valeur": "PHP"}
+{"entite": "PhpLDAPadmin", "valeur": "PHP"}
+{"entite": "Phplist", "valeur": "PHP"}
+{"entite": "PhpLiteAdmin", "valeur": "PHP"}
+{"entite": "PHPMailer", "valeur": "PHP"}
+{"entite": "phpMyAdmin", "valeur": "PHP"}
+{"entite": "PhpMyVisites", "valeur": "PHP"}
+{"entite": "PhpPgAdmin", "valeur": "PHP"}
+{"entite": "PHProjekt", "valeur": "PHP"}
+{"entite": "PhpSQLiteAdmin", "valeur": "PHP"}
+{"entite": "PHPUnit", "valeur": "PHP"}
+{"entite": "Phpwcms", "valeur": "PHP"}
+{"entite": "Phpweblog", "valeur": "PHP"}
+{"entite": "PhpWiki", "valeur": "PHP"}
+{"entite": "PHYLIP", "valeur": "HTML"}
+{"entite": "Pick", "valeur": "assembleur"}
+{"entite": "PicoScope", "valeur": "Visual C++"}
+{"entite": "Pictoria", "valeur": "TypeScript"}
+{"entite": "Pikabu", "valeur": "PHP"}
+{"entite": "Pimcore", "valeur": "PHP"}
+{"entite": "Pivot Stickfigure Animator", "valeur": "Object Pascal"}
+{"entite": "PivotX", "valeur": "PHP"}
+{"entite": "Piwigo", "valeur": "PHP"}
+{"entite": "Pixelfed", "valeur": "PHP"}
+{"entite": "Pixie", "valeur": "PHP"}
+{"entite": "Pizza Worm", "valeur": "Turbo Pascal"}
+{"entite": "pkg-types", "valeur": "TypeScript"}
+{"entite": "PKZIP", "valeur": "assembleur"}
+{"entite": "PL/C", "valeur": "assembleur"}
+{"entite": "Plain TeX", "valeur": "TeX"}
+{"entite": "Planno", "valeur": "PHP"}
+{"entite": "Plasma", "valeur": "QML"}
+{"entite": "Pleroma", "valeur": "Elixir"}
+{"entite": "Plotly", "valeur": "Julia"}
+{"entite": "Pluck", "valeur": "PHP"}
+{"entite": "PluXml", "valeur": "PHP"}
+{"entite": "PMB", "valeur": "PHP"}
+{"entite": "PmWiki", "valeur": "PHP"}
+{"entite": "poke-mode", "valeur": "Emacs Lisp"}
+{"entite": "Pokémon Méga Donjon Mystère", "valeur": "Lua"}
+{"entite": "Pollaris", "valeur": "PHP"}
+{"entite": "Popcorn Time", "valeur": "Node.js"}
+{"entite": "Portage", "valeur": "script shell"}
+{"entite": "POSTGRES", "valeur": "QUEL"}
+{"entite": "PostNuke", "valeur": "PHP"}
+{"entite": "Potlatch", "valeur": "ActionScript"}
+{"entite": "PowerArchiver", "valeur": "Object Pascal"}
+{"entite": "PRADO", "valeur": "PHP"}
+{"entite": "Premake", "valeur": "Lua"}
+{"entite": "PrestaShop", "valeur": "PHP"}
+{"entite": "Pretty Diff", "valeur": "TypeScript"}
+{"entite": "Pretty Easy privacy", "valeur": "C99"}
+{"entite": "Prime95", "valeur": "Assembleur x86"}
+{"entite": "PriMus", "valeur": "Lua"}
+{"entite": "Prince XML", "valeur": "Mercury"}
+{"entite": "Pro Tools", "valeur": "assembleur"}
+{"entite": "ProcessWire", "valeur": "PHP"}
+{"entite": "Projax", "valeur": "PHP"}
+{"entite": "Project Zomboid", "valeur": "Lua"}
+{"entite": "Projet Gregorio", "valeur": "Lua"}
+{"entite": "Proof General", "valeur": "Emacs Lisp"}
+{"entite": "Propel", "valeur": "PHP"}
+{"entite": "Prosody", "valeur": "Lua"}
+{"entite": "Proton Calendar", "valeur": "TypeScript"}
+{"entite": "Proton Drive", "valeur": "TypeScript"}
+{"entite": "Proton Mail", "valeur": "PHP"}
+{"entite": "ProVerif", "valeur": "OCaml"}
+{"entite": "PSGML", "valeur": "Emacs Lisp"}
+{"entite": "PSPad", "valeur": "Object Pascal"}
+{"entite": "Psychedelia", "valeur": "assembleur"}
+{"entite": "PTS-DOS", "valeur": "assembleur"}
+{"entite": "Publicodes", "valeur": "TypeScript"}
+{"entite": "Publik", "valeur": "Django"}
+{"entite": "PukiWiki", "valeur": "PHP"}
+{"entite": "PUMA Repository", "valeur": "Object Pascal"}
+{"entite": "PunBB", "valeur": "PHP"}
+{"entite": "PureMVC", "valeur": "ActionScript"}
+{"entite": "PyBEL", "valeur": "Jinja"}
+{"entite": "PyCommonist", "valeur": "PyQt"}
+{"entite": "PyMC", "valeur": "langage de programmation probabiliste"}
+{"entite": "PyPy", "valeur": "RPython"}
+{"entite": "Pyright", "valeur": "TypeScript"}
+{"entite": "PyScripter", "valeur": "Object Pascal"}
+{"entite": "python-on-guile", "valeur": "GNU Guile"}
+{"entite": "PyTorch", "valeur": "Compute Unified Device Architecture"}
+{"entite": "QED", "valeur": "assembleur"}
+{"entite": "Qt Creator", "valeur": "QML"}
+{"entite": "Quarto", "valeur": "TypeScript"}
+{"entite": "Quattro Pro", "valeur": "assembleur"}
+{"entite": "Quelpa", "valeur": "Emacs Lisp"}
+{"entite": "QuickStatements 2", "valeur": "PHP"}
+{"entite": "Quiet Internet Pager", "valeur": "Delphi"}
+{"entite": "Quilt", "valeur": "script"}
+{"entite": "R&Q", "valeur": "Delphi"}
+{"entite": "Racket", "valeur": "Racket"}
+{"entite": "RAD Studio", "valeur": "Object Pascal"}
+{"entite": "radix3", "valeur": "TypeScript"}
+{"entite": "Rain Framework", "valeur": "PHP"}
+{"entite": "RainLoop", "valeur": "PHP"}
+{"entite": "Raku", "valeur": "Raku"}
+{"entite": "Rakudo", "valeur": "Raku"}
+{"entite": "Random agent spoofer", "valeur": "feuille de style en cascade"}
+{"entite": "RandomSelect.net", "valeur": "TypeScript"}
+{"entite": "ranger.el", "valeur": "Emacs Lisp"}
+{"entite": "Rational Synergy", "valeur": "Accent"}
+{"entite": "rav1d", "valeur": "assembleur"}
+{"entite": "rav1e", "valeur": "assembleur"}
+{"entite": "RBBS-PC", "valeur": "Basic"}
+{"entite": "rc9", "valeur": "TypeScript"}
+{"entite": "rcirc", "valeur": "Emacs Lisp"}
+{"entite": "rcirc-color", "valeur": "Emacs Lisp"}
+{"entite": "React", "valeur": "JSX"}
+{"entite": "react-router", "valeur": "TypeScript"}
+{"entite": "Redbean", "valeur": "PHP"}
+{"entite": "Redcap", "valeur": "PHP"}
+{"entite": "Redux", "valeur": "TypeScript"}
+{"entite": "Refbase", "valeur": "PHP"}
+{"entite": "RefDB", "valeur": "PHP"}
+{"entite": "RefTeX", "valeur": "Emacs Lisp"}
+{"entite": "Remastersys", "valeur": "GNU Bash"}
+{"entite": "RemoteAccess", "valeur": "Turbo Pascal"}
+{"entite": "Renardo", "valeur": "SuperCollider"}
+{"entite": "Renegade", "valeur": "Turbo Pascal"}
+{"entite": "ResourceSpace", "valeur": "PHP"}
+{"entite": "Riece", "valeur": "Emacs Lisp"}
+{"entite": "Rigs of Rods", "valeur": "AngelScript"}
+{"entite": "river", "valeur": "Zig"}
+{"entite": "Rkhunter", "valeur": "Bourne shell"}
+{"entite": "Rmail", "valeur": "Emacs Lisp"}
+{"entite": "Robotfindskitten", "valeur": "assembleur"}
+{"entite": "Rockbox", "valeur": "assembleur"}
+{"entite": "Rocket.Chat", "valeur": "TypeScript"}
+{"entite": "Rocq", "valeur": "OCaml"}
+{"entite": "Rodovid", "valeur": "PHP"}
+{"entite": "Romeo", "valeur": "Tcl"}
+{"entite": "Roundcube", "valeur": "PHP"}
+{"entite": "Roxen", "valeur": "Pike"}
+{"entite": "&RQ", "valeur": "Delphi"}
+{"entite": "Rspamd", "valeur": "Lua"}
+{"entite": "RSTS", "valeur": "assembleur"}
+{"entite": "RT-11", "valeur": "assembleur"}
+{"entite": "rt-liberation", "valeur": "Emacs Lisp"}
+{"entite": "Rubedo", "valeur": "PHP"}
+{"entite": "Ruby Version Manager", "valeur": "GNU Bash"}
+{"entite": "Rudder", "valeur": "Elm"}
+{"entite": "rust-mode", "valeur": "Emacs Lisp"}
+{"entite": "rustc", "valeur": "OCaml"}
+{"entite": "Rygel", "valeur": "Vala"}
+{"entite": "s2n", "valeur": "C99"}
+{"entite": "SabineOS", "valeur": "QuickBasic"}
+{"entite": "SabreDAV", "valeur": "PHP"}
+{"entite": "Safari", "valeur": "assembleur"}
+{"entite": "Sage", "valeur": "Cython"}
+{"entite": "SahysMod", "valeur": "Delphi"}
+{"entite": "Sajax", "valeur": "Active Server Pages"}
+{"entite": "Salesforce", "valeur": "Apex"}
+{"entite": "SaltMod", "valeur": "Delphi"}
+{"entite": "SAM Broadcaster", "valeur": "Delphi"}
+{"entite": "SambaÉdu", "valeur": "PHP"}
+{"entite": "San Andreas Multiplayer", "valeur": "Pawn"}
+{"entite": "SAOImage DS9", "valeur": "Tcl"}
+{"entite": "SAP", "valeur": "ABAP"}
+{"entite": "SAP NetWeaver Application Server", "valeur": "ABAP"}
+{"entite": "SAP S/4HANA", "valeur": "ABAP"}
+{"entite": "SAS.Планета", "valeur": "Delphi"}
+{"entite": "scad-mode", "valeur": "Emacs Lisp"}
+{"entite": "Scalable Inman Flash Replacement", "valeur": "Adobe Flash"}
+{"entite": "scanner", "valeur": "Emacs Lisp"}
+{"entite": "SchemeMosaic", "valeur": "Emacs Lisp"}
+{"entite": "Schoonschip", "valeur": "assembleur"}
+{"entite": "Sci-Hub", "valeur": "PHP"}
+{"entite": "scikit-image", "valeur": "Cython"}
+{"entite": "scikit-learn", "valeur": "Cython"}
+{"entite": "Scilab", "valeur": "Tcl"}
+{"entite": "SciPy", "valeur": "Cython"}
+{"entite": "SCP: Containment Breach", "valeur": "Blitz Basic"}
+{"entite": "Screenfetch", "valeur": "GNU Bash"}
+{"entite": "script PHP", "valeur": "PHP"}
+{"entite": "Scrumedge", "valeur": "PHP"}
+{"entite": "scule", "valeur": "TypeScript"}
+{"entite": "@scure/bip32", "valeur": "TypeScript"}
+{"entite": "Scuttle", "valeur": "PHP"}
+{"entite": "SearXNG", "valeur": "HTML"}
+{"entite": "Seaside", "valeur": "Smalltalk"}
+{"entite": "Second-Climacs", "valeur": "Common Lisp"}
+{"entite": "SecureDrop", "valeur": "langage de script"}
+{"entite": "sed-mode", "valeur": "Emacs Lisp"}
+{"entite": "Semantic MediaWiki", "valeur": "PHP"}
+{"entite": "Sense", "valeur": "Squeak"}
+{"entite": "Sepia search", "valeur": "TypeScript"}
+{"entite": "Serendipity", "valeur": "PHP"}
+{"entite": "serve-placeholder", "valeur": "TypeScript"}
+{"entite": "Serverless Framework", "valeur": "Node.js"}
+{"entite": "serveur Nextcloud", "valeur": "PHP"}
+{"entite": "Sguil", "valeur": "Tcl"}
+{"entite": "Shadertoy", "valeur": "GLSL"}
+{"entite": "Shadows", "valeur": "Locomotive BASIC"}
+{"entite": "Shane's Chess Information Database", "valeur": "Tcl"}
+{"entite": "Shellbox", "valeur": "PHP"}
+{"entite": "Shopware", "valeur": "PHP"}
+{"entite": "Shotwell", "valeur": "Vala"}
+{"entite": "SHRDLU", "valeur": "MacLisp"}
+{"entite": "Shrine", "valeur": "HolyC"}
+{"entite": "Sibelius", "valeur": "assembleur"}
+{"entite": "Signal", "valeur": "TypeScript"}
+{"entite": "Silex", "valeur": "PHP"}
+{"entite": "SILEX-RIA", "valeur": "PHP"}
+{"entite": "SilverStripe", "valeur": "PHP"}
+{"entite": "Similarweb", "valeur": "Hadoop"}
+{"entite": "Simple Cloud API", "valeur": "PHP"}
+{"entite": "Simple Groupware", "valeur": "PHP"}
+{"entite": "Simple Machines Forum", "valeur": "PHP"}
+{"entite": "Simple Scan", "valeur": "Vala"}
+{"entite": "SimpleTest", "valeur": "PHP"}
+{"entite": "SimThyr", "valeur": "Object Pascal"}
+{"entite": "SimulaBeta", "valeur": "Object Pascal"}
+{"entite": "Sinclair QDOS", "valeur": "assembleur"}
+{"entite": "Singularity", "valeur": "assembleur"}
+{"entite": "Site Web du groupe de travail COVID-19 du gouvernement métropolitain de Tokyo", "valeur": "Vue.js"}
+{"entite": "SiteBar", "valeur": "PHP"}
+{"entite": "Slackpkg", "valeur": "script shell"}
+{"entite": "Smallest Federated Wiki", "valeur": "CoffeeScript"}
+{"entite": "SmartEiffel", "valeur": "SmartEiffel"}
+{"entite": "Smarty", "valeur": "PHP"}
+{"entite": "SmoothVideo Project – SVP", "valeur": "Object Pascal"}
+{"entite": "SMW+", "valeur": "PHP"}
+{"entite": "Snap!", "valeur": "Squeak"}
+{"entite": "SNARK", "valeur": "Common Lisp"}
+{"entite": "SocialEngine", "valeur": "PHP"}
+{"entite": "SoftICE", "valeur": "assembleur"}
+{"entite": "SoilGrids", "valeur": "CoffeeScript"}
+{"entite": "SourceForge.net", "valeur": "PHP"}
+{"entite": "SP-Forth", "valeur": "Forth"}
+{"entite": "Space Rangers", "valeur": "Delphi"}
+{"entite": "Space Rangers 2: Dominators", "valeur": "Delphi"}
+{"entite": "Sparnatural", "valeur": "TypeScript"}
+{"entite": "SPEDAS", "valeur": "IDL"}
+{"entite": "SpeedFan", "valeur": "Object Pascal"}
+{"entite": "SpeedScript", "valeur": "assembleur"}
+{"entite": "SPINA Thyr", "valeur": "Object Pascal"}
+{"entite": "SpinRite", "valeur": "assembleur"}
+{"entite": "SPIP", "valeur": "PHP"}
+{"entite": "SPM", "valeur": "MATLAB"}
+{"entite": "SPM12", "valeur": "MATLAB"}
+{"entite": "SPM96", "valeur": "MATLAB"}
+{"entite": "SPM99", "valeur": "MATLAB"}
+{"entite": "SponsorBlock", "valeur": "TypeScript"}
+{"entite": "Spring", "valeur": "Lua"}
+{"entite": "Spring Framework", "valeur": "Groovy"}
+{"entite": "SQL Buddy", "valeur": "PHP"}
+{"entite": "SQLPage", "valeur": "Structured Query Language"}
+{"entite": "SquashTM", "valeur": "TypeScript"}
+{"entite": "SquirrelMail", "valeur": "PHP"}
+{"entite": "Staog", "valeur": "assembleur"}
+{"entite": "StarUML", "valeur": "Electron"}
+{"entite": "StatusNet", "valeur": "PHP"}
+{"entite": "std-env", "valeur": "TypeScript"}
+{"entite": "Stendhal", "valeur": "TypeScript"}
+{"entite": "StepMania", "valeur": "assembleur"}
+{"entite": "STET", "valeur": "PL/I"}
+{"entite": "Stone Kingdoms", "valeur": "Lua"}
+{"entite": "Stopping and Range of Ions in Matter", "valeur": "Visual Basic"}
+{"entite": "Strapi", "valeur": "TypeScript"}
+{"entite": "streamlit", "valeur": "TypeScript"}
+{"entite": "String Oriented Symbolic Language", "valeur": "assembleur"}
+{"entite": "StumpWM", "valeur": "Common Lisp"}
+{"entite": "subed", "valeur": "Emacs Lisp"}
+{"entite": "SubRip", "valeur": "Object Pascal"}
+{"entite": "SugarCRM", "valeur": "PHP"}
+{"entite": "SuiteCRM", "valeur": "PHP"}
+{"entite": "Super Tilt Bro", "valeur": "assembleur"}
+{"entite": "SVT-AV1", "valeur": "Assembleur x86"}
+{"entite": "Sweeprolog", "valeur": "Emacs Lisp"}
+{"entite": "Swfdec", "valeur": "ActionScript"}
+{"entite": "swift-mode", "valeur": "Emacs Lisp"}
+{"entite": "SYGEFOR", "valeur": "PHP"}
+{"entite": "Symbio", "valeur": "Visual Basic for Applications"}
+{"entite": "SymbOS", "valeur": "assembleur"}
+{"entite": "Symfony", "valeur": "PHP"}
+{"entite": "Syntorial", "valeur": "Juce"}
+{"entite": "Sysinfo", "valeur": "assembleur"}
+{"entite": "Syslinux", "valeur": "assembleur"}
+{"entite": "Système d'exploitation MIDIbox", "valeur": "assembleur"}
+{"entite": "Sytrus", "valeur": "Delphi"}
+{"entite": "TalerBarr", "valeur": "PHP"}
+{"entite": "Tanagra", "valeur": "Delphi"}
+{"entite": "Tao platform", "valeur": "PHP"}
+{"entite": "Tarantool", "valeur": "Lua"}
+{"entite": "Taskfreak", "valeur": "PHP"}
+{"entite": "Taxobot", "valeur": "PHP"}
+{"entite": "TCExam", "valeur": "PHP"}
+{"entite": "Tchernobyl", "valeur": "assembleur"}
+{"entite": "Tcllib", "valeur": "Tcl"}
+{"entite": "TCPDF", "valeur": "PHP"}
+{"entite": "TemaTres", "valeur": "PHP"}
+{"entite": "TempleOS", "valeur": "HolyC"}
+{"entite": "Tenems", "valeur": "Visual Basic"}
+{"entite": "TensorFlow.js", "valeur": "TypeScript"}
+{"entite": "TestLink", "valeur": "PHP"}
+{"entite": "Textadept", "valeur": "Lua"}
+{"entite": "Textile", "valeur": "PHP"}
+{"entite": "Textpattern", "valeur": "PHP"}
+{"entite": "Texvc", "valeur": "OCaml"}
+{"entite": "Tezos", "valeur": "OCaml"}
+{"entite": "The Bat!", "valeur": "Delphi"}
+{"entite": "The DAO", "valeur": "Solidity"}
+{"entite": "The Major BBS", "valeur": "Turbo C"}
+{"entite": "The Master Genealogist", "valeur": "Visual FoxPro"}
+{"entite": "The Next Generation of Genealogy Sitebuilding", "valeur": "PHP"}
+{"entite": "THE Operating system", "valeur": "assembleur"}
+{"entite": "The Oregon Trail", "valeur": "Basic"}
+{"entite": "The Powder Toy", "valeur": "Lua"}
+{"entite": "The Visual Novel Database", "valeur": "Elm"}
+{"entite": "TheDraw", "valeur": "Turbo Pascal"}
+{"entite": "ThreadX", "valeur": "assembleur"}
+{"entite": "Thunder", "valeur": "PHP"}
+{"entite": "TigerWiki", "valeur": "PHP"}
+{"entite": "TiK", "valeur": "Tcl"}
+{"entite": "Time Warp Operating System", "valeur": "assembleur"}
+{"entite": "Tiny C Compiler", "valeur": "assembleur"}
+{"entite": "Tiny Tiny RSS", "valeur": "PHP"}
+{"entite": "TinyButStrong", "valeur": "PHP"}
+{"entite": "TinyOS", "valeur": "NesC"}
+{"entite": "Tizen", "valeur": "HTML"}
+{"entite": "Tkabber", "valeur": "Tcl"}
+{"entite": "TkCVS", "valeur": "Tcl"}
+{"entite": "Tkdesk", "valeur": "Tcl"}
+{"entite": "Tkhtml", "valeur": "Tcl"}
+{"entite": "TkWWW", "valeur": "Tcl"}
+{"entite": "Toga", "valeur": "HTML5"}
+{"entite": "Tokonomics", "valeur": "PHP"}
+{"entite": "Tom's verlustfreier Audiokompressor", "valeur": "assembleur"}
+{"entite": "ToME", "valeur": "Lua"}
+{"entite": "ToolboX", "valeur": "GNU Octave"}
+{"entite": "TOPS-10", "valeur": "BLISS"}
+{"entite": "TopStyle", "valeur": "Delphi"}
+{"entite": "Torch", "valeur": "Lua"}
+{"entite": "TorrentFlux", "valeur": "PHP"}
+{"entite": "TorrentPier", "valeur": "PHP"}
+{"entite": "Tosca", "valeur": "Visual Basic"}
+{"entite": "Totara LMS", "valeur": "PHP"}
+{"entite": "Toucher", "valeur": "HTML"}
+{"entite": "TrackMyRent", "valeur": "TypeScript"}
+{"entite": "Traité de documentation. Trois poèmes algorithmiques", "valeur": "français"}
+{"entite": "TRAMP", "valeur": "Emacs Lisp"}
+{"entite": "TranscriberAG", "valeur": "Tcl"}
+{"entite": "Transformice", "valeur": "Adobe Flash"}
+{"entite": "translatewiki.net", "valeur": "PHP"}
+{"entite": "Transport Tycoon", "valeur": "assembleur"}
+{"entite": "Travian", "valeur": "PHP"}
+{"entite": "TrID", "valeur": "FreeBasic"}
+{"entite": "TrueCrypt", "valeur": "assembleur"}
+{"entite": "TRURL", "valeur": "Object Pascal"}
+{"entite": "tsc", "valeur": "TypeScript"}
+{"entite": "TSS/360", "valeur": "assembleur"}
+{"entite": "Tuleap Enterprise", "valeur": "PHP"}
+{"entite": "Turbo Basic", "valeur": "Basic"}
+{"entite": "Turbo Pascal", "valeur": "assembleur"}
+{"entite": "TurboCASH", "valeur": "Delphi"}
+{"entite": "Tut.By", "valeur": "PHP"}
+{"entite": "Tuta", "valeur": "TypeScript"}
+{"entite": "Tux Commander", "valeur": "Object Pascal"}
+{"entite": "Tux Racer", "valeur": "Tcl"}
+{"entite": "tvtime", "valeur": "assembleur"}
+{"entite": "Tween", "valeur": "Visual Basic .NET"}
+{"entite": "Twig", "valeur": "PHP"}
+{"entite": "^txt2regex$", "valeur": "GNU Bash"}
+{"entite": "TypeScript", "valeur": "TypeScript"}
+{"entite": "TYPO3", "valeur": "PHP"}
+{"entite": "TYPO3 Flow", "valeur": "PHP"}
+{"entite": "UAE", "valeur": "assembleur"}
+{"entite": "Ubuntu Customization Kit", "valeur": "Bourne shell"}
+{"entite": "UFMOD", "valeur": "assembleur"}
+{"entite": "ufo", "valeur": "TypeScript"}
+{"entite": "UltraBackup", "valeur": "Delphi"}
+{"entite": "UltraStar", "valeur": "Delphi"}
+{"entite": "Ultrastar deluxe", "valeur": "Object Pascal"}
+{"entite": "UMI.CMS", "valeur": "PHP"}
+{"entite": "uncrypto", "valeur": "TypeScript"}
+{"entite": "unctx", "valeur": "TypeScript"}
+{"entite": "unenv", "valeur": "TypeScript"}
+{"entite": "UniFLEX", "valeur": "assembleur"}
+{"entite": "unimport", "valeur": "TypeScript"}
+{"entite": "Unison", "valeur": "OCaml"}
+{"entite": "unplugin", "valeur": "TypeScript"}
+{"entite": "Unreal Commander", "valeur": "Object Pascal"}
+{"entite": "unstorage", "valeur": "TypeScript"}
+{"entite": "untyped", "valeur": "TypeScript"}
+{"entite": "uProxy", "valeur": "TypeScript"}
+{"entite": "UPX", "valeur": "assembleur"}
+{"entite": "Urbi", "valeur": "urbiscript"}
+{"entite": "UserPageEditProtection", "valeur": "PHP"}
+{"entite": "V-USB", "valeur": "assembleur"}
+{"entite": "Vala", "valeur": "Vala"}
+{"entite": "ValueMarkers", "valeur": "TypeScript"}
+{"entite": "Vanilla Forums", "valeur": "PHP"}
+{"entite": "vBulletin", "valeur": "PHP"}
+{"entite": "VC Deal Flow Signal", "valeur": "TypeScript"}
+{"entite": "Vegas Pro", "valeur": "JScript"}
+{"entite": "Verge3D", "valeur": "GLSL"}
+{"entite": "ViewFD", "valeur": "Delphi"}
+{"entite": "Vimium", "valeur": "CoffeeScript"}
+{"entite": "vimwiki", "valeur": "Vim script"}
+{"entite": "ViolaWWW", "valeur": "Viola"}
+{"entite": "ViralMint", "valeur": "TypeScript"}
+{"entite": "Virtual Pascal", "valeur": "assembleur"}
+{"entite": "VirtualBox", "valeur": "assembleur"}
+{"entite": "VirtueMart", "valeur": "PHP"}
+{"entite": "virus Pikachu", "valeur": "Visual Basic"}
+{"entite": "VisiCalc", "valeur": "assembleur"}
+{"entite": "VisualEditor", "valeur": "PHP"}
+{"entite": "VKontakte", "valeur": "KPHP"}
+{"entite": "Volkov Commander", "valeur": "Assembleur x86"}
+{"entite": "VoxelSpace", "valeur": "assembleur"}
+{"entite": "Vtags", "valeur": "Emacs Lisp"}
+{"entite": "VTECRM", "valeur": "PHP"}
+{"entite": "vtiger CRM", "valeur": "PHP"}
+{"entite": "VTK", "valeur": "Tcl"}
+{"entite": "Vue.js", "valeur": "TypeScript"}
+{"entite": "Vuetify", "valeur": "TypeScript"}
+{"entite": "Vuex", "valeur": "TypeScript"}
+{"entite": "VuFind", "valeur": "PHP"}
+{"entite": "W3C Geolocation API", "valeur": "ECMAScript"}
+{"entite": "WackoWiki", "valeur": "PHP"}
+{"entite": "Wagtail", "valeur": "Django"}
+{"entite": "Wallabag", "valeur": "PHP"}
+{"entite": "Wanderlust", "valeur": "Emacs Lisp"}
+{"entite": "WAPT", "valeur": "Object Pascal"}
+{"entite": "Warhammer 40,000: Dawn of War", "valeur": "Lua"}
+{"entite": "WATFIV", "valeur": "assembleur"}
+{"entite": "WaveSurfer", "valeur": "Tcl"}
+{"entite": "Waxweb", "valeur": "HTML"}
+{"entite": "WB", "valeur": "SCM"}
+{"entite": "Web2project", "valeur": "PHP"}
+{"entite": "webERP", "valeur": "PHP"}
+{"entite": "Webfmt", "valeur": "PHP"}
+{"entite": "WebKiosk", "valeur": "PHP"}
+{"entite": "Weblocks", "valeur": "Common Lisp"}
+{"entite": "webpackbar", "valeur": "TypeScript"}
+{"entite": "WebSharper", "valeur": "F#"}
+{"entite": "Webtrees", "valeur": "PHP"}
+{"entite": "Webtrekk", "valeur": "PHP"}
+{"entite": "werc", "valeur": "Rc"}
+{"entite": "WIEN2k", "valeur": "Fortran 90"}
+{"entite": "wikibase/data-model-serialization", "valeur": "PHP"}
+{"entite": "Wikibase RDF", "valeur": "PHP"}
+{"entite": "WikiBhasha", "valeur": "PHP"}
+{"entite": "WikiNi", "valeur": "PHP"}
+{"entite": "Wikipédia", "valeur": "PHP"}
+{"entite": "WikiTrust", "valeur": "PHP"}
+{"entite": "WikkaWiki", "valeur": "PHP"}
+{"entite": "WIMS", "valeur": "feuille de style en cascade"}
+{"entite": "WinBtrfs", "valeur": "Visual C++"}
+{"entite": "WinBUGS", "valeur": "Component Pascal"}
+{"entite": "WinBuilder", "valeur": "Delphi"}
+{"entite": "Wine", "valeur": "assembleur"}
+{"entite": "WinFF", "valeur": "Free Pascal"}
+{"entite": "Winmostar", "valeur": "Delphi"}
+{"entite": "WinNc", "valeur": "Object Pascal"}
+{"entite": "WinRoll", "valeur": "assembleur"}
+{"entite": "Wisej.NET", "valeur": "Visual Basic"}
+{"entite": "WLM maps", "valeur": "PHP"}
+{"entite": "WoltLab Burning Board", "valeur": "PHP"}
+{"entite": "WooCommerce", "valeur": "PHP"}
+{"entite": "WordGrinder", "valeur": "Lua"}
+{"entite": "WorkPLAN", "valeur": "Delphi"}
+{"entite": "WSexport", "valeur": "PHP"}
+{"entite": "WWIV", "valeur": "Basic"}
+{"entite": "WxDev-C++", "valeur": "Object Pascal"}
+{"entite": "Wzonka-Lad", "valeur": "assembleur"}
+{"entite": "X-Cart", "valeur": "PHP"}
+{"entite": "X264", "valeur": "assembleur"}
+{"entite": "xah-fly-keys", "valeur": "Emacs Lisp"}
+{"entite": "Xaraya", "valeur": "PHP"}
+{"entite": "XDA Developers", "valeur": "PHP"}
+{"entite": "XenForo", "valeur": "PHP"}
+{"entite": "Xenia", "valeur": "assembleur"}
+{"entite": "Xfig", "valeur": "Xlib"}
+{"entite": "XGBoost", "valeur": "Julia"}
+{"entite": "XHP", "valeur": "PHP"}
+{"entite": "XLispStat", "valeur": "XLISP"}
+{"entite": "Xoops", "valeur": "PHP"}
+{"entite": "XOOPS Cube", "valeur": "PHP"}
+{"entite": "XPages", "valeur": "HTML"}
+{"entite": "XPL0", "valeur": "Algol"}
+{"entite": "Xplico", "valeur": "PHP"}
+{"entite": "Xvid", "valeur": "assembleur"}
+{"entite": "XWEM", "valeur": "Emacs Lisp"}
+{"entite": "xxhash-wasm", "valeur": "WebAssembly"}
+{"entite": "YAMON", "valeur": "assembleur"}
+{"entite": "Yarn", "valeur": "TypeScript"}
+{"entite": "Yasca", "valeur": "PHP"}
+{"entite": "Yasgui", "valeur": "TypeScript"}
+{"entite": "YASnippet", "valeur": "Emacs Lisp"}
+{"entite": "YesWiki", "valeur": "PHP"}
+{"entite": "Yii Framework", "valeur": "PHP"}
+{"entite": "Ymacs", "valeur": "Emacs Lisp"}
+{"entite": "YvorAIO", "valeur": "TypeScript"}
+{"entite": "Z-machine", "valeur": "Inform"}
+{"entite": "Z/OS", "valeur": "PL/X"}
+{"entite": "Zabbix", "valeur": "PHP"}
+{"entite": "ZCAD", "valeur": "Free Pascal"}
+{"entite": "Zee", "valeur": "Lua"}
+{"entite": "Zeitgeist", "valeur": "Vala"}
+{"entite": "Zend Framework", "valeur": "PHP"}
+{"entite": "ZetaChain", "valeur": "Solidity"}
+{"entite": "Zikula", "valeur": "PHP"}
+{"entite": "zod", "valeur": "TypeScript"}
+{"entite": "ZoneMinder", "valeur": "PHP"}
+{"entite": "ZSNES", "valeur": "assembleur"}

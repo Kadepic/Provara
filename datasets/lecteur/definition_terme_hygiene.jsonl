@@ -1,0 +1,5 @@
+{"_relation": "definition_terme_hygiene", "_categorie": "physique", "_source": "Modèle (Claude) — hygiène textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "antisepsie", "valeur": "destruction des micro-organismes sur les tissus vivants"}
+{"entite": "asepsie", "valeur": "absence de micro-organismes"}
+{"entite": "désinfection", "valeur": "destruction des micro-organismes sur les surfaces"}
+{"entite": "stérilisation", "valeur": "destruction de tous les micro-organismes"}

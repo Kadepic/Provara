@@ -1,0 +1,23 @@
+{"_relation": "mesure_instrument", "_categorie": "convention", "_source": "métrologie de référence (instrument -> grandeur mesurée)", "_articles": true}
+{"entite": "altimètre", "valeur": "l'altitude"}
+{"entite": "ampèremètre", "valeur": "l'intensité électrique"}
+{"entite": "anémomètre", "valeur": "la vitesse du vent"}
+{"entite": "balance", "valeur": "la masse"}
+{"entite": "baromètre", "valeur": "la pression atmosphérique"}
+{"entite": "boussole", "valeur": "la direction (le nord)"}
+{"entite": "chronomètre", "valeur": "le temps"}
+{"entite": "compteur geiger", "valeur": "la radioactivité"}
+{"entite": "dynamomètre", "valeur": "la force"}
+{"entite": "hygromètre", "valeur": "l'humidité"}
+{"entite": "luxmètre", "valeur": "l'éclairement lumineux"}
+{"entite": "manomètre", "valeur": "la pression d'un fluide"}
+{"entite": "odomètre", "valeur": "la distance parcourue"}
+{"entite": "ohmmètre", "valeur": "la résistance électrique"}
+{"entite": "pèse-personne", "valeur": "le poids"}
+{"entite": "pluviomètre", "valeur": "les précipitations"}
+{"entite": "podomètre", "valeur": "le nombre de pas"}
+{"entite": "sismographe", "valeur": "les séismes"}
+{"entite": "sonomètre", "valeur": "le niveau sonore"}
+{"entite": "tensiomètre", "valeur": "la pression artérielle"}
+{"entite": "thermomètre", "valeur": "la température"}
+{"entite": "voltmètre", "valeur": "la tension électrique"}

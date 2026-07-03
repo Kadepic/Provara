@@ -1,0 +1,11 @@
+{"_relation": "valeur_couleur_resistance", "_categorie": "convention", "_source": "code des couleurs CEI 60062 (couleur -> chiffre)", "_articles": true}
+{"entite": "blanc", "valeur": "9"}
+{"entite": "bleu", "valeur": "6"}
+{"entite": "gris", "valeur": "8"}
+{"entite": "jaune", "valeur": "4"}
+{"entite": "marron", "valeur": "1"}
+{"entite": "noir", "valeur": "0"}
+{"entite": "orange", "valeur": "3"}
+{"entite": "rouge", "valeur": "2"}
+{"entite": "vert", "valeur": "5"}
+{"entite": "violet", "valeur": "7"}

@@ -1,0 +1,35 @@
+{"_relation": "type_appendice_cephalique", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (bois/corne/défense ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "addax", "valeur": "corne"}
+{"entite": "antilope", "valeur": "corne"}
+{"entite": "babiroussa", "valeur": "défense"}
+{"entite": "bison", "valeur": "corne"}
+{"entite": "bouquetin", "valeur": "corne"}
+{"entite": "buffle", "valeur": "corne"}
+{"entite": "cariacou", "valeur": "bois"}
+{"entite": "caribou", "valeur": "bois"}
+{"entite": "cerf", "valeur": "bois"}
+{"entite": "chamois", "valeur": "corne"}
+{"entite": "chèvre", "valeur": "corne"}
+{"entite": "chevreuil", "valeur": "bois"}
+{"entite": "daim", "valeur": "bois"}
+{"entite": "élan", "valeur": "bois"}
+{"entite": "éléphant d'Afrique", "valeur": "défense"}
+{"entite": "gnou", "valeur": "corne"}
+{"entite": "hippopotame", "valeur": "défense"}
+{"entite": "impala", "valeur": "corne"}
+{"entite": "isard", "valeur": "corne"}
+{"entite": "koudou", "valeur": "corne"}
+{"entite": "morse", "valeur": "défense"}
+{"entite": "mouflon", "valeur": "corne"}
+{"entite": "mouton", "valeur": "corne"}
+{"entite": "narval", "valeur": "défense"}
+{"entite": "orignal", "valeur": "bois"}
+{"entite": "oryx", "valeur": "corne"}
+{"entite": "phacochère", "valeur": "défense"}
+{"entite": "renne", "valeur": "bois"}
+{"entite": "rhinocéros blanc", "valeur": "corne"}
+{"entite": "sanglier", "valeur": "défense"}
+{"entite": "springbok", "valeur": "corne"}
+{"entite": "vache", "valeur": "corne"}
+{"entite": "wapiti", "valeur": "bois"}
+{"entite": "yack", "valeur": "corne"}

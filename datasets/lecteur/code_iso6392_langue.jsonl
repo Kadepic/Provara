@@ -1,0 +1,397 @@
+{"_relation": "code_iso6392_langue", "_categorie": "convention", "_source": "Wikidata/QLever — CODE ISO 639-2 DE LA LANGUE P219", "_articles": true}
+{"entite": "abkhaze", "valeur": "abk"}
+{"entite": "acehnais", "valeur": "ace"}
+{"entite": "acholi", "valeur": "ach"}
+{"entite": "adangme", "valeur": "ada"}
+{"entite": "adyguéen", "valeur": "ady"}
+{"entite": "afar", "valeur": "aar"}
+{"entite": "afrihili", "valeur": "afh"}
+{"entite": "afrikaans", "valeur": "afr"}
+{"entite": "aïnou", "valeur": "ain"}
+{"entite": "akan", "valeur": "aka"}
+{"entite": "akkadien", "valeur": "akk"}
+{"entite": "alémanique", "valeur": "gsw"}
+{"entite": "aléoute", "valeur": "ale"}
+{"entite": "altaï méridional", "valeur": "alt"}
+{"entite": "amazighe standard marocain", "valeur": "zgh"}
+{"entite": "amharique", "valeur": "amh"}
+{"entite": "ancien français", "valeur": "fro"}
+{"entite": "ancien occitan", "valeur": "pro"}
+{"entite": "angika", "valeur": "anp"}
+{"entite": "anglais", "valeur": "eng"}
+{"entite": "arabe", "valeur": "ara"}
+{"entite": "aragonais", "valeur": "arg"}
+{"entite": "araméen impérial", "valeur": "arc"}
+{"entite": "araméen samaritain", "valeur": "sam"}
+{"entite": "arapaho", "valeur": "arp"}
+{"entite": "aroumain", "valeur": "rup"}
+{"entite": "assamais", "valeur": "asm"}
+{"entite": "asturien", "valeur": "ast"}
+{"entite": "avar", "valeur": "ava"}
+{"entite": "avestique", "valeur": "ave"}
+{"entite": "awadhi", "valeur": "awa"}
+{"entite": "aymara", "valeur": "aym"}
+{"entite": "azéri", "valeur": "aze"}
+{"entite": "bachkir", "valeur": "bak"}
+{"entite": "balinais", "valeur": "ban"}
+{"entite": "baloutche", "valeur": "bal"}
+{"entite": "bambara", "valeur": "bam"}
+{"entite": "bas allemand", "valeur": "nds"}
+{"entite": "bas saxon de Frise orientale", "valeur": "frs"}
+{"entite": "bas-sorabe", "valeur": "dsb"}
+{"entite": "bassa", "valeur": "bas"}
+{"entite": "bedja", "valeur": "bej"}
+{"entite": "bemba", "valeur": "bem"}
+{"entite": "bengali", "valeur": "ben"}
+{"entite": "bhodjpouri", "valeur": "bho"}
+{"entite": "bichelamar", "valeur": "bis"}
+{"entite": "biélorusse", "valeur": "bel"}
+{"entite": "bilen", "valeur": "byn"}
+{"entite": "bliss", "valeur": "zbl"}
+{"entite": "bokmål", "valeur": "nob"}
+{"entite": "bouguinais", "valeur": "bug"}
+{"entite": "bouriate", "valeur": "bua"}
+{"entite": "braj Bhasha", "valeur": "bra"}
+{"entite": "breton", "valeur": "bre"}
+{"entite": "bulgare", "valeur": "bul"}
+{"entite": "cachemiri", "valeur": "kas"}
+{"entite": "cachoube", "valeur": "csb"}
+{"entite": "caddo", "valeur": "cad"}
+{"entite": "carélien", "valeur": "krl"}
+{"entite": "catalan", "valeur": "cat"}
+{"entite": "cébouano", "valeur": "ceb"}
+{"entite": "chamorro", "valeur": "cha"}
+{"entite": "cherokee", "valeur": "chr"}
+{"entite": "chewa", "valeur": "nya"}
+{"entite": "cheyenne", "valeur": "chy"}
+{"entite": "chinook", "valeur": "chn"}
+{"entite": "chipewyan", "valeur": "chp"}
+{"entite": "chiyao", "valeur": "yao"}
+{"entite": "choctaw", "valeur": "cho"}
+{"entite": "chuuk", "valeur": "chk"}
+{"entite": "copte", "valeur": "cop"}
+{"entite": "coréen", "valeur": "kor"}
+{"entite": "cornique", "valeur": "cor"}
+{"entite": "corse", "valeur": "cos"}
+{"entite": "creek", "valeur": "mus"}
+{"entite": "créole haïtien", "valeur": "hat"}
+{"entite": "cri", "valeur": "cre"}
+{"entite": "croate", "valeur": "hrv"}
+{"entite": "dakota", "valeur": "dak"}
+{"entite": "danois", "valeur": "dan"}
+{"entite": "dargwa", "valeur": "dar"}
+{"entite": "dinka", "valeur": "din"}
+{"entite": "dioula", "valeur": "dyu"}
+{"entite": "Duala", "valeur": "dua"}
+{"entite": "dzhidi", "valeur": "jpr"}
+{"entite": "dzongkha", "valeur": "dzo"}
+{"entite": "écossais", "valeur": "sco"}
+{"entite": "édo", "valeur": "bin"}
+{"entite": "efik", "valeur": "efi"}
+{"entite": "égyptien ancien", "valeur": "egy"}
+{"entite": "ékajuk", "valeur": "eka"}
+{"entite": "élamite", "valeur": "elx"}
+{"entite": "erzya", "valeur": "myv"}
+{"entite": "esclave", "valeur": "den"}
+{"entite": "espagnol", "valeur": "spa"}
+{"entite": "espéranto", "valeur": "epo"}
+{"entite": "estonien", "valeur": "est"}
+{"entite": "ewé", "valeur": "ewe"}
+{"entite": "ewondo", "valeur": "ewo"}
+{"entite": "fang", "valeur": "fan"}
+{"entite": "fanti", "valeur": "fat"}
+{"entite": "féroïen", "valeur": "fao"}
+{"entite": "fidjien", "valeur": "fij"}
+{"entite": "finnois", "valeur": "fin"}
+{"entite": "fon-gbe", "valeur": "fon"}
+{"entite": "frioulan", "valeur": "fur"}
+{"entite": "frison occidental", "valeur": "fry"}
+{"entite": "frison septentrional", "valeur": "frr"}
+{"entite": "ga", "valeur": "gaa"}
+{"entite": "gaélique écossais", "valeur": "gla"}
+{"entite": "galicien", "valeur": "glg"}
+{"entite": "gayo", "valeur": "gay"}
+{"entite": "gilbertin", "valeur": "gil"}
+{"entite": "gondi", "valeur": "gon"}
+{"entite": "gorontalo", "valeur": "gor"}
+{"entite": "gotique", "valeur": "got"}
+{"entite": "grebo", "valeur": "grb"}
+{"entite": "grec ancien", "valeur": "grc"}
+{"entite": "groenlandais", "valeur": "kal"}
+{"entite": "guarani", "valeur": "grn"}
+{"entite": "guèze", "valeur": "gez"}
+{"entite": "gujarati", "valeur": "guj"}
+{"entite": "gwich’in", "valeur": "gwi"}
+{"entite": "haïda", "valeur": "hai"}
+{"entite": "haoussa", "valeur": "hau"}
+{"entite": "haut-sorabe", "valeur": "hsb"}
+{"entite": "hawaïen", "valeur": "haw"}
+{"entite": "hébreu", "valeur": "heb"}
+{"entite": "héréro", "valeur": "her"}
+{"entite": "hiligaïnon", "valeur": "hil"}
+{"entite": "hiri motou", "valeur": "hmo"}
+{"entite": "hittite", "valeur": "hit"}
+{"entite": "hongrois", "valeur": "hun"}
+{"entite": "hupa", "valeur": "hup"}
+{"entite": "iakoute", "valeur": "sah"}
+{"entite": "iban", "valeur": "iba"}
+{"entite": "ido", "valeur": "ido"}
+{"entite": "igbo", "valeur": "ibo"}
+{"entite": "ilocano", "valeur": "ilo"}
+{"entite": "indonésien", "valeur": "ind"}
+{"entite": "ingouche", "valeur": "inh"}
+{"entite": "interlingua", "valeur": "ina"}
+{"entite": "inuktitut", "valeur": "iku"}
+{"entite": "inupiaq", "valeur": "ipk"}
+{"entite": "irlandais", "valeur": "gle"}
+{"entite": "italien", "valeur": "ita"}
+{"entite": "japonais", "valeur": "jpn"}
+{"entite": "javanais", "valeur": "jav"}
+{"entite": "jinghpo", "valeur": "kac"}
+{"entite": "judéo-arabe", "valeur": "jrb"}
+{"entite": "kabarde", "valeur": "kbd"}
+{"entite": "kabyle", "valeur": "kab"}
+{"entite": "kali'na", "valeur": "car"}
+{"entite": "kamba", "valeur": "kam"}
+{"entite": "kannara", "valeur": "kan"}
+{"entite": "kanouri", "valeur": "kau"}
+{"entite": "karakalpak", "valeur": "kaa"}
+{"entite": "karatchaï-balkar", "valeur": "krc"}
+{"entite": "kawi", "valeur": "kaw"}
+{"entite": "kazakh", "valeur": "kaz"}
+{"entite": "khasi", "valeur": "kha"}
+{"entite": "khmer", "valeur": "khm"}
+{"entite": "khotanais", "valeur": "kho"}
+{"entite": "kikongo", "valeur": "kon"}
+{"entite": "kikuyu", "valeur": "kik"}
+{"entite": "kimbundu", "valeur": "kmb"}
+{"entite": "kinyarwanda", "valeur": "kin"}
+{"entite": "kirghize", "valeur": "kir"}
+{"entite": "kirundi", "valeur": "run"}
+{"entite": "klingon", "valeur": "tlh"}
+{"entite": "komi", "valeur": "kom"}
+{"entite": "konkani", "valeur": "kok"}
+{"entite": "kosrae", "valeur": "kos"}
+{"entite": "koumyk", "valeur": "kum"}
+{"entite": "kpèllé", "valeur": "kpe"}
+{"entite": "kurde", "valeur": "kur"}
+{"entite": "kurukh", "valeur": "kru"}
+{"entite": "kutenai", "valeur": "kut"}
+{"entite": "kwanyama", "valeur": "kua"}
+{"entite": "lamba", "valeur": "lam"}
+{"entite": "langue limbourgeoise", "valeur": "lim"}
+{"entite": "langues bicol", "valeur": "bik"}
+{"entite": "langues chamito-sémitiques", "valeur": "afa"}
+{"entite": "langues dayak des terres", "valeur": "day"}
+{"entite": "langues delaware", "valeur": "del"}
+{"entite": "langues gbaya", "valeur": "gba"}
+{"entite": "langues kangri-dogri", "valeur": "doi"}
+{"entite": "langues karens", "valeur": "kar"}
+{"entite": "langues mandingues", "valeur": "man"}
+{"entite": "langues touarègues", "valeur": "tmh"}
+{"entite": "langues zapotèques", "valeur": "zap"}
+{"entite": "lao", "valeur": "lao"}
+{"entite": "latin", "valeur": "lat"}
+{"entite": "letton", "valeur": "lav"}
+{"entite": "lezghien", "valeur": "lez"}
+{"entite": "lingala", "valeur": "lin"}
+{"entite": "lituanien", "valeur": "lit"}
+{"entite": "lojban", "valeur": "jbo"}
+{"entite": "lokono", "valeur": "arw"}
+{"entite": "lomongo", "valeur": "lol"}
+{"entite": "lozi", "valeur": "loz"}
+{"entite": "luba-kasaï", "valeur": "lua"}
+{"entite": "luba-katanga", "valeur": "lub"}
+{"entite": "luganda", "valeur": "lug"}
+{"entite": "luiseño", "valeur": "lui"}
+{"entite": "lunda", "valeur": "lun"}
+{"entite": "luo", "valeur": "luo"}
+{"entite": "luxembourgeois", "valeur": "ltz"}
+{"entite": "maa", "valeur": "mas"}
+{"entite": "madourais", "valeur": "mad"}
+{"entite": "magahi", "valeur": "mag"}
+{"entite": "maïthili", "valeur": "mai"}
+{"entite": "makassar", "valeur": "mak"}
+{"entite": "malayâlam", "valeur": "mal"}
+{"entite": "maldivien", "valeur": "div"}
+{"entite": "malgache", "valeur": "mlg"}
+{"entite": "maltais", "valeur": "mlt"}
+{"entite": "mandar", "valeur": "mdr"}
+{"entite": "mandchou", "valeur": "mnc"}
+{"entite": "mannois", "valeur": "glv"}
+{"entite": "maori des îles Cook", "valeur": "rar"}
+{"entite": "mapudungun", "valeur": "arn"}
+{"entite": "marathi", "valeur": "mar"}
+{"entite": "mari", "valeur": "chm"}
+{"entite": "marshallais", "valeur": "mah"}
+{"entite": "marvari", "valeur": "mwr"}
+{"entite": "meitei", "valeur": "mni"}
+{"entite": "mendé", "valeur": "men"}
+{"entite": "miao chuanqiandian", "valeur": "hmn"}
+{"entite": "micmac", "valeur": "mic"}
+{"entite": "minangkabau", "valeur": "min"}
+{"entite": "mirandais", "valeur": "mwl"}
+{"entite": "mizo", "valeur": "lus"}
+{"entite": "mohawk", "valeur": "moh"}
+{"entite": "moksa", "valeur": "mdf"}
+{"entite": "mongol", "valeur": "mon"}
+{"entite": "monténégrin", "valeur": "cnr"}
+{"entite": "mooré", "valeur": "mos"}
+{"entite": "moyen anglais", "valeur": "enm"}
+{"entite": "moyen français", "valeur": "frm"}
+{"entite": "moyen haut-allemand", "valeur": "gmh"}
+{"entite": "moyen irlandais", "valeur": "mga"}
+{"entite": "moyen néerlandais", "valeur": "dum"}
+{"entite": "moyen-perse", "valeur": "pal"}
+{"entite": "muisca", "valeur": "chb"}
+{"entite": "n’ko", "valeur": "nqo"}
+{"entite": "nahuatl", "valeur": "nah"}
+{"entite": "napolitain", "valeur": "nap"}
+{"entite": "nauruan", "valeur": "nau"}
+{"entite": "navajo", "valeur": "nav"}
+{"entite": "ndonga", "valeur": "ndo"}
+{"entite": "népalais", "valeur": "nep"}
+{"entite": "newari", "valeur": "new"}
+{"entite": "newari classique", "valeur": "nwc"}
+{"entite": "niha", "valeur": "nia"}
+{"entite": "niuéen", "valeur": "niu"}
+{"entite": "nkore", "valeur": "nyn"}
+{"entite": "nogaï", "valeur": "nog"}
+{"entite": "norvégien", "valeur": "nor"}
+{"entite": "nrebele", "valeur": "nbl"}
+{"entite": "nuosu", "valeur": "iii"}
+{"entite": "nyamwezi", "valeur": "nym"}
+{"entite": "nynorsk", "valeur": "nno"}
+{"entite": "nyoro", "valeur": "nyo"}
+{"entite": "nzema", "valeur": "nzi"}
+{"entite": "occidental", "valeur": "ile"}
+{"entite": "occitan", "valeur": "oci"}
+{"entite": "oïrate", "valeur": "xal"}
+{"entite": "ojibwé", "valeur": "oji"}
+{"entite": "oriya", "valeur": "ori"}
+{"entite": "oromo", "valeur": "orm"}
+{"entite": "osage", "valeur": "osa"}
+{"entite": "oudmourte", "valeur": "udm"}
+{"entite": "ougaritique", "valeur": "uga"}
+{"entite": "ouïghour", "valeur": "uig"}
+{"entite": "ourdou", "valeur": "urd"}
+{"entite": "ouzbek", "valeur": "uzb"}
+{"entite": "pachto", "valeur": "pus"}
+{"entite": "palau", "valeur": "pau"}
+{"entite": "pali", "valeur": "pli"}
+{"entite": "pampangue", "valeur": "pam"}
+{"entite": "pangassinais", "valeur": "pag"}
+{"entite": "papiamento", "valeur": "pap"}
+{"entite": "pendjabi", "valeur": "pan"}
+{"entite": "peul", "valeur": "ful"}
+{"entite": "phénicien", "valeur": "phn"}
+{"entite": "phom", "valeur": "phg"}
+{"entite": "pied-noir", "valeur": "bla"}
+{"entite": "pohnpei", "valeur": "pon"}
+{"entite": "polonais", "valeur": "pol"}
+{"entite": "portugais", "valeur": "por"}
+{"entite": "prakrit", "valeur": "pra"}
+{"entite": "quechua", "valeur": "que"}
+{"entite": "rajasthanais", "valeur": "raj"}
+{"entite": "rapanui", "valeur": "rap"}
+{"entite": "romanche", "valeur": "roh"}
+{"entite": "romani", "valeur": "rom"}
+{"entite": "russe", "valeur": "rus"}
+{"entite": "same d'Inari", "valeur": "smn"}
+{"entite": "same de Lule", "valeur": "smj"}
+{"entite": "same du Nord", "valeur": "sme"}
+{"entite": "same du Sud", "valeur": "sma"}
+{"entite": "same skolt", "valeur": "sms"}
+{"entite": "samoan", "valeur": "smo"}
+{"entite": "sandawe", "valeur": "sad"}
+{"entite": "sango", "valeur": "sag"}
+{"entite": "sanskrit", "valeur": "san"}
+{"entite": "santâlî", "valeur": "sat"}
+{"entite": "sarde", "valeur": "srd"}
+{"entite": "sasak", "valeur": "sas"}
+{"entite": "selkoupe", "valeur": "sel"}
+{"entite": "serbe", "valeur": "srp"}
+{"entite": "sérère", "valeur": "srr"}
+{"entite": "shan", "valeur": "shn"}
+{"entite": "shona", "valeur": "sna"}
+{"entite": "sicilien", "valeur": "scn"}
+{"entite": "sidama", "valeur": "sid"}
+{"entite": "sindebele", "valeur": "nde"}
+{"entite": "sindhi", "valeur": "snd"}
+{"entite": "singhalais", "valeur": "sin"}
+{"entite": "slavon d’église", "valeur": "chu"}
+{"entite": "slovène", "valeur": "slv"}
+{"entite": "sogdien", "valeur": "sog"}
+{"entite": "somali", "valeur": "som"}
+{"entite": "soninké", "valeur": "snk"}
+{"entite": "sorabe", "valeur": "wen"}
+{"entite": "sotho du Nord", "valeur": "nso"}
+{"entite": "sotho du Sud", "valeur": "sot"}
+{"entite": "soundanais", "valeur": "sun"}
+{"entite": "soussou", "valeur": "sus"}
+{"entite": "sranan", "valeur": "srn"}
+{"entite": "suédois", "valeur": "swe"}
+{"entite": "sukuma", "valeur": "suk"}
+{"entite": "sumérien", "valeur": "sux"}
+{"entite": "swahili", "valeur": "swa"}
+{"entite": "swati", "valeur": "ssw"}
+{"entite": "syriaque", "valeur": "syc"}
+{"entite": "tadjik", "valeur": "tgk"}
+{"entite": "tagalog", "valeur": "tgl"}
+{"entite": "tahitien", "valeur": "tah"}
+{"entite": "tamoul", "valeur": "tam"}
+{"entite": "tatar", "valeur": "tat"}
+{"entite": "tatar de Crimée", "valeur": "crh"}
+{"entite": "tchaghataï", "valeur": "chg"}
+{"entite": "tchétchène", "valeur": "che"}
+{"entite": "tchouvache", "valeur": "chv"}
+{"entite": "télougou", "valeur": "tel"}
+{"entite": "temne", "valeur": "tem"}
+{"entite": "terêna", "valeur": "ter"}
+{"entite": "tétoum", "valeur": "tet"}
+{"entite": "thaï", "valeur": "tha"}
+{"entite": "tigré", "valeur": "tig"}
+{"entite": "tigrigna", "valeur": "tir"}
+{"entite": "tiv", "valeur": "tiv"}
+{"entite": "tlicho", "valeur": "dgr"}
+{"entite": "tlingit", "valeur": "tli"}
+{"entite": "tok pisin", "valeur": "tpi"}
+{"entite": "tokelau", "valeur": "tkl"}
+{"entite": "tonga", "valeur": "tog"}
+{"entite": "tongien", "valeur": "ton"}
+{"entite": "touvain", "valeur": "tyv"}
+{"entite": "tsimshian", "valeur": "tsi"}
+{"entite": "tsonga", "valeur": "tso"}
+{"entite": "tswana", "valeur": "tsn"}
+{"entite": "tumbuka", "valeur": "tum"}
+{"entite": "turc", "valeur": "tur"}
+{"entite": "turc ottoman", "valeur": "ota"}
+{"entite": "turkmène", "valeur": "tuk"}
+{"entite": "tuvaluan", "valeur": "tvl"}
+{"entite": "twi", "valeur": "twi"}
+{"entite": "ukrainien", "valeur": "ukr"}
+{"entite": "umbundu", "valeur": "umb"}
+{"entite": "vaï", "valeur": "vai"}
+{"entite": "venda", "valeur": "ven"}
+{"entite": "vieil anglais", "valeur": "ang"}
+{"entite": "vieil irlandais", "valeur": "sga"}
+{"entite": "vietnamien", "valeur": "vie"}
+{"entite": "vieux haut-allemand", "valeur": "goh"}
+{"entite": "vieux norrois", "valeur": "non"}
+{"entite": "vieux-perse", "valeur": "peo"}
+{"entite": "volapük", "valeur": "vol"}
+{"entite": "vote", "valeur": "vot"}
+{"entite": "wallon", "valeur": "wln"}
+{"entite": "waray-waray", "valeur": "war"}
+{"entite": "washo", "valeur": "was"}
+{"entite": "wolaita", "valeur": "wal"}
+{"entite": "wolof", "valeur": "wol"}
+{"entite": "xhosa", "valeur": "xho"}
+{"entite": "yap", "valeur": "yap"}
+{"entite": "yiddish", "valeur": "yid"}
+{"entite": "yoruba", "valeur": "yor"}
+{"entite": "zazaki", "valeur": "zza"}
+{"entite": "zenaga", "valeur": "zen"}
+{"entite": "zhuang", "valeur": "zha"}
+{"entite": "zoulou", "valeur": "zul"}
+{"entite": "zuni", "valeur": "zun"}

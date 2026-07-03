@@ -1,0 +1,11 @@
+{"_relation": "origine_vent", "_categorie": "convention", "_source": "météorologie de référence (vent -> région d'origine)", "_articles": true}
+{"entite": "bora", "valeur": "la mer Adriatique"}
+{"entite": "chinook", "valeur": "les montagnes Rocheuses"}
+{"entite": "foehn", "valeur": "les Alpes"}
+{"entite": "harmattan", "valeur": "l'Afrique de l'Ouest"}
+{"entite": "khamsin", "valeur": "l'Égypte"}
+{"entite": "mistral", "valeur": "la vallée du Rhône (sud de la France)"}
+{"entite": "mousson", "valeur": "l'Asie du Sud"}
+{"entite": "sirocco", "valeur": "le Sahara"}
+{"entite": "tramontane", "valeur": "le Languedoc-Roussillon"}
+{"entite": "zonda", "valeur": "les Andes (Argentine)"}

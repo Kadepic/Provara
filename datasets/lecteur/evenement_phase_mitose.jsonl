@@ -1,0 +1,5 @@
+{"_relation": "evenement_phase_mitose", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (phase de mitose -> événement ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "anaphase", "valeur": "séparation des chromatides sœurs"}
+{"entite": "métaphase", "valeur": "alignement des chromosomes sur la plaque équatoriale"}
+{"entite": "prophase", "valeur": "condensation des chromosomes"}
+{"entite": "télophase", "valeur": "formation de deux noyaux"}

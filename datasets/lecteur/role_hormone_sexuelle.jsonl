@@ -1,0 +1,4 @@
+{"_relation": "role_hormone_sexuelle", "_categorie": "physique", "_source": "Modèle (Claude) — endocrinologie textbook curée (hormone sexuelle -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "progestérone", "valeur": "maintien de la grossesse"}
+{"entite": "œstrogène", "valeur": "développement des caractères sexuels féminins"}
+{"entite": "testostérone", "valeur": "développement des caractères sexuels masculins"}

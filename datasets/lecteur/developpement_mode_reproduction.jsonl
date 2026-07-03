@@ -1,0 +1,4 @@
+{"_relation": "developpement_mode_reproduction", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (mode de reproduction -> développement ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "ovipare", "valeur": "développement dans un œuf hors du corps de la mère"}
+{"entite": "ovovivipare", "valeur": "œufs incubés dans le corps de la mère"}
+{"entite": "vivipare", "valeur": "développement dans le corps de la mère"}

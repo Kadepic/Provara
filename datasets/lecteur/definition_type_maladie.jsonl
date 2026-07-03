@@ -1,0 +1,5 @@
+{"_relation": "definition_type_maladie", "_categorie": "physique", "_source": "Modèle (Claude) — médecine textbook curée (type de maladie -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "maladie auto-immune", "valeur": "le système immunitaire attaque l'organisme"}
+{"entite": "maladie carentielle", "valeur": "due à un manque de nutriment"}
+{"entite": "maladie génétique", "valeur": "due à une anomalie des gènes"}
+{"entite": "maladie infectieuse", "valeur": "causée par un agent pathogène"}

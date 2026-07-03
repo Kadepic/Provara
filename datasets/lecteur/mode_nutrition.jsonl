@@ -1,0 +1,36 @@
+{"_relation": "mode_nutrition", "_categorie": "physique", "_source": "Modèle (Claude) — biologie textbook curée (mode de nutrition ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "hétérotrophe"}
+{"entite": "amibe", "valeur": "hétérotrophe"}
+{"entite": "avoine", "valeur": "autotrophe"}
+{"entite": "blé", "valeur": "autotrophe"}
+{"entite": "cactus", "valeur": "autotrophe"}
+{"entite": "champignon de Paris", "valeur": "hétérotrophe"}
+{"entite": "chêne", "valeur": "autotrophe"}
+{"entite": "cyanobactérie", "valeur": "autotrophe"}
+{"entite": "escargot", "valeur": "hétérotrophe"}
+{"entite": "être humain", "valeur": "hétérotrophe"}
+{"entite": "fougère", "valeur": "autotrophe"}
+{"entite": "hydre", "valeur": "hétérotrophe"}
+{"entite": "laminaire", "valeur": "autotrophe"}
+{"entite": "levure de boulanger", "valeur": "hétérotrophe"}
+{"entite": "lion", "valeur": "hétérotrophe"}
+{"entite": "maïs", "valeur": "autotrophe"}
+{"entite": "méduse", "valeur": "hétérotrophe"}
+{"entite": "moisissure", "valeur": "hétérotrophe"}
+{"entite": "mousse", "valeur": "autotrophe"}
+{"entite": "olivier", "valeur": "autotrophe"}
+{"entite": "orge", "valeur": "autotrophe"}
+{"entite": "papillon", "valeur": "hétérotrophe"}
+{"entite": "paramécie", "valeur": "hétérotrophe"}
+{"entite": "phytoplancton", "valeur": "autotrophe"}
+{"entite": "pin", "valeur": "autotrophe"}
+{"entite": "requin", "valeur": "hétérotrophe"}
+{"entite": "riz", "valeur": "autotrophe"}
+{"entite": "rosier", "valeur": "autotrophe"}
+{"entite": "sapin", "valeur": "autotrophe"}
+{"entite": "spiruline", "valeur": "autotrophe"}
+{"entite": "ténia", "valeur": "hétérotrophe"}
+{"entite": "tigre", "valeur": "hétérotrophe"}
+{"entite": "tournesol", "valeur": "autotrophe"}
+{"entite": "vache", "valeur": "hétérotrophe"}
+{"entite": "ver de terre", "valeur": "hétérotrophe"}

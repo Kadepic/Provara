@@ -1,0 +1,6 @@
+{"_relation": "definition_sens", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie sensorielle textbook curée (sens -> perception ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "goût", "valeur": "perception des saveurs"}
+{"entite": "odorat", "valeur": "perception des odeurs"}
+{"entite": "ouïe", "valeur": "perception des sons"}
+{"entite": "toucher", "valeur": "perception du contact"}
+{"entite": "vue", "valeur": "perception de la lumière"}

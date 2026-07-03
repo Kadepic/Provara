@@ -1,0 +1,5 @@
+{"_relation": "definition_terme_neurologie", "_categorie": "physique", "_source": "Modèle (Claude) — neurologie textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "influx nerveux", "valeur": "signal électrique"}
+{"entite": "neurone", "valeur": "cellule du système nerveux"}
+{"entite": "neurotransmetteur", "valeur": "molécule de communication chimique entre neurones"}
+{"entite": "synapse", "valeur": "zone de communication entre deux neurones"}

@@ -1,0 +1,190 @@
+{"_relation": "annee_lancement_sonde", "_categorie": "passe", "_source": "Wikidata/QLever — année de lancement (P619) d'une sonde/engin spatial (Q26529)", "_articles": true}
+{"entite": "2001 Mars Odyssey", "valeur": "2001"}
+{"entite": "Aditya", "valeur": "2023"}
+{"entite": "Akatsuki", "valeur": "2010"}
+{"entite": "BepiColombo", "valeur": "2018"}
+{"entite": "CAPSTONE (CubeSat)", "valeur": "2022"}
+{"entite": "Cassini", "valeur": "1997"}
+{"entite": "Chandrayaan-1", "valeur": "2008"}
+{"entite": "Chandrayaan-2", "valeur": "2019"}
+{"entite": "Chang'e 1", "valeur": "2007"}
+{"entite": "Chang'e 2", "valeur": "2010"}
+{"entite": "Chang'e 5 T1", "valeur": "2014"}
+{"entite": "Chang'e 6", "valeur": "2024"}
+{"entite": "Chang'e 7", "valeur": "2026"}
+{"entite": "Clementine", "valeur": "1994"}
+{"entite": "CONTOUR", "valeur": "2002"}
+{"entite": "Cosmos 167", "valeur": "1967"}
+{"entite": "Cosmos 21", "valeur": "1963"}
+{"entite": "Cosmos 27", "valeur": "1964"}
+{"entite": "Cosmos 300", "valeur": "1969"}
+{"entite": "Cosmos 359", "valeur": "1970"}
+{"entite": "Cosmos 419", "valeur": "1971"}
+{"entite": "Cosmos 482", "valeur": "1972"}
+{"entite": "Cosmos 60", "valeur": "1965"}
+{"entite": "Cosmos 96", "valeur": "1965"}
+{"entite": "Dawn", "valeur": "2007"}
+{"entite": "Deep Impact", "valeur": "2005"}
+{"entite": "Deep Space 1", "valeur": "1998"}
+{"entite": "EnVision", "valeur": "2031"}
+{"entite": "Europa Clipper", "valeur": "2024"}
+{"entite": "ExoMars Trace Gas Orbiter", "valeur": "2016"}
+{"entite": "Explorer 35", "valeur": "1967"}
+{"entite": "Explorer 49", "valeur": "1973"}
+{"entite": "Galileo", "valeur": "1989"}
+{"entite": "Genesis", "valeur": "2001"}
+{"entite": "Giotto", "valeur": "1985"}
+{"entite": "Hayabusa", "valeur": "2003"}
+{"entite": "Hayabusa2", "valeur": "2014"}
+{"entite": "Helios 1", "valeur": "1974"}
+{"entite": "Helios 2", "valeur": "1976"}
+{"entite": "Hera", "valeur": "2024"}
+{"entite": "Hiten", "valeur": "1990"}
+{"entite": "IKAROS", "valeur": "2010"}
+{"entite": "International Sun-Earth Explorer", "valeur": "1978"}
+{"entite": "Juno", "valeur": "2011"}
+{"entite": "Jupiter Icy Moons Explorer", "valeur": "2023"}
+{"entite": "Jupiter Icy Moons Orbiter", "valeur": "2017"}
+{"entite": "Korea Pathfinder Lunar Orbiter", "valeur": "2022"}
+{"entite": "LICIACube", "valeur": "2021"}
+{"entite": "Lucy", "valeur": "2021"}
+{"entite": "Luna 10", "valeur": "1966"}
+{"entite": "Luna 11", "valeur": "1966"}
+{"entite": "Luna 12", "valeur": "1966"}
+{"entite": "Luna 14", "valeur": "1968"}
+{"entite": "Luna 15", "valeur": "1969"}
+{"entite": "Luna 16", "valeur": "1970"}
+{"entite": "Luna 17", "valeur": "1970"}
+{"entite": "Luna 18", "valeur": "1971"}
+{"entite": "Luna 19", "valeur": "1971"}
+{"entite": "Luna 20", "valeur": "1972"}
+{"entite": "Luna 21", "valeur": "1973"}
+{"entite": "Luna 22", "valeur": "1974"}
+{"entite": "Luna 23", "valeur": "1974"}
+{"entite": "Luna 26", "valeur": "2027"}
+{"entite": "Luna 3", "valeur": "1959"}
+{"entite": "Luna 4", "valeur": "1963"}
+{"entite": "Luna 5", "valeur": "1965"}
+{"entite": "Luna 6", "valeur": "1965"}
+{"entite": "Luna 7", "valeur": "1965"}
+{"entite": "Luna 8", "valeur": "1965"}
+{"entite": "Luna E-1 No.1", "valeur": "1958"}
+{"entite": "Luna E-1 No.2", "valeur": "1958"}
+{"entite": "Luna E-1 No.3", "valeur": "1958"}
+{"entite": "Luna E-1A No.1", "valeur": "1959"}
+{"entite": "Lunar Atmosphere and Dust Environment Explorer", "valeur": "2013"}
+{"entite": "Lunar Crater Observation and Sensing Satellite", "valeur": "2009"}
+{"entite": "Lunar Orbiter 1", "valeur": "1966"}
+{"entite": "Lunar Orbiter 2", "valeur": "1966"}
+{"entite": "Lunar Orbiter 3", "valeur": "1967"}
+{"entite": "Lunar Orbiter 4", "valeur": "1967"}
+{"entite": "Lunar Orbiter 5", "valeur": "1967"}
+{"entite": "Lunar Prospector", "valeur": "1998"}
+{"entite": "Lunar Reconnaissance Orbiter", "valeur": "2009"}
+{"entite": "Lunar Trailblazer", "valeur": "2025"}
+{"entite": "Magellan", "valeur": "1989"}
+{"entite": "Mangalyaan", "valeur": "2013"}
+{"entite": "Mariner 1", "valeur": "1962"}
+{"entite": "Mariner 10", "valeur": "1973"}
+{"entite": "Mariner 2", "valeur": "1962"}
+{"entite": "Mariner 3", "valeur": "1964"}
+{"entite": "Mariner 4", "valeur": "1964"}
+{"entite": "Mariner 5", "valeur": "1967"}
+{"entite": "Mariner 6", "valeur": "1969"}
+{"entite": "Mariner 7", "valeur": "1969"}
+{"entite": "Mariner 8", "valeur": "1971"}
+{"entite": "Mars 1", "valeur": "1962"}
+{"entite": "Mars 1969B", "valeur": "1969"}
+{"entite": "Mars 2", "valeur": "1971"}
+{"entite": "Mars 2020", "valeur": "2020"}
+{"entite": "Mars 3", "valeur": "1971"}
+{"entite": "Mars 4", "valeur": "1973"}
+{"entite": "Mars 5", "valeur": "1973"}
+{"entite": "Mars 6", "valeur": "1973"}
+{"entite": "Mars 96", "valeur": "1996"}
+{"entite": "Mars Climate Orbiter", "valeur": "1998"}
+{"entite": "Mars Express", "valeur": "2003"}
+{"entite": "Mars Helicopter Ingenuity", "valeur": "2020"}
+{"entite": "Mars Observer", "valeur": "1992"}
+{"entite": "Mars Reconnaissance Orbiter", "valeur": "2005"}
+{"entite": "Mars Science Laboratory", "valeur": "2011"}
+{"entite": "MAVEN", "valeur": "2013"}
+{"entite": "MESSENGER", "valeur": "2004"}
+{"entite": "Mission martienne des Émirats", "valeur": "2020"}
+{"entite": "NEAR Shoemaker", "valeur": "1996"}
+{"entite": "New Horizons", "valeur": "2006"}
+{"entite": "Nozomi", "valeur": "1998"}
+{"entite": "OSIRIS-REx", "valeur": "2016"}
+{"entite": "Parker Solar Probe", "valeur": "2018"}
+{"entite": "Pioneer 0", "valeur": "1958"}
+{"entite": "Pioneer 1", "valeur": "1958"}
+{"entite": "Pioneer 10", "valeur": "1973"}
+{"entite": "Pioneer 11", "valeur": "1973"}
+{"entite": "Pioneer 2", "valeur": "1958"}
+{"entite": "Pioneer 3", "valeur": "1958"}
+{"entite": "Pioneer 4", "valeur": "1959"}
+{"entite": "Pioneer 5", "valeur": "1960"}
+{"entite": "Pioneer E", "valeur": "1969"}
+{"entite": "Pioneer P-3", "valeur": "1959"}
+{"entite": "Pioneer P-30", "valeur": "1960"}
+{"entite": "Pioneer P-31", "valeur": "1960"}
+{"entite": "Pioneer Venus Orbiter", "valeur": "1978"}
+{"entite": "Pluto Fast Flyby", "valeur": "2000"}
+{"entite": "PROCYON", "valeur": "2014"}
+{"entite": "Psyché", "valeur": "2023"}
+{"entite": "Queqiao", "valeur": "2018"}
+{"entite": "Queqiao 2", "valeur": "2024"}
+{"entite": "Ranger 1", "valeur": "1961"}
+{"entite": "Ranger 2", "valeur": "1961"}
+{"entite": "Ranger 3", "valeur": "1962"}
+{"entite": "Ranger 4", "valeur": "1962"}
+{"entite": "Ranger 5", "valeur": "1962"}
+{"entite": "Ranger 6", "valeur": "1964"}
+{"entite": "Ranger 7", "valeur": "1964"}
+{"entite": "Ranger 8", "valeur": "1965"}
+{"entite": "Rosetta", "valeur": "2004"}
+{"entite": "Sakigake", "valeur": "1985"}
+{"entite": "Schiaparelli", "valeur": "2016"}
+{"entite": "SELENE", "valeur": "2007"}
+{"entite": "SMART-1", "valeur": "2003"}
+{"entite": "Solar and Heliospheric Observatory", "valeur": "1995"}
+{"entite": "Solar Dynamics Observatory", "valeur": "2010"}
+{"entite": "Solar Orbiter", "valeur": "2020"}
+{"entite": "Space Reactor‑1 Freedom", "valeur": "2028"}
+{"entite": "Space Weather Follow On", "valeur": "2025"}
+{"entite": "Spoutnik 22", "valeur": "1962"}
+{"entite": "Spoutnik 24", "valeur": "1962"}
+{"entite": "Spoutnik 7", "valeur": "1961"}
+{"entite": "Stardust", "valeur": "1999"}
+{"entite": "Suisei", "valeur": "1985"}
+{"entite": "Tianwen-1", "valeur": "2020"}
+{"entite": "Tianwen 4", "valeur": "2029"}
+{"entite": "Trident (sonde spatiale)", "valeur": "2025"}
+{"entite": "Ulysses", "valeur": "1990"}
+{"entite": "Vega 1", "valeur": "1984"}
+{"entite": "Vega 2", "valeur": "1984"}
+{"entite": "Venera 1", "valeur": "1961"}
+{"entite": "Venera 10", "valeur": "1975"}
+{"entite": "Venera 11", "valeur": "1978"}
+{"entite": "Venera 12", "valeur": "1978"}
+{"entite": "Venera 13", "valeur": "1981"}
+{"entite": "Venera 14", "valeur": "1981"}
+{"entite": "Venera 15", "valeur": "1983"}
+{"entite": "Venera 16", "valeur": "1983"}
+{"entite": "Venera 2", "valeur": "1965"}
+{"entite": "Venera 2MV-1 No.1", "valeur": "1962"}
+{"entite": "Venera 3", "valeur": "1965"}
+{"entite": "Venera 4", "valeur": "1967"}
+{"entite": "Venera 5", "valeur": "1969"}
+{"entite": "Venera 6", "valeur": "1969"}
+{"entite": "Venera 7", "valeur": "1970"}
+{"entite": "Venera 8", "valeur": "1972"}
+{"entite": "Venera 9", "valeur": "1975"}
+{"entite": "Venus Life Finder Mission", "valeur": "2026"}
+{"entite": "Voyager 1", "valeur": "1977"}
+{"entite": "Voyager 2", "valeur": "1977"}
+{"entite": "Yinghuo 1", "valeur": "2011"}
+{"entite": "Zheng He (sonde spatiale)", "valeur": "2025"}
+{"entite": "Zond 1", "valeur": "1964"}
+{"entite": "Zond 2", "valeur": "1964"}
+{"entite": "Zond 3", "valeur": "1965"}

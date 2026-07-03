@@ -1,0 +1,46 @@
+{"_relation": "type_genome_virus", "_categorie": "physique", "_source": "Modèle (Claude) — virologie textbook curée (génome ADN/ARN ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "adénovirus", "valeur": "ADN"}
+{"entite": "arénavirus", "valeur": "ARN"}
+{"entite": "baculovirus", "valeur": "ADN"}
+{"entite": "coronavirus", "valeur": "ARN"}
+{"entite": "cytomégalovirus", "valeur": "ADN"}
+{"entite": "herpèsvirus B", "valeur": "ADN"}
+{"entite": "norovirus", "valeur": "ARN"}
+{"entite": "papillomavirus humain", "valeur": "ADN"}
+{"entite": "parvovirus B19", "valeur": "ADN"}
+{"entite": "poliovirus", "valeur": "ARN"}
+{"entite": "rhinovirus", "valeur": "ARN"}
+{"entite": "rotavirus", "valeur": "ARN"}
+{"entite": "SARS-CoV-2", "valeur": "ARN"}
+{"entite": "virus chikungunya", "valeur": "ARN"}
+{"entite": "virus d'Epstein-Barr", "valeur": "ADN"}
+{"entite": "virus de l'hépatite A", "valeur": "ARN"}
+{"entite": "virus de l'hépatite B", "valeur": "ADN"}
+{"entite": "virus de l'hépatite C", "valeur": "ARN"}
+{"entite": "virus de l'hépatite delta", "valeur": "ARN"}
+{"entite": "virus de l'hépatite E", "valeur": "ARN"}
+{"entite": "virus de l'immunodéficience humaine", "valeur": "ARN"}
+{"entite": "virus de la dengue", "valeur": "ARN"}
+{"entite": "virus de la fièvre aphteuse", "valeur": "ARN"}
+{"entite": "virus de la fièvre jaune", "valeur": "ARN"}
+{"entite": "virus de la grippe", "valeur": "ARN"}
+{"entite": "virus de la mosaïque du chou-fleur", "valeur": "ADN"}
+{"entite": "virus de la mosaïque du tabac", "valeur": "ARN"}
+{"entite": "virus de la peste porcine", "valeur": "ARN"}
+{"entite": "virus de la rage", "valeur": "ARN"}
+{"entite": "virus de la rougeole", "valeur": "ARN"}
+{"entite": "virus de la rubéole", "valeur": "ARN"}
+{"entite": "virus de la stomatite vésiculeuse", "valeur": "ARN"}
+{"entite": "virus de la vaccine", "valeur": "ADN"}
+{"entite": "virus de la variole", "valeur": "ADN"}
+{"entite": "virus de la variole du singe", "valeur": "ADN"}
+{"entite": "virus de Marburg", "valeur": "ARN"}
+{"entite": "virus du molluscum contagiosum", "valeur": "ADN"}
+{"entite": "virus du Nil occidental", "valeur": "ARN"}
+{"entite": "virus Ebola", "valeur": "ARN"}
+{"entite": "virus herpes simplex", "valeur": "ADN"}
+{"entite": "virus Nipah", "valeur": "ARN"}
+{"entite": "virus ourlien", "valeur": "ARN"}
+{"entite": "virus respiratoire syncytial", "valeur": "ARN"}
+{"entite": "virus varicelle-zona", "valeur": "ADN"}
+{"entite": "virus Zika", "valeur": "ARN"}

@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_comportement", "_categorie": "physique", "_source": "Modèle (Claude) — éthologie textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "apprentissage", "valeur": "comportement acquis par l'expérience"}
+{"entite": "instinct", "valeur": "comportement inné"}
+{"entite": "réflexe", "valeur": "réponse automatique à un stimulus"}

@@ -1,0 +1,6 @@
+{"_relation": "jour_saint_religion", "_categorie": "convention", "_source": "connaissance religieuse (religion -> jour saint)", "_articles": true}
+{"entite": "catholicisme", "valeur": "dimanche"}
+{"entite": "christianisme", "valeur": "dimanche"}
+{"entite": "islam", "valeur": "vendredi"}
+{"entite": "judaïsme", "valeur": "samedi (shabbat)"}
+{"entite": "protestantisme", "valeur": "dimanche"}

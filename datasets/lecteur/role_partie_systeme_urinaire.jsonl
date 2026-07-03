@@ -1,0 +1,5 @@
+{"_relation": "role_partie_systeme_urinaire", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (organe urinaire -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "rein", "valeur": "filtration du sang et production d'urine"}
+{"entite": "uretère", "valeur": "transport de l'urine vers la vessie"}
+{"entite": "urètre", "valeur": "évacuation de l'urine"}
+{"entite": "vessie", "valeur": "stockage de l'urine"}

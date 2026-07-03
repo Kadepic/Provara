@@ -1,0 +1,4 @@
+{"_relation": "duree_cycle_plante", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (cycle de vie -> durée ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "plante annuelle", "valeur": "un an"}
+{"entite": "plante bisannuelle", "valeur": "deux ans"}
+{"entite": "plante vivace", "valeur": "plusieurs années"}

@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_cytogenetique", "_categorie": "physique", "_source": "Modèle (Claude) — cytogénétique textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "caryotype", "valeur": "ensemble des chromosomes d'une cellule"}
+{"entite": "chromatide", "valeur": "moitié d'un chromosome dupliqué"}
+{"entite": "chromosome", "valeur": "molécule d'ADN condensée"}

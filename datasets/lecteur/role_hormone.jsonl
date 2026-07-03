@@ -1,0 +1,20 @@
+{"_relation": "role_hormone", "_categorie": "physique", "_source": "Modèle (Claude) — endocrinologie textbook curée (effet d'hormone ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "adrénaline", "valeur": "accélération du rythme cardiaque"}
+{"entite": "aldostérone", "valeur": "réabsorption du sodium"}
+{"entite": "calcitonine", "valeur": "diminution de la calcémie"}
+{"entite": "cortisol", "valeur": "réponse au stress"}
+{"entite": "érythropoïétine", "valeur": "production des globules rouges"}
+{"entite": "ghréline", "valeur": "stimulation de l'appétit"}
+{"entite": "glucagon", "valeur": "augmentation de la glycémie"}
+{"entite": "hormone antidiurétique", "valeur": "réabsorption de l'eau"}
+{"entite": "hormone de croissance", "valeur": "croissance des tissus"}
+{"entite": "insuline", "valeur": "diminution de la glycémie"}
+{"entite": "leptine", "valeur": "régulation de la satiété"}
+{"entite": "mélatonine", "valeur": "régulation du sommeil"}
+{"entite": "ocytocine", "valeur": "contractions utérines"}
+{"entite": "parathormone", "valeur": "augmentation de la calcémie"}
+{"entite": "progestérone", "valeur": "maintien de la grossesse"}
+{"entite": "prolactine", "valeur": "production de lait"}
+{"entite": "œstrogène", "valeur": "développement des caractères sexuels féminins"}
+{"entite": "testostérone", "valeur": "développement des caractères sexuels masculins"}
+{"entite": "thyroxine", "valeur": "augmentation du métabolisme"}

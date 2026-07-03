@@ -1,0 +1,5 @@
+{"_relation": "caractere_symbiose", "_categorie": "physique", "_source": "Modèle (Claude) — écologie textbook curée (relation interspécifique -> effet ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "commensalisme", "valeur": "bénéfice pour l'un, neutre pour l'autre"}
+{"entite": "compétition", "valeur": "préjudice pour les deux"}
+{"entite": "mutualisme", "valeur": "bénéfice réciproque"}
+{"entite": "parasitisme", "valeur": "bénéfice pour l'un, préjudice pour l'autre"}

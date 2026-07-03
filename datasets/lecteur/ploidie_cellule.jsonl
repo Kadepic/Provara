@@ -1,0 +1,4 @@
+{"_relation": "ploidie_cellule", "_categorie": "physique", "_source": "Modèle (Claude) — génétique textbook curée (cellule -> ploïdie ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cellule somatique", "valeur": "diploïde"}
+{"entite": "gamète", "valeur": "haploïde"}
+{"entite": "zygote", "valeur": "diploïde"}

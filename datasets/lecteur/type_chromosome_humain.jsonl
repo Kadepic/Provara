@@ -1,0 +1,25 @@
+{"_relation": "type_chromosome_humain", "_categorie": "physique", "_source": "Modèle (Claude) — génétique textbook curée (autosome/gonosome ; caryotype humain ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "chromosome 1", "valeur": "autosome"}
+{"entite": "chromosome 10", "valeur": "autosome"}
+{"entite": "chromosome 11", "valeur": "autosome"}
+{"entite": "chromosome 12", "valeur": "autosome"}
+{"entite": "chromosome 13", "valeur": "autosome"}
+{"entite": "chromosome 14", "valeur": "autosome"}
+{"entite": "chromosome 15", "valeur": "autosome"}
+{"entite": "chromosome 16", "valeur": "autosome"}
+{"entite": "chromosome 17", "valeur": "autosome"}
+{"entite": "chromosome 18", "valeur": "autosome"}
+{"entite": "chromosome 19", "valeur": "autosome"}
+{"entite": "chromosome 2", "valeur": "autosome"}
+{"entite": "chromosome 20", "valeur": "autosome"}
+{"entite": "chromosome 21", "valeur": "autosome"}
+{"entite": "chromosome 22", "valeur": "autosome"}
+{"entite": "chromosome 3", "valeur": "autosome"}
+{"entite": "chromosome 4", "valeur": "autosome"}
+{"entite": "chromosome 5", "valeur": "autosome"}
+{"entite": "chromosome 6", "valeur": "autosome"}
+{"entite": "chromosome 7", "valeur": "autosome"}
+{"entite": "chromosome 8", "valeur": "autosome"}
+{"entite": "chromosome 9", "valeur": "autosome"}
+{"entite": "chromosome X", "valeur": "gonosome"}
+{"entite": "chromosome Y", "valeur": "gonosome"}

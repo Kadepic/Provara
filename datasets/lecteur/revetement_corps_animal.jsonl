@@ -1,0 +1,57 @@
+{"_relation": "revetement_corps_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (tégument ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aigle royal", "valeur": "plumes"}
+{"entite": "autruche", "valeur": "plumes"}
+{"entite": "axolotl", "valeur": "peau nue"}
+{"entite": "caméléon", "valeur": "écailles"}
+{"entite": "canard", "valeur": "plumes"}
+{"entite": "carpe", "valeur": "écailles"}
+{"entite": "cécilie", "valeur": "peau nue"}
+{"entite": "chat", "valeur": "poils"}
+{"entite": "chauve-souris", "valeur": "poils"}
+{"entite": "cheval", "valeur": "poils"}
+{"entite": "chien", "valeur": "poils"}
+{"entite": "cobra royal", "valeur": "écailles"}
+{"entite": "crapaud", "valeur": "peau nue"}
+{"entite": "crocodile du Nil", "valeur": "écailles"}
+{"entite": "cygne", "valeur": "plumes"}
+{"entite": "écureuil", "valeur": "poils"}
+{"entite": "éléphant d'Afrique", "valeur": "poils"}
+{"entite": "faucon pèlerin", "valeur": "plumes"}
+{"entite": "flamant rose", "valeur": "plumes"}
+{"entite": "girafe", "valeur": "poils"}
+{"entite": "grenouille", "valeur": "peau nue"}
+{"entite": "hamster", "valeur": "poils"}
+{"entite": "hérisson", "valeur": "poils"}
+{"entite": "hibou", "valeur": "plumes"}
+{"entite": "iguane", "valeur": "écailles"}
+{"entite": "kangourou", "valeur": "poils"}
+{"entite": "koala", "valeur": "poils"}
+{"entite": "lapin", "valeur": "poils"}
+{"entite": "lézard", "valeur": "écailles"}
+{"entite": "lion", "valeur": "poils"}
+{"entite": "loup", "valeur": "poils"}
+{"entite": "manchot empereur", "valeur": "plumes"}
+{"entite": "mésange", "valeur": "plumes"}
+{"entite": "moineau", "valeur": "plumes"}
+{"entite": "mouton", "valeur": "poils"}
+{"entite": "oie", "valeur": "plumes"}
+{"entite": "ours brun", "valeur": "poils"}
+{"entite": "perroquet", "valeur": "plumes"}
+{"entite": "pigeon", "valeur": "plumes"}
+{"entite": "poule", "valeur": "plumes"}
+{"entite": "python", "valeur": "écailles"}
+{"entite": "renard roux", "valeur": "poils"}
+{"entite": "rhinocéros blanc", "valeur": "poils"}
+{"entite": "salamandre", "valeur": "peau nue"}
+{"entite": "sardine", "valeur": "écailles"}
+{"entite": "saumon atlantique", "valeur": "écailles"}
+{"entite": "serpent", "valeur": "écailles"}
+{"entite": "souris", "valeur": "poils"}
+{"entite": "thon rouge", "valeur": "écailles"}
+{"entite": "tigre", "valeur": "poils"}
+{"entite": "tortue marine", "valeur": "écailles"}
+{"entite": "triton", "valeur": "peau nue"}
+{"entite": "varan", "valeur": "écailles"}
+{"entite": "vautour", "valeur": "plumes"}
+{"entite": "vipère", "valeur": "écailles"}
+{"entite": "zèbre", "valeur": "poils"}

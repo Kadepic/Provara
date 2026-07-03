@@ -1,0 +1,4 @@
+{"_relation": "cause_type_diabete", "_categorie": "physique", "_source": "Modèle (Claude) — médecine textbook curée (type de diabète -> cause ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "diabète de type 1", "valeur": "déficit de production d'insuline"}
+{"entite": "diabète de type 2", "valeur": "résistance des cellules à l'insuline"}
+{"entite": "diabète gestationnel", "valeur": "apparition pendant la grossesse"}

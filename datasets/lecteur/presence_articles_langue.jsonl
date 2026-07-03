@@ -1,0 +1,40 @@
+{"_relation": "presence_articles_langue", "_categorie": "convention", "_source": "Claude (connaissances entraînées) — présence d'un système d'articles (prototypes nets)", "_articles": true}
+{"entite": "allemand", "valeur": "avec articles"}
+{"entite": "anglais", "valeur": "avec articles"}
+{"entite": "arabe", "valeur": "avec articles"}
+{"entite": "bulgare", "valeur": "avec articles"}
+{"entite": "catalan", "valeur": "avec articles"}
+{"entite": "coréen", "valeur": "sans articles"}
+{"entite": "croate", "valeur": "sans articles"}
+{"entite": "danois", "valeur": "avec articles"}
+{"entite": "espagnol", "valeur": "avec articles"}
+{"entite": "estonien", "valeur": "sans articles"}
+{"entite": "finnois", "valeur": "sans articles"}
+{"entite": "français", "valeur": "avec articles"}
+{"entite": "galicien", "valeur": "avec articles"}
+{"entite": "grec ancien", "valeur": "avec articles"}
+{"entite": "grec moderne", "valeur": "avec articles"}
+{"entite": "hébreu", "valeur": "avec articles"}
+{"entite": "hindi", "valeur": "sans articles"}
+{"entite": "hongrois", "valeur": "avec articles"}
+{"entite": "islandais", "valeur": "avec articles"}
+{"entite": "italien", "valeur": "avec articles"}
+{"entite": "japonais", "valeur": "sans articles"}
+{"entite": "latin", "valeur": "sans articles"}
+{"entite": "letton", "valeur": "sans articles"}
+{"entite": "lituanien", "valeur": "sans articles"}
+{"entite": "macédonien", "valeur": "avec articles"}
+{"entite": "mandarin", "valeur": "sans articles"}
+{"entite": "néerlandais", "valeur": "avec articles"}
+{"entite": "norvégien", "valeur": "avec articles"}
+{"entite": "occitan", "valeur": "avec articles"}
+{"entite": "polonais", "valeur": "sans articles"}
+{"entite": "portugais", "valeur": "avec articles"}
+{"entite": "roumain", "valeur": "avec articles"}
+{"entite": "russe", "valeur": "sans articles"}
+{"entite": "serbe", "valeur": "sans articles"}
+{"entite": "slovaque", "valeur": "sans articles"}
+{"entite": "slovène", "valeur": "sans articles"}
+{"entite": "suédois", "valeur": "avec articles"}
+{"entite": "tchèque", "valeur": "sans articles"}
+{"entite": "ukrainien", "valeur": "sans articles"}

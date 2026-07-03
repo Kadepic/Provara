@@ -1,0 +1,5 @@
+{"_relation": "definition_terme_cellulaire", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cellule", "valeur": "unité de base des êtres vivants"}
+{"entite": "cytoplasme", "valeur": "milieu interne de la cellule"}
+{"entite": "membrane plasmique", "valeur": "limite contrôlant les échanges de la cellule"}
+{"entite": "organite", "valeur": "structure spécialisée de la cellule"}

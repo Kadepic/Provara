@@ -1,0 +1,112 @@
+{"_relation": "createur_langage_programmation", "_categorie": "convention", "_source": "connaissance modèle (Claude) — canon haute-confiance (Wikidata FR sparse/bruitée : Q9143 ~34-149 entités, fonc 85 % = équipes) — créateur unique incontesté, duos/équipes écartés", "_articles": true}
+{"entite": "D", "valeur": "Walter Bright"}
+{"entite": "4D", "valeur": "Laurent Ribardière"}
+{"entite": "Ada", "valeur": "Jean Ichbiah"}
+{"entite": "AngelScript", "valeur": "Andreas Jönsson"}
+{"entite": "APL", "valeur": "Kenneth E. Iverson"}
+{"entite": "Arc", "valeur": "Paul Graham"}
+{"entite": "ATS", "valeur": "Hongwei Xi"}
+{"entite": "AutoIt", "valeur": "Jonathan Bennett"}
+{"entite": "B", "valeur": "Ken Thompson"}
+{"entite": "Bash", "valeur": "Brian Fox"}
+{"entite": "BCPL", "valeur": "Martin Richards"}
+{"entite": "Befunge", "valeur": "Chris Pressey"}
+{"entite": "Bel", "valeur": "Paul Graham"}
+{"entite": "BlitzBasic", "valeur": "Mark Sibly"}
+{"entite": "Boo", "valeur": "Rodrigo B. de Oliveira"}
+{"entite": "Boogie", "valeur": "Rustan Leino"}
+{"entite": "Brainfuck", "valeur": "Urban Müller"}
+{"entite": "Cat", "valeur": "Christopher Diggins"}
+{"entite": "Cecil", "valeur": "Craig Chambers"}
+{"entite": "Ceylon", "valeur": "Gavin King"}
+{"entite": "Chef", "valeur": "David Morgan-Mar"}
+{"entite": "Clojure", "valeur": "Rich Hickey"}
+{"entite": "Cobra", "valeur": "Charles Esterbrook"}
+{"entite": "CoffeeScript", "valeur": "Jeremy Ashkenas"}
+{"entite": "Comal", "valeur": "Børge Christensen"}
+{"entite": "Csound", "valeur": "Barry Vercoe"}
+{"entite": "Dafny", "valeur": "Rustan Leino"}
+{"entite": "E (langage)", "valeur": "Mark S. Miller"}
+{"entite": "Eiffel", "valeur": "Bertrand Meyer"}
+{"entite": "Elm", "valeur": "Evan Czaplicki"}
+{"entite": "Euphoria", "valeur": "Robert Craig"}
+{"entite": "F#", "valeur": "Don Syme"}
+{"entite": "Factor", "valeur": "Slava Pestov"}
+{"entite": "Forth", "valeur": "Charles H. Moore"}
+{"entite": "Fortran", "valeur": "John Backus"}
+{"entite": "Frege", "valeur": "Ingo Wechsung"}
+{"entite": "Frink", "valeur": "Alan Eliasen"}
+{"entite": "GameMaker Language", "valeur": "Mark Overmars"}
+{"entite": "Genie", "valeur": "Jamie McCracken"}
+{"entite": "Gleam", "valeur": "Louis Pilfold"}
+{"entite": "Groovy", "valeur": "James Strachan"}
+{"entite": "Hare", "valeur": "Drew DeVault"}
+{"entite": "Haxe", "valeur": "Nicolas Cannasse"}
+{"entite": "Icon", "valeur": "Ralph Griswold"}
+{"entite": "Idris", "valeur": "Edwin Brady"}
+{"entite": "Inform", "valeur": "Graham Nelson"}
+{"entite": "Io", "valeur": "Steve Dekorte"}
+{"entite": "Janet", "valeur": "Calvin Rose"}
+{"entite": "Java", "valeur": "James Gosling"}
+{"entite": "JavaScript", "valeur": "Brendan Eich"}
+{"entite": "Joy", "valeur": "Manfred von Thun"}
+{"entite": "K", "valeur": "Arthur Whitney"}
+{"entite": "Koka", "valeur": "Daan Leijen"}
+{"entite": "KRC", "valeur": "David Turner"}
+{"entite": "Lean", "valeur": "Leonardo de Moura"}
+{"entite": "Lisp", "valeur": "John McCarthy"}
+{"entite": "Logtalk", "valeur": "Paulo Moura"}
+{"entite": "LOLCODE", "valeur": "Adam Lindsay"}
+{"entite": "Magpie", "valeur": "Bob Nystrom"}
+{"entite": "Malbolge", "valeur": "Ben Olmstead"}
+{"entite": "MATLAB", "valeur": "Cleve Moler"}
+{"entite": "METAFONT", "valeur": "Donald Knuth"}
+{"entite": "Miranda", "valeur": "David Turner"}
+{"entite": "Modula-2", "valeur": "Niklaus Wirth"}
+{"entite": "Mojo", "valeur": "Chris Lattner"}
+{"entite": "NetRexx", "valeur": "Mike Cowlishaw"}
+{"entite": "NewLISP", "valeur": "Lutz Mueller"}
+{"entite": "Nim", "valeur": "Andreas Rumpf"}
+{"entite": "Oberon", "valeur": "Niklaus Wirth"}
+{"entite": "Odin", "valeur": "Ginger Bill"}
+{"entite": "Pascal", "valeur": "Niklaus Wirth"}
+{"entite": "Perl", "valeur": "Larry Wall"}
+{"entite": "PHP", "valeur": "Rasmus Lerdorf"}
+{"entite": "PicoLisp", "valeur": "Alexander Burger"}
+{"entite": "Pony", "valeur": "Sylvan Clebsch"}
+{"entite": "PowerShell", "valeur": "Jeffrey Snover"}
+{"entite": "Pure", "valeur": "Albert Gräf"}
+{"entite": "Pure Data", "valeur": "Miller Puckette"}
+{"entite": "PureBasic", "valeur": "Frédéric Laboureur"}
+{"entite": "PureScript", "valeur": "Phil Freeman"}
+{"entite": "Python", "valeur": "Guido van Rossum"}
+{"entite": "Qi", "valeur": "Mark Tarver"}
+{"entite": "ReasonML", "valeur": "Jordan Walke"}
+{"entite": "REBOL", "valeur": "Carl Sassenrath"}
+{"entite": "Red", "valeur": "Nenad Rakočević"}
+{"entite": "REXX", "valeur": "Mike Cowlishaw"}
+{"entite": "Ring", "valeur": "Mahmoud Fayed"}
+{"entite": "Roc", "valeur": "Richard Feldman"}
+{"entite": "Ruby", "valeur": "Yukihiro Matsumoto"}
+{"entite": "Rust", "valeur": "Graydon Hoare"}
+{"entite": "SASL", "valeur": "David Turner"}
+{"entite": "Scala", "valeur": "Martin Odersky"}
+{"entite": "sed", "valeur": "Lee E. McMahon"}
+{"entite": "SETL", "valeur": "Jack Schwartz"}
+{"entite": "Shen", "valeur": "Mark Tarver"}
+{"entite": "Squirrel", "valeur": "Alberto Demichelis"}
+{"entite": "Standard ML", "valeur": "Robin Milner"}
+{"entite": "SuperCollider", "valeur": "James McCartney"}
+{"entite": "Swift", "valeur": "Chris Lattner"}
+{"entite": "TADS", "valeur": "Michael J. Roberts"}
+{"entite": "Tcl", "valeur": "John Ousterhout"}
+{"entite": "TeX", "valeur": "Donald Knuth"}
+{"entite": "Turbo Pascal", "valeur": "Anders Hejlsberg"}
+{"entite": "TypeScript", "valeur": "Anders Hejlsberg"}
+{"entite": "UnrealScript", "valeur": "Tim Sweeney"}
+{"entite": "Vala", "valeur": "Jürg Billeter"}
+{"entite": "Verilog", "valeur": "Phil Moorby"}
+{"entite": "Verse", "valeur": "Tim Sweeney"}
+{"entite": "Wolfram Language", "valeur": "Stephen Wolfram"}
+{"entite": "Wren", "valeur": "Bob Nystrom"}
+{"entite": "Zig", "valeur": "Andrew Kelley"}

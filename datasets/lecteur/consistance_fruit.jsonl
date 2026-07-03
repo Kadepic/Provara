@@ -1,0 +1,7 @@
+{"_relation": "consistance_fruit", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (type de fruit -> consistance ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "akène", "valeur": "sec"}
+{"entite": "baie", "valeur": "charnu"}
+{"entite": "capsule", "valeur": "sec"}
+{"entite": "caryopse", "valeur": "sec"}
+{"entite": "drupe", "valeur": "charnu"}
+{"entite": "gousse", "valeur": "sec"}

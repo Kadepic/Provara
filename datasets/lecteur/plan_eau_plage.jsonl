@@ -1,0 +1,2764 @@
+{"_relation": "plan_eau_plage", "_categorie": "physique", "_source": "Wikidata/QLever — plan_eau_plage P206, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "75 Mile Beach", "valeur": "mer de Corail"}
+{"entite": "Aa Beach", "valeur": "golfe de Finlande"}
+{"entite": "Agger Beach", "valeur": "mer du Nord"}
+{"entite": "Agraciada Beach", "valeur": "rio Uruguay"}
+{"entite": "Agua Amarga", "valeur": "mer Méditerranée"}
+{"entite": "Aguamarina", "valeur": "mer Méditerranée"}
+{"entite": "Aguas Dulces beach", "valeur": "océan Atlantique"}
+{"entite": "L'Ahuir", "valeur": "mer Méditerranée"}
+{"entite": "L'Aigua Blanca", "valeur": "mer Méditerranée"}
+{"entite": "L'Aigua Morta", "valeur": "mer Méditerranée"}
+{"entite": "Aigua Xelida", "valeur": "mer Méditerranée"}
+{"entite": "Aiguassera", "valeur": "mer Méditerranée"}
+{"entite": "Albuen", "valeur": "Vejle Fjord"}
+{"entite": "La Albufereta", "valeur": "mer Méditerranée"}
+{"entite": "Alcanada", "valeur": "mer Méditerranée"}
+{"entite": "Alcudia", "valeur": "mer Méditerranée"}
+{"entite": "Aldea Blanca", "valeur": "mer Méditerranée"}
+{"entite": "Alexander Meghna Beach", "valeur": "Meghna"}
+{"entite": "Algaiarens", "valeur": "mer Méditerranée"}
+{"entite": "Algodões Beach", "valeur": "océan Atlantique"}
+{"entite": "L'Alguer", "valeur": "mer Méditerranée"}
+{"entite": "Aliguay Island Beach", "valeur": "mer de Soulou"}
+{"entite": "Aliguay Island Tourist Beach", "valeur": "mer de Soulou"}
+{"entite": "Alki Beach", "valeur": "Puget Sound"}
+{"entite": "Alki Beach Park", "valeur": "baie Elliott"}
+{"entite": "Almadraba", "valeur": "mer Méditerranée"}
+{"entite": "L'Almadrava", "valeur": "mer Méditerranée"}
+{"entite": "L’Almardà", "valeur": "mer Méditerranée"}
+{"entite": "Almeerderstrand", "valeur": "IJmeer"}
+{"entite": "Altafulla", "valeur": "mer Méditerranée"}
+{"entite": "Alykes Beach, Paphos", "valeur": "mer Méditerranée"}
+{"entite": "Amager Strandpark", "valeur": "Øresund"}
+{"entite": "Amaralina Beach", "valeur": "océan Atlantique"}
+{"entite": "Ametles Beach", "valeur": "mer Méditerranée"}
+{"entite": "Amoladeras", "valeur": "mer Méditerranée"}
+{"entite": "Amoudi", "valeur": "mer Égée"}
+{"entite": "La Ampolla", "valeur": "mer Méditerranée"}
+{"entite": "Anakena", "valeur": "océan Pacifique"}
+{"entite": "Anchi Beach", "valeur": "mer de Chine orientale"}
+{"entite": "Les Anquines", "valeur": "mer Méditerranée"}
+{"entite": "Anse à la Gourde", "valeur": "océan Atlantique"}
+{"entite": "Anse de Grande Saline", "valeur": "mer des Caraïbes"}
+{"entite": "Anse de Toiny", "valeur": "mer des Caraïbes"}
+{"entite": "Anse du Cannier", "valeur": "mer Méditerranée"}
+{"entite": "Anse du Livre", "valeur": "mer Méditerranée"}
+{"entite": "Anse du Mont", "valeur": "mer des Caraïbes"}
+{"entite": "Anse du Mugel", "valeur": "mer Méditerranée"}
+{"entite": "Anse du Sec", "valeur": "mer Méditerranée"}
+{"entite": "Anse Figuier", "valeur": "mer des Caraïbes"}
+{"entite": "Anse Gaméou", "valeur": "mer Méditerranée"}
+{"entite": "Anse Mabouya", "valeur": "mer des Caraïbes"}
+{"entite": "Anse Vata Beach", "valeur": "mer de Corail"}
+{"entite": "Antillas", "valeur": "mer Méditerranée"}
+{"entite": "Apelviken", "valeur": "Cattégat"}
+{"entite": "Āra Beach", "valeur": "mer de Chine orientale"}
+{"entite": "Arazati beach", "valeur": "río de la Plata"}
+{"entite": "L'Arbre del Gos", "valeur": "mer Méditerranée"}
+{"entite": "L'Ardiaca", "valeur": "mer Méditerranée"}
+{"entite": "L'Arenal", "valeur": "mer Méditerranée"}
+{"entite": "Arenal-Bol", "valeur": "mer Méditerranée"}
+{"entite": "Arenal d'en Castell", "valeur": "mer Méditerranée"}
+{"entite": "Arenal d'en Moro", "valeur": "mer Méditerranée"}
+{"entite": "Arenal de S'Olla de Son Saura", "valeur": "mer Méditerranée"}
+{"entite": "Arenal de Son Saura del Nord, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "Arenal de Son Servera", "valeur": "mer Méditerranée"}
+{"entite": "Arenales del Sol", "valeur": "mer Méditerranée"}
+{"entite": "Arenalet del Verger", "valeur": "mer Méditerranée"}
+{"entite": "Arenas de José Ignacio Beach", "valeur": "océan Atlantique"}
+{"entite": "Arlo Porth", "valeur": "océan Atlantique"}
+{"entite": "L'Arrabassada", "valeur": "mer Méditerranée"}
+{"entite": "Asfondilitis-Chalara Beach", "valeur": "mer Égée"}
+{"entite": "Assateague Island", "valeur": "océan Atlantique"}
+{"entite": "Astarea Beach", "valeur": "mer Adriatique"}
+{"entite": "Atlántica Beach", "valeur": "océan Atlantique"}
+{"entite": "Atxabiribil", "valeur": "golfe de Gascogne"}
+{"entite": "Autostrand Oostvoorne", "valeur": "mer du Nord"}
+{"entite": "Bønnerup Strand", "valeur": "Cattégat"}
+{"entite": "Børsmose Strand", "valeur": "mer du Nord"}
+{"entite": "Babilonia", "valeur": "mer Méditerranée"}
+{"entite": "Backwater Beach", "valeur": "Georges River"}
+{"entite": "Baconet", "valeur": "mer Méditerranée"}
+{"entite": "Bahía de las palmeras", "valeur": "mer Méditerranée"}
+{"entite": "Baie des amoureux", "valeur": "mer de Corail"}
+{"entite": "Baie des Tortues", "valeur": "océan Pacifique"}
+{"entite": "bains de la plage", "valeur": "mer Méditerranée"}
+{"entite": "Bakalskaya Spit", "valeur": "golfe de Karkinit"}
+{"entite": "Bakio", "valeur": "golfe de Gascogne"}
+{"entite": "La Balconada beach", "valeur": "océan Atlantique"}
+{"entite": "Balsa de la Arena", "valeur": "mer Méditerranée"}
+{"entite": "bambou plage", "valeur": "mer Méditerranée"}
+{"entite": "Banda Bianca", "valeur": "mer Tyrrhénienne"}
+{"entite": "Bang Saen", "valeur": "baie de Bangkok"}
+{"entite": "Banyets de la Reina", "valeur": "mer Méditerranée"}
+{"entite": "Barasu Island", "valeur": "mer de Chine orientale"}
+{"entite": "Barnuevo", "valeur": "mer Méditerranée"}
+{"entite": "Barra do Cahy", "valeur": "océan Atlantique"}
+{"entite": "La Barraca Quemada", "valeur": "mer Méditerranée"}
+{"entite": "Barranco Rubio", "valeur": "mer Méditerranée"}
+{"entite": "Barrika beach", "valeur": "golfe de Gascogne"}
+{"entite": "Barrio Marítimo", "valeur": "mer Méditerranée"}
+{"entite": "Baryernaya Spit", "valeur": "mer des Laptev"}
+{"entite": "Barzan-Plage", "valeur": "estuaire de la Gironde"}
+{"entite": "Bassa del Cabot", "valeur": "mer Méditerranée"}
+{"entite": "Basseta", "valeur": "mer Méditerranée"}
+{"entite": "Beach Banj, Šibenik", "valeur": "mer Adriatique"}
+{"entite": "Beach Carrion", "valeur": "mer Méditerranée"}
+{"entite": "Beach in Mönkebude", "valeur": "lagune de Szczecin"}
+{"entite": "Beach La Paloma", "valeur": "océan Atlantique"}
+{"entite": "beach of Abbadia Lariana", "valeur": "lac de Côme"}
+{"entite": "beach of Onno", "valeur": "lac de Côme"}
+{"entite": "beach of Piona", "valeur": "lac de Côme"}
+{"entite": "Beach of Pogradec", "valeur": "lac d'Ohrid"}
+{"entite": "Beach of the Dead", "valeur": "océan Atlantique"}
+{"entite": "Beach of Ueckermünde", "valeur": "lagune de Szczecin"}
+{"entite": "beach of Vadul lui Voda", "valeur": "Dniestr"}
+{"entite": "Beach of Vao", "valeur": "océan Atlantique"}
+{"entite": "beach of Vilassar de Mar", "valeur": "mer Méditerranée"}
+{"entite": "Beach Punta de Algas", "valeur": "mer Méditerranée"}
+{"entite": "beach S'Estanyol", "valeur": "mer Méditerranée"}
+{"entite": "Beach Ückeritz", "valeur": "baie de Poméranie"}
+{"entite": "Beaches of Sóller", "valeur": "mer Méditerranée"}
+{"entite": "beau rivage", "valeur": "mer Méditerranée"}
+{"entite": "Bega de Mar", "valeur": "mer Méditerranée"}
+{"entite": "Belcaire", "valeur": "mer Méditerranée"}
+{"entite": "Bellavista", "valeur": "mer Méditerranée"}
+{"entite": "Bellevue Strand", "valeur": "Øresund"}
+{"entite": "Bellreguard", "valeur": "mer Méditerranée"}
+{"entite": "Ben Afeli", "valeur": "mer Méditerranée"}
+{"entite": "Beniesma", "valeur": "mer Méditerranée"}
+{"entite": "Betina Špilja", "valeur": "mer Adriatique"}
+{"entite": "Big Beach", "valeur": "océan Atlantique"}
+{"entite": "Big Bungaree", "valeur": "détroit de Foveaux"}
+{"entite": "Binigaus", "valeur": "mer Méditerranée"}
+{"entite": "Binimel-La", "valeur": "mer Méditerranée"}
+{"entite": "Binissafúller", "valeur": "mer Méditerranée"}
+{"entite": "Bir Sweir", "valeur": "mer Rouge"}
+{"entite": "Black Rock Beach", "valeur": "Grand Lac Salé"}
+{"entite": "Blåvandshuk", "valeur": "mer du Nord"}
+{"entite": "Blokhus beach", "valeur": "Skagerrak"}
+{"entite": "Blue Beach", "valeur": "mer Adriatique"}
+{"entite": "Blue Coral Beach, Cyprus", "valeur": "mer Méditerranée"}
+{"entite": "La Boadella", "valeur": "mer Méditerranée"}
+{"entite": "Boat Beach", "valeur": "océan Atlantique"}
+{"entite": "Boca Barranco", "valeur": "océan Atlantique"}
+{"entite": "Boca do Rio Beach", "valeur": "océan Atlantique"}
+{"entite": "Boccadasse Beach", "valeur": "golfe de Gênes"}
+{"entite": "Boche", "valeur": "mer de Corail"}
+{"entite": "Bogue Banks", "valeur": "océan Atlantique Nord"}
+{"entite": "Bon Caponet", "valeur": "mer Méditerranée"}
+{"entite": "Bone Bight", "valeur": "mer des Caraïbes"}
+{"entite": "Bonifaci", "valeur": "mer Méditerranée"}
+{"entite": "Bororot", "valeur": "mer de Corail"}
+{"entite": "Boulder Beach", "valeur": "Paterson Inlet"}
+{"entite": "Boulders Beach", "valeur": "baie False"}
+{"entite": "Brac del Port", "valeur": "mer Méditerranée"}
+{"entite": "Brava Beach", "valeur": "río de la Plata"}
+{"entite": "Brazomar", "valeur": "golfe de Gascogne"}
+{"entite": "Brisas beach", "valeur": "océan Atlantique"}
+{"entite": "Brisas del Polonio beach", "valeur": "océan Atlantique"}
+{"entite": "Buceo Beach", "valeur": "río de la Plata"}
+{"entite": "Budny Beach", "valeur": "lac Érié"}
+{"entite": "Bunken Strand", "valeur": "baie d'Ålbæk"}
+{"entite": "Byxelkrok Beach in Öland", "valeur": "détroit de Kalmar"}
+{"entite": "C.Y. O'Connor Beach", "valeur": "détroit de Cockburn"}
+{"entite": "Ca'n Cullerassa", "valeur": "mer Méditerranée"}
+{"entite": "Ca'n Pere Antoni", "valeur": "mer Méditerranée"}
+{"entite": "Cabanyal", "valeur": "mer Méditerranée"}
+{"entite": "Cabo Roig", "valeur": "mer Méditerranée"}
+{"entite": "Cabrillo Beach", "valeur": "océan Pacifique"}
+{"entite": "Cala Agulla", "valeur": "mer Méditerranée"}
+{"entite": "Cala Aiguadolça", "valeur": "mer Méditerranée"}
+{"entite": "Cala Albardans", "valeur": "mer Méditerranée"}
+{"entite": "Cala Alcalfar", "valeur": "mer Méditerranée"}
+{"entite": "Cala Alcaufar", "valeur": "mer Méditerranée"}
+{"entite": "Cala Almadraba", "valeur": "mer Méditerranée"}
+{"entite": "Cala Anguila", "valeur": "mer Méditerranée"}
+{"entite": "Cala Antena", "valeur": "mer Méditerranée"}
+{"entite": "Cala Argilaga", "valeur": "mer Méditerranée"}
+{"entite": "Cala Arturo", "valeur": "mer Méditerranée"}
+{"entite": "Cala Baeza", "valeur": "mer Méditerranée"}
+{"entite": "Cala Banyalbufar", "valeur": "mer Méditerranée"}
+{"entite": "Cala Banys", "valeur": "mer Méditerranée"}
+{"entite": "Cala Barca Trencada", "valeur": "mer Méditerranée"}
+{"entite": "Cala Barril", "valeur": "mer Méditerranée"}
+{"entite": "Cala Bassa", "valeur": "mer Méditerranée"}
+{"entite": "Cala Basset", "valeur": "mer Méditerranée"}
+{"entite": "Cala Beltran", "valeur": "mer Méditerranée"}
+{"entite": "Cala Biniancolla", "valeur": "mer Méditerranée"}
+{"entite": "Cala Binidalí", "valeur": "mer Méditerranée"}
+{"entite": "Cala Blava", "valeur": "mer Méditerranée"}
+{"entite": "Cala Bon Capó", "valeur": "mer Méditerranée"}
+{"entite": "Cala Bona", "valeur": "mer Méditerranée"}
+{"entite": "Cala Bot", "valeur": "mer Méditerranée"}
+{"entite": "Cala Bóta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Bou (Sitges)", "valeur": "mer Méditerranée"}
+{"entite": "Cala Brogit", "valeur": "mer Méditerranée"}
+{"entite": "Cala Buena", "valeur": "mer Méditerranée"}
+{"entite": "Cala Ca's Xirimier", "valeur": "mer Méditerranée"}
+{"entite": "Cala Calafató", "valeur": "mer Méditerranée"}
+{"entite": "Cala Calalga", "valeur": "mer Méditerranée"}
+{"entite": "Cala Calderer", "valeur": "mer Méditerranée"}
+{"entite": "Cala Caldes", "valeur": "mer Méditerranée"}
+{"entite": "Cala Calella in l'Estartit", "valeur": "mer Méditerranée"}
+{"entite": "Cala Califòrnia", "valeur": "mer Méditerranée"}
+{"entite": "Cala Calis", "valeur": "mer Méditerranée"}
+{"entite": "Cala Calitjàs", "valeur": "mer Méditerranée"}
+{"entite": "Cala Cantalar", "valeur": "mer Méditerranée"}
+{"entite": "Cala Canutells", "valeur": "mer Méditerranée"}
+{"entite": "Cala Canyadell", "valeur": "mer Méditerranée"}
+{"entite": "Cala Canyers", "valeur": "mer Méditerranée"}
+{"entite": "Cala Capellans", "valeur": "mer Méditerranée"}
+{"entite": "Cala Capitán", "valeur": "mer Méditerranée"}
+{"entite": "Cala Carbó", "valeur": "mer Méditerranée"}
+{"entite": "Cala Castell", "valeur": "mer Méditerranée"}
+{"entite": "Cala Cativa", "valeur": "mer Méditerranée"}
+{"entite": "Cala Cerrada", "valeur": "mer Méditerranée"}
+{"entite": "Cala Cocó", "valeur": "mer Méditerranée"}
+{"entite": "Cala Comte", "valeur": "mer Méditerranée"}
+{"entite": "Cala Comtessa", "valeur": "mer Méditerranée"}
+{"entite": "Cala Conills", "valeur": "mer Méditerranée"}
+{"entite": "Cala Conta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Corbs", "valeur": "mer Méditerranée"}
+{"entite": "Cala Corquell", "valeur": "mer Méditerranée"}
+{"entite": "Cala Corral", "valeur": "mer Méditerranée"}
+{"entite": "Cala Cortina", "valeur": "mer Méditerranée"}
+{"entite": "Cala Crancs", "valeur": "mer Méditerranée"}
+{"entite": "Cala Culleró", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'Arandes", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'en Carlos", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'en Jaume", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'en Remendon", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'En Tortuga", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'en Trons", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'Es Cubells", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'Es Jonc", "valeur": "mer Méditerranée"}
+{"entite": "Cala d'Hort", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Aigua Dolç", "valeur": "mer Méditerranée"}
+{"entite": "cala de Binibèquer", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Bosch", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Cabo Cervera", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Cabres", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Crit", "valeur": "mer Méditerranée"}
+{"entite": "Cala de En Medio", "valeur": "mer Méditerranée"}
+{"entite": "Cala de l'Ambrosia", "valeur": "mer Méditerranée"}
+{"entite": "Cala de l’Estany Podrit", "valeur": "mer Méditerranée"}
+{"entite": "Cala de la Barra", "valeur": "mer Méditerranée"}
+{"entite": "Cala de la Barra Grande", "valeur": "mer Méditerranée"}
+{"entite": "Cala de la Font Morisca", "valeur": "mer Méditerranée"}
+{"entite": "Cala de La Foradada", "valeur": "mer Méditerranée"}
+{"entite": "Cala de la Higuera", "valeur": "mer Méditerranée"}
+{"entite": "Cala de la Llumenera", "valeur": "mer Méditerranée"}
+{"entite": "Cala de la Roca del Paller", "valeur": "mer Méditerranée"}
+{"entite": "Cala de la Roca Plana", "valeur": "mer Méditerranée"}
+{"entite": "Cala de la Torrota", "valeur": "mer Méditerranée"}
+{"entite": "Cala de La Zorra", "valeur": "mer Méditerranée"}
+{"entite": "Cala de las Petxinas", "valeur": "mer Méditerranée"}
+{"entite": "Cala de las Piteras", "valeur": "mer Méditerranée"}
+{"entite": "Cala de las Rocas", "valeur": "mer Méditerranée"}
+{"entite": "Cala de las Sirenas", "valeur": "mer Méditerranée"}
+{"entite": "Cala de les Ampolles", "valeur": "mer Méditerranée"}
+{"entite": "Cala de les Bassetes", "valeur": "mer Méditerranée"}
+{"entite": "Cala de les Freses", "valeur": "mer Méditerranée"}
+{"entite": "Cala de les Llanetes", "valeur": "mer Méditerranée"}
+{"entite": "Cala de les Roques Planes", "valeur": "mer Méditerranée"}
+{"entite": "Cala de les Timbes", "valeur": "mer Méditerranée"}
+{"entite": "Cala de los Angeles", "valeur": "mer Méditerranée"}
+{"entite": "cala de los Cocedores", "valeur": "mer Méditerranée"}
+{"entite": "Cala de los Dentones", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Morro del Vedell", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Porroig", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Punta del Riu Sec", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Roca Bona", "valeur": "mer Méditerranée"}
+{"entite": "Cala de S'Aigua Blanca", "valeur": "mer Méditerranée"}
+{"entite": "Cala de s'Enclusa", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Sa Futadera", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Sant Esteve", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Sant Francesc", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Sant Vicent", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Santa Anna", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Santa Fe", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Santa María", "valeur": "mer Méditerranée"}
+{"entite": "Cala de Senià", "valeur": "mer Méditerranée"}
+{"entite": "Cala de son Pruaga", "valeur": "mer Méditerranée"}
+{"entite": "Cala Deià", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Amerador", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Barranco de Aguas", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Bol Roig", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Bosque", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Caballo", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Cementiri", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Cuartel", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Forn", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Mal Pas", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Mallorquí", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Mojón", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Moro", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Niu", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Palangre", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Pastor", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Pati Blau", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Pedrigolet", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Penyal", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Pescador", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Pi", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Pinar o del Faralló", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Pino", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Portixol", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Puerto", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Racó de les Dones", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Racó dels Homes", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Rei", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Retor", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Rincón", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Saldonar", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Soio", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Solitari", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Vedell", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Vigatà", "valeur": "mer Méditerranée"}
+{"entite": "Cala del Volante", "valeur": "mer Méditerranée"}
+{"entite": "Cala dels Cantalars", "valeur": "mer Méditerranée"}
+{"entite": "Cala dels Esculls", "valeur": "mer Méditerranée"}
+{"entite": "Cala dels Frares", "valeur": "mer Méditerranée"}
+{"entite": "Cala dels Pinets", "valeur": "mer Méditerranée"}
+{"entite": "Cala dels Pots", "valeur": "mer Méditerranée"}
+{"entite": "Cala dels Tamarius", "valeur": "mer Méditerranée"}
+{"entite": "Cala dels Tries", "valeur": "mer Méditerranée"}
+{"entite": "Cala Déntol", "valeur": "mer Méditerranée"}
+{"entite": "Cala des Frares", "valeur": "mer Méditerranée"}
+{"entite": "Cala des Tramadiu", "valeur": "mer Méditerranée"}
+{"entite": "Cala Donzell", "valeur": "mer Méditerranée"}
+{"entite": "Cala Egos", "valeur": "mer Méditerranée"}
+{"entite": "Cala El Collao", "valeur": "mer Méditerranée"}
+{"entite": "Cala El Racó", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Baster", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Blanes", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Bosc", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Brut", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Caballer, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Carbó", "valeur": "mer Méditerranée"}
+{"entite": "Cala En Feliu", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Forcat", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Ganduf", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Gossalba", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Pallàs", "valeur": "mer Méditerranée"}
+{"entite": "Cala en Tugores", "valeur": "mer Méditerranée"}
+{"entite": "Cala es Matzoc", "valeur": "mer Méditerranée"}
+{"entite": "Cala Es Morts", "valeur": "mer Méditerranée"}
+{"entite": "Cala es Murtar", "valeur": "mer Méditerranée"}
+{"entite": "Cala es Portió", "valeur": "mer Méditerranée"}
+{"entite": "Cala Escorxada", "valeur": "mer Méditerranée"}
+{"entite": "Cala Esmeralda", "valeur": "mer Méditerranée"}
+{"entite": "Cala Estaca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Estància", "valeur": "mer Méditerranée"}
+{"entite": "Cala Estellencs", "valeur": "mer Méditerranée"}
+{"entite": "Cala Estreta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Falcó", "valeur": "mer Méditerranée"}
+{"entite": "Cala Ferrera", "valeur": "mer Méditerranée"}
+{"entite": "Cala Ferri", "valeur": "mer Méditerranée"}
+{"entite": "Cala Ferriol", "valeur": "mer Méditerranée"}
+{"entite": "Cala Figuera", "valeur": "mer Méditerranée"}
+{"entite": "Cala Flores", "valeur": "mer Méditerranée"}
+{"entite": "Cala Fonda", "valeur": "mer Méditerranée"}
+{"entite": "Cala Fondo de Bola", "valeur": "mer Méditerranée"}
+{"entite": "Cala Fonoll", "valeur": "mer Méditerranée"}
+{"entite": "Cala Font", "valeur": "mer Méditerranée"}
+{"entite": "Cala Foradada", "valeur": "mer Méditerranée"}
+{"entite": "Cala Forcanera", "valeur": "mer Méditerranée"}
+{"entite": "Cala Formentor", "valeur": "mer Méditerranée"}
+{"entite": "Cala Forn", "valeur": "mer Méditerranée"}
+{"entite": "Cala Forn (Sitges)", "valeur": "mer Méditerranée"}
+{"entite": "Cala Fornells", "valeur": "mer Méditerranée"}
+{"entite": "Cala Fotuda", "valeur": "mer Méditerranée"}
+{"entite": "Cala Fustam, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Galera", "valeur": "mer Méditerranée"}
+{"entite": "Cala Galiota", "valeur": "mer Méditerranée"}
+{"entite": "Cala Gamba", "valeur": "mer Méditerranée"}
+{"entite": "Cala Garretes", "valeur": "mer Méditerranée"}
+{"entite": "Cala Gasparet", "valeur": "mer Méditerranée"}
+{"entite": "Cala Ginesta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Giverola", "valeur": "mer Méditerranée"}
+{"entite": "Cala Gració", "valeur": "mer Méditerranée"}
+{"entite": "Cala Gran", "valeur": "mer Méditerranée"}
+{"entite": "Cala Grasioneta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Guix", "valeur": "mer Méditerranée"}
+{"entite": "Cala Illa Mateua", "valeur": "mer Méditerranée"}
+{"entite": "Cala Joaquina", "valeur": "mer Méditerranée"}
+{"entite": "Cala Jonca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Joncols", "valeur": "mer Méditerranée"}
+{"entite": "Cala Justell", "valeur": "mer Méditerranée"}
+{"entite": "Cala L’Arjub", "valeur": "mer Méditerranée"}
+{"entite": "Cala La Manzanera", "valeur": "mer Méditerranée"}
+{"entite": "Cala La Mosca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Lanuza", "valeur": "mer Méditerranée"}
+{"entite": "Cala Les Urques", "valeur": "mer Méditerranée"}
+{"entite": "Cala Lladó", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llamp", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llengüadets", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llentia", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llentrisca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llenya", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llevadó", "valeur": "mer Méditerranée"}
+{"entite": "Cala Lliteras", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llobeta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llombards (baie)", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llonga", "valeur": "mer Méditerranée"}
+{"entite": "Cala Llucalari", "valeur": "mer Méditerranée"}
+{"entite": "Cala Macar de Binillautí", "valeur": "mer Méditerranée"}
+{"entite": "Cala Macarella", "valeur": "mer Méditerranée"}
+{"entite": "Cala Macarelleta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Magre", "valeur": "mer Méditerranée"}
+{"entite": "Cala Major", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mallaeta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mandia", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mar d'en Manassa", "valeur": "mer Méditerranée"}
+{"entite": "Cala Marçal", "valeur": "mer Méditerranée"}
+{"entite": "Cala Margarida", "valeur": "mer Méditerranée"}
+{"entite": "Cala María", "valeur": "mer Méditerranée"}
+{"entite": "Cala Marmassén", "valeur": "mer Méditerranée"}
+{"entite": "Cala Marmols", "valeur": "mer Méditerranée"}
+{"entite": "Cala Marquesa", "valeur": "mer Méditerranée"}
+{"entite": "Cala Martina", "valeur": "mer Méditerranée"}
+{"entite": "Cala Maset", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mastella", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mata", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mesquida", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mica", "valeur": "mer Méditerranée"}
+{"entite": "Cala Misteri", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mitjana", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mitjaneta, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Molí", "valeur": "mer Méditerranée"}
+{"entite": "Cala Monte Lanuza", "valeur": "mer Méditerranée"}
+{"entite": "Cala Montgó", "valeur": "mer Méditerranée"}
+{"entite": "Cala Montjoi", "valeur": "mer Méditerranée"}
+{"entite": "Cala Moraig", "valeur": "mer Méditerranée"}
+{"entite": "Cala Morell", "valeur": "mer Méditerranée"}
+{"entite": "Cala Morella Nou", "valeur": "mer Méditerranée"}
+{"entite": "Cala Moreta", "valeur": "mer Méditerranée"}
+{"entite": "cala Morisca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Moros", "valeur": "mer Méditerranée"}
+{"entite": "Cala Moscas", "valeur": "mer Méditerranée"}
+{"entite": "Cala Mundina", "valeur": "mer Méditerranée"}
+{"entite": "Cala Murada", "valeur": "mer Méditerranée"}
+{"entite": "Cala Murtra", "valeur": "mer Méditerranée"}
+{"entite": "Cala'n Blanes", "valeur": "mer Méditerranée"}
+{"entite": "Cala'n Bosch", "valeur": "mer Méditerranée"}
+{"entite": "Cala'n Forcat", "valeur": "mer Méditerranée"}
+{"entite": "Cala Nova", "valeur": "mer Méditerranée"}
+{"entite": "Cala Ordí", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pada", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pallerida", "valeur": "mer Méditerranée"}
+{"entite": "Cala Parejals", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pedrosa", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pelosa", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pepo", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pere Grau", "valeur": "mer Méditerranée"}
+{"entite": "Cala Petita", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pi", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pilar", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pilota", "valeur": "mer Méditerranée"}
+{"entite": "Cala Piteras", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pola", "valeur": "mer Méditerranée"}
+{"entite": "Cala Port des Pi", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pous", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pregonda", "valeur": "mer Méditerranée"}
+{"entite": "Cala Presili", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pudent", "valeur": "mer Méditerranée"}
+{"entite": "Cala Pudenta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Puerto Azul", "valeur": "mer Méditerranée"}
+{"entite": "Cala Puntal", "valeur": "mer Méditerranée"}
+{"entite": "Cala Puntal II", "valeur": "mer Méditerranée"}
+{"entite": "Cala Rafalet", "valeur": "mer Méditerranée"}
+{"entite": "Cala Rajols", "valeur": "mer Méditerranée"}
+{"entite": "Cala Reona", "valeur": "mer Méditerranée"}
+{"entite": "Cala Roig", "valeur": "mer Méditerranée"}
+{"entite": "Cala Ronyosa", "valeur": "mer Méditerranée"}
+{"entite": "Cala Rostella", "valeur": "mer Méditerranée"}
+{"entite": "Cala Rotja", "valeur": "mer Méditerranée"}
+{"entite": "Cala Rovira", "valeur": "mer Méditerranée"}
+{"entite": "Cala S'Agulla", "valeur": "mer Méditerranée"}
+{"entite": "Cala s'Almonia", "valeur": "mer Méditerranée"}
+{"entite": "Cala sa Cobertera", "valeur": "mer Méditerranée"}
+{"entite": "Cala sa Cova", "valeur": "mer Méditerranée"}
+{"entite": "Cala Sa Nau", "valeur": "mer Méditerranée"}
+{"entite": "Cala sa Tortuga", "valeur": "mer Méditerranée"}
+{"entite": "Cala Salada", "valeur": "mer Méditerranée"}
+{"entite": "Cala Saladeta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Salionç", "valeur": "mer Méditerranée"}
+{"entite": "Cala San Vicente", "valeur": "mer Méditerranée"}
+{"entite": "Cala Sant Esteve", "valeur": "mer Méditerranée"}
+{"entite": "Cala Sant Roc", "valeur": "mer Méditerranée"}
+{"entite": "Cala Sant Vicens", "valeur": "mer Méditerranée"}
+{"entite": "Cala Santanyi", "valeur": "mer Méditerranée"}
+{"entite": "Cala Santes Creus", "valeur": "mer Méditerranée"}
+{"entite": "Cala Seca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Serralot", "valeur": "mer Méditerranée"}
+{"entite": "Cala Sol de Riu", "valeur": "mer Méditerranée"}
+{"entite": "Cala Talabre", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tamarells", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tamariua", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tarida", "valeur": "mer Méditerranée"}
+{"entite": "Cala Teix", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tío Ximo", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tirant", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tobera", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tonó", "valeur": "mer Méditerranée"}
+{"entite": "Cala Torta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Torta (El Port de la Selva)", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tortuga", "valeur": "mer Méditerranée"}
+{"entite": "Cala Trebalúger", "valeur": "mer Méditerranée"}
+{"entite": "Cala Trebol", "valeur": "mer Méditerranée"}
+{"entite": "Cala Truja", "valeur": "mer Méditerranée"}
+{"entite": "Cala Tuent", "valeur": "Cala Tuent"}
+{"entite": "Cala Turqueta", "valeur": "mer Méditerranée"}
+{"entite": "Cala Vadella", "valeur": "mer Méditerranée"}
+{"entite": "Cala Vallcarca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Vella", "valeur": "mer Méditerranée"}
+{"entite": "Cala Vidre", "valeur": "mer Méditerranée"}
+{"entite": "Cala Vieneses", "valeur": "mer Méditerranée"}
+{"entite": "Cala Vinya", "valeur": "mer Méditerranée"}
+{"entite": "Cala Vinyes", "valeur": "mer Méditerranée"}
+{"entite": "Cala Viola", "valeur": "mer Méditerranée"}
+{"entite": "Cala Viola de Ponent", "valeur": "mer Méditerranée"}
+{"entite": "Cala Xarraca", "valeur": "mer Méditerranée"}
+{"entite": "Cala Xica", "valeur": "mer Méditerranée"}
+{"entite": "Cala Xinxell", "valeur": "mer Méditerranée"}
+{"entite": "Cala Xuclá", "valeur": "mer Méditerranée"}
+{"entite": "Cala Xuclar", "valeur": "mer Méditerranée"}
+{"entite": "Calafell", "valeur": "mer Méditerranée"}
+{"entite": "calanque d'En-Vau", "valeur": "mer Méditerranée"}
+{"entite": "calanque de Callelongue", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de Figuerolles", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de l'Aiglon", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de l'Eissadon", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de l'Escu", "valeur": "mer Méditerranée"}
+{"entite": "calanque de l'Œil de Verre", "valeur": "mer Méditerranée"}
+{"entite": "calanque de l'Oule", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de la Baume", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de la Melette", "valeur": "mer Méditerranée"}
+{"entite": "calanque de la Mounine", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de la Piade", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de la Poulidette", "valeur": "mer Méditerranée"}
+{"entite": "calanque de la Triperie", "valeur": "mer Méditerranée"}
+{"entite": "calanque de la Vesse", "valeur": "mer Méditerranée"}
+{"entite": "calanque de Marseilleveyre", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de Maubois", "valeur": "mer Méditerranée"}
+{"entite": "calanque de Morgiou", "valeur": "mer Méditerranée"}
+{"entite": "Calanque de Morgiret", "valeur": "mer Méditerranée"}
+{"entite": "calanque de Podestat", "valeur": "mer Méditerranée"}
+{"entite": "calanque de Port-Miou", "valeur": "mer Méditerranée"}
+{"entite": "calanque de Port-Pin", "valeur": "mer Méditerranée"}
+{"entite": "calanque de Sormiou", "valeur": "mer Méditerranée"}
+{"entite": "calanque de Sugiton", "valeur": "mer Méditerranée"}
+{"entite": "Calanque des Cambrettes", "valeur": "mer Méditerranée"}
+{"entite": "Calanque des Pierres-Tombées", "valeur": "mer Méditerranée"}
+{"entite": "Calanque des Queyrons", "valeur": "mer Méditerranée"}
+{"entite": "Calanque du Brégançonnet", "valeur": "mer Méditerranée"}
+{"entite": "calanque du Devenson", "valeur": "mer Méditerranée"}
+{"entite": "Calanque du Maure", "valeur": "mer Méditerranée"}
+{"entite": "calanques de Piana", "valeur": "mer Méditerranée"}
+{"entite": "Calas de Rocamar", "valeur": "mer Méditerranée"}
+{"entite": "Calas de Santiago Bernabeu", "valeur": "mer Méditerranée"}
+{"entite": "Calas del Cabo Peñas", "valeur": "mer Méditerranée"}
+{"entite": "Calas I-II-III Santiago Bernabeu", "valeur": "mer Méditerranée"}
+{"entite": "Calblanque", "valeur": "mer Méditerranée"}
+{"entite": "Cales Coves", "valeur": "mer Méditerranée"}
+{"entite": "Cales Piques", "valeur": "mer Méditerranée"}
+{"entite": "La Caleta", "valeur": "mer Méditerranée"}
+{"entite": "Caleta de Bendinat", "valeur": "mer Méditerranée"}
+{"entite": "Caleta de les Ferreries", "valeur": "mer Méditerranée"}
+{"entite": "Caleta de les Roques Punxoses", "valeur": "mer Méditerranée"}
+{"entite": "Caleta de Portals Vells", "valeur": "mer Méditerranée"}
+{"entite": "Caleta dels Marbres", "valeur": "mer Méditerranée"}
+{"entite": "Caleta Petita de la Móra", "valeur": "mer Méditerranée"}
+{"entite": "California beach", "valeur": "océan Atlantique"}
+{"entite": "Caló d'En Calders", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'en Monjo, Mallorca", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'en Pellicer", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'en Rafelino", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'En Real", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'En Serra", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'en Trull", "valeur": "mer Méditerranée"}
+{"entite": "Caló D'Es Cans", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'es Macs", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'Es Moltons", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'es Moro", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'Es Parral", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'Es Porcs", "valeur": "mer Méditerranée"}
+{"entite": "Caló d'Es Serral", "valeur": "mer Méditerranée"}
+{"entite": "Caló de les Gerres", "valeur": "mer Méditerranée"}
+{"entite": "Caló de s'Alga", "valeur": "mer Méditerranée"}
+{"entite": "Caló de S'Algar", "valeur": "mer Méditerranée"}
+{"entite": "Caló de S'Estaca", "valeur": "mer Méditerranée"}
+{"entite": "Caló de S'Oratge", "valeur": "mer Méditerranée"}
+{"entite": "Caló de Sa Torre", "valeur": "mer Méditerranée"}
+{"entite": "Caló de Sant Antoni", "valeur": "mer Méditerranée"}
+{"entite": "Caló de ses Donardes", "valeur": "mer Méditerranée"}
+{"entite": "Caló de son Caios", "valeur": "mer Méditerranée"}
+{"entite": "Caló dels Ermitans", "valeur": "mer Méditerranée"}
+{"entite": "Caló dels Grells", "valeur": "mer Méditerranée"}
+{"entite": "Caló dels Macs", "valeur": "mer Méditerranée"}
+{"entite": "Caló des Moro", "valeur": "mer Méditerranée"}
+{"entite": "Caló des Mort", "valeur": "mer Méditerranée"}
+{"entite": "Caló des Palangres", "valeur": "mer Méditerranée"}
+{"entite": "Calonet del Fornàs", "valeur": "mer Méditerranée"}
+{"entite": "Camp Bay, Gibraltar", "valeur": "Baie d'Algésiras"}
+{"entite": "Camp Vasas, Latvia", "valeur": "golfe de Riga"}
+{"entite": "Can Comas", "valeur": "mer Méditerranée"}
+{"entite": "Can Picafort", "valeur": "mer Méditerranée"}
+{"entite": "Canadell", "valeur": "mer Méditerranée"}
+{"entite": "Cantal Roig", "valeur": "mer Méditerranée"}
+{"entite": "Canyelles Petites", "valeur": "mer Méditerranée"}
+{"entite": "Canyerets", "valeur": "mer Méditerranée"}
+{"entite": "Canyet", "valeur": "mer Méditerranée"}
+{"entite": "Cap Blanc", "valeur": "mer Méditerranée"}
+{"entite": "Cap de Planes", "valeur": "mer Méditerranée"}
+{"entite": "Cap de Sant Pere", "valeur": "mer Méditerranée"}
+{"entite": "Cap des Bou", "valeur": "mer Méditerranée"}
+{"entite": "Cap Marti", "valeur": "mer Méditerranée"}
+{"entite": "Cap Negret", "valeur": "mer Méditerranée"}
+{"entite": "cap Saint Roque", "valeur": "océan Atlantique"}
+{"entite": "Cape Mihama", "valeur": "baie de Suruga"}
+{"entite": "Capifort", "valeur": "mer Méditerranée"}
+{"entite": "Capri", "valeur": "mer Méditerranée"}
+{"entite": "Capurro beach", "valeur": "río de la Plata"}
+{"entite": "Carabassí", "valeur": "mer Méditerranée"}
+{"entite": "Carnon-Plage", "valeur": "mer Méditerranée"}
+{"entite": "Carrasco beach", "valeur": "río de la Plata"}
+{"entite": "Carrer del Mar", "valeur": "mer Méditerranée"}
+{"entite": "Carritxar", "valeur": "mer Méditerranée"}
+{"entite": "Cas Abao", "valeur": "mer des Caraïbes"}
+{"entite": "Cas Pages", "valeur": "mer Méditerranée"}
+{"entite": "Casa del Médico", "valeur": "mer Méditerranée"}
+{"entite": "Les Cases", "valeur": "mer Méditerranée"}
+{"entite": "Les Cases d'Alcanar", "valeur": "mer Méditerranée"}
+{"entite": "castel plage", "valeur": "mer Méditerranée"}
+{"entite": "Castillico", "valeur": "mer Méditerranée"}
+{"entite": "Cava Beach", "valeur": "mer Adriatique"}
+{"entite": "Cavalleria", "valeur": "mer Méditerranée"}
+{"entite": "Cavalleria Beaches", "valeur": "mer Méditerranée"}
+{"entite": "Cave Beach", "valeur": "río de la Plata"}
+{"entite": "Cedar Lake East Beach", "valeur": "Cedar Lake"}
+{"entite": "Cefn Sidan", "valeur": "Loughor (fleuve)"}
+{"entite": "Cenia River Beach", "valeur": "mer Méditerranée"}
+{"entite": "Ceo Beach", "valeur": "Tea"}
+{"entite": "Cerro Beach", "valeur": "río de la Plata"}
+{"entite": "Chanteiro", "valeur": "océan Atlantique"}
+{"entite": "Charlottenlund Søbad", "valeur": "Øresund"}
+{"entite": "Chega Nego Beach", "valeur": "océan Atlantique"}
+{"entite": "Chelin", "valeur": "mer Méditerranée"}
+{"entite": "Chidorigahama", "valeur": "détroit de Naruto"}
+{"entite": "Chihama Beach", "valeur": "mer d'Enshū"}
+{"entite": "City beach of Perm", "valeur": "Kama"}
+{"entite": "Ciudad Jardín", "valeur": "mer Méditerranée"}
+{"entite": "Claper", "valeur": "mer Méditerranée"}
+{"entite": "Čoalbmeriddu", "valeur": "Varangerfjord"}
+{"entite": "Coco beach", "valeur": "mer Méditerranée"}
+{"entite": "Codolar d'en Bou", "valeur": "mer Méditerranée"}
+{"entite": "Codolar de Montecarlo", "valeur": "mer Méditerranée"}
+{"entite": "Codolar de Torrenova", "valeur": "mer Méditerranée"}
+{"entite": "Coll Baix", "valeur": "mer Méditerranée"}
+{"entite": "Collins Beach", "valeur": "fleuve Columbia"}
+{"entite": "Colón", "valeur": "mer Méditerranée"}
+{"entite": "La Colorada beach", "valeur": "océan Atlantique"}
+{"entite": "Coma-Ruga", "valeur": "mer Méditerranée"}
+{"entite": "La Concha", "valeur": "océan Atlantique"}
+{"entite": "Conche de Saint-Georges", "valeur": "océan Atlantique"}
+{"entite": "Coralita Beach", "valeur": "océan Atlantique Nord"}
+{"entite": "Corint", "valeur": "mer Méditerranée"}
+{"entite": "La Coronilla Beach", "valeur": "océan Atlantique"}
+{"entite": "Costa de Llevant", "valeur": "mer Méditerranée"}
+{"entite": "Costa de Valencia", "valeur": "mer Méditerranée"}
+{"entite": "Costa del Azahar", "valeur": "mer Méditerranée"}
+{"entite": "Costa del Azahar Beaches", "valeur": "mer Méditerranée"}
+{"entite": "Costa del Maresme", "valeur": "mer Méditerranée"}
+{"entite": "Côte bulgare de la mer Noire", "valeur": "mer Noire"}
+{"entite": "Cougar Spit", "valeur": "canal Hood"}
+{"entite": "Cove Bay", "valeur": "mer des Caraïbes"}
+{"entite": "Cow Wreck Beach", "valeur": "mer des Caraïbes"}
+{"entite": "Creixell", "valeur": "mer Méditerranée"}
+{"entite": "Crescent Beach", "valeur": "océan Paciﬁque nord"}
+{"entite": "la Creu", "valeur": "mer Méditerranée"}
+{"entite": "crique naturiste des Jaunais", "valeur": "océan Atlantique Nord"}
+{"entite": "Crni molo", "valeur": "mer Adriatique"}
+{"entite": "Cuartel Vell", "valeur": "mer Méditerranée"}
+{"entite": "Cudolá", "valeur": "mer Méditerranée"}
+{"entite": "Cunit", "valeur": "mer Méditerranée"}
+{"entite": "Cylinders Beach", "valeur": "río de la Plata"}
+{"entite": "Daimús", "valeur": "mer Méditerranée"}
+{"entite": "Danče Beach", "valeur": "mer Adriatique"}
+{"entite": "Darëzezë Beach", "valeur": "mer Adriatique"}
+{"entite": "Darkwood Beach", "valeur": "mer des Caraïbes"}
+{"entite": "Dead Man Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Degollador", "valeur": "mer Méditerranée"}
+{"entite": "Del Pebret", "valeur": "mer Méditerranée"}
+{"entite": "Del Pi", "valeur": "mer Méditerranée"}
+{"entite": "Les Delicies", "valeur": "mer Méditerranée"}
+{"entite": "La Devesa", "valeur": "mer Méditerranée"}
+{"entite": "Devesa del Saler beach", "valeur": "mer Méditerranée"}
+{"entite": "Les Devesses", "valeur": "mer Méditerranée"}
+{"entite": "Dharmadom Beach", "valeur": "mer d'Arabie"}
+{"entite": "Dlinnaya Spit", "valeur": "mer des Laptev"}
+{"entite": "Dockweiler State Beach", "valeur": "océan Pacifique"}
+{"entite": "Dog bath Drevviken", "valeur": "Drevviken"}
+{"entite": "Dolgaya Spit", "valeur": "golfe de Taganrog"}
+{"entite": "Dosmares Beach", "valeur": "mer Méditerranée"}
+{"entite": "Dueodde", "valeur": "mer Baltique"}
+{"entite": "Dunes de Maspalomas", "valeur": "océan Atlantique"}
+{"entite": "East Ruggedy Beach", "valeur": "détroit de Foveaux"}
+{"entite": "East Smoky Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Eastern Beach", "valeur": "mer d'Alboran"}
+{"entite": "Ediz Hook", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Eighty Mile Beach", "valeur": "océan Indien"}
+{"entite": "El Abogat", "valeur": "mer Méditerranée"}
+{"entite": "El Acequión", "valeur": "mer Méditerranée"}
+{"entite": "El Albir", "valeur": "mer Méditerranée"}
+{"entite": "El Altet", "valeur": "mer Méditerranée"}
+{"entite": "El Ambolo", "valeur": "mer Méditerranée"}
+{"entite": "El Amerador", "valeur": "mer Méditerranée"}
+{"entite": "El Andragó", "valeur": "mer Méditerranée"}
+{"entite": "El Arena Pedrucho", "valeur": "mer Méditerranée"}
+{"entite": "El Asparalló", "valeur": "mer Méditerranée"}
+{"entite": "El Baladrar", "valeur": "mer Méditerranée"}
+{"entite": "El Bon Nou", "valeur": "mer Méditerranée"}
+{"entite": "El Brosquill", "valeur": "mer Méditerranée"}
+{"entite": "El Burrero", "valeur": "océan Atlantique"}
+{"entite": "El Caló", "valeur": "mer Méditerranée"}
+{"entite": "El Campo", "valeur": "mer Méditerranée"}
+{"entite": "El Caragol", "valeur": "mer Méditerranée"}
+{"entite": "El Carmolí", "valeur": "mer Méditerranée"}
+{"entite": "El Castell", "valeur": "mer Méditerranée"}
+{"entite": "El Cau", "valeur": "mer Méditerranée"}
+{"entite": "El Cavet", "valeur": "mer Méditerranée"}
+{"entite": "El Cerezo", "valeur": "mer Méditerranée"}
+{"entite": "El Ciment", "valeur": "mer Méditerranée"}
+{"entite": "El Codolar", "valeur": "mer Méditerranée"}
+{"entite": "El Conde", "valeur": "mer Méditerranée"}
+{"entite": "El Descargador", "valeur": "mer Méditerranée"}
+{"entite": "El Dolç", "valeur": "mer Méditerranée"}
+{"entite": "el Domingos Gran", "valeur": "mer Méditerranée"}
+{"entite": "el Domingos Petit", "valeur": "mer Méditerranée"}
+{"entite": "El Dosel", "valeur": "mer Méditerranée"}
+{"entite": "El Espejo", "valeur": "mer Méditerranée"}
+{"entite": "El Fórum", "valeur": "mer Méditerranée"}
+{"entite": "El Galán", "valeur": "mer Méditerranée"}
+{"entite": "El Garbi", "valeur": "mer Méditerranée"}
+{"entite": "El Genetó", "valeur": "mer Méditerranée"}
+{"entite": "El Golfet", "valeur": "mer Méditerranée"}
+{"entite": "El Gorguel", "valeur": "mer Méditerranée"}
+{"entite": "El Grau", "valeur": "mer Méditerranée"}
+{"entite": "El Gurugú", "valeur": "mer Méditerranée"}
+{"entite": "El Marenyet", "valeur": "mer Méditerranée"}
+{"entite": "El Marge Roig", "valeur": "mer Méditerranée"}
+{"entite": "El Marjal", "valeur": "mer Méditerranée"}
+{"entite": "El Milagro", "valeur": "mer Méditerranée"}
+{"entite": "El Mojón", "valeur": "mer Méditerranée"}
+{"entite": "El Moncayo", "valeur": "mer Méditerranée"}
+{"entite": "El Palenque beach", "valeur": "océan Atlantique"}
+{"entite": "El Parais", "valeur": "mer Méditerranée"}
+{"entite": "El Pas", "valeur": "mer Méditerranée"}
+{"entite": "El Pedrucho", "valeur": "mer Méditerranée"}
+{"entite": "El Perelló", "valeur": "mer Méditerranée"}
+{"entite": "El Perellonet", "valeur": "mer Méditerranée"}
+{"entite": "El Pescador", "valeur": "mer Méditerranée"}
+{"entite": "El Pinar", "valeur": "mer Méditerranée"}
+{"entite": "El Pinet", "valeur": "mer Méditerranée"}
+{"entite": "El Portet", "valeur": "mer Méditerranée"}
+{"entite": "El Puerto", "valeur": "mer Méditerranée"}
+{"entite": "El Racó", "valeur": "mer Méditerranée"}
+{"entite": "El Rebollo", "valeur": "mer Méditerranée"}
+{"entite": "El Reducto", "valeur": "océan Atlantique"}
+{"entite": "El Reguerot de Claveguer", "valeur": "mer Méditerranée"}
+{"entite": "El Rey", "valeur": "mer Méditerranée"}
+{"entite": "El Riuet", "valeur": "mer Méditerranée"}
+{"entite": "El Salaret", "valeur": "mer Méditerranée"}
+{"entite": "El Serradal", "valeur": "mer Méditerranée"}
+{"entite": "El Serrallo", "valeur": "mer Méditerranée"}
+{"entite": "El Soyo", "valeur": "mer Méditerranée"}
+{"entite": "El Tío Roig", "valeur": "mer Méditerranée"}
+{"entite": "El Torn", "valeur": "mer Méditerranée"}
+{"entite": "El Torres", "valeur": "mer Méditerranée"}
+{"entite": "El Trabucador", "valeur": "mer Méditerranée"}
+{"entite": "Els Ampláries", "valeur": "mer Méditerranée"}
+{"entite": "Els Arenals", "valeur": "mer Méditerranée"}
+{"entite": "Els Canyers", "valeur": "mer Méditerranée"}
+{"entite": "Els Capellans", "valeur": "mer Méditerranée"}
+{"entite": "Els Militars", "valeur": "mer Méditerranée"}
+{"entite": "Els Palangrers", "valeur": "mer Méditerranée"}
+{"entite": "Els Peixets", "valeur": "mer Méditerranée"}
+{"entite": "Els Pinets", "valeur": "mer Méditerranée"}
+{"entite": "Els Pregons Grans", "valeur": "mer Méditerranée"}
+{"entite": "Els Pregons Petits", "valeur": "mer Méditerranée"}
+{"entite": "Els Tamarells", "valeur": "mer Méditerranée"}
+{"entite": "Els Terrers", "valeur": "mer Méditerranée"}
+{"entite": "En Calau", "valeur": "mer Méditerranée"}
+{"entite": "D’en Carbassó", "valeur": "mer Méditerranée"}
+{"entite": "En Goixa", "valeur": "mer Méditerranée"}
+{"entite": "En Repic", "valeur": "mer Méditerranée"}
+{"entite": "Enju Beach", "valeur": "mer des Philippines"}
+{"entite": "Ensenada de los Galápagos", "valeur": "mer Méditerranée"}
+{"entite": "Ensenada del Esparto", "valeur": "mer Méditerranée"}
+{"entite": "Es Alocs", "valeur": "mer Méditerranée"}
+{"entite": "Es Bol Nou", "valeur": "mer Méditerranée"}
+{"entite": "Es Calo", "valeur": "mer Méditerranée"}
+{"entite": "Es Caló Blanc", "valeur": "mer Méditerranée"}
+{"entite": "Es Caná", "valeur": "mer Méditerranée"}
+{"entite": "Es Canal de S'Olla", "valeur": "mer Méditerranée"}
+{"entite": "Es Canar", "valeur": "mer Méditerranée"}
+{"entite": "Es Canyaret", "valeur": "mer Méditerranée"}
+{"entite": "Es Carbó", "valeur": "mer Méditerranée"}
+{"entite": "Es Cavallet", "valeur": "mer Méditerranée"}
+{"entite": "Es Codolá", "valeur": "mer Méditerranée"}
+{"entite": "es Codolar", "valeur": "mer Méditerranée"}
+{"entite": "Es Corral Fals", "valeur": "mer Méditerranée"}
+{"entite": "Es Coto", "valeur": "mer Méditerranée"}
+{"entite": "Es Cuco", "valeur": "mer Méditerranée"}
+{"entite": "Es Descarregador", "valeur": "mer Méditerranée"}
+{"entite": "Es Figueral", "valeur": "mer Méditerranée"}
+{"entite": "Es grau", "valeur": "mer Méditerranée"}
+{"entite": "Es Macar Gran", "valeur": "mer Méditerranée"}
+{"entite": "Es Macar Petit", "valeur": "mer Méditerranée"}
+{"entite": "Es Marques", "valeur": "mer Méditerranée"}
+{"entite": "Es Niu Blau", "valeur": "mer Méditerranée"}
+{"entite": "Es Port", "valeur": "mer Méditerranée"}
+{"entite": "Es Port d'Es Torrent", "valeur": "mer Méditerranée"}
+{"entite": "Es Portixol", "valeur": "mer Méditerranée"}
+{"entite": "Es Puetó", "valeur": "mer Méditerranée"}
+{"entite": "Es Pujols", "valeur": "mer Méditerranée"}
+{"entite": "Es Puntarro", "valeur": "mer Méditerranée"}
+{"entite": "Es Racó de S'Alga", "valeur": "mer Méditerranée"}
+{"entite": "Es Racó de s'Arena", "valeur": "mer Méditerranée"}
+{"entite": "Es Regueró", "valeur": "mer Méditerranée"}
+{"entite": "Es Ribell", "valeur": "mer Méditerranée"}
+{"entite": "Es Riu de Sta Eulària", "valeur": "mer Méditerranée"}
+{"entite": "Es Torrent", "valeur": "mer Méditerranée"}
+{"entite": "Es Torrent des Morts", "valeur": "mer Méditerranée"}
+{"entite": "Es Trenc", "valeur": "mer Méditerranée"}
+{"entite": "Es Trucadors", "valeur": "mer Méditerranée"}
+{"entite": "Es Vivé", "valeur": "mer Méditerranée"}
+{"entite": "Es Xarco", "valeur": "mer Méditerranée"}
+{"entite": "Eskilslund Beach, Öland", "valeur": "détroit de Kalmar"}
+{"entite": "La Esmeralda Beach", "valeur": "océan Atlantique"}
+{"entite": "Espalmador", "valeur": "mer Méditerranée"}
+{"entite": "L'Esquirol", "valeur": "mer Méditerranée"}
+{"entite": "Estacio", "valeur": "mer Méditerranée"}
+{"entite": "L'Estany", "valeur": "mer Méditerranée"}
+{"entite": "L'Estany Gelat", "valeur": "mer Méditerranée"}
+{"entite": "L'Estany Tort", "valeur": "mer Méditerranée"}
+{"entite": "L'Estanyo", "valeur": "mer Méditerranée"}
+{"entite": "L'Estanyol", "valeur": "mer Méditerranée"}
+{"entite": "Estudiantes", "valeur": "mer Méditerranée"}
+{"entite": "Ets Alocs", "valeur": "mer Méditerranée"}
+{"entite": "Euromangas", "valeur": "mer Méditerranée"}
+{"entite": "Eysk Spit", "valeur": "mer d'Azov"}
+{"entite": "Fågelöuddebadet", "valeur": "Askrikefjärden"}
+{"entite": "Fairhaven Beach", "valeur": "détroit de Bass"}
+{"entite": "Fairy Beach", "valeur": "lac Manapouri"}
+{"entite": "Falckensteiner Strand", "valeur": "Fœrde de Kiel"}
+{"entite": "Fan Shell Beach", "valeur": "océan Paciﬁque nord"}
+{"entite": "Farol da Barra Beach", "valeur": "océan Atlantique"}
+{"entite": "Fenals", "valeur": "mer Méditerranée"}
+{"entite": "Figueretes", "valeur": "mer Méditerranée"}
+{"entite": "Figurnaya Spit", "valeur": "mer des Laptev"}
+{"entite": "Finestrat", "valeur": "mer Méditerranée"}
+{"entite": "First Beach", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Flamenca Beach, Spain", "valeur": "mer Méditerranée"}
+{"entite": "Flash of Beauty", "valeur": "mer des Caraïbes"}
+{"entite": "Flèche d'Arabat", "valeur": "Syvach"}
+{"entite": "Flèche de Tchouchka", "valeur": "détroit de Kertch"}
+{"entite": "flèche de Tendra", "valeur": "mer Noire"}
+{"entite": "le florida plage", "valeur": "mer Méditerranée"}
+{"entite": "Foginovo Beach", "valeur": "Korana"}
+{"entite": "La Fonda", "valeur": "mer Méditerranée"}
+{"entite": "Fondalet", "valeur": "mer Méditerranée"}
+{"entite": "forum plage", "valeur": "mer Méditerranée"}
+{"entite": "La Fosca", "valeur": "mer Méditerranée"}
+{"entite": "La Franqui", "valeur": "mer Méditerranée"}
+{"entite": "Frazers Beach", "valeur": "lac Manapouri"}
+{"entite": "Freibad Orankesee", "valeur": "lac d'Oranke"}
+{"entite": "Frenchmans Beach", "valeur": "Horseshoe Bay"}
+{"entite": "Fukiagehama", "valeur": "canal de Kii"}
+{"entite": "Funatsu Beach", "valeur": "lac Inawashiro"}
+{"entite": "La Fustera", "valeur": "mer Méditerranée"}
+{"entite": "la Galera", "valeur": "mer Méditerranée"}
+{"entite": "Galúa", "valeur": "mer Méditerranée"}
+{"entite": "La Garrofera", "valeur": "mer Méditerranée"}
+{"entite": "Gas Beach", "valeur": "río de la Plata"}
+{"entite": "Les Gavines", "valeur": "mer Méditerranée"}
+{"entite": "La Geneta", "valeur": "mer Méditerranée"}
+{"entite": "Giettáid", "valeur": "Varangerfjord"}
+{"entite": "La Glea", "valeur": "mer Méditerranée"}
+{"entite": "La Gola", "valeur": "mer Méditerranée"}
+{"entite": "Golaya Spit", "valeur": "mer des Laptev"}
+{"entite": "Gold Beach", "valeur": "baie de Seine"}
+{"entite": "Golden Bay (Malte)", "valeur": "mer Méditerranée"}
+{"entite": "Golden Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Goleta", "valeur": "mer Méditerranée"}
+{"entite": "Gollerón", "valeur": "mer Méditerranée"}
+{"entite": "Gömmaren, hundbadplatsen", "valeur": "Gömmaren"}
+{"entite": "Gorai Beach", "valeur": "mer d'Arabie"}
+{"entite": "Gors", "valeur": "mer Méditerranée"}
+{"entite": "Görvälnsbadet", "valeur": "lac Mälar"}
+{"entite": "Gran de Palamós", "valeur": "mer Méditerranée"}
+{"entite": "Gran Playa", "valeur": "mer Méditerranée"}
+{"entite": "Grand Strand", "valeur": "océan Atlantique"}
+{"entite": "Grande Anse", "valeur": "océan Indien"}
+{"entite": "Grande Calanque", "valeur": "mer Méditerranée"}
+{"entite": "Grande Plage de Barneville à Portbail", "valeur": "Manche"}
+{"entite": "Grande plage de Carnac", "valeur": "océan Atlantique Nord"}
+{"entite": "Grao - Malvarrosa", "valeur": "mer Méditerranée"}
+{"entite": "La Grava", "valeur": "mer Méditerranée"}
+{"entite": "Green Beach", "valeur": "río de la Plata"}
+{"entite": "Grenaa Beach", "valeur": "Cattégat"}
+{"entite": "Guardamar", "valeur": "mer Méditerranée"}
+{"entite": "Guayedra", "valeur": "plage"}
+{"entite": "Les Guineus", "valeur": "mer Méditerranée"}
+{"entite": "Gulf Shores Public Beach", "valeur": "golfe du Mexique"}
+{"entite": "Gurgusum", "valeur": "mer Rouge"}
+{"entite": "Gururú", "valeur": "mer Méditerranée"}
+{"entite": "Hacienda dos Mares", "valeur": "mer Méditerranée"}
+{"entite": "Haigh Beach", "valeur": "Lake Moore"}
+{"entite": "Hals strand", "valeur": "Cattégat"}
+{"entite": "Hamazume Beach", "valeur": "mer du Japon"}
+{"entite": "Hamiltons Beach", "valeur": "mer de Tasman"}
+{"entite": "Haragama Obama Beach", "valeur": "océan Pacifique"}
+{"entite": "Harlingen beach", "valeur": "mer des Wadden"}
+{"entite": "Hatchōhama", "valeur": "mer du Japon"}
+{"entite": "Heisaura", "valeur": "océan Pacifique"}
+{"entite": "High Bluff Beach", "valeur": "océan Paciﬁque nord"}
+{"entite": "Hikuwai Beach", "valeur": "baie de l'Abondance"}
+{"entite": "Hilton Head Island Beach", "valeur": "océan Atlantique Nord"}
+{"entite": "Hirizo Beach", "valeur": "baie de Suruga"}
+{"entite": "La Hita", "valeur": "mer Méditerranée"}
+{"entite": "Hohonu Spit", "valeur": "lac Brunner"}
+{"entite": "Holly Beach", "valeur": "océan Pacifique"}
+{"entite": "Honda", "valeur": "océan Atlantique"}
+{"entite": "Honda Beach", "valeur": "río de la Plata"}
+{"entite": "Honeymoon Beach", "valeur": "lac Te Anau"}
+{"entite": "L'Horta de Santa María", "valeur": "mer Méditerranée"}
+{"entite": "Hossegor central beach", "valeur": "océan Atlantique Nord"}
+{"entite": "Hot Water Beach", "valeur": "océan Pacifique"}
+{"entite": "Hotel Zone", "valeur": "mer des Caraïbes"}
+{"entite": "Hudsons Beach", "valeur": "port de Manukau"}
+{"entite": "Hulsig V, Karredvej", "valeur": "baie d'Ålbæk"}
+{"entite": "Hvalnesfjara", "valeur": "Lónsvík"}
+{"entite": "Hyllekrog", "valeur": "mer Baltique"}
+{"entite": "île Anna Maria", "valeur": "golfe du Mexique"}
+{"entite": "île de Galveston", "valeur": "golfe du Mexique"}
+{"entite": "île de Saint-Simon", "valeur": "océan Atlantique"}
+{"entite": "île Padre", "valeur": "golfe du Mexique"}
+{"entite": "île Stradbroke-Nord", "valeur": "mer de Corail"}
+{"entite": "Imbassaí Beach", "valeur": "océan Atlantique"}
+{"entite": "Inema", "valeur": "baie de Tous les Saints"}
+{"entite": "Ishizu Beach", "valeur": "baie de Suruga"}
+{"entite": "Isla del Ciervo", "valeur": "mer Méditerranée"}
+{"entite": "Islas Menores", "valeur": "Mar Menor"}
+{"entite": "isthme de Miquelon-Langlade", "valeur": "océan Atlantique Nord"}
+{"entite": "Isuntza", "valeur": "golfe de Gascogne"}
+{"entite": "Itapuã Beach", "valeur": "océan Atlantique"}
+{"entite": "Jaguaribe Beach", "valeur": "océan Atlantique"}
+{"entite": "Jaó Beach", "valeur": "rio Doce"}
+{"entite": "Jardim de Alah Beach", "valeur": "océan Atlantique"}
+{"entite": "Jericho Beach", "valeur": "baie Burrard"}
+{"entite": "Joemma Beach", "valeur": "Puget Sound"}
+{"entite": "Jōko Beach", "valeur": "lac Inawashiro"}
+{"entite": "Jondal", "valeur": "mer Méditerranée"}
+{"entite": "Jones Beach Island", "valeur": "océan Atlantique"}
+{"entite": "Juanita Beach", "valeur": "océan Atlantique"}
+{"entite": "Juanito", "valeur": "mer Méditerranée"}
+{"entite": "Juhu Beach", "valeur": "mer d'Arabie"}
+{"entite": "Jumeirah Beach", "valeur": "golfe Persique"}
+{"entite": "Juno Beach", "valeur": "baie de Seine"}
+{"entite": "Kabli Beach", "valeur": "golfe de Riga"}
+{"entite": "Kai Beach", "valeur": "Pearl Harbor"}
+{"entite": "Kaiti Beach", "valeur": "baie de la Pauvreté"}
+{"entite": "Kallhällsbadet", "valeur": "lac Mälar"}
+{"entite": "Kallia Beach", "valeur": "mer Morte"}
+{"entite": "Kanonerskiy island beach", "valeur": "baie de la Neva"}
+{"entite": "Karekare Beach", "valeur": "mer de Tasman"}
+{"entite": "Karioitahi Beach", "valeur": "mer de Tasman"}
+{"entite": "Karon Beach", "valeur": "mer d'Andaman"}
+{"entite": "Karraspio", "valeur": "golfe de Gascogne"}
+{"entite": "Kato Kampos", "valeur": "mer Égée"}
+{"entite": "Kayostla Beach", "valeur": "océan Paciﬁque nord"}
+{"entite": "King Spit", "valeur": "canal Hood"}
+{"entite": "Kitsilano Beach", "valeur": "océan Pacifique"}
+{"entite": "Kohioawa Beach", "valeur": "baie de l'Abondance"}
+{"entite": "Kokomo Beach", "valeur": "mer des Caraïbes"}
+{"entite": "Korotkaya Spit", "valeur": "mer des Laptev"}
+{"entite": "Kotogahama Beach", "valeur": "mer du Japon"}
+{"entite": "Krylataya", "valeur": "mer des Laptev"}
+{"entite": "Kugenuma Beach", "valeur": "baie de Sagami"}
+{"entite": "Kund Malir", "valeur": "mer d'Arabie"}
+{"entite": "Kuniyasu Beach", "valeur": "mer d'Enshū"}
+{"entite": "Kupari Beach", "valeur": "mer Adriatique"}
+{"entite": "Lady Robinsons Beach", "valeur": "Botany Bay"}
+{"entite": "Lafitenia", "valeur": "océan Atlantique Nord"}
+{"entite": "Lakeview Park", "valeur": "lac Érié"}
+{"entite": "Larga", "valeur": "mer Méditerranée"}
+{"entite": "Las Achiras Beach", "valeur": "océan Atlantique"}
+{"entite": "Las Arenas", "valeur": "Ria de Bilbao"}
+{"entite": "Las Cañas", "valeur": "mer Méditerranée"}
+{"entite": "Las Delicias beach", "valeur": "río de la Plata"}
+{"entite": "Las Higuericas", "valeur": "mer Méditerranée"}
+{"entite": "Las Palmeras", "valeur": "mer Méditerranée"}
+{"entite": "Las Salinas", "valeur": "mer Méditerranée"}
+{"entite": "Las Villas", "valeur": "mer Méditerranée"}
+{"entite": "Lastre", "valeur": "mer Méditerranée"}
+{"entite": "Lawrence Beach", "valeur": "Georges River"}
+{"entite": "Lazbükü", "valeur": "mer Noire"}
+{"entite": "Leslie Beach", "valeur": "lac Érié"}
+{"entite": "Lestrevet", "valeur": "baie de Douarnenez"}
+{"entite": "Levante", "valeur": "mer Méditerranée"}
+{"entite": "Levrossos", "valeur": "mer Égée"}
+{"entite": "le lido", "valeur": "mer Méditerranée"}
+{"entite": "Lido di Mandello del Lario", "valeur": "lac de Côme"}
+{"entite": "Lighthouse Area Oceanside Beach", "valeur": "océan Atlantique Nord"}
+{"entite": "Lina's Beach", "valeur": "Georges River"}
+{"entite": "Lisa", "valeur": "mer Méditerranée"}
+{"entite": "Litolský Most Beach", "valeur": "Elbe"}
+{"entite": "Little Bungaree Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Llafranc", "valeur": "mer Méditerranée"}
+{"entite": "La LLana", "valeur": "mer Méditerranée"}
+{"entite": "Llebeig", "valeur": "mer Méditerranée"}
+{"entite": "Llevant", "valeur": "mer Méditerranée"}
+{"entite": "La Llobella", "valeur": "mer Méditerranée"}
+{"entite": "La Llosa", "valeur": "mer Méditerranée"}
+{"entite": "Llucalcari", "valeur": "mer Méditerranée"}
+{"entite": "Loblolly Bay", "valeur": "mer des Caraïbes"}
+{"entite": "Long Beach Island", "valeur": "océan Atlantique"}
+{"entite": "Longrock Beach", "valeur": "Mount's Bay"}
+{"entite": "Los Alisios", "valeur": "mer Méditerranée"}
+{"entite": "Los Boliches Beach", "valeur": "mer d'Alboran"}
+{"entite": "Los Caños de Meca", "valeur": "océan Atlantique"}
+{"entite": "Los Eucaliptos", "valeur": "mer Méditerranée"}
+{"entite": "Los Hornos", "valeur": "océan Atlantique Nord"}
+{"entite": "Los Jesuítas", "valeur": "mer Méditerranée"}
+{"entite": "Los Lorcas", "valeur": "mer Méditerranée"}
+{"entite": "Los Narejos", "valeur": "mer Méditerranée"}
+{"entite": "Los Nietos", "valeur": "mer Méditerranée"}
+{"entite": "Los Olivos", "valeur": "mer Méditerranée"}
+{"entite": "Los Palmares beach", "valeur": "océan Atlantique"}
+{"entite": "Los Pedregales", "valeur": "mer Méditerranée"}
+{"entite": "Los Saladares", "valeur": "mer Méditerranée"}
+{"entite": "Los Tiestos", "valeur": "mer Méditerranée"}
+{"entite": "Los Tusales", "valeur": "mer Méditerranée"}
+{"entite": "Los Urrutias", "valeur": "mer Méditerranée"}
+{"entite": "Los Viveros", "valeur": "mer Méditerranée"}
+{"entite": "Lover's Point Beach", "valeur": "baie de Monterey"}
+{"entite": "Maŋŋegeahče", "valeur": "Varangerfjord"}
+{"entite": "Macarella", "valeur": "mer Méditerranée"}
+{"entite": "Les Madrigueres", "valeur": "mer Méditerranée"}
+{"entite": "Maestral Beach", "valeur": "mer Adriatique"}
+{"entite": "Magalluf", "valeur": "mer Méditerranée"}
+{"entite": "Māhia Beach", "valeur": "Hawke Bay"}
+{"entite": "Maiarko", "valeur": "océan Atlantique Nord"}
+{"entite": "Makorori Beach", "valeur": "océan Pacifique"}
+{"entite": "Malaquite Beach", "valeur": "golfe du Mexique"}
+{"entite": "Malibu Beach", "valeur": "océan Pacifique"}
+{"entite": "Mallipo Beach", "valeur": "mer Jaune"}
+{"entite": "Maltezi", "valeur": "mer Égée"}
+{"entite": "Malvarrosa", "valeur": "mer Méditerranée"}
+{"entite": "Malvín beach", "valeur": "río de la Plata"}
+{"entite": "Manzanares", "valeur": "mer Méditerranée"}
+{"entite": "Maple Beach", "valeur": "canal Hood"}
+{"entite": "Mar de Cristal", "valeur": "Mar Menor"}
+{"entite": "Mar Grande beach", "valeur": "baie de Tous les Saints"}
+{"entite": "Mar Xica", "valeur": "mer Méditerranée"}
+{"entite": "Marathi Beach of Chrysokellaria", "valeur": "mer Ionienne"}
+{"entite": "Marchamalo", "valeur": "mer Méditerranée"}
+{"entite": "Mare de Deu", "valeur": "mer Méditerranée"}
+{"entite": "Mareny", "valeur": "mer Méditerranée"}
+{"entite": "Mareny Blau", "valeur": "mer Méditerranée"}
+{"entite": "Mareny de Sant Llorenç", "valeur": "mer Méditerranée"}
+{"entite": "Maricel", "valeur": "mer Méditerranée"}
+{"entite": "La Marina", "valeur": "mer Méditerranée"}
+{"entite": "Marina Beach", "valeur": "golfe du Bengale"}
+{"entite": "Marina State Beach", "valeur": "baie de Monterey"}
+{"entite": "Les Marines", "valeur": "mer Méditerranée"}
+{"entite": "Marmande plage", "valeur": "Garonne"}
+{"entite": "La Marquesa", "valeur": "mer Méditerranée"}
+{"entite": "Marseillan Plage", "valeur": "mer Méditerranée"}
+{"entite": "Mas Mel", "valeur": "mer Méditerranée"}
+{"entite": "Mas Pinell", "valeur": "mer Méditerranée"}
+{"entite": "Masbo", "valeur": "mer Méditerranée"}
+{"entite": "Mascarat Norte", "valeur": "mer Méditerranée"}
+{"entite": "Mascarat Sur", "valeur": "mer Méditerranée"}
+{"entite": "Massalfassar", "valeur": "mer Méditerranée"}
+{"entite": "Massamagrell", "valeur": "mer Méditerranée"}
+{"entite": "Massengale Beach", "valeur": "océan Atlantique Nord"}
+{"entite": "La Mata", "valeur": "mer Méditerranée"}
+{"entite": "Matas Gordas", "valeur": "mer Méditerranée"}
+{"entite": "Matasgordas", "valeur": "mer Méditerranée"}
+{"entite": "Mayea Beach", "valeur": "rio Uruguay"}
+{"entite": "McAbee Beach", "valeur": "baie de Monterey"}
+{"entite": "McCarrons Beach", "valeur": "Shotover River"}
+{"entite": "Meechkyn Spit", "valeur": "mer de Béring"}
+{"entite": "Meliana", "valeur": "mer Méditerranée"}
+{"entite": "Le Mentor", "valeur": "océan Atlantique Nord"}
+{"entite": "Meyers Beach", "valeur": "océan Paciﬁque nord"}
+{"entite": "Miami Beach", "valeur": "canal Hood"}
+{"entite": "miami plage", "valeur": "mer Méditerranée"}
+{"entite": "Midway Beach", "valeur": "baie de la Pauvreté"}
+{"entite": "Migjorn", "valeur": "mer Méditerranée"}
+{"entite": "Miho no Matsubara", "valeur": "baie de Suruga"}
+{"entite": "Mil Palmeras", "valeur": "mer Méditerranée"}
+{"entite": "Mill Shore", "valeur": "Moray Firth"}
+{"entite": "La Mina", "valeur": "mer Méditerranée"}
+{"entite": "Miramar", "valeur": "océan Atlantique Nord"}
+{"entite": "Mlini Beach", "valeur": "mer Adriatique"}
+{"entite": "Molinos y Palmeras", "valeur": "mer Méditerranée"}
+{"entite": "Moll Grec", "valeur": "mer Méditerranée"}
+{"entite": "Mon Plaisir", "valeur": "mer de Corail"}
+{"entite": "Moncayo", "valeur": "mer Méditerranée"}
+{"entite": "Mongofre", "valeur": "mer Méditerranée"}
+{"entite": "Monteblanco", "valeur": "mer Méditerranée"}
+{"entite": "Monterey State Beach", "valeur": "baie de Monterey"}
+{"entite": "Montoya beach", "valeur": "océan Atlantique"}
+{"entite": "Montrose Avenue Beach", "valeur": "lac Michigan"}
+{"entite": "Moonlight Beach", "valeur": "lac Te Anau"}
+{"entite": "Moors Beach", "valeur": "océan Atlantique"}
+{"entite": "La Mora", "valeur": "mer Méditerranée"}
+{"entite": "Moraig", "valeur": "mer Méditerranée"}
+{"entite": "Morelló", "valeur": "mer Méditerranée"}
+{"entite": "Moriani-Plage", "valeur": "mer Tyrrhénienne"}
+{"entite": "Morro de Gos", "valeur": "mer Méditerranée"}
+{"entite": "Morrongo", "valeur": "mer Méditerranée"}
+{"entite": "Mortensanden", "valeur": "Varangerfjord"}
+{"entite": "Morzhovaya Spit", "valeur": "mer des Laptev"}
+{"entite": "Moses Corner", "valeur": "Paterson Inlet"}
+{"entite": "La Mota / los Molinos", "valeur": "mer Méditerranée"}
+{"entite": "Mouros", "valeur": "mer Égée"}
+{"entite": "Mtsanga Antakoudja", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Apondra", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Bamana", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Boundrouni", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Chanfi", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Chifouni", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Dzienguizi", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Foumbouni", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Guini", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Hamaha", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Iloni", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Jiva", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Kanoua", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Kombo Bato", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Makoulatsa", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Milouani", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Mlima", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Momoni", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Mounyambani", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Mtsanyounyi", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Nyamba", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Papani", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Safari", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Sakouli", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Saziley", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Tanaraki", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Tsoha", "valeur": "canal du Mozambique"}
+{"entite": "Mtsanga Ylang-Ylang", "valeur": "canal du Mozambique"}
+{"entite": "La Mulata Beach", "valeur": "río de la Plata"}
+{"entite": "Municipal Beach", "valeur": "rio Uruguay"}
+{"entite": "Muro", "valeur": "mer Méditerranée"}
+{"entite": "Murray Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Les Muscleres", "valeur": "mer Méditerranée"}
+{"entite": "Musicale Plage", "valeur": "canal du Mozambique"}
+{"entite": "Muzhappilangad Beach", "valeur": "mer d'Arabie"}
+{"entite": "Mypadu Beach", "valeur": "golfe du Bengale"}
+{"entite": "Na Clara", "valeur": "mer Méditerranée"}
+{"entite": "Na Ferradura", "valeur": "mer Méditerranée"}
+{"entite": "Na Macaret", "valeur": "mer Méditerranée"}
+{"entite": "Na Nadala", "valeur": "mer Méditerranée"}
+{"entite": "Na Patana", "valeur": "mer Méditerranée"}
+{"entite": "Nagahama", "valeur": "lac Inawashiro"}
+{"entite": "Nallikari beach", "valeur": "baie d'Oulu"}
+{"entite": "Naminoue Beach", "valeur": "Port de Naha"}
+{"entite": "Narrow Neck Beach", "valeur": "golfe de Hauraki"}
+{"entite": "Nata Beach", "valeur": "mer de Genkai"}
+{"entite": "National Beach", "valeur": "río de la Plata"}
+{"entite": "Nativos Beach", "valeur": "océan Atlantique"}
+{"entite": "Nauset Beach", "valeur": "océan Atlantique Nord"}
+{"entite": "Negrete", "valeur": "mer Méditerranée"}
+{"entite": "Népia", "valeur": "mer de Corail"}
+{"entite": "le neptune", "valeur": "mer Méditerranée"}
+{"entite": "Newdicks Beach", "valeur": "baie de l'Abondance"}
+{"entite": "Newton Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Nijigahama", "valeur": "mer intérieure de Seto"}
+{"entite": "Nikouria", "valeur": "mer Égée"}
+{"entite": "Ninety Mile Beach (Nouvelle-Zélande)", "valeur": "mer de Tasman"}
+{"entite": "Niolon", "valeur": "mer Méditerranée"}
+{"entite": "Nissi beach", "valeur": "bassin Levantin"}
+{"entite": "Nord de Torreblanca", "valeur": "mer Méditerranée"}
+{"entite": "Norte de Gandía", "valeur": "mer Méditerranée"}
+{"entite": "North Beach", "valeur": "golfe du Mexique"}
+{"entite": "Nye Beach", "valeur": "océan Pacifique"}
+{"entite": "Oak Street Beach", "valeur": "lac Michigan"}
+{"entite": "Ocean Beach", "valeur": "océan Pacifique"}
+{"entite": "Ocean Park Beach", "valeur": "océan Pacifique"}
+{"entite": "Ōhama Beach", "valeur": "mer d'Enshū"}
+{"entite": "Ōhara Beach", "valeur": "océan Pacifique"}
+{"entite": "Ōhope Beach", "valeur": "baie de l'Abondance"}
+{"entite": "La Olla", "valeur": "mer Méditerranée"}
+{"entite": "Olsen Beach", "valeur": "océan Atlantique Sud"}
+{"entite": "Omaezaki Beach", "valeur": "mer d'Enshū"}
+{"entite": "Omaha Beach", "valeur": "baie de Seine"}
+{"entite": "Ondina Beach", "valeur": "océan Atlantique"}
+{"entite": "Onjuku Beach", "valeur": "océan Pacifique"}
+{"entite": "opera plage", "valeur": "mer Méditerranée"}
+{"entite": "Ophir Beach", "valeur": "océan Pacifique"}
+{"entite": "Optimis", "valeur": "mer Méditerranée"}
+{"entite": "Ōraka Beach", "valeur": "océan Pacifique"}
+{"entite": "Oratori de Portals", "valeur": "mer Méditerranée"}
+{"entite": "Orongo Beach", "valeur": "océan Pacifique"}
+{"entite": "Oropesa Vieja", "valeur": "mer Méditerranée"}
+{"entite": "Les Ortigues", "valeur": "mer Méditerranée"}
+{"entite": "Osaka Fureai no Mizube", "valeur": "Ōkawa"}
+{"entite": "L’Ospedale", "valeur": "mer Méditerranée"}
+{"entite": "Otekiho Beach", "valeur": "Otago Harbour"}
+{"entite": "Otūmoetai Beach", "valeur": "baie de Tauranga"}
+{"entite": "Les Ovelles", "valeur": "mer Méditerranée"}
+{"entite": "La Paella", "valeur": "mer Méditerranée"}
+{"entite": "Pajas Blancas beach", "valeur": "río de la Plata"}
+{"entite": "Pak Meng beach", "valeur": "golfe de Thaïlande"}
+{"entite": "La Palma", "valeur": "mer Méditerranée"}
+{"entite": "Les Palmeretes", "valeur": "mer Méditerranée"}
+{"entite": "Palombaggia", "valeur": "mer Tyrrhénienne"}
+{"entite": "Pampelonne", "valeur": "mer Méditerranée"}
+{"entite": "Papagayo", "valeur": "océan Atlantique"}
+{"entite": "Paradise Beach", "valeur": "mer Adriatique"}
+{"entite": "Paradise Point", "valeur": "mer d'Arabie"}
+{"entite": "Paradisia", "valeur": "mer Égée"}
+{"entite": "Parador Movistar Beach", "valeur": "río de la Plata"}
+{"entite": "Parco di Chiesa Rotta", "valeur": "lac de Côme"}
+{"entite": "Pasjača", "valeur": "mer Adriatique"}
+{"entite": "Patamares Beach", "valeur": "océan Atlantique"}
+{"entite": "Pattaya Beach", "valeur": "mer d'Andaman"}
+{"entite": "Pau Pí", "valeur": "mer Méditerranée"}
+{"entite": "Paua Beach", "valeur": "Paterson Inlet"}
+{"entite": "Pea Island", "valeur": "océan Atlantique Nord"}
+{"entite": "Pea Island Beach", "valeur": "océan Atlantique Nord"}
+{"entite": "Pedra Roja", "valeur": "mer Méditerranée"}
+{"entite": "La Peixerota", "valeur": "mer Méditerranée"}
+{"entite": "La Pelliseta", "valeur": "mer Méditerranée"}
+{"entite": "Pemuchi Beach", "valeur": "mer des Philippines"}
+{"entite": "Penino beach", "valeur": "río de la Plata"}
+{"entite": "péninsule de Hel", "valeur": "baie de Gdańsk"}
+{"entite": "Penya Tallada", "valeur": "mer Méditerranée"}
+{"entite": "Peregradnaya", "valeur": "mer des Laptev"}
+{"entite": "Perla de Levante", "valeur": "mer Méditerranée"}
+{"entite": "Petit Anse", "valeur": "mer des Caraïbes"}
+{"entite": "petite Chambre d'Amour", "valeur": "océan Atlantique Nord"}
+{"entite": "Petite Plage", "valeur": "mer des Caraïbes"}
+{"entite": "Petrushin Spit", "valeur": "golfe de Taganrog"}
+{"entite": "Piles", "valeur": "mer Méditerranée"}
+{"entite": "Pilots Beach", "valeur": "Otago Harbour"}
+{"entite": "Pinares beach", "valeur": "océan Atlantique"}
+{"entite": "La Pineda", "valeur": "mer Méditerranée"}
+{"entite": "Pinedo", "valeur": "mer Méditerranée"}
+{"entite": "Pinet", "valeur": "mer Méditerranée"}
+{"entite": "Pioneer Square Habitat Beach", "valeur": "baie Elliott"}
+{"entite": "Piriápolis Beach", "valeur": "río de la Plata"}
+{"entite": "Pistohiekka", "valeur": "Saimaa"}
+{"entite": "Pituba Beach", "valeur": "océan Atlantique"}
+{"entite": "Pixavaques", "valeur": "mer Méditerranée"}
+{"entite": "Placafor Beach", "valeur": "océan Atlantique"}
+{"entite": "Plae du Chateau Royale", "valeur": "mer de Corail"}
+{"entite": "plage Abel Ballif", "valeur": "mer Méditerranée"}
+{"entite": "plage Bau Bau Malpensata", "valeur": "lac de Côme"}
+{"entite": "plage Benoît", "valeur": "baie du Pouliguen"}
+{"entite": "plage Black Willow", "valeur": "lac Érié"}
+{"entite": "plage Borama", "valeur": "mer Méditerranée"}
+{"entite": "Plage Bourda", "valeur": "océan Atlantique"}
+{"entite": "Plage Cala Gat", "valeur": "mer Méditerranée"}
+{"entite": "plage Caraïbe", "valeur": "mer des Caraïbes"}
+{"entite": "plage Casadelmar", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage Cavall d'en Borràs", "valeur": "mer Méditerranée"}
+{"entite": "plage Cote Sauvage", "valeur": "océan Atlantique Nord"}
+{"entite": "plage Cros dei Pin", "valeur": "mer Méditerranée"}
+{"entite": "plage d'Agliu", "valeur": "mer Méditerranée"}
+{"entite": "plage d'Agosta", "valeur": "mer Méditerranée"}
+{"entite": "plage d'albarquel", "valeur": "océan Atlantique"}
+{"entite": "plage d'Albigny", "valeur": "lac d'Annecy"}
+{"entite": "plage d'Algajola", "valeur": "mer Méditerranée"}
+{"entite": "plage d'Angalatsara", "valeur": "canal du Mozambique"}
+{"entite": "plage d'Anse des Cayes", "valeur": "mer des Caraïbes"}
+{"entite": "Plage d'Argent", "valeur": "mer Méditerranée"}
+{"entite": "Plage d'arone", "valeur": "mer Méditerranée"}
+{"entite": "plage d'Arrigorri", "valeur": "golfe de Gascogne"}
+{"entite": "plage d'Aytré", "valeur": "océan Atlantique Nord"}
+{"entite": "Plage d'Erbaju", "valeur": "mer Méditerranée"}
+{"entite": "plage d'Eviéré", "valeur": "mer de Corail"}
+{"entite": "plage d'Eyrac", "valeur": "bassin d'Arcachon"}
+{"entite": "plage d'Héraclée", "valeur": "mer Méditerranée"}
+{"entite": "plage d'Herlin", "valeur": "océan Atlantique Nord"}
+{"entite": "plage d'Hietaniemi", "valeur": "Seurasaarenselkä"}
+{"entite": "plage d'Ilbarritz", "valeur": "océan Atlantique Nord"}
+{"entite": "plage d'Isri", "valeur": "mer Méditerranée"}
+{"entite": "plage d'Ondarraitz", "valeur": "océan Atlantique Nord"}
+{"entite": "plage d'Ondres", "valeur": "océan Atlantique Nord"}
+{"entite": "plage d'Ostriconi", "valeur": "mer Méditerranée"}
+{"entite": "plage das Bicas", "valeur": "océan Atlantique"}
+{"entite": "plage de Alfarim", "valeur": "océan Atlantique"}
+{"entite": "plage de Anse à Jacques", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Babin", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Baie Longue", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Bananier", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Banje", "valeur": "mer Adriatique"}
+{"entite": "plage de Baraci", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Bas du Fort", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Beach Club", "valeur": "mer Méditerranée"}
+{"entite": "plage de Beauduc", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Beaumer", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Bègles", "valeur": "lac de Bègles"}
+{"entite": "plage de Béléni", "valeur": "canal du Mozambique"}
+{"entite": "plage de Bellangenet", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Bernardi", "valeur": "mer Méditerranée"}
+{"entite": "plage de Bétahon", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Bodri", "valeur": "mer Méditerranée"}
+{"entite": "plage de Boidio", "valeur": "mer de Corail"}
+{"entite": "plage de Bois-Jolan", "valeur": "océan Atlantique"}
+{"entite": "plage de Bon Secours", "valeur": "Manche"}
+{"entite": "Plage de Bonnegrâce", "valeur": "mer Méditerranée"}
+{"entite": "plage de Bonporteau", "valeur": "mer Méditerranée"}
+{"entite": "plage de Boucan Canot", "valeur": "océan Indien"}
+{"entite": "plage de Boulouris", "valeur": "mer Méditerranée"}
+{"entite": "plage de Brouhel", "valeur": "golfe du Morbihan"}
+{"entite": "plage de Bussaglia", "valeur": "mer Méditerranée"}
+{"entite": "plage de Cala", "valeur": "mer ligure"}
+{"entite": "plage de Cala Millor", "valeur": "mer Méditerranée"}
+{"entite": "plage de Cala Saona", "valeur": "mer Méditerranée"}
+{"entite": "plage de Cala Savina", "valeur": "mer Méditerranée"}
+{"entite": "plage de California", "valeur": "océan Atlantique"}
+{"entite": "plage de Campitellu", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Campomoro", "valeur": "mer Méditerranée"}
+{"entite": "plage de Canella", "valeur": "mer Tyrrhénienne"}
+{"entite": "Plage de Cap Macré", "valeur": "océan Atlantique"}
+{"entite": "plage de Carataggio", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Carnac", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Carras", "valeur": "mer Méditerranée"}
+{"entite": "plage de Carro", "valeur": "mer Méditerranée"}
+{"entite": "plage de Chef de Baie", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Chocas", "valeur": "océan Indien"}
+{"entite": "plage de Clugny", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Comenda", "valeur": "océan Atlantique"}
+{"entite": "plage de Copacabana", "valeur": "océan Atlantique"}
+{"entite": "plage de Corossol", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Corps de Garde", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Creiro", "valeur": "océan Atlantique"}
+{"entite": "plage de Cupabia", "valeur": "mer Méditerranée"}
+{"entite": "plage de El Palo", "valeur": "mer Méditerranée"}
+{"entite": "plage de Fanou", "valeur": "canal du Mozambique"}
+{"entite": "plage de Fautea", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Fegina", "valeur": "golfe de Gênes"}
+{"entite": "plage de Ficajola", "valeur": "mer Méditerranée"}
+{"entite": "plage de Figari", "valeur": "mer Méditerranée"}
+{"entite": "plage de Figueirinha", "valeur": "océan Atlantique"}
+{"entite": "plage de Foncillon", "valeur": "océan Atlantique"}
+{"entite": "plage de Fonte da Telha", "valeur": "océan Atlantique"}
+{"entite": "plage de Fossan", "valeur": "mer Méditerranée"}
+{"entite": "plage de Foumbouni", "valeur": "canal du Mozambique"}
+{"entite": "plage de Foz", "valeur": "océan Atlantique"}
+{"entite": "plage de Fréjus", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Gadet", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Galapinhos", "valeur": "océan Atlantique"}
+{"entite": "plage de Galápos", "valeur": "océan Atlantique"}
+{"entite": "plage de Galets", "valeur": "mer Méditerranée"}
+{"entite": "plage de Garbet", "valeur": "mer Méditerranée"}
+{"entite": "plage de Gerondólakkos", "valeur": "bassin Levantin"}
+{"entite": "Plage de Ghignu", "valeur": "mer Méditerranée"}
+{"entite": "plage de Ghjunchitu", "valeur": "mer Méditerranée"}
+{"entite": "plage de Gigaro", "valeur": "mer Méditerranée"}
+{"entite": "plage de Gosselin", "valeur": "océan Atlantique"}
+{"entite": "plage de Gouéla", "valeur": "canal du Mozambique"}
+{"entite": "plage de Gouverneur", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Grand-Cul-de-Sac", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Grand Galet", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Grande Anse", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Grande-Vallée", "valeur": "anse de la Rivière de la Grande Vallée"}
+{"entite": "plage de Grasseuil Espalmador", "valeur": "mer Méditerranée"}
+{"entite": "plage de Gros Raisin", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Gros sable", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Hadsalé", "valeur": "canal du Mozambique"}
+{"entite": "plage de Hamouro", "valeur": "canal du Mozambique"}
+{"entite": "plage de Handréma", "valeur": "canal du Mozambique"}
+{"entite": "plage de Hate", "valeur": "mer de Chine orientale"}
+{"entite": "plage de Katsura", "valeur": "baie de Tosa"}
+{"entite": "plage de ker Daniau", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Kerbilouet", "valeur": "golfe du Morbihan"}
+{"entite": "plage de Kerguélen", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Kerhillio", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Kerminihy", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Kerouriec", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Kerver", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Kervillen", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Kolo Batsoumou", "valeur": "canal du Mozambique"}
+{"entite": "plage de Kotohiki", "valeur": "mer du Japon"}
+{"entite": "plage de Koungou", "valeur": "canal du Mozambique"}
+{"entite": "plage de Kujūkuri", "valeur": "océan Pacifique"}
+{"entite": "plage de l'Alga", "valeur": "mer Méditerranée"}
+{"entite": "plage de l'Almanarre", "valeur": "mer Méditerranée"}
+{"entite": "plage de l'Anse-à-Blondel", "valeur": "anse à Blondel"}
+{"entite": "plage de l'Anse-à-la-Chaloupe", "valeur": "anse à la Chaloupe"}
+{"entite": "plage de l'Anse-du-Nord", "valeur": "anse du Nord"}
+{"entite": "plage de l'Anse Laborde", "valeur": "mer des Caraïbes"}
+{"entite": "plage de l'Anse Tabarin", "valeur": "mer des Caraïbes"}
+{"entite": "plage de l'Anse Vinaigri", "valeur": "mer des Caraïbes"}
+{"entite": "plage de l'Arénault", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de l’Argentière", "valeur": "mer Méditerranée"}
+{"entite": "plage de l'Arinella", "valeur": "mer Méditerranée"}
+{"entite": "plage de l'Arnèche", "valeur": "estuaire de la Gironde"}
+{"entite": "plage de l'Autre Bord", "valeur": "océan Atlantique"}
+{"entite": "plage de l'Église", "valeur": "mer Méditerranée"}
+{"entite": "plage de l'Entrée du Port", "valeur": "mer Méditerranée"}
+{"entite": "plage de l'Espiguette", "valeur": "mer Méditerranée"}
+{"entite": "plage de l'Est", "valeur": "fleuve Saint-Laurent"}
+{"entite": "plage de l'Estagnol", "valeur": "mer Méditerranée"}
+{"entite": "plage de L'Estartit", "valeur": "mer Méditerranée"}
+{"entite": "plage de L'Étang-Salé", "valeur": "océan Indien"}
+{"entite": "plage de l'Hermitage", "valeur": "océan Indien"}
+{"entite": "plage de l'Hippodrome", "valeur": "mer Méditerranée"}
+{"entite": "plage de l'Homme Mort", "valeur": "mer Méditerranée"}
+{"entite": "Plage de l'île Saint-Joseph", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de l'île Saint-Nicolas", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de l'île Vierge", "valeur": "baie de Douarnenez"}
+{"entite": "plage de l'Impérial", "valeur": "lac d'Annecy"}
+{"entite": "plage de l'Océan", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Badine", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Baie de Petites Cayes", "valeur": "mer des Caraïbes"}
+{"entite": "plage de la baie des Citrons", "valeur": "mer de Corail"}
+{"entite": "plage de la Baie des Milliardaires", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Baie des Pêcheurs", "valeur": "océan Atlantique Nord"}
+{"entite": "Plage de la Baleine", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Barceloneta", "valeur": "mer Méditerranée"}
+{"entite": "plage de la base de Torcy", "valeur": "lac de la base de Torcy"}
+{"entite": "plage de la Baule", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Birochère", "valeur": "océan Atlantique Nord"}
+{"entite": "Plage de la Boirie", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Bonne Marée", "valeur": "canal du Mozambique"}
+{"entite": "plage de la Boutinardière", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Brêche", "valeur": "océan Atlantique"}
+{"entite": "plage de la Calanca", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Calanque de Sugiton", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Caracola", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Caravelle", "valeur": "océan Atlantique"}
+{"entite": "plage de la Cèpe", "valeur": "océan Atlantique"}
+{"entite": "plage de la Chambrette", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Chapelle", "valeur": "mer des Caraïbes"}
+{"entite": "plage de la Clavette", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Cocoterai", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la confluence", "valeur": "Loire"}
+{"entite": "plage de la Côte des Basques", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Courance", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Couronne Vieille", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Croix des Marins", "valeur": "bassin d'Arcachon"}
+{"entite": "plage de la Darse", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Datcha", "valeur": "océan Atlantique"}
+{"entite": "plage de la Galiote", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Garonne", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Granadella", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Grande-Conche", "valeur": "océan Atlantique"}
+{"entite": "plage de la Grande Conque", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Grande Côte", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Gravière", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la grotte Gardanne", "valeur": "mer Méditerranée"}
+{"entite": "plage de La Guérite", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Hume", "valeur": "bassin d'Arcachon"}
+{"entite": "plage de la Lagune", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Lède", "valeur": "océan Atlantique"}
+{"entite": "plage de la Madrague", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Mala", "valeur": "mer Méditerranée"}
+{"entite": "plage de La Malagueta", "valeur": "océan Atlantique"}
+{"entite": "plage de la Malvarrosa", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Mine d'Or", "valeur": "Mor braz"}
+{"entite": "Plage de la Moune", "valeur": "mer Méditerranée"}
+{"entite": "Plage de la Moutte", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Nova Icària", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Nova Mar Bella", "valeur": "mer Méditerranée"}
+{"entite": "plage de La Palmyre", "valeur": "océan Atlantique"}
+{"entite": "plage de La Patacona", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Perle", "valeur": "mer des Caraïbes"}
+{"entite": "plage de la Petite Afrique", "valeur": "mer Méditerranée"}
+{"entite": "Plage de la Pointe aux Chevaux", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la pointe de la Saline", "valeur": "mer des Caraïbes"}
+{"entite": "plage de la Pointe des Trois Roches", "valeur": "océan Indien"}
+{"entite": "plage de la pointe Le Breton", "valeur": "mer des Caraïbes"}
+{"entite": "plage de la Pointe Notre Dame", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Ponche", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Possession", "valeur": "océan Indien"}
+{"entite": "plage de La Potinière", "valeur": "Manche"}
+{"entite": "plage de la Raguette", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Rivière Saint-Louis", "valeur": "mer des Caraïbes"}
+{"entite": "plage de la Roquille", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Roya", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Saline les Bains", "valeur": "océan Indien"}
+{"entite": "plage de La Salis", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Serre", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Source", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Souris Chaude", "valeur": "océan Indien"}
+{"entite": "plage de la Tamarissière", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Torchère", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de la Vieille église", "valeur": "Manche"}
+{"entite": "plage de la Vieille Nouvelle", "valeur": "mer Méditerranée"}
+{"entite": "plage de la Villeneuve", "valeur": "golfe du Morbihan"}
+{"entite": "plage de la Voûte", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Lagoa de Albufeira", "valeur": "océan Atlantique"}
+{"entite": "plage de Lansberg", "valeur": "mer Méditerranée"}
+{"entite": "plage de Larmor", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Laurosu", "valeur": "mer Méditerranée"}
+{"entite": "plage de Légénèse", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Leroux", "valeur": "mer des Caraïbes"}
+{"entite": "plage de les Fonts", "valeur": "mer Méditerranée"}
+{"entite": "plage de Longoni", "valeur": "canal du Mozambique"}
+{"entite": "plage de Lorient", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Lotu", "valeur": "mer Méditerranée"}
+{"entite": "plage de Lozari", "valeur": "mer Méditerranée"}
+{"entite": "plage de M'titi", "valeur": "canal du Mozambique"}
+{"entite": "Plage de Magaud", "valeur": "mer Méditerranée"}
+{"entite": "plage de Mahamaté", "valeur": "mer de Corail"}
+{"entite": "plage de Malendure", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Mané Guen", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Manessmane", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Manyetes", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Maora", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Maréchal", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Marigot", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Marinella", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Mbouéanatsa", "valeur": "canal du Mozambique"}
+{"entite": "plage de Meco", "valeur": "océan Atlantique"}
+{"entite": "plage de Mesquida", "valeur": "mer Méditerranée"}
+{"entite": "plage de Milady", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de monsieur Hulot", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Monte Branco", "valeur": "océan Atlantique"}
+{"entite": "plage de Montravel", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Montsarrac", "valeur": "golfe du Morbihan"}
+{"entite": "plage de Moudou", "valeur": "canal du Mozambique"}
+{"entite": "plage de Moustique", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Nébondi", "valeur": "mer de Corail"}
+{"entite": "plage de Nogent", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Nonza", "valeur": "mer Méditerranée"}
+{"entite": "plage de Notre-Dame", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Nyambadao", "valeur": "canal du Mozambique"}
+{"entite": "plage de Ouro", "valeur": "océan Atlantique"}
+{"entite": "plage de Outão", "valeur": "océan Atlantique"}
+{"entite": "plage de Paloma", "valeur": "mer Méditerranée"}
+{"entite": "plage de Pargan", "valeur": "mer Méditerranée"}
+{"entite": "plage de Passable", "valeur": "mer Méditerranée"}
+{"entite": "plage de Paulilles", "valeur": "mer Méditerranée"}
+{"entite": "plage de Pebret", "valeur": "mer Méditerranée"}
+{"entite": "plage de Penedos", "valeur": "océan Atlantique"}
+{"entite": "plage de Penthièvre", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Péru", "valeur": "mer Méditerranée"}
+{"entite": "plage de Petit-Cul-de-Sac", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Petit-Havre", "valeur": "océan Atlantique"}
+{"entite": "plage de Petite Anse", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Petites Cayes", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Piémanson", "valeur": "mer Méditerranée"}
+{"entite": "plage de Pinarellu", "valeur": "mer Tyrrhénienne"}
+{"entite": "Plage de Placeres", "valeur": "ria de Pontevedra"}
+{"entite": "plage de Poé", "valeur": "mer de Corail"}
+{"entite": "plage de Pointe Marin", "valeur": "mer des Caraïbes"}
+{"entite": "Plage de Pompierre", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Pont Café", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Pontaillac", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Porraja", "valeur": "mer Méditerranée"}
+{"entite": "plage de Port-Donnant", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Port Miquel", "valeur": "golfe du Morbihan"}
+{"entite": "plage de Port Saplaya Nord", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Portigliolo", "valeur": "mer Méditerranée"}
+{"entite": "plage de Public", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Rasca", "valeur": "océan Atlantique"}
+{"entite": "plage de Rebenta Bois", "valeur": "océan Atlantique"}
+{"entite": "plage de Ribeiro do Cavalo", "valeur": "océan Atlantique"}
+{"entite": "plage de Rifflet", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Roccapina", "valeur": "mer Méditerranée"}
+{"entite": "plage de Rochebonne", "valeur": "Manche"}
+{"entite": "plage de Rocroy", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Rondinara", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Roseau", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Rossignol", "valeur": "mer Méditerranée"}
+{"entite": "plage de Ruppione", "valeur": "mer Méditerranée"}
+{"entite": "plage de Sa Canova", "valeur": "mer Méditerranée"}
+{"entite": "Plage de sable blanc", "valeur": "golfe Persique"}
+{"entite": "plage de Sahara", "valeur": "mer Adriatique"}
+{"entite": "plage de Saïd Ali", "valeur": "canal du Mozambique"}
+{"entite": "plage de Saint-Aygulf", "valeur": "mer Méditerranée"}
+{"entite": "plage de Saint-Colomban", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Saint-Cyprien", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Saint-Jean", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Saint-Pierre", "valeur": "océan Indien"}
+{"entite": "plage de Sainte Anne", "valeur": "océan Atlantique"}
+{"entite": "plage de Sainte-Barbe", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Sainte-Claire", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Sainte-Croix", "valeur": "mer Méditerranée"}
+{"entite": "plage de Sainte-Marguerite", "valeur": "golfe de Gascogne"}
+{"entite": "plage de Sakarun", "valeur": "mer Adriatique"}
+{"entite": "plage de Saleccia", "valeur": "mer Méditerranée"}
+{"entite": "plage de Saline", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Samil", "valeur": "océan Atlantique"}
+{"entite": "plage de Sant Elm", "valeur": "mer Méditerranée"}
+{"entite": "plage de Sant Sebastià", "valeur": "mer Méditerranée"}
+{"entite": "plage de Santa Giulia", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Sauveterre", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Sesimbra", "valeur": "océan Atlantique"}
+{"entite": "plage de Shichirimi", "valeur": "mer de Kumano"}
+{"entite": "plage de Simaho", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Sion", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Sohoa", "valeur": "canal du Mozambique"}
+{"entite": "plage de Son Bauló", "valeur": "mer Méditerranée"}
+{"entite": "plage de Sorobon", "valeur": "lac Baai"}
+{"entite": "plage de Soulou", "valeur": "canal du Mozambique"}
+{"entite": "plage de Sunayama", "valeur": "mer de Chine orientale"}
+{"entite": "plage de Suzac", "valeur": "estuaire de la Gironde"}
+{"entite": "plage de Sylvabelle", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Tallone", "valeur": "mer Tyrrhénienne"}
+{"entite": "Plage de Tamaricciu", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Tamarone", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Tenutella", "valeur": "mer Méditerranée"}
+{"entite": "plage de Tiakan", "valeur": "mer de Corail"}
+{"entite": "plage de Toreilles", "valeur": "mer Méditerranée"}
+{"entite": "Plage de Torrent de Pareis", "valeur": "mer Méditerranée"}
+{"entite": "plage de Toulhars", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Tramagueira", "valeur": "océan Atlantique"}
+{"entite": "plage de Trearddur", "valeur": "baie de Trearddur"}
+{"entite": "plage de Trévani", "valeur": "canal du Mozambique"}
+{"entite": "plage de Troc Pinel", "valeur": "mer Méditerranée"}
+{"entite": "plage de Ty Bihan", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Ty Hoche", "valeur": "océan Atlantique Nord"}
+{"entite": "plage de Vetricella", "valeur": "mer Méditerranée"}
+{"entite": "plage de Viard", "valeur": "mer des Caraïbes"}
+{"entite": "plage de Vignale", "valeur": "mer Tyrrhénienne"}
+{"entite": "plage de Villennes", "valeur": "Seine"}
+{"entite": "plage de Yonehara", "valeur": "mer de Chine orientale"}
+{"entite": "plage de Zokoburu", "valeur": "océan Atlantique Nord"}
+{"entite": "plage del Bogatell", "valeur": "mer Méditerranée"}
+{"entite": "plage del Carregador", "valeur": "mer Méditerranée"}
+{"entite": "plage Demi-Lune", "valeur": "océan Indien"}
+{"entite": "plage des Abatilles", "valeur": "bassin d'Arcachon"}
+{"entite": "plage des Amandiers", "valeur": "mer des Caraïbes"}
+{"entite": "plage des Américains", "valeur": "bassin d'Arcachon"}
+{"entite": "plage des Amoureux", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Arbousiers", "valeur": "bassin d'Arcachon"}
+{"entite": "plage des Badamiers", "valeur": "canal du Mozambique"}
+{"entite": "plage des Barges", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Bourdaines", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Brisants", "valeur": "océan Indien"}
+{"entite": "plage des Casernes", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Catalans", "valeur": "mer Méditerranée"}
+{"entite": "plage des Cathédrales", "valeur": "mer Cantabrique"}
+{"entite": "plage des Cavaliers", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Célestins", "valeur": "Allier"}
+{"entite": "plage des chalets", "valeur": "mer Méditerranée"}
+{"entite": "plage des Cinq Pineaux", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Corsaires", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Dames", "valeur": "baie de Douarnenez"}
+{"entite": "plage des Darboussières", "valeur": "mer Méditerranée"}
+{"entite": "plage des Eaux-Vives", "valeur": "Léman"}
+{"entite": "plage des Épaves", "valeur": "océan Indien"}
+{"entite": "plage des Flamands", "valeur": "mer des Caraïbes"}
+{"entite": "plage des Flots Bleus", "valeur": "mer Méditerranée"}
+{"entite": "plage des Fosses", "valeur": "mer Méditerranée"}
+{"entite": "plage des Fossettes", "valeur": "mer Méditerranée"}
+{"entite": "plage des Fourmis", "valeur": "mer Méditerranée"}
+{"entite": "plage des Galbas", "valeur": "mer des Caraïbes"}
+{"entite": "plage des Gorfous", "valeur": "océan Indien"}
+{"entite": "plage des Grands Sables", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Granges", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Graniers", "valeur": "mer Méditerranée"}
+{"entite": "plage des Hattes", "valeur": "océan Atlantique"}
+{"entite": "Plage des Huttes", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Jaunais", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Laurons", "valeur": "mer Méditerranée"}
+{"entite": "plage des Libraires", "valeur": "baie du Pouliguen"}
+{"entite": "plage des Lions Marins", "valeur": "océan Indien"}
+{"entite": "plage des Loups Marins", "valeur": "océan Indien"}
+{"entite": "plage des Marinières", "valeur": "mer Méditerranée"}
+{"entite": "plage des Marmites", "valeur": "océan Indien"}
+{"entite": "plage des Minimes", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Nonnes", "valeur": "estuaire de la Gironde"}
+{"entite": "plage des Petits Méchins", "valeur": "anse des Petits Méchins"}
+{"entite": "plage des Pins", "valeur": "mer Méditerranée"}
+{"entite": "plage des Pins de Cordouan", "valeur": "océan Atlantique"}
+{"entite": "plage des Ponchettes", "valeur": "mer Méditerranée"}
+{"entite": "plage des Quilles", "valeur": "mer Méditerranée"}
+{"entite": "plage des Raisins Clairs", "valeur": "océan Atlantique"}
+{"entite": "plage des Roches", "valeur": "océan Atlantique"}
+{"entite": "plage des Roches Noires", "valeur": "océan Indien"}
+{"entite": "plage des Sables Blancs", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Sables Blancs de Concarneau", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Sables d'Or", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Sables Vigniers", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Sablettes", "valeur": "mer Méditerranée"}
+{"entite": "plage des Salines", "valeur": "océan Atlantique"}
+{"entite": "Plage des salins", "valeur": "mer Méditerranée"}
+{"entite": "plage des Trois Pins", "valeur": "mer Méditerranée"}
+{"entite": "plage des Vergnes", "valeur": "océan Atlantique Nord"}
+{"entite": "plage des Vespins", "valeur": "mer Méditerranée"}
+{"entite": "plage Dorée", "valeur": "mer Méditerranée"}
+{"entite": "plage dos Lagosteiros", "valeur": "océan Atlantique"}
+{"entite": "plage du Béniguet", "valeur": "golfe de Gascogne"}
+{"entite": "plage du Bestouan", "valeur": "mer Méditerranée"}
+{"entite": "plage du Betey", "valeur": "bassin d'Arcachon"}
+{"entite": "Plage du Boucanet", "valeur": "mer Méditerranée"}
+{"entite": "plage du Brouis", "valeur": "mer Méditerranée"}
+{"entite": "plage du Bureau", "valeur": "océan Atlantique"}
+{"entite": "plage du Buse", "valeur": "mer Méditerranée"}
+{"entite": "plage du Carbet", "valeur": "mer des Caraïbes"}
+{"entite": "plage du centenaire", "valeur": "mer Méditerranée"}
+{"entite": "Plage du Centre Ville Point Zéro", "valeur": "mer Méditerranée"}
+{"entite": "plage du Cousteau", "valeur": "mer Méditerranée"}
+{"entite": "plage du Diamant", "valeur": "mer des Caraïbes"}
+{"entite": "plage du Dréhen", "valeur": "golfe du Morbihan"}
+{"entite": "plage du Estany d'Es Peix", "valeur": "mer Méditerranée"}
+{"entite": "plage du Fazzio", "valeur": "mer Méditerranée"}
+{"entite": "plage du Feu de Joie", "valeur": "océan Indien"}
+{"entite": "plage du Français", "valeur": "océan Atlantique"}
+{"entite": "plage du Galion", "valeur": "mer Méditerranée"}
+{"entite": "plage du Gallon", "valeur": "mer des Caraïbes"}
+{"entite": "plage du Goret de l’Île aux Moines", "valeur": "golfe du Morbihan"}
+{"entite": "plage du Gouret", "valeur": "golfe de Gascogne"}
+{"entite": "plage du Grand Boucharel", "valeur": "mer Méditerranée"}
+{"entite": "Plage du Grand Capo", "valeur": "mer Méditerranée"}
+{"entite": "plage du Grand Large", "valeur": "mer Méditerranée"}
+{"entite": "plage du Grand Roucas", "valeur": "mer Méditerranée"}
+{"entite": "plage du Jaî Nord", "valeur": "étang de Berre"}
+{"entite": "plage du Kérou", "valeur": "océan Atlantique Nord"}
+{"entite": "plage du Kuendu", "valeur": "mer de Corail"}
+{"entite": "plage du lac d'Orient", "valeur": "lac d'Orient"}
+{"entite": "plage du Lazaret", "valeur": "mer Méditerranée"}
+{"entite": "plage du Lérez", "valeur": "Fleuve Lérez"}
+{"entite": "plage du Men Du", "valeur": "océan Atlantique Nord"}
+{"entite": "plage du Méridien", "valeur": "mer de Corail"}
+{"entite": "plage du Métro", "valeur": "océan Atlantique Nord"}
+{"entite": "plage du Mimbeau", "valeur": "bassin d'Arcachon"}
+{"entite": "plage du Miramar", "valeur": "océan Atlantique Nord"}
+{"entite": "plage du Môle", "valeur": "mer Méditerranée"}
+{"entite": "plage du Moulin à Baude", "valeur": "estuaire du Saint-Laurent"}
+{"entite": "plage du Moulin-Blanc", "valeur": "rade de Brest"}
+{"entite": "plage du Mourillon", "valeur": "mer Méditerranée"}
+{"entite": "plage du Nau", "valeur": "baie du Pouliguen"}
+{"entite": "plage du Nord", "valeur": "mer des Caraïbes"}
+{"entite": "plage du Pas de n'Adolf", "valeur": "mer Méditerranée"}
+{"entite": "plage du Peau-Bleue", "valeur": "océan Indien"}
+{"entite": "plage du Pellegrin", "valeur": "mer Méditerranée"}
+{"entite": "Plage du petit Nice", "valeur": "océan Atlantique Nord"}
+{"entite": "Plage du petit Spérone", "valeur": "mer Tyrrhénienne"}
+{"entite": "Plage du Pont du Pétrole", "valeur": "mer Méditerranée"}
+{"entite": "plage du Ponteil", "valeur": "mer Méditerranée"}
+{"entite": "plage du Port", "valeur": "mer Méditerranée"}
+{"entite": "plage du Portel", "valeur": "Manche"}
+{"entite": "plage du Poudrantais", "valeur": "océan Atlantique Nord"}
+{"entite": "plage du Préfet", "valeur": "canal du Mozambique"}
+{"entite": "plage du Racou", "valeur": "mer Méditerranée"}
+{"entite": "plage du Rayol", "valeur": "mer Méditerranée"}
+{"entite": "plage du Ricanto", "valeur": "mer Méditerranée"}
+{"entite": "plage du Ris", "valeur": "baie de Douarnenez"}
+{"entite": "plage du Russe (Peñíscola)", "valeur": "mer Méditerranée"}
+{"entite": "plage du Salus", "valeur": "golfe de Gascogne"}
+{"entite": "plage du Sillon", "valeur": "Manche"}
+{"entite": "plage du Somorrostro", "valeur": "mer Méditerranée"}
+{"entite": "plage du Souffleur", "valeur": "mer des Caraïbes"}
+{"entite": "plage du Temple", "valeur": "Manche"}
+{"entite": "plage du Tonneau", "valeur": "mer Méditerranée"}
+{"entite": "plage du Tremblet", "valeur": "océan Indien"}
+{"entite": "plage du Truc Vert", "valeur": "océan Atlantique Nord"}
+{"entite": "plage du Vieux-Fort", "valeur": "mer des Caraïbes"}
+{"entite": "plage du Vieux port", "valeur": "océan Atlantique Nord"}
+{"entite": "plage Grande Mer", "valeur": "mer Méditerranée"}
+{"entite": "plage Haldimand", "valeur": "baie de Gaspé"}
+{"entite": "plage Hawaï", "valeur": "mer Méditerranée"}
+{"entite": "plage Henley", "valeur": "fleuve Saint-Laurent"}
+{"entite": "plage Jaune", "valeur": "océan Indien"}
+{"entite": "plage Jean-Doré", "valeur": "fleuve Saint-Laurent"}
+{"entite": "plage La Punta", "valeur": "lac de Côme"}
+{"entite": "plage la Ramée", "valeur": "mer des Caraïbes"}
+{"entite": "plage Lucien-Blanchard", "valeur": "rivière Magog"}
+{"entite": "plage Manbia", "valeur": "mer des Caraïbes"}
+{"entite": "plage Marbella", "valeur": "océan Atlantique Nord"}
+{"entite": "plage Marquet", "valeur": "mer Méditerranée"}
+{"entite": "plage Masse", "valeur": "lac Kennedy"}
+{"entite": "plage McRae", "valeur": "lac Simcoe"}
+{"entite": "plage Mississauga", "valeur": "lac Ontario"}
+{"entite": "plage Mogador", "valeur": "mer Méditerranée"}
+{"entite": "plage Moudou", "valeur": "canal du Mozambique"}
+{"entite": "Plage naturiste Cap d'Agde", "valeur": "mer Méditerranée"}
+{"entite": "plage naturiste de Sainte-Rose", "valeur": "mer des Caraïbes"}
+{"entite": "Plage naturiste Saint-Nicolas-le-Verdon-sur-Mer", "valeur": "océan Atlantique Nord"}
+{"entite": "plage Neptune", "valeur": "mer Méditerranée"}
+{"entite": "plage Noire", "valeur": "océan Indien"}
+{"entite": "plage Pa'ako", "valeur": "crique de Pa'ako"}
+{"entite": "plage Paloma", "valeur": "mer Méditerranée"}
+{"entite": "plage Paul Thomas", "valeur": "mer des Caraïbes"}
+{"entite": "plage Pearl", "valeur": "lac Larder"}
+{"entite": "plage Pereire", "valeur": "bassin d'Arcachon"}
+{"entite": "plage Pickering", "valeur": "lac Ontario"}
+{"entite": "Plage Pim-Poum", "valeur": "océan Atlantique"}
+{"entite": "plage Pont tournant", "valeur": "mer Méditerranée"}
+{"entite": "plage Richelieu Est", "valeur": "mer Méditerranée"}
+{"entite": "plage Richelieu Ouest (zone de baignade)", "valeur": "mer Méditerranée"}
+{"entite": "plage Rivière-Madeleine", "valeur": "anse de la Rivière Madeleine"}
+{"entite": "plage Romana", "valeur": "mer Méditerranée"}
+{"entite": "plage Rouge", "valeur": "océan Atlantique"}
+{"entite": "plage Saint Estêve", "valeur": "mer Méditerranée"}
+{"entite": "plage Saint-François", "valeur": "mer Méditerranée"}
+{"entite": "plage sainte hélène", "valeur": "mer Méditerranée"}
+{"entite": "plage Tomoqua", "valeur": "fleuve Saint-Laurent"}
+{"entite": "plage Tudumari", "valeur": "mer de Chine orientale"}
+{"entite": "plage urbaine de Verdun", "valeur": "fleuve Saint-Laurent"}
+{"entite": "plage Valentin", "valeur": "golfe de Gascogne"}
+{"entite": "plage Veillat", "valeur": "mer Méditerranée"}
+{"entite": "plage Willow", "valeur": "lac Ontario"}
+{"entite": "Plages de Lomé", "valeur": "océan Atlantique"}
+{"entite": "plages de Montsarrac", "valeur": "golfe du Morbihan"}
+{"entite": "plages de Moya", "valeur": "canal du Mozambique"}
+{"entite": "plages de Trévignon", "valeur": "océan Atlantique Nord"}
+{"entite": "Plages de Vielle Saint-Girons", "valeur": "océan Atlantique Nord"}
+{"entite": "Plages du Mourillon", "valeur": "mer Méditerranée"}
+{"entite": "plages du Pellegrin", "valeur": "mer Méditerranée"}
+{"entite": "plages du Prado", "valeur": "mer Méditerranée"}
+{"entite": "Plajă Corbu", "valeur": "mer Noire"}
+{"entite": "Platges d'Arenys de Mar", "valeur": "mer Méditerranée"}
+{"entite": "Platges d'es Burrí", "valeur": "mer Méditerranée"}
+{"entite": "Platges de Calella", "valeur": "mer Méditerranée"}
+{"entite": "Platges de Cubelles", "valeur": "mer Méditerranée"}
+{"entite": "Platges de Peguera", "valeur": "mer Méditerranée"}
+{"entite": "Platges de Pineda de Mar", "valeur": "mer Méditerranée"}
+{"entite": "Platges de Viladecans", "valeur": "mer Méditerranée"}
+{"entite": "La Platgeta", "valeur": "mer Méditerranée"}
+{"entite": "Platgeta de Cap Roig", "valeur": "mer Méditerranée"}
+{"entite": "Platgeta de Portals Vells", "valeur": "mer Méditerranée"}
+{"entite": "La Platja", "valeur": "mer Méditerranée"}
+{"entite": "Platja Bona", "valeur": "mer Méditerranée"}
+{"entite": "Platja Cap de Grills", "valeur": "mer Méditerranée"}
+{"entite": "La Platja Centre", "valeur": "mer Méditerranée"}
+{"entite": "Platja Colom", "valeur": "mer Méditerranée"}
+{"entite": "Platja Confitera", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'Aiguadolç (Cadaqués)", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'Aiguadolç (Sitges)", "valeur": "mer Méditerranée"}
+{"entite": "Platja d’Albercuix", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'Alcanar", "valeur": "mer Méditerranée"}
+{"entite": "platja d'Almenara", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'Atalis", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'Empuriabrava", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'Empúries", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Ballesta", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Balleu", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Malaret", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Noues", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Paquela", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Pep Ton", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Pere Esteve", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Pere Fet", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Robert", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Ros", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Sanés", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Taita", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'en Talla Dofins", "valeur": "mer Méditerranée"}
+{"entite": "Platja d'es Banyul", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Belladona", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Bellamar", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Bellavista", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Bou", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Bramant", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Buda", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cabrera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cal Cristià", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cal francesc", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cala Bona", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cala d'en Bosch", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cala Joana", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cala Prona", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cala Taps", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cala Urgell", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Calassanç", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Calitjàs", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cambrils", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Can Cristus", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Can Curt", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Can Dell", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Can Martinet", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Can Nera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Can Sopa", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Can Villar del Grau", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Canet", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Canyamel", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Canyelles", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Canyelles Grosses", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cap de Bol", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Castelldefels", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Castello", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Cristall", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Garbí", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Garbí de Llorell", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Garraf", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Garxal", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Gavà", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Grifeu", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Guillola", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Adolç del Me", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Aiguadolç", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Alguer", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l’Àliga", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Almadrava", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Aluet", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Anastàsia", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Arenal", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Argilera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Arquitecte", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Astillero", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Atzavara", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Auir", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Embarril", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Erola", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Escar", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Estació", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Estany", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Estanyet", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Estanyol", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Home Mort", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Hostalet", "valeur": "mer Méditerranée"}
+{"entite": "platja de l'Illa", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Illa Roja", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Illot", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Olla", "valeur": "mer Méditerranée"}
+{"entite": "Platja de l'Ona", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Badia de Blanes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Banya", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Barca Maria", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Barra", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Bassa Rodona", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Cala Bea", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Canonja", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Casa dels Lladres", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la central nuclear de Vandellòs", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Colomera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Conca", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Conxa", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Cova de la Grava", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Cova del Llop Marí", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Degollada", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Descàrrega", "valeur": "mer Méditerranée"}
+{"entite": "platja de la Desenrocada", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Devesa", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Farella", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Farella del Mig", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Fragata", "valeur": "mer Méditerranée"}
+{"entite": "Platja de La Gola", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Gola del Ter", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Llenya", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Marina", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Marineta Cassiana", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Mota de Sant Pere", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Murtra", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Musclera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Pineda", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Punta de Santa Anna", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Punta del Riu", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Punta des Falcó", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la República", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Ribera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Ricarda - Ca l'Arana", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Riera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Riera (Cambrils)", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Riera Xica", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Roda", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Romana", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Rovina", "valeur": "mer Méditerranée"}
+{"entite": "Platja de la Vall", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Arenes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Avellanes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Barques", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Botigues", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les “Caletes”", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Carboneres", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Clisques", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Coves", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Deveses", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Dunes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Figueres", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Marines (Gavà)", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Moreres", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Portes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Roques", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Roques Blanques", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Roques d'en Lluc", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Salines (Cubelles)", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Titarolites", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Tonyines", "valeur": "mer Méditerranée"}
+{"entite": "Platja de les Violetes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Llevant", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Llevant de Llorell", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Lloret", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Malgrat", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Massalfassar", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Migjorn", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Miramar", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Moncofa", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Monsolís", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Montsià Mar", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Mutxavista", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Neganta", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Palmira", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Pals", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Perafita", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Pineda", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Pius V", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Ponent", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Ponent (Premià de Mar)", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Port Alguer", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Port de Reig", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Portlligat", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Punta Galera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Ribes Altes", "valeur": "mer Méditerranée"}
+{"entite": "platja de Ribes Roges", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Riudecanyes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Abanell", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Àguila", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Alguer", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Alguer Petit", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Alqueria", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Arena", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Arenal", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Arenella", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Eixugador", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Estanyol", "valeur": "mer Méditerranée"}
+{"entite": "Platja de s'Home Mort", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sa Coma", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sa Conca", "valeur": "mer Méditerranée"}
+{"entite": "Platja de sa Cova", "valeur": "mer Méditerranée"}
+{"entite": "Platja de sa Figuera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de sa Pedrera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sa Riera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sa Sabolla", "valeur": "mer Méditerranée"}
+{"entite": "Platja de sa Somera", "valeur": "mer Méditerranée"}
+{"entite": "Platja de sa Tamardia", "valeur": "mer Méditerranée"}
+{"entite": "Platja de sa Torreta, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sa Tuna", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Adeodat", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Adrià", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Antoni", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Antoni de Portmany", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Antoni (Portlligat)", "valeur": "mer Méditerranée"}
+{"entite": "platja de Sant Cristòfol", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Gervasi", "valeur": "mer Méditerranée"}
+{"entite": "platja de Sant Joan", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Jordi", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Lluís", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Pol", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Sebastià", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Simó", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sant Vicenç de Montalt", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Santa Eualia", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Santa Margalida", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Santa Margarida (Sitges)", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Santa Ponça", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Santandria", "valeur": "mer Méditerranée"}
+{"entite": "Platja de ses Canyes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de ses Guiules", "valeur": "mer Méditerranée"}
+{"entite": "Platja de ses Ielles", "valeur": "mer Méditerranée"}
+{"entite": "Platja de ses Oliveres", "valeur": "mer Méditerranée"}
+{"entite": "Platja de ses Torretes", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sòl de Riu", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Son Moro", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Son Xoriguer", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sota d'en Navata", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Sota s'Arenella", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Tallalauca", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Tamarells des Nord, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Terramar", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Torà", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Torre Valentina", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Vaquers", "valeur": "mer Méditerranée"}
+{"entite": "Platja de Vinyals", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Barranc de Cap Roig", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Barranc de la Martinenca", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Belis", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Bol del Gos", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Borró", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Borró d'enfora", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Bot", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Bou", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Callao", "valeur": "mer Méditerranée"}
+{"entite": "platja del Camp de Mar", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Canadell", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Cap Roig", "valeur": "mer Méditerranée"}
+{"entite": "platja del Carregador", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Cau de sa Guineu", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Cau del Llop", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Cavaió", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Cellerot", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Club Nàutic", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Coco", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Codonyol", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Cortal de la Vila", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Cristall", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Cros", "valeur": "mer Méditerranée"}
+{"entite": "platja del Far", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Francàs", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Gaspar", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Goleró", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Litoral", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Mago", "valeur": "mer Méditerranée"}
+{"entite": "platja del Masnou", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Molló", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Morer", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Moro", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Morro de Gos", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Penyó", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Pla", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Pla de l'Os", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Pont d’en Botifarreta", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Port", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Port d'Aro", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Port d'en Joan", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Portitxol", "valeur": "mer Méditerranée"}
+{"entite": "platja del Portitxolet", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Postiguet", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Prat de Vilanova", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Racó", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Racó de Garbí", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Racó de l'Albir", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Racó del Bell Fons", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Rajolí", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Rec de Canet", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Rec del Molí", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Rei", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Reig", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Remolar", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Riuet (Sant Pere Pescador)", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Salatar", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Toro", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Trabucador", "valeur": "mer Méditerranée"}
+{"entite": "Platja del Varador", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Balmins", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Barrilers", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Capellans", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Capellans (El Port de la Selva)", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Colls", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Cossis", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Morts", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Patins de Vela", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Penyals", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Pescadors", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Pescadors (Cadaqués)", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Pilans", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Pinets", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Pins", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Ponts", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Riells", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Tontos", "valeur": "mer Méditerranée"}
+{"entite": "Platja dels Tres Micos", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Caials", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Calders", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Cavallet", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Codolar", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Dofí", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Falco", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Grau", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Jondal", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Jonquet", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Llané Gran", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Llané Petit", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Monestri", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Niu Blau", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Pianc", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Poal", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Sortell", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Sortell d'en Ter", "valeur": "mer Méditerranée"}
+{"entite": "Platja des Talaier, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "platja Eldorado", "valeur": "mer Méditerranée"}
+{"entite": "Platja Equipada", "valeur": "mer Méditerranée"}
+{"entite": "Platja es Gentils", "valeur": "mer Méditerranée"}
+{"entite": "Platja Es Pinet", "valeur": "mer Méditerranée"}
+{"entite": "Platja Fonda", "valeur": "mer Méditerranée"}
+{"entite": "Platja Fonda (Sitges)", "valeur": "mer Méditerranée"}
+{"entite": "Platja Fredosa", "valeur": "mer Méditerranée"}
+{"entite": "Platja Gran", "valeur": "mer Méditerranée"}
+{"entite": "Platja Gran d'Aro", "valeur": "mer Méditerranée"}
+{"entite": "Platja Gran de Cala Jugadora", "valeur": "mer Méditerranée"}
+{"entite": "Platja Gran de Calella", "valeur": "mer Méditerranée"}
+{"entite": "Platja Gran del Futaner", "valeur": "mer Méditerranée"}
+{"entite": "Platja Las Palmeras", "valeur": "mer Méditerranée"}
+{"entite": "Platja Llarga", "valeur": "mer Méditerranée"}
+{"entite": "Platja Llarga (Cubelles)", "valeur": "mer Méditerranée"}
+{"entite": "Platja Naturista", "valeur": "mer Méditerranée"}
+{"entite": "Platja Nord", "valeur": "mer Méditerranée"}
+{"entite": "Platja Nova", "valeur": "mer Méditerranée"}
+{"entite": "Platja Perales", "valeur": "mer Méditerranée"}
+{"entite": "Platja Petita", "valeur": "mer Méditerranée"}
+{"entite": "Platja Petita d'Empuriabrava", "valeur": "mer Méditerranée"}
+{"entite": "Platja Petita de Portbou", "valeur": "mer Méditerranée"}
+{"entite": "Platja Petita del Futaner", "valeur": "mer Méditerranée"}
+{"entite": "Platja Pinet", "valeur": "mer Méditerranée"}
+{"entite": "Platja Pou d’es Lleó", "valeur": "mer Méditerranée"}
+{"entite": "Platja S'Estanyol", "valeur": "mer Méditerranée"}
+{"entite": "Platja Sota d'en Canals", "valeur": "mer Méditerranée"}
+{"entite": "Platja Sota del Parador", "valeur": "mer Méditerranée"}
+{"entite": "Platjes de S'Olla", "valeur": "mer Méditerranée"}
+{"entite": "La Platjola", "valeur": "mer Méditerranée"}
+{"entite": "Playa Baja del Ganado", "valeur": "océan Atlantique"}
+{"entite": "Playa Blanca", "valeur": "océan Atlantique Nord"}
+{"entite": "Playa Brava", "valeur": "océan Atlantique"}
+{"entite": "Playa Cala Blanca", "valeur": "mer Méditerranée"}
+{"entite": "Playa Cala Galdana", "valeur": "mer Méditerranée"}
+{"entite": "Playa Can de Gandia", "valeur": "mer Méditerranée"}
+{"entite": "Playa Casablanca", "valeur": "mer Méditerranée"}
+{"entite": "Playa Centro", "valeur": "mer Méditerranée"}
+{"entite": "Playa Cesped La Veleta", "valeur": "mer Méditerranée"}
+{"entite": "Playa Chula", "valeur": "mer Méditerranée"}
+{"entite": "Playa Colorado", "valeur": "océan Pacifique"}
+{"entite": "Playa Cueva de Agua", "valeur": "océan Atlantique Nord"}
+{"entite": "Playa D’Aiguaoliva", "valeur": "mer Méditerranée"}
+{"entite": "Playa d'en Bossa", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Babel", "valeur": "mer Méditerranée"}
+{"entite": "Playa De Barros", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Bellreguart", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Bocabarranco", "valeur": "océan Atlantique"}
+{"entite": "Playa de Borriana", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Cabo Roig", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Calafat", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Carambolo", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Carvajal", "valeur": "mer d'Alboran"}
+{"entite": "Playa de Casablanca", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Fora del Forat", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Fuengirola", "valeur": "mer d'Alboran"}
+{"entite": "Playa de Jeresa", "valeur": "mer Méditerranée"}
+{"entite": "Playa de L’Alcudia", "valeur": "mer Méditerranée"}
+{"entite": "Playa de la Albufereta", "valeur": "mer Méditerranée"}
+{"entite": "Playa de la Almadraba", "valeur": "mer Méditerranée"}
+{"entite": "Playa de la Barbiguera", "valeur": "mer Méditerranée"}
+{"entite": "Playa de la Corcollada", "valeur": "mer Méditerranée"}
+{"entite": "Playa de La Fossa", "valeur": "mer Méditerranée"}
+{"entite": "Playa de la Glea", "valeur": "mer Méditerranée"}
+{"entite": "Playa de la Hita", "valeur": "mer Méditerranée"}
+{"entite": "Playa de La Llosa", "valeur": "mer Méditerranée"}
+{"entite": "Playa de la Mil Palmeras", "valeur": "mer Méditerranée"}
+{"entite": "Playa de la Punta de la Tordera", "valeur": "mer Méditerranée"}
+{"entite": "Playa de La Riera", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Las Amoladeras", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Las Filipinas", "valeur": "mer Méditerranée"}
+{"entite": "Playa de las Huertas", "valeur": "mer Méditerranée"}
+{"entite": "Playa de las Palmeras", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Las Teresitas", "valeur": "océan Atlantique"}
+{"entite": "Playa de las Villas", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Las Viudas", "valeur": "mer Méditerranée"}
+{"entite": "Playa de les Cales", "valeur": "mer Méditerranée"}
+{"entite": "Playa de les Deveses", "valeur": "mer Méditerranée"}
+{"entite": "Playa de les Salines", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Levante", "valeur": "mer Méditerranée"}
+{"entite": "Playa de los Narejos", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Los Naufragos", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Los Nietos", "valeur": "Mar Menor"}
+{"entite": "Playa de Manzanares", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Mutxavista", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Nazaret", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Negrete", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Oliva", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Ostende", "valeur": "golfe de Gascogne"}
+{"entite": "Playa de Palma", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Palo", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Poblenou", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Poniente", "valeur": "mer Méditerranée"}
+{"entite": "Playa de San Francisco", "valeur": "mer d'Alboran"}
+{"entite": "Playa de San Gabriel", "valeur": "mer Méditerranée"}
+{"entite": "Playa de San Juan", "valeur": "mer Méditerranée"}
+{"entite": "Playa de San Vicente", "valeur": "mer Méditerranée"}
+{"entite": "Playa de Santa Amalia", "valeur": "mer d'Alboran"}
+{"entite": "Playa de Santa Bárbara", "valeur": "mer d'Alboran"}
+{"entite": "Playa de Torreblanca", "valeur": "mer d'Alboran"}
+{"entite": "Playa de Venecia", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Arenal", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Barco Perdido", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Campas", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Castillo", "valeur": "mer d'Alboran"}
+{"entite": "Playa del Chaparral", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Clot", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Conde", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Cura", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Descargador", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Espejo", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Forti", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Hoyo", "valeur": "océan Atlantique"}
+{"entite": "Playa del Lastrón", "valeur": "golfe de Gascogne"}
+{"entite": "Playa del Puerto", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Rajadell", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Riu Cervol", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Rostro", "valeur": "Douro"}
+{"entite": "Playa del Saladar", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Saldonar", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Serrallo", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Torres", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Triador", "valeur": "mer Méditerranée"}
+{"entite": "Playa del Xarco", "valeur": "mer Méditerranée"}
+{"entite": "Playa dels Cossis", "valeur": "mer Méditerranée"}
+{"entite": "Playa dels Pescadors", "valeur": "mer Méditerranée"}
+{"entite": "Playa Denia", "valeur": "mer Méditerranée"}
+{"entite": "Playa des Polp", "valeur": "mer Méditerranée"}
+{"entite": "Playa des Talaier", "valeur": "mer Méditerranée"}
+{"entite": "Playa DIvino", "valeur": "mer Méditerranée"}
+{"entite": "Playa El Bovalar", "valeur": "mer Méditerranée"}
+{"entite": "Playa El Coco", "valeur": "océan Pacifique"}
+{"entite": "Playa Escollera", "valeur": "mer Méditerranée"}
+{"entite": "Playa Flamenca Beach", "valeur": "mer Méditerranée"}
+{"entite": "Playa Guasacate", "valeur": "océan Pacifique"}
+{"entite": "Playa Heliópolis", "valeur": "mer Méditerranée"}
+{"entite": "Playa Hermosa", "valeur": "Río Coco"}
+{"entite": "Playa Honda", "valeur": "Mar Menor"}
+{"entite": "Playa Jardin", "valeur": "océan Atlantique Nord"}
+{"entite": "Playa Jesuitas", "valeur": "mer Méditerranée"}
+{"entite": "Playa La Galera", "valeur": "mer Méditerranée"}
+{"entite": "Playa Las Cavas", "valeur": "rio Uruguay"}
+{"entite": "Playa Les Marines", "valeur": "mer Méditerranée"}
+{"entite": "Playa Mansa (Punta del Este)", "valeur": "río de la Plata"}
+{"entite": "Playa Manzanillo", "valeur": "océan Pacifique"}
+{"entite": "Playa Mar Bella", "valeur": "mer Méditerranée"}
+{"entite": "Playa Medio", "valeur": "mer Méditerranée"}
+{"entite": "Playa Negrete", "valeur": "mer Méditerranée"}
+{"entite": "Playa Nova", "valeur": "mer Méditerranée"}
+{"entite": "Playa Olivos", "valeur": "mer Méditerranée"}
+{"entite": "Playa Portonegro", "valeur": "mer Méditerranée"}
+{"entite": "Playa Punta Seca", "valeur": "mer Méditerranée"}
+{"entite": "Playa Roda", "valeur": "mer Méditerranée"}
+{"entite": "Playa Salinas Grande", "valeur": "océan Pacifique"}
+{"entite": "Playa Santa Pola", "valeur": "mer Méditerranée"}
+{"entite": "Playa Santo Domingo", "valeur": "lac Nicaragua"}
+{"entite": "Playa Talis", "valeur": "mer Méditerranée"}
+{"entite": "Playa Xerako", "valeur": "mer Méditerranée"}
+{"entite": "Playas de Fornells", "valeur": "mer Méditerranée"}
+{"entite": "Playeta d'Es Delfí", "valeur": "mer Méditerranée"}
+{"entite": "Les Playetes", "valeur": "mer Méditerranée"}
+{"entite": "La Playuela", "valeur": "mer Méditerranée"}
+{"entite": "Pleasant Valley Beach", "valeur": "lac Arthur"}
+{"entite": "La Pobla de Farnals", "valeur": "mer Méditerranée"}
+{"entite": "Pocitos Beach", "valeur": "río de la Plata"}
+{"entite": "Podmore Beach", "valeur": "Georges River"}
+{"entite": "pointe de l'Espiguette", "valeur": "mer Méditerranée"}
+{"entite": "pointe du Lac", "valeur": "lac Saint-Jean"}
+{"entite": "pointe Fine", "valeur": "lac Matapédia"}
+{"entite": "pointe Long", "valeur": "lac Érié"}
+{"entite": "Pokonji Dol Beach", "valeur": "mer Adriatique"}
+{"entite": "Pomato Point", "valeur": "mer des Caraïbes"}
+{"entite": "De Ponent", "valeur": "mer Méditerranée"}
+{"entite": "Pont de Baix", "valeur": "mer Méditerranée"}
+{"entite": "Ponta de Areia", "valeur": "baie de Tous les Saints"}
+{"entite": "Pope", "valeur": "mer Méditerranée"}
+{"entite": "Pope Beach", "valeur": "lac Tahoe"}
+{"entite": "Porporela", "valeur": "mer Adriatique"}
+{"entite": "La Porquerola", "valeur": "mer Méditerranée"}
+{"entite": "Port Blanc, Locmaria", "valeur": "océan Atlantique Nord"}
+{"entite": "Port Bo", "valeur": "mer Méditerranée"}
+{"entite": "Port Camargue Plage Nord", "valeur": "mer Méditerranée"}
+{"entite": "Port d'en Perris", "valeur": "mer Méditerranée"}
+{"entite": "Port de Benirrás", "valeur": "mer Méditerranée"}
+{"entite": "Port de l'Eoube", "valeur": "mer Méditerranée"}
+{"entite": "Port de les Caletes", "valeur": "mer Méditerranée"}
+{"entite": "Port de Malaspina", "valeur": "mer Méditerranée"}
+{"entite": "Port de Pollença", "valeur": "mer Méditerranée"}
+{"entite": "Port de Pomègues", "valeur": "mer Méditerranée"}
+{"entite": "Port de Portinatx", "valeur": "mer Méditerranée"}
+{"entite": "Port de Sagunt", "valeur": "mer Méditerranée"}
+{"entite": "Port de Sant Miquel", "valeur": "mer Méditerranée"}
+{"entite": "Port de Sóller", "valeur": "mer Méditerranée"}
+{"entite": "Port de Valldemossa", "valeur": "mer Méditerranée"}
+{"entite": "Port del Canonge", "valeur": "mer Méditerranée"}
+{"entite": "Port des Orats", "valeur": "mer Méditerranée"}
+{"entite": "Port Lin", "valeur": "golfe de Gascogne"}
+{"entite": "Port Olivet", "valeur": "mer Méditerranée"}
+{"entite": "Port Pelegrí", "valeur": "mer Méditerranée"}
+{"entite": "Port Roig", "valeur": "mer Méditerranée"}
+{"entite": "Port Saplaya South Beach", "valeur": "mer Méditerranée"}
+{"entite": "Port Vell", "valeur": "mer Méditerranée"}
+{"entite": "Portbou", "valeur": "mer Méditerranée"}
+{"entite": "Portezuelo Beach", "valeur": "río de la Plata"}
+{"entite": "Portichol", "valeur": "mer Méditerranée"}
+{"entite": "Portmán", "valeur": "mer Méditerranée"}
+{"entite": "Porto da Barra Beach", "valeur": "baie de Tous les Saints"}
+{"entite": "Porto Pí", "valeur": "mer Méditerranée"}
+{"entite": "Porto Santo beach", "valeur": "océan Atlantique Nord"}
+{"entite": "Portocristo beach", "valeur": "mer Méditerranée"}
+{"entite": "Pouawa Beach", "valeur": "océan Pacifique"}
+{"entite": "Pouet", "valeur": "mer Méditerranée"}
+{"entite": "Poundjo", "valeur": "mer de Corail"}
+{"entite": "Pozo Izquierdo", "valeur": "océan Atlantique"}
+{"entite": "Praia da Boa Viagem", "valeur": "baie de Tous les Saints"}
+{"entite": "Praia da Costa Dourada", "valeur": "océan Atlantique"}
+{"entite": "Praia da Jesuína", "valeur": "lac Juparanã"}
+{"entite": "Praia da Marinha", "valeur": "océan Atlantique"}
+{"entite": "Praia da Paciência", "valeur": "océan Atlantique"}
+{"entite": "Praia da Pitinga", "valeur": "océan Atlantique Sud"}
+{"entite": "Praia das Neves", "valeur": "baie de Tous les Saints"}
+{"entite": "Praia das Palmeiras", "valeur": "océan Atlantique Sud"}
+{"entite": "Praia de Armação", "valeur": "océan Atlantique"}
+{"entite": "Praia de Cação", "valeur": "baie de Tous les Saints"}
+{"entite": "Praia de Catussaba", "valeur": "océan Atlantique"}
+{"entite": "Praia de Ipitanga", "valeur": "océan Atlantique"}
+{"entite": "Praia de Piatã", "valeur": "océan Atlantique"}
+{"entite": "Praia de Pituaçu", "valeur": "océan Atlantique"}
+{"entite": "Praia de Vilas do Atlântico", "valeur": "océan Atlantique"}
+{"entite": "Praia do Buracão", "valeur": "océan Atlantique"}
+{"entite": "Praia do Corsário", "valeur": "océan Atlantique"}
+{"entite": "Praia do Cristo", "valeur": "océan Atlantique"}
+{"entite": "Praia do Farol de Itapuã", "valeur": "océan Atlantique"}
+{"entite": "Praia do Flamengo", "valeur": "océan Atlantique"}
+{"entite": "Praia do Meio", "valeur": "océan Atlantique Sud"}
+{"entite": "Praia do Mucugê", "valeur": "océan Atlantique Sud"}
+{"entite": "Praia do Pinhão", "valeur": "océan Atlantique"}
+{"entite": "Praia do Recreio", "valeur": "océan Atlantique Sud"}
+{"entite": "Praia do Rio Vermelho", "valeur": "océan Atlantique"}
+{"entite": "Praia do Saquinho", "valeur": "océan Atlantique Sud"}
+{"entite": "Praia do Sarico", "valeur": "océan Atlantique"}
+{"entite": "Praia dos Açores", "valeur": "océan Atlantique Sud"}
+{"entite": "Praia dos Artistas", "valeur": "océan Atlantique"}
+{"entite": "Praia Formosa", "valeur": "océan Atlantique Nord"}
+{"entite": "Praia Tubarão", "valeur": "baie de Tous les Saints"}
+{"entite": "Prainha", "valeur": "océan Atlantique Nord"}
+{"entite": "Prainha do Solar do Unhão", "valeur": "baie de Tous les Saints"}
+{"entite": "Prat d'En Fores i Regueral", "valeur": "mer Méditerranée"}
+{"entite": "Pratigi Beach", "valeur": "océan Atlantique"}
+{"entite": "President Beach", "valeur": "mer Adriatique"}
+{"entite": "presque'île de la Vistule", "valeur": "baie de Gdańsk"}
+{"entite": "Primer Montañar", "valeur": "mer Méditerranée"}
+{"entite": "Primera del Pedrucho", "valeur": "mer Méditerranée"}
+{"entite": "Primera Platja", "valeur": "mer Méditerranée"}
+{"entite": "Primera y Segunda Caletas", "valeur": "mer Méditerranée"}
+{"entite": "Princess Diana Beach", "valeur": "mer des Caraïbes"}
+{"entite": "Protegida sector I", "valeur": "mer Méditerranée"}
+{"entite": "Protegida sector II", "valeur": "mer Méditerranée"}
+{"entite": "Psaraliki beach", "valeur": "mer Égée"}
+{"entite": "Psili Ammos Beach", "valeur": "mer Égée"}
+{"entite": "public beach Lillsjön", "valeur": "Lillsjön"}
+{"entite": "public beach Segersjön Sundsvall", "valeur": "Segersjön"}
+{"entite": "Puçol", "valeur": "mer Méditerranée"}
+{"entite": "Pudrimel", "valeur": "mer Méditerranée"}
+{"entite": "Pudrimel del Mar Menor", "valeur": "mer Méditerranée"}
+{"entite": "Puerto Blanco", "valeur": "mer Méditerranée"}
+{"entite": "Puerto Bonito", "valeur": "océan Pacifique"}
+{"entite": "Puerto de L'Estany Gras", "valeur": "mer Méditerranée"}
+{"entite": "Puerto Viejo (Isla de Tabarca)", "valeur": "mer Méditerranée"}
+{"entite": "Puig", "valeur": "mer Méditerranée"}
+{"entite": "Puig Val", "valeur": "mer Méditerranée"}
+{"entite": "Pukehina Beach", "valeur": "baie de l'Abondance"}
+{"entite": "Punaromia Beach", "valeur": "lac Tarawera"}
+{"entite": "La Punta", "valeur": "mer Méditerranée"}
+{"entite": "Punta Brava", "valeur": "mer Méditerranée"}
+{"entite": "Punta Canyerets", "valeur": "mer Méditerranée"}
+{"entite": "Punta de Baix", "valeur": "mer Méditerranée"}
+{"entite": "Punta de la Guineu", "valeur": "mer Méditerranée"}
+{"entite": "Punta del Fangar", "valeur": "mer Méditerranée"}
+{"entite": "Punta del Riu", "valeur": "mer Méditerranée"}
+{"entite": "Punta el Bolondo", "valeur": "mer Méditerranée"}
+{"entite": "Punta Els Canyers", "valeur": "mer Méditerranée"}
+{"entite": "Punta Espinillo Beach", "valeur": "río de la Plata"}
+{"entite": "Punta Paloma", "valeur": "détroit de Gibraltar"}
+{"entite": "Punta Prima", "valeur": "mer Méditerranée"}
+{"entite": "Punta rata", "valeur": "mer Adriatique"}
+{"entite": "Punta Xinxó", "valeur": "mer Méditerranée"}
+{"entite": "Punta Yeguas beach", "valeur": "río de la Plata"}
+{"entite": "La Puntica", "valeur": "mer Méditerranée"}
+{"entite": "Pyynikki beach", "valeur": "lac Pyhä"}
+{"entite": "Raco Conill", "valeur": "mer Méditerranée"}
+{"entite": "Racó de la Alberca", "valeur": "mer Méditerranée"}
+{"entite": "Racó de Llevant de Giverola", "valeur": "mer Méditerranée"}
+{"entite": "Racó de Mortix", "valeur": "mer Méditerranée"}
+{"entite": "Racó del Conill", "valeur": "mer Méditerranée"}
+{"entite": "Rafalcaid", "valeur": "mer Méditerranée"}
+{"entite": "Railay", "valeur": "mer d'Andaman"}
+{"entite": "Ramírez Beach", "valeur": "río de la Plata"}
+{"entite": "Ras Albisha", "valeur": "golfe Persique"}
+{"entite": "Rastrell", "valeur": "mer Méditerranée"}
+{"entite": "Razo", "valeur": "océan Atlantique"}
+{"entite": "Real Playa", "valeur": "mer Méditerranée"}
+{"entite": "Redwood Creek Beach", "valeur": "océan Paciﬁque nord"}
+{"entite": "Régence plage", "valeur": "mer Méditerranée"}
+{"entite": "Renega", "valeur": "mer Méditerranée"}
+{"entite": "Ribamar", "valeur": "mer Méditerranée"}
+{"entite": "Ribeira beach", "valeur": "baie de Tous les Saints"}
+{"entite": "La Ribera", "valeur": "mer Méditerranée"}
+{"entite": "Ribes Altes", "valeur": "mer Méditerranée"}
+{"entite": "Richelieu beach", "valeur": "mer Méditerranée"}
+{"entite": "Rifà", "valeur": "mer Méditerranée"}
+{"entite": "Ringaringa Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Río Seco", "valeur": "mer Méditerranée"}
+{"entite": "Riomar", "valeur": "mer Méditerranée"}
+{"entite": "Riu Senia", "valeur": "mer Méditerranée"}
+{"entite": "Riva Nera beach", "valeur": "lac de Côme"}
+{"entite": "Rivero Beach", "valeur": "océan Atlantique"}
+{"entite": "Roavvegoahti", "valeur": "Anarjohka"}
+{"entite": "roca Grossa", "valeur": "mer Méditerranée"}
+{"entite": "Rocas Planas", "valeur": "mer Méditerranée"}
+{"entite": "La Roda", "valeur": "mer Méditerranée"}
+{"entite": "Rollers Beach", "valeur": "détroit de Foveaux"}
+{"entite": "La Roqueta", "valeur": "mer Méditerranée"}
+{"entite": "Les Rotes", "valeur": "mer Méditerranée"}
+{"entite": "Rovellada", "valeur": "mer Méditerranée"}
+{"entite": "Ruby Beach", "valeur": "océan Pacifique"}
+{"entite": "ruhl plage", "valeur": "mer Méditerranée"}
+{"entite": "S’Adarró", "valeur": "mer Méditerranée"}
+{"entite": "S'Aigua Blanca", "valeur": "mer Méditerranée"}
+{"entite": "S'Algar", "valeur": "mer Méditerranée"}
+{"entite": "S'Amarador", "valeur": "mer Méditerranée"}
+{"entite": "S'Arenal", "valeur": "mer Méditerranée"}
+{"entite": "S'Arenal d'En Casat", "valeur": "mer Méditerranée"}
+{"entite": "S'Arenal d'En Mongofre", "valeur": "mer Méditerranée"}
+{"entite": "S'Arenal de Morella", "valeur": "mer Méditerranée"}
+{"entite": "S'Arenal de Sa Rápita", "valeur": "mer Méditerranée"}
+{"entite": "S'Arenal Gran", "valeur": "mer Méditerranée"}
+{"entite": "S'Arenal Petit de Portinatx", "valeur": "mer Méditerranée"}
+{"entite": "S'Argamassa", "valeur": "mer Méditerranée"}
+{"entite": "S'Enclusa", "valeur": "mer Méditerranée"}
+{"entite": "S'Escala, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "S'Estany d'en Mas", "valeur": "mer Méditerranée"}
+{"entite": "S'Estanyol", "valeur": "mer Méditerranée"}
+{"entite": "S'Illa d'En Bosc", "valeur": "mer Méditerranée"}
+{"entite": "S'Illot d'En Renclí", "valeur": "mer Méditerranée"}
+{"entite": "S'Illot des Renclí", "valeur": "mer Méditerranée"}
+{"entite": "Sa Caixota", "valeur": "mer Méditerranée"}
+{"entite": "Sa Cala Gran", "valeur": "mer Méditerranée"}
+{"entite": "Sa Caleta", "valeur": "mer Méditerranée"}
+{"entite": "Sa Caleta d'en Gorries", "valeur": "mer Méditerranée"}
+{"entite": "Sa Caleta de Ciutadella", "valeur": "mer Méditerranée"}
+{"entite": "Sa Conca", "valeur": "mer Méditerranée"}
+{"entite": "Sa Cova", "valeur": "mer Méditerranée"}
+{"entite": "Sa Figuera Borda", "valeur": "mer Méditerranée"}
+{"entite": "Sa Font de Sa Cala", "valeur": "mer Méditerranée"}
+{"entite": "Sa Font Figuera", "valeur": "mer Méditerranée"}
+{"entite": "Sa Font Salada", "valeur": "mer Méditerranée"}
+{"entite": "Sa Marina d'Alcudia", "valeur": "mer Méditerranée"}
+{"entite": "Sa Marjal", "valeur": "mer Méditerranée"}
+{"entite": "Sa Roqueta", "valeur": "mer Méditerranée"}
+{"entite": "Sa Torreta", "valeur": "mer Méditerranée"}
+{"entite": "Saint Alban Plage", "valeur": "lac d'Aiguebelette"}
+{"entite": "Saint Bernard of Rocha", "valeur": "océan Atlantique"}
+{"entite": "Sainte-Anne du Portzic", "valeur": "rade de Brest"}
+{"entite": "Sakouli", "valeur": "canal du Mozambique"}
+{"entite": "Sakouli Beach", "valeur": "canal du Mozambique"}
+{"entite": "Samara embankment", "valeur": "Volga"}
+{"entite": "San Antonio Beach", "valeur": "océan Atlantique"}
+{"entite": "San Fernando", "valeur": "mer Méditerranée"}
+{"entite": "San Francisco Beach", "valeur": "océan Atlantique"}
+{"entite": "San Juan del Este Beach", "valeur": "océan Atlantique"}
+{"entite": "San Juan Playa", "valeur": "mer Méditerranée"}
+{"entite": "San Rafael Beach", "valeur": "océan Atlantique"}
+{"entite": "San Sebastián beach", "valeur": "océan Atlantique"}
+{"entite": "San Vicente Beach", "valeur": "océan Atlantique"}
+{"entite": "Sanden", "valeur": "Varangerfjord"}
+{"entite": "Sandlandet", "valeur": "Nissan"}
+{"entite": "Sant Adeodato", "valeur": "mer Méditerranée"}
+{"entite": "Sant Antoni", "valeur": "mer Méditerranée"}
+{"entite": "Sant Esteve de la Fosca", "valeur": "mer Méditerranée"}
+{"entite": "Sant Feliu", "valeur": "mer Méditerranée"}
+{"entite": "Sant Joan", "valeur": "mer Méditerranée"}
+{"entite": "Sant Jordi", "valeur": "mer Méditerranée"}
+{"entite": "Sant Miquel", "valeur": "mer Méditerranée"}
+{"entite": "Sant Pere", "valeur": "mer Méditerranée"}
+{"entite": "Sant Pere Pescador", "valeur": "mer Méditerranée"}
+{"entite": "Sant Pol", "valeur": "mer Méditerranée"}
+{"entite": "Sant Salvador", "valeur": "mer Méditerranée"}
+{"entite": "Sant Tomas", "valeur": "mer Méditerranée"}
+{"entite": "Santa Catalina beach", "valeur": "río de la Plata"}
+{"entite": "Santa Cristina", "valeur": "mer Méditerranée"}
+{"entite": "Santa Eulària", "valeur": "mer Méditerranée"}
+{"entite": "Santa Llúcia", "valeur": "mer Méditerranée"}
+{"entite": "Santa Lucía", "valeur": "mer Méditerranée"}
+{"entite": "Santa Margarida", "valeur": "mer Méditerranée"}
+{"entite": "Santa María de Llorell", "valeur": "mer Méditerranée"}
+{"entite": "Santa María del Mar", "valeur": "mer des Caraïbes"}
+{"entite": "Santa Monica State Beach", "valeur": "baie de Santa Monica"}
+{"entite": "Santa Pola del Este", "valeur": "mer Méditerranée"}
+{"entite": "Santa Rosa Beach", "valeur": "río de la Plata"}
+{"entite": "São Tomé de Paripe", "valeur": "océan Atlantique"}
+{"entite": "Sardina", "valeur": "océan Atlantique"}
+{"entite": "La Savinosa", "valeur": "mer Méditerranée"}
+{"entite": "Sawada Beach", "valeur": "mer de Chine orientale"}
+{"entite": "Sawyers Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Scenic Beach", "valeur": "canal Hood"}
+{"entite": "Scheveningen beach", "valeur": "mer du Nord"}
+{"entite": "Schmale Heide", "valeur": "Prorer Wiek"}
+{"entite": "Seaforth Beach", "valeur": "baie False"}
+{"entite": "Second Beach", "valeur": "baie Burrard"}
+{"entite": "Seebad Breitenbrunn", "valeur": "lac de Neusiedl"}
+{"entite": "Segunda del Pedrucho", "valeur": "mer Méditerranée"}
+{"entite": "Segundo Montañar", "valeur": "mer Méditerranée"}
+{"entite": "Segur de Calafell", "valeur": "mer Méditerranée"}
+{"entite": "Seira Beach", "valeur": "rivière de Rois"}
+{"entite": "Senbonhama", "valeur": "baie de Suruga"}
+{"entite": "Senri Beach", "valeur": "mer des Philippines"}
+{"entite": "Senyor Ramón", "valeur": "mer Méditerranée"}
+{"entite": "Serradal", "valeur": "mer Méditerranée"}
+{"entite": "Serragrossa", "valeur": "mer Méditerranée"}
+{"entite": "Ses Covetes", "valeur": "mer Méditerranée"}
+{"entite": "Ses Estaques", "valeur": "mer Méditerranée"}
+{"entite": "Ses Fontanelles, Menorca", "valeur": "mer Méditerranée"}
+{"entite": "Ses Fonts de n'Alis", "valeur": "mer Méditerranée"}
+{"entite": "Ses Roquetes", "valeur": "mer Méditerranée"}
+{"entite": "Ses Salines", "valeur": "mer Méditerranée"}
+{"entite": "Ses Xalanes beach", "valeur": "mer Méditerranée"}
+{"entite": "Sesoko Beach", "valeur": "mer de Chine orientale"}
+{"entite": "Setla-Mirarrosa", "valeur": "mer Méditerranée"}
+{"entite": "Shelly Beach", "valeur": "Waitemata Harbour"}
+{"entite": "Shi-Shi Beach", "valeur": "océan Pacifique"}
+{"entite": "Shida Beach", "valeur": "lac Inawashiro"}
+{"entite": "Shikhov Beach", "valeur": "mer Caspienne"}
+{"entite": "Shittim Beach", "valeur": "lac de Tibériade"}
+{"entite": "Shōnan Beach", "valeur": "baie de Sagami"}
+{"entite": "Short Beach", "valeur": "océan Pacifique"}
+{"entite": "Sidi R'bat beach", "valeur": "océan Atlantique"}
+{"entite": "Siesta Key", "valeur": "golfe du Mexique"}
+{"entite": "Silver Strand", "valeur": "océan Atlantique"}
+{"entite": "Skagen Søndre Strand, V.vippefyr", "valeur": "baie d'Ålbæk"}
+{"entite": "Skagen Syd, V, Damstedvej", "valeur": "baie d'Ålbæk"}
+{"entite": "Skull Beach", "valeur": "océan Atlantique"}
+{"entite": "Smoky Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Snekkersten Strand", "valeur": "Øresund"}
+{"entite": "Snipe", "valeur": "mer Méditerranée"}
+{"entite": "Sol d'en Serra", "valeur": "mer Méditerranée"}
+{"entite": "Solsida", "valeur": "mer Méditerranée"}
+{"entite": "Son Bou", "valeur": "mer Méditerranée"}
+{"entite": "Son Bunyola", "valeur": "mer Méditerranée"}
+{"entite": "Son Caliu Beach", "valeur": "mer Méditerranée"}
+{"entite": "Son Maties", "valeur": "mer Méditerranée"}
+{"entite": "Son Moll", "valeur": "mer Méditerranée"}
+{"entite": "Son Real", "valeur": "mer Méditerranée"}
+{"entite": "Son Saura", "valeur": "mer Méditerranée"}
+{"entite": "Son Serra de Marina", "valeur": "mer Méditerranée"}
+{"entite": "Son Vell", "valeur": "mer Méditerranée"}
+{"entite": "Son Xoriguer", "valeur": "mer Méditerranée"}
+{"entite": "Sörling Beach", "valeur": "océan Atlantique Sud"}
+{"entite": "Sorts de Mar", "valeur": "mer Méditerranée"}
+{"entite": "South Core Banks", "valeur": "océan Atlantique"}
+{"entite": "South Jetty Beach", "valeur": "océan Paciﬁque nord"}
+{"entite": "Spiaggia de La Cinta", "valeur": "mer Tyrrhénienne"}
+{"entite": "Spiaggia di Capo Comino", "valeur": "mer Tyrrhénienne"}
+{"entite": "Spiaggia di Marina Di Campo", "valeur": "mer Méditerranée"}
+{"entite": "Spiaggia di San Giuliano", "valeur": "mer Tyrrhénienne"}
+{"entite": "Spiaggia di Santa Caterina", "valeur": "mer de Sardaigne"}
+{"entite": "Spiaggia Salvo Marina", "valeur": "mer Adriatique"}
+{"entite": "spiaggia Tranquilla", "valeur": "lac de Côme"}
+{"entite": "le sporting", "valeur": "mer Méditerranée"}
+{"entite": "Srebreno Beach", "valeur": "mer Adriatique"}
+{"entite": "St. Mary's Bay", "valeur": "Manche"}
+{"entite": "Stella Maris beach", "valeur": "océan Atlantique"}
+{"entite": "Storsand", "valeur": "Varangerfjord"}
+{"entite": "Storsanden", "valeur": "Varangerfjord"}
+{"entite": "Strand Horst", "valeur": "Wolderwijd"}
+{"entite": "Strand Nulde", "valeur": "Nuldernauw"}
+{"entite": "Strandbad Halensee", "valeur": "Halensee"}
+{"entite": "Strandbad Wannsee", "valeur": "Großer Wannsee"}
+{"entite": "Strandbad Weißensee", "valeur": "Weißer See"}
+{"entite": "Strandbadet i Hjo", "valeur": "Vättern"}
+{"entite": "Struckmann Park", "valeur": "Øresund"}
+{"entite": "Study Beach", "valeur": "océan Atlantique Sud"}
+{"entite": "Styag", "valeur": "mer des Laptev"}
+{"entite": "Sud de Torreblanca", "valeur": "mer Méditerranée"}
+{"entite": "Sudbury Beach", "valeur": "lac Skaha"}
+{"entite": "Suizo", "valeur": "mer Méditerranée"}
+{"entite": "Sullivan's Island Beach", "valeur": "océan Atlantique Nord"}
+{"entite": "Šunj", "valeur": "mer Adriatique"}
+{"entite": "Sunset Beach (Oahu)", "valeur": "océan Pacifique"}
+{"entite": "Supetar beach", "valeur": "mer Adriatique"}
+{"entite": "Svanestrand", "valeur": "Svanevatn"}
+{"entite": "Sword Beach", "valeur": "baie de Seine"}
+{"entite": "Taballera", "valeur": "mer Méditerranée"}
+{"entite": "Tabarca", "valeur": "mer Méditerranée"}
+{"entite": "Tagonoura", "valeur": "baie de Suruga"}
+{"entite": "Tahiti plage", "valeur": "canal du Mozambique"}
+{"entite": "Tāhunaroa Beach", "valeur": "lac Rotama"}
+{"entite": "Takapuna Beach", "valeur": "golfe de Hauraki"}
+{"entite": "Takeno Beach", "valeur": "mer du Japon"}
+{"entite": "Talamanca", "valeur": "mer Méditerranée"}
+{"entite": "Tallebudgera Beach", "valeur": "mer de Corail"}
+{"entite": "Tamarells del Sud", "valeur": "mer Méditerranée"}
+{"entite": "Tamarit", "valeur": "mer Méditerranée"}
+{"entite": "Tamariu", "valeur": "mer Méditerranée"}
+{"entite": "Tanoura Beach", "valeur": "baie de Beppu"}
+{"entite": "Tarpaulin Beach", "valeur": "Paterson Inlet"}
+{"entite": "Tavernes", "valeur": "mer Méditerranée"}
+{"entite": "Te Rae Point", "valeur": "lac Taupo"}
+{"entite": "Te Rauone Beach", "valeur": "Otago Harbour"}
+{"entite": "Te Raupōroa Beach", "valeur": "lac Rotorua"}
+{"entite": "Te Wharau Beach", "valeur": "océan Pacifique"}
+{"entite": "Terranova", "valeur": "mer Méditerranée"}
+{"entite": "The Spit", "valeur": "Otago Harbour"}
+{"entite": "Thornton State Beach", "valeur": "océan Pacifique"}
+{"entite": "Les Timbes de Sòl de Riu", "valeur": "mer Méditerranée"}
+{"entite": "Tirant", "valeur": "mer Méditerranée"}
+{"entite": "Tiro de Pichón", "valeur": "mer Méditerranée"}
+{"entite": "Tōdaiisei Beach", "valeur": "mer d'Enshū"}
+{"entite": "Topanga Beach", "valeur": "océan Pacifique"}
+{"entite": "La Torre", "valeur": "mer Méditerranée"}
+{"entite": "Torre de la Sal", "valeur": "mer Méditerranée"}
+{"entite": "Torre Derribada", "valeur": "mer Méditerranée"}
+{"entite": "Torre Sant Vicent", "valeur": "mer Méditerranée"}
+{"entite": "Torrelamata", "valeur": "mer Méditerranée"}
+{"entite": "Torrenostra", "valeur": "mer Méditerranée"}
+{"entite": "Torrent del Pi", "valeur": "mer Méditerranée"}
+{"entite": "La Tortuga", "valeur": "mer Méditerranée"}
+{"entite": "Traigh nan Gilean", "valeur": "océan Atlantique"}
+{"entite": "Trajo d'en Reiner", "valeur": "mer Méditerranée"}
+{"entite": "Trajo de Venècia", "valeur": "mer Méditerranée"}
+{"entite": "Trajo de Vila Avall", "valeur": "mer Méditerranée"}
+{"entite": "Tralicetu Beach", "valeur": "mer Méditerranée"}
+{"entite": "Tramuntana", "valeur": "mer Méditerranée"}
+{"entite": "Travis Spit", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Tres Platges", "valeur": "mer Méditerranée"}
+{"entite": "Tres Platgetes", "valeur": "mer Méditerranée"}
+{"entite": "Treumal", "valeur": "mer Méditerranée"}
+{"entite": "Tróia-Galé Beach", "valeur": "océan Atlantique"}
+{"entite": "Tropical Beach", "valeur": "mer de Chine orientale"}
+{"entite": "Trou à Man Lwi", "valeur": "mer des Caraïbes"}
+{"entite": "Tsapi Beach of Chrysokellaria", "valeur": "mer Ionienne"}
+{"entite": "Tsujidō Beach", "valeur": "baie de Sagami"}
+{"entite": "Tuzla Spit", "valeur": "détroit de Kertch"}
+{"entite": "Twin Spits", "valeur": "canal Hood"}
+{"entite": "Uhcagáttáš", "valeur": "Anarjohka"}
+{"entite": "Underåsbadet Enhörna", "valeur": "lac Mälar"}
+{"entite": "Utah Beach", "valeur": "baie de Seine"}
+{"entite": "Vallpresona", "valeur": "mer Méditerranée"}
+{"entite": "Valsaline", "valeur": "mer Méditerranée"}
+{"entite": "Varadero", "valeur": "mer Méditerranée"}
+{"entite": "Vattajanhietikko", "valeur": "baie de Botnie"}
+{"entite": "Vätterstranden", "valeur": "Vättern"}
+{"entite": "Venecia", "valeur": "mer Méditerranée"}
+{"entite": "La Veneziola", "valeur": "mer Méditerranée"}
+{"entite": "Ventura Beach", "valeur": "mer des Laquedives"}
+{"entite": "Vestersanden", "valeur": "Varangerfjord"}
+{"entite": "Vestey's beach", "valeur": "The Minch"}
+{"entite": "Vilafortuny", "valeur": "mer Méditerranée"}
+{"entite": "Villananitos", "valeur": "mer Méditerranée"}
+{"entite": "Vista Mar", "valeur": "mer Méditerranée"}
+{"entite": "Vistabella", "valeur": "mer Méditerranée"}
+{"entite": "Voïdokiliá", "valeur": "mer Ionienne"}
+{"entite": "le voilier plage", "valeur": "mer Méditerranée"}
+{"entite": "Voramar", "valeur": "mer Méditerranée"}
+{"entite": "Vrysoudia Beach, Paphos", "valeur": "mer Méditerranée"}
+{"entite": "Wadahama Beach", "valeur": "baie de Suruga"}
+{"entite": "Waikanae Beach", "valeur": "baie de la Pauvreté"}
+{"entite": "Wainui Beach", "valeur": "océan Pacifique"}
+{"entite": "Waiōhewa Beach", "valeur": "lac Rotorua"}
+{"entite": "Waiomanu Beach", "valeur": "détroit de Tamaki"}
+{"entite": "Waiotahe Beach", "valeur": "baie de l'Abondance"}
+{"entite": "Wairere Beach", "valeur": "océan Pacifique"}
+{"entite": "Warmhouse Beach", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Well's Bay", "valeur": "mer des Caraïbes"}
+{"entite": "West Ruggedy Beach", "valeur": "détroit de Foveaux"}
+{"entite": "Western Beach", "valeur": "Baie d'Algésiras"}
+{"entite": "White Beach", "valeur": "Détroit de Tablas"}
+{"entite": "Widow's Beach", "valeur": "océan Atlantique"}
+{"entite": "Wilson Creek Beach", "valeur": "océan Paciﬁque nord"}
+{"entite": "Windlass Bight", "valeur": "mer des Caraïbes"}
+{"entite": "Woodman Spit", "valeur": "détroit de Cockburn"}
+{"entite": "Worsley Beach", "valeur": "océan Atlantique Sud"}
+{"entite": "Xeraco", "valeur": "mer Méditerranée"}
+{"entite": "Yagry", "valeur": "mer Blanche"}
+{"entite": "Yellow Banks", "valeur": "océan Paciﬁque nord"}
+{"entite": "Yuigahama", "valeur": "baie de Sagami"}
+{"entite": "Yumigahama Beach", "valeur": "mer de Sagami"}
+{"entite": "Zabala Beach", "valeur": "río de la Plata"}
+{"entite": "Zaimokuza", "valeur": "baie de Sagami"}
+{"entite": "Zakątek wodny Trzebuskie Łęgi", "valeur": "lac de Dąbie"}
+{"entite": "Zashchitnaya Spit", "valeur": "mer des Laptev"}
+{"entite": "Zenitz", "valeur": "océan Atlantique Nord"}
+{"entite": "Zlatni Rat", "valeur": "mer Adriatique"}
+{"entite": "Zolotyi Bereh Beach", "valeur": "mer Noire"}
+{"entite": "Zona banys Fòrum", "valeur": "mer Méditerranée"}
+{"entite": "Zrće", "valeur": "mer Adriatique"}

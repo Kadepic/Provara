@@ -1,0 +1,4 @@
+{"_relation": "role_classe_lipide", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (classe de lipide -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cire", "valeur": "protection imperméable"}
+{"entite": "phospholipide", "valeur": "constituant des membranes cellulaires"}
+{"entite": "triglycéride", "valeur": "réserve d'énergie"}

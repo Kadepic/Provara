@@ -1,0 +1,4 @@
+{"_relation": "definition_categorie_aliment", "_categorie": "physique", "_source": "Modèle (Claude) — nutrition textbook curée (catégorie d'aliment -> rôle ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aliment bâtisseur", "valeur": "construit et renouvelle les tissus"}
+{"entite": "aliment énergétique", "valeur": "fournit de l'énergie"}
+{"entite": "aliment protecteur", "valeur": "régule le fonctionnement de l'organisme"}

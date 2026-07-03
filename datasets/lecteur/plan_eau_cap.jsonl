@@ -1,0 +1,874 @@
+{"_relation": "plan_eau_cap", "_categorie": "physique", "_source": "Wikidata/QLever — plan_eau_cap P206, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Achill Head", "valeur": "océan Atlantique"}
+{"entite": "Akamas", "valeur": "mer Méditerranée"}
+{"entite": "Alexander Cape", "valeur": "baie de Sébastopol"}
+{"entite": "Alki Point", "valeur": "Puget Sound"}
+{"entite": "Alturlie Point", "valeur": "Moray Firth"}
+{"entite": "An Ceannaich", "valeur": "The Minch"}
+{"entite": "Anapa Cape", "valeur": "mer Noire"}
+{"entite": "Anderson Point", "valeur": "océan Pacifique"}
+{"entite": "Angeles Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Antarctic Point", "valeur": "océan Atlantique"}
+{"entite": "Antzoriz", "valeur": "golfe de Gascogne"}
+{"entite": "Apple Cove Point", "valeur": "Puget Sound"}
+{"entite": "Ardmore Point", "valeur": "Dornoch Firth"}
+{"entite": "Aspasia Point", "valeur": "océan Atlantique"}
+{"entite": "Ayock Point", "valeur": "canal Hood"}
+{"entite": "Ayres Point", "valeur": "canal Hood"}
+{"entite": "Baada Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Balcary Point", "valeur": "Solway Firth"}
+{"entite": "Barff Point", "valeur": "océan Atlantique"}
+{"entite": "Barnes Point", "valeur": "lac Crescent"}
+{"entite": "Barth Head", "valeur": "Pentland Firth"}
+{"entite": "Battle Point", "valeur": "lac Leech"}
+{"entite": "Beach Point", "valeur": "océan Atlantique"}
+{"entite": "Beachy Head", "valeur": "Manche"}
+{"entite": "Beans Point", "valeur": "Puget Sound"}
+{"entite": "Beg er Skeul", "valeur": "océan Atlantique"}
+{"entite": "Bellingshausen Point", "valeur": "océan Atlantique"}
+{"entite": "Bely Navolok", "valeur": "Varangerfjord"}
+{"entite": "Bensons Point", "valeur": "lac Ozette"}
+{"entite": "Bentenjima", "valeur": "mer du Japon"}
+{"entite": "Berry Head", "valeur": "Manche"}
+{"entite": "Besov Nos", "valeur": "lac Onega"}
+{"entite": "Bill Point", "valeur": "Puget Sound"}
+{"entite": "Birch Point", "valeur": "détroit de Géorgie"}
+{"entite": "Birkestol Point", "valeur": "lac Ozette"}
+{"entite": "Biz Point", "valeur": "détroit de Rosario"}
+{"entite": "Black Point", "valeur": "canal Hood"}
+{"entite": "Black Rock", "valeur": "Grand Lac Salé"}
+{"entite": "Blossom Point", "valeur": "mer de Sibérie orientale"}
+{"entite": "Borley Point", "valeur": "mer de la Scotia"}
+{"entite": "Bov Point", "valeur": "océan Austral"}
+{"entite": "Braces Point", "valeur": "mer de la Scotia"}
+{"entite": "Bracketts Point", "valeur": "lac Minnetonka"}
+{"entite": "Brookfield Point", "valeur": "fleuve Columbia"}
+{"entite": "Brookwood Point", "valeur": "lac Otsego"}
+{"entite": "Brow Head", "valeur": "océan Atlantique"}
+{"entite": "Brown Point", "valeur": "canal Hood"}
+{"entite": "Browns Point", "valeur": "océan Paciﬁque nord"}
+{"entite": "Buniada Point", "valeur": "océan Atlantique"}
+{"entite": "Bush Point", "valeur": "Puget Sound"}
+{"entite": "Bykov Cape", "valeur": "mer des Laptev"}
+{"entite": "Cà Mau Peninsula", "valeur": "mer de Chine méridionale"}
+{"entite": "Cabo Blanco (Argentine)", "valeur": "océan Atlantique"}
+{"entite": "Cabo Catoche", "valeur": "golfe du Mexique"}
+{"entite": "Cabo da Roca", "valeur": "océan Atlantique"}
+{"entite": "Cabo de Fareonim", "valeur": "mer Méditerranée"}
+{"entite": "Cabo de Gata", "valeur": "mer Méditerranée"}
+{"entite": "Cabo de Gracia", "valeur": "détroit de Gibraltar"}
+{"entite": "Cabo de Peñas", "valeur": "mer Cantabrique"}
+{"entite": "Cabo de Santa Maria", "valeur": "ria Formosa"}
+{"entite": "Cabo de São Tomé", "valeur": "océan Atlantique"}
+{"entite": "Cabo do Monte", "valeur": "mer Méditerranée"}
+{"entite": "Cabo Engaño", "valeur": "océan Atlantique"}
+{"entite": "Cabo Inhaca", "valeur": "baie de Maputo"}
+{"entite": "Cabo Mondego", "valeur": "océan Atlantique"}
+{"entite": "Cabo Quejo", "valeur": "golfe de Gascogne"}
+{"entite": "Cabo Raso", "valeur": "océan Atlantique"}
+{"entite": "Cabo Sacratif", "valeur": "mer Méditerranée"}
+{"entite": "Cabo Sardão", "valeur": "océan Atlantique"}
+{"entite": "Cabo Tres Puntas", "valeur": "golfe San Jorge"}
+{"entite": "Cabo Vidio", "valeur": "mer Cantabrique"}
+{"entite": "cap Abu", "valeur": "océan Pacifique"}
+{"entite": "cap Adare", "valeur": "mer de Ross"}
+{"entite": "cap Afrique", "valeur": "mer Méditerranée"}
+{"entite": "cap Akritas", "valeur": "mer Ionienne"}
+{"entite": "cap Alava", "valeur": "océan Pacifique"}
+{"entite": "cap Alexander", "valeur": "baie de Baffin"}
+{"entite": "cap Angela", "valeur": "mer Méditerranée"}
+{"entite": "cap Aniva", "valeur": "mer d'Okhotsk"}
+{"entite": "cap Ann", "valeur": "océan Atlantique"}
+{"entite": "cap Ashizuri", "valeur": "mer des Philippines"}
+{"entite": "cap Auguste", "valeur": "océan Indien"}
+{"entite": "cap Baba", "valeur": "mer Égée"}
+{"entite": "cap Bas", "valeur": "océan Indien"}
+{"entite": "cap Bellefin", "valeur": "baie Shark"}
+{"entite": "cap Bellone", "valeur": "océan Indien"}
+{"entite": "cap Bénat", "valeur": "mer Méditerranée"}
+{"entite": "cap Bernard", "valeur": "océan Indien"}
+{"entite": "cap Blanc-Nez", "valeur": "Manche"}
+{"entite": "cap Blanco", "valeur": "océan Pacifique"}
+{"entite": "cap Bleu", "valeur": "océan Atlantique Nord"}
+{"entite": "cap Blomidon", "valeur": "bassin des Mines"}
+{"entite": "cap Bon", "valeur": "golfe de Tunis"}
+{"entite": "cap Boucan Canot", "valeur": "océan Indien"}
+{"entite": "cap Boujdour", "valeur": "océan Atlantique"}
+{"entite": "cap Boullanger", "valeur": "mer de Tasman"}
+{"entite": "cap Busena", "valeur": "mer de Chine orientale"}
+{"entite": "cap Caccia", "valeur": "mer Méditerranée"}
+{"entite": "cap Camarat", "valeur": "mer Méditerranée"}
+{"entite": "cap Camarón", "valeur": "océan Atlantique"}
+{"entite": "cap Canaveral", "valeur": "océan Atlantique"}
+{"entite": "cap Carbon", "valeur": "mer Méditerranée"}
+{"entite": "cap Carbonara", "valeur": "golfe de Cagliari"}
+{"entite": "cap Carvoeiro", "valeur": "océan Atlantique"}
+{"entite": "cap Chaunar", "valeur": "océan Atlantique"}
+{"entite": "cap Chelagski", "valeur": "mer de Sibérie orientale"}
+{"entite": "cap Chélidonia", "valeur": "golfe d'Antalya"}
+{"entite": "cap Chidley", "valeur": "mer du Labrador"}
+{"entite": "cap Colbeck", "valeur": "mer de Ross"}
+{"entite": "cap Comorin", "valeur": "mer des Laquedives"}
+{"entite": "cap Corbeau", "valeur": "océan Atlantique Nord"}
+{"entite": "cap Cornwall", "valeur": "océan Atlantique"}
+{"entite": "cap Correntes", "valeur": "canal du Mozambique"}
+{"entite": "cap Corse", "valeur": "mer ligure"}
+{"entite": "cap Couronne", "valeur": "mer Méditerranée"}
+{"entite": "cap Crillon", "valeur": "mer d'Okhotsk"}
+{"entite": "cap Croisette", "valeur": "mer Méditerranée"}
+{"entite": "cap Cruz", "valeur": "mer des Caraïbes"}
+{"entite": "cap d'Afrique", "valeur": "mer de Béring"}
+{"entite": "cap d'Aguilar", "valeur": "mer de Chine méridionale"}
+{"entite": "cap d'Ajo", "valeur": "océan Atlantique"}
+{"entite": "cap d'Ambre", "valeur": "océan Indien"}
+{"entite": "cap d'Antibes", "valeur": "mer Méditerranée"}
+{"entite": "cap d'Antifer", "valeur": "Manche"}
+{"entite": "cap d'Erquy", "valeur": "Manche"}
+{"entite": "cap d'Espoir", "valeur": "océan Atlantique"}
+{"entite": "cap d'Iria", "valeur": "golfe Argolique"}
+{"entite": "cap d'Ogoño", "valeur": "golfe de Gascogne"}
+{"entite": "cap d'Otrante", "valeur": "mer Adriatique"}
+{"entite": "cap Daiō", "valeur": "océan Pacifique"}
+{"entite": "cap de Carnsore", "valeur": "mer d'Irlande"}
+{"entite": "cap de Carteret", "valeur": "Manche"}
+{"entite": "cap de Creus", "valeur": "mer Méditerranée"}
+{"entite": "cap de Croix", "valeur": "baie de Marseille"}
+{"entite": "cap de Fer", "valeur": "mer Méditerranée"}
+{"entite": "cap de Formentor", "valeur": "mer Méditerranée"}
+{"entite": "cap de l'eau", "valeur": "mer Méditerranée"}
+{"entite": "cap de la Chèvre", "valeur": "mer d'Iroise"}
+{"entite": "cap de la Estaca de Bares", "valeur": "mer Cantabrique"}
+{"entite": "cap de la Vela", "valeur": "océan Atlantique"}
+{"entite": "cap de Pertusato", "valeur": "Bouches de Bonifacio"}
+{"entite": "cap de Rodon", "valeur": "mer Adriatique"}
+{"entite": "cap de Salou", "valeur": "mer Méditerranée"}
+{"entite": "Cap de Sant Sebastià", "valeur": "mer Méditerranée"}
+{"entite": "cap de Trafalgar", "valeur": "océan Atlantique"}
+{"entite": "cap Dejnev", "valeur": "détroit de Béring"}
+{"entite": "cap Denbigh", "valeur": "Norton Sound"}
+{"entite": "cap Denison", "valeur": "océan Austral"}
+{"entite": "cap des Mèdes", "valeur": "mer Méditerranée"}
+{"entite": "cap des Palmes", "valeur": "océan Atlantique"}
+{"entite": "cap des Trois Fourches", "valeur": "mer d'Alboran"}
+{"entite": "cap des Trois-Pointes", "valeur": "océan Atlantique"}
+{"entite": "cap des Vierges", "valeur": "océan Atlantique"}
+{"entite": "cap Disappointment (Washington)", "valeur": "océan Pacifique"}
+{"entite": "cap Domingo", "valeur": "mer d'Argentine"}
+{"entite": "cap du cercle rouge", "valeur": "mer de Chine orientale"}
+{"entite": "cap du Hode", "valeur": "estuaire de la Seine"}
+{"entite": "cap du Nid à l'Aigle", "valeur": "océan Atlantique Nord"}
+{"entite": "cap du Portail", "valeur": "océan Indien"}
+{"entite": "cap du Saint-Esprit", "valeur": "océan Atlantique"}
+{"entite": "cap du Sud-Est", "valeur": "océan Indien"}
+{"entite": "cap Dufferin", "valeur": "baie d'Hudson"}
+{"entite": "cap Élisabeth", "valeur": "mer d'Okhotsk"}
+{"entite": "cap Eluanbi", "valeur": "océan Pacifique"}
+{"entite": "cap Éminé", "valeur": "mer Noire"}
+{"entite": "cap Erimo", "valeur": "océan Pacifique"}
+{"entite": "cap Erris", "valeur": "océan Atlantique"}
+{"entite": "cap Falso", "valeur": "océan Atlantique"}
+{"entite": "cap Farewell", "valeur": "mer de Tasman"}
+{"entite": "cap Farvel", "valeur": "océan Atlantique"}
+{"entite": "cap Ferret", "valeur": "océan Atlantique"}
+{"entite": "cap Finisterre", "valeur": "océan Atlantique"}
+{"entite": "cap Flattery", "valeur": "océan Pacifique"}
+{"entite": "cap Fligely", "valeur": "océan Arctique"}
+{"entite": "cap Flissingski", "valeur": "océan Arctique"}
+{"entite": "cap Fréhel", "valeur": "Manche"}
+{"entite": "cap Froward", "valeur": "détroit de Magellan"}
+{"entite": "cap Fugui", "valeur": "océan Pacifique"}
+{"entite": "cap Gardafui", "valeur": "golfe d'Aden"}
+{"entite": "cap Ghir", "valeur": "océan Atlantique"}
+{"entite": "cap Gimi", "valeur": "océan Pacifique"}
+{"entite": "cap Ginan", "valeur": "océan Pacifique"}
+{"entite": "cap Girão", "valeur": "océan Atlantique"}
+{"entite": "cap Goven", "valeur": "mer de Béring"}
+{"entite": "cap Greco", "valeur": "mer Méditerranée"}
+{"entite": "cap Gris-Nez", "valeur": "pas de Calais"}
+{"entite": "cap Hallett", "valeur": "mer de Ross"}
+{"entite": "cap Hatteras", "valeur": "océan Atlantique"}
+{"entite": "cap Hedo", "valeur": "océan Pacifique"}
+{"entite": "cap Helles", "valeur": "mer Égée"}
+{"entite": "cap Henlopen", "valeur": "océan Atlantique"}
+{"entite": "cap Henoko", "valeur": "mer des Philippines"}
+{"entite": "cap Higuer", "valeur": "golfe de Gascogne"}
+{"entite": "cap Hijiri", "valeur": "baie de Hiroshima"}
+{"entite": "cap Hirakubo", "valeur": "mer de Chine orientale"}
+{"entite": "cap Homard", "valeur": "océan Indien"}
+{"entite": "cap Horn", "valeur": "passage de Drake"}
+{"entite": "cap Idokopas", "valeur": "mer Noire"}
+{"entite": "cap Irago", "valeur": "océan Pacifique"}
+{"entite": "cap Iri", "valeur": "mer de Chine orientale"}
+{"entite": "cap Janet", "valeur": "rade de Marseille"}
+{"entite": "cap Jaune", "valeur": "océan Indien"}
+{"entite": "cap Jelania", "valeur": "mer de Kara"}
+{"entite": "cap Juby", "valeur": "océan Atlantique"}
+{"entite": "cap Kamenjak", "valeur": "mer Adriatique"}
+{"entite": "cap Kamitcitee", "valeur": "lac Kempt"}
+{"entite": "cap Kamui", "valeur": "mer du Japon"}
+{"entite": "cap Kannon", "valeur": "chenal d'Uraga"}
+{"entite": "cap Kohlsaat", "valeur": "mer de Kara"}
+{"entite": "cap Kumukahi", "valeur": "océan Pacifique"}
+{"entite": "cap la Houssaye", "valeur": "océan Indien"}
+{"entite": "cap la Marianne", "valeur": "océan Indien"}
+{"entite": "cap Lardier", "valeur": "mer Méditerranée"}
+{"entite": "cap Lesueur", "valeur": "baie Shark"}
+{"entite": "cap Linné", "valeur": "mer du Groenland"}
+{"entite": "cap Long", "valeur": "océan Indien"}
+{"entite": "cap Lopatka", "valeur": "mer d'Okhotsk"}
+{"entite": "cap Maeda", "valeur": "mer de Chine orientale"}
+{"entite": "cap Mala", "valeur": "golfe de Panama"}
+{"entite": "cap Malabata", "valeur": "océan Atlantique Nord"}
+{"entite": "cap Malée", "valeur": "mer Méditerranée"}
+{"entite": "cap Mariato", "valeur": "golfe de Chiriquí"}
+{"entite": "cap Maringouin", "valeur": "baie de Fundy"}
+{"entite": "cap Masoala", "valeur": "océan Indien"}
+{"entite": "cap Matxitxako", "valeur": "golfe de Gascogne"}
+{"entite": "cap Méchant", "valeur": "océan Indien"}
+{"entite": "cap Mendocino", "valeur": "océan Pacifique"}
+{"entite": "cap Misène", "valeur": "mer Tyrrhénienne"}
+{"entite": "cap Morgiou", "valeur": "mer Méditerranée"}
+{"entite": "cap Negrais", "valeur": "mer d'Andaman"}
+{"entite": "cap Nègre", "valeur": "mer Méditerranée"}
+{"entite": "cap Negro", "valeur": "mer Méditerranée"}
+{"entite": "cap Noir", "valeur": "océan Atlantique Nord"}
+{"entite": "cap Nord", "valeur": "mer de Norvège"}
+{"entite": "cap Nordkinn", "valeur": "mer de Barents"}
+{"entite": "cap Norfeu", "valeur": "golfe de Roses"}
+{"entite": "cap Olioutorski", "valeur": "mer de Béring"}
+{"entite": "cap Omae", "valeur": "océan Pacifique"}
+{"entite": "cap Orange", "valeur": "océan Atlantique"}
+{"entite": "cap Otway", "valeur": "Grande baie australienne"}
+{"entite": "cap Outkholoktski", "valeur": "mer d'Okhotsk"}
+{"entite": "cap Palinuro", "valeur": "mer Tyrrhénienne"}
+{"entite": "cap Parry", "valeur": "golfe d'Amundsen"}
+{"entite": "cap Passero", "valeur": "mer Méditerranée"}
+{"entite": "cap Peloro", "valeur": "mer Ionienne"}
+{"entite": "cap Percé", "valeur": "océan Atlantique Nord"}
+{"entite": "cap Péron", "valeur": "baie Shark"}
+{"entite": "cap Perpetua", "valeur": "océan Pacifique"}
+{"entite": "cap Piai", "valeur": "détroit de Malacca"}
+{"entite": "cap Pinède", "valeur": "rade de Marseille"}
+{"entite": "cap Poinsett", "valeur": "océan Austral"}
+{"entite": "cap Possession", "valeur": "détroit de Magellan"}
+{"entite": "cap Prince-de-Galles", "valeur": "détroit de Béring"}
+{"entite": "cap Race", "valeur": "océan Atlantique"}
+{"entite": "cap Redon", "valeur": "calanque de Sormiou"}
+{"entite": "cap Reinga", "valeur": "océan Pacifique"}
+{"entite": "cap Romano", "valeur": "mer des Caraïbes"}
+{"entite": "cap Rond", "valeur": "océan Indien"}
+{"entite": "cap Sable (Floride)", "valeur": "golfe du Mexique"}
+{"entite": "cap Sada", "valeur": "détroit de Hōyo"}
+{"entite": "cap Saint-Cricq", "valeur": "océan Indien"}
+{"entite": "cap Saint-Ignace", "valeur": "fleuve Saint-Laurent"}
+{"entite": "cap Saint Roque", "valeur": "océan Atlantique"}
+{"entite": "cap Saint-Vincent", "valeur": "océan Atlantique"}
+{"entite": "cap San Antonio", "valeur": "mer des Caraïbes"}
+{"entite": "cap San Diego", "valeur": "océan Atlantique"}
+{"entite": "cap San Juan de Salvamento", "valeur": "mer d'Argentine"}
+{"entite": "cap San Pablo", "valeur": "mer d'Argentine"}
+{"entite": "cap San Pío", "valeur": "océan Atlantique"}
+{"entite": "cap Santiago", "valeur": "océan Pacifique"}
+{"entite": "cap Serdtse-Kamen", "valeur": "mer des Tchouktches"}
+{"entite": "cap Serrat", "valeur": "mer Méditerranée"}
+{"entite": "cap Sheridan", "valeur": "mer de Lincoln"}
+{"entite": "cap Shiono", "valeur": "océan Pacifique"}
+{"entite": "cap Sicié", "valeur": "mer Méditerranée"}
+{"entite": "cap Sídheros", "valeur": "mer de Crète"}
+{"entite": "cap Sizun", "valeur": "océan Atlantique"}
+{"entite": "cap Sōya", "valeur": "détroit de La Pérouse"}
+{"entite": "cap Spartel", "valeur": "océan Atlantique"}
+{"entite": "cap Split", "valeur": "baie de Fundy"}
+{"entite": "cap St Charles", "valeur": "océan Atlantique"}
+{"entite": "cap St. Francis", "valeur": "océan Atlantique"}
+{"entite": "cap Sunosaki", "valeur": "océan Pacifique"}
+{"entite": "cap Taillat", "valeur": "mer Méditerranée"}
+{"entite": "cap Tcheliouskine", "valeur": "mer de Kara"}
+{"entite": "cap Ténare", "valeur": "mer Égée"}
+{"entite": "cap Ténès", "valeur": "mer Méditerranée"}
+{"entite": "cap Tennyson", "valeur": "mer de Ross"}
+{"entite": "cap Terpenia", "valeur": "mer d'Okhotsk"}
+{"entite": "cap Todo", "valeur": "océan Pacifique"}
+{"entite": "cap Toi", "valeur": "océan Pacifique"}
+{"entite": "cap Touriñan", "valeur": "océan Atlantique"}
+{"entite": "cap Tres Puntas", "valeur": "océan Atlantique"}
+{"entite": "cap Vakop", "valeur": "océan Atlantique"}
+{"entite": "cap Vilda", "valeur": "mer de Kara"}
+{"entite": "cap Washington", "valeur": "mer de Ross"}
+{"entite": "cap Wolstenholme", "valeur": "détroit d'Hudson"}
+{"entite": "cap Wrath", "valeur": "océan Atlantique"}
+{"entite": "cap York", "valeur": "océan Atlantique"}
+{"entite": "cap York (Australie)", "valeur": "détroit de Torrès"}
+{"entite": "cap Zanpa", "valeur": "mer de Chine orientale"}
+{"entite": "cap Zebib", "valeur": "mer Méditerranée"}
+{"entite": "Cape Amagozen", "valeur": "mer du Japon"}
+{"entite": "Cape Benten", "valeur": "océan Pacifique"}
+{"entite": "Cape Berg", "valeur": "mer des Laptev"}
+{"entite": "Cape Best", "valeur": "océan Atlantique"}
+{"entite": "Cape Billings", "valeur": "mer de Sibérie orientale"}
+{"entite": "Cape Biosnar", "valeur": "golfe de Gascogne"}
+{"entite": "Cape Biot", "valeur": "mer du Groenland"}
+{"entite": "Cape Brewster", "valeur": "mer du Groenland"}
+{"entite": "Cape Buller", "valeur": "océan Atlantique"}
+{"entite": "Cape Buor-Khaya", "valeur": "mer des Laptev"}
+{"entite": "Cape Bystrova", "valeur": "océan Arctique"}
+{"entite": "Cape Cà Mau", "valeur": "mer de Chine méridionale"}
+{"entite": "Cape Chaljoeskin", "valeur": "mer de Béring"}
+{"entite": "Cape Charlotte", "valeur": "océan Atlantique"}
+{"entite": "Cape Chashikotsu", "valeur": "mer d'Okhotsk"}
+{"entite": "Cape Chukotsky", "valeur": "mer de Béring"}
+{"entite": "Cape Darnley", "valeur": "océan Atlantique"}
+{"entite": "Cape Demidov", "valeur": "océan Atlantique"}
+{"entite": "Cape Disappointment", "valeur": "océan Atlantique"}
+{"entite": "Cape Dyer", "valeur": "détroit de Davis"}
+{"entite": "Cape Elizabeth", "valeur": "océan Paciﬁque nord"}
+{"entite": "Cape Engaño", "valeur": "océan Pacifique"}
+{"entite": "Cape Espiritu Santo", "valeur": "océan Pacifique"}
+{"entite": "Cape Fear", "valeur": "océan Atlantique"}
+{"entite": "Cape Flannery", "valeur": "mer de la Scotia"}
+{"entite": "Cape Flattery", "valeur": "mer de Corail"}
+{"entite": "Cape George", "valeur": "détroit de Northumberland"}
+{"entite": "Cape Gyōbu", "valeur": "océan Pacifique"}
+{"entite": "Cape Hachiman", "valeur": "océan Pacifique"}
+{"entite": "Cape Hado", "valeur": "mer de Genkai"}
+{"entite": "Cape Hagachi", "valeur": "baie de Suruga"}
+{"entite": "Cape Harcourt", "valeur": "océan Atlantique"}
+{"entite": "Cape Hinomisaki", "valeur": "canal de Kii"}
+{"entite": "Cape Hooper", "valeur": "détroit de Davis"}
+{"entite": "Cape Hotoke", "valeur": "baie de Beppu"}
+{"entite": "Cape Iwai", "valeur": "océan Pacifique"}
+{"entite": "Cape Jizō", "valeur": "mer du Japon"}
+{"entite": "Cape Johnson", "valeur": "océan Paciﬁque nord"}
+{"entite": "Cape Kadokura", "valeur": "mer des Philippines"}
+{"entite": "Cape Kadowaki", "valeur": "mer de Sagami"}
+{"entite": "Cape Kandori", "valeur": "mer de Kumano"}
+{"entite": "Cape Kasa", "valeur": "mer du Japon"}
+{"entite": "Cape Kayano", "valeur": "baie de Sendai"}
+{"entite": "Cape Kin", "valeur": "mer des Philippines"}
+{"entite": "Cape Kishika", "valeur": "Détroit d'Osumi"}
+{"entite": "Cape Kitami Kamui", "valeur": "mer d'Okhotsk"}
+{"entite": "Cape Kogane", "valeur": "baie de Suruga"}
+{"entite": "Cape Kolbeh Hur", "valeur": "golfe Persique"}
+{"entite": "Cape Kolka", "valeur": "détroit d'Irbe"}
+{"entite": "Cape Kormakitis", "valeur": "mer Méditerranée"}
+{"entite": "Cape Koyurugi", "valeur": "baie de Sagami"}
+{"entite": "Cape Langeron", "valeur": "golfe d'Odessa"}
+{"entite": "Cape Layar", "valeur": "détroit de la Sonde"}
+{"entite": "Cape Levenshtern", "valeur": "mer d'Okhotsk"}
+{"entite": "Cape Longing", "valeur": "océan Austral"}
+{"entite": "Cape Maria van Diemen", "valeur": "mer de Tasman"}
+{"entite": "Cape Mary Harmsworth", "valeur": "mer de Barents"}
+{"entite": "Cape Matsuho", "valeur": "détroit d'Akashi"}
+{"entite": "Cape Mihama", "valeur": "baie de Suruga"}
+{"entite": "Cape Misaki", "valeur": "mer de Harima"}
+{"entite": "Cape Muzon", "valeur": "Entrée Dixon"}
+{"entite": "Cape Myōgane", "valeur": "chenal d'Uraga"}
+{"entite": "Cape Navarin", "valeur": "mer de Béring"}
+{"entite": "Cape Neupokoyev", "valeur": "mer de Kara"}
+{"entite": "Cape Norvegia", "valeur": "mer de Weddell"}
+{"entite": "Cape Noshappu", "valeur": "détroit de La Pérouse"}
+{"entite": "Cape Nuñez", "valeur": "océan Atlantique"}
+{"entite": "Cape of Mandello", "valeur": "lac de Côme"}
+{"entite": "Cape Ōkubo", "valeur": "baie de Suruga"}
+{"entite": "Cape Oscar", "valeur": "mer de Kara"}
+{"entite": "Cape Ose", "valeur": "baie de Suruga"}
+{"entite": "Cape Oshinkoshin", "valeur": "mer d'Okhotsk"}
+{"entite": "Cape Paryadin", "valeur": "océan Atlantique"}
+{"entite": "Cape Pogibi", "valeur": "détroit de Tartarie"}
+{"entite": "Cape Puyuni", "valeur": "mer d'Okhotsk"}
+{"entite": "Cape Ray", "valeur": "détroit de Cabot"}
+{"entite": "Cape Roxo", "valeur": "océan Atlantique"}
+{"entite": "Cape Rozewie", "valeur": "mer Baltique"}
+{"entite": "Cape Sabine", "valeur": "détroit de Nares"}
+{"entite": "Cape Saint Elias", "valeur": "océan Pacifique"}
+{"entite": "cape San Román", "valeur": "mer des Caraïbes"}
+{"entite": "Cape Sant Antoni, Spain", "valeur": "golfe de Valence"}
+{"entite": "Cape Schmidt", "valeur": "mer de Sibérie orientale"}
+{"entite": "Cape Shirakami", "valeur": "détroit de Tsugaru"}
+{"entite": "Cape Shirreff", "valeur": "océan Austral"}
+{"entite": "Cape Shoalwater", "valeur": "océan Pacifique"}
+{"entite": "Cape Simpson", "valeur": "mer du Groenland"}
+{"entite": "Cape Sosunov", "valeur": "détroit de Tartarie"}
+{"entite": "Cape Sterligov", "valeur": "mer de Kara"}
+{"entite": "Cape Strelka", "valeur": "Kama"}
+{"entite": "Cape Svyatoy Nos", "valeur": "mer des Laptev"}
+{"entite": "Cape Tachimachi", "valeur": "détroit de Tsugaru"}
+{"entite": "Cape Taibusa", "valeur": "chenal d'Uraga"}
+{"entite": "Cape Taitō", "valeur": "océan Pacifique"}
+{"entite": "Cape Takana", "valeur": "mer des Philippines"}
+{"entite": "Cape Takura", "valeur": "détroit de Kitan"}
+{"entite": "Cape Teulada", "valeur": "mer Tyrrhénienne"}
+{"entite": "Cape Tizengauzen", "valeur": "océan Arctique"}
+{"entite": "Cape Tsumeki", "valeur": "mer de Sagami"}
+{"entite": "Cape Tuzla", "valeur": "détroit de Kertch"}
+{"entite": "Cape Unoo", "valeur": "océan Pacifique"}
+{"entite": "Cape Unslicht", "valeur": "mer des Laptev"}
+{"entite": "Cape Vankarem", "valeur": "mer des Tchouktches"}
+{"entite": "Cape Vega", "valeur": "mer de Kara"}
+{"entite": "Cape Villano", "valeur": "océan Atlantique"}
+{"entite": "Cape Wada", "valeur": "port de Kobé"}
+{"entite": "Cape Walsingham", "valeur": "détroit de Davis"}
+{"entite": "Cape Wilson", "valeur": "océan Atlantique"}
+{"entite": "Cape Yakan", "valeur": "mer de Sibérie orientale"}
+{"entite": "Capelinhos", "valeur": "océan Atlantique"}
+{"entite": "Capo Bianco", "valeur": "mer Méditerranée"}
+{"entite": "Capo Boeo", "valeur": "mer Méditerranée"}
+{"entite": "Capo Calavà", "valeur": "mer Tyrrhénienne"}
+{"entite": "Capo di Milazzo", "valeur": "mer Tyrrhénienne"}
+{"entite": "Capo San Vito", "valeur": "mer Tyrrhénienne"}
+{"entite": "Capo Santa Panagia", "valeur": "mer Ionienne"}
+{"entite": "Capo Spartivento", "valeur": "mer Méditerranée"}
+{"entite": "Capo Spulico", "valeur": "mer Ionienne"}
+{"entite": "Capo Testa", "valeur": "Bouches de Bonifacio"}
+{"entite": "Carambis", "valeur": "mer Noire"}
+{"entite": "Carey Point", "valeur": "mer de la Scotia"}
+{"entite": "Carter Point", "valeur": "baie de Bellingham"}
+{"entite": "Casco Point", "valeur": "lac Minnetonka"}
+{"entite": "Caye Bokel", "valeur": "mer des Caraïbes"}
+{"entite": "Cedar Point", "valeur": "lac Crescent"}
+{"entite": "Cemetery Point", "valeur": "lac Ozette"}
+{"entite": "Cherry Point", "valeur": "détroit de Géorgie"}
+{"entite": "Chinom Point", "valeur": "canal Hood"}
+{"entite": "Chinstrap Point", "valeur": "mer de la Scotia"}
+{"entite": "Clark Point", "valeur": "détroit de Rosario"}
+{"entite": "Cloch Point", "valeur": "Firth of Clyde"}
+{"entite": "Cougar Spit", "valeur": "canal Hood"}
+{"entite": "Cowhythe Head", "valeur": "Moray Firth"}
+{"entite": "Craig Head", "valeur": "Moray Firth"}
+{"entite": "Crane Point", "valeur": "Port Townsend"}
+{"entite": "Crosscut Point", "valeur": "mer de la Scotia"}
+{"entite": "Crown Point", "valeur": "lac Minnetonka"}
+{"entite": "Cummings Point", "valeur": "canal Hood"}
+{"entite": "Damon Point", "valeur": "Grays Harbor"}
+{"entite": "Dana Point", "valeur": "océan Pacifique"}
+{"entite": "Dartmouth Point", "valeur": "océan Atlantique"}
+{"entite": "Deer Point", "valeur": "lac Ozette"}
+{"entite": "Demon Point", "valeur": "mer de la Scotia"}
+{"entite": "Devil Point", "valeur": "lac Crescent"}
+{"entite": "Diamond Point", "valeur": "baie de Willapa"}
+{"entite": "Dippin Head", "valeur": "Firth of Clyde"}
+{"entite": "Dolgaya Spit", "valeur": "golfe de Taganrog"}
+{"entite": "Dolphin Point", "valeur": "Puget Sound"}
+{"entite": "Dondra Head", "valeur": "océan Indien"}
+{"entite": "Doolie Ness", "valeur": "mer du Nord"}
+{"entite": "Dos de Baleine", "valeur": "océan Indien"}
+{"entite": "Douméra", "valeur": "mer Rouge"}
+{"entite": "Downpatrick Head", "valeur": "océan Atlantique"}
+{"entite": "Dtokoah Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Dyrhólaey", "valeur": "océan Atlantique"}
+{"entite": "Easter Fearn Point", "valeur": "Dornoch Firth"}
+{"entite": "Edwards Point", "valeur": "Puget Sound"}
+{"entite": "Elliot Point", "valeur": "Puget Sound"}
+{"entite": "Elliott Point", "valeur": "fleuve Columbia"}
+{"entite": "Emesiochel", "valeur": "océan Pacifique"}
+{"entite": "Fair Head", "valeur": "canal du Nord"}
+{"entite": "Fern Point", "valeur": "détroit de Rosario"}
+{"entite": "Finger Point", "valeur": "mer de la Scotia"}
+{"entite": "Flèche de Tchouchka", "valeur": "détroit de Kertch"}
+{"entite": "Fontur", "valeur": "mer de Norvège"}
+{"entite": "Fryer Point", "valeur": "mer de la Scotia"}
+{"entite": "Gaydarov Point", "valeur": "océan Austral"}
+{"entite": "Goose Point", "valeur": "baie de Willapa"}
+{"entite": "Governors Point", "valeur": "baie de Bellingham"}
+{"entite": "Grays Point", "valeur": "fleuve Columbia"}
+{"entite": "Hague", "valeur": "Manche"}
+{"entite": "Halukviit", "valeur": "détroit de Dease"}
+{"entite": "Ham Ness", "valeur": "mer du Nord"}
+{"entite": "Harakkasaari", "valeur": "Päijänne"}
+{"entite": "Harker Point", "valeur": "mer de la Scotia"}
+{"entite": "Harper Point", "valeur": "mer de la Scotia"}
+{"entite": "Harpers Corner", "valeur": "Green River"}
+{"entite": "Harrigan Point", "valeur": "lac Crescent"}
+{"entite": "Harrington Point", "valeur": "fleuve Columbia"}
+{"entite": "Hartland Point", "valeur": "canal de Bristol"}
+{"entite": "Hawks Point", "valeur": "baie de Willapa"}
+{"entite": "Hazel Point", "valeur": "canal Hood"}
+{"entite": "Head of Garness", "valeur": "Moray Firth"}
+{"entite": "High Point", "valeur": "baie de Willapa"}
+{"entite": "Hogsback", "valeur": "océan Paciﬁque nord"}
+{"entite": "Hood Point", "valeur": "canal Hood"}
+{"entite": "Hook Point", "valeur": "océan Pacifique"}
+{"entite": "Hope Point", "valeur": "océan Atlantique"}
+{"entite": "Horsburgh Point", "valeur": "mer de la Scotia"}
+{"entite": "Hundipea cape", "valeur": "baie de Tallinn"}
+{"entite": "Icy Cape, Alaska", "valeur": "mer des Tchouktches"}
+{"entite": "Inamuragasaki", "valeur": "baie de Sagami"}
+{"entite": "İnceburun", "valeur": "mer Noire"}
+{"entite": "Indian Head", "valeur": "océan Pacifique"}
+{"entite": "Indian Point", "valeur": "Puget Sound"}
+{"entite": "Ingólfshöfði", "valeur": "océan Atlantique"}
+{"entite": "Irving Point", "valeur": "mer de la Scotia"}
+{"entite": "Jeffries Point", "valeur": "océan Atlantique"}
+{"entite": "Jensen Point", "valeur": "baie de Willapa"}
+{"entite": "Jersted Point", "valeur": "lac Ozette"}
+{"entite": "Kade Point", "valeur": "océan Atlantique"}
+{"entite": "Kaijalanniemi", "valeur": "Palokkajärvi"}
+{"entite": "Käkisaari", "valeur": "lac Oulu"}
+{"entite": "Kakovikha", "valeur": "mer Blanche"}
+{"entite": "Kala Point", "valeur": "Port Townsend"}
+{"entite": "Kaliakra", "valeur": "mer Noire"}
+{"entite": "Kamyshevatskaya Spit", "valeur": "golfe de Taganrog"}
+{"entite": "Kane Point", "valeur": "lac Powell"}
+{"entite": "Karkaussaari", "valeur": "Päijänne"}
+{"entite": "Karvo", "valeur": "baie de Botnie"}
+{"entite": "Kazantyp", "valeur": "mer d'Azov"}
+{"entite": "Kiapot Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Klachopis Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Kladovets Nos", "valeur": "lac Onega"}
+{"entite": "Knivskjellodden", "valeur": "mer de Norvège"}
+{"entite": "Knob Point", "valeur": "mer de la Scotia"}
+{"entite": "Koitlah Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Kolokita", "valeur": "mer Noire"}
+{"entite": "Komysh-Burun", "valeur": "mer d'Azov"}
+{"entite": "Konushin", "valeur": "baie de Mezen"}
+{"entite": "Koryushkin Nos", "valeur": "lac Onega"}
+{"entite": "Kotelnikovsky", "valeur": "lac Baïkal"}
+{"entite": "Kozmin Cape", "valeur": "mer de Sibérie orientale"}
+{"entite": "Kray Sveta", "valeur": "océan Pacifique"}
+{"entite": "Kulakala Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Kydaka Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Kydikabbit Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Lagoon Point", "valeur": "Puget Sound"}
+{"entite": "Land's End", "valeur": "océan Atlantique"}
+{"entite": "Lapoel Point", "valeur": "lac Crescent"}
+{"entite": "Larionov Point", "valeur": "golfe de Pierre-le-Grand"}
+{"entite": "Larsen Point", "valeur": "océan Atlantique"}
+{"entite": "Lernacken", "valeur": "Øresund"}
+{"entite": "Limufuafua Point", "valeur": "océan Pacifique"}
+{"entite": "Little Hogsback", "valeur": "océan Paciﬁque nord"}
+{"entite": "Long Point", "valeur": "canal Hood"}
+{"entite": "Longman Point", "valeur": "Moray Firth"}
+{"entite": "Lover’s Cape", "valeur": "baie de Suruga"}
+{"entite": "Lovers Point", "valeur": "baie de Monterey"}
+{"entite": "Low Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Lower Cedar Point", "valeur": "Potomac"}
+{"entite": "Luck Point", "valeur": "océan Atlantique"}
+{"entite": "Lynn Point", "valeur": "baie de Willapa"}
+{"entite": "Mai Point", "valeur": "océan Atlantique"}
+{"entite": "Malin Head", "valeur": "océan Atlantique"}
+{"entite": "Maple Point", "valeur": "lac Crescent"}
+{"entite": "McCurdy Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Meadow Point", "valeur": "Puget Sound"}
+{"entite": "Meldrim Point", "valeur": "lac Crescent"}
+{"entite": "Mikhaylov Point", "valeur": "mer de la Scotia"}
+{"entite": "Misery Point", "valeur": "canal Hood"}
+{"entite": "Mizen Head", "valeur": "océan Atlantique"}
+{"entite": "Mokotahi", "valeur": "Hawke Bay"}
+{"entite": "Mollarri", "valeur": "océan Atlantique"}
+{"entite": "Monpas", "valeur": "golfe de Gascogne"}
+{"entite": "Moore Point", "valeur": "lac Chelan"}
+{"entite": "Morse Point", "valeur": "océan Atlantique"}
+{"entite": "Moul of Eswick", "valeur": "mer de Norvège"}
+{"entite": "Musqueti Point", "valeur": "canal Hood"}
+{"entite": "Mys Passeka", "valeur": "mer du Japon"}
+{"entite": "Mys Voryema", "valeur": "Varangerfjord"}
+{"entite": "Naattiansaari", "valeur": "Päijänne"}
+{"entite": "Nanguniemi", "valeur": "lac Inari"}
+{"entite": "Nattriss Head", "valeur": "fjord Drygalski"}
+{"entite": "Nattriss Point", "valeur": "mer de la Scotia"}
+{"entite": "Natural Monument \"Raspberry cape\"", "valeur": "Lac Zerendi"}
+{"entite": "Neagle Point", "valeur": "lac Crescent"}
+{"entite": "Needle Point", "valeur": "baie de Willapa"}
+{"entite": "Nemetsky", "valeur": "mer de Barents"}
+{"entite": "Ness of Quoys", "valeur": "Pentland Firth"}
+{"entite": "Neulaniemi", "valeur": "lac Kallavesi"}
+{"entite": "Newton Point", "valeur": "Dornoch Firth"}
+{"entite": "Nez de Jobourg", "valeur": "Manche"}
+{"entite": "Nez de Voidries", "valeur": "Manche"}
+{"entite": "Nooni nukk", "valeur": "lac Võrtsjärv"}
+{"entite": "North Foreland", "valeur": "mer du Nord"}
+{"entite": "North Odesa Cape", "valeur": "golfe d'Odessa"}
+{"entite": "North Taing", "valeur": "mer du Nord"}
+{"entite": "Norwegian Point", "valeur": "Puget Sound"}
+{"entite": "Nuvuttiq", "valeur": "détroit de Davis"}
+{"entite": "O'Meara Point", "valeur": "baie de Willapa"}
+{"entite": "Oak Head", "valeur": "canal Hood"}
+{"entite": "Observatory Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Orchard Point", "valeur": "Puget Sound"}
+{"entite": "Orhinselkä", "valeur": "Miekojärvi"}
+{"entite": "Outshore Point", "valeur": "océan Atlantique Nord"}
+{"entite": "Ovchakovsky Cape", "valeur": "mer Noire"}
+{"entite": "Pacific Point", "valeur": "mer de la Scotia"}
+{"entite": "Padre Point", "valeur": "lac Powell"}
+{"entite": "Paloniemi", "valeur": "Palokkajärvi"}
+{"entite": "Panagiya", "valeur": "détroit de Kertch"}
+{"entite": "Papinniemi", "valeur": "Pyhäjärvi"}
+{"entite": "Paradise Point", "valeur": "baie de Willapa"}
+{"entite": "péninsule de Digby", "valeur": "baie de Fundy"}
+{"entite": "Pervelkos Ragas", "valeur": "lagune de Courlande"}
+{"entite": "Pery Nos", "valeur": "lac Onega"}
+{"entite": "Picnic Point", "valeur": "Puget Sound"}
+{"entite": "Pillar Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Pilot Point", "valeur": "Puget Sound"}
+{"entite": "Plum Point", "valeur": "canal Hood"}
+{"entite": "Point Amour", "valeur": "détroit de Belle Isle"}
+{"entite": "Point Barrow", "valeur": "océan Arctique"}
+{"entite": "Point Bonita", "valeur": "Golden Gate"}
+{"entite": "Point Defiance", "valeur": "détroit de Tacoma"}
+{"entite": "Point Ellice", "valeur": "fleuve Columbia"}
+{"entite": "Point Evans", "valeur": "détroit de Tacoma"}
+{"entite": "Point Hannon", "valeur": "canal Hood"}
+{"entite": "Point Heathcote", "valeur": "Swan"}
+{"entite": "Point Hudson", "valeur": "Port Townsend"}
+{"entite": "Point Jefferson", "valeur": "Puget Sound"}
+{"entite": "Point Judith", "valeur": "lac Otsego"}
+{"entite": "Point Julia", "valeur": "canal Hood"}
+{"entite": "Point New", "valeur": "Grays Harbor"}
+{"entite": "Point No Point", "valeur": "Puget Sound"}
+{"entite": "Point of Arches", "valeur": "océan Paciﬁque nord"}
+{"entite": "Point Partridge", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Point Perpendicular", "valeur": "océan Pacifique"}
+{"entite": "Point Roberts", "valeur": "détroit de Géorgie"}
+{"entite": "Point Southworth", "valeur": "Puget Sound"}
+{"entite": "Point Wells", "valeur": "Puget Sound"}
+{"entite": "Point Whitehorn", "valeur": "détroit de Géorgie"}
+{"entite": "Point Williams", "valeur": "Puget Sound"}
+{"entite": "La Pointe", "valeur": "golfe de Gascogne"}
+{"entite": "pointe à Bigué", "valeur": "océan Atlantique Nord"}
+{"entite": "pointe à Henry", "valeur": "océan Atlantique Nord"}
+{"entite": "pointe ʻĀpua", "valeur": "océan Pacifique"}
+{"entite": "pointe au Cheval", "valeur": "océan Atlantique Nord"}
+{"entite": "Pointe Brigantin", "valeur": "baie de Marseille"}
+{"entite": "Pointe Calimère", "valeur": "golfe de Mannar"}
+{"entite": "pointe d'Arradon", "valeur": "golfe du Morbihan"}
+{"entite": "pointe d'En Tal", "valeur": "golfe de Gascogne"}
+{"entite": "pointe de Balaguier", "valeur": "Rade de Toulon"}
+{"entite": "Pointe de Barfleur", "valeur": "Manche"}
+{"entite": "pointe de Bénance", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Béninz", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Berno", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Bernon", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Bilhervé", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Bois Blanc", "valeur": "océan Indien"}
+{"entite": "pointe de Brannec", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Brouel", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Chassiron", "valeur": "golfe de Gascogne"}
+{"entite": "pointe de Chemoulin", "valeur": "golfe de Gascogne"}
+{"entite": "pointe de Corsen", "valeur": "mer d'Iroise"}
+{"entite": "pointe de Dinan", "valeur": "mer d'Iroise"}
+{"entite": "pointe de Gatseau", "valeur": "océan Atlantique"}
+{"entite": "pointe de Grave", "valeur": "océan Atlantique"}
+{"entite": "pointe de Jardeheu", "valeur": "Manche"}
+{"entite": "pointe de Jerbourg", "valeur": "Manche"}
+{"entite": "pointe de Kerners", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de l'Arcouest", "valeur": "Manche"}
+{"entite": "pointe de l'Espiguette", "valeur": "mer Méditerranée"}
+{"entite": "Pointe de l'Îlot", "valeur": "calanque de l'Oule"}
+{"entite": "pointe de l'Ours", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de la Cayenne", "valeur": "océan Indien"}
+{"entite": "pointe de la Coubre", "valeur": "océan Atlantique"}
+{"entite": "pointe de la Cride", "valeur": "mer Méditerranée"}
+{"entite": "pointe de la Moye", "valeur": "Manche"}
+{"entite": "pointe de la Négade", "valeur": "océan Atlantique"}
+{"entite": "pointe de la Ravine à Malheur", "valeur": "océan Indien"}
+{"entite": "pointe de la Table", "valeur": "océan Indien"}
+{"entite": "pointe de la Varde", "valeur": "Manche"}
+{"entite": "pointe de Langevin", "valeur": "océan Indien"}
+{"entite": "pointe de Liouse", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Locmiquel", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Men-er-Bellec", "valeur": "baie de Quiberon"}
+{"entite": "pointe de Nénézic", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Nioul", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Pen-Hir", "valeur": "mer d'Iroise"}
+{"entite": "pointe de Penbert", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Penchâteau", "valeur": "océan Atlantique"}
+{"entite": "pointe de Perharidy", "valeur": "Manche"}
+{"entite": "pointe de Pern", "valeur": "océan Atlantique"}
+{"entite": "pointe de Pleinmont", "valeur": "Manche"}
+{"entite": "pointe de Rauba-Capeu", "valeur": "mer Méditerranée"}
+{"entite": "pointe de Saint-Nicolas", "valeur": "golfe du Morbihan"}
+{"entite": "Pointe de Sainte-Barbe", "valeur": "golfe de Gascogne"}
+{"entite": "pointe de Savoyard", "valeur": "océan Atlantique"}
+{"entite": "pointe de Suzac", "valeur": "océan Atlantique"}
+{"entite": "pointe de Tarifa", "valeur": "détroit de Gibraltar"}
+{"entite": "pointe de Toulindac", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Toulvern", "valeur": "golfe du Morbihan"}
+{"entite": "pointe de Trévignon", "valeur": "océan Atlantique"}
+{"entite": "pointe de Vallières", "valeur": "océan Atlantique"}
+{"entite": "pointe des Aigrettes", "valeur": "océan Indien"}
+{"entite": "pointe des Almadies", "valeur": "océan Atlantique"}
+{"entite": "Pointe des Corbeaux", "valeur": "golfe de Gascogne"}
+{"entite": "pointe des Émigrés", "valeur": "golfe du Morbihan"}
+{"entite": "pointe des Espagnols", "valeur": "mer d'Iroise"}
+{"entite": "pointe des Galets", "valeur": "océan Indien"}
+{"entite": "pointe des Indiens", "valeur": "lac Pesetone"}
+{"entite": "Pointe des Lombards", "valeur": "baie de Cassis"}
+{"entite": "Pointe des Trois-Bassins", "valeur": "océan Indien"}
+{"entite": "pointe du Béluré", "valeur": "golfe du Morbihan"}
+{"entite": "pointe du Berchis", "valeur": "golfe du Morbihan"}
+{"entite": "pointe du Bill", "valeur": "golfe du Morbihan"}
+{"entite": "pointe du Blair", "valeur": "golfe du Morbihan"}
+{"entite": "pointe du Bréhuidic", "valeur": "golfe du Morbihan"}
+{"entite": "pointe du Cap Vieux", "valeur": "mer Méditerranée"}
+{"entite": "pointe du Castelli", "valeur": "océan Atlantique Nord"}
+{"entite": "pointe du Conguel", "valeur": "baie de Quiberon"}
+{"entite": "Pointe du Corton", "valeur": "baie de Cassis"}
+{"entite": "pointe du Diable", "valeur": "océan Indien"}
+{"entite": "pointe du Diamant", "valeur": "océan Atlantique Nord"}
+{"entite": "pointe du Gouffre", "valeur": "océan Indien"}
+{"entite": "pointe du Grand Brûlé", "valeur": "océan Indien"}
+{"entite": "pointe du Grand Gouin", "valeur": "mer d'Iroise"}
+{"entite": "pointe du Kador", "valeur": "baie de Douarnenez"}
+{"entite": "pointe du Meinga", "valeur": "Manche"}
+{"entite": "pointe du Millier", "valeur": "mer d'Iroise"}
+{"entite": "Pointe du Ouest", "valeur": "océan Atlantique Nord"}
+{"entite": "pointe du Parc", "valeur": "océan Indien"}
+{"entite": "pointe du Raz", "valeur": "mer d'Iroise"}
+{"entite": "pointe du Ruault", "valeur": "golfe du Morbihan"}
+{"entite": "pointe du Seixas", "valeur": "océan Atlantique"}
+{"entite": "Pointe du Soldat", "valeur": "baie de Marseille"}
+{"entite": "pointe du Spernéguy", "valeur": "golfe du Morbihan"}
+{"entite": "pointe du Toulinguet", "valeur": "mer d'Iroise"}
+{"entite": "pointe du Trec'h", "valeur": "golfe du Morbihan"}
+{"entite": "pointe du Tremblet", "valeur": "océan Indien"}
+{"entite": "pointe du Van", "valeur": "mer d'Iroise"}
+{"entite": "pointe Escarpée", "valeur": "océan Indien"}
+{"entite": "pointe Espagnole", "valeur": "océan Atlantique"}
+{"entite": "pointe Frederick", "valeur": "lac Ontario"}
+{"entite": "pointe Guichenault", "valeur": "baie Shark"}
+{"entite": "pointe Icart", "valeur": "Manche"}
+{"entite": "pointe Saint-Charles", "valeur": "détroit de Belle Isle"}
+{"entite": "pointe Saint-Gildas", "valeur": "océan Atlantique"}
+{"entite": "pointe Saint-Mathieu", "valeur": "mer d'Iroise"}
+{"entite": "pointe Sainte-Marie", "valeur": "océan Indien"}
+{"entite": "pointe Vénus", "valeur": "océan Pacifique"}
+{"entite": "Ponta Camale Media Ilo", "valeur": "détroit d'Ombai"}
+{"entite": "Ponta Carimbala", "valeur": "mer de Savu"}
+{"entite": "Ponta da Piedade", "valeur": "océan Atlantique"}
+{"entite": "Ponta de Mangrande", "valeur": "océan Atlantique Nord"}
+{"entite": "Ponta de Montserrat", "valeur": "baie de Tous les Saints"}
+{"entite": "Ponta do Conselho", "valeur": "océan Atlantique"}
+{"entite": "Ponta do Sinó", "valeur": "océan Atlantique"}
+{"entite": "Ponta João d'Évora", "valeur": "océan Atlantique"}
+{"entite": "Ponta João Ribeiro", "valeur": "Porto Grande"}
+{"entite": "Ponta Vatuboro Ilo", "valeur": "mer de Savu"}
+{"entite": "Portage Head", "valeur": "océan Pacifique"}
+{"entite": "Portuguese Point", "valeur": "fleuve Columbia"}
+{"entite": "Preachers Point", "valeur": "lac Ozette"}
+{"entite": "President Point", "valeur": "Puget Sound"}
+{"entite": "Presqu'île de Séné", "valeur": "golfe du Morbihan"}
+{"entite": "presque'île du Cap-Vert", "valeur": "océan Atlantique"}
+{"entite": "Presque Isle", "valeur": "lac Huron"}
+{"entite": "Preston Point", "valeur": "Snohomish"}
+{"entite": "Promontory Point", "valeur": "Grand Lac Salé"}
+{"entite": "punta Albina", "valeur": "océan Atlantique"}
+{"entite": "Punta Almina", "valeur": "mer Méditerranée"}
+{"entite": "Punta Atico", "valeur": "océan Pacifique"}
+{"entite": "Punta Camarinal", "valeur": "détroit de Gibraltar"}
+{"entite": "Punta Carnero", "valeur": "Baie d'Algésiras"}
+{"entite": "Punta Catalina", "valeur": "baie Lomas"}
+{"entite": "Punta Coles", "valeur": "océan Pacifique"}
+{"entite": "Punta de la Banya", "valeur": "mer Méditerranée"}
+{"entite": "Punta de la Orchilla", "valeur": "océan Atlantique"}
+{"entite": "punta de la Pietat", "valeur": "mer Méditerranée"}
+{"entite": "Punta de La Restinga", "valeur": "océan Atlantique"}
+{"entite": "Punta de Teno", "valeur": "océan Atlantique"}
+{"entite": "Punta del Genovès", "valeur": "mer Méditerranée"}
+{"entite": "punta del Miracle", "valeur": "mer Méditerranée"}
+{"entite": "Punta del Porroc", "valeur": "mer Méditerranée"}
+{"entite": "Punta di Abbadia", "valeur": "lac de Côme"}
+{"entite": "Punta Espinillo Beach", "valeur": "río de la Plata"}
+{"entite": "punta Falconera", "valeur": "golfe de Roses"}
+{"entite": "Punta Galea", "valeur": "golfe de Gascogne"}
+{"entite": "Punta Gallinas", "valeur": "océan Atlantique"}
+{"entite": "Punta Pariñas", "valeur": "océan Pacifique"}
+{"entite": "Punta San Juan", "valeur": "océan Pacifique"}
+{"entite": "Purekkari cape", "valeur": "mer Baltique"}
+{"entite": "Quateata", "valeur": "océan Paciﬁque nord"}
+{"entite": "Quatsap Point", "valeur": "canal Hood"}
+{"entite": "Ramsey Point", "valeur": "baie de Willapa"}
+{"entite": "Ras Hafun", "valeur": "océan Indien"}
+{"entite": "Ras R'mal", "valeur": "mer Méditerranée"}
+{"entite": "Restoration Point", "valeur": "Puget Sound"}
+{"entite": "Rihtniemi", "valeur": "mer de Botnie"}
+{"entite": "Rincon Point", "valeur": "baie de Corpus Christi"}
+{"entite": "Robertson Point", "valeur": "océan Atlantique"}
+{"entite": "Rogaty", "valeur": "lac Ladoga"}
+{"entite": "Ruosniemi", "valeur": "Lohjanjärvi"}
+{"entite": "Saddle Bluff", "valeur": "mer de la Scotia"}
+{"entite": "Salsbury Point", "valeur": "canal Hood"}
+{"entite": "Sandy Point", "valeur": "baie de Willapa"}
+{"entite": "Sappho Point", "valeur": "océan Atlantique"}
+{"entite": "Saratoga Point", "valeur": "lac Crescent"}
+{"entite": "Särkänniemi", "valeur": "Näsijärvi"}
+{"entite": "Sekiu Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Selsey Bill", "valeur": "Manche"}
+{"entite": "Seul Choix Point", "valeur": "lac Michigan"}
+{"entite": "Shafers Point", "valeur": "lac Ozette"}
+{"entite": "Shannon Point", "valeur": "détroit de Rosario"}
+{"entite": "Sharapov", "valeur": "golfe de Kandalakcha"}
+{"entite": "Sheep's Head", "valeur": "océan Atlantique"}
+{"entite": "Shipwreck Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Shrove Point", "valeur": "mer de la Scotia"}
+{"entite": "Sidi Ali El Mekki", "valeur": "mer Méditerranée"}
+{"entite": "Sisters Point", "valeur": "canal Hood"}
+{"entite": "Sivriburun", "valeur": "mer Noire"}
+{"entite": "Skarven", "valeur": "océan Atlantique"}
+{"entite": "Skiff Point", "valeur": "Puget Sound"}
+{"entite": "Sledge Hammer Point", "valeur": "lac Crescent"}
+{"entite": "Slip Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Soukhoï Nos", "valeur": "mer de Barents"}
+{"entite": "Spit in Glafirovka", "valeur": "golfe de Taganrog"}
+{"entite": "Split Rock Point", "valeur": "lac Champlain"}
+{"entite": "St Abbs Head", "valeur": "mer du Nord"}
+{"entite": "St Alban's Head", "valeur": "Manche"}
+{"entite": "Stanley Point", "valeur": "baie de Willapa"}
+{"entite": "State Natural Monument \"Green cape\"", "valeur": "Lac Zerendi"}
+{"entite": "Stench Point", "valeur": "mer de la Scotia"}
+{"entite": "Strawberry Point", "valeur": "océan Paciﬁque nord"}
+{"entite": "Strem Ness", "valeur": "mer du Nord"}
+{"entite": "Strumble Head", "valeur": "mer d'Irlande"}
+{"entite": "Sturgeon Point", "valeur": "fleuve Saint-Laurent"}
+{"entite": "Sulphur Point", "valeur": "mer de la Scotia"}
+{"entite": "Sunshine Point", "valeur": "baie de Willapa"}
+{"entite": "Swell Point", "valeur": "mer de la Scotia"}
+{"entite": "Sylopash Point", "valeur": "Dosewallips River"}
+{"entite": "Tanjung Datu", "valeur": "mer de Chine méridionale"}
+{"entite": "Tanners Point", "valeur": "baie de Tauranga"}
+{"entite": "Tategasaki", "valeur": "mer de Kumano"}
+{"entite": "Tauvonniemi", "valeur": "baie de Botnie"}
+{"entite": "Taylor Point", "valeur": "océan Paciﬁque nord"}
+{"entite": "Te Puapua", "valeur": "lac Rotoiti"}
+{"entite": "Teahwhit Head", "valeur": "océan Paciﬁque nord"}
+{"entite": "Tekiu Point", "valeur": "canal Hood"}
+{"entite": "Termination Point", "valeur": "canal Hood"}
+{"entite": "Terre du Roi-Édouard-VII", "valeur": "mer de Ross"}
+{"entite": "Tete Du Pont", "valeur": "Anacostia"}
+{"entite": "Thompson Point", "valeur": "lac Crescent"}
+{"entite": "Tide Point", "valeur": "détroit de Rosario"}
+{"entite": "Tijuca Point", "valeur": "océan Atlantique"}
+{"entite": "Tiumpan Head", "valeur": "océan Atlantique"}
+{"entite": "Toke Point", "valeur": "baie de Willapa"}
+{"entite": "Toleak Point", "valeur": "océan Paciﬁque nord"}
+{"entite": "Tongue Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Triton Head", "valeur": "canal Hood"}
+{"entite": "Tsiigunina", "valeur": "lac Võrtsjärv"}
+{"entite": "Uganzaki", "valeur": "mer de Chine orientale"}
+{"entite": "Ukht-Navolok", "valeur": "baie d'Onega"}
+{"entite": "Umbrella Point", "valeur": "lac Ozette"}
+{"entite": "Väinölänniemi", "valeur": "lac Kallavesi"}
+{"entite": "Vanhankylänniemi", "valeur": "lac de Tuusula"}
+{"entite": "Vattajanniemi", "valeur": "baie de Botnie"}
+{"entite": "Vattunokka", "valeur": "Lauttasaarenselkä"}
+{"entite": "Ventė Cape", "valeur": "lagune de Courlande"}
+{"entite": "Village Point", "valeur": "détroit de Rosario"}
+{"entite": "Virpiniemi", "valeur": "baie de Botnie"}
+{"entite": "Voronov", "valeur": "baie de Mezen"}
+{"entite": "Vulcan Point", "valeur": "mer de la Scotia"}
+{"entite": "Waadah Point", "valeur": "détroit de Juan de Fuca"}
+{"entite": "Waatch Point", "valeur": "océan Pacifique"}
+{"entite": "Wade Point", "valeur": "Baie d'Albemarle"}
+{"entite": "Walan Point", "valeur": "Port Townsend"}
+{"entite": "West Point", "valeur": "Puget Sound"}
+{"entite": "West Stell", "valeur": "Firth of Forth"}
+{"entite": "Wester Fearn Point", "valeur": "Dornoch Firth"}
+{"entite": "Wester Hœvdi", "valeur": "mer du Nord"}
+{"entite": "Whitefish Point", "valeur": "lac Supérieur"}
+{"entite": "Will Point", "valeur": "océan Atlantique"}
+{"entite": "William Point", "valeur": "baie de Bellingham"}
+{"entite": "Wilson Point", "valeur": "baie de Willapa"}
+{"entite": "Wind Point", "valeur": "lac Michigan"}
+{"entite": "Wing Point", "valeur": "Puget Sound"}
+{"entite": "Wordie Point", "valeur": "mer de la Scotia"}
+{"entite": "Yeomalt Point", "valeur": "Puget Sound"}
+{"entite": "Zolotoy", "valeur": "détroit de Tartarie"}

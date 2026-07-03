@@ -1,0 +1,5 @@
+{"_relation": "tissu_animal_fondamental", "_categorie": "physique", "_source": "Modèle (Claude) — histologie textbook curée (rôle des 4 tissus animaux fondamentaux ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "tissu conjonctif", "valeur": "soutien et liaison des autres tissus"}
+{"entite": "tissu épithélial", "valeur": "revêtement et protection des surfaces"}
+{"entite": "tissu musculaire", "valeur": "contraction"}
+{"entite": "tissu nerveux", "valeur": "transmission de l'influx nerveux"}

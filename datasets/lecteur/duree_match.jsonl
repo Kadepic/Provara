@@ -1,0 +1,7 @@
+{"_relation": "duree_match", "_categorie": "convention", "_source": "règlements sportifs (sport -> durée réglementaire)", "_articles": true}
+{"entite": "football", "valeur": "90 minutes"}
+{"entite": "football américain", "valeur": "60 minutes"}
+{"entite": "handball", "valeur": "60 minutes"}
+{"entite": "hockey sur glace", "valeur": "60 minutes"}
+{"entite": "rugby à xv", "valeur": "80 minutes"}
+{"entite": "water-polo", "valeur": "32 minutes"}

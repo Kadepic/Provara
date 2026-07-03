@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_immunite_pratique", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (terme pratique -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "allergie", "valeur": "réaction excessive du système immunitaire"}
+{"entite": "sérothérapie", "valeur": "injection d'anticorps"}
+{"entite": "vaccination", "valeur": "injection préventive stimulant l'immunité"}

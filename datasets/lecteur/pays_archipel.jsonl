@@ -1,0 +1,874 @@
+{"_relation": "pays_archipel", "_categorie": "physique", "_source": "Wikidata/QLever — pays_archipel P17, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Abbot's Isles", "valeur": "Royaume-Uni"}
+{"entite": "Absyrtides", "valeur": "Croatie"}
+{"entite": "Admiralty Group", "valeur": "Australie"}
+{"entite": "Åland Islands archipelago", "valeur": "Finlande"}
+{"entite": "Alas Islands", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Aleipata Islands", "valeur": "Samoa"}
+{"entite": "Alma Islands", "valeur": "Australie"}
+{"entite": "Alor Archipelago", "valeur": "Indonésie"}
+{"entite": "Ambai Islands", "valeur": "Indonésie"}
+{"entite": "Amundö", "valeur": "Suède"}
+{"entite": "Anavilhanas", "valeur": "Brésil"}
+{"entite": "Anderssonøyane", "valeur": "Norvège"}
+{"entite": "Andros", "valeur": "Bahamas"}
+{"entite": "Ängskär", "valeur": "Suède"}
+{"entite": "Apanonisia Kalymnou", "valeur": "Grèce"}
+{"entite": "Arøya", "valeur": "Norvège"}
+{"entite": "Arakan archipelago", "valeur": "Birmanie"}
+{"entite": "Arc éolien", "valeur": "Italie"}
+{"entite": "archipel Alexandre", "valeur": "États-Unis"}
+{"entite": "archipel arctique canadien", "valeur": "Canada"}
+{"entite": "archipel Bazaruto", "valeur": "Mozambique"}
+{"entite": "archipel Bonaparte", "valeur": "Australie"}
+{"entite": "archipel Campana", "valeur": "Chili"}
+{"entite": "archipel charentais", "valeur": "France"}
+{"entite": "archipel Crozet", "valeur": "France"}
+{"entite": "archipel d'Hawaï", "valeur": "États-Unis"}
+{"entite": "archipel d'Hochelaga", "valeur": "Canada"}
+{"entite": "archipel d'Ogasawara", "valeur": "Japon"}
+{"entite": "Archipel d'Ons", "valeur": "Espagne"}
+{"entite": "archipel d'Oskarshamn", "valeur": "Suède"}
+{"entite": "Archipel Dalmate", "valeur": "Croatie"}
+{"entite": "archipel Dampier", "valeur": "Australie"}
+{"entite": "archipel de Baffin-Parry", "valeur": "Canada"}
+{"entite": "archipel de Bakou", "valeur": "Azerbaïdjan"}
+{"entite": "Archipel de Blanc-Sablon", "valeur": "Canada"}
+{"entite": "Archipel de Blekinge", "valeur": "Suède"}
+{"entite": "archipel de Bocas del Toro", "valeur": "Panama"}
+{"entite": "archipel de Bréhat", "valeur": "France"}
+{"entite": "archipel de Broughton", "valeur": "Canada"}
+{"entite": "archipel de Cabrera", "valeur": "Espagne"}
+{"entite": "archipel de Calbuco", "valeur": "Chili"}
+{"entite": "archipel de Chiloé", "valeur": "Chili"}
+{"entite": "archipel de Göteborg", "valeur": "Suède"}
+{"entite": "Archipel de Granada", "valeur": "Nicaragua"}
+{"entite": "archipel de Grand Manan", "valeur": "Canada"}
+{"entite": "archipel de Hanovre", "valeur": "Chili"}
+{"entite": "archipel de Jambelí", "valeur": "Équateur"}
+{"entite": "archipel de Kécarpoui", "valeur": "Canada"}
+{"entite": "archipel de Kotka", "valeur": "Finlande"}
+{"entite": "archipel de Kvarken", "valeur": "Finlande"}
+{"entite": "archipel de Kvarken – zone A", "valeur": "Finlande"}
+{"entite": "archipel de Kvarken – zone B", "valeur": "Finlande"}
+{"entite": "archipel de l'impératrice Eugénie", "valeur": "Russie"}
+{"entite": "archipel de L'Isle-aux-Grues", "valeur": "Canada"}
+{"entite": "archipel de La Maddalena", "valeur": "Italie"}
+{"entite": "archipel de la Recherche", "valeur": "Australie"}
+{"entite": "archipel de la Reine Adélaïde", "valeur": "Chili"}
+{"entite": "archipel de la Société", "valeur": "France"}
+{"entite": "archipel de Lamu", "valeur": "Kenya"}
+{"entite": "archipel de las Guaitecas", "valeur": "Chili"}
+{"entite": "archipel de Lau", "valeur": "Fidji"}
+{"entite": "archipel de Los Monjes", "valeur": "Venezuela"}
+{"entite": "Archipel de Luleå", "valeur": "Suède"}
+{"entite": "Archipel de Madère", "valeur": "Portugal"}
+{"entite": "archipel de Mingan", "valeur": "Canada"}
+{"entite": "archipel de Molde", "valeur": "Norvège"}
+{"entite": "archipel de Molène", "valeur": "France"}
+{"entite": "archipel de Moonsund", "valeur": "Estonie"}
+{"entite": "archipel de Ouapitagone", "valeur": "Canada"}
+{"entite": "archipel de Riou", "valeur": "France"}
+{"entite": "Archipel de Saint-Augustin", "valeur": "Canada"}
+{"entite": "archipel de Sainte-Marie", "valeur": "Canada"}
+{"entite": "archipel de San Blas", "valeur": "Panama"}
+{"entite": "archipel de Santorin", "valeur": "Grèce"}
+{"entite": "archipel de Socotra", "valeur": "Yémen"}
+{"entite": "archipel de Spermonde", "valeur": "Indonésie"}
+{"entite": "archipel de Stockholm", "valeur": "Suède"}
+{"entite": "archipel de Sulu", "valeur": "Philippines"}
+{"entite": "archipel de Sundom", "valeur": "Finlande"}
+{"entite": "archipel de Turku", "valeur": "Finlande"}
+{"entite": "archipel de Vaasa", "valeur": "Finlande"}
+{"entite": "archipel de Vega", "valeur": "Norvège"}
+{"entite": "archipel de Washicoutai", "valeur": "Canada"}
+{"entite": "archipel des Abrolhos", "valeur": "Brésil"}
+{"entite": "Archipel des Açores", "valeur": "Portugal"}
+{"entite": "archipel des Boucaniers", "valeur": "Australie"}
+{"entite": "archipel des Chagos", "valeur": "Royaume-Uni"}
+{"entite": "archipel des Chonos", "valeur": "Chili"}
+{"entite": "archipel des Colorados", "valeur": "Cuba"}
+{"entite": "archipel des Comores", "valeur": "Comores"}
+{"entite": "archipel des Dahlak", "valeur": "Érythrée"}
+{"entite": "archipel des Ébihens", "valeur": "France"}
+{"entite": "archipel des Embiez", "valeur": "France"}
+{"entite": "archipel des Glénan", "valeur": "France"}
+{"entite": "archipel des Kornati", "valeur": "Croatie"}
+{"entite": "archipel des Koukoudjés", "valeur": "Canada"}
+{"entite": "archipel des Perles", "valeur": "Panama"}
+{"entite": "Archipel des Primeiras et Segundas", "valeur": "Mozambique"}
+{"entite": "archipel des Sanguinaires", "valeur": "France"}
+{"entite": "archipel des Sept Îles", "valeur": "Canada"}
+{"entite": "archipel du Gros Mécatina", "valeur": "Canada"}
+{"entite": "archipel du Krakatoa", "valeur": "Indonésie"}
+{"entite": "archipel du Lac Saint-Pierre", "valeur": "Canada"}
+{"entite": "archipel du Petit Mécatina", "valeur": "Canada"}
+{"entite": "archipel du Vieux Fort", "valeur": "Canada"}
+{"entite": "archipel Guayaneco", "valeur": "Chili"}
+{"entite": "archipel japonais", "valeur": "Japon"}
+{"entite": "archipel Juan Fernández", "valeur": "Chili"}
+{"entite": "archipel Kasapominskat", "valeur": "Canada"}
+{"entite": "archipel Kent", "valeur": "Australie"}
+{"entite": "archipel Los Testigos", "valeur": "Venezuela"}
+{"entite": "archipel Madre de Dios", "valeur": "Chili"}
+{"entite": "archipel maltais", "valeur": "Malte"}
+{"entite": "archipel Max-Douguet", "valeur": "France"}
+{"entite": "archipel Nordenskiöld", "valeur": "Russie"}
+{"entite": "Archipel Qikirtaajuit", "valeur": "Canada"}
+{"entite": "archipel Ritchie", "valeur": "Inde"}
+{"entite": "archipel Sabana-Camagüey", "valeur": "Cuba"}
+{"entite": "Archipel Sedov", "valeur": "Russie"}
+{"entite": "archipel Wellington", "valeur": "Chili"}
+{"entite": "Archipelagoes of Patagonia", "valeur": "Chili"}
+{"entite": "Arcipelago Spezzino", "valeur": "Italie"}
+{"entite": "Ari", "valeur": "Maldives"}
+{"entite": "Arvalik Islands", "valeur": "Canada"}
+{"entite": "Arwah Islands", "valeur": "Indonésie"}
+{"entite": "Asafovy Gory", "valeur": "Russie"}
+{"entite": "Ásekat", "valeur": "Norvège"}
+{"entite": "Asia Islands", "valeur": "Indonésie"}
+{"entite": "Atalantonisia", "valeur": "Grèce"}
+{"entite": "Ayermasin", "valeur": "Indonésie"}
+{"entite": "Ayu Islands", "valeur": "Indonésie"}
+{"entite": "Babar Islands", "valeur": "Indonésie"}
+{"entite": "Bacan", "valeur": "Indonésie"}
+{"entite": "Baekdo", "valeur": "Corée du Sud"}
+{"entite": "Bahama Islands", "valeur": "Bahamas"}
+{"entite": "Bahamas", "valeur": "Bahamas"}
+{"entite": "Bahreïn", "valeur": "Bahreïn"}
+{"entite": "Banc Vanguard", "valeur": "Vietnam"}
+{"entite": "Banggai Archipelago", "valeur": "Indonésie"}
+{"entite": "Barelang", "valeur": "Indonésie"}
+{"entite": "Barrettinelli di Dentro", "valeur": "Italie"}
+{"entite": "Barusan Islands", "valeur": "Indonésie"}
+{"entite": "Bass Islands", "valeur": "France"}
+{"entite": "battures de Malmanoury", "valeur": "France"}
+{"entite": "Beşadalar", "valeur": "Turquie"}
+{"entite": "Bird Islands", "valeur": "Canada"}
+{"entite": "Bishop and Clerk Islets", "valeur": "Australie"}
+{"entite": "Bispøyan", "valeur": "Norvège"}
+{"entite": "Bjarneyjar", "valeur": "Islande"}
+{"entite": "Björkskär", "valeur": "Suède"}
+{"entite": "Bliksvær", "valeur": "Norvège"}
+{"entite": "Bolærne", "valeur": "Norvège"}
+{"entite": "Brækmoholmane", "valeur": "Norvège"}
+{"entite": "Brattværet", "valeur": "Norvège"}
+{"entite": "Bulandet", "valeur": "Norvège"}
+{"entite": "Bunker Islets", "valeur": "Nouvelle-Zélande"}
+{"entite": "Butong archipelago", "valeur": "Thaïlande"}
+{"entite": "Caesarea Islands", "valeur": "Israël"}
+{"entite": "Cagayan Islands", "valeur": "Philippines"}
+{"entite": "Calventuras Islands", "valeur": "Birmanie"}
+{"entite": "Calymnian islands", "valeur": "Grèce"}
+{"entite": "Cani", "valeur": "Tunisie"}
+{"entite": "Cap-Vert", "valeur": "Cap-Vert"}
+{"entite": "Cape Verde Archipelago", "valeur": "Cap-Vert"}
+{"entite": "Capricorn and Bunker Group", "valeur": "Australie"}
+{"entite": "Carbery's Hundred Isles", "valeur": "Irlande"}
+{"entite": "Castrenøyane", "valeur": "Norvège"}
+{"entite": "Cayes de Port Royal", "valeur": "Jamaïque"}
+{"entite": "Cayo Tres Hermanas", "valeur": "Nicaragua"}
+{"entite": "Cayos Cinco Balas", "valeur": "Cuba"}
+{"entite": "Cayos Cochinos", "valeur": "Honduras"}
+{"entite": "Cayos de la Enfermería", "valeur": "Cuba"}
+{"entite": "Cayos de las Cinco Leguas", "valeur": "Cuba"}
+{"entite": "Cayos Dromedarios", "valeur": "Cuba"}
+{"entite": "Cecilia Islands", "valeur": "Australie"}
+{"entite": "Cervantes Islands", "valeur": "Australie"}
+{"entite": "Changshan Islands", "valeur": "République populaire de Chine"}
+{"entite": "Chauques", "valeur": "Chili"}
+{"entite": "Chipping Norton Islands", "valeur": "Australie"}
+{"entite": "Chokaa Islands", "valeur": "Tanzanie"}
+{"entite": "Colinet Islands", "valeur": "Canada"}
+{"entite": "Comores", "valeur": "Comores"}
+{"entite": "Copeland Islands", "valeur": "Royaume-Uni"}
+{"entite": "Coringa Islets", "valeur": "Australie"}
+{"entite": "Corn Islands", "valeur": "Nicaragua"}
+{"entite": "Coronation Islands", "valeur": "Australie"}
+{"entite": "Cow and Calf Islands", "valeur": "Australie"}
+{"entite": "Cuatro Hermanos Islands", "valeur": "Équateur"}
+{"entite": "Cut in Two Island", "valeur": "États-Unis"}
+{"entite": "Cyclades", "valeur": "Grèce"}
+{"entite": "Damar Islands", "valeur": "Indonésie"}
+{"entite": "Davis Islands", "valeur": "États-Unis"}
+{"entite": "Dawson Islands", "valeur": "Australie"}
+{"entite": "Deokjeok islands", "valeur": "Corée du Sud"}
+{"entite": "Di Cala Lunga", "valeur": "Italie"}
+{"entite": "Diamond Islets", "valeur": "Australie"}
+{"entite": "Dinagat Islands", "valeur": "Philippines"}
+{"entite": "Diyar Al Muharraq", "valeur": "Bahreïn"}
+{"entite": "Djurö Skärgård", "valeur": "Suède"}
+{"entite": "Dokdo Island Natural Reserve", "valeur": "Japon"}
+{"entite": "Dolomittøyane", "valeur": "Norvège"}
+{"entite": "Double Islands", "valeur": "Australie"}
+{"entite": "Douglas Islands", "valeur": "Australie"}
+{"entite": "Drum And Drumsticks", "valeur": "Australie"}
+{"entite": "Duke of York Archipelago", "valeur": "Canada"}
+{"entite": "East Harbor Keys", "valeur": "États-Unis"}
+{"entite": "East Indian Archipelago", "valeur": "Indonésie"}
+{"entite": "East Möja archipelago", "valeur": "Suède"}
+{"entite": "East Volcano Islands", "valeur": "Inde"}
+{"entite": "Ekenäs Archipelago", "valeur": "Finlande"}
+{"entite": "Ertholmene", "valeur": "Danemark"}
+{"entite": "Es Estells", "valeur": "Espagne"}
+{"entite": "Es Malgrats", "valeur": "Espagne"}
+{"entite": "Essingen Islands", "valeur": "Suède"}
+{"entite": "Exuma Islands", "valeur": "Bahamas"}
+{"entite": "Fakaofo", "valeur": "Nouvelle-Zélande"}
+{"entite": "Fanny Keys", "valeur": "États-Unis"}
+{"entite": "Fernando de Noronha", "valeur": "Brésil"}
+{"entite": "Fidji", "valeur": "Fidji"}
+{"entite": "Fijian Archipelago", "valeur": "Fidji"}
+{"entite": "Finch Islands", "valeur": "Australie"}
+{"entite": "Finger and Thumb Islands", "valeur": "Australie"}
+{"entite": "Fisherman Islands", "valeur": "Australie"}
+{"entite": "Five West Sea Islands", "valeur": "Corée du Sud"}
+{"entite": "Fjäderholmarna", "valeur": "Suède"}
+{"entite": "Fleinvær", "valeur": "Norvège"}
+{"entite": "Föglö", "valeur": "Finlande"}
+{"entite": "Föglö Udd", "valeur": "Finlande"}
+{"entite": "Formiche di Grosseto", "valeur": "Italie"}
+{"entite": "Fosterøyane", "valeur": "Norvège"}
+{"entite": "Foúrni", "valeur": "Grèce"}
+{"entite": "Franklin Islands", "valeur": "Australie"}
+{"entite": "Froan", "valeur": "Norvège"}
+{"entite": "La Galite", "valeur": "Tunisie"}
+{"entite": "Gapøyholman", "valeur": "Norvège"}
+{"entite": "Gåsvær", "valeur": "Norvège"}
+{"entite": "Geochagundo", "valeur": "Corée du Sud"}
+{"entite": "Geupon Islands", "valeur": "Indonésie"}
+{"entite": "Gillöga", "valeur": "Suède"}
+{"entite": "Gjæslingan", "valeur": "Norvège"}
+{"entite": "Gjesværstappan", "valeur": "Norvège"}
+{"entite": "Godfrey Islands", "valeur": "Australie"}
+{"entite": "Gorong archipelago", "valeur": "Indonésie"}
+{"entite": "Grande Andaman", "valeur": "Inde"}
+{"entite": "Grandes battures Tailhandier", "valeur": "Canada"}
+{"entite": "Great Natuna", "valeur": "Indonésie"}
+{"entite": "Greater Islands", "valeur": "Indonésie"}
+{"entite": "Grenade", "valeur": "Grenade"}
+{"entite": "Gressholman", "valeur": "Norvège"}
+{"entite": "Grip", "valeur": "Norvège"}
+{"entite": "Group Huaura Islands", "valeur": "Pérou"}
+{"entite": "Group Pescadores Islands", "valeur": "Pérou"}
+{"entite": "Groupe Actéon", "valeur": "France"}
+{"entite": "Groupe Alphonse", "valeur": "Seychelles"}
+{"entite": "Groupe corallien méridional", "valeur": "Seychelles"}
+{"entite": "Groupe de Géorgie du Sud", "valeur": "Royaume-Uni"}
+{"entite": "Grupo Jungfrauen", "valeur": "Chili"}
+{"entite": "Guadeloupe", "valeur": "France"}
+{"entite": "Guañape Islands", "valeur": "Pérou"}
+{"entite": "Guasarang Islands", "valeur": "Indonésie"}
+{"entite": "Gull Keys", "valeur": "États-Unis"}
+{"entite": "Gummandoora", "valeur": "Finlande"}
+{"entite": "Gunnarstenarna", "valeur": "Suède"}
+{"entite": "Gymésies", "valeur": "Espagne"}
+{"entite": "Hà Tiên Islands", "valeur": "Vietnam"}
+{"entite": "Haparanda", "valeur": "Suède"}
+{"entite": "Hébrides", "valeur": "Royaume-Uni"}
+{"entite": "Hébrides extérieures", "valeur": "Royaume-Uni"}
+{"entite": "Hébrides intérieures", "valeur": "Royaume-Uni"}
+{"entite": "Heinäsenmaa", "valeur": "Russie"}
+{"entite": "Heligoland", "valeur": "Allemagne"}
+{"entite": "Helligvær", "valeur": "Norvège"}
+{"entite": "Hen and Chicken Islands", "valeur": "Nouvelle-Zélande"}
+{"entite": "Henckeløyane", "valeur": "Norvège"}
+{"entite": "Henderson Islets", "valeur": "Australie"}
+{"entite": "Herbert Islands", "valeur": "Australie"}
+{"entite": "Hermit", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Heuksan Islands", "valeur": "Corée du Sud"}
+{"entite": "High Cliffy Islands", "valeur": "Australie"}
+{"entite": "Hirsholmene", "valeur": "Danemark"}
+{"entite": "Hishima", "valeur": "Japon"}
+{"entite": "Holmöarna", "valeur": "Suède"}
+{"entite": "Horseshoe Keys", "valeur": "États-Unis"}
+{"entite": "Houtman Abrolhos", "valeur": "Australie"}
+{"entite": "Husvær", "valeur": "Norvège"}
+{"entite": "Huvudskär", "valeur": "Suède"}
+{"entite": "île de Geomun", "valeur": "Corée du Sud"}
+{"entite": "îles Abacos", "valeur": "Bahamas"}
+{"entite": "îles Alhucemas", "valeur": "Espagne"}
+{"entite": "îles Amirante", "valeur": "Seychelles"}
+{"entite": "îles Anambas", "valeur": "Indonésie"}
+{"entite": "îles Andaman", "valeur": "Inde"}
+{"entite": "îles Aru", "valeur": "Indonésie"}
+{"entite": "îles Australes", "valeur": "France"}
+{"entite": "îles Ayatawanikaw", "valeur": "Canada"}
+{"entite": "îles Babuyan", "valeur": "Philippines"}
+{"entite": "Îles Bahariye", "valeur": "Turquie"}
+{"entite": "îles Baléares", "valeur": "Espagne"}
+{"entite": "îles Ballestas", "valeur": "Pérou"}
+{"entite": "îles Barra", "valeur": "Royaume-Uni"}
+{"entite": "îles Batu", "valeur": "Indonésie"}
+{"entite": "îles Beriozovye", "valeur": "Russie"}
+{"entite": "îles Berry", "valeur": "Bahamas"}
+{"entite": "îles Bounty", "valeur": "Nouvelle-Zélande"}
+{"entite": "Îles Briñas", "valeur": "Espagne"}
+{"entite": "îles Cagarras", "valeur": "Brésil"}
+{"entite": "îles Caïcos", "valeur": "Royaume-Uni"}
+{"entite": "îles Campbell", "valeur": "Nouvelle-Zélande"}
+{"entite": "îles Canaries", "valeur": "Espagne"}
+{"entite": "îles Canso", "valeur": "Canada"}
+{"entite": "îles Cerbicale", "valeur": "France"}
+{"entite": "îles Chausey", "valeur": "France"}
+{"entite": "îles Chelbacheb", "valeur": "Palaos"}
+{"entite": "îles Chesterfield", "valeur": "France"}
+{"entite": "îles Chimanas", "valeur": "Venezuela"}
+{"entite": "îles Chincha", "valeur": "Pérou"}
+{"entite": "îles Christiana", "valeur": "Grèce"}
+{"entite": "îles Cuyo", "valeur": "Philippines"}
+{"entite": "îles d'Aran", "valeur": "Irlande"}
+{"entite": "îles d'Endoume", "valeur": "France"}
+{"entite": "îles d'Hyères", "valeur": "France"}
+{"entite": "îles Davis", "valeur": "France"}
+{"entite": "îles de Boucherville", "valeur": "Canada"}
+{"entite": "îles de Boynes", "valeur": "France"}
+{"entite": "îles de Brissago", "valeur": "Suisse"}
+{"entite": "îles de Buguélès", "valeur": "France"}
+{"entite": "Îles de Grèce", "valeur": "Grèce"}
+{"entite": "Îles-de-la-Dartmouth", "valeur": "Canada"}
+{"entite": "îles de la Petite-Terre", "valeur": "France"}
+{"entite": "îles de Lérins", "valeur": "France"}
+{"entite": "îles De Long", "valeur": "Russie"}
+{"entite": "Îles de Naantali", "valeur": "Finlande"}
+{"entite": "îles Derawan", "valeur": "Indonésie"}
+{"entite": "îles des Antipodes", "valeur": "Nouvelle-Zélande"}
+{"entite": "îles des Apôtres", "valeur": "États-Unis"}
+{"entite": "îles des Saintes", "valeur": "France"}
+{"entite": "îles des Sept Frères", "valeur": "Djibouti"}
+{"entite": "îles des Trois Rois", "valeur": "Nouvelle-Zélande"}
+{"entite": "îles Desventuradas", "valeur": "Chili"}
+{"entite": "îles Deux Groupes", "valeur": "France"}
+{"entite": "îles Discovery", "valeur": "Canada"}
+{"entite": "îles du Désappointement", "valeur": "France"}
+{"entite": "îles du Diable", "valeur": "Djibouti"}
+{"entite": "îles du Duc de Gloucester", "valeur": "France"}
+{"entite": "îles du Frioul", "valeur": "France"}
+{"entite": "Îles du Large", "valeur": "Canada"}
+{"entite": "îles du Nouvel-An", "valeur": "Argentine"}
+{"entite": "îles du Passage", "valeur": "Royaume-Uni"}
+{"entite": "Îles du Ponant", "valeur": "France"}
+{"entite": "îles du Prince-Édouard", "valeur": "Afrique du Sud"}
+{"entite": "îles du Roi Georges", "valeur": "France"}
+{"entite": "îles du Salut", "valeur": "France"}
+{"entite": "îles du Vent", "valeur": "France"}
+{"entite": "îles Élaphites", "valeur": "Croatie"}
+{"entite": "îles Éoliennes", "valeur": "Italie"}
+{"entite": "Îles Estelas", "valeur": "Espagne"}
+{"entite": "îles Evout", "valeur": "Chili"}
+{"entite": "îles Exumas", "valeur": "Bahamas"}
+{"entite": "îles Fairfax", "valeur": "Australie"}
+{"entite": "îles Farallon", "valeur": "États-Unis"}
+{"entite": "îles Finocchiarola", "valeur": "France"}
+{"entite": "îles Formigues", "valeur": "Espagne"}
+{"entite": "îles Fratelli", "valeur": "Tunisie"}
+{"entite": "îles Galápagos", "valeur": "Équateur"}
+{"entite": "îles Gambier", "valeur": "France"}
+{"entite": "îles Gilbert", "valeur": "Kiribati"}
+{"entite": "îles Gotō", "valeur": "Japon"}
+{"entite": "Îles Gulf du Sud", "valeur": "Canada"}
+{"entite": "Îles Gyrfalcon", "valeur": "Canada"}
+{"entite": "îles hawaïennes du Nord-Ouest", "valeur": "États-Unis"}
+{"entite": "îles Heard-et-MacDonald", "valeur": "Australie"}
+{"entite": "îles Hinako", "valeur": "Indonésie"}
+{"entite": "îles Hoskyn", "valeur": "Australie"}
+{"entite": "îles Huron", "valeur": "États-Unis"}
+{"entite": "îles Iam", "valeur": "Russie"}
+{"entite": "îles Intérieures", "valeur": "Seychelles"}
+{"entite": "îles Izvesti TSIK", "valeur": "Russie"}
+{"entite": "îles Kai", "valeur": "Indonésie"}
+{"entite": "îles Kangean", "valeur": "Indonésie"}
+{"entite": "îles Karimata", "valeur": "Indonésie"}
+{"entite": "îles Karimun Jawa", "valeur": "Indonésie"}
+{"entite": "îles Kerguelen", "valeur": "France"}
+{"entite": "îles Koster", "valeur": "Suède"}
+{"entite": "îles Kouriles", "valeur": "Russie"}
+{"entite": "îles L'Hermite", "valeur": "Chili"}
+{"entite": "îles Laval", "valeur": "Canada"}
+{"entite": "îles Lavezzi", "valeur": "France"}
+{"entite": "îles Leti", "valeur": "Indonésie"}
+{"entite": "îles Leygues", "valeur": "France"}
+{"entite": "îles Lingga", "valeur": "Indonésie"}
+{"entite": "îles Lofoten", "valeur": "Norvège"}
+{"entite": "Îles Loyauté", "valeur": "France"}
+{"entite": "îles Maatsuyker", "valeur": "Australie"}
+{"entite": "îles Malouines", "valeur": "Argentine"}
+{"entite": "Îles Malveiras", "valeur": "Espagne"}
+{"entite": "îles Mapia", "valeur": "Indonésie"}
+{"entite": "îles Mariannes", "valeur": "États-Unis"}
+{"entite": "îles Marías", "valeur": "Mexique"}
+{"entite": "îles Marquises", "valeur": "France"}
+{"entite": "Îles Marshall", "valeur": "Îles Marshall"}
+{"entite": "îles Matsu", "valeur": "Taïwan"}
+{"entite": "îles McDonald", "valeur": "Australie"}
+{"entite": "îles Medes", "valeur": "Espagne"}
+{"entite": "îles Medveji", "valeur": "Russie"}
+{"entite": "îles Mokohinau", "valeur": "Nouvelle-Zélande"}
+{"entite": "îles Moleques do Sul", "valeur": "Brésil"}
+{"entite": "îles Monach", "valeur": "Royaume-Uni"}
+{"entite": "îles Natuna", "valeur": "Indonésie"}
+{"entite": "îles Nuageuses", "valeur": "France"}
+{"entite": "îles Padaido", "valeur": "Indonésie"}
+{"entite": "îles Palliser", "valeur": "France"}
+{"entite": "îles Paracels", "valeur": "République populaire de Chine"}
+{"entite": "îles Pescadores", "valeur": "Taïwan"}
+{"entite": "îles Phœnix", "valeur": "Kiribati"}
+{"entite": "îles Phi Phi", "valeur": "Thaïlande"}
+{"entite": "îles Pitcairn", "valeur": "Royaume-Uni"}
+{"entite": "îles Plaza", "valeur": "Équateur"}
+{"entite": "îles Poor Knights", "valeur": "Nouvelle-Zélande"}
+{"entite": "îles Pratas", "valeur": "Taïwan"}
+{"entite": "îles Raevski", "valeur": "France"}
+{"entite": "îles Raja Ampat", "valeur": "Indonésie"}
+{"entite": "îles Reef", "valeur": "Îles Salomon"}
+{"entite": "îles Riau", "valeur": "Indonésie"}
+{"entite": "îles Rimsky-Korsakov", "valeur": "Russie"}
+{"entite": "îles Saint-Marcouf", "valeur": "France"}
+{"entite": "îles Sangihe", "valeur": "Indonésie"}
+{"entite": "îles Scalloway", "valeur": "Royaume-Uni"}
+{"entite": "îles Schouten", "valeur": "Indonésie"}
+{"entite": "îles Scilly", "valeur": "Royaume-Uni"}
+{"entite": "îles Selayar", "valeur": "Indonésie"}
+{"entite": "îles Selvagens", "valeur": "Portugal"}
+{"entite": "îles Sergueï Kirov", "valeur": "Russie"}
+{"entite": "îles Similan", "valeur": "Thaïlande"}
+{"entite": "îles Snares", "valeur": "Nouvelle-Zélande"}
+{"entite": "îles Solentiname", "valeur": "Nicaragua"}
+{"entite": "îles Solor", "valeur": "Indonésie"}
+{"entite": "îles Solovki", "valeur": "Russie"}
+{"entite": "îles Sous-le-Vent", "valeur": "France"}
+{"entite": "îles sub-antarctiques de Nouvelle-Zélande", "valeur": "Nouvelle-Zélande"}
+{"entite": "îles Sula", "valeur": "Indonésie"}
+{"entite": "îles Talaud", "valeur": "Indonésie"}
+{"entite": "îles Tambelan", "valeur": "Indonésie"}
+{"entite": "îles Togian", "valeur": "Indonésie"}
+{"entite": "îles Tremiti", "valeur": "Italie"}
+{"entite": "îles Treshnish", "valeur": "Royaume-Uni"}
+{"entite": "îles Truk", "valeur": "États fédérés de Micronésie"}
+{"entite": "îles Tuamotu", "valeur": "France"}
+{"entite": "îles Tukangbesi", "valeur": "Indonésie"}
+{"entite": "îles Umm al-Qamari", "valeur": "Arabie saoudite"}
+{"entite": "îles Väder", "valeur": "Suède"}
+{"entite": "Îles Wrac'h", "valeur": "France"}
+{"entite": "îles Zaffarines", "valeur": "Espagne"}
+{"entite": "îlets de Rémire", "valeur": "France"}
+{"entite": "Ilhéus da Madalena", "valeur": "Portugal"}
+{"entite": "Illots de Ponent d'Eivissa", "valeur": "Espagne"}
+{"entite": "îlots Evangelistas", "valeur": "Chili"}
+{"entite": "Indonésie", "valeur": "Indonésie"}
+{"entite": "Inian Islands", "valeur": "États-Unis"}
+{"entite": "Interview Group", "valeur": "Inde"}
+{"entite": "Investigator Group Islands", "valeur": "Australie"}
+{"entite": "Islands Abū ‘Alī", "valeur": "Yémen"}
+{"entite": "Islands of Shanghai", "valeur": "République populaire de Chine"}
+{"entite": "Islas de Castillo Grande", "valeur": "Uruguay"}
+{"entite": "Islas de Elobey", "valeur": "Guinée équatoriale"}
+{"entite": "Islas de las Lechiguanas", "valeur": "Argentine"}
+{"entite": "Islas de San Juan", "valeur": "Espagne"}
+{"entite": "Islas El Nancital", "valeur": "Nicaragua"}
+{"entite": "Islas Isabel", "valeur": "Argentine"}
+{"entite": "Islas Jungfrauen", "valeur": "Chili"}
+{"entite": "Islas Las Balsías", "valeur": "Nicaragua"}
+{"entite": "Islas Lobos", "valeur": "Argentine"}
+{"entite": "Islas Lucas", "valeur": "Argentine"}
+{"entite": "Islas Vernaci", "valeur": "Argentine"}
+{"entite": "Isles of Saint Francis", "valeur": "Australie"}
+{"entite": "Isole Tremiti", "valeur": "Italie"}
+{"entite": "Itingujait", "valeur": "Canada"}
+{"entite": "Jakimovičøyane", "valeur": "Norvège"}
+{"entite": "Jamaïque", "valeur": "Jamaïque"}
+{"entite": "le Jardin au Bout du Monde", "valeur": "Canada"}
+{"entite": "Jardines del Rey", "valeur": "Cuba"}
+{"entite": "Jinmen", "valeur": "Taïwan"}
+{"entite": "Johnson Keys", "valeur": "États-Unis"}
+{"entite": "Judge and Clerk Islets", "valeur": "Australie"}
+{"entite": "Jwasari Islands", "valeur": "Corée du Sud"}
+{"entite": "Jyllinge Holme", "valeur": "Danemark"}
+{"entite": "Kalix archipelago", "valeur": "Suède"}
+{"entite": "Kalydón", "valeur": "Grèce"}
+{"entite": "Kapoposang Archipelago", "valeur": "Indonésie"}
+{"entite": "Karakaralong Islands", "valeur": "Indonésie"}
+{"entite": "Karlsöarna", "valeur": "Suède"}
+{"entite": "Kemsky Skerries", "valeur": "Russie"}
+{"entite": "Kepulauan Ayer Besar", "valeur": "Indonésie"}
+{"entite": "Kepulauan Bangkalan", "valeur": "Indonésie"}
+{"entite": "Kepulauan Banyak", "valeur": "Indonésie"}
+{"entite": "Kepulauan Barat", "valeur": "Indonésie"}
+{"entite": "Kepulauan Bawoka", "valeur": "Indonésie"}
+{"entite": "Kepulauan Bonerate", "valeur": "Indonésie"}
+{"entite": "Kepulauan Brace", "valeur": "Indonésie"}
+{"entite": "Kepulauan Burung", "valeur": "Indonésie"}
+{"entite": "Kepulauan Dakokay", "valeur": "Indonésie"}
+{"entite": "Kepulauan Dangkal", "valeur": "Indonésie"}
+{"entite": "Kepulauan Gurung", "valeur": "Indonésie"}
+{"entite": "Kepulauan Kedindingan", "valeur": "Indonésie"}
+{"entite": "Kepulauan Kolo", "valeur": "Indonésie"}
+{"entite": "Kepulauan Lambasina", "valeur": "Indonésie"}
+{"entite": "Kepulauan Langkesi", "valeur": "Indonésie"}
+{"entite": "Kepulauan Layah", "valeur": "Indonésie"}
+{"entite": "Kepulauan Leman", "valeur": "Indonésie"}
+{"entite": "Kepulauan Maba", "valeur": "Indonésie"}
+{"entite": "Kepulauan Masalaka", "valeur": "Indonésie"}
+{"entite": "Kepulauan Masar", "valeur": "Indonésie"}
+{"entite": "Kepulauan Matarape", "valeur": "Indonésie"}
+{"entite": "Kepulauan Mentawai", "valeur": "Indonésie"}
+{"entite": "Kepulauan Momparang", "valeur": "Indonésie"}
+{"entite": "Kepulauan Nanusa", "valeur": "Indonésie"}
+{"entite": "Kepulauan Obit", "valeur": "Indonésie"}
+{"entite": "Kepulauan Pelapis", "valeur": "Indonésie"}
+{"entite": "Kepulauan Penjalin", "valeur": "Indonésie"}
+{"entite": "Kepulauan Podena", "valeur": "Indonésie"}
+{"entite": "Kepulauan Ranjuni", "valeur": "Indonésie"}
+{"entite": "Kepulauan Rukan", "valeur": "Indonésie"}
+{"entite": "Kepulauan Sarangburung", "valeur": "Indonésie"}
+{"entite": "Kepulauan Sariga", "valeur": "Indonésie"}
+{"entite": "Kepulauan Sededap", "valeur": "Indonésie"}
+{"entite": "Kepulauan Segama", "valeur": "Indonésie"}
+{"entite": "Kepulauan Selatan Daya", "valeur": "Indonésie"}
+{"entite": "Kepulauan Sembilan", "valeur": "Malaisie"}
+{"entite": "Kepulauan Seram Laut", "valeur": "Indonésie"}
+{"entite": "Kepulauan Silando", "valeur": "Indonésie"}
+{"entite": "Kepulauan Silumba", "valeur": "Indonésie"}
+{"entite": "Kepulauan Singkep Laut", "valeur": "Indonésie"}
+{"entite": "Kepulauan Soma", "valeur": "Indonésie"}
+{"entite": "Kepulauan Sumur", "valeur": "Indonésie"}
+{"entite": "Kepulauan Tidung", "valeur": "Indonésie"}
+{"entite": "Kepulauan Tobea", "valeur": "Indonésie"}
+{"entite": "Kepulauan Tumbak", "valeur": "Indonésie"}
+{"entite": "Kepulauan Tupis", "valeur": "Indonésie"}
+{"entite": "Kepulauan Ukenao", "valeur": "Indonésie"}
+{"entite": "Kerkennah", "valeur": "Tunisie"}
+{"entite": "Keys", "valeur": "États-Unis"}
+{"entite": "King George Archipelago", "valeur": "Canada"}
+{"entite": "Kiribati", "valeur": "Kiribati"}
+{"entite": "Klovskaer", "valeur": "Finlande"}
+{"entite": "Kneiss", "valeur": "Tunisie"}
+{"entite": "Ko Hong archipelago", "valeur": "Thaïlande"}
+{"entite": "Ko Kra", "valeur": "Thaïlande"}
+{"entite": "Ko Lipe archipelago", "valeur": "Thaïlande"}
+{"entite": "Kokos", "valeur": "Indonésie"}
+{"entite": "Kolosov islands", "valeur": "Russie"}
+{"entite": "Kowangko", "valeur": "Indonésie"}
+{"entite": "Krestovye Islands", "valeur": "Russie"}
+{"entite": "Kuriat", "valeur": "Tunisie"}
+{"entite": "Kurushima Islands", "valeur": "Japon"}
+{"entite": "Kvarner islands", "valeur": "Croatie"}
+{"entite": "Lamu Archipelago", "valeur": "Kenya"}
+{"entite": "Langkawi", "valeur": "Malaisie"}
+{"entite": "Laurot", "valeur": "Indonésie"}
+{"entite": "Laut Kecil Islands", "valeur": "Indonésie"}
+{"entite": "Lichades", "valeur": "Grèce"}
+{"entite": "Lihir Group", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Likkat", "valeur": "Norvège"}
+{"entite": "Lilla Nassa", "valeur": "Suède"}
+{"entite": "Little Sandy Keys", "valeur": "États-Unis"}
+{"entite": "Little Swash Keys", "valeur": "États-Unis"}
+{"entite": "Lloyd Islands", "valeur": "Australie"}
+{"entite": "Lobos de Afuera", "valeur": "Pérou"}
+{"entite": "Lolland-Falster", "valeur": "Danemark"}
+{"entite": "Lopatkin Islands", "valeur": "Russie"}
+{"entite": "Lord Howe Island Group", "valeur": "Australie"}
+{"entite": "Louisiades", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Low Isles", "valeur": "Australie"}
+{"entite": "Lower Harbor Keys", "valeur": "États-Unis"}
+{"entite": "Lower Keys", "valeur": "États-Unis"}
+{"entite": "Lurö skärgård", "valeur": "Suède"}
+{"entite": "Lygna", "valeur": "Suède"}
+{"entite": "MacCormaig Isles", "valeur": "Royaume-Uni"}
+{"entite": "Makatumbi Islands", "valeur": "Tanzanie"}
+{"entite": "Maldives", "valeur": "Maldives"}
+{"entite": "Malus Islands", "valeur": "Australie"}
+{"entite": "Malvinas Islands", "valeur": "Chili"}
+{"entite": "Man archipelago", "valeur": "Thaïlande"}
+{"entite": "Mánareyjar", "valeur": "Islande"}
+{"entite": "Mao Islet", "valeur": "Taïwan"}
+{"entite": "Marajó Archipelago Environmental Protection Area", "valeur": "Brésil"}
+{"entite": "Maret Islands", "valeur": "Australie"}
+{"entite": "Mariestad archipelago", "valeur": "Suède"}
+{"entite": "Mariuá", "valeur": "Brésil"}
+{"entite": "Marshall Islands", "valeur": "Îles Marshall"}
+{"entite": "Marvin Keys", "valeur": "États-Unis"}
+{"entite": "Masalembu Islands", "valeur": "Indonésie"}
+{"entite": "Mascareignes", "valeur": "France"}
+{"entite": "Maurelle Islands", "valeur": "États-Unis"}
+{"entite": "Maurice", "valeur": "Maurice"}
+{"entite": "Men-a-Vaur", "valeur": "Royaume-Uni"}
+{"entite": "Meru Islets", "valeur": "Ouganda"}
+{"entite": "Mez de Goëlo", "valeur": "France"}
+{"entite": "Middle Keys", "valeur": "États-Unis"}
+{"entite": "Mingan Archipelago", "valeur": "Canada"}
+{"entite": "Minin Skerries", "valeur": "Russie"}
+{"entite": "Minong Traditional Cultural Property", "valeur": "États-Unis"}
+{"entite": "Molasses Keys", "valeur": "États-Unis"}
+{"entite": "Monjes del Norte", "valeur": "Venezuela"}
+{"entite": "Montgomery Islands", "valeur": "Australie"}
+{"entite": "Moonboom Islands", "valeur": "Australie"}
+{"entite": "Mooney Harbor Keys", "valeur": "États-Unis"}
+{"entite": "Mornington Archipelago", "valeur": "Chili"}
+{"entite": "Mosko Islands", "valeur": "Turquie"}
+{"entite": "Mosquito Islands", "valeur": "Australie"}
+{"entite": "Motukiekie Rocks", "valeur": "Nouvelle-Zélande"}
+{"entite": "Mount Adolphus Islands", "valeur": "Australie"}
+{"entite": "Mu Ko Kam", "valeur": "Thaïlande"}
+{"entite": "Mu Ko Lao Ya", "valeur": "Thaïlande"}
+{"entite": "Mu Ko Phayam", "valeur": "Thaïlande"}
+{"entite": "Mu Ko Surin National Park", "valeur": "Thaïlande"}
+{"entite": "Mud Keys", "valeur": "États-Unis"}
+{"entite": "Mukojima Islands", "valeur": "Japon"}
+{"entite": "Mule Keys", "valeur": "États-Unis"}
+{"entite": "Muosát", "valeur": "Norvège"}
+{"entite": "Naju Archipelago", "valeur": "Corée du Sud"}
+{"entite": "Nassa archipelago", "valeur": "Suède"}
+{"entite": "Nibani islands", "valeur": "Italie"}
+{"entite": "Nisusaaret", "valeur": "Finlande"}
+{"entite": "Les Noisettes", "valeur": "Nouvelle-Zélande"}
+{"entite": "Nomoi Islands", "valeur": "États fédérés de Micronésie"}
+{"entite": "Nordøyan", "valeur": "Norvège"}
+{"entite": "Nordøyane", "valeur": "Norvège"}
+{"entite": "Nordlysøyane", "valeur": "Norvège"}
+{"entite": "Nordre Rønner", "valeur": "Danemark"}
+{"entite": "Norrbotten archipelago", "valeur": "Suède"}
+{"entite": "Norrpada", "valeur": "Suède"}
+{"entite": "North Archipelago", "valeur": "Chili"}
+{"entite": "Nuorta Likkat", "valeur": "Norvège"}
+{"entite": "Nusa Dua Islands", "valeur": "Indonésie"}
+{"entite": "Nuyts Archipelago", "valeur": "Australie"}
+{"entite": "Ona", "valeur": "Norvège"}
+{"entite": "Once Islas", "valeur": "Philippines"}
+{"entite": "Orcades", "valeur": "Royaume-Uni"}
+{"entite": "Östergötland archipelago", "valeur": "Suède"}
+{"entite": "Ottagoni", "valeur": "Italie"}
+{"entite": "Oura Archipelago", "valeur": "Finlande"}
+{"entite": "Outer Lands", "valeur": "États-Unis"}
+{"entite": "Overton Islands", "valeur": "États-Unis"}
+{"entite": "Oxelösunds skärgård", "valeur": "Suède"}
+{"entite": "Packer Islets", "valeur": "Australie"}
+{"entite": "Pagai Islands", "valeur": "Indonésie"}
+{"entite": "Palagruža", "valeur": "Croatie"}
+{"entite": "Palm Islands", "valeur": "Émirats arabes unis"}
+{"entite": "Palm Jebel Ali", "valeur": "Émirats arabes unis"}
+{"entite": "Palm Jumeirah", "valeur": "Émirats arabes unis"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Papper", "valeur": "Norvège"}
+{"entite": "parc national de l'Archipel de Cabrera", "valeur": "Espagne"}
+{"entite": "Pasi Islands", "valeur": "Indonésie"}
+{"entite": "Paspargos Islands", "valeur": "Turquie"}
+{"entite": "Passage Islands", "valeur": "Nouvelle-Zélande"}
+{"entite": "Pelican Keys", "valeur": "États-Unis"}
+{"entite": "Peñas del Tiscuco", "valeur": "Nicaragua"}
+{"entite": "Peristeria", "valeur": "Grèce"}
+{"entite": "Peterson Keys", "valeur": "États-Unis"}
+{"entite": "Petites Îles Wrac'h", "valeur": "France"}
+{"entite": "Petukhovsky Archipelago", "valeur": "Russie"}
+{"entite": "Philippines", "valeur": "Philippines"}
+{"entite": "Piper Islands", "valeur": "Australie"}
+{"entite": "Pisang Islands", "valeur": "Indonésie"}
+{"entite": "Piteå archipelago", "valeur": "Suède"}
+{"entite": "Pitkyapaasi Archipelago", "valeur": "Russie"}
+{"entite": "Pléiades du Nord", "valeur": "France"}
+{"entite": "Pléiades du Sud", "valeur": "France"}
+{"entite": "Pollock Keys", "valeur": "États-Unis"}
+{"entite": "Pooskerin saaristo", "valeur": "Finlande"}
+{"entite": "Porcupine Islands", "valeur": "États-Unis"}
+{"entite": "Potawatomi Islands", "valeur": "États-Unis"}
+{"entite": "Prickly Pear Cays", "valeur": "Royaume-Uni"}
+{"entite": "Pulau Dakokay", "valeur": "Indonésie"}
+{"entite": "Pulau Nusatel", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Auri", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Babi", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Batutol", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Biak", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Daram", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Dua", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Farondi", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Fonokabai", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Goraici", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Gorauci", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Gordon", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Jal", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Jam", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Jedan", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Jefdoif", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Jin", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Kab", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Kalies", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Karaweira", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Kawio", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Kumamba", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Kuran", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Kus", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Langkissiel", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Latalata", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Loleojaha", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Luing", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Maisel", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Mamboor", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Mariri", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Menon", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Mondong", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Moor", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Nenung", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Nusela", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Openta", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Pasitel", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Pengib", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Peyaba", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Rambobo", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Sagof", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Sanggeluhang", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Segaf", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Selanga", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Tabul", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Tanjungkulit", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Tapai", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Tapok", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Tema", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Tigasaudara", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Toade", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Tomah", "valeur": "Indonésie"}
+{"entite": "Pulau-Pulau Wasankaini", "valeur": "Indonésie"}
+{"entite": "Pulau-pulau Watulai", "valeur": "Indonésie"}
+{"entite": "Pulau Pulau Woda", "valeur": "Indonésie"}
+{"entite": "Pulau Sembilan, Perak", "valeur": "Malaisie"}
+{"entite": "Quần Đảo An Thới", "valeur": "Vietnam"}
+{"entite": "Rønnbeckøyane", "valeur": "Norvège"}
+{"entite": "Rabbit Islands", "valeur": "Royaume-Uni"}
+{"entite": "Rahjan saaristo", "valeur": "Finlande"}
+{"entite": "Ramna Stacks", "valeur": "Royaume-Uni"}
+{"entite": "Ramna Stacks and Gruney", "valeur": "Royaume-Uni"}
+{"entite": "récifs de Bellone", "valeur": "France"}
+{"entite": "République dominicaine", "valeur": "République dominicaine"}
+{"entite": "Réserve marine du Cap Palos-Las Hormigas", "valeur": "Espagne"}
+{"entite": "Revskär", "valeur": "Suède"}
+{"entite": "Ridöarkipelagen", "valeur": "Suède"}
+{"entite": "Risvær", "valeur": "Norvège"}
+{"entite": "Roavvalak", "valeur": "Norvège"}
+{"entite": "Rocas Alijos", "valeur": "Mexique"}
+{"entite": "Rochers Trémarec", "valeur": "France"}
+{"entite": "Rocky Islets", "valeur": "Australie"}
+{"entite": "Röder", "valeur": "Suède"}
+{"entite": "Rödlöga archipelago", "valeur": "Suède"}
+{"entite": "Rokutō Islands", "valeur": "Japon"}
+{"entite": "Rote Islands", "valeur": "Indonésie"}
+{"entite": "Rotuma Group", "valeur": "Fidji"}
+{"entite": "Rowley Shoals", "valeur": "Australie"}
+{"entite": "Rügen", "valeur": "Allemagne"}
+{"entite": "Rurima Rocks", "valeur": "Nouvelle-Zélande"}
+{"entite": "Dørvær", "valeur": "Norvège"}
+{"entite": "Ryukyu arc", "valeur": "Japon"}
+{"entite": "Sør-Gjæslingan", "valeur": "Norvège"}
+{"entite": "Sainoa", "valeur": "Indonésie"}
+{"entite": "Saint Andrews Group", "valeur": "Birmanie"}
+{"entite": "Saint-Kilda", "valeur": "Royaume-Uni"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "Saint-Vincent-et-les-Grenadines"}
+{"entite": "Salt Pond Keys", "valeur": "États-Unis"}
+{"entite": "Sam-sŏm", "valeur": "Corée du Nord"}
+{"entite": "Samae San archipelago", "valeur": "Thaïlande"}
+{"entite": "Samuel Islands", "valeur": "Royaume-Uni"}
+{"entite": "Samui archipelago", "valeur": "Thaïlande"}
+{"entite": "San Juan Islands", "valeur": "États-Unis"}
+{"entite": "Sandvær", "valeur": "Norvège"}
+{"entite": "Sao Tomé-et-Principe", "valeur": "Sao Tomé-et-Principe"}
+{"entite": "Sapudi Islands", "valeur": "Indonésie"}
+{"entite": "Saros Islands", "valeur": "Turquie"}
+{"entite": "Saryangdo", "valeur": "Corée du Sud"}
+{"entite": "Seal Rocks", "valeur": "Royaume-Uni"}
+{"entite": "Semidi Islands", "valeur": "États-Unis"}
+{"entite": "Sept-Îles", "valeur": "France"}
+{"entite": "Ses Bledes", "valeur": "Espagne"}
+{"entite": "Seychelles", "valeur": "Seychelles"}
+{"entite": "Sgat Mòr et Sgat Beag", "valeur": "Royaume-Uni"}
+{"entite": "Shengsi Liedao", "valeur": "République populaire de Chine"}
+{"entite": "Shetland", "valeur": "Royaume-Uni"}
+{"entite": "Si Phan Don", "valeur": "Laos"}
+{"entite": "Sishuang Islands", "valeur": "République populaire de Chine"}
+{"entite": "Sjuøyane", "valeur": "Norvège"}
+{"entite": "Skarv archipelago", "valeur": "Suède"}
+{"entite": "Skerries extérieures", "valeur": "Royaume-Uni"}
+{"entite": "skerry coast of Hällaryd", "valeur": "Suède"}
+{"entite": "Sklinna", "valeur": "Norvège"}
+{"entite": "Skoboraden", "valeur": "Suède"}
+{"entite": "Slate Islands", "valeur": "Australie"}
+{"entite": "Smáeyjar", "valeur": "Islande"}
+{"entite": "Småland archipelago", "valeur": "Suède"}
+{"entite": "Small Isles", "valeur": "Royaume-Uni"}
+{"entite": "Snake Islands", "valeur": "Canada"}
+{"entite": "Söderarm archipelago", "valeur": "Suède"}
+{"entite": "Solvær", "valeur": "Norvège"}
+{"entite": "South Kuril Islands", "valeur": "Russie"}
+{"entite": "South Loloda Islands", "valeur": "Indonésie"}
+{"entite": "South Natuna", "valeur": "Indonésie"}
+{"entite": "South Neptune Islands", "valeur": "Australie"}
+{"entite": "Spalathronisia Chalkidikis", "valeur": "Grèce"}
+{"entite": "Stack Islands", "valeur": "Royaume-Uni"}
+{"entite": "Steilene", "valeur": "Norvège"}
+{"entite": "Steinavær, Harstad", "valeur": "Norvège"}
+{"entite": "Stora Nassa", "valeur": "Suède"}
+{"entite": "Strawberry Islands", "valeur": "États-Unis"}
+{"entite": "Strophades", "valeur": "Grèce"}
+{"entite": "Sunda Arc", "valeur": "Indonésie"}
+{"entite": "Sunday Islands", "valeur": "Australie"}
+{"entite": "Sundsvall archipelago", "valeur": "Suède"}
+{"entite": "Svalbard", "valeur": "Norvège"}
+{"entite": "Svenner", "valeur": "Norvège"}
+{"entite": "Svenska Högarna", "valeur": "Suède"}
+{"entite": "Svenska Stenarna", "valeur": "Suède"}
+{"entite": "Swan Islands", "valeur": "Ukraine"}
+{"entite": "Sydhavsøerne", "valeur": "Danemark"}
+{"entite": "Taishan Liedao", "valeur": "République populaire de Chine"}
+{"entite": "Takeshima and another island", "valeur": "Japon"}
+{"entite": "Les Tantes", "valeur": "Grenade"}
+{"entite": "Tarva", "valeur": "Norvège"}
+{"entite": "Tata Islands", "valeur": "Nouvelle-Zélande"}
+{"entite": "Terre du Nord", "valeur": "Russie"}
+{"entite": "Terre François-Joseph", "valeur": "Russie"}
+{"entite": "The Cumbraes", "valeur": "Royaume-Uni"}
+{"entite": "The English Companys Islands", "valeur": "Australie"}
+{"entite": "The Fridays", "valeur": "Royaume-Uni"}
+{"entite": "The Scares", "valeur": "Royaume-Uni"}
+{"entite": "The Universe", "valeur": "Émirats arabes unis"}
+{"entite": "The World", "valeur": "Émirats arabes unis"}
+{"entite": "Thimble Islands", "valeur": "États-Unis"}
+{"entite": "Thousands Islands", "valeur": "Indonésie"}
+{"entite": "Tjust archipelago", "valeur": "Suède"}
+{"entite": "Tobelo", "valeur": "Indonésie"}
+{"entite": "Tom Thumb Islands", "valeur": "Australie"}
+{"entite": "Tonga Islands", "valeur": "Tonga"}
+{"entite": "Tongatapu Islands", "valeur": "Tonga"}
+{"entite": "Torlesse Islands", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Torran Rocks", "valeur": "Royaume-Uni"}
+{"entite": "Tregrosse Islets", "valeur": "Australie"}
+{"entite": "Trente Mille Îles", "valeur": "Canada"}
+{"entite": "Triagoz", "valeur": "France"}
+{"entite": "Triangular Islands", "valeur": "Australie"}
+{"entite": "Trinité-et-Tobago", "valeur": "Trinité-et-Tobago"}
+{"entite": "Triste Islands", "valeur": "Royaume-Uni"}
+{"entite": "Troldholme", "valeur": "Danemark"}
+{"entite": "Tudjuh Archipelago", "valeur": "Indonésie"}
+{"entite": "Turtle Group", "valeur": "Australie"}
+{"entite": "Tuvalu", "valeur": "Tuvalu"}
+{"entite": "Twin Islands", "valeur": "Australie"}
+{"entite": "Uliasers Islands", "valeur": "Indonésie"}
+{"entite": "Upper Keys", "valeur": "États-Unis"}
+{"entite": "Utvær", "valeur": "Norvège"}
+{"entite": "Værlandet", "valeur": "Norvège"}
+{"entite": "Vaigattøyane", "valeur": "Norvège"}
+{"entite": "Vanuatu", "valeur": "Vanuatu"}
+{"entite": "Ve Skerries", "valeur": "Royaume-Uni"}
+{"entite": "Veaux Marins", "valeur": "France"}
+{"entite": "Vernon Islands", "valeur": "Australie"}
+{"entite": "Vesterålen", "valeur": "Norvège"}
+{"entite": "Vikna", "valeur": "Norvège"}
+{"entite": "Virginia Barrier Islands", "valeur": "États-Unis"}
+{"entite": "Watubela archipelago", "valeur": "Indonésie"}
+{"entite": "Wayag Islands", "valeur": "Indonésie"}
+{"entite": "Western Group", "valeur": "Portugal"}
+{"entite": "Western Islands, Papua New Guinea", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Whidbey Isles", "valeur": "Australie"}
+{"entite": "Wide Berth Islands", "valeur": "Nouvelle-Zélande"}
+{"entite": "Widi", "valeur": "Indonésie"}
+{"entite": "Willis Islets", "valeur": "Australie"}
+{"entite": "Xiongdi Yu", "valeur": "République populaire de Chine"}
+{"entite": "Zadar archipelago", "valeur": "Croatie"}
+{"entite": "Zeiløyane", "valeur": "Norvège"}
+{"entite": "Zhongsha Islands", "valeur": "République populaire de Chine"}

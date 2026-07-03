@@ -1,0 +1,13 @@
+{"_relation": "ordre_signe_chinois", "_categorie": "convention", "_source": "astrologie chinoise (signe -> rang 1..12)", "_articles": true}
+{"entite": "buffle", "valeur": "2"}
+{"entite": "cheval", "valeur": "7"}
+{"entite": "chèvre", "valeur": "8"}
+{"entite": "chien", "valeur": "11"}
+{"entite": "cochon", "valeur": "12"}
+{"entite": "coq", "valeur": "10"}
+{"entite": "dragon", "valeur": "5"}
+{"entite": "lapin", "valeur": "4"}
+{"entite": "rat", "valeur": "1"}
+{"entite": "serpent", "valeur": "6"}
+{"entite": "singe", "valeur": "9"}
+{"entite": "tigre", "valeur": "3"}

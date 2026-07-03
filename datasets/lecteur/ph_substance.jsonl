@@ -1,0 +1,15 @@
+{"_relation": "ph_substance", "_categorie": "physique", "_source": "chimie de référence (substance -> acide/basique/neutre)", "_articles": true}
+{"entite": "acide chlorhydrique", "valeur": "acide"}
+{"entite": "acide sulfurique", "valeur": "acide"}
+{"entite": "ammoniaque", "valeur": "basique"}
+{"entite": "bicarbonate de soude", "valeur": "basique"}
+{"entite": "citron", "valeur": "acide"}
+{"entite": "coca-cola", "valeur": "acide"}
+{"entite": "eau de javel", "valeur": "basique"}
+{"entite": "eau distillée", "valeur": "neutre"}
+{"entite": "eau pure", "valeur": "neutre"}
+{"entite": "eau savonneuse", "valeur": "basique"}
+{"entite": "jus d'orange", "valeur": "acide"}
+{"entite": "savon", "valeur": "basique"}
+{"entite": "soude caustique", "valeur": "basique"}
+{"entite": "vinaigre", "valeur": "acide"}

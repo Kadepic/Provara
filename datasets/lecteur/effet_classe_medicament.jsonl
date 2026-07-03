@@ -1,0 +1,8 @@
+{"_relation": "effet_classe_medicament", "_categorie": "physique", "_source": "Modèle (Claude) — pharmacologie textbook curée (classe -> effet ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "antalgique", "valeur": "soulagement de la douleur"}
+{"entite": "anti-inflammatoire", "valeur": "réduction de l'inflammation"}
+{"entite": "antibiotique", "valeur": "destruction des bactéries"}
+{"entite": "anticoagulant", "valeur": "fluidification du sang"}
+{"entite": "antipyrétique", "valeur": "baisse de la fièvre"}
+{"entite": "antiviral", "valeur": "inhibition des virus"}
+{"entite": "diurétique", "valeur": "augmentation de l'élimination urinaire"}

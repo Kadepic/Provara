@@ -1,0 +1,54 @@
+{"_relation": "nombre_chambres_coeur_animal", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie comparée textbook curée (cavités cardiaques ; ensemble fermé {2,3,4} ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aigle royal", "valeur": "4"}
+{"entite": "alligator", "valeur": "4"}
+{"entite": "anguille", "valeur": "2"}
+{"entite": "autruche", "valeur": "4"}
+{"entite": "axolotl", "valeur": "3"}
+{"entite": "baleine bleue", "valeur": "4"}
+{"entite": "brochet", "valeur": "2"}
+{"entite": "caméléon", "valeur": "3"}
+{"entite": "carpe", "valeur": "2"}
+{"entite": "chat", "valeur": "4"}
+{"entite": "cheval", "valeur": "4"}
+{"entite": "chien", "valeur": "4"}
+{"entite": "chimpanzé", "valeur": "4"}
+{"entite": "cobra royal", "valeur": "3"}
+{"entite": "crapaud", "valeur": "3"}
+{"entite": "crocodile du Nil", "valeur": "4"}
+{"entite": "dauphin", "valeur": "4"}
+{"entite": "éléphant d'Afrique", "valeur": "4"}
+{"entite": "être humain", "valeur": "4"}
+{"entite": "gecko", "valeur": "3"}
+{"entite": "girafe", "valeur": "4"}
+{"entite": "grenouille rousse", "valeur": "3"}
+{"entite": "hareng", "valeur": "2"}
+{"entite": "hibou", "valeur": "4"}
+{"entite": "hippocampe", "valeur": "2"}
+{"entite": "iguane", "valeur": "3"}
+{"entite": "lapin", "valeur": "4"}
+{"entite": "lézard", "valeur": "3"}
+{"entite": "lion", "valeur": "4"}
+{"entite": "manchot empereur", "valeur": "4"}
+{"entite": "morue", "valeur": "2"}
+{"entite": "orque", "valeur": "4"}
+{"entite": "perche", "valeur": "2"}
+{"entite": "perroquet", "valeur": "4"}
+{"entite": "pigeon", "valeur": "4"}
+{"entite": "python", "valeur": "3"}
+{"entite": "rainette", "valeur": "3"}
+{"entite": "requin", "valeur": "2"}
+{"entite": "salamandre", "valeur": "3"}
+{"entite": "sardine", "valeur": "2"}
+{"entite": "saumon atlantique", "valeur": "2"}
+{"entite": "serpent", "valeur": "3"}
+{"entite": "sole", "valeur": "2"}
+{"entite": "souris", "valeur": "4"}
+{"entite": "thon rouge", "valeur": "2"}
+{"entite": "tigre", "valeur": "4"}
+{"entite": "tortue marine", "valeur": "3"}
+{"entite": "tortue terrestre", "valeur": "3"}
+{"entite": "triton", "valeur": "3"}
+{"entite": "truite", "valeur": "2"}
+{"entite": "vache", "valeur": "4"}
+{"entite": "varan", "valeur": "3"}
+{"entite": "vipère", "valeur": "3"}

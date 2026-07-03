@@ -1,0 +1,22 @@
+{"_relation": "type_roche", "_categorie": "convention", "_source": "géologie de référence (roche -> type) — classification établie", "_articles": true}
+{"entite": "andésite", "valeur": "magmatique"}
+{"entite": "ardoise", "valeur": "métamorphique"}
+{"entite": "argile", "valeur": "sédimentaire"}
+{"entite": "basalte", "valeur": "magmatique"}
+{"entite": "calcaire", "valeur": "sédimentaire"}
+{"entite": "charbon", "valeur": "sédimentaire"}
+{"entite": "conglomérat", "valeur": "sédimentaire"}
+{"entite": "craie", "valeur": "sédimentaire"}
+{"entite": "gabbro", "valeur": "magmatique"}
+{"entite": "gneiss", "valeur": "métamorphique"}
+{"entite": "granite", "valeur": "magmatique"}
+{"entite": "grès", "valeur": "sédimentaire"}
+{"entite": "gypse", "valeur": "sédimentaire"}
+{"entite": "marbre", "valeur": "métamorphique"}
+{"entite": "micaschiste", "valeur": "métamorphique"}
+{"entite": "obsidienne", "valeur": "magmatique"}
+{"entite": "pierre ponce", "valeur": "magmatique"}
+{"entite": "quartzite", "valeur": "métamorphique"}
+{"entite": "rhyolite", "valeur": "magmatique"}
+{"entite": "schiste", "valeur": "métamorphique"}
+{"entite": "sel gemme", "valeur": "sédimentaire"}

@@ -1,0 +1,5 @@
+{"_relation": "role_partie_fleur", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (pièce florale -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "étamine", "valeur": "organe reproducteur mâle"}
+{"entite": "pétale", "valeur": "attraction des pollinisateurs"}
+{"entite": "pistil", "valeur": "organe reproducteur femelle"}
+{"entite": "sépale", "valeur": "protection du bouton floral"}

@@ -1,0 +1,4 @@
+{"_relation": "role_cellule_sanguine", "_categorie": "physique", "_source": "Modèle (Claude) — hématologie textbook curée (rôle des cellules sanguines ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "globule blanc", "valeur": "défense immunitaire"}
+{"entite": "globule rouge", "valeur": "transport de l'oxygène"}
+{"entite": "plaquette", "valeur": "coagulation"}

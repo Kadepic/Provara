@@ -1,0 +1,5 @@
+{"_relation": "role_constituant_os", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (constituant osseux -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "moelle osseuse rouge", "valeur": "production des cellules sanguines"}
+{"entite": "os compact", "valeur": "résistance mécanique"}
+{"entite": "os spongieux", "valeur": "légèreté et amortissement"}
+{"entite": "périoste", "valeur": "croissance en épaisseur et nutrition de l'os"}

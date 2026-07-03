@@ -1,0 +1,16 @@
+{"_relation": "planete_parente", "_categorie": "physique", "_source": "astre autour duquel orbite la lune (lunes majeures)", "_articles": true}
+{"entite": "callisto", "valeur": "jupiter"}
+{"entite": "déimos", "valeur": "mars"}
+{"entite": "encelade", "valeur": "saturne"}
+{"entite": "europe", "valeur": "jupiter"}
+{"entite": "ganymède", "valeur": "jupiter"}
+{"entite": "io", "valeur": "jupiter"}
+{"entite": "lune", "valeur": "terre"}
+{"entite": "mimas", "valeur": "saturne"}
+{"entite": "miranda", "valeur": "uranus"}
+{"entite": "obéron", "valeur": "uranus"}
+{"entite": "phobos", "valeur": "mars"}
+{"entite": "rhéa", "valeur": "saturne"}
+{"entite": "titan", "valeur": "saturne"}
+{"entite": "titania", "valeur": "uranus"}
+{"entite": "triton", "valeur": "neptune"}

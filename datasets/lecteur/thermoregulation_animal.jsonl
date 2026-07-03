@@ -1,0 +1,34 @@
+{"_relation": "thermoregulation_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (thermorégulation ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aigle royal", "valeur": "sang chaud"}
+{"entite": "anguille", "valeur": "sang froid"}
+{"entite": "autruche", "valeur": "sang chaud"}
+{"entite": "baleine bleue", "valeur": "sang chaud"}
+{"entite": "carpe commune", "valeur": "sang froid"}
+{"entite": "chauve-souris", "valeur": "sang chaud"}
+{"entite": "chimpanzé", "valeur": "sang chaud"}
+{"entite": "cobra royal", "valeur": "sang froid"}
+{"entite": "crapaud", "valeur": "sang froid"}
+{"entite": "crocodile du Nil", "valeur": "sang froid"}
+{"entite": "dauphin", "valeur": "sang chaud"}
+{"entite": "éléphant d'Afrique", "valeur": "sang chaud"}
+{"entite": "gecko", "valeur": "sang froid"}
+{"entite": "grenouille rousse", "valeur": "sang froid"}
+{"entite": "hibou", "valeur": "sang chaud"}
+{"entite": "iguane", "valeur": "sang froid"}
+{"entite": "lézard", "valeur": "sang froid"}
+{"entite": "lion", "valeur": "sang chaud"}
+{"entite": "manchot empereur", "valeur": "sang chaud"}
+{"entite": "morue", "valeur": "sang froid"}
+{"entite": "ornithorynque", "valeur": "sang chaud"}
+{"entite": "ours brun", "valeur": "sang chaud"}
+{"entite": "pigeon", "valeur": "sang chaud"}
+{"entite": "python", "valeur": "sang froid"}
+{"entite": "salamandre", "valeur": "sang froid"}
+{"entite": "sardine", "valeur": "sang froid"}
+{"entite": "saumon atlantique", "valeur": "sang froid"}
+{"entite": "souris domestique", "valeur": "sang chaud"}
+{"entite": "tigre", "valeur": "sang chaud"}
+{"entite": "tortue marine", "valeur": "sang froid"}
+{"entite": "vache", "valeur": "sang chaud"}
+{"entite": "varan", "valeur": "sang froid"}
+{"entite": "vipère", "valeur": "sang froid"}

@@ -1,0 +1,4 @@
+{"_relation": "role_partie_poumon", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie respiratoire textbook curée (structure pulmonaire -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "alvéole pulmonaire", "valeur": "échanges gazeux"}
+{"entite": "bronche", "valeur": "conduction de l'air"}
+{"entite": "plèvre", "valeur": "protection et lubrification du poumon"}

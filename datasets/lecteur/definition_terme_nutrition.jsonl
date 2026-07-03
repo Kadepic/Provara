@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_nutrition", "_categorie": "physique", "_source": "Modèle (Claude) — nutrition textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "calorie", "valeur": "unité de mesure de l'énergie"}
+{"entite": "nutriment", "valeur": "substance assimilable issue des aliments"}
+{"entite": "ration alimentaire", "valeur": "quantité d'aliments consommée par jour"}

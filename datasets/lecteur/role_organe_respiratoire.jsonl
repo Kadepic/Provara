@@ -1,0 +1,4 @@
+{"_relation": "role_organe_respiratoire", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (organe respiratoire -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "diaphragme", "valeur": "muscle de la ventilation"}
+{"entite": "nez", "valeur": "filtration et réchauffement de l'air"}
+{"entite": "trachée", "valeur": "conduction de l'air"}

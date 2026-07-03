@@ -1,0 +1,4 @@
+{"_relation": "role_organe_systeme_nerveux_central", "_categorie": "physique", "_source": "Modèle (Claude) — neurophysiologie textbook curée (organe du SNC -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cerveau", "valeur": "centre du traitement de l'information"}
+{"entite": "moelle épinière", "valeur": "transmission des messages nerveux et réflexes"}
+{"entite": "tronc cérébral", "valeur": "contrôle des fonctions vitales"}

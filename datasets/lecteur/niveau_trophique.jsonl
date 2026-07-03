@@ -1,0 +1,39 @@
+{"_relation": "niveau_trophique", "_categorie": "physique", "_source": "Modèle (Claude) — écologie textbook curée (niveau trophique ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "consommateur"}
+{"entite": "aigle royal", "valeur": "consommateur"}
+{"entite": "avoine", "valeur": "producteur"}
+{"entite": "blé", "valeur": "producteur"}
+{"entite": "champignon de Paris", "valeur": "décomposeur"}
+{"entite": "chêne", "valeur": "producteur"}
+{"entite": "cloporte", "valeur": "décomposeur"}
+{"entite": "dauphin", "valeur": "consommateur"}
+{"entite": "escargot", "valeur": "consommateur"}
+{"entite": "Escherichia coli", "valeur": "décomposeur"}
+{"entite": "être humain", "valeur": "consommateur"}
+{"entite": "fougère", "valeur": "producteur"}
+{"entite": "grenouille", "valeur": "consommateur"}
+{"entite": "hibou", "valeur": "consommateur"}
+{"entite": "laminaire", "valeur": "producteur"}
+{"entite": "lapin", "valeur": "consommateur"}
+{"entite": "levure de boulanger", "valeur": "décomposeur"}
+{"entite": "lion", "valeur": "consommateur"}
+{"entite": "loup", "valeur": "consommateur"}
+{"entite": "maïs", "valeur": "producteur"}
+{"entite": "méduse", "valeur": "consommateur"}
+{"entite": "moisissure", "valeur": "décomposeur"}
+{"entite": "mousse", "valeur": "producteur"}
+{"entite": "mouton", "valeur": "consommateur"}
+{"entite": "orge", "valeur": "producteur"}
+{"entite": "papillon", "valeur": "consommateur"}
+{"entite": "phytoplancton", "valeur": "producteur"}
+{"entite": "renard roux", "valeur": "consommateur"}
+{"entite": "requin", "valeur": "consommateur"}
+{"entite": "riz", "valeur": "producteur"}
+{"entite": "rosier", "valeur": "producteur"}
+{"entite": "sapin", "valeur": "producteur"}
+{"entite": "sardine", "valeur": "consommateur"}
+{"entite": "souris", "valeur": "consommateur"}
+{"entite": "tigre", "valeur": "consommateur"}
+{"entite": "tournesol", "valeur": "producteur"}
+{"entite": "vache", "valeur": "consommateur"}
+{"entite": "ver de terre", "valeur": "décomposeur"}

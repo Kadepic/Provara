@@ -1,0 +1,7 @@
+{"_relation": "valeur_piece_echecs", "_categorie": "convention", "_source": "échecs (pièce -> valeur conventionnelle en points)", "_articles": true}
+{"entite": "cavalier", "valeur": "3"}
+{"entite": "dame", "valeur": "9"}
+{"entite": "fou", "valeur": "3"}
+{"entite": "pion", "valeur": "1"}
+{"entite": "roi", "valeur": "0"}
+{"entite": "tour", "valeur": "5"}

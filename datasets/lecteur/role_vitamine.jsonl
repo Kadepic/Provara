@@ -1,0 +1,14 @@
+{"_relation": "role_vitamine", "_categorie": "physique", "_source": "Modèle (Claude) — nutrition textbook curée (rôle de vitamine ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "vitamine A", "valeur": "vision"}
+{"entite": "vitamine B1", "valeur": "métabolisme des glucides"}
+{"entite": "vitamine B12", "valeur": "formation des globules rouges"}
+{"entite": "vitamine B2", "valeur": "métabolisme énergétique"}
+{"entite": "vitamine B3", "valeur": "métabolisme énergétique"}
+{"entite": "vitamine B5", "valeur": "synthèse de la coenzyme A"}
+{"entite": "vitamine B6", "valeur": "métabolisme des acides aminés"}
+{"entite": "vitamine B8", "valeur": "métabolisme des acides gras"}
+{"entite": "vitamine B9", "valeur": "synthèse de l'ADN"}
+{"entite": "vitamine C", "valeur": "synthèse du collagène"}
+{"entite": "vitamine D", "valeur": "absorption du calcium"}
+{"entite": "vitamine E", "valeur": "antioxydant"}
+{"entite": "vitamine K", "valeur": "coagulation sanguine"}

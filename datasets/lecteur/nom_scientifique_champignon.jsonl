@@ -1,0 +1,8 @@
+{"_relation": "nom_scientifique_champignon", "_categorie": "convention", "_source": "Modèle (Claude) — mycologie textbook curée (nom commun FR -> binôme latin ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amanite phalloïde", "valeur": "Amanita phalloides"}
+{"entite": "amanite tue-mouches", "valeur": "Amanita muscaria"}
+{"entite": "cèpe de Bordeaux", "valeur": "Boletus edulis"}
+{"entite": "champignon de Paris", "valeur": "Agaricus bisporus"}
+{"entite": "girolle", "valeur": "Cantharellus cibarius"}
+{"entite": "levure de boulanger", "valeur": "Saccharomyces cerevisiae"}
+{"entite": "truffe noire", "valeur": "Tuber melanosporum"}

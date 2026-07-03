@@ -1,0 +1,21 @@
+{"_relation": "charge_ion", "_categorie": "physique", "_source": "chimie de référence (ion -> charge)", "_articles": true}
+{"entite": "ion aluminium", "valeur": "+3"}
+{"entite": "ion ammonium", "valeur": "+1"}
+{"entite": "ion argent", "valeur": "+1"}
+{"entite": "ion calcium", "valeur": "+2"}
+{"entite": "ion carbonate", "valeur": "-2"}
+{"entite": "ion chlorure", "valeur": "-1"}
+{"entite": "ion cuivre ii", "valeur": "+2"}
+{"entite": "ion fer ii", "valeur": "+2"}
+{"entite": "ion fer iii", "valeur": "+3"}
+{"entite": "ion fluorure", "valeur": "-1"}
+{"entite": "ion hydrogène", "valeur": "+1"}
+{"entite": "ion hydroxyde", "valeur": "-1"}
+{"entite": "ion magnésium", "valeur": "+2"}
+{"entite": "ion nitrate", "valeur": "-1"}
+{"entite": "ion oxyde", "valeur": "-2"}
+{"entite": "ion phosphate", "valeur": "-3"}
+{"entite": "ion potassium", "valeur": "+1"}
+{"entite": "ion sodium", "valeur": "+1"}
+{"entite": "ion sulfate", "valeur": "-2"}
+{"entite": "ion zinc", "valeur": "+2"}

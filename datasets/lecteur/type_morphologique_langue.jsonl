@@ -1,0 +1,34 @@
+{"_relation": "type_morphologique_langue", "_categorie": "convention", "_source": "Claude (connaissances entraînées) — type morphologique (prototypes typologiques incontestés)", "_articles": true}
+{"entite": "allemand", "valeur": "flexionnelle"}
+{"entite": "basque", "valeur": "agglutinante"}
+{"entite": "cantonais", "valeur": "isolante"}
+{"entite": "coréen", "valeur": "agglutinante"}
+{"entite": "croate", "valeur": "flexionnelle"}
+{"entite": "estonien", "valeur": "agglutinante"}
+{"entite": "finnois", "valeur": "agglutinante"}
+{"entite": "grec ancien", "valeur": "flexionnelle"}
+{"entite": "grec moderne", "valeur": "flexionnelle"}
+{"entite": "groenlandais", "valeur": "polysynthétique"}
+{"entite": "hongrois", "valeur": "agglutinante"}
+{"entite": "inuktitut", "valeur": "polysynthétique"}
+{"entite": "islandais", "valeur": "flexionnelle"}
+{"entite": "japonais", "valeur": "agglutinante"}
+{"entite": "latin", "valeur": "flexionnelle"}
+{"entite": "letton", "valeur": "flexionnelle"}
+{"entite": "lituanien", "valeur": "flexionnelle"}
+{"entite": "mandarin", "valeur": "isolante"}
+{"entite": "mohawk", "valeur": "polysynthétique"}
+{"entite": "mongol", "valeur": "agglutinante"}
+{"entite": "nahuatl", "valeur": "polysynthétique"}
+{"entite": "polonais", "valeur": "flexionnelle"}
+{"entite": "russe", "valeur": "flexionnelle"}
+{"entite": "sanskrit", "valeur": "flexionnelle"}
+{"entite": "serbe", "valeur": "flexionnelle"}
+{"entite": "slovaque", "valeur": "flexionnelle"}
+{"entite": "slovène", "valeur": "flexionnelle"}
+{"entite": "swahili", "valeur": "agglutinante"}
+{"entite": "tamoul", "valeur": "agglutinante"}
+{"entite": "thaï", "valeur": "isolante"}
+{"entite": "turc", "valeur": "agglutinante"}
+{"entite": "ukrainien", "valeur": "flexionnelle"}
+{"entite": "vietnamien", "valeur": "isolante"}

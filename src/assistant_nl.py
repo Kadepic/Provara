@@ -210,6 +210,17 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
                        f"{_PFX_HORS_FAIT}. Une vérité existe (question bornée) : je pourrai la chercher sur mes "
                        f"sources de confiance quand ma recherche web sera activée — en attendant je m'abstiens "
                        f"plutôt que deviner.", regime=c.regime, source="recherche web désactivée (opt-in IA_WEB=1)")
+    # RECHERCHE STRUCTURÉE — source FIABLE (Wikidata) -> réponse VÉRIFIÉE et ATTRIBUÉE (FAUX=0), avant le simple ping.
+    # « source fiable = réponse véridique » (design Yohan) : extraction SPARQL déterministe, jamais du texte libre.
+    try:
+        import veille_structure as _VS
+        _res = _VS.interroge_nl(question)
+    except Exception:
+        _res = None
+    if _res:
+        _a, _e, _valeur, _src = _res
+        return Reponse(FAIT, f"{_valeur}  (trouvé sur {_src})", regime=c.regime,
+                       source=f"{_src} — source structurée de confiance")
     ok, doms, n = _ping_sources()
     if ok:
         return Reponse(HORS,

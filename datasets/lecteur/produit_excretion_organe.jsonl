@@ -1,0 +1,5 @@
+{"_relation": "produit_excretion_organe", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (organe excréteur -> déchet ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "foie", "valeur": "bile"}
+{"entite": "peau", "valeur": "sueur"}
+{"entite": "poumon", "valeur": "dioxyde de carbone"}
+{"entite": "rein", "valeur": "urine"}

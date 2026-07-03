@@ -1,0 +1,6 @@
+{"_relation": "definition_terme_genetique", "_categorie": "physique", "_source": "Modèle (Claude) — génétique textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "allèle", "valeur": "version d'un gène"}
+{"entite": "gène", "valeur": "segment d'ADN portant une information héréditaire"}
+{"entite": "génotype", "valeur": "ensemble des allèles d'un individu"}
+{"entite": "mutation", "valeur": "modification de la séquence d'ADN"}
+{"entite": "phénotype", "valeur": "ensemble des caractères observables"}

@@ -1,0 +1,3 @@
+{"_relation": "role_phase_cardiaque", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (phase cardiaque -> rôle ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "diastole", "valeur": "relâchement et remplissage du cœur"}
+{"entite": "systole", "valeur": "contraction et éjection du sang"}

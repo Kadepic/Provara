@@ -1,0 +1,39 @@
+{"_relation": "partie_comestible_plante", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (partie comestible ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "ail", "valeur": "bulbe"}
+{"entite": "artichaut", "valeur": "fleur"}
+{"entite": "asperge", "valeur": "tige"}
+{"entite": "aubergine", "valeur": "fruit"}
+{"entite": "betterave", "valeur": "racine"}
+{"entite": "blette", "valeur": "feuille"}
+{"entite": "brocoli", "valeur": "fleur"}
+{"entite": "carotte", "valeur": "racine"}
+{"entite": "céleri", "valeur": "tige"}
+{"entite": "chou", "valeur": "feuille"}
+{"entite": "chou-fleur", "valeur": "fleur"}
+{"entite": "concombre", "valeur": "fruit"}
+{"entite": "courgette", "valeur": "fruit"}
+{"entite": "cresson", "valeur": "feuille"}
+{"entite": "échalote", "valeur": "bulbe"}
+{"entite": "endive", "valeur": "feuille"}
+{"entite": "épinard", "valeur": "feuille"}
+{"entite": "fève", "valeur": "graine"}
+{"entite": "haricot", "valeur": "graine"}
+{"entite": "igname", "valeur": "tubercule"}
+{"entite": "laitue", "valeur": "feuille"}
+{"entite": "lentille", "valeur": "graine"}
+{"entite": "mâche", "valeur": "feuille"}
+{"entite": "maïs", "valeur": "graine"}
+{"entite": "manioc", "valeur": "tubercule"}
+{"entite": "navet", "valeur": "racine"}
+{"entite": "oignon", "valeur": "bulbe"}
+{"entite": "panais", "valeur": "racine"}
+{"entite": "patate douce", "valeur": "tubercule"}
+{"entite": "petit pois", "valeur": "graine"}
+{"entite": "pois chiche", "valeur": "graine"}
+{"entite": "poivron", "valeur": "fruit"}
+{"entite": "pomme de terre", "valeur": "tubercule"}
+{"entite": "potiron", "valeur": "fruit"}
+{"entite": "radis", "valeur": "racine"}
+{"entite": "rhubarbe", "valeur": "tige"}
+{"entite": "tomate", "valeur": "fruit"}
+{"entite": "topinambour", "valeur": "tubercule"}

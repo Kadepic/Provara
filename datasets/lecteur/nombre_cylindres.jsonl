@@ -1,0 +1,1142 @@
+{"_relation": "nombre_cylindres", "_categorie": "physique", "_source": "Wikidata/QLever — nombre de cylindres P1100 (dénombrement ; snapshot class-free)", "_articles": true}
+{"entite": "020 T Midi 401 à 406", "valeur": "2"}
+{"entite": "021 Est 441 à 485", "valeur": "2"}
+{"entite": "030 Est 1002 à 1005", "valeur": "2"}
+{"entite": "030 Est 3001 à 3014", "valeur": "2"}
+{"entite": "030 Midi 801 à 1202", "valeur": "2"}
+{"entite": "030 PLM 1513 à 2457", "valeur": "2"}
+{"entite": "030 T Nord 3.901 à 3.915", "valeur": "2"}
+{"entite": "030 T PLM 7401 à 7615", "valeur": "2"}
+{"entite": "030 TU", "valeur": "2"}
+{"entite": "030 TU 13", "valeur": "2"}
+{"entite": "030 TX", "valeur": "2"}
+{"entite": "030 W 1 à 45", "valeur": "2"}
+{"entite": "031+130 T Nord 6121 à 6168 et Est 6101 à 6113", "valeur": "4"}
+{"entite": "031 T Est 613 à 742", "valeur": "2"}
+{"entite": "040 Est 0501 à 0691", "valeur": "2"}
+{"entite": "040 Nord 4.001 à 4.075 et 4.801 à 4.990", "valeur": "2"}
+{"entite": "040 PLM 3211 à 3362", "valeur": "4"}
+{"entite": "040 T 17 CFTHQ", "valeur": "2"}
+{"entite": "040 T Est 4901 à 4990", "valeur": "2"}
+{"entite": "040 T Nord 4.2016 à 4.2095", "valeur": "2"}
+{"entite": "040 T Nord 4.446 à 4.460", "valeur": "2"}
+{"entite": "050 PLM 5101 à 5150", "valeur": "2"}
+{"entite": "050 T Midi 5001 à 5047", "valeur": "2"}
+{"entite": "050 T PO 5501 à 5525", "valeur": "2"}
+{"entite": "10 cylindres en étoile", "valeur": "10"}
+{"entite": "10 cylindres en ligne", "valeur": "10"}
+{"entite": "10 cylindres en V", "valeur": "10"}
+{"entite": "11 cylindres en étoile", "valeur": "11"}
+{"entite": "12 cylindres en ligne", "valeur": "12"}
+{"entite": "120 Midi 51 à 95", "valeur": "2"}
+{"entite": "121 PLM C 1 et C 2", "valeur": "4"}
+{"entite": "130 B 47", "valeur": "2"}
+{"entite": "130 Est 30252 à 30428", "valeur": "2"}
+{"entite": "130 Est 30254 à 30766", "valeur": "2"}
+{"entite": "130 Nord 3.101", "valeur": "3"}
+{"entite": "130 Nord 3.1401 et 3.1402", "valeur": "2"}
+{"entite": "130 Nord 3.1501 et 3.1502", "valeur": "2"}
+{"entite": "130 PLM 1 à 60", "valeur": "2"}
+{"entite": "131 T Est 32001 à 32050", "valeur": "2"}
+{"entite": "14 cylindres en double étoile", "valeur": "14"}
+{"entite": "14 cylindres en ligne", "valeur": "14"}
+{"entite": "14 cylindres en V", "valeur": "14"}
+{"entite": "140-101 à 370 État ou 140 C SNCF", "valeur": "2"}
+{"entite": "140 Est 4003 à 4175", "valeur": "4"}
+{"entite": "140 F PLM 1 à 100", "valeur": "4"}
+{"entite": "140 Midi 4001 à 4018", "valeur": "4"}
+{"entite": "140 Midi 4101 à 4140", "valeur": "2"}
+{"entite": "140 Nord 4.061 à 4.340", "valeur": "4"}
+{"entite": "140 PLM 3741 à 3955 et 140 E PLM 164 à 213", "valeur": "4"}
+{"entite": "140 PLM 4175 à 4194", "valeur": "4"}
+{"entite": "140 PLM 4271 à 4290", "valeur": "4"}
+{"entite": "140 PLM 4295 à 4499", "valeur": "4"}
+{"entite": "140 PO 7001 à 7076", "valeur": "2"}
+{"entite": "140 W", "valeur": "2"}
+{"entite": "141 Nord 4.1101 à 4.1150", "valeur": "4"}
+{"entite": "141 P SNCF", "valeur": "4"}
+{"entite": "141 PLM 1 à 680", "valeur": "4"}
+{"entite": "141 PLM 1001 à 1012", "valeur": "4"}
+{"entite": "141 PLM 1013 à 1129", "valeur": "4"}
+{"entite": "141 R", "valeur": "2"}
+{"entite": "141 R 1199", "valeur": "2"}
+{"entite": "141 R 1298", "valeur": "2"}
+{"entite": "141 T Est 141.701 à 141.742", "valeur": "3"}
+{"entite": "141 T Est 4401 à 4512", "valeur": "2"}
+{"entite": "141 T État 42.001 à 42.020", "valeur": "2"}
+{"entite": "141 T État 42.101 à 42.140", "valeur": "3"}
+{"entite": "141 T PO 5301 à 5490", "valeur": "2"}
+{"entite": "150 Est 150001 à 150195", "valeur": "3"}
+{"entite": "150 Nord 5.001 à 5.022 et 5.031 à 5.120", "valeur": "4"}
+{"entite": "150 Nord 5.1201 à 5.1230", "valeur": "4"}
+{"entite": "150 P", "valeur": "4"}
+{"entite": "150 PO 6001 à 6070", "valeur": "4"}
+{"entite": "150 X", "valeur": "3"}
+{"entite": "151 PLM 1 à 10", "valeur": "4"}
+{"entite": "151 T Est 151751 à 151780", "valeur": "3"}
+{"entite": "16 cylindres en V", "valeur": "16"}
+{"entite": "160 A 1", "valeur": "6"}
+{"entite": "18 cylindres en étoile", "valeur": "18"}
+{"entite": "18 cylindres en V", "valeur": "18"}
+{"entite": "2 cylindres en ligne", "valeur": "2"}
+{"entite": "2 cylindres en V", "valeur": "2"}
+{"entite": "20 cylindres en V", "valeur": "20"}
+{"entite": "220 AL A10 571", "valeur": "2"}
+{"entite": "220 AL A12 580–585", "valeur": "2"}
+{"entite": "220 AL A13 603–618", "valeur": "2"}
+{"entite": "220 AL A15 712–717", "valeur": "2"}
+{"entite": "220 AL A16 718-727, 763-787", "valeur": "2"}
+{"entite": "220 AL A18", "valeur": "4"}
+{"entite": "220 Est 2401 à 2432", "valeur": "4"}
+{"entite": "220 État 2701 à 2706", "valeur": "4"}
+{"entite": "220 Midi 1775 à 1784", "valeur": "4"}
+{"entite": "220 Nord 2.121 à 2.180", "valeur": "4"}
+{"entite": "220 Ouest 503 à 562", "valeur": "4"}
+{"entite": "220 Ouest 902 et 903", "valeur": "4"}
+{"entite": "220 Ouest 939 à 998", "valeur": "2"}
+{"entite": "220 PLM C 61 à C 180", "valeur": "4"}
+{"entite": "220 T Nord 2.311 à 2.380", "valeur": "2"}
+{"entite": "221 Est 2601 et 2602", "valeur": "4"}
+{"entite": "221 Nord 2.641 à 2.675", "valeur": "4"}
+{"entite": "221 PLM 2971 à 2990", "valeur": "4"}
+{"entite": "221 PLM 2991 à 3000", "valeur": "2"}
+{"entite": "221 PLM entre 1 et 20", "valeur": "4"}
+{"entite": "221 PO 3001 à 3014", "valeur": "4"}
+{"entite": "222 T Nord 2.231 à 2.305", "valeur": "2"}
+{"entite": "М-224", "valeur": "24"}
+{"entite": "230 AL A14 630–634", "valeur": "4"}
+{"entite": "230 Est 230 103 à 230 280", "valeur": "4"}
+{"entite": "230 Est 3103 à 3280", "valeur": "4"}
+{"entite": "230 Est 3401 à 3500", "valeur": "4"}
+{"entite": "230 Est 3501 à 3890", "valeur": "4"}
+{"entite": "230 État 101 à 140", "valeur": "4"}
+{"entite": "230 État 321 à 370", "valeur": "2"}
+{"entite": "230 État 3701 à 3755", "valeur": "4"}
+{"entite": "230 État 501 à 620", "valeur": "4"}
+{"entite": "230 État 621 à 705", "valeur": "4"}
+{"entite": "230 État 781 à 800", "valeur": "4"}
+{"entite": "230 État 801 à 883", "valeur": "4"}
+{"entite": "230 Midi 1301 à 1370", "valeur": "4"}
+{"entite": "230 Midi 1401 à 1431", "valeur": "4"}
+{"entite": "230 Midi 3501 à 3526", "valeur": "2"}
+{"entite": "230 Nord 3.078 à 3.354", "valeur": "4"}
+{"entite": "230 Nord 3.513 à 3.662", "valeur": "4"}
+{"entite": "230 Nord 3.999", "valeur": "4"}
+{"entite": "230 Ouest 2541 à 2570 et État 230-141 à 320", "valeur": "4"}
+{"entite": "230 PLM 2431 à 2599", "valeur": "4"}
+{"entite": "230 PLM 2601 à 2760", "valeur": "4"}
+{"entite": "230 PLM 2693", "valeur": "4"}
+{"entite": "230 PLM 3401 à 3735", "valeur": "4"}
+{"entite": "230 PO 4201 à 4370", "valeur": "2"}
+{"entite": "230 T Nord 3.701 à 3.715", "valeur": "4"}
+{"entite": "231 C Nord", "valeur": "4"}
+{"entite": "231 Est 051 à 073", "valeur": "4"}
+{"entite": "231 Est 31001 à 31040", "valeur": "4"}
+{"entite": "231 État 011 à 060", "valeur": "4"}
+{"entite": "231 État 501 à 783", "valeur": "4"}
+{"entite": "231 L 101 à 120", "valeur": "2"}
+{"entite": "231 Nord 3.1111 à 3.1130 et 3.1171 à 3.1198", "valeur": "4"}
+{"entite": "231 Nord 3.1150", "valeur": "4"}
+{"entite": "231 Nord 3.1151 à 3.1170", "valeur": "4"}
+{"entite": "231 Nord 3.1171 à 3.1198 et 3.1111 à 3.1130", "valeur": "4"}
+{"entite": "231 Nord 3.1201 à 3.1240", "valeur": "4"}
+{"entite": "231 Nord 3.1241 à 3.1248", "valeur": "4"}
+{"entite": "231 Nord 3.1251 à 3.1290", "valeur": "4"}
+{"entite": "231 Ouest 2901 et 2902", "valeur": "4"}
+{"entite": "231 PLM 2 à 86", "valeur": "4"}
+{"entite": "231 PLM 6001", "valeur": "4"}
+{"entite": "231 PLM 6011 à 6030 & 6221 à 6285", "valeur": "4"}
+{"entite": "231 PLM 6101 à 6171", "valeur": "4"}
+{"entite": "231 PLM 6301 à 6480 et 181 à 230", "valeur": "4"}
+{"entite": "231 PO 3501 à 3589", "valeur": "4"}
+{"entite": "231 PO 3591 à 3640", "valeur": "2"}
+{"entite": "231 PO 3641 à 3680", "valeur": "4"}
+{"entite": "231 PO 3701 à 3721", "valeur": "4"}
+{"entite": "231 PO 3722 à 3731", "valeur": "4"}
+{"entite": "231 PO 3801 à 3806, 3821 à 3829", "valeur": "4"}
+{"entite": "231 PO 4501 à 4600", "valeur": "4"}
+{"entite": "231 T Nord 3.702", "valeur": "4"}
+{"entite": "232 AT PLM 1 à 50", "valeur": "4"}
+{"entite": "232 BT PLM 1 à 45", "valeur": "4"}
+{"entite": "232 Nord 3.1101 à 3.1102", "valeur": "4"}
+{"entite": "232 P 1", "valeur": "18"}
+{"entite": "232 R", "valeur": "3"}
+{"entite": "232 S", "valeur": "4"}
+{"entite": "232 T Est 3901 à 3940", "valeur": "4"}
+{"entite": "232 T Etat 81 à 93", "valeur": "2"}
+{"entite": "232 U 1", "valeur": "4"}
+{"entite": "24 cylindres en V", "valeur": "24"}
+{"entite": "240 P", "valeur": "4"}
+{"entite": "240 PLM 4701 à 4982", "valeur": "4"}
+{"entite": "240 T Midi 4501 à 4518", "valeur": "2"}
+{"entite": "240 T Nord 4.001 à 4.005", "valeur": "4"}
+{"entite": "241-101 État", "valeur": "3"}
+{"entite": "241 A PLM 1 à 145", "valeur": "4"}
+{"entite": "241 B PLM 1", "valeur": "4"}
+{"entite": "241 C PLM 1", "valeur": "4"}
+{"entite": "241 D PLM 1 à 145", "valeur": "4"}
+{"entite": "241 E PLM 27", "valeur": "4"}
+{"entite": "241 Est 241002 à 241041 et 241 État 241-001 à 241-049", "valeur": "4"}
+{"entite": "241 Est 41001", "valeur": "4"}
+{"entite": "241 P", "valeur": "4"}
+{"entite": "241 P 17", "valeur": "4"}
+{"entite": "242 A 1", "valeur": "3"}
+{"entite": "242 AT PLM 1 à 120", "valeur": "4"}
+{"entite": "242 BT PLM 1 à 31", "valeur": "4"}
+{"entite": "242 CT PLM 1 à 50", "valeur": "4"}
+{"entite": "242 DT PLM 1 à 50", "valeur": "4"}
+{"entite": "28-cylinder radial", "valeur": "28"}
+{"entite": "3 cylindres en ligne", "valeur": "3"}
+{"entite": "3 cylindres en V", "valeur": "3"}
+{"entite": "4 cylindres en ligne", "valeur": "4"}
+{"entite": "4 cylindres en V", "valeur": "4"}
+{"entite": "L 5", "valeur": "6"}
+{"entite": "5 cylindres en étoile", "valeur": "5"}
+{"entite": "5 cylindres en ligne", "valeur": "5"}
+{"entite": "5 cylindres en V", "valeur": "5"}
+{"entite": "6 cylindres en étoile", "valeur": "6"}
+{"entite": "6 cylindres en ligne", "valeur": "6"}
+{"entite": "6 cylindres en V", "valeur": "6"}
+{"entite": "7-cylinder radial", "valeur": "7"}
+{"entite": "7 cylindres en ligne", "valeur": "7"}
+{"entite": "7 cylindres rotatif", "valeur": "7"}
+{"entite": "Эш705-46", "valeur": "2"}
+{"entite": "8 cylindres en ligne", "valeur": "8"}
+{"entite": "9 cylindres en étoile", "valeur": "9"}
+{"entite": "9 cylindres en ligne", "valeur": "9"}
+{"entite": "9 cylindres rotatif", "valeur": "9"}
+{"entite": "A 3/5", "valeur": "4"}
+{"entite": "A.30 R.A.", "valeur": "12"}
+{"entite": "A.30 R.A. bis", "valeur": "12"}
+{"entite": "A5 AL 42 à 51", "valeur": "2"}
+{"entite": "A6 AL 52 à 57", "valeur": "2"}
+{"entite": "AI-14", "valeur": "9"}
+{"entite": "AI-14R", "valeur": "9"}
+{"entite": "AI-14RF", "valeur": "9"}
+{"entite": "AI-14V", "valeur": "9"}
+{"entite": "AI-26GR", "valeur": "7"}
+{"entite": "AL 686 → AL 2106 → AL 6134 → SNCF 1-030.TB.134", "valeur": "2"}
+{"entite": "Alfa 125 R.C.10", "valeur": "9"}
+{"entite": "Alfa 125 R.C.35", "valeur": "9"}
+{"entite": "Alfa 126 R.C.10", "valeur": "9"}
+{"entite": "Alfa 126 R.C.32", "valeur": "9"}
+{"entite": "Alfa 126 R.C.34", "valeur": "9"}
+{"entite": "Alfa 127 R.C.50", "valeur": "9"}
+{"entite": "Alfa 127 R.C.55", "valeur": "9"}
+{"entite": "Alfa 128 R.C.18", "valeur": "9"}
+{"entite": "Alfa 128 R.C.21", "valeur": "9"}
+{"entite": "Alfa 129 R.C.32", "valeur": "9"}
+{"entite": "Alfa 131 R.C.14/50", "valeur": "9"}
+{"entite": "Alfa Romeo 110", "valeur": "4"}
+{"entite": "Alfa Romeo 110-1", "valeur": "4"}
+{"entite": "Alfa Romeo 110ter", "valeur": "4"}
+{"entite": "Alfa Romeo 111", "valeur": "4"}
+{"entite": "Alfa Romeo 115", "valeur": "6"}
+{"entite": "Alfa Romeo 115-1", "valeur": "6"}
+{"entite": "Alfa Romeo 115bis", "valeur": "6"}
+{"entite": "Alfa Romeo 115ter", "valeur": "6"}
+{"entite": "Alfa Romeo 116-1", "valeur": "6"}
+{"entite": "Alfa Romeo 121", "valeur": "8"}
+{"entite": "Alfa Romeo 125", "valeur": "9"}
+{"entite": "Alfa Romeo 1260", "valeur": "12"}
+{"entite": "Alfa Romeo 135", "valeur": "18"}
+{"entite": "Alfa Romeo D2", "valeur": "9"}
+{"entite": "Alfa Romeo Jupiter", "valeur": "9"}
+{"entite": "Allison V-1710", "valeur": "12"}
+{"entite": "Allison V-3420", "valeur": "24"}
+{"entite": "Alsace-Lorraine P 4", "valeur": "2"}
+{"entite": "Alvis Leonides", "valeur": "9"}
+{"entite": "ANF 1Ct SE", "valeur": "2"}
+{"entite": "ANF Ct CBR 7-18", "valeur": "2"}
+{"entite": "ANF Ct CEN 46-49, 51", "valeur": "2"}
+{"entite": "Antoinette 8V", "valeur": "8"}
+{"entite": "Anzani 10 cylindres", "valeur": "10"}
+{"entite": "Anzani 14 cylindres", "valeur": "14"}
+{"entite": "Argus As 10", "valeur": "8"}
+{"entite": "Argus As 8", "valeur": "4"}
+{"entite": "Argus As II", "valeur": "6"}
+{"entite": "Armstrong Siddeley Jaguar", "valeur": "14"}
+{"entite": "Armstrong Siddeley Jaguar IV", "valeur": "14"}
+{"entite": "Armstrong Siddeley Mongoose", "valeur": "5"}
+{"entite": "Armstrong Siddeley Panther", "valeur": "14"}
+{"entite": "Armstrong Siddeley Panther IIIA", "valeur": "14"}
+{"entite": "ASh-82", "valeur": "14"}
+{"entite": "ASh-82T", "valeur": "14"}
+{"entite": "Ateliers métallurgiques Ct (Tramway de la Vallée d'Hérimoncourt)", "valeur": "2"}
+{"entite": "Atlantic Coast Line 1504", "valeur": "2"}
+{"entite": "Australian Standard Garratt", "valeur": "4"}
+{"entite": "Avia 8Fb", "valeur": "8"}
+{"entite": "Avia Vr.36", "valeur": "12"}
+{"entite": "B 3/4", "valeur": "2"}
+{"entite": "B1 AL B2 243–257", "valeur": "2"}
+{"entite": "B1 AL B3 258–267", "valeur": "2"}
+{"entite": "B52", "valeur": "2"}
+{"entite": "BBÖ 162", "valeur": "2"}
+{"entite": "Le Belge", "valeur": "2"}
+{"entite": "Benz Bz.IIIb", "valeur": "8"}
+{"entite": "Benz Patent Motorwagen", "valeur": "1"}
+{"entite": "Big Boy", "valeur": "4"}
+{"entite": "BMC Série-A", "valeur": "4"}
+{"entite": "BMW 132", "valeur": "9"}
+{"entite": "BMW 132A", "valeur": "9"}
+{"entite": "BMW 132Dc", "valeur": "9"}
+{"entite": "BMW 132De", "valeur": "9"}
+{"entite": "BMW 132J", "valeur": "9"}
+{"entite": "BMW 132N", "valeur": "9"}
+{"entite": "BMW 132T", "valeur": "9"}
+{"entite": "BMW B37", "valeur": "3"}
+{"entite": "BMW B47", "valeur": "4"}
+{"entite": "BMW B57", "valeur": "6"}
+{"entite": "BMW F 800 S/ST", "valeur": "2"}
+{"entite": "BMW Hornet", "valeur": "9"}
+{"entite": "BMW IIIa", "valeur": "6"}
+{"entite": "BMW M10", "valeur": "4"}
+{"entite": "BMW M2B15", "valeur": "2"}
+{"entite": "BMW M30", "valeur": "6"}
+{"entite": "BMW M328", "valeur": "6"}
+{"entite": "BMW M335", "valeur": "6"}
+{"entite": "BMW M337", "valeur": "6"}
+{"entite": "BMW M50", "valeur": "6"}
+{"entite": "BMW M51", "valeur": "6"}
+{"entite": "BMW M52", "valeur": "6"}
+{"entite": "BMW M60", "valeur": "8"}
+{"entite": "BMW M62", "valeur": "8"}
+{"entite": "BMW M67", "valeur": "8"}
+{"entite": "BMW M70", "valeur": "12"}
+{"entite": "BMW M73", "valeur": "12"}
+{"entite": "BMW N20", "valeur": "4"}
+{"entite": "BMW N52", "valeur": "6"}
+{"entite": "BMW N53", "valeur": "6"}
+{"entite": "BMW N54", "valeur": "6"}
+{"entite": "BMW N55", "valeur": "6"}
+{"entite": "BMW N57", "valeur": "6"}
+{"entite": "BMW N62", "valeur": "8"}
+{"entite": "BMW N63", "valeur": "8"}
+{"entite": "BMW N73", "valeur": "12"}
+{"entite": "BMW N74", "valeur": "12"}
+{"entite": "BMW P86", "valeur": "8"}
+{"entite": "BMW S55", "valeur": "6"}
+{"entite": "BMW VI", "valeur": "12"}
+{"entite": "BR 50", "valeur": "2"}
+{"entite": "BR 52", "valeur": "2"}
+{"entite": "BR 53", "valeur": "4"}
+{"entite": "Bramo 323", "valeur": "9"}
+{"entite": "Bristol Centaurus", "valeur": "18"}
+{"entite": "Bristol Hercules", "valeur": "14"}
+{"entite": "Bristol Hercules 730", "valeur": "14"}
+{"entite": "Bristol Hercules 738", "valeur": "14"}
+{"entite": "Bristol Hercules 758", "valeur": "14"}
+{"entite": "Bristol Jupiter", "valeur": "9"}
+{"entite": "Bristol Jupiter IV", "valeur": "9"}
+{"entite": "Bristol Jupiter VII", "valeur": "9"}
+{"entite": "Bristol Jupiter VIIF", "valeur": "9"}
+{"entite": "Bristol Mercury", "valeur": "9"}
+{"entite": "Bristol Mercury I", "valeur": "9"}
+{"entite": "Bristol Mercury II", "valeur": "9"}
+{"entite": "Bristol Mercury IIA", "valeur": "9"}
+{"entite": "Bristol Mercury III", "valeur": "9"}
+{"entite": "Bristol Mercury IV", "valeur": "9"}
+{"entite": "Bristol Pegasus", "valeur": "9"}
+{"entite": "Bristol Pegasus IIIM.3", "valeur": "9"}
+{"entite": "Bristol Pegasus IIM.3", "valeur": "9"}
+{"entite": "Bristol Pegasus IM.3", "valeur": "9"}
+{"entite": "Bristol Pegasus VI", "valeur": "9"}
+{"entite": "C1 AL 58-61", "valeur": "2"}
+{"entite": "C10 AL 145 à 164", "valeur": "2"}
+{"entite": "C11 AL 268 à 279 et 343", "valeur": "2"}
+{"entite": "C13 AL 298 à 309", "valeur": "2"}
+{"entite": "C15 AL 316 à 332", "valeur": "2"}
+{"entite": "C16 AL 333 à 334", "valeur": "2"}
+{"entite": "C17 AL 335 à 340", "valeur": "2"}
+{"entite": "C18 AL 344 à 346", "valeur": "2"}
+{"entite": "C19 AL 371 à 410", "valeur": "2"}
+{"entite": "C2 AL 62-72", "valeur": "2"}
+{"entite": "C20 AL 411 à 424", "valeur": "2"}
+{"entite": "C20LET", "valeur": "4"}
+{"entite": "C21 AL 468 à 479", "valeur": "2"}
+{"entite": "C22 AL 480 à 491", "valeur": "2"}
+{"entite": "C23 AL 517 à 523", "valeur": "2"}
+{"entite": "C24 AL 565 à 570", "valeur": "2"}
+{"entite": "C25 AL 586 à 593", "valeur": "2"}
+{"entite": "C26 AL 594 à 602", "valeur": "2"}
+{"entite": "C27 AL 635 à 653", "valeur": "2"}
+{"entite": "C3 AL 74-77", "valeur": "2"}
+{"entite": "C4 AL 78-81", "valeur": "2"}
+{"entite": "C5 AL 82-96", "valeur": "2"}
+{"entite": "C6 AL 97-100", "valeur": "2"}
+{"entite": "C7 AL 105-124", "valeur": "2"}
+{"entite": "C8 AL 125-134", "valeur": "2"}
+{"entite": "C9 AL 135 à 144", "valeur": "2"}
+{"entite": "CFA 231+132 AT", "valeur": "4"}
+{"entite": "CFA 231+132 BT", "valeur": "4"}
+{"entite": "CFF C 5/6", "valeur": "4"}
+{"entite": "CFR 151.001 à 151.002", "valeur": "2"}
+{"entite": "China Railways QJ", "valeur": "2"}
+{"entite": "Chrysler IV-2220", "valeur": "16"}
+{"entite": "Chvetsov M-11", "valeur": "5"}
+{"entite": "Chvetsov M-62", "valeur": "9"}
+{"entite": "Citroën GS et GSA", "valeur": "4"}
+{"entite": "Clerget 7Z", "valeur": "7"}
+{"entite": "Clerget 9B", "valeur": "9"}
+{"entite": "Clerget 9Bf", "valeur": "9"}
+{"entite": "Continental O-520", "valeur": "6"}
+{"entite": "La Copiapó", "valeur": "2"}
+{"entite": "Corpet-Louvet 1′C t CDCO 40-47", "valeur": "2"}
+{"entite": "Corpet-Louvet Bt (Tramway de Saint-Romain-de-Colbosc)", "valeur": "2"}
+{"entite": "Corpet-Louvet C t SE 1", "valeur": "2"}
+{"entite": "Corpet-Louvet C2t SE 3751-3758", "valeur": "2"}
+{"entite": "Corpet-Louvet Ct CBR 30-34", "valeur": "2"}
+{"entite": "CP 21 à 32", "valeur": "2"}
+{"entite": "CPR H1", "valeur": "2"}
+{"entite": "CPR T1c", "valeur": "2"}
+{"entite": "ČSD 386.001", "valeur": "3"}
+{"entite": "Curtiss D-12", "valeur": "12"}
+{"entite": "Curtiss D-12D", "valeur": "12"}
+{"entite": "Daihatsu moteurs", "valeur": "3"}
+{"entite": "Daimler-Benz DB 600", "valeur": "12"}
+{"entite": "Daimler-Benz DB 601", "valeur": "12"}
+{"entite": "Daimler-Benz DB 601M", "valeur": "12"}
+{"entite": "Daimler-Benz DB 602", "valeur": "16"}
+{"entite": "Daimler-Benz DB 603", "valeur": "12"}
+{"entite": "Daimler-Benz DB 604", "valeur": "24"}
+{"entite": "Daimler-Benz DB 605", "valeur": "12"}
+{"entite": "Denver & Rio Grande Western Railroad Locomotive No. 278 and Tender", "valeur": "2"}
+{"entite": "DeWitt Clinton", "valeur": "2"}
+{"entite": "Dobrynin VD-4K", "valeur": "24"}
+{"entite": "Dongó", "valeur": "1"}
+{"entite": "DR 18 201", "valeur": "3"}
+{"entite": "DR-Baureihe 65.10", "valeur": "2"}
+{"entite": "DR Classe H 45", "valeur": "3"}
+{"entite": "DRG 24 009 - DR 37 1009-2", "valeur": "2"}
+{"entite": "L'Éléphant", "valeur": "2"}
+{"entite": "Est 174 á 188", "valeur": "2"}
+{"entite": "Est 501 á 562", "valeur": "2"}
+{"entite": "État 140-231 → SNCF 3-140.C.231", "valeur": "2"}
+{"entite": "État 140-908 à 140-955", "valeur": "4"}
+{"entite": "Événement sportif international en République centrafricaine", "valeur": "2"}
+{"entite": "Fairy Queen", "valeur": "2"}
+{"entite": "Falcon I", "valeur": "12"}
+{"entite": "Falcon II", "valeur": "12"}
+{"entite": "Farman 12We", "valeur": "12"}
+{"entite": "FBC 1 à 4", "valeur": "2"}
+{"entite": "Fendt Farmer 2", "valeur": "3"}
+{"entite": "Ferrari 059/3", "valeur": "6"}
+{"entite": "Ferrari 812 Superfast", "valeur": "12"}
+{"entite": "Fiat A.12", "valeur": "6"}
+{"entite": "Fiat A.14", "valeur": "12"}
+{"entite": "Fiat A.20", "valeur": "12"}
+{"entite": "Fiat A.22", "valeur": "12"}
+{"entite": "Fiat A.30", "valeur": "12"}
+{"entite": "Fiat A.74", "valeur": "14"}
+{"entite": "Fiat A.74 R1C.38", "valeur": "14"}
+{"entite": "Fiat AS.3", "valeur": "12"}
+{"entite": "flat-twin", "valeur": "2"}
+{"entite": "FMSME 1 à 6", "valeur": "2"}
+{"entite": "FNM 41 à 44", "valeur": "2"}
+{"entite": "FS 670", "valeur": "4"}
+{"entite": "FS ALn 663", "valeur": "6"}
+{"entite": "FS R.370.012", "valeur": "4"}
+{"entite": "FS Série P.1 ÷ 9", "valeur": "2"}
+{"entite": "Fusée de Stephenson", "valeur": "2"}
+{"entite": "G1 AL", "valeur": "2"}
+{"entite": "G1 AL 1001 à 1039", "valeur": "2"}
+{"entite": "G10 AL et ex-Prusse", "valeur": "2"}
+{"entite": "G11 AL 5501 à 5547", "valeur": "4"}
+{"entite": "G12.1 AL et ex-Prusse", "valeur": "3"}
+{"entite": "G12 AL et ex-Prusse", "valeur": "3"}
+{"entite": "G2 AL", "valeur": "2"}
+{"entite": "G2 AL 1040 à 1100 et 1251 à 1291", "valeur": "2"}
+{"entite": "G3 AL 1215 à 1248", "valeur": "2"}
+{"entite": "G5 AL et ex-Prusse", "valeur": "2"}
+{"entite": "G7 ex-Prusse", "valeur": "2"}
+{"entite": "G8.1 AL et ex-Prusse", "valeur": "2"}
+{"entite": "G8 ex-Prusse", "valeur": "2"}
+{"entite": "G9 ex-Prusse", "valeur": "2"}
+{"entite": "GER classe S69", "valeur": "2"}
+{"entite": "GIO-470-A", "valeur": "6"}
+{"entite": "Gipsy Queen", "valeur": "6"}
+{"entite": "Gnome et Rhône 14K Mistral Major", "valeur": "14"}
+{"entite": "Gnome et Rhône 14N", "valeur": "14"}
+{"entite": "Gnome et Rhône 5K", "valeur": "5"}
+{"entite": "Gnome-Rhône 7K", "valeur": "7"}
+{"entite": "Gnome-Rhône 9A Jupiter", "valeur": "9"}
+{"entite": "Gnome-Rhône 9Ady Jupiter", "valeur": "9"}
+{"entite": "Gnome-Rhône 9Akx Jupiter", "valeur": "9"}
+{"entite": "GO-435-C2A", "valeur": "6"}
+{"entite": "GO-480", "valeur": "6"}
+{"entite": "GO-480-B1A6", "valeur": "6"}
+{"entite": "GO-480-G1D6", "valeur": "6"}
+{"entite": "Gruppo 630", "valeur": "2"}
+{"entite": "Gruppo 680", "valeur": "4"}
+{"entite": "Gruppo 685", "valeur": "4"}
+{"entite": "Gruppo 690", "valeur": "4"}
+{"entite": "GSO-480-B1B6", "valeur": "6"}
+{"entite": "GSO-480-B1C6", "valeur": "6"}
+{"entite": "GSO-480-B1J6", "valeur": "6"}
+{"entite": "GWR 4900", "valeur": "2"}
+{"entite": "GWR 6959 Class", "valeur": "2"}
+{"entite": "H et Hh ex-Wurtemberg", "valeur": "2"}
+{"entite": "H16", "valeur": "16"}
+{"entite": "H24", "valeur": "24"}
+{"entite": "H32", "valeur": "32"}
+{"entite": "Ha 2", "valeur": "12"}
+{"entite": "de Havilland Gipsy", "valeur": "4"}
+{"entite": "De Havilland Gipsy Twelve", "valeur": "12"}
+{"entite": "Henschel D600", "valeur": "2"}
+{"entite": "Hetch Hetchy Railroad Engine No.6", "valeur": "3"}
+{"entite": "Hiero 6", "valeur": "6"}
+{"entite": "HIO-360-B1A", "valeur": "4"}
+{"entite": "Hirth HM 506", "valeur": "6"}
+{"entite": "Hirth HM 508", "valeur": "8"}
+{"entite": "Hispano-Suiza 12H", "valeur": "12"}
+{"entite": "Hispano-Suiza 12Hb", "valeur": "12"}
+{"entite": "Hispano-Suiza 12L", "valeur": "12"}
+{"entite": "Hispano-Suiza 12Xbrs", "valeur": "12"}
+{"entite": "Hispano-Suiza 12Y", "valeur": "12"}
+{"entite": "Hispano-Suiza 12Ycrs", "valeur": "12"}
+{"entite": "Hispano-Suiza 12Z", "valeur": "12"}
+{"entite": "Hispano-Suiza 8", "valeur": "8"}
+{"entite": "Hispano-Suiza 8Bc", "valeur": "8"}
+{"entite": "Hispano-Suiza 8Fb", "valeur": "8"}
+{"entite": "Hispano-Suiza 9Qd", "valeur": "9"}
+{"entite": "HL230 P30", "valeur": "12"}
+{"entite": "HL234", "valeur": "12"}
+{"entite": "HL295", "valeur": "12"}
+{"entite": "Honda CBF 500", "valeur": "2"}
+{"entite": "Honda Hornet", "valeur": "4"}
+{"entite": "Honda Indy V6", "valeur": "6"}
+{"entite": "Honda Varadero", "valeur": "2"}
+{"entite": "Honda VT 1300 CX", "valeur": "2"}
+{"entite": "Horch 3.5", "valeur": "8"}
+{"entite": "Horch 3.8", "valeur": "8"}
+{"entite": "Hotchkiss-Grégoire coach", "valeur": "4"}
+{"entite": "HOTLO", "valeur": "6"}
+{"entite": "Hürlimann D 65", "valeur": "4"}
+{"entite": "I.Ae. R-19A El Indio", "valeur": "9"}
+{"entite": "I.Ae. R-19C El Indio", "valeur": "9"}
+{"entite": "IGSO-480-A1B6", "valeur": "6"}
+{"entite": "IGSO-480-A1F6", "valeur": "6"}
+{"entite": "IGSO-540-A1E", "valeur": "6"}
+{"entite": "Indian WT", "valeur": "2"}
+{"entite": "IO-360", "valeur": "6"}
+{"entite": "IO-360-A1B6", "valeur": "4"}
+{"entite": "IO-360-C", "valeur": "6"}
+{"entite": "IO-360-D", "valeur": "6"}
+{"entite": "IO-360-ES", "valeur": "6"}
+{"entite": "IO-470-L", "valeur": "6"}
+{"entite": "IO-540-E1B5", "valeur": "6"}
+{"entite": "IO-540-K1D5", "valeur": "6"}
+{"entite": "Isotta Fraschini Asso 1000", "valeur": "16"}
+{"entite": "Isotta Fraschini Asso 200", "valeur": "6"}
+{"entite": "Isotta Fraschini Asso 500", "valeur": "12"}
+{"entite": "Isotta Fraschini Asso XI", "valeur": "12"}
+{"entite": "Isotta Fraschini Delta", "valeur": "12"}
+{"entite": "Iveco Cursor", "valeur": "6"}
+{"entite": "J-4 Whirlwind", "valeur": "9"}
+{"entite": "JNR classe C62", "valeur": "2"}
+{"entite": "JNR Série D51", "valeur": "2"}
+{"entite": "John Bull", "valeur": "2"}
+{"entite": "Jumo 205", "valeur": "6"}
+{"entite": "Junkers Jumo 210", "valeur": "12"}
+{"entite": "Junkers Jumo 210D", "valeur": "12"}
+{"entite": "Junkers Jumo 210Ga", "valeur": "12"}
+{"entite": "Junkers Jumo 211", "valeur": "12"}
+{"entite": "Junkers Jumo 213", "valeur": "12"}
+{"entite": "Junkers L1", "valeur": "6"}
+{"entite": "Junkers L88", "valeur": "12"}
+{"entite": "Kawasaki 1400GTR", "valeur": "4"}
+{"entite": "King-Bugatti U-16", "valeur": "16"}
+{"entite": "Kinner R-5", "valeur": "5"}
+{"entite": "kkStB 265", "valeur": "2"}
+{"entite": "kkStB 310", "valeur": "4"}
+{"entite": "KkStB 60", "valeur": "2"}
+{"entite": "KkStB 80", "valeur": "2"}
+{"entite": "Klimov M-100", "valeur": "12"}
+{"entite": "Klimov M-100A", "valeur": "12"}
+{"entite": "Klimov M-105", "valeur": "12"}
+{"entite": "Krupp Knapsack", "valeur": "2"}
+{"entite": "Lamborghini Fenomeno", "valeur": "12"}
+{"entite": "Lamborghini V10", "valeur": "10"}
+{"entite": "Lamborghini V12", "valeur": "12"}
+{"entite": "Lamborghini V8", "valeur": "8"}
+{"entite": "Lawrance J-1", "valeur": "9"}
+{"entite": "LDE – Saxonia", "valeur": "2"}
+{"entite": "LEB G 3/3", "valeur": "2"}
+{"entite": "LEB G 3/3 2 et 5", "valeur": "2"}
+{"entite": "LG-série P4", "valeur": "2"}
+{"entite": "Liberty L-12", "valeur": "12"}
+{"entite": "Liberty L-12A", "valeur": "12"}
+{"entite": "Litra A", "valeur": "2"}
+{"entite": "Litra C", "valeur": "2"}
+{"entite": "Litra H", "valeur": "3"}
+{"entite": "Litra J", "valeur": "2"}
+{"entite": "Litra M", "valeur": "2"}
+{"entite": "LMS classe 4P", "valeur": "3"}
+{"entite": "LMS classe 5PF", "valeur": "2"}
+{"entite": "LNER 4472 Flying Scotsman", "valeur": "3"}
+{"entite": "LNER Classe A4", "valeur": "3"}
+{"entite": "LNER classe B17", "valeur": "3"}
+{"entite": "LNER classe B2", "valeur": "2"}
+{"entite": "LNER classe D49", "valeur": "3"}
+{"entite": "LNER classe J38", "valeur": "2"}
+{"entite": "LNER classe J39", "valeur": "2"}
+{"entite": "LNER classe V2", "valeur": "3"}
+{"entite": "LNER classe V4", "valeur": "3"}
+{"entite": "LNWR classe 1400", "valeur": "4"}
+{"entite": "LNWR classe 18in Tank", "valeur": "2"}
+{"entite": "LNWR classe 2234", "valeur": "2"}
+{"entite": "LNWR classe 5ft 6in Tank", "valeur": "2"}
+{"entite": "LNWR classe A", "valeur": "3"}
+{"entite": "LNWR classe B", "valeur": "4"}
+{"entite": "LNWR classe C1", "valeur": "2"}
+{"entite": "LNWR classe Coal Tank", "valeur": "2"}
+{"entite": "LNWR classe D", "valeur": "2"}
+{"entite": "LNWR classe Dreadnought", "valeur": "3"}
+{"entite": "LNWR classe DX", "valeur": "2"}
+{"entite": "LNWR classe E", "valeur": "4"}
+{"entite": "LNWR classe Experiment (Webb)", "valeur": "3"}
+{"entite": "LNWR classe F", "valeur": "4"}
+{"entite": "LNWR classe G1", "valeur": "2"}
+{"entite": "LNWR classe Greater Britain", "valeur": "3"}
+{"entite": "LNWR classe John Hick", "valeur": "3"}
+{"entite": "LNWR classe Jubilee", "valeur": "4"}
+{"entite": "LNWR classe Newton", "valeur": "2"}
+{"entite": "LNWR classe Precedent", "valeur": "2"}
+{"entite": "LNWR classe Precursor (Webb)", "valeur": "2"}
+{"entite": "LNWR classe Samson", "valeur": "2"}
+{"entite": "LNWR classe Special Tank", "valeur": "2"}
+{"entite": "LNWR classe Teutonic", "valeur": "3"}
+{"entite": "LNWR Cornwall", "valeur": "2"}
+{"entite": "Locomotion n° 1", "valeur": "2"}
+{"entite": "locomotive 230 D9", "valeur": "4"}
+{"entite": "Locomotive à vapeur 03 2155", "valeur": "2"}
+{"entite": "locomotive à vapeur, à tender séparé, à voie normale, 230 G 353 à Noisy-le-Sec", "valeur": "2"}
+{"entite": "locomotive à vapeur à Toulouse", "valeur": "2"}
+{"entite": "locomotive à vapeur, à voie normale, dite le Progrès, 42 030 T 3 à Chaillevette", "valeur": "2"}
+{"entite": "locomotive à vapeur Creusot, à tender séparé, à voie normale, 040 B 9 à Carnoules", "valeur": "4"}
+{"entite": "locomotive à vapeur Fives-Lille, type Pacific, à tender séparé, à voie normale, 231 E 41 à Saint-Pierre-des-Corps", "valeur": "4"}
+{"entite": "Locomotive à vapeur Tubize 2069", "valeur": "2"}
+{"entite": "Locomotive à vapeur type 9P", "valeur": "2"}
+{"entite": "Locomotive de Coalbrookdale", "valeur": "1"}
+{"entite": "Locomotive de Pen-y-Darren", "valeur": "1"}
+{"entite": "Locomotive de Wylam", "valeur": "1"}
+{"entite": "Locomotive No. 1", "valeur": "2"}
+{"entite": "locomotive SEG 104", "valeur": "4"}
+{"entite": "locomotive-tender Piguet, à voie métrique, 030 030 T E 415 à Carhaix-Plouguer", "valeur": "4"}
+{"entite": "Locomotive type 1 (Chemins de fer de l'État belge)", "valeur": "2"}
+{"entite": "Locomotive type 18 SNCB", "valeur": "2"}
+{"entite": "Locomotive type 51 (Chemins de fer de l'État belge)", "valeur": "2"}
+{"entite": "Lorraine 12 Eb", "valeur": "12"}
+{"entite": "LS3", "valeur": "8"}
+{"entite": "Lycoming IO-540", "valeur": "6"}
+{"entite": "Lycoming O-320", "valeur": "4"}
+{"entite": "Lycoming O-360", "valeur": "4"}
+{"entite": "Lycoming O-540", "valeur": "6"}
+{"entite": "Lycoming R-680", "valeur": "9"}
+{"entite": "M-34", "valeur": "12"}
+{"entite": "Mallard", "valeur": "3"}
+{"entite": "MAN 9S90ME-C", "valeur": "9"}
+{"entite": "Maori Mk.I", "valeur": "12"}
+{"entite": "Maori Mk.II", "valeur": "12"}
+{"entite": "Maybach HL 120 TRM", "valeur": "12"}
+{"entite": "Maybach HL210P45", "valeur": "12"}
+{"entite": "Melchior Technologie MT135", "valeur": "3"}
+{"entite": "Mercedes-Benz M 270", "valeur": "4"}
+{"entite": "Mercedes-Benz OM 138", "valeur": "4"}
+{"entite": "Mercedes-Benz PU106A Hybrid", "valeur": "6"}
+{"entite": "Mercedes D.I", "valeur": "6"}
+{"entite": "Mercedes D III", "valeur": "6"}
+{"entite": "Mercedes D.IV", "valeur": "8"}
+{"entite": "Merchant Navy SR classe 35006 Peninsular & Oriental S.N. Co.", "valeur": "3"}
+{"entite": "Merlin XX", "valeur": "4"}
+{"entite": "La Métallurgique Ct 4 (Ligne de tramway de Fourmies à Wignehies)", "valeur": "2"}
+{"entite": "La Meuse 3252", "valeur": "2"}
+{"entite": "Midland Railway classe 1000", "valeur": "3"}
+{"entite": "Mikado légère USRA", "valeur": "2"}
+{"entite": "Mikado lourde USRA", "valeur": "2"}
+{"entite": "Mikulin AM-38", "valeur": "12"}
+{"entite": "Milwaukee Road 261", "valeur": "2"}
+{"entite": "Mitsubishi Kasei", "valeur": "14"}
+{"entite": "Mitsubishi Kinsei", "valeur": "14"}
+{"entite": "Mitsubishi Zuisei", "valeur": "14"}
+{"entite": "moteur 12 cylindres à plat", "valeur": "12"}
+{"entite": "moteur 4-cylindres à plat", "valeur": "4"}
+{"entite": "moteur 6 cyclindres à plat", "valeur": "6"}
+{"entite": "moteur à 8 cylindres en V", "valeur": "8"}
+{"entite": "moteur bicylindre", "valeur": "2"}
+{"entite": "moteur BMW B58", "valeur": "6"}
+{"entite": "Moteur boxer Alfa Romeo", "valeur": "4"}
+{"entite": "Moteur D Renault", "valeur": "4"}
+{"entite": "moteur Energy", "valeur": "4"}
+{"entite": "moteur F Renault", "valeur": "4"}
+{"entite": "Moteur F140 Ferrari-Maserati", "valeur": "12"}
+{"entite": "moteur F1N Renault", "valeur": "4"}
+{"entite": "moteur F2N Renault", "valeur": "4"}
+{"entite": "moteur F2R Renault", "valeur": "4"}
+{"entite": "moteur F3N Renault", "valeur": "4"}
+{"entite": "moteur F3P Renault", "valeur": "4"}
+{"entite": "moteur F3R Renault", "valeur": "4"}
+{"entite": "moteur F4P Renault", "valeur": "4"}
+{"entite": "moteur F4R Renault", "valeur": "4"}
+{"entite": "moteur F4RT Renault", "valeur": "4"}
+{"entite": "moteur F5R Renault", "valeur": "4"}
+{"entite": "moteur F7P Renault", "valeur": "4"}
+{"entite": "moteur F7R Renault", "valeur": "4"}
+{"entite": "moteur F8M Renault", "valeur": "4"}
+{"entite": "moteur F8Q Renault", "valeur": "4"}
+{"entite": "moteur F8QT Renault", "valeur": "4"}
+{"entite": "moteur F9Q Renault", "valeur": "4"}
+{"entite": "Moteur Ferrari 12 cylindres à plat", "valeur": "12"}
+{"entite": "Moteur Ferrari-Maserati F136", "valeur": "8"}
+{"entite": "Moteur Ferrari V12 Colombo", "valeur": "12"}
+{"entite": "Moteur Ferrari V12 Jano", "valeur": "12"}
+{"entite": "moteur Fiat 100", "valeur": "4"}
+{"entite": "Moteur FIRE Fiat", "valeur": "4"}
+{"entite": "Moteur Honda F20C", "valeur": "4"}
+{"entite": "Moteur Honda série K", "valeur": "4"}
+{"entite": "Moteur Jaguar XK", "valeur": "6"}
+{"entite": "Moteur M 120 Mercedes-Benz", "valeur": "12"}
+{"entite": "moteur M Renault-Nissan", "valeur": "4"}
+{"entite": "Moteur OM651 Mercedes-Benz", "valeur": "4"}
+{"entite": "Moteur P Honda", "valeur": "3"}
+{"entite": "Moteur Poissy", "valeur": "4"}
+{"entite": "Moteur Rover K-Series", "valeur": "4"}
+{"entite": "Moteur Rover KV6", "valeur": "6"}
+{"entite": "moteur Standard SC", "valeur": "4"}
+{"entite": "moteur Toyota JZ", "valeur": "6"}
+{"entite": "Moteur Twin-Cam Alfa Romeo", "valeur": "4"}
+{"entite": "Moteur V-2", "valeur": "12"}
+{"entite": "Moteur V12 Matra Sports", "valeur": "12"}
+{"entite": "Moteur V6 Alfa Romeo (Busso)", "valeur": "6"}
+{"entite": "Moteur V6 DMAX", "valeur": "6"}
+{"entite": "Moteur V6 VQ Nissan", "valeur": "6"}
+{"entite": "Moteur V8 F154 Ferrari-Maserati", "valeur": "8"}
+{"entite": "Moteur V8 Rover", "valeur": "8"}
+{"entite": "moteur W16", "valeur": "16"}
+{"entite": "Moteur XD Indenor", "valeur": "4"}
+{"entite": "moteurs GM LS", "valeur": "8"}
+{"entite": "MR classe 2290", "valeur": "4"}
+{"entite": "MR classe 2299", "valeur": "8"}
+{"entite": "MR classe 2601", "valeur": "2"}
+{"entite": "MTU MB 873 Ka-501", "valeur": "12"}
+{"entite": "Nakajima Hikari", "valeur": "9"}
+{"entite": "Nakajima Hikari 1", "valeur": "9"}
+{"entite": "Nakajima Homare", "valeur": "18"}
+{"entite": "Nakajima Sakae", "valeur": "14"}
+{"entite": "Napier Lion", "valeur": "12"}
+{"entite": "Napier Lion I", "valeur": "12"}
+{"entite": "Napier Lion II", "valeur": "12"}
+{"entite": "Napier Lion III", "valeur": "12"}
+{"entite": "Napier Lion V", "valeur": "12"}
+{"entite": "Napier Lion VA", "valeur": "12"}
+{"entite": "Napier Lion VII", "valeur": "12"}
+{"entite": "Napier Lion VIIA", "valeur": "12"}
+{"entite": "Napier Lion VIIB", "valeur": "12"}
+{"entite": "Napier Lion VIID", "valeur": "12"}
+{"entite": "Napier Lion VIII", "valeur": "12"}
+{"entite": "Napier Lion VIS", "valeur": "12"}
+{"entite": "Napier Lion VS", "valeur": "12"}
+{"entite": "Napier Lion XIA", "valeur": "12"}
+{"entite": "Napier Lioness", "valeur": "12"}
+{"entite": "Napier Nomad", "valeur": "12"}
+{"entite": "Napier Sea Lion", "valeur": "12"}
+{"entite": "New South Wales classe D57", "valeur": "3"}
+{"entite": "Nissan GA", "valeur": "4"}
+{"entite": "Nissan GA16DE", "valeur": "4"}
+{"entite": "NL38TR", "valeur": "6"}
+{"entite": "Nord 2.921 à 2.985", "valeur": "2"}
+{"entite": "Nord 3.021 à 3.075", "valeur": "2"}
+{"entite": "Nord 3.401 à 3.512", "valeur": "2"}
+{"entite": "Nord 3.606 à 3.787", "valeur": "2"}
+{"entite": "Novelty", "valeur": "2"}
+{"entite": "NS série 1300 (vapeur)", "valeur": "2"}
+{"entite": "NS série 1600 (vapeur)", "valeur": "2"}
+{"entite": "NS série 1700 (vapeur)", "valeur": "2"}
+{"entite": "NS série 1900", "valeur": "2"}
+{"entite": "NS série 2000 (vapeur)", "valeur": "2"}
+{"entite": "NS série 2900 (vapeur)", "valeur": "2"}
+{"entite": "NS série 3700", "valeur": "4"}
+{"entite": "NS série 4500", "valeur": "2"}
+{"entite": "NS série 4600", "valeur": "2"}
+{"entite": "NS série 6000", "valeur": "2"}
+{"entite": "NS série 6100", "valeur": "4"}
+{"entite": "NS série 6200", "valeur": "2"}
+{"entite": "NS série 700 (vapeur)", "valeur": "2"}
+{"entite": "NS série 8600", "valeur": "2"}
+{"entite": "NSB 18", "valeur": "2"}
+{"entite": "NSB Type 23", "valeur": "2"}
+{"entite": "Nuffield Liberty", "valeur": "12"}
+{"entite": "NZR classe V de 1885", "valeur": "2"}
+{"entite": "NZR classe W de 1889", "valeur": "2"}
+{"entite": "O-290-11", "valeur": "4"}
+{"entite": "O-300", "valeur": "6"}
+{"entite": "O-300-C", "valeur": "6"}
+{"entite": "O-320-B2B", "valeur": "4"}
+{"entite": "O-320-E2A", "valeur": "4"}
+{"entite": "O-435", "valeur": "6"}
+{"entite": "O-435-A", "valeur": "6"}
+{"entite": "O-470-11", "valeur": "6"}
+{"entite": "O-470-J", "valeur": "6"}
+{"entite": "O-470-M", "valeur": "6"}
+{"entite": "O-540-E4A5", "valeur": "6"}
+{"entite": "O-540-E4C5", "valeur": "6"}
+{"entite": "Oberursel U.I", "valeur": "9"}
+{"entite": "Oberursel Ur.II", "valeur": "9"}
+{"entite": "ÖLEG A", "valeur": "2"}
+{"entite": "OX-5", "valeur": "8"}
+{"entite": "P6 ex-Prusse", "valeur": "2"}
+{"entite": "P60B40", "valeur": "8"}
+{"entite": "P7 AL 2301 à 2330", "valeur": "4"}
+{"entite": "P8 ex-Prusse", "valeur": "2"}
+{"entite": "Packard DR-980", "valeur": "9"}
+{"entite": "Packard V-1650 Liberty", "valeur": "12"}
+{"entite": "Pagani Huayra", "valeur": "12"}
+{"entite": "Panhard & Levassor P2D phaéton", "valeur": "2"}
+{"entite": "Pere Marquette 1225", "valeur": "2"}
+{"entite": "Peugeot 406 Coupé 2.2 HDi", "valeur": "4"}
+{"entite": "Peugeot Kisbee", "valeur": "1"}
+{"entite": "Peugeot Kisbee RS", "valeur": "1"}
+{"entite": "Piaggio P.XI", "valeur": "14"}
+{"entite": "PKP Pt31", "valeur": "2"}
+{"entite": "PKP Pt47", "valeur": "2"}
+{"entite": "PLM 4501 à 4640", "valeur": "4"}
+{"entite": "PLMA 241-142 YAT", "valeur": "4"}
+{"entite": "Pratt & Whitney R-1340-16", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-19", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-21G", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-22", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-23", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-30", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-31", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-33", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-48", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-49", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-7", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-9", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-AN2", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1340-S1H1-G", "valeur": "9"}
+{"entite": "Pratt & Whitney R-1535-82 Twin Wasp Junior", "valeur": "14"}
+{"entite": "Pratt & Whitney R-1535 Twin Wasp Junior", "valeur": "14"}
+{"entite": "Prins August", "valeur": "2"}
+{"entite": "Puffing Billy", "valeur": "2"}
+{"entite": "R-1300-4 Cyclone 7", "valeur": "7"}
+{"entite": "R-1300-7 Cyclone 7", "valeur": "7"}
+{"entite": "R-1340-17 Wasp", "valeur": "9"}
+{"entite": "R-1340-8 Wasp", "valeur": "9"}
+{"entite": "R-1340-88 Wasp", "valeur": "9"}
+{"entite": "R-1340-AN1 Wasp", "valeur": "9"}
+{"entite": "R-1340-B Wasp", "valeur": "9"}
+{"entite": "R-1340-D Wasp", "valeur": "9"}
+{"entite": "R-1340 Wasp", "valeur": "9"}
+{"entite": "R-1690 Hornet", "valeur": "9"}
+{"entite": "R-1820-19 Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-25 Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-31 Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-33 Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-34 Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-45 Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-51 Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-65 Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-76A Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-76B Cyclone 9", "valeur": "9"}
+{"entite": "R-1820-82WA Cyclone 9", "valeur": "9"}
+{"entite": "R-1820 Cyclone 9", "valeur": "9"}
+{"entite": "R-1830-21 Twin Wasp", "valeur": "14"}
+{"entite": "R-1830-64 Twin Wasp", "valeur": "14"}
+{"entite": "R-1830-72 Twin Wasp", "valeur": "14"}
+{"entite": "R-1830-82 Twin Wasp", "valeur": "14"}
+{"entite": "R-1830-90 Twin Wasp", "valeur": "14"}
+{"entite": "R-1830-92 Twin Wasp", "valeur": "14"}
+{"entite": "R-1830-S1C3-G Twin Wasp", "valeur": "14"}
+{"entite": "R-1860 Hornet B", "valeur": "9"}
+{"entite": "R-2000-7M-2 Twin Wasp", "valeur": "14"}
+{"entite": "R-2600-22 Cyclone", "valeur": "14"}
+{"entite": "R-2600-C14 Twin Cyclone", "valeur": "14"}
+{"entite": "R-2600 Twin Cyclone", "valeur": "14"}
+{"entite": "R-2800-43 Double Wasp", "valeur": "18"}
+{"entite": "R-2800-51 Double Wasp", "valeur": "18"}
+{"entite": "R-2800-52W Double Wasp", "valeur": "18"}
+{"entite": "R-2800 Double Wasp", "valeur": "18"}
+{"entite": "R-3350-24W Duplex Cyclone", "valeur": "18"}
+{"entite": "R-3350-26W Duplex Cyclone", "valeur": "18"}
+{"entite": "R-3350-30W Duplex Cyclone", "valeur": "18"}
+{"entite": "R-3350-32W Duplex Cyclone", "valeur": "18"}
+{"entite": "R-3350-34 Turbo Compound", "valeur": "18"}
+{"entite": "R-3350 Duplex Cyclone", "valeur": "18"}
+{"entite": "R-4360-63A Wasp Major", "valeur": "28"}
+{"entite": "R-4360 Wasp Major", "valeur": "28"}
+{"entite": "R-755", "valeur": "7"}
+{"entite": "R-830", "valeur": "7"}
+{"entite": "R-915", "valeur": "7"}
+{"entite": "R-985-AN-1 Wasp Junior", "valeur": "9"}
+{"entite": "R.B. 1", "valeur": "2"}
+{"entite": "R.B. 3", "valeur": "2"}
+{"entite": "R9-A", "valeur": "9"}
+{"entite": "RAF 1", "valeur": "8"}
+{"entite": "RAF 4", "valeur": "12"}
+{"entite": "Rebus (moteur)", "valeur": "4"}
+{"entite": "Renault 12", "valeur": "12"}
+{"entite": "Renault 12F", "valeur": "12"}
+{"entite": "Renault 12Fe", "valeur": "12"}
+{"entite": "Renault 4P", "valeur": "4"}
+{"entite": "Renault 70 hp", "valeur": "8"}
+{"entite": "Renault 7A", "valeur": "7"}
+{"entite": "Renault 8G", "valeur": "8"}
+{"entite": "Renault 8Gdy", "valeur": "8"}
+{"entite": "Renault EF1", "valeur": "6"}
+{"entite": "Renault Energy F1 2015", "valeur": "6"}
+{"entite": "Renault G8T", "valeur": "4"}
+{"entite": "Renault G8T 714", "valeur": "4"}
+{"entite": "Renault G8T 716", "valeur": "4"}
+{"entite": "Renault G8T 760", "valeur": "4"}
+{"entite": "Renault G9", "valeur": "4"}
+{"entite": "Renault RS27", "valeur": "8"}
+{"entite": "Renfe 242 f 2000", "valeur": "2"}
+{"entite": "Renfe 282 0400", "valeur": "4"}
+{"entite": "Renfe 462 0400", "valeur": "4"}
+{"entite": "RhB G 3/4", "valeur": "2"}
+{"entite": "RhB G 4/5", "valeur": "2"}
+{"entite": "Rolls-Royce Condor", "valeur": "12"}
+{"entite": "Rolls-Royce Condor C. I.", "valeur": "12"}
+{"entite": "Rolls-Royce Condor I", "valeur": "12"}
+{"entite": "Rolls-Royce Condor II", "valeur": "12"}
+{"entite": "Rolls-Royce Condor III", "valeur": "12"}
+{"entite": "Rolls-Royce Condor IIIA", "valeur": "12"}
+{"entite": "Rolls-Royce Condor IIIB", "valeur": "12"}
+{"entite": "Rolls-Royce Condor IV", "valeur": "12"}
+{"entite": "Rolls-Royce Condor IVA", "valeur": "12"}
+{"entite": "Rolls-Royce Condor V", "valeur": "12"}
+{"entite": "Rolls-Royce Condor VII", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle I", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle II", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle III", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle IV", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle IX", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle V", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle VI", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle VII", "valeur": "12"}
+{"entite": "Rolls-Royce Eagle VIII", "valeur": "12"}
+{"entite": "Rolls-Royce Falcon", "valeur": "12"}
+{"entite": "Rolls-Royce Falcon III", "valeur": "12"}
+{"entite": "Rolls-Royce Griffon", "valeur": "12"}
+{"entite": "Rolls-Royce Kestrel", "valeur": "12"}
+{"entite": "Rolls-Royce Kestrel IB", "valeur": "12"}
+{"entite": "Rolls-Royce Kestrel IIIS", "valeur": "12"}
+{"entite": "Rolls-Royce Kestrel V", "valeur": "12"}
+{"entite": "Rolls-Royce Kestrel VFP", "valeur": "12"}
+{"entite": "Rolls-Royce Kestrel VI", "valeur": "12"}
+{"entite": "Rolls-Royce Kestrel XDR", "valeur": "12"}
+{"entite": "Rolls-Royce Kestrel XVI", "valeur": "12"}
+{"entite": "Rolls-Royce Merlin", "valeur": "12"}
+{"entite": "Rolls-Royce Pegasus IIIM.2", "valeur": "9"}
+{"entite": "Rolls-Royce Vulture", "valeur": "24"}
+{"entite": "Rotax 582", "valeur": "2"}
+{"entite": "RS09", "valeur": "4"}
+{"entite": "S12 AL 1301 à 1308", "valeur": "4"}
+{"entite": "S14 AL 1311 à 1370", "valeur": "4"}
+{"entite": "S16 AL 1401 et 1402", "valeur": "2"}
+{"entite": "S7 ex-Prusse", "valeur": "4"}
+{"entite": "S9 AL 901 à 980", "valeur": "4"}
+{"entite": "Salamanca", "valeur": "2"}
+{"entite": "Salmson 2M7", "valeur": "14"}
+{"entite": "Salmson A9", "valeur": "9"}
+{"entite": "Salmson C9", "valeur": "9"}
+{"entite": "Salmson CM.2", "valeur": "9"}
+{"entite": "Salmson M7", "valeur": "7"}
+{"entite": "Salmson M9", "valeur": "9"}
+{"entite": "Salmson P9", "valeur": "9"}
+{"entite": "Salmson R9", "valeur": "9"}
+{"entite": "Salmson Z9", "valeur": "9"}
+{"entite": "Sans Pareil", "valeur": "2"}
+{"entite": "Scania D11", "valeur": "6"}
+{"entite": "Scania D12", "valeur": "6"}
+{"entite": "Scania D13", "valeur": "6"}
+{"entite": "Scania D14", "valeur": "8"}
+{"entite": "Scania D16", "valeur": "8"}
+{"entite": "Scania D5", "valeur": "4"}
+{"entite": "Scania D8", "valeur": "6"}
+{"entite": "Scania-Vabis D10", "valeur": "6"}
+{"entite": "Scania-Vabis D7", "valeur": "6"}
+{"entite": "Schneider Ct CGB", "valeur": "2"}
+{"entite": "SDI", "valeur": "4"}
+{"entite": "SEK Μα", "valeur": "2"}
+{"entite": "SFAI 1404 à 1407", "valeur": "2"}
+{"entite": "SFAI 1461 à 1473", "valeur": "2"}
+{"entite": "SFR 161 à 166", "valeur": "2"}
+{"entite": "SFR 181 à 188", "valeur": "2"}
+{"entite": "Shvetsov ASh-73", "valeur": "18"}
+{"entite": "Shvetsov M-22", "valeur": "9"}
+{"entite": "Shvetsov M-25", "valeur": "9"}
+{"entite": "Shvetsov M-25V", "valeur": "9"}
+{"entite": "Siddeley Puma", "valeur": "6"}
+{"entite": "Siemens-Halske Sh 11", "valeur": "7"}
+{"entite": "Siemens-Halske Sh 12", "valeur": "9"}
+{"entite": "Siemens-Halske Sh 4", "valeur": "5"}
+{"entite": "Siemens-Halske Sh 5", "valeur": "7"}
+{"entite": "Siemens-Halske Sh.III", "valeur": "11"}
+{"entite": "SMA SR305-230", "valeur": "4"}
+{"entite": "SMA SR460", "valeur": "6"}
+{"entite": "SNCB Type 17", "valeur": "2"}
+{"entite": "SNCF 141.R.420", "valeur": "2"}
+{"entite": "SNCV Type 15", "valeur": "2"}
+{"entite": "Snecma Renault 12S", "valeur": "12"}
+{"entite": "Soo Line 2719", "valeur": "2"}
+{"entite": "SR20DET", "valeur": "4"}
+{"entite": "Stellantis Hurricane", "valeur": "6"}
+{"entite": "Sunbeam Arab", "valeur": "8"}
+{"entite": "SV 1 à 5", "valeur": "2"}
+{"entite": "Système Péchot", "valeur": "4"}
+{"entite": "T 9.3", "valeur": "2"}
+{"entite": "T10 ex-Prusse", "valeur": "2"}
+{"entite": "T11 ex-Prusse", "valeur": "2"}
+{"entite": "T12 AL et ex-Prusse", "valeur": "2"}
+{"entite": "T13 AL et ex-Prusse", "valeur": "2"}
+{"entite": "T14 AL et ex-Prusse", "valeur": "2"}
+{"entite": "T15 ex-Prusse", "valeur": "2"}
+{"entite": "T16 et T16.1 AL et ex-Prusse", "valeur": "2"}
+{"entite": "T17 AL 8301 à 8366", "valeur": "4"}
+{"entite": "T18 AL 8401 à 8427", "valeur": "2"}
+{"entite": "T20 AL 8601 à 8630", "valeur": "4"}
+{"entite": "T5 ex-Wurtemberg", "valeur": "2"}
+{"entite": "T9.2 ex-Prusse", "valeur": "2"}
+{"entite": "TAG Porsche", "valeur": "6"}
+{"entite": "Tatra 103", "valeur": "12"}
+{"entite": "TIO-540-C1A", "valeur": "6"}
+{"entite": "TKpb 3", "valeur": "2"}
+{"entite": "Tohatsu BFT100", "valeur": "4"}
+{"entite": "Tohatsu BFT115", "valeur": "4"}
+{"entite": "Tohatsu BFT150", "valeur": "4"}
+{"entite": "Tohatsu BFT200", "valeur": "6"}
+{"entite": "Tohatsu BFT225", "valeur": "6"}
+{"entite": "Tohatsu BFT250", "valeur": "6"}
+{"entite": "Tohatsu BFT60", "valeur": "3"}
+{"entite": "Tohatsu BFT75", "valeur": "4"}
+{"entite": "Tohatsu BFT80", "valeur": "4"}
+{"entite": "Tohatsu BFT90", "valeur": "4"}
+{"entite": "Tohatsu M115", "valeur": "4"}
+{"entite": "Tohatsu M140", "valeur": "4"}
+{"entite": "Tohatsu M15", "valeur": "2"}
+{"entite": "Tohatsu M18", "valeur": "2"}
+{"entite": "Tohatsu M2.5A", "valeur": "1"}
+{"entite": "Tohatsu M25", "valeur": "2"}
+{"entite": "Tohatsu M25 Jet Drive", "valeur": "2"}
+{"entite": "Tohatsu M3.5A", "valeur": "1"}
+{"entite": "Tohatsu M3.5B", "valeur": "1"}
+{"entite": "Tohatsu M30", "valeur": "2"}
+{"entite": "Tohatsu M4", "valeur": "1"}
+{"entite": "Tohatsu M40", "valeur": "3"}
+{"entite": "Tohatsu M5", "valeur": "1"}
+{"entite": "Tohatsu M50", "valeur": "3"}
+{"entite": "Tohatsu M6", "valeur": "2"}
+{"entite": "Tohatsu M60", "valeur": "3"}
+{"entite": "Tohatsu M70", "valeur": "3"}
+{"entite": "Tohatsu M70 CX PRO", "valeur": "3"}
+{"entite": "Tohatsu M8", "valeur": "2"}
+{"entite": "Tohatsu M9.8", "valeur": "2"}
+{"entite": "Tohatsu M9.9", "valeur": "2"}
+{"entite": "Tohatsu M90", "valeur": "3"}
+{"entite": "Tohatsu MD115", "valeur": "4"}
+{"entite": "Tohatsu MD30", "valeur": "3"}
+{"entite": "Tohatsu MD40", "valeur": "3"}
+{"entite": "Tohatsu MD50", "valeur": "3"}
+{"entite": "Tohatsu MD75", "valeur": "3"}
+{"entite": "Tohatsu MD90", "valeur": "3"}
+{"entite": "Tohatsu MFS15", "valeur": "2"}
+{"entite": "Tohatsu MFS2.5", "valeur": "1"}
+{"entite": "Tohatsu MFS20", "valeur": "2"}
+{"entite": "Tohatsu MFS25", "valeur": "3"}
+{"entite": "Tohatsu MFS3.5", "valeur": "1"}
+{"entite": "Tohatsu MFS30", "valeur": "3"}
+{"entite": "Tohatsu MFS4", "valeur": "1"}
+{"entite": "Tohatsu MFS40", "valeur": "3"}
+{"entite": "Tohatsu MFS5", "valeur": "1"}
+{"entite": "Tohatsu MFS5 LPG", "valeur": "1"}
+{"entite": "Tohatsu MFS50", "valeur": "3"}
+{"entite": "Tohatsu MFS6", "valeur": "1"}
+{"entite": "Tohatsu MFS6Z", "valeur": "2"}
+{"entite": "Tohatsu MFS8", "valeur": "2"}
+{"entite": "Tohatsu MFS9.8", "valeur": "2"}
+{"entite": "Tohatsu MX15", "valeur": "2"}
+{"entite": "Tohatsu MX18", "valeur": "2"}
+{"entite": "Tohatsu MX25", "valeur": "2"}
+{"entite": "Tohatsu MX30", "valeur": "2"}
+{"entite": "Tohatsu MX40", "valeur": "3"}
+{"entite": "Tohatsu MX50", "valeur": "3"}
+{"entite": "Tornado de classe A1 60163 de LNER Peppercorn", "valeur": "3"}
+{"entite": "Toumanski M-88", "valeur": "14"}
+{"entite": "Toyota 3S-GE", "valeur": "4"}
+{"entite": "Triumph TR5MX", "valeur": "1"}
+{"entite": "Twin Sisters", "valeur": "2"}
+{"entite": "Type 032 T", "valeur": "2"}
+{"entite": "Type 1", "valeur": "4"}
+{"entite": "Type 10", "valeur": "4"}
+{"entite": "Type 11 SNCB", "valeur": "2"}
+{"entite": "Type 12", "valeur": "2"}
+{"entite": "Type 12 SNCB (1888)", "valeur": "2"}
+{"entite": "Type 13", "valeur": "4"}
+{"entite": "Type 14", "valeur": "2"}
+{"entite": "Type 15", "valeur": "2"}
+{"entite": "Type 16", "valeur": "2"}
+{"entite": "Type 19", "valeur": "2"}
+{"entite": "Type 20", "valeur": "2"}
+{"entite": "Type 25", "valeur": "2"}
+{"entite": "Type 28 SNCB", "valeur": "2"}
+{"entite": "Type 29 (SNCB)", "valeur": "2"}
+{"entite": "Type 29 SNCB (1875)", "valeur": "2"}
+{"entite": "Type 30", "valeur": "2"}
+{"entite": "Type 36", "valeur": "4"}
+{"entite": "Type 4 SNCB", "valeur": "2"}
+{"entite": "Type 41 (SNCB)", "valeur": "2"}
+{"entite": "Type 44", "valeur": "2"}
+{"entite": "Type 53", "valeur": "2"}
+{"entite": "Type 6", "valeur": "4"}
+{"entite": "Type 6 et 6bis", "valeur": "2"}
+{"entite": "Type 7", "valeur": "4"}
+{"entite": "Type 8", "valeur": "4"}
+{"entite": "Type 9", "valeur": "4"}
+{"entite": "U16", "valeur": "16"}
+{"entite": "Union Pacific 3985", "valeur": "4"}
+{"entite": "Union Pacific 4014", "valeur": "4"}
+{"entite": "Union Pacific 844", "valeur": "2"}
+{"entite": "Union Pacific Challenger", "valeur": "4"}
+{"entite": "USATC S100", "valeur": "2"}
+{"entite": "USATC S160", "valeur": "2"}
+{"entite": "V-1570-59 Conqueror", "valeur": "12"}
+{"entite": "V-1570-C Conqueror", "valeur": "12"}
+{"entite": "V-1570 Conqueror", "valeur": "12"}
+{"entite": "V-1650-7 Merlin", "valeur": "12"}
+{"entite": "V-1710-F", "valeur": "12"}
+{"entite": "V.B. 1–4", "valeur": "2"}
+{"entite": "V12", "valeur": "12"}
+{"entite": "VI b ex-Bade", "valeur": "2"}
+{"entite": "VI c ex-Bade", "valeur": "2"}
+{"entite": "Victorian Railways classe H", "valeur": "3"}
+{"entite": "Volvo D12", "valeur": "6"}
+{"entite": "VR6", "valeur": "6"}
+{"entite": "W12", "valeur": "12"}
+{"entite": "W18", "valeur": "18"}
+{"entite": "W8", "valeur": "8"}
+{"entite": "Waldschlepper RS 1500", "valeur": "4"}
+{"entite": "Walter Castor", "valeur": "7"}
+{"entite": "Walter Junior", "valeur": "4"}
+{"entite": "Walter Jupiter IV", "valeur": "9"}
+{"entite": "Walter Mikron", "valeur": "4"}
+{"entite": "Walter Mira-R", "valeur": "7"}
+{"entite": "Walter Sagitta", "valeur": "12"}
+{"entite": "Wärtsilä - Sulzer 14RTFLEX96 - C", "valeur": "14"}
+{"entite": "Wärtsilä X92", "valeur": "11"}
+{"entite": "Wasp Junior", "valeur": "9"}
+{"entite": "Weidknecht C1t TA", "valeur": "2"}
+{"entite": "Wright J-3", "valeur": "9"}
+{"entite": "Wright R-540 Whirlwind", "valeur": "5"}
+{"entite": "Wright R-760 Whirlwind", "valeur": "7"}
+{"entite": "Wright R-790 Whirlwind", "valeur": "9"}
+{"entite": "Wright R-975 Whirlwind", "valeur": "9"}
+{"entite": "Wright SR-1820-F2", "valeur": "9"}
+{"entite": "Wright T-3 Tornado", "valeur": "12"}
+{"entite": "Württemberg D", "valeur": "4"}
+{"entite": "Wylam Dilly", "valeur": "2"}
+{"entite": "Yamaha MT-07", "valeur": "2"}
+{"entite": "Yamaha XT1200Z Super Ténéré", "valeur": "2"}
+{"entite": "ZIL-131", "valeur": "8"}

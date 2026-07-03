@@ -1,0 +1,42 @@
+{"_relation": "classe_therapeutique_medicament", "_categorie": "physique", "_source": "Modèle (Claude) — pharmacologie textbook curée (classe thérapeutique ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "alprazolam", "valeur": "anxiolytique"}
+{"entite": "amlodipine", "valeur": "antihypertenseur"}
+{"entite": "amoxicilline", "valeur": "antibiotique"}
+{"entite": "aspirine", "valeur": "anti-inflammatoire"}
+{"entite": "aténolol", "valeur": "bêta-bloquant"}
+{"entite": "atorvastatine", "valeur": "hypolipémiant"}
+{"entite": "bisoprolol", "valeur": "bêta-bloquant"}
+{"entite": "célécoxib", "valeur": "anti-inflammatoire"}
+{"entite": "cétirizine", "valeur": "antihistaminique"}
+{"entite": "codéine", "valeur": "analgésique opioïde"}
+{"entite": "desloratadine", "valeur": "antihistaminique"}
+{"entite": "diazépam", "valeur": "anxiolytique"}
+{"entite": "diclofénac", "valeur": "anti-inflammatoire"}
+{"entite": "énalapril", "valeur": "antihypertenseur"}
+{"entite": "ésoméprazole", "valeur": "inhibiteur de la pompe à protons"}
+{"entite": "fentanyl", "valeur": "analgésique opioïde"}
+{"entite": "fluoxétine", "valeur": "antidépresseur"}
+{"entite": "furosémide", "valeur": "diurétique"}
+{"entite": "héparine", "valeur": "anticoagulant"}
+{"entite": "ibuprofène", "valeur": "anti-inflammatoire"}
+{"entite": "insuline", "valeur": "antidiabétique"}
+{"entite": "kétoprofène", "valeur": "anti-inflammatoire"}
+{"entite": "loratadine", "valeur": "antihistaminique"}
+{"entite": "lorazépam", "valeur": "anxiolytique"}
+{"entite": "metformine", "valeur": "antidiabétique"}
+{"entite": "morphine", "valeur": "analgésique opioïde"}
+{"entite": "naproxène", "valeur": "anti-inflammatoire"}
+{"entite": "oméprazole", "valeur": "inhibiteur de la pompe à protons"}
+{"entite": "oxycodone", "valeur": "analgésique opioïde"}
+{"entite": "pantoprazole", "valeur": "inhibiteur de la pompe à protons"}
+{"entite": "paracétamol", "valeur": "antalgique"}
+{"entite": "paroxétine", "valeur": "antidépresseur"}
+{"entite": "pravastatine", "valeur": "hypolipémiant"}
+{"entite": "propranolol", "valeur": "bêta-bloquant"}
+{"entite": "ramipril", "valeur": "antihypertenseur"}
+{"entite": "rosuvastatine", "valeur": "hypolipémiant"}
+{"entite": "salbutamol", "valeur": "bronchodilatateur"}
+{"entite": "sertraline", "valeur": "antidépresseur"}
+{"entite": "simvastatine", "valeur": "hypolipémiant"}
+{"entite": "tramadol", "valeur": "analgésique opioïde"}
+{"entite": "warfarine", "valeur": "anticoagulant"}

@@ -1,0 +1,31 @@
+{"_relation": "signification_sigle", "_categorie": "convention", "_source": "nomenclatures officielles de référence (sigle -> signification)", "_articles": true}
+{"entite": "ADN", "valeur": "acide désoxyribonucléique"}
+{"entite": "ARN", "valeur": "acide ribonucléique"}
+{"entite": "BCE", "valeur": "Banque centrale européenne"}
+{"entite": "CERN", "valeur": "Conseil européen pour la recherche nucléaire"}
+{"entite": "CPU", "valeur": "Central Processing Unit"}
+{"entite": "FMI", "valeur": "Fonds monétaire international"}
+{"entite": "GPS", "valeur": "Global Positioning System"}
+{"entite": "HTML", "valeur": "HyperText Markup Language"}
+{"entite": "LASER", "valeur": "Light Amplification by Stimulated Emission of Radiation"}
+{"entite": "NASA", "valeur": "National Aeronautics and Space Administration"}
+{"entite": "OMC", "valeur": "Organisation mondiale du commerce"}
+{"entite": "OMS", "valeur": "Organisation mondiale de la santé"}
+{"entite": "ONU", "valeur": "Organisation des Nations Unies"}
+{"entite": "OTAN", "valeur": "Organisation du traité de l'Atlantique Nord"}
+{"entite": "OVNI", "valeur": "objet volant non identifié"}
+{"entite": "PDF", "valeur": "Portable Document Format"}
+{"entite": "PIB", "valeur": "produit intérieur brut"}
+{"entite": "PME", "valeur": "petite et moyenne entreprise"}
+{"entite": "QI", "valeur": "quotient intellectuel"}
+{"entite": "RADAR", "valeur": "Radio Detection And Ranging"}
+{"entite": "RAM", "valeur": "Random Access Memory"}
+{"entite": "RATP", "valeur": "Régie autonome des transports parisiens"}
+{"entite": "SIDA", "valeur": "syndrome d'immunodéficience acquise"}
+{"entite": "SMIC", "valeur": "salaire minimum interprofessionnel de croissance"}
+{"entite": "SNCF", "valeur": "Société nationale des chemins de fer français"}
+{"entite": "TVA", "valeur": "taxe sur la valeur ajoutée"}
+{"entite": "UE", "valeur": "Union européenne"}
+{"entite": "UNESCO", "valeur": "United Nations Educational, Scientific and Cultural Organization"}
+{"entite": "UNICEF", "valeur": "United Nations International Children's Emergency Fund"}
+{"entite": "USB", "valeur": "Universal Serial Bus"}

@@ -1,0 +1,47 @@
+{"_relation": "os_type", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (type d'os ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "atlas", "valeur": "irrégulier"}
+{"entite": "axis", "valeur": "irrégulier"}
+{"entite": "calcanéus", "valeur": "court"}
+{"entite": "capitatum", "valeur": "court"}
+{"entite": "clavicule", "valeur": "long"}
+{"entite": "côte", "valeur": "plat"}
+{"entite": "cubitus", "valeur": "long"}
+{"entite": "cuboïde", "valeur": "court"}
+{"entite": "cunéiforme", "valeur": "court"}
+{"entite": "ethmoïde", "valeur": "irrégulier"}
+{"entite": "fémur", "valeur": "long"}
+{"entite": "hamatum", "valeur": "court"}
+{"entite": "humérus", "valeur": "long"}
+{"entite": "lunatum", "valeur": "court"}
+{"entite": "mandibule", "valeur": "irrégulier"}
+{"entite": "maxillaire", "valeur": "irrégulier"}
+{"entite": "métacarpien", "valeur": "long"}
+{"entite": "métatarsien", "valeur": "long"}
+{"entite": "omoplate", "valeur": "plat"}
+{"entite": "os du carpe", "valeur": "court"}
+{"entite": "os du tarse", "valeur": "court"}
+{"entite": "os frontal", "valeur": "plat"}
+{"entite": "os hyoïde", "valeur": "irrégulier"}
+{"entite": "os iliaque", "valeur": "irrégulier"}
+{"entite": "os lacrymal", "valeur": "plat"}
+{"entite": "os nasal", "valeur": "plat"}
+{"entite": "os occipital", "valeur": "plat"}
+{"entite": "os pariétal", "valeur": "plat"}
+{"entite": "os temporal", "valeur": "plat"}
+{"entite": "os zygomatique", "valeur": "irrégulier"}
+{"entite": "palatin", "valeur": "irrégulier"}
+{"entite": "péroné", "valeur": "long"}
+{"entite": "phalange", "valeur": "long"}
+{"entite": "pisiforme", "valeur": "court"}
+{"entite": "radius", "valeur": "long"}
+{"entite": "rotule", "valeur": "sésamoïde"}
+{"entite": "sacrum", "valeur": "irrégulier"}
+{"entite": "scaphoïde", "valeur": "court"}
+{"entite": "sphénoïde", "valeur": "irrégulier"}
+{"entite": "sternum", "valeur": "plat"}
+{"entite": "talus", "valeur": "court"}
+{"entite": "tibia", "valeur": "long"}
+{"entite": "trapèze", "valeur": "court"}
+{"entite": "trapézoïde", "valeur": "court"}
+{"entite": "vertèbre", "valeur": "irrégulier"}
+{"entite": "vomer", "valeur": "plat"}

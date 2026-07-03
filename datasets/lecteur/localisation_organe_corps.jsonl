@@ -1,0 +1,47 @@
+{"_relation": "localisation_organe_corps", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (organe -> région du corps ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amygdales", "valeur": "cou"}
+{"entite": "appendice", "valeur": "abdomen"}
+{"entite": "bronches", "valeur": "thorax"}
+{"entite": "cæcum", "valeur": "abdomen"}
+{"entite": "cœur", "valeur": "thorax"}
+{"entite": "canal déférent", "valeur": "bassin"}
+{"entite": "cerveau", "valeur": "tête"}
+{"entite": "cervelet", "valeur": "tête"}
+{"entite": "côlon", "valeur": "abdomen"}
+{"entite": "duodénum", "valeur": "abdomen"}
+{"entite": "estomac", "valeur": "abdomen"}
+{"entite": "foie", "valeur": "abdomen"}
+{"entite": "glande pinéale", "valeur": "tête"}
+{"entite": "glande surrénale", "valeur": "abdomen"}
+{"entite": "hypophyse", "valeur": "tête"}
+{"entite": "hypothalamus", "valeur": "tête"}
+{"entite": "œil", "valeur": "tête"}
+{"entite": "iléon", "valeur": "abdomen"}
+{"entite": "intestin grêle", "valeur": "abdomen"}
+{"entite": "jéjunum", "valeur": "abdomen"}
+{"entite": "langue", "valeur": "tête"}
+{"entite": "larynx", "valeur": "cou"}
+{"entite": "mâchoire", "valeur": "tête"}
+{"entite": "médiastin", "valeur": "thorax"}
+{"entite": "oreille interne", "valeur": "tête"}
+{"entite": "ovaire", "valeur": "bassin"}
+{"entite": "pancréas", "valeur": "abdomen"}
+{"entite": "parathyroïde", "valeur": "cou"}
+{"entite": "péritoine", "valeur": "abdomen"}
+{"entite": "pharynx", "valeur": "cou"}
+{"entite": "plèvre", "valeur": "thorax"}
+{"entite": "poumon", "valeur": "thorax"}
+{"entite": "prostate", "valeur": "bassin"}
+{"entite": "rate", "valeur": "abdomen"}
+{"entite": "rectum", "valeur": "bassin"}
+{"entite": "rein", "valeur": "abdomen"}
+{"entite": "sinus", "valeur": "tête"}
+{"entite": "thymus", "valeur": "thorax"}
+{"entite": "thyroïde", "valeur": "cou"}
+{"entite": "trompe de Fallope", "valeur": "bassin"}
+{"entite": "uretère", "valeur": "abdomen"}
+{"entite": "utérus", "valeur": "bassin"}
+{"entite": "vagin", "valeur": "bassin"}
+{"entite": "vésicule biliaire", "valeur": "abdomen"}
+{"entite": "vésicule séminale", "valeur": "bassin"}
+{"entite": "vessie", "valeur": "bassin"}

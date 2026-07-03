@@ -1,0 +1,12 @@
+{"_relation": "role_oligoelement", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (rôle d'oligo-élément ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "calcium", "valeur": "minéralisation osseuse"}
+{"entite": "chlore", "valeur": "équilibre acido-basique"}
+{"entite": "fer", "valeur": "transport de l'oxygène"}
+{"entite": "fluor", "valeur": "protection de l'émail dentaire"}
+{"entite": "iode", "valeur": "synthèse des hormones thyroïdiennes"}
+{"entite": "magnésium", "valeur": "contraction musculaire"}
+{"entite": "phosphore", "valeur": "minéralisation osseuse"}
+{"entite": "potassium", "valeur": "transmission de l'influx nerveux"}
+{"entite": "sélénium", "valeur": "antioxydant"}
+{"entite": "sodium", "valeur": "équilibre hydrique"}
+{"entite": "zinc", "valeur": "cicatrisation"}

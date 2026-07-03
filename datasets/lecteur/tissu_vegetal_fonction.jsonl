@@ -1,0 +1,6 @@
+{"_relation": "tissu_vegetal_fonction", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (fonction de tissu végétal ; libellés non ambigus ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "collenchyme", "valeur": "soutien des organes jeunes"}
+{"entite": "méristème", "valeur": "croissance par division cellulaire"}
+{"entite": "phloème", "valeur": "conduction de la sève élaborée"}
+{"entite": "sclérenchyme", "valeur": "soutien des organes matures"}
+{"entite": "xylème", "valeur": "conduction de la sève brute"}

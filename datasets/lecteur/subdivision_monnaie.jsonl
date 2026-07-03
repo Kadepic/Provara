@@ -1,0 +1,11 @@
+{"_relation": "subdivision_monnaie", "_categorie": "convention", "_source": "numismatique (monnaie -> subdivision)", "_articles": true}
+{"entite": "couronne suédoise", "valeur": "öre"}
+{"entite": "dollar", "valeur": "cent"}
+{"entite": "euro", "valeur": "centime"}
+{"entite": "livre sterling", "valeur": "penny"}
+{"entite": "peso mexicain", "valeur": "centavo"}
+{"entite": "rand", "valeur": "cent"}
+{"entite": "real", "valeur": "centavo"}
+{"entite": "rouble", "valeur": "kopeck"}
+{"entite": "roupie indienne", "valeur": "paisa"}
+{"entite": "won", "valeur": "jeon"}

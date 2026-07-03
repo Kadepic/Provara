@@ -1,0 +1,69 @@
+{"_relation": "nom_scientifique_plante", "_categorie": "convention", "_source": "Modèle (Claude) — botanique textbook curée (nom commun FR -> binôme latin ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abricotier", "valeur": "Prunus armeniaca"}
+{"entite": "ail", "valeur": "Allium sativum"}
+{"entite": "arachide", "valeur": "Arachis hypogaea"}
+{"entite": "aulne", "valeur": "Alnus glutinosa"}
+{"entite": "avoine", "valeur": "Avena sativa"}
+{"entite": "basilic", "valeur": "Ocimum basilicum"}
+{"entite": "betterave", "valeur": "Beta vulgaris"}
+{"entite": "blé", "valeur": "Triticum aestivum"}
+{"entite": "bouleau verruqueux", "valeur": "Betula pendula"}
+{"entite": "cacaoyer", "valeur": "Theobroma cacao"}
+{"entite": "caféier", "valeur": "Coffea arabica"}
+{"entite": "canne à sucre", "valeur": "Saccharum officinarum"}
+{"entite": "carotte", "valeur": "Daucus carota"}
+{"entite": "cerisier", "valeur": "Prunus avium"}
+{"entite": "charme", "valeur": "Carpinus betulus"}
+{"entite": "châtaignier", "valeur": "Castanea sativa"}
+{"entite": "chêne pédonculé", "valeur": "Quercus robur"}
+{"entite": "chou", "valeur": "Brassica oleracea"}
+{"entite": "citronnier", "valeur": "Citrus limon"}
+{"entite": "concombre", "valeur": "Cucumis sativus"}
+{"entite": "coquelicot", "valeur": "Papaver rhoeas"}
+{"entite": "courgette", "valeur": "Cucurbita pepo"}
+{"entite": "épicéa commun", "valeur": "Picea abies"}
+{"entite": "épinard", "valeur": "Spinacia oleracea"}
+{"entite": "érable sycomore", "valeur": "Acer pseudoplatanus"}
+{"entite": "fève", "valeur": "Vicia faba"}
+{"entite": "frêne", "valeur": "Fraxinus excelsior"}
+{"entite": "genévrier", "valeur": "Juniperus communis"}
+{"entite": "gingembre", "valeur": "Zingiber officinale"}
+{"entite": "haricot commun", "valeur": "Phaseolus vulgaris"}
+{"entite": "hêtre commun", "valeur": "Fagus sylvatica"}
+{"entite": "houx", "valeur": "Ilex aquifolium"}
+{"entite": "if", "valeur": "Taxus baccata"}
+{"entite": "laitue", "valeur": "Lactuca sativa"}
+{"entite": "lavande vraie", "valeur": "Lavandula angustifolia"}
+{"entite": "lentille", "valeur": "Lens culinaris"}
+{"entite": "lierre", "valeur": "Hedera helix"}
+{"entite": "lin", "valeur": "Linum usitatissimum"}
+{"entite": "maïs", "valeur": "Zea mays"}
+{"entite": "melon", "valeur": "Cucumis melo"}
+{"entite": "menthe poivrée", "valeur": "Mentha piperita"}
+{"entite": "noisetier", "valeur": "Corylus avellana"}
+{"entite": "noyer", "valeur": "Juglans regia"}
+{"entite": "oignon", "valeur": "Allium cepa"}
+{"entite": "olivier", "valeur": "Olea europaea"}
+{"entite": "orge", "valeur": "Hordeum vulgare"}
+{"entite": "ortie", "valeur": "Urtica dioica"}
+{"entite": "pastèque", "valeur": "Citrullus lanatus"}
+{"entite": "pêcher", "valeur": "Prunus persica"}
+{"entite": "persil", "valeur": "Petroselinum crispum"}
+{"entite": "pin sylvestre", "valeur": "Pinus sylvestris"}
+{"entite": "pissenlit", "valeur": "Taraxacum officinale"}
+{"entite": "poirier", "valeur": "Pyrus communis"}
+{"entite": "pois", "valeur": "Pisum sativum"}
+{"entite": "pomme de terre", "valeur": "Solanum tuberosum"}
+{"entite": "pommier", "valeur": "Malus domestica"}
+{"entite": "prunier", "valeur": "Prunus domestica"}
+{"entite": "riz", "valeur": "Oryza sativa"}
+{"entite": "saule blanc", "valeur": "Salix alba"}
+{"entite": "seigle", "valeur": "Secale cereale"}
+{"entite": "soja", "valeur": "Glycine max"}
+{"entite": "tabac", "valeur": "Nicotiana tabacum"}
+{"entite": "thé", "valeur": "Camellia sinensis"}
+{"entite": "thym", "valeur": "Thymus vulgaris"}
+{"entite": "tilleul", "valeur": "Tilia cordata"}
+{"entite": "tomate", "valeur": "Solanum lycopersicum"}
+{"entite": "tournesol", "valeur": "Helianthus annuus"}
+{"entite": "vigne", "valeur": "Vitis vinifera"}

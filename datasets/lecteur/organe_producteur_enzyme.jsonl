@@ -1,0 +1,6 @@
+{"_relation": "organe_producteur_enzyme", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (organe producteur d'enzyme ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amylase pancréatique", "valeur": "pancréas"}
+{"entite": "chymotrypsine", "valeur": "pancréas"}
+{"entite": "pepsine", "valeur": "estomac"}
+{"entite": "ptyaline", "valeur": "glande salivaire"}
+{"entite": "trypsine", "valeur": "pancréas"}

@@ -1,0 +1,8 @@
+{"_relation": "agent_dispersion_graine", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (mode de dispersion -> agent ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "anémochorie", "valeur": "vent"}
+{"entite": "anthropochorie", "valeur": "homme"}
+{"entite": "autochorie", "valeur": "plante elle-même"}
+{"entite": "barochorie", "valeur": "gravité"}
+{"entite": "hydrochorie", "valeur": "eau"}
+{"entite": "myrmécochorie", "valeur": "fourmis"}
+{"entite": "zoochorie", "valeur": "animaux"}

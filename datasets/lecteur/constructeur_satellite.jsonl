@@ -1,0 +1,680 @@
+{"_relation": "constructeur_satellite", "_categorie": "convention", "_source": "Wikidata/QLever — constructeur (P176) du satellite (Q26540) [Thales Alenia/Airbus DS/Ball/Reshetnev ; distinct de l'exploitant]", "_articles": true}
+{"entite": "2001 Mars Odyssey", "valeur": "Lockheed Martin"}
+{"entite": "LES-4", "valeur": "Laboratoire Lincoln"}
+{"entite": "$50SAT", "valeur": "université d'État de Morehead"}
+{"entite": "ABRIXAS", "valeur": "OHB System AG"}
+{"entite": "ABS-3", "valeur": "Space Systems/Loral"}
+{"entite": "Active Cavity Radiometer Irradiance Monitor Satellite", "valeur": "Orbital Sciences Corporation"}
+{"entite": "ADEOS I", "valeur": "Mitsubishi Electric"}
+{"entite": "ADEOS II", "valeur": "Mitsubishi Electric"}
+{"entite": "ADM-Aeolus", "valeur": "Space Systems"}
+{"entite": "Advanced Communications Technology Satellite", "valeur": "Martin Marietta"}
+{"entite": "Akari", "valeur": "Institut des sciences spatiales et astronautiques"}
+{"entite": "ALOS-2", "valeur": "Mitsubishi Electric"}
+{"entite": "ALOS-3", "valeur": "Mitsubishi Electric"}
+{"entite": "Alouette 2", "valeur": "RCA Victor"}
+{"entite": "Alsat-2A", "valeur": "Astrium"}
+{"entite": "ALTIUS", "valeur": "QinetiQ"}
+{"entite": "Amazonas 2", "valeur": "Astrium"}
+{"entite": "Amazonas 3", "valeur": "Space Systems/Loral"}
+{"entite": "Amos-17", "valeur": "Boeing Satellite Development Center"}
+{"entite": "Amos-2", "valeur": "Israel Aerospace Industries"}
+{"entite": "AMOS-8", "valeur": "Space Systems/Loral"}
+{"entite": "AngoSat-1", "valeur": "RKK Energia"}
+{"entite": "AngoSat 2", "valeur": "ISS Reshetnev"}
+{"entite": "Aqua", "valeur": "TRW"}
+{"entite": "Arctic weather satellite", "valeur": "Thales Alenia Space"}
+{"entite": "Ariane Passenger Payload Experiment", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Ariel 2", "valeur": "Westinghouse Electric"}
+{"entite": "Ariel V", "valeur": "Marconi Electronic Systems"}
+{"entite": "Ariel VI", "valeur": "Marconi Electronic Systems"}
+{"entite": "ARSAT-1", "valeur": "INVAP"}
+{"entite": "ARSAT-2", "valeur": "INVAP"}
+{"entite": "Aryabhata", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Asgardia-1", "valeur": "Asgardia"}
+{"entite": "AsiaSat 8", "valeur": "Space Systems/Loral"}
+{"entite": "AsiaSat 9", "valeur": "Space Systems/Loral"}
+{"entite": "Astra 1A", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "Astra 5A", "valeur": "Aérospatiale"}
+{"entite": "Athena-Fidus", "valeur": "Thales Alenia Space"}
+{"entite": "Atlantic Bird 2", "valeur": "Alcatel Space"}
+{"entite": "Atlantic Bird 3", "valeur": "Alcatel Space"}
+{"entite": "ATS-1", "valeur": "Hughes Aircraft"}
+{"entite": "ATS–4", "valeur": "Hughes Aircraft"}
+{"entite": "ATS-5", "valeur": "Hughes Aircraft"}
+{"entite": "ATS-6", "valeur": "Fairchild Engine & Airplane Corporation"}
+{"entite": "Aura", "valeur": "TRW"}
+{"entite": "Auréole 3", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Azerspace-2", "valeur": "Space Systems/Loral"}
+{"entite": "Azerspace/Africasat-1a", "valeur": "Orbital Sciences Corporation"}
+{"entite": "Bangabandhu-1", "valeur": "Thales Alenia Space"}
+{"entite": "Beacon Explorer-A", "valeur": "Applied Physics Laboratory"}
+{"entite": "Beppo-SAX", "valeur": "Alenia Aeronautica"}
+{"entite": "Bhaskara 2", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Bion 1", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Bion 10", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Bion 2", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Bion 3", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Bion 4", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Bion 5", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Bion 6", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Bion 7", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Bion 8", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "BIRD", "valeur": "Deutsches Zentrum für Luft- und Raumfahrt"}
+{"entite": "BlackCAT", "valeur": "Université d'État de Pennsylvanie"}
+{"entite": "Blagovest", "valeur": "ISS Reshetnev"}
+{"entite": "BSAT-4a", "valeur": "Space Systems/Loral"}
+{"entite": "CALIPSO", "valeur": "Alcatel Space"}
+{"entite": "Capella-1", "valeur": "Capella Space"}
+{"entite": "Capella-10", "valeur": "Capella Space"}
+{"entite": "Capella-11", "valeur": "Capella Space"}
+{"entite": "Capella-13", "valeur": "Capella Space"}
+{"entite": "Capella-14", "valeur": "Capella Space"}
+{"entite": "Capella-2", "valeur": "Capella Space"}
+{"entite": "Capella-3", "valeur": "Capella Space"}
+{"entite": "Capella-4", "valeur": "Capella Space"}
+{"entite": "Capella-5", "valeur": "Capella Space"}
+{"entite": "Capella-6", "valeur": "Capella Space"}
+{"entite": "Capella-7", "valeur": "Capella Space"}
+{"entite": "Capella-8", "valeur": "Capella Space"}
+{"entite": "Capella-9", "valeur": "Capella Space"}
+{"entite": "Carruthers Geocorona Observatory", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "Cartosat-1", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Cassini", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "CASSIOPE", "valeur": "MacDonald, Dettwiler and Associates"}
+{"entite": "CAT-1", "valeur": "Aeritalia"}
+{"entite": "CAT-2", "valeur": "Aeritalia"}
+{"entite": "CAT-3", "valeur": "Aeritalia"}
+{"entite": "CAT-4", "valeur": "Aeritalia"}
+{"entite": "CHAMP", "valeur": "Astrium"}
+{"entite": "Chang'e 5", "valeur": "Académie chinoise de technologie spatiale"}
+{"entite": "CHEOPS", "valeur": "Airbus Defence and Space"}
+{"entite": "Chinasat 12", "valeur": "Thales Alenia Space"}
+{"entite": "Chinasat 5B", "valeur": "Aérospatiale"}
+{"entite": "Chinese Hα Solar Explorer", "valeur": "Académie de Shanghai pour la technologie des vols spatiaux"}
+{"entite": "ClearSpace-1", "valeur": "ClearSpace"}
+{"entite": "CloudSat", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "COMETS", "valeur": "Agence nationale de développement spatial du Japon"}
+{"entite": "Compton Gamma-Ray Observatory", "valeur": "TRW"}
+{"entite": "Copernicus", "valeur": "Grumman"}
+{"entite": "Coriolis", "valeur": "Spectrum Astro"}
+{"entite": "Corot", "valeur": "Alcatel Space"}
+{"entite": "Cosmos 10", "valeur": "RKK Energia"}
+{"entite": "Cosmos 101", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 1026", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Cosmos 104", "valeur": "RKK Energia"}
+{"entite": "Cosmos 105", "valeur": "RKK Energia"}
+{"entite": "Cosmos 106", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 107", "valeur": "RKK Energia"}
+{"entite": "Cosmos 108", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 11", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 112", "valeur": "RKK Energia"}
+{"entite": "Cosmos 115", "valeur": "RKK Energia"}
+{"entite": "Cosmos 116", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 117", "valeur": "RKK Energia"}
+{"entite": "Cosmos 119", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 12", "valeur": "RKK Energia"}
+{"entite": "Cosmos 120", "valeur": "RKK Energia"}
+{"entite": "Cosmos 123", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 124", "valeur": "RKK Energia"}
+{"entite": "Cosmos 129", "valeur": "RKK Energia"}
+{"entite": "Cosmos 13", "valeur": "RKK Energia"}
+{"entite": "Cosmos 132", "valeur": "RKK Energia"}
+{"entite": "Cosmos 135", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 136", "valeur": "RKK Energia"}
+{"entite": "Cosmos 137", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 138", "valeur": "RKK Energia"}
+{"entite": "Cosmos 14", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 1408", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 142", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 143", "valeur": "RKK Energia"}
+{"entite": "Cosmos 145", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 147", "valeur": "RKK Energia"}
+{"entite": "Cosmos 148", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 149", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 15", "valeur": "RKK Energia"}
+{"entite": "Cosmos 152", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 1546", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 16", "valeur": "RKK Energia"}
+{"entite": "Cosmos 1629", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 163", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 165", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 166", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 17", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 173", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 176", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 18", "valeur": "RKK Energia"}
+{"entite": "Cosmos 1894", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 19", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 191", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 196", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 197", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 2", "valeur": "RKK Energia"}
+{"entite": "Cosmos 20", "valeur": "RKK Energia"}
+{"entite": "Cosmos 202", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 204", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 211", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 2133", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 215", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 2155", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 219", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 2209", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 221", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 222", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 2224", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 225", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 2282", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 23", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 230", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 233", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 2345", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 2350", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 2379", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 2380", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2381", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2382", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2394", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2395", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2396", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2397", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 24", "valeur": "RKK Energia"}
+{"entite": "Cosmos 2402", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2403", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2404", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2411", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2412", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2413", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2417", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2418", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2419", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 242", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 2424", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2425", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2426", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2431", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2432", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2433", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2434", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2435", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2436", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2440", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 2441", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Cosmos 2447", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2448", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 2449", "valeur": "ISS Reshetnev"}
+{"entite": "Cosmos 245", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 25", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 257", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 259", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 26", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 261", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 262", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 265", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 268", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 275", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 277", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 28", "valeur": "RKK Energia"}
+{"entite": "Cosmos 283", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 285", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 29", "valeur": "RKK Energia"}
+{"entite": "Cosmos 295", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 3", "valeur": "RKK Energia"}
+{"entite": "Cosmos 303", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 307", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 308", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 31", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 311", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 314", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 319", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 32", "valeur": "RKK Energia"}
+{"entite": "Cosmos 320", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 321", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 324", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 327", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 33", "valeur": "RKK Energia"}
+{"entite": "Cosmos 334", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 335", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 347", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 348", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 35", "valeur": "RKK Energia"}
+{"entite": "Cosmos 351", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 356", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 357", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 36", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 362", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 369", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 37", "valeur": "RKK Energia"}
+{"entite": "Cosmos 378", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 380", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 388", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 391", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 393", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 394", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 396", "valeur": "RKK Energia"}
+{"entite": "Cosmos 4", "valeur": "RKK Energia"}
+{"entite": "Cosmos 400", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 408", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 421", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 423", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 426", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 435", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 440", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 453", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 455", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 458", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 459", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 46", "valeur": "RKK Energia"}
+{"entite": "Cosmos 461", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 467", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 472", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 48", "valeur": "RKK Energia"}
+{"entite": "Cosmos 481", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 485", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 487", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 49", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 497", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 498", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 5", "valeur": "RKK Energia"}
+{"entite": "Cosmos 50", "valeur": "RKK Energia"}
+{"entite": "Cosmos 501", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 51", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 52", "valeur": "RKK Energia"}
+{"entite": "Cosmos 521", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 523", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 524", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 526", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 53", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 545", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 553", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 558", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 562", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 580", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 6", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 601", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 608", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 611", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 615", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 633", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 634", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 64", "valeur": "RKK Energia"}
+{"entite": "Cosmos 66", "valeur": "RKK Energia"}
+{"entite": "Cosmos 662", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 668", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 68", "valeur": "RKK Energia"}
+{"entite": "Cosmos 686", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 695", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 7", "valeur": "RKK Energia"}
+{"entite": "Cosmos 70", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 703", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 705", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 725", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 745", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 750", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 76", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 775", "valeur": "NPO Lavotchkine"}
+{"entite": "Cosmos 78", "valeur": "RKK Energia"}
+{"entite": "Cosmos 801", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 818", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 849", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 850", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 9", "valeur": "RKK Energia"}
+{"entite": "Cosmos 901", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 909", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 919", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 93", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 95", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 97", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Cosmos 98", "valeur": "RKK Energia"}
+{"entite": "Cosmos 99", "valeur": "RKK Energia"}
+{"entite": "CryoSat-2", "valeur": "Astrium"}
+{"entite": "CubeBel-1", "valeur": "université d'État de Biélorussie"}
+{"entite": "DART", "valeur": "Orbital Sciences Corporation"}
+{"entite": "Deep Space Climate Observatory", "valeur": "Swales Aerospace"}
+{"entite": "Deimos-1", "valeur": "Surrey Satellite Technology"}
+{"entite": "Dodge", "valeur": "Applied Physics Laboratory"}
+{"entite": "Dove-2", "valeur": "Planet Labs"}
+{"entite": "Dynamics Explorer 1", "valeur": "RCA Corporation"}
+{"entite": "Dynamics Explorer 2", "valeur": "RCA Corporation"}
+{"entite": "Earth Radiation Budget Satellite", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "EgyptSat 2", "valeur": "RKK Energia"}
+{"entite": "Ekspress A2", "valeur": "ISS Reshetnev"}
+{"entite": "Ekspress AM22", "valeur": "ISS Reshetnev"}
+{"entite": "Ekspress AT2", "valeur": "ISS Reshetnev"}
+{"entite": "EntrySat", "valeur": "Institut supérieur de l'aéronautique et de l'espace"}
+{"entite": "ENVISAT", "valeur": "Astrium"}
+{"entite": "EnVision", "valeur": "Thales Alenia Space"}
+{"entite": "EROS (satellite)", "valeur": "Israel Aerospace Industries"}
+{"entite": "ESPA Augmented Geostationary Laboratory Experiment", "valeur": "Orbital Sciences Corporation"}
+{"entite": "ESSA-1", "valeur": "RCA Corporation"}
+{"entite": "Eureca", "valeur": "ERNO"}
+{"entite": "Eurobird 1", "valeur": "Alcatel Space"}
+{"entite": "Eutelsat 10A", "valeur": "Alcatel Alenia Space"}
+{"entite": "Eutelsat 10B", "valeur": "Thales Alenia Space"}
+{"entite": "Eutelsat 16B", "valeur": "Matra Marconi Space"}
+{"entite": "Eutelsat 172B", "valeur": "Airbus Defence and Space"}
+{"entite": "Eutelsat 21B", "valeur": "Thales Alenia Space"}
+{"entite": "Eutelsat 36A", "valeur": "Alcatel Space"}
+{"entite": "Eutelsat 36B", "valeur": "Alcatel Alenia Space"}
+{"entite": "Eutelsat 3D", "valeur": "Thales Alenia Space"}
+{"entite": "Eutelsat 70A", "valeur": "Alcatel Space"}
+{"entite": "Eutelsat 70B", "valeur": "Space Systems"}
+{"entite": "Eutelsat 8 West B", "valeur": "Thales Alenia Space"}
+{"entite": "Eutelsat Konnect", "valeur": "Thales Alenia Space"}
+{"entite": "Eutelsat Konnect VHTS", "valeur": "Thales Alenia Space"}
+{"entite": "ExoMars Trace Gas Orbiter", "valeur": "Thales Alenia Space"}
+{"entite": "EXOSAT", "valeur": "Messerschmitt-Bölkow-Blohm"}
+{"entite": "EXPeriment RE-entry Space System", "valeur": "GKNPZ Khrounitchev"}
+{"entite": "Explorer 1", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Explorer 2", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Explorer 22", "valeur": "Applied Physics Laboratory"}
+{"entite": "Explorer 6", "valeur": "TRW"}
+{"entite": "Explorer 60", "valeur": "Boeing"}
+{"entite": "Explorer 7", "valeur": "Army Ballistic Missile Agency"}
+{"entite": "Formosat-1", "valeur": "TRW"}
+{"entite": "FORMOSAT-5", "valeur": "National Space Organization"}
+{"entite": "Foton-M2", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Galaxy 17", "valeur": "Alcatel Alenia Space"}
+{"entite": "Galaxy Evolution Explorer", "valeur": "Orbital Sciences Corporation"}
+{"entite": "Genesis", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "Genesis I", "valeur": "Bigelow Aerospace"}
+{"entite": "Genesis II", "valeur": "Bigelow Aerospace"}
+{"entite": "Geostationary Earth Orbit Satellite", "valeur": "British Aircraft Corporation"}
+{"entite": "GEOTAIL", "valeur": "Institut des sciences spatiales et astronautiques"}
+{"entite": "Glory", "valeur": "Orbital Sciences Corporation"}
+{"entite": "GOES-16", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "Granat", "valeur": "NPO Lavotchkine"}
+{"entite": "Greenhouse Gases Observing Satellite", "valeur": "Mitsubishi Electric"}
+{"entite": "GSAT-11", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Heinrich Hertz (satellite)", "valeur": "OHB System AG"}
+{"entite": "Helios 2A", "valeur": "Astrium"}
+{"entite": "Helios 2B", "valeur": "Astrium"}
+{"entite": "Highly Advanced Laboratory for Communications and Astronomy", "valeur": "NEC"}
+{"entite": "HILAT", "valeur": "Applied Physics Laboratory"}
+{"entite": "Hipparcos", "valeur": "Matra Marconi Space"}
+{"entite": "Hispasat 1A", "valeur": "Matra Marconi Space"}
+{"entite": "Hispasat 1C", "valeur": "Alcatel Space"}
+{"entite": "Hispasat 1D", "valeur": "Alcatel Space"}
+{"entite": "Hispasat 30W-6", "valeur": "Space Systems/Loral"}
+{"entite": "Hiten", "valeur": "Institut des sciences spatiales et astronautiques"}
+{"entite": "Horizons 3e", "valeur": "Boeing"}
+{"entite": "Hot Bird 13E", "valeur": "Alcatel Alenia Space"}
+{"entite": "Hot Bird 6", "valeur": "Alcatel Space"}
+{"entite": "HYLAS", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "HYLAS 2", "valeur": "Orbital Sciences Corporation"}
+{"entite": "ICESat", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "ICESat-2", "valeur": "Orbital Sciences Corporation"}
+{"entite": "Ikonos", "valeur": "Lockheed Martin"}
+{"entite": "IMAGE", "valeur": "Lockheed Missiles and Space Company"}
+{"entite": "INSAT-1A", "valeur": "Ford Aerospace"}
+{"entite": "INSAT-1B", "valeur": "Ford Aerospace"}
+{"entite": "INSAT-4B", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Intelsat 15", "valeur": "Orbital Sciences Corporation"}
+{"entite": "Intelsat 24", "valeur": "Israel Aerospace Industries"}
+{"entite": "Intelsat-32e", "valeur": "Airbus Defence and Space"}
+{"entite": "Intelsat 33e", "valeur": "Boeing Satellite Development Center"}
+{"entite": "Intelsat 37e", "valeur": "Boeing"}
+{"entite": "Intelsat 39", "valeur": "Space Systems/Loral"}
+{"entite": "Intelsat I", "valeur": "Hughes Aircraft"}
+{"entite": "International Gamma-Ray Astrophysics Laboratory", "valeur": "Thales Alenia Space"}
+{"entite": "International Sun-Earth Explorer", "valeur": "Fairchild Engine & Airplane Corporation"}
+{"entite": "ISTSat-1", "valeur": "Instituto Superior Técnico"}
+{"entite": "Jason-3", "valeur": "Thales Alenia Space"}
+{"entite": "JCSAT-12", "valeur": "Lockheed Martin"}
+{"entite": "JCSAT-2", "valeur": "Hughes Aircraft"}
+{"entite": "Juno", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "Jupiter Icy Moons Explorer", "valeur": "Airbus Defence and Space"}
+{"entite": "K-RadCube", "valeur": "Institut coréen d'astronomie et de science spatiale"}
+{"entite": "KazSat-1", "valeur": "GKNPZ Khrounitchev"}
+{"entite": "KazSat-2", "valeur": "GKNPZ Khrounitchev"}
+{"entite": "KazSat-3", "valeur": "ISS Reshetnev"}
+{"entite": "Khayyam (satellite)", "valeur": "VNIIEM"}
+{"entite": "Korea Pathfinder Lunar Orbiter", "valeur": "Institut coréen de recherche aérospatiale"}
+{"entite": "Kosmos 1", "valeur": "bureau d'études Pivdenne"}
+{"entite": "Koupon (satellite)", "valeur": "NPO Lavotchkine"}
+{"entite": "Kwangmyŏngsŏng", "valeur": "Comité coréen de la technologie spatiale"}
+{"entite": "Kwangmyŏngsŏng-2", "valeur": "Comité coréen de la technologie spatiale"}
+{"entite": "Kwangmyŏngsŏng 4", "valeur": "National Aerospace Development Administration"}
+{"entite": "Lewis", "valeur": "TRW"}
+{"entite": "LISA Pathfinder", "valeur": "Airbus Defence and Space"}
+{"entite": "Long Duration Exposure Facility", "valeur": "centre de recherche Langley"}
+{"entite": "LOXSAT-1", "valeur": "Rocket Lab"}
+{"entite": "LSTM", "valeur": "Airbus Defence and Space"}
+{"entite": "Luna 1", "valeur": "RKK Energia"}
+{"entite": "Luna 10", "valeur": "NPO Lavotchkine"}
+{"entite": "Luna 11", "valeur": "NPO Lavotchkine"}
+{"entite": "Luna 12", "valeur": "NPO Lavotchkine"}
+{"entite": "Luna 13", "valeur": "NPO Lavotchkine"}
+{"entite": "Luna 19", "valeur": "NPO Lavotchkine"}
+{"entite": "Luna 2", "valeur": "RKK Energia"}
+{"entite": "Luna 22", "valeur": "NPO Lavotchkine"}
+{"entite": "Luna 24", "valeur": "NPO Lavotchkine"}
+{"entite": "Lunar Atmosphere and Dust Environment Explorer", "valeur": "Ames Research Center"}
+{"entite": "Lunar Flashlight", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Lunar InfraRed imaging", "valeur": "Lockheed Martin"}
+{"entite": "Lunar Prospector", "valeur": "Lockheed Missiles and Space Company"}
+{"entite": "Lunar Reconnaissance Orbiter", "valeur": "Goddard Space Flight Center"}
+{"entite": "Lunar Trailblazer", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "LUR-1", "valeur": "AVS Added Value Solutions"}
+{"entite": "MarCO-A", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "MarCO-B", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Mariner 10", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Mariner 2", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Mariner 3", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Mariner 5", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Mariner 6", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Mariner 7", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Mariner 9", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Mars 2", "valeur": "RKK Energia"}
+{"entite": "Mars 5", "valeur": "NPO Lavotchkine"}
+{"entite": "Mars Reconnaissance Orbiter", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "MAVEN", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "Megha-Tropiques", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Methane Remote Sensing Mission", "valeur": "Airbus Defence and Space"}
+{"entite": "MetOp-B", "valeur": "Space Systems"}
+{"entite": "MicroCarb", "valeur": "Centre national d'études spatiales"}
+{"entite": "Microscope", "valeur": "Centre national d'études spatiales"}
+{"entite": "mission de topographie des surfaces d'eau océaniques et continentales", "valeur": "Thales Alenia Space"}
+{"entite": "Monitor-E", "valeur": "GKNPZ Khrounitchev"}
+{"entite": "Nadezhda (satellite)", "valeur": "ISS Reshetnev"}
+{"entite": "NEXTSat", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "NigeriaSat 1", "valeur": "Surrey Satellite Technology"}
+{"entite": "Nilesat 101", "valeur": "Matra Marconi Space"}
+{"entite": "Nilesat 102", "valeur": "Matra Marconi Space"}
+{"entite": "Nilesat 201", "valeur": "Thales Alenia Space"}
+{"entite": "Nilesat 301", "valeur": "Thales Alenia Space"}
+{"entite": "NOAA-14", "valeur": "Lockheed Martin"}
+{"entite": "NOAA-15", "valeur": "Lockheed Martin"}
+{"entite": "NOAA-16", "valeur": "Lockheed Martin"}
+{"entite": "NOAA-17", "valeur": "Lockheed Martin"}
+{"entite": "NOAA-19", "valeur": "Lockheed Martin"}
+{"entite": "NOAA-20", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "NOAA-B", "valeur": "RCA Corporation"}
+{"entite": "Noor", "valeur": "Corps des gardiens de la révolution islamique"}
+{"entite": "Nozomi", "valeur": "NEC"}
+{"entite": "Nuclear Spectroscopic Telescope Array", "valeur": "Orbital Sciences Corporation"}
+{"entite": "NuSat 1", "valeur": "Satellogic"}
+{"entite": "NuSat 2", "valeur": "Satellogic"}
+{"entite": "ÑuSat 3", "valeur": "Satellogic"}
+{"entite": "ÑuSat 4", "valeur": "Satellogic"}
+{"entite": "ÑuSat 5", "valeur": "Satellogic"}
+{"entite": "L'observatoire solaire spatial avancé", "valeur": "Académie d'innovation pour les microsatellites"}
+{"entite": "Observatoire Spatial Infrarouge", "valeur": "Aérospatiale"}
+{"entite": "Obzor-R", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Ofek-9", "valeur": "Israel Aerospace Industries"}
+{"entite": "Olymp-K", "valeur": "ISS Reshetnev"}
+{"entite": "Olympus-1", "valeur": "British Aerospace"}
+{"entite": "OPTSAT-3000", "valeur": "Israel Aerospace Industries"}
+{"entite": "Optus-X", "valeur": "Northrop Grumman Innovation Systems"}
+{"entite": "Orbiting Carbon Observatory", "valeur": "Orbital Sciences Corporation"}
+{"entite": "OREX", "valeur": "Agence nationale de développement spatial du Japon"}
+{"entite": "ORS-5", "valeur": "Institut de technologie du Massachusetts"}
+{"entite": "OSO 1", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "OSO 2", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "OSO 3", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "OSO 4", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "OSO 5", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "OSO 6", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "OSO 7", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "OSO 8", "valeur": "Hughes Aircraft"}
+{"entite": "Palapa-D", "valeur": "Thales Alenia Space"}
+{"entite": "Parker Solar Probe", "valeur": "Applied Physics Laboratory"}
+{"entite": "PeruSat-1", "valeur": "Airbus Defence and Space"}
+{"entite": "Pioneer 4", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Pioneer 5", "valeur": "TRW"}
+{"entite": "Pioneer Venus Orbiter", "valeur": "Hughes Aircraft"}
+{"entite": "Planck", "valeur": "Alcatel Space"}
+{"entite": "Pléiades Néo", "valeur": "Airbus Defence and Space"}
+{"entite": "Pléiades Néo 3", "valeur": "Airbus Defence and Space"}
+{"entite": "Pléiades Néo 4", "valeur": "Airbus Defence and Space"}
+{"entite": "Pléiades Néo 5", "valeur": "Airbus Defence and Space"}
+{"entite": "Pléiades Néo 6", "valeur": "Airbus Defence and Space"}
+{"entite": "Polar", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "Polar BEAR", "valeur": "Applied Physics Laboratory"}
+{"entite": "Pre-Aerosol, Clouds and ocean Ecosystem", "valeur": "Goddard Space Flight Center"}
+{"entite": "PROBA-V", "valeur": "Redwire Space NV"}
+{"entite": "Programme Alsat", "valeur": "Surrey Satellite Technology"}
+{"entite": "Psyché", "valeur": "Maxar Technologies"}
+{"entite": "PW-Sat", "valeur": "École polytechnique de Varsovie"}
+{"entite": "QUESS", "valeur": "Académie chinoise des sciences"}
+{"entite": "QuickBird", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "QuikSCAT", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "RADARSAT-2", "valeur": "MacDonald, Dettwiler and Associates"}
+{"entite": "RadioAstron", "valeur": "NPO Lavotchkine"}
+{"entite": "RaInCube", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Ranger 5", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "RASAT", "valeur": "Türkiye Uzay Teknolojileri Araştırma Enstitüsü"}
+{"entite": "RemoveDebris", "valeur": "Surrey Satellite Technology"}
+{"entite": "Resours-DK1", "valeur": "centre national de recherche et de production Progress"}
+{"entite": "Reuven Ramaty High Energy Solar Spectroscopic Imager", "valeur": "Spectrum Astro"}
+{"entite": "RISAT-2", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Robusta-3A Méditerranée", "valeur": "Centre Spatial de l'Université de Montpellier"}
+{"entite": "Ørsted", "valeur": "Computer Resources International"}
+{"entite": "SABIA-Mar", "valeur": "INVAP"}
+{"entite": "SAC-C", "valeur": "INVAP"}
+{"entite": "SAC-D", "valeur": "INVAP"}
+{"entite": "Satellite de télécommunication", "valeur": "centre de recherches sur les communications Canada"}
+{"entite": "Satellite du peuple", "valeur": "ICEYE"}
+{"entite": "Satmex 8", "valeur": "Space Systems/Loral"}
+{"entite": "SBS-6", "valeur": "Hughes Aircraft"}
+{"entite": "Sentinel-3B", "valeur": "Thales Alenia Space"}
+{"entite": "SES-1", "valeur": "Orbital Sciences Corporation"}
+{"entite": "SES-10", "valeur": "Airbus Defence and Space"}
+{"entite": "SES-14", "valeur": "Airbus Defence and Space"}
+{"entite": "SES-5", "valeur": "Space Systems/Loral"}
+{"entite": "SES-8", "valeur": "Orbital Sciences Corporation"}
+{"entite": "SGDC-1", "valeur": "Thales Alenia Space"}
+{"entite": "SICRAL 1B", "valeur": "Alcatel Alenia Space"}
+{"entite": "Sicral 2", "valeur": "Thales Alenia Space"}
+{"entite": "SMAP", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "SMART-1", "valeur": "Swedish Space Corporation"}
+{"entite": "SNAP-10A", "valeur": "Atomics International"}
+{"entite": "Soil Moisture and Ocean Salinity satellite", "valeur": "Alcatel Space"}
+{"entite": "Solar and Heliospheric Observatory", "valeur": "Matra Marconi Space"}
+{"entite": "Solar Mesosphere Explorer", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "Solar Orbiter", "valeur": "Airbus Defence and Space"}
+{"entite": "Solar Radiation and Climate Experiment", "valeur": "Orbital Sciences Corporation"}
+{"entite": "Space Capsule Recovery Experiment", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Space Flyer Unit", "valeur": "Mitsubishi Electric"}
+{"entite": "Space Technology 5", "valeur": "Université de Californie à Los Angeles"}
+{"entite": "Space Weather Follow On", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "Spainsat", "valeur": "Space Systems/Loral"}
+{"entite": "Spei Satelles", "valeur": "École polytechnique de Turin"}
+{"entite": "SPOT-1", "valeur": "Matra"}
+{"entite": "SPOT-2", "valeur": "Matra"}
+{"entite": "SPOT-3", "valeur": "Matra Marconi Space"}
+{"entite": "SPOT-4", "valeur": "Matra Marconi Space"}
+{"entite": "SPOT-5", "valeur": "Astrium"}
+{"entite": "SPOT-6", "valeur": "Space Systems"}
+{"entite": "SPOT-7", "valeur": "Space Systems"}
+{"entite": "Spoutnik 1", "valeur": "RKK Energia"}
+{"entite": "Spoutnik 2", "valeur": "RKK Energia"}
+{"entite": "Spoutnik 3", "valeur": "RKK Energia"}
+{"entite": "Spoutnik 4", "valeur": "RKK Energia"}
+{"entite": "Spoutnik 5", "valeur": "RKK Energia"}
+{"entite": "Spoutnik 6", "valeur": "RKK Energia"}
+{"entite": "SPRINT-A", "valeur": "NEC"}
+{"entite": "Star One C1", "valeur": "Alcatel Alenia Space"}
+{"entite": "Star One C2", "valeur": "Alcatel Alenia Space"}
+{"entite": "Suomi NPP", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "Super Low Altitude Test Satellite", "valeur": "Mitsubishi Electric"}
+{"entite": "Superbird-B3", "valeur": "Mitsubishi Electric"}
+{"entite": "Suzaku", "valeur": "Toshiba"}
+{"entite": "SWIFT", "valeur": "Spectrum Astro"}
+{"entite": "Syracuse 4A", "valeur": "Thales Alenia Space"}
+{"entite": "Syracuse III", "valeur": "Alcatel Space"}
+{"entite": "TARANIS", "valeur": "Centre national d'études spatiales"}
+{"entite": "TDF 1", "valeur": "Aérospatiale"}
+{"entite": "TDF 2", "valeur": "Aérospatiale"}
+{"entite": "TDRS-1", "valeur": "TRW"}
+{"entite": "TDRS-3", "valeur": "TRW"}
+{"entite": "TDRS-4", "valeur": "TRW"}
+{"entite": "TDRS-7", "valeur": "TRW"}
+{"entite": "Technology Experiment Satellite", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Telstar 301", "valeur": "Hughes Aircraft"}
+{"entite": "Terra", "valeur": "National Aeronautics and Space Administration"}
+{"entite": "TerraSAR-X", "valeur": "Astrium"}
+{"entite": "TerreStar-1", "valeur": "Space Systems/Loral"}
+{"entite": "Tesla Roadster d'Elon Musk", "valeur": "Tesla"}
+{"entite": "TET", "valeur": "Kayser-Threde"}
+{"entite": "Thaïcom-4", "valeur": "Space Systems/Loral"}
+{"entite": "THEOS", "valeur": "Astrium"}
+{"entite": "Tianlian", "valeur": "Académie chinoise de technologie spatiale"}
+{"entite": "Tianlian 1A", "valeur": "Académie chinoise de technologie spatiale"}
+{"entite": "TIMED", "valeur": "Applied Physics Laboratory"}
+{"entite": "TIROS-1", "valeur": "RCA Corporation"}
+{"entite": "TIROS-2", "valeur": "RCA Corporation"}
+{"entite": "TIROS-N", "valeur": "RCA Corporation"}
+{"entite": "Transiting Exoplanet Survey Satellite", "valeur": "Orbital Sciences Corporation"}
+{"entite": "TRISHNA", "valeur": "Organisation indienne de recherche spatiale"}
+{"entite": "Túpac Katari 1", "valeur": "Société de sciences et technologies aérospatiales de Chine"}
+{"entite": "TürkmenÄlem 52°E / MonacoSAT", "valeur": "Thales Alenia Space"}
+{"entite": "Türksat 1A", "valeur": "Aérospatiale"}
+{"entite": "Türksat 1B", "valeur": "Aérospatiale"}
+{"entite": "Türksat 1C", "valeur": "Aérospatiale"}
+{"entite": "Türksat 2A", "valeur": "Alcatel Space"}
+{"entite": "Türksat 3A", "valeur": "Alcatel Alenia Space"}
+{"entite": "Türksat 4A", "valeur": "Mitsubishi Electric"}
+{"entite": "Türksat 4B", "valeur": "Mitsubishi Electric"}
+{"entite": "Türksat 5A", "valeur": "Turkish Aerospace Industries"}
+{"entite": "TV-SAT 1", "valeur": "Aérospatiale"}
+{"entite": "ULTRASAT", "valeur": "Israel Aerospace Industries"}
+{"entite": "Umbra 01", "valeur": "Umbra"}
+{"entite": "Umbra 02", "valeur": "Umbra"}
+{"entite": "Umbra 03", "valeur": "Umbra"}
+{"entite": "Umbra 04", "valeur": "Umbra"}
+{"entite": "Umbra 05", "valeur": "Umbra"}
+{"entite": "Umbra 06", "valeur": "Umbra"}
+{"entite": "Umbra 07", "valeur": "Umbra"}
+{"entite": "Umbra 08", "valeur": "Umbra"}
+{"entite": "UoSAT-12", "valeur": "Surrey Satellite Technology"}
+{"entite": "Urdaneta-Armsat", "valeur": "Satlantis"}
+{"entite": "USA-10", "valeur": "Rockwell International"}
+{"entite": "USA-199", "valeur": "Lockheed Martin"}
+{"entite": "USA-213", "valeur": "Boeing"}
+{"entite": "USA-214", "valeur": "Lockheed Martin Space Systems"}
+{"entite": "USA-215", "valeur": "Lockheed Martin"}
+{"entite": "USA-242", "valeur": "Boeing"}
+{"entite": "USA-66", "valeur": "Rockwell International"}
+{"entite": "Vanguard 1", "valeur": "Naval Research Laboratory"}
+{"entite": "Vanguard 3", "valeur": "Naval Research Laboratory"}
+{"entite": "Vanguard SLV-4", "valeur": "Naval Research Laboratory"}
+{"entite": "Vanguard TV3", "valeur": "Naval Research Laboratory"}
+{"entite": "Venera 1", "valeur": "RKK Energia"}
+{"entite": "Venera 2", "valeur": "RKK Energia"}
+{"entite": "Venera 9", "valeur": "NPO Lavotchkine"}
+{"entite": "Venesat-1", "valeur": "Société de sciences et technologies aérospatiales de Chine"}
+{"entite": "Venus Express", "valeur": "Astrium"}
+{"entite": "Viking 1 Orbiter", "valeur": "Jet Propulsion Laboratory"}
+{"entite": "VINASAT-1", "valeur": "Lockheed Martin"}
+{"entite": "VINASAT-2", "valeur": "Lockheed Martin"}
+{"entite": "VNREDSat-1", "valeur": "Astrium"}
+{"entite": "VRSS-1", "valeur": "Société de sciences et technologies aérospatiales de Chine"}
+{"entite": "Weather System Follow-on Microwave", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "Wide Field of View", "valeur": "Harris"}
+{"entite": "WIND", "valeur": "Martin Marietta"}
+{"entite": "WorldView-2", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "WorldView-3", "valeur": "Ball Aerospace & Technologies"}
+{"entite": "XSS 10", "valeur": "Boeing"}
+{"entite": "XSS-11", "valeur": "Lockheed Martin"}
+{"entite": "XTAR-EUR", "valeur": "Space Systems/Loral"}
+{"entite": "Ziyuan 3", "valeur": "Académie chinoise de technologie spatiale"}

@@ -1,0 +1,4 @@
+{"_relation": "lieu_etape_expression_genetique", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (étape -> lieu ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "réplication", "valeur": "noyau"}
+{"entite": "traduction", "valeur": "ribosome"}
+{"entite": "transcription", "valeur": "noyau"}

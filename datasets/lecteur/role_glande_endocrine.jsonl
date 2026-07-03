@@ -1,0 +1,5 @@
+{"_relation": "role_glande_endocrine", "_categorie": "physique", "_source": "Modèle (Claude) — endocrinologie textbook curée (glande endocrine -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "glandes surrénales", "valeur": "réponse au stress"}
+{"entite": "hypophyse", "valeur": "commande des autres glandes endocrines"}
+{"entite": "pancréas endocrine", "valeur": "régulation de la glycémie"}
+{"entite": "thyroïde", "valeur": "régulation du métabolisme"}

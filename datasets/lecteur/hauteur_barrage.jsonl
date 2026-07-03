@@ -1,0 +1,564 @@
+{"_relation": "hauteur_barrage", "_categorie": "physique", "_source": "Wikidata/QLever — hauteur P2048 (unité lue puis convertie en mètres ; pied/pouce/cm exacts)", "_articles": true}
+{"entite": "Baldhill Dam", "valeur": "18.288"}
+{"entite": "barrage à Auger", "valeur": "2.4"}
+{"entite": "barrage à David", "valeur": "2.3"}
+{"entite": "barrage à Deux-Queues", "valeur": "1.54"}
+{"entite": "barrage à l'Équerre", "valeur": "1"}
+{"entite": "barrage à l'Ours", "valeur": "4.7"}
+{"entite": "barrage à la Chienne", "valeur": "5.93"}
+{"entite": "barrage à la Galette", "valeur": "3.35"}
+{"entite": "barrage à la Montre", "valeur": "6.35"}
+{"entite": "barrage Albani", "valeur": "1.5"}
+{"entite": "barrage Alice", "valeur": "10"}
+{"entite": "barrage Andrew", "valeur": "2"}
+{"entite": "Barrage Antelope", "valeur": "34.4424"}
+{"entite": "barrage Arm", "valeur": "4.35"}
+{"entite": "barrage Astle", "valeur": "5.8"}
+{"entite": "barrage Atatürk", "valeur": "169"}
+{"entite": "barrage au Bâton", "valeur": "1.25"}
+{"entite": "barrage au Sorcier", "valeur": "4.6"}
+{"entite": "barrage aux Chantiers", "valeur": "1.4"}
+{"entite": "barrage aux Écorces", "valeur": "5.2"}
+{"entite": "barrage aux Sables", "valeur": "1.8"}
+{"entite": "barrage Ayotte", "valeur": "4.5"}
+{"entite": "barrage Bansagar", "valeur": "67.5"}
+{"entite": "barrage Baptiste", "valeur": "2"}
+{"entite": "barrage Beaulieu", "valeur": "1"}
+{"entite": "barrage Bernier", "valeur": "1.8"}
+{"entite": "barrage Bertrand", "valeur": "6.8"}
+{"entite": "barrage Bessonne", "valeur": "1.35"}
+{"entite": "barrage Big-Joe", "valeur": "1.95"}
+{"entite": "barrage Bin el Ouidane", "valeur": "133"}
+{"entite": "barrage Blais-1", "valeur": "5"}
+{"entite": "barrage Blais-2", "valeur": "5"}
+{"entite": "barrage Bleu", "valeur": "2.5"}
+{"entite": "barrage Blue Mesa", "valeur": "118.872"}
+{"entite": "barrage Boivin", "valeur": "2.23"}
+{"entite": "barrage Bombardier", "valeur": "3.58"}
+{"entite": "barrage Bon-Air", "valeur": "3.4"}
+{"entite": "barrage Bonhomme", "valeur": "2.05"}
+{"entite": "barrage Bostonnais", "valeur": "5.53"}
+{"entite": "barrage Boucher", "valeur": "3.64"}
+{"entite": "barrage Boulanger", "valeur": "7"}
+{"entite": "barrage Bourque", "valeur": "17.22"}
+{"entite": "barrage Bow", "valeur": "2"}
+{"entite": "barrage Brodeur", "valeur": "2.95"}
+{"entite": "barrage Brodie", "valeur": "1.5"}
+{"entite": "barrage Brûlé", "valeur": "3"}
+{"entite": "barrage Calau", "valeur": "2.2"}
+{"entite": "barrage Cantara", "valeur": "1.3"}
+{"entite": "barrage Carilau", "valeur": "2.38"}
+{"entite": "barrage Caron", "valeur": "3.71"}
+{"entite": "barrage Carpe-Rouge", "valeur": "8.06"}
+{"entite": "barrage Carufel", "valeur": "2.37"}
+{"entite": "barrage Catinon", "valeur": "4.6"}
+{"entite": "barrage Charland", "valeur": "5.4"}
+{"entite": "barrage Chūzenji", "valeur": "6.4"}
+{"entite": "barrage Cinconsine", "valeur": "6"}
+{"entite": "barrage Cinq-Doigts", "valeur": "5.89"}
+{"entite": "barrage Clair", "valeur": "1.53"}
+{"entite": "barrage Clelan", "valeur": "3.5"}
+{"entite": "barrage Cliff", "valeur": "2.8"}
+{"entite": "barrage Clova", "valeur": "1.5"}
+{"entite": "barrage Coulombe", "valeur": "2.75"}
+{"entite": "barrage Cousineau", "valeur": "5.42"}
+{"entite": "barrage Crow", "valeur": "4.2"}
+{"entite": "barrage d'Akosombo", "valeur": "114"}
+{"entite": "barrage d'Alcántara", "valeur": "130"}
+{"entite": "barrage d'Almatti", "valeur": "49.29"}
+{"entite": "barrage d'Almaville", "valeur": "11"}
+{"entite": "barrage d'Almus", "valeur": "78"}
+{"entite": "barrage d'Argentat", "valeur": "31"}
+{"entite": "barrage d'Armínou", "valeur": "40"}
+{"entite": "barrage d'Arrowrock", "valeur": "106.68"}
+{"entite": "barrage d'Ashibetsu", "valeur": "16.5"}
+{"entite": "barrage d'Erraguène", "valeur": "83"}
+{"entite": "barrage d'Esch-sur-Sûre", "valeur": "47"}
+{"entite": "barrage d'Evrétou", "valeur": "70"}
+{"entite": "barrage d'Hartbeespoort", "valeur": "59"}
+{"entite": "barrage d'Hirakud", "valeur": "60.98"}
+{"entite": "barrage d'Hiraoka", "valeur": "62.5"}
+{"entite": "barrage d'Idukki", "valeur": "168.91"}
+{"entite": "barrage d'Ighil Emda", "valeur": "75"}
+{"entite": "barrage d'Ilısu", "valeur": "135"}
+{"entite": "barrage d'Ilha Solteira", "valeur": "76"}
+{"entite": "barrage d'Indirasagar", "valeur": "91.4"}
+{"entite": "barrage d'Itiadoh", "valeur": "29.85"}
+{"entite": "barrage d'Ivankovo", "valeur": "28"}
+{"entite": "barrage d'Oigawa", "valeur": "33.5"}
+{"entite": "barrage d'Okutadami", "valeur": "157"}
+{"entite": "barrage d'Omkareshwar", "valeur": "64"}
+{"entite": "barrage d'Oroville", "valeur": "234.696"}
+{"entite": "barrage d'Ouglitch", "valeur": "27"}
+{"entite": "barrage d'Ukai", "valeur": "80.772"}
+{"entite": "barrage Daniel-Johnson", "valeur": "214"}
+{"entite": "barrage de Baglihar", "valeur": "143"}
+{"entite": "Barrage de Bagnell", "valeur": "45.1104"}
+{"entite": "barrage de Beauharnois", "valeur": "41"}
+{"entite": "barrage de Bedford-5", "valeur": "2.56"}
+{"entite": "Barrage de Beervlei", "valeur": "31"}
+{"entite": "barrage de Beni Haroun", "valeur": "118"}
+{"entite": "barrage de Bhakra", "valeur": "225.55"}
+{"entite": "barrage de Big Bend", "valeur": "28.956"}
+{"entite": "barrage de Bort-les-Orgues", "valeur": "120"}
+{"entite": "barrage de Cahora Bassa", "valeur": "171"}
+{"entite": "barrage de Canelles", "valeur": "150"}
+{"entite": "barrage de Carillon", "valeur": "31"}
+{"entite": "Barrage de Castro", "valeur": "55"}
+{"entite": "barrage de Chancy-Pougny", "valeur": "29"}
+{"entite": "barrage de Chelsea", "valeur": "35"}
+{"entite": "barrage de Chicoutimi", "valeur": "30.8"}
+{"entite": "barrage de Chute-à-Caron", "valeur": "54.5"}
+{"entite": "barrage de Conqueyrac", "valeur": "17"}
+{"entite": "Barrage de Cordeaux", "valeur": "58.2"}
+{"entite": "barrage de Couesques", "valeur": "70"}
+{"entite": "barrage de Couzon", "valeur": "44"}
+{"entite": "barrage de Derna", "valeur": "75"}
+{"entite": "Barrage de Floriskraal", "valeur": "33"}
+{"entite": "barrage de Fort Peck", "valeur": "76"}
+{"entite": "barrage de Fukashiro", "valeur": "87"}
+{"entite": "barrage de Fully", "valeur": "11.05"}
+{"entite": "barrage de Gariep", "valeur": "88"}
+{"entite": "barrage de Génissiat", "valeur": "104"}
+{"entite": "barrage de Glen Canyon", "valeur": "216"}
+{"entite": "barrage de Grand'Maison", "valeur": "140"}
+{"entite": "barrage de Grand-Mère", "valeur": "41.7"}
+{"entite": "barrage de Grandes-Piles", "valeur": "3.1"}
+{"entite": "barrage de Guerlédan", "valeur": "47"}
+{"entite": "barrage de Haizuka", "valeur": "50"}
+{"entite": "barrage de Hakusui", "valeur": "14"}
+{"entite": "barrage de Hoheikyo", "valeur": "102.5"}
+{"entite": "barrage de Hōnen'ike", "valeur": "32"}
+{"entite": "barrage de Jōzankei", "valeur": "118"}
+{"entite": "barrage de Kakhovka", "valeur": "30"}
+{"entite": "barrage de Kapanda", "valeur": "110"}
+{"entite": "barrage de Karaj", "valeur": "180"}
+{"entite": "barrage de Karcham Wangtoo", "valeur": "88"}
+{"entite": "barrage de Kariba", "valeur": "128"}
+{"entite": "barrage de Katagiri", "valeur": "59.2"}
+{"entite": "barrage de Katse", "valeur": "185"}
+{"entite": "barrage de Keddara", "valeur": "106"}
+{"entite": "Barrage de Khoda Afarin", "valeur": "64"}
+{"entite": "barrage de Kodasalli", "valeur": "52.1"}
+{"entite": "barrage de Koudiat Acerdoune", "valeur": "121"}
+{"entite": "barrage de Koúri", "valeur": "110"}
+{"entite": "barrage de Kozjak", "valeur": "130"}
+{"entite": "Barrage de Kromme", "valeur": "43"}
+{"entite": "barrage de Kurobe", "valeur": "186"}
+{"entite": "Barrage de Kurokawa", "valeur": "98"}
+{"entite": "barrage de l'Angillon", "valeur": "5.5"}
+{"entite": "barrage de l'Anhinga", "valeur": "2"}
+{"entite": "barrage de l'Appel", "valeur": "3"}
+{"entite": "barrage de l'Écorce", "valeur": "2"}
+{"entite": "barrage de l'Épinette", "valeur": "2.37"}
+{"entite": "barrage de l'Étang-aux-Cerises", "valeur": "5.75"}
+{"entite": "barrage de l'Étang-de-l'Écluse", "valeur": "3.94"}
+{"entite": "barrage de l'Offense", "valeur": "2.8"}
+{"entite": "barrage de l'Ouest", "valeur": "3.35"}
+{"entite": "barrage de la Baie", "valeur": "4.4"}
+{"entite": "barrage de la Blanche", "valeur": "2"}
+{"entite": "barrage de la Bouteille", "valeur": "1.6"}
+{"entite": "barrage de la Centrale-des-Rapides-des-Quinze", "valeur": "26.9"}
+{"entite": "barrage de la Chaudière-Rouge", "valeur": "2.2"}
+{"entite": "barrage de la Chute-Allard", "valeur": "31.13"}
+{"entite": "barrage de la Culbute", "valeur": "3.63"}
+{"entite": "barrage de la Cuvette", "valeur": "2.33"}
+{"entite": "barrage de la Fourche", "valeur": "2.8"}
+{"entite": "barrage de La Gabelle", "valeur": "24"}
+{"entite": "barrage de la Girotte", "valeur": "48.5"}
+{"entite": "barrage de la Gittaz", "valeur": "66"}
+{"entite": "barrage de la Graisse", "valeur": "2"}
+{"entite": "barrage de la Grande-Dixence", "valeur": "285"}
+{"entite": "barrage de la Kama", "valeur": "35"}
+{"entite": "barrage de la Loutre", "valeur": "4"}
+{"entite": "barrage de la Manouane-A", "valeur": "7.3"}
+{"entite": "barrage de la Manouane-B", "valeur": "8.23"}
+{"entite": "barrage de la Manouane-C", "valeur": "14"}
+{"entite": "barrage de la Mastigouche-Nord", "valeur": "1"}
+{"entite": "barrage de la Mégiscane", "valeur": "9.6"}
+{"entite": "barrage de la Montagne", "valeur": "4.7"}
+{"entite": "barrage de la Paton", "valeur": "8.98"}
+{"entite": "barrage de la Petite-Rivière-Sainte-Marguerite", "valeur": "1.2"}
+{"entite": "barrage de la Pisciculture", "valeur": "1.2"}
+{"entite": "barrage de la Poche", "valeur": "2.4"}
+{"entite": "barrage de la Pointe-Bostonnais", "valeur": "4.5"}
+{"entite": "barrage de la Renaissance", "valeur": "155"}
+{"entite": "barrage de la Rivière-aux-Eaux-Mortes", "valeur": "4.1"}
+{"entite": "barrage de la Rivière-Bessonne", "valeur": "2.55"}
+{"entite": "barrage de la Rivière-Desliettes", "valeur": "2"}
+{"entite": "barrage de la Rivière-Huot", "valeur": "2"}
+{"entite": "barrage de la Rivière-Riverin", "valeur": "5.5"}
+{"entite": "barrage de la Sep", "valeur": "41"}
+{"entite": "barrage de la Tour", "valeur": "1.5"}
+{"entite": "barrage de Lar", "valeur": "107"}
+{"entite": "barrage de Latyan", "valeur": "107"}
+{"entite": "barrage de Malarce", "valeur": "28.4"}
+{"entite": "barrage de Malpaso", "valeur": "137.5"}
+{"entite": "Barrage de Mamlou", "valeur": "89"}
+{"entite": "barrage de Mangla", "valeur": "147"}
+{"entite": "barrage de Mansour", "valeur": "45"}
+{"entite": "Barrage de Marathon", "valeur": "54"}
+{"entite": "barrage de Mequinenza", "valeur": "79"}
+{"entite": "barrage de Mettur", "valeur": "70.41"}
+{"entite": "barrage de Migouélou", "valeur": "31"}
+{"entite": "barrage de Minamiaiki", "valeur": "136"}
+{"entite": "barrage de Miranda", "valeur": "80"}
+{"entite": "barrage de Mohale", "valeur": "144"}
+{"entite": "barrage de Molato", "valeur": "55.3"}
+{"entite": "barrage de Mont-Joli", "valeur": "5.5"}
+{"entite": "Barrage de Montsalvens", "valeur": "52"}
+{"entite": "barrage de Moragahakanda", "valeur": "185"}
+{"entite": "barrage de Nagashima", "valeur": "109"}
+{"entite": "barrage de Nagawado", "valeur": "155"}
+{"entite": "barrage de Naramata", "valeur": "158"}
+{"entite": "barrage de Nathpa Jhakri", "valeur": "67.5"}
+{"entite": "Barrage de Notre-Dame-de-Commiers", "valeur": "40.5"}
+{"entite": "barrage de Nourek", "valeur": "300"}
+{"entite": "barrage de Nukabira", "valeur": "76"}
+{"entite": "barrage de Pandoh", "valeur": "76"}
+{"entite": "barrage de Pilchowice", "valeur": "69"}
+{"entite": "barrage de Rapide-7", "valeur": "29.66"}
+{"entite": "barrage de Ravilloles", "valeur": "15"}
+{"entite": "barrage de Rawdon", "valeur": "16.88"}
+{"entite": "barrage de Régua", "valeur": "41"}
+{"entite": "barrage de Riaño", "valeur": "100.6"}
+{"entite": "barrage de Rock Forest", "valeur": "17.05"}
+{"entite": "barrage de Rogoun", "valeur": "335"}
+{"entite": "barrage de Roselend", "valeur": "150"}
+{"entite": "barrage de Ross", "valeur": "164.592"}
+{"entite": "barrage de Rybinsk", "valeur": "27"}
+{"entite": "barrage de Saint-Cassien", "valeur": "66"}
+{"entite": "Barrage de Saint-Égrève", "valeur": "16.5"}
+{"entite": "barrage de Saint-Guérin", "valeur": "70"}
+{"entite": "barrage de Saint-Narcisse", "valeur": "18.48"}
+{"entite": "barrage de Saint-Pierre-Cognet", "valeur": "80"}
+{"entite": "barrage de Saint-Raymond", "valeur": "8.1"}
+{"entite": "barrage de Saint-Timothée", "valeur": "16.46"}
+{"entite": "barrage de Salime", "valeur": "132"}
+{"entite": "Barrage de Samandéni", "valeur": "24"}
+{"entite": "barrage de Saratov", "valeur": "40"}
+{"entite": "barrage de Sardar Sarovar", "valeur": "163"}
+{"entite": "Barrage de Saucelle", "valeur": "83"}
+{"entite": "barrage de Sefid Roud", "valeur": "106"}
+{"entite": "barrage de Sendaigawa", "valeur": "24"}
+{"entite": "barrage de Seyhan", "valeur": "53.2"}
+{"entite": "barrage de Shawinigan", "valeur": "53"}
+{"entite": "barrage de Shawinigan-1", "valeur": "21"}
+{"entite": "barrage de Shawinigan-2", "valeur": "21"}
+{"entite": "barrage de Shawinigan-3", "valeur": "13"}
+{"entite": "barrage de Shiogō", "valeur": "3.2"}
+{"entite": "barrage de Shiokawa", "valeur": "79"}
+{"entite": "barrage de Shizunai", "valeur": "66"}
+{"entite": "barrage de Shuang Jiang Kou", "valeur": "312"}
+{"entite": "barrage de Sidi Abdelli", "valeur": "60"}
+{"entite": "barrage de Srisailam", "valeur": "145"}
+{"entite": "barrage de Sterkfontein", "valeur": "93"}
+{"entite": "barrage de Tabellout", "valeur": "115"}
+{"entite": "barrage de Tabqa", "valeur": "60"}
+{"entite": "barrage de Tahtalı", "valeur": "57.5"}
+{"entite": "barrage de Takami", "valeur": "120"}
+{"entite": "barrage de Takisato", "valeur": "50"}
+{"entite": "barrage de Taksebt", "valeur": "76"}
+{"entite": "Barrage de Taléghan", "valeur": "109"}
+{"entite": "Barrage de Tataragi", "valeur": "64.5"}
+{"entite": "barrage de Tibi", "valeur": "46"}
+{"entite": "barrage de Tichy-Haf", "valeur": "90"}
+{"entite": "barrage de Tignes", "valeur": "180"}
+{"entite": "barrage de Tilesdit", "valeur": "65"}
+{"entite": "barrage de Tokuyama", "valeur": "161"}
+{"entite": "barrage de Tongzilin", "valeur": "66.63"}
+{"entite": "barrage de Tsuga", "valeur": "45.5"}
+{"entite": "barrage de Tungabhadra", "valeur": "49.39"}
+{"entite": "Barrage de Vaal", "valeur": "63"}
+{"entite": "barrage de Vanderkloof", "valeur": "108"}
+{"entite": "barrage de Vaussaire", "valeur": "63"}
+{"entite": "barrage de Vezins", "valeur": "35"}
+{"entite": "barrage de Vinça", "valeur": "55"}
+{"entite": "barrage de Westbury", "valeur": "13.41"}
+{"entite": "barrage de Yanase", "valeur": "115"}
+{"entite": "barrage de Zhiguli-Kouïbychev", "valeur": "52"}
+{"entite": "barrage des Aigles", "valeur": "3.2"}
+{"entite": "barrage des Becs-Croisés", "valeur": "1.6"}
+{"entite": "barrage des Cammazes", "valeur": "70"}
+{"entite": "barrage des Cerfs", "valeur": "5.3"}
+{"entite": "barrage des Chaussées", "valeur": "1.7"}
+{"entite": "barrage des Cyprès", "valeur": "2.49"}
+{"entite": "barrage des Escoumins", "valeur": "1"}
+{"entite": "barrage des Fermes-1", "valeur": "2.6"}
+{"entite": "barrage des Fermes-2", "valeur": "4.2"}
+{"entite": "barrage des Îles", "valeur": "1.3"}
+{"entite": "barrage des Maringouins", "valeur": "2.4"}
+{"entite": "barrage des Marionnettes", "valeur": "11.5"}
+{"entite": "barrage des Montagnes", "valeur": "4.9"}
+{"entite": "barrage des Nymphes", "valeur": "1.9"}
+{"entite": "barrage des Petits-Pins", "valeur": "3.42"}
+{"entite": "barrage des Quinze", "valeur": "11.5"}
+{"entite": "barrage des Rapides-des-Cœurs", "valeur": "35.33"}
+{"entite": "barrage des Sables", "valeur": "3.75"}
+{"entite": "barrage des Six-Caribous", "valeur": "1.3"}
+{"entite": "barrage des Termites", "valeur": "2"}
+{"entite": "barrage des Trois-Gorges", "valeur": "181"}
+{"entite": "barrage Desliettes", "valeur": "3.14"}
+{"entite": "barrage Desmeules", "valeur": "4.6"}
+{"entite": "barrage Devenys", "valeur": "2.35"}
+{"entite": "barrage Deverick", "valeur": "5.19"}
+{"entite": "barrage Dorval", "valeur": "2.4"}
+{"entite": "barrage Dorval-2", "valeur": "3"}
+{"entite": "barrage Downs", "valeur": "2"}
+{"entite": "barrage Dozois", "valeur": "2"}
+{"entite": "barrage Drury", "valeur": "1.3"}
+{"entite": "barrage du bas Subansiri", "valeur": "130"}
+{"entite": "barrage du Bocage", "valeur": "2"}
+{"entite": "barrage du Cabril", "valeur": "136"}
+{"entite": "barrage du Canard", "valeur": "3.68"}
+{"entite": "barrage du Cap", "valeur": "1.5"}
+{"entite": "barrage du Caribou", "valeur": "1.9"}
+{"entite": "barrage du Castor", "valeur": "4.3"}
+{"entite": "barrage du Centre-d'Art", "valeur": "2.95"}
+{"entite": "barrage du Chasseur", "valeur": "1.4"}
+{"entite": "barrage du Chastang", "valeur": "85"}
+{"entite": "barrage du Chat", "valeur": "4.2"}
+{"entite": "barrage du Château-d'Eau", "valeur": "3.84"}
+{"entite": "barrage du Châtelot", "valeur": "74"}
+{"entite": "barrage du Coin", "valeur": "2.5"}
+{"entite": "barrage du Deuxième-Lac-des-Marais", "valeur": "2.4"}
+{"entite": "barrage du Domaine-du-Repos", "valeur": "4.8"}
+{"entite": "barrage du Drennec", "valeur": "30"}
+{"entite": "barrage du Fourpéret", "valeur": "7"}
+{"entite": "barrage du Garrot", "valeur": "2.1"}
+{"entite": "Barrage du Gordon", "valeur": "140"}
+{"entite": "barrage du Grand-Lac-Frisé", "valeur": "1.53"}
+{"entite": "barrage du Grand-Lac-Frisé-2", "valeur": "2.85"}
+{"entite": "barrage du Grand-Réservoir", "valeur": "3.7"}
+{"entite": "barrage du Gros-Bec", "valeur": "2.9"}
+{"entite": "barrage du Hackett", "valeur": "6.25"}
+{"entite": "barrage du Hameau-du-Lac", "valeur": "3"}
+{"entite": "barrage du Jotty", "valeur": "54"}
+{"entite": "barrage du Lac-à-Jos-Bob", "valeur": "1.56"}
+{"entite": "barrage du Lac-à-la-Truite", "valeur": "3.6"}
+{"entite": "barrage du Lac-Bourassa", "valeur": "1.5"}
+{"entite": "barrage du Lac-Canard", "valeur": "2.2"}
+{"entite": "barrage du Lac-Chaud", "valeur": "2.11"}
+{"entite": "barrage du Lac-Clermont", "valeur": "2.7"}
+{"entite": "barrage du Lac-d'Argent", "valeur": "1.9"}
+{"entite": "barrage du Lac-des-Cadets", "valeur": "1.53"}
+{"entite": "barrage du Lac-des-Fourches", "valeur": "3.3"}
+{"entite": "barrage du Lac-du-Nord", "valeur": "3.9"}
+{"entite": "barrage du Lac-Duvivier", "valeur": "5.85"}
+{"entite": "barrage du Lac-Éric", "valeur": "7.2"}
+{"entite": "barrage du Lac-Provost", "valeur": "3.7"}
+{"entite": "barrage du Lac-Sergent", "valeur": "2.7"}
+{"entite": "barrage du Lac-Trenche", "valeur": "1.5"}
+{"entite": "barrage du Loup", "valeur": "1.75"}
+{"entite": "barrage du Lynx", "valeur": "2.09"}
+{"entite": "barrage du Marteau-3", "valeur": "1.5"}
+{"entite": "barrage du Muttsee", "valeur": "35"}
+{"entite": "barrage du Normand", "valeur": "5.1"}
+{"entite": "barrage du Petit-Lac-Arthur", "valeur": "2.4"}
+{"entite": "barrage du Petit-Lac-Bostonnais", "valeur": "2.6"}
+{"entite": "barrage du Petit-Lac-des-Aigles", "valeur": "1"}
+{"entite": "barrage du Petit-Lac-du-Corbeau-2", "valeur": "1.6"}
+{"entite": "barrage du Petit-Lac-Masketsi", "valeur": "1.2"}
+{"entite": "barrage du Petit-Lac-Tourouvre", "valeur": "1.3"}
+{"entite": "barrage du Petit-Lac-Vlimeux", "valeur": "1.6"}
+{"entite": "barrage du Petit-Réservoir", "valeur": "1.8"}
+{"entite": "barrage du Plan d'Amont", "valeur": "50"}
+{"entite": "barrage du Plan d'Aval", "valeur": "50.6"}
+{"entite": "barrage du Poisson-Blanc", "valeur": "3.2"}
+{"entite": "barrage du Renard", "valeur": "3"}
+{"entite": "barrage du Robot", "valeur": "1.1"}
+{"entite": "barrage du Ruisseau-Éric", "valeur": "1.75"}
+{"entite": "barrage du Sautet", "valeur": "128"}
+{"entite": "barrage du Travers", "valeur": "1.7"}
+{"entite": "barrage du Troisième-Lac-Gagnon", "valeur": "1.66"}
+{"entite": "barrage du Verney", "valeur": "42"}
+{"entite": "barrage du Vieux", "valeur": "2.7"}
+{"entite": "barrage du Vieux-Moulin", "valeur": "3.5"}
+{"entite": "barrage Dufferin", "valeur": "33"}
+{"entite": "barrage Duffy", "valeur": "2"}
+{"entite": "barrage Dunbar", "valeur": "1.8"}
+{"entite": "barrage Dupuis", "valeur": "2.75"}
+{"entite": "barrage Dusseau", "valeur": "2.5"}
+{"entite": "barrage Écarbou", "valeur": "5"}
+{"entite": "barrage Édouard", "valeur": "2.2"}
+{"entite": "barrage Eileen", "valeur": "2.39"}
+{"entite": "barrage El Caracol", "valeur": "126"}
+{"entite": "barrage El Gasco", "valeur": "53"}
+{"entite": "barrage en Croix", "valeur": "5.6"}
+{"entite": "barrage en Croix-2", "valeur": "3.1"}
+{"entite": "barrage Escalier", "valeur": "2.71"}
+{"entite": "barrage Étroit", "valeur": "1.95"}
+{"entite": "barrage Eugène", "valeur": "2.4"}
+{"entite": "barrage Éveline", "valeur": "4.3"}
+{"entite": "barrage Falcon", "valeur": "46"}
+{"entite": "barrage Fife", "valeur": "2"}
+{"entite": "barrage Flamand", "valeur": "2.35"}
+{"entite": "barrage Flapjack", "valeur": "3.4"}
+{"entite": "barrage Fogh", "valeur": "2.3"}
+{"entite": "barrage Fortin", "valeur": "1.5"}
+{"entite": "barrage Fou", "valeur": "3.7"}
+{"entite": "barrage Fox", "valeur": "1.5"}
+{"entite": "barrage François", "valeur": "3.9"}
+{"entite": "barrage Frémont", "valeur": "3.8"}
+{"entite": "barrage Frenette-1", "valeur": "1.3"}
+{"entite": "barrage Frenette-2", "valeur": "1.4"}
+{"entite": "barrage Froid", "valeur": "3"}
+{"entite": "barrage Frontenac", "valeur": "16.3"}
+{"entite": "barrage Fryer", "valeur": "1.6"}
+{"entite": "barrage Furrois", "valeur": "2"}
+{"entite": "barrage Geoffrion", "valeur": "2.15"}
+{"entite": "barrage Georges", "valeur": "2.1"}
+{"entite": "barrage Gérard", "valeur": "2"}
+{"entite": "barrage Gervais", "valeur": "1.4"}
+{"entite": "barrage Gilardo", "valeur": "5"}
+{"entite": "barrage Goas", "valeur": "2.65"}
+{"entite": "barrage Gouin", "valeur": "26"}
+{"entite": "barrage Grace-3", "valeur": "1.3"}
+{"entite": "barrage Grace-5", "valeur": "3.62"}
+{"entite": "barrage Griffiths", "valeur": "1.1"}
+{"entite": "barrage Groseille", "valeur": "2.2"}
+{"entite": "barrage Guénard", "valeur": "1.3"}
+{"entite": "barrage Hatanagi 1", "valeur": "125"}
+{"entite": "barrage Hatanagi 2", "valeur": "69"}
+{"entite": "barrage Hatogaya", "valeur": "63.2"}
+{"entite": "barrage Hausseau", "valeur": "2.3"}
+{"entite": "barrage Hébert", "valeur": "2.2"}
+{"entite": "barrage Holloway", "valeur": "3"}
+{"entite": "barrage Howe", "valeur": "3.5"}
+{"entite": "barrage Hubert-Tremblay", "valeur": "4"}
+{"entite": "barrage Huit-Mille", "valeur": "2.27"}
+{"entite": "barrage Hull", "valeur": "3.72"}
+{"entite": "barrage Huot", "valeur": "2.1"}
+{"entite": "barrage Hurimica", "valeur": "3.9"}
+{"entite": "barrage Ikawa", "valeur": "103.6"}
+{"entite": "barrage Isidore", "valeur": "1.5"}
+{"entite": "barrage Jasselin", "valeur": "2.8"}
+{"entite": "barrage Jaune", "valeur": "5.2"}
+{"entite": "barrage Jean", "valeur": "2"}
+{"entite": "barrage Joannès", "valeur": "2.7"}
+{"entite": "barrage Joseph-Samson", "valeur": "8.5"}
+{"entite": "barrage Katimavik", "valeur": "7.97"}
+{"entite": "barrage Kildare", "valeur": "5.7"}
+{"entite": "Barrage Komaki", "valeur": "79.2"}
+{"entite": "barrage L'Assomption-1", "valeur": "4.9"}
+{"entite": "barrage L'Assomption-2", "valeur": "2.92"}
+{"entite": "barrage La Grande-1", "valeur": "44.1"}
+{"entite": "barrage La Grande-4", "valeur": "128"}
+{"entite": "barrage La Roche", "valeur": "2.1"}
+{"entite": "barrage La Salle", "valeur": "3.71"}
+{"entite": "barrage La Soledad", "valeur": "96"}
+{"entite": "barrage la Tuque", "valeur": "3.6"}
+{"entite": "barrage Lactance", "valeur": "1.6"}
+{"entite": "barrage Lafleur", "valeur": "1"}
+{"entite": "barrage Laforge-2", "valeur": "66"}
+{"entite": "barrage Laval", "valeur": "3.8"}
+{"entite": "barrage Lavigne", "valeur": "1.6"}
+{"entite": "barrage Légaré", "valeur": "4.01"}
+{"entite": "barrage Léger", "valeur": "3.2"}
+{"entite": "barrage Léon", "valeur": "4.4"}
+{"entite": "barrage Lester", "valeur": "2.3"}
+{"entite": "barrage Lévesque", "valeur": "2.4"}
+{"entite": "barrage Livernois", "valeur": "6.8"}
+{"entite": "barrage Longchamp", "valeur": "1"}
+{"entite": "barrage Lorenzo", "valeur": "3.6"}
+{"entite": "barrage Lottinville", "valeur": "3.4"}
+{"entite": "barrage Lottinville-2", "valeur": "3.25"}
+{"entite": "barrage Lyster", "valeur": "7.25"}
+{"entite": "barrage M'DEZ", "valeur": "109"}
+{"entite": "barrage MacLaren", "valeur": "16.37"}
+{"entite": "barrage Maithon", "valeur": "56.08"}
+{"entite": "barrage Manic-2", "valeur": "92.96"}
+{"entite": "barrage Manic-3", "valeur": "106.7"}
+{"entite": "barrage Maugé", "valeur": "2.6"}
+{"entite": "barrage Mékinac", "valeur": "6.75"}
+{"entite": "barrage Melville", "valeur": "11"}
+{"entite": "barrage moderne de Marib", "valeur": "38"}
+{"entite": "barrage Mohamed V", "valeur": "64"}
+{"entite": "barrage Mongrain", "valeur": "2.15"}
+{"entite": "barrage Monic", "valeur": "1.68"}
+{"entite": "barrage Monroe", "valeur": "4.93"}
+{"entite": "barrage Morin", "valeur": "16.3"}
+{"entite": "barrage Narcisse", "valeur": "1.2"}
+{"entite": "barrage Nature", "valeur": "1"}
+{"entite": "barrage Needle", "valeur": "1.3"}
+{"entite": "barrage Noir", "valeur": "2.9"}
+{"entite": "barrage Oblong", "valeur": "1"}
+{"entite": "barrage Oriskany", "valeur": "5.2"}
+{"entite": "barrage Patate", "valeur": "1.8"}
+{"entite": "barrage Paul-Bertrand", "valeur": "2"}
+{"entite": "barrage Pine", "valeur": "3.8"}
+{"entite": "barrage Plouf", "valeur": "2"}
+{"entite": "barrage Popelo", "valeur": "1.6"}
+{"entite": "barrage Powasson", "valeur": "2.6"}
+{"entite": "barrage Profond", "valeur": "2.04"}
+{"entite": "barrage Rainbow", "valeur": "4.36"}
+{"entite": "Barrage Ratba", "valeur": "100"}
+{"entite": "barrage Régis", "valeur": "1"}
+{"entite": "barrage René", "valeur": "2"}
+{"entite": "barrage Rhéaume", "valeur": "17.1"}
+{"entite": "barrage Roberge", "valeur": "2.4"}
+{"entite": "barrage Robert", "valeur": "1.5"}
+{"entite": "barrage Robert-Bourassa", "valeur": "168.2"}
+{"entite": "barrage Robitaille", "valeur": "1.8"}
+{"entite": "barrage Roland", "valeur": "2.7"}
+{"entite": "Barrage romain d'Almonacid de la Cuba", "valeur": "34"}
+{"entite": "barrage romain de Proserpine", "valeur": "21.6"}
+{"entite": "barrage Rotem", "valeur": "1.5"}
+{"entite": "barrage Sac-à-Commis", "valeur": "1.5"}
+{"entite": "barrage Saint-Didace", "valeur": "5.49"}
+{"entite": "barrage Saint-Michel", "valeur": "2.94"}
+{"entite": "barrage Salkeld", "valeur": "2"}
+{"entite": "barrage Sam", "valeur": "2.1"}
+{"entite": "barrage Sarrazin", "valeur": "4.25"}
+{"entite": "barrage Sartigan", "valeur": "12.8"}
+{"entite": "barrage Sélassié-en-Bas", "valeur": "2"}
+{"entite": "barrage Sélassié-en-Haut", "valeur": "1.7"}
+{"entite": "barrage Serpent", "valeur": "4.1"}
+{"entite": "Barrage Shahid Rajaee", "valeur": "138"}
+{"entite": "barrage Shiragoo", "valeur": "2.4"}
+{"entite": "barrage Shitagoo", "valeur": "2.65"}
+{"entite": "barrage Six-Milles", "valeur": "5.14"}
+{"entite": "barrage Standish", "valeur": "1.75"}
+{"entite": "barrage Suève-2", "valeur": "3.4"}
+{"entite": "barrage supérieur de la Hart-Jaune", "valeur": "23"}
+{"entite": "Barrage supérieur de Steenbras", "valeur": "37"}
+{"entite": "barrage Tallulat", "valeur": "1.3"}
+{"entite": "barrage Télescope", "valeur": "2.8"}
+{"entite": "barrage Tellier", "valeur": "3.15"}
+{"entite": "barrage Théodore", "valeur": "2.4"}
+{"entite": "barrage Thom", "valeur": "2.25"}
+{"entite": "barrage Tibériade", "valeur": "1.9"}
+{"entite": "barrage Tie", "valeur": "1"}
+{"entite": "barrage Tomney", "valeur": "3"}
+{"entite": "barrage Torniche", "valeur": "4.6"}
+{"entite": "barrage Tracy", "valeur": "3.11"}
+{"entite": "barrage Travers", "valeur": "1.5"}
+{"entite": "barrage Two Mile", "valeur": "1.1"}
+{"entite": "barrage Vail", "valeur": "1.5"}
+{"entite": "barrage Valade", "valeur": "1.5"}
+{"entite": "barrage Vergne", "valeur": "4"}
+{"entite": "barrage Victorine", "valeur": "1.75"}
+{"entite": "barrage Viking", "valeur": "1.5"}
+{"entite": "barrage Wagoose-1", "valeur": "2.44"}
+{"entite": "barrage Wahoo", "valeur": "3"}
+{"entite": "barrage Wayagamac", "valeur": "5.53"}
+{"entite": "barrage Wells", "valeur": "1.8"}
+{"entite": "barrage Yankee", "valeur": "2.2"}
+{"entite": "barrage Zaza-Inférieur", "valeur": "1.7"}
+{"entite": "barrage Zaza-Supérieur", "valeur": "3.72"}
+{"entite": "barrage Zéphir", "valeur": "1.8"}
+{"entite": "barrage Zoé", "valeur": "4"}
+{"entite": "Big Island Dam", "valeur": "5.4864"}
+{"entite": "centrale hydroélectrique de Belesar", "valeur": "132"}
+{"entite": "centrale hydroélectrique de Uryu", "valeur": "45.5"}
+{"entite": "centrale hydroélectrique de Zvornik", "valeur": "45"}
+{"entite": "dame de la Loutre", "valeur": "2.4"}
+{"entite": "dame du Lac-Labelle", "valeur": "2.7"}
+{"entite": "digue Bernier", "valeur": "1"}
+{"entite": "digue du Trois-Quart-de-Mille", "valeur": "11.2"}
+{"entite": "digue Shitagoo", "valeur": "1.27"}
+{"entite": "digue Young", "valeur": "8.2"}
+{"entite": "Gura Râului Réservoir", "valeur": "74"}
+{"entite": "Lake Leatherwood Dam", "valeur": "16.764"}
+{"entite": "Mullaperiyar", "valeur": "53.66"}
+{"entite": "Rampart Dam", "valeur": "155"}

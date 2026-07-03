@@ -1,0 +1,3 @@
+{"_relation": "gaz_respiration", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (respiration -> gaz ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "expiration", "valeur": "rejet de dioxyde de carbone"}
+{"entite": "inspiration", "valeur": "apport de dioxygène"}

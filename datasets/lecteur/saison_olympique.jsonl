@@ -1,0 +1,28 @@
+{"_relation": "saison_olympique", "_categorie": "convention", "_source": "programme olympique (sport -> été/hiver)", "_articles": true}
+{"entite": "athlétisme", "valeur": "été"}
+{"entite": "aviron", "valeur": "été"}
+{"entite": "basketball", "valeur": "été"}
+{"entite": "biathlon", "valeur": "hiver"}
+{"entite": "bobsleigh", "valeur": "hiver"}
+{"entite": "boxe", "valeur": "été"}
+{"entite": "curling", "valeur": "hiver"}
+{"entite": "cyclisme sur route", "valeur": "été"}
+{"entite": "escrime", "valeur": "été"}
+{"entite": "gymnastique", "valeur": "été"}
+{"entite": "haltérophilie", "valeur": "été"}
+{"entite": "handball", "valeur": "été"}
+{"entite": "hockey sur glace", "valeur": "hiver"}
+{"entite": "judo", "valeur": "été"}
+{"entite": "luge", "valeur": "hiver"}
+{"entite": "natation", "valeur": "été"}
+{"entite": "patinage artistique", "valeur": "hiver"}
+{"entite": "patinage de vitesse", "valeur": "hiver"}
+{"entite": "plongeon", "valeur": "été"}
+{"entite": "saut à ski", "valeur": "hiver"}
+{"entite": "ski alpin", "valeur": "hiver"}
+{"entite": "ski de fond", "valeur": "hiver"}
+{"entite": "snowboard", "valeur": "hiver"}
+{"entite": "tennis", "valeur": "été"}
+{"entite": "tir à l'arc", "valeur": "été"}
+{"entite": "volley-ball", "valeur": "été"}
+{"entite": "water-polo", "valeur": "été"}

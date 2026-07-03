@@ -1,0 +1,30 @@
+{"_relation": "position_yeux_animal", "_categorie": "physique", "_source": "Modèle (Claude) — éthologie textbook curée (yeux frontaux/latéraux ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aigle royal", "valeur": "frontale"}
+{"entite": "antilope", "valeur": "latérale"}
+{"entite": "bison", "valeur": "latérale"}
+{"entite": "canard", "valeur": "latérale"}
+{"entite": "chat", "valeur": "frontale"}
+{"entite": "cheval", "valeur": "latérale"}
+{"entite": "chèvre", "valeur": "latérale"}
+{"entite": "chimpanzé", "valeur": "frontale"}
+{"entite": "chouette", "valeur": "frontale"}
+{"entite": "être humain", "valeur": "frontale"}
+{"entite": "faucon pèlerin", "valeur": "frontale"}
+{"entite": "gazelle", "valeur": "latérale"}
+{"entite": "girafe", "valeur": "latérale"}
+{"entite": "gnou", "valeur": "latérale"}
+{"entite": "guépard", "valeur": "frontale"}
+{"entite": "hibou", "valeur": "frontale"}
+{"entite": "lapin", "valeur": "latérale"}
+{"entite": "lion", "valeur": "frontale"}
+{"entite": "loup", "valeur": "frontale"}
+{"entite": "mouton", "valeur": "latérale"}
+{"entite": "oie", "valeur": "latérale"}
+{"entite": "ours brun", "valeur": "frontale"}
+{"entite": "panthère", "valeur": "frontale"}
+{"entite": "pigeon", "valeur": "latérale"}
+{"entite": "poule", "valeur": "latérale"}
+{"entite": "souris", "valeur": "latérale"}
+{"entite": "tigre", "valeur": "frontale"}
+{"entite": "vache", "valeur": "latérale"}
+{"entite": "zèbre", "valeur": "latérale"}

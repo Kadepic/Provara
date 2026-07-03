@@ -1,0 +1,25 @@
+{"_relation": "type_ecaille_poisson", "_categorie": "physique", "_source": "Modèle (Claude) — ichtyologie textbook curée (type d'écaille ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "anguille", "valeur": "cycloïde"}
+{"entite": "bar", "valeur": "cténoïde"}
+{"entite": "brème", "valeur": "cycloïde"}
+{"entite": "brochet", "valeur": "cycloïde"}
+{"entite": "carpe", "valeur": "cycloïde"}
+{"entite": "dorade", "valeur": "cténoïde"}
+{"entite": "esturgeon", "valeur": "ganoïde"}
+{"entite": "gardon", "valeur": "cycloïde"}
+{"entite": "grand requin blanc", "valeur": "placoïde"}
+{"entite": "hareng", "valeur": "cycloïde"}
+{"entite": "lépisosté", "valeur": "ganoïde"}
+{"entite": "mérou", "valeur": "cténoïde"}
+{"entite": "pastenague", "valeur": "placoïde"}
+{"entite": "perche", "valeur": "cténoïde"}
+{"entite": "polyptère", "valeur": "ganoïde"}
+{"entite": "raie manta", "valeur": "placoïde"}
+{"entite": "requin", "valeur": "placoïde"}
+{"entite": "rouget", "valeur": "cténoïde"}
+{"entite": "roussette", "valeur": "placoïde"}
+{"entite": "sardine", "valeur": "cycloïde"}
+{"entite": "saumon atlantique", "valeur": "cycloïde"}
+{"entite": "sole", "valeur": "cténoïde"}
+{"entite": "tanche", "valeur": "cycloïde"}
+{"entite": "torpille", "valeur": "placoïde"}

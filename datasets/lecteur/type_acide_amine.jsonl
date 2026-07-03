@@ -1,0 +1,15 @@
+{"_relation": "type_acide_amine", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie/nutrition textbook curée (AA essentiel/non-essentiel chez l'humain ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "alanine", "valeur": "non-essentiel"}
+{"entite": "asparagine", "valeur": "non-essentiel"}
+{"entite": "aspartate", "valeur": "non-essentiel"}
+{"entite": "glutamate", "valeur": "non-essentiel"}
+{"entite": "histidine", "valeur": "essentiel"}
+{"entite": "isoleucine", "valeur": "essentiel"}
+{"entite": "leucine", "valeur": "essentiel"}
+{"entite": "lysine", "valeur": "essentiel"}
+{"entite": "méthionine", "valeur": "essentiel"}
+{"entite": "phénylalanine", "valeur": "essentiel"}
+{"entite": "sérine", "valeur": "non-essentiel"}
+{"entite": "thréonine", "valeur": "essentiel"}
+{"entite": "tryptophane", "valeur": "essentiel"}
+{"entite": "valine", "valeur": "essentiel"}

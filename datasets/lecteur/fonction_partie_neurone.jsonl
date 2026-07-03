@@ -1,0 +1,5 @@
+{"_relation": "fonction_partie_neurone", "_categorie": "physique", "_source": "Modèle (Claude) — neurobiologie textbook curée (fonction des parties du neurone ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "axone", "valeur": "transmission de l'influx nerveux"}
+{"entite": "corps cellulaire", "valeur": "intégration des signaux"}
+{"entite": "dendrite", "valeur": "réception des signaux"}
+{"entite": "gaine de myéline", "valeur": "accélération de l'influx nerveux"}

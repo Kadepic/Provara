@@ -1,0 +1,77 @@
+{"_relation": "type_microorganisme", "_categorie": "physique", "_source": "Modèle (Claude) — microbiologie textbook curée (type de micro-organisme ; ensemble fermé ; FAUX=0)", "_articles": true}
+{"entite": "Ascaris lumbricoides", "valeur": "helminthe"}
+{"entite": "Aspergillus fumigatus", "valeur": "champignon"}
+{"entite": "Babesia", "valeur": "protozoaire"}
+{"entite": "Bacillus anthracis", "valeur": "bactérie"}
+{"entite": "Balantidium coli", "valeur": "protozoaire"}
+{"entite": "Bordetella pertussis", "valeur": "bactérie"}
+{"entite": "Borrelia burgdorferi", "valeur": "bactérie"}
+{"entite": "Brucella", "valeur": "bactérie"}
+{"entite": "Campylobacter jejuni", "valeur": "bactérie"}
+{"entite": "Candida albicans", "valeur": "champignon"}
+{"entite": "Chlamydia psittaci", "valeur": "bactérie"}
+{"entite": "Clostridioides difficile", "valeur": "bactérie"}
+{"entite": "Clostridium botulinum", "valeur": "bactérie"}
+{"entite": "Clostridium tetani", "valeur": "bactérie"}
+{"entite": "Corynebacterium diphtheriae", "valeur": "bactérie"}
+{"entite": "Coxiella burnetii", "valeur": "bactérie"}
+{"entite": "Cryptococcus neoformans", "valeur": "champignon"}
+{"entite": "Cryptosporidium", "valeur": "protozoaire"}
+{"entite": "Echinococcus granulosus", "valeur": "helminthe"}
+{"entite": "Entamoeba histolytica", "valeur": "protozoaire"}
+{"entite": "Enterobius vermicularis", "valeur": "helminthe"}
+{"entite": "Escherichia coli", "valeur": "bactérie"}
+{"entite": "Fasciola hepatica", "valeur": "helminthe"}
+{"entite": "Francisella tularensis", "valeur": "bactérie"}
+{"entite": "Giardia lamblia", "valeur": "protozoaire"}
+{"entite": "Helicobacter pylori", "valeur": "bactérie"}
+{"entite": "Histoplasma capsulatum", "valeur": "champignon"}
+{"entite": "Legionella pneumophila", "valeur": "bactérie"}
+{"entite": "Leishmania", "valeur": "protozoaire"}
+{"entite": "Leptospira", "valeur": "bactérie"}
+{"entite": "Listeria monocytogenes", "valeur": "bactérie"}
+{"entite": "Mucor", "valeur": "champignon"}
+{"entite": "Mycobacterium leprae", "valeur": "bactérie"}
+{"entite": "Mycobacterium tuberculosis", "valeur": "bactérie"}
+{"entite": "Naegleria", "valeur": "protozoaire"}
+{"entite": "Neisseria gonorrhoeae", "valeur": "bactérie"}
+{"entite": "Neisseria meningitidis", "valeur": "bactérie"}
+{"entite": "norovirus", "valeur": "virus"}
+{"entite": "Onchocerca volvulus", "valeur": "helminthe"}
+{"entite": "papillomavirus humain", "valeur": "virus"}
+{"entite": "Plasmodium", "valeur": "protozoaire"}
+{"entite": "Pneumocystis jirovecii", "valeur": "champignon"}
+{"entite": "poliovirus", "valeur": "virus"}
+{"entite": "Rickettsia prowazekii", "valeur": "bactérie"}
+{"entite": "Rickettsia rickettsii", "valeur": "bactérie"}
+{"entite": "rotavirus", "valeur": "virus"}
+{"entite": "Salmonella", "valeur": "bactérie"}
+{"entite": "SARS-CoV-2", "valeur": "virus"}
+{"entite": "Schistosoma", "valeur": "helminthe"}
+{"entite": "Shigella", "valeur": "bactérie"}
+{"entite": "Staphylococcus aureus", "valeur": "bactérie"}
+{"entite": "Streptococcus pneumoniae", "valeur": "bactérie"}
+{"entite": "Streptococcus pyogenes", "valeur": "bactérie"}
+{"entite": "Strongyloides stercoralis", "valeur": "helminthe"}
+{"entite": "Taenia", "valeur": "helminthe"}
+{"entite": "Toxoplasma gondii", "valeur": "protozoaire"}
+{"entite": "Treponema pallidum", "valeur": "bactérie"}
+{"entite": "Trichinella spiralis", "valeur": "helminthe"}
+{"entite": "Trichophyton", "valeur": "champignon"}
+{"entite": "Trypanosoma brucei", "valeur": "protozoaire"}
+{"entite": "Trypanosoma cruzi", "valeur": "protozoaire"}
+{"entite": "Vibrio cholerae", "valeur": "bactérie"}
+{"entite": "virus d'Epstein-Barr", "valeur": "virus"}
+{"entite": "virus de l'hépatite B", "valeur": "virus"}
+{"entite": "virus de l'hépatite C", "valeur": "virus"}
+{"entite": "virus de l'immunodéficience humaine", "valeur": "virus"}
+{"entite": "virus de la dengue", "valeur": "virus"}
+{"entite": "virus de la grippe", "valeur": "virus"}
+{"entite": "virus de la rage", "valeur": "virus"}
+{"entite": "virus de la rougeole", "valeur": "virus"}
+{"entite": "virus de la variole", "valeur": "virus"}
+{"entite": "virus de Marburg", "valeur": "virus"}
+{"entite": "virus Ebola", "valeur": "virus"}
+{"entite": "virus herpes simplex", "valeur": "virus"}
+{"entite": "Wuchereria bancrofti", "valeur": "helminthe"}
+{"entite": "Yersinia pestis", "valeur": "bactérie"}

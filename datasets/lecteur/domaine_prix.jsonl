@@ -1,0 +1,16 @@
+{"_relation": "domaine_prix", "_categorie": "convention", "_source": "culture générale (prix -> domaine)", "_articles": true}
+{"entite": "ballon d'or", "valeur": "le football"}
+{"entite": "booker prize", "valeur": "la littérature"}
+{"entite": "césar", "valeur": "le cinéma"}
+{"entite": "grammy award", "valeur": "la musique"}
+{"entite": "lion d'or", "valeur": "le cinéma"}
+{"entite": "médaille fields", "valeur": "les mathématiques"}
+{"entite": "molière (prix)", "valeur": "le théâtre"}
+{"entite": "oscar", "valeur": "le cinéma"}
+{"entite": "ours d'or", "valeur": "le cinéma"}
+{"entite": "palme d'or", "valeur": "le cinéma"}
+{"entite": "prix abel", "valeur": "les mathématiques"}
+{"entite": "prix goncourt", "valeur": "la littérature"}
+{"entite": "prix pulitzer", "valeur": "le journalisme et la littérature"}
+{"entite": "prix turing", "valeur": "l'informatique"}
+{"entite": "victoires de la musique", "valeur": "la musique"}

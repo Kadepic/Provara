@@ -1,0 +1,29 @@
+{"_relation": "type_acide_gras", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (acide gras saturé/insaturé ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "acide alpha-linolénique", "valeur": "insaturé"}
+{"entite": "acide arachidique", "valeur": "saturé"}
+{"entite": "acide arachidonique", "valeur": "insaturé"}
+{"entite": "acide béhénique", "valeur": "saturé"}
+{"entite": "acide butyrique", "valeur": "saturé"}
+{"entite": "acide caprique", "valeur": "saturé"}
+{"entite": "acide caproïque", "valeur": "saturé"}
+{"entite": "acide caprylique", "valeur": "saturé"}
+{"entite": "acide cérotique", "valeur": "saturé"}
+{"entite": "acide docosahexaénoïque", "valeur": "insaturé"}
+{"entite": "acide eicosapentaénoïque", "valeur": "insaturé"}
+{"entite": "acide érucique", "valeur": "insaturé"}
+{"entite": "acide gamma-linolénique", "valeur": "insaturé"}
+{"entite": "acide laurique", "valeur": "saturé"}
+{"entite": "acide linoléique", "valeur": "insaturé"}
+{"entite": "acide margarique", "valeur": "saturé"}
+{"entite": "acide myristique", "valeur": "saturé"}
+{"entite": "acide myristoléique", "valeur": "insaturé"}
+{"entite": "acide nervonique", "valeur": "insaturé"}
+{"entite": "acide oléique", "valeur": "insaturé"}
+{"entite": "acide palmitique", "valeur": "saturé"}
+{"entite": "acide palmitoléique", "valeur": "insaturé"}
+{"entite": "acide pentadécanoïque", "valeur": "saturé"}
+{"entite": "acide ricinoléique", "valeur": "insaturé"}
+{"entite": "acide stéarique", "valeur": "saturé"}
+{"entite": "acide vaccénique", "valeur": "insaturé"}
+{"entite": "oméga-3", "valeur": "insaturé"}
+{"entite": "oméga-6", "valeur": "insaturé"}

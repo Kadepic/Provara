@@ -1,0 +1,24 @@
+{"_relation": "nombre_chromosomes_espece", "_categorie": "physique", "_source": "Modèle (Claude) — génétique textbook curée (nombre de chromosomes 2n ; valeurs canoniques ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "âne", "valeur": "62"}
+{"entite": "blé tendre", "valeur": "42"}
+{"entite": "chat", "valeur": "38"}
+{"entite": "cheval", "valeur": "64"}
+{"entite": "chèvre", "valeur": "60"}
+{"entite": "chien", "valeur": "78"}
+{"entite": "chimpanzé", "valeur": "48"}
+{"entite": "drosophile", "valeur": "8"}
+{"entite": "être humain", "valeur": "46"}
+{"entite": "gorille", "valeur": "48"}
+{"entite": "lapin", "valeur": "44"}
+{"entite": "maïs", "valeur": "20"}
+{"entite": "mouton", "valeur": "54"}
+{"entite": "oignon", "valeur": "16"}
+{"entite": "orang-outan", "valeur": "48"}
+{"entite": "pois", "valeur": "14"}
+{"entite": "pomme de terre", "valeur": "48"}
+{"entite": "poule", "valeur": "78"}
+{"entite": "rat", "valeur": "42"}
+{"entite": "riz", "valeur": "24"}
+{"entite": "souris domestique", "valeur": "40"}
+{"entite": "tomate", "valeur": "24"}
+{"entite": "vache", "valeur": "60"}

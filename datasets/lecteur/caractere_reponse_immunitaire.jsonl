@@ -1,0 +1,3 @@
+{"_relation": "caractere_reponse_immunitaire", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (réponse immunitaire -> médiateur ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "réponse cellulaire", "valeur": "médiée par les lymphocytes T"}
+{"entite": "réponse humorale", "valeur": "médiée par les anticorps"}

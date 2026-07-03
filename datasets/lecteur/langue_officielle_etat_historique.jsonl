@@ -1,0 +1,617 @@
+{"_relation": "langue_officielle_etat_historique", "_categorie": "convention", "_source": "Wikidata (API REST/CirrusSearch) — langue officielle (P37) d un etat historique", "_articles": true}
+{"entite": "Abazgie", "valeur": "grec"}
+{"entite": "Administration militaire britannique", "valeur": "anglais"}
+{"entite": "Alanie", "valeur": "alain"}
+{"entite": "Allemagne de l'Ouest", "valeur": "allemand"}
+{"entite": "Almoravides", "valeur": "langues berbères"}
+{"entite": "Ancienne Grande Bulgarie", "valeur": "protobulgare"}
+{"entite": "Aq Qoyunlu", "valeur": "persan"}
+{"entite": "Artukides", "valeur": "vieux turc anatolien"}
+{"entite": "Atropatène", "valeur": "atropaténien"}
+{"entite": "Autorité provisoire de la coalition", "valeur": "arabe"}
+{"entite": "Ayyoubides", "valeur": "kurde"}
+{"entite": "Bahreïn et ses Dépendances", "valeur": "arabe"}
+{"entite": "Banat de Bosnie", "valeur": "bosnien"}
+{"entite": "Basutoland", "valeur": "anglais"}
+{"entite": "Bechuanaland", "valeur": "anglais"}
+{"entite": "beylicat de Tunis", "valeur": "arabe"}
+{"entite": "Birmanie britannique", "valeur": "anglais"}
+{"entite": "Bonoman", "valeur": "Bono"}
+{"entite": "Bornéo du Nord britannique", "valeur": "anglais"}
+{"entite": "Brandebourg-Prusse", "valeur": "allemand"}
+{"entite": "Buganda", "valeur": "luganda"}
+{"entite": "califat abbasside", "valeur": "arabe"}
+{"entite": "califat almohade", "valeur": "arabe"}
+{"entite": "Califat arabe", "valeur": "arabe"}
+{"entite": "Califat fatimide", "valeur": "arabe"}
+{"entite": "Califat omeyyade", "valeur": "arabe"}
+{"entite": "califat Rachidun", "valeur": "arabe"}
+{"entite": "Cambodge post-angkorien", "valeur": "khmer"}
+{"entite": "Cameroun britannique", "valeur": "anglais"}
+{"entite": "Cameroun français", "valeur": "français"}
+{"entite": "Chalukya occidentaux", "valeur": "kannara"}
+{"entite": "Chandela", "valeur": "sanskrit"}
+{"entite": "Chola", "valeur": "tamoul"}
+{"entite": "Chupanides", "valeur": "persan"}
+{"entite": "Circassie", "valeur": "tcherkesse"}
+{"entite": "civilisation carthaginoise", "valeur": "punique"}
+{"entite": "colonie de Jamaïque", "valeur": "anglais"}
+{"entite": "Commonwealth d'Angleterre", "valeur": "anglais"}
+{"entite": "Communauté de Médine", "valeur": "arabe classique"}
+{"entite": "Commune de Bakou", "valeur": "russe"}
+{"entite": "comté de Haspinga", "valeur": "vieux néerlandais"}
+{"entite": "Confédération de l'Allemagne du Nord", "valeur": "allemand"}
+{"entite": "Confédération du Rhin", "valeur": "allemand"}
+{"entite": "Confédération grenadine", "valeur": "espagnol"}
+{"entite": "Confédération péruvio-bolivienne", "valeur": "espagnol"}
+{"entite": "confédération Xianbei", "valeur": "xianbei"}
+{"entite": "Côte-de-l’Or", "valeur": "anglais"}
+{"entite": "Côte-de-l'Or néerlandaise", "valeur": "néerlandais"}
+{"entite": "couronne du royaume de Pologne", "valeur": "polonais"}
+{"entite": "Crète autonome", "valeur": "grec"}
+{"entite": "Despotat de Dobroudja", "valeur": "bulgare"}
+{"entite": "Despotat de Serbie", "valeur": "serbe"}
+{"entite": "deuxième État saoudien", "valeur": "arabe"}
+{"entite": "Deuxième République", "valeur": "français"}
+{"entite": "Deuxième République de Pologne", "valeur": "polonais"}
+{"entite": "deuxième république du Venezuela", "valeur": "espagnol"}
+{"entite": "Deuxième République hellénique", "valeur": "katharévousa"}
+{"entite": "Deuxième République (République dominicaine)", "valeur": "espagnol"}
+{"entite": "Dilmaçoğlu", "valeur": "turc"}
+{"entite": "district administratif autonome de Lokot", "valeur": "russe"}
+{"entite": "District de Gordonia", "valeur": "néerlandais"}
+{"entite": "Domaine gallo-romain", "valeur": "latin"}
+{"entite": "Dominion de Trinité-et-Tobago", "valeur": "anglais"}
+{"entite": "duché d'Anhalt", "valeur": "allemand"}
+{"entite": "duché d'Autriche", "valeur": "bavarois"}
+{"entite": "duché d'Inowrocław", "valeur": "polonais"}
+{"entite": "duché d'Oldenbourg", "valeur": "allemand"}
+{"entite": "Duché de Belz", "valeur": "ruthène"}
+{"entite": "duché de Brunswick", "valeur": "allemand"}
+{"entite": "duché de Brunswick-Lunebourg", "valeur": "allemand"}
+{"entite": "duché de Courlande", "valeur": "allemand"}
+{"entite": "duché de Courlande et Sémigalle", "valeur": "allemand"}
+{"entite": "duché de Cujavie", "valeur": "polonais"}
+{"entite": "duché de Ferrare", "valeur": "italien"}
+{"entite": "duché de Florence", "valeur": "toscan"}
+{"entite": "duché de Livonie", "valeur": "allemand"}
+{"entite": "duché de Massa et Carrare", "valeur": "italien"}
+{"entite": "duché de Mazovie", "valeur": "latin"}
+{"entite": "duché de Nassau", "valeur": "allemand"}
+{"entite": "duché de Poméranie", "valeur": "bas allemand"}
+{"entite": "duché de Prusse", "valeur": "allemand"}
+{"entite": "duché de Saxe", "valeur": "latin"}
+{"entite": "duché de Saxe-Cobourg et Gotha", "valeur": "allemand"}
+{"entite": "duché de Saxe-Lauenbourg", "valeur": "latin"}
+{"entite": "duché de Saxe-Wittemberg", "valeur": "latin"}
+{"entite": "duché de Styrie", "valeur": "allemand"}
+{"entite": "duché de Teschen", "valeur": "latin"}
+{"entite": "duché de Varsovie", "valeur": "polonais"}
+{"entite": "duché de Vasconie", "valeur": "gascon"}
+{"entite": "duché de Wurtemberg", "valeur": "souabe"}
+{"entite": "duché de Zator", "valeur": "tchèque"}
+{"entite": "Dynastie Lê", "valeur": "vietnamien"}
+{"entite": "dynastie Shunga", "valeur": "sanskrit"}
+{"entite": "dynastie Taungû", "valeur": "birman"}
+{"entite": "Dynastie Tây Sơn", "valeur": "vietnamien"}
+{"entite": "dynastie Zend", "valeur": "persan"}
+{"entite": "Électorat de Bade", "valeur": "allemand"}
+{"entite": "Électorat de Bavière", "valeur": "allemand"}
+{"entite": "électorat de Saxe", "valeur": "latin"}
+{"entite": "électorat de Trèves", "valeur": "allemand"}
+{"entite": "Elmet", "valeur": "cambrien"}
+{"entite": "émirat de Bahreïn (1783-1971)", "valeur": "arabe"}
+{"entite": "émirat de Cordoue", "valeur": "arabe"}
+{"entite": "émirat de Cyrénaïque", "valeur": "arabe"}
+{"entite": "émirat de Dariya", "valeur": "arabe"}
+{"entite": "Émirat de Haïl", "valeur": "arabe"}
+{"entite": "Émirat de Koweït", "valeur": "arabe"}
+{"entite": "Émirat de Sicile", "valeur": "arabe sicilien"}
+{"entite": "Émirat Soran", "valeur": "turc ottoman"}
+{"entite": "Empire afcharide", "valeur": "persan"}
+{"entite": "Empire akkadien", "valeur": "akkadien"}
+{"entite": "Empire allemand", "valeur": "allemand"}
+{"entite": "Empire anglo-scandinave", "valeur": "danois"}
+{"entite": "Empire aztèque", "valeur": "nahuatl classique"}
+{"entite": "Empire Baté", "valeur": "mandinka"}
+{"entite": "Empire centrafricain", "valeur": "français"}
+{"entite": "empire colonial français", "valeur": "français"}
+{"entite": "Empire colonial italien", "valeur": "italien"}
+{"entite": "Empire colonial néerlandais", "valeur": "néerlandais"}
+{"entite": "Empire colonial portugais", "valeur": "portugais"}
+{"entite": "empire d'Autriche", "valeur": "allemand"}
+{"entite": "Empire de Corée", "valeur": "coréen"}
+{"entite": "Empire de Gao", "valeur": "songhaï"}
+{"entite": "Empire de Nicée", "valeur": "grec médiéval"}
+{"entite": "empire de Thessalonique", "valeur": "grec"}
+{"entite": "empire de Trébizonde", "valeur": "grec"}
+{"entite": "Empire des Gaules", "valeur": "latin"}
+{"entite": "empire Diolof", "valeur": "wolof"}
+{"entite": "empire du Brésil", "valeur": "portugais"}
+{"entite": "Empire du Ghana", "valeur": "soninké"}
+{"entite": "empire du Japon", "valeur": "japonais"}
+{"entite": "Empire du Mali", "valeur": "langues mandées"}
+{"entite": "Empire du Viêt Nam", "valeur": "vietnamien"}
+{"entite": "Empire espagnol", "valeur": "espagnol"}
+{"entite": "Empire éthiopien", "valeur": "guèze"}
+{"entite": "Empire ghaznévide", "valeur": "persan"}
+{"entite": "Empire Gupta", "valeur": "sanskrit"}
+{"entite": "Empire inca", "valeur": "quechua"}
+{"entite": "Empire khwarezmien", "valeur": "persan"}
+{"entite": "Empire Maurya", "valeur": "prakrit"}
+{"entite": "Empire moghol", "valeur": "persan"}
+{"entite": "empire néo-babylonien", "valeur": "akkadien"}
+{"entite": "Empire ottoman", "valeur": "turc ottoman"}
+{"entite": "Empire palmyrénien", "valeur": "palmyréen"}
+{"entite": "Empire romain d'Occident", "valeur": "latin"}
+{"entite": "Empire safavide", "valeur": "persan"}
+{"entite": "Empire songhaï", "valeur": "songhaï"}
+{"entite": "Empire toucouleur", "valeur": "peul"}
+{"entite": "Empire wassoulou", "valeur": "mandinka"}
+{"entite": "Épire", "valeur": "dorien"}
+{"entite": "époque de l’empire suédois", "valeur": "suédois"}
+{"entite": "Érythrée italienne", "valeur": "italien"}
+{"entite": "Espagne franquiste", "valeur": "espagnol"}
+{"entite": "Estado Novo", "valeur": "portugais"}
+{"entite": "État bourguignon", "valeur": "latin"}
+{"entite": "État croate médiéval", "valeur": "latin"}
+{"entite": "État d'Alep", "valeur": "français"}
+{"entite": "État de Birmanie", "valeur": "birman"}
+{"entite": "État de Buenos Aires", "valeur": "espagnol"}
+{"entite": "État de Damas", "valeur": "français"}
+{"entite": "État de Kharan (princely state)", "valeur": "persan"}
+{"entite": "État de l'Indonésie orientale", "valeur": "indonésien"}
+{"entite": "État de Philaretus Brachamius", "valeur": "arménien"}
+{"entite": "État du Brésil", "valeur": "portugais"}
+{"entite": "État du Somaliland", "valeur": "somali"}
+{"entite": "État du Venezuela", "valeur": "espagnol"}
+{"entite": "État grec", "valeur": "grec"}
+{"entite": "État indépendant de Croatie", "valeur": "croate"}
+{"entite": "État indépendant du Congo", "valeur": "français"}
+{"entite": "État indépendant du Monténégro", "valeur": "serbe"}
+{"entite": "État Kathiri de Sai'un", "valeur": "arabe"}
+{"entite": "État libre d'Antioquia", "valeur": "espagnol"}
+{"entite": "État libre d'Icarie", "valeur": "grec"}
+{"entite": "État libre d'Orange", "valeur": "néerlandais"}
+{"entite": "État libre de Prusse", "valeur": "allemand"}
+{"entite": "État libre du Goulot", "valeur": "allemand"}
+{"entite": "État monastique des chevaliers Teutoniques", "valeur": "allemand"}
+{"entite": "État national-légionnaire", "valeur": "roumain"}
+{"entite": "État populaire de Reuss", "valeur": "allemand"}
+{"entite": "État qarmate de Bahreïn", "valeur": "arabe"}
+{"entite": "État secret de Pologne", "valeur": "polonais"}
+{"entite": "États arabes unis", "valeur": "arabe"}
+{"entite": "États de la Trêve", "valeur": "arabe"}
+{"entite": "États pontificaux", "valeur": "latin"}
+{"entite": "États-Unis de Colombie", "valeur": "espagnol"}
+{"entite": "États Unis du Venezuela", "valeur": "espagnol"}
+{"entite": "évêché de Lübeck", "valeur": "latin"}
+{"entite": "Fédération arabe d'Irak et de Jordanie", "valeur": "arabe"}
+{"entite": "Fédération d'Arabie du Sud", "valeur": "arabe"}
+{"entite": "Fédération de Rhodésie et du Nyassaland", "valeur": "anglais"}
+{"entite": "Fédération du Mali", "valeur": "français"}
+{"entite": "Francie médiane", "valeur": "latin"}
+{"entite": "Francie orientale", "valeur": "latin"}
+{"entite": "Gambie", "valeur": "anglais"}
+{"entite": "Gododdin", "valeur": "cambrien"}
+{"entite": "gouvernement de Beiyang", "valeur": "mandarin"}
+{"entite": "gouvernement de toute la Palestine", "valeur": "arabe"}
+{"entite": "gouvernement national ukrainien", "valeur": "ukrainien"}
+{"entite": "Gouvernement nationaliste", "valeur": "mandarin standard"}
+{"entite": "gouvernement provisoire de la République de Corée", "valeur": "coréen"}
+{"entite": "Gouvernement provisoire de la République française", "valeur": "français"}
+{"entite": "Gouvernement réformé de la république de Chine", "valeur": "chinois"}
+{"entite": "Gouvernement révolutionnaire provisoire de la République du Sud Viêt Nam", "valeur": "vietnamien"}
+{"entite": "grand-duché de Bade", "valeur": "alémanique"}
+{"entite": "grand-duché de Berg", "valeur": "allemand"}
+{"entite": "grand-duché de Hesse", "valeur": "allemand"}
+{"entite": "grand-duché de Mecklembourg-Schwerin", "valeur": "allemand"}
+{"entite": "grand-duché de Mecklembourg-Strelitz", "valeur": "allemand"}
+{"entite": "grand-duché de Toscane", "valeur": "italien"}
+{"entite": "grand-duché de Wurtzbourg", "valeur": "allemand"}
+{"entite": "Grande Colombie", "valeur": "espagnol"}
+{"entite": "Grande Horde", "valeur": "langues kipchak"}
+{"entite": "Grande-Moravie", "valeur": "vieux-slave"}
+{"entite": "Grande République d'Amérique centrale", "valeur": "espagnol"}
+{"entite": "Guyana", "valeur": "anglais"}
+{"entite": "Haïti espagnol", "valeur": "espagnol"}
+{"entite": "Hammadides", "valeur": "langues berbères"}
+{"entite": "Hesse historique", "valeur": "bas saxon"}
+{"entite": "Hetmanat", "valeur": "ukrainien"}
+{"entite": "Hotaki", "valeur": "pachto"}
+{"entite": "Hoysala", "valeur": "kannara"}
+{"entite": "Ilkhanat", "valeur": "persan"}
+{"entite": "imamat d'Oman", "valeur": "arabe"}
+{"entite": "Indes orientales néerlandaises", "valeur": "néerlandais"}
+{"entite": "Insulo de la Rozoj", "valeur": "espéranto"}
+{"entite": "Jamahiriya arabe libyenne", "valeur": "arabe"}
+{"entite": "Judicat d'Arborée", "valeur": "sarde"}
+{"entite": "Kampuchéa démocratique", "valeur": "khmer"}
+{"entite": "Karamanides", "valeur": "vieux turc anatolien"}
+{"entite": "Karesioğulları", "valeur": "langues turciques"}
+{"entite": "Kasgharie", "valeur": "ouïghour"}
+{"entite": "Khaganat de Mongolie du Bogdo", "valeur": "mongol"}
+{"entite": "Khaganat khazar", "valeur": "khazar"}
+{"entite": "Khaganat Rouran", "valeur": "xianbei"}
+{"entite": "Khaganat turc oriental", "valeur": "vieux-turc"}
+{"entite": "Khanat Avar", "valeur": "avar"}
+{"entite": "Khanat bulgare de la Volga", "valeur": "protobulgare"}
+{"entite": "Khanat de Kokand", "valeur": "persan"}
+{"entite": "khanat de Nishapur", "valeur": "persan"}
+{"entite": "Khanat de Sibir", "valeur": "vieux tatar"}
+{"entite": "Khanat du Karabagh", "valeur": "persan"}
+{"entite": "Khanat dzoungar", "valeur": "oïrate"}
+{"entite": "Khanat kazakh", "valeur": "kazakh"}
+{"entite": "Khanat kirghize", "valeur": "kirghize"}
+{"entite": "khanat ouzbek", "valeur": "langues turciques"}
+{"entite": "Klein Vrystaat", "valeur": "néerlandais"}
+{"entite": "Koguryŏ", "valeur": "goguryeoan"}
+{"entite": "Landgraviat de Hesse-Marbourg", "valeur": "allemand"}
+{"entite": "Lanxang", "valeur": "lao"}
+{"entite": "Las Bela", "valeur": "baloutche"}
+{"entite": "liste des vicomtes de Béarn", "valeur": "gascon"}
+{"entite": "Lotharingie", "valeur": "vieux frison"}
+{"entite": "Lydie", "valeur": "lydien"}
+{"entite": "Makran", "valeur": "persan"}
+{"entite": "Mandat des îles du Pacifique", "valeur": "japonais"}
+{"entite": "mandat français en Syrie et au Liban", "valeur": "français"}
+{"entite": "marche de Brandebourg", "valeur": "bas allemand"}
+{"entite": "Marquisat de Finale", "valeur": "ligure"}
+{"entite": "Mérinides", "valeur": "arabe"}
+{"entite": "Mitanni", "valeur": "hourrite"}
+{"entite": "monarchie constitutionnelle française", "valeur": "français"}
+{"entite": "Monarchie de Habsbourg", "valeur": "allemand"}
+{"entite": "monarchie de Juillet", "valeur": "français"}
+{"entite": "Monarchie unifiée d'Israël et Juda", "valeur": "hébreu biblique"}
+{"entite": "Nieuwe Republiek", "valeur": "néerlandais"}
+{"entite": "Nouvelle-Hollande", "valeur": "portugais"}
+{"entite": "Osroène", "valeur": "araméen"}
+{"entite": "Ostmark", "valeur": "bavarois"}
+{"entite": "Pakistan occidental", "valeur": "ourdou"}
+{"entite": "Palatinat-Deux-Ponts", "valeur": "allemand"}
+{"entite": "Palatinat du Rhin", "valeur": "allemand"}
+{"entite": "Perse qadjare", "valeur": "persan"}
+{"entite": "Pouvoir exécutif suprême", "valeur": "espagnol"}
+{"entite": "Pratihâra", "valeur": "sanskrit"}
+{"entite": "Premier Empire français", "valeur": "français"}
+{"entite": "Premier Empire mexicain", "valeur": "espagnol"}
+{"entite": "premier empire Taungû", "valeur": "birman"}
+{"entite": "Première République d'Autriche", "valeur": "allemand"}
+{"entite": "première république de Corée du Sud", "valeur": "coréen"}
+{"entite": "première république du Venezuela", "valeur": "espagnol"}
+{"entite": "Première République espagnole", "valeur": "espagnol"}
+{"entite": "Première République française", "valeur": "français"}
+{"entite": "Première République hellénique", "valeur": "grec"}
+{"entite": "Première République portugaise", "valeur": "portugais"}
+{"entite": "principauté archiépiscopale de Salzbourg", "valeur": "latin"}
+{"entite": "principauté d'Abkhazie", "valeur": "géorgien"}
+{"entite": "principauté d'Achaïe", "valeur": "français"}
+{"entite": "Principauté d'Albanie", "valeur": "albanais"}
+{"entite": "principauté d'Endirey", "valeur": "koumyk"}
+{"entite": "principauté de Brunswick-Wolfenbüttel", "valeur": "bas allemand"}
+{"entite": "principauté de Bulgarie", "valeur": "bulgare"}
+{"entite": "Principauté de Capoue", "valeur": "latin"}
+{"entite": "Principauté de Dalmatie", "valeur": "latin"}
+{"entite": "principauté de Galles", "valeur": "gallois"}
+{"entite": "Principauté de Hohenzollern-Hechingen", "valeur": "allemand"}
+{"entite": "Principauté de Hohenzollern-Sigmaringen", "valeur": "allemand"}
+{"entite": "principauté de Kastrioti", "valeur": "albanais"}
+{"entite": "principauté de Kiev", "valeur": "vieux russe"}
+{"entite": "principauté de Liège", "valeur": "français"}
+{"entite": "Principauté de Linange", "valeur": "allemand"}
+{"entite": "Principauté de Montbéliard", "valeur": "français"}
+{"entite": "Principauté de Piombino", "valeur": "toscan"}
+{"entite": "principauté de Riazan", "valeur": "slavon d’église"}
+{"entite": "Principauté de Schaumbourg-Lippe", "valeur": "allemand"}
+{"entite": "principauté de Serbie", "valeur": "serbe"}
+{"entite": "principauté de Smolensk", "valeur": "vieux russe"}
+{"entite": "Principauté de Sperlinga", "valeur": "français"}
+{"entite": "principauté de Sudzal-Nijni Novgorod", "valeur": "vieux russe"}
+{"entite": "Principauté de Tchernigov", "valeur": "vieux russe"}
+{"entite": "Principauté de Théodoros", "valeur": "grec médiéval"}
+{"entite": "principauté de Tver", "valeur": "vieux russe"}
+{"entite": "Principauté de Waldeck-Pyrmont", "valeur": "allemand"}
+{"entite": "principauté du Balaton", "valeur": "proto-slave"}
+{"entite": "principauté du Monténégro", "valeur": "serbo-croate"}
+{"entite": "principauté ecclésiastique de Monténégro", "valeur": "monténégrin"}
+{"entite": "principauté épiscopale de San Giulio", "valeur": "latin"}
+{"entite": "Principautés unies de Moldavie et de Valachie", "valeur": "roumain"}
+{"entite": "Protectorat d'Aden", "valeur": "arabe"}
+{"entite": "Protectorat du Pérou", "valeur": "espagnol"}
+{"entite": "protectorat français au Maroc", "valeur": "arabe marocain"}
+{"entite": "Protectorat français du Laos", "valeur": "français"}
+{"entite": "Province autonome de Bosnie occidentale", "valeur": "bosnien"}
+{"entite": "province libre de Guayaquil", "valeur": "espagnol"}
+{"entite": "Provinces-Unies", "valeur": "néerlandais"}
+{"entite": "provinces unies d'Amérique centrale", "valeur": "espagnol"}
+{"entite": "Provinces-Unies d'Italie centrale", "valeur": "italien"}
+{"entite": "Provinces-Unies de Nouvelle-Grenade", "valeur": "espagnol"}
+{"entite": "Provinces-Unies du Río de la Plata", "valeur": "espagnol"}
+{"entite": "Provinces unies italiennes", "valeur": "italien"}
+{"entite": "Prusse", "valeur": "allemand"}
+{"entite": "Qara Qoyunlu", "valeur": "persan"}
+{"entite": "Quatrième République de Corée du Sud", "valeur": "coréen"}
+{"entite": "Quatrième République (Venezuela)", "valeur": "espagnol"}
+{"entite": "Raj britannique", "valeur": "anglais"}
+{"entite": "Régence italienne du Carnaro", "valeur": "italien"}
+{"entite": "régime de Vichy", "valeur": "français"}
+{"entite": "Reich allemand", "valeur": "allemand"}
+{"entite": "République ancônitaine", "valeur": "italien"}
+{"entite": "République arabe du Yémen", "valeur": "arabe"}
+{"entite": "République arabe libyenne", "valeur": "arabe"}
+{"entite": "République arabe unie", "valeur": "arabe"}
+{"entite": "République autonome d'Épire du Nord", "valeur": "grec"}
+{"entite": "République bresciane", "valeur": "italien"}
+{"entite": "République catalane (1640-1641)", "valeur": "catalan"}
+{"entite": "République centraliste mexicaine", "valeur": "espagnol"}
+{"entite": "République cisalpine", "valeur": "italien"}
+{"entite": "République cispadane", "valeur": "italien"}
+{"entite": "République cisrhénane", "valeur": "allemand"}
+{"entite": "République d'Acre", "valeur": "portugais"}
+{"entite": "République d'Albanie", "valeur": "albanais"}
+{"entite": "république d'Ancône", "valeur": "latin"}
+{"entite": "République d'Autriche allemande", "valeur": "allemand"}
+{"entite": "République d'Égypte", "valeur": "arabe"}
+{"entite": "république d'Entre Ríos", "valeur": "espagnol"}
+{"entite": "République d'Étrurie", "valeur": "italien"}
+{"entite": "république d'Extrême-Orient", "valeur": "russe"}
+{"entite": "république d'Irak", "valeur": "arabe"}
+{"entite": "république d'Irak (1968-2003)", "valeur": "arabe"}
+{"entite": "république d'Utrecht", "valeur": "néerlandais"}
+{"entite": "république d'Užice", "valeur": "serbo-croate"}
+{"entite": "République de Bade", "valeur": "alémanique"}
+{"entite": "République de Bosnie-Herzégovine", "valeur": "bosnien"}
+{"entite": "République de Caspienne centrale", "valeur": "russe"}
+{"entite": "République de Cochinchine", "valeur": "vietnamien"}
+{"entite": "République de Cospaïa", "valeur": "italien"}
+{"entite": "république de Cuba", "valeur": "espagnol"}
+{"entite": "république de Goshen", "valeur": "néerlandais"}
+{"entite": "République de Haute-Volta", "valeur": "français"}
+{"entite": "République de Hongrie", "valeur": "hongrois"}
+{"entite": "République de Kholodny Yar", "valeur": "ukrainien"}
+{"entite": "république de Lituanie centrale", "valeur": "polonais"}
+{"entite": "république de Lydenburg", "valeur": "néerlandais"}
+{"entite": "République de Nouvelle-Grenade", "valeur": "espagnol"}
+{"entite": "République de Pskov", "valeur": "slavon d’église"}
+{"entite": "République de Saint-Marc", "valeur": "vénitien"}
+{"entite": "république de Weimar", "valeur": "allemand"}
+{"entite": "République de Zamboanga", "valeur": "chavacano"}
+{"entite": "République démocratique d'Arménie", "valeur": "arménien"}
+{"entite": "République démocratique de Géorgie", "valeur": "géorgien"}
+{"entite": "république démocratique du Vietnam", "valeur": "vietnamien"}
+{"entite": "République démocratique moldave", "valeur": "roumain"}
+{"entite": "République démocratique populaire du Yémen", "valeur": "arabe"}
+{"entite": "République des conseils de Hongrie", "valeur": "hongrois"}
+{"entite": "République des États-Unis d'Indonésie", "valeur": "indonésien"}
+{"entite": "République des Philippines", "valeur": "tagalog"}
+{"entite": "République du Bénin", "valeur": "anglais"}
+{"entite": "République du Bouregreg", "valeur": "arabe"}
+{"entite": "République du Congo (Léopoldville)", "valeur": "français"}
+{"entite": "République du Dahomey", "valeur": "français"}
+{"entite": "République du Koweït", "valeur": "arabe"}
+{"entite": "république du Pérou du Nord", "valeur": "espagnol"}
+{"entite": "république du Pérou du Sud", "valeur": "espagnol"}
+{"entite": "République du Rif", "valeur": "arabe"}
+{"entite": "république du Swellendam", "valeur": "néerlandais"}
+{"entite": "république du Tarnobrzeg", "valeur": "polonais"}
+{"entite": "république du Texas", "valeur": "anglais"}
+{"entite": "république du Vietnam", "valeur": "vietnamien"}
+{"entite": "République du Yucatán", "valeur": "espagnol"}
+{"entite": "République fédérale d'Amérique centrale", "valeur": "espagnol"}
+{"entite": "république fédérale de Yougoslavie", "valeur": "serbe"}
+{"entite": "république fédérale populaire de Yougoslavie", "valeur": "serbo-croate"}
+{"entite": "République fédérative de Yougoslavie", "valeur": "serbo-croate"}
+{"entite": "république Graaff-Reinet", "valeur": "néerlandais"}
+{"entite": "République Juliana", "valeur": "portugais"}
+{"entite": "République khmère", "valeur": "khmer"}
+{"entite": "République montagnarde du Caucase du Nord", "valeur": "russe"}
+{"entite": "République populaire d'Angola", "valeur": "portugais"}
+{"entite": "république populaire d'Ukraine occidentale", "valeur": "ukrainien"}
+{"entite": "république populaire de Bulgarie", "valeur": "bulgare"}
+{"entite": "République populaire de Crimée", "valeur": "tatar de Crimée"}
+{"entite": "république populaire de Hongrie", "valeur": "hongrois"}
+{"entite": "république populaire de Pologne", "valeur": "polonais"}
+{"entite": "république populaire du Bénin", "valeur": "français"}
+{"entite": "république populaire du Congo", "valeur": "français"}
+{"entite": "République populaire du Kouban", "valeur": "russe"}
+{"entite": "République populaire du Mozambique", "valeur": "portugais"}
+{"entite": "République populaire mongole", "valeur": "mongol"}
+{"entite": "République populaire roumaine", "valeur": "roumain"}
+{"entite": "République populaire socialiste d'Albanie", "valeur": "albanais"}
+{"entite": "République populaire ukrainienne", "valeur": "ukrainien"}
+{"entite": "République Riograndense", "valeur": "portugais"}
+{"entite": "République romaine", "valeur": "latin"}
+{"entite": "République russe", "valeur": "russe"}
+{"entite": "République sibérienne", "valeur": "russe"}
+{"entite": "République slovaque", "valeur": "slovaque"}
+{"entite": "République sociale italienne", "valeur": "italien"}
+{"entite": "République socialiste de Roumanie", "valeur": "roumain"}
+{"entite": "République socialiste du Chili", "valeur": "espagnol"}
+{"entite": "république socialiste du Monténégro", "valeur": "serbo-croate"}
+{"entite": "république socialiste fédérative soviétique de Russie", "valeur": "russe"}
+{"entite": "République socialiste slovaque", "valeur": "slovaque"}
+{"entite": "République soviétique chinoise", "valeur": "chinois"}
+{"entite": "République soviétique d’Odessa", "valeur": "russe"}
+{"entite": "République soviétique du Kouban et de la mer Noire", "valeur": "russe"}
+{"entite": "République soviétique du Terek", "valeur": "russe"}
+{"entite": "République sud-africaine du Transvaal", "valeur": "néerlandais"}
+{"entite": "République syrienne", "valeur": "arabe"}
+{"entite": "République transpadane", "valeur": "italien"}
+{"entite": "Restauration", "valeur": "français"}
+{"entite": "Restauration bourbonienne en Espagne", "valeur": "espagnol"}
+{"entite": "Restauration impériale chinoise", "valeur": "chinois"}
+{"entite": "Rheged", "valeur": "cambrien"}
+{"entite": "Roumanie fasciste", "valeur": "roumain"}
+{"entite": "Royaume albanais", "valeur": "albanais"}
+{"entite": "royaume arabe de Syrie", "valeur": "arabe"}
+{"entite": "royaume céleste de la Grande Paix", "valeur": "chinois"}
+{"entite": "Royaume d'Airgíalla", "valeur": "moyen irlandais"}
+{"entite": "Royaume d'Albanie", "valeur": "albanais"}
+{"entite": "royaume d'Alfheim", "valeur": "vieux norrois"}
+{"entite": "Royaume d'Algarve", "valeur": "portugais"}
+{"entite": "royaume d'Angleterre", "valeur": "anglais"}
+{"entite": "royaume d'Avanti", "valeur": "sanskrit"}
+{"entite": "royaume d'Ayutthaya", "valeur": "thaï"}
+{"entite": "royaume d'Égypte", "valeur": "arabe"}
+{"entite": "royaume d'Espagne", "valeur": "espagnol"}
+{"entite": "royaume d'Essex", "valeur": "vieil anglais"}
+{"entite": "Royaume d'Est-Anglie", "valeur": "vieil anglais"}
+{"entite": "royaume d'Étrurie", "valeur": "italien"}
+{"entite": "Royaume d'Iméréthie", "valeur": "géorgien"}
+{"entite": "royaume d'Irak", "valeur": "arabe"}
+{"entite": "royaume d'Irlande", "valeur": "anglais"}
+{"entite": "royaume d'Israël", "valeur": "hébreu"}
+{"entite": "royaume d'Ourartou", "valeur": "urartéen"}
+{"entite": "royaume de Bavière", "valeur": "allemand"}
+{"entite": "royaume de Bohême", "valeur": "tchèque"}
+{"entite": "royaume de Bosnie", "valeur": "bosnien"}
+{"entite": "royaume de Bourgogne", "valeur": "latin"}
+{"entite": "Royaume de Bretagne", "valeur": "latin"}
+{"entite": "royaume de Bulgarie", "valeur": "bulgare"}
+{"entite": "royaume de Cappadoce", "valeur": "koinè"}
+{"entite": "Royaume de Ceredigion", "valeur": "gallois"}
+{"entite": "Royaume de Champassak", "valeur": "lao"}
+{"entite": "royaume de Chypre", "valeur": "latin"}
+{"entite": "royaume de Croatie-Slavonie", "valeur": "croate"}
+{"entite": "Royaume de Deheubarth", "valeur": "gallois"}
+{"entite": "Royaume de Dendi", "valeur": "songhaï"}
+{"entite": "royaume de Dubréka", "valeur": "soussou"}
+{"entite": "Royaume de Dyfed", "valeur": "gallois"}
+{"entite": "royaume de France", "valeur": "français"}
+{"entite": "Royaume de Frise", "valeur": "vieux frison"}
+{"entite": "royaume de Géorgie", "valeur": "géorgien"}
+{"entite": "Royaume de Glywysing", "valeur": "gallois"}
+{"entite": "royaume de Grande-Bretagne", "valeur": "anglais"}
+{"entite": "royaume de Grèce", "valeur": "katharévousa"}
+{"entite": "royaume de Gwynedd", "valeur": "gallois"}
+{"entite": "royaume de Hanovre", "valeur": "allemand"}
+{"entite": "Royaume de Hollande", "valeur": "néerlandais"}
+{"entite": "Royaume de Hongrie", "valeur": "hongrois"}
+{"entite": "royaume de Jaén", "valeur": "espagnol"}
+{"entite": "Royaume de Jaffna", "valeur": "tamoul"}
+{"entite": "Royaume de Jérusalem", "valeur": "latin"}
+{"entite": "royaume de Juda", "valeur": "hébreu biblique"}
+{"entite": "Royaume de Kakhétie", "valeur": "géorgien"}
+{"entite": "Royaume de Kalat", "valeur": "pachto"}
+{"entite": "Royaume de Kandy", "valeur": "tamoul"}
+{"entite": "Royaume de Karthli", "valeur": "géorgien"}
+{"entite": "royaume de Kazan", "valeur": "russe"}
+{"entite": "royaume de Kent", "valeur": "vieil anglais"}
+{"entite": "royaume de Libye", "valeur": "arabe"}
+{"entite": "royaume de Lindsey", "valeur": "vieil anglais"}
+{"entite": "Royaume de Lituanie", "valeur": "lituanien"}
+{"entite": "royaume de Lombardie-Vénétie", "valeur": "allemand"}
+{"entite": "Royaume de Luang Prabang", "valeur": "lao"}
+{"entite": "royaume de Magadha", "valeur": "langues indo-aryennes"}
+{"entite": "royaume de Majorque", "valeur": "ancien catalan"}
+{"entite": "Royaume de Mosquitia", "valeur": "anglais"}
+{"entite": "royaume de Munster", "valeur": "vieil irlandais archaïque"}
+{"entite": "royaume de Murcie", "valeur": "espagnol"}
+{"entite": "royaume de Mysore", "valeur": "kannara"}
+{"entite": "Royaume de Nanzhao", "valeur": "bai"}
+{"entite": "Royaume de Patani", "valeur": "yawi"}
+{"entite": "Royaume de Polonnâruvâ", "valeur": "singhalais"}
+{"entite": "royaume de Portugal", "valeur": "portugais"}
+{"entite": "royaume de Powys", "valeur": "gallois"}
+{"entite": "royaume de Prusse", "valeur": "allemand"}
+{"entite": "royaume de Rattanakosin", "valeur": "thaï"}
+{"entite": "royaume de Rome", "valeur": "latin"}
+{"entite": "royaume de Roumanie", "valeur": "roumain"}
+{"entite": "royaume de Saba", "valeur": "sabéen"}
+{"entite": "royaume de Saxe", "valeur": "allemand"}
+{"entite": "royaume de Serbie", "valeur": "serbe"}
+{"entite": "royaume de Sussex", "valeur": "vieil anglais"}
+{"entite": "royaume de Thessalonique", "valeur": "lombard"}
+{"entite": "royaume de Tolède", "valeur": "espagnol"}
+{"entite": "royaume de Vaspurakan", "valeur": "arménien"}
+{"entite": "royaume de Vientiane", "valeur": "lao"}
+{"entite": "royaume de Vijayanâgara", "valeur": "kannara"}
+{"entite": "royaume de Yougoslavie", "valeur": "serbo-croate"}
+{"entite": "royaume des Hasmonéens", "valeur": "hébreu"}
+{"entite": "royaume des Kartvels", "valeur": "géorgien"}
+{"entite": "royaume des Odryses", "valeur": "thrace"}
+{"entite": "royaume des Serbes, Croates et Slovènes", "valeur": "serbo-croate"}
+{"entite": "royaume du Cambodge", "valeur": "khmer"}
+{"entite": "royaume du Hedjaz", "valeur": "arabe"}
+{"entite": "Royaume du Kanem-Bornou", "valeur": "langues sahariennes"}
+{"entite": "Royaume du Kurdistan", "valeur": "kurde"}
+{"entite": "Royaume du Laos", "valeur": "lao"}
+{"entite": "royaume du Monténégro", "valeur": "serbe"}
+{"entite": "Royaume du Nejd et du Hedjaz", "valeur": "arabe"}
+{"entite": "royaume du Népal", "valeur": "népalais"}
+{"entite": "Royaume du Ouaddaï", "valeur": "langues mabanes"}
+{"entite": "Royaume du Wurtemberg", "valeur": "allemand"}
+{"entite": "royaume hittite", "valeur": "hittite"}
+{"entite": "Royaume inca de Vilcabamba", "valeur": "quechua"}
+{"entite": "Royaume quiché", "valeur": "quiché"}
+{"entite": "royaume séleucide", "valeur": "grec ancien"}
+{"entite": "Royaume tarasque", "valeur": "purépecha"}
+{"entite": "Royaume-Uni de Grande-Bretagne et d'Irlande", "valeur": "anglais"}
+{"entite": "Royaume-Uni de Pologne", "valeur": "polonais"}
+{"entite": "Royaume uni de Portugal, du Brésil et des Algarves", "valeur": "portugais"}
+{"entite": "royaume uni des Pays-Bas", "valeur": "néerlandais"}
+{"entite": "Royaume zoulou", "valeur": "zoulou"}
+{"entite": "Ruanda-Urundi", "valeur": "français"}
+{"entite": "Rus' de Kiev", "valeur": "vieux russe"}
+{"entite": "Russie du Sud", "valeur": "russe"}
+{"entite": "Russie soviétique", "valeur": "russe"}
+{"entite": "Saadiens", "valeur": "arabe"}
+{"entite": "Saruhanides", "valeur": "turc"}
+{"entite": "Second Empire", "valeur": "français"}
+{"entite": "Second Empire bulgare", "valeur": "vieux-slave"}
+{"entite": "Second Empire mexicain", "valeur": "espagnol"}
+{"entite": "Seconde République espagnole", "valeur": "espagnol"}
+{"entite": "seigneurie de Cuzcatlán", "valeur": "pipil"}
+{"entite": "seigneurie de Milan", "valeur": "latin"}
+{"entite": "seigneurie de Montpellier", "valeur": "occitan"}
+{"entite": "Seisyllwg", "valeur": "gallois"}
+{"entite": "Serbie-et-Monténégro", "valeur": "serbe"}
+{"entite": "Seuna", "valeur": "kannara"}
+{"entite": "Shamkhalat de Tarki", "valeur": "koumyk"}
+{"entite": "Siam", "valeur": "thaï"}
+{"entite": "Soudan anglo-égyptien", "valeur": "arabe"}
+{"entite": "Souveraineté de la rivière Orange", "valeur": "anglais"}
+{"entite": "Stellaland", "valeur": "néerlandais"}
+{"entite": "Sultanat bahmanide", "valeur": "persan"}
+{"entite": "sultanat d'Ahmadnagar", "valeur": "persan"}
+{"entite": "sultanat de Johor", "valeur": "malais"}
+{"entite": "Sultanat de Malacca", "valeur": "malais"}
+{"entite": "Sultanat de Mataram", "valeur": "javanais"}
+{"entite": "sultanat de Roum", "valeur": "persan"}
+{"entite": "sultanat de Siak", "valeur": "malais"}
+{"entite": "Sultanat de Soulou", "valeur": "arabe"}
+{"entite": "sultanat de Yogyakarta", "valeur": "javanais"}
+{"entite": "Sultanat du Gujarat", "valeur": "gujarati"}
+{"entite": "Sultânat Ghûryd", "valeur": "persan"}
+{"entite": "taïfa de Carmona", "valeur": "arabe"}
+{"entite": "taïfa de Murcie", "valeur": "arabe"}
+{"entite": "taïfa de Séville", "valeur": "arabe andalou"}
+{"entite": "taïfa de Tolède", "valeur": "arabe"}
+{"entite": "taïfa de Xérès", "valeur": "arabe"}
+{"entite": "Taïwan sous la tutelle des Qing", "valeur": "mandarin standard"}
+{"entite": "Tamna", "valeur": "tamna"}
+{"entite": "Tanganyika", "valeur": "anglais"}
+{"entite": "Territoire des Alaouites", "valeur": "français"}
+{"entite": "Tibet", "valeur": "tibétain"}
+{"entite": "Togo français", "valeur": "ewé"}
+{"entite": "Toro", "valeur": "toro"}
+{"entite": "Travonie", "valeur": "serbe"}
+{"entite": "Troisième Reich", "valeur": "allemand"}
+{"entite": "Troisième République de Corée du Sud", "valeur": "coréen"}
+{"entite": "Troisième République des Philippines", "valeur": "philippin"}
+{"entite": "Troisième République française", "valeur": "français"}
+{"entite": "Tyrconnell", "valeur": "irlandais"}
+{"entite": "Ukraine subcarpathique", "valeur": "ukrainien"}
+{"entite": "Union", "valeur": "anglais"}
+{"entite": "Union de Birmanie", "valeur": "birman"}
+{"entite": "Union des Républiques arabes", "valeur": "arabe"}
+{"entite": "Upingtonia", "valeur": "néerlandais"}
+{"entite": "Vieux Royaume", "valeur": "roumain"}
+{"entite": "Ville libre de Cracovie", "valeur": "polonais"}
+{"entite": "Ville libre de Francfort", "valeur": "allemand"}
+{"entite": "Wattassides", "valeur": "langues berbères"}
+{"entite": "Wessex", "valeur": "saxon occidental"}
+{"entite": "Wihtware", "valeur": "vieil anglais"}
+{"entite": "Yougoslavie", "valeur": "serbo-croate"}
+{"entite": "Zagwés", "valeur": "langues agew"}
+{"entite": "Zaïre", "valeur": "français"}

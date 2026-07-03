@@ -1,0 +1,5 @@
+{"_relation": "definition_niveau_organisation_corps", "_categorie": "physique", "_source": "Modèle (Claude) — biologie textbook curée (niveau d'organisation -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "organe", "valeur": "ensemble de tissus assurant une fonction"}
+{"entite": "organisme", "valeur": "ensemble des systèmes d'un être vivant"}
+{"entite": "système", "valeur": "ensemble d'organes coopérant à une grande fonction"}
+{"entite": "tissu", "valeur": "ensemble de cellules semblables"}

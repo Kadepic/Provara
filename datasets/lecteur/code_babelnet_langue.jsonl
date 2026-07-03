@@ -1,0 +1,500 @@
+{"_relation": "code_babelnet_langue", "_categorie": "convention", "_source": "Wikidata/QLever — CODE BABELNET DE LA LANGUE P2581", "_articles": true}
+{"entite": "abénaqui", "valeur": "03862730n"}
+{"entite": "abipón", "valeur": "01715692n"}
+{"entite": "abkhaze", "valeur": "01298139n"}
+{"entite": "acehnais", "valeur": "01274299n"}
+{"entite": "achi", "valeur": "15775068n"}
+{"entite": "agnou", "valeur": "02873677n"}
+{"entite": "aïnou", "valeur": "03638484n"}
+{"entite": "ajië", "valeur": "02217230n"}
+{"entite": "akroá-mirim", "valeur": "02864602n"}
+{"entite": "albanais", "valeur": "00002441n"}
+{"entite": "alekano", "valeur": "01788083n"}
+{"entite": "alémanique", "valeur": "03164805n"}
+{"entite": "aléoute", "valeur": "02786419n"}
+{"entite": "allemand", "valeur": "00040293n"}
+{"entite": "altaï", "valeur": "03613677n"}
+{"entite": "ancien azéri", "valeur": "03122507n"}
+{"entite": "angaité", "valeur": "14949248n"}
+{"entite": "anglais", "valeur": "00030862n"}
+{"entite": "anglais américain", "valeur": "00003344n"}
+{"entite": "anglais d'Angleterre", "valeur": "01162558n"}
+{"entite": "anglais du Nouveau-Mexique", "valeur": "15408151n"}
+{"entite": "arabe", "valeur": "00005267n"}
+{"entite": "araméen", "valeur": "00005305n"}
+{"entite": "arménien", "valeur": "00005740n"}
+{"entite": "arménien classique", "valeur": "00817504n"}
+{"entite": "arop-lokep", "valeur": "03430100n"}
+{"entite": "artchi", "valeur": "03509889n"}
+{"entite": "ashkun", "valeur": "00437252n"}
+{"entite": "assamais", "valeur": "00006226n"}
+{"entite": "astur-léonais", "valeur": "03692926n"}
+{"entite": "asturien", "valeur": "03184453n"}
+{"entite": "asu", "valeur": "00972978n"}
+{"entite": "atakapa", "valeur": "01751354n"}
+{"entite": "atsina", "valeur": "00866668n"}
+{"entite": "’auhelawa", "valeur": "03434571n"}
+{"entite": "avikam", "valeur": "03475007n"}
+{"entite": "awad bing", "valeur": "03868221n"}
+{"entite": "ayizo-gbe", "valeur": "02712192n"}
+{"entite": "babatana", "valeur": "02078384n"}
+{"entite": "babine", "valeur": "03160940n"}
+{"entite": "bachkir", "valeur": "03076424n"}
+{"entite": "bakweri", "valeur": "02624759n"}
+{"entite": "bangala", "valeur": "03753403n"}
+{"entite": "bas allemand", "valeur": "00052171n"}
+{"entite": "basco-islandais", "valeur": "15182720n"}
+{"entite": "basque", "valeur": "00008908n"}
+{"entite": "bassa", "valeur": "02002323n"}
+{"entite": "bavarois", "valeur": "00753607n"}
+{"entite": "bebele", "valeur": "02918185n"}
+{"entite": "bena", "valeur": "02088056n"}
+{"entite": "bengali", "valeur": "00008346n"}
+{"entite": "bera", "valeur": "02623870n"}
+{"entite": "betoi", "valeur": "02507987n"}
+{"entite": "biak", "valeur": "00817248n"}
+{"entite": "biélorusse", "valeur": "00009687n"}
+{"entite": "bipi", "valeur": "02193824n"}
+{"entite": "biri", "valeur": "02926033n"}
+{"entite": "bit", "valeur": "01186301n"}
+{"entite": "biyo", "valeur": "03067118n"}
+{"entite": "boguru", "valeur": "02721176n"}
+{"entite": "bonggi", "valeur": "15847474n"}
+{"entite": "Bono", "valeur": "00667672n"}
+{"entite": "borei", "valeur": "02618505n"}
+{"entite": "bouriate", "valeur": "00695446n"}
+{"entite": "bozo", "valeur": "02038882n"}
+{"entite": "bribri", "valeur": "00126307n"}
+{"entite": "buang mapos", "valeur": "02850376n"}
+{"entite": "bulgare", "valeur": "00013758n"}
+{"entite": "buru", "valeur": "02308507n"}
+{"entite": "canela", "valeur": "03688929n"}
+{"entite": "canichana", "valeur": "00531990n"}
+{"entite": "cantonais", "valeur": "00015375n"}
+{"entite": "castillan ancien", "valeur": "00942221n"}
+{"entite": "catalan", "valeur": "00016643n"}
+{"entite": "cayuga", "valeur": "01993781n"}
+{"entite": "chácobo", "valeur": "15838879n"}
+{"entite": "cherokee", "valeur": "00018170n"}
+{"entite": "chilcotin", "valeur": "01591446n"}
+{"entite": "chinois", "valeur": "00018452n"}
+{"entite": "chinois classique", "valeur": "00386984n"}
+{"entite": "cimbre", "valeur": "00753542n"}
+{"entite": "cishingini", "valeur": "02708812n"}
+{"entite": "cochimi", "valeur": "02536107n"}
+{"entite": "comecrudo", "valeur": "00875185n"}
+{"entite": "cowlitz", "valeur": "03832734n"}
+{"entite": "creek", "valeur": "00421285n"}
+{"entite": "créole cap-verdien", "valeur": "01113053n"}
+{"entite": "croate", "valeur": "00023879n"}
+{"entite": "cubeo", "valeur": "02449692n"}
+{"entite": "cuitlatèque", "valeur": "01063147n"}
+{"entite": "culina", "valeur": "16752319n"}
+{"entite": "cupeño", "valeur": "03446811n"}
+{"entite": "dalmate", "valeur": "00658055n"}
+{"entite": "dameli", "valeur": "01661855n"}
+{"entite": "dan", "valeur": "03360520n"}
+{"entite": "Dani (langue)", "valeur": "02578449n"}
+{"entite": "danois", "valeur": "00025191n"}
+{"entite": "dazaga-kara", "valeur": "00611482n"}
+{"entite": "defaka", "valeur": "01236152n"}
+{"entite": "dhuwal", "valeur": "00398847n"}
+{"entite": "dimasa", "valeur": "03323848n"}
+{"entite": "diriku", "valeur": "01158872n"}
+{"entite": "dogon", "valeur": "01062307n"}
+{"entite": "dolgane", "valeur": "02650825n"}
+{"entite": "drents", "valeur": "16358814n"}
+{"entite": "dzhidi", "valeur": "15639682n"}
+{"entite": "dzing", "valeur": "02624723n"}
+{"entite": "écossais", "valeur": "00069785n"}
+{"entite": "éfaté du Nord", "valeur": "03326840n"}
+{"entite": "égyptien ancien", "valeur": "00029957n"}
+{"entite": "emae", "valeur": "02886958n"}
+{"entite": "émilien", "valeur": "14503730n"}
+{"entite": "enu", "valeur": "14826026n"}
+{"entite": "espagnol", "valeur": "00073092n"}
+{"entite": "espéranto", "valeur": "00031608n"}
+{"entite": "fidjien occidental", "valeur": "03877652n"}
+{"entite": "finnois", "valeur": "00034612n"}
+{"entite": "français", "valeur": "00036426n"}
+{"entite": "francique rhénan", "valeur": "01953056n"}
+{"entite": "frison occidental", "valeur": "03346896n"}
+{"entite": "frison septentrional", "valeur": "03346979n"}
+{"entite": "gaikundi", "valeur": "02840971n"}
+{"entite": "gal", "valeur": "02917591n"}
+{"entite": "gallois", "valeur": "16278562n"}
+{"entite": "gaulois cisalpin", "valeur": "00188845n"}
+{"entite": "gedaged", "valeur": "03868596n"}
+{"entite": "géorgien", "valeur": "00040255n"}
+{"entite": "gitua", "valeur": "14923627n"}
+{"entite": "globasa", "valeur": "24728482n"}
+{"entite": "gogo", "valeur": "03360846n"}
+{"entite": "goundo", "valeur": "02873486n"}
+{"entite": "gouroung", "valeur": "02678179n"}
+{"entite": "grangali", "valeur": "00339458n"}
+{"entite": "grec", "valeur": "00041634n"}
+{"entite": "grec ancien", "valeur": "00003923n"}
+{"entite": "grec démotique", "valeur": "03174516n"}
+{"entite": "grec moderne", "valeur": "00055472n"}
+{"entite": "groenlandais", "valeur": "03491937n"}
+{"entite": "groma", "valeur": "02678141n"}
+{"entite": "guarayo", "valeur": "02697577n"}
+{"entite": "gujarati", "valeur": "00042157n"}
+{"entite": "gwandara", "valeur": "01537109n"}
+{"entite": "gweno", "valeur": "03510436n"}
+{"entite": "gwich’in", "valeur": "03415352n"}
+{"entite": "høgnorsk", "valeur": "02105404n"}
+{"entite": "hakö", "valeur": "15078120n"}
+{"entite": "haut-allemand précoce", "valeur": "03136229n"}
+{"entite": "hermit", "valeur": "02194264n"}
+{"entite": "hindoustani", "valeur": "00044182n"}
+{"entite": "hoava", "valeur": "03877740n"}
+{"entite": "hoia hoia", "valeur": "02860286n"}
+{"entite": "hokkien", "valeur": "01163043n"}
+{"entite": "holikachuk", "valeur": "03554571n"}
+{"entite": "hongrois", "valeur": "00045223n"}
+{"entite": "hopi", "valeur": "03204410n"}
+{"entite": "hu", "valeur": "02863493n"}
+{"entite": "huachipaeri", "valeur": "00213667n"}
+{"entite": "indonésien", "valeur": "00007962n"}
+{"entite": "inku", "valeur": "01037126n"}
+{"entite": "ipulo", "valeur": "02891135n"}
+{"entite": "islandais", "valeur": "00045754n"}
+{"entite": "istriote", "valeur": "02870226n"}
+{"entite": "italien", "valeur": "00047707n"}
+{"entite": "itelmène", "valeur": "01550583n"}
+{"entite": "iwur", "valeur": "02868251n"}
+{"entite": "ixcatèque", "valeur": "03568321n"}
+{"entite": "japonais", "valeur": "00047991n"}
+{"entite": "jawe", "valeur": "14743922n"}
+{"entite": "jebero", "valeur": "02532819n"}
+{"entite": "jehai", "valeur": "15110247n"}
+{"entite": "jinyu", "valeur": "03513978n"}
+{"entite": "juang", "valeur": "00612269n"}
+{"entite": "judéo-arabe", "valeur": "03558883n"}
+{"entite": "judéo-araméen babylonien", "valeur": "03889499n"}
+{"entite": "judéo-berbère", "valeur": "03597530n"}
+{"entite": "judéo-marocain", "valeur": "03789302n"}
+{"entite": "kaiwá", "valeur": "03702276n"}
+{"entite": "kalaallisut", "valeur": "14750491n"}
+{"entite": "kalmouk", "valeur": "14957547n"}
+{"entite": "kamrupi", "valeur": "02996594n"}
+{"entite": "kamwe", "valeur": "00837377n"}
+{"entite": "kangéanique", "valeur": "00169965n"}
+{"entite": "kankanaey", "valeur": "00938598n"}
+{"entite": "karaïm", "valeur": "03559270n"}
+{"entite": "karata", "valeur": "01852796n"}
+{"entite": "karawa", "valeur": "02860892n"}
+{"entite": "karen bwe", "valeur": "02688294n"}
+{"entite": "kati", "valeur": "03395844n"}
+{"entite": "kazakh", "valeur": "03584200n"}
+{"entite": "kemie", "valeur": "01710005n"}
+{"entite": "kendayan", "valeur": "02837052n"}
+{"entite": "ketangalan", "valeur": "14460185n"}
+{"entite": "khakasse", "valeur": "02643032n"}
+{"entite": "khalaj", "valeur": "14536660n"}
+{"entite": "khalkha", "valeur": "03272846n"}
+{"entite": "khowar", "valeur": "00049046n"}
+{"entite": "kickapou", "valeur": "00049070n"}
+{"entite": "kirghize", "valeur": "03731359n"}
+{"entite": "kodi", "valeur": "14258328n"}
+{"entite": "koinè", "valeur": "00049397n"}
+{"entite": "kolami", "valeur": "03368948n"}
+{"entite": "konkani de Goa", "valeur": "01036974n"}
+{"entite": "krevinien", "valeur": "16249750n"}
+{"entite": "krymchak", "valeur": "00911731n"}
+{"entite": "kula", "valeur": "02578443n"}
+{"entite": "kuna", "valeur": "03226683n"}
+{"entite": "kuruáya", "valeur": "02867266n"}
+{"entite": "kwese", "valeur": "02722315n"}
+{"entite": "lahndi", "valeur": "17094384n"}
+{"entite": "langue des signes internationale", "valeur": "03248452n"}
+{"entite": "langue des signes russe", "valeur": "02438215n"}
+{"entite": "langue interslave", "valeur": "01846307n"}
+{"entite": "langues bicol", "valeur": "03565903n"}
+{"entite": "langues chamito-sémitiques", "valeur": "00001815n"}
+{"entite": "langues dayak des terres", "valeur": "01494423n"}
+{"entite": "langues du nord et du centre du Vanuatu", "valeur": "03206451n"}
+{"entite": "langues hmong", "valeur": "02338370n"}
+{"entite": "langues kalenjin", "valeur": "00814602n"}
+{"entite": "langues karens", "valeur": "03565900n"}
+{"entite": "langues mandingues", "valeur": "03501075n"}
+{"entite": "langues moken-moklen", "valeur": "17111854n"}
+{"entite": "langues zapotèques", "valeur": "03169784n"}
+{"entite": "latin", "valeur": "00050161n"}
+{"entite": "latin ecclésiastique", "valeur": "03474868n"}
+{"entite": "lau", "valeur": "03876006n"}
+{"entite": "laurentien", "valeur": "03488448n"}
+{"entite": "lelak", "valeur": "14831871n"}
+{"entite": "lele", "valeur": "02499805n"}
+{"entite": "lemolang", "valeur": "02855465n"}
+{"entite": "língua geral", "valeur": "03495733n"}
+{"entite": "lingua geral paulista", "valeur": "02003354n"}
+{"entite": "lituanien", "valeur": "00051559n"}
+{"entite": "lojban", "valeur": "01156238n"}
+{"entite": "lombard", "valeur": "01986390n"}
+{"entite": "löyöp", "valeur": "15850211n"}
+{"entite": "lü", "valeur": "00075901n"}
+{"entite": "maa", "valeur": "01160843n"}
+{"entite": "maco", "valeur": "01616216n"}
+{"entite": "magadhi", "valeur": "03444357n"}
+{"entite": "maidu", "valeur": "02884311n"}
+{"entite": "maïthili", "valeur": "03239402n"}
+{"entite": "makasai", "valeur": "03160573n"}
+{"entite": "makonde", "valeur": "01468898n"}
+{"entite": "malais", "valeur": "00052952n"}
+{"entite": "malais d'Ambon", "valeur": "16431497n"}
+{"entite": "malais de Manado", "valeur": "03725896n"}
+{"entite": "malaisien", "valeur": "00007963n"}
+{"entite": "malayâlam", "valeur": "00052956n"}
+{"entite": "mamprusi", "valeur": "14286243n"}
+{"entite": "mangbetu", "valeur": "01029239n"}
+{"entite": "manggarai", "valeur": "02500040n"}
+{"entite": "marathi", "valeur": "00052800n"}
+{"entite": "markweta", "valeur": "02709833n"}
+{"entite": "marovo", "valeur": "03828240n"}
+{"entite": "marquisien", "valeur": "00714882n"}
+{"entite": "masaba", "valeur": "03227811n"}
+{"entite": "massachusett", "valeur": "00053687n"}
+{"entite": "mattole", "valeur": "01539192n"}
+{"entite": "maya yucatèque", "valeur": "00081966n"}
+{"entite": "mazandarani", "valeur": "15591098n"}
+{"entite": "mbèlimè", "valeur": "02717447n"}
+{"entite": "mbugwe", "valeur": "02096193n"}
+{"entite": "mengambo", "valeur": "16885482n"}
+{"entite": "menominee", "valeur": "00054349n"}
+{"entite": "mikasuki", "valeur": "02542657n"}
+{"entite": "min de Leizhou", "valeur": "03718451n"}
+{"entite": "minnan", "valeur": "01248508n"}
+{"entite": "miwok de la Sierra du Sud", "valeur": "03622750n"}
+{"entite": "mlomp", "valeur": "00926624n"}
+{"entite": "mochène", "valeur": "03611738n"}
+{"entite": "molala", "valeur": "02535159n"}
+{"entite": "moloko", "valeur": "00837469n"}
+{"entite": "môn", "valeur": "03183928n"}
+{"entite": "monan", "valeur": "02577490n"}
+{"entite": "mongol", "valeur": "00055663n"}
+{"entite": "mongol de Chine", "valeur": "01616279n"}
+{"entite": "mongondow", "valeur": "17142853n"}
+{"entite": "monguor", "valeur": "01637415n"}
+{"entite": "monténégrin", "valeur": "03596883n"}
+{"entite": "mortlock", "valeur": "02937415n"}
+{"entite": "moyen bas allemand", "valeur": "00054857n"}
+{"entite": "moyen français", "valeur": "03554121n"}
+{"entite": "moyen gallois", "valeur": "01521159n"}
+{"entite": "muher", "valeur": "00425493n"}
+{"entite": "muna", "valeur": "02854960n"}
+{"entite": "munduruku", "valeur": "03276506n"}
+{"entite": "musak", "valeur": "02860587n"}
+{"entite": "nafusi", "valeur": "00463823n"}
+{"entite": "nahuatl classique", "valeur": "01618828n"}
+{"entite": "nahuatl du Tabasco", "valeur": "15830400n"}
+{"entite": "nanga", "valeur": "02581034n"}
+{"entite": "nanti", "valeur": "16780075n"}
+{"entite": "narim", "valeur": "02859584n"}
+{"entite": "narum", "valeur": "01759186n"}
+{"entite": "nasioi", "valeur": "03319470n"}
+{"entite": "naukan", "valeur": "02709123n"}
+{"entite": "nayi", "valeur": "01185813n"}
+{"entite": "néolatin", "valeur": "00057242n"}
+{"entite": "népalais", "valeur": "00057282n"}
+{"entite": "nganassane", "valeur": "01515559n"}
+{"entite": "ngangam", "valeur": "02681365n"}
+{"entite": "ngiemboon", "valeur": "00962345n"}
+{"entite": "ngoumba", "valeur": "02120089n"}
+{"entite": "ninam", "valeur": "02859230n"}
+{"entite": "nisa-anasi", "valeur": "14830152n"}
+{"entite": "nitinaht", "valeur": "00898417n"}
+{"entite": "nobiin", "valeur": "00643261n"}
+{"entite": "nonuya", "valeur": "02525449n"}
+{"entite": "norvégien", "valeur": "00058113n"}
+{"entite": "nrebele", "valeur": "00646537n"}
+{"entite": "nung", "valeur": "02519470n"}
+{"entite": "nuosu", "valeur": "03686919n"}
+{"entite": "nyabwa", "valeur": "03346648n"}
+{"entite": "ogba", "valeur": "01356581n"}
+{"entite": "oïrate", "valeur": "02926452n"}
+{"entite": "okinawaïen", "valeur": "01037234n"}
+{"entite": "omagua", "valeur": "14232108n"}
+{"entite": "oneida", "valeur": "00533596n"}
+{"entite": "opo", "valeur": "01414830n"}
+{"entite": "ossète", "valeur": "00059650n"}
+{"entite": "otoro", "valeur": "02677414n"}
+{"entite": "oudi", "valeur": "01891375n"}
+{"entite": "ouldémé", "valeur": "00837491n"}
+{"entite": "ourdou", "valeur": "00079317n"}
+{"entite": "ouzbek", "valeur": "03584236n"}
+{"entite": "owa", "valeur": "00402467n"}
+{"entite": "paama", "valeur": "00919471n"}
+{"entite": "pacahuara", "valeur": "17153998n"}
+{"entite": "paicî", "valeur": "01808191n"}
+{"entite": "pakanh", "valeur": "02406353n"}
+{"entite": "palatin", "valeur": "15363919n"}
+{"entite": "palawano", "valeur": "03565663n"}
+{"entite": "palenquero", "valeur": "00839058n"}
+{"entite": "pam", "valeur": "02875473n"}
+{"entite": "pandunia", "valeur": "17264353n"}
+{"entite": "paniya", "valeur": "00639431n"}
+{"entite": "patpatar", "valeur": "03185502n"}
+{"entite": "pazeh", "valeur": "03484105n"}
+{"entite": "pekal", "valeur": "02940155n"}
+{"entite": "pendjabi", "valeur": "00060406n"}
+{"entite": "pero", "valeur": "02718798n"}
+{"entite": "persan", "valeur": "00033707n"}
+{"entite": "petit nègre", "valeur": "13841692n"}
+{"entite": "phalura", "valeur": "01663768n"}
+{"entite": "phénicien", "valeur": "00062008n"}
+{"entite": "pije", "valeur": "14743952n"}
+{"entite": "polonais", "valeur": "00063337n"}
+{"entite": "pomo du Sud", "valeur": "03836791n"}
+{"entite": "portugais", "valeur": "00063690n"}
+{"entite": "pouye", "valeur": "02703829n"}
+{"entite": "prakrit", "valeur": "00064025n"}
+{"entite": "pray", "valeur": "02901850n"}
+{"entite": "proto-slave", "valeur": "00353209n"}
+{"entite": "puguli", "valeur": "01164472n"}
+{"entite": "punique", "valeur": "03461242n"}
+{"entite": "puruhá", "valeur": "02698334n"}
+{"entite": "qiang du Nord", "valeur": "02881379n"}
+{"entite": "quapaw", "valeur": "00065564n"}
+{"entite": "quechua", "valeur": "00048874n"}
+{"entite": "quiripi", "valeur": "03334013n"}
+{"entite": "rangkas", "valeur": "01147352n"}
+{"entite": "rapa", "valeur": "00715222n"}
+{"entite": "rerep", "valeur": "01052085n"}
+{"entite": "ringgou", "valeur": "13814615n"}
+{"entite": "ritarungo", "valeur": "02904729n"}
+{"entite": "romkun", "valeur": "02860344n"}
+{"entite": "rotokas", "valeur": "00818379n"}
+{"entite": "roumain", "valeur": "00068198n"}
+{"entite": "russe", "valeur": "00068625n"}
+{"entite": "safaliba", "valeur": "02873570n"}
+{"entite": "saké", "valeur": "02922125n"}
+{"entite": "salar", "valeur": "02934658n"}
+{"entite": "sambahsa", "valeur": "02443402n"}
+{"entite": "same d'Akkala", "valeur": "01133131n"}
+{"entite": "same d'Inari", "valeur": "03318424n"}
+{"entite": "same de Kildin", "valeur": "03318406n"}
+{"entite": "same de Lule", "valeur": "01290331n"}
+{"entite": "same du Nord", "valeur": "00303338n"}
+{"entite": "same du Sud", "valeur": "03265856n"}
+{"entite": "samoan", "valeur": "16568442n"}
+{"entite": "sanskrit", "valeur": "00069187n"}
+{"entite": "sanskrit védique", "valeur": "03001919n"}
+{"entite": "sari", "valeur": "02726551n"}
+{"entite": "sariqoli", "valeur": "03480301n"}
+{"entite": "sechelt", "valeur": "03798200n"}
+{"entite": "selknam", "valeur": "03514122n"}
+{"entite": "sengseng", "valeur": "03860465n"}
+{"entite": "sepa", "valeur": "15607500n"}
+{"entite": "serbe", "valeur": "00070582n"}
+{"entite": "serbo-croate", "valeur": "00070584n"}
+{"entite": "setaman", "valeur": "02868257n"}
+{"entite": "shinasha", "valeur": "00850293n"}
+{"entite": "sikule", "valeur": "01407389n"}
+{"entite": "sila", "valeur": "03071653n"}
+{"entite": "simbo", "valeur": "03877775n"}
+{"entite": "simte", "valeur": "02935066n"}
+{"entite": "sinasina", "valeur": "02743290n"}
+{"entite": "singhalais", "valeur": "00071733n"}
+{"entite": "sira", "valeur": "01133901n"}
+{"entite": "slavon d’église", "valeur": "00019020n"}
+{"entite": "slovène", "valeur": "02176691n"}
+{"entite": "so'a", "valeur": "14563145n"}
+{"entite": "soga", "valeur": "03351406n"}
+{"entite": "sorabe", "valeur": "00052366n"}
+{"entite": "soureth", "valeur": "00006571n"}
+{"entite": "sowanda", "valeur": "02703484n"}
+{"entite": "spokil", "valeur": "03128262n"}
+{"entite": "squamish", "valeur": "03798173n"}
+{"entite": "Standard Generalized Markup Language", "valeur": "00070813n"}
+{"entite": "sumbwa", "valeur": "02714400n"}
+{"entite": "susquehannock", "valeur": "03288976n"}
+{"entite": "sylheti", "valeur": "03376161n"}
+{"entite": "tabaru", "valeur": "02703721n"}
+{"entite": "tabassaran", "valeur": "01253327n"}
+{"entite": "tagalog", "valeur": "00075889n"}
+{"entite": "taje", "valeur": "14920255n"}
+{"entite": "tamazight d'Awjila", "valeur": "03591620n"}
+{"entite": "tamoul", "valeur": "00076005n"}
+{"entite": "tanahmerah", "valeur": "02499360n"}
+{"entite": "tangoute", "valeur": "01250407n"}
+{"entite": "tanguat", "valeur": "02860329n"}
+{"entite": "tatar", "valeur": "00076199n"}
+{"entite": "tawbuid", "valeur": "03565774n"}
+{"entite": "tchaghataï", "valeur": "01297752n"}
+{"entite": "tchaman", "valeur": "02677382n"}
+{"entite": "tchokwé", "valeur": "02031392n"}
+{"entite": "te'un", "valeur": "16435901n"}
+{"entite": "tegali", "valeur": "02132225n"}
+{"entite": "tehuelche", "valeur": "03702324n"}
+{"entite": "teke-ebo", "valeur": "02719789n"}
+{"entite": "temuan", "valeur": "00197625n"}
+{"entite": "tenetehara", "valeur": "02697581n"}
+{"entite": "tepehua de Huehuetla", "valeur": "02890983n"}
+{"entite": "terik", "valeur": "02709839n"}
+{"entite": "thaï", "valeur": "00017191n"}
+{"entite": "thao", "valeur": "03484093n"}
+{"entite": "thavung", "valeur": "01185518n"}
+{"entite": "tiang", "valeur": "02787298n"}
+{"entite": "ticuna", "valeur": "03877627n"}
+{"entite": "tiv", "valeur": "01177493n"}
+{"entite": "tlicho", "valeur": "15592862n"}
+{"entite": "toba", "valeur": "03221365n"}
+{"entite": "tobati", "valeur": "02848852n"}
+{"entite": "tofin-gbe", "valeur": "02712219n"}
+{"entite": "tōhoku-ben", "valeur": "02914685n"}
+{"entite": "tolaki", "valeur": "02854967n"}
+{"entite": "tolomako", "valeur": "00856822n"}
+{"entite": "tongien", "valeur": "00077562n"}
+{"entite": "toram", "valeur": "00848554n"}
+{"entite": "toromona", "valeur": "02863816n"}
+{"entite": "toscan", "valeur": "01044559n"}
+{"entite": "tosque", "valeur": "00077705n"}
+{"entite": "totonaque de Misantla", "valeur": "00136906n"}
+{"entite": "touo", "valeur": "01191990n"}
+{"entite": "tregami", "valeur": "03355131n"}
+{"entite": "tsafiqui", "valeur": "14105416n"}
+{"entite": "tsugaru-ben", "valeur": "01107180n"}
+{"entite": "tswana", "valeur": "00070100n"}
+{"entite": "tumbuka", "valeur": "00383522n"}
+{"entite": "tupiniquim", "valeur": "02663160n"}
+{"entite": "turc", "valeur": "00078646n"}
+{"entite": "turc du Khwarezm", "valeur": "16135704n"}
+{"entite": "turc ottoman", "valeur": "03356639n"}
+{"entite": "turiwara", "valeur": "02867294n"}
+{"entite": "turkmène", "valeur": "01938828n"}
+{"entite": "tuvaluan", "valeur": "00158538n"}
+{"entite": "tzeltal", "valeur": "00345440n"}
+{"entite": "ukrainien", "valeur": "00078873n"}
+{"entite": "urhobo", "valeur": "00503200n"}
+{"entite": "ute", "valeur": "00153919n"}
+{"entite": "vepse", "valeur": "00079775n"}
+{"entite": "vieil égyptien", "valeur": "01638141n"}
+{"entite": "vietnamien", "valeur": "00004317n"}
+{"entite": "vieux haut-allemand", "valeur": "00058818n"}
+{"entite": "vili", "valeur": "02721446n"}
+{"entite": "walio", "valeur": "02840965n"}
+{"entite": "wallon", "valeur": "00080404n"}
+{"entite": "Wampar", "valeur": "15055722n"}
+{"entite": "wappo", "valeur": "03043183n"}
+{"entite": "were", "valeur": "02860726n"}
+{"entite": "witoto nipode", "valeur": "00218055n"}
+{"entite": "wu", "valeur": "00070894n"}
+{"entite": "xakriabá", "valeur": "00169275n"}
+{"entite": "xibe", "valeur": "03751835n"}
+{"entite": "yalahatan", "valeur": "02850654n"}
+{"entite": "yami", "valeur": "03542067n"}
+{"entite": "yatê", "valeur": "02215103n"}
+{"entite": "yawi", "valeur": "15543110n"}
+{"entite": "yemba", "valeur": "02709008n"}
+{"entite": "yerkish", "valeur": "02860279n"}
+{"entite": "yiddish", "valeur": "00081916n"}
+{"entite": "yinjibarndi", "valeur": "00152372n"}
+{"entite": "younuo", "valeur": "02426819n"}
+{"entite": "yupik sibérien central", "valeur": "03759187n"}
+{"entite": "zapotèque de Mitla", "valeur": "02920026n"}
+{"entite": "zarma", "valeur": "03289380n"}
+{"entite": "zay", "valeur": "02866466n"}
+{"entite": "zazao", "valeur": "03065258n"}
+{"entite": "zinza", "valeur": "02892169n"}

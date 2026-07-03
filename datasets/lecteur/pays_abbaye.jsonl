@@ -1,0 +1,2672 @@
+{"_relation": "pays_abbaye", "_categorie": "physique", "_source": "Wikidata/QLever — pays_abbaye P17, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "abadia de Alcobaça", "valeur": "Portugal"}
+{"entite": "abadía de Nuestra Señora de la Asunción", "valeur": "Espagne"}
+{"entite": "Abadía de Santa Ana", "valeur": "Espagne"}
+{"entite": "Abazia S. Eustachio di Nervesa (Nervesa della Battaglia, Italy)", "valeur": "Italie"}
+{"entite": "Abbadia di Stura", "valeur": "Italie"}
+{"entite": "Abbaie de Marham", "valeur": "Royaume-Uni"}
+{"entite": "abbatiale de Romainmôtier", "valeur": "Suisse"}
+{"entite": "abbaye-aux-Bois", "valeur": "France"}
+{"entite": "abbaye aux Dames Claire", "valeur": "France"}
+{"entite": "abbaye aux Dames de Caen", "valeur": "France"}
+{"entite": "abbaye aux Dames de Saintes", "valeur": "France"}
+{"entite": "abbaye bénédictine d'Ozon", "valeur": "France"}
+{"entite": "abbaye bénédictine de Mariastein", "valeur": "Suisse"}
+{"entite": "abbaye bénédictine de Michaelbeuern", "valeur": "Autriche"}
+{"entite": "abbaye bénédictine de Saalfeld", "valeur": "Allemagne"}
+{"entite": "abbaye bénédictine de Steinfeld", "valeur": "Allemagne"}
+{"entite": "abbaye bénédictine Sant'Eufemia", "valeur": "Italie"}
+{"entite": "abbaye Blanche", "valeur": "France"}
+{"entite": "abbaye Cirencester", "valeur": "Royaume-Uni"}
+{"entite": "abbaye cistercienne d'Arques", "valeur": "France"}
+{"entite": "abbaye cistercienne de Haut-Crêt", "valeur": "Suisse"}
+{"entite": "abbaye cistercienne de la Maigrauge", "valeur": "Suisse"}
+{"entite": "abbaye cistercienne de Marens", "valeur": "France"}
+{"entite": "abbaye d'Abbeydorney", "valeur": "Irlande"}
+{"entite": "abbaye d'Abbeylara", "valeur": "Irlande"}
+{"entite": "abbaye d'Abbeyleix", "valeur": "Irlande"}
+{"entite": "abbaye d'Abbeymahon", "valeur": "Irlande"}
+{"entite": "abbaye d'Abbeyshrule", "valeur": "Irlande"}
+{"entite": "abbaye d'Abingdon", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Abington", "valeur": "Irlande"}
+{"entite": "abbaye d'Ablis", "valeur": "France"}
+{"entite": "abbaye d'Abondance", "valeur": "France"}
+{"entite": "abbaye d'Ábrahám", "valeur": "Hongrie"}
+{"entite": "abbaye d'Acqualunga", "valeur": "Italie"}
+{"entite": "abbaye d'Admont", "valeur": "Autriche"}
+{"entite": "abbaye d'Affligem", "valeur": "Belgique"}
+{"entite": "abbaye d'Aldeneik", "valeur": "Belgique"}
+{"entite": "abbaye d'Alet-les-Bains", "valeur": "France"}
+{"entite": "abbaye d'Almenêches", "valeur": "France"}
+{"entite": "abbaye d'Alpirsbach", "valeur": "Allemagne"}
+{"entite": "abbaye d'Altenberg", "valeur": "Allemagne"}
+{"entite": "abbaye d'Altenburg", "valeur": "Autriche"}
+{"entite": "abbaye d'Altmünster", "valeur": "Luxembourg"}
+{"entite": "abbaye d'Altomünster", "valeur": "Allemagne"}
+{"entite": "abbaye d'Altorf", "valeur": "France"}
+{"entite": "abbaye d'Altzelle", "valeur": "Allemagne"}
+{"entite": "abbaye d'Amesbury", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Ammensleben", "valeur": "Allemagne"}
+{"entite": "abbaye d'Amorbach", "valeur": "Allemagne"}
+{"entite": "abbaye d'Andechs", "valeur": "Allemagne"}
+{"entite": "abbaye d'Andenne", "valeur": "Belgique"}
+{"entite": "abbaye d'Andlau", "valeur": "France"}
+{"entite": "abbaye d'Arbroath", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Ardenne", "valeur": "France"}
+{"entite": "abbaye d'Argensolles", "valeur": "France"}
+{"entite": "abbaye d'Argenton", "valeur": "Belgique"}
+{"entite": "abbaye d'Arnsburg", "valeur": "Allemagne"}
+{"entite": "abbaye d'Arouca", "valeur": "Portugal"}
+{"entite": "abbaye d'Arthous", "valeur": "France"}
+{"entite": "abbaye d'Ås", "valeur": "Suède"}
+{"entite": "abbaye d'Asbach", "valeur": "Allemagne"}
+{"entite": "abbaye d'Asnières", "valeur": "France"}
+{"entite": "abbaye d'Assaroe", "valeur": "Irlande"}
+{"entite": "abbaye d'Atchison", "valeur": "États-Unis"}
+{"entite": "abbaye d'Attel", "valeur": "Allemagne"}
+{"entite": "abbaye d'Au am Inn", "valeur": "Allemagne"}
+{"entite": "abbaye d'Aubazine", "valeur": "France"}
+{"entite": "abbaye d'Aubepierre", "valeur": "France"}
+{"entite": "abbaye d'Auberive", "valeur": "France"}
+{"entite": "abbaye d'Auchy", "valeur": "France"}
+{"entite": "abbaye d'Audembourg", "valeur": "Belgique"}
+{"entite": "abbaye d'Aufhausen", "valeur": "Allemagne"}
+{"entite": "abbaye d'Auhausen", "valeur": "Allemagne"}
+{"entite": "abbaye d'Aulne", "valeur": "Belgique"}
+{"entite": "abbaye d'Aulps", "valeur": "France"}
+{"entite": "abbaye d'Aunay", "valeur": "France"}
+{"entite": "abbaye d'Aura", "valeur": "Allemagne"}
+{"entite": "abbaye d'Averbode", "valeur": "Belgique"}
+{"entite": "abbaye d'Aywiers", "valeur": "Belgique"}
+{"entite": "abbaye d'Eberbach", "valeur": "Allemagne"}
+{"entite": "abbaye d'Ebersmunster", "valeur": "France"}
+{"entite": "abbaye d'Ebrach", "valeur": "Allemagne"}
+{"entite": "abbaye d'Echternach", "valeur": "Luxembourg"}
+{"entite": "abbaye d'Écurey", "valeur": "France"}
+{"entite": "abbaye d'Eekhout", "valeur": "Belgique"}
+{"entite": "abbaye d'Egglestone", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Einsiedeln", "valeur": "Suisse"}
+{"entite": "abbaye d'Élan", "valeur": "France"}
+{"entite": "abbaye d'Ellwangen", "valeur": "Allemagne"}
+{"entite": "abbaye d'Engelberg", "valeur": "Suisse"}
+{"entite": "abbaye d'Engelszell", "valeur": "Autriche"}
+{"entite": "abbaye d'Engelthal", "valeur": "Allemagne"}
+{"entite": "abbaye d'Entremont", "valeur": "France"}
+{"entite": "abbaye d'Épagne", "valeur": "France"}
+{"entite": "abbaye d'Épinlieu", "valeur": "Belgique"}
+{"entite": "abbaye d'Essen", "valeur": "Allemagne"}
+{"entite": "abbaye d'Essômes", "valeur": "France"}
+{"entite": "abbaye d'Ettal", "valeur": "Allemagne"}
+{"entite": "abbaye d'Eußerthal", "valeur": "Allemagne"}
+{"entite": "abbaye d'Evesham", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Évrecy", "valeur": "France"}
+{"entite": "abbaye d'Eynsham", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Hamage", "valeur": "France"}
+{"entite": "abbaye d'Hasnon", "valeur": "France"}
+{"entite": "abbaye d'Hauterive", "valeur": "Suisse"}
+{"entite": "abbaye d'Heiligengrabe", "valeur": "Allemagne"}
+{"entite": "abbaye d'Henryków", "valeur": "Pologne"}
+{"entite": "abbaye d'Hérivaux", "valeur": "France"}
+{"entite": "abbaye d'Homblières", "valeur": "France"}
+{"entite": "abbaye d'Humocaro", "valeur": "Venezuela"}
+{"entite": "abbaye d'Inchaffray", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Inchcolm", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Inislounaght", "valeur": "Irlande"}
+{"entite": "abbaye d'Inkamana", "valeur": "Afrique du Sud"}
+{"entite": "abbaye d'Iona", "valeur": "Royaume-Uni"}
+{"entite": "abbaye d'Iranzu", "valeur": "Espagne"}
+{"entite": "abbaye d'Irsee", "valeur": "Allemagne"}
+{"entite": "abbaye d'Isova", "valeur": "Grèce"}
+{"entite": "abbaye d'Oberschönenfeld", "valeur": "Allemagne"}
+{"entite": "abbaye d'Ochsenhausen", "valeur": "Allemagne"}
+{"entite": "abbaye d'Oigny", "valeur": "France"}
+{"entite": "abbaye d'Oka", "valeur": "Canada"}
+{"entite": "abbaye d'Oliva", "valeur": "Pologne"}
+{"entite": "abbaye d'Origny", "valeur": "France"}
+{"entite": "abbaye d'Orval", "valeur": "France"}
+{"entite": "abbaye d'Otterberg", "valeur": "Allemagne"}
+{"entite": "abbaye d'Ottobeuren", "valeur": "Allemagne"}
+{"entite": "abbaye d'Ubexy", "valeur": "France"}
+{"entite": "abbaye d'Ulmet", "valeur": "France"}
+{"entite": "abbaye d'Yvetot", "valeur": "France"}
+{"entite": "abbaye de Alcalá la Real", "valeur": "Espagne"}
+{"entite": "abbaye de Bafor", "valeur": "Burkina Faso"}
+{"entite": "abbaye de Bakonybél", "valeur": "Hongrie"}
+{"entite": "abbaye de Balerne", "valeur": "France"}
+{"entite": "abbaye de Balmerino", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Baltinglass", "valeur": "Irlande"}
+{"entite": "abbaye de Bamenda", "valeur": "Cameroun"}
+{"entite": "abbaye de Bangor", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Banz", "valeur": "Allemagne"}
+{"entite": "abbaye de Barbeau", "valeur": "France"}
+{"entite": "abbaye de Bardney", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Barona", "valeur": "Italie"}
+{"entite": "abbaye de Basingwerk", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Basse-Fontaine", "valeur": "France"}
+{"entite": "abbaye de Baumburg", "valeur": "Allemagne"}
+{"entite": "abbaye de Baumgarten", "valeur": "France"}
+{"entite": "abbaye de Baumgartenberg", "valeur": "Autriche"}
+{"entite": "abbaye de Beauchief", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Beaugerais", "valeur": "France"}
+{"entite": "abbaye de Beaulieu de Ferques", "valeur": "France"}
+{"entite": "abbaye de Beaulieu-en-Rouergue", "valeur": "France"}
+{"entite": "abbaye de Beaulieu (Meuse)", "valeur": "France"}
+{"entite": "abbaye de Beaumont", "valeur": "France"}
+{"entite": "abbaye de Beauport", "valeur": "France"}
+{"entite": "abbaye de Beaurepart", "valeur": "Belgique"}
+{"entite": "abbaye de Bective", "valeur": "Irlande"}
+{"entite": "abbaye de Bégard", "valeur": "France"}
+{"entite": "abbaye de Bélakút", "valeur": "Serbie"}
+{"entite": "abbaye de Bélapátfalva", "valeur": "Hongrie"}
+{"entite": "abbaye de Belfays", "valeur": "France"}
+{"entite": "abbaye de Belle-Étoile", "valeur": "France"}
+{"entite": "abbaye de Bellebranche", "valeur": "France"}
+{"entite": "abbaye de Belleperche", "valeur": "France"}
+{"entite": "abbaye de Bellerive", "valeur": "Suisse"}
+{"entite": "abbaye de Belmont-sur-Rance", "valeur": "France"}
+{"entite": "abbaye de Belmonte", "valeur": "Espagne"}
+{"entite": "abbaye de Belval", "valeur": "France"}
+{"entite": "abbaye de Belval au Bois-des-Dames", "valeur": "France"}
+{"entite": "abbaye de Benediktbeuern", "valeur": "Allemagne"}
+{"entite": "abbaye de Benet Lake", "valeur": "États-Unis"}
+{"entite": "abbaye de Benoîtevaux", "valeur": "France"}
+{"entite": "abbaye de Berdoues", "valeur": "France"}
+{"entite": "abbaye de Berryville", "valeur": "États-Unis"}
+{"entite": "abbaye de Bertholdstein", "valeur": "Autriche"}
+{"entite": "abbaye de Beuron", "valeur": "Allemagne"}
+{"entite": "abbaye de Biddlesden", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Bindon", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Bival", "valeur": "France"}
+{"entite": "abbaye de Blanchelande", "valeur": "France"}
+{"entite": "abbaye de Blue Cloud", "valeur": "États-Unis"}
+{"entite": "abbaye de Bobbio", "valeur": "Italie"}
+{"entite": "abbaye de Bodon", "valeur": "France"}
+{"entite": "abbaye de Bohéries", "valeur": "France"}
+{"entite": "abbaye de Bois-Seigneur-Isaac", "valeur": "Belgique"}
+{"entite": "abbaye de Bon Secours", "valeur": "Belgique"}
+{"entite": "abbaye de Bonaval", "valeur": "Espagne"}
+{"entite": "abbaye de Bondeville", "valeur": "France"}
+{"entite": "abbaye de Boneffe", "valeur": "Belgique"}
+{"entite": "abbaye de Bonlieu", "valeur": "France"}
+{"entite": "abbaye de Bonmont", "valeur": "Suisse"}
+{"entite": "abbaye de Bonmoutier", "valeur": "France"}
+{"entite": "abbaye de Bonnaigue", "valeur": "France"}
+{"entite": "abbaye de Bonnecombe", "valeur": "France"}
+{"entite": "abbaye de Bonnefont", "valeur": "France"}
+{"entite": "abbaye de Bonnefontaine", "valeur": "France"}
+{"entite": "abbaye de Bonnesaigne", "valeur": "France"}
+{"entite": "abbaye de Bonnevaux", "valeur": "France"}
+{"entite": "abbaye de Bons", "valeur": "France"}
+{"entite": "abbaye de Bordesley", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Boschaud", "valeur": "France"}
+{"entite": "abbaye de Bouchet", "valeur": "France"}
+{"entite": "abbaye de Bouillas", "valeur": "France"}
+{"entite": "abbaye de Boulancourt", "valeur": "France"}
+{"entite": "abbaye de Boulaur", "valeur": "France"}
+{"entite": "abbaye de Boulbonne", "valeur": "France"}
+{"entite": "abbaye de Bourg-Moyen", "valeur": "France"}
+{"entite": "abbaye de Bourras", "valeur": "France"}
+{"entite": "abbaye de Bouxières", "valeur": "France"}
+{"entite": "abbaye de Boxley", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Boyle", "valeur": "Irlande"}
+{"entite": "abbaye de Breitenau", "valeur": "Allemagne"}
+{"entite": "abbaye de Breuil-Herbaud", "valeur": "France"}
+{"entite": "abbaye de Brondolo", "valeur": "Italie"}
+{"entite": "abbaye de Bucilly", "valeur": "France"}
+{"entite": "abbaye de Buckfast", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Buckland", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Buildwas", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Burton", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Burtscheid", "valeur": "Allemagne"}
+{"entite": "abbaye de Bury St Edmunds", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Bussières-les-Nonains", "valeur": "France"}
+{"entite": "abbaye de Butende", "valeur": "Ouganda"}
+{"entite": "abbaye de Buzay", "valeur": "France"}
+{"entite": "abbaye de Byland", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Cadouin", "valeur": "France"}
+{"entite": "abbaye de Cagnotte", "valeur": "France"}
+{"entite": "abbaye de Calder", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Caldey", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Calers", "valeur": "France"}
+{"entite": "abbaye de Cambuskenneth", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Candeil", "valeur": "France"}
+{"entite": "abbaye de Canonsleigh", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Cantimpré", "valeur": "France"}
+{"entite": "abbaye de Capolago", "valeur": "Italie"}
+{"entite": "abbaye de Carracedo", "valeur": "Espagne"}
+{"entite": "abbaye de Cârța", "valeur": "Roumanie"}
+{"entite": "abbaye de Casamari", "valeur": "Italie"}
+{"entite": "abbaye de Casanova", "valeur": "Italie"}
+{"entite": "abbaye de Cassan", "valeur": "France"}
+{"entite": "abbaye de Castagnola", "valeur": "Italie"}
+{"entite": "abbaye de Cavatigozzi", "valeur": "Italie"}
+{"entite": "abbaye de Cercanceaux", "valeur": "France"}
+{"entite": "abbaye de Cerisy-la-Forêt", "valeur": "France"}
+{"entite": "abbaye de Cerne", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Cerreto", "valeur": "Italie"}
+{"entite": "abbaye de Chalivoy", "valeur": "France"}
+{"entite": "abbaye de Chaloché", "valeur": "France"}
+{"entite": "abbaye de Chambarand", "valeur": "France"}
+{"entite": "abbaye de Champagne", "valeur": "France"}
+{"entite": "abbaye de Chantoin", "valeur": "France"}
+{"entite": "abbaye de Charon", "valeur": "France"}
+{"entite": "abbaye de Chartreuve", "valeur": "France"}
+{"entite": "abbaye de Chassagne", "valeur": "France"}
+{"entite": "abbaye de Château-Chalon", "valeur": "France"}
+{"entite": "abbaye de Chatillon", "valeur": "France"}
+{"entite": "abbaye de Châtrices", "valeur": "France"}
+{"entite": "abbaye de Chaumes-en-Brie", "valeur": "France"}
+{"entite": "abbaye de Chaumont", "valeur": "France"}
+{"entite": "abbaye de Chaumousey", "valeur": "France"}
+{"entite": "abbaye de Chauny", "valeur": "France"}
+{"entite": "abbaye de Chéhéry", "valeur": "France"}
+{"entite": "abbaye de Cheminon", "valeur": "France"}
+{"entite": "abbaye de Cherlieu", "valeur": "France"}
+{"entite": "abbaye de Chevetogne", "valeur": "Belgique"}
+{"entite": "abbaye de Chézery", "valeur": "France"}
+{"entite": "abbaye de Chézoy", "valeur": "France"}
+{"entite": "abbaye de Chiaravalle", "valeur": "Italie"}
+{"entite": "abbaye de Chiaravalle della Colomba", "valeur": "Italie"}
+{"entite": "abbaye de Chiaravalle di Fiastra", "valeur": "Italie"}
+{"entite": "abbaye de Chiemsee", "valeur": "Allemagne"}
+{"entite": "abbaye de Chorin", "valeur": "Allemagne"}
+{"entite": "abbaye de Chortaïton", "valeur": "Grèce"}
+{"entite": "abbaye de Cikádor", "valeur": "Hongrie"}
+{"entite": "abbaye de Cismar", "valeur": "Allemagne"}
+{"entite": "abbaye de Cîteaux", "valeur": "France"}
+{"entite": "abbaye de Civate", "valeur": "Italie"}
+{"entite": "abbaye de Clairac", "valeur": "France"}
+{"entite": "abbaye de Clairecombe de Ribiers", "valeur": "France"}
+{"entite": "abbaye de Clairfay", "valeur": "France"}
+{"entite": "abbaye de Clairfontaine", "valeur": "France"}
+{"entite": "abbaye de Clairlieu", "valeur": "France"}
+{"entite": "abbaye de Clairmarais", "valeur": "France"}
+{"entite": "abbaye de Clairvaux", "valeur": "France"}
+{"entite": "abbaye de Clamecy", "valeur": "France"}
+{"entite": "abbaye de Clare Island", "valeur": "Irlande"}
+{"entite": "abbaye de Clausonne", "valeur": "France"}
+{"entite": "abbaye de Clavas", "valeur": "France"}
+{"entite": "abbaye de Cleeve", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Clermont", "valeur": "France"}
+{"entite": "abbaye de Clonard", "valeur": "Irlande"}
+{"entite": "abbaye de Cluny", "valeur": "France"}
+{"entite": "abbaye de Coggeshall", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Coincy", "valeur": "France"}
+{"entite": "abbaye de Collegeville", "valeur": "États-Unis"}
+{"entite": "abbaye de Colonges", "valeur": "France"}
+{"entite": "abbaye de Combelongue", "valeur": "France"}
+{"entite": "abbaye de Comber", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Comburg", "valeur": "Allemagne"}
+{"entite": "abbaye de Conception", "valeur": "États-Unis"}
+{"entite": "abbaye de Condé", "valeur": "France"}
+{"entite": "abbaye de Cookham", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Corazzo", "valeur": "Italie"}
+{"entite": "abbaye de Corbion", "valeur": "France"}
+{"entite": "abbaye de Corcelles", "valeur": "France"}
+{"entite": "abbaye de Corcomroe", "valeur": "Irlande"}
+{"entite": "abbaye de Cormeilles", "valeur": "France"}
+{"entite": "abbaye de Cormery", "valeur": "France"}
+{"entite": "abbaye de Corneux", "valeur": "France"}
+{"entite": "abbaye de Corrupt", "valeur": "France"}
+{"entite": "abbaye de Corvey", "valeur": "Allemagne"}
+{"entite": "abbaye de Crespin", "valeur": "France"}
+{"entite": "abbaye de Crisenon", "valeur": "France"}
+{"entite": "abbaye de Crottet", "valeur": "France"}
+{"entite": "abbaye de Crowland", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Croxden", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Crozet", "valeur": "États-Unis"}
+{"entite": "abbaye de Csorna", "valeur": "Hongrie"}
+{"entite": "abbaye de Cuissy", "valeur": "France"}
+{"entite": "abbaye de Culross", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Cwmhir", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Cymer", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Dalon", "valeur": "France"}
+{"entite": "abbaye de Delapré", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Denain", "valeur": "France"}
+{"entite": "abbaye de Denny", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Déols", "valeur": "France"}
+{"entite": "abbaye de Dieleghem", "valeur": "Belgique"}
+{"entite": "abbaye de Dieulacres", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Diges", "valeur": "France"}
+{"entite": "abbaye de Dinklage", "valeur": "Allemagne"}
+{"entite": "abbaye de Disentis", "valeur": "Suisse"}
+{"entite": "abbaye de Disibodenberg", "valeur": "Allemagne"}
+{"entite": "abbaye de Divielle", "valeur": "France"}
+{"entite": "abbaye de Domme", "valeur": "France"}
+{"entite": "abbaye de Dore", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Douai", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Doudeauville", "valeur": "France"}
+{"entite": "abbaye de Doué", "valeur": "France"}
+{"entite": "abbaye de Downside", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Droiteval", "valeur": "France"}
+{"entite": "abbaye de Drübeck", "valeur": "Allemagne"}
+{"entite": "abbaye de Duiske", "valeur": "Irlande"}
+{"entite": "abbaye de Dunbrody", "valeur": "Irlande"}
+{"entite": "abbaye de Dundrennan", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Dunfermline", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Dunkeswell", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Durrow", "valeur": "Irlande"}
+{"entite": "abbaye de Fabas", "valeur": "France"}
+{"entite": "abbaye de Falleri", "valeur": "Italie"}
+{"entite": "abbaye de Faremoutiers", "valeur": "France"}
+{"entite": "abbaye de Farfa", "valeur": "Italie"}
+{"entite": "abbaye de Faversham", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Féniers", "valeur": "France"}
+{"entite": "abbaye de Ferdinand", "valeur": "États-Unis"}
+{"entite": "abbaye de Fermoy", "valeur": "Irlande"}
+{"entite": "abbaye de Fesmy", "valeur": "France"}
+{"entite": "abbaye de Fiecht", "valeur": "Autriche"}
+{"entite": "abbaye de Filly", "valeur": "France"}
+{"entite": "abbaye de Fitero", "valeur": "Espagne"}
+{"entite": "abbaye de Flaran", "valeur": "France"}
+{"entite": "abbaye de Flaxley", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Flône", "valeur": "Belgique"}
+{"entite": "abbaye de Floreffe", "valeur": "Belgique"}
+{"entite": "abbaye de Florennes", "valeur": "Belgique"}
+{"entite": "abbaye de Florièyes", "valeur": "France"}
+{"entite": "abbaye de Florival", "valeur": "Belgique"}
+{"entite": "abbaye de Foigny", "valeur": "France"}
+{"entite": "abbaye de Follina", "valeur": "Italie"}
+{"entite": "abbaye de Fontaine-André", "valeur": "Suisse"}
+{"entite": "abbaye de Fontaine-Daniel", "valeur": "France"}
+{"entite": "abbaye de Fontaine-le-Comte", "valeur": "France"}
+{"entite": "abbaye de Fontaine-les-Blanches", "valeur": "France"}
+{"entite": "abbaye de Fontainejean", "valeur": "France"}
+{"entite": "abbaye de Fontdouce", "valeur": "France"}
+{"entite": "abbaye de Fontenay", "valeur": "France"}
+{"entite": "abbaye de Fontenelle", "valeur": "France"}
+{"entite": "abbaye de Fontevivo", "valeur": "Italie"}
+{"entite": "abbaye de Fontevraud", "valeur": "France"}
+{"entite": "abbaye de Fontguilhem", "valeur": "France"}
+{"entite": "abbaye de Fontmorigny", "valeur": "France"}
+{"entite": "abbaye de Fontmorigny à Nevers", "valeur": "France"}
+{"entite": "abbaye de Forde", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Forest", "valeur": "Belgique"}
+{"entite": "abbaye de Forest-Montiers", "valeur": "France"}
+{"entite": "abbaye de Fossanova", "valeur": "Italie"}
+{"entite": "abbaye de Foucarmont", "valeur": "France"}
+{"entite": "abbaye de Fountains", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Francou", "valeur": "France"}
+{"entite": "abbaye de Franquevaux", "valeur": "France"}
+{"entite": "abbaye de Frassinoro", "valeur": "Italie"}
+{"entite": "abbaye de Freistroff", "valeur": "France"}
+{"entite": "abbaye de Frienisberg", "valeur": "Suisse"}
+{"entite": "abbaye de Froidmont", "valeur": "France"}
+{"entite": "abbaye de Fromental", "valeur": "France"}
+{"entite": "abbaye de Fruttuaria", "valeur": "Italie"}
+{"entite": "abbaye de Fulda", "valeur": "Allemagne"}
+{"entite": "abbaye de Furness", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Fürstenfeld", "valeur": "Allemagne"}
+{"entite": "abbaye de Fürstenzell", "valeur": "Allemagne"}
+{"entite": "abbaye de Garendon", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Gastines", "valeur": "France"}
+{"entite": "abbaye de Gellone", "valeur": "France"}
+{"entite": "abbaye de Gembloux", "valeur": "Belgique"}
+{"entite": "abbaye de Genesee", "valeur": "États-Unis"}
+{"entite": "abbaye de Gengenbach", "valeur": "Allemagne"}
+{"entite": "abbaye de Genne Mont-Sainte Marie", "valeur": "France"}
+{"entite": "abbaye de Gérgeri", "valeur": "Grèce"}
+{"entite": "abbaye de Gerleve", "valeur": "Allemagne"}
+{"entite": "abbaye de Géronsart", "valeur": "Belgique"}
+{"entite": "abbaye de Ghislenghien", "valeur": "Belgique"}
+{"entite": "abbaye de Gilling", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Glanawydan", "valeur": "Irlande"}
+{"entite": "abbaye de Glastonbury", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Glayo", "valeur": "France"}
+{"entite": "abbaye de Glenluce", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Gloucester", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Gorze", "valeur": "France"}
+{"entite": "abbaye de Göss", "valeur": "Autriche"}
+{"entite": "abbaye de Gotteszell", "valeur": "Allemagne"}
+{"entite": "abbaye de Göttweig", "valeur": "Autriche"}
+{"entite": "abbaye de Gourdon", "valeur": "France"}
+{"entite": "abbaye de Grace Dieu", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Gradefes", "valeur": "Espagne"}
+{"entite": "abbaye de Grammont", "valeur": "France"}
+{"entite": "abbaye de Grandchamp", "valeur": "France"}
+{"entite": "abbaye de Grandmont", "valeur": "France"}
+{"entite": "abbaye de Grandpré", "valeur": "Belgique"}
+{"entite": "abbaye de Grandselve", "valeur": "France"}
+{"entite": "abbaye de Graufthal", "valeur": "France"}
+{"entite": "abbaye de Graville", "valeur": "France"}
+{"entite": "abbaye de Grestain", "valeur": "France"}
+{"entite": "abbaye de Grey", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Grimbergen", "valeur": "Belgique"}
+{"entite": "abbaye de Groeninghe à Courtrai", "valeur": "Belgique"}
+{"entite": "abbaye de Grosse-Sauve", "valeur": "France"}
+{"entite": "abbaye de Gudsberga", "valeur": "Suède"}
+{"entite": "abbaye de Güigüe", "valeur": "Venezuela"}
+{"entite": "abbaye de Guimaras", "valeur": "Philippines"}
+{"entite": "abbaye de Günterstal", "valeur": "Allemagne"}
+{"entite": "abbaye de Hailes", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Haina", "valeur": "Allemagne"}
+{"entite": "abbaye de Halsnøy", "valeur": "Norvège"}
+{"entite": "abbaye de Hartland", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Haute-Seille", "valeur": "France"}
+{"entite": "abbaye de Hautefontaine", "valeur": "France"}
+{"entite": "abbaye de Hautmont", "valeur": "France"}
+{"entite": "abbaye de Heiligenkreuz", "valeur": "Autriche"}
+{"entite": "abbaye de Heilsbronn", "valeur": "Allemagne"}
+{"entite": "abbaye de Heisterbach", "valeur": "Allemagne"}
+{"entite": "abbaye de Herkenrode", "valeur": "Belgique"}
+{"entite": "abbaye de Herrenalb", "valeur": "Allemagne"}
+{"entite": "abbaye de Herrevad", "valeur": "Suède"}
+{"entite": "abbaye de Herstelle", "valeur": "Allemagne"}
+{"entite": "abbaye de Hesse", "valeur": "France"}
+{"entite": "abbaye de Himmelpfort", "valeur": "Allemagne"}
+{"entite": "abbaye de Himmerod", "valeur": "Allemagne"}
+{"entite": "abbaye de Hirsau", "valeur": "Allemagne"}
+{"entite": "abbaye de Hohenbourg", "valeur": "France"}
+{"entite": "abbaye de Holmcultram", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Holme", "valeur": "Danemark"}
+{"entite": "abbaye de Holy Cross", "valeur": "Irlande"}
+{"entite": "abbaye de Honau", "valeur": "France"}
+{"entite": "abbaye de Honcourt", "valeur": "France"}
+{"entite": "abbaye de Hore", "valeur": "Irlande"}
+{"entite": "abbaye de Huerta", "valeur": "Espagne"}
+{"entite": "abbaye de Hulton", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Huntsville", "valeur": "États-Unis"}
+{"entite": "abbaye de Hyde", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Innichen", "valeur": "Italie"}
+{"entite": "abbaye de Jedburgh", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Jerpoint", "valeur": "Irlande"}
+{"entite": "abbaye de Jervaulx", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Jovilliers", "valeur": "France"}
+{"entite": "abbaye de Joyenval", "valeur": "France"}
+{"entite": "abbaye de Julita", "valeur": "Suède"}
+{"entite": "abbaye de Jully-les-Nonnains", "valeur": "France"}
+{"entite": "abbaye de Justemont", "valeur": "France"}
+{"entite": "abbaye de Juvigny", "valeur": "France"}
+{"entite": "abbaye de Kamp", "valeur": "Allemagne"}
+{"entite": "abbaye de Kappel", "valeur": "Suisse"}
+{"entite": "abbaye de Kärkna", "valeur": "Estonie"}
+{"entite": "abbaye de Kelso", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Kempten", "valeur": "Allemagne"}
+{"entite": "abbaye de Keur Guilaye", "valeur": "Sénégal"}
+{"entite": "abbaye de Keur Moussa", "valeur": "Sénégal"}
+{"entite": "abbaye de Kilbeggan", "valeur": "Irlande"}
+{"entite": "abbaye de Kilcooly", "valeur": "Irlande"}
+{"entite": "abbaye de Kilcrea", "valeur": "Irlande"}
+{"entite": "abbaye de Killenny", "valeur": "Irlande"}
+{"entite": "abbaye de Kilshane", "valeur": "Irlande"}
+{"entite": "abbaye de Kingswood", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Kinloss", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Kirkstall", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Kirkstead", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Kladruby", "valeur": "Tchéquie"}
+{"entite": "abbaye de Kleinburlo", "valeur": "Allemagne"}
+{"entite": "abbaye de Klosterneuburg", "valeur": "Autriche"}
+{"entite": "abbaye de Knechtsteden", "valeur": "Allemagne"}
+{"entite": "abbaye de Knockmoy", "valeur": "Irlande"}
+{"entite": "abbaye de Koenigsbrück", "valeur": "France"}
+{"entite": "abbaye de Königsmünster", "valeur": "Allemagne"}
+{"entite": "abbaye de Kopua", "valeur": "Nouvelle-Zélande"}
+{"entite": "abbaye de Kornelimünster", "valeur": "Allemagne"}
+{"entite": "abbaye de Koutaba", "valeur": "Cameroun"}
+{"entite": "abbaye de Kreitz", "valeur": "Allemagne"}
+{"entite": "abbaye de Krzeszów", "valeur": "Pologne"}
+{"entite": "abbaye de Kylemore", "valeur": "Irlande"}
+{"entite": "abbaye de l'Absie", "valeur": "France"}
+{"entite": "abbaye de l'Amour-Dieu", "valeur": "France"}
+{"entite": "abbaye de l'Assomption d'Ava", "valeur": "États-Unis"}
+{"entite": "abbaye de l'Aumône", "valeur": "France"}
+{"entite": "abbaye de l'Éclache", "valeur": "France"}
+{"entite": "abbaye de l'Escaladieu", "valeur": "France"}
+{"entite": "abbaye de l'Étanche", "valeur": "France"}
+{"entite": "abbaye de Løgumkloster", "valeur": "Danemark"}
+{"entite": "abbaye de l'Île Barbe", "valeur": "France"}
+{"entite": "abbaye de l'Île-Chauvet", "valeur": "France"}
+{"entite": "abbaye de l'Isle-Dieu", "valeur": "France"}
+{"entite": "abbaye de la Bénisson-Dieu", "valeur": "France"}
+{"entite": "abbaye de la Boissière", "valeur": "France"}
+{"entite": "abbaye de La Boulaye", "valeur": "France"}
+{"entite": "abbaye de la Bourdillière", "valeur": "France"}
+{"entite": "abbaye de la Brayelle", "valeur": "France"}
+{"entite": "abbaye de la Bussière", "valeur": "France"}
+{"entite": "abbaye de La Byloke", "valeur": "Belgique"}
+{"entite": "abbaye de la Cambre", "valeur": "Belgique"}
+{"entite": "abbaye de la Case-Dieu", "valeur": "France"}
+{"entite": "abbaye de La Celle", "valeur": "France"}
+{"entite": "abbaye de la Cervara", "valeur": "Italie"}
+{"entite": "abbaye de la Chapelle-aux-Planches", "valeur": "France"}
+{"entite": "abbaye de la Charité", "valeur": "France"}
+{"entite": "abbaye de la Charité-lès-Lézines", "valeur": "France"}
+{"entite": "abbaye de la Charmoye", "valeur": "France"}
+{"entite": "abbaye de La Clarté-Dieu d'Eaunes", "valeur": "France"}
+{"entite": "abbaye de La Colombe", "valeur": "France"}
+{"entite": "abbaye de la Cour-Dieu", "valeur": "France"}
+{"entite": "abbaye de la Cour-Notre-Dame", "valeur": "France"}
+{"entite": "abbaye de la Crête", "valeur": "France"}
+{"entite": "abbaye de la Croix-Saint-Leufroy", "valeur": "France"}
+{"entite": "abbaye de la Dormition de Jérusalem", "valeur": "Israël"}
+{"entite": "abbaye de La Ferté", "valeur": "France"}
+{"entite": "abbaye de la Fille-Dieu", "valeur": "Suisse"}
+{"entite": "abbaye de la Frenade", "valeur": "France"}
+{"entite": "abbaye de la Garde-Dieu", "valeur": "France"}
+{"entite": "abbaye de La Grâce-Dieu", "valeur": "France"}
+{"entite": "abbaye de la Grâce-Notre-Dame", "valeur": "France"}
+{"entite": "abbaye de la Guiche", "valeur": "France"}
+{"entite": "abbaye de la Joie", "valeur": "France"}
+{"entite": "abbaye de la Joie-lès-Nemours", "valeur": "France"}
+{"entite": "abbaye de La Lucerne", "valeur": "France"}
+{"entite": "abbaye de la Merci-Dieu", "valeur": "France"}
+{"entite": "abbaye de la Noë", "valeur": "France"}
+{"entite": "abbaye de la Novalaise", "valeur": "Italie"}
+{"entite": "abbaye de la Paix Notre-Dame", "valeur": "Belgique"}
+{"entite": "abbaye de la Paix Notre-Dame de Namur", "valeur": "Belgique"}
+{"entite": "abbaye de la Pelice", "valeur": "France"}
+{"entite": "abbaye de la Peyrouse", "valeur": "France"}
+{"entite": "abbaye de la Piété-Dieu-lès-Ramerupt", "valeur": "France"}
+{"entite": "abbaye de La Pommeraie", "valeur": "France"}
+{"entite": "abbaye de La Prée", "valeur": "France"}
+{"entite": "abbaye de la Ramée", "valeur": "Belgique"}
+{"entite": "abbaye de la Rode", "valeur": "France"}
+{"entite": "abbaye de la Roë", "valeur": "France"}
+{"entite": "abbaye de la Sainte-Croix", "valeur": "Espagne"}
+{"entite": "abbaye de la Sainte-Trinité de Lima", "valeur": "Pérou"}
+{"entite": "abbaye de la Sainte-Trinité de Morigny", "valeur": "France"}
+{"entite": "abbaye de la Sainte-Trinité de Tiron", "valeur": "France"}
+{"entite": "abbaye de la Sauve-Bénite", "valeur": "France"}
+{"entite": "abbaye de La Sauve-Majeure", "valeur": "France"}
+{"entite": "abbaye de la Tenaille", "valeur": "France"}
+{"entite": "abbaye de La Trappe", "valeur": "France"}
+{"entite": "abbaye de la Trinité de Beaulieu-lès-Loches", "valeur": "France"}
+{"entite": "abbaye de la Trinité de Fécamp", "valeur": "France"}
+{"entite": "abbaye de la Trinité de Vendôme", "valeur": "France"}
+{"entite": "abbaye de la Trinité de Venosa", "valeur": "Italie"}
+{"entite": "abbaye de la Valroy", "valeur": "France"}
+{"entite": "abbaye de La Vassin", "valeur": "France"}
+{"entite": "abbaye de la Victoire", "valeur": "France"}
+{"entite": "abbaye de la Virginité", "valeur": "France"}
+{"entite": "abbaye de la Woestyne", "valeur": "France"}
+{"entite": "abbaye de Lacey", "valeur": "États-Unis"}
+{"entite": "abbaye de Lachalade", "valeur": "France"}
+{"entite": "abbaye de Ląd", "valeur": "Pologne"}
+{"entite": "abbaye de Lafões", "valeur": "Portugal"}
+{"entite": "abbaye de Lahonce", "valeur": "France"}
+{"entite": "abbaye de Lamanabi", "valeur": "Indonésie"}
+{"entite": "abbaye de Lambach", "valeur": "Autriche"}
+{"entite": "abbaye de Lannoy", "valeur": "France"}
+{"entite": "abbaye de Lantouy", "valeur": "France"}
+{"entite": "abbaye de las Huelgas de Burgos", "valeur": "Espagne"}
+{"entite": "abbaye de Lautenbach", "valeur": "France"}
+{"entite": "abbaye de Laval-Bénite", "valeur": "France"}
+{"entite": "abbaye de Lehnin", "valeur": "Allemagne"}
+{"entite": "abbaye de Leicester", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Leimbach", "valeur": "France"}
+{"entite": "abbaye de Léoncel", "valeur": "France"}
+{"entite": "abbaye de Lérins", "valeur": "France"}
+{"entite": "abbaye de Lesterps", "valeur": "France"}
+{"entite": "abbaye de Leyme", "valeur": "France"}
+{"entite": "abbaye de Lichtenthal", "valeur": "Allemagne"}
+{"entite": "abbaye de Lieu-Croissant", "valeur": "France"}
+{"entite": "abbaye de Lilienfeld", "valeur": "Autriche"}
+{"entite": "abbaye de Limburg", "valeur": "Allemagne"}
+{"entite": "abbaye de Lindores", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Lislaughtin", "valeur": "Irlande"}
+{"entite": "abbaye de Lisle-en-Barrois", "valeur": "France"}
+{"entite": "abbaye de Llantarnam", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Lobbes", "valeur": "Belgique"}
+{"entite": "abbaye de Loc-Dieu", "valeur": "France"}
+{"entite": "abbaye de Longuay", "valeur": "France"}
+{"entite": "abbaye de Longvillers", "valeur": "France"}
+{"entite": "abbaye de Lonlay", "valeur": "France"}
+{"entite": "abbaye de Loudieu", "valeur": "France"}
+{"entite": "abbaye de Louroux", "valeur": "France"}
+{"entite": "abbaye de Louth Park", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Lubiąż", "valeur": "Pologne"}
+{"entite": "abbaye de Lucedio", "valeur": "Italie"}
+{"entite": "abbaye de Lucelle", "valeur": "France"}
+{"entite": "abbaye de Lucq-de-Béarn", "valeur": "France"}
+{"entite": "abbaye de Lulworth", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Lure", "valeur": "France"}
+{"entite": "abbaye de Maagdendale", "valeur": "Belgique"}
+{"entite": "abbaye de Macheret", "valeur": "France"}
+{"entite": "abbaye de Madion", "valeur": "France"}
+{"entite": "abbaye de Maizières", "valeur": "France"}
+{"entite": "abbaye de Mallersdorf", "valeur": "Allemagne"}
+{"entite": "abbaye de Malmedy", "valeur": "Belgique"}
+{"entite": "abbaye de Malmesbury", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Marbach", "valeur": "France"}
+{"entite": "abbaye de Marche-les-Dames", "valeur": "Belgique"}
+{"entite": "abbaye de Marcheroux", "valeur": "France"}
+{"entite": "abbaye de Maredret", "valeur": "Belgique"}
+{"entite": "abbaye de Maredsous", "valeur": "Belgique"}
+{"entite": "abbaye de Margam", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Mariawald", "valeur": "Allemagne"}
+{"entite": "abbaye de Marienberg", "valeur": "Italie"}
+{"entite": "abbaye de Marienrode", "valeur": "Allemagne"}
+{"entite": "abbaye de Marienthal", "valeur": "Allemagne"}
+{"entite": "abbaye de Marmosoglio", "valeur": "Italie"}
+{"entite": "abbaye de Marmoutier", "valeur": "France"}
+{"entite": "abbaye de Maroilles", "valeur": "France"}
+{"entite": "abbaye de Masevaux", "valeur": "France"}
+{"entite": "abbaye de Maubec", "valeur": "France"}
+{"entite": "abbaye de Maubeuge", "valeur": "France"}
+{"entite": "abbaye de Maubuisson", "valeur": "France"}
+{"entite": "abbaye de Mauléon", "valeur": "France"}
+{"entite": "abbaye de Mazan", "valeur": "France"}
+{"entite": "abbaye de Meaux", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Medmenham", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Mègemont", "valeur": "France"}
+{"entite": "abbaye de Melk", "valeur": "Autriche"}
+{"entite": "abbaye de Mellifont", "valeur": "Irlande"}
+{"entite": "abbaye de Melrose", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Menat", "valeur": "France"}
+{"entite": "abbaye de Mepkin", "valeur": "États-Unis"}
+{"entite": "abbaye de Mercoire", "valeur": "France"}
+{"entite": "abbaye de Merevale", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Metten", "valeur": "Allemagne"}
+{"entite": "abbaye de Mettlach", "valeur": "Allemagne"}
+{"entite": "abbaye de Michaelsberg", "valeur": "Allemagne"}
+{"entite": "abbaye de Michelfeld", "valeur": "Allemagne"}
+{"entite": "abbaye de Minster", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Mogila", "valeur": "Pologne"}
+{"entite": "abbaye de Moiremont", "valeur": "France"}
+{"entite": "abbaye de Molaise", "valeur": "France"}
+{"entite": "abbaye de Monasteranenagh", "valeur": "Irlande"}
+{"entite": "abbaye de Monasterevin", "valeur": "Irlande"}
+{"entite": "abbaye de Moncé", "valeur": "France"}
+{"entite": "abbaye de Mondaye", "valeur": "France"}
+{"entite": "abbaye de Mondsee", "valeur": "Autriche"}
+{"entite": "abbaye de Mont-Sainte-Marie", "valeur": "France"}
+{"entite": "abbaye de Montarlot", "valeur": "France"}
+{"entite": "abbaye de Montauriol", "valeur": "France"}
+{"entite": "abbaye de Montcetz", "valeur": "France"}
+{"entite": "abbaye de Montcient", "valeur": "France"}
+{"entite": "abbaye de Montebourg", "valeur": "France"}
+{"entite": "abbaye de Monthiers-en-Argonne", "valeur": "France"}
+{"entite": "abbaye de Montierneuf", "valeur": "France"}
+{"entite": "abbaye de Montigny-lès-Vesoul", "valeur": "France"}
+{"entite": "abbaye de Montivilliers", "valeur": "France"}
+{"entite": "abbaye de Montmartre", "valeur": "France"}
+{"entite": "abbaye de Montmorel", "valeur": "France"}
+{"entite": "abbaye de Montpeyroux", "valeur": "France"}
+{"entite": "abbaye de Montreuil-les-Dames", "valeur": "France"}
+{"entite": "abbaye de Montserrat", "valeur": "Espagne"}
+{"entite": "abbaye de Moreaucourt", "valeur": "France"}
+{"entite": "abbaye de Moreaux", "valeur": "France"}
+{"entite": "abbaye de Moreilles", "valeur": "France"}
+{"entite": "abbaye de Moreruela", "valeur": "Espagne"}
+{"entite": "abbaye de Mormant", "valeur": "France"}
+{"entite": "abbaye de Morristown", "valeur": "États-Unis"}
+{"entite": "abbaye de Morsang-sur-Orge", "valeur": "France"}
+{"entite": "abbaye de Mortemer", "valeur": "France"}
+{"entite": "abbaye de Mount Angel", "valeur": "États-Unis"}
+{"entite": "abbaye de Mount Melleray", "valeur": "Irlande"}
+{"entite": "abbaye de Mount Michael", "valeur": "États-Unis"}
+{"entite": "abbaye de Mount Saint Bernard", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Mount Saviour", "valeur": "États-Unis"}
+{"entite": "abbaye de Moutier-d'Ahun", "valeur": "France"}
+{"entite": "abbaye de Moutier-Grandval", "valeur": "Suisse"}
+{"entite": "abbaye de Moyenmoutier", "valeur": "France"}
+{"entite": "abbaye de Mozac", "valeur": "France"}
+{"entite": "abbaye de Muckross", "valeur": "Irlande"}
+{"entite": "abbaye de Muenster", "valeur": "Canada"}
+{"entite": "abbaye de Munster", "valeur": "France"}
+{"entite": "abbaye de Munsterbilzen", "valeur": "Belgique"}
+{"entite": "abbaye de Münsterschwarzach", "valeur": "Allemagne"}
+{"entite": "abbaye de Murbach", "valeur": "France"}
+{"entite": "abbaye de Mureau", "valeur": "France"}
+{"entite": "abbaye de Myrendal", "valeur": "Danemark"}
+{"entite": "abbaye de Nazareth", "valeur": "Belgique"}
+{"entite": "abbaye de Ndanda", "valeur": "Tanzanie"}
+{"entite": "abbaye de Neath", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Neauphle-le-Vieux", "valeur": "France"}
+{"entite": "abbaye de Nepomuk", "valeur": "Tchéquie"}
+{"entite": "abbaye de Neresheim", "valeur": "Allemagne"}
+{"entite": "abbaye de Nesle-la-Reposte", "valeur": "France"}
+{"entite": "abbaye de Netley", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Netlieu", "valeur": "France"}
+{"entite": "abbaye de Neuberg", "valeur": "Autriche"}
+{"entite": "abbaye de Neubourg", "valeur": "France"}
+{"entite": "abbaye de Neuburg", "valeur": "Allemagne"}
+{"entite": "abbaye de Neuendorf", "valeur": "Allemagne"}
+{"entite": "abbaye de Neufchâtel-en-Bray", "valeur": "France"}
+{"entite": "abbaye de Neufmoustier", "valeur": "Belgique"}
+{"entite": "abbaye de Neuwiller-lès-Saverne", "valeur": "France"}
+{"entite": "abbaye de New Clairvaux", "valeur": "États-Unis"}
+{"entite": "abbaye de New Melleray", "valeur": "États-Unis"}
+{"entite": "abbaye de Newark", "valeur": "États-Unis"}
+{"entite": "abbaye de Newenham", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Newminster", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Niederaltaich", "valeur": "Allemagne"}
+{"entite": "abbaye de Niedermunster", "valeur": "France"}
+{"entite": "abbaye de Nienburg", "valeur": "Allemagne"}
+{"entite": "abbaye de Nieuwenbos", "valeur": "Belgique"}
+{"entite": "abbaye de Nogales", "valeur": "Espagne"}
+{"entite": "abbaye de Nogent-l'Artaud", "valeur": "France"}
+{"entite": "abbaye de Nogent-sous-Coucy", "valeur": "France"}
+{"entite": "abbaye de Noirlac", "valeur": "France"}
+{"entite": "abbaye de Noirmoutier", "valeur": "France"}
+{"entite": "abbaye de Nonantola", "valeur": "Italie"}
+{"entite": "abbaye de Nonnberg", "valeur": "Autriche"}
+{"entite": "abbaye de Northampton", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Notre-Dame-de-la-Paix", "valeur": "France"}
+{"entite": "abbaye de Notre-Dame-de-la-Roche", "valeur": "France"}
+{"entite": "abbaye de Notre-Dame des Anges à Saint-Cyr", "valeur": "France"}
+{"entite": "abbaye de Novacella", "valeur": "Italie"}
+{"entite": "abbaye de Novara di Sicilia", "valeur": "Italie"}
+{"entite": "abbaye de Nsugbe", "valeur": "Nigeria"}
+{"entite": "abbaye de Nydala", "valeur": "Suède"}
+{"entite": "abbaye de Nyoiseau", "valeur": "France"}
+{"entite": "abbaye de Padis", "valeur": "Estonie"}
+{"entite": "abbaye de Pairis", "valeur": "France"}
+{"entite": "abbaye de Pannonhalma", "valeur": "Hongrie"}
+{"entite": "abbaye de Paradies", "valeur": "Pologne"}
+{"entite": "abbaye de Parc", "valeur": "Belgique"}
+{"entite": "abbaye de Parc-les-Dames", "valeur": "Belgique"}
+{"entite": "abbaye de Pavilly", "valeur": "France"}
+{"entite": "abbaye de Payerne", "valeur": "Suisse"}
+{"entite": "abbaye de Pébrac", "valeur": "France"}
+{"entite": "abbaye de Peñamaior", "valeur": "Espagne"}
+{"entite": "abbaye de Pental", "valeur": "France"}
+{"entite": "abbaye de Penthemont", "valeur": "France"}
+{"entite": "abbaye de Percheio", "valeur": "Turquie"}
+{"entite": "abbaye de Pérignac", "valeur": "France"}
+{"entite": "abbaye de Perseigne", "valeur": "France"}
+{"entite": "abbaye de Pforta", "valeur": "Allemagne"}
+{"entite": "abbaye de Phước sơn", "valeur": "Vietnam"}
+{"entite": "abbaye de Pipewell", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Plankstetten", "valeur": "Allemagne"}
+{"entite": "abbaye de Planselve", "valeur": "France"}
+{"entite": "abbaye de Pöhlde", "valeur": "Allemagne"}
+{"entite": "abbaye de Polling", "valeur": "Allemagne"}
+{"entite": "abbaye de Pomposa", "valeur": "Italie"}
+{"entite": "abbaye de Pont-Aux-Dames", "valeur": "France"}
+{"entite": "abbaye de Pont-Ratier", "valeur": "France"}
+{"entite": "abbaye de Pontaut", "valeur": "France"}
+{"entite": "abbaye de Pontigny", "valeur": "France"}
+{"entite": "abbaye de Pontlevoy", "valeur": "France"}
+{"entite": "abbaye de Pornó", "valeur": "Hongrie"}
+{"entite": "abbaye de Port-Royal de Paris", "valeur": "France"}
+{"entite": "abbaye de Port-Royal-des-Champs à Magny-les-Hameaux", "valeur": "France"}
+{"entite": "abbaye de Portglenone", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Postel", "valeur": "Belgique"}
+{"entite": "abbaye de Praglia", "valeur": "Italie"}
+{"entite": "abbaye de Prâlon", "valeur": "France"}
+{"entite": "abbaye de Preallo", "valeur": "Italie"}
+{"entite": "abbaye de Prébenoît", "valeur": "France"}
+{"entite": "abbaye de Presinge", "valeur": "Suisse"}
+{"entite": "abbaye de Preuilly", "valeur": "France"}
+{"entite": "abbaye de Prières", "valeur": "France"}
+{"entite": "abbaye de Prüfening", "valeur": "Allemagne"}
+{"entite": "abbaye de Prüm", "valeur": "Allemagne"}
+{"entite": "abbaye de Psalmodie", "valeur": "France"}
+{"entite": "abbaye de Puypéroux", "valeur": "France"}
+{"entite": "abbaye de Quartazzola", "valeur": "Italie"}
+{"entite": "abbaye de Quincy", "valeur": "France"}
+{"entite": "abbaye de Raitenhaslach", "valeur": "Allemagne"}
+{"entite": "abbaye de Ramsey", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Rangéval", "valeur": "France"}
+{"entite": "abbaye de Ravensberg", "valeur": "France"}
+{"entite": "abbaye de Reading", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Realvalle", "valeur": "Italie"}
+{"entite": "abbaye de Redwoods", "valeur": "États-Unis"}
+{"entite": "abbaye de Regina Laudis", "valeur": "États-Unis"}
+{"entite": "abbaye de Reichenau", "valeur": "Allemagne"}
+{"entite": "abbaye de Reifenstein", "valeur": "Allemagne"}
+{"entite": "abbaye de Reigny", "valeur": "France"}
+{"entite": "abbaye de Rein", "valeur": "Autriche"}
+{"entite": "abbaye de Reinhausen", "valeur": "Allemagne"}
+{"entite": "abbaye de Remiremont", "valeur": "France"}
+{"entite": "abbaye de Renty", "valeur": "France"}
+{"entite": "abbaye de Repton", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Revesby", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Rewley", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Richardton", "valeur": "États-Unis"}
+{"entite": "abbaye de Richmond", "valeur": "États-Unis"}
+{"entite": "abbaye de Rievaulx", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Ripalta di Puglia", "valeur": "Italie"}
+{"entite": "abbaye de Rivalta", "valeur": "Italie"}
+{"entite": "abbaye de Robertsbridge", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Roche", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Rohr", "valeur": "Allemagne"}
+{"entite": "abbaye de Roma", "valeur": "Suède"}
+{"entite": "abbaye de Roosenberg", "valeur": "Belgique"}
+{"entite": "abbaye de Roscrea", "valeur": "Irlande"}
+{"entite": "abbaye de Roth", "valeur": "Allemagne"}
+{"entite": "abbaye de Royallieu", "valeur": "France"}
+{"entite": "abbaye de Royaumont", "valeur": "France"}
+{"entite": "abbaye de Rufford", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Rufinianes", "valeur": "Turquie"}
+{"entite": "abbaye de Rupertsberg", "valeur": "Allemagne"}
+{"entite": "abbaye de Säben", "valeur": "Italie"}
+{"entite": "abbaye de Saddell", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Saint-Acheul", "valeur": "France"}
+{"entite": "abbaye de Saint-Albans", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Saint-Amand", "valeur": "France"}
+{"entite": "abbaye de Saint-Amand-de-Coly", "valeur": "France"}
+{"entite": "abbaye de Saint-Amant-de-Boixe", "valeur": "France"}
+{"entite": "abbaye de Saint-Amour", "valeur": "France"}
+{"entite": "abbaye de Saint-André-aux-Bois", "valeur": "France"}
+{"entite": "abbaye de Saint-André-de-Gouffern", "valeur": "France"}
+{"entite": "abbaye de Saint-André-le-Bas de Vienne", "valeur": "France"}
+{"entite": "abbaye de Saint-André-le-Haut", "valeur": "France"}
+{"entite": "abbaye de Saint-Antoine-l'Abbaye", "valeur": "France"}
+{"entite": "abbaye de Saint-Arnould", "valeur": "France"}
+{"entite": "abbaye de Saint-Augustin-lès-Thérouanne", "valeur": "France"}
+{"entite": "abbaye de Saint-Benoît-en-Woëvre", "valeur": "France"}
+{"entite": "abbaye de Saint-Benoît-sur-Loire", "valeur": "France"}
+{"entite": "abbaye de Saint-Chinian", "valeur": "France"}
+{"entite": "abbaye de Saint-Clément de Casauria", "valeur": "Italie"}
+{"entite": "abbaye de Saint-Colomban", "valeur": "France"}
+{"entite": "abbaye de Saint-Cybard", "valeur": "France"}
+{"entite": "abbaye de Saint-Cyran-en-Brenne", "valeur": "France"}
+{"entite": "abbaye de Saint-Denis-en-Broqueroie", "valeur": "Belgique"}
+{"entite": "abbaye de Saint-Éloi-Fontaine", "valeur": "France"}
+{"entite": "abbaye de Saint Eutizio", "valeur": "Italie"}
+{"entite": "abbaye de Saint-Ferme", "valeur": "France"}
+{"entite": "abbaye de Saint-Florent-le-Vieil", "valeur": "France"}
+{"entite": "abbaye de Saint-Florian", "valeur": "Autriche"}
+{"entite": "abbaye de Saint-Fuscien", "valeur": "France"}
+{"entite": "abbaye de Saint-Gall", "valeur": "Suisse"}
+{"entite": "abbaye de Saint-Génis-des-Fontaines", "valeur": "France"}
+{"entite": "abbaye de Saint-Georges-du-Bois", "valeur": "France"}
+{"entite": "abbaye de Saint-Georges-sur-Loire", "valeur": "France"}
+{"entite": "abbaye de Saint-Gervais de Fos", "valeur": "France"}
+{"entite": "abbaye de Saint-Ghislain", "valeur": "Belgique"}
+{"entite": "abbaye de Saint-Gilles", "valeur": "France"}
+{"entite": "abbaye de Saint-Hilaire", "valeur": "France"}
+{"entite": "abbaye de Saint-Hubert", "valeur": "Belgique"}
+{"entite": "abbaye de Saint-Jacut", "valeur": "France"}
+{"entite": "abbaye de Saint-Jean-au-Mont à Ypres", "valeur": "Belgique"}
+{"entite": "abbaye de Saint-Jean-aux-Bois", "valeur": "France"}
+{"entite": "abbaye de Saint-Jean de Bonneval-lès-Thouars", "valeur": "France"}
+{"entite": "abbaye de Saint-Jean-des-Prés", "valeur": "France"}
+{"entite": "abbaye de Saint-Jean-lès-Sens", "valeur": "France"}
+{"entite": "abbaye de Saint-Julien", "valeur": "France"}
+{"entite": "abbaye de Saint Lambert", "valeur": "Autriche"}
+{"entite": "abbaye de Saint-Laurent-l'Abbaye", "valeur": "France"}
+{"entite": "abbaye de Saint-Lazare de Cambrai", "valeur": "France"}
+{"entite": "abbaye de Saint-Léon", "valeur": "États-Unis"}
+{"entite": "abbaye de Saint-Liguaire", "valeur": "France"}
+{"entite": "abbaye de Saint-Loup", "valeur": "France"}
+{"entite": "abbaye de Saint-Maixent-l'École", "valeur": "France"}
+{"entite": "abbaye de Saint-Martin-aux-Bois", "valeur": "France"}
+{"entite": "abbaye de Saint-Martin d'Autun", "valeur": "France"}
+{"entite": "abbaye de Saint-Martin-Lys", "valeur": "France"}
+{"entite": "abbaye de Saint-Maur", "valeur": "France"}
+{"entite": "abbaye de Saint-Maurice d'Agaune", "valeur": "Suisse"}
+{"entite": "abbaye de Saint-Maurin", "valeur": "France"}
+{"entite": "abbaye de Saint-Méen", "valeur": "France"}
+{"entite": "abbaye de Saint-Michel", "valeur": "France"}
+{"entite": "abbaye de Saint-Mihiel", "valeur": "France"}
+{"entite": "abbaye de Saint-Papoul", "valeur": "France"}
+{"entite": "abbaye de Saint-Paul-en-Chablais", "valeur": "France"}
+{"entite": "abbaye de Saint-Paul-hors-les-Murs", "valeur": "Vatican"}
+{"entite": "abbaye de Saint-Pé-de-Bigorre", "valeur": "France"}
+{"entite": "abbaye de Saint-Père", "valeur": "France"}
+{"entite": "abbaye de Saint Pierre", "valeur": "Italie"}
+{"entite": "abbaye de Saint-Pierre de Breme", "valeur": "Italie"}
+{"entite": "abbaye de Saint-Pierre-les-Nonnains de Lyon", "valeur": "France"}
+{"entite": "abbaye de Saint-Pierre-sur-Dives", "valeur": "France"}
+{"entite": "abbaye de Saint-Pierremont", "valeur": "France"}
+{"entite": "abbaye de Saint-Polycarpe", "valeur": "France"}
+{"entite": "abbaye de Saint-Pons de Gémenos", "valeur": "France"}
+{"entite": "abbaye de Saint-Quentin-en-l'Isle", "valeur": "France"}
+{"entite": "abbaye de Saint-Rambert-en-Bugey", "valeur": "France"}
+{"entite": "abbaye de Saint-Roman", "valeur": "France"}
+{"entite": "abbaye de Saint-Ruf-hors-les-Murs", "valeur": "France"}
+{"entite": "abbaye de Saint-Saëns", "valeur": "France"}
+{"entite": "abbaye de Saint-Sauveur", "valeur": "France"}
+{"entite": "abbaye de Saint-Sauveur-le-Vicomte", "valeur": "France"}
+{"entite": "abbaye de Saint-Savin-en-Lavedan", "valeur": "France"}
+{"entite": "abbaye de Saint-Seine", "valeur": "France"}
+{"entite": "abbaye de Saint-Sever", "valeur": "France"}
+{"entite": "abbaye de Saint-Sever-de-Rustan", "valeur": "France"}
+{"entite": "abbaye de Saint-Sulpice", "valeur": "France"}
+{"entite": "abbaye de Saint-Symphorien d'Autun", "valeur": "France"}
+{"entite": "abbaye de Saint-Symphorien de Metz", "valeur": "France"}
+{"entite": "abbaye de Saint-Thibéry", "valeur": "France"}
+{"entite": "abbaye de Saint-Trond", "valeur": "Belgique"}
+{"entite": "abbaye de Saint-Urbain", "valeur": "France"}
+{"entite": "abbaye de Saint-Valery", "valeur": "France"}
+{"entite": "abbaye de Saint-Véran du Loup", "valeur": "France"}
+{"entite": "abbaye de Saint-Vincent-aux-Bois à Saint-Maixme-Hauterive", "valeur": "France"}
+{"entite": "abbaye de Saint-Wulmer", "valeur": "France"}
+{"entite": "abbaye de Sainte-Barbe-en-Auge", "valeur": "France"}
+{"entite": "abbaye de Sainte-Lioba", "valeur": "France"}
+{"entite": "abbaye de Sainte-Marie-au-Bois", "valeur": "France"}
+{"entite": "abbaye de Sainte-Odile", "valeur": "Allemagne"}
+{"entite": "abbaye de Sala", "valeur": "Italie"}
+{"entite": "abbaye de Salem", "valeur": "Allemagne"}
+{"entite": "abbaye de Salival", "valeur": "France"}
+{"entite": "abbaye de Sambucina", "valeur": "Italie"}
+{"entite": "abbaye de San Galgano", "valeur": "Italie"}
+{"entite": "abbaye de San Giorgio Maggiore", "valeur": "Italie"}
+{"entite": "abbaye de San Giovanni in Venere", "valeur": "Italie"}
+{"entite": "abbaye de San-Giusto", "valeur": "Italie"}
+{"entite": "abbaye de San Giusto in Tuscania", "valeur": "Italie"}
+{"entite": "abbaye de San Liberatore a Majella", "valeur": "Italie"}
+{"entite": "abbaye de San Martino in Valle", "valeur": "Italie"}
+{"entite": "abbaye de San Pastore", "valeur": "Italie"}
+{"entite": "abbaye de San Pietro in Valle", "valeur": "Italie"}
+{"entite": "abbaye de Sant'Antimo", "valeur": "Italie"}
+{"entite": "abbaye de Sant'Elena", "valeur": "Italie"}
+{"entite": "abbaye de Santa Maria di Pulsano", "valeur": "Italie"}
+{"entite": "abbaye de Santes Creus", "valeur": "Espagne"}
+{"entite": "abbaye de Sassovivo", "valeur": "Italie"}
+{"entite": "abbaye de Sauvelade", "valeur": "France"}
+{"entite": "abbaye de Sauxillanges", "valeur": "France"}
+{"entite": "abbaye de Savigny", "valeur": "France"}
+{"entite": "abbaye de Sawley", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Sawtry", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Schäftlarn", "valeur": "Allemagne"}
+{"entite": "abbaye de Scheyern", "valeur": "Allemagne"}
+{"entite": "abbaye de Schlehdorf", "valeur": "Allemagne"}
+{"entite": "abbaye de Schlierbach", "valeur": "Autriche"}
+{"entite": "abbaye de Schöntal", "valeur": "Allemagne"}
+{"entite": "abbaye de Schuttern", "valeur": "Allemagne"}
+{"entite": "abbaye de Schweiklberg", "valeur": "Allemagne"}
+{"entite": "abbaye de Sclerder", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Scone", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Scourmont", "valeur": "Belgique"}
+{"entite": "abbaye de Seckau", "valeur": "Autriche"}
+{"entite": "abbaye de Seeon", "valeur": "Allemagne"}
+{"entite": "abbaye de Seitenstetten", "valeur": "Autriche"}
+{"entite": "abbaye de Seligenstadt", "valeur": "Allemagne"}
+{"entite": "abbaye de Seligenthal", "valeur": "Allemagne"}
+{"entite": "abbaye de Selincourt", "valeur": "France"}
+{"entite": "abbaye de Sellières", "valeur": "France"}
+{"entite": "abbaye de Selsey", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Seltz", "valeur": "France"}
+{"entite": "abbaye de Sept-Fons", "valeur": "France"}
+{"entite": "abbaye de Seuilly", "valeur": "France"}
+{"entite": "abbaye de Sever", "valeur": "Portugal"}
+{"entite": "abbaye de Shaftesbury", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Shap", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Shrewsbury", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Sibton", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Silly-en-Gouffern", "valeur": "France"}
+{"entite": "abbaye de Silvacane", "valeur": "France"}
+{"entite": "abbaye de Singeverga", "valeur": "Portugal"}
+{"entite": "abbaye de Sinnich", "valeur": "Belgique"}
+{"entite": "abbaye de Sixt", "valeur": "France"}
+{"entite": "abbaye de Skalice", "valeur": "Tchéquie"}
+{"entite": "abbaye de Snowmass", "valeur": "États-Unis"}
+{"entite": "abbaye de Solignac", "valeur": "France"}
+{"entite": "abbaye de Sotos Albos", "valeur": "Espagne"}
+{"entite": "abbaye de Sozan", "valeur": "Ukraine"}
+{"entite": "abbaye de St Bavon", "valeur": "Belgique"}
+{"entite": "abbaye de Staffarda", "valeur": "Italie"}
+{"entite": "abbaye de Stams", "valeur": "Autriche"}
+{"entite": "abbaye de Stapehill", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Stavelot", "valeur": "Belgique"}
+{"entite": "abbaye de Stična", "valeur": "Slovénie"}
+{"entite": "abbaye de Still River", "valeur": "États-Unis"}
+{"entite": "abbaye de Stolpe", "valeur": "Allemagne"}
+{"entite": "abbaye de Stoneleigh", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Strata Florida", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Strata Marcella", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Stratford Langthorne", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Strowry", "valeur": "Irlande"}
+{"entite": "abbaye de Subiaco", "valeur": "États-Unis"}
+{"entite": "abbaye de Sulejów", "valeur": "Pologne"}
+{"entite": "abbaye de Sweetheart", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Swineshead", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Sylvanès", "valeur": "France"}
+{"entite": "abbaye de Sylveréal", "valeur": "France"}
+{"entite": "abbaye de Szczyrzyc", "valeur": "Pologne"}
+{"entite": "abbaye de Szentgotthárd", "valeur": "Hongrie"}
+{"entite": "abbaye de Talloires", "valeur": "France"}
+{"entite": "abbaye de Tarouca", "valeur": "Portugal"}
+{"entite": "abbaye de Tarrawarra", "valeur": "Australie"}
+{"entite": "abbaye de Tart", "valeur": "France"}
+{"entite": "abbaye de Tavistock", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Tegernsee", "valeur": "Allemagne"}
+{"entite": "abbaye de Tennenbach", "valeur": "Allemagne"}
+{"entite": "abbaye de Teplá", "valeur": "Tchéquie"}
+{"entite": "abbaye de Ter Doest", "valeur": "Belgique"}
+{"entite": "abbaye de Tewkesbury", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Thame", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Thavaud", "valeur": "France"}
+{"entite": "abbaye de Thélème", "valeur": "Italie"}
+{"entite": "abbaye de Thenailles", "valeur": "France"}
+{"entite": "abbaye de Theuley", "valeur": "France"}
+{"entite": "abbaye de Tholey", "valeur": "Allemagne"}
+{"entite": "abbaye de Thorney", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Thyrnau", "valeur": "Allemagne"}
+{"entite": "abbaye de Tiglieto", "valeur": "Italie"}
+{"entite": "abbaye de Tihany", "valeur": "Hongrie"}
+{"entite": "abbaye de Tillay", "valeur": "France"}
+{"entite": "abbaye de Tilty", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Tinterne", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Tinternparva", "valeur": "Irlande"}
+{"entite": "abbaye de Tironneau", "valeur": "France"}
+{"entite": "abbaye de Titchfield", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Tongerlo", "valeur": "Belgique"}
+{"entite": "abbaye de Torigny", "valeur": "France"}
+{"entite": "abbaye de Tornac", "valeur": "France"}
+{"entite": "abbaye de Torre", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Toussaint", "valeur": "France"}
+{"entite": "abbaye de Tre Fontane", "valeur": "Italie"}
+{"entite": "abbaye de Trégouët", "valeur": "France"}
+{"entite": "abbaye de Trizay", "valeur": "France"}
+{"entite": "abbaye de Trois-Fontaines", "valeur": "France"}
+{"entite": "abbaye de Tronchiennes", "valeur": "Belgique"}
+{"entite": "abbaye de Truttenhausen", "valeur": "France"}
+{"entite": "abbaye de Tulebras", "valeur": "Espagne"}
+{"entite": "abbaye de Turpenay", "valeur": "France"}
+{"entite": "abbaye de Tyniec", "valeur": "Pologne"}
+{"entite": "abbaye de Vaas", "valeur": "France"}
+{"entite": "abbaye de Vabres", "valeur": "France"}
+{"entite": "abbaye de Vadstena", "valeur": "Suède"}
+{"entite": "abbaye de Val Dieu", "valeur": "Belgique"}
+{"entite": "abbaye de Val-Secret", "valeur": "France"}
+{"entite": "abbaye de Valbonne", "valeur": "France"}
+{"entite": "abbaye de Valbuena", "valeur": "Espagne"}
+{"entite": "abbaye de Valcroissant", "valeur": "France"}
+{"entite": "abbaye de Vale Royal", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Valence", "valeur": "France"}
+{"entite": "abbaye de Valette", "valeur": "France"}
+{"entite": "abbaye de Valle Crucis", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Valloires", "valeur": "France"}
+{"entite": "abbaye de Vallombrosa", "valeur": "Italie"}
+{"entite": "abbaye de Valmagne", "valeur": "France"}
+{"entite": "abbaye de Valmont", "valeur": "France"}
+{"entite": "abbaye de Valsaintes", "valeur": "France"}
+{"entite": "abbaye de Valserena", "valeur": "Italie"}
+{"entite": "abbaye de Valvisciolo", "valeur": "Italie"}
+{"entite": "abbaye de Valyermo", "valeur": "États-Unis"}
+{"entite": "abbaye de Varennes", "valeur": "France"}
+{"entite": "abbaye de Varensell", "valeur": "Allemagne"}
+{"entite": "abbaye de Vauclair", "valeur": "France"}
+{"entite": "abbaye de Vaudey", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Vauluisant", "valeur": "France"}
+{"entite": "abbaye de Vaux-la-Douce", "valeur": "France"}
+{"entite": "abbaye de Vauxbons", "valeur": "France"}
+{"entite": "abbaye de Venière", "valeur": "France"}
+{"entite": "abbaye de Vermand", "valeur": "France"}
+{"entite": "abbaye de Vernaison", "valeur": "France"}
+{"entite": "abbaye de Vérteskeresztúr", "valeur": "Hongrie"}
+{"entite": "abbaye de Vezzolano", "valeur": "Italie"}
+{"entite": "abbaye de Viaceli", "valeur": "Espagne"}
+{"entite": "abbaye de Viboldone", "valeur": "Italie"}
+{"entite": "abbaye de Vicogne", "valeur": "France"}
+{"entite": "abbaye de Victoria", "valeur": "Ouganda"}
+{"entite": "abbaye de Vignogoul", "valeur": "France"}
+{"entite": "abbaye de Viktring", "valeur": "Autriche"}
+{"entite": "abbaye de Villanueva de Oscos", "valeur": "Espagne"}
+{"entite": "abbaye de Villechasson", "valeur": "France"}
+{"entite": "abbaye de Villegondon", "valeur": "France"}
+{"entite": "abbaye de Villemagne", "valeur": "France"}
+{"entite": "abbaye de Villeneuve", "valeur": "France"}
+{"entite": "abbaye de Villeneuve-lès-Soissons", "valeur": "France"}
+{"entite": "abbaye de Villers", "valeur": "Belgique"}
+{"entite": "abbaye de Villers-Bettnach", "valeur": "France"}
+{"entite": "abbaye de Villers-Canivet", "valeur": "France"}
+{"entite": "abbaye de Villiers-aux-Nonnains", "valeur": "France"}
+{"entite": "abbaye de Vitorchiano", "valeur": "Italie"}
+{"entite": "abbaye de Vlierbeek", "valeur": "Belgique"}
+{"entite": "abbaye de Voisins", "valeur": "France"}
+{"entite": "abbaye de Vorau", "valeur": "Autriche"}
+{"entite": "abbaye de Vreta", "valeur": "Suède"}
+{"entite": "abbaye de Wąchock", "valeur": "Pologne"}
+{"entite": "abbaye de Waegwan", "valeur": "Corée du Sud"}
+{"entite": "abbaye de Wągrowiec", "valeur": "Pologne"}
+{"entite": "abbaye de Walderbach", "valeur": "Allemagne"}
+{"entite": "abbaye de Waldsassen", "valeur": "Allemagne"}
+{"entite": "abbaye de Wallers", "valeur": "France"}
+{"entite": "abbaye de Warden", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Watten", "valeur": "France"}
+{"entite": "abbaye de Waulsort", "valeur": "Belgique"}
+{"entite": "abbaye de Waverley", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Wearmouth-Jarrow", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Weihenstephan", "valeur": "Allemagne"}
+{"entite": "abbaye de Weingarten", "valeur": "Allemagne"}
+{"entite": "abbaye de Weltenbourg", "valeur": "Allemagne"}
+{"entite": "abbaye de Werden", "valeur": "Allemagne"}
+{"entite": "abbaye de Westmalle", "valeur": "Belgique"}
+{"entite": "abbaye de Westminster", "valeur": "Canada"}
+{"entite": "abbaye de Westvleteren", "valeur": "Belgique"}
+{"entite": "abbaye de Wettenhausen", "valeur": "Allemagne"}
+{"entite": "abbaye de Wettingen", "valeur": "Suisse"}
+{"entite": "abbaye de Whalley", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Wherwell", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Whitby", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Whitland", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Wiblingen", "valeur": "Allemagne"}
+{"entite": "abbaye de Wigmore", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Winchcombe", "valeur": "Royaume-Uni"}
+{"entite": "abbaye de Windberg", "valeur": "Allemagne"}
+{"entite": "abbaye de Zaraka", "valeur": "Grèce"}
+{"entite": "abbaye de Zirc", "valeur": "Hongrie"}
+{"entite": "abbaye de Zoetendale", "valeur": "Belgique"}
+{"entite": "abbaye de Zwiefalten", "valeur": "Allemagne"}
+{"entite": "abbaye des Allois", "valeur": "France"}
+{"entite": "abbaye des Antonins de Wurtzbourg", "valeur": "Allemagne"}
+{"entite": "abbaye des Augustins de Pamiers", "valeur": "France"}
+{"entite": "abbaye des Ayes", "valeur": "France"}
+{"entite": "abbaye des Bernardines de Valsauve", "valeur": "France"}
+{"entite": "abbaye des Chambons", "valeur": "France"}
+{"entite": "abbaye des chanoines réguliers de Fiesole", "valeur": "Italie"}
+{"entite": "abbaye des Châtelliers", "valeur": "France"}
+{"entite": "abbaye des Dames anglaises à Gand", "valeur": "Belgique"}
+{"entite": "abbaye des Dames d'Étrun", "valeur": "France"}
+{"entite": "abbaye des dames de Battant", "valeur": "France"}
+{"entite": "abbaye des Dames de Tusson", "valeur": "France"}
+{"entite": "abbaye des Deux-Jumeaux", "valeur": "France"}
+{"entite": "abbaye des Dunes", "valeur": "Belgique"}
+{"entite": "abbaye des Écharlis", "valeur": "France"}
+{"entite": "abbaye des Feuillants", "valeur": "France"}
+{"entite": "abbaye des Guillemins", "valeur": "France"}
+{"entite": "abbaye des Isles d'Auxerre", "valeur": "France"}
+{"entite": "abbaye des Mazures", "valeur": "France"}
+{"entite": "abbaye des Pierres", "valeur": "France"}
+{"entite": "abbaye des Prémontrés de Pont-à-Mousson", "valeur": "France"}
+{"entite": "abbaye des Prés de Douai", "valeur": "France"}
+{"entite": "abbaye des Roches", "valeur": "France"}
+{"entite": "abbaye des Ternes", "valeur": "France"}
+{"entite": "abbaye des Vaux-de-Cernay", "valeur": "France"}
+{"entite": "abbaye des Vaux en Ornois", "valeur": "France"}
+{"entite": "abbaye du Betton", "valeur": "France"}
+{"entite": "abbaye du Bouschet-Vauluisant", "valeur": "France"}
+{"entite": "abbaye du Breuil-Benoît", "valeur": "France"}
+{"entite": "abbaye du Calvaire de La Fère", "valeur": "France"}
+{"entite": "abbaye du Canadel", "valeur": "France"}
+{"entite": "abbaye du Castelas", "valeur": "France"}
+{"entite": "abbaye du Chambon", "valeur": "France"}
+{"entite": "abbaye du Coudenberg", "valeur": "Belgique"}
+{"entite": "abbaye du Gard", "valeur": "France"}
+{"entite": "abbaye du Grandvaux", "valeur": "France"}
+{"entite": "abbaye du Jard", "valeur": "France"}
+{"entite": "abbaye du Joug-Dieu", "valeur": "France"}
+{"entite": "abbaye du lac de Joux", "valeur": "Suisse"}
+{"entite": "abbaye du Lieu-des-Dames de Boulancourt", "valeur": "France"}
+{"entite": "abbaye du Lieu-Dieu", "valeur": "France"}
+{"entite": "abbaye du Lys", "valeur": "France"}
+{"entite": "abbaye du Monastier-sur-Gazeille", "valeur": "France"}
+{"entite": "abbaye du Mont-Cassin", "valeur": "Italie"}
+{"entite": "abbaye du Mont-César", "valeur": "Belgique"}
+{"entite": "abbaye du Mont Cornillon", "valeur": "Belgique"}
+{"entite": "abbaye du Mont des Cats", "valeur": "France"}
+{"entite": "abbaye du Mont-Saint-Martin", "valeur": "France"}
+{"entite": "abbaye du Mont-Sion", "valeur": "France"}
+{"entite": "abbaye du Mont Thabor", "valeur": "Israël"}
+{"entite": "abbaye du Monte Favale", "valeur": "Italie"}
+{"entite": "abbaye du Moutier", "valeur": "France"}
+{"entite": "abbaye du Nouveau-Bois", "valeur": "Belgique"}
+{"entite": "abbaye du Paraclet", "valeur": "France"}
+{"entite": "abbaye du Paraclet des Champs", "valeur": "France"}
+{"entite": "abbaye du Perray-Neuf", "valeur": "France"}
+{"entite": "abbaye du Petit-Clairvaux", "valeur": "Canada"}
+{"entite": "abbaye du Petit-Lieu", "valeur": "France"}
+{"entite": "abbaye du Pin", "valeur": "France"}
+{"entite": "abbaye du Port-du-Salut", "valeur": "France"}
+{"entite": "abbaye du Prince de la Paix", "valeur": "États-Unis"}
+{"entite": "abbaye du Puits d'Orbe", "valeur": "France"}
+{"entite": "abbaye du Relec", "valeur": "France"}
+{"entite": "abbaye du repos de Notre-Dame de Marquette", "valeur": "France"}
+{"entite": "abbaye du Ronceray d'Angers", "valeur": "France"}
+{"entite": "abbaye du Sacré-Cœur d'Oriocourt", "valeur": "France"}
+{"entite": "abbaye du Sacromonte", "valeur": "Espagne"}
+{"entite": "abbaye du Saint-Esprit de Mvimwa", "valeur": "Tanzanie"}
+{"entite": "abbaye du Saint-Esprit de Sulmona", "valeur": "Italie"}
+{"entite": "abbaye du Saint-Mont", "valeur": "France"}
+{"entite": "abbaye du Thoronet", "valeur": "France"}
+{"entite": "abbaye du Trésor-Notre-Dame", "valeur": "France"}
+{"entite": "abbaye du Val-Chrétien", "valeur": "France"}
+{"entite": "abbaye du Val-de-Gif", "valeur": "France"}
+{"entite": "abbaye du Val-de-Grâce", "valeur": "France"}
+{"entite": "abbaye du Val des Choues", "valeur": "France"}
+{"entite": "abbaye du Val des Écoliers", "valeur": "Belgique"}
+{"entite": "abbaye du Val des Écoliers de Verbiesles", "valeur": "France"}
+{"entite": "abbaye du Val-des-Vignes", "valeur": "France"}
+{"entite": "abbaye du Val-Richer", "valeur": "France"}
+{"entite": "abbaye du Val-Saint-Lambert", "valeur": "Belgique"}
+{"entite": "abbaye du Val-Saint-Pierre", "valeur": "France"}
+{"entite": "abbaye du Valdieu Réno", "valeur": "France"}
+{"entite": "abbaye et Altenmünster de Lorsch", "valeur": "Allemagne"}
+{"entite": "abbaye Florense", "valeur": "Italie"}
+{"entite": "abbaye Gloire-Dieu de Gy-les-Nonains", "valeur": "France"}
+{"entite": "abbaye laïque La Tour", "valeur": "France"}
+{"entite": "abbaye Marmion", "valeur": "États-Unis"}
+{"entite": "abbaye Mater Ecclesiae", "valeur": "Italie"}
+{"entite": "abbaye médiévale Saint-Pierre de Chalon-sur-Saône", "valeur": "France"}
+{"entite": "abbaye Notre-Dame à Nieuwe Plant", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame-Bonham de Sainte-Marie-Kerque", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Abbecourt", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Acey", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Aiguebelle", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Aiguevive", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-d'Altbronn", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Ambronay", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-d'Andecy", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Ardorel", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Argentan", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Argenteuil", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Aubignac", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Autrey", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Eaucourt", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Évron", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Hénin-Liétard", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Hyverneaux", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Igny", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Ivry", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Oelenberg", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Olivet", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Orval", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame d’Ounans", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Ourscamp", "valeur": "France"}
+{"entite": "abbaye Notre-Dame d'Yerres", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bœuil", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Barbery", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Barzelle", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Baudeloo", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame de Beauchêne", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Beaugency", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Beaulieu", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Beaupré-sur-la-Lys", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Beauvoir", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Belchamp", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bellaigue", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bellavaux de Charenton", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Belleau", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bellecombe", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bellefontaine", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bellevaux", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Belloc", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bellozanne", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Biaches", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bithaine", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Blanche-Couronne", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bois-Grolland", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bon-Repos", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bon Secours de Blauvac", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bonfays", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bonlieu", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bonnaigue", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bonne-Espérance d'Échourgnac", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bonneval", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bonport", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Boquen", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Boscodon", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Bourbourg", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Breteuil", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Brialmont", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame de Buillon", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Cercamp", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Chalais", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Chambon", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Chancelade", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Châtillon", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Clairefontaine", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame de Coatmalouen", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Consolation de Cambrai", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Cormeilles", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Corneville", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Coulombs", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Daoulas", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Délivrance", "valeur": "Slovénie"}
+{"entite": "abbaye Notre-Dame de Dilo", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Donezan", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Faverney", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Felixpré", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Fervaques", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Fidélité de Jouques", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Fontaine-Guérard", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Fontgombault", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Ganagobie", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Gaussan", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Gercy", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Gethsemani", "valeur": "États-Unis"}
+{"entite": "abbaye Notre-Dame de Glastonbury", "valeur": "États-Unis"}
+{"entite": "abbaye Notre-Dame de Goaille", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Gomerfontaine", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Gondon", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Grâce de Bricquebec", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Grosbot", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Guadalupe", "valeur": "États-Unis"}
+{"entite": "abbaye Notre-Dame de Ham", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Hambye", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Josaphat", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Jouarre", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Jouy", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Jussamoutier", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Kerlot", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-l'Annonciation de Clear Creek", "valeur": "États-Unis"}
+{"entite": "abbaye Notre-Dame-de-l'Annonciation du Barroux", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de l'Assomption de Châtres", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de l'Assomption de Flabémont", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-l'Assomption de Montsalvy", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de l'Assomption du Bournet", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de l'Atlas", "valeur": "Algérie"}
+{"entite": "abbaye Notre-Dame de l'Eau", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de l'Épeau", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de l'Étanche", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de l'Étoile", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de l'Ouÿe", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de La Barre", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Blanche", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Charité", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Charmoye", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Chaume", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Clarté-Dieu", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Consolation de Vaise", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Coudre", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de La Couronne", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Faise", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Grainetière", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Joie", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-la-Paix de Castagniers", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-la-Paix de Chimay", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame de la Perrigne", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Plaine", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Sagne", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de la Vieuville", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Landèves", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Langonnet", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Lanthénac", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Lanvaux", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Larrivour", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Licques", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Lieu-Restauré", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Ligueux", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Livry", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Lombez", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Longpont", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Loos", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Loroy", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Lure", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Lyre", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Marcilly", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Maylis", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Melleray", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Migette", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Mistassini", "valeur": "Canada"}
+{"entite": "abbaye Notre-Dame de Mollégès", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Montier-en-Der", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Montserrat de Manille", "valeur": "Philippines"}
+{"entite": "abbaye Notre-Dame de Mores", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Morienval", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Nanteuil", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Nazareth", "valeur": "Canada"}
+{"entite": "abbaye Notre-Dame de Noyers", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Paimpont", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Pontifroid", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Pontron", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Protection", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Quarr", "valeur": "Royaume-Uni"}
+{"entite": "abbaye Notre-Dame de Randol", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Ré dite des Châteliers", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Rosières", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Sablonceaux", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Saint-Benoît d'Achel", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame de Saint-Dizier", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Saint-Rémy de Rochefort", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame de Saint-Sever-Calvados", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Sénanque", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Sept-Fontaines", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Séry", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Sézanne", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Signy", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Soissons", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Soleilmont", "valeur": "Belgique"}
+{"entite": "abbaye Notre-Dame de Soyons", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Staouëli", "valeur": "Algérie"}
+{"entite": "abbaye Notre-Dame de Tamié", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Timadeuc", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Tournay", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-de-Toute-Confiance", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Triors", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Valsery", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Vaucelles", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Vertus", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Willencourt", "valeur": "France"}
+{"entite": "abbaye Notre-Dame de Wisques", "valeur": "France"}
+{"entite": "abbaye Notre Dame des Alleuds", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-des-Anges", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-des-Anges de Saint-Just-de-Claix", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-des-Dombes", "valeur": "France"}
+{"entite": "abbaye Notre-Dame des Fontenelles", "valeur": "France"}
+{"entite": "abbaye Notre-Dame des Gardes", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-des-Hautes-Bruyères", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-des-Neiges", "valeur": "France"}
+{"entite": "abbaye Notre-Dame des Prés", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Bec", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Calvaire", "valeur": "Canada"}
+{"entite": "abbaye Notre-Dame du Jardin Lez Pleurs", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Landais", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-du-Lieu", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Miroir", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Mississippi", "valeur": "États-Unis"}
+{"entite": "abbaye Notre-Dame du Nid-au-Merle", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Palais", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Pesquié", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Reclus", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-du-Réconfort de Saizy", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Sacré-Cœur de Mâcon", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Saint-Esprit", "valeur": "États-Unis"}
+{"entite": "abbaye Notre-Dame du Tronchet", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Vœu", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Val", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-du-Val-Profond", "valeur": "France"}
+{"entite": "abbaye Notre-Dame du Verger d'Oisy-le-Verger", "valeur": "France"}
+{"entite": "abbaye Notre-Dame et Saint-Paul de Bellevaux", "valeur": "France"}
+{"entite": "abbaye Notre-Dame-La-D'Hors", "valeur": "France"}
+{"entite": "abbaye pontificale de Saint-Jérôme", "valeur": "Italie"}
+{"entite": "abbaye Rivalta di Torino", "valeur": "Italie"}
+{"entite": "abbaye Royal deSaint-Laumer de Blois", "valeur": "France"}
+{"entite": "abbaye Royale aux Hommes", "valeur": "France"}
+{"entite": "abbaye Royale d'Aniane", "valeur": "France"}
+{"entite": "abbaye royale d’Hautecombe", "valeur": "France"}
+{"entite": "abbaye royale de Bourgueil", "valeur": "France"}
+{"entite": "abbaye Royale de Caunes-Minervois", "valeur": "France"}
+{"entite": "abbaye royale de Celles-sur-Belle", "valeur": "France"}
+{"entite": "abbaye Royale de Chelles", "valeur": "France"}
+{"entite": "abbaye Royale de Ferrières", "valeur": "France"}
+{"entite": "abbaye royale de l'Épau", "valeur": "France"}
+{"entite": "abbaye Royale de la Chaise-Dieu", "valeur": "France"}
+{"entite": "abbaye Royale de La Réau", "valeur": "France"}
+{"entite": "abbaye royale de Longchamp", "valeur": "France"}
+{"entite": "abbaye Royale de Molesme", "valeur": "France"}
+{"entite": "abbaye royale de Notre-Dame-aux-Nonnains", "valeur": "France"}
+{"entite": "abbaye royale de Notre-Dame et Toussaints de Chaalis", "valeur": "France"}
+{"entite": "abbaye royale de Poulangy", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Alyre", "valeur": "France"}
+{"entite": "abbaye Royale de Saint-Corneille", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Denis", "valeur": "France"}
+{"entite": "abbaye Royale de Saint-Éloi de Noyon", "valeur": "France"}
+{"entite": "abbaye Royale de Saint-Évroult", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Germain d'Auxerre", "valeur": "France"}
+{"entite": "abbaye Royale de Saint-Germain-des-Prés", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Gildas de Rhuys", "valeur": "France"}
+{"entite": "abbaye Royale de Saint-Jean-Baptiste du Moncel", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Jean-d'Angély", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Médard de Soissons", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Michel en l'Herm", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Nicaise", "valeur": "France"}
+{"entite": "abbaye Royale  de Saint-Nicolas-aux-Bois", "valeur": "France"}
+{"entite": "abbaye Royale de Saint Ouen", "valeur": "France"}
+{"entite": "abbaye Royale de Saint-Remi de Reims", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Riquier", "valeur": "France"}
+{"entite": "abbaye royale de Saint-Wandrille de Fontenelle", "valeur": "France"}
+{"entite": "abbaye royale de Sainte-Marie de Lagrasse", "valeur": "France"}
+{"entite": "abbaye royale de Sorèze", "valeur": "France"}
+{"entite": "abbaye royale des Clairets", "valeur": "France"}
+{"entite": "abbaye Royale du Mont Saint-Quentin", "valeur": "France"}
+{"entite": "abbaye Royale Notre-Dame de Bernay", "valeur": "France"}
+{"entite": "abbaye royale Notre-Dame de Lieu-Dieu", "valeur": "France"}
+{"entite": "abbaye royale Saint-Michel de Bois-Aubry", "valeur": "France"}
+{"entite": "abbaye royale Saint-Nicolas de Septfontaines", "valeur": "France"}
+{"entite": "abbaye Royale Saint-Pierre de Jumièges", "valeur": "France"}
+{"entite": "abbaye Saint-Alban devant Mayence", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Amable de Riom", "valeur": "France"}
+{"entite": "abbaye Saint-Amand", "valeur": "France"}
+{"entite": "abbaye Saint-Amand-et-Sainte-Bertille de Marœuil", "valeur": "France"}
+{"entite": "abbaye Saint-Ambroix", "valeur": "France"}
+{"entite": "abbaye Saint-Andoche d'Autun", "valeur": "France"}
+{"entite": "abbaye Saint-André de Bruges", "valeur": "Belgique"}
+{"entite": "abbaye Saint-André de Cleveland", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-André de Fanlo", "valeur": "Espagne"}
+{"entite": "abbaye Saint-André de Lavaudieu", "valeur": "France"}
+{"entite": "abbaye Saint-André de Meymac", "valeur": "France"}
+{"entite": "abbaye Saint-André de Sestri Ponente", "valeur": "Italie"}
+{"entite": "abbaye Saint-André de Villeneuve-lès-Avignon", "valeur": "France"}
+{"entite": "abbaye Saint-André du Cateau", "valeur": "France"}
+{"entite": "abbaye Saint-Ange de Pétra", "valeur": "Turquie"}
+{"entite": "abbaye Saint-Anselme", "valeur": "États-Unis"}
+{"entite": "abbaye Saint Antoine de Ranvers", "valeur": "Italie"}
+{"entite": "abbaye Saint-Antoine-des-Champs", "valeur": "France"}
+{"entite": "abbaye Saint-Antoine-et-Saint-Pierre", "valeur": "France"}
+{"entite": "abbaye Saint-Antonin de Pamiers", "valeur": "France"}
+{"entite": "abbaye Saint-Aubert de Cambrai", "valeur": "France"}
+{"entite": "abbaye Saint-Aubin d'Angers", "valeur": "France"}
+{"entite": "abbaye Saint-Aubin des Bois", "valeur": "France"}
+{"entite": "abbaye Saint-Augustin-lès-Limoges", "valeur": "France"}
+{"entite": "abbaye Saint-Ausone", "valeur": "France"}
+{"entite": "abbaye Saint-Avit-les-Guêpières", "valeur": "France"}
+{"entite": "abbaye Saint-Barthélemy de Noyon", "valeur": "France"}
+{"entite": "abbaye Saint-Basle de Verzy", "valeur": "France"}
+{"entite": "abbaye Saint-Bède", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Bénigne de Dijon", "valeur": "France"}
+{"entite": "abbaye Saint-Benoît de Bahia", "valeur": "Brésil"}
+{"entite": "abbaye Saint-Benoît de Peramiho", "valeur": "Tanzanie"}
+{"entite": "abbaye Saint-Benoît de Polirone", "valeur": "Italie"}
+{"entite": "abbaye Saint-Benoît de Port-Valais", "valeur": "Suisse"}
+{"entite": "abbaye Saint-Benoît de Quinçay", "valeur": "France"}
+{"entite": "abbaye Saint-Benoît de Rio de Janeiro", "valeur": "Brésil"}
+{"entite": "abbaye Saint-Benoît de Saint-Malo", "valeur": "France"}
+{"entite": "abbaye Saint-Benoît de São Paulo", "valeur": "Brésil"}
+{"entite": "abbaye Saint-Benoît-du-Lac", "valeur": "Canada"}
+{"entite": "abbaye Saint-Bernard", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Bernard de Bayonne", "valeur": "France"}
+{"entite": "abbaye Saint-Bernard de Bornem", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Bertin", "valeur": "France"}
+{"entite": "abbaye Saint-Blaise", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Boniface de Munich", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Calixte de Cysoing", "valeur": "France"}
+{"entite": "abbaye Saint-Césaire", "valeur": "France"}
+{"entite": "abbaye Saint-Chéron", "valeur": "France"}
+{"entite": "abbaye Saint-Chéron-lès-Chartres", "valeur": "France"}
+{"entite": "abbaye Saint-Christophe de Phalempin", "valeur": "France"}
+{"entite": "abbaye Saint-Clément de Metz", "valeur": "France"}
+{"entite": "abbaye Saint-Corentin à Septeuil", "valeur": "France"}
+{"entite": "abbaye Saint-Crépin-en-Chaye", "valeur": "France"}
+{"entite": "abbaye Saint-Cyprien de Poitiers", "valeur": "France"}
+{"entite": "abbaye Saint-Denis de Reims", "valeur": "France"}
+{"entite": "abbaye Saint-Dominique de Silos", "valeur": "Espagne"}
+{"entite": "abbaye Saint-Emmeran", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Étienne d'Augsbourg", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Étienne de Baignes", "valeur": "France"}
+{"entite": "abbaye Saint-Étienne de Bassac", "valeur": "France"}
+{"entite": "abbaye Saint-Étienne de Dijon", "valeur": "France"}
+{"entite": "abbaye Saint-Étienne de Fontenay", "valeur": "France"}
+{"entite": "abbaye Saint-Étienne de Marmoutier", "valeur": "France"}
+{"entite": "abbaye Saint-Étienne de Saint-Estève", "valeur": "France"}
+{"entite": "abbaye Saint-Étienne de Strasbourg", "valeur": "France"}
+{"entite": "abbaye Saint-Étienne-les-Dames", "valeur": "France"}
+{"entite": "abbaye Saint-Eusèbe de Saignon", "valeur": "France"}
+{"entite": "abbaye Saint-Eusice de Selles-sur-Cher", "valeur": "France"}
+{"entite": "abbaye Saint-Eustase de Vergaville", "valeur": "France"}
+{"entite": "abbaye Saint-Èvre de Toul", "valeur": "France"}
+{"entite": "abbaye Saint-Faron de Meaux", "valeur": "France"}
+{"entite": "abbaye Saint-Félix-de-Montceau", "valeur": "France"}
+{"entite": "abbaye Saint-Félix de Valence", "valeur": "France"}
+{"entite": "abbaye Saint-Ferréol", "valeur": "France"}
+{"entite": "abbaye Saint-Feuillien du Rœulx", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Florent de Saumur", "valeur": "France"}
+{"entite": "abbaye Saint-Florentin de Bonneval", "valeur": "France"}
+{"entite": "abbaye Saint-Fructueux-de-Tarragone", "valeur": "Italie"}
+{"entite": "abbaye Saint-Genest de Nevers", "valeur": "France"}
+{"entite": "abbaye Saint-Geniès-des-Mourgues", "valeur": "France"}
+{"entite": "abbaye Saint-Genou", "valeur": "France"}
+{"entite": "abbaye Saint-Georges de Boscherville", "valeur": "France"}
+{"entite": "abbaye Saint-Georges de Rennes", "valeur": "France"}
+{"entite": "abbaye Saint-Gérard de Brogne", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Géraud d'Aurillac", "valeur": "France"}
+{"entite": "abbaye Saint-Germer-de-Fly", "valeur": "France"}
+{"entite": "abbaye Saint-Gilbert de Neuffonts", "valeur": "France"}
+{"entite": "abbaye Saint-Gildas-des-Bois", "valeur": "France"}
+{"entite": "abbaye Saint-Guénolé de Landévennec", "valeur": "France"}
+{"entite": "abbaye Saint-Honorat de Tarascon", "valeur": "France"}
+{"entite": "abbaye Saint-Jacques de Constance", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Jacques de Joucou", "valeur": "France"}
+{"entite": "abbaye Saint-Jacques de Liège", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Jacques de Mayence", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Jacques de Montfort", "valeur": "France"}
+{"entite": "abbaye Saint-Jacques de Vitry-en-Perthois", "valeur": "France"}
+{"entite": "abbaye Saint-Jean-Baptiste de Chocques", "valeur": "France"}
+{"entite": "abbaye Saint-Jean-Baptiste de Falaise", "valeur": "France"}
+{"entite": "abbaye Saint-Jean-Baptiste de Valenciennes", "valeur": "France"}
+{"entite": "abbaye Saint-Jean d'Orbestier", "valeur": "France"}
+{"entite": "abbaye Saint-Jean-de-Cerlier", "valeur": "Suisse"}
+{"entite": "abbaye Saint-Jean de la Castelle", "valeur": "France"}
+{"entite": "abbaye Saint-Jean de Laon", "valeur": "France"}
+{"entite": "abbaye Saint-Jean de Lübeck", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Jean-de-Réome", "valeur": "France"}
+{"entite": "abbaye Saint-Jean de Sorde", "valeur": "France"}
+{"entite": "abbaye Saint-Jean-des-Prémontrés d'Amiens", "valeur": "France"}
+{"entite": "abbaye Saint-Jean-des-Vignes", "valeur": "France"}
+{"entite": "abbaye Saint-Jean-du-Mont de Thérouanne", "valeur": "France"}
+{"entite": "abbaye Saint-Jean-l'Évangéliste", "valeur": "Italie"}
+{"entite": "abbaye Saint-Jean-le-Grand d'Autun", "valeur": "France"}
+{"entite": "abbaye Saint-Joseph", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Joseph de Clairval", "valeur": "France"}
+{"entite": "abbaye Saint-Joseph de Saint Benedict", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Josse de Dommartin", "valeur": "France"}
+{"entite": "abbaye Saint-Jouin", "valeur": "France"}
+{"entite": "abbaye Saint-Julien d'Auxerre", "valeur": "France"}
+{"entite": "abbaye Saint-Junien de Nouaillé-Maupertuis", "valeur": "France"}
+{"entite": "abbaye Saint-Just de Suse", "valeur": "Italie"}
+{"entite": "abbaye Saint-Laurent d'Ampleforth", "valeur": "Royaume-Uni"}
+{"entite": "abbaye Saint-Laurent d'Avignon", "valeur": "France"}
+{"entite": "abbaye Saint-Laurent de Beaubec", "valeur": "France"}
+{"entite": "abbaye Saint-Laurent de Liège", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Lazare de Seedorf", "valeur": "Suisse"}
+{"entite": "abbaye Saint-Léger d'Ébreuil", "valeur": "France"}
+{"entite": "abbaye Saint-Léger de Préaux", "valeur": "France"}
+{"entite": "abbaye Saint-Léger de Soissons", "valeur": "France"}
+{"entite": "abbaye Saint-Léon de Toul", "valeur": "France"}
+{"entite": "abbaye Saint-Léonard de Corbigny", "valeur": "France"}
+{"entite": "abbaye Saint-Léonard de Guînes", "valeur": "France"}
+{"entite": "abbaye Saint-Léonard des Chaumes", "valeur": "France"}
+{"entite": "abbaye Saint-Léopold de Nancy", "valeur": "France"}
+{"entite": "abbaye Saint-Louis-du-Temple de Vauhallan", "valeur": "France"}
+{"entite": "abbaye Saint-Loup de Troyes", "valeur": "France"}
+{"entite": "abbaye Saint-Lucien de Beauvais", "valeur": "France"}
+{"entite": "abbaye Saint-Ludger de Helmstedt", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Magloire de Léhon", "valeur": "France"}
+{"entite": "abbaye Saint-Magloire de Paris", "valeur": "France"}
+{"entite": "abbaye Saint-Mansuy de Toul", "valeur": "France"}
+{"entite": "abbaye Saint-Marcel", "valeur": "France"}
+{"entite": "abbaye Saint-Marcel-lès-Chalon", "valeur": "France"}
+{"entite": "abbaye Saint-Marien d'Auxerre", "valeur": "France"}
+{"entite": "abbaye Saint-Martial de Limoges", "valeur": "France"}
+{"entite": "abbaye Saint-Martin-aux-Jumeaux", "valeur": "France"}
+{"entite": "abbaye Saint-Martin d'Auchy", "valeur": "France"}
+{"entite": "abbaye Saint-Martin d'Épernay", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Chore", "valeur": "France"}
+{"entite": "abbaye Saint-Martin-de-Glandières", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Laon", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Ligugé", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Limoges", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Massay", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Nevers", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Plaimpied", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Pontoise", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Savigny", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Sées", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Tournai", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Martin de Tours", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Troarn", "valeur": "France"}
+{"entite": "abbaye Saint-Martin de Vertou", "valeur": "France"}
+{"entite": "abbaye Saint-Martin du Canigou", "valeur": "France"}
+{"entite": "abbaye Saint-Martin-ès-Aires", "valeur": "France"}
+{"entite": "abbaye Saint-Martin-et-Saint-Vulgain", "valeur": "France"}
+{"entite": "abbaye Saint-Mathieu de Fine-Terre", "valeur": "France"}
+{"entite": "abbaye Saint-Matthias de Trèves", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Maur de Glanfeuil", "valeur": "France"}
+{"entite": "abbaye Saint-Maur de Hanga", "valeur": "Tanzanie"}
+{"entite": "abbaye Saint-Maurice de Carnoët", "valeur": "France"}
+{"entite": "abbaye Saint-Maurice-et-Saint-Maur", "valeur": "Luxembourg"}
+{"entite": "abbaye Saint-Maximin de Trèves", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Médard", "valeur": "France"}
+{"entite": "abbaye Saint-Médard d'Andres", "valeur": "France"}
+{"entite": "abbaye Saint-Meinrad", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Memmie de Châlons", "valeur": "France"}
+{"entite": "abbaye Saint-Mesmin de Micy", "valeur": "France"}
+{"entite": "abbaye Saint-Michel de Cuxa", "valeur": "France"}
+{"entite": "abbaye Saint-Michel de Doullens", "valeur": "France"}
+{"entite": "abbaye Saint-Michel de Farnborough", "valeur": "Royaume-Uni"}
+{"entite": "abbaye Saint-Michel de Frigolet", "valeur": "France"}
+{"entite": "abbaye Saint-Michel de Gaillac", "valeur": "France"}
+{"entite": "abbaye Saint-Michel de Kergonan", "valeur": "France"}
+{"entite": "abbaye Saint-Michel-de-la-Cluse", "valeur": "Italie"}
+{"entite": "abbaye Saint-Michel de Tonnerre", "valeur": "France"}
+{"entite": "abbaye Saint-Michel du Tréport", "valeur": "France"}
+{"entite": "abbaye Saint-Nicolas d'Angers", "valeur": "France"}
+{"entite": "abbaye Saint-Nicolas d'Arrouaise", "valeur": "France"}
+{"entite": "abbaye Saint-Nicolas d'Hermières", "valeur": "France"}
+{"entite": "abbaye Saint-Nicolas de Bar-sur-Aube", "valeur": "France"}
+{"entite": "abbaye Saint-Nicolas de Blasimon", "valeur": "France"}
+{"entite": "abbaye Saint-Nicolas de Verneuil-sur-Avre", "valeur": "France"}
+{"entite": "abbaye Saint-Nicolas-des-Prés", "valeur": "France"}
+{"entite": "abbaye Saint-Nicolas-des-Prés de Tournai", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Orens de Larreule", "valeur": "France"}
+{"entite": "abbaye Saint-Paul", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Paul de Besançon", "valeur": "France"}
+{"entite": "abbaye Saint-Paul de Soissons", "valeur": "France"}
+{"entite": "abbaye Saint-Paul de Verdun", "valeur": "France"}
+{"entite": "abbaye Saint-Paul de Wisques", "valeur": "France"}
+{"entite": "abbaye Saint-Paul du Lavanttal", "valeur": "Autriche"}
+{"entite": "abbaye Saint-Paul (Newton)", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Père-en-Vallée", "valeur": "France"}
+{"entite": "abbaye Saint-Philibert de Tournus", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre au Mont-Blandain", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Pierre-aux-Monts", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre d'Airvault", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre d'Auxerre", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre d'Avenay", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre d'Étival", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre d'Hautvillers", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre-d'Oyes", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Baume-les-Messieurs", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Beaulieu-sur-Dordogne", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Beaumont", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Bèze", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Brantôme", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Cellefrouin", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Chalon-sur-Saône", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Chezal-Benoît", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Chézy", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Corbie", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Flavigny-sur-Ozerain", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Gand", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Pierre de Gigny", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Honnecourt", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de l'Almanarre", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de L'Isle", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de la Couture", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Lagny", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Lo", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Pierre de Marcilhac-sur-Célé", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Moissac", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Montier-la-Celle", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Montiéramey", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Montmajour", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Nayran", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Pradines", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Préaux", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Rebais", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Rillé", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Rompon", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Senones", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Solesmes", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Vertheuil", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre de Vierzon", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre-des-Chazes", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre-des-Tourettes d'Apt", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre du Mas-Grenier", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre du Vigeois", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre-ès-Liens", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre et Saint-Paul de Châtillon-lès-Conches", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre-et-Saint-Paul de Pothières", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre-et-Saint-Paul de Wissembourg", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre-le-Vif de Sens", "valeur": "France"}
+{"entite": "abbaye Saint-Pierre-les-Dames", "valeur": "France"}
+{"entite": "abbaye Saint-Pons de Nice", "valeur": "France"}
+{"entite": "abbaye Saint-Prix", "valeur": "France"}
+{"entite": "abbaye Saint-Procope", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Quentin", "valeur": "France"}
+{"entite": "abbaye Saint-Rémi-des-Landes à Clairefontaine", "valeur": "France"}
+{"entite": "abbaye Saint-Remy et Saint-Georges de Villers-Cotterêts", "valeur": "France"}
+{"entite": "abbaye Saint-Rigaud", "valeur": "France"}
+{"entite": "abbaye Saint-Ruf d'Avignon", "valeur": "France"}
+{"entite": "abbaye Saint-Ruf de Valence", "valeur": "France"}
+{"entite": "abbaye Saint-Satur", "valeur": "France"}
+{"entite": "abbaye Saint-Saulve", "valeur": "France"}
+{"entite": "abbaye Saint-Sauveur d'Anchin", "valeur": "France"}
+{"entite": "abbaye Saint-Sauveur d'Anvers", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Sauveur de Charroux", "valeur": "France"}
+{"entite": "abbaye Saint-Sauveur de Figeac", "valeur": "France"}
+{"entite": "abbaye Saint-Sauveur de Ham", "valeur": "France"}
+{"entite": "abbaye Saint-Sauveur de l'Étoile", "valeur": "France"}
+{"entite": "abbaye Saint-Sauveur de Redon", "valeur": "France"}
+{"entite": "abbaye Saint-Sauveur de Sira", "valeur": "France"}
+{"entite": "abbaye Saint-Sauveur de Villeloin", "valeur": "France"}
+{"entite": "abbaye Saint-Sébastien de Manglieu", "valeur": "France"}
+{"entite": "abbaye Saint-Serein de Chantemerle", "valeur": "France"}
+{"entite": "abbaye Saint-Serge d'Angers", "valeur": "France"}
+{"entite": "abbaye Saint-Sernin de Toulouse", "valeur": "France"}
+{"entite": "abbaye Saint-Sernin du Monastère", "valeur": "France"}
+{"entite": "abbaye Saint-Séverin de Château-Landon", "valeur": "France"}
+{"entite": "abbaye Saint-Spire de Corbeil", "valeur": "France"}
+{"entite": "abbaye Saint-Sulpice de Bourges", "valeur": "France"}
+{"entite": "abbaye Saint-Taurin d'Évreux", "valeur": "France"}
+{"entite": "abbaye Saint-Thierry", "valeur": "France"}
+{"entite": "abbaye Saint-Thomas de Leipzig", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Trudpert", "valeur": "Allemagne"}
+{"entite": "abbaye Saint-Vaast", "valeur": "France"}
+{"entite": "abbaye Saint-Vaast de Moreuil", "valeur": "France"}
+{"entite": "abbaye Saint-Vanne de Verdun", "valeur": "France"}
+{"entite": "abbaye Saint-Victor de Huy", "valeur": "Belgique"}
+{"entite": "abbaye Saint-Victor de Marseille", "valeur": "France"}
+{"entite": "abbaye Saint-Victor de Paris", "valeur": "France"}
+{"entite": "abbaye Saint-Vigor-le-Grand", "valeur": "France"}
+{"entite": "abbaye Saint-Vincent<br> de Nieul-sur-l'Autise", "valeur": "France"}
+{"entite": "abbaye Saint-Vincent de Chantelle", "valeur": "France"}
+{"entite": "abbaye Saint-Vincent de Laon", "valeur": "France"}
+{"entite": "abbaye Saint-Vincent de Latrobe", "valeur": "États-Unis"}
+{"entite": "abbaye Saint-Vincent de Metz", "valeur": "France"}
+{"entite": "abbaye Saint-Vincent de Senlis", "valeur": "France"}
+{"entite": "abbaye Saint-Vincent du Mans", "valeur": "France"}
+{"entite": "abbaye Saint-Vincent du Volturne", "valeur": "Italie"}
+{"entite": "abbaye Saint-Vivant de Vergy", "valeur": "France"}
+{"entite": "abbaye Saint-Wilmer de Boulogne-sur-Mer", "valeur": "France"}
+{"entite": "abbaye Saint-Winoc de Bergues", "valeur": "France"}
+{"entite": "abbaye Sainte-Anne de Bonlieu-sur-Roubion", "valeur": "France"}
+{"entite": "abbaye Sainte-Anne de Kergonan", "valeur": "France"}
+{"entite": "abbaye Sainte-Anne de Moutons", "valeur": "France"}
+{"entite": "abbaye Sainte-Brigitte", "valeur": "Estonie"}
+{"entite": "abbaye Sainte-Catherine d'Avignon", "valeur": "France"}
+{"entite": "abbaye Sainte-Catherine de Laval", "valeur": "France"}
+{"entite": "abbaye Sainte-Catherine du Mont", "valeur": "France"}
+{"entite": "abbaye Sainte-Cécile de Ryde", "valeur": "Royaume-Uni"}
+{"entite": "abbaye Sainte-Cécile de Solesmes", "valeur": "France"}
+{"entite": "abbaye Sainte-Claire", "valeur": "France"}
+{"entite": "abbaye Sainte-Colombe de Blendecques", "valeur": "France"}
+{"entite": "abbaye Sainte-Croix de Bouzonville", "valeur": "France"}
+{"entite": "abbaye Sainte-Croix de Guingamp", "valeur": "France"}
+{"entite": "abbaye Sainte-Croix de Poitiers", "valeur": "France"}
+{"entite": "abbaye Sainte-Croix de Quimperlé", "valeur": "France"}
+{"entite": "abbaye Sainte-Élisabeth de Genlis", "valeur": "France"}
+{"entite": "abbaye Sainte-Élisabeth du Quesnoy", "valeur": "France"}
+{"entite": "abbaye Sainte-Érentrude de Kellenried", "valeur": "Allemagne"}
+{"entite": "abbaye Sainte-Foy de Conques", "valeur": "France"}
+{"entite": "abbaye Sainte-Gertrude", "valeur": "Allemagne"}
+{"entite": "abbaye Sainte-Glossinde de Metz", "valeur": "France"}
+{"entite": "abbaye Sainte-Godelieve de Bruges", "valeur": "Belgique"}
+{"entite": "abbaye Sainte-Hedwige", "valeur": "Pologne"}
+{"entite": "abbaye Sainte-Hildegarde d'Eibingen", "valeur": "Allemagne"}
+{"entite": "abbaye Sainte-Irmine", "valeur": "Allemagne"}
+{"entite": "abbaye Sainte-Madeleine de Geneston", "valeur": "France"}
+{"entite": "abbaye Sainte-Madeleine du Barroux", "valeur": "France"}
+{"entite": "abbaye Sainte-Marguerite de Bouilland", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie d'Arles-sur-Tech", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie d'York", "valeur": "Royaume-Uni"}
+{"entite": "abbaye Sainte-Marie de Berteaucourt", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Dublin", "valeur": "Irlande"}
+{"entite": "abbaye Sainte-Marie de Fontcaude", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Fontfroide", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Fulda", "valeur": "Allemagne"}
+{"entite": "abbaye Sainte-Marie de Glencairn", "valeur": "Irlande"}
+{"entite": "abbaye Sainte-Marie de l'Eula", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de La Garde", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de la Pierre-Qui-Vire", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de la Règle", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de la vallée de Josaphat", "valeur": "Israël"}
+{"entite": "abbaye Sainte-Marie de Lacock", "valeur": "Royaume-Uni"}
+{"entite": "abbaye Sainte-Marie de Longues", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Maumont", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Mittelzell", "valeur": "Allemagne"}
+{"entite": "abbaye Sainte-Marie de Paris", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Pierredon", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Pignerol", "valeur": "Italie"}
+{"entite": "abbaye Sainte-Marie de Pornic", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Rieunette", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Saint-Jean-le-Grand d'Autun à Colonne", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Souillac", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Tinchebray-Bocage", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Tonnay-Charente", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie de Villelongue", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie des Deux-Montagnes", "valeur": "Canada"}
+{"entite": "abbaye Sainte-Marie du Désert", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie du Rivet", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie et Saint-Bernard des Olieux", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie-Madeleine de Longwé", "valeur": "France"}
+{"entite": "abbaye Sainte-Marie-Madeleine de Marseille", "valeur": "France"}
+{"entite": "abbaye Sainte-Odile", "valeur": "France"}
+{"entite": "abbaye Sainte-Rictrude et Saint-Pierre de Marchiennes", "valeur": "France"}
+{"entite": "abbaye Sainte-Scholastique", "valeur": "France"}
+{"entite": "abbaye Sainte-Trinité de Belchamp", "valeur": "France"}
+{"entite": "abbaye Sainte-Trinité de Lessay", "valeur": "France"}
+{"entite": "abbaye Saints-Pierre-et-Paul de Paderborn", "valeur": "Allemagne"}
+{"entite": "abbaye San Bartolomeo", "valeur": "Italie"}
+{"entite": "abbaye San Dalmazzo da Pedona", "valeur": "Italie"}
+{"entite": "abbaye San Martin de Castañeda", "valeur": "Espagne"}
+{"entite": "abbaye San Salvatore", "valeur": "Italie"}
+{"entite": "abbaye San Tommaso dei Borgognoni", "valeur": "Italie"}
+{"entite": "abbaye Sancta-Maria de Nunraw", "valeur": "Royaume-Uni"}
+{"entite": "abbaye Sankt Walburg", "valeur": "Allemagne"}
+{"entite": "abbaye Sant'Ambrogio della Vittoria", "valeur": "Italie"}
+{"entite": "abbaye Santa Anastasia", "valeur": "Italie"}
+{"entite": "abbaye Santa Maria Arabona", "valeur": "Italie"}
+{"entite": "abbaye Santa María de la Oliva", "valeur": "Espagne"}
+{"entite": "abbaye Santa María de San Salvador", "valeur": "Espagne"}
+{"entite": "abbaye Santa Maria dell'Arco", "valeur": "Italie"}
+{"entite": "abbaye Santa Maria della Ferraria", "valeur": "Italie"}
+{"entite": "abbaye Santa Maria della Vittoria", "valeur": "Italie"}
+{"entite": "abbaye Santa Maria di Casanova", "valeur": "Italie"}
+{"entite": "abbaye Santa Maria di Faifoli", "valeur": "Italie"}
+{"entite": "abbaye Santa Maria in Montesanto", "valeur": "Italie"}
+{"entite": "abbaye Santi Vito e Salvo", "valeur": "Italie"}
+{"entite": "abbaye Santissima Trinità da Lungi", "valeur": "Italie"}
+{"entite": "abbaye Santissima Trinità del Legno", "valeur": "Italie"}
+{"entite": "abbaye Santo Spirito di Zannone", "valeur": "Italie"}
+{"entite": "abbaye Santo Stefano al Corno", "valeur": "Italie"}
+{"entite": "abbaye São Pedro das Águias", "valeur": "Portugal"}
+{"entite": "abbaye Saulve de Valenciennes", "valeur": "France"}
+{"entite": "L'Abbaye-sous-Dol", "valeur": "France"}
+{"entite": "abbaye Toussaint d'Angers", "valeur": "France"}
+{"entite": "abbaye troglodytique de Brantôme", "valeur": "France"}
+{"entite": "abbaye Val Notre-Dame", "valeur": "Canada"}
+{"entite": "Abbazia", "valeur": "Italie"}
+{"entite": "Abbazia aleramica", "valeur": "Italie"}
+{"entite": "Abbazia benedettina del Santissimo Salvatore", "valeur": "Italie"}
+{"entite": "Abbazia dei santi Fabiano e Sebastiano", "valeur": "Italie"}
+{"entite": "Abbazia dei Santi Pietro e Paolo", "valeur": "Italie"}
+{"entite": "Abbazia dei Santi Ruffino e Vitale", "valeur": "Italie"}
+{"entite": "Abbazia dei Sette Frati", "valeur": "Italie"}
+{"entite": "Abbazia del Conio", "valeur": "Italie"}
+{"entite": "Abbazia del Patire", "valeur": "Italie"}
+{"entite": "Abbazia dell'Acquafredda", "valeur": "Italie"}
+{"entite": "Abbazia della Benedicta", "valeur": "Italie"}
+{"entite": "Abbazia della Santissima Trinità di Monte Sacro", "valeur": "Italie"}
+{"entite": "Abbazia di Ferrania", "valeur": "Italie"}
+{"entite": "Abbazia di Marola", "valeur": "Italie"}
+{"entite": "Abbazia di Monte Oliveto Maggiore", "valeur": "Italie"}
+{"entite": "Abbazia di Rambona", "valeur": "Italie"}
+{"entite": "Abbazia di San Basilide", "valeur": "Italie"}
+{"entite": "Abbazia di San Benedetto", "valeur": "Italie"}
+{"entite": "Abbazia di San Benedetto in Vallalta", "valeur": "Italie"}
+{"entite": "Abbazia di San Biagio di Piobbico", "valeur": "Italie"}
+{"entite": "Abbazia di San Cassiano", "valeur": "Italie"}
+{"entite": "Abbazia di San Filippo", "valeur": "Italie"}
+{"entite": "Abbazia di San Firmano", "valeur": "Italie"}
+{"entite": "Abbazia di San Gallo", "valeur": "Italie"}
+{"entite": "Abbazia di San Giacomo di Stura", "valeur": "Italie"}
+{"entite": "Abbazia di San Giustino d'Arna", "valeur": "Italie"}
+{"entite": "abbazia di San Gregorio", "valeur": "Italie"}
+{"entite": "Abbazia di San Leonardo", "valeur": "Italie"}
+{"entite": "Abbazia di San Lorenzo, San Lorenzo in Campo", "valeur": "Italie"}
+{"entite": "Abbazia di San Mauro", "valeur": "Italie"}
+{"entite": "Abbazia di San Michele di Lamoli", "valeur": "Italie"}
+{"entite": "Abbazia di San Niceta", "valeur": "Italie"}
+{"entite": "Abbazia di San Pietro", "valeur": "Italie"}
+{"entite": "Abbazia di San Pietro di Precipiano", "valeur": "Italie"}
+{"entite": "Abbazia di San Pietro in Cuppis", "valeur": "Italie"}
+{"entite": "Abbazia di San Quintino", "valeur": "Italie"}
+{"entite": "Abbazia di San Salvatore minore (Scandriglia)", "valeur": "Italie"}
+{"entite": "Abbazia di San Savino", "valeur": "Italie"}
+{"entite": "abbazia di San Venerio", "valeur": "Italie"}
+{"entite": "Abbazia di San Vincenzo", "valeur": "Italie"}
+{"entite": "Abbazia di San Zeno (Verona, Italy)", "valeur": "Italie"}
+{"entite": "Abbazia di Sant'Agata Martire", "valeur": "Italie"}
+{"entite": "Abbazia di Sant'Andrea", "valeur": "Italie"}
+{"entite": "abbazia di Sant'Andrea in Flumine", "valeur": "Italie"}
+{"entite": "Abbazia di Sant'Angelo al Monte Raparo", "valeur": "Italie"}
+{"entite": "Abbazia di Sant'Angelo de Frigillo", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Croce al Chienti (Casette d'Ete, Sant'Elpidio a Mare)", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Giustina", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Lucia di Roffeno", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria Assunta", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria del Bosco", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria del Parto", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria delle Carceri", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria delle Moie", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria di Finalpia", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria di Sitria", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria di Valdiponte", "valeur": "Italie"}
+{"entite": "Abbazia di Santa Maria in Palazzo", "valeur": "Italie"}
+{"entite": "Abbazia di Valsenio", "valeur": "Italie"}
+{"entite": "Abbazia di Villa Oneto", "valeur": "Italie"}
+{"entite": "abbazia imperiale di San Salvatore Maggiore", "valeur": "Italie"}
+{"entite": "Abbey of Bominaco", "valeur": "Italie"}
+{"entite": "Abbey of Grottaferrata", "valeur": "Italie"}
+{"entite": "Abbey of Guldenberg", "valeur": "Belgique"}
+{"entite": "abbey of Jasov", "valeur": "Slovaquie"}
+{"entite": "Abbey of John the Baptist", "valeur": "Italie"}
+{"entite": "Abbey of La Trinità della Cava", "valeur": "Italie"}
+{"entite": "Abbey of Mehrerau", "valeur": "Autriche"}
+{"entite": "Abbey of Monte Oliveto Maggiore", "valeur": "Italie"}
+{"entite": "Abbey of Our Lady of Mount Zion", "valeur": "Israël"}
+{"entite": "Abbey of Our Lady of the Rescue", "valeur": "Italie"}
+{"entite": "Abbey of Saint Mary of Maniace", "valeur": "Italie"}
+{"entite": "Abbey of San Felice", "valeur": "Italie"}
+{"entite": "Abbey of San Felice and Mauro", "valeur": "Italie"}
+{"entite": "Abbey of San Guglielmo al Goleto", "valeur": "Italie"}
+{"entite": "Abbey of San Magno, Fondi", "valeur": "Italie"}
+{"entite": "Abbey of San Martino delle Scale", "valeur": "Italie"}
+{"entite": "Abbey of San Michele Arcangelo", "valeur": "Italie"}
+{"entite": "Abbey of San Quirce", "valeur": "Espagne"}
+{"entite": "Abbey of Sant'Albino", "valeur": "Italie"}
+{"entite": "Abbey of Santa Lucia", "valeur": "Italie"}
+{"entite": "Abbey of Santa Maria delle Macchie, San Ginesio", "valeur": "Italie"}
+{"entite": "Abbey of Santa Maria in Sylvis", "valeur": "Italie"}
+{"entite": "Abbey of Santo Stefano in Rivomaris", "valeur": "Italie"}
+{"entite": "Abbey of St. Mary de Petra, Kilmacduagh", "valeur": "Irlande"}
+{"entite": "Abbey of St. Mary de Portu Patrum, Annaghdown", "valeur": "Irlande"}
+{"entite": "Abbey of St. Peter (Erfurt, Germany)", "valeur": "Allemagne"}
+{"entite": "Abbey of the Holy Trinity, New Norcia", "valeur": "Australie"}
+{"entite": "Abbey Santa Maria di Roccamadore", "valeur": "Italie"}
+{"entite": "Abbeylara Cistercian Abbey", "valeur": "Irlande"}
+{"entite": "abbiette d'Attin", "valeur": "France"}
+{"entite": "Abbot's palace", "valeur": "Espagne"}
+{"entite": "Abbot's Palace in Koronowo", "valeur": "Pologne"}
+{"entite": "Abbot's Palace of Pont de Suert", "valeur": "Espagne"}
+{"entite": "Abbot's palace of Santa Maria de Serrateix", "valeur": "Espagne"}
+{"entite": "Abbotsbury Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Abdij Hemelsdale", "valeur": "Belgique"}
+{"entite": "Abdij Maria Mediatrix", "valeur": "Belgique"}
+{"entite": "Abdij Onze-Lieve-Vrouw", "valeur": "Belgique"}
+{"entite": "Abdij Onze-Lieve-Vrouw van Nazareth", "valeur": "Belgique"}
+{"entite": "Abdij ten Duinen te Brugge", "valeur": "Belgique"}
+{"entite": "Abdij Ten Roosen", "valeur": "Belgique"}
+{"entite": "Abdij van Beaulieu te Petegem [O.-Vl.-Wortegem-Petegem]", "valeur": "Belgique"}
+{"entite": "Abdij van Doornzele", "valeur": "Belgique"}
+{"entite": "Abdij van Ghislenghien", "valeur": "Belgique"}
+{"entite": "Abdij van Groenenbriel te Gent", "valeur": "Belgique"}
+{"entite": "abdij van het Heilig Graf te Cambrai", "valeur": "France"}
+{"entite": "Abdij van het Rijke Gasthuis te Gent", "valeur": "Belgique"}
+{"entite": "Abdij van Oosteeklo te Gent", "valeur": "Belgique"}
+{"entite": "Abdij van Oriënten", "valeur": "Belgique"}
+{"entite": "Abdij van Rozenberg te Waasmunster", "valeur": "Belgique"}
+{"entite": "Abdij van Rozendaal te Sint-Katelijne-Waver", "valeur": "Belgique"}
+{"entite": "Abdij van Sint-Adriaans te Geraardsbergen", "valeur": "Belgique"}
+{"entite": "Abdij van Sint-Baafs te Gent", "valeur": "Belgique"}
+{"entite": "Abdij van Sint-Bernards te Hemiksem", "valeur": "Belgique"}
+{"entite": "Abdij van Sint-Niklaas te Veurne", "valeur": "Belgique"}
+{"entite": "Abdij van Sint-Pieters en Onze-Lieve-Vrouw te Merkem", "valeur": "Belgique"}
+{"entite": "Abdij van Ter Hagen te Gent", "valeur": "Belgique"}
+{"entite": "Abdij van Terbeek", "valeur": "Belgique"}
+{"entite": "Abdij van Voormezele", "valeur": "Belgique"}
+{"entite": "Abtei Rommersdorf", "valeur": "Allemagne"}
+{"entite": "Alcester Abbey", "valeur": "Royaume-Uni"}
+{"entite": "All Saints Abbey, Lund", "valeur": "Suède"}
+{"entite": "Alnwick Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Alte Abtei Seligenstadt", "valeur": "Allemagne"}
+{"entite": "Alton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "ancienne abbaye de Chaalis", "valeur": "France"}
+{"entite": "ancienne abbaye de la Madeleine de Châteaudun", "valeur": "France"}
+{"entite": "ancienne abbaye du Bois", "valeur": "France"}
+{"entite": "ancienne abbaye fontevriste", "valeur": "France"}
+{"entite": "ancienne abbaye Saint-Christophe de Saint-Mihiel", "valeur": "France"}
+{"entite": "ancienne abbaye Saint-Denis", "valeur": "France"}
+{"entite": "ancienne abbaye Saint-Martin de Cruis", "valeur": "France"}
+{"entite": "ancienne abbaye Saint-Paul de Besançon", "valeur": "France"}
+{"entite": "ancienne abbaye Saint-Sixte de Rettel", "valeur": "France"}
+{"entite": "ancienne Chartreuse de la Part-Dieu avec porterie et chapelle, ancienne maison des frères et ruines du moulin", "valeur": "Suisse"}
+{"entite": "Annonciades de Meulan", "valeur": "France"}
+{"entite": "Athelhampton Hall", "valeur": "Royaume-Uni"}
+{"entite": "Athelney Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Augustijnenabdij Zonnebeke", "valeur": "Belgique"}
+{"entite": "Augustijnenklooster", "valeur": "Belgique"}
+{"entite": "Backnang Abbey", "valeur": "Allemagne"}
+{"entite": "Badia Coltibuono", "valeur": "Italie"}
+{"entite": "Badia de Florence", "valeur": "Italie"}
+{"entite": "Badia dei Padri Passionisti", "valeur": "Italie"}
+{"entite": "Badia del Buonsollazzo", "valeur": "Italie"}
+{"entite": "Badia di Monte Armato", "valeur": "Italie"}
+{"entite": "Badia di S. Sebastiano", "valeur": "Italie"}
+{"entite": "Badia di San Vito", "valeur": "Italie"}
+{"entite": "Badia di Sant'Arcangelo", "valeur": "Italie"}
+{"entite": "Badia di Santa Maria di Pierno", "valeur": "Italie"}
+{"entite": "Badia di Torrechiara", "valeur": "Italie"}
+{"entite": "Badia of Santi Salvatore e Cirino", "valeur": "Italie"}
+{"entite": "Badia San Savino", "valeur": "Italie"}
+{"entite": "Ballintubber Abbey", "valeur": "Irlande"}
+{"entite": "Balmacara Estate", "valeur": "Royaume-Uni"}
+{"entite": "Bardsey Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Barrow Gurney Nunnery", "valeur": "Royaume-Uni"}
+{"entite": "basilique Saint-André", "valeur": "Italie"}
+{"entite": "basilique Saint-Ulrich-et-Sainte-Afre", "valeur": "Allemagne"}
+{"entite": "basilique Sainte-Justine", "valeur": "Italie"}
+{"entite": "basilique Sant'Angelo in Formis", "valeur": "Italie"}
+{"entite": "basilique Santa Maria del Colle", "valeur": "Italie"}
+{"entite": "Bayham Old Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Baysdale Priory", "valeur": "Royaume-Uni"}
+{"entite": "Bedford Abbey", "valeur": "Royaume-Uni"}
+{"entite": "béguinage de Bruges", "valeur": "Belgique"}
+{"entite": "Benedictine Abbey of Rajhrad", "valeur": "Tchéquie"}
+{"entite": "Benedictine monastery Arneburg", "valeur": "Allemagne"}
+{"entite": "Benedictine monastery in Lubiń", "valeur": "Pologne"}
+{"entite": "Benedictine monastery known as Malmesbury Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Benedictine nunnery of St Mary, Clerkenwell", "valeur": "Royaume-Uni"}
+{"entite": "Benedictine nunnery Sitzenkirch", "valeur": "Allemagne"}
+{"entite": "Bénédictines de Mantes", "valeur": "France"}
+{"entite": "Benediktinerabtei Kloster Schäftlarn 13 in Schäftlarn", "valeur": "Allemagne"}
+{"entite": "Benediktinerabtei Kloster Schäftlarn 13; Kloster Schäftlarn 14; Kloster Schäftlarn 16 in Schäftlarn", "valeur": "Allemagne"}
+{"entite": "Benediktinerabtei Kloster Schäftlarn 3 in Schäftlarn", "valeur": "Allemagne"}
+{"entite": "Benediktinerabtei Nähe Kloster Schäftlarn in Schäftlarn", "valeur": "Allemagne"}
+{"entite": "Benediktinerabtei Nähe Schyrenplatz; Pfarrgereut; Schyrenplatz 1 in Scheyern", "valeur": "Allemagne"}
+{"entite": "Benediktinerabtei Nähe Schyrenplatz; Schyrenplatz 1 in Scheyern", "valeur": "Allemagne"}
+{"entite": "Benediktinerabtei Schyrenplatz 1 in Scheyern", "valeur": "Allemagne"}
+{"entite": "Benediktinerinnenkloster Kitzingen", "valeur": "Allemagne"}
+{"entite": "Benediktinerinnenkloster Neuburg an der Donau", "valeur": "Allemagne"}
+{"entite": "Benediktinerinnenkloster Spandau", "valeur": "Allemagne"}
+{"entite": "Benediktinerinnenkloster Steinerkirchen", "valeur": "Autriche"}
+{"entite": "Berg im Donaugau Abbey", "valeur": "Allemagne"}
+{"entite": "Bermondsey Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Bernardusdal Abbey", "valeur": "Belgique"}
+{"entite": "Black Friary, Trim", "valeur": "Irlande"}
+{"entite": "Blanchland Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Bourne Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Bradfield Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Bradwell Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Bridgetown Abbey", "valeur": "Irlande"}
+{"entite": "Bruton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Buchau Abbey", "valeur": "Allemagne"}
+{"entite": "Burnham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Bury St Edmund's Abbey: including the monks' cemetery and outer precinct and vineyard walls", "valeur": "Royaume-Uni"}
+{"entite": "Caldey Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Campomorto Abbey", "valeur": "Italie"}
+{"entite": "Cannington Priory", "valeur": "Royaume-Uni"}
+{"entite": "Canon Island Abbey", "valeur": "Irlande"}
+{"entite": "Carrow Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Castle Hedingham Priory", "valeur": "Royaume-Uni"}
+{"entite": "chapitre de Poussay", "valeur": "France"}
+{"entite": "chartreuse de Coblence", "valeur": "Allemagne"}
+{"entite": "chartreuse de Poleteins", "valeur": "France"}
+{"entite": "château de Montearagón", "valeur": "Espagne"}
+{"entite": "château de Thouzon", "valeur": "France"}
+{"entite": "château et abbaye d'Iburg", "valeur": "Allemagne"}
+{"entite": "château les Bouysses", "valeur": "France"}
+{"entite": "Chatteris Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Chertsey Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Cheshunt Priory", "valeur": "Royaume-Uni"}
+{"entite": "Chester Priory", "valeur": "Royaume-Uni"}
+{"entite": "Chesterton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Chiesa di San Donnino in Soglio", "valeur": "Italie"}
+{"entite": "Cholsey Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Church and abbey of Javier", "valeur": "Espagne"}
+{"entite": "Church of Saints Faustinus and Jovita", "valeur": "Italie"}
+{"entite": "Church of San Peter ad Oratorium", "valeur": "Italie"}
+{"entite": "Church of St. Andrew the Apostle", "valeur": "Italie"}
+{"entite": "Church Preen", "valeur": "Royaume-Uni"}
+{"entite": "Cistercian abbey and mansion, with fishpond and mound at Garendon", "valeur": "Royaume-Uni"}
+{"entite": "Cistercian Abbey comlex of Koprzywnica", "valeur": "Pologne"}
+{"entite": "Cistercian Abbey of Rotem", "valeur": "Belgique"}
+{"entite": "Cistercian monastery of Alderbach", "valeur": "Allemagne"}
+{"entite": "Cistercian nunnery in Moralzarzal", "valeur": "Espagne"}
+{"entite": "Cisterciënzerinnen - Abdij Onze-Lieve-Vrouw van de Wijngaard, Leuven", "valeur": "Belgique"}
+{"entite": "Cisterciënzerinnen - Abdij Rozendaal, Walem", "valeur": "Belgique"}
+{"entite": "Cisterciënzerinnen - Abdij Sint-Bernardsdal, Diest", "valeur": "Belgique"}
+{"entite": "Cisterciënzers - Abdij Sint-Bernards aan de Schelde, Hemiksem", "valeur": "Belgique"}
+{"entite": "Ciszterci Nővérek Boldogasszony Háza Monostor Levéltára", "valeur": "Hongrie"}
+{"entite": "cloître d'Emmaüs", "valeur": "Tchéquie"}
+{"entite": "Cluny I", "valeur": "France"}
+{"entite": "Cluny II", "valeur": "France"}
+{"entite": "Cluny III", "valeur": "France"}
+{"entite": "Cockersand Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Colchester Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Colegio Ave Maria", "valeur": "Bolivie"}
+{"entite": "collégiale de Zenarruza", "valeur": "Espagne"}
+{"entite": "Combermere Abbey (house)", "valeur": "Royaume-Uni"}
+{"entite": "commanderie de Bisham", "valeur": "Royaume-Uni"}
+{"entite": "complesso monastico Abbazia di San Vito", "valeur": "Italie"}
+{"entite": "Convent of St. Mariestern", "valeur": "Allemagne"}
+{"entite": "Convento de la Encarnación", "valeur": "Espagne"}
+{"entite": "Convento de la Encarnación de las Madres Bernardas", "valeur": "Espagne"}
+{"entite": "Convento de San Clemente", "valeur": "Espagne"}
+{"entite": "Convento de San Martín", "valeur": "Espagne"}
+{"entite": "Convento di Santa Maria dell'Orsoleo", "valeur": "Italie"}
+{"entite": "Cookhill Priory", "valeur": "Royaume-Uni"}
+{"entite": "Cotton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Cour Pétral", "valeur": "France"}
+{"entite": "couvent bénédictin de Saint-Jean-des-Sœurs", "valeur": "Suisse"}
+{"entite": "couvent bénédictin de Saint-Martin", "valeur": "Suisse"}
+{"entite": "couvent cistercien d'Alcalá de Henares", "valeur": "Espagne"}
+{"entite": "couvent de Géronde, église et site", "valeur": "Suisse"}
+{"entite": "couvent des Bénédictines de Baugé", "valeur": "France"}
+{"entite": "couvent des Bénédictines de Notre-Dame-de-Consolation", "valeur": "France"}
+{"entite": "couvent des Bernardines de Manosque", "valeur": "France"}
+{"entite": "couvent des Cordeliers de Vendôme", "valeur": "France"}
+{"entite": "couvent des Croisiers de Liège", "valeur": "Belgique"}
+{"entite": "couvent des Moniales bénédictines", "valeur": "Canada"}
+{"entite": "couvent Notre Dame de la Rose de Jéricho", "valeur": "Belgique"}
+{"entite": "couvent Saint-Marc", "valeur": "France"}
+{"entite": "Coverham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Cowick Priory", "valeur": "Royaume-Uni"}
+{"entite": "Creake Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Crossraguel Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Croxton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Croxton Abbey and associated remains", "valeur": "Royaume-Uni"}
+{"entite": "Curzon Park Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Dale Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Daphne Cistercian monastery", "valeur": "Grèce"}
+{"entite": "Darley Abbey (remains of)", "valeur": "Royaume-Uni"}
+{"entite": "Darnhall Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Daylesford Abbey", "valeur": "États-Unis"}
+{"entite": "Dercongal Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Derrynane Abbey", "valeur": "Irlande"}
+{"entite": "Dhammadharini Vihara", "valeur": "États-Unis"}
+{"entite": "Dominican Convent of Mary's Refuge", "valeur": "Suisse"}
+{"entite": "Dominikanerklostret, Åhus", "valeur": "Suède"}
+{"entite": "Dömölk Abbey", "valeur": "Hongrie"}
+{"entite": "Dorchester Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Dore Abbey: a Cistercian monastery", "valeur": "Royaume-Uni"}
+{"entite": "doyenné de Varen", "valeur": "France"}
+{"entite": "Dureford Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Durford Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Durham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Easby Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Easby Abbey Premonstratensian monastery: monastic precinct, cultivation terraces, water-management features and ancillary buildi", "valeur": "Royaume-Uni"}
+{"entite": "Eastbridge Hospital of St Thomas the Martyr, Canterbury", "valeur": "Royaume-Uni"}
+{"entite": "Eastminster", "valeur": "Royaume-Uni"}
+{"entite": "église abbatiale Saint-Benoît d'En-Calcat", "valeur": "France"}
+{"entite": "église abbatiale Sainte-Marie-de-l'Étoile", "valeur": "Bosnie-Herzégovine"}
+{"entite": "église Saint-Gumbertus d'Ansbach", "valeur": "Allemagne"}
+{"entite": "église Saint-Jacques-le-Mineur de Liège", "valeur": "Belgique"}
+{"entite": "église Saint-Michel de Hildesheim", "valeur": "Allemagne"}
+{"entite": "église Saint-Pierre d'Assise", "valeur": "Italie"}
+{"entite": "église Saint-Pierre de Vienne", "valeur": "France"}
+{"entite": "église Saint-Sauveur d'Aix-la-Chapelle", "valeur": "Allemagne"}
+{"entite": "église Sainte-Catherine de Vilnius", "valeur": "Lituanie"}
+{"entite": "église Sainte-Gertrude", "valeur": "Belgique"}
+{"entite": "église Sainte-Walburge de Walbourg", "valeur": "France"}
+{"entite": "Elstow Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Eversham", "valeur": "Belgique"}
+{"entite": "Faringdon Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Farne Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Ferns Abbey", "valeur": "Irlande"}
+{"entite": "Flamstead Priory", "valeur": "Royaume-Uni"}
+{"entite": "former abbey of Rossilli", "valeur": "Italie"}
+{"entite": "former benedectine abbey of Grignano", "valeur": "Italie"}
+{"entite": "Fors Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Fort Augustus Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Fragment de la basilique de abbaye de Lorsch", "valeur": "Allemagne"}
+{"entite": "Franciscan Abbey", "valeur": "Irlande"}
+{"entite": "Furness Abbey Savignac and Cistercian monasteries: precinct wall, great gatehouse, 'chapel outside the gates', south west gatewa", "valeur": "Royaume-Uni"}
+{"entite": "Garsten Abbey", "valeur": "Autriche"}
+{"entite": "Gilabbey", "valeur": "Irlande"}
+{"entite": "Gimsøy Abbey", "valeur": "Norvège"}
+{"entite": "Glendalough", "valeur": "Irlande"}
+{"entite": "Glenstal Abbey", "valeur": "Irlande"}
+{"entite": "Godstow Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Gogarth Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Gokewell Priory", "valeur": "Royaume-Uni"}
+{"entite": "Grancia di San Demetrio", "valeur": "Italie"}
+{"entite": "Greenfield Priory", "valeur": "Royaume-Uni"}
+{"entite": "Gudum Kloster", "valeur": "Danemark"}
+{"entite": "Hagnaby Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Hailes Abbey and ringwork", "valeur": "Royaume-Uni"}
+{"entite": "Halesowen Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Hartlepool Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Hatfield Peverel Priory", "valeur": "Royaume-Uni"}
+{"entite": "Haughmond Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Hertford Priory", "valeur": "Royaume-Uni"}
+{"entite": "Hinchingbrooke House", "valeur": "Royaume-Uni"}
+{"entite": "Holme Eden Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Holy Cross Abbey", "valeur": "États-Unis"}
+{"entite": "Holy Redeemer abbey", "valeur": "Italie"}
+{"entite": "Holy Trinity Abbey", "valeur": "Irlande"}
+{"entite": "hôtel abbatial Saint-Rémy de Lunéville", "valeur": "France"}
+{"entite": "hôtel de ville de Mönchengladbach", "valeur": "Allemagne"}
+{"entite": "Humberston Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Huysburg", "valeur": "Allemagne"}
+{"entite": "Immacolata (Piombino)", "valeur": "Italie"}
+{"entite": "inch Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Inchicronan Priory", "valeur": "Irlande"}
+{"entite": "Innisfallen Church, Oratories & Abbey", "valeur": "Irlande"}
+{"entite": "Iona Nunnery", "valeur": "Royaume-Uni"}
+{"entite": "Itzehoe Monastery", "valeur": "Allemagne"}
+{"entite": "Jedburgh Abbey, 50m ESE of Abbey House", "valeur": "Royaume-Uni"}
+{"entite": "Jędrzejów Abbey", "valeur": "Pologne"}
+{"entite": "Kamieniec Ząbkowicki Abbey", "valeur": "Pologne"}
+{"entite": "Kapucijnenklooster", "valeur": "Belgique"}
+{"entite": "Katharinenhof Kranenburg", "valeur": "Allemagne"}
+{"entite": "Kenilworth Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Keynsham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Kidwelly Priory", "valeur": "Royaume-Uni"}
+{"entite": "Kilronan Abbey", "valeur": "Irlande"}
+{"entite": "Kington St Michael Priory", "valeur": "Royaume-Uni"}
+{"entite": "Kirche St. Stephan", "valeur": "Allemagne"}
+{"entite": "Kirkjubæjar Abbey", "valeur": "Islande"}
+{"entite": "Klášter Naší Paní nad Vltavou", "valeur": "Tchéquie"}
+{"entite": "Klášter Nový Dvůr", "valeur": "Tchéquie"}
+{"entite": "Klooster Sint-Norbertushuis", "valeur": "Belgique"}
+{"entite": "Klooster van Sint-Maria-Oudenhove", "valeur": "Belgique"}
+{"entite": "Kloster Altmühlmünster", "valeur": "Allemagne"}
+{"entite": "Kloster Gravenhorst", "valeur": "Allemagne"}
+{"entite": "Kloster Helfta", "valeur": "Allemagne"}
+{"entite": "Kloster Holzen", "valeur": "Allemagne"}
+{"entite": "Kloster Marienthal", "valeur": "Allemagne"}
+{"entite": "Kloster Megingaudshausen", "valeur": "Allemagne"}
+{"entite": "Kloster Neuendorf", "valeur": "Allemagne"}
+{"entite": "Kloster Niedernburg", "valeur": "Allemagne"}
+{"entite": "Kloster Uetersen", "valeur": "Allemagne"}
+{"entite": "Kołbacz Abbey", "valeur": "Pologne"}
+{"entite": "Kornelimünster Abbey", "valeur": "Allemagne"}
+{"entite": "Kurisumala Ashram", "valeur": "Inde"}
+{"entite": "Kutjevo Abbey", "valeur": "Croatie"}
+{"entite": "Lambley Priory", "valeur": "Royaume-Uni"}
+{"entite": "Langdon Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Langley Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Lavendon Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Lebanza Abbey", "valeur": "Espagne"}
+{"entite": "Leicester abbey and 17th century mansion and ornamental gardens", "valeur": "Royaume-Uni"}
+{"entite": "Leiston Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Leiston Abbey (first site) with later chapel and pill box", "valeur": "Royaume-Uni"}
+{"entite": "Leominster Abbey", "valeur": "Royaume-Uni"}
+{"entite": "léproserie de Pontfrault", "valeur": "France"}
+{"entite": "Lesnes Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Lessingham Priory", "valeur": "Royaume-Uni"}
+{"entite": "Lilleshall Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Lindisfarne Priory", "valeur": "Royaume-Uni"}
+{"entite": "Little Haywood Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Llanllugan Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Llanllyr Nunnery", "valeur": "Royaume-Uni"}
+{"entite": "Lüne Abbey", "valeur": "Allemagne"}
+{"entite": "Maegdendal Abbey, Oplinter", "valeur": "Belgique"}
+{"entite": "Maenan Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Malpas Priory", "valeur": "Royaume-Uni"}
+{"entite": "Mariastern Abbey, Hohenweiler", "valeur": "Autriche"}
+{"entite": "Mariënlof Abbey", "valeur": "Belgique"}
+{"entite": "Marienschloss Abbey", "valeur": "Allemagne"}
+{"entite": "Memleben Abbey", "valeur": "Allemagne"}
+{"entite": "Merevale Abbey, a Cistercian monastery, associated water control features and industrial remains", "valeur": "Royaume-Uni"}
+{"entite": "Missenden Abbey", "valeur": "Royaume-Uni"}
+{"entite": "monastère bénédictin de Fahr", "valeur": "Suisse"}
+{"entite": "monastère bénédictin de Fujimi", "valeur": "Japon"}
+{"entite": "monastère d'Alcobaça", "valeur": "Portugal"}
+{"entite": "monastère d'El Paular", "valeur": "Espagne"}
+{"entite": "monastère d'Oberzell", "valeur": "Allemagne"}
+{"entite": "monastère de Blagnac", "valeur": "France"}
+{"entite": "monastère de Břevnov", "valeur": "Tchéquie"}
+{"entite": "monastère de Grafschaft", "valeur": "Allemagne"}
+{"entite": "monastère de Kilmacduagh", "valeur": "Irlande"}
+{"entite": "monastère de Kinalehin", "valeur": "Irlande"}
+{"entite": "monastère de l'Ascension", "valeur": "États-Unis"}
+{"entite": "monastère de l’Immaculée-Conception de Rouen", "valeur": "France"}
+{"entite": "monastère de la Sainte-Trinité", "valeur": "États-Unis"}
+{"entite": "monastère de la Visitation Sainte-Marie", "valeur": "France"}
+{"entite": "monastère de Leyre", "valeur": "Espagne"}
+{"entite": "monastère de Maromby", "valeur": "Madagascar"}
+{"entite": "monastère de Monte Corona", "valeur": "Italie"}
+{"entite": "monastère de Notre-Dame de Vico", "valeur": "Espagne"}
+{"entite": "monastère de Poblet", "valeur": "Espagne"}
+{"entite": "monastère de Ripoll", "valeur": "Espagne"}
+{"entite": "monastère de Rosazzo", "valeur": "Italie"}
+{"entite": "monastère de Saint Benoît à Conversano", "valeur": "Italie"}
+{"entite": "monastère de Sant Pere de Rodes", "valeur": "Espagne"}
+{"entite": "monastère de Santa María de la Valldigna", "valeur": "Espagne"}
+{"entite": "monastère de St. Gallenberg", "valeur": "Suisse"}
+{"entite": "monastère de Volkenroda", "valeur": "Allemagne"}
+{"entite": "monastère de Walsrode", "valeur": "Allemagne"}
+{"entite": "monastère des Bénédictines de Caen", "valeur": "France"}
+{"entite": "monastère des Bénédictines de Laval", "valeur": "France"}
+{"entite": "monastère des Bénédictines de Marsat", "valeur": "France"}
+{"entite": "monastère des Bénédictines du Saint-Sacrement de Rosheim", "valeur": "France"}
+{"entite": "monastère des chanoinesses augustines de Detmold", "valeur": "Allemagne"}
+{"entite": "monastère du Havre Trappiste", "valeur": "République populaire de Chine"}
+{"entite": "monastère moderne de San Juan de la Peña", "valeur": "Espagne"}
+{"entite": "monastère Notre-Dame d'Hurtebise", "valeur": "Belgique"}
+{"entite": "monastère Notre-Dame de Benifaçà", "valeur": "Espagne"}
+{"entite": "monastère Notre-Dame-de-Bourbon d'Auzon", "valeur": "France"}
+{"entite": "monastère Notre Dame de Kokoubou", "valeur": "Bénin"}
+{"entite": "monastère Notre-Dame de l'Emmanuel de Kasanza", "valeur": "République démocratique du Congo"}
+{"entite": "monastère Notre-Dame-de-la-Sainte-Espérance", "valeur": "France"}
+{"entite": "monastère Notre Dame des Mokoto", "valeur": "République démocratique du Congo"}
+{"entite": "monastère royal de Saint Joachim et Sainte Anne", "valeur": "Espagne"}
+{"entite": "monastère royal de Sainte Marie de Veruela", "valeur": "Espagne"}
+{"entite": "monastère Saint-André de Clerlande", "valeur": "Belgique"}
+{"entite": "monastère Saint-Jean de la Peña", "valeur": "Espagne"}
+{"entite": "monastère Saint-Pierre-le-Vieux", "valeur": "Espagne"}
+{"entite": "monastère Saint-Remacle de Wavreumont", "valeur": "Belgique"}
+{"entite": "monastère Sainte-Marie d'Amer", "valeur": "Espagne"}
+{"entite": "monastère Sainte-Marie de Palazuelos", "valeur": "Espagne"}
+{"entite": "monastère Sainte-Marie de Valldonzella", "valeur": "Espagne"}
+{"entite": "monastère Sainte-Walburge", "valeur": "États-Unis"}
+{"entite": "monastère Santa María de Óvila", "valeur": "Espagne"}
+{"entite": "monastère São Dinis d'Odivelas", "valeur": "Portugal"}
+{"entite": "Monasterio Cisterciense de la Espina", "valeur": "Espagne"}
+{"entite": "Monasterio Cisterciense de la Santísima Trinidad", "valeur": "Espagne"}
+{"entite": "Monasterio de Monsalud", "valeur": "Espagne"}
+{"entite": "Monasterio de Nuestra Señora de Huerta", "valeur": "Espagne"}
+{"entite": "Monasterio de San Bernardo", "valeur": "Espagne"}
+{"entite": "Monasterio de San Clemente", "valeur": "Espagne"}
+{"entite": "Monasterio de Santa María de Aciveiro", "valeur": "Espagne"}
+{"entite": "Monasterio de Santa María de Cántabos", "valeur": "Espagne"}
+{"entite": "Monasterio de Santa María de Herrera", "valeur": "Espagne"}
+{"entite": "Monasterio de Santa María de Meira", "valeur": "Espagne"}
+{"entite": "Monasterio de Santa María de Valdediós", "valeur": "Espagne"}
+{"entite": "Monasterio de Santa María de Valdeiglesias", "valeur": "Espagne"}
+{"entite": "Monasterio de Santa María la Real", "valeur": "Espagne"}
+{"entite": "Monasterio Santa María de la Paz", "valeur": "Nicaragua"}
+{"entite": "Monasterio Santa Maria del Evangelio", "valeur": "République dominicaine"}
+{"entite": "Monastery courtyard Belgern", "valeur": "Allemagne"}
+{"entite": "Monastery in Bierzwnik", "valeur": "Pologne"}
+{"entite": "Monastery in the Au", "valeur": "Suisse"}
+{"entite": "Monastery Neu St. Johann", "valeur": "Suisse"}
+{"entite": "Monastery of Alloz", "valeur": "Espagne"}
+{"entite": "Monastery of Benevívere", "valeur": "Espagne"}
+{"entite": "Monastery of Holy Mary of Buenafuente del Sistal", "valeur": "Espagne"}
+{"entite": "Monastery of Nuestra Señora de Alconada", "valeur": "Espagne"}
+{"entite": "Monastery of Nuestra Señora de la Paz", "valeur": "Espagne"}
+{"entite": "Monastery of Nuestra Señora de Valvanera", "valeur": "Espagne"}
+{"entite": "Monastery of Saint Scholastica", "valeur": "Italie"}
+{"entite": "Monastery of San Andrés de Arroyo", "valeur": "Espagne"}
+{"entite": "Monastery of San Benito, Talavera de la Reina", "valeur": "Espagne"}
+{"entite": "Monastery of San Miguel de las Dueñas", "valeur": "Espagne"}
+{"entite": "Monastery of San Vicente el Real", "valeur": "Espagne"}
+{"entite": "Monastery of Santa Ana", "valeur": "Espagne"}
+{"entite": "monastery of Santa Lucía", "valeur": "Espagne"}
+{"entite": "Monastery of Santa María, Barria", "valeur": "Espagne"}
+{"entite": "Monastery of Santa María de Bujedo de Juarros", "valeur": "Espagne"}
+{"entite": "Monastery of Santa María de Matallana", "valeur": "Espagne"}
+{"entite": "Monastery of Santa María de Valldaura", "valeur": "Espagne"}
+{"entite": "Monastery of Santa María de Vileña", "valeur": "Espagne"}
+{"entite": "Monastery of Santa María la Real in Obona", "valeur": "Espagne"}
+{"entite": "Monastery of Santa María la Real of Oseira", "valeur": "Espagne"}
+{"entite": "Monastery of Vallombrosa", "valeur": "Italie"}
+{"entite": "Monestir de Sant Pere de les Puel·les", "valeur": "Espagne"}
+{"entite": "Monestir de Santa Maria de Bonrepòs", "valeur": "Espagne"}
+{"entite": "Monk's Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Moore Abbey", "valeur": "Irlande"}
+{"entite": "Morticelli", "valeur": "Italie"}
+{"entite": "Mosteiro Bela Vista", "valeur": "Angola"}
+{"entite": "Mount Melleray Monastery", "valeur": "Irlande"}
+{"entite": "Mount Saint Mary's Abbey", "valeur": "États-Unis"}
+{"entite": "Mourne Abbey", "valeur": "Irlande"}
+{"entite": "Movilla Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Munkeby Abbey", "valeur": "Norvège"}
+{"entite": "Munkeliv Abbey", "valeur": "Norvège"}
+{"entite": "Münsterlingen abbey", "valeur": "Suisse"}
+{"entite": "mur de l'abbaye de Lorsch", "valeur": "Allemagne"}
+{"entite": "Muri-Gries Abbey", "valeur": "Italie"}
+{"entite": "Nagatsuka Monastery for Jesuits", "valeur": "Japon"}
+{"entite": "Nashdom", "valeur": "Royaume-Uni"}
+{"entite": "New town hall of Alfaro", "valeur": "Espagne"}
+{"entite": "Newbattle Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Newbattle Abbey, abbey church, cloisters and associated buildings", "valeur": "Royaume-Uni"}
+{"entite": "Newbo Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Nonnenbos Abbey", "valeur": "Belgique"}
+{"entite": "Norman's Burrow", "valeur": "Royaume-Uni"}
+{"entite": "Nostra Signora del Canneto", "valeur": "Italie"}
+{"entite": "Nostra Signora della Misericordia", "valeur": "Italie"}
+{"entite": "Notley Abbey: an Augustinian abbey and associated post-Dissolution dovecote", "valeur": "Royaume-Uni"}
+{"entite": "Nová Říše", "valeur": "Tchéquie"}
+{"entite": "Nun Cotham Priory", "valeur": "Royaume-Uni"}
+{"entite": "Ołbin Abbey", "valeur": "Pologne"}
+{"entite": "Ocle Priory", "valeur": "Royaume-Uni"}
+{"entite": "Old Abbey, now Highclare School", "valeur": "Royaume-Uni"}
+{"entite": "Opatství Staré Brno Řádu sv. Augustina", "valeur": "Tchéquie"}
+{"entite": "Ostrov Abbey", "valeur": "Tchéquie"}
+{"entite": "Otham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Oulton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Our Lady of Dallas Abbey", "valeur": "États-Unis"}
+{"entite": "Our Lady of Mount Calvary Monastery", "valeur": "Nigeria"}
+{"entite": "Our Lady of the Angels Monastery", "valeur": "Nigeria"}
+{"entite": "Our Lady of the Holy Cross Monastery", "valeur": "Nigeria"}
+{"entite": "Owston Augustinian Abbey with six fishponds, a gatehouse and boundary", "valeur": "Royaume-Uni"}
+{"entite": "Palacio abacial del monasterio de Piedra", "valeur": "Espagne"}
+{"entite": "Palacio Señorial de los Abades de La Oliva", "valeur": "Espagne"}
+{"entite": "Palais Abattial - Jacquemart-André de Chaalis", "valeur": "France"}
+{"entite": "palais abbatial de Remiremont", "valeur": "France"}
+{"entite": "palais abbatial de Rocamadour", "valeur": "France"}
+{"entite": "palais abbatial de Royaumont", "valeur": "France"}
+{"entite": "palais abbatial de Saint-Claude", "valeur": "France"}
+{"entite": "palais abbatial de Saint-Germain-des-Prés", "valeur": "France"}
+{"entite": "palais abbatial de Saint-Seine-l'Abbaye", "valeur": "France"}
+{"entite": "palais abbatial de Tournus", "valeur": "France"}
+{"entite": "palais abbatial Jean de Bourbon", "valeur": "France"}
+{"entite": "palais abbatial Saint-Bénigne", "valeur": "France"}
+{"entite": "palais des Abbés d'Oliwa", "valeur": "Pologne"}
+{"entite": "palais Saint-Georges", "valeur": "France"}
+{"entite": "Palau Abacial", "valeur": "Espagne"}
+{"entite": "Parndon Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Part of a Roman fort and its associated vicus and remains of a pre-Conquest monastery and a Benedictine priory on Castle Hill", "valeur": "Royaume-Uni"}
+{"entite": "Pembroke Priory", "valeur": "Royaume-Uni"}
+{"entite": "Pertapaan Rawaseneng", "valeur": "Indonésie"}
+{"entite": "Pinley Priory", "valeur": "Royaume-Uni"}
+{"entite": "Piona Abbey", "valeur": "Italie"}
+{"entite": "Polesworth Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Pontida Abbey", "valeur": "Italie"}
+{"entite": "Portsmouth Abbey School", "valeur": "États-Unis"}
+{"entite": "Poulton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Premonstratensian abbey at Sulby Abbey Farm", "valeur": "Royaume-Uni"}
+{"entite": "Premonstratensian monastery", "valeur": "Allemagne"}
+{"entite": "prieuré de Bolton", "valeur": "Royaume-Uni"}
+{"entite": "prieuré de Chanteuges", "valeur": "France"}
+{"entite": "prieuré de Contamine-sur-Arve", "valeur": "France"}
+{"entite": "Prieuré de Corsendonk", "valeur": "Belgique"}
+{"entite": "prieuré de Fischingen", "valeur": "Suisse"}
+{"entite": "prieuré de Flers-en-Escrebieux", "valeur": "France"}
+{"entite": "prieuré de Fore", "valeur": "Irlande"}
+{"entite": "Prieuré de Hirzenach", "valeur": "Allemagne"}
+{"entite": "prieuré de Jakobsberg", "valeur": "Allemagne"}
+{"entite": "prieuré de la Chaise-Dieu", "valeur": "France"}
+{"entite": "prieuré de La Réole", "valeur": "France"}
+{"entite": "prieuré de Ménil à Lunéville", "valeur": "France"}
+{"entite": "prieuré de Mouthier-Haute-Pierre", "valeur": "France"}
+{"entite": "prieuré de Norton", "valeur": "Royaume-Uni"}
+{"entite": "prieuré de Nütschau", "valeur": "Allemagne"}
+{"entite": "prieuré de Reichenbach", "valeur": "Allemagne"}
+{"entite": "prieuré de Sankt Gerold", "valeur": "Autriche"}
+{"entite": "prieuré de Trizay", "valeur": "France"}
+{"entite": "prieuré de Walsingham", "valeur": "Royaume-Uni"}
+{"entite": "prieuré de Weston", "valeur": "États-Unis"}
+{"entite": "prieuré Notre-Dame", "valeur": "Danemark"}
+{"entite": "prieuré Notre-Dame de Klaarland", "valeur": "Belgique"}
+{"entite": "prieuré Saint-Benoît de Palendriai", "valeur": "Lituanie"}
+{"entite": "prieuré Saint-Gabriel", "valeur": "Tchéquie"}
+{"entite": "prieuré Saint-Gabriel (Sankt Johann bei Herberstein)", "valeur": "Autriche"}
+{"entite": "prieuré Saint-Grégoire de Douai", "valeur": "France"}
+{"entite": "prieuré Saint-Louis de Poissy", "valeur": "France"}
+{"entite": "prieuré Sainte-Bathilde de Vanves", "valeur": "France"}
+{"entite": "prieuré Sainte-Croix de Lavoûte-Chilhac", "valeur": "France"}
+{"entite": "prieuré Sainte-Lioba de Copenhague", "valeur": "Danemark"}
+{"entite": "Pyrn Monastery", "valeur": "Grèce"}
+{"entite": "Ramundeboda kloster", "valeur": "Suède"}
+{"entite": "Ranton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Ratac Abbey", "valeur": "Monténégro"}
+{"entite": "Rauden", "valeur": "Pologne"}
+{"entite": "Real Monasterio de Santa María de Benavides", "valeur": "Espagne"}
+{"entite": "Real Monasterio de Santa María de la Piedad de Trasobares", "valeur": "Espagne"}
+{"entite": "Ring Abbey", "valeur": "Danemark"}
+{"entite": "Rioseco Abbey", "valeur": "Espagne"}
+{"entite": "Riseberga Abbey", "valeur": "Suède"}
+{"entite": "Rocester Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Rosbercon Abbey", "valeur": "Irlande"}
+{"entite": "Roskilde Abbey", "valeur": "Danemark"}
+{"entite": "Rowney Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Royal abbey of Santa María la Real", "valeur": "Espagne"}
+{"entite": "Royal Monastery of Santa María de Oia", "valeur": "Espagne"}
+{"entite": "Rueda Abbey", "valeur": "Espagne"}
+{"entite": "Ruínas românicas de Salzedas no local de Abadia Velha", "valeur": "Portugal"}
+{"entite": "Rüti Monastery", "valeur": "Suisse"}
+{"entite": "Saccidananda Ashram", "valeur": "Inde"}
+{"entite": "Säckingen Abbey", "valeur": "Allemagne"}
+{"entite": "Saint Andrew's Basilica", "valeur": "Belgique"}
+{"entite": "Saint Angel de Ursaria abbey", "valeur": "Italie"}
+{"entite": "Saint Anselm Abbey", "valeur": "États-Unis"}
+{"entite": "Saint George's Abbey, Längsee", "valeur": "Autriche"}
+{"entite": "Saint George's Basilica", "valeur": "Italie"}
+{"entite": "Saint Gregory's University", "valeur": "États-Unis"}
+{"entite": "Saint James church in Obra", "valeur": "Pologne"}
+{"entite": "Saint Louis Abbey", "valeur": "États-Unis"}
+{"entite": "Saint Martin's Abbey", "valeur": "États-Unis"}
+{"entite": "Saint Mary of Càlena abbey", "valeur": "Italie"}
+{"entite": "Saint Peter's Abbey in Bergoglio", "valeur": "Italie"}
+{"entite": "Saint-Ulric en Forêt Noire", "valeur": "Allemagne"}
+{"entite": "Saints Peter and Columbanus Abbey", "valeur": "Italie"}
+{"entite": "Salehurst Abbey", "valeur": "Royaume-Uni"}
+{"entite": "San Bartolomeo", "valeur": "Italie"}
+{"entite": "San Benedetto de' Frondigliosi abbey", "valeur": "Italie"}
+{"entite": "San Domenico concert hall", "valeur": "Italie"}
+{"entite": "San Gemini di Massa", "valeur": "Italie"}
+{"entite": "San Giovanni Battista e San Vincenzo", "valeur": "Italie"}
+{"entite": "San Giovanni in Piano monastery", "valeur": "Italie"}
+{"entite": "San Lorenzo ad Septimum", "valeur": "Italie"}
+{"entite": "San Michele Arcangelo abbey", "valeur": "Italie"}
+{"entite": "San Pedro de Arlanza", "valeur": "Espagne"}
+{"entite": "San Pietro in Bovara", "valeur": "Italie"}
+{"entite": "San Pietro in Campo", "valeur": "Italie"}
+{"entite": "San Pietro in Varatella", "valeur": "Italie"}
+{"entite": "San Salvador de Oña", "valeur": "Espagne"}
+{"entite": "San Salvatore in Summano", "valeur": "Italie"}
+{"entite": "San Salvatore Maggiore", "valeur": "Italie"}
+{"entite": "San Vincenzo al Volturno Old Abbey", "valeur": "Italie"}
+{"entite": "sanctuaire de la Madonna del Pilastrello", "valeur": "Italie"}
+{"entite": "sanctuaire du Sacro Speco", "valeur": "Italie"}
+{"entite": "Sanctuary of Montevergine", "valeur": "Italie"}
+{"entite": "Sant'Agostino", "valeur": "Italie"}
+{"entite": "Sant'Andrea all'isola", "valeur": "Italie"}
+{"entite": "Sant'Angelo in Massa", "valeur": "Italie"}
+{"entite": "Sant Benet de Bages", "valeur": "Espagne"}
+{"entite": "Sant'Emiliano in Congiuntoli", "valeur": "Italie"}
+{"entite": "Sant'Equizio", "valeur": "Italie"}
+{"entite": "Sant Feliu de Cadins", "valeur": "Espagne"}
+{"entite": "Sant'Urbano, Apiro", "valeur": "Italie"}
+{"entite": "Santa Cecilia della Croara", "valeur": "Italie"}
+{"entite": "Santa Croce Church", "valeur": "Italie"}
+{"entite": "Santa Croce, Mortara", "valeur": "Italie"}
+{"entite": "Santa Fe Abbey", "valeur": "Espagne"}
+{"entite": "Santa Felicola", "valeur": "Italie"}
+{"entite": "Santa Maria Abbey", "valeur": "Italie"}
+{"entite": "Santa Maria Assunta della Corte", "valeur": "Italie"}
+{"entite": "Santa María de Carrizo", "valeur": "Espagne"}
+{"entite": "Santa Maria de la Bovera", "valeur": "Espagne"}
+{"entite": "Santa María de la Vega", "valeur": "Espagne"}
+{"entite": "Santa Maria de Solius", "valeur": "Espagne"}
+{"entite": "Santa Maria de Vallsanta", "valeur": "Espagne"}
+{"entite": "Santa Maria del Sagittario abbey", "valeur": "Italie"}
+{"entite": "Santa Maria della Gironda Abbey", "valeur": "Italie"}
+{"entite": "Santa Maria della Matina", "valeur": "Italie"}
+{"entite": "Santa Maria della Strada", "valeur": "Italie"}
+{"entite": "Santa Maria delle Grazie", "valeur": "Italie"}
+{"entite": "Santa Maria di Pattano", "valeur": "Italie"}
+{"entite": "Santa Maria di Rio Sacro", "valeur": "Italie"}
+{"entite": "Santa Maria in Gruptis", "valeur": "Italie"}
+{"entite": "Santa Maria in Viepri", "valeur": "Italie"}
+{"entite": "Santa María la Real de las Huelgas", "valeur": "Espagne"}
+{"entite": "Santa Maria Maddelena in Armillis", "valeur": "Italie"}
+{"entite": "Santi Quirico e Giulitta", "valeur": "Italie"}
+{"entite": "Santissima Trinità", "valeur": "Italie"}
+{"entite": "Santissima Trinità ad Alfiano", "valeur": "Italie"}
+{"entite": "Santo Sepolcro e Santa Maria a Elmi", "valeur": "Italie"}
+{"entite": "Santo Stefano in Manciano", "valeur": "Italie"}
+{"entite": "Schottenstift", "valeur": "Autriche"}
+{"entite": "Seaton Priory", "valeur": "Royaume-Uni"}
+{"entite": "Shrewsbury Abbey (including pulpit)", "valeur": "Royaume-Uni"}
+{"entite": "Sint-Adriaansabdij", "valeur": "Belgique"}
+{"entite": "Sint-Geertruiabdij", "valeur": "Belgique"}
+{"entite": "Sint-Trudoabdij", "valeur": "Belgique"}
+{"entite": "site des Salenques", "valeur": "France"}
+{"entite": "site du patrimoine de l'Ancienne abbaye des Pères trappistes de Mistassini", "valeur": "Canada"}
+{"entite": "Skovkloster Abbey", "valeur": "Danemark"}
+{"entite": "Sobrado Abbey", "valeur": "Espagne"}
+{"entite": "Soham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Solberga Abbey", "valeur": "Suède"}
+{"entite": "Soulseat Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Spermalieabdij", "valeur": "Belgique"}
+{"entite": "St. Augustine's Abbey, Chilworth", "valeur": "Royaume-Uni"}
+{"entite": "St Bartholomew's Nunnery, Newcastle Upon Tyne", "valeur": "Royaume-Uni"}
+{"entite": "St Benet's Abbey", "valeur": "Royaume-Uni"}
+{"entite": "St Dogmaels Abbey", "valeur": "Royaume-Uni"}
+{"entite": "St. Dominic's Abbey", "valeur": "Irlande"}
+{"entite": "St. John's Abbey", "valeur": "Royaume-Uni"}
+{"entite": "St. Katherine's Abbey, Monisternagalliaghduff", "valeur": "Irlande"}
+{"entite": "St Leonard's Garden", "valeur": "Irlande"}
+{"entite": "St Leonard's Nunnery", "valeur": "Royaume-Uni"}
+{"entite": "St Leonard's Priory", "valeur": "Royaume-Uni"}
+{"entite": "St. Makkabäer", "valeur": "Allemagne"}
+{"entite": "St. Mary Magdalen Priory, Lincoln", "valeur": "Royaume-Uni"}
+{"entite": "St Mary's Abbey: a Benedictine abbey north and east of Water Lane", "valeur": "Royaume-Uni"}
+{"entite": "St Mary's Abbey, Kenilworth", "valeur": "Royaume-Uni"}
+{"entite": "St. Procopius Abbey", "valeur": "États-Unis"}
+{"entite": "St Radegund's Abbey, Poulton", "valeur": "Royaume-Uni"}
+{"entite": "Staad Abbey", "valeur": "Irlande"}
+{"entite": "Stainfield Priory", "valeur": "Royaume-Uni"}
+{"entite": "Stanbrook Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Stanlow Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Stift Fiecht", "valeur": "Autriche"}
+{"entite": "Stift Ranshofen", "valeur": "Autriche"}
+{"entite": "Stixwould Priory", "valeur": "Royaume-Uni"}
+{"entite": "Stratford Langthorne Abbey (part of area within precincts), Baker's Row, West Ham", "valeur": "Royaume-Uni"}
+{"entite": "Strzelno Abbey", "valeur": "Pologne"}
+{"entite": "Swaffham Bulbeck Priory", "valeur": "Royaume-Uni"}
+{"entite": "Swainby Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Syningthwaite Priory", "valeur": "Royaume-Uni"}
+{"entite": "Szekszárd Abbey", "valeur": "Hongrie"}
+{"entite": "Talley Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Tänikon Abbey", "valeur": "Suisse"}
+{"entite": "Tarrant Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Tarrant Abbey, site of, and tithe barn at Abbey Farm", "valeur": "Royaume-Uni"}
+{"entite": "Teignmouth Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Tempio di San Martino", "valeur": "Italie"}
+{"entite": "Tepeyac Abbey", "valeur": "Mexique"}
+{"entite": "Terryglass Abbey", "valeur": "Irlande"}
+{"entite": "Tetbury Abbey", "valeur": "Royaume-Uni"}
+{"entite": "The Abbey", "valeur": "Royaume-Uni"}
+{"entite": "The Black Abbey", "valeur": "Irlande"}
+{"entite": "Thornton Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Tioumliline", "valeur": "Maroc"}
+{"entite": "Tobetsu Trappist Monastery", "valeur": "Japon"}
+{"entite": "Tongland Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Torksey Nunnery", "valeur": "Royaume-Uni"}
+{"entite": "La Trapa", "valeur": "Espagne"}
+{"entite": "la Trappa", "valeur": "Italie"}
+{"entite": "Trappe de Cheikhlé", "valeur": "Syrie"}
+{"entite": "Trappistinnenkloster Abakaliki", "valeur": "Nigeria"}
+{"entite": "Tresco Priory", "valeur": "Royaume-Uni"}
+{"entite": "Trub Abbey", "valeur": "Suisse"}
+{"entite": "Tupholme Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Tupholme Abbey: a Premonstratensian abbey and post-medieval houses and formal gardens", "valeur": "Royaume-Uni"}
+{"entite": "Tvilum Priory", "valeur": "Danemark"}
+{"entite": "Usk Castle", "valeur": "Royaume-Uni"}
+{"entite": "De viridarios Beatae Mariae abbey", "valeur": "Grèce"}
+{"entite": "Vysotsky Monastery Abbot's House", "valeur": "Russie"}
+{"entite": "Wallingwells Priory", "valeur": "Royaume-Uni"}
+{"entite": "Waltham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Wareham Nunnery", "valeur": "Royaume-Uni"}
+{"entite": "Waterbeach Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Wechterswinkel Abbey", "valeur": "Allemagne"}
+{"entite": "Welbeck Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Wellow Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Wendling Abbey", "valeur": "Royaume-Uni"}
+{"entite": "West Dereham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Westwood Priory", "valeur": "Royaume-Uni"}
+{"entite": "Whalley Cistercian abbey", "valeur": "Royaume-Uni"}
+{"entite": "Windleshaw Chantry", "valeur": "Royaume-Uni"}
+{"entite": "Wolston Priory", "valeur": "Royaume-Uni"}
+{"entite": "Wymondham Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Wyresdale Abbey", "valeur": "Royaume-Uni"}
+{"entite": "Yedingham Priory", "valeur": "Royaume-Uni"}
+{"entite": "Zisterzienserinnenkloster Dietenborn", "valeur": "Allemagne"}
+{"entite": "Zisterzienserkloster", "valeur": "Allemagne"}
+{"entite": "Zisterzienserkloster Klosterplatz 1; Klosterplatz 2 in ALenrsbach", "valeur": "Allemagne"}
+{"entite": "Zisterzienserkloster Klosterplatz 5 in ALenrsbach", "valeur": "Allemagne"}
+{"entite": "Zusters van de Kindsheid van Maria ter Spermalie", "valeur": "Belgique"}

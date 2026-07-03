@@ -1,0 +1,4 @@
+{"_relation": "role_microorganisme_alimentaire", "_categorie": "physique", "_source": "Modèle (Claude) — microbiologie textbook curée (micro-organisme -> usage alimentaire ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "bactérie lactique", "valeur": "fabrication du yaourt"}
+{"entite": "levure", "valeur": "fabrication du pain et de la bière"}
+{"entite": "moisissure", "valeur": "affinage de certains fromages"}

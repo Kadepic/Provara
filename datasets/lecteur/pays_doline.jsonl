@@ -1,0 +1,486 @@
+{"_relation": "pays_doline", "_categorie": "physique", "_source": "Wikidata/QLever — pays_doline P17, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "2007 Guatemala City sinkhole", "valeur": "Guatemala"}
+{"entite": "2010 Guatemala City sinkhole", "valeur": "Guatemala"}
+{"entite": "2022 East North Avenue storm drain collapse", "valeur": "États-Unis"}
+{"entite": "2025 Bangkok road collapse", "valeur": "Thaïlande"}
+{"entite": "Aguada Chikche", "valeur": "Mexique"}
+{"entite": "Aguada Chunchaca", "valeur": "Mexique"}
+{"entite": "Aguada Chuntzalan", "valeur": "Mexique"}
+{"entite": "Aguada Corrolcot", "valeur": "Mexique"}
+{"entite": "Aguada Kon Ha", "valeur": "Mexique"}
+{"entite": "Aguada Mucbihuayum", "valeur": "Mexique"}
+{"entite": "Aguada Pakan", "valeur": "Mexique"}
+{"entite": "Ajkalova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Akha", "valeur": "Mexique"}
+{"entite": "Akhayat sinkhole", "valeur": "Turquie"}
+{"entite": "al-Chibritiyah", "valeur": "Irak"}
+{"entite": "Almdolinen und Buckelwiesen an der Gotzenalm", "valeur": "Allemagne"}
+{"entite": "Amberjack Hole", "valeur": "États-Unis"}
+{"entite": "Arendsee", "valeur": "Allemagne"}
+{"entite": "Argon Pedion", "valeur": "Grèce"}
+{"entite": "Axbabay", "valeur": "Mexique"}
+{"entite": "Bába-völgy No 3 Sinkhole Cave", "valeur": "Hongrie"}
+{"entite": "Bába-völgy No 4 Sinkhole Cave", "valeur": "Hongrie"}
+{"entite": "Babina Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Babno polje", "valeur": "Slovénie"}
+{"entite": "Bachversickerung SE von Burgbernheim", "valeur": "Allemagne"}
+{"entite": "Bajkova Jama", "valeur": "Monténégro"}
+{"entite": "Barizlova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Barova Rupa", "valeur": "Monténégro"}
+{"entite": "Benekova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Bernshäuser Kutte", "valeur": "Allemagne"}
+{"entite": "Bienberg-Ponordolinen (D262) W von Michelfeld", "valeur": "Allemagne"}
+{"entite": "Binsenschlag-Dolinen SW von Pegnitz", "valeur": "Allemagne"}
+{"entite": "Blue Cenote", "valeur": "Mexique"}
+{"entite": "Blue Hole (Guam)", "valeur": "États-Unis"}
+{"entite": "Blue Hole (mer Rouge)", "valeur": "Égypte"}
+{"entite": "Bobobogol Doline", "valeur": "Australie"}
+{"entite": "la Bòfia", "valeur": "Espagne"}
+{"entite": "Boro Pole", "valeur": "Macédoine du Nord"}
+{"entite": "Borókás-tebri No. 2. Sinkholecave", "valeur": "Hongrie"}
+{"entite": "Borókás-tebri No. 4. Sinkholecave", "valeur": "Hongrie"}
+{"entite": "Brankova Jama", "valeur": "Monténégro"}
+{"entite": "Bravsko field", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Brezdan", "valeur": "Croatie"}
+{"entite": "Buljovica", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Bullenkuhle", "valeur": "Allemagne"}
+{"entite": "Burgsee Bad Salzungen", "valeur": "Allemagne"}
+{"entite": "Busa Fradusta", "valeur": "Italie"}
+{"entite": "Campgràs", "valeur": "Espagne"}
+{"entite": "Campo di Camposauro", "valeur": "Italie"}
+{"entite": "Cara Blanca Pool 1", "valeur": "Belize"}
+{"entite": "Cara Blanca Pool 15", "valeur": "Belize"}
+{"entite": "Cara Blanca Pool 2", "valeur": "Belize"}
+{"entite": "Cara Blanca Pool 3", "valeur": "Belize"}
+{"entite": "Cara Blanca Pool 4", "valeur": "Belize"}
+{"entite": "Cara Blanca Pool 5", "valeur": "Belize"}
+{"entite": "Cara Blanca Pool 6", "valeur": "Belize"}
+{"entite": "Casa Cenote", "valeur": "Mexique"}
+{"entite": "Cave Garden / Thugi", "valeur": "Australie"}
+{"entite": "Caxek", "valeur": "Mexique"}
+{"entite": "Cedar Sink", "valeur": "États-Unis"}
+{"entite": "Cenote Agua Azul", "valeur": "Mexique"}
+{"entite": "Cenote Aguada Sayá Usil", "valeur": "Mexique"}
+{"entite": "Cenote Aktun-Ha", "valeur": "Mexique"}
+{"entite": "Cenote Akula", "valeur": "Mexique"}
+{"entite": "Cenote Angelita", "valeur": "Mexique"}
+{"entite": "Cenote Ayim", "valeur": "Mexique"}
+{"entite": "Cenote Azul", "valeur": "Mexique"}
+{"entite": "Cenote Cahuich", "valeur": "Mexique"}
+{"entite": "Cenote Calimba", "valeur": "Mexique"}
+{"entite": "Cenote Chac Sinic Che", "valeur": "Mexique"}
+{"entite": "Cenote Chacanil", "valeur": "Mexique"}
+{"entite": "Cenote Chacsinkin", "valeur": "Mexique"}
+{"entite": "Cenote Chichmuk", "valeur": "Mexique"}
+{"entite": "Cenote Chikin-Ha", "valeur": "Mexique"}
+{"entite": "Cenote Chucum", "valeur": "Mexique"}
+{"entite": "Cenote Cristal", "valeur": "Mexique"}
+{"entite": "Cenote Cristalino", "valeur": "Mexique"}
+{"entite": "Cenote Dzabtun", "valeur": "Mexique"}
+{"entite": "Cenote Dzitnup", "valeur": "Mexique"}
+{"entite": "Cenote Encantado Nuan", "valeur": "Mexique"}
+{"entite": "Cenote Extatun", "valeur": "Mexique"}
+{"entite": "Cenote Kadzonot", "valeur": "Mexique"}
+{"entite": "Cenote Kankirixché", "valeur": "Mexique"}
+{"entite": "Cenote Labom", "valeur": "Mexique"}
+{"entite": "Cenote Mak", "valeur": "Mexique"}
+{"entite": "Cenote Manati", "valeur": "Mexique"}
+{"entite": "Cenote Miguel Colorado", "valeur": "Mexique"}
+{"entite": "Cenote Muk", "valeur": "Mexique"}
+{"entite": "Cenote Nicanche", "valeur": "Mexique"}
+{"entite": "Cenote Noh-Mozon", "valeur": "Mexique"}
+{"entite": "Cenote Noh Pol Ac", "valeur": "Mexique"}
+{"entite": "Cenote Nohchunkuiche", "valeur": "Mexique"}
+{"entite": "Cenote Nula", "valeur": "Mexique"}
+{"entite": "Cenote Oxmal", "valeur": "Mexique"}
+{"entite": "Cenote Pool Uinic", "valeur": "Mexique"}
+{"entite": "Cenote Poxil", "valeur": "Mexique"}
+{"entite": "Cenote Sabak-Há", "valeur": "Mexique"}
+{"entite": "Cenote Sac Nicte", "valeur": "Mexique"}
+{"entite": "Cenote sacré de Chichen Itza", "valeur": "Mexique"}
+{"entite": "Cenote Samula", "valeur": "Mexique"}
+{"entite": "Cenote Santa Barbara", "valeur": "Mexique"}
+{"entite": "Cenote Santa Cruz", "valeur": "Mexique"}
+{"entite": "Cenote Siete Bocas", "valeur": "Mexique"}
+{"entite": "Cenote Tajma-Ha", "valeur": "Mexique"}
+{"entite": "Cenote Toh", "valeur": "Mexique"}
+{"entite": "Cenote Tzec", "valeur": "Mexique"}
+{"entite": "Cenote X-Keken", "valeur": "Mexique"}
+{"entite": "Cenote Xcanche", "valeur": "Mexique"}
+{"entite": "Cenote Xiat", "valeur": "Mexique"}
+{"entite": "Cenote Xlaca", "valeur": "Mexique"}
+{"entite": "Cenote Xnohnem", "valeur": "Mexique"}
+{"entite": "Cenote Xtojil", "valeur": "Mexique"}
+{"entite": "Cenote Xunaan-Ha", "valeur": "Mexique"}
+{"entite": "Cenote Zací", "valeur": "Mexique"}
+{"entite": "Cenote Zacil Ha", "valeur": "Mexique"}
+{"entite": "Cenote Zahamal", "valeur": "Mexique"}
+{"entite": "Cenote Zapote", "valeur": "Mexique"}
+{"entite": "Cer Field", "valeur": "Macédoine du Nord"}
+{"entite": "Cerkniško polje", "valeur": "Slovénie"}
+{"entite": "Chac Mool Cenote", "valeur": "Mexique"}
+{"entite": "Chakluk", "valeur": "Mexique"}
+{"entite": "chasma of Herakles katavothra (Boeotia)", "valeur": "Grèce"}
+{"entite": "Chax", "valeur": "Mexique"}
+{"entite": "Chelem Cenote", "valeur": "Mexique"}
+{"entite": "Chenija", "valeur": "Mexique"}
+{"entite": "Chococha", "valeur": "Mexique"}
+{"entite": "Chulukmay", "valeur": "Mexique"}
+{"entite": "Chumpich", "valeur": "Mexique"}
+{"entite": "Chuntunak", "valeur": "Mexique"}
+{"entite": "Ciganke", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Cinco cenote", "valeur": "Mexique"}
+{"entite": "Conca carsica delle Turbiglie", "valeur": "Italie"}
+{"entite": "Crna Kamenica", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Crne Kamenice", "valeur": "Croatie"}
+{"entite": "Cull-Peppers Dish", "valeur": "Royaume-Uni"}
+{"entite": "Cvetkova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Dabar Field", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Daḩl Abū Ţuqqah", "valeur": "Arabie saoudite"}
+{"entite": "Daḩl Hīt", "valeur": "Arabie saoudite"}
+{"entite": "Daḩl Suraywalāt", "valeur": "Arabie saoudite"}
+{"entite": "Daḩl Umm Ḩujūl", "valeur": "Arabie saoudite"}
+{"entite": "Dersios sinkhole", "valeur": "Grèce"}
+{"entite": "Devil's Mill Hopper", "valeur": "États-Unis"}
+{"entite": "Devil's Well", "valeur": "Grèce"}
+{"entite": "Devils Well", "valeur": "États-Unis"}
+{"entite": "Dhal Al Misfir", "valeur": "Qatar"}
+{"entite": "Dobrepolje", "valeur": "Slovénie"}
+{"entite": "Dolina de la Cueva del Agua", "valeur": "Espagne"}
+{"entite": "Dolina del Revotano", "valeur": "Italie"}
+{"entite": "Dolina El Hundido", "valeur": "Mexique"}
+{"entite": "Dolina El Nacimiento", "valeur": "Mexique"}
+{"entite": "Dolina La Laguna", "valeur": "Mexique"}
+{"entite": "Dolina La Represa", "valeur": "Mexique"}
+{"entite": "Dolina Laguna Chica", "valeur": "Mexique"}
+{"entite": "Dolina Pozzatina", "valeur": "Italie"}
+{"entite": "Doline am Schapbachhof", "valeur": "Allemagne"}
+{"entite": "doline de Bayou Corne", "valeur": "États-Unis"}
+{"entite": "doline des Roches", "valeur": "Canada"}
+{"entite": "Doline Donnerloch E von Drossenhausen", "valeur": "Allemagne"}
+{"entite": "Doline ESE von Raitenbuch", "valeur": "Allemagne"}
+{"entite": "Doline im Schlüsselkorbtal W Altmannshof", "valeur": "Allemagne"}
+{"entite": "Doline in Reichenstetten", "valeur": "Allemagne"}
+{"entite": "Doline mit Diebskeller (D214) SE von Bronn", "valeur": "Allemagne"}
+{"entite": "Doline mit Schacht im Schernfelder Forst", "valeur": "Allemagne"}
+{"entite": "Doline N von Bettenfeld", "valeur": "Allemagne"}
+{"entite": "Doline near Otting", "valeur": "Allemagne"}
+{"entite": "Doline NW von Gimpertshausen", "valeur": "Allemagne"}
+{"entite": "Doline NW von Hofstetten", "valeur": "Allemagne"}
+{"entite": "Doline NW von Mantlach", "valeur": "Allemagne"}
+{"entite": "Doline Soll-See WNW von Johannishof", "valeur": "Allemagne"}
+{"entite": "Doline SSE von Döckingen", "valeur": "Allemagne"}
+{"entite": "Doline und Windloch W von Buchhof (A15)", "valeur": "Allemagne"}
+{"entite": "Doline W von Plankstetten", "valeur": "Allemagne"}
+{"entite": "Doline W von Roßdorf am Berg", "valeur": "Allemagne"}
+{"entite": "Doline WNW von Wiebelsberg", "valeur": "Allemagne"}
+{"entite": "Doline Wolfsgrube bei Flintsbach", "valeur": "Allemagne"}
+{"entite": "Doline zwischen Buch und Oberemmendorf", "valeur": "Allemagne"}
+{"entite": "Dolinen am Gipfelgrat der Hochries SSE von Grainbach", "valeur": "Allemagne"}
+{"entite": "Dolinen am Wackersberg E von Höfen", "valeur": "Allemagne"}
+{"entite": "Dolinen bei Lanzing", "valeur": "Allemagne"}
+{"entite": "Dolinen der Hirschwang-Alpe E von Schwangau", "valeur": "Allemagne"}
+{"entite": "Dolinen der Hochkienbergalm SW von Ruhpolding", "valeur": "Allemagne"}
+{"entite": "Dolinen der Sauermöseralm WSW von Oberwössen", "valeur": "Allemagne"}
+{"entite": "Dolinen im Wunsiedler Marmor SW von Waldershof", "valeur": "Allemagne"}
+{"entite": "Dolinen N von Gundelshofen", "valeur": "Allemagne"}
+{"entite": "Dolinen NW von Dietfurt", "valeur": "Allemagne"}
+{"entite": "Dolinen NW von Eichig", "valeur": "Allemagne"}
+{"entite": "Dolinen SE von Predlfing", "valeur": "Allemagne"}
+{"entite": "Dolinen südwestlich von Kohlstadt", "valeur": "Allemagne"}
+{"entite": "Dolinen und Ponore des Eschelmooses W von Ruhpolding", "valeur": "Allemagne"}
+{"entite": "Dolinen W von Garmisch-Partenkirchen", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld am Großen Espich NW von Untersteinach", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld am Hochholz E von Lengenwang", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld bei Krün", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld der Riesenalmen WSW von Aschau", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld E von Göhren", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld im Maierholz WSW von Döckingen", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld Oberschönau", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld SE von Warching", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld WSW von Pestenrain", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld WSW von Weiden", "valeur": "Allemagne"}
+{"entite": "Dolinenfeld zwischen Arnstein und Bojendorf", "valeur": "Allemagne"}
+{"entite": "Dolinenreihe N von Gelbelsee", "valeur": "Allemagne"}
+{"entite": "Dolinenreihe nördlich von Bieswang", "valeur": "Allemagne"}
+{"entite": "Dolinenreihen an der Drehersalpe SW von Missen", "valeur": "Allemagne"}
+{"entite": "Dolines de Campgràs", "valeur": "Espagne"}
+{"entite": "Duboka Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Dugo polje", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Dvoguba Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Dvostruka Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Eagle Sinkhole", "valeur": "États-Unis"}
+{"entite": "Eichelsee-Doline am Kreuzberg NNW von Sommerach", "valeur": "Allemagne"}
+{"entite": "Einsturzdolinen Eislöcher (D71) SE von Bronn", "valeur": "Allemagne"}
+{"entite": "Eisinger Loch (Sinkhole Field)", "valeur": "Allemagne"}
+{"entite": "El Fondo de Juan Malanga", "valeur": "République dominicaine"}
+{"entite": "El Fondo de La Cueva de Catezao", "valeur": "République dominicaine"}
+{"entite": "El Fondo de Las Guáranas", "valeur": "République dominicaine"}
+{"entite": "El Fondo del Tamarindo", "valeur": "République dominicaine"}
+{"entite": "Era d'Escorca", "valeur": "Espagne"}
+{"entite": "Erdfall am Häfringsberg SE von Wüstphül", "valeur": "Allemagne"}
+{"entite": "Erdfall am Hundsrücken NW von Berolzheim", "valeur": "Allemagne"}
+{"entite": "Erdfall NNW von Großbardorf", "valeur": "Allemagne"}
+{"entite": "Erdfall SW von Maßbach", "valeur": "Allemagne"}
+{"entite": "Erdfallsee", "valeur": "Allemagne"}
+{"entite": "Esperhöhle", "valeur": "Allemagne"}
+{"entite": "Eulengrube", "valeur": "Allemagne"}
+{"entite": "Felddoline N von Langensallach", "valeur": "Allemagne"}
+{"entite": "Felddolinen", "valeur": "Allemagne"}
+{"entite": "Fellner-Doline", "valeur": "Allemagne"}
+{"entite": "Fondos de Ambamona", "valeur": "République dominicaine"}
+{"entite": "Fondos de Buqui", "valeur": "République dominicaine"}
+{"entite": "Fondos de Luciano", "valeur": "République dominicaine"}
+{"entite": "Fondos de Norberto", "valeur": "République dominicaine"}
+{"entite": "Fondos de Sinforo", "valeur": "République dominicaine"}
+{"entite": "Fondos de Yerbas Finas", "valeur": "République dominicaine"}
+{"entite": "Fondos El Limonal", "valeur": "République dominicaine"}
+{"entite": "Fondos José", "valeur": "République dominicaine"}
+{"entite": "Frickenhäuser See", "valeur": "Allemagne"}
+{"entite": "Gacko polje", "valeur": "Croatie"}
+{"entite": "Gajova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Garb d'la Regina Gioana", "valeur": "Italie"}
+{"entite": "Garina Jama", "valeur": "Croatie"}
+{"entite": "Gatačko Polje", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Gebrünnsee nordwestlich von Westheim", "valeur": "Allemagne"}
+{"entite": "Gipshöhle Höllern", "valeur": "Allemagne"}
+{"entite": "Gipshügel Sieben Buckel", "valeur": "Allemagne"}
+{"entite": "Glamoč field", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Glotina Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Golemova Jama", "valeur": "Croatie"}
+{"entite": "Golubinjska Jama", "valeur": "Monténégro"}
+{"entite": "Golubinska Jama", "valeur": "Monténégro"}
+{"entite": "Golubnjača", "valeur": "Bosnie-Herzégovine"}
+{"entite": "gouffre de l'Œil Doux", "valeur": "France"}
+{"entite": "Gračačko Polje", "valeur": "Croatie"}
+{"entite": "Grand Trou Bleu", "valeur": "Belize"}
+{"entite": "Granička Jama", "valeur": "Monténégro"}
+{"entite": "Gredina Jama", "valeur": "Croatie"}
+{"entite": "Großdoline des Scheinbergkessels SSE von Halblech", "valeur": "Allemagne"}
+{"entite": "Große Doline Schauergrube W von Vorderkeilberg", "valeur": "Allemagne"}
+{"entite": "Großes Heiliges Meer", "valeur": "Allemagne"}
+{"entite": "Grobničko polje", "valeur": "Croatie"}
+{"entite": "Grubalm-Polje beim Spielberg SW von Aschau", "valeur": "Allemagne"}
+{"entite": "Grubijeska Jama", "valeur": "Monténégro"}
+{"entite": "Grünsee-Uvala im Steinernen Meer", "valeur": "Allemagne"}
+{"entite": "Gusarska Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Hakalchon", "valeur": "Mexique"}
+{"entite": "Härma sinkhole", "valeur": "Estonie"}
+{"entite": "Hazal", "valeur": "Mexique"}
+{"entite": "Higo", "valeur": "République dominicaine"}
+{"entite": "Higuero", "valeur": "République dominicaine"}
+{"entite": "Hiya", "valeur": "Mexique"}
+{"entite": "Hoyo Azul", "valeur": "République dominicaine"}
+{"entite": "Hoyo de Meni", "valeur": "République dominicaine"}
+{"entite": "Hranice Abyss", "valeur": "Tchéquie"}
+{"entite": "Hrvatačko polje", "valeur": "Croatie"}
+{"entite": "Hussitenloch (Doline) W von Ursensollen", "valeur": "Allemagne"}
+{"entite": "Ik Kil", "valeur": "Mexique"}
+{"entite": "Il-Maqluba", "valeur": "Malte"}
+{"entite": "Iva Jama", "valeur": "Croatie"}
+{"entite": "Jadikovac", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Jasovica", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Jaww al Ḩawīyah", "valeur": "Arabie saoudite"}
+{"entite": "Jõempa sinkholes", "valeur": "Estonie"}
+{"entite": "Joknina Jama", "valeur": "Monténégro"}
+{"entite": "Kızören Sinkhole", "valeur": "Turquie"}
+{"entite": "Kamenita Rupa", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Kapavice", "valeur": "Monténégro"}
+{"entite": "Karst de Postonja", "valeur": "Slovénie"}
+{"entite": "Karstgebiet Bachschwinde W Saulgrub", "valeur": "Allemagne"}
+{"entite": "Karstgrube der Eheblößwiesen im Lattengebirge", "valeur": "Allemagne"}
+{"entite": "Karstwanne Kessel NE von Kipfenberg", "valeur": "Allemagne"}
+{"entite": "Kaštelansko polje", "valeur": "Croatie"}
+{"entite": "Kastomarra sinkhole", "valeur": "Estonie"}
+{"entite": "Katpol", "valeur": "Mexique"}
+{"entite": "Kesselgruben E von Ebersbach", "valeur": "Allemagne"}
+{"entite": "Kessiloch", "valeur": "Autriche"}
+{"entite": "Kiikla sinkhole", "valeur": "Estonie"}
+{"entite": "Kilsby sinkhole", "valeur": "Australie"}
+{"entite": "Kirimäe sinkholes", "valeur": "Estonie"}
+{"entite": "Kis-kőhát Pothole", "valeur": "Hongrie"}
+{"entite": "Kleines Heiliges Meer", "valeur": "Allemagne"}
+{"entite": "Kočevsko polje", "valeur": "Slovénie"}
+{"entite": "Kojina Jama", "valeur": "Croatie"}
+{"entite": "Konavle field", "valeur": "Croatie"}
+{"entite": "Königsteiner Polje", "valeur": "Allemagne"}
+{"entite": "Konjsko polje", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Kopanija", "valeur": "Croatie"}
+{"entite": "Koritska Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Kõrveküla sinkholes", "valeur": "Estonie"}
+{"entite": "Kosovo Field", "valeur": "Kosovo"}
+{"entite": "Krbavsko Plain", "valeur": "Croatie"}
+{"entite": "Küdema sinkholes", "valeur": "Estonie"}
+{"entite": "Kuhloch", "valeur": "Autriche"}
+{"entite": "Kuhntal", "valeur": "Autriche"}
+{"entite": "Kupres field", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Kurbegova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Kurisoo sinkhole", "valeur": "Estonie"}
+{"entite": "Kurisu sinkhole", "valeur": "Estonie"}
+{"entite": "Kururu Kua", "valeur": "Paraguay"}
+{"entite": "Kuxbi", "valeur": "Mexique"}
+{"entite": "LabnaHa", "valeur": "Mexique"}
+{"entite": "lac Funten", "valeur": "Allemagne"}
+{"entite": "lac Stymphale", "valeur": "Grèce"}
+{"entite": "Lapačko Polje", "valeur": "Croatie"}
+{"entite": "Laubenstein-Ponor an der Laubensteinalm SW von Aschau", "valeur": "Allemagne"}
+{"entite": "Lepakõrve sinkholes", "valeur": "Estonie"}
+{"entite": "Ličko polje", "valeur": "Croatie"}
+{"entite": "Lilla Cave", "valeur": "Hongrie"}
+{"entite": "Lipovo polje", "valeur": "Croatie"}
+{"entite": "Ljubinje field", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Ljubuški field", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Llanos de Líbar", "valeur": "Espagne"}
+{"entite": "La Lobera", "valeur": "Mexique"}
+{"entite": "Logatec Karst Field", "valeur": "Slovénie"}
+{"entite": "Lomska Duliba", "valeur": "Croatie"}
+{"entite": "Lonjsko Polje", "valeur": "Croatie"}
+{"entite": "Los Cayucos", "valeur": "République dominicaine"}
+{"entite": "Los Sumideros", "valeur": "États-Unis"}
+{"entite": "Lož Karst Field", "valeur": "Slovénie"}
+{"entite": "Macokanova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Makman Ash Shidād", "valeur": "Arabie saoudite"}
+{"entite": "Makman Ḩaz̧awz̧a'", "valeur": "Arabie saoudite"}
+{"entite": "Makman Mushāwir", "valeur": "Arabie saoudite"}
+{"entite": "Mali Ubrusac", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Mammuscone", "valeur": "Italie"}
+{"entite": "Marijina Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Matanova Jama", "valeur": "Monténégro"}
+{"entite": "Mätasselja sinkholes", "valeur": "Estonie"}
+{"entite": "Maujahn", "valeur": "Allemagne"}
+{"entite": "Mazul", "valeur": "Mexique"}
+{"entite": "Mbah Soero Mine Pit Site Museum", "valeur": "Indonésie"}
+{"entite": "Mukinova Jama", "valeur": "Croatie"}
+{"entite": "Musina Jama", "valeur": "Monténégro"}
+{"entite": "Natural Bridge Caverns Sinkhole Site", "valeur": "États-Unis"}
+{"entite": "Naturdenkmal Schwalgloch am Romberg", "valeur": "Allemagne"}
+{"entite": "Nava de Cabra", "valeur": "Espagne"}
+{"entite": "Neanurme sinkhole", "valeur": "Estonie"}
+{"entite": "Ngambingambi Sinkhole", "valeur": "Australie"}
+{"entite": "Nõmme sinkhole", "valeur": "Estonie"}
+{"entite": "Osterdorfer Löcher", "valeur": "Allemagne"}
+{"entite": "Paatsa sinkhole", "valeur": "Estonie"}
+{"entite": "Parasmetsa sinkhole", "valeur": "Estonie"}
+{"entite": "Pärima sinkholes", "valeur": "Estonie"}
+{"entite": "Peissener Loch", "valeur": "Allemagne"}
+{"entite": "Peka", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Peštarsko polje", "valeur": "Serbie"}
+{"entite": "Peštersko polje", "valeur": "Serbie"}
+{"entite": "Peter Polje", "valeur": "Croatie"}
+{"entite": "Petersham Hole", "valeur": "Royaume-Uni"}
+{"entite": "Plan de Canjuers", "valeur": "France"}
+{"entite": "Planinsko polje", "valeur": "Slovénie"}
+{"entite": "Plecher Ponordoline (D197) SE von Weidensees", "valeur": "Allemagne"}
+{"entite": "Poka sinkhole", "valeur": "Estonie"}
+{"entite": "Poksa sinkholes", "valeur": "Estonie"}
+{"entite": "Poljanska Jama", "valeur": "Croatie"}
+{"entite": "Poljé de Duvno", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Poljé de Livno", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Polje W von Hohenfels", "valeur": "Allemagne"}
+{"entite": "Ponor-Doline SE von Neuhof", "valeur": "Allemagne"}
+{"entite": "Ponor Gacke", "valeur": "Croatie"}
+{"entite": "Ponor W von Zell am Ebersberg", "valeur": "Allemagne"}
+{"entite": "Ponorci", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Ponordoline Bärenloch (D70) SE von Bronn", "valeur": "Allemagne"}
+{"entite": "Ponordoline Bolusgrube SE von Adelschlag", "valeur": "Allemagne"}
+{"entite": "Ponordoline E von Göhren", "valeur": "Allemagne"}
+{"entite": "Ponordoline ESE von Weidensees", "valeur": "Allemagne"}
+{"entite": "Ponordoline Hollergrube NNW von Sulzheim", "valeur": "Allemagne"}
+{"entite": "Ponordoline im Wildgehege Hufeisen SE von Weidensees", "valeur": "Allemagne"}
+{"entite": "Ponordoline mit Höhle A269", "valeur": "Allemagne"}
+{"entite": "Ponordoline NW von Hofstetten", "valeur": "Allemagne"}
+{"entite": "Ponordoline NW von Oberzell", "valeur": "Allemagne"}
+{"entite": "Ponordoline SE von Görau", "valeur": "Allemagne"}
+{"entite": "Ponordoline SE von Schelldorf", "valeur": "Allemagne"}
+{"entite": "Ponordoline SW von Denkendorf", "valeur": "Allemagne"}
+{"entite": "Ponordoline SW von Marktbergel", "valeur": "Allemagne"}
+{"entite": "Ponordoline SW von Rothenstein", "valeur": "Allemagne"}
+{"entite": "Ponordoline SW von Unterbechingen", "valeur": "Allemagne"}
+{"entite": "Ponordoline Wachenzell", "valeur": "Allemagne"}
+{"entite": "Ponordolinen NE von Kohnhof", "valeur": "Allemagne"}
+{"entite": "Popova Kula", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Popovo field", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Posiman de Yil", "valeur": "République dominicaine"}
+{"entite": "Pou del diable", "valeur": "Espagne"}
+{"entite": "Pozo de las Ánimas", "valeur": "Argentine"}
+{"entite": "Pozzo d'Antullo", "valeur": "Italie"}
+{"entite": "Priborova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Pricinka", "valeur": "Croatie"}
+{"entite": "Probst Jesar See", "valeur": "Allemagne"}
+{"entite": "Puebla sinkhole", "valeur": "Mexique"}
+{"entite": "Pulo di Molfetta", "valeur": "Italie"}
+{"entite": "Quellaustritt Seeweiher (D68) WSW von Michelfeld", "valeur": "Allemagne"}
+{"entite": "Račna Karst Field", "valeur": "Slovénie"}
+{"entite": "Ravna Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Оre field", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Ribniško polje", "valeur": "Slovénie"}
+{"entite": "Riesenburg (Höhle)", "valeur": "Allemagne"}
+{"entite": "Rudno polje", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Rudower See", "valeur": "Allemagne"}
+{"entite": "Sager Meer", "valeur": "Allemagne"}
+{"entite": "Schluckloch (Ponor) WSW des Tiefsees bei Saulgrub", "valeur": "Allemagne"}
+{"entite": "Schneeofen", "valeur": "Autriche"}
+{"entite": "Schön-See", "valeur": "Allemagne"}
+{"entite": "Schüllerponorhöhle", "valeur": "Allemagne"}
+{"entite": "Schwarzensee-Uvala im Steinernen Meer", "valeur": "Allemagne"}
+{"entite": "Seeburger See", "valeur": "Allemagne"}
+{"entite": "Senke", "valeur": "Allemagne"}
+{"entite": "Silnjak", "valeur": "Croatie"}
+{"entite": "Sinjsko Polje", "valeur": "Croatie"}
+{"entite": "Slipica", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Soldatska Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Stanina", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Stara Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Stolačko polje", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Strunjina Jama", "valeur": "Croatie"}
+{"entite": "Subrosionsdolinen an der Gedereralm ESE von Aschau", "valeur": "Allemagne"}
+{"entite": "Sulustvere sinkholes", "valeur": "Estonie"}
+{"entite": "Sumur Jalatunda", "valeur": "Indonésie"}
+{"entite": "Szamentu Cave", "valeur": "Hongrie"}
+{"entite": "Taam Ja'", "valeur": "Mexique"}
+{"entite": "Taurus major submergence", "valeur": "Nouvelle-Zélande"}
+{"entite": "Teufelsloch", "valeur": "Allemagne"}
+{"entite": "The Eagle (sinkhole)", "valeur": "République populaire de Chine"}
+{"entite": "The Grotto", "valeur": "Australie"}
+{"entite": "The Inkpot", "valeur": "États-Unis"}
+{"entite": "Toni Voda", "valeur": "Macédoine du Nord"}
+{"entite": "Torca del río Viejo", "valeur": "Espagne"}
+{"entite": "Tres Pueblos Sinkhole", "valeur": "États-Unis"}
+{"entite": "Trou bleu de Dean", "valeur": "Bahamas"}
+{"entite": "Trou du Toro", "valeur": "Espagne"}
+{"entite": "Tuiu sinkholes", "valeur": "Estonie"}
+{"entite": "Türiauk", "valeur": "Estonie"}
+{"entite": "Turvaste sinkhole", "valeur": "Estonie"}
+{"entite": "Uku sinkhole", "valeur": "Estonie"}
+{"entite": "Umpherston Sinkhole/Balumbul", "valeur": "Australie"}
+{"entite": "Uvala Gizi", "valeur": "Croatie"}
+{"entite": "Uvala im Fuchsschlag N von Schönau", "valeur": "Allemagne"}
+{"entite": "Uvala Oko Vrulje", "valeur": "Croatie"}
+{"entite": "Vääna sinkhole", "valeur": "Estonie"}
+{"entite": "Veliki Lubenovac", "valeur": "Croatie"}
+{"entite": "Vodene Jame", "valeur": "Croatie"}
+{"entite": "Voulismeno aloni", "valeur": "Grèce"}
+{"entite": "Vranjača", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Vranjska Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Vranotina", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Vranovica", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Vrgorsko polje", "valeur": "Croatie"}
+{"entite": "Vrličko polje", "valeur": "Croatie"}
+{"entite": "Vujadinova Jama", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Vujina Jama", "valeur": "Croatie"}
+{"entite": "Wagnersee S von Pusselsheim", "valeur": "Allemagne"}
+{"entite": "Walddolinen", "valeur": "Allemagne"}
+{"entite": "Wasserberg bei Pegnitz", "valeur": "Allemagne"}
+{"entite": "Watling's Blue Hole", "valeur": "Bahamas"}
+{"entite": "Wiedensee", "valeur": "Allemagne"}
+{"entite": "Wildemaennlisloch", "valeur": "Autriche"}
+{"entite": "Windloch", "valeur": "Allemagne"}
+{"entite": "Wondergat", "valeur": "Afrique du Sud"}
+{"entite": "X Poc", "valeur": "Mexique"}
+{"entite": "Xhokancol", "valeur": "Mexique"}
+{"entite": "Yokdzonot Cenote", "valeur": "Mexique"}
+{"entite": "Zacatón", "valeur": "Mexique"}
+{"entite": "Ziatva", "valeur": "Croatie"}
+{"entite": "Zloriba", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Zveka", "valeur": "Bosnie-Herzégovine"}
+{"entite": "Zwischenahner Meer", "valeur": "Allemagne"}

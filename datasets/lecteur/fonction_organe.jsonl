@@ -1,0 +1,18 @@
+{"_relation": "fonction_organe", "_categorie": "convention", "_source": "physiologie de référence (organe -> fonction principale)", "_articles": true}
+{"entite": "cœur", "valeur": "pomper le sang"}
+{"entite": "cerveau", "valeur": "commander le corps et la pensée"}
+{"entite": "diaphragme", "valeur": "permettre la respiration"}
+{"entite": "estomac", "valeur": "digérer les aliments"}
+{"entite": "foie", "valeur": "filtrer les toxines et stocker l'énergie"}
+{"entite": "œil", "valeur": "permettre la vision"}
+{"entite": "intestin", "valeur": "absorber les nutriments"}
+{"entite": "langue", "valeur": "percevoir le goût"}
+{"entite": "moelle épinière", "valeur": "transmettre les influx nerveux"}
+{"entite": "nez", "valeur": "permettre l'odorat"}
+{"entite": "oreille", "valeur": "permettre l'audition"}
+{"entite": "pancréas", "valeur": "réguler la glycémie et aider la digestion"}
+{"entite": "peau", "valeur": "protéger le corps"}
+{"entite": "poumon", "valeur": "permettre la respiration"}
+{"entite": "rate", "valeur": "filtrer le sang et soutenir l'immunité"}
+{"entite": "rein", "valeur": "filtrer le sang et produire l'urine"}
+{"entite": "vessie", "valeur": "stocker l'urine"}

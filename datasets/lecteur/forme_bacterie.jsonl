@@ -1,0 +1,35 @@
+{"_relation": "forme_bacterie", "_categorie": "physique", "_source": "Modèle (Claude) — microbiologie textbook curée (forme bactérienne ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "bacille de Koch", "valeur": "bacille"}
+{"entite": "bacille du tétanos", "valeur": "bacille"}
+{"entite": "Bacillus anthracis", "valeur": "bacille"}
+{"entite": "Bacillus subtilis", "valeur": "bacille"}
+{"entite": "Bordetella pertussis", "valeur": "bacille"}
+{"entite": "Borrelia burgdorferi", "valeur": "spirille"}
+{"entite": "Campylobacter jejuni", "valeur": "spirille"}
+{"entite": "Clostridium botulinum", "valeur": "bacille"}
+{"entite": "Corynebacterium diphtheriae", "valeur": "bacille"}
+{"entite": "Enterobacter", "valeur": "bacille"}
+{"entite": "entérocoque", "valeur": "coque"}
+{"entite": "Escherichia coli", "valeur": "bacille"}
+{"entite": "gonocoque", "valeur": "coque"}
+{"entite": "Helicobacter pylori", "valeur": "spirille"}
+{"entite": "Klebsiella pneumoniae", "valeur": "bacille"}
+{"entite": "Lactobacillus", "valeur": "bacille"}
+{"entite": "Legionella pneumophila", "valeur": "bacille"}
+{"entite": "Leptospira", "valeur": "spirille"}
+{"entite": "Listeria", "valeur": "bacille"}
+{"entite": "méningocoque", "valeur": "coque"}
+{"entite": "Moraxella", "valeur": "coque"}
+{"entite": "Mycobacterium tuberculosis", "valeur": "bacille"}
+{"entite": "Neisseria", "valeur": "coque"}
+{"entite": "pneumocoque", "valeur": "coque"}
+{"entite": "Proteus", "valeur": "bacille"}
+{"entite": "Pseudomonas aeruginosa", "valeur": "bacille"}
+{"entite": "salmonelle", "valeur": "bacille"}
+{"entite": "Serratia", "valeur": "bacille"}
+{"entite": "Shigella", "valeur": "bacille"}
+{"entite": "staphylocoque", "valeur": "coque"}
+{"entite": "streptocoque", "valeur": "coque"}
+{"entite": "Treponema pallidum", "valeur": "spirille"}
+{"entite": "Vibrio cholerae", "valeur": "vibrion"}
+{"entite": "Yersinia pestis", "valeur": "bacille"}

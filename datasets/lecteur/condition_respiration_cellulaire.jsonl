@@ -1,0 +1,4 @@
+{"_relation": "condition_respiration_cellulaire", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (respiration cellulaire -> condition O2 ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "fermentation", "valeur": "absence d'oxygène"}
+{"entite": "respiration aérobie", "valeur": "présence d'oxygène"}
+{"entite": "respiration anaérobie", "valeur": "absence d'oxygène"}

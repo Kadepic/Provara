@@ -1,0 +1,7 @@
+{"_relation": "rang_taxon_superieur", "_categorie": "physique", "_source": "Modèle (Claude) — systématique textbook curée (rang -> rang supérieur ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "classe", "valeur": "embranchement"}
+{"entite": "embranchement", "valeur": "règne"}
+{"entite": "espèce", "valeur": "genre"}
+{"entite": "famille", "valeur": "ordre"}
+{"entite": "genre", "valeur": "famille"}
+{"entite": "ordre", "valeur": "classe"}

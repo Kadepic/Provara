@@ -1,0 +1,11 @@
+{"_relation": "symbole_astro_planete", "_categorie": "convention", "_source": "symboles astronomiques traditionnels (astre -> symbole)", "_articles": true}
+{"entite": "jupiter", "valeur": "♃"}
+{"entite": "lune", "valeur": "☽"}
+{"entite": "mars", "valeur": "♂"}
+{"entite": "mercure", "valeur": "☿"}
+{"entite": "neptune", "valeur": "♆"}
+{"entite": "saturne", "valeur": "♄"}
+{"entite": "soleil", "valeur": "☉"}
+{"entite": "terre", "valeur": "♁"}
+{"entite": "uranus", "valeur": "♅"}
+{"entite": "vénus", "valeur": "♀"}

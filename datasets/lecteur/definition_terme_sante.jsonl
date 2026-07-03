@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_sante", "_categorie": "physique", "_source": "Modèle (Claude) — médecine textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "diagnostic", "valeur": "identification d'une maladie"}
+{"entite": "épidémie", "valeur": "propagation rapide d'une maladie dans une population"}
+{"entite": "symptôme", "valeur": "manifestation d'une maladie"}

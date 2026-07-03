@@ -1,0 +1,53 @@
+{"_relation": "type_squelette_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (type de squelette ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "exosquelette"}
+{"entite": "aigle royal", "valeur": "endosquelette"}
+{"entite": "anatife", "valeur": "exosquelette"}
+{"entite": "anémone de mer", "valeur": "hydrosquelette"}
+{"entite": "anolis", "valeur": "endosquelette"}
+{"entite": "araignée", "valeur": "exosquelette"}
+{"entite": "arénicole", "valeur": "hydrosquelette"}
+{"entite": "baleine bleue", "valeur": "endosquelette"}
+{"entite": "belette", "valeur": "endosquelette"}
+{"entite": "bigorneau", "valeur": "exosquelette"}
+{"entite": "capricorne", "valeur": "exosquelette"}
+{"entite": "cétoine", "valeur": "exosquelette"}
+{"entite": "cheval", "valeur": "endosquelette"}
+{"entite": "chien", "valeur": "endosquelette"}
+{"entite": "crabe", "valeur": "exosquelette"}
+{"entite": "crapaud", "valeur": "endosquelette"}
+{"entite": "crevette", "valeur": "exosquelette"}
+{"entite": "criquet", "valeur": "exosquelette"}
+{"entite": "écrevisse", "valeur": "exosquelette"}
+{"entite": "escargot", "valeur": "exosquelette"}
+{"entite": "étoile de mer", "valeur": "endosquelette"}
+{"entite": "être humain", "valeur": "endosquelette"}
+{"entite": "fourmi", "valeur": "exosquelette"}
+{"entite": "gardon", "valeur": "endosquelette"}
+{"entite": "grenouille rousse", "valeur": "endosquelette"}
+{"entite": "homard", "valeur": "exosquelette"}
+{"entite": "huître", "valeur": "exosquelette"}
+{"entite": "hydre", "valeur": "hydrosquelette"}
+{"entite": "langouste", "valeur": "exosquelette"}
+{"entite": "lion", "valeur": "endosquelette"}
+{"entite": "manchot empereur", "valeur": "endosquelette"}
+{"entite": "méduse", "valeur": "hydrosquelette"}
+{"entite": "moule", "valeur": "exosquelette"}
+{"entite": "narval", "valeur": "endosquelette"}
+{"entite": "néréis", "valeur": "hydrosquelette"}
+{"entite": "oursin", "valeur": "endosquelette"}
+{"entite": "papillon", "valeur": "exosquelette"}
+{"entite": "pélican", "valeur": "endosquelette"}
+{"entite": "planaire", "valeur": "hydrosquelette"}
+{"entite": "poisson", "valeur": "endosquelette"}
+{"entite": "praire", "valeur": "exosquelette"}
+{"entite": "python", "valeur": "endosquelette"}
+{"entite": "requin", "valeur": "endosquelette"}
+{"entite": "salamandre", "valeur": "endosquelette"}
+{"entite": "sangsue", "valeur": "hydrosquelette"}
+{"entite": "scarabée", "valeur": "exosquelette"}
+{"entite": "scorpion", "valeur": "exosquelette"}
+{"entite": "telline", "valeur": "exosquelette"}
+{"entite": "thon rouge", "valeur": "endosquelette"}
+{"entite": "tortue marine", "valeur": "endosquelette"}
+{"entite": "tubifex", "valeur": "hydrosquelette"}
+{"entite": "ver de terre", "valeur": "hydrosquelette"}

@@ -1,0 +1,9 @@
+{"_relation": "role_phytohormone", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie végétale textbook curée (phytohormone -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "acide abscissique", "valeur": "dormance et fermeture des stomates"}
+{"entite": "acide salicylique", "valeur": "résistance aux pathogènes"}
+{"entite": "auxine", "valeur": "croissance par élongation cellulaire"}
+{"entite": "brassinostéroïde", "valeur": "croissance cellulaire"}
+{"entite": "cytokinine", "valeur": "division cellulaire"}
+{"entite": "éthylène", "valeur": "maturation des fruits"}
+{"entite": "gibbérelline", "valeur": "germination et élongation des tiges"}
+{"entite": "jasmonate", "valeur": "défense contre les herbivores"}

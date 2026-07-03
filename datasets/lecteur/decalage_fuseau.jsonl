@@ -1,0 +1,13 @@
+{"_relation": "decalage_fuseau", "_categorie": "convention", "_source": "fuseaux horaires de référence (heure standard -> décalage UTC)", "_articles": true}
+{"entite": "heure d'athènes", "valeur": "UTC+2"}
+{"entite": "heure de berlin", "valeur": "UTC+1"}
+{"entite": "heure de chicago", "valeur": "UTC-6"}
+{"entite": "heure de l'inde", "valeur": "UTC+5:30"}
+{"entite": "heure de londres", "valeur": "UTC+0"}
+{"entite": "heure de los angeles", "valeur": "UTC-8"}
+{"entite": "heure de moscou", "valeur": "UTC+3"}
+{"entite": "heure de new york", "valeur": "UTC-5"}
+{"entite": "heure de paris", "valeur": "UTC+1"}
+{"entite": "heure de pékin", "valeur": "UTC+8"}
+{"entite": "heure de sydney", "valeur": "UTC+10"}
+{"entite": "heure de tokyo", "valeur": "UTC+9"}

@@ -1,0 +1,35 @@
+{"_relation": "type_dentition_animal", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (homodonte/hétérodonte ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "anguille", "valeur": "homodonte"}
+{"entite": "brochet", "valeur": "homodonte"}
+{"entite": "cachalot", "valeur": "homodonte"}
+{"entite": "carpe", "valeur": "homodonte"}
+{"entite": "chat", "valeur": "hétérodonte"}
+{"entite": "chauve-souris", "valeur": "hétérodonte"}
+{"entite": "cheval", "valeur": "hétérodonte"}
+{"entite": "chien", "valeur": "hétérodonte"}
+{"entite": "crocodile du Nil", "valeur": "homodonte"}
+{"entite": "dauphin", "valeur": "homodonte"}
+{"entite": "éléphant d'Afrique", "valeur": "hétérodonte"}
+{"entite": "être humain", "valeur": "hétérodonte"}
+{"entite": "gecko", "valeur": "homodonte"}
+{"entite": "hippopotame", "valeur": "hétérodonte"}
+{"entite": "iguane", "valeur": "homodonte"}
+{"entite": "lapin", "valeur": "hétérodonte"}
+{"entite": "lézard", "valeur": "homodonte"}
+{"entite": "lion", "valeur": "hétérodonte"}
+{"entite": "loup", "valeur": "hétérodonte"}
+{"entite": "morse", "valeur": "hétérodonte"}
+{"entite": "ours brun", "valeur": "hétérodonte"}
+{"entite": "perche", "valeur": "homodonte"}
+{"entite": "phacochère", "valeur": "hétérodonte"}
+{"entite": "python", "valeur": "homodonte"}
+{"entite": "rat", "valeur": "hétérodonte"}
+{"entite": "renard roux", "valeur": "hétérodonte"}
+{"entite": "requin", "valeur": "homodonte"}
+{"entite": "sanglier", "valeur": "hétérodonte"}
+{"entite": "serpent", "valeur": "homodonte"}
+{"entite": "souris", "valeur": "hétérodonte"}
+{"entite": "thon rouge", "valeur": "homodonte"}
+{"entite": "tigre", "valeur": "hétérodonte"}
+{"entite": "vache", "valeur": "hétérodonte"}
+{"entite": "varan", "valeur": "homodonte"}

@@ -1,0 +1,599 @@
+{"_relation": "etoile_hote_exoplanete", "_categorie": "physique", "_source": "Wikidata/QLever (fetch léger T1) — etoile_hote_exoplanete P397, fonctionnel (vocab ouvert ; FAUX=0 via ancres)", "_articles": true}
+{"entite": "109 Piscium b", "valeur": "109 Piscium"}
+{"entite": "11 Comae Berenices b", "valeur": "11 Comae Berenices"}
+{"entite": "14 Andromedae b", "valeur": "14 Andromedae"}
+{"entite": "14 Herculis b", "valeur": "14 Herculis"}
+{"entite": "14 Herculis c", "valeur": "14 Herculis"}
+{"entite": "16 Cygni Bb", "valeur": "16 Cyg B"}
+{"entite": "17 Scorpii b", "valeur": "Chi Scorpii"}
+{"entite": "18 Delphini b", "valeur": "Musica"}
+{"entite": "23 Librae b", "valeur": "23 Librae"}
+{"entite": "23 Librae c", "valeur": "23 Librae"}
+{"entite": "24 Bootis b", "valeur": "24 Bootis"}
+{"entite": "24 Sextantis b", "valeur": "24 Sextantis"}
+{"entite": "24 Sextantis c", "valeur": "24 Sextantis"}
+{"entite": "2M1207 b", "valeur": "2M1207"}
+{"entite": "2MASS J0249-0557 c", "valeur": "2MASS J02495639−0557352"}
+{"entite": "38 Virginis b", "valeur": "38 Virginis"}
+{"entite": "4 Ursae Majoris b", "valeur": "4 Ursae Majoris"}
+{"entite": "41 Lyncis b", "valeur": "HD 81688"}
+{"entite": "42 Draconis b", "valeur": "42 Draconis"}
+{"entite": "47 Ursae Majoris b", "valeur": "47 Ursae Majoris"}
+{"entite": "47 Ursae Majoris c", "valeur": "47 Ursae Majoris"}
+{"entite": "47 Ursae Majoris d", "valeur": "47 Ursae Majoris"}
+{"entite": "51 Eridani b", "valeur": "51 Eridani"}
+{"entite": "51 Pegasi b", "valeur": "51 Pegasi"}
+{"entite": "54 Piscium b", "valeur": "54 Piscium A"}
+{"entite": "55 Cancri b", "valeur": "rho01 Cnc"}
+{"entite": "55 Cancri c", "valeur": "rho01 Cnc"}
+{"entite": "55 Cancri d", "valeur": "rho01 Cnc"}
+{"entite": "55 Cancri e", "valeur": "rho01 Cnc"}
+{"entite": "55 Cancri f", "valeur": "rho01 Cnc"}
+{"entite": "6 Lyncis b", "valeur": "6 Lyncis"}
+{"entite": "61 Virginis b", "valeur": "61 Virginis"}
+{"entite": "61 Virginis c", "valeur": "61 Virginis"}
+{"entite": "61 Virginis d", "valeur": "61 Virginis"}
+{"entite": "70 Virginis b", "valeur": "70 Virginis"}
+{"entite": "75 Ceti b", "valeur": "75 Ceti"}
+{"entite": "75 Ceti c", "valeur": "75 Ceti"}
+{"entite": "79 Ceti b", "valeur": "79 Ceti"}
+{"entite": "81 Ceti b", "valeur": "81 Ceti"}
+{"entite": "83 Leonis Bb", "valeur": "83 Leonis B"}
+{"entite": "83 Leonis Bc", "valeur": "83 Leonis B"}
+{"entite": "91 Aquarii b", "valeur": "Psi1 Aquarii"}
+{"entite": "94 Ceti b", "valeur": "94 Ceti"}
+{"entite": "L 98-59 b", "valeur": "L 98-59"}
+{"entite": "L 98-59 c", "valeur": "L 98-59"}
+{"entite": "L 98-59 d", "valeur": "L 98-59"}
+{"entite": "AB Pictoris b", "valeur": "AB Pictoris"}
+{"entite": "Albmi", "valeur": "HD 68988"}
+{"entite": "Aldébaran b", "valeur": "Aldébaran"}
+{"entite": "Alpha Arietis b", "valeur": "Hamal"}
+{"entite": "Alpha Centauri Bc", "valeur": "Alpha Centauri B"}
+{"entite": "Astrolábos", "valeur": "Gnomon"}
+{"entite": "AU Mic b", "valeur": "AU Microscopii"}
+{"entite": "Awohali", "valeur": "Noquisi"}
+{"entite": "Banksia", "valeur": "Wattle"}
+{"entite": "BD-082823 b", "valeur": "BD-08°2823"}
+{"entite": "BD-082823 c", "valeur": "BD-08°2823"}
+{"entite": "BD−10°3166 b", "valeur": "BD−10°3166"}
+{"entite": "BD+14°4559 b", "valeur": "BD+14°4559"}
+{"entite": "BD-17°63 b", "valeur": "BD-17°63"}
+{"entite": "BD+20 2457 b", "valeur": "BD+20°2457"}
+{"entite": "BD+20 2457 c", "valeur": "BD+20°2457"}
+{"entite": "BD+48 740 b", "valeur": "BD+48°740"}
+{"entite": "Bélisama", "valeur": "Bélénos"}
+{"entite": "Beta Cancri b", "valeur": "Beta Cancri"}
+{"entite": "Beta Pictoris b", "valeur": "Beta Pictoris"}
+{"entite": "Beta Pictoris c", "valeur": "Beta Pictoris"}
+{"entite": "Beta Ursae Minoris b", "valeur": "Beta Ursae Minoris"}
+{"entite": "Catalineta", "valeur": "Filetdor"}
+{"entite": "CD Ceti b", "valeur": "CD Ceti"}
+{"entite": "Chi Virginis b", "valeur": "Chi Virginis"}
+{"entite": "Chi Virginis c", "valeur": "Chi Virginis"}
+{"entite": "CoRoT-11 b", "valeur": "COROT-11"}
+{"entite": "COROT-16b", "valeur": "COROT-16"}
+{"entite": "COROT-17b", "valeur": "COROT-17"}
+{"entite": "CoRoT-2 b", "valeur": "CoRoT-2"}
+{"entite": "CoRoT-6 b", "valeur": "COROT-6"}
+{"entite": "CoRoT-7 b", "valeur": "COROT-7"}
+{"entite": "CoRoT-7 c", "valeur": "COROT-7"}
+{"entite": "Cuptor", "valeur": "WASP-72"}
+{"entite": "CWISE 0146-0508 B", "valeur": "CWISE 0146-0508 A"}
+{"entite": "DP Leonis b", "valeur": "DP Leonis"}
+{"entite": "Eburonia", "valeur": "Nervia"}
+{"entite": "Epsilon Coronae Borealis b", "valeur": "Epsilon Coronae Borealis"}
+{"entite": "Epsilon Indi b", "valeur": "Epsilon Indi A"}
+{"entite": "Epsilon Reticuli b", "valeur": "Epsilon Reticuli A"}
+{"entite": "Epsilon Tauri b", "valeur": "Aïn"}
+{"entite": "Eta Ceti b", "valeur": "Eta Ceti"}
+{"entite": "Eta Ceti c", "valeur": "Eta Ceti"}
+{"entite": "étoile de Barnard b", "valeur": "étoile de Barnard"}
+{"entite": "étoile de Teegarden b", "valeur": "étoile de Teegarden"}
+{"entite": "EWS 2011-BLG-251b", "valeur": "EWS 2011-BLG-251"}
+{"entite": "EWS 2014-BLG-1722b", "valeur": "EWS 2014-BLG-1722"}
+{"entite": "EWS 2014-BLG-1722c", "valeur": "EWS 2014-BLG-1722"}
+{"entite": "EWS 2016-BLG-0613b", "valeur": "EWS 2016-BLG-613"}
+{"entite": "EWS 2017-BLG-0173b", "valeur": "EWS 2017-BLG-173"}
+{"entite": "EWS 2017-BLG-0373b", "valeur": "EWS 2017-BLG-373"}
+{"entite": "EWS 2017-BLG-1140b", "valeur": "EWS 2017-BLG-1140"}
+{"entite": "EWS 2017-BLG-1434b", "valeur": "EWS 2017-BLG-1434"}
+{"entite": "Gamma Cephei Ab", "valeur": "Gamma Cephei"}
+{"entite": "Gamma Librae b", "valeur": "Gamma Librae"}
+{"entite": "Gamma Librae c", "valeur": "Gamma Librae"}
+{"entite": "Gamma1 Leonis b", "valeur": "Gamma Leonis A"}
+{"entite": "GJ 1061 b", "valeur": "Gliese 1061"}
+{"entite": "GJ 1132 c", "valeur": "Gliese 1132"}
+{"entite": "GJ 1132b", "valeur": "Gliese 1132"}
+{"entite": "GJ 163 b", "valeur": "Gliese 163"}
+{"entite": "GJ 163 d", "valeur": "Gliese 163"}
+{"entite": "GJ 180 d", "valeur": "Gliese 180"}
+{"entite": "GJ 357 d", "valeur": "Gliese 357"}
+{"entite": "GJ 625 b", "valeur": "Gliese 625"}
+{"entite": "Gliese 1061 c", "valeur": "Gliese 1061"}
+{"entite": "Gliese 15 Ab", "valeur": "Gliese 15"}
+{"entite": "Gliese 163 c", "valeur": "Gliese 163"}
+{"entite": "Gliese 176 b", "valeur": "Gliese 176"}
+{"entite": "Gliese 179 b", "valeur": "Gliese 179"}
+{"entite": "Gliese 180 b", "valeur": "Gliese 180"}
+{"entite": "Gliese 180 c", "valeur": "Gliese 180"}
+{"entite": "Gliese 221 c", "valeur": "Gliese 221"}
+{"entite": "Gliese 3021 b", "valeur": "Gliese 3021"}
+{"entite": "Gliese 317 b", "valeur": "Gliese 317"}
+{"entite": "Gliese 317 c", "valeur": "Gliese 317"}
+{"entite": "Gliese 422 b", "valeur": "étoile d'Innes"}
+{"entite": "Gliese 433 b", "valeur": "Gliese 433"}
+{"entite": "Gliese 436 c", "valeur": "Noquisi"}
+{"entite": "Gliese 536 b", "valeur": "Gliese 536"}
+{"entite": "Gliese 581 b", "valeur": "Gliese 581"}
+{"entite": "Gliese 581 c", "valeur": "Gliese 581"}
+{"entite": "Gliese 581 d", "valeur": "Gliese 581"}
+{"entite": "Gliese 581 e", "valeur": "Gliese 581"}
+{"entite": "Gliese 649 b", "valeur": "Gliese 649"}
+{"entite": "Gliese 667 Cb", "valeur": "Gliese 667 C"}
+{"entite": "Gliese 667 Cc", "valeur": "Gliese 667 C"}
+{"entite": "Gliese 667 Cd", "valeur": "Gliese 667 C"}
+{"entite": "Gliese 667 Ce", "valeur": "Gliese 667 C"}
+{"entite": "Gliese 667 Cg", "valeur": "Gliese 667 C"}
+{"entite": "Gliese 667 Ch", "valeur": "Gliese 667 C"}
+{"entite": "Gliese 674 b", "valeur": "Gliese 674"}
+{"entite": "Gliese 676 Ab", "valeur": "Gliese 676 A"}
+{"entite": "Gliese 676 Ac", "valeur": "Gliese 676 A"}
+{"entite": "Gliese 676 Ad", "valeur": "Gliese 676 A"}
+{"entite": "Gliese 676 Ae", "valeur": "Gliese 676 A"}
+{"entite": "Gliese 682 c", "valeur": "Gliese 682"}
+{"entite": "Gliese 687 b", "valeur": "Gliese 687"}
+{"entite": "Gliese 777 Ab", "valeur": "Gliese 777"}
+{"entite": "Gliese 777 Ac", "valeur": "Gliese 777"}
+{"entite": "Gliese 832 b", "valeur": "Gliese 832"}
+{"entite": "Gliese 832 c", "valeur": "Gliese 832"}
+{"entite": "Gliese 849 b", "valeur": "Gliese 849"}
+{"entite": "Gliese 86 b", "valeur": "Gliese 86 A"}
+{"entite": "Gliese 876 b", "valeur": "Gliese 876"}
+{"entite": "Gliese 876 c", "valeur": "Gliese 876"}
+{"entite": "Gliese 876 d", "valeur": "Gliese 876"}
+{"entite": "Gliese 876 e", "valeur": "Gliese 876"}
+{"entite": "GP Com b", "valeur": "GP Comae Berenices"}
+{"entite": "GU Piscium b", "valeur": "GU Piscium"}
+{"entite": "Guataubá", "valeur": "Guahayona"}
+{"entite": "Haik", "valeur": "WASP-34"}
+{"entite": "HAT-P-11c", "valeur": "HAT-P-11"}
+{"entite": "HAT-P-13 b", "valeur": "HAT-P-13"}
+{"entite": "HAT-P-13 c", "valeur": "HAT-P-13"}
+{"entite": "HAT-P-2c", "valeur": "Hunor"}
+{"entite": "HAT-P-34 b", "valeur": "HAT-P-34"}
+{"entite": "HAT-P-5 b", "valeur": "Chasoň"}
+{"entite": "HAT-P-6 b", "valeur": "Sterrennacht"}
+{"entite": "HAT-P-67b", "valeur": "HAT-P-67"}
+{"entite": "HAT-P-9 b", "valeur": "HAT-P-9"}
+{"entite": "HD 100777 b", "valeur": "HD 100777"}
+{"entite": "HD 10180 b", "valeur": "HD 10180"}
+{"entite": "HD 10180 c", "valeur": "HD 10180"}
+{"entite": "HD 10180 d", "valeur": "HD 10180"}
+{"entite": "HD 10180 e", "valeur": "HD 10180"}
+{"entite": "HD 10180 f", "valeur": "HD 10180"}
+{"entite": "HD 10180 g", "valeur": "HD 10180"}
+{"entite": "HD 10180 h", "valeur": "HD 10180"}
+{"entite": "HD 10180 i", "valeur": "HD 10180"}
+{"entite": "HD 101930 b", "valeur": "HD 101930"}
+{"entite": "HD 102117 b", "valeur": "HD 102117"}
+{"entite": "HD 102272 b", "valeur": "HD 102272"}
+{"entite": "HD 102272 c", "valeur": "HD 102272"}
+{"entite": "HD 102365 b", "valeur": "HR 4523 A"}
+{"entite": "HD 104985 b", "valeur": "HD 104985"}
+{"entite": "HD 106252 b", "valeur": "HD 106252"}
+{"entite": "HD 10647 b", "valeur": "q1 Eridani"}
+{"entite": "HD 107148 b", "valeur": "HD 107148"}
+{"entite": "HD 108147 b", "valeur": "HD 108147"}
+{"entite": "HD 108874 b", "valeur": "HD 108874"}
+{"entite": "HD 108874 c", "valeur": "HD 108874"}
+{"entite": "HD 109749 b", "valeur": "HD 109749"}
+{"entite": "HD 111232 b", "valeur": "HD 111232"}
+{"entite": "HD 114386 b", "valeur": "HD 114386"}
+{"entite": "HD 114729 b", "valeur": "HD 114729"}
+{"entite": "HD 114783 b", "valeur": "HD 114783"}
+{"entite": "HD 117207 b", "valeur": "HD 117207"}
+{"entite": "HD 117618 b", "valeur": "HD 117618"}
+{"entite": "HD 118203 b", "valeur": "HD 118203"}
+{"entite": "HD 11964 b", "valeur": "HD 11964"}
+{"entite": "HD 11964 c", "valeur": "HD 11964"}
+{"entite": "HD 11977 b", "valeur": "Eta2 Hydri"}
+{"entite": "HD 121504 b", "valeur": "HD 121504"}
+{"entite": "HD 122430 b", "valeur": "HD 122430"}
+{"entite": "HD 125595 b", "valeur": "HD 125595"}
+{"entite": "HD 125612 b", "valeur": "HD 125612"}
+{"entite": "HD 125612 c", "valeur": "HD 125612"}
+{"entite": "HD 125612 d", "valeur": "HD 125612"}
+{"entite": "HD 12661 b", "valeur": "HD 12661"}
+{"entite": "HD 12661 c", "valeur": "HD 12661"}
+{"entite": "HD 128311 b", "valeur": "HD 128311"}
+{"entite": "HD 128311 c", "valeur": "HD 128311"}
+{"entite": "HD 130322 b", "valeur": "HD 130322"}
+{"entite": "HD 13189 b", "valeur": "HD 13189"}
+{"entite": "HD 132406 b", "valeur": "HD 132406"}
+{"entite": "HD 133131 Ab", "valeur": "HD 133131 A"}
+{"entite": "HD 133131 Ac", "valeur": "HD 133131 A"}
+{"entite": "HD 133131 Bb", "valeur": "HD 133131 B"}
+{"entite": "HD 133131 Bc", "valeur": "HD 133131 B"}
+{"entite": "HD 136118 b", "valeur": "HD 136118"}
+{"entite": "HD 139357 b", "valeur": "HD 139357"}
+{"entite": "HD 142022 Ab", "valeur": "HD 142022"}
+{"entite": "HD 142415 b", "valeur": "HD 142415"}
+{"entite": "HD 147018 b", "valeur": "HD 147018"}
+{"entite": "HD 147018 c", "valeur": "HD 147018"}
+{"entite": "HD 147513 b", "valeur": "HR 6094"}
+{"entite": "HD 149026 b", "valeur": "HD 149026"}
+{"entite": "HD 150706 b", "valeur": "HD 150706"}
+{"entite": "HD 152581 b", "valeur": "Mahsati"}
+{"entite": "HD 154345 b", "valeur": "HD 154345"}
+{"entite": "HD 154857 b", "valeur": "HD 154857"}
+{"entite": "HD 154857 c", "valeur": "HD 154857"}
+{"entite": "HD 155358 b", "valeur": "HD 155358"}
+{"entite": "HD 155358 c", "valeur": "HD 155358"}
+{"entite": "HD 156411 b", "valeur": "HD 156411"}
+{"entite": "HD 159868 b", "valeur": "HD 159868"}
+{"entite": "HD 16417 b", "valeur": "Lambda2 Fornacis"}
+{"entite": "HD 164595 b", "valeur": "HD 164595 A"}
+{"entite": "HD 164922 b", "valeur": "HD 164922"}
+{"entite": "HD 164922 c", "valeur": "HD 164922"}
+{"entite": "HD 167042 b", "valeur": "HD 167042"}
+{"entite": "HD 168443 b", "valeur": "HD 168443"}
+{"entite": "HD 168746 b", "valeur": "Alasia"}
+{"entite": "HD 170469 b", "valeur": "HD 170469"}
+{"entite": "HD 17092 b", "valeur": "HD 17092"}
+{"entite": "HD 171028 b", "valeur": "HD 171028"}
+{"entite": "HD 17156 b", "valeur": "HD 17156"}
+{"entite": "HD 17156 c", "valeur": "HD 17156"}
+{"entite": "HD 175541 b", "valeur": "HD 175541"}
+{"entite": "HD 178911 Bb", "valeur": "HD 178911 B"}
+{"entite": "HD 181433 b", "valeur": "HD 181433"}
+{"entite": "HD 181433 c", "valeur": "HD 181433"}
+{"entite": "HD 181433 d", "valeur": "HD 181433"}
+{"entite": "HD 183263 b", "valeur": "HD 183263"}
+{"entite": "HD 183263 c", "valeur": "HD 183263"}
+{"entite": "HD 187085 b", "valeur": "HD 187085"}
+{"entite": "HD 187123 b", "valeur": "HD 187123"}
+{"entite": "HD 187123 c", "valeur": "HD 187123"}
+{"entite": "HD 188015 b", "valeur": "HD 188015"}
+{"entite": "HD 190647 b", "valeur": "HD 190647"}
+{"entite": "HD 192263 b", "valeur": "1RXS J201359.8-005214"}
+{"entite": "HD 192699 b", "valeur": "HD 192699"}
+{"entite": "HD 196050 b", "valeur": "HD 196050A"}
+{"entite": "HD 20367 b", "valeur": "HD 20367"}
+{"entite": "HD 2039 b", "valeur": "HD 2039"}
+{"entite": "HD 20782 b", "valeur": "HD 20782"}
+{"entite": "HD 20794 b", "valeur": "82 Eridani"}
+{"entite": "HD 20794 c", "valeur": "82 Eridani"}
+{"entite": "HD 20794 d", "valeur": "82 Eridani"}
+{"entite": "HD 208487 b", "valeur": "HD 208487"}
+{"entite": "HD 209458 b", "valeur": "HD 209458"}
+{"entite": "HD 210277 b", "valeur": "HD 210277"}
+{"entite": "HD 210702 b", "valeur": "HD 210702"}
+{"entite": "HD 212301 Ab", "valeur": "HD 212301"}
+{"entite": "HD 213240 b", "valeur": "HD 213240"}
+{"entite": "HD 216770 b", "valeur": "HD 216770"}
+{"entite": "HD 219134 c", "valeur": "Gliese 892"}
+{"entite": "HD 219134 d", "valeur": "Gliese 892"}
+{"entite": "HD 219134 e", "valeur": "Gliese 892"}
+{"entite": "HD 219134 f", "valeur": "Gliese 892"}
+{"entite": "HD 219134 g", "valeur": "Gliese 892"}
+{"entite": "HD 219134 h", "valeur": "Gliese 892"}
+{"entite": "HD 219828 b", "valeur": "HD 219828"}
+{"entite": "HD 222582 b", "valeur": "HD 222582"}
+{"entite": "HD 224693 b", "valeur": "Axólotl"}
+{"entite": "HD 23079 b", "valeur": "HD 23079"}
+{"entite": "HD 23127 b", "valeur": "HD 23127"}
+{"entite": "HD 231701 b", "valeur": "HD 231701"}
+{"entite": "HD 23596 b", "valeur": "HD 23596"}
+{"entite": "HD 240210 b", "valeur": "HD 240210"}
+{"entite": "HD 24040 b", "valeur": "HD 24040"}
+{"entite": "HD 27894 b", "valeur": "HD 27894"}
+{"entite": "HD 28185 b", "valeur": "HD 28185"}
+{"entite": "HD 30177 b", "valeur": "HD 30177"}
+{"entite": "HD 330075 b", "valeur": "HD 330075"}
+{"entite": "HD 33283 b", "valeur": "HD 33283"}
+{"entite": "HD 34445 b", "valeur": "HD 34445"}
+{"entite": "HD 37124 b", "valeur": "HD 37124"}
+{"entite": "HD 37124 c", "valeur": "HD 37124"}
+{"entite": "HD 37124 d", "valeur": "HD 37124"}
+{"entite": "HD 37605 b", "valeur": "HD 37605"}
+{"entite": "HD 37605 c", "valeur": "HD 37605"}
+{"entite": "HD 38529 Ab", "valeur": "HD 38529"}
+{"entite": "HD 38529 Ac", "valeur": "HD 38529"}
+{"entite": "HD 40307 b", "valeur": "HD 40307"}
+{"entite": "HD 40307 c", "valeur": "HD 40307"}
+{"entite": "HD 40307 d", "valeur": "HD 40307"}
+{"entite": "HD 40307 e", "valeur": "HD 40307"}
+{"entite": "HD 40307 f", "valeur": "HD 40307"}
+{"entite": "HD 40307 g", "valeur": "HD 40307"}
+{"entite": "HD 40979 b", "valeur": "HD 40979"}
+{"entite": "HD 4208 b", "valeur": "HD 4208"}
+{"entite": "HD 4308 b", "valeur": "HD 4308"}
+{"entite": "HD 43691 b", "valeur": "HD 43691"}
+{"entite": "HD 45652 b", "valeur": "HD 45652"}
+{"entite": "HD 46375 b", "valeur": "HD 46375A"}
+{"entite": "HD 47536 b", "valeur": "HD 47536"}
+{"entite": "HD 47536 c", "valeur": "HD 47536"}
+{"entite": "HD 50499 b", "valeur": "HD 50499"}
+{"entite": "HD 50554 b", "valeur": "HD 50554"}
+{"entite": "HD 52265 b", "valeur": "Citalá"}
+{"entite": "HD 5319 b", "valeur": "HD 5319"}
+{"entite": "HD 5319 c", "valeur": "HD 5319"}
+{"entite": "HD 59686 b", "valeur": "HD 59686"}
+{"entite": "HD 63454 b", "valeur": "HD 63454"}
+{"entite": "HD 6434 b", "valeur": "HD 6434"}
+{"entite": "HD 66428 b", "valeur": "HD 66428"}
+{"entite": "HD 68988 c", "valeur": "HD 68988"}
+{"entite": "HD 70573 b", "valeur": "HD 70573"}
+{"entite": "HD 70642 b", "valeur": "HD 70642"}
+{"entite": "HD 72659 b", "valeur": "HD 72659"}
+{"entite": "HD 73267 b", "valeur": "HD 73267"}
+{"entite": "HD 73526 b", "valeur": "HD 73526"}
+{"entite": "HD 73526 c", "valeur": "HD 73526"}
+{"entite": "HD 74156 b", "valeur": "HD 74156"}
+{"entite": "HD 74156 c", "valeur": "HD 74156"}
+{"entite": "HD 74156 d", "valeur": "HD 74156"}
+{"entite": "HD 75289 b", "valeur": "HD 75289"}
+{"entite": "HD 75898 b", "valeur": "HD 75898"}
+{"entite": "HD 76700 b", "valeur": "HD 76700"}
+{"entite": "HD 80606 b", "valeur": "HD 80606"}
+{"entite": "HD 81040 b", "valeur": "HD 81040"}
+{"entite": "HD 82943 b", "valeur": "HD 82943"}
+{"entite": "HD 82943 c", "valeur": "HD 82943"}
+{"entite": "HD 83443 b", "valeur": "HD 83443"}
+{"entite": "HD 85512 b", "valeur": "HD 85512"}
+{"entite": "HD 86081 b", "valeur": "HD 86081"}
+{"entite": "HD 88133 b", "valeur": "HD 88133"}
+{"entite": "HD 89307 b", "valeur": "HD 89307"}
+{"entite": "HD 89744 b", "valeur": "HD 89744"}
+{"entite": "HD 90156 b", "valeur": "HD 90156"}
+{"entite": "HD 92788 b", "valeur": "HD 92788"}
+{"entite": "HD 9446 b", "valeur": "HD 9446"}
+{"entite": "HD 9446 c", "valeur": "HD 9446"}
+{"entite": "HD 99109 b", "valeur": "HD 99109"}
+{"entite": "HIP 14810 b", "valeur": "HIP 14810"}
+{"entite": "HIP 14810 c", "valeur": "HIP 14810"}
+{"entite": "HIP 14810 d", "valeur": "HIP 14810"}
+{"entite": "HIP 70849 b", "valeur": "HIP 70849"}
+{"entite": "HIP 79431 b", "valeur": "HIP 79431"}
+{"entite": "HN Librae b", "valeur": "Gliese 555"}
+{"entite": "HR 5183 b", "valeur": "HR 5183"}
+{"entite": "HR 7722 b", "valeur": "HR 7722"}
+{"entite": "HU Aqr b", "valeur": "HU Aquarii"}
+{"entite": "HU Aqr c", "valeur": "HU Aquarii"}
+{"entite": "HW Virginis b", "valeur": "HW Virginis"}
+{"entite": "HW Virginis c", "valeur": "HW Virginis"}
+{"entite": "Indépendance", "valeur": "Citadelle"}
+{"entite": "Iota Draconis b", "valeur": "Iota Draconis"}
+{"entite": "Iota Horologii b", "valeur": "Iota Horologii"}
+{"entite": "Isli", "valeur": "WASP-161"}
+{"entite": "K2-155b", "valeur": "HG 8-15"}
+{"entite": "K2-155c", "valeur": "HG 8-15"}
+{"entite": "K2-155d", "valeur": "HG 8-15"}
+{"entite": "K2-290 b", "valeur": "K2-290"}
+{"entite": "K2-290 c", "valeur": "K2-290"}
+{"entite": "K2-406 b", "valeur": "K2-406"}
+{"entite": "K77-11", "valeur": "2MASS J19435617+4002370"}
+{"entite": "Kappa Coronae Borealis b", "valeur": "Kappa Coronae Borealis"}
+{"entite": "Kapteyn b", "valeur": "étoile de Kapteyn"}
+{"entite": "Kapteyn c", "valeur": "étoile de Kapteyn"}
+{"entite": "KELT-12b", "valeur": "WASP-86"}
+{"entite": "KELT-14b", "valeur": "WASP-122"}
+{"entite": "KELT-15b", "valeur": "KELT-15"}
+{"entite": "KELT-17b", "valeur": "KELT-17"}
+{"entite": "KELT-2Ab", "valeur": "KELT-2A"}
+{"entite": "KELT-6 b", "valeur": "KELT-6"}
+{"entite": "KELT-9 b", "valeur": "HD 195689"}
+{"entite": "Kepler-13 Ab", "valeur": "Kepler-13 A"}
+{"entite": "Kepler-15 b", "valeur": "Kepler-15"}
+{"entite": "Kepler-1647 b", "valeur": "KOI-2939"}
+{"entite": "Kepler-17 b", "valeur": "Kepler-17"}
+{"entite": "Kepler-223 c", "valeur": "Kepler-223"}
+{"entite": "Kepler-23 b", "valeur": "Kepler-23"}
+{"entite": "Kepler-23 c", "valeur": "Kepler-23"}
+{"entite": "Kepler-23 d", "valeur": "Kepler-23"}
+{"entite": "Kepler-283 c", "valeur": "KOI-1298"}
+{"entite": "Kepler-292 b", "valeur": "Kepler-292"}
+{"entite": "Kepler-292 c", "valeur": "Kepler-292"}
+{"entite": "Kepler-292 d", "valeur": "Kepler-292"}
+{"entite": "Kepler-36b", "valeur": "Kepler-36"}
+{"entite": "Kepler-452 b", "valeur": "Kepler-452"}
+{"entite": "Kepler-469b", "valeur": "KOI-126"}
+{"entite": "Kepler-47 b", "valeur": "Kepler-47"}
+{"entite": "Kepler-50 b", "valeur": "Kepler-50"}
+{"entite": "Kepler-50 c", "valeur": "Kepler-50"}
+{"entite": "Kepler-61 b", "valeur": "Kepler-61"}
+{"entite": "Kepler-63 b", "valeur": "Kepler-63"}
+{"entite": "Kepler-68 b", "valeur": "Kepler-68"}
+{"entite": "Kepler-68 c", "valeur": "Kepler-68"}
+{"entite": "Kepler-70 b", "valeur": "Kepler-70"}
+{"entite": "Kepler-80 g", "valeur": "Kepler-80"}
+{"entite": "Kepler-84 b", "valeur": "Kepler-84"}
+{"entite": "Kepler-84 c", "valeur": "Kepler-84"}
+{"entite": "Kepler-84 d", "valeur": "Kepler-84"}
+{"entite": "Kepler-84 e", "valeur": "Kepler-84"}
+{"entite": "Kepler-84 f", "valeur": "Kepler-84"}
+{"entite": "KIC 011032005-01", "valeur": "KIC 11032005"}
+{"entite": "KIC 7767559b", "valeur": "KOI-895"}
+{"entite": "KMT-2020-BLG-0414L b", "valeur": "KMT-2020-BLG-0414L"}
+{"entite": "KMT-2020-BLG-0414L c", "valeur": "KMT-2020-BLG-0414L"}
+{"entite": "KOI-410 b", "valeur": "KOI-410"}
+{"entite": "KOI-72.X", "valeur": "Kepler-10"}
+{"entite": "Krotoa", "valeur": "WASP-62"}
+{"entite": "Kua'kua", "valeur": "Batsũ̀"}
+{"entite": "Lalande 21185b", "valeur": "Lalande 21185"}
+{"entite": "Levantes", "valeur": "Aiolos"}
+{"entite": "LkCa 15 b", "valeur": "LkCa 15"}
+{"entite": "LTT 9779 b", "valeur": "LTT 9779"}
+{"entite": "Lupus-TR-3b", "valeur": "Lupus-TR-3"}
+{"entite": "Luyten b", "valeur": "étoile de Luyten"}
+{"entite": "Magor", "valeur": "Hunor"}
+{"entite": "Makombé", "valeur": "Wouri"}
+{"entite": "MOA-2007-BLG-192Lb", "valeur": "MOA-2007-BLG-192-L"}
+{"entite": "MOA-2007-BLG-400Lb", "valeur": "MOA-2007-BLG-400L"}
+{"entite": "Mu Arae b", "valeur": "Mu Arae"}
+{"entite": "Mu Arae c", "valeur": "Mu Arae"}
+{"entite": "Mu Arae d", "valeur": "Mu Arae"}
+{"entite": "Mu Arae e", "valeur": "Mu Arae"}
+{"entite": "Najsakopajk", "valeur": "Matza"}
+{"entite": "NGC 2423-3 b", "valeur": "NGC 2423-3"}
+{"entite": "NGC 2682 YBP 1194b", "valeur": "YBP 1194"}
+{"entite": "NGC 2682 YBP 1514b", "valeur": "YBP1514"}
+{"entite": "NGTS-2b", "valeur": "NGTS-2"}
+{"entite": "NN Ser c", "valeur": "NN Serpentis"}
+{"entite": "Nu2 Canis Majoris b", "valeur": "Nu2 Canis Majoris"}
+{"entite": "NY Vir b", "valeur": "NY Virginis"}
+{"entite": "NY Virginis c", "valeur": "NY Virginis"}
+{"entite": "OGLE-2003-BLG-235Lb", "valeur": "OGLE 2003-BLG-235L"}
+{"entite": "OGLE-2005-BLG-071Lb", "valeur": "EWS 2005-BLG-71"}
+{"entite": "OGLE-2005-BLG-169Lb", "valeur": "OGLE-2005-BLG-169L"}
+{"entite": "OGLE-2005-BLG-390Lb", "valeur": "OGLE-2005-BLG-390L"}
+{"entite": "OGLE-2006-BLG-109L b", "valeur": "OGLE-2006-BLG-109L"}
+{"entite": "OGLE-2006-BLG-109Lc", "valeur": "OGLE-2006-BLG-109L"}
+{"entite": "OGLE-2007-BLG-368L b", "valeur": "OGLE-2007-BLG-368L"}
+{"entite": "OGLE-2011-BLG-0420 b", "valeur": "EWS 2011-BLG-420"}
+{"entite": "OGLE-2012-BLG-0026Lb", "valeur": "EWS 2012-BLG-26"}
+{"entite": "OGLE-2012-BLG-0026Lc", "valeur": "EWS 2012-BLG-26"}
+{"entite": "OGLE-2012-BLG-406Lb", "valeur": "OGLE-2012-BLG-406"}
+{"entite": "OGLE-2013-BLG-0341LB b", "valeur": "OGLE-2013-BLG-0341LB"}
+{"entite": "OGLE-2013-BLG-0723Lb", "valeur": "OGLE-2013-BLG-0723L"}
+{"entite": "OGLE-2013-BLG-102L b", "valeur": "EWS 2013-BLG-102"}
+{"entite": "OGLE-2013-BLG-578b", "valeur": "EWS 2013-BLG-578"}
+{"entite": "OGLE-2014-BLG-0124Lb", "valeur": "OGLE-2014-BLG-124L"}
+{"entite": "OGLE 2015-BLG-954b", "valeur": "EWS 2015-BLG-954"}
+{"entite": "OGLE-2016-BLG-1195Lb", "valeur": "EWS 2016-BLG-1195"}
+{"entite": "OGLE-TR-10 b", "valeur": "OGLE-TR-10"}
+{"entite": "OGLE-TR-111b", "valeur": "OGLE-TR-111"}
+{"entite": "OGLE-TR-113b", "valeur": "OGLE-TR-113"}
+{"entite": "OGLE-TR-132b", "valeur": "OGLE-TR-132"}
+{"entite": "OGLE-TR-182b", "valeur": "OGLE-TR-182"}
+{"entite": "OGLE-TR-211b", "valeur": "OGLE-TR-211"}
+{"entite": "OGLE-TR 3b", "valeur": "OGLE-TR-3"}
+{"entite": "OGLE-TR-56 b", "valeur": "OGLE-TR-56"}
+{"entite": "omicron Ursae Majoris b", "valeur": "Omicron Ursae Majoris"}
+{"entite": "PA-99-N2 b", "valeur": "PA-99-N2"}
+{"entite": "Peitruss", "valeur": "Lucilinburhuc"}
+{"entite": "PH1", "valeur": "Kepler-64"}
+{"entite": "Phailinsiam", "valeur": "Kaewkosin"}
+{"entite": "Pi Mensae b", "valeur": "Pi Mensae"}
+{"entite": "Pi Mensae c", "valeur": "Pi Mensae"}
+{"entite": "Pollera", "valeur": "WASP-79"}
+{"entite": "Pollux b", "valeur": "Pollux"}
+{"entite": "Pr 0211-b", "valeur": "Pr0211"}
+{"entite": "Pr 0211-c", "valeur": "Pr0211"}
+{"entite": "Pr0201 b", "valeur": "Pr0201"}
+{"entite": "Proxima Centauri b", "valeur": "Proxima Centauri"}
+{"entite": "Proxima Centauri c", "valeur": "Proxima Centauri"}
+{"entite": "Proxima d", "valeur": "Proxima Centauri"}
+{"entite": "PSR B1957+20 b", "valeur": "QX Sagittae"}
+{"entite": "Puli", "valeur": "Komondor"}
+{"entite": "Qatar-4b", "valeur": "Qatar-4"}
+{"entite": "Qatar-5b", "valeur": "Qatar-5"}
+{"entite": "Qingluan", "valeur": "Danfeng"}
+{"entite": "Regoč", "valeur": "Kosjenka"}
+{"entite": "Rho Coronae Borealis b", "valeur": "Rho Coronae Borealis"}
+{"entite": "Rho Indi b", "valeur": "Rho Indi"}
+{"entite": "Riosar", "valeur": "Rosalíadecastro"}
+{"entite": "Ross 128 b", "valeur": "Ross 128"}
+{"entite": "RR Cae b", "valeur": "RR Caeli"}
+{"entite": "SDSS J143317.78+101122.8b", "valeur": "SDSS J1433+1011"}
+{"entite": "Sissi", "valeur": "Franz"}
+{"entite": "Su", "valeur": "Gar"}
+{"entite": "SWEEPS-04 b", "valeur": "SWEEPS J175853.92−291120.6"}
+{"entite": "SWEEPS-10", "valeur": "SWEEPS J175902.00−291323.7"}
+{"entite": "SWEEPS-11", "valeur": "SWEEPS J175902.67−291153.5"}
+{"entite": "Tahay", "valeur": "Añañuca"}
+{"entite": "Tau Ceti b", "valeur": "Tau Ceti"}
+{"entite": "Tau Ceti c", "valeur": "Tau Ceti"}
+{"entite": "Tau Ceti d", "valeur": "Tau Ceti"}
+{"entite": "Tau Ceti e", "valeur": "Tau Ceti"}
+{"entite": "Tau Ceti f", "valeur": "Tau Ceti"}
+{"entite": "Tau Ceti g", "valeur": "Tau Ceti"}
+{"entite": "Tau Ceti h", "valeur": "Tau Ceti"}
+{"entite": "Tau Ceti i", "valeur": "Tau Ceti"}
+{"entite": "Tau1 Gruis b", "valeur": "Tau1 Gruis"}
+{"entite": "TOI 1338 b", "valeur": "TOI 1338"}
+{"entite": "TOI 193.02", "valeur": "LTT 9779"}
+{"entite": "TOI 700 b", "valeur": "TOI 700"}
+{"entite": "TOI 700 c", "valeur": "TOI 700"}
+{"entite": "TOI 700 d", "valeur": "TOI 700"}
+{"entite": "TOI 700 e", "valeur": "TOI 700"}
+{"entite": "TrES-1 b", "valeur": "GSC 02652-01324"}
+{"entite": "TrES-2b", "valeur": "TrES-2A"}
+{"entite": "TrES-3 b", "valeur": "GSC 03089-00929"}
+{"entite": "TW Hydrae b", "valeur": "TW Hydrae"}
+{"entite": "TWA 7 b", "valeur": "CE Antliae"}
+{"entite": "Tylos", "valeur": "Dilmun"}
+{"entite": "UKIRT 2017-BLG-001b", "valeur": "UKIRT 2017-BLG-001"}
+{"entite": "Upsilon Andromedae b", "valeur": "Upsilon Andromedae"}
+{"entite": "Upsilon Andromedae c", "valeur": "Upsilon Andromedae"}
+{"entite": "Upsilon Andromedae d", "valeur": "Upsilon Andromedae"}
+{"entite": "Upsilon Andromedae e", "valeur": "Upsilon Andromedae"}
+{"entite": "UZ For b", "valeur": "UZ Fornacis"}
+{"entite": "UZ For c", "valeur": "UZ Fornacis"}
+{"entite": "V1828 Aql b", "valeur": "NSVS 14256825"}
+{"entite": "V1828 Aql c", "valeur": "NSVS 14256825"}
+{"entite": "V391 Pegasi b", "valeur": "V391 Pegasi"}
+{"entite": "V830 Tau b", "valeur": "V830 Tauri"}
+{"entite": "WASP-101b", "valeur": "WASP-101"}
+{"entite": "WASP-109 b", "valeur": "WASP-109"}
+{"entite": "WASP-10b", "valeur": "WASP-10"}
+{"entite": "WASP-10c", "valeur": "WASP-10"}
+{"entite": "WASP-11b/HAT-P-10b", "valeur": "WASP-11/HAT-P-10"}
+{"entite": "WASP-11c", "valeur": "WASP-11/HAT-P-10"}
+{"entite": "WASP-123b", "valeur": "WASP-123"}
+{"entite": "WASP-12b", "valeur": "WASP-12"}
+{"entite": "WASP-130b", "valeur": "WASP-130"}
+{"entite": "WASP-136 b", "valeur": "WASP-136"}
+{"entite": "WASP-137 b", "valeur": "WASP-137"}
+{"entite": "WASP-13b", "valeur": "WASP-13"}
+{"entite": "WASP-140b", "valeur": "WASP-140"}
+{"entite": "WASP-145Ab", "valeur": "WASP-145A"}
+{"entite": "WASP-14b", "valeur": "WASP-14"}
+{"entite": "WASP-15b", "valeur": "WASP-15"}
+{"entite": "WASP-172b", "valeur": "WASP-172"}
+{"entite": "WASP-17b", "valeur": "Dìwö"}
+{"entite": "WASP-189 b", "valeur": "WASP-189"}
+{"entite": "WASP-18b", "valeur": "WASP-18"}
+{"entite": "WASP-2 b", "valeur": "WASP-2A"}
+{"entite": "WASP-20 b", "valeur": "WASP-20"}
+{"entite": "WASP-29b", "valeur": "WASP-29"}
+{"entite": "WASP-3 b", "valeur": "WASP-3"}
+{"entite": "WASP-35b", "valeur": "WASP-35"}
+{"entite": "WASP-41b", "valeur": "WASP-41"}
+{"entite": "WASP-48b", "valeur": "WASP-48"}
+{"entite": "WASP-54b", "valeur": "WASP-54"}
+{"entite": "WASP-6b", "valeur": "WASP-6"}
+{"entite": "WASP-7 b", "valeur": "WASP-7"}
+{"entite": "WASP-71 b", "valeur": "WASP-71"}
+{"entite": "WASP-75b", "valeur": "WASP-75"}
+{"entite": "WASP-76 b", "valeur": "WASP-76"}
+{"entite": "WASP-82b", "valeur": "WASP-82"}
+{"entite": "WASP-85 Ab", "valeur": "WASP-85"}
+{"entite": "WASP-87b", "valeur": "WASP-87"}
+{"entite": "WASP-8b", "valeur": "WASP-8"}
+{"entite": "WASP-94Ab", "valeur": "WASP-94A"}
+{"entite": "WASP-94Bb", "valeur": "WASP-94B"}
+{"entite": "WASP-95b", "valeur": "WASP-95"}
+{"entite": "WASP-97b", "valeur": "WASP-97"}
+{"entite": "WASP-99b", "valeur": "WASP-99"}
+{"entite": "WD 1145+017 b", "valeur": "WD 1145+017"}
+{"entite": "WD 1856+534 b", "valeur": "WD 1856+534"}
+{"entite": "WD J0914+1914 b", "valeur": "WDJ0914+1914"}
+{"entite": "WISE J1217+1626B", "valeur": "WISEPC J121756.91+162640.2"}
+{"entite": "Wolf 1061 c", "valeur": "Wolf 1061"}
+{"entite": "Wolf 1061b", "valeur": "Wolf 1061"}
+{"entite": "Wolf 1061d", "valeur": "Wolf 1061"}
+{"entite": "Xi Aquilae b", "valeur": "Xi Aquilae"}
+{"entite": "XO-1 b", "valeur": "XO-1"}
+{"entite": "XO-2 S b", "valeur": "XO-2 S"}
+{"entite": "XO-2 S c", "valeur": "XO-2 S"}
+{"entite": "XO-2b", "valeur": "XO-2N"}
+{"entite": "XO-3 b", "valeur": "XO-3"}
+{"entite": "XO-5 b", "valeur": "Absolutno"}
+{"entite": "YZ Ceti b", "valeur": "YZ Ceti"}
+{"entite": "YZ Ceti c", "valeur": "YZ Ceti"}
+{"entite": "YZ Ceti d", "valeur": "YZ Ceti"}
+{"entite": "YZ Ceti e", "valeur": "YZ Ceti"}
+{"entite": "Zembretta", "valeur": "Zembra"}
+{"entite": "[ZKS2013] 19g1-11212", "valeur": "WTS 19g-1-11212"}

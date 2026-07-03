@@ -1,0 +1,27 @@
+{"_relation": "mode_vie_champignon", "_categorie": "physique", "_source": "Modèle (Claude) — mycologie textbook curée (mode de vie ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "agaric", "valeur": "saprophyte"}
+{"entite": "amanite tue-mouches", "valeur": "symbiotique"}
+{"entite": "anthracnose", "valeur": "parasite"}
+{"entite": "bolet", "valeur": "symbiotique"}
+{"entite": "cèpe", "valeur": "symbiotique"}
+{"entite": "champignon de Paris", "valeur": "saprophyte"}
+{"entite": "chanterelle", "valeur": "symbiotique"}
+{"entite": "charbon des céréales", "valeur": "parasite"}
+{"entite": "coprin", "valeur": "saprophyte"}
+{"entite": "coprin chevelu", "valeur": "saprophyte"}
+{"entite": "cortinaire", "valeur": "symbiotique"}
+{"entite": "ergot du seigle", "valeur": "parasite"}
+{"entite": "fumagine", "valeur": "parasite"}
+{"entite": "fusariose", "valeur": "parasite"}
+{"entite": "girolle", "valeur": "symbiotique"}
+{"entite": "lactaire", "valeur": "symbiotique"}
+{"entite": "levure de boulanger", "valeur": "saprophyte"}
+{"entite": "moisissure", "valeur": "saprophyte"}
+{"entite": "oïdium", "valeur": "parasite"}
+{"entite": "pénicillium", "valeur": "saprophyte"}
+{"entite": "pied-de-mouton", "valeur": "symbiotique"}
+{"entite": "pleurote", "valeur": "saprophyte"}
+{"entite": "rosé des prés", "valeur": "saprophyte"}
+{"entite": "rouille", "valeur": "parasite"}
+{"entite": "russule", "valeur": "symbiotique"}
+{"entite": "truffe", "valeur": "symbiotique"}

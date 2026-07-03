@@ -1,0 +1,16 @@
+{"_relation": "couleur_sang_animal", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (couleur du sang ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aigle royal", "valeur": "rouge"}
+{"entite": "calmar", "valeur": "bleu"}
+{"entite": "crabe", "valeur": "bleu"}
+{"entite": "crevette", "valeur": "bleu"}
+{"entite": "escargot", "valeur": "bleu"}
+{"entite": "être humain", "valeur": "rouge"}
+{"entite": "grenouille", "valeur": "rouge"}
+{"entite": "homard", "valeur": "bleu"}
+{"entite": "limule", "valeur": "bleu"}
+{"entite": "lion", "valeur": "rouge"}
+{"entite": "pieuvre", "valeur": "bleu"}
+{"entite": "poisson", "valeur": "rouge"}
+{"entite": "sangsue", "valeur": "rouge"}
+{"entite": "seiche", "valeur": "bleu"}
+{"entite": "ver de terre", "valeur": "rouge"}

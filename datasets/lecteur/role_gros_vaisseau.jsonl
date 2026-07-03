@@ -1,0 +1,5 @@
+{"_relation": "role_gros_vaisseau", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie cardiovasculaire textbook curée (gros vaisseau -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aorte", "valeur": "distribution du sang oxygéné dans le corps"}
+{"entite": "artère pulmonaire", "valeur": "transport du sang vers les poumons"}
+{"entite": "veine cave", "valeur": "retour du sang vers le cœur"}
+{"entite": "veine pulmonaire", "valeur": "transport du sang oxygéné des poumons vers le cœur"}

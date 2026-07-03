@@ -1,0 +1,4 @@
+{"_relation": "produit_fermentation", "_categorie": "physique", "_source": "Modèle (Claude) — microbiologie textbook curée (fermentation -> produit ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "fermentation acétique", "valeur": "acide acétique"}
+{"entite": "fermentation alcoolique", "valeur": "éthanol"}
+{"entite": "fermentation lactique", "valeur": "acide lactique"}

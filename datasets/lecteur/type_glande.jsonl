@@ -1,0 +1,26 @@
+{"_relation": "type_glande", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (type de glande ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "corps jaune", "valeur": "endocrine"}
+{"entite": "épiphyse", "valeur": "endocrine"}
+{"entite": "foie", "valeur": "exocrine"}
+{"entite": "glande à venin", "valeur": "exocrine"}
+{"entite": "glande cérumineuse", "valeur": "exocrine"}
+{"entite": "glande de Bartholin", "valeur": "exocrine"}
+{"entite": "glande de Brunner", "valeur": "exocrine"}
+{"entite": "glande de Cowper", "valeur": "exocrine"}
+{"entite": "glande de Meibomius", "valeur": "exocrine"}
+{"entite": "glande gastrique", "valeur": "exocrine"}
+{"entite": "glande intestinale", "valeur": "exocrine"}
+{"entite": "glande lacrymale", "valeur": "exocrine"}
+{"entite": "glande mammaire", "valeur": "exocrine"}
+{"entite": "glande salivaire", "valeur": "exocrine"}
+{"entite": "glande sébacée", "valeur": "exocrine"}
+{"entite": "glande sudoripare", "valeur": "exocrine"}
+{"entite": "glande surrénale", "valeur": "endocrine"}
+{"entite": "hypophyse", "valeur": "endocrine"}
+{"entite": "ovaire", "valeur": "mixte"}
+{"entite": "pancréas", "valeur": "mixte"}
+{"entite": "parathyroïde", "valeur": "endocrine"}
+{"entite": "placenta", "valeur": "endocrine"}
+{"entite": "prostate", "valeur": "exocrine"}
+{"entite": "testicule", "valeur": "mixte"}
+{"entite": "thyroïde", "valeur": "endocrine"}

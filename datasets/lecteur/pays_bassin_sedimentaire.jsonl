@@ -1,0 +1,241 @@
+{"_relation": "pays_bassin_sedimentaire", "_categorie": "physique", "_source": "Wikidata/QLever — pays_bassin_sedimentaire P17, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Adelaide Superbasin", "valeur": "Australie"}
+{"entite": "Alberta Coal Basin", "valeur": "Canada"}
+{"entite": "Amazon Basin", "valeur": "Brésil"}
+{"entite": "Anglesey Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Arafura Basin", "valeur": "Australie"}
+{"entite": "Ararat Artesian Basin", "valeur": "Arménie"}
+{"entite": "Ardley coalfield", "valeur": "Canada"}
+{"entite": "Aurangabad coalfield", "valeur": "Inde"}
+{"entite": "Baltic Shale Basin", "valeur": "Russie"}
+{"entite": "bassin aquitain", "valeur": "France"}
+{"entite": "bassin aquitain (nord)", "valeur": "France"}
+{"entite": "bassin aquitain (ouest)", "valeur": "France"}
+{"entite": "bassin aquitain (sud)", "valeur": "France"}
+{"entite": "bassin d'Agadir-Essaouira", "valeur": "Maroc"}
+{"entite": "bassin d'Amadeus", "valeur": "Australie"}
+{"entite": "bassin de Carnarvon", "valeur": "Australie"}
+{"entite": "bassin de Londres", "valeur": "Royaume-Uni"}
+{"entite": "bassin de Mayence", "valeur": "Allemagne"}
+{"entite": "Bassin de Tim Mersoï", "valeur": "Niger"}
+{"entite": "Bassin de Tremp", "valeur": "Espagne"}
+{"entite": "Bassin de Wanganui", "valeur": "Nouvelle-Zélande"}
+{"entite": "bassin des Maritimes", "valeur": "Canada"}
+{"entite": "bassin du Sichuan", "valeur": "République populaire de Chine"}
+{"entite": "Bassin Georgina", "valeur": "Australie"}
+{"entite": "Bassin houiller de Basse Loire", "valeur": "France"}
+{"entite": "Bassin houiller de Karaganda", "valeur": "Kazakhstan"}
+{"entite": "bassin houiller de la Loire", "valeur": "France"}
+{"entite": "Bassin houiller de la vallée de Wardha", "valeur": "Inde"}
+{"entite": "bassin houiller de Moatize", "valeur": "Mozambique"}
+{"entite": "bassin houiller de Selby", "valeur": "Royaume-Uni"}
+{"entite": "Bassin houiller de Singrauli", "valeur": "Inde"}
+{"entite": "bassin minier de Bokaro", "valeur": "Inde"}
+{"entite": "bassin minier de Bowen", "valeur": "Australie"}
+{"entite": "bassin minier de Chirimiri", "valeur": "Inde"}
+{"entite": "bassin minier de Kamptee", "valeur": "Inde"}
+{"entite": "bassin minier de Korba", "valeur": "Inde"}
+{"entite": "bassin minier de l'Ib", "valeur": "Inde"}
+{"entite": "bassin minier de Talcher", "valeur": "Inde"}
+{"entite": "bassin minier du Godavari", "valeur": "Inde"}
+{"entite": "bassin Murray-Darling", "valeur": "Australie"}
+{"entite": "Bassin permien américain", "valeur": "États-Unis"}
+{"entite": "bassin sédimentaire de l'Ouest canadien", "valeur": "Canada"}
+{"entite": "Bełchatów lignite basin", "valeur": "Pologne"}
+{"entite": "Bengal Foredeep", "valeur": "Bangladesh"}
+{"entite": "Bernice Coalfield", "valeur": "États-Unis"}
+{"entite": "Birbhum Coalfield", "valeur": "Inde"}
+{"entite": "Birrindudu Basin", "valeur": "Australie"}
+{"entite": "Bisrampur coalfield", "valeur": "Inde"}
+{"entite": "Black Warrior Basin", "valeur": "États-Unis"}
+{"entite": "Bogdanovskoye coalfield", "valeur": "Ukraine"}
+{"entite": "Bonaparte Basin", "valeur": "Australie"}
+{"entite": "Bowen Basin Coalfields", "valeur": "Australie"}
+{"entite": "Bristol Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Brora Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Browse Basin", "valeur": "Australie"}
+{"entite": "Bureinsky Basin", "valeur": "Russie"}
+{"entite": "Burnley Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "California Petroleum Basin", "valeur": "États-Unis"}
+{"entite": "Campos Basin", "valeur": "Brésil"}
+{"entite": "Canning Basin", "valeur": "Australie"}
+{"entite": "Cannock Chase Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Canonbie Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Carbon-Thompson coalfield", "valeur": "Canada"}
+{"entite": "Carpentaria Basin", "valeur": "Australie"}
+{"entite": "Cesar coalfield", "valeur": "Colombie"}
+{"entite": "Cesar-Ranchería Basin", "valeur": "Colombie"}
+{"entite": "Cheadle Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Cheshire Basin", "valeur": "Royaume-Uni"}
+{"entite": "Chikuhō coalfield", "valeur": "Japon"}
+{"entite": "Clearfield Coalfield", "valeur": "États-Unis"}
+{"entite": "Coal mines in Rosice-Oslavany coal basin", "valeur": "Tchéquie"}
+{"entite": "Coalbrookdale Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Cocinetas Basin", "valeur": "Colombie"}
+{"entite": "Columbus Basin", "valeur": "Trinité-et-Tobago"}
+{"entite": "Connellsville Coalfield", "valeur": "États-Unis"}
+{"entite": "Cooper Basin", "valeur": "Australie"}
+{"entite": "Crowsnest coalfield", "valeur": "Canada"}
+{"entite": "Cumberland Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Cuu Long Basin", "valeur": "Vietnam"}
+{"entite": "Dąbrowa Basin", "valeur": "Pologne"}
+{"entite": "Daltonganj Coalfield", "valeur": "Inde"}
+{"entite": "Daly-Weaver coalfield", "valeur": "Canada"}
+{"entite": "Dan River Coalfield", "valeur": "États-Unis"}
+{"entite": "Denbighshire Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "dépression du Bodélé", "valeur": "Tchad"}
+{"entite": "Dnipro-Donetsk artesian basin", "valeur": "Ukraine"}
+{"entite": "Dominion coalfield", "valeur": "Canada"}
+{"entite": "Dongfu Coalfield", "valeur": "République populaire de Chine"}
+{"entite": "Drumheller coalfield", "valeur": "Canada"}
+{"entite": "Durham Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "East Bokaro Coalfield", "valeur": "Inde"}
+{"entite": "East Junggar coalfield", "valeur": "République populaire de Chine"}
+{"entite": "East Kootenay coalfield", "valeur": "Canada"}
+{"entite": "Eastern Kentucky coalfield", "valeur": "États-Unis"}
+{"entite": "Ebro Basin", "valeur": "Espagne"}
+{"entite": "Ekibastuzskiy Ugol'nyy Basseyn", "valeur": "Kazakhstan"}
+{"entite": "Elbistan coalfield", "valeur": "Turquie"}
+{"entite": "Eromanga Basin", "valeur": "Australie"}
+{"entite": "Fife Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Flintshire Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Forest of Dean Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Franceville basin", "valeur": "Gabon"}
+{"entite": "Geisel Valley", "valeur": "Allemagne"}
+{"entite": "Geology of the Appalachians", "valeur": "États-Unis"}
+{"entite": "Germanium-bearing deposits of Ukraine", "valeur": "Ukraine"}
+{"entite": "Gething coalfield", "valeur": "Canada"}
+{"entite": "Gillette coalfield", "valeur": "États-Unis"}
+{"entite": "Giridih Coalfield", "valeur": "Inde"}
+{"entite": "Golfo San Jorge Basin", "valeur": "Argentine"}
+{"entite": "Guajira coalfield", "valeur": "Colombie"}
+{"entite": "Guasare coalfield", "valeur": "Venezuela"}
+{"entite": "Hampshire Basin", "valeur": "Royaume-Uni"}
+{"entite": "Hasdeo coalfield", "valeur": "Inde"}
+{"entite": "Hat Creek coalfield", "valeur": "Canada"}
+{"entite": "Illinois Basin", "valeur": "États-Unis"}
+{"entite": "Ilocos-Central Luzon Basin", "valeur": "Philippines"}
+{"entite": "Ingleton Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Iullemmeden Basin", "valeur": "Algérie"}
+{"entite": "Jeanne d'Arc Basin", "valeur": "Canada"}
+{"entite": "Jharia coalfield", "valeur": "Inde"}
+{"entite": "Jhilimili Coalfield", "valeur": "Inde"}
+{"entite": "Jhingrudah", "valeur": "Inde"}
+{"entite": "Jōban coalfield", "valeur": "Japon"}
+{"entite": "Junggar Basin", "valeur": "République populaire de Chine"}
+{"entite": "Junggar Coalfield", "valeur": "République populaire de Chine"}
+{"entite": "Juye coalfield", "valeur": "République populaire de Chine"}
+{"entite": "Kansk-Achinsk basin", "valeur": "Russie"}
+{"entite": "Karakeche", "valeur": "Kirghizistan"}
+{"entite": "Karatau Basin", "valeur": "Kazakhstan"}
+{"entite": "Kent Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Kouzbass", "valeur": "Russie"}
+{"entite": "Kryvbas", "valeur": "Ukraine"}
+{"entite": "Kuruman basin", "valeur": "Afrique du Sud"}
+{"entite": "Kutai basin", "valeur": "Indonésie"}
+{"entite": "Leicestershire and South Derbyshire Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Lethbridge coalfield", "valeur": "Canada"}
+{"entite": "Logan Coalfield", "valeur": "États-Unis"}
+{"entite": "Lublin coal basin", "valeur": "Pologne"}
+{"entite": "Lviv-Volyn coal basin", "valeur": "Ukraine"}
+{"entite": "Lyubelske coal deposit", "valeur": "Ukraine"}
+{"entite": "Machrihanish Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "MacKay coalfield", "valeur": "Canada"}
+{"entite": "Malvinas Basin", "valeur": "Argentine"}
+{"entite": "Manchester Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Mand Raigarh Coalfield", "valeur": "Inde"}
+{"entite": "Mannargudi coalfield", "valeur": "Inde"}
+{"entite": "Mannville coalfield", "valeur": "Canada"}
+{"entite": "McArthur Basin", "valeur": "Australie"}
+{"entite": "Mchuchuma", "valeur": "Tanzanie"}
+{"entite": "Michigan Basin", "valeur": "États-Unis"}
+{"entite": "Middle Magdalena Valley", "valeur": "Colombie"}
+{"entite": "Midgeholme Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Midlothian Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "mine de charbon Elginsky", "valeur": "Russie"}
+{"entite": "mines de charbon du Lancashire", "valeur": "Royaume-Uni"}
+{"entite": "Moscow coal basin", "valeur": "Russie"}
+{"entite": "Murray Basin", "valeur": "Australie"}
+{"entite": "Neuquén Basin", "valeur": "Argentine"}
+{"entite": "New River Coalfield", "valeur": "États-Unis"}
+{"entite": "Ngalia Basin", "valeur": "Australie"}
+{"entite": "Nias Basin", "valeur": "Indonésie"}
+{"entite": "Nikopol Manganese Basin", "valeur": "Ukraine"}
+{"entite": "Nishisonogi coalfield", "valeur": "Japon"}
+{"entite": "North Bohemian Basin", "valeur": "Tchéquie"}
+{"entite": "North China Oil Basin", "valeur": "République populaire de Chine"}
+{"entite": "North German basin", "valeur": "Allemagne"}
+{"entite": "North Karanpura Coalfield", "valeur": "Inde"}
+{"entite": "North Staffordshire Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "North Wales Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Northumberland and Durham Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Northumberland Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Officer Basin", "valeur": "Australie"}
+{"entite": "Oldham Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Orcadian Basin", "valeur": "Royaume-Uni"}
+{"entite": "Ord Basin", "valeur": "Australie"}
+{"entite": "Ostrava-Karviná coal basin", "valeur": "Tchéquie"}
+{"entite": "Otway Basin", "valeur": "Australie"}
+{"entite": "Ouled Abdoun", "valeur": "Maroc"}
+{"entite": "Panhandle Coalfield", "valeur": "États-Unis"}
+{"entite": "Parnaíba Basin", "valeur": "Brésil"}
+{"entite": "Pavlovsk brown-coal deposit", "valeur": "Russie"}
+{"entite": "Peace River coalfield", "valeur": "Canada"}
+{"entite": "Pechora coal basin", "valeur": "Russie"}
+{"entite": "Pembrokeshire Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Pench Kanhan Coalfield", "valeur": "Inde"}
+{"entite": "Piémont des Carpates", "valeur": "Tchéquie"}
+{"entite": "Pittsburg-Weir Coalfield", "valeur": "États-Unis"}
+{"entite": "Pittsburgh Coalfield", "valeur": "États-Unis"}
+{"entite": "Plateau suisse", "valeur": "Suisse"}
+{"entite": "Pocahontas Coalfield", "valeur": "États-Unis"}
+{"entite": "Quang Yen coalfield", "valeur": "Vietnam"}
+{"entite": "Radnice coal basin", "valeur": "Tchéquie"}
+{"entite": "Ramgarh Coalfield", "valeur": "Inde"}
+{"entite": "Raniganj Coalfield", "valeur": "Inde"}
+{"entite": "Red River Delta coalfield", "valeur": "Vietnam"}
+{"entite": "Reforma oil fields", "valeur": "Mexique"}
+{"entite": "Ruhr coalfield", "valeur": "Allemagne"}
+{"entite": "Santos Basin", "valeur": "Brésil"}
+{"entite": "Sergipe-Alagoas Basin", "valeur": "Brésil"}
+{"entite": "Sha'er Lake coalfield", "valeur": "République populaire de Chine"}
+{"entite": "Sirte Basin", "valeur": "Libye"}
+{"entite": "Sohagpur Coalfield", "valeur": "Inde"}
+{"entite": "Solund Basin", "valeur": "Norvège"}
+{"entite": "Somerset Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Sonhat coalfield", "valeur": "Inde"}
+{"entite": "Sorbas basin", "valeur": "Espagne"}
+{"entite": "South Kara basin", "valeur": "Russie"}
+{"entite": "South Karanpura Coalfield", "valeur": "Inde"}
+{"entite": "South Maitland coalfields", "valeur": "Australie"}
+{"entite": "South Oman Salt Basin", "valeur": "Oman"}
+{"entite": "South Staffordshire Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "South Wales Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "South Yorkshire Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Southern oil and gas region of Ukraine", "valeur": "Ukraine"}
+{"entite": "Taber coalfield", "valeur": "Canada"}
+{"entite": "Tatapani coalfield", "valeur": "Inde"}
+{"entite": "Thar coalfield", "valeur": "Pakistan"}
+{"entite": "Timan-Pechora Basin", "valeur": "Russie"}
+{"entite": "Tunguska Coal Basin", "valeur": "Russie"}
+{"entite": "Tyagliv coal field", "valeur": "Ukraine"}
+{"entite": "Ulugh-Khem coal basin", "valeur": "Russie"}
+{"entite": "Umaria Coalfield", "valeur": "Inde"}
+{"entite": "Val Verde Basin", "valeur": "États-Unis"}
+{"entite": "Warwickshire Coalfield", "valeur": "Royaume-Uni"}
+{"entite": "Waterberg Coalfield", "valeur": "Afrique du Sud"}
+{"entite": "West Siberia Artesian Basin", "valeur": "Russie"}
+{"entite": "West Siberian petroleum basin", "valeur": "Russie"}
+{"entite": "Western Coal Fields", "valeur": "États-Unis"}
+{"entite": "Western Interior Basin", "valeur": "États-Unis"}
+{"entite": "Western Kentucky coalfield", "valeur": "États-Unis"}
+{"entite": "Western Middle Anthracite Field", "valeur": "États-Unis"}
+{"entite": "Westfield coal basin", "valeur": "Royaume-Uni"}
+{"entite": "Widmerpool Gulf", "valeur": "Royaume-Uni"}
+{"entite": "Winding Gulf Coalfield", "valeur": "États-Unis"}
+{"entite": "Wiso Basin", "valeur": "Australie"}
+{"entite": "Witwatersrand Basin", "valeur": "Afrique du Sud"}
+{"entite": "Wolfe Basin", "valeur": "Australie"}
+{"entite": "Žačléřsko-svatoňovická uhelná pánev (Česko)", "valeur": "Tchéquie"}
+{"entite": "Zhunggar coalfield", "valeur": "République populaire de Chine"}
+{"entite": "Zonguldak coalfield", "valeur": "Turquie"}

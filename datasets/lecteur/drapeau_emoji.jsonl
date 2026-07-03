@@ -1,0 +1,248 @@
+{"_relation": "drapeau_emoji", "_categorie": "convention", "_source": "mledoze/countries — drapeau (emoji)", "_articles": true}
+{"entite": "Afghanistan", "valeur": "🇦🇫"}
+{"entite": "Afrique du Sud", "valeur": "🇿🇦"}
+{"entite": "Ahvenanmaa", "valeur": "🇦🇽"}
+{"entite": "Albanie", "valeur": "🇦🇱"}
+{"entite": "Algérie", "valeur": "🇩🇿"}
+{"entite": "Allemagne", "valeur": "🇩🇪"}
+{"entite": "Andorre", "valeur": "🇦🇩"}
+{"entite": "Angola", "valeur": "🇦🇴"}
+{"entite": "Anguilla", "valeur": "🇦🇮"}
+{"entite": "Antarctique", "valeur": "🇦🇶"}
+{"entite": "Antigua-et-Barbuda", "valeur": "🇦🇬"}
+{"entite": "Arabie Saoudite", "valeur": "🇸🇦"}
+{"entite": "Argentine", "valeur": "🇦🇷"}
+{"entite": "Arménie", "valeur": "🇦🇲"}
+{"entite": "Aruba", "valeur": "🇦🇼"}
+{"entite": "Australie", "valeur": "🇦🇺"}
+{"entite": "Autriche", "valeur": "🇦🇹"}
+{"entite": "Azerbaïdjan", "valeur": "🇦🇿"}
+{"entite": "Bahamas", "valeur": "🇧🇸"}
+{"entite": "Bahreïn", "valeur": "🇧🇭"}
+{"entite": "Bangladesh", "valeur": "🇧🇩"}
+{"entite": "Barbade", "valeur": "🇧🇧"}
+{"entite": "Belgique", "valeur": "🇧🇪"}
+{"entite": "Belize", "valeur": "🇧🇿"}
+{"entite": "Bénin", "valeur": "🇧🇯"}
+{"entite": "Bermudes", "valeur": "🇧🇲"}
+{"entite": "Bhoutan", "valeur": "🇧🇹"}
+{"entite": "Biélorussie", "valeur": "🇧🇾"}
+{"entite": "Birmanie", "valeur": "🇲🇲"}
+{"entite": "Bolivie", "valeur": "🇧🇴"}
+{"entite": "Bosnie-Herzégovine", "valeur": "🇧🇦"}
+{"entite": "Botswana", "valeur": "🇧🇼"}
+{"entite": "Brésil", "valeur": "🇧🇷"}
+{"entite": "Brunei", "valeur": "🇧🇳"}
+{"entite": "Bulgarie", "valeur": "🇧🇬"}
+{"entite": "Burkina Faso", "valeur": "🇧🇫"}
+{"entite": "Burundi", "valeur": "🇧🇮"}
+{"entite": "Cambodge", "valeur": "🇰🇭"}
+{"entite": "Cameroun", "valeur": "🇨🇲"}
+{"entite": "Canada", "valeur": "🇨🇦"}
+{"entite": "Chili", "valeur": "🇨🇱"}
+{"entite": "Chine", "valeur": "🇨🇳"}
+{"entite": "Chypre", "valeur": "🇨🇾"}
+{"entite": "Cité du Vatican", "valeur": "🇻🇦"}
+{"entite": "Colombie", "valeur": "🇨🇴"}
+{"entite": "Comores", "valeur": "🇰🇲"}
+{"entite": "Congo", "valeur": "🇨🇬"}
+{"entite": "Congo (Rép. dém.)", "valeur": "🇨🇩"}
+{"entite": "Corée du Nord", "valeur": "🇰🇵"}
+{"entite": "Corée du Sud", "valeur": "🇰🇷"}
+{"entite": "Costa Rica", "valeur": "🇨🇷"}
+{"entite": "Côte d'Ivoire", "valeur": "🇨🇮"}
+{"entite": "Croatie", "valeur": "🇭🇷"}
+{"entite": "Cuba", "valeur": "🇨🇺"}
+{"entite": "Curaçao", "valeur": "🇨🇼"}
+{"entite": "Danemark", "valeur": "🇩🇰"}
+{"entite": "Djibouti", "valeur": "🇩🇯"}
+{"entite": "Dominique", "valeur": "🇩🇲"}
+{"entite": "Égypte", "valeur": "🇪🇬"}
+{"entite": "Émirats arabes unis", "valeur": "🇦🇪"}
+{"entite": "Équateur", "valeur": "🇪🇨"}
+{"entite": "Érythrée", "valeur": "🇪🇷"}
+{"entite": "Espagne", "valeur": "🇪🇸"}
+{"entite": "Estonie", "valeur": "🇪🇪"}
+{"entite": "Eswatini", "valeur": "🇸🇿"}
+{"entite": "États-Unis", "valeur": "🇺🇸"}
+{"entite": "Éthiopie", "valeur": "🇪🇹"}
+{"entite": "Fidji", "valeur": "🇫🇯"}
+{"entite": "Finlande", "valeur": "🇫🇮"}
+{"entite": "France", "valeur": "🇫🇷"}
+{"entite": "Gabon", "valeur": "🇬🇦"}
+{"entite": "Gambie", "valeur": "🇬🇲"}
+{"entite": "Géorgie", "valeur": "🇬🇪"}
+{"entite": "Géorgie du Sud-et-les Îles Sandwich du Sud", "valeur": "🇬🇸"}
+{"entite": "Ghana", "valeur": "🇬🇭"}
+{"entite": "Gibraltar", "valeur": "🇬🇮"}
+{"entite": "Grèce", "valeur": "🇬🇷"}
+{"entite": "Grenade", "valeur": "🇬🇩"}
+{"entite": "Groenland", "valeur": "🇬🇱"}
+{"entite": "Guadeloupe", "valeur": "🇬🇵"}
+{"entite": "Guam", "valeur": "🇬🇺"}
+{"entite": "Guatemala", "valeur": "🇬🇹"}
+{"entite": "Guernesey", "valeur": "🇬🇬"}
+{"entite": "Guinée", "valeur": "🇬🇳"}
+{"entite": "Guinée-Bissau", "valeur": "🇬🇼"}
+{"entite": "Guinée équatoriale", "valeur": "🇬🇶"}
+{"entite": "Guyana", "valeur": "🇬🇾"}
+{"entite": "Guyane", "valeur": "🇬🇫"}
+{"entite": "Haïti", "valeur": "🇭🇹"}
+{"entite": "Honduras", "valeur": "🇭🇳"}
+{"entite": "Hong Kong", "valeur": "🇭🇰"}
+{"entite": "Hongrie", "valeur": "🇭🇺"}
+{"entite": "Île Bouvet", "valeur": "🇧🇻"}
+{"entite": "Île Christmas", "valeur": "🇨🇽"}
+{"entite": "Île de Man", "valeur": "🇮🇲"}
+{"entite": "Île Maurice", "valeur": "🇲🇺"}
+{"entite": "Île Norfolk", "valeur": "🇳🇫"}
+{"entite": "Îles Caïmans", "valeur": "🇰🇾"}
+{"entite": "Îles Cocos", "valeur": "🇨🇨"}
+{"entite": "Îles Cook", "valeur": "🇨🇰"}
+{"entite": "Îles du Cap-Vert", "valeur": "🇨🇻"}
+{"entite": "Îles Féroé", "valeur": "🇫🇴"}
+{"entite": "Îles Heard-et-MacDonald", "valeur": "🇭🇲"}
+{"entite": "Îles Malouines", "valeur": "🇫🇰"}
+{"entite": "Îles Mariannes du Nord", "valeur": "🇲🇵"}
+{"entite": "Îles Marshall", "valeur": "🇲🇭"}
+{"entite": "Îles mineures éloignées des États-Unis", "valeur": "🇺🇲"}
+{"entite": "Îles Pitcairn", "valeur": "🇵🇳"}
+{"entite": "Îles Salomon", "valeur": "🇸🇧"}
+{"entite": "Îles Turques-et-Caïques", "valeur": "🇹🇨"}
+{"entite": "Îles Vierges britanniques", "valeur": "🇻🇬"}
+{"entite": "Îles Vierges des États-Unis", "valeur": "🇻🇮"}
+{"entite": "Inde", "valeur": "🇮🇳"}
+{"entite": "Indonésie", "valeur": "🇮🇩"}
+{"entite": "Irak", "valeur": "🇮🇶"}
+{"entite": "Iran", "valeur": "🇮🇷"}
+{"entite": "Irlande", "valeur": "🇮🇪"}
+{"entite": "Islande", "valeur": "🇮🇸"}
+{"entite": "Israël", "valeur": "🇮🇱"}
+{"entite": "Italie", "valeur": "🇮🇹"}
+{"entite": "Jamaïque", "valeur": "🇯🇲"}
+{"entite": "Japon", "valeur": "🇯🇵"}
+{"entite": "Jersey", "valeur": "🇯🇪"}
+{"entite": "Jordanie", "valeur": "🇯🇴"}
+{"entite": "Kazakhstan", "valeur": "🇰🇿"}
+{"entite": "Kenya", "valeur": "🇰🇪"}
+{"entite": "Kirghizistan", "valeur": "🇰🇬"}
+{"entite": "Kiribati", "valeur": "🇰🇮"}
+{"entite": "Kosovo", "valeur": "🇽🇰"}
+{"entite": "Koweït", "valeur": "🇰🇼"}
+{"entite": "Laos", "valeur": "🇱🇦"}
+{"entite": "Lesotho", "valeur": "🇱🇸"}
+{"entite": "Lettonie", "valeur": "🇱🇻"}
+{"entite": "Liban", "valeur": "🇱🇧"}
+{"entite": "Liberia", "valeur": "🇱🇷"}
+{"entite": "Libye", "valeur": "🇱🇾"}
+{"entite": "Liechtenstein", "valeur": "🇱🇮"}
+{"entite": "Lituanie", "valeur": "🇱🇹"}
+{"entite": "Luxembourg", "valeur": "🇱🇺"}
+{"entite": "Macao", "valeur": "🇲🇴"}
+{"entite": "Macédoine du Nord", "valeur": "🇲🇰"}
+{"entite": "Madagascar", "valeur": "🇲🇬"}
+{"entite": "Malaisie", "valeur": "🇲🇾"}
+{"entite": "Malawi", "valeur": "🇲🇼"}
+{"entite": "Maldives", "valeur": "🇲🇻"}
+{"entite": "Mali", "valeur": "🇲🇱"}
+{"entite": "Malte", "valeur": "🇲🇹"}
+{"entite": "Maroc", "valeur": "🇲🇦"}
+{"entite": "Martinique", "valeur": "🇲🇶"}
+{"entite": "Mauritanie", "valeur": "🇲🇷"}
+{"entite": "Mayotte", "valeur": "🇾🇹"}
+{"entite": "Mexique", "valeur": "🇲🇽"}
+{"entite": "Micronésie", "valeur": "🇫🇲"}
+{"entite": "Moldavie", "valeur": "🇲🇩"}
+{"entite": "Monaco", "valeur": "🇲🇨"}
+{"entite": "Mongolie", "valeur": "🇲🇳"}
+{"entite": "Monténégro", "valeur": "🇲🇪"}
+{"entite": "Montserrat", "valeur": "🇲🇸"}
+{"entite": "Mozambique", "valeur": "🇲🇿"}
+{"entite": "Namibie", "valeur": "🇳🇦"}
+{"entite": "Nauru", "valeur": "🇳🇷"}
+{"entite": "Népal", "valeur": "🇳🇵"}
+{"entite": "Nicaragua", "valeur": "🇳🇮"}
+{"entite": "Niger", "valeur": "🇳🇪"}
+{"entite": "Nigéria", "valeur": "🇳🇬"}
+{"entite": "Niue", "valeur": "🇳🇺"}
+{"entite": "Norvège", "valeur": "🇳🇴"}
+{"entite": "Nouvelle-Calédonie", "valeur": "🇳🇨"}
+{"entite": "Nouvelle-Zélande", "valeur": "🇳🇿"}
+{"entite": "Oman", "valeur": "🇴🇲"}
+{"entite": "Ouganda", "valeur": "🇺🇬"}
+{"entite": "Ouzbékistan", "valeur": "🇺🇿"}
+{"entite": "Pakistan", "valeur": "🇵🇰"}
+{"entite": "Palaos (Palau)", "valeur": "🇵🇼"}
+{"entite": "Palestine", "valeur": "🇵🇸"}
+{"entite": "Panama", "valeur": "🇵🇦"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "🇵🇬"}
+{"entite": "Paraguay", "valeur": "🇵🇾"}
+{"entite": "Pays-Bas", "valeur": "🇳🇱"}
+{"entite": "Pérou", "valeur": "🇵🇪"}
+{"entite": "Philippines", "valeur": "🇵🇭"}
+{"entite": "Pologne", "valeur": "🇵🇱"}
+{"entite": "Polynésie française", "valeur": "🇵🇫"}
+{"entite": "Porto Rico", "valeur": "🇵🇷"}
+{"entite": "Portugal", "valeur": "🇵🇹"}
+{"entite": "Qatar", "valeur": "🇶🇦"}
+{"entite": "République centrafricaine", "valeur": "🇨🇫"}
+{"entite": "République dominicaine", "valeur": "🇩🇴"}
+{"entite": "Réunion", "valeur": "🇷🇪"}
+{"entite": "Roumanie", "valeur": "🇷🇴"}
+{"entite": "Royaume-Uni", "valeur": "🇬🇧"}
+{"entite": "Russie", "valeur": "🇷🇺"}
+{"entite": "Rwanda", "valeur": "🇷🇼"}
+{"entite": "Sahara Occidental", "valeur": "🇪🇭"}
+{"entite": "Saint-Barthélemy", "valeur": "🇧🇱"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": "🇰🇳"}
+{"entite": "Saint-Marin", "valeur": "🇸🇲"}
+{"entite": "Saint-Pierre-et-Miquelon", "valeur": "🇵🇲"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "🇻🇨"}
+{"entite": "Sainte-Hélène, Ascension et Tristan da Cunha", "valeur": "🇸🇭"}
+{"entite": "Sainte-Lucie", "valeur": "🇱🇨"}
+{"entite": "Salvador", "valeur": "🇸🇻"}
+{"entite": "Samoa", "valeur": "🇼🇸"}
+{"entite": "Samoa américaines", "valeur": "🇦🇸"}
+{"entite": "São Tomé et Príncipe", "valeur": "🇸🇹"}
+{"entite": "Sénégal", "valeur": "🇸🇳"}
+{"entite": "Serbie", "valeur": "🇷🇸"}
+{"entite": "Seychelles", "valeur": "🇸🇨"}
+{"entite": "Sierra Leone", "valeur": "🇸🇱"}
+{"entite": "Singapour", "valeur": "🇸🇬"}
+{"entite": "Slovaquie", "valeur": "🇸🇰"}
+{"entite": "Slovénie", "valeur": "🇸🇮"}
+{"entite": "Somalie", "valeur": "🇸🇴"}
+{"entite": "Soudan", "valeur": "🇸🇩"}
+{"entite": "Soudan du Sud", "valeur": "🇸🇸"}
+{"entite": "Sri Lanka", "valeur": "🇱🇰"}
+{"entite": "Suède", "valeur": "🇸🇪"}
+{"entite": "Suisse", "valeur": "🇨🇭"}
+{"entite": "Surinam", "valeur": "🇸🇷"}
+{"entite": "Svalbard et Jan Mayen", "valeur": "🇸🇯"}
+{"entite": "Syrie", "valeur": "🇸🇾"}
+{"entite": "Tadjikistan", "valeur": "🇹🇯"}
+{"entite": "Taïwan", "valeur": "🇹🇼"}
+{"entite": "Tanzanie", "valeur": "🇹🇿"}
+{"entite": "Tchad", "valeur": "🇹🇩"}
+{"entite": "Tchéquie", "valeur": "🇨🇿"}
+{"entite": "Terres australes et antarctiques françaises", "valeur": "🇹🇫"}
+{"entite": "Territoire britannique de l'océan Indien", "valeur": "🇮🇴"}
+{"entite": "Thaïlande", "valeur": "🇹🇭"}
+{"entite": "Timor oriental", "valeur": "🇹🇱"}
+{"entite": "Togo", "valeur": "🇹🇬"}
+{"entite": "Tokelau", "valeur": "🇹🇰"}
+{"entite": "Tonga", "valeur": "🇹🇴"}
+{"entite": "Trinité-et-Tobago", "valeur": "🇹🇹"}
+{"entite": "Tunisie", "valeur": "🇹🇳"}
+{"entite": "Turkménistan", "valeur": "🇹🇲"}
+{"entite": "Turquie", "valeur": "🇹🇷"}
+{"entite": "Tuvalu", "valeur": "🇹🇻"}
+{"entite": "Ukraine", "valeur": "🇺🇦"}
+{"entite": "Uruguay", "valeur": "🇺🇾"}
+{"entite": "Vanuatu", "valeur": "🇻🇺"}
+{"entite": "Venezuela", "valeur": "🇻🇪"}
+{"entite": "Viêt Nam", "valeur": "🇻🇳"}
+{"entite": "Wallis-et-Futuna", "valeur": "🇼🇫"}
+{"entite": "Yémen", "valeur": "🇾🇪"}
+{"entite": "Zambie", "valeur": "🇿🇲"}
+{"entite": "Zimbabwe", "valeur": "🇿🇼"}

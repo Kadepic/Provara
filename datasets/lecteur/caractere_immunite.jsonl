@@ -1,0 +1,3 @@
+{"_relation": "caractere_immunite", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (type d'immunité -> caractère ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "immunité adaptative", "valeur": "spécifique"}
+{"entite": "immunité innée", "valeur": "non spécifique"}

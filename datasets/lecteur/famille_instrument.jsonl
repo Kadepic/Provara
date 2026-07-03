@@ -1,0 +1,52 @@
+{"_relation": "famille_instrument", "_categorie": "convention", "_source": "classification pédagogique des instruments (famille) — faits certains", "_articles": true}
+{"entite": "alto", "valeur": "cordes"}
+{"entite": "balalaïka", "valeur": "cordes"}
+{"entite": "banjo", "valeur": "cordes"}
+{"entite": "basson", "valeur": "bois"}
+{"entite": "batterie", "valeur": "percussions"}
+{"entite": "bugle", "valeur": "cuivres"}
+{"entite": "caisse claire", "valeur": "percussions"}
+{"entite": "castagnette", "valeur": "percussions"}
+{"entite": "célesta", "valeur": "claviers"}
+{"entite": "clairon", "valeur": "cuivres"}
+{"entite": "clarinette", "valeur": "bois"}
+{"entite": "clavecin", "valeur": "claviers"}
+{"entite": "contrebasse", "valeur": "cordes"}
+{"entite": "cor", "valeur": "cuivres"}
+{"entite": "cor anglais", "valeur": "bois"}
+{"entite": "cornet", "valeur": "cuivres"}
+{"entite": "cymbale", "valeur": "percussions"}
+{"entite": "djembé", "valeur": "percussions"}
+{"entite": "épinette", "valeur": "claviers"}
+{"entite": "fifre", "valeur": "bois"}
+{"entite": "flûte", "valeur": "bois"}
+{"entite": "flûte à bec", "valeur": "bois"}
+{"entite": "glockenspiel", "valeur": "percussions"}
+{"entite": "gong", "valeur": "percussions"}
+{"entite": "grosse caisse", "valeur": "percussions"}
+{"entite": "guitare", "valeur": "cordes"}
+{"entite": "harpe", "valeur": "cordes"}
+{"entite": "hautbois", "valeur": "bois"}
+{"entite": "luth", "valeur": "cordes"}
+{"entite": "mandoline", "valeur": "cordes"}
+{"entite": "maracas", "valeur": "percussions"}
+{"entite": "marimba", "valeur": "percussions"}
+{"entite": "orgue", "valeur": "claviers"}
+{"entite": "piano", "valeur": "claviers"}
+{"entite": "piccolo", "valeur": "bois"}
+{"entite": "saxophone", "valeur": "bois"}
+{"entite": "soubassophone", "valeur": "cuivres"}
+{"entite": "tam-tam", "valeur": "percussions"}
+{"entite": "tambour", "valeur": "percussions"}
+{"entite": "tambourin", "valeur": "percussions"}
+{"entite": "timbale", "valeur": "percussions"}
+{"entite": "triangle", "valeur": "percussions"}
+{"entite": "trombone", "valeur": "cuivres"}
+{"entite": "trompette", "valeur": "cuivres"}
+{"entite": "tuba", "valeur": "cuivres"}
+{"entite": "ukulélé", "valeur": "cordes"}
+{"entite": "vibraphone", "valeur": "percussions"}
+{"entite": "violon", "valeur": "cordes"}
+{"entite": "violon alto", "valeur": "cordes"}
+{"entite": "violoncelle", "valeur": "cordes"}
+{"entite": "xylophone", "valeur": "percussions"}

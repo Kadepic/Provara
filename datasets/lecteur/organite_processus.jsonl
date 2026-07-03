@@ -1,0 +1,5 @@
+{"_relation": "organite_processus", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (processus -> organite ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "digestion cellulaire", "valeur": "lysosome"}
+{"entite": "photosynthèse", "valeur": "chloroplaste"}
+{"entite": "respiration cellulaire", "valeur": "mitochondrie"}
+{"entite": "synthèse des protéines", "valeur": "ribosome"}

@@ -1,0 +1,3593 @@
+{"_relation": "iso_subdivision", "_categorie": "physique", "_source": "Wikidata/QLever — code ISO 3166-2 de subdivision P300 (littéral, format vérifié)", "_articles": true}
+{"entite": "A'ana", "valeur": "WS-AA"}
+{"entite": "Đà Nẵng", "valeur": "VN-DN"}
+{"entite": "Abai", "valeur": "KZ-10"}
+{"entite": "Abia", "valeur": "NG-AB"}
+{"entite": "Abou Dabi", "valeur": "AE-AZ"}
+{"entite": "Abra", "valeur": "PH-ABR"}
+{"entite": "Abruzzes", "valeur": "IT-65"}
+{"entite": "Abşeron", "valeur": "AZ-ABS"}
+{"entite": "Abyan", "valeur": "YE-AB"}
+{"entite": "Ach-Charqiya du Nord", "valeur": "OM-SS"}
+{"entite": "Ach-Charqiya du Sud", "valeur": "OM-SJ"}
+{"entite": "Achgabat", "valeur": "TM-S"}
+{"entite": "Acklins (district)", "valeur": "BS-AK"}
+{"entite": "Açores", "valeur": "PT-20"}
+{"entite": "Acquaviva", "valeur": "SM-01"}
+{"entite": "Acre", "valeur": "BR-AC"}
+{"entite": "Ad-Dākhilīyah", "valeur": "OM-DA"}
+{"entite": "Ad Dali'", "valeur": "YE-DA"}
+{"entite": "Ad Dhahirah", "valeur": "OM-ZA"}
+{"entite": "Adıyaman", "valeur": "TR-02"}
+{"entite": "Adamaoua", "valeur": "CM-AD"}
+{"entite": "Adamawa", "valeur": "NG-AD"}
+{"entite": "Adana", "valeur": "TR-01"}
+{"entite": "Ādaži", "valeur": "LV-011"}
+{"entite": "Addis-Abeba", "valeur": "ET-AA"}
+{"entite": "Addu", "valeur": "MV-01"}
+{"entite": "Aden", "valeur": "YE-AD"}
+{"entite": "Adyguée", "valeur": "RU-AD"}
+{"entite": "Aerodrom", "valeur": "MK-801"}
+{"entite": "Afar", "valeur": "ET-AF"}
+{"entite": "Afyonkarahisar", "valeur": "TR-03"}
+{"entite": "Agadez", "valeur": "NE-1"}
+{"entite": "Agaléga", "valeur": "MU-AG"}
+{"entite": "Ağcabədi", "valeur": "AZ-AGC"}
+{"entite": "Agdam", "valeur": "AZ-AGM"}
+{"entite": "Ağdaş", "valeur": "AZ-AGS"}
+{"entite": "Agder", "valeur": "NO-42"}
+{"entite": "Aghstafa", "valeur": "AZ-AGA"}
+{"entite": "Aglona", "valeur": "LV-001"}
+{"entite": "Ağrı", "valeur": "TR-04"}
+{"entite": "Ağsu", "valeur": "AZ-AGU"}
+{"entite": "Aguascalientes", "valeur": "MX-AGU"}
+{"entite": "Agusan du Nord", "valeur": "PH-AGN"}
+{"entite": "Agusan du Sud", "valeur": "PH-AGS"}
+{"entite": "Ahal", "valeur": "TM-A"}
+{"entite": "Ahuachapán", "valeur": "SV-AH"}
+{"entite": "Aiga-i-le-Tai", "valeur": "WS-AL"}
+{"entite": "Aileu", "valeur": "TL-AL"}
+{"entite": "Aimeliik", "valeur": "PW-002"}
+{"entite": "Aïn Defla", "valeur": "DZ-44"}
+{"entite": "Ainaro", "valeur": "TL-AN"}
+{"entite": "Airai", "valeur": "PW-004"}
+{"entite": "Aisén", "valeur": "CL-AI"}
+{"entite": "Aiwo", "valeur": "NR-01"}
+{"entite": "Aizkraukle", "valeur": "LV-002"}
+{"entite": "Aizpute", "valeur": "LV-003"}
+{"entite": "Ajdovščina", "valeur": "SI-001"}
+{"entite": "Ajlun", "valeur": "JO-AJ"}
+{"entite": "Ajman", "valeur": "AE-AJ"}
+{"entite": "Đắk Lắk", "valeur": "VN-33"}
+{"entite": "Đắk Nông", "valeur": "VN-72"}
+{"entite": "Akershus", "valeur": "NO-32"}
+{"entite": "Akmenė", "valeur": "LT-01"}
+{"entite": "Aksaray", "valeur": "TR-68"}
+{"entite": "Akwa Ibom", "valeur": "NG-AK"}
+{"entite": "Al Ahmadi", "valeur": "KW-AH"}
+{"entite": "Al-Anbar", "valeur": "IQ-AN"}
+{"entite": "Al Asimah", "valeur": "KW-KU"}
+{"entite": "Al Bahah", "valeur": "SA-11"}
+{"entite": "Al-Basra", "valeur": "IQ-BA"}
+{"entite": "Al-Batina du Nord", "valeur": "OM-BS"}
+{"entite": "Al-Batina du Sud", "valeur": "OM-BJ"}
+{"entite": "Al Bayda'", "valeur": "YE-BA"}
+{"entite": "Al Boutnan", "valeur": "LY-BU"}
+{"entite": "Al Buraymi", "valeur": "OM-BU"}
+{"entite": "Al Daayen", "valeur": "QA-ZA"}
+{"entite": "Al Djabal al Gharbi", "valeur": "LY-JG"}
+{"entite": "Al Djfara", "valeur": "LY-JI"}
+{"entite": "Al Djoufrah", "valeur": "LY-JU"}
+{"entite": "Al Farwaniyah", "valeur": "KW-FA"}
+{"entite": "Al-Hodeïda", "valeur": "YE-HU"}
+{"entite": "Al Jabal al Akhdar", "valeur": "LY-JA"}
+{"entite": "Al Jahra", "valeur": "KW-JA"}
+{"entite": "Al Jawf", "valeur": "YE-JA"}
+{"entite": "Al Jazirah", "valeur": "SD-GZ"}
+{"entite": "Al Khawr", "valeur": "QA-KH"}
+{"entite": "Al-Koufrah", "valeur": "LY-KF"}
+{"entite": "Al Mahwit", "valeur": "YE-MW"}
+{"entite": "Al Marj", "valeur": "LY-MJ"}
+{"entite": "Al Mourqoub", "valeur": "LY-MB"}
+{"entite": "Al-Muthanna", "valeur": "IQ-MU"}
+{"entite": "Al Qadarif", "valeur": "SD-GD"}
+{"entite": "Al-Qadisiyya", "valeur": "IQ-QA"}
+{"entite": "Al Rayyan", "valeur": "QA-RA"}
+{"entite": "Al-Shahaniya", "valeur": "QA-SH"}
+{"entite": "Al Wahat", "valeur": "LY-WA"}
+{"entite": "Al Wusta", "valeur": "OM-WU"}
+{"entite": "Alabama", "valeur": "US-AL"}
+{"entite": "Alagoas", "valeur": "BR-AL"}
+{"entite": "Alajuela", "valeur": "CR-A"}
+{"entite": "Åland", "valeur": "FI-01"}
+{"entite": "Alaska", "valeur": "US-AK"}
+{"entite": "Alba", "valeur": "RO-AB"}
+{"entite": "Albay", "valeur": "PH-ALB"}
+{"entite": "Alberta", "valeur": "CA-AB"}
+{"entite": "Alborz", "valeur": "IR-30"}
+{"entite": "Alep", "valeur": "SY-HL"}
+{"entite": "Alexandrie", "valeur": "EG-ALX"}
+{"entite": "Ali Sabieh", "valeur": "DJ-AS"}
+{"entite": "Alibori", "valeur": "BJ-AL"}
+{"entite": "Alif Alif", "valeur": "MV-02"}
+{"entite": "Alif Dhaal", "valeur": "MV-00"}
+{"entite": "Almaty", "valeur": "KZ-75"}
+{"entite": "Alsunga", "valeur": "LV-006"}
+{"entite": "Alta Verapaz", "valeur": "GT-16"}
+{"entite": "La Altagracia", "valeur": "DO-11"}
+{"entite": "Alto Paraguay", "valeur": "PY-16"}
+{"entite": "Alto Paraná", "valeur": "PY-10"}
+{"entite": "Alūksne", "valeur": "LV-007"}
+{"entite": "Amambay", "valeur": "PY-13"}
+{"entite": "Amapá", "valeur": "BR-AP"}
+{"entite": "Amasya", "valeur": "TR-05"}
+{"entite": "Amata", "valeur": "LV-008"}
+{"entite": "Amhara", "valeur": "ET-AM"}
+{"entite": "Amman", "valeur": "JO-AM"}
+{"entite": "Amnat Charoen", "valeur": "TH-37"}
+{"entite": "Amran", "valeur": "YE-AM"}
+{"entite": "An Giang", "valeur": "VN-44"}
+{"entite": "An-Najaf", "valeur": "IQ-NA"}
+{"entite": "An Nouqat al Khams", "valeur": "LY-NQ"}
+{"entite": "Anabar", "valeur": "NR-02"}
+{"entite": "Anambra", "valeur": "NG-AN"}
+{"entite": "Ancash", "valeur": "PE-ANC"}
+{"entite": "Andalousie", "valeur": "ES-AN"}
+{"entite": "Andhra Pradesh", "valeur": "IN-AP"}
+{"entite": "Andorre-la-Vieille", "valeur": "AD-07"}
+{"entite": "Andrijevica", "valeur": "ME-01"}
+{"entite": "Anenii Noi", "valeur": "MD-AN"}
+{"entite": "Anetan", "valeur": "NR-03"}
+{"entite": "Ang Thong", "valeur": "TH-15"}
+{"entite": "Angaur", "valeur": "PW-010"}
+{"entite": "Angleterre", "valeur": "GB-ENG"}
+{"entite": "Anhui", "valeur": "CN-AH"}
+{"entite": "Anibare", "valeur": "NR-04"}
+{"entite": "Anjouan", "valeur": "KM-A"}
+{"entite": "Ankara", "valeur": "TR-06"}
+{"entite": "Annobón", "valeur": "GQ-AN"}
+{"entite": "Anse aux Pins", "valeur": "SC-01"}
+{"entite": "Anse Boileau", "valeur": "SC-02"}
+{"entite": "Anse Etoile", "valeur": "SC-03"}
+{"entite": "Anse Royale", "valeur": "SC-05"}
+{"entite": "Anseba", "valeur": "ER-AN"}
+{"entite": "Antioquia", "valeur": "CO-ANT"}
+{"entite": "Antique", "valeur": "PH-ANT"}
+{"entite": "Anzoátegui", "valeur": "VE-B"}
+{"entite": "Ape", "valeur": "LV-009"}
+{"entite": "Apure", "valeur": "VE-C"}
+{"entite": "Apurímac", "valeur": "PE-APU"}
+{"entite": "Aqaba", "valeur": "JO-AQ"}
+{"entite": "Aqmola", "valeur": "KZ-11"}
+{"entite": "Aqtöbe", "valeur": "KZ-15"}
+{"entite": "Aquitaine", "valeur": "FR-B"}
+{"entite": "Aračinovo", "valeur": "MK-802"}
+{"entite": "Arad", "valeur": "RO-AR"}
+{"entite": "Aragatsotn", "valeur": "AM-AG"}
+{"entite": "Aragon", "valeur": "ES-AR"}
+{"entite": "Aragua", "valeur": "VE-D"}
+{"entite": "Ararat", "valeur": "AM-AR"}
+{"entite": "Arauca", "valeur": "CO-ARA"}
+{"entite": "Araucanie", "valeur": "CL-AR"}
+{"entite": "archipel de San Andrés, Providencia et Santa Catalina", "valeur": "CO-SAP"}
+{"entite": "Ardabil", "valeur": "IR-24"}
+{"entite": "Ardahan", "valeur": "TR-75"}
+{"entite": "Arequipa", "valeur": "PE-ARE"}
+{"entite": "Argeș", "valeur": "RO-AG"}
+{"entite": "Ariana", "valeur": "TN-12"}
+{"entite": "Arica et Parinacota", "valeur": "CL-AP"}
+{"entite": "Arima", "valeur": "TT-ARI"}
+{"entite": "Arizona", "valeur": "US-AZ"}
+{"entite": "Arkansas", "valeur": "US-AR"}
+{"entite": "Arkhangai", "valeur": "MN-073"}
+{"entite": "Armavir", "valeur": "AM-AV"}
+{"entite": "Arta", "valeur": "DJ-AR"}
+{"entite": "Artibonite", "valeur": "HT-AR"}
+{"entite": "Artigas", "valeur": "UY-AR"}
+{"entite": "Artvin", "valeur": "TR-08"}
+{"entite": "Arunachal Pradesh", "valeur": "IN-AR"}
+{"entite": "Arusha", "valeur": "TZ-01"}
+{"entite": "As-Sulaymaniya", "valeur": "IQ-SU"}
+{"entite": "Ash Shamal", "valeur": "QA-MS"}
+{"entite": "Ashanti", "valeur": "GH-AH"}
+{"entite": "Asir", "valeur": "SA-14"}
+{"entite": "Assaba", "valeur": "MR-03"}
+{"entite": "Assam", "valeur": "IN-AS"}
+{"entite": "Assiout", "valeur": "EG-AST"}
+{"entite": "Assouan", "valeur": "EG-ASN"}
+{"entite": "Astana", "valeur": "KZ-71"}
+{"entite": "Astara", "valeur": "AZ-AST"}
+{"entite": "Asturies", "valeur": "ES-AS"}
+{"entite": "Atacama", "valeur": "CL-AT"}
+{"entite": "Atacora", "valeur": "BJ-AK"}
+{"entite": "Atlántico", "valeur": "CO-ATL"}
+{"entite": "Atlántida", "valeur": "HN-AT"}
+{"entite": "Atlantique", "valeur": "BJ-AQ"}
+{"entite": "Atoll de Gnaviyani", "valeur": "MV-29"}
+{"entite": "Atoll Faadhippolhu", "valeur": "MV-03"}
+{"entite": "Atoll Hadhdhunmathi", "valeur": "MV-05"}
+{"entite": "atoll Johnston", "valeur": "UM-67"}
+{"entite": "Atoll Kolhumadulu", "valeur": "MV-08"}
+{"entite": "Atoll Nilandhe Nord", "valeur": "MV-14"}
+{"entite": "Atoll Nilandhe Sud", "valeur": "MV-17"}
+{"entite": "atoll Palmyra", "valeur": "UM-95"}
+{"entite": "Attapu", "valeur": "LA-AT"}
+{"entite": "Atua", "valeur": "WS-AT"}
+{"entite": "Atyraou", "valeur": "KZ-23"}
+{"entite": "Au Cap", "valeur": "SC-04"}
+{"entite": "Auce", "valeur": "LV-010"}
+{"entite": "Augšdaugava", "valeur": "LV-111"}
+{"entite": "Aust-Agder", "valeur": "NO-09"}
+{"entite": "Australie-Méridionale", "valeur": "AU-SA"}
+{"entite": "Australie-Occidentale", "valeur": "AU-WA"}
+{"entite": "Austurland", "valeur": "IS-7"}
+{"entite": "Auvergne", "valeur": "FR-C"}
+{"entite": "Auvergne-Rhône-Alpes", "valeur": "FR-ARA"}
+{"entite": "Avannaata", "valeur": "GL-AV"}
+{"entite": "Ayacucho", "valeur": "PE-AYA"}
+{"entite": "Aydın", "valeur": "TR-09"}
+{"entite": "Ayeyarwady", "valeur": "MM-07"}
+{"entite": "Ayutthaya", "valeur": "TH-14"}
+{"entite": "Az Zaouiyah", "valeur": "LY-ZA"}
+{"entite": "Azad Cachemire", "valeur": "PK-JK"}
+{"entite": "Azerbaïdjan occidental", "valeur": "IR-04"}
+{"entite": "Azerbaïdjan oriental", "valeur": "IR-03"}
+{"entite": "Azua", "valeur": "DO-02"}
+{"entite": "Azuay", "valeur": "EC-A"}
+{"entite": "Bərdə", "valeur": "AZ-BAR"}
+{"entite": "Bà Rịa-Vũng Tàu", "valeur": "VN-43"}
+{"entite": "Baa", "valeur": "MV-20"}
+{"entite": "Babek raion", "valeur": "AZ-BAB"}
+{"entite": "Babil", "valeur": "IQ-BB"}
+{"entite": "Babīte", "valeur": "LV-012"}
+{"entite": "Bắc Giang", "valeur": "VN-54"}
+{"entite": "Bắc Kạn", "valeur": "VN-53"}
+{"entite": "Bạc Liêu", "valeur": "VN-55"}
+{"entite": "Bắc Ninh", "valeur": "VN-56"}
+{"entite": "Bacău", "valeur": "RO-BC"}
+{"entite": "Bachkirie", "valeur": "RU-BA"}
+{"entite": "Bačka méridionale", "valeur": "RS-06"}
+{"entite": "Bačka occidentale", "valeur": "RS-05"}
+{"entite": "Bačka septentrionale", "valeur": "RS-01"}
+{"entite": "Bács-Kiskun", "valeur": "HU-BK"}
+{"entite": "Badakhchan", "valeur": "AF-BDS"}
+{"entite": "Bade-Wurtemberg", "valeur": "DE-BW"}
+{"entite": "Bâdghîs", "valeur": "AF-BDG"}
+{"entite": "Bagdad", "valeur": "IQ-BG"}
+{"entite": "Baghlân", "valeur": "AF-BGL"}
+{"entite": "Bagmati", "valeur": "NP-P3"}
+{"entite": "Bago", "valeur": "MM-02"}
+{"entite": "Bahia", "valeur": "BR-BA"}
+{"entite": "Bahr el Ghazal du Nord", "valeur": "SS-BN"}
+{"entite": "Bahr el Ghazal occidental", "valeur": "SS-BW"}
+{"entite": "Baie de l'Abondance", "valeur": "NZ-BOP"}
+{"entite": "Baie de Milne", "valeur": "PG-MBA"}
+{"entite": "Baie Lazare", "valeur": "SC-06"}
+{"entite": "Baie Sainte Anne", "valeur": "SC-07"}
+{"entite": "Baiti", "valeur": "NR-05"}
+{"entite": "Baja Verapaz", "valeur": "GT-15"}
+{"entite": "Bakool", "valeur": "SO-BK"}
+{"entite": "Bakou", "valeur": "AZ-BA"}
+{"entite": "Balıkesir", "valeur": "TR-10"}
+{"entite": "Balakən", "valeur": "AZ-BAL"}
+{"entite": "Baldone", "valeur": "LV-013"}
+{"entite": "Balkan", "valeur": "TM-B"}
+{"entite": "Balkh", "valeur": "AF-BAL"}
+{"entite": "Baloutchistan", "valeur": "PK-BA"}
+{"entite": "Balqa", "valeur": "JO-BA"}
+{"entite": "Baltinava", "valeur": "LV-014"}
+{"entite": "Balvi", "valeur": "LV-015"}
+{"entite": "Balzers", "valeur": "LI-01"}
+{"entite": "Bamako", "valeur": "ML-BKO"}
+{"entite": "Bamingui-Bangoran", "valeur": "CF-BB"}
+{"entite": "Bâmiyân", "valeur": "AF-BAM"}
+{"entite": "Banat central", "valeur": "RS-02"}
+{"entite": "Banat méridional", "valeur": "RS-04"}
+{"entite": "Banat septentrional", "valeur": "RS-03"}
+{"entite": "Bandundu", "valeur": "CD-BN"}
+{"entite": "Bangkok", "valeur": "TH-10"}
+{"entite": "Bangui", "valeur": "CF-BGF"}
+{"entite": "Banjul", "valeur": "GM-B"}
+{"entite": "Bankui", "valeur": "BF-01"}
+{"entite": "Banteay Mean Chey", "valeur": "KH-1"}
+{"entite": "Banten", "valeur": "ID-BT"}
+{"entite": "Baoruco", "valeur": "DO-03"}
+{"entite": "Bar", "valeur": "ME-02"}
+{"entite": "Barahona", "valeur": "DO-04"}
+{"entite": "Baranya", "valeur": "HU-BA"}
+{"entite": "Barbuda", "valeur": "AG-10"}
+{"entite": "Barh El Gazel", "valeur": "TD-BG"}
+{"entite": "Barima-Waini", "valeur": "GY-BA"}
+{"entite": "Barinas", "valeur": "VE-E"}
+{"entite": "Barisal", "valeur": "BD-A"}
+{"entite": "Bartın", "valeur": "TR-74"}
+{"entite": "Bas-Uele", "valeur": "CD-BU"}
+{"entite": "Basarabeasca", "valeur": "MD-BS"}
+{"entite": "Basilicate", "valeur": "IT-77"}
+{"entite": "Basse-Autriche", "valeur": "AT-3"}
+{"entite": "Basse-Californie", "valeur": "MX-BCN"}
+{"entite": "Basse-Californie du Sud", "valeur": "MX-BCS"}
+{"entite": "Basse Kartlie", "valeur": "GE-KK"}
+{"entite": "Basse-Kotto", "valeur": "CF-BK"}
+{"entite": "Basse-Normandie", "valeur": "FR-P"}
+{"entite": "Basse-Saxe", "valeur": "DE-NI"}
+{"entite": "Basses-Carpates", "valeur": "PL-18"}
+{"entite": "Bataan", "valeur": "PH-BAN"}
+{"entite": "Batha", "valeur": "TD-BA"}
+{"entite": "Batken", "valeur": "KG-B"}
+{"entite": "Batman", "valeur": "TR-72"}
+{"entite": "Batna", "valeur": "DZ-05"}
+{"entite": "Battambang", "valeur": "KH-2"}
+{"entite": "Baucau (municipalité", "valeur": "TL-BA"}
+{"entite": "Bauchi", "valeur": "NG-BA"}
+{"entite": "Bauska", "valeur": "LV-016"}
+{"entite": "Bavière", "valeur": "DE-BY"}
+{"entite": "Bayan-Ölgii", "valeur": "MN-071"}
+{"entite": "Bayankhongor", "valeur": "MN-069"}
+{"entite": "Bayburt", "valeur": "TR-69"}
+{"entite": "Bayelsa", "valeur": "NG-BY"}
+{"entite": "Beau Vallon", "valeur": "SC-08"}
+{"entite": "Béchar", "valeur": "DZ-08"}
+{"entite": "Beheira", "valeur": "EG-BH"}
+{"entite": "Bekaa", "valeur": "LB-BI"}
+{"entite": "Békés", "valeur": "HU-BE"}
+{"entite": "Békéscsaba", "valeur": "HU-BC"}
+{"entite": "Bel Air", "valeur": "SC-09"}
+{"entite": "Bel Ombre", "valeur": "SC-10"}
+{"entite": "Belait", "valeur": "BN-BE"}
+{"entite": "Belgrade", "valeur": "RS-00"}
+{"entite": "Belize", "valeur": "BZ-BZ"}
+{"entite": "Ben Arous", "valeur": "TN-13"}
+{"entite": "Bến Tre", "valeur": "VN-50"}
+{"entite": "Benedikt", "valeur": "SI-148"}
+{"entite": "Bengale-Occidental", "valeur": "IN-WB"}
+{"entite": "Bengkulu", "valeur": "ID-BE"}
+{"entite": "Bengo", "valeur": "AO-BGO"}
+{"entite": "Benguela", "valeur": "AO-BGU"}
+{"entite": "Benguet", "valeur": "PH-BEN"}
+{"entite": "Beni", "valeur": "BO-B"}
+{"entite": "Béni Abbès", "valeur": "DZ-52"}
+{"entite": "Béni Mellal-Khénifra", "valeur": "MA-05"}
+{"entite": "Beni Souef", "valeur": "EG-BNS"}
+{"entite": "Benishangul-Gumuz", "valeur": "ET-BE"}
+{"entite": "Benue", "valeur": "NG-BE"}
+{"entite": "Berane", "valeur": "ME-03"}
+{"entite": "Berat", "valeur": "AL-01"}
+{"entite": "Berbice oriental-Courantyne", "valeur": "GY-EB"}
+{"entite": "Berea", "valeur": "LS-D"}
+{"entite": "Berlin", "valeur": "DE-BE"}
+{"entite": "Berovo", "valeur": "MK-201"}
+{"entite": "Beverīna", "valeur": "LV-017"}
+{"entite": "Beyləqan", "valeur": "AZ-BEY"}
+{"entite": "Bichkek", "valeur": "KG-GB"}
+{"entite": "Bicol", "valeur": "PH-05"}
+{"entite": "Bié", "valeur": "AO-BIE"}
+{"entite": "Bihar", "valeur": "IN-BR"}
+{"entite": "Bihor", "valeur": "RO-BH"}
+{"entite": "Bijelo Polje", "valeur": "ME-04"}
+{"entite": "Biləsuvar", "valeur": "AZ-BIL"}
+{"entite": "Bilecik", "valeur": "TR-11"}
+{"entite": "Biliran", "valeur": "PH-BIL"}
+{"entite": "Bingöl", "valeur": "TR-12"}
+{"entite": "Bình Dương", "valeur": "VN-57"}
+{"entite": "Bình Phước", "valeur": "VN-58"}
+{"entite": "Bình Thuận", "valeur": "VN-40"}
+{"entite": "Biobío", "valeur": "CL-BI"}
+{"entite": "Bioko-Norte", "valeur": "GQ-BN"}
+{"entite": "Bioko-Sur", "valeur": "GQ-BS"}
+{"entite": "Birštonas", "valeur": "LT-05"}
+{"entite": "Biskra", "valeur": "DZ-07"}
+{"entite": "Bistrița-Năsăud", "valeur": "RO-BN"}
+{"entite": "Bitlis", "valeur": "TR-13"}
+{"entite": "Bitola", "valeur": "MK-501"}
+{"entite": "Bizerte", "valeur": "TN-23"}
+{"entite": "Bjelovar-Bilogora", "valeur": "HR-07"}
+{"entite": "Black Point", "valeur": "BS-BP"}
+{"entite": "Blagoevgrad", "valeur": "BG-01"}
+{"entite": "Bled", "valeur": "SI-003"}
+{"entite": "Blekinge", "valeur": "SE-K"}
+{"entite": "Bloke", "valeur": "SI-150"}
+{"entite": "Boaco", "valeur": "NI-BO"}
+{"entite": "Bobonaro", "valeur": "TL-BO"}
+{"entite": "Bocas del Toro", "valeur": "PA-1"}
+{"entite": "Boe", "valeur": "NR-06"}
+{"entite": "Bogdanci", "valeur": "MK-401"}
+{"entite": "Bogota", "valeur": "CO-DC"}
+{"entite": "Bogovinje", "valeur": "MK-601"}
+{"entite": "Bohême-Centrale", "valeur": "CZ-20"}
+{"entite": "Bohême-du-Sud", "valeur": "CZ-31"}
+{"entite": "Bohol", "valeur": "PH-BOH"}
+{"entite": "Boké", "valeur": "GN-B"}
+{"entite": "Bokèo", "valeur": "LA-BK"}
+{"entite": "Bolikhamxai", "valeur": "LA-BL"}
+{"entite": "Bolu", "valeur": "TR-14"}
+{"entite": "Bomi", "valeur": "LR-BM"}
+{"entite": "Bong", "valeur": "LR-BG"}
+{"entite": "Bono région est", "valeur": "GH-BE"}
+{"entite": "Boquerón", "valeur": "PY-19"}
+{"entite": "Bor", "valeur": "RS-14"}
+{"entite": "Bordj Baji Mokhtar", "valeur": "DZ-50"}
+{"entite": "Bordj Bou Arreridj", "valeur": "DZ-34"}
+{"entite": "Borgo Maggiore", "valeur": "SM-06"}
+{"entite": "Borgou", "valeur": "BJ-BO"}
+{"entite": "Borkou", "valeur": "TD-BO"}
+{"entite": "Borno", "valeur": "NG-BO"}
+{"entite": "Borsod-Abaúj-Zemplén", "valeur": "HU-BZ"}
+{"entite": "Bosilovo", "valeur": "MK-402"}
+{"entite": "Botoșani", "valeur": "RO-BT"}
+{"entite": "Bouchehr", "valeur": "IR-18"}
+{"entite": "Bouenza", "valeur": "CG-11"}
+{"entite": "Boukhara", "valeur": "UZ-BU"}
+{"entite": "Bourgogne", "valeur": "FR-D"}
+{"entite": "Bourgogne-Franche-Comté", "valeur": "FR-BFC"}
+{"entite": "Bouriatie", "valeur": "RU-BU"}
+{"entite": "Boyacá", "valeur": "CO-BOY"}
+{"entite": "Brabant-Septentrional", "valeur": "NL-NB"}
+{"entite": "Braga", "valeur": "PT-03"}
+{"entite": "Bragance", "valeur": "PT-04"}
+{"entite": "Brăila", "valeur": "RO-BR"}
+{"entite": "Brakna", "valeur": "MR-05"}
+{"entite": "Brandebourg", "valeur": "DE-BB"}
+{"entite": "Braničevo", "valeur": "RS-11"}
+{"entite": "Brașov", "valeur": "RO-BV"}
+{"entite": "Brčko", "valeur": "BA-BRC"}
+{"entite": "Brda", "valeur": "SI-007"}
+{"entite": "Brest", "valeur": "BY-BR"}
+{"entite": "Bretagne", "valeur": "FR-BRE"}
+{"entite": "Brežice", "valeur": "SI-009"}
+{"entite": "Brezovica", "valeur": "SI-008"}
+{"entite": "Briceni", "valeur": "MD-BR"}
+{"entite": "Brocēni", "valeur": "LV-018"}
+{"entite": "Brod-Posavina", "valeur": "HR-12"}
+{"entite": "Brokopondo", "valeur": "SR-BR"}
+{"entite": "Brong Ahafo", "valeur": "GH-BA"}
+{"entite": "Brunei-Muara", "valeur": "BN-BM"}
+{"entite": "Brvenica", "valeur": "MK-602"}
+{"entite": "Buada", "valeur": "NR-07"}
+{"entite": "Bucarest", "valeur": "RO-B"}
+{"entite": "Budva", "valeur": "ME-05"}
+{"entite": "Bueng Kan", "valeur": "TH-38"}
+{"entite": "Buenos Aires", "valeur": "AR-C"}
+{"entite": "Bulacan", "valeur": "PH-BUL"}
+{"entite": "Bulgan", "valeur": "MN-067"}
+{"entite": "Bumthang", "valeur": "BT-33"}
+{"entite": "Bungoma", "valeur": "KE-03"}
+{"entite": "Burdur", "valeur": "TR-15"}
+{"entite": "Burgenland", "valeur": "AT-1"}
+{"entite": "Buriram", "valeur": "TH-31"}
+{"entite": "Bursa", "valeur": "TR-16"}
+{"entite": "Burtnieki", "valeur": "LV-019"}
+{"entite": "Busia", "valeur": "KE-04"}
+{"entite": "Buskerud", "valeur": "NO-33"}
+{"entite": "Butel", "valeur": "MK-803"}
+{"entite": "Butha-Buthe", "valeur": "LS-B"}
+{"entite": "Buzău", "valeur": "RO-BZ"}
+{"entite": "Cəlilabad", "valeur": "AZ-CAL"}
+{"entite": "Cà Mau", "valeur": "VN-59"}
+{"entite": "Caaguazú", "valeur": "PY-5"}
+{"entite": "Caazapá", "valeur": "PY-6"}
+{"entite": "Cabañas", "valeur": "SV-CA"}
+{"entite": "Cabinda", "valeur": "AO-CAB"}
+{"entite": "Cabo Delgado", "valeur": "MZ-P"}
+{"entite": "Cagayan", "valeur": "PH-CAG"}
+{"entite": "Cahul", "valeur": "MD-CA"}
+{"entite": "Čair", "valeur": "MK-815"}
+{"entite": "Cajamarca", "valeur": "PE-CAJ"}
+{"entite": "Calabre", "valeur": "IT-78"}
+{"entite": "Caldas", "valeur": "CO-CAL"}
+{"entite": "Californie", "valeur": "US-CA"}
+{"entite": "Callao", "valeur": "PE-CAL"}
+{"entite": "Camagüey", "valeur": "CU-09"}
+{"entite": "Camarines Sur", "valeur": "PH-CAS"}
+{"entite": "Campanie", "valeur": "IT-72"}
+{"entite": "Campeche", "valeur": "MX-CAM"}
+{"entite": "Cần Thơ", "valeur": "VN-CT"}
+{"entite": "Çanakkale", "valeur": "TR-17"}
+{"entite": "Cañar", "valeur": "EC-F"}
+{"entite": "Canelones", "valeur": "UY-CA"}
+{"entite": "Canillo", "valeur": "AD-02"}
+{"entite": "Canindeyú", "valeur": "PY-14"}
+{"entite": "Çankırı", "valeur": "TR-18"}
+{"entite": "Cankova", "valeur": "SI-152"}
+{"entite": "Cantabrie", "valeur": "ES-CB"}
+{"entite": "Cantemir", "valeur": "MD-CT"}
+{"entite": "Canterbury", "valeur": "NZ-CAN"}
+{"entite": "canton d'Appenzell Rhodes-Extérieures", "valeur": "CH-AR"}
+{"entite": "canton d'Appenzell Rhodes-Intérieures", "valeur": "CH-AI"}
+{"entite": "canton d'Argovie", "valeur": "CH-AG"}
+{"entite": "Canton d'Echternach", "valeur": "LU-EC"}
+{"entite": "Canton d'Esch-sur-Alzette", "valeur": "LU-ES"}
+{"entite": "canton d'Obwald", "valeur": "CH-OW"}
+{"entite": "canton d'Uri", "valeur": "CH-UR"}
+{"entite": "canton de Bâle-Campagne", "valeur": "CH-BL"}
+{"entite": "canton de Bâle-Ville", "valeur": "CH-BS"}
+{"entite": "canton de Berne", "valeur": "CH-BE"}
+{"entite": "canton de Capellen", "valeur": "LU-CA"}
+{"entite": "Canton de Clervaux", "valeur": "LU-CL"}
+{"entite": "canton de Diekirch", "valeur": "LU-DI"}
+{"entite": "canton de Fribourg", "valeur": "CH-FR"}
+{"entite": "canton de Genève", "valeur": "CH-GE"}
+{"entite": "canton de Glaris", "valeur": "CH-GL"}
+{"entite": "Canton de Grevenmacher", "valeur": "LU-GR"}
+{"entite": "canton de Lucerne", "valeur": "CH-LU"}
+{"entite": "canton de Luxembourg", "valeur": "LU-LU"}
+{"entite": "Canton de Mersch", "valeur": "LU-ME"}
+{"entite": "canton de Neuchâtel", "valeur": "CH-NE"}
+{"entite": "canton de Nidwald", "valeur": "CH-NW"}
+{"entite": "Canton de Redange", "valeur": "LU-RD"}
+{"entite": "Canton de Remich", "valeur": "LU-RM"}
+{"entite": "canton de Saint-Gall", "valeur": "CH-SG"}
+{"entite": "canton de Schaffhouse", "valeur": "CH-SH"}
+{"entite": "canton de Schwytz", "valeur": "CH-SZ"}
+{"entite": "canton de Soleure", "valeur": "CH-SO"}
+{"entite": "canton de Thurgovie", "valeur": "CH-TG"}
+{"entite": "canton de Vaud", "valeur": "CH-VD"}
+{"entite": "Canton de Vianden", "valeur": "LU-VD"}
+{"entite": "Canton de Wiltz", "valeur": "LU-WI"}
+{"entite": "canton de Zoug", "valeur": "CH-ZG"}
+{"entite": "canton de Zurich", "valeur": "CH-ZH"}
+{"entite": "canton des Grisons", "valeur": "CH-GR"}
+{"entite": "canton du Jura", "valeur": "CH-JU"}
+{"entite": "canton du Tessin", "valeur": "CH-TI"}
+{"entite": "canton du Valais", "valeur": "CH-VS"}
+{"entite": "Cao Bằng", "valeur": "VN-04"}
+{"entite": "Cap-Nord", "valeur": "ZA-NC"}
+{"entite": "Cap-Occidental", "valeur": "ZA-WC"}
+{"entite": "Cap-Oriental", "valeur": "ZA-EC"}
+{"entite": "Cápiz", "valeur": "PH-CAP"}
+{"entite": "Caquetá", "valeur": "CO-CAQ"}
+{"entite": "Carabobo", "valeur": "VE-G"}
+{"entite": "Caraga", "valeur": "PH-13"}
+{"entite": "Caraș-Severin", "valeur": "RO-CS"}
+{"entite": "Carchi", "valeur": "EC-C"}
+{"entite": "Carélie", "valeur": "RU-KR"}
+{"entite": "Carélie du Nord", "valeur": "FI-13"}
+{"entite": "Carélie du Sud", "valeur": "FI-02"}
+{"entite": "Carinthie", "valeur": "AT-2"}
+{"entite": "Carnikava", "valeur": "LV-020"}
+{"entite": "Caroline du Nord", "valeur": "US-NC"}
+{"entite": "Caroline du Sud", "valeur": "US-SC"}
+{"entite": "Cartago", "valeur": "CR-C"}
+{"entite": "Casablanca-Settat", "valeur": "MA-06"}
+{"entite": "Casanare", "valeur": "CO-CAS"}
+{"entite": "Cascade", "valeur": "SC-11"}
+{"entite": "Čaška", "valeur": "MK-109"}
+{"entite": "Castelo Branco", "valeur": "PT-05"}
+{"entite": "Castille-et-León", "valeur": "ES-CL"}
+{"entite": "Castille-La Manche", "valeur": "ES-CM"}
+{"entite": "Cat Island", "valeur": "BS-CI"}
+{"entite": "Catalogne", "valeur": "ES-CT"}
+{"entite": "Catamarca", "valeur": "AR-K"}
+{"entite": "Catanduanes", "valeur": "PH-CAT"}
+{"entite": "Cauca", "valeur": "CO-CAU"}
+{"entite": "Căușeni", "valeur": "MD-CS"}
+{"entite": "Cayo", "valeur": "BZ-CY"}
+{"entite": "Ceará", "valeur": "BR-CE"}
+{"entite": "Cebu", "valeur": "PH-CEB"}
+{"entite": "Celje (Municipalité urbaine)", "valeur": "SI-011"}
+{"entite": "Centar", "valeur": "MK-814"}
+{"entite": "Centar Župa", "valeur": "MK-313"}
+{"entite": "Central Abaco", "valeur": "BS-CO"}
+{"entite": "Central Andros", "valeur": "BS-CS"}
+{"entite": "Central Eleuthera", "valeur": "BS-CE"}
+{"entite": "Centre-Val de Loire", "valeur": "FR-CVL"}
+{"entite": "Centro-Sur", "valeur": "GQ-CS"}
+{"entite": "Cerklje na Gorenjskem", "valeur": "SI-012"}
+{"entite": "Cerknica", "valeur": "SI-013"}
+{"entite": "Cerkno", "valeur": "SI-014"}
+{"entite": "Cerro Largo", "valeur": "UY-CL"}
+{"entite": "Cesar", "valeur": "CO-CES"}
+{"entite": "Češinovo-Obleševo", "valeur": "MK-210"}
+{"entite": "Cēsis", "valeur": "LV-022"}
+{"entite": "Cesvaine", "valeur": "LV-021"}
+{"entite": "Cetinje", "valeur": "ME-06"}
+{"entite": "Ceuta", "valeur": "ES-CE"}
+{"entite": "Chabwa", "valeur": "YE-SH"}
+{"entite": "Chachoengsao", "valeur": "TH-24"}
+{"entite": "Chaco", "valeur": "AR-H"}
+{"entite": "Chagang", "valeur": "KP-04"}
+{"entite": "Chaguanas", "valeur": "TT-CHA"}
+{"entite": "Chai Nat", "valeur": "TH-18"}
+{"entite": "Chaiyaphum", "valeur": "TH-36"}
+{"entite": "Chaki", "valeur": "AZ-SA"}
+{"entite": "Chalatenango", "valeur": "SV-CH"}
+{"entite": "Champagne-Ardenne", "valeur": "FR-G"}
+{"entite": "Champasak", "valeur": "LA-CH"}
+{"entite": "Chanthaburi", "valeur": "TH-22"}
+{"entite": "Chari-Baguirmi", "valeur": "TD-CB"}
+{"entite": "Charlotte", "valeur": "VC-01"}
+{"entite": "Chhattisgarh", "valeur": "IN-CG"}
+{"entite": "Chiang Mai", "valeur": "TH-50"}
+{"entite": "Chiang Rai", "valeur": "TH-57"}
+{"entite": "Chiapas", "valeur": "MX-CHP"}
+{"entite": "Chiayi", "valeur": "TW-CYI"}
+{"entite": "Chiesanuova", "valeur": "SM-02"}
+{"entite": "Chihuahua", "valeur": "MX-CHH"}
+{"entite": "Chilung", "valeur": "TW-KEE"}
+{"entite": "Chimaltenango", "valeur": "GT-04"}
+{"entite": "Chimborazo", "valeur": "EC-H"}
+{"entite": "Chimkent", "valeur": "KZ-79"}
+{"entite": "Chin", "valeur": "MM-14"}
+{"entite": "Chiquimula", "valeur": "GT-20"}
+{"entite": "Chiriquí", "valeur": "PA-4"}
+{"entite": "Chittagong", "valeur": "BD-B"}
+{"entite": "Chocó", "valeur": "CO-CHO"}
+{"entite": "Choluteca", "valeur": "HN-CH"}
+{"entite": "Chonburi", "valeur": "TH-20"}
+{"entite": "Chongqing", "valeur": "CN-CQ"}
+{"entite": "Choucha", "valeur": "AZ-SUS"}
+{"entite": "Choumen", "valeur": "BG-27"}
+{"entite": "Christ Church", "valeur": "BB-01"}
+{"entite": "Christ Church Nichola Town", "valeur": "KN-01"}
+{"entite": "Chubut", "valeur": "AR-U"}
+{"entite": "Chukha", "valeur": "BT-12"}
+{"entite": "Chumphon", "valeur": "TH-86"}
+{"entite": "Chungcheong du Nord", "valeur": "KR-43"}
+{"entite": "Chungcheong du Sud", "valeur": "KR-44"}
+{"entite": "Chuquisaca", "valeur": "BO-H"}
+{"entite": "Cibla", "valeur": "LV-023"}
+{"entite": "Ciego de Ávila", "valeur": "CU-08"}
+{"entite": "Cienfuegos", "valeur": "CU-06"}
+{"entite": "Cimișlia", "valeur": "MD-CM"}
+{"entite": "Ciudad de La Habana", "valeur": "CU-03"}
+{"entite": "Cluj", "valeur": "RO-CJ"}
+{"entite": "Coahuila", "valeur": "MX-COA"}
+{"entite": "Cochabamba", "valeur": "BO-C"}
+{"entite": "Coclé", "valeur": "PA-2"}
+{"entite": "Cojedes", "valeur": "VE-H"}
+{"entite": "Colima", "valeur": "MX-COL"}
+{"entite": "Collines", "valeur": "BJ-CO"}
+{"entite": "Colombie-Britannique", "valeur": "CA-BC"}
+{"entite": "Colonia", "valeur": "UY-CO"}
+{"entite": "Colorado", "valeur": "US-CO"}
+{"entite": "Comayagua", "valeur": "HN-CM"}
+{"entite": "Comitat d'Istrie", "valeur": "HR-18"}
+{"entite": "Commewijne", "valeur": "SR-CM"}
+{"entite": "communauté de Madrid", "valeur": "ES-MD"}
+{"entite": "Communauté valencienne", "valeur": "ES-VC"}
+{"entite": "Commune d'Aknīste", "valeur": "LV-004"}
+{"entite": "Commune d'Aloja", "valeur": "LV-005"}
+{"entite": "Commune de Jaunjelgava", "valeur": "LV-038"}
+{"entite": "comté d'Embu", "valeur": "KE-06"}
+{"entite": "comté d'Isiolo", "valeur": "KE-09"}
+{"entite": "comté de Baringo", "valeur": "KE-01"}
+{"entite": "comté de Bomet", "valeur": "KE-02"}
+{"entite": "comté de Changhua", "valeur": "TW-CHA"}
+{"entite": "comté de Chiayi", "valeur": "TW-CYQ"}
+{"entite": "comté de Elgeyo-Marakwet", "valeur": "KE-05"}
+{"entite": "comté de Halland", "valeur": "SE-N"}
+{"entite": "comté de Hsinchu", "valeur": "TW-HSQ"}
+{"entite": "comté de Hualien", "valeur": "TW-HUA"}
+{"entite": "comté de Kajiado", "valeur": "KE-10"}
+{"entite": "comté de Kiambu", "valeur": "KE-13"}
+{"entite": "comté de Kirinyaga", "valeur": "KE-15"}
+{"entite": "comté de Kitui", "valeur": "KE-18"}
+{"entite": "comté de Lienchiang", "valeur": "TW-LIE"}
+{"entite": "comté de Machakos", "valeur": "KE-22"}
+{"entite": "comté de Mandera", "valeur": "KE-24"}
+{"entite": "comté de Meru", "valeur": "KE-26"}
+{"entite": "comté de Miaoli", "valeur": "TW-MIA"}
+{"entite": "comté de Muranga", "valeur": "KE-29"}
+{"entite": "comté de Nandi", "valeur": "KE-32"}
+{"entite": "comté de Nantou", "valeur": "TW-NAN"}
+{"entite": "comté de Narok", "valeur": "KE-33"}
+{"entite": "comté de Nyandarua", "valeur": "KE-35"}
+{"entite": "comté de Nyeri", "valeur": "KE-36"}
+{"entite": "comté de Penghu", "valeur": "TW-PEN"}
+{"entite": "comté de Pingtung", "valeur": "TW-PIF"}
+{"entite": "comté de Samburu", "valeur": "KE-37"}
+{"entite": "comté de Scanie", "valeur": "SE-M"}
+{"entite": "comté de Stockholm", "valeur": "SE-AB"}
+{"entite": "comté de Taichung", "valeur": "TW-TXQ"}
+{"entite": "comté de Tainan", "valeur": "TW-TNQ"}
+{"entite": "comté de Taitung", "valeur": "TW-TTT"}
+{"entite": "comté de Tana River", "valeur": "KE-40"}
+{"entite": "comté de Tharaka-Nithi", "valeur": "KE-41"}
+{"entite": "comté de Uasin Gishu", "valeur": "KE-44"}
+{"entite": "comté de Västra Götaland", "valeur": "SE-O"}
+{"entite": "comté de Wajir", "valeur": "KE-46"}
+{"entite": "comté de Yilan", "valeur": "TW-ILA"}
+{"entite": "comté de Yunlin", "valeur": "TW-YUN"}
+{"entite": "Concepción", "valeur": "PY-1"}
+{"entite": "Connecticut", "valeur": "US-CT"}
+{"entite": "Constanța", "valeur": "RO-CT"}
+{"entite": "Constantine", "valeur": "DZ-25"}
+{"entite": "Copán", "valeur": "HN-CP"}
+{"entite": "Copperbelt", "valeur": "ZM-08"}
+{"entite": "Coquimbo", "valeur": "CL-CO"}
+{"entite": "Cordillera", "valeur": "PY-3"}
+{"entite": "Coronie", "valeur": "SR-CR"}
+{"entite": "Corozal", "valeur": "BZ-CZL"}
+{"entite": "Corrientes", "valeur": "AR-W"}
+{"entite": "Corse", "valeur": "FR-20R"}
+{"entite": "Cortés", "valeur": "HN-CR"}
+{"entite": "Çorum", "valeur": "TR-19"}
+{"entite": "Cotabato", "valeur": "PH-NCO"}
+{"entite": "Cotabato du Sud", "valeur": "PH-SCO"}
+{"entite": "Cotopaxi", "valeur": "EC-X"}
+{"entite": "Couffo", "valeur": "BJ-KO"}
+{"entite": "Courlande du Sud", "valeur": "LV-112"}
+{"entite": "Couva-Tabaquite-Talparo", "valeur": "TT-CTT"}
+{"entite": "Cova Lima", "valeur": "TL-CO"}
+{"entite": "Covasna", "valeur": "RO-CV"}
+{"entite": "Črenšovci", "valeur": "SI-015"}
+{"entite": "Crète", "valeur": "GR-M"}
+{"entite": "Criuleni", "valeur": "MD-CR"}
+{"entite": "Črna na Koroškem", "valeur": "SI-016"}
+{"entite": "Crooked Island", "valeur": "BS-CK"}
+{"entite": "Cross River", "valeur": "NG-CR"}
+{"entite": "Csongrád-Csanád", "valeur": "HU-CS"}
+{"entite": "Čučer-Sandevo", "valeur": "MK-816"}
+{"entite": "Cundinamarca", "valeur": "CO-CUN"}
+{"entite": "Cuscatlán", "valeur": "SV-CU"}
+{"entite": "Cuvette", "valeur": "CG-8"}
+{"entite": "Cuvette-Ouest", "valeur": "CG-15"}
+{"entite": "Cuyuni-Mazaruni", "valeur": "GY-CU"}
+{"entite": "Dadra et Nagar Haveli et Daman et Diu", "valeur": "IN-DH"}
+{"entite": "Daegu", "valeur": "KR-27"}
+{"entite": "Daejeon", "valeur": "KR-30"}
+{"entite": "Dagana", "valeur": "BT-22"}
+{"entite": "Dagda", "valeur": "LV-024"}
+{"entite": "Daghestan", "valeur": "RU-DA"}
+{"entite": "Dahuk", "valeur": "IQ-DA"}
+{"entite": "Dajabón", "valeur": "DO-05"}
+{"entite": "Dakahleya", "valeur": "EG-DK"}
+{"entite": "Dakar", "valeur": "SN-DK"}
+{"entite": "Dakhla-Oued Ed Dahab", "valeur": "MA-12"}
+{"entite": "Dakhlet Nouadhibou", "valeur": "MR-08"}
+{"entite": "Dakota du Nord", "valeur": "US-ND"}
+{"entite": "Dakota du Sud", "valeur": "US-SD"}
+{"entite": "Dalécarlie", "valeur": "SE-W"}
+{"entite": "Damas", "valeur": "SY-DI"}
+{"entite": "Dâmbovița", "valeur": "RO-DB"}
+{"entite": "Damiette", "valeur": "EG-DT"}
+{"entite": "Danemark du Sud", "valeur": "DK-83"}
+{"entite": "Danilovgrad", "valeur": "ME-07"}
+{"entite": "Dar es Salaam", "valeur": "TZ-02"}
+{"entite": "Darfour-Central", "valeur": "SD-DC"}
+{"entite": "Darfour du Nord", "valeur": "SD-DN"}
+{"entite": "Darfour du Sud", "valeur": "SD-DS"}
+{"entite": "Darfour-Occidental", "valeur": "SD-DW"}
+{"entite": "Darfour-Oriental", "valeur": "SD-DE"}
+{"entite": "Darhan-Uul", "valeur": "MN-037"}
+{"entite": "Darién", "valeur": "PA-5"}
+{"entite": "Darnah", "valeur": "LY-DR"}
+{"entite": "Daşkəsən", "valeur": "AZ-DAS"}
+{"entite": "Daşoguz", "valeur": "TM-D"}
+{"entite": "Daugavpils", "valeur": "LV-DGV"}
+{"entite": "Davao", "valeur": "PH-11"}
+{"entite": "Davao du Nord", "valeur": "PH-DAV"}
+{"entite": "Dávao du Sud", "valeur": "PH-DAS"}
+{"entite": "Davao occidental", "valeur": "PH-DVO"}
+{"entite": "Davao oriental", "valeur": "PH-DAO"}
+{"entite": "Debar", "valeur": "MK-303"}
+{"entite": "Debrca", "valeur": "MK-304"}
+{"entite": "Debrecen", "valeur": "HU-DE"}
+{"entite": "Debub", "valeur": "ER-DU"}
+{"entite": "Debub-Keih-Bahri", "valeur": "ER-DK"}
+{"entite": "Delaware", "valeur": "US-DE"}
+{"entite": "Delčevo", "valeur": "MK-203"}
+{"entite": "Delta", "valeur": "NG-DE"}
+{"entite": "Delta Amacuro", "valeur": "VE-Y"}
+{"entite": "Demerara-Mahaica", "valeur": "GY-DE"}
+{"entite": "Demir Hisar", "valeur": "MK-502"}
+{"entite": "Demir Kapija", "valeur": "MK-103"}
+{"entite": "Denigomodu", "valeur": "NR-08"}
+{"entite": "Denizli", "valeur": "TR-20"}
+{"entite": "département Central", "valeur": "PY-11"}
+{"entite": "Département d'Estelí", "valeur": "NI-ES"}
+{"entite": "département de Carazo", "valeur": "NI-CA"}
+{"entite": "département de Chinandega", "valeur": "NI-CI"}
+{"entite": "département de Chontales", "valeur": "NI-CO"}
+{"entite": "département de Cuzco", "valeur": "PE-CUS"}
+{"entite": "département de Granada", "valeur": "NI-GR"}
+{"entite": "département de Jinotega", "valeur": "NI-JI"}
+{"entite": "département de la région autonome de la Côte caraïbe Nord", "valeur": "NI-AN"}
+{"entite": "département de la Sangha", "valeur": "CG-13"}
+{"entite": "département de León", "valeur": "NI-LE"}
+{"entite": "Département de Loreto", "valeur": "PE-LOR"}
+{"entite": "département de Madriz", "valeur": "NI-MD"}
+{"entite": "département de Managua", "valeur": "NI-MN"}
+{"entite": "Département de Masaya", "valeur": "NI-MS"}
+{"entite": "Département de Matagalpa", "valeur": "NI-MT"}
+{"entite": "Département de Nueva Segovia", "valeur": "NI-NS"}
+{"entite": "département de Rivas", "valeur": "NI-RI"}
+{"entite": "département de Zacapa", "valeur": "GT-19"}
+{"entite": "département du Nord-Ouest", "valeur": "HT-NO"}
+{"entite": "Département du Río San Juan", "valeur": "NI-SJ"}
+{"entite": "département du Sud-Est", "valeur": "HT-SE"}
+{"entite": "Dépendance de Carriacou et Petite Martinique", "valeur": "GD-10"}
+{"entite": "Dépendances fédérales", "valeur": "VE-W"}
+{"entite": "Destrnik", "valeur": "SI-018"}
+{"entite": "Deykandi", "valeur": "AF-DAY"}
+{"entite": "Dhaka", "valeur": "BD-C"}
+{"entite": "Dhamar", "valeur": "YE-DH"}
+{"entite": "Dhi Qar", "valeur": "IQ-DQ"}
+{"entite": "Dhofar", "valeur": "OM-ZU"}
+{"entite": "Dibër", "valeur": "AL-09"}
+{"entite": "Diego Martin", "valeur": "TT-DMN"}
+{"entite": "Diffa", "valeur": "NE-2"}
+{"entite": "Dikhil", "valeur": "DJ-DI"}
+{"entite": "Dili", "valeur": "TL-DI"}
+{"entite": "Diourbel", "valeur": "SN-DB"}
+{"entite": "Dire Dawa", "valeur": "ET-DD"}
+{"entite": "District Central", "valeur": "BW-CE"}
+{"entite": "district centre", "valeur": "IL-M"}
+{"entite": "district d'Anse-la-Raye", "valeur": "LC-01"}
+{"entite": "District d'Aveiro", "valeur": "PT-01"}
+{"entite": "district d'Elbasan", "valeur": "AL-EL"}
+{"entite": "district de Berat", "valeur": "AL-BR"}
+{"entite": "district de Bulqizë", "valeur": "AL-BU"}
+{"entite": "district de Castries", "valeur": "LC-02"}
+{"entite": "District de Chobe", "valeur": "BW-CH"}
+{"entite": "district de Choiseul", "valeur": "LC-03"}
+{"entite": "District de Coimbra", "valeur": "PT-06"}
+{"entite": "District de Columbia", "valeur": "US-DC"}
+{"entite": "district de Delvinë", "valeur": "AL-DL"}
+{"entite": "district de Dennery", "valeur": "LC-05"}
+{"entite": "district de Devoll", "valeur": "AL-DV"}
+{"entite": "district de Dibër", "valeur": "AL-DI"}
+{"entite": "district de Diekirch", "valeur": "LU-D"}
+{"entite": "district de Durrës", "valeur": "AL-DR"}
+{"entite": "district de Famagouste", "valeur": "CY-04"}
+{"entite": "district de Fier", "valeur": "AL-FR"}
+{"entite": "district de Gjirokastër", "valeur": "AL-GJ"}
+{"entite": "district de Gramsh", "valeur": "AL-GR"}
+{"entite": "district de Grevenmacher", "valeur": "LU-G"}
+{"entite": "district de Gros-Islet", "valeur": "LC-06"}
+{"entite": "district de Haïfa", "valeur": "IL-HA"}
+{"entite": "district de Has", "valeur": "AL-HA"}
+{"entite": "district de Jérusalem", "valeur": "IL-JM"}
+{"entite": "district de Kavajë", "valeur": "AL-KA"}
+{"entite": "district de Kolonjë", "valeur": "AL-ER"}
+{"entite": "district de Korçë", "valeur": "AL-KO"}
+{"entite": "district de Krujë", "valeur": "AL-KR"}
+{"entite": "district de Kuçovë", "valeur": "AL-KC"}
+{"entite": "district de Kukës", "valeur": "AL-KU"}
+{"entite": "district de Kurbin", "valeur": "AL-KB"}
+{"entite": "district de Kyrenia", "valeur": "CY-06"}
+{"entite": "district de la Comoé", "valeur": "CI-CM"}
+{"entite": "district de La Digue and Inner Islands", "valeur": "SC-15"}
+{"entite": "district de la Vallée du Bandama", "valeur": "CI-VB"}
+{"entite": "district de Laborie", "valeur": "LC-07"}
+{"entite": "district de Lárnaca", "valeur": "CY-03"}
+{"entite": "district de Lezhë", "valeur": "AL-LE"}
+{"entite": "district de Librazhd", "valeur": "AL-LB"}
+{"entite": "district de Limassol", "valeur": "CY-02"}
+{"entite": "district de Lisbonne", "valeur": "PT-11"}
+{"entite": "district de Lushnjë", "valeur": "AL-LU"}
+{"entite": "district de Luxembourg", "valeur": "LU-L"}
+{"entite": "district de Malësi e Madhe", "valeur": "AL-MM"}
+{"entite": "district de Mallakastër", "valeur": "AL-MK"}
+{"entite": "district de Mat", "valeur": "AL-MT"}
+{"entite": "district de Micoud", "valeur": "LC-08"}
+{"entite": "district de Mirditë", "valeur": "AL-MR"}
+{"entite": "district de Nicosie", "valeur": "CY-01"}
+{"entite": "district de Paphos", "valeur": "CY-05"}
+{"entite": "district de Paro", "valeur": "BT-11"}
+{"entite": "district de Peqin", "valeur": "AL-PQ"}
+{"entite": "district de Përmet", "valeur": "AL-PR"}
+{"entite": "district de Pogradec", "valeur": "AL-PG"}
+{"entite": "district de Portalegre", "valeur": "PT-12"}
+{"entite": "District de Porto", "valeur": "PT-13"}
+{"entite": "district de Pukë", "valeur": "AL-PU"}
+{"entite": "district de Rivière Noire", "valeur": "MU-BL"}
+{"entite": "district de Sarandë", "valeur": "AL-SR"}
+{"entite": "district de Shkodër", "valeur": "AL-SH"}
+{"entite": "district de Skrapar", "valeur": "AL-SK"}
+{"entite": "district de Tel Aviv", "valeur": "IL-TA"}
+{"entite": "district de Tepelenë", "valeur": "AL-TE"}
+{"entite": "district de Tirana", "valeur": "AL-TR"}
+{"entite": "District de Trans-Nzoia", "valeur": "KE-42"}
+{"entite": "district de Tropojë", "valeur": "AL-TP"}
+{"entite": "district de Viana do Castelo", "valeur": "PT-16"}
+{"entite": "district de Vila Real", "valeur": "PT-17"}
+{"entite": "district de Vlorë", "valeur": "AL-VL"}
+{"entite": "district des Lacs", "valeur": "CI-LC"}
+{"entite": "district des Lagunes", "valeur": "CI-LG"}
+{"entite": "district des Montagnes", "valeur": "CI-MG"}
+{"entite": "district des Savanes", "valeur": "CI-SV"}
+{"entite": "district du Bas-Sassandra", "valeur": "CI-BS"}
+{"entite": "district du Denguélé", "valeur": "CI-DN"}
+{"entite": "district du Gôh-Djiboua", "valeur": "CI-GD"}
+{"entite": "district du Sassandra-Marahoué", "valeur": "CI-SM"}
+{"entite": "District du Sud", "valeur": "BW-SO"}
+{"entite": "District du Sud-Ouest", "valeur": "SG-05"}
+{"entite": "district du Woroba", "valeur": "CI-WR"}
+{"entite": "district du Zanzan", "valeur": "CI-ZZ"}
+{"entite": "District fédéral", "valeur": "BR-DF"}
+{"entite": "district nord", "valeur": "IL-Z"}
+{"entite": "district sud", "valeur": "IL-D"}
+{"entite": "Distrito Nacional", "valeur": "DO-01"}
+{"entite": "division centrale", "valeur": "FJ-C"}
+{"entite": "Division de Central River", "valeur": "GM-M"}
+{"entite": "division occidentale", "valeur": "FJ-W"}
+{"entite": "Division orientale", "valeur": "FJ-E"}
+{"entite": "division septentrionale", "valeur": "FJ-N"}
+{"entite": "Diyala", "valeur": "IQ-DI"}
+{"entite": "Diyarbakır", "valeur": "TR-21"}
+{"entite": "Djamboul", "valeur": "KZ-31"}
+{"entite": "Djanet", "valeur": "DZ-56"}
+{"entite": "Djelfa", "valeur": "DZ-17"}
+{"entite": "Djibloho", "valeur": "GQ-DJ"}
+{"entite": "Djibouti", "valeur": "DJ-DJ"}
+{"entite": "Djizak", "valeur": "UZ-JI"}
+{"entite": "Djôrô", "valeur": "BF-13"}
+{"entite": "Djoulfa raion", "valeur": "AZ-CUL"}
+{"entite": "Djôzdjân", "valeur": "AF-JOW"}
+{"entite": "Dobele", "valeur": "LV-026"}
+{"entite": "Dobje", "valeur": "SI-154"}
+{"entite": "Dobrepolje", "valeur": "SI-020"}
+{"entite": "Dobritch", "valeur": "BG-08"}
+{"entite": "Dobrna", "valeur": "SI-155"}
+{"entite": "Dobrova-Polhov Gradec", "valeur": "SI-021"}
+{"entite": "Dodoma", "valeur": "TZ-03"}
+{"entite": "Dojran", "valeur": "MK-406"}
+{"entite": "Dol pri Ljubljani", "valeur": "SI-022"}
+{"entite": "Dolenjske Toplice", "valeur": "SI-157"}
+{"entite": "Dolj", "valeur": "RO-DJ"}
+{"entite": "Dolneni", "valeur": "MK-503"}
+{"entite": "Domagnano", "valeur": "SM-03"}
+{"entite": "Dondușeni", "valeur": "MD-DO"}
+{"entite": "Donga", "valeur": "BJ-DO"}
+{"entite": "Dornava", "valeur": "SI-024"}
+{"entite": "Dornod", "valeur": "MN-061"}
+{"entite": "Dornogovi", "valeur": "MN-063"}
+{"entite": "Dosso", "valeur": "NE-3"}
+{"entite": "Drâa-Tafilalet", "valeur": "MA-08"}
+{"entite": "Dravograd", "valeur": "SI-025"}
+{"entite": "Drenthe", "valeur": "NL-DR"}
+{"entite": "Drochia", "valeur": "MD-DR"}
+{"entite": "Drougovo", "valeur": "MK-28"}
+{"entite": "Duarte", "valeur": "DO-06"}
+{"entite": "Dubaï", "valeur": "AE-DU"}
+{"entite": "Dubăsari", "valeur": "MD-DU"}
+{"entite": "Dubrovnik-Neretva", "valeur": "HR-19"}
+{"entite": "Dunaújváros", "valeur": "HU-DU"}
+{"entite": "Dundaga", "valeur": "LV-027"}
+{"entite": "Dundgovi", "valeur": "MN-059"}
+{"entite": "Duplek", "valeur": "SI-026"}
+{"entite": "Durango", "valeur": "MX-DUR"}
+{"entite": "Durazno", "valeur": "UY-DU"}
+{"entite": "Durbe", "valeur": "LV-028"}
+{"entite": "Durrës", "valeur": "AL-02"}
+{"entite": "Düzce", "valeur": "TR-81"}
+{"entite": "East Grand Bahama", "valeur": "BS-EG"}
+{"entite": "Ebonyi", "valeur": "NG-EB"}
+{"entite": "Écosse", "valeur": "GB-SCT"}
+{"entite": "Edineț", "valeur": "MD-ED"}
+{"entite": "Edirne", "valeur": "TR-22"}
+{"entite": "Edo", "valeur": "NG-ED"}
+{"entite": "Égée-Méridionale", "valeur": "GR-L"}
+{"entite": "Égée-Septentrionale", "valeur": "GR-K"}
+{"entite": "Eger", "valeur": "HU-EG"}
+{"entite": "Ekiti", "valeur": "NG-EK"}
+{"entite": "El Bayadh", "valeur": "DZ-32"}
+{"entite": "El M'Ghair", "valeur": "DZ-57"}
+{"entite": "El Meniaa", "valeur": "DZ-58"}
+{"entite": "El Oro", "valeur": "EC-O"}
+{"entite": "El Paraíso", "valeur": "HN-EP"}
+{"entite": "El Progreso", "valeur": "GT-02"}
+{"entite": "El Seibo", "valeur": "DO-08"}
+{"entite": "El Tarf", "valeur": "DZ-36"}
+{"entite": "Elâzığ", "valeur": "TR-23"}
+{"entite": "Elbasan", "valeur": "AL-03"}
+{"entite": "Elías Piña", "valeur": "DO-07"}
+{"entite": "Emberá-Wounaan", "valeur": "PA-EM"}
+{"entite": "Émilie-Romagne", "valeur": "IT-45"}
+{"entite": "émirat de Charjah", "valeur": "AE-SH"}
+{"entite": "Encamp", "valeur": "AD-03"}
+{"entite": "Enga", "valeur": "PG-EPW"}
+{"entite": "Engure", "valeur": "LV-029"}
+{"entite": "Ennedi", "valeur": "TD-EN"}
+{"entite": "Ennedi Est", "valeur": "TD-EE"}
+{"entite": "Ennedi Ouest", "valeur": "TD-EO"}
+{"entite": "Entre Ríos", "valeur": "AR-E"}
+{"entite": "Enugu", "valeur": "NG-EN"}
+{"entite": "Épire", "valeur": "GR-D"}
+{"entite": "Équateur", "valeur": "CD-EQ"}
+{"entite": "Équatoria-Central", "valeur": "SS-EC"}
+{"entite": "Équatoria-Occidental", "valeur": "SS-EW"}
+{"entite": "Équatoria-Oriental", "valeur": "SS-EE"}
+{"entite": "Erbil", "valeur": "IQ-AR"}
+{"entite": "Érd", "valeur": "HU-ER"}
+{"entite": "Erevan", "valeur": "AM-ER"}
+{"entite": "Ērgļi", "valeur": "LV-030"}
+{"entite": "Ermera", "valeur": "TL-ER"}
+{"entite": "Erongo", "valeur": "NA-ER"}
+{"entite": "Erzincan", "valeur": "TR-24"}
+{"entite": "Erzurum", "valeur": "TR-25"}
+{"entite": "Escaldes-Engordany", "valeur": "AD-08"}
+{"entite": "Eschen", "valeur": "LI-02"}
+{"entite": "Escuintla", "valeur": "GT-05"}
+{"entite": "Eskişehir", "valeur": "TR-26"}
+{"entite": "Esmeraldas", "valeur": "EC-E"}
+{"entite": "Espaillat", "valeur": "DO-09"}
+{"entite": "Espírito Santo", "valeur": "BR-ES"}
+{"entite": "Estrémadure", "valeur": "ES-EX"}
+{"entite": "Estuaire", "valeur": "GA-1"}
+{"entite": "État de Chuuk", "valeur": "FM-TRK"}
+{"entite": "État de Kosrae", "valeur": "FM-KSA"}
+{"entite": "État de Mexico", "valeur": "MX-MEX"}
+{"entite": "État de Pohnpei", "valeur": "FM-PNI"}
+{"entite": "État de Rio de Janeiro", "valeur": "BR-RJ"}
+{"entite": "État de Yap", "valeur": "FM-YAP"}
+{"entite": "État du Nord", "valeur": "SD-NO"}
+{"entite": "État kachin", "valeur": "MM-11"}
+{"entite": "État libre", "valeur": "ZA-FS"}
+{"entite": "Éthiopie du Sud-Ouest", "valeur": "ET-SW"}
+{"entite": "Évora", "valeur": "PT-07"}
+{"entite": "Ewa", "valeur": "NR-09"}
+{"entite": "Extrême-Nord", "valeur": "CM-EN"}
+{"entite": "Fa'asaleleaga", "valeur": "WS-FA"}
+{"entite": "Faetano", "valeur": "SM-04"}
+{"entite": "Falcón", "valeur": "VE-I"}
+{"entite": "Falești", "valeur": "MD-FA"}
+{"entite": "Farâh", "valeur": "AF-FRA"}
+{"entite": "Faranah", "valeur": "GN-F"}
+{"entite": "Faro", "valeur": "PT-08"}
+{"entite": "Fars", "valeur": "IR-07"}
+{"entite": "Fâryâb", "valeur": "AF-FYB"}
+{"entite": "Fatick", "valeur": "SN-FK"}
+{"entite": "Fayoum", "valeur": "EG-FYM"}
+{"entite": "fédération de Bosnie-et-Herzégovine", "valeur": "BA-BIH"}
+{"entite": "Fejér", "valeur": "HU-FE"}
+{"entite": "Ferghana", "valeur": "UZ-FA"}
+{"entite": "Fès-Meknès", "valeur": "MA-03"}
+{"entite": "Fier", "valeur": "AL-04"}
+{"entite": "Finlande-Centrale", "valeur": "FI-08"}
+{"entite": "Finlande-Propre", "valeur": "FI-19"}
+{"entite": "Finnmark", "valeur": "NO-56"}
+{"entite": "Fiorentino", "valeur": "SM-05"}
+{"entite": "Fizuli", "valeur": "AZ-FUZ"}
+{"entite": "Flacq", "valeur": "MU-FL"}
+{"entite": "Flevoland", "valeur": "NL-FL"}
+{"entite": "Flores", "valeur": "UY-FS"}
+{"entite": "Florești", "valeur": "MD-FL"}
+{"entite": "Florida", "valeur": "UY-FD"}
+{"entite": "Floride", "valeur": "US-FL"}
+{"entite": "Formosa", "valeur": "AR-P"}
+{"entite": "Franche-Comté", "valeur": "FR-I"}
+{"entite": "Francisco Morazán", "valeur": "HN-FM"}
+{"entite": "Freeport", "valeur": "BS-FP"}
+{"entite": "Frioul-Vénétie Julienne", "valeur": "IT-36"}
+{"entite": "Frise", "valeur": "NL-FR"}
+{"entite": "Fujaïrah", "valeur": "AE-FU"}
+{"entite": "Fujian", "valeur": "CN-FJ"}
+{"entite": "Funafuti", "valeur": "TV-FUN"}
+{"entite": "Gədəbəy", "valeur": "AZ-GAD"}
+{"entite": "Gaafu Alif", "valeur": "MV-27"}
+{"entite": "Gaafu Dhaalu", "valeur": "MV-28"}
+{"entite": "Gabès", "valeur": "TN-81"}
+{"entite": "Gabrovo", "valeur": "BG-07"}
+{"entite": "Gafsa", "valeur": "TN-71"}
+{"entite": "Gaga'emauga", "valeur": "WS-GE"}
+{"entite": "Gaga'ifomauga", "valeur": "WS-GI"}
+{"entite": "Gagaouzie", "valeur": "MD-GA"}
+{"entite": "Galápagos", "valeur": "EC-W"}
+{"entite": "Galați", "valeur": "RO-GL"}
+{"entite": "Galice", "valeur": "ES-GA"}
+{"entite": "Gambela", "valeur": "ET-GA"}
+{"entite": "Gamprin", "valeur": "LI-03"}
+{"entite": "Gandja", "valeur": "AZ-GA"}
+{"entite": "Gangwon", "valeur": "KR-42"}
+{"entite": "Gansu", "valeur": "CN-GS"}
+{"entite": "Gao", "valeur": "ML-7"}
+{"entite": "Garissa", "valeur": "KE-07"}
+{"entite": "Garkalne", "valeur": "LV-031"}
+{"entite": "Gasa", "valeur": "BT-GA"}
+{"entite": "Gash-Barka", "valeur": "ER-GB"}
+{"entite": "Gauteng", "valeur": "ZA-GP"}
+{"entite": "Gävleborg", "valeur": "SE-X"}
+{"entite": "Gaza", "valeur": "MZ-G"}
+{"entite": "Gazi Baba", "valeur": "MK-804"}
+{"entite": "Gaziantep", "valeur": "TR-27"}
+{"entite": "Gbarpolu", "valeur": "LR-GP"}
+{"entite": "Gegharkunik", "valeur": "AM-GR"}
+{"entite": "Géorgie", "valeur": "US-GA"}
+{"entite": "Gevgelija", "valeur": "MK-405"}
+{"entite": "Ghanzi", "valeur": "BW-GH"}
+{"entite": "Gharbeya", "valeur": "EG-GH"}
+{"entite": "Ghat", "valeur": "LY-GT"}
+{"entite": "Ghazni", "valeur": "AF-GHA"}
+{"entite": "Ghôr", "valeur": "AF-GHO"}
+{"entite": "Gia Lai", "valeur": "VN-30"}
+{"entite": "Gilgit-Baltistan", "valeur": "PK-GB"}
+{"entite": "Giresun", "valeur": "TR-28"}
+{"entite": "Gisborne", "valeur": "NZ-GIS"}
+{"entite": "Gitega", "valeur": "BI-GI"}
+{"entite": "Giurgiu", "valeur": "RO-GR"}
+{"entite": "Gizeh", "valeur": "EG-GZ"}
+{"entite": "Gjirokastër", "valeur": "AL-05"}
+{"entite": "Glacis", "valeur": "SC-12"}
+{"entite": "Glodeni", "valeur": "MD-GL"}
+{"entite": "Goa", "valeur": "IN-GA"}
+{"entite": "Goiás", "valeur": "BR-GO"}
+{"entite": "Golestan", "valeur": "IR-27"}
+{"entite": "Golfe", "valeur": "PG-GPK"}
+{"entite": "Gombe", "valeur": "NG-GO"}
+{"entite": "Goranboy", "valeur": "AZ-GOR"}
+{"entite": "Ǵorče Petrov", "valeur": "MK-805"}
+{"entite": "Gorenja vas-Poljane", "valeur": "SI-027"}
+{"entite": "Gorgol", "valeur": "MR-04"}
+{"entite": "Gorišnica", "valeur": "SI-028"}
+{"entite": "Gorj", "valeur": "RO-GJ"}
+{"entite": "Gorje", "valeur": "SI-207"}
+{"entite": "Gornja Radgona", "valeur": "SI-029"}
+{"entite": "Gornji Grad", "valeur": "SI-030"}
+{"entite": "Gornji Petrovci", "valeur": "SI-031"}
+{"entite": "Gorontalo", "valeur": "ID-GO"}
+{"entite": "Gostivar", "valeur": "MK-604"}
+{"entite": "Gotland", "valeur": "SE-I"}
+{"entite": "Goulmou", "valeur": "BF-08"}
+{"entite": "Gourie", "valeur": "GE-GU"}
+{"entite": "gouvernement de la république autonome d'Abkhazie", "valeur": "GE-AB"}
+{"entite": "Gouvernorat central", "valeur": "BH-16"}
+{"entite": "Gouvernorat d'Ismaïlia", "valeur": "EG-IS"}
+{"entite": "gouvernorat de Baalbek-Hermel", "valeur": "LB-BH"}
+{"entite": "gouvernorat de Bethléem", "valeur": "PS-BTH"}
+{"entite": "gouvernorat de Beyrouth", "valeur": "LB-BA"}
+{"entite": "gouvernorat de Deir Al-Balah", "valeur": "PS-DEB"}
+{"entite": "gouvernorat de Deir ez-Zor", "valeur": "SY-DY"}
+{"entite": "gouvernorat de Deraa", "valeur": "SY-DR"}
+{"entite": "gouvernorat de Gaza", "valeur": "PS-GZA"}
+{"entite": "gouvernorat de Gaza-Nord", "valeur": "PS-NGZ"}
+{"entite": "Gouvernorat de Hama", "valeur": "SY-HM"}
+{"entite": "gouvernorat de Hassaké", "valeur": "SY-HA"}
+{"entite": "gouvernorat de Hébron", "valeur": "PS-HBN"}
+{"entite": "Gouvernorat de Helwan", "valeur": "EG-HU"}
+{"entite": "Gouvernorat de Homs", "valeur": "SY-HI"}
+{"entite": "gouvernorat de Jénine", "valeur": "PS-JEN"}
+{"entite": "gouvernorat de Jéricho", "valeur": "PS-JRH"}
+{"entite": "gouvernorat de Jérusalem", "valeur": "PS-JEM"}
+{"entite": "Gouvernorat de Kafr el-Cheik", "valeur": "EG-KFS"}
+{"entite": "gouvernorat de Khan Younès", "valeur": "PS-KYS"}
+{"entite": "gouvernorat de l'Akkar", "valeur": "LB-AK"}
+{"entite": "Gouvernorat de la capitale", "valeur": "BH-13"}
+{"entite": "gouvernorat de la Mer-Rouge", "valeur": "EG-BA"}
+{"entite": "gouvernorat de Lattaquié", "valeur": "SY-LA"}
+{"entite": "Gouvernorat de Matrouh", "valeur": "EG-MT"}
+{"entite": "Gouvernorat de Muharraq", "valeur": "BH-15"}
+{"entite": "gouvernorat de Naplouse", "valeur": "PS-NBS"}
+{"entite": "gouvernorat de Qalqilya", "valeur": "PS-QQA"}
+{"entite": "gouvernorat de Qouneitra", "valeur": "SY-QU"}
+{"entite": "gouvernorat de Rafah", "valeur": "PS-RFH"}
+{"entite": "gouvernorat de Ramallah et Al-Bireh", "valeur": "PS-RBH"}
+{"entite": "Gouvernorat de Raqqa", "valeur": "SY-RA"}
+{"entite": "gouvernorat de Rif Dimachq", "valeur": "SY-RD"}
+{"entite": "Gouvernorat de Sa'dah", "valeur": "YE-SD"}
+{"entite": "gouvernorat de Salfit", "valeur": "PS-SLT"}
+{"entite": "gouvernorat de Suez", "valeur": "EG-SUZ"}
+{"entite": "gouvernorat de Tartous", "valeur": "SY-TA"}
+{"entite": "gouvernorat de Tubas", "valeur": "PS-TBS"}
+{"entite": "gouvernorat de Tulkarem", "valeur": "PS-TKM"}
+{"entite": "Gouvernorat du 6 Octobre", "valeur": "EG-SU"}
+{"entite": "gouvernorat du Caire", "valeur": "EG-C"}
+{"entite": "Gouvernorat du Liban-Sud", "valeur": "LB-JA"}
+{"entite": "gouvernorat du Mont-Liban", "valeur": "LB-JL"}
+{"entite": "Gouvernorat méridional", "valeur": "BH-14"}
+{"entite": "Gouvernorat septentrional", "valeur": "BH-17"}
+{"entite": "Govi-Altai", "valeur": "MN-065"}
+{"entite": "Govisümber", "valeur": "MN-064"}
+{"entite": "Göyçay", "valeur": "AZ-GOY"}
+{"entite": "Göygöl", "valeur": "AZ-GYG"}
+{"entite": "Gracias a Dios", "valeur": "HN-GD"}
+{"entite": "Grad", "valeur": "SI-158"}
+{"entite": "Gradsko", "valeur": "MK-102"}
+{"entite": "Grand Accra", "valeur": "GH-AA"}
+{"entite": "Grand Bassa", "valeur": "LR-GB"}
+{"entite": "Grand Cape Mount", "valeur": "LR-CM"}
+{"entite": "Grand Cay", "valeur": "BS-GC"}
+{"entite": "Grand Est", "valeur": "FR-GES"}
+{"entite": "Grand Gedeh", "valeur": "LR-GG"}
+{"entite": "Grand Kru", "valeur": "LR-GK"}
+{"entite": "Grand Manille", "valeur": "PH-00"}
+{"entite": "Grand Port", "valeur": "MU-GP"}
+{"entite": "Grande Comore", "valeur": "KM-G"}
+{"entite": "Granma", "valeur": "CU-12"}
+{"entite": "Grèce-Centrale", "valeur": "GR-H"}
+{"entite": "Grèce-Occidentale", "valeur": "GR-G"}
+{"entite": "Grenadines", "valeur": "VC-06"}
+{"entite": "Grobiņa", "valeur": "LV-032"}
+{"entite": "Groningue", "valeur": "NL-GR"}
+{"entite": "Guadeloupe", "valeur": "FR-971"}
+{"entite": "Guainía", "valeur": "CO-GUA"}
+{"entite": "La Guajira", "valeur": "CO-LAG"}
+{"entite": "Guam", "valeur": "US-GU"}
+{"entite": "Guanacaste", "valeur": "CR-G"}
+{"entite": "Guanajuato", "valeur": "MX-GUA"}
+{"entite": "Guangdong", "valeur": "CN-GD"}
+{"entite": "Guangxi", "valeur": "CN-GX"}
+{"entite": "Guantánamo", "valeur": "CU-14"}
+{"entite": "Guarda", "valeur": "PT-09"}
+{"entite": "Guárico", "valeur": "VE-J"}
+{"entite": "Guatemala", "valeur": "GT-01"}
+{"entite": "Guaviare", "valeur": "CO-GUV"}
+{"entite": "Guayas", "valeur": "EC-G"}
+{"entite": "Gueldre", "valeur": "NL-GE"}
+{"entite": "Guelmim-Oued Noun", "valeur": "MA-10"}
+{"entite": "Guéra", "valeur": "TD-GR"}
+{"entite": "Guerrero", "valeur": "MX-GRO"}
+{"entite": "Guidimakha", "valeur": "MR-10"}
+{"entite": "Guilan", "valeur": "IR-01"}
+{"entite": "Guimarás", "valeur": "PH-GUI"}
+{"entite": "Guiriko", "valeur": "BF-09"}
+{"entite": "Guizhou", "valeur": "CN-GZ"}
+{"entite": "Gujarat", "valeur": "IN-GJ"}
+{"entite": "Gulbene", "valeur": "LV-033"}
+{"entite": "Gümüşhane", "valeur": "TR-29"}
+{"entite": "Guna Yala", "valeur": "PA-KY"}
+{"entite": "Guyane", "valeur": "FR-973"}
+{"entite": "Gwangju", "valeur": "KR-29"}
+{"entite": "Gyeonggi", "valeur": "KR-41"}
+{"entite": "Gyeongsang du Nord", "valeur": "KR-47"}
+{"entite": "Gyeongsang du Sud", "valeur": "KR-48"}
+{"entite": "Győr-Moson-Sopron", "valeur": "HU-GS"}
+{"entite": "Haʻapai", "valeur": "TO-02"}
+{"entite": "Hà Giang", "valeur": "VN-03"}
+{"entite": "Hà Nam", "valeur": "VN-63"}
+{"entite": "Hà Tĩnh", "valeur": "VN-23"}
+{"entite": "Haa", "valeur": "BT-13"}
+{"entite": "Haa Alifu", "valeur": "MV-07"}
+{"entite": "Haa Dhaalu", "valeur": "MV-23"}
+{"entite": "Hacıqabul", "valeur": "AZ-HAC"}
+{"entite": "Hadjer-Lamis", "valeur": "TD-HL"}
+{"entite": "Hadramaout", "valeur": "YE-HD"}
+{"entite": "Hải Dương", "valeur": "VN-61"}
+{"entite": "Haïl", "valeur": "SA-06"}
+{"entite": "Hainan", "valeur": "CN-HI"}
+{"entite": "Haïphong", "valeur": "VN-HP"}
+{"entite": "Hajdina", "valeur": "SI-159"}
+{"entite": "Hajdú-Bihar", "valeur": "HU-HB"}
+{"entite": "Hajjah", "valeur": "YE-HJ"}
+{"entite": "Hakkari", "valeur": "TR-30"}
+{"entite": "Halabja", "valeur": "IQ-HA"}
+{"entite": "Hambourg", "valeur": "DE-HH"}
+{"entite": "Hamedan", "valeur": "IR-13"}
+{"entite": "Hamgyong du Nord", "valeur": "KP-09"}
+{"entite": "Hamgyong du Sud", "valeur": "KP-08"}
+{"entite": "Hanoï", "valeur": "VN-HN"}
+{"entite": "Harar", "valeur": "ET-HA"}
+{"entite": "Harbour Island", "valeur": "BS-HI"}
+{"entite": "Hardap", "valeur": "NA-HA"}
+{"entite": "Harghita", "valeur": "RO-HR"}
+{"entite": "Harju", "valeur": "EE-37"}
+{"entite": "Haryana", "valeur": "IN-HR"}
+{"entite": "Haskovo", "valeur": "BG-26"}
+{"entite": "Hatay", "valeur": "TR-31"}
+{"entite": "Hato Mayor", "valeur": "DO-30"}
+{"entite": "Hatohobei", "valeur": "PW-050"}
+{"entite": "Hậu Giang", "valeur": "VN-73"}
+{"entite": "Haut-Badakhchan", "valeur": "TJ-GB"}
+{"entite": "Haut-Demerara-Berbice", "valeur": "GY-UD"}
+{"entite": "Haut Ghana occidental", "valeur": "GH-UW"}
+{"entite": "Haut Ghana oriental", "valeur": "GH-UE"}
+{"entite": "Haut-Katanga", "valeur": "CD-HK"}
+{"entite": "Haut-Lomami", "valeur": "CD-HL"}
+{"entite": "Haut-Mbomou", "valeur": "CF-HM"}
+{"entite": "Haut-Ogooué", "valeur": "GA-2"}
+{"entite": "Haut-Takutu-Haut-Essequibo", "valeur": "GY-UT"}
+{"entite": "Haut-Uele", "valeur": "CD-HU"}
+{"entite": "Haute-Autriche", "valeur": "AT-4"}
+{"entite": "Haute-Kotto", "valeur": "CF-HK"}
+{"entite": "Haute-Normandie", "valeur": "FR-Q"}
+{"entite": "Hautes-Terres méridionales", "valeur": "PG-SHM"}
+{"entite": "Hautes-Terres occidentales", "valeur": "PG-WHM"}
+{"entite": "Hautes-Terres orientales", "valeur": "PG-EHG"}
+{"entite": "Hauts-de-France", "valeur": "FR-HDF"}
+{"entite": "Hawaï", "valeur": "US-HI"}
+{"entite": "Hawalli", "valeur": "KW-HA"}
+{"entite": "Hawke's Bay", "valeur": "NZ-HKB"}
+{"entite": "Hebei", "valeur": "CN-HE"}
+{"entite": "Hedmark", "valeur": "NO-04"}
+{"entite": "Heilongjiang", "valeur": "CN-HL"}
+{"entite": "Hela", "valeur": "PG-HLA"}
+{"entite": "Helmand", "valeur": "AF-HEL"}
+{"entite": "Henan", "valeur": "CN-HA"}
+{"entite": "Hérat", "valeur": "AF-HER"}
+{"entite": "Herceg Novi", "valeur": "ME-08"}
+{"entite": "Heredia", "valeur": "CR-H"}
+{"entite": "Hermanas Mirabal", "valeur": "DO-19"}
+{"entite": "Herrera", "valeur": "PA-6"}
+{"entite": "Hesse", "valeur": "DE-HE"}
+{"entite": "Heves", "valeur": "HU-HE"}
+{"entite": "Hhohho", "valeur": "SZ-HH"}
+{"entite": "Hidalgo", "valeur": "MX-HID"}
+{"entite": "Hiiu", "valeur": "EE-39"}
+{"entite": "Himachal Pradesh", "valeur": "IN-HP"}
+{"entite": "Hîncești", "valeur": "MD-HI"}
+{"entite": "Hô Chi Minh-Ville", "valeur": "VN-SG"}
+{"entite": "Hòa Bình", "valeur": "VN-14"}
+{"entite": "Hoče-Slivnica", "valeur": "SI-160"}
+{"entite": "Hodh Ech Chargui", "valeur": "MR-01"}
+{"entite": "Hodh El Gharbi", "valeur": "MR-02"}
+{"entite": "Hódmezővásárhely", "valeur": "HU-HV"}
+{"entite": "Hodos", "valeur": "SI-161"}
+{"entite": "Höfuðborgarsvæðið", "valeur": "IS-1"}
+{"entite": "Holguín", "valeur": "CU-11"}
+{"entite": "Hollande-Méridionale", "valeur": "NL-ZH"}
+{"entite": "Hollande-Septentrionale", "valeur": "NL-NH"}
+{"entite": "Homa Bay (district du Kenya)", "valeur": "KE-08"}
+{"entite": "Hong Kong", "valeur": "CN-HK"}
+{"entite": "Hope Town", "valeur": "BS-HT"}
+{"entite": "Hordaland", "valeur": "NO-12"}
+{"entite": "Horjul", "valeur": "SI-162"}
+{"entite": "Hormozgan", "valeur": "IR-22"}
+{"entite": "Houaphan", "valeur": "LA-HO"}
+{"entite": "Hovedstaden", "valeur": "DK-84"}
+{"entite": "Hrodna", "valeur": "BY-HR"}
+{"entite": "Hrpelje-Kozina", "valeur": "SI-035"}
+{"entite": "Hsinchu", "valeur": "TW-HSZ"}
+{"entite": "Huambo", "valeur": "AO-HUA"}
+{"entite": "Huancavelica", "valeur": "PE-HUV"}
+{"entite": "Huánuco", "valeur": "PE-HUC"}
+{"entite": "Hubei", "valeur": "CN-HB"}
+{"entite": "Hudud ach-Chamaliya", "valeur": "SA-08"}
+{"entite": "Huế", "valeur": "VN-26"}
+{"entite": "Huehuetenango", "valeur": "GT-13"}
+{"entite": "Hunan", "valeur": "CN-HN"}
+{"entite": "Hunedoara", "valeur": "RO-HD"}
+{"entite": "Hưng Yên", "valeur": "VN-66"}
+{"entite": "Hwanghae du Nord", "valeur": "KP-06"}
+{"entite": "Hwanghae du Sud", "valeur": "KP-05"}
+{"entite": "Ialomița", "valeur": "RO-IL"}
+{"entite": "Ialoveni", "valeur": "MD-IA"}
+{"entite": "Iamalie", "valeur": "RU-YAN"}
+{"entite": "Ibb", "valeur": "YE-IB"}
+{"entite": "Ica", "valeur": "PE-ICA"}
+{"entite": "Idaho", "valeur": "US-ID"}
+{"entite": "Idleb", "valeur": "SY-ID"}
+{"entite": "Iecava", "valeur": "LV-034"}
+{"entite": "Điện Biên", "valeur": "VN-71"}
+{"entite": "Ievlakh", "valeur": "AZ-YE"}
+{"entite": "Ifugao", "valeur": "PH-IFU"}
+{"entite": "Ig", "valeur": "SI-037"}
+{"entite": "Iğdır", "valeur": "TR-76"}
+{"entite": "Ijuw", "valeur": "NR-10"}
+{"entite": "Ikšķile", "valeur": "LV-035"}
+{"entite": "Ilam", "valeur": "IR-16"}
+{"entite": "île Baker", "valeur": "UM-81"}
+{"entite": "Île-de-France", "valeur": "FR-IDF"}
+{"entite": "île de la Jeunesse", "valeur": "CU-99"}
+{"entite": "île de la Navasse", "valeur": "UM-76"}
+{"entite": "Île-du-Prince-Édouard", "valeur": "CA-PE"}
+{"entite": "île Howland", "valeur": "UM-84"}
+{"entite": "île Jan Mayen", "valeur": "NO-22"}
+{"entite": "île Jarvis", "valeur": "UM-86"}
+{"entite": "Île Persévérance I", "valeur": "SC-26"}
+{"entite": "Île Persévérance II", "valeur": "SC-27"}
+{"entite": "Île Tristan da Cunha", "valeur": "SH-TA"}
+{"entite": "Îles Andaman-et-Nicobar", "valeur": "IN-AN"}
+{"entite": "Îles Baléares", "valeur": "ES-IB"}
+{"entite": "Îles Bangka Belitung", "valeur": "ID-BB"}
+{"entite": "îles Berry", "valeur": "BS-BY"}
+{"entite": "îles Bimini", "valeur": "BS-BI"}
+{"entite": "îles Canaries", "valeur": "ES-CN"}
+{"entite": "Îles d'Essequibo-Demerara Occidental", "valeur": "GY-ES"}
+{"entite": "îles de Barlavento", "valeur": "CV-B"}
+{"entite": "îles de Sotavento", "valeur": "CV-S"}
+{"entite": "îles Exumas", "valeur": "BS-EX"}
+{"entite": "îles Gilbert", "valeur": "KI-G"}
+{"entite": "îles Mariannes du Nord", "valeur": "US-MP"}
+{"entite": "îles Midway", "valeur": "UM-71"}
+{"entite": "îles mineures éloignées des États-Unis", "valeur": "US-UM"}
+{"entite": "îles Niua", "valeur": "TO-03"}
+{"entite": "îles Phœnix", "valeur": "KI-P"}
+{"entite": "îles Ralik", "valeur": "MH-L"}
+{"entite": "Îles Ratak", "valeur": "MH-T"}
+{"entite": "Îles Riau", "valeur": "ID-KR"}
+{"entite": "Ilfov", "valeur": "RO-IF"}
+{"entite": "Ilinden", "valeur": "MK-807"}
+{"entite": "Illinois", "valeur": "US-IL"}
+{"entite": "Illizi", "valeur": "DZ-33"}
+{"entite": "Ilocos", "valeur": "PH-01"}
+{"entite": "Ilocos Norte", "valeur": "PH-ILN"}
+{"entite": "Ilocos Sur", "valeur": "PH-ILS"}
+{"entite": "Iloïlo", "valeur": "PH-ILI"}
+{"entite": "Ilūkste", "valeur": "LV-036"}
+{"entite": "Imbabura", "valeur": "EC-I"}
+{"entite": "Iméréthie", "valeur": "GE-IM"}
+{"entite": "İmişli", "valeur": "AZ-IMI"}
+{"entite": "Imo", "valeur": "NG-IM"}
+{"entite": "In Guezzam", "valeur": "DZ-54"}
+{"entite": "In Salah", "valeur": "DZ-53"}
+{"entite": "Inagua", "valeur": "BS-IN"}
+{"entite": "Incheon", "valeur": "KR-28"}
+{"entite": "Inchiri", "valeur": "MR-12"}
+{"entite": "Inčukalns", "valeur": "LV-037"}
+{"entite": "Independencia", "valeur": "DO-10"}
+{"entite": "Indiana", "valeur": "US-IN"}
+{"entite": "Ingouchie", "valeur": "RU-IN"}
+{"entite": "Inhambane", "valeur": "MZ-I"}
+{"entite": "Innlandet", "valeur": "NO-34"}
+{"entite": "Intibucá", "valeur": "HN-IN"}
+{"entite": "Iowa", "valeur": "US-IA"}
+{"entite": "Irbid", "valeur": "JO-IR"}
+{"entite": "Iringa", "valeur": "TZ-04"}
+{"entite": "Irlande du Nord", "valeur": "GB-NIR"}
+{"entite": "Isabela", "valeur": "PH-ISA"}
+{"entite": "Islas de la Bahía", "valeur": "HN-IB"}
+{"entite": "Ismailli", "valeur": "AZ-ISM"}
+{"entite": "Ispahan", "valeur": "IR-10"}
+{"entite": "Isparta", "valeur": "TR-32"}
+{"entite": "Issyk-Koul", "valeur": "KG-Y"}
+{"entite": "Istanbul", "valeur": "TR-34"}
+{"entite": "Itapúa", "valeur": "PY-7"}
+{"entite": "Ituri", "valeur": "CD-IT"}
+{"entite": "Ivančna Gorica", "valeur": "SI-039"}
+{"entite": "Izabal", "valeur": "GT-18"}
+{"entite": "Izmir", "valeur": "TR-35"}
+{"entite": "Jablanica", "valeur": "RS-23"}
+{"entite": "Jabrayil", "valeur": "AZ-CAB"}
+{"entite": "Jakarta", "valeur": "ID-JK"}
+{"entite": "Jalapa", "valeur": "GT-21"}
+{"entite": "Jalisco", "valeur": "MX-JAL"}
+{"entite": "Jambi", "valeur": "ID-JA"}
+{"entite": "Jammu-et-Cachemire", "valeur": "IN-JK"}
+{"entite": "Jämtland", "valeur": "SE-Z"}
+{"entite": "Järva", "valeur": "EE-52"}
+{"entite": "Jász-Nagykun-Szolnok", "valeur": "HU-JN"}
+{"entite": "Jaunpiebalga", "valeur": "LV-039"}
+{"entite": "Jaunpils", "valeur": "LV-040"}
+{"entite": "Java central", "valeur": "ID-JT"}
+{"entite": "Java occidental", "valeur": "ID-JB"}
+{"entite": "Java oriental", "valeur": "ID-JI"}
+{"entite": "Jawf", "valeur": "SA-12"}
+{"entite": "Jegunovce", "valeur": "MK-606"}
+{"entite": "Jeju", "valeur": "KR-49"}
+{"entite": "Jendouba", "valeur": "TN-32"}
+{"entite": "Jeolla du Nord", "valeur": "KR-45"}
+{"entite": "Jeolla du Sud", "valeur": "KR-46"}
+{"entite": "Jerash", "valeur": "JO-JA"}
+{"entite": "Jesenice", "valeur": "SI-041"}
+{"entite": "Jetyssou", "valeur": "KZ-33"}
+{"entite": "Jezersko", "valeur": "SI-163"}
+{"entite": "Jharkhand", "valeur": "IN-JH"}
+{"entite": "Jiangsu", "valeur": "CN-JS"}
+{"entite": "Jiangxi", "valeur": "CN-JX"}
+{"entite": "Jigawa", "valeur": "NG-JI"}
+{"entite": "Jilin", "valeur": "CN-JL"}
+{"entite": "Jinmen", "valeur": "TW-KIN"}
+{"entite": "Jiwaka Province", "valeur": "PG-JWK"}
+{"entite": "Jizan", "valeur": "SA-09"}
+{"entite": "Jõgeva", "valeur": "EE-50"}
+{"entite": "Johor", "valeur": "MY-01"}
+{"entite": "Jonava", "valeur": "LT-10"}
+{"entite": "Jonglei", "valeur": "SS-JG"}
+{"entite": "Joniškis", "valeur": "LT-11"}
+{"entite": "Jönköping", "valeur": "SE-F"}
+{"entite": "Județ de Iași", "valeur": "RO-IS"}
+{"entite": "Jujuy", "valeur": "AR-Y"}
+{"entite": "Junín", "valeur": "PE-JUN"}
+{"entite": "Jurbarkas", "valeur": "LT-12"}
+{"entite": "Jurmala", "valeur": "LV-JUR"}
+{"entite": "Juršinci", "valeur": "SI-042"}
+{"entite": "Jutiapa", "valeur": "GT-22"}
+{"entite": "Jutland-Central", "valeur": "DK-82"}
+{"entite": "Jutland-du-Nord", "valeur": "DK-81"}
+{"entite": "Kırıkkale", "valeur": "TR-71"}
+{"entite": "Kırklareli", "valeur": "TR-39"}
+{"entite": "Kırşehir", "valeur": "TR-40"}
+{"entite": "Kaafu", "valeur": "MV-26"}
+{"entite": "Kabardino-Balkarie", "valeur": "RU-KB"}
+{"entite": "Kaboul", "valeur": "AF-KAB"}
+{"entite": "Kachkadaria", "valeur": "UZ-QA"}
+{"entite": "Kadiogo", "valeur": "BF-03"}
+{"entite": "Kaduna", "valeur": "NG-KD"}
+{"entite": "Kaffrine", "valeur": "SN-KA"}
+{"entite": "Kagera", "valeur": "TZ-05"}
+{"entite": "Kahramanmaraş", "valeur": "TR-46"}
+{"entite": "Kainuu", "valeur": "FI-05"}
+{"entite": "Kairouan", "valeur": "TN-41"}
+{"entite": "Kakamega", "valeur": "KE-11"}
+{"entite": "Kakhétie", "valeur": "GE-KA"}
+{"entite": "Kalasin", "valeur": "TH-46"}
+{"entite": "Kalimantan central", "valeur": "ID-KT"}
+{"entite": "Kalimantan du Nord", "valeur": "ID-KU"}
+{"entite": "Kalimantan du Sud", "valeur": "ID-KS"}
+{"entite": "Kalimantan occidental", "valeur": "ID-KB"}
+{"entite": "Kalimantan oriental", "valeur": "ID-KI"}
+{"entite": "Kalmar", "valeur": "SE-H"}
+{"entite": "Kalmoukie", "valeur": "RU-KL"}
+{"entite": "Kalvarija", "valeur": "LT-14"}
+{"entite": "Kamnik", "valeur": "SI-043"}
+{"entite": "Kamphaeng Phet", "valeur": "TH-62"}
+{"entite": "Kampong Cham", "valeur": "KH-3"}
+{"entite": "Kampong Chhnang", "valeur": "KH-4"}
+{"entite": "Kampong Spoe", "valeur": "KH-5"}
+{"entite": "Kampong Thom", "valeur": "KH-6"}
+{"entite": "Kampot", "valeur": "KH-7"}
+{"entite": "Kanal", "valeur": "SI-044"}
+{"entite": "Kanchanaburi", "valeur": "TH-71"}
+{"entite": "Kandahâr", "valeur": "AF-KAN"}
+{"entite": "Kandal", "valeur": "KH-8"}
+{"entite": "Kandava", "valeur": "LV-043"}
+{"entite": "Kanem", "valeur": "TD-KA"}
+{"entite": "Kangarli", "valeur": "AZ-KAN"}
+{"entite": "Kangwŏn", "valeur": "KP-07"}
+{"entite": "Kankan", "valeur": "GN-K"}
+{"entite": "Kano", "valeur": "NG-KN"}
+{"entite": "Kansas", "valeur": "US-KS"}
+{"entite": "Kanta-Häme", "valeur": "FI-06"}
+{"entite": "Kaoh Kong", "valeur": "KH-9"}
+{"entite": "Kaohsiung", "valeur": "TW-KHH"}
+{"entite": "Kaolack", "valeur": "SN-KL"}
+{"entite": "Kâpîssâ", "valeur": "AF-KAP"}
+{"entite": "Kaposvár", "valeur": "HU-KV"}
+{"entite": "Karabük", "valeur": "TR-78"}
+{"entite": "Karaganda", "valeur": "KZ-35"}
+{"entite": "Karak", "valeur": "JO-KA"}
+{"entite": "Karakalpakstan", "valeur": "UZ-QR"}
+{"entite": "Karaman", "valeur": "TR-70"}
+{"entite": "ǁKaras", "valeur": "NA-KA"}
+{"entite": "Karatchaïévo-Tcherkessie", "valeur": "RU-KC"}
+{"entite": "Karbala", "valeur": "IQ-KA"}
+{"entite": "Karbinci", "valeur": "MK-205"}
+{"entite": "Kardjali", "valeur": "BG-09"}
+{"entite": "Karen", "valeur": "MM-13"}
+{"entite": "Karlovac", "valeur": "HR-04"}
+{"entite": "Karlovy Vary", "valeur": "CZ-41"}
+{"entite": "Karnali", "valeur": "NP-P6"}
+{"entite": "Karnataka", "valeur": "IN-KA"}
+{"entite": "Karpoš", "valeur": "MK-808"}
+{"entite": "Kārsava", "valeur": "LV-044"}
+{"entite": "Kartlie intérieure", "valeur": "GE-SK"}
+{"entite": "Kasaï central", "valeur": "CD-KC"}
+{"entite": "Kasaï occidental", "valeur": "CD-KW"}
+{"entite": "Kasaï oriental", "valeur": "CD-KE"}
+{"entite": "Kassala", "valeur": "SD-KA"}
+{"entite": "Kasserine", "valeur": "TN-42"}
+{"entite": "Kastamonu", "valeur": "TR-37"}
+{"entite": "Katsina", "valeur": "NG-KT"}
+{"entite": "Kavadarci", "valeur": "MK-104"}
+{"entite": "Kavango", "valeur": "NA-OK"}
+{"entite": "Kavango East", "valeur": "NA-KE"}
+{"entite": "Kavango West", "valeur": "NA-KW"}
+{"entite": "Kayah", "valeur": "MM-12"}
+{"entite": "Kayangel", "valeur": "PW-100"}
+{"entite": "Kayes", "valeur": "ML-1"}
+{"entite": "Kayseri", "valeur": "TR-38"}
+{"entite": "Kazakhstan-Occidental", "valeur": "KZ-27"}
+{"entite": "Kazakhstan-Oriental", "valeur": "KZ-63"}
+{"entite": "Kazakhstan-Septentrional", "valeur": "KZ-59"}
+{"entite": "Kebbi", "valeur": "NG-KE"}
+{"entite": "Kébili", "valeur": "TN-73"}
+{"entite": "Kecskemét", "valeur": "HU-KM"}
+{"entite": "Kedah", "valeur": "MY-02"}
+{"entite": "Kėdainiai", "valeur": "LT-18"}
+{"entite": "Le Kef", "valeur": "TN-33"}
+{"entite": "Ķegums", "valeur": "LV-051"}
+{"entite": "Ķekava", "valeur": "LV-052"}
+{"entite": "Kelantan", "valeur": "MY-03"}
+{"entite": "Kelbadjar", "valeur": "AZ-KAL"}
+{"entite": "Kelmė", "valeur": "LT-19"}
+{"entite": "Kémo", "valeur": "CF-KG"}
+{"entite": "Kentucky", "valeur": "US-KY"}
+{"entite": "Kep", "valeur": "KH-23"}
+{"entite": "Kerala", "valeur": "IN-KL"}
+{"entite": "Kerman", "valeur": "IR-08"}
+{"entite": "Kermanchah", "valeur": "IR-05"}
+{"entite": "Kgalagadi", "valeur": "BW-KG"}
+{"entite": "Kgatleng", "valeur": "BW-KL"}
+{"entite": "Khakassie", "valeur": "RU-KK"}
+{"entite": "Khammouan", "valeur": "LA-KH"}
+{"entite": "Khánh Hòa", "valeur": "VN-34"}
+{"entite": "Khankendi", "valeur": "AZ-XA"}
+{"entite": "Khantys-Mansis", "valeur": "RU-KHM"}
+{"entite": "Khartoum", "valeur": "SD-KH"}
+{"entite": "Khatlon", "valeur": "TJ-KT"}
+{"entite": "Khentii", "valeur": "MN-039"}
+{"entite": "Khodjaly", "valeur": "AZ-XCI"}
+{"entite": "Khojavend", "valeur": "AZ-XVD"}
+{"entite": "Khomas", "valeur": "NA-KH"}
+{"entite": "Khorassan du Nord", "valeur": "IR-28"}
+{"entite": "Khorassan du Sud", "valeur": "IR-29"}
+{"entite": "Khorassan Razavi", "valeur": "IR-09"}
+{"entite": "Khorezm", "valeur": "UZ-XO"}
+{"entite": "Khôst", "valeur": "AF-KHO"}
+{"entite": "Khouzistan", "valeur": "IR-06"}
+{"entite": "Khovd", "valeur": "MN-043"}
+{"entite": "Khövsgöl", "valeur": "MN-041"}
+{"entite": "Khulna", "valeur": "BD-D"}
+{"entite": "Khyber Pakhtunkhwa", "valeur": "PK-KP"}
+{"entite": "Kičevo", "valeur": "MK-307"}
+{"entite": "Kidal", "valeur": "ML-8"}
+{"entite": "Kidričevo", "valeur": "SI-045"}
+{"entite": "Kié-Ntem", "valeur": "GQ-KN"}
+{"entite": "Kiên Giang", "valeur": "VN-47"}
+{"entite": "Kigali", "valeur": "RW-01"}
+{"entite": "Kigoma", "valeur": "TZ-08"}
+{"entite": "Kilifi", "valeur": "KE-14"}
+{"entite": "Kilimandjaro", "valeur": "TZ-09"}
+{"entite": "Kilis", "valeur": "TR-79"}
+{"entite": "Kingston", "valeur": "JM-01"}
+{"entite": "Kinshasa", "valeur": "CD-KN"}
+{"entite": "Kirkouk", "valeur": "IQ-KI"}
+{"entite": "Kisela Voda", "valeur": "MK-809"}
+{"entite": "Kisii", "valeur": "KE-16"}
+{"entite": "Kisumu (district du Kenya)", "valeur": "KE-17"}
+{"entite": "Kobarid", "valeur": "SI-046"}
+{"entite": "Kobilje", "valeur": "SI-047"}
+{"entite": "Kocaeli", "valeur": "TR-41"}
+{"entite": "Kocēni", "valeur": "LV-045"}
+{"entite": "Kočevje", "valeur": "SI-048"}
+{"entite": "Kogi", "valeur": "NG-KO"}
+{"entite": "Kohguilouyeh-et-Bouyer-Ahmad", "valeur": "IR-17"}
+{"entite": "Koknese", "valeur": "LV-046"}
+{"entite": "Kolašin", "valeur": "ME-09"}
+{"entite": "Kolda", "valeur": "SN-KD"}
+{"entite": "Kolubara", "valeur": "RS-09"}
+{"entite": "Komárom-Esztergom", "valeur": "HU-KE"}
+{"entite": "Komen", "valeur": "SI-049"}
+{"entite": "Komenda", "valeur": "SI-164"}
+{"entite": "Kon Tum", "valeur": "VN-28"}
+{"entite": "Konče", "valeur": "MK-407"}
+{"entite": "Kondôz", "valeur": "AF-KDZ"}
+{"entite": "Kongo central", "valeur": "CD-BC"}
+{"entite": "Konya", "valeur": "TR-42"}
+{"entite": "Koprivnica-Križevci", "valeur": "HR-06"}
+{"entite": "Korçë", "valeur": "AL-06"}
+{"entite": "Kordofan du Nord", "valeur": "SD-KN"}
+{"entite": "Kordofan du Sud", "valeur": "SD-KS"}
+{"entite": "Kordofan-Occidental", "valeur": "SD-GK"}
+{"entite": "Koror", "valeur": "PW-150"}
+{"entite": "Koshi", "valeur": "NP-P1"}
+{"entite": "Kosovo", "valeur": "RS-25"}
+{"entite": "Kosovo-et-Métochie", "valeur": "RS-KM"}
+{"entite": "Kosovo-Pomoravlje", "valeur": "RS-29"}
+{"entite": "Kosovska Mitrovica", "valeur": "RS-28"}
+{"entite": "Kostanaï", "valeur": "KZ-39"}
+{"entite": "Kotayk", "valeur": "AM-KT"}
+{"entite": "Kotchani", "valeur": "MK-206"}
+{"entite": "Kotor", "valeur": "ME-10"}
+{"entite": "Kouilou", "valeur": "CG-5"}
+{"entite": "Koulikoro", "valeur": "ML-2"}
+{"entite": "Kounar", "valeur": "AF-KNR"}
+{"entite": "Kozje", "valeur": "SI-051"}
+{"entite": "Krabi", "valeur": "TH-81"}
+{"entite": "kraï de Khabarovsk", "valeur": "RU-KHA"}
+{"entite": "kraï de Krasnoïarsk", "valeur": "RU-KYA"}
+{"entite": "kraï de l'Altaï", "valeur": "RU-ALT"}
+{"entite": "kraï de Perm", "valeur": "RU-PER"}
+{"entite": "kraï de Stavropol", "valeur": "RU-STA"}
+{"entite": "kraï de Transbaïkalie", "valeur": "RU-ZAB"}
+{"entite": "kraï du Kamtchatka", "valeur": "RU-KAM"}
+{"entite": "kraï du Primorié", "valeur": "RU-PRI"}
+{"entite": "Kranj", "valeur": "SI-052"}
+{"entite": "Kranjska Gora", "valeur": "SI-053"}
+{"entite": "Krapina-Zagorje", "valeur": "HR-02"}
+{"entite": "Krāslava", "valeur": "LV-047"}
+{"entite": "Kratie", "valeur": "KH-10"}
+{"entite": "Kratovo", "valeur": "MK-701"}
+{"entite": "Kretinga", "valeur": "LT-22"}
+{"entite": "Krimulda", "valeur": "LV-048"}
+{"entite": "Kriva Palanka", "valeur": "MK-702"}
+{"entite": "Krivogaštani", "valeur": "MK-504"}
+{"entite": "Križevci", "valeur": "SI-166"}
+{"entite": "Kronoberg", "valeur": "SE-G"}
+{"entite": "Krško", "valeur": "SI-054"}
+{"entite": "Kruševo", "valeur": "MK-505"}
+{"entite": "Krustpils", "valeur": "LV-049"}
+{"entite": "Kuilsé", "valeur": "BF-05"}
+{"entite": "Kujalleq", "valeur": "GL-KU"}
+{"entite": "Kukës", "valeur": "AL-07"}
+{"entite": "Kuldīga", "valeur": "LV-050"}
+{"entite": "Kumanovo", "valeur": "MK-703"}
+{"entite": "Kungota", "valeur": "SI-055"}
+{"entite": "Kupiškis", "valeur": "LT-23"}
+{"entite": "Kürdəmir", "valeur": "AZ-KUR"}
+{"entite": "Kurdistan", "valeur": "IR-12"}
+{"entite": "Kütahya", "valeur": "TR-43"}
+{"entite": "Kuzma", "valeur": "SI-056"}
+{"entite": "Kwale", "valeur": "KE-19"}
+{"entite": "Kwando-Kubango", "valeur": "AO-CCU"}
+{"entite": "Kwanza-Nord", "valeur": "AO-CNO"}
+{"entite": "Kwanza-Sud", "valeur": "AO-CUS"}
+{"entite": "Kwara", "valeur": "NG-KW"}
+{"entite": "KwaZulu-Natal", "valeur": "ZA-KZN"}
+{"entite": "Kweneng", "valeur": "BW-KW"}
+{"entite": "Kwilu", "valeur": "CD-KL"}
+{"entite": "Kyoustendil", "valeur": "BG-10"}
+{"entite": "Kyzylorda", "valeur": "KZ-43"}
+{"entite": "Lääne", "valeur": "EE-56"}
+{"entite": "Laâyoune-Sakia El Hamra", "valeur": "MA-11"}
+{"entite": "Labé", "valeur": "GN-L"}
+{"entite": "Lac", "valeur": "TD-LC"}
+{"entite": "Lacs", "valeur": "SS-LK"}
+{"entite": "Ladakh", "valeur": "IN-LA"}
+{"entite": "Laghmân", "valeur": "AF-LAG"}
+{"entite": "Laghouat", "valeur": "DZ-03"}
+{"entite": "Lagos", "valeur": "NG-LA"}
+{"entite": "Lahij", "valeur": "YE-LA"}
+{"entite": "Lai Châu", "valeur": "VN-01"}
+{"entite": "Laikipia", "valeur": "KE-20"}
+{"entite": "Lakshadweep", "valeur": "IN-LD"}
+{"entite": "Lâm Đồng", "valeur": "VN-35"}
+{"entite": "Lambayeque", "valeur": "PE-LAM"}
+{"entite": "Lampang", "valeur": "TH-52"}
+{"entite": "Lamphun", "valeur": "TH-51"}
+{"entite": "Lampung", "valeur": "ID-LA"}
+{"entite": "Lamu", "valeur": "KE-21"}
+{"entite": "Lanao du Nord", "valeur": "PH-LAN"}
+{"entite": "Lanao du Sud", "valeur": "PH-LAS"}
+{"entite": "land de Brême", "valeur": "DE-HB"}
+{"entite": "Lạng Sơn", "valeur": "VN-09"}
+{"entite": "Languedoc-Roussillon", "valeur": "FR-K"}
+{"entite": "Lankaran", "valeur": "AZ-LA"}
+{"entite": "Lào Cai", "valeur": "VN-02"}
+{"entite": "Laponie", "valeur": "FI-10"}
+{"entite": "Lara", "valeur": "VE-K"}
+{"entite": "Las Tunas", "valeur": "CU-10"}
+{"entite": "Laško", "valeur": "SI-057"}
+{"entite": "Latchine", "valeur": "AZ-LAC"}
+{"entite": "Latium", "valeur": "IT-62"}
+{"entite": "Lautém", "valeur": "TL-LA"}
+{"entite": "Lavalleja", "valeur": "UY-LA"}
+{"entite": "Lebap", "valeur": "TM-L"}
+{"entite": "Leiria", "valeur": "PT-10"}
+{"entite": "Lékoumou", "valeur": "CG-2"}
+{"entite": "Lempira", "valeur": "HN-LE"}
+{"entite": "Lendava", "valeur": "SI-059"}
+{"entite": "Leova", "valeur": "MD-LE"}
+{"entite": "Leribe", "valeur": "LS-C"}
+{"entite": "Lerik", "valeur": "AZ-LER"}
+{"entite": "Leyte du Sud", "valeur": "PH-SLE"}
+{"entite": "Lezhë", "valeur": "AL-08"}
+{"entite": "Lhuntse", "valeur": "BT-44"}
+{"entite": "Liaoning", "valeur": "CN-LN"}
+{"entite": "Liban-Nord", "valeur": "LB-AS"}
+{"entite": "Lielvārde", "valeur": "LV-053"}
+{"entite": "Liepāja", "valeur": "LV-LPX"}
+{"entite": "Līgatne", "valeur": "LV-055"}
+{"entite": "Ligurie", "valeur": "IT-42"}
+{"entite": "Lika-Senj", "valeur": "HR-09"}
+{"entite": "Likouala", "valeur": "CG-7"}
+{"entite": "Lima", "valeur": "PE-LIM"}
+{"entite": "Limbaži", "valeur": "LV-054"}
+{"entite": "Limbourg", "valeur": "NL-LI"}
+{"entite": "Limón", "valeur": "CR-L"}
+{"entite": "Limpopo", "valeur": "ZA-LP"}
+{"entite": "Lindi", "valeur": "TZ-12"}
+{"entite": "Lipkovo", "valeur": "MK-704"}
+{"entite": "Liptako", "valeur": "BF-12"}
+{"entite": "Liquiçá", "valeur": "TL-LI"}
+{"entite": "Litija", "valeur": "SI-060"}
+{"entite": "Litoral", "valeur": "GQ-LI"}
+{"entite": "Līvāni", "valeur": "LV-056"}
+{"entite": "Ljubno", "valeur": "SI-062"}
+{"entite": "Ljutomer", "valeur": "SI-063"}
+{"entite": "Lobaye", "valeur": "CF-LB"}
+{"entite": "Loei", "valeur": "TH-42"}
+{"entite": "Lofa", "valeur": "LR-LO"}
+{"entite": "Log-Dragomer", "valeur": "SI-208"}
+{"entite": "Lôgar", "valeur": "AF-LOG"}
+{"entite": "Logatec", "valeur": "SI-064"}
+{"entite": "Logone Occidental", "valeur": "TD-LO"}
+{"entite": "Logone Oriental", "valeur": "TD-LR"}
+{"entite": "Loja", "valeur": "EC-L"}
+{"entite": "Lomani", "valeur": "CD-LO"}
+{"entite": "Lombardie", "valeur": "IT-25"}
+{"entite": "Long An", "valeur": "VN-41"}
+{"entite": "Lopburi", "valeur": "TH-16"}
+{"entite": "Lorestan", "valeur": "IR-15"}
+{"entite": "Lorri", "valeur": "AM-LO"}
+{"entite": "Los Ríos", "valeur": "EC-R"}
+{"entite": "Los Santos", "valeur": "PA-7"}
+{"entite": "Loška Dolina", "valeur": "SI-065"}
+{"entite": "Loški Potok", "valeur": "SI-066"}
+{"entite": "Louang-Namtha", "valeur": "LA-LM"}
+{"entite": "Louga", "valeur": "SN-LG"}
+{"entite": "Louisiane", "valeur": "US-LA"}
+{"entite": "Louxor", "valeur": "EG-LX"}
+{"entite": "Lovetch", "valeur": "BG-11"}
+{"entite": "Lovrenc na Pohorju", "valeur": "SI-167"}
+{"entite": "Lower River", "valeur": "GM-L"}
+{"entite": "Lozovo", "valeur": "MK-105"}
+{"entite": "Lualaba", "valeur": "CD-LU"}
+{"entite": "Luanda", "valeur": "AO-LUA"}
+{"entite": "Luapula", "valeur": "ZM-04"}
+{"entite": "Lubāna", "valeur": "LV-057"}
+{"entite": "Lubombo", "valeur": "SZ-LU"}
+{"entite": "Luče", "valeur": "SI-067"}
+{"entite": "Luçon centrale", "valeur": "PH-03"}
+{"entite": "Ludza", "valeur": "LV-058"}
+{"entite": "Lukovica", "valeur": "SI-068"}
+{"entite": "Lumbini", "valeur": "NP-P5"}
+{"entite": "Lunda-Nord", "valeur": "AO-LNO"}
+{"entite": "Lunda-Sud", "valeur": "AO-LSU"}
+{"entite": "Lusaka", "valeur": "ZM-09"}
+{"entite": "Møre og Romsdal", "valeur": "NO-15"}
+{"entite": "M'Sila", "valeur": "DZ-28"}
+{"entite": "Ma'an", "valeur": "JO-MN"}
+{"entite": "Ma'rib", "valeur": "YE-MA"}
+{"entite": "Macao", "valeur": "CN-MO"}
+{"entite": "Macédoine-Centrale", "valeur": "GR-B"}
+{"entite": "Macédoine-Occidentale", "valeur": "GR-C"}
+{"entite": "Macédoine-Orientale-et-Thrace", "valeur": "GR-A"}
+{"entite": "Mačva", "valeur": "RS-08"}
+{"entite": "Madaba", "valeur": "JO-MD"}
+{"entite": "Madang", "valeur": "PG-MPM"}
+{"entite": "Madère", "valeur": "PT-30"}
+{"entite": "Madhesh", "valeur": "NP-P2"}
+{"entite": "Madhya Pradesh", "valeur": "IN-MP"}
+{"entite": "Madona", "valeur": "LV-059"}
+{"entite": "Madre de Dios", "valeur": "PE-MDD"}
+{"entite": "Mae Hong Son", "valeur": "TH-58"}
+{"entite": "Maekel", "valeur": "ER-MA"}
+{"entite": "Mafeteng", "valeur": "LS-E"}
+{"entite": "Mafraq", "valeur": "JO-MA"}
+{"entite": "Magallanes et l'Antarctique chilien", "valeur": "CL-MA"}
+{"entite": "Magdalena", "valeur": "CO-MAG"}
+{"entite": "Magway", "valeur": "MM-03"}
+{"entite": "Maha Sarakham", "valeur": "TH-44"}
+{"entite": "Mahaica-Berbice", "valeur": "GY-MA"}
+{"entite": "Maharashtra", "valeur": "IN-MH"}
+{"entite": "Mahdia", "valeur": "TN-53"}
+{"entite": "Mahra", "valeur": "YE-MR"}
+{"entite": "Mai-Ndombe", "valeur": "CD-MN"}
+{"entite": "Maine", "valeur": "US-ME"}
+{"entite": "Majšperk", "valeur": "SI-069"}
+{"entite": "Makedonska Kamenica", "valeur": "MK-207"}
+{"entite": "Makedonski Brod", "valeur": "MK-308"}
+{"entite": "Makole", "valeur": "SI-198"}
+{"entite": "Makueni", "valeur": "KE-23"}
+{"entite": "Malacca", "valeur": "MY-04"}
+{"entite": "Malampa", "valeur": "VU-MAP"}
+{"entite": "Malanje", "valeur": "AO-MAL"}
+{"entite": "Malatya", "valeur": "TR-44"}
+{"entite": "Malawi central", "valeur": "MW-C"}
+{"entite": "Maldonado", "valeur": "UY-MA"}
+{"entite": "Malé", "valeur": "MV-MLE"}
+{"entite": "Mālpils", "valeur": "LV-061"}
+{"entite": "Mambéré-Kadéï", "valeur": "CF-HS"}
+{"entite": "Les Mamelles", "valeur": "SC-24"}
+{"entite": "Manabí", "valeur": "EC-M"}
+{"entite": "Manatuto", "valeur": "TL-MT"}
+{"entite": "Manawatu-Wanganui", "valeur": "NZ-MWT"}
+{"entite": "Manchester", "valeur": "JM-12"}
+{"entite": "Mandalay", "valeur": "MM-04"}
+{"entite": "Mandoul", "valeur": "TD-MA"}
+{"entite": "Mangrove Cay", "valeur": "BS-MC"}
+{"entite": "Manguistaou", "valeur": "KZ-47"}
+{"entite": "Manica", "valeur": "MZ-B"}
+{"entite": "Manicaland", "valeur": "ZW-MA"}
+{"entite": "Maniema", "valeur": "CD-MA"}
+{"entite": "Manipur", "valeur": "IN-MN"}
+{"entite": "Manisa", "valeur": "TR-45"}
+{"entite": "Manitoba", "valeur": "CA-MB"}
+{"entite": "La Manouba", "valeur": "TN-14"}
+{"entite": "Manufahi", "valeur": "TL-MF"}
+{"entite": "Manus", "valeur": "PG-MRL"}
+{"entite": "Manyara", "valeur": "TZ-26"}
+{"entite": "Manzini district", "valeur": "SZ-MA"}
+{"entite": "Mara", "valeur": "TZ-13"}
+{"entite": "Maradi", "valeur": "NE-4"}
+{"entite": "Maramureș", "valeur": "RO-MM"}
+{"entite": "Maranhão", "valeur": "BR-MA"}
+{"entite": "Marches", "valeur": "IT-57"}
+{"entite": "Mardin", "valeur": "TR-47"}
+{"entite": "Margibi", "valeur": "LR-MG"}
+{"entite": "Mari El", "valeur": "RU-ME"}
+{"entite": "María Trinidad Sánchez", "valeur": "DO-14"}
+{"entite": "Maribor", "valeur": "SI-070"}
+{"entite": "Markovci", "valeur": "SI-168"}
+{"entite": "Marlborough", "valeur": "NZ-MBH"}
+{"entite": "Marowijne", "valeur": "SR-MA"}
+{"entite": "Marrakech-Safi", "valeur": "MA-07"}
+{"entite": "Marsabit", "valeur": "KE-25"}
+{"entite": "Martinique", "valeur": "FR-972"}
+{"entite": "Mārupe", "valeur": "LV-062"}
+{"entite": "Mary", "valeur": "TM-M"}
+{"entite": "Masallı", "valeur": "AZ-MAS"}
+{"entite": "Masbate", "valeur": "PH-MAS"}
+{"entite": "Mascara", "valeur": "DZ-29"}
+{"entite": "Mascate", "valeur": "OM-MA"}
+{"entite": "Maseru", "valeur": "LS-A"}
+{"entite": "Mashonaland central", "valeur": "ZW-MC"}
+{"entite": "Mashonaland occidental", "valeur": "ZW-MW"}
+{"entite": "Mashonaland oriental", "valeur": "ZW-ME"}
+{"entite": "Massachusetts", "valeur": "US-MA"}
+{"entite": "La Massana", "valeur": "AD-04"}
+{"entite": "Masvingo", "valeur": "ZW-MV"}
+{"entite": "Matabeleland méridional", "valeur": "ZW-MS"}
+{"entite": "Matabeleland septentrional", "valeur": "ZW-MN"}
+{"entite": "Matam", "valeur": "SN-MT"}
+{"entite": "Matanzas", "valeur": "CU-04"}
+{"entite": "Mato Grosso", "valeur": "BR-MT"}
+{"entite": "Mato Grosso do Sul", "valeur": "BR-MS"}
+{"entite": "Maule", "valeur": "CL-ML"}
+{"entite": "Mauren", "valeur": "LI-04"}
+{"entite": "Mavrovo i Rostuše", "valeur": "MK-607"}
+{"entite": "Mayabeque", "valeur": "CU-16"}
+{"entite": "Mayo-Kebbi Est", "valeur": "TD-ME"}
+{"entite": "Mayo-Kebbi Ouest", "valeur": "TD-MO"}
+{"entite": "Mayotte", "valeur": "FR-976"}
+{"entite": "Maysan", "valeur": "IQ-MA"}
+{"entite": "Mazandéran", "valeur": "IR-02"}
+{"entite": "Mažeikiai", "valeur": "LT-26"}
+{"entite": "Mazsalaca", "valeur": "LV-060"}
+{"entite": "Mbeya", "valeur": "TZ-14"}
+{"entite": "Mbomou", "valeur": "CF-MB"}
+{"entite": "Međimurje", "valeur": "HR-20"}
+{"entite": "Mecklembourg-Poméranie-Occidentale", "valeur": "DE-MV"}
+{"entite": "La Mecque", "valeur": "SA-02"}
+{"entite": "Médenine", "valeur": "TN-82"}
+{"entite": "Médine", "valeur": "SA-03"}
+{"entite": "Medvode", "valeur": "SI-071"}
+{"entite": "Meghalaya", "valeur": "IN-ML"}
+{"entite": "Mehedinți", "valeur": "RO-MH"}
+{"entite": "Melekeok", "valeur": "PW-212"}
+{"entite": "Melilla", "valeur": "ES-ML"}
+{"entite": "Mendoza", "valeur": "AR-M"}
+{"entite": "Meneng", "valeur": "NR-11"}
+{"entite": "Mengeš", "valeur": "SI-072"}
+{"entite": "Menufeya", "valeur": "EG-MNF"}
+{"entite": "Mer Rouge", "valeur": "SD-RS"}
+{"entite": "Mérida", "valeur": "VE-L"}
+{"entite": "Mersin", "valeur": "TR-33"}
+{"entite": "Mērsrags", "valeur": "LV-063"}
+{"entite": "Meta", "valeur": "CO-MET"}
+{"entite": "Mexico", "valeur": "MX-CMX"}
+{"entite": "Mežica", "valeur": "SI-074"}
+{"entite": "Michigan", "valeur": "US-MI"}
+{"entite": "Michoacán", "valeur": "MX-MIC"}
+{"entite": "Midi-Pyrénées", "valeur": "FR-N"}
+{"entite": "Midlands", "valeur": "ZW-MI"}
+{"entite": "Migori", "valeur": "KE-27"}
+{"entite": "Miklavž na Dravskem polju", "valeur": "SI-169"}
+{"entite": "Minas Gerais", "valeur": "BR-MG"}
+{"entite": "Mindanao du Nord", "valeur": "PH-10"}
+{"entite": "Mindoro occidental", "valeur": "PH-MDC"}
+{"entite": "Mindoro oriental", "valeur": "PH-MDR"}
+{"entite": "Mingachevir", "valeur": "AZ-MI"}
+{"entite": "Mingrélie-Haute Svanétie", "valeur": "GE-SZ"}
+{"entite": "Minnesota", "valeur": "US-MN"}
+{"entite": "Minsk", "valeur": "BY-HM"}
+{"entite": "Minya", "valeur": "EG-MN"}
+{"entite": "Miranda", "valeur": "VE-M"}
+{"entite": "Miren-Kostanjevica", "valeur": "SI-075"}
+{"entite": "Mirna", "valeur": "SI-212"}
+{"entite": "Mirna Peč", "valeur": "SI-170"}
+{"entite": "Misamis occidental", "valeur": "PH-MSC"}
+{"entite": "Misamis oriental", "valeur": "PH-MSR"}
+{"entite": "Miskolc", "valeur": "HU-MI"}
+{"entite": "Mislinja (Slovénie)", "valeur": "SI-076"}
+{"entite": "Misratah", "valeur": "LY-MI"}
+{"entite": "Mississippi", "valeur": "US-MS"}
+{"entite": "Missouri", "valeur": "US-MO"}
+{"entite": "Mizoram", "valeur": "IN-MZ"}
+{"entite": "Mogila", "valeur": "MK-506"}
+{"entite": "Mohale's Hoek", "valeur": "LS-F"}
+{"entite": "Mohéli", "valeur": "KM-M"}
+{"entite": "Mojkovac", "valeur": "ME-11"}
+{"entite": "Moka", "valeur": "MU-MO"}
+{"entite": "Mokhotlong", "valeur": "LS-J"}
+{"entite": "Mokronog-Trebelno", "valeur": "SI-199"}
+{"entite": "Molėtai", "valeur": "LT-27"}
+{"entite": "Molise", "valeur": "IT-67"}
+{"entite": "Moluques", "valeur": "ID-MA"}
+{"entite": "Moluques du Nord", "valeur": "ID-MU"}
+{"entite": "Mombasa District", "valeur": "KE-28"}
+{"entite": "Môn", "valeur": "MM-15"}
+{"entite": "Monagas", "valeur": "VE-N"}
+{"entite": "Monastir", "valeur": "TN-52"}
+{"entite": "Mondol Kiri", "valeur": "KH-11"}
+{"entite": "Mongala", "valeur": "CD-MO"}
+{"entite": "Mongar", "valeur": "BT-42"}
+{"entite": "Mongolie-Intérieure", "valeur": "CN-NM"}
+{"entite": "Mono", "valeur": "BJ-MO"}
+{"entite": "Monseñor Nouel", "valeur": "DO-28"}
+{"entite": "Mont Buxton", "valeur": "SC-17"}
+{"entite": "Mont Fleuri", "valeur": "SC-18"}
+{"entite": "Monte Cristi", "valeur": "DO-15"}
+{"entite": "Monte Plata", "valeur": "DO-29"}
+{"entite": "Montegiardino", "valeur": "SM-08"}
+{"entite": "Montevideo", "valeur": "UY-MO"}
+{"entite": "Montserrado", "valeur": "LR-MO"}
+{"entite": "Mopti", "valeur": "ML-5"}
+{"entite": "Moquegua", "valeur": "PE-MOQ"}
+{"entite": "Moravče", "valeur": "SI-077"}
+{"entite": "Moravica", "valeur": "RS-17"}
+{"entite": "Moravie-du-Sud", "valeur": "CZ-64"}
+{"entite": "Moravie-Silésie", "valeur": "CZ-80"}
+{"entite": "Moravske Toplice", "valeur": "SI-078"}
+{"entite": "Morazán", "valeur": "SV-MO"}
+{"entite": "Mordovie", "valeur": "RU-MO"}
+{"entite": "Morelos", "valeur": "MX-MOR"}
+{"entite": "Morobe", "valeur": "PG-MPL"}
+{"entite": "Morogoro", "valeur": "TZ-16"}
+{"entite": "Morona-Santiago", "valeur": "EC-S"}
+{"entite": "Moscou", "valeur": "RU-MOW"}
+{"entite": "Mostaganem", "valeur": "DZ-27"}
+{"entite": "Mountain Province", "valeur": "PH-MOU"}
+{"entite": "Mourzouq", "valeur": "LY-MQ"}
+{"entite": "Moxico", "valeur": "AO-MOX"}
+{"entite": "Moyen-Chari", "valeur": "TD-MC"}
+{"entite": "Moyen-Ogooué", "valeur": "GA-3"}
+{"entite": "Mozirje", "valeur": "SI-079"}
+{"entite": "Mpumalanga", "valeur": "ZA-MP"}
+{"entite": "Mtskheta-Mtianeti", "valeur": "GE-MM"}
+{"entite": "Mtwara", "valeur": "TZ-17"}
+{"entite": "Mubarak Al-Kabeer", "valeur": "KW-MU"}
+{"entite": "Muchinga", "valeur": "ZM-10"}
+{"entite": "Muğla", "valeur": "TR-48"}
+{"entite": "Mukdahan", "valeur": "TH-49"}
+{"entite": "Mulaku", "valeur": "MV-12"}
+{"entite": "Municipalité d'Elektrėnai", "valeur": "LT-08"}
+{"entite": "municipalité d'Izola", "valeur": "SI-040"}
+{"entite": "Municipalité de Bălți", "valeur": "MD-BA"}
+{"entite": "Municipalité de Beltinci", "valeur": "SI-002"}
+{"entite": "Municipalité de Bender", "valeur": "MD-BD"}
+{"entite": "Municipalité de Bistrica ob Sotli", "valeur": "SI-149"}
+{"entite": "Municipalité de Bohinj", "valeur": "SI-004"}
+{"entite": "Municipalité de Borovnica", "valeur": "SI-005"}
+{"entite": "Municipalité de Bovec", "valeur": "SI-006"}
+{"entite": "Municipalité de Braslovče", "valeur": "SI-151"}
+{"entite": "Municipalité de Cerkvenjak", "valeur": "SI-153"}
+{"entite": "Municipalité de Chișinău", "valeur": "MD-CU"}
+{"entite": "Municipalité de Črnomelj", "valeur": "SI-017"}
+{"entite": "Municipalité de Daugavpils", "valeur": "LV-025"}
+{"entite": "Municipalité de Divača", "valeur": "SI-019"}
+{"entite": "municipalité de Druskininkai", "valeur": "LT-07"}
+{"entite": "Municipalité de Grosuplje", "valeur": "SI-032"}
+{"entite": "Municipalité de Hrastnik", "valeur": "SI-034"}
+{"entite": "municipalité de Kazlų Rūda", "valeur": "LT-17"}
+{"entite": "municipalité de Kostel", "valeur": "SI-165"}
+{"entite": "Municipalité de la ville de Vilnius", "valeur": "LT-57"}
+{"entite": "Municipalité de Lenart", "valeur": "SI-058"}
+{"entite": "municipalité de Ljubljana", "valeur": "SI-061"}
+{"entite": "municipalité de Marijampolė", "valeur": "LT-25"}
+{"entite": "Municipalité de Neringa", "valeur": "LT-28"}
+{"entite": "Municipalité de Pagėgiai", "valeur": "LT-29"}
+{"entite": "Municipalité de Piran", "valeur": "SI-090"}
+{"entite": "municipalité de Postojna", "valeur": "SI-094"}
+{"entite": "Municipalité de Razkrižje", "valeur": "SI-176"}
+{"entite": "Municipalité de Ruše", "valeur": "SI-108"}
+{"entite": "Municipalité de Semič", "valeur": "SI-109"}
+{"entite": "Municipalité de Šentjur", "valeur": "SI-120"}
+{"entite": "Municipalité de Sevnica", "valeur": "SI-110"}
+{"entite": "Municipalité de Sežana", "valeur": "SI-111"}
+{"entite": "Municipalité de Talsi", "valeur": "LV-097"}
+{"entite": "Municipalité de Trebnje", "valeur": "SI-130"}
+{"entite": "Municipalité de Vipava", "valeur": "SI-136"}
+{"entite": "Municipalité de Vrhnika", "valeur": "SI-140"}
+{"entite": "Municipalité deVojnik", "valeur": "SI-139"}
+{"entite": "Municipalite du district d'Anyksčiai", "valeur": "LT-04"}
+{"entite": "municipalité du district d'Ignalina", "valeur": "LT-09"}
+{"entite": "municipalité du district d'Utena", "valeur": "LT-54"}
+{"entite": "municipalité du district de Biržai", "valeur": "LT-06"}
+{"entite": "municipalité du district de Kaišiadorys", "valeur": "LT-13"}
+{"entite": "municipalité du district de Klaipėda", "valeur": "LT-21"}
+{"entite": "municipalité du district de Lazdijai", "valeur": "LT-24"}
+{"entite": "municipalité du district de Pakruojis", "valeur": "LT-30"}
+{"entite": "municipalité du district de Pasvalys", "valeur": "LT-34"}
+{"entite": "Municipalité du district de Plungė", "valeur": "LT-35"}
+{"entite": "municipalité du district de Šiauliai", "valeur": "LT-44"}
+{"entite": "Municipalite du district de Širvintos", "valeur": "LT-47"}
+{"entite": "municipalité du district de Trakai", "valeur": "LT-52"}
+{"entite": "municipalité du district de Vilkaviškis", "valeur": "LT-56"}
+{"entite": "municipalité du district de Zarasai", "valeur": "LT-60"}
+{"entite": "Mureș", "valeur": "RO-MS"}
+{"entite": "Murska Sobota", "valeur": "SI-080"}
+{"entite": "Muş", "valeur": "TR-49"}
+{"entite": "Musandam", "valeur": "OM-MU"}
+{"entite": "Muta", "valeur": "SI-081"}
+{"entite": "Mwanza", "valeur": "TZ-18"}
+{"entite": "Mymensingh", "valeur": "BD-H"}
+{"entite": "N'Djaména", "valeur": "TD-ND"}
+{"entite": "Naâma", "valeur": "DZ-45"}
+{"entite": "Nabatieh", "valeur": "LB-NA"}
+{"entite": "Nabeul", "valeur": "TN-21"}
+{"entite": "Nagaland", "valeur": "IN-NL"}
+{"entite": "Nagykanizsa", "valeur": "HU-NK"}
+{"entite": "Nairobi", "valeur": "KE-30"}
+{"entite": "Najran", "valeur": "SA-10"}
+{"entite": "Nakambé", "valeur": "BF-04"}
+{"entite": "Nakhitchevan", "valeur": "AZ-NV"}
+{"entite": "Nakhon Nayok", "valeur": "TH-26"}
+{"entite": "Nakhon Pathom", "valeur": "TH-73"}
+{"entite": "Nakhon Phanom", "valeur": "TH-48"}
+{"entite": "Nakhon Ratchasima", "valeur": "TH-30"}
+{"entite": "Nakhon Sawan", "valeur": "TH-60"}
+{"entite": "Nakhon Si Thammarat", "valeur": "TH-80"}
+{"entite": "Naklo", "valeur": "SI-082"}
+{"entite": "Nakuru", "valeur": "KE-31"}
+{"entite": "Nalout", "valeur": "LY-NL"}
+{"entite": "Nam Định", "valeur": "VN-67"}
+{"entite": "Namangan", "valeur": "UZ-NG"}
+{"entite": "Namibe", "valeur": "AO-NAM"}
+{"entite": "Nampula", "valeur": "MZ-N"}
+{"entite": "Nan", "valeur": "TH-55"}
+{"entite": "Nana-Grébizi", "valeur": "CF-KB"}
+{"entite": "Nana-Mambéré", "valeur": "CF-NM"}
+{"entite": "Nando", "valeur": "BF-06"}
+{"entite": "Nangarhâr", "valeur": "AF-NAN"}
+{"entite": "Nanumaga", "valeur": "TV-NMG"}
+{"entite": "Nanumea", "valeur": "TV-NMA"}
+{"entite": "Napo", "valeur": "EC-N"}
+{"entite": "Narathiwat", "valeur": "TH-96"}
+{"entite": "Nariño", "valeur": "CO-NAR"}
+{"entite": "Naryn", "valeur": "KG-N"}
+{"entite": "Nassarawa", "valeur": "NG-NA"}
+{"entite": "Naukšēni", "valeur": "LV-064"}
+{"entite": "Navarre", "valeur": "ES-NC"}
+{"entite": "Navoï", "valeur": "UZ-NW"}
+{"entite": "Nayarit", "valeur": "MX-NAY"}
+{"entite": "Nazarje", "valeur": "SI-083"}
+{"entite": "Nazinon", "valeur": "BF-07"}
+{"entite": "Neamț", "valeur": "RO-NT"}
+{"entite": "Nebraska", "valeur": "US-NE"}
+{"entite": "Ñeembucú", "valeur": "PY-12"}
+{"entite": "Neftçala", "valeur": "AZ-NEF"}
+{"entite": "Negeri Sembilan", "valeur": "MY-05"}
+{"entite": "Negotino", "valeur": "MK-106"}
+{"entite": "Negros occidental", "valeur": "PH-NEC"}
+{"entite": "Negros oriental", "valeur": "PH-NER"}
+{"entite": "Nelson", "valeur": "NZ-NSN"}
+{"entite": "Nénétsie", "valeur": "RU-NEN"}
+{"entite": "Nereta", "valeur": "LV-065"}
+{"entite": "Neuquén", "valeur": "AR-Q"}
+{"entite": "Nevada", "valeur": "US-NV"}
+{"entite": "Nevşehir", "valeur": "TR-50"}
+{"entite": "New Hampshire", "valeur": "US-NH"}
+{"entite": "New Jersey", "valeur": "US-NJ"}
+{"entite": "New Providence", "valeur": "BS-NP"}
+{"entite": "New York", "valeur": "US-NY"}
+{"entite": "Ngamiland", "valeur": "BW-NG"}
+{"entite": "Ngaraard", "valeur": "PW-214"}
+{"entite": "Ngarchelong", "valeur": "PW-218"}
+{"entite": "Ngardmau", "valeur": "PW-222"}
+{"entite": "Ngaremlengui", "valeur": "PW-227"}
+{"entite": "Ngatpang", "valeur": "PW-224"}
+{"entite": "Ngchesar", "valeur": "PW-226"}
+{"entite": "Nghệ An", "valeur": "VN-22"}
+{"entite": "Ngiwal", "valeur": "PW-228"}
+{"entite": "Ngöbe-Buglé", "valeur": "PA-NB"}
+{"entite": "Ngounié", "valeur": "GA-4"}
+{"entite": "Niamey", "valeur": "NE-8"}
+{"entite": "Niari", "valeur": "CG-9"}
+{"entite": "Niassa", "valeur": "MZ-A"}
+{"entite": "Nibok", "valeur": "NR-12"}
+{"entite": "Nīca", "valeur": "LV-066"}
+{"entite": "Nickerie", "valeur": "SR-NI"}
+{"entite": "Niévès", "valeur": "KN-N"}
+{"entite": "Niğde", "valeur": "TR-51"}
+{"entite": "Niger", "valeur": "NG-NI"}
+{"entite": "Nikšić", "valeur": "ME-12"}
+{"entite": "Nil", "valeur": "SD-NR"}
+{"entite": "Nil Blanc", "valeur": "SD-NW"}
+{"entite": "Nil Bleu", "valeur": "SD-NB"}
+{"entite": "Nil Supérieur", "valeur": "SS-NU"}
+{"entite": "Nimba", "valeur": "LR-NI"}
+{"entite": "Nimrôz", "valeur": "AF-NIM"}
+{"entite": "Ningxia", "valeur": "CN-NX"}
+{"entite": "Ninh Bình", "valeur": "VN-18"}
+{"entite": "Ninh Thuận", "valeur": "VN-36"}
+{"entite": "Ninive", "valeur": "IQ-NI"}
+{"entite": "Nippes", "valeur": "HT-NI"}
+{"entite": "Nišava", "valeur": "RS-20"}
+{"entite": "Nisporeni", "valeur": "MD-NI"}
+{"entite": "Lənkəran", "valeur": "AZ-LAN"}
+{"entite": "Nógrád", "valeur": "HU-NO"}
+{"entite": "Nohiyahoi tobei Jumhurii", "valeur": "TJ-RA"}
+{"entite": "Nonthaburi", "valeur": "TH-12"}
+{"entite": "Noonu", "valeur": "MV-25"}
+{"entite": "Norðurland eystra", "valeur": "IS-6"}
+{"entite": "Norðurland vestra", "valeur": "IS-5"}
+{"entite": "Nord-Est", "valeur": "HT-NE"}
+{"entite": "Nord-Kivu", "valeur": "CD-NK"}
+{"entite": "Nord-Ouest", "valeur": "CM-NW"}
+{"entite": "Nord-Pas-de-Calais", "valeur": "FR-O"}
+{"entite": "Nord-Trøndelag", "valeur": "NO-17"}
+{"entite": "Nord-Ubangi", "valeur": "CD-NU"}
+{"entite": "Nordland", "valeur": "NO-18"}
+{"entite": "Normandie", "valeur": "FR-NOR"}
+{"entite": "Norrbotten", "valeur": "SE-BD"}
+{"entite": "Norte de Santander", "valeur": "CO-NSA"}
+{"entite": "North Abaco", "valeur": "BS-NO"}
+{"entite": "North Andros", "valeur": "BS-NS"}
+{"entite": "North Bank", "valeur": "GM-N"}
+{"entite": "North Eleuthera", "valeur": "BS-NE"}
+{"entite": "Northland", "valeur": "NZ-NTL"}
+{"entite": "Nouakchott-Nord", "valeur": "MR-14"}
+{"entite": "Nouakchott-Ouest", "valeur": "MR-13"}
+{"entite": "Nouakchott-Sud", "valeur": "MR-15"}
+{"entite": "Nourestân", "valeur": "AF-NUR"}
+{"entite": "Nouveau-Brunswick", "valeur": "CA-NB"}
+{"entite": "Nouveau-Mexique", "valeur": "US-NM"}
+{"entite": "Nouveau Taipei", "valeur": "TW-NWT"}
+{"entite": "Nouvelle-Aquitaine", "valeur": "FR-NAQ"}
+{"entite": "Nouvelle-Bretagne occidentale", "valeur": "PG-WBK"}
+{"entite": "Nouvelle-Bretagne orientale", "valeur": "PG-EBR"}
+{"entite": "Nouvelle-Calédonie", "valeur": "FR-NC"}
+{"entite": "Nouvelle-Écosse", "valeur": "CA-NS"}
+{"entite": "Nouvelle-Galles du Sud", "valeur": "AU-NSW"}
+{"entite": "Nouvelle-Irlande", "valeur": "PG-NIK"}
+{"entite": "la Nouvelle-Vallée", "valeur": "EG-WAD"}
+{"entite": "Nova Gorica", "valeur": "SI-084"}
+{"entite": "Novaci", "valeur": "MK-507"}
+{"entite": "Novo Mesto", "valeur": "SI-085"}
+{"entite": "Novo Selo", "valeur": "MK-408"}
+{"entite": "Ñuble", "valeur": "CL-NB"}
+{"entite": "Nueva Ecija", "valeur": "PH-NUE"}
+{"entite": "Nueva Esparta", "valeur": "VE-O"}
+{"entite": "Nueva Vizcaya", "valeur": "PH-NUV"}
+{"entite": "Nuevo León", "valeur": "MX-NLE"}
+{"entite": "Nui", "valeur": "TV-NUI"}
+{"entite": "Nukufetau", "valeur": "TV-NKF"}
+{"entite": "Nukulaelae", "valeur": "TV-NKL"}
+{"entite": "Nunavut", "valeur": "CA-NU"}
+{"entite": "Nyamira", "valeur": "KE-34"}
+{"entite": "Nyanga", "valeur": "GA-5"}
+{"entite": "Nyíregyháza", "valeur": "HU-NY"}
+{"entite": "Nzérékoré", "valeur": "GN-N"}
+{"entite": "O'Higgins", "valeur": "CL-LI"}
+{"entite": "Oaxaca", "valeur": "MX-OAX"}
+{"entite": "oblast autonome juif", "valeur": "RU-YEV"}
+{"entite": "oblast d'Arkhangelsk", "valeur": "RU-ARK"}
+{"entite": "oblast d'Astrakhan", "valeur": "RU-AST"}
+{"entite": "oblast d'Irkoutsk", "valeur": "RU-IRK"}
+{"entite": "oblast d'Ivano-Frankivsk", "valeur": "UA-26"}
+{"entite": "oblast d'Ivanovo", "valeur": "RU-IVA"}
+{"entite": "oblast d'Odessa", "valeur": "UA-51"}
+{"entite": "oblast d'Omsk", "valeur": "RU-OMS"}
+{"entite": "oblast d'Orel", "valeur": "RU-ORL"}
+{"entite": "oblast d'Orenbourg", "valeur": "RU-ORE"}
+{"entite": "oblast d'Oulianovsk", "valeur": "RU-ULY"}
+{"entite": "oblast de Belgorod", "valeur": "RU-BEL"}
+{"entite": "oblast de Bourgas", "valeur": "BG-02"}
+{"entite": "oblast de Briansk", "valeur": "RU-BRY"}
+{"entite": "oblast de Dnipropetrovsk", "valeur": "UA-12"}
+{"entite": "oblast de Donetsk", "valeur": "UA-14"}
+{"entite": "oblast de Iaroslavl", "valeur": "RU-YAR"}
+{"entite": "oblast de Jytomyr", "valeur": "UA-18"}
+{"entite": "oblast de Kaliningrad", "valeur": "RU-KGD"}
+{"entite": "oblast de Kalouga", "valeur": "RU-KLU"}
+{"entite": "oblast de Kemerovo", "valeur": "RU-KEM"}
+{"entite": "oblast de Kharkiv", "valeur": "UA-63"}
+{"entite": "oblast de Kherson", "valeur": "UA-65"}
+{"entite": "oblast de Khmelnytskyï", "valeur": "UA-68"}
+{"entite": "oblast de Kiev", "valeur": "UA-32"}
+{"entite": "oblast de Kirov", "valeur": "RU-KIR"}
+{"entite": "oblast de Kirovohrad", "valeur": "UA-35"}
+{"entite": "oblast de Kostroma", "valeur": "RU-KOS"}
+{"entite": "oblast de Kourgan", "valeur": "RU-KGN"}
+{"entite": "oblast de Koursk", "valeur": "RU-KRS"}
+{"entite": "oblast de l'Amour", "valeur": "RU-AMU"}
+{"entite": "oblast de Léningrad", "valeur": "RU-LEN"}
+{"entite": "oblast de Lipetsk", "valeur": "RU-LIP"}
+{"entite": "oblast de Louhansk", "valeur": "UA-09"}
+{"entite": "oblast de Lviv", "valeur": "UA-46"}
+{"entite": "oblast de Magadan", "valeur": "RU-MAG"}
+{"entite": "oblast de Moscou", "valeur": "RU-MOS"}
+{"entite": "oblast de Mourmansk", "valeur": "RU-MUR"}
+{"entite": "oblast de Mykolaiv", "valeur": "UA-48"}
+{"entite": "oblast de Nijni Novgorod", "valeur": "RU-NIZ"}
+{"entite": "oblast de Novgorod", "valeur": "RU-NGR"}
+{"entite": "oblast de Novossibirsk", "valeur": "RU-NVS"}
+{"entite": "oblast de Penza", "valeur": "RU-PNZ"}
+{"entite": "oblast de Poltava", "valeur": "UA-53"}
+{"entite": "oblast de Pskov", "valeur": "RU-PSK"}
+{"entite": "oblast de Riazan", "valeur": "RU-RYA"}
+{"entite": "oblast de Rivne", "valeur": "UA-56"}
+{"entite": "oblast de Rostov", "valeur": "RU-ROS"}
+{"entite": "oblast de Sakhaline", "valeur": "RU-SAK"}
+{"entite": "oblast de Samara", "valeur": "RU-SAM"}
+{"entite": "oblast de Saratov", "valeur": "RU-SAR"}
+{"entite": "oblast de Smolensk", "valeur": "RU-SMO"}
+{"entite": "oblast de Soumy", "valeur": "UA-59"}
+{"entite": "oblast de Sverdlovsk", "valeur": "RU-SVE"}
+{"entite": "oblast de Tambov", "valeur": "RU-TAM"}
+{"entite": "oblast de Tcheliabinsk", "valeur": "RU-CHE"}
+{"entite": "oblast de Tcherkassy", "valeur": "UA-71"}
+{"entite": "oblast de Tchernihiv", "valeur": "UA-74"}
+{"entite": "oblast de Tchernivtsi", "valeur": "UA-77"}
+{"entite": "oblast de Ternopil", "valeur": "UA-61"}
+{"entite": "oblast de Tioumen", "valeur": "RU-TYU"}
+{"entite": "oblast de Tomsk", "valeur": "RU-TOM"}
+{"entite": "oblast de Toula", "valeur": "RU-TUL"}
+{"entite": "oblast de Transcarpatie", "valeur": "UA-21"}
+{"entite": "oblast de Tver", "valeur": "RU-TVE"}
+{"entite": "oblast de Vinnytsia", "valeur": "UA-05"}
+{"entite": "oblast de Vladimir", "valeur": "RU-VLA"}
+{"entite": "oblast de Volgograd", "valeur": "RU-VGG"}
+{"entite": "oblast de Volhynie", "valeur": "UA-07"}
+{"entite": "oblast de Vologda", "valeur": "RU-VLG"}
+{"entite": "oblast de Voronej", "valeur": "RU-VOR"}
+{"entite": "oblast de Zaporijjia", "valeur": "UA-23"}
+{"entite": "oblys d'Almaty", "valeur": "KZ-19"}
+{"entite": "Obock", "valeur": "DJ-OB"}
+{"entite": "Occitanie", "valeur": "FR-OCC"}
+{"entite": "Ocnița", "valeur": "MD-OC"}
+{"entite": "Ocotepeque", "valeur": "HN-OC"}
+{"entite": "Odisha", "valeur": "IN-OD"}
+{"entite": "Oe-Cusse Ambeno", "valeur": "TL-OE"}
+{"entite": "Ogooué-Ivindo", "valeur": "GA-6"}
+{"entite": "Ogooué-Lolo", "valeur": "GA-7"}
+{"entite": "Ogooué-Maritime", "valeur": "GA-8"}
+{"entite": "Ogre", "valeur": "LV-067"}
+{"entite": "Ogun", "valeur": "NG-OG"}
+{"entite": "Oğuz", "valeur": "AZ-OGU"}
+{"entite": "Ohangwena", "valeur": "NA-OW"}
+{"entite": "Ohio", "valeur": "US-OH"}
+{"entite": "Ohrid", "valeur": "MK-310"}
+{"entite": "Oklahoma", "valeur": "US-OK"}
+{"entite": "Olaine", "valeur": "LV-068"}
+{"entite": "Olancho", "valeur": "HN-OL"}
+{"entite": "Olomouc", "valeur": "CZ-71"}
+{"entite": "Olt", "valeur": "RO-OT"}
+{"entite": "Omaheke", "valeur": "NA-OH"}
+{"entite": "Ombella-M'Poko", "valeur": "CF-MP"}
+{"entite": "Ombrie", "valeur": "IT-55"}
+{"entite": "Ömnögovi", "valeur": "MN-053"}
+{"entite": "Omusati", "valeur": "NA-OS"}
+{"entite": "Ondo", "valeur": "NG-ON"}
+{"entite": "Đồng Nai", "valeur": "VN-39"}
+{"entite": "Đồng Tháp", "valeur": "VN-45"}
+{"entite": "Ontario", "valeur": "CA-ON"}
+{"entite": "Oplotnica", "valeur": "SI-171"}
+{"entite": "Oppland", "valeur": "NO-05"}
+{"entite": "Orange Walk", "valeur": "BZ-OW"}
+{"entite": "Ordino", "valeur": "AD-05"}
+{"entite": "Ordu", "valeur": "TR-52"}
+{"entite": "Ordubad raion", "valeur": "AZ-ORD"}
+{"entite": "Örebro", "valeur": "SE-T"}
+{"entite": "Oregon", "valeur": "US-OR"}
+{"entite": "Orellana", "valeur": "EC-D"}
+{"entite": "Oriental", "valeur": "MA-02"}
+{"entite": "Orkhon", "valeur": "MN-035"}
+{"entite": "Ormož", "valeur": "SI-087"}
+{"entite": "Oromia", "valeur": "ET-OR"}
+{"entite": "Orozgân", "valeur": "AF-URU"}
+{"entite": "Oruro", "valeur": "BO-O"}
+{"entite": "Oshana", "valeur": "NA-ON"}
+{"entite": "Oshikoto", "valeur": "NA-OT"}
+{"entite": "Osijek-Baranja", "valeur": "HR-14"}
+{"entite": "Osilnica", "valeur": "SI-088"}
+{"entite": "Oslomej", "valeur": "MK-57"}
+{"entite": "Osmaniye", "valeur": "TR-80"}
+{"entite": "Ossétie du Nord-Alanie", "valeur": "RU-SE"}
+{"entite": "Östergötland", "valeur": "SE-E"}
+{"entite": "Ostrobotnie", "valeur": "FI-12"}
+{"entite": "Ostrobotnie-Centrale", "valeur": "FI-07"}
+{"entite": "Ostrobotnie du Nord", "valeur": "FI-14"}
+{"entite": "Ostrobotnie du Sud", "valeur": "FI-03"}
+{"entite": "Osun", "valeur": "NG-OS"}
+{"entite": "Otago", "valeur": "NZ-OTA"}
+{"entite": "Otdar Mean Cheay", "valeur": "KH-22"}
+{"entite": "Otjozondjupa", "valeur": "NA-OD"}
+{"entite": "Ouaddaï", "valeur": "TD-OD"}
+{"entite": "Ouaka", "valeur": "CF-UK"}
+{"entite": "Ouargla", "valeur": "DZ-30"}
+{"entite": "Oubri", "valeur": "BF-11"}
+{"entite": "Oudmourtie", "valeur": "RU-UD"}
+{"entite": "Oudômxai", "valeur": "LA-OU"}
+{"entite": "Ouémé", "valeur": "BJ-OU"}
+{"entite": "Ouham", "valeur": "CF-AC"}
+{"entite": "Ouham-Pendé", "valeur": "CF-OP"}
+{"entite": "Oulan-Bator", "valeur": "MN-1"}
+{"entite": "Ouled Djellal", "valeur": "DZ-51"}
+{"entite": "Oulytaou", "valeur": "KZ-62"}
+{"entite": "Oum El Bouaghi", "valeur": "DZ-04"}
+{"entite": "Oumm al Qaïwaïn", "valeur": "AE-UQ"}
+{"entite": "Overijssel", "valeur": "NL-OV"}
+{"entite": "Övörkhangai", "valeur": "MN-055"}
+{"entite": "Oyo", "valeur": "NG-OY"}
+{"entite": "Ozolnieki", "valeur": "LV-069"}
+{"entite": "Pahang", "valeur": "MY-06"}
+{"entite": "Päijät-Häme", "valeur": "FI-16"}
+{"entite": "Pailin", "valeur": "KH-24"}
+{"entite": "Paktîkâ", "valeur": "AF-PKA"}
+{"entite": "Paktiyâ", "valeur": "AF-PIA"}
+{"entite": "Palanga", "valeur": "LT-31"}
+{"entite": "Palauli", "valeur": "WS-PA"}
+{"entite": "La Pampangue", "valeur": "PH-PAM"}
+{"entite": "Pamplemousses", "valeur": "MU-PA"}
+{"entite": "Panama", "valeur": "PA-8"}
+{"entite": "Panama Ouest", "valeur": "PA-10"}
+{"entite": "Panchir", "valeur": "AF-PAN"}
+{"entite": "Pando", "valeur": "BO-N"}
+{"entite": "Papouasie", "valeur": "ID-PA"}
+{"entite": "Papouasie centrale", "valeur": "ID-PT"}
+{"entite": "Papouasie des hautes terres", "valeur": "ID-PE"}
+{"entite": "Papouasie du Sud-Ouest", "valeur": "ID-PD"}
+{"entite": "Papouasie méridionale", "valeur": "ID-PS"}
+{"entite": "Papouasie occidentale", "valeur": "ID-PB"}
+{"entite": "Paraguarí", "valeur": "PY-9"}
+{"entite": "Paraíba", "valeur": "BR-PB"}
+{"entite": "Paramaribo", "valeur": "SR-PM"}
+{"entite": "Paraná", "valeur": "BR-PR"}
+{"entite": "Pardubice", "valeur": "CZ-53"}
+{"entite": "Pārgauja", "valeur": "LV-070"}
+{"entite": "Pärnu", "valeur": "EE-68"}
+{"entite": "paroisse de Clarendon", "valeur": "JM-13"}
+{"entite": "Paroisse de Hanover", "valeur": "JM-09"}
+{"entite": "Paroisse de Saint Ann", "valeur": "JM-06"}
+{"entite": "paroisse de Saint David", "valeur": "GD-02"}
+{"entite": "paroisse de Saint Elizabeth", "valeur": "JM-11"}
+{"entite": "paroisse de Saint George", "valeur": "GD-03"}
+{"entite": "paroisse de Saint Mark", "valeur": "GD-05"}
+{"entite": "paroisse de Saint Patrick", "valeur": "GD-06"}
+{"entite": "Paroisse de Sainte-Catherine", "valeur": "JM-14"}
+{"entite": "paroisse de Trelawny", "valeur": "JM-07"}
+{"entite": "Parwân", "valeur": "AF-PAR"}
+{"entite": "Pasco", "valeur": "PE-PAS"}
+{"entite": "Pastaza", "valeur": "EC-Y"}
+{"entite": "Pathum Thani", "valeur": "TH-13"}
+{"entite": "Pattani", "valeur": "TH-94"}
+{"entite": "Pāvilosta", "valeur": "LV-071"}
+{"entite": "Pavlodar", "valeur": "KZ-55"}
+{"entite": "Pays basque", "valeur": "ES-PV"}
+{"entite": "pays de Galles", "valeur": "GB-WLS"}
+{"entite": "Pays de la Loire", "valeur": "FR-PDL"}
+{"entite": "Paysandú", "valeur": "UY-PA"}
+{"entite": "Pazardjik", "valeur": "BG-13"}
+{"entite": "Pčinja", "valeur": "RS-24"}
+{"entite": "Peć", "valeur": "RS-26"}
+{"entite": "Pécs", "valeur": "HU-PS"}
+{"entite": "Pedernales", "valeur": "DO-16"}
+{"entite": "Pehčevo", "valeur": "MK-208"}
+{"entite": "Pékin", "valeur": "CN-BJ"}
+{"entite": "Peleliu", "valeur": "PW-350"}
+{"entite": "Péloponnèse", "valeur": "GR-J"}
+{"entite": "Pemagatshel", "valeur": "BT-43"}
+{"entite": "Pemba Nord", "valeur": "TZ-06"}
+{"entite": "Pemba Sud", "valeur": "TZ-10"}
+{"entite": "Penal-Debe", "valeur": "TT-PED"}
+{"entite": "Pénama", "valeur": "VU-PAM"}
+{"entite": "Penang", "valeur": "MY-07"}
+{"entite": "péninsule de Zamboanga", "valeur": "PH-09"}
+{"entite": "Pennsylvanie", "valeur": "US-PA"}
+{"entite": "Perak", "valeur": "MY-08"}
+{"entite": "Peravia", "valeur": "DO-17"}
+{"entite": "périphérie d'Attique", "valeur": "GR-I"}
+{"entite": "périphérie des Îles Ioniennes", "valeur": "GR-F"}
+{"entite": "Perlis", "valeur": "MY-09"}
+{"entite": "Pernambouc", "valeur": "BR-PE"}
+{"entite": "Pernik", "valeur": "BG-14"}
+{"entite": "Pesnica", "valeur": "SI-089"}
+{"entite": "Pest", "valeur": "HU-PE"}
+{"entite": "Petén", "valeur": "GT-17"}
+{"entite": "Petites Îles de la Sonde occidentales", "valeur": "ID-NB"}
+{"entite": "Petites Îles de la Sonde orientales", "valeur": "ID-NT"}
+{"entite": "Petrovec", "valeur": "MK-810"}
+{"entite": "Phang Nga", "valeur": "TH-82"}
+{"entite": "Phatthalung", "valeur": "TH-93"}
+{"entite": "Phayao", "valeur": "TH-56"}
+{"entite": "Phetchabun", "valeur": "TH-67"}
+{"entite": "Phetchaburi", "valeur": "TH-76"}
+{"entite": "Phichit", "valeur": "TH-66"}
+{"entite": "Phitsanulok", "valeur": "TH-65"}
+{"entite": "Phnom Penh", "valeur": "KH-12"}
+{"entite": "Phrae", "valeur": "TH-54"}
+{"entite": "Phú Thọ", "valeur": "VN-68"}
+{"entite": "Phú Yên", "valeur": "VN-32"}
+{"entite": "Phuket", "valeur": "TH-83"}
+{"entite": "Piauí", "valeur": "BR-PI"}
+{"entite": "Picardie", "valeur": "FR-S"}
+{"entite": "Pichincha", "valeur": "EC-P"}
+{"entite": "Piémont", "valeur": "IT-21"}
+{"entite": "Pinar del Río", "valeur": "CU-01"}
+{"entite": "Pirkanmaa", "valeur": "FI-11"}
+{"entite": "Pirot", "valeur": "RS-22"}
+{"entite": "Piura", "valeur": "PE-PIU"}
+{"entite": "Pivka", "valeur": "SI-091"}
+{"entite": "Plaines Wilhems", "valeur": "MU-PW"}
+{"entite": "Plaisance", "valeur": "SC-19"}
+{"entite": "Planken", "valeur": "LI-05"}
+{"entite": "Plasnica", "valeur": "MK-311"}
+{"entite": "Plateaux", "valeur": "CG-14"}
+{"entite": "Plav", "valeur": "ME-13"}
+{"entite": "Pļaviņas", "valeur": "LV-072"}
+{"entite": "Pleven", "valeur": "BG-15"}
+{"entite": "Pljevlja", "valeur": "ME-14"}
+{"entite": "Plovdiv", "valeur": "BG-16"}
+{"entite": "Plužine", "valeur": "ME-15"}
+{"entite": "Podčetrtek", "valeur": "SI-092"}
+{"entite": "Podgorica", "valeur": "ME-16"}
+{"entite": "Podlehnik", "valeur": "SI-172"}
+{"entite": "Podunavlje", "valeur": "RS-10"}
+{"entite": "Podvelka", "valeur": "SI-093"}
+{"entite": "Pointe La Rue", "valeur": "SC-20"}
+{"entite": "Poitou-Charentes", "valeur": "FR-T"}
+{"entite": "Poljčane", "valeur": "SI-200"}
+{"entite": "Põlva", "valeur": "EE-64"}
+{"entite": "Polynésie française", "valeur": "FR-PF"}
+{"entite": "Polzela", "valeur": "SI-173"}
+{"entite": "Poméranie", "valeur": "PL-22"}
+{"entite": "Poméranie-Occidentale", "valeur": "PL-32"}
+{"entite": "Pomeroon-Supenaam", "valeur": "GY-PM"}
+{"entite": "Pomoravlje", "valeur": "RS-13"}
+{"entite": "Pool", "valeur": "CG-12"}
+{"entite": "Port-d'Espagne", "valeur": "TT-POS"}
+{"entite": "Port Glaud", "valeur": "SC-21"}
+{"entite": "Port Louis", "valeur": "MU-PL"}
+{"entite": "Port-Saïd", "valeur": "EG-PTS"}
+{"entite": "Portland", "valeur": "JM-04"}
+{"entite": "Porto Rico", "valeur": "US-PR"}
+{"entite": "Portuguesa", "valeur": "VE-P"}
+{"entite": "Potaro-Siparuni", "valeur": "GY-PT"}
+{"entite": "Potosí", "valeur": "BO-P"}
+{"entite": "Pouilles", "valeur": "IT-75"}
+{"entite": "Pouthisat", "valeur": "KH-15"}
+{"entite": "Požega-Slavonie", "valeur": "HR-11"}
+{"entite": "Prachin Buri", "valeur": "TH-25"}
+{"entite": "Prachuap Khiri Khan", "valeur": "TH-77"}
+{"entite": "Prague", "valeur": "CZ-10"}
+{"entite": "Prahova", "valeur": "RO-PH"}
+{"entite": "Praslin", "valeur": "LC-09"}
+{"entite": "Preah Vihear", "valeur": "KH-13"}
+{"entite": "Prebold", "valeur": "SI-174"}
+{"entite": "Preddvor", "valeur": "SI-095"}
+{"entite": "préfecture d'Aichi", "valeur": "JP-23"}
+{"entite": "préfecture d'Akita", "valeur": "JP-05"}
+{"entite": "préfecture d'Aomori", "valeur": "JP-02"}
+{"entite": "préfecture d'Ehime", "valeur": "JP-38"}
+{"entite": "préfecture d'Ibaraki", "valeur": "JP-08"}
+{"entite": "préfecture d'Ishikawa", "valeur": "JP-17"}
+{"entite": "préfecture d'Iwate", "valeur": "JP-03"}
+{"entite": "préfecture d'Ōita", "valeur": "JP-44"}
+{"entite": "préfecture d'Okayama", "valeur": "JP-33"}
+{"entite": "préfecture d'Okinawa", "valeur": "JP-47"}
+{"entite": "préfecture d'Osaka", "valeur": "JP-27"}
+{"entite": "préfecture de Chiba", "valeur": "JP-12"}
+{"entite": "préfecture de Fukui", "valeur": "JP-18"}
+{"entite": "préfecture de Fukuoka", "valeur": "JP-40"}
+{"entite": "préfecture de Fukushima", "valeur": "JP-07"}
+{"entite": "préfecture de Gifu", "valeur": "JP-21"}
+{"entite": "préfecture de Gunma", "valeur": "JP-10"}
+{"entite": "préfecture de Hiroshima", "valeur": "JP-34"}
+{"entite": "préfecture de Hokkaidō", "valeur": "JP-01"}
+{"entite": "préfecture de Hyōgo", "valeur": "JP-28"}
+{"entite": "préfecture de Kagawa", "valeur": "JP-37"}
+{"entite": "préfecture de Kagoshima", "valeur": "JP-46"}
+{"entite": "préfecture de Kanagawa", "valeur": "JP-14"}
+{"entite": "préfecture de Kōchi", "valeur": "JP-39"}
+{"entite": "préfecture de Kumamoto", "valeur": "JP-43"}
+{"entite": "préfecture de Kyoto", "valeur": "JP-26"}
+{"entite": "préfecture de Mie", "valeur": "JP-24"}
+{"entite": "préfecture de Miyagi", "valeur": "JP-04"}
+{"entite": "préfecture de Miyazaki", "valeur": "JP-45"}
+{"entite": "préfecture de Nagano", "valeur": "JP-20"}
+{"entite": "préfecture de Nagasaki", "valeur": "JP-42"}
+{"entite": "préfecture de Nara", "valeur": "JP-29"}
+{"entite": "préfecture de Niigata", "valeur": "JP-15"}
+{"entite": "préfecture de Saga", "valeur": "JP-41"}
+{"entite": "préfecture de Saitama", "valeur": "JP-11"}
+{"entite": "préfecture de Shiga", "valeur": "JP-25"}
+{"entite": "préfecture de Shimane", "valeur": "JP-32"}
+{"entite": "préfecture de Shizuoka", "valeur": "JP-22"}
+{"entite": "préfecture de Tirana", "valeur": "AL-11"}
+{"entite": "préfecture de Tochigi", "valeur": "JP-09"}
+{"entite": "préfecture de Tokushima", "valeur": "JP-36"}
+{"entite": "préfecture de Tottori", "valeur": "JP-31"}
+{"entite": "préfecture de Toyama", "valeur": "JP-16"}
+{"entite": "préfecture de Wakayama", "valeur": "JP-30"}
+{"entite": "préfecture de Yamagata", "valeur": "JP-06"}
+{"entite": "préfecture de Yamaguchi", "valeur": "JP-35"}
+{"entite": "préfecture de Yamanashi", "valeur": "JP-19"}
+{"entite": "Preiļi", "valeur": "LV-073"}
+{"entite": "Presidente Hayes", "valeur": "PY-15"}
+{"entite": "Prevalje", "valeur": "SI-175"}
+{"entite": "Prey Veng", "valeur": "KH-14"}
+{"entite": "Priekule", "valeur": "LV-074"}
+{"entite": "Priekuļi", "valeur": "LV-075"}
+{"entite": "Prienai", "valeur": "LT-36"}
+{"entite": "Prilep", "valeur": "MK-508"}
+{"entite": "Primorje-Gorski Kotar", "valeur": "HR-08"}
+{"entite": "Princes Town", "valeur": "TT-PRT"}
+{"entite": "Prizren", "valeur": "RS-27"}
+{"entite": "Probištip", "valeur": "MK-209"}
+{"entite": "Provence-Alpes-Côte d'Azur", "valeur": "FR-PAC"}
+{"entite": "province d'Aklan", "valeur": "PH-AKL"}
+{"entite": "province d'Andijan", "valeur": "UZ-AN"}
+{"entite": "province d'Antalya", "valeur": "TR-07"}
+{"entite": "province d'Antananarivo", "valeur": "MG-T"}
+{"entite": "province d'Antsiranana", "valeur": "MG-D"}
+{"entite": "province d'Artemisa", "valeur": "CU-15"}
+{"entite": "province d'Isabel", "valeur": "SB-IS"}
+{"entite": "Province d’Oudon-Thani", "valeur": "TH-41"}
+{"entite": "province d'Oulu", "valeur": "FI-OL"}
+{"entite": "province de Apayao", "valeur": "PH-APA"}
+{"entite": "province de Bali", "valeur": "ID-BA"}
+{"entite": "province de Bình Định", "valeur": "VN-31"}
+{"entite": "Province de Bubanza", "valeur": "BI-BB"}
+{"entite": "province de Buenos Aires", "valeur": "AR-B"}
+{"entite": "Province de Bujumbura Mairie", "valeur": "BI-BM"}
+{"entite": "Province de Bujumbura rural", "valeur": "BI-BL"}
+{"entite": "province de Bukidnon", "valeur": "PH-BUK"}
+{"entite": "province de Bulawayo", "valeur": "ZW-BU"}
+{"entite": "Province de Bururi", "valeur": "BI-BR"}
+{"entite": "Province de Cankuzo", "valeur": "BI-CA"}
+{"entite": "province de Cavite", "valeur": "PH-CAV"}
+{"entite": "province de Choiseul", "valeur": "SB-CH"}
+{"entite": "Province de Cibitoke", "valeur": "BI-CI"}
+{"entite": "province de Djalal-Abad", "valeur": "KG-J"}
+{"entite": "province de Fianarantsoa", "valeur": "MG-F"}
+{"entite": "province de Guadalcanal", "valeur": "SB-GU"}
+{"entite": "Province de Hà Tây", "valeur": "VN-15"}
+{"entite": "province de Kalinga", "valeur": "PH-KAL"}
+{"entite": "Province de Kars", "valeur": "TR-36"}
+{"entite": "Province de Karuzi", "valeur": "BI-KR"}
+{"entite": "Province de Kayanza", "valeur": "BI-KY"}
+{"entite": "province de Khonkèn", "valeur": "TH-40"}
+{"entite": "Province de Kirundo", "valeur": "BI-KI"}
+{"entite": "province de La Habana", "valeur": "CU-02"}
+{"entite": "province de La Pampa", "valeur": "AR-L"}
+{"entite": "province de Lima", "valeur": "PE-LMA"}
+{"entite": "province de Louang-Phabang", "valeur": "LA-LP"}
+{"entite": "province de Majunga", "valeur": "MG-M"}
+{"entite": "Province de Makamba", "valeur": "BI-MA"}
+{"entite": "province de Makira-Ulawa", "valeur": "SB-MK"}
+{"entite": "province de Malaita", "valeur": "SB-ML"}
+{"entite": "Province de Maputo", "valeur": "MZ-L"}
+{"entite": "province de Markazi", "valeur": "IR-00"}
+{"entite": "Province de Muramvya", "valeur": "BI-MU"}
+{"entite": "Province de Muyinga", "valeur": "BI-MY"}
+{"entite": "Province de Mwaro", "valeur": "BI-MW"}
+{"entite": "Province de Ngozi", "valeur": "BI-NG"}
+{"entite": "province de Nongboualamphou", "valeur": "TH-39"}
+{"entite": "province de Nongkhai", "valeur": "TH-43"}
+{"entite": "province de Palawan", "valeur": "PH-PLW"}
+{"entite": "Province de Phôngsali", "valeur": "LA-PH"}
+{"entite": "province de Ranong", "valeur": "TH-85"}
+{"entite": "province de Rennell et Bellona", "valeur": "SB-RB"}
+{"entite": "Province de Rumonge", "valeur": "BI-RM"}
+{"entite": "Province de Rutana", "valeur": "BI-RT"}
+{"entite": "Province de Ruyigi", "valeur": "BI-RY"}
+{"entite": "Province de Siem Reap", "valeur": "KH-17"}
+{"entite": "province de Taïwan", "valeur": "CN-TW"}
+{"entite": "province de Tamatave", "valeur": "MG-A"}
+{"entite": "province de Tbong Khmum", "valeur": "KH-25"}
+{"entite": "province de Tchouï", "valeur": "KG-C"}
+{"entite": "province de Temotu", "valeur": "SB-TE"}
+{"entite": "province de Toliara", "valeur": "MG-U"}
+{"entite": "province de Xaignabouli", "valeur": "LA-XA"}
+{"entite": "province de Zaïre", "valeur": "AO-ZAI"}
+{"entite": "province des Îles Dinagat", "valeur": "PH-DIN"}
+{"entite": "Province du Centre", "valeur": "LK-2"}
+{"entite": "Province du Centre-Nord", "valeur": "LK-7"}
+{"entite": "province du Kwango", "valeur": "CD-KG"}
+{"entite": "Province Méridionale", "valeur": "ZM-07"}
+{"entite": "province nord", "valeur": "PG-NPP"}
+{"entite": "Province Nord-Occidentale", "valeur": "ZM-06"}
+{"entite": "Province Septentrionale", "valeur": "ZM-05"}
+{"entite": "Puebla", "valeur": "MX-PUE"}
+{"entite": "Puerto Plata", "valeur": "DO-18"}
+{"entite": "Punakha", "valeur": "BT-23"}
+{"entite": "Puno", "valeur": "PE-PUN"}
+{"entite": "Puntarenas", "valeur": "CR-P"}
+{"entite": "Pusan", "valeur": "KR-26"}
+{"entite": "Putumayo", "valeur": "CO-PUT"}
+{"entite": "Pwani", "valeur": "TZ-19"}
+{"entite": "Pyongan du Nord", "valeur": "KP-03"}
+{"entite": "Pyongan du Sud", "valeur": "KP-02"}
+{"entite": "Pyongyang", "valeur": "KP-01"}
+{"entite": "Qabala", "valeur": "AZ-QAB"}
+{"entite": "Qacha's Nek", "valeur": "LS-H"}
+{"entite": "Qalyubiya", "valeur": "EG-KB"}
+{"entite": "Qasim", "valeur": "SA-05"}
+{"entite": "Qax", "valeur": "AZ-QAX"}
+{"entite": "Qazax", "valeur": "AZ-QAZ"}
+{"entite": "Qazvin", "valeur": "IR-26"}
+{"entite": "Qena", "valeur": "EG-KN"}
+{"entite": "Qeqertalik", "valeur": "GL-QT"}
+{"entite": "Qeqqata", "valeur": "GL-QE"}
+{"entite": "Qinghai", "valeur": "CN-QH"}
+{"entite": "Qobustan", "valeur": "AZ-QOB"}
+{"entite": "Qom", "valeur": "IR-25"}
+{"entite": "Quảng Bình", "valeur": "VN-24"}
+{"entite": "Quảng Nam", "valeur": "VN-27"}
+{"entite": "Quảng Ngãi", "valeur": "VN-29"}
+{"entite": "Quảng Ninh", "valeur": "VN-13"}
+{"entite": "Quảng Trị", "valeur": "VN-25"}
+{"entite": "Quba", "valeur": "AZ-QBA"}
+{"entite": "Qubadli", "valeur": "AZ-QBI"}
+{"entite": "Québec", "valeur": "CA-QC"}
+{"entite": "Queensland", "valeur": "AU-QLD"}
+{"entite": "Querétaro", "valeur": "MX-QUE"}
+{"entite": "Quetzaltenango", "valeur": "GT-09"}
+{"entite": "Quiché", "valeur": "GT-14"}
+{"entite": "Quindío", "valeur": "CO-QUI"}
+{"entite": "Quintana Roo", "valeur": "MX-ROO"}
+{"entite": "Qusar", "valeur": "AZ-QUS"}
+{"entite": "Quthing", "valeur": "LS-G"}
+{"entite": "Raa", "valeur": "MV-13"}
+{"entite": "Rabat-Salé-Kénitra", "valeur": "MA-04"}
+{"entite": "Rače-Fram", "valeur": "SI-098"}
+{"entite": "Radenci", "valeur": "SI-100"}
+{"entite": "Radlje ob Dravi", "valeur": "SI-101"}
+{"entite": "Radoviš", "valeur": "MK-409"}
+{"entite": "Radovljica", "valeur": "SI-102"}
+{"entite": "Radviliškis", "valeur": "LT-37"}
+{"entite": "Ragged Island", "valeur": "BS-RI"}
+{"entite": "Raima", "valeur": "YE-RA"}
+{"entite": "raion d'Orhei", "valeur": "MD-OR"}
+{"entite": "Rajasthan", "valeur": "IN-RJ"}
+{"entite": "Rajshahi", "valeur": "BD-E"}
+{"entite": "Rakhine", "valeur": "MM-16"}
+{"entite": "Rangoun", "valeur": "MM-06"}
+{"entite": "Rangpur", "valeur": "BD-F"}
+{"entite": "Rankovce", "valeur": "MK-705"}
+{"entite": "Rapla", "valeur": "EE-71"}
+{"entite": "Ras el Khaïmah", "valeur": "AE-RK"}
+{"entite": "Raseiniai", "valeur": "LT-38"}
+{"entite": "Rasina", "valeur": "RS-19"}
+{"entite": "Raška", "valeur": "RS-18"}
+{"entite": "Rasŏn", "valeur": "KP-13"}
+{"entite": "Ratcha-Letchkhoumie et Basse-Svanétie", "valeur": "GE-RL"}
+{"entite": "Ratchaburi", "valeur": "TH-70"}
+{"entite": "Rauna", "valeur": "LV-076"}
+{"entite": "Rayong", "valeur": "TH-21"}
+{"entite": "Razgrad", "valeur": "BG-17"}
+{"entite": "récif Kingman", "valeur": "UM-89"}
+{"entite": "Redonda", "valeur": "AG-11"}
+{"entite": "Région administrative de la Cordillère", "valeur": "PH-15"}
+{"entite": "Région autonome de Bougainville", "valeur": "PG-NSB"}
+{"entite": "région autonome de la Côte caraïbe Sud", "valeur": "NI-AS"}
+{"entite": "région autonome du Tibet", "valeur": "CN-XZ"}
+{"entite": "Région Bono", "valeur": "GH-BO"}
+{"entite": "Région Centrale", "valeur": "TG-C"}
+{"entite": "Région continentale", "valeur": "GQ-C"}
+{"entite": "Région d'Ahafo", "valeur": "GH-AF"}
+{"entite": "Région d'Antofagasta", "valeur": "CL-AN"}
+{"entite": "Région d'Auckland", "valeur": "NZ-AUK"}
+{"entite": "Région d'Oti", "valeur": "GH-OT"}
+{"entite": "région d'Ústí nad Labem", "valeur": "CZ-42"}
+{"entite": "Région de Bandiagara", "valeur": "ML-19"}
+{"entite": "région de Banská Bystrica", "valeur": "SK-BC"}
+{"entite": "Région de Bougouni", "valeur": "ML-15"}
+{"entite": "région de Bratislava", "valeur": "SK-BL"}
+{"entite": "Région de Bruxelles-Capitale", "valeur": "BE-BRU"}
+{"entite": "région de Daérah Istiméwa Yogyakarta", "valeur": "ID-YO"}
+{"entite": "région de développement Centre", "valeur": "NP-1"}
+{"entite": "région de développement Est", "valeur": "NP-4"}
+{"entite": "région de développement Moyen-Ouest", "valeur": "NP-2"}
+{"entite": "région de développement Ouest", "valeur": "NP-3"}
+{"entite": "Région de Dioïla", "valeur": "ML-13"}
+{"entite": "Région de Douentza", "valeur": "ML-18"}
+{"entite": "Région de Geita", "valeur": "TZ-27"}
+{"entite": "région de Hradec Králové", "valeur": "CZ-52"}
+{"entite": "Région de Katavi", "valeur": "TZ-28"}
+{"entite": "Région de Kédougou", "valeur": "SN-KE"}
+{"entite": "Région de Kindia", "valeur": "GN-D"}
+{"entite": "Région de Kita", "valeur": "ML-12"}
+{"entite": "région de Košice", "valeur": "SK-KI"}
+{"entite": "Région de Koutiala", "valeur": "ML-16"}
+{"entite": "région de Krasnodar", "valeur": "RU-KDA"}
+{"entite": "Région de la Kara", "valeur": "TG-K"}
+{"entite": "région de Liberec", "valeur": "CZ-51"}
+{"entite": "région de Mamou", "valeur": "GN-M"}
+{"entite": "Région de Ménaka", "valeur": "ML-9"}
+{"entite": "région de Murcie", "valeur": "ES-MC"}
+{"entite": "Région de Nara", "valeur": "ML-14"}
+{"entite": "Région de Nioro du Sahel", "valeur": "ML-11"}
+{"entite": "région de Nitra", "valeur": "SK-NI"}
+{"entite": "Région de Njombe", "valeur": "TZ-29"}
+{"entite": "région de Pilsen", "valeur": "CZ-32"}
+{"entite": "région de Prešov", "valeur": "SK-PV"}
+{"entite": "région de San", "valeur": "ML-17"}
+{"entite": "Région de Sikasso", "valeur": "ML-3"}
+{"entite": "région de Songwe", "valeur": "TZ-31"}
+{"entite": "Région de Taoudénit", "valeur": "ML-10"}
+{"entite": "région de Tombouctou", "valeur": "ML-6"}
+{"entite": "région de Trenčín", "valeur": "SK-TC"}
+{"entite": "région de Trnava", "valeur": "SK-TA"}
+{"entite": "région de Žilina", "valeur": "SK-ZI"}
+{"entite": "Région des Fleuves", "valeur": "CL-LR"}
+{"entite": "région des Lacs", "valeur": "CL-LL"}
+{"entite": "Région des nations, nationalités et peuples du Sud", "valeur": "ET-SN"}
+{"entite": "Région des Plateaux", "valeur": "TG-P"}
+{"entite": "Région des Savanes", "valeur": "TG-S"}
+{"entite": "Région du Centre", "valeur": "GH-CP"}
+{"entite": "Région du Nord", "valeur": "GH-NP"}
+{"entite": "Région du Nord Ouest", "valeur": "GH-WN"}
+{"entite": "Région flamande", "valeur": "BE-VLG"}
+{"entite": "Région insulaire", "valeur": "GQ-I"}
+{"entite": "Région Maritime", "valeur": "TG-M"}
+{"entite": "Région Nord", "valeur": "MW-N"}
+{"entite": "Région Nord-Est", "valeur": "GH-NE"}
+{"entite": "Région Occidentale", "valeur": "GH-WP"}
+{"entite": "Région Orientale", "valeur": "GH-EP"}
+{"entite": "Région wallonne", "valeur": "BE-WAL"}
+{"entite": "Relizane", "valeur": "DZ-48"}
+{"entite": "Renče-Vogrsko", "valeur": "SI-201"}
+{"entite": "république autonome de Crimée", "valeur": "UA-43"}
+{"entite": "république de l'Altaï", "valeur": "RU-AL"}
+{"entite": "république de Sakha", "valeur": "RU-SA"}
+{"entite": "république des Komis", "valeur": "RU-KO"}
+{"entite": "Resen", "valeur": "MK-509"}
+{"entite": "Retalhuleu", "valeur": "GT-11"}
+{"entite": "La Réunion", "valeur": "FR-974"}
+{"entite": "Rezina", "valeur": "MD-RE"}
+{"entite": "Rhénanie-du-Nord-Westphalie", "valeur": "DE-NW"}
+{"entite": "Rhénanie-Palatinat", "valeur": "DE-RP"}
+{"entite": "Rhode Island", "valeur": "US-RI"}
+{"entite": "Rhône-Alpes", "valeur": "FR-V"}
+{"entite": "Riau", "valeur": "ID-RI"}
+{"entite": "Ribnica", "valeur": "SI-104"}
+{"entite": "Ribnica na Pohorju", "valeur": "SI-177"}
+{"entite": "Riebiņi", "valeur": "LV-078"}
+{"entite": "Rietavas", "valeur": "LT-39"}
+{"entite": "Riga", "valeur": "LV-RIX"}
+{"entite": "Rio Claro-Mayaro", "valeur": "TT-MRC"}
+{"entite": "Rio Grande do Norte", "valeur": "BR-RN"}
+{"entite": "Rio Grande do Sul", "valeur": "BR-RS"}
+{"entite": "Risaralda", "valeur": "CO-RIS"}
+{"entite": "Rîșcani", "valeur": "MD-RI"}
+{"entite": "River Cess", "valeur": "LR-RI"}
+{"entite": "River Gee", "valeur": "LR-RG"}
+{"entite": "Rivera", "valeur": "UY-RV"}
+{"entite": "Rivers", "valeur": "NG-RI"}
+{"entite": "La Rivière Anglaise", "valeur": "SC-16"}
+{"entite": "Rivière du Rempart", "valeur": "MU-RR"}
+{"entite": "Riyad", "valeur": "SA-01"}
+{"entite": "Rizal", "valeur": "PH-RIZ"}
+{"entite": "Rize", "valeur": "TR-53"}
+{"entite": "Rocha", "valeur": "UY-RO"}
+{"entite": "Roche Caïman", "valeur": "SC-25"}
+{"entite": "Rodrigues", "valeur": "MU-RO"}
+{"entite": "Rogaland", "valeur": "NO-11"}
+{"entite": "Rogaška Slatina", "valeur": "SI-106"}
+{"entite": "Rogašovci", "valeur": "SI-105"}
+{"entite": "Rogatec", "valeur": "SI-107"}
+{"entite": "Roi Et", "valeur": "TH-45"}
+{"entite": "Roja", "valeur": "LV-079"}
+{"entite": "Rokiškis", "valeur": "LT-40"}
+{"entite": "La Romana", "valeur": "DO-12"}
+{"entite": "Romblon", "valeur": "PH-ROM"}
+{"entite": "Rondônia", "valeur": "BR-RO"}
+{"entite": "Ropaži", "valeur": "LV-080"}
+{"entite": "Roraima", "valeur": "BR-RR"}
+{"entite": "Rosoman", "valeur": "MK-107"}
+{"entite": "Rotanah Kiri", "valeur": "KH-16"}
+{"entite": "Rotuma", "valeur": "FJ-R"}
+{"entite": "Roussé", "valeur": "BG-18"}
+{"entite": "Rožaje", "valeur": "ME-17"}
+{"entite": "Rucava", "valeur": "LV-081"}
+{"entite": "Rugāji", "valeur": "LV-082"}
+{"entite": "Ruggell", "valeur": "LI-06"}
+{"entite": "Rūjiena", "valeur": "LV-084"}
+{"entite": "Rukwa", "valeur": "TZ-20"}
+{"entite": "Rundāle", "valeur": "LV-083"}
+{"entite": "Ruvuma", "valeur": "TZ-21"}
+{"entite": "Ryanggang", "valeur": "KP-10"}
+{"entite": "Şəki", "valeur": "AZ-SAK"}
+{"entite": "Şəmkir", "valeur": "AZ-SKR"}
+{"entite": "Sør-Trøndelag", "valeur": "NO-16"}
+{"entite": "Şırnak", "valeur": "TR-73"}
+{"entite": "Sa Kaeo", "valeur": "TH-27"}
+{"entite": "Saare", "valeur": "EE-74"}
+{"entite": "Saatlı", "valeur": "AZ-SAT"}
+{"entite": "Sabah", "valeur": "MY-12"}
+{"entite": "Sabaragamuwa", "valeur": "LK-9"}
+{"entite": "Sabirabad", "valeur": "AZ-SAB"}
+{"entite": "Şabran", "valeur": "AZ-SBN"}
+{"entite": "Sacatepéquez", "valeur": "GT-03"}
+{"entite": "Sadarak", "valeur": "AZ-SAD"}
+{"entite": "Sagaing", "valeur": "MM-01"}
+{"entite": "Saïda", "valeur": "DZ-20"}
+{"entite": "Saint-Anne Sandy Point", "valeur": "KN-02"}
+{"entite": "Saint-Barthélemy", "valeur": "FR-BL"}
+{"entite": "Saint-Brandon", "valeur": "MU-CC"}
+{"entite": "Saint-Christophe", "valeur": "KN-K"}
+{"entite": "Saint-George Basseterre", "valeur": "KN-03"}
+{"entite": "Saint-George Gingerland", "valeur": "KN-04"}
+{"entite": "Saint-James Windward", "valeur": "KN-05"}
+{"entite": "Saint-John Capisterre", "valeur": "KN-06"}
+{"entite": "Saint-John Figtree", "valeur": "KN-07"}
+{"entite": "Saint Lucy", "valeur": "BB-07"}
+{"entite": "Saint-Luke", "valeur": "DM-07"}
+{"entite": "Saint-Marin", "valeur": "SM-07"}
+{"entite": "Saint-Mark", "valeur": "DM-08"}
+{"entite": "Saint-Martin", "valeur": "FR-MF"}
+{"entite": "Saint-Mary Cayon", "valeur": "KN-08"}
+{"entite": "Saint Michael", "valeur": "BB-08"}
+{"entite": "Saint-Paul Capisterre", "valeur": "KN-09"}
+{"entite": "Saint-Paul Charlestown", "valeur": "KN-10"}
+{"entite": "Saint-Peter Basseterre", "valeur": "KN-11"}
+{"entite": "Saint-Pétersbourg", "valeur": "RU-SPE"}
+{"entite": "Saint-Pierre-et-Miquelon", "valeur": "FR-PM"}
+{"entite": "Saint-Thomas Lowland", "valeur": "KN-12"}
+{"entite": "Saint-Thomas Middle Island", "valeur": "KN-13"}
+{"entite": "Sakarya", "valeur": "TR-54"}
+{"entite": "Šakiai", "valeur": "LT-41"}
+{"entite": "Sakon Nakhon", "valeur": "TH-47"}
+{"entite": "Sala", "valeur": "LV-085"}
+{"entite": "Salacgrīva", "valeur": "LV-086"}
+{"entite": "Salah ad-Din", "valeur": "IQ-SD"}
+{"entite": "Sălaj", "valeur": "RO-SJ"}
+{"entite": "Salamat", "valeur": "TD-SA"}
+{"entite": "Salaspils", "valeur": "LV-087"}
+{"entite": "Salavan", "valeur": "LA-SL"}
+{"entite": "Šalčininkai", "valeur": "LT-42"}
+{"entite": "Saldus", "valeur": "LV-088"}
+{"entite": "Salgótarján", "valeur": "HU-ST"}
+{"entite": "Salta", "valeur": "AR-A"}
+{"entite": "Salto", "valeur": "UY-SA"}
+{"entite": "Salyan", "valeur": "AZ-SAL"}
+{"entite": "Salzbourg", "valeur": "AT-5"}
+{"entite": "Samaná", "valeur": "DO-20"}
+{"entite": "Samangân", "valeur": "AF-SAM"}
+{"entite": "Samar", "valeur": "PH-WSA"}
+{"entite": "Samar du Nord", "valeur": "PH-NSA"}
+{"entite": "Samar oriental", "valeur": "PH-EAS"}
+{"entite": "Samarcande", "valeur": "UZ-SA"}
+{"entite": "Şamaxı", "valeur": "AZ-SMI"}
+{"entite": "Samdrup Jongkhar", "valeur": "BT-45"}
+{"entite": "Samoa américaines", "valeur": "US-AS"}
+{"entite": "Samsun", "valeur": "TR-55"}
+{"entite": "Samtse", "valeur": "BT-14"}
+{"entite": "Samtskhé-Djavakhétie", "valeur": "GE-SJ"}
+{"entite": "Samut Prakan", "valeur": "TH-11"}
+{"entite": "Samut Sakhon", "valeur": "TH-74"}
+{"entite": "Samut Songkhram", "valeur": "TH-75"}
+{"entite": "Samux", "valeur": "AZ-SMX"}
+{"entite": "San Cristóbal", "valeur": "DO-21"}
+{"entite": "San Fernando", "valeur": "TT-SFO"}
+{"entite": "San José de Ocoa", "valeur": "DO-31"}
+{"entite": "San Juan-Laventille", "valeur": "TT-SJL"}
+{"entite": "San Luis", "valeur": "AR-D"}
+{"entite": "San Luis Potosí", "valeur": "MX-SLP"}
+{"entite": "San Marcos", "valeur": "GT-12"}
+{"entite": "San Martín", "valeur": "PE-SAM"}
+{"entite": "San Miguel", "valeur": "SV-SM"}
+{"entite": "San Pedro", "valeur": "PY-2"}
+{"entite": "San Pedro de Macorís", "valeur": "DO-23"}
+{"entite": "San Vicente", "valeur": "SV-SV"}
+{"entite": "Sanaa", "valeur": "YE-SN"}
+{"entite": "Sánchez Ramírez", "valeur": "DO-24"}
+{"entite": "Sancti Spíritus", "valeur": "CU-07"}
+{"entite": "Sandaun", "valeur": "PG-SAN"}
+{"entite": "Sangha-Mbaéré", "valeur": "CF-SE"}
+{"entite": "Sangre Grande", "valeur": "TT-SGE"}
+{"entite": "Sankuru", "valeur": "CD-SA"}
+{"entite": "Şanlıurfa", "valeur": "TR-63"}
+{"entite": "Sanma", "valeur": "VU-SAM"}
+{"entite": "Sannar", "valeur": "SD-SI"}
+{"entite": "Sant Julià de Lòria", "valeur": "AD-06"}
+{"entite": "Santa Ana", "valeur": "SV-SA"}
+{"entite": "Santa Bárbara", "valeur": "HN-SB"}
+{"entite": "Santa Catarina", "valeur": "BR-SC"}
+{"entite": "Santa Elena", "valeur": "EC-SE"}
+{"entite": "Santa Fe", "valeur": "AR-S"}
+{"entite": "Santa Rosa", "valeur": "GT-06"}
+{"entite": "Santander", "valeur": "CO-SAN"}
+{"entite": "Santarém", "valeur": "PT-14"}
+{"entite": "Santiago de Cuba", "valeur": "CU-13"}
+{"entite": "Santiago del Estero", "valeur": "AR-G"}
+{"entite": "Santiago Rodríguez", "valeur": "DO-26"}
+{"entite": "Santo Domingo", "valeur": "DO-32"}
+{"entite": "Santo Domingo de los Tsáchilas", "valeur": "EC-SD"}
+{"entite": "São Paulo", "valeur": "BR-SP"}
+{"entite": "Sar-é Pol", "valeur": "AF-SAR"}
+{"entite": "Saraburi", "valeur": "TH-19"}
+{"entite": "Saraj", "valeur": "MK-811"}
+{"entite": "Saramacca", "valeur": "SR-SA"}
+{"entite": "Sarangani", "valeur": "PH-SAR"}
+{"entite": "Sarawak", "valeur": "MY-13"}
+{"entite": "Sardaigne", "valeur": "IT-88"}
+{"entite": "Sarpang", "valeur": "BT-31"}
+{"entite": "Sarre", "valeur": "DE-SL"}
+{"entite": "Saskatchewan", "valeur": "CA-SK"}
+{"entite": "Satakunta", "valeur": "FI-17"}
+{"entite": "Satu Mare", "valeur": "RO-SM"}
+{"entite": "Satun", "valeur": "TH-91"}
+{"entite": "Satupa'itea", "valeur": "WS-SA"}
+{"entite": "Saulkrasti", "valeur": "LV-089"}
+{"entite": "Savannah Region", "valeur": "GH-SV"}
+{"entite": "Savannakhét", "valeur": "LA-SV"}
+{"entite": "Savanne", "valeur": "MU-SA"}
+{"entite": "Šavnik", "valeur": "ME-18"}
+{"entite": "Savonie du Nord", "valeur": "FI-15"}
+{"entite": "Savonie du Sud", "valeur": "FI-04"}
+{"entite": "Saxe", "valeur": "DE-SN"}
+{"entite": "Saxe-Anhalt", "valeur": "DE-ST"}
+{"entite": "Schaan", "valeur": "LI-07"}
+{"entite": "Schellenberg", "valeur": "LI-08"}
+{"entite": "Schleswig-Holstein", "valeur": "DE-SH"}
+{"entite": "Sébastopol", "valeur": "UA-40"}
+{"entite": "Sebha", "valeur": "LY-SB"}
+{"entite": "Sédhiou", "valeur": "SN-SE"}
+{"entite": "Ségou", "valeur": "ML-4"}
+{"entite": "Sēja", "valeur": "LV-090"}
+{"entite": "Sejong", "valeur": "KR-50"}
+{"entite": "Selangor", "valeur": "MY-10"}
+{"entite": "Selenge", "valeur": "MN-049"}
+{"entite": "Selnica ob Dravi", "valeur": "SI-178"}
+{"entite": "Semien-Keih-Bahri", "valeur": "ER-SK"}
+{"entite": "Semnan", "valeur": "IR-20"}
+{"entite": "Šempeter-Vrtojba", "valeur": "SI-183"}
+{"entite": "Šenčur", "valeur": "SI-117"}
+{"entite": "Šentilj", "valeur": "SI-118"}
+{"entite": "Šentjernej", "valeur": "SI-119"}
+{"entite": "Séoul", "valeur": "KR-11"}
+{"entite": "Sepik oriental", "valeur": "PG-ESW"}
+{"entite": "Sergipe", "valeur": "BR-SE"}
+{"entite": "Sermersooq", "valeur": "GL-SM"}
+{"entite": "Serravalle", "valeur": "SM-09"}
+{"entite": "Setúbal", "valeur": "PT-15"}
+{"entite": "Sfax", "valeur": "TN-61"}
+{"entite": "Shaanxi", "valeur": "CN-SN"}
+{"entite": "Shakhbuz raion", "valeur": "AZ-SAH"}
+{"entite": "Shan", "valeur": "MM-17"}
+{"entite": "Shandong", "valeur": "CN-SD"}
+{"entite": "Shanghaï", "valeur": "CN-SH"}
+{"entite": "Shanxi", "valeur": "CN-SX"}
+{"entite": "Sharur raion", "valeur": "AZ-SAR"}
+{"entite": "Shaviyani", "valeur": "MV-24"}
+{"entite": "Shéfa", "valeur": "VU-SEE"}
+{"entite": "Shinyanga", "valeur": "TZ-22"}
+{"entite": "Shirak", "valeur": "AM-SH"}
+{"entite": "Shiselweni", "valeur": "SZ-SH"}
+{"entite": "Shkodër", "valeur": "AL-10"}
+{"entite": "Si Saket", "valeur": "TH-33"}
+{"entite": "Siaya", "valeur": "KE-38"}
+{"entite": "Šibenik-Knin", "valeur": "HR-15"}
+{"entite": "Sibiu", "valeur": "RO-SB"}
+{"entite": "Sichuan", "valeur": "CN-SC"}
+{"entite": "Sicile", "valeur": "IT-82"}
+{"entite": "Sidama", "valeur": "ET-SI"}
+{"entite": "Sidi Bel Abbès", "valeur": "DZ-22"}
+{"entite": "Sidi Bouzid", "valeur": "TN-43"}
+{"entite": "Sigulda", "valeur": "LV-091"}
+{"entite": "Sihanoukville", "valeur": "KH-18"}
+{"entite": "Siirt", "valeur": "TR-56"}
+{"entite": "Sikkim", "valeur": "IN-SK"}
+{"entite": "Sila", "valeur": "TD-SI"}
+{"entite": "Šilalė", "valeur": "LT-45"}
+{"entite": "Siliana", "valeur": "TN-34"}
+{"entite": "Silistra", "valeur": "BG-19"}
+{"entite": "Šilutė", "valeur": "LT-46"}
+{"entite": "Simbu", "valeur": "PG-CPK"}
+{"entite": "Simiyu", "valeur": "TZ-30"}
+{"entite": "Sinaï Nord", "valeur": "EG-SIN"}
+{"entite": "Sinaï Sud", "valeur": "EG-JS"}
+{"entite": "Sinaloa", "valeur": "MX-SIN"}
+{"entite": "Sind", "valeur": "PK-SD"}
+{"entite": "Sing Buri", "valeur": "TH-17"}
+{"entite": "Singapour central", "valeur": "SG-01"}
+{"entite": "Sîngerei", "valeur": "MD-SI"}
+{"entite": "Singida", "valeur": "TZ-23"}
+{"entite": "Sinoe", "valeur": "LR-SI"}
+{"entite": "Sinop", "valeur": "TR-57"}
+{"entite": "Sipaliwini", "valeur": "SR-SI"}
+{"entite": "Siparia", "valeur": "TT-SIP"}
+{"entite": "Şirvan", "valeur": "AZ-SR"}
+{"entite": "Sisak-Moslavina", "valeur": "HR-03"}
+{"entite": "Sistan-et-Baloutchistan", "valeur": "IR-11"}
+{"entite": "Sivas", "valeur": "TR-58"}
+{"entite": "Siyəzən", "valeur": "AZ-SIY"}
+{"entite": "Sjælland", "valeur": "DK-85"}
+{"entite": "Škocjan", "valeur": "SI-121"}
+{"entite": "Škofja Loka", "valeur": "SI-122"}
+{"entite": "Škofljica", "valeur": "SI-123"}
+{"entite": "Skrīveri", "valeur": "LV-092"}
+{"entite": "Skrunda", "valeur": "LV-093"}
+{"entite": "Skuodas", "valeur": "LT-48"}
+{"entite": "Sliven", "valeur": "BG-20"}
+{"entite": "Slovenj Gradec", "valeur": "SI-112"}
+{"entite": "Slovenske Konjice", "valeur": "SI-114"}
+{"entite": "Šmarje pri Jelšah", "valeur": "SI-124"}
+{"entite": "Šmartno ob Paki", "valeur": "SI-125"}
+{"entite": "Smiltene", "valeur": "LV-094"}
+{"entite": "Smolyan", "valeur": "BG-21"}
+{"entite": "Sóc Trăng", "valeur": "VN-52"}
+{"entite": "Soccsksargen", "valeur": "PH-12"}
+{"entite": "Socotra", "valeur": "YE-SU"}
+{"entite": "Södermanland", "valeur": "SE-D"}
+{"entite": "Sodražica", "valeur": "SI-179"}
+{"entite": "Sofala", "valeur": "MZ-S"}
+{"entite": "Sofia", "valeur": "BG-23"}
+{"entite": "Sofia-ville", "valeur": "BG-22"}
+{"entite": "Sogn og Fjordane", "valeur": "NO-14"}
+{"entite": "Sohag", "valeur": "EG-SHG"}
+{"entite": "Sokoto", "valeur": "NG-SO"}
+{"entite": "Solčava", "valeur": "SI-180"}
+{"entite": "Șoldănești", "valeur": "MD-SD"}
+{"entite": "Sololá", "valeur": "GT-07"}
+{"entite": "Somali", "valeur": "ET-SO"}
+{"entite": "Somogy", "valeur": "HU-SO"}
+{"entite": "Sơn La", "valeur": "VN-05"}
+{"entite": "Songkhla", "valeur": "TH-90"}
+{"entite": "Sonora", "valeur": "MX-SON"}
+{"entite": "Sonsonate", "valeur": "SV-SO"}
+{"entite": "Sonsorol", "valeur": "PW-370"}
+{"entite": "Sopište", "valeur": "MK-812"}
+{"entite": "Sopron", "valeur": "HU-SN"}
+{"entite": "Soriano", "valeur": "UY-SO"}
+{"entite": "Soroca", "valeur": "MD-SO"}
+{"entite": "Sorsogon", "valeur": "PH-SOR"}
+{"entite": "Šoštanj", "valeur": "SI-126"}
+{"entite": "Souk Ahras", "valeur": "DZ-41"}
+{"entite": "Soulou", "valeur": "PH-SLU"}
+{"entite": "Sourkhan-Daria", "valeur": "UZ-SU"}
+{"entite": "Souss-Massa", "valeur": "MA-09"}
+{"entite": "Sousse", "valeur": "TN-51"}
+{"entite": "South Abaco", "valeur": "BS-SO"}
+{"entite": "South Andros", "valeur": "BS-SA"}
+{"entite": "South Eleuthera", "valeur": "BS-SE"}
+{"entite": "Southland", "valeur": "NZ-STL"}
+{"entite": "Spanish Wells", "valeur": "BS-SW"}
+{"entite": "Split-Dalmatie", "valeur": "HR-17"}
+{"entite": "Stann Creek", "valeur": "BZ-SC"}
+{"entite": "Stara Zagora", "valeur": "BG-24"}
+{"entite": "Staro Nagoričane", "valeur": "MK-706"}
+{"entite": "Starše", "valeur": "SI-115"}
+{"entite": "Ștefan Vodă", "valeur": "MD-SV"}
+{"entite": "Østfold", "valeur": "NO-31"}
+{"entite": "Štip", "valeur": "MK-211"}
+{"entite": "Stoeng Treng", "valeur": "KH-19"}
+{"entite": "Stopiņi", "valeur": "LV-095"}
+{"entite": "Štore", "valeur": "SI-127"}
+{"entite": "Strășeni", "valeur": "MD-ST"}
+{"entite": "Straža", "valeur": "SI-203"}
+{"entite": "Strenči", "valeur": "LV-096"}
+{"entite": "Struga", "valeur": "MK-312"}
+{"entite": "Strumica", "valeur": "MK-410"}
+{"entite": "Studeničani", "valeur": "MK-813"}
+{"entite": "Styrie", "valeur": "AT-6"}
+{"entite": "Suðurland", "valeur": "IS-8"}
+{"entite": "Suðurnes", "valeur": "IS-2"}
+{"entite": "Suceava", "valeur": "RO-SV"}
+{"entite": "Suchitepéquez", "valeur": "GT-10"}
+{"entite": "Sucumbíos", "valeur": "EC-U"}
+{"entite": "Sud-Kivu", "valeur": "CD-SK"}
+{"entite": "Sud-Ouest", "valeur": "CM-SW"}
+{"entite": "Sud-Ubangi", "valeur": "CD-SU"}
+{"entite": "Sudurpashchim", "valeur": "NP-P7"}
+{"entite": "Sughd", "valeur": "TJ-SU"}
+{"entite": "Sühbaatar", "valeur": "MN-051"}
+{"entite": "Sukhothai", "valeur": "TH-64"}
+{"entite": "Sulawesi central", "valeur": "ID-ST"}
+{"entite": "Sulawesi du Nord", "valeur": "ID-SA"}
+{"entite": "Sulawesi du Sud", "valeur": "ID-SN"}
+{"entite": "Sulawesi du Sud-Est", "valeur": "ID-SG"}
+{"entite": "Sulawesi occidental", "valeur": "ID-SR"}
+{"entite": "Sultan Kudarat", "valeur": "PH-SUK"}
+{"entite": "Šumadija", "valeur": "RS-12"}
+{"entite": "Sumatra du Nord", "valeur": "ID-SU"}
+{"entite": "Sumatra du Sud", "valeur": "ID-SS"}
+{"entite": "Sumatra occidental", "valeur": "ID-SB"}
+{"entite": "Sumqayıt", "valeur": "AZ-SM"}
+{"entite": "Suphanburi", "valeur": "TH-72"}
+{"entite": "Surat Thani", "valeur": "TH-84"}
+{"entite": "Surigao du Nord", "valeur": "PH-SUN"}
+{"entite": "Surigao du Sud", "valeur": "PH-SUR"}
+{"entite": "Surin", "valeur": "TH-32"}
+{"entite": "Šuto Orizari", "valeur": "MK-817"}
+{"entite": "Suweyda", "valeur": "SY-SU"}
+{"entite": "Svalbard", "valeur": "NO-21"}
+{"entite": "Svay Rieng", "valeur": "KH-20"}
+{"entite": "Švenčionys", "valeur": "LT-49"}
+{"entite": "Sveta Ana", "valeur": "SI-181"}
+{"entite": "Sveta Trojica v Slovenskih goricah", "valeur": "SI-204"}
+{"entite": "Sveti Andraž v Slovenskih goricah", "valeur": "SI-182"}
+{"entite": "Sveti Jurij", "valeur": "SI-116"}
+{"entite": "Sveti Jurij v Slovenskih goricah", "valeur": "SI-210"}
+{"entite": "Sveti Nikole", "valeur": "MK-108"}
+{"entite": "Sveti Tomaž", "valeur": "SI-205"}
+{"entite": "Sylhet", "valeur": "BD-G"}
+{"entite": "Syr-Daria", "valeur": "UZ-SI"}
+{"entite": "Syrmie", "valeur": "RS-07"}
+{"entite": "Syrte", "valeur": "LY-SR"}
+{"entite": "Syunik", "valeur": "AM-SU"}
+{"entite": "Szabolcs-Szatmár-Bereg", "valeur": "HU-SZ"}
+{"entite": "Szeged", "valeur": "HU-SD"}
+{"entite": "Székesfehérvár", "valeur": "HU-SF"}
+{"entite": "Szekszárd", "valeur": "HU-SS"}
+{"entite": "Szolnok", "valeur": "HU-SK"}
+{"entite": "Szombathely", "valeur": "HU-SH"}
+{"entite": "Ta'izz", "valeur": "YE-TA"}
+{"entite": "Tabasco", "valeur": "MX-TAB"}
+{"entite": "Tabor", "valeur": "SI-184"}
+{"entite": "Tabora", "valeur": "TZ-24"}
+{"entite": "Tabuk", "valeur": "SA-07"}
+{"entite": "Táchira", "valeur": "VE-S"}
+{"entite": "Tacna", "valeur": "PE-TAC"}
+{"entite": "Tacuarembó", "valeur": "UY-TA"}
+{"entite": "Tadjourah", "valeur": "DJ-TA"}
+{"entite": "Taféa", "valeur": "VU-TAE"}
+{"entite": "Tafilah", "valeur": "JO-AT"}
+{"entite": "Tagant", "valeur": "MR-09"}
+{"entite": "Tahoua", "valeur": "NE-5"}
+{"entite": "Taichung", "valeur": "TW-TXG"}
+{"entite": "Tainan", "valeur": "TW-TNN"}
+{"entite": "Taipei", "valeur": "TW-TPE"}
+{"entite": "Taita-Taveta", "valeur": "KE-39"}
+{"entite": "Tak", "valeur": "TH-63"}
+{"entite": "Takamaka", "valeur": "SC-23"}
+{"entite": "Takeo", "valeur": "KH-21"}
+{"entite": "Takhâr", "valeur": "AF-TAK"}
+{"entite": "Talas", "valeur": "KG-T"}
+{"entite": "Talsi", "valeur": "LV-097"}
+{"entite": "Tamaulipas", "valeur": "MX-TAM"}
+{"entite": "Tambacounda", "valeur": "SN-TC"}
+{"entite": "Tamil Nadu", "valeur": "IN-TN"}
+{"entite": "Tandjilé", "valeur": "TD-TA"}
+{"entite": "Tanga", "valeur": "TZ-25"}
+{"entite": "Tanganyika", "valeur": "CD-TA"}
+{"entite": "Tanger-Tétouan-Al Hoceïma", "valeur": "MA-01"}
+{"entite": "Tanintharyi", "valeur": "MM-05"}
+{"entite": "Tannounyan", "valeur": "BF-02"}
+{"entite": "Taoyuan", "valeur": "TW-TAO"}
+{"entite": "Tapoa", "valeur": "BF-TAP"}
+{"entite": "Taraba", "valeur": "NG-TA"}
+{"entite": "Taraclia", "valeur": "MD-TA"}
+{"entite": "Taranaki", "valeur": "NZ-TKI"}
+{"entite": "Tarapacá", "valeur": "CL-TA"}
+{"entite": "Targovichté", "valeur": "BG-25"}
+{"entite": "Tarija", "valeur": "BO-T"}
+{"entite": "Tarlac", "valeur": "PH-TAR"}
+{"entite": "Tartar", "valeur": "AZ-TAR"}
+{"entite": "Tartu", "valeur": "EE-79"}
+{"entite": "Tasman", "valeur": "NZ-TAS"}
+{"entite": "Tasmanie", "valeur": "AU-TAS"}
+{"entite": "Tatabánya", "valeur": "HU-TB"}
+{"entite": "Tataouine", "valeur": "TN-83"}
+{"entite": "Tatarstan", "valeur": "RU-TA"}
+{"entite": "Tauragė", "valeur": "LT-50"}
+{"entite": "Tavush", "valeur": "AM-TV"}
+{"entite": "Tawi-Tawi", "valeur": "PH-TAW"}
+{"entite": "Tây Ninh", "valeur": "VN-37"}
+{"entite": "Tbilissi", "valeur": "GE-TB"}
+{"entite": "Tchaharmahal et Bakhtiari", "valeur": "IR-14"}
+{"entite": "Tchétchénie", "valeur": "RU-CE"}
+{"entite": "Tchoukotka", "valeur": "RU-CHU"}
+{"entite": "Tchouvachie", "valeur": "RU-CU"}
+{"entite": "Tearce", "valeur": "MK-608"}
+{"entite": "Téhéran", "valeur": "IR-23"}
+{"entite": "Tekirdağ", "valeur": "TR-59"}
+{"entite": "Telangana", "valeur": "IN-TS"}
+{"entite": "Telemark", "valeur": "NO-40"}
+{"entite": "Telenești", "valeur": "MD-TE"}
+{"entite": "Teleorman", "valeur": "RO-TR"}
+{"entite": "Telšiai", "valeur": "LT-51"}
+{"entite": "Temburong", "valeur": "BN-TE"}
+{"entite": "Tennessee", "valeur": "US-TN"}
+{"entite": "Terengganu", "valeur": "MY-11"}
+{"entite": "Terre de Feu, Antarctique et Îles de l'Atlantique Sud", "valeur": "AR-V"}
+{"entite": "Terre-Neuve-et-Labrador", "valeur": "CA-NL"}
+{"entite": "Territoire de la capitale australienne", "valeur": "AU-ACT"}
+{"entite": "Territoire de la capitale fédérale du Nigeria", "valeur": "NG-FC"}
+{"entite": "territoire de la Capitale nationale de Delhi", "valeur": "IN-DL"}
+{"entite": "Territoire de Pondichéry", "valeur": "IN-PY"}
+{"entite": "Territoire du Nord", "valeur": "AU-NT"}
+{"entite": "Territoire fédéral d'Islamabad", "valeur": "PK-IS"}
+{"entite": "Territoires du Nord-Ouest", "valeur": "CA-NT"}
+{"entite": "Tērvete", "valeur": "LV-098"}
+{"entite": "Tete", "valeur": "MZ-T"}
+{"entite": "Tetovo", "valeur": "MK-609"}
+{"entite": "Texas", "valeur": "US-TX"}
+{"entite": "Thaba-Tseka", "valeur": "LS-K"}
+{"entite": "Thái Bình", "valeur": "VN-20"}
+{"entite": "Thái Nguyên", "valeur": "VN-69"}
+{"entite": "Thanh Hóa", "valeur": "VN-21"}
+{"entite": "Thessalie", "valeur": "GR-E"}
+{"entite": "Thiès", "valeur": "SN-TH"}
+{"entite": "Thimphou", "valeur": "BT-15"}
+{"entite": "Thuringe", "valeur": "DE-TH"}
+{"entite": "Tianjin", "valeur": "CN-TJ"}
+{"entite": "Tiaret", "valeur": "DZ-14"}
+{"entite": "Tibesti", "valeur": "TD-TI"}
+{"entite": "Tiền Giang", "valeur": "VN-46"}
+{"entite": "Tigré", "valeur": "ET-TI"}
+{"entite": "Tillabéri", "valeur": "NE-6"}
+{"entite": "Timimoun", "valeur": "DZ-49"}
+{"entite": "Timiș", "valeur": "RO-TM"}
+{"entite": "Tindouf", "valeur": "DZ-37"}
+{"entite": "Tipaza", "valeur": "DZ-42"}
+{"entite": "Tiris Zemmour", "valeur": "MR-11"}
+{"entite": "Tišina", "valeur": "SI-010"}
+{"entite": "Tissemsilt", "valeur": "DZ-38"}
+{"entite": "Tivat", "valeur": "ME-19"}
+{"entite": "Tlaxcala", "valeur": "MX-TLA"}
+{"entite": "Tocantins", "valeur": "BR-TO"}
+{"entite": "Togdheer", "valeur": "SO-TO"}
+{"entite": "Tokat", "valeur": "TR-60"}
+{"entite": "Tokyo", "valeur": "JP-13"}
+{"entite": "Toledo", "valeur": "BZ-TOL"}
+{"entite": "Tolima", "valeur": "CO-TOL"}
+{"entite": "Tolmin", "valeur": "SI-128"}
+{"entite": "Tolna", "valeur": "HU-TO"}
+{"entite": "Tongatapu", "valeur": "TO-04"}
+{"entite": "Toplica", "valeur": "RS-21"}
+{"entite": "Torba", "valeur": "VU-TOB"}
+{"entite": "Toscane", "valeur": "IT-52"}
+{"entite": "Totonicapán", "valeur": "GT-08"}
+{"entite": "Touggourt", "valeur": "DZ-55"}
+{"entite": "Touva", "valeur": "RU-TY"}
+{"entite": "Töv", "valeur": "MN-047"}
+{"entite": "Tovuz", "valeur": "AZ-TOV"}
+{"entite": "Tozeur", "valeur": "TN-72"}
+{"entite": "Trøndelag", "valeur": "NO-50"}
+{"entite": "Trà Vinh", "valeur": "VN-51"}
+{"entite": "Trabzon", "valeur": "TR-61"}
+{"entite": "Trang", "valeur": "TH-92"}
+{"entite": "Transnistrie", "valeur": "MD-SN"}
+{"entite": "Trarza", "valeur": "MR-06"}
+{"entite": "Trashigang", "valeur": "BT-41"}
+{"entite": "Trashiyangtse", "valeur": "BT-TY"}
+{"entite": "Trat", "valeur": "TH-23"}
+{"entite": "Trbovlje", "valeur": "SI-129"}
+{"entite": "Treinta y Tres", "valeur": "UY-TT"}
+{"entite": "Trentin-Haut-Adige", "valeur": "IT-32"}
+{"entite": "Triesen", "valeur": "LI-09"}
+{"entite": "Triesenberg", "valeur": "LI-10"}
+{"entite": "Trinity Palmetto Point", "valeur": "KN-15"}
+{"entite": "Tripoli", "valeur": "LY-TB"}
+{"entite": "Tripura", "valeur": "IN-TR"}
+{"entite": "Trnovska vas", "valeur": "SI-185"}
+{"entite": "Troms", "valeur": "NO-55"}
+{"entite": "Troms og Finnmark", "valeur": "NO-54"}
+{"entite": "Trongsa", "valeur": "BT-32"}
+{"entite": "Trujillo", "valeur": "VE-T"}
+{"entite": "Tržič", "valeur": "SI-131"}
+{"entite": "Trzin", "valeur": "SI-186"}
+{"entite": "Tshopo", "valeur": "CD-TO"}
+{"entite": "Tshuapa", "valeur": "CD-TU"}
+{"entite": "Tsirang", "valeur": "BT-21"}
+{"entite": "Tuamasaga", "valeur": "WS-TU"}
+{"entite": "Tucumán", "valeur": "AR-T"}
+{"entite": "Tukums", "valeur": "LV-099"}
+{"entite": "Tulcea", "valeur": "RO-TL"}
+{"entite": "Tumbes", "valeur": "PE-TUM"}
+{"entite": "Tunapuna-Piarco", "valeur": "TT-TUP"}
+{"entite": "Tunceli", "valeur": "TR-62"}
+{"entite": "Tungurahua", "valeur": "EC-T"}
+{"entite": "Tunis", "valeur": "TN-11"}
+{"entite": "Turkana", "valeur": "KE-43"}
+{"entite": "Turkestan", "valeur": "KZ-61"}
+{"entite": "Turnišče", "valeur": "SI-132"}
+{"entite": "Tutong", "valeur": "BN-TU"}
+{"entite": "Tuyên Quang", "valeur": "VN-07"}
+{"entite": "Tyrol", "valeur": "AT-7"}
+{"entite": "Uaboe", "valeur": "NR-13"}
+{"entite": "Ubon Ratchathani", "valeur": "TH-34"}
+{"entite": "Ucar", "valeur": "AZ-UCA"}
+{"entite": "Ucayali", "valeur": "PE-UCA"}
+{"entite": "Uíge", "valeur": "AO-UIG"}
+{"entite": "Ukmergė", "valeur": "LT-53"}
+{"entite": "Ulcinj", "valeur": "ME-20"}
+{"entite": "Ulsan", "valeur": "KR-31"}
+{"entite": "Umm Salal", "valeur": "QA-US"}
+{"entite": "Ungheni", "valeur": "MD-UN"}
+{"entite": "Unguja Nord", "valeur": "TZ-07"}
+{"entite": "Unguja Sud et Central", "valeur": "TZ-11"}
+{"entite": "Unguja Ville et Ouest", "valeur": "TZ-15"}
+{"entite": "Unité", "valeur": "SS-UY"}
+{"entite": "Upper River", "valeur": "GM-U"}
+{"entite": "Uppsala", "valeur": "SE-C"}
+{"entite": "Uşak", "valeur": "TR-64"}
+{"entite": "Usulután", "valeur": "SV-US"}
+{"entite": "Utah", "valeur": "US-UT"}
+{"entite": "Uthai Thani", "valeur": "TH-61"}
+{"entite": "Utrecht", "valeur": "NL-UT"}
+{"entite": "Uttar Pradesh", "valeur": "IN-UP"}
+{"entite": "Uttaradit", "valeur": "TH-53"}
+{"entite": "Uttarakhand", "valeur": "IN-UK"}
+{"entite": "Uusimaa", "valeur": "FI-18"}
+{"entite": "Uva", "valeur": "LK-8"}
+{"entite": "Uvs", "valeur": "MN-046"}
+{"entite": "Va'a-o-Fonoti", "valeur": "WS-VF"}
+{"entite": "Vaavu", "valeur": "MV-04"}
+{"entite": "Vaduz", "valeur": "LI-11"}
+{"entite": "Vaiņode", "valeur": "LV-100"}
+{"entite": "Vaisigano", "valeur": "WS-VS"}
+{"entite": "Vaitupu", "valeur": "TV-VAI"}
+{"entite": "Vakaga", "valeur": "CF-VK"}
+{"entite": "Valandovo", "valeur": "MK-403"}
+{"entite": "Vâlcea", "valeur": "RO-VL"}
+{"entite": "Valga", "valeur": "EE-81"}
+{"entite": "Valka", "valeur": "LV-101"}
+{"entite": "Valle", "valeur": "HN-VA"}
+{"entite": "Valle del Cauca", "valeur": "CO-VAC"}
+{"entite": "Vallée d'Aoste", "valeur": "IT-23"}
+{"entite": "Vallée de Cagayan", "valeur": "PH-02"}
+{"entite": "Vallée de la Kymi", "valeur": "FI-09"}
+{"entite": "Valparaíso", "valeur": "CL-VS"}
+{"entite": "Valverde", "valeur": "DO-27"}
+{"entite": "Van", "valeur": "TR-65"}
+{"entite": "Varakļāni", "valeur": "LV-102"}
+{"entite": "Varaždin", "valeur": "HR-05"}
+{"entite": "Varėna", "valeur": "LT-55"}
+{"entite": "Vārkava", "valeur": "LV-103"}
+{"entite": "Värmland", "valeur": "SE-S"}
+{"entite": "Varna", "valeur": "BG-03"}
+{"entite": "Vas", "valeur": "HU-VA"}
+{"entite": "Vasilevo", "valeur": "MK-404"}
+{"entite": "Vaslui", "valeur": "RO-VS"}
+{"entite": "Västerbotten", "valeur": "SE-AC"}
+{"entite": "Västernorrland", "valeur": "SE-Y"}
+{"entite": "Västmanland", "valeur": "SE-U"}
+{"entite": "Vaupés", "valeur": "CO-VAU"}
+{"entite": "Vava'u", "valeur": "TO-05"}
+{"entite": "Vayots Dzor", "valeur": "AM-VD"}
+{"entite": "Vecpiebalga", "valeur": "LV-104"}
+{"entite": "Vecumnieki", "valeur": "LV-105"}
+{"entite": "La Vega", "valeur": "DO-13"}
+{"entite": "Veles", "valeur": "MK-101"}
+{"entite": "Velika Polana", "valeur": "SI-187"}
+{"entite": "Velike Lašče", "valeur": "SI-134"}
+{"entite": "Veliko Tarnovo", "valeur": "BG-04"}
+{"entite": "Vénétie", "valeur": "IT-34"}
+{"entite": "Veracruz", "valeur": "MX-VER"}
+{"entite": "Veraguas", "valeur": "PA-9"}
+{"entite": "Vermont", "valeur": "US-VT"}
+{"entite": "Veržej", "valeur": "SI-188"}
+{"entite": "Vest-Agder", "valeur": "NO-10"}
+{"entite": "Vestfirðir", "valeur": "IS-4"}
+{"entite": "Vestfold", "valeur": "NO-39"}
+{"entite": "Vestfold og Telemark", "valeur": "NO-38"}
+{"entite": "Vestland", "valeur": "NO-46"}
+{"entite": "Vesturland", "valeur": "IS-3"}
+{"entite": "Vevčani", "valeur": "MK-301"}
+{"entite": "Vichada", "valeur": "CO-VID"}
+{"entite": "Victoria", "valeur": "AU-VIC"}
+{"entite": "Videm", "valeur": "SI-135"}
+{"entite": "Vidin", "valeur": "BG-05"}
+{"entite": "Vienne", "valeur": "AT-9"}
+{"entite": "Vientiane", "valeur": "LA-VI"}
+{"entite": "Viesīte", "valeur": "LV-107"}
+{"entite": "Vihiga", "valeur": "KE-45"}
+{"entite": "Viken", "valeur": "NO-30"}
+{"entite": "Viļaka", "valeur": "LV-108"}
+{"entite": "Viļāni", "valeur": "LV-109"}
+{"entite": "Viljandi", "valeur": "EE-84"}
+{"entite": "Villa Clara", "valeur": "CU-05"}
+{"entite": "Vilnius", "valeur": "LT-58"}
+{"entite": "Vĩnh Long", "valeur": "VN-49"}
+{"entite": "Vĩnh Phúc", "valeur": "VN-70"}
+{"entite": "Vinica", "valeur": "MK-202"}
+{"entite": "Viqueque", "valeur": "TL-VI"}
+{"entite": "Virginie", "valeur": "US-VA"}
+{"entite": "Virginie-Occidentale", "valeur": "US-WV"}
+{"entite": "Virovitica-Podravina", "valeur": "HR-10"}
+{"entite": "Viru occidental", "valeur": "EE-60"}
+{"entite": "Viru oriental", "valeur": "EE-45"}
+{"entite": "Visaginas", "valeur": "LT-59"}
+{"entite": "Visayas centrales", "valeur": "PH-07"}
+{"entite": "Visayas occidentales", "valeur": "PH-06"}
+{"entite": "Visayas orientales", "valeur": "PH-08"}
+{"entite": "Viseu", "valeur": "PT-18"}
+{"entite": "Vitebsk", "valeur": "BY-VI"}
+{"entite": "Vlorë", "valeur": "AL-12"}
+{"entite": "voblast de Homiel", "valeur": "BY-HO"}
+{"entite": "voblast de Mahiliow", "valeur": "BY-MA"}
+{"entite": "voblast de Minsk", "valeur": "BY-MI"}
+{"entite": "Vodice (Slovénie)", "valeur": "SI-138"}
+{"entite": "voïvodie d'Opole", "valeur": "PL-16"}
+{"entite": "voïvodie de Basse-Silésie", "valeur": "PL-02"}
+{"entite": "voïvodie de Couïavie-Poméranie", "valeur": "PL-04"}
+{"entite": "voïvodie de Grande-Pologne", "valeur": "PL-30"}
+{"entite": "voïvodie de Lublin", "valeur": "PL-06"}
+{"entite": "voïvodie de Lubusz", "valeur": "PL-08"}
+{"entite": "voïvodie de Mazovie", "valeur": "PL-14"}
+{"entite": "voïvodie de Łódź", "valeur": "PL-10"}
+{"entite": "voïvodie de Petite-Pologne", "valeur": "PL-12"}
+{"entite": "voïvodie de Podlachie", "valeur": "PL-20"}
+{"entite": "voïvodie de Sainte-Croix", "valeur": "PL-26"}
+{"entite": "voïvodie de Silésie", "valeur": "PL-24"}
+{"entite": "voïvodie de Varmie-Mazurie", "valeur": "PL-28"}
+{"entite": "Voïvodine", "valeur": "RS-VO"}
+{"entite": "Volta", "valeur": "GH-TV"}
+{"entite": "Vorarlberg", "valeur": "AT-8"}
+{"entite": "Võru", "valeur": "EE-87"}
+{"entite": "Vrancea", "valeur": "RO-VN"}
+{"entite": "Vranechtitsa", "valeur": "MK-15"}
+{"entite": "Vrapčište", "valeur": "MK-603"}
+{"entite": "Vratsa", "valeur": "BG-06"}
+{"entite": "Vukovar-Syrmie", "valeur": "HR-16"}
+{"entite": "Vuzenica", "valeur": "SI-141"}
+{"entite": "Vysočina", "valeur": "CZ-63"}
+{"entite": "Wadi ach Chatii", "valeur": "LY-WS"}
+{"entite": "Wadi al Hayaat", "valeur": "LY-WD"}
+{"entite": "Wadi Fira", "valeur": "TD-WF"}
+{"entite": "Waikato", "valeur": "NZ-WKO"}
+{"entite": "Wake", "valeur": "UM-79"}
+{"entite": "Wallis-et-Futuna", "valeur": "FR-WF"}
+{"entite": "Wangdue Phodrang", "valeur": "BT-24"}
+{"entite": "Wanica", "valeur": "SR-WA"}
+{"entite": "Warab", "valeur": "SS-WR"}
+{"entite": "Wardak", "valeur": "AF-WAR"}
+{"entite": "Washington", "valeur": "US-WA"}
+{"entite": "Wasit", "valeur": "IQ-WA"}
+{"entite": "Wele-Nzas", "valeur": "GQ-WN"}
+{"entite": "Wellington", "valeur": "NZ-WGN"}
+{"entite": "West Grand Bahama", "valeur": "BS-WG"}
+{"entite": "Westmoreland", "valeur": "JM-10"}
+{"entite": "wilaya d'Alger", "valeur": "DZ-16"}
+{"entite": "wilaya d'Annaba", "valeur": "DZ-23"}
+{"entite": "wilaya d'El Oued", "valeur": "DZ-39"}
+{"entite": "wilaya d'Oran", "valeur": "DZ-31"}
+{"entite": "Wilaya de Aïn Témouchent", "valeur": "DZ-46"}
+{"entite": "wilaya de Béjaïa", "valeur": "DZ-06"}
+{"entite": "wilaya de Blida", "valeur": "DZ-09"}
+{"entite": "wilaya de Bouira", "valeur": "DZ-10"}
+{"entite": "wilaya de Boumerdès", "valeur": "DZ-35"}
+{"entite": "wilaya de Chlef", "valeur": "DZ-02"}
+{"entite": "Wilaya de Ghardaïa", "valeur": "DZ-47"}
+{"entite": "wilaya de Guelma", "valeur": "DZ-24"}
+{"entite": "wilaya de Jijel", "valeur": "DZ-18"}
+{"entite": "wilaya de Khenchela", "valeur": "DZ-40"}
+{"entite": "wilaya de Médéa", "valeur": "DZ-26"}
+{"entite": "wilaya de Mila", "valeur": "DZ-43"}
+{"entite": "wilaya de Sétif", "valeur": "DZ-19"}
+{"entite": "wilaya de Skikda", "valeur": "DZ-21"}
+{"entite": "wilaya de Tamanrasset", "valeur": "DZ-11"}
+{"entite": "wilaya de Tébessa", "valeur": "DZ-12"}
+{"entite": "wilaya de Tizi Ouzou", "valeur": "DZ-15"}
+{"entite": "wilaya de Tlemcen", "valeur": "DZ-13"}
+{"entite": "Wisconsin", "valeur": "US-WI"}
+{"entite": "Woleu-Ntem", "valeur": "GA-9"}
+{"entite": "Woqooyi Galbeed", "valeur": "SO-WO"}
+{"entite": "Wyoming", "valeur": "US-WY"}
+{"entite": "Xızı", "valeur": "AZ-XIZ"}
+{"entite": "Xaçmaz", "valeur": "AZ-XAC"}
+{"entite": "Xaisômboun", "valeur": "LA-XS"}
+{"entite": "Xékong", "valeur": "LA-XE"}
+{"entite": "Xiang-Khouang", "valeur": "LA-XI"}
+{"entite": "Xinjiang", "valeur": "CN-XJ"}
+{"entite": "Yaadga", "valeur": "BF-10"}
+{"entite": "Yala", "valeur": "TH-95"}
+{"entite": "Yalova", "valeur": "TR-77"}
+{"entite": "Yambol", "valeur": "BG-28"}
+{"entite": "Yaracuy", "valeur": "VE-U"}
+{"entite": "Yardımlı", "valeur": "AZ-YAR"}
+{"entite": "Yaren", "valeur": "NR-14"}
+{"entite": "Yasothon", "valeur": "TH-35"}
+{"entite": "Yazd", "valeur": "IR-21"}
+{"entite": "Yên Bái", "valeur": "VN-06"}
+{"entite": "Yevlax", "valeur": "AZ-YEV"}
+{"entite": "Yobe", "valeur": "NG-YO"}
+{"entite": "Yoro", "valeur": "HN-YO"}
+{"entite": "Yozgat", "valeur": "TR-66"}
+{"entite": "Yucatán", "valeur": "MX-YUC"}
+{"entite": "Yukon", "valeur": "CA-YT"}
+{"entite": "Yunnan", "valeur": "CN-YN"}
+{"entite": "Zərdab (raion)", "valeur": "AZ-ZAR"}
+{"entite": "Žabljak", "valeur": "ME-21"}
+{"entite": "Zabol", "valeur": "AF-ZAB"}
+{"entite": "Zacatecas", "valeur": "MX-ZAC"}
+{"entite": "Zadar", "valeur": "HR-13"}
+{"entite": "Zaghouan", "valeur": "TN-22"}
+{"entite": "Zagorje ob Savi", "valeur": "SI-142"}
+{"entite": "Zagreb", "valeur": "HR-01"}
+{"entite": "Zaïas", "valeur": "MK-31"}
+{"entite": "Zaječar", "valeur": "RS-15"}
+{"entite": "Zala", "valeur": "HU-ZA"}
+{"entite": "Zalaegerszeg", "valeur": "HU-ZE"}
+{"entite": "Žalec", "valeur": "SI-190"}
+{"entite": "Zambezi", "valeur": "NA-CA"}
+{"entite": "Zambézie", "valeur": "MZ-Q"}
+{"entite": "Zamboanga du Nord", "valeur": "PH-ZAN"}
+{"entite": "Zamboanga du Sud", "valeur": "PH-ZAS"}
+{"entite": "Zamfara", "valeur": "NG-ZA"}
+{"entite": "Zamora-Chinchipe", "valeur": "EC-Z"}
+{"entite": "Zandjan", "valeur": "IR-19"}
+{"entite": "Zangilan", "valeur": "AZ-ZAN"}
+{"entite": "Zaqatala", "valeur": "AZ-ZAQ"}
+{"entite": "Zarqa", "valeur": "JO-AZ"}
+{"entite": "Zavkhan", "valeur": "MN-057"}
+{"entite": "Zavrč", "valeur": "SI-143"}
+{"entite": "Zélande", "valeur": "NL-ZE"}
+{"entite": "Zelenikovo", "valeur": "MK-806"}
+{"entite": "Železniki", "valeur": "SI-146"}
+{"entite": "Želino", "valeur": "MK-605"}
+{"entite": "Žetale", "valeur": "SI-191"}
+{"entite": "Zhejiang", "valeur": "CN-ZJ"}
+{"entite": "Zhemgang", "valeur": "BT-34"}
+{"entite": "Ziguinchor", "valeur": "SN-ZG"}
+{"entite": "Zilupe", "valeur": "LV-110"}
+{"entite": "Zinder", "valeur": "NE-7"}
+{"entite": "Žiri", "valeur": "SI-147"}
+{"entite": "Žirovnica (Slovénie)", "valeur": "SI-192"}
+{"entite": "Zlatibor", "valeur": "RS-16"}
+{"entite": "Zlín", "valeur": "CZ-72"}
+{"entite": "Zone de l'Ouest", "valeur": "SL-W"}
+{"entite": "Zonguldak", "valeur": "TR-67"}
+{"entite": "Zou", "valeur": "BJ-ZO"}
+{"entite": "Zreče", "valeur": "SI-144"}
+{"entite": "Zrnovci", "valeur": "MK-204"}
+{"entite": "Zulia", "valeur": "VE-V"}
+{"entite": "Žužemberk", "valeur": "SI-193"}

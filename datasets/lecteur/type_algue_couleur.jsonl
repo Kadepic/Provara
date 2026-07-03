@@ -1,0 +1,12 @@
+{"_relation": "type_algue_couleur", "_categorie": "physique", "_source": "Modèle (Claude) — phycologie textbook curée (groupe d'algue ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "chlorelle", "valeur": "verte"}
+{"entite": "coralline", "valeur": "rouge"}
+{"entite": "dulse", "valeur": "rouge"}
+{"entite": "fucus", "valeur": "brune"}
+{"entite": "laitue de mer", "valeur": "verte"}
+{"entite": "laminaire", "valeur": "brune"}
+{"entite": "porphyra", "valeur": "rouge"}
+{"entite": "sargasse", "valeur": "brune"}
+{"entite": "spirogyre", "valeur": "verte"}
+{"entite": "ulve", "valeur": "verte"}
+{"entite": "varech", "valeur": "brune"}

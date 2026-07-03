@@ -1,0 +1,27 @@
+{"_relation": "categorie_epreuve_athletisme", "_categorie": "convention", "_source": "Savoir Claude vérifié — famille de l'épreuve d'athlétisme (taxonomie standard course/saut/lancer/marche/combiné, non débattue)", "_articles": true}
+{"entite": "1 500 mètres", "valeur": "course"}
+{"entite": "10 000 mètres", "valeur": "course"}
+{"entite": "100 mètres", "valeur": "course"}
+{"entite": "100 mètres haies", "valeur": "course"}
+{"entite": "110 mètres haies", "valeur": "course"}
+{"entite": "20 kilomètres marche", "valeur": "marche"}
+{"entite": "200 mètres", "valeur": "course"}
+{"entite": "3 000 mètres steeple", "valeur": "course"}
+{"entite": "400 mètres", "valeur": "course"}
+{"entite": "400 mètres haies", "valeur": "course"}
+{"entite": "5 000 mètres", "valeur": "course"}
+{"entite": "50 kilomètres marche", "valeur": "marche"}
+{"entite": "800 mètres", "valeur": "course"}
+{"entite": "décathlon", "valeur": "épreuve combinée"}
+{"entite": "heptathlon", "valeur": "épreuve combinée"}
+{"entite": "lancer du disque", "valeur": "lancer"}
+{"entite": "lancer du javelot", "valeur": "lancer"}
+{"entite": "lancer du marteau", "valeur": "lancer"}
+{"entite": "lancer du poids", "valeur": "lancer"}
+{"entite": "marathon", "valeur": "course"}
+{"entite": "relais 4 × 100 mètres", "valeur": "course"}
+{"entite": "relais 4 × 400 mètres", "valeur": "course"}
+{"entite": "saut à la perche", "valeur": "saut"}
+{"entite": "saut en hauteur", "valeur": "saut"}
+{"entite": "saut en longueur", "valeur": "saut"}
+{"entite": "triple saut", "valeur": "saut"}

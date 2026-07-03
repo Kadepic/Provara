@@ -1,0 +1,15 @@
+{"_relation": "type_articulation", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (articulation -> type structural ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "articulation du doigt", "valeur": "synoviale"}
+{"entite": "articulation du pouce", "valeur": "synoviale"}
+{"entite": "articulation temporo-mandibulaire", "valeur": "synoviale"}
+{"entite": "cheville", "valeur": "synoviale"}
+{"entite": "coude", "valeur": "synoviale"}
+{"entite": "disque intervertébral", "valeur": "cartilagineuse"}
+{"entite": "épaule", "valeur": "synoviale"}
+{"entite": "genou", "valeur": "synoviale"}
+{"entite": "gomphose dentaire", "valeur": "fibreuse"}
+{"entite": "hanche", "valeur": "synoviale"}
+{"entite": "poignet", "valeur": "synoviale"}
+{"entite": "sutures du crâne", "valeur": "fibreuse"}
+{"entite": "symphyse pubienne", "valeur": "cartilagineuse"}
+{"entite": "syndesmose tibio-fibulaire", "valeur": "fibreuse"}

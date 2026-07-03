@@ -1,0 +1,75 @@
+{"_relation": "groupe_aliment", "_categorie": "convention", "_source": "Modèle (Claude) — nutrition textbook curée (groupe alimentaire ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abricot", "valeur": "fruit"}
+{"entite": "agneau", "valeur": "viande"}
+{"entite": "ananas", "valeur": "fruit"}
+{"entite": "artichaut", "valeur": "légume"}
+{"entite": "asperge", "valeur": "légume"}
+{"entite": "bœuf", "valeur": "viande"}
+{"entite": "banane", "valeur": "fruit"}
+{"entite": "blé", "valeur": "féculent"}
+{"entite": "brocoli", "valeur": "légume"}
+{"entite": "cabillaud", "valeur": "poisson"}
+{"entite": "canard", "valeur": "viande"}
+{"entite": "carotte", "valeur": "légume"}
+{"entite": "céleri", "valeur": "légume"}
+{"entite": "cerise", "valeur": "fruit"}
+{"entite": "chou", "valeur": "légume"}
+{"entite": "chou-fleur", "valeur": "légume"}
+{"entite": "clémentine", "valeur": "fruit"}
+{"entite": "colin", "valeur": "poisson"}
+{"entite": "concombre", "valeur": "légume"}
+{"entite": "courgette", "valeur": "légume"}
+{"entite": "dinde", "valeur": "viande"}
+{"entite": "endive", "valeur": "légume"}
+{"entite": "épinard", "valeur": "légume"}
+{"entite": "fenouil", "valeur": "légume"}
+{"entite": "figue", "valeur": "fruit"}
+{"entite": "fraise", "valeur": "fruit"}
+{"entite": "framboise", "valeur": "fruit"}
+{"entite": "fromage", "valeur": "produit laitier"}
+{"entite": "groseille", "valeur": "fruit"}
+{"entite": "haricot vert", "valeur": "légume"}
+{"entite": "kiwi", "valeur": "fruit"}
+{"entite": "lait", "valeur": "produit laitier"}
+{"entite": "laitue", "valeur": "légume"}
+{"entite": "lapin", "valeur": "viande"}
+{"entite": "lieu", "valeur": "poisson"}
+{"entite": "litchi", "valeur": "fruit"}
+{"entite": "lotte", "valeur": "poisson"}
+{"entite": "maïs", "valeur": "féculent"}
+{"entite": "mandarine", "valeur": "fruit"}
+{"entite": "mangue", "valeur": "fruit"}
+{"entite": "maquereau", "valeur": "poisson"}
+{"entite": "melon", "valeur": "fruit"}
+{"entite": "merlu", "valeur": "poisson"}
+{"entite": "mûre", "valeur": "fruit"}
+{"entite": "navet", "valeur": "légume"}
+{"entite": "orange", "valeur": "fruit"}
+{"entite": "pain", "valeur": "féculent"}
+{"entite": "pamplemousse", "valeur": "fruit"}
+{"entite": "pastèque", "valeur": "fruit"}
+{"entite": "patate douce", "valeur": "féculent"}
+{"entite": "pâtes", "valeur": "féculent"}
+{"entite": "pêche", "valeur": "fruit"}
+{"entite": "perche", "valeur": "poisson"}
+{"entite": "poire", "valeur": "fruit"}
+{"entite": "poireau", "valeur": "légume"}
+{"entite": "poivron", "valeur": "légume"}
+{"entite": "polenta", "valeur": "féculent"}
+{"entite": "pomme", "valeur": "fruit"}
+{"entite": "pomme de terre", "valeur": "féculent"}
+{"entite": "porc", "valeur": "viande"}
+{"entite": "poulet", "valeur": "viande"}
+{"entite": "prune", "valeur": "fruit"}
+{"entite": "quinoa", "valeur": "féculent"}
+{"entite": "radis", "valeur": "légume"}
+{"entite": "raisin", "valeur": "fruit"}
+{"entite": "riz", "valeur": "féculent"}
+{"entite": "sardine", "valeur": "poisson"}
+{"entite": "saumon", "valeur": "poisson"}
+{"entite": "semoule", "valeur": "féculent"}
+{"entite": "sole", "valeur": "poisson"}
+{"entite": "thon", "valeur": "poisson"}
+{"entite": "truite", "valeur": "poisson"}
+{"entite": "veau", "valeur": "viande"}
+{"entite": "yaourt", "valeur": "produit laitier"}

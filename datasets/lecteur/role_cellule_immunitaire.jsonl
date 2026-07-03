@@ -1,0 +1,4 @@
+{"_relation": "role_cellule_immunitaire", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (cellule immunitaire -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "lymphocyte B", "valeur": "production des anticorps"}
+{"entite": "lymphocyte T", "valeur": "coordination et exécution de la réponse immunitaire"}
+{"entite": "phagocyte", "valeur": "ingestion des agents étrangers"}

@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_parasitologie", "_categorie": "physique", "_source": "Modèle (Claude) — parasitologie textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "hôte", "valeur": "organisme hébergeant un parasite"}
+{"entite": "parasite", "valeur": "organisme vivant aux dépens d'un autre"}
+{"entite": "vecteur", "valeur": "organisme transmettant un agent pathogène"}

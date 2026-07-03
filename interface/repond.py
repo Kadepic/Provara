@@ -516,24 +516,45 @@ def _fonction_calculee(question: str) -> str | None:
 _COORD_RE = re.compile(r"\s+(?:et|puis|ainsi que)\s+|\s*[;,]\s+")
 
 
+def _resout_partie(p: str):
+    """Résout UNE sous-question : données/fonctions (capitale, masse molaire, morse…) OU calcul (mots ET symbolique).
+    Renvoie la réponse (str) ou None. FAUX=0 : ne renvoie que des verdicts VÉRIFIÉS, jamais une devinette."""
+    r = _connaissance_verifiee(p, None)
+    if r:
+        return r
+    try:
+        import fonction_nl
+        from base_faits import VERIFIE
+        st, val, _ = fonction_nl.resout_arithmetique(p)
+        if st == VERIFIE and val is not None:
+            return str(val)
+    except Exception:
+        pass
+    try:
+        import classifieur_bornage as _CB
+        v = _CB._juge_arith(_CB._norm(p))
+        if v is not None:
+            return str(int(v) if isinstance(v, float) and v.is_integer() else v)
+    except Exception:
+        pass
+    return None
+
+
 def _multi_questions(texte: str, conv_id: str | None) -> str | None:
-    """MULTI-DOMAINES dans une seule demande : « Quelle est la capitale de la France et le numéro du fer ? » ->
-    répond aux DEUX. SOUND (FAUX=0) : on ne renvoie une réponse composée QUE si **au moins 2** sous-parties se
-    résolvent chacune en un FAIT VÉRIFIÉ. Sinon None -> le pipeline normal traite la phrase entière (ce qui protège
-    les entités contenant « et » comme « Trinité-et-Tobago » : leurs morceaux ne résolvent pas -> pas de découpe)."""
+    """MULTI-DEMANDES dans une seule phrase (« capitale de la France ET nombre de continents ET 15 fois 3 »).
+    NON-BLOQUANT : répond à CHAQUE sous-partie indépendamment, dit honnêtement « je ne l'ai pas » pour les inconnues,
+    et combine le tout. SOUND (FAUX=0) : on n'engage le mode composé QUE si **au moins 2** sous-parties donnent un
+    fait VÉRIFIÉ (sinon None -> pipeline normal ; protège les entités contenant « et » comme « Trinité-et-Tobago »)."""
     parts = [p.strip(" ?.!") for p in _COORD_RE.split(texte) if p and p.strip(" ?.!")]
+    parts = [p for p in parts if len(p.split()) >= 2 or re.search(r"\d\s*[-+*/x×]\s*\d", p)]  # ≥2 mots OU un calcul
     if len(parts) < 2:
         return None
-    reps = []
-    for p in parts:
-        if len(p.split()) < 2:                    # une entité seule n'est pas une sous-question -> ignorée
-            continue
-        r = _connaissance_verifiee(p, None)       # conv_id=None : aucun effet de bord multi-tours sur les sous-parties
-        if r:
-            reps.append(r)
-    if len(reps) < 2:                             # < 2 faits vérifiés -> ce n'était pas une vraie demande composée
+    resolus = [(p, _resout_partie(p)) for p in parts]
+    if sum(1 for _, r in resolus if r) < 2:               # < 2 faits -> pas une vraie demande composée
         return None
-    return " ; ".join(reps)
+    lignes = [("• %s : %s" % (p, r)) if r else ("• %s : je ne l'ai pas encore en mémoire" % p)
+              for p, r in resolus]
+    return "Voici ce que je peux répondre :\n" + "\n".join(lignes)
 
 
 # ————————————————————————————————— MULTI-TOURS (suivi du sujet, anaphore) —————————————————————————————————
@@ -659,8 +680,50 @@ _LOC_CAVA = ("ca va", "comment ca va", "comment vas tu", "comment allez vous", "
              "comment ca va aujourd hui")
 
 
+# — Réponse SOCIALE robuste : salutations / « ça va » / nom, même COMBINÉS et dans le désordre.
+#   Sound : ne répond QUE si le message est PUREMENT social (aucun contenu factuel résiduel).
+_NOM_PHRASES = ("comment t appelles tu", "comment t appeles tu", "comment tu t appelles", "comment tu t appeles",
+                "quel est ton nom", "ton nom c est quoi", "c est quoi ton nom", "tu t appelles comment", "ton nom")
+_IDENT_PHRASES = ("qui es tu", "tu es qui", "qui est tu", "presente toi", "c est quoi toi", "tu es quoi")
+_FILLER_SOCIAL = frozenset("et toi vous stp svp s il te plait le la aussi alors donc bien tres beaucoup mille ok".split())
+
+
+def _reponse_sociale(texte: str):
+    """Message purement social (salutation/ça va/nom, combinés OK) -> réponse chaleureuse ; None sinon."""
+    toks = _normalise(texte).replace("?", " ").replace("!", " ").replace(".", " ").split()
+    if not toks:
+        return None
+    n = " " + " ".join(toks) + " "
+    flags = {"salut": False, "cava": False, "nom": False, "ident": False, "merci": False, "adieu": False}
+    groupes = ([(p, "adieu") for p in _LOC_ADIEU] + [(p, "nom") for p in _NOM_PHRASES]
+               + [(p, "ident") for p in _IDENT_PHRASES] + [(p, "cava") for p in _LOC_CAVA])
+    for phrase, cle in sorted(groupes, key=lambda x: len(x[0]), reverse=True):
+        pad = " " + phrase + " "
+        while pad in n:
+            n = n.replace(pad, " "); flags[cle] = True
+    reste = []
+    for w in n.split():
+        if w in _SALUT: flags["salut"] = True
+        elif w in _MERCI: flags["merci"] = True
+        elif w not in _FILLER_SOCIAL: reste.append(w)
+    if reste or not any(flags.values()):     # contenu factuel résiduel -> pas (que) social
+        return None
+    if flags["adieu"] and not (flags["salut"] or flags["cava"] or flags["nom"] or flags["ident"]):
+        return "À bientôt !"
+    parts = []
+    if flags["salut"]: parts.append("Bonjour !")
+    if flags["cava"]: parts.append("Je vais très bien, merci\u202f\U0001F642.")
+    if flags["nom"] or flags["ident"]: parts.append("Je m'appelle VERAX.")
+    if flags["merci"] and not parts: parts.append("Avec plaisir !")
+    parts.append("Pose-moi une question et je te réponds avec ce que je sais.")
+    return " ".join(parts)
+
+
 def _politesse(texte: str) -> str | None:
     """Réponse polie à une salutation/remerciement/adieu/« ça va » — ou None si ce n'est pas (que) de la politesse."""
+    r = _reponse_sociale(texte)
+    if r is not None:
+        return r
     n = _normalise(texte).strip()
     if not n or len(n.split()) > 6:
         return None
@@ -696,9 +759,9 @@ _META_PATRONS = [
      "fonctionnement"),
 ]
 _META_REPONSES = {
-    "identite": "Je suis un assistant conversationnel local. Je réponds à partir d'une base de faits vérifiés, "
-                "et je préfère dire que je ne sais pas plutôt que d'inventer.",
-    "nom": "Je n'ai pas de nom propre : je suis un assistant local qui répond à partir de faits vérifiés.",
+    "identite": "Je suis VERAX, un assistant conversationnel local et souverain. Je réponds à partir d'une base de "
+                "faits vérifiés (sans GPU, hors-ligne), et je préfère dire que je ne sais pas plutôt que d'inventer.",
+    "nom": "Je m'appelle VERAX. Je réponds à partir d'une base de faits vérifiés, et je préfère dire que je ne sais pas plutôt que d'inventer.",
     "capacites": "Je réponds à des questions factuelles (géographie, chimie, langues, conversions d'unités, etc.) "
                  "à partir de faits vérifiés, et je m'abstiens quand je n'ai pas l'information.",
     "nature": "Je suis un programme informatique (pas un humain) qui répond à des questions à partir d'une base de "
@@ -810,6 +873,94 @@ def est_fallback(s: str) -> bool:
     return isinstance(s, str) and (s.startswith(_MSG_INCONNU_PREFIXE) or s == _MSG_NOTE)
 
 
+def _diagnostic_connaissance(texte: str):
+    """« diagnostic » / « combien de faits connais-tu » -> état RÉEL de la connaissance chargée (nb relations/faits +
+    d'où viennent les données). Sert à vérifier que VERAX a bien accès à sa base (utile pour déboguer le .exe)."""
+    n = _normalise(texte).strip()
+    if not (n == "diagnostic" or ("combien" in n and ("relation" in n or "fait" in n or "chose" in n))):
+        return None
+    try:
+        import os, lecteur
+        _charge_ia()
+        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s"
+                % (len(lecteur.LECTEUR.relations()), len(lecteur.LECTEUR),
+                   os.environ.get("LECTEUR_DATASETS_DIR", "?")))
+    except Exception as e:
+        return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
+
+
+def _recherche_structuree(question: str):
+    """Le lecteur n'a rien -> SOURCE STRUCTURÉE fiable (Wikidata), réponse VÉRIFIÉE + ATTRIBUÉE (FAUX=0).
+    Extraction SPARQL déterministe, jamais du texte libre. Réseau requis (opt-in IA_WEB=1). None si rien/erreur."""
+    try:
+        import veille_structure
+        res = veille_structure.interroge_nl(question)
+    except Exception:
+        return None
+    if not res:
+        return None
+    _, _, valeur, source = res
+    return "%s  (trouvé sur %s)" % (valeur, source)
+
+
+def _schema(entite: str):
+    """Graphe SVG en étoile de ce que VERAX CONNAÎT sur `entite` (relations réelles du lecteur). Renvoie une chaîne
+    SVG (contrôlée, labels échappés) ou None. FAUX=0 : chaque arête = un fait réel du graphe, jamais inventé."""
+    import math, html
+    try:
+        import ia
+        aretes = ia.voisins(entite)
+    except Exception:
+        return None
+    if not aretes:
+        return None
+    def lisible(rel):
+        return not any(x in rel for x in ("code_", "iso", "identifiant", "_id_", "numero_", "matricule"))
+    aretes = [(rel, aff) for rel, _val, aff in aretes if lisible(rel)][:10]
+    if not aretes:
+        return None
+    W, H, R = 660, 470, 165
+    cx, cy = W / 2, H / 2
+    out = ['<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" width="%d" height="%d" '
+           'style="max-width:100%%;background:#fbfbfe;border:1px solid #e5e7eb;border-radius:10px">' % (W, H, W, H)]
+    n = len(aretes)
+    for i, (rel, aff) in enumerate(aretes):
+        a = 2 * math.pi * i / n - math.pi / 2
+        x, y = cx + R * math.cos(a), cy + R * math.sin(a)
+        out.append('<line x1="%.0f" y1="%.0f" x2="%.0f" y2="%.0f" stroke="#cbd5e1" stroke-width="1.5"/>' % (cx, cy, x, y))
+        out.append('<text x="%.0f" y="%.0f" font-size="9" fill="#94a3b8" text-anchor="middle">%s</text>'
+                   % ((cx + x) / 2, (cy + y) / 2 - 3, html.escape(rel.replace("_", " ")[:22])))
+        out.append('<rect x="%.0f" y="%.0f" width="118" height="30" rx="7" fill="#eef2ff" stroke="#c7d2fe"/>'
+                   % (x - 59, y - 15))
+        out.append('<text x="%.0f" y="%.0f" font-size="11" fill="#3730a3" text-anchor="middle">%s</text>'
+                   % (x, y + 4, html.escape(str(aff)[:20])))
+    out.append('<circle cx="%.0f" cy="%.0f" r="48" fill="#4f46e5"/>' % (cx, cy))
+    out.append('<text x="%.0f" y="%.0f" font-size="15" fill="#fff" text-anchor="middle" font-weight="bold">%s</text>'
+               % (cx, cy + 5, html.escape(str(entite).strip()[:18])))
+    out.append('</svg>')
+    return "".join(out)
+
+
+_SCHEMA_TRIG = re.compile(r"\b(montre|dessine|sch[ée]ma|graphe|que\s+sais[- ]?tu|sais[- ]?tu\s+sur)\b", re.I)
+
+
+def _demande_schema(texte: str):
+    """« montre-moi ce que tu sais sur X » / « schéma de X » / « graphe de X » -> SVG, ou None."""
+    if not _SCHEMA_TRIG.search(texte):
+        return None
+    m = re.search(r"(?:\bsur\b|\bde\s+la\b|\bde\s+l['’]|\bdu\b|\bdes\b|\bde\b|\bd['’])\s+(.+?)\s*\??\s*$",
+                  texte, re.I)
+    ent = m.group(1).strip() if m else None
+    if not ent:
+        m2 = re.search(r"(?:montre|dessine|sch[ée]ma|graphe)\s+(?:moi\s+)?(.+?)\s*\??\s*$", texte, re.I)
+        ent = m2.group(1).strip() if m2 else None
+    if ent:
+        ent = re.sub(r"^(?:la|le|les|l['’]|un|une|du|des|de|d['’])\s+", "", ent, flags=re.I).strip()
+    if not ent or len(ent) < 2:
+        return None
+    return _schema(ent)
+
+
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     """Réponse SOUND au message `texte`. `pleine`=True autorise l'étage 2 (lourd). N'INVENTE JAMAIS.
 
@@ -842,6 +993,15 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     meta = _meta_assistant(t)
     if meta:
         return meta
+    #   (0ter) AUTO-DIAGNOSTIC : « diagnostic » -> combien de faits/relations VERAX a réellement chargés (débogage).
+    diag = _diagnostic_connaissance(t)
+    if diag:
+        return diag
+    #   (0quater) SCHÉMA VISUEL : « montre-moi ce que tu sais sur X » -> graphe SVG des relations connues de X.
+    if pleine:
+        _sch = _demande_schema(t)
+        if _sch:
+            return _sch
     #   (0ter) ALIAS DÉFINITION : « que veut dire X » / « que signifie X » / « sens du mot X » -> « définition de X »
     #          (la voie « définition de X » fonctionne déjà). Sound : réutilise une voie existante, aucun fait nouveau.
     t = _alias_definition(t)
@@ -912,6 +1072,12 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
                     if rep:
                         return f"{rep}  — à propos de « {ent} »"
 
+    #   (1·web) RECHERCHE STRUCTURÉE (opt-in réseau IA_WEB=1) : le lecteur n'a rien -> source fiable Wikidata,
+    #           réponse VÉRIFIÉE + ATTRIBUÉE. Avant la mémoire pour qu'une demande factuelle sans « ? » y accède.
+    if pleine and os.environ.get("IA_WEB") == "1" and not _negation_bloquante(t):
+        rep = _recherche_structuree(t)
+        if rep:
+            return rep
     #   (2) MÉMOIRE DE DIALOGUE — seulement si l'utilisateur DEMANDE quelque chose (sinon une affirmation
     #       déclencherait un rappel incongru). On ne retient que de vrais ÉNONCÉS : role 'user', pas le message
     #       courant, et AUCUN tour contenant « ? » (une question — même mal ponctuée « …saoudite? Si… » — n'est

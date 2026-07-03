@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_code_genetique", "_categorie": "physique", "_source": "Modèle (Claude) — biologie moléculaire textbook curée (code génétique -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "anticodon", "valeur": "triplet complémentaire de l'ARN de transfert"}
+{"entite": "code génétique", "valeur": "correspondance entre les codons et les acides aminés"}
+{"entite": "codon", "valeur": "triplet de nucléotides"}

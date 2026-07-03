@@ -1,0 +1,4 @@
+{"_relation": "definition_micro_organisme", "_categorie": "physique", "_source": "Modèle (Claude) — microbiologie textbook curée (micro-organisme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "bactérie", "valeur": "micro-organisme unicellulaire procaryote"}
+{"entite": "levure", "valeur": "champignon unicellulaire"}
+{"entite": "virus", "valeur": "agent infectieux acellulaire"}

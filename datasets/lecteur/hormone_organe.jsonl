@@ -1,0 +1,7 @@
+{"_relation": "hormone_organe", "_categorie": "convention", "_source": "endocrinologie de référence (glande -> hormone principale)", "_articles": true}
+{"entite": "glande surrénale", "valeur": "l'adrénaline"}
+{"entite": "hypophyse", "valeur": "l'hormone de croissance"}
+{"entite": "ovaire", "valeur": "les œstrogènes"}
+{"entite": "pancréas", "valeur": "l'insuline"}
+{"entite": "testicule", "valeur": "la testostérone"}
+{"entite": "thyroïde", "valeur": "la thyroxine"}

@@ -1,0 +1,5 @@
+{"_relation": "role_partie_dent", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (partie de dent -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "dentine", "valeur": "soutien de l'émail"}
+{"entite": "émail", "valeur": "protection de la dent"}
+{"entite": "pulpe dentaire", "valeur": "vascularisation et innervation"}
+{"entite": "racine de la dent", "valeur": "ancrage dans la mâchoire"}

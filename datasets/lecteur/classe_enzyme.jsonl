@@ -1,0 +1,39 @@
+{"_relation": "classe_enzyme", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (classe EC d'enzyme ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "ADN ligase", "valeur": "ligase"}
+{"entite": "ADN polymérase", "valeur": "transférase"}
+{"entite": "alcool déshydrogénase", "valeur": "oxydoréductase"}
+{"entite": "aldolase", "valeur": "lyase"}
+{"entite": "amylase", "valeur": "hydrolase"}
+{"entite": "anhydrase carbonique", "valeur": "lyase"}
+{"entite": "aspartate aminotransférase", "valeur": "transférase"}
+{"entite": "catalase", "valeur": "oxydoréductase"}
+{"entite": "cellulase", "valeur": "hydrolase"}
+{"entite": "chymotrypsine", "valeur": "hydrolase"}
+{"entite": "citrate lyase", "valeur": "lyase"}
+{"entite": "créatine kinase", "valeur": "transférase"}
+{"entite": "élastase", "valeur": "hydrolase"}
+{"entite": "fumarase", "valeur": "lyase"}
+{"entite": "glucokinase", "valeur": "transférase"}
+{"entite": "glucose-6-phosphate déshydrogénase", "valeur": "oxydoréductase"}
+{"entite": "glutamine synthétase", "valeur": "ligase"}
+{"entite": "hexokinase", "valeur": "transférase"}
+{"entite": "lactase", "valeur": "hydrolase"}
+{"entite": "lactate déshydrogénase", "valeur": "oxydoréductase"}
+{"entite": "lipase", "valeur": "hydrolase"}
+{"entite": "lysozyme", "valeur": "hydrolase"}
+{"entite": "maltase", "valeur": "hydrolase"}
+{"entite": "monoamine oxydase", "valeur": "oxydoréductase"}
+{"entite": "nucléase", "valeur": "hydrolase"}
+{"entite": "pepsine", "valeur": "hydrolase"}
+{"entite": "peroxydase", "valeur": "oxydoréductase"}
+{"entite": "phosphatase alcaline", "valeur": "hydrolase"}
+{"entite": "phosphoglucose isomérase", "valeur": "isomérase"}
+{"entite": "phospholipase", "valeur": "hydrolase"}
+{"entite": "pyruvate carboxylase", "valeur": "ligase"}
+{"entite": "pyruvate décarboxylase", "valeur": "lyase"}
+{"entite": "pyruvate kinase", "valeur": "transférase"}
+{"entite": "ribonucléase", "valeur": "hydrolase"}
+{"entite": "topoisomérase", "valeur": "isomérase"}
+{"entite": "triose phosphate isomérase", "valeur": "isomérase"}
+{"entite": "trypsine", "valeur": "hydrolase"}
+{"entite": "uréase", "valeur": "hydrolase"}

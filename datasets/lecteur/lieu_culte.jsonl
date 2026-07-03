@@ -1,0 +1,11 @@
+{"_relation": "lieu_culte", "_categorie": "convention", "_source": "connaissance religieuse de référence — correspondances canoniques", "_articles": true}
+{"entite": "bouddhisme", "valeur": "temple"}
+{"entite": "catholicisme", "valeur": "église"}
+{"entite": "christianisme", "valeur": "église"}
+{"entite": "hindouisme", "valeur": "temple"}
+{"entite": "islam", "valeur": "mosquée"}
+{"entite": "judaïsme", "valeur": "synagogue"}
+{"entite": "protestantisme", "valeur": "temple"}
+{"entite": "sikhisme", "valeur": "gurdwara"}
+{"entite": "taoisme", "valeur": "temple"}
+{"entite": "zoroastrisme", "valeur": "temple du feu"}

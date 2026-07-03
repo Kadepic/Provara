@@ -1,0 +1,5 @@
+{"_relation": "definition_voie_administration", "_categorie": "physique", "_source": "Modèle (Claude) — pharmacologie textbook curée (voie d'administration -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "voie cutanée", "valeur": "sur la peau"}
+{"entite": "voie inhalée", "valeur": "par les poumons"}
+{"entite": "voie intraveineuse", "valeur": "dans une veine"}
+{"entite": "voie orale", "valeur": "par la bouche"}

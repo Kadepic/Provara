@@ -1,0 +1,3 @@
+{"_relation": "expression_allele", "_categorie": "physique", "_source": "Modèle (Claude) — génétique textbook curée (allèle -> expression ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "allèle dominant", "valeur": "s'exprime même à l'état hétérozygote"}
+{"entite": "allèle récessif", "valeur": "s'exprime seulement à l'état homozygote"}

@@ -1,0 +1,402 @@
+{"_relation": "nuts_subdivision", "_categorie": "physique", "_source": "Wikidata/QLever — code NUTS de subdivision P605 (littéral, format vérifié)", "_articles": true}
+{"entite": "Abruzzes", "valeur": "ITF1"}
+{"entite": "Açores", "valeur": "PT200"}
+{"entite": "Adıyaman", "valeur": "TRC12"}
+{"entite": "Adana", "valeur": "TR621"}
+{"entite": "Afyonkarahisar", "valeur": "TR332"}
+{"entite": "Agder", "valeur": "NO092"}
+{"entite": "Ağrı", "valeur": "TRA21"}
+{"entite": "Akershus", "valeur": "NO012"}
+{"entite": "Aksaray", "valeur": "TR712"}
+{"entite": "Amasya", "valeur": "TR834"}
+{"entite": "Andalousie", "valeur": "ES61"}
+{"entite": "Aragon", "valeur": "ES24"}
+{"entite": "Ardahan", "valeur": "TRA24"}
+{"entite": "Århus", "valeur": "DK00D"}
+{"entite": "Artvin", "valeur": "TR905"}
+{"entite": "Asturies", "valeur": "ES12"}
+{"entite": "Aust-Agder", "valeur": "NO041"}
+{"entite": "Auvergne-Rhône-Alpes", "valeur": "FRK"}
+{"entite": "Aydın", "valeur": "TR321"}
+{"entite": "Bačka méridionale", "valeur": "RS123"}
+{"entite": "Bačka occidentale", "valeur": "RS121"}
+{"entite": "Bačka septentrionale", "valeur": "RS125"}
+{"entite": "Bács-Kiskun", "valeur": "HU331"}
+{"entite": "Bade-Wurtemberg", "valeur": "DE1"}
+{"entite": "Balıkesir", "valeur": "TR221"}
+{"entite": "Banat central", "valeur": "RS126"}
+{"entite": "Banat méridional", "valeur": "RS122"}
+{"entite": "Banat septentrional", "valeur": "RS124"}
+{"entite": "Baranya", "valeur": "HU231"}
+{"entite": "Bartın", "valeur": "TR813"}
+{"entite": "Basilicate", "valeur": "ITF5"}
+{"entite": "Basse-Autriche", "valeur": "AT12"}
+{"entite": "Basse-Saxe", "valeur": "DE9"}
+{"entite": "Basses-Carpates", "valeur": "PL82"}
+{"entite": "Batman", "valeur": "TRC32"}
+{"entite": "Bavière", "valeur": "DE2"}
+{"entite": "Bayburt", "valeur": "TRA13"}
+{"entite": "Békés", "valeur": "HU332"}
+{"entite": "Bilecik", "valeur": "TR413"}
+{"entite": "Bingöl", "valeur": "TRB13"}
+{"entite": "Bitlis", "valeur": "TRB23"}
+{"entite": "Bjelovar-Bilogora", "valeur": "HR021"}
+{"entite": "Blagoevgrad", "valeur": "BG413"}
+{"entite": "Blekinge", "valeur": "SE221"}
+{"entite": "Bohême-Centrale", "valeur": "CZ020"}
+{"entite": "Bohême-du-Sud", "valeur": "CZ031"}
+{"entite": "Bolu", "valeur": "TR424"}
+{"entite": "Bor", "valeur": "RS221"}
+{"entite": "Borsod-Abaúj-Zemplén", "valeur": "HU311"}
+{"entite": "Bourgogne", "valeur": "FRC1"}
+{"entite": "Bourgogne-Franche-Comté", "valeur": "FRC"}
+{"entite": "Brabant-Septentrional", "valeur": "NL41"}
+{"entite": "Braničevo", "valeur": "RS222"}
+{"entite": "Bretagne", "valeur": "FRH"}
+{"entite": "Burdur", "valeur": "TR613"}
+{"entite": "Burgenland", "valeur": "AT11"}
+{"entite": "Bursa", "valeur": "TR411"}
+{"entite": "Buskerud", "valeur": "NO032"}
+{"entite": "Calabre", "valeur": "ITF6"}
+{"entite": "Campanie", "valeur": "ITF3"}
+{"entite": "Çanakkale", "valeur": "TR222"}
+{"entite": "Çankırı", "valeur": "TR822"}
+{"entite": "Cantabrie", "valeur": "ES13"}
+{"entite": "canton d'Appenzell Rhodes-Extérieures", "valeur": "CH053"}
+{"entite": "canton d'Appenzell Rhodes-Intérieures", "valeur": "CH054"}
+{"entite": "canton d'Argovie", "valeur": "CH033"}
+{"entite": "canton d'Obwald", "valeur": "CH064"}
+{"entite": "canton d'Uri", "valeur": "CH062"}
+{"entite": "canton de Bâle-Campagne", "valeur": "CH032"}
+{"entite": "canton de Bâle-Ville", "valeur": "CH031"}
+{"entite": "canton de Berne", "valeur": "CH021"}
+{"entite": "canton de Fribourg", "valeur": "CH022"}
+{"entite": "canton de Genève", "valeur": "CH013"}
+{"entite": "canton de Glaris", "valeur": "CH051"}
+{"entite": "canton de Lucerne", "valeur": "CH061"}
+{"entite": "canton de Neuchâtel", "valeur": "CH024"}
+{"entite": "canton de Nidwald", "valeur": "CH065"}
+{"entite": "canton de Saint-Gall", "valeur": "CH055"}
+{"entite": "canton de Schaffhouse", "valeur": "CH052"}
+{"entite": "canton de Schwytz", "valeur": "CH063"}
+{"entite": "canton de Soleure", "valeur": "CH023"}
+{"entite": "canton de Thurgovie", "valeur": "CH057"}
+{"entite": "canton de Vaud", "valeur": "CH011"}
+{"entite": "canton de Zoug", "valeur": "CH066"}
+{"entite": "canton des Grisons", "valeur": "CH056"}
+{"entite": "canton du Jura", "valeur": "CH025"}
+{"entite": "canton du Valais", "valeur": "CH012"}
+{"entite": "Carélie du Nord", "valeur": "FI1DC"}
+{"entite": "Carélie du Sud", "valeur": "FI1C5"}
+{"entite": "Carinthie", "valeur": "AT21"}
+{"entite": "Castille-et-León", "valeur": "ES41"}
+{"entite": "Castille-La Manche", "valeur": "ES42"}
+{"entite": "Catalogne", "valeur": "ES51"}
+{"entite": "Centre-Val de Loire", "valeur": "FRB"}
+{"entite": "Ceuta", "valeur": "ES63"}
+{"entite": "Choumen", "valeur": "BG333"}
+{"entite": "communauté de Madrid", "valeur": "ES30"}
+{"entite": "Communauté valencienne", "valeur": "ES52"}
+{"entite": "comté de Halland", "valeur": "SE231"}
+{"entite": "comté de Scanie", "valeur": "SE224"}
+{"entite": "comté de Stockholm", "valeur": "SE110"}
+{"entite": "comté de Västra Götaland", "valeur": "SE232"}
+{"entite": "Copenhague", "valeur": "DK002"}
+{"entite": "Çorum", "valeur": "TR833"}
+{"entite": "Crète", "valeur": "EL43"}
+{"entite": "Csongrád-Csanád", "valeur": "HU333"}
+{"entite": "Dalécarlie", "valeur": "SE312"}
+{"entite": "Danemark du Sud", "valeur": "DK03"}
+{"entite": "Denizli", "valeur": "TR322"}
+{"entite": "Diyarbakır", "valeur": "TRC22"}
+{"entite": "Dobritch", "valeur": "BG332"}
+{"entite": "Drenthe", "valeur": "NL13"}
+{"entite": "Düzce", "valeur": "TR423"}
+{"entite": "Écosse", "valeur": "UKM"}
+{"entite": "Edirne", "valeur": "TR212"}
+{"entite": "Égée-Méridionale", "valeur": "EL42"}
+{"entite": "Égée-Septentrionale", "valeur": "EL41"}
+{"entite": "Elâzığ", "valeur": "TRB12"}
+{"entite": "Émilie-Romagne", "valeur": "ITH5"}
+{"entite": "Épire", "valeur": "EL54"}
+{"entite": "Erzincan", "valeur": "TRA12"}
+{"entite": "Erzurum", "valeur": "TRA11"}
+{"entite": "Eskişehir", "valeur": "TR412"}
+{"entite": "Estrémadure", "valeur": "ES43"}
+{"entite": "Fejér", "valeur": "HU211"}
+{"entite": "Finlande-Centrale", "valeur": "FI198"}
+{"entite": "Finlande-Propre", "valeur": "FI1C1"}
+{"entite": "Finnmark", "valeur": "NO073"}
+{"entite": "Fionie", "valeur": "DK008"}
+{"entite": "Flevoland", "valeur": "NL23"}
+{"entite": "Franche-Comté", "valeur": "FRC2"}
+{"entite": "Frederiksborg", "valeur": "DK003"}
+{"entite": "Frioul-Vénétie Julienne", "valeur": "ITH4"}
+{"entite": "Frise", "valeur": "NL12"}
+{"entite": "Gabrovo", "valeur": "BG322"}
+{"entite": "Galice", "valeur": "ES11"}
+{"entite": "Gävleborg", "valeur": "SE313"}
+{"entite": "Gaziantep", "valeur": "TRC11"}
+{"entite": "Giresun", "valeur": "TR903"}
+{"entite": "Gotland", "valeur": "SE214"}
+{"entite": "Grand Est", "valeur": "FRF"}
+{"entite": "Grèce-Centrale", "valeur": "EL64"}
+{"entite": "Grèce-Occidentale", "valeur": "EL63"}
+{"entite": "Groningue", "valeur": "NL11"}
+{"entite": "Gueldre", "valeur": "NL22"}
+{"entite": "Gümüşhane", "valeur": "TR906"}
+{"entite": "Győr-Moson-Sopron", "valeur": "HU221"}
+{"entite": "Hajdú-Bihar", "valeur": "HU321"}
+{"entite": "Hakkari", "valeur": "TRB24"}
+{"entite": "Haskovo", "valeur": "BG422"}
+{"entite": "Hatay", "valeur": "TR631"}
+{"entite": "Haute-Autriche", "valeur": "AT31"}
+{"entite": "Haute-Normandie", "valeur": "FRD2"}
+{"entite": "Hauts-de-France", "valeur": "FRE"}
+{"entite": "Hedmark", "valeur": "NO021"}
+{"entite": "Hesse", "valeur": "DE7"}
+{"entite": "Heves", "valeur": "HU312"}
+{"entite": "Höfuðborgarsvæðið", "valeur": "IS001"}
+{"entite": "Hollande-Méridionale", "valeur": "NL36"}
+{"entite": "Hollande-Septentrionale", "valeur": "NL32"}
+{"entite": "Hordaland", "valeur": "NO051"}
+{"entite": "Hovedstaden", "valeur": "DK01"}
+{"entite": "Iğdır", "valeur": "TRA23"}
+{"entite": "île Jan Mayen", "valeur": "NO0B1"}
+{"entite": "Îles Baléares", "valeur": "ES53"}
+{"entite": "îles Canaries", "valeur": "ES7"}
+{"entite": "Innlandet", "valeur": "NO020"}
+{"entite": "Irlande du Nord", "valeur": "UKN"}
+{"entite": "Isparta", "valeur": "TR612"}
+{"entite": "Jablanica", "valeur": "RS224"}
+{"entite": "Jämtland", "valeur": "SE322"}
+{"entite": "Jász-Nagykun-Szolnok", "valeur": "HU322"}
+{"entite": "Jönköping", "valeur": "SE211"}
+{"entite": "Jutland-Central", "valeur": "DK04"}
+{"entite": "Jutland-du-Sud", "valeur": "DK009"}
+{"entite": "Kırıkkale", "valeur": "TR711"}
+{"entite": "Kırklareli", "valeur": "TR213"}
+{"entite": "Kırşehir", "valeur": "TR715"}
+{"entite": "Kahramanmaraş", "valeur": "TR632"}
+{"entite": "Kainuu", "valeur": "FI1D8"}
+{"entite": "Kalmar", "valeur": "SE213"}
+{"entite": "Kanta-Häme", "valeur": "FI1C2"}
+{"entite": "Karabük", "valeur": "TR812"}
+{"entite": "Karaman", "valeur": "TR522"}
+{"entite": "Kardjali", "valeur": "BG425"}
+{"entite": "Karlovy Vary", "valeur": "CZ041"}
+{"entite": "Kastamonu", "valeur": "TR821"}
+{"entite": "Kayseri", "valeur": "TR721"}
+{"entite": "Kilis", "valeur": "TRC13"}
+{"entite": "Kocaeli", "valeur": "TR421"}
+{"entite": "Kolubara", "valeur": "RS212"}
+{"entite": "Komárom-Esztergom", "valeur": "HU212"}
+{"entite": "Konya", "valeur": "TR521"}
+{"entite": "Kosovo", "valeur": "RS231"}
+{"entite": "Kosovo-et-Métochie", "valeur": "RS23"}
+{"entite": "Kosovo-Pomoravlje", "valeur": "RS233"}
+{"entite": "Kosovska Mitrovica", "valeur": "RS232"}
+{"entite": "Kronoberg", "valeur": "SE212"}
+{"entite": "Kütahya", "valeur": "TR333"}
+{"entite": "Kyoustendil", "valeur": "BG415"}
+{"entite": "Laponie", "valeur": "FI1D7"}
+{"entite": "Latium", "valeur": "ITI4"}
+{"entite": "Ligurie", "valeur": "ITC3"}
+{"entite": "Limbourg", "valeur": "NL42"}
+{"entite": "Lombardie", "valeur": "ITC4"}
+{"entite": "Lovetch", "valeur": "BG315"}
+{"entite": "Møre og Romsdal", "valeur": "NO053"}
+{"entite": "Macédoine-Centrale", "valeur": "EL52"}
+{"entite": "Macédoine-Occidentale", "valeur": "EL53"}
+{"entite": "Macédoine-Orientale-et-Thrace", "valeur": "EL51"}
+{"entite": "Mačva", "valeur": "RS213"}
+{"entite": "Madère", "valeur": "PT300"}
+{"entite": "Malatya", "valeur": "TRB11"}
+{"entite": "Manisa", "valeur": "TR331"}
+{"entite": "Marches", "valeur": "ITI3"}
+{"entite": "Mardin", "valeur": "TRC31"}
+{"entite": "Melilla", "valeur": "ES64"}
+{"entite": "Mersin", "valeur": "TR622"}
+{"entite": "Molise", "valeur": "ITF2"}
+{"entite": "Montana", "valeur": "BG312"}
+{"entite": "Moravica", "valeur": "RS214"}
+{"entite": "Moravie-du-Sud", "valeur": "CZ064"}
+{"entite": "Moravie-Silésie", "valeur": "CZ080"}
+{"entite": "Muğla", "valeur": "TR323"}
+{"entite": "Muş", "valeur": "TRB22"}
+{"entite": "Navarre", "valeur": "ES22"}
+{"entite": "Nevşehir", "valeur": "TR714"}
+{"entite": "Niğde", "valeur": "TR713"}
+{"entite": "Nišava", "valeur": "RS225"}
+{"entite": "Nógrád", "valeur": "HU313"}
+{"entite": "Nord-Trøndelag", "valeur": "NO062"}
+{"entite": "Nordland", "valeur": "NO071"}
+{"entite": "Normandie", "valeur": "FRD"}
+{"entite": "Norrbotten", "valeur": "SE332"}
+{"entite": "Nouvelle-Aquitaine", "valeur": "FRI"}
+{"entite": "oblast de Bourgas", "valeur": "BG341"}
+{"entite": "Occitanie", "valeur": "FRJ"}
+{"entite": "Olomouc", "valeur": "CZ071"}
+{"entite": "Olt", "valeur": "RO414"}
+{"entite": "Ombrie", "valeur": "ITI2"}
+{"entite": "Oppland", "valeur": "NO022"}
+{"entite": "Ordu", "valeur": "TR902"}
+{"entite": "Örebro", "valeur": "SE124"}
+{"entite": "Osmaniye", "valeur": "TR633"}
+{"entite": "Östergötland", "valeur": "SE123"}
+{"entite": "Ostrobotnie", "valeur": "FI19A"}
+{"entite": "Ostrobotnie-Centrale", "valeur": "FI1D5"}
+{"entite": "Ostrobotnie du Nord", "valeur": "FI1D9"}
+{"entite": "Ostrobotnie du Sud", "valeur": "FI199"}
+{"entite": "Overijssel", "valeur": "NL21"}
+{"entite": "Päijät-Häme", "valeur": "FI1C6"}
+{"entite": "Pardubice", "valeur": "CZ053"}
+{"entite": "Pays basque", "valeur": "ES21"}
+{"entite": "pays de Galles", "valeur": "UKL"}
+{"entite": "Pays de la Loire", "valeur": "FRG"}
+{"entite": "Pazardjik", "valeur": "BG423"}
+{"entite": "Pčinja", "valeur": "RS228"}
+{"entite": "Peć", "valeur": "RS234"}
+{"entite": "Péloponnèse", "valeur": "EL65"}
+{"entite": "périphérie des Îles Ioniennes", "valeur": "EL62"}
+{"entite": "Pernik", "valeur": "BG414"}
+{"entite": "Piémont", "valeur": "ITC1"}
+{"entite": "Pirkanmaa", "valeur": "FI19B"}
+{"entite": "Pirot", "valeur": "RS226"}
+{"entite": "Pleven", "valeur": "BG314"}
+{"entite": "Plovdiv", "valeur": "BG421"}
+{"entite": "Podunavlje", "valeur": "RS227"}
+{"entite": "Poméranie", "valeur": "PL63"}
+{"entite": "Poméranie-Occidentale", "valeur": "PL42"}
+{"entite": "Pomoravlje", "valeur": "RS215"}
+{"entite": "Pouilles", "valeur": "ITF4"}
+{"entite": "Prague", "valeur": "CZ010"}
+{"entite": "Prizren", "valeur": "RS235"}
+{"entite": "Provence-Alpes-Côte d'Azur", "valeur": "FRL"}
+{"entite": "province d'Antalya", "valeur": "TR611"}
+{"entite": "Province de Kars", "valeur": "TRA22"}
+{"entite": "Rasina", "valeur": "RS216"}
+{"entite": "Raška", "valeur": "RS217"}
+{"entite": "Razgrad", "valeur": "BG324"}
+{"entite": "région d'Ústí nad Labem", "valeur": "CZ042"}
+{"entite": "région de Banská Bystrica", "valeur": "SK032"}
+{"entite": "région de Bratislava", "valeur": "SK010"}
+{"entite": "Région de Bruxelles-Capitale", "valeur": "BE1"}
+{"entite": "région de Hradec Králové", "valeur": "CZ052"}
+{"entite": "région de Košice", "valeur": "SK042"}
+{"entite": "région de Liberec", "valeur": "CZ051"}
+{"entite": "région de Murcie", "valeur": "ES62"}
+{"entite": "région de Nitra", "valeur": "SK023"}
+{"entite": "région de Pilsen", "valeur": "CZ032"}
+{"entite": "région de Prešov", "valeur": "SK041"}
+{"entite": "région de Trenčín", "valeur": "SK022"}
+{"entite": "région de Trnava", "valeur": "SK021"}
+{"entite": "région de Žilina", "valeur": "SK031"}
+{"entite": "Région flamande", "valeur": "BE2"}
+{"entite": "Région wallonne", "valeur": "BE3"}
+{"entite": "Rhénanie-du-Nord-Westphalie", "valeur": "DEA"}
+{"entite": "Rhénanie-Palatinat", "valeur": "DEB"}
+{"entite": "Ribe", "valeur": "DK00A"}
+{"entite": "Ringkjøbing", "valeur": "DK00C"}
+{"entite": "La Rioja", "valeur": "ES23"}
+{"entite": "Rize", "valeur": "TR904"}
+{"entite": "Rogaland", "valeur": "NO043"}
+{"entite": "Roskilde", "valeur": "DK004"}
+{"entite": "Roussé", "valeur": "BG323"}
+{"entite": "Sør-Trøndelag", "valeur": "NO061"}
+{"entite": "Sakarya", "valeur": "TR422"}
+{"entite": "Salzbourg", "valeur": "AT32"}
+{"entite": "Samsun", "valeur": "TR831"}
+{"entite": "Şanlıurfa", "valeur": "TRC21"}
+{"entite": "Sardaigne", "valeur": "ITG2"}
+{"entite": "Satakunta", "valeur": "FI196"}
+{"entite": "Savonie du Nord", "valeur": "FI1DB"}
+{"entite": "Savonie du Sud", "valeur": "FI1DA"}
+{"entite": "Saxe", "valeur": "DED"}
+{"entite": "Sicile", "valeur": "ITG1"}
+{"entite": "Siirt", "valeur": "TRC34"}
+{"entite": "Silistra", "valeur": "BG325"}
+{"entite": "Sinop", "valeur": "TR823"}
+{"entite": "Sjælland", "valeur": "DK02"}
+{"entite": "Sjælland-Occidental", "valeur": "DK005"}
+{"entite": "Sliven", "valeur": "BG342"}
+{"entite": "Smolyan", "valeur": "BG424"}
+{"entite": "Södermanland", "valeur": "SE122"}
+{"entite": "Sofia", "valeur": "BG412"}
+{"entite": "Sofia-ville", "valeur": "BG411"}
+{"entite": "Sogn og Fjordane", "valeur": "NO052"}
+{"entite": "Somogy", "valeur": "HU232"}
+{"entite": "Split-Dalmatie", "valeur": "HR035"}
+{"entite": "Stara Zagora", "valeur": "BG344"}
+{"entite": "Østfold", "valeur": "NO031"}
+{"entite": "Storstrøm", "valeur": "DK006"}
+{"entite": "Styrie", "valeur": "AT22"}
+{"entite": "Šumadija", "valeur": "RS218"}
+{"entite": "Svalbard", "valeur": "NO0B2"}
+{"entite": "Syrmie", "valeur": "RS127"}
+{"entite": "Szabolcs-Szatmár-Bereg", "valeur": "HU323"}
+{"entite": "Targovichté", "valeur": "BG334"}
+{"entite": "Tekirdağ", "valeur": "TR211"}
+{"entite": "Telemark", "valeur": "NO034"}
+{"entite": "Thessalie", "valeur": "EL61"}
+{"entite": "Tokat", "valeur": "TR832"}
+{"entite": "Tolna", "valeur": "HU233"}
+{"entite": "Toplica", "valeur": "RS229"}
+{"entite": "Toscane", "valeur": "ITI1"}
+{"entite": "Trøndelag", "valeur": "NO060"}
+{"entite": "Trabzon", "valeur": "TR901"}
+{"entite": "Trentin-Haut-Adige", "valeur": "ITH2"}
+{"entite": "Troms", "valeur": "NO072"}
+{"entite": "Troms og Finnmark", "valeur": "NO074"}
+{"entite": "Tunceli", "valeur": "TRB14"}
+{"entite": "Tyrol", "valeur": "AT33"}
+{"entite": "Uppsala", "valeur": "SE121"}
+{"entite": "Uşak", "valeur": "TR334"}
+{"entite": "Utrecht", "valeur": "NL35"}
+{"entite": "Uusimaa", "valeur": "FI1B"}
+{"entite": "Vallée de la Kymi", "valeur": "FI1C7"}
+{"entite": "Van", "valeur": "TRB21"}
+{"entite": "Värmland", "valeur": "SE311"}
+{"entite": "Varna", "valeur": "BG331"}
+{"entite": "Vas", "valeur": "HU222"}
+{"entite": "Västerbotten", "valeur": "SE331"}
+{"entite": "Västernorrland", "valeur": "SE321"}
+{"entite": "Västmanland", "valeur": "SE125"}
+{"entite": "Vejle", "valeur": "DK00B"}
+{"entite": "Veliko Tarnovo", "valeur": "BG321"}
+{"entite": "Vénétie", "valeur": "ITH3"}
+{"entite": "Vest-Agder", "valeur": "NO042"}
+{"entite": "Vestfold", "valeur": "NO033"}
+{"entite": "Vestfold og Telemark", "valeur": "NO091"}
+{"entite": "Vestland", "valeur": "NO0A2"}
+{"entite": "Veszprém", "valeur": "HU213"}
+{"entite": "Viborg", "valeur": "DK00E"}
+{"entite": "Vidin", "valeur": "BG311"}
+{"entite": "Vienne", "valeur": "AT13"}
+{"entite": "Viken", "valeur": "NO082"}
+{"entite": "voïvodie d'Opole", "valeur": "PL52"}
+{"entite": "voïvodie de Basse-Silésie", "valeur": "PL51"}
+{"entite": "voïvodie de Couïavie-Poméranie", "valeur": "PL61"}
+{"entite": "voïvodie de Grande-Pologne", "valeur": "PL41"}
+{"entite": "voïvodie de Lublin", "valeur": "PL81"}
+{"entite": "voïvodie de Lubusz", "valeur": "PL43"}
+{"entite": "voïvodie de Mazovie", "valeur": "PL12"}
+{"entite": "voïvodie de Łódź", "valeur": "PL71"}
+{"entite": "voïvodie de Petite-Pologne", "valeur": "PL21"}
+{"entite": "voïvodie de Podlachie", "valeur": "PL84"}
+{"entite": "voïvodie de Sainte-Croix", "valeur": "PL72"}
+{"entite": "voïvodie de Silésie", "valeur": "PL22"}
+{"entite": "voïvodie de Varmie-Mazurie", "valeur": "PL62"}
+{"entite": "Voïvodine", "valeur": "RS12"}
+{"entite": "Vorarlberg", "valeur": "AT34"}
+{"entite": "Vratsa", "valeur": "BG313"}
+{"entite": "Vysočina", "valeur": "CZ063"}
+{"entite": "Yalova", "valeur": "TR425"}
+{"entite": "Yambol", "valeur": "BG343"}
+{"entite": "Yozgat", "valeur": "TR723"}
+{"entite": "Zaječar", "valeur": "RS223"}
+{"entite": "Zala", "valeur": "HU223"}
+{"entite": "Zélande", "valeur": "NL34"}
+{"entite": "Zlatibor", "valeur": "RS211"}
+{"entite": "Zlín", "valeur": "CZ072"}
+{"entite": "Zonguldak", "valeur": "TR811"}

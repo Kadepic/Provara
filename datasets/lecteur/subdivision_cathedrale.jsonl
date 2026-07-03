@@ -1,0 +1,781 @@
+{"_relation": "subdivision_cathedrale", "_categorie": "physique", "_source": "Wikidata/QLever — subdivision_cathedrale P131, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Abbey Church of the Holy Trinity, New Norcia", "valeur": "Australie-Occidentale"}
+{"entite": "ACK Mombasa Memorial Cathedral", "valeur": "Mombasa District"}
+{"entite": "Alexander Nevsky Cathedral", "valeur": "kraï de Transbaïkalie"}
+{"entite": "All Saints' Anglican Cathedral, Edmonton", "valeur": "Alberta"}
+{"entite": "All Saints' Cathedral", "valeur": "Hong Kong"}
+{"entite": "All Saints Cathedral, Chicago", "valeur": "Illinois"}
+{"entite": "All Saints' Cathedral, Nairobi", "valeur": "Nairobi"}
+{"entite": "All Saints Cathedral of Khartoum", "valeur": "Khartoum"}
+{"entite": "All Saints Church, Srinagar", "valeur": "Jammu-et-Cachemire"}
+{"entite": "ancienne cathédrale de Benghazi", "valeur": "Benghazi"}
+{"entite": "Anglican Cathedral of Holy Spirit", "valeur": "Dodoma"}
+{"entite": "Anglican Cathedral of St. John the Baptist", "valeur": "Buenos Aires"}
+{"entite": "Anglican Cathedral of the Holy Cross, Geraldton", "valeur": "Australie-Occidentale"}
+{"entite": "Annunciation Melkite Catholic Cathedral", "valeur": "Massachusetts"}
+{"entite": "Archangel Michael's Coptic Orthodox Cathedral", "valeur": "Assouan"}
+{"entite": "Armed Forces Central Cathedral", "valeur": "Séoul"}
+{"entite": "Armenian Catholic Cathedral of Our Lady of Bzommar, Montevideo", "valeur": "Montevideo"}
+{"entite": "Arthat St. Mary's Cathedral", "valeur": "Kerala"}
+{"entite": "Ascension Cathedral", "valeur": "Satu Mare"}
+{"entite": "Ascension Greek Orthodox Cathedral of Oakland", "valeur": "Californie"}
+{"entite": "Ascension of the Lord Cathedral, Târgu Mureș", "valeur": "Mureș"}
+{"entite": "Assumption Cathedral", "valeur": "Astana"}
+{"entite": "Assumption of Mary Cathedral, Baia Mare", "valeur": "Maramureș"}
+{"entite": "Ayacucho Cathedral", "valeur": "Ayacucho"}
+{"entite": "Banak", "valeur": "Erzurum"}
+{"entite": "basilique-cathédrale de l'Immaculée-Conception de Durango", "valeur": "Durango"}
+{"entite": "basilique-cathédrale de l'Immaculée-Conception de Port-d'Espagne", "valeur": "Port-d'Espagne"}
+{"entite": "basilique-cathédrale de Notre-Dame-de-l'Assomption de Santiago de Cuba", "valeur": "Santiago de Cuba"}
+{"entite": "basilique-cathédrale de Saint-François-d'Assise de Santa Fe", "valeur": "Santa Fe"}
+{"entite": "basilique de Saint-Marin", "valeur": "Saint-Marin"}
+{"entite": "basilique Notre-Dame-du-Perpétuel-Secours de Labrador City", "valeur": "Terre-Neuve-et-Labrador"}
+{"entite": "Bayombong Cathedral", "valeur": "Nueva Vizcaya"}
+{"entite": "Bryn Athyn Cathedral", "valeur": "Pennsylvanie"}
+{"entite": "Catedral Castrense Santa Bárbara", "valeur": "Distrito Nacional"}
+{"entite": "Catedral de Líbano, Tolima", "valeur": "Tolima"}
+{"entite": "Catedral de Nuestra Señora de las Mercedes, Caldas", "valeur": "Caldas"}
+{"entite": "Catedral de San José de David", "valeur": "Chiriquí"}
+{"entite": "Catedral de San Luis", "valeur": "San Luis"}
+{"entite": "Catedral de San Rosendo", "valeur": "Pinar del Río"}
+{"entite": "Catedral Metropolitana de Manaus", "valeur": "Amazonas"}
+{"entite": "Catedral Nuestra Señora del Valle", "valeur": "Anzoátegui"}
+{"entite": "Catedral Ortodoxa Rusa de la Resurreccion", "valeur": "Buenos Aires"}
+{"entite": "Catedral San Juan Bautista de Chitré", "valeur": "Herrera"}
+{"entite": "Catedral San Juan Bautista de la Estrada", "valeur": "Bogota"}
+{"entite": "Cathedral Basilica of Our Lady of Guadalupe", "valeur": "Colima"}
+{"entite": "Cathedral Basilica of Our Lady of Peace, La Paz", "valeur": "La Paz"}
+{"entite": "Cathedral Basilica of Our Lady of Peace, Potosí", "valeur": "Potosí"}
+{"entite": "Cathedral Basilica of Our Lady of the Assumption, Aguascalientes", "valeur": "Aguascalientes"}
+{"entite": "Cathedral Basilica of St. Joseph", "valeur": "Californie"}
+{"entite": "Cathedral Basilica of the Immaculate Conception", "valeur": "Mérida"}
+{"entite": "Cathedral Center of St. Paul, Los Angeles", "valeur": "Californie"}
+{"entite": "Cathedral Church of Saint Paul", "valeur": "Iowa"}
+{"entite": "Cathedral Church of St. Luke", "valeur": "Portland"}
+{"entite": "Cathedral Church of St. Paul, Boston", "valeur": "Massachusetts"}
+{"entite": "Cathedral Church of the Advent", "valeur": "Alabama"}
+{"entite": "Cathedral of All Saints", "valeur": "Mtwara"}
+{"entite": "Cathedral of All Souls", "valeur": "Caroline du Nord"}
+{"entite": "Cathedral of Archangel Michael", "valeur": "oblast de Moscou"}
+{"entite": "Cathedral of Assumption of Blessed Virgin Mary", "valeur": "Strumica"}
+{"entite": "Cathedral of Castelo Branco", "valeur": "Castelo Branco"}
+{"entite": "Cathedral of Christ the King", "valeur": "Texas"}
+{"entite": "Cathedral of Concepción, Paraguay", "valeur": "Concepción"}
+{"entite": "Cathedral of Córdoba", "valeur": "Veracruz"}
+{"entite": "Cathedral of Dili", "valeur": "Dili"}
+{"entite": "Cathedral of Hope", "valeur": "Texas"}
+{"entite": "Cathedral of Iquitos", "valeur": "Département de Loreto"}
+{"entite": "Cathedral of Loja-Parroquia El Sagrario", "valeur": "Loja"}
+{"entite": "Cathedral of Luanda", "valeur": "Luanda"}
+{"entite": "Cathedral of Maldonado", "valeur": "Maldonado"}
+{"entite": "Cathedral of Mary of the Assumption", "valeur": "Michigan"}
+{"entite": "Cathedral of Minas", "valeur": "Lavalleja"}
+{"entite": "Cathedral of Nezahualcóyotl", "valeur": "État de Mexico"}
+{"entite": "Cathedral of Our Lady of Carmel", "valeur": "Bocas del Toro"}
+{"entite": "Cathedral of Our Lady of China", "valeur": "Tainan"}
+{"entite": "Cathedral of Our Lady of Guadalupe", "valeur": "Kansas"}
+{"entite": "Cathedral of Our Lady of Hope", "valeur": "Jalapa"}
+{"entite": "Cathedral of Our Lady of Lourdes", "valeur": "Washington"}
+{"entite": "Cathedral of Our Lady of Patronage, Buenos Aires", "valeur": "Buenos Aires"}
+{"entite": "Cathedral of Our Lady of Peace, Trujillo", "valeur": "Trujillo"}
+{"entite": "Cathedral of Our Lady of the Assumption, Malange", "valeur": "Malanje"}
+{"entite": "Cathedral of Our Lady of the Pillar", "valeur": "Barinas"}
+{"entite": "Cathedral of Our Lady of Victory", "valeur": "Kigoma"}
+{"entite": "Cathedral of Our Lady Queen of the World, Cabinda", "valeur": "Cabinda"}
+{"entite": "Cathedral of Our Mother of Reliefs, Aleppo", "valeur": "Alep"}
+{"entite": "Cathedral of Saint Augustinus in Huejutla de Reyes", "valeur": "Hidalgo"}
+{"entite": "Cathedral of Saint Demetrius, Craiova", "valeur": "Dolj"}
+{"entite": "Cathedral of Saint Ephrem the Syrian", "valeur": "Alep"}
+{"entite": "Cathedral of Saint Eugene", "valeur": "Californie"}
+{"entite": "Cathedral of Saint Joseph in Coatzacoalcos", "valeur": "Veracruz"}
+{"entite": "Cathedral of Saint Joseph the Worker", "valeur": "San José"}
+{"entite": "Cathedral of Saint Jude the Apostle", "valeur": "Floride"}
+{"entite": "Cathedral of Saint Mark the Evangelist", "valeur": "Chiapas"}
+{"entite": "Cathedral of Saint Mary of Jerusalem", "valeur": "Mérida"}
+{"entite": "Cathedral of Saint Nicholas", "valeur": "Murska Sobota"}
+{"entite": "Cathedral of Saint Patrick", "valeur": "Connecticut"}
+{"entite": "Cathedral of Saint Paul, Bogotá", "valeur": "Bogota"}
+{"entite": "Cathedral of Saint Thomas More", "valeur": "Virginie"}
+{"entite": "Cathedral of Saints Peter and Paul", "valeur": "Constanța"}
+{"entite": "Cathedral of San Carlos De Borromeo", "valeur": "Matanzas"}
+{"entite": "Cathedral of Santa Bárbara", "valeur": "Arauca"}
+{"entite": "Cathedral of St. Bernard of Siena", "valeur": "Mexico"}
+{"entite": "Cathedral of St. Christopher", "valeur": "San Cristóbal"}
+{"entite": "Cathedral of St. Christopher, Jutiapa", "valeur": "Jutiapa"}
+{"entite": "Cathedral of St. Francis de Sales", "valeur": "Louisiane"}
+{"entite": "Cathedral of St. Ignatius of Loyola", "valeur": "Floride"}
+{"entite": "Cathedral of St. James Major, Tete", "valeur": "Tete"}
+{"entite": "Cathedral of St. John Mark", "valeur": "Kesrouan-Jbeil"}
+{"entite": "Cathedral of St Joseph", "valeur": "Bucarest"}
+{"entite": "Cathedral of St. Joseph and St. Andrew, San Andrés Tuxtla", "valeur": "Veracruz"}
+{"entite": "Cathedral of St Joseph, Sofia", "valeur": "Sofia"}
+{"entite": "Cathedral of St. Martin de Porres", "valeur": "Katsina"}
+{"entite": "Cathedral of St. Mary", "valeur": "New York"}
+{"entite": "Cathedral of St. Mary of the Annunciation", "valeur": "Missouri"}
+{"entite": "Cathedral of St. Mary of the Assumption", "valeur": "New Jersey"}
+{"entite": "Cathedral of St Michael and St John", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Cathedral of St. Paul", "valeur": "Caazapá"}
+{"entite": "Cathedral of St. Rose of Lima", "valeur": "Santa Rosa"}
+{"entite": "Cathedral of Sts. Peter and Paul", "valeur": "Masvingo"}
+{"entite": "Cathedral of Sts. Philip and James", "valeur": "Mexico"}
+{"entite": "Cathedral of Tacuarembó", "valeur": "Tacuarembó"}
+{"entite": "Cathedral of the Annunciation", "valeur": "Californie"}
+{"entite": "Cathedral of the Annunciation of Our Lady", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Cathedral of the Annunciation of the Virgin Mary", "valeur": "Wellington"}
+{"entite": "cathedral of the Ascension of Santo Domingo", "valeur": "Santo Domingo"}
+{"entite": "Cathedral of the Assumption of the Virgin Mary, Varaždin", "valeur": "Varaždin"}
+{"entite": "Cathedral of the Assumption of the Virgin, Tbilisi", "valeur": "Tbilissi"}
+{"entite": "Cathedral of the Blessed Sacrament", "valeur": "Californie"}
+{"entite": "Cathedral of the Blessed Virgin Mary, Belgrade", "valeur": "Belgrade"}
+{"entite": "Cathedral of the Conception of Our Lady", "valeur": "Huambo"}
+{"entite": "Cathedral of the Good Shepherd", "valeur": "Lima"}
+{"entite": "Cathedral of the Holy Angels", "valeur": "Indiana"}
+{"entite": "Cathedral of the Holy Cross, Lusaka", "valeur": "Lusaka"}
+{"entite": "Cathedral of the Holy Trinity", "valeur": "Beni"}
+{"entite": "Cathedral of the Holy Trinity, Almaty", "valeur": "Almaty"}
+{"entite": "Cathedral of The Immaculate Conception in Santarém, Pará", "valeur": "Santarém"}
+{"entite": "Cathedral of the Lord of Burgos, Huánuco", "valeur": "Huánuco"}
+{"entite": "Cathedral of the Lord, Villahermosa", "valeur": "Tabasco"}
+{"entite": "Cathedral of the Merciful Jesus, Vitebsk", "valeur": "Vitebsk"}
+{"entite": "Cathedral of The Most Holy Trinity, Montevideo", "valeur": "Montevideo"}
+{"entite": "Cathedral of the Nativity of John the Baptist in Arad", "valeur": "Arad"}
+{"entite": "Cathedral of the Nativity of the Virgin Mary", "valeur": "oblast de Tchernihiv"}
+{"entite": "Cathedral of the Nativity, Suceava", "valeur": "Suceava"}
+{"entite": "Cathedral of the Queen of the Rosary, Xuân Trường", "valeur": "Nam Định"}
+{"entite": "Cathedral of the Risen Christ", "valeur": "Nebraska"}
+{"entite": "Cathedral of the Rockies", "valeur": "Idaho"}
+{"entite": "Cathedral of the Star of the Sea", "valeur": "Buenos Aires"}
+{"entite": "Cathedral of Tomorrow", "valeur": "Ohio"}
+{"entite": "Cathedral of Veracruz", "valeur": "Veracruz"}
+{"entite": "Cathedral Shrine of St. Michael the Archangel", "valeur": "San Miguel"}
+{"entite": "Cathedral Shrine of the Holy Family, São Paulo", "valeur": "São Paulo"}
+{"entite": "cathédrale Alexandre-Nevski de Sofia", "valeur": "Sofia"}
+{"entite": "cathédrale anglicane Saint-Paul de Victoria", "valeur": "Victoria"}
+{"entite": "cathédrale-basilique de Léon", "valeur": "Guanajuato"}
+{"entite": "cathédrale-basilique Notre-Dame-de-Luján", "valeur": "Florida"}
+{"entite": "cathédrale-basilique Reine-de-la-Paix", "valeur": "San Miguel"}
+{"entite": "cathédrale-basilique Saint-Joseph", "valeur": "San José"}
+{"entite": "cathédrale-basilique Sainte-Marie de Panama City", "valeur": "Panama"}
+{"entite": "cathédrale-basilique Saints-Pierre-et-Paul", "valeur": "Pennsylvanie"}
+{"entite": "cathédrale catholique romaine Saint-Joseph de Liepāja", "valeur": "Liepāja"}
+{"entite": "cathédrale Christ Church", "valeur": "Victoria"}
+{"entite": "cathédrale Christ Church de Waterford", "valeur": "Waterford"}
+{"entite": "cathédrale copte orthodoxe Saint-Marc", "valeur": "Alexandrie"}
+{"entite": "cathédrale d'Alba", "valeur": "Alba"}
+{"entite": "cathédrale d'Édéa", "valeur": "Littoral"}
+{"entite": "cathédrale d'Eger", "valeur": "Eger"}
+{"entite": "cathédrale d'Oslo", "valeur": "Oslo"}
+{"entite": "cathédrale d'Uppsala", "valeur": "Uppsala"}
+{"entite": "cathédrale de Battambang", "valeur": "Battambang"}
+{"entite": "cathédrale de Berlin", "valeur": "Berlin"}
+{"entite": "cathédrale de Canterbury", "valeur": "Canterbury"}
+{"entite": "cathédrale de Carlisle", "valeur": "Angleterre"}
+{"entite": "cathédrale de Ceuta", "valeur": "Ceuta"}
+{"entite": "cathédrale de Chachapoyas", "valeur": "Amazonas"}
+{"entite": "cathédrale de Chihuahua", "valeur": "Chihuahua"}
+{"entite": "cathédrale de Culiacán", "valeur": "Sinaloa"}
+{"entite": "cathédrale de Damas des Syriaques", "valeur": "Damas"}
+{"entite": "cathédrale de Garðar", "valeur": "Kujalleq"}
+{"entite": "cathédrale de Ghazanchetsots", "valeur": "Choucha"}
+{"entite": "cathédrale de Goiás", "valeur": "Goiás"}
+{"entite": "cathédrale de Guadalajara", "valeur": "Jalisco"}
+{"entite": "cathédrale de Guarda", "valeur": "Guarda"}
+{"entite": "cathédrale de Kalmar", "valeur": "Kalmar"}
+{"entite": "cathédrale de Kaunas", "valeur": "Kaunas"}
+{"entite": "cathédrale de l'Annonciation", "valeur": "Pavlodar"}
+{"entite": "cathédrale de l'Annonciation d'Alexandrie", "valeur": "Alexandrie"}
+{"entite": "cathédrale de l'Ascension de Buzău", "valeur": "Buzău"}
+{"entite": "cathédrale de l'Épiphanie de Ienisseïsk", "valeur": "kraï de Krasnoïarsk"}
+{"entite": "cathédrale de l'Exaltation-de-la-Sainte-Croix de Genève", "valeur": "canton de Genève"}
+{"entite": "cathédrale de l'Immaculée-Conception", "valeur": "Rangoun"}
+{"entite": "cathédrale de l'Immaculée-Conception de Bogotá", "valeur": "Bogota"}
+{"entite": "cathédrale de l'Immaculée-Conception de Dili", "valeur": "Dili"}
+{"entite": "cathédrale de l'Immaculée-Conception de Hong Kong", "valeur": "Hong Kong"}
+{"entite": "cathédrale de l'Immaculée-Conception de Kansas City", "valeur": "Missouri"}
+{"entite": "cathédrale de l'Immaculée-Conception de Kayes", "valeur": "Kayes"}
+{"entite": "cathédrale de l'Immaculée-Conception de Mobile", "valeur": "Alabama"}
+{"entite": "cathédrale de l'Immaculée-Conception de Nankin", "valeur": "Nankin"}
+{"entite": "cathédrale de l'Immaculée Conception de Portland", "valeur": "Portland"}
+{"entite": "cathédrale de l'Immaculée-Conception de Puebla", "valeur": "Puebla"}
+{"entite": "cathédrale de l'Immaculée-Conception de Saint-Jean", "valeur": "Saint-Jean"}
+{"entite": "cathédrale de l'Immaculée-Conception de Ségou", "valeur": "Ségou"}
+{"entite": "cathédrale de l'Immaculée-Conception de Victoria", "valeur": "Victoria"}
+{"entite": "cathédrale de l'Intercession de Sébastopol", "valeur": "Sébastopol"}
+{"entite": "cathédrale de la Dormition-de-la-Mère-de-Dieu de Cluj-Napoca", "valeur": "Cluj"}
+{"entite": "cathédrale de la Dormition de la Vierge Marie d'Alep", "valeur": "Alep"}
+{"entite": "cathédrale de la Dormition de Sofia", "valeur": "Sofia"}
+{"entite": "cathédrale de la Nativité-de-la-Bienheureuse-Vierge-Marie", "valeur": "Nebraska"}
+{"entite": "cathédrale de la Nativité-de-la-Bienheureuse-Vierge-Marie de Biloxi", "valeur": "Mississippi"}
+{"entite": "cathédrale de la Nativité-de-la-Mère-de-Dieu de Zaječar", "valeur": "Zaječar"}
+{"entite": "cathédrale de la Nativité de Riga", "valeur": "Riga"}
+{"entite": "cathédrale de la Nativité de Tiraspol", "valeur": "Tiraspol"}
+{"entite": "cathédrale de la Nativité du Caire", "valeur": "gouvernorat du Caire"}
+{"entite": "cathédrale de la Nativité-du-Christ de Shkodër", "valeur": "Shkodër"}
+{"entite": "cathédrale de la Résurrection de Louga", "valeur": "Louga"}
+{"entite": "cathédrale de la Résurrection du Christ", "valeur": "Podgorica"}
+{"entite": "cathédrale de La Rioja", "valeur": "La Rioja"}
+{"entite": "cathédrale de la Sainte-Croix de Lagos", "valeur": "Lagos"}
+{"entite": "cathédrale de la Sainte-et-Indivisible-Trinité de Bristol", "valeur": "Angleterre"}
+{"entite": "cathédrale de la Sainte Famille", "valeur": "Sud"}
+{"entite": "cathédrale de la Sainte-Famille d'Anchorage", "valeur": "Alaska"}
+{"entite": "cathédrale de la Sainte-Famille de Nairobi", "valeur": "Nairobi"}
+{"entite": "cathédrale de la Sainte-Famille de Sokoto", "valeur": "Sokoto"}
+{"entite": "cathédrale de la Sainte-Trinité d'Addis-Abeba", "valeur": "Addis-Abeba"}
+{"entite": "cathédrale de la Sainte-Trinité d'Auckland", "valeur": "Région d'Auckland"}
+{"entite": "cathédrale de la Sainte-Trinité de Blaj", "valeur": "Alba"}
+{"entite": "cathédrale de la Sainte Trinité de Liepāja", "valeur": "Liepāja"}
+{"entite": "cathédrale de la Sainte-Trinité de Port-d'Espagne", "valeur": "Port-d'Espagne"}
+{"entite": "cathédrale de la Sainte-Trinité de Waterford", "valeur": "Waterford"}
+{"entite": "cathédrale de la Sainte-Vierge de San Francisco", "valeur": "Californie"}
+{"entite": "cathédrale de la Sainte Vierge Marie de Louxor", "valeur": "Louxor"}
+{"entite": "cathédrale de la Sé de Macao", "valeur": "Macao"}
+{"entite": "cathédrale de la Transfiguration", "valeur": "oblast de Kiev"}
+{"entite": "cathédrale de la Transfiguration de Saint-Pétersbourg", "valeur": "Saint-Pétersbourg"}
+{"entite": "cathédrale de la Transfiguration de Zagreb", "valeur": "Zagreb"}
+{"entite": "cathédrale de la Très Sainte Conception", "valeur": "Concepción"}
+{"entite": "cathédrale de la Trinité d'Alba Iulia", "valeur": "Alba"}
+{"entite": "cathédrale de la Trinité de Novomoskovsk", "valeur": "Samar"}
+{"entite": "cathédrale de la Trinité de Tbilissi", "valeur": "Tbilissi"}
+{"entite": "cathédrale de Maribor", "valeur": "Maribor"}
+{"entite": "cathédrale de Mérida", "valeur": "Mérida"}
+{"entite": "cathédrale de Mokva", "valeur": "Otchamtchire"}
+{"entite": "cathédrale de Notre-Sauveur de Luanda", "valeur": "Luanda"}
+{"entite": "cathédrale de Nuuk", "valeur": "Sermersooq"}
+{"entite": "cathédrale de Phnom Penh", "valeur": "Phnom Penh"}
+{"entite": "cathédrale de Plaisance", "valeur": "Plaisance"}
+{"entite": "cathédrale de Portsmouth", "valeur": "Angleterre"}
+{"entite": "cathédrale de Roskilde", "valeur": "Roskilde"}
+{"entite": "cathédrale de Salta", "valeur": "Salta"}
+{"entite": "cathédrale de Santa Ana", "valeur": "Santa Ana"}
+{"entite": "cathédrale de Santander", "valeur": "Santander"}
+{"entite": "cathédrale de Székesfehérvár", "valeur": "Székesfehérvár"}
+{"entite": "cathédrale de Toluca", "valeur": "État de Mexico"}
+{"entite": "cathédrale de Tous-les-Saints de Charlotte-Amélie", "valeur": "îles Vierges des États-Unis"}
+{"entite": "cathédrale de Tous-les-Saints de Halifax", "valeur": "Nouvelle-Écosse"}
+{"entite": "cathédrale de Tous-les-Saints de Santa Fe", "valeur": "Santa Fe"}
+{"entite": "cathédrale de Trujillo", "valeur": "Trujillo"}
+{"entite": "cathédrale de Viborg", "valeur": "Viborg"}
+{"entite": "cathédrale de Visby", "valeur": "Gotland"}
+{"entite": "cathédrale de Viseu", "valeur": "Viseu"}
+{"entite": "cathédrale de Zagreb", "valeur": "Zagreb"}
+{"entite": "cathédrale des Croisés de Tyr", "valeur": "Gouvernorat du Liban-Sud"}
+{"entite": "cathédrale des Quarante-Martyrs", "valeur": "Alep"}
+{"entite": "cathédrale des Saintes-Porteuses-de-Myrrhe", "valeur": "Bakou"}
+{"entite": "cathédrale du Cœur Immaculé de Marie", "valeur": "Ouest"}
+{"entite": "cathédrale du Cœur-Immaculé-de-Marie de Las Cruces", "valeur": "Nouveau-Mexique"}
+{"entite": "cathédrale du Cœur Immaculé de Marie de Weno", "valeur": "État de Chuuk"}
+{"entite": "cathédrale du Christ de Lagos", "valeur": "Lagos"}
+{"entite": "cathédrale du Christ-Roi de Gitega", "valeur": "Gitega"}
+{"entite": "cathédrale du Christ-Roi de Ponevej", "valeur": "Panevėžys"}
+{"entite": "cathédrale du Christ-Sauveur de Taichung", "valeur": "Taichung"}
+{"entite": "cathédrale du Prophète-Élie", "valeur": "Alep"}
+{"entite": "cathédrale du Rosaire de Toledo", "valeur": "Ohio"}
+{"entite": "cathédrale du Sacré-Cœur", "valeur": "Colombie-Britannique"}
+{"entite": "cathédrale du Sacré-Cœur de Bendigo", "valeur": "Victoria"}
+{"entite": "cathédrale du Sacré-Cœur de Brazzaville", "valeur": "Brazzaville"}
+{"entite": "cathédrale du Sacré-Cœur de Canton", "valeur": "Canton"}
+{"entite": "cathédrale du Sacré-Cœur de Gallup", "valeur": "Nouveau-Mexique"}
+{"entite": "cathédrale du Sacré-Cœur-de-Jésus de Bamako", "valeur": "Bamako"}
+{"entite": "cathédrale du Sacré-Cœur-de-Jésus de Rēzekne", "valeur": "Rēzekne"}
+{"entite": "cathédrale du Sacré-Cœur de Kaifeng", "valeur": "Henan"}
+{"entite": "cathédrale du Sacré-Cœur de Kirkouk", "valeur": "Kirkouk"}
+{"entite": "cathédrale du Sacré-Cœur de Mandalay", "valeur": "Mandalay"}
+{"entite": "cathédrale du Sacré-Cœur de Moundou", "valeur": "Logone Occidental"}
+{"entite": "cathédrale du Sacré-Cœur de Thái Bình", "valeur": "Thái Bình"}
+{"entite": "cathédrale du Sacré-Cœur de Vientiane", "valeur": "Vientiane"}
+{"entite": "cathédrale du Sacré-Cœur de Wellington", "valeur": "Wellington"}
+{"entite": "cathédrale du Saint-Esprit, à Divinópolis", "valeur": "Minas Gerais"}
+{"entite": "cathédrale du Saint-Esprit de Bismarck", "valeur": "Dakota du Nord"}
+{"entite": "cathédrale du Saint-Nom de Brisbane", "valeur": "Queensland"}
+{"entite": "cathédrale du Saint-Nom-de-Jésus de Raleigh", "valeur": "Caroline du Nord"}
+{"entite": "cathédrale du Saint-Nom de Steubenville", "valeur": "Ohio"}
+{"entite": "cathédrale du salut de la nation", "valeur": "Bucarest"}
+{"entite": "cathédrale du Souvenir africain de Dakar", "valeur": "Dakar"}
+{"entite": "cathédrale du Yucatan", "valeur": "Yucatán"}
+{"entite": "cathédrale épiscopalienne Saint-Philippe d'Atlanta", "valeur": "Géorgie"}
+{"entite": "cathédrale évangélique de Sibiu", "valeur": "Sibiu"}
+{"entite": "cathédrale Grecque-catholique Schimbarea la Față din Cluj", "valeur": "Cluj"}
+{"entite": "cathédrale María Auxiliadora de Puerto Ayacucho", "valeur": "Amazonas"}
+{"entite": "cathédrale mariamite de Damas", "valeur": "Damas"}
+{"entite": "cathédrale Marie-Notre-Reine", "valeur": "Maryland"}
+{"entite": "cathédrale Marie-Reine-du-Monde de Port-Saïd", "valeur": "Port-Saïd"}
+{"entite": "cathédrale maronite de Damas", "valeur": "Damas"}
+{"entite": "cathédrale métropolitaine de Buenos Aires", "valeur": "Buenos Aires"}
+{"entite": "cathédrale métropolitaine de Cebu", "valeur": "Cebu"}
+{"entite": "cathédrale métropolitaine de Iași", "valeur": "Județ de Iași"}
+{"entite": "cathédrale métropolitaine de Montevideo", "valeur": "Montevideo"}
+{"entite": "cathédrale Métropolitaine de San José", "valeur": "San José"}
+{"entite": "cathédrale métropolitaine de Santiago du Chili", "valeur": "Santiago"}
+{"entite": "cathédrale métropolitaine de São Paulo", "valeur": "São Paulo"}
+{"entite": "cathédrale métropolitaine orthodoxe de São Paulo", "valeur": "São Paulo"}
+{"entite": "cathédrale métropolitaine Saint-Sauveur de San Salvador", "valeur": "San Salvador"}
+{"entite": "cathédrale nationale de Washington", "valeur": "Washington"}
+{"entite": "cathédrale navale Saint-Nicolas", "valeur": "Liepāja"}
+{"entite": "cathédrale Notre-Dame d'Arequipa", "valeur": "Arequipa"}
+{"entite": "cathédrale Notre-Dame de Bangui", "valeur": "Bangui"}
+{"entite": "cathédrale Notre-Dame-de-Fátima de Karaganda", "valeur": "Karaganda"}
+{"entite": "cathédrale Notre-Dame-de-Fatima du Caire", "valeur": "gouvernorat du Caire"}
+{"entite": "cathédrale Notre-Dame de Guadalupe", "valeur": "département de la région autonome de la Côte caraïbe Nord"}
+{"entite": "cathédrale Notre-Dame-de-Guadalupe de Canelones", "valeur": "Canelones"}
+{"entite": "cathédrale Notre-Dame-de-Guadalupe de Dallas", "valeur": "Texas"}
+{"entite": "cathédrale Notre-Dame-de-Kazan d'Almaty", "valeur": "Almaty"}
+{"entite": "cathédrale Notre-Dame de l'Assomption à Alep", "valeur": "Alep"}
+{"entite": "cathédrale Notre-Dame-de-l'Assomption de Córdoba", "valeur": "Córdoba"}
+{"entite": "cathédrale Notre-Dame-de-l'Assomption de Kaposvár", "valeur": "Kaposvár"}
+{"entite": "cathédrale Notre-Dame-de-l'Assomption de Tlaxcala", "valeur": "Tlaxcala"}
+{"entite": "cathédrale Notre-Dame-de-l'Assomption de Zacatecas", "valeur": "Zacatecas"}
+{"entite": "cathédrale Notre-Dame-de-l'Intercession de Bagdad", "valeur": "Bagdad"}
+{"entite": "cathédrale Notre-Dame-de-la-Dormition de Damas", "valeur": "Damas"}
+{"entite": "cathédrale Notre-Dame de la Victoire", "valeur": "Texas"}
+{"entite": "cathédrale Notre-Dame-de-la-Visitation de Szombathely", "valeur": "Szombathely"}
+{"entite": "cathédrale Notre-Dame-de-Lourdes de Daegu", "valeur": "Daegu"}
+{"entite": "cathédrale Notre-Dame de N'Djamena", "valeur": "N'Djaména"}
+{"entite": "cathédrale Notre-Dame de Papeete", "valeur": "Papeete"}
+{"entite": "cathédrale Notre-Dame de Pitié", "valeur": "Alep"}
+{"entite": "cathédrale Notre-Dame de Taiohae", "valeur": "Nuku-Hiva"}
+{"entite": "cathédrale Notre-Dame-de-Valvanera de Mexico", "valeur": "Mexico"}
+{"entite": "cathédrale Notre-Dame-de-Vladimir de Saint-Pétersbourg", "valeur": "Saint-Pétersbourg"}
+{"entite": "cathédrale Notre-Dame des Sept Douleurs à Bagdad", "valeur": "Bagdad"}
+{"entite": "cathédrale Notre-Dame-des-Sept-Douleurs de Navrongo", "valeur": "Haut Ghana oriental"}
+{"entite": "cathédrale Notre-Dame-des-Victoires de Kolda", "valeur": "Kolda"}
+{"entite": "cathédrale Notre-Dame-des-Victoires de Yaoundé", "valeur": "Centre"}
+{"entite": "cathédrale Notre-Dame-du-Bon-Pasteur de Djibouti", "valeur": "Djibouti"}
+{"entite": "cathédrale Notre-Dame du Congo", "valeur": "Kinshasa"}
+{"entite": "cathédrale Notre-Dame-du-Mont-Carmel de Cartago", "valeur": "Cartago"}
+{"entite": "cathédrale Notre-Dame-du-Mont-Carmel de Santiago del Estero", "valeur": "Santiago del Estero"}
+{"entite": "cathédrale Notre-Dame-du-Paradis de São Paulo", "valeur": "São Paulo"}
+{"entite": "cathédrale Notre-Dame-du-Perpétuel-Secours", "valeur": "Niamey"}
+{"entite": "cathédrale Notre-Dame-du-Perpétuel-Secours d'Oklahoma City", "valeur": "Oklahoma"}
+{"entite": "cathédrale Notre-Dame-du-Perpétuel-Secours de Prizren", "valeur": "Prizren"}
+{"entite": "cathédrale Notre-Dame-du-Perpétuel-Secours de Rapid City", "valeur": "Dakota du Sud"}
+{"entite": "cathédrale Notre-Dame-du-Rosaire d'Abancay", "valeur": "Apurímac"}
+{"entite": "cathédrale Notre-Dame-du-Rosaire de Corrientes", "valeur": "Corrientes"}
+{"entite": "cathédrale Notre-Dame-du-Rosaire de Paraná", "valeur": "Paraná"}
+{"entite": "cathédrale Notre-Dame-du-Rosaire de San Bernardino", "valeur": "Californie"}
+{"entite": "cathédrale orthodoxe de l'Assomption de Vilnius", "valeur": "Vilnius"}
+{"entite": "cathédrale orthodoxe de la Sainte-Trinité de Sibiu", "valeur": "Sibiu"}
+{"entite": "cathédrale orthodoxe de Timișoara", "valeur": "Timiș"}
+{"entite": "cathédrale orthodoxe grecque de l'Annonciation", "valeur": "Texas"}
+{"entite": "cathédrale orthodoxe Saint-Georges", "valeur": "Buenos Aires"}
+{"entite": "cathédrale patriarcale de Bucarest", "valeur": "Bucarest"}
+{"entite": "cathédrale Saint-Adalbert d'Esztergom", "valeur": "Esztergom"}
+{"entite": "cathédrale Saint-Alexandre-Nevski", "valeur": "Bakou"}
+{"entite": "cathédrale Saint-Alexandre Nevsky", "valeur": "Tbilissi"}
+{"entite": "cathédrale Saint-André de Grand Rapids", "valeur": "Michigan"}
+{"entite": "cathédrale Saint-André de Little Rock", "valeur": "Arkansas"}
+{"entite": "cathédrale Saint-André de Victoria", "valeur": "Victoria"}
+{"entite": "cathédrale Saint-Antoine de Huancavelica", "valeur": "Huancavelica"}
+{"entite": "cathédrale Saint-Antoine-de-Padoue de Ziguinchor", "valeur": "Ziguinchor"}
+{"entite": "cathédrale Saint-Augustin de Kalamazoo", "valeur": "Michigan"}
+{"entite": "cathédrale Saint-Basile-le-Grand de Bucarest", "valeur": "Bucarest"}
+{"entite": "cathédrale Saint-Benoît d'Evansville", "valeur": "Indiana"}
+{"entite": "cathédrale Saint-Boris-et-Saint-Gleb", "valeur": "Daugavpils"}
+{"entite": "cathédrale Saint-Charles-Borromée de Puno", "valeur": "Puno"}
+{"entite": "cathédrale Saint-Clément d'Ohrid", "valeur": "Centar"}
+{"entite": "cathédrale Saint-Constantin-et-Sainte-Hélène de Bălți", "valeur": "Bălți"}
+{"entite": "cathédrale Saint-Daniel de Celje", "valeur": "Celje (Municipalité urbaine)"}
+{"entite": "cathédrale Saint-Démétrios de Berat", "valeur": "Berat"}
+{"entite": "cathédrale Saint-Élie d'Alep", "valeur": "Alep"}
+{"entite": "cathédrale Saint-Étienne de Brisbane", "valeur": "Queensland"}
+{"entite": "cathédrale Saint-Étienne de Shkodër", "valeur": "Shkodër"}
+{"entite": "cathédrale Saint-Étienne de Székesfehérvár", "valeur": "Székesfehérvár"}
+{"entite": "cathédrale Saint-Finbarr de Cork", "valeur": "Cork"}
+{"entite": "cathédrale Saint-Florin de Vaduz", "valeur": "Vaduz"}
+{"entite": "cathédrale Saint-François-d'Assise d'Alep", "valeur": "Alep"}
+{"entite": "cathédrale Saint-François-Xavier", "valeur": "Australie-Méridionale"}
+{"entite": "cathédrale Saint-François-Xavier de Grodno", "valeur": "Hrodna"}
+{"entite": "cathédrale Saint-Gabriel de Rodrigues", "valeur": "Rodrigues"}
+{"entite": "cathédrale Saint-Georges d'Addis-Abeba", "valeur": "Addis-Abeba"}
+{"entite": "cathédrale Saint-Georges d'Amman", "valeur": "Amman"}
+{"entite": "cathédrale Saint-Georges de Beyrouth", "valeur": "gouvernorat de Beyrouth"}
+{"entite": "cathédrale Saint-Georges de Damas", "valeur": "Damas"}
+{"entite": "cathédrale Saint-Georges de Timișoara", "valeur": "Timiș"}
+{"entite": "cathédrale Saint-Grégoire-l'Illuminateur", "valeur": "Erevan"}
+{"entite": "cathédrale Saint-Hallvard d'Oslo", "valeur": "Oslo"}
+{"entite": "cathédrale Saint-Jacques de Chicago", "valeur": "Illinois"}
+{"entite": "cathédrale Saint-Jacques de Guatemala", "valeur": "Guatemala"}
+{"entite": "cathédrale Saint-Jacques de Riga", "valeur": "Riga"}
+{"entite": "cathédrale Saint-Jean-Baptiste", "valeur": "San Juan"}
+{"entite": "cathédrale Saint-Jean-Baptiste de Salto", "valeur": "Salto"}
+{"entite": "cathédrale Saint-Jean-Baptiste de San Juan", "valeur": "San Juan"}
+{"entite": "cathédrale Saint-Jean-Baptiste de Savannah", "valeur": "Géorgie"}
+{"entite": "cathédrale Saint-Jean-Berchmans de Shreveport", "valeur": "Louisiane"}
+{"entite": "cathédrale Saint-Jean de Denver", "valeur": "Colorado"}
+{"entite": "cathédrale Saint-Jean de Fresno", "valeur": "Californie"}
+{"entite": "cathédrale Saint-Jean de Limerick", "valeur": "Limerick"}
+{"entite": "cathédrale Saint-Jean-l'Évangéliste de Cleveland", "valeur": "Ohio"}
+{"entite": "cathédrale Saint-Jean le Divin de New York", "valeur": "New York"}
+{"entite": "cathédrale Saint-Joseph d'Alep", "valeur": "Alep"}
+{"entite": "cathédrale Saint-Joseph d'Ankawa", "valeur": "Erbil"}
+{"entite": "cathédrale Saint-Joseph d'Hartford", "valeur": "Connecticut"}
+{"entite": "cathédrale saint Joseph de Bagdad", "valeur": "Bagdad"}
+{"entite": "cathédrale Saint-Joseph de Bamenda", "valeur": "Nord-Ouest"}
+{"entite": "cathédrale Saint-Joseph de Buffalo", "valeur": "New York"}
+{"entite": "cathédrale Saint-Joseph de Columbus", "valeur": "Ohio"}
+{"entite": "cathédrale Saint-Joseph de Groningue", "valeur": "Groningue"}
+{"entite": "cathédrale Saint-Joseph de Hanoï", "valeur": "Hanoï"}
+{"entite": "cathédrale Saint-Joseph de Lang Son", "valeur": "Lạng Sơn"}
+{"entite": "cathédrale Saint-Joseph de Manchester", "valeur": "New Hampshire"}
+{"entite": "cathédrale Saint-Joseph de Mopti", "valeur": "Mopti"}
+{"entite": "cathédrale Saint-Joseph de San Diego", "valeur": "Californie"}
+{"entite": "cathédrale Saint-Joseph de Sioux Falls", "valeur": "Dakota du Sud"}
+{"entite": "cathédrale Saint-Joseph de St. Joseph", "valeur": "Missouri"}
+{"entite": "cathédrale Saint-Joseph de Thuckalay", "valeur": "Tamil Nadu"}
+{"entite": "cathédrale Saint-Joseph de Tianjin", "valeur": "Tianjin"}
+{"entite": "cathédrale Saint-Joseph du Caire", "valeur": "gouvernorat du Caire"}
+{"entite": "cathédrale Saint-Jude d'Iqaluit", "valeur": "Nunavut"}
+{"entite": "cathédrale Saint-Louis", "valeur": "Saint-Louis"}
+{"entite": "cathédrale Saint-Louis de Plovdiv", "valeur": "Plovdiv"}
+{"entite": "cathédrale Saint-Louis de Port-Louis", "valeur": "Port-Louis"}
+{"entite": "cathédrale Saint-Louis de Saint-Louis", "valeur": "Saint-Louis"}
+{"entite": "cathédrale Saint-Marc du Caire", "valeur": "gouvernorat du Caire"}
+{"entite": "cathédrale Saint-Martin d'Utrecht", "valeur": "Utrecht"}
+{"entite": "cathédrale Saint-Matthieu de Khartoum", "valeur": "Khartoum"}
+{"entite": "cathédrale Saint-Matthieu de Washington", "valeur": "Washington"}
+{"entite": "cathédrale Saint-Maurice de Vienne", "valeur": "Vienne"}
+{"entite": "cathédrale Saint-Michel d’Alba Iulia", "valeur": "Alba"}
+{"entite": "cathédrale Saint-Michel de Belgrade", "valeur": "Belgrade"}
+{"entite": "cathédrale Saint-Michel de Coventry", "valeur": "Angleterre"}
+{"entite": "cathédrale Saint-Michel de Kigali", "valeur": "Kigali"}
+{"entite": "cathédrale Saint-Michel de Veszprém", "valeur": "Veszprém"}
+{"entite": "cathédrale Saint-Michel-et-Saint-Gabriel de Požarevac", "valeur": "Braničevo"}
+{"entite": "cathédrale Saint-Nicolas d'Almaty", "valeur": "Almaty"}
+{"entite": "cathédrale Saint-Nicolas de Brooklyn", "valeur": "New York"}
+{"entite": "cathédrale Saint-Nicolas de Lezhë", "valeur": "Lezhë"}
+{"entite": "cathédrale Saint-Nicolas de Ljubljana", "valeur": "municipalité de Ljubljana"}
+{"entite": "cathédrale Saint-Nicolas de Vienne", "valeur": "Vienne"}
+{"entite": "cathédrale Saint-Nicolas de Washington", "valeur": "Washington"}
+{"entite": "cathédrale Saint-Olaf d'Oslo", "valeur": "Oslo"}
+{"entite": "cathédrale Saint-Patrick d'Auckland", "valeur": "Région d'Auckland"}
+{"entite": "cathédrale Saint-Patrick d'El Paso", "valeur": "Texas"}
+{"entite": "cathédrale Saint-Patrick de Charlotte", "valeur": "Charlotte"}
+{"entite": "cathédrale Saint-Paul", "valeur": "Saint-Paul"}
+{"entite": "cathédrale Saint-Pierre de Belleville", "valeur": "Illinois"}
+{"entite": "cathédrale Saint-Pierre-et-Saint-Paul de Douala", "valeur": "Littoral"}
+{"entite": "cathédrale Saint-Pierre-et-Saint-Paul de Pécs", "valeur": "Pécs"}
+{"entite": "cathédrale Saint-Raymond-Nonnat de Joliet", "valeur": "Illinois"}
+{"entite": "cathédrale Saint-Rupert de Salzbourg", "valeur": "Salzbourg"}
+{"entite": "cathédrale Saint-Sauveur de Goulburn", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "cathédrale Saint-Sava de Belgrade", "valeur": "Belgrade"}
+{"entite": "cathédrale Saint-Siméon de Brest", "valeur": "Brest"}
+{"entite": "cathédrale Saint-Stanislas de Vilnius", "valeur": "Vilnius"}
+{"entite": "cathédrale Saint-Théophile de Kaolack", "valeur": "Kaolack"}
+{"entite": "cathédrale Saint-Tryphon", "valeur": "Kotor"}
+{"entite": "cathédrale Saint-Vincent-de-Paul de Tunis", "valeur": "Tunis"}
+{"entite": "cathédrale Saint-Vladimir de Sébastopol", "valeur": "Sébastopol"}
+{"entite": "cathédrale Sainte-Anastasie de Zadar", "valeur": "Zadar"}
+{"entite": "cathédrale Sainte-Anne de Debrecen", "valeur": "Debrecen"}
+{"entite": "cathédrale Sainte-Anne de Nakhon Sawan", "valeur": "Nakhon Sawan"}
+{"entite": "cathédrale Sainte-Anne de Thiès", "valeur": "Thiès"}
+{"entite": "cathédrale Sainte-Catherine d'Alexandrie", "valeur": "Alexandrie"}
+{"entite": "cathédrale Sainte-Catherine d'Utrecht", "valeur": "Utrecht"}
+{"entite": "cathédrale Sainte-Catherine-de-Sienne d'Allentown", "valeur": "Pennsylvanie"}
+{"entite": "cathédrale Sainte-Margaret d'Ayr", "valeur": "Écosse"}
+{"entite": "cathédrale Sainte-Marie d'Oradéa", "valeur": "Bihor"}
+{"entite": "cathédrale Sainte-Marie de Calgary", "valeur": "Alberta"}
+{"entite": "cathédrale Sainte-Marie de Comayagua", "valeur": "Comayagua"}
+{"entite": "cathédrale Sainte-Marie de Jakarta", "valeur": "Jakarta"}
+{"entite": "cathédrale Sainte-Marie-de-L'Immaculée-Conception de Kingston", "valeur": "Kingston"}
+{"entite": "cathédrale Sainte-Marie-de-l'Immaculée-Conception de Peoria", "valeur": "Illinois"}
+{"entite": "cathédrale Sainte-Marie de Limerick", "valeur": "Limerick"}
+{"entite": "cathédrale Sainte-Marie de Minsk", "valeur": "Minsk"}
+{"entite": "cathédrale Sainte-Marie de Perth", "valeur": "Australie-Occidentale"}
+{"entite": "cathédrale Sainte-Marie-et-Sainte-Anne de Cork", "valeur": "Cork"}
+{"entite": "cathédrale Sainte-Marie-la-Couronnée de Gibraltar", "valeur": "Gibraltar"}
+{"entite": "cathédrale Sainte-Mère-de-Dieu de Stepanakert", "valeur": "Khankendi"}
+{"entite": "cathédrale Saints-Pierre-et-Paul", "valeur": "Oulan-Bator"}
+{"entite": "cathédrale Saints-Pierre-et-Paul de Charlotte-Amélie", "valeur": "îles Vierges des États-Unis"}
+{"entite": "cathédrale San Fernando", "valeur": "Texas"}
+{"entite": "cathédrale Santa Maria del Fiore", "valeur": "Toscane"}
+{"entite": "cathédrale Sioni", "valeur": "Tbilissi"}
+{"entite": "cathédrale St. George", "valeur": "Kingston"}
+{"entite": "cathédrale Zenkov", "valeur": "Almaty"}
+{"entite": "Child Jesus Cathedral", "valeur": "Lusaka"}
+{"entite": "Christ Church Cathedral, Grafton", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Christ Church Cathedral, Indianapolis", "valeur": "Indiana"}
+{"entite": "Christ Church Cathedral, Newcastle", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Christ the King Cathedral", "valeur": "Nakuru"}
+{"entite": "Christ the King Cathedral, Niigata", "valeur": "préfecture de Niigata"}
+{"entite": "Christ the King Cathedral, Toledo", "valeur": "Toledo"}
+{"entite": "Church of Our Lady of Patronage", "valeur": "Boké"}
+{"entite": "Church of St. Anthony", "valeur": "Canindeyú"}
+{"entite": "Church of the Holy Mother of God, Plovdiv", "valeur": "Plovdiv"}
+{"entite": "Church of the Immaculate Conception", "valeur": "Bakou"}
+{"entite": "Church of the Pokrov in Hrodna", "valeur": "Hrodna"}
+{"entite": "Church of the Queen of the Universe", "valeur": "Damas"}
+{"entite": "Co-Cathedral of Saint Thomas More", "valeur": "Floride"}
+{"entite": "Co-Cathedral of St. Ann", "valeur": "Chimaltenango"}
+{"entite": "Co-Cathedral of St. Anthony of Padua, Békéscsaba", "valeur": "Békéscsaba"}
+{"entite": "Co-Cathedral of St. Joseph (Brooklyn)", "valeur": "New York"}
+{"entite": "Co-Cathedral of the Ascension of the Lord, Kecskemét", "valeur": "Kecskemét"}
+{"entite": "Co-Cathedral of the Assumption, Chilapa", "valeur": "Guerrero"}
+{"entite": "Co-Cathedral of the Assumption of Mary, Senj", "valeur": "Lika-Senj"}
+{"entite": "Co-Cathedral of the Holy Cross, Križevci", "valeur": "Križevci"}
+{"entite": "Co-Cathedral of the Sacred Heart, Bitola", "valeur": "Bitola"}
+{"entite": "Co-cathédrale du Christ-Sauveur de Nova Gorica", "valeur": "Nova Gorica"}
+{"entite": "co-cathédrale Saint-Joseph-Artisan de Fagatoto", "valeur": "Samoa américaines"}
+{"entite": "cocathédrale Sainte-Lucie", "valeur": "Durrës"}
+{"entite": "complexe cathédral arménien de Moscou", "valeur": "Moscou"}
+{"entite": "Corpus Christi Cathedral", "valeur": "Texas"}
+{"entite": "Crossroads Community Cathedral", "valeur": "Connecticut"}
+{"entite": "Da Nang Cathedral", "valeur": "Đà Nẵng"}
+{"entite": "Daeheung-dong Catholic Church", "valeur": "Daejeon"}
+{"entite": "Dapdong Cathedral", "valeur": "Incheon"}
+{"entite": "Dmanisi Sioni cathedral", "valeur": "Basse Kartlie"}
+{"entite": "Dodoma Lutheran Cathedral", "valeur": "Dodoma"}
+{"entite": "Dôme d'Alexandrie", "valeur": "Alexandrie"}
+{"entite": "Dormition of the Theotokos Cathedral", "valeur": "Varna"}
+{"entite": "Dormition of the Theotokos Cathedral, Giurgiu", "valeur": "Giurgiu"}
+{"entite": "Dormition of the Theotokos Cathedral, Satu Mare", "valeur": "Satu Mare"}
+{"entite": "église de la Dormition de Vitebsk", "valeur": "Vitebsk"}
+{"entite": "église de la Vierge de Leviša", "valeur": "Prizren"}
+{"entite": "église grecque de la Sainte-Trinité", "valeur": "Vienne"}
+{"entite": "église luthérienne de Daugavpils", "valeur": "Daugavpils"}
+{"entite": "église noire de Brașov", "valeur": "Brașov"}
+{"entite": "église paroissiale de Saint-Hélier", "valeur": "Saint-Hélier"}
+{"entite": "église Saint-François à Tripoli", "valeur": "Tripoli"}
+{"entite": "église Saint-Ignace de Loyola", "valeur": "Vilnius"}
+{"entite": "église St-Jean du Vermilion", "valeur": "Louisiane"}
+{"entite": "église votive", "valeur": "Szeged"}
+{"entite": "Emmanuel Cathedral, Mvara", "valeur": "Nord"}
+{"entite": "Epiphany Cathedral", "valeur": "Floride"}
+{"entite": "Episcopal Cathedral of St. John the Baptist", "valeur": "San Juan"}
+{"entite": "Former Cathedral of Toledo", "valeur": "Toledo"}
+{"entite": "Franciscan Church of the Five Injuries of Dongshan", "valeur": "Canton"}
+{"entite": "Gamu Cathedral", "valeur": "Isabela"}
+{"entite": "Good Jesus Cathedral, Pouso Alegre", "valeur": "Minas Gerais"}
+{"entite": "Grace Church Cathedral", "valeur": "Caroline du Sud"}
+{"entite": "Grace Episcopal Cathedral (Topeka, Kansas)", "valeur": "Kansas"}
+{"entite": "Greek Catholic Cathedral in Búza Square", "valeur": "Miskolc"}
+{"entite": "Greek Orthodox Cathedral of the Annunciation", "valeur": "Maryland"}
+{"entite": "Gusan Cathedral", "valeur": "Gyeonggi"}
+{"entite": "Hai Phòng Cathedral", "valeur": "Haïphong"}
+{"entite": "Holy Apostles Cathedral, Vratsa", "valeur": "Vratsa"}
+{"entite": "Holy Father Nikolai Church", "valeur": "Karlovac"}
+{"entite": "Holy Name of Mary Pro-Cathedral", "valeur": "Michigan"}
+{"entite": "Holy Spirit Cathedral", "valeur": "Quetzaltenango"}
+{"entite": "Holy Trinity Cathedral, Yangon", "valeur": "Rangoun"}
+{"entite": "Holy Trinity Church", "valeur": "Pleven"}
+{"entite": "Holy Trinity Greek Orthodox Cathedral", "valeur": "Charlotte"}
+{"entite": "Igreja de Santiago", "valeur": "Ceuta"}
+{"entite": "Immaculate Conception Cathedral, Choluteca", "valeur": "Choluteca"}
+{"entite": "Immaculate Conception Cathedral, Colón", "valeur": "Colón"}
+{"entite": "Immaculate Conception Cathedral, Iquique", "valeur": "Tarapacá"}
+{"entite": "Immaculate Conception Cathedral, Managua", "valeur": "département de Managua"}
+{"entite": "Immaculate Conception Cathedral, Matehuala", "valeur": "San Luis Potosí"}
+{"entite": "Immaculate Conception Cathedral, Taipei", "valeur": "Taipei"}
+{"entite": "Immaculate Conception Cathedral, Texcoco", "valeur": "État de Mexico"}
+{"entite": "Immaculate Heart of Mary Cathedral", "valeur": "comté de Hsinchu"}
+{"entite": "Immaculate Heart of Mary Cathedral, Nzérékoré", "valeur": "Nzérékoré"}
+{"entite": "Irapuato Cathedral", "valeur": "Guanajuato"}
+{"entite": "Isabela Cathedral", "valeur": "Isabela"}
+{"entite": "Jelgava Immaculate Virgin Mary Roman Catholic Cathedral", "valeur": "Jelgava"}
+{"entite": "Kihesa Cathedral of the Sacred Heart, Iringa", "valeur": "Iringa"}
+{"entite": "Kolbe Cathedral High School", "valeur": "Connecticut"}
+{"entite": "Kontum Cathedral", "valeur": "Kon Tum"}
+{"entite": "Križevci Cathedral", "valeur": "Križevci"}
+{"entite": "Makhata Cathedral, Tbilisi", "valeur": "Tbilissi"}
+{"entite": "Martyrs of Christ the King Cathedral, Piedras Negras", "valeur": "Coahuila"}
+{"entite": "Mary Immaculate Cathedral, Nelson", "valeur": "Nelson"}
+{"entite": "Medhane Alem Cathedral (Harar)", "valeur": "Harar"}
+{"entite": "Medieval Gothic Cathedral of Eger", "valeur": "Eger"}
+{"entite": "Medieval Saint Adalbertus Achcathedral (Esztergom)", "valeur": "Esztergom"}
+{"entite": "Messiah Cathedral", "valeur": "Jakarta"}
+{"entite": "Metropolitan Cathedral of Panama", "valeur": "Panama"}
+{"entite": "Metropolitan Cathedral of Saint Sebastian", "valeur": "Cochabamba"}
+{"entite": "mosquée Nabi Yahya", "valeur": "gouvernorat de Naplouse"}
+{"entite": "Most Holy Trinity Cathedral, Sonsonate", "valeur": "Sonsonate"}
+{"entite": "Mulajje Cathedral Kasana", "valeur": "Centre"}
+{"entite": "Namcheon Cathedral of St. Paul Chong Hasang", "valeur": "Pusan"}
+{"entite": "Nativity of Mary Church", "valeur": "Veliko Tarnovo"}
+{"entite": "Neuquén Cathedral", "valeur": "Neuquén"}
+{"entite": "Novo Mesto Cathedral", "valeur": "Novo Mesto"}
+{"entite": "Old Cathedral of St. Barbara and St. Paul, Vitebsk", "valeur": "Vitebsk"}
+{"entite": "Old Ljubljana Cathedral", "valeur": "municipalité de Ljubljana"}
+{"entite": "Orthodox cathedral in Karaganda", "valeur": "Karaganda"}
+{"entite": "Orthodox cathedral of the Ascension of Jesus Christ in Mexico City", "valeur": "Mexico"}
+{"entite": "Our Lady of Apparition Cathedral, Montes Claros", "valeur": "Minas Gerais"}
+{"entite": "Our Lady of Candelaria Cathedral", "valeur": "Camagüey"}
+{"entite": "Our Lady of Carmel Cathedral, Cartago", "valeur": "Cartago"}
+{"entite": "Our Lady of Carmel Cathedral, Formosa", "valeur": "Formosa"}
+{"entite": "Our Lady of Consolation Cathedral (Garissa)", "valeur": "Garissa"}
+{"entite": "Our Lady of Fatima Cathedral, Benguela", "valeur": "Benguela"}
+{"entite": "Our Lady of Guadalupe Cathedral, Ciudad Juárez", "valeur": "Chihuahua"}
+{"entite": "Our Lady of Guadalupe Co-Cathedral", "valeur": "Alaska"}
+{"entite": "Our Lady of Hungary Co-Cathedral, Nyíregyháza", "valeur": "Nyíregyháza"}
+{"entite": "Our Lady of Lebanon Cathedral, São Paulo", "valeur": "São Paulo"}
+{"entite": "Our Lady of Loreto Cathedral, Mendoza", "valeur": "Mendoza"}
+{"entite": "Our Lady of Lourdes Cathedral", "valeur": "Maradi"}
+{"entite": "Our Lady of Mercy Cathedral", "valeur": "El Progreso"}
+{"entite": "Our Lady of Mount Carmel Cathedral, Puntarenas", "valeur": "Puntarenas"}
+{"entite": "Our Lady of Narek Cathedral, Buenos Aires", "valeur": "Buenos Aires"}
+{"entite": "Our Lady of Peace Cathedral, Baja California Sur", "valeur": "La Paz"}
+{"entite": "Our Lady of the Assumption Cathedral, Banjul", "valeur": "Banjul"}
+{"entite": "Our Lady of the Immaculate Conception Cathedral, Campeche", "valeur": "Campeche"}
+{"entite": "Our Lady of the Immaculate Conception Cathedral, Cienfuegos", "valeur": "Cienfuegos"}
+{"entite": "Our Lady of the Immaculate Conception Cathedral, Inhambane", "valeur": "Inhambane"}
+{"entite": "Our Lady of the Most Holy Rosary Cathedral, Estelí", "valeur": "Département d'Estelí"}
+{"entite": "Our Lady of the Pillar Cathedral, Alajuela", "valeur": "Alajuela"}
+{"entite": "Our Lady of the Presentation Cathedral, Natal", "valeur": "Natal"}
+{"entite": "Our Lady of the Rosary Cathedral, Waitara", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Our Lady of the Rosary church", "valeur": "Bagdad"}
+{"entite": "Our Lady of Victories Cathedral, Maseru", "valeur": "Maseru"}
+{"entite": "Our Lady Queen of Peace Cathedral", "valeur": "Australie-Occidentale"}
+{"entite": "Our Mother of Perpetual Help Cathedral, Astana", "valeur": "Astana"}
+{"entite": "Panamá Viejo Cathedral", "valeur": "Panama"}
+{"entite": "Patriarchal Cathedral of the Holy Ascension of God", "valeur": "Veliko Tarnovo"}
+{"entite": "Peter and Paul Cathedral", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Peter and Paul Church", "valeur": "Iamalie"}
+{"entite": "Phủ Cam Cathedral", "valeur": "Huế"}
+{"entite": "Piura Cathedral", "valeur": "Piura"}
+{"entite": "Porta Cæli Cathedral, Mexico City", "valeur": "Mexico"}
+{"entite": "Pro-Cathedral of Our Lady of Fatima", "valeur": "Bolívar"}
+{"entite": "Pro-Cathedral of St Teresa", "valeur": "Wellington"}
+{"entite": "Pro-cathédrale Notre-Dame-du-Perpétuel-Secours de San Fernando", "valeur": "San Fernando"}
+{"entite": "Proto-Cathedral of St. Mary", "valeur": "Californie"}
+{"entite": "Queen of the Rosary Cathedral", "valeur": "Bắc Ninh"}
+{"entite": "Resurrection Cathedral Korçë", "valeur": "Korçë"}
+{"entite": "Resurrection Cathedral, Kovel", "valeur": "oblast de Volhynie"}
+{"entite": "Roman Catholic cathedral in Baia, Suceava", "valeur": "Suceava"}
+{"entite": "Romblon Cathedral", "valeur": "Romblon"}
+{"entite": "Sacred Heart Cathedral, Hamilton", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Sacred Heart Cathedral of Yangzhou", "valeur": "Jiangsu"}
+{"entite": "Sacred Heart Cathedral, Townsville", "valeur": "Queensland"}
+{"entite": "Sacred Heart of Jesus Cathedral, Uberaba", "valeur": "Minas Gerais"}
+{"entite": "Saint Anne Church (Tarma)", "valeur": "Junín"}
+{"entite": "Saint Gregory of Narek Cathedral", "valeur": "Lorri"}
+{"entite": "Saint John the Baptist Cathedral", "valeur": "Minas Gerais"}
+{"entite": "Saint Mark's Anglican Pro-Cathedral", "valeur": "Alexandrie"}
+{"entite": "Saint Mary's Anglican Cathedral (Banjul)", "valeur": "Banjul"}
+{"entite": "Saint Nicholas cathedral, Nyíregyháza", "valeur": "Nyíregyháza"}
+{"entite": "Saint Nicholas church in Bila Tserkva", "valeur": "oblast de Kiev"}
+{"entite": "Saint Nicholas Greek Orthodox Cathedral", "valeur": "Pennsylvanie"}
+{"entite": "Saint Nicholas Orthodox cathedral in Armavir", "valeur": "Armavir"}
+{"entite": "Saint Paul's Episcopal Cathedral", "valeur": "New York"}
+{"entite": "Saint Peter and Paul Cathedral", "valeur": "Paramaribo"}
+{"entite": "Saint Raphael's Cathedral", "valeur": "Wisconsin"}
+{"entite": "Saint Sarkis Cathedral", "valeur": "Erevan"}
+{"entite": "Saint Sophia Cathedral, Washington, DC", "valeur": "Washington"}
+{"entite": "Saint Thomas Aquinas Cathedral", "valeur": "Nevada"}
+{"entite": "Saints Constantine and Elena Cathedral in Hunedoara", "valeur": "Hunedoara"}
+{"entite": "Saints Mary and Joseph Catholic Cathedral", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Saints Peter and Paul's Old Cathedral", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "San Fernando Cathedral", "valeur": "San Fernando"}
+{"entite": "San Jose Cathedral", "valeur": "San José"}
+{"entite": "San Pedro Cathedral", "valeur": "Davao"}
+{"entite": "sanctuaire diocésain Notre-Dame-de-Guadalupe", "valeur": "Michoacán"}
+{"entite": "Seoul Anglican Cathedral", "valeur": "Séoul"}
+{"entite": "Serbian Orthodox Cathedral in Timișoara", "valeur": "Timiș"}
+{"entite": "Sorsogon Cathedral", "valeur": "Sorsogon"}
+{"entite": "Ss. Cyril and Methodius Cathedral", "valeur": "Tetovo"}
+{"entite": "SS. Michael and Gabriel Cathedral, Satu Mare", "valeur": "Satu Mare"}
+{"entite": "St. Agnes Cathedral", "valeur": "Missouri"}
+{"entite": "St. Alexander Cathedral, Alexandria, Romania", "valeur": "Teleorman"}
+{"entite": "St. Andrew Cathedral, Silver Spring", "valeur": "Maryland"}
+{"entite": "St. Andrew's Cathedral", "valeur": "Tokyo"}
+{"entite": "St. Andrew's Cathedral, Philadelphia", "valeur": "Pennsylvanie"}
+{"entite": "St. Ann’s Armenian Catholic Cathedral", "valeur": "New York"}
+{"entite": "St. Anthony Cathedral, Juiz de Fora", "valeur": "Minas Gerais"}
+{"entite": "St. Anthony Cathedral, Salgueiro", "valeur": "Pernambouc"}
+{"entite": "St. Anthony of Padua Cathedral, Governador Valadares", "valeur": "Minas Gerais"}
+{"entite": "St. Anthony of Padua Cathedral, Patos de Minas", "valeur": "Minas Gerais"}
+{"entite": "St. Augustine Cathedral", "valeur": "Connecticut"}
+{"entite": "St Boniface Anglican Cathedral", "valeur": "Australie-Occidentale"}
+{"entite": "St. Catherine Cathedral, Cajamarca", "valeur": "Cajamarca"}
+{"entite": "St. Catherine of Ricci Cathedral, Guantánamo", "valeur": "Guantánamo"}
+{"entite": "St Charbel Maronite Church in Al Arz", "valeur": "Amman"}
+{"entite": "St. Christopher’s Cathedral", "valeur": "Territoire de la capitale australienne"}
+{"entite": "St. Columba Cathedral", "valeur": "Ohio"}
+{"entite": "St David's Cathedral, Hobart", "valeur": "Tasmanie"}
+{"entite": "St. Eugene's Cathedral, Ciego de Ávila", "valeur": "Ciego de Ávila"}
+{"entite": "St. Francis of Assisi Cathedral", "valeur": "New Jersey"}
+{"entite": "St. Francis Pro-Cathedral, Tripoli", "valeur": "Tripoli"}
+{"entite": "St. Francis Xavier Cathedral", "valeur": "Louisiane"}
+{"entite": "St. Francis Xavier Cathedral, Kagoshima", "valeur": "préfecture de Kagoshima"}
+{"entite": "St Francis Xavier's Cathedral, Wollongong", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "St. George Cathedral", "valeur": "Canton"}
+{"entite": "St. George Greek Orthodox Cathedral, Tripoli, Lebanon", "valeur": "Tripoli"}
+{"entite": "St George's Cathedral, Perth", "valeur": "Australie-Occidentale"}
+{"entite": "St. Gertrude's Cathedral", "valeur": "Utrecht"}
+{"entite": "St. Gregory the Illuminator Cathedral", "valeur": "Buenos Aires"}
+{"entite": "St. Gregory the Illuminator Cathedral (Glendale, California)", "valeur": "Californie"}
+{"entite": "St. Ignatius Cathedral, San Ignacio de Velasco", "valeur": "Santa Cruz"}
+{"entite": "St. Isidore Cathedral, Holguín", "valeur": "Holguín"}
+{"entite": "St. James Cathedral, Saltillo", "valeur": "Coahuila"}
+{"entite": "St James' Cathedral, Townsville", "valeur": "Queensland"}
+{"entite": "St. James Cathedral, Valparaíso", "valeur": "Valparaíso"}
+{"entite": "St. Jerome Cathedral, Ica", "valeur": "Ica"}
+{"entite": "St John's Cathedral, Parramatta", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "St. John's Episcopal Cathedral", "valeur": "Taipei"}
+{"entite": "St. John the Baptist Cathedral", "valeur": "Chalatenango"}
+{"entite": "St. John the Baptist Cathedral, Trujillo", "valeur": "Trujillo"}
+{"entite": "St. Josaphat's Ukrainian Catholic Cathedral", "valeur": "Ohio"}
+{"entite": "St. Joseph Cathedral, Gambela", "valeur": "Gambela"}
+{"entite": "St. Joseph Cathedral, Mopti", "valeur": "Mopti"}
+{"entite": "St. Joseph Co-Cathedral", "valeur": "Louisiane"}
+{"entite": "St. Joseph’s Cathedral", "valeur": "Kaduna"}
+{"entite": "St. Joseph's Cathedral, Abu Dhabi", "valeur": "Abou Dabi"}
+{"entite": "St. Joseph's Cathedral, Callao", "valeur": "Callao"}
+{"entite": "St. Joseph's Cathedral, Chongqing", "valeur": "Chongqing"}
+{"entite": "St Josephs Cathedral, Rockhampton", "valeur": "Queensland"}
+{"entite": "St. Louis the King Cathedral, San Luis Potosí", "valeur": "San Luis Potosí"}
+{"entite": "St Mark's Cathedral, Port Pirie", "valeur": "Australie-Méridionale"}
+{"entite": "St. Mark's Pro-Cathedral", "valeur": "Nebraska"}
+{"entite": "St. Maron's Cathedral, Buenos Aires", "valeur": "Buenos Aires"}
+{"entite": "St. Maron's Cathedral, Sydney", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "St. Mary A.M.E. Church", "valeur": "Géorgie"}
+{"entite": "St. Mary Cathedral", "valeur": "Michigan"}
+{"entite": "St. Mary Cathedral Basilica", "valeur": "Texas"}
+{"entite": "St. Mary, Our Lady of Mount Carmel Cathedral", "valeur": "Michigan"}
+{"entite": "St. Mary's Cathedral", "valeur": "Hambourg"}
+{"entite": "St Mary's Cathedral Church", "valeur": "Région d'Auckland"}
+{"entite": "St. Mary's Cathedral, Jammu", "valeur": "Jammu-et-Cachemire"}
+{"entite": "St.Mary's Cathedral Kothamangalam", "valeur": "Kerala"}
+{"entite": "St Mary's Cathedral, Sale", "valeur": "Victoria"}
+{"entite": "St Mary's Cathedral, Wellington", "valeur": "Wellington"}
+{"entite": "St. Matthew's Cathedral", "valeur": "Indiana"}
+{"entite": "St. Michael Maronite Cathedral", "valeur": "Tripoli"}
+{"entite": "St. Michael's Cathedral", "valeur": "Massachusetts"}
+{"entite": "St. Michael's Cathedral & Rectory", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "St Monica's Old Cathedral, Cairns", "valeur": "Queensland"}
+{"entite": "St Monica's War Memorial Cathedral", "valeur": "Queensland"}
+{"entite": "St. Nicholas Cathedral", "valeur": "Chimkent"}
+{"entite": "St. Nicholas Cathedral, Oradea", "valeur": "Bihor"}
+{"entite": "St. Nicholas Cathedral, Tulcea", "valeur": "Tulcea"}
+{"entite": "St. Nicholas Cathedral, Tumbes", "valeur": "Tumbes"}
+{"entite": "St. Paraskeva Church in Čukarička padina", "valeur": "Belgrade"}
+{"entite": "St. Patrick's Cathedral, Mohale's Hoek", "valeur": "Maseru"}
+{"entite": "St Patrick's Cathedral, Parramatta", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "St. Patrick's Co-Cathedral", "valeur": "Montana"}
+{"entite": "St. Paul Cathedral", "valeur": "Washington"}
+{"entite": "St Paul's Cathedral, Rockhampton", "valeur": "Queensland"}
+{"entite": "St Peter's Cathedral, Armidale", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "St. Peter's Cathedral, Hamilton", "valeur": "Waikato"}
+{"entite": "St. Peter the Apostle Cathedral, La Guaira", "valeur": "La Guaira"}
+{"entite": "St. Philip the Apostle Cathedral, Puerto Plata", "valeur": "Puerto Plata"}
+{"entite": "St. Raymond Maronite Cathedral", "valeur": "Saint-Louis"}
+{"entite": "St. Serge's Cathedral (Saint Petersburg)", "valeur": "Saint-Pétersbourg"}
+{"entite": "St. Stephen's Cathedral", "valeur": "Nairobi"}
+{"entite": "St. Theresa of the Child Jesus Cathedral, Urawa", "valeur": "préfecture de Saitama"}
+{"entite": "St. Theresa’s Metropolitan Cathedral", "valeur": "Arusha"}
+{"entite": "St Thomas Orthodox Cathedral, Thottomon, Ranny", "valeur": "Kerala"}
+{"entite": "St. Vartan Cathedral", "valeur": "New York"}
+{"entite": "St. Vincent's Cathedral", "valeur": "Texas"}
+{"entite": "Sts. Constantine and Helen Greek Orthodox Cathedral", "valeur": "New York"}
+{"entite": "Sts. Peter and Paul Church", "valeur": "Silistra"}
+{"entite": "Surabaya Cathedral", "valeur": "Java oriental"}
+{"entite": "Tabuk Cathedral", "valeur": "Tabuk"}
+{"entite": "Tacna Cathedral", "valeur": "Tacna"}
+{"entite": "Tarija Cathedral", "valeur": "Tarija"}
+{"entite": "Tarlac Cathedral", "valeur": "Tarlac"}
+{"entite": "Telšiai Cathedral", "valeur": "Telšiai"}
+{"entite": "The Nativity of the Blessed Virgin Mary", "valeur": "Addis-Abeba"}
+{"entite": "Transfiguration Cathedral, Bender", "valeur": "Bender"}
+{"entite": "Trinity Cathedral", "valeur": "Ohio"}
+{"entite": "Trinity Cathedral, Pochayiv Lavra", "valeur": "oblast de Ternopil"}
+{"entite": "Tsilkani Cathedral", "valeur": "Mtskheta-Mtianeti"}
+{"entite": "Văn Hạnh Cathedral", "valeur": "Hà Tĩnh"}
+{"entite": "Vĩnh Long cathedral", "valeur": "Vĩnh Long"}
+{"entite": "Wellington Cathedral of St Paul", "valeur": "Wellington"}
+{"entite": "Wesley cathedral ologbowo, Lagos Nigeria", "valeur": "Lagos"}
+{"entite": "Xinzhuang Catholic Church", "valeur": "Shanxi"}

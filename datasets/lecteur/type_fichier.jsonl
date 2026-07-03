@@ -1,0 +1,30 @@
+{"_relation": "type_fichier", "_categorie": "convention", "_source": "conventions informatiques de référence — associations standard", "_articles": true}
+{"entite": ".avi", "valeur": "vidéo"}
+{"entite": ".bmp", "valeur": "image"}
+{"entite": ".css", "valeur": "feuille de style"}
+{"entite": ".csv", "valeur": "données tabulaires"}
+{"entite": ".docx", "valeur": "document"}
+{"entite": ".flac", "valeur": "audio"}
+{"entite": ".gif", "valeur": "image"}
+{"entite": ".gz", "valeur": "archive"}
+{"entite": ".html", "valeur": "page web"}
+{"entite": ".jpeg", "valeur": "image"}
+{"entite": ".jpg", "valeur": "image"}
+{"entite": ".json", "valeur": "données"}
+{"entite": ".mkv", "valeur": "vidéo"}
+{"entite": ".mov", "valeur": "vidéo"}
+{"entite": ".mp3", "valeur": "audio"}
+{"entite": ".mp4", "valeur": "vidéo"}
+{"entite": ".ogg", "valeur": "audio"}
+{"entite": ".pdf", "valeur": "document"}
+{"entite": ".png", "valeur": "image"}
+{"entite": ".pptx", "valeur": "présentation"}
+{"entite": ".rar", "valeur": "archive"}
+{"entite": ".svg", "valeur": "image"}
+{"entite": ".tar", "valeur": "archive"}
+{"entite": ".txt", "valeur": "texte"}
+{"entite": ".wav", "valeur": "audio"}
+{"entite": ".webp", "valeur": "image"}
+{"entite": ".xlsx", "valeur": "tableur"}
+{"entite": ".xml", "valeur": "données"}
+{"entite": ".zip", "valeur": "archive"}

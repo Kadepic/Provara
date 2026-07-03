@@ -1,0 +1,820 @@
+{"_relation": "subdivision_estuaire", "_categorie": "physique", "_source": "Wikidata/QLever — subdivision_estuaire P131, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Aber Alaw", "valeur": "pays de Galles"}
+{"entite": "ACE Basin", "valeur": "Caroline du Sud"}
+{"entite": "Akhtarsky Liman", "valeur": "région de Krasnodar"}
+{"entite": "Al Seef", "valeur": "Dubaï"}
+{"entite": "Alligator Rivers", "valeur": "Territoire du Nord"}
+{"entite": "Anadyrsky Liman", "valeur": "Tchoukotka"}
+{"entite": "baie de Cadix", "valeur": "San Fernando"}
+{"entite": "baie de Suisun", "valeur": "Californie"}
+{"entite": "baie de Willapa", "valeur": "Washington"}
+{"entite": "baie de Yaté", "valeur": "Nouvelle-Calédonie"}
+{"entite": "Barra San José", "valeur": "Chiapas"}
+{"entite": "bassin de la Rivière Nouvelle", "valeur": "Québec"}
+{"entite": "bassin du Nord-Ouest", "valeur": "Québec"}
+{"entite": "Beysugsky Liman", "valeur": "région de Krasnodar"}
+{"entite": "Big Muddy Creek", "valeur": "Région d'Auckland"}
+{"entite": "Blanca Bay", "valeur": "province de Buenos Aires"}
+{"entite": "Boa Batukeriti", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Boa Batusangkok", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Boa Benete", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Boa Labuhanboa", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Boa Putubatu", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Boa Sauaruar", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Boa Sawih", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Boca da Sachola", "valeur": "Setúbal"}
+{"entite": "Boca de Conchalitos", "valeur": "Choluteca"}
+{"entite": "Boca del Río Parismina", "valeur": "Limón"}
+{"entite": "Boca del Río Tusubres", "valeur": "Puntarenas"}
+{"entite": "La Bocana", "valeur": "Basse-Californie du Sud"}
+{"entite": "Bocana de San Juan", "valeur": "Sonsonate"}
+{"entite": "Bocana El Pecho", "valeur": "La Unión"}
+{"entite": "Bocana El Sayte", "valeur": "Sonsonate"}
+{"entite": "Bocca Bevano", "valeur": "Émilie-Romagne"}
+{"entite": "Bonny Estuary", "valeur": "Rivers"}
+{"entite": "Bor-Nur", "valeur": "Kalmoukie"}
+{"entite": "Brazo Guayabal", "valeur": "Valle del Cauca"}
+{"entite": "Brigham Creek", "valeur": "Région d'Auckland"}
+{"entite": "Broke Inlet", "valeur": "Australie-Occidentale"}
+{"entite": "Bugazsky Liman", "valeur": "région de Krasnodar"}
+{"entite": "Burry Inlet", "valeur": "pays de Galles"}
+{"entite": "Caleta Cerro Espino", "valeur": "département de Chinandega"}
+{"entite": "Caleta La Socadura", "valeur": "département de Chinandega"}
+{"entite": "Caleta Los Garrobos", "valeur": "département de Chinandega"}
+{"entite": "Caleta Los Monos", "valeur": "département de Chinandega"}
+{"entite": "Caleta San Marcos", "valeur": "département de Chinandega"}
+{"entite": "Campbell River", "valeur": "Colombie-Britannique"}
+{"entite": "Cañada El Guichoso", "valeur": "La Unión"}
+{"entite": "Canal de Águas de Moura", "valeur": "Setúbal"}
+{"entite": "Canal Santa Rita", "valeur": "Usulután"}
+{"entite": "Cañón de Tasajera", "valeur": "La Paz"}
+{"entite": "Cao'ejiang Kou", "valeur": "Zhejiang"}
+{"entite": "Catlins Lake", "valeur": "Otago"}
+{"entite": "Chilibal", "valeur": "Quintana Roo"}
+{"entite": "Clarach Bay", "valeur": "pays de Galles"}
+{"entite": "Cocoyoles", "valeur": "Campeche"}
+{"entite": "Cogollo Salamar", "valeur": "Valle"}
+{"entite": "Dastūr", "valeur": "Hormozgan"}
+{"entite": "Dharamtar Creek", "valeur": "Maharashtra"}
+{"entite": "Dolgy Liman", "valeur": "région de Krasnodar"}
+{"entite": "Dongnan Kou", "valeur": "Fujian"}
+{"entite": "Dund-Nur", "valeur": "Kalmoukie"}
+{"entite": "Duwamish River", "valeur": "Washington"}
+{"entite": "East River", "valeur": "New York"}
+{"entite": "Eider", "valeur": "Schleswig-Holstein"}
+{"entite": "El Colorado", "valeur": "Chiapas"}
+{"entite": "El Esterón", "valeur": "Chiapas"}
+{"entite": "El Presidio", "valeur": "Michoacán"}
+{"entite": "El Sargento", "valeur": "Sonora"}
+{"entite": "Ensenada Boma", "valeur": "Guantánamo"}
+{"entite": "Ensenada de Lora", "valeur": "Holguín"}
+{"entite": "Ensenada la Plata", "valeur": "Santiago de Cuba"}
+{"entite": "Escaut occidental", "valeur": "Zélande"}
+{"entite": "Estero Agiabampo", "valeur": "Sonora"}
+{"entite": "Estero Agua Amarga", "valeur": "Sinaloa"}
+{"entite": "Estero Agua Pepe", "valeur": "Sinaloa"}
+{"entite": "Estero Agua Zarca", "valeur": "Nayarit"}
+{"entite": "Estero Aguachil", "valeur": "Oaxaca"}
+{"entite": "Estero Alemán", "valeur": "La Unión"}
+{"entite": "Estero Algarrobal", "valeur": "Guayas"}
+{"entite": "Estero Altamira", "valeur": "Camagüey"}
+{"entite": "Estero Amatillo", "valeur": "La Unión"}
+{"entite": "Estero Amazonas", "valeur": "Valle del Cauca"}
+{"entite": "Estero Angola", "valeur": "Veracruz"}
+{"entite": "Estero Atoya", "valeur": "département de Chinandega"}
+{"entite": "Estero Bacochibampo", "valeur": "Sonora"}
+{"entite": "Estero Bacorehuis", "valeur": "Sinaloa"}
+{"entite": "Estero Bagre", "valeur": "Guayas"}
+{"entite": "Estero Bahía Falsa", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Baira", "valeur": "Sonora"}
+{"entite": "Estero Balandra", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Balfate", "valeur": "Colón"}
+{"entite": "Estero Bamocha", "valeur": "Sonora"}
+{"entite": "Estero Banales", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Barbural", "valeur": "Puntarenas"}
+{"entite": "Estero Batamotos", "valeur": "Sinaloa"}
+{"entite": "Estero Batanga", "valeur": "Nayarit"}
+{"entite": "Estero Boca", "valeur": "Guayas"}
+{"entite": "Estero Boca Colorado", "valeur": "Sinaloa"}
+{"entite": "Estero Boca de Pascuales", "valeur": "Colima"}
+{"entite": "Estero Boca Tecuanillo", "valeur": "Colima"}
+{"entite": "Estero Boca Torcida", "valeur": "Choluteca"}
+{"entite": "Estero Brasil", "valeur": "Tamaulipas"}
+{"entite": "Estero Brazo Largo", "valeur": "Valle del Cauca"}
+{"entite": "Estero Bringotero", "valeur": "Cauca"}
+{"entite": "Estero Buenaventura", "valeur": "Sinaloa"}
+{"entite": "Estero Burubampo", "valeur": "Sonora"}
+{"entite": "Estero Butus", "valeur": "Choluteca"}
+{"entite": "Estero Caballos", "valeur": "Puntarenas"}
+{"entite": "Estero Cabezas", "valeur": "Valle"}
+{"entite": "Estero Cabuyal", "valeur": "Chiriquí"}
+{"entite": "Estero Cadeje", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Caimanes", "valeur": "Veracruz"}
+{"entite": "Estero Cajones", "valeur": "Jalisco"}
+{"entite": "Estero Camapochi", "valeur": "Sonora"}
+{"entite": "Estero Camíbar", "valeur": "Puntarenas"}
+{"entite": "Estero Cañada Atravesada", "valeur": "Nayarit"}
+{"entite": "Estero Cañada de la Presita", "valeur": "Sinaloa"}
+{"entite": "Estero Canarilebe", "valeur": "Sinaloa"}
+{"entite": "Estero Cangilones", "valeur": "Sinaloa"}
+{"entite": "Estero Canta Gallito", "valeur": "département de Chinandega"}
+{"entite": "Estero Canta Gallo", "valeur": "département de Chinandega"}
+{"entite": "Estero Capoa", "valeur": "Sinaloa"}
+{"entite": "Estero Cardón", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Carenero", "valeur": "Las Tunas"}
+{"entite": "Estero Carnevaca", "valeur": "Sinaloa"}
+{"entite": "Estero Carrachi", "valeur": "Choluteca"}
+{"entite": "Estero Carrizal", "valeur": "Guayas"}
+{"entite": "Estero Cayuelo", "valeur": "Pinar del Río"}
+{"entite": "Estero Ceibal", "valeur": "Choluteca"}
+{"entite": "Estero Celestún", "valeur": "Yucatán"}
+{"entite": "Estero Cerezal", "valeur": "Guayas"}
+{"entite": "Estero Cerique", "valeur": "La Unión"}
+{"entite": "Estero Cesares", "valeur": "département de Carazo"}
+{"entite": "Estero Chacalilla", "valeur": "Nayarit"}
+{"entite": "Estero Chambulún", "valeur": "Puntarenas"}
+{"entite": "Estero Chamela", "valeur": "Jalisco"}
+{"entite": "Estero Chichirigote", "valeur": "Sinaloa"}
+{"entite": "Estero Chicura Viva", "valeur": "Sinaloa"}
+{"entite": "Estero Chiquero de los Puercos", "valeur": "Nayarit"}
+{"entite": "Estero Chirigoyo", "valeur": "Guayas"}
+{"entite": "Estero Chobela", "valeur": "Puntarenas"}
+{"entite": "Estero Chocohuital", "valeur": "Chiapas"}
+{"entite": "Estero Ciali", "valeur": "Sinaloa"}
+{"entite": "Estero Ciega", "valeur": "Tamaulipas"}
+{"entite": "Estero Colebarco", "valeur": "Valle del Cauca"}
+{"entite": "Estero Colorado", "valeur": "Sinaloa"}
+{"entite": "Estero Corojal", "valeur": "province d'Artemisa"}
+{"entite": "Estero Coyol", "valeur": "Valle"}
+{"entite": "Estero Crucecitas", "valeur": "Valle del Cauca"}
+{"entite": "Estero Cuautla", "valeur": "Nayarit"}
+{"entite": "Estero Culito del Mar", "valeur": "Oaxaca"}
+{"entite": "Estero Cumora", "valeur": "Sonora"}
+{"entite": "Estero Cutantenia", "valeur": "Sinaloa"}
+{"entite": "Estero Damas", "valeur": "Puntarenas"}
+{"entite": "Estero Dautillos", "valeur": "Sinaloa"}
+{"entite": "Estero de Caraguao", "valeur": "Pinar del Río"}
+{"entite": "Estero de Chongón", "valeur": "Guayas"}
+{"entite": "Estero de Churutillo", "valeur": "Guayas"}
+{"entite": "Estero de Elices", "valeur": "Guayas"}
+{"entite": "Estero de Garzal", "valeur": "Guayas"}
+{"entite": "Estero de Horconcitos", "valeur": "Chiriquí"}
+{"entite": "Estero de la Aguada", "valeur": "Guayas"}
+{"entite": "Estero de La Berberia", "valeur": "Choluteca"}
+{"entite": "Estero de La Jagua", "valeur": "Choluteca"}
+{"entite": "Estero de Lagarto", "valeur": "Guayas"}
+{"entite": "Estero de Las Mujeres", "valeur": "Choluteca"}
+{"entite": "Estero de Lizarte", "valeur": "Las Tunas"}
+{"entite": "Estero de Los Comejenes", "valeur": "Choluteca"}
+{"entite": "Estero de Los Espabeles", "valeur": "Choluteca"}
+{"entite": "Estero de Los Loros", "valeur": "Choluteca"}
+{"entite": "Estero de los Meros", "valeur": "Puntarenas"}
+{"entite": "Estero de Mongón", "valeur": "Guayas"}
+{"entite": "Estero de Muisne", "valeur": "Esmeraldas"}
+{"entite": "Estero de Punta Raza", "valeur": "Nayarit"}
+{"entite": "Estero de Rincón Grande", "valeur": "Guayas"}
+{"entite": "Estero de Sabana Grande", "valeur": "Guayas"}
+{"entite": "Estero de San Miguel", "valeur": "Guayas"}
+{"entite": "Estero de San Vicente", "valeur": "Guayas"}
+{"entite": "Estero del Bachoco", "valeur": "Sonora"}
+{"entite": "Estero del Caiman", "valeur": "Valle del Cauca"}
+{"entite": "Estero del Ceibo", "valeur": "Guayas"}
+{"entite": "Estero del Gallo", "valeur": "Guayas"}
+{"entite": "Estero del Muerto", "valeur": "Guayas"}
+{"entite": "Estero del Perro", "valeur": "Camagüey"}
+{"entite": "Estero del Soldado", "valeur": "île de la Jeunesse"}
+{"entite": "Estero del Zapote", "valeur": "Puntarenas"}
+{"entite": "Estero Delgadito", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Doña Paula", "valeur": "département de Chinandega"}
+{"entite": "Estero Dorado", "valeur": "Choluteca"}
+{"entite": "Estero Dos Aguas Grandes", "valeur": "département de Chinandega"}
+{"entite": "Estero Dos Aguitas", "valeur": "département de Chinandega"}
+{"entite": "Estero Doscientos Pesos", "valeur": "Valle del Cauca"}
+{"entite": "Estero Duranguito", "valeur": "Sinaloa"}
+{"entite": "Estero El Aceituno", "valeur": "Valle"}
+{"entite": "Estero El Aguacate", "valeur": "Valle del Cauca"}
+{"entite": "Estero el Ahogado", "valeur": "Colima"}
+{"entite": "Estero El Ancresito", "valeur": "Nayarit"}
+{"entite": "Estero el Angosto", "valeur": "Veracruz"}
+{"entite": "Estero El Apintal", "valeur": "Valle"}
+{"entite": "Estero El Atilaneño", "valeur": "Tamaulipas"}
+{"entite": "Estero El Barillal", "valeur": "département de Chinandega"}
+{"entite": "Estero El Barraco", "valeur": "La Unión"}
+{"entite": "Estero el Barril", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero el Batequi", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero el Bayado", "valeur": "Sinaloa"}
+{"entite": "Estero El Bifiereallo", "valeur": "Sinaloa"}
+{"entite": "Estero El Borrego", "valeur": "Nayarit"}
+{"entite": "Estero El Bracito", "valeur": "Tamaulipas"}
+{"entite": "Estero El Brinco", "valeur": "Sinaloa"}
+{"entite": "Estero El Brujo", "valeur": "La Unión"}
+{"entite": "Estero el Bule", "valeur": "Sinaloa"}
+{"entite": "Estero el Caimán", "valeur": "Colima"}
+{"entite": "Estero El Capulín", "valeur": "Valle"}
+{"entite": "Estero el Carnal", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero El Carrizo", "valeur": "Valle"}
+{"entite": "Estero El Cedro", "valeur": "Choluteca"}
+{"entite": "Estero el Chino", "valeur": "Jalisco"}
+{"entite": "Estero el Chisguete", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero el Chivo", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero el Clarín", "valeur": "Sinaloa"}
+{"entite": "Estero el Coco", "valeur": "Chiapas"}
+{"entite": "Estero el Colorado", "valeur": "Sinaloa"}
+{"entite": "Estero El Corcho", "valeur": "Sinaloa"}
+{"entite": "Estero El Corcovado", "valeur": "Valle"}
+{"entite": "Estero el Costal", "valeur": "Sinaloa"}
+{"entite": "Estero El Covado", "valeur": "Cauca"}
+{"entite": "Estero el Coyote", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero el Cuarenta", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero El Cubolero", "valeur": "Valle"}
+{"entite": "Estero el Cuchillo", "valeur": "Sinaloa"}
+{"entite": "Estero el Culantro", "valeur": "Nayarit"}
+{"entite": "Estero El Culebro", "valeur": "Sinaloa"}
+{"entite": "Estero El Cureño", "valeur": "Tamaulipas"}
+{"entite": "Estero el Curi", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero El Custodio", "valeur": "Nayarit"}
+{"entite": "Estero el Dátil", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero el Desecho", "valeur": "Sinaloa"}
+{"entite": "Estero el Diablo", "valeur": "Sonora"}
+{"entite": "Estero El Draguito", "valeur": "Guerrero"}
+{"entite": "Estero el Elote", "valeur": "Sonora"}
+{"entite": "Estero El Encantado", "valeur": "La Unión"}
+{"entite": "Estero El Encanto", "valeur": "Puntarenas"}
+{"entite": "Estero el Españolito", "valeur": "Las Tunas"}
+{"entite": "Estero El Espina", "valeur": "Valle"}
+{"entite": "Estero El Espino", "valeur": "Choluteca"}
+{"entite": "Estero El Estampido", "valeur": "La Unión"}
+{"entite": "Estero el Esterito", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero el Garrotazo", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero el Gringo", "valeur": "Sinaloa"}
+{"entite": "Estero el Guachapore", "valeur": "Sinaloa"}
+{"entite": "Estero El Islote", "valeur": "Yucatán"}
+{"entite": "Estero el Jagüey", "valeur": "Nayarit"}
+{"entite": "Estero El Jicaro", "valeur": "Valle"}
+{"entite": "Estero el Jiote", "valeur": "Sinaloa"}
+{"entite": "Estero El Junquillo", "valeur": "département de Chontales"}
+{"entite": "Estero El Lagarto", "valeur": "Valle"}
+{"entite": "Estero el Mangión", "valeur": "Sinaloa"}
+{"entite": "Estero el Mangle", "valeur": "Sinaloa"}
+{"entite": "Estero el Manglón", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero El Martillo", "valeur": "Sinaloa"}
+{"entite": "Estero El Mechudo", "valeur": "Sinaloa"}
+{"entite": "Estero el Merito", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero El Naranjal", "valeur": "La Unión"}
+{"entite": "Estero el Negro", "valeur": "Chiapas"}
+{"entite": "Estero el Oro", "valeur": "Sinaloa"}
+{"entite": "Estero el Otate", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero El Pailón", "valeur": "Valle del Cauca"}
+{"entite": "Estero El Palacio", "valeur": "Choluteca"}
+{"entite": "Estero El Papalón", "valeur": "Valle"}
+{"entite": "Estero el Papayal", "valeur": "Jalisco"}
+{"entite": "Estero El Parral", "valeur": "Sinaloa"}
+{"entite": "Estero El Paso", "valeur": "Yucatán"}
+{"entite": "Estero El Patole", "valeur": "Sinaloa"}
+{"entite": "Estero El Pedregal", "valeur": "Choluteca"}
+{"entite": "Estero El Perro", "valeur": "Tamaulipas"}
+{"entite": "Estero El Pichi", "valeur": "Michoacán"}
+{"entite": "Estero El Piñal", "valeur": "Valle del Cauca"}
+{"entite": "Estero el Ponce", "valeur": "Chiapas"}
+{"entite": "Estero el Pozo", "valeur": "Nayarit"}
+{"entite": "Estero El Pozole", "valeur": "Sinaloa"}
+{"entite": "Estero El Realejo", "valeur": "département de Chinandega"}
+{"entite": "Estero el Rebozo", "valeur": "Sinaloa"}
+{"entite": "Estero el Remendado", "valeur": "Tamaulipas"}
+{"entite": "Estero el Rey", "valeur": "Nayarit"}
+{"entite": "Estero el Rillito", "valeur": "Sonora"}
+{"entite": "Estero el Rodeo", "valeur": "Jalisco"}
+{"entite": "Estero El Sábalo", "valeur": "Sinaloa"}
+{"entite": "Estero el Salado", "valeur": "Jalisco"}
+{"entite": "Estero el Sulti", "valeur": "Sonora"}
+{"entite": "Estero El Tamarindo", "valeur": "La Unión"}
+{"entite": "Estero el Tambor", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero El Tasajal", "valeur": "Sinaloa"}
+{"entite": "Estero el Tecolote", "valeur": "Sonora"}
+{"entite": "Estero El Torcidito", "valeur": "Choluteca"}
+{"entite": "Estero El Toro", "valeur": "département de Rivas"}
+{"entite": "Estero el Toro Mocho", "valeur": "Nayarit"}
+{"entite": "Estero el Tubo", "valeur": "Sinaloa"}
+{"entite": "Estero el Tular", "valeur": "Guerrero"}
+{"entite": "Estero El Tule", "valeur": "Sinaloa"}
+{"entite": "Estero El Veinticinco", "valeur": "Sinaloa"}
+{"entite": "Estero el Veintitrés", "valeur": "Sinaloa"}
+{"entite": "Estero el Yugo", "valeur": "Sinaloa"}
+{"entite": "Estero El Zancudiento", "valeur": "département de Granada"}
+{"entite": "Estero El Zapote", "valeur": "Ahuachapán"}
+{"entite": "Estero el Zapotillo", "valeur": "Nayarit"}
+{"entite": "Estero El Zapoyol", "valeur": "département de Carazo"}
+{"entite": "Estero Fantasioso", "valeur": "Choluteca"}
+{"entite": "Estero Gamboa", "valeur": "Valle del Cauca"}
+{"entite": "Estero Garita Palmera", "valeur": "Ahuachapán"}
+{"entite": "Estero Garrapatica", "valeur": "Camagüey"}
+{"entite": "Estero Gloria", "valeur": "Guayas"}
+{"entite": "Estero Guabi", "valeur": "Guayas"}
+{"entite": "Estero Guanco", "valeur": "Guayas"}
+{"entite": "Estero Guapinol", "valeur": "Choluteca"}
+{"entite": "Estero Guazonte", "valeur": "Choluteca"}
+{"entite": "Estero Guerrero", "valeur": "Valle del Cauca"}
+{"entite": "Estero Hermoso", "valeur": "Valle"}
+{"entite": "Estero Hondo", "valeur": "Valle del Cauca"}
+{"entite": "Estero Hualabampito", "valeur": "Sonora"}
+{"entite": "Estero Huituaca", "valeur": "Sinaloa"}
+{"entite": "Estero Humane", "valeur": "Valle del Cauca"}
+{"entite": "Estero Jacomo", "valeur": "Veracruz"}
+{"entite": "Estero Jagua", "valeur": "Choluteca"}
+{"entite": "Estero Jambelí", "valeur": "Guayas"}
+{"entite": "Estero Jeli", "valeur": "Tumbes"}
+{"entite": "Estero Jiamora", "valeur": "Sonora"}
+{"entite": "Estero Jiote Grande", "valeur": "Valle"}
+{"entite": "Estero Jiotillo", "valeur": "Valle"}
+{"entite": "Estero Jitzamuri", "valeur": "Sinaloa"}
+{"entite": "Estero Juan González", "valeur": "Veracruz"}
+{"entite": "Estero Juanita", "valeur": "Camagüey"}
+{"entite": "Estero la Atascosa", "valeur": "Sinaloa"}
+{"entite": "Estero La Barra", "valeur": "Valle del Cauca"}
+{"entite": "Estero la Barrita", "valeur": "Chiapas"}
+{"entite": "Estero la Bocana", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero la Bolsa", "valeur": "Chiapas"}
+{"entite": "Estero la Boquita", "valeur": "Jalisco"}
+{"entite": "Estero la Burra", "valeur": "Guerrero"}
+{"entite": "Estero La Candela", "valeur": "La Unión"}
+{"entite": "Estero La Chinga", "valeur": "Valle"}
+{"entite": "Estero la Comisión", "valeur": "Sinaloa"}
+{"entite": "Estero la Conducta", "valeur": "Sinaloa"}
+{"entite": "Estero la Cruz", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero la Cuchara", "valeur": "Sinaloa"}
+{"entite": "Estero la Curvina", "valeur": "Sinaloa"}
+{"entite": "Estero La Cutú", "valeur": "Valle"}
+{"entite": "Estero La Escodama", "valeur": "Sinaloa"}
+{"entite": "Estero la Esperanza", "valeur": "Quintana Roo"}
+{"entite": "Estero la Estufa", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero La Garatuza", "valeur": "La Paz"}
+{"entite": "Estero La Garita", "valeur": "département de León"}
+{"entite": "Estero la Güera", "valeur": "Sinaloa"}
+{"entite": "Estero la Harina", "valeur": "Tamaulipas"}
+{"entite": "Estero la Herradura", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero la Horsuata", "valeur": "Nayarit"}
+{"entite": "Estero la Inicial", "valeur": "Sinaloa"}
+{"entite": "Estero la Jacoba", "valeur": "Sonora"}
+{"entite": "Estero La Jagua", "valeur": "Choluteca"}
+{"entite": "Estero la Laguna", "valeur": "Sinaloa"}
+{"entite": "Estero La Lisa", "valeur": "Sinaloa"}
+{"entite": "Estero la Luna", "valeur": "Sonora"}
+{"entite": "Estero La Manzanilla", "valeur": "La Unión"}
+{"entite": "Estero la Media Luna", "valeur": "Colima"}
+{"entite": "Estero La Mojarra", "valeur": "Sinaloa"}
+{"entite": "Estero La Palmita", "valeur": "Basse-Californie"}
+{"entite": "Estero La Pechuga", "valeur": "Sinaloa"}
+{"entite": "Estero la Periquera", "valeur": "Sinaloa"}
+{"entite": "Estero la Presa", "valeur": "Colima"}
+{"entite": "Estero La Puerta del Río", "valeur": "Nayarit"}
+{"entite": "Estero la Punta Verde", "valeur": "Sonora"}
+{"entite": "Estero La Resaca", "valeur": "Tamaulipas"}
+{"entite": "Estero la Robalera", "valeur": "Sinaloa"}
+{"entite": "Estero la Salina", "valeur": "Oaxaca"}
+{"entite": "Estero La Simona", "valeur": "Choluteca"}
+{"entite": "Estero La Stanina", "valeur": "Tumbes"}
+{"entite": "Estero la Tabliza", "valeur": "Michoacán"}
+{"entite": "Estero La Tigra", "valeur": "département de Chinandega"}
+{"entite": "Estero la Tortuga", "valeur": "Sonora"}
+{"entite": "Estero la Trinidad", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero La Venado", "valeur": "Choluteca"}
+{"entite": "Estero la Víbora", "valeur": "Sinaloa"}
+{"entite": "Estero la Yegua", "valeur": "Sinaloa"}
+{"entite": "Estero Lagartero", "valeur": "Cauca"}
+{"entite": "Estero Lagarto", "valeur": "Guayas"}
+{"entite": "Estero las Agujas", "valeur": "Sinaloa"}
+{"entite": "Estero las Amazonas", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero las Balizas", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero las Balsas", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Las Bocanitas", "valeur": "La Libertad"}
+{"entite": "Estero las Bocas", "valeur": "Campeche"}
+{"entite": "Estero las Borregas", "valeur": "Sinaloa"}
+{"entite": "Estero Las Cañas", "valeur": "département de Chontales"}
+{"entite": "Estero Las Conchas", "valeur": "La Unión"}
+{"entite": "Estero Las Conchitas", "valeur": "Guayas"}
+{"entite": "Estero las Güiras", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero las Lajas", "valeur": "Sinaloa"}
+{"entite": "Estero las Moras", "valeur": "Guerrero"}
+{"entite": "Estero Las Mujeres", "valeur": "Tamaulipas"}
+{"entite": "Estero las Palmitas", "valeur": "Camagüey"}
+{"entite": "Estero las Palomas", "valeur": "Sonora"}
+{"entite": "Estero Las Piedras", "valeur": "île de la Jeunesse"}
+{"entite": "Estero las Tijeras", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Las Tinajas", "valeur": "Valle"}
+{"entite": "Estero Leones", "valeur": "Jalisco"}
+{"entite": "Estero Libertad", "valeur": "Guayas"}
+{"entite": "Estero Limoncito", "valeur": "Valle del Cauca"}
+{"entite": "Estero Limones", "valeur": "Valle del Cauca"}
+{"entite": "Estero los Algodones", "valeur": "Sinaloa"}
+{"entite": "Estero Los Barrancones", "valeur": "Choluteca"}
+{"entite": "Estero los Candelones", "valeur": "Sinaloa"}
+{"entite": "Estero Los Corchos", "valeur": "Nayarit"}
+{"entite": "Estero Los Cuates", "valeur": "Sinaloa"}
+{"entite": "Estero los Cuatillos", "valeur": "Sinaloa"}
+{"entite": "Estero Los Duros", "valeur": "Valle"}
+{"entite": "Estero los Islotes", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Los Langues", "valeur": "Valle"}
+{"entite": "Estero Los Loros", "valeur": "Choluteca"}
+{"entite": "Estero Los Luises", "valeur": "Valle"}
+{"entite": "Estero Los Monos", "valeur": "Guayas"}
+{"entite": "Estero Los Negros", "valeur": "Valle"}
+{"entite": "Estero los Nidos", "valeur": "Sinaloa"}
+{"entite": "Estero Los Pericos", "valeur": "Nayarit"}
+{"entite": "Estero los Potreros", "valeur": "Tamaulipas"}
+{"entite": "Estero Los Puentes", "valeur": "Choluteca"}
+{"entite": "Estero Los Tanques", "valeur": "Tamaulipas"}
+{"entite": "Estero los Títeres", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero los Tules", "valeur": "Michoacán"}
+{"entite": "Estero Machetagedó", "valeur": "Valle del Cauca"}
+{"entite": "Estero Macho", "valeur": "Sinaloa"}
+{"entite": "Estero Maito", "valeur": "Jalisco"}
+{"entite": "Estero Malacataya", "valeur": "Sinaloa"}
+{"entite": "Estero Managuara", "valeur": "La Unión"}
+{"entite": "Estero Manatí", "valeur": "Camagüey"}
+{"entite": "Estero Manchón", "valeur": "Sinaloa"}
+{"entite": "Estero Manglón", "valeur": "Sinaloa"}
+{"entite": "Estero Mapoli", "valeur": "Sonora"}
+{"entite": "Estero Mar Muerto", "valeur": "Oaxaca"}
+{"entite": "Estero Marota", "valeur": "département de Chinandega"}
+{"entite": "Estero Mayo", "valeur": "Sinaloa"}
+{"entite": "Estero Mechapa", "valeur": "département de Chinandega"}
+{"entite": "Estero Médano Blanco", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Medina", "valeur": "Sinaloa"}
+{"entite": "Estero Mendías", "valeur": "Sinaloa"}
+{"entite": "Estero Meroboca", "valeur": "Sinaloa"}
+{"entite": "Estero Mezcala", "valeur": "Michoacán"}
+{"entite": "Estero Migriño", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Montoya", "valeur": "Choluteca"}
+{"entite": "Estero Mudo", "valeur": "Colima"}
+{"entite": "Estero Mulegé", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Negro", "valeur": "Puntarenas"}
+{"entite": "Estero Norte", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Novoroma", "valeur": "Sonora"}
+{"entite": "Estero Ojo de Liebre", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Once Ríos", "valeur": "Sinaloa"}
+{"entite": "Estero Oro Verde", "valeur": "Veracruz"}
+{"entite": "Estero Osuna", "valeur": "Sinaloa"}
+{"entite": "Estero Padre Ramos", "valeur": "département de Chinandega"}
+{"entite": "Estero Palmitas", "valeur": "Santiago de Cuba"}
+{"entite": "Estero Palo Redondo", "valeur": "Puntarenas"}
+{"entite": "Estero Palo Santo", "valeur": "Tumbes"}
+{"entite": "Estero Palo Verde", "valeur": "Colima"}
+{"entite": "Estero Pampa Honda", "valeur": "Chiapas"}
+{"entite": "Estero Pancho Bueno", "valeur": "Sinaloa"}
+{"entite": "Estero Paramán", "valeur": "Jalisco"}
+{"entite": "Estero Patio de la Barra", "valeur": "Escuintla"}
+{"entite": "Estero Pedernales", "valeur": "Guayas"}
+{"entite": "Estero Pedregal", "valeur": "Choluteca"}
+{"entite": "Estero Pérula", "valeur": "Jalisco"}
+{"entite": "Estero Piedra", "valeur": "Choluteca"}
+{"entite": "Estero Pimientillo", "valeur": "Nayarit"}
+{"entite": "Estero Playa Salada", "valeur": "Valle"}
+{"entite": "Estero Pongal", "valeur": "Guayas"}
+{"entite": "Estero Prieto", "valeur": "Colón"}
+{"entite": "Estero Primero", "valeur": "Basse-Californie"}
+{"entite": "Estero Puerto Arturo", "valeur": "département de Chinandega"}
+{"entite": "Estero Puerto Gato", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Puerto Rico", "valeur": "Tumbes"}
+{"entite": "Estero Punta Verde", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Remate", "valeur": "Camagüey"}
+{"entite": "Estero Revienta Cadenas", "valeur": "Choluteca"}
+{"entite": "Estero Riachuelos", "valeur": "Veracruz"}
+{"entite": "Estero Rico", "valeur": "Sinaloa"}
+{"entite": "Estero Rielecito", "valeur": "Sinaloa"}
+{"entite": "Estero Rincón Grande", "valeur": "Usulután"}
+{"entite": "Estero Rincón Largo", "valeur": "Chiriquí"}
+{"entite": "Estero Río Chico", "valeur": "Tumbes"}
+{"entite": "Estero Río Lagartos", "valeur": "Yucatán"}
+{"entite": "Estero Río Viejo", "valeur": "Valle"}
+{"entite": "Estero Sabanalamar", "valeur": "Camagüey"}
+{"entite": "Estero Sabancuy", "valeur": "Campeche"}
+{"entite": "Estero Sabanillas", "valeur": "Camagüey"}
+{"entite": "Estero Salinitas", "valeur": "Valle"}
+{"entite": "Estero San Antonio", "valeur": "Valle del Cauca"}
+{"entite": "Estero San Bernardo", "valeur": "Choluteca"}
+{"entite": "Estero San Buto", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Carlos", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Carlos Viejo", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Caytano", "valeur": "département de Chinandega"}
+{"entite": "Estero San Cosme", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Diego", "valeur": "La Libertad"}
+{"entite": "Estero San Esteban", "valeur": "Sinaloa"}
+{"entite": "Estero San Fernando", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Francisco", "valeur": "Sinaloa"}
+{"entite": "Estero San Gregorio", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Jorge", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San José", "valeur": "Sinaloa"}
+{"entite": "Estero San Lázaro", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Luciano", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Luis Gonzaga", "valeur": "Basse-Californie"}
+{"entite": "Estero San Marcos", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Pedro", "valeur": "Guayas"}
+{"entite": "Estero San Rafael", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero San Vicente", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Santa Barbara", "valeur": "Sonora"}
+{"entite": "Estero Santa Delicia", "valeur": "Valle del Cauca"}
+{"entite": "Estero Santa Elenita", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Santa Rosa", "valeur": "Sonora"}
+{"entite": "Estero Santiago", "valeur": "Chiapas"}
+{"entite": "Estero Santo Domingo", "valeur": "Sonora"}
+{"entite": "Estero Sebasco", "valeur": "Sonora"}
+{"entite": "Estero Secadero", "valeur": "Cauca"}
+{"entite": "Estero Segal", "valeur": "Guayas"}
+{"entite": "Estero Sejurime", "valeur": "Sinaloa"}
+{"entite": "Estero Sialiboca", "valeur": "Sonora"}
+{"entite": "Estero Sin Punta", "valeur": "Sinaloa"}
+{"entite": "Estero Soldado Chiquito", "valeur": "île de la Jeunesse"}
+{"entite": "Estero Sopahui", "valeur": "Sonora"}
+{"entite": "Estero Soria", "valeur": "Guayas"}
+{"entite": "Estero Tacuachero", "valeur": "Sinaloa"}
+{"entite": "Estero Taícury", "valeur": "Sinaloa"}
+{"entite": "Estero Tamayo", "valeur": "Valle del Cauca"}
+{"entite": "Estero Tamecancari", "valeur": "Sinaloa"}
+{"entite": "Estero Taribola", "valeur": "Sinaloa"}
+{"entite": "Estero Techoa", "valeur": "Sonora"}
+{"entite": "Estero Tecolapa", "valeur": "département de Carazo"}
+{"entite": "Estero Tecomate", "valeur": "Nayarit"}
+{"entite": "Estero Tejón", "valeur": "Veracruz"}
+{"entite": "Estero Tía Sostenes", "valeur": "Nayarit"}
+{"entite": "Estero Ticha", "valeur": "Nayarit"}
+{"entite": "Estero Tiche", "valeur": "Nayarit"}
+{"entite": "Estero Ticuisiapa", "valeur": "La Libertad"}
+{"entite": "Estero Toluca", "valeur": "La Libertad"}
+{"entite": "Estero Torrecillas", "valeur": "département de Chinandega"}
+{"entite": "Estero Tosalcahui", "valeur": "Sonora"}
+{"entite": "Estero Uña de Gata", "valeur": "Basse-Californie du Sud"}
+{"entite": "Estero Uvabo", "valeur": "Sonora"}
+{"entite": "Estero Vaditos", "valeur": "Sinaloa"}
+{"entite": "Estero Valentín", "valeur": "Guerrero"}
+{"entite": "Estero Vallecitas", "valeur": "Sinaloa"}
+{"entite": "Estero Verde", "valeur": "Jalisco"}
+{"entite": "Estero Verde Mar", "valeur": "Sinaloa"}
+{"entite": "Estero Vertientes", "valeur": "Camagüey"}
+{"entite": "Estero Viejo", "valeur": "Sinaloa"}
+{"entite": "Estero Vindramo", "valeur": "Sinaloa"}
+{"entite": "Estero Vuelta del Tabaco", "valeur": "Sinaloa"}
+{"entite": "Estero Vuelta Grande", "valeur": "Choluteca"}
+{"entite": "Estero Vuelta Los Guiños", "valeur": "Cauca"}
+{"entite": "Estero Yameto", "valeur": "Sinaloa"}
+{"entite": "Estero Yoluc", "valeur": "Yucatán"}
+{"entite": "Esteros Los Tubos", "valeur": "Sinaloa"}
+{"entite": "Esteros Potrero Grande", "valeur": "Colima"}
+{"entite": "estuaire de Khadjibeï", "valeur": "oblast d'Odessa"}
+{"entite": "Estuaire de la Petite Rivière Cascapédia", "valeur": "Québec"}
+{"entite": "Estuaire de la Rivière Bonaventure", "valeur": "Québec"}
+{"entite": "estuaire de la Rivière Saint-Charles", "valeur": "Québec"}
+{"entite": "Estuaire de Reloncaví", "valeur": "région des Lacs"}
+{"entite": "estuaire du Congo", "valeur": "province de Zaïre"}
+{"entite": "Estuaire du Minjiang", "valeur": "Fujian"}
+{"entite": "estuaire du Saint-Laurent", "valeur": "Québec"}
+{"entite": "Estuário de Maputo", "valeur": "Province de Maputo"}
+{"entite": "Estuario de Virrila", "valeur": "Piura"}
+{"entite": "Firth of Forth", "valeur": "Écosse"}
+{"entite": "Gediz Mansabı", "valeur": "Izmir"}
+{"entite": "Gluboky Liman", "valeur": "région de Krasnodar"}
+{"entite": "Gold Coast Broadwater", "valeur": "Queensland"}
+{"entite": "Goly Liman", "valeur": "Kalmoukie"}
+{"entite": "Gorky Liman", "valeur": "région de Krasnodar"}
+{"entite": "Grand Codroy Estuary", "valeur": "Terre-Neuve-et-Labrador"}
+{"entite": "Grays Harbor", "valeur": "Washington"}
+{"entite": "Great Sandy Strait", "valeur": "Queensland"}
+{"entite": "Great Swanport", "valeur": "Tasmanie"}
+{"entite": "Grimsosen", "valeur": "Nordland"}
+{"entite": "Guadalquivir Estuary", "valeur": "Andalousie"}
+{"entite": "Haldane Estuary", "valeur": "Southland"}
+{"entite": "Hampton Roads", "valeur": "Virginie"}
+{"entite": "Harania Creek", "valeur": "Région d'Auckland"}
+{"entite": "Heggstadosen", "valeur": "Nordland"}
+{"entite": "Hever", "valeur": "Schleswig-Holstein"}
+{"entite": "Humber", "valeur": "Angleterre"}
+{"entite": "Huruhuru Creek", "valeur": "Région d'Auckland"}
+{"entite": "Hyrlo Hneusheve", "valeur": "oblast d'Odessa"}
+{"entite": "Hyrlo Laptysh", "valeur": "oblast d'Odessa"}
+{"entite": "Hyrlo Murza", "valeur": "oblast d'Odessa"}
+{"entite": "Hyrlo Musuna", "valeur": "oblast d'Odessa"}
+{"entite": "Inner Clyde Estuary", "valeur": "Écosse"}
+{"entite": "Inverness Firth", "valeur": "Écosse"}
+{"entite": "Irwin Inlet", "valeur": "Australie-Occidentale"}
+{"entite": "Isla Las Conchitas", "valeur": "Guayas"}
+{"entite": "Jacobs River Estuary", "valeur": "Southland"}
+{"entite": "Jambongan Harbor", "valeur": "Sabah"}
+{"entite": "Karanja Creek", "valeur": "Maharashtra"}
+{"entite": "Khlong Khao Thalu", "valeur": "Phang Nga"}
+{"entite": "Khlong Ko Samet", "valeur": "Phang Nga"}
+{"entite": "Khlong Lamphaen", "valeur": "Chanthaburi"}
+{"entite": "Khlong Phon", "valeur": "Krabi"}
+{"entite": "Khlong Sang Yut", "valeur": "Satun"}
+{"entite": "Khlong Wak", "valeur": "Chanthaburi"}
+{"entite": "Khlong Wang Duan", "valeur": "Chanthaburi"}
+{"entite": "Khowr-e Āl Ḩoseynī", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Āl Pey", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Bāhū", "valeur": "Sistan-et-Baloutchistan"}
+{"entite": "Khowr-e Bārīkū", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Besātīn", "valeur": "Bouchehr"}
+{"entite": "Khowr-e Bīdkhūn", "valeur": "Bouchehr"}
+{"entite": "Khowr-e Bostānū", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Būdūd", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Damādūr", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Haft Būn", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Ḩalālī", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Kashrī", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Khamīr", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Khān", "valeur": "Bouchehr"}
+{"entite": "Khowr-e Khowrīā", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Khowryā", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Kolehā'ī", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Lashgarī", "valeur": "Bouchehr"}
+{"entite": "Khowr-e Lashkarī", "valeur": "Bouchehr"}
+{"entite": "Khowr-e Malakī", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Mardū", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Masāgeh", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Mūrīz Derāz", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Nokhgab", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Porāv", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Sangī-ye Bozorg", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Sangī-ye Kūchak", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Sedīch", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Seyyd Aḩmadī", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Shāh Abū ol Qāsem", "valeur": "Bouchehr"}
+{"entite": "Khowr-e Shangdūnī", "valeur": "Hormozgan"}
+{"entite": "Khowr-e Shīf", "valeur": "Bouchehr"}
+{"entite": "Khowr-e Solţānī", "valeur": "Bouchehr"}
+{"entite": "Khowrdaryā'ī Galātū", "valeur": "Hormozgan"}
+{"entite": "Khowrdarya'ī Ḩajjī", "valeur": "Hormozgan"}
+{"entite": "Kiliys’ke Hyrlo", "valeur": "oblast d'Odessa"}
+{"entite": "Kiripilsky Liman", "valeur": "région de Krasnodar"}
+{"entite": "Kuala Batu Pahat", "valeur": "Johor"}
+{"entite": "Kuala Batubara", "valeur": "Sumatra du Nord"}
+{"entite": "Kuala Dinar", "valeur": "Johor"}
+{"entite": "Kuala Jambi", "valeur": "Jambi"}
+{"entite": "Kuala Jaringalus Besar", "valeur": "Sumatra du Nord"}
+{"entite": "Kuala Karang", "valeur": "Johor"}
+{"entite": "Kuala Kerian", "valeur": "Penang"}
+{"entite": "Kuala Maraja", "valeur": "Sulawesi central"}
+{"entite": "Kuala Muar", "valeur": "Johor"}
+{"entite": "Kuala Pulautengah", "valeur": "Jambi"}
+{"entite": "Kuala Raga", "valeur": "Kedah"}
+{"entite": "Kuala Redan", "valeur": "Johor"}
+{"entite": "Kuala Sala", "valeur": "Kedah"}
+{"entite": "Kuala Siparepare", "valeur": "Sumatra du Nord"}
+{"entite": "Kuala Sungai Jawi", "valeur": "Penang"}
+{"entite": "Kuala Sungai Jeram Batu", "valeur": "Johor"}
+{"entite": "Kuala Tengah", "valeur": "Penang"}
+{"entite": "Kuala Tok Pasai", "valeur": "Kedah"}
+{"entite": "Kuala Yan", "valeur": "Kedah"}
+{"entite": "Kuala Yan Kechil", "valeur": "Kedah"}
+{"entite": "lac Macquarie", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "lac Pontchartrain", "valeur": "Louisiane"}
+{"entite": "lac Sainte-Lucie", "valeur": "KwaZulu-Natal"}
+{"entite": "lac Tuggerah", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "lac Yalpug", "valeur": "oblast d'Odessa"}
+{"entite": "lagune de Korissía", "valeur": "périphérie des Îles Ioniennes"}
+{"entite": "Lake Shabla", "valeur": "Dobritch"}
+{"entite": "Las Garzas", "valeur": "Colima"}
+{"entite": "Leschenault Estuary", "valeur": "Australie-Occidentale"}
+{"entite": "liman d'Akhtanizovskaïa", "valeur": "région de Krasnodar"}
+{"entite": "liman de Berezan", "valeur": "oblast de Mykolaiv"}
+{"entite": "liman de Kiziltach", "valeur": "région de Krasnodar"}
+{"entite": "liman de Kourtchanskaïa", "valeur": "région de Krasnodar"}
+{"entite": "liman de Molotchnyi", "valeur": "oblast de Zaporijjia"}
+{"entite": "liman de Sassyk", "valeur": "oblast d'Odessa"}
+{"entite": "liman de Starotitarovskaïa", "valeur": "région de Krasnodar"}
+{"entite": "liman de Tsokour", "valeur": "région de Krasnodar"}
+{"entite": "liman de Vitiazevo", "valeur": "région de Krasnodar"}
+{"entite": "liman du Boug", "valeur": "oblast de Mykolaiv"}
+{"entite": "Lindi River", "valeur": "Lindi"}
+{"entite": "Little Muddy Creek", "valeur": "Région d'Auckland"}
+{"entite": "Lyngosen", "valeur": "Nordland"}
+{"entite": "Ma Tibubunut", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Mae Nam Bang Toei", "valeur": "Phang Nga"}
+{"entite": "Mae Nam Bo Saen", "valeur": "Phang Nga"}
+{"entite": "Mae Nam Welu", "valeur": "Chanthaburi"}
+{"entite": "Malpaso", "valeur": "Campeche"}
+{"entite": "Mananga Karendi", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Mananga Katewel", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Mananga Kerewai", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Mananga Lokogaro", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Mananga Memboro", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Mananga Tarakah", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Mananga Waipidu", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Mananga Wairara", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Mananga Yumbu", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Manawatū Estuary", "valeur": "Manawatu-Wanganui"}
+{"entite": "Mandurah Estuary", "valeur": "Australie-Occidentale"}
+{"entite": "Manţaqeh-ye Khowr-e Būhamīr", "valeur": "Bouchehr"}
+{"entite": "Mar Pequeno", "valeur": "São Paulo"}
+{"entite": "Maxie He", "valeur": "Guangdong"}
+{"entite": "Meda Creek", "valeur": "Gujarat"}
+{"entite": "Meshok", "valeur": "Kalmoukie"}
+{"entite": "Middle Harbour", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Mordarosen", "valeur": "Nordland"}
+{"entite": "Mto Kombe", "valeur": "Tanga"}
+{"entite": "Muara Bambanu Palasa", "valeur": "Sulawesi central"}
+{"entite": "Muara Bangkakota", "valeur": "Îles Bangka Belitung"}
+{"entite": "Muara Burau", "valeur": "Sulawesi du Sud"}
+{"entite": "Muara Ciparage", "valeur": "Java occidental"}
+{"entite": "Muara Kentong", "valeur": "Java occidental"}
+{"entite": "Muara Labellang", "valeur": "Sulawesi du Sud"}
+{"entite": "Muara Lamasipantai", "valeur": "Sulawesi du Sud"}
+{"entite": "Muara Lasoribeccu", "valeur": "Sulawesi du Sud"}
+{"entite": "Muara Mantalinga", "valeur": "Sulawesi du Sud"}
+{"entite": "Muara Menangamayung", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Muara Motui", "valeur": "Sulawesi du Sud-Est"}
+{"entite": "Muara Mujur", "valeur": "Java oriental"}
+{"entite": "Muara Nunkurus", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Muara Pompengan", "valeur": "Sulawesi du Sud"}
+{"entite": "Muara Sompusompu", "valeur": "Sulawesi du Sud"}
+{"entite": "Muara Sungai Batang", "valeur": "Sumatra du Sud"}
+{"entite": "Muara Tekolok", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Muara Tokke", "valeur": "Sulawesi du Sud"}
+{"entite": "Nadayara Kāyal", "valeur": "Kerala"}
+{"entite": "Naktong-ganggu", "valeur": "Pusan"}
+{"entite": "Nanga Ba", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Endo", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Gusung", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Keo", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Mboi", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Nanga Mese", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Nisa", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Nanga Pede", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Rawa", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Soroele", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Nanga Tilir", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Toro", "valeur": "Petites Îles de la Sonde occidentales"}
+{"entite": "Nanga Waekoe", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Waso", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Nanga Woja", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Ngangoliyo Dehua", "valeur": "Gorontalo"}
+{"entite": "Nornalup Inlet", "valeur": "Australie-Occidentale"}
+{"entite": "Novostambul’s’ke Hyrlo", "valeur": "oblast d'Odessa"}
+{"entite": "Ōhiwa Harbour", "valeur": "Baie de l'Abondance"}
+{"entite": "Oldfield Estuary", "valeur": "Australie-Occidentale"}
+{"entite": "Ölfusá", "valeur": "Suðurland"}
+{"entite": "Osen", "valeur": "Nordland"}
+{"entite": "Oyster Harbour", "valeur": "Australie-Occidentale"}
+{"entite": "Pak Nam Satun", "valeur": "Satun"}
+{"entite": "Pak Phan Khuha", "valeur": "Surat Thani"}
+{"entite": "Pak Phunphin", "valeur": "Surat Thani"}
+{"entite": "Pakuranga Creek", "valeur": "Région d'Auckland"}
+{"entite": "Pargo", "valeur": "Campeche"}
+{"entite": "Pasadero del Caoso", "valeur": "Valle"}
+{"entite": "Paso Crucero", "valeur": "Valle"}
+{"entite": "Paso Irinea", "valeur": "Choluteca"}
+{"entite": "Paso La Oscurana", "valeur": "Valle"}
+{"entite": "Paso Las Cuevitas", "valeur": "Choluteca"}
+{"entite": "Paso Playa Salada", "valeur": "Choluteca"}
+{"entite": "Peel-Harvey Estuarine System", "valeur": "Australie-Occidentale"}
+{"entite": "Peel-Harvey Estuary", "valeur": "Australie-Occidentale"}
+{"entite": "Pishchane Hyrlo", "valeur": "oblast d'Odessa"}
+{"entite": "Pittwater", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Piura mangroves", "valeur": "Piura"}
+{"entite": "La Playa", "valeur": "Campeche"}
+{"entite": "Poludenne Hyrlo", "valeur": "oblast d'Odessa"}
+{"entite": "Port Beaver", "valeur": "Lindi"}
+{"entite": "Port Hacking", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Port Stephens", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Pounawea Estuary", "valeur": "Otago"}
+{"entite": "Puerto Guararé", "valeur": "Los Santos"}
+{"entite": "Rājpuri Creek", "valeur": "Maharashtra"}
+{"entite": "réserve naturelle gérée de Rio Kapatchez", "valeur": "Boké"}
+{"entite": "Río Amayo", "valeur": "département de Chinandega"}
+{"entite": "rio Guaíba", "valeur": "Rio Grande do Sul"}
+{"entite": "Ross Creek", "valeur": "Queensland"}
+{"entite": "Rubicon Estuary", "valeur": "Tasmanie"}
+{"entite": "Semlyachik", "valeur": "kraï du Kamtchatka"}
+{"entite": "Shakhaevsky Liman", "valeur": "oblast de Rostov"}
+{"entite": "Skhidne Hyrlo", "valeur": "oblast d'Odessa"}
+{"entite": "Sladky Liman", "valeur": "région de Krasnodar"}
+{"entite": "La Soledad", "valeur": "Campeche"}
+{"entite": "St. George's River Estuary", "valeur": "Terre-Neuve-et-Labrador"}
+{"entite": "St Georges Basin (New South Wales)", "valeur": "Nouvelle-Galles du Sud"}
+{"entite": "Starostambul's'ke Hyrlo", "valeur": "oblast d'Odessa"}
+{"entite": "Stepove Hyrlo", "valeur": "oblast d'Odessa"}
+{"entite": "Sukhyy Lyman", "valeur": "oblast d'Odessa"}
+{"entite": "Tabusintac Lagoon and River Estuary", "valeur": "Nouveau-Brunswick"}
+{"entite": "Taikata Creek", "valeur": "Région d'Auckland"}
+{"entite": "Tamar", "valeur": "Tasmanie"}
+{"entite": "Teacapan", "valeur": "Nayarit"}
+{"entite": "The Saltons", "valeur": "Terre-Neuve-et-Labrador"}
+{"entite": "Tina Menor", "valeur": "Cantabrie"}
+{"entite": "Torbay Inlet", "valeur": "Australie-Occidentale"}
+{"entite": "Totapua Bolangitang", "valeur": "Sulawesi du Nord"}
+{"entite": "Tōtara Inlet", "valeur": "Région d'Auckland"}
+{"entite": "Uf Noni", "valeur": "Petites Îles de la Sonde orientales"}
+{"entite": "Upper Newport Bay", "valeur": "Californie"}
+{"entite": "Upper Waitematā Harbour", "valeur": "Région d'Auckland"}
+{"entite": "Valosen", "valeur": "Nordland"}
+{"entite": "Vasse-Wonnerup Estuary", "valeur": "Australie-Occidentale"}
+{"entite": "Vidnizhne Hyrlo", "valeur": "oblast d'Odessa"}
+{"entite": "Voyskovoy Liman", "valeur": "région de Krasnodar"}
+{"entite": "Vuelta Chiquita Estero", "valeur": "Choluteca"}
+{"entite": "Waikokopu Creek", "valeur": "Région d'Auckland"}
+{"entite": "Waimahia Creek", "valeur": "Région d'Auckland"}
+{"entite": "Waiohua Creek", "valeur": "Région d'Auckland"}
+{"entite": "Waiuku", "valeur": "Région d'Auckland"}
+{"entite": "Wellstead Estuary", "valeur": "Australie-Occidentale"}
+{"entite": "Weser estuary", "valeur": "Basse-Saxe"}
+{"entite": "Whatapaka Creek", "valeur": "Région d'Auckland"}
+{"entite": "Wilson Inlet", "valeur": "Australie-Occidentale"}
+{"entite": "Yangtze Estuary", "valeur": "Shanghaï"}
+{"entite": "Zhupanovsky Liman", "valeur": "kraï du Kamtchatka"}

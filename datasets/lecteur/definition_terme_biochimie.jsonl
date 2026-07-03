@@ -1,0 +1,4 @@
+{"_relation": "definition_terme_biochimie", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "catalyseur", "valeur": "substance qui accélère une réaction"}
+{"entite": "enzyme", "valeur": "protéine qui catalyse une réaction chimique"}
+{"entite": "substrat", "valeur": "molécule transformée par une enzyme"}

@@ -1,0 +1,8 @@
+{"_relation": "vaccin_maladie", "_categorie": "physique", "_source": "Modèle (Claude) — vaccinologie textbook curée (vaccin monovalent -> maladie ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "BCG", "valeur": "tuberculose"}
+{"entite": "vaccin antipoliomyélitique", "valeur": "poliomyélite"}
+{"entite": "vaccin antirabique", "valeur": "rage"}
+{"entite": "vaccin antitétanique", "valeur": "tétanos"}
+{"entite": "vaccin contre l'hépatite B", "valeur": "hépatite B"}
+{"entite": "vaccin contre la fièvre jaune", "valeur": "fièvre jaune"}
+{"entite": "vaccin contre la variole", "valeur": "variole"}

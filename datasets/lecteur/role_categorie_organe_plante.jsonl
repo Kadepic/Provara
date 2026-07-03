@@ -1,0 +1,3 @@
+{"_relation": "role_categorie_organe_plante", "_categorie": "physique", "_source": "Modèle (Claude) — botanique textbook curée (catégorie d'organe -> rôle ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "organe reproducteur", "valeur": "reproduction"}
+{"entite": "organe végétatif", "valeur": "nutrition et croissance"}

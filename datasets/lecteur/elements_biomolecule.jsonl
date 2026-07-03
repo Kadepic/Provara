@@ -1,0 +1,5 @@
+{"_relation": "elements_biomolecule", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (biomolécule -> éléments ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "acide nucléique", "valeur": "carbone, hydrogène, oxygène, azote, phosphore"}
+{"entite": "glucide", "valeur": "carbone, hydrogène, oxygène"}
+{"entite": "lipide", "valeur": "carbone, hydrogène, oxygène"}
+{"entite": "protéine", "valeur": "carbone, hydrogène, oxygène, azote"}

@@ -1,0 +1,3 @@
+{"_relation": "definition_type_mutation", "_categorie": "physique", "_source": "Modèle (Claude) — génétique textbook curée (type de mutation -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "mutation chromosomique", "valeur": "affecte la structure ou le nombre de chromosomes"}
+{"entite": "mutation ponctuelle", "valeur": "affecte un seul nucléotide"}

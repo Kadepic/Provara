@@ -1,0 +1,4 @@
+{"_relation": "role_type_vaisseau", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (type de vaisseau -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "artère", "valeur": "transport du sang du cœur vers les organes"}
+{"entite": "capillaire", "valeur": "échanges entre le sang et les tissus"}
+{"entite": "veine", "valeur": "retour du sang vers le cœur"}

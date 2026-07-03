@@ -1,0 +1,9 @@
+{"_relation": "usage_instrument_optique", "_categorie": "convention", "_source": "optique de référence (instrument -> usage)", "_articles": true}
+{"entite": "jumelles", "valeur": "observer de loin avec les deux yeux"}
+{"entite": "longue-vue", "valeur": "observer au loin"}
+{"entite": "loupe", "valeur": "agrandir les objets proches"}
+{"entite": "lunette astronomique", "valeur": "observer les astres"}
+{"entite": "lunettes de vue", "valeur": "corriger la vision"}
+{"entite": "microscope", "valeur": "observer l'infiniment petit"}
+{"entite": "périscope", "valeur": "voir par-dessus un obstacle"}
+{"entite": "télescope", "valeur": "observer les astres lointains"}

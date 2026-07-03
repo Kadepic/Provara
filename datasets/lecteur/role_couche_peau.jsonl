@@ -1,0 +1,4 @@
+{"_relation": "role_couche_peau", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (couche de peau -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "derme", "valeur": "soutien et sensibilité"}
+{"entite": "épiderme", "valeur": "protection"}
+{"entite": "hypoderme", "valeur": "réserve de graisse et isolation thermique"}

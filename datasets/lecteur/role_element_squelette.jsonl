@@ -1,0 +1,4 @@
+{"_relation": "role_element_squelette", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (ensemble osseux -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "cage thoracique", "valeur": "protection du cœur et des poumons"}
+{"entite": "colonne vertébrale", "valeur": "protection de la moelle épinière"}
+{"entite": "crâne", "valeur": "protection du cerveau"}

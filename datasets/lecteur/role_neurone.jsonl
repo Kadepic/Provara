@@ -1,0 +1,4 @@
+{"_relation": "role_neurone", "_categorie": "physique", "_source": "Modèle (Claude) — neurobiologie textbook curée (type de neurone -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "interneurone", "valeur": "relier les neurones entre eux"}
+{"entite": "neurone moteur", "valeur": "commander les muscles et les glandes"}
+{"entite": "neurone sensitif", "valeur": "transmettre l'information vers le système nerveux central"}

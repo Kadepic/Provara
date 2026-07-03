@@ -1,0 +1,14 @@
+{"_relation": "nom_vitamine", "_categorie": "convention", "_source": "biochimie de référence (nom chimique des vitamines) — nomenclature établie", "_articles": true}
+{"entite": "vitamine a", "valeur": "rétinol"}
+{"entite": "vitamine b1", "valeur": "thiamine"}
+{"entite": "vitamine b12", "valeur": "cobalamine"}
+{"entite": "vitamine b2", "valeur": "riboflavine"}
+{"entite": "vitamine b3", "valeur": "niacine"}
+{"entite": "vitamine b5", "valeur": "acide pantothénique"}
+{"entite": "vitamine b6", "valeur": "pyridoxine"}
+{"entite": "vitamine b8", "valeur": "biotine"}
+{"entite": "vitamine b9", "valeur": "acide folique"}
+{"entite": "vitamine c", "valeur": "acide ascorbique"}
+{"entite": "vitamine d", "valeur": "calciférol"}
+{"entite": "vitamine e", "valeur": "tocophérol"}
+{"entite": "vitamine k", "valeur": "phylloquinone"}

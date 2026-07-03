@@ -1,0 +1,4 @@
+{"_relation": "role_pigment_biologique", "_categorie": "physique", "_source": "Modèle (Claude) — biologie textbook curée (pigment -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "chlorophylle", "valeur": "absorption de la lumière pour la photosynthèse"}
+{"entite": "hémoglobine", "valeur": "transport de l'oxygène"}
+{"entite": "mélanine", "valeur": "protection contre les rayons ultraviolets"}

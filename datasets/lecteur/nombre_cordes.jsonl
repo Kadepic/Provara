@@ -1,0 +1,11 @@
+{"_relation": "nombre_cordes", "_categorie": "convention", "_source": "facture instrumentale (instrument -> nombre de cordes)", "_articles": true}
+{"entite": "alto", "valeur": "4"}
+{"entite": "balalaïka", "valeur": "3"}
+{"entite": "banjo", "valeur": "5"}
+{"entite": "contrebasse", "valeur": "4"}
+{"entite": "guitare", "valeur": "6"}
+{"entite": "guitare basse", "valeur": "4"}
+{"entite": "mandoline", "valeur": "8"}
+{"entite": "ukulélé", "valeur": "4"}
+{"entite": "violon", "valeur": "4"}
+{"entite": "violoncelle", "valeur": "4"}

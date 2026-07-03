@@ -1,0 +1,20 @@
+{"_relation": "type_reserve_graine", "_categorie": "convention", "_source": "Modèle (Claude) — agronomie textbook curée (réserve de graine ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "arachide", "valeur": "lipide"}
+{"entite": "avoine", "valeur": "amidon"}
+{"entite": "blé", "valeur": "amidon"}
+{"entite": "châtaigne", "valeur": "amidon"}
+{"entite": "colza", "valeur": "lipide"}
+{"entite": "fève", "valeur": "protéine"}
+{"entite": "haricot", "valeur": "protéine"}
+{"entite": "lentille", "valeur": "protéine"}
+{"entite": "lin", "valeur": "lipide"}
+{"entite": "maïs", "valeur": "amidon"}
+{"entite": "noisette", "valeur": "lipide"}
+{"entite": "noix", "valeur": "lipide"}
+{"entite": "orge", "valeur": "amidon"}
+{"entite": "pois", "valeur": "protéine"}
+{"entite": "pois chiche", "valeur": "protéine"}
+{"entite": "riz", "valeur": "amidon"}
+{"entite": "sésame", "valeur": "lipide"}
+{"entite": "soja", "valeur": "protéine"}
+{"entite": "tournesol", "valeur": "lipide"}

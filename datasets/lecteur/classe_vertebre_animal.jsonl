@@ -1,0 +1,143 @@
+{"_relation": "classe_vertebre_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (classe de vertébré ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aigle royal", "valeur": "oiseau"}
+{"entite": "alligator", "valeur": "reptile"}
+{"entite": "alouette", "valeur": "oiseau"}
+{"entite": "anaconda", "valeur": "reptile"}
+{"entite": "anguille", "valeur": "poisson"}
+{"entite": "anolis", "valeur": "reptile"}
+{"entite": "autruche", "valeur": "oiseau"}
+{"entite": "axolotl", "valeur": "amphibien"}
+{"entite": "babouin", "valeur": "mammifère"}
+{"entite": "baleine bleue", "valeur": "mammifère"}
+{"entite": "belette", "valeur": "mammifère"}
+{"entite": "béluga", "valeur": "mammifère"}
+{"entite": "boa", "valeur": "reptile"}
+{"entite": "brème", "valeur": "poisson"}
+{"entite": "brochet", "valeur": "poisson"}
+{"entite": "cachalot", "valeur": "mammifère"}
+{"entite": "caille", "valeur": "oiseau"}
+{"entite": "caméléon", "valeur": "reptile"}
+{"entite": "canard", "valeur": "oiseau"}
+{"entite": "carpe", "valeur": "poisson"}
+{"entite": "castor", "valeur": "mammifère"}
+{"entite": "cécilie", "valeur": "amphibien"}
+{"entite": "chauve-souris", "valeur": "mammifère"}
+{"entite": "cheval", "valeur": "mammifère"}
+{"entite": "chimpanzé", "valeur": "mammifère"}
+{"entite": "cigogne blanche", "valeur": "oiseau"}
+{"entite": "cobra royal", "valeur": "reptile"}
+{"entite": "colibri", "valeur": "oiseau"}
+{"entite": "congre", "valeur": "poisson"}
+{"entite": "corbeau", "valeur": "oiseau"}
+{"entite": "cormoran", "valeur": "oiseau"}
+{"entite": "couleuvre", "valeur": "reptile"}
+{"entite": "crapaud", "valeur": "amphibien"}
+{"entite": "crocodile du Nil", "valeur": "reptile"}
+{"entite": "crotale", "valeur": "reptile"}
+{"entite": "cygne", "valeur": "oiseau"}
+{"entite": "dauphin", "valeur": "mammifère"}
+{"entite": "dorade", "valeur": "poisson"}
+{"entite": "éléphant d'Afrique", "valeur": "mammifère"}
+{"entite": "émeu", "valeur": "oiseau"}
+{"entite": "espadon", "valeur": "poisson"}
+{"entite": "esturgeon", "valeur": "poisson"}
+{"entite": "faisan", "valeur": "oiseau"}
+{"entite": "faucon pèlerin", "valeur": "oiseau"}
+{"entite": "flamant rose", "valeur": "oiseau"}
+{"entite": "furet", "valeur": "mammifère"}
+{"entite": "gardon", "valeur": "poisson"}
+{"entite": "gavial", "valeur": "reptile"}
+{"entite": "geai", "valeur": "oiseau"}
+{"entite": "gecko", "valeur": "reptile"}
+{"entite": "girafe", "valeur": "mammifère"}
+{"entite": "glouton", "valeur": "mammifère"}
+{"entite": "gorille", "valeur": "mammifère"}
+{"entite": "grand requin blanc", "valeur": "poisson"}
+{"entite": "grenouille rousse", "valeur": "amphibien"}
+{"entite": "grenouille verte", "valeur": "amphibien"}
+{"entite": "grive", "valeur": "oiseau"}
+{"entite": "grue", "valeur": "oiseau"}
+{"entite": "guépard", "valeur": "mammifère"}
+{"entite": "hareng", "valeur": "poisson"}
+{"entite": "hérisson", "valeur": "mammifère"}
+{"entite": "hermine", "valeur": "mammifère"}
+{"entite": "héron", "valeur": "oiseau"}
+{"entite": "hibou", "valeur": "oiseau"}
+{"entite": "hippocampe", "valeur": "poisson"}
+{"entite": "hippopotame", "valeur": "mammifère"}
+{"entite": "hirondelle", "valeur": "oiseau"}
+{"entite": "hyène tachetée", "valeur": "mammifère"}
+{"entite": "iguane", "valeur": "reptile"}
+{"entite": "jaguar", "valeur": "mammifère"}
+{"entite": "kangourou", "valeur": "mammifère"}
+{"entite": "kiwi", "valeur": "oiseau"}
+{"entite": "koala", "valeur": "mammifère"}
+{"entite": "lamantin", "valeur": "mammifère"}
+{"entite": "lamproie", "valeur": "poisson"}
+{"entite": "lapin", "valeur": "mammifère"}
+{"entite": "léopard", "valeur": "mammifère"}
+{"entite": "lézard", "valeur": "reptile"}
+{"entite": "lion", "valeur": "mammifère"}
+{"entite": "loup", "valeur": "mammifère"}
+{"entite": "loutre", "valeur": "mammifère"}
+{"entite": "lynx", "valeur": "mammifère"}
+{"entite": "mamba", "valeur": "reptile"}
+{"entite": "manchot empereur", "valeur": "oiseau"}
+{"entite": "maquereau", "valeur": "poisson"}
+{"entite": "mérou", "valeur": "poisson"}
+{"entite": "mésange", "valeur": "oiseau"}
+{"entite": "moineau", "valeur": "oiseau"}
+{"entite": "morse", "valeur": "mammifère"}
+{"entite": "morue", "valeur": "poisson"}
+{"entite": "mouette", "valeur": "oiseau"}
+{"entite": "murène", "valeur": "poisson"}
+{"entite": "narval", "valeur": "mammifère"}
+{"entite": "oie", "valeur": "oiseau"}
+{"entite": "orang-outan", "valeur": "mammifère"}
+{"entite": "ornithorynque", "valeur": "mammifère"}
+{"entite": "orque", "valeur": "mammifère"}
+{"entite": "orvet", "valeur": "reptile"}
+{"entite": "ours brun", "valeur": "mammifère"}
+{"entite": "panda géant", "valeur": "mammifère"}
+{"entite": "paon", "valeur": "oiseau"}
+{"entite": "paresseux", "valeur": "mammifère"}
+{"entite": "pélican", "valeur": "oiseau"}
+{"entite": "pélobate", "valeur": "amphibien"}
+{"entite": "perche", "valeur": "poisson"}
+{"entite": "perroquet", "valeur": "oiseau"}
+{"entite": "phoque", "valeur": "mammifère"}
+{"entite": "pie", "valeur": "oiseau"}
+{"entite": "pigeon", "valeur": "oiseau"}
+{"entite": "poisson-clown", "valeur": "poisson"}
+{"entite": "poule", "valeur": "oiseau"}
+{"entite": "protée", "valeur": "amphibien"}
+{"entite": "python", "valeur": "reptile"}
+{"entite": "raie manta", "valeur": "poisson"}
+{"entite": "rainette", "valeur": "amphibien"}
+{"entite": "renard roux", "valeur": "mammifère"}
+{"entite": "requin-marteau", "valeur": "poisson"}
+{"entite": "rhinocéros blanc", "valeur": "mammifère"}
+{"entite": "rossignol", "valeur": "oiseau"}
+{"entite": "salamandre", "valeur": "amphibien"}
+{"entite": "salamandre tachetée", "valeur": "amphibien"}
+{"entite": "sardine", "valeur": "poisson"}
+{"entite": "saumon atlantique", "valeur": "poisson"}
+{"entite": "scinque", "valeur": "reptile"}
+{"entite": "silure", "valeur": "poisson"}
+{"entite": "sole", "valeur": "poisson"}
+{"entite": "sonneur", "valeur": "amphibien"}
+{"entite": "souris", "valeur": "mammifère"}
+{"entite": "thon rouge", "valeur": "poisson"}
+{"entite": "tigre", "valeur": "mammifère"}
+{"entite": "tortue marine", "valeur": "reptile"}
+{"entite": "tortue terrestre", "valeur": "reptile"}
+{"entite": "toucan", "valeur": "oiseau"}
+{"entite": "triton", "valeur": "amphibien"}
+{"entite": "truite", "valeur": "poisson"}
+{"entite": "turbot", "valeur": "poisson"}
+{"entite": "vache", "valeur": "mammifère"}
+{"entite": "varan", "valeur": "reptile"}
+{"entite": "varan de Komodo", "valeur": "reptile"}
+{"entite": "vautour", "valeur": "oiseau"}
+{"entite": "vipère", "valeur": "reptile"}
+{"entite": "zèbre", "valeur": "mammifère"}

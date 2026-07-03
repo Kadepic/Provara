@@ -1,0 +1,709 @@
+{"_relation": "code_britannica_langue", "_categorie": "convention", "_source": "Wikidata/QLever — CODE BRITANNICA DE LA LANGUE P1417", "_articles": true}
+{"entite": "a hmao", "valeur": "topic/A-Hmao-language"}
+{"entite": "abaza", "valeur": "topic/Abaza-language"}
+{"entite": "abkhaze", "valeur": "topic/Abkhaz-language"}
+{"entite": "acehnais", "valeur": "topic/Acehnese-language"}
+{"entite": "achi", "valeur": "topic/Achi-language"}
+{"entite": "adyguéen", "valeur": "topic/Adyghian-language"}
+{"entite": "afar", "valeur": "topic/Afar-language"}
+{"entite": "afrikaans", "valeur": "topic/Afrikaans-language"}
+{"entite": "agnéen", "valeur": "topic/Tocharian-A"}
+{"entite": "agul", "valeur": "topic/Agul-language"}
+{"entite": "ahom", "valeur": "topic/Ahom-language"}
+{"entite": "aïnou", "valeur": "topic/Ainu-language"}
+{"entite": "akkadien", "valeur": "topic/Akkadian-language"}
+{"entite": "akpès", "valeur": "topic/Ukaan-Akpes-languages"}
+{"entite": "albanais", "valeur": "topic/Albanian-language"}
+{"entite": "alémanique", "valeur": "topic/Alemannic"}
+{"entite": "aléoute", "valeur": "topic/Aleut-language"}
+{"entite": "algonquin", "valeur": "topic/Algonquin-language"}
+{"entite": "alioutor", "valeur": "topic/Aliutor-language"}
+{"entite": "allemand", "valeur": "topic/German-language"}
+{"entite": "allemand standard", "valeur": "topic/Standard-German-language"}
+{"entite": "alutiiq", "valeur": "topic/Pacific-Yupik-language"}
+{"entite": "amdang", "valeur": "topic/Amdang-language"}
+{"entite": "amharique", "valeur": "topic/Amharic-language"}
+{"entite": "ami", "valeur": "topic/Ami-language"}
+{"entite": "amis", "valeur": "topic/Amis-language"}
+{"entite": "amorrite", "valeur": "topic/Amorite-language"}
+{"entite": "amuzgo", "valeur": "topic/Amuzgo-language"}
+{"entite": "ancien français", "valeur": "topic/Old-French-language"}
+{"entite": "ancien japonais", "valeur": "topic/Late-Old-Japanese-language"}
+{"entite": "ancien nubien", "valeur": "topic/Old-Nubian-language"}
+{"entite": "andi", "valeur": "topic/Andi-languages"}
+{"entite": "anglais", "valeur": "topic/English-language"}
+{"entite": "anglais britannique", "valeur": "topic/British-English"}
+{"entite": "anglo-normand", "valeur": "topic/Anglo-Norman-language"}
+{"entite": "anong", "valeur": "topic/Nung-language"}
+{"entite": "arabe", "valeur": "topic/Arabic-language"}
+{"entite": "araméen palestinien chrétien", "valeur": "topic/Palestinian-Aramaic"}
+{"entite": "arménien", "valeur": "topic/Armenian-language"}
+{"entite": "arménien classique", "valeur": "topic/Grabar"}
+{"entite": "arménien occidental", "valeur": "topic/Arewmtahayeren"}
+{"entite": "aroumain", "valeur": "topic/Aromanian"}
+{"entite": "avestique", "valeur": "topic/Avestan-language"}
+{"entite": "babine", "valeur": "topic/Witsuwiten"}
+{"entite": "bactrien", "valeur": "topic/Bactrian-language"}
+{"entite": "bahnar", "valeur": "topic/Bahnar-language"}
+{"entite": "baihua", "valeur": "topic/baihua"}
+{"entite": "balinais", "valeur": "topic/Balinese-language"}
+{"entite": "baloutche", "valeur": "topic/Balochi-language"}
+{"entite": "bambara", "valeur": "topic/Bambara-language"}
+{"entite": "bamoun", "valeur": "topic/Bamum-language"}
+{"entite": "bari", "valeur": "topic/Bari-language"}
+{"entite": "bas allemand", "valeur": "topic/Low-German-language"}
+{"entite": "bas-sorabe", "valeur": "topic/Lower-Sorbian-language"}
+{"entite": "Basic English", "valeur": "topic/Basic-English-artificial-language"}
+{"entite": "basque", "valeur": "topic/Basque-language"}
+{"entite": "bassa", "valeur": "topic/Bassa-language"}
+{"entite": "batak toba", "valeur": "topic/Toba-Batak-language"}
+{"entite": "bathari", "valeur": "topic/Bathari"}
+{"entite": "bats", "valeur": "topic/Bats-language"}
+{"entite": "bavarois", "valeur": "topic/Bavarian-language"}
+{"entite": "bedja", "valeur": "topic/Beja-language"}
+{"entite": "bengali", "valeur": "topic/Bengali-language"}
+{"entite": "bhodjpouri", "valeur": "topic/Bhojpuri-language"}
+{"entite": "biélorusse", "valeur": "topic/Belarusian-language"}
+{"entite": "birgid", "valeur": "topic/Birked-language"}
+{"entite": "birman", "valeur": "topic/Burmese-language"}
+{"entite": "bodo", "valeur": "topic/Bodo-language"}
+{"entite": "bohaïrique", "valeur": "topic/Bohairic"}
+{"entite": "bokmål", "valeur": "topic/Bokmal"}
+{"entite": "Bono", "valeur": "topic/Brong-language"}
+{"entite": "boudoukh", "valeur": "topic/Budukh-language"}
+{"entite": "bouguinais", "valeur": "topic/Buginese-language"}
+{"entite": "bouriate", "valeur": "topic/Buryat-language"}
+{"entite": "bourouchaski", "valeur": "topic/Burushaski-language"}
+{"entite": "brahoui", "valeur": "topic/Brahui-language"}
+{"entite": "braj Bhasha", "valeur": "topic/Braj-Bhasha-language"}
+{"entite": "breton", "valeur": "topic/Breton-language"}
+{"entite": "bughotu", "valeur": "topic/Bugotu-language"}
+{"entite": "burunge", "valeur": "topic/Burunge"}
+{"entite": "cachemiri", "valeur": "topic/Kashmiri-language"}
+{"entite": "cachoube", "valeur": "topic/Kashubian-language"}
+{"entite": "cakchiquel", "valeur": "topic/Kaqchikel-language"}
+{"entite": "cambrien", "valeur": "topic/Cumbric-language"}
+{"entite": "cara", "valeur": "topic/Caranqui"}
+{"entite": "carélien", "valeur": "topic/Karelian-language"}
+{"entite": "carien", "valeur": "topic/Carian-language"}
+{"entite": "catalan", "valeur": "topic/Catalan-language"}
+{"entite": "catawba", "valeur": "topic/Catawba-language"}
+{"entite": "cayuse", "valeur": "topic/Cayuse-language"}
+{"entite": "cébouano", "valeur": "topic/Cebuano-language"}
+{"entite": "ch'ol", "valeur": "topic/Chol-language"}
+{"entite": "cham", "valeur": "topic/Cham-language"}
+{"entite": "chamorro", "valeur": "topic/Chamorro-language"}
+{"entite": "chaoui", "valeur": "topic/Shawiya"}
+{"entite": "cherokee", "valeur": "topic/Cherokee-language"}
+{"entite": "chewa", "valeur": "topic/Chewa-language"}
+{"entite": "chichimèque", "valeur": "topic/Chichimeca-language"}
+{"entite": "chinois", "valeur": "topic/Chinese-languages"}
+{"entite": "chinois classique", "valeur": "topic/wenyan"}
+{"entite": "chinois médiéval", "valeur": "topic/Middle-Chinese-language"}
+{"entite": "chinook", "valeur": "topic/Chinook-Jargon"}
+{"entite": "chipaya", "valeur": "topic/Chipaya-language"}
+{"entite": "chiyao", "valeur": "topic/Yao-language"}
+{"entite": "chleuh", "valeur": "topic/Shilha-language"}
+{"entite": "chontal du Tabasco", "valeur": "topic/Chontal"}
+{"entite": "chorasmien", "valeur": "topic/Khwarezmian-language"}
+{"entite": "comanche", "valeur": "topic/Comanche-people"}
+{"entite": "comorien", "valeur": "topic/Comorian-language"}
+{"entite": "copte", "valeur": "topic/Coptic-language"}
+{"entite": "cora", "valeur": "topic/Cora-language"}
+{"entite": "coréen", "valeur": "topic/Korean-language"}
+{"entite": "cornique", "valeur": "topic/Cornish-language"}
+{"entite": "corse", "valeur": "topic/Corsican-language"}
+{"entite": "créole barbadien", "valeur": "topic/Bajan"}
+{"entite": "créole haïtien", "valeur": "topic/Haitian-Creole"}
+{"entite": "créole hawaïen", "valeur": "topic/Hawaiian-Creole-English"}
+{"entite": "créole hollandais de Berbice", "valeur": "topic/Berbice-language"}
+{"entite": "créole louisianais", "valeur": "topic/Louisiana-Creole"}
+{"entite": "créole mauricien", "valeur": "topic/Mauritian-Creole"}
+{"entite": "cri", "valeur": "topic/Cree-language"}
+{"entite": "cuitlatèque", "valeur": "topic/Cuitlatec-language"}
+{"entite": "dakota", "valeur": "topic/Dakota-language"}
+{"entite": "dano-norvégien", "valeur": "topic/Dano-Norwegian-language"}
+{"entite": "danois", "valeur": "topic/Danish-language"}
+{"entite": "dari", "valeur": "topic/Dari-language"}
+{"entite": "daur", "valeur": "topic/Daur-language"}
+{"entite": "defaka", "valeur": "topic/Defaka-language"}
+{"entite": "dinka", "valeur": "topic/Dinka-language"}
+{"entite": "dioula", "valeur": "topic/Dyula-language"}
+{"entite": "dogon", "valeur": "topic/Dogon-language"}
+{"entite": "dogri", "valeur": "topic/Dogri-language"}
+{"entite": "dongxiang", "valeur": "topic/Santa-language"}
+{"entite": "duruwa", "valeur": "topic/Parji-language"}
+{"entite": "dyirbal", "valeur": "topic/Dyirbal"}
+{"entite": "ebira", "valeur": "topic/Ebira-language"}
+{"entite": "éblaïte", "valeur": "topic/Eblaite-language"}
+{"entite": "écossais", "valeur": "topic/Scots-language"}
+{"entite": "écriture de l'Indus", "valeur": "topic/Harappan-script"}
+{"entite": "édo", "valeur": "topic/Edo-language"}
+{"entite": "efik", "valeur": "topic/Efik-language"}
+{"entite": "égyptien ancien", "valeur": "topic/Egyptian-language"}
+{"entite": "énètse", "valeur": "topic/Enets-language"}
+{"entite": "enga", "valeur": "topic/Enga-language"}
+{"entite": "enggano", "valeur": "topic/Enggano-language"}
+{"entite": "erzya", "valeur": "topic/Erzya-language"}
+{"entite": "espagnol", "valeur": "topic/Spanish-language"}
+{"entite": "espéranto", "valeur": "topic/Esperanto"}
+{"entite": "estonien", "valeur": "topic/Estonian-language"}
+{"entite": "étrusque", "valeur": "topic/Etruscan-language"}
+{"entite": "evenki", "valeur": "topic/Evenk-language"}
+{"entite": "falisque", "valeur": "topic/Faliscan-language"}
+{"entite": "féroïen", "valeur": "topic/Faroese-language"}
+{"entite": "fidjien", "valeur": "topic/Fijian-language"}
+{"entite": "fidjien occidental", "valeur": "topic/Bauan-Fijian"}
+{"entite": "finnois", "valeur": "topic/Finnish-language"}
+{"entite": "fon-gbe", "valeur": "topic/Fon-language"}
+{"entite": "forro", "valeur": "topic/Saotomense"}
+{"entite": "français", "valeur": "topic/French-language"}
+{"entite": "francien", "valeur": "topic/Francien-dialect"}
+{"entite": "francique rhénan", "valeur": "topic/Rhenish-Franconian"}
+{"entite": "francique ripuaire", "valeur": "topic/Ripuarian-language"}
+{"entite": "franco-italien", "valeur": "topic/Franco-Italian-language"}
+{"entite": "francoprovençal", "valeur": "topic/Franco-Provencal-dialect"}
+{"entite": "frioulan", "valeur": "topic/Friulian-language"}
+{"entite": "frison occidental", "valeur": "topic/West-Frisian-language"}
+{"entite": "frison oriental", "valeur": "topic/East-Frisian-language"}
+{"entite": "frison septentrional", "valeur": "topic/North-Frisian-language"}
+{"entite": "gǀui", "valeur": "topic/Gui-language"}
+{"entite": "gaélique écossais", "valeur": "topic/Scots-Gaelic-language"}
+{"entite": "galaïco-portugais", "valeur": "topic/Galician-Portuguese"}
+{"entite": "galicien", "valeur": "topic/Galician-language"}
+{"entite": "gallois", "valeur": "topic/Welsh-language"}
+{"entite": "gan", "valeur": "topic/Gan-language"}
+{"entite": "gapapaiwa", "valeur": "topic/Gapapaiwa-language"}
+{"entite": "garo", "valeur": "topic/Garo-language"}
+{"entite": "gaulois", "valeur": "topic/Gaulish-language"}
+{"entite": "gbagyi", "valeur": "topic/Gbagyi-language"}
+{"entite": "gedaged", "valeur": "topic/Graged-language"}
+{"entite": "géorgien", "valeur": "topic/Georgian-language"}
+{"entite": "gimira", "valeur": "topic/Bench-language"}
+{"entite": "gitksan", "valeur": "topic/Gitksan"}
+{"entite": "gondi", "valeur": "topic/Gondi-language"}
+{"entite": "gotique", "valeur": "topic/Gothic-language"}
+{"entite": "grec", "valeur": "topic/Greek-language"}
+{"entite": "grec ancien", "valeur": "topic/Ancient-Greek-language"}
+{"entite": "grec démotique", "valeur": "topic/Demotic-Greek-language"}
+{"entite": "grec moderne", "valeur": "topic/Modern-Greek-language"}
+{"entite": "grec pontique", "valeur": "topic/Pontic-Greek"}
+{"entite": "guanche", "valeur": "topic/Guanche-language"}
+{"entite": "guarani", "valeur": "topic/Guarani-language"}
+{"entite": "guèze", "valeur": "topic/Geez-language"}
+{"entite": "gujarati", "valeur": "topic/Gujarati-language"}
+{"entite": "gujari", "valeur": "topic/Gujari-language"}
+{"entite": "gule", "valeur": "topic/Gule"}
+{"entite": "gullah", "valeur": "topic/Gullah-language"}
+{"entite": "gutob", "valeur": "topic/Gutob-language"}
+{"entite": "hadiyya", "valeur": "topic/Hadiyya"}
+{"entite": "hadza", "valeur": "topic/Hadza-language"}
+{"entite": "haïda", "valeur": "topic/Haida-language"}
+{"entite": "hainanais", "valeur": "topic/Hainanese-language"}
+{"entite": "hakka", "valeur": "topic/Hakka-language"}
+{"entite": "halang", "valeur": "topic/Halang-language"}
+{"entite": "hani", "valeur": "topic/Hani-language"}
+{"entite": "haoussa", "valeur": "topic/Hausa-language"}
+{"entite": "harari", "valeur": "topic/Hareri-language"}
+{"entite": "harsusi", "valeur": "topic/Harsusi"}
+{"entite": "hatti", "valeur": "topic/Hattian-language"}
+{"entite": "haut-allemand précoce", "valeur": "topic/New-High-German-language"}
+{"entite": "haut-sorabe", "valeur": "topic/Upper-Sorbian-language"}
+{"entite": "hawaïen", "valeur": "topic/Hawaiian-language"}
+{"entite": "hébreu", "valeur": "topic/Hebrew-language"}
+{"entite": "hébreu médiéval", "valeur": "topic/Medieval-Hebrew-language"}
+{"entite": "hébreu moderne", "valeur": "topic/Modern-Hebrew-language"}
+{"entite": "heiban", "valeur": "topic/Heiban-languages"}
+{"entite": "hidatsa", "valeur": "topic/Hidatsa-language"}
+{"entite": "hiligaïnon", "valeur": "topic/Hiligaynon-language"}
+{"entite": "hindko", "valeur": "topic/Hindko-language"}
+{"entite": "hindoustani", "valeur": "topic/Hindustani-language"}
+{"entite": "hiri motou", "valeur": "topic/Hiri-Motu"}
+{"entite": "hmong", "valeur": "topic/Hmong-language"}
+{"entite": "hongrois", "valeur": "topic/Hungarian-language"}
+{"entite": "hopi", "valeur": "topic/Hopi-language"}
+{"entite": "hourrite", "valeur": "topic/Hurrian-language"}
+{"entite": "hozo", "valeur": "topic/Hozo-language"}
+{"entite": "huastèque", "valeur": "topic/Huastec-language"}
+{"entite": "huave", "valeur": "topic/Huave-language"}
+{"entite": "huichol", "valeur": "topic/Huichol-language"}
+{"entite": "hupa", "valeur": "topic/Hupa-language"}
+{"entite": "iakoute", "valeur": "topic/Sakha-language"}
+{"entite": "iban", "valeur": "topic/Iban-language"}
+{"entite": "ibère", "valeur": "topic/Iberian-language"}
+{"entite": "ibibio", "valeur": "topic/Ibibio-language"}
+{"entite": "ido", "valeur": "topic/Ido"}
+{"entite": "idoma", "valeur": "topic/Idoma-language"}
+{"entite": "igala", "valeur": "topic/Igala-language"}
+{"entite": "ilocano", "valeur": "topic/Ilocano-language"}
+{"entite": "indo-européen commun", "valeur": "topic/Proto-Indo-European-language"}
+{"entite": "indonésien", "valeur": "topic/Indonesian-languages"}
+{"entite": "ingouche", "valeur": "topic/Ingush-language"}
+{"entite": "ingrien", "valeur": "topic/Ingrian-language"}
+{"entite": "interglossa", "valeur": "topic/Interglossa"}
+{"entite": "interlingua", "valeur": "topic/Interlingua"}
+{"entite": "inuinnaqtun", "valeur": "topic/Inuinnaqtun"}
+{"entite": "irlandais", "valeur": "topic/Irish-language"}
+{"entite": "irula", "valeur": "topic/Irula-language"}
+{"entite": "islandais", "valeur": "topic/Icelandic-language"}
+{"entite": "istriote", "valeur": "topic/Istriot-language"}
+{"entite": "italien", "valeur": "topic/Italian-language"}
+{"entite": "itelmène", "valeur": "topic/Itelmen-language"}
+{"entite": "itsekiri", "valeur": "topic/Itsekiri-language"}
+{"entite": "japonais moyen tardif", "valeur": "topic/Middle-Japanese-language"}
+{"entite": "jaraï", "valeur": "topic/Jarai-language"}
+{"entite": "jargon mobilien", "valeur": "topic/Mobilian-Jargon"}
+{"entite": "javanais", "valeur": "topic/Javanese-language"}
+{"entite": "jebero", "valeur": "topic/Jebero-language"}
+{"entite": "jinghpo", "valeur": "topic/Jingpo-language"}
+{"entite": "ju", "valeur": "topic/Ju-language"}
+{"entite": "judéo-araméen galiléen", "valeur": "topic/Palestinian-Aramaic"}
+{"entite": "jurchen", "valeur": "topic/Juchen-language"}
+{"entite": "kabarde", "valeur": "topic/Kabardian-language"}
+{"entite": "kabyle", "valeur": "topic/Kabyle-language"}
+{"entite": "kachkaï", "valeur": "topic/Qashqai"}
+{"entite": "kaïkavien", "valeur": "topic/Kajkavian"}
+{"entite": "kalabari", "valeur": "topic/Kalabari-language"}
+{"entite": "kali'na", "valeur": "topic/Carib-language"}
+{"entite": "kamasse", "valeur": "topic/Kamas-language"}
+{"entite": "kannara", "valeur": "topic/Kannada-language"}
+{"entite": "kanouri manga", "valeur": "topic/Manga-Kanuri"}
+{"entite": "kansai-ben", "valeur": "topic/Kinki-Japanese-dialect"}
+{"entite": "karaïm", "valeur": "topic/Karaim-language"}
+{"entite": "karakalpak", "valeur": "topic/Kara-Kalpak-language"}
+{"entite": "karakhanid", "valeur": "topic/Qarakhanid-language"}
+{"entite": "karanga", "valeur": "topic/Karanga-language"}
+{"entite": "karatchaï-balkar", "valeur": "topic/Karachay-Balkar-language"}
+{"entite": "karbi", "valeur": "topic/Karbi-language"}
+{"entite": "karuk", "valeur": "topic/Karok-language"}
+{"entite": "katharévousa", "valeur": "topic/Katharevusa-Greek-language"}
+{"entite": "kazakh", "valeur": "topic/Kazak-language"}
+{"entite": "kerek", "valeur": "topic/Kerek-language"}
+{"entite": "kete", "valeur": "topic/Ket-language"}
+{"entite": "khalaj", "valeur": "topic/Khalaj-language"}
+{"entite": "khalkha", "valeur": "topic/Khalkha-language"}
+{"entite": "khanty", "valeur": "topic/Khant-language"}
+{"entite": "khasi", "valeur": "topic/Khasi-language"}
+{"entite": "khinalug", "valeur": "topic/Khinalug-language"}
+{"entite": "khmer", "valeur": "topic/Khmer-language"}
+{"entite": "khmu", "valeur": "topic/Khmu-language"}
+{"entite": "khoekhoe", "valeur": "topic/Khoekhoe-languages"}
+{"entite": "khotanais", "valeur": "topic/Saka-language"}
+{"entite": "khowar", "valeur": "topic/Khowari-language"}
+{"entite": "khwe", "valeur": "topic/Kxoe"}
+{"entite": "kikongo", "valeur": "topic/Kongo-language"}
+{"entite": "kikongo de San Salvador", "valeur": "topic/San-Salvador-Kongo-language"}
+{"entite": "kimbundu", "valeur": "topic/Kimbundu-language"}
+{"entite": "kinyarwanda", "valeur": "topic/Rwanda-language"}
+{"entite": "kirghize", "valeur": "topic/Kyrgyz-language"}
+{"entite": "kirundi", "valeur": "topic/Rundi-language"}
+{"entite": "kituba", "valeur": "topic/Kikongo-Kituba"}
+{"entite": "klamath", "valeur": "topic/Klamath-Modoc-language"}
+{"entite": "kodagu", "valeur": "topic/Kodagu-language"}
+{"entite": "koinè", "valeur": "topic/Koine-Greek-language"}
+{"entite": "kolami", "valeur": "topic/Kolami-language"}
+{"entite": "komi", "valeur": "topic/Komi-language"}
+{"entite": "komi-permiak", "valeur": "topic/Permyak-language"}
+{"entite": "konkani", "valeur": "topic/Konkani-language"}
+{"entite": "konso", "valeur": "topic/Konso"}
+{"entite": "koriak", "valeur": "topic/Koryak-language"}
+{"entite": "korku", "valeur": "topic/Korku-language"}
+{"entite": "kota", "valeur": "topic/Kota-language"}
+{"entite": "kotte", "valeur": "topic/Kott-language"}
+{"entite": "koutchéen", "valeur": "topic/Tocharian-B"}
+{"entite": "kresh", "valeur": "topic/Gbaya-language"}
+{"entite": "krio", "valeur": "topic/Krio"}
+{"entite": "kryz", "valeur": "topic/Kryz-language"}
+{"entite": "kuanua", "valeur": "topic/Tolai-language"}
+{"entite": "kui", "valeur": "topic/Kui-language"}
+{"entite": "kuna", "valeur": "topic/Cuna-language"}
+{"entite": "kung", "valeur": "topic/Northern-Khoisan-languages"}
+{"entite": "kunza", "valeur": "topic/Cunza-language"}
+{"entite": "kurde", "valeur": "topic/Kurdish-language"}
+{"entite": "kurukh", "valeur": "topic/Kurukh-language"}
+{"entite": "kurumba", "valeur": "topic/Kurumba-language"}
+{"entite": "kuvi", "valeur": "topic/Kuwi-language"}
+{"entite": "kuy", "valeur": "topic/Souei-language"}
+{"entite": "ladin", "valeur": "topic/Ladin-language"}
+{"entite": "lahu", "valeur": "topic/Lahu-language"}
+{"entite": "lak", "valeur": "topic/Lak-language"}
+{"entite": "lakota", "valeur": "topic/Lakota"}
+{"entite": "lamet", "valeur": "topic/Lamet-languages"}
+{"entite": "landoma", "valeur": "topic/Landuma-language"}
+{"entite": "langue des signes américaine", "valeur": "topic/American-Sign-Language"}
+{"entite": "langue des signes française", "valeur": "topic/French-Sign-Language"}
+{"entite": "langues anatoliennes", "valeur": "topic/Anatolian-languages"}
+{"entite": "langues bicol", "valeur": "topic/Bicol-language"}
+{"entite": "langues cahitiques", "valeur": "topic/Cahita-language"}
+{"entite": "langues chamito-sémitiques", "valeur": "topic/Afro-Asiatic-languages"}
+{"entite": "langues chinantèques", "valeur": "topic/Chinantecan-languages"}
+{"entite": "langues des signes des Indiens des Plaines", "valeur": "topic/Plains-Indian-sign-language"}
+{"entite": "langues hmong", "valeur": "topic/Hmongic-languages"}
+{"entite": "langues illyriennes", "valeur": "topic/Illyrian-language"}
+{"entite": "langues jicaques", "valeur": "topic/Jicaque-language"}
+{"entite": "langues lencas", "valeur": "topic/Lencan-language"}
+{"entite": "langues nostratiques", "valeur": "topic/Nostratic-hypothesis"}
+{"entite": "langues scythes", "valeur": "topic/Scytho-Sarmatian-language"}
+{"entite": "langues tasmaniennes", "valeur": "topic/Tasmanian-languages"}
+{"entite": "langues tharuïques", "valeur": "topic/Tharu"}
+{"entite": "langues tokhariennes", "valeur": "topic/Tocharian-languages"}
+{"entite": "langues touarègues", "valeur": "topic/Tamashek-language"}
+{"entite": "langues yokuts", "valeur": "topic/Yokutsan-languages"}
+{"entite": "langues zapotèques", "valeur": "topic/Zapotec-language"}
+{"entite": "lao", "valeur": "topic/Lao-language"}
+{"entite": "latin", "valeur": "topic/Latin-language"}
+{"entite": "latin vulgaire", "valeur": "topic/Vulgar-Latin"}
+{"entite": "laze", "valeur": "topic/Laz-language"}
+{"entite": "letton", "valeur": "topic/Latvian-language"}
+{"entite": "ligure ancien", "valeur": "topic/Ligurian-language"}
+{"entite": "lingala", "valeur": "topic/Lingala-language"}
+{"entite": "língua geral", "valeur": "topic/lingua-geral"}
+{"entite": "lissou", "valeur": "topic/Lisu-language"}
+{"entite": "lituanien", "valeur": "topic/Lithuanian-language"}
+{"entite": "live", "valeur": "topic/Livonian-language"}
+{"entite": "llanito", "valeur": "topic/Yanito"}
+{"entite": "loglan", "valeur": "topic/LOGLAN"}
+{"entite": "logudorais", "valeur": "topic/Logudorese"}
+{"entite": "louvite", "valeur": "topic/Luwian-language"}
+{"entite": "louvite cunéiforme", "valeur": "topic/Cuneiform-Luwian"}
+{"entite": "lucumí", "valeur": "topic/Lucumi-language"}
+{"entite": "lude", "valeur": "topic/Ludic-language"}
+{"entite": "lugbara", "valeur": "topic/Lugbara-language"}
+{"entite": "luo", "valeur": "topic/Luo-language"}
+{"entite": "luxembourgeois", "valeur": "topic/Luxembourgish-language"}
+{"entite": "lycien", "valeur": "topic/Lycian-language"}
+{"entite": "lydien", "valeur": "topic/Lydian-language"}
+{"entite": "maa", "valeur": "topic/Masai-language"}
+{"entite": "maba", "valeur": "topic/Maba-language"}
+{"entite": "macédonien", "valeur": "topic/Macedonian-language"}
+{"entite": "madourais", "valeur": "topic/Madurese-language"}
+{"entite": "magahi", "valeur": "topic/Magahi-language"}
+{"entite": "maisin", "valeur": "topic/Maisin-language"}
+{"entite": "maïthili", "valeur": "topic/Maithili-language"}
+{"entite": "makua", "valeur": "topic/Makua-language"}
+{"entite": "malais", "valeur": "topic/Malay-language"}
+{"entite": "malayâlam", "valeur": "topic/Malayalam-language"}
+{"entite": "maldivien", "valeur": "topic/Dhivehi-language"}
+{"entite": "malgache", "valeur": "topic/Malagasy-languages"}
+{"entite": "malinké", "valeur": "topic/Malinke-language"}
+{"entite": "maltais", "valeur": "topic/Maltese-language"}
+{"entite": "malvi", "valeur": "topic/Malvi-language"}
+{"entite": "mandarin", "valeur": "topic/Mandarin-language"}
+{"entite": "mandarin standard", "valeur": "topic/Modern-Standard-Chinese-language"}
+{"entite": "mandchou", "valeur": "topic/Manchu-language"}
+{"entite": "mandéen", "valeur": "topic/Mandaean-language"}
+{"entite": "mang", "valeur": "topic/Mang-language"}
+{"entite": "manggarai", "valeur": "topic/Manggarai-language"}
+{"entite": "mannois", "valeur": "topic/Manx-language"}
+{"entite": "mansi", "valeur": "topic/Mansi-language"}
+{"entite": "māori", "valeur": "topic/Maori-language"}
+{"entite": "marathi", "valeur": "topic/Marathi-language"}
+{"entite": "mari", "valeur": "topic/Mari-language"}
+{"entite": "marvari", "valeur": "topic/Marwari-language"}
+{"entite": "mazahua", "valeur": "topic/Mazahua-language"}
+{"entite": "mehri", "valeur": "topic/Mahri"}
+{"entite": "meitei", "valeur": "topic/Manipuri-language"}
+{"entite": "méroïtique", "valeur": "topic/Meroitic-language"}
+{"entite": "mewati", "valeur": "topic/Mewati-language"}
+{"entite": "mimi", "valeur": "topic/Mimi-language"}
+{"entite": "minangkabau", "valeur": "topic/Minangkabau-language"}
+{"entite": "minbei", "valeur": "topic/Northern-Min-language"}
+{"entite": "minéen", "valeur": "topic/Minaean-language"}
+{"entite": "mingrélien", "valeur": "topic/Mingrelian-language"}
+{"entite": "minnan", "valeur": "topic/Southern-Min-language"}
+{"entite": "mnong", "valeur": "topic/Mnong-language"}
+{"entite": "mnong central", "valeur": "topic/Central-Mnong-language"}
+{"entite": "moghol", "valeur": "topic/Mogol-language"}
+{"entite": "moksa", "valeur": "topic/Moksha-language"}
+{"entite": "molala", "valeur": "topic/Molale-language"}
+{"entite": "môn", "valeur": "topic/Mon-language"}
+{"entite": "mongol", "valeur": "topic/Mongol-language"}
+{"entite": "mongol classique", "valeur": "topic/Classical-Mongolian"}
+{"entite": "monguor", "valeur": "topic/Monguor-language"}
+{"entite": "monténégrin", "valeur": "topic/Montenegrin-language"}
+{"entite": "mooré", "valeur": "topic/Moore-language"}
+{"entite": "mota", "valeur": "topic/Mota-language"}
+{"entite": "motu", "valeur": "topic/Motu-language"}
+{"entite": "moyen anglais", "valeur": "topic/Middle-English-language"}
+{"entite": "moyen bas allemand", "valeur": "topic/Middle-Low-German"}
+{"entite": "moyen coréen", "valeur": "topic/Middle-Korean-language"}
+{"entite": "moyen haut-allemand", "valeur": "topic/Middle-High-German-language"}
+{"entite": "moyen mongol", "valeur": "topic/Middle-Mongolian-language"}
+{"entite": "moyen-perse", "valeur": "topic/Middle-Persian-language"}
+{"entite": "mozarabe", "valeur": "topic/Mozarabic-language"}
+{"entite": "mpi", "valeur": "topic/Mpi-language"}
+{"entite": "mru", "valeur": "topic/Mru-language"}
+{"entite": "muchik", "valeur": "topic/Yunca-language"}
+{"entite": "mumuye", "valeur": "topic/Mumuye-language"}
+{"entite": "munji", "valeur": "topic/Yidgha-Munji-languages"}
+{"entite": "muong", "valeur": "topic/Muong-language"}
+{"entite": "mycénien", "valeur": "topic/Mycenaean-language"}
+{"entite": "nabatéen", "valeur": "topic/Nabataean-language"}
+{"entite": "nahuatl", "valeur": "topic/Nahuatl-language"}
+{"entite": "nahuatl classique", "valeur": "topic/Nahuatl"}
+{"entite": "nama", "valeur": "topic/Nama-language"}
+{"entite": "nauruan", "valeur": "topic/Nauruan-language"}
+{"entite": "navajo", "valeur": "topic/Navajo-language"}
+{"entite": "naxi", "valeur": "topic/Naxi-language"}
+{"entite": "néerlandais", "valeur": "topic/Dutch-language"}
+{"entite": "néerlandais standard", "valeur": "topic/Standard-Dutch-language"}
+{"entite": "nénètse", "valeur": "topic/Nenets-language"}
+{"entite": "népalais", "valeur": "topic/Nepali-language"}
+{"entite": "newari", "valeur": "topic/Newari-language"}
+{"entite": "ngäbere", "valeur": "topic/Guaymi-language"}
+{"entite": "ngadha", "valeur": "topic/Ngadha-language"}
+{"entite": "nganassane", "valeur": "topic/Nganasan-language"}
+{"entite": "nivkhe", "valeur": "topic/Nivkh-language"}
+{"entite": "normand", "valeur": "topic/Norman-language"}
+{"entite": "norvégien", "valeur": "topic/Norwegian-language"}
+{"entite": "novial", "valeur": "topic/Novial"}
+{"entite": "nubi", "valeur": "topic/Kinubi"}
+{"entite": "nupe", "valeur": "topic/Nupe-language"}
+{"entite": "nyang'i", "valeur": "topic/Nyangi-languages"}
+{"entite": "nyima", "valeur": "topic/Nyima-language"}
+{"entite": "nynorsk", "valeur": "topic/New-Norwegian-language"}
+{"entite": "occitan", "valeur": "topic/Occitan-language"}
+{"entite": "oïrate", "valeur": "topic/Oyrat-language"}
+{"entite": "ojibwé", "valeur": "topic/Ojibwa-language"}
+{"entite": "olonetsien", "valeur": "topic/Olonets-language"}
+{"entite": "ombrien", "valeur": "topic/Umbrian-language"}
+{"entite": "oriya", "valeur": "topic/Oriya-language"}
+{"entite": "oromo", "valeur": "topic/Oromo-language"}
+{"entite": "osque", "valeur": "topic/Oscan-language"}
+{"entite": "ossète", "valeur": "topic/Ossetic-language"}
+{"entite": "oubykh", "valeur": "topic/Ubykh-language"}
+{"entite": "oudi", "valeur": "topic/Udi-language"}
+{"entite": "oudmourte", "valeur": "topic/Udmurt-language"}
+{"entite": "ougaritique", "valeur": "topic/Ugaritic-language"}
+{"entite": "ouïghour", "valeur": "topic/Uighur-language"}
+{"entite": "ourdou", "valeur": "topic/Urdu-language"}
+{"entite": "ouzbek", "valeur": "topic/Uzbek-language"}
+{"entite": "pachto", "valeur": "topic/Pashto-language"}
+{"entite": "paez", "valeur": "topic/Paez"}
+{"entite": "paiwan", "valeur": "topic/Paiwan-language"}
+{"entite": "palaïte", "valeur": "topic/Palaic-language"}
+{"entite": "palau", "valeur": "topic/Palauan-language"}
+{"entite": "pampangue", "valeur": "topic/Kapampangan-language"}
+{"entite": "pangassinais", "valeur": "topic/Pangasinan-language"}
+{"entite": "papiamento", "valeur": "topic/Papiamentu"}
+{"entite": "parthe", "valeur": "topic/Parthian-language"}
+{"entite": "pech", "valeur": "topic/Paya-language"}
+{"entite": "pendjabi", "valeur": "topic/Punjabi-language"}
+{"entite": "persan", "valeur": "topic/Persian-language"}
+{"entite": "peul", "valeur": "topic/Fula-language"}
+{"entite": "phénicien", "valeur": "topic/Phoenician-language"}
+{"entite": "phrygien", "valeur": "topic/Phrygian-language"}
+{"entite": "picte", "valeur": "topic/Pictish-language"}
+{"entite": "pidgin chinois", "valeur": "topic/Chinese-Pidgin-English"}
+{"entite": "Pidgins mélanésiens", "valeur": "topic/Melanesian-pidgins"}
+{"entite": "pipil", "valeur": "topic/Pipil-language"}
+{"entite": "pisidien", "valeur": "topic/Pisidian-language"}
+{"entite": "pohnpei", "valeur": "topic/Pohnpeian"}
+{"entite": "polabe", "valeur": "topic/Polabian-language"}
+{"entite": "polonais", "valeur": "topic/Polish-language"}
+{"entite": "portugais", "valeur": "topic/Portuguese-language"}
+{"entite": "portuñol", "valeur": "topic/Portunol"}
+{"entite": "poumpokole", "valeur": "topic/Pumpokol-language"}
+{"entite": "prakrit", "valeur": "topic/Prakrit-languages"}
+{"entite": "proto-afroasiatique", "valeur": "topic/Proto-Afro-Asiatic-language"}
+{"entite": "proto-austronésien", "valeur": "topic/Proto-Austronesian-language"}
+{"entite": "proto-celtique", "valeur": "topic/Proto-Celtic-language"}
+{"entite": "proto-dravidien", "valeur": "topic/Proto-Dravidian-language"}
+{"entite": "proto-germanique", "valeur": "topic/Proto-Germanic-language"}
+{"entite": "proto-kartvélien", "valeur": "topic/Proto-Kartvelian-language"}
+{"entite": "proto-malayo-polynésien", "valeur": "topic/Proto-Malayo-Polynesian-language"}
+{"entite": "proto-mongol", "valeur": "topic/Old-Mongolian-language"}
+{"entite": "proto-océanien", "valeur": "topic/Proto-Oceanic-language"}
+{"entite": "proto-ouralique", "valeur": "topic/Proto-Uralic-language"}
+{"entite": "proto-roman", "valeur": "topic/Proto-Romance"}
+{"entite": "proto-sémitique", "valeur": "topic/Proto-Semitic-language"}
+{"entite": "proto-sino-tibétain", "valeur": "topic/Proto-Sino-Tibetan-language"}
+{"entite": "proto-slave", "valeur": "topic/Proto-Slavic-language"}
+{"entite": "proto-tibéto-birman", "valeur": "topic/Proto-Tibeto-Burman-language"}
+{"entite": "punique", "valeur": "topic/Punic-language"}
+{"entite": "qatabanien", "valeur": "topic/Qatabanian"}
+{"entite": "quiché", "valeur": "topic/Kiche-language"}
+{"entite": "rajasthanais", "valeur": "topic/Rajasthani-languages"}
+{"entite": "rejang", "valeur": "topic/Rejang-language"}
+{"entite": "rifain", "valeur": "topic/Tarifit"}
+{"entite": "romanche", "valeur": "topic/Romansh-language"}
+{"entite": "romani", "valeur": "topic/Romany-languages"}
+{"entite": "rotuman", "valeur": "topic/Rotuman-language"}
+{"entite": "roumain", "valeur": "topic/Romanian-language"}
+{"entite": "routoul", "valeur": "topic/Rutul-language"}
+{"entite": "roviana", "valeur": "topic/Roviana-language"}
+{"entite": "russe", "valeur": "topic/Russian-language"}
+{"entite": "rusyn", "valeur": "topic/Rusyn-dialect"}
+{"entite": "sabéen", "valeur": "topic/Sabaean-language"}
+{"entite": "sahaptin", "valeur": "topic/Sahaptin-languages"}
+{"entite": "sakapultèque", "valeur": "topic/Sacapultec-language"}
+{"entite": "same du Nord", "valeur": "topic/North-Sami-language"}
+{"entite": "same du Sud", "valeur": "topic/South-Sami-language"}
+{"entite": "samoan", "valeur": "topic/Samoan-language"}
+{"entite": "sandawe", "valeur": "topic/Sandawe-language"}
+{"entite": "sango", "valeur": "topic/Sango-language"}
+{"entite": "sanskrit", "valeur": "topic/Sanskrit-language"}
+{"entite": "sanskrit bouddhique hybride", "valeur": "topic/Buddhist-Hybrid-Sanskrit-language"}
+{"entite": "sanskrit classique", "valeur": "topic/Classical-Sanskrit-language"}
+{"entite": "santâlî", "valeur": "topic/Santali-language"}
+{"entite": "saraiki", "valeur": "topic/Siraiki-language"}
+{"entite": "saramaka", "valeur": "topic/Saramaccan"}
+{"entite": "saraveca", "valeur": "topic/Saraveca-language"}
+{"entite": "sarde", "valeur": "topic/Sardinian-language"}
+{"entite": "sauria paharia", "valeur": "topic/Malto-language"}
+{"entite": "sedang", "valeur": "topic/Sedang-language"}
+{"entite": "selkoupe", "valeur": "topic/Selkup-language"}
+{"entite": "semai", "valeur": "topic/Semai-language"}
+{"entite": "semnani", "valeur": "topic/Semnani-language"}
+{"entite": "serbo-croate", "valeur": "topic/Bosnian-Croatian-Montenegrin-Serbian-language"}
+{"entite": "sérère", "valeur": "topic/Serer-language"}
+{"entite": "seri", "valeur": "topic/Seri-language"}
+{"entite": "seze", "valeur": "topic/Seze-language"}
+{"entite": "sgaw", "valeur": "topic/Sgaw-language"}
+{"entite": "shan", "valeur": "topic/Shan-language"}
+{"entite": "sherpa", "valeur": "topic/Sherpa-language"}
+{"entite": "shina", "valeur": "topic/Shina-language"}
+{"entite": "shona", "valeur": "topic/Shona-language"}
+{"entite": "shoshone", "valeur": "topic/Shoshonean-languages"}
+{"entite": "siamou", "valeur": "topic/Seme-language"}
+{"entite": "sicule", "valeur": "topic/Sicel-language"}
+{"entite": "sidama", "valeur": "topic/Sidamo-language"}
+{"entite": "sidétique", "valeur": "topic/Sidetic-language"}
+{"entite": "silésien", "valeur": "topic/Silesian"}
+{"entite": "sindhi", "valeur": "topic/Sindhi-language"}
+{"entite": "singhalais", "valeur": "topic/Sinhalese-language"}
+{"entite": "siraya", "valeur": "topic/Siraya-language"}
+{"entite": "slovaque", "valeur": "topic/Slovak-language"}
+{"entite": "slovène", "valeur": "topic/Slovene-language"}
+{"entite": "slovince", "valeur": "topic/Slovincian-language"}
+{"entite": "sogdien", "valeur": "topic/Sogdian-language"}
+{"entite": "somali", "valeur": "topic/Somali-language"}
+{"entite": "sorabe", "valeur": "topic/Sorbian-languages"}
+{"entite": "sotho du Sud", "valeur": "topic/Sotho-language"}
+{"entite": "souabe", "valeur": "topic/Swabian-language"}
+{"entite": "soumray", "valeur": "topic/Somrai-languages"}
+{"entite": "soundanais", "valeur": "topic/Sundanese-language"}
+{"entite": "soussou", "valeur": "topic/Susu-language"}
+{"entite": "sranan", "valeur": "topic/Sranan"}
+{"entite": "sud-picène", "valeur": "topic/South-Picene-language"}
+{"entite": "suédois", "valeur": "topic/Swedish-language"}
+{"entite": "suisse allemand", "valeur": "topic/Swiss-German-language"}
+{"entite": "sumérien", "valeur": "topic/Sumerian-language"}
+{"entite": "svane", "valeur": "topic/Svan-language"}
+{"entite": "swahili", "valeur": "topic/Swahili-language"}
+{"entite": "syriaque", "valeur": "topic/Syriac-language"}
+{"entite": "tabassaran", "valeur": "topic/Tabasaran-language"}
+{"entite": "tadjik", "valeur": "topic/Tajik-language"}
+{"entite": "tagalog", "valeur": "topic/Tagalog-language"}
+{"entite": "tahitien", "valeur": "topic/Tahitian-language"}
+{"entite": "taïno", "valeur": "topic/Taino-language"}
+{"entite": "takelma", "valeur": "topic/Takelma-language"}
+{"entite": "talysh", "valeur": "topic/Talysh-language"}
+{"entite": "tamoul", "valeur": "topic/Tamil-language"}
+{"entite": "tangoute", "valeur": "topic/Xixia-language"}
+{"entite": "tarahumara", "valeur": "topic/Tarahumara-language"}
+{"entite": "tat", "valeur": "topic/Tat-language"}
+{"entite": "tatar de Crimée", "valeur": "topic/Crimean-Tatar-language"}
+{"entite": "tày", "valeur": "topic/Tay-language"}
+{"entite": "tchèque", "valeur": "topic/Czech-language"}
+{"entite": "tchétchène", "valeur": "topic/Chechen-language"}
+{"entite": "tchouktche", "valeur": "topic/Chukchi-language"}
+{"entite": "tchouvache", "valeur": "topic/Chuvash-language"}
+{"entite": "tchouvane", "valeur": "topic/Chuvan-language"}
+{"entite": "tectitèque", "valeur": "topic/Teco-language"}
+{"entite": "tedaga", "valeur": "topic/Teda-language"}
+{"entite": "tehuelche", "valeur": "topic/Tehuelche-language"}
+{"entite": "télougou", "valeur": "topic/Telugu-language"}
+{"entite": "temiar", "valeur": "topic/Temiar-language"}
+{"entite": "temne", "valeur": "topic/Temne-language"}
+{"entite": "tepehuan", "valeur": "topic/Tepehuan-language"}
+{"entite": "tétoum", "valeur": "topic/Tetum-language"}
+{"entite": "thaï", "valeur": "topic/Thai-language"}
+{"entite": "thao", "valeur": "topic/Thao-language"}
+{"entite": "thrace", "valeur": "topic/Thracian-language"}
+{"entite": "tibétain", "valeur": "topic/Tibetan-language"}
+{"entite": "tigré", "valeur": "topic/Tigre-language"}
+{"entite": "tigrigna", "valeur": "topic/Tigrinya-language"}
+{"entite": "tiv", "valeur": "topic/Tiv-language"}
+{"entite": "tlapanèque", "valeur": "topic/Tlapanec-languages"}
+{"entite": "tlicho", "valeur": "topic/Dogrib"}
+{"entite": "tlingit", "valeur": "topic/Tlingit-language"}
+{"entite": "toda", "valeur": "topic/Toda-language"}
+{"entite": "tojolabal", "valeur": "topic/Tojolabal-language"}
+{"entite": "tok pisin", "valeur": "topic/Tok-Pisin"}
+{"entite": "tolowa", "valeur": "topic/Tolowa-language"}
+{"entite": "tongien", "valeur": "topic/Tongan-language"}
+{"entite": "toscan", "valeur": "topic/Tuscan-language"}
+{"entite": "tosque", "valeur": "topic/Tosk-language"}
+{"entite": "toulou", "valeur": "topic/Tulu-language"}
+{"entite": "tsakhur", "valeur": "topic/Tsakhur-language"}
+{"entite": "tsimshian", "valeur": "topic/Tsimshian-language"}
+{"entite": "tsonga", "valeur": "topic/Tsonga-language"}
+{"entite": "tubatulabal", "valeur": "topic/Tubatulabal-language"}
+{"entite": "tunica", "valeur": "topic/Tunica-language"}
+{"entite": "tupi", "valeur": "topic/Tupi-language"}
+{"entite": "tupuri", "valeur": "topic/Tupuri-language"}
+{"entite": "turc", "valeur": "topic/Turkish-language"}
+{"entite": "turc ottoman", "valeur": "topic/Ottoman-Turkish-language"}
+{"entite": "turkmène", "valeur": "topic/Turkmen-language"}
+{"entite": "tz'utujil", "valeur": "topic/Tzutujil-language"}
+{"entite": "ukrainien", "valeur": "topic/Ukrainian-language"}
+{"entite": "urartéen", "valeur": "topic/Urartian-language"}
+{"entite": "valencien", "valeur": "topic/Valencian-language"}
+{"entite": "vénète", "valeur": "topic/Venetic-language"}
+{"entite": "vénitien", "valeur": "topic/Venetan"}
+{"entite": "vepse", "valeur": "topic/Veps-language"}
+{"entite": "vieil-ouïghour", "valeur": "topic/Old-Uighur-language"}
+{"entite": "vietnamien", "valeur": "topic/Vietnamese-language"}
+{"entite": "vieux coréen", "valeur": "topic/Old-Korean-language"}
+{"entite": "vieux-francique", "valeur": "topic/Frankish-dialect"}
+{"entite": "vieux frison", "valeur": "topic/Old-Frisian-language"}
+{"entite": "vieux haut-allemand", "valeur": "topic/Old-High-German"}
+{"entite": "vieux japonais", "valeur": "topic/Old-Japanese-language"}
+{"entite": "vieux javanais", "valeur": "topic/Old-Javanese-language"}
+{"entite": "vieux khmer", "valeur": "topic/Old-Khmer-language"}
+{"entite": "vieux lituanien", "valeur": "topic/Old-Lithuanian-language"}
+{"entite": "vieux norrois", "valeur": "topic/Old-Norse-language"}
+{"entite": "vieux norvégien", "valeur": "topic/Old-Norwegian-language"}
+{"entite": "vieux-perse", "valeur": "topic/Old-Persian-language"}
+{"entite": "vieux-prussien", "valeur": "topic/Old-Prussian-language"}
+{"entite": "vieux russe", "valeur": "topic/Old-Russian"}
+{"entite": "vieux saxon", "valeur": "topic/Old-Saxon-language"}
+{"entite": "vieux-slave", "valeur": "topic/Old-Church-Slavonic-language"}
+{"entite": "vieux suédois", "valeur": "topic/Old-Swedish-language"}
+{"entite": "vieux tatar", "valeur": "topic/Ural-Tatar-language"}
+{"entite": "vieux-turc", "valeur": "topic/Old-Turkic-language"}
+{"entite": "vieux turc anatolien", "valeur": "topic/Anatolian-Turkish-language"}
+{"entite": "volapük", "valeur": "topic/Volapuk"}
+{"entite": "volsque", "valeur": "topic/Volscian-language"}
+{"entite": "vote", "valeur": "topic/Votic-language"}
+{"entite": "wa", "valeur": "topic/Wa-language"}
+{"entite": "wakhi", "valeur": "topic/Wakhi-language"}
+{"entite": "wallon", "valeur": "topic/Walloon-language"}
+{"entite": "waray-waray", "valeur": "topic/Waray-Waray-language"}
+{"entite": "washo", "valeur": "topic/Washoe-language"}
+{"entite": "wolof gambien", "valeur": "topic/Gambian-Wolof-language"}
+{"entite": "wu", "valeur": "topic/Wu-language"}
+{"entite": "xhosa", "valeur": "topic/Xhosa-language"}
+{"entite": "xiang", "valeur": "topic/Xiang-language"}
+{"entite": "xibe", "valeur": "topic/Sibo-language"}
+{"entite": "xinca", "valeur": "topic/Xinca-language"}
+{"entite": "yaghnobi", "valeur": "topic/Yaghnabi-language"}
+{"entite": "yami", "valeur": "topic/Yami-language"}
+{"entite": "yap", "valeur": "topic/Yapese-language"}
+{"entite": "yazgulami", "valeur": "topic/Yazgulami-language"}
+{"entite": "yi", "valeur": "topic/Yi-language"}
+{"entite": "yiddish", "valeur": "topic/Yiddish-language"}
+{"entite": "yiddish occidental", "valeur": "topic/Western-Yiddish-language"}
+{"entite": "yiddish oriental", "valeur": "topic/Eastern-Yiddish-language"}
+{"entite": "yidgha", "valeur": "topic/Yidgha-Munji-languages"}
+{"entite": "yoruba", "valeur": "topic/Yoruba-language"}
+{"entite": "youkaguir de la Kolyma", "valeur": "topic/Kolyma-Yukaghir-language"}
+{"entite": "youkaguir du Nord", "valeur": "topic/Tundra-Yukaghir-language"}
+{"entite": "yupik de l'Alaska central", "valeur": "topic/Central-Alaskan-Yupik-language"}
+{"entite": "yupik sibérien central", "valeur": "topic/Central-Siberian-Yupik-language"}
+{"entite": "zaoum", "valeur": "topic/Zaum"}
+{"entite": "zarma", "valeur": "topic/Zarma-language"}
+{"entite": "zhuang", "valeur": "topic/Zhuang-language"}
+{"entite": "zoulou", "valeur": "topic/Zulu-language"}
+{"entite": "zuni", "valeur": "topic/Zuni-language"}

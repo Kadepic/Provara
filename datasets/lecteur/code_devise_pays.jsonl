@@ -1,0 +1,225 @@
+{"_relation": "code_devise_pays", "_categorie": "convention", "_source": "mledoze/countries — code ISO 4217 du pays", "_articles": true}
+{"entite": "Afghanistan", "valeur": "AFN"}
+{"entite": "Afrique du Sud", "valeur": "ZAR"}
+{"entite": "Ahvenanmaa", "valeur": "EUR"}
+{"entite": "Albanie", "valeur": "ALL"}
+{"entite": "Algérie", "valeur": "DZD"}
+{"entite": "Allemagne", "valeur": "EUR"}
+{"entite": "Andorre", "valeur": "EUR"}
+{"entite": "Angola", "valeur": "AOA"}
+{"entite": "Anguilla", "valeur": "XCD"}
+{"entite": "Antigua-et-Barbuda", "valeur": "XCD"}
+{"entite": "Arabie Saoudite", "valeur": "SAR"}
+{"entite": "Argentine", "valeur": "ARS"}
+{"entite": "Arménie", "valeur": "AMD"}
+{"entite": "Aruba", "valeur": "AWG"}
+{"entite": "Australie", "valeur": "AUD"}
+{"entite": "Autriche", "valeur": "EUR"}
+{"entite": "Azerbaïdjan", "valeur": "AZN"}
+{"entite": "Bahreïn", "valeur": "BHD"}
+{"entite": "Bangladesh", "valeur": "BDT"}
+{"entite": "Barbade", "valeur": "BBD"}
+{"entite": "Belgique", "valeur": "EUR"}
+{"entite": "Belize", "valeur": "BZD"}
+{"entite": "Bénin", "valeur": "XOF"}
+{"entite": "Bermudes", "valeur": "BMD"}
+{"entite": "Biélorussie", "valeur": "BYN"}
+{"entite": "Birmanie", "valeur": "MMK"}
+{"entite": "Bolivie", "valeur": "BOB"}
+{"entite": "Bosnie-Herzégovine", "valeur": "BAM"}
+{"entite": "Botswana", "valeur": "BWP"}
+{"entite": "Brésil", "valeur": "BRL"}
+{"entite": "Bulgarie", "valeur": "EUR"}
+{"entite": "Burkina Faso", "valeur": "XOF"}
+{"entite": "Burundi", "valeur": "BIF"}
+{"entite": "Cameroun", "valeur": "XAF"}
+{"entite": "Canada", "valeur": "CAD"}
+{"entite": "Chili", "valeur": "CLP"}
+{"entite": "Chine", "valeur": "CNY"}
+{"entite": "Chypre", "valeur": "EUR"}
+{"entite": "Cité du Vatican", "valeur": "EUR"}
+{"entite": "Colombie", "valeur": "COP"}
+{"entite": "Comores", "valeur": "KMF"}
+{"entite": "Congo", "valeur": "XAF"}
+{"entite": "Congo (Rép. dém.)", "valeur": "CDF"}
+{"entite": "Corée du Nord", "valeur": "KPW"}
+{"entite": "Corée du Sud", "valeur": "KRW"}
+{"entite": "Costa Rica", "valeur": "CRC"}
+{"entite": "Côte d'Ivoire", "valeur": "XOF"}
+{"entite": "Croatie", "valeur": "EUR"}
+{"entite": "Curaçao", "valeur": "ANG"}
+{"entite": "Danemark", "valeur": "DKK"}
+{"entite": "Djibouti", "valeur": "DJF"}
+{"entite": "Dominique", "valeur": "XCD"}
+{"entite": "Égypte", "valeur": "EGP"}
+{"entite": "Émirats arabes unis", "valeur": "AED"}
+{"entite": "Équateur", "valeur": "USD"}
+{"entite": "Érythrée", "valeur": "ERN"}
+{"entite": "Espagne", "valeur": "EUR"}
+{"entite": "Estonie", "valeur": "EUR"}
+{"entite": "États-Unis", "valeur": "USD"}
+{"entite": "Éthiopie", "valeur": "ETB"}
+{"entite": "Fidji", "valeur": "FJD"}
+{"entite": "Finlande", "valeur": "EUR"}
+{"entite": "France", "valeur": "EUR"}
+{"entite": "Gabon", "valeur": "XAF"}
+{"entite": "Gambie", "valeur": "GMD"}
+{"entite": "Géorgie", "valeur": "GEL"}
+{"entite": "Géorgie du Sud-et-les Îles Sandwich du Sud", "valeur": "SHP"}
+{"entite": "Ghana", "valeur": "GHS"}
+{"entite": "Gibraltar", "valeur": "GIP"}
+{"entite": "Grèce", "valeur": "EUR"}
+{"entite": "Grenade", "valeur": "XCD"}
+{"entite": "Groenland", "valeur": "DKK"}
+{"entite": "Guadeloupe", "valeur": "EUR"}
+{"entite": "Guam", "valeur": "USD"}
+{"entite": "Guatemala", "valeur": "GTQ"}
+{"entite": "Guinée", "valeur": "GNF"}
+{"entite": "Guinée-Bissau", "valeur": "XOF"}
+{"entite": "Guinée équatoriale", "valeur": "XAF"}
+{"entite": "Guyana", "valeur": "GYD"}
+{"entite": "Guyane", "valeur": "EUR"}
+{"entite": "Haïti", "valeur": "HTG"}
+{"entite": "Honduras", "valeur": "HNL"}
+{"entite": "Hong Kong", "valeur": "HKD"}
+{"entite": "Hongrie", "valeur": "HUF"}
+{"entite": "Île Christmas", "valeur": "AUD"}
+{"entite": "Île Maurice", "valeur": "MUR"}
+{"entite": "Île Norfolk", "valeur": "AUD"}
+{"entite": "Îles Caïmans", "valeur": "KYD"}
+{"entite": "Îles Cocos", "valeur": "AUD"}
+{"entite": "Îles du Cap-Vert", "valeur": "CVE"}
+{"entite": "Îles Malouines", "valeur": "FKP"}
+{"entite": "Îles Mariannes du Nord", "valeur": "USD"}
+{"entite": "Îles Marshall", "valeur": "USD"}
+{"entite": "Îles mineures éloignées des États-Unis", "valeur": "USD"}
+{"entite": "Îles Pitcairn", "valeur": "NZD"}
+{"entite": "Îles Salomon", "valeur": "SBD"}
+{"entite": "Îles Turques-et-Caïques", "valeur": "USD"}
+{"entite": "Îles Vierges britanniques", "valeur": "USD"}
+{"entite": "Îles Vierges des États-Unis", "valeur": "USD"}
+{"entite": "Inde", "valeur": "INR"}
+{"entite": "Indonésie", "valeur": "IDR"}
+{"entite": "Irak", "valeur": "IQD"}
+{"entite": "Iran", "valeur": "IRR"}
+{"entite": "Irlande", "valeur": "EUR"}
+{"entite": "Islande", "valeur": "ISK"}
+{"entite": "Israël", "valeur": "ILS"}
+{"entite": "Italie", "valeur": "EUR"}
+{"entite": "Jamaïque", "valeur": "JMD"}
+{"entite": "Japon", "valeur": "JPY"}
+{"entite": "Jordanie", "valeur": "JOD"}
+{"entite": "Kazakhstan", "valeur": "KZT"}
+{"entite": "Kenya", "valeur": "KES"}
+{"entite": "Kirghizistan", "valeur": "KGS"}
+{"entite": "Kosovo", "valeur": "EUR"}
+{"entite": "Koweït", "valeur": "KWD"}
+{"entite": "Laos", "valeur": "LAK"}
+{"entite": "Lettonie", "valeur": "EUR"}
+{"entite": "Liban", "valeur": "LBP"}
+{"entite": "Liberia", "valeur": "LRD"}
+{"entite": "Libye", "valeur": "LYD"}
+{"entite": "Liechtenstein", "valeur": "CHF"}
+{"entite": "Lituanie", "valeur": "EUR"}
+{"entite": "Luxembourg", "valeur": "EUR"}
+{"entite": "Macao", "valeur": "MOP"}
+{"entite": "Macédoine du Nord", "valeur": "MKD"}
+{"entite": "Madagascar", "valeur": "MGA"}
+{"entite": "Malaisie", "valeur": "MYR"}
+{"entite": "Malawi", "valeur": "MWK"}
+{"entite": "Maldives", "valeur": "MVR"}
+{"entite": "Mali", "valeur": "XOF"}
+{"entite": "Malte", "valeur": "EUR"}
+{"entite": "Maroc", "valeur": "MAD"}
+{"entite": "Martinique", "valeur": "EUR"}
+{"entite": "Mauritanie", "valeur": "MRU"}
+{"entite": "Mayotte", "valeur": "EUR"}
+{"entite": "Mexique", "valeur": "MXN"}
+{"entite": "Moldavie", "valeur": "MDL"}
+{"entite": "Monaco", "valeur": "EUR"}
+{"entite": "Mongolie", "valeur": "MNT"}
+{"entite": "Monténégro", "valeur": "EUR"}
+{"entite": "Montserrat", "valeur": "XCD"}
+{"entite": "Mozambique", "valeur": "MZN"}
+{"entite": "Nauru", "valeur": "AUD"}
+{"entite": "Népal", "valeur": "NPR"}
+{"entite": "Nicaragua", "valeur": "NIO"}
+{"entite": "Niger", "valeur": "XOF"}
+{"entite": "Nigéria", "valeur": "NGN"}
+{"entite": "Niue", "valeur": "NZD"}
+{"entite": "Norvège", "valeur": "NOK"}
+{"entite": "Nouvelle-Calédonie", "valeur": "XPF"}
+{"entite": "Nouvelle-Zélande", "valeur": "NZD"}
+{"entite": "Oman", "valeur": "OMR"}
+{"entite": "Ouganda", "valeur": "UGX"}
+{"entite": "Ouzbékistan", "valeur": "UZS"}
+{"entite": "Pakistan", "valeur": "PKR"}
+{"entite": "Palaos (Palau)", "valeur": "USD"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "PGK"}
+{"entite": "Paraguay", "valeur": "PYG"}
+{"entite": "Pays-Bas", "valeur": "EUR"}
+{"entite": "Pays-Bas caribéens", "valeur": "USD"}
+{"entite": "Pérou", "valeur": "PEN"}
+{"entite": "Philippines", "valeur": "PHP"}
+{"entite": "Pologne", "valeur": "PLN"}
+{"entite": "Polynésie française", "valeur": "XPF"}
+{"entite": "Porto Rico", "valeur": "USD"}
+{"entite": "Portugal", "valeur": "EUR"}
+{"entite": "Qatar", "valeur": "QAR"}
+{"entite": "République centrafricaine", "valeur": "XAF"}
+{"entite": "République dominicaine", "valeur": "DOP"}
+{"entite": "Réunion", "valeur": "EUR"}
+{"entite": "Roumanie", "valeur": "RON"}
+{"entite": "Royaume-Uni", "valeur": "GBP"}
+{"entite": "Russie", "valeur": "RUB"}
+{"entite": "Rwanda", "valeur": "RWF"}
+{"entite": "Saint-Barthélemy", "valeur": "EUR"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": "XCD"}
+{"entite": "Saint-Marin", "valeur": "EUR"}
+{"entite": "Saint-Pierre-et-Miquelon", "valeur": "EUR"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "XCD"}
+{"entite": "Sainte-Lucie", "valeur": "XCD"}
+{"entite": "Salvador", "valeur": "USD"}
+{"entite": "Samoa", "valeur": "WST"}
+{"entite": "Samoa américaines", "valeur": "USD"}
+{"entite": "São Tomé et Príncipe", "valeur": "STN"}
+{"entite": "Sénégal", "valeur": "XOF"}
+{"entite": "Serbie", "valeur": "RSD"}
+{"entite": "Seychelles", "valeur": "SCR"}
+{"entite": "Sierra Leone", "valeur": "SLL"}
+{"entite": "Singapour", "valeur": "SGD"}
+{"entite": "Slovaquie", "valeur": "EUR"}
+{"entite": "Slovénie", "valeur": "EUR"}
+{"entite": "Somalie", "valeur": "SOS"}
+{"entite": "Soudan", "valeur": "SDG"}
+{"entite": "Soudan du Sud", "valeur": "SSP"}
+{"entite": "Sri Lanka", "valeur": "LKR"}
+{"entite": "Suède", "valeur": "SEK"}
+{"entite": "Suisse", "valeur": "CHF"}
+{"entite": "Surinam", "valeur": "SRD"}
+{"entite": "Svalbard et Jan Mayen", "valeur": "NOK"}
+{"entite": "Syrie", "valeur": "SYP"}
+{"entite": "Tadjikistan", "valeur": "TJS"}
+{"entite": "Taïwan", "valeur": "TWD"}
+{"entite": "Tanzanie", "valeur": "TZS"}
+{"entite": "Tchad", "valeur": "XAF"}
+{"entite": "Tchéquie", "valeur": "CZK"}
+{"entite": "Terres australes et antarctiques françaises", "valeur": "EUR"}
+{"entite": "Territoire britannique de l'océan Indien", "valeur": "USD"}
+{"entite": "Thaïlande", "valeur": "THB"}
+{"entite": "Timor oriental", "valeur": "USD"}
+{"entite": "Togo", "valeur": "XOF"}
+{"entite": "Tokelau", "valeur": "NZD"}
+{"entite": "Tonga", "valeur": "TOP"}
+{"entite": "Trinité-et-Tobago", "valeur": "TTD"}
+{"entite": "Tunisie", "valeur": "TND"}
+{"entite": "Turkménistan", "valeur": "TMT"}
+{"entite": "Turquie", "valeur": "TRY"}
+{"entite": "Ukraine", "valeur": "UAH"}
+{"entite": "Uruguay", "valeur": "UYU"}
+{"entite": "Vanuatu", "valeur": "VUV"}
+{"entite": "Venezuela", "valeur": "VES"}
+{"entite": "Viêt Nam", "valeur": "VND"}
+{"entite": "Wallis-et-Futuna", "valeur": "XPF"}
+{"entite": "Yémen", "valeur": "YER"}
+{"entite": "Zambie", "valeur": "ZMW"}

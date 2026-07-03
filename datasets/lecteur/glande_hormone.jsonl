@@ -1,0 +1,35 @@
+{"_relation": "glande_hormone", "_categorie": "physique", "_source": "Modèle (Claude) — endocrinologie textbook curée (glande sécrétrice principale ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "adrénaline", "valeur": "glande surrénale"}
+{"entite": "aldostérone", "valeur": "glande surrénale"}
+{"entite": "calcitonine", "valeur": "glande thyroïde"}
+{"entite": "cholécalciférol", "valeur": "peau"}
+{"entite": "cholécystokinine", "valeur": "intestin grêle"}
+{"entite": "corticotrophine", "valeur": "hypophyse"}
+{"entite": "cortisol", "valeur": "glande surrénale"}
+{"entite": "érythropoïétine", "valeur": "rein"}
+{"entite": "facteur de croissance IGF-1", "valeur": "foie"}
+{"entite": "gastrine", "valeur": "estomac"}
+{"entite": "ghréline", "valeur": "estomac"}
+{"entite": "glucagon", "valeur": "pancréas"}
+{"entite": "hormone chorionique gonadotrope", "valeur": "placenta"}
+{"entite": "hormone de croissance", "valeur": "hypophyse"}
+{"entite": "hormone folliculostimulante", "valeur": "hypophyse"}
+{"entite": "hormone lutéinisante", "valeur": "hypophyse"}
+{"entite": "insuline", "valeur": "pancréas"}
+{"entite": "leptine", "valeur": "tissu adipeux"}
+{"entite": "mélatonine", "valeur": "glande pinéale"}
+{"entite": "noradrénaline", "valeur": "glande surrénale"}
+{"entite": "ostéocalcine", "valeur": "tissu osseux"}
+{"entite": "parathormone", "valeur": "glande parathyroïde"}
+{"entite": "peptide natriurétique auriculaire", "valeur": "cœur"}
+{"entite": "progestérone", "valeur": "ovaire"}
+{"entite": "prolactine", "valeur": "hypophyse"}
+{"entite": "relaxine", "valeur": "ovaire"}
+{"entite": "rénine", "valeur": "rein"}
+{"entite": "sécrétine", "valeur": "intestin grêle"}
+{"entite": "œstradiol", "valeur": "ovaire"}
+{"entite": "testostérone", "valeur": "testicule"}
+{"entite": "thrombopoïétine", "valeur": "foie"}
+{"entite": "thyréostimuline", "valeur": "hypophyse"}
+{"entite": "thyroxine", "valeur": "glande thyroïde"}
+{"entite": "triiodothyronine", "valeur": "glande thyroïde"}

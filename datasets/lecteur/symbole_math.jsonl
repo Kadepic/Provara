@@ -1,0 +1,26 @@
+{"_relation": "symbole_math", "_categorie": "convention", "_source": "notation mathématique standard (concept -> symbole)", "_articles": true}
+{"entite": "addition", "valeur": "+"}
+{"entite": "angle", "valeur": "∠"}
+{"entite": "appartient", "valeur": "∈"}
+{"entite": "différent", "valeur": "≠"}
+{"entite": "division", "valeur": "÷"}
+{"entite": "égalité", "valeur": "="}
+{"entite": "ensemble vide", "valeur": "∅"}
+{"entite": "il existe", "valeur": "∃"}
+{"entite": "inclus", "valeur": "⊂"}
+{"entite": "inférieur", "valeur": "<"}
+{"entite": "inférieur ou égal", "valeur": "≤"}
+{"entite": "infini", "valeur": "∞"}
+{"entite": "intégrale", "valeur": "∫"}
+{"entite": "multiplication", "valeur": "×"}
+{"entite": "parallèle", "valeur": "∥"}
+{"entite": "perpendiculaire", "valeur": "⊥"}
+{"entite": "plus ou moins", "valeur": "±"}
+{"entite": "pour tout", "valeur": "∀"}
+{"entite": "pourcentage", "valeur": "%"}
+{"entite": "produit", "valeur": "∏"}
+{"entite": "racine carrée", "valeur": "√"}
+{"entite": "somme", "valeur": "∑"}
+{"entite": "soustraction", "valeur": "−"}
+{"entite": "supérieur", "valeur": ">"}
+{"entite": "supérieur ou égal", "valeur": "≥"}

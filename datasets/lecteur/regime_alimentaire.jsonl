@@ -1,0 +1,107 @@
+{"_relation": "regime_alimentaire", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (régime alimentaire ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "aigle royal", "valeur": "carnivore"}
+{"entite": "alpaga", "valeur": "herbivore"}
+{"entite": "âne", "valeur": "herbivore"}
+{"entite": "antilope", "valeur": "herbivore"}
+{"entite": "autruche", "valeur": "omnivore"}
+{"entite": "babouin", "valeur": "omnivore"}
+{"entite": "barracuda", "valeur": "carnivore"}
+{"entite": "belette", "valeur": "carnivore"}
+{"entite": "bison d'Amérique", "valeur": "herbivore"}
+{"entite": "blaireau", "valeur": "omnivore"}
+{"entite": "bouquetin", "valeur": "herbivore"}
+{"entite": "brochet", "valeur": "carnivore"}
+{"entite": "buffle", "valeur": "herbivore"}
+{"entite": "caméléon", "valeur": "insectivore"}
+{"entite": "canard", "valeur": "omnivore"}
+{"entite": "capybara", "valeur": "herbivore"}
+{"entite": "caribou", "valeur": "herbivore"}
+{"entite": "castor", "valeur": "herbivore"}
+{"entite": "cerf", "valeur": "herbivore"}
+{"entite": "chameau", "valeur": "herbivore"}
+{"entite": "chamois", "valeur": "herbivore"}
+{"entite": "chat", "valeur": "carnivore"}
+{"entite": "cheval", "valeur": "herbivore"}
+{"entite": "chèvre", "valeur": "herbivore"}
+{"entite": "chimpanzé", "valeur": "omnivore"}
+{"entite": "cochon", "valeur": "omnivore"}
+{"entite": "corbeau", "valeur": "omnivore"}
+{"entite": "crapaud", "valeur": "insectivore"}
+{"entite": "crocodile", "valeur": "carnivore"}
+{"entite": "dauphin", "valeur": "carnivore"}
+{"entite": "échidné", "valeur": "insectivore"}
+{"entite": "éléphant d'Afrique", "valeur": "herbivore"}
+{"entite": "faucon pèlerin", "valeur": "carnivore"}
+{"entite": "fouine", "valeur": "carnivore"}
+{"entite": "fourmilier géant", "valeur": "insectivore"}
+{"entite": "furet", "valeur": "carnivore"}
+{"entite": "gazelle", "valeur": "herbivore"}
+{"entite": "gecko", "valeur": "insectivore"}
+{"entite": "girafe", "valeur": "herbivore"}
+{"entite": "glouton", "valeur": "carnivore"}
+{"entite": "gnou", "valeur": "herbivore"}
+{"entite": "gorille", "valeur": "herbivore"}
+{"entite": "grand requin blanc", "valeur": "carnivore"}
+{"entite": "guépard", "valeur": "carnivore"}
+{"entite": "hérisson", "valeur": "insectivore"}
+{"entite": "hermine", "valeur": "carnivore"}
+{"entite": "héron", "valeur": "carnivore"}
+{"entite": "hibou", "valeur": "carnivore"}
+{"entite": "hippopotame", "valeur": "herbivore"}
+{"entite": "hirondelle", "valeur": "insectivore"}
+{"entite": "hyène tachetée", "valeur": "carnivore"}
+{"entite": "impala", "valeur": "herbivore"}
+{"entite": "jaguar", "valeur": "carnivore"}
+{"entite": "kangourou", "valeur": "herbivore"}
+{"entite": "koala", "valeur": "herbivore"}
+{"entite": "koudou", "valeur": "herbivore"}
+{"entite": "lama", "valeur": "herbivore"}
+{"entite": "lapin", "valeur": "herbivore"}
+{"entite": "léopard", "valeur": "carnivore"}
+{"entite": "lion", "valeur": "carnivore"}
+{"entite": "loup", "valeur": "carnivore"}
+{"entite": "loutre", "valeur": "carnivore"}
+{"entite": "lynx", "valeur": "carnivore"}
+{"entite": "manchot empereur", "valeur": "carnivore"}
+{"entite": "mangouste", "valeur": "carnivore"}
+{"entite": "marmotte", "valeur": "herbivore"}
+{"entite": "morse", "valeur": "carnivore"}
+{"entite": "mouton", "valeur": "herbivore"}
+{"entite": "murène", "valeur": "carnivore"}
+{"entite": "musaraigne", "valeur": "insectivore"}
+{"entite": "oie", "valeur": "herbivore"}
+{"entite": "okapi", "valeur": "herbivore"}
+{"entite": "opossum", "valeur": "omnivore"}
+{"entite": "orque", "valeur": "carnivore"}
+{"entite": "oryctérope", "valeur": "insectivore"}
+{"entite": "oryx", "valeur": "herbivore"}
+{"entite": "otarie", "valeur": "carnivore"}
+{"entite": "ours brun", "valeur": "omnivore"}
+{"entite": "ours noir", "valeur": "omnivore"}
+{"entite": "ours polaire", "valeur": "carnivore"}
+{"entite": "panda géant", "valeur": "herbivore"}
+{"entite": "panda roux", "valeur": "herbivore"}
+{"entite": "pangolin", "valeur": "insectivore"}
+{"entite": "paresseux", "valeur": "herbivore"}
+{"entite": "pécari", "valeur": "omnivore"}
+{"entite": "phoque", "valeur": "carnivore"}
+{"entite": "poule", "valeur": "omnivore"}
+{"entite": "poulpe", "valeur": "carnivore"}
+{"entite": "puma", "valeur": "carnivore"}
+{"entite": "rat", "valeur": "omnivore"}
+{"entite": "rat surmulot", "valeur": "omnivore"}
+{"entite": "raton laveur", "valeur": "omnivore"}
+{"entite": "renard roux", "valeur": "carnivore"}
+{"entite": "renne", "valeur": "herbivore"}
+{"entite": "rhinocéros blanc", "valeur": "herbivore"}
+{"entite": "sanglier", "valeur": "omnivore"}
+{"entite": "serpent", "valeur": "carnivore"}
+{"entite": "tamanoir", "valeur": "insectivore"}
+{"entite": "tapir", "valeur": "herbivore"}
+{"entite": "taupe", "valeur": "insectivore"}
+{"entite": "tigre", "valeur": "carnivore"}
+{"entite": "vache", "valeur": "herbivore"}
+{"entite": "vigogne", "valeur": "herbivore"}
+{"entite": "wapiti", "valeur": "herbivore"}
+{"entite": "yak", "valeur": "herbivore"}
+{"entite": "zèbre", "valeur": "herbivore"}

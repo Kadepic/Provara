@@ -1,0 +1,4 @@
+{"_relation": "definition_niveau_prevention", "_categorie": "physique", "_source": "Modèle (Claude) — santé publique textbook curée (niveau de prévention -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "prévention primaire", "valeur": "éviter l'apparition de la maladie"}
+{"entite": "prévention secondaire", "valeur": "dépister et traiter précocement la maladie"}
+{"entite": "prévention tertiaire", "valeur": "limiter les complications de la maladie"}

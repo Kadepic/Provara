@@ -1,0 +1,25 @@
+{"_relation": "activite_circadienne_animal", "_categorie": "physique", "_source": "Modèle (Claude) — éthologie textbook curée (rythme diurne/nocturne ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "diurne"}
+{"entite": "aigle royal", "valeur": "diurne"}
+{"entite": "blaireau", "valeur": "nocturne"}
+{"entite": "chauve-souris", "valeur": "nocturne"}
+{"entite": "chouette", "valeur": "nocturne"}
+{"entite": "civette", "valeur": "nocturne"}
+{"entite": "écureuil", "valeur": "diurne"}
+{"entite": "engoulevent", "valeur": "nocturne"}
+{"entite": "faucon pèlerin", "valeur": "diurne"}
+{"entite": "guêpe", "valeur": "diurne"}
+{"entite": "hérisson", "valeur": "nocturne"}
+{"entite": "hibou", "valeur": "nocturne"}
+{"entite": "hirondelle", "valeur": "diurne"}
+{"entite": "lézard", "valeur": "diurne"}
+{"entite": "libellule", "valeur": "diurne"}
+{"entite": "loris", "valeur": "nocturne"}
+{"entite": "luciole", "valeur": "nocturne"}
+{"entite": "marmotte", "valeur": "diurne"}
+{"entite": "opossum", "valeur": "nocturne"}
+{"entite": "papillon de jour", "valeur": "diurne"}
+{"entite": "rat", "valeur": "nocturne"}
+{"entite": "raton laveur", "valeur": "nocturne"}
+{"entite": "suricate", "valeur": "diurne"}
+{"entite": "ver luisant", "valeur": "nocturne"}

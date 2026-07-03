@@ -1,0 +1,5 @@
+{"_relation": "fonction_tissu_animal", "_categorie": "physique", "_source": "Modèle (Claude) — histologie textbook curée (tissu animal -> fonction ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "tissu conjonctif", "valeur": "soutien et liaison"}
+{"entite": "tissu épithélial", "valeur": "revêtement et protection"}
+{"entite": "tissu musculaire", "valeur": "mouvement"}
+{"entite": "tissu nerveux", "valeur": "transmission de l'information"}

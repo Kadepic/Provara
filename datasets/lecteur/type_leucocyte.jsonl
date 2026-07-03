@@ -1,0 +1,12 @@
+{"_relation": "type_leucocyte", "_categorie": "physique", "_source": "Modèle (Claude) — hématologie textbook curée (classe de leucocyte ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "basophile", "valeur": "granulocyte"}
+{"entite": "cellule NK", "valeur": "agranulocyte"}
+{"entite": "éosinophile", "valeur": "granulocyte"}
+{"entite": "lymphocyte", "valeur": "agranulocyte"}
+{"entite": "lymphocyte B", "valeur": "agranulocyte"}
+{"entite": "lymphocyte T", "valeur": "agranulocyte"}
+{"entite": "monocyte", "valeur": "agranulocyte"}
+{"entite": "neutrophile", "valeur": "granulocyte"}
+{"entite": "polynucléaire basophile", "valeur": "granulocyte"}
+{"entite": "polynucléaire éosinophile", "valeur": "granulocyte"}
+{"entite": "polynucléaire neutrophile", "valeur": "granulocyte"}

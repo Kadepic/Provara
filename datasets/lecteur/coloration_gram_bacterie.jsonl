@@ -1,0 +1,36 @@
+{"_relation": "coloration_gram_bacterie", "_categorie": "physique", "_source": "Modèle (Claude) — bactériologie textbook curée (coloration de Gram ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "Acinetobacter", "valeur": "Gram négatif"}
+{"entite": "Actinomyces", "valeur": "Gram positif"}
+{"entite": "Bacillus anthracis", "valeur": "Gram positif"}
+{"entite": "Bacteroides", "valeur": "Gram négatif"}
+{"entite": "Bordetella pertussis", "valeur": "Gram négatif"}
+{"entite": "Brucella", "valeur": "Gram négatif"}
+{"entite": "Campylobacter jejuni", "valeur": "Gram négatif"}
+{"entite": "Clostridioides difficile", "valeur": "Gram positif"}
+{"entite": "Clostridium botulinum", "valeur": "Gram positif"}
+{"entite": "Clostridium tetani", "valeur": "Gram positif"}
+{"entite": "Corynebacterium diphtheriae", "valeur": "Gram positif"}
+{"entite": "entérocoque", "valeur": "Gram positif"}
+{"entite": "Escherichia coli", "valeur": "Gram négatif"}
+{"entite": "Francisella tularensis", "valeur": "Gram négatif"}
+{"entite": "gonocoque", "valeur": "Gram négatif"}
+{"entite": "Haemophilus influenzae", "valeur": "Gram négatif"}
+{"entite": "Helicobacter pylori", "valeur": "Gram négatif"}
+{"entite": "Klebsiella pneumoniae", "valeur": "Gram négatif"}
+{"entite": "Lactobacillus", "valeur": "Gram positif"}
+{"entite": "Legionella pneumophila", "valeur": "Gram négatif"}
+{"entite": "Listeria", "valeur": "Gram positif"}
+{"entite": "méningocoque", "valeur": "Gram négatif"}
+{"entite": "Moraxella", "valeur": "Gram négatif"}
+{"entite": "Neisseria", "valeur": "Gram négatif"}
+{"entite": "pneumocoque", "valeur": "Gram positif"}
+{"entite": "Proteus", "valeur": "Gram négatif"}
+{"entite": "Pseudomonas aeruginosa", "valeur": "Gram négatif"}
+{"entite": "Salmonella", "valeur": "Gram négatif"}
+{"entite": "salmonelle", "valeur": "Gram négatif"}
+{"entite": "Shigella", "valeur": "Gram négatif"}
+{"entite": "staphylocoque doré", "valeur": "Gram positif"}
+{"entite": "Streptococcus pyogenes", "valeur": "Gram positif"}
+{"entite": "streptocoque", "valeur": "Gram positif"}
+{"entite": "Vibrio cholerae", "valeur": "Gram négatif"}
+{"entite": "Yersinia pestis", "valeur": "Gram négatif"}

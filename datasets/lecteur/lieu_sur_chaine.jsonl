@@ -1,0 +1,1368 @@
+{"_relation": "lieu_sur_chaine", "_categorie": "physique", "_source": "Wikidata/QLever — lieu_sur_chaine P706, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "3-5 Pigadia", "valeur": "Vermion"}
+{"entite": "7 montagnes de Suzuka", "valeur": "Monts Suzuka"}
+{"entite": "Abadeh", "valeur": "Zagros"}
+{"entite": "Abeelstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Abkhazie", "valeur": "Caucase"}
+{"entite": "Abolin Glacier", "valeur": "Jungar Alatau"}
+{"entite": "Abrahámovce (district Kežmarok)", "valeur": "monts de Levoča"}
+{"entite": "Abranovce", "valeur": "Monts de Slanec"}
+{"entite": "Achterberg", "valeur": "Ardennes flamandes"}
+{"entite": "Adept", "valeur": "Jura cracovien"}
+{"entite": "Ágios Therápon", "valeur": "Massif du Troodos"}
+{"entite": "Agrour Amogjar", "valeur": "plateau de l'Adrar"}
+{"entite": "Agulla Cregüenya", "valeur": "massif de la Maladeta"}
+{"entite": "Agulla Haurillón", "valeur": "massif de la Maladeta"}
+{"entite": "Aiguille Centrale du Soreiller", "valeur": "Massif du Soreiller"}
+{"entite": "aiguille de Chambeyron", "valeur": "massif de Chambeyron"}
+{"entite": "aiguille du Belvédère", "valeur": "aiguilles Rouges"}
+{"entite": "aiguille du Plat de la Selle", "valeur": "Massif du Soreiller"}
+{"entite": "Aiguille Orientale du Soreiller", "valeur": "Massif du Soreiller"}
+{"entite": "aiguilles d'Arves", "valeur": "Alpes du Dauphiné"}
+{"entite": "L'Ailefroide", "valeur": "Alpes du Dauphiné"}
+{"entite": "aire strictement protégée de Bogd-Khan-Uul", "valeur": "monts Khentii"}
+{"entite": "Akkol", "valeur": "Trans-Ili Alatau"}
+{"entite": "Akureyri", "valeur": "Tröllaskagi"}
+{"entite": "Alausí", "valeur": "Sierra"}
+{"entite": "Alf", "valeur": "Jura cracovien"}
+{"entite": "Alice Springs", "valeur": "Monts MacDonnell"}
+{"entite": "Alíkambos", "valeur": "Lefká Óri"}
+{"entite": "Allt Forgan", "valeur": "Brecon Beacons"}
+{"entite": "Alpamayo", "valeur": "cordillère des Andes"}
+{"entite": "Alpes bavaroises", "valeur": "Alpes"}
+{"entite": "Alster", "valeur": "Eifel"}
+{"entite": "Altynsarin Glacier", "valeur": "Jungar Alatau"}
+{"entite": "Am Mühlweg", "valeur": "Odenwald"}
+{"entite": "Ama Dablam", "valeur": "Himalaya"}
+{"entite": "Ambona", "valeur": "Jura cracovien"}
+{"entite": "Amerongse Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "Amicombe Hill", "valeur": "Dartmoor"}
+{"entite": "Ammergebirge", "valeur": "Alpes d'Ammergau"}
+{"entite": "Ampato", "valeur": "cordillère des Andes"}
+{"entite": "Andalousie", "valeur": "cordillères Bétiques"}
+{"entite": "Andorra–Catalonia border", "valeur": "Pyrénées"}
+{"entite": "Andorre", "valeur": "Pyrénées"}
+{"entite": "Anna-Tower", "valeur": "Deister"}
+{"entite": "Apothetae", "valeur": "Taygète"}
+{"entite": "Apteka", "valeur": "Jura cracovien"}
+{"entite": "Arainburu", "valeur": "Pyrénées"}
+{"entite": "Arche d'Aloba", "valeur": "plateau de l'Ennedi"}
+{"entite": "Archi", "valeur": "monts de Benjamin"}
+{"entite": "Ardennes flamandes", "valeur": "Ardennes flamandes"}
+{"entite": "Ardey Hills", "valeur": "Massif schisteux rhénan"}
+{"entite": "Ark Hill", "valeur": "Sidlaw Hills"}
+{"entite": "Armadillo Peak", "valeur": "Plateau Tahltan"}
+{"entite": "Arpitanie", "valeur": "Alpes occidentales"}
+{"entite": "arrondissement de Buchen", "valeur": "Odenwald"}
+{"entite": "Arsi Mountains National Park", "valeur": "Plateaux d'Éthiopie"}
+{"entite": "Artesonraju Glacier", "valeur": "cordillère des Andes"}
+{"entite": "Artsakh", "valeur": "Caucase"}
+{"entite": "Assy Plateau", "valeur": "Trans-Ili Alatau"}
+{"entite": "Asteriks", "valeur": "Jura cracovien"}
+{"entite": "Aterenski most", "valeur": "Rhodopes orientales"}
+{"entite": "Atoluka", "valeur": "Rhodopes"}
+{"entite": "Audenarde", "valeur": "Ardennes flamandes"}
+{"entite": "Ausangate", "valeur": "cordillère des Andes"}
+{"entite": "Austerlitz", "valeur": "Collines d'Utrecht"}
+{"entite": "Avroti Castle", "valeur": "mont Érymanthe"}
+{"entite": "Awen między Babą a Ptakiem", "valeur": "Jura cracovien"}
+{"entite": "Bøyabreen", "valeur": "Breheimen"}
+{"entite": "Babite", "valeur": "Belassitsa"}
+{"entite": "Bad Teinach", "valeur": "Forêt-Noire"}
+{"entite": "Badger House Community", "valeur": "Wetherill Mesa"}
+{"entite": "Baegunsan", "valeur": "monts Sobaek"}
+{"entite": "Bafing-Source", "valeur": "Fouta-Djalon"}
+{"entite": "Bakouriani", "valeur": "Chaîne de Trialéti"}
+{"entite": "Balikowa Skała", "valeur": "Jura cracovien"}
+{"entite": "Balsbach", "valeur": "Odenwald"}
+{"entite": "Baneberg", "valeur": "monts des Flandres"}
+{"entite": "Les Bans", "valeur": "Alpes du Dauphiné"}
+{"entite": "Banská Belá", "valeur": "Monts Štiavnica"}
+{"entite": "Banská Štiavnica", "valeur": "Monts Štiavnica"}
+{"entite": "Baraque de Fraiture", "valeur": "Ardenne"}
+{"entite": "Barf-e Kermu", "valeur": "Dena"}
+{"entite": "Barn Door Hills", "valeur": "Metacomet Ridge"}
+{"entite": "barre des Écrins", "valeur": "Alpes du Dauphiné"}
+{"entite": "Bärsbach", "valeur": "Odenwald"}
+{"entite": "Baruntse", "valeur": "Himalaya"}
+{"entite": "Baška", "valeur": "monts Métallifères slovaques"}
+{"entite": "Baszta nad Wodą", "valeur": "Jura cracovien"}
+{"entite": "Bataka - natural occurrence of Strandzha oak", "valeur": "Strandja"}
+{"entite": "Beacon Hill", "valeur": "Metacomet Ridge"}
+{"entite": "Beaver Creek Biosphere Reserve", "valeur": "Mogollon Rim"}
+{"entite": "Beinn Fhada", "valeur": "Kintail"}
+{"entite": "Belasitsa Nature Park", "valeur": "Belassitsa"}
+{"entite": "Beloe", "valeur": "plateau de la Volga"}
+{"entite": "Berendries", "valeur": "Ardennes flamandes"}
+{"entite": "Berg ten Houte", "valeur": "Ardennes flamandes"}
+{"entite": "Bergwerk Robertshall", "valeur": "Harburger Berge"}
+{"entite": "Besek Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Beskydy Dark Sky Park", "valeur": "Beskides"}
+{"entite": "Bezbozhko Lake", "valeur": "Pirin"}
+{"entite": "Bezsonov glacier", "valeur": "Jungar Alatau"}
+{"entite": "Biakło", "valeur": "Jura cracovien"}
+{"entite": "Bielmonte", "valeur": "Alpi Biellesi"}
+{"entite": "Bielstein", "valeur": "Deister"}
+{"entite": "Bieszczady Starry-Sky Park", "valeur": "Bieszczady"}
+{"entite": "Binau", "valeur": "Odenwald"}
+{"entite": "Birnbachloch", "valeur": "Leoganger Steinberge"}
+{"entite": "Birnhorn", "valeur": "Leoganger Steinberge"}
+{"entite": "Bitoraj", "valeur": "Gorski Kotar"}
+{"entite": "Biwakowa", "valeur": "Jura cracovien"}
+{"entite": "Black Fell", "valeur": "North Pennines"}
+{"entite": "Bodzio", "valeur": "Jura cracovien"}
+{"entite": "Boelaremeersen", "valeur": "Ardennes flamandes"}
+{"entite": "Bogatyr Glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Boigneberg", "valeur": "Ardennes flamandes"}
+{"entite": "Bolshiye Prityosy", "valeur": "Oural"}
+{"entite": "Bosberg", "valeur": "Ardennes flamandes"}
+{"entite": "Bosgat", "valeur": "Ardennes flamandes"}
+{"entite": "bourg de Harunako", "valeur": "mont Haruna"}
+{"entite": "Bovenstraat/Kouterberg", "valeur": "Ardennes flamandes"}
+{"entite": "Bradley Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Brakel", "valeur": "Ardennes flamandes"}
+{"entite": "Brama Laseckich", "valeur": "Jura cracovien"}
+{"entite": "Brama Twardowskiego", "valeur": "Jura cracovien"}
+{"entite": "Bramwald", "valeur": "Weserbergland"}
+{"entite": "brèche de la Ratelière", "valeur": "chaîne des Fiz"}
+{"entite": "Brèche du Replat", "valeur": "Massif du Soreiller"}
+{"entite": "brèche du Soreiller", "valeur": "Massif du Soreiller"}
+{"entite": "Breitenau", "valeur": "Odenwald"}
+{"entite": "Breitendiel", "valeur": "Odenwald"}
+{"entite": "Brenibba", "valeur": "Breheimen"}
+{"entite": "Breznishki lakes", "valeur": "Pirin"}
+{"entite": "Brezovec", "valeur": "Bukovské vrchy"}
+{"entite": "Briksdalsbreen", "valeur": "Breheimen"}
+{"entite": "Le Brocken", "valeur": "Harz"}
+{"entite": "Broeke", "valeur": "Ardennes flamandes"}
+{"entite": "Brzuszki Buddy", "valeur": "Jura cracovien"}
+{"entite": "Bsuchalm", "valeur": "Alpes de Stubai"}
+{"entite": "Buchen", "valeur": "Odenwald"}
+{"entite": "Buchen (Odenwald)", "valeur": "Odenwald"}
+{"entite": "Buchu Monastery", "valeur": "Tibet"}
+{"entite": "Bulgarka Nature Park", "valeur": "Grand Balkan"}
+{"entite": "Buni Zom", "valeur": "Hindou Kouch"}
+{"entite": "Bürglen", "valeur": "Albis"}
+{"entite": "Burnhope Seat", "valeur": "North Pennines"}
+{"entite": "Buurtsche Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "Buynovsko Gorge", "valeur": "Rhodopes"}
+{"entite": "Byblos", "valeur": "mont Liban"}
+{"entite": "Cachoeira do Buracão", "valeur": "Chapada Diamantina"}
+{"entite": "Cachoeira do Fraga", "valeur": "Chapada Diamantina"}
+{"entite": "Cairnsmore of Fleet", "valeur": "Southern Uplands"}
+{"entite": "Callangate", "valeur": "cordillère des Andes"}
+{"entite": "calotte glaciaire de Quelccaya", "valeur": "cordillère des Andes"}
+{"entite": "camp de Carpiagne", "valeur": "Calanques de Marseille"}
+{"entite": "Cañon d'Apurimac", "valeur": "cordillère des Andes"}
+{"entite": "Canyon de Colca", "valeur": "cordillère des Andes"}
+{"entite": "Canyon de Cotahuasi", "valeur": "cordillère des Andes"}
+{"entite": "Canyon du canard", "valeur": "cordillère des Andes"}
+{"entite": "cap Couronne", "valeur": "chaîne de l'Estaque"}
+{"entite": "Cap de la Serra", "valeur": "Rasos de Peguera"}
+{"entite": "cap Sicié", "valeur": "massif du Cap-Sicié"}
+{"entite": "Capollet de l'Àguila", "valeur": "Parc naturel de la Serra de Mariola"}
+{"entite": "Carinthie", "valeur": "Alpes orientales"}
+{"entite": "Cartoona Peak", "valeur": "Plateau Tahltan"}
+{"entite": "cascade du Pissieu", "valeur": "massif des Bauges"}
+{"entite": "Cascade Loop", "valeur": "chaîne des Cascades"}
+{"entite": "cascades de Montigny", "valeur": "buttes du Parisis"}
+{"entite": "Casiri", "valeur": "cordillère des Andes"}
+{"entite": "Catogne", "valeur": "massif du Mont-Blanc"}
+{"entite": "Cave Głęboka (Góra Zborów)", "valeur": "Jura cracovien"}
+{"entite": "Central Beskidian Piedmont", "valeur": "Carpates occidentales extérieures"}
+{"entite": "Central Pieniny mountains", "valeur": "Piénines"}
+{"entite": "Čepernik", "valeur": "Osogovo"}
+{"entite": "Cerro de los Hoyos", "valeur": "La Pedriza"}
+{"entite": "Cerro El Centinela", "valeur": "Sierra de Juárez"}
+{"entite": "Cerro Negro de Mayasquer", "valeur": "Cordillère Centrale"}
+{"entite": "Chachani", "valeur": "cordillère des Andes"}
+{"entite": "La Chambotte", "valeur": "massif de la Chambotte"}
+{"entite": "Chapultepec", "valeur": "Sierra de las Cruces"}
+{"entite": "château d'Agres", "valeur": "Parc naturel de la Serra de Mariola"}
+{"entite": "château de Banyeres", "valeur": "Parc naturel de la Serra de Mariola"}
+{"entite": "château de Nikamiyama", "valeur": "mont Nijo"}
+{"entite": "château de Yōgaiyama", "valeur": "Monts Okuchichibu"}
+{"entite": "Chatsquot Mountain", "valeur": "Kitimat Ranges"}
+{"entite": "Chi Phat", "valeur": "Chaîne des Cardamones"}
+{"entite": "Chiles", "valeur": "Cordillère Centrale"}
+{"entite": "Chinchey", "valeur": "cordillère des Andes"}
+{"entite": "Chomo Lonzo", "valeur": "Himalaya"}
+{"entite": "Chomrong", "valeur": "Annapurna"}
+{"entite": "Chopicalqui", "valeur": "cordillère des Andes"}
+{"entite": "Chorleywood Common", "valeur": "Chilterns"}
+{"entite": "Chukata", "valeur": "Rhodopes"}
+{"entite": "Chullo", "valeur": "Sierra Nevada"}
+{"entite": "chutes de Nachi", "valeur": "mont Nachi"}
+{"entite": "Chyornyj glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Chyžné", "valeur": "monts Métallifères slovaques"}
+{"entite": "Ciemna Cave", "valeur": "Jura cracovien"}
+{"entite": "Cima Undici", "valeur": "Dolomites de Sesto"}
+{"entite": "cime du Gélas", "valeur": "Alpes maritimes"}
+{"entite": "Circo de la Pedriza Posterior", "valeur": "La Pedriza"}
+{"entite": "Cirque de Freysselines", "valeur": "Massif des Monédières"}
+{"entite": "cirque de Troumouse", "valeur": "Pyrénées"}
+{"entite": "Citerne", "valeur": "Basse-Terre"}
+{"entite": "Ciudad Perdida", "valeur": "Sierra Nevada de Santa Marta"}
+{"entite": "Clawé Fawe", "valeur": "Ardenne"}
+{"entite": "Cocoa Crater", "valeur": "Plateau Tahltan"}
+{"entite": "Coffee Crater", "valeur": "Plateau Tahltan"}
+{"entite": "Col Central du Soreiller", "valeur": "Massif du Soreiller"}
+{"entite": "col de Blaitière", "valeur": "Aiguilles de Chamonix"}
+{"entite": "Col de Burlan", "valeur": "Massif du Soreiller"}
+{"entite": "Col de la Selle", "valeur": "Massif du Soreiller"}
+{"entite": "col de Macassa", "valeur": "Rhodopes orientales"}
+{"entite": "col des Nantillons", "valeur": "Aiguilles de Chamonix"}
+{"entite": "col du Fou", "valeur": "Aiguilles de Chamonix"}
+{"entite": "col du Plan", "valeur": "Aiguilles de Chamonix"}
+{"entite": "Col du Replat", "valeur": "Massif du Soreiller"}
+{"entite": "col Gaviota", "valeur": "Monts Santa Ynez"}
+{"entite": "Col Nudo", "valeur": "Préalpes vénètes"}
+{"entite": "Col Oriental du Soreiller", "valeur": "Massif du Soreiller"}
+{"entite": "col Saint-Michel", "valeur": "chaîne de l'Épine"}
+{"entite": "col Supérieur du Plan", "valeur": "Aiguilles de Chamonix"}
+{"entite": "coll Pregon", "valeur": "massif du Montseny"}
+{"entite": "complexe volcanique du mont Edziza", "valeur": "Plateau Tahltan"}
+{"entite": "comté d'Erbach", "valeur": "Odenwald"}
+{"entite": "Coram Experimental Forest", "valeur": "montagnes Rocheuses"}
+{"entite": "Cordillera Ampato", "valeur": "cordillère des Andes"}
+{"entite": "Cordillera Carabaya", "valeur": "cordillère des Andes"}
+{"entite": "Cordillera Huayhuash", "valeur": "cordillère des Andes"}
+{"entite": "Cordillera Negra", "valeur": "cordillère Occidentale"}
+{"entite": "Cordillera Volcanic", "valeur": "cordillère des Andes"}
+{"entite": "Cordillère Blanche", "valeur": "cordillère des Andes"}
+{"entite": "Cordillère d'Apolobamba", "valeur": "cordillère des Andes"}
+{"entite": "Cordillère d'Urubamba", "valeur": "cordillère des Andes"}
+{"entite": "cordillère de Vilcabamba", "valeur": "cordillère des Andes"}
+{"entite": "Cordillère de Vilcanota", "valeur": "cordillère des Andes"}
+{"entite": "cordillère la Raya", "valeur": "cordillère des Andes"}
+{"entite": "Les Cornes de Chamois", "valeur": "Aiguilles de Chamonix"}
+{"entite": "Côte de Trieu", "valeur": "Ardennes flamandes"}
+{"entite": "Cotopaxi", "valeur": "Sierra"}
+{"entite": "La Couronne", "valeur": "Basse-Terre"}
+{"entite": "Crested Butte", "valeur": "montagnes West Elk"}
+{"entite": "Creta Forata", "valeur": "Alpes carniques"}
+{"entite": "Criffel", "valeur": "Southern Uplands"}
+{"entite": "Croda dei Baranci", "valeur": "Dolomites de Sesto"}
+{"entite": "Croda dei Toni", "valeur": "Dolomites de Sesto"}
+{"entite": "Croix-Scaille", "valeur": "Ardenne"}
+{"entite": "Cuca (Galați)", "valeur": "Plateau de Moldavie"}
+{"entite": "Cueva Ojos de Cristal", "valeur": "mont Roraima"}
+{"entite": "Cuicocha", "valeur": "Sierra"}
+{"entite": "Culter Fell", "valeur": "Southern Uplands"}
+{"entite": "Cumbal", "valeur": "Cordillère Centrale"}
+{"entite": "Cumes", "valeur": "Champs Phlégréens"}
+{"entite": "cylindre du Marboré", "valeur": "massif du Mont-Perdu"}
+{"entite": "Czujnik", "valeur": "Jura cracovien"}
+{"entite": "Dalvíkurbyggð", "valeur": "Tröllaskagi"}
+{"entite": "Darthuizerberg", "valeur": "Collines d'Utrecht"}
+{"entite": "Darthuizerpoort", "valeur": "Collines d'Utrecht"}
+{"entite": "Dautovo Lake", "valeur": "Pirin"}
+{"entite": "Debelets", "valeur": "Grand Balkan"}
+{"entite": "Den Ast", "valeur": "Ardennes flamandes"}
+{"entite": "Denderoordstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Dente Austriaco", "valeur": "Pasubio"}
+{"entite": "désert de Judée", "valeur": "monts de Judée"}
+{"entite": "Despeñaperros", "valeur": "Sierra Morena"}
+{"entite": "Detroit Seamount", "valeur": "chaîne sous-marine Hawaï-Empereur"}
+{"entite": "Devil's Table", "valeur": "Vasgovie"}
+{"entite": "Dmitriyev glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Dolna Baszta", "valeur": "Jura cracovien"}
+{"entite": "dôme de Barrot", "valeur": "massif du Mercantour-Argentera"}
+{"entite": "Dôme de la Gandolière", "valeur": "Massif du Soreiller"}
+{"entite": "Donderberg", "valeur": "Collines d'Utrecht"}
+{"entite": "Donebach", "valeur": "Odenwald"}
+{"entite": "Döngesberg", "valeur": "Taunus"}
+{"entite": "Dono-Medveditskaya Gryada", "valeur": "plateau de la Volga"}
+{"entite": "Donzhailau Plateau", "valeur": "Trans-Ili Alatau"}
+{"entite": "Dornberg", "valeur": "Odenwald"}
+{"entite": "Dorrebeekstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Douglasie", "valeur": "Odenwald"}
+{"entite": "Dovje-Mojstrana", "valeur": "Alpes Juliennes"}
+{"entite": "Dragoyna", "valeur": "Rhodopes"}
+{"entite": "Drienčany", "valeur": "monts Métallifères slovaques"}
+{"entite": "Dupkata", "valeur": "Rhodopes"}
+{"entite": "Duże Skałki", "valeur": "Jura cracovien"}
+{"entite": "Dwoista Baszta", "valeur": "Jura cracovien"}
+{"entite": "Dzhambul glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Dziewica", "valeur": "Jura cracovien"}
+{"entite": "Dziób Kobylański", "valeur": "Jura cracovien"}
+{"entite": "Dziurawiec cave", "valeur": "Jura cracovien"}
+{"entite": "East Carpathian Dark-Sky Tripark", "valeur": "Carpates ukrainiennes"}
+{"entite": "East Caucasus", "valeur": "Caucase"}
+{"entite": "East Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "East Twin Swallet", "valeur": "collines de Mendip"}
+{"entite": "Edelareberg", "valeur": "Ardennes flamandes"}
+{"entite": "Egge", "valeur": "Deister"}
+{"entite": "Eidskyrkja", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Eikenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Eildon Hill North", "valeur": "Eildon Hill"}
+{"entite": "Eildon Mid Hill", "valeur": "Eildon Hill"}
+{"entite": "Eildon Wester Hill", "valeur": "Eildon Hill"}
+{"entite": "Einbach", "valeur": "Odenwald"}
+{"entite": "Einbacher Mühle", "valeur": "Odenwald"}
+{"entite": "El Berrocal", "valeur": "Sierra de Guadarrama"}
+{"entite": "El Pedró (Cercs)", "valeur": "Rasos de Peguera"}
+{"entite": "El Yelmo", "valeur": "La Pedriza"}
+{"entite": "Ellestraat", "valeur": "Ardennes flamandes"}
+{"entite": "Elsterberg", "valeur": "Collines d'Utrecht"}
+{"entite": "Elverenberg-Vossenhol", "valeur": "Ardennes flamandes"}
+{"entite": "Ennert", "valeur": "Ennert"}
+{"entite": "Ensemble de bâtiments anciens des montagnes de Wudang", "valeur": "Monts Wudang"}
+{"entite": "Erftal", "valeur": "Odenwald"}
+{"entite": "Erkensruhr valley", "valeur": "Eifel"}
+{"entite": "Ernsttal", "valeur": "Odenwald"}
+{"entite": "Ertsberg", "valeur": "chaîne Centrale"}
+{"entite": "Eshtemoa", "valeur": "mont Hébron"}
+{"entite": "Espot Esquí", "valeur": "Pyrénées"}
+{"entite": "Estrada do Lorena, Monumentos de Victor Dubugras e Área de Mata Circundante", "valeur": "Serra do Mar"}
+{"entite": "Eve Cone", "valeur": "Plateau Tahltan"}
+{"entite": "Everest", "valeur": "Himalaya"}
+{"entite": "Fahrenbach", "valeur": "Odenwald"}
+{"entite": "Famenne - Ardenne", "valeur": "Ardenne"}
+{"entite": "Farmington Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Fayte", "valeur": "Ardennes flamandes"}
+{"entite": "Felsenmeer (Murrhardt)", "valeur": "monts de Souabe et Franconie"}
+{"entite": "Fenêtre de Trélaporte", "valeur": "Aiguilles de Chamonix"}
+{"entite": "Ferdinandsdorf", "valeur": "Odenwald"}
+{"entite": "Feriensiedlung Madonnenländchen", "valeur": "Odenwald"}
+{"entite": "Ferndorf", "valeur": "Alpes d'Ybbstal"}
+{"entite": "Fiertelmeers", "valeur": "Ardennes flamandes"}
+{"entite": "Fir Tsar", "valeur": "Velebit"}
+{"entite": "Fish Lake", "valeur": "Rila"}
+{"entite": "Fjallabyggð", "valeur": "Tröllaskagi"}
+{"entite": "Flaszka", "valeur": "Jura cracovien"}
+{"entite": "Foldocusheuvel", "valeur": "Collines d'Utrecht"}
+{"entite": "forêt ancienne des Monts-Chic-Chocs", "valeur": "monts Chic-Chocs"}
+{"entite": "Försterdenkmal", "valeur": "Deister"}
+{"entite": "fort de Cormeilles", "valeur": "buttes du Parisis"}
+{"entite": "Fort Freinet", "valeur": "massif des Maures"}
+{"entite": "fort Jaigarh", "valeur": "Ârâvalli"}
+{"entite": "fort Nahargarh", "valeur": "Ârâvalli"}
+{"entite": "Foveaux-Häuschen", "valeur": "Ennert"}
+{"entite": "Fowler Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Le Franchet", "valeur": "Alpes grées"}
+{"entite": "Friedhof der Freiherrn Knigge", "valeur": "Deister"}
+{"entite": "Friedrichsdorf", "valeur": "Odenwald"}
+{"entite": "Frohnhofen", "valeur": "Spessart"}
+{"entite": "Frunze glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Fuchsstein Taunus", "valeur": "Taunus"}
+{"entite": "Gaimühle", "valeur": "Odenwald"}
+{"entite": "Galgenberg", "valeur": "Collines d'Utrecht"}
+{"entite": "Galgenberg Amersfoort", "valeur": "Collines d'Utrecht"}
+{"entite": "Gallow Hill", "valeur": "Sidlaw Hills"}
+{"entite": "Galmbach", "valeur": "Odenwald"}
+{"entite": "Gammelsbachtal", "valeur": "Odenwald"}
+{"entite": "Ganzenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Gärstenhörner", "valeur": "Alpes uranaises"}
+{"entite": "Gavre", "valeur": "Ardennes flamandes"}
+{"entite": "Gazeyski Lakes", "valeur": "Pirin"}
+{"entite": "Gebchak Gonpa", "valeur": "Tibet"}
+{"entite": "Geerenberg", "valeur": "Collines d'Utrecht"}
+{"entite": "Gegham Plateau", "valeur": "Gegham"}
+{"entite": "Geierlay", "valeur": "Hunsrück"}
+{"entite": "Gemene Meers", "valeur": "Ardennes flamandes"}
+{"entite": "Gemerský Sad", "valeur": "monts Métallifères slovaques"}
+{"entite": "géoparc de Kirishima", "valeur": "monts Kirishima"}
+{"entite": "Géorgie", "valeur": "Caucase"}
+{"entite": "Gergiiski lakes", "valeur": "Pirin"}
+{"entite": "Gerolzahn", "valeur": "Odenwald"}
+{"entite": "Ghamubar Zom", "valeur": "Hindou Kouch"}
+{"entite": "Gipfel der Stille", "valeur": "Monts Orvin"}
+{"entite": "Girdu Pass", "valeur": "monts Sulaiman"}
+{"entite": "Gisement d'Hassi R'Mel", "valeur": "Atlas"}
+{"entite": "Gjallica", "valeur": "Alpes dinariques"}
+{"entite": "glacier Agassiz", "valeur": "chaîne Saint-Élie"}
+{"entite": "glacier Arhuay", "valeur": "cordillère des Andes"}
+{"entite": "glacier d'Envers de Blaitière", "valeur": "Aiguilles de Chamonix"}
+{"entite": "glacier d'Envers du Plan", "valeur": "Aiguilles de Chamonix"}
+{"entite": "glacier de Trélaporte", "valeur": "Aiguilles de Chamonix"}
+{"entite": "glacier de Trift", "valeur": "chaîne du Weissmies"}
+{"entite": "glacier Ouest du Diable", "valeur": "Massif du Soreiller"}
+{"entite": "Glacier Talgar South", "valeur": "Trans-Ili Alatau"}
+{"entite": "Glashofen", "valeur": "Odenwald"}
+{"entite": "Glockenberg", "valeur": "Harz"}
+{"entite": "Gobernitzberg", "valeur": "Gleinalpe"}
+{"entite": "Goldsborough", "valeur": "North Pennines"}
+{"entite": "Golyamo Gradishte", "valeur": "Strandja"}
+{"entite": "Górczyna", "valeur": "Jura cracovien"}
+{"entite": "gorges de Trigrad", "valeur": "Rhodopes"}
+{"entite": "Gorodetsky Glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Gottersdorf", "valeur": "Odenwald"}
+{"entite": "Grammont", "valeur": "Ardennes flamandes"}
+{"entite": "Grand-Paradis", "valeur": "Alpes grées"}
+{"entite": "grand sanctuaire Nachi de Kumano", "valeur": "mont Nachi"}
+{"entite": "Grand Sans Toucher", "valeur": "Basse-Terre"}
+{"entite": "Grande Découverte", "valeur": "Basse-Terre"}
+{"entite": "Graswangtal", "valeur": "Alpes d'Ammergau"}
+{"entite": "Graul", "valeur": "Monts Métallifères"}
+{"entite": "Great Mis Tor", "valeur": "Dartmoor"}
+{"entite": "Grebbeberg", "valeur": "Collines d'Utrecht"}
+{"entite": "Gretengrund", "valeur": "Odenwald"}
+{"entite": "Grigor'yev glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Grivola", "valeur": "Alpes grées"}
+{"entite": "Großhornbach", "valeur": "Odenwald"}
+{"entite": "Grootmeers", "valeur": "Ardennes flamandes"}
+{"entite": "Grossmutterloch", "valeur": "Gastlosen"}
+{"entite": "grotte de La Cha", "valeur": "chaîne du Bargy"}
+{"entite": "grotte de Tabun", "valeur": "mont Carmel"}
+{"entite": "grotte du Pigailh", "valeur": "massif du Plantaurel"}
+{"entite": "grotte du soldat", "valeur": "Qarabiy yayla"}
+{"entite": "Gruberhörndl", "valeur": "Alpes de Chiemgau"}
+{"entite": "Grupa Pandy", "valeur": "Jura cracovien"}
+{"entite": "Grzyb", "valeur": "Jura cracovien"}
+{"entite": "GSSP for the base of the Roadian", "valeur": "montagnes Guadalupe"}
+{"entite": "Guamote", "valeur": "Sierra"}
+{"entite": "Guilleminlaan", "valeur": "Ardennes flamandes"}
+{"entite": "Gul Lasht Zom", "valeur": "Hindou Kouch"}
+{"entite": "Høgste Breakulen", "valeur": "Breheimen"}
+{"entite": "Hammelburg", "valeur": "Rhön"}
+{"entite": "Hardangervegen", "valeur": "Hardangervidda"}
+{"entite": "Hardheim", "valeur": "Odenwald"}
+{"entite": "Harfa", "valeur": "Jura cracovien"}
+{"entite": "Haruna-jinja", "valeur": "mont Haruna"}
+{"entite": "Harunasan-machi", "valeur": "mont Haruna"}
+{"entite": "Hasenbrücke", "valeur": "Wiehengebirge"}
+{"entite": "Hatchett Hill", "valeur": "Metacomet Ridge"}
+{"entite": "Hautem-Saint-Liévin", "valeur": "Ardennes flamandes"}
+{"entite": "Hauts Plateaux", "valeur": "Atlas"}
+{"entite": "Haydushki Chukar", "valeur": "Grand Balkan"}
+{"entite": "Hazenberg", "valeur": "Collines d'Utrecht"}
+{"entite": "Heerhag", "valeur": "Odenwald"}
+{"entite": "Heiðarsporðar", "valeur": "Hautes Terres d'Islande"}
+{"entite": "Heide", "valeur": "Ardennes flamandes"}
+{"entite": "Heidersbach", "valeur": "Odenwald"}
+{"entite": "Heidersbacher Mühle", "valeur": "Odenwald"}
+{"entite": "Helm Glacier", "valeur": "Monts de la Reine-Alexandra"}
+{"entite": "Helmet Peak", "valeur": "Kitimat Ranges"}
+{"entite": "Hemelberg", "valeur": "Ardennes flamandes"}
+{"entite": "Hendrickson Canyon Natural Resources Conservation Area", "valeur": "Willapa Hills"}
+{"entite": "Heppdiel", "valeur": "Odenwald"}
+{"entite": "Herzele", "valeur": "Ardennes flamandes"}
+{"entite": "Hettigenbeuern", "valeur": "Odenwald"}
+{"entite": "Heynsdalebos", "valeur": "Ardennes flamandes"}
+{"entite": "Higby Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Hilsenhain", "valeur": "Odenwald"}
+{"entite": "Himalchuli", "valeur": "Mansiri Himal"}
+{"entite": "Himmelsleiter", "valeur": "Monts Orvin"}
+{"entite": "Hinden Maru", "valeur": "Monts Kaifu"}
+{"entite": "Hinterer Ziegenrücken", "valeur": "Harz"}
+{"entite": "Hlboké nad Váhom", "valeur": "Strážovské vrchy"}
+{"entite": "Hochälpele-Weißenfluh Group", "valeur": "Massif du Bregenzerwald"}
+{"entite": "Höchst im Odenwald", "valeur": "Odenwald"}
+{"entite": "Hochtannberg area", "valeur": "Massif de Lechquellen"}
+{"entite": "Hohe Munde", "valeur": "Chaînon de Mieming"}
+{"entite": "Hoher List", "valeur": "Eifel volcanique"}
+{"entite": "Hollerbach", "valeur": "Odenwald"}
+{"entite": "Holstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Hoogbos", "valeur": "Ardennes flamandes"}
+{"entite": "Hoogkoutermolen", "valeur": "Ardennes flamandes"}
+{"entite": "Horebeke", "valeur": "Ardennes flamandes"}
+{"entite": "Hörgársveit", "valeur": "Tröllaskagi"}
+{"entite": "Hornbach", "valeur": "Odenwald"}
+{"entite": "Hornindalsrokken", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Hostišovce", "valeur": "monts Métallifères slovaques"}
+{"entite": "Hotondberg", "valeur": "Ardennes flamandes"}
+{"entite": "La Houppe", "valeur": "Ardennes flamandes"}
+{"entite": "Hoya de San Blas", "valeur": "Sierra de Guadarrama"}
+{"entite": "Hrlica", "valeur": "monts Métallifères slovaques"}
+{"entite": "Hrušovo", "valeur": "monts Métallifères slovaques"}
+{"entite": "Huaguruncho mountain range", "valeur": "cordillère des Andes"}
+{"entite": "Hualca Hualca", "valeur": "cordillère des Andes"}
+{"entite": "Huallanca mountain range", "valeur": "cordillère des Andes"}
+{"entite": "Huamanchoque", "valeur": "Cordillère d'Urubamba"}
+{"entite": "Huandoy", "valeur": "cordillère des Andes"}
+{"entite": "Huantsan", "valeur": "cordillère des Andes"}
+{"entite": "Huascarán", "valeur": "cordillère des Andes"}
+{"entite": "Huaynaputina", "valeur": "cordillère des Andes"}
+{"entite": "Huaytapallana mountain range", "valeur": "cordillère des Andes"}
+{"entite": "Hüttberg-Hohle", "valeur": "monts de Souabe et Franconie"}
+{"entite": "Hüttlenwaldschlucht", "valeur": "monts de Souabe et Franconie"}
+{"entite": "Ibón de Cregüeña", "valeur": "massif de la Maladeta"}
+{"entite": "Ice Peak", "valeur": "Plateau Tahltan"}
+{"entite": "Ikkiss", "valeur": "Haut Atlas"}
+{"entite": "Imlil", "valeur": "Haut Atlas"}
+{"entite": "Imtan", "valeur": "Hauran"}
+{"entite": "Innerdalstårnet", "valeur": "Trollheimen"}
+{"entite": "International Bahá'í Archives", "valeur": "mont Carmel"}
+{"entite": "Isa Aga", "valeur": "monts Šar"}
+{"entite": "Izera Dark Sky Park", "valeur": "monts de la Jizera"}
+{"entite": "Jacksonville-to-Fort Klamath Military Wagon Road", "valeur": "chaîne des Cascades"}
+{"entite": "Jakta", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Jalová", "valeur": "Bukovské vrchy"}
+{"entite": "Jama Vodarica", "valeur": "Velebit"}
+{"entite": "Jankovac", "valeur": "Papuk"}
+{"entite": "Jarsai Glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Jaskinia Łabajowa", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia Deszczowa", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia Gorenicka", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia Krowia", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia Mała na Wrzosach", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia na Biśniku", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia na Tomaszówkach Dolnych", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia nad Matką Boską", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia nad Szańcem", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia Racławicka", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia Towarna", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia w Straszykowej Górze", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia w Wierzchowskiej Grani", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia z Makaronem", "valeur": "Jura cracovien"}
+{"entite": "Jaskinia Żabia", "valeur": "Jura cracovien"}
+{"entite": "Jewell Meadows Wildlife Area", "valeur": "chaîne côtière de l'Oregon"}
+{"entite": "Jōetsu border", "valeur": "Monts Mikuni"}
+{"entite": "Jostedalsbreen", "valeur": "Breheimen"}
+{"entite": "Kabusan Prefectural Natural Park", "valeur": "montagnes Dewa"}
+{"entite": "Kairak falls", "valeur": "Trans-Ili Alatau"}
+{"entite": "Kajaran", "valeur": "Zanguezour"}
+{"entite": "Kalavrita Ski Resort", "valeur": "Aroania"}
+{"entite": "Kalenberg", "valeur": "Deister"}
+{"entite": "Kalin Kamen", "valeur": "Osogovo"}
+{"entite": "Kaltenbrunn", "valeur": "Odenwald"}
+{"entite": "Kamaʻehuakanaloa", "valeur": "chaîne sous-marine Hawaï-Empereur"}
+{"entite": "Kamelbuckel", "valeur": "Monts Orvin"}
+{"entite": "Kamogawa", "valeur": "collines de Bōsō"}
+{"entite": "Kamp Dobbendal", "valeur": "Hondsrug"}
+{"entite": "Kanarieberg", "valeur": "Ardennes flamandes"}
+{"entite": "Kangtega", "valeur": "Himalaya"}
+{"entite": "Kannogawanokkoshi", "valeur": "Monts Tanzawa"}
+{"entite": "Kapelleberg", "valeur": "Ardennes flamandes"}
+{"entite": "Karkariya", "valeur": "Rhodopes"}
+{"entite": "Kassiansee", "valeur": "Alpes de Sarntal"}
+{"entite": "Kassin glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Kasteeldreef", "valeur": "Ardennes flamandes"}
+{"entite": "Katsuragi 28 Shuku sutra mound 26", "valeur": "mont Nijo"}
+{"entite": "Keiweg-Leberg", "valeur": "Ardennes flamandes"}
+{"entite": "Kennedy Peak", "valeur": "Chin Hills"}
+{"entite": "Kimsquit Peak", "valeur": "Kitimat Ranges"}
+{"entite": "King's Seat", "valeur": "Sidlaw Hills"}
+{"entite": "Kirkovo", "valeur": "Rhodopes orientales"}
+{"entite": "Kitasu Hill", "valeur": "Kitimat Ranges"}
+{"entite": "Klawiatura (skała)", "valeur": "Jura cracovien"}
+{"entite": "Kleban-Byk Reservoir", "valeur": "plateau du Donets"}
+{"entite": "Kleiberg", "valeur": "Ardennes flamandes"}
+{"entite": "Kleinhornbach", "valeur": "Odenwald"}
+{"entite": "Kleistraat", "valeur": "Ardennes flamandes"}
+{"entite": "Klemhoutstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Klingenpfad", "valeur": "Bergisches Land"}
+{"entite": "Kloosterbosstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Kloosterstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Kluczwody Valley", "valeur": "Jura cracovien"}
+{"entite": "Kluisbergen", "valeur": "Ardennes flamandes"}
+{"entite": "Knur", "valeur": "Jura cracovien"}
+{"entite": "Kobilino Branishte", "valeur": "Rila"}
+{"entite": "Kobylskie Góry", "valeur": "Jura cracovien"}
+{"entite": "Kochkor Valley", "valeur": "Tian Shan"}
+{"entite": "Kociha", "valeur": "monts Métallifères slovaques"}
+{"entite": "Koerheuvel", "valeur": "Collines d'Utrecht"}
+{"entite": "Kokbulak glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Kokerelle", "valeur": "Ardennes flamandes"}
+{"entite": "Kolåstinden", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Komotini Mountains", "valeur": "Rhodopes"}
+{"entite": "Konstituciya glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Koppenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Korsika", "valeur": "Odenwald"}
+{"entite": "Kortekeer", "valeur": "Ardennes flamandes"}
+{"entite": "Kortelake", "valeur": "Ardennes flamandes"}
+{"entite": "Korzhenevsky Glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Kotlyakov glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Koumariá", "valeur": "Vermion"}
+{"entite": "Kovačičeva planina", "valeur": "Mont Kolovrat"}
+{"entite": "Kōya", "valeur": "mont Kōya"}
+{"entite": "Koyasan", "valeur": "mont Kōya"}
+{"entite": "Kōyasanchō Ishimichi-Tamagawakyō Prefectural Natural Park", "valeur": "mont Kōya"}
+{"entite": "Kōzan-ji Temple", "valeur": "mont Kōya"}
+{"entite": "kraï du Primorié", "valeur": "Sikhote-Aline"}
+{"entite": "Kraków Gate", "valeur": "Jura cracovien"}
+{"entite": "Kraljeva peć", "valeur": "Mosor"}
+{"entite": "Kręta Baszta", "valeur": "Jura cracovien"}
+{"entite": "Kroshka glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Krótka Grzęda", "valeur": "Jura cracovien"}
+{"entite": "Kruisberg", "valeur": "Ardennes flamandes"}
+{"entite": "Kruisem", "valeur": "Ardennes flamandes"}
+{"entite": "Kruk, Skały Kroczyckie", "valeur": "Jura cracovien"}
+{"entite": "Krumbach", "valeur": "Odenwald"}
+{"entite": "Krzywy Sąd", "valeur": "Jura cracovien"}
+{"entite": "Ksar Aït-ben-Haddou", "valeur": "Haut Atlas"}
+{"entite": "Kühlenbronn", "valeur": "Forêt-Noire"}
+{"entite": "Kummershof", "valeur": "Odenwald"}
+{"entite": "Küre Mountains National Park", "valeur": "monts Küre"}
+{"entite": "Kuźnia", "valeur": "Jura cracovien"}
+{"entite": "Kverkjökull", "valeur": "Kverkfjöll"}
+{"entite": "Kvitegga", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Kwaremont", "valeur": "Ardennes flamandes"}
+{"entite": "Laarschenberg", "valeur": "Collines d'Utrecht"}
+{"entite": "lac Atitlán", "valeur": "hauts-plateaux du Guatemala"}
+{"entite": "lac Cornu", "valeur": "aiguilles Rouges"}
+{"entite": "Lac de Bonnel", "valeur": "Alpes pennines"}
+{"entite": "lac de Tsivlós", "valeur": "Aroania"}
+{"entite": "lac du Crozet", "valeur": "chaîne de Belledonne"}
+{"entite": "lac Gratiní", "valeur": "Rhodopes"}
+{"entite": "lac Haruna", "valeur": "mont Haruna"}
+{"entite": "lac Lucero", "valeur": "White Sands"}
+{"entite": "lac Otero", "valeur": "White Sands"}
+{"entite": "Ladeuze (helling)", "valeur": "Ardennes flamandes"}
+{"entite": "Ladinie", "valeur": "Dolomites"}
+{"entite": "Laguna Arhuaycocha", "valeur": "cordillère des Andes"}
+{"entite": "Laguna del Maule", "valeur": "cordillère des Andes"}
+{"entite": "Lalla-Khadîdja", "valeur": "Djurdjura"}
+{"entite": "Lamentation Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Lampenhain", "valeur": "Odenwald"}
+{"entite": "Langar", "valeur": "Pamir"}
+{"entite": "Langendries", "valeur": "Ardennes flamandes"}
+{"entite": "Langenelz", "valeur": "Odenwald"}
+{"entite": "Laubenstein", "valeur": "Alpes de Chiemgau"}
+{"entite": "Laudenberg", "valeur": "Odenwald"}
+{"entite": "Laufach", "valeur": "Spessart"}
+{"entite": "Lawson Glacier", "valeur": "Chaîne Victory"}
+{"entite": "Leberg", "valeur": "Ardennes flamandes"}
+{"entite": "Leersumse Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "Leirdalen", "valeur": "Jotunheimen"}
+{"entite": "Lej na Łączkach", "valeur": "Jura cracovien"}
+{"entite": "Leśna Turnia", "valeur": "Jura cracovien"}
+{"entite": "Lettenberg", "valeur": "monts des Flandres"}
+{"entite": "Lichtenklingen", "valeur": "Odenwald"}
+{"entite": "Lierde", "valeur": "Ardennes flamandes"}
+{"entite": "Limbach", "valeur": "Odenwald"}
+{"entite": "Lindenmühle", "valeur": "Odenwald"}
+{"entite": "Liuzhou Forest City", "valeur": "monts Nanling"}
+{"entite": "Llaca Glacier", "valeur": "cordillère des Andes"}
+{"entite": "Locha", "valeur": "Jura cracovien"}
+{"entite": "Lodalskåpa", "valeur": "Breheimen"}
+{"entite": "Lombokheuvel", "valeur": "Collines d'Utrecht"}
+{"entite": "Lowery Glacier", "valeur": "Monts de la Reine-Alexandra"}
+{"entite": "Młynarze", "valeur": "Jura cracovien"}
+{"entite": "Mała Zegarowa", "valeur": "Jura cracovien"}
+{"entite": "Małe Pieniny", "valeur": "Piénines"}
+{"entite": "Maarnse Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "Magnezitovce", "valeur": "monts Métallifères slovaques"}
+{"entite": "Mahakoshal Belt", "valeur": "Satpura"}
+{"entite": "Maiden Paps", "valeur": "Southern Uplands"}
+{"entite": "Makarevich glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Mali", "valeur": "Fouta-Djalon"}
+{"entite": "Malokamenishki lakes", "valeur": "Pirin"}
+{"entite": "Mamelles", "valeur": "Basse-Terre"}
+{"entite": "Manaslu", "valeur": "Mansiri Himal"}
+{"entite": "Manhay", "valeur": "Ardenne"}
+{"entite": "Manita peć", "valeur": "Velebit"}
+{"entite": "Manitook Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Manshuk Mametova Glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Margarethenhöhe", "valeur": "Siebengebirge"}
+{"entite": "Markedal", "valeur": "Ardennes flamandes"}
+{"entite": "massif ardennais", "valeur": "Ardenne"}
+{"entite": "massif de Dora Maira", "valeur": "Alpes occidentales"}
+{"entite": "massif des Corbières", "valeur": "Pré-Pyrénées"}
+{"entite": "Massue d'Hercule", "valeur": "Jura cracovien"}
+{"entite": "Masters Road", "valeur": "Velebit"}
+{"entite": "Maszycka Cave", "valeur": "Jura cracovien"}
+{"entite": "Matéliane", "valeur": "Basse-Terre"}
+{"entite": "mausolée du clan Tokugawa", "valeur": "mont Kōya"}
+{"entite": "May Queen's Throne", "valeur": "Dartmoor"}
+{"entite": "McCall Glacier", "valeur": "Goat Rocks"}
+{"entite": "Me Dake (mont Nijō)", "valeur": "mont Nijo"}
+{"entite": "Medoev glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Medvidka", "valeur": "plateau de Podolie"}
+{"entite": "Meersestraat", "valeur": "Ardennes flamandes"}
+{"entite": "Mehron", "valeur": "monts Turkestan"}
+{"entite": "La Meije", "valeur": "Alpes du Dauphiné"}
+{"entite": "Meiji Seamount", "valeur": "chaîne sous-marine Hawaï-Empereur"}
+{"entite": "Meisental", "valeur": "Odenwald"}
+{"entite": "Mesch Neue Mühle", "valeur": "Wiehengebirge"}
+{"entite": "Meuleken 't Dal", "valeur": "Ardennes flamandes"}
+{"entite": "Mihalovci", "valeur": "Slovenske Gorice"}
+{"entite": "military cemetery Brigata Liguria", "valeur": "Pasubio"}
+{"entite": "Minakami Biosphere Reserve", "valeur": "Monts Mikuni"}
+{"entite": "Mindo", "valeur": "Sierra"}
+{"entite": "mine de Pitinga", "valeur": "plateau des Guyanes"}
+{"entite": "Mirowski Studnisko shaft", "valeur": "Jura cracovien"}
+{"entite": "Misti", "valeur": "cordillère des Andes"}
+{"entite": "Mitrovo and Argirovo Lakes", "valeur": "Pirin"}
+{"entite": "Mitteldorf", "valeur": "Odenwald"}
+{"entite": "Molen Ter Sleepe", "valeur": "Ardennes flamandes"}
+{"entite": "Molenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Momijidani", "valeur": "mont Rokkō"}
+{"entite": "Monaco", "valeur": "Alpes maritimes"}
+{"entite": "monastère de Rila", "valeur": "Rila"}
+{"entite": "Monastery of Agios Ioannis Kareas", "valeur": "Hymette"}
+{"entite": "Monchique", "valeur": "Serra de Monchique"}
+{"entite": "mont Agel", "valeur": "Alpes maritimes"}
+{"entite": "Mont Akagio", "valeur": "Monts Kaifu"}
+{"entite": "mont Argentera", "valeur": "Alpes maritimes"}
+{"entite": "mont Asahi", "valeur": "Monts Mikuni"}
+{"entite": "mont Avic", "valeur": "Alpes grées"}
+{"entite": "Mont Azumaya", "valeur": "Monts Mikuni"}
+{"entite": "mont Beauvoir", "valeur": "Massif de la Chartreuse"}
+{"entite": "mont Bégo", "valeur": "Alpes maritimes"}
+{"entite": "mont Bimberi", "valeur": "Monts Brindabella"}
+{"entite": "Mont Blanc - site d'exception", "valeur": "massif du Mont-Blanc"}
+{"entite": "mont Bo", "valeur": "Alpi Biellesi"}
+{"entite": "mont Bogong", "valeur": "Cordillère australienne"}
+{"entite": "mont Clapier", "valeur": "Alpes maritimes"}
+{"entite": "mont de l'Enclus", "valeur": "Ardennes flamandes"}
+{"entite": "mont des Récollets", "valeur": "monts des Flandres"}
+{"entite": "mont Edziza", "valeur": "Plateau Tahltan"}
+{"entite": "mont Émilius", "valeur": "Alpes grées"}
+{"entite": "mont Glacier", "valeur": "Alpes grées"}
+{"entite": "Mont Haruna Fuji", "valeur": "mont Haruna"}
+{"entite": "Mont Hatao", "valeur": "monts Kongō"}
+{"entite": "Mont Hayama", "valeur": "montagnes Dewa"}
+{"entite": "Mont Inatsutsumi", "valeur": "Monts Mikuni"}
+{"entite": "mont Kamafuse", "valeur": "montagnes du mont Osore"}
+{"entite": "mont Kemmel", "valeur": "monts des Flandres"}
+{"entite": "mont Khalatsa", "valeur": "Caucase"}
+{"entite": "Mont Kokereel", "valeur": "monts des Flandres"}
+{"entite": "mont Koshin", "valeur": "montagnes Ashio"}
+{"entite": "mont Kuriko", "valeur": "monts Ōu"}
+{"entite": "mont Kurotaki", "valeur": "Monts Shikoku"}
+{"entite": "mont Mantaro", "valeur": "Monts Mikuni"}
+{"entite": "mont Mars", "valeur": "Alpi Biellesi"}
+{"entite": "Mont Meleta", "valeur": "Monts Bamboutos"}
+{"entite": "mont Noir", "valeur": "monts des Flandres"}
+{"entite": "Mont Odugongen", "valeur": "Monts Ryōhaku"}
+{"entite": "mont Orchez", "valeur": "massif du Chablais"}
+{"entite": "mont Pelvoux", "valeur": "Alpes du Dauphiné"}
+{"entite": "mont Sennokura", "valeur": "Monts Mikuni"}
+{"entite": "mont Shigekura", "valeur": "Monts Mikuni"}
+{"entite": "Mont Snowdon", "valeur": "Eryri"}
+{"entite": "mont Tairappyō", "valeur": "Monts Mikuni"}
+{"entite": "Mont Tōjima", "valeur": "Monts Kitakami"}
+{"entite": "Mont Unagitodoro", "valeur": "Monts Kaifu"}
+{"entite": "mont Warning", "valeur": "chaîne Tweed"}
+{"entite": "Mont Watten", "valeur": "monts des Flandres"}
+{"entite": "Montagne de Faraud", "valeur": "Diois"}
+{"entite": "montagne de la Capesterre", "valeur": "Basse-Terre"}
+{"entite": "Montcabrer", "valeur": "Parc naturel de la Serra de Mariola"}
+{"entite": "Monte Corno Battisti", "valeur": "Pasubio"}
+{"entite": "Monte Moussaillon", "valeur": "Alpes grées"}
+{"entite": "Monte Ōmori", "valeur": "Monts Shikoku"}
+{"entite": "Monteberg", "valeur": "monts des Flandres"}
+{"entite": "monts Caraïbes", "valeur": "Basse-Terre"}
+{"entite": "monts Valin", "valeur": "Hautes terres laurentiennes"}
+{"entite": "Mormon Lumber Road", "valeur": "Montagnes de San Bernardino"}
+{"entite": "Morne à Louis", "valeur": "Basse-Terre"}
+{"entite": "Morne Boudoute", "valeur": "Basse-Terre"}
+{"entite": "morne Carmichaël", "valeur": "Basse-Terre"}
+{"entite": "Morne du Col", "valeur": "Basse-Terre"}
+{"entite": "Morne Incapable", "valeur": "Basse-Terre"}
+{"entite": "Morne Jeanneton", "valeur": "Basse-Terre"}
+{"entite": "Morne Léger", "valeur": "Basse-Terre"}
+{"entite": "Morne Mazeau", "valeur": "Basse-Terre"}
+{"entite": "Morne Moustique", "valeur": "Basse-Terre"}
+{"entite": "Morrão", "valeur": "Chapada Diamantina"}
+{"entite": "Morro do Chapéu State Park", "valeur": "Chapada Diamantina"}
+{"entite": "Morro do Pai Inácio", "valeur": "Chapada Diamantina"}
+{"entite": "Mörschenhardt", "valeur": "Odenwald"}
+{"entite": "Mothana (roman fort)", "valeur": "Hauran"}
+{"entite": "Motta Naluns", "valeur": "Silvretta"}
+{"entite": "Mottarone", "valeur": "Alpes pennines"}
+{"entite": "Mount Buffalo", "valeur": "Cordillère australienne"}
+{"entite": "Mount Clague", "valeur": "Kitimat Ranges"}
+{"entite": "Mount Dandenong", "valeur": "Cordillère australienne"}
+{"entite": "Mount Donna Buang", "valeur": "Cordillère australienne"}
+{"entite": "Mount Hakusan Biosphere Reserve", "valeur": "Monts Ryōhaku"}
+{"entite": "Mount Higashiotafuku", "valeur": "montagnes Rokkō"}
+{"entite": "Mount Hinaga", "valeur": "Monts Ryōhaku"}
+{"entite": "Mount Kamon", "valeur": "mont Haruna"}
+{"entite": "Mount Myōhō", "valeur": "mont Nachi"}
+{"entite": "Mount Nishimata", "valeur": "Monts Kaifu"}
+{"entite": "Mount Odaigahara, Mount Omine and Osugidani Biosphere Reserve", "valeur": "massif d'Ōmine"}
+{"entite": "Mount Sanford", "valeur": "Metacomet Ridge"}
+{"entite": "Muckental", "valeur": "Odenwald"}
+{"entite": "Mudau", "valeur": "Odenwald"}
+{"entite": "Mur de Grammont", "valeur": "Ardennes flamandes"}
+{"entite": "Muziekberg", "valeur": "Ardennes flamandes"}
+{"entite": "N227 road", "valeur": "Collines d'Utrecht"}
+{"entite": "N238 road", "valeur": "Collines d'Utrecht"}
+{"entite": "Nat Ma Taung", "valeur": "Chin Hills"}
+{"entite": "Nature Reserve Skała Kmity", "valeur": "Jura cracovien"}
+{"entite": "Naučná stezka Hruboskalsko", "valeur": "paradis de Bohême"}
+{"entite": "Nauradehi Wildlife Sanctuary", "valeur": "Vindhya"}
+{"entite": "Népal", "valeur": "Himalaya"}
+{"entite": "Nerother Kopf", "valeur": "Eifel volcanique"}
+{"entite": "Neukum", "valeur": "Noachis Terra"}
+{"entite": "Nevado Coropuna", "valeur": "cordillère des Andes"}
+{"entite": "Nevado Mismi", "valeur": "cordillère des Andes"}
+{"entite": "Nez Cassé", "valeur": "Basse-Terre"}
+{"entite": "Niedere Alb", "valeur": "Jura souabe"}
+{"entite": "Nietoperzowa Cave", "valeur": "Jura cracovien"}
+{"entite": "Nižný Skálnik", "valeur": "monts Métallifères slovaques"}
+{"entite": "Nöggenschwiel", "valeur": "Forêt-Noire"}
+{"entite": "Nokereberg", "valeur": "Ardennes flamandes"}
+{"entite": "North Eifel", "valeur": "Eifel"}
+{"entite": "Northern Talgar Glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Nová Sedlica", "valeur": "Bukovské vrchy"}
+{"entite": "Novoselytsia, Vinnytsya Raion", "valeur": "plateau de Podolie"}
+{"entite": "Nowa Góra", "valeur": "Piénines"}
+{"entite": "O Dake (mont Nijō)", "valeur": "mont Nijo"}
+{"entite": "Ołtarz", "valeur": "Jura cracovien"}
+{"entite": "Oberflockenbach", "valeur": "Odenwald"}
+{"entite": "Oberhöllgrund", "valeur": "Odenwald"}
+{"entite": "Oberscheidental", "valeur": "Odenwald"}
+{"entite": "oblast de Riazan", "valeur": "Plateau central de Russie"}
+{"entite": "Okap pod Mamutową", "valeur": "Jura cracovien"}
+{"entite": "Okuno-in", "valeur": "mont Kōya"}
+{"entite": "Okura Ridge", "valeur": "Monts Tanzawa"}
+{"entite": "L'Olan", "valeur": "Alpes du Dauphiné"}
+{"entite": "Oltari", "valeur": "Velebit"}
+{"entite": "Łom Hrabski", "valeur": "Jura cracovien"}
+{"entite": "Łom Karmelicki", "valeur": "Jura cracovien"}
+{"entite": "Onderbossenaarstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Orlovets", "valeur": "Rila"}
+{"entite": "Ossétie du Sud-Alanie", "valeur": "Caucase"}
+{"entite": "Osteifel", "valeur": "Eifel"}
+{"entite": "Österreichspitze", "valeur": "Monts Orvin"}
+{"entite": "Oud Valkeveen", "valeur": "Collines d'Utrecht"}
+{"entite": "Ouest de l'Eifel", "valeur": "Eifel"}
+{"entite": "Overberg", "valeur": "Ardennes flamandes"}
+{"entite": "Oymyakon depression", "valeur": "Plateau d'Oïmiakon"}
+{"entite": "Paasheuvel", "valeur": "Collines d'Utrecht"}
+{"entite": "Paffelsberg", "valeur": "Ennert"}
+{"entite": "Palgongsan", "valeur": "monts Taebaek"}
+{"entite": "Palgov glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Papagou cemetery", "valeur": "Hymette"}
+{"entite": "Papuk Nature Park", "valeur": "Papuk"}
+{"entite": "Paranapiacaba Springs Municipal Nature Park", "valeur": "Serra do Mar"}
+{"entite": "parc animalier de Merlet", "valeur": "aiguilles Rouges"}
+{"entite": "parc d'État de Lake Vermilion-Soudan Underground Mine", "valeur": "Gisement du Vermilion Range (Minnesota)"}
+{"entite": "parc national Aso-Kujū", "valeur": "monts Kujū"}
+{"entite": "parc national d'Ala Archa", "valeur": "Alataou kirghize"}
+{"entite": "parc national de Cairngorms", "valeur": "Cairngorms"}
+{"entite": "parc national de Kirirom", "valeur": "Chaîne des Cardamones"}
+{"entite": "parc national de Phawngpui Blue Mountain", "valeur": "chaîne de l'Arakan"}
+{"entite": "parc national de Risnjak", "valeur": "Gorski Kotar"}
+{"entite": "parc national de Toubkal", "valeur": "Haut Atlas"}
+{"entite": "parc national de Towada-Hachimantai", "valeur": "monts Ōu"}
+{"entite": "parc national des monts Šar", "valeur": "monts Šar"}
+{"entite": "parc national du Cilento et du Val de Diano", "valeur": "Cilento"}
+{"entite": "parc national et naturel de Sierra Nevada", "valeur": "Sierra Nevada"}
+{"entite": "parc national Los Mármoles", "valeur": "Sierra Madre orientale"}
+{"entite": "parc national Nahuelbuta", "valeur": "Cordillère de Nahuelbuta"}
+{"entite": "Parc Naturel de Corralejo", "valeur": "dunes de Corralejo"}
+{"entite": "parc naturel de Dinara", "valeur": "Dinara"}
+{"entite": "parc naturel de Frankenhöhe", "valeur": "Frankenhöhe"}
+{"entite": "parc naturel de la Sierra et des gorges de Guara", "valeur": "sierra de Guara"}
+{"entite": "parc naturel du Klioutchevskoï", "valeur": "Groupe volcanique du Klioutchevskoï"}
+{"entite": "parc quasi national d'Ibi-Sekigahara-Yōrō", "valeur": "monts Yōrō"}
+{"entite": "parc quasi national de Chōkai", "valeur": "montagnes Dewa"}
+{"entite": "parc quasi national de Hiba-Dogo-Taishaku", "valeur": "monts Chūgoku"}
+{"entite": "parc quasi-national de Hyōnosen-Ushiroyama-Nagisan", "valeur": "monts Chūgoku"}
+{"entite": "parc quasi national de Kōya-Ryūjin", "valeur": "monts Kii"}
+{"entite": "parc quasi national de Kurikoma", "valeur": "monts Ōu"}
+{"entite": "parc quasi national de Nishi-Chugoku Sanchi", "valeur": "monts Chūgoku"}
+{"entite": "parc quasi national de Suzuka", "valeur": "Monts Suzuka"}
+{"entite": "parc quasi national de Zaō", "valeur": "monts Ōu"}
+{"entite": "parc quasi-national Tanzawa-Ōyama", "valeur": "Monts Tanzawa"}
+{"entite": "parc régional de Pentland Hills", "valeur": "Pentland Hills"}
+{"entite": "Parikeberg", "valeur": "Ardennes flamandes"}
+{"entite": "Parque Natural Municipal do Espalhado", "valeur": "Chapada Diamantina"}
+{"entite": "Passo del Fò", "valeur": "Resegone"}
+{"entite": "Pastoruri Glacier", "valeur": "cordillère des Andes"}
+{"entite": "Paterberg", "valeur": "Ardennes flamandes"}
+{"entite": "Pawłowska Góra", "valeur": "Piénines"}
+{"entite": "Pazurek I", "valeur": "Jura cracovien"}
+{"entite": "Peak Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Peck Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Peña Ubiña", "valeur": "cordillère Cantabrique"}
+{"entite": "La Pendine", "valeur": "massif des Écrins"}
+{"entite": "Peñón de Polarda", "valeur": "Sierra Nevada"}
+{"entite": "Perivólia", "valeur": "Lefká Óri"}
+{"entite": "Perles des Alpes", "valeur": "Alpes"}
+{"entite": "Perlinkvallei", "valeur": "Ardennes flamandes"}
+{"entite": "Permie", "valeur": "Oural"}
+{"entite": "Peter Norbeck Scenic Byway", "valeur": "Black Hills"}
+{"entite": "Peter's Rock", "valeur": "Metacomet Ridge"}
+{"entite": "Petit Sans Toucher", "valeur": "Basse-Terre"}
+{"entite": "Peyrepertusès", "valeur": "massif des Corbières"}
+{"entite": "Pezinok", "valeur": "Petites Carpates"}
+{"entite": "Pforzheim", "valeur": "Forêt-Noire"}
+{"entite": "Phungi", "valeur": "Himalaya"}
+{"entite": "Piano Fieno", "valeur": "Resegone"}
+{"entite": "Piazzolo della Valle", "valeur": "Resegone"}
+{"entite": "pic Bayle", "valeur": "Alpes du Dauphiné"}
+{"entite": "pic Chauncey", "valeur": "Metacomet Ridge"}
+{"entite": "pic de Bure", "valeur": "Alpes du Dauphiné"}
+{"entite": "pic de Nona", "valeur": "Alpes grées"}
+{"entite": "pic de Perdiguère", "valeur": "massif de Perdiguère"}
+{"entite": "pic du Canigou", "valeur": "Pyrénées"}
+{"entite": "pic Humboldt", "valeur": "Sierra Nevada de Mérida"}
+{"entite": "pic Sans Nom", "valeur": "Alpes du Dauphiné"}
+{"entite": "Pichu Pichu", "valeur": "cordillère des Andes"}
+{"entite": "Pico Bolívar", "valeur": "Sierra Nevada de Mérida"}
+{"entite": "Pico Bonpland", "valeur": "Sierra Nevada de Mérida"}
+{"entite": "Pico das Almas", "valeur": "Chapada Diamantina"}
+{"entite": "Pico do Marumbi State Park", "valeur": "Serra do Mar"}
+{"entite": "Pico El León", "valeur": "Sierra Nevada de Mérida"}
+{"entite": "Pico El Toro", "valeur": "Sierra Nevada de Mérida"}
+{"entite": "Pico La Concha", "valeur": "Sierra Nevada de Mérida"}
+{"entite": "pics de la Font Sancte", "valeur": "Alpes cottiennes"}
+{"entite": "Pieniny Spiskie mountains", "valeur": "Piénines"}
+{"entite": "Pikkelstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Pillow Ridge", "valeur": "Plateau Tahltan"}
+{"entite": "Pin de Baikushev", "valeur": "Pirin"}
+{"entite": "Pinnacle Rock", "valeur": "Metacomet Ridge"}
+{"entite": "Piprasar Waterfall", "valeur": "Monts Kirthar"}
+{"entite": "Pistapaug Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "pitons de Bouillante", "valeur": "Basse-Terre"}
+{"entite": "Pizzo Recastello", "valeur": "Alpes bergamasques"}
+{"entite": "plaine de Nisae", "valeur": "Zagros"}
+{"entite": "Planina Bant", "valeur": "Mont Kolovrat"}
+{"entite": "Le Plaret", "valeur": "Massif du Soreiller"}
+{"entite": "plateau de Jos", "valeur": "plateau de Jos"}
+{"entite": "plateau de Rocroi", "valeur": "Ardenne"}
+{"entite": "plateau du Golan", "valeur": "Golan"}
+{"entite": "Platosi", "valeur": "Parnès"}
+{"entite": "Ploské", "valeur": "monts Métallifères slovaques"}
+{"entite": "Pochylec", "valeur": "Jura cracovien"}
+{"entite": "Poço Azul (Blue Pool)", "valeur": "Chapada Diamantina"}
+{"entite": "Podbelkovoye", "valeur": "monts Ivanov"}
+{"entite": "Pointe Chevalier", "valeur": "Aiguilles de Chamonix"}
+{"entite": "Pointe d'Amont du Soreiller", "valeur": "Massif du Soreiller"}
+{"entite": "pointe de Nyon", "valeur": "massif du Chablais"}
+{"entite": "pointe du Cap Vieux", "valeur": "massif du Cap-Sicié"}
+{"entite": "Pointe Lépiney", "valeur": "Aiguilles de Chamonix"}
+{"entite": "pointe Tersive", "valeur": "Alpes grées"}
+{"entite": "Pointes de Burlan", "valeur": "Massif du Soreiller"}
+{"entite": "Polarda", "valeur": "Sierra Nevada"}
+{"entite": "Polesí", "valeur": "forêt du Haut-Palatinat"}
+{"entite": "Polna Skałka", "valeur": "Jura cracovien"}
+{"entite": "Poloniny Dark-Sky Park", "valeur": "Bukovské vrchy"}
+{"entite": "Polovragi", "valeur": "Alpes de Transylvanie"}
+{"entite": "Polpís Castle", "valeur": "Serra d'Irta"}
+{"entite": "Ponad Gnój Turnia", "valeur": "Jura cracovien"}
+{"entite": "pont dels Empedrats", "valeur": "massif du Carlit"}
+{"entite": "Port Vieux de Barroude", "valeur": "Pyrénées"}
+{"entite": "Pottelberg", "valeur": "Ardennes flamandes"}
+{"entite": "Pottenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Powroźnikowa", "valeur": "Jura cracovien"}
+{"entite": "Prattenburgse Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "Prevalski Lakes", "valeur": "Pirin"}
+{"entite": "Príslop", "valeur": "Bukovské vrchy"}
+{"entite": "Provin Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Przewodziszowice Castle", "valeur": "Jura cracovien"}
+{"entite": "Przydrożne Skały", "valeur": "Jura cracovien"}
+{"entite": "Pucajirca", "valeur": "cordillère des Andes"}
+{"entite": "Pucaraju", "valeur": "Cordillère Blanche"}
+{"entite": "Pululahua Geobotanical Reserve", "valeur": "Sierra"}
+{"entite": "Pulvermoos", "valeur": "Alpes d'Ammergau"}
+{"entite": "Puma Wayin", "valeur": "Cordillera Negra"}
+{"entite": "Pumori", "valeur": "Himalaya"}
+{"entite": "Pyrénées-Mont Perdu", "valeur": "Pyrénées"}
+{"entite": "quarries in Choroń", "valeur": "Jura cracovien"}
+{"entite": "Quilotoa", "valeur": "Sierra"}
+{"entite": "Ragged Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "raïon de Gayny", "valeur": "Monts Ouvaly"}
+{"entite": "raïon de Sechenovo", "valeur": "plateau de la Volga"}
+{"entite": "Rampe", "valeur": "Ardennes flamandes"}
+{"entite": "Råna", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Rancho Cañada del Oro Open Space Preserve", "valeur": "Monts Santa Cruz"}
+{"entite": "Rasos de Baix", "valeur": "Rasos de Peguera"}
+{"entite": "Ratkovica", "valeur": "Osogovo"}
+{"entite": "Ratkovská Lehota", "valeur": "monts Métallifères slovaques"}
+{"entite": "Ratkovská Suchá", "valeur": "monts Métallifères slovaques"}
+{"entite": "Rattlesnake Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Raura mountain range", "valeur": "cordillère des Andes"}
+{"entite": "région autonome du Tibet", "valeur": "Tibet"}
+{"entite": "Reichenbuch", "valeur": "Odenwald"}
+{"entite": "Reinhardsachsen", "valeur": "Odenwald"}
+{"entite": "Reisenbach", "valeur": "Odenwald"}
+{"entite": "Reisenbacher Grund", "valeur": "Odenwald"}
+{"entite": "Rekelberg", "valeur": "Ardennes flamandes"}
+{"entite": "Renaix", "valeur": "Ardennes flamandes"}
+{"entite": "Reseau de la Dent de Crolles", "valeur": "Alpes françaises"}
+{"entite": "réserve naturelle nationale du Banc-d'Arguin", "valeur": "Pays du Buëch"}
+{"entite": "Réserve naturelle régionale des collines sèches du Bischenberg, de l'erschenberg et du Holiesel", "valeur": "Vosges du Nord"}
+{"entite": "réserve naturelle régionale Trésor", "valeur": "montagne de Kaw"}
+{"entite": "Revúca", "valeur": "monts Métallifères slovaques"}
+{"entite": "Revúcka Lehota", "valeur": "monts Métallifères slovaques"}
+{"entite": "Riberes de l'Alt Segre", "valeur": "Pyrénées"}
+{"entite": "Rieneck", "valeur": "Odenwald"}
+{"entite": "Rijksstraatweg", "valeur": "Hondsrug"}
+{"entite": "Rimavská Baňa", "valeur": "monts Métallifères slovaques"}
+{"entite": "Rippberg", "valeur": "Odenwald"}
+{"entite": "Robern", "valeur": "Odenwald"}
+{"entite": "Roca d'Auró", "valeur": "Rasos de Peguera"}
+{"entite": "Roca de Suquer", "valeur": "Serra d'Ensija"}
+{"entite": "Roca Gran de Ferrús", "valeur": "Serra d'Ensija"}
+{"entite": "Rocaterçana", "valeur": "Rasos de Peguera"}
+{"entite": "roche de la Muzelle", "valeur": "Alpes du Dauphiné"}
+{"entite": "roche Faurio", "valeur": "Alpes du Dauphiné"}
+{"entite": "Rodeberg", "valeur": "monts des Flandres"}
+{"entite": "Rokkō Sanjō", "valeur": "mont Rokkō"}
+{"entite": "Rombachwasserfall", "valeur": "Taunus"}
+{"entite": "Roques Blanques", "valeur": "Serra d'Ensija"}
+{"entite": "Roques de la Vila", "valeur": "Pré-Pyrénées"}
+{"entite": "Roteck", "valeur": "Monts Orvin"}
+{"entite": "Rotelenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Rothesteinhöhle", "valeur": "Ith"}
+{"entite": "Rotino Lake", "valeur": "mont Baba"}
+{"entite": "route départementale 1", "valeur": "Basse-Terre"}
+{"entite": "route départementale 10", "valeur": "Basse-Terre"}
+{"entite": "route départementale 11", "valeur": "Basse-Terre"}
+{"entite": "route départementale 12", "valeur": "Basse-Terre"}
+{"entite": "route départementale 13", "valeur": "Basse-Terre"}
+{"entite": "route départementale 14", "valeur": "Basse-Terre"}
+{"entite": "route départementale 15", "valeur": "Basse-Terre"}
+{"entite": "route départementale 16", "valeur": "Basse-Terre"}
+{"entite": "route départementale 17", "valeur": "Basse-Terre"}
+{"entite": "route départementale 18", "valeur": "Basse-Terre"}
+{"entite": "route départementale 19", "valeur": "Basse-Terre"}
+{"entite": "route départementale 2", "valeur": "Basse-Terre"}
+{"entite": "route départementale 20", "valeur": "Basse-Terre"}
+{"entite": "route départementale 21", "valeur": "Basse-Terre"}
+{"entite": "route départementale 22", "valeur": "Basse-Terre"}
+{"entite": "route départementale 23", "valeur": "Basse-Terre"}
+{"entite": "route départementale 24", "valeur": "Basse-Terre"}
+{"entite": "route départementale 25", "valeur": "Basse-Terre"}
+{"entite": "route départementale 26", "valeur": "Basse-Terre"}
+{"entite": "route départementale 27", "valeur": "Basse-Terre"}
+{"entite": "route départementale 28", "valeur": "Basse-Terre"}
+{"entite": "route départementale 29", "valeur": "Basse-Terre"}
+{"entite": "route départementale 3", "valeur": "Basse-Terre"}
+{"entite": "route départementale 30", "valeur": "Basse-Terre"}
+{"entite": "route départementale 31", "valeur": "Basse-Terre"}
+{"entite": "route départementale 32", "valeur": "Basse-Terre"}
+{"entite": "route départementale 33", "valeur": "Basse-Terre"}
+{"entite": "route départementale 34", "valeur": "Basse-Terre"}
+{"entite": "route départementale 35", "valeur": "Basse-Terre"}
+{"entite": "route départementale 36", "valeur": "Basse-Terre"}
+{"entite": "route départementale 37", "valeur": "Basse-Terre"}
+{"entite": "route départementale 38", "valeur": "Basse-Terre"}
+{"entite": "route départementale 39", "valeur": "Basse-Terre"}
+{"entite": "route départementale 4", "valeur": "Basse-Terre"}
+{"entite": "route départementale 41", "valeur": "Basse-Terre"}
+{"entite": "route départementale 42", "valeur": "Basse-Terre"}
+{"entite": "route départementale 43", "valeur": "Basse-Terre"}
+{"entite": "route départementale 5", "valeur": "Basse-Terre"}
+{"entite": "route départementale 51", "valeur": "Basse-Terre"}
+{"entite": "route départementale 52", "valeur": "Basse-Terre"}
+{"entite": "route départementale 53", "valeur": "Basse-Terre"}
+{"entite": "route départementale 54", "valeur": "Basse-Terre"}
+{"entite": "route départementale 6", "valeur": "Basse-Terre"}
+{"entite": "route départementale 7", "valeur": "Basse-Terre"}
+{"entite": "route départementale 8", "valeur": "Basse-Terre"}
+{"entite": "route départementale 9", "valeur": "Basse-Terre"}
+{"entite": "Rovné", "valeur": "monts Métallifères slovaques"}
+{"entite": "royaume des Hasmonéens", "valeur": "monts de Judée"}
+{"entite": "Rue du Lait Battu", "valeur": "Ardennes flamandes"}
+{"entite": "RuheForst Deister", "valeur": "Deister"}
+{"entite": "Ruiterberg", "valeur": "Collines d'Utrecht"}
+{"entite": "Rumpfen", "valeur": "Odenwald"}
+{"entite": "Runina", "valeur": "Bukovské vrchy"}
+{"entite": "Rütschdorf", "valeur": "Odenwald"}
+{"entite": "Rzędkowickie Rocks", "valeur": "Jura cracovien"}
+{"entite": "Sabancaya", "valeur": "cordillère des Andes"}
+{"entite": "Sacred Garden", "valeur": "cordillère des Andes"}
+{"entite": "Sadek", "valeur": "Jura cracovien"}
+{"entite": "Saint Helena Hill", "valeur": "Collines d'Utrecht"}
+{"entite": "Saint-Pierre-d'Entremont", "valeur": "Massif de la Chartreuse"}
+{"entite": "Saleuscex", "valeur": "Alpes vaudoises"}
+{"entite": "Salinas de Tomabelas", "valeur": "Sierra"}
+{"entite": "Salto Roraima", "valeur": "mont Roraima"}
+{"entite": "Saltonstall Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Salzbourg", "valeur": "Alpes orientales"}
+{"entite": "San Luis de Pambil", "valeur": "Sierra"}
+{"entite": "sanctuaire de Katsuraki Shitori ni Imasu  Ame no Ha Ikazuchi no Mikoto", "valeur": "mont Nijo"}
+{"entite": "sanctuaire de Mukoyama", "valeur": "mont Rokkō"}
+{"entite": "sanctuaire Hirō", "valeur": "mont Nachi"}
+{"entite": "sanctuaire Kotohira", "valeur": "mont Kotohira"}
+{"entite": "sanctuaire Myо̄gi", "valeur": "mont Myōgi"}
+{"entite": "Santa Lucia Preserve", "valeur": "chaînon Santa Lucia"}
+{"entite": "Santa María de Obarra", "valeur": "massif de Sis"}
+{"entite": "Santa Maria Nebaj", "valeur": "hauts-plateaux du Guatemala"}
+{"entite": "Santiago de Bolivar", "valeur": "Sierra"}
+{"entite": "Sapozhnikov glacier", "valeur": "Jungar Alatau"}
+{"entite": "Sara Sara", "valeur": "cordillère des Andes"}
+{"entite": "Saragyugh", "valeur": "Djavakheti (massif)"}
+{"entite": "Sasanian defense lines", "valeur": "Caucase"}
+{"entite": "Såtbakkollen", "valeur": "Trollheimen"}
+{"entite": "Saudehornet", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Saugasse", "valeur": "Steinernes Meer"}
+{"entite": "Sausar Belt", "valeur": "Satpura"}
+{"entite": "Schächerstein", "valeur": "Odenwald"}
+{"entite": "Schapenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Scheringen", "valeur": "Odenwald"}
+{"entite": "Scherpenberg", "valeur": "monts des Flandres"}
+{"entite": "Scheuerberg", "valeur": "Odenwald"}
+{"entite": "Schneiderkopf", "valeur": "Massif du Bregenzerwald"}
+{"entite": "Schönecker Schweiz", "valeur": "Eifel"}
+{"entite": "Schronisko przy Jaskini Dzikiej", "valeur": "Jura cracovien"}
+{"entite": "Schronisko przy Jaskini Mamutowej III", "valeur": "Jura cracovien"}
+{"entite": "Schronisko w Bramie Będkowskiej", "valeur": "Jura cracovien"}
+{"entite": "Schronisko w Kamieniołomie", "valeur": "Jura cracovien"}
+{"entite": "Schronisko w Krużganku", "valeur": "Jura cracovien"}
+{"entite": "Schronisko Większe w Ostrężniku", "valeur": "Jura cracovien"}
+{"entite": "Schronisko z Dzikiem", "valeur": "Jura cracovien"}
+{"entite": "Schullandheim Strümpfelbrunn", "valeur": "Odenwald"}
+{"entite": "Schullandheim Unterhöllgrund", "valeur": "Odenwald"}
+{"entite": "Schulzenmühle", "valeur": "Odenwald"}
+{"entite": "seigneurie d'Alès", "valeur": "Cévennes"}
+{"entite": "Selber Forst", "valeur": "Fichtelgebirge"}
+{"entite": "Sepyra", "valeur": "Monts Nur"}
+{"entite": "Ser", "valeur": "Jura cracovien"}
+{"entite": "Serra da Chaira", "valeur": "massif de Peña Trevinca"}
+{"entite": "Serra da Tromba", "valeur": "Chapada Diamantina"}
+{"entite": "Serra de l'Obac", "valeur": "Cordillère prélittorale"}
+{"entite": "Serra de Mataplana", "valeur": "Serra del Cadí"}
+{"entite": "Serra do Quilombo", "valeur": "Serra da Mantiqueira"}
+{"entite": "Serra do Tombador", "valeur": "Chapada Diamantina"}
+{"entite": "Serrella", "valeur": "cordillères Bétiques"}
+{"entite": "Sesia zone", "valeur": "Alpes"}
+{"entite": "seuil Bayard", "valeur": "Gapençais"}
+{"entite": "Sevaberd", "valeur": "Gegham"}
+{"entite": "Sfinks", "valeur": "Jura cracovien"}
+{"entite": "Shidu", "valeur": "Monts Taihang"}
+{"entite": "Shokalsky Glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Short Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Shuksan blueschist", "valeur": "chaîne des Cascades"}
+{"entite": "Sidas Cone", "valeur": "Plateau Tahltan"}
+{"entite": "Siebengebirge", "valeur": "Siebengebirge"}
+{"entite": "Siebengebirge Teilgebiet Ennert", "valeur": "Ennert"}
+{"entite": "Siedlung Waldfrieden", "valeur": "Odenwald"}
+{"entite": "Sierra d'Aitana", "valeur": "Cordillère prébétique"}
+{"entite": "Sierra de Alcaraz", "valeur": "Cordillère prébétique"}
+{"entite": "Sierra de Carrascoy", "valeur": "Cordillère prébétique"}
+{"entite": "Sierra de Zapalinamé", "valeur": "Sierra Madre orientale"}
+{"entite": "Sierra Nevada Biosphere Reserve", "valeur": "Sierra Nevada"}
+{"entite": "Sierra Nevada Natural Park", "valeur": "Sierra Nevada"}
+{"entite": "signal de Botrange", "valeur": "Hautes Fagnes"}
+{"entite": "Silkosiya Reserve", "valeur": "Strandja"}
+{"entite": "Sinanishko Lake", "valeur": "Pirin"}
+{"entite": "Skała Ogrodzieniec", "valeur": "Jura cracovien"}
+{"entite": "Skałka Grodzisko", "valeur": "Jura cracovien"}
+{"entite": "Skały Pustelnika", "valeur": "Jura cracovien"}
+{"entite": "Skagafjörður", "valeur": "Tröllaskagi"}
+{"entite": "Skåla", "valeur": "Breheimen"}
+{"entite": "Skamieniały Wedrowiec", "valeur": "Jura cracovien"}
+{"entite": "Skårasalen", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Skarfjellet", "valeur": "Trollheimen"}
+{"entite": "Skrzat", "valeur": "Jura cracovien"}
+{"entite": "Śląski Filar", "valeur": "Jura cracovien"}
+{"entite": "Slijpstraat-Kortendries", "valeur": "Ardennes flamandes"}
+{"entite": "Slizké", "valeur": "monts Métallifères slovaques"}
+{"entite": "Slogen", "valeur": "Alpes de Sunnmøre"}
+{"entite": "Smolník", "valeur": "monts Métallifères slovaques"}
+{"entite": "Smradlivo Lake", "valeur": "Rila"}
+{"entite": "Snæhetta", "valeur": "Esjufjöll"}
+{"entite": "Snønipa", "valeur": "Breheimen"}
+{"entite": "Soester Eng, Soest", "valeur": "Collines d'Utrecht"}
+{"entite": "Soesterduinen dunes", "valeur": "Collines d'Utrecht"}
+{"entite": "Sofia Mountain", "valeur": "Grand Balkan"}
+{"entite": "Solitär-Eiche", "valeur": "monts de Souabe et Franconie"}
+{"entite": "Soonwald", "valeur": "Soonwald"}
+{"entite": "Soquel Demonstration State Forest", "valeur": "Monts Santa Cruz"}
+{"entite": "Soufrière", "valeur": "Basse-Terre"}
+{"entite": "source de la Volga", "valeur": "Collines de Valdaï"}
+{"entite": "sous-district du Golan", "valeur": "Golan"}
+{"entite": "Španie Pole", "valeur": "monts Métallifères slovaques"}
+{"entite": "Sparreboomsche Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "Stakčín", "valeur": "Bukovské vrchy"}
+{"entite": "Stanislaus-Tuolumne Biosphere Reserve", "valeur": "sierra Nevada"}
+{"entite": "Stará Voda", "valeur": "monts Métallifères slovaques"}
+{"entite": "Starvation Canyon", "valeur": "chaîne Ruby"}
+{"entite": "Statieberg", "valeur": "Ardennes flamandes"}
+{"entite": "Stationsberg", "valeur": "Ardennes flamandes"}
+{"entite": "Stausee", "valeur": "Odenwald"}
+{"entite": "Steenbeekberg", "valeur": "Ardennes flamandes"}
+{"entite": "Steenbeekdries", "valeur": "Ardennes flamandes"}
+{"entite": "Steenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Steige", "valeur": "Odenwald"}
+{"entite": "Steinbach", "valeur": "Odenwald"}
+{"entite": "Steirerturm", "valeur": "Monts Orvin"}
+{"entite": "Stiefelhütte", "valeur": "Odenwald"}
+{"entite": "Stiefmutterklippen", "valeur": "Harz"}
+{"entite": "Stinkesberg", "valeur": "Bergisches Land"}
+{"entite": "Stokstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Storchhof", "valeur": "Odenwald"}
+{"entite": "Storchsklinge", "valeur": "Odenwald"}
+{"entite": "Strada degli Eroi", "valeur": "Pasubio"}
+{"entite": "Strada degli Scarubbi", "valeur": "Pasubio"}
+{"entite": "Strażnica Suliszowice", "valeur": "Jura cracovien"}
+{"entite": "Studnia Szpatowców", "valeur": "Jura cracovien"}
+{"entite": "Stürzenhardt", "valeur": "Odenwald"}
+{"entite": "Sulimana", "valeur": "cordillère des Andes"}
+{"entite": "Sulzberg", "valeur": "Wienerwald"}
+{"entite": "Susedgrad", "valeur": "Medvednica"}
+{"entite": "Suzuga Mine", "valeur": "Monts Kaifu"}
+{"entite": "Świnka", "valeur": "Jura cracovien"}
+{"entite": "Szczelina za Płytą w Mącznej Skale", "valeur": "Jura cracovien"}
+{"entite": "Szeroka Turnia", "valeur": "Jura cracovien"}
+{"entite": "Taaienberg", "valeur": "Ardennes flamandes"}
+{"entite": "Tababela", "valeur": "Sierra"}
+{"entite": "le Tabor", "valeur": "Alpes du Dauphiné"}
+{"entite": "Tadeda Peak", "valeur": "Plateau Tahltan"}
+{"entite": "Tagebau Mühlental Nord", "valeur": "Harz"}
+{"entite": "Tagiltsev glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "le Taillefer", "valeur": "Alpes du Dauphiné"}
+{"entite": "Takamagahara", "valeur": "monts Hida"}
+{"entite": "Talamanca Reserve", "valeur": "cordillère de Talamanca"}
+{"entite": "Talcott Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Tatai", "valeur": "Chaîne des Cardamones"}
+{"entite": "Tateyama", "valeur": "collines de Bōsō"}
+{"entite": "Taulliraju", "valeur": "cordillère des Andes"}
+{"entite": "Tawesche", "valeur": "Himalaya"}
+{"entite": "Tell en-Nasbeh", "valeur": "monts de Benjamin"}
+{"entite": "Ten Berge", "valeur": "Ardennes flamandes"}
+{"entite": "Tenbosse", "valeur": "Ardennes flamandes"}
+{"entite": "Tenji Seamount", "valeur": "chaîne sous-marine Hawaï-Empereur"}
+{"entite": "territoire de Kalapani", "valeur": "Himalaya"}
+{"entite": "La Tête à l'Âne", "valeur": "chaîne des Fiz"}
+{"entite": "tête de l'Enchastraye", "valeur": "Alpes maritimes"}
+{"entite": "tête de l'Estrop", "valeur": "Alpes et Pré-alpes de Provence"}
+{"entite": "tête de la Gandolière", "valeur": "Massif du Soreiller"}
+{"entite": "Tête de la Marsare", "valeur": "Massif du Soreiller"}
+{"entite": "Tête du Graou", "valeur": "Massif du Soreiller"}
+{"entite": "Tête Nord du Replat", "valeur": "Massif du Soreiller"}
+{"entite": "Tête Sud du Replat", "valeur": "Massif du Soreiller"}
+{"entite": "Teufelshäuschen", "valeur": "Frankenhöhe"}
+{"entite": "The Eye", "valeur": "Rila"}
+{"entite": "The Kidney", "valeur": "Rila"}
+{"entite": "The Linn", "valeur": "monts Ochil"}
+{"entite": "The Lower Lake", "valeur": "Rila"}
+{"entite": "The Pyramid", "valeur": "Plateau Tahltan"}
+{"entite": "The Tear", "valeur": "Rila"}
+{"entite": "The Trefoil", "valeur": "Rila"}
+{"entite": "Thielekenberg", "valeur": "Lappwald"}
+{"entite": "Thymse Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "Tian Shan occidental", "valeur": "Tian Shan"}
+{"entite": "Ticsani", "valeur": "cordillère des Andes"}
+{"entite": "Tiegemberg", "valeur": "Ardennes flamandes"}
+{"entite": "Tiep-Tiap", "valeur": "Ardennes flamandes"}
+{"entite": "Timbi-Touni", "valeur": "Fouta-Djalon"}
+{"entite": "Timofeev glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Tinmel", "valeur": "Haut Atlas"}
+{"entite": "Tinto", "valeur": "Southern Uplands"}
+{"entite": "Tiroler Spitze", "valeur": "Monts Orvin"}
+{"entite": "Togyzak glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Torre de l'Alcúdia", "valeur": "Parc naturel de la Serra de Mariola"}
+{"entite": "Tossal de l'Àguila", "valeur": "Parc naturel de la Serra de Mariola"}
+{"entite": "Totoket Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "tour d'observation de Toulx", "valeur": "monts de Toulx-Sainte-Croix"}
+{"entite": "Tour d'observation Luisenhöhe", "valeur": "Hausruck"}
+{"entite": "Tour de Lavina", "valeur": "Alpes grées"}
+{"entite": "Transcarpathian Dark-Sky Park", "valeur": "Carpates ukrainiennes"}
+{"entite": "Tre Cime di Lavaredo", "valeur": "Dolomites de Sesto"}
+{"entite": "Trienz", "valeur": "Odenwald"}
+{"entite": "Trimountain", "valeur": "Metacomet Ridge"}
+{"entite": "Trolla", "valeur": "Trollheimen"}
+{"entite": "Tronov glacier", "valeur": "Jungar Alatau"}
+{"entite": "Trstené pri Hornáde", "valeur": "Monts de Slanec"}
+{"entite": "Trutzburg", "valeur": "Monts Orvin"}
+{"entite": "Tsaghkari", "valeur": "Zanguezour"}
+{"entite": "Tsagveri", "valeur": "Chaîne de Trialéti"}
+{"entite": "Tsaydaychuz Peak", "valeur": "Kitimat Ranges"}
+{"entite": "Tsekone Ridge", "valeur": "Plateau Tahltan"}
+{"entite": "Tsouka Tzina", "valeur": "Pinde"}
+{"entite": "Tsuzumigataki Park", "valeur": "mont Rokkō"}
+{"entite": "Tunel Niski w Wielkiej Skale", "valeur": "Jura cracovien"}
+{"entite": "Tungnafellsjökull", "valeur": "Hautes Terres d'Islande"}
+{"entite": "Turnie Simonda", "valeur": "Jura cracovien"}
+{"entite": "Tusion river valley", "valeur": "chaînon Shakhdara"}
+{"entite": "Tutuaca Flora and Fauna Protection Area", "valeur": "Sierra Madre occidentale"}
+{"entite": "Tutupaca", "valeur": "cordillère des Andes"}
+{"entite": "Tyrol", "valeur": "Alpes orientales"}
+{"entite": "Ubinas", "valeur": "cordillère des Andes"}
+{"entite": "Ubľa", "valeur": "Bukovské vrchy"}
+{"entite": "Uilentoren", "valeur": "Collines d'Utrecht"}
+{"entite": "Ukok Quiet Zone on the Ukok Plateau", "valeur": "plateau de l'Oukok"}
+{"entite": "Ulič", "valeur": "Bukovské vrchy"}
+{"entite": "Ünglert", "valeur": "Odenwald"}
+{"entite": "Unter-Schönmattenwag", "valeur": "Odenwald"}
+{"entite": "Unterferdinandsdorf", "valeur": "Odenwald"}
+{"entite": "Unterhöllgrund", "valeur": "Odenwald"}
+{"entite": "Unterneudorf", "valeur": "Odenwald"}
+{"entite": "Unterscheidental", "valeur": "Odenwald"}
+{"entite": "Uonuma-Renpo Prefetural Natural Park", "valeur": "Monts Mikuni"}
+{"entite": "Upper Kern Basin", "valeur": "sierra Nevada"}
+{"entite": "Ushkonyr Plateau", "valeur": "Trans-Ili Alatau"}
+{"entite": "Uturuncu", "valeur": "Cordillera de Lípez"}
+{"entite": "Vacha Reservoir", "valeur": "Rhodopes"}
+{"entite": "Val de Virieu", "valeur": "Terres froides"}
+{"entite": "Valaškovce", "valeur": "Monts du Vihorlat"}
+{"entite": "Vale do Capão", "valeur": "Chapada Diamantina"}
+{"entite": "Vale do Pati", "valeur": "Chapada Diamantina"}
+{"entite": "Valkenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Vall d'Àneu", "valeur": "Pyrénées"}
+{"entite": "Valle de Cuelgamuros", "valeur": "Sierra de Guadarrama"}
+{"entite": "Vallée de la Tinée", "valeur": "massif du Mercantour-Argentera"}
+{"entite": "Valleta d'Agres", "valeur": "Parc naturel de la Serra de Mariola"}
+{"entite": "Varent", "valeur": "Ardennes flamandes"}
+{"entite": "Veliko Rujno", "valeur": "Velebit"}
+{"entite": "Velká Fatra Dark-Sky Park", "valeur": "Grande Fatra"}
+{"entite": "Veľký Folkmar", "valeur": "monts Métallifères slovaques"}
+{"entite": "Ventisquero de la Condesa", "valeur": "Sierra de Guadarrama"}
+{"entite": "Veronica Mountain", "valeur": "cordillère des Andes"}
+{"entite": "Vesldalstinden", "valeur": "Breheimen"}
+{"entite": "Vidaigneberg", "valeur": "monts des Flandres"}
+{"entite": "Vieux Quaremont", "valeur": "Ardennes flamandes"}
+{"entite": "Vilcabamba", "valeur": "Sierra"}
+{"entite": "Vindøldalen", "valeur": "Trollheimen"}
+{"entite": "Vlaamse Ardennenroute", "valeur": "Ardennes flamandes"}
+{"entite": "Vlakke Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "De Vlamme (Zottegem)", "valeur": "Ardennes flamandes"}
+{"entite": "voie des Ardennes", "valeur": "Ardenne"}
+{"entite": "Volcanic arc of Peru", "valeur": "cordillère des Andes"}
+{"entite": "Vollmersdorf", "valeur": "Odenwald"}
+{"entite": "Vorarlberg", "valeur": "Alpes orientales"}
+{"entite": "Vorderheubach", "valeur": "Odenwald"}
+{"entite": "Vyalova cave", "valeur": "Tchatyr-Dah"}
+{"entite": "Vyšné Valice", "valeur": "monts Métallifères slovaques"}
+{"entite": "Vysoká", "valeur": "Monts Štiavnica"}
+{"entite": "W Kielnikach Cave", "valeur": "Jura cracovien"}
+{"entite": "Wagenschwend", "valeur": "Odenwald"}
+{"entite": "Waldauerbach", "valeur": "Odenwald"}
+{"entite": "Waldfriedhof Sophienhöhe", "valeur": "Deister"}
+{"entite": "Waldhausen", "valeur": "Odenwald"}
+{"entite": "Waldrennach", "valeur": "Forêt-Noire"}
+{"entite": "Walldürn", "valeur": "Odenwald"}
+{"entite": "Wannig", "valeur": "Chaînon de Mieming"}
+{"entite": "Wasserschloss Ripperg", "valeur": "Odenwald"}
+{"entite": "Wasson Oil Field", "valeur": "Llano Estacado"}
+{"entite": "Wennigser Mark woodland cemetery", "valeur": "Deister"}
+{"entite": "West Rock Ridge", "valeur": "Metacomet Ridge"}
+{"entite": "West Suffield Mountain", "valeur": "Metacomet Ridge"}
+{"entite": "Western Ordzhonikidze Glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Western Pieniny mountains", "valeur": "Piénines"}
+{"entite": "Wetherill Mesa Picnic Area", "valeur": "Wetherill Mesa"}
+{"entite": "Wetlina", "valeur": "Bukovské vrchy"}
+{"entite": "Wettersdorf", "valeur": "Odenwald"}
+{"entite": "White Coomb", "valeur": "Southern Uplands"}
+{"entite": "Wielka Skała", "valeur": "Jura cracovien"}
+{"entite": "Wielki Młynarz", "valeur": "Jura cracovien"}
+{"entite": "Wilczki Falls", "valeur": "Monts Śnieżnik"}
+{"entite": "Wilhelmsfeld", "valeur": "Odenwald"}
+{"entite": "Willapa Divide Natural Area Preserve", "valeur": "Willapa Hills"}
+{"entite": "Winter sports in Harz", "valeur": "Harz"}
+{"entite": "Wladislaus I Cave", "valeur": "Jura cracovien"}
+{"entite": "Wohlfahrtsmühle", "valeur": "Odenwald"}
+{"entite": "Wohnplätze im Rippberger Tal", "valeur": "Odenwald"}
+{"entite": "Wolvenberg", "valeur": "Ardennes flamandes"}
+{"entite": "Wortegem-Petegem", "valeur": "Ardennes flamandes"}
+{"entite": "Wysoka (Skały Rzędkowickie)", "valeur": "Jura cracovien"}
+{"entite": "Xanlar", "valeur": "Petit Caucase"}
+{"entite": "Yabuli", "valeur": "Zhangguang Cailing"}
+{"entite": "Yagodinska (cave)", "valeur": "Rhodopes"}
+{"entite": "Yanama", "valeur": "cordillère de Vilcabamba"}
+{"entite": "Yangra", "valeur": "Ganesh Himal"}
+{"entite": "Yerupajá", "valeur": "cordillère des Andes"}
+{"entite": "Yucamane", "valeur": "cordillère des Andes"}
+{"entite": "Złomiska", "valeur": "Jura cracovien"}
+{"entite": "Złotówka", "valeur": "Jura cracovien"}
+{"entite": "Zajączek", "valeur": "Jura cracovien"}
+{"entite": "Zaklęty Komin", "valeur": "Jura cracovien"}
+{"entite": "Zamkowa", "valeur": "Jura cracovien"}
+{"entite": "Zaouia d'Ifrane", "valeur": "Moyen Atlas"}
+{"entite": "Zapadnye Yangi", "valeur": "Massif de l'Aldan"}
+{"entite": "Zavelstraat", "valeur": "Ardennes flamandes"}
+{"entite": "Zboj", "valeur": "Bukovské vrchy"}
+{"entite": "Zespół Schronisk pod Sosenką", "valeur": "Jura cracovien"}
+{"entite": "Zhambyl Glacier", "valeur": "Jungar Alatau"}
+{"entite": "Zhangyryk glacier", "valeur": "Trans-Ili Alatau"}
+{"entite": "Zigeunerhöhle SE von Heppdiel", "valeur": "Odenwald"}
+{"entite": "Zillie Falls", "valeur": "plateau d'Atherton"}
+{"entite": "Zinghmuh", "valeur": "Chin Hills"}
+{"entite": "Zittenfelden", "valeur": "Odenwald"}
+{"entite": "Zona de Importancia Comunitaria Despeñaperros", "valeur": "Sierra Morena"}
+{"entite": "Zonheuvel", "valeur": "Collines d'Utrecht"}
+{"entite": "Zottegem", "valeur": "Ardennes flamandes"}
+{"entite": "Zuilensteinse Berg", "valeur": "Collines d'Utrecht"}
+{"entite": "Zwalin", "valeur": "Ardennes flamandes"}
+{"entite": "Zwalmvallei", "valeur": "Ardennes flamandes"}
+{"entite": "Zwingenberg", "valeur": "Odenwald"}

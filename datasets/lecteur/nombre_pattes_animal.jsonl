@@ -1,0 +1,86 @@
+{"_relation": "nombre_pattes_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (nombre de pattes ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "6"}
+{"entite": "acarien", "valeur": "8"}
+{"entite": "aigle royal", "valeur": "2"}
+{"entite": "anguille", "valeur": "0"}
+{"entite": "araignée", "valeur": "8"}
+{"entite": "autruche", "valeur": "2"}
+{"entite": "blatte", "valeur": "6"}
+{"entite": "cerf", "valeur": "4"}
+{"entite": "chameau", "valeur": "4"}
+{"entite": "chat", "valeur": "4"}
+{"entite": "cheval", "valeur": "4"}
+{"entite": "chèvre", "valeur": "4"}
+{"entite": "chien", "valeur": "4"}
+{"entite": "cigale", "valeur": "6"}
+{"entite": "cigogne", "valeur": "2"}
+{"entite": "coccinelle", "valeur": "6"}
+{"entite": "cochon", "valeur": "4"}
+{"entite": "corbeau", "valeur": "2"}
+{"entite": "criquet", "valeur": "6"}
+{"entite": "crocodile du Nil", "valeur": "4"}
+{"entite": "doryphore", "valeur": "6"}
+{"entite": "éléphant d'Afrique", "valeur": "4"}
+{"entite": "escargot", "valeur": "0"}
+{"entite": "être humain", "valeur": "2"}
+{"entite": "faucheux", "valeur": "8"}
+{"entite": "flamant rose", "valeur": "2"}
+{"entite": "fourmi", "valeur": "6"}
+{"entite": "frelon", "valeur": "6"}
+{"entite": "gecko", "valeur": "4"}
+{"entite": "girafe", "valeur": "4"}
+{"entite": "grenouille", "valeur": "4"}
+{"entite": "grillon", "valeur": "6"}
+{"entite": "guépard", "valeur": "4"}
+{"entite": "guêpe", "valeur": "6"}
+{"entite": "hanneton", "valeur": "6"}
+{"entite": "hibou", "valeur": "2"}
+{"entite": "hippopotame", "valeur": "4"}
+{"entite": "hyène tachetée", "valeur": "4"}
+{"entite": "iguane", "valeur": "4"}
+{"entite": "jaguar", "valeur": "4"}
+{"entite": "koala", "valeur": "4"}
+{"entite": "lapin", "valeur": "4"}
+{"entite": "léopard", "valeur": "4"}
+{"entite": "lézard", "valeur": "4"}
+{"entite": "libellule", "valeur": "6"}
+{"entite": "limace", "valeur": "0"}
+{"entite": "lion", "valeur": "4"}
+{"entite": "loup", "valeur": "4"}
+{"entite": "luciole", "valeur": "6"}
+{"entite": "manchot empereur", "valeur": "2"}
+{"entite": "mante religieuse", "valeur": "6"}
+{"entite": "méduse", "valeur": "0"}
+{"entite": "moineau", "valeur": "2"}
+{"entite": "mouche", "valeur": "6"}
+{"entite": "moustique", "valeur": "6"}
+{"entite": "mouton", "valeur": "4"}
+{"entite": "mygale", "valeur": "8"}
+{"entite": "opilion", "valeur": "8"}
+{"entite": "ours brun", "valeur": "4"}
+{"entite": "papillon", "valeur": "6"}
+{"entite": "paresseux", "valeur": "4"}
+{"entite": "perce-oreille", "valeur": "6"}
+{"entite": "perroquet", "valeur": "2"}
+{"entite": "pigeon", "valeur": "2"}
+{"entite": "poule", "valeur": "2"}
+{"entite": "pseudoscorpion", "valeur": "8"}
+{"entite": "puceron", "valeur": "6"}
+{"entite": "rat", "valeur": "4"}
+{"entite": "renard roux", "valeur": "4"}
+{"entite": "rhinocéros blanc", "valeur": "4"}
+{"entite": "salamandre", "valeur": "4"}
+{"entite": "sangsue", "valeur": "0"}
+{"entite": "scarabée", "valeur": "6"}
+{"entite": "scorpion", "valeur": "8"}
+{"entite": "serpent", "valeur": "0"}
+{"entite": "tarentule", "valeur": "8"}
+{"entite": "tatou", "valeur": "4"}
+{"entite": "termite", "valeur": "6"}
+{"entite": "tigre", "valeur": "4"}
+{"entite": "tique", "valeur": "8"}
+{"entite": "tortue marine", "valeur": "4"}
+{"entite": "vache", "valeur": "4"}
+{"entite": "varan", "valeur": "4"}
+{"entite": "ver de terre", "valeur": "0"}
+{"entite": "zèbre", "valeur": "4"}

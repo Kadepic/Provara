@@ -1,0 +1,6 @@
+{"_relation": "nombre_carbone_ose", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (ose -> nombre de carbones ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "heptose", "valeur": "7"}
+{"entite": "hexose", "valeur": "6"}
+{"entite": "pentose", "valeur": "5"}
+{"entite": "tétrose", "valeur": "4"}
+{"entite": "triose", "valeur": "3"}

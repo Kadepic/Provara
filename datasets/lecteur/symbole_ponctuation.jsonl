@@ -1,0 +1,16 @@
+{"_relation": "symbole_ponctuation", "_categorie": "convention", "_source": "typographie de référence (nom -> symbole)", "_articles": true}
+{"entite": "apostrophe", "valeur": "'"}
+{"entite": "arobase", "valeur": "@"}
+{"entite": "astérisque", "valeur": "*"}
+{"entite": "barre oblique", "valeur": "/"}
+{"entite": "deux-points", "valeur": ":"}
+{"entite": "dièse", "valeur": "#"}
+{"entite": "parenthèse fermante", "valeur": ")"}
+{"entite": "parenthèse ouvrante", "valeur": "("}
+{"entite": "point", "valeur": "."}
+{"entite": "point d'exclamation", "valeur": "!"}
+{"entite": "point d'interrogation", "valeur": "?"}
+{"entite": "point-virgule", "valeur": ";"}
+{"entite": "points de suspension", "valeur": "…"}
+{"entite": "trait d'union", "valeur": "-"}
+{"entite": "virgule", "valeur": ","}

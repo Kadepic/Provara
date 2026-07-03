@@ -1,0 +1,10 @@
+{"_relation": "composition_alliage", "_categorie": "physique", "_source": "métallurgie de référence (alliage -> composition principale)", "_articles": true}
+{"entite": "acier", "valeur": "fer et carbone"}
+{"entite": "bronze", "valeur": "cuivre et étain"}
+{"entite": "duralumin", "valeur": "aluminium et cuivre"}
+{"entite": "électrum", "valeur": "or et argent"}
+{"entite": "fonte", "valeur": "fer et carbone"}
+{"entite": "inox", "valeur": "fer, chrome et nickel"}
+{"entite": "laiton", "valeur": "cuivre et zinc"}
+{"entite": "maillechort", "valeur": "cuivre, nickel et zinc"}
+{"entite": "soudure", "valeur": "étain et plomb"}

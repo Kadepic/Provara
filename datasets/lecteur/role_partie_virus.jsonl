@@ -1,0 +1,4 @@
+{"_relation": "role_partie_virus", "_categorie": "physique", "_source": "Modèle (Claude) — virologie textbook curée (constituant viral -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "capside", "valeur": "protection du matériel génétique"}
+{"entite": "enveloppe virale", "valeur": "reconnaissance et entrée dans la cellule hôte"}
+{"entite": "génome viral", "valeur": "information génétique du virus"}

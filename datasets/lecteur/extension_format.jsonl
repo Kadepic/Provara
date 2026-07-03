@@ -1,0 +1,462 @@
+{"_relation": "extension_format", "_categorie": "convention", "_source": "Wikidata/QLever — extension de fichier (P1195) d'un format de fichier", "_articles": true}
+{"entite": "3D Construction Kit 2 World Data (Amiga)", "valeur": "kwd"}
+{"entite": "3D XML", "valeur": "3dxml"}
+{"entite": "3GPP", "valeur": "3gp"}
+{"entite": "3GPP2", "valeur": "3g2"}
+{"entite": "42.zip", "valeur": "zip"}
+{"entite": "4DOS", "valeur": "btm"}
+{"entite": "A.out", "valeur": "so"}
+{"entite": "AAI", "valeur": "aai"}
+{"entite": "Accelerated Mobile Pages", "valeur": "amp.html"}
+{"entite": "ACE (format de fichier)", "valeur": "ace"}
+{"entite": "ActiveVFP", "valeur": "avfp"}
+{"entite": "Activity Streams", "valeur": "json"}
+{"entite": "Adlib Tracker II instrument", "valeur": "a2i"}
+{"entite": "Advanced Stream Redirector", "valeur": "asx"}
+{"entite": "Advanced Systems Format", "valeur": "asf"}
+{"entite": "Advanced Video Codec High Definition", "valeur": "avchd"}
+{"entite": "Alembic (infographie)", "valeur": "abc"}
+{"entite": "ALTO (XML)", "valeur": "xml"}
+{"entite": "AmbientTalk", "valeur": "at"}
+{"entite": "Android App Bundle", "valeur": "aab"}
+{"entite": "Apache ORC", "valeur": "orc"}
+{"entite": "Apache Parquet", "valeur": "parquet"}
+{"entite": "Apple Icon Image", "valeur": "icns"}
+{"entite": "Apple Watch Face", "valeur": "watchface"}
+{"entite": "Arc", "valeur": "arc"}
+{"entite": "Archive de site Web par Konqueror", "valeur": "war"}
+{"entite": "archive Stuffit", "valeur": "sit"}
+{"entite": "ARFF", "valeur": "arff"}
+{"entite": "Art ANSI", "valeur": "ans"}
+{"entite": "asciicast (v2)", "valeur": "cast"}
+{"entite": "AspectJ", "valeur": "aj"}
+{"entite": "assembleur", "valeur": "asm"}
+{"entite": "Audio Video Interleave", "valeur": "avi"}
+{"entite": "AutoCAD Database File Locking Information", "valeur": "dwl"}
+{"entite": "AVR", "valeur": "avr"}
+{"entite": "B3D", "valeur": "b3d"}
+{"entite": "base de données 4th Dimension", "valeur": "4db"}
+{"entite": "base de données FileMaker Pro, version 7", "valeur": "fp7"}
+{"entite": "Base de données Microsoft Access 2007", "valeur": "accdb"}
+{"entite": "Basic", "valeur": "bas"}
+{"entite": ".beancount", "valeur": "beancount"}
+{"entite": "BED", "valeur": "bed"}
+{"entite": "Better Portable Graphics", "valeur": "bpg"}
+{"entite": "Bitstream Speedo", "valeur": "spd"}
+{"entite": ".blend", "valeur": "blend"}
+{"entite": "BNA", "valeur": "bna"}
+{"entite": "BNTX", "valeur": "bntx"}
+{"entite": "Bonk", "valeur": "bonk"}
+{"entite": "Brainfuck", "valeur": "bf"}
+{"entite": "Broadcast Wave Format, version 0", "valeur": "wav"}
+{"entite": "Broadcast Wave Format, version 1", "valeur": "wav"}
+{"entite": "Broadcast Wave Format, version 2", "valeur": "wav"}
+{"entite": "brosse paramétrique GIMP", "valeur": "vbr"}
+{"entite": "Bytecode Java", "valeur": "class"}
+{"entite": "bzip2", "valeur": "bz2"}
+{"entite": "C--", "valeur": "c--"}
+{"entite": "Cabinet", "valeur": "cab"}
+{"entite": "cahier Jupyter", "valeur": "ipynb"}
+{"entite": "Camera Image File Format", "valeur": "crw"}
+{"entite": "Canon Original RAW, version 2", "valeur": "cr2"}
+{"entite": "Carbon", "valeur": "carbon"}
+{"entite": "CB7", "valeur": "cb7"}
+{"entite": "CBOR", "valeur": "cbor"}
+{"entite": "CBR", "valeur": "cbr"}
+{"entite": "CBT", "valeur": "cbt"}
+{"entite": "Cbz (format de fichier)", "valeur": "cbz"}
+{"entite": "Ceylon", "valeur": "ceylon"}
+{"entite": "CFD General Notation System", "valeur": "cgns"}
+{"entite": "Chapel", "valeur": "chpl"}
+{"entite": "cif", "valeur": "cif"}
+{"entite": "Cineon", "valeur": "cin"}
+{"entite": "Citation Style Language", "valeur": "csl"}
+{"entite": "Citrine", "valeur": "ctr"}
+{"entite": "Classes Java", "valeur": "class"}
+{"entite": "classeur Excel au format binaire", "valeur": "xlsb"}
+{"entite": "Clé cloud 1Password", "valeur": "attachment"}
+{"entite": "CoffeeScript", "valeur": "coffee"}
+{"entite": ".com", "valeur": "com"}
+{"entite": "comma-separated values", "valeur": "csv"}
+{"entite": "Common Object File Format", "valeur": "obj"}
+{"entite": "Compact Disc Audio track", "valeur": "cda"}
+{"entite": "Computable Document Format", "valeur": "cdf"}
+{"entite": "Core Audio Format", "valeur": "caf"}
+{"entite": "Corel Presentation Exchange File 5.0", "valeur": "cmx"}
+{"entite": "Creative Voice File", "valeur": "voc"}
+{"entite": "Crystal", "valeur": "cr"}
+{"entite": "Crystallographic Information File", "valeur": "cif"}
+{"entite": "CSS 1", "valeur": "css"}
+{"entite": "CSS 2", "valeur": "css"}
+{"entite": "CSS 2.1", "valeur": "css"}
+{"entite": "CSS 3", "valeur": "css"}
+{"entite": ".cue", "valeur": "cue"}
+{"entite": "Cuneiform", "valeur": "cfl"}
+{"entite": "Daala", "valeur": "ogv"}
+{"entite": "DAE", "valeur": "dae"}
+{"entite": "Dart", "valeur": "dart"}
+{"entite": "Data Interchange Format", "valeur": "dif"}
+{"entite": "Descripteur de style de couche", "valeur": "sld"}
+{"entite": "DGCA", "valeur": "dgc"}
+{"entite": "Dia", "valeur": "dia"}
+{"entite": "diagramme entité-relation", "valeur": "erd"}
+{"entite": "diaporama Microsoft PowerPoint", "valeur": "ppsx"}
+{"entite": "diaporama Microsoft PowerPoint avec macros intégrées", "valeur": "ppsm"}
+{"entite": "Diffusion en flux adaptatif dynamique sur HTTP", "valeur": "mpd"}
+{"entite": "Digital Video", "valeur": "dv"}
+{"entite": "Dirac", "valeur": "drc"}
+{"entite": "Direct Access Archive", "valeur": "daa"}
+{"entite": "Direct Stream Digital", "valeur": "dsf"}
+{"entite": "DirectDraw Surface", "valeur": "dds"}
+{"entite": "Distinguished Encoding Rules", "valeur": "der"}
+{"entite": "Dockerfile", "valeur": "dockerfile"}
+{"entite": "document AbiWord", "valeur": "abw"}
+{"entite": "document Krita", "valeur": "kra"}
+{"entite": "document Microsoft Word pour Windows, version 1", "valeur": "doc"}
+{"entite": "document Microsoft Word pour Windows, version 2", "valeur": "doc"}
+{"entite": "Document Type Definition", "valeur": "dtd"}
+{"entite": "document Write for Windows, version 3", "valeur": "wri"}
+{"entite": "Docx", "valeur": "docx"}
+{"entite": "Dolby TrueHD", "valeur": "thd"}
+{"entite": "Données cryptées 1Password", "valeur": "1pif"}
+{"entite": "Dreamweaver Lock File", "valeur": "lck"}
+{"entite": ".DS_Store", "valeur": "DS_Store"}
+{"entite": "DVI (TeX)", "valeur": "dvi"}
+{"entite": "DVR-MS", "valeur": "dvr-ms"}
+{"entite": "Dynamic Link Library", "valeur": "dll"}
+{"entite": "EAR", "valeur": "ear"}
+{"entite": "EasyLanguage", "valeur": "eld"}
+{"entite": "EBU STL", "valeur": "stl"}
+{"entite": "EBU-TT", "valeur": "ttml"}
+{"entite": "EBX", "valeur": "ebx"}
+{"entite": "Éditions de L'Œuf", "valeur": "jci"}
+{"entite": "Elf", "valeur": "elf"}
+{"entite": "Elm", "valeur": "elm"}
+{"entite": "Embedded OpenType", "valeur": "eot"}
+{"entite": "Encapsulated PostScript", "valeur": "eps"}
+{"entite": "Exécutable .NET Micro Framework PE", "valeur": "exe"}
+{"entite": "Extensible 3D", "valeur": "x3d"}
+{"entite": "Extensible Markup Language", "valeur": "xml"}
+{"entite": "FBX", "valeur": "fbx"}
+{"entite": "feuille de calcul Microsoft Excel 2.x", "valeur": "xls"}
+{"entite": "feuille de calcul Microsoft Excel 3.0", "valeur": "xls"}
+{"entite": "feuille de calcul Microsoft Excel 4.0", "valeur": "xls"}
+{"entite": "feuille de calcul Microsoft Works", "valeur": "xlr"}
+{"entite": "feuille de style en cascade", "valeur": "css"}
+{"entite": "feuille de style QGIS", "valeur": "qml"}
+{"entite": "Fichier BFRES", "valeur": "bfres"}
+{"entite": "fichier binaire Maya, 32 bit", "valeur": "mb"}
+{"entite": "fichier binaire Maya, 64 bit", "valeur": "mb"}
+{"entite": "fichier d’export Zope", "valeur": "zexp"}
+{"entite": "Fichier de modèle Liquid", "valeur": "liquid"}
+{"entite": "fichier INI", "valeur": "ini"}
+{"entite": "fichier manifest", "valeur": "manifest"}
+{"entite": "fichier Microsoft FrontPage", "valeur": "lck"}
+{"entite": "Fichier .PAC", "valeur": "pac"}
+{"entite": "fichier registre", "valeur": "reg"}
+{"entite": "fichier texte à largeur fixe", "valeur": "fwf"}
+{"entite": "FILE_ID.DIZ", "valeur": "diz"}
+{"entite": "FlashPix", "valeur": "fpx"}
+{"entite": "Flexible Image Transport System", "valeur": "fits"}
+{"entite": "FLV", "valeur": "flv"}
+{"entite": "FoIP", "valeur": "t38"}
+{"entite": "Format de document portable pdf/au", "valeur": "pdf"}
+{"entite": "format de fichier 3D Mesh", "valeur": "3ds"}
+{"entite": "Format de fichier image AV1", "valeur": "avif"}
+{"entite": "format de fichier Maya ASCII", "valeur": "ma"}
+{"entite": "Format HTTP Archive", "valeur": "har"}
+{"entite": "Format SubRip", "valeur": "srt"}
+{"entite": "format XML", "valeur": "xsd"}
+{"entite": "Format .xyz", "valeur": "xyz"}
+{"entite": "Fountain", "valeur": "fountain"}
+{"entite": "Free Lossless Image Format", "valeur": "flif"}
+{"entite": "Frege", "valeur": "fr"}
+{"entite": "FXML", "valeur": "fxml"}
+{"entite": "GDSII", "valeur": "gds"}
+{"entite": "General feature format", "valeur": "gff"}
+{"entite": "Geography Markup Language", "valeur": "gml"}
+{"entite": "GeoJSON", "valeur": "geojson"}
+{"entite": "Geopackage", "valeur": "gpkg"}
+{"entite": "GeoTIFF", "valeur": "tif"}
+{"entite": "Gerber", "valeur": "gbr"}
+{"entite": "GEXF", "valeur": "gexf"}
+{"entite": "GIF", "valeur": "gif"}
+{"entite": "GIF animé", "valeur": "gif"}
+{"entite": "GIFT", "valeur": "gift"}
+{"entite": "Graph Modelling Language", "valeur": "gml"}
+{"entite": "GraphQL", "valeur": "graphql"}
+{"entite": "H.261", "valeur": "h261"}
+{"entite": "H.264", "valeur": "mp4"}
+{"entite": "Haml", "valeur": "haml"}
+{"entite": "HDT", "valeur": "hdt"}
+{"entite": "HEX", "valeur": "hex"}
+{"entite": "HTML Application", "valeur": "hta"}
+{"entite": ".htpasswd", "valeur": "htpasswd"}
+{"entite": ".http", "valeur": "http"}
+{"entite": "i2 Analysts Notebook", "valeur": "anb"}
+{"entite": "ICO", "valeur": "ico"}
+{"entite": "IGC", "valeur": "igc"}
+{"entite": "Image Disque VirtualBox", "valeur": "vdi"}
+{"entite": "IMelody", "valeur": "imy"}
+{"entite": "IMG", "valeur": "img"}
+{"entite": "Indeo", "valeur": "ivf"}
+{"entite": "Interchange file format", "valeur": "iff"}
+{"entite": "Internationalization Tag Set", "valeur": "its"}
+{"entite": ".ipa", "valeur": "ipa"}
+{"entite": "IPSW", "valeur": "ipsw"}
+{"entite": ".ipynb", "valeur": "ipynb"}
+{"entite": "IRCAM", "valeur": "sf"}
+{"entite": "J", "valeur": "ijs"}
+{"entite": "JAR", "valeur": "jar"}
+{"entite": "JavaScript Object Notation", "valeur": "json"}
+{"entite": "JavaServer Pages", "valeur": "jsp"}
+{"entite": "JHTML", "valeur": "jhtml"}
+{"entite": "JP2", "valeur": "jp2"}
+{"entite": "JPEG-LS", "valeur": "jls"}
+{"entite": "JPEG Network Graphics", "valeur": "jng"}
+{"entite": "JPEG XL", "valeur": "jxl"}
+{"entite": "JS", "valeur": "js"}
+{"entite": "JScript .NET", "valeur": "js"}
+{"entite": "JSFuck", "valeur": "js"}
+{"entite": "JSON-LD", "valeur": "jsonld"}
+{"entite": "JSON Lines", "valeur": "jsonl"}
+{"entite": "JSX", "valeur": "jsx"}
+{"entite": "Julia", "valeur": "jl"}
+{"entite": "Kaitai Struct", "valeur": "ksy"}
+{"entite": "KiXtart", "valeur": "kix"}
+{"entite": "LaTeX", "valeur": "tex"}
+{"entite": "LDAP Data Interchange Format", "valeur": "ldif"}
+{"entite": "Lightwright 6 Show File", "valeur": "lw6"}
+{"entite": "liste de propriétés", "valeur": "plist"}
+{"entite": "liste de révocation de certificats", "valeur": "crl"}
+{"entite": "Liste éclair", "valeur": "tt"}
+{"entite": ".lnk", "valeur": "lnk"}
+{"entite": "Lossless predictive audio compression", "valeur": "pac"}
+{"entite": "LRC", "valeur": "lrc"}
+{"entite": "lrz", "valeur": "lrz"}
+{"entite": "LZIP compressed archive", "valeur": "lz"}
+{"entite": "M4v", "valeur": "m4v"}
+{"entite": "MAFF", "valeur": "maff"}
+{"entite": "MapCSS", "valeur": "mapcss"}
+{"entite": "MARCXML", "valeur": "mrcx"}
+{"entite": "MASL", "valeur": "Msl"}
+{"entite": "MAT4", "valeur": "mat"}
+{"entite": "Material Exchange Format", "valeur": "mxf"}
+{"entite": "Material Template Library", "valeur": "mtl"}
+{"entite": "MathML", "valeur": "mml"}
+{"entite": "MD3", "valeur": "md3"}
+{"entite": "MFS", "valeur": "mfs"}
+{"entite": "Microsoft Compressed HTML", "valeur": "chm"}
+{"entite": "Microsoft Document Imaging Format", "valeur": "mdi"}
+{"entite": "Microsoft Management Console", "valeur": "msc"}
+{"entite": "Microsoft Office Binder File for Windows 95", "valeur": "obd"}
+{"entite": "Microsoft Office Binder File for Windows 97-2000", "valeur": "obd"}
+{"entite": "Microsoft PST", "valeur": "pst"}
+{"entite": "Microsoft WinHelp", "valeur": "hlp"}
+{"entite": "Microsoft Word Document", "valeur": "doc"}
+{"entite": "mm", "valeur": "mm"}
+{"entite": "MOD", "valeur": "mod"}
+{"entite": "Modèle de ressource Microsoft .NET XML", "valeur": "resx"}
+{"entite": "Modèle de ressource Microsoft .NET XML (UTF-8)", "valeur": "resx"}
+{"entite": "module Perl", "valeur": "pm"}
+{"entite": "Mojo", "valeur": "mojo"}
+{"entite": "MPEG-1 Audio Layer II", "valeur": "mp2"}
+{"entite": "MPEG-4", "valeur": "mp4"}
+{"entite": "MPEG-4 Part 14", "valeur": "mp4"}
+{"entite": "MrSID", "valeur": "sid"}
+{"entite": "MT9", "valeur": "mt9"}
+{"entite": "Multiple-image Network Graphics", "valeur": "mng"}
+{"entite": "MXML", "valeur": "mxml"}
+{"entite": "MySQL Table Definition Format", "valeur": "frm"}
+{"entite": "MYTHSAV", "valeur": "mythsav"}
+{"entite": "N-Triples", "valeur": "nt"}
+{"entite": "NDJSON", "valeur": "ndjson"}
+{"entite": "Neko", "valeur": "neko"}
+{"entite": ".NET Micro Framework TinyFont", "valeur": "tinyfnt"}
+{"entite": "netCDF", "valeur": "nc"}
+{"entite": "Newick", "valeur": "newick"}
+{"entite": ".nfo", "valeur": "nfo"}
+{"entite": "NII", "valeur": "nii"}
+{"entite": "Nikon Electronic File", "valeur": "nef"}
+{"entite": "Notation Forsyth-Edwards", "valeur": "fen"}
+{"entite": "Notation3", "valeur": "n3"}
+{"entite": "NRG", "valeur": "nrg"}
+{"entite": "Numbers", "valeur": "numbers"}
+{"entite": "NUT Container", "valeur": "nut"}
+{"entite": "NZB", "valeur": "nzb"}
+{"entite": ".OBJ", "valeur": "object"}
+{"entite": "Object file format", "valeur": "off"}
+{"entite": "objet local partagé", "valeur": "sol"}
+{"entite": "Ogg Media", "valeur": "ogm"}
+{"entite": "OPC", "valeur": "zip"}
+{"entite": "Open eBook", "valeur": "opf"}
+{"entite": "Open Project File", "valeur": "pod"}
+{"entite": "OpenEXR", "valeur": "exr"}
+{"entite": "OpenRaster", "valeur": "ora"}
+{"entite": "Opus", "valeur": "opus"}
+{"entite": "Outline Processor Markup Language", "valeur": "opml"}
+{"entite": "OXT", "valeur": "oxt"}
+{"entite": "page de manuel", "valeur": "man"}
+{"entite": "Paint.NET image", "valeur": "pdn"}
+{"entite": "PascalABC.NET", "valeur": "pas"}
+{"entite": "PCAP", "valeur": "pcap"}
+{"entite": "PDF/E", "valeur": "pdf"}
+{"entite": "PFB", "valeur": "pfb"}
+{"entite": "phar", "valeur": "phar"}
+{"entite": "PhyloXML", "valeur": "phyloxml"}
+{"entite": "PLS", "valeur": "pls"}
+{"entite": "PLY", "valeur": "ply"}
+{"entite": "Portable Compiled Font", "valeur": "pcf"}
+{"entite": "Portable Document Format", "valeur": "pdf"}
+{"entite": "Portable Document Format, version 1.0", "valeur": "pdf"}
+{"entite": "Portable Document Format, version 1.1", "valeur": "pdf"}
+{"entite": "Portable Document Format, version 1.2", "valeur": "pdf"}
+{"entite": "Portable Document Format, version 1.3", "valeur": "pdf"}
+{"entite": "Portable Document Format, version 1.4", "valeur": "pdf"}
+{"entite": "Portable Document Format, version 1.5", "valeur": "pdf"}
+{"entite": "Portable Game Notation", "valeur": "pgn"}
+{"entite": "Portable Network Graphics", "valeur": "png"}
+{"entite": "Portable Voice format", "valeur": "pvf"}
+{"entite": "PowerPoint Show", "valeur": "ppt"}
+{"entite": "PRC", "valeur": "prc"}
+{"entite": "Precision Graphics Markup Language", "valeur": "pgml"}
+{"entite": "Printer Postscript Description", "valeur": "ppd"}
+{"entite": "Program database", "valeur": "pdb"}
+{"entite": "Progressive Graphics File", "valeur": "pgf"}
+{"entite": "Projet Final Cut Pro", "valeur": "fcp"}
+{"entite": "Projet Final Cut Pro X", "valeur": "fcpx"}
+{"entite": "PROMELA", "valeur": "pml"}
+{"entite": ".properties", "valeur": "properties"}
+{"entite": "Pyramix Media File", "valeur": "pmf"}
+{"entite": "Q#", "valeur": "qs"}
+{"entite": "qgs", "valeur": "qgs"}
+{"entite": "QML", "valeur": "qml"}
+{"entite": "QOI", "valeur": "qoi"}
+{"entite": "Quicken Interchange Format", "valeur": "qif"}
+{"entite": "QuickTime VR", "valeur": "qtvr"}
+{"entite": "RDF/XML", "valeur": "rdf"}
+{"entite": "RealVideo", "valeur": "rv"}
+{"entite": "Rebol", "valeur": "reb"}
+{"entite": "Resource Interchange File Format", "valeur": "riff"}
+{"entite": "Ressource de données .NET Framework", "valeur": "res"}
+{"entite": "reStructuredText", "valeur": "rst"}
+{"entite": "Rich Text Format Directory", "valeur": "rtfd"}
+{"entite": "Ring", "valeur": "ring"}
+{"entite": "RIS", "valeur": "ris"}
+{"entite": ".rmp", "valeur": "rmp"}
+{"entite": "RMVB", "valeur": "rmvb"}
+{"entite": "RPT", "valeur": "rpt"}
+{"entite": "S3M", "valeur": "s3m"}
+{"entite": ".SCR", "valeur": "SCR"}
+{"entite": "script Perl", "valeur": "pl"}
+{"entite": "script PHP", "valeur": "php"}
+{"entite": "script Python", "valeur": "py"}
+{"entite": "script Ruby", "valeur": "rb"}
+{"entite": "script shell", "valeur": "sh"}
+{"entite": "script SQL", "valeur": "sql"}
+{"entite": "SCXML", "valeur": "scxml"}
+{"entite": "Secure Download Cabinet", "valeur": "sdc"}
+{"entite": "Sfv", "valeur": "sfv"}
+{"entite": "ShEx", "valeur": "shex"}
+{"entite": "Shorten", "valeur": "shn"}
+{"entite": "Sitemaps", "valeur": "sitemap"}
+{"entite": "SITX", "valeur": "sitx"}
+{"entite": "Smalltalk", "valeur": "st"}
+{"entite": "Smart Game Format", "valeur": "sgf"}
+{"entite": "Snappy", "valeur": "sz"}
+{"entite": "Sound Description Interchange Format", "valeur": "sdif"}
+{"entite": "SoundFont", "valeur": "sf2"}
+{"entite": "SQX", "valeur": "sqx"}
+{"entite": "Standard Generalized Markup Language", "valeur": "sgml"}
+{"entite": "Standard ML", "valeur": "sml"}
+{"entite": "STL", "valeur": "stl"}
+{"entite": "Structured Query Language", "valeur": "sql"}
+{"entite": "Stylus", "valeur": "styl"}
+{"entite": "SVG Font", "valeur": "svg"}
+{"entite": "SWC", "valeur": "swc"}
+{"entite": "SXW", "valeur": "sxw"}
+{"entite": ".sys", "valeur": "sys"}
+{"entite": "System.map", "valeur": "map"}
+{"entite": "Tag Library Descriptor", "valeur": "tld"}
+{"entite": "tar", "valeur": "tar"}
+{"entite": "TeX", "valeur": "tex"}
+{"entite": "TeX Font Metric", "valeur": "tfm"}
+{"entite": "Textile", "valeur": "textile"}
+{"entite": "Thumbs.db", "valeur": "db"}
+{"entite": "Tom's Obvious, Minimal Language", "valeur": "toml"}
+{"entite": "TopoJSON", "valeur": "json"}
+{"entite": "torrent", "valeur": "torrent"}
+{"entite": "Translation Memory eXchange", "valeur": "tmx"}
+{"entite": "TriG", "valeur": "trig"}
+{"entite": "TTA", "valeur": "tta"}
+{"entite": "Turtle", "valeur": "ttl"}
+{"entite": "Two-Line Elements", "valeur": "tle"}
+{"entite": "U3D", "valeur": "u3d"}
+{"entite": "UBJSON", "valeur": "ubj"}
+{"entite": "UHA", "valeur": "uha"}
+{"entite": "Universal Subtitle Format", "valeur": "xml"}
+{"entite": "Universal Terminology eXchange", "valeur": "utx"}
+{"entite": "UTZ", "valeur": "utz"}
+{"entite": "Variant Call Format", "valeur": "vcf"}
+{"entite": "VBScript", "valeur": "vbs"}
+{"entite": "Veg", "valeur": "veg"}
+{"entite": "VHD", "valeur": "vhd"}
+{"entite": "Vidéo CD", "valeur": "vcd"}
+{"entite": "Video Object", "valeur": "vob"}
+{"entite": "Video Recording Object file", "valeur": "vro"}
+{"entite": "Vim script", "valeur": "vim"}
+{"entite": "vimwiki", "valeur": "wiki"}
+{"entite": "Virtual Machine Disk", "valeur": "vmdk"}
+{"entite": "Visual Basic Extension", "valeur": "vbx"}
+{"entite": "Visual Basic .NET", "valeur": "vb"}
+{"entite": "VTK", "valeur": "vtk"}
+{"entite": "WAR", "valeur": "war"}
+{"entite": "WARC", "valeur": "warc"}
+{"entite": "Waveform Audio File Format", "valeur": "wav"}
+{"entite": "WBFS", "valeur": "wbfs"}
+{"entite": "Web Application Description Language", "valeur": "wadl"}
+{"entite": "Web Ontology Language", "valeur": "owl"}
+{"entite": "Web Open Font Format", "valeur": "woff"}
+{"entite": "Web Open Font Format 2", "valeur": "woff2"}
+{"entite": "Web Services Description Language", "valeur": "wsdl"}
+{"entite": "Webarchive", "valeur": "webarchive"}
+{"entite": "WebM", "valeur": "webm"}
+{"entite": "WebP", "valeur": "webp"}
+{"entite": "WebVTT", "valeur": "vtt"}
+{"entite": "Where's All the Data", "valeur": "wad"}
+{"entite": "Wii ISO Archive", "valeur": "wbfs"}
+{"entite": "Windows Media Audio", "valeur": "wma"}
+{"entite": "Windows Media Audio 9 Lossless", "valeur": "wma"}
+{"entite": "Wireless Application Protocol Bitmap Format", "valeur": "wbmp"}
+{"entite": "Wireless Markup Language", "valeur": "wml"}
+{"entite": "WMLScript", "valeur": "wmls"}
+{"entite": "WMV HD", "valeur": "wmv"}
+{"entite": "Wordperfect Secondary File", "valeur": "doc"}
+{"entite": "WPG", "valeur": "wpg"}
+{"entite": "WPL", "valeur": "wpl"}
+{"entite": "WWF", "valeur": "wwf"}
+{"entite": "X BitMap", "valeur": "xbm"}
+{"entite": "X PixMap", "valeur": "xpm"}
+{"entite": "X10", "valeur": "x10"}
+{"entite": "XAML", "valeur": "xaml"}
+{"entite": "Xar", "valeur": "xar"}
+{"entite": "XCF", "valeur": "xcf"}
+{"entite": "XDOMEA 2.0.0", "valeur": "xml"}
+{"entite": "XDOMEA 2.0.1", "valeur": "xml"}
+{"entite": "XDOMEA 2.3.0", "valeur": "xml"}
+{"entite": "XDOMEA 2.4.0", "valeur": "xml"}
+{"entite": "XDXF", "valeur": "xdxf"}
+{"entite": "XLIFF", "valeur": "xlf"}
+{"entite": "XLSM", "valeur": "xlsm"}
+{"entite": "XLSX", "valeur": "xlsx"}
+{"entite": "XM", "valeur": "xm"}
+{"entite": "XML-based User interface Language", "valeur": "xul"}
+{"entite": "XML Bookmark Exchange Language", "valeur": "xml"}
+{"entite": "XML Metadata Interchange", "valeur": "xmi"}
+{"entite": "Xorg.conf", "valeur": "xorg.conf"}
+{"entite": "XPInstall", "valeur": "xpi"}
+{"entite": "XProc", "valeur": "xpl"}
+{"entite": "XSPF", "valeur": "xspf"}
+{"entite": "XTM", "valeur": "xtm"}
+{"entite": "XZ", "valeur": "xz"}
+{"entite": "ZIM", "valeur": "zim"}

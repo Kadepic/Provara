@@ -1,0 +1,249 @@
+{"_relation": "domaine_internet", "_categorie": "convention", "_source": "mledoze/countries — ccTLD officiel (ISO, 1er tld)", "_articles": true}
+{"entite": "Afghanistan", "valeur": ".af"}
+{"entite": "Afrique du Sud", "valeur": ".za"}
+{"entite": "Ahvenanmaa", "valeur": ".ax"}
+{"entite": "Albanie", "valeur": ".al"}
+{"entite": "Algérie", "valeur": ".dz"}
+{"entite": "Allemagne", "valeur": ".de"}
+{"entite": "Andorre", "valeur": ".ad"}
+{"entite": "Angola", "valeur": ".ao"}
+{"entite": "Anguilla", "valeur": ".ai"}
+{"entite": "Antarctique", "valeur": ".aq"}
+{"entite": "Antigua-et-Barbuda", "valeur": ".ag"}
+{"entite": "Arabie Saoudite", "valeur": ".sa"}
+{"entite": "Argentine", "valeur": ".ar"}
+{"entite": "Arménie", "valeur": ".am"}
+{"entite": "Aruba", "valeur": ".aw"}
+{"entite": "Australie", "valeur": ".au"}
+{"entite": "Autriche", "valeur": ".at"}
+{"entite": "Azerbaïdjan", "valeur": ".az"}
+{"entite": "Bahamas", "valeur": ".bs"}
+{"entite": "Bahreïn", "valeur": ".bh"}
+{"entite": "Bangladesh", "valeur": ".bd"}
+{"entite": "Barbade", "valeur": ".bb"}
+{"entite": "Belgique", "valeur": ".be"}
+{"entite": "Belize", "valeur": ".bz"}
+{"entite": "Bénin", "valeur": ".bj"}
+{"entite": "Bermudes", "valeur": ".bm"}
+{"entite": "Bhoutan", "valeur": ".bt"}
+{"entite": "Biélorussie", "valeur": ".by"}
+{"entite": "Birmanie", "valeur": ".mm"}
+{"entite": "Bolivie", "valeur": ".bo"}
+{"entite": "Bosnie-Herzégovine", "valeur": ".ba"}
+{"entite": "Botswana", "valeur": ".bw"}
+{"entite": "Brésil", "valeur": ".br"}
+{"entite": "Brunei", "valeur": ".bn"}
+{"entite": "Bulgarie", "valeur": ".bg"}
+{"entite": "Burkina Faso", "valeur": ".bf"}
+{"entite": "Burundi", "valeur": ".bi"}
+{"entite": "Cambodge", "valeur": ".kh"}
+{"entite": "Cameroun", "valeur": ".cm"}
+{"entite": "Canada", "valeur": ".ca"}
+{"entite": "Chili", "valeur": ".cl"}
+{"entite": "Chine", "valeur": ".cn"}
+{"entite": "Chypre", "valeur": ".cy"}
+{"entite": "Cité du Vatican", "valeur": ".va"}
+{"entite": "Colombie", "valeur": ".co"}
+{"entite": "Comores", "valeur": ".km"}
+{"entite": "Congo", "valeur": ".cg"}
+{"entite": "Congo (Rép. dém.)", "valeur": ".cd"}
+{"entite": "Corée du Nord", "valeur": ".kp"}
+{"entite": "Corée du Sud", "valeur": ".kr"}
+{"entite": "Costa Rica", "valeur": ".cr"}
+{"entite": "Côte d'Ivoire", "valeur": ".ci"}
+{"entite": "Croatie", "valeur": ".hr"}
+{"entite": "Cuba", "valeur": ".cu"}
+{"entite": "Curaçao", "valeur": ".cw"}
+{"entite": "Danemark", "valeur": ".dk"}
+{"entite": "Djibouti", "valeur": ".dj"}
+{"entite": "Dominique", "valeur": ".dm"}
+{"entite": "Égypte", "valeur": ".eg"}
+{"entite": "Émirats arabes unis", "valeur": ".ae"}
+{"entite": "Équateur", "valeur": ".ec"}
+{"entite": "Érythrée", "valeur": ".er"}
+{"entite": "Espagne", "valeur": ".es"}
+{"entite": "Estonie", "valeur": ".ee"}
+{"entite": "Eswatini", "valeur": ".sz"}
+{"entite": "États-Unis", "valeur": ".us"}
+{"entite": "Éthiopie", "valeur": ".et"}
+{"entite": "Fidji", "valeur": ".fj"}
+{"entite": "Finlande", "valeur": ".fi"}
+{"entite": "France", "valeur": ".fr"}
+{"entite": "Gabon", "valeur": ".ga"}
+{"entite": "Gambie", "valeur": ".gm"}
+{"entite": "Géorgie", "valeur": ".ge"}
+{"entite": "Géorgie du Sud-et-les Îles Sandwich du Sud", "valeur": ".gs"}
+{"entite": "Ghana", "valeur": ".gh"}
+{"entite": "Gibraltar", "valeur": ".gi"}
+{"entite": "Grèce", "valeur": ".gr"}
+{"entite": "Grenade", "valeur": ".gd"}
+{"entite": "Groenland", "valeur": ".gl"}
+{"entite": "Guadeloupe", "valeur": ".gp"}
+{"entite": "Guam", "valeur": ".gu"}
+{"entite": "Guatemala", "valeur": ".gt"}
+{"entite": "Guernesey", "valeur": ".gg"}
+{"entite": "Guinée", "valeur": ".gn"}
+{"entite": "Guinée-Bissau", "valeur": ".gw"}
+{"entite": "Guinée équatoriale", "valeur": ".gq"}
+{"entite": "Guyana", "valeur": ".gy"}
+{"entite": "Guyane", "valeur": ".gf"}
+{"entite": "Haïti", "valeur": ".ht"}
+{"entite": "Honduras", "valeur": ".hn"}
+{"entite": "Hong Kong", "valeur": ".hk"}
+{"entite": "Hongrie", "valeur": ".hu"}
+{"entite": "Île Bouvet", "valeur": ".bv"}
+{"entite": "Île Christmas", "valeur": ".cx"}
+{"entite": "Île de Man", "valeur": ".im"}
+{"entite": "Île Maurice", "valeur": ".mu"}
+{"entite": "Île Norfolk", "valeur": ".nf"}
+{"entite": "Îles Caïmans", "valeur": ".ky"}
+{"entite": "Îles Cocos", "valeur": ".cc"}
+{"entite": "Îles Cook", "valeur": ".ck"}
+{"entite": "Îles du Cap-Vert", "valeur": ".cv"}
+{"entite": "Îles Féroé", "valeur": ".fo"}
+{"entite": "Îles Heard-et-MacDonald", "valeur": ".hm"}
+{"entite": "Îles Malouines", "valeur": ".fk"}
+{"entite": "Îles Mariannes du Nord", "valeur": ".mp"}
+{"entite": "Îles Marshall", "valeur": ".mh"}
+{"entite": "Îles mineures éloignées des États-Unis", "valeur": ".us"}
+{"entite": "Îles Pitcairn", "valeur": ".pn"}
+{"entite": "Îles Salomon", "valeur": ".sb"}
+{"entite": "Îles Turques-et-Caïques", "valeur": ".tc"}
+{"entite": "Îles Vierges britanniques", "valeur": ".vg"}
+{"entite": "Îles Vierges des États-Unis", "valeur": ".vi"}
+{"entite": "Inde", "valeur": ".in"}
+{"entite": "Indonésie", "valeur": ".id"}
+{"entite": "Irak", "valeur": ".iq"}
+{"entite": "Iran", "valeur": ".ir"}
+{"entite": "Irlande", "valeur": ".ie"}
+{"entite": "Islande", "valeur": ".is"}
+{"entite": "Israël", "valeur": ".il"}
+{"entite": "Italie", "valeur": ".it"}
+{"entite": "Jamaïque", "valeur": ".jm"}
+{"entite": "Japon", "valeur": ".jp"}
+{"entite": "Jersey", "valeur": ".je"}
+{"entite": "Jordanie", "valeur": ".jo"}
+{"entite": "Kazakhstan", "valeur": ".kz"}
+{"entite": "Kenya", "valeur": ".ke"}
+{"entite": "Kirghizistan", "valeur": ".kg"}
+{"entite": "Kiribati", "valeur": ".ki"}
+{"entite": "Kosovo", "valeur": ".xk"}
+{"entite": "Koweït", "valeur": ".kw"}
+{"entite": "Laos", "valeur": ".la"}
+{"entite": "Lesotho", "valeur": ".ls"}
+{"entite": "Lettonie", "valeur": ".lv"}
+{"entite": "Liban", "valeur": ".lb"}
+{"entite": "Liberia", "valeur": ".lr"}
+{"entite": "Libye", "valeur": ".ly"}
+{"entite": "Liechtenstein", "valeur": ".li"}
+{"entite": "Lituanie", "valeur": ".lt"}
+{"entite": "Luxembourg", "valeur": ".lu"}
+{"entite": "Macao", "valeur": ".mo"}
+{"entite": "Macédoine du Nord", "valeur": ".mk"}
+{"entite": "Madagascar", "valeur": ".mg"}
+{"entite": "Malaisie", "valeur": ".my"}
+{"entite": "Malawi", "valeur": ".mw"}
+{"entite": "Maldives", "valeur": ".mv"}
+{"entite": "Mali", "valeur": ".ml"}
+{"entite": "Malte", "valeur": ".mt"}
+{"entite": "Maroc", "valeur": ".ma"}
+{"entite": "Martinique", "valeur": ".mq"}
+{"entite": "Mauritanie", "valeur": ".mr"}
+{"entite": "Mayotte", "valeur": ".yt"}
+{"entite": "Mexique", "valeur": ".mx"}
+{"entite": "Micronésie", "valeur": ".fm"}
+{"entite": "Moldavie", "valeur": ".md"}
+{"entite": "Monaco", "valeur": ".mc"}
+{"entite": "Mongolie", "valeur": ".mn"}
+{"entite": "Monténégro", "valeur": ".me"}
+{"entite": "Montserrat", "valeur": ".ms"}
+{"entite": "Mozambique", "valeur": ".mz"}
+{"entite": "Namibie", "valeur": ".na"}
+{"entite": "Nauru", "valeur": ".nr"}
+{"entite": "Népal", "valeur": ".np"}
+{"entite": "Nicaragua", "valeur": ".ni"}
+{"entite": "Niger", "valeur": ".ne"}
+{"entite": "Nigéria", "valeur": ".ng"}
+{"entite": "Niue", "valeur": ".nu"}
+{"entite": "Norvège", "valeur": ".no"}
+{"entite": "Nouvelle-Calédonie", "valeur": ".nc"}
+{"entite": "Nouvelle-Zélande", "valeur": ".nz"}
+{"entite": "Oman", "valeur": ".om"}
+{"entite": "Ouganda", "valeur": ".ug"}
+{"entite": "Ouzbékistan", "valeur": ".uz"}
+{"entite": "Pakistan", "valeur": ".pk"}
+{"entite": "Palaos (Palau)", "valeur": ".pw"}
+{"entite": "Palestine", "valeur": ".ps"}
+{"entite": "Panama", "valeur": ".pa"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": ".pg"}
+{"entite": "Paraguay", "valeur": ".py"}
+{"entite": "Pays-Bas", "valeur": ".nl"}
+{"entite": "Pays-Bas caribéens", "valeur": ".bq"}
+{"entite": "Pérou", "valeur": ".pe"}
+{"entite": "Philippines", "valeur": ".ph"}
+{"entite": "Pologne", "valeur": ".pl"}
+{"entite": "Polynésie française", "valeur": ".pf"}
+{"entite": "Porto Rico", "valeur": ".pr"}
+{"entite": "Portugal", "valeur": ".pt"}
+{"entite": "Qatar", "valeur": ".qa"}
+{"entite": "République centrafricaine", "valeur": ".cf"}
+{"entite": "République dominicaine", "valeur": ".do"}
+{"entite": "Réunion", "valeur": ".re"}
+{"entite": "Roumanie", "valeur": ".ro"}
+{"entite": "Royaume-Uni", "valeur": ".uk"}
+{"entite": "Russie", "valeur": ".ru"}
+{"entite": "Rwanda", "valeur": ".rw"}
+{"entite": "Sahara Occidental", "valeur": ".eh"}
+{"entite": "Saint-Barthélemy", "valeur": ".bl"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": ".kn"}
+{"entite": "Saint-Marin", "valeur": ".sm"}
+{"entite": "Saint-Pierre-et-Miquelon", "valeur": ".pm"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": ".vc"}
+{"entite": "Sainte-Hélène, Ascension et Tristan da Cunha", "valeur": ".sh"}
+{"entite": "Sainte-Lucie", "valeur": ".lc"}
+{"entite": "Salvador", "valeur": ".sv"}
+{"entite": "Samoa", "valeur": ".ws"}
+{"entite": "Samoa américaines", "valeur": ".as"}
+{"entite": "São Tomé et Príncipe", "valeur": ".st"}
+{"entite": "Sénégal", "valeur": ".sn"}
+{"entite": "Serbie", "valeur": ".rs"}
+{"entite": "Seychelles", "valeur": ".sc"}
+{"entite": "Sierra Leone", "valeur": ".sl"}
+{"entite": "Singapour", "valeur": ".sg"}
+{"entite": "Slovaquie", "valeur": ".sk"}
+{"entite": "Slovénie", "valeur": ".si"}
+{"entite": "Somalie", "valeur": ".so"}
+{"entite": "Soudan", "valeur": ".sd"}
+{"entite": "Soudan du Sud", "valeur": ".ss"}
+{"entite": "Sri Lanka", "valeur": ".lk"}
+{"entite": "Suède", "valeur": ".se"}
+{"entite": "Suisse", "valeur": ".ch"}
+{"entite": "Surinam", "valeur": ".sr"}
+{"entite": "Svalbard et Jan Mayen", "valeur": ".sj"}
+{"entite": "Syrie", "valeur": ".sy"}
+{"entite": "Tadjikistan", "valeur": ".tj"}
+{"entite": "Taïwan", "valeur": ".tw"}
+{"entite": "Tanzanie", "valeur": ".tz"}
+{"entite": "Tchad", "valeur": ".td"}
+{"entite": "Tchéquie", "valeur": ".cz"}
+{"entite": "Terres australes et antarctiques françaises", "valeur": ".tf"}
+{"entite": "Territoire britannique de l'océan Indien", "valeur": ".io"}
+{"entite": "Thaïlande", "valeur": ".th"}
+{"entite": "Timor oriental", "valeur": ".tl"}
+{"entite": "Togo", "valeur": ".tg"}
+{"entite": "Tokelau", "valeur": ".tk"}
+{"entite": "Tonga", "valeur": ".to"}
+{"entite": "Trinité-et-Tobago", "valeur": ".tt"}
+{"entite": "Tunisie", "valeur": ".tn"}
+{"entite": "Turkménistan", "valeur": ".tm"}
+{"entite": "Turquie", "valeur": ".tr"}
+{"entite": "Tuvalu", "valeur": ".tv"}
+{"entite": "Ukraine", "valeur": ".ua"}
+{"entite": "Uruguay", "valeur": ".uy"}
+{"entite": "Vanuatu", "valeur": ".vu"}
+{"entite": "Venezuela", "valeur": ".ve"}
+{"entite": "Viêt Nam", "valeur": ".vn"}
+{"entite": "Wallis-et-Futuna", "valeur": ".wf"}
+{"entite": "Yémen", "valeur": ".ye"}
+{"entite": "Zambie", "valeur": ".zm"}
+{"entite": "Zimbabwe", "valeur": ".zw"}

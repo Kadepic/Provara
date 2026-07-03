@@ -1,0 +1,5 @@
+{"_relation": "stimulus_tropisme", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie végétale textbook curée (tropisme -> stimulus ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "géotropisme", "valeur": "gravité"}
+{"entite": "hydrotropisme", "valeur": "eau"}
+{"entite": "phototropisme", "valeur": "lumière"}
+{"entite": "thigmotropisme", "valeur": "contact"}

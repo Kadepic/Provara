@@ -1,0 +1,33 @@
+{"_relation": "type_fecondation", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (type de fécondation ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "interne"}
+{"entite": "aigle royal", "valeur": "interne"}
+{"entite": "anguille", "valeur": "externe"}
+{"entite": "araignée", "valeur": "interne"}
+{"entite": "carpe", "valeur": "externe"}
+{"entite": "cheval", "valeur": "interne"}
+{"entite": "chien", "valeur": "interne"}
+{"entite": "corail", "valeur": "externe"}
+{"entite": "crocodile du Nil", "valeur": "interne"}
+{"entite": "escargot", "valeur": "interne"}
+{"entite": "étoile de mer", "valeur": "externe"}
+{"entite": "être humain", "valeur": "interne"}
+{"entite": "fourmi", "valeur": "interne"}
+{"entite": "grenouille rousse", "valeur": "externe"}
+{"entite": "hareng", "valeur": "externe"}
+{"entite": "huître", "valeur": "externe"}
+{"entite": "lion", "valeur": "interne"}
+{"entite": "méduse", "valeur": "externe"}
+{"entite": "morue", "valeur": "externe"}
+{"entite": "moule", "valeur": "externe"}
+{"entite": "oursin", "valeur": "externe"}
+{"entite": "pigeon", "valeur": "interne"}
+{"entite": "python", "valeur": "interne"}
+{"entite": "requin", "valeur": "interne"}
+{"entite": "sardine", "valeur": "externe"}
+{"entite": "saumon atlantique", "valeur": "externe"}
+{"entite": "scorpion", "valeur": "interne"}
+{"entite": "serpent", "valeur": "interne"}
+{"entite": "thon rouge", "valeur": "externe"}
+{"entite": "tortue marine", "valeur": "interne"}
+{"entite": "truite", "valeur": "externe"}
+{"entite": "vache", "valeur": "interne"}

@@ -1,0 +1,83 @@
+{"_relation": "mode_reproduction_animal", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (mode de reproduction ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "abeille", "valeur": "ovipare"}
+{"entite": "aigle royal", "valeur": "ovipare"}
+{"entite": "anaconda", "valeur": "ovovivipare"}
+{"entite": "araignée", "valeur": "ovipare"}
+{"entite": "autruche", "valeur": "ovipare"}
+{"entite": "baleine bleue", "valeur": "vivipare"}
+{"entite": "boa", "valeur": "ovovivipare"}
+{"entite": "brochet", "valeur": "ovipare"}
+{"entite": "cachalot", "valeur": "vivipare"}
+{"entite": "caille", "valeur": "ovipare"}
+{"entite": "canard", "valeur": "ovipare"}
+{"entite": "carpe", "valeur": "ovipare"}
+{"entite": "cerf", "valeur": "vivipare"}
+{"entite": "chat", "valeur": "vivipare"}
+{"entite": "chauve-souris", "valeur": "vivipare"}
+{"entite": "cheval", "valeur": "vivipare"}
+{"entite": "chèvre", "valeur": "vivipare"}
+{"entite": "chien", "valeur": "vivipare"}
+{"entite": "chimpanzé", "valeur": "vivipare"}
+{"entite": "cobra royal", "valeur": "ovipare"}
+{"entite": "coccinelle", "valeur": "ovipare"}
+{"entite": "cochon", "valeur": "vivipare"}
+{"entite": "corbeau", "valeur": "ovipare"}
+{"entite": "couleuvre", "valeur": "ovipare"}
+{"entite": "crapaud", "valeur": "ovipare"}
+{"entite": "crocodile du Nil", "valeur": "ovipare"}
+{"entite": "cygne", "valeur": "ovipare"}
+{"entite": "dauphin", "valeur": "vivipare"}
+{"entite": "éléphant d'Afrique", "valeur": "vivipare"}
+{"entite": "escargot", "valeur": "ovipare"}
+{"entite": "être humain", "valeur": "vivipare"}
+{"entite": "faisan", "valeur": "ovipare"}
+{"entite": "flamant rose", "valeur": "ovipare"}
+{"entite": "fourmi", "valeur": "ovipare"}
+{"entite": "gecko", "valeur": "ovipare"}
+{"entite": "girafe", "valeur": "vivipare"}
+{"entite": "gorille", "valeur": "vivipare"}
+{"entite": "grand requin blanc", "valeur": "ovovivipare"}
+{"entite": "grenouille rousse", "valeur": "ovipare"}
+{"entite": "guêpe", "valeur": "ovipare"}
+{"entite": "hareng", "valeur": "ovipare"}
+{"entite": "héron", "valeur": "ovipare"}
+{"entite": "hibou", "valeur": "ovipare"}
+{"entite": "hippopotame", "valeur": "vivipare"}
+{"entite": "iguane", "valeur": "ovipare"}
+{"entite": "kangourou", "valeur": "vivipare"}
+{"entite": "lapin", "valeur": "vivipare"}
+{"entite": "libellule", "valeur": "ovipare"}
+{"entite": "lion", "valeur": "vivipare"}
+{"entite": "loup", "valeur": "vivipare"}
+{"entite": "manchot empereur", "valeur": "ovipare"}
+{"entite": "moineau", "valeur": "ovipare"}
+{"entite": "morue", "valeur": "ovipare"}
+{"entite": "mouche", "valeur": "ovipare"}
+{"entite": "mouton", "valeur": "vivipare"}
+{"entite": "oie", "valeur": "ovipare"}
+{"entite": "ornithorynque", "valeur": "ovipare"}
+{"entite": "orque", "valeur": "vivipare"}
+{"entite": "orvet", "valeur": "ovovivipare"}
+{"entite": "ours brun", "valeur": "vivipare"}
+{"entite": "papillon", "valeur": "ovipare"}
+{"entite": "perroquet", "valeur": "ovipare"}
+{"entite": "phoque", "valeur": "vivipare"}
+{"entite": "pigeon", "valeur": "ovipare"}
+{"entite": "pintade", "valeur": "ovipare"}
+{"entite": "poule", "valeur": "ovipare"}
+{"entite": "python", "valeur": "ovipare"}
+{"entite": "renard roux", "valeur": "vivipare"}
+{"entite": "rhinocéros blanc", "valeur": "vivipare"}
+{"entite": "sardine", "valeur": "ovipare"}
+{"entite": "saumon atlantique", "valeur": "ovipare"}
+{"entite": "sauterelle", "valeur": "ovipare"}
+{"entite": "souris", "valeur": "vivipare"}
+{"entite": "thon rouge", "valeur": "ovipare"}
+{"entite": "tigre", "valeur": "vivipare"}
+{"entite": "tortue marine", "valeur": "ovipare"}
+{"entite": "tortue terrestre", "valeur": "ovipare"}
+{"entite": "truite", "valeur": "ovipare"}
+{"entite": "vache", "valeur": "vivipare"}
+{"entite": "varan", "valeur": "ovipare"}
+{"entite": "vipère", "valeur": "ovovivipare"}
+{"entite": "zèbre", "valeur": "vivipare"}

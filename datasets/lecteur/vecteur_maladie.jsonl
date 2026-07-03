@@ -1,0 +1,22 @@
+{"_relation": "vecteur_maladie", "_categorie": "physique", "_source": "Modèle (Claude) — épidémiologie textbook curée (vecteur dominant ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "babésiose", "valeur": "tique"}
+{"entite": "chikungunya", "valeur": "moustique Aedes"}
+{"entite": "dengue", "valeur": "moustique Aedes"}
+{"entite": "encéphalite à tiques", "valeur": "tique"}
+{"entite": "encéphalite japonaise", "valeur": "moustique Culex"}
+{"entite": "fièvre boutonneuse méditerranéenne", "valeur": "tique"}
+{"entite": "fièvre du Nil occidental", "valeur": "moustique Culex"}
+{"entite": "fièvre jaune", "valeur": "moustique Aedes"}
+{"entite": "fièvre pourprée des montagnes Rocheuses", "valeur": "tique"}
+{"entite": "filariose lymphatique", "valeur": "moustique"}
+{"entite": "leishmaniose", "valeur": "phlébotome"}
+{"entite": "loase", "valeur": "taon"}
+{"entite": "maladie de Chagas", "valeur": "triatome"}
+{"entite": "maladie de Lyme", "valeur": "tique"}
+{"entite": "maladie du sommeil", "valeur": "mouche tsé-tsé"}
+{"entite": "onchocercose", "valeur": "simulie"}
+{"entite": "paludisme", "valeur": "moustique anophèle"}
+{"entite": "peste", "valeur": "puce"}
+{"entite": "typhus épidémique", "valeur": "pou"}
+{"entite": "typhus murin", "valeur": "puce"}
+{"entite": "Zika", "valeur": "moustique Aedes"}

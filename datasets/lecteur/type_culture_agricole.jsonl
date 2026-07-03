@@ -1,0 +1,34 @@
+{"_relation": "type_culture_agricole", "_categorie": "convention", "_source": "Modèle (Claude) — agronomie textbook curée (catégorie de culture ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "arachide", "valeur": "oléagineux"}
+{"entite": "avoine", "valeur": "céréale"}
+{"entite": "betterave fourragère", "valeur": "fourragère"}
+{"entite": "betterave sucrière", "valeur": "sucrière"}
+{"entite": "blé", "valeur": "céréale"}
+{"entite": "canne à sucre", "valeur": "sucrière"}
+{"entite": "chanvre", "valeur": "textile"}
+{"entite": "colza", "valeur": "oléagineux"}
+{"entite": "coton", "valeur": "textile"}
+{"entite": "épeautre", "valeur": "céréale"}
+{"entite": "fève", "valeur": "légumineuse"}
+{"entite": "haricot", "valeur": "légumineuse"}
+{"entite": "jute", "valeur": "textile"}
+{"entite": "lentille", "valeur": "légumineuse"}
+{"entite": "lin", "valeur": "textile"}
+{"entite": "lupin", "valeur": "légumineuse"}
+{"entite": "luzerne", "valeur": "fourragère"}
+{"entite": "maïs", "valeur": "céréale"}
+{"entite": "maïs fourrager", "valeur": "fourragère"}
+{"entite": "millet", "valeur": "céréale"}
+{"entite": "noix", "valeur": "oléagineux"}
+{"entite": "olivier", "valeur": "oléagineux"}
+{"entite": "orge", "valeur": "céréale"}
+{"entite": "pois", "valeur": "légumineuse"}
+{"entite": "pois chiche", "valeur": "légumineuse"}
+{"entite": "riz", "valeur": "céréale"}
+{"entite": "seigle", "valeur": "céréale"}
+{"entite": "sésame", "valeur": "oléagineux"}
+{"entite": "sisal", "valeur": "textile"}
+{"entite": "soja", "valeur": "légumineuse"}
+{"entite": "sorgho", "valeur": "céréale"}
+{"entite": "tournesol", "valeur": "oléagineux"}
+{"entite": "trèfle", "valeur": "fourragère"}

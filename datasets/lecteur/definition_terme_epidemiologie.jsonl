@@ -1,0 +1,5 @@
+{"_relation": "definition_terme_epidemiologie", "_categorie": "physique", "_source": "Modèle (Claude) — épidémiologie textbook curée (terme -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "endémie", "valeur": "présence habituelle d'une maladie dans une région"}
+{"entite": "épidémie", "valeur": "augmentation rapide du nombre de cas d'une maladie"}
+{"entite": "incidence", "valeur": "nombre de nouveaux cas d'une maladie"}
+{"entite": "pandémie", "valeur": "épidémie à l'échelle mondiale"}

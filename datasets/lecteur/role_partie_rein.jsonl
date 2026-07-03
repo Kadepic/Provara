@@ -1,0 +1,4 @@
+{"_relation": "role_partie_rein", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie rénale textbook curée (structure du rein -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "glomérule", "valeur": "filtration du sang"}
+{"entite": "néphron", "valeur": "unité fonctionnelle de filtration"}
+{"entite": "tubule rénal", "valeur": "réabsorption de l'eau et des nutriments"}

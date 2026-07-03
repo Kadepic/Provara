@@ -1,0 +1,1447 @@
+{"_relation": "annee_premier_vol_aeronef", "_categorie": "passe", "_source": "Wikidata/QLever — année du premier vol (P606) d'un modèle d'aéronef (Q15056993)", "_articles": true}
+{"entite": "А-2", "valeur": "1942"}
+{"entite": "La-5", "valeur": "1942"}
+{"entite": "D.520", "valeur": "1938"}
+{"entite": "L-70 Vinka", "valeur": "1975"}
+{"entite": "A-122 Uirapura", "valeur": "1965"}
+{"entite": "A-132A Tangará", "valeur": "1981"}
+{"entite": "A 16", "valeur": "1924"}
+{"entite": "A-17", "valeur": "1934"}
+{"entite": "A.18", "valeur": "1923"}
+{"entite": "A-20 Vista", "valeur": "1991"}
+{"entite": "A-22 Foxbat", "valeur": "1996"}
+{"entite": "A129 Mangusta", "valeur": "1983"}
+{"entite": "A300B4", "valeur": "1974"}
+{"entite": "A5M", "valeur": "1935"}
+{"entite": "A7M Reppū", "valeur": "1944"}
+{"entite": "AB-95", "valeur": "1959"}
+{"entite": "AC-130", "valeur": "1966"}
+{"entite": "AC-47 Spooky", "valeur": "1964"}
+{"entite": "Acme Centaur", "valeur": "1945"}
+{"entite": "Adam A500", "valeur": "2002"}
+{"entite": "Advanced High Performance Reconnaissance Light Aircraft", "valeur": "2014"}
+{"entite": "AEA Explorer", "valeur": "1998"}
+{"entite": "AEA June Bug", "valeur": "1908"}
+{"entite": "AEG G", "valeur": "1915"}
+{"entite": "Aermacchi AL-60", "valeur": "1959"}
+{"entite": "Aermacchi MB-339", "valeur": "1976"}
+{"entite": "Aero A.10", "valeur": "1922"}
+{"entite": "Aero A.11", "valeur": "1925"}
+{"entite": "Aero A.30", "valeur": "1926"}
+{"entite": "Aero Ae-45", "valeur": "1947"}
+{"entite": "Aero Commander 100", "valeur": "1960"}
+{"entite": "Aero Commander 500", "valeur": "1948"}
+{"entite": "Aero L-29 Delfin", "valeur": "1959"}
+{"entite": "Aero L-39 Albatros", "valeur": "1968"}
+{"entite": "Aero L-60 Brigadýr", "valeur": "1953"}
+{"entite": "Aeromarine 40", "valeur": "1919"}
+{"entite": "Aeronca 11 Chief", "valeur": "1946"}
+{"entite": "Aeronca 15 Sedan", "valeur": "1947"}
+{"entite": "Aeronca 50 Chief", "valeur": "1938"}
+{"entite": "Aeronca 7 Champion", "valeur": "1944"}
+{"entite": "Aeronca C", "valeur": "1929"}
+{"entite": "Aeronca Chief", "valeur": "1937"}
+{"entite": "Aeronca L-3", "valeur": "1941"}
+{"entite": "Aérospatiale Alouette III", "valeur": "1959"}
+{"entite": "Aérospatiale SA 330 Puma", "valeur": "1965"}
+{"entite": "Aérospatiale SA 341 Gazelle", "valeur": "1967"}
+{"entite": "AérospatialeSA 315B Lama", "valeur": "1969"}
+{"entite": "AgustaWestland AW101", "valeur": "1987"}
+{"entite": "AgustaWestland AW109", "valeur": "1971"}
+{"entite": "AgustaWestland AW119 Koala", "valeur": "1995"}
+{"entite": "AH-6 Little Bird", "valeur": "2004"}
+{"entite": "Aichi B7A Ryusei", "valeur": "1942"}
+{"entite": "Aichi D1A", "valeur": "1934"}
+{"entite": "Aichi D3A", "valeur": "1938"}
+{"entite": "Aichi E13A", "valeur": "1939"}
+{"entite": "Aichi E16A Zuiun", "valeur": "1942"}
+{"entite": "Aichi H9A", "valeur": "1940"}
+{"entite": "AIDC F-CK-1 Ching-Kuo", "valeur": "1989"}
+{"entite": "Airbus A220", "valeur": "2015"}
+{"entite": "Airbus A300", "valeur": "1972"}
+{"entite": "Airbus A300B2", "valeur": "1973"}
+{"entite": "Airbus A310", "valeur": "1982"}
+{"entite": "Airbus A310-200", "valeur": "1982"}
+{"entite": "Airbus A310 MRTT", "valeur": "2003"}
+{"entite": "Airbus A318", "valeur": "2002"}
+{"entite": "Airbus A319", "valeur": "1995"}
+{"entite": "Airbus A320", "valeur": "1987"}
+{"entite": "Airbus A320neo", "valeur": "2014"}
+{"entite": "Airbus A321", "valeur": "1993"}
+{"entite": "Airbus A321neo", "valeur": "2016"}
+{"entite": "Airbus A330", "valeur": "1992"}
+{"entite": "Airbus A330 MRTT", "valeur": "2007"}
+{"entite": "Airbus A340", "valeur": "1991"}
+{"entite": "Airbus A340-200", "valeur": "1992"}
+{"entite": "Airbus A340-300", "valeur": "1991"}
+{"entite": "Airbus A340-500", "valeur": "2002"}
+{"entite": "Airbus A340-600", "valeur": "2001"}
+{"entite": "Airbus A350", "valeur": "2013"}
+{"entite": "Airbus A380", "valeur": "2005"}
+{"entite": "Airbus A400M Atlas", "valeur": "2009"}
+{"entite": "Airbus Helicopters H155", "valeur": "1997"}
+{"entite": "Airco DH.2", "valeur": "1915"}
+{"entite": "Airco DH.4", "valeur": "1916"}
+{"entite": "Airco DH.9", "valeur": "1917"}
+{"entite": "Airspeed Oxford", "valeur": "1937"}
+{"entite": "Akaflieg Stuttgart Fs 24 Phönix", "valeur": "1957"}
+{"entite": "Albatros L 75 Ass", "valeur": "1928"}
+{"entite": "Albemarle", "valeur": "1940"}
+{"entite": "Alenia G.222", "valeur": "1970"}
+{"entite": "Alouette II", "valeur": "1955"}
+{"entite": "Alpha Jet", "valeur": "1973"}
+{"entite": "AM.3", "valeur": "1967"}
+{"entite": "Amiot 143", "valeur": "1931"}
+{"entite": "Amiot 354", "valeur": "1939"}
+{"entite": "AMX", "valeur": "1984"}
+{"entite": "An-14 Pchelka", "valeur": "1958"}
+{"entite": "An-32", "valeur": "1976"}
+{"entite": "Anade", "valeur": "1915"}
+{"entite": "Ansaldo SVA", "valeur": "1917"}
+{"entite": "Antonov An-10 Ukraina", "valeur": "1957"}
+{"entite": "Antonov An-124", "valeur": "1982"}
+{"entite": "Antonov An-12A", "valeur": "1957"}
+{"entite": "Antonov An-140", "valeur": "1997"}
+{"entite": "Antonov An-148", "valeur": "2004"}
+{"entite": "Antonov An-2", "valeur": "1947"}
+{"entite": "Antonov An-22", "valeur": "1965"}
+{"entite": "Antonov An-24", "valeur": "1959"}
+{"entite": "Antonov An-26", "valeur": "1969"}
+{"entite": "Antonov An-28", "valeur": "1969"}
+{"entite": "Antonov An-30", "valeur": "1974"}
+{"entite": "Antonov An-72", "valeur": "1977"}
+{"entite": "Antonov An-74", "valeur": "1983"}
+{"entite": "Ar 196", "valeur": "1937"}
+{"entite": "Ar 232", "valeur": "1941"}
+{"entite": "Ar 65", "valeur": "1931"}
+{"entite": "Ar 68", "valeur": "1934"}
+{"entite": "Arado Ar 195", "valeur": "1937"}
+{"entite": "Arado Ar 64", "valeur": "1930"}
+{"entite": "Armstrong Whitworth Argosy", "valeur": "1959"}
+{"entite": "AS355 Écureuil 2", "valeur": "1979"}
+{"entite": "AS365 Dauphin", "valeur": "1975"}
+{"entite": "AS565 Panther", "valeur": "1984"}
+{"entite": "AT-500", "valeur": "1986"}
+{"entite": "ATR 42", "valeur": "1984"}
+{"entite": "ATR 72", "valeur": "1988"}
+{"entite": "Attacker", "valeur": "1946"}
+{"entite": "Audax", "valeur": "1931"}
+{"entite": "AV-8B Harrier II", "valeur": "1978"}
+{"entite": "Aviamilano F.8L Falco", "valeur": "1955"}
+{"entite": "Aviat Husky", "valeur": "1986"}
+{"entite": "Avro 504", "valeur": "1913"}
+{"entite": "Avro 626", "valeur": "1930"}
+{"entite": "Avro Anson", "valeur": "1935"}
+{"entite": "Avro Bison", "valeur": "1921"}
+{"entite": "Avro CF-100 Canuck", "valeur": "1950"}
+{"entite": "Avro CF-105 Arrow", "valeur": "1958"}
+{"entite": "Avro Lancaster", "valeur": "1941"}
+{"entite": "Avro Lancastrian", "valeur": "1943"}
+{"entite": "Avro Lincoln", "valeur": "1944"}
+{"entite": "Avro RJ70", "valeur": "1981"}
+{"entite": "Avro Shackleton", "valeur": "1949"}
+{"entite": "Avro Tudor", "valeur": "1945"}
+{"entite": "Avro Tutor", "valeur": "1929"}
+{"entite": "Avro Vulcan", "valeur": "1952"}
+{"entite": "Avro York", "valeur": "1942"}
+{"entite": "AW139", "valeur": "2001"}
+{"entite": "Ayres Thrush", "valeur": "1956"}
+{"entite": "B-2 Spirit", "valeur": "1989"}
+{"entite": "B.534", "valeur": "1933"}
+{"entite": "B.E.2", "valeur": "1912"}
+{"entite": "B.R.", "valeur": "1918"}
+{"entite": "B5N", "valeur": "1937"}
+{"entite": "Ba.65", "valeur": "1935"}
+{"entite": "Baade 152", "valeur": "1958"}
+{"entite": "BAC 1-11", "valeur": "1963"}
+{"entite": "BAC Jet Provost", "valeur": "1954"}
+{"entite": "BAC One-Eleven 200", "valeur": "1963"}
+{"entite": "BAe 125", "valeur": "1962"}
+{"entite": "BAe 146", "valeur": "1981"}
+{"entite": "BAe Hawk", "valeur": "1974"}
+{"entite": "BAe Jetstream 41", "valeur": "1991"}
+{"entite": "Barkley-Grow T8P-1", "valeur": "1937"}
+{"entite": "Basler BT-67", "valeur": "1990"}
+{"entite": "Bayraktar TB2", "valeur": "2009"}
+{"entite": "Be-30/32 family", "valeur": "1967"}
+{"entite": "Be-50 Beta-Minor", "valeur": "1935"}
+{"entite": "Be-500 Bibi", "valeur": "1936"}
+{"entite": "Beagle B.206", "valeur": "1961"}
+{"entite": "Beagle Pup", "valeur": "1967"}
+{"entite": "Beechcraft 1900", "valeur": "1982"}
+{"entite": "Beechcraft 200 Super King Air", "valeur": "1972"}
+{"entite": "Beechcraft AT-10 Wichita", "valeur": "1941"}
+{"entite": "Beechcraft Baron", "valeur": "1960"}
+{"entite": "Beechcraft Bonanza", "valeur": "1945"}
+{"entite": "Beechcraft C-12 Huron", "valeur": "1974"}
+{"entite": "Beechcraft Denali", "valeur": "2021"}
+{"entite": "Beechcraft Duke", "valeur": "1966"}
+{"entite": "Beechcraft King Air", "valeur": "1963"}
+{"entite": "Beechcraft King Air 100", "valeur": "1969"}
+{"entite": "Beechcraft King Air 65-90", "valeur": "1965"}
+{"entite": "Beechcraft King Air 90", "valeur": "1963"}
+{"entite": "Beechcraft King Air E90", "valeur": "1972"}
+{"entite": "Beechcraft King Air F90", "valeur": "1978"}
+{"entite": "Beechcraft Model 18", "valeur": "1937"}
+{"entite": "Beechcraft Model 99", "valeur": "1966"}
+{"entite": "Beechcraft Musketeer", "valeur": "1963"}
+{"entite": "Beechcraft Queen Air", "valeur": "1958"}
+{"entite": "Beechcraft Queen Air 80", "valeur": "1961"}
+{"entite": "Beechcraft Staggerwing", "valeur": "1932"}
+{"entite": "Beechcraft T-34 Mentor", "valeur": "1948"}
+{"entite": "Beechcraft T-6 Texan II", "valeur": "2000"}
+{"entite": "Beechcraft Travel Air", "valeur": "1956"}
+{"entite": "Beechcraft Twin Bonanza", "valeur": "1949"}
+{"entite": "Bell 204/205", "valeur": "1956"}
+{"entite": "Bell 205", "valeur": "1961"}
+{"entite": "Bell 206", "valeur": "1962"}
+{"entite": "Bell 212", "valeur": "1965"}
+{"entite": "Bell 214", "valeur": "1970"}
+{"entite": "Bell 222", "valeur": "1976"}
+{"entite": "Bell 400", "valeur": "1984"}
+{"entite": "Bell 407", "valeur": "1995"}
+{"entite": "Bell 412", "valeur": "1979"}
+{"entite": "Bell 47", "valeur": "1945"}
+{"entite": "Bell AH-1 Cobra", "valeur": "1965"}
+{"entite": "Bell H-13 Sioux", "valeur": "1945"}
+{"entite": "Bell HSL", "valeur": "1953"}
+{"entite": "Bell OH-58 Kiowa", "valeur": "2013"}
+{"entite": "Bell P-39 Airacobra", "valeur": "1938"}
+{"entite": "Bell P-63 Kingcobra", "valeur": "1942"}
+{"entite": "Bell UH-1 Iroquois", "valeur": "1956"}
+{"entite": "Bell UH-1N Iroquois", "valeur": "1969"}
+{"entite": "Bellanca 77-140", "valeur": "1934"}
+{"entite": "Beriev Be-12 Chayka", "valeur": "1960"}
+{"entite": "Beriev Be-200 Altair", "valeur": "1998"}
+{"entite": "Beriev Be-42", "valeur": "1986"}
+{"entite": "Beriev Be-6", "valeur": "1949"}
+{"entite": "Bf 110", "valeur": "1936"}
+{"entite": "Bl.500", "valeur": "1957"}
+{"entite": "Blackburn Buccaneer", "valeur": "1958"}
+{"entite": "Blackburn Ripon", "valeur": "1926"}
+{"entite": "Blackburn Shark", "valeur": "1933"}
+{"entite": "Blériot XI", "valeur": "1909"}
+{"entite": "Bloch MB.210", "valeur": "1934"}
+{"entite": "Bo 105", "valeur": "1967"}
+{"entite": "Boeing 247", "valeur": "1933"}
+{"entite": "Boeing 307", "valeur": "1938"}
+{"entite": "Boeing 314", "valeur": "1938"}
+{"entite": "Boeing 377 Stratocruiser", "valeur": "1947"}
+{"entite": "Boeing 707", "valeur": "1957"}
+{"entite": "Boeing 707-320 Intercontinental", "valeur": "1958"}
+{"entite": "Boeing 717", "valeur": "1998"}
+{"entite": "Boeing 720", "valeur": "1959"}
+{"entite": "Boeing 727", "valeur": "1963"}
+{"entite": "Boeing 727-100", "valeur": "1963"}
+{"entite": "Boeing 727-200", "valeur": "1967"}
+{"entite": "Boeing 737", "valeur": "1967"}
+{"entite": "Boeing 737-100", "valeur": "1967"}
+{"entite": "Boeing 737-300", "valeur": "1984"}
+{"entite": "Boeing 737-500", "valeur": "1989"}
+{"entite": "Boeing 737-800", "valeur": "1997"}
+{"entite": "Boeing 737-900", "valeur": "2000"}
+{"entite": "Boeing 737-900ER", "valeur": "2006"}
+{"entite": "Boeing 737 AEW&C", "valeur": "2004"}
+{"entite": "Boeing 737 Classic", "valeur": "1984"}
+{"entite": "Boeing 737 MAX", "valeur": "2016"}
+{"entite": "Boeing 737 MAX 8", "valeur": "2016"}
+{"entite": "Boeing 737 Next Generation", "valeur": "1997"}
+{"entite": "Boeing 737 Original", "valeur": "1967"}
+{"entite": "Boeing 747", "valeur": "1969"}
+{"entite": "Boeing 747-300", "valeur": "1982"}
+{"entite": "Boeing 747-400", "valeur": "1988"}
+{"entite": "Boeing 757", "valeur": "1982"}
+{"entite": "Boeing 757-200", "valeur": "1982"}
+{"entite": "Boeing 767", "valeur": "1981"}
+{"entite": "Boeing 777", "valeur": "1994"}
+{"entite": "Boeing 777-300ER", "valeur": "2003"}
+{"entite": "Boeing 777x", "valeur": "2020"}
+{"entite": "Boeing 787", "valeur": "2009"}
+{"entite": "Boeing AH-64 Apache", "valeur": "1975"}
+{"entite": "Boeing B-17 Flying Fortress", "valeur": "1935"}
+{"entite": "Boeing B-29 Superfortress", "valeur": "1942"}
+{"entite": "Boeing B-47 Stratojet", "valeur": "1947"}
+{"entite": "Boeing B-50 Superfortress", "valeur": "1947"}
+{"entite": "Boeing B-52 Stratofortress", "valeur": "1952"}
+{"entite": "Boeing C-108 Flying Fortress", "valeur": "1943"}
+{"entite": "Boeing C-135 Stratolifter", "valeur": "1956"}
+{"entite": "Boeing C-17 Globemaster III", "valeur": "1991"}
+{"entite": "Boeing C-40 Clipper", "valeur": "1999"}
+{"entite": "Boeing C-97 Stratofreighter", "valeur": "1944"}
+{"entite": "Boeing E-3 Sentry", "valeur": "1972"}
+{"entite": "Boeing E-4", "valeur": "1973"}
+{"entite": "Boeing E-767", "valeur": "1994"}
+{"entite": "Boeing F/A-18E/F Super Hornet", "valeur": "1995"}
+{"entite": "Boeing F3B", "valeur": "1928"}
+{"entite": "Boeing F4B", "valeur": "1928"}
+{"entite": "Boeing KC-46", "valeur": "2015"}
+{"entite": "Boeing Model C", "valeur": "1916"}
+{"entite": "Boeing NB", "valeur": "1923"}
+{"entite": "Boeing P-26 Peashooter", "valeur": "1932"}
+{"entite": "Boeing P-29", "valeur": "1934"}
+{"entite": "Boeing P-8 Poseidon", "valeur": "2009"}
+{"entite": "Boeing PW-9", "valeur": "1923"}
+{"entite": "Boeing-Stearman Model 75", "valeur": "1934"}
+{"entite": "Boeing T-43", "valeur": "1973"}
+{"entite": "Boeing T-7 Red Hawk", "valeur": "2016"}
+{"entite": "Boeing-Vertol CH-46 Sea Knight", "valeur": "1958"}
+{"entite": "Boeing Vertol CH-47 Chinook", "valeur": "1961"}
+{"entite": "Boeing X-45", "valeur": "2002"}
+{"entite": "Boeing XPB", "valeur": "1925"}
+{"entite": "Boeing YB-40 Flying Fortress", "valeur": "1942"}
+{"entite": "Bombardier Canadair Regional Jet", "valeur": "1991"}
+{"entite": "Bombardier Challenger 600", "valeur": "1978"}
+{"entite": "Bombardier CRJ-700", "valeur": "1999"}
+{"entite": "Bombardier CRJ100/200", "valeur": "1991"}
+{"entite": "Bombardier CRJ1000", "valeur": "2008"}
+{"entite": "Bombardier CRJ200", "valeur": "1991"}
+{"entite": "Bombardier CRJ700", "valeur": "1999"}
+{"entite": "Bombardier CRJ900", "valeur": "2001"}
+{"entite": "Bombardier Global 6000", "valeur": "1996"}
+{"entite": "Bombardier Global Express", "valeur": "1996"}
+{"entite": "Bombay", "valeur": "1935"}
+{"entite": "Botha", "valeur": "1938"}
+{"entite": "Boulton Paul Defiant", "valeur": "1937"}
+{"entite": "BR.20 Cicogna", "valeur": "1936"}
+{"entite": "Brantly 305", "valeur": "1964"}
+{"entite": "Brantly B-2", "valeur": "1953"}
+{"entite": "Bréguet 1150 Atlantic", "valeur": "1961"}
+{"entite": "Breguet 14", "valeur": "1916"}
+{"entite": "Breguet 19", "valeur": "1922"}
+{"entite": "Breguet 390", "valeur": "1931"}
+{"entite": "Breguet 460", "valeur": "1935"}
+{"entite": "Bréguet 690", "valeur": "1938"}
+{"entite": "Breguet 941", "valeur": "1961"}
+{"entite": "Breguet Br.1050 Alizé", "valeur": "1956"}
+{"entite": "Breguet Type IV", "valeur": "1911"}
+{"entite": "Brewster F2A Buffalo", "valeur": "1937"}
+{"entite": "Brewster SB2A Buccaneer", "valeur": "1941"}
+{"entite": "Bristol 170", "valeur": "1945"}
+{"entite": "Bristol Beaufighter", "valeur": "1939"}
+{"entite": "Bristol Beaufort", "valeur": "1938"}
+{"entite": "Bristol Blenheim", "valeur": "1935"}
+{"entite": "Bristol Brigand", "valeur": "1944"}
+{"entite": "Bristol Britannia", "valeur": "1952"}
+{"entite": "Bristol Scout", "valeur": "1914"}
+{"entite": "Bristol Superfreighter", "valeur": "1953"}
+{"entite": "Bristol Sycamore", "valeur": "1947"}
+{"entite": "Britten-Norman BN-2 Islander", "valeur": "1965"}
+{"entite": "Britten-Norman BN-2A Mk III Trislander", "valeur": "1970"}
+{"entite": "Britten-Norman BN-2B Defender", "valeur": "1970"}
+{"entite": "Broussard", "valeur": "1952"}
+{"entite": "Bü 131 Jungmann", "valeur": "1934"}
+{"entite": "Buccaneer", "valeur": "1984"}
+{"entite": "Bücker Bü 133", "valeur": "1935"}
+{"entite": "Bücker Bü 181", "valeur": "1939"}
+{"entite": "BV 138", "valeur": "1937"}
+{"entite": "BV 141", "valeur": "1938"}
+{"entite": "BV 222 Wiking", "valeur": "1940"}
+{"entite": "C-101 Aviojet", "valeur": "1977"}
+{"entite": "C-130J Super Hercules", "valeur": "1996"}
+{"entite": "C-137 Stratoliner", "valeur": "1958"}
+{"entite": "C.202 Folgore", "valeur": "1940"}
+{"entite": "C.205 Veltro", "valeur": "1942"}
+{"entite": "C-36", "valeur": "1939"}
+{"entite": "C.710", "valeur": "1936"}
+{"entite": "C4M Kudo", "valeur": "1974"}
+{"entite": "C6N Saiun", "valeur": "1943"}
+{"entite": "Ca.1", "valeur": "1914"}
+{"entite": "Ca.313", "valeur": "1939"}
+{"entite": "Ca.4", "valeur": "1917"}
+{"entite": "CAC Boomerang", "valeur": "1942"}
+{"entite": "CAC Wirraway", "valeur": "1937"}
+{"entite": "CAMS 51", "valeur": "1926"}
+{"entite": "CAMS 55", "valeur": "1928"}
+{"entite": "Canadair CL-215", "valeur": "1967"}
+{"entite": "Canadair CL-41 Tutor", "valeur": "1960"}
+{"entite": "Canadair CL-415", "valeur": "1993"}
+{"entite": "Canadair CL-44", "valeur": "1959"}
+{"entite": "Canadair CP-107 Argus", "valeur": "1957"}
+{"entite": "Canadair CT-133 Silver Star", "valeur": "1952"}
+{"entite": "CANSA C.5", "valeur": "1939"}
+{"entite": "CANT 6", "valeur": "1925"}
+{"entite": "CANT Z.506 Airone", "valeur": "1935"}
+{"entite": "CAP-1 Planalto", "valeur": "1942"}
+{"entite": "CAP 230", "valeur": "1997"}
+{"entite": "CAP-4 Paulistinha", "valeur": "1935"}
+{"entite": "Caproni A.P.1", "valeur": "1934"}
+{"entite": "CASA C-207 Azor", "valeur": "1955"}
+{"entite": "CASA C-212 Aviocar", "valeur": "1971"}
+{"entite": "CASA C-295", "valeur": "1997"}
+{"entite": "CASA CN-235", "valeur": "1983"}
+{"entite": "Caudron C.280", "valeur": "1932"}
+{"entite": "Caudron C.440 Goéland", "valeur": "1934"}
+{"entite": "Caudron C.690", "valeur": "1936"}
+{"entite": "Cavalier", "valeur": "1963"}
+{"entite": "Cerva CE.43 Guépard", "valeur": "1971"}
+{"entite": "Cessna 150", "valeur": "1957"}
+{"entite": "Cessna 170", "valeur": "1948"}
+{"entite": "Cessna 172 Skyhawk", "valeur": "1955"}
+{"entite": "Cessna 172M Skyhawk", "valeur": "1973"}
+{"entite": "Cessna 177 Cardinal", "valeur": "1966"}
+{"entite": "Cessna 180", "valeur": "1952"}
+{"entite": "Cessna 182", "valeur": "1956"}
+{"entite": "Cessna 185 Skywagon", "valeur": "1960"}
+{"entite": "Cessna 188", "valeur": "1965"}
+{"entite": "Cessna 195", "valeur": "1945"}
+{"entite": "Cessna 205", "valeur": "1962"}
+{"entite": "Cessna 207", "valeur": "1968"}
+{"entite": "Cessna 208 Caravan", "valeur": "1982"}
+{"entite": "Cessna 210", "valeur": "1957"}
+{"entite": "Cessna 310 / 320", "valeur": "1953"}
+{"entite": "Cessna 335", "valeur": "1970"}
+{"entite": "Cessna 408 SkyCourier", "valeur": "2020"}
+{"entite": "Cessna 414", "valeur": "1968"}
+{"entite": "Cessna 421 Golden Eagle", "valeur": "1965"}
+{"entite": "Cessna 425 Conquest I", "valeur": "1978"}
+{"entite": "Cessna 441 Conquest II", "valeur": "1974"}
+{"entite": "Cessna A-37 Dragonfly", "valeur": "1963"}
+{"entite": "Cessna Citation", "valeur": "1969"}
+{"entite": "Cessna Citation I", "valeur": "1969"}
+{"entite": "Cessna Citation II", "valeur": "1977"}
+{"entite": "Cessna Citation III", "valeur": "1979"}
+{"entite": "Cessna O-1 Bird Dog", "valeur": "1949"}
+{"entite": "Cessna O-2 Skymaster", "valeur": "1967"}
+{"entite": "Cessna Skymaster", "valeur": "1961"}
+{"entite": "Cessna T-37 Tweet", "valeur": "1954"}
+{"entite": "CF-188 Hornet", "valeur": "1978"}
+{"entite": "CF-5 Freedom Fighter", "valeur": "1968"}
+{"entite": "CG-13", "valeur": "1943"}
+{"entite": "Changhe Z-11", "valeur": "1994"}
+{"entite": "Changhe Z-18", "valeur": "2014"}
+{"entite": "Chardonneret", "valeur": "1946"}
+{"entite": "Cheetah", "valeur": "1986"}
+{"entite": "Chengdu J-10", "valeur": "1998"}
+{"entite": "Chengdu J-7", "valeur": "1966"}
+{"entite": "Cirrus SR20", "valeur": "1995"}
+{"entite": "Classe K (dirigeable)", "valeur": "1938"}
+{"entite": "CM 170 Magister", "valeur": "1952"}
+{"entite": "Commander 700", "valeur": "1975"}
+{"entite": "Condor", "valeur": "1993"}
+{"entite": "Consolidated B-24 Liberator", "valeur": "1939"}
+{"entite": "Consolidated B-32 Dominator", "valeur": "1942"}
+{"entite": "Consolidated P-30", "valeur": "1934"}
+{"entite": "Consolidated P2Y", "valeur": "1929"}
+{"entite": "Consolidated PB2Y Coronado", "valeur": "1937"}
+{"entite": "Consolidated PB4Y-2 Privateer", "valeur": "1943"}
+{"entite": "Consolidated PBY Catalina", "valeur": "1935"}
+{"entite": "Consolidated TBY Sea Wolf", "valeur": "1941"}
+{"entite": "Convair B-58 Hustler", "valeur": "1956"}
+{"entite": "Convair CV 110", "valeur": "1946"}
+{"entite": "Convair CV-240", "valeur": "1947"}
+{"entite": "Convair CV-440", "valeur": "1955"}
+{"entite": "Convair CV-580", "valeur": "1960"}
+{"entite": "Convair CV-640", "valeur": "1965"}
+{"entite": "Convair CV-880", "valeur": "1959"}
+{"entite": "Convair CV-990", "valeur": "1961"}
+{"entite": "Convair F-102 Delta Dagger", "valeur": "1953"}
+{"entite": "Convair F-106 Delta Dart", "valeur": "1956"}
+{"entite": "Convair Model 48 Charger", "valeur": "1964"}
+{"entite": "Convair R3Y Tradewind", "valeur": "1950"}
+{"entite": "CS", "valeur": "1923"}
+{"entite": "CT/4 Airtrainer", "valeur": "1972"}
+{"entite": "Curtiss A-18 Shrike", "valeur": "1935"}
+{"entite": "Curtiss A-8 Shrike", "valeur": "1931"}
+{"entite": "Curtiss C-46 Commando", "valeur": "1940"}
+{"entite": "Curtiss Condor II", "valeur": "1933"}
+{"entite": "Curtiss CR", "valeur": "1921"}
+{"entite": "Curtiss F11C Goshawk", "valeur": "1932"}
+{"entite": "Curtiss F6C Hawk", "valeur": "1922"}
+{"entite": "Curtiss HS", "valeur": "1917"}
+{"entite": "Curtiss Model L", "valeur": "1916"}
+{"entite": "Curtiss P-36 Hawk", "valeur": "1935"}
+{"entite": "Curtiss P-40 Warhawk", "valeur": "1938"}
+{"entite": "Curtiss P-6 Hawk", "valeur": "1927"}
+{"entite": "Curtiss R2C", "valeur": "1923"}
+{"entite": "Curtiss SB2C Helldiver", "valeur": "1940"}
+{"entite": "Curtiss SBC Helldiver", "valeur": "1935"}
+{"entite": "Curtiss SC Seahawk", "valeur": "1944"}
+{"entite": "Curtiss SO3C Seamew", "valeur": "1939"}
+{"entite": "Curtiss SOC Seagull", "valeur": "1934"}
+{"entite": "Curtiss-Wright CW-21", "valeur": "1938"}
+{"entite": "Curtiss-Wright CW-22", "valeur": "1940"}
+{"entite": "D4Y Suisei", "valeur": "1940"}
+{"entite": "DAR 10", "valeur": "1941"}
+{"entite": "Dassault Étendard IV", "valeur": "1958"}
+{"entite": "Dassault Falcon 10", "valeur": "1970"}
+{"entite": "Dassault Falcon 20", "valeur": "1963"}
+{"entite": "Dassault Falcon 2000EX", "valeur": "2001"}
+{"entite": "Dassault Falcon 50", "valeur": "1976"}
+{"entite": "Dassault Falcon 8X", "valeur": "2015"}
+{"entite": "Dassault Falcon 900", "valeur": "1984"}
+{"entite": "Dassault Mirage 2000", "valeur": "1978"}
+{"entite": "Dassault Mirage 5", "valeur": "1967"}
+{"entite": "Dassault Mirage III", "valeur": "1956"}
+{"entite": "Dassault Mirage IV", "valeur": "1959"}
+{"entite": "Dassault Rafale", "valeur": "1986"}
+{"entite": "Dassault Super Mystère B2", "valeur": "1955"}
+{"entite": "Dayton-Wright TA-3", "valeur": "1922"}
+{"entite": "DB-3", "valeur": "1935"}
+{"entite": "DB-A", "valeur": "1935"}
+{"entite": "Dewoitine D.500", "valeur": "1932"}
+{"entite": "DH.11 Oxford", "valeur": "1919"}
+{"entite": "DH.18", "valeur": "1920"}
+{"entite": "DH.80 Puss Moth", "valeur": "1929"}
+{"entite": "DH.83 Fox Moth", "valeur": "1932"}
+{"entite": "DH.87 Hornet Moth", "valeur": "1934"}
+{"entite": "DH.94 Moth Minor", "valeur": "1937"}
+{"entite": "DHC-1 Chipmunk", "valeur": "1946"}
+{"entite": "Diamond DA40", "valeur": "1997"}
+{"entite": "Do 18", "valeur": "1935"}
+{"entite": "Do 335", "valeur": "1943"}
+{"entite": "Do J Wal", "valeur": "1922"}
+{"entite": "Do R Superwal", "valeur": "1926"}
+{"entite": "Dorand AR", "valeur": "1916"}
+{"entite": "Dornier 128", "valeur": "1980"}
+{"entite": "Dornier 228", "valeur": "1981"}
+{"entite": "Dornier 328", "valeur": "1991"}
+{"entite": "Dornier 328-100", "valeur": "1991"}
+{"entite": "Dornier Delphin", "valeur": "1920"}
+{"entite": "Dornier Do 11", "valeur": "1932"}
+{"entite": "Dornier Do 17", "valeur": "1934"}
+{"entite": "Dornier Do 22", "valeur": "1938"}
+{"entite": "Dornier Do 24", "valeur": "1937"}
+{"entite": "Dornier Do 26", "valeur": "1938"}
+{"entite": "Dornier Do 27", "valeur": "1956"}
+{"entite": "Dornier Do 28", "valeur": "1959"}
+{"entite": "Dornier Do 32", "valeur": "1962"}
+{"entite": "Dornier Do D", "valeur": "1924"}
+{"entite": "Douglas A-1 Skyraider", "valeur": "1945"}
+{"entite": "Douglas A-20 Havoc", "valeur": "1939"}
+{"entite": "Douglas A-26 Invader", "valeur": "1942"}
+{"entite": "Douglas A-3 Skywarrior", "valeur": "1952"}
+{"entite": "Douglas A-4 Skyhawk", "valeur": "1954"}
+{"entite": "Douglas B-18", "valeur": "1935"}
+{"entite": "Douglas B-23 Dragon", "valeur": "1939"}
+{"entite": "Douglas B-66 Destroyer", "valeur": "1954"}
+{"entite": "Douglas C-1", "valeur": "1925"}
+{"entite": "Douglas C-124 Globemaster II", "valeur": "1949"}
+{"entite": "Douglas C-133 Cargomaster", "valeur": "1956"}
+{"entite": "Douglas C-47 Skytrain", "valeur": "1941"}
+{"entite": "Douglas C-54 Skymaster", "valeur": "1942"}
+{"entite": "Douglas C-74 Globemaster", "valeur": "1945"}
+{"entite": "Douglas DC-2", "valeur": "1934"}
+{"entite": "Douglas DC-3", "valeur": "1935"}
+{"entite": "Douglas DC-4", "valeur": "1942"}
+{"entite": "Douglas DC-5", "valeur": "1939"}
+{"entite": "Douglas DC-6", "valeur": "1946"}
+{"entite": "Douglas DC-7", "valeur": "1953"}
+{"entite": "Douglas DC-8", "valeur": "1958"}
+{"entite": "Douglas DC-8 Series 50", "valeur": "1960"}
+{"entite": "Douglas DC-9", "valeur": "1965"}
+{"entite": "Douglas DC-9-10", "valeur": "1965"}
+{"entite": "Douglas DC-9-20", "valeur": "1968"}
+{"entite": "Douglas DC-9-30", "valeur": "1966"}
+{"entite": "Douglas DT", "valeur": "1921"}
+{"entite": "Douglas F3D Skyknight", "valeur": "1948"}
+{"entite": "Douglas F4D Skyray", "valeur": "1951"}
+{"entite": "Douglas M", "valeur": "1925"}
+{"entite": "Douglas SBD Dauntless", "valeur": "1940"}
+{"entite": "Douglas TBD Devastator", "valeur": "1935"}
+{"entite": "Douglas XP3D", "valeur": "1935"}
+{"entite": "E-6 Mercury", "valeur": "1987"}
+{"entite": "E-8 Joint STARS", "valeur": "1988"}
+{"entite": "E-Jet", "valeur": "2002"}
+{"entite": "E8N", "valeur": "1934"}
+{"entite": "EADS ATLANTE", "valeur": "2013"}
+{"entite": "EADS Barracuda", "valeur": "2006"}
+{"entite": "EADS Talarion", "valeur": "2015"}
+{"entite": "EC-135", "valeur": "1961"}
+{"entite": "Eclipse 500", "valeur": "2002"}
+{"entite": "Edgley Optica", "valeur": "1979"}
+{"entite": "EMB 121 Xingu", "valeur": "1976"}
+{"entite": "EMB 312", "valeur": "1980"}
+{"entite": "Embraer 190", "valeur": "2004"}
+{"entite": "Embraer C-95 Bandeirante", "valeur": "1968"}
+{"entite": "Embraer E-Jet E2", "valeur": "2016"}
+{"entite": "Embraer EMB 110 Bandeirante", "valeur": "1968"}
+{"entite": "Embraer EMB 120 Brasilia", "valeur": "1983"}
+{"entite": "Embraer EMB 200 Ipanema", "valeur": "1970"}
+{"entite": "Embraer EMB 314", "valeur": "1999"}
+{"entite": "Embraer/FMA CBA 123 Vector", "valeur": "1990"}
+{"entite": "Embraer KC-390", "valeur": "2015"}
+{"entite": "Embraer R-99", "valeur": "1999"}
+{"entite": "English Electric Camberra", "valeur": "1949"}
+{"entite": "English Electric Lightning", "valeur": "1957"}
+{"entite": "Enstrom F-28", "valeur": "1960"}
+{"entite": "Etrich Taube", "valeur": "1910"}
+{"entite": "Eurocopter AS332 Super Puma", "valeur": "1978"}
+{"entite": "Eurocopter AS350 Écureuil", "valeur": "1974"}
+{"entite": "Eurocopter AS532 Cougar", "valeur": "1977"}
+{"entite": "Eurocopter EC145", "valeur": "1999"}
+{"entite": "Eurocopter EC225", "valeur": "2000"}
+{"entite": "Eurocopter EC635", "valeur": "2001"}
+{"entite": "Eurocopter EC665 Tigre", "valeur": "1991"}
+{"entite": "Eurocopter UH-72", "valeur": "2006"}
+{"entite": "Eurofighter Typhoon", "valeur": "1994"}
+{"entite": "Eurofox", "valeur": "1991"}
+{"entite": "F-11 Tiger", "valeur": "1954"}
+{"entite": "F-117 Nighthawk", "valeur": "1981"}
+{"entite": "F.120", "valeur": "1923"}
+{"entite": "F-14 Tomcat", "valeur": "1970"}
+{"entite": "F.2 Fighter", "valeur": "1916"}
+{"entite": "F-86 Sabre", "valeur": "1947"}
+{"entite": "F/A-18 Hornet", "valeur": "1978"}
+{"entite": "F.C.20", "valeur": "1941"}
+{"entite": "F2B", "valeur": "1926"}
+{"entite": "F4U Corsair", "valeur": "1940"}
+{"entite": "F8F Bearcat", "valeur": "1944"}
+{"entite": "F9C Sparrowhawk", "valeur": "1931"}
+{"entite": "F9F Panther", "valeur": "1947"}
+{"entite": "Fa 223 Drachen", "valeur": "1940"}
+{"entite": "Fairchild A-10 Thunderbolt II", "valeur": "1972"}
+{"entite": "Fairchild AT-21 Gunner", "valeur": "1943"}
+{"entite": "Fairchild C-119 Flying Boxcar", "valeur": "1947"}
+{"entite": "Fairchild C-123 Provider", "valeur": "1949"}
+{"entite": "Fairchild C-82 Packet", "valeur": "1944"}
+{"entite": "Fairchild Dornier 328JET", "valeur": "1998"}
+{"entite": "Fairchild F-27", "valeur": "1955"}
+{"entite": "Fairchild FC", "valeur": "1926"}
+{"entite": "Fairchild Swearingen Metroliner", "valeur": "1969"}
+{"entite": "Fairey Albacore", "valeur": "1938"}
+{"entite": "Fairey Barracuda", "valeur": "1940"}
+{"entite": "Fairey Battle", "valeur": "1937"}
+{"entite": "Fairey Firefly", "valeur": "1941"}
+{"entite": "Fairey Flycatcher", "valeur": "1922"}
+{"entite": "Fairey Fox", "valeur": "1925"}
+{"entite": "Fairey Fulmar", "valeur": "1940"}
+{"entite": "Fairey Gannet", "valeur": "1949"}
+{"entite": "Fairey Hendon", "valeur": "1930"}
+{"entite": "Fairey III", "valeur": "1917"}
+{"entite": "Fairey Seafox", "valeur": "1936"}
+{"entite": "Fairey Swordfish", "valeur": "1934"}
+{"entite": "Falcon", "valeur": "1963"}
+{"entite": "Falcon 2000", "valeur": "1993"}
+{"entite": "Famille Embraer ERJ", "valeur": "1995"}
+{"entite": "Farman F.220", "valeur": "1932"}
+{"entite": "Farman F.60", "valeur": "1919"}
+{"entite": "FFVS J22", "valeur": "1942"}
+{"entite": "FH-1100", "valeur": "1963"}
+{"entite": "Fiat CR.1", "valeur": "1923"}
+{"entite": "Fiat CR.20", "valeur": "1926"}
+{"entite": "Fiat CR.32", "valeur": "1933"}
+{"entite": "Fiat CR.42 Falco", "valeur": "1938"}
+{"entite": "Fiat G.12", "valeur": "1940"}
+{"entite": "Fiat G.2", "valeur": "1932"}
+{"entite": "Fiat G.46", "valeur": "1947"}
+{"entite": "Fiat G.91", "valeur": "1956"}
+{"entite": "Fieseler Fi 156", "valeur": "1936"}
+{"entite": "Fieseler Fi 167", "valeur": "1937"}
+{"entite": "Firefly I", "valeur": "1925"}
+{"entite": "Firefly II", "valeur": "1929"}
+{"entite": "Fk14 Polaris", "valeur": "1999"}
+{"entite": "Fk9", "valeur": "1989"}
+{"entite": "FL.3", "valeur": "1939"}
+{"entite": "Focke-Wulf A 17 Möwe", "valeur": "1927"}
+{"entite": "Focke-Wulf Fw 190", "valeur": "1939"}
+{"entite": "Focke-Wulf Ta 152", "valeur": "1944"}
+{"entite": "Fokker 100", "valeur": "1986"}
+{"entite": "Fokker 70", "valeur": "1993"}
+{"entite": "Fokker E.III", "valeur": "1916"}
+{"entite": "Fokker Eindecker", "valeur": "1915"}
+{"entite": "Fokker F-10", "valeur": "1927"}
+{"entite": "Fokker F.VII", "valeur": "1924"}
+{"entite": "Fokker F27", "valeur": "1955"}
+{"entite": "Fokker F28 Fellowship", "valeur": "1967"}
+{"entite": "Fokker T.II", "valeur": "1921"}
+{"entite": "Fokker T.IV", "valeur": "1927"}
+{"entite": "Fokker V 40", "valeur": "1919"}
+{"entite": "Ford Trimotor", "valeur": "1926"}
+{"entite": "Fournier RF 5", "valeur": "1968"}
+{"entite": "FR Fireball", "valeur": "1944"}
+{"entite": "Fuji LM-1 Nikko", "valeur": "1955"}
+{"entite": "Fw 44 Stieglitz", "valeur": "1932"}
+{"entite": "Fw 56 Stösser", "valeur": "1933"}
+{"entite": "Fw 58 Weihe", "valeur": "1935"}
+{"entite": "G-2 Galeb", "valeur": "1961"}
+{"entite": "G-4 Super Galeb", "valeur": "1978"}
+{"entite": "G.50 Freccia", "valeur": "1937"}
+{"entite": "G.91T", "valeur": "1960"}
+{"entite": "G3M Rikko", "valeur": "1935"}
+{"entite": "G5N Shinzan", "valeur": "1941"}
+{"entite": "G8N Renzan", "valeur": "1944"}
+{"entite": "GAF Nomad", "valeur": "1971"}
+{"entite": "Ganagobie", "valeur": "1953"}
+{"entite": "Gauntlet", "valeur": "1929"}
+{"entite": "Gee Bee R-1", "valeur": "1932"}
+{"entite": "General Aircraft Hamilcar", "valeur": "1942"}
+{"entite": "General Dynamics EF-111A Raven", "valeur": "1977"}
+{"entite": "General Dynamics F-111 Aardvark", "valeur": "1964"}
+{"entite": "General Dynamics F-16 Fighting Falcon", "valeur": "1974"}
+{"entite": "Gladiator", "valeur": "1934"}
+{"entite": "Glasflügel H-201 Libelle", "valeur": "1967"}
+{"entite": "Gloster Gamecock", "valeur": "1925"}
+{"entite": "Gloster Meteor", "valeur": "1943"}
+{"entite": "Gnat", "valeur": "1955"}
+{"entite": "Gotha G.II", "valeur": "1916"}
+{"entite": "Gotha G.III", "valeur": "1916"}
+{"entite": "Gotha Go 242", "valeur": "1941"}
+{"entite": "Grebe", "valeur": "1923"}
+{"entite": "Grob G 120A", "valeur": "1999"}
+{"entite": "Grumman A-6 Intruder", "valeur": "1960"}
+{"entite": "Grumman AF Guardian", "valeur": "1945"}
+{"entite": "Grumman American AA-1", "valeur": "1963"}
+{"entite": "Grumman Avenger", "valeur": "1941"}
+{"entite": "Grumman C-1 Trader", "valeur": "1952"}
+{"entite": "Grumman C-2 Greyhound", "valeur": "1964"}
+{"entite": "Grumman E-1 Tracer", "valeur": "1956"}
+{"entite": "Grumman E-2 Hawkeye", "valeur": "1960"}
+{"entite": "Grumman EA-6B Prowler", "valeur": "1968"}
+{"entite": "Grumman F11F-1F Super Tiger", "valeur": "1956"}
+{"entite": "Grumman F4F Wildcat", "valeur": "1937"}
+{"entite": "Grumman F7F Tigercat", "valeur": "1943"}
+{"entite": "Grumman F9F Cougar", "valeur": "1951"}
+{"entite": "Grumman G-21 Goose", "valeur": "1937"}
+{"entite": "Grumman G-44 Widgeon", "valeur": "1940"}
+{"entite": "Grumman Gulfstream I", "valeur": "1958"}
+{"entite": "Grumman HU-16 Albatross", "valeur": "1949"}
+{"entite": "Grumman J2F Duck", "valeur": "1933"}
+{"entite": "Grumman OV-1 Mohawk", "valeur": "1959"}
+{"entite": "Grumman S-2 Tracker", "valeur": "1952"}
+{"entite": "Grunau 9", "valeur": "1928"}
+{"entite": "Guizhou JL-9", "valeur": "2003"}
+{"entite": "Gulfstream G500/G600", "valeur": "2016"}
+{"entite": "Gulfstream III", "valeur": "1979"}
+{"entite": "Gulfstream IV", "valeur": "1985"}
+{"entite": "Gyroplane de Breguet-Richet", "valeur": "1907"}
+{"entite": "H-5", "valeur": "1966"}
+{"entite": "H.P.42", "valeur": "1930"}
+{"entite": "H6K", "valeur": "1936"}
+{"entite": "HA-200 Saeta", "valeur": "1955"}
+{"entite": "Häfeli DH-5", "valeur": "1919"}
+{"entite": "HAL Ajeet", "valeur": "1976"}
+{"entite": "HAL Basant", "valeur": "1972"}
+{"entite": "HAL Dhruv", "valeur": "1992"}
+{"entite": "HAL Krishak", "valeur": "1959"}
+{"entite": "HAL Tejas", "valeur": "2001"}
+{"entite": "Hall XPTBH", "valeur": "1937"}
+{"entite": "Hamilton H-45", "valeur": "1928"}
+{"entite": "Handley Page Hampden", "valeur": "1936"}
+{"entite": "Handley Page Heyford", "valeur": "1930"}
+{"entite": "Handley Page Jetstream", "valeur": "1967"}
+{"entite": "Handley Page Marathon", "valeur": "1946"}
+{"entite": "Handley Page Type O", "valeur": "1915"}
+{"entite": "Handley Page Type W", "valeur": "1919"}
+{"entite": "Handley Page Victor", "valeur": "1952"}
+{"entite": "Hansa-Brandenburg W.12", "valeur": "1917"}
+{"entite": "Harbin SH-5", "valeur": "1976"}
+{"entite": "Harbin Y-11", "valeur": "1975"}
+{"entite": "Harbin Y-12", "valeur": "1982"}
+{"entite": "Harbin Z-20", "valeur": "2013"}
+{"entite": "Harrier II", "valeur": "1985"}
+{"entite": "Hart", "valeur": "1928"}
+{"entite": "Hartebeest", "valeur": "1935"}
+{"entite": "de Havilland Canada DHC-2 Beaver", "valeur": "1947"}
+{"entite": "De Havilland Canada DHC-3 Otter", "valeur": "1951"}
+{"entite": "De Havilland Canada DHC-4 Caribou", "valeur": "1958"}
+{"entite": "De Havilland Canada DHC-5 Buffalo", "valeur": "1964"}
+{"entite": "de Havilland Canada DHC-6-100 Twin Otter", "valeur": "1965"}
+{"entite": "de Havilland Canada DHC-6-320 Twin Otter", "valeur": "2008"}
+{"entite": "de Havilland Canada DHC-6 Twin Otter", "valeur": "1965"}
+{"entite": "de Havilland Canada DHC-7", "valeur": "1975"}
+{"entite": "de Havilland Canada DHC-8", "valeur": "1983"}
+{"entite": "de Havilland Canada DHC-8-100", "valeur": "1983"}
+{"entite": "de Havilland Canada DHC-8-400", "valeur": "1998"}
+{"entite": "de Havilland DH.104 Dove", "valeur": "1945"}
+{"entite": "De Havilland DH 106 Comet", "valeur": "1949"}
+{"entite": "de Havilland DH.112 Venom", "valeur": "1949"}
+{"entite": "de Havilland DH.114 Heron", "valeur": "1950"}
+{"entite": "De Havilland DH.60 Moth", "valeur": "1925"}
+{"entite": "De Havilland DH.86 Express", "valeur": "1934"}
+{"entite": "De Havilland DH.89 Dragon Rapide", "valeur": "1934"}
+{"entite": "De Havilland DH.91 Albatross", "valeur": "1937"}
+{"entite": "De Havilland Flamingo", "valeur": "1938"}
+{"entite": "De Havilland Hornet", "valeur": "1944"}
+{"entite": "De Havilland Sea Venom", "valeur": "1951"}
+{"entite": "De Havilland Sea Vixen", "valeur": "1951"}
+{"entite": "de Havilland Tiger Moth", "valeur": "1931"}
+{"entite": "De Havilland Vampire", "valeur": "1943"}
+{"entite": "Hawker 800", "valeur": "1983"}
+{"entite": "Hawker Dantorp", "valeur": "1932"}
+{"entite": "Hawker Fury", "valeur": "1931"}
+{"entite": "Hawker Hector", "valeur": "1936"}
+{"entite": "Hawker Hunter", "valeur": "1951"}
+{"entite": "Hawker Hurricane", "valeur": "1935"}
+{"entite": "Hawker Nimrod", "valeur": "1930"}
+{"entite": "Hawker Sea Fury", "valeur": "1944"}
+{"entite": "Hawker Sea Hawk", "valeur": "1947"}
+{"entite": "Hawker Siddeley Andover", "valeur": "1965"}
+{"entite": "Hawker Siddeley Harrier", "valeur": "1967"}
+{"entite": "Hawker Siddeley HS.748", "valeur": "1960"}
+{"entite": "Hawker Siddeley Nimrod", "valeur": "1967"}
+{"entite": "Hawker Siddeley Trident", "valeur": "1962"}
+{"entite": "Hawker Tempest", "valeur": "1942"}
+{"entite": "HC-130 Hercules", "valeur": "2010"}
+{"entite": "Heinkel He 100", "valeur": "1938"}
+{"entite": "Heinkel He 112", "valeur": "1935"}
+{"entite": "Heinkel He 114", "valeur": "1936"}
+{"entite": "Heinkel He 115", "valeur": "1937"}
+{"entite": "Heinkel He 162", "valeur": "1944"}
+{"entite": "Heinkel He 177", "valeur": "1939"}
+{"entite": "Heinkel He 45", "valeur": "1931"}
+{"entite": "Heinkel He 49", "valeur": "1932"}
+{"entite": "Heinkel He 50", "valeur": "1931"}
+{"entite": "Heinkel He 51", "valeur": "1933"}
+{"entite": "Heinkel He 59", "valeur": "1931"}
+{"entite": "Heinkel He 60", "valeur": "1933"}
+{"entite": "Heinkel HE 7", "valeur": "1927"}
+{"entite": "Heinkel He 70", "valeur": "1932"}
+{"entite": "Helio AU-24 Stallion", "valeur": "1964"}
+{"entite": "Helio Courier", "valeur": "1949"}
+{"entite": "Helwan HA-300", "valeur": "1964"}
+{"entite": "Henschel Hs 123", "valeur": "1935"}
+{"entite": "Henschel Hs 126", "valeur": "1936"}
+{"entite": "HESA Azarakhsh", "valeur": "2007"}
+{"entite": "HF-24 Marut", "valeur": "1961"}
+{"entite": "HH-65 Dolphin", "valeur": "1980"}
+{"entite": "Hiller UH-12", "valeur": "1948"}
+{"entite": "Hinaidi", "valeur": "1927"}
+{"entite": "Hind", "valeur": "1934"}
+{"entite": "HJT-16 Kiran", "valeur": "1964"}
+{"entite": "Hongdu L-15", "valeur": "2006"}
+{"entite": "Horsley", "valeur": "1925"}
+{"entite": "Horten H.III", "valeur": "1937"}
+{"entite": "Hs 129", "valeur": "1939"}
+{"entite": "Hughes MD 500 Defender", "valeur": "1976"}
+{"entite": "Hughes OH-6 Cayuse", "valeur": "1963"}
+{"entite": "Hughes TH-55 Osage", "valeur": "1956"}
+{"entite": "I-207", "valeur": "1937"}
+{"entite": "IA 35 Huanquero", "valeur": "1953"}
+{"entite": "IA 58 Pucará", "valeur": "1969"}
+{"entite": "IAI 1124 Westwind", "valeur": "1965"}
+{"entite": "IAI Arava", "valeur": "1969"}
+{"entite": "IAI Heron", "valeur": "1994"}
+{"entite": "IAI Lavi", "valeur": "1986"}
+{"entite": "IAI Nesher", "valeur": "1971"}
+{"entite": "IAR-822", "valeur": "1970"}
+{"entite": "IAR 825", "valeur": "1982"}
+{"entite": "Il-10", "valeur": "1944"}
+{"entite": "Il-2 Sturmovik", "valeur": "1939"}
+{"entite": "Il-22", "valeur": "1947"}
+{"entite": "Iliouchine A-50", "valeur": "1978"}
+{"entite": "Iliouchine Il-12", "valeur": "1945"}
+{"entite": "Iliouchine Il-14", "valeur": "1950"}
+{"entite": "Iliouchine Il-18", "valeur": "1946"}
+{"entite": "Iliouchine Il-18 (1946)", "valeur": "1948"}
+{"entite": "Iliouchine Il-38", "valeur": "1971"}
+{"entite": "Iliouchine Il-4", "valeur": "1939"}
+{"entite": "Iliouchine Il-62", "valeur": "1963"}
+{"entite": "Iliouchine Il-86", "valeur": "1976"}
+{"entite": "Iliouchine Il-96", "valeur": "1988"}
+{"entite": "Ilyushin Il-20", "valeur": "1968"}
+{"entite": "Ilyushin Il-76", "valeur": "1971"}
+{"entite": "Interstate L-6", "valeur": "1940"}
+{"entite": "Irkout MS-21", "valeur": "2017"}
+{"entite": "Iryda", "valeur": "1985"}
+{"entite": "J1N Gekko", "valeur": "1941"}
+{"entite": "J2M Raiden", "valeur": "1942"}
+{"entite": "J7W Shinden", "valeur": "1945"}
+{"entite": "J8M Shūsui", "valeur": "1945"}
+{"entite": "JF-17 Thunder", "valeur": "2003"}
+{"entite": "JN-4", "valeur": "1915"}
+{"entite": "Jonker JS-3 Rapture", "valeur": "2016"}
+{"entite": "JS-1 Revelation", "valeur": "2006"}
+{"entite": "Ju 290", "valeur": "1942"}
+{"entite": "Ju 87", "valeur": "1935"}
+{"entite": "Junkers A 50", "valeur": "1929"}
+{"entite": "Junkers F-13", "valeur": "1919"}
+{"entite": "Junkers G 24", "valeur": "1924"}
+{"entite": "Junkers G 31", "valeur": "1926"}
+{"entite": "Junkers J 9", "valeur": "1917"}
+{"entite": "Junkers Ju 188", "valeur": "1940"}
+{"entite": "Junkers Ju 287", "valeur": "1944"}
+{"entite": "Junkers Ju 388 Störtebeker", "valeur": "1943"}
+{"entite": "Junkers Ju 52/3m", "valeur": "1932"}
+{"entite": "Junkers Ju 86", "valeur": "1934"}
+{"entite": "Junkers Ju 88", "valeur": "1936"}
+{"entite": "Junkers Ju 90", "valeur": "1937"}
+{"entite": "Junkers K 16", "valeur": "1921"}
+{"entite": "Junkers K 37", "valeur": "1927"}
+{"entite": "Ka-10", "valeur": "1949"}
+{"entite": "Ka-15", "valeur": "1952"}
+{"entite": "Ka-25", "valeur": "1961"}
+{"entite": "Ka-26", "valeur": "1965"}
+{"entite": "Ka-60", "valeur": "1998"}
+{"entite": "KAI KT-1", "valeur": "1991"}
+{"entite": "Kaman H-2 Seasprite", "valeur": "1959"}
+{"entite": "Kaman HH-43 Huskie", "valeur": "1953"}
+{"entite": "Kaman K-225", "valeur": "1947"}
+{"entite": "Kamov Ka-226", "valeur": "1997"}
+{"entite": "Kamov Ka-27", "valeur": "1973"}
+{"entite": "Kamov Ka-50 Black Shark", "valeur": "1982"}
+{"entite": "Kawasaki C-1", "valeur": "1970"}
+{"entite": "Kawasaki C-2", "valeur": "2010"}
+{"entite": "Kawasaki Ki-10", "valeur": "1935"}
+{"entite": "Kawasaki Ki-100", "valeur": "1945"}
+{"entite": "Kawasaki Ki-32", "valeur": "1937"}
+{"entite": "Kawasaki Ki-45", "valeur": "1941"}
+{"entite": "Kawasaki Ki-61 Hien", "valeur": "1941"}
+{"entite": "Kawasaki OH-1", "valeur": "1996"}
+{"entite": "Kazan Ansat", "valeur": "1999"}
+{"entite": "KC-135 Stratotanker", "valeur": "1956"}
+{"entite": "KC-767", "valeur": "2005"}
+{"entite": "Keystone LB-6", "valeur": "1927"}
+{"entite": "Kfir", "valeur": "1969"}
+{"entite": "Ki-102", "valeur": "1944"}
+{"entite": "Ki-21", "valeur": "1936"}
+{"entite": "Ki-27", "valeur": "1936"}
+{"entite": "Ki-44 Shōki", "valeur": "1940"}
+{"entite": "Ki-46", "valeur": "1939"}
+{"entite": "Ki-48", "valeur": "1939"}
+{"entite": "Ki-49 Donryu", "valeur": "1939"}
+{"entite": "Ki-57", "valeur": "1940"}
+{"entite": "Ki-84 Hayate", "valeur": "1943"}
+{"entite": "KM-2", "valeur": "1962"}
+{"entite": "Korea Aerospace Industries KF-X", "valeur": "2022"}
+{"entite": "Kronstadt Orion", "valeur": "2016"}
+{"entite": "Lake Renegade LA-250", "valeur": "1982"}
+{"entite": "Lancair IV", "valeur": "1990"}
+{"entite": "Lange Antares 20E", "valeur": "2003"}
+{"entite": "Latécoère 17", "valeur": "1923"}
+{"entite": "Latécoère 298", "valeur": "1936"}
+{"entite": "Latécoère 299", "valeur": "1939"}
+{"entite": "Lavochkin La-9", "valeur": "1946"}
+{"entite": "Lavotchkine La-11", "valeur": "1947"}
+{"entite": "Lavotchkine La-15", "valeur": "1948"}
+{"entite": "Lavotchkine La-17", "valeur": "1963"}
+{"entite": "Lavotchkine La-7", "valeur": "1944"}
+{"entite": "Lavotchkine LaGG-3", "valeur": "1940"}
+{"entite": "LC-130", "valeur": "1956"}
+{"entite": "Learjet 35/36", "valeur": "1973"}
+{"entite": "Learjet 40", "valeur": "2002"}
+{"entite": "LET L-13 Blaník", "valeur": "1956"}
+{"entite": "Let L-200 Morava", "valeur": "1957"}
+{"entite": "Let L-410 Turbolet", "valeur": "1969"}
+{"entite": "Letov Š-31", "valeur": "1929"}
+{"entite": "Lioré et Olivier LeO H-25", "valeur": "1928"}
+{"entite": "Lloyd C.II", "valeur": "1915"}
+{"entite": "Lockheed Altair", "valeur": "1930"}
+{"entite": "Lockheed C-121 Constellation", "valeur": "1947"}
+{"entite": "Lockheed C-130 Hercules", "valeur": "1954"}
+{"entite": "Lockheed C-141 Starlifter", "valeur": "1963"}
+{"entite": "Lockheed C-5 Galaxy", "valeur": "1968"}
+{"entite": "Lockheed C-69 Constellation", "valeur": "1943"}
+{"entite": "Lockheed Constellation", "valeur": "1943"}
+{"entite": "Lockheed Electra", "valeur": "1934"}
+{"entite": "Lockheed Explorer", "valeur": "1929"}
+{"entite": "Lockheed F-104 Starfighter", "valeur": "1956"}
+{"entite": "Lockheed F-80 Shooting Star", "valeur": "1944"}
+{"entite": "Lockheed F-94 Starfire", "valeur": "1949"}
+{"entite": "Lockheed Hudson", "valeur": "1938"}
+{"entite": "Lockheed JetStar", "valeur": "1957"}
+{"entite": "Lockheed JetStar II", "valeur": "1976"}
+{"entite": "Lockheed L-049 Constellation", "valeur": "1943"}
+{"entite": "Lockheed L-100 Hercules", "valeur": "1964"}
+{"entite": "Lockheed L-1011 TriStar", "valeur": "1970"}
+{"entite": "Lockheed L-1049 Super Constellation", "valeur": "1950"}
+{"entite": "Lockheed L-12 Electra Junior", "valeur": "1936"}
+{"entite": "Lockheed L-14 Super Electra", "valeur": "1937"}
+{"entite": "Lockheed L-1649 Starliner", "valeur": "1956"}
+{"entite": "Lockheed L-18 Lodestar", "valeur": "1939"}
+{"entite": "Lockheed L-188 Electra", "valeur": "1957"}
+{"entite": "Lockheed L-649 Constellation", "valeur": "1946"}
+{"entite": "Lockheed L-749 Constellation", "valeur": "1947"}
+{"entite": "Lockheed L-9 Orion", "valeur": "1931"}
+{"entite": "Lockheed Martin F-22 Raptor", "valeur": "1997"}
+{"entite": "Lockheed Martin F-35 Lightning II", "valeur": "2006"}
+{"entite": "Lockheed Martin KC-130", "valeur": "1960"}
+{"entite": "Lockheed Martin RQ-3 DarkStar", "valeur": "1996"}
+{"entite": "Lockheed Martin X-56", "valeur": "2013"}
+{"entite": "Lockheed Model 8 Sirius", "valeur": "1929"}
+{"entite": "Lockheed P-2 Neptune", "valeur": "1945"}
+{"entite": "Lockheed P-3 Orion", "valeur": "1959"}
+{"entite": "Lockheed P-38 Lightning", "valeur": "1939"}
+{"entite": "Lockheed S-3 Viking", "valeur": "1972"}
+{"entite": "Lockheed SR-71 Blackbird", "valeur": "1964"}
+{"entite": "Lockheed T-33 Shooting Star", "valeur": "1948"}
+{"entite": "Lockheed T-33A Shooting Star", "valeur": "1948"}
+{"entite": "Lockheed T2V SeaStar", "valeur": "1953"}
+{"entite": "Lockheed U-2", "valeur": "1955"}
+{"entite": "Lockheed Vega", "valeur": "1927"}
+{"entite": "Lockheed Ventura", "valeur": "1941"}
+{"entite": "Lockheed XP-49", "valeur": "1942"}
+{"entite": "Lockheed XP-58 Chain Lightning", "valeur": "1944"}
+{"entite": "Lockheed YF-12", "valeur": "1963"}
+{"entite": "Lockheed YP-24", "valeur": "1931"}
+{"entite": "Loening PW-2", "valeur": "1920"}
+{"entite": "LTV A-7 Corsair II", "valeur": "1965"}
+{"entite": "Lublin R-VIII", "valeur": "1928"}
+{"entite": "LVG C.II", "valeur": "1915"}
+{"entite": "Lynx", "valeur": "1971"}
+{"entite": "M-4", "valeur": "1960"}
+{"entite": "M-4 Molot", "valeur": "1953"}
+{"entite": "Magister", "valeur": "1937"}
+{"entite": "Manchester", "valeur": "1918"}
+{"entite": "Martin 4-0-4", "valeur": "1950"}
+{"entite": "Martin A-30", "valeur": "1941"}
+{"entite": "Martin AM Mauler", "valeur": "1944"}
+{"entite": "Martin B-10", "valeur": "1932"}
+{"entite": "Martin B-26 Marauder", "valeur": "1940"}
+{"entite": "Martin B-57 Canberra", "valeur": "1953"}
+{"entite": "Martin BM", "valeur": "1929"}
+{"entite": "Martin JRM Mars", "valeur": "1942"}
+{"entite": "Martin Maryland", "valeur": "1939"}
+{"entite": "Martin MB-1", "valeur": "1918"}
+{"entite": "Martin P4M Mercator", "valeur": "1946"}
+{"entite": "Martin P5M Marlin", "valeur": "1948"}
+{"entite": "Martin P6M SeaMaster", "valeur": "1955"}
+{"entite": "Martin PBM Mariner", "valeur": "1939"}
+{"entite": "Martin T3M", "valeur": "1926"}
+{"entite": "Maule M-5", "valeur": "1971"}
+{"entite": "MB.150", "valeur": "1937"}
+{"entite": "MB-326", "valeur": "1957"}
+{"entite": "MBB/Kawasaki BK117 A", "valeur": "1982"}
+{"entite": "MBR-2", "valeur": "1931"}
+{"entite": "MC-130", "valeur": "2011"}
+{"entite": "McDonnell CF-101 Voodoo", "valeur": "1954"}
+{"entite": "McDonnell Douglas DC-10", "valeur": "1970"}
+{"entite": "McDonnell Douglas DC-10-10", "valeur": "1970"}
+{"entite": "McDonnell Douglas DC-10-30", "valeur": "1972"}
+{"entite": "McDonnell Douglas F-15 Eagle", "valeur": "1972"}
+{"entite": "McDonnell Douglas F-15E Strike Eagle", "valeur": "1986"}
+{"entite": "McDonnell Douglas F-4 Phantom II", "valeur": "1958"}
+{"entite": "McDonnell Douglas KC-10 Extender", "valeur": "1980"}
+{"entite": "McDonnell Douglas MD-11", "valeur": "1990"}
+{"entite": "McDonnell Douglas MD-80/MD-90", "valeur": "1979"}
+{"entite": "McDonnell Douglas MD-81", "valeur": "1979"}
+{"entite": "McDonnell Douglas MD-82", "valeur": "1981"}
+{"entite": "McDonnell Douglas MD-83", "valeur": "1984"}
+{"entite": "McDonnell Douglas MD-87", "valeur": "1986"}
+{"entite": "McDonnell Douglas MD-88", "valeur": "1987"}
+{"entite": "McDonnell Douglas MD-90", "valeur": "1993"}
+{"entite": "McDonnell F-101 Voodoo", "valeur": "1954"}
+{"entite": "McDonnell F2H Banshee", "valeur": "1947"}
+{"entite": "McDonnell F3H Demon", "valeur": "1951"}
+{"entite": "McDonnell FH Phantom", "valeur": "1945"}
+{"entite": "MD 450 Ouragan", "valeur": "1949"}
+{"entite": "MD 454 Mystère IV", "valeur": "1952"}
+{"entite": "MD 500", "valeur": "1963"}
+{"entite": "Me 328", "valeur": "1942"}
+{"entite": "Me 410 Hornisse", "valeur": "1942"}
+{"entite": "Messerschmitt Bf 109", "valeur": "1935"}
+{"entite": "Messerschmitt Me 163 Komet", "valeur": "1941"}
+{"entite": "Messerschmitt Me 210", "valeur": "1939"}
+{"entite": "Messerschmitt Me 262", "valeur": "1942"}
+{"entite": "Messerschmitt Me 323 Gigant", "valeur": "1942"}
+{"entite": "Mew Gull", "valeur": "1934"}
+{"entite": "MH-6 Little Bird", "valeur": "1963"}
+{"entite": "Mi-10", "valeur": "1960"}
+{"entite": "Mi-24", "valeur": "1969"}
+{"entite": "Mi-26", "valeur": "1977"}
+{"entite": "Mi-28", "valeur": "1982"}
+{"entite": "Mi-38", "valeur": "2003"}
+{"entite": "Mi-6", "valeur": "1957"}
+{"entite": "MiG-15bis", "valeur": "1949"}
+{"entite": "MiG-21", "valeur": "1956"}
+{"entite": "MiG-31", "valeur": "1975"}
+{"entite": "Mikoyan-Gourevitch MiG-15", "valeur": "1947"}
+{"entite": "Mikoyan-Gourevitch MiG-17", "valeur": "1950"}
+{"entite": "Mikoyan-Gourevitch MiG-19", "valeur": "1953"}
+{"entite": "Mikoyan-Gourevitch MiG-25", "valeur": "1964"}
+{"entite": "Mikoyan-Gourevitch MiG-27", "valeur": "1970"}
+{"entite": "Mikoyan-Gourevitch MiG-29", "valeur": "1977"}
+{"entite": "Mikoyan-Gourevitch MiG-35", "valeur": "2007"}
+{"entite": "Mikoyan-Gurevich MiG-23", "valeur": "1967"}
+{"entite": "Mil Mi-1", "valeur": "1948"}
+{"entite": "Mil Mi-14", "valeur": "1969"}
+{"entite": "Mil Mi-17", "valeur": "1975"}
+{"entite": "Mil Mi-2", "valeur": "1961"}
+{"entite": "Mil Mi-8", "valeur": "1961"}
+{"entite": "Miles Aerovan", "valeur": "1945"}
+{"entite": "Mirage 2000D/N", "valeur": "1986"}
+{"entite": "Mirage F1", "valeur": "1966"}
+{"entite": "Mistral", "valeur": "1985"}
+{"entite": "Mitsubishi A6M", "valeur": "1939"}
+{"entite": "Mitsubishi B1M", "valeur": "1923"}
+{"entite": "Mitsubishi B2M", "valeur": "1929"}
+{"entite": "Mitsubishi F-2", "valeur": "1995"}
+{"entite": "Mitsubishi G4M", "valeur": "1940"}
+{"entite": "Mitsubishi Ki-30", "valeur": "1937"}
+{"entite": "Mitsubishi Ki-51", "valeur": "1939"}
+{"entite": "Mitsubishi Ki-67 Hiryu", "valeur": "1942"}
+{"entite": "Mitsubishi MRJ", "valeur": "2015"}
+{"entite": "Mitsubishi MU-2", "valeur": "1963"}
+{"entite": "Model 17 Fleetster", "valeur": "1929"}
+{"entite": "Model 40", "valeur": "1925"}
+{"entite": "Model A", "valeur": "1940"}
+{"entite": "Morane-Saulnier G", "valeur": "1912"}
+{"entite": "Morane-Saulnier Rallye", "valeur": "1959"}
+{"entite": "Morane-Saulnier Type H", "valeur": "1913"}
+{"entite": "Morane-Saulnier Type L", "valeur": "1913"}
+{"entite": "Mosquito", "valeur": "1940"}
+{"entite": "MS 760 Paris", "valeur": "1954"}
+{"entite": "Mudry CAP 20", "valeur": "1969"}
+{"entite": "Mystère", "valeur": "1951"}
+{"entite": "N1K Kyōfū", "valeur": "1942"}
+{"entite": "NA-16-5", "valeur": "1940"}
+{"entite": "Nakajima A1N", "valeur": "1927"}
+{"entite": "Nakajima B6N", "valeur": "1941"}
+{"entite": "Nakajima Ki-43 Hayabusa", "valeur": "1939"}
+{"entite": "NAMC YS-11", "valeur": "1962"}
+{"entite": "Nanghang K-8 Karokorum", "valeur": "1990"}
+{"entite": "Nardi FN.305", "valeur": "1935"}
+{"entite": "NASA X-43 Scramjet", "valeur": "2001"}
+{"entite": "Naval Aircraft Factory TDN", "valeur": "1942"}
+{"entite": "Navion", "valeur": "1946"}
+{"entite": "NBS-1", "valeur": "1920"}
+{"entite": "NC", "valeur": "1918"}
+{"entite": "NH90", "valeur": "1995"}
+{"entite": "NiD.52", "valeur": "1927"}
+{"entite": "Nieuport 10", "valeur": "1914"}
+{"entite": "Nieuport 11 « Bébé »", "valeur": "1916"}
+{"entite": "Nieuport 12", "valeur": "1915"}
+{"entite": "Nieuport 14", "valeur": "1915"}
+{"entite": "Nieuport 17", "valeur": "1916"}
+{"entite": "Nieuport 24", "valeur": "1917"}
+{"entite": "Nieuport-Delage NiD.29", "valeur": "1918"}
+{"entite": "Nieuport IV", "valeur": "1911"}
+{"entite": "Nieuport VI", "valeur": "1912"}
+{"entite": "Nighthawk", "valeur": "1919"}
+{"entite": "Nord 262", "valeur": "1962"}
+{"entite": "Nord Noratlas", "valeur": "1949"}
+{"entite": "Norseman", "valeur": "1935"}
+{"entite": "North American A-36 Mustang", "valeur": "1942"}
+{"entite": "North American A-5 Vigilante", "valeur": "1958"}
+{"entite": "North American B-25 Mitchell", "valeur": "1940"}
+{"entite": "North American B-45 Tornado", "valeur": "1947"}
+{"entite": "North American BT-9", "valeur": "1936"}
+{"entite": "North American F-100 Super Sabre", "valeur": "1953"}
+{"entite": "North American F-82 Twin Mustang", "valeur": "1945"}
+{"entite": "North American FJ Fury", "valeur": "1946"}
+{"entite": "North American NA-16", "valeur": "1935"}
+{"entite": "North American P-51 Mustang", "valeur": "1940"}
+{"entite": "North American Sabreliner", "valeur": "1958"}
+{"entite": "North American T-2 Buckeye", "valeur": "1948"}
+{"entite": "North American T-28 Trojan", "valeur": "1949"}
+{"entite": "North American T-6 Texan", "valeur": "1935"}
+{"entite": "North American XB-21", "valeur": "1936"}
+{"entite": "North American XB-70 Valkyrie", "valeur": "1964"}
+{"entite": "Northrop F-15 Reporter", "valeur": "1945"}
+{"entite": "Northrop F-5", "valeur": "1959"}
+{"entite": "Northrop F-89 Scorpion", "valeur": "1948"}
+{"entite": "Northrop Gamma", "valeur": "1932"}
+{"entite": "Northrop Grumman B-21", "valeur": "2023"}
+{"entite": "Northrop Grumman Firebird", "valeur": "2010"}
+{"entite": "Northrop Grumman RQ-4 Global Hawk", "valeur": "1998"}
+{"entite": "Northrop P-61 Black Widow", "valeur": "1942"}
+{"entite": "Northrop T-38 Talon", "valeur": "1959"}
+{"entite": "Northrop YB-49", "valeur": "1947"}
+{"entite": "O-47", "valeur": "1935"}
+{"entite": "Osprey", "valeur": "1928"}
+{"entite": "P-1 Hawk", "valeur": "1923"}
+{"entite": "P.11", "valeur": "1931"}
+{"entite": "P.19 Scricciolo", "valeur": "1959"}
+{"entite": "P.5 Kingston", "valeur": "1924"}
+{"entite": "P.75 Overstrand", "valeur": "1933"}
+{"entite": "P1Y Ginga", "valeur": "1943"}
+{"entite": "PA-33/34", "valeur": "1936"}
+{"entite": "Panavia Tornado", "valeur": "1974"}
+{"entite": "Partenavia Oscar", "valeur": "1965"}
+{"entite": "PC-12", "valeur": "1991"}
+{"entite": "PC-9", "valeur": "1984"}
+{"entite": "Pe-8", "valeur": "1936"}
+{"entite": "Percival Pembroke", "valeur": "1952"}
+{"entite": "Percival Proctor", "valeur": "1939"}
+{"entite": "Pfalz E.I-VI", "valeur": "1913"}
+{"entite": "PH", "valeur": "1929"}
+{"entite": "Piaggio P.108 Bombardiere", "valeur": "1939"}
+{"entite": "Piaggio P.149", "valeur": "1953"}
+{"entite": "Piaggio P.166", "valeur": "1957"}
+{"entite": "Piaggio P.180 Avanti", "valeur": "1986"}
+{"entite": "Piaggio P.32", "valeur": "1936"}
+{"entite": "Piaggio PD.808", "valeur": "1964"}
+{"entite": "Piasecki HRP Rescuer", "valeur": "1945"}
+{"entite": "Piasecki HUP", "valeur": "1948"}
+{"entite": "Pilatus PC-6 Porter", "valeur": "1959"}
+{"entite": "Pilatus PC-7", "valeur": "1966"}
+{"entite": "Piper Aerostar", "valeur": "1967"}
+{"entite": "Piper Cub", "valeur": "1938"}
+{"entite": "Piper PA-18 Super Cub", "valeur": "1949"}
+{"entite": "Piper PA-23 Apache", "valeur": "1952"}
+{"entite": "Piper PA-28 Arrow", "valeur": "1960"}
+{"entite": "Piper PA-30 Twin Comanche", "valeur": "1962"}
+{"entite": "Piper PA-31", "valeur": "1964"}
+{"entite": "Piper PA-31 Navajo", "valeur": "1964"}
+{"entite": "Piper PA-31T Cheyenne", "valeur": "1969"}
+{"entite": "Piper PA-34 Seneca", "valeur": "1967"}
+{"entite": "Piper PA-42 Cheyenne", "valeur": "1979"}
+{"entite": "Piper PA-46", "valeur": "1979"}
+{"entite": "PL-1", "valeur": "1962"}
+{"entite": "PL-4", "valeur": "1972"}
+{"entite": "PN", "valeur": "1925"}
+{"entite": "Po-2 Kukuruznik", "valeur": "1927"}
+{"entite": "Polikarpov I-15", "valeur": "1933"}
+{"entite": "Polikarpov I-153", "valeur": "1937"}
+{"entite": "Polikarpov I-16", "valeur": "1933"}
+{"entite": "Polikarpov R-Z", "valeur": "1935"}
+{"entite": "Potez 25", "valeur": "1924"}
+{"entite": "Potez 43", "valeur": "1932"}
+{"entite": "Potez 630", "valeur": "1936"}
+{"entite": "Potez 75", "valeur": "1953"}
+{"entite": "Potez 840", "valeur": "1961"}
+{"entite": "Praga E-51", "valeur": "1938"}
+{"entite": "PT-19", "valeur": "1939"}
+{"entite": "Pullman", "valeur": "1920"}
+{"entite": "Pulsar", "valeur": "1985"}
+{"entite": "PZL-104 Wilga", "valeur": "1962"}
+{"entite": "PZL-130 Orlik", "valeur": "1984"}
+{"entite": "PZL.23 Karaś", "valeur": "1934"}
+{"entite": "PZL.37 Łoś", "valeur": "1936"}
+{"entite": "PZL Bielsko SZD-50 Puchacz", "valeur": "1976"}
+{"entite": "PZL M-15 Belphegor", "valeur": "1973"}
+{"entite": "PZL M28", "valeur": "1993"}
+{"entite": "PZL TS-11 Iskra", "valeur": "1960"}
+{"entite": "PZL W-3", "valeur": "1979"}
+{"entite": "Q-5", "valeur": "1965"}
+{"entite": "R.11", "valeur": "1917"}
+{"entite": "R-5", "valeur": "1928"}
+{"entite": "R.B.1 Iris", "valeur": "1926"}
+{"entite": "R.E.8", "valeur": "1916"}
+{"entite": "RC-135", "valeur": "1965"}
+{"entite": "Re.2000 Falco I", "valeur": "1939"}
+{"entite": "RediGO", "valeur": "1985"}
+{"entite": "Regente", "valeur": "1961"}
+{"entite": "Regente 420L", "valeur": "1967"}
+{"entite": "Republic F-105 Thunderchief", "valeur": "1955"}
+{"entite": "Republic P-47 Thunderbolt", "valeur": "1941"}
+{"entite": "RF-10", "valeur": "1981"}
+{"entite": "Robin DR-200", "valeur": "1964"}
+{"entite": "Robin DR-400", "valeur": "1972"}
+{"entite": "Robin HR-200", "valeur": "1971"}
+{"entite": "Robinson R22", "valeur": "1975"}
+{"entite": "Robinson R44", "valeur": "1990"}
+{"entite": "Roc", "valeur": "1938"}
+{"entite": "Rockwell B-1 Lancer", "valeur": "1974"}
+{"entite": "Rockwell OV-10 Bronco", "valeur": "1965"}
+{"entite": "Rolladen Schneider LS4", "valeur": "1980"}
+{"entite": "Royal Aircraft Factory F.E.2", "valeur": "1914"}
+{"entite": "Royal Aircraft Factory F.E.8", "valeur": "1915"}
+{"entite": "RQ-101 Night Intruder", "valeur": "1993"}
+{"entite": "RWD-15", "valeur": "1937"}
+{"entite": "Ryan M2", "valeur": "1926"}
+{"entite": "S", "valeur": "1940"}
+{"entite": "S.205", "valeur": "1965"}
+{"entite": "S-211", "valeur": "1981"}
+{"entite": "Š-28", "valeur": "1929"}
+{"entite": "S.312 Tucano", "valeur": "1986"}
+{"entite": "S.7", "valeur": "1939"}
+{"entite": "S.E.5", "valeur": "1916"}
+{"entite": "S.E.T. 7", "valeur": "1931"}
+{"entite": "SA 321 Super Frelon", "valeur": "1962"}
+{"entite": "SA 341 Gazelle", "valeur": "1967"}
+{"entite": "Saab 105", "valeur": "1963"}
+{"entite": "Saab 17", "valeur": "1940"}
+{"entite": "Saab 18", "valeur": "1942"}
+{"entite": "Saab 29 Tunnan", "valeur": "1948"}
+{"entite": "Saab 32 Lansen", "valeur": "1952"}
+{"entite": "Saab 340", "valeur": "1983"}
+{"entite": "Saab 35 Draken", "valeur": "1955"}
+{"entite": "Saab 37 Viggen", "valeur": "1967"}
+{"entite": "Saab 91 Safir", "valeur": "1945"}
+{"entite": "Saab J-21", "valeur": "1943"}
+{"entite": "Saab J 21R", "valeur": "1947"}
+{"entite": "Saab JAS 39 Gripen", "valeur": "1988"}
+{"entite": "SAI 207", "valeur": "1941"}
+{"entite": "Savoia-Marchetti S.55", "valeur": "1924"}
+{"entite": "Savoia-Marchetti SM.75", "valeur": "1937"}
+{"entite": "Savoia-Marchetti SM.81 Pipistrello", "valeur": "1934"}
+{"entite": "SB", "valeur": "1934"}
+{"entite": "SB2U Vindicator", "valeur": "1936"}
+{"entite": "Schempp-Hirth Discus 2", "valeur": "1998"}
+{"entite": "Schempp-Hirth Nimbus 4", "valeur": "1990"}
+{"entite": "Schempp-Hirth Ventus-3", "valeur": "2016"}
+{"entite": "Schleicher ASW 20", "valeur": "1977"}
+{"entite": "Schweizer SGS 2-8", "valeur": "1938"}
+{"entite": "Scottish Aviation Pioneer", "valeur": "1947"}
+{"entite": "Scout AH1", "valeur": "1960"}
+{"entite": "Sea Harrier", "valeur": "1978"}
+{"entite": "SEPECAT Jaguar", "valeur": "1968"}
+{"entite": "SF-260", "valeur": "1964"}
+{"entite": "SH-60 Seahawk", "valeur": "1979"}
+{"entite": "Shaanxi Y-15", "valeur": "2025"}
+{"entite": "Shaanxi Y-8", "valeur": "1974"}
+{"entite": "Shaanxi Y-9", "valeur": "2010"}
+{"entite": "Shenyang J-5", "valeur": "1956"}
+{"entite": "Shenyang J-6", "valeur": "1958"}
+{"entite": "Short 330", "valeur": "1974"}
+{"entite": "Short 360", "valeur": "1981"}
+{"entite": "Short Belfast", "valeur": "1964"}
+{"entite": "Short C-23 Sherpa", "valeur": "1982"}
+{"entite": "Short Sandringham", "valeur": "1943"}
+{"entite": "Short SC.7 Skyvan", "valeur": "1963"}
+{"entite": "Short Stirling", "valeur": "1939"}
+{"entite": "Short Type 184", "valeur": "1915"}
+{"entite": "Sikorsky-Boeing SB-1 Defiant", "valeur": "2019"}
+{"entite": "Sikorsky CH-37 Mojave", "valeur": "1953"}
+{"entite": "Sikorsky CH-53", "valeur": "1964"}
+{"entite": "Sikorsky CH-54 Tarhe", "valeur": "1962"}
+{"entite": "Sikorsky H-53 Sea Stallion", "valeur": "1964"}
+{"entite": "Sikorsky HH-52A Seaguard", "valeur": "1958"}
+{"entite": "Sikorsky R-4", "valeur": "1942"}
+{"entite": "Sikorsky S-333", "valeur": "1988"}
+{"entite": "Sikorsky S-37", "valeur": "1927"}
+{"entite": "Sikorsky S-38", "valeur": "1928"}
+{"entite": "Sikorsky S-41", "valeur": "1930"}
+{"entite": "Sikorsky S-48", "valeur": "1943"}
+{"entite": "Sikorsky S-49", "valeur": "1943"}
+{"entite": "Sikorsky S-52", "valeur": "1947"}
+{"entite": "Sikorsky S-55", "valeur": "1949"}
+{"entite": "Sikorsky S-58", "valeur": "1954"}
+{"entite": "Sikorsky S-61", "valeur": "1959"}
+{"entite": "Sikorsky S-61R", "valeur": "1959"}
+{"entite": "Sikorsky S-62", "valeur": "1959"}
+{"entite": "Sikorsky S-64 Skycrane", "valeur": "1962"}
+{"entite": "Sikorsky S-70", "valeur": "1974"}
+{"entite": "Sikorsky S-76", "valeur": "1977"}
+{"entite": "Sikorsky S-92", "valeur": "1998"}
+{"entite": "Sikorsky UH-60 Black Hawk", "valeur": "1974"}
+{"entite": "Silvercraft SH-4", "valeur": "1963"}
+{"entite": "SIPA S.200", "valeur": "1952"}
+{"entite": "Siskin", "valeur": "1919"}
+{"entite": "Skua", "valeur": "1937"}
+{"entite": "Slingsby T.21 Sedbergh", "valeur": "1944"}
+{"entite": "SM.1019", "valeur": "1969"}
+{"entite": "SM.84", "valeur": "1940"}
+{"entite": "SNCAC NC.211 Cormoran", "valeur": "1948"}
+{"entite": "Socata TB-10", "valeur": "1977"}
+{"entite": "Socata TB-20", "valeur": "1980"}
+{"entite": "Socata TB 30 Epsilon", "valeur": "1979"}
+{"entite": "Soko J-21 Jastreb", "valeur": "1965"}
+{"entite": "Soko J-22 Orao", "valeur": "1974"}
+{"entite": "Sopwith 1½ Strutter", "valeur": "1915"}
+{"entite": "Sopwith Camel", "valeur": "1916"}
+{"entite": "Sopwith Pup", "valeur": "1916"}
+{"entite": "Soukhoï Su-35", "valeur": "2008"}
+{"entite": "Soukhoï Su-80", "valeur": "2001"}
+{"entite": "Sparrow", "valeur": "1987"}
+{"entite": "Spiteful", "valeur": "1944"}
+{"entite": "Sportavia-Pützer RS 180 Sportsman", "valeur": "1978"}
+{"entite": "Sportine Aviacija LAK-17a", "valeur": "1992"}
+{"entite": "Stampe SV.4", "valeur": "1933"}
+{"entite": "Stinson L-5 Sentinel", "valeur": "1941"}
+{"entite": "Stinson Reliant", "valeur": "1933"}
+{"entite": "Stout Skycar", "valeur": "1931"}
+{"entite": "Strikemaster", "valeur": "1967"}
+{"entite": "Su-15", "valeur": "1962"}
+{"entite": "Su-17", "valeur": "1966"}
+{"entite": "Su-2", "valeur": "1937"}
+{"entite": "Su-24", "valeur": "1970"}
+{"entite": "Su-25", "valeur": "1975"}
+{"entite": "Su-57", "valeur": "2010"}
+{"entite": "Su-7", "valeur": "1955"}
+{"entite": "Su-9", "valeur": "1957"}
+{"entite": "Sud-Aviation SE 210 Caravelle", "valeur": "1955"}
+{"entite": "Sukhoi Su-27", "valeur": "1977"}
+{"entite": "Sukhoi Su-29", "valeur": "1991"}
+{"entite": "Sukhoi Su-6", "valeur": "1941"}
+{"entite": "Sunderland", "valeur": "1937"}
+{"entite": "Supermarine Seafire", "valeur": "1942"}
+{"entite": "Supermarine Seagull", "valeur": "1921"}
+{"entite": "Supermarine Southampton", "valeur": "1925"}
+{"entite": "Supermarine Spitfire", "valeur": "1936"}
+{"entite": "Supermarine Swift", "valeur": "1948"}
+{"entite": "SZD-41 Jantar Standard", "valeur": "1973"}
+{"entite": "SZD-42 Jantar 2", "valeur": "1976"}
+{"entite": "T-1 Hatsutaka", "valeur": "1958"}
+{"entite": "T-2", "valeur": "1971"}
+{"entite": "T-25 Universal", "valeur": "1966"}
+{"entite": "T-4", "valeur": "1985"}
+{"entite": "T-45 Goshawk", "valeur": "1988"}
+{"entite": "T-50 Bobcat", "valeur": "1939"}
+{"entite": "T-50 Golden Eagle", "valeur": "2002"}
+{"entite": "T-CH-1 Chung Hsing", "valeur": "1973"}
+{"entite": "Tabloid", "valeur": "1913"}
+{"entite": "TAI TFX", "valeur": "2024"}
+{"entite": "Taylorcraft L-2 Grasshopper", "valeur": "1941"}
+{"entite": "Temco TT Pinto", "valeur": "1956"}
+{"entite": "Thomas-Morse S-4", "valeur": "1917"}
+{"entite": "Tornado ADV", "valeur": "1979"}
+{"entite": "Transall C-160", "valeur": "1963"}
+{"entite": "Transavia PL-12 Airtruk", "valeur": "1965"}
+{"entite": "Travel Air 6000", "valeur": "1928"}
+{"entite": "Tu-128", "valeur": "1961"}
+{"entite": "Tu-16", "valeur": "1952"}
+{"entite": "Tu-2", "valeur": "1941"}
+{"entite": "Tupolev TB-3", "valeur": "1930"}
+{"entite": "Tupolev Tu-110", "valeur": "1957"}
+{"entite": "Tupolev Tu-124", "valeur": "1960"}
+{"entite": "Tupolev Tu-134", "valeur": "1963"}
+{"entite": "Tupolev Tu-14", "valeur": "1949"}
+{"entite": "Tupolev Tu-154", "valeur": "1968"}
+{"entite": "Tupolev Tu-155", "valeur": "1988"}
+{"entite": "Tupolev Tu-204", "valeur": "1989"}
+{"entite": "Tupolev Tu-22", "valeur": "1958"}
+{"entite": "Tupolev Tu-22M", "valeur": "1969"}
+{"entite": "Tupolev Tu-4", "valeur": "1947"}
+{"entite": "Tupolev Tu-95", "valeur": "1952"}
+{"entite": "Typhon", "valeur": "1935"}
+{"entite": "Typhoon", "valeur": "1940"}
+{"entite": "UAC/HAL Multirole Transport Aircraft", "valeur": "2017"}
+{"entite": "UTVA-75", "valeur": "1976"}
+{"entite": "V-22 Osprey", "valeur": "1989"}
+{"entite": "Vautour II", "valeur": "1952"}
+{"entite": "Vedette", "valeur": "1924"}
+{"entite": "Vertol H-21", "valeur": "1952"}
+{"entite": "Vickers F.B.5", "valeur": "1914"}
+{"entite": "Vickers Valiant", "valeur": "1951"}
+{"entite": "Vickers Vanguard", "valeur": "1959"}
+{"entite": "Vickers VC10", "valeur": "1962"}
+{"entite": "Vickers Viking", "valeur": "1945"}
+{"entite": "Vickers Vildebeest", "valeur": "1928"}
+{"entite": "Vickers Vimy", "valeur": "1917"}
+{"entite": "Vickers Virginia", "valeur": "1922"}
+{"entite": "Vickers Viscount", "valeur": "1948"}
+{"entite": "Vickers Wellesley", "valeur": "1935"}
+{"entite": "Vickers Wellington", "valeur": "1936"}
+{"entite": "Vought F-8 Crusader", "valeur": "1955"}
+{"entite": "Vought F6U Pirate", "valeur": "1946"}
+{"entite": "Vought F7U Cutlass", "valeur": "1948"}
+{"entite": "Vought OS2U Kingfisher", "valeur": "1938"}
+{"entite": "Vultee A-31 Vengeance", "valeur": "1941"}
+{"entite": "Vultee BT-13", "valeur": "1939"}
+{"entite": "Vultee V-11", "valeur": "1935"}
+{"entite": "WA-40", "valeur": "1959"}
+{"entite": "Wapiti", "valeur": "1927"}
+{"entite": "Wassmer Javelot", "valeur": "1956"}
+{"entite": "Wassmer WA-26 Squale", "valeur": "1967"}
+{"entite": "Wessex", "valeur": "1958"}
+{"entite": "Westland Lysander", "valeur": "1936"}
+{"entite": "Westland Wasp", "valeur": "1962"}
+{"entite": "Whitley", "valeur": "1936"}
+{"entite": "Widgeon", "valeur": "1924"}
+{"entite": "Woomera", "valeur": "1941"}
+{"entite": "Wright Planeur 1902", "valeur": "1902"}
+{"entite": "WS-61 Sea King", "valeur": "1969"}
+{"entite": "X-32 Bekas", "valeur": "1993"}
+{"entite": "X-47", "valeur": "2003"}
+{"entite": "Xian H-6", "valeur": "1955"}
+{"entite": "Xian JH-7", "valeur": "1988"}
+{"entite": "Xian MA60", "valeur": "2000"}
+{"entite": "XT3D", "valeur": "1931"}
+{"entite": "Y-7", "valeur": "1970"}
+{"entite": "Yak-1", "valeur": "1940"}
+{"entite": "Yak-12", "valeur": "1946"}
+{"entite": "Yak-18", "valeur": "1946"}
+{"entite": "Yak-25", "valeur": "1952"}
+{"entite": "Yak-28", "valeur": "1958"}
+{"entite": "Yak-38", "valeur": "1971"}
+{"entite": "Yakovlev Yak-17", "valeur": "1947"}
+{"entite": "Yakovlev Yak-23", "valeur": "1947"}
+{"entite": "Yakovlev Yak-3", "valeur": "1943"}
+{"entite": "Yakovlev Yak-40", "valeur": "1966"}
+{"entite": "Yakovlev Yak-42", "valeur": "1975"}
+{"entite": "Yakovlev Yak-52", "valeur": "1976"}
+{"entite": "Yakovlev Yak-7", "valeur": "1940"}
+{"entite": "Yakovlev Yak-9", "valeur": "1942"}
+{"entite": "Ye-150", "valeur": "1961"}
+{"entite": "Yermolaïev Yer-2", "valeur": "1940"}
+{"entite": "Z.1007 Alcione", "valeur": "1937"}
+{"entite": "Z-42", "valeur": "1967"}
+{"entite": "Z-5", "valeur": "1959"}
+{"entite": "Z-50", "valeur": "1975"}
+{"entite": "Z-9", "valeur": "1981"}
+{"entite": "Zeppelin-Staaken R", "valeur": "1915"}
+{"entite": "Zlin Z-26 Trener", "valeur": "1947"}
+{"entite": "Zlin Z-37 Čmelák", "valeur": "1963"}
+{"entite": "Zlín Z 43", "valeur": "1968"}
+{"entite": "Zuni", "valeur": "1976"}

@@ -1,0 +1,43 @@
+{"_relation": "genre_grammatical_langue", "_categorie": "convention", "_source": "Claude (connaissances entraînées) — présence d'un genre grammatical (prototypes ; classes nominales exclues)", "_articles": true}
+{"entite": "allemand", "valeur": "avec genre grammatical"}
+{"entite": "anglais", "valeur": "sans genre grammatical"}
+{"entite": "arabe", "valeur": "avec genre grammatical"}
+{"entite": "basque", "valeur": "sans genre grammatical"}
+{"entite": "bulgare", "valeur": "avec genre grammatical"}
+{"entite": "catalan", "valeur": "avec genre grammatical"}
+{"entite": "coréen", "valeur": "sans genre grammatical"}
+{"entite": "croate", "valeur": "avec genre grammatical"}
+{"entite": "danois", "valeur": "avec genre grammatical"}
+{"entite": "espagnol", "valeur": "avec genre grammatical"}
+{"entite": "estonien", "valeur": "sans genre grammatical"}
+{"entite": "finnois", "valeur": "sans genre grammatical"}
+{"entite": "français", "valeur": "avec genre grammatical"}
+{"entite": "galicien", "valeur": "avec genre grammatical"}
+{"entite": "grec ancien", "valeur": "avec genre grammatical"}
+{"entite": "grec moderne", "valeur": "avec genre grammatical"}
+{"entite": "hébreu", "valeur": "avec genre grammatical"}
+{"entite": "hindi", "valeur": "avec genre grammatical"}
+{"entite": "hongrois", "valeur": "sans genre grammatical"}
+{"entite": "islandais", "valeur": "avec genre grammatical"}
+{"entite": "italien", "valeur": "avec genre grammatical"}
+{"entite": "japonais", "valeur": "sans genre grammatical"}
+{"entite": "latin", "valeur": "avec genre grammatical"}
+{"entite": "letton", "valeur": "avec genre grammatical"}
+{"entite": "lituanien", "valeur": "avec genre grammatical"}
+{"entite": "macédonien", "valeur": "avec genre grammatical"}
+{"entite": "mandarin", "valeur": "sans genre grammatical"}
+{"entite": "néerlandais", "valeur": "avec genre grammatical"}
+{"entite": "norvégien", "valeur": "avec genre grammatical"}
+{"entite": "occitan", "valeur": "avec genre grammatical"}
+{"entite": "persan", "valeur": "sans genre grammatical"}
+{"entite": "polonais", "valeur": "avec genre grammatical"}
+{"entite": "portugais", "valeur": "avec genre grammatical"}
+{"entite": "roumain", "valeur": "avec genre grammatical"}
+{"entite": "russe", "valeur": "avec genre grammatical"}
+{"entite": "serbe", "valeur": "avec genre grammatical"}
+{"entite": "slovaque", "valeur": "avec genre grammatical"}
+{"entite": "slovène", "valeur": "avec genre grammatical"}
+{"entite": "suédois", "valeur": "avec genre grammatical"}
+{"entite": "turc", "valeur": "sans genre grammatical"}
+{"entite": "ukrainien", "valeur": "avec genre grammatical"}
+{"entite": "vietnamien", "valeur": "sans genre grammatical"}

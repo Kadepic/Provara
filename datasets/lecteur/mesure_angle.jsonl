@@ -1,0 +1,5 @@
+{"_relation": "mesure_angle", "_categorie": "convention", "_source": "géométrie élémentaire (type d'angle -> mesure)", "_articles": true}
+{"entite": "angle droit", "valeur": "90°"}
+{"entite": "angle nul", "valeur": "0°"}
+{"entite": "angle plat", "valeur": "180°"}
+{"entite": "angle plein", "valeur": "360°"}

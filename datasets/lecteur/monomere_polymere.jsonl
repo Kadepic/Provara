@@ -1,0 +1,7 @@
+{"_relation": "monomere_polymere", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (monomère d'un polymère biologique ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "ADN", "valeur": "nucléotide"}
+{"entite": "amidon", "valeur": "glucose"}
+{"entite": "ARN", "valeur": "nucléotide"}
+{"entite": "cellulose", "valeur": "glucose"}
+{"entite": "glycogène", "valeur": "glucose"}
+{"entite": "protéine", "valeur": "acide aminé"}

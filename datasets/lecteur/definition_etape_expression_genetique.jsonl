@@ -1,0 +1,4 @@
+{"_relation": "definition_etape_expression_genetique", "_categorie": "physique", "_source": "Modèle (Claude) — biologie moléculaire textbook curée (étape -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "réplication", "valeur": "copie de l'ADN"}
+{"entite": "traduction", "valeur": "synthèse d'une protéine à partir de l'ARN messager"}
+{"entite": "transcription", "valeur": "synthèse d'ARN à partir de l'ADN"}

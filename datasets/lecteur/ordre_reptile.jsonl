@@ -1,0 +1,43 @@
+{"_relation": "ordre_reptile", "_categorie": "physique", "_source": "Modèle (Claude) — herpétologie textbook curée (ordre de reptile ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "agame", "valeur": "squamate"}
+{"entite": "alligator", "valeur": "crocodilien"}
+{"entite": "anaconda", "valeur": "squamate"}
+{"entite": "anolis", "valeur": "squamate"}
+{"entite": "basilic", "valeur": "squamate"}
+{"entite": "boa", "valeur": "squamate"}
+{"entite": "caïman", "valeur": "crocodilien"}
+{"entite": "caméléon", "valeur": "squamate"}
+{"entite": "caouanne", "valeur": "chélonien"}
+{"entite": "cistude", "valeur": "chélonien"}
+{"entite": "cobra royal", "valeur": "squamate"}
+{"entite": "couleuvre", "valeur": "squamate"}
+{"entite": "crocodile du Nil", "valeur": "crocodilien"}
+{"entite": "crotale", "valeur": "squamate"}
+{"entite": "dragon barbu", "valeur": "squamate"}
+{"entite": "émyde", "valeur": "chélonien"}
+{"entite": "faux-gavial", "valeur": "crocodilien"}
+{"entite": "gavial", "valeur": "crocodilien"}
+{"entite": "gecko", "valeur": "squamate"}
+{"entite": "héloderme", "valeur": "squamate"}
+{"entite": "iguane", "valeur": "squamate"}
+{"entite": "lézard", "valeur": "squamate"}
+{"entite": "lézard des murailles", "valeur": "squamate"}
+{"entite": "lézard vert", "valeur": "squamate"}
+{"entite": "mamba", "valeur": "squamate"}
+{"entite": "matamata", "valeur": "chélonien"}
+{"entite": "orvet", "valeur": "squamate"}
+{"entite": "python", "valeur": "squamate"}
+{"entite": "scinque", "valeur": "squamate"}
+{"entite": "seps", "valeur": "squamate"}
+{"entite": "serpent", "valeur": "squamate"}
+{"entite": "tarente", "valeur": "squamate"}
+{"entite": "tortue d'Hermann", "valeur": "chélonien"}
+{"entite": "tortue géante", "valeur": "chélonien"}
+{"entite": "tortue grecque", "valeur": "chélonien"}
+{"entite": "tortue luth", "valeur": "chélonien"}
+{"entite": "tortue marine", "valeur": "chélonien"}
+{"entite": "tortue terrestre", "valeur": "chélonien"}
+{"entite": "trionyx", "valeur": "chélonien"}
+{"entite": "varan", "valeur": "squamate"}
+{"entite": "varan de Komodo", "valeur": "squamate"}
+{"entite": "vipère", "valeur": "squamate"}

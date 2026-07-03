@@ -1,0 +1,6 @@
+{"_relation": "role_organe_digestif", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (organe digestif -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "estomac", "valeur": "digestion des protéines"}
+{"entite": "foie", "valeur": "production de la bile"}
+{"entite": "gros intestin", "valeur": "absorption de l'eau"}
+{"entite": "intestin grêle", "valeur": "absorption des nutriments"}
+{"entite": "pancréas", "valeur": "production d'enzymes digestives"}

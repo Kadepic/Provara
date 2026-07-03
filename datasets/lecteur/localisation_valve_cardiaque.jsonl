@@ -1,0 +1,5 @@
+{"_relation": "localisation_valve_cardiaque", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie cardiaque textbook curée (valve -> localisation ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "valve aortique", "valeur": "à la sortie du ventricule gauche"}
+{"entite": "valve mitrale", "valeur": "entre l'oreillette et le ventricule gauche"}
+{"entite": "valve pulmonaire", "valeur": "à la sortie du ventricule droit"}
+{"entite": "valve tricuspide", "valeur": "entre l'oreillette et le ventricule droit"}

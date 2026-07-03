@@ -1,0 +1,36 @@
+{"_relation": "type_cellule", "_categorie": "physique", "_source": "Modèle (Claude) — biologie cellulaire textbook curée (procaryote/eucaryote ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amibe", "valeur": "eucaryote"}
+{"entite": "bacille de Koch", "valeur": "procaryote"}
+{"entite": "cellule épithéliale", "valeur": "eucaryote"}
+{"entite": "cellule musculaire", "valeur": "eucaryote"}
+{"entite": "cellule végétale", "valeur": "eucaryote"}
+{"entite": "cyanobactérie", "valeur": "procaryote"}
+{"entite": "entérocoque", "valeur": "procaryote"}
+{"entite": "Escherichia coli", "valeur": "procaryote"}
+{"entite": "euglène", "valeur": "eucaryote"}
+{"entite": "fibroblaste", "valeur": "eucaryote"}
+{"entite": "globule blanc", "valeur": "eucaryote"}
+{"entite": "halobactérie", "valeur": "procaryote"}
+{"entite": "Helicobacter pylori", "valeur": "procaryote"}
+{"entite": "hépatocyte", "valeur": "eucaryote"}
+{"entite": "levure de boulanger", "valeur": "eucaryote"}
+{"entite": "Listeria", "valeur": "procaryote"}
+{"entite": "lymphocyte", "valeur": "eucaryote"}
+{"entite": "méningocoque", "valeur": "procaryote"}
+{"entite": "méthanogène", "valeur": "procaryote"}
+{"entite": "moisissure", "valeur": "eucaryote"}
+{"entite": "Mycobacterium tuberculosis", "valeur": "procaryote"}
+{"entite": "neurone", "valeur": "eucaryote"}
+{"entite": "ostéoblaste", "valeur": "eucaryote"}
+{"entite": "ostéocyte", "valeur": "eucaryote"}
+{"entite": "ovule", "valeur": "eucaryote"}
+{"entite": "paramécie", "valeur": "eucaryote"}
+{"entite": "Plasmodium", "valeur": "eucaryote"}
+{"entite": "pneumocoque", "valeur": "procaryote"}
+{"entite": "Pseudomonas aeruginosa", "valeur": "procaryote"}
+{"entite": "salmonelle", "valeur": "procaryote"}
+{"entite": "spermatozoïde", "valeur": "eucaryote"}
+{"entite": "staphylocoque", "valeur": "procaryote"}
+{"entite": "streptocoque", "valeur": "procaryote"}
+{"entite": "trypanosome", "valeur": "eucaryote"}
+{"entite": "Vibrio cholerae", "valeur": "procaryote"}

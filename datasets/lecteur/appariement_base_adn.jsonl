@@ -1,0 +1,5 @@
+{"_relation": "appariement_base_adn", "_categorie": "physique", "_source": "Modèle (Claude) — biologie moléculaire textbook curée (appariement Watson-Crick ADN ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "adénine", "valeur": "thymine"}
+{"entite": "cytosine", "valeur": "guanine"}
+{"entite": "guanine", "valeur": "cytosine"}
+{"entite": "thymine", "valeur": "adénine"}

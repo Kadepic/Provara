@@ -1,0 +1,6 @@
+{"_relation": "definition_classe_vertebre", "_categorie": "physique", "_source": "Modèle (Claude) — zoologie textbook curée (classe de vertébré -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amphibien", "valeur": "vertébré à peau nue"}
+{"entite": "mammifère", "valeur": "vertébré à poils qui allaite ses petits"}
+{"entite": "oiseau", "valeur": "vertébré à plumes"}
+{"entite": "poisson", "valeur": "vertébré aquatique à branchies"}
+{"entite": "reptile", "valeur": "vertébré à écailles"}

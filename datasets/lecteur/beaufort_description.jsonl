@@ -1,0 +1,14 @@
+{"_relation": "beaufort_description", "_categorie": "convention", "_source": "échelle de Beaufort officielle (degré -> appellation)", "_articles": false}
+{"entite": "0", "valeur": "calme"}
+{"entite": "1", "valeur": "très légère brise"}
+{"entite": "10", "valeur": "tempête"}
+{"entite": "11", "valeur": "violente tempête"}
+{"entite": "12", "valeur": "ouragan"}
+{"entite": "2", "valeur": "légère brise"}
+{"entite": "3", "valeur": "petite brise"}
+{"entite": "4", "valeur": "jolie brise"}
+{"entite": "5", "valeur": "bonne brise"}
+{"entite": "6", "valeur": "vent frais"}
+{"entite": "7", "valeur": "grand frais"}
+{"entite": "8", "valeur": "coup de vent"}
+{"entite": "9", "valeur": "fort coup de vent"}

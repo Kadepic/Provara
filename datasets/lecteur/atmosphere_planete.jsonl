@@ -1,0 +1,11 @@
+{"_relation": "atmosphere_planete", "_categorie": "physique", "_source": "astronomie de référence (corps -> atmosphère significative oui/non)", "_articles": true}
+{"entite": "jupiter", "valeur": "oui"}
+{"entite": "lune", "valeur": "non"}
+{"entite": "mars", "valeur": "oui"}
+{"entite": "mercure", "valeur": "non"}
+{"entite": "neptune", "valeur": "oui"}
+{"entite": "saturne", "valeur": "oui"}
+{"entite": "terre", "valeur": "oui"}
+{"entite": "titan", "valeur": "oui"}
+{"entite": "uranus", "valeur": "oui"}
+{"entite": "vénus", "valeur": "oui"}

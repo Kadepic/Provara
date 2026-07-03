@@ -1,0 +1,4 @@
+{"_relation": "definition_cellule_reproductrice", "_categorie": "physique", "_source": "Modèle (Claude) — biologie textbook curée (cellule reproductrice -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "ovule", "valeur": "gamète femelle"}
+{"entite": "spermatozoïde", "valeur": "gamète mâle"}
+{"entite": "zygote", "valeur": "cellule issue de la fécondation"}

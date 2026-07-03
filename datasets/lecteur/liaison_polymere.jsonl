@@ -1,0 +1,5 @@
+{"_relation": "liaison_polymere", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (macromolécule -> liaison ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "acide nucléique", "valeur": "liaison phosphodiester"}
+{"entite": "polysaccharide", "valeur": "liaison glycosidique"}
+{"entite": "protéine", "valeur": "liaison peptidique"}
+{"entite": "triglycéride", "valeur": "liaison ester"}

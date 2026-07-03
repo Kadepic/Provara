@@ -1,0 +1,2359 @@
+{"_relation": "pays_volcan", "_categorie": "physique", "_source": "Wikidata/QLever — pays_volcan P17, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "Aag", "valeur": "Russie"}
+{"entite": "Abu", "valeur": "Japon"}
+{"entite": "Abu Oreum", "valeur": "Corée du Sud"}
+{"entite": "Acamarachi", "valeur": "Chili"}
+{"entite": "Acatenango", "valeur": "Guatemala"}
+{"entite": "Adoua", "valeur": "Éthiopie"}
+{"entite": "Agrigan Island", "valeur": "États-Unis"}
+{"entite": "Agua de Pau", "valeur": "Portugal"}
+{"entite": "Aguas Calientes", "valeur": "Chili"}
+{"entite": "Aguilera", "valeur": "Chili"}
+{"entite": "Agung", "valeur": "Indonésie"}
+{"entite": "Ahyi", "valeur": "États-Unis"}
+{"entite": "Aiguanegra volcano", "valeur": "Espagne"}
+{"entite": "Ajdahak", "valeur": "Arménie"}
+{"entite": "Ajusco", "valeur": "Mexique"}
+{"entite": "Akademia Naouk", "valeur": "Russie"}
+{"entite": "Akhtang", "valeur": "Russie"}
+{"entite": "Akhtanizovskaya vomit", "valeur": "Russie"}
+{"entite": "Aknasar", "valeur": "Arménie"}
+{"entite": "Aku Volcano", "valeur": "Russie"}
+{"entite": "Akyarlar", "valeur": "Turquie"}
+{"entite": "Alagogshak", "valeur": "États-Unis"}
+{"entite": "Alaïd", "valeur": "Russie"}
+{"entite": "Alamagan Stratovolcano - Permanent Geothermic Activity", "valeur": "États-Unis"}
+{"entite": "Alayta", "valeur": "Éthiopie"}
+{"entite": "Albangaeoreum", "valeur": "Corée du Sud"}
+{"entite": "Albert Park Volcano", "valeur": "Nouvelle-Zélande"}
+{"entite": "Alcedo", "valeur": "Équateur"}
+{"entite": "Āliamanu Crater", "valeur": "États-Unis"}
+{"entite": "Aliso", "valeur": "Équateur"}
+{"entite": "Alney", "valeur": "Russie"}
+{"entite": "Alngey", "valeur": "Russie"}
+{"entite": "Altar", "valeur": "Équateur"}
+{"entite": "Aluchin", "valeur": "Russie"}
+{"entite": "Aluto", "valeur": "Éthiopie"}
+{"entite": "Alutu", "valeur": "Éthiopie"}
+{"entite": "Amak", "valeur": "États-Unis"}
+{"entite": "Amasing", "valeur": "Indonésie"}
+{"entite": "Ambang", "valeur": "Indonésie"}
+{"entite": "Ambano", "valeur": "Érythrée"}
+{"entite": "Ambitle", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Amboy Crater", "valeur": "États-Unis"}
+{"entite": "Amorong", "valeur": "Philippines"}
+{"entite": "Ampato", "valeur": "Pérou"}
+{"entite": "Amsterdam Volcano", "valeur": "France"}
+{"entite": "Ananea Grande", "valeur": "Pérou"}
+{"entite": "Anaun", "valeur": "Russie"}
+{"entite": "Andagua volcanic field", "valeur": "Pérou"}
+{"entite": "Andrews Volcano", "valeur": "Kenya"}
+{"entite": "Aneityum", "valeur": "Vanuatu"}
+{"entite": "Ankaratra", "valeur": "Madagascar"}
+{"entite": "Antaninaomby", "valeur": "Madagascar"}
+{"entite": "Antillanca", "valeur": "Chili"}
+{"entite": "Antisana", "valeur": "Équateur"}
+{"entite": "Antofalla", "valeur": "Argentine"}
+{"entite": "Antsiferov", "valeur": "Russie"}
+{"entite": "Antsiferov Volcano", "valeur": "Russie"}
+{"entite": "Antuco", "valeur": "Chili"}
+{"entite": "Anvil Peak", "valeur": "États-Unis"}
+{"entite": "Aoba", "valeur": "Vanuatu"}
+{"entite": "Aogashima", "valeur": "Japon"}
+{"entite": "Aracar", "valeur": "Argentine"}
+{"entite": "Ardoukôba", "valeur": "Djibouti"}
+{"entite": "Arens-Berg", "valeur": "Allemagne"}
+{"entite": "Arik volcano", "valeur": "Russie"}
+{"entite": "Arintica", "valeur": "Chili"}
+{"entite": "Arizaro", "valeur": "Argentine"}
+{"entite": "Arjuno-Welirang", "valeur": "Indonésie"}
+{"entite": "Ármannsfell", "valeur": "Islande"}
+{"entite": "Arshan", "valeur": "République populaire de Chine"}
+{"entite": "Arteni", "valeur": "Arménie"}
+{"entite": "Asacha", "valeur": "Russie"}
+{"entite": "Asama Yama", "valeur": "Japon"}
+{"entite": "Ascension", "valeur": "Royaume-Uni"}
+{"entite": "Askja", "valeur": "Islande"}
+{"entite": "Ata Caldera", "valeur": "Japon"}
+{"entite": "Atacazo", "valeur": "Équateur"}
+{"entite": "Atsonupuri", "valeur": "Russie"}
+{"entite": "Aucanquilcha", "valeur": "Chili"}
+{"entite": "Auch", "valeur": "France"}
+{"entite": "Audili", "valeur": "Érythrée"}
+{"entite": "Avatchinski", "valeur": "Russie"}
+{"entite": "Awu", "valeur": "Indonésie"}
+{"entite": "Ayelu", "valeur": "Éthiopie"}
+{"entite": "Aynelkan", "valeur": "Russie"}
+{"entite": "Azufral", "valeur": "Colombie"}
+{"entite": "Babuyan Claro", "valeur": "Philippines"}
+{"entite": "Bac de les Tries volcano", "valeur": "Espagne"}
+{"entite": "Backenberg", "valeur": "Allemagne"}
+{"entite": "Bagabag", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Bakening", "valeur": "Russie"}
+{"entite": "Baker Butte", "valeur": "États-Unis"}
+{"entite": "Bal Haf", "valeur": "Yémen"}
+{"entite": "Balagan-Tas", "valeur": "Russie"}
+{"entite": "Baluran", "valeur": "Indonésie"}
+{"entite": "Balut", "valeur": "Philippines"}
+{"entite": "Bam", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "banc de Monaco", "valeur": "Portugal"}
+{"entite": "Bangaeoreum", "valeur": "Corée du Sud"}
+{"entite": "Banne d'Ordanche", "valeur": "France"}
+{"entite": "Bárðarbunga", "valeur": "Islande"}
+{"entite": "Baranovsky volcano (Krasnoyarsk region)", "valeur": "Russie"}
+{"entite": "Baransky", "valeur": "Russie"}
+{"entite": "Barkhatnaya", "valeur": "Russie"}
+{"entite": "Barraca volcano", "valeur": "Espagne"}
+{"entite": "Barú", "valeur": "Panama"}
+{"entite": "Barujari", "valeur": "Indonésie"}
+{"entite": "Bas Dong Nai", "valeur": "Vietnam"}
+{"entite": "Batapona Mountain", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Batea Mahuida Volcano", "valeur": "Argentine"}
+{"entite": "Batu Tara", "valeur": "Indonésie"}
+{"entite": "Batur", "valeur": "Indonésie"}
+{"entite": "Bear (volcano in Kamchatka)", "valeur": "Russie"}
+{"entite": "Beerenberg", "valeur": "Norvège"}
+{"entite": "Behm Canal-Rudyerd Bay", "valeur": "États-Unis"}
+{"entite": "Bell", "valeur": "Russie"}
+{"entite": "Bellerberg volcano", "valeur": "Allemagne"}
+{"entite": "Bely", "valeur": "Russie"}
+{"entite": "Bem Canal Radyard Bay", "valeur": "États-Unis"}
+{"entite": "Ben Lomond", "valeur": "Nouvelle-Zélande"}
+{"entite": "Benbow", "valeur": "Vanuatu"}
+{"entite": "Benham Plateau", "valeur": "Philippines"}
+{"entite": "Beonneororeum", "valeur": "Corée du Sud"}
+{"entite": "Berg Volcano", "valeur": "Russie"}
+{"entite": "Beru", "valeur": "Éthiopie"}
+{"entite": "Berutarube", "valeur": "Russie"}
+{"entite": "Bibinoi Hill", "valeur": "Indonésie"}
+{"entite": "Big Ben", "valeur": "Australie"}
+{"entite": "Big Kytepana", "valeur": "Russie"}
+{"entite": "Big (volcano)", "valeur": "Russie"}
+{"entite": "Biliran", "valeur": "Philippines"}
+{"entite": "Billy Mitchell", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Bilstein", "valeur": "Allemagne"}
+{"entite": "Bingushi Yama", "valeur": "Japon"}
+{"entite": "Bir Borhut", "valeur": "Yémen"}
+{"entite": "Biu Plateau", "valeur": "Nigeria"}
+{"entite": "Black Butte", "valeur": "États-Unis"}
+{"entite": "Black Butte Crater Lava Field", "valeur": "États-Unis"}
+{"entite": "Black Rock Butte", "valeur": "États-Unis"}
+{"entite": "Black Rock Desert volcanic field", "valeur": "États-Unis"}
+{"entite": "Bláhnjúkur", "valeur": "Islande"}
+{"entite": "Blanca, Laguna", "valeur": "Argentine"}
+{"entite": "Blaue Kuppe", "valeur": "Allemagne"}
+{"entite": "Bliznetsy", "valeur": "Russie"}
+{"entite": "Blue Lake Crater", "valeur": "États-Unis"}
+{"entite": "Blup Blup", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Bobrof Volcano", "valeur": "États-Unis"}
+{"entite": "Bogachevsky", "valeur": "Russie"}
+{"entite": "Bogoria", "valeur": "Kenya"}
+{"entite": "Bogoslof Volcano", "valeur": "États-Unis"}
+{"entite": "Bohdan Khmelnitski", "valeur": "Russie"}
+{"entite": "Bolshaya Ipelka", "valeur": "Russie"}
+{"entite": "Bolshe-Bannaya", "valeur": "Russie"}
+{"entite": "Bolshoi Chekchebonai", "valeur": "Russie"}
+{"entite": "Bolshoi Payalpan", "valeur": "Russie"}
+{"entite": "Bolshoy Kekuknaysky Volcano", "valeur": "Russie"}
+{"entite": "Bolshoy Semyachik", "valeur": "Russie"}
+{"entite": "Bongabti", "valeur": "Russie"}
+{"entite": "Bongapchi", "valeur": "Russie"}
+{"entite": "Boomerang Seamount", "valeur": "France"}
+{"entite": "Borawli", "valeur": "Éthiopie"}
+{"entite": "Bordeira (Fogo)", "valeur": "Cap-Vert"}
+{"entite": "Bořeň", "valeur": "Tchéquie"}
+{"entite": "Boreumioreum", "valeur": "Corée du Sud"}
+{"entite": "Bouillante Chain", "valeur": "France"}
+{"entite": "Bratan", "valeur": "Indonésie"}
+{"entite": "Brava", "valeur": "Cap-Vert"}
+{"entite": "Brennisteinsalda", "valeur": "Islande"}
+{"entite": "Brennisteinsfjöll", "valeur": "Islande"}
+{"entite": "Bromo", "valeur": "Indonésie"}
+{"entite": "Brontona Island", "valeur": "Russie"}
+{"entite": "Brothers volcano", "valeur": "Nouvelle-Zélande"}
+{"entite": "Brouton", "valeur": "Russie"}
+{"entite": "Buduli", "valeur": "Russie"}
+{"entite": "Bühl", "valeur": "Allemagne"}
+{"entite": "Bukit Daun", "valeur": "Indonésie"}
+{"entite": "Bukit Lumut Balai", "valeur": "Indonésie"}
+{"entite": "Bukovik", "valeur": "Macédoine du Nord"}
+{"entite": "Buldir Volcano", "valeur": "États-Unis"}
+{"entite": "Bulganak field of mud volcanoes", "valeur": "Ukraine"}
+{"entite": "Bulgeunoreum", "valeur": "Corée du Sud"}
+{"entite": "Bunanya", "valeur": "Russie"}
+{"entite": "Búrfell", "valeur": "Islande"}
+{"entite": "Burko", "valeur": "Tanzanie"}
+{"entite": "Burlyaschy", "valeur": "Russie"}
+{"entite": "Bus-Obo", "valeur": "Mongolie"}
+{"entite": "Butak", "valeur": "Indonésie"}
+{"entite": "Butay", "valeur": "Philippines"}
+{"entite": "Buzzard Creek", "valeur": "États-Unis"}
+{"entite": "Byeonggosoreum", "valeur": "Corée du Sud"}
+{"entite": "Ca l’Isidret volcano", "valeur": "Espagne"}
+{"entite": "Cabalían", "valeur": "Philippines"}
+{"entite": "Cabaray", "valeur": "Bolivie"}
+{"entite": "Cabezo Beaza", "valeur": "Espagne"}
+{"entite": "Cabezo Negro de Zeneta", "valeur": "Espagne"}
+{"entite": "Cabriolers volcanoes", "valeur": "Espagne"}
+{"entite": "Cagua", "valeur": "Philippines"}
+{"entite": "Caichinque", "valeur": "Chili"}
+{"entite": "Calbuco", "valeur": "Chili"}
+{"entite": "caldeira d'Aira", "valeur": "Japon"}
+{"entite": "caldeira de l'Agrio", "valeur": "Argentine"}
+{"entite": "Caldeira de Pino Hachado", "valeur": "Argentine"}
+{"entite": "caldeira de Yellowstone", "valeur": "États-Unis"}
+{"entite": "caldeira des vallées", "valeur": "États-Unis"}
+{"entite": "caldeira Okmok", "valeur": "États-Unis"}
+{"entite": "Caldeirão do Corvo", "valeur": "Portugal"}
+{"entite": "Caldera de La Garita", "valeur": "États-Unis"}
+{"entite": "Caldera de las Cañadas", "valeur": "Espagne"}
+{"entite": "Caldera Volcano", "valeur": "Mexique"}
+{"entite": "La Caldereta", "valeur": "Espagne"}
+{"entite": "Callaqui", "valeur": "Chili"}
+{"entite": "Calypso Vents", "valeur": "Nouvelle-Zélande"}
+{"entite": "Camiguin de Babuyanes", "valeur": "Philippines"}
+{"entite": "Camiguin Volcano", "valeur": "Philippines"}
+{"entite": "Camp dels Ninots", "valeur": "Espagne"}
+{"entite": "Camp Hill", "valeur": "Canada"}
+{"entite": "Campana", "valeur": "Philippines"}
+{"entite": "Can Tià vulcano", "valeur": "Espagne"}
+{"entite": "Cancajanag", "valeur": "Philippines"}
+{"entite": "Capelinhos", "valeur": "Portugal"}
+{"entite": "Carrán-Los Venados", "valeur": "Chili"}
+{"entite": "Carrizozo Malpais", "valeur": "États-Unis"}
+{"entite": "Casa Colorada", "valeur": "Argentine"}
+{"entite": "Casablanca", "valeur": "Chili"}
+{"entite": "Casiri", "valeur": "Pérou"}
+{"entite": "Casitahua", "valeur": "Équateur"}
+{"entite": "Castle Hill of Verpelét", "valeur": "Hongrie"}
+{"entite": "Cay", "valeur": "Chili"}
+{"entite": "Cayambe", "valeur": "Équateur"}
+{"entite": "Cayutué-La Viguería", "valeur": "Chili"}
+{"entite": "Ccarhuarazo", "valeur": "Pérou"}
+{"entite": "Central Island", "valeur": "Kenya"}
+{"entite": "Central Semyachik", "valeur": "Russie"}
+{"entite": "Central Skåne Volcanic Province", "valeur": "Suède"}
+{"entite": "Central (volcano)", "valeur": "Russie"}
+{"entite": "Cerro Alto del Volcán", "valeur": "Argentine"}
+{"entite": "Cerro Alumbrera", "valeur": "Argentine"}
+{"entite": "Cerro Antzitacuaro", "valeur": "Mexique"}
+{"entite": "Cerro Asososca", "valeur": "Nicaragua"}
+{"entite": "Cerro Auquihuato", "valeur": "Pérou"}
+{"entite": "Cerro Azul", "valeur": "Chili"}
+{"entite": "Cerro Bayo", "valeur": "Chili"}
+{"entite": "Cerro Bravo", "valeur": "Colombie"}
+{"entite": "Cerro Cachio", "valeur": "Salvador"}
+{"entite": "Cerro Catzicapacuaritiro", "valeur": "Mexique"}
+{"entite": "Cerro Chaxas", "valeur": "Chili"}
+{"entite": "Cerro Chino", "valeur": "Mexique"}
+{"entite": "Cerro Ciricuti", "valeur": "Mexique"}
+{"entite": "Cerro Colorado", "valeur": "Mexique"}
+{"entite": "Cerro Congo", "valeur": "Costa Rica"}
+{"entite": "Cerro Cono Fontana", "valeur": "Argentine"}
+{"entite": "Cerro Copitiro", "valeur": "Mexique"}
+{"entite": "Cerro de Afuera", "valeur": "Mexique"}
+{"entite": "Cerro de Apaneca", "valeur": "Salvador"}
+{"entite": "Cerro del Azufre", "valeur": "Chili"}
+{"entite": "Cerro del León", "valeur": "Chili"}
+{"entite": "Cerro el Aguila", "valeur": "Salvador"}
+{"entite": "Cerro El Cajete", "valeur": "Mexique"}
+{"entite": "Cerro El Chupadero", "valeur": "Mexique"}
+{"entite": "Cerro El Cohetero", "valeur": "Mexique"}
+{"entite": "Cerro El Colorado", "valeur": "Mexique"}
+{"entite": "Cerro El Costillón", "valeur": "Mexique"}
+{"entite": "Cerro El Derrumbadero", "valeur": "Mexique"}
+{"entite": "Cerro El Jabalí", "valeur": "Mexique"}
+{"entite": "Cerro El Llahuacuaro", "valeur": "Mexique"}
+{"entite": "Cerro El Molcajete", "valeur": "Mexique"}
+{"entite": "Cerro El Pacayal", "valeur": "Salvador"}
+{"entite": "Cerro El Puerto", "valeur": "Mexique"}
+{"entite": "Cerro El Rosario", "valeur": "Mexique"}
+{"entite": "Cerro El Taburete", "valeur": "Salvador"}
+{"entite": "Cerro Escalerilla", "valeur": "Mexique"}
+{"entite": "Cerro Estiladero", "valeur": "Mexique"}
+{"entite": "Cerro Grande", "valeur": "Mexique"}
+{"entite": "Cerro Huahuarua", "valeur": "Mexique"}
+{"entite": "Cerro Itzhuitz", "valeur": "Mexique"}
+{"entite": "Cerro Jicalmi", "valeur": "Mexique"}
+{"entite": "Cerro La Alberca", "valeur": "Mexique"}
+{"entite": "Cerro La Batea", "valeur": "Mexique"}
+{"entite": "Cerro La Mariposa", "valeur": "Guatemala"}
+{"entite": "Cerro La Pastoria", "valeur": "Mexique"}
+{"entite": "Cerro La Perita", "valeur": "Mexique"}
+{"entite": "Cerro La Tinaja", "valeur": "Mexique"}
+{"entite": "Cerro Las Varas", "valeur": "Mexique"}
+{"entite": "Cerro Las Vueltas", "valeur": "Mexique"}
+{"entite": "Cerro Las Yerbas", "valeur": "Mexique"}
+{"entite": "Cerro Los Pozos", "valeur": "Mexique"}
+{"entite": "Cerro Macá", "valeur": "Chili"}
+{"entite": "Cerro Machín", "valeur": "Colombie"}
+{"entite": "Cerro Mancira", "valeur": "Mexique"}
+{"entite": "Cerro Marquéz", "valeur": "Chili"}
+{"entite": "Cerro Mirador", "valeur": "Chili"}
+{"entite": "Cerro Morado", "valeur": "Argentine"}
+{"entite": "Cerro Morazurco", "valeur": "Colombie"}
+{"entite": "Cerro Nacimientos del Cazaredo", "valeur": "Argentine"}
+{"entite": "Cerro Negro", "valeur": "Argentine"}
+{"entite": "Cerro Negro de Mayasquer", "valeur": "Colombie"}
+{"entite": "Cerro Neptuno", "valeur": "Mexique"}
+{"entite": "Cerro Nicholson", "valeur": "Pérou"}
+{"entite": "Cerro Ordáz", "valeur": "Mexique"}
+{"entite": "Cerro Paniri", "valeur": "Chili"}
+{"entite": "Cerro Pario", "valeur": "Mexique"}
+{"entite": "Cerro Pizarro", "valeur": "Mexique"}
+{"entite": "Cerro Prieto", "valeur": "Mexique"}
+{"entite": "Cerro Rota", "valeur": "Nicaragua"}
+{"entite": "Cerro Santa María", "valeur": "Costa Rica"}
+{"entite": "Cerro Sapién", "valeur": "Mexique"}
+{"entite": "Cerro Singüil", "valeur": "Salvador"}
+{"entite": "Cerro Subida El Caracol", "valeur": "Mexique"}
+{"entite": "Cerro Tilarán", "valeur": "Costa Rica"}
+{"entite": "Cerro Tolar", "valeur": "Argentine"}
+{"entite": "Cerro Toloncha", "valeur": "Chili"}
+{"entite": "Cerro Torta", "valeur": "Argentine"}
+{"entite": "Cerro Tralihue", "valeur": "Chili"}
+{"entite": "Cerro Tujle", "valeur": "Chili"}
+{"entite": "Cerro Tumbiscatillo", "valeur": "Mexique"}
+{"entite": "Cerro Tumisa", "valeur": "Chili"}
+{"entite": "Cerro Tuzgle", "valeur": "Argentine"}
+{"entite": "Cerro Verde", "valeur": "Salvador"}
+{"entite": "Cerro Volado", "valeur": "Mexique"}
+{"entite": "Cerro Volcán el Molcajete", "valeur": "Mexique"}
+{"entite": "Cerro Volcán Grande", "valeur": "Argentine"}
+{"entite": "Cerro Volcán Overo", "valeur": "Argentine"}
+{"entite": "Cerros de Punguichay", "valeur": "Chili"}
+{"entite": "Čertí kopeček", "valeur": "Tchéquie"}
+{"entite": "Červená hora", "valeur": "Tchéquie"}
+{"entite": "Chabahar Mud Volcano", "valeur": "Iran"}
+{"entite": "Chachani", "valeur": "Pérou"}
+{"entite": "Chagulak Island", "valeur": "États-Unis"}
+{"entite": "chaîne Koʻolau", "valeur": "États-Unis"}
+{"entite": "Chaitén", "valeur": "Chili"}
+{"entite": "Chalpatan", "valeur": "Équateur"}
+{"entite": "champ volcanique de l'Itasy", "valeur": "Madagascar"}
+{"entite": "Chandragup", "valeur": "Pakistan"}
+{"entite": "Chaos Crags", "valeur": "États-Unis"}
+{"entite": "Chashakondzha", "valeur": "Russie"}
+{"entite": "château Fort", "valeur": "France"}
+{"entite": "Chato Aislado", "valeur": "Chili"}
+{"entite": "Chavycha Volcano", "valeur": "Russie"}
+{"entite": "Chebrit Ale", "valeur": "Éthiopie"}
+{"entite": "Chenmangoreum", "valeur": "Corée du Sud"}
+{"entite": "Cheonaoreum", "valeur": "Corée du Sud"}
+{"entite": "Chernogo", "valeur": "Russie"}
+{"entite": "Cherpuk Severny", "valeur": "Russie"}
+{"entite": "Chilgoreum", "valeur": "Corée du Sud"}
+{"entite": "Chiliques", "valeur": "Chili"}
+{"entite": "Chimborazo", "valeur": "Équateur"}
+{"entite": "China Hat", "valeur": "États-Unis"}
+{"entite": "Chineinane", "valeur": "Russie"}
+{"entite": "Chirinkotan", "valeur": "Russie"}
+{"entite": "Chirip", "valeur": "Russie"}
+{"entite": "Chise Nupuri", "valeur": "Japon"}
+{"entite": "Chiveloutch", "valeur": "Russie"}
+{"entite": "Chonco", "valeur": "Nicaragua"}
+{"entite": "Chopo Volcano", "valeur": "Costa Rica"}
+{"entite": "Choquelimpie", "valeur": "Chili"}
+{"entite": "Chyornaya Sopka", "valeur": "Russie"}
+{"entite": "Cinder Cliff", "valeur": "Canada"}
+{"entite": "Ciomad", "valeur": "Roumanie"}
+{"entite": "Ciremai", "valeur": "Indonésie"}
+{"entite": "Citerne", "valeur": "France"}
+{"entite": "Clark", "valeur": "Nouvelle-Zélande"}
+{"entite": "Clot de l'Omera volcano", "valeur": "Espagne"}
+{"entite": "Cobb Seamount", "valeur": "Canada"}
+{"entite": "Cocoa Crater", "valeur": "Canada"}
+{"entite": "Coffee Crater", "valeur": "Canada"}
+{"entite": "Cofre de Perote", "valeur": "Mexique"}
+{"entite": "Colachi", "valeur": "Chili"}
+{"entite": "Cold Bay Volcano", "valeur": "États-Unis"}
+{"entite": "Cole Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Colline de Camaldoli", "valeur": "Italie"}
+{"entite": "Colline Titovskaïa", "valeur": "Russie"}
+{"entite": "Colo", "valeur": "Indonésie"}
+{"entite": "Comadega volcano", "valeur": "Espagne"}
+{"entite": "Comondu-La Purisima", "valeur": "Mexique"}
+{"entite": "complexe volcanique de Dieng", "valeur": "Indonésie"}
+{"entite": "Concepción", "valeur": "Nicaragua"}
+{"entite": "Cone Glacier Volcano", "valeur": "Canada"}
+{"entite": "Cono Truncado", "valeur": "Argentine"}
+{"entite": "Conradi", "valeur": "Russie"}
+{"entite": "Copiapó", "valeur": "Chili"}
+{"entite": "Corcovado", "valeur": "Chili"}
+{"entite": "Cordón de Puntas Negras", "valeur": "Chili"}
+{"entite": "Cotacachi", "valeur": "Équateur"}
+{"entite": "Cotopaxi", "valeur": "Équateur"}
+{"entite": "Cova", "valeur": "Cap-Vert"}
+{"entite": "Crack in the Ground", "valeur": "États-Unis"}
+{"entite": "Crater Basalt Volcanic Field", "valeur": "Argentine"}
+{"entite": "Crater Hill", "valeur": "Nouvelle-Zélande"}
+{"entite": "Crater Jachcha Phia", "valeur": "Bolivie"}
+{"entite": "Crater Jiskha Phia", "valeur": "Bolivie"}
+{"entite": "Crater Mountain", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "cratère Caubet", "valeur": "France"}
+{"entite": "cratère Ducrot", "valeur": "France"}
+{"entite": "cratère Magne", "valeur": "France"}
+{"entite": "cratère Newberry", "valeur": "États-Unis"}
+{"entite": "cratère Patomsky", "valeur": "Russie"}
+{"entite": "cratère Roden", "valeur": "États-Unis"}
+{"entite": "Craters of the Moon", "valeur": "États-Unis"}
+{"entite": "crête de la Novara", "valeur": "France"}
+{"entite": "Crow Lagoon", "valeur": "Canada"}
+{"entite": "Cruz Quemada", "valeur": "Guatemala"}
+{"entite": "Cuicocha", "valeur": "Équateur"}
+{"entite": "Culma", "valeur": "Guatemala"}
+{"entite": "Cumbal", "valeur": "Colombie"}
+{"entite": "La Cumbre", "valeur": "Équateur"}
+{"entite": "Cumbre Vieja", "valeur": "Espagne"}
+{"entite": "Curacoa volcano", "valeur": "Tonga"}
+{"entite": "Daghil Liddola", "valeur": "Érythrée"}
+{"entite": "Daiichi-Amami Knoll", "valeur": "Japon"}
+{"entite": "Daikoku Seamount", "valeur": "États-Unis"}
+{"entite": "Daisen", "valeur": "Japon"}
+{"entite": "Dakataua", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Danan", "valeur": "Indonésie"}
+{"entite": "Dariganga Volcanic Field", "valeur": "Mongolie"}
+{"entite": "Darkot", "valeur": "Érythrée"}
+{"entite": "Darwin", "valeur": "Équateur"}
+{"entite": "Davidof Volcano", "valeur": "États-Unis"}
+{"entite": "Davis Lake volcanic field", "valeur": "États-Unis"}
+{"entite": "Deer Mountain", "valeur": "États-Unis"}
+{"entite": "Demon", "valeur": "Russie"}
+{"entite": "Dempo", "valeur": "Indonésie"}
+{"entite": "dépression de Tounka", "valeur": "Russie"}
+{"entite": "Descabezado Grande", "valeur": "Chili"}
+{"entite": "Desenberg", "valeur": "Allemagne"}
+{"entite": "Devil's Woodyard", "valeur": "Trinité-et-Tobago"}
+{"entite": "Devils Desk", "valeur": "États-Unis"}
+{"entite": "Didi Mepiskalo", "valeur": "Géorgie"}
+{"entite": "Didica Volcano", "valeur": "Philippines"}
+{"entite": "Dietzenley", "valeur": "Allemagne"}
+{"entite": "Dillon Cone", "valeur": "Nouvelle-Zélande"}
+{"entite": "djebel El Koudiate", "valeur": "Maroc"}
+{"entite": "djebel Habri", "valeur": "Maroc"}
+{"entite": "djebel Outgui", "valeur": "Maroc"}
+{"entite": "djebel Tamarrakoit", "valeur": "Maroc"}
+{"entite": "Djébel Teir", "valeur": "Yémen"}
+{"entite": "Dodubong", "valeur": "Corée du Sud"}
+{"entite": "Dofen", "valeur": "Éthiopie"}
+{"entite": "Dola", "valeur": "Érythrée"}
+{"entite": "Dolok Lubuk Raya", "valeur": "Indonésie"}
+{"entite": "Dolok Sibualbuali", "valeur": "Indonésie"}
+{"entite": "Doma Peaks", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Doña Juana", "valeur": "Colombie"}
+{"entite": "Dongmuroreum", "valeur": "Corée du Sud"}
+{"entite": "Doon Hill", "valeur": "Irlande"}
+{"entite": "Doraeoreum", "valeur": "Corée du Sud"}
+{"entite": "Dos Crateres", "valeur": "Chili"}
+{"entite": "Dotsero", "valeur": "États-Unis"}
+{"entite": "Doyō Seamount", "valeur": "Japon"}
+{"entite": "Drakon", "valeur": "Russie"}
+{"entite": "Dukono", "valeur": "Indonésie"}
+{"entite": "Dunedin Volcano", "valeur": "Nouvelle-Zélande"}
+{"entite": "Durango volcanic field", "valeur": "Mexique"}
+{"entite": "Dutton", "valeur": "États-Unis"}
+{"entite": "Dvor", "valeur": "Russie"}
+{"entite": "Dzau", "valeur": "Géorgie"}
+{"entite": "Dzenzourski", "valeur": "Russie"}
+{"entite": "Earthquake Dome", "valeur": "États-Unis"}
+{"entite": "East Cape Volcano", "valeur": "États-Unis"}
+{"entite": "East Crater", "valeur": "États-Unis"}
+{"entite": "East Epi", "valeur": "Vanuatu"}
+{"entite": "East Molokai Volcano", "valeur": "États-Unis"}
+{"entite": "Eastern Baraniy", "valeur": "Russie"}
+{"entite": "Ebeko", "valeur": "Russie"}
+{"entite": "Ebev-Bunanya", "valeur": "Russie"}
+{"entite": "Eboshiga Dake", "valeur": "Japon"}
+{"entite": "Ebulobo", "valeur": "Indonésie"}
+{"entite": "L'Échelle", "valeur": "France"}
+{"entite": "Eggella", "valeur": "Russie"}
+{"entite": "Egon", "valeur": "Indonésie"}
+{"entite": "Egreri", "valeur": "Éthiopie"}
+{"entite": "Eickelberg Peak", "valeur": "États-Unis"}
+{"entite": "Eifuku Seamount", "valeur": "États-Unis"}
+{"entite": "Eiríksjökull", "valeur": "Islande"}
+{"entite": "Þeistareykir", "valeur": "Islande"}
+{"entite": "Þeistareykjarbunga", "valeur": "Islande"}
+{"entite": "Ekarma", "valeur": "Russie"}
+{"entite": "El Chichón", "valeur": "Mexique"}
+{"entite": "El Cóndor", "valeur": "Argentine"}
+{"entite": "El Ermitaño", "valeur": "Chili"}
+{"entite": "El Escondido volcano", "valeur": "Colombie"}
+{"entite": "El Golfo", "valeur": "Espagne"}
+{"entite": "el Puig", "valeur": "Espagne"}
+{"entite": "El Rocàs", "valeur": "Espagne"}
+{"entite": "El Tigre", "valeur": "Salvador"}
+{"entite": "El Totumo", "valeur": "Colombie"}
+{"entite": "El Viejo Volcano", "valeur": "Costa Rica"}
+{"entite": "Eldborg", "valeur": "Islande"}
+{"entite": "Eldfell", "valeur": "Islande"}
+{"entite": "Eldgjá", "valeur": "Islande"}
+{"entite": "Emi Koussi", "valeur": "Tchad"}
+{"entite": "Empédocle", "valeur": "Italie"}
+{"entite": "Emperor of China", "valeur": "Indonésie"}
+{"entite": "Empung", "valeur": "Indonésie"}
+{"entite": "Emuruangogolak", "valeur": "Kenya"}
+{"entite": "Enmedio Volcano", "valeur": "Espagne"}
+{"entite": "Eodooreum", "valeur": "Corée du Sud"}
+{"entite": "Eppelsberg", "valeur": "Allemagne"}
+{"entite": "Ernstberg", "valeur": "Allemagne"}
+{"entite": "Erta Ale", "valeur": "Éthiopie"}
+{"entite": "Escorial de la Media Luna", "valeur": "Argentine"}
+{"entite": "Esjufjöll", "valeur": "Islande"}
+{"entite": "L’Estany volcano", "valeur": "Espagne"}
+{"entite": "Etinde", "valeur": "Cameroun"}
+{"entite": "Etna", "valeur": "Italie"}
+{"entite": "Etopan", "valeur": "Russie"}
+{"entite": "Ettringer Bell-Berg", "valeur": "Allemagne"}
+{"entite": "Eyjafjöll", "valeur": "Islande"}
+{"entite": "Fafah Le", "valeur": "Érythrée"}
+{"entite": "Fagradalsfjall", "valeur": "Islande"}
+{"entite": "Fani Maoré", "valeur": "France"}
+{"entite": "Farallon Negro", "valeur": "Argentine"}
+{"entite": "Fedotych", "valeur": "Russie"}
+{"entite": "Fentale", "valeur": "Éthiopie"}
+{"entite": "Fenyös", "valeur": "Autriche"}
+{"entite": "Ferdinandea", "valeur": "Italie"}
+{"entite": "First scoria cone", "valeur": "Russie"}
+{"entite": "Flourmill Volcanoes", "valeur": "Canada"}
+{"entite": "Fontpobra volcano", "valeur": "Espagne"}
+{"entite": "Fonualei", "valeur": "Tonga"}
+{"entite": "Formica Leo", "valeur": "France"}
+{"entite": "Forst Berg", "valeur": "Allemagne"}
+{"entite": "Fort Portal", "valeur": "Ouganda"}
+{"entite": "Fort Rock", "valeur": "États-Unis"}
+{"entite": "Fremrinámur", "valeur": "Islande"}
+{"entite": "Frosty Volcano", "valeur": "États-Unis"}
+{"entite": "Fuchskaute", "valeur": "Allemagne"}
+{"entite": "Fueguino", "valeur": "Chili"}
+{"entite": "Fuerteventura", "valeur": "Espagne"}
+{"entite": "Fukujin Seamount", "valeur": "États-Unis"}
+{"entite": "Fukutoku-Okanoba", "valeur": "Japon"}
+{"entite": "Fumarole Butte", "valeur": "États-Unis"}
+{"entite": "Furi", "valeur": "Éthiopie"}
+{"entite": "Furnas", "valeur": "Portugal"}
+{"entite": "Fuss Peak", "valeur": "Russie"}
+{"entite": "Futatsu Dake", "valeur": "Japon"}
+{"entite": "Gabuli", "valeur": "Éthiopie"}
+{"entite": "Galeras", "valeur": "Colombie"}
+{"entite": "Gallego", "valeur": "Îles Salomon"}
+{"entite": "Galunggung", "valeur": "Indonésie"}
+{"entite": "Gamalama", "valeur": "Indonésie"}
+{"entite": "Gamou mud volcano", "valeur": "Japon"}
+{"entite": "Gänsehals", "valeur": "Allemagne"}
+{"entite": "Gapseonioreum", "valeur": "Corée du Sud"}
+{"entite": "Gareloi Volcano", "valeur": "États-Unis"}
+{"entite": "Garua Harbour", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Gassan", "valeur": "Japon"}
+{"entite": "Gatgeurioreum", "valeur": "Corée du Sud"}
+{"entite": "Gedamsa", "valeur": "Éthiopie"}
+{"entite": "Geolsoeoreum", "valeur": "Corée du Sud"}
+{"entite": "Geomeunoreum", "valeur": "Corée du Sud"}
+{"entite": "Geomunoreum", "valeur": "Corée du Sud"}
+{"entite": "Georinjogeunoreum", "valeur": "Corée du Sud"}
+{"entite": "Geungnagoreum", "valeur": "Corée du Sud"}
+{"entite": "Geureudong", "valeur": "Indonésie"}
+{"entite": "Giggenbach Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Giljanes Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Girekol", "valeur": "Turquie"}
+{"entite": "Glabro", "valeur": "Italie"}
+{"entite": "Gleiberg", "valeur": "Allemagne"}
+{"entite": "La Gloria", "valeur": "Mexique"}
+{"entite": "Goat Mountain", "valeur": "États-Unis"}
+{"entite": "Gobbay Garo", "valeur": "Érythrée"}
+{"entite": "Goioreum", "valeur": "Corée du Sud"}
+{"entite": "Golmeorioreum", "valeur": "Corée du Sud"}
+{"entite": "Golovnin", "valeur": "Russie"}
+{"entite": "Golubitsky mud volcano", "valeur": "Russie"}
+{"entite": "Gora Shishel'", "valeur": "Russie"}
+{"entite": "Gora Stokap", "valeur": "Russie"}
+{"entite": "Gorely", "valeur": "Russie"}
+{"entite": "Goryachaya", "valeur": "Russie"}
+{"entite": "Goryashchaya Sopka", "valeur": "Russie"}
+{"entite": "Gráakúla", "valeur": "Islande"}
+{"entite": "Grábrók", "valeur": "Islande"}
+{"entite": "Grafton Volcano", "valeur": "Nouvelle-Zélande"}
+{"entite": "Gran Cratere", "valeur": "Italie"}
+{"entite": "Gran Mate", "valeur": "Chili"}
+{"entite": "Grand Sarcouy", "valeur": "France"}
+{"entite": "Grand Suchet", "valeur": "France"}
+{"entite": "Grande Soufrière Hills", "valeur": "Dominique"}
+{"entite": "Granollers de Rocacorba volcano", "valeur": "Espagne"}
+{"entite": "Great Crack", "valeur": "États-Unis"}
+{"entite": "Great Sitkin Volcano", "valeur": "États-Unis"}
+{"entite": "Greater Ararat", "valeur": "Turquie"}
+{"entite": "Grechishkina (volcano)", "valeur": "Russie"}
+{"entite": "Grefenburg", "valeur": "Allemagne"}
+{"entite": "Grensdalur", "valeur": "Islande"}
+{"entite": "Grímsnes", "valeur": "Islande"}
+{"entite": "Grímsvötn", "valeur": "Islande"}
+{"entite": "Grodczyn", "valeur": "Pologne"}
+{"entite": "Groupe volcanique Daisetsuzan", "valeur": "Japon"}
+{"entite": "Guagua Pichincha", "valeur": "Équateur"}
+{"entite": "Guallatiri", "valeur": "Chili"}
+{"entite": "Guntur", "valeur": "Indonésie"}
+{"entite": "Gunung Halimun", "valeur": "Indonésie"}
+{"entite": "Gunung Patah", "valeur": "Indonésie"}
+{"entite": "Gunung Rajabasa", "valeur": "Indonésie"}
+{"entite": "Gunungapi Wetar", "valeur": "Indonésie"}
+{"entite": "Gutanasar", "valeur": "Arménie"}
+{"entite": "Gwangioreum", "valeur": "Corée du Sud"}
+{"entite": "Gwaoreum", "valeur": "Corée du Sud"}
+{"entite": "Gwemioreum", "valeur": "Corée du Sud"}
+{"entite": "Gwepenioreum", "valeur": "Corée du Sud"}
+{"entite": "Hachi Yama", "valeur": "Japon"}
+{"entite": "Hachimantai", "valeur": "Japon"}
+{"entite": "Haleakalā", "valeur": "États-Unis"}
+{"entite": "Hallasan", "valeur": "Corée du Sud"}
+{"entite": "Hampton Park", "valeur": "Nouvelle-Zélande"}
+{"entite": "Har Hozek", "valeur": "Israël"}
+{"entite": "Haradha", "valeur": "Yémen"}
+{"entite": "Hargy", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Harra de Arhab", "valeur": "Yémen"}
+{"entite": "Harra es-Sawad", "valeur": "Yémen"}
+{"entite": "Harras de Dhamar", "valeur": "Yémen"}
+{"entite": "Harrat Lunayyir", "valeur": "Arabie saoudite"}
+{"entite": "Hatoma Knoll", "valeur": "Japon"}
+{"entite": "Haut Dong Nai", "valeur": "Vietnam"}
+{"entite": "Havre", "valeur": "Nouvelle-Zélande"}
+{"entite": "Hayes Volcano", "valeur": "États-Unis"}
+{"entite": "Haylan, Jabal", "valeur": "Yémen"}
+{"entite": "Hayli Gubbi", "valeur": "Éthiopie"}
+{"entite": "Heiðarsporðar", "valeur": "Islande"}
+{"entite": "Hekla", "valeur": "Islande"}
+{"entite": "Helgafell", "valeur": "Islande"}
+{"entite": "Helgrindur", "valeur": "Islande"}
+{"entite": "Hengill", "valeur": "Islande"}
+{"entite": "Herðubreið", "valeur": "Islande"}
+{"entite": "Herbert Island", "valeur": "États-Unis"}
+{"entite": "Heukbulgeunoreum", "valeur": "Corée du Sud"}
+{"entite": "Hibochiboc Volcano", "valeur": "Philippines"}
+{"entite": "Hibok-Hibok", "valeur": "Philippines"}
+{"entite": "Higashi Nupukaushi Nupuri", "valeur": "Japon"}
+{"entite": "Hijiori", "valeur": "Japon"}
+{"entite": "Hiruzen", "valeur": "Japon"}
+{"entite": "Hobicha", "valeur": "Éthiopie"}
+{"entite": "Hochkelberg", "valeur": "Allemagne"}
+{"entite": "Hochsimmer", "valeur": "Allemagne"}
+{"entite": "Hochstein", "valeur": "Allemagne"}
+{"entite": "Hofsjökull", "valeur": "Islande"}
+{"entite": "Hohe Acht", "valeur": "Allemagne"}
+{"entite": "Hohenseelbachs-Kopf", "valeur": "Allemagne"}
+{"entite": "Hoher Hagen", "valeur": "Allemagne"}
+{"entite": "Hoher List", "valeur": "Allemagne"}
+{"entite": "Hoherodskopf", "valeur": "Allemagne"}
+{"entite": "Hokkaido Koma-ga-take", "valeur": "Japon"}
+{"entite": "Hornopirén", "valeur": "Chili"}
+{"entite": "Horns of Hattin", "valeur": "Israël"}
+{"entite": "Höttur", "valeur": "Islande"}
+{"entite": "Höwenegg", "valeur": "Allemagne"}
+{"entite": "Hoya de Fileba", "valeur": "Espagne"}
+{"entite": "Hoyazo de Níjar", "valeur": "Espagne"}
+{"entite": "Hrafnabjörg", "valeur": "Islande"}
+{"entite": "Hrómundartindur", "valeur": "Islande"}
+{"entite": "Hualālai", "valeur": "États-Unis"}
+{"entite": "Hualca Hualca", "valeur": "Pérou"}
+{"entite": "Huambo", "valeur": "Pérou"}
+{"entite": "Huaynaputina", "valeur": "Pérou"}
+{"entite": "Huequi", "valeur": "Chili"}
+{"entite": "Hummelsberg", "valeur": "Allemagne"}
+{"entite": "Hunga Tonga", "valeur": "Tonga"}
+{"entite": "Hydrographers Range", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "I Vancori", "valeur": "Italie"}
+{"entite": "Iamalele", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Icefall Cone", "valeur": "Canada"}
+{"entite": "Idaroreum", "valeur": "Corée du Sud"}
+{"entite": "Iettunup", "valeur": "Russie"}
+{"entite": "Ijen", "valeur": "Indonésie"}
+{"entite": "Ikeda and Yamagawa", "valeur": "Japon"}
+{"entite": "Iktunup", "valeur": "Russie"}
+{"entite": "Ilaló", "valeur": "Équateur"}
+{"entite": "île Amsterdam", "valeur": "France"}
+{"entite": "île Atlassov", "valeur": "Russie"}
+{"entite": "île Baluan", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "île Bogoslof", "valeur": "États-Unis"}
+{"entite": "île Española", "valeur": "Équateur"}
+{"entite": "île Floreana", "valeur": "Équateur"}
+{"entite": "île Inaccessible", "valeur": "Royaume-Uni"}
+{"entite": "île Kasatochi", "valeur": "États-Unis"}
+{"entite": "île Marchena", "valeur": "Équateur"}
+{"entite": "île Marion", "valeur": "Afrique du Sud"}
+{"entite": "île Pinta", "valeur": "Équateur"}
+{"entite": "île Pinzón", "valeur": "Équateur"}
+{"entite": "île Rábida", "valeur": "Équateur"}
+{"entite": "île Saint-Paul", "valeur": "France"}
+{"entite": "île San Félix", "valeur": "Chili"}
+{"entite": "île Santiago", "valeur": "Équateur"}
+{"entite": "île Socorro", "valeur": "Mexique"}
+{"entite": "île Uliaga", "valeur": "États-Unis"}
+{"entite": "île Yunaska", "valeur": "États-Unis"}
+{"entite": "île Zavodovski", "valeur": "Royaume-Uni"}
+{"entite": "île Zuqar", "valeur": "Yémen"}
+{"entite": "îles Hanish", "valeur": "Yémen"}
+{"entite": "Iliboleng", "valeur": "Indonésie"}
+{"entite": "Ililabalekan", "valeur": "Indonésie"}
+{"entite": "Ilimuda", "valeur": "Indonésie"}
+{"entite": "Ilinski", "valeur": "Russie"}
+{"entite": "Iliwerung", "valeur": "Indonésie"}
+{"entite": "Illiniza", "valeur": "Équateur"}
+{"entite": "Ilopango", "valeur": "Salvador"}
+{"entite": "Imbabura", "valeur": "Équateur"}
+{"entite": "Imun", "valeur": "Indonésie"}
+{"entite": "Inaritsji", "valeur": "Russie"}
+{"entite": "Infiernillo", "valeur": "Argentine"}
+{"entite": "Inielika", "valeur": "Indonésie"}
+{"entite": "Inierie", "valeur": "Indonésie"}
+{"entite": "Injeongoreum", "valeur": "Corée du Sud"}
+{"entite": "Innri-Sandhóll", "valeur": "Islande"}
+{"entite": "Inyo Craters", "valeur": "États-Unis"}
+{"entite": "Irazú", "valeur": "Costa Rica"}
+{"entite": "Iriomote Submarine Volcano", "valeur": "Japon"}
+{"entite": "Isanotski Peaks", "valeur": "États-Unis"}
+{"entite": "Iseungioreum", "valeur": "Corée du Sud"}
+{"entite": "Iskut Canyon Cone", "valeur": "Canada"}
+{"entite": "Isla Zacate Grande", "valeur": "Honduras"}
+{"entite": "Isluga", "valeur": "Chili"}
+{"entite": "Itcha Mountain", "valeur": "Canada"}
+{"entite": "Itchinski", "valeur": "Russie"}
+{"entite": "Ithnayn, Harrat", "valeur": "Arabie saoudite"}
+{"entite": "Iult", "valeur": "Russie"}
+{"entite": "Ivan Grozny", "valeur": "Russie"}
+{"entite": "Ixtaccíhuatl", "valeur": "Mexique"}
+{"entite": "Iyang-Argapura", "valeur": "Indonésie"}
+{"entite": "Izalco", "valeur": "Salvador"}
+{"entite": "Jabuka", "valeur": "Croatie"}
+{"entite": "Jackson Volcano", "valeur": "États-Unis"}
+{"entite": "Jangjaoreum", "valeur": "Corée du Sud"}
+{"entite": "Jaraguay Volcanic Field", "valeur": "Mexique"}
+{"entite": "Jebel e Ghurab", "valeur": "Pakistan"}
+{"entite": "Jejigioreum", "valeur": "Corée du Sud"}
+{"entite": "Jeojioreum", "valeur": "Corée du Sud"}
+{"entite": "Jibāl al Abyaḑ", "valeur": "Arabie saoudite"}
+{"entite": "Jingbo", "valeur": "République populaire de Chine"}
+{"entite": "Jocotitlán", "valeur": "Mexique"}
+{"entite": "Joupanovski", "valeur": "Russie"}
+{"entite": "Kaʻala", "valeur": "États-Unis"}
+{"entite": "Kaba", "valeur": "Indonésie"}
+{"entite": "Kaena", "valeur": "États-Unis"}
+{"entite": "Kagamil Volcano", "valeur": "États-Unis"}
+{"entite": "Kaikata Seamount", "valeur": "Japon"}
+{"entite": "Kaileney", "valeur": "Russie"}
+{"entite": "Kaiserstuhl", "valeur": "Allemagne"}
+{"entite": "Kaitoku", "valeur": "Japon"}
+{"entite": "Kalem", "valeur": "Allemagne"}
+{"entite": "Kalgauch", "valeur": "Russie"}
+{"entite": "Kalgnitunup", "valeur": "Russie"}
+{"entite": "Kamaʻehuakanaloa", "valeur": "États-Unis"}
+{"entite": "Kambalny", "valeur": "Russie"}
+{"entite": "Kamen", "valeur": "Russie"}
+{"entite": "Kamenisty (volcano)", "valeur": "Russie"}
+{"entite": "Kamiarizuki Knoll", "valeur": "Japon"}
+{"entite": "Kamoamoa", "valeur": "États-Unis"}
+{"entite": "Kamojang", "valeur": "Indonésie"}
+{"entite": "Kana Cone", "valeur": "Canada"}
+{"entite": "Kanaga", "valeur": "États-Unis"}
+{"entite": "Kanlaon", "valeur": "Philippines"}
+{"entite": "Kao", "valeur": "Tonga"}
+{"entite": "Kara Allumta", "valeur": "Érythrée"}
+{"entite": "Karaca Dağ", "valeur": "Turquie"}
+{"entite": "Karaha Crater", "valeur": "Indonésie"}
+{"entite": "Karang", "valeur": "Indonésie"}
+{"entite": "Karangetang", "valeur": "Indonésie"}
+{"entite": "Karasugasen", "valeur": "Japon"}
+{"entite": "Karatag (mountain)", "valeur": "Russie"}
+{"entite": "Karmelenberg", "valeur": "Allemagne"}
+{"entite": "Karpinsky Group", "valeur": "Russie"}
+{"entite": "Karthala", "valeur": "Comores"}
+{"entite": "Karymshina", "valeur": "Russie"}
+{"entite": "Kasuga 2 Seamount", "valeur": "États-Unis"}
+{"entite": "Kasuga Seamount", "valeur": "États-Unis"}
+{"entite": "Katla", "valeur": "Islande"}
+{"entite": "Katzenbuckel", "valeur": "Allemagne"}
+{"entite": "Kavachi", "valeur": "Îles Salomon"}
+{"entite": "Kawi", "valeur": "Indonésie"}
+{"entite": "Kawi-Butak", "valeur": "Indonésie"}
+{"entite": "Kebeney", "valeur": "Russie"}
+{"entite": "Keda Cone", "valeur": "Canada"}
+{"entite": "Keilir", "valeur": "Islande"}
+{"entite": "Kekurny", "valeur": "Russie"}
+{"entite": "Kelimutu", "valeur": "Indonésie"}
+{"entite": "Kell", "valeur": "Russie"}
+{"entite": "Kelud", "valeur": "Indonésie"}
+{"entite": "Keluo", "valeur": "République populaire de Chine"}
+{"entite": "Kendang", "valeur": "Indonésie"}
+{"entite": "Kerimasi volcano", "valeur": "Tanzanie"}
+{"entite": "Kerimassi", "valeur": "Tanzanie"}
+{"entite": "Kerinci", "valeur": "Indonésie"}
+{"entite": "Kerlingarfjöll", "valeur": "Islande"}
+{"entite": "Ketildyngja", "valeur": "Islande"}
+{"entite": "Kevenateunup", "valeur": "Russie"}
+{"entite": "Khailyulya", "valeur": "Russie"}
+{"entite": "Khangar", "valeur": "Russie"}
+{"entite": "Kharchinsky", "valeur": "Russie"}
+{"entite": "Khodoutka", "valeur": "Russie"}
+{"entite": "Kiaraberes-Gagak", "valeur": "Indonésie"}
+{"entite": "Kibblewhite Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Kibo", "valeur": "Tanzanie"}
+{"entite": "Kick-'em-Jenny", "valeur": "Grenade"}
+{"entite": "Kīlauea", "valeur": "États-Unis"}
+{"entite": "Kilimanjaro", "valeur": "Tanzanie"}
+{"entite": "Kimitina", "valeur": "Russie"}
+{"entite": "Kinenin", "valeur": "Russie"}
+{"entite": "Kinrara Crater", "valeur": "Australie"}
+{"entite": "Kireunsky", "valeur": "Russie"}
+{"entite": "Kiska", "valeur": "États-Unis"}
+{"entite": "Kita-Fukutokutai", "valeur": "Japon"}
+{"entite": "Kitumbeine", "valeur": "Tanzanie"}
+{"entite": "Klabat", "valeur": "Indonésie"}
+{"entite": "Klastline Cone", "valeur": "Canada"}
+{"entite": "Klioutchevskoï", "valeur": "Russie"}
+{"entite": "Klyuchevaya (mountain)", "valeur": "Russie"}
+{"entite": "Knüllköpfchen", "valeur": "Allemagne"}
+{"entite": "Ko-Fuji", "valeur": "Japon"}
+{"entite": "Kobalan", "valeur": "Russie"}
+{"entite": "Koh-i-Sultan", "valeur": "Pakistan"}
+{"entite": "Kohala", "valeur": "États-Unis"}
+{"entite": "Kollóttadyngja", "valeur": "Islande"}
+{"entite": "Kolumbo", "valeur": "Grèce"}
+{"entite": "Komaga Take", "valeur": "Japon"}
+{"entite": "Komarov", "valeur": "Russie"}
+{"entite": "Komezuka", "valeur": "Japon"}
+{"entite": "Komorní Hůrka", "valeur": "Tchéquie"}
+{"entite": "Kone", "valeur": "Éthiopie"}
+{"entite": "Koniuji Volcano", "valeur": "États-Unis"}
+{"entite": "Kopkan", "valeur": "Russie"}
+{"entite": "Koranga", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Korath", "valeur": "Éthiopie"}
+{"entite": "Koriakski", "valeur": "Russie"}
+{"entite": "Korosi", "valeur": "Kenya"}
+{"entite": "Korovin", "valeur": "États-Unis"}
+{"entite": "Koshkulak", "valeur": "Russie"}
+{"entite": "Kozákov", "valeur": "Tchéquie"}
+{"entite": "Kozelka", "valeur": "Tchéquie"}
+{"entite": "Kozyrevsky", "valeur": "Russie"}
+{"entite": "Kracheninnikov", "valeur": "Russie"}
+{"entite": "Krafla", "valeur": "Islande"}
+{"entite": "Krainy", "valeur": "Russie"}
+{"entite": "Krenitsyn Volcano", "valeur": "Russie"}
+{"entite": "Krestovsky (Near Flat Hill)", "valeur": "Russie"}
+{"entite": "Kronotski", "valeur": "Russie"}
+{"entite": "Kropotkine", "valeur": "Russie"}
+{"entite": "Kršja Satuluj", "valeur": "Serbie"}
+{"entite": "Kruglenky", "valeur": "Russie"}
+{"entite": "Krýsuvík", "valeur": "Islande"}
+{"entite": "Kudriavy volcano", "valeur": "Russie"}
+{"entite": "Kula volcano", "valeur": "Turquie"}
+{"entite": "Kulka", "valeur": "Russie"}
+{"entite": "Kulo Lasi", "valeur": "France"}
+{"entite": "Kunhilok (volcano)", "valeur": "Russie"}
+{"entite": "Kuntomintar", "valeur": "Russie"}
+{"entite": "Kurose Hole", "valeur": "Japon"}
+{"entite": "Kuttara", "valeur": "Japon"}
+{"entite": "Kutum Volcanic Field", "valeur": "Soudan"}
+{"entite": "Kuwae", "valeur": "Vanuatu"}
+{"entite": "Kuyul (volcano)", "valeur": "Russie"}
+{"entite": "Kverkfjöll", "valeur": "Islande"}
+{"entite": "Kyatwa", "valeur": "Ouganda"}
+{"entite": "Lágafell", "valeur": "Islande"}
+{"entite": "Lagerny (volcano)", "valeur": "Russie"}
+{"entite": "Laguna Aramuaca", "valeur": "Salvador"}
+{"entite": "Laguna Seca", "valeur": "Nicaragua"}
+{"entite": "Laguna Verde", "valeur": "Chili"}
+{"entite": "Lakagígar", "valeur": "Islande"}
+{"entite": "Lakeshore Cone", "valeur": "États-Unis"}
+{"entite": "Laki", "valeur": "Islande"}
+{"entite": "Lamanon", "valeur": "Russie"}
+{"entite": "Lamongan", "valeur": "Indonésie"}
+{"entite": "Lamutsky", "valeur": "Russie"}
+{"entite": "Langtutkin", "valeur": "Russie"}
+{"entite": "Las Arenas", "valeur": "Espagne"}
+{"entite": "Las Cumbres", "valeur": "Mexique"}
+{"entite": "Las Derrumbadas", "valeur": "Mexique"}
+{"entite": "Las Lajas", "valeur": "Nicaragua"}
+{"entite": "Láscar", "valeur": "Chili"}
+{"entite": "Lassen Volcanic Center", "valeur": "États-Unis"}
+{"entite": "Late", "valeur": "Tonga"}
+{"entite": "Lauca", "valeur": "Chili"}
+{"entite": "Lauchachan", "valeur": "Russie"}
+{"entite": "Lauchan", "valeur": "Russie"}
+{"entite": "Laufafell", "valeur": "Islande"}
+{"entite": "Lautaro", "valeur": "Chili"}
+{"entite": "Lavic Lake volcanic field", "valeur": "États-Unis"}
+{"entite": "Lawu", "valeur": "Indonésie"}
+{"entite": "Leitin", "valeur": "Islande"}
+{"entite": "Lelyakina", "valeur": "Russie"}
+{"entite": "Lemagrut", "valeur": "Tanzanie"}
+{"entite": "Lenox Crater", "valeur": "États-Unis"}
+{"entite": "Leroboleng", "valeur": "Indonésie"}
+{"entite": "Lesnovo Cone", "valeur": "Macédoine du Nord"}
+{"entite": "Level Mountain", "valeur": "Canada"}
+{"entite": "Lewotobi", "valeur": "Indonésie"}
+{"entite": "Lewotolo", "valeur": "Indonésie"}
+{"entite": "Lexone", "valeur": "Chili"}
+{"entite": "Liado", "valeur": "Éthiopie"}
+{"entite": "Liado Hayk", "valeur": "Éthiopie"}
+{"entite": "Litla-Skógfell", "valeur": "Islande"}
+{"entite": "Litleholmen (Fitjar)", "valeur": "Norvège"}
+{"entite": "Litli-Hrútur", "valeur": "Islande"}
+{"entite": "Little Eagle Cone", "valeur": "Canada"}
+{"entite": "Little Matterhorn", "valeur": "Australie"}
+{"entite": "Little Sitkin Volcano", "valeur": "États-Unis"}
+{"entite": "Ljósufjöll", "valeur": "Islande"}
+{"entite": "Llacunagra volcano", "valeur": "Espagne"}
+{"entite": "Llaima", "valeur": "Chili"}
+{"entite": "Lokon", "valeur": "Indonésie"}
+{"entite": "Lolo", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Loloru", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Lone Butte", "valeur": "États-Unis"}
+{"entite": "Longgang volcano group", "valeur": "République populaire de Chine"}
+{"entite": "Lonquimay", "valeur": "Chili"}
+{"entite": "Lookout Mountain", "valeur": "États-Unis"}
+{"entite": "Lopevi", "valeur": "Vanuatu"}
+{"entite": "Los Atlixcos", "valeur": "Mexique"}
+{"entite": "Los Frailes ignimbrite plateau", "valeur": "Bolivie"}
+{"entite": "Los Humeros", "valeur": "Mexique"}
+{"entite": "Los Volcanes", "valeur": "Argentine"}
+{"entite": "Losimingur", "valeur": "Tanzanie"}
+{"entite": "Lossirwa", "valeur": "Tanzanie"}
+{"entite": "Lubak Garo", "valeur": "Érythrée"}
+{"entite": "Lucifer Hill", "valeur": "Royaume-Uni"}
+{"entite": "Lvinaya Past", "valeur": "Russie"}
+{"entite": "Mælifell", "valeur": "Islande"}
+{"entite": "Mælifellshnjúkur", "valeur": "Islande"}
+{"entite": "Maar de Jaude", "valeur": "France"}
+{"entite": "Machmell River Cone", "valeur": "Canada"}
+{"entite": "Maderas", "valeur": "Nicaragua"}
+{"entite": "Madilogo", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Maekake Yama", "valeur": "Japon"}
+{"entite": "Mahawu", "valeur": "Indonésie"}
+{"entite": "Māhukona", "valeur": "États-Unis"}
+{"entite": "Maipo", "valeur": "Chili"}
+{"entite": "Majungoreum", "valeur": "Corée du Sud"}
+{"entite": "Makian", "valeur": "Indonésie"}
+{"entite": "Maku Yama", "valeur": "Japon"}
+{"entite": "Makushin Volcano", "valeur": "États-Unis"}
+{"entite": "Malabar", "valeur": "Indonésie"}
+{"entite": "Malang Plain", "valeur": "Indonésie"}
+{"entite": "Malaya Ipelka", "valeur": "Russie"}
+{"entite": "Malaya Ketepana", "valeur": "Russie"}
+{"entite": "Malaya Udina", "valeur": "Russie"}
+{"entite": "Malinao", "valeur": "Philippines"}
+{"entite": "La Malinche", "valeur": "Mexique"}
+{"entite": "Malintang", "valeur": "Indonésie"}
+{"entite": "Mallahle", "valeur": "Éthiopie"}
+{"entite": "Malvizza Bubbles", "valeur": "Italie"}
+{"entite": "Maly Alney", "valeur": "Russie"}
+{"entite": "Malý Roudný", "valeur": "Tchéquie"}
+{"entite": "Mammoth Mountain", "valeur": "États-Unis"}
+{"entite": "Managlase Plateau", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Māngere Mountain", "valeur": "Nouvelle-Zélande"}
+{"entite": "Mangoreum", "valeur": "Corée du Sud"}
+{"entite": "Marapi", "valeur": "Indonésie"}
+{"entite": "Marha, Jabal el-", "valeur": "Yémen"}
+{"entite": "Maroa", "valeur": "Nouvelle-Zélande"}
+{"entite": "Marsili", "valeur": "Italie"}
+{"entite": "Maru Yama", "valeur": "Japon"}
+{"entite": "Mascarin Peak", "valeur": "Afrique du Sud"}
+{"entite": "Mascota Volcanic Field", "valeur": "Mexique"}
+{"entite": "massif de Teno", "valeur": "Espagne"}
+{"entite": "Mata Ouest", "valeur": "Tonga"}
+{"entite": "Mauna Kahalawai", "valeur": "États-Unis"}
+{"entite": "Mauna Kea", "valeur": "États-Unis"}
+{"entite": "Mauna Loa", "valeur": "États-Unis"}
+{"entite": "Mauna Ulu", "valeur": "États-Unis"}
+{"entite": "Maunga Terevaka", "valeur": "Chili"}
+{"entite": "Maungarei", "valeur": "Nouvelle-Zélande"}
+{"entite": "Maungataketake", "valeur": "Nouvelle-Zélande"}
+{"entite": "Maungaturoto", "valeur": "Nouvelle-Zélande"}
+{"entite": "Mawenzi", "valeur": "Tanzanie"}
+{"entite": "May-ya-moto", "valeur": "République démocratique du Congo"}
+{"entite": "Mayon", "valeur": "Philippines"}
+{"entite": "McLennan Hills", "valeur": "Nouvelle-Zélande"}
+{"entite": "Medicine Lake", "valeur": "États-Unis"}
+{"entite": "Medvezhya", "valeur": "Russie"}
+{"entite": "Mehetia", "valeur": "France"}
+{"entite": "Melimoyu Volcano", "valeur": "Chili"}
+{"entite": "Mendeleyeva", "valeur": "Russie"}
+{"entite": "Menengai", "valeur": "Kenya"}
+{"entite": "Menshoy Brat", "valeur": "Russie"}
+{"entite": "Mentolat", "valeur": "Chili"}
+{"entite": "Merapi", "valeur": "Indonésie"}
+{"entite": "Merbabu", "valeur": "Indonésie"}
+{"entite": "Mere Lava", "valeur": "Vanuatu"}
+{"entite": "Merewether Crater", "valeur": "Canada"}
+{"entite": "Methana Volcano", "valeur": "Grèce"}
+{"entite": "Meullin", "valeur": "Chili"}
+{"entite": "Miðahóll", "valeur": "Islande"}
+{"entite": "Michinmahuida", "valeur": "Chili"}
+{"entite": "Michoacán-Guanajuato volcanic field", "valeur": "Mexique"}
+{"entite": "Middle Gobi", "valeur": "Mongolie"}
+{"entite": "Middle Sister", "valeur": "États-Unis"}
+{"entite": "Milbanke Sound Group", "valeur": "Canada"}
+{"entite": "Milešovka", "valeur": "Tchéquie"}
+{"entite": "Milna", "valeur": "Russie"}
+{"entite": "Minami-Hiyoshi Seamount", "valeur": "Japon"}
+{"entite": "Miñiques", "valeur": "Chili"}
+{"entite": "Miño Volcano", "valeur": "Chili"}
+{"entite": "Minokol", "valeur": "Philippines"}
+{"entite": "Minoreum", "valeur": "Corée du Sud"}
+{"entite": "Misti", "valeur": "Pérou"}
+{"entite": "Mitsudake", "valeur": "Japon"}
+{"entite": "Mitsumine San", "valeur": "Japon"}
+{"entite": "Mocho-Choshuenco", "valeur": "Chili"}
+{"entite": "Mohabi", "valeur": "Ukraine"}
+{"entite": "Mojanda", "valeur": "Équateur"}
+{"entite": "Mojioreum", "valeur": "Corée du Sud"}
+{"entite": "Mokuyō Seamount", "valeur": "Japon"}
+{"entite": "Monache Mountain", "valeur": "États-Unis"}
+{"entite": "Monduli", "valeur": "Tanzanie"}
+{"entite": "Mono Lake Volcanic Field", "valeur": "États-Unis"}
+{"entite": "mont Adams", "valeur": "États-Unis"}
+{"entite": "mont Adatara", "valeur": "Japon"}
+{"entite": "mont Akagi", "valeur": "Japon"}
+{"entite": "Mont Akanfuji", "valeur": "Japon"}
+{"entite": "mont Akita-Komagatake", "valeur": "Japon"}
+{"entite": "Mont Akita-Yake", "valeur": "Japon"}
+{"entite": "mont Algide", "valeur": "Italie"}
+{"entite": "mont Amagi", "valeur": "Japon"}
+{"entite": "mont Aniakchak", "valeur": "États-Unis"}
+{"entite": "mont Apo", "valeur": "Philippines"}
+{"entite": "Mont Ara", "valeur": "Arménie"}
+{"entite": "mont Ararat", "valeur": "Turquie"}
+{"entite": "mont Arayat", "valeur": "Philippines"}
+{"entite": "mont Asahi", "valeur": "Japon"}
+{"entite": "mont Asama", "valeur": "Japon"}
+{"entite": "mont Aso", "valeur": "Japon"}
+{"entite": "mont Augustine", "valeur": "États-Unis"}
+{"entite": "mont Azumaya", "valeur": "Japon"}
+{"entite": "mont Bachelor", "valeur": "États-Unis"}
+{"entite": "mont Baker", "valeur": "États-Unis"}
+{"entite": "mont Balbi", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "mont Bana", "valeur": "Cameroun"}
+{"entite": "mont Bandai", "valeur": "Japon"}
+{"entite": "mont Barbaro", "valeur": "Italie"}
+{"entite": "mont Batcha", "valeur": "Cameroun"}
+{"entite": "mont Belinda", "valeur": "Royaume-Uni"}
+{"entite": "mont Blackburn", "valeur": "États-Unis"}
+{"entite": "mont Bona", "valeur": "États-Unis"}
+{"entite": "mont Boucherie", "valeur": "Canada"}
+{"entite": "mont Cameroun", "valeur": "Cameroun"}
+{"entite": "mont Canobolas", "valeur": "Australie"}
+{"entite": "mont Carlisle", "valeur": "États-Unis"}
+{"entite": "mont Cayley", "valeur": "Canada"}
+{"entite": "mont Chiginagak", "valeur": "États-Unis"}
+{"entite": "mont Chōkai", "valeur": "Japon"}
+{"entite": "mont Chūbetsu", "valeur": "Japon"}
+{"entite": "mont Churchill", "valeur": "États-Unis"}
+{"entite": "mont Cleveland", "valeur": "États-Unis"}
+{"entite": "mont d'Alambre", "valeur": "France"}
+{"entite": "mont Damavand", "valeur": "Iran"}
+{"entite": "mont de Hiuchi", "valeur": "Japon"}
+{"entite": "mont de la Dives", "valeur": "France"}
+{"entite": "mont Denise", "valeur": "France"}
+{"entite": "mont Denison", "valeur": "États-Unis"}
+{"entite": "mont des Manchots", "valeur": "France"}
+{"entite": "mont Douglas", "valeur": "États-Unis"}
+{"entite": "mont Eboshi", "valeur": "Japon"}
+{"entite": "mont Edgecumbe", "valeur": "États-Unis"}
+{"entite": "mont Eniwa", "valeur": "Japon"}
+{"entite": "mont Époméo", "valeur": "Italie"}
+{"entite": "mont Erciyes", "valeur": "Turquie"}
+{"entite": "mont Evermann", "valeur": "Mexique"}
+{"entite": "mont Fourpeaked", "valeur": "États-Unis"}
+{"entite": "mont Fuji", "valeur": "Japon"}
+{"entite": "mont Fuppushi", "valeur": "Japon"}
+{"entite": "mont Furano", "valeur": "Japon"}
+{"entite": "mont Gamkonora", "valeur": "Indonésie"}
+{"entite": "mont Garibaldi", "valeur": "Canada"}
+{"entite": "mont Gede", "valeur": "Indonésie"}
+{"entite": "mont Gémini Est", "valeur": "France"}
+{"entite": "mont Gémini Ouest", "valeur": "France"}
+{"entite": "mont Gharat", "valeur": "Vanuatu"}
+{"entite": "mont Gordon", "valeur": "États-Unis"}
+{"entite": "mont Griggs", "valeur": "États-Unis"}
+{"entite": "mont Hagen", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "mont Hakone", "valeur": "Japon"}
+{"entite": "mont Haku", "valeur": "Japon"}
+{"entite": "mont Haruna", "valeur": "Japon"}
+{"entite": "Mont Haruna Fuji", "valeur": "Japon"}
+{"entite": "mont Hasan", "valeur": "Turquie"}
+{"entite": "Mont Hayama", "valeur": "Japon"}
+{"entite": "mont Hodson", "valeur": "Royaume-Uni"}
+{"entite": "mont Hōei", "valeur": "Japon"}
+{"entite": "mont Hood", "valeur": "États-Unis"}
+{"entite": "mont Hotaka", "valeur": "Japon"}
+{"entite": "mont Hudson", "valeur": "Chili"}
+{"entite": "mont Iizuna", "valeur": "Japon"}
+{"entite": "mont Iliamna", "valeur": "États-Unis"}
+{"entite": "mont Iō", "valeur": "Japon"}
+{"entite": "mont Iraya", "valeur": "Philippines"}
+{"entite": "mont Isarog", "valeur": "Philippines"}
+{"entite": "mont Iwaki", "valeur": "Japon"}
+{"entite": "mont Iwate", "valeur": "Japon"}
+{"entite": "mont Kaimon", "valeur": "Japon"}
+{"entite": "mont Kalatungan", "valeur": "Philippines"}
+{"entite": "mont Kamafuse", "valeur": "Japon"}
+{"entite": "mont Kanmuri", "valeur": "Japon"}
+{"entite": "mont Kanpū", "valeur": "Japon"}
+{"entite": "mont Karakuni", "valeur": "Japon"}
+{"entite": "mont Katmai", "valeur": "États-Unis"}
+{"entite": "mont Kazbek", "valeur": "Russie"}
+{"entite": "mont Kinpō", "valeur": "Japon"}
+{"entite": "mont Kirigamine", "valeur": "Japon"}
+{"entite": "mont Kitumbeine", "valeur": "Tanzanie"}
+{"entite": "mont Koma", "valeur": "Japon"}
+{"entite": "Mont Komochi", "valeur": "Japon"}
+{"entite": "mont Koshin", "valeur": "Japon"}
+{"entite": "mont Koupé", "valeur": "Cameroun"}
+{"entite": "mont Kurofu", "valeur": "Japon"}
+{"entite": "Mont Kurohime", "valeur": "Japon"}
+{"entite": "mont Kusatsu-Shirane", "valeur": "Japon"}
+{"entite": "mont Liamuiga", "valeur": "Saint-Christophe-et-Niévès"}
+{"entite": "mont Lokobe", "valeur": "Madagascar"}
+{"entite": "mont Longonot", "valeur": "Kenya"}
+{"entite": "mont Lurus", "valeur": "Indonésie"}
+{"entite": "mont Madarao", "valeur": "Japon"}
+{"entite": "mont Mageik", "valeur": "États-Unis"}
+{"entite": "mont Makiling", "valeur": "Philippines"}
+{"entite": "mont Manengouba", "valeur": "Cameroun"}
+{"entite": "Mont Manuk", "valeur": "Indonésie"}
+{"entite": "mont Marion-Dufresne", "valeur": "France"}
+{"entite": "mont Matutum", "valeur": "Philippines"}
+{"entite": "mont Mbapit", "valeur": "Cameroun"}
+{"entite": "mont Meakan", "valeur": "Japon"}
+{"entite": "mont Mekunnai", "valeur": "Japon"}
+{"entite": "mont Mézenc", "valeur": "France"}
+{"entite": "mont Mihara", "valeur": "Japon"}
+{"entite": "mont Mikeno", "valeur": "République démocratique du Congo"}
+{"entite": "mont Mitoku", "valeur": "Japon"}
+{"entite": "mont Myōkō", "valeur": "Japon"}
+{"entite": "mont Naeba", "valeur": "Japon"}
+{"entite": "Mont Nakitsura", "valeur": "Japon"}
+{"entite": "mont Nantai", "valeur": "Japon"}
+{"entite": "mont Niigata-Yake", "valeur": "Japon"}
+{"entite": "mont Nikkō-Shirane", "valeur": "Japon"}
+{"entite": "Mont Nila", "valeur": "Indonésie"}
+{"entite": "mont Nishiazuma", "valeur": "Japon"}
+{"entite": "mont Norikura", "valeur": "Japon"}
+{"entite": "mont Nyohō", "valeur": "Japon"}
+{"entite": "mont Oakan", "valeur": "Japon"}
+{"entite": "Mont Ōbuka", "valeur": "Japon"}
+{"entite": "Mont Ōgi", "valeur": "Japon"}
+{"entite": "mont Oku", "valeur": "Cameroun"}
+{"entite": "mont Onnebetsu", "valeur": "Japon"}
+{"entite": "Mont Onoko", "valeur": "Japon"}
+{"entite": "mont Ontake", "valeur": "Japon"}
+{"entite": "mont Osore", "valeur": "Japon"}
+{"entite": "mont Ōtaira", "valeur": "Japon"}
+{"entite": "Mont Ōzukushi", "valeur": "Japon"}
+{"entite": "Mont Parker", "valeur": "Philippines"}
+{"entite": "Mont Patuha", "valeur": "Indonésie"}
+{"entite": "mont Pavlof", "valeur": "États-Unis"}
+{"entite": "mont Penanggungan", "valeur": "Indonésie"}
+{"entite": "mont Pierre", "valeur": "France"}
+{"entite": "mont Popomanaseu", "valeur": "Îles Salomon"}
+{"entite": "mont Raiden", "valeur": "Japon"}
+{"entite": "mont Rainier", "valeur": "États-Unis"}
+{"entite": "mont Rausu", "valeur": "Japon"}
+{"entite": "mont Redon", "valeur": "France"}
+{"entite": "mont Redoubt", "valeur": "États-Unis"}
+{"entite": "mont Richard-Foy", "valeur": "France"}
+{"entite": "mont Rinjani", "valeur": "Indonésie"}
+{"entite": "mont Rishiri", "valeur": "Japon"}
+{"entite": "mont Rocard", "valeur": "France"}
+{"entite": "mont Ross", "valeur": "France"}
+{"entite": "mont Ruapehu", "valeur": "Nouvelle-Zélande"}
+{"entite": "mont Saint Helens", "valeur": "États-Unis"}
+{"entite": "Mont Saint-Loup", "valeur": "France"}
+{"entite": "mont Sainte-Catherine", "valeur": "Grenade"}
+{"entite": "mont Samakke Nupuri", "valeur": "Japon"}
+{"entite": "mont Serua", "valeur": "Indonésie"}
+{"entite": "mont Shari", "valeur": "Japon"}
+{"entite": "mont Shasta", "valeur": "États-Unis"}
+{"entite": "mont Shinmoe", "valeur": "Japon"}
+{"entite": "mont Shira", "valeur": "Tanzanie"}
+{"entite": "mont Shiretoko", "valeur": "Japon"}
+{"entite": "mont Shishaldin", "valeur": "États-Unis"}
+{"entite": "mont Somma", "valeur": "Italie"}
+{"entite": "mont Spurr", "valeur": "États-Unis"}
+{"entite": "mont Sukai", "valeur": "Japon"}
+{"entite": "mont Sukaria", "valeur": "Indonésie"}
+{"entite": "mont Suribachi", "valeur": "Japon"}
+{"entite": "mont Suswa", "valeur": "Kenya"}
+{"entite": "mont Talang", "valeur": "Indonésie"}
+{"entite": "mont Taranaki", "valeur": "Nouvelle-Zélande"}
+{"entite": "mont Tarō", "valeur": "Japon"}
+{"entite": "mont Tarumae", "valeur": "Japon"}
+{"entite": "mont Tateshina", "valeur": "Japon"}
+{"entite": "mont Taylor", "valeur": "États-Unis"}
+{"entite": "mont Tehama", "valeur": "États-Unis"}
+{"entite": "mont Temehani", "valeur": "France"}
+{"entite": "mont Tokachi", "valeur": "Japon"}
+{"entite": "mont Tomuraushi", "valeur": "Japon"}
+{"entite": "mont Tsurumi", "valeur": "Japon"}
+{"entite": "mont Unabetsu", "valeur": "Japon"}
+{"entite": "mont Unzen", "valeur": "Japon"}
+{"entite": "mont Usu", "valeur": "Japon"}
+{"entite": "mont Warning", "valeur": "Australie"}
+{"entite": "mont Wrangell", "valeur": "États-Unis"}
+{"entite": "mont Yake", "valeur": "Japon"}
+{"entite": "mont Yōtei", "valeur": "Japon"}
+{"entite": "mont Yufu", "valeur": "Japon"}
+{"entite": "mont Yunomaru", "valeur": "Japon"}
+{"entite": "montagne de Todoque", "valeur": "Espagne"}
+{"entite": "montagne Pelée", "valeur": "France"}
+{"entite": "Montaña Amarilla", "valeur": "Espagne"}
+{"entite": "Montaña Bermeja, La Graciosa", "valeur": "Espagne"}
+{"entite": "Montaña Bermeja, Tías", "valeur": "Espagne"}
+{"entite": "Montaña Blanca", "valeur": "Espagne"}
+{"entite": "Montaña Cascajo", "valeur": "Espagne"}
+{"entite": "Montaña Centinela", "valeur": "Espagne"}
+{"entite": "Montaña de Ajódar", "valeur": "Espagne"}
+{"entite": "Montaña de Guamaso", "valeur": "Espagne"}
+{"entite": "Montaña de Guaza", "valeur": "Espagne"}
+{"entite": "Montaña de la Botija", "valeur": "Espagne"}
+{"entite": "Montaña de Sámara", "valeur": "Espagne"}
+{"entite": "Montaña de Tejina", "valeur": "Espagne"}
+{"entite": "Montaña del Caramujo", "valeur": "Espagne"}
+{"entite": "Montaña del Cerrillar", "valeur": "Espagne"}
+{"entite": "Montaña del Mojón, La Graciosa", "valeur": "Espagne"}
+{"entite": "Montaña los Frailes", "valeur": "Espagne"}
+{"entite": "Montaña Quemada", "valeur": "Espagne"}
+{"entite": "Montaña Rajada", "valeur": "Espagne"}
+{"entite": "montaña Roja", "valeur": "Espagne"}
+{"entite": "Montaña Timbaiba", "valeur": "Espagne"}
+{"entite": "Montaña Tinache", "valeur": "Espagne"}
+{"entite": "Montañón Negro", "valeur": "Espagne"}
+{"entite": "Monte Barbaro", "valeur": "Italie"}
+{"entite": "Monte Batete", "valeur": "Guinée équatoriale"}
+{"entite": "Monte Burney", "valeur": "Chili"}
+{"entite": "Monte Gibele", "valeur": "Italie"}
+{"entite": "Monte Gordo", "valeur": "Cap-Vert"}
+{"entite": "Monte Laja", "valeur": "Guinée équatoriale"}
+{"entite": "Monte Muambe", "valeur": "Mozambique"}
+{"entite": "monts Kirishima", "valeur": "Japon"}
+{"entite": "monts Kujū", "valeur": "Japon"}
+{"entite": "Monumento Natural de Los Ajaches", "valeur": "Espagne"}
+{"entite": "Moraine Cone", "valeur": "Canada"}
+{"entite": "Morne Anglais", "valeur": "Dominique"}
+{"entite": "Morne aux Diables", "valeur": "Dominique"}
+{"entite": "Morne Diablotins", "valeur": "Dominique"}
+{"entite": "Morne Macaque", "valeur": "Dominique"}
+{"entite": "Morne Plat Pays", "valeur": "Dominique"}
+{"entite": "Morne Trois Pitons", "valeur": "Dominique"}
+{"entite": "Morne Watt", "valeur": "Dominique"}
+{"entite": "Morro da Piedade", "valeur": "Portugal"}
+{"entite": "Morro de los Volcanes", "valeur": "Argentine"}
+{"entite": "Moseulbong", "valeur": "Corée du Sud"}
+{"entite": "Moti", "valeur": "Indonésie"}
+{"entite": "Moua Pihaa", "valeur": "France"}
+{"entite": "Mount Adagdak", "valeur": "États-Unis"}
+{"entite": "Mount Akandana", "valeur": "Japon"}
+{"entite": "Mount Akutan", "valeur": "États-Unis"}
+{"entite": "Mount Amukta", "valeur": "États-Unis"}
+{"entite": "Mount Andromeda", "valeur": "Royaume-Uni"}
+{"entite": "Mount Aono", "valeur": "Japon"}
+{"entite": "Mount Asakuksa", "valeur": "Japon"}
+{"entite": "Mount Ashitaka", "valeur": "Japon"}
+{"entite": "Mount Balungao", "valeur": "Philippines"}
+{"entite": "Mount Besar", "valeur": "Indonésie"}
+{"entite": "Mount Biega", "valeur": "République démocratique du Congo"}
+{"entite": "Mount Birao", "valeur": "Japon"}
+{"entite": "Mount Bosavi", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Mount Carling", "valeur": "Philippines"}
+{"entite": "Mount Daigatake", "valeur": "Japon"}
+{"entite": "Mount Dainichi", "valeur": "Japon"}
+{"entite": "Mount Dajo", "valeur": "Philippines"}
+{"entite": "Mount Dana", "valeur": "États-Unis"}
+{"entite": "Mount Darnley", "valeur": "Royaume-Uni"}
+{"entite": "Mount Daruma", "valeur": "Japon"}
+{"entite": "Mount Dutton", "valeur": "États-Unis"}
+{"entite": "Mount Eden", "valeur": "Nouvelle-Zélande"}
+{"entite": "Mount Emmons", "valeur": "États-Unis"}
+{"entite": "Mount Fiamoe", "valeur": "Samoa"}
+{"entite": "Mount Futago", "valeur": "Japon"}
+{"entite": "Mount Ganseki", "valeur": "Japon"}
+{"entite": "Mount Garan", "valeur": "Japon"}
+{"entite": "Mount Gilbert", "valeur": "États-Unis"}
+{"entite": "Mount Hakuun", "valeur": "Japon"}
+{"entite": "Mount Hanare", "valeur": "Japon"}
+{"entite": "Mount Hōonji", "valeur": "Japon"}
+{"entite": "Mount Hutapanjang", "valeur": "Indonésie"}
+{"entite": "Mount Iiji", "valeur": "Japon"}
+{"entite": "Mount Io", "valeur": "Japon"}
+{"entite": "Mount Iwao", "valeur": "Japon"}
+{"entite": "Mount Jarvis", "valeur": "États-Unis"}
+{"entite": "Mount Kaguyak", "valeur": "États-Unis"}
+{"entite": "Mount Kamon", "valeur": "Japon"}
+{"entite": "Mount Keramim", "valeur": "Israël"}
+{"entite": "Mount Kialagvik", "valeur": "États-Unis"}
+{"entite": "Mount Kishima", "valeur": "Japon"}
+{"entite": "Mount Korei", "valeur": "Japon"}
+{"entite": "Mount Kōsha", "valeur": "Japon"}
+{"entite": "Mount Koshiki", "valeur": "Japon"}
+{"entite": "Mount Kukak", "valeur": "États-Unis"}
+{"entite": "Mount Kunyit", "valeur": "Indonésie"}
+{"entite": "Mount Kurikoma", "valeur": "Japon"}
+{"entite": "Mount Kurino", "valeur": "Japon"}
+{"entite": "Mount Kurobi", "valeur": "Japon"}
+{"entite": "Mount Lelepo", "valeur": "Fidji"}
+{"entite": "Mount Likuruanga", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Mount Lolobau", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Mount Longido", "valeur": "Tanzanie"}
+{"entite": "Mount Madia-as", "valeur": "Philippines"}
+{"entite": "Mount Maemori", "valeur": "Japon"}
+{"entite": "Mount Malala", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Mount Manaia", "valeur": "Nouvelle-Zélande"}
+{"entite": "Mount Maria, Malaysia", "valeur": "Malaisie"}
+{"entite": "Mount Martin", "valeur": "États-Unis"}
+{"entite": "Mount Masaraga", "valeur": "Philippines"}
+{"entite": "Mount Mata o le Afi", "valeur": "Samoa"}
+{"entite": "Mount Mayu", "valeur": "Japon"}
+{"entite": "Mount Mesanbe", "valeur": "Japon"}
+{"entite": "Mount Moffett", "valeur": "États-Unis"}
+{"entite": "Mount Mokoto", "valeur": "Japon"}
+{"entite": "Mount Moriyoshi", "valeur": "Japon"}
+{"entite": "Mount Motoshirane", "valeur": "Japon"}
+{"entite": "Mount Mu", "valeur": "Samoa"}
+{"entite": "Mount Neko", "valeur": "Japon"}
+{"entite": "Mount Nishibetsu", "valeur": "Japon"}
+{"entite": "Mount Ōbora", "valeur": "Japon"}
+{"entite": "Mount Odem", "valeur": "Israël"}
+{"entite": "Mount Ōmuro", "valeur": "Japon"}
+{"entite": "Mount Ondake", "valeur": "Japon"}
+{"entite": "Mount Ophir", "valeur": "Indonésie"}
+{"entite": "Mount Otake", "valeur": "Japon"}
+{"entite": "Mount Oyama", "valeur": "Japon"}
+{"entite": "Mount Pangasun", "valeur": "Philippines"}
+{"entite": "Mount Perseus", "valeur": "Royaume-Uni"}
+{"entite": "Mount Ragang", "valeur": "Philippines"}
+{"entite": "Mount Recheshnoi", "valeur": "États-Unis"}
+{"entite": "Mount Roundtop", "valeur": "États-Unis"}
+{"entite": "Mount Rowan", "valeur": "Australie"}
+{"entite": "Mount Salimbal", "valeur": "Philippines"}
+{"entite": "Mount Sanbe", "valeur": "Japon"}
+{"entite": "Mount Sapporo", "valeur": "Japon"}
+{"entite": "Mount Satarua", "valeur": "Fidji"}
+{"entite": "Mount Savai'i", "valeur": "Samoa"}
+{"entite": "Mount Seguam", "valeur": "États-Unis"}
+{"entite": "Mount Shifon", "valeur": "Israël"}
+{"entite": "Mount Shiga", "valeur": "Japon"}
+{"entite": "Mount Shindake", "valeur": "Japon"}
+{"entite": "Mount Shirataka", "valeur": "Japon"}
+{"entite": "Mount Shiribetsu", "valeur": "Japon"}
+{"entite": "Mount Smart", "valeur": "Nouvelle-Zélande"}
+{"entite": "Mount Sourabaya", "valeur": "Royaume-Uni"}
+{"entite": "Mount  Spina", "valeur": "Italie"}
+{"entite": "Mount Steller", "valeur": "États-Unis"}
+{"entite": "Mount Sukumo", "valeur": "Japon"}
+{"entite": "Mount Sumbing", "valeur": "Indonésie"}
+{"entite": "Mount Tabor", "valeur": "États-Unis"}
+{"entite": "Mount Takahara", "valeur": "Japon"}
+{"entite": "Mount Takasaki", "valeur": "Japon"}
+{"entite": "Mount Takawangha", "valeur": "États-Unis"}
+{"entite": "Mount Talomo", "valeur": "Philippines"}
+{"entite": "Mount Tashiro", "valeur": "Japon"}
+{"entite": "Mount Tenbo", "valeur": "Japon"}
+{"entite": "Mount Tencho", "valeur": "Japon"}
+{"entite": "Mount Tendürek", "valeur": "Turquie"}
+{"entite": "Mount Tenjō", "valeur": "Japon"}
+{"entite": "Mount Tigalalu", "valeur": "Indonésie"}
+{"entite": "Mount Tomuro", "valeur": "Japon"}
+{"entite": "Mount Uluman", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Mount Verzella", "valeur": "Italie"}
+{"entite": "Mount Vsevidof", "valeur": "États-Unis"}
+{"entite": "Mount Westdahl", "valeur": "États-Unis"}
+{"entite": "Mount Yakeishi", "valeur": "Japon"}
+{"entite": "Mount Yokotsu", "valeur": "Japon"}
+{"entite": "Mount Yosifon", "valeur": "Syrie"}
+{"entite": "Mount Yosomi", "valeur": "Japon"}
+{"entite": "Mount Young", "valeur": "États-Unis"}
+{"entite": "Mountain Masurai", "valeur": "Indonésie"}
+{"entite": "Moutnovski", "valeur": "Russie"}
+{"entite": "Mrkonjski vis", "valeur": "Serbie"}
+{"entite": "Mudan Shan", "valeur": "Taïwan"}
+{"entite": "Mulchanoreum", "valeur": "Corée du Sud"}
+{"entite": "Mulyeongari-Oreum", "valeur": "Corée du Sud"}
+{"entite": "Muria", "valeur": "Indonésie"}
+{"entite": "Muroreum", "valeur": "Corée du Sud"}
+{"entite": "Muryeongari", "valeur": "Corée du Sud"}
+{"entite": "Mutny", "valeur": "Russie"}
+{"entite": "Mutsu-Hiuchi-dake", "valeur": "Japon"}
+{"entite": "Mužský", "valeur": "Tchéquie"}
+{"entite": "Myeongwororeum", "valeur": "Corée du Sud"}
+{"entite": "Myōjin-shō", "valeur": "Japon"}
+{"entite": "Naboko cinder cone", "valeur": "Russie"}
+{"entite": "Nabukelevu", "valeur": "Fidji"}
+{"entite": "Nachikinskaya", "valeur": "Russie"}
+{"entite": "Nacimientos", "valeur": "Argentine"}
+{"entite": "Nagy-Eged Hill", "valeur": "Hongrie"}
+{"entite": "Namarunu", "valeur": "Kenya"}
+{"entite": "Nancao Shan", "valeur": "Taïwan"}
+{"entite": "Nanook Dome", "valeur": "Canada"}
+{"entite": "Naolinco Volcanic Field", "valeur": "Mexique"}
+{"entite": "Nast-Berg", "valeur": "Allemagne"}
+{"entite": "Ndete Napu", "valeur": "Indonésie"}
+{"entite": "Néa Kaméni", "valeur": "Grèce"}
+{"entite": "La Negrillar", "valeur": "Chili"}
+{"entite": "Neopgeorioreum", "valeur": "Corée du Sud"}
+{"entite": "Nerother Kopf", "valeur": "Allemagne"}
+{"entite": "Neuhewen", "valeur": "Allemagne"}
+{"entite": "Nevado Coropuna", "valeur": "Pérou"}
+{"entite": "Nevado de Longaví", "valeur": "Chili"}
+{"entite": "Nevado de Toluca", "valeur": "Mexique"}
+{"entite": "Nevado del Ruiz", "valeur": "Colombie"}
+{"entite": "Nevado Mismi", "valeur": "Pérou"}
+{"entite": "Nevado Tres Cruces Central", "valeur": "Chili"}
+{"entite": "Nevados de Chillán", "valeur": "Chili"}
+{"entite": "Ngualla", "valeur": "Tanzanie"}
+{"entite": "Nieuwerkerk", "valeur": "Indonésie"}
+{"entite": "Nigorikawa", "valeur": "Japon"}
+{"entite": "Niikappu mud volcano", "valeur": "Japon"}
+{"entite": "Nikkō Seamount", "valeur": "Japon"}
+{"entite": "Nikolka", "valeur": "Russie"}
+{"entite": "Niland Geyser", "valeur": "États-Unis"}
+{"entite": "Nisekoan Nupuri", "valeur": "Japon"}
+{"entite": "Nishi Nupukaushi Nupuri", "valeur": "Japon"}
+{"entite": "Nisyros", "valeur": "Grèce"}
+{"entite": "Nito Nupuri", "valeur": "Japon"}
+{"entite": "Niveligs-Berg", "valeur": "Allemagne"}
+{"entite": "Nonda", "valeur": "Îles Salomon"}
+{"entite": "Norooreum", "valeur": "Corée du Sud"}
+{"entite": "North Head", "valeur": "Nouvelle-Zélande"}
+{"entite": "North Island", "valeur": "Kenya"}
+{"entite": "North Sister", "valeur": "États-Unis"}
+{"entite": "North Vate", "valeur": "Vanuatu"}
+{"entite": "Northern EPR-Segment RO2", "valeur": "Mexique"}
+{"entite": "Northern EPR-Segment RO3", "valeur": "Mexique"}
+{"entite": "Northwest Rota-1", "valeur": "États-Unis"}
+{"entite": "Norusonioreum", "valeur": "Corée du Sud"}
+{"entite": "Nosichan", "valeur": "Russie"}
+{"entite": "Nova Iguaçu", "valeur": "Brésil"}
+{"entite": "Novarupta", "valeur": "États-Unis"}
+{"entite": "Novograblenova (volcano)", "valeur": "Russie"}
+{"entite": "Nubalykich", "valeur": "Russie"}
+{"entite": "Nuevo Mundo", "valeur": "Bolivie"}
+{"entite": "Numazawa", "valeur": "Japon"}
+{"entite": "Nunoreum", "valeur": "Corée du Sud"}
+{"entite": "Nuunoreum", "valeur": "Corée du Sud"}
+{"entite": "Nyambeni Hills", "valeur": "Kenya"}
+{"entite": "Nyamuragira", "valeur": "République démocratique du Congo"}
+{"entite": "Nyiragongo", "valeur": "République démocratique du Congo"}
+{"entite": "Nyulkandya", "valeur": "Russie"}
+{"entite": "Obsidian Dome", "valeur": "États-Unis"}
+{"entite": "Ochchamo", "valeur": "Russie"}
+{"entite": "Öchsen", "valeur": "Allemagne"}
+{"entite": "Oddnýjarhnjúkur-Langjökull", "valeur": "Islande"}
+{"entite": "Odell Butte", "valeur": "États-Unis"}
+{"entite": "Ofu-Olosega", "valeur": "États-Unis"}
+{"entite": "Ohachi", "valeur": "Japon"}
+{"entite": "Ok", "valeur": "Islande"}
+{"entite": "Ōkataina Caldera", "valeur": "Nouvelle-Zélande"}
+{"entite": "Oku Volcanic Field", "valeur": "Cameroun"}
+{"entite": "Ol Kokwe", "valeur": "Kenya"}
+{"entite": "Olca-Paruma", "valeur": "Chili"}
+{"entite": "Old Caves Crater", "valeur": "États-Unis"}
+{"entite": "Old South Volcano Caldera Rim NorthEast", "valeur": "États-Unis"}
+{"entite": "Oldoinyo Sapuk", "valeur": "Kenya"}
+{"entite": "Oleniy (volcano)", "valeur": "Russie"}
+{"entite": "Olka (volcano in Kamchatka)", "valeur": "Russie"}
+{"entite": "Olokui", "valeur": "États-Unis"}
+{"entite": "Ōmurodashi", "valeur": "Japon"}
+{"entite": "Ōno Dake", "valeur": "Japon"}
+{"entite": "Opala", "valeur": "Russie"}
+{"entite": "Opuahau", "valeur": "Nouvelle-Zélande"}
+{"entite": "Oputateshike Nupuri", "valeur": "Japon"}
+{"entite": "Öræfajökull", "valeur": "Islande"}
+{"entite": "Ōrākei Basin", "valeur": "Nouvelle-Zélande"}
+{"entite": "Þorbjörn", "valeur": "Islande"}
+{"entite": "Þórólfsfell", "valeur": "Islande"}
+{"entite": "Osorno", "valeur": "Chili"}
+{"entite": "Ostanets", "valeur": "Russie"}
+{"entite": "Ōtāhuhu / Mount Richmond", "valeur": "Nouvelle-Zélande"}
+{"entite": "Otake", "valeur": "Japon"}
+{"entite": "Otzberg", "valeur": "Allemagne"}
+{"entite": "Oudina", "valeur": "Russie"}
+{"entite": "Ouzon", "valeur": "Russie"}
+{"entite": "Oval (volcano)", "valeur": "Russie"}
+{"entite": "Ovčácký vrch", "valeur": "Tchéquie"}
+{"entite": "Pabellón de Inca", "valeur": "Chili"}
+{"entite": "Pacaya", "valeur": "Guatemala"}
+{"entite": "Pahvant Butte", "valeur": "États-Unis"}
+{"entite": "Paléa Kaméni", "valeur": "Grèce"}
+{"entite": "Palena Volcanic Group", "valeur": "Chili"}
+{"entite": "Palinuro Seamount", "valeur": "Italie"}
+{"entite": "Pallas Volcano", "valeur": "Russie"}
+{"entite": "Palpana", "valeur": "Chili"}
+{"entite": "Pan (volcano)", "valeur": "Russie"}
+{"entite": "Pangrango", "valeur": "Indonésie"}
+{"entite": "Pānīʻau", "valeur": "États-Unis"}
+{"entite": "Panpooreum", "valeur": "Corée du Sud"}
+{"entite": "Pantelleria", "valeur": "Italie"}
+{"entite": "Papandayan", "valeur": "Indonésie"}
+{"entite": "Papayo", "valeur": "Mexique"}
+{"entite": "Paricutín", "valeur": "Mexique"}
+{"entite": "Parker Volcano", "valeur": "Philippines"}
+{"entite": "Pastos Grandes", "valeur": "Bolivie"}
+{"entite": "Pausanias volcano", "valeur": "Grèce"}
+{"entite": "Pauzhetka (volcano)", "valeur": "Russie"}
+{"entite": "Pavlof Sister", "valeur": "États-Unis"}
+{"entite": "Payalpan", "valeur": "Russie"}
+{"entite": "Payún Matrú", "valeur": "Argentine"}
+{"entite": "Peak MNR", "valeur": "Russie"}
+{"entite": "Peña Blanca", "valeur": "Chili"}
+{"entite": "Perbakti", "valeur": "Indonésie"}
+{"entite": "Perbakti-Gagak", "valeur": "Indonésie"}
+{"entite": "Peretolchin", "valeur": "Russie"}
+{"entite": "Perevalovy", "valeur": "Russie"}
+{"entite": "petit Fuji d'Azuma", "valeur": "Japon"}
+{"entite": "petit Puy de Dôme", "valeur": "France"}
+{"entite": "Petit Suchet", "valeur": "France"}
+{"entite": "Petits Pitons", "valeur": "France"}
+{"entite": "Phu Khao Fai Doi Pha Khok Hin Fu", "valeur": "Thaïlande"}
+{"entite": "pic du Mascarin", "valeur": "France"}
+{"entite": "pic Lassen", "valeur": "États-Unis"}
+{"entite": "pic Mawson", "valeur": "Australie"}
+{"entite": "pic Pyroclastic", "valeur": "Canada"}
+{"entite": "Pichu Pichu", "valeur": "Pérou"}
+{"entite": "Pico Basilé", "valeur": "Guinée équatoriale"}
+{"entite": "Pico Birigoyo", "valeur": "Espagne"}
+{"entite": "Pico Cónico Truncado", "valeur": "Argentine"}
+{"entite": "Pico das Romeiras", "valeur": "Portugal"}
+{"entite": "Pico de São Tomé", "valeur": "Sao Tomé-et-Principe"}
+{"entite": "Pico do Cabugi", "valeur": "Brésil"}
+{"entite": "Pico do Cardo", "valeur": "Portugal"}
+{"entite": "Pico do Fogo", "valeur": "Cap-Vert"}
+{"entite": "Pico Matias Simão", "valeur": "Portugal"}
+{"entite": "Pico Viejo", "valeur": "Espagne"}
+{"entite": "Piip", "valeur": "Russie"}
+{"entite": "Pilav Tepe", "valeur": "Macédoine du Nord"}
+{"entite": "Pilot Butte", "valeur": "États-Unis"}
+{"entite": "Pinatubo", "valeur": "Philippines"}
+{"entite": "Pipkin", "valeur": "États-Unis"}
+{"entite": "Piratkovsky", "valeur": "Russie"}
+{"entite": "Pirgel Mud Volcano", "valeur": "Iran"}
+{"entite": "Pirozhnikova (volcano)", "valeur": "Russie"}
+{"entite": "Pisseogan Knoll", "valeur": "Japon"}
+{"entite": "piton Babet", "valeur": "France"}
+{"entite": "piton Darid", "valeur": "France"}
+{"entite": "piton de Balmann", "valeur": "France"}
+{"entite": "piton de Bassin Martin", "valeur": "France"}
+{"entite": "piton de Bébour", "valeur": "France"}
+{"entite": "piton de Grande-Anse", "valeur": "France"}
+{"entite": "piton de la Fournaise", "valeur": "France"}
+{"entite": "piton de la Source", "valeur": "France"}
+{"entite": "piton de Takamaka", "valeur": "France"}
+{"entite": "piton des Neiges", "valeur": "France"}
+{"entite": "piton Guanyin", "valeur": "France"}
+{"entite": "piton Hyacinthe", "valeur": "France"}
+{"entite": "piton Kapor", "valeur": "France"}
+{"entite": "piton La Glace", "valeur": "France"}
+{"entite": "piton Madoré", "valeur": "France"}
+{"entite": "piton Mathias", "valeur": "France"}
+{"entite": "piton Moka", "valeur": "France"}
+{"entite": "piton Pârvédi", "valeur": "France"}
+{"entite": "piton Sahales", "valeur": "France"}
+{"entite": "piton Trois Têtes", "valeur": "France"}
+{"entite": "piton Villers", "valeur": "France"}
+{"entite": "pitons Mare à Boue", "valeur": "France"}
+{"entite": "Pla del Torn", "valeur": "Espagne"}
+{"entite": "Pla sa Ribera volcano", "valeur": "Espagne"}
+{"entite": "Platanar", "valeur": "Costa Rica"}
+{"entite": "Plosky", "valeur": "Russie"}
+{"entite": "Poás", "valeur": "Costa Rica"}
+{"entite": "Poco Leok", "valeur": "Indonésie"}
+{"entite": "Pogromni Volcano", "valeur": "États-Unis"}
+{"entite": "Poike", "valeur": "Chili"}
+{"entite": "pointe de Kushi", "valeur": "Japon"}
+{"entite": "Polovinny (volcano)", "valeur": "Russie"}
+{"entite": "Pomereda volcano", "valeur": "Espagne"}
+{"entite": "Ponta do Pico", "valeur": "Portugal"}
+{"entite": "Popocatepetl", "valeur": "Mexique"}
+{"entite": "Potato Hill", "valeur": "États-Unis"}
+{"entite": "Prackovský vulkán", "valeur": "Tchéquie"}
+{"entite": "Prestahnjúkur", "valeur": "Islande"}
+{"entite": "Prevo Peak", "valeur": "Russie"}
+{"entite": "Prindle Volcano", "valeur": "États-Unis"}
+{"entite": "Prodolny", "valeur": "Russie"}
+{"entite": "Prümscheid", "valeur": "Allemagne"}
+{"entite": "Psaronas", "valeur": "Grèce"}
+{"entite": "Puʻu Huluhulu", "valeur": "États-Unis"}
+{"entite": "Puʻu Koaʻe", "valeur": "États-Unis"}
+{"entite": "Puʻu ʻŌʻō", "valeur": "États-Unis"}
+{"entite": "Puesto Cortaderas", "valeur": "Argentine"}
+{"entite": "Puig Astrol volcano", "valeur": "Espagne"}
+{"entite": "Puig de Bellaire volcano", "valeur": "Espagne"}
+{"entite": "Puig de l'Ós volcano", "valeur": "Espagne"}
+{"entite": "Puig de la Banya del Boch volcano", "valeur": "Espagne"}
+{"entite": "Puig de la Costa volcano", "valeur": "Espagne"}
+{"entite": "Puig de les Medes volcano", "valeur": "Espagne"}
+{"entite": "Puig de Martinyà volcano", "valeur": "Espagne"}
+{"entite": "Puig del Roser volcano", "valeur": "Espagne"}
+{"entite": "Puig Jordà volcano", "valeur": "Espagne"}
+{"entite": "Puig Montner volcano", "valeur": "Espagne"}
+{"entite": "Puig Rodó volcano", "valeur": "Espagne"}
+{"entite": "Puig Roig volcano", "valeur": "Espagne"}
+{"entite": "Puig s'Agonia volcano", "valeur": "Espagne"}
+{"entite": "Puig Safont volcano", "valeur": "Espagne"}
+{"entite": "Puig Subià", "valeur": "Espagne"}
+{"entite": "Pukekawa", "valeur": "Nouvelle-Zélande"}
+{"entite": "Pukekiwiriki", "valeur": "Nouvelle-Zélande"}
+{"entite": "Pular", "valeur": "Chili"}
+{"entite": "Pulosari", "valeur": "Indonésie"}
+{"entite": "Puna Pau", "valeur": "Chili"}
+{"entite": "Punta Púlpito", "valeur": "Mexique"}
+{"entite": "Puntiagudo", "valeur": "Chili"}
+{"entite": "Puracé", "valeur": "Colombie"}
+{"entite": "Purchas Hill", "valeur": "Nouvelle-Zélande"}
+{"entite": "Purupuruni", "valeur": "Pérou"}
+{"entite": "Pustý Zámek", "valeur": "Tchéquie"}
+{"entite": "Pūtauaki", "valeur": "Nouvelle-Zélande"}
+{"entite": "puy Chopine", "valeur": "France"}
+{"entite": "puy de Barme", "valeur": "France"}
+{"entite": "puy de Beaune", "valeur": "France"}
+{"entite": "puy de Boursoux", "valeur": "France"}
+{"entite": "puy de Chalard", "valeur": "France"}
+{"entite": "puy de Charmont", "valeur": "France"}
+{"entite": "puy de Chaumont", "valeur": "France"}
+{"entite": "puy de Clierzou", "valeur": "France"}
+{"entite": "puy de Côme", "valeur": "France"}
+{"entite": "puy de Dôme", "valeur": "France"}
+{"entite": "puy de Fraisse", "valeur": "France"}
+{"entite": "puy de Gravenoire", "valeur": "France"}
+{"entite": "puy de Jume", "valeur": "France"}
+{"entite": "puy de la Bannière", "valeur": "France"}
+{"entite": "puy de la Combegrasse", "valeur": "France"}
+{"entite": "puy de la Coquille", "valeur": "France"}
+{"entite": "puy de la Mey", "valeur": "France"}
+{"entite": "puy de la Moréno", "valeur": "France"}
+{"entite": "puy de la Nugère", "valeur": "France"}
+{"entite": "puy de la Rodde", "valeur": "France"}
+{"entite": "puy de la Toupe", "valeur": "France"}
+{"entite": "puy de la Vache", "valeur": "France"}
+{"entite": "puy de Laschamps", "valeur": "France"}
+{"entite": "puy de Lassolas", "valeur": "France"}
+{"entite": "puy de Lemptégy", "valeur": "France"}
+{"entite": "puy de Louchadière", "valeur": "France"}
+{"entite": "puy de Mercœur", "valeur": "France"}
+{"entite": "puy de Monchier", "valeur": "France"}
+{"entite": "puy de Montchal", "valeur": "France"}
+{"entite": "puy de Montchar", "valeur": "France"}
+{"entite": "puy de Montcineyre", "valeur": "France"}
+{"entite": "puy de Monteillet", "valeur": "France"}
+{"entite": "puy de Montgy", "valeur": "France"}
+{"entite": "puy de Montiroir", "valeur": "France"}
+{"entite": "puy de Montjuger", "valeur": "France"}
+{"entite": "puy de Montrodeix", "valeur": "France"}
+{"entite": "puy de Paugnat", "valeur": "France"}
+{"entite": "puy de Pourcharet", "valeur": "France"}
+{"entite": "puy de Sancy", "valeur": "France"}
+{"entite": "puy de Tressous", "valeur": "France"}
+{"entite": "puy de Vichatel", "valeur": "France"}
+{"entite": "puy des Goules", "valeur": "France"}
+{"entite": "puy des Gouttes", "valeur": "France"}
+{"entite": "puy des Grosmanaux", "valeur": "France"}
+{"entite": "puy Giroux", "valeur": "France"}
+{"entite": "puy Griou", "valeur": "France"}
+{"entite": "puy Pariou", "valeur": "France"}
+{"entite": "puy Pelat", "valeur": "France"}
+{"entite": "Puyehue", "valeur": "Chili"}
+{"entite": "puys Chopine et des Gouttes", "valeur": "France"}
+{"entite": "pyramide de Ball", "valeur": "Australie"}
+{"entite": "Qakhtana", "valeur": "Russie"}
+{"entite": "Quadrant Peak", "valeur": "Royaume-Uni"}
+{"entite": "Qualibou", "valeur": "Sainte-Lucie"}
+{"entite": "Quetena", "valeur": "Bolivie"}
+{"entite": "Quetrupillán", "valeur": "Chili"}
+{"entite": "Quilotoa", "valeur": "Équateur"}
+{"entite": "Quilty Cone", "valeur": "Australie"}
+{"entite": "Quimsachata", "valeur": "Pérou"}
+{"entite": "Racó volcano", "valeur": "Espagne"}
+{"entite": "Rahah, Harrat ar", "valeur": "Arabie saoudite"}
+{"entite": "Raikoke", "valeur": "Russie"}
+{"entite": "Rainbow Mountain", "valeur": "États-Unis"}
+{"entite": "Raitahu", "valeur": "Timor oriental"}
+{"entite": "Rajčani Cone", "valeur": "Macédoine du Nord"}
+{"entite": "Rakata", "valeur": "Indonésie"}
+{"entite": "Ranakah", "valeur": "Indonésie"}
+{"entite": "Randecker Maar", "valeur": "Allemagne"}
+{"entite": "Rangitoto", "valeur": "Nouvelle-Zélande"}
+{"entite": "Rano Kau", "valeur": "Chili"}
+{"entite": "Rano Raraku", "valeur": "Chili"}
+{"entite": "Rasshua", "valeur": "Russie"}
+{"entite": "Rassoshina (volcano)", "valeur": "Russie"}
+{"entite": "Rauðhóll", "valeur": "Islande"}
+{"entite": "Rauher Kulm", "valeur": "Allemagne"}
+{"entite": "Raung", "valeur": "Indonésie"}
+{"entite": "Ravensberg", "valeur": "Allemagne"}
+{"entite": "Reclus", "valeur": "Chili"}
+{"entite": "Red Butte", "valeur": "États-Unis"}
+{"entite": "Red Hill", "valeur": "États-Unis"}
+{"entite": "Red Mountain", "valeur": "États-Unis"}
+{"entite": "Red Rock", "valeur": "Australie"}
+{"entite": "Reventador", "valeur": "Équateur"}
+{"entite": "Reykjanes", "valeur": "Islande"}
+{"entite": "Riang Kotang", "valeur": "Indonésie"}
+{"entite": "Þríhnúkagígur", "valeur": "Islande"}
+{"entite": "Rikorda underwater volcano", "valeur": "Russie"}
+{"entite": "Rincón de la Vieja", "valeur": "Costa Rica"}
+{"entite": "Río Murta", "valeur": "Chili"}
+{"entite": "Říp", "valeur": "Tchéquie"}
+{"entite": "Roß-Berg", "valeur": "Allemagne"}
+{"entite": "Robledo", "valeur": "Argentine"}
+{"entite": "roc d'Hozières", "valeur": "France"}
+{"entite": "Rocanegra volcano", "valeur": "Espagne"}
+{"entite": "Rochers Bayonnaise", "valeur": "Japon"}
+{"entite": "Rockeskyllerkopf", "valeur": "Allemagne"}
+{"entite": "Rodderberg", "valeur": "Allemagne"}
+{"entite": "Rokatenda", "valeur": "Indonésie"}
+{"entite": "Romanovka stratovolcano", "valeur": "Russie"}
+{"entite": "Roque Haute", "valeur": "France"}
+{"entite": "Rotomā volcanic complex", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ruang", "valeur": "Indonésie"}
+{"entite": "Rumble II East Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Rumble II West Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Rumble III Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Rumble IV Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Rumble V Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Rungapapa Knoll", "valeur": "Nouvelle-Zélande"}
+{"entite": "Ruruj", "valeur": "Russie"}
+{"entite": "S P Crater", "valeur": "États-Unis"}
+{"entite": "Sabancaya", "valeur": "Pérou"}
+{"entite": "Sabatini volcanic complex", "valeur": "Italie"}
+{"entite": "Sacabaya", "valeur": "Bolivie"}
+{"entite": "Sacrofano caldera", "valeur": "Italie"}
+{"entite": "Saebyeororeum", "valeur": "Corée du Sud"}
+{"entite": "Saekkioreum", "valeur": "Corée du Sud"}
+{"entite": "Saenggiroreum", "valeur": "Corée du Sud"}
+{"entite": "Saesinoreum", "valeur": "Corée du Sud"}
+{"entite": "Sakurajima", "valeur": "Japon"}
+{"entite": "Salak", "valeur": "Indonésie"}
+{"entite": "Salín", "valeur": "Argentine"}
+{"entite": "Salse di Puianello", "valeur": "Italie"}
+{"entite": "Samalas", "valeur": "Indonésie"}
+{"entite": "Samsari Volcanic Center", "valeur": "Géorgie"}
+{"entite": "San Antonio", "valeur": "Espagne"}
+{"entite": "San Borja Volcanic Field", "valeur": "Mexique"}
+{"entite": "San Carlos", "valeur": "Guinée équatoriale"}
+{"entite": "San Cristobal", "valeur": "Philippines"}
+{"entite": "San Diego", "valeur": "Colombie"}
+{"entite": "San Jerónimo volcano", "valeur": "Argentine"}
+{"entite": "San Joaquin", "valeur": "Guinée équatoriale"}
+{"entite": "San Marcelino", "valeur": "Salvador"}
+{"entite": "San Martín Tuxtla", "valeur": "Mexique"}
+{"entite": "San Pablo", "valeur": "Chili"}
+{"entite": "San Peyre", "valeur": "France"}
+{"entite": "San Quintín Volcanic Field", "valeur": "Mexique"}
+{"entite": "Sanbangsan", "valeur": "Corée du Sud"}
+{"entite": "Sand Mountain Field", "valeur": "États-Unis"}
+{"entite": "Sandfellshæð", "valeur": "Islande"}
+{"entite": "Sangay", "valeur": "Équateur"}
+{"entite": "Sangeang Api", "valeur": "Indonésie"}
+{"entite": "Sangyeooreum", "valeur": "Corée du Sud"}
+{"entite": "Sansemioreum", "valeur": "Corée du Sud"}
+{"entite": "Sant Jordi volcano", "valeur": "Espagne"}
+{"entite": "Santa Ana", "valeur": "Salvador"}
+{"entite": "Santa Clara Volcano", "valeur": "États-Unis"}
+{"entite": "Santa Isabel", "valeur": "Colombie"}
+{"entite": "Santa María", "valeur": "Guatemala"}
+{"entite": "Santiaguito", "valeur": "Guatemala"}
+{"entite": "Sara Sara", "valeur": "Pérou"}
+{"entite": "Saraoreum", "valeur": "Corée du Sud"}
+{"entite": "Sarik-Gajah", "valeur": "Indonésie"}
+{"entite": "Sarytchev", "valeur": "Russie"}
+{"entite": "Scharteberg", "valeur": "Allemagne"}
+{"entite": "Schmidt", "valeur": "Russie"}
+{"entite": "Second scoria cone", "valeur": "Russie"}
+{"entite": "Sedankinsky", "valeur": "Russie"}
+{"entite": "Segererua Plateau", "valeur": "Kenya"}
+{"entite": "Segundo Cono Truncado", "valeur": "Argentine"}
+{"entite": "Semeru", "valeur": "Indonésie"}
+{"entite": "Sempu", "valeur": "Indonésie"}
+{"entite": "Seonginbong", "valeur": "Corée du Sud"}
+{"entite": "Seongneororeum", "valeur": "Corée du Sud"}
+{"entite": "Seonsooreum", "valeur": "Corée du Sud"}
+{"entite": "Seororeum", "valeur": "Corée du Sud"}
+{"entite": "Serdán-Oriental", "valeur": "Mexique"}
+{"entite": "Sergeeva (volcano)", "valeur": "Russie"}
+{"entite": "Serra de Santa Bárbara", "valeur": "Portugal"}
+{"entite": "Sessagara", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Sete Cidades", "valeur": "Portugal"}
+{"entite": "Seulawah Agam", "valeur": "Indonésie"}
+{"entite": "Severgin Volcano", "valeur": "Russie"}
+{"entite": "Severny", "valeur": "Russie"}
+{"entite": "Shadil-Khokh volcano", "valeur": "Géorgie"}
+{"entite": "Shichiyō Seamount Chain", "valeur": "Japon"}
+{"entite": "Shiratori Yama", "valeur": "Japon"}
+{"entite": "Shish", "valeur": "Russie"}
+{"entite": "Shisheika", "valeur": "Russie"}
+{"entite": "Shishel", "valeur": "Russie"}
+{"entite": "Shlen", "valeur": "Russie"}
+{"entite": "Shōwa-shinzan", "valeur": "Japon"}
+{"entite": "Sibayak", "valeur": "Indonésie"}
+{"entite": "Sierra la Primavera", "valeur": "Mexique"}
+{"entite": "sierra Negra", "valeur": "Équateur"}
+{"entite": "Sierra Nevada", "valeur": "Chili"}
+{"entite": "Sierra Velluda", "valeur": "Chili"}
+{"entite": "Siete Luminarias", "valeur": "Mexique"}
+{"entite": "Signal de l'Enclos", "valeur": "France"}
+{"entite": "Silay", "valeur": "Philippines"}
+{"entite": "Silver Lake", "valeur": "États-Unis"}
+{"entite": "Simon volcano", "valeur": "Espagne"}
+{"entite": "Sinabung", "valeur": "Indonésie"}
+{"entite": "Sinarka", "valeur": "Russie"}
+{"entite": "Sincholagua", "valeur": "Équateur"}
+{"entite": "Singgalang", "valeur": "Indonésie"}
+{"entite": "Singu Plateau", "valeur": "Birmanie"}
+{"entite": "Sirung", "valeur": "Indonésie"}
+{"entite": "Skjaldbreiður", "valeur": "Islande"}
+{"entite": "Skjerholmen", "valeur": "Norvège"}
+{"entite": "Slamet", "valeur": "Indonésie"}
+{"entite": "Slánská hora", "valeur": "Tchéquie"}
+{"entite": "Sleet Cone", "valeur": "Canada"}
+{"entite": "Slyunina (volcano)", "valeur": "Russie"}
+{"entite": "Small Chekchebonai", "valeur": "Russie"}
+{"entite": "Smirnov", "valeur": "Russie"}
+{"entite": "Snæfell", "valeur": "Islande"}
+{"entite": "Snæfellsjökull", "valeur": "Islande"}
+{"entite": "Snegovoï", "valeur": "Russie"}
+{"entite": "Snezhniy", "valeur": "Russie"}
+{"entite": "Snilstveitøy", "valeur": "Norvège"}
+{"entite": "Snippaker Creek Cone", "valeur": "Canada"}
+{"entite": "Snou", "valeur": "Russie"}
+{"entite": "Snowy Mountain", "valeur": "États-Unis"}
+{"entite": "Soboliny (volcano)", "valeur": "Russie"}
+{"entite": "Sollipulli", "valeur": "Chili"}
+{"entite": "Solontsovsky (paleovolcano)", "valeur": "Russie"}
+{"entite": "Solyanaya Sopka", "valeur": "Russie"}
+{"entite": "Sōma Yama", "valeur": "Japon"}
+{"entite": "Somma-Vesuvius complex", "valeur": "Italie"}
+{"entite": "Songaoreum", "valeur": "Corée du Sud"}
+{"entite": "Sopka Alban", "valeur": "Russie"}
+{"entite": "Sopka Aligey", "valeur": "Russie"}
+{"entite": "Sopka Baba", "valeur": "Russie"}
+{"entite": "Sopka Baydara", "valeur": "Russie"}
+{"entite": "Sopka Bol'shaya", "valeur": "Russie"}
+{"entite": "Sopka Bol'shaya Griva", "valeur": "Russie"}
+{"entite": "Sopka Bol'shoy Solntsepek", "valeur": "Russie"}
+{"entite": "Sopka Boran", "valeur": "Russie"}
+{"entite": "Sopka Ded", "valeur": "Russie"}
+{"entite": "Sopka Dlinnaya", "valeur": "Russie"}
+{"entite": "Sopka Dom", "valeur": "Russie"}
+{"entite": "Sopka Dondur", "valeur": "Russie"}
+{"entite": "Sopka Dvugorbaya", "valeur": "Russie"}
+{"entite": "Sopka Figurnaya", "valeur": "Russie"}
+{"entite": "Sopka Golaya", "valeur": "Russie"}
+{"entite": "Sopka Granichnaya", "valeur": "Russie"}
+{"entite": "Sopka Kamenistaya", "valeur": "Russie"}
+{"entite": "Sopka Kamenistaya Griva", "valeur": "Russie"}
+{"entite": "Sopka Kamennaya", "valeur": "Russie"}
+{"entite": "Sopka Karasukskaya", "valeur": "Russie"}
+{"entite": "Sopka Khar'kovka", "valeur": "Russie"}
+{"entite": "Sopka Khutorskaya", "valeur": "Russie"}
+{"entite": "Sopka Kinchoklok", "valeur": "Russie"}
+{"entite": "Sopka Klepochnaya", "valeur": "Russie"}
+{"entite": "Sopka Koftuna", "valeur": "Russie"}
+{"entite": "Sopka Koz'ya", "valeur": "Russie"}
+{"entite": "Sopka Krasnaya", "valeur": "Russie"}
+{"entite": "Sopka Kyamenistaya", "valeur": "Russie"}
+{"entite": "Sopka Lysaya", "valeur": "Russie"}
+{"entite": "Sopka Maloguminskaya", "valeur": "Russie"}
+{"entite": "Sopka Mayachnaya", "valeur": "Russie"}
+{"entite": "Sopka Mayak", "valeur": "Russie"}
+{"entite": "Sopka Merkur'yevskaya", "valeur": "Russie"}
+{"entite": "Sopka Mezhdurech'ye", "valeur": "Russie"}
+{"entite": "Sopka Mit'kina", "valeur": "Russie"}
+{"entite": "Sopka Obor", "valeur": "Russie"}
+{"entite": "Sopka Obrublennaya", "valeur": "Russie"}
+{"entite": "Sopka Ostraya", "valeur": "Russie"}
+{"entite": "Sopka Paratunka", "valeur": "Russie"}
+{"entite": "Sopka Pasechnaya", "valeur": "Russie"}
+{"entite": "Sopka Ryadaya", "valeur": "Russie"}
+{"entite": "Sopka Ryzhaya", "valeur": "Russie"}
+{"entite": "Sopka Sarovskiye Dachi", "valeur": "Russie"}
+{"entite": "Sopka Shagayevskaya", "valeur": "Russie"}
+{"entite": "Sopka Shapka", "valeur": "Russie"}
+{"entite": "Sopka Sinyaya", "valeur": "Russie"}
+{"entite": "Sopka Skalistaya", "valeur": "Russie"}
+{"entite": "Sopka Talitskaya", "valeur": "Russie"}
+{"entite": "Sopka Uglevaya", "valeur": "Russie"}
+{"entite": "Sopka Uglovaya", "valeur": "Russie"}
+{"entite": "Sopka Vasil'yeva", "valeur": "Russie"}
+{"entite": "Sopka Vidnaya", "valeur": "Russie"}
+{"entite": "Sopka Vostrushna", "valeur": "Russie"}
+{"entite": "Sopka Vostryaki", "valeur": "Russie"}
+{"entite": "Sopka Vysokaya", "valeur": "Russie"}
+{"entite": "Sopka Yerëmina", "valeur": "Russie"}
+{"entite": "Sopka Zaikina", "valeur": "Russie"}
+{"entite": "Soputan", "valeur": "Indonésie"}
+{"entite": "Sorikmarapi", "valeur": "Indonésie"}
+{"entite": "Sosoreum", "valeur": "Corée du Sud"}
+{"entite": "Sotará", "valeur": "Colombie"}
+{"entite": "Sotskjær", "valeur": "Norvège"}
+{"entite": "Source Hill", "valeur": "Canada"}
+{"entite": "Sousaki volcano", "valeur": "Grèce"}
+{"entite": "South Harghita Mountains", "valeur": "Roumanie"}
+{"entite": "South Island", "valeur": "Kenya"}
+{"entite": "South Sister", "valeur": "États-Unis"}
+{"entite": "Spectrum Dome", "valeur": "Canada"}
+{"entite": "Spiral Butte", "valeur": "États-Unis"}
+{"entite": "Spokoyny", "valeur": "Russie"}
+{"entite": "Srednii", "valeur": "Russie"}
+{"entite": "Sredny", "valeur": "Russie"}
+{"entite": "Srednyaya Sopka", "valeur": "Russie"}
+{"entite": "Ssaroreum", "valeur": "Corée du Sud"}
+{"entite": "Stampar Crater", "valeur": "Islande"}
+{"entite": "Stepovak Bay 2", "valeur": "États-Unis"}
+{"entite": "Stepovak Bay 3", "valeur": "États-Unis"}
+{"entite": "Stepovak Bay 4", "valeur": "États-Unis"}
+{"entite": "Stolbovoy (volcano)", "valeur": "Russie"}
+{"entite": "Storm Cone", "valeur": "Canada"}
+{"entite": "Stromboli", "valeur": "Italie"}
+{"entite": "Submarine 1922", "valeur": "Indonésie"}
+{"entite": "Suchitán", "valeur": "Guatemala"}
+{"entite": "Sugarloaf", "valeur": "États-Unis"}
+{"entite": "Sugarloaf Peak", "valeur": "États-Unis"}
+{"entite": "Suiyō Seamount", "valeur": "Japon"}
+{"entite": "Sulimana", "valeur": "Pérou"}
+{"entite": "Sumaco", "valeur": "Équateur"}
+{"entite": "Sumbing", "valeur": "Indonésie"}
+{"entite": "Sundoro", "valeur": "Indonésie"}
+{"entite": "Süphan Daği", "valeur": "Turquie"}
+{"entite": "Supply Reef", "valeur": "États-Unis"}
+{"entite": "Suretamatai", "valeur": "Vanuatu"}
+{"entite": "Surveyors volcano", "valeur": "Russie"}
+{"entite": "Sutter Buttes", "valeur": "États-Unis"}
+{"entite": "Suzuga Take", "valeur": "Japon"}
+{"entite": "Svartsengi", "valeur": "Islande"}
+{"entite": "Syni", "valeur": "Russie"}
+{"entite": "Ta‘ū", "valeur": "États-Unis"}
+{"entite": "Taal", "valeur": "Philippines"}
+{"entite": "Taapaca", "valeur": "Chili"}
+{"entite": "Taburete", "valeur": "Salvador"}
+{"entite": "Tacaná", "valeur": "Guatemala"}
+{"entite": "Tacora", "valeur": "Chili"}
+{"entite": "Taftan", "valeur": "Iran"}
+{"entite": "Tafu-Maka", "valeur": "Tonga"}
+{"entite": "Tafua-upolu", "valeur": "Samoa"}
+{"entite": "Tahalra Volcanic Field", "valeur": "Algérie"}
+{"entite": "Tahual", "valeur": "Guatemala"}
+{"entite": "Tajogaite", "valeur": "Espagne"}
+{"entite": "Tajumulco", "valeur": "Guatemala"}
+{"entite": "Takachihonomine", "valeur": "Japon"}
+{"entite": "Takanosu Yama", "valeur": "Japon"}
+{"entite": "Takarunga / Mount Victoria", "valeur": "Nouvelle-Zélande"}
+{"entite": "Takurayama", "valeur": "Japon"}
+{"entite": "Tal Saki", "valeur": "Israël"}
+{"entite": "Talagabodas", "valeur": "Indonésie"}
+{"entite": "Talakmau", "valeur": "Indonésie"}
+{"entite": "Tall al Jaynah", "valeur": "Syrie"}
+{"entite": "Tambora", "valeur": "Indonésie"}
+{"entite": "Tampomas", "valeur": "Indonésie"}
+{"entite": "Tana", "valeur": "États-Unis"}
+{"entite": "Tanada Peak", "valeur": "États-Unis"}
+{"entite": "Tanaga", "valeur": "États-Unis"}
+{"entite": "Tandikat", "valeur": "Indonésie"}
+{"entite": "Tang Mud Volcano", "valeur": "Iran"}
+{"entite": "Tanganasoga", "valeur": "Espagne"}
+{"entite": "Tangaroa Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "Tangkuban Parahu", "valeur": "Indonésie"}
+{"entite": "Taounchits", "valeur": "Russie"}
+{"entite": "Tarahi", "valeur": "Nouvelle-Zélande"}
+{"entite": "Tarosero", "valeur": "Tanzanie"}
+{"entite": "Tarpai-Nagyhegy", "valeur": "Roumanie"}
+{"entite": "Tarso Toussidé", "valeur": "Tchad"}
+{"entite": "Tarso Yega", "valeur": "Tchad"}
+{"entite": "Tarya Volcano", "valeur": "Russie"}
+{"entite": "Taryatu-Chulutu", "valeur": "Mongolie"}
+{"entite": "Tata Jachura", "valeur": "Chili"}
+{"entite": "Tatarinov Volcano", "valeur": "Russie"}
+{"entite": "Taufstein", "valeur": "Allemagne"}
+{"entite": "Tauhara", "valeur": "Nouvelle-Zélande"}
+{"entite": "Taupo", "valeur": "Nouvelle-Zélande"}
+{"entite": "Taurere / Taylor Hill", "valeur": "Nouvelle-Zélande"}
+{"entite": "Tavkvetili", "valeur": "Géorgie"}
+{"entite": "Tavui", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Tchabal Nganha", "valeur": "Cameroun"}
+{"entite": "Tchikouratchki", "valeur": "Russie"}
+{"entite": "Te Pou Hawaiki", "valeur": "Nouvelle-Zélande"}
+{"entite": "Te Puke", "valeur": "Nouvelle-Zélande"}
+{"entite": "Teahitia", "valeur": "France"}
+{"entite": "Tebenkova", "valeur": "Russie"}
+{"entite": "Tecuamburro", "valeur": "Guatemala"}
+{"entite": "Teide", "valeur": "Espagne"}
+{"entite": "Teishi Knoll", "valeur": "Japon"}
+{"entite": "Tekletunup", "valeur": "Russie"}
+{"entite": "Tel Juhader", "valeur": "Israël"}
+{"entite": "Telekis Volcano", "valeur": "Kenya"}
+{"entite": "Telica", "valeur": "Nicaragua"}
+{"entite": "Telomoyo", "valeur": "Indonésie"}
+{"entite": "Templeton Mountain", "valeur": "États-Unis"}
+{"entite": "Teneguía", "valeur": "Espagne"}
+{"entite": "Tenorio", "valeur": "Costa Rica"}
+{"entite": "Terpuk", "valeur": "Russie"}
+{"entite": "Tetlalmanche Volcano", "valeur": "Mexique"}
+{"entite": "The Devil's Swamp", "valeur": "Roumanie"}
+{"entite": "the mountain Rudnik", "valeur": "Serbie"}
+{"entite": "The priest's Bath", "valeur": "Suède"}
+{"entite": "The Saucer", "valeur": "Canada"}
+{"entite": "The Volcano", "valeur": "Canada"}
+{"entite": "The Wart", "valeur": "États-Unis"}
+{"entite": "Thera", "valeur": "Grèce"}
+{"entite": "Thordarhyrna", "valeur": "Islande"}
+{"entite": "Three Sisters", "valeur": "États-Unis"}
+{"entite": "Ticsani", "valeur": "Pérou"}
+{"entite": "Tigilsky", "valeur": "Russie"}
+{"entite": "Le Tigre", "valeur": "Honduras"}
+{"entite": "Tilmyg", "valeur": "Russie"}
+{"entite": "Tilocalar", "valeur": "Chili"}
+{"entite": "Timi", "valeur": "Tchad"}
+{"entite": "Tin Zaouatene volcanic field", "valeur": "Mali"}
+{"entite": "Tindfjallajökull", "valeur": "Islande"}
+{"entite": "Tinguiririca", "valeur": "Chili"}
+{"entite": "Titan Ridge Volcano", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Tizdar", "valeur": "Russie"}
+{"entite": "Tjornes Fracture Zone", "valeur": "Islande"}
+{"entite": "Tlevak Strait-Suemez Is.", "valeur": "États-Unis"}
+{"entite": "Toba", "valeur": "Indonésie"}
+{"entite": "Tobaru", "valeur": "Indonésie"}
+{"entite": "Tobeltsen", "valeur": "Russie"}
+{"entite": "Tolbatchik", "valeur": "Russie"}
+{"entite": "Tolguaca", "valeur": "Chili"}
+{"entite": "Tolimán", "valeur": "Guatemala"}
+{"entite": "Tolmatchev (volcan)", "valeur": "Russie"}
+{"entite": "Tombel Graben", "valeur": "Cameroun"}
+{"entite": "Tönches-Berg", "valeur": "Allemagne"}
+{"entite": "Tongkoko", "valeur": "Indonésie"}
+{"entite": "Tonoshike Nupuri", "valeur": "Japon"}
+{"entite": "Torağay", "valeur": "Azerbaïdjan"}
+{"entite": "Tore", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Torfajökull", "valeur": "Islande"}
+{"entite": "Toroeng Prong", "valeur": "Vietnam"}
+{"entite": "Tortuguero Volcano", "valeur": "Costa Rica"}
+{"entite": "Tosamoshibe", "valeur": "Japon"}
+{"entite": "Tower Hill", "valeur": "Australie"}
+{"entite": "Traitor's Head", "valeur": "Vanuatu"}
+{"entite": "Tres Vírgenes", "valeur": "Mexique"}
+{"entite": "Tri Sestry", "valeur": "Russie"}
+{"entite": "Triplex Cone", "valeur": "Canada"}
+{"entite": "Tristan da Cunha", "valeur": "Royaume-Uni"}
+{"entite": "Trölladyngja", "valeur": "Islande"}
+{"entite": "Trosky", "valeur": "Tchéquie"}
+{"entite": "Truc de Redounel", "valeur": "France"}
+{"entite": "Tshepe", "valeur": "Russie"}
+{"entite": "Tshibinda", "valeur": "République démocratique du Congo"}
+{"entite": "Tsubouchi Knolls", "valeur": "Japon"}
+{"entite": "Tumble Buttes", "valeur": "États-Unis"}
+{"entite": "Tumrok", "valeur": "Russie"}
+{"entite": "Tundra (volcano)", "valeur": "Russie"}
+{"entite": "Tungnafellsjökull", "valeur": "Islande"}
+{"entite": "Tungurahua", "valeur": "Équateur"}
+{"entite": "Tunupa", "valeur": "Bolivie"}
+{"entite": "Tunupilyanum", "valeur": "Russie"}
+{"entite": "Tupungatito", "valeur": "Chili"}
+{"entite": "Tupungato", "valeur": "Argentine"}
+{"entite": "Turó d'en Guilana", "valeur": "Espagne"}
+{"entite": "Turrialba", "valeur": "Costa Rica"}
+{"entite": "Tuta de Colltort volcano", "valeur": "Espagne"}
+{"entite": "Tutupaca", "valeur": "Pérou"}
+{"entite": "Tuzo Wilson Seamounts", "valeur": "Canada"}
+{"entite": "Tweed Volcano", "valeur": "Australie"}
+{"entite": "Twin Cone", "valeur": "Canada"}
+{"entite": "Twitunup", "valeur": "Russie"}
+{"entite": "Tyatya", "valeur": "Russie"}
+{"entite": "Tynua", "valeur": "Russie"}
+{"entite": "Ubinas", "valeur": "Pérou"}
+{"entite": "Udokan Plateau", "valeur": "Russie"}
+{"entite": "Ugashik-Peulik", "valeur": "États-Unis"}
+{"entite": "Uksichan", "valeur": "Russie"}
+{"entite": "Ulawun", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Ulvaney", "valeur": "Russie"}
+{"entite": "Unana", "valeur": "Russie"}
+{"entite": "Ungaran", "valeur": "Indonésie"}
+{"entite": "Unnamed lava dome", "valeur": "États-Unis"}
+{"entite": "Unnamed pyroclastic cone", "valeur": "Éthiopie"}
+{"entite": "Unnamed submarine volcano", "valeur": "Philippines"}
+{"entite": "Unnamed volcanic shield", "valeur": "Russie"}
+{"entite": "Upper Becker Creek Cone", "valeur": "Canada"}
+{"entite": "Urðarháls", "valeur": "Islande"}
+{"entite": "Uratman", "valeur": "Russie"}
+{"entite": "Ureparapara", "valeur": "Vanuatu"}
+{"entite": "Ushishir", "valeur": "Russie"}
+{"entite": "Utsukushigahara", "valeur": "Japon"}
+{"entite": "Uturuncu", "valeur": "Bolivie"}
+{"entite": "Uvo-Bukovec", "valeur": "Macédoine du Nord"}
+{"entite": "Uwayrid, Harrat", "valeur": "Arabie saoudite"}
+{"entite": "Vaðalda", "valeur": "Islande"}
+{"entite": "Valy", "valeur": "Tchéquie"}
+{"entite": "Vasov Grad", "valeur": "Macédoine du Nord"}
+{"entite": "Veer", "valeur": "Russie"}
+{"entite": "Veitskopf", "valeur": "Allemagne"}
+{"entite": "Velký Roudný", "valeur": "Tchéquie"}
+{"entite": "Venušina sopka", "valeur": "Tchéquie"}
+{"entite": "Verkhne-Paratunsky thermal springs", "valeur": "Russie"}
+{"entite": "Vestmannaeyjar", "valeur": "Islande"}
+{"entite": "Vésuve", "valeur": "Italie"}
+{"entite": "Vetrovyi Volcano", "valeur": "Russie"}
+{"entite": "Vetzberg", "valeur": "Allemagne"}
+{"entite": "Victory", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Vikraborgir", "valeur": "Islande"}
+{"entite": "Villarrica", "valeur": "Chili"}
+{"entite": "Vinařická hora Vinařice u Kladna", "valeur": "Tchéquie"}
+{"entite": "Visoke", "valeur": "République démocratique du Congo"}
+{"entite": "Vladař", "valeur": "Tchéquie"}
+{"entite": "Vodorazdelny Volcano", "valeur": "Russie"}
+{"entite": "Vogelsberg", "valeur": "Allemagne"}
+{"entite": "Volacn Cohuazalo", "valeur": "Mexique"}
+{"entite": "Volcà de Claperols", "valeur": "Espagne"}
+{"entite": "Volcà de Gengí", "valeur": "Espagne"}
+{"entite": "Volcà de la Banya del Boc", "valeur": "Espagne"}
+{"entite": "Volcà de la Crosa", "valeur": "Espagne"}
+{"entite": "Volcà de Repàs", "valeur": "Espagne"}
+{"entite": "Volcà de Repassot", "valeur": "Espagne"}
+{"entite": "Volcà de Sant Marc", "valeur": "Espagne"}
+{"entite": "Volcà del Cairat", "valeur": "Espagne"}
+{"entite": "Volcà del Puig de Mar", "valeur": "Espagne"}
+{"entite": "Volcà del Traiter", "valeur": "Espagne"}
+{"entite": "Volcán Aholo", "valeur": "Mexique"}
+{"entite": "Volcán Ahuazatepel", "valeur": "Mexique"}
+{"entite": "volcan Albain", "valeur": "Italie"}
+{"entite": "Volcán Amoloc", "valeur": "Mexique"}
+{"entite": "volcan Antofagasta", "valeur": "Argentine"}
+{"entite": "Volcán Apoyeque", "valeur": "Nicaragua"}
+{"entite": "Volcán Atlalcorra", "valeur": "Mexique"}
+{"entite": "Volcán Auvernia", "valeur": "Argentine"}
+{"entite": "Volcán Azul", "valeur": "Nicaragua"}
+{"entite": "volcan Baranovski", "valeur": "Russie"}
+{"entite": "Volcán Cacadeperro", "valeur": "Mexique"}
+{"entite": "Volcan Cacho Negro", "valeur": "Costa Rica"}
+{"entite": "Volcán Cajete", "valeur": "Mexique"}
+{"entite": "Volcán Callaqui", "valeur": "Chili"}
+{"entite": "Volcan Carihuairazo", "valeur": "Équateur"}
+{"entite": "Volcán Casita", "valeur": "Nicaragua"}
+{"entite": "Volcan Ceniza", "valeur": "Mexique"}
+{"entite": "Volcan Cerro Blanco", "valeur": "Mexique"}
+{"entite": "Volcán Cerro Machín", "valeur": "Colombie"}
+{"entite": "Volcan Cerro Negro", "valeur": "Nicaragua"}
+{"entite": "Volcán Chalchihuites", "valeur": "Mexique"}
+{"entite": "Volcán Challhue Mauras", "valeur": "Pérou"}
+{"entite": "Volcán Chilcayoc Grande", "valeur": "Pérou"}
+{"entite": "Volcán Chiltepe", "valeur": "Nicaragua"}
+{"entite": "volcan Colorado", "valeur": "Chili"}
+{"entite": "Volcan Corazón", "valeur": "Équateur"}
+{"entite": "Volcan Coronado", "valeur": "Mexique"}
+{"entite": "Volcán Cuatepel", "valeur": "Mexique"}
+{"entite": "Volcán Cuatzontle", "valeur": "Mexique"}
+{"entite": "Volcán Cuautl", "valeur": "Mexique"}
+{"entite": "volcan d'Agde", "valeur": "France"}
+{"entite": "volcan d'Agnano", "valeur": "Italie"}
+{"entite": "volcan d'Urzelina", "valeur": "Portugal"}
+{"entite": "Volcán de Agua", "valeur": "Guatemala"}
+{"entite": "volcan de boue de Bledug Kuwu", "valeur": "Indonésie"}
+{"entite": "volcan de boue de Lökbatan", "valeur": "Azerbaïdjan"}
+{"entite": "Volcán de Cerro Gordo", "valeur": "Espagne"}
+{"entite": "Volcán de Cochiquito", "valeur": "Argentine"}
+{"entite": "Volcán de Fuego", "valeur": "Guatemala"}
+{"entite": "Volcán de La Atalaya", "valeur": "Espagne"}
+{"entite": "Volcan de la Canya", "valeur": "Espagne"}
+{"entite": "volcan de la Deseada", "valeur": "Espagne"}
+{"entite": "volcan de la Garrinada", "valeur": "Espagne"}
+{"entite": "Volcán de La Mesnera", "valeur": "Espagne"}
+{"entite": "volcan de Laach", "valeur": "Allemagne"}
+{"entite": "volcan de Pujalós", "valeur": "Espagne"}
+{"entite": "Volcán de San Juan", "valeur": "Espagne"}
+{"entite": "Volcán de Sanaré", "valeur": "Venezuela"}
+{"entite": "volcan de Santa Margarida", "valeur": "Espagne"}
+{"entite": "Volcán de Siete Fuentes", "valeur": "Espagne"}
+{"entite": "Volcán del Aire", "valeur": "Mexique"}
+{"entite": "Volcán del Alhorín", "valeur": "Espagne"}
+{"entite": "Volcán del Manantial", "valeur": "Argentine"}
+{"entite": "volcan des Alizés", "valeur": "France"}
+{"entite": "Volcan des Bisaroques", "valeur": "Espagne"}
+{"entite": "Volcán Dolo", "valeur": "Argentine"}
+{"entite": "volcan Domuyo", "valeur": "Argentine"}
+{"entite": "volcan du Croscat", "valeur": "Espagne"}
+{"entite": "volcan du Diable", "valeur": "France"}
+{"entite": "volcan du Montolivet", "valeur": "Espagne"}
+{"entite": "volcan du Montsacopa", "valeur": "Espagne"}
+{"entite": "volcan du Puig de la Garsa", "valeur": "Espagne"}
+{"entite": "Volcán Ecuador", "valeur": "Équateur"}
+{"entite": "Volcán El Caballito", "valeur": "Mexique"}
+{"entite": "Volcán El Ciguatepe", "valeur": "Nicaragua"}
+{"entite": "Volcán El Comal Chico", "valeur": "Mexique"}
+{"entite": "Volcán El Comalito", "valeur": "Mexique"}
+{"entite": "Volcán El Estribo", "valeur": "Mexique"}
+{"entite": "Volcán El Hoyo", "valeur": "Mexique"}
+{"entite": "Volcán El Jinete", "valeur": "Argentine"}
+{"entite": "Volcán El Jorullo", "valeur": "Mexique"}
+{"entite": "Volcán El Malacate", "valeur": "Mexique"}
+{"entite": "Volcán El Molcajete", "valeur": "Mexique"}
+{"entite": "Volcán El Planchon", "valeur": "Argentine"}
+{"entite": "Volcán El Quilotzi", "valeur": "Mexique"}
+{"entite": "Volcán El Tepalcate", "valeur": "Mexique"}
+{"entite": "Volcán El Tezontle", "valeur": "Mexique"}
+{"entite": "Volcán Elisabeth", "valeur": "Argentine"}
+{"entite": "Volcán Emerenciano", "valeur": "Mexique"}
+{"entite": "Volcán  Evermakk", "valeur": "États-Unis"}
+{"entite": "Volcán Gordo", "valeur": "Mexique"}
+{"entite": "Volcán Huehuel", "valeur": "Mexique"}
+{"entite": "Volcán Huehuelcon", "valeur": "Mexique"}
+{"entite": "Volcán Huipilo", "valeur": "Mexique"}
+{"entite": "Volcán Jechapita", "valeur": "Pérou"}
+{"entite": "Volcán Jenchaña", "valeur": "Pérou"}
+{"entite": "Volcán Jumento", "valeur": "Mexique"}
+{"entite": "Volcán Juncal", "valeur": "Argentine"}
+{"entite": "Volcan Karibumba", "valeur": "République démocratique du Congo"}
+{"entite": "Volcán La Caldera", "valeur": "Mexique"}
+{"entite": "Volcán La Comalera", "valeur": "Mexique"}
+{"entite": "Volcán La Cumbre", "valeur": "Équateur"}
+{"entite": "Volcán La Erita", "valeur": "Mexique"}
+{"entite": "Volcán La Silva", "valeur": "Mexique"}
+{"entite": "Volcán La Tinaja", "valeur": "Mexique"}
+{"entite": "Volcán Las Pilas", "valeur": "Nicaragua"}
+{"entite": "Volcán Malacatepetl", "valeur": "Mexique"}
+{"entite": "Volcán Man Nal", "valeur": "Mexique"}
+{"entite": "Volcán Manteca", "valeur": "Mexique"}
+{"entite": "Volcán Marhuas", "valeur": "Pérou"}
+{"entite": "Volcán Mazcuta", "valeur": "Mexique"}
+{"entite": "Volcán Misahuana Mauras", "valeur": "Pérou"}
+{"entite": "Volcán Momotombito", "valeur": "Nicaragua"}
+{"entite": "Volcán Momotombo", "valeur": "Nicaragua"}
+{"entite": "Volcán Moyocalco", "valeur": "Mexique"}
+{"entite": "Volcán Negro", "valeur": "Argentine"}
+{"entite": "Volcán Nuevo", "valeur": "Chili"}
+{"entite": "Volcán Ocoxusco", "valeur": "Mexique"}
+{"entite": "Volcán Ocusacayo", "valeur": "Mexique"}
+{"entite": "Volcán Pabellón Mauras", "valeur": "Pérou"}
+{"entite": "Volcán Pajonal", "valeur": "Mexique"}
+{"entite": "Volcán Pihuel", "valeur": "Argentine"}
+{"entite": "Volcán Piripitillo", "valeur": "Mexique"}
+{"entite": "Volcán Porvenir", "valeur": "Costa Rica"}
+{"entite": "Volcan Prieto", "valeur": "Mexique"}
+{"entite": "Volcan Puntas Negras", "valeur": "Chili"}
+{"entite": "Volcán Quimixtepec", "valeur": "Mexique"}
+{"entite": "Volcán Quinsachata", "valeur": "Pérou"}
+{"entite": "Volcán Quizapú", "valeur": "Chili"}
+{"entite": "Volcán Rancho Seco", "valeur": "Mexique"}
+{"entite": "Volcán Reventador", "valeur": "Équateur"}
+{"entite": "Volcán Rojo", "valeur": "Argentine"}
+{"entite": "Volcan Rumiñahui", "valeur": "Équateur"}
+{"entite": "Volcán Sajo", "valeur": "Mexique"}
+{"entite": "Volcán San Bartolo", "valeur": "Mexique"}
+{"entite": "Volcán San Cristóbal", "valeur": "Nicaragua"}
+{"entite": "Volcán San Isidro", "valeur": "Mexique"}
+{"entite": "Volcán San Jacinto", "valeur": "Nicaragua"}
+{"entite": "Volcán San Juan", "valeur": "Mexique"}
+{"entite": "Volcán San Miguel", "valeur": "Mexique"}
+{"entite": "Volcán Santa Clara", "valeur": "Nicaragua"}
+{"entite": "Volcán Santa de Mezapa", "valeur": "Mexique"}
+{"entite": "Volcán Santa María", "valeur": "Argentine"}
+{"entite": "Volcán Santiago", "valeur": "Nicaragua"}
+{"entite": "Volcán Sapicho", "valeur": "Mexique"}
+{"entite": "Volcán Seco", "valeur": "Mexique"}
+{"entite": "volcan Tateyama", "valeur": "Japon"}
+{"entite": "Volcán Tatio", "valeur": "Chili"}
+{"entite": "Volcán Teconto", "valeur": "Mexique"}
+{"entite": "Volcán Tehualtepec", "valeur": "Mexique"}
+{"entite": "Volcán Tepetzingo", "valeur": "Mexique"}
+{"entite": "Volcán Tetzacoatl", "valeur": "Mexique"}
+{"entite": "Volcán Texontepec", "valeur": "Mexique"}
+{"entite": "Volcán Texoxocol", "valeur": "Mexique"}
+{"entite": "Volcán Tezontle", "valeur": "Mexique"}
+{"entite": "Volcán Tioca", "valeur": "Mexique"}
+{"entite": "Volcán Tlapexcua", "valeur": "Mexique"}
+{"entite": "Volcán Tomasquillo", "valeur": "Mexique"}
+{"entite": "Volcán Toxtepec", "valeur": "Mexique"}
+{"entite": "Volcán Tres Cruces", "valeur": "Mexique"}
+{"entite": "Volcán Tres Picos", "valeur": "Argentine"}
+{"entite": "volcan Tromen", "valeur": "Argentine"}
+{"entite": "Volcán Tulmiac", "valeur": "Mexique"}
+{"entite": "Volcán Tungurahua", "valeur": "Équateur"}
+{"entite": "Volcán Tutupaca", "valeur": "Pérou"}
+{"entite": "Volcán Tuxtepec", "valeur": "Mexique"}
+{"entite": "Volcan W", "valeur": "Nouvelle-Zélande"}
+{"entite": "Volcán Xictle", "valeur": "Mexique"}
+{"entite": "Volcán Xictontle", "valeur": "Mexique"}
+{"entite": "Volcán Xistune", "valeur": "Mexique"}
+{"entite": "Volcán Yana Mauras", "valeur": "Pérou"}
+{"entite": "Volcán Yecahuazac", "valeur": "Mexique"}
+{"entite": "Volcán Yololica", "valeur": "Mexique"}
+{"entite": "Volcán Yucamane", "valeur": "Pérou"}
+{"entite": "Volcán Zapatera", "valeur": "Nicaragua"}
+{"entite": "Volcán Zompole", "valeur": "Mexique"}
+{"entite": "Volcán Zoyazal", "valeur": "Mexique"}
+{"entite": "Volcanes Chilcayoc", "valeur": "Pérou"}
+{"entite": "Volcánes Cuates", "valeur": "Mexique"}
+{"entite": "Volcanes Los Callos", "valeur": "Argentine"}
+{"entite": "Volcanes los Otates", "valeur": "Mexique"}
+{"entite": "Volcano Island", "valeur": "Philippines"}
+{"entite": "Volcano of Milos", "valeur": "Grèce"}
+{"entite": "Volcanoes in the Philippines", "valeur": "Philippines"}
+{"entite": "volcanoes of the Leizhou Peninsula", "valeur": "République populaire de Chine"}
+{"entite": "Volcans de Cabrioler", "valeur": "Espagne"}
+{"entite": "volcans de Datun", "valeur": "Taïwan"}
+{"entite": "Vrabinec", "valeur": "Tchéquie"}
+{"entite": "Vulcan Neozhidannyy", "valeur": "Russie"}
+{"entite": "Vulcanello", "valeur": "Italie"}
+{"entite": "Vulcano", "valeur": "Italie"}
+{"entite": "Vulkan Blesaka", "valeur": "Russie"}
+{"entite": "Vulkan Ketoy", "valeur": "Russie"}
+{"entite": "Vulkan Massa", "valeur": "Russie"}
+{"entite": "Vulkan Novo-Bakening", "valeur": "Russie"}
+{"entite": "Vulkan Poputnyy", "valeur": "Russie"}
+{"entite": "Vulkan Taketomi", "valeur": "Russie"}
+{"entite": "Vulkan Trezubets", "valeur": "Russie"}
+{"entite": "Vulkan Ushkovskiy", "valeur": "Russie"}
+{"entite": "Vulkan Yermak", "valeur": "Japon"}
+{"entite": "Vulkan Zhupanovskaya Sopka", "valeur": "Russie"}
+{"entite": "Wachenberg", "valeur": "Allemagne"}
+{"entite": "Wai Sano", "valeur": "Indonésie"}
+{"entite": "Waiowa", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Waitomokia", "valeur": "Nouvelle-Zélande"}
+{"entite": "Wakamiko", "valeur": "Japon"}
+{"entite": "Walkout Creek Cone", "valeur": "Canada"}
+{"entite": "Wapi Lava Field", "valeur": "États-Unis"}
+{"entite": "Washiba-Kumonotaira", "valeur": "Japon"}
+{"entite": "Wayang-Windu", "valeur": "Indonésie"}
+{"entite": "Wechecha", "valeur": "Éthiopie"}
+{"entite": "Welirang", "valeur": "Indonésie"}
+{"entite": "West Eifel Volcanic Field", "valeur": "Allemagne"}
+{"entite": "West Molokai Volcano", "valeur": "États-Unis"}
+{"entite": "Western Baraniy", "valeur": "Russie"}
+{"entite": "Whakamuhu / Glover Park", "valeur": "Nouvelle-Zélande"}
+{"entite": "Whakatāne Seamount", "valeur": "Nouvelle-Zélande"}
+{"entite": "White Chuck Cinder Cone", "valeur": "États-Unis"}
+{"entite": "Wilis", "valeur": "Indonésie"}
+{"entite": "Williams Crater", "valeur": "États-Unis"}
+{"entite": "Wilsberg", "valeur": "Allemagne"}
+{"entite": "Witori", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Wolf", "valeur": "Équateur"}
+{"entite": "Wonchi", "valeur": "Éthiopie"}
+{"entite": "Wudalianchi", "valeur": "République populaire de Chine"}
+{"entite": "Wurlali", "valeur": "Indonésie"}
+{"entite": "Yanpat", "valeur": "Russie"}
+{"entite": "Yantarni Volcano", "valeur": "États-Unis"}
+{"entite": "Yanteles", "valeur": "Chili"}
+{"entite": "Yasur", "valeur": "Vanuatu"}
+{"entite": "Yate", "valeur": "Chili"}
+{"entite": "Yavinsky", "valeur": "Russie"}
+{"entite": "Yavinsky ridge", "valeur": "Russie"}
+{"entite": "Yelia", "valeur": "Papouasie-Nouvelle-Guinée"}
+{"entite": "Yellow (volcano)", "valeur": "Russie"}
+{"entite": "Yellowstone Plateau Volcanic Field", "valeur": "États-Unis"}
+{"entite": "Yelovsky Volcano", "valeur": "Russie"}
+{"entite": "Yeongari", "valeur": "Corée du Sud"}
+{"entite": "Yersey", "valeur": "Indonésie"}
+{"entite": "Yonemaru-Sumiyoshiike", "valeur": "Japon"}
+{"entite": "Yucamane", "valeur": "Pérou"}
+{"entite": "Yufu-Tsurumi", "valeur": "Japon"}
+{"entite": "Yuhualixqui", "valeur": "Mexique"}
+{"entite": "Zaoziornyj", "valeur": "Russie"}
+{"entite": "Zarechny", "valeur": "Russie"}
+{"entite": "Zavaritski", "valeur": "Russie"}
+{"entite": "Zavaritsky", "valeur": "Russie"}
+{"entite": "Železná hůrka", "valeur": "Tchéquie"}
+{"entite": "Zendan-e Soleyman", "valeur": "Iran"}
+{"entite": "Zheltovsky", "valeur": "Russie"}
+{"entite": "Zhirovskoy", "valeur": "Russie"}
+{"entite": "Zhuzi Mountain", "valeur": "Taïwan"}
+{"entite": "Zitácuaro-Valle de Bravo", "valeur": "Mexique"}

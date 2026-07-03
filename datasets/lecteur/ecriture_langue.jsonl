@@ -1,0 +1,21 @@
+{"_relation": "ecriture_langue", "_categorie": "convention", "_source": "linguistique de référence (langue -> système d'écriture)", "_articles": true}
+{"entite": "allemand", "valeur": "alphabet latin"}
+{"entite": "anglais", "valeur": "alphabet latin"}
+{"entite": "arabe", "valeur": "alphabet arabe"}
+{"entite": "arménien", "valeur": "alphabet arménien"}
+{"entite": "bulgare", "valeur": "alphabet cyrillique"}
+{"entite": "chinois", "valeur": "sinogrammes"}
+{"entite": "coréen", "valeur": "hangeul"}
+{"entite": "espagnol", "valeur": "alphabet latin"}
+{"entite": "français", "valeur": "alphabet latin"}
+{"entite": "géorgien", "valeur": "alphabet géorgien"}
+{"entite": "grec", "valeur": "alphabet grec"}
+{"entite": "hébreu", "valeur": "alphabet hébreu"}
+{"entite": "hindi", "valeur": "devanagari"}
+{"entite": "italien", "valeur": "alphabet latin"}
+{"entite": "japonais", "valeur": "kanji et kana"}
+{"entite": "persan", "valeur": "alphabet arabe"}
+{"entite": "russe", "valeur": "alphabet cyrillique"}
+{"entite": "serbe", "valeur": "alphabet cyrillique"}
+{"entite": "thaï", "valeur": "alphabet thaï"}
+{"entite": "turc", "valeur": "alphabet latin"}

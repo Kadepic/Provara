@@ -1,0 +1,4 @@
+{"_relation": "stimulus_taxie", "_categorie": "physique", "_source": "Modèle (Claude) — biologie textbook curée (taxie -> stimulus ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "chimiotaxie", "valeur": "substances chimiques"}
+{"entite": "phototaxie", "valeur": "lumière"}
+{"entite": "thermotaxie", "valeur": "température"}

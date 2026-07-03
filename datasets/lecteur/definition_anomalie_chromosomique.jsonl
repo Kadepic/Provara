@@ -1,0 +1,3 @@
+{"_relation": "definition_anomalie_chromosomique", "_categorie": "physique", "_source": "Modèle (Claude) — génétique textbook curée (anomalie chromosomique -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "monosomie", "valeur": "absence d'un chromosome"}
+{"entite": "trisomie", "valeur": "présence d'un chromosome surnuméraire"}

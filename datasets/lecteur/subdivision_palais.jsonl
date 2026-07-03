@@ -1,0 +1,800 @@
+{"_relation": "subdivision_palais", "_categorie": "physique", "_source": "Wikidata/QLever — subdivision_palais P131, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "18 Prešeren Street", "valeur": "municipalité de Ljubljana"}
+{"entite": "9–11 Prešeren Street", "valeur": "municipalité de Ljubljana"}
+{"entite": "9 de Julho Palace", "valeur": "São Paulo"}
+{"entite": "Administrative Palace in Suceava", "valeur": "Suceava"}
+{"entite": "Adriatica-Trieste Society Palace", "valeur": "Bucarest"}
+{"entite": "Ahinski Palace", "valeur": "Hrodna"}
+{"entite": "Ain Al-Hawas Palace", "valeur": "Jawf"}
+{"entite": "Akwamufie Palace", "valeur": "Région Orientale"}
+{"entite": "Al-Faw Palace", "valeur": "Bagdad"}
+{"entite": "Al-Gawhara Palace", "valeur": "gouvernorat du Caire"}
+{"entite": "Al-Hussainiya Palace", "valeur": "Amman"}
+{"entite": "Al-Matbakh al-Ajami", "valeur": "Alep"}
+{"entite": "Al Sakkaf Palace", "valeur": "La Mecque"}
+{"entite": "Al Zaqura Building", "valeur": "Bagdad"}
+{"entite": "Alaafin of Oyo Palace", "valeur": "Oyo"}
+{"entite": "Alake of Egbaland Palace", "valeur": "Ogun"}
+{"entite": "Alake Palace Ground", "valeur": "Ogun"}
+{"entite": "Albrechtsches Palais", "valeur": "Saxe-Anhalt"}
+{"entite": "Alcázar de los Bejarano", "valeur": "Trujillo"}
+{"entite": "Alexan Pasha Palace", "valeur": "Assiout"}
+{"entite": "Alexis Palace", "valeur": "Saint-Pétersbourg"}
+{"entite": "Alte Residenz", "valeur": "Salzbourg"}
+{"entite": "Alwatzikoebillah Place", "valeur": "Kalimantan occidental"}
+{"entite": "ancien palais épiscopal d'Angra do Heroísmo", "valeur": "Açores"}
+{"entite": "Annenhof maison", "valeur": "Saint-Pétersbourg"}
+{"entite": "Apollo palace", "valeur": "Mureș"}
+{"entite": "Archbishop Palace of Utrecht", "valeur": "Utrecht"}
+{"entite": "archbishop's palace (Mérida)", "valeur": "Mérida"}
+{"entite": "Argungu Emir's Palace", "valeur": "Kebbi"}
+{"entite": "Arnsteinsches Gartenpalais", "valeur": "Vienne"}
+{"entite": "Arribi jauregia", "valeur": "Durango"}
+{"entite": "As-Safa palace", "valeur": "Alexandrie"}
+{"entite": "As-Salam Palace", "valeur": "Bagdad"}
+{"entite": "Auersperg Palace", "valeur": "municipalité de Ljubljana"}
+{"entite": "Azad Palace Okene", "valeur": "Kogi"}
+{"entite": "Bagh-e Bala Palace", "valeur": "Kaboul"}
+{"entite": "Balchik Palace", "valeur": "Dobritch"}
+{"entite": "Banque de Commerce Extérieur", "valeur": "Bucarest"}
+{"entite": "Bara Katra", "valeur": "Dhaka"}
+{"entite": "Barrenkale 10 etxea", "valeur": "Durango"}
+{"entite": "bâtiment de l'Assemblée nationale", "valeur": "municipalité de Ljubljana"}
+{"entite": "Batorówka Palace in Grodno", "valeur": "Hrodna"}
+{"entite": "Belvederis Manor", "valeur": "Jurbarkas"}
+{"entite": "Beržėnai Manor", "valeur": "Kelmė"}
+{"entite": "Besenghi degli Ughi Palace", "valeur": "municipalité d'Izola"}
+{"entite": "Bezborodko Palace", "valeur": "Saint-Pétersbourg"}
+{"entite": "Bichi Emirate", "valeur": "Kano"}
+{"entite": "Big Café", "valeur": "Maribor"}
+{"entite": "Bishop's House", "valeur": "Kingston"}
+{"entite": "Bishop's House (Catholic)", "valeur": "Région d'Auckland"}
+{"entite": "Bishop's Palace", "valeur": "Texas"}
+{"entite": "Bogdan Saray", "valeur": "Istanbul"}
+{"entite": "Brown Palace", "valeur": "Oulan-Bator"}
+{"entite": "Building of the Executive Authority of the Baku City", "valeur": "Bakou"}
+{"entite": "Buratti Palace", "valeur": "Zagreb"}
+{"entite": "Calea Victoriei 23, Bucharest", "valeur": "Bucarest"}
+{"entite": "Cantacuzino-Pașcanu mansion in Ceplenița, Iași", "valeur": "Județ de Iași"}
+{"entite": "Casa Broggi", "valeur": "Lombardie"}
+{"entite": "Casa de don Agustín de Castro, Montevideo", "valeur": "Montevideo"}
+{"entite": "Casa del Fascio", "valeur": "Alexandrie"}
+{"entite": "Casa del Mutilato", "valeur": "Alexandrie"}
+{"entite": "Casa do Arco do Bispo", "valeur": "Castelo Branco"}
+{"entite": "Casa Goicoechea", "valeur": "Navarre"}
+{"entite": "Casa Quinta Aurelio Berro", "valeur": "Montevideo"}
+{"entite": "Castelul Thury-Bányai", "valeur": "Covasna"}
+{"entite": "Castillo Rospigliosi", "valeur": "Lima"}
+{"entite": "Category:Palača Herzer (Varaždin)", "valeur": "Varaždin"}
+{"entite": "Category:Palača Zagrebačkog kaptola (Varaždin)", "valeur": "Varaždin"}
+{"entite": "Centre historique de Sheki avec le palais du Khan", "valeur": "Chaki"}
+{"entite": "Changdeokgung", "valeur": "Séoul"}
+{"entite": "Changgyeonggung", "valeur": "Séoul"}
+{"entite": "château d'Eggenberg", "valeur": "Styrie"}
+{"entite": "château de Berlin", "valeur": "Berlin"}
+{"entite": "château de Chapultepec", "valeur": "Mexico"}
+{"entite": "château de Dönhoffstädt", "valeur": "voïvodie de Varmie-Mazurie"}
+{"entite": "Château de la Montagne", "valeur": "Saint-Peter Basseterre"}
+{"entite": "château de Meung-sur-Loire", "valeur": "Centre-Val de Loire"}
+{"entite": "château de Niasvij", "valeur": "voblast de Minsk"}
+{"entite": "château de Schlobitten", "valeur": "voïvodie de Varmie-Mazurie"}
+{"entite": "Château de Versoix", "valeur": "canton de Genève"}
+{"entite": "château des Ingénieurs", "valeur": "Saint-Pétersbourg"}
+{"entite": "château des Teleki à Dovhe", "valeur": "oblast de Transcarpatie"}
+{"entite": "château épiscopal de Coire", "valeur": "canton des Grisons"}
+{"entite": "château épiscopal de Fürstenau", "valeur": "canton des Grisons"}
+{"entite": "Cheng Qian Palace", "valeur": "Pékin"}
+{"entite": "Chiemseehof", "valeur": "Salzbourg"}
+{"entite": "Chraptovič Palace", "valeur": "Hrodna"}
+{"entite": "Cité impériale de Hué", "valeur": "Huế"}
+{"entite": "complexe royal", "valeur": "Belgrade"}
+{"entite": "Constantin Mihail palace", "valeur": "Dolj"}
+{"entite": "consulat d'Iran à Erevan", "valeur": "Erevan"}
+{"entite": "Corps de Logis", "valeur": "Vienne"}
+{"entite": "Count of Arcos Palace", "valeur": "Goiás"}
+{"entite": "Cuiwei Palace", "valeur": "Shaanxi"}
+{"entite": "Curtea Nouă", "valeur": "Bucarest"}
+{"entite": "Czartoryski-Schlössel", "valeur": "Vienne"}
+{"entite": "Damatris Palace", "valeur": "Istanbul"}
+{"entite": "Dar Al Jaziri", "valeur": "Tunis"}
+{"entite": "Dar Aziza", "valeur": "wilaya d'Alger"}
+{"entite": "Dar Bach Hamba", "valeur": "Tunis"}
+{"entite": "Dar Balma", "valeur": "Tunis"}
+{"entite": "Dar Bayram", "valeur": "Tunis"}
+{"entite": "Dar Bayram Turki", "valeur": "Tunis"}
+{"entite": "Dar Bel Cadi", "valeur": "Tunis"}
+{"entite": "Dar Belhassen", "valeur": "Tunis"}
+{"entite": "Dar Belhouane", "valeur": "Tunis"}
+{"entite": "Dar Ben Abdallah", "valeur": "Tunis"}
+{"entite": "Dar Ben Achour", "valeur": "Tunis"}
+{"entite": "Dar Ben Ayed", "valeur": "Tunis"}
+{"entite": "Dar Bou Hachem", "valeur": "Tunis"}
+{"entite": "Dar Bouderbala", "valeur": "Tunis"}
+{"entite": "Dar Bouras", "valeur": "Kairouan"}
+{"entite": "Dar Caïd Essebsi", "valeur": "Tunis"}
+{"entite": "Dar Caïd Nessim Samama", "valeur": "Tunis"}
+{"entite": "Dar Daouletli", "valeur": "Tunis"}
+{"entite": "Dar Djaït", "valeur": "Tunis"}
+{"entite": "Dar Djellouli", "valeur": "Tunis"}
+{"entite": "Dar Echérif", "valeur": "Tunis"}
+{"entite": "Dar El Bey", "valeur": "Tunis"}
+{"entite": "Dar El Haddad", "valeur": "Tunis"}
+{"entite": "Dar El Hamra (Algiers)", "valeur": "wilaya d'Alger"}
+{"entite": "Dar El Hedri", "valeur": "Tunis"}
+{"entite": "Dar El Jeld", "valeur": "Tunis"}
+{"entite": "Dar El Monastiri", "valeur": "Tunis"}
+{"entite": "Dar El Mrabet", "valeur": "Kairouan"}
+{"entite": "Dar Es-Sadaka", "valeur": "wilaya d'Alger"}
+{"entite": "Dar Essouf", "valeur": "wilaya d'Alger"}
+{"entite": "Dar Hammouda Pacha", "valeur": "Tunis"}
+{"entite": "Dar Hassan Pacha", "valeur": "wilaya d'Alger"}
+{"entite": "Dar Hussein", "valeur": "Tunis"}
+{"entite": "Dar Ibn Abi Dhiaf", "valeur": "Tunis"}
+{"entite": "Dar Ibn Khaldoun", "valeur": "Tunis"}
+{"entite": "Dar Jellouli", "valeur": "Sfax"}
+{"entite": "Dar Jouini", "valeur": "Tunis"}
+{"entite": "Dar Khedaoudj el Amia", "valeur": "wilaya d'Alger"}
+{"entite": "Dar Lasram", "valeur": "Tunis"}
+{"entite": "Dar Magroun", "valeur": "Sousse"}
+{"entite": "Dar Mohsen", "valeur": "Tunis"}
+{"entite": "Dar Othman", "valeur": "Tunis"}
+{"entite": "Dar Rajab Pasha", "valeur": "Alep"}
+{"entite": "Dar Zarrouk", "valeur": "Tunis"}
+{"entite": "Dara Juanti Museum", "valeur": "Kalimantan occidental"}
+{"entite": "Daraphirom Palace", "valeur": "Chiang Mai"}
+{"entite": "Dardanelli Residence", "valeur": "Buenos Aires"}
+{"entite": "Dein of Agbor Palace", "valeur": "Delta"}
+{"entite": "Deoksugung", "valeur": "Séoul"}
+{"entite": "Deschan Palace in Timișoara", "valeur": "Timiș"}
+{"entite": "Dicasterial Palace, Timișoara", "valeur": "Timiș"}
+{"entite": "Dietrichsteinský palác", "valeur": "Olomouc"}
+{"entite": "District Head of Rikoto Palace", "valeur": "Kebbi"}
+{"entite": "Diwan Devdi", "valeur": "Telangana"}
+{"entite": "Domaine Royal de Săvârșin", "valeur": "Arad"}
+{"entite": "Dubara Palace", "valeur": "gouvernorat du Caire"}
+{"entite": "Dukla Military Museum", "valeur": "Basses-Carpates"}
+{"entite": "Edificio del Observatorio Meteorológico Municipal", "valeur": "Montevideo"}
+{"entite": "Edificio General Manuel Oribe", "valeur": "Montevideo"}
+{"entite": "Efanowhe Palace Owhelogbo", "valeur": "Delta"}
+{"entite": "El-Salamlek Palace", "valeur": "Alexandrie"}
+{"entite": "Elerin Palace", "valeur": "Osun"}
+{"entite": "Emir of Dutse Palace, Jigawa.", "valeur": "Jigawa"}
+{"entite": "Emir of Zazzau Palace", "valeur": "Kaduna"}
+{"entite": "Emir's Palace Gombe", "valeur": "Gombe"}
+{"entite": "Emir's palace Lafiagi", "valeur": "Kwara"}
+{"entite": "Emiri Diwan", "valeur": "Al Asimah"}
+{"entite": "episcopal palace of Székesfehérvár", "valeur": "Székesfehérvár"}
+{"entite": "Erdödy-Patačić Palace in Varaždin", "valeur": "Varaždin"}
+{"entite": "Euxinograd", "valeur": "Varna"}
+{"entite": "Eze Aro Palace", "valeur": "Abia"}
+{"entite": "Falcões palace", "valeur": "Braga"}
+{"entite": "Falz-Fein Palace", "valeur": "oblast de Kherson"}
+{"entite": "Festsaaltrakt", "valeur": "Vienne"}
+{"entite": "Former Dacia Insurance Building", "valeur": "Bucarest"}
+{"entite": "Former headquarters of the State Fisheries Administration", "valeur": "Tulcea"}
+{"entite": "La Fortaleza", "valeur": "San Juan"}
+{"entite": "Freulerpalast", "valeur": "canton de Glaris"}
+{"entite": "Frisch House", "valeur": "municipalité de Ljubljana"}
+{"entite": "Füchsl Palace, Oradea", "valeur": "Bihor"}
+{"entite": "Gbomgwom Jos Palace", "valeur": "Plateau"}
+{"entite": "Georgenpalais", "valeur": "Nord"}
+{"entite": "German House", "valeur": "Brežice"}
+{"entite": "Ghica Tei Palace", "valeur": "Bucarest"}
+{"entite": "Ghumdan Palace", "valeur": "Sanaa"}
+{"entite": "Gidan Rumfa Palace Kano", "valeur": "Kano"}
+{"entite": "Government Palace", "valeur": "Dili"}
+{"entite": "Governor's Palace", "valeur": "Vitebsk"}
+{"entite": "Goyeneche Palace, Arequipa", "valeur": "Arequipa"}
+{"entite": "Grand Menshikov Palace in Oranienbaum (Russia)", "valeur": "Saint-Pétersbourg"}
+{"entite": "Grassalkovich Palace, Vienna", "valeur": "Vienne"}
+{"entite": "Grigore Sturdza Palace in Iași", "valeur": "Județ de Iași"}
+{"entite": "Gruber Palace", "valeur": "municipalité de Ljubljana"}
+{"entite": "Gurecki Palace", "valeur": "Vilnius"}
+{"entite": "Gyeongungung Palace Yangijae", "valeur": "Séoul"}
+{"entite": "H. Spayer palace", "valeur": "Bucarest"}
+{"entite": "Hajigulular Palace", "valeur": "Choucha"}
+{"entite": "Hohenaschau Castle", "valeur": "Bavière"}
+{"entite": "hôtel de l'Intendance de Saint-Pierre", "valeur": "Saint-Pierre"}
+{"entite": "hôtel de ville de Loja", "valeur": "Loja"}
+{"entite": "House of Scientists (St. Petersburg)", "valeur": "Saint-Pétersbourg"}
+{"entite": "Ibrahim Khalil Khan palace", "valeur": "Choucha"}
+{"entite": "Ibrahim Pasha Palace", "valeur": "Istanbul"}
+{"entite": "Iga Idungaran Palace", "valeur": "Lagos"}
+{"entite": "Igwe Odezuluigbo Palace Nike", "valeur": "Enugu"}
+{"entite": "Igwe Orizu Palace Nnewi", "valeur": "Anambra"}
+{"entite": "Imobiliara Insurance Company building", "valeur": "Bucarest"}
+{"entite": "La Inmobiliaria", "valeur": "Buenos Aires"}
+{"entite": "Irrum Manzil", "valeur": "Telangana"}
+{"entite": "Ishiobiukwu Gedegwum Palace", "valeur": "Imo"}
+{"entite": "Istana Arau", "valeur": "Perlis"}
+{"entite": "Istana Kota Manggalela", "valeur": "Belait"}
+{"entite": "ItaKumari Zamindar Bari", "valeur": "Rangpur"}
+{"entite": "Jakpa Palace", "valeur": "Savannah Region"}
+{"entite": "Jingren Palace", "valeur": "Pékin"}
+{"entite": "Jingyang Palace", "valeur": "Pékin"}
+{"entite": "José Augusto Palace", "valeur": "Natal"}
+{"entite": "Justice Palace in Brașov", "valeur": "Brașov"}
+{"entite": "Kadariah Palace", "valeur": "Kalimantan occidental"}
+{"entite": "Kafes", "valeur": "Istanbul"}
+{"entite": "Kal", "valeur": "Nord"}
+{"entite": "Kaliadeh Palace", "valeur": "Madhya Pradesh"}
+{"entite": "Kall Winam Palace", "valeur": "Nord"}
+{"entite": "Kardynalia palace", "valeur": "Vilnius"}
+{"entite": "Kemény Palace, Kaposvár", "valeur": "Kaposvár"}
+{"entite": "Kerkwalo Palace", "valeur": "Nord"}
+{"entite": "Khadra Palace", "valeur": "Damas"}
+{"entite": "Khawanaq", "valeur": "An-Najaf"}
+{"entite": "Khirbat al-Mafjar", "valeur": "gouvernorat de Jéricho"}
+{"entite": "Khursheed Jah Devdi palace", "valeur": "Telangana"}
+{"entite": "Kibaale Royal palace", "valeur": "Ouest"}
+{"entite": "Kính Thiên Palace", "valeur": "Hanoï"}
+{"entite": "Klungkung Palace", "valeur": "province de Bali"}
+{"entite": "Kolagiri fortress", "valeur": "Basse Kartlie"}
+{"entite": "Kounia Ark", "valeur": "Khorezm"}
+{"entite": "Kraton Ngayogyakarta Hadiningrat", "valeur": "région de Daérah Istiméwa Yogyakarta"}
+{"entite": "Kresija Palace", "valeur": "municipalité de Ljubljana"}
+{"entite": "Krpanova 5 Palace", "valeur": "municipalité d'Izola"}
+{"entite": "Ksar Ben Ayed", "valeur": "Médenine"}
+{"entite": "Ksar Nalut", "valeur": "Nalout"}
+{"entite": "Kushelev-Bezborodko Palace (Gagarinskaya, 3)", "valeur": "Saint-Pétersbourg"}
+{"entite": "Kuthira Malika", "valeur": "Kerala"}
+{"entite": "Kyabazinga palace, Nakabango", "valeur": "Est"}
+{"entite": "Kyabazingas palace at Wanyange", "valeur": "Est"}
+{"entite": "Lariz Dorrea", "valeur": "Durango"}
+{"entite": "Lejarza jauregia", "valeur": "Durango"}
+{"entite": "Lithuanian Theater, Music and Cinema Museum", "valeur": "Municipalité de la ville de Vilnius"}
+{"entite": "Lontovž", "valeur": "municipalité de Ljubljana"}
+{"entite": "Lopacinskiai Palace (Bernardinai st.)", "valeur": "Vilnius"}
+{"entite": "Luwoko Katikamu Masulita", "valeur": "Centre"}
+{"entite": "Mahr House", "valeur": "municipalité de Ljubljana"}
+{"entite": "Maison-Blanche", "valeur": "Washington"}
+{"entite": "maison de Genčić", "valeur": "Belgrade"}
+{"entite": "Maison de Pierre Ier", "valeur": "Riga"}
+{"entite": "Maison Fontanna", "valeur": "Saint-Pétersbourg"}
+{"entite": "maison Hausman", "valeur": "Minsk"}
+{"entite": "Mammad Hasan agha palace", "valeur": "Choucha"}
+{"entite": "Mandarin's House", "valeur": "Macao"}
+{"entite": "Manhean Zongo Chief’s Palace", "valeur": "Grand Accra"}
+{"entite": "manoir de Santa Catarina", "valeur": "Açores"}
+{"entite": "Manor of Wańkowicz family in Minsk", "valeur": "Minsk"}
+{"entite": "Mansion of Ivan Betskoy", "valeur": "Saint-Pétersbourg"}
+{"entite": "Maqʻad Mamay al-Sayfi", "valeur": "gouvernorat du Caire"}
+{"entite": "Maribor Municipal Savings Bank", "valeur": "Maribor"}
+{"entite": "Marincu Palace", "valeur": "Dolj"}
+{"entite": "Marly Palace", "valeur": "Saint-Pétersbourg"}
+{"entite": "Marmorosch Blank Bank Palace", "valeur": "Bucarest"}
+{"entite": "Matica hrvatska Palace", "valeur": "Zagreb"}
+{"entite": "Mayer House", "valeur": "municipalité de Ljubljana"}
+{"entite": "Medem Palace", "valeur": "Jelgava"}
+{"entite": "Melik Haykaz Palace", "valeur": "Latchine"}
+{"entite": "Milko Palace, Szeged", "valeur": "Csongrád-Csanád"}
+{"entite": "Mirror Palace (Yazd)", "valeur": "Yazd"}
+{"entite": "Moti Bagh Palace", "valeur": "Pendjab"}
+{"entite": "Mouqata'a", "valeur": "gouvernorat de Ramallah et Al-Bireh"}
+{"entite": "Municipal Palace of Buenos Aires", "valeur": "Buenos Aires"}
+{"entite": "Murabba Palace", "valeur": "Riyad"}
+{"entite": "musée des beaux-arts de Cluj", "valeur": "Cluj"}
+{"entite": "Museo Civico di Palazzo Cuttica", "valeur": "Alexandrie"}
+{"entite": "Mwenge ancestral Palace", "valeur": "Ouest"}
+{"entite": "Nasuti palaces", "valeur": "Est"}
+{"entite": "National Bank of Romania (old building), Bucharest", "valeur": "Bucarest"}
+{"entite": "National Youth Palace", "valeur": "Tbilissi"}
+{"entite": "Neumann Palace", "valeur": "Arad"}
+{"entite": "Neuschotz Palace (Select Restaurant) in Iași", "valeur": "Județ de Iași"}
+{"entite": "Niavaran Palace", "valeur": "Téhéran"}
+{"entite": "Nikšić Royal Palace", "valeur": "Nikšić"}
+{"entite": "Nouveau château de Hrodna", "valeur": "Hrodna"}
+{"entite": "Obi Dogonu Palace Nnewi", "valeur": "Anambra"}
+{"entite": "Obi of Onitsha Palace", "valeur": "Anambra"}
+{"entite": "Obong of Calabar Palace", "valeur": "Cross River"}
+{"entite": "Ohinoyi of Ebiraland Palace", "valeur": "Kogi"}
+{"entite": "Ojima of Okeluse Palace", "valeur": "Ondo"}
+{"entite": "Olanme of Iyiora Anam palace", "valeur": "Anambra"}
+{"entite": "Old Bishop's Palace in Oslo", "valeur": "Oslo"}
+{"entite": "Old Kaunas Dukes Palace", "valeur": "Kaunas"}
+{"entite": "Olofa of Offa Palace", "valeur": "Kwara"}
+{"entite": "Olowo's Palace", "valeur": "Ondo"}
+{"entite": "Olowu Palace", "valeur": "Ogun"}
+{"entite": "Olu of Olorunsogo Palace", "valeur": "Osun"}
+{"entite": "Olu of Warri Palace", "valeur": "Delta"}
+{"entite": "Olubadan of Ibadan palace", "valeur": "Oyo"}
+{"entite": "Olugbo of Ugbo palace", "valeur": "Ondo"}
+{"entite": "Omukama Palace", "valeur": "Ouest"}
+{"entite": "Onisapa Palace", "valeur": "Oyo"}
+{"entite": "Ooni's palace", "valeur": "Osun"}
+{"entite": "Łopaciński Palace in Vilnius", "valeur": "Municipalité de la ville de Vilnius"}
+{"entite": "Ora Palace Okpuno", "valeur": "Anambra"}
+{"entite": "Oražen Student Dormitories", "valeur": "municipalité de Ljubljana"}
+{"entite": "Orthodox Episcopal Palace, Oradea", "valeur": "Bihor"}
+{"entite": "Ortiz Basualdo Dorrego Palace", "valeur": "Buenos Aires"}
+{"entite": "Oscarshall", "valeur": "Oslo"}
+{"entite": "Oslo Ladegård", "valeur": "Oslo"}
+{"entite": "Otağ-ı Hümayun", "valeur": "Istanbul"}
+{"entite": "Otamendi Belgrano Palace", "valeur": "San Fernando"}
+{"entite": "Oteteleșanu Palace", "valeur": "Ilfov"}
+{"entite": "Owa Obokun Palace", "valeur": "Osun"}
+{"entite": "Pac Palace", "valeur": "Vilnius"}
+{"entite": "Paço Episcopal de Castelo Branco, incluindo o Jardim Episcopal e o passadiço", "valeur": "Castelo Branco"}
+{"entite": "Palác Palmovka", "valeur": "Prague"}
+{"entite": "Palača Grlečić-Jelačić", "valeur": "Zagreb"}
+{"entite": "Palača Keglević", "valeur": "Varaždin"}
+{"entite": "Palace Erdödy-Drašković", "valeur": "Zagreb"}
+{"entite": "Palace for Gathered Elegance", "valeur": "Pékin"}
+{"entite": "Palace in Bojadła", "valeur": "voïvodie de Lubusz"}
+{"entite": "Palace in Chałupki", "valeur": "voïvodie de Silésie"}
+{"entite": "Palace in Nakło", "valeur": "voïvodie de Silésie"}
+{"entite": "palace of Amenhotep III", "valeur": "Louxor"}
+{"entite": "Palace of Chief Nanna", "valeur": "Delta"}
+{"entite": "Palace of Earthly Honour", "valeur": "Pékin"}
+{"entite": "Palace of Earthly Tranquility", "valeur": "Pékin"}
+{"entite": "Palace of Eternal Longevity", "valeur": "Pékin"}
+{"entite": "Palace of Government", "valeur": "Riyad"}
+{"entite": "Palace of Grand Duke Michael Alexandrovich of Russia", "valeur": "Saint-Pétersbourg"}
+{"entite": "Palace of Grand Duke Mikhail Mikhailovich", "valeur": "Saint-Pétersbourg"}
+{"entite": "Palace of Grokholsky in Voronovytsia", "valeur": "oblast de Vinnytsia"}
+{"entite": "Palace of Louis Bonaparte in Utrecht", "valeur": "Utrecht"}
+{"entite": "Palace of Nakhchivan Khans", "valeur": "Nakhitchevan"}
+{"entite": "Palace of Panah Khan", "valeur": "Choucha"}
+{"entite": "Palace of prince Yusuf Kamal", "valeur": "Qena"}
+{"entite": "Palace of Radwan Bey", "valeur": "gouvernorat du Caire"}
+{"entite": "Palace of Sultan Mas'ud III", "valeur": "Ghazni"}
+{"entite": "Palace of the Akran of Badagry", "valeur": "Lagos"}
+{"entite": "Palace of the Arts", "valeur": "Bucarest"}
+{"entite": "Palace of the Champs Elysees", "valeur": "São Paulo"}
+{"entite": "Palace of the Cultural League", "valeur": "Bucarest"}
+{"entite": "Palace of the faculty of Medicine in Bucharest", "valeur": "Bucarest"}
+{"entite": "Palace of the Governors", "valeur": "Santa Fe"}
+{"entite": "Palace of the Lithuanian Writers' Union", "valeur": "Vilnius"}
+{"entite": "Palace of the Shirvanshahs", "valeur": "Bakou"}
+{"entite": "Palace of the Viceroy", "valeur": "Mexico"}
+{"entite": "Palace of Tranquil Longevity", "valeur": "Pékin"}
+{"entite": "Palaces of the \"Roman Catholic Status\"", "valeur": "Cluj"}
+{"entite": "Palacete del Embarcadero", "valeur": "Santander"}
+{"entite": "Palácio Anchieta", "valeur": "São Paulo"}
+{"entite": "Palácio Boa Vista", "valeur": "São Paulo"}
+{"entite": "Palacio de la Conquista", "valeur": "Trujillo"}
+{"entite": "Palacio de la Cultura", "valeur": "département de Managua"}
+{"entite": "Palacio de la Exposición", "valeur": "Lima"}
+{"entite": "Palacio de La Florida", "valeur": "Sucre"}
+{"entite": "Palacio de la Legislatura de Salta", "valeur": "Salta"}
+{"entite": "Palacio de la Prefectura de Chuquisaca", "valeur": "Chuquisaca"}
+{"entite": "Palácio de Lahane", "valeur": "Dili"}
+{"entite": "Palacio de las Garzas", "valeur": "Panama"}
+{"entite": "Palacio de Lorenzana", "valeur": "Trujillo"}
+{"entite": "Palacio de los Condes de Moriana, Galápagos", "valeur": "Galápagos"}
+{"entite": "Palacio de los duques de San Carlos", "valeur": "Trujillo"}
+{"entite": "Palacio de los Fernández-Zorrilla, Huérmeces", "valeur": "Castille-et-León"}
+{"entite": "Palacio de Piria", "valeur": "Montevideo"}
+{"entite": "Palácio do Bispo", "valeur": "Santiago"}
+{"entite": "Palácio do Horto Florestal", "valeur": "São Paulo"}
+{"entite": "Palácio dos Jequitibás", "valeur": "São Paulo"}
+{"entite": "Palácio dos Pimentéis", "valeur": "Castelo Branco"}
+{"entite": "Palacio Durazno", "valeur": "Montevideo"}
+{"entite": "Palacio Eguiguren", "valeur": "Santiago"}
+{"entite": "Palacio Gallino", "valeur": "Salto"}
+{"entite": "Palacio Larraín", "valeur": "Santiago"}
+{"entite": "Palacio Letelier", "valeur": "Santiago"}
+{"entite": "Palacio Municipal de Maldonado", "valeur": "Maldonado"}
+{"entite": "Palácio na Rua dos Cavaleiros do séc. XVIII", "valeur": "Castelo Branco"}
+{"entite": "Palacio Pietracaprina", "valeur": "Montevideo"}
+{"entite": "Palacio Piwonka", "valeur": "Santiago"}
+{"entite": "Palácio Rio Branco", "valeur": "São Paulo"}
+{"entite": "Palacio Shaw", "valeur": "Montevideo"}
+{"entite": "Palacio Veneciano", "valeur": "Lima"}
+{"entite": "palais", "valeur": "Sidi Bouzid"}
+{"entite": "Palais Abensperg-Traun", "valeur": "Vienne"}
+{"entite": "Palais Abramavičiai", "valeur": "Vilnius"}
+{"entite": "palais Al-Manyal", "valeur": "gouvernorat du Caire"}
+{"entite": "Palais al-Saqqā", "valeur": "Gaza"}
+{"entite": "palais Albert Rothschild", "valeur": "Vienne"}
+{"entite": "Palais Albrecht", "valeur": "Vienne"}
+{"entite": "Palais Althan-Pouthon", "valeur": "Vienne"}
+{"entite": "Palais Amir Alin Aq", "valeur": "gouvernorat du Caire"}
+{"entite": "palais Anguissola d'Altoè", "valeur": "Plaisance"}
+{"entite": "Palais Apponyi", "valeur": "Vienne"}
+{"entite": "palais archiépiscopal d'Eger", "valeur": "Eger"}
+{"entite": "palais archiépiscopal d'Uppsala", "valeur": "Uppsala"}
+{"entite": "palais archiépiscopal de Bogota", "valeur": "Bogota"}
+{"entite": "palais archiépiscopal de Cuzco", "valeur": "département de Cuzco"}
+{"entite": "palais archiépiscopal de Kingston", "valeur": "Kingston"}
+{"entite": "palais archiépiscopal de Santiago", "valeur": "Santiago"}
+{"entite": "palais archiépiscopal de Trujillo", "valeur": "Trujillo"}
+{"entite": "palais archiépiscopal de Vienne", "valeur": "Vienne"}
+{"entite": "Palais Arenberg", "valeur": "Vienne"}
+{"entite": "palais Azem", "valeur": "Damas"}
+{"entite": "palais Babos", "valeur": "Cluj"}
+{"entite": "Palais Baliati", "valeur": "Dhaka"}
+{"entite": "palais Baroque", "valeur": "Timiș"}
+{"entite": "palais Bartolotti-Partenfeld", "valeur": "Vienne"}
+{"entite": "Palais Batthyány, Schenkenstraße", "valeur": "Vienne"}
+{"entite": "Palais Batthyány-Strattmann", "valeur": "Vienne"}
+{"entite": "Palais Bauer", "valeur": "Vienne"}
+{"entite": "Palais Bellegarde", "valeur": "Vienne"}
+{"entite": "palais Beör", "valeur": "Covasna"}
+{"entite": "palais Blankenstein", "valeur": "Vienne"}
+{"entite": "Palais Bobrinski", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais Böhler", "valeur": "Vienne"}
+{"entite": "palais Borj Baccouche", "valeur": "Ariana"}
+{"entite": "Palais Bourgoing", "valeur": "Vienne"}
+{"entite": "palais Bratmann-Thorsch", "valeur": "Vienne"}
+{"entite": "palais Brukenthal", "valeur": "Sibiu"}
+{"entite": "palais byzantin d'Éphèse", "valeur": "Izmir"}
+{"entite": "Palais Bžostovskiai", "valeur": "Vilnius"}
+{"entite": "palais Çırağan", "valeur": "Istanbul"}
+{"entite": "palais Cantacuzène", "valeur": "Bucarest"}
+{"entite": "Palais Cavriani", "valeur": "Vienne"}
+{"entite": "Palais Chodkevičiai", "valeur": "Vilnius"}
+{"entite": "palais Chotek", "valeur": "Vienne"}
+{"entite": "palais Clam-Gallas de Vienne", "valeur": "Vienne"}
+{"entite": "palais Coburg", "valeur": "Vienne"}
+{"entite": "Palais Collalto", "valeur": "Vienne"}
+{"entite": "palais Colloredo", "valeur": "Vienne"}
+{"entite": "palais Colloredo-Mansfeld", "valeur": "Vienne"}
+{"entite": "palais communal", "valeur": "Plaisance"}
+{"entite": "Palais Corbelli-Schoeller", "valeur": "Vienne"}
+{"entite": "palais Crețulescu", "valeur": "Bucarest"}
+{"entite": "palais Cumberland", "valeur": "Vienne"}
+{"entite": "palais Czernin-Althan", "valeur": "Vienne"}
+{"entite": "palais d'Abedin", "valeur": "gouvernorat du Caire"}
+{"entite": "palais d'Akasaka", "valeur": "Tokyo"}
+{"entite": "palais d'Al Rehab", "valeur": "Bagdad"}
+{"entite": "palais d'Al-Yamamah", "valeur": "Riyad"}
+{"entite": "palais d’Anhak", "valeur": "Pyongyang"}
+{"entite": "palais d'Antiochos", "valeur": "Istanbul"}
+{"entite": "palais d'Antoniadis", "valeur": "Alexandrie"}
+{"entite": "Palais d'Apriès", "valeur": "Gizeh"}
+{"entite": "palais d'Ardashir", "valeur": "Fars"}
+{"entite": "palais d'Aynalıkavak", "valeur": "Istanbul"}
+{"entite": "palais d'el-Orouba", "valeur": "gouvernorat du Caire"}
+{"entite": "palais d'Oguzhan", "valeur": "Achgabat"}
+{"entite": "palais de Boucoléon", "valeur": "Istanbul"}
+{"entite": "palais de Dar-Al-Horra", "valeur": "Andalousie"}
+{"entite": "palais de Darulaman", "valeur": "Kaboul"}
+{"entite": "palais de Dechencholing", "valeur": "Thimphou"}
+{"entite": "Palais de Farahabad", "valeur": "Téhéran"}
+{"entite": "palais de France", "valeur": "Istanbul"}
+{"entite": "palais de Koulouba", "valeur": "Bamako"}
+{"entite": "Palais de Kubadabad", "valeur": "Konya"}
+{"entite": "palais de l'archiduc Albert", "valeur": "Vienne"}
+{"entite": "palais de l'archiduc Charles", "valeur": "Vienne"}
+{"entite": "palais de l'archiduc Charles-Louis", "valeur": "Vienne"}
+{"entite": "palais de l'archiduc Louis-Victor", "valeur": "Vienne"}
+{"entite": "palais de l'archiduc Rainier", "valeur": "Vienne"}
+{"entite": "palais de l'Indépendance", "valeur": "Hô Chi Minh-Ville"}
+{"entite": "palais de l'Institut d'Architecture", "valeur": "Bucarest"}
+{"entite": "palais de la Madeleine", "valeur": "Santander"}
+{"entite": "Palais de la nonciature apostolique (Vienne)", "valeur": "Vienne"}
+{"entite": "palais de la Pureté céleste", "valeur": "Pékin"}
+{"entite": "Palais de la Renaissance", "valeur": "Bangui"}
+{"entite": "palais de Lausos", "valeur": "Istanbul"}
+{"entite": "palais de Malacañang", "valeur": "San Miguel"}
+{"entite": "palais de Mandalay", "valeur": "Mandalay"}
+{"entite": "palais de Marbre", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais de Rais", "valeur": "wilaya d'Alger"}
+{"entite": "palais de Ramsar", "valeur": "Mazandéran"}
+{"entite": "palais de Ras el Tin", "valeur": "Alexandrie"}
+{"entite": "palais de Salwa", "valeur": "Riyad"}
+{"entite": "palais de Sans-Souci", "valeur": "Nord"}
+{"entite": "palais de Saxe-Lauenbourg", "valeur": "Prague"}
+{"entite": "Le Palais de Seyid Mirbabayev", "valeur": "Bakou"}
+{"entite": "Palais de Shirbudun", "valeur": "Boukhara"}
+{"entite": "palais de Skanès", "valeur": "Monastir"}
+{"entite": "palais de Tauride", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais de Topkapı", "valeur": "Istanbul"}
+{"entite": "Palais des Anastafidet", "valeur": "Agadez"}
+{"entite": "palais des Blachernes", "valeur": "Istanbul"}
+{"entite": "Palais des Chidlovsky", "valeur": "oblast de Kharkiv"}
+{"entite": "palais des Cortés", "valeur": "Morelos"}
+{"entite": "palais des Grands Ducs de Lituanie", "valeur": "Vilnius"}
+{"entite": "palais des rois Bell", "valeur": "Littoral"}
+{"entite": "palais Dietrichstein", "valeur": "Vienne"}
+{"entite": "Palais Dietrichstein (Dorotheergasse/ Bräunerstraße)", "valeur": "Vienne"}
+{"entite": "Palais Dietrichstein-Herberstein", "valeur": "Vienne"}
+{"entite": "palais Dietrichstein-Ulfeld", "valeur": "Vienne"}
+{"entite": "palais du Baron Empain", "valeur": "gouvernorat du Caire"}
+{"entite": "palais du Belvédère", "valeur": "Vienne"}
+{"entite": "palais du Golestan", "valeur": "Téhéran"}
+{"entite": "palais du gouvernement de Macao", "valeur": "Macao"}
+{"entite": "palais du grand-duc Michel", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais du Grand Prévôt", "valeur": "Eger"}
+{"entite": "palais du Parlement", "valeur": "Bucarest"}
+{"entite": "palais du Petit Prévôt", "valeur": "Eger"}
+{"entite": "palais du Porphyrogénète", "valeur": "Istanbul"}
+{"entite": "palais du Prince Henri", "valeur": "Berlin"}
+{"entite": "Palais du Sultan d'Agadez", "valeur": "Agadez"}
+{"entite": "palais du Tonkin", "valeur": "Hanoï"}
+{"entite": "palais du Zarmakoye", "valeur": "Dosso"}
+{"entite": "palais Dumba", "valeur": "Vienne"}
+{"entite": "palais Elisabeta", "valeur": "Bucarest"}
+{"entite": "palais Ephrussi", "valeur": "Vienne"}
+{"entite": "palais épiscopal", "valeur": "Pécs"}
+{"entite": "palais Epstein", "valeur": "Vienne"}
+{"entite": "palais Équitable", "valeur": "Vienne"}
+{"entite": "palais Erdődy-Fürstenberg", "valeur": "Vienne"}
+{"entite": "palais Erlanger", "valeur": "Vienne"}
+{"entite": "palais Eskeles", "valeur": "Vienne"}
+{"entite": "palais Farnèse", "valeur": "Plaisance"}
+{"entite": "Palais Felipe Camarão", "valeur": "Natal"}
+{"entite": "Palais Festetics, Vienna", "valeur": "Vienne"}
+{"entite": "palais Ficquelmont", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais Fürstenberg", "valeur": "Vienne"}
+{"entite": "Palais Garuda", "valeur": "Kalimantan oriental"}
+{"entite": "Palais Gatterburg, Vienna", "valeur": "Vienne"}
+{"entite": "palais Gnecco", "valeur": "Tunis"}
+{"entite": "palais Gomperz", "valeur": "Vienne"}
+{"entite": "palais Guenete Leul", "valeur": "Addis-Abeba"}
+{"entite": "palais Gutmann", "valeur": "Vienne"}
+{"entite": "Palais Haas", "valeur": "Vienne"}
+{"entite": "Palais Hardegg", "valeur": "Vienne"}
+{"entite": "palais Hardenberg", "valeur": "Berlin"}
+{"entite": "Palais Helfert", "valeur": "Vienne"}
+{"entite": "palais Henckel von Donnersmarck", "valeur": "Vienne"}
+{"entite": "Palais Herberstein", "valeur": "Vienne"}
+{"entite": "palais Hohenlohe-Bartenstein", "valeur": "Vienne"}
+{"entite": "palais Hoyos", "valeur": "Vienne"}
+{"entite": "palais Hoyos-Sprinzenstein", "valeur": "Vienne"}
+{"entite": "palais Ihlamur", "valeur": "Istanbul"}
+{"entite": "palais Ioussoupov", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais Ishak Pacha", "valeur": "Ağrı"}
+{"entite": "Palais Itzig", "valeur": "Berlin"}
+{"entite": "Palais Kaiserstein", "valeur": "Vienne"}
+{"entite": "palais Khaznadar", "valeur": "Tunis"}
+{"entite": "palais Kheireddine", "valeur": "Tunis"}
+{"entite": "palais Khevenhüller-Metsch", "valeur": "Vienne"}
+{"entite": "palais Kikine", "valeur": "Saint-Pétersbourg"}
+{"entite": "Palais Kinsky", "valeur": "Vienne"}
+{"entite": "Palais Klein", "valeur": "Vienne"}
+{"entite": "palais Kobbet El Nhas", "valeur": "La Manouba"}
+{"entite": "Palais Königswarter", "valeur": "Vienne"}
+{"entite": "palais Kranz", "valeur": "Vienne"}
+{"entite": "palais Kuffner", "valeur": "Vienne"}
+{"entite": "Palais Lamberg", "valeur": "Vienne"}
+{"entite": "Palais Lanckoroński", "valeur": "Vienne"}
+{"entite": "palais Landau", "valeur": "Vienne"}
+{"entite": "Palais Leitenberger", "valeur": "Vienne"}
+{"entite": "Palais Liechtenstein", "valeur": "Vienne"}
+{"entite": "palais Lingkana", "valeur": "Thimphou"}
+{"entite": "Palais Lubomirski", "valeur": "Vienne"}
+{"entite": "palais Marie", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais Ménélik", "valeur": "Addis-Abeba"}
+{"entite": "palais Merdeka", "valeur": "Jakarta"}
+{"entite": "Palais Mesmer", "valeur": "Vienne"}
+{"entite": "palais Metternich", "valeur": "Vienne"}
+{"entite": "palais Mikhaïlovski", "valeur": "Saint-Pétersbourg"}
+{"entite": "Palais Miller von Aichholz", "valeur": "Vienne"}
+{"entite": "Palais Modena (Beatrixgasse)", "valeur": "Vienne"}
+{"entite": "palais Mourad Bey", "valeur": "La Manouba"}
+{"entite": "Palais Nassau, Vienna", "valeur": "Vienne"}
+{"entite": "palais Nathaniel Rothschild", "valeur": "Vienne"}
+{"entite": "palais Nicolau Lobato", "valeur": "Dili"}
+{"entite": "palais Niederösterreich", "valeur": "Vienne"}
+{"entite": "palais Nikolaïevsky", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais Obizzi", "valeur": "Vienne"}
+{"entite": "palais Ofenheim", "valeur": "Vienne"}
+{"entite": "Palais Paar (Wollzeile)", "valeur": "Vienne"}
+{"entite": "Palais Pac", "valeur": "Vilnius"}
+{"entite": "palais Pálffy", "valeur": "Vienne"}
+{"entite": "palais Palm", "valeur": "Vienne"}
+{"entite": "Palais Pecci", "valeur": "Latium"}
+{"entite": "palais Porcia", "valeur": "Vienne"}
+{"entite": "Palais Potengi", "valeur": "Natal"}
+{"entite": "palais présidentiel de Damas", "valeur": "Damas"}
+{"entite": "palais présidentiel de Vilnius", "valeur": "Vilnius"}
+{"entite": "palais princier de Doha", "valeur": "Doha"}
+{"entite": "Palais Prinz August von Preussen", "valeur": "Berlin"}
+{"entite": "palais public de Saint-Marin", "valeur": "Saint-Marin"}
+{"entite": "Palais Raduškevičius", "valeur": "Vilnius"}
+{"entite": "palais Raffo", "valeur": "Tunis"}
+{"entite": "palais Rasumofsky", "valeur": "Vienne"}
+{"entite": "Palais Redern", "valeur": "Berlin"}
+{"entite": "palais Rhedey", "valeur": "Cluj"}
+{"entite": "palais Rohan", "valeur": "Vienne"}
+{"entite": "palais rose", "valeur": "N'Djaména"}
+{"entite": "palais Rothschild", "valeur": "Vienne"}
+{"entite": "palais Rottal", "valeur": "Vienne"}
+{"entite": "palais royal", "valeur": "Belgrade"}
+{"entite": "palais royal d'Oslo", "valeur": "Oslo"}
+{"entite": "palais royal d'Uvea", "valeur": "Wallis-et-Futuna"}
+{"entite": "palais royal de Mascate", "valeur": "Mascate"}
+{"entite": "palais royal de Phnom Penh", "valeur": "Phnom Penh"}
+{"entite": "palais Saheb Ettabaâ", "valeur": "Tunis"}
+{"entite": "Palais Salm (Salmgasse)", "valeur": "Vienne"}
+{"entite": "Palais Salm-Vetsera", "valeur": "Vienne"}
+{"entite": "palais Sapieha", "valeur": "Vilnius"}
+{"entite": "palais Savoie-Carignan", "valeur": "Vienne"}
+{"entite": "palais Schey von Koromla", "valeur": "Vienne"}
+{"entite": "palais Schlick", "valeur": "Vienne"}
+{"entite": "palais Schönborn", "valeur": "Vienne"}
+{"entite": "Palais Schwab", "valeur": "Vienne"}
+{"entite": "Palais Schwarzenberg", "valeur": "Vienne"}
+{"entite": "Palais Selb", "valeur": "Vienne"}
+{"entite": "Palais Sigray St. Marsan", "valeur": "Vienne"}
+{"entite": "palais Simoni-Fè", "valeur": "Lombardie"}
+{"entite": "palais Sina", "valeur": "Vienne"}
+{"entite": "palais Slushko", "valeur": "Vilnius"}
+{"entite": "palais Starhemberg", "valeur": "Vienne"}
+{"entite": "Palais Starhemberg an der Dorotheergasse", "valeur": "Vienne"}
+{"entite": "Palais Sternberg", "valeur": "Vienne"}
+{"entite": "palais Strousberg", "valeur": "Berlin"}
+{"entite": "palais Strozzi", "valeur": "Vienne"}
+{"entite": "palais Strudelhof", "valeur": "Vienne"}
+{"entite": "palais Sturany", "valeur": "Vienne"}
+{"entite": "Palais Šuazeliai", "valeur": "Vilnius"}
+{"entite": "Palais Suțu", "valeur": "Bucarest"}
+{"entite": "Palais Sylva-Tarucca", "valeur": "Vienne"}
+{"entite": "Palais Szeps", "valeur": "Vienne"}
+{"entite": "palais Tajbeg", "valeur": "Kaboul"}
+{"entite": "Palais Tiele-Winckler", "valeur": "Berlin"}
+{"entite": "Palais Tiškevičiai", "valeur": "Vilnius"}
+{"entite": "palais Toskana", "valeur": "Vienne"}
+{"entite": "palais Trauttmansdorff", "valeur": "Vienne"}
+{"entite": "Palais Überacker, Salzburg", "valeur": "Salzbourg"}
+{"entite": "Palais Verkiai", "valeur": "Municipalité de la ville de Vilnius"}
+{"entite": "palais Vladimir", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais Vorontsov", "valeur": "Saint-Pétersbourg"}
+{"entite": "palais Vrints zu Falkenstein", "valeur": "Vienne"}
+{"entite": "Palais Weidlich", "valeur": "Miskolc"}
+{"entite": "palais Weisweiler", "valeur": "Vienne"}
+{"entite": "palais Wertheim", "valeur": "Vienne"}
+{"entite": "palais Wiener von Welten", "valeur": "Vienne"}
+{"entite": "Palais Wilczek", "valeur": "Vienne"}
+{"entite": "Palais Windisch-Graetz", "valeur": "Vienne"}
+{"entite": "palais Wrana", "valeur": "Sofia"}
+{"entite": "palais Zaouche", "valeur": "Ariana"}
+{"entite": "Palais Zeppezauer", "valeur": "Vienne"}
+{"entite": "Palatium Vetus", "valeur": "Alexandrie"}
+{"entite": "Palatul Poștelor", "valeur": "Bucarest"}
+{"entite": "Palatul Széki din Cluj-Napoca", "valeur": "Cluj"}
+{"entite": "Palazzo Anguissola di Cimafava Rocca", "valeur": "Plaisance"}
+{"entite": "Palazzo Baldini Radini Tedeschi e Casa Arata", "valeur": "Plaisance"}
+{"entite": "Palazzo Biumi", "valeur": "Lombardie"}
+{"entite": "Palazzo Carignani di Novoli", "valeur": "Campanie"}
+{"entite": "Palazzo Costa, Piacenza", "valeur": "Plaisance"}
+{"entite": "Palazzo dal Pozzo", "valeur": "Alexandrie"}
+{"entite": "Palazzo dei Landfogti", "valeur": "Serravalle"}
+{"entite": "Palazzo del Collegio dei Gesuiti", "valeur": "Plaisance"}
+{"entite": "Palazzo del Collegio dei Mercanti, Piacenza", "valeur": "Plaisance"}
+{"entite": "Palazzo della Prefettura, Piacenza", "valeur": "Plaisance"}
+{"entite": "Palazzo della Provincia", "valeur": "Plaisance"}
+{"entite": "Palazzo delle Poste e Telegrafi in Alessandria, Italy", "valeur": "Alexandrie"}
+{"entite": "Palazzo Ghilini", "valeur": "Alexandrie"}
+{"entite": "Palazzo Giacometti", "valeur": "Plaisance"}
+{"entite": "Palazzo Guasco", "valeur": "Alexandrie"}
+{"entite": "Palazzo Malvicini Fontana", "valeur": "Plaisance"}
+{"entite": "Palazzo Marro", "valeur": "Alba"}
+{"entite": "Palazzo Mischi", "valeur": "Plaisance"}
+{"entite": "Palazzo Portici", "valeur": "Plaisance"}
+{"entite": "Palazzo Prati", "valeur": "Alexandrie"}
+{"entite": "Palazzo Scotti", "valeur": "Plaisance"}
+{"entite": "Palazzo Scotti di Sarmato", "valeur": "Plaisance"}
+{"entite": "Palazzo Vescovile", "valeur": "Plaisance"}
+{"entite": "Panah Ali Khan’s Palace", "valeur": "Agdam"}
+{"entite": "Patačić Palace", "valeur": "Varaždin"}
+{"entite": "Pataskum Emirate Palace", "valeur": "Yobe"}
+{"entite": "Pearl Palace", "valeur": "Alborz"}
+{"entite": "People's Loan Bank", "valeur": "municipalité de Ljubljana"}
+{"entite": "Petit palais Radziwiłł", "valeur": "Vilnius"}
+{"entite": "Pima Palace", "valeur": "Kotor"}
+{"entite": "Plinkšės Manor", "valeur": "Mažeikiai"}
+{"entite": "Presidential Palace Historical Site", "valeur": "Hanoï"}
+{"entite": "Presidential Palace in Khartoum", "valeur": "Khartoum"}
+{"entite": "Presidential Palace of Turkmenistan", "valeur": "Achgabat"}
+{"entite": "Presidential Palace (Yemen)", "valeur": "Sanaa"}
+{"entite": "Primate's Palace, Esztergom-Víziváros", "valeur": "Esztergom"}
+{"entite": "Primăveri Palace", "valeur": "Bucarest"}
+{"entite": "Prinz-Albrecht-Palais", "valeur": "Berlin"}
+{"entite": "Prinz-Eugen-Straße 40", "valeur": "Vienne"}
+{"entite": "Průmyslový palác", "valeur": "Prague"}
+{"entite": "Qasr al-'Ashiq", "valeur": "Salah ad-Din"}
+{"entite": "Qasr al-Basha", "valeur": "Gaza"}
+{"entite": "Qasr al-Diyafa", "valeur": "Damas"}
+{"entite": "Qasr al-'Ishshah", "valeur": "Hadramaout"}
+{"entite": "Qaṣr ash-Shamsīyyah", "valeur": "Riyad"}
+{"entite": "Quarters of the Pavlovsky Lifeguards Regiment", "valeur": "Saint-Pétersbourg"}
+{"entite": "Queen Darejan's palace", "valeur": "Tbilissi"}
+{"entite": "Quinta de Juan Idiarte Borda", "valeur": "Montevideo"}
+{"entite": "Quinta de Williman", "valeur": "Montevideo"}
+{"entite": "Radvila Palace", "valeur": "Vilnius"}
+{"entite": "Radziwiłł Palace in Grodno", "valeur": "Hrodna"}
+{"entite": "Rathaus Aarburg", "valeur": "canton d'Argovie"}
+{"entite": "Reichskanzleitrakt", "valeur": "Vienne"}
+{"entite": "Republican Palace", "valeur": "Bagdad"}
+{"entite": "Résidence du Sultan Almoumine", "valeur": "Agadez"}
+{"entite": "Residence of the Embassy of the United Kingdom in Montevideo", "valeur": "Montevideo"}
+{"entite": "Residence of the Embassy of the United States in Montevideo", "valeur": "Montevideo"}
+{"entite": "résidence Vimanmek", "valeur": "Bangkok"}
+{"entite": "Reunrudee Palace", "valeur": "Bangkok"}
+{"entite": "Rio Negro Palace", "valeur": "Amazonas"}
+{"entite": "Roman Catholic Metropolitan Palace, Bucharest", "valeur": "Bucarest"}
+{"entite": "Rova d'Ambohidratrimo", "valeur": "Analamanga"}
+{"entite": "Rova d’Ilafy", "valeur": "Analamanga"}
+{"entite": "Royal Jewelry Museum", "valeur": "Alexandrie"}
+{"entite": "Royal Palace", "valeur": "Sofia"}
+{"entite": "Royal Palace of Ntara", "valeur": "Ouest"}
+{"entite": "Royal Palace of Tripoli", "valeur": "Tripoli"}
+{"entite": "Royal villa in Shiroka", "valeur": "Shkodër"}
+{"entite": "Royal Villa of Durrës", "valeur": "Durrës"}
+{"entite": "Rudolfinum", "valeur": "municipalité de Ljubljana"}
+{"entite": "ruines du palais d'El-Mansour", "valeur": "Kairouan"}
+{"entite": "Rutobo Palace( kami kya Nyawera)", "valeur": "Ouest"}
+{"entite": "Safrano Palace, Brașov", "valeur": "Brașov"}
+{"entite": "Saheb Qaraniyeh Palace", "valeur": "Téhéran"}
+{"entite": "Saikū", "valeur": "préfecture de Mie"}
+{"entite": "Salcedo jauregia", "valeur": "Durango"}
+{"entite": "Saltanat Abad Palace", "valeur": "Téhéran"}
+{"entite": "San Martín Palace", "valeur": "Buenos Aires"}
+{"entite": "Sans Souci Palace, San Fernando", "valeur": "San Fernando"}
+{"entite": "Sapieha and Ogiński Palace, Hrodna", "valeur": "Hrodna"}
+{"entite": "Sardar Palace in Erivan", "valeur": "Erevan"}
+{"entite": "Schloss Schönach", "valeur": "Bavière"}
+{"entite": "Sector 1 City Hall of Bucharest", "valeur": "Bucarest"}
+{"entite": "Senate palace", "valeur": "Bucarest"}
+{"entite": "Shashi Lodge", "valeur": "Mymensingh"}
+{"entite": "Shehu of Borno's Palace", "valeur": "Borno"}
+{"entite": "Shri Gyanendra Narayan Roy Zamindar Bari", "valeur": "Rangpur"}
+{"entite": "Shuvalov Palace", "valeur": "Saint-Pétersbourg"}
+{"entite": "Sigmund-Haffner-Gasse 16, Salzburg", "valeur": "Salzbourg"}
+{"entite": "Simeon's Palace", "valeur": "Karbala"}
+{"entite": "Siručiai Palace", "valeur": "Kaunas"}
+{"entite": "Slavija Building", "valeur": "municipalité de Ljubljana"}
+{"entite": "Slovenijašport", "valeur": "municipalité de Ljubljana"}
+{"entite": "Small Nicholas Palace", "valeur": "Moscou"}
+{"entite": "Small Tsaritsyno Palace", "valeur": "Moscou"}
+{"entite": "Soleymaniyeh Palace", "valeur": "Alborz"}
+{"entite": "Souq al-Hokedun", "valeur": "Alep"}
+{"entite": "State Monopolies Palace", "valeur": "Bucarest"}
+{"entite": "Stern Palace", "valeur": "Bihor"}
+{"entite": "Știrbei Palace", "valeur": "Bucarest"}
+{"entite": "Stock Exchange Building", "valeur": "Bucarest"}
+{"entite": "Struga Palace", "valeur": "Struga"}
+{"entite": "Stubenberg Palace in Săcueni, Bihor", "valeur": "Bihor"}
+{"entite": "Sturdza Palace", "valeur": "Bucarest"}
+{"entite": "Sultan's palace of Maradi", "valeur": "Maradi"}
+{"entite": "Summer Palace", "valeur": "Saint-Pétersbourg"}
+{"entite": "Summer Palace of Saddam Hussein", "valeur": "Babil"}
+{"entite": "Tach Khaouli", "valeur": "Khorezm"}
+{"entite": "Taj Palace", "valeur": "Bagdad"}
+{"entite": "Tajhat Palace", "valeur": "Rangpur"}
+{"entite": "Tamnak Maheyong", "valeur": "Ayutthaya"}
+{"entite": "Tarce Palace", "valeur": "voïvodie de Grande-Pologne"}
+{"entite": "TB chief palace Nantong", "valeur": "Région du Nord"}
+{"entite": "Tchehel-Sotoun", "valeur": "Ispahan"}
+{"entite": "The Astana", "valeur": "Sarawak"}
+{"entite": "The Presbytere", "valeur": "Louisiane"}
+{"entite": "The Royal Lodge, Holmenkollen", "valeur": "Oslo"}
+{"entite": "Thurayya Palace", "valeur": "Bagdad"}
+{"entite": "Tooro Palace", "valeur": "Ouest"}
+{"entite": "Tor Tiv Palace", "valeur": "Benue"}
+{"entite": "Town hall of Alessandria", "valeur": "Alexandrie"}
+{"entite": "Town House", "valeur": "municipalité de Ljubljana"}
+{"entite": "Tugh's Melikian Palace", "valeur": "Khojavend"}
+{"entite": "Tyzenhaus Palace", "valeur": "Vilnius"}
+{"entite": "Tyzienhaŭz Palace in Hrodna", "valeur": "Hrodna"}
+{"entite": "Umayyad Palace", "valeur": "Amman"}
+{"entite": "Umiastowski Palace in Vilnius", "valeur": "Vilnius"}
+{"entite": "Union building", "valeur": "Bucarest"}
+{"entite": "Union of Romanian Architects Building", "valeur": "Bucarest"}
+{"entite": "University of Bucharest Law Faculty", "valeur": "Bucarest"}
+{"entite": "University Palace, Bucharest", "valeur": "Bucarest"}
+{"entite": "Universul Palace", "valeur": "Bucarest"}
+{"entite": "Unzué Palace", "valeur": "Buenos Aires"}
+{"entite": "Varaždin County Palace", "valeur": "Varaždin"}
+{"entite": "Vice Administrator's Palace in Hrodna", "valeur": "Hrodna"}
+{"entite": "Vieux sérail", "valeur": "Istanbul"}
+{"entite": "Villa des Barons Menasce", "valeur": "Alexandrie"}
+{"entite": "Villa Edwin Goar", "valeur": "Alexandrie"}
+{"entite": "Vlora City Hall", "valeur": "Vlorë"}
+{"entite": "Voyeikov Estate", "valeur": "oblast de Penza"}
+{"entite": "Wa Naa's Palace", "valeur": "Haut Ghana occidental"}
+{"entite": "Wako Zibondos Mahomo ancestral palace.", "valeur": "Est"}
+{"entite": "Wakooli Shrines/palace", "valeur": "Est"}
+{"entite": "Wass Palace, Cluj-Napoca", "valeur": "Cluj"}
+{"entite": "White palace", "valeur": "Brest"}
+{"entite": "Wooden palace of tsar Alexey", "valeur": "Moscou"}
+{"entite": "Yaghut Palace", "valeur": "Téhéran"}
+{"entite": "Yanxi Palace", "valeur": "Pékin"}
+{"entite": "Yellow Palace", "valeur": "Oulan-Bator"}
+{"entite": "Yonghe Palace", "valeur": "Pékin"}
+{"entite": "Zaafarana palace", "valeur": "gouvernorat du Caire"}
+{"entite": "Zahran Palace", "valeur": "Amman"}
+{"entite": "Zhongcui Palace", "valeur": "Pékin"}

@@ -1,0 +1,10 @@
+{"_relation": "type_glucide", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (type de glucide ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "amidon", "valeur": "polyoside"}
+{"entite": "cellulose", "valeur": "polyoside"}
+{"entite": "fructose", "valeur": "ose"}
+{"entite": "galactose", "valeur": "ose"}
+{"entite": "glucose", "valeur": "ose"}
+{"entite": "glycogène", "valeur": "polyoside"}
+{"entite": "lactose", "valeur": "diholoside"}
+{"entite": "maltose", "valeur": "diholoside"}
+{"entite": "saccharose", "valeur": "diholoside"}

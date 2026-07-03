@@ -1,0 +1,9 @@
+{"_relation": "fonction_systeme_humain", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie textbook curée (système -> fonction ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "système circulatoire", "valeur": "transport des nutriments et de l'oxygène"}
+{"entite": "système digestif", "valeur": "digestion des aliments"}
+{"entite": "système endocrinien", "valeur": "régulation hormonale"}
+{"entite": "système immunitaire", "valeur": "défense de l'organisme"}
+{"entite": "système nerveux", "valeur": "coordination de l'organisme"}
+{"entite": "système respiratoire", "valeur": "échanges gazeux"}
+{"entite": "système squelettique", "valeur": "soutien du corps"}
+{"entite": "système urinaire", "valeur": "élimination des déchets"}

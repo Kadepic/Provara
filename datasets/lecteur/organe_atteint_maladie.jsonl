@@ -1,0 +1,63 @@
+{"_relation": "organe_atteint_maladie", "_categorie": "physique", "_source": "Modèle (Claude) — médecine textbook curée (organe atteint ; correspondance étymologique ; FAUX=0)", "_articles": true}
+{"entite": "adénite", "valeur": "ganglion lymphatique"}
+{"entite": "amygdalite", "valeur": "amygdales"}
+{"entite": "appendicite", "valeur": "appendice"}
+{"entite": "arthrite", "valeur": "articulation"}
+{"entite": "balanite", "valeur": "gland"}
+{"entite": "blépharite", "valeur": "paupière"}
+{"entite": "bronchite", "valeur": "bronches"}
+{"entite": "bursite", "valeur": "bourse séreuse"}
+{"entite": "cervicite", "valeur": "col de l'utérus"}
+{"entite": "cholécystite", "valeur": "vésicule biliaire"}
+{"entite": "colite", "valeur": "côlon"}
+{"entite": "conjonctivite", "valeur": "œil"}
+{"entite": "cystite", "valeur": "vessie"}
+{"entite": "dermatite", "valeur": "peau"}
+{"entite": "encéphalite", "valeur": "cerveau"}
+{"entite": "endométrite", "valeur": "endomètre"}
+{"entite": "entérite", "valeur": "intestin"}
+{"entite": "épididymite", "valeur": "épididyme"}
+{"entite": "fasciite", "valeur": "fascia"}
+{"entite": "gastrite", "valeur": "estomac"}
+{"entite": "gingivite", "valeur": "gencive"}
+{"entite": "glossite", "valeur": "langue"}
+{"entite": "hépatite", "valeur": "foie"}
+{"entite": "kératite", "valeur": "cornée"}
+{"entite": "laryngite", "valeur": "larynx"}
+{"entite": "lymphangite", "valeur": "vaisseau lymphatique"}
+{"entite": "mastite", "valeur": "sein"}
+{"entite": "méningite", "valeur": "méninges"}
+{"entite": "myélite", "valeur": "moelle épinière"}
+{"entite": "myocardite", "valeur": "cœur"}
+{"entite": "myosite", "valeur": "muscle"}
+{"entite": "néphrite", "valeur": "rein"}
+{"entite": "névrite", "valeur": "nerf"}
+{"entite": "orchite", "valeur": "testicule"}
+{"entite": "ostéite", "valeur": "os"}
+{"entite": "otite", "valeur": "oreille"}
+{"entite": "pancréatite", "valeur": "pancréas"}
+{"entite": "parotidite", "valeur": "parotide"}
+{"entite": "péricardite", "valeur": "péricarde"}
+{"entite": "périostite", "valeur": "périoste"}
+{"entite": "phlébite", "valeur": "veine"}
+{"entite": "pleurésie", "valeur": "plèvre"}
+{"entite": "pneumonie", "valeur": "poumon"}
+{"entite": "prostatite", "valeur": "prostate"}
+{"entite": "pyélonéphrite", "valeur": "rein"}
+{"entite": "rectite", "valeur": "rectum"}
+{"entite": "rétinite", "valeur": "rétine"}
+{"entite": "rhinite", "valeur": "nez"}
+{"entite": "salpingite", "valeur": "trompe de Fallope"}
+{"entite": "sclérite", "valeur": "sclère"}
+{"entite": "sinusite", "valeur": "sinus"}
+{"entite": "œsophagite", "valeur": "œsophage"}
+{"entite": "splénite", "valeur": "rate"}
+{"entite": "spondylite", "valeur": "vertèbre"}
+{"entite": "stomatite", "valeur": "bouche"}
+{"entite": "synovite", "valeur": "membrane synoviale"}
+{"entite": "tendinite", "valeur": "tendon"}
+{"entite": "thyroïdite", "valeur": "thyroïde"}
+{"entite": "urétérite", "valeur": "uretère"}
+{"entite": "urétrite", "valeur": "urètre"}
+{"entite": "uvéite", "valeur": "uvée"}
+{"entite": "vaginite", "valeur": "vagin"}

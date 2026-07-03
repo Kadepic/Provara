@@ -1,0 +1,5 @@
+{"_relation": "macromolecule_biologique_fonction", "_categorie": "physique", "_source": "Modèle (Claude) — biochimie textbook curée (fonction de macromolécule biologique ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "acides nucléiques", "valeur": "stockage et transmission de l'information génétique"}
+{"entite": "glucides", "valeur": "source d'énergie"}
+{"entite": "lipides", "valeur": "réserve d'énergie et constitution des membranes"}
+{"entite": "protéines", "valeur": "fonctions structurales et catalytiques"}

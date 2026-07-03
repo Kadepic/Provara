@@ -1,0 +1,4 @@
+{"_relation": "role_partie_coeur", "_categorie": "physique", "_source": "Modèle (Claude) — physiologie cardiaque textbook curée (structure du cœur -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "oreillette", "valeur": "réception du sang"}
+{"entite": "valve cardiaque", "valeur": "empêcher le reflux du sang"}
+{"entite": "ventricule", "valeur": "éjection du sang"}

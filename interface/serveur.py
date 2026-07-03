@@ -15,6 +15,9 @@ Architecture (pensée pour l'évolution, sans sur-ingénierie) :
   • IMPORTANT — légèreté : on importe `conversation` (≈ 13 Mo RSS), JAMAIS `ia` (qui chargerait le lecteur,
     622 Mo → risque OOM en parallèle de T1/T2). « Parler à la vraie IA » est une évolution future : un hook
     propre est laissé plus bas (_repond_ia), commenté, NON branché.
+
+
+
   • une simple TABLE DE ROUTES (méthode, chemin) -> handler : ajouter un panneau plus tard = une ligne + un
     bout de HTML. Pas d'abstraction prématurée.
 
@@ -192,10 +195,56 @@ def oublie_conversation(memoire, conv_id: str) -> dict:
 # ————————————————————————————————— TABLE DE ROUTES (évolutivité : 1 ligne par fonction future) —————————————————————————————————
 # Chaque entrée : (méthode, chemin) -> handler(memoire, query_dict, body_dict) -> dict JSON.
 # Ajouter « idées de projets » plus tard = ajouter une ligne ici + un panneau dans index.html. C'est tout.
+def _resume_fichier(nom: str, res: dict) -> str:
+    """Résumé FIDÈLE d'un fichier parsé (FAUX=0 : uniquement ce que le parseur a réellement lu, jamais inventé)."""
+    if not isinstance(res, dict) or res.get("statut") != "verifie":
+        return "Je n'ai pas su lire « %s » (type non pris en charge ou fichier illisible)." % nom
+    typ, meta = res.get("type", "?"), str(res.get("meta") or "")
+    apercu = str(res.get("contenu"))
+    if len(apercu) > 700:
+        apercu = apercu[:700] + " …"
+    entete = "J'ai lu « %s » (type %s)" % (nom, typ)
+    if meta and meta not in ("{}", ""):
+        entete += " — " + meta
+    return entete + " :\n" + apercu
+
+
+def importe_fichier(memoire, conv_id: str, nom: str, contenu_b64: str) -> dict:
+    """Importe un fichier (base64) : le parse via ia.lit_fichier (json/csv/xml/sqlite/zip/ini…) et en donne un
+    résumé fidèle. Souverain : le fichier est lu localement, jamais envoyé ailleurs ; effacé après lecture."""
+    import base64, os, tempfile
+    nom = (str(nom or "fichier").strip() or "fichier")
+    try:
+        data = base64.b64decode(contenu_b64 or "")
+    except Exception:
+        return {"ok": False, "raison": "contenu illisible", **lire_conversation(memoire, conv_id)}
+    if len(data) > 5_000_000:
+        return {"ok": False, "raison": "fichier trop volumineux (max 5 Mo)", **lire_conversation(memoire, conv_id)}
+    ext = os.path.splitext(nom)[1]
+    fd, chemin = tempfile.mkstemp(suffix=ext)
+    try:
+        with os.fdopen(fd, "wb") as fh:
+            fh.write(data)
+        import ia
+        res = ia.lit_fichier(chemin)
+    except Exception as e:
+        res = {"statut": "erreur", "meta": str(e)}
+    finally:
+        try:
+            os.remove(chemin)
+        except OSError:
+            pass
+    memoire.ajoute(conv_id, "user", "\U0001F4CE " + nom)
+    resume = _resume_fichier(nom, res)
+    memoire.ajoute(conv_id, "ia", resume)
+    return {"ok": True, "reponse": resume, **lire_conversation(memoire, conv_id)}
+
+
 ROUTES = {
     ("GET", "/api/conversations"): lambda m, q, b: liste_conversations(m),
     ("GET", "/api/conversation"):  lambda m, q, b: lire_conversation(m, (q.get("id") or [""])[0]),
     ("POST", "/api/message"):      lambda m, q, b: ajoute_message(m, b.get("id", ""), b.get("texte", ""), pleine=_IA_PLEINE),
+    ("POST", "/api/fichier"):      lambda m, q, b: importe_fichier(m, b.get("id", ""), b.get("nom", ""), b.get("contenu", "")),
     ("POST", "/api/nouvelle"):     lambda m, q, b: nouvelle_conversation(m, b.get("id", "")),
     ("POST", "/api/archive"):      lambda m, q, b: archive_conversation(m, b.get("id", "")),     # cacher (IA s'en souvient)
     ("POST", "/api/desarchive"):   lambda m, q, b: desarchive_conversation(m, b.get("id", "")),  # ré-afficher
@@ -271,7 +320,7 @@ def main():
     serveur = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     n = len(Handler.memoire.conversations())
     mode = "IA PLEINE (connaissance vérifiée + mémoire)" if _IA_PLEINE else "léger (mémoire de dialogue seule)"
-    print(f"Interface mémoire de conversation — http://127.0.0.1:{port}")
+    print(f"VERAX — assistant local souverain · http://127.0.0.1:{port}")
     print(f"  {n} conversation(s) sur le disque · mode : {mode}")
     if _IA_PLEINE:
         # Recherche web AUTONOME de l'assistant (assistant_nl -> veille.py, sources de confiance) : activée par

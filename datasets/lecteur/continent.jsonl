@@ -1,0 +1,250 @@
+{"_relation": "continent", "_categorie": "physique", "_source": "mledoze/countries — région -> continent (FR)", "_articles": true}
+{"entite": "Afghanistan", "valeur": "Asie"}
+{"entite": "Afrique du Sud", "valeur": "Afrique"}
+{"entite": "Ahvenanmaa", "valeur": "Europe"}
+{"entite": "Albanie", "valeur": "Europe"}
+{"entite": "Algérie", "valeur": "Afrique"}
+{"entite": "Allemagne", "valeur": "Europe"}
+{"entite": "Andorre", "valeur": "Europe"}
+{"entite": "Angola", "valeur": "Afrique"}
+{"entite": "Anguilla", "valeur": "Amérique du Nord"}
+{"entite": "Antarctique", "valeur": "Antarctique"}
+{"entite": "Antigua-et-Barbuda", "valeur": "Amérique du Nord"}
+{"entite": "Arabie Saoudite", "valeur": "Asie"}
+{"entite": "Argentine", "valeur": "Amérique du Sud"}
+{"entite": "Arménie", "valeur": "Asie"}
+{"entite": "Aruba", "valeur": "Amérique du Nord"}
+{"entite": "Australie", "valeur": "Océanie"}
+{"entite": "Autriche", "valeur": "Europe"}
+{"entite": "Azerbaïdjan", "valeur": "Asie"}
+{"entite": "Bahamas", "valeur": "Amérique du Nord"}
+{"entite": "Bahreïn", "valeur": "Asie"}
+{"entite": "Bangladesh", "valeur": "Asie"}
+{"entite": "Barbade", "valeur": "Amérique du Nord"}
+{"entite": "Belgique", "valeur": "Europe"}
+{"entite": "Belize", "valeur": "Amérique du Nord"}
+{"entite": "Bénin", "valeur": "Afrique"}
+{"entite": "Bermudes", "valeur": "Amérique du Nord"}
+{"entite": "Bhoutan", "valeur": "Asie"}
+{"entite": "Biélorussie", "valeur": "Europe"}
+{"entite": "Birmanie", "valeur": "Asie"}
+{"entite": "Bolivie", "valeur": "Amérique du Sud"}
+{"entite": "Bosnie-Herzégovine", "valeur": "Europe"}
+{"entite": "Botswana", "valeur": "Afrique"}
+{"entite": "Brésil", "valeur": "Amérique du Sud"}
+{"entite": "Brunei", "valeur": "Asie"}
+{"entite": "Bulgarie", "valeur": "Europe"}
+{"entite": "Burkina Faso", "valeur": "Afrique"}
+{"entite": "Burundi", "valeur": "Afrique"}
+{"entite": "Cambodge", "valeur": "Asie"}
+{"entite": "Cameroun", "valeur": "Afrique"}
+{"entite": "Canada", "valeur": "Amérique du Nord"}
+{"entite": "Chili", "valeur": "Amérique du Sud"}
+{"entite": "Chine", "valeur": "Asie"}
+{"entite": "Chypre", "valeur": "Europe"}
+{"entite": "Cité du Vatican", "valeur": "Europe"}
+{"entite": "Colombie", "valeur": "Amérique du Sud"}
+{"entite": "Comores", "valeur": "Afrique"}
+{"entite": "Congo", "valeur": "Afrique"}
+{"entite": "Congo (Rép. dém.)", "valeur": "Afrique"}
+{"entite": "Corée du Nord", "valeur": "Asie"}
+{"entite": "Corée du Sud", "valeur": "Asie"}
+{"entite": "Costa Rica", "valeur": "Amérique du Nord"}
+{"entite": "Côte d'Ivoire", "valeur": "Afrique"}
+{"entite": "Croatie", "valeur": "Europe"}
+{"entite": "Cuba", "valeur": "Amérique du Nord"}
+{"entite": "Curaçao", "valeur": "Amérique du Nord"}
+{"entite": "Danemark", "valeur": "Europe"}
+{"entite": "Djibouti", "valeur": "Afrique"}
+{"entite": "Dominique", "valeur": "Amérique du Nord"}
+{"entite": "Égypte", "valeur": "Afrique"}
+{"entite": "Émirats arabes unis", "valeur": "Asie"}
+{"entite": "Équateur", "valeur": "Amérique du Sud"}
+{"entite": "Érythrée", "valeur": "Afrique"}
+{"entite": "Espagne", "valeur": "Europe"}
+{"entite": "Estonie", "valeur": "Europe"}
+{"entite": "Eswatini", "valeur": "Afrique"}
+{"entite": "États-Unis", "valeur": "Amérique du Nord"}
+{"entite": "Éthiopie", "valeur": "Afrique"}
+{"entite": "Fidji", "valeur": "Océanie"}
+{"entite": "Finlande", "valeur": "Europe"}
+{"entite": "France", "valeur": "Europe"}
+{"entite": "Gabon", "valeur": "Afrique"}
+{"entite": "Gambie", "valeur": "Afrique"}
+{"entite": "Géorgie", "valeur": "Asie"}
+{"entite": "Géorgie du Sud-et-les Îles Sandwich du Sud", "valeur": "Antarctique"}
+{"entite": "Ghana", "valeur": "Afrique"}
+{"entite": "Gibraltar", "valeur": "Europe"}
+{"entite": "Grèce", "valeur": "Europe"}
+{"entite": "Grenade", "valeur": "Amérique du Nord"}
+{"entite": "Groenland", "valeur": "Amérique du Nord"}
+{"entite": "Guadeloupe", "valeur": "Amérique du Nord"}
+{"entite": "Guam", "valeur": "Océanie"}
+{"entite": "Guatemala", "valeur": "Amérique du Nord"}
+{"entite": "Guernesey", "valeur": "Europe"}
+{"entite": "Guinée", "valeur": "Afrique"}
+{"entite": "Guinée-Bissau", "valeur": "Afrique"}
+{"entite": "Guinée équatoriale", "valeur": "Afrique"}
+{"entite": "Guyana", "valeur": "Amérique du Sud"}
+{"entite": "Guyane", "valeur": "Amérique du Sud"}
+{"entite": "Haïti", "valeur": "Amérique du Nord"}
+{"entite": "Honduras", "valeur": "Amérique du Nord"}
+{"entite": "Hong Kong", "valeur": "Asie"}
+{"entite": "Hongrie", "valeur": "Europe"}
+{"entite": "Île Bouvet", "valeur": "Antarctique"}
+{"entite": "Île Christmas", "valeur": "Océanie"}
+{"entite": "Île de Man", "valeur": "Europe"}
+{"entite": "Île Maurice", "valeur": "Afrique"}
+{"entite": "Île Norfolk", "valeur": "Océanie"}
+{"entite": "Îles Caïmans", "valeur": "Amérique du Nord"}
+{"entite": "Îles Cocos", "valeur": "Océanie"}
+{"entite": "Îles Cook", "valeur": "Océanie"}
+{"entite": "Îles du Cap-Vert", "valeur": "Afrique"}
+{"entite": "Îles Féroé", "valeur": "Europe"}
+{"entite": "Îles Heard-et-MacDonald", "valeur": "Antarctique"}
+{"entite": "Îles Malouines", "valeur": "Amérique du Sud"}
+{"entite": "Îles Mariannes du Nord", "valeur": "Océanie"}
+{"entite": "Îles Marshall", "valeur": "Océanie"}
+{"entite": "Îles mineures éloignées des États-Unis", "valeur": "Amérique du Nord"}
+{"entite": "Îles Pitcairn", "valeur": "Océanie"}
+{"entite": "Îles Salomon", "valeur": "Océanie"}
+{"entite": "Îles Turques-et-Caïques", "valeur": "Amérique du Nord"}
+{"entite": "Îles Vierges britanniques", "valeur": "Amérique du Nord"}
+{"entite": "Îles Vierges des États-Unis", "valeur": "Amérique du Nord"}
+{"entite": "Inde", "valeur": "Asie"}
+{"entite": "Indonésie", "valeur": "Asie"}
+{"entite": "Irak", "valeur": "Asie"}
+{"entite": "Iran", "valeur": "Asie"}
+{"entite": "Irlande", "valeur": "Europe"}
+{"entite": "Islande", "valeur": "Europe"}
+{"entite": "Israël", "valeur": "Asie"}
+{"entite": "Italie", "valeur": "Europe"}
+{"entite": "Jamaïque", "valeur": "Amérique du Nord"}
+{"entite": "Japon", "valeur": "Asie"}
+{"entite": "Jersey", "valeur": "Europe"}
+{"entite": "Jordanie", "valeur": "Asie"}
+{"entite": "Kazakhstan", "valeur": "Asie"}
+{"entite": "Kenya", "valeur": "Afrique"}
+{"entite": "Kirghizistan", "valeur": "Asie"}
+{"entite": "Kiribati", "valeur": "Océanie"}
+{"entite": "Kosovo", "valeur": "Europe"}
+{"entite": "Koweït", "valeur": "Asie"}
+{"entite": "Laos", "valeur": "Asie"}
+{"entite": "Lesotho", "valeur": "Afrique"}
+{"entite": "Lettonie", "valeur": "Europe"}
+{"entite": "Liban", "valeur": "Asie"}
+{"entite": "Liberia", "valeur": "Afrique"}
+{"entite": "Libye", "valeur": "Afrique"}
+{"entite": "Liechtenstein", "valeur": "Europe"}
+{"entite": "Lituanie", "valeur": "Europe"}
+{"entite": "Luxembourg", "valeur": "Europe"}
+{"entite": "Macao", "valeur": "Asie"}
+{"entite": "Macédoine du Nord", "valeur": "Europe"}
+{"entite": "Madagascar", "valeur": "Afrique"}
+{"entite": "Malaisie", "valeur": "Asie"}
+{"entite": "Malawi", "valeur": "Afrique"}
+{"entite": "Maldives", "valeur": "Asie"}
+{"entite": "Mali", "valeur": "Afrique"}
+{"entite": "Malte", "valeur": "Europe"}
+{"entite": "Maroc", "valeur": "Afrique"}
+{"entite": "Martinique", "valeur": "Amérique du Nord"}
+{"entite": "Mauritanie", "valeur": "Afrique"}
+{"entite": "Mayotte", "valeur": "Afrique"}
+{"entite": "Mexique", "valeur": "Amérique du Nord"}
+{"entite": "Micronésie", "valeur": "Océanie"}
+{"entite": "Moldavie", "valeur": "Europe"}
+{"entite": "Monaco", "valeur": "Europe"}
+{"entite": "Mongolie", "valeur": "Asie"}
+{"entite": "Monténégro", "valeur": "Europe"}
+{"entite": "Montserrat", "valeur": "Amérique du Nord"}
+{"entite": "Mozambique", "valeur": "Afrique"}
+{"entite": "Namibie", "valeur": "Afrique"}
+{"entite": "Nauru", "valeur": "Océanie"}
+{"entite": "Népal", "valeur": "Asie"}
+{"entite": "Nicaragua", "valeur": "Amérique du Nord"}
+{"entite": "Niger", "valeur": "Afrique"}
+{"entite": "Nigéria", "valeur": "Afrique"}
+{"entite": "Niue", "valeur": "Océanie"}
+{"entite": "Norvège", "valeur": "Europe"}
+{"entite": "Nouvelle-Calédonie", "valeur": "Océanie"}
+{"entite": "Nouvelle-Zélande", "valeur": "Océanie"}
+{"entite": "Oman", "valeur": "Asie"}
+{"entite": "Ouganda", "valeur": "Afrique"}
+{"entite": "Ouzbékistan", "valeur": "Asie"}
+{"entite": "Pakistan", "valeur": "Asie"}
+{"entite": "Palaos (Palau)", "valeur": "Océanie"}
+{"entite": "Palestine", "valeur": "Asie"}
+{"entite": "Panama", "valeur": "Amérique du Nord"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "Océanie"}
+{"entite": "Paraguay", "valeur": "Amérique du Sud"}
+{"entite": "Pays-Bas", "valeur": "Europe"}
+{"entite": "Pays-Bas caribéens", "valeur": "Amérique du Nord"}
+{"entite": "Pérou", "valeur": "Amérique du Sud"}
+{"entite": "Philippines", "valeur": "Asie"}
+{"entite": "Pologne", "valeur": "Europe"}
+{"entite": "Polynésie française", "valeur": "Océanie"}
+{"entite": "Porto Rico", "valeur": "Amérique du Nord"}
+{"entite": "Portugal", "valeur": "Europe"}
+{"entite": "Qatar", "valeur": "Asie"}
+{"entite": "République centrafricaine", "valeur": "Afrique"}
+{"entite": "République dominicaine", "valeur": "Amérique du Nord"}
+{"entite": "Réunion", "valeur": "Afrique"}
+{"entite": "Roumanie", "valeur": "Europe"}
+{"entite": "Royaume-Uni", "valeur": "Europe"}
+{"entite": "Russie", "valeur": "Europe"}
+{"entite": "Rwanda", "valeur": "Afrique"}
+{"entite": "Sahara Occidental", "valeur": "Afrique"}
+{"entite": "Saint-Barthélemy", "valeur": "Amérique du Nord"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": "Amérique du Nord"}
+{"entite": "Saint-Marin", "valeur": "Europe"}
+{"entite": "Saint-Martin", "valeur": "Amérique du Nord"}
+{"entite": "Saint-Pierre-et-Miquelon", "valeur": "Amérique du Nord"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "Amérique du Nord"}
+{"entite": "Sainte-Hélène, Ascension et Tristan da Cunha", "valeur": "Afrique"}
+{"entite": "Sainte-Lucie", "valeur": "Amérique du Nord"}
+{"entite": "Salvador", "valeur": "Amérique du Nord"}
+{"entite": "Samoa", "valeur": "Océanie"}
+{"entite": "Samoa américaines", "valeur": "Océanie"}
+{"entite": "São Tomé et Príncipe", "valeur": "Afrique"}
+{"entite": "Sénégal", "valeur": "Afrique"}
+{"entite": "Serbie", "valeur": "Europe"}
+{"entite": "Seychelles", "valeur": "Afrique"}
+{"entite": "Sierra Leone", "valeur": "Afrique"}
+{"entite": "Singapour", "valeur": "Asie"}
+{"entite": "Slovaquie", "valeur": "Europe"}
+{"entite": "Slovénie", "valeur": "Europe"}
+{"entite": "Somalie", "valeur": "Afrique"}
+{"entite": "Soudan", "valeur": "Afrique"}
+{"entite": "Soudan du Sud", "valeur": "Afrique"}
+{"entite": "Sri Lanka", "valeur": "Asie"}
+{"entite": "Suède", "valeur": "Europe"}
+{"entite": "Suisse", "valeur": "Europe"}
+{"entite": "Surinam", "valeur": "Amérique du Sud"}
+{"entite": "Svalbard et Jan Mayen", "valeur": "Europe"}
+{"entite": "Syrie", "valeur": "Asie"}
+{"entite": "Tadjikistan", "valeur": "Asie"}
+{"entite": "Taïwan", "valeur": "Asie"}
+{"entite": "Tanzanie", "valeur": "Afrique"}
+{"entite": "Tchad", "valeur": "Afrique"}
+{"entite": "Tchéquie", "valeur": "Europe"}
+{"entite": "Terres australes et antarctiques françaises", "valeur": "Antarctique"}
+{"entite": "Territoire britannique de l'océan Indien", "valeur": "Afrique"}
+{"entite": "Thaïlande", "valeur": "Asie"}
+{"entite": "Timor oriental", "valeur": "Asie"}
+{"entite": "Togo", "valeur": "Afrique"}
+{"entite": "Tokelau", "valeur": "Océanie"}
+{"entite": "Tonga", "valeur": "Océanie"}
+{"entite": "Trinité-et-Tobago", "valeur": "Amérique du Nord"}
+{"entite": "Tunisie", "valeur": "Afrique"}
+{"entite": "Turkménistan", "valeur": "Asie"}
+{"entite": "Turquie", "valeur": "Asie"}
+{"entite": "Tuvalu", "valeur": "Océanie"}
+{"entite": "Ukraine", "valeur": "Europe"}
+{"entite": "Uruguay", "valeur": "Amérique du Sud"}
+{"entite": "Vanuatu", "valeur": "Océanie"}
+{"entite": "Venezuela", "valeur": "Amérique du Sud"}
+{"entite": "Viêt Nam", "valeur": "Asie"}
+{"entite": "Wallis-et-Futuna", "valeur": "Océanie"}
+{"entite": "Yémen", "valeur": "Asie"}
+{"entite": "Zambie", "valeur": "Afrique"}
+{"entite": "Zimbabwe", "valeur": "Afrique"}

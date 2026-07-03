@@ -1,0 +1,6 @@
+{"_relation": "role_immunoglobuline", "_categorie": "physique", "_source": "Modèle (Claude) — immunologie textbook curée (rôle des classes d'immunoglobulines ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "immunoglobuline A", "valeur": "protection des muqueuses"}
+{"entite": "immunoglobuline D", "valeur": "récepteur des lymphocytes B"}
+{"entite": "immunoglobuline E", "valeur": "allergies et infections parasitaires"}
+{"entite": "immunoglobuline G", "valeur": "réponse immunitaire secondaire"}
+{"entite": "immunoglobuline M", "valeur": "réponse immunitaire primaire"}

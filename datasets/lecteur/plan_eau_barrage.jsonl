@@ -1,0 +1,957 @@
+{"_relation": "plan_eau_barrage", "_categorie": "physique", "_source": "Wikidata/QLever — plan_eau_barrage P206, closed-set(label fr)+fonctionnel (FAUX=0), flux TSV COALESCE(fr,en,mul) EXHAUSTIF", "_articles": true}
+{"entite": "A. I. Selden Dam", "valeur": "Black Warrior"}
+{"entite": "Agua del Toro Dam", "valeur": "río Diamante"}
+{"entite": "Água Vermelha Dam", "valeur": "rio Grande"}
+{"entite": "Aguieira Dam", "valeur": "Mondego"}
+{"entite": "Aisol Dam", "valeur": "río Atuel"}
+{"entite": "Akao Dam", "valeur": "rivière Shō"}
+{"entite": "Albeni Falls Dam", "valeur": "Pend Oreille"}
+{"entite": "Alcova Dam", "valeur": "Rivière Platte Nord"}
+{"entite": "Aldingen barrage", "valeur": "Neckar"}
+{"entite": "Alto Lindoso Dam", "valeur": "Lima"}
+{"entite": "Amir Kabir Detention Dam", "valeur": "Karaj"}
+{"entite": "Amsteldijk", "valeur": "Amstel"}
+{"entite": "Andong Dam", "valeur": "Nakdong"}
+{"entite": "Angat Dam", "valeur": "Angat River"}
+{"entite": "Ankang Dam", "valeur": "Han"}
+{"entite": "Antelope Island Causeway", "valeur": "Grand Lac Salé"}
+{"entite": "Arapuni Dam", "valeur": "Waikato"}
+{"entite": "Aras Dam", "valeur": "Araxe"}
+{"entite": "Argo Dam", "valeur": "rivière Huron"}
+{"entite": "Asahi Dam", "valeur": "rivière Asahi"}
+{"entite": "Åsen dam", "valeur": "Österdalälven"}
+{"entite": "Ashio Dam", "valeur": "rivière Watarase"}
+{"entite": "Assut d'en Carròs", "valeur": "Serpis"}
+{"entite": "Assut de Cullera", "valeur": "Júcar"}
+{"entite": "Assut de la Séquia de Mestalla", "valeur": "Turia"}
+{"entite": "Assut de la Séquia de Mislata", "valeur": "Turia"}
+{"entite": "Assut de la Séquia de Quart-Benàger-Faitanar", "valeur": "Turia"}
+{"entite": "Assut de la Séquia de Tormos", "valeur": "Turia"}
+{"entite": "Assut de la Venta de Pubill", "valeur": "Siurana"}
+{"entite": "Assut de Sueca", "valeur": "Júcar"}
+{"entite": "Assut del Pas de la Guarda", "valeur": "Serpis"}
+{"entite": "Azud de la Acequia Madre de Torrealta", "valeur": "Turia"}
+{"entite": "Azud de la Masada", "valeur": "Turia"}
+{"entite": "Azud de la Torra", "valeur": "Palancia"}
+{"entite": "Azud de los Chorradores", "valeur": "Palancia"}
+{"entite": "Azud del Cerecillo", "valeur": "Bohílgues"}
+{"entite": "Azud del Matadero", "valeur": "Bohílgues"}
+{"entite": "Azud del Medio", "valeur": "Palancia"}
+{"entite": "Azud del Tiétar", "valeur": "Tiétar"}
+{"entite": "Azud of Rojales", "valeur": "Segura"}
+{"entite": "Baipaza Dam", "valeur": "Vakhch"}
+{"entite": "Ballum Dige", "valeur": "mer des Wadden"}
+{"entite": "Balvanitý jez", "valeur": "Olza"}
+{"entite": "Band-e Amir Dam", "valeur": "Kor"}
+{"entite": "Banduo Hydropower Station", "valeur": "fleuve Jaune"}
+{"entite": "Bannetze weir and lock", "valeur": "Aller"}
+{"entite": "barrage à Claude", "valeur": "lac à Claude"}
+{"entite": "barrage à la Loutre", "valeur": "crique de la Loutre"}
+{"entite": "barrage Allard", "valeur": "rivière Saint-Charles"}
+{"entite": "barrage Astle", "valeur": "lac Astle"}
+{"entite": "barrage Atatürk", "valeur": "Euphrate"}
+{"entite": "barrage Aylmer", "valeur": "rivière Saint-François"}
+{"entite": "barrage Bargi", "valeur": "Narmadâ"}
+{"entite": "barrage Beaumont", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage Bernier", "valeur": "lac Bernier"}
+{"entite": "barrage Bhumibol", "valeur": "Ping"}
+{"entite": "barrage Blue Mesa", "valeur": "Gunnison"}
+{"entite": "barrage Casa de Piedra", "valeur": "Colorado"}
+{"entite": "barrage Casault", "valeur": "lac Casault"}
+{"entite": "barrage Charland", "valeur": "rivière du Milieu"}
+{"entite": "barrage Cheoah", "valeur": "Little Tennessee"}
+{"entite": "barrage Chūzenji", "valeur": "lac Chūzenji"}
+{"entite": "barrage Cinconsine", "valeur": "ruisseau Cinconsine"}
+{"entite": "barrage Crystal", "valeur": "Gunnison"}
+{"entite": "barrage d'Akosombo", "valeur": "Volta"}
+{"entite": "barrage d’al-Baath", "valeur": "Euphrate"}
+{"entite": "barrage d'Al-Wehda", "valeur": "Yarmouk"}
+{"entite": "barrage d'Albert", "valeur": "Vendée"}
+{"entite": "barrage d'Alcántara", "valeur": "Tage"}
+{"entite": "barrage d'Alqueva", "valeur": "Guadiana"}
+{"entite": "barrage d'Altınkaya", "valeur": "Kızılırmak"}
+{"entite": "barrage d'Andijan", "valeur": "Kara-Daria"}
+{"entite": "barrage d'Arroyito", "valeur": "río Limay"}
+{"entite": "barrage d'El Chocón", "valeur": "río Limay"}
+{"entite": "barrage d'Émosson", "valeur": "Torrent de Barberine"}
+{"entite": "Barrage d'Engins", "valeur": "Furon"}
+{"entite": "barrage d'Esch-sur-Sûre", "valeur": "Sûre"}
+{"entite": "barrage d'Estreito", "valeur": "rio Grande"}
+{"entite": "barrage d'Ilha Solteira", "valeur": "rivière Paraná"}
+{"entite": "barrage d'Imboulou", "valeur": "Léfini"}
+{"entite": "barrage d'Ingouri", "valeur": "Ingouri"}
+{"entite": "barrage d'Irkoutsk", "valeur": "Angara"}
+{"entite": "barrage d'Itaipu", "valeur": "rivière Paraná"}
+{"entite": "barrage d'Itumbiara", "valeur": "rio Paranaíba"}
+{"entite": "barrage d'Ivankovo", "valeur": "Volga"}
+{"entite": "barrage d'Oahe", "valeur": "rivière Missouri"}
+{"entite": "barrage d'Ouglitch", "valeur": "Volga"}
+{"entite": "barrage d'Oust-Ilimsk", "valeur": "Angara"}
+{"entite": "barrage d'Oust-Khantaï", "valeur": "Khantaïka"}
+{"entite": "barrage d'Ukai", "valeur": "Tapti"}
+{"entite": "barrage Daniel-Johnson", "valeur": "rivière Manicouagan"}
+{"entite": "barrage de Barberine", "valeur": "Torrent de Barberine"}
+{"entite": "barrage de Beauvoir", "valeur": "Isère"}
+{"entite": "barrage de Belo Monte", "valeur": "rio Xingu"}
+{"entite": "barrage de Belver", "valeur": "Tage"}
+{"entite": "barrage de Bemposta", "valeur": "Douro"}
+{"entite": "barrage de Benmore", "valeur": "lac Pukaki"}
+{"entite": "barrage de Big Bend", "valeur": "rivière Missouri"}
+{"entite": "barrage de Bleiloch", "valeur": "Saale"}
+{"entite": "barrage de Bogoutchany", "valeur": "Angara"}
+{"entite": "barrage de Boukhtarma", "valeur": "Ienisseï"}
+{"entite": "barrage de Boureïa", "valeur": "Boureïa"}
+{"entite": "barrage de Bratsk", "valeur": "Angara"}
+{"entite": "barrage de Buyo", "valeur": "Sassandra"}
+{"entite": "barrage de Caculo Cabaça", "valeur": "Kwanza"}
+{"entite": "barrage de Cahora Bassa", "valeur": "Zambèze"}
+{"entite": "barrage de Castelo do Bode", "valeur": "Zêzere"}
+{"entite": "barrage de Castillon", "valeur": "Verdon"}
+{"entite": "barrage de Chancy-Pougny", "valeur": "Rhône"}
+{"entite": "barrage de Chashma", "valeur": "Indus"}
+{"entite": "barrage de Chicoutimi", "valeur": "rivière Chicoutimi"}
+{"entite": "barrage de Coca Codo Sinclair", "valeur": "Coca"}
+{"entite": "barrage de Conqueyrac", "valeur": "Vidourle"}
+{"entite": "barrage de Darunta", "valeur": "Kaboul"}
+{"entite": "Barrage de Dasu", "valeur": "Indus"}
+{"entite": "barrage de Derna", "valeur": "oued Derna"}
+{"entite": "barrage de Dez", "valeur": "Dez"}
+{"entite": "barrage de Djibloho", "valeur": "Mbini"}
+{"entite": "barrage de Farkhad", "valeur": "Syr-Daria"}
+{"entite": "Barrage de Faulbach", "valeur": "Main"}
+{"entite": "barrage de Fengshuba", "valeur": "Dong"}
+{"entite": "Barrage de Flaming Gorge", "valeur": "Green River"}
+{"entite": "barrage de Fortuna", "valeur": "Río Chiriquí"}
+{"entite": "Barrage de Fratel", "valeur": "Tage"}
+{"entite": "barrage de Fukashiro", "valeur": "rivière Kazuno"}
+{"entite": "barrage de Gariep", "valeur": "Orange"}
+{"entite": "barrage de Gezhouba", "valeur": "Yangzi Jiang"}
+{"entite": "barrage de Grand-Mère", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage de Grandval", "valeur": "Truyère"}
+{"entite": "Barrage de Guddu", "valeur": "Indus"}
+{"entite": "barrage de Himrin", "valeur": "Alvand Rud"}
+{"entite": "barrage de Hòa Bình", "valeur": "rivière Noire"}
+{"entite": "barrage de Hoheikyo", "valeur": "Toyohira-gawa"}
+{"entite": "barrage de Jatiluhur", "valeur": "Citarum"}
+{"entite": "barrage de Jirau", "valeur": "rio Madeira"}
+{"entite": "barrage de Jupiá", "valeur": "rivière Paraná"}
+{"entite": "barrage de Kakhovka", "valeur": "Dniepr"}
+{"entite": "Barrage de Kamtok", "valeur": "Yangzi Jiang"}
+{"entite": "barrage de Kapanda", "valeur": "Kwanza"}
+{"entite": "barrage de Karaj", "valeur": "Karaj"}
+{"entite": "barrage de Karakaya", "valeur": "Euphrate"}
+{"entite": "barrage de Kariba", "valeur": "Zambèze"}
+{"entite": "barrage de Karun-3", "valeur": "Karoun"}
+{"entite": "barrage de Kaunas", "valeur": "Niémen"}
+{"entite": "Barrage de Khoda Afarin", "valeur": "Araxe"}
+{"entite": "barrage de Kipawa", "valeur": "lac Kipawa"}
+{"entite": "barrage de Kossou", "valeur": "Bandama"}
+{"entite": "Barrage de Kotri", "valeur": "Indus"}
+{"entite": "barrage de Koyna", "valeur": "Koyna"}
+{"entite": "barrage de Krasnoïarsk", "valeur": "Ienisseï"}
+{"entite": "barrage de Kurobe", "valeur": "rivière Kurobe"}
+{"entite": "barrage de Kurpsai", "valeur": "Naryn"}
+{"entite": "barrage de l'Escale", "valeur": "Durance"}
+{"entite": "barrage de l'Étang-à-la-Truite", "valeur": "étang à la Truite"}
+{"entite": "barrage de la Châteauguay-1", "valeur": "rivière Châteauguay"}
+{"entite": "barrage de La Goule", "valeur": "Doubs"}
+{"entite": "barrage de la Kama", "valeur": "Kama"}
+{"entite": "barrage de la Manouane-A", "valeur": "rivière Manouane"}
+{"entite": "barrage de la Mitis-1", "valeur": "rivière Mitis"}
+{"entite": "barrage de la Petite-Décharge-1", "valeur": "La Petite Décharge"}
+{"entite": "barrage de la Petite-Décharge-2", "valeur": "La Petite Décharge"}
+{"entite": "barrage de la Petite-Décharge-3", "valeur": "La Petite Décharge"}
+{"entite": "barrage de la Petite-Décharge-4", "valeur": "La Petite Décharge"}
+{"entite": "barrage de la Renaissance", "valeur": "Nil Bleu"}
+{"entite": "barrage de La Roche-au-Moine", "valeur": "Creuse"}
+{"entite": "barrage de la Rouvière", "valeur": "Crieulon"}
+{"entite": "barrage de La Tuque", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage de la Zeïa", "valeur": "Zeïa"}
+{"entite": "barrage de Laúca", "valeur": "Kwanza"}
+{"entite": "barrage de Leidatan", "valeur": "Nanpan"}
+{"entite": "barrage de Lixhe", "valeur": "Meuse"}
+{"entite": "barrage de Lom-Pangar", "valeur": "Lom"}
+{"entite": "barrage de Longtan", "valeur": "Hongshui"}
+{"entite": "barrage de Longyangxia", "valeur": "fleuve Jaune"}
+{"entite": "barrage de Malarce", "valeur": "Chassezac"}
+{"entite": "barrage de Malpasset", "valeur": "Reyran"}
+{"entite": "barrage de Mangla", "valeur": "Jhelum"}
+{"entite": "barrage de Mansour", "valeur": "oued Derna"}
+{"entite": "Barrage de Medog", "valeur": "Brahmapoutre"}
+{"entite": "Barrage de Mingatchevir", "valeur": "Koura"}
+{"entite": "barrage de Molato", "valeur": "Tidone"}
+{"entite": "barrage de Mont-Joli", "valeur": "rivière Mitis"}
+{"entite": "barrage de Nancy", "valeur": "Meurthe"}
+{"entite": "barrage de Nathpa Jhakri", "valeur": "Sutlej"}
+{"entite": "barrage de Nijnekamsk", "valeur": "Kama"}
+{"entite": "barrage de Nijni Novgorod", "valeur": "Volga"}
+{"entite": "Barrage de Notre-Dame-de-Commiers", "valeur": "Drac"}
+{"entite": "barrage de Nourek", "valeur": "Vakhch"}
+{"entite": "barrage de Palagnedra", "valeur": "Lago di Palagnedra"}
+{"entite": "barrage de Pandoh", "valeur": "Beas"}
+{"entite": "barrage de Penglatan", "valeur": "Han"}
+{"entite": "barrage de Pichi Picún Leufú", "valeur": "río Limay"}
+{"entite": "barrage de Picote", "valeur": "Douro"}
+{"entite": "barrage de Puclaro", "valeur": "rio Elqui"}
+{"entite": "Barrage de Qiz Qalasi", "valeur": "Araxe"}
+{"entite": "barrage de Rapide-Blanc", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage de Régua", "valeur": "Douro"}
+{"entite": "barrage de Reventazón", "valeur": "Reventazón (Parismina)"}
+{"entite": "barrage de Rogoun", "valeur": "Vakhch"}
+{"entite": "barrage de Rybinsk", "valeur": "Volga"}
+{"entite": "barrage de Saïano-Chouchensk", "valeur": "Ienisseï"}
+{"entite": "Barrage de Saint-Égrève", "valeur": "Isère"}
+{"entite": "barrage de Saint-Pétersbourg", "valeur": "golfe de Finlande"}
+{"entite": "barrage de Saint-Pierre-Cognet", "valeur": "Drac"}
+{"entite": "barrage de Šance", "valeur": "Ostravice"}
+{"entite": "barrage de Sanmenxia", "valeur": "fleuve Jaune"}
+{"entite": "barrage de Santo Antônio", "valeur": "rio Madeira"}
+{"entite": "barrage de São Luiz do Tapajós", "valeur": "rio Tapajós"}
+{"entite": "barrage de Saratov", "valeur": "Volga"}
+{"entite": "barrage de Sefid Roud", "valeur": "Sefid Roud"}
+{"entite": "barrage de Serra da Mesa", "valeur": "rio Tocantins"}
+{"entite": "barrage de Seyhan", "valeur": "Seyhan"}
+{"entite": "barrage de Shahid Abbaspour", "valeur": "Karoun"}
+{"entite": "barrage de Shardara", "valeur": "Syr-Daria"}
+{"entite": "barrage de Shawinigan", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage de Shawinigan-1", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage de Shawinigan-2", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage de Sidi M'hamed Ben Aouda", "valeur": "Oued Mina"}
+{"entite": "barrage de Sidi Yakoub", "valeur": "Oued Ardjem"}
+{"entite": "barrage de Sơn La", "valeur": "rivière Noire"}
+{"entite": "barrage de Sukkur", "valeur": "Indus"}
+{"entite": "barrage de Suorva", "valeur": "Luleälven"}
+{"entite": "barrage de Taabo", "valeur": "Bandama"}
+{"entite": "barrage de Tabqa", "valeur": "Euphrate"}
+{"entite": "barrage de Tala", "valeur": "Raidak"}
+{"entite": "barrage de Tankeng", "valeur": "Ou"}
+{"entite": "barrage de Tarbela", "valeur": "Indus"}
+{"entite": "barrage de Tcheboksary", "valeur": "Volga"}
+{"entite": "barrage de Tchirkeïsk", "valeur": "Soulak"}
+{"entite": "barrage de Tehri", "valeur": "Bhagirathi"}
+{"entite": "barrage de Teles Pires", "valeur": "rio São Manuel"}
+{"entite": "barrage de Tha Thung Na", "valeur": "Kwaï Yai"}
+{"entite": "barrage de Tianshengqiao II", "valeur": "Nanpan"}
+{"entite": "barrage de Tichrin", "valeur": "Euphrate"}
+{"entite": "barrage de Toktogul", "valeur": "Naryn"}
+{"entite": "barrage de Tongzilin", "valeur": "Yalong"}
+{"entite": "barrage de Três Irmãos", "valeur": "rio Tietê"}
+{"entite": "barrage de Valdecañas", "valeur": "Tage"}
+{"entite": "barrage de Vanderkloof", "valeur": "Orange"}
+{"entite": "barrage de Verbois", "valeur": "Rhône"}
+{"entite": "barrage de Viliouï", "valeur": "Viliouï"}
+{"entite": "barrage de Volgograd", "valeur": "Volga"}
+{"entite": "barrage de Volkhov", "valeur": "Volkhov"}
+{"entite": "barrage de Votkinsk", "valeur": "Kama"}
+{"entite": "barrage de Wadi Al-Mujib", "valeur": "Arnon"}
+{"entite": "Barrage de Weedon", "valeur": "rivière Saint-François"}
+{"entite": "barrage de Xiaowan", "valeur": "Mékong"}
+{"entite": "barrage de Xingó", "valeur": "rio São Francisco"}
+{"entite": "barrage de Yeywa", "valeur": "Myitnge"}
+{"entite": "barrage de Yusufeli", "valeur": "Tchorokhi"}
+{"entite": "barrage de Zhiguli-Kouïbychev", "valeur": "Volga"}
+{"entite": "barrage Denis-Perron", "valeur": "rivière Sainte-Marguerite"}
+{"entite": "barrage des Trois-Gorges", "valeur": "Yangzi Jiang"}
+{"entite": "Barrage déversoir de la Rivière-Ha! Ha!", "valeur": "rivière Ha! Ha!"}
+{"entite": "barrage du Bras de la Plaine", "valeur": "Bras de la Plaine"}
+{"entite": "barrage du Cabril", "valeur": "Zêzere"}
+{"entite": "barrage du Château-d'Eau", "valeur": "rivière Saint-Charles"}
+{"entite": "Barrage du Gordon", "valeur": "Gordon River"}
+{"entite": "barrage du Gouffre d'Enfer", "valeur": "Furan"}
+{"entite": "barrage du Grand-Réservoir", "valeur": "ruisseau de l'Aqueduc"}
+{"entite": "barrage du Kaeng Krachan", "valeur": "Phetchaburi"}
+{"entite": "barrage du Lac-Bonjour", "valeur": "rivière Bonjour"}
+{"entite": "barrage du Lac-des-Cadets", "valeur": "lac des Cadets"}
+{"entite": "barrage du Lac-du-Nord", "valeur": "lac du Nord"}
+{"entite": "barrage du Lac-Duvivier", "valeur": "lac Duvivier"}
+{"entite": "barrage du Mae Klong", "valeur": "Mae Klong"}
+{"entite": "barrage du Marillet", "valeur": "Marillet"}
+{"entite": "barrage du Pas-du-Riot", "valeur": "Furan"}
+{"entite": "barrage du Pego do Altar", "valeur": "rivière des Alcáçovas"}
+{"entite": "barrage du Petit-Réservoir", "valeur": "ruisseau de l'Aqueduc"}
+{"entite": "barrage du Ruisseau-Weedon", "valeur": "ruisseau Weedon"}
+{"entite": "Barrage du Saut du moine", "valeur": "Drac"}
+{"entite": "barrage du Sautet", "valeur": "Drac"}
+{"entite": "barrage du Seujet", "valeur": "Rhône"}
+{"entite": "barrage du Vieux Émosson", "valeur": "Nant de Dranse"}
+{"entite": "barrage du Vieux-Moulin", "valeur": "ruisseau de la Gouèche"}
+{"entite": "Barrage éclusé de Schengen-Apach", "valeur": "Moselle"}
+{"entite": "barrage Édouard", "valeur": "lac Édouard"}
+{"entite": "barrage Florentino Ameghino", "valeur": "lac Florentino Ameghino"}
+{"entite": "barrage Frenette-1", "valeur": "lac Frenette"}
+{"entite": "barrage Frenette-2", "valeur": "lac Frenette"}
+{"entite": "barrage Gauthier", "valeur": "lac Gauthier"}
+{"entite": "barrage Gilgel Gibe III", "valeur": "rivière Omo"}
+{"entite": "barrage Gouin", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage Hatogaya", "valeur": "rivière Shō"}
+{"entite": "barrage Hoover", "valeur": "Colorado"}
+{"entite": "barrage Huit-Mille", "valeur": "lac Huit Mille"}
+{"entite": "barrage hydro-électrique de Gambsheim", "valeur": "Rhin Supérieur"}
+{"entite": "barrage hydroélectrique d'Édéa", "valeur": "Sanaga"}
+{"entite": "barrage hydroélectrique de Chixoy", "valeur": "Chixoy"}
+{"entite": "barrage hydroélectrique de la Sondu Miriu", "valeur": "Sondu Miriu"}
+{"entite": "barrage hydroélectrique de Song Loulou", "valeur": "Sanaga"}
+{"entite": "barrage hydroéléctrique des Portes de fer I", "valeur": "Danube"}
+{"entite": "barrage hydroéléctrique des Portes de fer II", "valeur": "Danube"}
+{"entite": "barrage Joseph-Samson", "valeur": "rivière Saint-Charles"}
+{"entite": "barrage Karun-4", "valeur": "Karoun"}
+{"entite": "Barrage Komaki", "valeur": "rivière Shō"}
+{"entite": "barrage Kwae Noi Bumrung Dan", "valeur": "Khwae Noi"}
+{"entite": "barrage L'Assomption-2", "valeur": "rivière L'Assomption"}
+{"entite": "barrage La Grande-4", "valeur": "La Grande Rivière"}
+{"entite": "barrage La Loutre", "valeur": "rivière Saint-Maurice"}
+{"entite": "barrage Laforge-1", "valeur": "rivière Laforge"}
+{"entite": "barrage Little Goose", "valeur": "rivière Snake"}
+{"entite": "barrage Los Caracoles", "valeur": "río San Juan"}
+{"entite": "barrage Lower Granite", "valeur": "rivière Snake"}
+{"entite": "barrage Lower Monumental", "valeur": "rivière Snake"}
+{"entite": "barrage Mathieu-D'Amours", "valeur": "rivière Matane"}
+{"entite": "barrage Morrow Point", "valeur": "Gunnison"}
+{"entite": "barrage Pimental", "valeur": "rio Xingu"}
+{"entite": "Barrage Ratba", "valeur": "Oued Oulaï"}
+{"entite": "barrage Robert-Bourassa", "valeur": "La Grande Rivière"}
+{"entite": "Barrage romain d'Almonacid de la Cuba", "valeur": "rio Aguasvivas"}
+{"entite": "barrage Sartigan", "valeur": "rivière Chaudière"}
+{"entite": "barrage Sidi Saïd Maâchou", "valeur": "Oum Errabiaa"}
+{"entite": "barrage Sirikit", "valeur": "Nan"}
+{"entite": "barrage Srinagarind", "valeur": "Kwaï Yai"}
+{"entite": "barrage St-Onge", "valeur": "rivière Trout"}
+{"entite": "barrage Susie", "valeur": "rivière Suzie"}
+{"entite": "barrage Suzie", "valeur": "rivière Suzie"}
+{"entite": "barrage Theodore-Roosevelt", "valeur": "rivière Salée"}
+{"entite": "barrage Tianshengqiao I", "valeur": "Nanpan"}
+{"entite": "barrage Youssef Ibn Tachfin", "valeur": "Oued Massa"}
+{"entite": "barrage Zéphir", "valeur": "étang Zéphir"}
+{"entite": "Barragem da Paradela", "valeur": "Cávado"}
+{"entite": "Barragem de Andorinhas", "valeur": "Ave"}
+{"entite": "Barragem de Guilhofrei", "valeur": "Ave"}
+{"entite": "Barragem de Montargil", "valeur": "Sor"}
+{"entite": "barragem de Pedrógão", "valeur": "Guadiana"}
+{"entite": "Barragem de Rebordelo", "valeur": "Rabazal"}
+{"entite": "Barragem de Ribeiradio", "valeur": "Voga"}
+{"entite": "Barragem de Santa Clara", "valeur": "Mira"}
+{"entite": "barragem de Torrão", "valeur": "Tâmega"}
+{"entite": "Bassano Dam", "valeur": "rivière Bow"}
+{"entite": "Bath Weir", "valeur": "Avon"}
+{"entite": "Benešův", "valeur": "Lužnice"}
+{"entite": "Bergnäs Hydroelectric Power Station", "valeur": "Skellefteälven"}
+{"entite": "Bhadbhut barrage", "valeur": "Narmadâ"}
+{"entite": "Birch Hill Dam", "valeur": "Millers River"}
+{"entite": "Blufi Dam", "valeur": "Imera méridionale"}
+{"entite": "Blüthnerstegwehr", "valeur": "Elstermühlgraben"}
+{"entite": "Bode Weir", "valeur": "Bode"}
+{"entite": "Bolboci Dam", "valeur": "Ialomița"}
+{"entite": "Bonenburgersluis", "valeur": "canal d'Apeldoorn"}
+{"entite": "Bonnington Linn Weir", "valeur": "Clyde"}
+{"entite": "Bouçã Dam", "valeur": "Zêzere"}
+{"entite": "Boysen Dam", "valeur": "rivière Wind"}
+{"entite": "Buftea Dam", "valeur": "Colentina"}
+{"entite": "Burbacher Schleuse", "valeur": "Sarre"}
+{"entite": "Bývalý jez na Chrudimce v parku Na vinici v Pardubicích", "valeur": "Chrudimka"}
+{"entite": "Cacovice Weir", "valeur": "Svitava"}
+{"entite": "Campolattaro dam", "valeur": "Tammaro"}
+{"entite": "Caniçada Dam", "valeur": "Cávado"}
+{"entite": "Carrapatelo Dam", "valeur": "Douro"}
+{"entite": "Cataract Dam", "valeur": "Saco River"}
+{"entite": "Čejnov", "valeur": "Lužnice"}
+{"entite": "centrale Brisay", "valeur": "rivière Laforge"}
+{"entite": "centrale d'Entracque", "valeur": "Gesso"}
+{"entite": "centrale de la Hart-Jaune", "valeur": "rivière Hart Jaune"}
+{"entite": "centrale de Shipshaw", "valeur": "rivière Saguenay"}
+{"entite": "centrale hydroélectrique d'Isohaara", "valeur": "Kemijoki"}
+{"entite": "centrale hydroélectrique d'Itutinga", "valeur": "rio Grande"}
+{"entite": "centrale hydroélectrique de Birsfelden", "valeur": "Rhin"}
+{"entite": "centrale hydroélectrique de Capivara", "valeur": "rio Paranapanema"}
+{"entite": "centrale hydroélectrique de Fierza", "valeur": "Drin"}
+{"entite": "centrale hydroélectrique de Furnas", "valeur": "rio Grande"}
+{"entite": "Centrale hydroélectrique de Gitaru", "valeur": "Tana"}
+{"entite": "centrale hydroélectrique de Harsprånget", "valeur": "Luleälven"}
+{"entite": "centrale hydroélectrique de Ivailovgrad", "valeur": "Arda"}
+{"entite": "centrale hydroélectrique de Kamburu", "valeur": "Tana"}
+{"entite": "centrale hydroélectrique de Kaniv", "valeur": "Dniepr"}
+{"entite": "centrale hydroélectrique de Kiambere", "valeur": "Tana"}
+{"entite": "centrale hydroélectrique de Kiev", "valeur": "Dniepr"}
+{"entite": "centrale hydroélectrique de Kindaruma", "valeur": "Tana"}
+{"entite": "centrale hydroélectrique de Kozjak", "valeur": "Treska"}
+{"entite": "centrale hydroélectrique de Krementchouk", "valeur": "Dniepr"}
+{"entite": "centrale hydroélectrique de Marimbondo", "valeur": "rio Grande"}
+{"entite": "centrale hydroélectrique de Masinga", "valeur": "Tana"}
+{"entite": "centrale hydroélectrique de Salakovac", "valeur": "Neretva"}
+{"entite": "centrale hydroélectrique de Velle", "valeur": "Minho"}
+{"entite": "Centrale hydroélectrique de Volobe", "valeur": "Ivondro"}
+{"entite": "centrale hydroélectrique de Yacyretá", "valeur": "rivière Paraná"}
+{"entite": "centrale hydroélectrique du Nalubaale", "valeur": "Nil Blanc"}
+{"entite": "centrale hydroélectrique Engenheiro Sérgio Motta", "valeur": "rivière Paraná"}
+{"entite": "centrale hydroélectrique Guajoyo", "valeur": "lac de Güija"}
+{"entite": "centrale hydroélectrique Marechal Mascarenhas de Moraes", "valeur": "rio Grande"}
+{"entite": "centrale Mountain Chute", "valeur": "rivière Madawaska"}
+{"entite": "Chamera Dam", "valeur": "Ravi"}
+{"entite": "Chungju Dam", "valeur": "Han"}
+{"entite": "Cirata Dam", "valeur": "Citarum"}
+{"entite": "Clarence Cannon Dam", "valeur": "rivière Salt"}
+{"entite": "Coastal fish weir 440m north west of Pewet Island", "valeur": "Blackwater"}
+{"entite": "Coffeeville Lock and Dam", "valeur": "Tombigbee"}
+{"entite": "Colchester Causeway", "valeur": "lac Champlain"}
+{"entite": "Cooke Dam", "valeur": "rivière Au Sable"}
+{"entite": "Cowans Ford Hydroelectric Station", "valeur": "Catawba"}
+{"entite": "Crestuma Dam", "valeur": "Douro"}
+{"entite": "Cromford Canal Embankment", "valeur": "canal de Cromford"}
+{"entite": "Cross Lake Dam and Spillway", "valeur": "bayou Cross"}
+{"entite": "Daecheong Dam", "valeur": "Kum"}
+{"entite": "Dahla Dam", "valeur": "Arghandab"}
+{"entite": "dam of Nizhny Tagil Iron and steel plant", "valeur": "Taguil"}
+{"entite": "Dam of the Lower Iset Pond", "valeur": "Isset"}
+{"entite": "Dam On River Coquet 350 Metres Upstream Of Guyzance Bridge", "valeur": "Coquet"}
+{"entite": "Dam, Overflow Bridge And Valve House At Catcleugh Reservoir", "valeur": "Catcleugh Reservoir"}
+{"entite": "dame du Quatre", "valeur": "Petite rivière Sainte-Anne"}
+{"entite": "Daryan Dam", "valeur": "Diyala"}
+{"entite": "Dashidaira Dam", "valeur": "rivière Kurobe"}
+{"entite": "Deer Creek Dam", "valeur": "rivière Provo"}
+{"entite": "Děhylov weir", "valeur": "Opava"}
+{"entite": "Delaware Dam", "valeur": "Olentangy River"}
+{"entite": "Det Fremskudte Dige", "valeur": "mer des Wadden"}
+{"entite": "Diga del Brasimone", "valeur": "Lago del Brasimone"}
+{"entite": "digue Bernier", "valeur": "lac Bernier"}
+{"entite": "digue de Kopasz", "valeur": "Danube"}
+{"entite": "digue du mont Cotugno", "valeur": "Sinni"}
+{"entite": "Dique El Cadillal", "valeur": "río Dulce"}
+{"entite": "Dique Piedras Moras", "valeur": "río Tercero"}
+{"entite": "Diversion Dam", "valeur": "rivière Wichita"}
+{"entite": "Doring River Dam", "valeur": "Doring River"}
+{"entite": "Dorudzan Dam", "valeur": "Kor"}
+{"entite": "Dörverden barrage", "valeur": "Weser"}
+{"entite": "Double-Heart of Stacked Stones", "valeur": "détroit de Taïwan"}
+{"entite": "Dráchov Weir", "valeur": "Lužnice"}
+{"entite": "Drakenburg barrage", "valeur": "Weser"}
+{"entite": "Drusus dam", "valeur": "Waal"}
+{"entite": "Dubăsari Dam", "valeur": "Dniestr"}
+{"entite": "Easton Dam", "valeur": "Lehigh"}
+{"entite": "Ecker Dam", "valeur": "Ecker"}
+{"entite": "écluse de Kœnigsmacker", "valeur": "Moselle"}
+{"entite": "Ecluse de Neuves-Maisons", "valeur": "Moselle"}
+{"entite": "Eddersheim barrage and locks", "valeur": "Main"}
+{"entite": "Egglfing-Obernberg Hydropower Plant", "valeur": "Inn"}
+{"entite": "El Carrizal Dam", "valeur": "río Tunuyán"}
+{"entite": "El Nihuil Dam", "valeur": "río Atuel"}
+{"entite": "El Tunal Dam", "valeur": "río Salado del Norte"}
+{"entite": "Elsterdamm", "valeur": "Elster noire"}
+{"entite": "Embrey Dam", "valeur": "Rappahannock"}
+{"entite": "Eureka Dam", "valeur": "Ocklawaha"}
+{"entite": "Fairmount Dam", "valeur": "Schuylkill"}
+{"entite": "Fashafuyeh Dam", "valeur": "Karaj"}
+{"entite": "Finesville Dam", "valeur": "Musconetcong River"}
+{"entite": "Flaauwe Werk", "valeur": "mer du Nord"}
+{"entite": "Folsom Dam", "valeur": "American River"}
+{"entite": "Fort Sherman Dam", "valeur": "Big Cypress Creek"}
+{"entite": "Franklin County Dam", "valeur": "Big Cypress Creek"}
+{"entite": "Fredenburgh Falls Dam", "valeur": "rivière Saranac"}
+{"entite": "Freudenberg barrage", "valeur": "Main"}
+{"entite": "Friant Dam", "valeur": "San Joaquin"}
+{"entite": "Fujiwara Dam", "valeur": "rivière Tone"}
+{"entite": "Funvera dam", "valeur": "Bidassoa"}
+{"entite": "Futaleufú Dam", "valeur": "río Futaleufú"}
+{"entite": "Futase Dam", "valeur": "Ara-kawa"}
+{"entite": "Futomi Dam", "valeur": "Oyabe-gawa"}
+{"entite": "Gajoldoba Barrage", "valeur": "Teesta"}
+{"entite": "Gamlebrofoss power station", "valeur": "Numedalsvassdraget"}
+{"entite": "Geddes Dam", "valeur": "rivière Huron"}
+{"entite": "George F. Brasfield Dam", "valeur": "Appomattox River"}
+{"entite": "Glendo Dam", "valeur": "Rivière Platte Nord"}
+{"entite": "Goedertrouw Dam", "valeur": "Mhlatuze"}
+{"entite": "Gogeldrie Weir", "valeur": "Murrumbidgee"}
+{"entite": "Gomal Zam Dam", "valeur": "Gomal"}
+{"entite": "Gongboxia Dam", "valeur": "fleuve Jaune"}
+{"entite": "Gongendō Bank", "valeur": "Naka-gawa"}
+{"entite": "Göscheneralp dam", "valeur": "Göscheneralpsee"}
+{"entite": "Gotvand Dam", "valeur": "Karoun"}
+{"entite": "Granfors Hydroelectric Power Station", "valeur": "Skellefteälven"}
+{"entite": "Guernsey Dam", "valeur": "Rivière Platte Nord"}
+{"entite": "Hale Dam", "valeur": "Pangani"}
+{"entite": "Hanekenfähr Ems Weir", "valeur": "Ems"}
+{"entite": "Haraz Dam", "valeur": "Haraz"}
+{"entite": "Hartwell Dam", "valeur": "Savannah"}
+{"entite": "Harvie's Dyke", "valeur": "Clyde"}
+{"entite": "haut barrage d'Assouan", "valeur": "Nil"}
+{"entite": "Head Balloki", "valeur": "Ravi"}
+{"entite": "Heindlmühlwehr", "valeur": "Steyr"}
+{"entite": "Henty Dam", "valeur": "Henty River"}
+{"entite": "Hezar Sangar Dam", "valeur": "Haraz"}
+{"entite": "Hezenbergerstuw", "valeur": "canal d'Apeldoorn"}
+{"entite": "Hirschhorn barrage", "valeur": "Neckar"}
+{"entite": "Hiyoshi Dam", "valeur": "rivière Katsura"}
+{"entite": "Hněvkovice weir", "valeur": "Vltava"}
+{"entite": "Hochwasserschutzdeich Neuwied", "valeur": "Rhin"}
+{"entite": "Höljes Hydroelectric Power Station", "valeur": "Klarälven"}
+{"entite": "Holt Lock and Dam", "valeur": "Black Warrior"}
+{"entite": "Hondsbossche Zeewering", "valeur": "mer du Nord"}
+{"entite": "Horkheim lock", "valeur": "Neckar"}
+{"entite": "Horse Mesa Dam", "valeur": "rivière Salée"}
+{"entite": "Hostinné weir", "valeur": "Elbe"}
+{"entite": "Hostivař Dam", "valeur": "Botič"}
+{"entite": "Hotokebara Dam", "valeur": "Kuzuryū-gawa"}
+{"entite": "Hua Na Dam", "valeur": "Mun"}
+{"entite": "Hughesville Dam", "valeur": "Musconetcong River"}
+{"entite": "Hunderfossen Dam", "valeur": "Gudbrandsdalslågen"}
+{"entite": "Husovice Weir", "valeur": "Svitava"}
+{"entite": "Ice Harbor Dam", "valeur": "rivière Snake"}
+{"entite": "Idriss I Dam", "valeur": "Oued Inaouen"}
+{"entite": "Ihara-zutsumi", "valeur": "Oda"}
+{"entite": "Illerkraftwerk Maria Steinbach", "valeur": "Iller"}
+{"entite": "Illerstaustufe 4", "valeur": "Iller"}
+{"entite": "Illerstaustufe 5", "valeur": "Iller"}
+{"entite": "Illerstaustufe 6", "valeur": "Iller"}
+{"entite": "Imatrankoski Dam", "valeur": "Rapides d'Imatra"}
+{"entite": "Indian Rapids Dam", "valeur": "rivière Saranac"}
+{"entite": "Inekoki Dam", "valeur": "rivière Azusa"}
+{"entite": "Innerste Dam", "valeur": "Innerste"}
+{"entite": "Iran–Turkmenistan Friendship Dam", "valeur": "Hari Rûd"}
+{"entite": "Islam Barrage", "valeur": "Sutlej"}
+{"entite": "Izhevsk Arsenal dam", "valeur": "Ij"}
+{"entite": "J. Strom Thurmond Dam", "valeur": "Savannah"}
+{"entite": "Jaguara Dam", "valeur": "rio Grande"}
+{"entite": "Janampet Barrage", "valeur": "Godâvarî"}
+{"entite": "Ješkovský jez", "valeur": "Malše"}
+{"entite": "Jez", "valeur": "Chrudimka"}
+{"entite": "Jez Dašice", "valeur": "Loučná"}
+{"entite": "Jez Háje nad Jizerou - Dolní Sytová", "valeur": "Jizera"}
+{"entite": "Jez Hučák", "valeur": "Elbe"}
+{"entite": "jez Kovář", "valeur": "Malše"}
+{"entite": "Jez Marcela", "valeur": "Botič"}
+{"entite": "Jez Nemošice", "valeur": "Chrudimka"}
+{"entite": "Jez Oblekovice", "valeur": "Thaya"}
+{"entite": "Jez Pilař", "valeur": "Lužnice"}
+{"entite": "Jez pod zámkem", "valeur": "Rokytná"}
+{"entite": "Jez Předměřice", "valeur": "Elbe"}
+{"entite": "Jez Smiřice", "valeur": "Elbe"}
+{"entite": "Jez Svaté Pole", "valeur": "Otava"}
+{"entite": "Jez Těšov", "valeur": "Olšava"}
+{"entite": "Jez U Autokempu", "valeur": "Ostravice"}
+{"entite": "Jigaon project", "valeur": "Purna"}
+{"entite": "Jin Dike", "valeur": "fleuve Jaune"}
+{"entite": "Jiráskův jez", "valeur": "Vltava"}
+{"entite": "Jiroft Dam", "valeur": "Halil Roud"}
+{"entite": "Jishixia Dam", "valeur": "fleuve Jaune"}
+{"entite": "Julius Dam", "valeur": "Lake Julius"}
+{"entite": "Kaeng Suea Ten Dam", "valeur": "Yom"}
+{"entite": "Kajaki Dam", "valeur": "Helmand"}
+{"entite": "Kalabagh Dam", "valeur": "Indus"}
+{"entite": "Kamagafuchi Dam", "valeur": "rivière Azusa"}
+{"entite": "Kambarata-2 Hydro Power Plant", "valeur": "Naryn"}
+{"entite": "Kamenný mlýn Weir", "valeur": "Svratka"}
+{"entite": "Kameyama Dam", "valeur": "Rivière Obitsu"}
+{"entite": "Kangyang Dam", "valeur": "fleuve Jaune"}
+{"entite": "Kapshagay Hydroelectric Power Plant", "valeur": "lac de Kapchagaï"}
+{"entite": "Karāpiro Power Station", "valeur": "Waikato"}
+{"entite": "Kasegawa Dam", "valeur": "rivière Kase"}
+{"entite": "Katulampa floodgate", "valeur": "Ciliwung"}
+{"entite": "Kazawa Dam", "valeur": "rivière Agatsuma"}
+{"entite": "Kelbra Dam", "valeur": "Helme"}
+{"entite": "Khun Dan Prakarnchon Dam", "valeur": "Nakhon Nayok"}
+{"entite": "Kingsley Dam", "valeur": "Rivière Platte Nord"}
+{"entite": "Kio Kho Ma dam", "valeur": "Wang"}
+{"entite": "Kiu Lom dam", "valeur": "Wang"}
+{"entite": "Klapkový", "valeur": "Lužnice"}
+{"entite": "Koblenz Barrage", "valeur": "Moselle"}
+{"entite": "Kolkewadi Dam", "valeur": "Koyna"}
+{"entite": "Komín Weir", "valeur": "Svratka"}
+{"entite": "Kortes Dam", "valeur": "Rivière Platte Nord"}
+{"entite": "Koshi Barrage", "valeur": "Kosi"}
+{"entite": "Koyadaira Dam", "valeur": "rivière Kurobe"}
+{"entite": "Krabbenkreekdam", "valeur": "Krabbenkreek"}
+{"entite": "Krångede Hydroelectric Power Station", "valeur": "Indalsälven"}
+{"entite": "Krasnoklutchevskaya Dam", "valeur": "Krasny Klyuch"}
+{"entite": "Kreuzbergmaut Hydroelectric Power Station", "valeur": "Salzach"}
+{"entite": "Krichim Dam", "valeur": "Văča"}
+{"entite": "Kumagaya Sakura Tsutsumi", "valeur": "Ara-kawa"}
+{"entite": "Kusaki Dam", "valeur": "rivière Watarase"}
+{"entite": "Kuzuryu Dam", "valeur": "Kuzuryū-gawa"}
+{"entite": "Kvěchův mill", "valeur": "Lužnice"}
+{"entite": "lac d'Ullum", "valeur": "río San Juan"}
+{"entite": "LaGrande Dam", "valeur": "Nisqually"}
+{"entite": "Lai Châu Dam", "valeur": "rivière Noire"}
+{"entite": "Lake Decatur Dam", "valeur": "Sangamon"}
+{"entite": "Lake Franklin Dam", "valeur": "Big Cypress Creek"}
+{"entite": "Lake Kemp Dam", "valeur": "rivière Wichita"}
+{"entite": "Lake Parramatta Dam", "valeur": "Lake Parramatta"}
+{"entite": "Landesbergen barrage", "valeur": "Weser"}
+{"entite": "Langwedel barrage", "valeur": "Weser"}
+{"entite": "Las Nazas (dam)", "valeur": "Bidassoa"}
+{"entite": "Lauffen barrage", "valeur": "Neckar"}
+{"entite": "Lay Dam", "valeur": "Coosa"}
+{"entite": "Leana dam", "valeur": "Cosia"}
+{"entite": "Lechstaustufe 11 – Lechblick", "valeur": "Lech"}
+{"entite": "Lechstaustufe 12 – Lechmühlen", "valeur": "Lech"}
+{"entite": "Lechstaustufe 13 – Dornstetten", "valeur": "Lech"}
+{"entite": "Lechstaustufe 14 – Pitzling", "valeur": "Lech"}
+{"entite": "Lechstaustufe 15 – Landsberg", "valeur": "Lech"}
+{"entite": "Lechstaustufe 18 – Kaufering", "valeur": "Lech"}
+{"entite": "Lechstaustufe 8 – Sperber", "valeur": "Lech"}
+{"entite": "Lechstaustufe 8a – Kinsau", "valeur": "Lech"}
+{"entite": "Lechstaustufe 9 – Apfeldorf", "valeur": "Lech"}
+{"entite": "Lechstaustufe Ellgau", "valeur": "Lech"}
+{"entite": "Lechstaustufe Horn", "valeur": "Lech"}
+{"entite": "Lechstaustufe Rain", "valeur": "Lech"}
+{"entite": "Leinewehr Herrenhausen", "valeur": "Leine"}
+{"entite": "Libby Dam", "valeur": "Kootenay"}
+{"entite": "Linganamakki Dam", "valeur": "Sharavati"}
+{"entite": "Loch Beannacharan Dam", "valeur": "loch Beannacharan"}
+{"entite": "Lock 32", "valeur": "canal Érié"}
+{"entite": "Lock and Dam No. 13", "valeur": "Mississippi"}
+{"entite": "Lock and Dam No. 20", "valeur": "Mississippi"}
+{"entite": "Loket - dolní jez", "valeur": "Ohře"}
+{"entite": "Loon Dam", "valeur": "Plumbtree Lake"}
+{"entite": "Los Quiroga Dam", "valeur": "río Dulce"}
+{"entite": "Los Reyunos Dam", "valeur": "río Diamante"}
+{"entite": "Lower Karori Dam", "valeur": "Kaiwharawhara Stream"}
+{"entite": "Lower lock (1723/24)", "valeur": "Aar"}
+{"entite": "Lower Svir Hydroelectric Station", "valeur": "Svir"}
+{"entite": "Lubina weir between railway station and footbridge", "valeur": "Lubina"}
+{"entite": "Luding Dam", "valeur": "Dadu"}
+{"entite": "Lumberville Wing Dam", "valeur": "Delaware"}
+{"entite": "Luppewehr", "valeur": "Neue Luppe"}
+{"entite": "Madhopur Headworks", "valeur": "Ravi"}
+{"entite": "Malinowski Dam", "valeur": "Wishkah"}
+{"entite": "Maloměřice II Weir", "valeur": "Svitava"}
+{"entite": "Maloměřice Weir", "valeur": "Svitava"}
+{"entite": "Malšovický jez", "valeur": "Orlice"}
+{"entite": "Malý jez", "valeur": "Malše"}
+{"entite": "Mamuta Embankment", "valeur": "rivière Yodo"}
+{"entite": "Mansfield Dam", "valeur": "Colorado"}
+{"entite": "Marala Headworks", "valeur": "Chenab"}
+{"entite": "Marbach sluice", "valeur": "Neckar"}
+{"entite": "Marbach weir", "valeur": "Neckar"}
+{"entite": "Marechal Carmona Dam", "valeur": "Ponsul"}
+{"entite": "Martin Dam", "valeur": "Tallapoosa"}
+{"entite": "Matatila Dam", "valeur": "Betwâ"}
+{"entite": "Matoušovský", "valeur": "Lužnice"}
+{"entite": "Mattenschwelle", "valeur": "Aar"}
+{"entite": "Meghri Dam", "valeur": "Araxe"}
+{"entite": "Miboro Dam", "valeur": "rivière Shō"}
+{"entite": "Middle Dnieper Hydroelectric Station", "valeur": "Dniepr"}
+{"entite": "Midono Dam", "valeur": "rivière Azusa"}
+{"entite": "Millers Ferry Lock and Dam", "valeur": "Alabama"}
+{"entite": "Milltown Dam", "valeur": "Duck"}
+{"entite": "Mirani Dam", "valeur": "Dasht"}
+{"entite": "Miřejovický most", "valeur": "Vltava"}
+{"entite": "Mis dam", "valeur": "Mis"}
+{"entite": "Mishima Dam", "valeur": "Rivière Koito"}
+{"entite": "Misogawa Dam", "valeur": "rivière Kiso"}
+{"entite": "Mizan Dam", "valeur": "Karoun"}
+{"entite": "Mocek weir on Lubina", "valeur": "Lubina"}
+{"entite": "Mollaro Dam", "valeur": "Noce"}
+{"entite": "Moravský jez", "valeur": "Orlice"}
+{"entite": "Mormon Flat Dam", "valeur": "rivière Salée"}
+{"entite": "Morton Dam", "valeur": "Wainuimata"}
+{"entite": "Mrázkův Mlýn weir", "valeur": "Vltava"}
+{"entite": "Mühlhausen weir", "valeur": "Enz"}
+{"entite": "Mundaring Weir", "valeur": "Helena River"}
+{"entite": "Murgtalsperre Kirschbaumwasen", "valeur": "Murg"}
+{"entite": "Murgues dam", "valeur": "Bidassoa"}
+{"entite": "Naghlu Dam", "valeur": "Kaboul"}
+{"entite": "Nam Ngum Dam", "valeur": "Nam Ngum"}
+{"entite": "Nanakura Dam", "valeur": "Takase-gawa"}
+{"entite": "Naresuan Dam", "valeur": "Nan"}
+{"entite": "Narude Dam", "valeur": "rivière Shō"}
+{"entite": "Narva Hydroelectric Station", "valeur": "Narva"}
+{"entite": "Navasturen", "valeur": "Bidassoa"}
+{"entite": "Neckartal Dam", "valeur": "Fish"}
+{"entite": "Neckarzimmern barrage", "valeur": "Neckar"}
+{"entite": "needle dam Wittorf", "valeur": "Ilmenau"}
+{"entite": "New Lanark Mill dam", "valeur": "Clyde"}
+{"entite": "Nieuwe Zwindijk", "valeur": "Zwin"}
+{"entite": "Norristown Dam", "valeur": "Schuylkill"}
+{"entite": "North Anna Dam", "valeur": "North Anna"}
+{"entite": "Nova Avanhandava Dam", "valeur": "rio Tietê"}
+{"entite": "Novodvorský jez", "valeur": "Jihlava"}
+{"entite": "Nußdorf weir and lock", "valeur": "canal du Danube"}
+{"entite": "Obřany Weir", "valeur": "Svitava"}
+{"entite": "Ochiai Dam", "valeur": "rivière Kiso"}
+{"entite": "Oder Dam", "valeur": "Oder"}
+{"entite": "Ohara Dam", "valeur": "rivière Shō"}
+{"entite": "Ōi Dam", "valeur": "rivière Kiso"}
+{"entite": "Okawa Dam", "valeur": "Agano-gawa"}
+{"entite": "Okususobana Dam", "valeur": "Susobana-gawa"}
+{"entite": "Old Town Weir", "valeur": "Vltava"}
+{"entite": "Oldau barrage", "valeur": "Aller"}
+{"entite": "Ōmachi Dam", "valeur": "Takase-gawa"}
+{"entite": "Orós Dam", "valeur": "rio Jaguaribe"}
+{"entite": "Ōsako Dam", "valeur": "rivière Kino"}
+{"entite": "Osek weir", "valeur": "Bečva"}
+{"entite": "Ostewehr", "valeur": "Canal Oste-Hamme"}
+{"entite": "Otago Harbour Seawalls", "valeur": "Otago Harbour"}
+{"entite": "Otaki Dam", "valeur": "rivière Kino"}
+{"entite": "Pa Sak Jolasid Dam", "valeur": "Pa Sak"}
+{"entite": "Palisades Dam", "valeur": "rivière Snake"}
+{"entite": "Pangani Falls Dam", "valeur": "Pangani"}
+{"entite": "Paradise Irrigation District Earth Filled Dam", "valeur": "Stanislaus"}
+{"entite": "Pařížov Dam", "valeur": "Doubrava"}
+{"entite": "Pattani Dam", "valeur": "Pattani"}
+{"entite": "Pavlovka Hydroelectric Station", "valeur": "Oufa"}
+{"entite": "Pawtucket Dam", "valeur": "Merrimack"}
+{"entite": "Penide Dam", "valeur": "Cávado"}
+{"entite": "Peninsular Paper Dam", "valeur": "rivière Huron"}
+{"entite": "Petershagen barrage", "valeur": "Weser"}
+{"entite": "La Petite Mer", "valeur": "Cause"}
+{"entite": "Pewaukee Dam", "valeur": "Pewaukee Lake"}
+{"entite": "Pingban Dam", "valeur": "Nanpan"}
+{"entite": "Piros - Parapiros Dam", "valeur": "lac d'Astéri"}
+{"entite": "Plotinka", "valeur": "Isset"}
+{"entite": "Pocinho Dam", "valeur": "Douro"}
+{"entite": "Pokorný", "valeur": "Lužnice"}
+{"entite": "Polavaram Dam", "valeur": "Godâvarî"}
+{"entite": "Polgolla Barrage", "valeur": "Mahaweli"}
+{"entite": "Pollendam", "valeur": "mer des Wadden"}
+{"entite": "pont-barrage d'Ivoz-Ramet", "valeur": "Meuse"}
+{"entite": "Ponte Cola dam", "valeur": "Toscolano"}
+{"entite": "Potrerillos", "valeur": "río Mendoza"}
+{"entite": "Pracana Dam", "valeur": "rio Ocreza"}
+{"entite": "Presa al riu Congost", "valeur": "Riu Congost"}
+{"entite": "Presa de Tumarín", "valeur": "Rio Grande de Matagalpa"}
+{"entite": "Presa Pasó Severino", "valeur": "Río Santa Lucía Chico"}
+{"entite": "Přízřenice Weir", "valeur": "Svratka"}
+{"entite": "Punta Negra Dam", "valeur": "río San Juan"}
+{"entite": "R.L. Harris Dam", "valeur": "Tallapoosa"}
+{"entite": "Rømødæmningen", "valeur": "mer des Wadden"}
+{"entite": "R. Oswald weir", "valeur": "Moosach"}
+{"entite": "Radlas Weir", "valeur": "Svitava"}
+{"entite": "Raiva Dam", "valeur": "Mondego"}
+{"entite": "Rajghat Dam", "valeur": "Betwâ"}
+{"entite": "Rangipo Dam", "valeur": "Tongariro River"}
+{"entite": "Ranjit Sagar Dam", "valeur": "Ravi"}
+{"entite": "Rasi Salai Dam", "valeur": "Mun"}
+{"entite": "Rasul Barrage", "valeur": "Jhelum"}
+{"entite": "Rejsby Dige", "valeur": "mer des Wadden"}
+{"entite": "remblai du Lac-Mitis-Inférieur", "valeur": "lac Inférieur"}
+{"entite": "remblai du Lac-Mitis-Supérieur-1", "valeur": "lac Supérieur"}
+{"entite": "remblai du Lac-Mitis-Supérieur-2", "valeur": "lac Supérieur"}
+{"entite": "Réservoir et canal d’eau vers le moulin de Rokytka, Prague - Libeň", "valeur": "Rokytka"}
+{"entite": "Reusswehr (Mühlesporne, Nadelwehr)", "valeur": "Reuss"}
+{"entite": "Richard B. Russell Dam", "valeur": "Savannah"}
+{"entite": "Ringenhain dam", "valeur": "Wesenitz"}
+{"entite": "Rodman Dam", "valeur": "Ocklawaha"}
+{"entite": "Ronghua Dam", "valeur": "rivière Dahan"}
+{"entite": "Ropar Headworks", "valeur": "Sutlej"}
+{"entite": "Ross River Dam", "valeur": "Ross River"}
+{"entite": "Roxburgh Dam", "valeur": "Clutha"}
+{"entite": "Rusumo Dam", "valeur": "Kagera"}
+{"entite": "Saint Anthony Falls Lower Lock and Dam", "valeur": "Mississippi"}
+{"entite": "Saint Anthony Falls Upper Lock and Dam", "valeur": "Mississippi"}
+{"entite": "Sakuma Dam", "valeur": "Tenryū"}
+{"entite": "Salamonde Dam", "valeur": "Cávado"}
+{"entite": "San Fernando Dam", "valeur": "aqueduc de Los Angeles"}
+{"entite": "San Roque Dam", "valeur": "río Primero"}
+{"entite": "San Tiburcio (barrage)", "valeur": "Bidassoa"}
+{"entite": "Sangtuda 2 Hydroelectric Power Plant", "valeur": "Vakhch"}
+{"entite": "Santa Giustina Dam", "valeur": "Noce"}
+{"entite": "Sardasht Dam", "valeur": "Petit Zab"}
+{"entite": "Sarobi Dam", "valeur": "Kaboul"}
+{"entite": "Sasadaira Dam", "valeur": "rivière Sai"}
+{"entite": "Šašek's weir", "valeur": "Jihlava"}
+{"entite": "Schleuse Malz", "valeur": "Malzer Kanal"}
+{"entite": "Schleuse Mettlach", "valeur": "Sarre"}
+{"entite": "Schleuse Stuttgart-Hofen", "valeur": "Neckar"}
+{"entite": "Schwenningen power station", "valeur": "Danube"}
+{"entite": "Scropoasa Dam", "valeur": "Ialomița"}
+{"entite": "Segi Dam", "valeur": "rivière Katsura"}
+{"entite": "Segunda Usina Dam", "valeur": "río Tercero"}
+{"entite": "Seminoe Dam", "valeur": "Rivière Platte Nord"}
+{"entite": "Sennindani Dam", "valeur": "rivière Kurobe"}
+{"entite": "Seomjingang Dam", "valeur": "Seomjin"}
+{"entite": "Serra di San Giorgio", "valeur": "Avisio"}
+{"entite": "Seuil de Goudel", "valeur": "Niger"}
+{"entite": "Sevier Bridge Dam", "valeur": "Sevier"}
+{"entite": "Shahid Kazemi Dam", "valeur": "Zarrineh"}
+{"entite": "Shahpurkandi dam project", "valeur": "Ravi"}
+{"entite": "Sharabdar Dam", "valeur": "Karoun"}
+{"entite": "Sharda Barrage", "valeur": "Sharda"}
+{"entite": "Shirasuna Dam", "valeur": "Baishachuan"}
+{"entite": "Shuiboxia Dam", "valeur": "Bailong"}
+{"entite": "Shuikou Dam", "valeur": "rivière Min"}
+{"entite": "Shulbinsk Hydroelectric Power Plant", "valeur": "Irtych"}
+{"entite": "Simly Dam", "valeur": "Soan"}
+{"entite": "Šítkovský jez", "valeur": "Vltava"}
+{"entite": "Slezská Harta Dam", "valeur": "Moravice"}
+{"entite": "Sloedam", "valeur": "Sloe"}
+{"entite": "Sluice in Prudnik", "valeur": "Prudnik"}
+{"entite": "Solbergfoss power station", "valeur": "bassin du Glomma"}
+{"entite": "Soyama Dam", "valeur": "rivière Shō"}
+{"entite": "Špačkův mlýn", "valeur": "Lužnice"}
+{"entite": "Spencer Dam", "valeur": "Niobrara"}
+{"entite": "Spillenburg's Weir", "valeur": "Ruhr"}
+{"entite": "Spirův jez", "valeur": "Vltava"}
+{"entite": "Spitalmühlwehr", "valeur": "Steyr"}
+{"entite": "Sri Ramadeva Dam", "valeur": "Hemavati"}
+{"entite": "Staustuf Stadbriedemes-Palzem", "valeur": "Moselle"}
+{"entite": "Staustufe Bad Cannstatt", "valeur": "Neckar"}
+{"entite": "Staustufe Besigheim", "valeur": "Neckar"}
+{"entite": "Staustufe Connewitz", "valeur": "Pleiße"}
+{"entite": "Staustufe Eichel", "valeur": "Main"}
+{"entite": "Staustufe Fankel", "valeur": "Moselle"}
+{"entite": "Staustufe Griesheim", "valeur": "Main"}
+{"entite": "Staustufe Gundelsheim", "valeur": "Neckar"}
+{"entite": "Staustufe Guttenbach", "valeur": "Neckar"}
+{"entite": "Staustufe Heidelberg", "valeur": "Neckar"}
+{"entite": "Staustufe Heilbronn", "valeur": "Neckar"}
+{"entite": "Staustufe Höchst", "valeur": "Main"}
+{"entite": "Staustufe Klingenberg", "valeur": "Main"}
+{"entite": "Staustufe Krotzenburg", "valeur": "Main"}
+{"entite": "Staustufe Lisdorf", "valeur": "Sarre"}
+{"entite": "Staustufe Neckargemünd", "valeur": "Neckar"}
+{"entite": "Staustufe Obernau", "valeur": "Main"}
+{"entite": "Staustufe Offenbach", "valeur": "Main"}
+{"entite": "Staustufe Poppenweiler", "valeur": "Neckar"}
+{"entite": "Staustufe Rehlingen", "valeur": "Sarre"}
+{"entite": "Staustufe Serrig", "valeur": "Sarre"}
+{"entite": "Staustufe St. Aldegund - Neef", "valeur": "Moselle"}
+{"entite": "Staustufe Wintrich", "valeur": "Moselle"}
+{"entite": "Stauwehr Beihingen", "valeur": "Neckar"}
+{"entite": "Stauwehr Horkheim", "valeur": "Neckar"}
+{"entite": "Steccaia", "valeur": "Ombrone"}
+{"entite": "Steiniger", "valeur": "Lužnice"}
+{"entite": "Stewart Mountain Dam", "valeur": "rivière Salée"}
+{"entite": "Stolbergův jez", "valeur": "Ostravice"}
+{"entite": "Stonebyres Hydoelectric Scheme weir", "valeur": "Clyde"}
+{"entite": "Stormvloedkering Hollandse IJssel", "valeur": "IJssel hollandais"}
+{"entite": "Stornorrfors", "valeur": "Umeälven"}
+{"entite": "Störwehr", "valeur": "Stör"}
+{"entite": "Stramentizzo Dam", "valeur": "Avisio"}
+{"entite": "Stupeň Před Mlýnkou, řeka Olše", "valeur": "Olza"}
+{"entite": "Stupeň u Bezdínků, řeka Olše", "valeur": "Olza"}
+{"entite": "Stuw in Lith", "valeur": "Meuse"}
+{"entite": "Štvanice weir", "valeur": "Vltava"}
+{"entite": "Suchomel weir", "valeur": "Vltava"}
+{"entite": "Sudagai Dam", "valeur": "rivière Tone"}
+{"entite": "Sukwa Dukwa Dam", "valeur": "Betwâ"}
+{"entite": "Susobana Dam", "valeur": "Susobana-gawa"}
+{"entite": "Swamp Locks", "valeur": "canal de Pawtucket"}
+{"entite": "Tadami Dam", "valeur": "rivière Tadami"}
+{"entite": "Taisetsu Dam", "valeur": "rivière Ishikari"}
+{"entite": "Takase Dam", "valeur": "Takase-gawa"}
+{"entite": "Takataki Dam", "valeur": "Rivière Yōrō"}
+{"entite": "Takatsudo Dam", "valeur": "rivière Watarase"}
+{"entite": "Tangevaerket Dam", "valeur": "Gudenå"}
+{"entite": "Tash-Kumyr Hydroelectric Power Station", "valeur": "Naryn"}
+{"entite": "Tashiro Dam", "valeur": "rivière Ōi"}
+{"entite": "Tidewater Lock", "valeur": "Rock Creek"}
+{"entite": "Tierras Blancas Dam", "valeur": "río Atuel"}
+{"entite": "Tingzikou Dam", "valeur": "Jialing"}
+{"entite": "Tom Bevill Lock and Dam", "valeur": "Voie navigable Tennessee-Tombigbee"}
+{"entite": "Tone Diversion Weir", "valeur": "rivière Tone"}
+{"entite": "Tōri Dam", "valeur": "Oyabe-gawa"}
+{"entite": "Touvedo Dam", "valeur": "Lima"}
+{"entite": "Toyofusa Dam", "valeur": "Rivière Koito"}
+{"entite": "Trängslet", "valeur": "Österdalälven"}
+{"entite": "Três Marias Dam", "valeur": "rio São Francisco"}
+{"entite": "Trutnov III weir", "valeur": "Úpa"}
+{"entite": "Trutnov - Texlen weir", "valeur": "Úpa"}
+{"entite": "Tsimlyansk Hydroelectric Station", "valeur": "Don"}
+{"entite": "Tsubawara Dam", "valeur": "rivière Shō"}
+{"entite": "Tuhnický jez", "valeur": "Ohře"}
+{"entite": "Tumwater Canyon Dam", "valeur": "Wenatchee"}
+{"entite": "U Jelení Lávky", "valeur": "Vltava"}
+{"entite": "U Liry weir", "valeur": "Vltava"}
+{"entite": "Üç-Korgon Hydroelectric Power Station", "valeur": "Naryn"}
+{"entite": "Unazuki Dam", "valeur": "rivière Kurobe"}
+{"entite": "Upper Cordeaux Number One Dam", "valeur": "Cordeaux River"}
+{"entite": "Upper Svir Hydroelectric Station", "valeur": "Svir"}
+{"entite": "Vaal Barrage", "valeur": "Vaal"}
+{"entite": "Vacha Dam", "valeur": "Văča"}
+{"entite": "Válcovenský jez", "valeur": "Ostravice"}
+{"entite": "Valeira Dam", "valeur": "Douro"}
+{"entite": "Valle Grande Dam", "valeur": "río Atuel"}
+{"entite": "Vaňkův jez", "valeur": "Jizera"}
+{"entite": "Vargfors Hydroelectric Power Station", "valeur": "Skellefteälven"}
+{"entite": "Vargön Hydroelectric Power Station", "valeur": "Göta älv"}
+{"entite": "Velký jez", "valeur": "Malše"}
+{"entite": "Veluwse Bandijk", "valeur": "IJssel"}
+{"entite": "Ventas de Yanci dam", "valeur": "Bidassoa"}
+{"entite": "Veselí nad Lužnicí", "valeur": "Nežárka"}
+{"entite": "Victoria Dam", "valeur": "Mahaweli"}
+{"entite": "Viktorčin splav", "valeur": "Úpa"}
+{"entite": "Volta Grande Dam", "valeur": "rio Grande"}
+{"entite": "Vrané nad Vltavou Dam", "valeur": "Vltava"}
+{"entite": "Waitākere Dam", "valeur": "Waitakere"}
+{"entite": "Walramstuw", "valeur": "Gueule"}
+{"entite": "Walter Bouldin Dam", "valeur": "Coosa"}
+{"entite": "Walzenwehr", "valeur": "Aller"}
+{"entite": "Wanapum Dam", "valeur": "fleuve Columbia"}
+{"entite": "Waneta Dam", "valeur": "Pend Oreille"}
+{"entite": "Warsak Dam", "valeur": "Kaboul"}
+{"entite": "Washi Dam", "valeur": "Kuzuryū-gawa"}
+{"entite": "Wehr an Rochlitzer Straße Chemnitz-Zentrum", "valeur": "Chemnitz"}
+{"entite": "Wehra Dam", "valeur": "Wehra"}
+{"entite": "Wehranlage Fünf Schützen", "valeur": "Schwabach"}
+{"entite": "weir", "valeur": "Lužnice"}
+{"entite": "weir and lock complex Borgharen", "valeur": "Meuse"}
+{"entite": "weir and lock complex Driel", "valeur": "Rhin inférieur"}
+{"entite": "weir and lock complex Grave", "valeur": "Meuse"}
+{"entite": "weir and lock complex in Belfeld", "valeur": "Meuse"}
+{"entite": "weir and lock complex in Roermond", "valeur": "Meuse"}
+{"entite": "weir and lock complex Linne", "valeur": "Meuse"}
+{"entite": "weir and lock complex Sambeek", "valeur": "Meuse"}
+{"entite": "Weir Baška - Kunčičky u Bašky (26 km)", "valeur": "Ostravice"}
+{"entite": "Weir Baška - Kunčičky u Bašky (27 km)", "valeur": "Ostravice"}
+{"entite": "Weir Bolelouc", "valeur": "Morava"}
+{"entite": "weir Český mlýn", "valeur": "Jihlava"}
+{"entite": "weir for Šenkova pila (sawmill)", "valeur": "Bystřice"}
+{"entite": "Weir Grubmühl", "valeur": "Würm"}
+{"entite": "weir Hluboká nad Vltavou", "valeur": "Vltava"}
+{"entite": "weir Hodoňovice", "valeur": "Ostravice"}
+{"entite": "Weir Hranice - Bečva km 38,7", "valeur": "Bečva"}
+{"entite": "Weir in Hostinné (Elbe 218,9 km)", "valeur": "Elbe"}
+{"entite": "Weir in Hostinné (Elbe 219,4 km)", "valeur": "Elbe"}
+{"entite": "weir in Morava river", "valeur": "Morava"}
+{"entite": "Weir in Ostrava-Přívoz", "valeur": "Oder"}
+{"entite": "Weir in Ostrava-Zábřeh", "valeur": "Oder"}
+{"entite": "weir in Poděbrady", "valeur": "Elbe"}
+{"entite": "weir in Soutice", "valeur": "Želivka"}
+{"entite": "Weir in Staniszcze Małe", "valeur": "Mała Panew"}
+{"entite": "weir in Vestřev", "valeur": "Elbe"}
+{"entite": "Weir in Vyšší Brod", "valeur": "Vltava"}
+{"entite": "weir Koukolná", "valeur": "Olza"}
+{"entite": "Weir Kružberk", "valeur": "Moravice"}
+{"entite": "Weir Morávka river (km 4.3, Dobrá)", "valeur": "Morávka"}
+{"entite": "weir near Kalikovský mlýn", "valeur": "Mže"}
+{"entite": "Weir on Elbe in Vrchlabí", "valeur": "Elbe"}
+{"entite": "weir on Elbe in Vrchlabí, km 1070,1 (232,8)", "valeur": "Elbe"}
+{"entite": "weir on Jizera in Semily, km 105,7", "valeur": "Jizera"}
+{"entite": "weir on the Malše at Malče", "valeur": "Malše"}
+{"entite": "Weir on Úpa in Temný Důl", "valeur": "Úpa"}
+{"entite": "weir Planá", "valeur": "Vltava"}
+{"entite": "Weir Přerov", "valeur": "Bečva"}
+{"entite": "Weir Pržno", "valeur": "Ostravice"}
+{"entite": "weir Rechle", "valeur": "Vltava"}
+{"entite": "Weir Studénka", "valeur": "Oder"}
+{"entite": "weir Turnov II", "valeur": "Jizera"}
+{"entite": "weir U Žida", "valeur": "Ostravice"}
+{"entite": "Weir Věřňovice (7,4 km)", "valeur": "Olza"}
+{"entite": "weir Veselý", "valeur": "Lužnice"}
+{"entite": "weir Vrchlabí - Škoda", "valeur": "Elbe"}
+{"entite": "Weir with footbridge in Nymburk", "valeur": "Elbe"}
+{"entite": "weir Želina", "valeur": "Ohře"}
+{"entite": "Weisshuhn Weir", "valeur": "Moravice"}
+{"entite": "Wellington Dam", "valeur": "Collie River"}
+{"entite": "Wendefurth Dam", "valeur": "Bode"}
+{"entite": "Wesertalsperre dam", "valeur": "Vesdre"}
+{"entite": "Weserwehr", "valeur": "Weser"}
+{"entite": "Westkappelse Zeedijk", "valeur": "mer du Nord"}
+{"entite": "Whakamaru Dam", "valeur": "Waikato"}
+{"entite": "Wheao Dam", "valeur": "Wheao"}
+{"entite": "Whitesands Caul", "valeur": "Nith (Écosse)"}
+{"entite": "Wippra Dam", "valeur": "Wipper"}
+{"entite": "Wuqiangxi Dam", "valeur": "Yuan Jiang"}
+{"entite": "Yagisawa Dam", "valeur": "rivière Tone"}
+{"entite": "Yahagi Dam", "valeur": "Yahagi-gawa"}
+{"entite": "Yamaguchi Dam", "valeur": "rivière Kiso"}
+{"entite": "Yanba Dam", "valeur": "rivière Agatsuma"}
+{"entite": "Yanguoxia Dam", "valeur": "fleuve Jaune"}
+{"entite": "Yomikaki Dam", "valeur": "rivière Kiso"}
+{"entite": "Yuba Dam", "valeur": "Sevier"}
+{"entite": "Yunose Dam", "valeur": "Susobana-gawa"}
+{"entite": "Záběhlice Weir", "valeur": "Botič"}
+{"entite": "Zayanderud Dam", "valeur": "Zayandeh rud"}
+{"entite": "Zhaohua hydroelectric plant", "valeur": "Bailong"}
+{"entite": "Zhexi Dam", "valeur": "Zi"}
+{"entite": "Zhiganglaka Dam", "valeur": "fleuve Jaune"}
+{"entite": "Zhinvali HPP", "valeur": "Aragvi"}
+{"entite": "Zillergründl Dam", "valeur": "Ziller"}

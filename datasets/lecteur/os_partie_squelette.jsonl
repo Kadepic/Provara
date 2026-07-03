@@ -1,0 +1,39 @@
+{"_relation": "os_partie_squelette", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie textbook curée (squelette axial/appendiculaire ; ensemble fermé ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "calcanéus", "valeur": "appendiculaire"}
+{"entite": "clavicule", "valeur": "appendiculaire"}
+{"entite": "coccyx", "valeur": "axial"}
+{"entite": "côte", "valeur": "axial"}
+{"entite": "crâne", "valeur": "axial"}
+{"entite": "cubitus", "valeur": "appendiculaire"}
+{"entite": "cuboïde", "valeur": "appendiculaire"}
+{"entite": "fémur", "valeur": "appendiculaire"}
+{"entite": "humérus", "valeur": "appendiculaire"}
+{"entite": "ilion", "valeur": "appendiculaire"}
+{"entite": "ischion", "valeur": "appendiculaire"}
+{"entite": "mandibule", "valeur": "axial"}
+{"entite": "métacarpien", "valeur": "appendiculaire"}
+{"entite": "métatarsien", "valeur": "appendiculaire"}
+{"entite": "omoplate", "valeur": "appendiculaire"}
+{"entite": "os ethmoïde", "valeur": "axial"}
+{"entite": "os frontal", "valeur": "axial"}
+{"entite": "os hyoïde", "valeur": "axial"}
+{"entite": "os iliaque", "valeur": "appendiculaire"}
+{"entite": "os nasal", "valeur": "axial"}
+{"entite": "os occipital", "valeur": "axial"}
+{"entite": "os palatin", "valeur": "axial"}
+{"entite": "os pariétal", "valeur": "axial"}
+{"entite": "os sphénoïde", "valeur": "axial"}
+{"entite": "os temporal", "valeur": "axial"}
+{"entite": "os zygomatique", "valeur": "axial"}
+{"entite": "péroné", "valeur": "appendiculaire"}
+{"entite": "phalange", "valeur": "appendiculaire"}
+{"entite": "pubis", "valeur": "appendiculaire"}
+{"entite": "radius", "valeur": "appendiculaire"}
+{"entite": "rotule", "valeur": "appendiculaire"}
+{"entite": "sacrum", "valeur": "axial"}
+{"entite": "scaphoïde", "valeur": "appendiculaire"}
+{"entite": "sternum", "valeur": "axial"}
+{"entite": "talus", "valeur": "appendiculaire"}
+{"entite": "tibia", "valeur": "appendiculaire"}
+{"entite": "vertèbre", "valeur": "axial"}
+{"entite": "vomer", "valeur": "axial"}

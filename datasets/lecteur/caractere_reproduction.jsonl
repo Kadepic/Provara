@@ -1,0 +1,3 @@
+{"_relation": "caractere_reproduction", "_categorie": "physique", "_source": "Modèle (Claude) — biologie textbook curée (mode de reproduction -> caractère ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "reproduction asexuée", "valeur": "un seul parent et descendants identiques"}
+{"entite": "reproduction sexuée", "valeur": "deux parents et brassage génétique"}

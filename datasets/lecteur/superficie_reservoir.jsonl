@@ -1,0 +1,836 @@
+{"_relation": "superficie_reservoir", "_categorie": "physique", "_source": "Wikidata/QLever — superficie P2046 (→ km²)", "_articles": true}
+{"entite": "Aasee", "valeur": "0.402"}
+{"entite": "Abberton Reservoir", "valeur": "0.242"}
+{"entite": "Akkajaure", "valeur": "260.1209"}
+{"entite": "Alder Lake", "valeur": "11.1916"}
+{"entite": "Allersee", "valeur": "0.29"}
+{"entite": "Allner See", "valeur": "0.1"}
+{"entite": "Almaden Reservoir", "valeur": "0.2509"}
+{"entite": "Altenweiher", "valeur": "0.077"}
+{"entite": "Altevatnet", "valeur": "79.6531"}
+{"entite": "Applegate Lake", "valeur": "4"}
+{"entite": "Außenalster", "valeur": "1.64"}
+{"entite": "Badin Lake", "valeur": "21.7"}
+{"entite": "Bangsjøan", "valeur": "20.7594"}
+{"entite": "barrage d'Asprókremmos", "valeur": "2.59"}
+{"entite": "barrage d'Escales", "valeur": "4.003"}
+{"entite": "barrage d'Újezd", "valeur": "1.0655"}
+{"entite": "barrage de Camarillas", "valeur": "3.2"}
+{"entite": "barrage de Canelles", "valeur": "15.69"}
+{"entite": "Barrage de Caspe", "valeur": "6.38"}
+{"entite": "barrage de Cazalegas", "valeur": "1.5"}
+{"entite": "barrage de Cíjara", "valeur": "65.67"}
+{"entite": "barrage de Forata", "valeur": "2.31"}
+{"entite": "Barrage de Kurokawa", "valeur": "5.2"}
+{"entite": "barrage de la Mequinenza", "valeur": "75.4"}
+{"entite": "barrage de la Restanca", "valeur": "0.067"}
+{"entite": "barrage de la Vesdre", "valeur": "1.26"}
+{"entite": "barrage de Michelbach", "valeur": "0.806"}
+{"entite": "Barrage de Navalcán", "valeur": "7.46"}
+{"entite": "Barrage de Šance", "valeur": "2.5373"}
+{"entite": "barrage de Slapy", "valeur": "12.7339"}
+{"entite": "Barrage de Tataragi", "valeur": "13.4"}
+{"entite": "barrage de Tibi", "valeur": "0.3"}
+{"entite": "barrage San Giovanni", "valeur": "2.4"}
+{"entite": "bassin du Lampy", "valeur": "0.235"}
+{"entite": "bassin écrèteur de Couloup", "valeur": "0.0012"}
+{"entite": "bassin écrèteur de Lormoz", "valeur": "0.0039"}
+{"entite": "bassin écrèteur du Tronfou", "valeur": "0.006"}
+{"entite": "Beetaloo Reservoir", "valeur": "0.3561"}
+{"entite": "Bellacher Weiher", "valeur": "0.0335"}
+{"entite": "Bettmersee", "valeur": "0.072"}
+{"entite": "Beuerbacher See", "valeur": "0.018"}
+{"entite": "Big Lake", "valeur": "1.8"}
+{"entite": "Biggesee", "valeur": "4.79"}
+{"entite": "Blåsjø", "valeur": "84.48"}
+{"entite": "Blöndulón", "valeur": "57"}
+{"entite": "Blue Lake", "valeur": "4.9574"}
+{"entite": "Blue Marsh Lake", "valeur": "4.6539"}
+{"entite": "Boedelesee", "valeur": "0.0027"}
+{"entite": "Bonsvatn", "valeur": "2.7234"}
+{"entite": "Borsæ", "valeur": "8.6253"}
+{"entite": "Braunsteich", "valeur": "0.44"}
+{"entite": "Breiavatnet", "valeur": "3.35"}
+{"entite": "Breivatn", "valeur": "3.5663"}
+{"entite": "Brettmühlenteich Dobra", "valeur": "0.145"}
+{"entite": "Brombachsee", "valeur": "12.1"}
+{"entite": "Brushy Fork Lake", "valeur": "0.0728"}
+{"entite": "Byrtevatn", "valeur": "4.8073"}
+{"entite": "Canyon Lake", "valeur": "2.12"}
+{"entite": "Capitol Lake", "valeur": "1.2383"}
+{"entite": "Chatfield Reservoir", "valeur": "6.0703"}
+{"entite": "Chelker Reservoir", "valeur": "0.212"}
+{"entite": "Cle Elum Lake", "valeur": "18.4779"}
+{"entite": "Cod Beck Reservoir", "valeur": "0.1"}
+{"entite": "Coyote Lake", "valeur": "2.5698"}
+{"entite": "Cranenweyer", "valeur": "0.2"}
+{"entite": "Dalecarlia Reservoir", "valeur": "0.1862"}
+{"entite": "Damerower See", "valeur": "2.41"}
+{"entite": "Deep Creek Lake", "valeur": "14.68"}
+{"entite": "Deer Creek Dam and Reservoir", "valeur": "10.8456"}
+{"entite": "Diamond Valley Lake", "valeur": "18"}
+{"entite": "Dossespeicher Kyritz", "valeur": "2.68"}
+{"entite": "Draycote Water", "valeur": "2.44"}
+{"entite": "Duncan Lake", "valeur": "69"}
+{"entite": "Dunlop Lake", "valeur": "10.3"}
+{"entite": "Dürrlohsee", "valeur": "0.2"}
+{"entite": "Embalse de Navacerrada", "valeur": "0.93"}
+{"entite": "Embalse de Rules", "valeur": "3"}
+{"entite": "Embalse de Sierra Boyera", "valeur": "5.3"}
+{"entite": "Embalse del Castro de las Cogotas", "valeur": "3.95"}
+{"entite": "Embalse del Negratín", "valeur": "21.7"}
+{"entite": "étang d'Araing", "valeur": "0.33"}
+{"entite": "étang d'Izourt", "valeur": "0.33"}
+{"entite": "étang de Barrandon", "valeur": "0.073"}
+{"entite": "étang de Gnioure", "valeur": "0.86"}
+{"entite": "étang de Hasselfurth", "valeur": "0.075"}
+{"entite": "étang de Laparan", "valeur": "0.385"}
+{"entite": "étang de Naguilles", "valeur": "0.932"}
+{"entite": "étang de Saint-Quentin", "valeur": "1.5"}
+{"entite": "étang de Soulcem", "valeur": "0.91"}
+{"entite": "étang de Walden", "valeur": "0.2469"}
+{"entite": "étang du Goulot", "valeur": "0.1"}
+{"entite": "étang du Stock", "valeur": "7"}
+{"entite": "étangs de Bonfol", "valeur": "1.6396"}
+{"entite": "étangs de Vaux et de Baye", "valeur": "2.2"}
+{"entite": "Eutersee", "valeur": "0.01"}
+{"entite": "Falcon International Reservoir", "valeur": "353.6953"}
+{"entite": "Fellows Lake", "valeur": "3.4803"}
+{"entite": "Fish Lake", "valeur": "1.95"}
+{"entite": "Fjellvannet", "valeur": "4.442"}
+{"entite": "Flachsee", "valeur": "0.72"}
+{"entite": "Flåte i Telemark", "valeur": "3.933"}
+{"entite": "Follsjå", "valeur": "12.837"}
+{"entite": "Folurdvatn", "valeur": "2.9981"}
+{"entite": "Forggensee", "valeur": "15.2"}
+{"entite": "Foss Lake", "valeur": "53.18"}
+{"entite": "Fourmile Lake", "valeur": "3"}
+{"entite": "Fundin", "valeur": "10.3995"}
+{"entite": "Garsjøen i Sør-Varanger", "valeur": "9.5958"}
+{"entite": "Geatnjajávri", "valeur": "5.7868"}
+{"entite": "Gepatschspeicher", "valeur": "2.6"}
+{"entite": "Gereb Mihiz", "valeur": "0.3"}
+{"entite": "Göscheneralpsee", "valeur": "1.32"}
+{"entite": "Granasjøen", "valeur": "6.6115"}
+{"entite": "grand lac des Cherokees", "valeur": "188"}
+{"entite": "grand réservoir de Vioreau", "valeur": "2.2"}
+{"entite": "Gräsvattnet", "valeur": "26.57"}
+{"entite": "Greenland Reservoir", "valeur": "3"}
+{"entite": "Greenwood Lake", "valeur": "7.8"}
+{"entite": "Gruža", "valeur": "9.19"}
+{"entite": "Håckrenmagasinet", "valeur": "43.3479"}
+{"entite": "Halfway Lake", "valeur": "0.0202"}
+{"entite": "Hálslón", "valeur": "57"}
+{"entite": "Hanningfield Reservoir", "valeur": "4"}
+{"entite": "Harvey's Lake", "valeur": "1.42"}
+{"entite": "Heidemühlenteich", "valeur": "0.038"}
+{"entite": "Heisterberger Weiher", "valeur": "0.097"}
+{"entite": "Hjartsjåvatnet", "valeur": "1.066"}
+{"entite": "Hussein Sagar", "valeur": "4.4"}
+{"entite": "Indian Lake", "valeur": "23"}
+{"entite": "Jacqueline Kennedy Onassis Reservoir", "valeur": "0.43"}
+{"entite": "Jiviny", "valeur": "0.1033"}
+{"entite": "Keechelus Lake", "valeur": "9.7489"}
+{"entite": "Kielder Water", "valeur": "10.86"}
+{"entite": "Kovvatnet", "valeur": "3.5722"}
+{"entite": "Krokvannet", "valeur": "7.4957"}
+{"entite": "Økteren", "valeur": "3.5453"}
+{"entite": "Kvanndalsvatnet", "valeur": "2.0951"}
+{"entite": "Kvifjorden", "valeur": "15.364"}
+{"entite": "Kvíslavatn", "valeur": "20"}
+{"entite": "lac Abraham", "valeur": "53.7"}
+{"entite": "lac Alagol", "valeur": "25"}
+{"entite": "lac Alcohol and Drug Abuse", "valeur": "0.377"}
+{"entite": "lac Alicurá", "valeur": "67"}
+{"entite": "lac Almanor", "valeur": "114"}
+{"entite": "lac Ampollino", "valeur": "5.59"}
+{"entite": "lac Amutui Quimei", "valeur": "86.7"}
+{"entite": "lac Anna", "valeur": "53"}
+{"entite": "lac Arancio", "valeur": "3.7"}
+{"entite": "lac Arenal", "valeur": "85.5"}
+{"entite": "lac Ariamacina", "valeur": "1.2"}
+{"entite": "lac Arpi", "valeur": "22"}
+{"entite": "lac Arroyo Grande", "valeur": "12.4"}
+{"entite": "lac Arroyo Matuya", "valeur": "14"}
+{"entite": "lac Arthur", "valeur": "12.4441"}
+{"entite": "lac Arvo", "valeur": "4.26"}
+{"entite": "lac Austin", "valeur": "6.5"}
+{"entite": "lac Bajo Anchicayá", "valeur": "1.7"}
+{"entite": "lac Baker", "valeur": "19.4249"}
+{"entite": "lac Băneasa", "valeur": "0.4"}
+{"entite": "lac Banks", "valeur": "108.8038"}
+{"entite": "Lac Bartogay", "valeur": "13"}
+{"entite": "lac Bay", "valeur": "14.4755"}
+{"entite": "lac Bayano", "valeur": "353"}
+{"entite": "lac Benmore", "valeur": "75"}
+{"entite": "lac Berryessa", "valeur": "77.9"}
+{"entite": "lac Big Stone", "valeur": "51"}
+{"entite": "lac Black Donald", "valeur": "34.4"}
+{"entite": "lac Bleu de Lesponne", "valeur": "0.51"}
+{"entite": "lac Blue Mountain", "valeur": "12"}
+{"entite": "lac Bourassa", "valeur": "0.812"}
+{"entite": "lac Bovan", "valeur": "5"}
+{"entite": "lac Brenet", "valeur": "0.956"}
+{"entite": "lac Buchanan", "valeur": "90.4"}
+{"entite": "lac Caddo", "valeur": "103"}
+{"entite": "lac Calima", "valeur": "20"}
+{"entite": "lac Carnegie", "valeur": "0.106"}
+{"entite": "lac Casa de Piedra", "valeur": "360"}
+{"entite": "lac Cecita", "valeur": "4.26"}
+{"entite": "lac Charland", "valeur": "3.65"}
+{"entite": "lac Chatuge", "valeur": "28"}
+{"entite": "lac Chelan", "valeur": "135"}
+{"entite": "lac Chestermere", "valeur": "2.65"}
+{"entite": "lac Chesuncook", "valeur": "102"}
+{"entite": "lac Chippewa", "valeur": "59.0558"}
+{"entite": "lac Chisaca", "valeur": "0.55"}
+{"entite": "lac Chuza", "valeur": "5.37"}
+{"entite": "lac Coffy", "valeur": "1.2"}
+{"entite": "lac Conroe", "valeur": "85"}
+{"entite": "lac d'Alfeld", "valeur": "0.1"}
+{"entite": "lac d'Alviano", "valeur": "9"}
+{"entite": "lac d'Artouste", "valeur": "0.56"}
+{"entite": "lac d'Aubert", "valeur": "0.45"}
+{"entite": "lac d'Aumar", "valeur": "0.25"}
+{"entite": "lac d'Avène", "valeur": "1.9"}
+{"entite": "lac d'Entrepeñas", "valeur": "32.13"}
+{"entite": "lac d'Esparron", "valeur": "3.28"}
+{"entite": "lac d'Espingo", "valeur": "0.076"}
+{"entite": "lac d’Isola", "valeur": "0.39"}
+{"entite": "lac d'Ogliastro", "valeur": "7.24"}
+{"entite": "lac d'Oô", "valeur": "0.42"}
+{"entite": "lac d'Orédon", "valeur": "0.46"}
+{"entite": "Lac d'Oustoya", "valeur": "0.03"}
+{"entite": "lac Dau Tieng", "valeur": "270"}
+{"entite": "lac Daumesnil", "valeur": "0.12"}
+{"entite": "lac de Bage", "valeur": "0.53"}
+{"entite": "Lac de Banéah", "valeur": "79"}
+{"entite": "lac de Barcis", "valeur": "98"}
+{"entite": "lac de barrage d'Armínou", "valeur": "0.353"}
+{"entite": "lac de barrage d'Evrétou", "valeur": "1.25"}
+{"entite": "lac de barrage de Klingnau", "valeur": "1.16"}
+{"entite": "lac de barrage de la Jarosa", "valeur": "0.61"}
+{"entite": "lac de Batlava", "valeur": "5.1"}
+{"entite": "lac de Berovo", "valeur": "0.57"}
+{"entite": "lac de Betania", "valeur": "70"}
+{"entite": "lac de Bious-Artigues", "valeur": "0.326"}
+{"entite": "lac de Borkovac", "valeur": "0.42"}
+{"entite": "lac de Bort-les-Orgues", "valeur": "10.72"}
+{"entite": "lac de Bret", "valeur": "0.36"}
+{"entite": "lac de Buško", "valeur": "55.8"}
+{"entite": "lac de Butgenbach", "valeur": "1.2"}
+{"entite": "lac de Cadagno", "valeur": "0.26"}
+{"entite": "lac de Cahora Bassa", "valeur": "2739"}
+{"entite": "lac de Calacuccia", "valeur": "1.17"}
+{"entite": "lac de Calca Tavulaghjiu", "valeur": "0.0019"}
+{"entite": "lac de Campotosto", "valeur": "14"}
+{"entite": "lac de Cap de Long", "valeur": "1.1"}
+{"entite": "lac de Castet", "valeur": "0.4"}
+{"entite": "lac de Castillon", "valeur": "5"}
+{"entite": "lac de Certescans", "valeur": "0.47"}
+{"entite": "lac de Chambon", "valeur": "3.12"}
+{"entite": "lac de Chamboux", "valeur": "0.75"}
+{"entite": "lac de Charpal", "valeur": "1.9"}
+{"entite": "lac de Chaumeçon", "valeur": "1.35"}
+{"entite": "lac de Chivor", "valeur": "12.6"}
+{"entite": "lac de Codole", "valeur": "0.8"}
+{"entite": "lac de Coiselet", "valeur": "3.8"}
+{"entite": "lac de Contreras", "valeur": "27.1"}
+{"entite": "lac de Corbara", "valeur": "10.5"}
+{"entite": "lac de Davos", "valeur": "0.59"}
+{"entite": "lac de Debar", "valeur": "13.2"}
+{"entite": "lac de Divonne", "valeur": "0.45"}
+{"entite": "lac de Fabrèges", "valeur": "0.54"}
+{"entite": "lac de Fedaia", "valeur": "0.625"}
+{"entite": "lac de Fierza", "valeur": "73"}
+{"entite": "lac de Fontaine", "valeur": "0.0048"}
+{"entite": "lac de Ganivet", "valeur": "0.12"}
+{"entite": "lac de Gazivode", "valeur": "11.9"}
+{"entite": "lac de Gelmer", "valeur": "64.5"}
+{"entite": "lac de Glajnya", "valeur": "0.965"}
+{"entite": "lac de Grand'Maison", "valeur": "2.19"}
+{"entite": "lac de Grandval", "valeur": "11"}
+{"entite": "lac de Grangent", "valeur": "3.65"}
+{"entite": "lac de Gravelle", "valeur": "0.01"}
+{"entite": "lac de Grimmelshausen", "valeur": "0.85"}
+{"entite": "lac de Grimsel", "valeur": "2.63"}
+{"entite": "lac de Guerlédan", "valeur": "3.04"}
+{"entite": "lac de Jablanica", "valeur": "13"}
+{"entite": "lac de Joux", "valeur": "8.79"}
+{"entite": "lac de Kalimantsi", "valeur": "4.23"}
+{"entite": "lac de Kapanda", "valeur": "170"}
+{"entite": "lac de Kardjali", "valeur": "13.4"}
+{"entite": "lac de Kastrakí", "valeur": "28"}
+{"entite": "lac de Koprinka", "valeur": "12.5"}
+{"entite": "lac de Kremastá", "valeur": "80.6"}
+{"entite": "lac de Kunming", "valeur": "2.2"}
+{"entite": "lac de l'Alesani", "valeur": "0.4656"}
+{"entite": "lac de l'Argentella", "valeur": "0.0237"}
+{"entite": "lac de l'Astarac", "valeur": "1.8"}
+{"entite": "lac de l'Hongrin", "valeur": "1.6"}
+{"entite": "lac de l'Oberaar", "valeur": "1.47"}
+{"entite": "lac de l'Oule", "valeur": "0.5"}
+{"entite": "lac de la Brienne", "valeur": "0.105"}
+{"entite": "lac de la Ganguise", "valeur": "4"}
+{"entite": "lac de la Gileppe", "valeur": "1.3"}
+{"entite": "lac de la Gimone", "valeur": "2.8"}
+{"entite": "lac de la Gittaz", "valeur": "0.37"}
+{"entite": "lac de la Haute-Sûre", "valeur": "3.8"}
+{"entite": "lac de la Lande", "valeur": "0.105"}
+{"entite": "lac de la Lauch", "valeur": "0.11"}
+{"entite": "lac de la Roucarié", "valeur": "0.64"}
+{"entite": "lac de la Triouzoune", "valeur": "4.1"}
+{"entite": "lac de la Vierre", "valeur": "0.35"}
+{"entite": "lac de Lagdo", "valeur": "586"}
+{"entite": "lac de Las Playas", "valeur": "32"}
+{"entite": "lac de Lei", "valeur": "4.12"}
+{"entite": "lac de Lewis et Clark", "valeur": "130"}
+{"entite": "lac de Lungern", "valeur": "2.01"}
+{"entite": "lac de Luzzone", "valeur": "1.44"}
+{"entite": "lac de Madine", "valeur": "11"}
+{"entite": "lac de Malga Bissina", "valeur": "1.3"}
+{"entite": "lac de Malpasset", "valeur": "2"}
+{"entite": "lac de Marmorera", "valeur": "1.41"}
+{"entite": "lac de Matemale", "valeur": "2.23"}
+{"entite": "lac de Maury", "valeur": "1.66"}
+{"entite": "lac de Mauvoisin", "valeur": "2.08"}
+{"entite": "lac de Mavrovo", "valeur": "10"}
+{"entite": "lac de Mbakaou", "valeur": "95"}
+{"entite": "lac de Mediano", "valeur": "17.14"}
+{"entite": "lac de Migouélou", "valeur": "0.48"}
+{"entite": "lac de Modrac", "valeur": "17"}
+{"entite": "lac de Mondély", "valeur": "0.513"}
+{"entite": "lac de Montedoglio", "valeur": "275"}
+{"entite": "lac de Monteynard-Avignonet", "valeur": "6.57"}
+{"entite": "lac de Montsalvens", "valeur": "0.74"}
+{"entite": "lac de Moron", "valeur": "0.69"}
+{"entite": "lac de Naussac", "valeur": "10.8"}
+{"entite": "lac de Nisramont", "valeur": "0.47"}
+{"entite": "lac de Notre-Dame-de-Commiers", "valeur": "1.62"}
+{"entite": "lac de Padula", "valeur": "0.26"}
+{"entite": "lac de Pannecière", "valeur": "5.2"}
+{"entite": "lac de Pareloup", "valeur": "12"}
+{"entite": "lac de Péligre", "valeur": "48"}
+{"entite": "lac de Peruća", "valeur": "15"}
+{"entite": "lac de Perućac", "valeur": "12.4"}
+{"entite": "lac de Pierre-Percée", "valeur": "3.04"}
+{"entite": "lac de Pinet", "valeur": "1.09"}
+{"entite": "lac de Place-Moulin", "valeur": "2"}
+{"entite": "lac de Polýfyto", "valeur": "61"}
+{"entite": "lac de Pont", "valeur": "0.8"}
+{"entite": "lac de Pont-de-Salars", "valeur": "1.82"}
+{"entite": "lac de Potpeć", "valeur": "7"}
+{"entite": "lac de Puyvalador", "valeur": "0.9"}
+{"entite": "lac de Quinson", "valeur": "1.9"}
+{"entite": "lac de Rama", "valeur": "14.8"}
+{"entite": "lac de Räterichsboden", "valeur": "0.67"}
+{"entite": "lac de Resia", "valeur": "6.6"}
+{"entite": "Lac de retenue de Kaléta", "valeur": "2.82"}
+{"entite": "Lac de retenue de Souapiti", "valeur": "315"}
+{"entite": "lac de Ribnica", "valeur": "10"}
+{"entite": "lac de Ribou", "valeur": "87"}
+{"entite": "lac de Rillé", "valeur": "2"}
+{"entite": "lac de Robertville", "valeur": "0.62"}
+{"entite": "lac de Roselend", "valeur": "3.2"}
+{"entite": "lac de Saint-Agnan", "valeur": "1.4"}
+{"entite": "lac de Saint-Amans", "valeur": "0.11"}
+{"entite": "lac de Saint-Cassien", "valeur": "3.7"}
+{"entite": "lac de Saint-Etienne-Cantalès", "valeur": "5.62"}
+{"entite": "lac de Saint-Ferréol", "valeur": "0.67"}
+{"entite": "lac de Saint-Maurice", "valeur": "0.25"}
+{"entite": "lac de Saint-Moritz", "valeur": "0.78"}
+{"entite": "lac de Saint-Pardoux", "valeur": "3.3"}
+{"entite": "lac de Sainte-Croix", "valeur": "22"}
+{"entite": "lac de San Lorenzo", "valeur": "11"}
+{"entite": "lac de Schiffenen", "valeur": "4.25"}
+{"entite": "lac de Schluch", "valeur": "5.14"}
+{"entite": "lac de Sélingué", "valeur": "409"}
+{"entite": "lac de Senftenberg", "valeur": "13"}
+{"entite": "lac de Serre-Ponçon", "valeur": "28.2"}
+{"entite": "lac de Sobradinho", "valeur": "4220"}
+{"entite": "lac de Springfield", "valeur": "1.2869"}
+{"entite": "lac de Strátos", "valeur": "8.4"}
+{"entite": "lac de Supung", "valeur": "274"}
+{"entite": "lac de Talza", "valeur": "0.68"}
+{"entite": "lac de Tarsia", "valeur": "4.26"}
+{"entite": "lac de Tbilissi", "valeur": "11.6"}
+{"entite": "lac de Toktogoul", "valeur": "284"}
+{"entite": "lac de Urrá", "valeur": "74"}
+{"entite": "lac de Vaivre", "valeur": "0.95"}
+{"entite": "lac de Valvestino", "valeur": "1.38"}
+{"entite": "lac de Vesoles", "valeur": "0.5"}
+{"entite": "lac de Villefort", "valeur": "1.27"}
+{"entite": "lac de Villefranche-de-Panat", "valeur": "1.92"}
+{"entite": "lac de Vouglans", "valeur": "16"}
+{"entite": "lac de Warfaaz", "valeur": "0.08"}
+{"entite": "lac de Wildenstein", "valeur": "0.81"}
+{"entite": "lac de Yaté", "valeur": "40"}
+{"entite": "lac de Yesa", "valeur": "20.89"}
+{"entite": "lac de Zaovine", "valeur": "15"}
+{"entite": "lac del Guavio", "valeur": "150"}
+{"entite": "lac del Muña", "valeur": "7.3"}
+{"entite": "lac del Neusa", "valeur": "9.55"}
+{"entite": "lac del Río Prado", "valeur": "21.85"}
+{"entite": "lac del Salvajina", "valeur": "31"}
+{"entite": "lac del Sisga", "valeur": "6.8"}
+{"entite": "lac del Tominé", "valeur": "37.78"}
+{"entite": "lac Delcommune", "valeur": "250"}
+{"entite": "lac des Bariousses", "valeur": "1.01"}
+{"entite": "lac des Bouillouses", "valeur": "1.49"}
+{"entite": "lac des Cammazes", "valeur": "0.9"}
+{"entite": "lac des Chats", "valeur": "77"}
+{"entite": "lac des Dix", "valeur": "3.65"}
+{"entite": "lac des Mêlées", "valeur": "0.13"}
+{"entite": "lac des Mines d'Or", "valeur": "0.15"}
+{"entite": "lac des Minimes", "valeur": "0.06"}
+{"entite": "lac des Saints-Peyres", "valeur": "2.11"}
+{"entite": "lac des Settons", "valeur": "3.66"}
+{"entite": "lac des Toules", "valeur": "0.6057"}
+{"entite": "lac des Truites", "valeur": "0.0285"}
+{"entite": "lac des Vieilles Forges", "valeur": "1.5"}
+{"entite": "lac dets Coubous", "valeur": "0.07"}
+{"entite": "lac Diablo", "valeur": "3.68"}
+{"entite": "lac Diexi", "valeur": "3.5"}
+{"entite": "lac Donner", "valeur": "3.4"}
+{"entite": "lac Douglas", "valeur": "115"}
+{"entite": "lac du Ballon", "valeur": "0.07"}
+{"entite": "lac du barrage Atatürk", "valeur": "817"}
+{"entite": "lac du Barrage de Malpaso", "valeur": "381"}
+{"entite": "lac du Bourdon", "valeur": "2.2"}
+{"entite": "lac du Causse", "valeur": "0.84"}
+{"entite": "lac du Chambon", "valeur": "1.4"}
+{"entite": "lac du Chevril", "valeur": "2.74"}
+{"entite": "lac du Crescent", "valeur": "1.65"}
+{"entite": "lac du Der-Chantecoq", "valeur": "48"}
+{"entite": "lac du Drennec", "valeur": "1.05"}
+{"entite": "lac du Jotty", "valeur": "0.18"}
+{"entite": "lac du Klöntal", "valeur": "3.3"}
+{"entite": "lac du Laouzas", "valeur": "3.35"}
+{"entite": "lac du Laragou", "valeur": "0.34"}
+{"entite": "lac du Mont-Cenis", "valeur": "6.68"}
+{"entite": "lac du Moulinet", "valeur": "0.13"}
+{"entite": "lac du Poisson Blanc", "valeur": "85"}
+{"entite": "lac du Portillon", "valeur": "0.34"}
+{"entite": "lac du Salagou", "valeur": "7"}
+{"entite": "lac du Sautet", "valeur": "3.48"}
+{"entite": "lac du Tolerme", "valeur": "0.38"}
+{"entite": "lac du Verdon", "valeur": "2.38"}
+{"entite": "lac du Vernex", "valeur": "0.32"}
+{"entite": "lac du Verney", "valeur": "0.75"}
+{"entite": "lac Dukan", "valeur": "270"}
+{"entite": "lac El Juncal", "valeur": "1.72"}
+{"entite": "lac El Peñol", "valeur": "74"}
+{"entite": "lac Eleanor", "valeur": "3.9"}
+{"entite": "lac Eppalock", "valeur": "301.1"}
+{"entite": "lac Erevanian", "valeur": "0.95"}
+{"entite": "lac Eucumbene", "valeur": "145.42"}
+{"entite": "lac Eufaula", "valeur": "412"}
+{"entite": "lac Falls", "valeur": "50"}
+{"entite": "lac Flagstaff", "valeur": "82"}
+{"entite": "lac Folsom", "valeur": "46.3"}
+{"entite": "lac Franklin D. Roosevelt", "valeur": "320"}
+{"entite": "lac Frenchman", "valeur": "6.39"}
+{"entite": "lac Gaston", "valeur": "80"}
+{"entite": "lac Gatún", "valeur": "436"}
+{"entite": "lac Ghost", "valeur": "11.6"}
+{"entite": "Lac Goczałkowice", "valeur": "32"}
+{"entite": "lac Gordon", "valeur": "272"}
+{"entite": "lac Gorge", "valeur": "0.8919"}
+{"entite": "lac Grenon", "valeur": "0.035"}
+{"entite": "lac Guájaro", "valeur": "160"}
+{"entite": "lac Guri", "valeur": "3673.7"}
+{"entite": "lac Guxian", "valeur": "22.6"}
+{"entite": "lac Havasu", "valeur": "78.1"}
+{"entite": "lac Hyōko", "valeur": "0.08"}
+{"entite": "lac Inari", "valeur": "1081.92"}
+{"entite": "lac Isabella", "valeur": "4500"}
+{"entite": "lac J. B. Thomas", "valeur": "0.0316"}
+{"entite": "lac Jackson", "valeur": "103.4"}
+{"entite": "lac James", "valeur": "27.6"}
+{"entite": "lac Jordan", "valeur": "56.4"}
+{"entite": "lac Kainji", "valeur": "1150"}
+{"entite": "lac Kandawgyi", "valeur": "0.607"}
+{"entite": "lac Karapiro", "valeur": "7.7"}
+{"entite": "lac Kariba", "valeur": "5400"}
+{"entite": "lac Kénogami", "valeur": "57"}
+{"entite": "lac Kerr", "valeur": "200"}
+{"entite": "lac Kipawa", "valeur": "300"}
+{"entite": "lac Kir", "valeur": "0.37"}
+{"entite": "lac Kokanee", "valeur": "0.4261"}
+{"entite": "lac Koman", "valeur": "6.93"}
+{"entite": "lac Kovdozero", "valeur": "608"}
+{"entite": "lac Kozyak", "valeur": "13.5"}
+{"entite": "lac La Copa", "valeur": "7.7"}
+{"entite": "lac La Fé", "valeur": "1.49"}
+{"entite": "lac La Mothe", "valeur": "37"}
+{"entite": "lac La Regardera", "valeur": "0.41"}
+{"entite": "lac Lahontan", "valeur": "40"}
+{"entite": "lac Léger", "valeur": "1.159"}
+{"entite": "lac Leon", "valeur": "6.4345"}
+{"entite": "lac Livingston", "valeur": "336"}
+{"entite": "lac Los Barreales", "valeur": "413.1"}
+{"entite": "lac Los Tunjos", "valeur": "0.33"}
+{"entite": "lac Malta", "valeur": "0.64"}
+{"entite": "lac Marathon", "valeur": "2.45"}
+{"entite": "lac Mari Menuco", "valeur": "173.9"}
+{"entite": "lac Marion", "valeur": "450"}
+{"entite": "lac Martin", "valeur": "180"}
+{"entite": "lac Matka", "valeur": "50"}
+{"entite": "lac Maumelle", "valeur": "36"}
+{"entite": "lac Mead", "valeur": "640"}
+{"entite": "lac Merced", "valeur": "2.6"}
+{"entite": "lac Miraflores", "valeur": "8.15"}
+{"entite": "lac Miyagase", "valeur": "4.6"}
+{"entite": "lac Mohave", "valeur": "107"}
+{"entite": "lac Morii", "valeur": "2.46"}
+{"entite": "lac Morin", "valeur": "6.8"}
+{"entite": "lac Moses", "valeur": "27.1746"}
+{"entite": "lac Moultrie", "valeur": "242.8114"}
+{"entite": "lac Muhazi", "valeur": "33"}
+{"entite": "lac Nasser", "valeur": "5250"}
+{"entite": "lac Nigat", "valeur": "1874"}
+{"entite": "lac Ocoee", "valeur": "7.8104"}
+{"entite": "lac Okutama", "valeur": "4.25"}
+{"entite": "lac Oroville", "valeur": "10.2"}
+{"entite": "lac Osoyoos", "valeur": "23.3746"}
+{"entite": "lac Ouachita", "valeur": "160"}
+{"entite": "lac Palestine", "valeur": "103.4"}
+{"entite": "lac Paranoá", "valeur": "37.5"}
+{"entite": "lac Pedder", "valeur": "242"}
+{"entite": "lac Pellegrini", "valeur": "112"}
+{"entite": "lac Pénobscot", "valeur": "4.1"}
+{"entite": "lac Pickwick", "valeur": "174"}
+{"entite": "lac Piedras Blancas", "valeur": "0.19"}
+{"entite": "lac Piru", "valeur": "2"}
+{"entite": "lac Placid", "valeur": "8.8"}
+{"entite": "lac Plastíras", "valeur": "24"}
+{"entite": "lac Pomme de Terre", "valeur": "32"}
+{"entite": "lac Porce II", "valeur": "8.9"}
+{"entite": "lac Powell", "valeur": "658"}
+{"entite": "lac Punchiná", "valeur": "3.6"}
+{"entite": "lac Qiandao", "valeur": "573"}
+{"entite": "lac Rapel", "valeur": "80"}
+{"entite": "Lac Reid", "valeur": "14.8"}
+{"entite": "Lac-réservoir de Sau", "valeur": "5.278"}
+{"entite": "lac Rio Grande", "valeur": "11"}
+{"entite": "lac Rusałka", "valeur": "0.367"}
+{"entite": "lac Sagami", "valeur": "3"}
+{"entite": "lac Sakami", "valeur": "533"}
+{"entite": "lac San Fernando", "valeur": "2.5"}
+{"entite": "lac San Rafael", "valeur": "3.71"}
+{"entite": "lac San Roque", "valeur": "16"}
+{"entite": "lac Sebago", "valeur": "117"}
+{"entite": "lac Séminole", "valeur": "152"}
+{"entite": "lac Seul", "valeur": "1657"}
+{"entite": "lac Shannon", "valeur": "8.9"}
+{"entite": "lac Sireți-Ghidighici", "valeur": "8.03"}
+{"entite": "lac Siskiyou", "valeur": "1.74"}
+{"entite": "lac Solina", "valeur": "22"}
+{"entite": "lac Sonoma", "valeur": "10.9265"}
+{"entite": "lac Steilacoom", "valeur": "1.2383"}
+{"entite": "lac Tangipahoa", "valeur": "2.24"}
+{"entite": "lac Tanuki", "valeur": "0.312"}
+{"entite": "lac Tanzawa", "valeur": "2.18"}
+{"entite": "lac Tawakoni", "valeur": "149"}
+{"entite": "lac Teganuma", "valeur": "4.02"}
+{"entite": "lac Texoma", "valeur": "360"}
+{"entite": "lac Tinaroo", "valeur": "33.6"}
+{"entite": "lac Tisza", "valeur": "127"}
+{"entite": "lac Topaz", "valeur": "9.7529"}
+{"entite": "lac Travis", "valeur": "77"}
+{"entite": "lac Tremblant", "valeur": "9.45"}
+{"entite": "lac Treska", "valeur": "0.136"}
+{"entite": "lac Triadelphia", "valeur": "3.2375"}
+{"entite": "lac Troneras", "valeur": "4.65"}
+{"entite": "lac Tshangalele", "valeur": "446"}
+{"entite": "lac Turawskie", "valeur": "24"}
+{"entite": "lac Vert", "valeur": "0.07"}
+{"entite": "lac Vlasina", "valeur": "16"}
+{"entite": "lac Vodlozero", "valeur": "322"}
+{"entite": "lac Volta", "valeur": "8502"}
+{"entite": "lac Vygozero", "valeur": "1250"}
+{"entite": "lac Włocławskie", "valeur": "70.4"}
+{"entite": "lac Wabigoon", "valeur": "105"}
+{"entite": "lac Wallenpaupack", "valeur": "22.0999"}
+{"entite": "lac Walter F. George", "valeur": "182.841"}
+{"entite": "lac Wheeler", "valeur": "272"}
+{"entite": "lac Williston", "valeur": "1761"}
+{"entite": "lac Winfield Scott", "valeur": "0.0728"}
+{"entite": "lac Wisconsin", "valeur": "38"}
+{"entite": "lac Wissota", "valeur": "24"}
+{"entite": "lac Wister", "valeur": "30"}
+{"entite": "lac Ziouratkoul", "valeur": "13.2"}
+{"entite": "lac Zlatar", "valeur": "7.25"}
+{"entite": "lacs d'Arrémoulit", "valeur": "0.11"}
+{"entite": "lacs de l'Eau d'Heure", "valeur": "6.17"}
+{"entite": "lacs des Grand et Petit Neuweiher", "valeur": "0.034"}
+{"entite": "Ladybower Reservoir", "valeur": "2.1"}
+{"entite": "Lago Bianco", "valeur": "1.43"}
+{"entite": "Lago Biviere", "valeur": "0.18"}
+{"entite": "Lago Comunelli", "valeur": "0.85"}
+{"entite": "Lago de Apanás", "valeur": "45.9"}
+{"entite": "Lago del Brugneto", "valeur": "0.97"}
+{"entite": "Lago della Busalletta", "valeur": "0.3"}
+{"entite": "Lago della Trinità", "valeur": "2.13"}
+{"entite": "Lago di Aviasco", "valeur": "0.07"}
+{"entite": "Lago di Piana degli Albanesi", "valeur": "3.29"}
+{"entite": "Lago di Poschiavo", "valeur": "1.95"}
+{"entite": "Lago Dirillo", "valeur": "1.11"}
+{"entite": "Lago Disueri", "valeur": "1.85"}
+{"entite": "Lago Fanaco", "valeur": "138"}
+{"entite": "Lago Garcia", "valeur": "5.07"}
+{"entite": "Lago Maulazzo", "valeur": "0.05"}
+{"entite": "Lago Nicoletti", "valeur": "5"}
+{"entite": "Lago Pozzillo", "valeur": "7.9"}
+{"entite": "Lago Prizzi", "valeur": "0.9"}
+{"entite": "Lago Ritom", "valeur": "1.49"}
+{"entite": "Lago Santa Rosalia", "valeur": "1.45"}
+{"entite": "Lago Trearie", "valeur": "0.1"}
+{"entite": "Lago Tremorgio", "valeur": "0.39"}
+{"entite": "Lake Allegan", "valeur": "6.8606"}
+{"entite": "Lake Alpine", "valeur": "0.7244"}
+{"entite": "Lake Artemesia", "valeur": "0.1538"}
+{"entite": "Lake Bennett", "valeur": "4.45"}
+{"entite": "Lake Bernard Frank", "valeur": "0.2185"}
+{"entite": "Lake Burbury", "valeur": "49"}
+{"entite": "Lake D’Arbonne", "valeur": "62"}
+{"entite": "Lake Elkhorn", "valeur": "0.1497"}
+{"entite": "Lake Ginninderra", "valeur": "1.05"}
+{"entite": "Lake Gogebic", "valeur": "4000"}
+{"entite": "Lake Kittamaqundi", "valeur": "0.1093"}
+{"entite": "Lake Lawrence", "valeur": "1.3233"}
+{"entite": "Lake Marcel", "valeur": "0.1344"}
+{"entite": "Lake Mayfield", "valeur": "8.1787"}
+{"entite": "Lake Needwood", "valeur": "0.3035"}
+{"entite": "Lake O' the Pines", "valeur": "75.5953"}
+{"entite": "Lake Ocheda", "valeur": "7.7578"}
+{"entite": "Lake Ohakuri", "valeur": "12"}
+{"entite": "Lake Pat Cleburne", "valeur": "6.2524"}
+{"entite": "Lake Ray Roberts", "valeur": "103.5995"}
+{"entite": "Lake Roland", "valeur": "0.4047"}
+{"entite": "Lake Roxburgh", "valeur": "5.9"}
+{"entite": "Lake Sacajawea", "valeur": "3389"}
+{"entite": "Lake Tapps", "valeur": "9.85"}
+{"entite": "Lake Wanapum", "valeur": "58.1169"}
+{"entite": "Lauvnesvatnet", "valeur": "2.547"}
+{"entite": "Lauwersmeer", "valeur": "0.0575"}
+{"entite": "Lesjaskogsvatnet", "valeur": "4.3362"}
+{"entite": "liman de Sassyk", "valeur": "210"}
+{"entite": "Llyn Bowydd", "valeur": "0.089"}
+{"entite": "Llyn Crafnant", "valeur": "0.235"}
+{"entite": "Llyn Cwm Ystradllyn", "valeur": "0.3966"}
+{"entite": "Llyn Llywelyn", "valeur": "0.0243"}
+{"entite": "Llyn Rhosrhydd", "valeur": "0.0642"}
+{"entite": "Llyn Trawsfynydd", "valeur": "4.8"}
+{"entite": "Llyn Tynymynydd", "valeur": "0.0712"}
+{"entite": "Llynnau Duweunydd", "valeur": "0.1613"}
+{"entite": "Loavddajávri", "valeur": "2.5943"}
+{"entite": "loch Ericht", "valeur": "18.6"}
+{"entite": "loch Shin", "valeur": "22.5"}
+{"entite": "Lost Creek Lake", "valeur": "13.9"}
+{"entite": "Luodonjärvi", "valeur": "67.664"}
+{"entite": "Lyudinovskoe", "valeur": "8.7"}
+{"entite": "Máchovo jezero", "valeur": "2.632"}
+{"entite": "Magari paisjärv", "valeur": "0.008"}
+{"entite": "Manorburn Reservoir", "valeur": "1.6"}
+{"entite": "Maroondah Reservoir", "valeur": "2"}
+{"entite": "Maschsee", "valeur": "0.7"}
+{"entite": "May Leiba", "valeur": "0.16"}
+{"entite": "Moondarra Reservoir", "valeur": "2.4"}
+{"entite": "Moosomin Lake", "valeur": "4.5"}
+{"entite": "Muscoot Reservoir", "valeur": "5.11"}
+{"entite": "Netherton Reservoir", "valeur": "0.04"}
+{"entite": "New Croton reservoir", "valeur": "8.83"}
+{"entite": "Newton Lake", "valeur": "4.5"}
+{"entite": "Nord-Mesna", "valeur": "6.0441"}
+{"entite": "Nyhellervatnet", "valeur": "20.4341"}
+{"entite": "Oberer Waldteich", "valeur": "0.26"}
+{"entite": "Opuntia Lake", "valeur": "14"}
+{"entite": "Þórisvatn", "valeur": "88"}
+{"entite": "Osman Sagar", "valeur": "46"}
+{"entite": "Överuman", "valeur": "88"}
+{"entite": "Pantà de Can Borrell", "valeur": "0.002"}
+{"entite": "Pantà de la Gavarresa", "valeur": "0.077"}
+{"entite": "Pantà de Riba-roja", "valeur": "20.289"}
+{"entite": "Percy Priest Lake", "valeur": "57.4654"}
+{"entite": "Petit lac Manicouagan", "valeur": "251.6"}
+{"entite": "Piburger See", "valeur": "0.137"}
+{"entite": "Prospect Reservoir", "valeur": "5.25"}
+{"entite": "Quabbin Reservoir", "valeur": "99.97"}
+{"entite": "Queen Mary Reservoir", "valeur": "2.86"}
+{"entite": "Rannasee", "valeur": "2"}
+{"entite": "Rauddalsvatnet", "valeur": "7.481"}
+{"entite": "Red Lake", "valeur": "1148"}
+{"entite": "Reinoksvatna", "valeur": "5.2951"}
+{"entite": "réservoir aux Outardes 4", "valeur": "652"}
+{"entite": "réservoir Baskatong", "valeur": "413.5"}
+{"entite": "réservoir Beaudet", "valeur": "1.52"}
+{"entite": "réservoir Blanc", "valeur": "82.6"}
+{"entite": "réservoir Boukhtarmal", "valeur": "5490"}
+{"entite": "réservoir Cabonga", "valeur": "677"}
+{"entite": "réservoir Cargill", "valeur": "0.0836"}
+{"entite": "réservoir Choinière", "valeur": "4.7"}
+{"entite": "réservoir d'Akhourian", "valeur": "54"}
+{"entite": "réservoir d'Alcántara", "valeur": "104"}
+{"entite": "Réservoir d’Aldeadávila", "valeur": "3.68"}
+{"entite": "réservoir d'Argazi", "valeur": "102"}
+{"entite": "réservoir d'Arrocampo", "valeur": "7.76"}
+{"entite": "Réservoir d'Azután", "valeur": "0.0125"}
+{"entite": "Réservoir d'Ilısu", "valeur": "313"}
+{"entite": "Réservoir d'Itaipu", "valeur": "1350"}
+{"entite": "réservoir d'Ivankovo", "valeur": "327"}
+{"entite": "réservoir d'Orlík", "valeur": "25.3042"}
+{"entite": "Réservoir d'Orto-Tokoï", "valeur": "24"}
+{"entite": "réservoir d`Oskile", "valeur": "122.6"}
+{"entite": "réservoir d'Ouglitch", "valeur": "249"}
+{"entite": "réservoir de Bárcena", "valeur": "9.86"}
+{"entite": "réservoir de Belesar", "valeur": "19.096"}
+{"entite": "réservoir de Bouzey", "valeur": "1.27"}
+{"entite": "réservoir de Bratsk", "valeur": "5470"}
+{"entite": "Réservoir de Brno", "valeur": "2.0668"}
+{"entite": "réservoir de Caniapiscau", "valeur": "4318"}
+{"entite": "Réservoir de Castro", "valeur": "1.8"}
+{"entite": "réservoir de Dniprodzerjynsk", "valeur": "567"}
+{"entite": "réservoir de Gorki", "valeur": "1591"}
+{"entite": "Réservoir de Határrét", "valeur": "0.079"}
+{"entite": "réservoir de Kaïrakkoum", "valeur": "520"}
+{"entite": "réservoir de Kakhovka", "valeur": "2155"}
+{"entite": "réservoir de Kaniv", "valeur": "675"}
+{"entite": "réservoir de Karatchounivka", "valeur": "26.9"}
+{"entite": "Réservoir de Kaunissaare", "valeur": "0.299"}
+{"entite": "réservoir de Kiev", "valeur": "922"}
+{"entite": "Réservoir de Kirov", "valeur": "27"}
+{"entite": "réservoir de Kouïbychev", "valeur": "6450"}
+{"entite": "réservoir de Krementchouk", "valeur": "2250"}
+{"entite": "réservoir de la Kama", "valeur": "1915"}
+{"entite": "réservoir de la Paix des Braves", "valeur": "603"}
+{"entite": "Réservoir de La Tranquera", "valeur": "5.3"}
+{"entite": "réservoir de Las Rozas", "valeur": "1.6"}
+{"entite": "réservoir de Makorty", "valeur": "13.3"}
+{"entite": "réservoir de Mingachevir", "valeur": "605"}
+{"entite": "Réservoir de Miyun", "valeur": "188"}
+{"entite": "réservoir de Nijnekamsk", "valeur": "1084"}
+{"entite": "réservoir de Novossibirsk", "valeur": "1070"}
+{"entite": "réservoir de Paunküla", "valeur": "4.202"}
+{"entite": "réservoir de Peñarrubia", "valeur": "1.37"}
+{"entite": "réservoir de Pliechtchanitsy", "valeur": "2.04"}
+{"entite": "Réservoir de Pomos", "valeur": "0.083"}
+{"entite": "réservoir de Putrih sur la Belca", "valeur": "0.0049"}
+{"entite": "réservoir de Riaño", "valeur": "22.3"}
+{"entite": "Réservoir de Round Valley", "valeur": "9.3078"}
+{"entite": "réservoir de Rybinsk", "valeur": "4580"}
+{"entite": "réservoir de Saïano-Chouchensk", "valeur": "179.9"}
+{"entite": "réservoir de Saint-Michel", "valeur": "4.5"}
+{"entite": "réservoir de Samarkand", "valeur": "84"}
+{"entite": "réservoir de San Luis", "valeur": "51"}
+{"entite": "réservoir de Saratov", "valeur": "1831"}
+{"entite": "réservoir de Sarsang", "valeur": "0.56"}
+{"entite": "Réservoir de Soodla", "valeur": "2.617"}
+{"entite": "réservoir de Tankeng", "valeur": "70"}
+{"entite": "réservoir de Tcheboksary", "valeur": "2190"}
+{"entite": "réservoir de Tsimliansk", "valeur": "2700"}
+{"entite": "réservoir de Valdecañas", "valeur": "73"}
+{"entite": "Réservoir de Vaskjala", "valeur": "0.299"}
+{"entite": "Réservoir de Villalcampo", "valeur": "4.45"}
+{"entite": "réservoir de Volgograd", "valeur": "3117"}
+{"entite": "réservoir de Votkinsk", "valeur": "1120"}
+{"entite": "réservoir de Zaïnsk", "valeur": "20.5"}
+{"entite": "réservoir Decelles", "valeur": "200"}
+{"entite": "réservoir des Trois-Gorges", "valeur": "1045"}
+{"entite": "réservoir Dozois", "valeur": "404"}
+{"entite": "réservoir du Dniepr", "valeur": "420"}
+{"entite": "Réservoir du Narva", "valeur": "105.87"}
+{"entite": "réservoir Gouin", "valeur": "1789"}
+{"entite": "réservoir High Island", "valeur": "6.67"}
+{"entite": "réservoir Kiamika", "valeur": "42.48"}
+{"entite": "réservoir La Grande 3", "valeur": "2420"}
+{"entite": "réservoir La Grande 4", "valeur": "765"}
+{"entite": "réservoir Laforge 1", "valeur": "1288"}
+{"entite": "Réservoir Les Království", "valeur": "0.318"}
+{"entite": "réservoir Manicouagan", "valeur": "1942"}
+{"entite": "réservoir Möhne", "valeur": "10.67"}
+{"entite": "réservoir Mountsberg", "valeur": "1.8707"}
+{"entite": "réservoir Nechako", "valeur": "900"}
+{"entite": "réservoir Opinaca", "valeur": "1040"}
+{"entite": "Réservoir Partenen", "valeur": "0.023"}
+{"entite": "réservoir Plover Cove", "valeur": "12.04"}
+{"entite": "réservoir Robert-Bourassa", "valeur": "2835"}
+{"entite": "réservoir Scotch Block", "valeur": "0.2394"}
+{"entite": "réservoir Smallwood", "valeur": "6527"}
+{"entite": "réservoir Spandaryan", "valeur": "14.1"}
+{"entite": "réservoir Taureau", "valeur": "95"}
+{"entite": "réservoir Travyansky", "valeur": "5.92"}
+{"entite": "réservoir Wabush", "valeur": "0.5"}
+{"entite": "réservoir Wickiup", "valeur": "45"}
+{"entite": "Respomuso", "valeur": "0.72"}
+{"entite": "Retenue de Génissiat", "valeur": "4"}
+{"entite": "Retenue de Los Bermejales", "valeur": "5.62"}
+{"entite": "Riffe Lake", "valeur": "45.4138"}
+{"entite": "Rimrock Lake", "valeur": "10.2102"}
+{"entite": "Rößlesmahdsee", "valeur": "0.015"}
+{"entite": "Rock Island Pool", "valeur": "13.2777"}
+{"entite": "Rose Valley Lake", "valeur": "1.57"}
+{"entite": "Rosskreppfjorden", "valeur": "29.7529"}
+{"entite": "Rye Mølle Sø", "valeur": "0.4"}
+{"entite": "Salzgittersee", "valeur": "0.75"}
+{"entite": "San Andreas Lake", "valeur": "2.2"}
+{"entite": "Sandsetvatn", "valeur": "2.1638"}
+{"entite": "Sandvatnet/Kaldfjorden/Øyvatnet", "valeur": "19.1779"}
+{"entite": "Sardis Lake", "valeur": "40"}
+{"entite": "Schrecksee", "valeur": "0.102"}
+{"entite": "Seeweiher Mengerskirchen", "valeur": "0.13"}
+{"entite": "Sheldon Reservoir", "valeur": "4.85"}
+{"entite": "Silver Creek Reservoir", "valeur": "0.263"}
+{"entite": "Silver Lake", "valeur": "8.0937"}
+{"entite": "Silvretta-Stausee", "valeur": "1.31"}
+{"entite": "Skinner Reservoir", "valeur": "5.7"}
+{"entite": "Skjesvatn", "valeur": "4.3389"}
+{"entite": "Skorradalsvatn", "valeur": "14.7"}
+{"entite": "Slansko jezero", "valeur": "9"}
+{"entite": "Slidrefjorden", "valeur": "11.4"}
+{"entite": "Smith Mountain Lake", "valeur": "83"}
+{"entite": "Songavatnet", "valeur": "29.8577"}
+{"entite": "Speicherbecken Lohsa I", "valeur": "3.15"}
+{"entite": "Spray Lakes Reservoir", "valeur": "19.9"}
+{"entite": "Spullersee", "valeur": "1.04"}
+{"entite": "Stausee Ottenstein", "valeur": "4.3"}
+{"entite": "Steinbusjøen", "valeur": "8.0193"}
+{"entite": "Stolsvatnet", "valeur": "36.5319"}
+{"entite": "Stora Volavatnet", "valeur": "2.3648"}
+{"entite": "Store Buevatnet", "valeur": "6.0644"}
+{"entite": "Store Måsvannet", "valeur": "14.7118"}
+{"entite": "Strandavatnet", "valeur": "24.07"}
+{"entite": "Sultartangalón", "valeur": "19"}
+{"entite": "Swift Reservoir", "valeur": "18.7"}
+{"entite": "Swiss Valley Reservoir", "valeur": "0.1319"}
+{"entite": "Sysenvatnet", "valeur": "10.4656"}
+{"entite": "Tarnița", "valeur": "2.15"}
+{"entite": "Tesse", "valeur": "12.84"}
+{"entite": "Thirlmere", "valeur": "3.25"}
+{"entite": "Tidal Basin", "valeur": "0.433"}
+{"entite": "Tisleifjorden", "valeur": "13.4447"}
+{"entite": "Toddbrook Reservoir", "valeur": "0.146"}
+{"entite": "Torfkuhlen Bad Sülze", "valeur": "0.27"}
+{"entite": "Totak", "valeur": "37.2642"}
+{"entite": "Tranbjerg Sø", "valeur": "0.075"}
+{"entite": "Traualpsee", "valeur": "0.1522"}
+{"entite": "Treibsee", "valeur": "0.013"}
+{"entite": "Trevatna", "valeur": "4.83"}
+{"entite": "Tunhovdfjorden", "valeur": "25.5548"}
+{"entite": "Utxesa", "valeur": "2.84"}
+{"entite": "Van Rck Dam", "valeur": "1.87"}
+{"entite": "Varazdinsko jezero", "valeur": "10.1"}
+{"entite": "Veľká Domaša", "valeur": "14.22"}
+{"entite": "Vermuntsee", "valeur": "0.35"}
+{"entite": "Vindsjåen", "valeur": "4.7265"}
+{"entite": "Vinjevatn", "valeur": "3.3197"}
+{"entite": "Virdnejávri", "valeur": "5.39"}
+{"entite": "Volbufjorden", "valeur": "3.9372"}
+{"entite": "Vråvatn", "valeur": "14.959"}
+{"entite": "West Hawk Lake", "valeur": "14.9"}
+{"entite": "Wichelsee", "valeur": "0.22"}
+{"entite": "Willow Springs Lake", "valeur": "0.6"}
+{"entite": "Wöhrder See", "valeur": "0.52"}
+{"entite": "Øyangen i Nord-Fron", "valeur": "4.2187"}
+{"entite": "Yarrow Reservoir", "valeur": "0.23"}
+{"entite": "Zwenkauer See", "valeur": "9.7"}

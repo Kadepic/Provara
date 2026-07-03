@@ -1,0 +1,641 @@
+{"_relation": "masse_vehicule_spatial", "_categorie": "physique", "_source": "Wikidata/QLever — masse P2067 (→ kg ; kg/t/g/livre exacts)", "_articles": true}
+{"entite": "LES-4", "valeur": "52"}
+{"entite": "ABRIXAS", "valeur": "470"}
+{"entite": "Active Cavity Radiometer Irradiance Monitor Satellite", "valeur": "115"}
+{"entite": "ADEOS I", "valeur": "3560"}
+{"entite": "ADEOS II", "valeur": "3680"}
+{"entite": "Aditya", "valeur": "1475"}
+{"entite": "Advanced Communications Technology Satellite", "valeur": "2733"}
+{"entite": "Advanced Composite Solar Sail System", "valeur": "15"}
+{"entite": "Advanced Composition Explorer", "valeur": "596"}
+{"entite": "AERCam Sprint", "valeur": "15.9"}
+{"entite": "Aeronomy of Ice in the Mesosphere", "valeur": "197"}
+{"entite": "AGILE", "valeur": "352"}
+{"entite": "Akebono (satellite)", "valeur": "294"}
+{"entite": "Al Yah 3", "valeur": "3795"}
+{"entite": "ALMASat-1", "valeur": "12.5"}
+{"entite": "ALOS-2", "valeur": "2120"}
+{"entite": "ALOS-3", "valeur": "3000"}
+{"entite": "Alouette 1", "valeur": "145.7"}
+{"entite": "Alouette 2", "valeur": "146.5"}
+{"entite": "Alphasat I-XL", "valeur": "6649"}
+{"entite": "Alsat-2A", "valeur": "116"}
+{"entite": "ALTIUS", "valeur": "240"}
+{"entite": "Amazonas 5", "valeur": "5900"}
+{"entite": "Amazônia-1", "valeur": "640"}
+{"entite": "Amos-17", "valeur": "6500"}
+{"entite": "Amos-4", "valeur": "4250"}
+{"entite": "Amos-6", "valeur": "5250"}
+{"entite": "AngoSat-1", "valeur": "1647"}
+{"entite": "AngoSat 2", "valeur": "1964"}
+{"entite": "Aqua", "valeur": "3117"}
+{"entite": "Arctic weather satellite", "valeur": "125"}
+{"entite": "ArgoMoon", "valeur": "14"}
+{"entite": "Ariane Passenger Payload Experiment", "valeur": "670"}
+{"entite": "Ariel 1", "valeur": "62"}
+{"entite": "Ariel 2", "valeur": "68"}
+{"entite": "Ariel V", "valeur": "130.5"}
+{"entite": "Ariel VI", "valeur": "154.5"}
+{"entite": "Artemis", "valeur": "3105"}
+{"entite": "Aryabhata", "valeur": "360"}
+{"entite": "Asgardia-1", "valeur": "2.8"}
+{"entite": "AsiaSat 8", "valeur": "4535"}
+{"entite": "AsiaSat 9", "valeur": "6140"}
+{"entite": "ASTEX", "valeur": "1500"}
+{"entite": "Astrid", "valeur": "27"}
+{"entite": "ASTRO-H", "valeur": "2700"}
+{"entite": "Astron", "valeur": "3250"}
+{"entite": "Astrosat", "valeur": "1513"}
+{"entite": "Athena-Fidus", "valeur": "3080"}
+{"entite": "Atlantic Bird 1", "valeur": "2600"}
+{"entite": "Atmospheric Reentry Demonstrator", "valeur": "2800"}
+{"entite": "ATS-1", "valeur": "351.5"}
+{"entite": "ATS–4", "valeur": "391"}
+{"entite": "ATS-5", "valeur": "821"}
+{"entite": "ATS-6", "valeur": "930"}
+{"entite": "Aura", "valeur": "2967"}
+{"entite": "Auréole 3", "valeur": "1030"}
+{"entite": "Azerspace-2", "valeur": "3500"}
+{"entite": "Azur", "valeur": "72"}
+{"entite": "Bangabandhu-1", "valeur": "3500"}
+{"entite": "Beacon Explorer-A", "valeur": "59"}
+{"entite": "BelKA", "valeur": "750"}
+{"entite": "Bharatiya Antariksha Station", "valeur": "52000"}
+{"entite": "Bhaskara 1", "valeur": "442"}
+{"entite": "Bhaskara 2", "valeur": "444"}
+{"entite": "Bigelow Expandable Activity Module", "valeur": "1413"}
+{"entite": "Bion 2", "valeur": "6000"}
+{"entite": "Bion 8", "valeur": "6700"}
+{"entite": "BIRD", "valeur": "94"}
+{"entite": "Blagovest", "valeur": "3400"}
+{"entite": "BremSat", "valeur": "63"}
+{"entite": "BSAT-4a", "valeur": "3520"}
+{"entite": "CALIPSO", "valeur": "635"}
+{"entite": "CAPSTONE (CubeSat)", "valeur": "25"}
+{"entite": "Carruthers Geocorona Observatory", "valeur": "241"}
+{"entite": "CASSIOPE", "valeur": "500"}
+{"entite": "CAT-1", "valeur": "1602"}
+{"entite": "CBERS-1", "valeur": "1600"}
+{"entite": "Cerise", "valeur": "50"}
+{"entite": "CHAMP", "valeur": "522"}
+{"entite": "Chandrayaan-1", "valeur": "1380"}
+{"entite": "Chang'e 1", "valeur": "2350"}
+{"entite": "Chang'e 2", "valeur": "2480"}
+{"entite": "Chang'e 3", "valeur": "1200"}
+{"entite": "Chang'e 5", "valeur": "8200"}
+{"entite": "Chang'e 6", "valeur": "8350"}
+{"entite": "Charge Composition Explorer", "valeur": "242"}
+{"entite": "Chinasat 12", "valeur": "5054"}
+{"entite": "Chinese Hα Solar Explorer", "valeur": "550"}
+{"entite": "Clementine", "valeur": "424"}
+{"entite": "CloudSat", "valeur": "999"}
+{"entite": "COMETS", "valeur": "3900"}
+{"entite": "Compton Gamma-Ray Observatory", "valeur": "15620"}
+{"entite": "COMS", "valeur": "2460"}
+{"entite": "Copernicus", "valeur": "2204"}
+{"entite": "Coronas-F", "valeur": "2340"}
+{"entite": "Coronas-I", "valeur": "2298.2"}
+{"entite": "Corot", "valeur": "668"}
+{"entite": "Cosmos 10", "valeur": "4700"}
+{"entite": "Cosmos 100", "valeur": "3800"}
+{"entite": "Cosmos 1001", "valeur": "6680"}
+{"entite": "Cosmos 101", "valeur": "325"}
+{"entite": "Cosmos 106", "valeur": "325"}
+{"entite": "Cosmos 1074", "valeur": "6450"}
+{"entite": "Cosmos 11", "valeur": "315"}
+{"entite": "Cosmos 111", "valeur": "1540"}
+{"entite": "Cosmos 12", "valeur": "4730"}
+{"entite": "Cosmos 122", "valeur": "4730"}
+{"entite": "Cosmos 13", "valeur": "4730"}
+{"entite": "Cosmos 135", "valeur": "350"}
+{"entite": "Cosmos 1358", "valeur": "90"}
+{"entite": "Cosmos 14", "valeur": "300"}
+{"entite": "Cosmos 1408", "valeur": "1750"}
+{"entite": "Cosmos 15", "valeur": "4730"}
+{"entite": "Cosmos 159", "valeur": "1640"}
+{"entite": "Cosmos 16", "valeur": "4730"}
+{"entite": "Cosmos 163", "valeur": "350"}
+{"entite": "Cosmos 166", "valeur": "285"}
+{"entite": "Cosmos 17", "valeur": "322"}
+{"entite": "Cosmos 18", "valeur": "4730"}
+{"entite": "Cosmos 186", "valeur": "6530"}
+{"entite": "Cosmos 188", "valeur": "6530"}
+{"entite": "Cosmos 19", "valeur": "355"}
+{"entite": "Cosmos 192", "valeur": "775"}
+{"entite": "Cosmos 196", "valeur": "352"}
+{"entite": "Cosmos 20", "valeur": "4730"}
+{"entite": "Cosmos 21", "valeur": "890"}
+{"entite": "Cosmos 212", "valeur": "6530"}
+{"entite": "Cosmos 213", "valeur": "6530"}
+{"entite": "Cosmos 220", "valeur": "830"}
+{"entite": "Cosmos 221", "valeur": "400"}
+{"entite": "Cosmos 225", "valeur": "400"}
+{"entite": "Cosmos 2251", "valeur": "900"}
+{"entite": "Cosmos 23", "valeur": "200"}
+{"entite": "Cosmos 230", "valeur": "367"}
+{"entite": "Cosmos 238", "valeur": "6520"}
+{"entite": "Cosmos 24", "valeur": "4730"}
+{"entite": "Cosmos 25", "valeur": "355"}
+{"entite": "Cosmos 26", "valeur": "365"}
+{"entite": "Cosmos 29", "valeur": "4730"}
+{"entite": "Cosmos 3", "valeur": "330"}
+{"entite": "Cosmos 300", "valeur": "5600"}
+{"entite": "Cosmos 31", "valeur": "325"}
+{"entite": "Cosmos 335", "valeur": "295"}
+{"entite": "Cosmos 36", "valeur": "325"}
+{"entite": "Cosmos 367", "valeur": "3800.125"}
+{"entite": "Cosmos 4", "valeur": "4600"}
+{"entite": "Cosmos 421", "valeur": "325"}
+{"entite": "Cosmos 48", "valeur": "4730"}
+{"entite": "Cosmos 482", "valeur": "1184"}
+{"entite": "Cosmos 496", "valeur": "6800"}
+{"entite": "Cosmos 5", "valeur": "280"}
+{"entite": "Cosmos 557", "valeur": "19400"}
+{"entite": "Cosmos 57", "valeur": "5682"}
+{"entite": "Cosmos 573", "valeur": "6800"}
+{"entite": "Cosmos 6", "valeur": "355"}
+{"entite": "Cosmos 60", "valeur": "1600"}
+{"entite": "Cosmos 613", "valeur": "6800"}
+{"entite": "Cosmos 638", "valeur": "6570"}
+{"entite": "Cosmos 656", "valeur": "6675"}
+{"entite": "Cosmos 670", "valeur": "6700"}
+{"entite": "Cosmos 7", "valeur": "4610"}
+{"entite": "Cosmos 8", "valeur": "337"}
+{"entite": "Cosmos 84", "valeur": "61"}
+{"entite": "Cosmos 869", "valeur": "6800"}
+{"entite": "Cosmos 9", "valeur": "4700"}
+{"entite": "Courier 1B", "valeur": "230"}
+{"entite": "Crew Module Atmospheric Re-entry Experiment", "valeur": "3775"}
+{"entite": "CryoSat-1", "valeur": "650"}
+{"entite": "CryoSat-2", "valeur": "750"}
+{"entite": "CSO 1", "valeur": "3655"}
+{"entite": "CSO 2", "valeur": "3562"}
+{"entite": "CubeBel-1", "valeur": "1.6"}
+{"entite": "Curiosity", "valeur": "899"}
+{"entite": "Cygnus CRS OA-7", "valeur": "7220"}
+{"entite": "Cygnus CRS Orb-3", "valeur": "2215"}
+{"entite": "DART", "valeur": "363"}
+{"entite": "Data Relay & Tracking Satellite", "valeur": "2800"}
+{"entite": "Deep Space 2", "valeur": "2.4"}
+{"entite": "Deimos-1", "valeur": "91"}
+{"entite": "Deimos-2", "valeur": "310"}
+{"entite": "Denpa", "valeur": "75"}
+{"entite": "Discoverer 1", "valeur": "618"}
+{"entite": "Dodge", "valeur": "102"}
+{"entite": "Dong Fang Hong I", "valeur": "173"}
+{"entite": "DOS-2", "valeur": "18210"}
+{"entite": "Dove-2", "valeur": "5.8"}
+{"entite": "Dragonfly", "valeur": "450"}
+{"entite": "Dynamics Explorer 1", "valeur": "424"}
+{"entite": "Dynamics Explorer 2", "valeur": "420"}
+{"entite": "Echo (satellite)", "valeur": "76"}
+{"entite": "EDRS-C", "valeur": "3186"}
+{"entite": "EDUSAT", "valeur": "1950.5"}
+{"entite": "Einstein", "valeur": "1450"}
+{"entite": "Ekspress AT1", "valeur": "1672"}
+{"entite": "Ekspress AT2", "valeur": "1326"}
+{"entite": "Ekspress MD1", "valeur": "1140"}
+{"entite": "EnMAP", "valeur": "980"}
+{"entite": "Enterprise", "valeur": "68027"}
+{"entite": "ENVISAT", "valeur": "8211"}
+{"entite": "EOS SAT-1", "valeur": "176.64"}
+{"entite": "ESSA-1", "valeur": "138"}
+{"entite": "ESTCube-1", "valeur": "1"}
+{"entite": "Euclid", "valeur": "2160"}
+{"entite": "Eureca", "valeur": "4491"}
+{"entite": "Eutelsat 10B", "valeur": "5500"}
+{"entite": "Eutelsat 172B", "valeur": "3551"}
+{"entite": "Eutelsat 36B", "valeur": "5627"}
+{"entite": "Eutelsat 3D", "valeur": "5470"}
+{"entite": "Eutelsat 5 West B", "valeur": "2864"}
+{"entite": "Eutelsat 8 West B", "valeur": "5782"}
+{"entite": "Eutelsat Konnect", "valeur": "3619"}
+{"entite": "Eutelsat Konnect VHTS", "valeur": "6396"}
+{"entite": "Eutelsat Quantum", "valeur": "3461"}
+{"entite": "Explorer 1", "valeur": "13.97"}
+{"entite": "Explorer 10", "valeur": "79"}
+{"entite": "Explorer 12", "valeur": "37.6"}
+{"entite": "Explorer 14", "valeur": "40"}
+{"entite": "Explorer 15", "valeur": "44.4"}
+{"entite": "Explorer 2", "valeur": "14.52"}
+{"entite": "Explorer 22", "valeur": "59"}
+{"entite": "Explorer 26", "valeur": "45.8"}
+{"entite": "Explorer 3", "valeur": "14.06"}
+{"entite": "Explorer 4", "valeur": "25.5"}
+{"entite": "Explorer 5", "valeur": "17"}
+{"entite": "Explorer 6", "valeur": "64.4"}
+{"entite": "Explorer 60", "valeur": "148.7"}
+{"entite": "Explorer 7", "valeur": "41.5"}
+{"entite": "Express AM6", "valeur": "3358"}
+{"entite": "Falcon Eye 1", "valeur": "1197"}
+{"entite": "Falcon Eye 2", "valeur": "1190"}
+{"entite": "Far-infrared Outgoing Radiation Understanding and Monitoring", "valeur": "883"}
+{"entite": "Fermi Gamma-ray Space Telescope", "valeur": "4303"}
+{"entite": "Formosat-1", "valeur": "402"}
+{"entite": "FORMOSAT-5", "valeur": "475"}
+{"entite": "Gaganyaan", "valeur": "7800"}
+{"entite": "Gaia", "valeur": "2029"}
+{"entite": "Galaxy Evolution Explorer", "valeur": "280"}
+{"entite": "Gemini 1", "valeur": "3187"}
+{"entite": "Gemini 3", "valeur": "3236.9"}
+{"entite": "Gemini 4", "valeur": "3570"}
+{"entite": "Gemini 5", "valeur": "3605"}
+{"entite": "Gemini 6", "valeur": "3546"}
+{"entite": "Gemini 9", "valeur": "3750"}
+{"entite": "Genesis I", "valeur": "1360"}
+{"entite": "Genesis II", "valeur": "1360"}
+{"entite": "GEO-KOMPSAT-2A", "valeur": "3507.2"}
+{"entite": "Geosat Follow-On", "valeur": "410"}
+{"entite": "Giotto", "valeur": "960"}
+{"entite": "Glory", "valeur": "545"}
+{"entite": "Gravity and Extreme Magnetism SMEX", "valeur": "267"}
+{"entite": "Gravity Field and Steady-State Ocean Circulation Explorer", "valeur": "1052"}
+{"entite": "Gravity Probe B", "valeur": "3334"}
+{"entite": "Griffin", "valeur": "1263"}
+{"entite": "GSAT-10", "valeur": "3400"}
+{"entite": "GSAT-11", "valeur": "5854"}
+{"entite": "GSAT-12", "valeur": "1410"}
+{"entite": "GSAT-5P", "valeur": "2310"}
+{"entite": "Haven-1", "valeur": "14000"}
+{"entite": "Hayabusa", "valeur": "510"}
+{"entite": "Hayasat-1", "valeur": "1"}
+{"entite": "Heinrich Hertz (satellite)", "valeur": "3408"}
+{"entite": "Helios 2A", "valeur": "4200"}
+{"entite": "Helios 2B", "valeur": "4200"}
+{"entite": "Herschel", "valeur": "3400"}
+{"entite": "Hispasat 1A", "valeur": "2194"}
+{"entite": "Hispasat 1C", "valeur": "3113"}
+{"entite": "Hispasat 30W-6", "valeur": "6092"}
+{"entite": "Hiten", "valeur": "143"}
+{"entite": "Horizons 3e", "valeur": "6441"}
+{"entite": "HTV-1", "valeur": "4500"}
+{"entite": "Humanity Star", "valeur": "10.34"}
+{"entite": "Huygens", "valeur": "318"}
+{"entite": "ICESat-2", "valeur": "1514"}
+{"entite": "IKAROS", "valeur": "308"}
+{"entite": "IMAGE", "valeur": "494"}
+{"entite": "Imaging X-ray Polarimetry Explorer", "valeur": "325"}
+{"entite": "INSAT-1A", "valeur": "1152"}
+{"entite": "INSAT-1B", "valeur": "1152"}
+{"entite": "INSAT-4B", "valeur": "3025"}
+{"entite": "INSAT-4E", "valeur": "2117"}
+{"entite": "Intelsat 15", "valeur": "2550"}
+{"entite": "Intelsat-32e", "valeur": "6300"}
+{"entite": "Intelsat 33e", "valeur": "6600"}
+{"entite": "Intelsat 37e", "valeur": "6438"}
+{"entite": "Intelsat 39", "valeur": "6600"}
+{"entite": "Interface Region Imaging Spectrograph", "valeur": "200"}
+{"entite": "International Ultraviolet Explorer", "valeur": "671"}
+{"entite": "Intuitive Machines 2", "valeur": "2120"}
+{"entite": "Ionospheric Connection Explorer", "valeur": "288"}
+{"entite": "IRAS", "valeur": "1073"}
+{"entite": "Iridium 33", "valeur": "700"}
+{"entite": "IRNSS-1D", "valeur": "1425"}
+{"entite": "ISTSat-1", "valeur": "2"}
+{"entite": "Jikiken", "valeur": "92"}
+{"entite": "Jupiter Icy Moons Explorer", "valeur": "5963"}
+{"entite": "K-RadCube", "valeur": "19.6"}
+{"entite": "Kalpana-1", "valeur": "1060"}
+{"entite": "Kanopus-V 1", "valeur": "473"}
+{"entite": "KazSat-1", "valeur": "1092"}
+{"entite": "KazSat-2", "valeur": "1330"}
+{"entite": "Khayyam (satellite)", "valeur": "600"}
+{"entite": "KOMPSAT-1", "valeur": "469"}
+{"entite": "Korea Pathfinder Lunar Orbiter", "valeur": "678"}
+{"entite": "Kosmos 1", "valeur": "47"}
+{"entite": "Kwangmyŏngsŏng", "valeur": "30"}
+{"entite": "Kwangmyŏngsŏng-3", "valeur": "100"}
+{"entite": "Kwangmyŏngsŏng-3 numéro 2", "valeur": "100"}
+{"entite": "Kwangmyŏngsŏng 4", "valeur": "200"}
+{"entite": "Kyokko", "valeur": "126"}
+{"entite": "Landsat 7", "valeur": "1973"}
+{"entite": "Landsat 9", "valeur": "2864"}
+{"entite": "LARES", "valeur": "387"}
+{"entite": "Lewis", "valeur": "445"}
+{"entite": "LICIACube", "valeur": "14"}
+{"entite": "LignoSat", "valeur": "0.9"}
+{"entite": "LISA Pathfinder", "valeur": "1910"}
+{"entite": "Low-Earth Orbit Flight Test of an Inflatable Decelerator", "valeur": "1224"}
+{"entite": "Luna 1", "valeur": "361"}
+{"entite": "Luna 11", "valeur": "1640"}
+{"entite": "Luna 12", "valeur": "1620"}
+{"entite": "Luna 14", "valeur": "1640"}
+{"entite": "Luna 15", "valeur": "5667"}
+{"entite": "Luna 2", "valeur": "390.2"}
+{"entite": "Luna 20", "valeur": "5600"}
+{"entite": "Luna 23", "valeur": "5600"}
+{"entite": "Luna 24", "valeur": "5800"}
+{"entite": "Luna 26", "valeur": "2100"}
+{"entite": "Luna 27", "valeur": "2200"}
+{"entite": "Luna 3", "valeur": "278.5"}
+{"entite": "Luna 4", "valeur": "1422"}
+{"entite": "Luna 9", "valeur": "1583.71"}
+{"entite": "Lunar Flashlight", "valeur": "14"}
+{"entite": "Lunar Gateway", "valeur": "63000"}
+{"entite": "Lunar Trailblazer", "valeur": "210"}
+{"entite": "Lunokhod 1", "valeur": "756"}
+{"entite": "Lunokhod 2", "valeur": "840"}
+{"entite": "Magion 1", "valeur": "15"}
+{"entite": "Maquette du satellite Telstar - CnAM 35181", "valeur": "123"}
+{"entite": "MarCO-A", "valeur": "13.7"}
+{"entite": "MarCO-B", "valeur": "13.7"}
+{"entite": "Mariner 1", "valeur": "202.8"}
+{"entite": "Mariner 2", "valeur": "202.8"}
+{"entite": "Mariner 4", "valeur": "260.8"}
+{"entite": "Mariner 5", "valeur": "244.9"}
+{"entite": "Mariner 6", "valeur": "411.8"}
+{"entite": "Mariner 7", "valeur": "411.8"}
+{"entite": "Mars 1", "valeur": "893.5"}
+{"entite": "Mars 1969B", "valeur": "4850"}
+{"entite": "Mars 2020", "valeur": "4061"}
+{"entite": "Mars Global Surveyor", "valeur": "1030"}
+{"entite": "Mars Helicopter Ingenuity", "valeur": "1.8"}
+{"entite": "Mars Pathfinder", "valeur": "890"}
+{"entite": "MATS (satellite)", "valeur": "50"}
+{"entite": "Mercury", "valeur": "1360.7771"}
+{"entite": "Mercury-Atlas 6", "valeur": "1224.7"}
+{"entite": "Mercury-Atlas 7", "valeur": "1224.7"}
+{"entite": "Mercury-Atlas 9", "valeur": "1360"}
+{"entite": "Mercury-Redstone 4", "valeur": "1286"}
+{"entite": "MESSENGER", "valeur": "1100"}
+{"entite": "Methane Remote Sensing Mission", "valeur": "430"}
+{"entite": "MethaneSAT", "valeur": "362"}
+{"entite": "MicroCarb", "valeur": "180"}
+{"entite": "Microscope", "valeur": "303"}
+{"entite": "Mikhaïl Lomonossov", "valeur": "450"}
+{"entite": "Minisatellite Italiano di Technologia Avanzata", "valeur": "170"}
+{"entite": "Mir", "valeur": "129700"}
+{"entite": "mission de topographie des surfaces d'eau océaniques et continentales", "valeur": "2000"}
+{"entite": "Mona Luna", "valeur": "750"}
+{"entite": "MOST", "valeur": "57"}
+{"entite": "Nanosail-D2", "valeur": "4"}
+{"entite": "Nanosat 01", "valeur": "20"}
+{"entite": "NEE-01 Pegaso", "valeur": "1.266"}
+{"entite": "NEOCam", "valeur": "1300"}
+{"entite": "NEXTSat", "valeur": "227"}
+{"entite": "NigeriaSat 1", "valeur": "100"}
+{"entite": "NISAR", "valeur": "2393"}
+{"entite": "NOAA-20", "valeur": "2540"}
+{"entite": "NOAA-B", "valeur": "1405"}
+{"entite": "North Utah Satellite", "valeur": "54.5"}
+{"entite": "Nuclear Spectroscopic Telescope Array", "valeur": "360"}
+{"entite": "NuSat 1", "valeur": "37.5"}
+{"entite": "NuSat 2", "valeur": "37.5"}
+{"entite": "ÑuSat 3", "valeur": "37.5"}
+{"entite": "ÑuSat 4", "valeur": "37.5"}
+{"entite": "ÑuSat 5", "valeur": "37.5"}
+{"entite": "ÑuSat 7", "valeur": "37.5"}
+{"entite": "ÑuSat 8", "valeur": "37.5"}
+{"entite": "L'observatoire solaire spatial avancé", "valeur": "888"}
+{"entite": "observatoire Spatial Mondial-Ultraviolet", "valeur": "2840"}
+{"entite": "Odin (satellite)", "valeur": "250"}
+{"entite": "Ofek-9", "valeur": "189"}
+{"entite": "Ohzora", "valeur": "210"}
+{"entite": "OICETS", "valeur": "570"}
+{"entite": "Olympus-1", "valeur": "2595"}
+{"entite": "Omid", "valeur": "27.27"}
+{"entite": "Opportunity", "valeur": "185"}
+{"entite": "OPTOS", "valeur": "3.8"}
+{"entite": "Orbiting Carbon Observatory", "valeur": "407"}
+{"entite": "OSO 1", "valeur": "207.7"}
+{"entite": "OSO 2", "valeur": "547"}
+{"entite": "OSO 3", "valeur": "600"}
+{"entite": "OSO 4", "valeur": "605"}
+{"entite": "OSO 5", "valeur": "645"}
+{"entite": "OSO 6", "valeur": "647"}
+{"entite": "OSO 7", "valeur": "1400"}
+{"entite": "OSO 8", "valeur": "4280"}
+{"entite": "Palapa-D", "valeur": "4100"}
+{"entite": "Parker Solar Probe", "valeur": "685"}
+{"entite": "PasComSat", "valeur": "10.4"}
+{"entite": "Peregrine Mission One", "valeur": "1283"}
+{"entite": "Perseverance", "valeur": "1026"}
+{"entite": "PeruSat-1", "valeur": "430"}
+{"entite": "Philae", "valeur": "97.9"}
+{"entite": "Pioneer 0", "valeur": "38"}
+{"entite": "Pioneer 1", "valeur": "38.28"}
+{"entite": "Pioneer 10", "valeur": "258"}
+{"entite": "Pioneer 11", "valeur": "259"}
+{"entite": "Pioneer 2", "valeur": "39.6"}
+{"entite": "Pioneer 3", "valeur": "5.87"}
+{"entite": "Pioneer 4", "valeur": "6.1"}
+{"entite": "Pioneer 5", "valeur": "43"}
+{"entite": "Pioneer P-3", "valeur": "168.7"}
+{"entite": "Pioneer P-30", "valeur": "175.5"}
+{"entite": "Pioneer P-31", "valeur": "175"}
+{"entite": "Planck", "valeur": "1950"}
+{"entite": "PLATO", "valeur": "2120"}
+{"entite": "Pléiades", "valeur": "1015"}
+{"entite": "Pléiades Néo 3", "valeur": "920"}
+{"entite": "Pléiades Néo 4", "valeur": "922"}
+{"entite": "Polar BEAR", "valeur": "125"}
+{"entite": "Pre-Aerosol, Clouds and ocean Ecosystem", "valeur": "1694"}
+{"entite": "PROBA-1", "valeur": "94"}
+{"entite": "PROBA-2", "valeur": "130"}
+{"entite": "PROBA-V", "valeur": "158"}
+{"entite": "Programme Alsat", "valeur": "90"}
+{"entite": "Progress M-SO1", "valeur": "6900"}
+{"entite": "Progress M-UM", "valeur": "8180"}
+{"entite": "Queqiao", "valeur": "425"}
+{"entite": "Queqiao 2", "valeur": "1200"}
+{"entite": "QUESS", "valeur": "640"}
+{"entite": "QuickBird", "valeur": "980"}
+{"entite": "QuikSCAT", "valeur": "970"}
+{"entite": "Radarsat", "valeur": "2750"}
+{"entite": "RADARSAT-2", "valeur": "2300"}
+{"entite": "Ranger 9", "valeur": "366.9"}
+{"entite": "RAPIS-1", "valeur": "200"}
+{"entite": "RemoveDebris", "valeur": "100"}
+{"entite": "Resours-DK1", "valeur": "6800"}
+{"entite": "Robot LAMA - CnAM 44681", "valeur": "300"}
+{"entite": "Robusta-3A Méditerranée", "valeur": "3.6"}
+{"entite": "Rosat", "valeur": "2426"}
+{"entite": "Rosetta", "valeur": "3000"}
+{"entite": "Rover ExoMars", "valeur": "310"}
+{"entite": "Ørsted", "valeur": "60.8"}
+{"entite": "S-46", "valeur": "15.7"}
+{"entite": "SAC-D", "valeur": "1350"}
+{"entite": "Saliout 1", "valeur": "18200"}
+{"entite": "Saliout 2", "valeur": "18600"}
+{"entite": "Saliout 3", "valeur": "18500"}
+{"entite": "Saliout 4", "valeur": "18500"}
+{"entite": "Saliout 5", "valeur": "19000"}
+{"entite": "Saliout 6", "valeur": "19824"}
+{"entite": "Saliout 7", "valeur": "19824"}
+{"entite": "Satmex 8", "valeur": "5474"}
+{"entite": "SBS-6", "valeur": "2478"}
+{"entite": "Schiaparelli", "valeur": "577"}
+{"entite": "SCORE", "valeur": "70"}
+{"entite": "SELENE", "valeur": "2914"}
+{"entite": "Sentinel-12", "valeur": "2060"}
+{"entite": "Sentinel-3B", "valeur": "1200"}
+{"entite": "SES-10", "valeur": "5300"}
+{"entite": "SES-14", "valeur": "4423"}
+{"entite": "SES-5", "valeur": "6086"}
+{"entite": "SES-8", "valeur": "3170"}
+{"entite": "Shenzhou 11", "valeur": "6800"}
+{"entite": "ShiJian-10", "valeur": "3600"}
+{"entite": "Shijian-8", "valeur": "3000"}
+{"entite": "Shizuku", "valeur": "1990"}
+{"entite": "SICRAL 1B", "valeur": "3038"}
+{"entite": "Signe 3", "valeur": "102"}
+{"entite": "Skylab", "valeur": "76295"}
+{"entite": "SMAP", "valeur": "944"}
+{"entite": "SNAP-10A", "valeur": "440"}
+{"entite": "Sojourner", "valeur": "11.5"}
+{"entite": "Solar and Heliospheric Observatory", "valeur": "1850"}
+{"entite": "Soyouz 10", "valeur": "6800"}
+{"entite": "Soyouz 11", "valeur": "6790"}
+{"entite": "Soyouz 12", "valeur": "6720"}
+{"entite": "Soyouz 13", "valeur": "6560"}
+{"entite": "Soyouz 14", "valeur": "6800"}
+{"entite": "Soyouz 15", "valeur": "6760"}
+{"entite": "Soyouz 16", "valeur": "6800"}
+{"entite": "Soyouz 2", "valeur": "6450"}
+{"entite": "Soyouz 20", "valeur": "6570"}
+{"entite": "Soyouz 22", "valeur": "6510"}
+{"entite": "Soyouz 23", "valeur": "6760"}
+{"entite": "Soyouz 24", "valeur": "6800"}
+{"entite": "Soyouz 25", "valeur": "6860"}
+{"entite": "Soyouz 27", "valeur": "6800"}
+{"entite": "Soyouz 3", "valeur": "6575"}
+{"entite": "Soyouz 37", "valeur": "6800"}
+{"entite": "Soyouz 6", "valeur": "6577"}
+{"entite": "Soyouz 7", "valeur": "6570"}
+{"entite": "Soyouz 8", "valeur": "6646"}
+{"entite": "Soyouz 9", "valeur": "6590"}
+{"entite": "Soyouz MS-08", "valeur": "7220"}
+{"entite": "Soyouz MS-16", "valeur": "7280"}
+{"entite": "Soyouz T-10-1", "valeur": "6850"}
+{"entite": "Soyouz T-15", "valeur": "6850"}
+{"entite": "Soyouz T-8", "valeur": "6850"}
+{"entite": "Soyouz-TM", "valeur": "7250"}
+{"entite": "Soyouz TM-10", "valeur": "7150"}
+{"entite": "Soyouz TM-11", "valeur": "7150"}
+{"entite": "Soyouz TM-12", "valeur": "7160"}
+{"entite": "Soyouz TM-13", "valeur": "7150"}
+{"entite": "Soyouz TM-14", "valeur": "7150"}
+{"entite": "Soyouz TM-15", "valeur": "7150"}
+{"entite": "Soyouz TM-16", "valeur": "7150"}
+{"entite": "Soyouz TM-17", "valeur": "7150"}
+{"entite": "Soyouz TM-18", "valeur": "7150"}
+{"entite": "Soyouz TM-19", "valeur": "7150"}
+{"entite": "Soyouz TM-2", "valeur": "7100"}
+{"entite": "Soyouz TM-20", "valeur": "7170"}
+{"entite": "Soyouz TM-21", "valeur": "7170"}
+{"entite": "Soyouz TM-22", "valeur": "7150"}
+{"entite": "Soyouz TM-23", "valeur": "7150"}
+{"entite": "Soyouz TM-24", "valeur": "7150"}
+{"entite": "Soyouz TM-25", "valeur": "7150"}
+{"entite": "Soyouz TM-26", "valeur": "7150"}
+{"entite": "Soyouz TM-27", "valeur": "7150"}
+{"entite": "Soyouz TM-29", "valeur": "7150"}
+{"entite": "Soyouz TM-3", "valeur": "7100"}
+{"entite": "Soyouz TM-4", "valeur": "7070"}
+{"entite": "Soyouz TM-5", "valeur": "7000"}
+{"entite": "Soyouz TM-6", "valeur": "7070"}
+{"entite": "Soyouz TM-7", "valeur": "7000"}
+{"entite": "Soyouz TM-8", "valeur": "7150"}
+{"entite": "Soyouz TM-9", "valeur": "7150"}
+{"entite": "Soyouz TMA-2", "valeur": "7136"}
+{"entite": "Soyouz TMA-6", "valeur": "7200"}
+{"entite": "Soyouz TMA-7", "valeur": "7200"}
+{"entite": "Soyouz TMA-8", "valeur": "7270"}
+{"entite": "Soyouz TMA-9", "valeur": "7270"}
+{"entite": "Space Capsule Recovery Experiment", "valeur": "555"}
+{"entite": "Space Flyer Unit", "valeur": "4000"}
+{"entite": "Space Variable Objects Monitor", "valeur": "930"}
+{"entite": "Spei Satelles", "valeur": "3"}
+{"entite": "SPHEREx", "valeur": "502"}
+{"entite": "Spirit", "valeur": "185"}
+{"entite": "SPOT-4", "valeur": "2755"}
+{"entite": "SPOT-5", "valeur": "3085"}
+{"entite": "SPOT-6", "valeur": "712"}
+{"entite": "SPOT-7", "valeur": "712"}
+{"entite": "Spoutnik 1", "valeur": "83.6"}
+{"entite": "Spoutnik 2", "valeur": "508.3"}
+{"entite": "Spoutnik 24", "valeur": "890"}
+{"entite": "Spoutnik 3", "valeur": "1327"}
+{"entite": "Spoutnik 4", "valeur": "1477"}
+{"entite": "Spoutnik 5", "valeur": "4600"}
+{"entite": "Spoutnik 6", "valeur": "4563"}
+{"entite": "SPRINT-A", "valeur": "348"}
+{"entite": "SPRINT-B", "valeur": "350"}
+{"entite": "Sputnik 10", "valeur": "4680"}
+{"entite": "Station spatiale chinoise", "valeur": "100000"}
+{"entite": "station spatiale internationale", "valeur": "419725"}
+{"entite": "Suisei", "valeur": "139.5"}
+{"entite": "Super Low Altitude Test Satellite", "valeur": "383"}
+{"entite": "Superbird-B3", "valeur": "5348"}
+{"entite": "Suzaku", "valeur": "1680"}
+{"entite": "SWIFT", "valeur": "1331"}
+{"entite": "Syracuse 4A", "valeur": "3852"}
+{"entite": "Syracuse III", "valeur": "3725"}
+{"entite": "TacSat-3", "valeur": "400"}
+{"entite": "TARANIS", "valeur": "175"}
+{"entite": "TDF 1", "valeur": "2136"}
+{"entite": "TDF 2", "valeur": "2136"}
+{"entite": "TDRS-1", "valeur": "2268"}
+{"entite": "TDRS-3", "valeur": "2224.9"}
+{"entite": "TDRS-4", "valeur": "2108"}
+{"entite": "TDRS-7", "valeur": "2108"}
+{"entite": "TechEdSat", "valeur": "1"}
+{"entite": "Technology Experiment Satellite", "valeur": "1108"}
+{"entite": "TecSAR", "valeur": "260"}
+{"entite": "télescope spatial James-Webb", "valeur": "6161.42"}
+{"entite": "Terra", "valeur": "4864"}
+{"entite": "TerraSAR-X", "valeur": "1230"}
+{"entite": "TerreStar-1", "valeur": "6910"}
+{"entite": "Tesla Roadster d'Elon Musk", "valeur": "1250"}
+{"entite": "Tiangong 1", "valeur": "8506"}
+{"entite": "Tiangong 2", "valeur": "8600"}
+{"entite": "Tianwen-1", "valeur": "5000"}
+{"entite": "TIMED", "valeur": "587"}
+{"entite": "TIROS-1", "valeur": "122.5"}
+{"entite": "TIROS-2", "valeur": "127"}
+{"entite": "Transiting Exoplanet Survey Satellite", "valeur": "350"}
+{"entite": "TV-SAT 1", "valeur": "2136"}
+{"entite": "Uhuru", "valeur": "141.5"}
+{"entite": "Ulysses", "valeur": "371"}
+{"entite": "Umbra 01", "valeur": "65"}
+{"entite": "Umbra 02", "valeur": "65"}
+{"entite": "Umbra 03", "valeur": "65"}
+{"entite": "Umbra 04", "valeur": "65"}
+{"entite": "Umbra 05", "valeur": "65"}
+{"entite": "Umbra 06", "valeur": "65"}
+{"entite": "Umbra 07", "valeur": "65"}
+{"entite": "Umbra 08", "valeur": "65"}
+{"entite": "UniCubeSat-GG", "valeur": "1"}
+{"entite": "Urdaneta-Armsat", "valeur": "17.9"}
+{"entite": "USA 193", "valeur": "2268"}
+{"entite": "USA-214", "valeur": "6168"}
+{"entite": "Vanguard 1", "valeur": "1.46"}
+{"entite": "Vanguard SLV-4", "valeur": "10.2"}
+{"entite": "Vanguard TV3", "valeur": "1.36"}
+{"entite": "Vanguard TV3BU", "valeur": "1.36"}
+{"entite": "Venera 11", "valeur": "4715"}
+{"entite": "Venera 13", "valeur": "4397.85"}
+{"entite": "Venera 14", "valeur": "4394.5"}
+{"entite": "Venera 2", "valeur": "963"}
+{"entite": "Venera-D", "valeur": "12000"}
+{"entite": "Voskhod 1", "valeur": "5320"}
+{"entite": "Voskhod 2", "valeur": "5682"}
+{"entite": "Vostok 1", "valeur": "4725"}
+{"entite": "Vostok 2", "valeur": "4731"}
+{"entite": "Vostok 3", "valeur": "4722"}
+{"entite": "Vostok 4", "valeur": "4728"}
+{"entite": "Vostok 5", "valeur": "4720"}
+{"entite": "Vostok 6", "valeur": "4713"}
+{"entite": "Weather System Follow-on Microwave", "valeur": "1200"}
+{"entite": "Wide Field Infrared Explorer", "valeur": "258.7"}
+{"entite": "Wide-Field Infrared Survey Explorer", "valeur": "661"}
+{"entite": "Wide Field of View", "valeur": "3000"}
+{"entite": "X-ray Astronomy Recovery Mission", "valeur": "2300"}
+{"entite": "XPNAV 1", "valeur": "243"}
+{"entite": "Yinghuo 1", "valeur": "115"}
+{"entite": "Yohkoh", "valeur": "390"}
+{"entite": "Yutu", "valeur": "140"}
+{"entite": "Yutu 2", "valeur": "140"}
+{"entite": "Zheng He (sonde spatiale)", "valeur": "2100"}
+{"entite": "Zhurong", "valeur": "240"}
+{"entite": "Zond 2", "valeur": "890"}

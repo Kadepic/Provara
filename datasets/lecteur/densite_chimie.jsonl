@@ -1,0 +1,797 @@
+{"_relation": "densite_chimie", "_categorie": "physique", "_source": "Wikidata/QLever — masse volumique P2054 (→ kg/m³)", "_articles": true}
+{"entite": "1,1,1,2-tétrachloro-2,2-difluoroéthane", "valeur": "1650"}
+{"entite": "1,1,1,2-tétrachloroéthane", "valeur": "1540"}
+{"entite": "1,1,1-trichloroéthane", "valeur": "1340"}
+{"entite": "1,1,2,2-tétrachloro-1,2-difluoroéthane", "valeur": "1650"}
+{"entite": "1,1,2,2-tétrachloroéthane", "valeur": "1590"}
+{"entite": "1,1,2-trichloro-1,2,2-trifluoroéthane", "valeur": "1560"}
+{"entite": "1,1,2-trichloroéthane", "valeur": "1440"}
+{"entite": "1,1-dichloroéthane", "valeur": "1180"}
+{"entite": "1,1-dichloroéthène", "valeur": "1210"}
+{"entite": "1,1-diméthylhydrazine", "valeur": "790"}
+{"entite": "1,2-dibromo-3-chloropropane", "valeur": "2050"}
+{"entite": "1,2-dibromoéthane", "valeur": "2170"}
+{"entite": "1,2-dichlorobenzène", "valeur": "1300"}
+{"entite": "1,2-dichloroéthane", "valeur": "1240"}
+{"entite": "1,2-dichloropropane", "valeur": "1160"}
+{"entite": "1,3,5-trinitrobenzène", "valeur": "1600"}
+{"entite": "1,3-dichloropropène", "valeur": "1210"}
+{"entite": "1,3-dinitrobenzène", "valeur": "1580"}
+{"entite": "1,4-benzoquinone", "valeur": "1320"}
+{"entite": "1,4-dichlorobenzène", "valeur": "1250"}
+{"entite": "1,4-dioxane", "valeur": "1030"}
+{"entite": "1,5-diazabicyclo[4.3.0]non-5-ène", "valeur": "1005.0"}
+{"entite": "1,6-Diisocyanatohexane", "valeur": "1040"}
+{"entite": "1-Bromopropane", "valeur": "1354"}
+{"entite": "1-chloro-2,4-dinitrobenzène", "valeur": "1700"}
+{"entite": "1-Chloro-4-nitrobenzène", "valeur": "1520"}
+{"entite": "1-Naphtylamine", "valeur": "1120"}
+{"entite": "1H-indole", "valeur": "1220"}
+{"entite": "(1Z,5Z)-cycloocta-1,5-diène", "valeur": "880"}
+{"entite": "2,2-diméthylhexane", "valeur": "700"}
+{"entite": "2,2-diméthylpropane", "valeur": "627"}
+{"entite": "2-((3-Aminophényl)sulfonyl)éthanol", "valeur": "1364"}
+{"entite": "2,4,5-trichlorophénol", "valeur": "1678"}
+{"entite": "2-butoxyéthanol", "valeur": "900"}
+{"entite": "2-chlorobenzylidène malonitrile", "valeur": "1040"}
+{"entite": "2-chloroéthanol", "valeur": "1200"}
+{"entite": "2-cyanoacrylate de méthyle", "valeur": "1100"}
+{"entite": "2-ethoxyethanol", "valeur": "930"}
+{"entite": "2-Hexanone", "valeur": "810"}
+{"entite": "2-Méthoxyéthanol", "valeur": "960"}
+{"entite": "2-méthylnonane", "valeur": "728.1"}
+{"entite": "2-méthyloctane", "valeur": "709.5"}
+{"entite": "2-méthylpentane-2,4-diol", "valeur": "920"}
+{"entite": "2-méthylpropan-1-ol", "valeur": "800"}
+{"entite": "2-méthylpropan-2-ol", "valeur": "790"}
+{"entite": "2-Nitropropane", "valeur": "990"}
+{"entite": "2-nitrotoluène", "valeur": "1160"}
+{"entite": "2-phénoxyéthanol", "valeur": "1102"}
+{"entite": "25C-NBOMe", "valeur": "1149"}
+{"entite": "3-éthyl-2-méthylpentane", "valeur": "712"}
+{"entite": "3-Hydroxybutanal", "valeur": "980"}
+{"entite": "3-méthyl-2-butanol", "valeur": "820"}
+{"entite": "3-méthylbutan-1-ol", "valeur": "810"}
+{"entite": "3-méthylbutan-2-one", "valeur": "810"}
+{"entite": "3-nitrotoluène", "valeur": "1160"}
+{"entite": "4,4'-diaminodiphénylméthane", "valeur": "1060"}
+{"entite": "4,4-diméthylheptane", "valeur": "721"}
+{"entite": "4,4'-Méthylènebis", "valeur": "1440"}
+{"entite": "(4-méthoxyphényl)méthanethiol", "valeur": "1107"}
+{"entite": "4-méthylimidazole", "valeur": "1020"}
+{"entite": "4-nitroaniline", "valeur": "1437"}
+{"entite": "4-nitrotoluène", "valeur": "1120"}
+{"entite": "5-méthylnonane", "valeur": "732.6"}
+{"entite": "9-méthylanthracène", "valeur": "1066"}
+{"entite": "acétanilide", "valeur": "1219.15"}
+{"entite": "acétate d'anisyle", "valeur": "1083"}
+{"entite": "acétate d'argent", "valeur": "3259"}
+{"entite": "acétate d'éthyle", "valeur": "900.3"}
+{"entite": "acétate d'heptyle", "valeur": "875"}
+{"entite": "acétate d'isobutyle", "valeur": "870"}
+{"entite": "acétate d'isopropyle", "valeur": "870"}
+{"entite": "acétate d'uranyle", "valeur": "2893"}
+{"entite": "acétate de 1-méthylbutyle", "valeur": "870"}
+{"entite": "acétate de 3-méthylbutyle", "valeur": "870"}
+{"entite": "acétate de butyle", "valeur": "880"}
+{"entite": "acétate de calcium", "valeur": "1500"}
+{"entite": "acétate de géranyle", "valeur": "916.3"}
+{"entite": "acétate de méthyle", "valeur": "930"}
+{"entite": "acétate de pentyle", "valeur": "880"}
+{"entite": "acétate de plomb(II)", "valeur": "3250"}
+{"entite": "acétate de propyle", "valeur": "840"}
+{"entite": "acétate de sodium", "valeur": "1528"}
+{"entite": "acétate de tert-butyle", "valeur": "870"}
+{"entite": "acétate de vinyle", "valeur": "930"}
+{"entite": "acétone", "valeur": "790.2"}
+{"entite": "acétonitrile", "valeur": "780"}
+{"entite": "acétophénone", "valeur": "1030"}
+{"entite": "acétylène", "valeur": "1.0896"}
+{"entite": "acide 2,4,5-trichlorophénoxyacétique", "valeur": "1800"}
+{"entite": "acide 2,4-dichlorophénoxyacétique", "valeur": "1570"}
+{"entite": "acide 3-méthylbutanoïque", "valeur": "928.6"}
+{"entite": "acide 3-nitrobenzoïque", "valeur": "1494"}
+{"entite": "acide acétique", "valeur": "1050"}
+{"entite": "acide acétylsalicylique", "valeur": "1350"}
+{"entite": "acide acrylique", "valeur": "1050"}
+{"entite": "acide adipique", "valeur": "1360"}
+{"entite": "acide γ-aminobutyrique", "valeur": "1110"}
+{"entite": "acide arachidonique", "valeur": "922"}
+{"entite": "acide azélaïque", "valeur": "1251"}
+{"entite": "acide azothydrique", "valeur": "1090"}
+{"entite": "acide benzoïque", "valeur": "1266"}
+{"entite": "acide butanoïque", "valeur": "956.3"}
+{"entite": "acide carbonique", "valeur": "1668"}
+{"entite": "acide chloroacétique", "valeur": "1580"}
+{"entite": "acide chlorogénique", "valeur": "1280"}
+{"entite": "acide citrique", "valeur": "1665"}
+{"entite": "acide hexafluorozirconique", "valeur": "1510"}
+{"entite": "acide hippurique", "valeur": "1370"}
+{"entite": "acide itaconique", "valeur": "1632"}
+{"entite": "acide malonique", "valeur": "1630.5"}
+{"entite": "acide méthacrylique", "valeur": "1020"}
+{"entite": "acide méthanoïque", "valeur": "1220"}
+{"entite": "acide myristique", "valeur": "862.2"}
+{"entite": "acide nitrique", "valeur": "1500"}
+{"entite": "acide nonanoïque", "valeur": "905.2"}
+{"entite": "acide oxalique", "valeur": "1900"}
+{"entite": "acide palmitique", "valeur": "852.7"}
+{"entite": "acide pentanoïque", "valeur": "940"}
+{"entite": "acide peracétique", "valeur": "1103.7"}
+{"entite": "acide perchlorique", "valeur": "1760"}
+{"entite": "acide phénylacétique", "valeur": "1228"}
+{"entite": "acide phosphonique", "valeur": "1650"}
+{"entite": "acide phosphorique", "valeur": "1870"}
+{"entite": "acide picrique", "valeur": "1760"}
+{"entite": "acide propanoïque", "valeur": "990"}
+{"entite": "acide pyruvique", "valeur": "1250"}
+{"entite": "acide salicylique", "valeur": "1440"}
+{"entite": "acide sébacique", "valeur": "1209"}
+{"entite": "acide stéarique", "valeur": "940"}
+{"entite": "acide sulfureux", "valeur": "1030"}
+{"entite": "acide sulfurique", "valeur": "1830.2"}
+{"entite": "acide tannique", "valeur": "2120"}
+{"entite": "acide thioglycolique", "valeur": "1320"}
+{"entite": "acide trans-cinnamique", "valeur": "1247.5"}
+{"entite": "acide trichloroacétique", "valeur": "1620"}
+{"entite": "acide trifluoroacétique", "valeur": "1535.1"}
+{"entite": "acide undécanoïque", "valeur": "850.5"}
+{"entite": "acide urique", "valeur": "1890"}
+{"entite": "acide valproïque", "valeur": "904"}
+{"entite": "acridine", "valeur": "1016"}
+{"entite": "acrylamide", "valeur": "1120"}
+{"entite": "acrylate d'éthyle", "valeur": "920"}
+{"entite": "acrylate de butyle", "valeur": "890"}
+{"entite": "acrylate de méthyle", "valeur": "960"}
+{"entite": "acrylonitrile", "valeur": "810"}
+{"entite": "adénine", "valeur": "1600"}
+{"entite": "Adiponitrile", "valeur": "970"}
+{"entite": "alcool allylique", "valeur": "854"}
+{"entite": "alcool benzylique", "valeur": "1041.9"}
+{"entite": "alcool furfurylique", "valeur": "1130"}
+{"entite": "alcool isopropylique", "valeur": "790"}
+{"entite": "aldéhyde cinnamique", "valeur": "1050"}
+{"entite": "aldrine", "valeur": "1600"}
+{"entite": "Allylamine", "valeur": "758"}
+{"entite": "Alpha-méthylstyrène", "valeur": "910"}
+{"entite": "aluminate de sodium", "valeur": "2693"}
+{"entite": "alumine", "valeur": "4000"}
+{"entite": "Amidure de sodium", "valeur": "1370"}
+{"entite": "amino-4-diphényle", "valeur": "1160"}
+{"entite": "aminotriazole", "valeur": "1140"}
+{"entite": "anéthole", "valeur": "988.3"}
+{"entite": "anhydride acétique", "valeur": "1080"}
+{"entite": "anhydride arsénieux", "valeur": "3740"}
+{"entite": "anhydride benzoïque", "valeur": "1199"}
+{"entite": "aniline", "valeur": "1020"}
+{"entite": "Anisaldéhyde", "valeur": "1123"}
+{"entite": "anisole", "valeur": "994"}
+{"entite": "Anthranylate de methyl", "valeur": "1168"}
+{"entite": "arséniate de sodium", "valeur": "2835"}
+{"entite": "Ascaridole", "valeur": "1010"}
+{"entite": "atrazine", "valeur": "1190"}
+{"entite": "aurure de césium", "valeur": "7000"}
+{"entite": "Azinphos-méthyl", "valeur": "1440"}
+{"entite": "Aziridine", "valeur": "830"}
+{"entite": "azoture de sodium", "valeur": "1850"}
+{"entite": "Azoxystrobine", "valeur": "1340"}
+{"entite": "benfluraline", "valeur": "1338"}
+{"entite": "benzaldéhyde", "valeur": "1041.5"}
+{"entite": "benzène", "valeur": "880"}
+{"entite": "Benzidine", "valeur": "1250"}
+{"entite": "Benzilate de 3-quinuclidinyle", "valeur": "1330"}
+{"entite": "benzoate de benzyle", "valeur": "1112.1"}
+{"entite": "Benzoate de sodium", "valeur": "1500"}
+{"entite": "bêta-propiolactone", "valeur": "1150"}
+{"entite": "bicarbonate de sodium", "valeur": "2159"}
+{"entite": "Bifluorure de sodium", "valeur": "2160"}
+{"entite": "biphényle", "valeur": "1040"}
+{"entite": "Bis(2-chloroéthyl)éthylamine", "valeur": "1090"}
+{"entite": "bis(chlorométhyl)éther", "valeur": "1320"}
+{"entite": "Bis(méthylthio)méthane", "valeur": "1059"}
+{"entite": "bisphénol S", "valeur": "1400"}
+{"entite": "bisulfite de sodium", "valeur": "1340"}
+{"entite": "biuret", "valeur": "1467"}
+{"entite": "borax", "valeur": "2370"}
+{"entite": "Borazine", "valeur": "810"}
+{"entite": "Borohydrure de béryllium", "valeur": "604"}
+{"entite": "borohydrure de zirconium(IV)", "valeur": "1130"}
+{"entite": "borure de chrome(III)", "valeur": "6120"}
+{"entite": "bromacil", "valeur": "1550"}
+{"entite": "bromate de potassium", "valeur": "3270"}
+{"entite": "bromate de sodium", "valeur": "3339"}
+{"entite": "bromochlorométhane", "valeur": "1930"}
+{"entite": "Bromodichlorométhane", "valeur": "1980"}
+{"entite": "bromoéthane", "valeur": "1460"}
+{"entite": "bromométhane", "valeur": "1730"}
+{"entite": "bromure d'ammonium", "valeur": "2430"}
+{"entite": "bromure de césium", "valeur": "4430"}
+{"entite": "bromure de plomb(II)", "valeur": "6670"}
+{"entite": "bromure de plutonium", "valeur": "6690"}
+{"entite": "bromure de potassium", "valeur": "2750"}
+{"entite": "buckminsterfullerène", "valeur": "1650"}
+{"entite": "but-2-yne", "valeur": "686"}
+{"entite": "buta-1,3-diène", "valeur": "650"}
+{"entite": "butan-1-ol", "valeur": "810"}
+{"entite": "butanal", "valeur": "800"}
+{"entite": "butane", "valeur": "600"}
+{"entite": "butane-1,4-diol", "valeur": "1017.1"}
+{"entite": "butanone", "valeur": "810"}
+{"entite": "Butyronitrile", "valeur": "810"}
+{"entite": "caféine", "valeur": "1230"}
+{"entite": "camphène", "valeur": "845"}
+{"entite": "Cantharidine", "valeur": "1410"}
+{"entite": "caprolactame", "valeur": "1010"}
+{"entite": "Captane", "valeur": "1740"}
+{"entite": "Carbaryl", "valeur": "1230"}
+{"entite": "Carbofuran", "valeur": "1180"}
+{"entite": "carbonate d'ammonium", "valeur": "1600"}
+{"entite": "carbonate de baryum", "valeur": "4286"}
+{"entite": "carbonate de césium", "valeur": "4072"}
+{"entite": "carbonate de diméthyle", "valeur": "1063.6"}
+{"entite": "carbonate de potassium", "valeur": "2290"}
+{"entite": "carbonate de sodium", "valeur": "2530"}
+{"entite": "carbure de calcium", "valeur": "2220"}
+{"entite": "carbure de silicium", "valeur": "3.23"}
+{"entite": "carbure de tantale", "valeur": "14400"}
+{"entite": "carbure de tungstène", "valeur": "15770"}
+{"entite": "carbure de zirconium", "valeur": "6730"}
+{"entite": "carvacrol", "valeur": "977.2"}
+{"entite": "cétane", "valeur": "773.4"}
+{"entite": "Chloracétone", "valeur": "1123"}
+{"entite": "chlorate de potassium", "valeur": "2320"}
+{"entite": "chloroacétophénone", "valeur": "1320"}
+{"entite": "chlorobenzène", "valeur": "1110"}
+{"entite": "chloroéthane", "valeur": "920"}
+{"entite": "chloroforme", "valeur": "1480"}
+{"entite": "Chlorométhoxyméthane", "valeur": "1060"}
+{"entite": "chloropicrine", "valeur": "1660"}
+{"entite": "chloroprène", "valeur": "960"}
+{"entite": "Chlorpyriphos-éthyl", "valeur": "1400"}
+{"entite": "chlorure d'allyle", "valeur": "940"}
+{"entite": "chlorure d'ammonium", "valeur": "1.53"}
+{"entite": "chlorure d'étain(II)", "valeur": "3950"}
+{"entite": "chlorure d'ytterbium(II)", "valeur": "5080"}
+{"entite": "chlorure de baryum", "valeur": "3860"}
+{"entite": "chlorure de benzyle", "valeur": "1100"}
+{"entite": "chlorure de calcium", "valeur": "2150"}
+{"entite": "chlorure de calcium dihydraté", "valeur": "1850"}
+{"entite": "chlorure de calcium hexahydraté", "valeur": "1710"}
+{"entite": "chlorure de césium", "valeur": "3990"}
+{"entite": "chlorure de chloroacétyle", "valeur": "1420"}
+{"entite": "chlorure de chrome(II)", "valeur": "2900"}
+{"entite": "chlorure de chromyle", "valeur": "1910"}
+{"entite": "chlorure de cyanogène", "valeur": "1220"}
+{"entite": "chlorure de fer(II)", "valeur": "1930"}
+{"entite": "chlorure de fer(III)", "valeur": "2800"}
+{"entite": "chlorure de mercure(II)", "valeur": "5430"}
+{"entite": "chlorure de platine", "valeur": "6050"}
+{"entite": "chlorure de potassium", "valeur": "1984"}
+{"entite": "chlorure de radium", "valeur": "4910"}
+{"entite": "chlorure de sodium", "valeur": "2165"}
+{"entite": "chlorure de soufre", "valeur": "1680"}
+{"entite": "chlorure de thionyle", "valeur": "1640"}
+{"entite": "chromate de plomb(II)", "valeur": "6126"}
+{"entite": "CIGS", "valeur": "5700"}
+{"entite": "CL-20", "valeur": "2044"}
+{"entite": "cocaïne", "valeur": "1220"}
+{"entite": "coumarine", "valeur": "935"}
+{"entite": "Crotonaldéhyde", "valeur": "870"}
+{"entite": "crufomate", "valeur": "1160"}
+{"entite": "Cumène", "valeur": "864"}
+{"entite": "cyanamide calcique", "valeur": "2290"}
+{"entite": "cyanamide hydrogène", "valeur": "1280"}
+{"entite": "cyanogène", "valeur": "950"}
+{"entite": "cyanohydrine d'acétone", "valeur": "930"}
+{"entite": "cyanure de potassium", "valeur": "1550"}
+{"entite": "cyanure de sodium", "valeur": "1600"}
+{"entite": "cyclobutane", "valeur": "720"}
+{"entite": "cycloheptane", "valeur": "811"}
+{"entite": "cyclohexa-1,3-diène", "valeur": "841"}
+{"entite": "cyclohexa-1,4-diène", "valeur": "847"}
+{"entite": "cyclohexane", "valeur": "780"}
+{"entite": "cyclohexanol", "valeur": "960"}
+{"entite": "cyclohexanone", "valeur": "950"}
+{"entite": "cyclohexène", "valeur": "810"}
+{"entite": "cyclohexylamine", "valeur": "870"}
+{"entite": "cyclométicone", "valeur": "958"}
+{"entite": "cyclopentadiène", "valeur": "800"}
+{"entite": "cyclopentane", "valeur": "750"}
+{"entite": "cytosine", "valeur": "1600"}
+{"entite": "dalapon", "valeur": "1400"}
+{"entite": "Décaborane", "valeur": "940"}
+{"entite": "Décafluorure de disoufre", "valeur": "2080"}
+{"entite": "décane", "valeur": "730.3"}
+{"entite": "Deltaméthrine", "valeur": "1500"}
+{"entite": "demeton", "valeur": "1120"}
+{"entite": "diacetone alcohol", "valeur": "940"}
+{"entite": "diaétate de cadmium(II)", "valeur": "2010.0"}
+{"entite": "dianhydride 1,4-benzoquinonetétracarboxylique", "valeur": "2090"}
+{"entite": "diatoxanthine", "valeur": "1020"}
+{"entite": "diazinon", "valeur": "1120"}
+{"entite": "Dibenzofurane", "valeur": "1263"}
+{"entite": "Diborure de magnésium", "valeur": "2570"}
+{"entite": "Diborure de rhénium", "valeur": "12700"}
+{"entite": "Diborure de titane", "valeur": "4520"}
+{"entite": "dibromodifluorométhane", "valeur": "2290"}
+{"entite": "Dibromogermane", "valeur": "2800"}
+{"entite": "dibromure de dimercure", "valeur": "7307"}
+{"entite": "dichlorodiphényltrichloroéthane", "valeur": "990"}
+{"entite": "dichlorométhane", "valeur": "1330"}
+{"entite": "dichlorure de paraquat", "valeur": "1240"}
+{"entite": "dichlorvos", "valeur": "1420"}
+{"entite": "dichromate de potassium", "valeur": "2676"}
+{"entite": "Dichromate de sodium", "valeur": "2520"}
+{"entite": "Dicyclohexylcarbodiimide", "valeur": "1325"}
+{"entite": "dicyclopentadiène", "valeur": "980"}
+{"entite": "dieldrine", "valeur": "1750"}
+{"entite": "diéthanolamine", "valeur": "1097"}
+{"entite": "diéthion", "valeur": "1220"}
+{"entite": "diéthylamine", "valeur": "710"}
+{"entite": "diéthylènetriamine", "valeur": "960"}
+{"entite": "diéthyléthanolamine", "valeur": "890"}
+{"entite": "diéthyléthérate de trifluorure de bore", "valeur": "1150"}
+{"entite": "difluorure d'argent", "valeur": "4600"}
+{"entite": "difluorure de krypton", "valeur": "3300"}
+{"entite": "Dihydrocapsaïcine", "valeur": "1026"}
+{"entite": "dihydrogenophosphate de lithium", "valeur": "2537"}
+{"entite": "dihydroxyde de manganèse(II)", "valeur": "3258"}
+{"entite": "Diiodométhane", "valeur": "3280"}
+{"entite": "Diisocyanate de toluène", "valeur": "1220"}
+{"entite": "Diisopropylamine", "valeur": "720"}
+{"entite": "Diméthoxyéthane", "valeur": "869.2"}
+{"entite": "diméthoxyméthane", "valeur": "860"}
+{"entite": "Diméthylacétamide", "valeur": "940"}
+{"entite": "diméthylamine", "valeur": "670"}
+{"entite": "Diméthylaniline", "valeur": "960"}
+{"entite": "Diméthylformamide", "valeur": "950"}
+{"entite": "diméthylsulfoxyde", "valeur": "1100.4"}
+{"entite": "Diméthyltryptamine", "valeur": "1076"}
+{"entite": "dinitramide d'ammonium", "valeur": "1800"}
+{"entite": "dinitrate de propylène glycol", "valeur": "1230"}
+{"entite": "dinitrure de disoufre", "valeur": "2200"}
+{"entite": "dinoxanthine", "valeur": "1100"}
+{"entite": "dioxyde d'azote", "valeur": "1440"}
+{"entite": "dioxyde d'étain", "valeur": "6950"}
+{"entite": "dioxyde de chlore", "valeur": "1600"}
+{"entite": "dioxyde de cobalt et de lithium", "valeur": "1680"}
+{"entite": "Dioxyde de molybdène", "valeur": "6470"}
+{"entite": "dioxyde de plutonium", "valeur": "11500"}
+{"entite": "dioxyde de sélénium", "valeur": "3954"}
+{"entite": "dioxyde de soufre", "valeur": "2.927"}
+{"entite": "dioxyde de tellure", "valeur": "5670"}
+{"entite": "dioxyde de titane", "valeur": "4260"}
+{"entite": "dioxygène", "valeur": "1.429"}
+{"entite": "Diphénylamine", "valeur": "1160"}
+{"entite": "diphosgène", "valeur": "1650"}
+{"entite": "diséléniure de carbone", "valeur": "2690"}
+{"entite": "diséléniure de molybdène", "valeur": "6900"}
+{"entite": "diséléniure de tungstène", "valeur": "9220"}
+{"entite": "disulfirame", "valeur": "1300"}
+{"entite": "Disulfoton", "valeur": "1140"}
+{"entite": "Ditellurure de tungstène", "valeur": "9440"}
+{"entite": "DNOC", "valeur": "1100"}
+{"entite": "Dodécane", "valeur": "750"}
+{"entite": "(E)-1,2-dichloroéthène", "valeur": "1256.5"}
+{"entite": "(E)-cyclooctène", "valeur": "848"}
+{"entite": "EDTA", "valeur": "860"}
+{"entite": "eicosane", "valeur": "788.6"}
+{"entite": "endrine", "valeur": "1700"}
+{"entite": "enflurane", "valeur": "1520"}
+{"entite": "(+)-Épibatidine", "valeur": "1200"}
+{"entite": "éthanal", "valeur": "790"}
+{"entite": "éthanol", "valeur": "790"}
+{"entite": "éthanolamine", "valeur": "1020"}
+{"entite": "éther de dichloroéthyle", "valeur": "1220"}
+{"entite": "éther diéthylique", "valeur": "710"}
+{"entite": "éther diisopropylique", "valeur": "730"}
+{"entite": "éthylamine", "valeur": "690"}
+{"entite": "éthylbenzène", "valeur": "870"}
+{"entite": "éthylène", "valeur": "1.178"}
+{"entite": "éthylène glycol", "valeur": "1110"}
+{"entite": "éthylènediamine", "valeur": "910"}
+{"entite": "étohexadiol", "valeur": "940"}
+{"entite": "Fénamiphos", "valeur": "1140"}
+{"entite": "Fenthion", "valeur": "1250"}
+{"entite": "Ferricyanure de potassium", "valeur": "1845"}
+{"entite": "Ferrocyanure de sodium", "valeur": "1458"}
+{"entite": "fluorosilicate de sodium", "valeur": "2680"}
+{"entite": "fluorure d'hydrogène", "valeur": "1000"}
+{"entite": "fluorure d'or", "valeur": "6750"}
+{"entite": "fluorure de calcium", "valeur": "3180"}
+{"entite": "fluorure de césium", "valeur": "3586"}
+{"entite": "Fluorure de Chrome(II)", "valeur": "3790"}
+{"entite": "fluorure de magnésium", "valeur": "3148"}
+{"entite": "fluorure de mercure(I)", "valeur": "8730"}
+{"entite": "fluorure de potassium", "valeur": "2481"}
+{"entite": "fluorure de sodium", "valeur": "2780"}
+{"entite": "fluorure de strontium", "valeur": "4240"}
+{"entite": "fluorure de vinyle", "valeur": "636"}
+{"entite": "fluroxène", "valeur": "1140"}
+{"entite": "formamide", "valeur": "1130"}
+{"entite": "formiate d'ammonium", "valeur": "1270"}
+{"entite": "formiate d'éthyle", "valeur": "920"}
+{"entite": "formiate de méthyle", "valeur": "980"}
+{"entite": "formiate de propyle", "valeur": "907.3"}
+{"entite": "fructose-2,6-diphosphate", "valeur": "2060"}
+{"entite": "fulminate de mercure", "valeur": "4420"}
+{"entite": "furfural", "valeur": "1160"}
+{"entite": "Gaz VX", "valeur": "1000.83"}
+{"entite": "Géraniol", "valeur": "889"}
+{"entite": "glace", "valeur": "920.8"}
+{"entite": "Glutaraldéhyde", "valeur": "1100"}
+{"entite": "glycérol", "valeur": "1261.3"}
+{"entite": "Glycidol", "valeur": "1120"}
+{"entite": "glycine", "valeur": "1607"}
+{"entite": "Glycolonitrile", "valeur": "1100"}
+{"entite": "glyphosate", "valeur": "1704"}
+{"entite": "hélianthine", "valeur": "1280"}
+{"entite": "Heptachlore", "valeur": "1660"}
+{"entite": "Heptadécane", "valeur": "777"}
+{"entite": "Heptan-2-one", "valeur": "810"}
+{"entite": "Heptan-3-one", "valeur": "820"}
+{"entite": "heptan-4-one", "valeur": "820"}
+{"entite": "heptoxyde de dichlore", "valeur": "1900"}
+{"entite": "hexachlorobutadiène", "valeur": "1550"}
+{"entite": "hexachloroéthane", "valeur": "2090"}
+{"entite": "hexachloroplatinate de potassium", "valeur": "3499"}
+{"entite": "hexafluorophosphate de sodium", "valeur": "2510"}
+{"entite": "hexafluorozirconate de potassium", "valeur": "3480"}
+{"entite": "hexafluorure d'iridium", "valeur": "6000"}
+{"entite": "hexaméthylènediamine", "valeur": "840"}
+{"entite": "hexaméthylphosphoramide", "valeur": "1030"}
+{"entite": "hexanethiol", "valeur": "840"}
+{"entite": "hexasulfure de dicésium", "valeur": "3100"}
+{"entite": "hydrate de chloral", "valeur": "1910"}
+{"entite": "hydrazine", "valeur": "1010"}
+{"entite": "hydrogénoarséniate de disodium", "valeur": "1874"}
+{"entite": "hydrogénosulfate de sodium", "valeur": "2472"}
+{"entite": "hydrogénosulfure de sodium", "valeur": "1790"}
+{"entite": "hydroquinone", "valeur": "1330"}
+{"entite": "hydroxyde de béryllium", "valeur": "1920"}
+{"entite": "hydroxyde de calcium", "valeur": "2240"}
+{"entite": "hydroxyde de césium", "valeur": "3680"}
+{"entite": "hydroxyde de fer(II)", "valeur": "3400"}
+{"entite": "hydroxyde de lithium", "valeur": "2540"}
+{"entite": "hydroxyde de potassium", "valeur": "2040"}
+{"entite": "hydroxyde de rubidium", "valeur": "3203"}
+{"entite": "hydroxyde de sodium", "valeur": "2130"}
+{"entite": "hydroxyde de strontium", "valeur": "3630"}
+{"entite": "hydroxytoluène butylé", "valeur": "1050"}
+{"entite": "hydrure de lithium", "valeur": "780"}
+{"entite": "hydrure de potassium", "valeur": "1470"}
+{"entite": "hygrine", "valeur": "935"}
+{"entite": "hypochlorite de calcium", "valeur": "2350"}
+{"entite": "imidazole", "valeur": "1230"}
+{"entite": "Indane", "valeur": "965"}
+{"entite": "Indène", "valeur": "997"}
+{"entite": "iodate de potassium", "valeur": "3980"}
+{"entite": "iodate de rubidium", "valeur": "4330"}
+{"entite": "Iodobenzène", "valeur": "1823"}
+{"entite": "iodoforme", "valeur": "4010"}
+{"entite": "iodométhane", "valeur": "2280"}
+{"entite": "Iodure d'aluminium", "valeur": "3980"}
+{"entite": "iodure de césium", "valeur": "4510"}
+{"entite": "iodure de cuivre(i)", "valeur": "5620"}
+{"entite": "iodure de de mercure(I)", "valeur": "7683"}
+{"entite": "iodure de rhodium(iii)", "valeur": "6200"}
+{"entite": "isobutyronitrile", "valeur": "760"}
+{"entite": "isocyanate de méthyle", "valeur": "960"}
+{"entite": "isooctane", "valeur": "688"}
+{"entite": "isopropylamine", "valeur": "688"}
+{"entite": "isothiocyanate d'allyle", "valeur": "1020"}
+{"entite": "isothiocyanate de benzyle", "valeur": "1123.4"}
+{"entite": "laiton", "valeur": "8560"}
+{"entite": "lewisite", "valeur": "1890"}
+{"entite": "lindane", "valeur": "1850"}
+{"entite": "m-terphényle", "valeur": "1230"}
+{"entite": "malathion", "valeur": "1210"}
+{"entite": "malonate de diéthyle", "valeur": "1055.3"}
+{"entite": "malononitrile", "valeur": "1190"}
+{"entite": "Manganate de baryum", "valeur": "4850"}
+{"entite": "Manganate de sodium", "valeur": "2680"}
+{"entite": "Mannoheptulose", "valeur": "1700"}
+{"entite": "mélamine", "valeur": "1574"}
+{"entite": "menthol", "valeur": "890"}
+{"entite": "mequinol", "valeur": "1550"}
+{"entite": "mésitylène", "valeur": "860"}
+{"entite": "métaarsénite de sodium", "valeur": "1870"}
+{"entite": "Métabisulfite de sodium", "valeur": "1400"}
+{"entite": "méthacrylate de méthyle", "valeur": "940"}
+{"entite": "méthacrylonitrile", "valeur": "800"}
+{"entite": "méthanal", "valeur": "815.3"}
+{"entite": "Méthanethiol", "valeur": "900"}
+{"entite": "méthanol", "valeur": "790"}
+{"entite": "méthomyl", "valeur": "1290"}
+{"entite": "methoxychlor", "valeur": "1410"}
+{"entite": "méthoxyflurane", "valeur": "1420"}
+{"entite": "méthyl tert-butyl éther", "valeur": "740"}
+{"entite": "méthylamine", "valeur": "700"}
+{"entite": "méthylcyclohexane", "valeur": "770"}
+{"entite": "méthylcyclopentadiényle tricarbonyle de manganèse", "valeur": "1390"}
+{"entite": "méthylhydrazine", "valeur": "870"}
+{"entite": "méthylisobutylcétone", "valeur": "800"}
+{"entite": "méthylvinylcétone", "valeur": "863.6"}
+{"entite": "Molybdate de sodium", "valeur": "3283"}
+{"entite": "monofluorure de chlore", "valeur": "1620"}
+{"entite": "monosulfure de germanium", "valeur": "4010"}
+{"entite": "monosulfure de monoazote", "valeur": "1056"}
+{"entite": "monoxyde de carbone", "valeur": "1.25"}
+{"entite": "monoxyde de dichlore", "valeur": "3220"}
+{"entite": "monoxyde de germanium", "valeur": "4400"}
+{"entite": "morpholine", "valeur": "1007.0"}
+{"entite": "N-Butylamine", "valeur": "740"}
+{"entite": "N-éthylmorpholine", "valeur": "900"}
+{"entite": "n-heptane", "valeur": "680"}
+{"entite": "n-hexane", "valeur": "660"}
+{"entite": "N-nitrosodiméthylamine", "valeur": "1005.0"}
+{"entite": "n-pentane", "valeur": "630"}
+{"entite": "Naled", "valeur": "1960"}
+{"entite": "Napht-1-ol", "valeur": "1224"}
+{"entite": "Napht-2-ol", "valeur": "1217"}
+{"entite": "naphtalène", "valeur": "1150"}
+{"entite": "Naphtoquinone", "valeur": "1420"}
+{"entite": "Β-naphtylamine", "valeur": "1060"}
+{"entite": "Nicéthamide", "valeur": "1060"}
+{"entite": "nicotine", "valeur": "1010"}
+{"entite": "niobate de lithium", "valeur": "4644"}
+{"entite": "nitrate d'ammonium", "valeur": "1720"}
+{"entite": "nitrate de baryum", "valeur": "3240"}
+{"entite": "nitrate de césium", "valeur": "3685"}
+{"entite": "nitrate de plomb(II)", "valeur": "4530"}
+{"entite": "nitrate de potassium", "valeur": "2109"}
+{"entite": "nitrate de sodium", "valeur": "2257"}
+{"entite": "nitrate de strontium", "valeur": "2986"}
+{"entite": "Nitrobenzène", "valeur": "1200"}
+{"entite": "nitroéthane", "valeur": "1050"}
+{"entite": "nitroglycérine", "valeur": "1600"}
+{"entite": "Nitroglycol", "valeur": "1490"}
+{"entite": "nitrométhane", "valeur": "1140"}
+{"entite": "nitrure d'aluminium", "valeur": "3260"}
+{"entite": "nitrure de titane", "valeur": "5440"}
+{"entite": "Nonane", "valeur": "720"}
+{"entite": "o-terphényle", "valeur": "1100"}
+{"entite": "octacarbonyle de dicobalt", "valeur": "1870"}
+{"entite": "octane", "valeur": "700"}
+{"entite": "Oléate de sodium", "valeur": "1100"}
+{"entite": "Orthoacétate de triéthyle", "valeur": "884.7"}
+{"entite": "Orthoformiate d'éthyle", "valeur": "890.9"}
+{"entite": "Orthosilicate de tétraméthyle", "valeur": "1020"}
+{"entite": "oxalate d'argent", "valeur": "5029"}
+{"entite": "Oxyde d'allyle et de glycidyle", "valeur": "970"}
+{"entite": "oxyde d'étain(II)", "valeur": "6300"}
+{"entite": "oxyde d'éthylène", "valeur": "820"}
+{"entite": "oxyde d'indium-étain", "valeur": "7123"}
+{"entite": "oxyde d'indium(III)", "valeur": "7179"}
+{"entite": "oxyde d'yttrium(III)", "valeur": "4844"}
+{"entite": "oxyde de calcium", "valeur": "3340"}
+{"entite": "oxyde de chrome(III)", "valeur": "5210"}
+{"entite": "oxyde de cuivre(I)", "valeur": "6000"}
+{"entite": "oxyde de cuivre(II)", "valeur": "6400"}
+{"entite": "oxyde de curium(IV)", "valeur": "12000"}
+{"entite": "oxyde de fer(II)", "valeur": "6000"}
+{"entite": "oxyde de fer(III)", "valeur": "5240"}
+{"entite": "oxyde de lithium", "valeur": "2013"}
+{"entite": "oxyde de magnésium", "valeur": "3580"}
+{"entite": "Oxyde de manganèse", "valeur": "5180"}
+{"entite": "Oxyde de manganèse(II,III)", "valeur": "4880"}
+{"entite": "oxyde de mercure", "valeur": "11140"}
+{"entite": "oxyde de mercure(I)", "valeur": "9800"}
+{"entite": "oxyde de mésityle", "valeur": "860"}
+{"entite": "oxyde de neptunium(IV)", "valeur": "11100"}
+{"entite": "oxyde de neptunium(V)", "valeur": "8100"}
+{"entite": "oxyde de potassium", "valeur": "2320"}
+{"entite": "oxyde de propylène", "valeur": "830"}
+{"entite": "oxyde de rhodium(III)", "valeur": "8200"}
+{"entite": "oxyde de strontium", "valeur": "4078.0"}
+{"entite": "oxyde de tantale", "valeur": "8240"}
+{"entite": "oxyde de vanadium", "valeur": "4870"}
+{"entite": "oxyde de vanadium(V)", "valeur": "3360"}
+{"entite": "oxyde de zinc", "valeur": "5610"}
+{"entite": "oxyde mixte de baryum de cuivre et d'yttrium", "valeur": "6300"}
+{"entite": "ozone", "valeur": "2.1445"}
+{"entite": "p-Cymène", "valeur": "857.5"}
+{"entite": "p-terphényle", "valeur": "1230"}
+{"entite": "p-xylène", "valeur": "860"}
+{"entite": "paracétamol", "valeur": "1293"}
+{"entite": "Parathion éthyl", "valeur": "1270"}
+{"entite": "Parathion méthyl", "valeur": "1360"}
+{"entite": "pentaborane", "valeur": "620"}
+{"entite": "pentacène", "valeur": "1397"}
+{"entite": "pentachloroéthane", "valeur": "1680"}
+{"entite": "Pentachlorophénol", "valeur": "1980"}
+{"entite": "pentachlorure de phosphore", "valeur": "3600"}
+{"entite": "pentadécane", "valeur": "768.5"}
+{"entite": "pentaérythritol", "valeur": "1380"}
+{"entite": "pentafluorure de brome", "valeur": "2480"}
+{"entite": "pentafluorure de ruthénium", "valeur": "3900"}
+{"entite": "pentan-1-al", "valeur": "810"}
+{"entite": "pentan-2-one", "valeur": "810"}
+{"entite": "pentan-3-one", "valeur": "810"}
+{"entite": "Pentasulfure de diphosphore", "valeur": "2.09"}
+{"entite": "Pentoxyde d'arsenic", "valeur": "4320"}
+{"entite": "pentoxyde d'azote", "valeur": "1642"}
+{"entite": "pentoxyde de diiode", "valeur": "4799"}
+{"entite": "perchloroéthylène", "valeur": "1623"}
+{"entite": "periodate de sodium", "valeur": "3865"}
+{"entite": "permanganate de potassium", "valeur": "2703"}
+{"entite": "peroxyde d'azote", "valeur": "1443"}
+{"entite": "peroxyde d'hydrogène", "valeur": "1390"}
+{"entite": "peroxyde de benzoyle", "valeur": "1330"}
+{"entite": "peroxyde de calcium", "valeur": "2920"}
+{"entite": "peroxyde de lithium", "valeur": "2363"}
+{"entite": "peroxyde de méthyléthylcétone", "valeur": "1120"}
+{"entite": "peroxyde de potassium", "valeur": "2400"}
+{"entite": "peroxyde de sodium", "valeur": "2800"}
+{"entite": "phénol", "valeur": "1060"}
+{"entite": "phénolphtaléine", "valeur": "1296"}
+{"entite": "Phénoxybenzène", "valeur": "1080"}
+{"entite": "phénylalanine", "valeur": "1290"}
+{"entite": "phényléthylamine", "valeur": "964"}
+{"entite": "Phényléthyne", "valeur": "930"}
+{"entite": "phénylhydrazine", "valeur": "1100"}
+{"entite": "Phénylphosphine", "valeur": "1001.0"}
+{"entite": "Phénylsilane", "valeur": "878"}
+{"entite": "phorate", "valeur": "1160"}
+{"entite": "phosgène", "valeur": "1430"}
+{"entite": "phosphate bicalcique", "valeur": "2929"}
+{"entite": "phosphate de triphényle", "valeur": "1290"}
+{"entite": "phosphate monoammonique", "valeur": "1803"}
+{"entite": "Phosphate tripotassique", "valeur": "2560"}
+{"entite": "phosphore blanc", "valeur": "1820"}
+{"entite": "phtalate de dibutyle", "valeur": "1050"}
+{"entite": "phtalate de diéthyle", "valeur": "1120"}
+{"entite": "phtalate de diméthyle", "valeur": "1190"}
+{"entite": "pipéridine", "valeur": "862"}
+{"entite": "platine", "valeur": "21450"}
+{"entite": "Polyacrylate de sodium", "valeur": "1220"}
+{"entite": "progestérone", "valeur": "1116"}
+{"entite": "propan-1-ol", "valeur": "810"}
+{"entite": "Propane-1,3-diol", "valeur": "1053.8"}
+{"entite": "propio-1,3-sultone", "valeur": "1390"}
+{"entite": "propionitrile", "valeur": "780"}
+{"entite": "propofol", "valeur": "955"}
+{"entite": "Propylamine", "valeur": "717.3"}
+{"entite": "propyne", "valeur": "692.5"}
+{"entite": "protoxyde d'azote", "valeur": "1.98"}
+{"entite": "pseudocumène", "valeur": "880"}
+{"entite": "psoralène", "valeur": "1389"}
+{"entite": "Pyran-2-one", "valeur": "1197.2"}
+{"entite": "pyridine", "valeur": "980"}
+{"entite": "pyrimidine", "valeur": "1016"}
+{"entite": "Pyrocatéchol", "valeur": "1340"}
+{"entite": "pyrogallol", "valeur": "1453"}
+{"entite": "Pyrophosphate de magnésium", "valeur": "2560"}
+{"entite": "pyrophosphate de sodium", "valeur": "2450"}
+{"entite": "Pyrrole", "valeur": "969.8"}
+{"entite": "Pyrrolidine", "valeur": "866"}
+{"entite": "quercétine", "valeur": "1799"}
+{"entite": "quinoléine", "valeur": "1093"}
+{"entite": "RDX", "valeur": "1820"}
+{"entite": "résinifératoxine", "valeur": "1350"}
+{"entite": "résorcine", "valeur": "1270"}
+{"entite": "Roténone", "valeur": "1270"}
+{"entite": "ruthénocène", "valeur": "1800"}
+{"entite": "saccharine", "valeur": "828"}
+{"entite": "saccharose", "valeur": "1590"}
+{"entite": "salicylaldéhyde", "valeur": "1167.4"}
+{"entite": "salicylate de benzyle", "valeur": "1179.9"}
+{"entite": "sarin", "valeur": "1094.3"}
+{"entite": "sélénate de disodum décahydraté", "valeur": "1610"}
+{"entite": "séléniure de bismuth", "valeur": "7398"}
+{"entite": "séléniure de cadmium", "valeur": "5810"}
+{"entite": "séléniure de germanium", "valeur": "5300"}
+{"entite": "sérine", "valeur": "1537"}
+{"entite": "Sésone", "valeur": "1700"}
+{"entite": "silicate d'aluminium", "valeur": "3230"}
+{"entite": "silicate de calcium", "valeur": "2900"}
+{"entite": "Soman", "valeur": "1013.1"}
+{"entite": "stannate de sodium trihydraté", "valeur": "3050"}
+{"entite": "stéarate de zinc", "valeur": "1100"}
+{"entite": "strychnine", "valeur": "1360"}
+{"entite": "styrène", "valeur": "910"}
+{"entite": "Succinonitrile", "valeur": "990"}
+{"entite": "sucralose", "valeur": "1690"}
+{"entite": "sulfamate d'ammonium", "valeur": "1770"}
+{"entite": "sulfate d'aluminium", "valeur": "2710.31"}
+{"entite": "sulfate d'ammonium", "valeur": "1769"}
+{"entite": "sulfate d'argent", "valeur": "5450"}
+{"entite": "sulfate d'étain(II)", "valeur": "4150"}
+{"entite": "sulfate de baryum", "valeur": "4500"}
+{"entite": "sulfate de calcium", "valeur": "2960"}
+{"entite": "sulfate de césium", "valeur": "4250"}
+{"entite": "sulfate de cuivre", "valeur": "3640"}
+{"entite": "sulfate de diéthyle", "valeur": "1184.2"}
+{"entite": "sulfate de diméthyle", "valeur": "1330"}
+{"entite": "sulfate de fer(II)", "valeur": "1898"}
+{"entite": "sulfate de lithium", "valeur": "2220"}
+{"entite": "sulfate de magnésium", "valeur": "2660"}
+{"entite": "sulfate de magnésium heptahydraté", "valeur": "1680"}
+{"entite": "Sulfate de manganèse(II) hexahydraté", "valeur": "2150"}
+{"entite": "sulfate de plomb(II)", "valeur": "6290"}
+{"entite": "sulfate de potassium", "valeur": "2660"}
+{"entite": "sulfate de sodium", "valeur": "2680"}
+{"entite": "sulfate de strontium", "valeur": "3960"}
+{"entite": "sulfite de sodium", "valeur": "2630"}
+{"entite": "Sulfotep", "valeur": "1200"}
+{"entite": "sulfure d'argent", "valeur": "7317"}
+{"entite": "sulfure d'indium(III)", "valeur": "4648"}
+{"entite": "sulfure de calcium", "valeur": "2590"}
+{"entite": "sulfure de carbone", "valeur": "1260"}
+{"entite": "sulfure de fer(II)", "valeur": "4840"}
+{"entite": "Sulfure de fer(II,III)", "valeur": "4049.0"}
+{"entite": "sulfure de fer(III)", "valeur": "4300"}
+{"entite": "sulfure de potassium", "valeur": "1740"}
+{"entite": "sulfure de sodium", "valeur": "1856"}
+{"entite": "sulfure de zinc", "valeur": "4090"}
+{"entite": "superoxyde de potassium", "valeur": "2158"}
+{"entite": "taurine", "valeur": "1734"}
+{"entite": "tellurure d'antimoine", "valeur": "6500"}
+{"entite": "tellurure d'étain", "valeur": "6480"}
+{"entite": "Tellurure d'indium(III)", "valeur": "5750"}
+{"entite": "tellurure de béryllium", "valeur": "5090"}
+{"entite": "tellurure de bismuth(III)", "valeur": "7700"}
+{"entite": "tellurure de cadmium", "valeur": "5850"}
+{"entite": "tellurure de germanium", "valeur": "6200"}
+{"entite": "tellurure de manganèse(II)", "valeur": "6000"}
+{"entite": "tellurure de mercure", "valeur": "8120.0"}
+{"entite": "tellurure de néodyme", "valeur": "7000"}
+{"entite": "tellurure de plomb(II)", "valeur": "8163"}
+{"entite": "tellurure de sodium", "valeur": "2900"}
+{"entite": "tellurure de zinc", "valeur": "6340"}
+{"entite": "Téméphos", "valeur": "1320"}
+{"entite": "TEOS", "valeur": "930"}
+{"entite": "tétrabromométhane", "valeur": "3420"}
+{"entite": "tétracarbonyle de nickel", "valeur": "1320"}
+{"entite": "tétrachlorométhane", "valeur": "1590"}
+{"entite": "tétradécane", "valeur": "762"}
+{"entite": "tétraéthylplomb", "valeur": "1650"}
+{"entite": "tétrafluoroborate de sodium", "valeur": "2470"}
+{"entite": "tétrafluorure d'uranium", "valeur": "6700"}
+{"entite": "tétrafluorure de tellure", "valeur": "4220"}
+{"entite": "tétrahydrofurane", "valeur": "890"}
+{"entite": "tétrahydruroaluminate de lithium", "valeur": "917"}
+{"entite": "tétraline", "valeur": "973"}
+{"entite": "tétraméthylplomb", "valeur": "2000"}
+{"entite": "tétranitrométhane", "valeur": "1620"}
+{"entite": "tétraphénylène", "valeur": "1190"}
+{"entite": "Tétroxyde d'osmium", "valeur": "5100"}
+{"entite": "Tétryl", "valeur": "1570"}
+{"entite": "thiomersal", "valeur": "500"}
+{"entite": "thiophénol", "valeur": "1080"}
+{"entite": "thiosulfate de sodium", "valeur": "2345"}
+{"entite": "Thirame", "valeur": "1290"}
+{"entite": "thymol", "valeur": "970"}
+{"entite": "titanate de baryum", "valeur": "6020"}
+{"entite": "titanate de lithium", "valeur": "3400"}
+{"entite": "titanate de strontium", "valeur": "4810"}
+{"entite": "toluène", "valeur": "870"}
+{"entite": "tri-ortho-crésyl-phosphate", "valeur": "1200"}
+{"entite": "tribromométhane", "valeur": "2890"}
+{"entite": "tributylphosphate", "valeur": "980"}
+{"entite": "trichloréthylène", "valeur": "1460"}
+{"entite": "trichlorure de phosphore", "valeur": "1580"}
+{"entite": "trichlorure de phosphoryle", "valeur": "1650"}
+{"entite": "tridécane", "valeur": "756.4"}
+{"entite": "triéthylamine", "valeur": "730"}
+{"entite": "trifluorure d'antimoine", "valeur": "4380"}
+{"entite": "trifluorure de chlore", "valeur": "1770"}
+{"entite": "trifluorure de diéthylaminosoufre", "valeur": "1220"}
+{"entite": "trihydrure d'arsenic", "valeur": "4930"}
+{"entite": "triméthylphosphite", "valeur": "1050"}
+{"entite": "trioxyde de bore", "valeur": "2460"}
+{"entite": "trioxyde de phosphore", "valeur": "2135"}
+{"entite": "trioxyde de rhénium", "valeur": "7190"}
+{"entite": "trioxyde de soufre", "valeur": "2270"}
+{"entite": "triphénylamine", "valeur": "770"}
+{"entite": "triphénylméthane", "valeur": "1014"}
+{"entite": "tungstate de sodium", "valeur": "4180"}
+{"entite": "L-tyrosine", "valeur": "1456"}
+{"entite": "undécane", "valeur": "740.2"}
+{"entite": "urée", "valeur": "1320"}
+{"entite": "valine", "valeur": "1230"}
+{"entite": "Vanadium-gallium", "valeur": "6500"}
+{"entite": "Vanilline", "valeur": "1056"}
+{"entite": "Vinylacétylène", "valeur": "709.5"}
+{"entite": "(Z)-1,2-dichloroéthène", "valeur": "1283.7"}
+{"entite": "(Z)-cyclooctène", "valeur": "846"}

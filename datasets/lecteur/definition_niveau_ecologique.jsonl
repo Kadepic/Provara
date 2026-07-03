@@ -1,0 +1,5 @@
+{"_relation": "definition_niveau_ecologique", "_categorie": "physique", "_source": "Modèle (Claude) — écologie textbook curée (niveau d'organisation -> définition ; définitionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "biosphère", "valeur": "ensemble des écosystèmes de la Terre"}
+{"entite": "communauté", "valeur": "ensemble des populations d'un milieu"}
+{"entite": "écosystème", "valeur": "communauté et son milieu physique"}
+{"entite": "population", "valeur": "individus d'une même espèce dans un milieu"}

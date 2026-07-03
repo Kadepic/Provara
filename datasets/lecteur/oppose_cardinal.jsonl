@@ -1,0 +1,9 @@
+{"_relation": "oppose_cardinal", "_categorie": "convention", "_source": "géographie élémentaire (cardinal -> opposé)", "_articles": false}
+{"entite": "est", "valeur": "ouest"}
+{"entite": "nord", "valeur": "sud"}
+{"entite": "nord-est", "valeur": "sud-ouest"}
+{"entite": "nord-ouest", "valeur": "sud-est"}
+{"entite": "ouest", "valeur": "est"}
+{"entite": "sud", "valeur": "nord"}
+{"entite": "sud-est", "valeur": "nord-ouest"}
+{"entite": "sud-ouest", "valeur": "nord-est"}

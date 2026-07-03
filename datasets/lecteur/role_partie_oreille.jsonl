@@ -1,0 +1,5 @@
+{"_relation": "role_partie_oreille", "_categorie": "physique", "_source": "Modèle (Claude) — anatomie sensorielle textbook curée (partie de l'oreille -> rôle ; fonctionnel ; FAUX=0 vérifié)", "_articles": true}
+{"entite": "canaux semi-circulaires", "valeur": "équilibre"}
+{"entite": "cochlée", "valeur": "transformation des vibrations en signaux nerveux"}
+{"entite": "pavillon", "valeur": "captation des sons"}
+{"entite": "tympan", "valeur": "transmission des vibrations sonores"}
