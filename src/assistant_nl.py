@@ -157,6 +157,7 @@ _PFX_NON_BORNE = "Question non bornée"
 _PFX_INDECIDABLE = "Je n'arrive pas à rattacher ta demande"
 _PFX_SATURATION = "Je ne sais pas encore traiter cette famille de demandes"
 _PFX_PRECISER = "Peux-tu préciser le sujet"
+_PFX_OPINION = "Il n'y a pas de réponse unique"     # cadrage subjectif de _reponse_opinion (= SUPPOSITION)
 
 # Cache de JOIGNABILITÉ des sources (TTL) : le ping du registre est indépendant du sujet -> inutile (et lent :
 # GET réels à chaque question inconnue du serveur plein) de re-contacter les sources à chaque tour.
@@ -375,7 +376,7 @@ def qualifie_texte(texte: str) -> Reponse | None:
         return Reponse(CLARIFICATION, texte, attente="confirmer (oui/non) ou reformuler")
     if texte.startswith(_PFX_HORS_FAIT):
         return Reponse(HORS, texte, regime=_CB.R_SUPPOSITION_A_CHERCHER)
-    if texte.startswith(_PFX_NON_BORNE):
+    if texte.startswith(_PFX_NON_BORNE) or texte.startswith(_PFX_OPINION):
         return Reponse(SUPPOSITION, texte, regime=_CB.R_SUPPOSITION_OPINION)
     if texte.startswith(_PFX_INDECIDABLE) or texte.startswith(_PFX_PRECISER):
         return Reponse(CLARIFICATION, texte, attente="reformulation précise")

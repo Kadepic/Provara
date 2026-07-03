@@ -59,6 +59,23 @@ check(ocr.ocr(blanc) == "", "image blanche -> vide (pas d'invention)")
 check(ocr.contient_texte(blanc) is False, "contient_texte(blanc) = False")
 check(ocr.contient_texte(ocr.rend("A")) is True, "contient_texte(texte) = True")
 
+# (5bis) ROBUSTESSE au CONTRASTE / EXPOSITION (binarisation Otsu) : différents niveaux de gris
+base = ocr.rend("CONTRASTE", echelle=4)
+Lb, Hb = base.largeur, base.hauteur
+
+
+def teinte(fond, enc):
+    im = raster_png.Image(Lb, Hb, mode="RGB", fond=fond)
+    for y in range(Hb):
+        for x in range(Lb):
+            im.pixel(x, y, enc if base.lit(x, y)[0] < 128 else fond)
+    return im
+
+
+check(ocr.ocr(teinte((200, 200, 200), (120, 120, 120))) == "CONTRASTE", "faible contraste (Otsu)")
+check(ocr.ocr(teinte((90, 90, 90), (20, 20, 20))) == "CONTRASTE", "sous-exposé (Otsu)")
+check(ocr.ocr(teinte((255, 255, 255), (180, 180, 180))) == "CONTRASTE", "sur-exposé (Otsu)")
+
 # (6) tolérance à un léger bruit (quelques pixels retournés) : reste lisible
 img = ocr.rend("VERAX", echelle=4)
 # flip d'un pixel isolé au coin (ne doit pas casser la reconnaissance)

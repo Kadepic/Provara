@@ -1,0 +1,5 @@
+{"_registre": "sources de confiance VERAX — OÙ l'IA va vérifier/apprendre (données, pas code)"}
+{"id": "wikidata", "url": "https://www.wikidata.org", "domaines": ["general", "geographie", "sciences", "histoire", "personnes"], "relations": ["capitale", "population", "monnaie"], "actif": true}
+{"id": "qlever-wikidata", "url": "https://qlever.dev/api/wikidata", "domaines": ["general", "geographie", "sciences"], "relations": [], "actif": true}
+{"id": "wikipedia-fr", "url": "https://fr.wikipedia.org", "domaines": ["general", "encyclopedie"], "relations": [], "actif": true}
+{"id": "rest-countries", "url": "https://restcountries.com/v3.1/all", "domaines": ["geographie"], "relations": ["capitale", "population", "superficie"], "actif": true}

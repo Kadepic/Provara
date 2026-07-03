@@ -124,6 +124,100 @@ def _formes_regulieres(inf: str):
     return formes
 
 
+def _formes_modele(inf: str):
+    """Génère les formes d'un verbe du 3e groupe suivant un MODÈLE de conjugaison ÉTABLI (patrons Bescherelle).
+    Couvre systématiquement les familles régulières-dans-leur-irrégularité. Renvoie un set, ou set() si aucun
+    modèle ne s'applique (le verbe reste alors à la table des idiosyncrasiques). FAUX=0 : patrons de grammaire."""
+    inf = inf.strip().lower()
+    F = set()
+
+    def ajoute_imparfait_futur(stem_imp, stem_fut, participe_passe=None, ppr=None):
+        for term in ("ais", "ait", "aient", "ions", "iez"):
+            F.add(stem_imp + term)
+        for term in ("ai", "as", "a", "ons", "ez", "ont"):
+            F.add(stem_fut + term)
+        if participe_passe:
+            F.update({participe_passe, participe_passe + "e", participe_passe + "s", participe_passe + "es"})
+        if ppr:
+            F.add(ppr)
+
+    # — FAMILLE « partir » (partir, dormir, sortir, servir, sentir, mentir…) : singulier perd la consonne finale —
+    if inf.endswith("ir") and inf in _MODELE_PARTIR:
+        rad = inf[:-2]                       # part, dorm, sort, serv, sent, ment
+        sing = rad[:-1]                      # par, dor, sor, ser, sen, men
+        F.update({sing + "s", sing + "t", rad + "ons", rad + "ez", rad + "ent"})
+        ajoute_imparfait_futur(rad, inf, inf[:-1], rad + "ant")
+        return F
+
+    # — FAMILLE « ouvrir » (ouvrir, couvrir, offrir, souffrir…) : présent en -e comme le 1er groupe —
+    if inf.endswith("rir") and inf in _MODELE_OUVRIR:
+        rad = inf[:-2]                       # ouvr, couvr, offr, souffr
+        F.update({rad + "e", rad + "es", rad + "ent", rad + "ons", rad + "ez"})
+        pp = rad[:-1] + "ert"                # ouvert, couvert, offert, souffert
+        ajoute_imparfait_futur(rad, inf, pp, rad + "ant")
+        return F
+
+    # — FAMILLE « courir » (courir, parcourir…) : radical stable, futur en -rr —
+    if inf.endswith("courir"):
+        rad = inf[:-2]                       # cour, parcour
+        F.update({rad + "s", rad + "t", rad + "ons", rad + "ez", rad + "ent"})
+        ajoute_imparfait_futur(rad, rad + "r", rad + "u", rad + "ant")
+        return F
+
+    # — FAMILLE « attendre » (rendre, vendre, perdre, répondre, entendre, descendre, mordre, fondre…) —
+    if inf.endswith("dre") and not inf.endswith(("indre", "oudre", "prendre")):
+        rad = inf[:-2]                       # attend, rend, vend, perd, répond
+        F.update({rad + "s", rad, rad + "ons", rad + "ez", rad + "ent"})   # 3sg = radical nu
+        ajoute_imparfait_futur(rad, inf[:-1], rad + "u", rad + "ant")
+        return F
+
+    # — FAMILLE « prendre » (prendre, apprendre, comprendre, surprendre…) —
+    if inf.endswith("prendre"):
+        pre = inf[:-7]                       # préfixe (ap-, com-, sur-…)
+        rad, radp = pre + "prend", pre + "pren"
+        F.update({rad + "s", rad, radp + "ons", radp + "ez", radp + "nent"})   # prennent
+        ajoute_imparfait_futur(radp, inf[:-1], pre + "pris", radp + "ant")
+        return F
+
+    # — FAMILLE « mettre » (mettre, permettre, promettre, admettre…) —
+    if inf.endswith("mettre"):
+        pre = inf[:-6]
+        F.update({pre + "mets", pre + "met", pre + "mettons", pre + "mettez", pre + "mettent"})
+        ajoute_imparfait_futur(pre + "mett", pre + "mettr", pre + "mis", pre + "mettant")
+        return F
+
+    # — FAMILLE « -indre » (craindre, plaindre, peindre, éteindre, atteindre, joindre, rejoindre…) —
+    if inf.endswith("indre"):
+        base = inf[:-4]                      # crai, pei, attei, joi
+        F.update({base + "ns", base + "nt", base + "gnons", base + "gnez", base + "gnent"})
+        ajoute_imparfait_futur(base + "gn", inf[:-1], base + "nt", base + "gnant")
+        return F
+
+    # — FAMILLE « -aître » (connaître, paraître, apparaître, disparaître…) : « connaître »[:-4] = « conna » —
+    if inf.endswith(("aître", "aitre")):
+        r = inf[:-4]                         # « conna », « para »
+        F.update({r + "is", r + "ît", r + "issons", r + "issez", r + "issent"})
+        ajoute_imparfait_futur(r + "iss", inf[:-1], r + "u", r + "issant")
+        return F
+
+    # — FAMILLE « -uire » (conduire, produire, construire, détruire, réduire, traduire, cuire, nuire…) —
+    if inf.endswith("uire"):
+        base = inf[:-4]                      # cond, prod, constr, dét, réd
+        F.update({base + "uis", base + "uit", base + "uisons", base + "uisez", base + "uisent"})
+        ajoute_imparfait_futur(base + "uis", inf[:-1], base + "uit", base + "uisant")
+        return F
+
+    return F
+
+
+# — catalogues des familles à singulier réduit / présent-en-e (sous-ensembles de CATALOGUE_3E_IR) —
+_MODELE_PARTIR = frozenset({
+    "partir", "repartir", "départir", "sortir", "ressortir", "dormir", "endormir", "rendormir", "servir",
+    "desservir", "resservir", "mentir", "démentir", "sentir", "ressentir", "consentir", "pressentir", "repentir"})
+_MODELE_OUVRIR = frozenset({
+    "ouvrir", "couvrir", "découvrir", "recouvrir", "rouvrir", "entrouvrir", "offrir", "souffrir"})
+
+
 def _construit_index() -> dict:
     global _INDEX
     if _INDEX is not None:
@@ -148,7 +242,8 @@ def _construit_index() -> dict:
     for mot in lemmes:
         if mot in _IRREGULIERS:
             continue
-        for f in _formes_regulieres(mot):
+        formes = _formes_regulieres(mot) or _formes_modele(mot)   # régulier d'abord, sinon modèle 3e groupe
+        for f in formes:
             idx.setdefault(_norm(f), mot)
     _INDEX = idx
     return idx

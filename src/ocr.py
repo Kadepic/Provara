@@ -87,13 +87,51 @@ def rend(texte, echelle: int = 3, marge: int = 4):
     return img
 
 
+def _seuil_otsu(hist, total):
+    """Seuil de binarisation OPTIMAL (méthode d'Otsu : maximise la variance inter-classes de l'histogramme des
+    luminances). Rend l'OCR robuste au CONTRASTE et à la LUMINOSITÉ variables (photos, scans pâles) au lieu d'un
+    seuil fixe. Déterministe."""
+    somme = sum(i * hist[i] for i in range(256))
+    somme_b = 0.0
+    poids_b = 0
+    var_max, seuil = -1.0, 127
+    for t in range(256):
+        poids_b += hist[t]
+        if poids_b == 0:
+            continue
+        poids_f = total - poids_b
+        if poids_f == 0:
+            break
+        somme_b += t * hist[t]
+        moy_b = somme_b / poids_b
+        moy_f = (somme - somme_b) / poids_f
+        var = poids_b * poids_f * (moy_b - moy_f) ** 2
+        if var > var_max:
+            var_max, seuil = var, t
+    return seuil
+
+
 def _grille_encre(img):
-    """Matrice booléenne encre/fond (encre = luminance < 128). Renvoie (largeur, hauteur, get(x,y))."""
+    """Matrice booléenne encre/fond. Le seuil est calculé par Otsu sur l'histogramme (robuste au contraste),
+    avec repli à 128 sur une image quasi-uniforme. L'encre est la classe SOMBRE (< seuil)."""
     L, H = img.largeur, img.hauteur
 
-    def encre(x, y):
+    def lum(x, y):
         r, g, b = img.lit(x, y)[:3]
-        return (0.299 * r + 0.587 * g + 0.114 * b) < 128
+        return int(0.299 * r + 0.587 * g + 0.114 * b)
+
+    hist = [0] * 256
+    for y in range(H):
+        for x in range(L):
+            hist[lum(x, y)] += 1
+    total = L * H
+    # écart de luminance : s'il est réel (fond vs encre séparables), Otsu ; sinon image ~uniforme -> seuil neutre.
+    niveaux = [i for i in range(256) if hist[i]]
+    ecart = (niveaux[-1] - niveaux[0]) if niveaux else 0
+    seuil = _seuil_otsu(hist, total) if ecart >= 8 else 128
+
+    def encre(x, y):
+        return lum(x, y) <= seuil
     return L, H, encre
 
 

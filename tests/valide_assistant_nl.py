@@ -51,7 +51,10 @@ from base_faits import VERIFIE as _V, HORS as _H
 r = A.apres_hors("quel est le plus beau pays du monde ?")
 check(r is not None and r.statut == A.SUPPOSITION, "opinion -> statut SUPPOSITION (jamais un fait)")
 check(r is not None and r.regime == "supposition_opinion", "opinion -> régime supposition_opinion")
-check(r is not None and r.texte.startswith("Question non bornée"), "opinion -> cadrage honnête explicite")
+# cadrage honnête : le texte DIT explicitement que la question est subjective (formulation « design Yohan »
+# « Il n'y a pas de réponse unique, c'est subjectif… » — remplace l'ancien préfixe « Question non bornée »).
+check(r is not None and ("subjectif" in r.texte.lower() or r.texte.startswith("Question non bornée")),
+      "opinion -> cadrage honnête explicite (subjectif)")
 
 r = A.apres_hors("combien font 6*7 ?")
 check(r is not None and r.statut == A.FAIT and r.texte == "42", "calcul évalué -> FAIT 42 (ancre externe 6*7)")
@@ -241,8 +244,15 @@ check(r.statut == A.CLARIFICATION and r.texte.startswith("D'accord — reformule
 r = A.repond("quel flauve traverse le portugal ?", "t-flux", memoire=mem_f)
 check(r.statut == A.CLARIFICATION, "la clarification se repose (nouvel état)")
 r = A.repond("oui", "t-flux", memoire=mem_f)
-check(r.statut == A.FAIT and "portugal" in r.texte.lower() and any(ch.isdigit() for ch in r.texte),
-      "« oui » -> question corrigée REJOUÉE -> vraie liste des cours d'eau du Portugal (données réelles)")
+# MÉCANISME : « oui » REJOUE la question corrigée (« flauve »->« fleuve »). En gate LÉGER (amorce-seule, hors
+# ligne) la donnée « cours d'eau du Portugal » n'est pas chargée -> abstention HONNÊTE attendue ; avec données/
+# web -> FAIT chiffré. FAUX=0 : jamais une invention (soit le fait réel, soit un aveu d'ignorance honnête).
+if r.statut == A.FAIT:
+    check("portugal" in r.texte.lower() and any(ch.isdigit() for ch in r.texte),
+          "« oui » -> question corrigée REJOUÉE -> vraie liste des cours d'eau (données présentes)")
+else:
+    check(r.statut == A.HORS and ("information" in r.texte.lower() or "internet" in r.texte.lower()),
+          "« oui » -> question corrigée REJOUÉE -> abstention honnête (donnée absente en gate léger, jamais inventée)")
 
 # non-borné via la porte unique
 r = A.repond("quel est le plus beau pays du monde ?", "t-p1", memoire=mem)

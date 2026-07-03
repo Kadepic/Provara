@@ -1275,6 +1275,15 @@ _LANG_INDICES = [("python", re.compile(r"\b(import |def |print\(|elif |lambda |s
                  ("sql", re.compile(r"\b(SELECT|INSERT|UPDATE|DELETE)\b.+\b(FROM|INTO|SET|WHERE)\b", re.I))]
 
 
+def _cap_explication(texte: str):
+    """« explique le paradoxe de X » -> explication pédagogique auto-contenue (briques Palier 2). Léger->lourd."""
+    try:
+        import explications
+        return explications.explique(texte)
+    except Exception:
+        return None
+
+
 def _cap_stats(texte: str):
     """Routeur STATISTIQUE NL : câble la bibliothèque Palier 2 (ia.incertitude/tendance/compare/pente/…).
     Léger côté détection, lourd si ia est requis. FAUX=0 : ne répond QUE sur intention stat reconnue, et relaie
@@ -1383,7 +1392,7 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_stats, _cap_distance, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_stats, _cap_explication, _cap_distance, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

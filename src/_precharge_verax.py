@@ -1954,6 +1954,10 @@ try:
 except Exception:
     pass
 try:
+    import explications
+except Exception:
+    pass
+try:
     import serveur
 except Exception:
     pass

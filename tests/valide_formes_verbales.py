@@ -54,6 +54,26 @@ import grammaire_fr as _G
 check(_G.classe_mot("table") == "nom", "grammaire : « table » -> nom (pas verbe)")
 check(_G.classe_mot("content") in ("adjectif", "nom"), "grammaire : « content » -> adjectif/nom (pas verbe)")
 
+# MODÈLES du 3e groupe (patrons Bescherelle) : familles systématiques
+modeles = [
+    # -re « attendre » (rendre/vendre/perdre/répondre/descendre)
+    "attends", "attend", "rend", "vend", "perds", "réponds", "répond", "descend", "attendent",
+    # « prendre »
+    "prends", "prend", "prenons", "prennent", "apprend", "comprend",
+    # « mettre »
+    "mets", "met", "mettons", "permet", "promettent",
+    # -indre
+    "crains", "craint", "peins", "atteint", "joins", "joignons", "craignent",
+    # -aître
+    "connais", "connaît", "paraît", "paraissent", "reconnaît",
+    # -uire
+    "conduis", "conduit", "construit", "produit", "conduisons", "traduit",
+    # ouvrir / courir / partir
+    "couvre", "couvrons", "offre", "souffre", "cours", "court", "parcourt", "pars", "part", "dorment", "servent",
+]
+for f in modeles:
+    check(F.est_forme_verbale(f), "modèle 3e groupe : « %s »" % f)
+
 # lemme_de retrouve l'infinitif
 check(F.lemme_de("dort") == "dormir", "lemme de « dort » = dormir")
 check(F.lemme_de("mangeons") == "manger", "lemme de « mangeons » = manger")
