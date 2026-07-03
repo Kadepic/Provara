@@ -60,7 +60,7 @@ check(ia.distance_lieux(BIDON, "Paris") is None, "distance depuis lieu inconnu -
 check(ia.cap_lieux("Paris", BIDON) is None, "cap vers lieu inconnu -> None (HORS)")
 
 # ── 3bis) BORNES + COHÉRENCE sur TOUTE la table ingérée (lecture directe du jsonl, exhaustif) ──
-DOSSIER = os.path.join(os.path.dirname(__file__), "datasets", "lecteur")
+DOSSIER = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 
 
 def _charge(rel):

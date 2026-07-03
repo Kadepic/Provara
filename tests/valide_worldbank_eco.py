@@ -80,7 +80,7 @@ check(ia.pib_pays("") is None, "nom vide -> None (HORS)")
 check(ia.pib_par_habitant_calcule("Pays-Qui-N-Existe-Pas-42") is None, "dérivé : pays inconnu -> None")
 
 # ── bulk : les 6 tables saines (relues directement, indépendamment des ponts) ──
-DOSSIER = os.path.join(os.path.dirname(__file__), "datasets", "lecteur")
+DOSSIER = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 BORNES_BULK = {
     "pib_pays": (150, 1e6, 5e13),                      # (min pays, val min, val max) — Tuvalu ~6e7… borne basse laxiste
     "pib_par_habitant_pays": (150, 100, 300_000),      # Burundi ~230 ; Monaco/Liechtenstein ~200k

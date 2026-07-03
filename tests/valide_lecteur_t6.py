@@ -20,7 +20,7 @@ import unicodedata
 os.environ.setdefault("LECTEUR_AMORCE_SEULE", "1")  # OPTIM gate légère : charge SES relations dans un Lecteur frais (jamais le singleton global L.LECTEUR) → saute charge_dossier()+gele() sur les 33,5 M faits (~5 Go/min)
 import lecteur as L
 
-_DS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "datasets", "lecteur")
+_DS = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 
 _ECHECS = []
 

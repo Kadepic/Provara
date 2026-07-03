@@ -13,7 +13,7 @@ import sys
 os.environ["LECTEUR_AMORCE_SEULE"] = "1"       # AVANT l'import : Lecteur léger, pas d'auto-chargement massif
 import lecteur as L
 
-_DS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "datasets", "lecteur")
+_DS = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 
 
 def _lec(*relations):

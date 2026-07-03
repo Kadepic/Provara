@@ -31,7 +31,7 @@ os.environ.setdefault("LECTEUR_AMORCE_SEULE", "1")  # OPTIM gate légère : char
 import lecteur as L
 from lecteur import HORS, VERIFIE
 
-DOSSIER = os.path.join(os.path.dirname(__file__), "datasets", "lecteur")
+DOSSIER = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 
 RELATIONS = ["systeme_ecriture_langue", "code_iso6393_langue", "code_iso6392_langue", "code_glottolog_langue",
              "code_ethnologue_langue", "statut_vitalite_langue", "direction_ecriture", "regulateur_langue",

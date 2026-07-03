@@ -31,7 +31,9 @@ HARN = os.path.dirname(os.path.abspath(__file__))
 # la racine comme dans le repo d'origine. `_chemin()` résout un nom de validateur vers son chemin réel relatif
 # à HARN ; `TESTS` est le dossier des `valide_*.py`. Le pipeline importe depuis src/ + interface/ + ingestion/.
 TESTS = os.path.join(HARN, "tests")
-_SRCPATH = os.pathsep.join(os.path.join(HARN, d) for d in ("src", "interface", "ingestion"))
+# tests/ EN TÊTE : les validateurs importent leur helper `valide_commun` et parfois un validateur frère
+# (valide_invention…) comme module — tous dans tests/. Puis les modules du pipeline (src/interface/ingestion).
+_SRCPATH = os.pathsep.join(os.path.join(HARN, d) for d in ("tests", "src", "interface", "ingestion"))
 
 
 def _chemin(f):
@@ -47,6 +49,7 @@ def _env_pipeline(base=None):
     pas repond/conversation/ia. Préserve un PYTHONPATH éventuel existant."""
     e = dict(base if base is not None else os.environ)
     e["PYTHONPATH"] = _SRCPATH + (os.pathsep + e["PYTHONPATH"] if e.get("PYTHONPATH") else "")
+    e.setdefault("VERAX_ROOT", HARN)            # validateurs qui cherchent src/ia.py etc. relatif à la racine
     return e
 
 

@@ -441,3 +441,31 @@
   ingestion, et `_env_pipeline()` pose le PYTHONPATH sur chaque sous-processus. Vérifié : `liste_validateurs()`
   = **683** (était 1), `lance()` exécute correctement (composition 9/9, ocr 28/28, traduction 8/8, fraîcheur
   10/10, grammaire 61/61). Le run complet reste lourd (base complète) — à lancer par l'utilisateur.
+
+### Session 3 duovicies (2026-07-03) — _nonreg : fix PYTHONPATH tests/ + constat de portage
+- Correctif suite : `_SRCPATH` inclut désormais **tests/** en tête (les validateurs importent leur helper
+  `valide_commun` et parfois un validateur frère comme module, tous dans tests/). Vérifié : valide_vague4 4/4,
+  valide_pile 6/6, valide_iteration 5/5 (étaient en échec `ModuleNotFoundError: valide_commun`). ~57 validateurs
+  de cette classe débloqués.
+- CONSTAT (honnête) : faire tourner `_nonreg.py` dans Verax révèle que le PORTAGE est incomplet pour la SUITE.
+  La vraie gate historique vit dans le repo d'origine `IA_nouvelle_vision/harnais/` (870 validateurs COLOCALISÉS,
+  layout plat — datasets/src/validateurs ensemble → passe). Le port Verax (src/ tests/ interface/ ingestion/) a
+  déplacé 683 validateurs dans tests/ SANS re-router leurs chemins codés en dur : certains cherchent
+  `datasets/…` ou `src/ia.py` RELATIFS à leur dossier (→ FileNotFoundError), d'autres exigent la base complète
+  71,9M (lecteur_t5..t12, resolution, taxonomie, substrat_reel…). Ce ne sont PAS des régressions — mon fix les a
+  rendus VISIBLES (avant, _nonreg n'en trouvait qu'1). Le vert 683/683 dans Verax = chantier de portage
+  (re-router chemins + base complète sous tests/datasets) ; la validation AUTORITÉ reste `harnais/` en amont.
+  Pour la couche conversationnelle, `tests/suite_conversation.py` (16/16) est le contrôle autonome fiable dans Verax.
+
+### Session 3 trevicies (2026-07-03) — portage _nonreg : chemins re-routés (structurel fait, contenu = harnais/)
+- 12 validateurs dataset-dépendants re-routés : `dirname(__file__)/datasets/lecteur` → `LECTEUR_DATASETS_DIR`
+  (env) ou fallback RACINE du repo (au lieu de `tests/datasets` inexistant). `_env_pipeline` pose aussi
+  `VERAX_ROOT`. Vérifié : valide_surface_ia FileNotFoundError → **3/3** ; les 12 TROUVENT désormais leurs datasets
+  (plus d'erreur de chemin).
+- BILAN du chantier portage : le STRUCTUREL est fait (découverte 1→683, PYTHONPATH tests/+src/interface/ingestion,
+  chemins re-routés, VERAX_ROOT) → ~60 validateurs débloqués. Les ~20 restants échouent sur le CONTENU : les
+  validateurs, l'échantillon embarqué et la base complète NE s'accordent PAS sur les noms de relations/données
+  (ex. la base complète ~/.verax n'a même pas `population_pays.jsonl` — nommage différent). C'est un alignement
+  par-validateur profond = précisément le rôle de `harnais/` (origine, tout colocalisé et aligné). Décision :
+  arrêt du chantier gate-Verax ici (faible valeur, duplication de harnais/). Gate pratique Verax =
+  `tests/suite_conversation.py` (16/16) ; gate AUTORITÉ = `IA_nouvelle_vision/harnais/` (870 validateurs).

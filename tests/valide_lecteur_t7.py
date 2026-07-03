@@ -28,7 +28,7 @@ borne(max_go=2.0, max_cpu_s=900)   # discipline ; ce validateur est AUTONOME (li
 # (self-describing) — la déduplication/fonctionnel est déjà appliquée à l'ingestion, le jsonl EST la vérité servie.
 HORS, VERIFIE = "HORS", "VERIFIE"
 
-DOSSIER = os.path.join(os.path.dirname(__file__), "datasets", "lecteur")
+DOSSIER = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 
 # Plages physiques par relation (DOIVENT refléter ingere_t7.NUMERIQUES).
 PLAGES = {

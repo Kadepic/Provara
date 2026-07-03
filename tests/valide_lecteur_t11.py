@@ -28,7 +28,7 @@ os.environ.setdefault("LECTEUR_AMORCE_SEULE", "1")  # OPTIM gate légère : char
 import lecteur as L
 from lecteur import HORS, VERIFIE
 
-DOSSIER = os.path.join(os.path.dirname(__file__), "datasets", "lecteur")
+DOSSIER = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 RELATIONS = ["constructeur_vehicule", "exploitant_metro",
              "exploitant_aeroport", "exploitant_chemin_fer", "exploitant_ligne_ferroviaire",
              "exploitant_tunnel", "exploitant_port", "alliance_compagnie_aerienne",

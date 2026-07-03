@@ -15,7 +15,7 @@ os.environ.setdefault("LECTEUR_AMORCE_SEULE", "1")   # jamais le full-load globa
 import lecteur as L
 from base_faits import normalise as _norm
 
-_DS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "datasets", "lecteur")
+_DS = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 _ECHECS = []
 
 

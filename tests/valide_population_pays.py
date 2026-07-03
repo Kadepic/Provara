@@ -42,7 +42,7 @@ check(ia.densite_pays("Pays-Qui-N-Existe-Pas-42") is None, "pays inconnu -> None
 check(ia.densite_pays("") is None, "nom vide -> None (HORS)")
 
 # ── bulk : table population_pays saine ──
-DOSSIER = os.path.join(os.path.dirname(__file__), "datasets", "lecteur")
+DOSSIER = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "datasets", "lecteur")
 pop = {}
 for ligne in open(os.path.join(DOSSIER, "population_pays.jsonl"), encoding="utf-8"):
     o = json.loads(ligne)
