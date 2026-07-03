@@ -1346,4 +1346,4 @@ Ces modules récents implémentent l'assistant conversationnel branché dans `in
 | `langue` | détection + réponse factuelle multilingue (fr/en/es/de/it/pt) |
 | `veille_structure` | recherche structurée (Wikidata/QLever/SPARQL) → fait VÉRIFIÉ + web libre attribué |
 | `https_confiance` | sortie TLS fiable (repli ancres épinglées pour le .exe) |
-| `telecharge_donnees` | installe la base complète (~80M faits) depuis les Releases |
+| `telecharge_donnees` | installe la base complète (~72M faits) depuis les Releases |

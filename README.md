@@ -6,7 +6,7 @@
 
 ### The AI that never makes things up. Either it knows — with proof — or it says so.
 
-**~1.1M facts bundled · full base 73M via one download · 0 GPU · 0 dependencies · Python 3.10+**
+**~1.1M facts bundled · full base 72M via one download · 0 GPU · 0 dependencies · Python 3.10+**
 
 </div>
 
@@ -68,7 +68,7 @@ python3 ingestion/ingere_elements_ptjson.py    # ingests the 118 chemical elemen
 # … then VERAX answers on those domains, offline, with a source
 ```
 
-> ⚠️ **The ingestion phase needs the network** (it downloads from the sources). This is a **one-time, online build**. Answering from the base then needs no network (searching its trusted sources stays an opt-in, off by default). Rebuilding the entire 73M facts takes several hours; start with a bounded domain (economics, chemistry) to see the learning loop in action.
+> ⚠️ **The ingestion phase needs the network** (it downloads from the sources). This is a **one-time, online build**. Answering from the base then needs no network (searching its trusted sources stays an opt-in, off by default). Rebuilding the entire 72M facts takes several hours; start with a bounded domain (economics, chemistry) to see the learning loop in action.
 
 ## Installation & launch
 
@@ -95,8 +95,8 @@ Either way, VERAX opens at **http://127.0.0.1:8765** — localhost only, your da
 The zero-hallucination discipline is **proven by code**, not asserted. The repository ships hundreds of validators (`valide_*.py`) that test each capability against external anchors; the smallest regression fails the gate:
 
 ```bash
-python3 verifie_demo.py          # out-of-the-box: 30 engine validators, 773 checks, ~8 s, no data needed
-python3 _nonreg.py --jobs 8      # full gate: 681/681 (requires the rebuilt knowledge base)
+python3 verifie_demo.py          # out-of-the-box: 31 engine validators, 783 checks, no data needed
+python3 _nonreg.py --jobs 8      # full gate: 683/683 (requires the rebuilt knowledge base)
 ```
 
 > `verifie_demo.py` runs the computation-engine validators (chemistry, physics, geometry, calibration, the `ia.py` facade…) that need no external data — it proves FAUX=0 on a fresh clone. The full `_nonreg.py` gate additionally validates the ingested facts and requires the rebuilt knowledge base.

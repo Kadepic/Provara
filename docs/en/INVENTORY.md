@@ -1346,4 +1346,4 @@ These recent modules implement the conversational assistant wired into `interfac
 | `langue` | detection + multilingual factual answering (fr/en/es/de/it/pt) |
 | `veille_structure` | structured search (Wikidata/QLever/SPARQL) → VERIFIED fact + attributed free web |
 | `https_confiance` | trusted TLS egress (pinned-anchor fallback for the .exe) |
-| `telecharge_donnees` | installs the full base (~80M facts) from Releases |
+| `telecharge_donnees` | installs the full base (~72M facts) from Releases |

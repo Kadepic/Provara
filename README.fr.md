@@ -6,7 +6,7 @@
 
 ### L'IA qui n'invente jamais. Ou elle sait — avec preuve — ou elle le dit.
 
-**~1,1 M faits embarqués · base complète 73 M en un téléchargement · 0 GPU · 0 dépendance · Python 3.10+**
+**~1,1 M faits embarqués · base complète 72 M en un téléchargement · 0 GPU · 0 dépendance · Python 3.10+**
 
 </div>
 
@@ -40,7 +40,7 @@ La démo tourne sur l'**échantillon** livré (16 domaines de faits) plus les mo
 
 | | |
 |---|---|
-| **Zéro hallucination (FAUX=0)** | Toute affirmation vient d'un fait vérifié ou d'un calcul réellement évalué. Au moindre doute : abstention. C'est un invariant imposé par **681 tests de non-régression** qui échouent si un seul fait faux entre. |
+| **Zéro hallucination (FAUX=0)** | Toute affirmation vient d'un fait vérifié ou d'un calcul réellement évalué. Au moindre doute : abstention. C'est un invariant imposé par **683 tests de non-régression** qui échouent si un seul fait faux entre. |
 | **Il sait ce qu'il ne sait pas (bornage)** | VERAX distingue ce que la réalité **tranche** (→ un FAIT, avec source) de ce qu'elle **ne tranche pas** (→ une SUPPOSITION cadrée, jamais servie comme un fait). Cette frontière calibrée est le cœur du système. |
 | **Souverain, frugal, sans GPU** | la base complète ~72 M faits tient dans ~30 Mo de RAM (colonnaire, mémoire-mappée, paginée à la demande ; ~1,7 Go sur disque), 0 dépendance, aucun cloud requis pour répondre. Déployable là où un LLM est impensable : poste isolé, embarqué, secteur souverain — pour un coût d'exploitation quasi nul. Elle ne se connecte que sur demande, pour apprendre ou chercher sur ses sources de confiance. |
 | **Mémoire non-éphémère** | Il retient les échanges par conversation et sait rappeler le bon élément — mais le rappelé reste **typé « rapporté »**, jamais promu en fait. |
@@ -68,7 +68,7 @@ python3 ingestion/ingere_elements_ptjson.py   # ingère les 118 éléments chimi
 # … puis VERAX répond sur ces domaines, hors-ligne, avec source
 ```
 
-> ⚠️ **La phase d'ingestion a besoin du réseau** (elle télécharge depuis les sources). C'est une **construction en ligne, une seule fois**. Répondre depuis la base ne demande alors aucun réseau (chercher sur ses sources de confiance reste un opt-in, désactivé par défaut). Reconstruire l'intégralité des 73 M faits prend plusieurs heures ; commencez par un domaine borné (éco, chimie) pour voir la boucle d'apprentissage en action.
+> ⚠️ **La phase d'ingestion a besoin du réseau** (elle télécharge depuis les sources). C'est une **construction en ligne, une seule fois**. Répondre depuis la base ne demande alors aucun réseau (chercher sur ses sources de confiance reste un opt-in, désactivé par défaut). Reconstruire l'intégralité des 72 M faits prend plusieurs heures ; commencez par un domaine borné (éco, chimie) pour voir la boucle d'apprentissage en action.
 
 ## Installation & lancement
 
@@ -95,8 +95,8 @@ Dans les deux cas, VERAX s'ouvre sur **http://127.0.0.1:8765** — localhost uni
 La discipline zéro-hallucination est **prouvée par le code**, pas affirmée. Le dépôt contient **683 validateurs** (`valide_*.py`) qui testent chaque capacité contre des ancres externes ; la moindre régression fait échouer la porte :
 
 ```bash
-python3 verifie_demo.py          # prêt à l'emploi : 30 validateurs moteurs, 773 checks, ~8 s, sans données
-python3 _nonreg.py --jobs 8      # gate complet : 681/681 (nécessite la base reconstruite)
+python3 verifie_demo.py          # prêt à l'emploi : 31 validateurs moteurs, 783 checks, sans données
+python3 _nonreg.py --jobs 8      # gate complet : 683/683 (nécessite la base reconstruite)
 ```
 
 > `verifie_demo.py` lance les validateurs des moteurs de calcul (chimie, physique, géométrie, calibration, façade `ia.py`…) qui n'ont besoin d'aucune donnée externe — il prouve FAUX=0 sur un clone frais. Le gate complet `_nonreg.py` valide en plus les faits ingérés et nécessite la base reconstruite.

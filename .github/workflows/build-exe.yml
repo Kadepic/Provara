@@ -8,6 +8,8 @@ on:
 jobs:
   build-exe:
     runs-on: windows-latest
+    permissions:
+      contents: write        # requis pour attacher le .exe à la Release
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -44,3 +46,15 @@ jobs:
         with:
           name: VERAX-windows
           path: dist/VERAX.exe
+      - name: Attacher VERAX.exe à la Release
+        # Sur un évènement "release", attache au tag concerné ; en lancement manuel (workflow_dispatch),
+        # attache à la dernière Release publiée. --clobber remplace un asset de même nom.
+        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="${{ github.event.release.tag_name }}"
+          if [ -z "$TAG" ]; then TAG=$(gh release list -L1 --json tagName -q '.[0].tagName'); fi
+          echo "Upload dist/VERAX.exe -> release $TAG"
+          gh release upload "$TAG" dist/VERAX.exe --clobber
