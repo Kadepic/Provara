@@ -46,9 +46,10 @@ jobs:
         with:
           name: VERAX-windows
           path: dist/VERAX.exe
-      - name: Attacher VERAX.exe à la Release
+      - name: Attacher VERAX-windows.zip à la Release
         # Sur un évènement "release", attache au tag concerné ; en lancement manuel (workflow_dispatch),
-        # attache à la dernière Release publiée. --clobber remplace un asset de même nom.
+        # attache à la dernière Release publiée. Zippe l'exe (VERAX-windows.zip) et REMPLACE l'asset de même
+        # nom (--clobber) -> pas de doublon, le zip périmé est écrasé par le build courant (SHA tamponné).
         if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
         shell: bash
         env:
@@ -56,5 +57,6 @@ jobs:
         run: |
           TAG="${{ github.event.release.tag_name }}"
           if [ -z "$TAG" ]; then TAG=$(gh release list -L1 --json tagName -q '.[0].tagName'); fi
-          echo "Upload dist/VERAX.exe -> release $TAG"
-          gh release upload "$TAG" dist/VERAX.exe --clobber
+          powershell -Command "Compress-Archive -Path dist/VERAX.exe -DestinationPath dist/VERAX-windows.zip -Force"
+          echo "Upload dist/VERAX-windows.zip -> release $TAG"
+          gh release upload "$TAG" dist/VERAX-windows.zip --clobber
