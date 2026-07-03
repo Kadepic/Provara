@@ -171,10 +171,39 @@ class _ClesMmap:
             yield bytes(blob[o[i]:o[i + 1]]).decode("latin-1")
 
 
+class _LabelsMmap:
+    """Vue SÉQUENCE (code entier -> valeur `str`) adossée au mmap `.colf`, jumelle de `_ClesMmap` pour les
+    LABELS (valeurs distinctes d'une table). AVANT (VER 1) les labels vivaient dans une `list[str]` Python =
+    TAS ANONYME non réclamable (mesuré 245 Mo sur le corpus : definition_nom 32 Mo, taxon_parent 22 Mo…). Ici
+    ils sont un blob UTF-8 concaténé + offsets, MMAPPÉS -> pages file-backed PARTAGÉES et RÉCLAMABLES sous
+    pression, décodées À LA DEMANDE (une valeur n'est matérialisée que si un `Fait` la réclame, puis mutualisée
+    par `_ColTableMmap._cache`). Les valeurs peuvent contenir des accents -> UTF-8 (round-trip exact, FAUX=0).
+    Offsets en OCTETS (utf-8), pas en caractères (contrairement aux clés ASCII)."""
+
+    __slots__ = ("_blob", "_off", "_n")
+
+    def __init__(self, blob, off):
+        self._blob = blob        # memoryview octets (région lab_blob du mmap, utf-8)
+        self._off = off          # memoryview cast 'I'/'Q' (n+1 offsets en octets)
+        self._n = len(off) - 1
+
+    def __len__(self):
+        return self._n
+
+    def __getitem__(self, i):    # STR décodée à la demande (code -> valeur)
+        o = self._off
+        return bytes(self._blob[o[i]:o[i + 1]]).decode("utf-8")
+
+    def __iter__(self):          # STR (consommateurs externes qui font set(t._labels)/list(...))
+        blob, o = self._blob, self._off
+        for i in range(self._n):
+            yield bytes(blob[o[i]:o[i + 1]]).decode("utf-8")
+
+
 class _ColTableMmap:
     """Variante MMAP de `_ColTable` : MÊME API lecture seule (get/__getitem__/__contains__/len/iter/keys/
-    values/items/to_dict + attributs _labels/_cat/_src), mais blob/offsets/codes sont des VUES sur un fichier
-    `.colf` mappé read-only -> RAM PARTAGÉE entre process (Shared_Clean) et réclamable, load quasi-gratuit
+    values/items/to_dict + attributs _labels/_cat/_src), mais blob/offsets/codes ET labels sont des VUES sur un
+    fichier `.colf` mappé read-only -> RAM PARTAGÉE entre process (Shared_Clean) et réclamable, load quasi-gratuit
     (demand-paged). RÉPONSES IDENTIQUES à `_ColTable` (prouvé par hash A/B). Garde une réf au mmap pour qu'il
     vive aussi longtemps que la table."""
 
@@ -252,6 +281,10 @@ class _ColTableMmap:
 _CACHE_MAGIC = b"LCT9"
 _CACHE_VER = 1
 _CACHE_DIR = os.environ.get("LECTEUR_CACHE_DIR") or os.path.join(os.path.expanduser("~"), ".cache", "ia-lecteur")
+# CACHE PORTABLE : quand un `.colf` pré-construit est LIVRÉ (Release) et extrait sur une autre machine, le mtime du
+# jsonl change (l'extraction en pose un neuf) et invaliderait le cache à tort -> rebuild à froid non voulu. Ce mode
+# (opt-in) fait confiance à la TAILLE du jsonl seule (contrôle d'intégrité qui survit à l'extraction). Défaut OFF.
+_CACHE_PORTABLE = os.environ.get("LECTEUR_CACHE_PORTABLE", "0") != "0"
 
 
 def _ecris_cache_coltable(nom, chemin_jsonl, ct, rel, articles):
@@ -301,7 +334,28 @@ def _charge_cache_coltable(nom, chemin_jsonl):
 #  FAUX=0 : blob ASCII -> octets latin-1 1:1, offsets/codes = array.tobytes() exacts (hash A/B = égal).
 # ============================================================================================
 _COLF_MAGIC = b"LCF9"
-_COLF_VER = 1
+_COLF_VER = 2   # VER 2 : labels dé-objetisés en blob UTF-8 mmappé (_LabelsMmap) — sort ~245 Mo du tas anonyme
+# OPTIM LEVIER 3 — RÉSIDENCE PAGINÉE À LA DEMANDE. Les pages .colf sont file-backed CLEAN donc réclamables,
+# mais restent RÉSIDENTES (comptées dans le RSS) tant que le noyau ne subit pas de pression — le RSS affiché
+# gonfle alors à la taille du corpus chaud alors que la mémoire RÉELLEMENT possédée par le process est ~13 Mo.
+# Après avoir lu l'en-tête (le seul besoin au load), on conseille MADV_RANDOM (aucune lecture anticipée : une
+# requête ne fait remonter QUE les pages qu'elle touche via bisect) puis MADV_DONTNEED (rend tout de suite les
+# pages faultées par la lecture d'en-tête). Résultat mesuré : RSS au load 332 Mo -> ~15 Mo ; les blob/offsets/
+# codes refont surface À LA DEMANDE, identiques (mapping read-only, pages CLEAN rechargées du fichier). FAUX=0
+# inchangé. Échappatoire LECTEUR_MADV=0 (garde les pages chaudes si la machine a de la RAM à revendre).
+_MADV = os.environ.get("LECTEUR_MADV", "1") != "0"
+
+
+def _rends_pages(mm):
+    """Rend au noyau les pages faultées par la lecture d'en-tête et coupe la lecture anticipée (résidence à la
+    demande). Best-effort : madvise indisponible / EINVAL -> on ignore (pages simplement gardées chaudes)."""
+    if not _MADV:
+        return
+    try:
+        mm.madvise(mmap.MADV_RANDOM)     # pas de readahead : le RSS ne suit que le working-set réel des requêtes
+        mm.madvise(mmap.MADV_DONTNEED)   # libère maintenant les pages d'en-tête (refault propre du fichier au besoin)
+    except (AttributeError, OSError, ValueError):
+        pass
 _MMAP = os.environ.get("LECTEUR_MMAP", "1") != "0"   # backend mmap frugal : DÉFAUT ON (échappatoire LECTEUR_MMAP=0)
 
 
@@ -314,24 +368,34 @@ def _ecris_colf(nom, chemin_jsonl, ct, rel, articles):
         blob_b = ct._keys._blob.encode("latin-1")
         off_b = ct._keys._off.tobytes()
         codes_b = ct._codes.tobytes()
+        # LABELS -> blob UTF-8 + offsets (VER 2) : sort la list[str] du tas anonyme vers une région mmappable
+        # réclamable. UTF-8 car les valeurs peuvent porter des accents (round-trip exact -> FAUX=0).
+        lab_off = array.array("Q", [0])
+        acc = 0
+        parts = []
+        for s in ct._labels:
+            sb = s.encode("utf-8")
+            parts.append(sb)
+            acc += len(sb)
+            lab_off.append(acc)
+        lab_blob = b"".join(parts)
+        lab_off_tc = "I" if acc < 2**32 else "Q"
+        if lab_off_tc == "I":
+            lab_off = array.array("I", lab_off)   # ré-encode compact si le blob tient sur 32 bits
+        lab_off_b = lab_off.tobytes()
         header = marshal.dumps((
             _COLF_VER, rel, articles, ct._cat, ct._src, st.st_mtime_ns, st.st_size,
-            ct._keys._off.typecode, ct._codes.typecode, ct._labels,
-            len(blob_b), len(off_b), len(codes_b),
+            ct._keys._off.typecode, ct._codes.typecode, lab_off_tc,
+            len(blob_b), len(off_b), len(codes_b), len(lab_blob), len(lab_off_b),
         ))
         buf = bytearray()
         buf += _COLF_MAGIC
         buf += struct.pack("<I", len(header))
         buf += header
-        while len(buf) % 8:
-            buf.append(0)                       # -> blob_off aligné 8
-        buf += blob_b
-        while len(buf) % 8:
-            buf.append(0)                       # -> off_off aligné 8
-        buf += off_b
-        while len(buf) % 8:
-            buf.append(0)                       # -> codes_off aligné 8
-        buf += codes_b
+        for region in (blob_b, off_b, codes_b, lab_blob, lab_off_b):
+            while len(buf) % 8:
+                buf.append(0)                   # chaque région alignée 8 (blob/off/codes/lab_blob/lab_off)
+            buf += region
         os.makedirs(_CACHE_DIR, exist_ok=True)
         fd, tmp = tempfile.mkstemp(dir=_CACHE_DIR, suffix=".tmp")
         with os.fdopen(fd, "wb") as fh:
@@ -360,21 +424,31 @@ def _charge_colf_mmap(nom, chemin_jsonl):
         if mm[:4] != _COLF_MAGIC:
             mm.close(); return (None, None, None)
         hlen = struct.unpack_from("<I", mm, 4)[0]
-        (ver, rel, articles, cat, src, mtime_ns, size, off_tc, codes_tc, labels,
-         blob_len, off_len, codes_len) = marshal.loads(mm[8:8 + hlen])
+        (ver, rel, articles, cat, src, mtime_ns, size, off_tc, codes_tc, lab_off_tc,
+         blob_len, off_len, codes_len, lab_blob_len, lab_off_len) = marshal.loads(mm[8:8 + hlen])
         if ver != _COLF_VER:
             mm.close(); return (None, None, None)
         st = os.stat(chemin_jsonl)
-        if st.st_mtime_ns != mtime_ns or st.st_size != size:
+        # Invalidation : la TAILLE du jsonl doit toujours coïncider (garde d'intégrité forte, survit à une copie/
+        # extraction d'archive). Le MTIME, lui, CHANGE quand on extrait un cache livré (tar/zip posent un mtime
+        # neuf) -> en mode CACHE PORTABLE (`LECTEUR_CACHE_PORTABLE=1`, utilisé quand on livre un `.colf` pré-construit
+        # dans une Release) on ignore le mtime et on se fie à la taille. Sûr : si le jsonl diffère, sa taille diffère
+        # -> MISS -> rebuild. FAUX=0 préservé (le `.colf` livré est construit du MÊME code+données que le jsonl livré).
+        if st.st_size != size or (st.st_mtime_ns != mtime_ns and not _CACHE_PORTABLE):
             mm.close(); return (None, None, None)
         pos = 8 + hlen
         blob_off = (pos + 7) & ~7
         off_off = (blob_off + blob_len + 7) & ~7
         codes_off = (off_off + off_len + 7) & ~7
+        lab_blob_off = (codes_off + codes_len + 7) & ~7
+        lab_off_off = (lab_blob_off + lab_blob_len + 7) & ~7
         mv = memoryview(mm)
+        labels = _LabelsMmap(mv[lab_blob_off:lab_blob_off + lab_blob_len],
+                             mv[lab_off_off:lab_off_off + lab_off_len].cast(lab_off_tc))
         tbl = _ColTableMmap(
             _ClesMmap(mv[blob_off:blob_off + blob_len], mv[off_off:off_off + off_len].cast(off_tc)),
             mv[codes_off:codes_off + codes_len].cast(codes_tc), labels, cat, src, mm)
+        _rends_pages(mm)                         # résidence à la demande : rend les pages d'en-tête, coupe le readahead
         return (tbl, rel, articles)
     except Exception:
         return (None, None, None)               # mm/mv locaux -> GC démappe ; PAS de close() (BufferError si vues vivantes)
@@ -566,6 +640,15 @@ class Lecteur:
                 _ecris_cache_coltable(nom, chemin, _t, tete["_relation"], bool(tete.get("_articles", True)))
                 if use_mmap:                                       # Levier2 : écrit aussi le .colf mmappable
                     _ecris_colf(nom, chemin, _t, tete["_relation"], bool(tete.get("_articles", True)))
+                    # OPTIM LEVIER 3 (BUILD À FROID LÉGER) : la table vient d'être sérialisée en .colf -> on REMPLACE
+                    # sa version RAM (_ColTable = clés blob + codes + labels, tout en TAS) par la vue mmap
+                    # (_ColTableMmap = pages file-backed réclamables, madvise DONTNEED appliqué). Sans ça, un build
+                    # à froid des 72M faits accumule ~3,3 Go de _ColTable ; avec, le pic ne retient qu'UNE table à la
+                    # fois (transitoire). Réponses IDENTIQUES (même .colf que la lecture à chaud). MISS -> on garde
+                    # le _ColTable RAM (aucune régression). Ne s'exécute qu'au tout premier build (ensuite = mmap HIT).
+                    _mtb, _mrel, _mart = _charge_colf_mmap(nom, chemin)
+                    if _mtb is not None:
+                        self.tables[tete["_relation"]] = _mtb
         return charges
 
     def cherche(self, relation: str, entite: str) -> Fait | None:
@@ -915,6 +998,25 @@ def repond(relation: str, entite: str) -> tuple[str, Fait | None]:
 
 def repond_nl(question: str) -> tuple[str, Fait | None]:
     return LECTEUR.repond_nl(question)
+
+
+def libere_cache() -> int:
+    """RÉCLAME les pages .colf résidentes (MADV_DONTNEED sur chaque table mmappée) : le RSS retombe au tas
+    anonyme RÉEL du process (~15-60 Mo) après une opération lourde qui a balayé le corpus (moteur d'invention,
+    validation, scan global). Les blob/offsets/codes/labels refont surface À LA DEMANDE, IDENTIQUES (mapping
+    read-only, pages CLEAN rechargées du fichier) -> FAUX=0 inchangé, seule la dépense mémoire retombe. À appeler
+    quand l'IA repasse en veille ou entre deux gros traitements. Renvoie le nombre de tables réclamées.
+    No-op si LECTEUR_MADV=0 ou madvise indisponible. Idempotent, sans effet sur les réponses."""
+    n = 0
+    for t in LECTEUR.tables.values():
+        mm = getattr(t, "_mm", None)
+        if mm is not None:
+            try:
+                mm.madvise(mmap.MADV_DONTNEED)
+                n += 1
+            except (AttributeError, OSError, ValueError):
+                pass
+    return n
 
 
 if __name__ == "__main__":

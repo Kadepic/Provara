@@ -14,7 +14,7 @@
 
 VERAX est une intelligence artificielle **souveraine** construite sur une règle unique et non négociable : **elle n'affirme jamais quelque chose qu'elle ne peut prouver.** Là où un grand modèle de langage répond avec assurance — et se trompe parfois sans le savoir — VERAX répond avec sa **source**, **calcule** exactement, ou **s'abstient honnêtement**. Jamais elle n'hallucine.
 
-Elle tourne **sans GPU et sans dépendance**, sur un ordinateur portable ordinaire, et **répond hors-ligne, sans aucun cloud**. Sa base de connaissances complète — 73 millions de faits — se charge en 3,3 secondes et tient dans 520 Mo de mémoire. Elle est écrite entièrement en **Python de la bibliothèque standard**, sans une seule bibliothèque tierce. Elle ne se connecte que si tu l'y autorises : pour **apprendre** (ingérer de nouvelles données) ou **chercher sur ses sources de confiance** (opt-in).
+Elle tourne **sans GPU et sans dépendance**, sur un ordinateur portable ordinaire, et **répond hors-ligne, sans aucun cloud**. Sa base de connaissances complète — près de 72 millions de faits — se charge en environ 2 secondes et tient dans ~30 Mo de mémoire (le corpus est mémoire-mappé : les pages ne deviennent résidentes qu'à la demande). Elle est écrite entièrement en **Python de la bibliothèque standard**, sans une seule bibliothèque tierce. Elle ne se connecte que si tu l'y autorises : pour **apprendre** (ingérer de nouvelles données) ou **chercher sur ses sources de confiance** (opt-in).
 
 ## En 30 secondes
 
@@ -42,7 +42,7 @@ La démo tourne sur l'**échantillon** livré (16 domaines de faits) plus les mo
 |---|---|
 | **Zéro hallucination (FAUX=0)** | Toute affirmation vient d'un fait vérifié ou d'un calcul réellement évalué. Au moindre doute : abstention. C'est un invariant imposé par **681 tests de non-régression** qui échouent si un seul fait faux entre. |
 | **Il sait ce qu'il ne sait pas (bornage)** | VERAX distingue ce que la réalité **tranche** (→ un FAIT, avec source) de ce qu'elle **ne tranche pas** (→ une SUPPOSITION cadrée, jamais servie comme un fait). Cette frontière calibrée est le cœur du système. |
-| **Souverain, frugal, sans GPU** | échantillon de ~1,1 M faits en 75 Mo (base complète 80 M ~3,3 Go, colonnaire), 0 dépendance, aucun cloud requis pour répondre. Déployable là où un LLM est impensable : poste isolé, embarqué, secteur souverain — pour un coût d'exploitation quasi nul. Elle ne se connecte que sur demande, pour apprendre ou chercher sur ses sources de confiance. |
+| **Souverain, frugal, sans GPU** | la base complète ~72 M faits tient dans ~30 Mo de RAM (colonnaire, mémoire-mappée, paginée à la demande ; ~1,7 Go sur disque), 0 dépendance, aucun cloud requis pour répondre. Déployable là où un LLM est impensable : poste isolé, embarqué, secteur souverain — pour un coût d'exploitation quasi nul. Elle ne se connecte que sur demande, pour apprendre ou chercher sur ses sources de confiance. |
 | **Mémoire non-éphémère** | Il retient les échanges par conversation et sait rappeler le bon élément — mais le rappelé reste **typé « rapporté »**, jamais promu en fait. |
 | **Il apprend en allant chercher** | VERAX ne dépend pas de données livrées : il **ingère lui-même** depuis des sources réelles et vérifie chaque fait avant de l'accepter. Voir « Regarde-le apprendre » ci-dessous. |
 
@@ -105,7 +105,7 @@ python3 _nonreg.py --jobs 8      # gate complet : 681/681 (nécessite la base re
 
 VERAX est un assemblage de **modules atomiques**, chacun avec sa propre garantie et son propre validateur, à frontières étanches :
 
-- **Le lecteur** (`lecteur.py`) — le magasin de faits vérifiés : lookup-ou-abstention, stockage colonnaire compact (~41 octets/fait : la base 80 M tient en ~3,3 Go ; l'échantillon 1,1 M embarqué en 75 Mo).
+- **Le lecteur** (`lecteur.py`) — le magasin de faits vérifiés : lookup-ou-abstention, stockage colonnaire compact, mémoire-mappé et paginé à la demande (labels compris) : la base ~72 M faits tient dans ~30 Mo de RAM (~1,7 Go sur disque) ; les pages ne deviennent résidentes que lorsqu'une requête les touche, et `libere_cache()` les rend ensuite.
 - **Le gardien de bornage** (`classifieur_bornage.py`) — route chaque question : borné → fait / non-borné → supposition cadrée / indécidable → question de clarification.
 - **La porte conversationnelle** (`assistant_nl.py`) — comprend en langage naturel, répond depuis le vérifié, calcule, ou pose une question ; ne devine jamais.
 - **Les moteurs de calcul** — chimie, physique (constantes CODATA), navigation (orthodromie), arithmétique, conjugaison, conversions… : exacts, sans aucune donnée.

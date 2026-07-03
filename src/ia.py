@@ -223,6 +223,13 @@ def donnee_nl(question: str):
     return _LEC.repond_nl(question)
 
 
+def libere_cache():
+    """FRUGALITÉ : rend au noyau les pages du corpus mmappé résidentes après un gros traitement (balayage
+    d'invention, validation, scan) -> le RSS retombe au tas réel (~15-60 Mo). Les faits refont surface à la
+    demande, identiques (FAUX=0 inchangé). À appeler quand l'IA repasse en veille. Renvoie le nb de tables réclamées."""
+    return _LEC.libere_cache()
+
+
 def coordonnees_lieu(lieu: str):
     """COORDONNÉES (latitude, longitude) en degrés décimaux d'un LIEU ingéré, ou None si inconnu (HORS, jamais
     deviné). Cherche dans toute paire de relations `latitude_*`/`longitude_*` du lecteur (capitales aujourd'hui,

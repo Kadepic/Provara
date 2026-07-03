@@ -14,7 +14,7 @@
 
 VERAX is a **sovereign** artificial intelligence built on a single, non-negotiable rule: **it never asserts anything it cannot prove.** Where a large language model answers with confidence — and is sometimes wrong without knowing it — VERAX answers with its **source**, **computes** exactly, or **honestly abstains**. It never hallucinates.
 
-It runs **without a GPU and without dependencies**, on an ordinary laptop, and **answers offline — no cloud required**. Its full knowledge base — 73 million facts — loads in 3.3 seconds and fits in 520 MB of memory. It is written entirely in the **Python standard library**, without a single third-party package. It goes online only when you let it: to **learn** (ingest new data) or to **search its trusted sources** (opt-in).
+It runs **without a GPU and without dependencies**, on an ordinary laptop, and **answers offline — no cloud required**. Its full knowledge base — nearly 72 million facts — loads in about 2 seconds and runs in ~30 MB of memory (the corpus is memory-mapped: pages become resident only on demand). It is written entirely in the **Python standard library**, without a single third-party package. It goes online only when you let it: to **learn** (ingest new data) or to **search its trusted sources** (opt-in).
 
 ## In 30 seconds
 
@@ -42,7 +42,7 @@ The demo runs on the bundled **sample** (16 fact domains) plus the computation e
 |---|---|
 | **Zero hallucination (FAUX=0)** | Every assertion comes from a verified fact or an actually-evaluated computation. At the slightest doubt: abstention. This is an invariant enforced by **683 non-regression tests** that fail if a single false fact gets in. |
 | **It knows what it doesn't know (bounding)** | VERAX tells apart what reality **settles** (→ a FACT, with a source) from what it **does not** (→ a framed SUPPOSITION, never served as a fact). This calibrated boundary is the heart of the system. |
-| **Sovereign, frugal, GPU-free** | sample of ~1.1M facts in 75 MB (full 80M base ~3.3 GB, columnar), 0 dependencies, no GPU, answers with no cloud. Deployable where an LLM is unthinkable: air-gapped machines, embedded, sovereign sectors — at near-zero running cost. Online only on demand, to learn or to search its trusted sources. |
+| **Sovereign, frugal, GPU-free** | the full ~72M-fact base runs in ~30 MB of RAM (columnar, memory-mapped, demand-paged; ~1.7 GB on disk), 0 dependencies, no GPU, answers with no cloud. Deployable where an LLM is unthinkable: air-gapped machines, embedded, sovereign sectors — at near-zero running cost. Online only on demand, to learn or to search its trusted sources. |
 | **Non-ephemeral memory** | It remembers exchanges per conversation and can recall the right item — but what is recalled stays **typed as "reported,"** never promoted to a fact. |
 | **It learns by going and fetching** | VERAX does not depend on shipped data: it **ingests by itself** from real sources and verifies every fact before accepting it. See "Watch it learn" below. |
 
@@ -105,7 +105,7 @@ python3 _nonreg.py --jobs 8      # full gate: 681/681 (requires the rebuilt know
 
 VERAX is an assembly of **atomic modules**, each with its own guarantee and its own validator, with watertight boundaries:
 
-- **The reader** (`lecteur.py`) — the store of verified facts: lookup-or-abstain, compact columnar storage (~41 bytes/fact: the 80M-fact base fits in ~3.3 GB; the bundled 1.1M sample in 75 MB).
+- **The reader** (`lecteur.py`) — the store of verified facts: lookup-or-abstain, compact columnar storage, memory-mapped and demand-paged (labels included): the ~72M-fact base runs in ~30 MB of RAM (~1.7 GB on disk); pages become resident only when a query touches them, and `libere_cache()` releases them again.
 - **The bounding guard** (`classifieur_bornage.py`) — routes every question: bounded → fact / unbounded → framed supposition / undecidable → clarifying question.
 - **The conversational door** (`assistant_nl.py`) — understands natural language, answers from the verified, computes, or asks a question; never guesses.
 - **The computation engines** — chemistry, physics (CODATA constants), navigation (great-circle), arithmetic, conjugation, conversions… : exact, with no data at all.

@@ -1,5 +1,32 @@
 # Journal des modifications — VERAX
 
+## 2026-07-04 — Optimisation RAM majeure (base complète 3,3 Go → ~30 Mo) + docs realignées
+
+### Lecteur : de 3,3 Go à ~30 Mo de RAM pour les 71,9 M faits (FAUX=0 préservé)
+- **LABELS mémoire-mappés** (`src/lecteur.py`, `.colf` **VER 2**, nouvelle classe `_LabelsMmap`) : les listes de
+  valeurs distinctes (mesuré 245 Mo — le DERNIER gros poste resté en tas anonyme : `definition_nom` 32 Mo,
+  `taxon_parent` 22 Mo…) passent en blob UTF-8 mmappé, décodé À LA DEMANDE et mutualisé. Prouvé byte-identique
+  (A/B hash 45 tables = 0 divergence). Import du lecteur 15,7 s → 1,4 s (labels plus désérialisés au load).
+- **Résidence à la demande** (`MADV_RANDOM` + `MADV_DONTNEED` après lecture d'en-tête ; échappatoire
+  `LECTEUR_MADV=0`) + **`lecteur.libere_cache()` / `ia.libere_cache()`** : le corpus ne rend résidentes QUE les
+  pages qu'une requête touche ; `libere_cache()` rend tout après un gros traitement (retour ~15-60 Mo).
+- **Build à froid allégé** : après écriture du `.colf`, la table RAM est remplacée par sa vue mmap (le tout
+  premier build ne retient plus qu'une table à la fois).
+- **MESURES** (`mesure_ressources.py`, base complète 71,9 M) : **~30 Mo de RAM, chargement ~2 s, 216 000 req/s**
+  (cache chaud). Pleine puissance (balayage invention 71,9 M faits) = **57 Mo réellement possédés** ; le pic
+  transitoire (~1,4 Go) est du cache `.colf` Shared_Clean réclamable. TOUT PREMIER lancement (build d'index) =
+  pic ~2,7 Go / une fois → recommandé : livrer le `.colf` pré-construit dans la Release.
+- **Windows** : `madvise` absent (no-op sûr, garde `try/except`) ; les pages mmappées y sont aussi paginées à la
+  demande, et le gain « labels mmappés » s'applique quel que soit l'OS.
+- **Correction de cache** : le cache `.colf`/`.bin` local était périmé (~2000 valeurs à espaces non normalisés,
+  construites avant le durcissement `_norme_valeur` — l'invalidation ne regardait que le mtime du jsonl, pas la
+  version du code). Cache reconstruit à froid (valeurs correctes, `_norme_valeur` appliqué). ⚠ Reste à durcir :
+  inclure une empreinte du code d'ingestion dans l'invalidation. **La Release doit livrer un `.colf` construit à
+  neuf depuis le code courant** (pas depuis un vieux `.bin`).
+- **Docs realignées** : README(.fr).md, `_POST_LINKEDIN.md`, `docs/ANALYSE_MANQUES.md` (P6 marqué RÉSOLU). Les
+  anciens chiffres publics « 73 M / 3,3 s / 520 Mo » (et la dérive 80 M/858k) étaient faux ou périmés → corrigés
+  en 71,9 M / ~2 s / ~30 Mo. Gate `_nonreg` re-passée sur le cache corrigé.
+
 ## 2026-07-03 — Session « le .exe marche pour de vrai » (débogage en conditions réelles)
 
 ### Deux causes racines trouvées et corrigées (la recherche web échouait dans le .exe)

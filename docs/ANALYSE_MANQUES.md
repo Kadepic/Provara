@@ -1,7 +1,7 @@
 # VERAX — Analyse des manques (ce qui reste pour performer au maximum)
 
 _Établie 2026-07-03, après le chantier « assistant conversationnel » et les mesures de ressources._
-_Base : 71,9 M faits · 1387 relations · 3,3 Go RAM (colonnaire) · lookup ~0,004 ms · 0 GPU · 0 dépendance._
+_Base : 71,9 M faits · 1387 relations · ~30 Mo RAM (colonnaire mémoire-mappée, paginée à la demande — voir P6 RÉSOLU) · lookup ~0,004 ms · 0 GPU · 0 dépendance._
 
 Priorisé par IMPACT × faisabilité model-free. VERAX a une base de faits énorme et un moteur FAUX=0 solide ;
 les vrais leviers ci-dessous exploitent MIEUX ce qui existe déjà plutôt que d'ajouter de la donnée.
@@ -62,11 +62,15 @@ résolution d'anaphores bornée + parseur de questions.
 **Faisabilité** : moyenne-élevée — le lexique T9 multilingue (~1 M mots) est le carburant ; ajouter dictionnaire
 bilingue + règles de transfert (model-free, volumineux mais borné).
 
-## P6 — PERFORMANCE à l'échelle de la base complète
-**Manque** : charger 71,9 M faits prend plusieurs minutes (I/O) et 3,3 Go de RAM privée.
-**Leviers** : (a) daemon lecteur persistant (charge une fois, sert plusieurs sessions) ; (b) backend mmap `.colf`
-pour que la RAM soit PARTAGÉE/réclamable (page-cache) → RSS privé bien plus bas ; (c) lazy-load par relation (la
-1ʳᵉ question ne charge que ce qu'elle touche). Le mmap `.colf` existe déjà partiellement.
+## P6 — PERFORMANCE à l'échelle de la base complète — ✅ RÉSOLU (2026-07-04)
+**Manque (historique)** : charger 71,9 M faits prenait plusieurs minutes et 3,3 Go de RAM privée.
+**Résolu** : (1) LABELS mémoire-mappés (`.colf` VER 2, `_LabelsMmap`) → les ~245 Mo de valeurs distinctes qui
+restaient en tas anonyme passent en pages file-backed réclamables ; (2) RÉSIDENCE À LA DEMANDE (`MADV_RANDOM`+
+`MADV_DONTNEED`) + `libere_cache()` → une requête ne rend résidentes QUE les pages qu'elle touche. **Mesuré** :
+base complète 71,9 M en **~30 Mo de RAM / ~2 s** (cache chaud), lookup ~0,005 ms. Levier (b/c) du plan = FAIT.
+Reste optionnel : (a) daemon persistant ; livrer le `.colf` pré-construit dans la Release pour que le TOUT PREMIER
+lancement (build d'index, pic ~2,7 Go / une fois) soit lui aussi léger. Sur Windows, `madvise` est absent (no-op
+sûr) mais les pages mmappées y sont aussi paginées à la demande.
 
 ## P7 — MULTIMODAL élargi
 **Manque** : OCR borné au texte imprimé net (le multi-police exige une bibliothèque de gabarits de VRAIES

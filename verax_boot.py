@@ -51,6 +51,29 @@ def _trouve_donnees():
 if "LECTEUR_DATASETS_DIR" not in os.environ:
     os.environ["LECTEUR_DATASETS_DIR"] = _trouve_donnees()
 
+
+def _trouve_cache_livre():
+    """Cache `.colf` PRÉ-CONSTRUIT livré avec la base complète (Release) : évite le build d'index au TOUT premier
+    lancement (sinon pic RAM/temps une fois). Cherché à côté des données (`~/.verax/cache`) puis dans le bundle.
+    Renvoie le dossier s'il contient des `.colf`, sinon None."""
+    _home = os.environ.get("VERAX_DATA_HOME") or os.path.join(os.path.expanduser("~"), ".verax")
+    for _c in (os.path.join(_home, "cache"), os.path.join(_ROOT, "cache")):
+        try:
+            if os.path.isdir(_c) and any(f.endswith(".colf") for f in os.listdir(_c)):
+                return _c
+        except OSError:
+            pass
+    return None
+
+
+# Cache livré -> on le pointe + mode PORTABLE (le mtime des jsonl change à l'extraction ; on se fie à la taille).
+# Sans cache livré, comportement inchangé : le lecteur construit son index au 1er lancement (dans ~/.cache).
+if "LECTEUR_CACHE_DIR" not in os.environ:
+    _cache_livre = _trouve_cache_livre()
+    if _cache_livre:
+        os.environ["LECTEUR_CACHE_DIR"] = _cache_livre
+        os.environ.setdefault("LECTEUR_CACHE_PORTABLE", "1")
+
 for _sub in ("src", "ingestion", "tests", "interface"):
     _p = os.path.join(_ROOT, _sub)
     if os.path.isdir(_p) and _p not in sys.path:
