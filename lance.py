@@ -20,12 +20,18 @@ else:
 sys.path.insert(0, _ROOT)
 import verax_boot  # noqa: F401,E402  -- chemins + choix des données
 
-# .exe (ou VERAX_FULL=1) : installe la base complète (73M faits) une fois, puis bascule dessus.
+# .exe (ou VERAX_FULL=1) : installe la base complète (72M faits) une fois, puis bascule dessus. Récupère AUSSI
+# l'index .colf pré-construit -> démarrage ~30 Mo direct (sinon build à froid la 1ʳᵉ fois). `verax_boot` a déjà
+# tourné (donc raté le cache tout juste téléchargé) : on fixe ici LECTEUR_CACHE_DIR + mode portable nous-mêmes.
 if getattr(sys, "frozen", False) or os.environ.get("VERAX_FULL") == "1":
     try:
         import telecharge_donnees  # noqa: E402
         if telecharge_donnees.assure_base_complete():
             os.environ["LECTEUR_DATASETS_DIR"] = telecharge_donnees.dossier_donnees()
+            telecharge_donnees.assure_cache_complet()   # best-effort : index pré-construit
+            if telecharge_donnees.cache_present() and "LECTEUR_CACHE_DIR" not in os.environ:
+                os.environ["LECTEUR_CACHE_DIR"] = telecharge_donnees.dossier_cache()
+                os.environ.setdefault("LECTEUR_CACHE_PORTABLE", "1")
     except Exception as _e:
         print("  (base complète non installée : %s)" % _e)
 

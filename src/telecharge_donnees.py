@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Installe la base de connaissances COMPLÈTE (73M faits) depuis les Releases GitHub — pour que
-l'IA embarquée (.exe) atteigne le niveau de la base complète, en un téléchargement unique.
+"""Installe la base de connaissances COMPLÈTE (72M faits) depuis les Releases GitHub — pour que
+l'IA embarquée (.exe) atteigne le niveau de la base complète, en un téléchargement unique. Récupère AUSSI
+l'INDEX `.colf` pré-construit (démarrage ~30 Mo au lieu d'un build à froid la 1ʳᵉ fois).
 stdlib pure (urllib + tarfile), souverain : rien d'autre que la donnée n'est récupéré."""
 import os
 import sys
@@ -10,12 +11,21 @@ import urllib.request
 URL = os.environ.get(
     "VERAX_DONNEES_URL",
     "https://github.com/Verax-IA/Verax/releases/latest/download/datasets_complets.tar.gz")
+URL_CACHE = os.environ.get(
+    "VERAX_CACHE_URL",
+    "https://github.com/Verax-IA/Verax/releases/latest/download/verax_cache_v1.tar.gz")
 
 
 def dossier_donnees():
     """Dossier PERSISTANT des données (hors .exe, réinscriptible). Priorité : $VERAX_DATA_HOME, sinon ~/.verax."""
     base = os.environ.get("VERAX_DATA_HOME") or os.path.join(os.path.expanduser("~"), ".verax")
     return os.path.join(base, "datasets", "lecteur")
+
+
+def dossier_cache():
+    """Dossier de l'index `.colf` pré-construit (frère de datasets/). Détecté par `verax_boot` -> mode portable."""
+    base = os.environ.get("VERAX_DATA_HOME") or os.path.join(os.path.expanduser("~"), ".verax")
+    return os.path.join(base, "cache")
 
 
 def base_complete_presente(seuil=200):
@@ -26,9 +36,17 @@ def base_complete_presente(seuil=200):
         return False
 
 
+def cache_present(seuil=200):
+    d = dossier_cache()
+    try:
+        return sum(1 for f in os.listdir(d) if f.endswith(".colf")) >= seuil
+    except OSError:
+        return False
+
+
 def _progres(lu, total):
     if total > 0:
-        sys.stdout.write("\r  téléchargement de la base complète… %3d%%  (%.0f Mo)"
+        sys.stdout.write("\r  téléchargement… %3d%%  (%.0f Mo)"
                          % (min(100, lu * 100 // total), lu / 1048576))
         sys.stdout.flush()
 
@@ -42,7 +60,7 @@ def assure_base_complete():
     parent = os.path.dirname(d)
     os.makedirs(parent, exist_ok=True)
     arch = os.path.join(parent, "_datasets_complets.tar.gz")
-    print("  Installation unique de la base complète (73M faits, ~750 Mo)…")
+    print("  Installation unique de la base complète (72M faits, ~560 Mo)…")
     try:
         try:
             import https_confiance            # repli épinglé (magasin Windows parfois pollué -> faux « expired »)
@@ -92,5 +110,56 @@ def assure_base_complete():
         return False
 
 
+def assure_cache_complet():
+    """Télécharge + extrait l'INDEX `.colf` pré-construit dans ~/.verax/cache si absent. Renvoie True si prêt.
+    BEST-EFFORT : un échec (réseau, 404, archive absente d'une vieille Release) n'est PAS bloquant — VERAX
+    reconstruira simplement l'index au 1er lancement (plus lent/lourd une seule fois). Intégrité : archive
+    tronquée -> jamais extraite ; extraction partielle -> purgée (ne pas figer un cache incomplet)."""
+    if cache_present():
+        return True
+    d = dossier_cache()
+    os.makedirs(d, exist_ok=True)
+    arch = os.path.join(os.path.dirname(d), "_verax_cache.tar.gz")
+    print("  Installation de l'index pré-construit (démarrage ~30 Mo)…")
+    try:
+        try:
+            import https_confiance
+            _ouvre = https_confiance.urlopen
+        except Exception:
+            _ouvre = urllib.request.urlopen
+        req = urllib.request.Request(URL_CACHE, headers={"User-Agent": "VERAX/1.0 (cache)"})
+        with _ouvre(req, timeout=60) as r, open(arch, "wb") as fh:
+            total = int(r.headers.get("Content-Length") or 0)
+            lu = 0
+            while True:
+                bloc = r.read(1 << 20)
+                if not bloc:
+                    break
+                fh.write(bloc)
+                lu += len(bloc)
+                _progres(lu, total)
+        if total and lu != total:
+            raise IOError("téléchargement tronqué (%d/%d)" % (lu, total))
+        print("\n  extraction de l'index…")
+        with tarfile.open(arch) as t:
+            try:
+                t.extractall(d, filter="data")
+            except TypeError:
+                t.extractall(d)
+        os.remove(arch)
+        print("  ✓ index installé (%s)." % d)
+        return True
+    except Exception as e:
+        print("\n  (index pré-construit indisponible : %s — l'index sera reconstruit au 1er lancement)" % e)
+        import shutil
+        shutil.rmtree(d, ignore_errors=True)      # jamais un cache PARTIEL (sinon HIT sur des .colf manquants)
+        try:
+            os.remove(arch)
+        except OSError:
+            pass
+        return False
+
+
 if __name__ == "__main__":
     assure_base_complete()
+    assure_cache_complet()
