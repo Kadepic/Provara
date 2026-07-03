@@ -29,6 +29,10 @@ if getattr(sys, "frozen", False) or os.environ.get("VERAX_FULL") == "1":
     except Exception as _e:
         print("  (base complète non installée : %s)" % _e)
 
+import glob as _glob
+_dd = os.environ.get("LECTEUR_DATASETS_DIR", "")
+_nrel = len(_glob.glob(os.path.join(_dd, "*.jsonl"))) if _dd and os.path.isdir(_dd) else 0
+print("  donnees : %d relation(s) chargeables  [%s]" % (_nrel, _dd))
 os.environ.setdefault("IA_PLEINE", "1")
 _PORT = int(os.environ.get("PORT", "8765"))
 _URL = "http://127.0.0.1:%d" % _PORT
