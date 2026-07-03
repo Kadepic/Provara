@@ -423,6 +423,12 @@ def cherche_web_domaines(question: str, timeout: int = 12, k: int = 3, verifie_s
                 dom = _domaine_de(url)
                 if not dom or dom in domaines_vus or dom.endswith("duckduckgo.com"):
                     continue                              # un seul résultat par domaine (indépendance des sources)
+                try:                                      # source BANNIE par l'utilisateur (« oublie ce site ») -> jamais rapportée
+                    import confiance
+                    if confiance.est_bannie(dom):
+                        continue
+                except Exception:
+                    pass
                 if not _pertinent(terme, titre, extrait):
                     continue                              # hors-sujet -> jamais rapporté (garde FAUX=0)
                 domaines_vus.add(dom)

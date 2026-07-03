@@ -1958,6 +1958,18 @@ try:
 except Exception:
     pass
 try:
+    import confiance
+except Exception:
+    pass
+try:
+    import langue
+except Exception:
+    pass
+try:
+    import traduction
+except Exception:
+    pass
+try:
     import serveur
 except Exception:
     pass

@@ -46,6 +46,10 @@
     margin: 0 16px 8px; padding: 7px; border-radius: 8px; font-size: 12.5px; cursor: pointer;
     border: 1px solid var(--bord); background: var(--panneau); color: var(--doux);
   }
+  #sel-langue {
+    margin: 0 16px 8px; padding: 7px; border-radius: 8px; font-size: 12.5px; cursor: pointer;
+    border: 1px solid var(--bord); background: var(--panneau); color: var(--texte);
+  }
   #btn-corbeille:hover, #btn-theme:hover { color: var(--texte); }
   .conv .restaurer { color: var(--doux); border: none; background: none; cursor: pointer; font-size: 13px; display: none; }
   .conv:hover .restaurer { display: inline; }
@@ -63,8 +67,17 @@
   .vide { color: var(--doux); font-size: 13px; padding: 16px; text-align: center; }
   /* — colonne droite : le fil — */
   #fil { flex: 1; display: flex; flex-direction: column; min-width: 0; }
-  #titre { padding: 16px; border-bottom: 1px solid var(--bord); background: var(--panneau); }
+  #titre { padding: 12px 16px; border-bottom: 1px solid var(--bord); background: var(--panneau);
+           display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   #titre h2 { margin: 0; font-size: 15px; font-weight: 600; }
+  #barre-outils { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  #barre-outils button, #barre-outils select {
+    margin: 0; padding: 6px 10px; border-radius: 8px; font-size: 12.5px; cursor: pointer;
+    border: 1px solid var(--bord); background: var(--panneau); color: var(--doux); white-space: nowrap;
+  }
+  #barre-outils button:hover, #barre-outils select:hover { color: var(--texte); }
+  #barre-outils #btn-web { color: var(--accent); border-color: var(--accent); }
+  #barre-outils #btn-web.off { border-color: #c98f7e; color: #a15a4a; }
   #titre .scope { font-size: 11px; color: var(--doux); }
   #tours { flex: 1; overflow-y: auto; padding: 20px; }
   .tour { max-width: 70%; margin-bottom: 14px; padding: 10px 13px; border-radius: 12px; background: var(--autre); }
@@ -101,14 +114,26 @@
       <p>assistant local &amp; souverain · tes conversations restent ici · internet : optionnel, toujours sourcé</p>
     </header>
     <button id="btn-nouvelle">+ Nouvelle conversation</button>
-    <button id="btn-web" title="État de l'accès à internet…">🌐 Internet : …</button>
     <button id="btn-corbeille" title="Conversations retirées de l'historique (l'IA s'en souvient encore) : restaurer ou oublier pour de bon">🗑 Corbeille</button>
-    <button id="btn-theme" title="Basculer entre thème clair et thème sombre">🌙 Mode sombre</button>
     <div id="liste"><div class="vide">Chargement…</div></div>
   </aside>
 
   <main id="fil">
-    <div id="titre"><h2>—</h2><span class="scope"></span></div>
+    <div id="titre">
+      <div class="titre-txt"><h2>—</h2><span class="scope"></span></div>
+      <div id="barre-outils">
+        <button id="btn-web" title="État de l'accès à internet…">🌐 Internet : …</button>
+        <button id="btn-theme" title="Basculer entre thème clair et thème sombre">🌙 Mode sombre</button>
+        <select id="sel-langue" title="Langue de l'interface et des réponses">
+          <option value="fr">🇫🇷 Français</option>
+          <option value="en">🇬🇧 English</option>
+          <option value="es">🇪🇸 Español</option>
+          <option value="de">🇩🇪 Deutsch</option>
+          <option value="it">🇮🇹 Italiano</option>
+          <option value="pt">🇵🇹 Português</option>
+        </select>
+      </div>
+    </div>
     <div id="tours"><div class="centre">Bonjour, je suis <strong>VERAX</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé), et si je ne trouve pas, je le dis honnêtement.</div></div>
     <div id="saisie">
       <input type="file" id="fichier" style="display:none">
@@ -141,12 +166,12 @@ async function chargeListe() {
   // une conversation « neuve » sans message n'est pas encore sur le disque : on l'affiche quand même en tête.
   const tout = [...items];
   if (neuve && !items.some((c) => c.id === neuve)) tout.unshift({ id: neuve, scope: "prive", n: 0, neuve: true });
-  if (tout.length === 0) { liste.innerHTML = '<div class="vide">Aucune conversation pour l\'instant.</div>'; return; }
+  if (tout.length === 0) { liste.innerHTML = '<div class="vide">' + T("aucune") + '</div>'; return; }
   liste.innerHTML = "";
   for (const c of tout) {
     const el = document.createElement("div");
     el.className = "conv" + (c.id === actif ? " actif" : "");
-    const meta = c.neuve ? "vide" : `${c.n} tour${c.n > 1 ? "s" : ""} · ${c.scope}`;
+    const meta = c.neuve ? T("meta_vide") : `${c.n} tour${c.n > 1 ? "s" : ""} · ${c.scope}`;
     el.innerHTML = `<span class="nom"></span><span class="meta">${meta}</span><button class="suppr" title="Retirer de l'historique (l'IA s'en souvient quand même)">✕</button>`;
     el.querySelector(".nom").textContent = c.id;       // textContent : jamais d'injection HTML
     el.querySelector(".nom").onclick = () => ouvre(c.id);
@@ -164,7 +189,7 @@ async function ouvre(id) {
   $("#titre .scope").textContent = scope ? "· " + scope : "";
   const flux = $("#tours");
   if (!tours || tours.length === 0) {
-    flux.innerHTML = '<div class="centre">Conversation vide — écris le premier message.</div>';
+    flux.innerHTML = '<div class="centre" data-k="vide_conv">' + T("vide_conv") + '</div>';
   } else {
     flux.innerHTML = "";
     for (const t of tours) {
@@ -264,7 +289,7 @@ async function archive(id) {
   if (id === actif) {
     actif = null;
     $("#titre h2").textContent = "—"; $("#titre .scope").textContent = "";
-    $("#tours").innerHTML = '<div class="centre">Sélectionne une conversation, ou crée-en une.</div>';
+    $("#tours").innerHTML = '<div class="centre" data-k="choisir">' + T("choisir") + '</div>';
     $("#champ").disabled = true; $("#envoyer").disabled = true; $("#btn-fichier").disabled = true;
   }
   chargeListe();
@@ -275,13 +300,13 @@ let enCorbeille = false;
 async function chargeCorbeille() {
   const { items } = await api("/api/corbeille");
   const liste = $("#liste");
-  if (!items || items.length === 0) { liste.innerHTML = '<div class="vide">Corbeille vide.</div>'; return; }
+  if (!items || items.length === 0) { liste.innerHTML = '<div class="vide">' + T("corbeille_vide") + '</div>'; return; }
   liste.innerHTML = "";
   for (const c of items) {
     const el = document.createElement("div");
     el.className = "conv";
     el.innerHTML = `<span class="nom"></span><span class="meta">${c.n} tour${c.n > 1 ? "s" : ""}</span>`
-      + `<button class="restaurer" title="Restaurer dans l'historique">↩</button>`
+      + `<button class="restaurer" title="${T("restaurer_t")}">↩</button>`
       + `<button class="suppr" title="Oublier pour de bon (purge définitive, irréversible)">✕</button>`;
     el.querySelector(".nom").textContent = c.id;                    // textContent : jamais d'injection HTML
     el.querySelector(".restaurer").onclick = async (e) => {
@@ -298,7 +323,7 @@ async function chargeCorbeille() {
       if (c.id === actif) {
         actif = null;
         $("#titre h2").textContent = "—"; $("#titre .scope").textContent = "";
-        $("#tours").innerHTML = '<div class="centre">Sélectionne une conversation, ou crée-en une.</div>';
+        $("#tours").innerHTML = '<div class="centre" data-k="choisir">' + T("choisir") + '</div>';
         $("#champ").disabled = true; $("#envoyer").disabled = true; $("#btn-fichier").disabled = true;
       }
       chargeCorbeille();
@@ -308,7 +333,7 @@ async function chargeCorbeille() {
 }
 $("#btn-corbeille").onclick = () => {
   enCorbeille = !enCorbeille;
-  $("#btn-corbeille").textContent = enCorbeille ? "← Retour aux conversations" : "🗑 Corbeille";
+  $("#btn-corbeille").textContent = enCorbeille ? T("retour") : T("corbeille");
   if (enCorbeille) chargeCorbeille(); else chargeListe();
 };
 
@@ -317,9 +342,8 @@ function majWeb(actif) {
   const b = $("#btn-web");
   b.className = actif ? "" : "off";
   b.dataset.actif = actif ? "1" : "0";
-  b.textContent = actif ? "🌐 Internet : activé (réponses sourcées)" : "⛔ Internet : coupé — données locales seules";
-  b.title = actif ? "Cliquer pour ne pas donner accès à internet : VERAX n'utilisera que ses données locales."
-                  : "Cliquer pour autoriser la recherche sur internet (toujours attribuée, avec la source).";
+  b.textContent = actif ? T("web_on") : T("web_off");
+  b.title = actif ? T("web_t_on") : T("web_t_off");
 }
 $("#btn-web").onclick = async () => {
   const r = await api("/api/web", { method: "POST", headers: { "Content-Type": "application/json" },
@@ -331,7 +355,9 @@ api("/api/web").then((r) => majWeb(!!r.actif)).catch(() => {});
 // — THÈME clair/sombre : préférence mémorisée localement ; défaut = réglage système —
 function majTheme(sombre) {
   document.body.classList.toggle("sombre", sombre);
-  $("#btn-theme").textContent = sombre ? "☀️ Mode clair" : "🌙 Mode sombre";
+  let code = "fr"; try { code = localStorage.getItem("verax_langue") || "fr"; } catch {}
+  const t = (typeof I18N !== "undefined" && I18N[code]) ? I18N[code] : {theme_c:"☀️ Mode clair", theme_s:"🌙 Mode sombre"};
+  $("#btn-theme").textContent = sombre ? t.theme_c : t.theme_s;
   try { localStorage.setItem("verax_theme", sombre ? "sombre" : "clair"); } catch {}
 }
 $("#btn-theme").onclick = () => majTheme(!document.body.classList.contains("sombre"));
@@ -339,6 +365,114 @@ majTheme((() => {
   try { const t = localStorage.getItem("verax_theme"); if (t) return t === "sombre"; } catch {}
   return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 })());
+
+// — LANGUE de l'interface + des réponses (sélecteur) — localisation COMPLÈTE + préférence côté serveur —
+const I18N = {
+  fr: {sub:"assistant local & souverain · tes conversations restent ici · internet : optionnel, toujours sourcé",
+       nouvelle:"+ Nouvelle conversation", corbeille:"🗑 Corbeille", theme_s:"🌙 Mode sombre", theme_c:"☀️ Mode clair",
+       champ:"Écris un message…", envoyer:"Envoyer", web_on:"🌐 Internet : activé (réponses sourcées)",
+       web_off:"⛔ Internet : coupé — données locales seules",
+       accueil:"Bonjour, je suis <strong>VERAX</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé), et si je ne trouve pas, je le dis honnêtement.",
+       vide_conv:"Conversation vide — écris le premier message.", choisir:"Sélectionne une conversation, ou crée-en une.",
+       corbeille_vide:"Corbeille vide.", chargement:"Chargement…"},
+  en: {sub:"local & sovereign assistant · your conversations stay here · internet: optional, always sourced",
+       nouvelle:"+ New conversation", corbeille:"🗑 Trash", theme_s:"🌙 Dark mode", theme_c:"☀️ Light mode",
+       champ:"Type a message…", envoyer:"Send", web_on:"🌐 Internet: on (sourced answers)",
+       web_off:"⛔ Internet: off — local data only",
+       accueil:"Hi, I'm <strong>VERAX</strong>. Start a conversation and ask me anything — I answer with what I know or what I find online (always sourced), and if I can't, I say so honestly.",
+       vide_conv:"Empty conversation — write the first message.", choisir:"Select a conversation, or create one.",
+       corbeille_vide:"Trash is empty.", chargement:"Loading…"},
+  es: {sub:"asistente local y soberano · tus conversaciones se quedan aquí · internet: opcional, siempre con fuente",
+       nouvelle:"+ Nueva conversación", corbeille:"🗑 Papelera", theme_s:"🌙 Modo oscuro", theme_c:"☀️ Modo claro",
+       champ:"Escribe un mensaje…", envoyer:"Enviar", web_on:"🌐 Internet: activado (respuestas con fuente)",
+       web_off:"⛔ Internet: desactivado — solo datos locales",
+       accueil:"Hola, soy <strong>VERAX</strong>. Crea una conversación y pregúntame lo que quieras — respondo con lo que sé o lo que encuentro en internet (siempre con fuente), y si no lo encuentro, lo digo con honestidad.",
+       vide_conv:"Conversación vacía — escribe el primer mensaje.", choisir:"Selecciona una conversación o crea una.",
+       corbeille_vide:"Papelera vacía.", chargement:"Cargando…"},
+  de: {sub:"lokaler & souveräner Assistent · deine Gespräche bleiben hier · Internet: optional, stets belegt",
+       nouvelle:"+ Neues Gespräch", corbeille:"🗑 Papierkorb", theme_s:"🌙 Dunkelmodus", theme_c:"☀️ Hellmodus",
+       champ:"Schreib eine Nachricht…", envoyer:"Senden", web_on:"🌐 Internet: an (belegte Antworten)",
+       web_off:"⛔ Internet: aus — nur lokale Daten",
+       accueil:"Hallo, ich bin <strong>VERAX</strong>. Erstelle ein Gespräch und frag mich etwas — ich antworte mit dem, was ich weiß oder online finde (immer belegt), und wenn nicht, sage ich es ehrlich.",
+       vide_conv:"Leeres Gespräch — schreib die erste Nachricht.", choisir:"Wähle ein Gespräch oder erstelle eines.",
+       corbeille_vide:"Papierkorb ist leer.", chargement:"Wird geladen…"},
+  it: {sub:"assistente locale e sovrano · le tue conversazioni restano qui · internet: opzionale, sempre con fonte",
+       nouvelle:"+ Nuova conversazione", corbeille:"🗑 Cestino", theme_s:"🌙 Modalità scura", theme_c:"☀️ Modalità chiara",
+       champ:"Scrivi un messaggio…", envoyer:"Invia", web_on:"🌐 Internet: attivo (risposte con fonte)",
+       web_off:"⛔ Internet: spento — solo dati locali",
+       accueil:"Ciao, sono <strong>VERAX</strong>. Crea una conversazione e chiedimi qualcosa — rispondo con ciò che so o trovo online (sempre con fonte), e se non lo trovo lo dico onestamente.",
+       vide_conv:"Conversazione vuota — scrivi il primo messaggio.", choisir:"Seleziona una conversazione o creane una.",
+       corbeille_vide:"Cestino vuoto.", chargement:"Caricamento…"},
+  pt: {sub:"assistente local e soberano · as tuas conversas ficam aqui · internet: opcional, sempre com fonte",
+       nouvelle:"+ Nova conversa", corbeille:"🗑 Reciclagem", theme_s:"🌙 Modo escuro", theme_c:"☀️ Modo claro",
+       champ:"Escreve uma mensagem…", envoyer:"Enviar", web_on:"🌐 Internet: ativo (respostas com fonte)",
+       web_off:"⛔ Internet: desligado — só dados locais",
+       accueil:"Olá, sou o <strong>VERAX</strong>. Cria uma conversa e pergunta-me algo — respondo com o que sei ou encontro online (sempre com fonte), e se não encontrar, digo-o com honestidade.",
+       vide_conv:"Conversa vazia — escreve a primeira mensagem.", choisir:"Seleciona uma conversa ou cria uma.",
+       corbeille_vide:"Reciclagem vazia.", chargement:"A carregar…"},
+};
+// compléments (corbeille, titres, messages de liste) — mêmes clés dans chaque langue
+Object.assign(I18N.fr, {aucune:"Aucune conversation pour l'instant.", retour:"← Retour aux conversations",
+  meta_vide:"vide", corbeille_t:"Conversations retirées de l'historique (l'IA s'en souvient encore) : restaurer ou oublier pour de bon",
+  restaurer_t:"Restaurer dans l'historique", purger_t:"Oublier définitivement (purge RGPD)", fichier_t:"Importer un fichier (json, csv, xml, sqlite, zip…)"});
+Object.assign(I18N.en, {aucune:"No conversation yet.", retour:"← Back to conversations",
+  meta_vide:"empty", corbeille_t:"Conversations removed from history (the AI still remembers them): restore or forget for good",
+  restaurer_t:"Restore to history", purger_t:"Forget permanently (GDPR wipe)", fichier_t:"Import a file (json, csv, xml, sqlite, zip…)"});
+Object.assign(I18N.es, {aucune:"Aún no hay conversaciones.", retour:"← Volver a las conversaciones",
+  meta_vide:"vacía", corbeille_t:"Conversaciones retiradas del historial (la IA aún las recuerda): restaurar u olvidar para siempre",
+  restaurer_t:"Restaurar al historial", purger_t:"Olvidar definitivamente (RGPD)", fichier_t:"Importar un archivo (json, csv, xml, sqlite, zip…)"});
+Object.assign(I18N.de, {aucune:"Noch keine Gespräche.", retour:"← Zurück zu den Gesprächen",
+  meta_vide:"leer", corbeille_t:"Aus dem Verlauf entfernte Gespräche (die KI erinnert sich noch): wiederherstellen oder endgültig löschen",
+  restaurer_t:"Im Verlauf wiederherstellen", purger_t:"Endgültig löschen (DSGVO)", fichier_t:"Datei importieren (json, csv, xml, sqlite, zip…)"});
+Object.assign(I18N.it, {aucune:"Ancora nessuna conversazione.", retour:"← Torna alle conversazioni",
+  meta_vide:"vuota", corbeille_t:"Conversazioni rimosse dalla cronologia (l'IA le ricorda ancora): ripristina o dimentica per sempre",
+  restaurer_t:"Ripristina nella cronologia", purger_t:"Dimentica definitivamente (GDPR)", fichier_t:"Importa un file (json, csv, xml, sqlite, zip…)"});
+Object.assign(I18N.pt, {aucune:"Ainda sem conversas.", retour:"← Voltar às conversas",
+  meta_vide:"vazia", corbeille_t:"Conversas removidas do histórico (a IA ainda se lembra): restaurar ou esquecer para sempre",
+  restaurer_t:"Restaurar no histórico", purger_t:"Esquecer definitivamente (RGPD)", fichier_t:"Importar um ficheiro (json, csv, xml, sqlite, zip…)"});
+Object.assign(I18N.fr,{web_t_on:"Cliquer pour couper internet : VERAX n'utilisera que ses données locales.",web_t_off:"Cliquer pour autoriser la recherche internet (toujours attribuée, avec la source).",langue_t:"Langue de l'interface et des réponses",theme_t:"Basculer clair / sombre"});
+Object.assign(I18N.en,{web_t_on:"Click to turn internet off: VERAX will use only its local data.",web_t_off:"Click to allow internet search (always attributed, with the source).",langue_t:"Interface and answer language",theme_t:"Toggle light / dark"});
+Object.assign(I18N.es,{web_t_on:"Haz clic para desactivar internet: VERAX usará solo sus datos locales.",web_t_off:"Haz clic para permitir la búsqueda en internet (siempre con fuente).",langue_t:"Idioma de la interfaz y de las respuestas",theme_t:"Cambiar claro / oscuro"});
+Object.assign(I18N.de,{web_t_on:"Klicken, um Internet auszuschalten: VERAX nutzt nur lokale Daten.",web_t_off:"Klicken, um Internetsuche zu erlauben (immer belegt, mit Quelle).",langue_t:"Sprache der Oberfläche und der Antworten",theme_t:"Hell / Dunkel umschalten"});
+Object.assign(I18N.it,{web_t_on:"Clicca per spegnere internet: VERAX userà solo i dati locali.",web_t_off:"Clicca per consentire la ricerca su internet (sempre con fonte).",langue_t:"Lingua dell'interfaccia e delle risposte",theme_t:"Chiaro / scuro"});
+Object.assign(I18N.pt,{web_t_on:"Clica para desligar a internet: VERAX usará só os dados locais.",web_t_off:"Clica para permitir a pesquisa na internet (sempre com fonte).",langue_t:"Idioma da interface e das respostas",theme_t:"Claro / escuro"});
+let LANG = "fr";
+function T(k) { return (I18N[LANG] || I18N.fr)[k]; }
+function appliqueLangue(code) {
+  LANG = I18N[code] ? code : "fr";
+  const t = I18N[LANG];
+  const p = document.querySelector("#cote header p"); if (p) p.textContent = t.sub;
+  $("#btn-nouvelle").textContent = t.nouvelle;
+  $("#btn-corbeille").textContent = t.corbeille;
+  const sombre = document.body.classList.contains("sombre");
+  $("#btn-theme").textContent = sombre ? t.theme_c : t.theme_s;
+  $("#champ").placeholder = t.champ;
+  $("#envoyer").textContent = t.envoyer;
+  if (typeof $("#btn-web").dataset.actif !== "undefined") majWeb($("#btn-web").dataset.actif === "1");
+  // message d'accueil (si affiché) et placeholders de sélection
+  const c = $("#tours") && $("#tours").querySelector(".centre");
+  if (c && (c.textContent.includes("VERAX") || c.dataset.k === "accueil")) { c.innerHTML = t.accueil; c.dataset.k = "accueil"; }
+  else if (c && c.dataset.k === "choisir") { c.textContent = t.choisir; }
+  $("#btn-corbeille").title = t.corbeille_t;
+  $("#btn-fichier").title = t.fichier_t;
+  $("#sel-langue").title = t.langue_t;
+  $("#btn-theme").title = t.theme_t;
+  try { localStorage.setItem("verax_langue", code); } catch {}
+}
+$("#sel-langue").onchange = async (e) => {
+  const code = e.target.value;
+  appliqueLangue(code);
+  try { await fetch("/api/langue", {method:"POST", headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({langue: code})}); } catch {}
+};
+(() => {
+  let code = "fr";
+  try { code = localStorage.getItem("verax_langue") || "fr"; } catch {}
+  $("#sel-langue").value = code;
+  appliqueLangue(code);
+  if (code !== "fr") { try { fetch("/api/langue", {method:"POST", headers:{"Content-Type":"application/json"},
+        body: JSON.stringify({langue: code})}); } catch {} }
+})();
 
 chargeListe();
 </script>

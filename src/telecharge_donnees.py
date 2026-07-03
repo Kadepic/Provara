@@ -72,7 +72,13 @@ def assure_base_complete():
         print("  ✓ base complète installée (%s)." % d)
         return True
     except Exception as e:
-        print("\n  (base complète indisponible : %s — démarrage sur l'échantillon)" % e)
+        import urllib.error
+        if isinstance(e, urllib.error.HTTPError) and e.code == 404:
+            print("\n  (base complète pas encore publiée en ligne — VERAX démarre sur l'échantillon embarqué.\n"
+                  "   Pour la base complète : place le dossier « lecteur » dans %s, ou attends sa publication.)"
+                  % os.path.dirname(dossier_donnees()))
+        else:
+            print("\n  (base complète indisponible : %s — démarrage sur l'échantillon)" % e)
         # NETTOYAGE : ne JAMAIS laisser une extraction PARTIELLE se faire passer pour la base complète —
         # base_complete_presente() compte les .jsonl, ≥200 fichiers partiels la figeraient « complète » à vie
         # (et une relation coupée sur une frontière de ligne serait chargée comme si elle était entière).

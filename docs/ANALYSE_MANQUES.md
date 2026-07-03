@@ -1,0 +1,77 @@
+# VERAX — Analyse des manques (ce qui reste pour performer au maximum)
+
+_Établie 2026-07-03, après le chantier « assistant conversationnel » et les mesures de ressources._
+_Base : 71,9 M faits · 1387 relations · 3,3 Go RAM (colonnaire) · lookup ~0,004 ms · 0 GPU · 0 dépendance._
+
+Priorisé par IMPACT × faisabilité model-free. VERAX a une base de faits énorme et un moteur FAUX=0 solide ;
+les vrais leviers ci-dessous exploitent MIEUX ce qui existe déjà plutôt que d'ajouter de la donnée.
+
+---
+
+## P1 — Raisonnement COMPOSITIONNEL (le plus gros levier)
+**Manque** : « monnaie de la capitale de la France », « langue du pays le plus peuplé d'Europe » sont REFUSÉS
+(garde relations-imbriquées) — honnête mais bridant. VERAX répond à un fait atomique, jamais à une CHAÎNE.
+**Pourquoi c'est le levier n°1** : avec les 71,9 M faits DÉJÀ présents, composer 2-3 relations démultiplie les
+questions répondables sans ajouter une seule donnée. C'est le passage de « base de faits » à « moteur de
+raisonnement ».
+**Faisabilité** : élevée, model-free — traversée de graphe bornée (résoudre l'inner, typer le résultat, chaîner),
+avec garde FAUX=0 (chaque maillon vérifié, abstention si un maillon manque). Le graphe et `voisins`/`chemin`
+existent déjà.
+
+## P2 — Le SCANNER D'INVENTIONS MANQUANTES (la vision produit ultime)
+**Manque** : le moteur d'invention (`besoin`/`invention_atomes`) est câblé mais ne s'exécute que sur un CATALOGUE
+de besoins minuscule. L'OBJECTIF FINAL — « déterminer s'il manque des inventions qui changeraient le monde et
+fournir de quoi les construire » — n'est pas systématisé.
+**Pourquoi** : c'est la raison d'être différenciante de VERAX (ce qu'un LLM ne fait pas : parcourir
+SYSTÉMATIQUEMENT le réel jugé pour trouver les trous). Le substrat (71,9 M faits) est là.
+**Faisabilité** : moyenne — bâtir un « gap-engine » qui balaie le graphe (attributs composites dérivables,
+combinaisons de leviers physiques non exploitées) et propose des candidats jugés par la réalité (coherence_physique).
+Partiellement esquissé dans la mémoire projet ; à industrialiser.
+
+## P3 — FRAÎCHEUR & TEMPOREL de la connaissance
+**Manque** : la base est STATIQUE (snapshot). « président actuel de X », « dernier vainqueur de Y » peuvent être
+périmés. La boucle `veille_corroboration` (N sources concordent → fait) existe mais ne tourne pas en continu.
+**Faisabilité** : moyenne — brancher une boucle de veille sur les sources structurées (Wikidata live) pour les
+relations volatiles, avec datation des faits (bitemporel) et le système de confiance déjà construit.
+
+## P4 — COMPRÉHENSION conversationnelle plus profonde
+**Manque** : la couche grammaticale (nature, SVO) est branchée mais SHALLOW. Manquent : coréférence (« sa
+capitale », « il »), portée de négation, décomposition de questions complexes multi-clauses, suivi d'état de
+dialogue robuste (le contexte du tour précédent est partiel).
+**Faisabilité** : moyenne, model-free — s'appuie sur `grammaire_fr`/`formes_verbales` déjà là ; ajouter
+résolution d'anaphores bornée + parseur de questions.
+
+## P5 — TRADUCTION LIBRE (au-delà du factuel)
+**Manque** : le multilingue répond aux questions FACTUELLES en 6 langues, mais ne TRADUIT pas un texte libre.
+**Faisabilité** : moyenne-élevée — le lexique T9 multilingue (~1 M mots) est le carburant ; ajouter dictionnaire
+bilingue + règles de transfert (model-free, volumineux mais borné).
+
+## P6 — PERFORMANCE à l'échelle de la base complète
+**Manque** : charger 71,9 M faits prend plusieurs minutes (I/O) et 3,3 Go de RAM privée.
+**Leviers** : (a) daemon lecteur persistant (charge une fois, sert plusieurs sessions) ; (b) backend mmap `.colf`
+pour que la RAM soit PARTAGÉE/réclamable (page-cache) → RSS privé bien plus bas ; (c) lazy-load par relation (la
+1ʳᵉ question ne charge que ce qu'elle touche). Le mmap `.colf` existe déjà partiellement.
+
+## P7 — MULTIMODAL élargi
+**Manque** : OCR borné au texte imprimé net (le multi-police exige une bibliothèque de gabarits de VRAIES
+polices = données) ; pas d'audio/parole (le module `audio_wav` existe mais pas de reconnaissance) ; pas de
+compréhension de tableaux/structure dans les documents.
+**Faisabilité** : variable — OCR multi-police = chantier de données ; parole = très gros (probablement hors
+model-free strict) ; tables PDF = moyen.
+
+## P8 — Confiance & auto-amélioration (étendre l'existant)
+**Manque** : le système de confiance (corrections sourcées + bannissement) est neuf. À étendre : score de
+FIABILITÉ des sources, concordance de VALEURS entre sources structurées multiples (pas seulement de domaines),
+et apprentissage de patrons plus profond (induction de règles au-delà des substitutions de mots).
+**Faisabilité** : moyenne — briques existantes (`veille_corroboration`, `confiance`, `apprentissage_patrons`).
+
+---
+
+## Recommandation d'ordre
+1. **P1 (compositionnel)** — le meilleur rapport impact/effort : décuple les réponses sur la base existante.
+2. **P2 (scanner d'inventions)** — la valeur différenciante ultime ; à lancer une fois P1 en place (le raisonnement
+   compositionnel nourrit la détection de gaps).
+3. **P3/P4 en parallèle** — fraîcheur + compréhension profonde consolident l'usage quotidien.
+4. Le reste (P5-P8) selon les besoins produit.
+
+Invariant sur tout : **FAUX=0** (vérifié / attribué / abstention), model-free, souverain.

@@ -6,7 +6,7 @@
 
 ### L'IA qui n'invente jamais. Ou elle sait — avec preuve — ou elle le dit.
 
-**73 M de faits · chargés en 3,3 s · 520 Mo de RAM · 0 GPU · 0 dépendance · Python 3.10+**
+**~1,1 M faits embarqués · base complète 73 M en un téléchargement · 0 GPU · 0 dépendance · Python 3.10+**
 
 </div>
 
@@ -40,9 +40,9 @@ La démo tourne sur l'**échantillon** livré (16 domaines de faits) plus les mo
 
 | | |
 |---|---|
-| **Zéro hallucination (FAUX=0)** | Toute affirmation vient d'un fait vérifié ou d'un calcul réellement évalué. Au moindre doute : abstention. C'est un invariant imposé par **669 tests de non-régression** qui échouent si un seul fait faux entre. |
+| **Zéro hallucination (FAUX=0)** | Toute affirmation vient d'un fait vérifié ou d'un calcul réellement évalué. Au moindre doute : abstention. C'est un invariant imposé par **681 tests de non-régression** qui échouent si un seul fait faux entre. |
 | **Il sait ce qu'il ne sait pas (bornage)** | VERAX distingue ce que la réalité **tranche** (→ un FAIT, avec source) de ce qu'elle **ne tranche pas** (→ une SUPPOSITION cadrée, jamais servie comme un fait). Cette frontière calibrée est le cœur du système. |
-| **Souverain, frugal, sans GPU** | 73 M faits en 520 Mo, 0 dépendance, aucun cloud requis pour répondre. Déployable là où un LLM est impensable : poste isolé, embarqué, secteur souverain — pour un coût d'exploitation quasi nul. Elle ne se connecte que sur demande, pour apprendre ou chercher sur ses sources de confiance. |
+| **Souverain, frugal, sans GPU** | échantillon de ~1,1 M faits en 75 Mo (base complète 80 M ~3,3 Go, colonnaire), 0 dépendance, aucun cloud requis pour répondre. Déployable là où un LLM est impensable : poste isolé, embarqué, secteur souverain — pour un coût d'exploitation quasi nul. Elle ne se connecte que sur demande, pour apprendre ou chercher sur ses sources de confiance. |
 | **Mémoire non-éphémère** | Il retient les échanges par conversation et sait rappeler le bon élément — mais le rappelé reste **typé « rapporté »**, jamais promu en fait. |
 | **Il apprend en allant chercher** | VERAX ne dépend pas de données livrées : il **ingère lui-même** depuis des sources réelles et vérifie chaque fait avant de l'accepter. Voir « Regarde-le apprendre » ci-dessous. |
 
@@ -63,8 +63,8 @@ VERAX n'est pas qu'une base de faits : c'est un assistant local complet, qui ne 
 La base complète n'est **pas livrée** dans ce dépôt — non par contrainte, mais par principe : VERAX **va chercher ses données et les apprend lui-même**. Chaque script `ingere_*.py` récupère un domaine depuis une source réelle et fiable (Wikidata via le miroir QLever, la Banque mondiale, un dictionnaire multilingue…), **vérifie** chaque fait, et n'écrit que ce qui survit — jamais un fait non corroboré.
 
 ```bash
-python3 ingere_worldbank.py     # va chercher les indicateurs éco chez la Banque mondiale
-python3 ingere_elements_ptjson.py   # ingère les 118 éléments chimiques
+python3 ingestion/ingere_worldbank.py     # va chercher les indicateurs éco chez la Banque mondiale
+python3 ingestion/ingere_elements_ptjson.py   # ingère les 118 éléments chimiques
 # … puis VERAX répond sur ces domaines, hors-ligne, avec source
 ```
 
@@ -92,11 +92,11 @@ Dans les deux cas, VERAX s'ouvre sur **http://127.0.0.1:8765** — localhost uni
 
 ## Vérifier soi-même (FAUX=0 n'est pas un slogan)
 
-La discipline zéro-hallucination est **prouvée par le code**, pas affirmée. Le dépôt contient **669 validateurs** (`valide_*.py`) qui testent chaque capacité contre des ancres externes ; la moindre régression fait échouer la porte :
+La discipline zéro-hallucination est **prouvée par le code**, pas affirmée. Le dépôt contient **681 validateurs** (`valide_*.py`) qui testent chaque capacité contre des ancres externes ; la moindre régression fait échouer la porte :
 
 ```bash
 python3 verifie_demo.py          # prêt à l'emploi : 30 validateurs moteurs, 773 checks, ~8 s, sans données
-python3 _nonreg.py --jobs 8      # gate complet : 669/669 (nécessite la base reconstruite)
+python3 _nonreg.py --jobs 8      # gate complet : 681/681 (nécessite la base reconstruite)
 ```
 
 > `verifie_demo.py` lance les validateurs des moteurs de calcul (chimie, physique, géométrie, calibration, façade `ia.py`…) qui n'ont besoin d'aucune donnée externe — il prouve FAUX=0 sur un clone frais. Le gate complet `_nonreg.py` valide en plus les faits ingérés et nécessite la base reconstruite.
@@ -105,7 +105,7 @@ python3 _nonreg.py --jobs 8      # gate complet : 669/669 (nécessite la base re
 
 VERAX est un assemblage de **modules atomiques**, chacun avec sa propre garantie et son propre validateur, à frontières étanches :
 
-- **Le lecteur** (`lecteur.py`) — le magasin de faits vérifiés : lookup-ou-abstention, stockage colonnaire compact (73 M faits en 520 Mo).
+- **Le lecteur** (`lecteur.py`) — le magasin de faits vérifiés : lookup-ou-abstention, stockage colonnaire compact (~41 octets/fait : la base 80 M tient en ~3,3 Go ; l'échantillon 1,1 M embarqué en 75 Mo).
 - **Le gardien de bornage** (`classifieur_bornage.py`) — route chaque question : borné → fait / non-borné → supposition cadrée / indécidable → question de clarification.
 - **La porte conversationnelle** (`assistant_nl.py`) — comprend en langage naturel, répond depuis le vérifié, calcule, ou pose une question ; ne devine jamais.
 - **Les moteurs de calcul** — chimie, physique (constantes CODATA), navigation (orthodromie), arithmétique, conjugaison, conversions… : exacts, sans aucune donnée.

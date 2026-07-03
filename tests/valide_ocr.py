@@ -27,9 +27,12 @@ def check(c, label):
         print("  FAIL: " + label)
 
 
-# (1) round-trip exact sur des textes variés (lettres, chiffres, ponctuation, espaces)
+# (1) round-trip exact sur des textes variés (lettres MAJ/min, chiffres, ponctuation, espaces)
 for txt in ["HELLO 123", "VERAX", "ABC XYZ 789", "FAUX-0", "THE QUICK BROWN FOX 0123456789",
-            "BONJOUR: OUI!", "A-B-C 1.2.3", "LE CHAT DORT", "RAPPORT 2026: OK"]:
+            "BONJOUR: OUI!", "A-B-C 1.2.3", "LE CHAT DORT", "RAPPORT 2026: OK",
+            # minuscules + casse mixte (le texte réel est surtout minuscule) — hauteur relative = casse
+            "Hello World", "the cat dort", "VERAX ocr", "Bonjour Paris", "le chat mange",
+            "Verax lit un texte", "abcdefg hijkl", "Page 42: ok"]:
     got = ocr.ocr(ocr.rend(txt, echelle=3))
     check(got == txt, "round-trip « %s » (obtenu « %s »)" % (txt, got))
 

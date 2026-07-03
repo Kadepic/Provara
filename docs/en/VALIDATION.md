@@ -9,13 +9,13 @@ FAUX = 0 is VERAX's founding invariant: the system never asserts something it ca
 It is called like this:
 
 ```bash
-python3 _nonreg.py --jobs 8      # expected on the full base: 669/669
+python3 _nonreg.py --jobs 8      # expected on the full base: 681/681
 ```
 
 At the end, it prints a summary line and returns an exit code:
 
 ```
-=== NON-RÉG : 669/669 PASS (... via cache) en Xs ===
+=== NON-RÉG : 681/681 PASS (... via cache) en Xs ===
 ```
 
 The return code is `0` if and only if **no** validator has failed; it is `1` as soon as a single one fails (`raise SystemExit(main())`). There is no middle ground: a single false fact entering the system makes a validator fall, and therefore turns the gate red.
@@ -36,9 +36,9 @@ The cache is protected against three classic pitfalls, which makes it **sound**:
 
 ## How many validators, and which ones
 
-The gate protects **669 active validators** (`valide_*.py`): this is the reference gate, **669/669**. This number corresponds exactly to the `valide_*.py` files present at the root of the repository (minus `valide_commun.py`, which is a module of shared *helpers* explicitly excluded — it is not a validator), plus the interface validator `interface/valide_interface.py`.
+The gate protects **669 active validators** (`valide_*.py`): this is the reference gate, **681/681**. This number corresponds exactly to the `valide_*.py` files present at the root of the repository (minus `valide_commun.py`, which is a module of shared *helpers* explicitly excluded — it is not a validator), plus the interface validator `interface/valide_interface.py`.
 
-On disk, there are in total about **822 `valide_*.py` files**: the 669 active ones, plus ~153 files archived under `_archive_2026-07-02/` (earlier generations, deliberately out of the gate).
+On disk, the **681 `valide_*.py` files** live in the `tests/` folder (there is no separate archive directory).
 
 The selection is **self-discovering**: `liste_validateurs()` maintains a curated list (which fixes the order and flags the heavy tests), then **automatically adds every `valide_*.py` at the root** not yet listed. Direct consequence for FAUX = 0: no real capability can remain "orphaned" outside the net; any newly deposited validator is protected by default.
 

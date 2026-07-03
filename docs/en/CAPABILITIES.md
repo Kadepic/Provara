@@ -1045,3 +1045,19 @@ Finally, the domain hosts **the internal workshop** that lets VERAX accumulate v
 ### Common guarantee
 
 Despite their diversity, all these capabilities rest on the same FAUX=0 contract that emerges explicitly from the docstrings: **abstention is the default** and HORS dominates (impossibility or contradiction above all); the **domain is explicit** (any out-of-scope input is refused, never guessed); the outputs are **deterministic and re-verified** (PDF structure to the correct byte, braille bijection, `xref` re-scanned); and for the statistical blocks, **coverage stays close to nominal** where the naïve formula would be over-confident. VERAX prefers to say "I don't know" rather than be wrong.
+
+## Conversational assistant (2026-07 — cabled to the chat)
+
+Beyond the verified-facts engine, VERAX now reaches these capabilities directly in conversation, each abstaining outside its guaranteed scope (FAUX=0):
+
+- **French grammar** (`grammaire_fr`, `formes_verbales`): part of speech of any word (function words = closed finite sets; 19,200-word embedded lexicon; conjugated forms recognized via Bescherelle models over 116k forms), sentence type (question/statement/order/negation) and subject-verb-object structure. Ambiguous/unknown → "inconnu", never a wrong tag.
+- **Conjugation** (`conjugaison`): present-tense table of a regular verb; honest abstention outside the guaranteed scope.
+- **Statistics in natural language** (`fonction_stats_nl`): mean/median/std (exact) and ~46 calibrated functions — trend, Fermi estimate, Benford, Wilson proportion interval, Poisson rate, Kelly, anomaly, correlation/slope, group comparison, causal effect, meta-analysis. Relays the honest abstention when the sample is too small.
+- **Concept/paradox explanations** (`explications`): "explain Braess's paradox / Allais / Ellsberg / Kelly…" — the brick's real computation, never a hollow paraphrase.
+- **Document reading**: PDF text extraction (`extrait_pdf`, FlateDecode) and long-document Q&A (`lecteur_document`: verbatim passage + page + table of contents). Bounded OCR of clean printed text (`ocr`, Otsu binarization); unrecognized glyph → "?".
+- **Invention engine** (`besoin`/`invention_atomes`): "how to cool a room without an air conditioner" → the physical reframing of the need.
+- **Geography**: distance and initial bearing between two known places.
+- **Multi-source web search** with on-site context verification (Mojeek/Bing/DuckDuckGo), each passage attributed and linked.
+- **Pattern learning** (`apprentissage_patrons`): learns a user's reformulations, and induces word-substitution rules that generalize to new phrases (FAUX=0: re-routing only, the answer stays verified).
+- **Trust system** (`confiance`): a user correction takes effect only when backed by a **source** — VERAX challenges bare assertions ("what source are you relying on?") and never overwrites a truth without one; corrections are attributed to their source. "Forget this site X" bans a domain from searches.
+- **English** (`langue`): factual questions asked in English are answered in English (capital/population/currency/language/area of countries), resolved through the verified French pipeline. Free-text translation is out of scope for now (honest boundary).

@@ -157,6 +157,14 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
     if conv_id in arch:
         arch.discard(conv_id)
         _ecrit_archive(memoire, arch)
+    #   CORRECTION UTILISATEUR (AUTORITÉ) : « c'est faux, c'est X » / « non, la réponse est X » se rapporte à la
+    #   DERNIÈRE question factuelle -> on enregistre la correction (l'utilisateur juge la réalité). FAUX=0 :
+    #   simple mémorisation de SA réponse, ré-appliquée telle quelle et attribuée ensuite.
+    _corr = _capture_correction(conv_id, texte)
+    if _corr:
+        seq = memoire.ajoute(conv_id, "user", texte, scope=scope)
+        memoire.ajoute(conv_id, "ia", _corr, scope=scope)
+        return {"ok": seq >= 0, "seq": seq, "reponse": _corr, **lire_conversation(memoire, conv_id)}
     seq = memoire.ajoute(conv_id, "user", texte, scope=scope)        # STOCKE D'ABORD : jamais perdu, jamais bloqué
     # La réponse filtre déjà le message courant (texte != courant) -> pas d'auto-citation malgré l'indexation.
     reponse = repond.repond(memoire, conv_id, texte, pleine=pleine)
@@ -172,12 +180,93 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
     if reponse and not _est_abstention(reponse):
         _apprend_reformulation(conv_id, memoire, texte)
     _DERNIER_ECHEC[conv_id] = texte if _est_abstention(reponse) else None
+    # mémorise la dernière QUESTION (pour qu'une correction « c'est faux, c'est X » au tour suivant sache quoi
+    # corriger) : une demande qui a produit une réponse, hors interjection/correction.
+    if reponse and len(texte.split()) >= 2:
+        _DERNIERE_QUESTION[conv_id] = texte
+        _DERNIERE_REPONSE[conv_id] = reponse            # pour citer « j'avais X » quand l'utilisateur corrige
     if reponse:
         memoire.ajoute(conv_id, "ia", reponse, scope=scope)          # réponse sound, durable, verbatim
     return {"ok": seq >= 0, "seq": seq, "reponse": reponse, **lire_conversation(memoire, conv_id)}
 
 
 _DERNIER_ECHEC: dict = {}   # conv_id -> dernier message utilisateur resté SANS réponse (abstention), ou None
+_DERNIERE_QUESTION: dict = {}   # conv_id -> dernière question factuelle posée par l'utilisateur (pour corriger)
+_DERNIERE_REPONSE: dict = {}    # conv_id -> réponse de VERAX à cette question (pour la citer quand on challenge)
+_CORRECTION_ATTENTE: dict = {}  # conv_id -> {"question", "valeur"} : correction en attente d'une SOURCE
+
+_RE_CORRECTION = re.compile(
+    r"^\s*(?:non\b[,.! ]*)?(?:c'?est faux|c'?est inexact|t'?as tort|tu te trompes|erreur|faux)\b[,.: ]*"
+    r"(?:c'?est|la (?:bonne )?r[ée]ponse est|en (?:fait|vrai) c'?est|il s'?agit de|c'?[ée]tait)?\s*(.+?)\s*[.?!]*$",
+    re.I)
+_RE_CORRECTION2 = re.compile(
+    r"^\s*(?:non|mais non)\b[,.! ]+(?:c'?est|la r[ée]ponse est|en fait c'?est)\s+(.+?)\s*[.?!]*$", re.I)
+# une source citée dans le message : lien, domaine, ou mot-clé de référence + contenu
+_RE_SOURCE = re.compile(
+    r"https?://\S+|www\.\S+|\b[a-z0-9\-]+\.(?:fr|com|org|net|edu|gov|be|ch|ca|io|info)\b|"
+    r"\b(?:d'?apr[èe]s|selon|source\s*[:=]?|r[ée]f[ée]rence|wikip[ée]dia|wikidata|larousse|encyclop[ée]die|"
+    r"le\s+livre|l'?ouvrage|la\s+constitution|l'?article)\b", re.I)
+
+
+def _extrait_source(texte: str):
+    """Extrait la source citée d'un message (lien/domaine/référence), ou None si aucune source crédible."""
+    if _RE_SOURCE.search(texte):
+        return " ".join(texte.split())[:200]
+    return None
+
+
+def _valeur_correction(texte: str):
+    """La valeur proposée dans « c'est faux, c'est X » (X, sans la source éventuelle), ou None."""
+    m = _RE_CORRECTION.match(texte) or _RE_CORRECTION2.match(texte)
+    if not m:
+        return None
+    val = (m.group(1) or "").strip(" .?!\"'«»")
+    # retire une éventuelle source en fin (« Sucre, d'après la constitution ») pour ne garder que la valeur
+    val = re.split(r"\s*[,;]\s*(?:d'?apr[èe]s|selon|source|car|parce)", val, 1, re.I)[0].strip(" .?!\"'«»")
+    if 1 <= len(val.split()) <= 12:
+        return val
+    return None
+
+
+def _capture_correction(conv_id: str, texte: str):
+    """Gère les corrections utilisateur EXIGEANT une source (FAUX=0 : pas d'écrasement de vérité sur simple
+    affirmation). Renvoie un message (str) si le tour EST une correction / une source attendue, sinon None.
+      1. correction NUE (« c'est faux, c'est X ») -> VERAX CHALLENGE : cite sa réponse et demande la source ;
+      2. correction AVEC source (« c'est X, d'après <src> ») -> enregistrée + attribuée ;
+      3. la source arrive au tour SUIVANT (état en attente) -> enregistrée."""
+    import confiance
+    # (2ter) une source qui répond à un challenge en attente
+    attente = _CORRECTION_ATTENTE.get(conv_id)
+    if attente:
+        src = _extrait_source(texte)
+        if src:
+            confiance.corrige(attente["question"], attente["valeur"], src)
+            _CORRECTION_ATTENTE[conv_id] = None
+            return ("Merci, je retiens « %s » : « %s » — d'après la source que tu m'indiques (%s). Je la citerai "
+                    "quand tu reposeras la question." % (attente["question"], attente["valeur"], src))
+        # pas encore de source -> on redemande UNE fois, sans harceler
+        if re.search(r"\b(je sais|c'?est comme|crois[- ]?moi|point final|puisque je te le dis)\b", texte, re.I):
+            _CORRECTION_ATTENTE[conv_id] = None
+            return ("Sans source vérifiable, je préfère ne pas modifier une information — je m'en tiens à ce que "
+                    "je peux vérifier. Reviens avec une référence (un lien, un ouvrage) et je l'enregistrerai.")
+        return None
+    # (2) une correction dans ce message
+    val = _valeur_correction(texte)
+    if not val:
+        return None
+    q = _DERNIERE_QUESTION.get(conv_id)
+    if not q:
+        return None
+    src = _extrait_source(texte)
+    if src:                                              # correction SOURCÉE d'emblée -> enregistrée + attribuée
+        confiance.corrige(q, val, src)
+        return ("Merci, je retiens « %s » : « %s » — d'après la source que tu m'indiques (%s)." % (q, val, src))
+    # correction NUE -> CHALLENGE : cite ce que VERAX avait, exige une source pour modifier
+    _CORRECTION_ATTENTE[conv_id] = {"question": q, "valeur": val}
+    avait = _DERNIERE_REPONSE.get(conv_id)
+    prefixe = ("J'avais « %s ». " % avait[:120]) if avait else ""
+    return (prefixe + "Pour que je retienne « %s » à la place, sur quelle SOURCE t'appuies-tu ? (un lien, un "
+            "ouvrage, une référence) — je ne modifie pas une information sans source vérifiable." % val)
 
 
 def _apprend_reformulation(conv_id: str, memoire, texte_reussi: str) -> None:
@@ -374,6 +463,20 @@ def _indexe_document(conv_id: str, nom: str, res: dict) -> None:
         pass
 
 
+def _regle_langue(code) -> dict:
+    """Fixe la langue de DISCUSSION (préférence globale du sélecteur d'interface). 'fr' = comportement natif."""
+    code = (str(code or "fr")).strip().lower()
+    try:
+        import langue
+        ok = code == "fr" or code in langue.LANGUES_SUPPORTEES
+    except Exception:
+        ok = code in ("fr", "en", "es", "de", "it", "pt")
+    if not ok:
+        return {"ok": False, "raison": "langue non supportée"}
+    repond._PREF_LANGUE_GLOBAL[0] = None if code == "fr" else code
+    return {"ok": True, "langue": code}
+
+
 def _regle_web(actif) -> dict:
     """Interrupteur INTERNET de l'interface (recherche web ATTRIBUÉE) : ACTIF par défaut, coupé d'un clic.
     Process-global : IA_WEB est relu à CHAQUE question (repond + assistant_nl) -> effet immédiat. La base
@@ -386,6 +489,8 @@ ROUTES = {
     ("GET", "/api/conversations"): lambda m, q, b: liste_conversations(m),
     ("GET", "/api/web"):           lambda m, q, b: {"ok": True, "actif": os.environ.get("IA_WEB") == "1"},
     ("POST", "/api/web"):          lambda m, q, b: _regle_web(bool(b.get("actif"))),
+    ("GET", "/api/langue"):        lambda m, q, b: {"ok": True, "langue": repond._PREF_LANGUE_GLOBAL[0] or "fr"},
+    ("POST", "/api/langue"):       lambda m, q, b: _regle_langue(b.get("langue")),
     ("GET", "/api/conversation"):  lambda m, q, b: lire_conversation(m, (q.get("id") or [""])[0]),
     ("POST", "/api/message"):      lambda m, q, b: ajoute_message(m, b.get("id", ""), b.get("texte", ""), pleine=_IA_PLEINE),
     ("POST", "/api/fichier"):      lambda m, q, b: importe_fichier(m, b.get("id", ""), b.get("nom", ""), b.get("contenu", "")),

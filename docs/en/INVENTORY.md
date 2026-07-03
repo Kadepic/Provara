@@ -16,7 +16,7 @@
 | `repond` | CONVERSATIONAL LAYER of the interface — making the assistant able to ANSWER, without ever inventing. | pret, est_fallback, repond |
 | `serveur` | LOCAL INTERFACE — small sovereign web server on top of the conversation memory. | liste_conversations, archive_conversation, desarchive_conversation, lire_conversation, ajoute_message, nouvelle_conversation, oublie_conversation, class Handler |
 
-## Capability library (engines & atoms) — 480 modules
+## Capability library (engines & atoms) — 492 modules
 
 | Module | Role | API |
 |---|---|---|
@@ -653,7 +653,7 @@
 | `ingere_worldbank` | WORLD BANK INGESTION -> datasets/lecteur/*.jsonl (ONLINE, run by hand). | ingere_population, ingere_indicateur, ingere_economie |
 | `ingere_zodiaque` | ZODIAC INGESTION — astrological sign -> element -> datasets/lecteur/element_zodiaque.jsonl (OFFLINE). | ingere |
 
-## Validators (FAUX=0 gate) — 671 modules
+## Validators (FAUX=0 gate) — 681 modules
 
 | Validator | What it proves |
 |---|---|
@@ -1328,3 +1328,22 @@
 | `valide_will_rogers` | VALIDATION of the WILL ROGERS PHENOMENON (will_rogers.py). |
 | `valide_winner_curse` | VALIDATION of the WINNER'S CURSE (winner_curse.py) — judged by calibration.py. |
 | `valide_worldbank_eco` | VALIDATES the World Bank eco/social ingestion (6 relations) + the ia.* bridges — ADVERSARIAL, FAUX=0. |
+## Conversational assistant — recent modules (cabled to the chat)
+
+These recent modules implement the conversational assistant wired into `interface/repond.py` (detailed in CAPABILITIES):
+
+| Module | Role |
+|---|---|
+| `grammaire_fr` | French grammatical analysis (part of speech, sentence type, SVO) over an embedded lexicon |
+| `formes_verbales` | conjugated-form recognition (Bescherelle models, 116k forms) |
+| `fonction_stats_nl` | natural-language statistics router (~46 Tier-2 functions) |
+| `explications` | self-contained concept/paradox explanations |
+| `extrait_pdf` | PDF text extraction (Tj/TJ + FlateDecode) |
+| `lecteur_document` | long-document Q&A (passage + page + table of contents) |
+| `ocr` | bounded OCR (templates + features + Otsu) of clean printed text |
+| `apprentissage_patrons` | reformulation learning + word-substitution rule induction |
+| `confiance` | user corrections (source required) + source banning |
+| `langue` | detection + multilingual factual answering (fr/en/es/de/it/pt) |
+| `veille_structure` | structured search (Wikidata/QLever/SPARQL) → VERIFIED fact + attributed free web |
+| `https_confiance` | trusted TLS egress (pinned-anchor fallback for the .exe) |
+| `telecharge_donnees` | installs the full base (~80M facts) from Releases |

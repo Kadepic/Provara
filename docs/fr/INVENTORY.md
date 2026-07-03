@@ -16,7 +16,7 @@
 | `repond` | COUCHE CONVERSATIONNELLE de l'interface — rendre l'assistant capable de RÉPONDRE, sans jamais inventer. | pret, est_fallback, repond |
 | `serveur` | INTERFACE LOCALE — petit serveur web souverain par-dessus la mémoire de conversation. | liste_conversations, archive_conversation, desarchive_conversation, lire_conversation, ajoute_message, nouvelle_conversation, oublie_conversation, class Handler |
 
-## Bibliothèque de capacités (moteurs & atomes) — 480 modules
+## Bibliothèque de capacités (moteurs & atomes) — 492 modules
 
 | Module | Rôle | API |
 |---|---|---|
@@ -653,7 +653,7 @@
 | `ingere_worldbank` | INGESTION BANQUE MONDIALE -> datasets/lecteur/*.jsonl (ONLINE, lancé à la main). | ingere_population, ingere_indicateur, ingere_economie |
 | `ingere_zodiaque` | INGESTION ZODIAQUE — signe astrologique -> élément -> datasets/lecteur/element_zodiaque.jsonl (OFFLINE). | ingere |
 
-## Validateurs (gate FAUX=0) — 671 modules
+## Validateurs (gate FAUX=0) — 681 modules
 
 | Validateur | Ce qu'il prouve |
 |---|---|
@@ -1328,3 +1328,22 @@
 | `valide_will_rogers` | VALIDATION du PHÉNOMÈNE DE WILL ROGERS (will_rogers.py). |
 | `valide_winner_curse` | VALIDATION de la MALÉDICTION DU VAINQUEUR (winner_curse.py) — jugée par calibration.py. |
 | `valide_worldbank_eco` | VALIDE l'ingestion éco/social Banque mondiale (6 relations) + les ponts ia.* — ADVERSE, FAUX=0. |
+## Assistant conversationnel — modules récents (câblés au chat)
+
+Ces modules récents implémentent l'assistant conversationnel branché dans `interface/repond.py` (documentés en détail dans CAPABILITIES) :
+
+| Module | Rôle |
+|---|---|
+| `grammaire_fr` | analyse grammaticale FR (nature, type de phrase, SVO) sur lexique embarqué |
+| `formes_verbales` | reconnaissance des formes conjuguées (modèles Bescherelle, 116k formes) |
+| `fonction_stats_nl` | routeur stats en langage naturel (~46 fonctions du Palier 2) |
+| `explications` | explications de concepts/paradoxes auto-contenus |
+| `extrait_pdf` | extraction de texte PDF (Tj/TJ + FlateDecode) |
+| `lecteur_document` | interrogation de documents longs (passage + page + sommaire) |
+| `ocr` | OCR borné (gabarits + traits + Otsu) du texte imprimé net |
+| `apprentissage_patrons` | apprentissage de reformulations + induction de règles de substitution |
+| `confiance` | corrections utilisateur (avec source obligatoire) + bannissement de sources |
+| `langue` | détection + réponse factuelle multilingue (fr/en/es/de/it/pt) |
+| `veille_structure` | recherche structurée (Wikidata/QLever/SPARQL) → fait VÉRIFIÉ + web libre attribué |
+| `https_confiance` | sortie TLS fiable (repli ancres épinglées pour le .exe) |
+| `telecharge_donnees` | installe la base complète (~80M faits) depuis les Releases |

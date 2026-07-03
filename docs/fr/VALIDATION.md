@@ -9,13 +9,13 @@ FAUX = 0 est l'invariant fondateur de VERAX : le système n'affirme jamais quelq
 Elle s'appelle ainsi :
 
 ```bash
-python3 _nonreg.py --jobs 8      # attendu sur la base complète : 669/669
+python3 _nonreg.py --jobs 8      # attendu sur la base complète : 681/681
 ```
 
 À la fin, elle imprime une ligne de synthèse et rend un code de sortie :
 
 ```
-=== NON-RÉG : 669/669 PASS (... via cache) en Xs ===
+=== NON-RÉG : 681/681 PASS (... via cache) en Xs ===
 ```
 
 Le code de retour vaut `0` si et seulement si **aucun** validateur n'a échoué ; il vaut `1` dès qu'un seul échoue (`raise SystemExit(main())`). Il n'y a pas de demi-mesure : un unique fait faux qui entre dans le système fait tomber un validateur, donc fait rougir la gate.
@@ -36,9 +36,9 @@ Le cache est protégé contre trois pièges classiques, ce qui le rend **sound**
 
 ## Combien de validateurs, et lesquels
 
-La gate protège **669 validateurs actifs** (`valide_*.py`) : c'est la gate de référence, **669/669**. Ce nombre correspond exactement aux fichiers `valide_*.py` présents à la racine du dépôt (moins `valide_commun.py`, qui est un module de *helpers* partagés explicitement exclu — ce n'est pas un validateur), plus le validateur d'interface `interface/valide_interface.py`.
+La gate protège **681 validateurs actifs** (`valide_*.py`) : c'est la gate de référence, **681/681**. Ce nombre correspond exactement aux fichiers `valide_*.py` présents dans le dossier `tests/` (moins `valide_commun.py`, qui est un module de *helpers* partagés explicitement exclu — ce n'est pas un validateur), plus le validateur d'interface `interface/valide_interface.py`.
 
-Sur le disque, on compte au total environ **822 fichiers `valide_*.py`** : les 669 actifs, plus ~153 fichiers archivés sous `_archive_2026-07-02/` (générations antérieures, délibérément hors gate).
+Sur le disque, les **681 fichiers `valide_*.py`** vivent dans le dossier `tests/` (il n'y a pas de dossier d'archive séparé).
 
 La sélection est **auto-découvrante** : `liste_validateurs()` maintient une liste curée (qui fixe l'ordre et repère les tests lourds), puis **ajoute automatiquement tout `valide_*.py` de la racine** non encore listé. Conséquence directe pour FAUX = 0 : aucune capacité réelle ne peut rester « orpheline » hors du filet ; tout nouveau validateur déposé est protégé d'office.
 

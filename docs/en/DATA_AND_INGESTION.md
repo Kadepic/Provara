@@ -165,7 +165,7 @@ entirely off-network and without the heavy reader.
 
 ## 6. The families of ingestion scripts
 
-There are ~150 `ingere_*.py` scripts. They all converge on `publie()` (hence the same guards),
+There are 147 `ingere_*.py` scripts. They all converge on `publie()` (hence the same guards),
 but they group into families according to what they allow to be learned:
 
 - **Wikidata at scale (WDQS + QLever).** The core of the volume. `ingere_wikidata.py`
@@ -210,17 +210,17 @@ writes the `.jsonl`, and reminds you to validate offline.
 
 ```bash
 # Wikidata WDQS — un ou plusieurs domaines en argument (défaut : geo)
-python3 ingere_wikidata.py geo
-python3 ingere_wikidata.py elements sommets
+python3 ingestion/ingere_wikidata.py geo
+python3 ingestion/ingere_wikidata.py elements sommets
 
 # Wikidata via le miroir QLever (défaut : tous les domaines)
-python3 ingere_qlever.py
+python3 ingestion/ingere_qlever.py
 
 # Propriétés des éléments (nécessite d'abord symbole_chimique.jsonl, cf. ingere_wikidata elements)
-python3 ingere_elements_ptjson.py
+python3 ingestion/ingere_elements_ptjson.py
 
 # Indicateurs Banque mondiale (population + éco/social)
-python3 ingere_worldbank.py
+python3 ingestion/ingere_worldbank.py
 
 # Table de convention hors-ligne
 python3 ingere_danses.py

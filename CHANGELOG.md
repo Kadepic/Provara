@@ -271,3 +271,158 @@
   Portugal » = le MÉCANISME de rejeu « oui » est vérifié + FAUX=0 (fait réel si données, sinon abstention
   honnête en gate léger — jamais une invention).
 - valide_assistant_nl **77/77**. Non-régression : verifie_demo 31/31, conversation 9/9, veille 24/24, sources OK.
+
+### Session 3 nonies (2026-07-03 nuit) — SYSTÈME DE CONFIANCE FACTUEL (mission 1) + OCR reverti proprement
+- **OCR** : correction honnête de mon erreur « besoin d'un modèle » — l'OCR classique est model-free (gabarits
+  multi-polices + traits structurels). Mon essai rapide de généralisation par traits (topologie/zonage)
+  RÉGRESSAIT (confusion 0/O, fausses lettres sur forte déformation = viol FAUX=0) → REVERTI au borné solide
+  (20/20) + Otsu conservé. L'OCR généraliste model-free devient un CHANTIER DÉDIÉ (bibliothèque de gabarits de
+  polices réelles + traits soignés + gestion du bruit), pas un patch.
+- **`src/confiance.py`** (18/18) — l'utilisateur est un JUGE RÉEL :
+  · CORRECTIONS AUTORITAIRES : « c'est faux, c'est X » (visant la dernière question) enregistre X comme réponse
+    autoritaire ; re-poser la question rend X, ATTRIBUÉ (« tu me l'avais corrigé »). PRIME sur connaissance/web/
+    mémoire (l'utilisateur juge la réalité). Persistant, effaçable RGPD.
+  · « OUBLIE CE SITE X » : bannit un domaine (sous-domaines inclus) — retiré des recherches (`veille_structure`).
+- Câblé : `repond` (correction consultée en (0conf) priorité max ; « oublie ce site » en (0ban)) ; `serveur`
+  (capture « c'est faux, c'est X » vs dernière question) ; `veille_structure` (filtre les domaines bannis).
+- La concordance au niveau du FAIT existe (`veille_corroboration` : N sources indépendantes + juge réel, 26/26) ;
+  le chat affiche déjà la concordance de domaines (« N sources en parlent »). La concordance de VALEURS via
+  sources structurées multiples reste une intégration plus profonde (notée honnêtement).
+- Gates : confiance 18/18, ocr 20/20, verifie_demo 31/31, conversation 9/9, assistant_nl 77/77,
+  veille_corroboration 26/26, capacites 19/19. Non-régression : questions non corrigées répondent normalement.
+
+### Session 3 decies (2026-07-03) — CORRECTION UTILISATEUR EXIGE UNE SOURCE (trou FAUX=0 fermé)
+- Faille signalée par Yohan : une correction NUE (« capitale de la France = Toulouse ») écrasait une vérité.
+  Corrigé : `confiance.corrige` EXIGE une source ; correction nue -> VERAX CHALLENGE (« j'avais X ; sur quelle
+  SOURCE t'appuies-tu ? »), tient bon sans source (« je m'en tiens à ce que je peux vérifier »), et une fois
+  sourcée l'attribue (« d'après la source que tu m'as indiquée »), jamais comme sa propre vérité. État en attente
+  côté serveur (la source peut arriver au tour suivant). valide_confiance 20/20.
+
+### Session 3 undecies (2026-07-03) — LANGUE : réponse factuelle en ANGLAIS (mission 3, fondation)
+- **`src/langue.py`** (13/13, model-free) : (1) DÉTECTION de langue par signatures de mots-outils (fr/en/es/de) ;
+  (2) TRADUCTION BORNÉE d'une question factuelle EN -> requête FR (relations capital/population/currency/language/
+  area/continent ; pays EN->FR + identité pour les valeurs neutres) ; (3) résolution par le pipeline VÉRIFIÉ FR ;
+  (4) habillage de la réponse en anglais. FAUX=0 : la valeur vient toujours du vérifié ; relation/entité inconnue
+  -> None (jamais d'invention). Câblé `repond` (`_cap_langue_en` avant la clarification bilingue).
+  Vérifié : « what is the capital of Spain? » -> « The capital of Spain is Madrid. » ; le FR ne régresse pas.
+  Message de bascule désormais bilingue. Portée déclarée : questions factuelles bornées ; la traduction LIBRE de
+  texte reste un chantier (dictionnaire bilingue + règles de transfert, model-free mais volumineux).
+
+### Session 3 duodecies (2026-07-03) — finitions des chantiers
+- **LANGUE étendue** : plus de relations EN (indicatif, point culminant, « how many people live in »), traduction
+  des VALEURS linguistiques FR→EN (portugais→Portuguese, europe→Europe…). langue 13/13.
+- **COLD-LOAD** : déjà atténué par le préchargement en tâche de fond (`_prechauffe` daemon dans serveur.main) —
+  l'UI est instantanée, le lecteur charge pendant que l'utilisateur tape. Optimisation en place, confirmée.
+- **`--noconsole`** : désormais une OPTION de build (`VERAX_NOCONSOLE=1` → release sans fenêtre ; console par
+  défaut pour les diagnostics de dev). VERAX.spec pilote `console` par la variable d'environnement.
+- **DOCS** : `docs/{fr,en}/CAPABILITIES.md` mis à jour — nouvelle section « Assistant conversationnel » listant
+  grammaire, conjugaison, stats NL, explications, lecture de documents/OCR, invention, géo, multi-sources,
+  apprentissage, système de confiance, anglais (avec les frontières honnêtes déclarées).
+- CHANTIERS RESTANTS (honnêtes, gros/bloqués sur ressources) : OCR généraliste (nécessite une bibliothèque de
+  gabarits de polices RÉELLES — l'approche traits seule régressait/FAUX=0) ; traduction LIBRE de texte
+  (dictionnaire bilingue + règles de transfert, model-free mais volumineux). Le reste des missions est livré.
+
+### Session 3 terdecies (2026-07-03) — MULTILINGUE (max de langues) + SÉLECTEUR d'interface
+- **`langue.py` refondu MULTILINGUE et extensible** (25/25) : détection fr/en/es/de/it/pt ; PARSING séparé du
+  RENDU (une question peut être écrite dans une langue et répondue dans une autre). Config par DONNÉES
+  (relations, noms de pays, gabarits, valeurs) → ajouter une langue = une entrée, aucune logique. VERAX répond
+  aux questions factuelles (capitale/population/monnaie/langue/superficie) dans 5 langues, via le pipeline
+  vérifié FR. FAUX=0 : la valeur vient du vérifié.
+- **Bascule** : « réponds en espagnol » (détecté, `demande_de_switch`) ET **sélecteur de langue dans l'interface**
+  (`<select>` fr/en/es/de/it/pt) → endpoint `/api/langue` (préférence globale `repond._PREF_LANGUE_GLOBAL`) +
+  **localisation des libellés UI** (sous-titre, boutons, placeholder, thème) dans les 6 langues. Une question FR
+  est alors répondue dans la langue choisie ; une question écrite dans une langue supportée est auto-détectée.
+- Vérifié : réglage « de » → « quelle est la capitale de l'Italie ? » → « Die Hauptstadt von Italie ist Rome. » ;
+  retour « fr » → pipeline natif. Gates : verifie_demo 31/31, conversation 9/9, capacites 19/19, langue 25/25.
+
+### Session 3 quaterdecies (2026-07-03) — OCR : recherche complète + jeu de traits classique
+- Recherche internet du state-of-the-art OCR SANS modèle : deux voies (gabarits ; extraction de caractéristiques).
+  Implémenté le toolkit CLASSIQUE complet (`ocr.py`) : traits STRUCTURELS (nombre de trous/Euler), STATISTIQUES
+  (zonage 4×4, profils H/V, croisements H/V, aspect) et **moments de Hu** (invariants échelle/rotation), comparés
+  au plus proche PROTOTYPE (police + variantes dilatée/érodée), en REPLI du gabarit.
+- Vrai gain FAUX=0 : **marge d'ambiguïté** sur le gabarit — un glyphe qui ressemble autant à deux caractères
+  (ex. un E déformé ≈ E ou !) → « ? » au lieu d'un choix arbitraire. Abstention stricte aussi côté traits
+  (topologie exigée identique + seuil + marge ; glyphes triviaux exclus). valide_ocr 20/20 préservé.
+- LIMITE HONNÊTE confirmée par la recherche : la généralisation à des polices ARBITRAIRES exige une bibliothèque
+  de gabarits de VRAIES polices (données) — impossible à fabriquer sans fichiers de police ; et un glyphe
+  détruit/fusionné n'est récupérable par AUCUNE OCR (artefact de segmentation). Portée FAUX=0 = texte imprimé net
+  (police régulière, fort contraste via Otsu), ce qui est livré et gaté. Le multi-police = chantier « données de
+  polices ».
+
+### Session 3 quindecies (2026-07-03) — mesures fiables, base complète locale, UI multilingue, docs, analyse
+- **BASE COMPLÈTE débloquée localement** : extraite dans C:\Users\yohan\.verax\datasets\lecteur → le .exe charge
+  **71,9 M faits / 1387 relations** (vérifié via diagnostic), plus de 404. Message 404 amélioré (non alarmant).
+  Le 404 public reste : Yohan doit publier la Release GitHub (asset datasets_complets.tar.gz).
+- **MESURES RESSOURCES fiables** (`mesure_ressources.py`) : échantillon 1,1 M = 75 Mo RAM ; base complète 71,9 M
+  = **3,3 Go RAM colonnaire (~41 o/fait)**, lookup ~0,004 ms (235k req/s). Le « sous 1 Go » d'antan était une
+  base ~858k faits, PAS les 72M. README corrigé (le « 73M en 520 Mo » était faux).
+- **UI MULTILINGUE COMPLÈTE** : localisation des 6 langues de TOUT l'affichage (sous-titre, boutons, tooltips,
+  accueil, placeholders, Internet, Envoyer, corbeille, messages dynamiques) ; sélecteur + `/api/langue` ; réponses
+  factuelles dans la langue. **Réorganisation** : gauche = Nouvelle conversation + Corbeille ; haut-droite =
+  Internet + Mode sombre + Langue. JS validé (node --check).
+- **OCR** : recherche complète du SOTA model-free ; toolkit classique implémenté (Hu/Euler/zonage/profils/
+  croisements) + marge d'ambiguïté FAUX=0 sur le gabarit ; limite honnête = multi-police nécessite des données de
+  polices. 20/20 préservé.
+- **DOC nettoyée** (audit complet) : supprimé résidu docs/_tr_en ; corrigé compteurs (669→681, 480→492), chemins
+  ingestion/, chiffres morts (822/153/_archive), RAM/73M ; ajouté modules récents à INVENTORY.
+- **`--noconsole`** option de build (VERAX_NOCONSOLE=1).
+- **ANALYSE DES MANQUES** livrée (`docs/ANALYSE_MANQUES.md`) : P1 raisonnement compositionnel (levier n°1),
+  P2 scanner d'inventions (vision ultime), P3 fraîcheur, P4 compréhension profonde, P5 traduction libre,
+  P6 perf/daemon, P7 multimodal, P8 confiance.
+
+### Session 3 sexdecies (2026-07-03) — P1 : RAISONNEMENT COMPOSITIONNEL (levier n°1)
+- `interface/repond.py` : les relations imbriquées « X de Y de Z » ne sont plus REFUSÉES mais COMPOSÉES —
+  résout l'inner (Y de Z) → entité E VÉRIFIÉE, puis l'outer (X de E). FAUX=0 : chaque maillon = lookup EXACT
+  (pas de correction floue dans la chaîne, qui propagerait une erreur), abstention si un maillon manque.
+  Décuple les réponses sur les 71,9 M faits déjà présents, sans ajouter de donnée.
+- BUG FAUX=0 CORRIGÉ au passage : « continent du pays de Paris » donnait « Antarctique » (le lookup flou mangeait
+  un maillon) — « pays » n'était pas reconnu comme relation (filtré par _GENERIQUES). Noyau de relations ajouté
+  APRÈS le filtre → détection correcte → composition/abstention, jamais une fausse réponse.
+- `valide_composition 9/9` (mécanisme prouvé à résolveur mocké). Non-régression : verifie_demo 31/31,
+  conversation 9/9, capacites 19/19, assistant_nl 77/77. LIMITE notée : la valeur réelle dépend de la résolution
+  NL→relation de donnee_nl (« pays de X » ne matche pas encore la relation « pays_de_capitale ») — chantier suivant.
+
+### Session 3 septendecies (2026-07-03) — P2 : SCANNER D'INVENTIONS (l'OBJECTIF FINAL câblé au chat)
+- `substrat_reel.py` (gap-engine sur 71M faits, 3 gardes FAUX=0 : typage mesuré + témoin re-vérifié + anti-
+  fausse-nouveauté) était construit mais NON câblé. Branché au chat via `_cap_invention_composite` (repond) sur
+  `ia.inventions_composites(type)` : « quelles inventions/relations manquent pour les pays ? » / « que peut-on
+  dériver sur X ? » → liste les attributs COMPOSITES dérivables (relation nouvelle « pont ∘ cible », témoin
+  re-vérifié). Ex. « pays → (capitale ∘ latitude_capitale) ». Chaque valeur = fait re-vérifié, jamais inventé ;
+  utilité non jugée (« reste à évaluer »). Types reconnus : pays/éléments/villes/capitales/astres.
+- Vérifié e2e sur l'échantillon (2 candidats pour « pays ») ; non détourne pas une question factuelle ni le
+  moteur de besoin. Non-régression : composition 9/9, capacites 19/19, verifie_demo 31/31. Sur la base complète
+  (71,9M), l'exploration est bien plus riche.
+
+### Session 3 octodecies (2026-07-03) — P1+ : résolution par FAMILLE de relations (la composition délivre)
+- Le composeur essaie désormais, quand le lookup NL exact échoue, la FAMILLE de relations à tête donnée
+  (« pays de X » → toute relation `pays_*` où X est une entité), avec UNICITÉ exigée (FAUX=0 : ambigu → None).
+  Résultat : « continent du pays de Abou Dabi » → « Asie » (vraie composition 2-hop sur les données, chaîne
+  montrée). valide_composition 9/9, non-régression complète (31/31, 9/9, 19/19, 77/77).
+
+### Session 3 novemdecies (2026-07-03) — résolution par FAMILLE aussi sur les lookups SIMPLES
+- Le repli famille (unicité FAUX=0) est aussi tenté sur une question simple « rel de entité » quand le DATA rend
+  HORS : « continent de la France » → Europe (était HORS), « pays de Abou Dabi » → Émirats. N'affecte jamais une
+  réponse déjà résolue. Non-régression : verifie_demo 31/31, conversation 9/9, assistant_nl 77/77, capacites 19/19,
+  composition 9/9.
+
+### Session 3 vigies (2026-07-03) — P3 : FRAÎCHEUR (source live préférée pour le volatil)
+- `repond._est_volatil` + route : une question à marqueur temporel (« président ACTUEL », « DERNIER vainqueur »,
+  « en 2026 », « current/latest ») préfère la source LIVE (Wikidata via veille_structure) à la base STATIQUE qui
+  peut être périmée — quand le web est autorisé (opt-in). Repli sur la base si live indisponible. FAUX=0 inchangé
+  (live = vérifié + attribué). valide_fraicheur 10/10, non-régression complète (31/31, 9/9, 19/19).
+- P4 (multi-tours/coréférence) VÉRIFIÉ déjà en place (« et sa monnaie » → yen, « et la France » → substitue
+  l'entité, « et sa capitale » → Paris). P6 (cold-load) : le daemon lecteur est Unix-socket (Linux, pas le .exe) ;
+  le .exe précharge déjà en fond (cold-load masqué pendant l'accueil) → pas de gain .exe à ajouter.
+
+### Session 3 vicies (2026-07-03) — P5 TRADUCTION + P7 OCR MINUSCULES
+- P5 TRADUCTION `src/traduction.py` (valide_traduction 8/8) : mot-à-mot ASSISTÉE FR↔EN. Source RICHE = table
+  `concept_du_mot` de la base complète (lexique cross-lingue ~165k mots dont 20k anglais : « dog (anglais) →
+  chien ») utilisée en priorité (any→FR direct ; FR→cible via index inverse lazy), REPLI = dictionnaire curé
+  embarqué (~350 mots) hors-ligne. FAUX=0 : mot inconnu gardé tel quel + signalé, jamais inventé ; sortie
+  étiquetée « mot-à-mot assisté — à affiner ». Câblé `_cap_traduction` (« traduis X en anglais »). Ne charge
+  JAMAIS la base (utilise le lecteur seulement s'il est déjà préchargé). NB Yohan : concept_du_mot existait —
+  je l'avais raté au 1er balayage, corrigé.
+- P7 OCR MINUSCULES `src/ocr.py` (valide_ocr 20→28/28) : ajout des 26 minuscules 5×7. CLÉ = les x-height ont le
+  HAUT VIDE et sont échantillonnées sur la hauteur de LIGNE → la position verticale distingue « o »/« O »,
+  « c »/« C »… sans logique en plus. `rend()` ne force plus `.upper()`. Round-trip mixte parfait (« Hello World »,
+  « le chat dort »). Le texte imprimé RÉEL (surtout minuscule) est enfin lisible. 20/20 majuscules préservé.

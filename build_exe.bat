@@ -8,7 +8,9 @@ for /f %%i in ('git rev-parse --short=12 HEAD 2^>nul') do set "VERAX_SHA=%%i"
 if not defined VERAX_SHA set "VERAX_SHA=build-local"
 > VERSION_BUILD.txt echo %VERAX_SHA%
 py -m pip install --upgrade pyinstaller
-py -m PyInstaller --onefile --name VERAX ^
+set "WINFLAG="
+if "%VERAX_NOCONSOLE%"=="1" set "WINFLAG=--noconsole"
+py -m PyInstaller --onefile --name VERAX %WINFLAG% ^
   --paths src --paths ingestion --paths interface ^
   --hidden-import _precharge_verax ^
   --hidden-import ia --hidden-import lecteur --hidden-import base_faits ^

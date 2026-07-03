@@ -131,9 +131,13 @@ def _attr_heads() -> set:
     global _ATTR_HEADS_CACHE
     if _ATTR_HEADS_CACHE is None:
         heads = {r.split("_")[0] for r in _relations()}
+        heads = {h for h in heads if len(h) >= 4 and h not in _GENERIQUES}
+        # NOYAU de relations ajouté APRÈS le filtre : « pays », « continent »… sont des RELATIONS légitimes même
+        # si présentes dans _GENERIQUES — sans ça, « continent du pays de Paris » n'était pas vu comme imbriqué.
         heads |= {"capitale", "monnaie", "langue", "numero", "masse", "population", "continent", "drapeau",
-                  "hymne", "gentile", "superficie", "altitude", "diametre", "temperature"}
-        _ATTR_HEADS_CACHE = {h for h in heads if len(h) >= 4 and h not in _GENERIQUES}
+                  "hymne", "gentile", "superficie", "altitude", "diametre", "temperature", "pays", "region",
+                  "auteur", "compositeur", "realisateur", "createur", "inventeur", "fondateur"}
+        _ATTR_HEADS_CACHE = heads
     return _ATTR_HEADS_CACHE
 
 
@@ -149,6 +153,78 @@ def _est_relation_imbriquee(texte: str) -> bool:
                 and re.search(rf"\b{re.escape(inner)}\s+(?:de|du|des|de la|de l)\b", qn)):
             return True
     return False
+
+
+# « X de [la] Y de [la] Z » : outer=X, inner=Y (relation), Z=entité (possiblement multi-mot).
+_NEST_PARSE = re.compile(
+    r"^\s*(?:(?:quel(?:le)?s?|quoi|qu['e ]?est[- ]?ce que|c['e ]?est|donne(?:s|z)?[- ]?moi|dis[- ]?moi|"
+    r"peux[- ]?tu(?:\s+me)?|sais[- ]?tu|connais[- ]?tu)\s+)*"
+    r"(?:est\s+|la\s+|le\s+|les\s+|l['] ?)*"
+    r"([\wà-ÿ]+)\s+(?:de\s+la|de\s+l['] ?|du|des|de)\s+(?:la\s+|le\s+|les\s+|l['] ?)?"
+    r"([\wà-ÿ]+)\s+(?:de\s+la|de\s+l['] ?|du|des|de)\s+(?:la\s+|le\s+|les\s+|l['] ?)?(.+?)\s*\??\s*$", re.I)
+
+
+def _val_par_famille(ia, rel_head: str, entite: str):
+    """Résout « rel_head de entité » via la FAMILLE de relations à tête `rel_head` (« pays » -> pays_de_capitale,
+    pays_de_ville…) : lookup EXACT de l'entité dans chaque relation de la famille. FAUX=0 : ne renvoie une valeur
+    QUE si elle est UNIQUE across la famille (si deux relations donnent des valeurs différentes = ambigu -> None).
+    Permet à « pays de Paris » de trouver la relation `pays_de_capitale` sans correction floue."""
+    try:
+        lec = getattr(ia, "_LEC", None)
+        lec = getattr(lec, "LECTEUR", None) if lec else None
+        if lec is None:
+            return None
+        h = _normalise(rel_head)
+        rels = [r for r in lec.relations() if r == h or r.split("_")[0] == h or r.startswith(h + "_")]
+        vals = set()
+        for r in rels:
+            f = lec.cherche(r, entite)
+            if f is not None:
+                v = getattr(f, "valeur", None)
+                if v is not None:
+                    vals.add(v)
+        return next(iter(vals)) if len(vals) == 1 else None
+    except Exception:
+        return None
+
+
+def _val_verifiee(ia, verifie, requete: str, rel_head: str = None, entite: str = None):
+    """Valeur VÉRIFIÉE d'une requête « relation de entité » par lookup EXACT (PAS de correction floue : dans une
+    CHAÎNE, une correction floue d'un maillon propagerait une erreur — FAUX=0 exige l'exactitude). Essaie le
+    lookup NL exact, puis la FAMILLE de relations (rel_head/entité) si fournie. None si non résolu."""
+    try:
+        statut, fait = ia.donnee_nl(requete)
+        if fait is not None and statut == verifie:
+            return getattr(fait, "valeur", None)
+    except Exception:
+        pass
+    if rel_head and entite:
+        return _val_par_famille(ia, rel_head, entite)
+    return None
+
+
+def _compose_relations(texte: str):
+    """RAISONNEMENT COMPOSITIONNEL « X de Y de Z » : résout l'INNER (Y de Z) -> entité E vérifiée, puis l'OUTER
+    (X de E) -> valeur vérifiée. FAUX=0 : chaque maillon est un lookup VÉRIFIÉ ; si un maillon manque -> None
+    (abstention honnête, jamais une composition inventée). Renvoie la réponse + la chaîne de dérivation."""
+    m = _NEST_PARSE.match(texte)
+    if not m:
+        return None
+    outer, inner, z = m.group(1).strip(), m.group(2).strip(), m.group(3).strip(" ?.\"'«»")
+    heads = _attr_heads()
+    nn = _normalise
+    if nn(inner) not in heads or nn(outer) in _NEST_SCAFFOLD or nn(outer) not in heads:
+        return None                                   # inner ET outer doivent être de vraies relations
+    ia, verifie = _charge_ia()
+    if not ia:
+        return None
+    e = _val_verifiee(ia, verifie, "%s de %s" % (inner, z), rel_head=inner, entite=z)     # maillon 1 : Y de Z = E
+    if not e:
+        return None
+    v = _val_verifiee(ia, verifie, "%s de %s" % (outer, e), rel_head=outer, entite=e)     # maillon 2 : X de E
+    if not v:
+        return None
+    return "%s  (en composant : %s de %s = %s, puis %s de %s)" % (v, inner, z, e, outer, e)
 
 # Cache du module lourd (chargé au plus une fois, à la première vraie demande en mode IA pleine).
 _IA = None
@@ -530,6 +606,16 @@ def _connaissance_verifiee(question: str, conv_id: str | None = None) -> str | N
             _DERNIER_QUESTION[conv_id] = question  # mémorise la question résolue (pour la continuation type B)
         prefixe = f"(en comprenant « {correction} ») " if correction else ""
         return f"{prefixe}{fait.valeur}"          # source vérifiée en interne, non affichée (préférence Yohan)
+    # REPLI FAMILLE : « continent de France » peut ne pas matcher un gabarit direct alors que la relation existe
+    # sous un nom de famille (continent_pays…). On parse « rel de entité » et on essaie la famille (unicité exigée,
+    # FAUX=0). N'affecte JAMAIS une réponse déjà résolue (on n'arrive ici que si le DATA a rendu HORS).
+    mfam = re.match(r"^\s*(?:quel(?:le)?s?\s+(?:est|sont)\s+)?(?:la\s+|le\s+|les\s+|l['] ?)?"
+                    r"([\wà-ÿ]+)\s+(?:de\s+la|de\s+l['] ?|du|des|de)\s+(?:la\s+|le\s+|les\s+|l['] ?)?(.+?)\s*\??\s*$",
+                    question, re.I)
+    if mfam and _normalise(mfam.group(1)) in _attr_heads():
+        vf = _val_par_famille(ia, mfam.group(1).strip(), mfam.group(2).strip(" ?.\"'«»"))
+        if vf:
+            return str(vf)
     # Le DATA n'a rien : tenter un SOUS-SYSTÈME FONCTION (morse/OTAN/masse molaire/complément ADN). Sound : le
     # moteur renvoie VÉRIFIÉ ou HORS (jamais inventé). On exige un mot-clé fort -> aucune question DATA mal routée.
     return _fonction_calculee(question)
@@ -675,6 +761,19 @@ def _sujet_de(texte: str) -> str:
     """Sujet (entité) d'une question = ce qui suit la dernière préposition (« capitale du JAPON » -> « japon »)."""
     m = re.search(r"\b(?:de la|de l'|de l|du|des|de|en|au|aux)\s+(.+?)[\s?]*$", texte.strip(), re.IGNORECASE)
     return m.group(1).strip() if m else ""
+
+
+_VOLATIL_RE = re.compile(
+    r"\b(actuel|actuelle|actuels|actuelles|actuellement|aujourd'?hui|maintenant|désormais|present|présentement|"
+    r"current|latest|dernier|dernière|derniers|dernières|récent|récente|en ce moment|à ce jour|cette année|"
+    r"en 20\d\d)\b", re.I)
+
+
+def _est_volatil(texte: str) -> bool:
+    """Question à réponse POTENTIELLEMENT PÉRIMÉE dans la base statique (« président ACTUEL », « DERNIER
+    vainqueur », « en 2026 ») : on préférera la source LIVE (fraîcheur) quand le web est autorisé. FAUX=0
+    inchangé (la source live est vérifiée + attribuée ; repli sur la base si indisponible)."""
+    return bool(_VOLATIL_RE.search(texte))
 
 
 def _est_continuation(texte: str) -> bool:
@@ -930,11 +1029,10 @@ _TOKENS_EN = frozenset(
     "the is are was were you your how what who where when why which do does did can could would should "
     "please hello hi hey thanks thank of for with want need help make give tell know my we they i im it its "
     "this that have has had will would not dont cant isnt whats".split())
-_MSG_ANGLAIS = ("Pour l'instant je comprends surtout le FRANÇAIS — reformule en français et je réponds avec du "
-                "vérifié (« capitale de l'Espagne », « population du Japon »…).\n"
-                "I mostly understand French for now — please ask in French and I'll answer with verified facts.")
-
-
+_MSG_ANGLAIS = ("I can already answer factual questions in English (« what is the capital of X », « the currency "
+                "of Y »…). For anything else I'm still strongest in FRENCH — rephrase in French and I'll answer "
+                "with verified facts. / Pour l'instant je comprends surtout le FRANÇAIS — reformule en français et "
+                "je réponds avec du vérifié.")
 def _semble_anglais(texte: str) -> bool:
     toks = _normalise(texte).split()
     if len(toks) < 2:
@@ -1014,6 +1112,8 @@ def _diagnostic_connaissance(texte: str):
 
 
 _WEB_MODULE_SIGNALE = False   # échec d'import de la recherche web déjà affiché ? (une fois, pas à chaque question)
+_PREF_LANGUE: dict = {}       # conv_id -> code langue préféré (« réponds en X ») pour les tours suivants
+_PREF_LANGUE_GLOBAL = [None]  # préférence GLOBALE posée par le sélecteur de l'interface (/api/langue)
 
 
 def _recherche_structuree(question: str):
@@ -1275,6 +1375,133 @@ _LANG_INDICES = [("python", re.compile(r"\b(import |def |print\(|elif |lambda |s
                  ("sql", re.compile(r"\b(SELECT|INSERT|UPDATE|DELETE)\b.+\b(FROM|INTO|SET|WHERE)\b", re.I))]
 
 
+def _cap_langue(texte: str, lang: str = None):
+    """Question factuelle dans une langue étrangère supportée (en/es/de/it/pt) -> réponse DANS cette langue via
+    le pipeline vérifié FR. None si non reconnue. Lourd (lecteur) : mode plein."""
+    _ia, _ = _charge_ia()
+    if not _ia:
+        return None
+
+    def _resolveur(requete_fr):
+        try:
+            r = _ia.donnee_nl(requete_fr)
+            if r and r[0] == "verifie":
+                return getattr(r[1], "valeur", None)
+        except Exception:
+            return None
+        return None
+    try:
+        import langue
+        return langue.repond_langue(texte, _resolveur, lang=lang)
+    except Exception:
+        return None
+
+
+_RE_INVENTION_COMPO = re.compile(
+    r"\b(?:invention|inventions|relations?|attributs?)\b.*?\b(?:manqu|composé|compose|dériv|derivab|nouvelle)\w*\b|"
+    r"\b(?:que (?:peut[- ]on|pourrait[- ]on)|qu'?est[- ]ce qu'?on peut) (?:dériver|deriver|inventer|composer)\b|"
+    r"\bqu'?est[- ]ce qui manque\b", re.I)
+_TYPES_COMPO = {"pays": "pays", "element": "elements", "elements": "elements", "élément": "elements",
+                "éléments": "elements", "ville": "villes", "villes": "villes", "capitale": "capitales",
+                "capitales": "capitales", "astre": "astres", "astres": "astres", "planete": "astres",
+                "planète": "astres", "etoile": "astres", "étoile": "astres"}
+
+
+_RE_TRADUIRE = re.compile(
+    r"(?:tradui[stre]+|traduction\s+de|comment\s+(?:dit|dire|on\s+dit)[- ]on|comment\s+se\s+dit|translate)\b"
+    r"(.*?)\b(?:en|in|to|vers)\s+(anglais|english|français|francais|french|espagnol|spanish|allemand|german|"
+    r"italien|italian|portugais|portuguese)\s*\??\s*$", re.I | re.S)
+_CIBLE_TRAD = {"anglais": "en", "english": "en", "français": "fr", "francais": "fr", "french": "fr",
+               "espagnol": "es", "spanish": "es", "allemand": "de", "german": "de", "italien": "it",
+               "italian": "it", "portugais": "pt", "portuguese": "pt"}
+
+
+def _cap_traduction(texte: str):
+    """« traduis <texte> en anglais » -> traduction MOT-À-MOT ASSISTÉE (concept_du_mot + dictionnaire curé).
+    FAUX=0 : un mot inconnu est gardé tel quel et signalé, jamais inventé ; sortie étiquetée « mot-à-mot »."""
+    m = _RE_TRADUIRE.search(texte.strip())
+    if not m:
+        return None
+    a_traduire = m.group(1).strip().strip(" :«»\"'")
+    cible = _CIBLE_TRAD.get(m.group(2).lower())
+    if not a_traduire or not cible:
+        return None
+    try:
+        import traduction
+    except Exception:
+        return None
+    if cible not in ("en", "fr"):        # concept_du_mot couvre plus de langues mais on garantit FR<->EN curé
+        tr, inconnus = traduction.traduit(a_traduire, cible)
+    else:
+        tr, inconnus = traduction.traduit(a_traduire, cible)
+    if not tr:
+        return None
+    note = "  (traduction mot-à-mot assistée — à affiner)"
+    if inconnus:
+        note += "\nMots non trouvés (laissés tels quels, non devinés) : " + ", ".join(inconnus)
+    return "%s%s" % (tr, note)
+
+
+def _cap_invention_composite(texte: str):
+    """OBJECTIF FINAL : « quelles inventions/relations manquent pour les X » -> attributs COMPOSITES dérivables
+    (relations nouvelles « pont ∘ cible » avec témoin re-vérifié) via ia.inventions_composites (substrat_reel).
+    Lourd (parcourt le graphe de faits). FAUX=0 : chaque composite est un fait re-vérifié, jamais inventé."""
+    if not _RE_INVENTION_COMPO.search(texte):
+        return None
+    n = _normalise(texte)
+    typ = next((v for mot, v in _TYPES_COMPO.items() if re.search(r"\b" + re.escape(_normalise(mot)) + r"\b", n)), None)
+    if not typ:
+        return None
+    _ia, _ = _charge_ia()
+    if not _ia or not hasattr(_ia, "inventions_composites"):
+        return None
+    try:
+        cands = _ia.inventions_composites(typ, budget=200, k=6) or []
+    except Exception:
+        return None
+    if not cands:
+        return ("Pour les « %s », je n'ai pas trouvé de relation composée manquante avec les données chargées "
+                "(sur la base complète, l'exploration serait plus riche). Rien d'inventé." % typ)
+    lignes = ["Relations DÉRIVABLES qui manquent pour les « %s » (composer des relations existantes, chaque "
+              "valeur re-vérifiée) :" % typ]
+    for c in cands[:6]:
+        s = str(c).split("\n")[0].replace("[INVENTION] attribut composite : ", "· ")
+        lignes.append(s)
+    lignes.append("(Ce sont des attributs composés VRAIS et systématiques — reste à juger leur utilité.)")
+    return "\n".join(lignes)
+
+
+def _cap_confiance(texte: str):
+    """« oublie ce site X » / « bannis X » -> bannit un domaine des recherches. Léger, souverain."""
+    m = re.search(r"\b(?:oublie|ignore|bannis|blackliste|ne (?:plus )?(?:utilise|consulte))\b.*?"
+                  r"\b(?:le site|la source|le domaine|ce site)?\s*([a-z0-9][a-z0-9.\-]*\.[a-z]{2,})", texte, re.I)
+    if not m:
+        m = re.search(r"\boublie (?:ce site|cette source)\b\s*[:\-]?\s*([a-z0-9][a-z0-9.\-]*\.[a-z]{2,})?", texte, re.I)
+    if m and m.lastindex and m.group(1):
+        try:
+            import confiance
+            dom = m.group(1)
+            nouveau = confiance.bannis_source(dom)
+            return ("C'est noté : je ne consulterai plus « %s » dans mes recherches." % dom if nouveau
+                    else "« %s » est déjà dans les sources que j'ignore." % dom)
+        except Exception:
+            return None
+    return None
+
+
+def _reponse_corrigee(texte: str):
+    """Réponse d'une correction SOURCÉE de l'utilisateur pour CETTE question. Attribuée à SA source (jamais
+    présentée comme la vérité vérifiée de VERAX). None si aucune correction sourcée."""
+    try:
+        import confiance
+        e = confiance.reponse_autorisee(texte)
+    except Exception:
+        e = None
+    if e:
+        return "%s  — d'après la source que tu m'avais indiquée (%s)." % (e["valeur"], e["source"])
+    return None
+
+
 def _cap_explication(texte: str):
     """« explique le paradoxe de X » -> explication pédagogique auto-contenue (briques Palier 2). Léger->lourd."""
     try:
@@ -1356,6 +1583,16 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         if q2 == "":
             return _MSG_REFUS
         t = q2
+    #   (0conf) CORRECTION UTILISATEUR (AUTORITÉ) : si l'utilisateur a déjà corrigé cette question, sa réponse
+    #       fait foi (il est le juge réel) et PRIME sur tout — connaissance, web, mémoire. FAUX=0 : appliquée
+    #       telle quelle et attribuée (« tu me l'avais corrigé »).
+    _corr = _reponse_corrigee(t)
+    if _corr:
+        return _corr
+    #   (0ban) COMMANDE « oublie ce site X » : bannit un domaine des recherches futures.
+    _ban = _cap_confiance(t)
+    if _ban:
+        return _ban
     #   (0) POLITESSE (salutation/merci/adieu/« ça va ») — réponse polie immédiate, AVANT tout traitement factuel.
     #       Ne se déclenche que si le message est ENTIÈREMENT de la politesse (sinon la vraie question passe).
     poli = _politesse(t)
@@ -1392,12 +1629,33 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_stats, _cap_explication, _cap_distance, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
-    #   (0quinquies) LANGUE : un message qui SEMBLE anglais ne doit pas traverser le pipeline factuel français
-    #   (la recherche plein-texte répondait hors-sujet). Clarification honnête bilingue -> jamais à côté.
+    #   (0quinquies) LANGUE MULTILINGUE : un message dans une langue supportée (en/es/de/it/pt) -> on tente d'y
+    #   RÉPONDRE DANS CETTE LANGUE (question factuelle traduite vers le pipeline vérifié FR). Sinon, si c'est de
+    #   l'anglais non factuel, clarification bilingue ; les autres langues non reconnues passent au pipeline FR.
+    try:
+        import langue as _LG
+        _sw = _LG.demande_de_switch(t)                   # « réponds en espagnol » -> mémorise la préférence
+    except Exception:
+        _LG, _sw = None, None
+    if _sw:
+        _PREF_LANGUE[conv_id] = _sw
+        return {"fr": "Entendu, je te réponds en français.", "en": "Alright, I'll answer in English.",
+                "es": "De acuerdo, te respondo en español.", "de": "In Ordnung, ich antworte auf Deutsch.",
+                "it": "Va bene, rispondo in italiano.", "pt": "Combinado, respondo em português."}.get(_sw, "Ok.")
+    _lg = _LG.detecte(t) if _LG else "fr"
+    _pref = _PREF_LANGUE.get(conv_id) or _PREF_LANGUE_GLOBAL[0]
+    # langue CIBLE : la langue de la question si elle est écrite dans une langue non-FR supportée ; sinon la
+    # préférence (sélecteur d'interface / « réponds en X ») ; sinon FR natif.
+    _cible = (_lg if (_lg != "fr" and _LG and _lg in _LG.LANGUES_SUPPORTEES)
+              else (_pref if _pref and _pref != "fr" else None))
+    if _LG and _cible:
+        _rep_lg = _cap_langue(t, lang=_cible)
+        if _rep_lg:
+            return _rep_lg
     if _semble_anglais(t):
         return _MSG_ANGLAIS
     #   (0ter) ALIAS DÉFINITION : « que veut dire X » / « que signifie X » / « sens du mot X » -> « définition de X »
@@ -1415,9 +1673,14 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     #       et on continue. C'est ce qui rend l'oubli du « ? » sans conséquence pour les faits du monde.
     #   GARDE NÉGATION : une question négative (« quelle n'est PAS la capitale… ») ne peut PAS être satisfaite par un
     #   lookup positif (qui répondrait le fait VRAI = FAUX ici). On saute tous les étages factuels -> mémoire/HORS.
-    #   GARDE RELATIONS IMBRIQUÉES « X de [la] Y de Z » : on ne sait pas COMPOSER deux relations ; le lookup résoudrait
-    #   l'INNER et renverrait une réponse du MAUVAIS TYPE (« monnaie de la capitale de la France » -> Paris ; « langue
-    #   de la capitale de l'Allemagne » -> Berlin). Comme la négation, on saute TOUT le factuel -> mémoire/HORS honnête.
+    #   RELATIONS IMBRIQUÉES « X de [la] Y de Z » -> RAISONNEMENT COMPOSITIONNEL (P1) : on résout l'INNER (Y de Z)
+    #   en une entité VÉRIFIÉE E, puis l'OUTER (X de E). FAUX=0 : chaque maillon est un lookup vérifié, abstention
+    #   si un maillon manque. (Avant, on refusait tout — « monnaie de la capitale de la France » restait sans
+    #   réponse ; désormais « population de la capitale de la France » = population de Paris, composée.)
+    if pleine and not _negation_bloquante(t) and _est_relation_imbriquee(t) and not _est_causale(t):
+        _comp = _compose_relations(t)
+        if _comp:
+            return _comp
     #   Les composées « et » ne sont PAS imbriquées (attrs séparés par « et », pas « de ») -> elles passent par _multi.
     if pleine and not _negation_bloquante(t) and not _est_relation_imbriquee(t) and not _est_causale(t):
         #   (1·multi) DEMANDE COMPOSÉE multi-domaines (« capitale de la France ET numéro du fer ») — tentée en premier
@@ -1440,6 +1703,12 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         rep = _oui_non(t)
         if rep:
             return rep
+        #   (1·frais) FRAÎCHEUR (P3) : question VOLATILE (« président actuel », « dernier vainqueur ») -> source
+        #   LIVE (Wikidata) préférée à la base STATIQUE qui peut être périmée. Web opt-in ; repli base sinon.
+        if os.environ.get("IA_WEB") == "1" and _est_volatil(t) and not _negation_bloquante(t):
+            rep = _recherche_structuree(t)
+            if rep:
+                return rep
         rep = _connaissance_verifiee(t, conv_id)
         if rep and _reponse_incoherente_mesure(t, rep):
             rep = None        # question de mesure (poids/taille…) mais réponse non numérique = mauvaise question -> HORS

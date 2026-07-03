@@ -1048,3 +1048,19 @@ Malgré leur diversité, toutes ces capacités reposent sur le même contrat FAU
 
 ---
 
+
+## Assistant conversationnel (2026-07 — câblé au chat)
+
+Au-delà du moteur de faits vérifiés, VERAX atteint désormais ces capacités directement en conversation, chacune s'abstenant hors de son périmètre garanti (FAUX=0) :
+
+- **Grammaire française** (`grammaire_fr`, `formes_verbales`) : nature de chaque mot (mots-outils = ensembles finis fermés ; lexique embarqué de 19 200 mots ; formes conjuguées reconnues par modèles Bescherelle sur 116k formes), type de phrase (question/affirmation/ordre/négation) et structure sujet-verbe-objet. Ambigu/inconnu → « inconnu », jamais un tag faux.
+- **Conjugaison** (`conjugaison`) : table du présent d'un verbe régulier ; abstention honnête hors périmètre.
+- **Statistiques en langage naturel** (`fonction_stats_nl`) : moyenne/médiane/écart-type (exacts) et ~46 fonctions calibrées — tendance, Fermi, Benford, intervalle de proportion de Wilson, taux de Poisson, Kelly, anomalie, corrélation/pente, comparaison de groupes, effet causal, méta-analyse. Relaie l'abstention honnête quand l'échantillon est trop petit.
+- **Explications de concepts/paradoxes** (`explications`) : « explique le paradoxe de Braess / Allais / Ellsberg / Kelly… » — le calcul réel de la brique, jamais une paraphrase creuse.
+- **Lecture de documents** : extraction de texte PDF (`extrait_pdf`, FlateDecode) et interrogation de documents longs (`lecteur_document` : passage verbatim + page + sommaire). OCR borné du texte imprimé net (`ocr`, binarisation Otsu) ; glyphe non reconnu → « ? ».
+- **Moteur d'invention** (`besoin`/`invention_atomes`) : « comment rafraîchir une pièce sans climatiseur » → la reformulation physique du besoin.
+- **Géographie** : distance et cap initial entre deux lieux connus.
+- **Recherche web multi-sources** avec vérification du contexte sur site (Mojeek/Bing/DuckDuckGo), chaque passage attribué et lié.
+- **Apprentissage de patrons** (`apprentissage_patrons`) : apprend les reformulations de l'utilisateur et induit des règles de substitution de mots qui généralisent (FAUX=0 : ré-aiguillage seul, la réponse reste vérifiée).
+- **Système de confiance** (`confiance`) : une correction utilisateur ne prend effet que si elle s'appuie sur une **source** — VERAX challenge les affirmations nues (« sur quelle source t'appuies-tu ? ») et n'écrase jamais une vérité sans source ; les corrections sont attribuées à leur source. « Oublie ce site X » bannit un domaine des recherches.
+- **Anglais** (`langue`) : les questions factuelles posées en anglais reçoivent une réponse en anglais (capitale/population/monnaie/langue/superficie de pays), résolues par le pipeline vérifié français. La traduction de texte libre reste hors périmètre pour l'instant (frontière honnête).

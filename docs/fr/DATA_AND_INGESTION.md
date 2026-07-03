@@ -165,7 +165,7 @@ entièrement hors réseau et hors lecteur lourd.
 
 ## 6. Les familles de scripts d'ingestion
 
-Il existe ~150 scripts `ingere_*.py`. Tous convergent vers `publie()` (donc mêmes gardes),
+Il existe 147 scripts `ingere_*.py`. Tous convergent vers `publie()` (donc mêmes gardes),
 mais ils se regroupent en familles selon ce qu'ils permettent d'apprendre :
 
 - **Wikidata à grande échelle (WDQS + QLever).** Le cœur du volume. `ingere_wikidata.py`
@@ -210,17 +210,17 @@ Un script d'ingestion est une commande **manuelle**. Il télécharge (ou rejoue 
 
 ```bash
 # Wikidata WDQS — un ou plusieurs domaines en argument (défaut : geo)
-python3 ingere_wikidata.py geo
-python3 ingere_wikidata.py elements sommets
+python3 ingestion/ingere_wikidata.py geo
+python3 ingestion/ingere_wikidata.py elements sommets
 
 # Wikidata via le miroir QLever (défaut : tous les domaines)
-python3 ingere_qlever.py
+python3 ingestion/ingere_qlever.py
 
 # Propriétés des éléments (nécessite d'abord symbole_chimique.jsonl, cf. ingere_wikidata elements)
-python3 ingere_elements_ptjson.py
+python3 ingestion/ingere_elements_ptjson.py
 
 # Indicateurs Banque mondiale (population + éco/social)
-python3 ingere_worldbank.py
+python3 ingestion/ingere_worldbank.py
 
 # Table de convention hors-ligne
 python3 ingere_danses.py
