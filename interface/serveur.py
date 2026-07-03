@@ -45,6 +45,15 @@ import repond        # noqa: E402  (léger ; l'étage IA lourd est en import PAR
 
 _HTML = os.path.join(_ICI, "index.html")
 
+# DOCUMENTS ATTACHÉS par conversation (upload PDF/texte) : conv_id -> lecteur_document.Document. Source de REPLI
+# attribuée — quand la connaissance vérifiée et le web n'ont rien, on répond depuis le document importé (passage
+# VERBATIM + page). En mémoire de session (reconstruit à l'upload) ; jamais envoyé ailleurs (souverain).
+_DOCS: dict = {}
+
+
+def _document_de(conv_id: str):
+    return _DOCS.get(conv_id)
+
 # IA pleine (étage 2 de repond.py) : ACTIVE PAR DÉFAUT (l'utilisateur veut tester l'IA réelle). Le lecteur
 # (~622 Mo) est chargé PARESSEUSEMENT à la première question (pas au démarrage). Pour forcer le mode léger
 # (mémoire de dialogue seule, sans charger le lecteur), lancer avec IA_LEGER=1.
@@ -151,9 +160,80 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
     seq = memoire.ajoute(conv_id, "user", texte, scope=scope)        # STOCKE D'ABORD : jamais perdu, jamais bloqué
     # La réponse filtre déjà le message courant (texte != courant) -> pas d'auto-citation malgré l'indexation.
     reponse = repond.repond(memoire, conv_id, texte, pleine=pleine)
+    # DOCUMENT ATTACHÉ : si la connaissance vérifiée/le web n'ont RIEN donné (repli honnête) et qu'un document
+    # est importé dans cette conversation, on répond depuis LUI (passage VERBATIM + page). Le document ne
+    # détourne jamais une bonne réponse — il ne parle que quand l'IA allait dire « je ne sais pas ».
+    rep_doc = _reponse_document(conv_id, texte) if _est_abstention(reponse) else None
+    if rep_doc:
+        reponse = rep_doc
+    # APPRENTISSAGE DE PATRONS : si le tour PRÉCÉDENT de l'utilisateur a été une ABSTENTION et que CE message
+    # RÉUSSIT (réponse non-abstention), on apprend « formulation ratée -> formulation qui marche » (même sujet
+    # exigé côté module). Sound : n'apprend qu'un ré-aiguillage de formulation, jamais un fait.
+    if reponse and not _est_abstention(reponse):
+        _apprend_reformulation(conv_id, memoire, texte)
+    _DERNIER_ECHEC[conv_id] = texte if _est_abstention(reponse) else None
     if reponse:
         memoire.ajoute(conv_id, "ia", reponse, scope=scope)          # réponse sound, durable, verbatim
     return {"ok": seq >= 0, "seq": seq, "reponse": reponse, **lire_conversation(memoire, conv_id)}
+
+
+_DERNIER_ECHEC: dict = {}   # conv_id -> dernier message utilisateur resté SANS réponse (abstention), ou None
+
+
+def _apprend_reformulation(conv_id: str, memoire, texte_reussi: str) -> None:
+    """Si le message précédent de cette conversation était une abstention, apprends l'alias échec->réussite."""
+    echec = _DERNIER_ECHEC.get(conv_id)
+    if not echec or echec.strip() == texte_reussi.strip():
+        return
+    try:
+        import apprentissage_patrons
+        apprentissage_patrons.enregistre(echec, texte_reussi)
+    except Exception:
+        pass
+
+
+def _est_abstention(reponse: str) -> bool:
+    """La réponse du routeur est-elle un aveu d'ignorance (pas une vraie réponse) ? -> alors on peut consulter
+    le document attaché. Couvre : vide, replis de repond.py (est_fallback), ET les messages d'assistant_nl
+    (indécidable/saturation) qui, en mode plein, remplacent le repli simple mais restent des non-réponses."""
+    if not reponse:
+        return True
+    if repond.est_fallback(reponse):
+        return True
+    try:
+        import assistant_nl
+        prefixes = tuple(p for p in (getattr(assistant_nl, "_PFX_INDECIDABLE", None),
+                                     getattr(assistant_nl, "_PFX_SATURATION", None)) if p)
+        if prefixes and reponse.startswith(prefixes):
+            return True
+    except Exception:
+        pass
+    return False
+
+
+_RE_SOMMAIRE = re.compile(r"\b(sommaire|plan|table des mati[èe]res|de quoi (?:parle|traite)|"
+                          r"structure du (?:document|m[ée]moire|texte)|quelles? (?:sont les )?sections?)\b", re.I)
+
+
+def _reponse_document(conv_id: str, question: str):
+    """Réponse depuis le document attaché : sommaire si demandé, sinon meilleur passage attribué. None si pas de
+    document ou rien de pertinent (FAUX=0 : uniquement du texte réel du document, jamais d'invention)."""
+    doc = _document_de(conv_id)
+    if doc is None:
+        return None
+    titre = doc.titre or "le document"
+    if _RE_SOMMAIRE.search(question or ""):
+        som = doc.sommaire()
+        if som:
+            lignes = "\n".join("· %s (p. %d)" % (s["titre"], s["page"]) for s in som)
+            return "Voici le plan que j'ai relevé dans « %s » :\n%s" % (titre, lignes)
+        inf = doc.infos()
+        return ("« %s » : %d page(s), %d passage(s) indexés. Pose-moi une question précise sur son contenu et "
+                "je retrouve le passage exact." % (titre, inf["pages"], inf["passages"]))
+    r = doc.repond(question)
+    if not r:
+        return None
+    return "D'après « %s » (%s) :\n%s" % (titre, r["localisation"], r["reponse"])
 
 
 def nouvelle_conversation(memoire, conv_id: str) -> dict:
@@ -199,17 +279,42 @@ def oublie_conversation(memoire, conv_id: str) -> dict:
 def _resume_fichier(nom: str, res: dict) -> str:
     """Résumé FIDÈLE d'un fichier parsé (FAUX=0 : uniquement ce que le parseur a réellement lu, jamais inventé)."""
     if not isinstance(res, dict) or res.get("statut") != "verifie":
-        return ("Je n'ai pas su lire « %s ». Je sais lire aujourd'hui : json/geojson, csv/tsv, xml/rss/xsd, "
-                "html, txt/md/log, ini/cfg/conf, sqlite/db, zip/tar/gz, svg. Les PDF et les images ne sont "
-                "pas encore pris en charge (et un PDF de capture d'écran est une image : il faudrait de "
-                "l'OCR, prévu plus tard)." % nom)
-    typ, meta = res.get("type", "?"), str(res.get("meta") or "")
-    apercu = str(res.get("contenu"))
+        return ("Je n'ai pas su lire « %s ». Je sais lire aujourd'hui : PDF (couche texte), json/geojson, "
+                "csv/tsv, xml/rss/xsd, html, txt/md/log, ini/cfg/conf, sqlite/db, zip/tar/gz, svg. Les images "
+                "et les PDF scannés (sans texte) ne sont pas encore pris en charge : il faudrait de l'OCR, "
+                "prévu plus tard." % nom)
+    typ, meta = res.get("type", "?"), res.get("meta") or {}
+    contenu = res.get("contenu")
+    # PDF / texte : on montre le TEXTE réellement extrait (pas un repr de dict). Un PDF sans couche texte
+    # (scanné) est signalé HONNÊTEMENT via meta["note"] au lieu de faire croire à une lecture vide.
+    if typ == "pdf" and isinstance(contenu, dict):
+        pages = meta.get("pages", 0); avec = meta.get("pages_avec_texte", 0)
+        if avec == 0:
+            return ("J'ai ouvert « %s » : %d page(s), mais AUCUNE couche texte — c'est un PDF scanné (image). "
+                    "Je ne peux pas encore le lire (OCR non disponible), et je n'invente rien." % (nom, pages))
+        apercu = contenu.get("texte", "")
+        tronque = len(apercu) > 800
+        if tronque:
+            apercu = apercu[:800].rsplit(" ", 1)[0] + " …"
+        entete = "J'ai lu « %s » — %d page(s), %d avec du texte (%d caractères)" % (
+            nom, pages, avec, meta.get("caracteres", 0))
+        suite = "" if not tronque else ("\n\n(Aperçu du début. Pose-moi une question sur le contenu et je "
+                                        "cherche le passage exact.)")
+        return entete + " :\n" + apercu + suite
+    if typ == "image" and isinstance(contenu, dict):
+        txt = contenu.get("texte", "")
+        if txt.strip():
+            return "J'ai lu l'image « %s » et reconnu ce texte :\n%s" % (nom, txt)
+        return ("J'ai ouvert l'image « %s » mais je n'y ai reconnu aucun texte net (mon OCR ne lit que du "
+                "texte régulier à fort contraste, jamais deviné). Une photo ou une police manuscrite reste "
+                "hors de portée pour l'instant." % nom)
+    apercu = str(contenu)
     if len(apercu) > 700:
         apercu = apercu[:700] + " …"
     entete = "J'ai lu « %s » (type %s)" % (nom, typ)
-    if meta and meta not in ("{}", ""):
-        entete += " — " + meta
+    meta_txt = str(meta)
+    if meta_txt and meta_txt not in ("{}", ""):
+        entete += " — " + meta_txt
     return entete + " :\n" + apercu
 
 
@@ -222,8 +327,8 @@ def importe_fichier(memoire, conv_id: str, nom: str, contenu_b64: str) -> dict:
         data = base64.b64decode(contenu_b64 or "")
     except Exception:
         return {"ok": False, "raison": "contenu illisible", **lire_conversation(memoire, conv_id)}
-    if len(data) > 5_000_000:
-        return {"ok": False, "raison": "fichier trop volumineux (max 5 Mo)", **lire_conversation(memoire, conv_id)}
+    if len(data) > 40_000_000:      # 40 Mo : un mémoire de ~200 pages (texte + figures) tient largement
+        return {"ok": False, "raison": "fichier trop volumineux (max 40 Mo)", **lire_conversation(memoire, conv_id)}
     ext = os.path.splitext(nom)[1]
     fd, chemin = tempfile.mkstemp(suffix=ext)
     try:
@@ -245,7 +350,28 @@ def importe_fichier(memoire, conv_id: str, nom: str, contenu_b64: str) -> dict:
     memoire.ajoute(conv_id, "user", "\U0001F4CE " + nom)
     resume = _resume_fichier(nom, res)
     memoire.ajoute(conv_id, "ia", resume)
+    _indexe_document(conv_id, nom, res)      # rend le document INTERROGEABLE (PDF/texte) pour les tours suivants
     return {"ok": True, "reponse": resume, **lire_conversation(memoire, conv_id)}
+
+
+def _indexe_document(conv_id: str, nom: str, res: dict) -> None:
+    """Si le fichier importé porte du TEXTE (PDF avec couche texte, ou fichier texte), on l'indexe en un
+    `lecteur_document.Document` interrogeable, attaché à la conversation. Échec silencieux (best-effort)."""
+    try:
+        if not isinstance(res, dict) or res.get("statut") != "verifie":
+            return
+        typ, contenu = res.get("type"), res.get("contenu")
+        import lecteur_document
+        if typ == "pdf" and isinstance(contenu, dict) and contenu.get("pages"):
+            doc = lecteur_document.Document(contenu["pages"], titre_document=nom)
+        elif typ == "texte" and isinstance(contenu, str) and contenu.strip():
+            doc = lecteur_document.Document(contenu, titre_document=nom)
+        else:
+            return
+        if doc.n > 0:
+            _DOCS[conv_id] = doc
+    except Exception:
+        pass
 
 
 def _regle_web(actif) -> dict:

@@ -779,6 +779,29 @@ def _reponse_sociale(texte: str):
     return " ".join(parts)
 
 
+_SEG_PHRASE_RE = re.compile(r"(?<=[.!?])\s+")
+_SALUT_TETE_RE = re.compile(r"^\s*(bonjour|salut|bonsoir|coucou|hello|hi|hey)[ ,!]+(.{4,})$", re.I | re.S)
+
+
+def _detache_salutation(texte: str):
+    """Sépare une TÊTE purement sociale d'une vraie demande qui suit : (réponse_sociale, reste) ou (None, texte).
+    Deux formes : segments de phrase sociaux en tête (« Bonjour comment vas-tu ? <demande> ») et simple mot de
+    salutation collé (« Bonjour <demande> »). Le RESTE est conservé VERBATIM (casse/accents) pour le pipeline."""
+    segs = [s for s in _SEG_PHRASE_RE.split(texte.strip()) if s.strip()]
+    if len(segs) >= 2:
+        i = 0
+        while i < len(segs) and _reponse_sociale(segs[i]) is not None:
+            i += 1
+        if 0 < i < len(segs):
+            return _reponse_sociale(" ".join(segs[:i])), " ".join(segs[i:]).strip()
+    m = _SALUT_TETE_RE.match(texte)
+    if m:
+        reste = m.group(2).strip()
+        if _reponse_sociale(reste) is None:               # le reste est une vraie demande, pas du social
+            return _reponse_sociale(m.group(1)), reste
+    return None, texte
+
+
 def _politesse(texte: str) -> str | None:
     """Réponse polie à une salutation/remerciement/adieu/« ça va » — ou None si ce n'est pas (que) de la politesse."""
     r = _reponse_sociale(texte)
@@ -1103,6 +1126,205 @@ def _demande_schema(texte: str):
     return _schema(ent)
 
 
+# ————————————————————————— CAPACITÉS OUTILS câblées au chat (2026-07-03, audit orphelines) —————————————————————————
+# Des capacités RÉELLES de ia.py étaient injoignables depuis le dialogue. On les branche ici par intention
+# explicite, en amont du factuel. FAUX=0 : chaque handler s'abstient (None ou message honnête) hors de son
+# périmètre garanti — jamais de réponse inventée.
+def _cap_grammaire(texte: str):
+    """« nature (grammaticale) du mot X » -> classe + genre ; « analyse grammaticale : phrase » -> analyse.
+    Léger (grammaire_fr, pas de lecteur). Abstention honnête si la nature est incertaine (jamais devinée)."""
+    m = re.match(r"^\s*(?:quelle?\s+est\s+la\s+)?(?:nature|classe|cat[ée]gorie)\s+(?:grammaticale?\s+)?"
+                 r"(?:du\s+mot\s+|de\s+l['’]|de\s+la\s+|de\s+|d['’])\s*['\"«]?\s*([\wà-ÿ][\wà-ÿ'\-]*)\s*['\"»]?\s*\??\s*$",
+                 texte, re.I)
+    if m:
+        try:
+            import grammaire_fr as _G
+        except Exception:
+            return None
+        mot = m.group(1)
+        cl = _G.classe_mot(mot)
+        if cl == "inconnu":
+            return ("Je ne suis pas certain de la nature grammaticale de « %s » — je préfère ne pas deviner." % mot)
+        g = _G.genre_mot(mot)
+        return "« %s » : %s%s." % (mot, cl, (" (%s)" % g if g else ""))
+    if "grammatical" in _normalise(texte):
+        # forme « analyse grammaticale : PHRASE » (tête) OU « PHRASE, analyse grammaticale » (queue)
+        m = re.match(r"^\s*analyse\s+(?:grammaticale(?:ment)?\s+)?(?:la\s+phrase\s+|cette\s+phrase\s*[:\-]?\s*)?(.+)$",
+                     texte, re.I)
+        phrase = m.group(1) if m else None
+        if not phrase:
+            m2 = re.match(r"^(.+?)[,;:\-]?\s*analyse\w*\s+grammaticale(?:ment)?\s*[.?!]*\s*$", texte, re.I)
+            phrase = m2.group(1) if m2 else None
+        if phrase and len(phrase.split()) >= 2:
+            try:
+                import grammaire_fr as _G
+            except Exception:
+                return None
+            return _G.resume_analyse(phrase.strip(" :\"'«».?!"))
+    return None
+
+
+def _cap_conjugaison(texte: str):
+    """« conjugue le verbe X » / « conjugaison de X » -> table du présent. FAUX=0 : abstention honnête hors du
+    périmètre garanti (verbes réguliers 1er/2e groupe, présent) plutôt qu'une forme fausse."""
+    if not re.search(r"\bconjug(?:ue|ues|uer|aison)\b", texte, re.I):
+        return None
+    m = re.search(r"\b([a-zàâäéèêëïîôöùûüç]+(?:er|ir|re))\b", texte, re.I)
+    if not m:
+        return None
+    inf = m.group(1).lower()
+    try:
+        import conjugaison as _C
+        formes = [_C.conjugue(inf, p, "present") for p in range(1, 7)]
+    except Exception:
+        return ("Je ne conjugue de façon SÛRE que les verbes réguliers du 1er/2e groupe au présent ; « %s » "
+                "sort de ce périmètre garanti et je préfère m'abstenir que risquer une forme fausse." % inf)
+    pr = ["je", "tu", "il/elle", "nous", "vous", "ils/elles"]
+    lignes = "\n".join("· %s %s" % (pr[i], formes[i]) for i in range(6))
+    return "Conjugaison de « %s » au présent de l'indicatif :\n%s" % (inf, lignes)
+
+
+def _cap_graphique(texte: str):
+    """« trace un graphique / une courbe de : n1, n2, … » -> SVG (rendu inline comme un schéma). Léger."""
+    if not re.search(r"\b(trace|graphique|diagramme|courbe|barres?|histogramme)\b", texte, re.I):
+        return None
+    nums = re.findall(r"-?\d+(?:[.,]\d+)?", texte)
+    vals = [float(n.replace(",", ".")) for n in nums]
+    if len(vals) < 2:
+        return None
+    try:
+        import graphique as _GR
+        if re.search(r"\bcourbe\b", texte, re.I):
+            d = _GR.courbe(list(range(1, len(vals) + 1)), vals)
+        else:
+            d = _GR.barres(vals)
+        return _GR.vers_svg(d)
+    except Exception:
+        return None
+
+
+def _cap_distance(texte: str):
+    """« distance entre X et Y » -> orthodromie + cap (ia.distance_lieux/cap_lieux). Lourd (coordonnées)."""
+    m = re.search(r"\b(?:distance|[ée]loign\w*)\b[^0-9]*?\b(?:entre|de|du|d['’])\s+(.+?)\s+"
+                  r"(?:et|à|a|jusqu['’]?[àa]?)\s+(.+?)\s*\??\s*$", texte, re.I)
+    if not m:
+        return None
+    a, b = m.group(1).strip(" ?.\"'«»"), m.group(2).strip(" ?.\"'«»")
+    _ia, _ = _charge_ia()
+    if not _ia:
+        return None
+    try:
+        d = _ia.distance_lieux(a, b)
+    except Exception:
+        d = None
+    if d is None:
+        return None                                       # un lieu inconnu -> laisse le pipeline continuer (honnête)
+    s = "La distance entre %s et %s est d'environ %s km (orthodromie, modèle sphérique)." % (
+        a, b, format(round(d), ",d").replace(",", " "))
+    try:
+        cap = _ia.cap_lieux(a, b)
+        if cap is not None:
+            s += " Cap initial : %d°." % round(cap)
+    except Exception:
+        pass
+    return s
+
+
+def _cap_invention(texte: str):
+    """« comment [faire] X sans Y » / « que manque-t-il pour X » -> reformulation PHYSIQUE du besoin (moteur
+    d'invention besoin.py, la vision produit). FAUX=0 : ne répond QUE pour un besoin du catalogue physique ;
+    besoin inconnu -> None (le web/pipeline prend le relais). Léger."""
+    besoin_txt = None
+    m = re.search(r"\bque\s+manque[\s-]*t[\s-]*il\s+pour\s+(.+?)\s*\??\s*$", texte, re.I)
+    if m:
+        besoin_txt = m.group(1)
+    if besoin_txt is None:
+        m = re.search(r"\bcomment\s+(?:faire\s+pour\s+|je\s+peux\s+|)(.+?)\s+sans\s+.+?\s*\??\s*$", texte, re.I)
+        if m:
+            besoin_txt = m.group(1)
+    if besoin_txt is None:
+        return None
+    besoin_txt = besoin_txt.strip(" ?.\"'«»")
+    try:
+        import besoin as _BSN
+        d = _BSN.decompose(besoin_txt)
+    except Exception:
+        return None
+    if not isinstance(d, dict) or d.get("statut") != "decompose":
+        return None                                       # hors catalogue physique -> pipeline continue
+    lignes = ["Regardons le BESOIN, pas la solution habituelle.", "", d.get("objectif_reel", "")]
+    canaux = d.get("canaux") or []
+    if canaux:
+        lignes.append("")
+        lignes.append("Leviers physiques à explorer :")
+        for c in canaux[:5]:
+            levier = getattr(c, "levier", None) or (c.get("levier") if isinstance(c, dict) else None)
+            canal = getattr(c, "canal", None) or (c.get("canal") if isinstance(c, dict) else None)
+            if levier:
+                lignes.append("· %s%s" % ((canal + " : ") if canal else "", levier))
+    if d.get("loi"):
+        lignes.append("")
+        lignes.append("Limite physique : " + str(d["loi"]))
+    return "\n".join(x for x in lignes if x is not None).strip()
+
+
+_LANG_INDICES = [("python", re.compile(r"\b(import |def |print\(|elif |lambda |self\.)", re.I)),
+                 ("javascript", re.compile(r"\b(function |const |let |=>|console\.log|require\()", re.I)),
+                 ("c", re.compile(r"#include|\bprintf\(|\bint main\b|\bmalloc\(", re.I)),
+                 ("php", re.compile(r"<\?php|\$\w+\s*=|echo\s", re.I)),
+                 ("sql", re.compile(r"\b(SELECT|INSERT|UPDATE|DELETE)\b.+\b(FROM|INTO|SET|WHERE)\b", re.I))]
+
+
+def _cap_stats(texte: str):
+    """Routeur STATISTIQUE NL : câble la bibliothèque Palier 2 (ia.incertitude/tendance/compare/pente/…).
+    Léger côté détection, lourd si ia est requis. FAUX=0 : ne répond QUE sur intention stat reconnue, et relaie
+    l'abstention honnête des fonctions (échantillon trop petit) telle quelle."""
+    try:
+        import fonction_stats_nl
+        return fonction_stats_nl.repond_stats(texte)
+    except Exception:
+        return None
+
+
+def _cap_audit_code(texte: str):
+    """« analyse la sécurité de ce code : <bloc> » ou un bloc ``` ``` -> audit CWE (ia.audite_code). Lourd.
+    FAUX=0 : constats RÉELS ou « rien détecté (pas une preuve de sécurité) » ; jamais « c'est sûr »."""
+    bloc = None
+    mf = re.search(r"```[a-zA-Z]*\n?(.+?)```", texte, re.S)
+    if mf:
+        bloc = mf.group(1)
+    elif re.search(r"\b(faille|s[ée]curit[ée]|vuln[ée]rab|audit\w*)\b", texte, re.I) and re.search(
+            r"\bcode\b", texte, re.I):
+        m = re.search(r":\s*(.+)$", texte, re.S)
+        if m and "\n" in m.group(1):
+            bloc = m.group(1)
+    if not bloc or len(bloc.strip()) < 10:
+        return None
+    langage = next((nom for nom, rx in _LANG_INDICES if rx.search(bloc)), None)
+    if not langage:
+        return None
+    _ia, _ = _charge_ia()
+    if not _ia:
+        return None
+    try:
+        rep = _ia.audite_code(bloc, langage)
+    except Exception:
+        return None
+    statut = getattr(rep, "statut", None)
+    constats = getattr(rep, "valeur", None) or []
+    if statut == "abstention" or not constats:
+        return ("Je n'ai détecté aucun problème de sécurité connu dans ce code %s — attention, ce n'est PAS "
+                "une preuve de sûreté (je ne vérifie que des motifs de vulnérabilité connus)." % langage)
+    lignes = ["Audit de sécurité (%s) — %d constat(s) :" % (langage, len(constats))]
+    for c in constats[:8]:
+        titre = getattr(c, "titre", "?"); cwe = getattr(c, "cwe", ""); ligne = getattr(c, "ligne", "?")
+        grav = getattr(c, "gravite", ""); rem = getattr(c, "remediation", "")
+        lignes.append("· [%s, ligne %s, %s] %s%s" % (cwe, ligne, grav, titre,
+                                                     (" → " + rem) if rem else ""))
+    lignes.append("(Constats de motifs connus, jamais une garantie de sûreté.)")
+    return "\n".join(lignes)
+
+
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     """Réponse SOUND au message `texte`. `pleine`=True autorise l'étage 2 (lourd). N'INVENTE JAMAIS.
 
@@ -1130,6 +1352,15 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     poli = _politesse(t)
     if poli:
         return poli
+    #   (0sal) SALUTATION COMBINÉE À UNE DEMANDE : « Bonjour comment vas-tu ? qu'est-ce que la canicule ? » —
+    #       on répond au social ET on traite la demande (avant, le message ENTIER échouait en « famille
+    #       inconnue »). Sound : le segment social est reconnu par l'ensemble FERMÉ existant ; le reste passe
+    #       par le pipeline normal, inchangé.
+    social, reste = _detache_salutation(t)
+    if social and reste:
+        rep_reste = repond(memoire, conv_id, reste, pleine=pleine)
+        social = social.replace(" Pose-moi une question et je te réponds avec ce que je sais.", "")
+        return "%s\n\n%s" % (social, rep_reste) if rep_reste else social
     #   (0bis) MÉTA sur l'assistant (« Qui es-tu ? », « Que sais-tu faire ? ») — réponse honnête fixe, AVANT le
     #          factuel. SOUND : fullmatch sur message méta PUR -> ne capte pas une question factuelle « tu »-wrappée.
     meta = _meta_assistant(t)
@@ -1144,6 +1375,18 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         _sch = _demande_schema(t)
         if _sch:
             return _sch
+    #   (0quater-bis) CAPACITÉS OUTILS (audit orphelines) — intentions EXPLICITES branchées sur ia.py, en amont
+    #   du factuel. Légères (grammaire/conjugaison/graphique) toujours ; distance (coordonnées) en mode plein.
+    #   Chaque handler s'abstient (None) hors de son périmètre -> le pipeline normal reprend. FAUX=0 préservé.
+    for _cap in (_cap_grammaire, _cap_conjugaison, _cap_graphique):
+        _r = _cap(t)
+        if _r:
+            return _r
+    if pleine:
+        for _cap in (_cap_stats, _cap_distance, _cap_invention, _cap_audit_code):
+            _r = _cap(t)
+            if _r:
+                return _r
     #   (0quinquies) LANGUE : un message qui SEMBLE anglais ne doit pas traverser le pipeline factuel français
     #   (la recherche plein-texte répondait hors-sujet). Clarification honnête bilingue -> jamais à côté.
     if _semble_anglais(t):
@@ -1246,6 +1489,19 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
                    and not _veut_reponse(h["texte"])]   # exclut TOUTE question (même sans « ? ») : pas une réponse
         if enonces:
             return f"{_MSG_RAPPEL_PREFIXE}« {enonces[0]['texte']} »"
+
+        #   (2b0) PATRON APPRIS (avant le did-you-mean : un alias validé par l'utilisateur prime sur une simple
+        #         suggestion de faute) — une reformulation antérieure a été apprise pour CETTE formulation ratée ->
+        #         on la REJOUE (ré-aiguillage sound ; la réponse reste vérifiée). Anti-boucle : alias != texte.
+        try:
+            import apprentissage_patrons
+            _al = apprentissage_patrons.alias(t)
+        except Exception:
+            _al = None
+        if _al and _normalise(_al) != _normalise(t):
+            _r = repond(memoire, conv_id, _al, pleine=pleine)
+            if _r and not est_fallback(_r):
+                return _r
 
         #   (2b) DID-YOU-MEAN — avant d'abandonner : un mot ressemble-t-il à un mot-type CONNU (faute de frappe) ?
         #        Message GÉNÉRIQUE (le did-you-mean est tous-domaines ; l'ancien texte géo « précise le pays et je

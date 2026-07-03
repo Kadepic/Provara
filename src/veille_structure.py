@@ -127,7 +127,10 @@ def interroge_nl(question: str, timeout: int = 20):
 # ————————————————————————————— WEB LIBRE (Wikipédia) : rapport ATTRIBUÉ —————————————————————————————
 _WIKI_STOP = frozenset(
     "quel quelle quels quelles est sont etait le la les l un une des du de d au aux et en dans sur qui que "
-    "quoi ou comment combien pourquoi donne moi dis peux tu me ce cette a plus grand grande grands moins".split())
+    "quoi ou comment combien pourquoi donne moi dis peux tu me ce cette a plus grand grande grands moins "
+    # mots de DISCOURS (pas de contenu) : sans eux, « quelle boisson serait vraiment rafraîchissante » exigeait
+    # « serait » et « vraiment » sur les pages -> tout était rejeté et la recherche restait muette
+    "serait seraient serais sera vraiment tres assez trop plutot bien dire savoir voudrais aimerais faudrait".split())
 
 
 _WIKI_PREFIXES = re.compile(
@@ -144,7 +147,8 @@ _WIKI_PREFIXES = re.compile(
 # Verbes d'ACTION de tête (après les préfixes) : « construire un moteur à eau » -> « un moteur à eau ».
 # Infinitifs seulement (jamais « construit » : « qui a construit la tour Eiffel » garde son participe).
 _WIKI_VERBES = re.compile(
-    r"^(?:construire|fabriquer|cr[ée]er|faire|acheter|trouver|obtenir|installer|r[ée]parer|utiliser)\s+", re.I)
+    r"^(?:construire|fabriquer|cr[ée]er|faire|acheter|trouver|obtenir|installer|r[ée]parer|utiliser|"
+    r"dire|savoir|conna[iî]tre|conseiller|recommander|proposer|sugg[ée]rer)\s+", re.I)
 
 
 def _termes_wiki(question: str) -> str:

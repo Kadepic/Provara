@@ -1605,8 +1605,10 @@ def borne_generalisation_uniforme(loss_vectors, risques_empiriques, n, *, delta:
     return _RAD.formule(res) if phrase else res
 
 
-def detecte_changement(observations, densite_avant, densite_apres, taux_changement, *, alpha: float = 0.05, phrase: bool = False):
+def detecte_changement_precoce(observations, densite_avant, densite_apres, taux_changement, *, alpha: float = 0.05, phrase: bool = False):
     """PHASE 2 (NON-BORNÉ) — DÉTECTION AU PLUS TÔT d'un changement de régime (Shiryaev, quickest detection bayésienne).
+    (Renommé de `detecte_changement` en 2026-07-03 : il masquait la version « série simple » ligne ~1247 — doublon
+     de nom résolu, la détection de rupture sur série est de nouveau atteignable.)
     `densite_avant`/`densite_apres` = f0/f1 (callables x→densité ; `shiryaev.gaussienne(mu,σ)` pour en bâtir),
     `taux_changement`=ρ (prior géométrique). Alarme dès que la proba a posteriori de changement ≥ 1−α → **taux de
     fausse alarme garanti ≤ α** (≠ d'un détecteur naïf sur seuil, sur-confiant). Renvoie (DETECTION, {alarme, A,

@@ -79,6 +79,8 @@
   #champ {
     flex: 1; resize: none; height: 44px; padding: 11px; border: 1px solid var(--bord);
     border-radius: 10px; font: inherit; color: inherit;
+    background: var(--panneau);  /* sans fond explicite, le textarea gardait le BLANC natif du navigateur
+                                    -> texte clair du thème sombre sur blanc = illisible (bug signalé) */
   }
   #envoyer { padding: 0 18px; border: none; border-radius: 10px; background: var(--accent); color: #fff; cursor: pointer; }
   #envoyer:disabled { opacity: .4; cursor: default; }

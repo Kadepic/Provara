@@ -778,6 +778,10 @@ try:
 except Exception:
     pass
 try:
+    import extrait_pdf
+except Exception:
+    pass
+try:
     import fabrique_comprehension
 except Exception:
     pass
@@ -907,6 +911,10 @@ except Exception:
     pass
 try:
     import graphe_monde
+except Exception:
+    pass
+try:
+    import grammaire_fr
 except Exception:
     pass
 try:
@@ -1075,6 +1083,10 @@ except Exception:
     pass
 try:
     import lecture_comprehension
+except Exception:
+    pass
+try:
+    import lecteur_document
 except Exception:
     pass
 try:
@@ -1923,6 +1935,22 @@ except Exception:
     pass
 try:
     import winner_curse
+except Exception:
+    pass
+try:
+    import formes_verbales
+except Exception:
+    pass
+try:
+    import fonction_stats_nl
+except Exception:
+    pass
+try:
+    import ocr
+except Exception:
+    pass
+try:
+    import apprentissage_patrons
 except Exception:
     pass
 try:

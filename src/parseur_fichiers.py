@@ -40,6 +40,8 @@ _EXT = {
     ".sqlite": "sqlite", ".db": "sqlite", ".sqlite3": "sqlite",
     ".zip": "zip", ".tar": "tar", ".gz": "gzip",
     ".txt": "texte", ".md": "texte", ".log": "texte",
+    ".pdf": "pdf",
+    ".png": "image",
 }
 
 
@@ -59,6 +61,10 @@ def detecte_type(chemin: str) -> str:
         return "gzip"
     if tete[:16] == b"SQLite format 3\x00":
         return "sqlite"
+    if tete[:5] == b"%PDF-":
+        return "pdf"
+    if tete[:8] == b"\x89PNG\r\n\x1a\n":
+        return "image"
     return t or "inconnu"
 
 
@@ -113,6 +119,31 @@ def lit(chemin: str) -> dict:
             txt = _texte(chemin)
             return {"statut": VERIFIE, "type": t, "contenu": txt,
                     "meta": {"lignes": txt.count("\n") + 1, "octets": len(txt.encode("utf-8"))}}
+        if t == "pdf":
+            import extrait_pdf                    # extraction de la couche TEXTE (Tj/TJ, FlateDecode) — FAUX=0
+            with open(chemin, "rb") as f:
+                octets = f.read()
+            pages = extrait_pdf.pages(octets)
+            avec = sum(1 for p in pages if p.strip())
+            # honnêteté : un PDF SANS couche texte (scanné) rend des pages vides -> on le DIT (OCR = autre brique)
+            meta = {"pages": len(pages), "pages_avec_texte": avec,
+                    "caracteres": sum(len(p) for p in pages)}
+            if avec == 0:
+                meta["note"] = "aucune couche texte (PDF probablement scanné/image — OCR non disponible)"
+            return {"statut": VERIFIE, "type": t, "contenu": {"pages": pages,
+                    "texte": "\n\n".join(pages).strip()}, "meta": meta}
+        if t == "image":
+            import ocr                             # OCR BORNÉ : texte NET (police régulière) -> texte ; sinon HORS honnête
+            with open(chemin, "rb") as f:
+                octets = f.read()
+            texte = ocr.ocr(octets)
+            reconnu = any(c not in " ?\n" for c in texte)
+            return {"statut": VERIFIE, "type": t,
+                    "contenu": {"texte": texte if reconnu else ""},
+                    "meta": {"texte_reconnu": reconnu,
+                             "note": ("" if reconnu else
+                                      "aucun texte net reconnu (photo/police non standard — OCR borné au texte "
+                                      "régulier ; jamais deviné)")}}
     except Exception as ex:                      # format reconnu mais parse échoué -> ERREUR honnête (pas un faux)
         return {"statut": ERREUR, "type": t, "contenu": None, "meta": f"{type(ex).__name__}: {ex}"}
     # format non pris en charge -> HORS (on ne devine JAMAIS le contenu d'un binaire inconnu)
