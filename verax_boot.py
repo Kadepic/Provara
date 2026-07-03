@@ -8,6 +8,15 @@ Données : base COMPLÈTE téléchargée (~/.verax) > échantillon embarqué.
 import os
 import sys
 
+# Sorties TOLÉRANTES : quand stdout est un tube sous Windows, l'encodage retombe sur cp1252 qui ne connaît pas
+# « ✓ », « — »… et un simple print tuait le thread de préchargement (UnicodeEncodeError, vu sur le .exe).
+# errors="replace" : le caractère inconnu devient « ? », le programme ne meurt jamais pour un affichage.
+for _flux in (sys.stdout, sys.stderr):
+    try:
+        _flux.reconfigure(errors="replace")
+    except Exception:
+        pass
+
 if getattr(sys, "frozen", False):
     _ROOT = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(sys.executable)))
 else:

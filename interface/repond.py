@@ -27,7 +27,9 @@ import re
 
 _ICI = os.path.dirname(os.path.abspath(__file__))
 _HARNAIS = os.path.dirname(_ICI)
-_DOSSIER_LECTEUR = os.path.join(_HARNAIS, "datasets", "lecteur")
+# Priorité à l'env posé par verax_boot/lance : dans le .exe (PyInstaller), __file__ ne pointe PAS sous _MEIPASS
+# pour les modules gelés -> le chemin dérivé serait faux et les requêtes inverses seraient mortes en silence.
+_DOSSIER_LECTEUR = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(_HARNAIS, "datasets", "lecteur")
 
 # Indices de DEMANDE — pour ne pas dépendre du « ? » (l'utilisateur l'oublie souvent). Si l'un de ces mots
 # apparaît N'IMPORTE OÙ (forme sans accent), on considère que l'utilisateur attend une réponse. Liste choisie
@@ -59,6 +61,33 @@ def _veut_reponse(texte: str) -> bool:
         return True
     toks = set(_normalise(texte).split())
     return bool(toks & _INDICES_DEMANDE)
+
+
+# Marqueurs d'AFFIRMATION : verbe conjugué courant (copule, avoir, verbes d'état personnels) ou 1ʳᵉ personne.
+# « à » normalisé donne « a » -> on N'INCLUT PAS « a » (sinon « recette à la pomme » serait une affirmation).
+_TOKENS_AFFIRMATION = frozenset(
+    "est sont etait etaient sera seront suis sommes etes ai avons avez ont avait avaient aura auront "
+    "appelle appellent habite habitent travaille travaillent aime aiment adore prefere deteste "
+    "je j mon ma mes notre nos".split())
+# Interjections/acquiescements : PAS des sujets de recherche (« oui » orphelin -> accusé, pas une quête web).
+_INTERJECTIONS = frozenset(
+    "oui non ok okay dac daccord merci super genial parfait cool bien compris entendu voila ah oh hum hmm "
+    "euh bof stp svp please bravo chouette top nickel impec".split())
+
+
+def _semble_affirmation(texte: str) -> bool:
+    """Y a-t-il quelque chose à NOTER ? Une affirmation porte un verbe conjugué courant, une marque de première
+    personne, ou une VALEUR (chiffre : « rdv dentiste mardi 15h » reste un mémo). Une PHRASE NOMINALE nue
+    (« histoire du château de Chambord », « symptômes de la carence en fer ») n'affirme RIEN : c'est un SUJET
+    DE RECHERCHE — répondre « C'est noté » était répondre à côté (principe : chercher/clarifier, jamais classer
+    arbitrairement). Sound : ne change que le ROUTAGE du message, jamais un fait."""
+    if any(c.isdigit() for c in texte):
+        return True
+    toks = _normalise(texte).split()
+    if set(toks) & _TOKENS_AFFIRMATION:
+        return True
+    # aucun mot de CONTENU (que des interjections/mots-outils courts) -> rien à chercher : accusé de réception
+    return not any(len(m) >= 3 and m not in _INTERJECTIONS for m in toks)
 
 
 # Une question de MESURE (poids/masse/taille/diamètre/température…) attend une réponse NUMÉRIQUE. Si le lookup a
@@ -205,6 +234,12 @@ def _charge_reverse(relation: str) -> dict:
     par_val: dict = {}
     chemin = os.path.join(_DOSSIER_LECTEUR, relation + ".jsonl")
     try:
+        # GARDE RAM : sur la base COMPLÈTE (~73M faits), certaines relations font des MILLIONS de lignes —
+        # matérialiser l'index inverse en dict coûterait des centaines de Mo chez l'utilisateur final (cache
+        # sans éviction). Au-delà de 64 Mo on s'abstient (HORS honnête, comme avant) plutôt que saturer la RAM.
+        if os.path.getsize(chemin) > 64 * 1024 * 1024:
+            _REVERSE_CACHE[relation] = {}
+            return {}
         with open(chemin, encoding="utf-8") as fh:
             for ligne in fh:
                 ligne = ligne.strip()
@@ -676,12 +711,21 @@ def _expanse_rappel(texte: str) -> str:
 # POLITESSE (ensemble FERMÉ) : salutations / remerciements / adieux / « ça va ». Améliore l'UX (« Bonjour ! » ne doit
 # pas devenir « C'est noté »). SOUND : aucune invention de fait ; ne se déclenche QUE si le message est ENTIÈREMENT
 # de la politesse (tous les tokens dans le vocab) ou une locution figée -> jamais « Bonjour, quelle est la capitale ? ».
-_SALUT = frozenset("bonjour salut bonsoir coucou hello hey allo".split())
+_SALUT = frozenset("bonjour salut bonsoir coucou hello hi hey allo".split())
 _MERCI = frozenset("merci thanks".split())
 _POLI_VOCAB = _SALUT | _MERCI | frozenset("beaucoup bien mille tres et toi vous le".split())
-_LOC_ADIEU = ("au revoir", "a bientot", "a plus", "a tres bientot", "bonne nuit", "bonne soiree", "bonne journee")
+_LOC_ADIEU = ("au revoir", "a bientot", "a plus", "a tres bientot", "bonne nuit", "bonne soiree", "bonne journee",
+              "bye", "goodbye", "good night", "see you")
 _LOC_CAVA = ("ca va", "comment ca va", "comment vas tu", "comment allez vous", "comment tu vas", "tu vas bien",
              "comment ca va aujourd hui")
+# Formes ANGLAISES courantes (« hello how are you? » partait en recherche web -> hors-sujet total). On y répond
+# socialement, EN ANGLAIS, avec l'honnêteté sur la langue (VERAX travaille surtout en français pour l'instant).
+_LOC_CAVA_EN = ("how are you doing", "how is it going", "how s it going", "hows it going", "how are you",
+                "how do you do", "what s up", "whats up")
+_NOM_EN = ("what is your name", "what s your name", "whats your name")
+_IDENT_EN = ("who are you",)
+_PHRASES_EN = frozenset(_LOC_CAVA_EN + _NOM_EN + _IDENT_EN + ("bye", "goodbye", "good night", "see you",
+                                                              "thank you"))
 
 
 # — Réponse SOCIALE robuste : salutations / « ça va » / nom, même COMBINÉS et dans le désordre.
@@ -699,21 +743,33 @@ def _reponse_sociale(texte: str):
         return None
     n = " " + " ".join(toks) + " "
     flags = {"salut": False, "cava": False, "nom": False, "ident": False, "merci": False, "adieu": False}
-    groupes = ([(p, "adieu") for p in _LOC_ADIEU] + [(p, "nom") for p in _NOM_PHRASES]
-               + [(p, "ident") for p in _IDENT_PHRASES] + [(p, "cava") for p in _LOC_CAVA])
+    en = False                                        # une locution ANGLAISE a matché -> répondre en anglais
+    groupes = ([(p, "adieu") for p in _LOC_ADIEU] + [(p, "nom") for p in _NOM_PHRASES + _NOM_EN]
+               + [(p, "ident") for p in _IDENT_PHRASES + _IDENT_EN]
+               + [(p, "cava") for p in _LOC_CAVA + _LOC_CAVA_EN] + [("thank you", "merci")])
     for phrase, cle in sorted(groupes, key=lambda x: len(x[0]), reverse=True):
         pad = " " + phrase + " "
         while pad in n:
             n = n.replace(pad, " "); flags[cle] = True
+            en = en or phrase in _PHRASES_EN
     reste = []
     for w in n.split():
-        if w in _SALUT: flags["salut"] = True
-        elif w in _MERCI: flags["merci"] = True
+        if w in _SALUT: flags["salut"] = True; en = en or w in ("hello", "hi", "hey")
+        elif w in _MERCI: flags["merci"] = True; en = en or w == "thanks"
         elif w not in _FILLER_SOCIAL: reste.append(w)
     if reste or not any(flags.values()):     # contenu factuel résiduel -> pas (que) social
         return None
     if flags["adieu"] and not (flags["salut"] or flags["cava"] or flags["nom"] or flags["ident"]):
-        return "À bientôt !"
+        return "See you soon!" if en else "À bientôt !"
+    if en:      # réponse EN ANGLAIS + honnêteté : le mode anglais complet est prévu, pas encore là (pas de promesse floue)
+        parts = []
+        if flags["salut"]: parts.append("Hello!")
+        if flags["cava"]: parts.append("I'm doing well, thank you \U0001F642.")
+        if flags["nom"] or flags["ident"]: parts.append("My name is VERAX.")
+        if flags["merci"] and not parts: parts.append("You're welcome!")
+        parts.append("For now I answer best in FRENCH (a full English mode is on the roadmap) — "
+                     "try « capitale de l'Espagne » or « population du Japon ».")
+        return " ".join(parts)
     parts = []
     if flags["salut"]: parts.append("Bonjour !")
     if flags["cava"]: parts.append("Je vais très bien, merci\u202f\U0001F642.")
@@ -843,6 +899,27 @@ def _oui_non(texte: str):
     return None                                       # mismatch / partiel / multi-valué -> flux normal (vraie valeur ou HORS)
 
 
+# DÉTECTEUR « ça ressemble à de l'ANGLAIS » : plutôt que d'envoyer une phrase anglaise dans le pipeline factuel
+# français (qui répondait TOTALEMENT à côté via la recherche plein-texte), on DEMANDE une reformulation — la
+# clarification honnête vaut mieux qu'une réponse hors-sujet. Mots-outils anglais SANS collision avec le français
+# (« a », « an », « me », « on »… exclus). Seuil : ≥2 occurrences ET ≥40 % des tokens.
+_TOKENS_EN = frozenset(
+    "the is are was were you your how what who where when why which do does did can could would should "
+    "please hello hi hey thanks thank of for with want need help make give tell know my we they i im it its "
+    "this that have has had will would not dont cant isnt whats".split())
+_MSG_ANGLAIS = ("Pour l'instant je comprends surtout le FRANÇAIS — reformule en français et je réponds avec du "
+                "vérifié (« capitale de l'Espagne », « population du Japon »…).\n"
+                "I mostly understand French for now — please ask in French and I'll answer with verified facts.")
+
+
+def _semble_anglais(texte: str) -> bool:
+    toks = _normalise(texte).split()
+    if len(toks) < 2:
+        return False
+    hits = sum(1 for t in toks if t in _TOKENS_EN)
+    return hits >= 2 and hits >= len(toks) * 0.4
+
+
 def _meta_assistant(texte: str) -> str | None:
     """Réponse HONNÊTE à une question sur l'assistant lui-même (qui es-tu / tes capacités / tes sources…), ou None.
     SOUND : fullmatch sur le message normalisé -> ne capte JAMAIS une question factuelle (« sais-tu la capitale… »)."""
@@ -865,6 +942,8 @@ def _reformule(texte: str, sujet: str) -> str:
 # Messages TERMINAUX NON-FACTUELS — constantes partagées : assistant_nl (porte unique) classe POSITIVEMENT chaque
 # texte (HORS / clarification / supposition rapportée) au lieu d'un défaut « fait » (faille passe adverse 2026-07-03).
 _MSG_INCONNU_PREFIXE = "Je n'ai pas l'information en mémoire pour l'instant"
+_MSG_WEB_COUPE = ("Je n'ai pas l'information dans mes données locales — et l'accès à internet est coupé. "
+                  "Réactive-le (bouton « 🌐 Internet » à gauche) et je lance une recherche sourcée.")
 _MSG_NOTE = "C'est noté, je m'en souviendrai. Tu pourras me le redemander."
 _MSG_REFUS = "D'accord — reformule ta question et je réponds."
 _MSG_RAPPEL_PREFIXE = "D'après ce que tu m'as dit : "
@@ -874,7 +953,24 @@ _MSG_DYM_PREFIXE = "Je ne suis pas sûr du mot « "
 def est_fallback(s: str) -> bool:
     """Le texte est-il un message d'ABSENCE (rien trouvé / simple accusé de réception) ? Sert à l'enveloppe
     d'assistant_nl (porte unique) pour distinguer une vraie réponse d'un aveu d'ignorance."""
-    return isinstance(s, str) and (s.startswith(_MSG_INCONNU_PREFIXE) or s == _MSG_NOTE)
+    return isinstance(s, str) and (s.startswith(_MSG_INCONNU_PREFIXE) or s == _MSG_NOTE or s == _MSG_WEB_COUPE)
+
+
+def _build_id() -> str:
+    """Identité du BUILD (commit tamponné dans VERSION_BUILD.txt par le workflow CI / build_exe.bat). Répond à
+    « QUEL .exe est-ce que je teste ? » — un artifact périmé ne se distingue pas à l'œil. « source » hors .exe
+    (sans lire le fichier : un reliquat de build local afficherait un tampon périmé)."""
+    import sys
+    if not getattr(sys, "frozen", False):
+        return "source"
+    racine = getattr(sys, "_MEIPASS", _HARNAIS)
+    try:
+        with open(os.path.join(racine, "VERSION_BUILD.txt"), "rb") as f:
+            brut = f.read().decode("utf-8", "ignore")
+        propre = "".join(c for c in brut if c.isalnum() or c in "._-")
+        return propre[:12] or "?"
+    except Exception:
+        return "source"
 
 
 def _diagnostic_connaissance(texte: str):
@@ -886,19 +982,30 @@ def _diagnostic_connaissance(texte: str):
     try:
         import os, lecteur
         _charge_ia()
-        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s"
+        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s"
                 % (len(lecteur.LECTEUR.relations()), len(lecteur.LECTEUR),
-                   os.environ.get("LECTEUR_DATASETS_DIR", "?")))
+                   os.environ.get("LECTEUR_DATASETS_DIR", "?"), _build_id(),
+                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée"))
     except Exception as e:
         return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
+
+
+_WEB_MODULE_SIGNALE = False   # échec d'import de la recherche web déjà affiché ? (une fois, pas à chaque question)
 
 
 def _recherche_structuree(question: str):
     """Le lecteur n'a rien -> SOURCE STRUCTURÉE fiable (Wikidata), réponse VÉRIFIÉE + ATTRIBUÉE (FAUX=0).
     Extraction SPARQL déterministe, jamais du texte libre. Réseau requis (opt-in IA_WEB=1). None si rien/erreur."""
+    global _WEB_MODULE_SIGNALE
     try:
         import veille_structure
-    except Exception:
+    except Exception as e:
+        if not _WEB_MODULE_SIGNALE:      # console = seul canal de diagnostic du .exe -> jamais silencieux
+            _WEB_MODULE_SIGNALE = True
+            try:                          # un print qui échoue (console exotique) ne doit pas casser la réponse
+                print("  [VERAX] ⚠ recherche web INDISPONIBLE (import veille_structure) : %r" % e, flush=True)
+            except Exception:
+                pass
         return None
     try:
         res = veille_structure.interroge_nl(question)          # source FIABLE (Wikidata) -> fait vérifié
@@ -911,11 +1018,30 @@ def _recherche_structuree(question: str):
         wl = veille_structure.cherche_web_libre(question)      # web LIBRE (Wikipédia) -> rapport attribué + lien
     except Exception:
         wl = None
+    try:                                                       # MULTI-SOURCES : domaines INDÉPENDANTS (métamoteur)
+        autres = veille_structure.cherche_web_domaines(question)
+    except Exception:
+        autres = []
     if wl:
         extrait, titre, url = wl
-        return ("D'après Wikip\u00e9dia (\u00ab %s \u00bb) : %s\n\n\U0001F517 En savoir plus : %s\n"
-                "(Information trouv\u00e9e sur internet, \u00e0 v\u00e9rifier au besoin.)"
-                % (titre, extrait[:420], url))
+        externes = [a for a in autres if not a[3].endswith("wikipedia.org")]
+        lignes = ["D'après Wikipédia (« %s ») : %s" % (titre, extrait[:420]), "",
+                  "\U0001F517 En savoir plus : %s" % url]
+        if externes:                                           # ≥2 domaines parlent du sujet -> on le MONTRE
+            lignes.append("\U0001F310 D'autres sources en parlent : "
+                          + " · ".join("%s (%s)" % (a[3], a[2]) for a in externes))
+            lignes.append("(Information trouvée sur internet, à vérifier au besoin.)")
+        else:                                                  # une seule source -> le DIRE (honnêteté)
+            lignes.append("(Source unique — information trouvée sur internet, à vérifier.)")
+        return "\n".join(lignes)
+    if autres:                                                 # pas de Wikipédia pertinente -> rapport métamoteur
+        titre, extrait, url, dom = autres[0]
+        lignes = ["D'après %s (« %s ») : %s" % (dom, titre, extrait), "",
+                  "\U0001F517 En savoir plus : %s" % url]
+        if len(autres) > 1:
+            lignes.append("\U0001F310 Aussi sur : " + " · ".join("%s (%s)" % (a[3], a[2]) for a in autres[1:]))
+        lignes.append("(Information trouvée sur internet, à vérifier au besoin.)")
+        return "\n".join(lignes)
     return None
 
 
@@ -1018,10 +1144,19 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         _sch = _demande_schema(t)
         if _sch:
             return _sch
+    #   (0quinquies) LANGUE : un message qui SEMBLE anglais ne doit pas traverser le pipeline factuel français
+    #   (la recherche plein-texte répondait hors-sujet). Clarification honnête bilingue -> jamais à côté.
+    if _semble_anglais(t):
+        return _MSG_ANGLAIS
     #   (0ter) ALIAS DÉFINITION : « que veut dire X » / « que signifie X » / « sens du mot X » -> « définition de X »
     #          (la voie « définition de X » fonctionne déjà). Sound : réutilise une voie existante, aucun fait nouveau.
     t = _alias_definition(t)
     veut = _veut_reponse(t)
+    #   PHRASE NOMINALE nue (ni question marquée, ni affirmation : « histoire du château de Chambord ») =
+    #   SUJET DE RECHERCHE -> on la traite en DEMANDE (rappel mémoire, did-you-mean, clarification, « je n'ai
+    #   pas l'info » honnête) plutôt qu'en fait à noter (« C'est noté » répondait à côté).
+    if not veut and not _semble_affirmation(t):
+        veut = True
 
     #   (1) CONNAISSANCE VÉRIFIÉE — tentée dès qu'on est en mode plein, MÊME sans « ? » ni mot interrogatif
     #       (« monnaie de l'arabie saoudite » tout court doit répondre). Sound : un fait vérifié sort, sinon HORS
@@ -1139,10 +1274,20 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         except Exception:
             rep = None
         if rep:
+            # INTERNET COUPÉ par l'utilisateur : ses aveux d'impuissance génériques (« je n'arrive pas à
+            # rattacher… ») deviennent un message ACTIONNABLE (réactive internet -> je cherche). Ses réponses
+            # UTILES (cadrage non-borné, clarification, calcul) restent prioritaires et inchangées.
+            if os.environ.get("IA_WEB") != "1":
+                prefixes = tuple(p for p in (getattr(assistant_nl, "_PFX_INDECIDABLE", None),
+                                             getattr(assistant_nl, "_PFX_SATURATION", None)) if p)
+                if prefixes and rep.startswith(prefixes):
+                    return _MSG_WEB_COUPE
             return rep
 
     #   (3) RIEN trouvé — message selon l'intention (demande vs affirmation).
     if veut:
+        if pleine and os.environ.get("IA_WEB") != "1":
+            return _MSG_WEB_COUPE
         indice = "" if pleine else " — ou relance sans IA_LEGER pour la connaissance générale (faits vérifiés)"
         return f"{_MSG_INCONNU_PREFIXE}{indice}."
     # affirmation : accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).

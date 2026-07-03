@@ -26,11 +26,10 @@ def base_complete_presente(seuil=200):
         return False
 
 
-def _progres(bloc, taille, total):
+def _progres(lu, total):
     if total > 0:
-        pct = min(100, bloc * taille * 100 // total)
         sys.stdout.write("\r  téléchargement de la base complète… %3d%%  (%.0f Mo)"
-                         % (pct, bloc * taille / 1048576))
+                         % (min(100, lu * 100 // total), lu / 1048576))
         sys.stdout.flush()
 
 
@@ -45,7 +44,24 @@ def assure_base_complete():
     arch = os.path.join(parent, "_datasets_complets.tar.gz")
     print("  Installation unique de la base complète (73M faits, ~750 Mo)…")
     try:
-        urllib.request.urlretrieve(URL, arch, _progres)
+        try:
+            import https_confiance            # repli épinglé (magasin Windows parfois pollué -> faux « expired »)
+            _ouvre = https_confiance.urlopen
+        except Exception:
+            _ouvre = urllib.request.urlopen   # layout minimal sans src/ -> comportement d'avant
+        req = urllib.request.Request(URL, headers={"User-Agent": "VERAX/1.0 (base complete)"})
+        with _ouvre(req, timeout=60) as r, open(arch, "wb") as fh:
+            total = int(r.headers.get("Content-Length") or 0)
+            lu = 0
+            while True:
+                bloc = r.read(1 << 20)
+                if not bloc:
+                    break
+                fh.write(bloc)
+                lu += len(bloc)
+                _progres(lu, total)
+        if total and lu != total:                 # INTÉGRITÉ : une archive tronquée ne doit JAMAIS être extraite
+            raise IOError("téléchargement tronqué (%d octets sur %d)" % (lu, total))
         print("\n  extraction…")
         with tarfile.open(arch) as t:
             try:
@@ -57,6 +73,16 @@ def assure_base_complete():
         return True
     except Exception as e:
         print("\n  (base complète indisponible : %s — démarrage sur l'échantillon)" % e)
+        # NETTOYAGE : ne JAMAIS laisser une extraction PARTIELLE se faire passer pour la base complète —
+        # base_complete_presente() compte les .jsonl, ≥200 fichiers partiels la figeraient « complète » à vie
+        # (et une relation coupée sur une frontière de ligne serait chargée comme si elle était entière).
+        # Sûr : on n'arrive ici que si la base n'était PAS complète à l'entrée (early-return sinon).
+        import shutil
+        shutil.rmtree(d, ignore_errors=True)
+        try:
+            os.remove(arch)
+        except OSError:
+            pass
         return False
 
 

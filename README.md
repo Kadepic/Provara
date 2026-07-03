@@ -48,6 +48,16 @@ The demo runs on the bundled **sample** (16 fact domains) plus the computation e
 
 > **Honest about scope** — VERAX **covers fewer topics** than a general-purpose LLM: that is the accepted price of zero-hallucination. Its promise is not "it answers everything," it is "**it is never falsely confident**." On what it covers, it is not wrong; on the rest, it says so.
 
+## In conversation
+
+VERAX is not just a fact store: it is a full local assistant that never lies.
+
+- **It searches the web when it doesn't know** (opt-in) — first a reliable structured source (Wikidata) for a **verified fact**; otherwise an **attributed** Wikipedia extract with the **link** ("according to Wikipedia…, verify if needed"). Never presented as its own truth. *("the king of pop" → Michael Jackson; "who invented dynamite?" → Alfred Nobel, 1866.)*
+- **It draws what it knows** — "show me what you know about France" → a **diagram** (graph) of its real relations.
+- **It reads your files** — a file (JSON, CSV, XML, SQLite, ZIP…) → a faithful summary, **read locally**, never sent anywhere.
+- **It answers several questions at once** — "capital of Japan, 5×9, and who invented dynamite?" without blocking.
+- **It remembers** — per-conversation memory, recalls the right item, always typed as "reported."
+
 ## Watch it learn
 
 The full knowledge base is **not shipped** in this repository — not by constraint, but by design: VERAX **goes and fetches its data and learns it itself**. Each `ingere_*.py` script pulls a domain from a real, trustworthy source (Wikidata via the QLever mirror, the World Bank, a multilingual dictionary…), **verifies** every fact, and writes only what survives — never an uncorroborated fact.

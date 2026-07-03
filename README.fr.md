@@ -48,6 +48,16 @@ La démo tourne sur l'**échantillon** livré (16 domaines de faits) plus les mo
 
 > **Honnêteté sur la portée** — VERAX **couvre moins de sujets** qu'un LLM généraliste : c'est le prix, assumé, du zéro-hallucination. Sa promesse n'est pas « il répond à tout », c'est « **il n'est jamais faussement sûr** ». Sur ce qu'il couvre, il ne se trompe pas ; sur le reste, il le dit.
 
+## En conversation
+
+VERAX n'est pas qu'une base de faits : c'est un assistant local complet, qui ne ment jamais.
+
+- **Il cherche sur le web quand il ne sait pas** (opt-in) — d'abord une source structurée fiable (Wikidata) pour un **fait vérifié** ; sinon un extrait **attribué** de Wikipédia avec le **lien** (« d'après Wikipédia…, à vérifier au besoin »). Jamais présenté comme sa propre vérité. *(« le roi de la pop » → Michael Jackson ; « qui a inventé la dynamite ? » → Alfred Nobel, 1866.)*
+- **Il dessine ce qu'il sait** — « montre-moi ce que tu sais sur la France » → un **schéma** (graphe) de ses relations réelles.
+- **Il lit tes fichiers** — un fichier (JSON, CSV, XML, SQLite, ZIP…) → un résumé fidèle, **lu localement**, jamais envoyé ailleurs.
+- **Il répond à plusieurs questions d'un coup** — « capitale du Japon, 5×9, et qui a inventé la dynamite ? » sans blocage.
+- **Il se souvient** — mémoire par conversation, rappel du bon élément, toujours typé « rapporté ».
+
 ## Regarde-le apprendre
 
 La base complète n'est **pas livrée** dans ce dépôt — non par contrainte, mais par principe : VERAX **va chercher ses données et les apprend lui-même**. Chaque script `ingere_*.py` récupère un domaine depuis une source réelle et fiable (Wikidata via le miroir QLever, la Banque mondiale, un dictionnaire multilingue…), **vérifie** chaque fait, et n'écrit que ce qui survit — jamais un fait non corroboré.

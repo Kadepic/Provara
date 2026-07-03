@@ -33,6 +33,24 @@ import glob as _glob
 _dd = os.environ.get("LECTEUR_DATASETS_DIR", "")
 _nrel = len(_glob.glob(os.path.join(_dd, "*.jsonl"))) if _dd and os.path.isdir(_dd) else 0
 print("  donnees : %d relation(s) chargeables  [%s]" % (_nrel, _dd))
+
+
+def _build_id() -> str:
+    """Commit du BUILD, tamponné dans VERSION_BUILD.txt (workflow CI / build_exe.bat) et embarqué dans le .exe.
+    Affiché au démarrage : on sait toujours QUEL build on teste (un artifact périmé ne se distingue pas à l'œil).
+    Hors .exe on répond « source » SANS lire le fichier : un reliquat de build local afficherait un tampon périmé."""
+    if not getattr(sys, "frozen", False):
+        return "source"
+    try:
+        with open(os.path.join(_ROOT, "VERSION_BUILD.txt"), "rb") as f:
+            brut = f.read().decode("utf-8", "ignore")
+        propre = "".join(c for c in brut if c.isalnum() or c in "._-")
+        return propre[:12] or "?"
+    except Exception:
+        return "(non tamponné)"
+
+
+print("  build   : %s" % _build_id())
 os.environ.setdefault("IA_PLEINE", "1")
 os.environ.setdefault("IA_WEB", "1")  # recherche structurée en secours (source fiable, attribuée)
 _PORT = int(os.environ.get("PORT", "8765"))

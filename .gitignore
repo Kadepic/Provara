@@ -13,6 +13,8 @@ ia-lecteur/
 
 # ── Données volumineuses (NE PAS committer : reconstruites par ingere_*.py) ──
 # L'échantillon dans datasets/lecteur/ EST versionné ; la base complète non.
+# Les CONVERSATIONS de dev sont PRIVÉES : jamais committées, jamais embarquées dans le .exe.
+datasets/conversations/
 datasets/_raw/
 datasets/**/*.dwarfs
 # Gros fichiers de faits reconstruits localement (garder l'échantillon léger) :
@@ -24,3 +26,11 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+_REPRISE_SESSION.md
+
+# ── Artefacts de build (.exe) ────────────────────────────────────────
+VERSION_BUILD.txt
+build/
+dist/
+*.spec
+_POST_LINKEDIN.md

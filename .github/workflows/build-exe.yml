@@ -14,6 +14,9 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pyinstaller
+      - name: Tamponner le commit du build (VERSION_BUILD.txt)
+        shell: bash
+        run: echo "$GITHUB_SHA" > VERSION_BUILD.txt
       - name: Build VERAX.exe
         run: >
           pyinstaller --onefile --name VERAX
@@ -25,8 +28,9 @@ jobs:
           --add-data "src;src"
           --add-data "ingestion;ingestion"
           --add-data "interface;interface"
-          --add-data "datasets;datasets"
+          --add-data "datasets/lecteur;datasets/lecteur"
           --add-data "verax_boot.py;."
+          --add-data "VERSION_BUILD.txt;."
           --hidden-import json --hidden-import csv --hidden-import sqlite3
           --hidden-import wave --hidden-import struct --hidden-import array
           --hidden-import zlib --hidden-import gzip --hidden-import bz2 --hidden-import lzma --hidden-import hashlib

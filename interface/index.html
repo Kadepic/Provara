@@ -14,6 +14,11 @@
     --bg: #faf9f7; --panneau: #ffffff; --bord: #e7e4df; --texte: #2b2a27;
     --doux: #8a857d; --accent: #4a6b5a; --user: #eef3f0; --autre: #f4f2ee;
   }
+  /* MODE SOMBRE : mêmes variables, palette inversée (préférence mémorisée, défaut = réglage système) */
+  body.sombre {
+    --bg: #12151a; --panneau: #1a1f26; --bord: #2b323c; --texte: #e7e5e0;
+    --doux: #98a0ab; --accent: #7dab93; --user: #24322b; --autre: #232830;
+  }
   * { box-sizing: border-box; }
   body {
     margin: 0; font: 15px/1.5 -apple-system, system-ui, "Segoe UI", Roboto, sans-serif;
@@ -32,6 +37,18 @@
     background: var(--accent); color: #fff; font-size: 14px; cursor: pointer;
   }
   #btn-nouvelle:hover { opacity: .9; }
+  #btn-web {
+    margin: 0 16px 8px; padding: 8px; border-radius: 8px; font-size: 12.5px; cursor: pointer;
+    border: 1px solid var(--accent); background: var(--panneau); color: var(--accent);
+  }
+  #btn-web.off { border-color: #c98f7e; color: #a15a4a; }
+  #btn-corbeille, #btn-theme {
+    margin: 0 16px 8px; padding: 7px; border-radius: 8px; font-size: 12.5px; cursor: pointer;
+    border: 1px solid var(--bord); background: var(--panneau); color: var(--doux);
+  }
+  #btn-corbeille:hover, #btn-theme:hover { color: var(--texte); }
+  .conv .restaurer { color: var(--doux); border: none; background: none; cursor: pointer; font-size: 13px; display: none; }
+  .conv:hover .restaurer { display: inline; }
   #liste { flex: 1; overflow-y: auto; padding: 4px 8px 16px; }
   .conv {
     padding: 9px 10px; border-radius: 8px; cursor: pointer; display: flex;
@@ -54,6 +71,10 @@
   .tour.user { background: var(--user); margin-left: auto; }
   .tour .qui { font-size: 11px; color: var(--doux); margin-bottom: 3px; }
   .tour .corps { white-space: pre-wrap; word-wrap: break-word; }
+  /* bulle d'ATTENTE pendant que VERAX travaille (chargement/recherche) — l'utilisateur voit que ça avance */
+  .tour.attente .corps { color: var(--doux); font-style: italic; }
+  .tour.attente { animation: pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
   #saisie { padding: 14px 16px; border-top: 1px solid var(--bord); background: var(--panneau); display: flex; gap: 8px; }
   #champ {
     flex: 1; resize: none; height: 44px; padding: 11px; border: 1px solid var(--bord);
@@ -61,6 +82,13 @@
   }
   #envoyer { padding: 0 18px; border: none; border-radius: 10px; background: var(--accent); color: #fff; cursor: pointer; }
   #envoyer:disabled { opacity: .4; cursor: default; }
+  /* bouton IMPORTER : trombone SVG en couleur du texte -> contraste net dans les deux thèmes */
+  #btn-fichier {
+    padding: 0 12px; border: 1px solid var(--bord); border-radius: 10px; background: var(--panneau);
+    color: var(--texte); cursor: pointer; display: flex; align-items: center;
+  }
+  #btn-fichier:disabled { opacity: .35; cursor: default; }
+  #btn-fichier:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
   .centre { margin: auto; color: var(--doux); text-align: center; }
 </style>
 </head>
@@ -68,18 +96,21 @@
   <aside id="cote">
     <header>
       <h1>VERAX</h1>
-      <p>assistant local &amp; souverain · rien ne sort de la machine</p>
+      <p>assistant local &amp; souverain · tes conversations restent ici · internet : optionnel, toujours sourcé</p>
     </header>
     <button id="btn-nouvelle">+ Nouvelle conversation</button>
+    <button id="btn-web" title="État de l'accès à internet…">🌐 Internet : …</button>
+    <button id="btn-corbeille" title="Conversations retirées de l'historique (l'IA s'en souvient encore) : restaurer ou oublier pour de bon">🗑 Corbeille</button>
+    <button id="btn-theme" title="Basculer entre thème clair et thème sombre">🌙 Mode sombre</button>
     <div id="liste"><div class="vide">Chargement…</div></div>
   </aside>
 
   <main id="fil">
     <div id="titre"><h2>—</h2><span class="scope"></span></div>
-    <div id="tours"><div class="centre">Bonjour, je suis <strong>VERAX</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais, ou je le dis honnêtement.</div></div>
+    <div id="tours"><div class="centre">Bonjour, je suis <strong>VERAX</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé), et si je ne trouve pas, je le dis honnêtement.</div></div>
     <div id="saisie">
       <input type="file" id="fichier" style="display:none">
-      <button id="btn-fichier" title="Importer un fichier (json, csv, xml, sqlite, zip…)" disabled>📎</button>
+      <button id="btn-fichier" title="Importer un fichier (json, csv, xml, sqlite, zip…)" disabled><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></button>
       <textarea id="champ" placeholder="Écris un message…" disabled></textarea>
       <button id="envoyer" disabled>Envoyer</button>
     </div>
@@ -102,6 +133,7 @@ function horodate(ts) {
 
 // — colonne gauche : liste —
 async function chargeListe() {
+  if (enCorbeille) return chargeCorbeille();       // la vue corbeille est ouverte : ne pas l'écraser
   const { items } = await api("/api/conversations");
   const liste = $("#liste");
   // une conversation « neuve » sans message n'est pas encore sur le disque : on l'affiche quand même en tête.
@@ -164,16 +196,39 @@ $("#btn-nouvelle").onclick = async () => {
   ouvre(r.id);
 };
 
-// — envoyer un message —
+// — envoyer un message (avec RETOUR VISUEL immédiat : ton message + bulle « VERAX cherche… ») —
+function _bulle(role, texte, attente) {
+  const flux = $("#tours");
+  if (flux.querySelector(".centre")) flux.innerHTML = "";       // enlève le placeholder « conversation vide »
+  const el = document.createElement("div");
+  el.className = "tour" + (role === "user" ? " user" : "") + (attente ? " attente" : "");
+  el.innerHTML = `<div class="qui"></div><div class="corps"></div>`;
+  el.querySelector(".qui").textContent = role === "user" ? "vous" : "VERAX";
+  el.querySelector(".corps").textContent = texte;               // verbatim, jamais d'injection
+  flux.appendChild(el);
+  flux.scrollTop = flux.scrollHeight;
+  return el;
+}
 async function envoie() {
   const champ = $("#champ");
   const texte = champ.value.trim();
   if (!texte || !actif) return;
   champ.value = "";
-  const r = await api("/api/message", { method: "POST", headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ id: actif, texte }) });
-  if (r.id === neuve) neuve = null;       // désormais persistée
-  ouvre(actif);                           // relit l'état réel depuis le serveur (pas d'optimisme aveugle)
+  _bulle("user", texte, false);                                  // ton message apparaît TOUT DE SUITE
+  const attente = _bulle("ia", "je cherche — mes données d'abord, internet si besoin (la première question " +
+                               "peut prendre ~1 min, le temps de charger ma mémoire)…", true);
+  $("#envoyer").disabled = true;
+  try {
+    const r = await api("/api/message", { method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: actif, texte }) });
+    if (r.id === neuve) neuve = null;     // désormais persistée
+    ouvre(actif);                         // relit l'état réel depuis le serveur (pas d'optimisme aveugle)
+  } catch {
+    attente.querySelector(".corps").textContent = "erreur de liaison avec le serveur local — réessaie.";
+    attente.classList.remove("attente");
+  } finally {
+    $("#envoyer").disabled = false;
+  }
 }
 $("#envoyer").onclick = envoie;
 $("#champ").addEventListener("keydown", (e) => {
@@ -208,10 +263,80 @@ async function archive(id) {
     actif = null;
     $("#titre h2").textContent = "—"; $("#titre .scope").textContent = "";
     $("#tours").innerHTML = '<div class="centre">Sélectionne une conversation, ou crée-en une.</div>';
-    $("#champ").disabled = true; $("#envoyer").disabled = true;
+    $("#champ").disabled = true; $("#envoyer").disabled = true; $("#btn-fichier").disabled = true;
   }
   chargeListe();
 }
+
+// — CORBEILLE : conversations archivées (cachées mais non oubliées) -> restaurer (↩) ou purger pour de bon (✕) —
+let enCorbeille = false;
+async function chargeCorbeille() {
+  const { items } = await api("/api/corbeille");
+  const liste = $("#liste");
+  if (!items || items.length === 0) { liste.innerHTML = '<div class="vide">Corbeille vide.</div>'; return; }
+  liste.innerHTML = "";
+  for (const c of items) {
+    const el = document.createElement("div");
+    el.className = "conv";
+    el.innerHTML = `<span class="nom"></span><span class="meta">${c.n} tour${c.n > 1 ? "s" : ""}</span>`
+      + `<button class="restaurer" title="Restaurer dans l'historique">↩</button>`
+      + `<button class="suppr" title="Oublier pour de bon (purge définitive, irréversible)">✕</button>`;
+    el.querySelector(".nom").textContent = c.id;                    // textContent : jamais d'injection HTML
+    el.querySelector(".restaurer").onclick = async (e) => {
+      e.stopPropagation();
+      await api("/api/desarchive", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: c.id }) });
+      chargeCorbeille();
+    };
+    el.querySelector(".suppr").onclick = async (e) => {
+      e.stopPropagation();
+      if (!confirm(`Oublier « ${c.id} » pour de bon ?\nPurge DÉFINITIVE : l'IA n'en gardera aucun souvenir.`)) return;
+      await api("/api/oublie", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: c.id }) });
+      if (c.id === actif) {
+        actif = null;
+        $("#titre h2").textContent = "—"; $("#titre .scope").textContent = "";
+        $("#tours").innerHTML = '<div class="centre">Sélectionne une conversation, ou crée-en une.</div>';
+        $("#champ").disabled = true; $("#envoyer").disabled = true; $("#btn-fichier").disabled = true;
+      }
+      chargeCorbeille();
+    };
+    liste.appendChild(el);
+  }
+}
+$("#btn-corbeille").onclick = () => {
+  enCorbeille = !enCorbeille;
+  $("#btn-corbeille").textContent = enCorbeille ? "← Retour aux conversations" : "🗑 Corbeille";
+  if (enCorbeille) chargeCorbeille(); else chargeListe();
+};
+
+// — interrupteur INTERNET : actif par défaut ; « ne pas donner accès à internet » = données locales seules —
+function majWeb(actif) {
+  const b = $("#btn-web");
+  b.className = actif ? "" : "off";
+  b.dataset.actif = actif ? "1" : "0";
+  b.textContent = actif ? "🌐 Internet : activé (réponses sourcées)" : "⛔ Internet : coupé — données locales seules";
+  b.title = actif ? "Cliquer pour ne pas donner accès à internet : VERAX n'utilisera que ses données locales."
+                  : "Cliquer pour autoriser la recherche sur internet (toujours attribuée, avec la source).";
+}
+$("#btn-web").onclick = async () => {
+  const r = await api("/api/web", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ actif: $("#btn-web").dataset.actif !== "1" }) });
+  if (r.ok) majWeb(r.actif);
+};
+api("/api/web").then((r) => majWeb(!!r.actif)).catch(() => {});
+
+// — THÈME clair/sombre : préférence mémorisée localement ; défaut = réglage système —
+function majTheme(sombre) {
+  document.body.classList.toggle("sombre", sombre);
+  $("#btn-theme").textContent = sombre ? "☀️ Mode clair" : "🌙 Mode sombre";
+  try { localStorage.setItem("verax_theme", sombre ? "sombre" : "clair"); } catch {}
+}
+$("#btn-theme").onclick = () => majTheme(!document.body.classList.contains("sombre"));
+majTheme((() => {
+  try { const t = localStorage.getItem("verax_theme"); if (t) return t === "sombre"; } catch {}
+  return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+})());
 
 chargeListe();
 </script>

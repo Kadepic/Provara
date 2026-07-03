@@ -50,9 +50,11 @@ def _valide_url(url) -> bool:
 
 
 def _urllib_transport(url: str, timeout: int = 15):
-    """Transport SOUVERAIN par défaut : GET urllib. Renvoie (statut_http, octets)."""
+    """Transport SOUVERAIN par défaut : GET urllib, à repli épinglé (le magasin Windows peut être pollué par une
+    racine périmée -> faux « certificate expired » sur des sites sains ; cf https_confiance). (statut, octets)."""
+    import https_confiance
     req = urllib.request.Request(url, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=timeout) as r:
+    with https_confiance.urlopen(req, timeout=timeout) as r:
         statut = getattr(r, "status", None) or r.getcode()
         return statut, r.read(_TAILLE_MAX + 1)
 

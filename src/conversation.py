@@ -35,13 +35,25 @@ from __future__ import annotations
 import json
 import math
 import os
+import sys
 import tempfile
 import time
 
 from base_faits import normalise
 
 # Dossier de persistance OFFLINE (comme datasets/lecteur) : un fichier .jsonl par conversation, append-only.
-_DOSSIER = os.path.join((os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.abspath(__file__))), "datasets", "conversations")
+# ⚠ En mode .exe (frozen), VERAX_ROOT pointe vers le dossier TEMPORAIRE PyInstaller (_MEIxxxx, détruit à la
+# fermeture) : y écrire = conversations PERDUES à chaque sortie + archive amnésique (vu en prod : « elles
+# reviennent à chaque fois »). Le stock du produit vit donc dans le foyer PERSISTANT (~/.verax), comme la base
+# complète téléchargée. En source : datasets/conversations du repo, comme avant (dossier NON embarqué dans le .exe).
+if os.environ.get("VERAX_CONV_DIR"):
+    _DOSSIER = os.environ["VERAX_CONV_DIR"]
+elif getattr(sys, "frozen", False):
+    _DOSSIER = os.path.join(os.environ.get("VERAX_DATA_HOME") or os.path.join(os.path.expanduser("~"), ".verax"),
+                            "conversations")
+else:
+    _DOSSIER = os.path.join((os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.abspath(__file__))),
+                            "datasets", "conversations")
 
 _SCOPES = ("prive", "public")
 

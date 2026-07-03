@@ -2,6 +2,11 @@
 cd /d "%~dp0"
 echo === VERAX : compilation de VERAX.exe ===
 where py >nul 2>&1 || ( echo Installe Python 3.10+ ^: https://www.python.org/downloads/ & pause & exit /b 1 )
+rem Tampon de version : le .exe sait de quel commit il vient (affiché au démarrage + « diagnostic »).
+set "VERAX_SHA="
+for /f %%i in ('git rev-parse --short=12 HEAD 2^>nul') do set "VERAX_SHA=%%i"
+if not defined VERAX_SHA set "VERAX_SHA=build-local"
+> VERSION_BUILD.txt echo %VERAX_SHA%
 py -m pip install --upgrade pyinstaller
 py -m PyInstaller --onefile --name VERAX ^
   --paths src --paths ingestion --paths interface ^
@@ -10,7 +15,7 @@ py -m PyInstaller --onefile --name VERAX ^
   --hidden-import serveur --hidden-import repond --hidden-import conversation ^
   --hidden-import assistant_nl --hidden-import veille_structure --hidden-import fonction_nl ^
   --add-data "src;src" --add-data "ingestion;ingestion" --add-data "interface;interface" ^
-  --add-data "datasets;datasets" --add-data "verax_boot.py;." ^
+  --add-data "datasets/lecteur;datasets/lecteur" --add-data "verax_boot.py;." --add-data "VERSION_BUILD.txt;." ^
   --hidden-import json --hidden-import csv --hidden-import sqlite3 --hidden-import wave --hidden-import struct ^
   --hidden-import array --hidden-import zlib --hidden-import gzip --hidden-import bz2 --hidden-import lzma ^
   --hidden-import hashlib --hidden-import decimal --hidden-import fractions --hidden-import statistics ^

@@ -28,6 +28,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
@@ -198,7 +199,10 @@ def oublie_conversation(memoire, conv_id: str) -> dict:
 def _resume_fichier(nom: str, res: dict) -> str:
     """Résumé FIDÈLE d'un fichier parsé (FAUX=0 : uniquement ce que le parseur a réellement lu, jamais inventé)."""
     if not isinstance(res, dict) or res.get("statut") != "verifie":
-        return "Je n'ai pas su lire « %s » (type non pris en charge ou fichier illisible)." % nom
+        return ("Je n'ai pas su lire « %s ». Je sais lire aujourd'hui : json/geojson, csv/tsv, xml/rss/xsd, "
+                "html, txt/md/log, ini/cfg/conf, sqlite/db, zip/tar/gz, svg. Les PDF et les images ne sont "
+                "pas encore pris en charge (et un PDF de capture d'écran est une image : il faudrait de "
+                "l'OCR, prévu plus tard)." % nom)
     typ, meta = res.get("type", "?"), str(res.get("meta") or "")
     apercu = str(res.get("contenu"))
     if len(apercu) > 700:
@@ -234,14 +238,28 @@ def importe_fichier(memoire, conv_id: str, nom: str, contenu_b64: str) -> dict:
             os.remove(chemin)
         except OSError:
             pass
+    arch = _lit_archive(memoire)                  # même invariant que ajoute_message : écrire dans une conv
+    if conv_id in arch:                           # archivée la fait réapparaître (sinon l'import reste invisible)
+        arch.discard(conv_id)
+        _ecrit_archive(memoire, arch)
     memoire.ajoute(conv_id, "user", "\U0001F4CE " + nom)
     resume = _resume_fichier(nom, res)
     memoire.ajoute(conv_id, "ia", resume)
     return {"ok": True, "reponse": resume, **lire_conversation(memoire, conv_id)}
 
 
+def _regle_web(actif) -> dict:
+    """Interrupteur INTERNET de l'interface (recherche web ATTRIBUÉE) : ACTIF par défaut, coupé d'un clic.
+    Process-global : IA_WEB est relu à CHAQUE question (repond + assistant_nl) -> effet immédiat. La base
+    locale répond toujours ; couper internet ne coupe que la recherche de secours sur les sources externes."""
+    os.environ["IA_WEB"] = "1" if actif else "0"
+    return {"ok": True, "actif": os.environ.get("IA_WEB") == "1"}
+
+
 ROUTES = {
     ("GET", "/api/conversations"): lambda m, q, b: liste_conversations(m),
+    ("GET", "/api/web"):           lambda m, q, b: {"ok": True, "actif": os.environ.get("IA_WEB") == "1"},
+    ("POST", "/api/web"):          lambda m, q, b: _regle_web(bool(b.get("actif"))),
     ("GET", "/api/conversation"):  lambda m, q, b: lire_conversation(m, (q.get("id") or [""])[0]),
     ("POST", "/api/message"):      lambda m, q, b: ajoute_message(m, b.get("id", ""), b.get("texte", ""), pleine=_IA_PLEINE),
     ("POST", "/api/fichier"):      lambda m, q, b: importe_fichier(m, b.get("id", ""), b.get("nom", ""), b.get("contenu", "")),
@@ -279,7 +297,10 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(data)
 
     def _corps(self) -> dict:
-        longueur = int(self.headers.get("Content-Length") or 0)
+        try:
+            longueur = int(self.headers.get("Content-Length") or 0)
+        except ValueError:                        # en-tête malformé -> corps vide (jamais de connexion coupée net)
+            return {}
         if longueur <= 0:
             return {}
         brut = self.rfile.read(longueur)
@@ -289,7 +310,20 @@ class Handler(BaseHTTPRequestHandler):
         except (ValueError, UnicodeDecodeError):
             return {}
 
+    # Origines LOCALES acceptées (page servie par CE serveur). Tout le reste est refusé (voir garde ci-dessous).
+    _ORIGINE_LOCALE = re.compile(r"^https?://(?:127\.0\.0\.1|localhost|\[::1\])(?::\d+)?$", re.IGNORECASE)
+
     def _route(self, methode: str) -> None:
+        # GARDE ANTI-CSRF / DNS-REBINDING : le serveur n'écoute que 127.0.0.1, mais une page web TIERCE ouverte
+        # dans le navigateur peut quand même POSTer vers localhost (requête « simple », sans preflight CORS) ou
+        # re-résoudre son domaine vers 127.0.0.1. On exige donc un Host LOCAL et, si le navigateur envoie une
+        # Origin, une origin LOCALE -> aucune page externe ne peut actionner l'API (réactiver internet en douce,
+        # purger une conversation, injecter des tours). curl/l'UI locale passent inchangés.
+        hote = (self.headers.get("Host") or "").split(":")[0].strip("[]").lower()
+        origine = self.headers.get("Origin")
+        if hote not in ("127.0.0.1", "localhost", "::1") or (origine and not self._ORIGINE_LOCALE.match(origine)):
+            self._json({"ok": False, "raison": "requête non locale refusée"}, code=403)
+            return
         url = urlparse(self.path)
         if methode == "GET" and url.path in ("/", "/index.html"):
             self._page()

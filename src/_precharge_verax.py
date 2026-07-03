@@ -938,6 +938,10 @@ try:
 except Exception:
     pass
 try:
+    import https_confiance
+except Exception:
+    pass
+try:
     import hydraulique
 except Exception:
     pass

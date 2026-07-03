@@ -1,5 +1,69 @@
 # Journal des modifications — VERAX
 
+## 2026-07-03 — Session « le .exe marche pour de vrai » (débogage en conditions réelles)
+
+### Deux causes racines trouvées et corrigées (la recherche web échouait dans le .exe)
+- **SSL épinglé** (`src/https_confiance.py`, NOUVEAU) : sous Windows, le magasin de certificats système peut
+  contenir une variante périmée d'une racine -> OpenSSL refuse des sites SAINS (« certificate has expired » sur
+  fr.wikipedia.org, chaîne servie pourtant 100 % valide ; navigateurs OK car ils récupèrent les racines
+  dynamiquement). Remède : si et SEULEMENT si la validation système échoue sur un problème de certificat, la
+  requête est re-validée contre des ancres EMBARQUÉES (racines officielles ISRG X1/X2, bundle Mozilla ;
+  expirent 2035/2040). Vérification jamais désactivée, hostname compris. Câblé dans `veille_structure`,
+  `veille`, `telecharge_donnees`.
+- **Conversations enfin PERSISTANTES dans le .exe** (`conversation.py`) : le stock vivait sous `VERAX_ROOT`
+  qui, en mode frozen, pointe le dossier TEMPORAIRE PyInstaller (détruit à la fermeture) -> conversations
+  perdues à chaque sortie, archive amnésique. Le .exe range désormais tout dans `~/.verax/conversations`.
+  Au passage : 2 conversations de dev étaient EMBARQUÉES dans le .exe (et committées) -> détrackées,
+  `datasets/conversations/` gitignoré, le build n'embarque plus que `datasets/lecteur`.
+
+### Diagnostic embarqué (plus jamais d'échec silencieux)
+- **Tampon de build** : `VERSION_BUILD.txt` (commit) écrit par le CI et `build_exe.bat`, affiché au démarrage
+  (`build : …`) et dans la réponse « diagnostic » -> on sait toujours QUEL .exe on teste (artifact périmé vu à 15h23 :
+  le build du push 15:20 n'existait pas encore).
+- **Échecs web VISIBLES en console** (une fois par erreur distincte, jamais bloquant) : `veille_structure._signale`
+  + signalement d'un échec d'import du module web dans `repond._recherche_structuree`.
+- **Sorties tolérantes** (`verax_boot`) : `stdout/stderr errors="replace"` — un `print("✓")` sur console cp1252
+  tuait le thread de préchargement (UnicodeEncodeError). Plus jamais.
+- **Chemin des données de `repond`** : `_DOSSIER_LECTEUR` respecte `LECTEUR_DATASETS_DIR` (en frozen, le chemin
+  dérivé de `__file__` était faux -> requêtes inverses mortes en silence dans le .exe).
+
+### Interface (demandes Yohan)
+- **Interrupteur INTERNET** (routes `GET/POST /api/web` + bouton) : actif par défaut ; « couper » = données
+  locales seules, effet immédiat. Quand internet est coupé et que les données locales n'ont rien : message
+  ACTIONNABLE (« réactive internet et je lance une recherche sourcée ») au lieu d'un aveu générique.
+- **Corbeille** : bouton 🗑 -> conversations archivées, restaurer (↩) ou purger définitivement (✕, confirmation).
+- **Honnêteté de la devise** : « rien ne sort de la machine » -> « tes conversations restent ici · internet :
+  optionnel, toujours sourcé » (la recherche envoie les termes de la question aux sources, jamais les dialogues).
+- Phrase d'accueil : « … je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé)… ».
+
+### Qualité de réponse (retours de test Yohan en direct)
+- **GARDE DE PERTINENCE (FAUX=0)** sur la recherche web libre : la recherche plein-texte de Wikipédia renvoie
+  TOUJOURS quelque chose — « je voudrais construire un moteur à eau » rapportait le CONCORDE. Désormais les mots
+  pleins du sujet doivent se retrouver dans le titre/extrait de correspondance (tolérance 1 faute :
+  « parmezzan » -> « parmesan » passe), sinon ABSTENTION honnête. Top-3 résultats testés, premier pertinent retenu.
+- **Extraction du SUJET des phrases d'intention** : « je voudrais construire X », « où je peux trouver Y »,
+  « dans quel pays… » -> la recherche porte sur X/Y, pas sur la phrase entière (-> « Moteur à eau » trouvé).
+- **MULTI-SOURCES** (`cherche_web_domaines`, DuckDuckGo lite) : jusqu'à 3 résultats PERTINENTS de domaines
+  INDÉPENDANTS, chacun verbatim + attribué + lié. Réponse Wikipédia enrichie de « 🌐 D'autres sources en
+  parlent : … » ; sans corroboration -> « (Source unique — à vérifier.) » ; sans Wikipédia -> rapport du
+  métamoteur attribué. Dégradation gracieuse si bloqué. (La promotion « N sources concordent -> fait » = le
+  système de confiance, chantier suivant.)
+- **Anglais** : salutations anglaises comprises et répondues EN ANGLAIS (« hello how are you? » partait en
+  recherche web -> « Clara Furey » hors-sujet) ; détecteur « ça ressemble à de l'anglais » -> clarification
+  honnête bilingue au lieu d'une réponse à côté. Principe Yohan : DEMANDER des précisions > répondre à côté.
+- **Import fichiers** : le message d'échec LISTE désormais les 22 types lisibles (json/csv/xml/sqlite/zip/…)
+  et explique que PDF/images ne sont pas encore pris en charge (OCR prévu).
+
+### Interface (2e vague)
+- **Mode SOMBRE** 🌙 (bouton, mémorisé, défaut = réglage système) ; **trombone d'import en SVG contrasté**
+  (l'émoji 📎 était illisible) ; boutons harmonisés.
+
+### Boucle de build/test locale (nouvelle capacité de dev)
+- Le .exe se BUILDE et se TESTE désormais depuis la session Claude via l'interop WSL->Windows (`py` 3.14 +
+  `build_exe.bat` sans pause + tests HTTP `curl` sur 127.0.0.1:8765). Batterie e2e passée : web attribué
+  (« roi de la pop » -> Michael Jackson), diagnostic tamponné, interrupteur, corbeille, base locale (Montevideo),
+  persistance des conversations.
+
 ## 2026-07-03 — Session « produit prêt à publier »
 
 ### Architecture & distribution
@@ -49,3 +113,28 @@
 - **Corbeille des conversations** (route + à finir côté UI).
 - Correction majeure du **.exe** : PyInstaller analyse tous les modules (`_precharge_verax`) -> `import ia` ne
   plante plus en frozen ; erreurs remontées dans la console.
+
+### Recherche web (session 3 — 2026-07-03 soir) : MULTI-SOURCES RÉEL (l'index du web entier + contexte vérifié sur site)
+- **Cause racine du « je ne vois que Wikipédia »** : DuckDuckGo lite servait un **CAPTCHA anti-bot** (« anomaly »,
+  cc=botnet) à notre UA -> `cherche_web_domaines` rendait [] à CHAQUE question -> « Source unique » systématique.
+- **Refonte multi-sources** (`veille_structure.py`) : recherche PAR MOTS-CLÉS sur des index du web ENTIER —
+  **Mojeek** (crawler indépendant, primaire) + **Bing RSS** (flux fait pour les programmes) + DDG lite (repli),
+  requête **« phrase exacte » d'abord** (précision : « "roi de la pop" » ne remonte plus les sites « ROI »
+  marketing) puis mots-clés pleins (rappel ; « un moteur à eau » ne matche plus l'ONU par « UN »).
+- **VÉRIFICATION DE CONTEXTE SUR LE SITE** (demande Yohan) : VERAX **visite chaque page candidate** (borne
+  400 Ko, texte extrait sans scripts) et exige les mots pleins du sujet dans une fenêtre de ~70 mots (départage :
+  phrase exacte > prose réelle > menus) -> l'extrait rapporté est le **PASSAGE VERBATIM de la page** ; page lue
+  mais muette sur le sujet = source REJETÉE ; inaccessible = snippet du moteur (attribué). Visites en parallèle.
+- **Anti-rafale** : cache 15 min par (index, requête) + budget Mojeek par question (quota ~4 req/min observé) ;
+  dégradation gracieuse inchangée (« Source unique — à vérifier »).
+- **ROUTAGE PHRASE NOMINALE** (`repond.py`) : « histoire du château de Chambord » sans « ? » n'est PLUS un fait
+  à noter (« C'est noté » = répondre à côté) mais un SUJET DE RECHERCHE -> cascade factuelle + web + clarification.
+  Une affirmation garde son accusé (verbe conjugué/1ʳᵉ personne/chiffre : « rdv dentiste mardi 15h » reste noté) ;
+  interjections (« oui », « merci ») inchangées. `est_fallback` reconnaît aussi le message « internet coupé ».
+- **FIX PRODUIT (latent depuis le portage)** : `assistant_nl._module_repond` cherchait `src/interface/repond.py`
+  (layout harnais) -> **FileNotFoundError avalée = étage clarification/bornage MORT en silence dans le .exe**.
+  Corrigé (réutilise l'instance `repond` chargée ; sinon 2 layouts ; sinon import gelé). `valide_assistant_nl`
+  passe de CRASH TOTAL à 70/77 (7 échecs restants = dérive harnais->Verax à trier, chantier compréhension).
+- Gates : verifie_demo **31/31** (783 checks) + valide_conversation **9/9** ; e2e .exe : « symptômes de la carence
+  en fer » (sans « ? ») -> passage vérifié sur actusante.net + 2 domaines ; « pneu de vélo » -> réponse PRIMAIRE
+  depuis un site spécialisé (roulezjeunesse) quand Wikipédia n'a rien.

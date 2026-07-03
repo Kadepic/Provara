@@ -334,16 +334,25 @@ def _module_repond():
             return _REPOND_MOD
         import sys as _sys
         import importlib.util
-        chemin = os.path.abspath(os.path.join(_ICI, "interface", "repond.py"))
         deja = _sys.modules.get("repond")
-        if deja is not None and os.path.abspath(getattr(deja, "__file__", "")) == chemin:
+        if deja is not None and hasattr(deja, "est_fallback"):
             _REPOND_MOD = deja                               # instance du serveur/validateur : on la partage
+            return _REPOND_MOD                               # (quel que soit son chemin : layout src/ ou gelé .exe)
+        # Layouts possibles : harnais (interface/ sous _ICI) et Verax (interface/ FRÈRE de src/). L'ancien chemin
+        # unique src/interface/repond.py n'existait pas -> FileNotFoundError avalée par les appelants = étage
+        # clarification MORT en silence dans le produit.
+        for base in (_ICI, os.path.dirname(_ICI)):
+            chemin = os.path.abspath(os.path.join(base, "interface", "repond.py"))
+            if not os.path.exists(chemin):
+                continue
+            spec = importlib.util.spec_from_file_location("interface_repond", chemin)
+            mod = importlib.util.module_from_spec(spec)
+            _sys.modules["interface_repond"] = mod
+            spec.loader.exec_module(mod)
+            _sys.modules.setdefault("repond", mod)           # un `import repond` ultérieur partage l'instance
+            _REPOND_MOD = mod
             return _REPOND_MOD
-        spec = importlib.util.spec_from_file_location("interface_repond", chemin)
-        mod = importlib.util.module_from_spec(spec)
-        _sys.modules["interface_repond"] = mod
-        spec.loader.exec_module(mod)
-        _sys.modules.setdefault("repond", mod)               # un `import repond` ultérieur partage l'instance
+        import repond as mod                                 # .exe gelé : le module bundlé se résout par l'import
         _REPOND_MOD = mod
         return _REPOND_MOD
 
