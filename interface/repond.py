@@ -525,17 +525,18 @@ def _resout_partie(p: str):
     r = _connaissance_verifiee(p, None)
     if r:
         return r
+    p_math = re.sub(r"(?<=\d)\s*[x×]\s*(?=\d)", "*", p)   # 5x9 / 5 × 9 -> 5*9
     try:
         import fonction_nl
         from base_faits import VERIFIE
-        st, val, _ = fonction_nl.resout_arithmetique(p)
+        st, val, _ = fonction_nl.resout_arithmetique(p_math)
         if st == VERIFIE and val is not None:
             return str(val)
     except Exception:
         pass
     try:
         import classifieur_bornage as _CB
-        v = _CB._juge_arith(_CB._norm(p))
+        v = _CB._juge_arith(_CB._norm(p_math))
         if v is not None:
             return str(int(v) if isinstance(v, float) and v.is_integer() else v)
     except Exception:
@@ -553,7 +554,7 @@ def _multi_questions(texte: str, conv_id: str | None) -> str | None:
     if len(parts) < 2:
         return None
     resolus = [(p, _resout_partie(p)) for p in parts]
-    if sum(1 for _, r in resolus if r) < 2:               # < 2 faits -> pas une vraie demande composée
+    if sum(1 for _, r in resolus if r) < 2 and len(parts) < 3:   # ≥2 faits OU ≥3 parties (liste évidente) -> engage
         return None
     lignes = [("• %s : %s" % (p, r)) if r else ("• %s : je ne l'ai pas encore en mémoire" % p)
               for p, r in resolus]
@@ -897,13 +898,25 @@ def _recherche_structuree(question: str):
     Extraction SPARQL déterministe, jamais du texte libre. Réseau requis (opt-in IA_WEB=1). None si rien/erreur."""
     try:
         import veille_structure
-        res = veille_structure.interroge_nl(question)
     except Exception:
         return None
-    if not res:
-        return None
-    _, _, valeur, source = res
-    return "%s  (trouvé sur %s)" % (valeur, source)
+    try:
+        res = veille_structure.interroge_nl(question)          # source FIABLE (Wikidata) -> fait vérifié
+    except Exception:
+        res = None
+    if res:
+        _, _, valeur, source = res
+        return "%s  (trouvé sur %s)" % (valeur, source)
+    try:
+        wl = veille_structure.cherche_web_libre(question)      # web LIBRE (Wikipédia) -> rapport attribué + lien
+    except Exception:
+        wl = None
+    if wl:
+        extrait, titre, url = wl
+        return ("D'après Wikip\u00e9dia (\u00ab %s \u00bb) : %s\n\n\U0001F517 En savoir plus : %s\n"
+                "(Information trouv\u00e9e sur internet, \u00e0 v\u00e9rifier au besoin.)"
+                % (titre, extrait[:420], url))
+    return None
 
 
 def _schema(entite: str):

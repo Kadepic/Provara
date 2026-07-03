@@ -247,6 +247,7 @@ ROUTES = {
     ("POST", "/api/fichier"):      lambda m, q, b: importe_fichier(m, b.get("id", ""), b.get("nom", ""), b.get("contenu", "")),
     ("POST", "/api/nouvelle"):     lambda m, q, b: nouvelle_conversation(m, b.get("id", "")),
     ("POST", "/api/archive"):      lambda m, q, b: archive_conversation(m, b.get("id", "")),     # cacher (IA s'en souvient)
+    ("GET", "/api/corbeille"):      lambda m, q, b: {"ok": True, "items": [i for i in liste_conversations(m, inclure_archivees=True)["items"] if i.get("archivee")]},
     ("POST", "/api/desarchive"):   lambda m, q, b: desarchive_conversation(m, b.get("id", "")),  # ré-afficher
     ("POST", "/api/oublie"):       lambda m, q, b: oublie_conversation(m, b.get("id", "")),       # purger pour de bon
 }

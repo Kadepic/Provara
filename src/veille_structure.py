@@ -103,3 +103,56 @@ def interroge_nl(question: str, timeout: int = 20):
         return None
     valeur, source = res
     return (attribut, entite, valeur, source)
+
+
+# ————————————————————————————— WEB LIBRE (Wikipédia) : rapport ATTRIBUÉ —————————————————————————————
+_WIKI_STOP = frozenset(
+    "quel quelle quels quelles est sont etait le la les l un une des du de d au aux et en dans sur qui que "
+    "quoi ou comment combien pourquoi donne moi dis peux tu me ce cette a plus grand grande grands moins".split())
+
+
+_WIKI_PREFIXES = re.compile(
+    r"^\s*(?:s['e ]?il\s+te\s+pla[iî]t\s+)?"
+    r"(?:quel(?:le)?s?\s+(?:est|sont|était|etait|étaient|etaient)|qui\s+(?:est|sont|a|ont)|"
+    r"qu['e ]?\s*est[- ]?ce\s+que|c['e ]?\s*est\s+quoi|c['e ]?\s*est\s+qui|donne(?:s|z)?[- ]?moi|"
+    r"dis[- ]?moi|peux[- ]?tu(?:\s+me)?|sais[- ]?tu|connais[- ]?tu|montre(?:s|z)?[- ]?moi|"
+    r"explique(?:s|z)?[- ]?moi|parle[- ]?moi\s+de|quel(?:le)?s?|comment|combien|pourquoi|o[uù]|quand)\s+",
+    re.I)
+
+
+def _termes_wiki(question: str) -> str:
+    """Sujet de recherche = la question MOINS ses préfixes interrogatifs/commandes de tête (on GARDE le sujet
+    intact, articles compris : « le roi de la pop » reste tel quel -> trouve Michael Jackson)."""
+    q = (question or "").strip().rstrip("?.! ").strip()
+    prev = None
+    while q and q != prev:
+        prev = q
+        q = _WIKI_PREFIXES.sub("", q).strip()
+    return q
+
+
+def cherche_web_libre(question: str, timeout: int = 15):
+    """WEB LIBRE (Wikipédia, recherche plein-texte) : renvoie (extrait VERBATIM, titre, url) ou None.
+    FAUX=0 : l'extrait est RAPPORTÉ tel quel et ATTRIBUÉ ; jamais présenté comme une vérité vérifiée de VERAX
+    (design Yohan : « d'après [source]… »). Réseau requis (opt-in). Dégradation gracieuse -> None."""
+    terme = _termes_wiki(question)
+    if not terme:
+        return None
+    try:
+        u = ("https://fr.wikipedia.org/w/api.php?action=query&list=search&srlimit=1&format=json&srsearch="
+             + urllib.parse.quote(terme))
+        hits = json.loads(urllib.request.urlopen(
+            urllib.request.Request(u, headers={"User-Agent": _UA}), timeout=timeout).read()
+        ).get("query", {}).get("search", [])
+        if not hits:
+            return None
+        titre = hits[0]["title"]
+        u2 = "https://fr.wikipedia.org/api/rest_v1/page/summary/" + urllib.parse.quote(titre.replace(" ", "_"))
+        s = json.loads(urllib.request.urlopen(
+            urllib.request.Request(u2, headers={"User-Agent": _UA}), timeout=timeout).read())
+        extrait = (s.get("extract") or "").strip()
+        url = (((s.get("content_urls") or {}).get("desktop") or {}).get("page")
+               or "https://fr.wikipedia.org/wiki/" + urllib.parse.quote(titre.replace(" ", "_")))
+        return (extrait, titre, url) if extrait else None
+    except Exception:
+        return None

@@ -36,3 +36,16 @@
   échappés, FAUX=0). Affiché directement dans le chat.
 - **Import de fichiers** : bouton 📎 -> le fichier est lu LOCALEMENT (`ia.lit_fichier` : json/csv/xml/
   sqlite/zip/ini…) et VERAX en donne un résumé fidèle dans le chat (jamais envoyé ailleurs, effacé après lecture).
+
+### Recherche web (session 2)
+- **Recherche web STRUCTURÉE étendue** : Wikidata via SPARQL, désambiguïsation par notoriété (« France » -> Paris),
+  nettoyage des nombres.
+- **Recherche web LIBRE (Wikipédia)** : quand ni la base ni Wikidata n'ont la réponse, VERAX interroge Wikipédia
+  (recherche plein-texte), rapporte un **extrait VERBATIM attribué** + un **lien** vers la source (« Information
+  trouvée sur internet, à vérifier au besoin »). Résout les épithètes (« le roi de la pop » -> Michael Jackson).
+  FAUX=0 préservé : rapporté, jamais présenté comme une vérité vérifiée de VERAX.
+- **Questions subjectives** cadrées honnêtement (« ça dépend du critère ») + pistes web.
+- **Multi-questions** : « x »/« × » = multiplication ; engage sur une liste évidente (≥3 parties), non-bloquant.
+- **Corbeille des conversations** (route + à finir côté UI).
+- Correction majeure du **.exe** : PyInstaller analyse tous les modules (`_precharge_verax`) -> `import ia` ne
+  plante plus en frozen ; erreurs remontées dans la console.

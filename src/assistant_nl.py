@@ -221,6 +221,16 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
         _a, _e, _valeur, _src = _res
         return Reponse(FAIT, f"{_valeur}  (trouvé sur {_src})", regime=c.regime,
                        source=f"{_src} — source structurée de confiance")
+    # WEB LIBRE (Wikipédia) : rapport ATTRIBUÉ quand le structuré ne tranche pas (design Yohan « d'après [source] »).
+    try:
+        import veille_structure as _VS2
+        _wl = _VS2.cherche_web_libre(question)
+    except Exception:
+        _wl = None
+    if _wl:
+        _extrait, _titre, _url = _wl
+        return Reponse(SUPPOSITION, "D'après Wikipédia (« %s ») : %s" % (_titre, _extrait[:400]),
+                       regime=c.regime, source="Wikipédia — %s (rapporté, non vérifié par VERAX)" % _url)
     ok, doms, n = _ping_sources()
     if ok:
         return Reponse(HORS,
@@ -231,6 +241,27 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
     return Reponse(HORS,
                    f"{_PFX_HORS_FAIT}, et mes sources de confiance sont injoignables pour le moment. "
                    f"Une vérité existe (question bornée) — je m'abstiens plutôt que deviner.", regime=c.regime)
+
+
+def _reponse_opinion(question, c):
+    """Question SUBJECTIVE : pas de réponse unique. On CADRE honnêtement (ça dépend du critère) et, si le web
+    aide, on RAPPORTE des pistes ATTRIBUÉES (extrait Wikipédia) — jamais une vérité tranchée. Design Yohan :
+    même sur du subjectif, proposer selon des critères objectifs + citer la source."""
+    base = ("Il n'y a pas de réponse unique, c'est subjectif : ça dépend du critère (ventes, remplissage des "
+            "salles, notoriété internationale, récompenses, influence…). Je ne tranche donc pas.")
+    if os.environ.get("IA_WEB") == "1" or _TRANSPORT is not None:
+        try:
+            import veille_structure as _VS
+            wl = _VS.cherche_web_libre(question)
+        except Exception:
+            wl = None
+        if wl:
+            extrait, titre, url = wl
+            return Reponse(SUPPOSITION,
+                           base + " Pour te donner des pistes, d'après Wikipédia (« %s ») : %s" % (titre, extrait[:360]),
+                           regime=c.regime, source="Wikipédia — %s (rapporté, non vérifié par VERAX)" % url)
+    return Reponse(SUPPOSITION, base + " Donne-moi un critère objectif (ventes, récompenses…) et je cherche.",
+                   regime=c.regime)
 
 
 def apres_hors(question: str, conv_id=None) -> Reponse | None:
@@ -256,10 +287,7 @@ def apres_hors(question: str, conv_id=None) -> Reponse | None:
                 val = int(val)
             rep = Reponse(FAIT, str(val), regime=c.regime, source="calcul arithmétique (AST évalué, couvrant)")
     elif c.statut_ontologique == _CB.NON_BORNE:
-        rep = Reponse(SUPPOSITION,
-                      f"{_PFX_NON_BORNE} ({_famille_non_borne(c.justification)}) : la réalité ne fixe pas de "
-                      f"réponse unique, je n'affirmerai donc pas un « fait » ici. Donne-moi un critère objectif "
-                      f"(mesure, date, définition) et je réponds avec du vérifié.", regime=c.regime)
+        rep = _reponse_opinion(q, c)
     elif c.statut_ontologique == _CB.BORNE:
         rep = _cherche_sources(q, c, conv_id)
     else:                                                    # indécidable -> demander, jamais deviner
