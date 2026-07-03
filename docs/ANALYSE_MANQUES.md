@@ -6,6 +6,22 @@ _Base : 71,9 M faits · 1387 relations · 3,3 Go RAM (colonnaire) · lookup ~0,0
 Priorisé par IMPACT × faisabilité model-free. VERAX a une base de faits énorme et un moteur FAUX=0 solide ;
 les vrais leviers ci-dessous exploitent MIEUX ce qui existe déjà plutôt que d'ajouter de la donnée.
 
+## STATUT (mis à jour 2026-07-03) — la plupart des leviers sont LIVRÉS
+
+| # | Levier | Statut |
+|---|--------|--------|
+| P1 | Raisonnement compositionnel (+ résolution par famille) | ✅ **LIVRÉ** (`_compose_relations`, valide_composition 9/9) |
+| P2 | Scanner d'inventions manquantes (OBJECTIF FINAL) | ✅ **LIVRÉ** (`inventions_composites` câblé au chat) |
+| P3 | Fraîcheur / temporel | ✅ **LIVRÉ** (`_est_volatil` → source live, valide_fraicheur 10/10) |
+| P4 | Compréhension conversationnelle (multi-tours/coréférence) | ✅ **EN PLACE** (« et sa monnaie » → yen…) |
+| P5 | Traduction FR↔EN | ✅ **LIVRÉ** (`traduction`, concept_du_mot + dico curé, valide_traduction 8/8) |
+| P7 | OCR minuscules | ✅ **LIVRÉ** (casse par hauteur de ligne, valide_ocr 28/28) |
+| P6 | Performance / cold-load | ~ Adressé (préchargement en fond ; daemon = Linux, hors .exe) |
+| P7 | OCR multi-**police** arbitraire / audio | ⛔ Bloqué sur données de polices / hors model-free strict |
+| P8 | Confiance étendue (score fiabilité, concordance de valeurs) | ~ Base en place, extension marginale |
+
+Le détail d'origine de chaque levier suit ci-dessous (conservé pour la traçabilité).
+
 ---
 
 ## P1 — Raisonnement COMPOSITIONNEL (le plus gros levier)

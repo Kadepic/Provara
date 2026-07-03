@@ -27,6 +27,29 @@ import sys
 import time
 
 HARN = os.path.dirname(os.path.abspath(__file__))
+# PORTAGE Verax : les validateurs vivent dans tests/ (et interface/valide_interface.py dans interface/), pas à
+# la racine comme dans le repo d'origine. `_chemin()` résout un nom de validateur vers son chemin réel relatif
+# à HARN ; `TESTS` est le dossier des `valide_*.py`. Le pipeline importe depuis src/ + interface/ + ingestion/.
+TESTS = os.path.join(HARN, "tests")
+_SRCPATH = os.pathsep.join(os.path.join(HARN, d) for d in ("src", "interface", "ingestion"))
+
+
+def _chemin(f):
+    """Chemin d'un validateur RELATIF à HARN : 'interface/valide_interface.py' tel quel, sinon 'tests/<f>'."""
+    if "/" in f or os.sep in f:
+        return f                                   # déjà un chemin (ex. interface/valide_interface.py)
+    cand = os.path.join("tests", f)
+    return cand if os.path.exists(os.path.join(HARN, cand)) else f
+
+
+def _env_pipeline(base=None):
+    """Env avec le PYTHONPATH du pipeline (src+interface+ingestion) — sinon les validateurs de tests/ ne trouvent
+    pas repond/conversation/ia. Préserve un PYTHONPATH éventuel existant."""
+    e = dict(base if base is not None else os.environ)
+    e["PYTHONPATH"] = _SRCPATH + (os.pathsep + e["PYTHONPATH"] if e.get("PYTHONPATH") else "")
+    return e
+
+
 CACHE = os.path.join(HARN, ".nonreg_cache.json")
 DUREES = "/tmp/nrp_durees.txt"
 TIMEOUT = 1500   # valide_meta ~428s SOLO mais le démarrage (chargement de ~227 tables lecteur + préchauffe 59
@@ -395,19 +418,27 @@ def liste_validateurs():
     # protégé automatiquement. `_EXCLUS` = validateurs sciemment hors-gate (documenter la raison) — vide aujourd'hui.
     _EXCLUS: set = {"valide_commun.py"}   # module de HELPERS partagés (resolu/brique_vivante), PAS un validateur
     deja = set(curee)
-    auto = sorted(f for f in os.listdir(HARN)
+    src_dir = TESTS if os.path.isdir(TESTS) else HARN     # portage : validateurs dans tests/
+    auto = sorted(f for f in os.listdir(src_dir)
                   if f.startswith("valide_") and f.endswith(".py") and f not in deja and f not in _EXCLUS)
     tous = curee + auto
-    return [f for f in tous if os.path.exists(os.path.join(HARN, f))]
+    return [f for f in tous if os.path.exists(os.path.join(HARN, _chemin(f)))]
 
 
 def modules_locaux():
-    return {f[:-3] for f in os.listdir(HARN) if f.endswith(".py")}
+    # modules LOCAUX (pour l'analyse de dépendances du cache) : racine + src/ + interface/ + ingestion/.
+    mods = set()
+    for d in (HARN, os.path.join(HARN, "src"), os.path.join(HARN, "interface"), os.path.join(HARN, "ingestion")):
+        try:
+            mods |= {f[:-3] for f in os.listdir(d) if f.endswith(".py")}
+        except OSError:
+            pass
+    return mods
 
 
 def imports_directs(fichier, locaux):
     """Modules LOCAUX importés directement par `fichier` (statique). Renvoie (set_modules, dynamique_suspect)."""
-    chemin = os.path.join(HARN, fichier)
+    chemin = os.path.join(HARN, _chemin(fichier))
     try:
         with open(chemin, "r", encoding="utf-8") as fh:
             src = fh.read()
@@ -501,10 +532,11 @@ def lance(fichier):
     # lecteur faisait 6,38 M faits). Cap relevé 4->14 Go pour couvrir le pic + la façade ia.py de valide_ia ;
     # lourds sérialisés ≤1 dans main() -> sûr vs RAM système (47 Go).
     pre = "import resource; resource.setrlimit(resource.RLIMIT_AS,(14680064*1024,14680064*1024))"
-    env = dict(os.environ, MALLOC_ARENA_MAX="2")
+    env = _env_pipeline(dict(os.environ, MALLOC_ARENA_MAX="2"))   # PYTHONPATH src+interface+ingestion (portage)
+    cible = _chemin(fichier)                                       # tests/valide_X.py (ou interface/valide_interface.py)
     t0 = time.monotonic()
     try:
-        p = subprocess.run([sys.executable, "-c", f"{pre}\nimport runpy; runpy.run_path({fichier!r}, run_name='__main__')"],
+        p = subprocess.run([sys.executable, "-c", f"{pre}\nimport runpy; runpy.run_path({cible!r}, run_name='__main__')"],
                            cwd=HARN, capture_output=True, text=True, timeout=TIMEOUT, env=env)
         dt = time.monotonic() - t0
         ok = p.returncode == 0

@@ -40,7 +40,7 @@ The demo runs on the bundled **sample** (16 fact domains) plus the computation e
 
 | | |
 |---|---|
-| **Zero hallucination (FAUX=0)** | Every assertion comes from a verified fact or an actually-evaluated computation. At the slightest doubt: abstention. This is an invariant enforced by **669 non-regression tests** that fail if a single false fact gets in. |
+| **Zero hallucination (FAUX=0)** | Every assertion comes from a verified fact or an actually-evaluated computation. At the slightest doubt: abstention. This is an invariant enforced by **683 non-regression tests** that fail if a single false fact gets in. |
 | **It knows what it doesn't know (bounding)** | VERAX tells apart what reality **settles** (→ a FACT, with a source) from what it **does not** (→ a framed SUPPOSITION, never served as a fact). This calibrated boundary is the heart of the system. |
 | **Sovereign, frugal, GPU-free** | sample of ~1.1M facts in 75 MB (full 80M base ~3.3 GB, columnar), 0 dependencies, no GPU, answers with no cloud. Deployable where an LLM is unthinkable: air-gapped machines, embedded, sovereign sectors — at near-zero running cost. Online only on demand, to learn or to search its trusted sources. |
 | **Non-ephemeral memory** | It remembers exchanges per conversation and can recall the right item — but what is recalled stays **typed as "reported,"** never promoted to a fact. |

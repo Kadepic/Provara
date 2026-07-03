@@ -426,3 +426,18 @@
   HAUT VIDE et sont échantillonnées sur la hauteur de LIGNE → la position verticale distingue « o »/« O »,
   « c »/« C »… sans logique en plus. `rend()` ne force plus `.upper()`. Round-trip mixte parfait (« Hello World »,
   « le chat dort »). Le texte imprimé RÉEL (surtout minuscule) est enfin lisible. 20/20 majuscules préservé.
+
+### Session 3 unvicies (2026-07-03) — CONSIGNATION : doc synchronisée + gate cœur réparée + runner conversationnel
+- DOC synchronisée sur le dernier travail : compteurs (modules 492→493, validateurs 669/681→683) dans INVENTORY/
+  VALIDATION/README (fr+en) ; CAPABILITIES (fr+en) — ajout composition, scanner d'inventions, traduction FR↔EN,
+  fraîcheur, OCR minuscules + correction ligne périmée « traduction hors périmètre » ; ANALYSE_MANQUES — bandeau
+  de statut (P1/P2/P3/P4/P5/P7 = LIVRÉ).
+- RUNNER CONVERSATIONNEL `tests/suite_conversation.py` : agrège 16 gates conversationnels (hors _nonreg par
+  design), chacun en sous-processus isolé avec le bon env → 16/16 (469 checks). Documenté dans VALIDATION.
+- **BUG INFRA CORRIGÉ — `_nonreg.py` cassé par le portage** : la gate cœur cherchait les `valide_*.py` à la
+  RACINE (`os.listdir(HARN)`) alors que le portage Verax les a tous mis dans `tests/` → `python3 _nonreg.py`
+  ne trouvait qu'**1** validateur (interface) et échouait faute de PYTHONPATH. Correctif : helper `_chemin()`
+  (bare→tests/, chemin explicite tel quel), découverte dans `tests/`, `modules_locaux` élargi à src/interface/
+  ingestion, et `_env_pipeline()` pose le PYTHONPATH sur chaque sous-processus. Vérifié : `liste_validateurs()`
+  = **683** (était 1), `lance()` exécute correctement (composition 9/9, ocr 28/28, traduction 8/8, fraîcheur
+  10/10, grammaire 61/61). Le run complet reste lourd (base complète) — à lancer par l'utilisateur.

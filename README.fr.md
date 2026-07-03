@@ -92,7 +92,7 @@ Dans les deux cas, VERAX s'ouvre sur **http://127.0.0.1:8765** — localhost uni
 
 ## Vérifier soi-même (FAUX=0 n'est pas un slogan)
 
-La discipline zéro-hallucination est **prouvée par le code**, pas affirmée. Le dépôt contient **681 validateurs** (`valide_*.py`) qui testent chaque capacité contre des ancres externes ; la moindre régression fait échouer la porte :
+La discipline zéro-hallucination est **prouvée par le code**, pas affirmée. Le dépôt contient **683 validateurs** (`valide_*.py`) qui testent chaque capacité contre des ancres externes ; la moindre régression fait échouer la porte :
 
 ```bash
 python3 verifie_demo.py          # prêt à l'emploi : 30 validateurs moteurs, 773 checks, ~8 s, sans données

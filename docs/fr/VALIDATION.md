@@ -9,13 +9,13 @@ FAUX = 0 est l'invariant fondateur de VERAX : le système n'affirme jamais quelq
 Elle s'appelle ainsi :
 
 ```bash
-python3 _nonreg.py --jobs 8      # attendu sur la base complète : 681/681
+python3 _nonreg.py --jobs 8      # attendu sur la base complète : 683/683
 ```
 
 À la fin, elle imprime une ligne de synthèse et rend un code de sortie :
 
 ```
-=== NON-RÉG : 681/681 PASS (... via cache) en Xs ===
+=== NON-RÉG : 683/683 PASS (... via cache) en Xs ===
 ```
 
 Le code de retour vaut `0` si et seulement si **aucun** validateur n'a échoué ; il vaut `1` dès qu'un seul échoue (`raise SystemExit(main())`). Il n'y a pas de demi-mesure : un unique fait faux qui entre dans le système fait tomber un validateur, donc fait rougir la gate.
@@ -36,11 +36,23 @@ Le cache est protégé contre trois pièges classiques, ce qui le rend **sound**
 
 ## Combien de validateurs, et lesquels
 
-La gate protège **681 validateurs actifs** (`valide_*.py`) : c'est la gate de référence, **681/681**. Ce nombre correspond exactement aux fichiers `valide_*.py` présents dans le dossier `tests/` (moins `valide_commun.py`, qui est un module de *helpers* partagés explicitement exclu — ce n'est pas un validateur), plus le validateur d'interface `interface/valide_interface.py`.
+La gate protège **683 validateurs actifs** (`valide_*.py`) : c'est la gate de référence, **683/683**. Ce nombre correspond exactement aux fichiers `valide_*.py` présents dans le dossier `tests/` (moins `valide_commun.py`, qui est un module de *helpers* partagés explicitement exclu — ce n'est pas un validateur), plus le validateur d'interface `interface/valide_interface.py`.
 
-Sur le disque, les **681 fichiers `valide_*.py`** vivent dans le dossier `tests/` (il n'y a pas de dossier d'archive séparé).
+Sur le disque, les **683 fichiers `valide_*.py`** vivent dans le dossier `tests/` (il n'y a pas de dossier d'archive séparé).
 
-La sélection est **auto-découvrante** : `liste_validateurs()` maintient une liste curée (qui fixe l'ordre et repère les tests lourds), puis **ajoute automatiquement tout `valide_*.py` de la racine** non encore listé. Conséquence directe pour FAUX = 0 : aucune capacité réelle ne peut rester « orpheline » hors du filet ; tout nouveau validateur déposé est protégé d'office.
+La sélection est **auto-découvrante** : `liste_validateurs()` maintient une liste curée (qui fixe l'ordre et repère les tests lourds), puis **ajoute automatiquement tout `valide_*.py`** non encore listé. Conséquence directe pour FAUX = 0 : aucune capacité réelle ne peut rester « orpheline » hors du filet ; tout nouveau validateur déposé est protégé d'office.
+
+> **Layout `_nonreg` (portage, corrigé 2026-07-03) :** les validateurs vivent dans `tests/` (et `interface/valide_interface.py` dans `interface/`), pas à la racine comme dans le repo d'origine. `_nonreg.py` résout désormais chaque validateur via `_chemin()` (bare → `tests/…`, chemin explicite tel quel), découvre dans `tests/`, et pose le `PYTHONPATH` du pipeline (`src`+`interface`+`ingestion`) sur chaque sous-processus. Vérifié : `liste_validateurs()` renvoie **683** (était 1), et `lance()` exécute correctement (composition 9/9, ocr 28/28…). Avant ce correctif, `python3 _nonreg.py` ne trouvait qu'un validateur et échouait.
+
+### Suite conversationnelle (`tests/suite_conversation.py`)
+
+Les gates de l'assistant conversationnel (grammaire, conjugaison, OCR, **traduction**, **composition**, **fraîcheur**, confiance, langue, stats-NL, documents, patrons, capacités du chat, plus conversation/assistant_nl) sont agrégés par un **runner dédié** — car ils demandent le `PYTHONPATH` `interface`+`src`+`ingestion` que la gate cœur ne pose pas :
+
+```bash
+python3 tests/suite_conversation.py     # attendu : 16/16 gates au vert (469 checks)
+```
+
+Il lance chaque gate en sous-processus isolé, avec le bon environnement, et sort en échec dès qu'un seul régresse. À passer avant tout commit touchant `interface/` ou une brique conversationnelle.
 
 ### Ce que couvrent ces familles
 

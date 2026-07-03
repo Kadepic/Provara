@@ -16,7 +16,7 @@
 | `repond` | CONVERSATIONAL LAYER of the interface — making the assistant able to ANSWER, without ever inventing. | pret, est_fallback, repond |
 | `serveur` | LOCAL INTERFACE — small sovereign web server on top of the conversation memory. | liste_conversations, archive_conversation, desarchive_conversation, lire_conversation, ajoute_message, nouvelle_conversation, oublie_conversation, class Handler |
 
-## Capability library (engines & atoms) — 492 modules
+## Capability library (engines & atoms) — 493 modules
 
 | Module | Role | API |
 |---|---|---|
@@ -653,7 +653,7 @@
 | `ingere_worldbank` | WORLD BANK INGESTION -> datasets/lecteur/*.jsonl (ONLINE, run by hand). | ingere_population, ingere_indicateur, ingere_economie |
 | `ingere_zodiaque` | ZODIAC INGESTION — astrological sign -> element -> datasets/lecteur/element_zodiaque.jsonl (OFFLINE). | ingere |
 
-## Validators (FAUX=0 gate) — 681 modules
+## Validators (FAUX=0 gate) — 683 modules
 
 | Validator | What it proves |
 |---|---|

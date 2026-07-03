@@ -16,7 +16,7 @@
 | `repond` | COUCHE CONVERSATIONNELLE de l'interface — rendre l'assistant capable de RÉPONDRE, sans jamais inventer. | pret, est_fallback, repond |
 | `serveur` | INTERFACE LOCALE — petit serveur web souverain par-dessus la mémoire de conversation. | liste_conversations, archive_conversation, desarchive_conversation, lire_conversation, ajoute_message, nouvelle_conversation, oublie_conversation, class Handler |
 
-## Bibliothèque de capacités (moteurs & atomes) — 492 modules
+## Bibliothèque de capacités (moteurs & atomes) — 493 modules
 
 | Module | Rôle | API |
 |---|---|---|
@@ -653,7 +653,7 @@
 | `ingere_worldbank` | INGESTION BANQUE MONDIALE -> datasets/lecteur/*.jsonl (ONLINE, lancé à la main). | ingere_population, ingere_indicateur, ingere_economie |
 | `ingere_zodiaque` | INGESTION ZODIAQUE — signe astrologique -> élément -> datasets/lecteur/element_zodiaque.jsonl (OFFLINE). | ingere |
 
-## Validateurs (gate FAUX=0) — 681 modules
+## Validateurs (gate FAUX=0) — 683 modules
 
 | Validateur | Ce qu'il prouve |
 |---|---|
