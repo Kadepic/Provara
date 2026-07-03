@@ -41,7 +41,7 @@ def check(c, l):
 _TMP = tempfile.mkdtemp(prefix="verax_daemon_")
 _DS = os.path.join(_TMP, "lecteur")
 os.makedirs(_DS)
-_SRC = os.path.join(_ICI, "datasets", "lecteur", "capitale.jsonl")
+_SRC = os.path.join(os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(_ICI, "datasets", "lecteur"), "capitale.jsonl")
 if not os.path.exists(_SRC):
     print("=== valide_lecteur_client : 0/0 (fixture capitale.jsonl absente — SKIP) ===")
     shutil.rmtree(_TMP, ignore_errors=True)
@@ -67,7 +67,7 @@ check(ref_val is not None, "référence : lecteur.cherche(capitale, Japon) trouv
 daemon = None
 try:
     env = dict(os.environ)
-    daemon = subprocess.Popen([sys.executable, os.path.join(_ICI, "lecteur_daemon.py")],
+    daemon = subprocess.Popen([sys.executable, os.path.join(os.environ.get("VERAX_ROOT") or _ICI, "src", "lecteur_daemon.py")],
                               env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, cwd=_ICI)
     # attendre que le daemon écoute (fixture = charge quasi-instantanée)
     t0 = time.time()
@@ -96,9 +96,9 @@ try:
               "parité repond_nl : (statut, valeur) identiques au lecteur")
 
         # CHEMIN RAPIDE de l'interface : même valeur que le chemin lourd, sans cold-load
-        sys.path.insert(0, os.path.join(_ICI, "interface"))
+        sys.path.insert(0, os.path.join(os.environ.get("VERAX_ROOT") or _ICI, "interface"))
         import importlib.util
-        spec = importlib.util.spec_from_file_location("repond_test", os.path.join(_ICI, "interface", "repond.py"))
+        spec = importlib.util.spec_from_file_location("repond_test", os.path.join(os.environ.get("VERAX_ROOT") or _ICI, "interface", "repond.py"))
         R = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(R)
         rapide = R._connaissance_rapide_daemon("Quelle est la capitale du Japon ?")

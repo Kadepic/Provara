@@ -14,9 +14,12 @@ connaissances externe. Chacun prouve FAUX=0 contre des ancres externes.
 (The full 669-check gate — python3 _nonreg.py — additionally needs the rebuilt
 knowledge base; see docs/fr/VALIDATION.md.)
 """
+import os
 import subprocess
 import sys
 import time
+
+_ROOT = os.path.dirname(os.path.abspath(__file__))
 
 # Validators proven to run on the sample alone (no full knowledge base required).
 ENGINE_VALIDATORS = [
@@ -40,7 +43,9 @@ def main():
     t0 = time.time()
     for v in ENGINE_VALIDATORS:
         try:
-            r = subprocess.run([sys.executable, f"{v}.py"], capture_output=True, text=True, timeout=180)
+            r = subprocess.run([sys.executable, os.path.join(_ROOT, "tests", f"{v}.py")],
+                               capture_output=True, text=True, timeout=180,
+                               env={**os.environ, "PYTHONPATH": os.pathsep.join(os.path.join(_ROOT, d) for d in ("src", "ingestion", "tests")), "VERAX_ROOT": _ROOT, "LECTEUR_DATASETS_DIR": os.path.join(_ROOT, "datasets", "lecteur")})
         except (subprocess.TimeoutExpired, FileNotFoundError) as e:
             print(f"  ✗ {v:<32} ({type(e).__name__})")
             failed += 1

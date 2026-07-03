@@ -34,6 +34,7 @@ _ICI = os.path.dirname(os.path.abspath(__file__))
 _HARNAIS = os.path.dirname(_ICI)
 if _HARNAIS not in sys.path:
     sys.path.insert(0, _HARNAIS)
+import verax_boot  # noqa: E402  -- met src/ (conversation, ia, ...) sur sys.path
 
 import conversation  # noqa: E402  (léger ; n'importe PAS `ia`)
 import repond        # noqa: E402  (léger ; l'étage IA lourd est en import PARESSEUX, opt-in)

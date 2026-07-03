@@ -51,8 +51,8 @@ def _est_qid(label: str) -> bool:
     """Label = Q-ID nu (entité sans libellé FR) -> inutilisable comme nom français."""
     return bool(re.fullmatch(r"Q\d+", label or ""))
 
-_SCOUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "datasets", "_scout")
-_HARN = os.path.dirname(os.path.abspath(__file__))
+_SCOUT = os.path.join((os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.abspath(__file__))), "datasets", "_scout")
+_HARN = (os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.abspath(__file__)))
 
 
 def _pays_ref() -> set[str]:

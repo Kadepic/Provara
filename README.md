@@ -60,17 +60,25 @@ python3 ingere_elements_ptjson.py    # ingests the 118 chemical elements
 
 > ⚠️ **The ingestion phase needs the network** (it downloads from the sources). This is a **one-time, online build**. Answering from the base then needs no network (searching its trusted sources stays an opt-in, off by default). Rebuilding the entire 73M facts takes several hours; start with a bounded domain (economics, chemistry) to see the learning loop in action.
 
-## Installation
+## Installation & launch
 
-**Requirements** — that's all:
+**Requirements** — that's all: **Python 3.10+**, no third-party libraries, no `pip install`, no GPU. (Linux, macOS, or Windows.)
 
-- **Python 3.10 or newer** (`python3 --version`)
-- **No** third-party libraries. No `pip install`. No mandatory virtual environment. No GPU, no CUDA.
-- OS: Linux, macOS, or Windows (WSL recommended on Windows).
+**Windows** — download `VERAX.exe` from the [Releases](https://github.com/Verax-IA/Verax/releases) page and **double-click it**. No Python, no install needed. *(From source instead: double-click `Lancer_VERAX.bat`, which needs Python installed.)*
 
-**For the demo and sample usage**: nothing more, `python3 demo_verax.py`.
+**Linux / macOS** — from source:
 
-**For the full knowledge base**: run the `ingere_*.py` scripts (network required, once) — see "Watch it learn."
+```bash
+./install.sh        # checks Python + runs the self-test
+python3 lance.py     # or ./lance.sh
+```
+
+Either way, VERAX opens at **http://127.0.0.1:8765** — localhost only, your data never leaves the machine.
+
+- **Just the demo** (no server): `python3 demo_verax.py`
+- **Full knowledge base**: run the `ingestion/ingere_*.py` scripts once (network required) — see "Watch it learn."
+
+**Project layout** — `src/` the engine and capability modules · `ingestion/` the data fetchers · `tests/` the FAUX=0 validators · `interface/` the local web UI · `docs/` full documentation · `examples/` standalone proofs.
 
 ## Verify it yourself (FAUX=0 is not a slogan)
 

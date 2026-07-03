@@ -20,7 +20,7 @@ from __future__ import annotations
 import os
 import re
 
-_ICI = os.path.dirname(os.path.abspath(__file__))
+_ICI = (os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.abspath(__file__)))
 _LECT = os.path.join(_ICI, "datasets", "lecteur")
 
 
@@ -58,7 +58,7 @@ def _relations_referencees(relations) -> set:
     motif = re.compile(r"(?<![a-z0-9_])(" + "|".join(re.escape(r) for r in sorted(relations, key=len, reverse=True))
                        + r")(?![a-z0-9_])")
     refs = set()
-    for f in os.listdir(_ICI):
+    for f in os.listdir(os.path.join(_ICI, "tests")):
         if not (f.startswith("valide_") and f.endswith(".py")):
             continue
         try:

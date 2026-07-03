@@ -11,6 +11,9 @@ Tourne sur l'ÉCHANTILLON livré (16 domaines de faits) + les moteurs de calcul
 se reconstruit ensuite en allant chercher les données (voir README, section « Regarde-le apprendre »).
 """
 import time
+import os as _os, sys as _sys
+_sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import verax_boot  # noqa: F401  -- met src/, ingestion/, tests/ sur sys.path + fixe les chemins
 import ia
 
 LARGEUR = 78

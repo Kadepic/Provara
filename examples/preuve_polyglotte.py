@@ -1,4 +1,5 @@
 import os, sys; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import verax_boot  # noqa: F401  -- chemins VERAX (src/, ...)
 """
 PREUVE que la couture multi-langage tient : le MÊME juge juge du JavaScript.
 

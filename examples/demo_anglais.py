@@ -1,4 +1,5 @@
 import os, sys; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import verax_boot  # noqa: F401  -- chemins VERAX (src/, ...)
 """
 DÉMO ANGLAIS — preuve que le RAISONNEMENT est AGNOSTIQUE à la langue (2026-06-18).
 

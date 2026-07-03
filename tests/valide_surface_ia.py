@@ -37,7 +37,7 @@ def check(nom, cond):
         raise AssertionError(nom)
 
 
-src = open(os.path.join(HARN, "ia.py"), encoding="utf-8").read()
+src = open(os.path.join(os.environ.get("VERAX_ROOT") or HARN, "src", "ia.py"), encoding="utf-8").read()
 arbre = ast.parse(src)
 
 # 1) Collecte des imports de module au niveau du MODULE : `import X as A` / `import X`.

@@ -40,7 +40,7 @@ import time
 from base_faits import normalise as _normalise
 import classifieur_bornage as _CB
 
-_ICI = os.path.dirname(os.path.abspath(__file__))
+_ICI = (os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.abspath(__file__)))
 
 # ── statuts de l'enveloppe (la porte unique parle UNE langue) ──
 FAIT = "fait"                    # affirmation vérifiée (lecteur/calcul couvrant) avec provenance

@@ -41,7 +41,7 @@ import time
 from base_faits import normalise
 
 # Dossier de persistance OFFLINE (comme datasets/lecteur) : un fichier .jsonl par conversation, append-only.
-_DOSSIER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "datasets", "conversations")
+_DOSSIER = os.path.join((os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.abspath(__file__))), "datasets", "conversations")
 
 _SCOPES = ("prive", "public")
 

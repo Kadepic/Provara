@@ -60,17 +60,25 @@ python3 ingere_elements_ptjson.py   # ingère les 118 éléments chimiques
 
 > ⚠️ **La phase d'ingestion a besoin du réseau** (elle télécharge depuis les sources). C'est une **construction en ligne, une seule fois**. Répondre depuis la base ne demande alors aucun réseau (chercher sur ses sources de confiance reste un opt-in, désactivé par défaut). Reconstruire l'intégralité des 73 M faits prend plusieurs heures ; commencez par un domaine borné (éco, chimie) pour voir la boucle d'apprentissage en action.
 
-## Installation
+## Installation & lancement
 
-**Prérequis** — c'est tout :
+**Prérequis** — c'est tout : **Python 3.10+**, aucune bibliothèque tierce, pas de `pip install`, pas de GPU. (Linux, macOS ou Windows.)
 
-- **Python 3.10 ou supérieur** (`python3 --version`)
-- **Aucune** bibliothèque tierce. Pas de `pip install`. Pas d'environnement virtuel obligatoire. Pas de GPU, pas de CUDA.
-- Système : Linux, macOS, ou Windows (WSL recommandé sous Windows).
+**Windows** — télécharge `VERAX.exe` depuis la page [Releases](https://github.com/Verax-IA/Verax/releases) et **double-clique dessus**. Aucun Python, aucune installation. *(Depuis les sources à la place : double-clique `Lancer_VERAX.bat`, qui nécessite Python installé.)*
 
-**Pour la démo et l'usage sur l'échantillon** : rien de plus, `python3 demo_verax.py`.
+**Linux / macOS** — depuis les sources :
 
-**Pour la base complète** : lancer les scripts `ingere_*.py` (réseau requis, une fois) — voir « Regarde-le apprendre ».
+```bash
+./install.sh        # vérifie Python + lance l'auto-test
+python3 lance.py     # ou ./lance.sh
+```
+
+Dans les deux cas, VERAX s'ouvre sur **http://127.0.0.1:8765** — localhost uniquement, tes données ne quittent jamais la machine.
+
+- **Juste la démo** (sans serveur) : `python3 demo_verax.py`
+- **Base complète** : lancer les scripts `ingestion/ingere_*.py` une fois (réseau requis) — voir « Regarde-le apprendre ».
+
+**Organisation** — `src/` le moteur et les capacités · `ingestion/` les récupérateurs de données · `tests/` les validateurs FAUX=0 · `interface/` l'UI web locale · `docs/` la documentation · `examples/` les preuves autonomes.
 
 ## Vérifier soi-même (FAUX=0 n'est pas un slogan)
 

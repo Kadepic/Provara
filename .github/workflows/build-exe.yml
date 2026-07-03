@@ -1,0 +1,32 @@
+name: Build Windows .exe
+on:
+  workflow_dispatch:        # lancement manuel
+  release:
+    types: [created]        # à chaque release
+jobs:
+  build-exe:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install pyinstaller
+      - name: Build VERAX.exe
+        run: >
+          pyinstaller --onefile --name VERAX
+          --add-data "src;src"
+          --add-data "ingestion;ingestion"
+          --add-data "interface;interface"
+          --add-data "datasets;datasets"
+          --add-data "verax_boot.py;."
+          --hidden-import json --hidden-import csv --hidden-import sqlite3
+          --hidden-import wave --hidden-import struct --hidden-import array
+          --hidden-import zlib --hidden-import gzip --hidden-import hashlib --hidden-import bz2 --hidden-import lzma
+          --hidden-import "xml.etree.ElementTree" --hidden-import "urllib.request"
+          --hidden-import "http.server" --hidden-import socketserver --hidden-import zipfile --hidden-import marshal
+          lance.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: VERAX-windows
+          path: dist/VERAX.exe
