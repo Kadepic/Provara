@@ -348,13 +348,33 @@ _MADV = os.environ.get("LECTEUR_MADV", "1") != "0"
 
 def _rends_pages(mm):
     """Rend au noyau les pages faultées par la lecture d'en-tête et coupe la lecture anticipée (résidence à la
-    demande). Best-effort : madvise indisponible / EINVAL -> on ignore (pages simplement gardées chaudes)."""
+    demande). Best-effort : madvise indisponible / EINVAL -> on ignore (pages simplement gardées chaudes).
+    NB : madvise n'existe QUE sous POSIX. Sous Windows, on ne fait rien ici (per-table) ; c'est un SEUL appel
+    `EmptyWorkingSet` après le chargement complet qui rend les pages (cf. `_vide_working_set_windows`)."""
     if not _MADV:
         return
     try:
         mm.madvise(mmap.MADV_RANDOM)     # pas de readahead : le RSS ne suit que le working-set réel des requêtes
         mm.madvise(mmap.MADV_DONTNEED)   # libère maintenant les pages d'en-tête (refault propre du fichier au besoin)
     except (AttributeError, OSError, ValueError):
+        pass
+
+
+def _vide_working_set_windows():
+    """Équivalent Windows de MADV_DONTNEED : `EmptyWorkingSet` déplace les pages résidentes vers la liste STANDBY
+    (réclamable, comme le page-cache) -> le WorkingSet retombe à quasi rien ; les pages refont surface À LA DEMANDE
+    depuis le fichier `.colf` mappé (réponses identiques, FAUX=0). NÉCESSAIRE sous Windows où madvise n'existe pas
+    et où le chargement d'un fichier mmappé rend TOUTES ses pages résidentes (mesuré : 2 Go sur les 71,9 M faits
+    -> 1 Mo après appel). Best-effort ; no-op hors Windows ou si l'API manque."""
+    if not sys.platform.startswith("win"):
+        return
+    try:
+        import ctypes
+        k32 = ctypes.WinDLL("kernel32")
+        ps = ctypes.WinDLL("psapi")
+        k32.GetCurrentProcess.restype = ctypes.c_void_p
+        ps.EmptyWorkingSet(ctypes.c_void_p(k32.GetCurrentProcess()))
+    except Exception:
         pass
 _MMAP = os.environ.get("LECTEUR_MMAP", "1") != "0"   # backend mmap frugal : DÉFAUT ON (échappatoire LECTEUR_MMAP=0)
 
@@ -987,6 +1007,13 @@ if os.environ.get("LECTEUR_AMORCE_SEULE") == "1":   # OPTIM T9 opt-in (cf. ci-de
 else:
     _FIGEES = LECTEUR.gele()
 
+# TRIM DÉMARRAGE : sous Windows, charger des fichiers mmappés rend TOUTES leurs pages résidentes (pas de madvise
+# there) -> on vide le working-set UNE fois après le load pour démarrer léger (mesuré : 2 Go -> ~qqs Mo ; les pages
+# refont surface À LA DEMANDE, réponses identiques). No-op sous Linux (le load mmap n'y laisse que les en-têtes) et
+# si LECTEUR_MADV=0 ou amorce-seule.
+if _MADV and os.environ.get("LECTEUR_AMORCE_SEULE") != "1":
+    _vide_working_set_windows()
+
 
 def cherche(relation: str, entite: str) -> Fait | None:
     return LECTEUR.cherche(relation, entite)
@@ -1012,10 +1039,11 @@ def libere_cache() -> int:
         mm = getattr(t, "_mm", None)
         if mm is not None:
             try:
-                mm.madvise(mmap.MADV_DONTNEED)
+                mm.madvise(mmap.MADV_DONTNEED)   # POSIX : rend les pages de CETTE table
                 n += 1
             except (AttributeError, OSError, ValueError):
                 pass
+    _vide_working_set_windows()                  # Windows : un seul appel rend tout le working-set
     return n
 
 
