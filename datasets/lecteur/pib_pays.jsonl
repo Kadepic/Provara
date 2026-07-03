@@ -1,0 +1,211 @@
+{"_relation": "pib_pays", "_categorie": "physique", "_source": "Banque mondiale NY.GDP.MKTP.CD — PIB en dollars US courants ; valeur la plus récente par pays (millésime 2011–2025 ; valeur VOLATILE, instantané daté, non « live »)", "_articles": true}
+{"entite": "Afghanistan", "valeur": "17778508876"}
+{"entite": "Afrique du Sud", "valeur": "427184325997"}
+{"entite": "Albanie", "valeur": "30540188271"}
+{"entite": "Algérie", "valeur": "287031225988"}
+{"entite": "Allemagne", "valeur": "5050922925047"}
+{"entite": "Andorre", "valeur": "4500982732"}
+{"entite": "Angola", "valeur": "122174889424"}
+{"entite": "Antigua-et-Barbuda", "valeur": "2338196296"}
+{"entite": "Arabie Saoudite", "valeur": "1276942933333"}
+{"entite": "Argentine", "valeur": "683097891619"}
+{"entite": "Arménie", "valeur": "29243452882"}
+{"entite": "Aruba", "valeur": "4167588070"}
+{"entite": "Australie", "valeur": "1798518933689"}
+{"entite": "Autriche", "valeur": "579470021095"}
+{"entite": "Azerbaïdjan", "valeur": "75937647059"}
+{"entite": "Bahamas", "valeur": "15832800000"}
+{"entite": "Bahreïn", "valeur": "48965725532"}
+{"entite": "Bangladesh", "valeur": "456319229256"}
+{"entite": "Barbade", "valeur": "8016550000"}
+{"entite": "Belgique", "valeur": "725466462860"}
+{"entite": "Belize", "valeur": "3326500000"}
+{"entite": "Bénin", "valeur": "24566420904"}
+{"entite": "Bermudes", "valeur": "9194499000"}
+{"entite": "Bhoutan", "valeur": "3579320145"}
+{"entite": "Biélorussie", "valeur": "93397215864"}
+{"entite": "Birmanie", "valeur": "81665773810"}
+{"entite": "Bolivie", "valeur": "64768947525"}
+{"entite": "Bosnie-Herzégovine", "valeur": "32599982936"}
+{"entite": "Botswana", "valeur": "19928479839"}
+{"entite": "Brésil", "valeur": "2279920092492"}
+{"entite": "Brunei", "valeur": "15031980994"}
+{"entite": "Bulgarie", "valeur": "130777235530"}
+{"entite": "Burkina Faso", "valeur": "27627297461"}
+{"entite": "Burundi", "valeur": "3364713864"}
+{"entite": "Cambodge", "valeur": "51267065843"}
+{"entite": "Cameroun", "valeur": "58933453924"}
+{"entite": "Canada", "valeur": "2319899772426"}
+{"entite": "Chili", "valeur": "357371159575"}
+{"entite": "Chine", "valeur": "19498039388043"}
+{"entite": "Chypre", "valeur": "41225787247"}
+{"entite": "Colombie", "valeur": "457410034203"}
+{"entite": "Comores", "valeur": "1814920856"}
+{"entite": "Congo", "valeur": "16306633779"}
+{"entite": "Congo (Rép. dém.)", "valeur": "91030531317"}
+{"entite": "Corée du Sud", "valeur": "1872374961553"}
+{"entite": "Costa Rica", "valeur": "102904921157"}
+{"entite": "Côte d'Ivoire", "valeur": "99773555666"}
+{"entite": "Croatie", "valeur": "105060182186"}
+{"entite": "Cuba", "valeur": "107352000000"}
+{"entite": "Curaçao", "valeur": "3561178212"}
+{"entite": "Danemark", "valeur": "462526660468"}
+{"entite": "Djibouti", "valeur": "4624533092"}
+{"entite": "Dominique", "valeur": "723859259"}
+{"entite": "Égypte", "valeur": "365254630180"}
+{"entite": "Émirats arabes unis", "valeur": "552324919096"}
+{"entite": "Équateur", "valeur": "130320560400"}
+{"entite": "Érythrée", "valeur": "2065001626"}
+{"entite": "Espagne", "valeur": "1906453309986"}
+{"entite": "Estonie", "valeur": "47030833799"}
+{"entite": "Eswatini", "valeur": "5160679613"}
+{"entite": "États-Unis", "valeur": "30769700000000"}
+{"entite": "Éthiopie", "valeur": "126358758448"}
+{"entite": "Fidji", "valeur": "6198013062"}
+{"entite": "Finlande", "valeur": "317039368820"}
+{"entite": "France", "valeur": "3366315927447"}
+{"entite": "Gabon", "valeur": "21427119323"}
+{"entite": "Gambie", "valeur": "2593673988"}
+{"entite": "Géorgie", "valeur": "38143612855"}
+{"entite": "Ghana", "valeur": "114209905279"}
+{"entite": "Grèce", "valeur": "280635521324"}
+{"entite": "Grenade", "valeur": "1420173229"}
+{"entite": "Groenland", "valeur": "3326543974"}
+{"entite": "Guam", "valeur": "6910000000"}
+{"entite": "Guatemala", "valeur": "123306008821"}
+{"entite": "Guinée", "valeur": "28346024753"}
+{"entite": "Guinée-Bissau", "valeur": "2527930273"}
+{"entite": "Guinée équatoriale", "valeur": "12823210426"}
+{"entite": "Guyana", "valeur": "27097477218"}
+{"entite": "Haïti", "valeur": "32077278409"}
+{"entite": "Honduras", "valeur": "39601409103"}
+{"entite": "Hong Kong", "valeur": "427310315922"}
+{"entite": "Hongrie", "valeur": "246490213513"}
+{"entite": "Île de Man", "valeur": "7576129933"}
+{"entite": "Île Maurice", "valeur": "16157804492"}
+{"entite": "Îles Caïmans", "valeur": "7765336505"}
+{"entite": "Îles du Cap-Vert", "valeur": "3056630435"}
+{"entite": "Îles Féroé", "valeur": "4052937170"}
+{"entite": "Îles Mariannes du Nord", "valeur": "1096000000"}
+{"entite": "Îles Marshall", "valeur": "308000000"}
+{"entite": "Îles Salomon", "valeur": "1749572443"}
+{"entite": "Îles Turques-et-Caïques", "valeur": "1745378000"}
+{"entite": "Îles Vierges des États-Unis", "valeur": "4672000000"}
+{"entite": "Inde", "valeur": "3956067115772"}
+{"entite": "Indonésie", "valeur": "1445642584164"}
+{"entite": "Irak", "valeur": "254367293538"}
+{"entite": "Iran", "valeur": "362682115433"}
+{"entite": "Irlande", "valeur": "721701359046"}
+{"entite": "Islande", "valeur": "38582528789"}
+{"entite": "Israël", "valeur": "610777842874"}
+{"entite": "Italie", "valeur": "2551556954100"}
+{"entite": "Jamaïque", "valeur": "22704903218"}
+{"entite": "Japon", "valeur": "4435162999977"}
+{"entite": "Jordanie", "valeur": "61610052535"}
+{"entite": "Kazakhstan", "valeur": "306239209650"}
+{"entite": "Kenya", "valeur": "135941278879"}
+{"entite": "Kirghizistan", "valeur": "22623752095"}
+{"entite": "Kiribati", "valeur": "349227254"}
+{"entite": "Koweït", "valeur": "157209026926"}
+{"entite": "Laos", "valeur": "18302970219"}
+{"entite": "Lesotho", "valeur": "2573572920"}
+{"entite": "Lettonie", "valeur": "48618869160"}
+{"entite": "Liban", "valeur": "25971643441"}
+{"entite": "Liberia", "valeur": "5245938900"}
+{"entite": "Libye", "valeur": "48098909614"}
+{"entite": "Liechtenstein", "valeur": "8905764270"}
+{"entite": "Lituanie", "valeur": "95210150818"}
+{"entite": "Luxembourg", "valeur": "101157829491"}
+{"entite": "Macao", "valeur": "52061007670"}
+{"entite": "Macédoine du Nord", "valeur": "19101199817"}
+{"entite": "Madagascar", "valeur": "19620352036"}
+{"entite": "Malaisie", "valeur": "472193128645"}
+{"entite": "Malawi", "valeur": "14918276698"}
+{"entite": "Maldives", "valeur": "7741066861"}
+{"entite": "Mali", "valeur": "30069148581"}
+{"entite": "Malte", "valeur": "27771821561"}
+{"entite": "Maroc", "valeur": "182374250612"}
+{"entite": "Mauritanie", "valeur": "11679910946"}
+{"entite": "Mexique", "valeur": "1832641364776"}
+{"entite": "Micronésie", "valeur": "501797600"}
+{"entite": "Moldavie", "valeur": "20351796275"}
+{"entite": "Monaco", "valeur": "11125788838"}
+{"entite": "Mongolie", "valeur": "25369107325"}
+{"entite": "Monténégro", "valeur": "9232801465"}
+{"entite": "Mozambique", "valeur": "22337997046"}
+{"entite": "Namibie", "valeur": "15080340654"}
+{"entite": "Nauru", "valeur": "176040044"}
+{"entite": "Népal", "valeur": "45489810283"}
+{"entite": "Nicaragua", "valeur": "22237167113"}
+{"entite": "Niger", "valeur": "21646191388"}
+{"entite": "Nigéria", "valeur": "290794361542"}
+{"entite": "Norvège", "valeur": "530755719439"}
+{"entite": "Nouvelle-Calédonie", "valeur": "8548919387"}
+{"entite": "Nouvelle-Zélande", "valeur": "264057413740"}
+{"entite": "Oman", "valeur": "109604780696"}
+{"entite": "Ouganda", "valeur": "61985829288"}
+{"entite": "Ouzbékistan", "valeur": "147038081129"}
+{"entite": "Pakistan", "valeur": "407307214476"}
+{"entite": "Palaos (Palau)", "valeur": "345000000"}
+{"entite": "Palestine", "valeur": "17167100000"}
+{"entite": "Panama", "valeur": "90462600000"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "32498658654"}
+{"entite": "Paraguay", "valeur": "49278227554"}
+{"entite": "Pays-Bas", "valeur": "1332767651100"}
+{"entite": "Pérou", "valeur": "334854659182"}
+{"entite": "Philippines", "valeur": "487086123720"}
+{"entite": "Pologne", "valeur": "1035491784197"}
+{"entite": "Polynésie française", "valeur": "6323716355"}
+{"entite": "Porto Rico", "valeur": "129368484000"}
+{"entite": "Portugal", "valeur": "346639825142"}
+{"entite": "Qatar", "valeur": "215559615385"}
+{"entite": "République centrafricaine", "valeur": "3066109226"}
+{"entite": "République dominicaine", "valeur": "127407463759"}
+{"entite": "Roumanie", "valeur": "428677977855"}
+{"entite": "Royaume-Uni", "valeur": "4002587541846"}
+{"entite": "Russie", "valeur": "2561310169359"}
+{"entite": "Rwanda", "valeur": "16372132990"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": "1183514815"}
+{"entite": "Saint-Marin", "valeur": "2027243194"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "1255222222"}
+{"entite": "Sainte-Lucie", "valeur": "2656444444"}
+{"entite": "Salvador", "valeur": "36708110000"}
+{"entite": "Samoa", "valeur": "1287936622"}
+{"entite": "Samoa américaines", "valeur": "871000000"}
+{"entite": "São Tomé et Príncipe", "valeur": "981293587"}
+{"entite": "Sénégal", "valeur": "37006536238"}
+{"entite": "Serbie", "valeur": "99953324473"}
+{"entite": "Seychelles", "valeur": "2387022853"}
+{"entite": "Sierra Leone", "valeur": "7464157904"}
+{"entite": "Singapour", "valeur": "603869516999"}
+{"entite": "Slovaquie", "valeur": "154530066507"}
+{"entite": "Slovénie", "valeur": "79648204979"}
+{"entite": "Somalie", "valeur": "12995200000"}
+{"entite": "Soudan", "valeur": "60162634574"}
+{"entite": "Soudan du Sud", "valeur": "11997800760"}
+{"entite": "Sri Lanka", "valeur": "108825231671"}
+{"entite": "Suède", "valeur": "668998664082"}
+{"entite": "Suisse", "valeur": "1043529899251"}
+{"entite": "Surinam", "valeur": "4523657797"}
+{"entite": "Syrie", "valeur": "23737634644"}
+{"entite": "Tadjikistan", "valeur": "17660626562"}
+{"entite": "Tanzanie", "valeur": "90143496090"}
+{"entite": "Tchad", "valeur": "21472835225"}
+{"entite": "Tchéquie", "valeur": "391026962800"}
+{"entite": "Thaïlande", "valeur": "577009981112"}
+{"entite": "Timor oriental", "valeur": "1902180258"}
+{"entite": "Togo", "valeur": "11889949067"}
+{"entite": "Tonga", "valeur": "679218219"}
+{"entite": "Trinité-et-Tobago", "valeur": "25942749718"}
+{"entite": "Tunisie", "valeur": "57502836548"}
+{"entite": "Turkménistan", "valeur": "49828621356"}
+{"entite": "Turquie", "valeur": "1597293229287"}
+{"entite": "Tuvalu", "valeur": "62280312"}
+{"entite": "Ukraine", "valeur": "214233312784"}
+{"entite": "Uruguay", "valeur": "85347696278"}
+{"entite": "Vanuatu", "valeur": "1353658841"}
+{"entite": "Venezuela", "valeur": "99661244156"}
+{"entite": "Viêt Nam", "valeur": "514697215165"}
+{"entite": "Yémen", "valeur": "21606160663"}
+{"entite": "Zambie", "valeur": "28879806220"}
+{"entite": "Zimbabwe", "valeur": "51215643906"}

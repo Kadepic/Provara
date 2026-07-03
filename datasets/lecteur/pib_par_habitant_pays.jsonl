@@ -1,0 +1,211 @@
+{"_relation": "pib_par_habitant_pays", "_categorie": "physique", "_source": "Banque mondiale NY.GDP.PCAP.CD — PIB par habitant en dollars US courants ; valeur la plus récente par pays (millésime 2011–2025 ; valeur VOLATILE, instantané daté, non « live »)", "_articles": true}
+{"entite": "Afghanistan", "valeur": "416.87"}
+{"entite": "Afrique du Sud", "valeur": "6597.71"}
+{"entite": "Albanie", "valeur": "12998.15"}
+{"entite": "Algérie", "valeur": "6051.00"}
+{"entite": "Allemagne", "valeur": "60496.44"}
+{"entite": "Andorre", "valeur": "54291.50"}
+{"entite": "Angola", "valeur": "3129.48"}
+{"entite": "Antigua-et-Barbuda", "valeur": "24819.25"}
+{"entite": "Arabie Saoudite", "valeur": "34536.66"}
+{"entite": "Argentine", "valeur": "14898.09"}
+{"entite": "Arménie", "valeur": "9474.02"}
+{"entite": "Aruba", "valeur": "38590.57"}
+{"entite": "Australie", "valeur": "65129.72"}
+{"entite": "Autriche", "valeur": "62930.04"}
+{"entite": "Azerbaïdjan", "valeur": "7410.72"}
+{"entite": "Bahamas", "valeur": "39455.45"}
+{"entite": "Bahreïn", "valeur": "30596.58"}
+{"entite": "Bangladesh", "valeur": "2597.34"}
+{"entite": "Barbade", "valeur": "28364.82"}
+{"entite": "Belgique", "valeur": "60750.27"}
+{"entite": "Belize", "valeur": "7865.48"}
+{"entite": "Bénin", "valeur": "1658.27"}
+{"entite": "Bermudes", "valeur": "142250.43"}
+{"entite": "Bhoutan", "valeur": "4492.78"}
+{"entite": "Biélorussie", "valeur": "10279.25"}
+{"entite": "Birmanie", "valeur": "1488.88"}
+{"entite": "Bolivie", "valeur": "5147.81"}
+{"entite": "Bosnie-Herzégovine", "valeur": "10381.85"}
+{"entite": "Botswana", "valeur": "7778.12"}
+{"entite": "Brésil", "valeur": "10713.29"}
+{"entite": "Brunei", "valeur": "32234.64"}
+{"entite": "Bulgarie", "valeur": "20328.17"}
+{"entite": "Burkina Faso", "valeur": "1147.57"}
+{"entite": "Burundi", "valeur": "233.82"}
+{"entite": "Cambodge", "valeur": "2872.43"}
+{"entite": "Cameroun", "valeur": "1972.38"}
+{"entite": "Canada", "valeur": "55697.66"}
+{"entite": "Chili", "valeur": "17994.59"}
+{"entite": "Chine", "valeur": "13861.97"}
+{"entite": "Chypre", "valeur": "41783.09"}
+{"entite": "Colombie", "valeur": "8561.62"}
+{"entite": "Comores", "valeur": "2055.76"}
+{"entite": "Congo", "valeur": "2514.73"}
+{"entite": "Congo (Rép. dém.)", "valeur": "806.78"}
+{"entite": "Corée du Sud", "valeur": "36226.97"}
+{"entite": "Costa Rica", "valeur": "19970.10"}
+{"entite": "Côte d'Ivoire", "valeur": "3050.10"}
+{"entite": "Croatie", "valeur": "27103.91"}
+{"entite": "Cuba", "valeur": "9605.28"}
+{"entite": "Curaçao", "valeur": "22832.90"}
+{"entite": "Danemark", "valeur": "76970.15"}
+{"entite": "Djibouti", "valeur": "3905.60"}
+{"entite": "Dominique", "valeur": "10989.04"}
+{"entite": "Égypte", "valeur": "3085.81"}
+{"entite": "Émirats arabes unis", "valeur": "50273.51"}
+{"entite": "Équateur", "valeur": "7125.28"}
+{"entite": "Érythrée", "valeur": "688.68"}
+{"entite": "Espagne", "valeur": "38627.25"}
+{"entite": "Estonie", "valeur": "34417.63"}
+{"entite": "Eswatini", "valeur": "4108.25"}
+{"entite": "États-Unis", "valeur": "90026.52"}
+{"entite": "Éthiopie", "valeur": "932.73"}
+{"entite": "Fidji", "valeur": "6642.00"}
+{"entite": "Finlande", "valeur": "56148.58"}
+{"entite": "France", "valeur": "48985.73"}
+{"entite": "Gabon", "valeur": "8263.03"}
+{"entite": "Gambie", "valeur": "919.06"}
+{"entite": "Géorgie", "valeur": "9691.53"}
+{"entite": "Ghana", "valeur": "3257.16"}
+{"entite": "Grèce", "valeur": "26948.01"}
+{"entite": "Grenade", "valeur": "12106.88"}
+{"entite": "Groenland", "valeur": "58498.97"}
+{"entite": "Guam", "valeur": "41833.15"}
+{"entite": "Guatemala", "valeur": "6598.18"}
+{"entite": "Guinée", "valeur": "1877.25"}
+{"entite": "Guinée-Bissau", "valeur": "1123.77"}
+{"entite": "Guinée équatoriale", "valeur": "6615.25"}
+{"entite": "Guyana", "valeur": "32413.79"}
+{"entite": "Haïti", "valeur": "2694.19"}
+{"entite": "Honduras", "valeur": "3598.21"}
+{"entite": "Hong Kong", "valeur": "56983.07"}
+{"entite": "Hongrie", "valeur": "25907.47"}
+{"entite": "Île de Man", "valeur": "90015.21"}
+{"entite": "Île Maurice", "valeur": "12991.29"}
+{"entite": "Îles Caïmans", "valeur": "104292.90"}
+{"entite": "Îles du Cap-Vert", "valeur": "5796.47"}
+{"entite": "Îles Féroé", "valeur": "74175.28"}
+{"entite": "Îles Mariannes du Nord", "valeur": "23785.75"}
+{"entite": "Îles Marshall", "valeur": "8489.06"}
+{"entite": "Îles Salomon", "valeur": "2086.19"}
+{"entite": "Îles Turques-et-Caïques", "valeur": "37506.78"}
+{"entite": "Îles Vierges des États-Unis", "valeur": "44320.91"}
+{"entite": "Inde", "valeur": "2702.48"}
+{"entite": "Indonésie", "valeur": "5059.63"}
+{"entite": "Irak", "valeur": "5409.68"}
+{"entite": "Iran", "valeur": "3924.38"}
+{"entite": "Irlande", "valeur": "131592.46"}
+{"entite": "Islande", "valeur": "98323.48"}
+{"entite": "Israël", "valeur": "60336.85"}
+{"entite": "Italie", "valeur": "43308.64"}
+{"entite": "Jamaïque", "valeur": "8002.92"}
+{"entite": "Japon", "valeur": "35951.04"}
+{"entite": "Jordanie", "valeur": "5347.78"}
+{"entite": "Kazakhstan", "valeur": "14692.13"}
+{"entite": "Kenya", "valeur": "2362.86"}
+{"entite": "Kirghizistan", "valeur": "3080.97"}
+{"entite": "Kiribati", "valeur": "2558.67"}
+{"entite": "Koweït", "valeur": "32312.31"}
+{"entite": "Laos", "valeur": "2324.76"}
+{"entite": "Lesotho", "valeur": "1088.96"}
+{"entite": "Lettonie", "valeur": "26311.97"}
+{"entite": "Liban", "valeur": "4473.27"}
+{"entite": "Liberia", "valeur": "915.33"}
+{"entite": "Libye", "valeur": "6448.82"}
+{"entite": "Liechtenstein", "valeur": "220167.23"}
+{"entite": "Lituanie", "valeur": "32958.67"}
+{"entite": "Luxembourg", "valeur": "147252.18"}
+{"entite": "Macao", "valeur": "75901.75"}
+{"entite": "Macédoine du Nord", "valeur": "10489.93"}
+{"entite": "Madagascar", "valeur": "599.27"}
+{"entite": "Malaisie", "valeur": "13124.56"}
+{"entite": "Malawi", "valeur": "671.51"}
+{"entite": "Maldives", "valeur": "14614.72"}
+{"entite": "Mali", "valeur": "1193.28"}
+{"entite": "Malte", "valeur": "47906.90"}
+{"entite": "Maroc", "valeur": "4672.47"}
+{"entite": "Mauritanie", "valeur": "2197.51"}
+{"entite": "Mexique", "valeur": "13889.23"}
+{"entite": "Micronésie", "valeur": "4414.01"}
+{"entite": "Moldavie", "valeur": "8621.72"}
+{"entite": "Monaco", "valeur": "288001.57"}
+{"entite": "Mongolie", "valeur": "7108.23"}
+{"entite": "Monténégro", "valeur": "14816.84"}
+{"entite": "Mozambique", "valeur": "626.91"}
+{"entite": "Namibie", "valeur": "4875.93"}
+{"entite": "Nauru", "valeur": "14639.50"}
+{"entite": "Népal", "valeur": "1535.88"}
+{"entite": "Nicaragua", "valeur": "3173.34"}
+{"entite": "Niger", "valeur": "775.35"}
+{"entite": "Nigéria", "valeur": "1224.25"}
+{"entite": "Norvège", "valeur": "94594.19"}
+{"entite": "Nouvelle-Calédonie", "valeur": "29213.19"}
+{"entite": "Nouvelle-Zélande", "valeur": "49591.04"}
+{"entite": "Oman", "valeur": "19947.40"}
+{"entite": "Ouganda", "valeur": "1206.30"}
+{"entite": "Ouzbékistan", "valeur": "3968.27"}
+{"entite": "Pakistan", "valeur": "1595.91"}
+{"entite": "Palaos (Palau)", "valeur": "19532.36"}
+{"entite": "Palestine", "valeur": "3171.11"}
+{"entite": "Panama", "valeur": "19789.73"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "3019.53"}
+{"entite": "Paraguay", "valeur": "7026.62"}
+{"entite": "Pays-Bas", "valeur": "73683.92"}
+{"entite": "Pérou", "valeur": "9684.41"}
+{"entite": "Philippines", "valeur": "4170.72"}
+{"entite": "Pologne", "valeur": "28419.58"}
+{"entite": "Polynésie française", "valeur": "22439.88"}
+{"entite": "Porto Rico", "valeur": "40620.15"}
+{"entite": "Portugal", "valeur": "32081.81"}
+{"entite": "Qatar", "valeur": "72524.91"}
+{"entite": "République centrafricaine", "valeur": "556.13"}
+{"entite": "République dominicaine", "valeur": "11059.21"}
+{"entite": "Roumanie", "valeur": "22537.95"}
+{"entite": "Royaume-Uni", "valeur": "57601.96"}
+{"entite": "Russie", "valeur": "17546.61"}
+{"entite": "Rwanda", "valeur": "1123.74"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": "25223.03"}
+{"entite": "Saint-Marin", "valeur": "59871.33"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "12561.77"}
+{"entite": "Sainte-Lucie", "valeur": "14745.82"}
+{"entite": "Salvador", "valeur": "5766.73"}
+{"entite": "Samoa", "valeur": "5872.78"}
+{"entite": "Samoa américaines", "valeur": "18017.46"}
+{"entite": "São Tomé et Príncipe", "valeur": "4084.40"}
+{"entite": "Sénégal", "valeur": "1954.71"}
+{"entite": "Serbie", "valeur": "15262.05"}
+{"entite": "Seychelles", "valeur": "19449.38"}
+{"entite": "Sierra Leone", "valeur": "846.30"}
+{"entite": "Singapour", "valeur": "98813.98"}
+{"entite": "Slovaquie", "valeur": "28543.67"}
+{"entite": "Slovénie", "valeur": "37376.22"}
+{"entite": "Somalie", "valeur": "661.17"}
+{"entite": "Soudan", "valeur": "1164.54"}
+{"entite": "Soudan du Sud", "valeur": "1080.15"}
+{"entite": "Sri Lanka", "valeur": "5002.08"}
+{"entite": "Suède", "valeur": "63133.21"}
+{"entite": "Suisse", "valeur": "114769.01"}
+{"entite": "Surinam", "valeur": "7069.87"}
+{"entite": "Syrie", "valeur": "1056.78"}
+{"entite": "Tadjikistan", "valeur": "1637.25"}
+{"entite": "Tanzanie", "valeur": "1318.82"}
+{"entite": "Tchad", "valeur": "1022.34"}
+{"entite": "Tchéquie", "valeur": "35917.27"}
+{"entite": "Thaïlande", "valeur": "8056.56"}
+{"entite": "Timor oriental", "valeur": "1340.96"}
+{"entite": "Togo", "valeur": "1383.90"}
+{"entite": "Tonga", "valeur": "6547.19"}
+{"entite": "Trinité-et-Tobago", "valeur": "18967.27"}
+{"entite": "Tunisie", "valeur": "4656.64"}
+{"entite": "Turkménistan", "valeur": "6540.18"}
+{"entite": "Turquie", "valeur": "18599.44"}
+{"entite": "Tuvalu", "valeur": "6344.78"}
+{"entite": "Ukraine", "valeur": "5865.88"}
+{"entite": "Uruguay", "valeur": "25215.82"}
+{"entite": "Vanuatu", "valeur": "4038.74"}
+{"entite": "Venezuela", "valeur": "3494.81"}
+{"entite": "Viêt Nam", "valeur": "5065.99"}
+{"entite": "Yémen", "valeur": "633.89"}
+{"entite": "Zambie", "valeur": "1317.88"}
+{"entite": "Zimbabwe", "valeur": "3021.43"}

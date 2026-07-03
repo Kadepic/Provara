@@ -1,0 +1,214 @@
+{"_relation": "esperance_vie_pays", "_categorie": "physique", "_source": "Banque mondiale SP.DYN.LE00.IN — espérance de vie à la naissance en années ; valeur la plus récente par pays (millésime 2024–2024 ; valeur VOLATILE, instantané daté, non « live »)", "_articles": true}
+{"entite": "Afghanistan", "valeur": "66.3"}
+{"entite": "Afrique du Sud", "valeur": "66.3"}
+{"entite": "Albanie", "valeur": "79.8"}
+{"entite": "Algérie", "valeur": "76.5"}
+{"entite": "Allemagne", "valeur": "80.8"}
+{"entite": "Andorre", "valeur": "84.2"}
+{"entite": "Angola", "valeur": "64.8"}
+{"entite": "Antigua-et-Barbuda", "valeur": "77.8"}
+{"entite": "Arabie Saoudite", "valeur": "79.0"}
+{"entite": "Argentine", "valeur": "77.5"}
+{"entite": "Arménie", "valeur": "78.3"}
+{"entite": "Aruba", "valeur": "76.5"}
+{"entite": "Australie", "valeur": "83.1"}
+{"entite": "Autriche", "valeur": "82.0"}
+{"entite": "Azerbaïdjan", "valeur": "74.6"}
+{"entite": "Bahamas", "valeur": "74.7"}
+{"entite": "Bahreïn", "valeur": "81.4"}
+{"entite": "Bangladesh", "valeur": "74.9"}
+{"entite": "Barbade", "valeur": "76.3"}
+{"entite": "Belgique", "valeur": "82.3"}
+{"entite": "Belize", "valeur": "73.7"}
+{"entite": "Bénin", "valeur": "61.0"}
+{"entite": "Bermudes", "valeur": "82.5"}
+{"entite": "Bhoutan", "valeur": "73.3"}
+{"entite": "Biélorussie", "valeur": "74.4"}
+{"entite": "Birmanie", "valeur": "67.1"}
+{"entite": "Bolivie", "valeur": "68.7"}
+{"entite": "Bosnie-Herzégovine", "valeur": "78.0"}
+{"entite": "Botswana", "valeur": "69.3"}
+{"entite": "Brésil", "valeur": "76.0"}
+{"entite": "Brunei", "valeur": "75.5"}
+{"entite": "Bulgarie", "valeur": "75.8"}
+{"entite": "Burkina Faso", "valeur": "61.3"}
+{"entite": "Burundi", "valeur": "63.8"}
+{"entite": "Cambodge", "valeur": "70.8"}
+{"entite": "Cameroun", "valeur": "64.0"}
+{"entite": "Canada", "valeur": "82.1"}
+{"entite": "Chili", "valeur": "81.4"}
+{"entite": "Chine", "valeur": "78.0"}
+{"entite": "Chypre", "valeur": "81.8"}
+{"entite": "Colombie", "valeur": "77.9"}
+{"entite": "Comores", "valeur": "67.0"}
+{"entite": "Congo", "valeur": "66.0"}
+{"entite": "Congo (Rép. dém.)", "valeur": "62.1"}
+{"entite": "Corée du Nord", "valeur": "73.7"}
+{"entite": "Corée du Sud", "valeur": "83.6"}
+{"entite": "Costa Rica", "valeur": "81.0"}
+{"entite": "Côte d'Ivoire", "valeur": "62.1"}
+{"entite": "Croatie", "valeur": "78.9"}
+{"entite": "Cuba", "valeur": "78.3"}
+{"entite": "Curaçao", "valeur": "77.0"}
+{"entite": "Danemark", "valeur": "82.3"}
+{"entite": "Djibouti", "valeur": "66.2"}
+{"entite": "Dominique", "valeur": "71.3"}
+{"entite": "Égypte", "valeur": "71.8"}
+{"entite": "Émirats arabes unis", "valeur": "83.1"}
+{"entite": "Équateur", "valeur": "77.6"}
+{"entite": "Érythrée", "valeur": "68.9"}
+{"entite": "Espagne", "valeur": "83.9"}
+{"entite": "Estonie", "valeur": "79.3"}
+{"entite": "Eswatini", "valeur": "64.3"}
+{"entite": "États-Unis", "valeur": "78.9"}
+{"entite": "Éthiopie", "valeur": "67.6"}
+{"entite": "Fidji", "valeur": "67.5"}
+{"entite": "Finlande", "valeur": "82.3"}
+{"entite": "France", "valeur": "83.0"}
+{"entite": "Gabon", "valeur": "68.5"}
+{"entite": "Gambie", "valeur": "66.1"}
+{"entite": "Géorgie", "valeur": "74.7"}
+{"entite": "Ghana", "valeur": "65.7"}
+{"entite": "Gibraltar", "valeur": "83.6"}
+{"entite": "Grèce", "valeur": "81.8"}
+{"entite": "Grenade", "valeur": "75.4"}
+{"entite": "Groenland", "valeur": "70.3"}
+{"entite": "Guam", "valeur": "77.4"}
+{"entite": "Guatemala", "valeur": "72.7"}
+{"entite": "Guinée", "valeur": "60.9"}
+{"entite": "Guinée-Bissau", "valeur": "64.3"}
+{"entite": "Guinée équatoriale", "valeur": "63.9"}
+{"entite": "Guyana", "valeur": "70.3"}
+{"entite": "Haïti", "valeur": "65.1"}
+{"entite": "Honduras", "valeur": "73.0"}
+{"entite": "Hong Kong", "valeur": "85.4"}
+{"entite": "Hongrie", "valeur": "76.7"}
+{"entite": "Île de Man", "valeur": "81.1"}
+{"entite": "Île Maurice", "valeur": "73.8"}
+{"entite": "Îles Caïmans", "valeur": "80.5"}
+{"entite": "Îles du Cap-Vert", "valeur": "76.2"}
+{"entite": "Îles Féroé", "valeur": "83.1"}
+{"entite": "Îles Mariannes du Nord", "valeur": "78.9"}
+{"entite": "Îles Marshall", "valeur": "67.1"}
+{"entite": "Îles Salomon", "valeur": "70.7"}
+{"entite": "Îles Turques-et-Caïques", "valeur": "78.2"}
+{"entite": "Îles Vierges britanniques", "valeur": "77.4"}
+{"entite": "Îles Vierges des États-Unis", "valeur": "80.8"}
+{"entite": "Inde", "valeur": "72.2"}
+{"entite": "Indonésie", "valeur": "71.3"}
+{"entite": "Irak", "valeur": "72.4"}
+{"entite": "Iran", "valeur": "77.9"}
+{"entite": "Irlande", "valeur": "83.0"}
+{"entite": "Islande", "valeur": "82.8"}
+{"entite": "Israël", "valeur": "83.2"}
+{"entite": "Italie", "valeur": "84.0"}
+{"entite": "Jamaïque", "valeur": "71.6"}
+{"entite": "Japon", "valeur": "84.0"}
+{"entite": "Jordanie", "valeur": "78.0"}
+{"entite": "Kazakhstan", "valeur": "74.5"}
+{"entite": "Kenya", "valeur": "63.8"}
+{"entite": "Kirghizistan", "valeur": "72.4"}
+{"entite": "Kiribati", "valeur": "66.6"}
+{"entite": "Koweït", "valeur": "84.6"}
+{"entite": "Laos", "valeur": "69.2"}
+{"entite": "Lesotho", "valeur": "57.8"}
+{"entite": "Lettonie", "valeur": "76.4"}
+{"entite": "Liban", "valeur": "77.9"}
+{"entite": "Liberia", "valeur": "62.3"}
+{"entite": "Libye", "valeur": "71.1"}
+{"entite": "Liechtenstein", "valeur": "84.2"}
+{"entite": "Lituanie", "valeur": "77.2"}
+{"entite": "Luxembourg", "valeur": "83.2"}
+{"entite": "Macao", "valeur": "83.3"}
+{"entite": "Macédoine du Nord", "valeur": "76.6"}
+{"entite": "Madagascar", "valeur": "63.8"}
+{"entite": "Malaisie", "valeur": "76.8"}
+{"entite": "Malawi", "valeur": "67.6"}
+{"entite": "Maldives", "valeur": "81.3"}
+{"entite": "Mali", "valeur": "60.7"}
+{"entite": "Malte", "valeur": "83.0"}
+{"entite": "Maroc", "valeur": "75.5"}
+{"entite": "Mauritanie", "valeur": "68.7"}
+{"entite": "Mexique", "valeur": "75.3"}
+{"entite": "Micronésie", "valeur": "67.4"}
+{"entite": "Moldavie", "valeur": "71.3"}
+{"entite": "Monaco", "valeur": "86.5"}
+{"entite": "Mongolie", "valeur": "72.4"}
+{"entite": "Monténégro", "valeur": "77.9"}
+{"entite": "Mozambique", "valeur": "63.8"}
+{"entite": "Namibie", "valeur": "67.5"}
+{"entite": "Nauru", "valeur": "62.3"}
+{"entite": "Népal", "valeur": "70.6"}
+{"entite": "Nicaragua", "valeur": "75.1"}
+{"entite": "Niger", "valeur": "61.4"}
+{"entite": "Nigéria", "valeur": "54.6"}
+{"entite": "Norvège", "valeur": "83.2"}
+{"entite": "Nouvelle-Calédonie", "valeur": "78.9"}
+{"entite": "Nouvelle-Zélande", "valeur": "82.0"}
+{"entite": "Oman", "valeur": "80.2"}
+{"entite": "Ouganda", "valeur": "68.5"}
+{"entite": "Ouzbékistan", "valeur": "72.5"}
+{"entite": "Pakistan", "valeur": "67.8"}
+{"entite": "Palaos (Palau)", "valeur": "69.4"}
+{"entite": "Palestine", "valeur": "69.2"}
+{"entite": "Panama", "valeur": "79.8"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "66.3"}
+{"entite": "Paraguay", "valeur": "74.0"}
+{"entite": "Pays-Bas", "valeur": "82.0"}
+{"entite": "Pérou", "valeur": "77.9"}
+{"entite": "Philippines", "valeur": "69.9"}
+{"entite": "Pologne", "valeur": "78.4"}
+{"entite": "Polynésie française", "valeur": "84.2"}
+{"entite": "Porto Rico", "valeur": "81.9"}
+{"entite": "Portugal", "valeur": "82.4"}
+{"entite": "Qatar", "valeur": "82.5"}
+{"entite": "République centrafricaine", "valeur": "57.7"}
+{"entite": "République dominicaine", "valeur": "73.9"}
+{"entite": "Roumanie", "valeur": "76.5"}
+{"entite": "Royaume-Uni", "valeur": "81.4"}
+{"entite": "Russie", "valeur": "73.4"}
+{"entite": "Rwanda", "valeur": "68.0"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": "72.3"}
+{"entite": "Saint-Marin", "valeur": "85.8"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "71.4"}
+{"entite": "Sainte-Lucie", "valeur": "72.8"}
+{"entite": "Salvador", "valeur": "72.3"}
+{"entite": "Samoa", "valeur": "71.8"}
+{"entite": "Samoa américaines", "valeur": "73.0"}
+{"entite": "São Tomé et Príncipe", "valeur": "69.9"}
+{"entite": "Sénégal", "valeur": "68.9"}
+{"entite": "Serbie", "valeur": "76.0"}
+{"entite": "Seychelles", "valeur": "76.3"}
+{"entite": "Sierra Leone", "valeur": "62.0"}
+{"entite": "Singapour", "valeur": "83.3"}
+{"entite": "Slovaquie", "valeur": "78.4"}
+{"entite": "Slovénie", "valeur": "82.3"}
+{"entite": "Somalie", "valeur": "59.0"}
+{"entite": "Soudan", "valeur": "66.5"}
+{"entite": "Soudan du Sud", "valeur": "57.7"}
+{"entite": "Sri Lanka", "valeur": "77.7"}
+{"entite": "Suède", "valeur": "84.1"}
+{"entite": "Suisse", "valeur": "84.4"}
+{"entite": "Surinam", "valeur": "73.8"}
+{"entite": "Syrie", "valeur": "72.6"}
+{"entite": "Tadjikistan", "valeur": "71.9"}
+{"entite": "Tanzanie", "valeur": "67.2"}
+{"entite": "Tchad", "valeur": "55.2"}
+{"entite": "Tchéquie", "valeur": "80.0"}
+{"entite": "Thaïlande", "valeur": "76.6"}
+{"entite": "Timor oriental", "valeur": "67.9"}
+{"entite": "Togo", "valeur": "62.9"}
+{"entite": "Tonga", "valeur": "73.1"}
+{"entite": "Trinité-et-Tobago", "valeur": "73.6"}
+{"entite": "Tunisie", "valeur": "76.7"}
+{"entite": "Turkménistan", "valeur": "70.2"}
+{"entite": "Turquie", "valeur": "77.4"}
+{"entite": "Tuvalu", "valeur": "67.3"}
+{"entite": "Ukraine", "valeur": "74.7"}
+{"entite": "Uruguay", "valeur": "78.3"}
+{"entite": "Vanuatu", "valeur": "71.7"}
+{"entite": "Venezuela", "valeur": "72.7"}
+{"entite": "Viêt Nam", "valeur": "74.7"}
+{"entite": "Yémen", "valeur": "69.4"}
+{"entite": "Zambie", "valeur": "66.5"}
+{"entite": "Zimbabwe", "valeur": "63.1"}

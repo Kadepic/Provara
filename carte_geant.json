@@ -1,0 +1,605 @@
+{
+ "meta": {
+  "passes_faites": 5,
+  "passes_cible": 5,
+  "appels": 113,
+  "secondes": 37.1,
+  "SU": 56,
+  "MANQUE": 5,
+  "LEGIT": 9,
+  "FAUX": 0
+ },
+ "par_cible": {
+  "liste_paires:premiers": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "entier:binaire": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste_chaines:majuscule_chaque": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "matrice:element_max": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "paire_listes:concat": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "dict:inverse": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "dict_listes:longueur_par_cle": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:produit__nonzero_double_incr": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:nb_distinct__positifs_signe_uniques": {
+   "su": 0,
+   "manque": 1,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:nb_distinct__incr_incr": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:liste__nonzero_double_relu": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:liste__double_relu_double": {
+   "su": 0,
+   "manque": 1,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:nb_distinct__renverse_relu": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "proc:liste__neg_relu_uniques": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "paire_listes:produit_scalaire": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:amplitude": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:mode": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste_chaines:plus_long": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:non_nuls": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:est_palindrome": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:sommes_glissantes_2": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:produit__tri_abs_carres": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "proc:longueur__positifs_nonzero": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:longueur__tri_abs_signe_positifs": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:min__neg": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "proc:produit__relu_tri": {
+   "su": 0,
+   "manque": 1,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:max__abs_each": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:nb_distinct__positifs_signe_incr": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "chaine_mots:anagramme_trie": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:nb_doublons": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "dict_listes:somme_par_cle": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste_dicts:max_champ_a": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:nb_pics": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste_paires:sommes_paires": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "entier:est_pair": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "proc:longueur__neg_tri_signe": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:max__relu_abs_each_abs_each": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:min__signe": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "proc:amplitude__incr_tri_abs": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "proc:longueur__relu_relu": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:amplitude__positifs_identite_tri": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:somme__incr_differences_incr": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "entier:fibonacci": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "matrice:somme_totale": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste_chaines:tri_par_longueur": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "chaine_mots:mot_le_plus_long": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:elements_uniques_tries": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "entier:est_puissance_2": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:longueur__relu_carres_double": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:min__tri_neg": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "proc:max__abs_each_abs_each_neg": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:produit__carres_tri_abs": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:produit__relu": {
+   "su": 0,
+   "manque": 1,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:max__tri": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:nb_distinct__carres": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "matrice:transposee": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "entier:chiffres": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "dict_listes:total_global": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste:est_croissante_stricte": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:produit__cumul_positifs_uniques": {
+   "su": 0,
+   "manque": 1,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:max__pairs_carres_double": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:somme__abs_each_identite_cumul": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:max__abs_each_positifs_cumul": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:max__positifs_neg": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "proc:nb_distinct__differences_signe": {
+   "su": 0,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  }
+ },
+ "par_famille": {
+  "fusion_lpair": {
+   "su": 3,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "bits": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "fusion_lstr": {
+   "su": 5,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "matrice": {
+   "su": 3,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "deux_listes": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "dict": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "fusion_dlst": {
+   "su": 3,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "procedural": {
+   "su": 22,
+   "manque": 5,
+   "legit": 8,
+   "faux": 0
+  },
+  "agregat": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "multiset": {
+   "su": 4,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "filtre": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "structure": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "fenetre": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "chaine_av": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "fusion_ldict": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "entier": {
+   "su": 1,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "chaine": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "arith": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "sequence": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  }
+ },
+ "par_genre": {
+  "liste_paires": {
+   "su": 3,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "entier": {
+   "su": 4,
+   "manque": 0,
+   "legit": 1,
+   "faux": 0
+  },
+  "liste_chaines": {
+   "su": 5,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "matrice": {
+   "su": 3,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "paire_listes": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "dict": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "dict_listes": {
+   "su": 3,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste": {
+   "su": 32,
+   "manque": 5,
+   "legit": 8,
+   "faux": 0
+  },
+  "chaine_mots": {
+   "su": 2,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  },
+  "liste_dicts": {
+   "su": 1,
+   "manque": 0,
+   "legit": 0,
+   "faux": 0
+  }
+ },
+ "faux_detail": [],
+ "manque_exemples": {
+  "proc:nb_distinct__positifs_signe_uniques": {
+   "statut": "ambigu",
+   "ex": "[([14, 8, 15, -12, -1, 13, 11, -4, 10, 2, 3], 1), ([-4, 11, 6, 10, 9, 0, -12, 3, 10, -3, 11], 1), ([14, -11, 6, 2, 8, -10, -12, 11, -3, -11, -3], 1)]"
+  },
+  "proc:liste__double_relu_double": {
+   "statut": "brique_manquante",
+   "ex": "[([12, -10, -1, -3, -6, 6, -2, -11, -12, 15, -2], [48, 0, 0, 0, 0, 24, 0, 0, 0, 60, 0]), ([-3, -5, 7, 0, 3, -11, 7, -6, -2, 6, -12], [0, 0, 28, 0, 12, 0, 28, 0, 0, 24, 0]), ([12, 11, -10, -9, -3, 4, 2, -12, -9, 10, -8], [48, 44, 0, 0, 0, 16, 8, 0, 0, 40, 0])]"
+  },
+  "proc:produit__relu_tri": {
+   "statut": "ambigu",
+   "ex": "[([5, -6, 14, 9, 9, -5, 1, 1, -3, 3, -9, -10], 0), ([9, -6, -2, 0, -12, 2, 2, 15, 9, 5, 2, -5], 0), ([7, 7, -5, 6, 10, -10, -7, 15, 3, 0, -1, -9], 0)]"
+  },
+  "proc:produit__relu": {
+   "statut": "ambigu",
+   "ex": "[([8, -12, 3, 5, 12, -3, -9, -2, 9, 1, 13, 14, -3, -10], 0), ([3, 10, -5, -6, -7, -12, 7, 14, 2, 11, -11, 3, -2, -5], 0), ([-1, 0, 4, 13, -12, 13, 0, 0, 10, 10, -2, -3, -9, 13], 0)]"
+  },
+  "proc:produit__cumul_positifs_uniques": {
+   "statut": "brique_manquante",
+   "ex": "[([11, -4, 3, 3, 6, 11, 5, 12, 1, -11], 16669316664000), ([12, 5, -4, -2, 2, 9, 13, -7, -3, 10], 15723708000), ([-2, 6, 6, -4, 1, 11, -10, -11, 6, 15], 725760)]"
+  }
+ }
+}

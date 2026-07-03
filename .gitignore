@@ -1,0 +1,26 @@
+# ── Python ──────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# ── Cache colonnaire du lecteur (régénéré automatiquement) ─────────────
+*.colf
+.cache/
+ia-lecteur/
+.nonreg_cache.json
+
+# ── Données volumineuses (NE PAS committer : reconstruites par ingere_*.py) ──
+# L'échantillon dans datasets/lecteur/ EST versionné ; la base complète non.
+datasets/_raw/
+datasets/**/*.dwarfs
+# Gros fichiers de faits reconstruits localement (garder l'échantillon léger) :
+datasets/lecteur/*.tsv
+
+# ── OS / éditeurs ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/

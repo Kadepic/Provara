@@ -1,0 +1,192 @@
+{"_relation": "capitale", "_categorie": "physique", "_source": "Wikidata (états souverains Q3624078) — capitale P36", "_articles": true}
+{"entite": "Afghanistan", "valeur": "Kaboul"}
+{"entite": "Albanie", "valeur": "Tirana"}
+{"entite": "Algérie", "valeur": "Alger"}
+{"entite": "Allemagne", "valeur": "Berlin"}
+{"entite": "Andorre", "valeur": "Andorre-la-Vieille"}
+{"entite": "Angola", "valeur": "Luanda"}
+{"entite": "Antigua-et-Barbuda", "valeur": "Saint John's"}
+{"entite": "Arabie saoudite", "valeur": "Riyad"}
+{"entite": "Argentine", "valeur": "Buenos Aires"}
+{"entite": "Arménie", "valeur": "Erevan"}
+{"entite": "Australie", "valeur": "Canberra"}
+{"entite": "Autriche", "valeur": "Vienne"}
+{"entite": "Azerbaïdjan", "valeur": "Bakou"}
+{"entite": "Bahamas", "valeur": "Nassau"}
+{"entite": "Bahreïn", "valeur": "Manama"}
+{"entite": "Bangladesh", "valeur": "Dacca"}
+{"entite": "Barbade", "valeur": "Bridgetown"}
+{"entite": "Belgique", "valeur": "Bruxelles"}
+{"entite": "Belize", "valeur": "Belmopan"}
+{"entite": "Bénin", "valeur": "Porto-Novo"}
+{"entite": "Bhoutan", "valeur": "Thimphou"}
+{"entite": "Biélorussie", "valeur": "Minsk"}
+{"entite": "Birmanie", "valeur": "Naypyidaw"}
+{"entite": "Bosnie-Herzégovine", "valeur": "Sarajevo"}
+{"entite": "Botswana", "valeur": "Gaborone"}
+{"entite": "Brunei", "valeur": "Bandar Seri Begawan"}
+{"entite": "Bulgarie", "valeur": "Sofia"}
+{"entite": "Burkina Faso", "valeur": "Ouagadougou"}
+{"entite": "Burundi", "valeur": "Gitega"}
+{"entite": "Cambodge", "valeur": "Phnom Penh"}
+{"entite": "Cameroun", "valeur": "Yaoundé"}
+{"entite": "Canada", "valeur": "Ottawa"}
+{"entite": "Cap-Vert", "valeur": "Praia"}
+{"entite": "Chili", "valeur": "Santiago"}
+{"entite": "Chypre", "valeur": "Nicosie"}
+{"entite": "Colombie", "valeur": "Bogota"}
+{"entite": "Comores", "valeur": "Moroni"}
+{"entite": "Corée du Nord", "valeur": "Pyongyang"}
+{"entite": "Corée du Sud", "valeur": "Séoul"}
+{"entite": "Costa Rica", "valeur": "San José"}
+{"entite": "Côte d'Ivoire", "valeur": "Yamoussoukro"}
+{"entite": "Croatie", "valeur": "Zagreb"}
+{"entite": "Cuba", "valeur": "La Havane"}
+{"entite": "Djibouti", "valeur": "Djibouti"}
+{"entite": "Dominique", "valeur": "Roseau"}
+{"entite": "Égypte", "valeur": "Le Caire"}
+{"entite": "Émirats arabes unis", "valeur": "Abou Dabi"}
+{"entite": "Empire russe", "valeur": "Saint-Pétersbourg"}
+{"entite": "Équateur", "valeur": "Quito"}
+{"entite": "Érythrée", "valeur": "Asmara"}
+{"entite": "Espagne", "valeur": "Madrid"}
+{"entite": "Estonie", "valeur": "Tallinn"}
+{"entite": "États fédérés de Micronésie", "valeur": "Palikir"}
+{"entite": "États-Unis", "valeur": "Washington"}
+{"entite": "Éthiopie", "valeur": "Addis-Abeba"}
+{"entite": "Fidji", "valeur": "Suva"}
+{"entite": "Finlande", "valeur": "Helsinki"}
+{"entite": "France", "valeur": "Paris"}
+{"entite": "Gabon", "valeur": "Libreville"}
+{"entite": "Gambie", "valeur": "Banjul"}
+{"entite": "Géorgie", "valeur": "Tbilissi"}
+{"entite": "Ghana", "valeur": "Accra"}
+{"entite": "Grèce", "valeur": "Athènes"}
+{"entite": "Grenade", "valeur": "Saint-Georges"}
+{"entite": "Guatemala", "valeur": "Guatemala"}
+{"entite": "Guinée", "valeur": "Conakry"}
+{"entite": "Guinée-Bissau", "valeur": "Bissau"}
+{"entite": "Guinée équatoriale", "valeur": "Ciudad de la Paz"}
+{"entite": "Guyana", "valeur": "Georgetown"}
+{"entite": "Haïti", "valeur": "Port-au-Prince"}
+{"entite": "Honduras", "valeur": "Tegucigalpa"}
+{"entite": "Hongrie", "valeur": "Budapest"}
+{"entite": "Îles Marshall", "valeur": "Majuro"}
+{"entite": "Îles Salomon", "valeur": "Honiara"}
+{"entite": "Inde", "valeur": "New Delhi"}
+{"entite": "Indonésie", "valeur": "Jakarta"}
+{"entite": "Irak", "valeur": "Bagdad"}
+{"entite": "Iran", "valeur": "Téhéran"}
+{"entite": "Irlande", "valeur": "Dublin"}
+{"entite": "Islande", "valeur": "Reykjavik"}
+{"entite": "Israël", "valeur": "Jérusalem"}
+{"entite": "Italie", "valeur": "Rome"}
+{"entite": "Jamaïque", "valeur": "Kingston"}
+{"entite": "Japon", "valeur": "Tokyo"}
+{"entite": "Jordanie", "valeur": "Amman"}
+{"entite": "Kazakhstan", "valeur": "Astana"}
+{"entite": "Kenya", "valeur": "Nairobi"}
+{"entite": "Kirghizistan", "valeur": "Bichkek"}
+{"entite": "Kiribati", "valeur": "Tarawa-Sud"}
+{"entite": "Kosovo", "valeur": "Pristina"}
+{"entite": "Koweït", "valeur": "Koweït"}
+{"entite": "Laos", "valeur": "Vientiane"}
+{"entite": "Lesotho", "valeur": "Maseru"}
+{"entite": "Lettonie", "valeur": "Riga"}
+{"entite": "Liban", "valeur": "Beyrouth"}
+{"entite": "Liberia", "valeur": "Monrovia"}
+{"entite": "Libye", "valeur": "Tripoli"}
+{"entite": "Liechtenstein", "valeur": "Vaduz"}
+{"entite": "Lituanie", "valeur": "Vilnius"}
+{"entite": "Luxembourg", "valeur": "Luxembourg"}
+{"entite": "Macédoine du Nord", "valeur": "Skopje"}
+{"entite": "Madagascar", "valeur": "Antananarivo"}
+{"entite": "Malaisie", "valeur": "Kuala Lumpur"}
+{"entite": "Malawi", "valeur": "Lilongwe"}
+{"entite": "Maldives", "valeur": "Malé"}
+{"entite": "Mali", "valeur": "Bamako"}
+{"entite": "Malte", "valeur": "La Valette"}
+{"entite": "Maroc", "valeur": "Rabat"}
+{"entite": "Maurice", "valeur": "Port-Louis"}
+{"entite": "Mauritanie", "valeur": "Nouakchott"}
+{"entite": "Mexique", "valeur": "Mexico"}
+{"entite": "Moldavie", "valeur": "Chișinău"}
+{"entite": "Monaco", "valeur": "Monaco-Ville"}
+{"entite": "Mongolie", "valeur": "Oulan-Bator"}
+{"entite": "Monténégro", "valeur": "Podgorica"}
+{"entite": "Mozambique", "valeur": "Maputo"}
+{"entite": "Namibie", "valeur": "Windhoek"}
+{"entite": "Nauru", "valeur": "Yaren"}
+{"entite": "Népal", "valeur": "Katmandou"}
+{"entite": "Nicaragua", "valeur": "Managua"}
+{"entite": "Niger", "valeur": "Niamey"}
+{"entite": "Nigeria", "valeur": "Abuja"}
+{"entite": "Norvège", "valeur": "Oslo"}
+{"entite": "Nouvelle-Zélande", "valeur": "Wellington"}
+{"entite": "Oman", "valeur": "Mascate"}
+{"entite": "Ouganda", "valeur": "Kampala"}
+{"entite": "Ouzbékistan", "valeur": "Tachkent"}
+{"entite": "Pakistan", "valeur": "Islamabad"}
+{"entite": "Palaos", "valeur": "Ngerulmud"}
+{"entite": "Panama", "valeur": "Panama"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "Port Moresby"}
+{"entite": "Paraguay", "valeur": "Asuncion"}
+{"entite": "Pérou", "valeur": "Lima"}
+{"entite": "Philippines", "valeur": "Manille"}
+{"entite": "Pologne", "valeur": "Varsovie"}
+{"entite": "Portugal", "valeur": "Lisbonne"}
+{"entite": "Qatar", "valeur": "Doha"}
+{"entite": "République centrafricaine", "valeur": "Bangui"}
+{"entite": "République démocratique du Congo", "valeur": "Kinshasa"}
+{"entite": "République dominicaine", "valeur": "Saint-Domingue"}
+{"entite": "République du Congo", "valeur": "Brazzaville"}
+{"entite": "République populaire de Chine", "valeur": "Pékin"}
+{"entite": "Roumanie", "valeur": "Bucarest"}
+{"entite": "Royaume de Danemark", "valeur": "Copenhague"}
+{"entite": "Royaume des Pays-Bas", "valeur": "Amsterdam"}
+{"entite": "Royaume-Uni", "valeur": "Londres"}
+{"entite": "Russie", "valeur": "Moscou"}
+{"entite": "Rwanda", "valeur": "Kigali"}
+{"entite": "Saint-Christophe-et-Niévès", "valeur": "Basseterre"}
+{"entite": "Saint-Marin", "valeur": "Saint-Marin"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "Kingstown"}
+{"entite": "Sainte-Lucie", "valeur": "Castries"}
+{"entite": "Salvador", "valeur": "San Salvador"}
+{"entite": "Samoa", "valeur": "Apia"}
+{"entite": "Sao Tomé-et-Principe", "valeur": "São Tomé"}
+{"entite": "Sénégal", "valeur": "Dakar"}
+{"entite": "Serbie", "valeur": "Belgrade"}
+{"entite": "Seychelles", "valeur": "Victoria"}
+{"entite": "Sierra Leone", "valeur": "Freetown"}
+{"entite": "Singapour", "valeur": "Singapour"}
+{"entite": "Slovaquie", "valeur": "Bratislava"}
+{"entite": "Slovénie", "valeur": "Ljubljana"}
+{"entite": "Somalie", "valeur": "Mogadiscio"}
+{"entite": "Soudan", "valeur": "Khartoum"}
+{"entite": "Soudan du Sud", "valeur": "Djouba"}
+{"entite": "Suède", "valeur": "Stockholm"}
+{"entite": "Suisse", "valeur": "Berne"}
+{"entite": "Suriname", "valeur": "Paramaribo"}
+{"entite": "Syrie", "valeur": "Damas"}
+{"entite": "Tadjikistan", "valeur": "Douchanbé"}
+{"entite": "Taïwan", "valeur": "Taipei"}
+{"entite": "Tanzanie", "valeur": "Dodoma"}
+{"entite": "Tchad", "valeur": "N'Djaména"}
+{"entite": "Tchéquie", "valeur": "Prague"}
+{"entite": "Thaïlande", "valeur": "Bangkok"}
+{"entite": "Timor oriental", "valeur": "Dili"}
+{"entite": "Togo", "valeur": "Lomé"}
+{"entite": "Tonga", "valeur": "Nukuʻalofa"}
+{"entite": "Trinité-et-Tobago", "valeur": "Port-d'Espagne"}
+{"entite": "Tunisie", "valeur": "Tunis"}
+{"entite": "Turkménistan", "valeur": "Achgabat"}
+{"entite": "Turquie", "valeur": "Ankara"}
+{"entite": "Tuvalu", "valeur": "Funafuti"}
+{"entite": "Ukraine", "valeur": "Kiev"}
+{"entite": "Uruguay", "valeur": "Montevideo"}
+{"entite": "Vanuatu", "valeur": "Port-Vila"}
+{"entite": "Vatican", "valeur": "Vatican"}
+{"entite": "Venezuela", "valeur": "Caracas"}
+{"entite": "Vietnam", "valeur": "Hanoï"}
+{"entite": "Zambie", "valeur": "Lusaka"}
+{"entite": "Zimbabwe", "valeur": "Harare"}

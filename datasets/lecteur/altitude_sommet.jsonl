@@ -1,0 +1,3205 @@
+{"_relation": "altitude_sommet", "_categorie": "physique", "_source": "Wikidata/QLever — altitude P2044 (unité lue puis convertie en mètres ; pied/pouce/cm exacts)", "_articles": true}
+{"entite": "Abendberg", "valeur": "1851"}
+{"entite": "Ahintziaga", "valeur": "905"}
+{"entite": "l'Aiglière", "valeur": "2047"}
+{"entite": "aiguille à Bochard", "valeur": "2681"}
+{"entite": "Aiguille Carrée", "valeur": "3716"}
+{"entite": "Aiguille Centrale de la Saussaz", "valeur": "3361"}
+{"entite": "Aiguille Centrale du Soreiller", "valeur": "3338"}
+{"entite": "aiguille Crochues", "valeur": "2840"}
+{"entite": "aiguille Croux", "valeur": "3256"}
+{"entite": "aiguille d'Argentière", "valeur": "3237"}
+{"entite": "Aiguille d'Arves Centrale", "valeur": "3513"}
+{"entite": "aiguille d'Arves Méridionale", "valeur": "3514"}
+{"entite": "Aiguille d'Arves Septentrionale", "valeur": "3364"}
+{"entite": "aiguille d'Aujon", "valeur": "2388"}
+{"entite": "Aiguille d'Entre Pierroux", "valeur": "3290"}
+{"entite": "aiguille de Bacque", "valeur": "2652"}
+{"entite": "aiguille de Bellaval", "valeur": "3051"}
+{"entite": "aiguille de Bertin", "valeur": "2809"}
+{"entite": "aiguille de Borderan", "valeur": "2492"}
+{"entite": "aiguille de Chambeyron", "valeur": "3412"}
+{"entite": "aiguille de Chanrossa", "valeur": "3045"}
+{"entite": "aiguille de Charlanon", "valeur": "2397"}
+{"entite": "aiguille de Combal", "valeur": "2839"}
+{"entite": "aiguille de l'Aigle", "valeur": "3517"}
+{"entite": "aiguille de l'Encrena", "valeur": "2776"}
+{"entite": "aiguille de l'Encrenaz", "valeur": "2887"}
+{"entite": "Aiguille de l'Épaisseur", "valeur": "3230"}
+{"entite": "aiguille de la Brenva", "valeur": "3278"}
+{"entite": "aiguille de la Grande Sassière", "valeur": "3751"}
+{"entite": "aiguille de la Nova", "valeur": "2893"}
+{"entite": "aiguille de la Persévérance", "valeur": "2901"}
+{"entite": "aiguille de la Petite Sassière", "valeur": "3672"}
+{"entite": "aiguille de la Tête Plate", "valeur": "2944"}
+{"entite": "Aiguille de Laisse", "valeur": "2879"}
+{"entite": "aiguille de Loria", "valeur": "2644"}
+{"entite": "aiguille de Loriaz", "valeur": "2752"}
+{"entite": "Aiguille de Manigod", "valeur": "2024"}
+{"entite": "aiguille de Marcieu", "valeur": "2602"}
+{"entite": "aiguille de Méan Martin", "valeur": "3278"}
+{"entite": "aiguille de Mesure", "valeur": "2812"}
+{"entite": "Aiguille de Mey", "valeur": "2842"}
+{"entite": "aiguille de Morges", "valeur": "2739"}
+{"entite": "aiguille de Plovezan", "valeur": "2810"}
+{"entite": "aiguille de Praina", "valeur": "2607"}
+{"entite": "aiguille de Roselette", "valeur": "2384"}
+{"entite": "aiguille de Salenton", "valeur": "2671"}
+{"entite": "aiguille de Saussure", "valeur": "3839"}
+{"entite": "Aiguille de Sugiton", "valeur": "175"}
+{"entite": "aiguille de Terrassin", "valeur": "2836"}
+{"entite": "aiguille de Tré la Tête", "valeur": "3911"}
+{"entite": "aiguille de Tricot", "valeur": "3665"}
+{"entite": "aiguille de Varan", "valeur": "2544"}
+{"entite": "Aiguille de Venosc", "valeur": "2830"}
+{"entite": "aiguille des Aimes", "valeur": "2812"}
+{"entite": "aiguille des Calvaires", "valeur": "2322"}
+{"entite": "aiguille des Chamois", "valeur": "2902"}
+{"entite": "Aiguille des Corneillets", "valeur": "3055"}
+{"entite": "aiguille des Grands Montets", "valeur": "3295"}
+{"entite": "aiguille des Lanchettes", "valeur": "3073"}
+{"entite": "aiguille des Marmes", "valeur": "2841"}
+{"entite": "Aiguille des Saffres", "valeur": "3135"}
+{"entite": "aiguille des Saints-Pères", "valeur": "3369"}
+{"entite": "aiguille des Veis", "valeur": "3024"}
+{"entite": "aiguille Doran", "valeur": "3040"}
+{"entite": "Aiguille du Bochor", "valeur": "2885"}
+{"entite": "aiguille du Bouchet", "valeur": "2132"}
+{"entite": "aiguille du Chardonnet", "valeur": "3824"}
+{"entite": "aiguille du Charmo", "valeur": "2655"}
+{"entite": "aiguille du Charmoz", "valeur": "2654"}
+{"entite": "aiguille du Châtelet", "valeur": "2525"}
+{"entite": "aiguille du Clapet", "valeur": "2615"}
+{"entite": "aiguille du Croc", "valeur": "2987"}
+{"entite": "Aiguille du Dôme", "valeur": "3017"}
+{"entite": "aiguille du Franchet", "valeur": "2860"}
+{"entite": "Aiguille du Fruit", "valeur": "3048"}
+{"entite": "aiguille du Genépi", "valeur": "3265"}
+{"entite": "aiguille du Lac", "valeur": "2826"}
+{"entite": "aiguille du Lac Blanc", "valeur": "2778"}
+{"entite": "aiguille du Midi", "valeur": "3842"}
+{"entite": "aiguille du Moine", "valeur": "3412"}
+{"entite": "aiguille du Mort", "valeur": "2499"}
+{"entite": "aiguille du Passon", "valeur": "3389"}
+{"entite": "aiguille du Plat de la Selle", "valeur": "3596"}
+{"entite": "aiguille du Pouce", "valeur": "2874"}
+{"entite": "aiguille du Rateau", "valeur": "2887"}
+{"entite": "aiguille du Ratier", "valeur": "2517"}
+{"entite": "aiguille du Saint-Esprit", "valeur": "3414"}
+{"entite": "aiguille du Tacul", "valeur": "3438"}
+{"entite": "aiguille du Tour", "valeur": "3443"}
+{"entite": "aiguille Favre", "valeur": "2788"}
+{"entite": "aiguille Forbes", "valeur": "3490"}
+{"entite": "aiguille Grive", "valeur": "2443"}
+{"entite": "Aiguille Inférieure du Clot de la Hount", "valeur": "3043"}
+{"entite": "Aiguille Jean Garnier", "valeur": "3025"}
+{"entite": "aiguille Large de Marinet", "valeur": "2640"}
+{"entite": "aiguille Marbrée Nord", "valeur": "3535"}
+{"entite": "aiguille Marbrée Sud", "valeur": "3483"}
+{"entite": "aiguille Martin", "valeur": "2883"}
+{"entite": "aiguille Morris", "valeur": "2781"}
+{"entite": "aiguille Noire de Pramecou", "valeur": "2977"}
+{"entite": "Aiguille Occidentale de la Saussaz", "valeur": "3340"}
+{"entite": "aiguille Occidentale du Soreiller", "valeur": "3280"}
+{"entite": "Aiguille Orientale de la Saussaz", "valeur": "3323"}
+{"entite": "Aiguille Orientale du Soreiller", "valeur": "3380"}
+{"entite": "aiguille Pers", "valeur": "3386"}
+{"entite": "aiguille Pourrie", "valeur": "2459"}
+{"entite": "Aiguille Sans Nom", "valeur": "3982"}
+{"entite": "aiguille Savoie", "valeur": "3604"}
+{"entite": "Aiguille Supérieure du Clot de la Hount", "valeur": "3115"}
+{"entite": "Aiguille SW de Cerbillona", "valeur": "3051"}
+{"entite": "aiguilles de Chabrières", "valeur": "2420"}
+{"entite": "aiguilles de l'Ermite", "valeur": "3011"}
+{"entite": "aiguilles de la Balme", "valeur": "2696"}
+{"entite": "aiguilles de la Glière", "valeur": "2856"}
+{"entite": "aiguilles de la Grande Mœndaz", "valeur": "2697"}
+{"entite": "aiguilles de la Grande Moenda", "valeur": "2480"}
+{"entite": "aiguilles de la Lex Blanche", "valeur": "3697"}
+{"entite": "aiguilles de Praz Torrent", "valeur": "2473"}
+{"entite": "aiguilles du Borgne", "valeur": "3135"}
+{"entite": "aiguilles du Col du Tour", "valeur": "3359"}
+{"entite": "Aiguilles du Mont", "valeur": "2133"}
+{"entite": "aiguilles du Vent", "valeur": "2578"}
+{"entite": "aiguilles Rouges de Triolet", "valeur": "3289"}
+{"entite": "aiguilles Rouges du Brouillard", "valeur": "3388"}
+{"entite": "L'Aiguillette", "valeur": "2381"}
+{"entite": "aiguillette d'Argentière", "valeur": "1893"}
+{"entite": "aiguillette de la Tour", "valeur": "2274"}
+{"entite": "Aiguillette des Fétoules", "valeur": "3156"}
+{"entite": "aiguillette des Houches", "valeur": "2285"}
+{"entite": "aiguillette du Brévent", "valeur": "2310"}
+{"entite": "Les Aiguillettes", "valeur": "2233"}
+{"entite": "Aiguillettes de Vaujany", "valeur": "2547"}
+{"entite": "aiguillettes des Posettes", "valeur": "2201"}
+{"entite": "Aiplspitz", "valeur": "1759"}
+{"entite": "l'Albaron", "valeur": "3637"}
+{"entite": "L'Alienard", "valeur": "1390"}
+{"entite": "L'Alpette", "valeur": "1640"}
+{"entite": "Alpettes", "valeur": "1871"}
+{"entite": "Alto de Aintziaga", "valeur": "697"}
+{"entite": "L'Ambrevetta", "valeur": "2463"}
+{"entite": "Amin Brakk", "valeur": "5850"}
+{"entite": "L'Andran", "valeur": "1145"}
+{"entite": "Aneto", "valeur": "3404"}
+{"entite": "Angererkopf", "valeur": "2263"}
+{"entite": "Annapurna I central", "valeur": "8013"}
+{"entite": "Annapurna I Est", "valeur": "7980"}
+{"entite": "Annapurna III", "valeur": "7555"}
+{"entite": "Annapurna IV", "valeur": "7525"}
+{"entite": "Aoraki/Mont Cook", "valeur": "3724"}
+{"entite": "Aouille de Criou", "valeur": "2227"}
+{"entite": "Arbizon", "valeur": "2831"}
+{"entite": "Arc Dome", "valeur": "3590.544"}
+{"entite": "l'Arche", "valeur": "2256"}
+{"entite": "Ardetzenberg", "valeur": "631.8"}
+{"entite": "Arête de Fresse", "valeur": "2702"}
+{"entite": "Arête des Flammes de Pierre", "valeur": "3361"}
+{"entite": "arête des Mines", "valeur": "3121"}
+{"entite": "Arhantzeta", "valeur": "433"}
+{"entite": "l'Armélaz", "valeur": "1840"}
+{"entite": "Arolette", "valeur": "2330"}
+{"entite": "L'Arpette de Thuy", "valeur": "1675"}
+{"entite": "Asapurna", "valeur": "7140"}
+{"entite": "Asta Sottana", "valeur": "2850"}
+{"entite": "La Atalaya", "valeur": "2083"}
+{"entite": "Äußerer Bärenbartkogel", "valeur": "3473"}
+{"entite": "L'Aulpe du Seuil", "valeur": "1740"}
+{"entite": "Aup de Véran", "valeur": "2437"}
+{"entite": "L'Aurousse", "valeur": "1035"}
+{"entite": "Les Avoudrues", "valeur": "2245"}
+{"entite": "Axlartindur", "valeur": "1352"}
+{"entite": "Azan Rara", "valeur": "1113"}
+{"entite": "Baierkarspitze", "valeur": "1909"}
+{"entite": "Baishihu", "valeur": "504"}
+{"entite": "Bald Knob", "valeur": "1476"}
+{"entite": "Baldy Beacon", "valeur": "1020"}
+{"entite": "Ban Rouge", "valeur": "1983"}
+{"entite": "Banc des Chevrettes", "valeur": "3297"}
+{"entite": "Banc Ferrand", "valeur": "1919"}
+{"entite": "Banne", "valeur": "1256"}
+{"entite": "baou de Saint-Jeannet", "valeur": "802"}
+{"entite": "Baou des Blancs", "valeur": "673"}
+{"entite": "Baou des Noirs", "valeur": "678"}
+{"entite": "baou des Quatre Oures", "valeur": "576"}
+{"entite": "Baou Redon", "valeur": "402"}
+{"entite": "Baou Rond", "valeur": "281"}
+{"entite": "Barbat", "valeur": "2574"}
+{"entite": "Barme Rousse", "valeur": "1295"}
+{"entite": "Barre Noire", "valeur": "3751"}
+{"entite": "Barres de Niolong", "valeur": "454"}
+{"entite": "Le Barrioz", "valeur": "2537"}
+{"entite": "Basilika", "valeur": "513"}
+{"entite": "Basse de Pidanoux", "valeur": "999"}
+{"entite": "Batura II", "valeur": "7762"}
+{"entite": "Bau de la Saoupe", "valeur": "342"}
+{"entite": "Bau de Saint-Cassien", "valeur": "1051"}
+{"entite": "Bau des Vespres", "valeur": "1010"}
+{"entite": "Bau du Régage", "valeur": "1134"}
+{"entite": "Bau Rous", "valeur": "326"}
+{"entite": "Bayard", "valeur": "1125"}
+{"entite": "Beaumont", "valeur": "1514"}
+{"entite": "Bec Charvet", "valeur": "1738"}
+{"entite": "Bec d'Arguille", "valeur": "2889"}
+{"entite": "Bec de Grenier", "valeur": "3298"}
+{"entite": "bec de l'Aigle", "valeur": "2367"}
+{"entite": "Bec de l'Âne", "valeur": "3212"}
+{"entite": "Bec de l'Homme", "valeur": "3354"}
+{"entite": "Bec de l'Orient", "valeur": "1568"}
+{"entite": "Bec de la Cluy", "valeur": "2334"}
+{"entite": "Bec de la Portetta", "valeur": "2651"}
+{"entite": "Bec de la Scia", "valeur": "1783"}
+{"entite": "Bec de Lachat", "valeur": "2447"}
+{"entite": "Bec de Neurre", "valeur": "1474"}
+{"entite": "Bec du Canard", "valeur": "3268"}
+{"entite": "Bec du Picheu", "valeur": "2568"}
+{"entite": "bec Rouge Inférieur", "valeur": "2844"}
+{"entite": "bec Rouge Supérieur", "valeur": "3050"}
+{"entite": "Becca du Lac", "valeur": "3405"}
+{"entite": "Becca Motta", "valeur": "3042"}
+{"entite": "Becherkopf", "valeur": "922"}
+{"entite": "la Becquetta", "valeur": "2898"}
+{"entite": "Becqui Rouge", "valeur": "3102"}
+{"entite": "Bella Valletta", "valeur": "2811"}
+{"entite": "le Bellachat", "valeur": "2822"}
+{"entite": "La Belle Étoile", "valeur": "2649"}
+{"entite": "Belledigue", "valeur": "1115"}
+{"entite": "Le Belvédère", "valeur": "416"}
+{"entite": "La Bèque", "valeur": "1419"}
+{"entite": "Les Berches", "valeur": "3050"}
+{"entite": "Bergächtle", "valeur": "2007"}
+{"entite": "Bergenbach", "valeur": "877"}
+{"entite": "La Berque", "valeur": "1376"}
+{"entite": "Besler", "valeur": "1679.4"}
+{"entite": "Les Bessons", "valeur": "439"}
+{"entite": "Biberkopf", "valeur": "2599"}
+{"entite": "Le Bicorne", "valeur": "1202"}
+{"entite": "La Biettaz", "valeur": "2558"}
+{"entite": "La Bigue", "valeur": "1653"}
+{"entite": "Biondo", "valeur": "724"}
+{"entite": "Bispen", "valeur": "1462"}
+{"entite": "La Blache", "valeur": "1401"}
+{"entite": "Les Blaches", "valeur": "1336"}
+{"entite": "Black Mountain", "valeur": "703.6"}
+{"entite": "Blåhø", "valeur": "1166"}
+{"entite": "Blaufelsen", "valeur": "789"}
+{"entite": "Blender", "valeur": "1072.3"}
+{"entite": "Bletoppen", "valeur": "1343"}
+{"entite": "Bloc de Charmieux", "valeur": "1686"}
+{"entite": "Bocksberg", "valeur": "1461"}
+{"entite": "Bois de la Loge", "valeur": "818"}
+{"entite": "Bois de la Turche", "valeur": "1314"}
+{"entite": "Bolsterlanger Horn", "valeur": "1586.2"}
+{"entite": "La Bonne Mère", "valeur": "534"}
+{"entite": "Bonnet Carré", "valeur": "1503"}
+{"entite": "Bonnet de Calvin", "valeur": "1920"}
+{"entite": "Bonnet de Chérel", "valeur": "1979"}
+{"entite": "Bonnet de Tirebras", "valeur": "1893"}
+{"entite": "Bonnet des Cavales", "valeur": "3285"}
+{"entite": "Bonverday", "valeur": "1879"}
+{"entite": "Böskopf", "valeur": "630"}
+{"entite": "les Bosses Grande", "valeur": "4510"}
+{"entite": "les Bosses Petite", "valeur": "4547"}
+{"entite": "la Botte", "valeur": "2248"}
+{"entite": "Le Boucle", "valeur": "2012"}
+{"entite": "Le Bouichard", "valeur": "1233"}
+{"entite": "La Bourgeoise", "valeur": "1770"}
+{"entite": "Le Bouton", "valeur": "1658"}
+{"entite": "Braunarlspitze", "valeur": "2649"}
+{"entite": "Brèche de la Seille Vieille", "valeur": "3352"}
+{"entite": "La Breisse", "valeur": "1181"}
+{"entite": "Breitenstein", "valeur": "1661"}
+{"entite": "Bretterspitze", "valeur": "2609"}
+{"entite": "Le Brévent", "valeur": "2525"}
+{"entite": "Bric di Canoia", "valeur": "2283"}
+{"entite": "Broad Peak central", "valeur": "8011"}
+{"entite": "Brocken", "valeur": "1141.2"}
+{"entite": "Le Bronchard", "valeur": "1264"}
+{"entite": "Bryn Amlwg", "valeur": "488"}
+{"entite": "Bryn Arw", "valeur": "384"}
+{"entite": "Bryn Banog", "valeur": "520"}
+{"entite": "Bryn Brith", "valeur": "382.9"}
+{"entite": "Bryn Castell", "valeur": "388"}
+{"entite": "Bryn Coch", "valeur": "518"}
+{"entite": "Bryn Du", "valeur": "562"}
+{"entite": "Bryn Ffynnon", "valeur": "440"}
+{"entite": "Bryn-hir", "valeur": "179"}
+{"entite": "Bryn Mawr", "valeur": "405.1"}
+{"entite": "Bryn-y-Brain", "valeur": "294"}
+{"entite": "Bryn y Fan", "valeur": "482"}
+{"entite": "Bryn-y-tail", "valeur": "403.1"}
+{"entite": "Bryn yr Orsedd", "valeur": "405"}
+{"entite": "Bryniau Gleision", "valeur": "538"}
+{"entite": "Le Buclon", "valeur": "2072"}
+{"entite": "La Buffe", "valeur": "1623"}
+{"entite": "Le Buisseron", "valeur": "1117"}
+{"entite": "Bukketind", "valeur": "540"}
+{"entite": "Buralpkopf", "valeur": "1772"}
+{"entite": "Burdintziri", "valeur": "459"}
+{"entite": "But de l'Aiglette", "valeur": "1524"}
+{"entite": "But Saint-Genix", "valeur": "1285"}
+{"entite": "But Sapiau", "valeur": "1619"}
+{"entite": "Butte de Menis", "valeur": "749"}
+{"entite": "butte de Tiot", "valeur": "190"}
+{"entite": "butte Ronde", "valeur": "144"}
+{"entite": "Cabeza de las Entenes", "valeur": "1776"}
+{"entite": "Cabeza de Tonete", "valeur": "1741"}
+{"entite": "Cadair Berwyn", "valeur": "832"}
+{"entite": "Cadair Fawr", "valeur": "485"}
+{"entite": "Cadair Idris", "valeur": "893"}
+{"entite": "le Caire", "valeur": "2103"}
+{"entite": "Cambre d'Aze", "valeur": "2750"}
+{"entite": "Camp del Paronas", "valeur": "2568"}
+{"entite": "Campanelle", "valeur": "880"}
+{"entite": "Campanile di Val Montanaia", "valeur": "2173"}
+{"entite": "La Candolle", "valeur": "404"}
+{"entite": "Canteduc", "valeur": "333"}
+{"entite": "Cap Anglais", "valeur": "2158"}
+{"entite": "cap Assiette", "valeur": "110"}
+{"entite": "Cap de Clote Flouride", "valeur": "2387"}
+{"entite": "Cap de la Coume de Dourdies", "valeur": "1955"}
+{"entite": "Cap de la Mounjo", "valeur": "818"}
+{"entite": "Cap de Ruhos", "valeur": "2522"}
+{"entite": "Cap des Agudes", "valeur": "1678"}
+{"entite": "Cap det Mont", "valeur": "2175"}
+{"entite": "Cap Gros", "valeur": "509"}
+{"entite": "Capo al Ceppo", "valeur": "1246"}
+{"entite": "Capo al Cielo", "valeur": "1359"}
+{"entite": "Capo al Dente", "valeur": "1847"}
+{"entite": "Capo al Luco", "valeur": "715"}
+{"entite": "Capo alla Cuma", "valeur": "625"}
+{"entite": "Capo alla Penna", "valeur": "1533"}
+{"entite": "Capo alla Polmonaccia", "valeur": "1133"}
+{"entite": "Capo alla Vorba", "valeur": "1607"}
+{"entite": "Capo alle Forbicelle", "valeur": "947"}
+{"entite": "Capo alle Forcelle", "valeur": "2062"}
+{"entite": "Capo alle Giargiole", "valeur": "2105"}
+{"entite": "Capo alle Poste", "valeur": "1388"}
+{"entite": "Capo Betta", "valeur": "174"}
+{"entite": "Capo dello Vitullo", "valeur": "743"}
+{"entite": "Capo di Guagnerola", "valeur": "1967"}
+{"entite": "Capo Jovo", "valeur": "1479"}
+{"entite": "Capo Magennole", "valeur": "1064"}
+{"entite": "Capo Rosso", "valeur": "954"}
+{"entite": "Capo Sant'Angelo", "valeur": "1096"}
+{"entite": "Capo Stranciacone", "valeur": "1996"}
+{"entite": "Capo Uccello", "valeur": "2116"}
+{"entite": "Capu a Ghiallichiccia", "valeur": "920"}
+{"entite": "Capu a Scale", "valeur": "1385"}
+{"entite": "Capu a u Verdatu", "valeur": "2583"}
+{"entite": "Capu di Bestia", "valeur": "643"}
+{"entite": "Capu di u Monte", "valeur": "345"}
+{"entite": "Capu Licchia", "valeur": "408"}
+{"entite": "Capu Purcile", "valeur": "339"}
+{"entite": "Le Capucin", "valeur": "70"}
+{"entite": "le Cardinal", "valeur": "3647"}
+{"entite": "Carevića Vis", "valeur": "1426"}
+{"entite": "Carlit de Baix", "valeur": "2806"}
+{"entite": "Carnedd Dafydd", "valeur": "1044"}
+{"entite": "Carnedd Llywelyn", "valeur": "1064"}
+{"entite": "Casse-Cou", "valeur": "340"}
+{"entite": "Casse Massion", "valeur": "2433"}
+{"entite": "Casse Rousse", "valeur": "2225"}
+{"entite": "Le Castellas", "valeur": "573"}
+{"entite": "Castor et Pollux", "valeur": "376"}
+{"entite": "La Cathédrale", "valeur": "268"}
+{"entite": "Cerro El Cacao", "valeur": "477"}
+{"entite": "Cerro La Cruz", "valeur": "1314"}
+{"entite": "Cerro Mogotón", "valeur": "2107"}
+{"entite": "Chaberta", "valeur": "1107"}
+{"entite": "la Chaille", "valeur": "2010"}
+{"entite": "chaînon de Comborsier", "valeur": "2489"}
+{"entite": "Champ de Roche", "valeur": "1379"}
+{"entite": "Champ Rabi", "valeur": "1351"}
+{"entite": "Chantonnet", "valeur": "2575"}
+{"entite": "le Chapeau", "valeur": "1852"}
+{"entite": "Chapeau de Napoléon", "valeur": "1854"}
+{"entite": "Chapelle Saint Etienne", "valeur": "866"}
+{"entite": "Chapelle Saint Pons", "valeur": "864"}
+{"entite": "Charande", "valeur": "1715"}
+{"entite": "Charche", "valeur": "1460"}
+{"entite": "Le Chardonnet", "valeur": "2294"}
+{"entite": "Charifou", "valeur": "83"}
+{"entite": "le Charmet de l'Aiguille", "valeur": "2826"}
+{"entite": "La Charmette de l'Ormet", "valeur": "1860"}
+{"entite": "Le Charmo", "valeur": "2366"}
+{"entite": "Charvet", "valeur": "2298"}
+{"entite": "Chastillon", "valeur": "1000"}
+{"entite": "le Château", "valeur": "501"}
+{"entite": "le Château d'Aubert", "valeur": "2652"}
+{"entite": "château de Faîte", "valeur": "884"}
+{"entite": "château de Wittschlœssel", "valeur": "444"}
+{"entite": "Château-Gaillard", "valeur": "451"}
+{"entite": "Château Gaspard", "valeur": "2489"}
+{"entite": "le Château Noir", "valeur": "2882"}
+{"entite": "Châteaux de Cran", "valeur": "2475"}
+{"entite": "La Cheminée", "valeur": "616"}
+{"entite": "Chergaie", "valeur": "1711"}
+{"entite": "le Chérimont", "valeur": "589"}
+{"entite": "Cheval Blanc", "valeur": "2324"}
+{"entite": "le Cheval Noir", "valeur": "2832"}
+{"entite": "Chimney Rock", "valeur": "427"}
+{"entite": "Chogolisa II", "valeur": "7654"}
+{"entite": "Le Christomet", "valeur": "1853"}
+{"entite": "Cilfaesty Hill", "valeur": "528"}
+{"entite": "Cima a Trepite", "valeur": "407"}
+{"entite": "Cima al Arca", "valeur": "176"}
+{"entite": "Cima al Micao", "valeur": "516"}
+{"entite": "Cima all' Alturaja", "valeur": "684"}
+{"entite": "Cima allo Spazzuolo", "valeur": "1204"}
+{"entite": "Cima allo Stillajo", "valeur": "1094"}
+{"entite": "Cima Altemberg", "valeur": "2395"}
+{"entite": "Cima Centrale di Valrossa", "valeur": "2764"}
+{"entite": "Cima Clausi", "valeur": "3226"}
+{"entite": "Cima dei Bureloni", "valeur": "3130"}
+{"entite": "Cima del Chiapous", "valeur": "2554"}
+{"entite": "Cima del Vallone", "valeur": "2636"}
+{"entite": "Cima del Zuccarello", "valeur": "928"}
+{"entite": "Cima della Madonna", "valeur": "2752"}
+{"entite": "Cima della Statoja", "valeur": "2305"}
+{"entite": "Cima delle Manse", "valeur": "2834"}
+{"entite": "Cima delle Saline", "valeur": "2612"}
+{"entite": "Cima di Cocovoni", "valeur": "308"}
+{"entite": "Cima di Collalunga", "valeur": "2580"}
+{"entite": "Cima di Sant Angelo", "valeur": "362"}
+{"entite": "Cima Fremamorta", "valeur": "2584"}
+{"entite": "Cima Gazele", "valeur": "1590"}
+{"entite": "Cima Mazzicata", "valeur": "1316"}
+{"entite": "Cima Modico", "valeur": "1036"}
+{"entite": "Cima Nord Argentera", "valeur": "3286"}
+{"entite": "Cima Piede Pilato", "valeur": "474"}
+{"entite": "Cima Tonda", "valeur": "1266"}
+{"entite": "Cima Valdritta", "valeur": "2218"}
+{"entite": "Cima Valrossa Nord", "valeur": "2777"}
+{"entite": "Cima Valrossa Sud", "valeur": "2707"}
+{"entite": "le Cimandef", "valeur": "2228"}
+{"entite": "La Cime", "valeur": "420"}
+{"entite": "Cime Chalvine", "valeur": "2338"}
+{"entite": "Cime d'Oin", "valeur": "3276"}
+{"entite": "Cime de Barbin", "valeur": "1561"}
+{"entite": "Cime de Bard", "valeur": "3207"}
+{"entite": "cime de Baudon", "valeur": "743"}
+{"entite": "cime de Bausson", "valeur": "1212"}
+{"entite": "Cime de Bellegarde", "valeur": "1366"}
+{"entite": "Cime de Blancias", "valeur": "2662"}
+{"entite": "Cime de Campbel", "valeur": "1308"}
+{"entite": "Cime de Cialancias", "valeur": "2520"}
+{"entite": "Cime de Clot Châtel", "valeur": "3563"}
+{"entite": "Cime de Colla Bassa", "valeur": "1348"}
+{"entite": "cîme de Cornillon", "valeur": "2475"}
+{"entite": "Cime de Corvo", "valeur": "1494"}
+{"entite": "Cime de Coss", "valeur": "1561"}
+{"entite": "Cime de Courbaissa", "valeur": "1959"}
+{"entite": "Cime de Durcasca", "valeur": "1194"}
+{"entite": "Cime de Fuons Freja", "valeur": "2206"}
+{"entite": "cime de l'Agnel", "valeur": "2927"}
+{"entite": "Cime de l'Aspre", "valeur": "2433"}
+{"entite": "Cime de l'Aution", "valeur": "1410"}
+{"entite": "Cime de l'Eschillon", "valeur": "2543"}
+{"entite": "Cime de la Bercia", "valeur": "2090"}
+{"entite": "Cime de la Cacia", "valeur": "620"}
+{"entite": "Cime de la Calmette", "valeur": "1786"}
+{"entite": "Cime de la Condamine", "valeur": "2435"}
+{"entite": "Cime de la Nauca", "valeur": "2119"}
+{"entite": "Cime de la Recoude", "valeur": "2795"}
+{"entite": "Cime de la Secca", "valeur": "1699"}
+{"entite": "cime de la Vache", "valeur": "3185"}
+{"entite": "Cime de la Valette", "valeur": "2858"}
+{"entite": "Cime de la Vallette", "valeur": "2446"}
+{"entite": "Cime de Lancheton", "valeur": "2417"}
+{"entite": "Cime de Mercantour", "valeur": "2251"}
+{"entite": "Cime de Montjoya", "valeur": "2311"}
+{"entite": "Cime de Peirabroc", "valeur": "2829"}
+{"entite": "Cime de Penas", "valeur": "982"}
+{"entite": "Cime de Pomarole", "valeur": "2437"}
+{"entite": "Cime de Rachas", "valeur": "2573"}
+{"entite": "Cime de Rastel", "valeur": "670"}
+{"entite": "Cime de Raton", "valeur": "2060"}
+{"entite": "Cime de Rocaillon", "valeur": "1369"}
+{"entite": "Cime de Rocca Seira", "valeur": "824"}
+{"entite": "Cime de Suorcas", "valeur": "1420"}
+{"entite": "Cime de Tuor", "valeur": "1999"}
+{"entite": "Cime de Voga", "valeur": "2760"}
+{"entite": "Cime des Collettes", "valeur": "1477"}
+{"entite": "Cime des Cunis", "valeur": "2186"}
+{"entite": "Cime des Mayes", "valeur": "2468"}
+{"entite": "Cime des Taffoni", "valeur": "1082"}
+{"entite": "Cime des Torches", "valeur": "2958"}
+{"entite": "Cime du Bosc", "valeur": "1120"}
+{"entite": "Cime du Clot de Raut", "valeur": "1175"}
+{"entite": "Cime du Content", "valeur": "1047"}
+{"entite": "cime du Diable", "valeur": "2685"}
+{"entite": "cime du Laro", "valeur": "2881"}
+{"entite": "Cime du Montagnon", "valeur": "3263"}
+{"entite": "Cime du Petit Sauvage", "valeur": "3163"}
+{"entite": "Cime du Sambuis", "valeur": "2734"}
+{"entite": "Cime du Serse", "valeur": "1020"}
+{"entite": "Cime du Simon", "valeur": "1261"}
+{"entite": "Cime du Soreiller", "valeur": "2181"}
+{"entite": "cime Gardoria", "valeur": "3140"}
+{"entite": "Cime Garigliano", "valeur": "1063"}
+{"entite": "Cime Monfret", "valeur": "3374"}
+{"entite": "cime Noire", "valeur": "2626"}
+{"entite": "Cime Settonia", "valeur": "775"}
+{"entite": "cimes de la Barbarate", "valeur": "3291"}
+{"entite": "Cimes de la Cochette", "valeur": "3240"}
+{"entite": "cimes des Planettes", "valeur": "2976"}
+{"entite": "Cimes du Grand Sauvage", "valeur": "3217"}
+{"entite": "La Citadelle", "valeur": "644"}
+{"entite": "Clapouse", "valeur": "1791"}
+{"entite": "La Clapouyre", "valeur": "1265"}
+{"entite": "Le Clausis", "valeur": "2825"}
+{"entite": "La Clavetta", "valeur": "2553"}
+{"entite": "La Clavettaz", "valeur": "2643"}
+{"entite": "Clavoune", "valeur": "1320"}
+{"entite": "La Cloche de Barles", "valeur": "1718"}
+{"entite": "Clochers de l'Alpe", "valeur": "3504"}
+{"entite": "les Clochetons", "valeur": "3234"}
+{"entite": "les Clochettes", "valeur": "2466"}
+{"entite": "Clos de la Cime", "valeur": "2351"}
+{"entite": "Clot de Bouc", "valeur": "1720"}
+{"entite": "Clot de la Hount", "valeur": "3289"}
+{"entite": "Clot la Cime", "valeur": "1594"}
+{"entite": "La Coche", "valeur": "2328"}
+{"entite": "Le Cochet", "valeur": "2098"}
+{"entite": "Coed Nant-yr-hwch", "valeur": "505"}
+{"entite": "le Coin du Châtel", "valeur": "2367"}
+{"entite": "col de Caron", "valeur": "3069"}
+{"entite": "col des Prés-les-Fonts", "valeur": "3221"}
+{"entite": "Colle del Lupo", "valeur": "3076"}
+{"entite": "Colle des Pouis", "valeur": "1117"}
+{"entite": "Colle Martine", "valeur": "1166"}
+{"entite": "la Colle Noire", "valeur": "294"}
+{"entite": "Le Collet de Brun", "valeur": "1233"}
+{"entite": "Collet de Pater Noster", "valeur": "1111"}
+{"entite": "Le Collet de Rougier", "valeur": "534"}
+{"entite": "Collet de Travignon", "valeur": "962"}
+{"entite": "Collet des Turcs", "valeur": "627"}
+{"entite": "Le Collet du Paradis", "valeur": "603"}
+{"entite": "Colline d'Estelle", "valeur": "911"}
+{"entite": "Colline de Clare", "valeur": "934"}
+{"entite": "Colline de Lun", "valeur": "243"}
+{"entite": "Colline de Pimayon", "valeur": "726"}
+{"entite": "Colline de Sebet", "valeur": "1073"}
+{"entite": "les Colosses", "valeur": "2144"}
+{"entite": "Coma Chireta", "valeur": "2496"}
+{"entite": "Coma de Callastre", "valeur": "1604"}
+{"entite": "Combe Saint Barthelemy", "valeur": "1052"}
+{"entite": "Les Combes", "valeur": "1775"}
+{"entite": "Congo Rouge, Mahé", "valeur": "750"}
+{"entite": "La Content", "valeur": "1068"}
+{"entite": "Corbé", "valeur": "1898"}
+{"entite": "La Corbeille", "valeur": "899"}
+{"entite": "le Corbeley", "valeur": "1419"}
+{"entite": "Le Corbier", "valeur": "1617"}
+{"entite": "Corne Rousse", "valeur": "2708"}
+{"entite": "Cornes du Chamois", "valeur": "2562"}
+{"entite": "Cornet", "valeur": "1473"}
+{"entite": "Coste Belle", "valeur": "2002"}
+{"entite": "Coste Longue", "valeur": "457"}
+{"entite": "Côte de Cadoudal", "valeur": "156"}
+{"entite": "Coteau d'Artets", "valeur": "608"}
+{"entite": "Coteau Kervéguen", "valeur": "2510"}
+{"entite": "Coulet de Calasse", "valeur": "1475"}
+{"entite": "Le Coulet Gras", "valeur": "1221"}
+{"entite": "cratère Bory", "valeur": "2632"}
+{"entite": "crêt Chambellon", "valeur": "725"}
+{"entite": "Crêt Couturier", "valeur": "1547"}
+{"entite": "crêt de Châtillon", "valeur": "1702"}
+{"entite": "crêt de la Pare", "valeur": "2193"}
+{"entite": "Crêt de la Raverotte", "valeur": "2084"}
+{"entite": "Crêt de Pézollet", "valeur": "1724"}
+{"entite": "crêt de Tertère", "valeur": "1622"}
+{"entite": "crêt des Mouches", "valeur": "2032"}
+{"entite": "crêt des Outalays", "valeur": "1619"}
+{"entite": "Crêt des Tervelles", "valeur": "1776"}
+{"entite": "Crêt du Bœuf", "valeur": "2384"}
+{"entite": "crêt du Carollier", "valeur": "2007"}
+{"entite": "crêt du Char", "valeur": "1468"}
+{"entite": "crêt du Loup", "valeur": "1864"}
+{"entite": "crêt du Merle", "valeur": "1498"}
+{"entite": "Crêt du Midi (Beaufortain)", "valeur": "1890"}
+{"entite": "Crêt Fénère", "valeur": "2482"}
+{"entite": "Crêt Morandet", "valeur": "2173"}
+{"entite": "crête de Chalimont", "valeur": "1607"}
+{"entite": "crête de Combeynot", "valeur": "3083"}
+{"entite": "crête de l'Ane", "valeur": "973"}
+{"entite": "Crête de l'Estret", "valeur": "480"}
+{"entite": "crête de la Forêt Fendue", "valeur": "1851"}
+{"entite": "crête de la Grande Forcle", "valeur": "2445"}
+{"entite": "Crête de la Lavey", "valeur": "3410"}
+{"entite": "crête de la Raisse", "valeur": "2414"}
+{"entite": "crête de Lacha", "valeur": "2950"}
+{"entite": "Crête de Montvoisin", "valeur": "2913"}
+{"entite": "crête de Plan Mugnier", "valeur": "2625"}
+{"entite": "Crête de Puy Salié", "valeur": "3527"}
+{"entite": "crête des Blache du Paillar", "valeur": "963"}
+{"entite": "crête des Bourtes", "valeur": "2598"}
+{"entite": "crête des Inversens", "valeur": "2687"}
+{"entite": "crête des Lanchettes", "valeur": "2617"}
+{"entite": "Crête des Lessières", "valeur": "2986"}
+{"entite": "crête des Mines", "valeur": "2838"}
+{"entite": "Crête des Rochers de Rochail", "valeur": "2853"}
+{"entite": "crête des Sarrasins", "valeur": "3014"}
+{"entite": "crête des Sept Hommes", "valeur": "2724"}
+{"entite": "crête du Carroley", "valeur": "2488"}
+{"entite": "Crête du Faillé", "valeur": "2313"}
+{"entite": "crête du Lauzet", "valeur": "2353"}
+{"entite": "crêtet de la Gouille", "valeur": "2083"}
+{"entite": "crêtet de la Perche", "valeur": "2289"}
+{"entite": "crêtet du Gollet", "valeur": "2186"}
+{"entite": "Crève-Tête", "valeur": "2342"}
+{"entite": "crey de Péré", "valeur": "2615"}
+{"entite": "Crib Goch", "valeur": "923"}
+{"entite": "les Croix", "valeur": "1425"}
+{"entite": "croix Cartier", "valeur": "1834"}
+{"entite": "Croix d'Outrey", "valeur": "2272"}
+{"entite": "la Croix de Cassini", "valeur": "2373"}
+{"entite": "croix de Chamrousse", "valeur": "2253"}
+{"entite": "Croix de Chevrotière", "valeur": "1532"}
+{"entite": "Croix de Cibouit", "valeur": "2490"}
+{"entite": "Croix de Colly", "valeur": "2055"}
+{"entite": "Croix de Commune", "valeur": "1968"}
+{"entite": "Croix de Coste", "valeur": "1816"}
+{"entite": "croix de Dom Jean Maurice", "valeur": "3146"}
+{"entite": "Croix de la Roche", "valeur": "1272"}
+{"entite": "Croix de Lautaret", "valeur": "1951"}
+{"entite": "Croix de Mont Tissot", "valeur": "1985"}
+{"entite": "Croix de Picheu", "valeur": "2524"}
+{"entite": "Croix de Provence", "valeur": "878"}
+{"entite": "croix de Sécheron", "valeur": "2306"}
+{"entite": "Croix de Toulouse", "valeur": "1962"}
+{"entite": "Croix des Berons", "valeur": "2902"}
+{"entite": "Croix du Christ", "valeur": "1949"}
+{"entite": "Croix du Mont-Bréquin", "valeur": "3077"}
+{"entite": "croix du Nivolet", "valeur": "1545"}
+{"entite": "La Croix du Pisset", "valeur": "2777"}
+{"entite": "Croix du Planet", "valeur": "1826"}
+{"entite": "Crveni čot", "valeur": "538"}
+{"entite": "La Cuche", "valeur": "998"}
+{"entite": "le Cuchon", "valeur": "1903"}
+{"entite": "La Cucumelle", "valeur": "2698"}
+{"entite": "La Cuillère", "valeur": "1511"}
+{"entite": "la Culaz", "valeur": "1438"}
+{"entite": "La Cuquère", "valeur": "1687"}
+{"entite": "Curcubăta Mare", "valeur": "1849"}
+{"entite": "Damango", "valeur": "371"}
+{"entite": "Dammastock", "valeur": "3630"}
+{"entite": "Daniel", "valeur": "2342"}
+{"entite": "Dawinkopf", "valeur": "2968"}
+{"entite": "Defens de Pierre-Mont", "valeur": "1563"}
+{"entite": "la Dent", "valeur": "2295"}
+{"entite": "dent d'Arpire", "valeur": "2467"}
+{"entite": "dent d'Aurouze", "valeur": "2679"}
+{"entite": "dent d'Estibère Male", "valeur": "3017"}
+{"entite": "Dent de Jallouvre", "valeur": "2052"}
+{"entite": "dent de l'Ours", "valeur": "1820"}
+{"entite": "Dent de la Prat", "valeur": "2521"}
+{"entite": "dent de Pleuven", "valeur": "1771"}
+{"entite": "Dent de Rez", "valeur": "726"}
+{"entite": "dent de Rossanaz", "valeur": "1891"}
+{"entite": "dent de Saint-Vincent", "valeur": "996"}
+{"entite": "Dent de Verreu", "valeur": "1901"}
+{"entite": "dent des Portes", "valeur": "1932"}
+{"entite": "Dent du Biol", "valeur": "2712"}
+{"entite": "dent du Châtelet", "valeur": "2356"}
+{"entite": "Dent du Corbeau", "valeur": "2279"}
+{"entite": "Dent du Cruet", "valeur": "1833"}
+{"entite": "La Dent du Loup", "valeur": "1377"}
+{"entite": "Dent du Nivolet", "valeur": "837"}
+{"entite": "dent Parrachée", "valeur": "3697"}
+{"entite": "Dents d'Odda", "valeur": "2377"}
+{"entite": "Dents Rouges", "valeur": "2925"}
+{"entite": "Les Deux Frères", "valeur": "500"}
+{"entite": "Devil's Peak", "valeur": "222"}
+{"entite": "Le Diable", "valeur": "2252"}
+{"entite": "Dinara", "valeur": "1831"}
+{"entite": "Djupvassegga", "valeur": "1546"}
+{"entite": "Doigt de la Portetta", "valeur": "2670"}
+{"entite": "Doigt de Rochefort", "valeur": "3931"}
+{"entite": "Doigt de Sainte-Anne", "valeur": "235"}
+{"entite": "dôme de Barrot", "valeur": "2137"}
+{"entite": "dôme de Bellecôte", "valeur": "3389"}
+{"entite": "Dôme de la Cochette", "valeur": "3041"}
+{"entite": "Dôme de la Gandolière", "valeur": "3495"}
+{"entite": "Dôme de la Lauze", "valeur": "3559"}
+{"entite": "dôme de Pouilly", "valeur": "2117"}
+{"entite": "dôme de Pramecou", "valeur": "3081"}
+{"entite": "Dôme de Puy Salié", "valeur": "3417"}
+{"entite": "dôme des Glaciers", "valeur": "3573"}
+{"entite": "dôme des Petites Rousses", "valeur": "2810"}
+{"entite": "Dôme Ferré", "valeur": "1636"}
+{"entite": "dômes de Miage", "valeur": "3673"}
+{"entite": "Le Donjon", "valeur": "594"}
+{"entite": "Dos de Crêt Voland", "valeur": "2093"}
+{"entite": "Dos de la Vellière", "valeur": "2424"}
+{"entite": "Dos des Frasses", "valeur": "2279"}
+{"entite": "Dos Rond", "valeur": "2340"}
+{"entite": "Dou de la Grange à Marc", "valeur": "1904"}
+{"entite": "Dou de Moûtiers", "valeur": "2489"}
+{"entite": "Dou du Sublet", "valeur": "2301"}
+{"entite": "Drumont", "valeur": "1200"}
+{"entite": "Dunkery Hill", "valeur": "519.684"}
+{"entite": "Dürrenberg", "valeur": "656.4"}
+{"entite": "L'Échelle", "valeur": "1397"}
+{"entite": "Eckskopf", "valeur": "1563"}
+{"entite": "Écoutoux", "valeur": "1406"}
+{"entite": "Eichbühel", "valeur": "661"}
+{"entite": "El Gran Facha", "valeur": "2721"}
+{"entite": "Elfer", "valeur": "2387"}
+{"entite": "l'Encorgnelu", "valeur": "2832"}
+{"entite": "l'Enfant de Chœur", "valeur": "3477"}
+{"entite": "Entschenkopf", "valeur": "2043"}
+{"entite": "épaule Chausenque", "valeur": "3154"}
+{"entite": "Épaule du Marboré", "valeur": "3073"}
+{"entite": "L'Épion", "valeur": "1422"}
+{"entite": "Era Trona", "valeur": "2088"}
+{"entite": "l'Escarpu", "valeur": "2606"}
+{"entite": "Les Espranons", "valeur": "1175"}
+{"entite": "les Esserandes", "valeur": "2316"}
+{"entite": "L'Estellier", "valeur": "1218"}
+{"entite": "l'Étale", "valeur": "2484"}
+{"entite": "L'Étoile", "valeur": "652"}
+{"entite": "l'Évêque", "valeur": "3469"}
+{"entite": "Evjuseterfjellet", "valeur": "661"}
+{"entite": "La Falle", "valeur": "1060"}
+{"entite": "Fallenbacherspitze", "valeur": "2723"}
+{"entite": "Falzköpfl", "valeur": "1930"}
+{"entite": "Fau Cuchet", "valeur": "1363"}
+{"entite": "Faucon", "valeur": "1088"}
+{"entite": "Le Fauteuil", "valeur": "2350"}
+{"entite": "Faux Sommet", "valeur": "404"}
+{"entite": "Fayet", "valeur": "979"}
+{"entite": "Feldberg", "valeur": "1494.2"}
+{"entite": "Fellhorn", "valeur": "2038"}
+{"entite": "Felo Barkere", "valeur": "638"}
+{"entite": "Feuerspitze", "valeur": "2852"}
+{"entite": "Fichtelberg", "valeur": "1214.88"}
+{"entite": "Le Fifre", "valeur": "3699"}
+{"entite": "Fin de Para", "valeur": "1477"}
+{"entite": "Finsteraarhorn", "valeur": "4274"}
+{"entite": "Le Fioc", "valeur": "2090"}
+{"entite": "Les Fiz", "valeur": "2411"}
+{"entite": "la Floria", "valeur": "1793"}
+{"entite": "Foel Cwmcerwyn", "valeur": "536"}
+{"entite": "Font d'Isnard", "valeur": "1257"}
+{"entite": "la Fontgerouse", "valeur": "860"}
+{"entite": "Forcanada", "valeur": "2883"}
+{"entite": "fort du Sapey", "valeur": "1737"}
+{"entite": "fortin de la Vigie", "valeur": "199"}
+{"entite": "Fourchet", "valeur": "1227"}
+{"entite": "Frankhegy", "valeur": "417"}
+{"entite": "la Frête de l'Arc", "valeur": "2399"}
+{"entite": "Friederspitz", "valeur": "2049"}
+{"entite": "le Frioul", "valeur": "1003"}
+{"entite": "La Fubie", "valeur": "1233"}
+{"entite": "Fugløykallen", "valeur": "751"}
+{"entite": "Fürschießer", "valeur": "2271"}
+{"entite": "Gaishorn", "valeur": "2249"}
+{"entite": "Galenstock", "valeur": "3586"}
+{"entite": "le Galeteau", "valeur": "2402"}
+{"entite": "Galzig", "valeur": "2184"}
+{"entite": "Le Gancet", "valeur": "708"}
+{"entite": "Gangapurna", "valeur": "7455"}
+{"entite": "Gangkhar Puensum", "valeur": "7570"}
+{"entite": "Gargas", "valeur": "1899"}
+{"entite": "Garlaban", "valeur": "715"}
+{"entite": "Garnedd Ugain", "valeur": "1065"}
+{"entite": "Garth Mountain", "valeur": "307"}
+{"entite": "le Gâteau", "valeur": "1588"}
+{"entite": "Geißfuß", "valeur": "1981.1"}
+{"entite": "Geißhorn", "valeur": "2366"}
+{"entite": "Gerlachovský štít", "valeur": "2655"}
+{"entite": "Giebel", "valeur": "1949"}
+{"entite": "Gimpel", "valeur": "2176"}
+{"entite": "Glatthorn", "valeur": "2134"}
+{"entite": "Glyder Fawr", "valeur": "1000.9"}
+{"entite": "Godé", "valeur": "132"}
+{"entite": "La Goenne", "valeur": "2174"}
+{"entite": "Goljam Perelik", "valeur": "2191"}
+{"entite": "Goljam Persenk", "valeur": "2064"}
+{"entite": "le Goraj", "valeur": "3150"}
+{"entite": "Gorbeia", "valeur": "1481"}
+{"entite": "Gorra Blanc", "valeur": "2442"}
+{"entite": "Goutaroux", "valeur": "1543"}
+{"entite": "Gran Becca du Mont", "valeur": "2840"}
+{"entite": "Grand Assaly", "valeur": "3174"}
+{"entite": "Grand Astazou", "valeur": "3071"}
+{"entite": "Grand Ballon", "valeur": "1424"}
+{"entite": "Grand Bargy", "valeur": "2301"}
+{"entite": "Grand Berrier", "valeur": "2464"}
+{"entite": "Le Grand Chat", "valeur": "1979"}
+{"entite": "Grand Château", "valeur": "1199"}
+{"entite": "Grand Châtelet", "valeur": "2529"}
+{"entite": "Grand Cheval", "valeur": "1827"}
+{"entite": "Le Grand Clos", "valeur": "1272"}
+{"entite": "Grand Cocor", "valeur": "3034"}
+{"entite": "le Grand Collet", "valeur": "1293"}
+{"entite": "Les Grand Collets", "valeur": "677"}
+{"entite": "Grand Crétet", "valeur": "2292"}
+{"entite": "Le Grand Dalmas", "valeur": "1000"}
+{"entite": "Grand Eulier", "valeur": "2232"}
+{"entite": "Grand Fayes", "valeur": "757"}
+{"entite": "Grand Felletin", "valeur": "1387"}
+{"entite": "Grand Ferrand", "valeur": "2758"}
+{"entite": "Grand Fourchon", "valeur": "2541"}
+{"entite": "Grand Œillard", "valeur": "2724"}
+{"entite": "Grand Langenberg", "valeur": "1074"}
+{"entite": "le Grand Mas", "valeur": "2237"}
+{"entite": "Grand Miceau", "valeur": "2631"}
+{"entite": "le Grand Morétan", "valeur": "2775"}
+{"entite": "Grand Morgon", "valeur": "2324"}
+{"entite": "Le Grand Mottey", "valeur": "1658"}
+{"entite": "Les Grand-Pares", "valeur": "2898"}
+{"entite": "Grand Perron des Encombres", "valeur": "2824"}
+{"entite": "grand pic de Tapou", "valeur": "3150"}
+{"entite": "Grand Pinier", "valeur": "3117"}
+{"entite": "Grand Pomerolle", "valeur": "1062"}
+{"entite": "Grand Queyras", "valeur": "3022"}
+{"entite": "Le Grand Replomb", "valeur": "2473"}
+{"entite": "Grand Rocher", "valeur": "3110"}
+{"entite": "Le Grand Rognioux", "valeur": "2266"}
+{"entite": "Grand Rognoux", "valeur": "2397"}
+{"entite": "Grand Ross", "valeur": "1151"}
+{"entite": "Le Grand Sanguin", "valeur": "544"}
+{"entite": "Grand Sorbier", "valeur": "2526"}
+{"entite": "Le Grand Téton", "valeur": "621"}
+{"entite": "Le Grand Truc", "valeur": "2209"}
+{"entite": "Grand Tuf du Plan Séry", "valeur": "2813"}
+{"entite": "le Grand Van", "valeur": "2448"}
+{"entite": "Grand Vent", "valeur": "2364"}
+{"entite": "Grande Aiguille", "valeur": "2181"}
+{"entite": "Grande Candelle", "valeur": "465"}
+{"entite": "La Grande Chible", "valeur": "2931"}
+{"entite": "La Grande Combe", "valeur": "2782"}
+{"entite": "Grande Côte", "valeur": "607"}
+{"entite": "la Grande Écaille", "valeur": "2751"}
+{"entite": "La Grande Étoile", "valeur": "590"}
+{"entite": "Grande Gautière", "valeur": "1825"}
+{"entite": "Grande Lance d'Allemont", "valeur": "2842"}
+{"entite": "la Grande Lanche", "valeur": "2111"}
+{"entite": "la Grande Muraille", "valeur": "2462"}
+{"entite": "La Grande Pointe", "valeur": "1802"}
+{"entite": "Grande roche Saint-Michel", "valeur": "1808"}
+{"entite": "la Grande Rochette", "valeur": "2508"}
+{"entite": "Grande Sœur Agathe", "valeur": "2193"}
+{"entite": "Grande Sure", "valeur": "2114"}
+{"entite": "Grande tête Rouge", "valeur": "520"}
+{"entite": "La Grande Torche", "valeur": "2505"}
+{"entite": "Grande Tourne", "valeur": "2870"}
+{"entite": "La Grande Verdette", "valeur": "2151"}
+{"entite": "Les Grandes Aiguilles", "valeur": "2905"}
+{"entite": "Grandes Autannes", "valeur": "2680"}
+{"entite": "Grandes Buffes", "valeur": "2164"}
+{"entite": "Grandes Platières", "valeur": "2480"}
+{"entite": "Les Grands Crêts", "valeur": "1489"}
+{"entite": "Grands Fats", "valeur": "2566"}
+{"entite": "les Grands Mulets", "valeur": "3057"}
+{"entite": "les Grands Ouillons", "valeur": "2596"}
+{"entite": "Grapillon des Merles", "valeur": "2784"}
+{"entite": "la Gratte", "valeur": "2638"}
+{"entite": "Great Orme", "valeur": "207"}
+{"entite": "Les Grenans", "valeur": "1373"}
+{"entite": "Grenier de Villy", "valeur": "2901"}
+{"entite": "Grießkogel", "valeur": "2543"}
+{"entite": "Grießspitze", "valeur": "2186"}
+{"entite": "Grignetta", "valeur": "2177"}
+{"entite": "Große Klara", "valeur": "1225"}
+{"entite": "Große Schlicke", "valeur": "2060"}
+{"entite": "Großer Arber", "valeur": "1456"}
+{"entite": "Großer Daumen", "valeur": "2280"}
+{"entite": "Großer Hachelkopf", "valeur": "2066"}
+{"entite": "Großer Löwenzahn", "valeur": "1381"}
+{"entite": "Großer Ochsenkopf", "valeur": "1662"}
+{"entite": "Großer Rauhenkopf", "valeur": "1604"}
+{"entite": "Großer Seekopf", "valeur": "2085"}
+{"entite": "Grohmannspitze", "valeur": "3114"}
+{"entite": "le Gros Âne", "valeur": "2505"}
+{"entite": "Gros Bessillon", "valeur": "407"}
+{"entite": "Gros Collet", "valeur": "1069"}
+{"entite": "Gros Morne de Gueule Rouge", "valeur": "1302"}
+{"entite": "Le Gros Nol", "valeur": "2459"}
+{"entite": "gros pic de Cazalassis", "valeur": "2656"}
+{"entite": "Gros Piton", "valeur": "179"}
+{"entite": "Le Gros Treu", "valeur": "2366"}
+{"entite": "Le Gros Villan", "valeur": "2747"}
+{"entite": "La Grosse Tour", "valeur": "2376"}
+{"entite": "Grosser Krottenkopf", "valeur": "2657"}
+{"entite": "Les Grosses Pierres", "valeur": "1580"}
+{"entite": "La Grotte", "valeur": "1644"}
+{"entite": "Grunerhorn", "valeur": "3437"}
+{"entite": "Gundkopf", "valeur": "2063"}
+{"entite": "Gurkarpo Ri", "valeur": "6889"}
+{"entite": "Gwastad", "valeur": "551"}
+{"entite": "Gwaun Cerrig Llwydion", "valeur": "730"}
+{"entite": "Gyrn", "valeur": "541.3"}
+{"entite": "Gyrn Wigau", "valeur": "643"}
+{"entite": "Høgfjellet", "valeur": "1065"}
+{"entite": "Habaum", "valeur": "1778"}
+{"entite": "Hahnenkamm", "valeur": "1940"}
+{"entite": "Hahnenkopf", "valeur": "1735.61"}
+{"entite": "Haldenwanger Kopf", "valeur": "2002"}
+{"entite": "Halsköpfl", "valeur": "1719"}
+{"entite": "Harpille", "valeur": "1129"}
+{"entite": "Hasenkopf", "valeur": "1188"}
+{"entite": "Haut de Felsach", "valeur": "1161"}
+{"entite": "Haut des Yraux", "valeur": "985"}
+{"entite": "Haut-du-Sec", "valeur": "516"}
+{"entite": "Le Haut Montet", "valeur": "1335"}
+{"entite": "Haute Cime", "valeur": "3257"}
+{"entite": "Haute Pointe", "valeur": "2422"}
+{"entite": "Hautepointe", "valeur": "1445"}
+{"entite": "Hautes Chaumes de Moussey", "valeur": "913"}
+{"entite": "Hay Bluff", "valeur": "677"}
+{"entite": "Heiterberg", "valeur": "2188"}
+{"entite": "Hennenkopf", "valeur": "1796"}
+{"entite": "Henry Hill", "valeur": "80"}
+{"entite": "Herbouilly", "valeur": "1459"}
+{"entite": "L'Héritière", "valeur": "2906"}
+{"entite": "Hesselberg", "valeur": "689.4"}
+{"entite": "Heubatspitze", "valeur": "2008"}
+{"entite": "Hilo", "valeur": "117"}
+{"entite": "Himmeleck", "valeur": "2152"}
+{"entite": "Himmelhorn", "valeur": "2111"}
+{"entite": "Himmelschrofen", "valeur": "1791"}
+{"entite": "Hinterer Wildgundkopf", "valeur": "1955"}
+{"entite": "Hirschwiese", "valeur": "2114"}
+{"entite": "Hochgerach", "valeur": "1985"}
+{"entite": "Hochgrat", "valeur": "1834"}
+{"entite": "Hochkar", "valeur": "1808"}
+{"entite": "Hochleckenkogel", "valeur": "1691"}
+{"entite": "Höchsten", "valeur": "842.6"}
+{"entite": "Höferspitze", "valeur": "2131"}
+{"entite": "Hohe Brach", "valeur": "586.9"}
+{"entite": "Hohe Zwing", "valeur": "1059"}
+{"entite": "Hohenkapf", "valeur": "1121.1"}
+{"entite": "Hohenkarpfen", "valeur": "911.5"}
+{"entite": "Hohenstaufen", "valeur": "684"}
+{"entite": "Hoher Gaif", "valeur": "2288"}
+{"entite": "Hoher Ifen", "valeur": "2230"}
+{"entite": "Hohes Licht", "valeur": "2651"}
+{"entite": "Holzgauer Muttekopf", "valeur": "2431"}
+{"entite": "Holzgauer Wetterspitze", "valeur": "2895"}
+{"entite": "L'Homme de Beurre", "valeur": "2268"}
+{"entite": "Hornbachspitze", "valeur": "2533"}
+{"entite": "Hornisgrinde", "valeur": "1164.4"}
+{"entite": "Hornsundtind", "valeur": "1429"}
+{"entite": "Houdimont", "valeur": "817"}
+{"entite": "Hoven (Vågan)", "valeur": "367"}
+{"entite": "Höwenegg", "valeur": "803"}
+{"entite": "Hugihorn", "valeur": "3647"}
+{"entite": "Hvannadalshnjúkur", "valeur": "2110"}
+{"entite": "I Tre Sassi", "valeur": "2087"}
+{"entite": "Iberger Kugel", "valeur": "1050"}
+{"entite": "Idusquimendi", "valeur": "620"}
+{"entite": "Œil de Bœuf", "valeur": "2653"}
+{"entite": "L'Œil de la Muzelle", "valeur": "2834"}
+{"entite": "Il Pelvo", "valeur": "2624"}
+{"entite": "les Œillasses", "valeur": "2721"}
+{"entite": "Iluntzar (Garai)", "valeur": "389"}
+{"entite": "Immenstädter Horn", "valeur": "1489"}
+{"entite": "Ingmikortilaq", "valeur": "1140"}
+{"entite": "L'Inscinosa", "valeur": "834"}
+{"entite": "Iseler", "valeur": "1876"}
+{"entite": "L'Isoard", "valeur": "1783"}
+{"entite": "Isterbegi", "valeur": "856"}
+{"entite": "Izvorul Călimanului", "valeur": "2031"}
+{"entite": "J1", "valeur": "1720.83"}
+{"entite": "Jabal al-Awainat", "valeur": "1812"}
+{"entite": "Jalinier", "valeur": "850"}
+{"entite": "Le Jambard", "valeur": "1202"}
+{"entite": "Le Jandri", "valeur": "3288"}
+{"entite": "Jaworzyna", "valeur": "821.6"}
+{"entite": "Jervvasstind", "valeur": "2351"}
+{"entite": "Jöchelspitze", "valeur": "2226"}
+{"entite": "Le Jorat", "valeur": "1830"}
+{"entite": "Jouc de l'Aigle", "valeur": "1148"}
+{"entite": "les Jumeaux", "valeur": "3638"}
+{"entite": "Jumeaux des Écrins", "valeur": "3730"}
+{"entite": "les Jumelles Nord", "valeur": "3021"}
+{"entite": "les Jumelles Sud", "valeur": "2993"}
+{"entite": "Jura", "valeur": "254"}
+{"entite": "Kajmakčalan", "valeur": "2528"}
+{"entite": "Kälbelesspitze", "valeur": "2135"}
+{"entite": "Kanchenjunga Ouest", "valeur": "8505"}
+{"entite": "Kandel", "valeur": "1241.3"}
+{"entite": "Kangchenjunga central", "valeur": "8473"}
+{"entite": "Kangchenjunga Sud", "valeur": "8476"}
+{"entite": "Känzele", "valeur": "1774"}
+{"entite": "Kanzelwand", "valeur": "2058"}
+{"entite": "Karjiang", "valeur": "7221"}
+{"entite": "Katabwa", "valeur": "2931"}
+{"entite": "Kawagebo", "valeur": "6740"}
+{"entite": "Kedar Kanta", "valeur": "3888"}
+{"entite": "Kegelkopf", "valeur": "1960"}
+{"entite": "Kékes", "valeur": "1014"}
+{"entite": "Kellespitze", "valeur": "2247"}
+{"entite": "Kengamine du mont Fuji", "valeur": "3776"}
+{"entite": "Kesselspitz", "valeur": "2284"}
+{"entite": "Khumbila", "valeur": "5761"}
+{"entite": "Khunyang Chhish Est", "valeur": "7400"}
+{"entite": "Khunyang Chhish Nord", "valeur": "7108"}
+{"entite": "Khunyang Chhish Ouest", "valeur": "7350"}
+{"entite": "Khunyang Chhish Sud", "valeur": "7620"}
+{"entite": "Kibuye", "valeur": "2441"}
+{"entite": "Kleine Höfats", "valeur": "2073"}
+{"entite": "Kleine Klara", "valeur": "1193"}
+{"entite": "Kleiner Löwenzahn", "valeur": "1353"}
+{"entite": "Kleiner Rappenkopf", "valeur": "2276"}
+{"entite": "Kleiner Seekopf", "valeur": "2096"}
+{"entite": "Klimmspitze", "valeur": "2465"}
+{"entite": "Klínovec", "valeur": "1243.7"}
+{"entite": "Kohlberg", "valeur": "907"}
+{"entite": "Königsangerspitze", "valeur": "2439"}
+{"entite": "Kreuzeck", "valeur": "2376"}
+{"entite": "Kreuzkarspitze", "valeur": "2591"}
+{"entite": "Krokelvtinden", "valeur": "712"}
+{"entite": "Krottenspitze", "valeur": "2553"}
+{"entite": "Kühgundkopf", "valeur": "1908"}
+{"entite": "Laaser Spitze", "valeur": "3305"}
+{"entite": "Labourage et Pâturage", "valeur": "587"}
+{"entite": "Lachat", "valeur": "1607"}
+{"entite": "Lachenkopf", "valeur": "2111"}
+{"entite": "Lachenspitze", "valeur": "2130"}
+{"entite": "Lahnerkopf", "valeur": "2122"}
+{"entite": "Lalla-Khadîdja", "valeur": "2308"}
+{"entite": "Lalu", "valeur": "1098"}
+{"entite": "Lancebranlette", "valeur": "2936"}
+{"entite": "La Lanche", "valeur": "1992"}
+{"entite": "Lanche Close", "valeur": "1791"}
+{"entite": "Lanfonnet", "valeur": "1793"}
+{"entite": "La Lapine", "valeur": "348"}
+{"entite": "Lärchwand", "valeur": "2187"}
+{"entite": "La Lare", "valeur": "1640"}
+{"entite": "Large Tête", "valeur": "1179"}
+{"entite": "Le Lata", "valeur": "1711"}
+{"entite": "Laubenberg", "valeur": "919"}
+{"entite": "Laufbacher Eck", "valeur": "2178"}
+{"entite": "Le Laz", "valeur": "301"}
+{"entite": "la Legette", "valeur": "1865"}
+{"entite": "Légette du Grand Mont", "valeur": "2366"}
+{"entite": "Légette du Mirantin", "valeur": "2353"}
+{"entite": "Leilachspitze", "valeur": "2274"}
+{"entite": "Lemberg", "valeur": "1015.7"}
+{"entite": "Lemei Rock", "valeur": "1805.94"}
+{"entite": "La Lette", "valeur": "1075"}
+{"entite": "Levanna Centrale", "valeur": "3619"}
+{"entite": "Levanna Occidentale", "valeur": "3593"}
+{"entite": "Levanna Orientale", "valeur": "3555"}
+{"entite": "Lhotse central", "valeur": "8410"}
+{"entite": "Liechelkopf", "valeur": "2384"}
+{"entite": "Linkerskopf", "valeur": "2459"}
+{"entite": "Le Liorin", "valeur": "1230"}
+{"entite": "Litnisschrofen", "valeur": "2068"}
+{"entite": "Lo Tritore", "valeur": "1768"}
+{"entite": "Loma La Teta", "valeur": "597"}
+{"entite": "Loma Morera", "valeur": "2207.7"}
+{"entite": "la Louche Percée", "valeur": "2434"}
+{"entite": "la Lozière", "valeur": "1842"}
+{"entite": "Luboten", "valeur": "2498"}
+{"entite": "Lüchlekopf", "valeur": "1989"}
+{"entite": "Luční hora", "valeur": "1556"}
+{"entite": "Luguntenkopf", "valeur": "1702"}
+{"entite": "Luminier", "valeur": "566"}
+{"entite": "Luntian Shan", "valeur": "2105"}
+{"entite": "Lurfjelltinden", "valeur": "1284"}
+{"entite": "Luzet", "valeur": "1377"}
+{"entite": "Mælifell", "valeur": "791"}
+{"entite": "Machapuchare", "valeur": "6993"}
+{"entite": "Mädelegabel", "valeur": "2645"}
+{"entite": "Mädelekopf", "valeur": "1910"}
+{"entite": "Le Mais", "valeur": "2106"}
+{"entite": "Maja Jezercë", "valeur": "2694"}
+{"entite": "Malăk Persenk", "valeur": "2074"}
+{"entite": "Mali", "valeur": "1529"}
+{"entite": "Les Mamelles", "valeur": "554"}
+{"entite": "Mamelon Vert", "valeur": "1986"}
+{"entite": "Le Man", "valeur": "2422"}
+{"entite": "La Manche", "valeur": "1803"}
+{"entite": "le Manqué", "valeur": "2240"}
+{"entite": "Marchspitze", "valeur": "2610"}
+{"entite": "Le Marteau", "valeur": "2289"}
+{"entite": "Martinské hole", "valeur": "1429"}
+{"entite": "Maxi Shan Beifeng", "valeur": "3167"}
+{"entite": "Mayon", "valeur": "2462"}
+{"entite": "le Mazerin", "valeur": "2092"}
+{"entite": "Le Méale", "valeur": "2303"}
+{"entite": "Medlicott Dome", "valeur": "3012.948"}
+{"entite": "Mendibile", "valeur": "460"}
+{"entite": "Mendimocha", "valeur": "1039"}
+{"entite": "Ménez Fanteu", "valeur": "314"}
+{"entite": "Le Ménil", "valeur": "1594"}
+{"entite": "le Merbelay", "valeur": "2636"}
+{"entite": "Merrahøi", "valeur": "1726.3"}
+{"entite": "Metuva", "valeur": "220"}
+{"entite": "La Miaz", "valeur": "2336"}
+{"entite": "Midžor", "valeur": "2169"}
+{"entite": "Minapin", "valeur": "7273"}
+{"entite": "Mittagberg", "valeur": "1452"}
+{"entite": "Mittlerer Löwenzahn", "valeur": "1378"}
+{"entite": "Moel Hebog", "valeur": "782"}
+{"entite": "le Molard", "valeur": "1371"}
+{"entite": "Mollard de la Chaleur", "valeur": "1776"}
+{"entite": "Mollard de la Loza", "valeur": "2538"}
+{"entite": "Mollard des Bœufs", "valeur": "2761"}
+{"entite": "Les Monges", "valeur": "2115"}
+{"entite": "La Moniccia", "valeur": "2241"}
+{"entite": "monolithe de Sardières", "valeur": "1670"}
+{"entite": "mont Agel", "valeur": "1148"}
+{"entite": "mont Anderson", "valeur": "2231"}
+{"entite": "Mont Arago", "valeur": "614"}
+{"entite": "mont Arapao", "valeur": "350"}
+{"entite": "mont Autao", "valeur": "224"}
+{"entite": "mont Baghiacone", "valeur": "635"}
+{"entite": "mont Baret", "valeur": "1059"}
+{"entite": "mont Baron", "valeur": "529"}
+{"entite": "mont Bellacha", "valeur": "2484"}
+{"entite": "mont Bellaface", "valeur": "2913"}
+{"entite": "mont Belvédère", "valeur": "2641"}
+{"entite": "mont Berlioz", "valeur": "140"}
+{"entite": "mont Blanc", "valeur": "4808.06"}
+{"entite": "mont Blanc de Courmayeur", "valeur": "4748"}
+{"entite": "Mont-Blanc de Peisey", "valeur": "2866"}
+{"entite": "mont Boroux", "valeur": "1173"}
+{"entite": "mont Broderick", "valeur": "2043.9888"}
+{"entite": "mont Carrie", "valeur": "2132"}
+{"entite": "mont Céty", "valeur": "1424"}
+{"entite": "Mont Chardonnet", "valeur": "1405"}
+{"entite": "mont Charvet", "valeur": "1191"}
+{"entite": "mont Chevrier", "valeur": "2014"}
+{"entite": "mont Chipka", "valeur": "1329"}
+{"entite": "mont Clapier", "valeur": "3045"}
+{"entite": "mont Clocher", "valeur": "1976"}
+{"entite": "mont Colombis", "valeur": "1734"}
+{"entite": "mont Constance", "valeur": "2364"}
+{"entite": "mont Corbajo", "valeur": "1807"}
+{"entite": "mont Corbeau", "valeur": "2334"}
+{"entite": "mont Corbier", "valeur": "2180"}
+{"entite": "mont Coronat", "valeur": "2172"}
+{"entite": "mont Cruvelier", "valeur": "451"}
+{"entite": "mont d'Arménaz", "valeur": "2158"}
+{"entite": "Mont d'Étrier", "valeur": "1404"}
+{"entite": "mont d'Evian", "valeur": "1665"}
+{"entite": "mont d'Hermon", "valeur": "1120"}
+{"entite": "mont Dajin", "valeur": "103"}
+{"entite": "mont de Gébroulaz", "valeur": "3509"}
+{"entite": "mont de la Croix", "valeur": "1616"}
+{"entite": "Mont de la Gurraz", "valeur": "3076"}
+{"entite": "mont de la Perrière", "valeur": "2436"}
+{"entite": "mont de Meillarot", "valeur": "1208"}
+{"entite": "mont de Vorès", "valeur": "2067"}
+{"entite": "mont Deception", "valeur": "2373.7824"}
+{"entite": "Mont des Acrays", "valeur": "2173"}
+{"entite": "mont Destourbes", "valeur": "1042"}
+{"entite": "mont du Bel Air", "valeur": "497"}
+{"entite": "mont du Chat", "valeur": "2832"}
+{"entite": "mont du Fût", "valeur": "2636"}
+{"entite": "mont du Petit Valier", "valeur": "2736"}
+{"entite": "mont Falcon", "valeur": "2625"}
+{"entite": "mont Faraiere", "valeur": "421"}
+{"entite": "mont Farataupoo", "valeur": "421"}
+{"entite": "mont Favre", "valeur": "2967"}
+{"entite": "mont Fleuri", "valeur": "2511"}
+{"entite": "mont Florence", "valeur": "3831"}
+{"entite": "mont Fortin", "valeur": "2811"}
+{"entite": "mont Fracha", "valeur": "1748"}
+{"entite": "mont Fréty", "valeur": "2174"}
+{"entite": "mont Géroux", "valeur": "2288"}
+{"entite": "Mont Gibaou", "valeur": "398"}
+{"entite": "mont Grépillon", "valeur": "3579"}
+{"entite": "mont Gros", "valeur": "1081"}
+{"entite": "mont Guillaume", "valeur": "2542"}
+{"entite": "mont Habitant", "valeur": "380"}
+{"entite": "mont Hog's Back", "valeur": "490"}
+{"entite": "mont Iliamna", "valeur": "3053"}
+{"entite": "mont Indoukat-n-Taglès", "valeur": "2022"}
+{"entite": "Mont Jora", "valeur": "1035"}
+{"entite": "mont Joux", "valeur": "1964"}
+{"entite": "mont Julien", "valeur": "535"}
+{"entite": "mont Julioz", "valeur": "1662"}
+{"entite": "mont Kailash", "valeur": "6638"}
+{"entite": "mont Korab", "valeur": "2764"}
+{"entite": "Mont la Motte", "valeur": "1360"}
+{"entite": "mont La Pérouse", "valeur": "3270"}
+{"entite": "mont Lantin", "valeur": "570"}
+{"entite": "Mont Laval", "valeur": "848"}
+{"entite": "Mont Le Niol", "valeur": "618"}
+{"entite": "mont Léchaud", "valeur": "2805"}
+{"entite": "mont Lee", "valeur": "520.5984"}
+{"entite": "Mont Lesquin", "valeur": "1012"}
+{"entite": "mont Lozere - Pic Cassini", "valeur": "1542"}
+{"entite": "mont Lozere - Roc des Laubies", "valeur": "1492"}
+{"entite": "mont Maturaorao", "valeur": "425"}
+{"entite": "mont Méru", "valeur": "4562.13"}
+{"entite": "mont Miravidi", "valeur": "3066"}
+{"entite": "Mont Morbié", "valeur": "1542"}
+{"entite": "mont Muffraje", "valeur": "1672"}
+{"entite": "mont Mulacie", "valeur": "1076"}
+{"entite": "Mont Né", "valeur": "2147"}
+{"entite": "mont Niello", "valeur": "2024"}
+{"entite": "Mont Noir de Peuterey", "valeur": "2923"}
+{"entite": "mont Ntringui", "valeur": "1595"}
+{"entite": "mont Okolchitsa", "valeur": "1048"}
+{"entite": "mont Oreb", "valeur": "2645"}
+{"entite": "mont Ouille", "valeur": "3099"}
+{"entite": "mont Pan Shi", "valeur": "3106"}
+{"entite": "mont Patino", "valeur": "1883"}
+{"entite": "Mont Péaiaux", "valeur": "2958"}
+{"entite": "Mont Pelat", "valeur": "1543"}
+{"entite": "mont Pellard", "valeur": "2882"}
+{"entite": "mont Pilchuck", "valeur": "1628"}
+{"entite": "Mont Pot-a-Eau", "valeur": "590"}
+{"entite": "Mont Poules Marrons", "valeur": "220"}
+{"entite": "mont Pouzenc", "valeur": "2898"}
+{"entite": "mont Puapuapae", "valeur": "224"}
+{"entite": "mont Rachais", "valeur": "1050"}
+{"entite": "Mont Rampon", "valeur": "957"}
+{"entite": "Mont Rouge de Peuterey", "valeur": "2941"}
+{"entite": "mont Ruahiti", "valeur": "434"}
+{"entite": "mont Ruva", "valeur": "804"}
+{"entite": "mont Saint-Baudille - Seranne", "valeur": "622"}
+{"entite": "mont Saint-Cyr", "valeur": "610"}
+{"entite": "mont Saint-Jean", "valeur": "750"}
+{"entite": "mont Saint-Sébastien", "valeur": "609"}
+{"entite": "mont San-Columbano", "valeur": "813"}
+{"entite": "Mont Savoyat", "valeur": "3346"}
+{"entite": "mont Siple", "valeur": "3110"}
+{"entite": "Mont Snowdon", "valeur": "1085"}
+{"entite": "mont Suc", "valeur": "2738"}
+{"entite": "mont Tafanio", "valeur": "196"}
+{"entite": "mont Tamarutofa", "valeur": "109"}
+{"entite": "mont Tatiri", "valeur": "316"}
+{"entite": "mont Teaharoa", "valeur": "572"}
+{"entite": "mont Teivihee", "valeur": "27"}
+{"entite": "mont Teshio", "valeur": "1557.6"}
+{"entite": "mont Tevisi", "valeur": "981"}
+{"entite": "mont Thomas-Mercier", "valeur": "461"}
+{"entite": "mont Tiura", "valeur": "136"}
+{"entite": "mont Truc", "valeur": "1811"}
+{"entite": "mont Vaiumete", "valeur": "316"}
+{"entite": "mont Valezan", "valeur": "2891"}
+{"entite": "mont Ventoux", "valeur": "1910"}
+{"entite": "mont Vorassay", "valeur": "2303"}
+{"entite": "mont Werth", "valeur": "432"}
+{"entite": "montados", "valeur": "982"}
+{"entite": "Montagne Copper", "valeur": "3792"}
+{"entite": "montagne d'Aureille", "valeur": "1267"}
+{"entite": "montagne d'Entrevernes", "valeur": "1338"}
+{"entite": "Montagne de Barjaude", "valeur": "1174"}
+{"entite": "montagne de Beaudin", "valeur": "1922"}
+{"entite": "montagne de Beynes", "valeur": "976"}
+{"entite": "montagne de Challange", "valeur": "2831"}
+{"entite": "montagne de Conest", "valeur": "964"}
+{"entite": "Montagne de Crussol", "valeur": "406"}
+{"entite": "montagne de Dindaret", "valeur": "1100"}
+{"entite": "Montagne de Gache", "valeur": "1357"}
+{"entite": "montagne de Jouère", "valeur": "1886"}
+{"entite": "montagne de l'Allier", "valeur": "1256"}
+{"entite": "montagne de la Baume", "valeur": "1147"}
+{"entite": "montagne de la Cervelle", "valeur": "965"}
+{"entite": "Montagne de Parys", "valeur": "147"}
+{"entite": "Montagne de Rachas", "valeur": "2748"}
+{"entite": "montagne de Robion", "valeur": "866"}
+{"entite": "montagne de Rochefort", "valeur": "1300"}
+{"entite": "montagne de Rousillon", "valeur": "1604"}
+{"entite": "montagne de Teillon", "valeur": "1375"}
+{"entite": "montagne de Tête", "valeur": "1822"}
+{"entite": "montagne de Vibres", "valeur": "1383"}
+{"entite": "montagne de Villargerel", "valeur": "2086"}
+{"entite": "montagne des Auges", "valeur": "1822"}
+{"entite": "montagne des Glaciers", "valeur": "2747"}
+{"entite": "montagne des Louquiers", "valeur": "972"}
+{"entite": "montagne des Vaux", "valeur": "1667"}
+{"entite": "Montagne du Bau Trauqua", "valeur": "740"}
+{"entite": "montagne Pelée", "valeur": "1397"}
+{"entite": "montagne Saint-Maurice", "valeur": "1410"}
+{"entite": "Monte Aquila", "valeur": "2498"}
+{"entite": "Monte Cavallo", "valeur": "2323"}
+{"entite": "monte Cupieta", "valeur": "684"}
+{"entite": "Monte de Dentro", "valeur": "885"}
+{"entite": "Monte Incudine", "valeur": "2134"}
+{"entite": "monte Malo", "valeur": "1808"}
+{"entite": "monte Minerviu", "valeur": "415"}
+{"entite": "Monte Pioda", "valeur": "3404"}
+{"entite": "Monte Robinet", "valeur": "2679"}
+{"entite": "monte Stella", "valeur": "3262"}
+{"entite": "Monte Terrazzo", "valeur": "1823"}
+{"entite": "le Montet", "valeur": "2389"}
+{"entite": "Montferrat", "valeur": "3219"}
+{"entite": "Montfroid", "valeur": "2292"}
+{"entite": "montmorin", "valeur": "614"}
+{"entite": "Le Montounier", "valeur": "499"}
+{"entite": "Montriond", "valeur": "1714"}
+{"entite": "Moregallo", "valeur": "1276"}
+{"entite": "Morne Bois-Pins", "valeur": "2235"}
+{"entite": "Morne du Bras des Lianes", "valeur": "1341"}
+{"entite": "Morne Tombe Lever", "valeur": "753"}
+{"entite": "Morro da Cruz", "valeur": "285"}
+{"entite": "La Mortice", "valeur": "3169"}
+{"entite": "Le Mortis", "valeur": "857"}
+{"entite": "Mouille Rousse", "valeur": "1516"}
+{"entite": "Mouisset", "valeur": "860"}
+{"entite": "Mount Ellinor", "valeur": "1814"}
+{"entite": "Mount Simpson, Seychelles", "valeur": "568"}
+{"entite": "Les Moures", "valeur": "1380"}
+{"entite": "le Mouron", "valeur": "1469"}
+{"entite": "Mourre du Bœuf", "valeur": "136"}
+{"entite": "Mourre-Froid", "valeur": "2995"}
+{"entite": "Mourre Nègre", "valeur": "1125"}
+{"entite": "Moussala", "valeur": "2925.4"}
+{"entite": "le Moutet", "valeur": "1175"}
+{"entite": "Moyenne Bers", "valeur": "1116"}
+{"entite": "Muchu Chhish", "valeur": "7453"}
+{"entite": "Mulhacén", "valeur": "3479"}
+{"entite": "Muskopf", "valeur": "1968"}
+{"entite": "Muttlerkopf", "valeur": "2368"}
+{"entite": "Mynydd Drws y Coed", "valeur": "695"}
+{"entite": "Nanga Parbat", "valeur": "8126"}
+{"entite": "Narmont", "valeur": "1119"}
+{"entite": "Nebelhorn", "valeur": "2224"}
+{"entite": "Néoures", "valeur": "1427"}
+{"entite": "Neuhewen", "valeur": "867.2"}
+{"entite": "Nez Coupé de Sainte-Rose", "valeur": "2075"}
+{"entite": "Nid d'Aigle", "valeur": "2343"}
+{"entite": "Nili", "valeur": "22"}
+{"entite": "NJ9842", "valeur": "6389"}
+{"entite": "la Noire Côte", "valeur": "905"}
+{"entite": "la Nonne", "valeur": "3340"}
+{"entite": "Noppenspitze", "valeur": "2596"}
+{"entite": "Nordend", "valeur": "4608"}
+{"entite": "Nördliches Höllhorn", "valeur": "2143"}
+{"entite": "Nußhardt", "valeur": "972"}
+{"entite": "Nuvolau", "valeur": "2574"}
+{"entite": "Nystølsvarden", "valeur": "1295.7"}
+{"entite": "Oberaarhorn", "valeur": "3631"}
+{"entite": "Oberstdorfer Hammerspitze", "valeur": "2259"}
+{"entite": "Ochsenkopf", "valeur": "1024"}
+{"entite": "Öfelekopf", "valeur": "2478"}
+{"entite": "Öfnerspitze", "valeur": "2576"}
+{"entite": "Ofterschwanger Horn", "valeur": "1408"}
+{"entite": "Okshornan", "valeur": "302"}
+{"entite": "Olmsted Point", "valeur": "2500"}
+{"entite": "Olsskavlen", "valeur": "805"}
+{"entite": "L'Olympe", "valeur": "400"}
+{"entite": "Oman", "valeur": "711"}
+{"entite": "l'Oreille du Loup", "valeur": "2293"}
+{"entite": "Orriste", "valeur": "1959"}
+{"entite": "Orsière", "valeur": "1750"}
+{"entite": "Osterfelderkopf", "valeur": "2057"}
+{"entite": "Ouille d'Arbéron", "valeur": "3560"}
+{"entite": "Ouille de Gontière", "valeur": "3181"}
+{"entite": "Ouille de la Gura", "valeur": "3395"}
+{"entite": "Ouille de la Jave", "valeur": "2867"}
+{"entite": "Ouille de la Vallettaz", "valeur": "3145"}
+{"entite": "Ouille des Pariotes", "valeur": "3123"}
+{"entite": "Ouille des Patriotes", "valeur": "3034"}
+{"entite": "Ouille des Reys", "valeur": "3081"}
+{"entite": "Ouille des Trétêtes", "valeur": "2948"}
+{"entite": "Ouille du Midi", "valeur": "2905"}
+{"entite": "Ouille Noire", "valeur": "3357"}
+{"entite": "L'Ouillette", "valeur": "3082"}
+{"entite": "l'Ouillon", "valeur": "2431"}
+{"entite": "Ouillon des Arcellins", "valeur": "2665"}
+{"entite": "P.1084", "valeur": "1084"}
+{"entite": "P.1370", "valeur": "1370"}
+{"entite": "P.1431", "valeur": "1431"}
+{"entite": "P.665", "valeur": "665"}
+{"entite": "Paglia Orba", "valeur": "2525"}
+{"entite": "La Pagode", "valeur": "621"}
+{"entite": "Le Palais", "valeur": "1236"}
+{"entite": "Palloir", "valeur": "566"}
+{"entite": "Păpușa", "valeur": "2391"}
+{"entite": "Parc du Mouton", "valeur": "1859"}
+{"entite": "parc national de Phawngpui Blue Mountain", "valeur": "2157"}
+{"entite": "Parc Uchaf Gwydyr", "valeur": "274"}
+{"entite": "Paré de Joux", "valeur": "2243"}
+{"entite": "Les Parias", "valeur": "2512"}
+{"entite": "Paroi du Midi", "valeur": "2564"}
+{"entite": "les Parossaz", "valeur": "2556"}
+{"entite": "Parseierspitze", "valeur": "3036"}
+{"entite": "Parumba", "valeur": "2041"}
+{"entite": "Pas du Roc", "valeur": "975"}
+{"entite": "Patteriol", "valeur": "3056"}
+{"entite": "Le Pave", "valeur": "3674"}
+{"entite": "PC 468 m", "valeur": "468"}
+{"entite": "PC 685 Pylones", "valeur": "424"}
+{"entite": "PC Alt 566", "valeur": "566"}
+{"entite": "PC Alt 599", "valeur": "599"}
+{"entite": "Pech de Foix", "valeur": "783"}
+{"entite": "Pech de la Coupe", "valeur": "578"}
+{"entite": "le Peigne", "valeur": "2733"}
+{"entite": "Peischelspitze", "valeur": "2512"}
+{"entite": "Pélaou Blanc", "valeur": "3135"}
+{"entite": "Pen y Fan", "valeur": "886"}
+{"entite": "Pen yr Ole Wen", "valeur": "978"}
+{"entite": "Pengoua Bolé", "valeur": "240"}
+{"entite": "Pérollier", "valeur": "2183"}
+{"entite": "Perstinden", "valeur": "361"}
+{"entite": "Le Pestel", "valeur": "1842"}
+{"entite": "Petit Assaly", "valeur": "3147"}
+{"entite": "Petit Astazou", "valeur": "3012"}
+{"entite": "Petit Bargy", "valeur": "2098"}
+{"entite": "Petit Bénare", "valeur": "2600"}
+{"entite": "Petit Châtelet", "valeur": "2461"}
+{"entite": "Le Petit Cordeil", "valeur": "1784"}
+{"entite": "Petit Croisse Baulet", "valeur": "2009"}
+{"entite": "Petit Dôme", "valeur": "2967"}
+{"entite": "Petit Donon", "valeur": "961"}
+{"entite": "Petit Ferrand", "valeur": "2724"}
+{"entite": "Petit Flambeau", "valeur": "3440"}
+{"entite": "Petit mont Blanc", "valeur": "3424"}
+{"entite": "Petit Montrond", "valeur": "1533"}
+{"entite": "Le Petit Parpaillon", "valeur": "2734"}
+{"entite": "Le Petit Pelvoux", "valeur": "3753"}
+{"entite": "Petit Peric", "valeur": "2690"}
+{"entite": "petit pic de Cazalassis", "valeur": "2582"}
+{"entite": "Petit Piton", "valeur": "50"}
+{"entite": "le Petit Rateau", "valeur": "3094"}
+{"entite": "Petit Rognon", "valeur": "3009"}
+{"entite": "Petit Ross", "valeur": "1594"}
+{"entite": "Le Petit Sanguin", "valeur": "540"}
+{"entite": "Petit Signal", "valeur": "2883"}
+{"entite": "Petit Van", "valeur": "2439"}
+{"entite": "Petit Ventron", "valeur": "1155"}
+{"entite": "Le Petit Veymont", "valeur": "2120"}
+{"entite": "Petit Vignemale", "valeur": "3032"}
+{"entite": "Petite aiguille de Praina", "valeur": "2312"}
+{"entite": "Petite aiguille des Glaciers", "valeur": "3488"}
+{"entite": "Petite Aiguille (massif des Écrins)", "valeur": "1993"}
+{"entite": "Petite aiguille Rousse", "valeur": "3432"}
+{"entite": "Petite Autane", "valeur": "2519"}
+{"entite": "Petite Autane d'Orcières", "valeur": "2548"}
+{"entite": "Petite Céüse", "valeur": "1681"}
+{"entite": "La Petite Étoile", "valeur": "561"}
+{"entite": "La Petite Miaz", "valeur": "2359"}
+{"entite": "Petite Sœur Sophie", "valeur": "2162"}
+{"entite": "Petite Sambuy", "valeur": "2107"}
+{"entite": "Petite Saulire", "valeur": "2706"}
+{"entite": "Petite Turra", "valeur": "2529"}
+{"entite": "Petites Jorasses", "valeur": "3658"}
+{"entite": "Petits Pitons", "valeur": "1134"}
+{"entite": "Petrechema", "valeur": "2099"}
+{"entite": "Pey Subert", "valeur": "1208"}
+{"entite": "Le Peydes", "valeur": "923"}
+{"entite": "Peynier", "valeur": "1164"}
+{"entite": "La Peyrouse", "valeur": "1710"}
+{"entite": "Pfänder", "valeur": "1062"}
+{"entite": "Pflerscher Tribulaun", "valeur": "3097"}
+{"entite": "Le Phare", "valeur": "644"}
+{"entite": "Piano di Roma", "valeur": "1550"}
+{"entite": "pic Abraki", "valeur": "599"}
+{"entite": "pic Arapoup", "valeur": "1646"}
+{"entite": "pic Arluche", "valeur": "935"}
+{"entite": "pic Arnaudet", "valeur": "2604"}
+{"entite": "Pic Asparuh", "valeur": "760"}
+{"entite": "pic Badet", "valeur": "3160"}
+{"entite": "pic Bayle", "valeur": "3465"}
+{"entite": "pic Belledonne", "valeur": "2514"}
+{"entite": "pic Belloc", "valeur": "3008"}
+{"entite": "Pic Blanc", "valeur": "3323"}
+{"entite": "pic Bogda", "valeur": "5448"}
+{"entite": "Pic Botev", "valeur": "2376"}
+{"entite": "pic Bouine", "valeur": "821"}
+{"entite": "pic Bourcet", "valeur": "3715"}
+{"entite": "pic Brulle", "valeur": "3106"}
+{"entite": "pic Camboue", "valeur": "3043"}
+{"entite": "pic Central", "valeur": "3235"}
+{"entite": "pic Central de la Meije", "valeur": "3953"}
+{"entite": "pic Champlain", "valeur": "346"}
+{"entite": "pic Charcot", "valeur": "455"}
+{"entite": "pic Chastain", "valeur": "190"}
+{"entite": "pic Cujo la Palas", "valeur": "2607"}
+{"entite": "pic d'Anie", "valeur": "2507"}
+{"entite": "pic d'Aret", "valeur": "2935"}
+{"entite": "pic d'Arial", "valeur": "2681"}
+{"entite": "pic d'Arro", "valeur": "669"}
+{"entite": "pic d'Arrouye", "valeur": "2566"}
+{"entite": "pic d'Arsine", "valeur": "3272"}
+{"entite": "pic d'Aste", "valeur": "1127"}
+{"entite": "pic d'Ayre", "valeur": "2140"}
+{"entite": "Pic d'Eina", "valeur": "2789"}
+{"entite": "pic d'Envalira", "valeur": "2659"}
+{"entite": "pic d'Escorne-Crabe", "valeur": "1454"}
+{"entite": "pic d'Escreins", "valeur": "2661"}
+{"entite": "pic d'Estandérou", "valeur": "2625"}
+{"entite": "pic d'Estaragne", "valeur": "3006"}
+{"entite": "pic d'Estibaoute", "valeur": "2612"}
+{"entite": "pic d'Ibantelli", "valeur": "411"}
+{"entite": "pic d'Iparla", "valeur": "705"}
+{"entite": "pic d'Oise", "valeur": "717"}
+{"entite": "pic d'Ourdissétou", "valeur": "2604"}
+{"entite": "pic d'Ourthizet", "valeur": "1857"}
+{"entite": "pic de Bagnels", "valeur": "2619"}
+{"entite": "pic de Baiau", "valeur": "2885"}
+{"entite": "pic de Balbonne", "valeur": "2116"}
+{"entite": "pic de Barette", "valeur": "1324"}
+{"entite": "pic de Batoua", "valeur": "3034"}
+{"entite": "pic de Bergons", "valeur": "1462"}
+{"entite": "pic de Bertagne", "valeur": "1041"}
+{"entite": "pic de Blanchard", "valeur": "1472"}
+{"entite": "pic de Bonvoisin", "valeur": "3480"}
+{"entite": "pic de Borgne", "valeur": "946"}
+{"entite": "pic de Boussolenc", "valeur": "2623"}
+{"entite": "pic de Broate", "valeur": "2653"}
+{"entite": "pic de Bugarret", "valeur": "3031"}
+{"entite": "pic de Burcq", "valeur": "1970"}
+{"entite": "pic de Bure", "valeur": "2709"}
+{"entite": "pic de Bustancelhay", "valeur": "810"}
+{"entite": "Pic de Canalbona", "valeur": "2965"}
+{"entite": "Pic de Cantone", "valeur": "2834"}
+{"entite": "pic de Castille", "valeur": "2429"}
+{"entite": "pic de Cataperdís", "valeur": "2805"}
+{"entite": "pic de Céciré", "valeur": "2403"}
+{"entite": "pic de Cerbillona", "valeur": "3247"}
+{"entite": "Pic de Cestrède", "valeur": "2904"}
+{"entite": "Pic de Céüse", "valeur": "2016"}
+{"entite": "pic de Chabran", "valeur": "1541"}
+{"entite": "pic de Chamatte", "valeur": "1155"}
+{"entite": "pic de Chanchou", "valeur": "2949"}
+{"entite": "Pic de Charance", "valeur": "1850"}
+{"entite": "pic de Cimbeils", "valeur": "2280"}
+{"entite": "pic de Clouzis", "valeur": "3257"}
+{"entite": "pic de Coste-Rousse", "valeur": "2293"}
+{"entite": "pic de Courmettes", "valeur": "1111"}
+{"entite": "pic de Crabère", "valeur": "2630"}
+{"entite": "pic de Crabounouse", "valeur": "3021"}
+{"entite": "pic de Crévoux", "valeur": "2559"}
+{"entite": "pic de Crigne", "valeur": "1200"}
+{"entite": "pic de Faiendre", "valeur": "598"}
+{"entite": "pic de Font Freda", "valeur": "2738"}
+{"entite": "pic de Fontargent", "valeur": "2618"}
+{"entite": "pic de Fontargenta", "valeur": "2682"}
+{"entite": "pic de Fourneuby", "valeur": "1421"}
+{"entite": "pic de Géu", "valeur": "2499"}
+{"entite": "pic de Ginebre", "valeur": "2382"}
+{"entite": "pic de Halcamendy", "valeur": "791"}
+{"entite": "pic de Houradic", "valeur": "2095"}
+{"entite": "pic de Joclar", "valeur": "2648"}
+{"entite": "pic de l'Abeillé", "valeur": "3029"}
+{"entite": "pic de l'Aigle", "valeur": "629"}
+{"entite": "pic de l'Aiglo", "valeur": "1446"}
+{"entite": "Pic de l'Aiguille de Jade", "valeur": "1050"}
+{"entite": "pic de l'Aramount", "valeur": "879"}
+{"entite": "pic de l'Arraille", "valeur": "2147"}
+{"entite": "pic de l'Escale", "valeur": "357"}
+{"entite": "pic de l'Esclette", "valeur": "1856"}
+{"entite": "pic de l'Estagnas", "valeur": "2556"}
+{"entite": "pic de l'Estagnole", "valeur": "2501"}
+{"entite": "pic de l'Estelle", "valeur": "1778"}
+{"entite": "pic de l'Homme", "valeur": "2902"}
+{"entite": "pic de l'Homme Mort", "valeur": "2655"}
+{"entite": "pic de l'Huile", "valeur": "926"}
+{"entite": "pic de l'Œilly", "valeur": "1547"}
+{"entite": "pic de l'Ouillon", "valeur": "2695"}
+{"entite": "pic de l'Ours", "valeur": "241"}
+{"entite": "pic de la Buissonade", "valeur": "765"}
+{"entite": "pic de la Cascade occidental", "valeur": "3095"}
+{"entite": "pic de la Cascade oriental", "valeur": "3161"}
+{"entite": "pic de la Corne", "valeur": "2084"}
+{"entite": "pic de la Coume d'Enfer", "valeur": "2730"}
+{"entite": "pic de la Coumeille", "valeur": "1680.1"}
+{"entite": "pic de la Dona", "valeur": "2702"}
+{"entite": "pic de la Fare", "valeur": "2138"}
+{"entite": "pic de la Fayolle", "valeur": "1220"}
+{"entite": "pic de la Fossa del Gegant", "valeur": "2808"}
+{"entite": "pic de la Gardiette", "valeur": "266"}
+{"entite": "pic de la Grande Aiguille", "valeur": "756"}
+{"entite": "pic de la Grande Valloire", "valeur": "2887"}
+{"entite": "pic de la Grave", "valeur": "3667"}
+{"entite": "pic de la Greysinière", "valeur": "1881"}
+{"entite": "pic de la Journalade", "valeur": "1785"}
+{"entite": "pic de la Lauzat", "valeur": "1774"}
+{"entite": "pic de la Mine", "valeur": "2708"}
+{"entite": "pic de la Pelade", "valeur": "2370"}
+{"entite": "pic de la Pyramide", "valeur": "3382"}
+{"entite": "pic de la Rouquette", "valeur": "2338"}
+{"entite": "pic de la Sauge", "valeur": "1612"}
+{"entite": "pic de la Soucarrane", "valeur": "2552"}
+{"entite": "pic de la Tausse", "valeur": "1870"}
+{"entite": "pic de la Tossa", "valeur": "2408"}
+{"entite": "pic de la Tossa de Juclar", "valeur": "2696"}
+{"entite": "pic de la Vieille Femme", "valeur": "2739"}
+{"entite": "pic de Lachat", "valeur": "2436"}
+{"entite": "pic de Ladenne", "valeur": "869"}
+{"entite": "pic de las Roujos", "valeur": "2694"}
+{"entite": "pic de Lasaugède", "valeur": "2762"}
+{"entite": "pic de Lauzat", "valeur": "2302"}
+{"entite": "pic de Lessete", "valeur": "977"}
+{"entite": "pic de Lizieux", "valeur": "1188"}
+{"entite": "pic de Lourdes", "valeur": "2646"}
+{"entite": "pic de Luc", "valeur": "1038"}
+{"entite": "pic de Madides", "valeur": "2587"}
+{"entite": "pic de Mai", "valeur": "2539"}
+{"entite": "pic de Malamort", "valeur": "3252"}
+{"entite": "pic de Maloqueste", "valeur": "2754"}
+{"entite": "pic de Maupas", "valeur": "3109"}
+{"entite": "pic de Meners", "valeur": "2714"}
+{"entite": "pic de Mont Rouge", "valeur": "2239"}
+{"entite": "pic de Montareing", "valeur": "2579"}
+{"entite": "pic de Montbajan", "valeur": "696"}
+{"entite": "pic de Montbrison", "valeur": "2632"}
+{"entite": "pic de Montcalm", "valeur": "3077"}
+{"entite": "pic de Montmalús", "valeur": "2781"}
+{"entite": "pic de Montvaillant", "valeur": "468"}
+{"entite": "pic de Mountagnol", "valeur": "2274"}
+{"entite": "pic de Moustier", "valeur": "2561"}
+{"entite": "pic de Mullet", "valeur": "2287"}
+{"entite": "pic de Neige Cordier", "valeur": "3614"}
+{"entite": "pic de Nore", "valeur": "1203"}
+{"entite": "Pic de Noucreus", "valeur": "2801"}
+{"entite": "pic de Núria", "valeur": "2789"}
+{"entite": "pic de Peyrot", "valeur": "2404"}
+{"entite": "pic de Pian", "valeur": "2826"}
+{"entite": "pic de Portapàs", "valeur": "1795.7"}
+{"entite": "pic de Puntussan", "valeur": "2682"}
+{"entite": "Pic de Racó Gros", "valeur": "2782"}
+{"entite": "pic de Regalecio", "valeur": "2569"}
+{"entite": "pic de Rent", "valeur": "1903"}
+{"entite": "pic de Ribeshautes", "valeur": "1970"}
+{"entite": "pic de Rochas", "valeur": "2189"}
+{"entite": "pic de Rochebrune", "valeur": "2574"}
+{"entite": "pic de Rochelaire", "valeur": "3108"}
+{"entite": "pic de Royo", "valeur": "3121"}
+{"entite": "pic de Ruf", "valeur": "2615"}
+{"entite": "pic de Sacaube", "valeur": "1741"}
+{"entite": "pic de Sacroux", "valeur": "2648"}
+{"entite": "pic de Segalera", "valeur": "2179"}
+{"entite": "pic de Sernaille", "valeur": "2534"}
+{"entite": "Pic de Serra Gallinera", "valeur": "2663"}
+{"entite": "pic de Serre Mourène", "valeur": "3090"}
+{"entite": "pic de Soques", "valeur": "2429"}
+{"entite": "pic de Soumaoute", "valeur": "2205"}
+{"entite": "pic de Souno", "valeur": "2512"}
+{"entite": "pic de Suillet", "valeur": "1320"}
+{"entite": "pic de Terres", "valeur": "2058"}
+{"entite": "pic de Tossal Mercader", "valeur": "2543.4"}
+{"entite": "pic de Tres Estelles", "valeur": "2099"}
+{"entite": "pic de Troumouse", "valeur": "3085"}
+{"entite": "pic de Turbat", "valeur": "2731"}
+{"entite": "pic de Vacan", "valeur": "898"}
+{"entite": "pic de Vache Rouge", "valeur": "2379"}
+{"entite": "pic de Verdaguer", "valeur": "3129"}
+{"entite": "pic del Couret", "valeur": "1524"}
+{"entite": "Pic del Rosselló", "valeur": "1313.7"}
+{"entite": "Pic del Segre", "valeur": "2843"}
+{"entite": "pic del Sirvent", "valeur": "2750"}
+{"entite": "pic dels Estanyons", "valeur": "2836"}
+{"entite": "Pic dels Gorgs", "valeur": "2313.8"}
+{"entite": "pic dels Moros", "valeur": "2137"}
+{"entite": "pic Delta", "valeur": "426"}
+{"entite": "Pic des Aupillous", "valeur": "3505"}
+{"entite": "pic des Calmettes", "valeur": "2417"}
+{"entite": "pic des Chèvres", "valeur": "1834"}
+{"entite": "pic des Escaliers", "valeur": "1388"}
+{"entite": "pic des Esparges-Fines", "valeur": "2655"}
+{"entite": "pic des Fangasses", "valeur": "2682"}
+{"entite": "Pic des Gabians", "valeur": "138"}
+{"entite": "pic des Gabiétous oriental", "valeur": "3031"}
+{"entite": "pic des Houerts", "valeur": "3235"}
+{"entite": "pic des Langounelles", "valeur": "2819"}
+{"entite": "pic des Maures", "valeur": "2371"}
+{"entite": "pic des Miracles", "valeur": "976"}
+{"entite": "pic des Mouches", "valeur": "1011"}
+{"entite": "pic des Mulats", "valeur": "2310"}
+{"entite": "pic des Pavéous", "valeur": "3285"}
+{"entite": "pic des Rives Blanques", "valeur": "2439.7"}
+{"entite": "pic des Salines", "valeur": "1333"}
+{"entite": "pic des Singes", "valeur": "430"}
+{"entite": "pic des Souffles", "valeur": "3098"}
+{"entite": "Pic des Trois Évêchés", "valeur": "3116"}
+{"entite": "pic du Bastard", "valeur": "1716"}
+{"entite": "pic du Bonhomme", "valeur": "2663"}
+{"entite": "pic du Cabaliros", "valeur": "2334"}
+{"entite": "pic du Clapier du Peyron", "valeur": "3169"}
+{"entite": "pic du Clocher", "valeur": "2216"}
+{"entite": "pic du Col d'Ornon", "valeur": "2872"}
+{"entite": "pic du Cratère", "valeur": "899"}
+{"entite": "pic du Douill", "valeur": "1467"}
+{"entite": "pic du Dragon", "valeur": "3229"}
+{"entite": "pic du Fond de Peynin", "valeur": "2912"}
+{"entite": "pic du Génie", "valeur": "2510"}
+{"entite": "Pic du Glacier-Blanc", "valeur": "3527"}
+{"entite": "Pic du Glacier-d'Arsine", "valeur": "3364"}
+{"entite": "pic du Glacier du Gleyzin", "valeur": "2612"}
+{"entite": "pic du Han", "valeur": "1949"}
+{"entite": "pic du Haut Mouriare", "valeur": "2602"}
+{"entite": "pic du Lac-de-Combeynot", "valeur": "2913"}
+{"entite": "pic du Lac de la Chourique", "valeur": "1937"}
+{"entite": "pic du Lausin", "valeur": "2437"}
+{"entite": "pic du Lauzon", "valeur": "2971"}
+{"entite": "pic du Lauzun", "valeur": "2871"}
+{"entite": "Pic du Lion", "valeur": "864"}
+{"entite": "pic du Marboré", "valeur": "3248"}
+{"entite": "pic du Mas de la Grave", "valeur": "3020"}
+{"entite": "pic du Mascarin", "valeur": "934"}
+{"entite": "pic du Midi d'Arrens", "valeur": "2267"}
+{"entite": "pic du Midi d'Ossau", "valeur": "2884"}
+{"entite": "pic du Milieu", "valeur": "3130"}
+{"entite": "pic du Montaigu", "valeur": "2339"}
+{"entite": "pic du Reglet", "valeur": "1975"}
+{"entite": "pic du Rognolet", "valeur": "2659"}
+{"entite": "pic du Rondet", "valeur": "2838"}
+{"entite": "pic du Sal", "valeur": "2743"}
+{"entite": "pic du Vieillard", "valeur": "1020"}
+{"entite": "pic Durban", "valeur": "1482"}
+{"entite": "pic Espaillat", "valeur": "2251"}
+{"entite": "pic Est de Combeynot", "valeur": "3145"}
+{"entite": "pic Fanning", "valeur": "424"}
+{"entite": "pic Fourcade", "valeur": "2675"}
+{"entite": "pic Gakoueta", "valeur": "483"}
+{"entite": "pic Gamma", "valeur": "213"}
+{"entite": "pic Gardiner", "valeur": "3365"}
+{"entite": "pic Gazonne", "valeur": "2042"}
+{"entite": "pic Greenleaf", "valeur": "1043.0256"}
+{"entite": "pic Grillon", "valeur": "1767"}
+{"entite": "pic Grun du Roux", "valeur": "2585"}
+{"entite": "pic Hadairra", "valeur": "417"}
+{"entite": "pic Heid", "valeur": "3022"}
+{"entite": "pic Jean Gauthier", "valeur": "3304"}
+{"entite": "pic Joliot-Curie", "valeur": "1005"}
+{"entite": "Pic Kuna", "valeur": "3964.8384"}
+{"entite": "pic Lakhoura", "valeur": "1814"}
+{"entite": "pic Lars-Christensen", "valeur": "1755"}
+{"entite": "pic Lesquin", "valeur": "692"}
+{"entite": "pic Leviste", "valeur": "2332"}
+{"entite": "pic Lory", "valeur": "4088"}
+{"entite": "Pic Maître", "valeur": "3728"}
+{"entite": "Pic Malaoui", "valeur": "293"}
+{"entite": "pic Maou", "valeur": "3074"}
+{"entite": "Pic Marana", "valeur": "1559"}
+{"entite": "pic Maroon", "valeur": "4291.8888"}
+{"entite": "pic Martin-Jean", "valeur": "2300"}
+{"entite": "pic Mataihua", "valeur": "242"}
+{"entite": "Pic Maubic", "valeur": "3058"}
+{"entite": "pic Maudit", "valeur": "3350"}
+{"entite": "Pic Méchant", "valeur": "2944"}
+{"entite": "pic Melette", "valeur": "1620"}
+{"entite": "pic Mondarrain", "valeur": "659"}
+{"entite": "pic Moneliet", "valeur": "2727"}
+{"entite": "pic Noir", "valeur": "2874"}
+{"entite": "pic Nord de Berlanche", "valeur": "2123"}
+{"entite": "pic Nord des Cavales", "valeur": "3202"}
+{"entite": "pic Nord du Merlet", "valeur": "2337"}
+{"entite": "pic North Maroon", "valeur": "4259.8848"}
+{"entite": "pic Occidental de la Meije", "valeur": "3983"}
+{"entite": "Pic Oriental de la Meije", "valeur": "3887"}
+{"entite": "pic Ouest de Combeynot", "valeur": "3155"}
+{"entite": "Pic Pétarel", "valeur": "2619"}
+{"entite": "Pic Petit de Segre", "valeur": "2810.5"}
+{"entite": "pic Peyreget", "valeur": "2487"}
+{"entite": "pic Philippe d'Orléans", "valeur": "584"}
+{"entite": "pic Pierroux", "valeur": "2187"}
+{"entite": "pic Plummer", "valeur": "1942"}
+{"entite": "Pic Polemonium", "valeur": "4296"}
+{"entite": "pic Ponsin", "valeur": "2335"}
+{"entite": "Pic Prospect", "valeur": "1335"}
+{"entite": "pic Ramougn", "valeur": "3011"}
+{"entite": "pic Redoun", "valeur": "2677"}
+{"entite": "pic Rodgers", "valeur": "3957.5232"}
+{"entite": "pic Saillant", "valeur": "1756"}
+{"entite": "pic Saint-Allouarn", "valeur": "1145"}
+{"entite": "pic Saint-Guiral", "valeur": "1193"}
+{"entite": "pic Saint-Michel", "valeur": "1966"}
+{"entite": "pic Simmons", "valeur": "3809"}
+{"entite": "pic Sloan", "valeur": "2388.108"}
+{"entite": "pic St-André", "valeur": "2703"}
+{"entite": "pic Sud de Berlanche", "valeur": "2175"}
+{"entite": "pic Sud des Cavales", "valeur": "3360"}
+{"entite": "Pic Tcherski", "valeur": "2090"}
+{"entite": "pic Tenaya", "valeur": "3141.2688"}
+{"entite": "pic Tolmie", "valeur": "1815"}
+{"entite": "pic Toopua", "valeur": "27"}
+{"entite": "pic Toussidé", "valeur": "3315"}
+{"entite": "pic Traverse", "valeur": "2991"}
+{"entite": "pic Turbat", "valeur": "3028"}
+{"entite": "pic Uhuru", "valeur": "5895"}
+{"entite": "pic Unicorn", "valeur": "3300.3744"}
+{"entite": "pic Vert", "valeur": "2539"}
+{"entite": "pic Vladimir Poutine", "valeur": "4446"}
+{"entite": "pic Vogelsang", "valeur": "3504.5904"}
+{"entite": "pic Wandel", "valeur": "980"}
+{"entite": "pic Wilson", "valeur": "3266"}
+{"entite": "Pic Yujing", "valeur": "1819.9"}
+{"entite": "picco Charbonnel", "valeur": "2861"}
+{"entite": "piccolo Serous", "valeur": "2631"}
+{"entite": "pico Baliner", "valeur": "2965"}
+{"entite": "Pico Charuto", "valeur": "1129"}
+{"entite": "Pico Cuevas", "valeur": "660"}
+{"entite": "pico de Tuca Roya", "valeur": "2838"}
+{"entite": "pico del Puerto de O", "valeur": "2895"}
+{"entite": "pico Pilar", "valeur": "802.9"}
+{"entite": "pico Puig Farinos", "valeur": "2438"}
+{"entite": "picoulet de Quirhaut", "valeur": "886"}
+{"entite": "pics d'Anepahan", "valeur": "1080"}
+{"entite": "Pics de la Buffe d'en Haut", "valeur": "2933"}
+{"entite": "pics de la Font Sancte", "valeur": "3387"}
+{"entite": "pics du Casset", "valeur": "3257"}
+{"entite": "pics du Says", "valeur": "3420"}
+{"entite": "Pied Moutet", "valeur": "2339"}
+{"entite": "Piegros", "valeur": "1250"}
+{"entite": "Pierra Menta", "valeur": "2714"}
+{"entite": "Pierre Blanche", "valeur": "1336"}
+{"entite": "Pierre Châtelard", "valeur": "2176"}
+{"entite": "Pierre Chauve", "valeur": "1308"}
+{"entite": "pierre de la Lune", "valeur": "1505"}
+{"entite": "Pierre Minieu", "valeur": "3241"}
+{"entite": "Pierre Percée", "valeur": "2457"}
+{"entite": "les Pierres Blanches", "valeur": "2139"}
+{"entite": "Le Pierroux", "valeur": "2869"}
+{"entite": "Piesenkopf", "valeur": "1630"}
+{"entite": "Pietra Niella", "valeur": "2099"}
+{"entite": "Pietrosul Rodnei", "valeur": "2303"}
+{"entite": "Le Pieu", "valeur": "1270"}
+{"entite": "La Pigne", "valeur": "1335"}
+{"entite": "Le Pignon", "valeur": "695"}
+{"entite": "Le Pignon Rouge", "valeur": "596"}
+{"entite": "Pilon du Roi", "valeur": "424"}
+{"entite": "Pinatubo", "valeur": "1486"}
+{"entite": "Pinheiro, São Tomé", "valeur": "1306"}
+{"entite": "Pioch de la Boffia", "valeur": "808"}
+{"entite": "Pioch de Roquebrune - Seranne", "valeur": "727"}
+{"entite": "Pioch Launet - Seranne", "valeur": "726"}
+{"entite": "Pique d'Endron", "valeur": "2472"}
+{"entite": "le Piquet de Nantes", "valeur": "2214"}
+{"entite": "piton Babet", "valeur": "111"}
+{"entite": "piton Bémassoune", "valeur": "1614"}
+{"entite": "Piton Bénoune", "valeur": "1712"}
+{"entite": "piton Bleu", "valeur": "1921"}
+{"entite": "piton Carré", "valeur": "3197"}
+{"entite": "piton Chisny", "valeur": "2425"}
+{"entite": "piton d'Anchain", "valeur": "1356"}
+{"entite": "piton Darid", "valeur": "1595"}
+{"entite": "piton de Balmann", "valeur": "530"}
+{"entite": "piton de Bassin Martin", "valeur": "400"}
+{"entite": "piton de Bébour", "valeur": "1473"}
+{"entite": "Piton de Bellefont", "valeur": "1876"}
+{"entite": "piton de Crac", "valeur": "1386"}
+{"entite": "piton de Grande-Anse", "valeur": "85"}
+{"entite": "piton de la Fournaise", "valeur": "2632"}
+{"entite": "piton de la Plaine des Cafres", "valeur": "1639"}
+{"entite": "piton de la Ravine Blanche", "valeur": "1499"}
+{"entite": "piton de la Ravine Saint-Gilles", "valeur": "2370"}
+{"entite": "piton de Mont Vert", "valeur": "636"}
+{"entite": "piton de Roche Plate", "valeur": "1243"}
+{"entite": "piton de Sucre", "valeur": "1354"}
+{"entite": "piton de Takamaka", "valeur": "931"}
+{"entite": "Piton de Tangues", "valeur": "2221"}
+{"entite": "piton des Orangers", "valeur": "1944"}
+{"entite": "piton des Roches Tendres", "valeur": "78"}
+{"entite": "Piton des Trois Mares", "valeur": "1449"}
+{"entite": "piton du Rond de Langevin", "valeur": "2270"}
+{"entite": "piton Fleurs Jaunes", "valeur": "2294"}
+{"entite": "piton Fougères", "valeur": "1147"}
+{"entite": "piton La Glace", "valeur": "635"}
+{"entite": "piton Lacroix", "valeur": "2341"}
+{"entite": "piton Lélesse", "valeur": "1332"}
+{"entite": "piton Mahot", "valeur": "1724"}
+{"entite": "Piton Manuel", "valeur": "1613"}
+{"entite": "piton Mathias", "valeur": "1725"}
+{"entite": "piton Moka", "valeur": "479"}
+{"entite": "piton Moustabismen", "valeur": "2041"}
+{"entite": "Piton Nord", "valeur": "3795"}
+{"entite": "piton Papangues", "valeur": "990"}
+{"entite": "piton Sahales", "valeur": "1565"}
+{"entite": "Piton Taisne", "valeur": "680"}
+{"entite": "piton Trois Têtes", "valeur": "854"}
+{"entite": "pitons Mare à Boue", "valeur": "1696"}
+{"entite": "Piz Buin", "valeur": "3312"}
+{"entite": "Piz de Puez", "valeur": "2918"}
+{"entite": "Piz Kesch", "valeur": "3417.7"}
+{"entite": "Piz Linard", "valeur": "3411"}
+{"entite": "Pizzo Filone", "valeur": "3133"}
+{"entite": "Pizzo Meda", "valeur": "2615"}
+{"entite": "Pla de les Salines", "valeur": "2374"}
+{"entite": "Pla dels Triadors", "valeur": "2247"}
+{"entite": "Plain de la Gentiane", "valeur": "1112"}
+{"entite": "Plaine de Gignac", "valeur": "242"}
+{"entite": "Les Plaines", "valeur": "1922"}
+{"entite": "Plan de Corones", "valeur": "2275"}
+{"entite": "Plan de l'Oullaz", "valeur": "2204"}
+{"entite": "Plan du Pal", "valeur": "298.55"}
+{"entite": "plan du Salève", "valeur": "1348"}
+{"entite": "Le Plaret", "valeur": "3563"}
+{"entite": "Plateau d'Educh", "valeur": "1190"}
+{"entite": "Plateau de l'Homme Mort", "valeur": "396"}
+{"entite": "Plateau des Chamossières", "valeur": "2135"}
+{"entite": "Plateau Saint Jean", "valeur": "1740"}
+{"entite": "Le Plenay", "valeur": "1498"}
+{"entite": "Plomb du Cantal", "valeur": "1855"}
+{"entite": "Plynlimon", "valeur": "752"}
+{"entite": "Pogled", "valeur": "2155"}
+{"entite": "Point d'Areno", "valeur": "1085"}
+{"entite": "Le Point Sublime", "valeur": "730"}
+{"entite": "pointe à Corbeaux", "valeur": "2686"}
+{"entite": "pointe Aculone", "valeur": "1128"}
+{"entite": "pointe alla Signora", "valeur": "68"}
+{"entite": "pointe Arghiavana", "valeur": "1113"}
+{"entite": "pointe Baraccon de Chamois", "valeur": "2128"}
+{"entite": "pointe Bayeux", "valeur": "4258"}
+{"entite": "Pointe Blanche", "valeur": "2438"}
+{"entite": "Pointe Boussac", "valeur": "3118"}
+{"entite": "Pointe Buisson", "valeur": "3250"}
+{"entite": "Pointe Burnaby", "valeur": "4135"}
+{"entite": "pointe Cali", "valeur": "1357"}
+{"entite": "pointe Capizzali", "valeur": "695"}
+{"entite": "pointe Caracuto", "valeur": "936"}
+{"entite": "pointe Carpiniccia", "valeur": "991"}
+{"entite": "pointe Carrel", "valeur": "3841"}
+{"entite": "pointe Castellaccio", "valeur": "1096"}
+{"entite": "pointe Ceppo", "valeur": "1551"}
+{"entite": "pointe Cézanne", "valeur": "3365"}
+{"entite": "pointe Chalonge", "valeur": "3344"}
+{"entite": "pointe Chausenque", "valeur": "3204"}
+{"entite": "pointe Chenivier", "valeur": "1269"}
+{"entite": "Pointe Chevalier", "valeur": "3418"}
+{"entite": "pointe Chevrière", "valeur": "3276"}
+{"entite": "pointe Chigliani", "valeur": "619"}
+{"entite": "pointe Ciuffello", "valeur": "600"}
+{"entite": "pointe Clairy", "valeur": "3098"}
+{"entite": "pointe Côte de l'Âne", "valeur": "2916"}
+{"entite": "Pointe Croux", "valeur": "4023"}
+{"entite": "pointe Croz", "valeur": "4110"}
+{"entite": "pointe d'Aigue", "valeur": "2588"}
+{"entite": "pointe d'Almet", "valeur": "2232"}
+{"entite": "Pointe d'Amont du Soreiller", "valeur": "3338"}
+{"entite": "pointe d'Andagne", "valeur": "3217"}
+{"entite": "pointe d'Archeboc", "valeur": "3278"}
+{"entite": "pointe d'Arcinivale", "valeur": "107"}
+{"entite": "pointe d'Arpire", "valeur": "2575"}
+{"entite": "pointe d'Autigny", "valeur": "1540"}
+{"entite": "pointe d'Averne", "valeur": "2554"}
+{"entite": "Pointe d'Emy", "valeur": "2797"}
+{"entite": "pointe d'entre Deux Pertuis", "valeur": "1717"}
+{"entite": "pointe d'Escreins", "valeur": "2976"}
+{"entite": "pointe d'Ormelune", "valeur": "3256"}
+{"entite": "pointe d'Orto", "valeur": "558"}
+{"entite": "Pointe de Balafrasse", "valeur": "2296"}
+{"entite": "pointe de Banc Fleury", "valeur": "2009"}
+{"entite": "pointe de Banc Plat", "valeur": "1907"}
+{"entite": "pointe de Barmerousse", "valeur": "2210"}
+{"entite": "pointe de Bazel", "valeur": "3440"}
+{"entite": "pointe de Beauregard", "valeur": "1586"}
+{"entite": "pointe de Bella Cha", "valeur": "2511"}
+{"entite": "pointe de Bellegarde", "valeur": "2512"}
+{"entite": "Pointe de Bonne Pierre", "valeur": "3683"}
+{"entite": "pointe de Bornand", "valeur": "2034"}
+{"entite": "pointe de Buturetto", "valeur": "185"}
+{"entite": "pointe de Calamarelle", "valeur": "439"}
+{"entite": "pointe de Calanche", "valeur": "1074"}
+{"entite": "pointe de Camborsier", "valeur": "2354"}
+{"entite": "pointe de Campana", "valeur": "700"}
+{"entite": "pointe de Campolongo", "valeur": "1660"}
+{"entite": "pointe de Capezzolo", "valeur": "2081"}
+{"entite": "pointe de Capizzolo", "valeur": "1103"}
+{"entite": "pointe de Castellone", "valeur": "537"}
+{"entite": "pointe de Celse Nière", "valeur": "3202"}
+{"entite": "pointe de Cercle", "valeur": "1272"}
+{"entite": "pointe de Cerdosse", "valeur": "2595"}
+{"entite": "pointe de Chaborgne", "valeur": "2754"}
+{"entite": "pointe de Chamosseran", "valeur": "1935"}
+{"entite": "pointe de Chanteloube", "valeur": "3037"}
+{"entite": "Pointe de Char d'Osset", "valeur": "1121"}
+{"entite": "pointe de Chardonnière", "valeur": "2723"}
+{"entite": "pointe de Chauriande", "valeur": "1801"}
+{"entite": "pointe de Chaurionde", "valeur": "2173"}
+{"entite": "pointe de Chavannais", "valeur": "1851"}
+{"entite": "pointe de Chenevier", "valeur": "1302"}
+{"entite": "Pointe de Chombas", "valeur": "2468"}
+{"entite": "pointe de Claret", "valeur": "3355"}
+{"entite": "pointe de Colomban", "valeur": "2455"}
+{"entite": "pointe de Combe Bénite", "valeur": "2575"}
+{"entite": "pointe de Combe Bronsin", "valeur": "2499"}
+{"entite": "Pointe de Comberousse", "valeur": "2866"}
+{"entite": "pointe de Compolelli", "valeur": "1119"}
+{"entite": "Pointe de Confolens", "valeur": "2990"}
+{"entite": "pointe de Corbalanche", "valeur": "1945"}
+{"entite": "pointe de Cournascle", "valeur": "2854"}
+{"entite": "pointe de Covagnet", "valeur": "2681"}
+{"entite": "Pointe de Cricche", "valeur": "2057"}
+{"entite": "pointe de Cruessajran", "valeur": "1961"}
+{"entite": "pointe de Cupoire", "valeur": "1882"}
+{"entite": "Pointe de Deux Heures", "valeur": "2018"}
+{"entite": "pointe de Dran", "valeur": "1830"}
+{"entite": "pointe de Dreron", "valeur": "2009"}
+{"entite": "pointe de Fleurendon", "valeur": "2497"}
+{"entite": "pointe de Freydon", "valeur": "2442"}
+{"entite": "pointe de Friolin", "valeur": "2678"}
+{"entite": "pointe de Gargan", "valeur": "2767"}
+{"entite": "pointe de Gialgone", "valeur": "1572"}
+{"entite": "pointe de Giccia", "valeur": "1634"}
+{"entite": "Pointe de Gigord", "valeur": "3531"}
+{"entite": "pointe de Grafolello", "valeur": "1400"}
+{"entite": "Pointe de Grande Combe", "valeur": "2210"}
+{"entite": "Pointe de Haute Béne", "valeur": "2215"}
+{"entite": "pointe de Jacquette", "valeur": "2693"}
+{"entite": "pointe de Juva", "valeur": "924"}
+{"entite": "pointe de l'Alpe", "valeur": "3031"}
+{"entite": "pointe de l'Arbaron", "valeur": "1953"}
+{"entite": "pointe de l'Arbenne", "valeur": "2446"}
+{"entite": "pointe de l'Argentière", "valeur": "3053"}
+{"entite": "pointe de l'Aritte", "valeur": "1626"}
+{"entite": "pointe de l'Arselle", "valeur": "3110"}
+{"entite": "pointe de l'Aup du Pont", "valeur": "2597"}
+{"entite": "pointe de l'Écorchoir", "valeur": "2409"}
+{"entite": "pointe de l'Étendard", "valeur": "2981"}
+{"entite": "pointe de l'Ifala", "valeur": "2651"}
+{"entite": "pointe de l'Observatoire", "valeur": "3016"}
+{"entite": "pointe de l'Ouillarse", "valeur": "3478"}
+{"entite": "pointe de l'Ovine", "valeur": "1832"}
+{"entite": "pointe de la Bailletaz", "valeur": "3071"}
+{"entite": "pointe de la Bajulaz", "valeur": "2338"}
+{"entite": "Pointe de la Balme", "valeur": "1858"}
+{"entite": "pointe de la Bornée", "valeur": "1507"}
+{"entite": "pointe de la Botte", "valeur": "1807"}
+{"entite": "pointe de la Carmélite", "valeur": "2477"}
+{"entite": "pointe de la Combe Neuve", "valeur": "2845"}
+{"entite": "pointe de la Corne", "valeur": "1931"}
+{"entite": "pointe de la Couennasse", "valeur": "1516"}
+{"entite": "pointe de la Croix", "valeur": "1272"}
+{"entite": "pointe de la Dent", "valeur": "1593"}
+{"entite": "pointe de la Deuva", "valeur": "1707"}
+{"entite": "pointe de la Dieuva", "valeur": "1616"}
+{"entite": "pointe de la Fenêtre", "valeur": "2268"}
+{"entite": "pointe de la Finive", "valeur": "2838"}
+{"entite": "pointe de la Foglietta", "valeur": "2930"}
+{"entite": "pointe de la Fougère", "valeur": "1849"}
+{"entite": "pointe de la Galia", "valeur": "175"}
+{"entite": "Pointe de la Golette", "valeur": "3256"}
+{"entite": "pointe de la Grande Glière", "valeur": "3392"}
+{"entite": "pointe de la Grande Imbasse", "valeur": "2483"}
+{"entite": "Pointe de la Grande Sagne", "valeur": "3660"}
+{"entite": "pointe de la Haie", "valeur": "3452"}
+{"entite": "pointe de la Lauze", "valeur": "2810"}
+{"entite": "pointe de la Levrière", "valeur": "2571"}
+{"entite": "pointe de la Louïe Blanche", "valeur": "2939"}
+{"entite": "Pointe de la Mariande", "valeur": "3151"}
+{"entite": "Pointe de la Met", "valeur": "3041"}
+{"entite": "pointe de la Palissade", "valeur": "2729"}
+{"entite": "pointe de la Pallaz", "valeur": "2709"}
+{"entite": "pointe de la Petite Glière", "valeur": "3322"}
+{"entite": "Pointe de la Pilatte", "valeur": "3476"}
+{"entite": "pointe de la Pissine", "valeur": "2844"}
+{"entite": "pointe de la Portette", "valeur": "2607"}
+{"entite": "pointe de la Queblette", "valeur": "1915"}
+{"entite": "pointe de la Ratelière", "valeur": "2708"}
+{"entite": "pointe de la Roche Jaille", "valeur": "2573"}
+{"entite": "pointe de la Rochette", "valeur": "1491"}
+{"entite": "pointe de la Rossa", "valeur": "2708"}
+{"entite": "Pointe de la Sachette", "valeur": "2872"}
+{"entite": "pointe de la Sambuy", "valeur": "2198"}
+{"entite": "pointe de la Sandoneire", "valeur": "2652"}
+{"entite": "pointe de la Saume", "valeur": "2724"}
+{"entite": "pointe de la Sellive", "valeur": "1817"}
+{"entite": "pointe de la Sure", "valeur": "1643"}
+{"entite": "pointe de la Tépiaz", "valeur": "2694"}
+{"entite": "pointe de la Terrasse", "valeur": "2881"}
+{"entite": "pointe de la Turche", "valeur": "1607"}
+{"entite": "Pointe de la Valette", "valeur": "3384"}
+{"entite": "pointe de la Vallaisonnay", "valeur": "3020"}
+{"entite": "pointe de la Vélière", "valeur": "2467"}
+{"entite": "pointe de la Vuzelle", "valeur": "2574"}
+{"entite": "pointe de Lagoniello", "valeur": "852"}
+{"entite": "pointe de Lapaz", "valeur": "2313"}
+{"entite": "pointe de Larmet", "valeur": "2292"}
+{"entite": "pointe de Larrieux", "valeur": "1410"}
+{"entite": "pointe de Lavouet", "valeur": "2410"}
+{"entite": "pointe de Leisette", "valeur": "2910"}
+{"entite": "Pointe de Leschaux", "valeur": "2653"}
+{"entite": "pointe de Lingustier", "valeur": "2363"}
+{"entite": "pointe de Lisa", "valeur": "645"}
+{"entite": "pointe de Literole", "valeur": "3132"}
+{"entite": "pointe de Lugo", "valeur": "1809"}
+{"entite": "Pointe de Malhaubert", "valeur": "3049"}
+{"entite": "pointe de Mangani", "valeur": "964"}
+{"entite": "pointe de Marcelly", "valeur": "1999"}
+{"entite": "pointe de Montalbi", "valeur": "476"}
+{"entite": "pointe de Monte", "valeur": "1669"}
+{"entite": "pointe de Mufuncello", "valeur": "958"}
+{"entite": "pointe de Muretouse", "valeur": "3454"}
+{"entite": "pointe de Mya", "valeur": "2513"}
+{"entite": "Pointe de Nancy", "valeur": "1191"}
+{"entite": "pointe de Nions", "valeur": "2019"}
+{"entite": "pointe de Pastourlet", "valeur": "2565"}
+{"entite": "Pointe de Pécé", "valeur": "2733"}
+{"entite": "pointe de Pelève", "valeur": "2408"}
+{"entite": "Pointe de Pétalouse", "valeur": "1878"}
+{"entite": "pointe de Picheru", "valeur": "2954"}
+{"entite": "pointe de Pierre Fendue", "valeur": "3037"}
+{"entite": "pointe de Plan Contaz", "valeur": "2638"}
+{"entite": "pointe de Platé", "valeur": "2554"}
+{"entite": "pointe de Plovezan", "valeur": "2663"}
+{"entite": "pointe de Porcilelle", "valeur": "1176"}
+{"entite": "pointe de Pozzo di Borgo", "valeur": "177"}
+{"entite": "pointe de Pralognan", "valeur": "2663"}
+{"entite": "pointe de Pramecou", "valeur": "3009"}
+{"entite": "pointe de Presset", "valeur": "2858"}
+{"entite": "pointe de Puvat", "valeur": "1909"}
+{"entite": "pointe de Quarcio Grosso", "valeur": "867"}
+{"entite": "pointe de Rafaello", "valeur": "70"}
+{"entite": "pointe de Ramavoulla", "valeur": "1672"}
+{"entite": "pointe de Rasis", "valeur": "2840"}
+{"entite": "pointe de Renuccio", "valeur": "1586"}
+{"entite": "pointe de Ressacha", "valeur": "2219"}
+{"entite": "pointe de Ressachaux", "valeur": "2173"}
+{"entite": "pointe de Rochachille", "valeur": "2799"}
+{"entite": "pointe de Rognier", "valeur": "2341"}
+{"entite": "pointe de Rosaël", "valeur": "3069"}
+{"entite": "pointe de Rosoire", "valeur": "2776"}
+{"entite": "pointe de Rosolin", "valeur": "2732"}
+{"entite": "pointe de Rouelletaz", "valeur": "2077"}
+{"entite": "pointe de Rovagne", "valeur": "1629"}
+{"entite": "pointe de Rugger", "valeur": "1923"}
+{"entite": "pointe de Ruja", "valeur": "465"}
+{"entite": "pointe de Sales", "valeur": "2497"}
+{"entite": "pointe de Salisci", "valeur": "795"}
+{"entite": "pointe de Samulari", "valeur": "96"}
+{"entite": "pointe de San-Cervone", "valeur": "1340"}
+{"entite": "pointe de San-Salvador", "valeur": "608"}
+{"entite": "pointe de Sans Bet", "valeur": "2240"}
+{"entite": "pointe de Serenton", "valeur": "1561"}
+{"entite": "pointe de Serre", "valeur": "2617"}
+{"entite": "pointe de Serru", "valeur": "3229"}
+{"entite": "pointe de Sistaja", "valeur": "1476"}
+{"entite": "pointe de Soliet", "valeur": "2944"}
+{"entite": "pointe de Sous-Dîne", "valeur": "1954"}
+{"entite": "pointe de Stavolinca", "valeur": "54"}
+{"entite": "pointe de Talamarche", "valeur": "1852"}
+{"entite": "pointe de Tartavello", "valeur": "793"}
+{"entite": "pointe de Thorens", "valeur": "3266"}
+{"entite": "pointe de Tierce", "valeur": "2973"}
+{"entite": "pointe de Trapechet", "valeur": "1900"}
+{"entite": "pointe de Tuberga", "valeur": "835"}
+{"entite": "pointe de Valbuche", "valeur": "2629"}
+{"entite": "pointe de Vallonbrun", "valeur": "3413"}
+{"entite": "Pointe de Véran", "valeur": "1892"}
+{"entite": "pointe de Véret", "valeur": "2122"}
+{"entite": "pointe de Villonet", "valeur": "2727"}
+{"entite": "pointe de Zorpi", "valeur": "1840"}
+{"entite": "pointe dell' Oriente", "valeur": "1937"}
+{"entite": "pointe della Finocchiaja", "valeur": "443"}
+{"entite": "pointe des Arandelières", "valeur": "3178"}
+{"entite": "pointe des Arangles", "valeur": "2344"}
+{"entite": "pointe des Aravis", "valeur": "2325"}
+{"entite": "pointe des Arbennes", "valeur": "2464"}
+{"entite": "pointe des Arces", "valeur": "2076"}
+{"entite": "pointe des Arlicots", "valeur": "2060"}
+{"entite": "Pointe des Arses", "valeur": "3187"}
+{"entite": "pointe des Auges", "valeur": "1814"}
+{"entite": "pointe des Avers", "valeur": "2667"}
+{"entite": "pointe des Blanchets", "valeur": "2953"}
+{"entite": "pointe des Bouts", "valeur": "1696"}
+{"entite": "pointe des Brasses", "valeur": "1502"}
+{"entite": "pointe des Broès", "valeur": "3405"}
+{"entite": "pointe des Cavales", "valeur": "2778"}
+{"entite": "pointe des Chardes", "valeur": "2919"}
+{"entite": "pointe des Chaudannes", "valeur": "2519"}
+{"entite": "pointe des Conscrits", "valeur": "3226"}
+{"entite": "pointe des Couloureuses", "valeur": "2678"}
+{"entite": "pointe des Delevrets", "valeur": "1966"}
+{"entite": "pointe des Fonds", "valeur": "3021"}
+{"entite": "pointe des Fours", "valeur": "3072"}
+{"entite": "pointe des Frêtes", "valeur": "2019"}
+{"entite": "pointe des Gavies", "valeur": "2463"}
+{"entite": "pointe des Lacs Verdets", "valeur": "2967"}
+{"entite": "pointe des Lanchettes", "valeur": "3085"}
+{"entite": "Pointe des Lauzettes", "valeur": "3053"}
+{"entite": "pointe des Lessières", "valeur": "3043"}
+{"entite": "pointe des Marcellettes", "valeur": "2802"}
+{"entite": "Pointe des Mines", "valeur": "3423"}
+{"entite": "pointe des Ouillons", "valeur": "3110"}
+{"entite": "pointe des Pichères", "valeur": "3309"}
+{"entite": "pointe des Pichettes", "valeur": "3534"}
+{"entite": "pointe des Places", "valeur": "1543"}
+{"entite": "pointe des Plates des Chamois", "valeur": "3567"}
+{"entite": "Pointe des Roches", "valeur": "3176"}
+{"entite": "pointe des Rognons", "valeur": "3211"}
+{"entite": "pointe des Sagnes Longues", "valeur": "3020"}
+{"entite": "pointe des Sarrasins", "valeur": "2963"}
+{"entite": "pointe des Six Niès", "valeur": "3023"}
+{"entite": "pointe des Terriers", "valeur": "2717"}
+{"entite": "pointe des Tours", "valeur": "1533"}
+{"entite": "pointe des Trois Hommes", "valeur": "2775"}
+{"entite": "pointe des Verres", "valeur": "2532"}
+{"entite": "Pointe des Verts", "valeur": "2555"}
+{"entite": "pointe des Vioz", "valeur": "2461"}
+{"entite": "pointe des Volnets", "valeur": "3248"}
+{"entite": "pointe Diciotte", "valeur": "2332"}
+{"entite": "pointe Droite", "valeur": "2503"}
+{"entite": "pointe Droset", "valeur": "2917"}
+{"entite": "pointe du Bacheux", "valeur": "2739"}
+{"entite": "pointe du Baounet", "valeur": "3129"}
+{"entite": "pointe du Bonhomme", "valeur": "2783"}
+{"entite": "pointe du Borgne", "valeur": "3078"}
+{"entite": "pointe du Chapeau", "valeur": "3219"}
+{"entite": "pointe du Charbonnier", "valeur": "3311"}
+{"entite": "pointe du Chardonnet", "valeur": "2870"}
+{"entite": "Pointe du Château", "valeur": "2104"}
+{"entite": "pointe du Clapey", "valeur": "2536"}
+{"entite": "pointe du Clot", "valeur": "2938"}
+{"entite": "pointe du Col", "valeur": "2319"}
+{"entite": "Pointe du Corbier", "valeur": "2265"}
+{"entite": "pointe du Creux Noir", "valeur": "3113"}
+{"entite": "pointe du Cuchet", "valeur": "1679"}
+{"entite": "pointe du Dard", "valeur": "2489"}
+{"entite": "pointe du Dérochoir", "valeur": "2411"}
+{"entite": "pointe du Dzonfié", "valeur": "2455"}
+{"entite": "pointe du Fond Blanc", "valeur": "2480"}
+{"entite": "pointe du Fond Vert", "valeur": "2859"}
+{"entite": "pointe du Fort", "valeur": "3385"}
+{"entite": "pointe du Four", "valeur": "2469"}
+{"entite": "pointe du Fréjus", "valeur": "2936"}
+{"entite": "Pointe du Front", "valeur": "2960"}
+{"entite": "pointe du Génépy", "valeur": "3544"}
+{"entite": "pointe du Genévrier", "valeur": "2870"}
+{"entite": "pointe du Gleyzin", "valeur": "2533"}
+{"entite": "pointe du Grand Méan", "valeur": "3253"}
+{"entite": "pointe du Grand Niélard", "valeur": "2544"}
+{"entite": "pointe du Grand Pré", "valeur": "3059"}
+{"entite": "pointe du Grand Soliet", "valeur": "2928"}
+{"entite": "pointe du Grand Vallon", "valeur": "3168"}
+{"entite": "Pointe du Grapillon", "valeur": "3092"}
+{"entite": "Pointe du Gros Caval", "valeur": "3285"}
+{"entite": "pointe du Haut Fleuri", "valeur": "1516"}
+{"entite": "pointe du Haut Fleury", "valeur": "1981"}
+{"entite": "pointe du Lac sans Fond", "valeur": "2884"}
+{"entite": "pointe du Midi", "valeur": "2364"}
+{"entite": "pointe du Mont", "valeur": "1621"}
+{"entite": "Pointe du Montet", "valeur": "3428"}
+{"entite": "pointe du Mottet", "valeur": "2592"}
+{"entite": "pointe du Nant Cruet", "valeur": "3605"}
+{"entite": "pointe du Niélard", "valeur": "2559"}
+{"entite": "pointe du Notaire", "valeur": "3269"}
+{"entite": "pointe du Petit Fond Blanc", "valeur": "2497"}
+{"entite": "pointe du Petit Vallon", "valeur": "2794"}
+{"entite": "Pointe du Pisset", "valeur": "3033"}
+{"entite": "pointe du Plan", "valeur": "2725"}
+{"entite": "pointe du Queyre", "valeur": "3168"}
+{"entite": "pointe du Rascrouset", "valeur": "2991"}
+{"entite": "pointe du Réou-d'Arsine", "valeur": "2764"}
+{"entite": "pointe du Replan", "valeur": "2188"}
+{"entite": "pointe du Riondet", "valeur": "2357"}
+{"entite": "pointe du Riou Blanc", "valeur": "2799"}
+{"entite": "pointe du Rocher Blanc", "valeur": "3023"}
+{"entite": "pointe du Rozet", "valeur": "2580"}
+{"entite": "pointe du Santel", "valeur": "3465"}
+{"entite": "pointe du Télégraphe", "valeur": "1719"}
+{"entite": "pointe du Tougne", "valeur": "2709"}
+{"entite": "pointe du Tuet", "valeur": "2037"}
+{"entite": "pointe du Vallon", "valeur": "2768"}
+{"entite": "pointe du Vallonnet", "valeur": "3539"}
+{"entite": "pointe du Velan", "valeur": "1782"}
+{"entite": "Pointe du Vélard", "valeur": "1516"}
+{"entite": "pointe du Vieux", "valeur": "3464"}
+{"entite": "pointe Dufour", "valeur": "4634"}
+{"entite": "pointe Dunant", "valeur": "4631"}
+{"entite": "pointe Durand", "valeur": "3190"}
+{"entite": "Pointe Dzérat", "valeur": "2278"}
+{"entite": "pointe Émilienne", "valeur": "2598"}
+{"entite": "pointe Emma", "valeur": "3213"}
+{"entite": "Pointe Farrar", "valeur": "3660"}
+{"entite": "pointe Fenaggia", "valeur": "1026"}
+{"entite": "pointe Feniccia", "valeur": "1584"}
+{"entite": "pointe Ficciaggiola", "valeur": "179"}
+{"entite": "pointe Finosa", "valeur": "1841"}
+{"entite": "pointe Forcelli", "valeur": "1404"}
+{"entite": "pointe Fornet", "valeur": "3066"}
+{"entite": "pointe Francesetti", "valeur": "3425"}
+{"entite": "pointe Gaillarde", "valeur": "2769"}
+{"entite": "pointe Gias Vieux", "valeur": "2605"}
+{"entite": "pointe Giordani", "valeur": "4046"}
+{"entite": "pointe Grado", "valeur": "1539"}
+{"entite": "pointe Gravelotte", "valeur": "3387"}
+{"entite": "pointe Grimaldella", "valeur": "492"}
+{"entite": "Pointe Helbronner", "valeur": "3462"}
+{"entite": "Pointe Hélène", "valeur": "4045"}
+{"entite": "Pointe Henriette", "valeur": "3265"}
+{"entite": "pointe Innommée", "valeur": "3730"}
+{"entite": "Pointe Isabelle", "valeur": "3761"}
+{"entite": "pointe Kyrie Eleison", "valeur": "1510"}
+{"entite": "pointe Laccione", "valeur": "1569"}
+{"entite": "pointe Lattiniccia", "valeur": "2202"}
+{"entite": "pointe Lavina", "valeur": "1092"}
+{"entite": "Pointe Léchaud", "valeur": "3128"}
+{"entite": "pointe Ledormeur", "valeur": "3120"}
+{"entite": "Pointe Lépiney", "valeur": "3429"}
+{"entite": "pointe Licciola", "valeur": "445"}
+{"entite": "pointe Liciola", "valeur": "2235"}
+{"entite": "pointe Mathews", "valeur": "3783"}
+{"entite": "pointe Mezzenile", "valeur": "3436"}
+{"entite": "pointe Mieulet", "valeur": "4287"}
+{"entite": "pointe Migliarello", "valeur": "1812"}
+{"entite": "pointe Morin", "valeur": "3592"}
+{"entite": "pointe Motte", "valeur": "2718"}
+{"entite": "pointe Mozza", "valeur": "1047"}
+{"entite": "pointe Muracinto", "valeur": "620"}
+{"entite": "pointe Muratello", "valeur": "2081"}
+{"entite": "pointe Muro", "valeur": "1507"}
+{"entite": "pointe Murone", "valeur": "596"}
+{"entite": "pointe Nérot", "valeur": "3538"}
+{"entite": "pointe Noire", "valeur": "2630"}
+{"entite": "pointe Nord de Bézin", "valeur": "3028"}
+{"entite": "pointe Nord de la Venasque", "valeur": "2637"}
+{"entite": "pointe Ouest du Mont Pelve", "valeur": "3254"}
+{"entite": "pointe Pecoraja", "valeur": "937"}
+{"entite": "Pointe Percée", "valeur": "2750"}
+{"entite": "pointe Perfia", "valeur": "1973"}
+{"entite": "pointe Perret", "valeur": "1885"}
+{"entite": "Pointe Pers", "valeur": "3327"}
+{"entite": "pointe Pertuiset", "valeur": "1679"}
+{"entite": "pointe Piaget", "valeur": "3569"}
+{"entite": "Pointe Piazza", "valeur": "226"}
+{"entite": "pointe Pietra Mala", "valeur": "1569"}
+{"entite": "pointe Piscio", "valeur": "1543"}
+{"entite": "pointe Prunicciosa", "valeur": "1063"}
+{"entite": "pointe Quercitello", "valeur": "1138"}
+{"entite": "pointe Rousse des Chambres", "valeur": "2660"}
+{"entite": "pointe Saint-Jean", "valeur": "2254"}
+{"entite": "pointe Salvador", "valeur": "3202"}
+{"entite": "pointe San-Giovanni", "valeur": "413"}
+{"entite": "pointe Sant'Elisco", "valeur": "743"}
+{"entite": "pointe Scala", "valeur": "1377"}
+{"entite": "pointe Scalajolo", "valeur": "777"}
+{"entite": "pointe Scandola", "valeur": "803"}
+{"entite": "pointe Sud de la Venasque", "valeur": "2620"}
+{"entite": "Pointe Swan", "valeur": "3294"}
+{"entite": "pointe Tersive", "valeur": "3515"}
+{"entite": "pointe Tintinnaja", "valeur": "1893"}
+{"entite": "pointe Tirolello", "valeur": "1202"}
+{"entite": "pointe Turra", "valeur": "2292"}
+{"entite": "pointe Vatacina", "valeur": "207"}
+{"entite": "pointe Walker", "valeur": "4208"}
+{"entite": "pointe Whymper", "valeur": "4184"}
+{"entite": "pointe Xavier-Blanc", "valeur": "3677"}
+{"entite": "pointe Young", "valeur": "3996"}
+{"entite": "Pointes d'Ayères", "valeur": "2644"}
+{"entite": "pointes d'Orient", "valeur": "2949"}
+{"entite": "Pointes de Burlan", "valeur": "3299"}
+{"entite": "Pointes de Frébouze", "valeur": "3530"}
+{"entite": "Pointes de la Blonnière", "valeur": "2369"}
+{"entite": "pointes de la Frêche", "valeur": "3467"}
+{"entite": "pointes de la Frête", "valeur": "1967"}
+{"entite": "Pointes de Segogne", "valeur": "3797"}
+{"entite": "Pointes des Hirondelles", "valeur": "3524"}
+{"entite": "pointes du Riou Blanc", "valeur": "3404"}
+{"entite": "Pointes Longues", "valeur": "2451"}
+{"entite": "Pointes rouges de l'Emilius", "valeur": "3189"}
+{"entite": "Le Pointu", "valeur": "871"}
+{"entite": "le Pommier Blanc", "valeur": "2514"}
+{"entite": "Ponten", "valeur": "2045"}
+{"entite": "Popoeretia", "valeur": "277"}
+{"entite": "Pounche des Escaouprés", "valeur": "569"}
+{"entite": "La Pousterle", "valeur": "2500"}
+{"entite": "Praděd", "valeur": "1491.3"}
+{"entite": "Pradieu", "valeur": "2579"}
+{"entite": "Le Prarion", "valeur": "1969"}
+{"entite": "Pravouta", "valeur": "1760"}
+{"entite": "Praz Vechin", "valeur": "1743"}
+{"entite": "Puech d'Andan", "valeur": "888"}
+{"entite": "Puech d'Auzet", "valeur": "623"}
+{"entite": "Puig Colom", "valeur": "1257.1"}
+{"entite": "Puig d'Escotó", "valeur": "2292"}
+{"entite": "Puig de Coma Dolce", "valeur": "2447"}
+{"entite": "Puig de Dòrria", "valeur": "2547"}
+{"entite": "Puig de Fontviva", "valeur": "2673"}
+{"entite": "Puig de l'Estelle", "valeur": "1113"}
+{"entite": "Puig de l'Ofrena", "valeur": "1351.6"}
+{"entite": "Puig de la Clapa", "valeur": "1614.3"}
+{"entite": "Puig de la Collada Verda", "valeur": "2403"}
+{"entite": "Puig de Rauta", "valeur": "951.8"}
+{"entite": "Puig de Solana Carnicera", "valeur": "2839"}
+{"entite": "Puig del Cap de l'Home", "valeur": "1902"}
+{"entite": "Puig del coll d'Eina", "valeur": "2772"}
+{"entite": "Puig del Coll de Finestrelles", "valeur": "2744"}
+{"entite": "Puig del Torn", "valeur": "664"}
+{"entite": "Puig dels Pinyers", "valeur": "951"}
+{"entite": "Puig des Bessis", "valeur": "1647"}
+{"entite": "Puig des Maurous", "valeur": "1206.7"}
+{"entite": "Puig Oriental de Coll Roig", "valeur": "2804"}
+{"entite": "Puig Rojà", "valeur": "2724"}
+{"entite": "Puigllangord", "valeur": "1596"}
+{"entite": "Puigmal", "valeur": "2910"}
+{"entite": "Puncho", "valeur": "2581"}
+{"entite": "Punta ai Sordali", "valeur": "1377"}
+{"entite": "Punta al Finello", "valeur": "1637"}
+{"entite": "Punta al Quarcio", "valeur": "442"}
+{"entite": "Punta alla Paglia", "valeur": "1359"}
+{"entite": "Punta alli Gicelli", "valeur": "1717"}
+{"entite": "Punta alli Muzzolini", "valeur": "1571"}
+{"entite": "Punta allo Gallicaccia", "valeur": "1465"}
+{"entite": "Punta Artica", "valeur": "2327"}
+{"entite": "Punta Batarchione", "valeur": "877"}
+{"entite": "Punta Bruta", "valeur": "2637"}
+{"entite": "Punta Chiova", "valeur": "1435"}
+{"entite": "Punta Contra Grossa", "valeur": "130"}
+{"entite": "Punta Cristalliera", "valeur": "2801"}
+{"entite": "Punta d'Aquilone", "valeur": "201"}
+{"entite": "Punta d'Ovace", "valeur": "1230"}
+{"entite": "Punta de las Olas", "valeur": "3002"}
+{"entite": "Punta del Carapono", "valeur": "535"}
+{"entite": "Punta del Cavalelli", "valeur": "1381"}
+{"entite": "Punta del Diamante", "valeur": "1160"}
+{"entite": "Punta del Giargione", "valeur": "393"}
+{"entite": "Punta del Marcorinaccio", "valeur": "1406"}
+{"entite": "Punta dell' Oro", "valeur": "57"}
+{"entite": "Punta della Capella", "valeur": "1296"}
+{"entite": "Punta della Filetta Soprana", "valeur": "568"}
+{"entite": "Punta della Gattaja", "valeur": "570"}
+{"entite": "Punta della Gianfena", "valeur": "1818"}
+{"entite": "Punta della Serra", "valeur": "757"}
+{"entite": "Punta della Vacca Morta", "valeur": "957"}
+{"entite": "Punta della Vida", "valeur": "696"}
+{"entite": "Punta delli Castelli", "valeur": "2090"}
+{"entite": "Punta di a Saina", "valeur": "430"}
+{"entite": "Punta di a Varra", "valeur": "95"}
+{"entite": "Punta di Chalanche Ronde", "valeur": "2521"}
+{"entite": "Punta di Guaitella", "valeur": "633"}
+{"entite": "Punta di l'Altore", "valeur": "2021"}
+{"entite": "Punta di l'Avena", "valeur": "255"}
+{"entite": "Punta di Malamatina", "valeur": "614"}
+{"entite": "Punta di Marinaccia", "valeur": "182"}
+{"entite": "Punta di Muro", "valeur": "456"}
+{"entite": "Punta di Pozzi", "valeur": "471"}
+{"entite": "Punta di Rossagio", "valeur": "626"}
+{"entite": "Punta di Telica", "valeur": "214"}
+{"entite": "Punta di u Cerchiu", "valeur": "246"}
+{"entite": "Punta di u Furnellu", "valeur": "1902"}
+{"entite": "Punta Est", "valeur": "3123"}
+{"entite": "Punta Gabarro", "valeur": "3105"}
+{"entite": "Punta Gialba", "valeur": "1959"}
+{"entite": "Punta Grober", "valeur": "3497"}
+{"entite": "Punta Grossa", "valeur": "889"}
+{"entite": "Punta la Sposata", "valeur": "877"}
+{"entite": "Punta le Porte", "valeur": "1979"}
+{"entite": "Punta Macchiosa", "valeur": "1404"}
+{"entite": "Punta Minuta", "valeur": "2556"}
+{"entite": "Punta Mora", "valeur": "486"}
+{"entite": "Punta Mozza", "valeur": "1774"}
+{"entite": "Punta Mufrena", "valeur": "2590"}
+{"entite": "Punta Ovest", "valeur": "3123"}
+{"entite": "Punta Pastinaca", "valeur": "661"}
+{"entite": "Punta Plattes de Chamois", "valeur": "3162"}
+{"entite": "Punta Quarcioqua", "valeur": "296"}
+{"entite": "Punta Quercitella", "valeur": "1390"}
+{"entite": "Punta Racana", "valeur": "164"}
+{"entite": "Punta Radiche", "valeur": "1847"}
+{"entite": "Punta Rasin", "valeur": "2481"}
+{"entite": "Punta Reginosa", "valeur": "1310"}
+{"entite": "Punta Renosa", "valeur": "1942"}
+{"entite": "Punta Rognosa", "valeur": "2032"}
+{"entite": "Punta San Simeone", "valeur": "183"}
+{"entite": "Punta San Sisto", "valeur": "431"}
+{"entite": "Punta Savaziglia", "valeur": "120"}
+{"entite": "Punta Tonda", "valeur": "243"}
+{"entite": "Punta Tsanteleina", "valeur": "3154"}
+{"entite": "Puuroa", "valeur": "67"}
+{"entite": "Le Puy", "valeur": "1659"}
+{"entite": "puy Bataillouse", "valeur": "1683"}
+{"entite": "Puy Cervier", "valeur": "1239"}
+{"entite": "puy d'Aubassin", "valeur": "705"}
+{"entite": "puy de Dôme", "valeur": "1465"}
+{"entite": "puy de Manse", "valeur": "1637"}
+{"entite": "puy de Rent", "valeur": "1996"}
+{"entite": "puy de Sancy", "valeur": "1885"}
+{"entite": "Puy des Chaires", "valeur": "932"}
+{"entite": "Puy du Bassin", "valeur": "709"}
+{"entite": "Puy Gris", "valeur": "2908"}
+{"entite": "Puy Maurel", "valeur": "1302"}
+{"entite": "Puy Rivarol", "valeur": "2066"}
+{"entite": "Pyramide de la Pierre", "valeur": "3242"}
+{"entite": "Pyramide de Laurichard", "valeur": "2772"}
+{"entite": "Pyramide de Serre", "valeur": "2278"}
+{"entite": "Pyramide du Vallonbrun", "valeur": "3422"}
+{"entite": "Le Quaro", "valeur": "2507"}
+{"entite": "Le Quermo", "valeur": "2269"}
+{"entite": "le Quermoz", "valeur": "2297"}
+{"entite": "Le Queyron", "valeur": "2633"}
+{"entite": "Quigouret", "valeur": "1234"}
+{"entite": "Radomir", "valeur": "2029"}
+{"entite": "Raggenhorn", "valeur": "1055"}
+{"entite": "Rainen", "valeur": "1006.4"}
+{"entite": "La Rambarde", "valeur": "584"}
+{"entite": "Ranc de Mianoux", "valeur": "1621"}
+{"entite": "Rangiswanger Horn", "valeur": "1616"}
+{"entite": "Rantop", "valeur": "268"}
+{"entite": "Rappenseekopf", "valeur": "2469"}
+{"entite": "Le Rascle", "valeur": "1412"}
+{"entite": "Le Rascle 1", "valeur": "1498"}
+{"entite": "Rateau d'Aussois", "valeur": "3128"}
+{"entite": "Le Ratier", "valeur": "568"}
+{"entite": "Le Rattier", "valeur": "1195"}
+{"entite": "Rauheck", "valeur": "2385"}
+{"entite": "Rauher Kulm", "valeur": "681"}
+{"entite": "Les Rebelas", "valeur": "1414"}
+{"entite": "Redoute de Château-Pignon", "valeur": "1181"}
+{"entite": "La Renoso", "valeur": "1286"}
+{"entite": "Restefond", "valeur": "2794"}
+{"entite": "Revouaire", "valeur": "811"}
+{"entite": "Rheinwaldhorn", "valeur": "3402.2"}
+{"entite": "Le Ribit", "valeur": "1240"}
+{"entite": "Riedberger Horn", "valeur": "1787"}
+{"entite": "Riedholzer Kugel", "valeur": "1065.6"}
+{"entite": "Riefenkopf", "valeur": "1748.93"}
+{"entite": "Riefenköpfle", "valeur": "1564"}
+{"entite": "Ringkollen", "valeur": "542"}
+{"entite": "La Riondaz", "valeur": "1746"}
+{"entite": "Roc Blanc - la Seranne", "valeur": "931"}
+{"entite": "roc Cornafion", "valeur": "2049"}
+{"entite": "roc d'Arguille", "valeur": "1768"}
+{"entite": "roc d'Aude", "valeur": "2326"}
+{"entite": "Roc d'Aurouze", "valeur": "2069"}
+{"entite": "Roc d'Orméa", "valeur": "1132"}
+{"entite": "Roc de Barry", "valeur": "523"}
+{"entite": "roc de Bassagne", "valeur": "3220"}
+{"entite": "Roc de Beauvent", "valeur": "1379"}
+{"entite": "Roc de Belleface", "valeur": "2818"}
+{"entite": "Roc de Burel", "valeur": "3075"}
+{"entite": "Roc de Charmieux", "valeur": "1877"}
+{"entite": "Roc de Coulobre", "valeur": "1042"}
+{"entite": "Roc de Fer", "valeur": "2087"}
+{"entite": "roc de Gleisin", "valeur": "1434"}
+{"entite": "Roc de l'Aigle", "valeur": "1174"}
+{"entite": "Roc de l'Aiguille", "valeur": "1320"}
+{"entite": "roc de l'Enfer", "valeur": "2527"}
+{"entite": "Roc de l'Escalier", "valeur": "1011"}
+{"entite": "roc de la Charbonnière", "valeur": "2738"}
+{"entite": "Roc de la Lauze", "valeur": "1506"}
+{"entite": "roc de la Pêche", "valeur": "2981"}
+{"entite": "Roc de la Rouquette", "valeur": "2113"}
+{"entite": "roc de la Tovière", "valeur": "2347"}
+{"entite": "Roc de la Vigne", "valeur": "561"}
+{"entite": "Roc de Longue-Dent", "valeur": "1337"}
+{"entite": "roc de Montalet", "valeur": "1259"}
+{"entite": "Roc de Peyrole", "valeur": "1884"}
+{"entite": "Roc de Poyez", "valeur": "1954"}
+{"entite": "Roc de Querquéou", "valeur": "1840"}
+{"entite": "Roc de Rioda", "valeur": "1951"}
+{"entite": "Roc de Tavaneuse", "valeur": "2156"}
+{"entite": "roc de Tormery", "valeur": "1135"}
+{"entite": "roc de Valmeinier", "valeur": "3025"}
+{"entite": "Roc de Viuz", "valeur": "853"}
+{"entite": "Roc dels Tres Termes", "valeur": "1128.7"}
+{"entite": "roc des Arces", "valeur": "1772"}
+{"entite": "roc des Bœufs", "valeur": "1774"}
+{"entite": "roc des Blanchets", "valeur": "2654"}
+{"entite": "roc des Evettes", "valeur": "1568"}
+{"entite": "roc des Pareis", "valeur": "2641"}
+{"entite": "Roc des Tours", "valeur": "1994"}
+{"entite": "Roc des Trois Marches", "valeur": "2704"}
+{"entite": "roc des Verdons", "valeur": "2502"}
+{"entite": "Roc du Batail", "valeur": "1670"}
+{"entite": "roc du Bécoin", "valeur": "2594"}
+{"entite": "Roc du Biolley", "valeur": "1964"}
+{"entite": "roc du Diable", "valeur": "2426"}
+{"entite": "roc du Grand Renard", "valeur": "2589"}
+{"entite": "roc du Sérac", "valeur": "2659"}
+{"entite": "Roc'h ar Feunteun", "valeur": "297"}
+{"entite": "Roc'h Toullaëron", "valeur": "318"}
+{"entite": "Roc'h Trevezel", "valeur": "384"}
+{"entite": "Roc Marchand", "valeur": "2098"}
+{"entite": "roc Merlet", "valeur": "2734"}
+{"entite": "Roc Mounio", "valeur": "2495"}
+{"entite": "Roc Mousquit", "valeur": "1887"}
+{"entite": "roc Noir de Combeynot", "valeur": "3112"}
+{"entite": "Rocca Blancia", "valeur": "3193"}
+{"entite": "Rocca dell'Abisso", "valeur": "2261"}
+{"entite": "Rocca della Niera", "valeur": "2920"}
+{"entite": "Rocca Maire", "valeur": "2284"}
+{"entite": "Rocca Negra", "valeur": "2771"}
+{"entite": "Rocca Traversiere", "valeur": "3045"}
+{"entite": "Le Rochail", "valeur": "3022"}
+{"entite": "roche à Thomas", "valeur": "2394"}
+{"entite": "roche Bénite", "valeur": "2297"}
+{"entite": "Roche Blanche", "valeur": "2500"}
+{"entite": "Roche Brune", "valeur": "2724"}
+{"entite": "roche Chevrière", "valeur": "3280"}
+{"entite": "roche Cline", "valeur": "1465"}
+{"entite": "roche d'Alvau", "valeur": "3628"}
+{"entite": "roche de Blamont", "valeur": "2749"}
+{"entite": "roche de Corne Noire", "valeur": "2461"}
+{"entite": "roche de Jabel", "valeur": "3570"}
+{"entite": "roche de Janatan", "valeur": "2158"}
+{"entite": "roche de la Gardette", "valeur": "3058"}
+{"entite": "roche de la Pelle", "valeur": "2855"}
+{"entite": "roche de la Tome", "valeur": "2546"}
+{"entite": "roche de Mio", "valeur": "2737"}
+{"entite": "Roche de Prépoulain", "valeur": "1382"}
+{"entite": "roche de Suize", "valeur": "896"}
+{"entite": "roche des Chèvres", "valeur": "2761"}
+{"entite": "roche des Marches", "valeur": "2629"}
+{"entite": "roche du Bonhomme", "valeur": "2810"}
+{"entite": "roche du Corbeau", "valeur": "1146"}
+{"entite": "roche du Grand Argentier", "valeur": "3042"}
+{"entite": "roche du Grand Galibier", "valeur": "2599"}
+{"entite": "roche du Guet", "valeur": "1209"}
+{"entite": "roche du Tougne", "valeur": "2475"}
+{"entite": "roche Faurio", "valeur": "3730"}
+{"entite": "Roche Fleurie", "valeur": "2573"}
+{"entite": "roche Grande", "valeur": "2481"}
+{"entite": "roche Jaille", "valeur": "2689"}
+{"entite": "Roche Mantel", "valeur": "3178"}
+{"entite": "roche Méane", "valeur": "3712"}
+{"entite": "Roche Merveilleuse", "valeur": "1435"}
+{"entite": "roche Michel", "valeur": "3406"}
+{"entite": "roche Murraz", "valeur": "1474"}
+{"entite": "roche Paillon", "valeur": "3636"}
+{"entite": "roche Parnal", "valeur": "1896"}
+{"entite": "roche Parstire", "valeur": "2109"}
+{"entite": "roche Perfia", "valeur": "2499"}
+{"entite": "roche Planca", "valeur": "1546"}
+{"entite": "roche Plane", "valeur": "2166"}
+{"entite": "roche Plate", "valeur": "1319"}
+{"entite": "Roche Pourrie", "valeur": "2891"}
+{"entite": "Roche Ruinée", "valeur": "2570"}
+{"entite": "roche Taillade", "valeur": "1650"}
+{"entite": "Roche Torse", "valeur": "1572"}
+{"entite": "Roche Verre Bouteille", "valeur": "1247"}
+{"entite": "la Roche Violette", "valeur": "2631"}
+{"entite": "Rocheboc", "valeur": "2367"}
+{"entite": "Rochebrune", "valeur": "1754"}
+{"entite": "Rochefort", "valeur": "1102"}
+{"entite": "rochemuse", "valeur": "1397"}
+{"entite": "Rocher Blanc", "valeur": "2919"}
+{"entite": "rocher d'Agniel", "valeur": "765"}
+{"entite": "rocher d'Arambre", "valeur": "721"}
+{"entite": "rocher d'Arclosan", "valeur": "1800"}
+{"entite": "rocher de Baconnet", "valeur": "1359"}
+{"entite": "Rocher de Belchamp", "valeur": "1860"}
+{"entite": "Rocher de Bellevarde", "valeur": "2827"}
+{"entite": "rocher de Chalves", "valeur": "1656"}
+{"entite": "rocher de Courcoussat", "valeur": "924"}
+{"entite": "rocher de Cresta", "valeur": "678"}
+{"entite": "rocher de Crispolaggio", "valeur": "405"}
+{"entite": "rocher de Dabo", "valeur": "650"}
+{"entite": "rocher de l'Yret", "valeur": "2656"}
+{"entite": "rocher de la Balmaz", "valeur": "2369"}
+{"entite": "Rocher de la Courbe", "valeur": "1810"}
+{"entite": "rocher de la Davie", "valeur": "3157"}
+{"entite": "rocher de la Grande Tempête", "valeur": "3002"}
+{"entite": "rocher de la Loze", "valeur": "2527"}
+{"entite": "rocher de la Sauma", "valeur": "3073"}
+{"entite": "rocher de la Selle", "valeur": "2834"}
+{"entite": "rocher de la Tournette", "valeur": "4677"}
+{"entite": "rocher de Lachat", "valeur": "1815"}
+{"entite": "rocher de Manettaz", "valeur": "1065"}
+{"entite": "rocher de Mont Mal", "valeur": "988"}
+{"entite": "rocher de Plassa", "valeur": "2865"}
+{"entite": "Rocher de Saint-Michel", "valeur": "323"}
+{"entite": "Rocher de Salin", "valeur": "1875"}
+{"entite": "rocher de Sarvatan", "valeur": "2510"}
+{"entite": "Rocher de Villeneuve", "valeur": "2196"}
+{"entite": "rocher des Arnauds", "valeur": "1373"}
+{"entite": "rocher des Bosses", "valeur": "4351"}
+{"entite": "rocher des Dents", "valeur": "3078"}
+{"entite": "rocher des Deux Soeur", "valeur": "1658"}
+{"entite": "rocher des Éculées", "valeur": "1524"}
+{"entite": "Rocher des Goudes", "valeur": "257"}
+{"entite": "rocher des Pradoux", "valeur": "1440"}
+{"entite": "Rocher des Tampes", "valeur": "1865"}
+{"entite": "rocher du Béard", "valeur": "1535"}
+{"entite": "rocher du Bonhomme", "valeur": "2599"}
+{"entite": "Rocher du Charvet", "valeur": "2856"}
+{"entite": "rocher du Col", "valeur": "2574"}
+{"entite": "rocher du Cougne", "valeur": "2293"}
+{"entite": "rocher du Gerbier", "valeur": "1947"}
+{"entite": "rocher du Grand Glacier", "valeur": "2447"}
+{"entite": "rocher du Grand Jet", "valeur": "2678"}
+{"entite": "rocher du Grand Lognan", "valeur": "2487"}
+{"entite": "rocher du Grand Renaud", "valeur": "2323"}
+{"entite": "rocher du Guignon", "valeur": "1190"}
+{"entite": "rocher du Marais", "valeur": "2551"}
+{"entite": "Rocher du Mauvais Passage", "valeur": "123"}
+{"entite": "rocher du Mont-Blanc", "valeur": "3883"}
+{"entite": "Rocher du Mont Roup", "valeur": "2647"}
+{"entite": "rocher du Pays", "valeur": "2576"}
+{"entite": "rocher du Pleynet", "valeur": "1831"}
+{"entite": "rocher du Roux", "valeur": "1561"}
+{"entite": "rocher du Vent", "valeur": "2360"}
+{"entite": "rocher Garaux", "valeur": "670"}
+{"entite": "Rocher Gris", "valeur": "2767"}
+{"entite": "rocher Moulon", "valeur": "2697"}
+{"entite": "rocher Pilliozan", "valeur": "2103"}
+{"entite": "rocher Rénod", "valeur": "3020"}
+{"entite": "rocher Tourte", "valeur": "1535"}
+{"entite": "rochers de Bouzon", "valeur": "1058"}
+{"entite": "rochers de Comboire", "valeur": "533"}
+{"entite": "rochers de Forclaz", "valeur": "1082"}
+{"entite": "Rochers de Hongrie", "valeur": "1196"}
+{"entite": "rochers de l'Aigle", "valeur": "2943"}
+{"entite": "rochers de l'Alpe", "valeur": "1820"}
+{"entite": "rochers de la Badaz", "valeur": "1850"}
+{"entite": "rochers de la Curiaz", "valeur": "2531"}
+{"entite": "rochers de la Grande Balme", "valeur": "2882"}
+{"entite": "Rochers de la Grande Paré", "valeur": "2950"}
+{"entite": "rochers de la Petite Balme", "valeur": "2779"}
+{"entite": "rochers de Leschaux", "valeur": "1936"}
+{"entite": "rochers de Notre Dame", "valeur": "1360"}
+{"entite": "rochers de Praz Bégnay", "valeur": "2541"}
+{"entite": "rochers de Saint Michel", "valeur": "1079"}
+{"entite": "rochers de Vallorin", "valeur": "2593"}
+{"entite": "Rochers des Barmes de l'Ours", "valeur": "3147"}
+{"entite": "rochers des Chaux", "valeur": "1359"}
+{"entite": "rochers des Enclaves", "valeur": "2467"}
+{"entite": "rochers des Gérats", "valeur": "1057"}
+{"entite": "Rochers des Lauses", "valeur": "2668"}
+{"entite": "rochers des Mines", "valeur": "1067"}
+{"entite": "Rochers du Génépi", "valeur": "2715"}
+{"entite": "Rochers Noirs", "valeur": "2884"}
+{"entite": "rochers Rouges", "valeur": "3003"}
+{"entite": "rochers Rouges Inférieurs", "valeur": "4404"}
+{"entite": "rochers Rouges Supérieurs", "valeur": "4506"}
+{"entite": "roches de Glaudon", "valeur": "2093"}
+{"entite": "Rodó de Canalbona", "valeur": "3004"}
+{"entite": "Roggspitze", "valeur": "2747"}
+{"entite": "les Rognes", "valeur": "2853"}
+{"entite": "Le Rognon", "valeur": "1570"}
+{"entite": "Rognon du Plan", "valeur": "3601"}
+{"entite": "Rohnenspitze", "valeur": "1992"}
+{"entite": "Roignais", "valeur": "2995"}
+{"entite": "Römerstein", "valeur": "874.4"}
+{"entite": "Ronde Tête", "valeur": "1117"}
+{"entite": "Roque Haute", "valeur": "604"}
+{"entite": "La Rose des Vents", "valeur": "1130"}
+{"entite": "Rossberg", "valeur": "1191"}
+{"entite": "Rosskopf", "valeur": "1823"}
+{"entite": "Rote Flüh", "valeur": "2111"}
+{"entite": "Rote Wand", "valeur": "2704"}
+{"entite": "Rotgundspitze", "valeur": "2486"}
+{"entite": "Rothornspitze", "valeur": "2393"}
+{"entite": "Rotpalfen", "valeur": "2367"}
+{"entite": "Rotspitze", "valeur": "2034"}
+{"entite": "la Rouelle", "valeur": "2082"}
+{"entite": "La Rouye", "valeur": "2925"}
+{"entite": "Rozdziele", "valeur": "1188"}
+{"entite": "Rubihorn", "valeur": "1959"}
+{"entite": "Ruettischrofen", "valeur": "747"}
+{"entite": "Ruissatel", "valeur": "451"}
+{"entite": "Saint Amand", "valeur": "1400"}
+{"entite": "Saint-Michel l'Aiguille", "valeur": "557"}
+{"entite": "Saint-Philippe", "valeur": "1706"}
+{"entite": "Saint-Pierre de Lagarde d'Apt", "valeur": "1256"}
+{"entite": "Saint-Pilon", "valeur": "932"}
+{"entite": "Saint Priest", "valeur": "838"}
+{"entite": "Les Saix d'en Haut", "valeur": "1627"}
+{"entite": "le Salbert", "valeur": "651"}
+{"entite": "Saldurspitze", "valeur": "3433"}
+{"entite": "Les Salles", "valeur": "1680"}
+{"entite": "Salober", "valeur": "2088"}
+{"entite": "La Sambue", "valeur": "1459"}
+{"entite": "le Sangle", "valeur": "1993"}
+{"entite": "Sanglung", "valeur": "7095"}
+{"entite": "Le Sapet", "valeur": "1492"}
+{"entite": "Saraevo", "valeur": "1212"}
+{"entite": "Sas-hegy", "valeur": "266"}
+{"entite": "Sass de Stria", "valeur": "2477"}
+{"entite": "Sassongher", "valeur": "2665"}
+{"entite": "Sassopiatto", "valeur": "2964"}
+{"entite": "Sattelkarspitze", "valeur": "2553"}
+{"entite": "Sattelkopf", "valeur": "2097"}
+{"entite": "Sattelspitz", "valeur": "1562"}
+{"entite": "Le Sautet", "valeur": "2622"}
+{"entite": "Sauvand", "valeur": "558"}
+{"entite": "la Sauvire", "valeur": "2696"}
+{"entite": "la Savoyarde", "valeur": "1130"}
+{"entite": "Schänzlekopf", "valeur": "2070"}
+{"entite": "Schesaplana", "valeur": "2965"}
+{"entite": "la Schleiffe", "valeur": "808"}
+{"entite": "Schneck", "valeur": "2268"}
+{"entite": "Schneeglocke", "valeur": "3223"}
+{"entite": "Schnippenkopf", "valeur": "1833"}
+{"entite": "Schochen", "valeur": "2100"}
+{"entite": "Schochenspitze", "valeur": "2069"}
+{"entite": "Schreckhorn", "valeur": "4078"}
+{"entite": "Schwarzer Grat", "valeur": "1118.5"}
+{"entite": "Schweisel", "valeur": "1271"}
+{"entite": "Schwemser Spitze", "valeur": "3459"}
+{"entite": "la Scia", "valeur": "2368"}
+{"entite": "Sedererstuiben", "valeur": "1737"}
+{"entite": "Seehügel", "valeur": "953"}
+{"entite": "Seeköpfle", "valeur": "1920"}
+{"entite": "Sen Julian", "valeur": "476"}
+{"entite": "Les Sentinelles", "valeur": "532"}
+{"entite": "Sentraltind", "valeur": "2347.9"}
+{"entite": "Sere d'Aumage", "valeur": "1049"}
+{"entite": "Serra di Pigno", "valeur": "960"}
+{"entite": "Serrat de l'Ós", "valeur": "1956"}
+{"entite": "Serre de Chalamant", "valeur": "458"}
+{"entite": "Serre de Clocher", "valeur": "974"}
+{"entite": "Serre de Coudiol", "valeur": "553"}
+{"entite": "Serre de l'Aigle", "valeur": "998"}
+{"entite": "serre de Montué", "valeur": "1706"}
+{"entite": "Serre des Planes", "valeur": "1303"}
+{"entite": "Le Serre Gros", "valeur": "1523"}
+{"entite": "Serre Montgaudi", "valeur": "2091"}
+{"entite": "serre Orel", "valeur": "2137"}
+{"entite": "serre Ponçon", "valeur": "768"}
+{"entite": "Serre Vulson", "valeur": "865"}
+{"entite": "La Serrie", "valeur": "1314"}
+{"entite": "La Servelle", "valeur": "965"}
+{"entite": "Sétaz des Prés", "valeur": "2548"}
+{"entite": "Sex Villemod", "valeur": "2030"}
+{"entite": "Shanzidou", "valeur": "5596"}
+{"entite": "Shishapangma central", "valeur": "8008"}
+{"entite": "signal de Chamoissière", "valeur": "3019"}
+{"entite": "Signal de l'Aigle", "valeur": "660"}
+{"entite": "signal de l'Aiguille Rouge", "valeur": "3040"}
+{"entite": "Signal de l'Enclos", "valeur": "2107"}
+{"entite": "signal de l'Homme", "valeur": "2176"}
+{"entite": "signal de Méan Martin", "valeur": "3315"}
+{"entite": "signal de Saint-Pierre", "valeur": "1256"}
+{"entite": "signal de Ventalon", "valeur": "1350"}
+{"entite": "Signal des Béguines", "valeur": "1148"}
+{"entite": "signal des Têtes", "valeur": "2385"}
+{"entite": "Le Signal des Voirons", "valeur": "1480"}
+{"entite": "signal du Génie", "valeur": "2525"}
+{"entite": "signal du Grand Mont-Cenis", "valeur": "3377"}
+{"entite": "Signal du Mont du Chat", "valeur": "1504"}
+{"entite": "signal du Palet", "valeur": "2780"}
+{"entite": "signal du Sac", "valeur": "1683"}
+{"entite": "signal Forbes", "valeur": "2200"}
+{"entite": "Silvrettahorn", "valeur": "3244"}
+{"entite": "Siounetounet", "valeur": "1160"}
+{"entite": "Le Sirac", "valeur": "3441"}
+{"entite": "Site du Fraysse", "valeur": "807"}
+{"entite": "Sljeme", "valeur": "1035"}
+{"entite": "Sniejka", "valeur": "1603.3"}
+{"entite": "Soleil Bœuf", "valeur": "2595"}
+{"entite": "Le Solliet", "valeur": "1263"}
+{"entite": "sommet Aiguille", "valeur": "2073"}
+{"entite": "sommet Albert Nord", "valeur": "1070"}
+{"entite": "sommet Albert Sud", "valeur": "1154"}
+{"entite": "sommet Bernarde", "valeur": "1941"}
+{"entite": "sommet Bucher", "valeur": "2139"}
+{"entite": "sommet Charmant", "valeur": "1315"}
+{"entite": "sommet Colomb", "valeur": "2542"}
+{"entite": "sommet Cuchon", "valeur": "2133"}
+{"entite": "sommet d'Aiguillon", "valeur": "1406"}
+{"entite": "sommet d'Assan", "valeur": "1922"}
+{"entite": "sommet d'Outremont", "valeur": "218"}
+{"entite": "sommet de Barley", "valeur": "913"}
+{"entite": "sommet de Bellecôte", "valeur": "3417"}
+{"entite": "sommet de Belledonne", "valeur": "2979"}
+{"entite": "sommet de Bramefan", "valeur": "1373"}
+{"entite": "sommet de Breis", "valeur": "890"}
+{"entite": "sommet de Calern", "valeur": "1458"}
+{"entite": "sommet de Chabrières", "valeur": "2678"}
+{"entite": "sommet de Chamoussillon", "valeur": "2137"}
+{"entite": "sommet de Chappe", "valeur": "1670"}
+{"entite": "sommet de Charouille", "valeur": "1084"}
+{"entite": "sommet de Chatégré", "valeur": "1713"}
+{"entite": "sommet de Chine", "valeur": "1952"}
+{"entite": "sommet de Clot Ginoux", "valeur": "2112"}
+{"entite": "sommet de Colomban", "valeur": "1438"}
+{"entite": "Sommet de Coste Belle", "valeur": "2111"}
+{"entite": "sommet de Couard", "valeur": "1415"}
+{"entite": "sommet de Cucuyon", "valeur": "1880"}
+{"entite": "sommet de Cugulet", "valeur": "1409"}
+{"entite": "sommet de Denjuan", "valeur": "2225"}
+{"entite": "sommet de Fayet", "valeur": "1285"}
+{"entite": "sommet de Fleossier", "valeur": "1248"}
+{"entite": "sommet de Grand-Combe", "valeur": "2322"}
+{"entite": "sommet de Jouerre", "valeur": "1821"}
+{"entite": "sommet de Jouffan", "valeur": "1157"}
+{"entite": "sommet de l'Alpette", "valeur": "1694"}
+{"entite": "sommet de l'Argentelle", "valeur": "663"}
+{"entite": "sommet de l'Aup", "valeur": "1600"}
+{"entite": "sommet de l'Entre-Deux", "valeur": "2352"}
+{"entite": "sommet de la Chinarde", "valeur": "1872"}
+{"entite": "sommet de la Cita", "valeur": "1371"}
+{"entite": "sommet de la Grangeasse", "valeur": "1416"}
+{"entite": "sommet de la Meyna", "valeur": "2629"}
+{"entite": "sommet de la Montagnette", "valeur": "1870"}
+{"entite": "sommet de la Nunda", "valeur": "3023"}
+{"entite": "sommet de la Platte", "valeur": "1395"}
+{"entite": "sommet de la Vizelle", "valeur": "2661"}
+{"entite": "sommet de Laup", "valeur": "1543"}
+{"entite": "sommet de Lieye", "valeur": "1320"}
+{"entite": "sommet de Malavelette", "valeur": "247"}
+{"entite": "sommet de Marseilleveyre", "valeur": "433"}
+{"entite": "sommet de Meunier", "valeur": "1741"}
+{"entite": "sommet de Monserieux", "valeur": "986"}
+{"entite": "sommet de Montagnone", "valeur": "1729"}
+{"entite": "sommet de Montgelas", "valeur": "1301"}
+{"entite": "sommet de Mouchon", "valeur": "1174"}
+{"entite": "sommet de Mourrouvier", "valeur": "1305"}
+{"entite": "sommet de Nibles", "valeur": "1661"}
+{"entite": "sommet de Pompe", "valeur": "1500"}
+{"entite": "sommet de Prelles", "valeur": "2336"}
+{"entite": "sommet de Profitis Ilias", "valeur": "356"}
+{"entite": "sommet de Queyron", "valeur": "2289"}
+{"entite": "sommet de Raz de Bec", "valeur": "2385"}
+{"entite": "sommet de Roche-Chalve", "valeur": "1038"}
+{"entite": "sommet de Ruine Blanche", "valeur": "2547"}
+{"entite": "sommet de Salomon", "valeur": "988"}
+{"entite": "sommet de Sigaud", "valeur": "320"}
+{"entite": "sommet de Sonnaille", "valeur": "2787"}
+{"entite": "sommet de Tourap", "valeur": "1050"}
+{"entite": "sommet de Tourte Barreaux", "valeur": "1709"}
+{"entite": "sommet de Triey", "valeur": "1206"}
+{"entite": "sommet de Vallon-Long", "valeur": "2798"}
+{"entite": "sommet de Westmount", "valeur": "201"}
+{"entite": "sommet des Blache", "valeur": "1310"}
+{"entite": "sommet des Clottous", "valeur": "2509"}
+{"entite": "sommet des Gibas", "valeur": "511"}
+{"entite": "sommet des Plauts", "valeur": "1305"}
+{"entite": "sommet des Quatre Bouines", "valeur": "793"}
+{"entite": "sommet des Rousses", "valeur": "2978"}
+{"entite": "Sommet des Salles", "valeur": "1757"}
+{"entite": "sommet du Caduc", "valeur": "2573"}
+{"entite": "sommet du Castellard", "valeur": "1103"}
+{"entite": "sommet du Cheval Blanc", "valeur": "2323"}
+{"entite": "sommet du Colombier", "valeur": "1934"}
+{"entite": "sommet du Palastre", "valeur": "2458"}
+{"entite": "sommet du Pinet", "valeur": "1867"}
+{"entite": "sommet du Platary", "valeur": "1586"}
+{"entite": "sommet du Prorel", "valeur": "2566"}
+{"entite": "sommet du Roudelet", "valeur": "1492"}
+{"entite": "sommet du Ruth", "valeur": "1280"}
+{"entite": "Sommet Est", "valeur": "232"}
+{"entite": "sommet Est de la Montagne de Gourdan", "valeur": "1335"}
+{"entite": "sommet la Poule", "valeur": "1130"}
+{"entite": "Sommet Matsi", "valeur": "102"}
+{"entite": "Sommet Nord de Sarenne", "valeur": "3128"}
+{"entite": "sommet Pelet", "valeur": "550"}
+{"entite": "sommet Scudo", "valeur": "509"}
+{"entite": "sommet Sud", "valeur": "8749"}
+{"entite": "Sommet Tuputupuraa", "valeur": "372"}
+{"entite": "Sonnenkopf", "valeur": "1712"}
+{"entite": "Soufrière", "valeur": "1467"}
+{"entite": "soum de Ramond", "valeur": "3254"}
+{"entite": "Sous Dîne", "valeur": "1429"}
+{"entite": "Spåtind", "valeur": "1414.5"}
+{"entite": "Stac Lee", "valeur": "172"}
+{"entite": "Stanskogel", "valeur": "2757"}
+{"entite": "Le Steinberg", "valeur": "1177"}
+{"entite": "Steineberg", "valeur": "1683"}
+{"entite": "Steinmandl", "valeur": "1982"}
+{"entite": "Steinschartenkopf", "valeur": "2615"}
+{"entite": "Stetinden", "valeur": "635"}
+{"entite": "Stockzahn", "valeur": "1366"}
+{"entite": "Studerhorn", "valeur": "3632"}
+{"entite": "Suc d'Ourseyre", "valeur": "1371"}
+{"entite": "suc de Bauzon", "valeur": "1472"}
+{"entite": "Suc de Cabagne", "valeur": "1002"}
+{"entite": "Suc de Miceselle", "valeur": "1115"}
+{"entite": "Suc de Montfol", "valeur": "1594"}
+{"entite": "Suc de Montivernoux", "valeur": "1312"}
+{"entite": "Suc de Taupernas", "valeur": "1609"}
+{"entite": "Südliches Höllhorn", "valeur": "2149"}
+{"entite": "Le Suet", "valeur": "1863"}
+{"entite": "La Suiffière", "valeur": "1798"}
+{"entite": "La Suifière", "valeur": "1798"}
+{"entite": "Summa Ri", "valeur": "7286"}
+{"entite": "Summa Ri II", "valeur": "7133"}
+{"entite": "Sur la Pointe", "valeur": "1657"}
+{"entite": "la Sure", "valeur": "2018"}
+{"entite": "Les Sûres", "valeur": "1859"}
+{"entite": "Surtningssue", "valeur": "2367.64"}
+{"entite": "Svartdalspiggen", "valeur": "1673"}
+{"entite": "Szársomlyó", "valeur": "442"}
+{"entite": "le Taillefer", "valeur": "2857"}
+{"entite": "Taivaskero", "valeur": "809.1"}
+{"entite": "Takamaka, Praslin", "valeur": "319"}
+{"entite": "Tall Asur", "valeur": "1015.8984"}
+{"entite": "Tallaferro", "valeur": "508"}
+{"entite": "Le Tapin", "valeur": "1202"}
+{"entite": "Tardevant", "valeur": "2501"}
+{"entite": "Tavet", "valeur": "855"}
+{"entite": "Ťažký štít", "valeur": "2520"}
+{"entite": "Le Télégraphe", "valeur": "800"}
+{"entite": "Tenailles de Montbrison", "valeur": "2574"}
+{"entite": "Tepupa", "valeur": "25"}
+{"entite": "Teraiotupo", "valeur": "1245"}
+{"entite": "La Terrasse", "valeur": "2659"}
+{"entite": "Teruaupoa", "valeur": "56"}
+{"entite": "Testa Cialancion", "valeur": "2729"}
+{"entite": "Testa della Capanna", "valeur": "2300"}
+{"entite": "Testa della Rubina", "valeur": "2423"}
+{"entite": "Testa di Bresses", "valeur": "2609"}
+{"entite": "Testa di Malacosta", "valeur": "3212"}
+{"entite": "Testa di Tablesses", "valeur": "2609"}
+{"entite": "La Tête à l'Âne", "valeur": "2804"}
+{"entite": "Tête à Lugon", "valeur": "2372"}
+{"entite": "Tête à Turpin", "valeur": "1541"}
+{"entite": "tête Carrée", "valeur": "1075"}
+{"entite": "tête d'Albiez-le-Vieux", "valeur": "2470"}
+{"entite": "Tête d'Auferrand", "valeur": "1981"}
+{"entite": "tête d'Enclave", "valeur": "2852"}
+{"entite": "tête de Balacha", "valeur": "2309"}
+{"entite": "tête de Bellachat", "valeur": "2276"}
+{"entite": "La Tete de Boeuf", "valeur": "1587"}
+{"entite": "Tête de Bunant", "valeur": "1660"}
+{"entite": "Tête de Charamillon", "valeur": "2414"}
+{"entite": "tête de Charborue", "valeur": "1114"}
+{"entite": "tête de Claudel", "valeur": "2563"}
+{"entite": "Tête de Cognaux", "valeur": "1693"}
+{"entite": "Tête de Cuore", "valeur": "1097"}
+{"entite": "Tête de Cuvy", "valeur": "1991"}
+{"entite": "tête de Fer", "valeur": "2337"}
+{"entite": "tête de Girbault", "valeur": "2370"}
+{"entite": "tête de Guizière", "valeur": "1814"}
+{"entite": "Tête de l'Arollay", "valeur": "2533"}
+{"entite": "Tête de l'Arpettaz", "valeur": "1840"}
+{"entite": "Tête de l'Aulp", "valeur": "2129"}
+{"entite": "Tête de l'Homme", "valeur": "3211"}
+{"entite": "tête de la Bouloie", "valeur": "1166"}
+{"entite": "tête de la Brenva", "valeur": "3504"}
+{"entite": "Tête de la Clappe", "valeur": "2019"}
+{"entite": "tête de la Cluse", "valeur": "2683"}
+{"entite": "tête de la Combaz", "valeur": "2445"}
+{"entite": "Tête de la Forclaz", "valeur": "2432"}
+{"entite": "tête de la Gandolière", "valeur": "3542"}
+{"entite": "Tête de la Graille", "valeur": "1885"}
+{"entite": "Tête de la Gypier", "valeur": "2337"}
+{"entite": "tête de la Madeleine", "valeur": "2376"}
+{"entite": "Tête de la Marsare", "valeur": "3118"}
+{"entite": "tête de la Martelas", "valeur": "2985"}
+{"entite": "tête de la Maye", "valeur": "2518"}
+{"entite": "Tête de la Mounine", "valeur": "384"}
+{"entite": "tête de la Muraillette", "valeur": "3019"}
+{"entite": "tête de la Petite Olle", "valeur": "2269"}
+{"entite": "Tête de la Sestrière", "valeur": "2575"}
+{"entite": "Tête de la Toura", "valeur": "2914"}
+{"entite": "tête de la Tronche", "valeur": "2584"}
+{"entite": "tête de la Vache Brûlée", "valeur": "1135"}
+{"entite": "Tête de Lantsenaire", "valeur": "2347"}
+{"entite": "tête de Lassy", "valeur": "1689"}
+{"entite": "tête de Lauranoure", "valeur": "3325"}
+{"entite": "Tête de Lion", "valeur": "1788"}
+{"entite": "tête de Moëde", "valeur": "2459"}
+{"entite": "tête de Monthieu", "valeur": "2470"}
+{"entite": "tête de Mya", "valeur": "2513"}
+{"entite": "tête de Paccaly", "valeur": "2467"}
+{"entite": "Tête de Porte", "valeur": "1526"}
+{"entite": "tête de Pradieu", "valeur": "2879"}
+{"entite": "Tête de Praorzel", "valeur": "1691"}
+{"entite": "tête de Sainte-Marguerite", "valeur": "2796"}
+{"entite": "tête de Véret", "valeur": "2309"}
+{"entite": "Tête de Villadel", "valeur": "2728"}
+{"entite": "tête de Villy", "valeur": "2481"}
+{"entite": "tête des Arpettes", "valeur": "2385"}
+{"entite": "Tête des Baumiers", "valeur": "1874"}
+{"entite": "Tête des Bécus", "valeur": "1907"}
+{"entite": "tête des Bluets", "valeur": "1150"}
+{"entite": "tête des Cèpes", "valeur": "1059"}
+{"entite": "tête des Charbonniers", "valeur": "1138"}
+{"entite": "Tête des Chaudières", "valeur": "2029"}
+{"entite": "Tête des Follys", "valeur": "1768"}
+{"entite": "tête des Lanchons", "valeur": "2478"}
+{"entite": "tête des Lindars", "valeur": "2560"}
+{"entite": "Tête des Muets", "valeur": "2075"}
+{"entite": "tête des Pras Arnaud", "valeur": "2617"}
+{"entite": "tête des Redoutes", "valeur": "1139"}
+{"entite": "tête des Trois Hommes", "valeur": "2407"}
+{"entite": "tête des Tufs", "valeur": "2561"}
+{"entite": "tête des Verds", "valeur": "2128"}
+{"entite": "Tête du Château", "valeur": "2288"}
+{"entite": "Tête du Chéret", "valeur": "3161"}
+{"entite": "tête du Collier", "valeur": "2568"}
+{"entite": "tête du Danay", "valeur": "1731"}
+{"entite": "tête du Fornelet", "valeur": "1970"}
+{"entite": "Tête du Graou", "valeur": "3168"}
+{"entite": "tête du Grenairon", "valeur": "2734"}
+{"entite": "tête du Gréppon", "valeur": "2054"}
+{"entite": "Tête du Jacquot", "valeur": "543"}
+{"entite": "tête du Jarset", "valeur": "2271"}
+{"entite": "Tête du Lac de Roselette", "valeur": "2123"}
+{"entite": "Tête du Lac Noir", "valeur": "3067"}
+{"entite": "Tête du Lion", "valeur": "2510"}
+{"entite": "Tête du Miougranier", "valeur": "276"}
+{"entite": "tête du Moinechamp", "valeur": "1104"}
+{"entite": "tête du Parmelan", "valeur": "1832"}
+{"entite": "tête du Pas de l'Ours", "valeur": "1679"}
+{"entite": "Tête du Pouyet", "valeur": "2834"}
+{"entite": "tête du Serre", "valeur": "2316"}
+{"entite": "Tête du Solaise", "valeur": "2558"}
+{"entite": "Tête du Torraz", "valeur": "1930"}
+{"entite": "tête du Vallon", "valeur": "3059"}
+{"entite": "tête du Véleray", "valeur": "2452"}
+{"entite": "Tête du Violu", "valeur": "993"}
+{"entite": "Tête Moute", "valeur": "2814"}
+{"entite": "Tête Nord des Fours", "valeur": "2756"}
+{"entite": "Tête Nord du Replat", "valeur": "3442"}
+{"entite": "Tête Sud des Fours", "valeur": "2716"}
+{"entite": "Tête Sud du Replat", "valeur": "3228"}
+{"entite": "Têtes de Mal Cros", "valeur": "3086"}
+{"entite": "Têtes de Malvallon", "valeur": "329"}
+{"entite": "Teureohurupa", "valeur": "226"}
+{"entite": "Le Teurre", "valeur": "2364"}
+{"entite": "les Teurs", "valeur": "2311"}
+{"entite": "Le Tévaroz", "valeur": "2477"}
+{"entite": "Thaneller", "valeur": "2341"}
+{"entite": "The Brothers", "valeur": "2085.4416"}
+{"entite": "The Cheviot", "valeur": "815"}
+{"entite": "The White Fang", "valeur": "3683"}
+{"entite": "La Thuile", "valeur": "2294"}
+{"entite": "Tiaré", "valeur": "386"}
+{"entite": "Titov Vrv", "valeur": "2747"}
+{"entite": "Tongshanjiabu", "valeur": "7207"}
+{"entite": "Topo Salamanca", "valeur": "993"}
+{"entite": "Torre di Sari", "valeur": "641"}
+{"entite": "Tossa d'Err", "valeur": "2350"}
+{"entite": "Tossa del Pas dels Lladres", "valeur": "2661.3"}
+{"entite": "Tossalet de la Coma", "valeur": "2732"}
+{"entite": "Tót-hegyes", "valeur": "815"}
+{"entite": "Tougnète", "valeur": "2437"}
+{"entite": "La Tour", "valeur": "546"}
+{"entite": "La Tour Blanche", "valeur": "272"}
+{"entite": "tour Carrée", "valeur": "3675"}
+{"entite": "Tour Carrée de la Portetta", "valeur": "2750"}
+{"entite": "Tour Choisy", "valeur": "3671"}
+{"entite": "tour d'Entrèves", "valeur": "3124"}
+{"entite": "Tour de Bonne Pierre", "valeur": "3692"}
+{"entite": "La Tour de l'Angle Est", "valeur": "1563"}
+{"entite": "Tour de la Flachère", "valeur": "2776"}
+{"entite": "Tour de Lavina", "valeur": "3308"}
+{"entite": "tour de Saint-Hubert", "valeur": "2430"}
+{"entite": "tour des Aiguilles-Grises", "valeur": "3836"}
+{"entite": "tour des Courtes", "valeur": "3816"}
+{"entite": "Tour des Ébats", "valeur": "1470"}
+{"entite": "tour des Jorasses", "valeur": "3813"}
+{"entite": "la Tour Ronde", "valeur": "3792"}
+{"entite": "Les Tours", "valeur": "2710"}
+{"entite": "tours de Vajolet", "valeur": "2821"}
+{"entite": "Tourte Barreaux", "valeur": "1709"}
+{"entite": "Toussaines", "valeur": "292"}
+{"entite": "La Tovière", "valeur": "2695"}
+{"entite": "Les Trables", "valeur": "1360"}
+{"entite": "Trainon", "valeur": "1654"}
+{"entite": "Tray le Puy", "valeur": "802"}
+{"entite": "le Tréboux", "valeur": "1535"}
+{"entite": "Tremontkopf", "valeur": "1091"}
+{"entite": "Trèsaubenq", "valeur": "1629"}
+{"entite": "Trettachspitze", "valeur": "2595"}
+{"entite": "Le Treu", "valeur": "1835"}
+{"entite": "Treutsebo", "valeur": "2917"}
+{"entite": "Treynières", "valeur": "1370"}
+{"entite": "Les Trois Aiguilles", "valeur": "2277"}
+{"entite": "Les Trois Becs", "valeur": "1589"}
+{"entite": "Les Trois-Évêchés", "valeur": "2818"}
+{"entite": "Les Trois Frères", "valeur": "686"}
+{"entite": "les Trois Petits Bonhommes", "valeur": "2464"}
+{"entite": "Les Trois Pucelles", "valeur": "1456"}
+{"entite": "Les Trois Quilles", "valeur": "1259"}
+{"entite": "Trois Salazes", "valeur": "2132"}
+{"entite": "Troumouse", "valeur": "3046"}
+{"entite": "Tschütsch", "valeur": "641"}
+{"entite": "Tuc de Bidur", "valeur": "1980"}
+{"entite": "Tuc de Campsaure", "valeur": "2142"}
+{"entite": "Tuc de la Pique", "valeur": "1626"}
+{"entite": "Tuc de Ribassetes", "valeur": "2140"}
+{"entite": "Les Tufs", "valeur": "2617"}
+{"entite": "la Tulle", "valeur": "2014"}
+{"entite": "Turge de la Suffie", "valeur": "2982"}
+{"entite": "Turon de Néouvielle", "valeur": "3035"}
+{"entite": "Tylldalstoppen", "valeur": "1653.426"}
+{"entite": "Ubac de Bliauge", "valeur": "1380"}
+{"entite": "Ubac de Tra Castel", "valeur": "1150"}
+{"entite": "Ubac du Bas Thorenc", "valeur": "1196"}
+{"entite": "L'Uja", "valeur": "3379"}
+{"entite": "Ukko-Koli", "valeur": "347"}
+{"entite": "Üntschenspitze", "valeur": "2139"}
+{"entite": "Ursersberg", "valeur": "1129.244"}
+{"entite": "Le Vaccivier", "valeur": "2955"}
+{"entite": "Vaganski Vrh", "valeur": "1757.5"}
+{"entite": "Valluga", "valeur": "2809"}
+{"entite": "le Verdet", "valeur": "2293"}
+{"entite": "les Verdets", "valeur": "2385"}
+{"entite": "le Verger", "valeur": "1235"}
+{"entite": "Veslekjølen", "valeur": "1798"}
+{"entite": "La Veudale", "valeur": "2492"}
+{"entite": "Viererspitze", "valeur": "2054"}
+{"entite": "la Vierge", "valeur": "3244"}
+{"entite": "Vieux Chaillol", "valeur": "3163"}
+{"entite": "Vikhren", "valeur": "2914.3"}
+{"entite": "Visočica", "valeur": "767"}
+{"entite": "volcan du Montsacopa", "valeur": "531"}
+{"entite": "Le Voray", "valeur": "1983"}
+{"entite": "Vorderer Wildgundkopf", "valeur": "1935"}
+{"entite": "Vorderseespitze", "valeur": "2889"}
+{"entite": "Voyemont", "valeur": "793"}
+{"entite": "Vranilac", "valeur": "643"}
+{"entite": "Vulcan's Thumb", "valeur": "2290"}
+{"entite": "Walmendinger Horn", "valeur": "1990"}
+{"entite": "Walser Hammerspitze", "valeur": "2170"}
+{"entite": "Wandbühl", "valeur": "1006.8"}
+{"entite": "Wasserkuppe", "valeur": "950"}
+{"entite": "Weichenwang", "valeur": "988"}
+{"entite": "Weiherkopf", "valeur": "1665"}
+{"entite": "Western Crabioules", "valeur": "3106"}
+{"entite": "Westlicher Wengenkopf", "valeur": "2235"}
+{"entite": "Widderstein", "valeur": "2533"}
+{"entite": "Wiedemerkopf", "valeur": "2163"}
+{"entite": "Wieskopf", "valeur": "1213.5"}
+{"entite": "Wildengundkopf", "valeur": "2238"}
+{"entite": "Wilder Kasten", "valeur": "2542"}
+{"entite": "Wilder Mann", "valeur": "2577"}
+{"entite": "Wildmahdspitze", "valeur": "2489"}
+{"entite": "Witenwasserenstock", "valeur": "3085"}
+{"entite": "Wolekleskarspitze", "valeur": "2522"}
+{"entite": "Wustkopf", "valeur": "861"}
+{"entite": "Y Lliwedd", "valeur": "898"}
+{"entite": "Yr Aran", "valeur": "747"}
+{"entite": "Zeiger", "valeur": "1995"}
+{"entite": "Zla Kolata", "valeur": "2534"}
+{"entite": "Zlatník", "valeur": "522"}
+{"entite": "Zwölfer", "valeur": "2224"}

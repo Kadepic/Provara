@@ -1,0 +1,187 @@
+{"_relation": "taux_chomage_pays", "_categorie": "physique", "_source": "Banque mondiale SL.UEM.TOTL.ZS — taux de chômage en % de la population active (estimation OIT) ; valeur la plus récente par pays (millésime 2021–2025 ; valeur VOLATILE, instantané daté, non « live »)", "_articles": true}
+{"entite": "Afghanistan", "valeur": "13.35"}
+{"entite": "Afrique du Sud", "valeur": "32.39"}
+{"entite": "Albanie", "valeur": "10.93"}
+{"entite": "Algérie", "valeur": "11.63"}
+{"entite": "Allemagne", "valeur": "3.71"}
+{"entite": "Angola", "valeur": "14.11"}
+{"entite": "Arabie Saoudite", "valeur": "3.04"}
+{"entite": "Argentine", "valeur": "7.14"}
+{"entite": "Arménie", "valeur": "12.87"}
+{"entite": "Australie", "valeur": "4.09"}
+{"entite": "Autriche", "valeur": "5.58"}
+{"entite": "Azerbaïdjan", "valeur": "5.46"}
+{"entite": "Bahamas", "valeur": "9.21"}
+{"entite": "Bahreïn", "valeur": "1.10"}
+{"entite": "Bangladesh", "valeur": "3.78"}
+{"entite": "Barbade", "valeur": "6.52"}
+{"entite": "Belgique", "valeur": "5.91"}
+{"entite": "Belize", "valeur": "8.86"}
+{"entite": "Bénin", "valeur": "1.59"}
+{"entite": "Bhoutan", "valeur": "3.23"}
+{"entite": "Biélorussie", "valeur": "3.38"}
+{"entite": "Birmanie", "valeur": "3.05"}
+{"entite": "Bolivie", "valeur": "2.97"}
+{"entite": "Bosnie-Herzégovine", "valeur": "11.04"}
+{"entite": "Botswana", "valeur": "24.48"}
+{"entite": "Brésil", "valeur": "5.97"}
+{"entite": "Brunei", "valeur": "5.28"}
+{"entite": "Bulgarie", "valeur": "3.54"}
+{"entite": "Burkina Faso", "valeur": "3.48"}
+{"entite": "Burundi", "valeur": "0.92"}
+{"entite": "Cambodge", "valeur": "0.26"}
+{"entite": "Cameroun", "valeur": "3.60"}
+{"entite": "Canada", "valeur": "6.91"}
+{"entite": "Chili", "valeur": "8.97"}
+{"entite": "Chine", "valeur": "4.62"}
+{"entite": "Chypre", "valeur": "4.92"}
+{"entite": "Colombie", "valeur": "8.29"}
+{"entite": "Comores", "valeur": "3.82"}
+{"entite": "Congo", "valeur": "19.88"}
+{"entite": "Congo (Rép. dém.)", "valeur": "4.43"}
+{"entite": "Corée du Nord", "valeur": "3.54"}
+{"entite": "Corée du Sud", "valeur": "2.68"}
+{"entite": "Costa Rica", "valeur": "6.84"}
+{"entite": "Côte d'Ivoire", "valeur": "2.32"}
+{"entite": "Croatie", "valeur": "5.00"}
+{"entite": "Cuba", "valeur": "1.75"}
+{"entite": "Danemark", "valeur": "5.53"}
+{"entite": "Djibouti", "valeur": "26.02"}
+{"entite": "Égypte", "valeur": "6.78"}
+{"entite": "Émirats arabes unis", "valeur": "2.17"}
+{"entite": "Équateur", "valeur": "3.31"}
+{"entite": "Érythrée", "valeur": "5.98"}
+{"entite": "Espagne", "valeur": "10.38"}
+{"entite": "Estonie", "valeur": "8.31"}
+{"entite": "Eswatini", "valeur": "34.20"}
+{"entite": "États-Unis", "valeur": "4.20"}
+{"entite": "Éthiopie", "valeur": "3.32"}
+{"entite": "Fidji", "valeur": "5.35"}
+{"entite": "Finlande", "valeur": "9.46"}
+{"entite": "France", "valeur": "7.54"}
+{"entite": "Gabon", "valeur": "20.15"}
+{"entite": "Gambie", "valeur": "6.52"}
+{"entite": "Géorgie", "valeur": "12.10"}
+{"entite": "Ghana", "valeur": "2.98"}
+{"entite": "Grèce", "valeur": "8.54"}
+{"entite": "Guam", "valeur": "5.57"}
+{"entite": "Guatemala", "valeur": "2.60"}
+{"entite": "Guinée", "valeur": "5.16"}
+{"entite": "Guinée-Bissau", "valeur": "2.67"}
+{"entite": "Guinée équatoriale", "valeur": "8.34"}
+{"entite": "Guyana", "valeur": "11.96"}
+{"entite": "Haïti", "valeur": "14.94"}
+{"entite": "Honduras", "valeur": "4.92"}
+{"entite": "Hong Kong", "valeur": "2.80"}
+{"entite": "Hongrie", "valeur": "4.52"}
+{"entite": "Île Maurice", "valeur": "5.63"}
+{"entite": "Îles du Cap-Vert", "valeur": "11.94"}
+{"entite": "Îles Salomon", "valeur": "1.43"}
+{"entite": "Îles Vierges des États-Unis", "valeur": "11.44"}
+{"entite": "Inde", "valeur": "4.22"}
+{"entite": "Indonésie", "valeur": "3.24"}
+{"entite": "Irak", "valeur": "15.48"}
+{"entite": "Iran", "valeur": "8.30"}
+{"entite": "Irlande", "valeur": "4.63"}
+{"entite": "Islande", "valeur": "3.62"}
+{"entite": "Israël", "valeur": "3.49"}
+{"entite": "Italie", "valeur": "6.39"}
+{"entite": "Jamaïque", "valeur": "3.29"}
+{"entite": "Japon", "valeur": "2.45"}
+{"entite": "Jordanie", "valeur": "16.54"}
+{"entite": "Kazakhstan", "valeur": "4.77"}
+{"entite": "Kenya", "valeur": "5.45"}
+{"entite": "Kirghizistan", "valeur": "3.53"}
+{"entite": "Koweït", "valeur": "2.18"}
+{"entite": "Laos", "valeur": "1.19"}
+{"entite": "Lesotho", "valeur": "16.32"}
+{"entite": "Lettonie", "valeur": "6.57"}
+{"entite": "Liban", "valeur": "10.98"}
+{"entite": "Liberia", "valeur": "2.88"}
+{"entite": "Libye", "valeur": "18.76"}
+{"entite": "Lituanie", "valeur": "6.73"}
+{"entite": "Luxembourg", "valeur": "6.34"}
+{"entite": "Macao", "valeur": "2.35"}
+{"entite": "Macédoine du Nord", "valeur": "12.26"}
+{"entite": "Madagascar", "valeur": "3.04"}
+{"entite": "Malaisie", "valeur": "3.76"}
+{"entite": "Malawi", "valeur": "5.07"}
+{"entite": "Maldives", "valeur": "4.51"}
+{"entite": "Mali", "valeur": "2.83"}
+{"entite": "Malte", "valeur": "2.90"}
+{"entite": "Maroc", "valeur": "9.00"}
+{"entite": "Mauritanie", "valeur": "10.32"}
+{"entite": "Mexique", "valeur": "2.67"}
+{"entite": "Moldavie", "valeur": "1.50"}
+{"entite": "Mongolie", "valeur": "5.23"}
+{"entite": "Monténégro", "valeur": "13.57"}
+{"entite": "Mozambique", "valeur": "6.63"}
+{"entite": "Namibie", "valeur": "19.29"}
+{"entite": "Népal", "valeur": "10.46"}
+{"entite": "Nicaragua", "valeur": "5.04"}
+{"entite": "Niger", "valeur": "0.39"}
+{"entite": "Nigéria", "valeur": "3.06"}
+{"entite": "Norvège", "valeur": "4.64"}
+{"entite": "Nouvelle-Calédonie", "valeur": "11.17"}
+{"entite": "Nouvelle-Zélande", "valeur": "5.08"}
+{"entite": "Oman", "valeur": "3.25"}
+{"entite": "Ouganda", "valeur": "2.75"}
+{"entite": "Ouzbékistan", "valeur": "4.62"}
+{"entite": "Pakistan", "valeur": "5.42"}
+{"entite": "Palestine", "valeur": "24.42"}
+{"entite": "Panama", "valeur": "8.36"}
+{"entite": "Papouasie-Nouvelle-Guinée", "valeur": "2.57"}
+{"entite": "Paraguay", "valeur": "4.80"}
+{"entite": "Pays-Bas", "valeur": "3.87"}
+{"entite": "Pérou", "valeur": "5.12"}
+{"entite": "Philippines", "valeur": "2.23"}
+{"entite": "Pologne", "valeur": "2.98"}
+{"entite": "Polynésie française", "valeur": "11.66"}
+{"entite": "Porto Rico", "valeur": "5.99"}
+{"entite": "Portugal", "valeur": "6.16"}
+{"entite": "Qatar", "valeur": "0.13"}
+{"entite": "République centrafricaine", "valeur": "6.25"}
+{"entite": "République dominicaine", "valeur": "5.09"}
+{"entite": "Roumanie", "valeur": "5.99"}
+{"entite": "Royaume-Uni", "valeur": "4.75"}
+{"entite": "Russie", "valeur": "2.13"}
+{"entite": "Rwanda", "valeur": "11.36"}
+{"entite": "Saint-Vincent-et-les-Grenadines", "valeur": "18.00"}
+{"entite": "Sainte-Lucie", "valeur": "9.45"}
+{"entite": "Salvador", "valeur": "3.30"}
+{"entite": "Samoa", "valeur": "5.00"}
+{"entite": "São Tomé et Príncipe", "valeur": "9.13"}
+{"entite": "Sénégal", "valeur": "2.73"}
+{"entite": "Serbie", "valeur": "7.12"}
+{"entite": "Sierra Leone", "valeur": "3.15"}
+{"entite": "Singapour", "valeur": "2.82"}
+{"entite": "Slovaquie", "valeur": "5.36"}
+{"entite": "Slovénie", "valeur": "3.17"}
+{"entite": "Somalie", "valeur": "18.95"}
+{"entite": "Soudan", "valeur": "7.53"}
+{"entite": "Soudan du Sud", "valeur": "12.37"}
+{"entite": "Sri Lanka", "valeur": "4.00"}
+{"entite": "Suède", "valeur": "8.69"}
+{"entite": "Suisse", "valeur": "4.87"}
+{"entite": "Surinam", "valeur": "7.83"}
+{"entite": "Syrie", "valeur": "13.57"}
+{"entite": "Tadjikistan", "valeur": "6.93"}
+{"entite": "Tanzanie", "valeur": "1.57"}
+{"entite": "Tchad", "valeur": "1.06"}
+{"entite": "Tchéquie", "valeur": "2.83"}
+{"entite": "Thaïlande", "valeur": "0.78"}
+{"entite": "Timor oriental", "valeur": "1.59"}
+{"entite": "Togo", "valeur": "2.00"}
+{"entite": "Tonga", "valeur": "2.01"}
+{"entite": "Trinité-et-Tobago", "valeur": "3.33"}
+{"entite": "Tunisie", "valeur": "15.11"}
+{"entite": "Turkménistan", "valeur": "4.27"}
+{"entite": "Turquie", "valeur": "8.52"}
+{"entite": "Ukraine", "valeur": "9.83"}
+{"entite": "Uruguay", "valeur": "7.52"}
+{"entite": "Vanuatu", "valeur": "5.07"}
+{"entite": "Venezuela", "valeur": "5.31"}
+{"entite": "Viêt Nam", "valeur": "1.52"}
+{"entite": "Yémen", "valeur": "17.32"}
+{"entite": "Zambie", "valeur": "5.92"}
+{"entite": "Zimbabwe", "valeur": "9.29"}
