@@ -134,7 +134,10 @@ def _charge_ia():
         try:
             _IA = importlib.import_module("ia")
             _VERIFIE = importlib.import_module("base_faits").VERIFIE
-        except Exception:               # environnement sans lecteur -> on dégrade proprement (pas d'étage 2)
+        except Exception as _e:         # environnement sans lecteur -> on dégrade proprement (pas d'étage 2)
+            import traceback
+            print("  [VERAX] ⚠ moteur de connaissance INDISPONIBLE : %r" % _e, flush=True)
+            traceback.print_exc()
             _IA, _VERIFIE = False, None
     return _IA, _VERIFIE
 
