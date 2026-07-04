@@ -481,6 +481,18 @@ _ADJ_ATTR = {
     "petit": ("superficie_pays", "superficie"), "petite": ("superficie_pays", "superficie"),
     "petits": ("superficie_pays", "superficie"), "petites": ("superficie_pays", "superficie"),
     "riche": ("pib_pays", "pib_par_habitant_pays"), "riches": ("pib_pays", "pib_par_habitant_pays"),
+    # AU-DELÀ DES PAYS (base complète) : sommets/montagnes par ALTITUDE, fleuves par LONGUEUR. Le résolveur par
+    # paire (_attr_pour_paire) choisit, dans la famille, la relation qui contient RÉELLEMENT les deux entités —
+    # « l'Everest est-il plus haut que le mont Blanc ? », « la Loire est-elle plus longue que la Seine ? ».
+    "haut": ("altitude_montagne", "altitude_sommet", "altitude_col", "hauteur_montagne", "altitude_ville"),
+    "haute": ("altitude_montagne", "altitude_sommet", "altitude_col", "hauteur_montagne", "altitude_ville"),
+    "hauts": ("altitude_montagne", "altitude_sommet", "altitude_col"),
+    "hautes": ("altitude_montagne", "altitude_sommet", "altitude_col"),
+    "eleve": ("altitude_montagne", "altitude_sommet", "altitude_col", "altitude_ville"),
+    "elevee": ("altitude_montagne", "altitude_sommet", "altitude_col", "altitude_ville"),
+    "long": ("longueur_fleuve", "longueur_cours_eau", "longueur_pont", "longueur_ligne_ferroviaire"),
+    "longue": ("longueur_fleuve", "longueur_cours_eau", "longueur_pont", "longueur_ligne_ferroviaire"),
+    "longs": ("longueur_fleuve", "longueur_cours_eau"), "longues": ("longueur_fleuve", "longueur_cours_eau"),
 }
 # relations d'APPARTENANCE candidates par type d'entité (zone -> membres). 1re dont le reverse contient la zone.
 _APPARTENANCE = {"pays": ("continent", "region_pays"), "ville": ("pays_ville",), "montagne": ("continent_montagne",)}
@@ -699,12 +711,40 @@ _ADJ_PETIT = frozenset("petit petite petits petites court courte courts courtes 
                        "legers legeres faible faibles pauvre pauvres".split())
 _ATTR_UNITE = {"superficie_pays": "km²", "superficie": "km²", "population_pays": "habitants", "pib_pays": "$",
                "pib_par_habitant_pays": "$/habitant", "altitude": "m", "hauteur": "m", "longueur": "km"}
+# unité par PRÉFIXE de relation (familles au-delà des pays) — repli quand la relation exacte n'est pas listée.
+_UNITE_PREFIXE = (("altitude", "m"), ("hauteur", "m"), ("longueur", "m"),
+                  ("superficie", "km²"), ("population", "habitants"), ("pib", "$"), ("debit", "m³/s"))
+
+
+def _unite_attr(attr_rel: str) -> str:
+    """Unité d'affichage d'un attribut : table exacte puis repli par préfixe de famille (« altitude_montagne » -> m)."""
+    if attr_rel in _ATTR_UNITE:
+        return _ATTR_UNITE[attr_rel]
+    for pref, u in _UNITE_PREFIXE:
+        if attr_rel.startswith(pref):
+            return u
+    return ""
 
 
 def _valeur_attr(entite: str, attr_rel: str):
     """Valeur NUMÉRIQUE d'un attribut pour une entité (lecture directe, insensible aux accents), ou None."""
     cell = _charge_direct(attr_rel).get(_normalise(entite))
     return (_nombre(cell[1]), cell[0]) if cell else (None, None)
+
+
+def _attr_pour_paire(adjn: str, x: str, y: str):
+    """Choisit, dans la famille d'attributs de l'adjectif, la relation qui contient RÉELLEMENT les DEUX entités,
+    et renvoie (attr_rel, vx, ax, vy, ay). Généralise au-delà des pays (sommets/altitude, fleuves/longueur) : la
+    bonne relation dépend du TYPE des entités, pas d'un choix figé. None si aucune relation n'a les deux."""
+    for rel in _ADJ_ATTR.get(adjn, ()):
+        vx, ax = _valeur_attr(x, rel)
+        if vx is None:
+            continue
+        vy, ay = _valeur_attr(y, rel)
+        if vy is None:
+            continue
+        return rel, vx, ax, vy, ay
+    return None
 
 
 # ÉCART CHIFFRÉ entre deux entités sur un attribut : « quelle est la différence de population entre X et Y ? ».
@@ -762,20 +802,21 @@ def _cap_comparaison(texte: str):
             return None
         direction, adj, x, y = m.group(1), m.group(2), m.group(3), m.group(4)
     adjn = _normalise(adj)
-    attr_rel = next((r for r in _ADJ_ATTR.get(adjn, ()) if _charge_direct(r)), None)
-    if not attr_rel:
-        return None
     x, y = _strip_article(x.strip()), _strip_article(y.strip())
-    vx, ax = _valeur_attr(x, attr_rel)
-    vy, ay = _valeur_attr(y, attr_rel)
-    if vx is None or vy is None:
+    trouve = _attr_pour_paire(adjn, x, y)            # relation où les DEUX entités ont une valeur (pays OU sommets/fleuves)
+    if not trouve:
         return None
-    unite = _ATTR_UNITE.get(attr_rel, "")
+    attr_rel, vx, ax, vy, ay = trouve
+    unite = _unite_attr(attr_rel)
     fx = "%s %s" % (format(int(vx), ",d").replace(",", " "), unite) if float(vx).is_integer() else "%g %s" % (vx, unite)
     fy = "%s %s" % (format(int(vy), ",d").replace(",", " "), unite) if float(vy).is_integer() else "%g %s" % (vy, unite)
+    pays = attr_rel.endswith("_pays") or attr_rel in ("superficie", "pib_pays")   # famille « pays » -> article_pays
     try:
         import realisation_fr as _RF
-        nx, ny = _RF.article_pays(ax), _RF.article_pays(ay)      # « la France », « l'Espagne », « l'Inde »
+        if pays:
+            nx, ny = _RF.article_pays(ax), _RF.article_pays(ay)  # « la France », « l'Espagne », « l'Inde »
+        else:
+            nx, ny = _RF.le_syntagme(ax), _RF.le_syntagme(ay)    # « le mont Blanc », « la Loire », « l'Everest »
     except Exception:
         nx, ny = ax, ay
     if direction == "aussi" or vx == vy:
