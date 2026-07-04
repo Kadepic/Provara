@@ -540,6 +540,10 @@ _ADJ_ATTR = {
 }
 # relations d'APPARTENANCE candidates par type d'entité (zone -> membres). 1re dont le reverse contient la zone.
 _APPARTENANCE = {"pays": ("continent", "region_pays"), "ville": ("pays_ville",), "montagne": ("continent_montagne",)}
+# Types dont l'ÉNUMÉRATION par zone est COMPLÈTE -> un superlatif « le plus X » y est SAIN (FAUX=0). Les autres
+# types (montagne/ville) ont un membership troué (extrêmes manquants) : le comptage/filtre les liste en disant
+# « dans mes données », mais un superlatif AFFIRMÉ y serait faux -> _superlatif_argmax s'y abstient.
+_SUPERLAT_TYPES_SÛRS = frozenset({"pays"})
 
 
 def _nombre(v):
@@ -1180,6 +1184,12 @@ def _superlatif_argmax(expr: str):
     adj = next((w for w in apres if w in _ADJ_ATTR), None) or next((w for w in gtoks if w in _ADJ_ATTR), None)
     typ = next((w for w in gtoks if w in _APPARTENANCE), None)
     if not adj or not typ:
+        return None
+    # FAUX=0 : un superlatif AFFIRME « le plus X » — ce n'est SAIN que si l'ensemble énuméré est COMPLET. Les pays
+    # d'un continent le sont (membership « continent » exhaustif). PAS les montagnes/villes : continent_montagne
+    # oublie l'Elbrouz (vrai plus haut d'Europe) et le Mont Blanc n'a pas d'altitude -> l'argmax dirait « Cervin »
+    # (faux). Pour ces types on S'ABSTIENT plutôt que d'affirmer un extrême sur un ensemble troué.
+    if typ not in _SUPERLAT_TYPES_SÛRS:
         return None
     attr_rel = next((r for r in _ADJ_ATTR[adj] if _charge_direct(r)), None)
     if not attr_rel:
