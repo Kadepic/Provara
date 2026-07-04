@@ -35,6 +35,7 @@ def _conjonction_txt(q):
 CAS = [
     ("is-a", R._cap_ontologie, "un chat est-il un mammifère ?", "Oui"),
     ("is-a-faux", R._cap_ontologie, "un chat est-il un poisson ?", "mammifère"),  # jamais « Oui »
+    ("is-a-faux-contexte", R._cap_ontologie, "l'apartheid est-il un continent ?", ""),  # bruit de genre géo nettoyé
     ("point-commun", R._cap_ontologie, "qu'ont en commun le chat et le requin ?", "animal"),
     ("cause", R._cap_cause, "quelle est la cause du paludisme ?", "du paludisme"),
     ("definition", R._cap_definition, "c'est quoi le paludisme ?", "Paludisme"),

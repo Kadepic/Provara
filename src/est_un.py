@@ -131,6 +131,28 @@ def _est_adjectif(n: str) -> bool:
 
 
 _MOT_RE = re.compile(r"[A-Za-zÀ-ÿ’'\-]+")
+# MARQUEURS DE CONTEXTE Wiktionnaire en tête de définition (registre/domaine/géo) : « (Afrique) », « (Biologie) »,
+# « en Afrique du Sud, », « au Québec, ». Le GENRE est APRÈS ce marqueur, pas dedans — sans nettoyage, « apartheid »
+# (« en Afrique du Sud, régime… ») recevait le genre « afrique » -> « continent » (faux is-a). FAUX=0 : on retire
+# le marqueur pour lire le VRAI genre (« régime »). Un seul retrait de tête, très cadré (préposition + court + virgule).
+_PAREN_TETE_RE = re.compile(r"^\s*(?:\([^)]{1,40}\)\s*)+")
+# une clause locative de tête « (et) en Afrique du Sud, » — appliquée en BOUCLE pour absorber les listes
+# (« en Asie du Sud, en Asie du Sud-Est et en Afrique du Sud, nom… » -> « nom… »).
+_LOC_TETE_RE = re.compile(
+    r"^\s*(?:et\s+)?(?:en|au|aux|dans|à|a|sur|chez|pour)\s+[^,.;]{1,40},\s+", re.IGNORECASE)
+
+
+def _sans_contexte(definition: str) -> str:
+    """Retire les marqueurs de contexte Wiktionnaire de TÊTE (« (Afrique) », « en Afrique du Sud, », listes de
+    lieux) pour lire le VRAI genre (« régime », « aubergine »), pas le lieu. Ne retire que la tête ; rend le reste
+    (ou l'original si tout serait retiré)."""
+    d = _PAREN_TETE_RE.sub("", definition)
+    for _ in range(6):                                # boucle bornée : absorbe une liste de clauses locatives
+        d2 = _LOC_TETE_RE.sub("", d)
+        if d2 == d:
+            break
+        d = d2
+    return d if d.strip() else definition
 
 
 def _genus_choisit(tokens):
@@ -158,6 +180,7 @@ def _genus_de(definition: str):
     FENÊTRE DE TÊTE : le genus vit au début de la définition — on ne tokenise que les ~96 premiers caractères
     (findall C-speed sur 292k définitions au chargement), repli plein texte si la fenêtre ne donne rien. Le dernier
     token de la fenêtre est écarté s'il a pu être TRONQUÉ à la coupe (« mammif » n'est pas un genre)."""
+    definition = _sans_contexte(definition)           # retire un marqueur de contexte de tête (registre/domaine/géo)
     if len(definition) > 96:
         tokens = _MOT_RE.findall(definition[:96])
         if tokens:

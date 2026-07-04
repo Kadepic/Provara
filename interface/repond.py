@@ -1005,7 +1005,9 @@ def _cap_comptage(texte: str):
     except Exception:
         hy = []
     if len(hy) >= 3:
-        return "Je connais %d %s dans mes données." % (len(hy), typ)
+        # RECALL de classification, PAS le compte canonique : le graphe is-a peut ranger sous « continent » des
+        # sur/paléocontinents et des termes rares. On le DIT honnêtement (« termes … que je classe comme »).
+        return "Je connais %d termes que je classe comme « %s » dans mes données." % (len(hy), sing)
     return None
 
 
