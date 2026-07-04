@@ -2137,9 +2137,18 @@ def _cap_portrait(texte: str):
     dans son continent). Profondeur par la LARGEUR, pas par la génération — chaque brique est vérifiable (FAUX=0).
     Gate : ne se déclenche que pour un PAYS connu (relation `continent`) ; sinon None -> definition/fiche prennent le relais."""
     m = _PORTRAIT_RE.match(texte)
-    if not m:
+    if m:
+        ent_txt = m.group(1)
+    elif _veut_profondeur(texte):
+        # DEMANDE DE PROFONDEUR sur une entité (« explique-moi le Japon », « détaille la France ») -> portrait développé
+        m2 = re.search(r"(?:explique|d[ée]taille|d[ée]veloppe|approfondis?|[ée]labore)\S*\s+(?:moi\s+)?"
+                       r"(?:sur\s+|de\s+|d['’])?(?:la\s+|le\s+|les\s+|l['’])?(.+?)\s*\??\s*$", texte, re.I)
+        ent_txt = m2.group(1) if m2 else None
+        if not ent_txt:
+            return None
+    else:
         return None
-    ne = _normalise(_strip_article(m.group(1).strip()))
+    ne = _normalise(_strip_article(ent_txt.strip()))
     cont = _charge_direct("continent").get(ne)
     if not cont:
         return None
@@ -2519,13 +2528,13 @@ _INVITES = (
     "Pose-moi une question et je réponds avec ce que je sais.",
 )
 _DEMANDE_PROFONDEUR = re.compile(
-    r"\b(explique|expliques|detaille|detailles|developpe|approfondi\w*|en detail|precis\w*|pourquoi|"
-    r"comment (?:ca|cela) (?:marche|fonctionne)|dis[- ]?m'?en (?:plus|davantage)|elabore)\b", re.I)
+    r"\b(explique|expliques|detaille|detailles|developpe|approfondi\w*|en\s+detail|dis[- ]?m['’]?en\s+(?:plus|davantage)|"
+    r"elabore|parle[- ]?m['’]?en\s+(?:plus|davantage))\b", re.I)
 
 
 def _veut_profondeur(texte: str) -> bool:
-    """Le CONTEXTE réclame-t-il une réponse DÉVELOPPÉE (question de raison/explication, demande explicite de détail) ?
-    Sinon, à profondeur de conversation avancée, on privilégie la réponse la plus dense et directe."""
+    """Le CONTEXTE réclame-t-il une réponse DÉVELOPPÉE (« explique-moi… », « détaille… », « dis-m'en plus ») ?
+    Utilisé pour router une demande de détail sur une ENTITÉ vers la réponse développée (portrait/fiche)."""
     return bool(_DEMANDE_PROFONDEUR.search(_normalise(texte)))
 
 

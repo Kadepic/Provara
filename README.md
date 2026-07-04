@@ -52,6 +52,11 @@ The demo runs on the bundled **sample** (16 fact domains) plus the computation e
 
 Provara is not just a fact store: it is a full local assistant that never lies.
 
+- **It reasons — it doesn't just look up** — "is a cat a mammal?" → *Yes — cat → mammal*; "what continent is Abuja on?" → *Africa* (**derived**: Abuja is the capital of Nigeria, which is in Africa); "is Phobos part of the solar system?" → the machine **discovers** that "orbits" is transitive (and rejects symmetry), then **applies it with proof**. A non-stored fact becomes known — and proven.
+- **It counts and ranks — exactly** — "how many countries in Africa?" → an **exact** count; "the 5 most populous countries in Africa" → an exact ranking with the values. Where an LLM guesses, Provara **counts**.
+- **It defines and develops** — "what is malaria?" → the verified definition; "tell me about Nigeria" → a **developed profile** (capital, population with the **computed rank** "most populous in Africa", currency).
+- **It understands you despite typos and slang** — "commen vas-tu" → understood (spelling + **phonetic** correction); French slang → mapped to the standard term (**paraphrase**, JeuxDeMots network).
+- **It says who created it** — "who created you?" → Yohan Fauck, with his links.
 - **It searches the web when it doesn't know** (opt-in) — first a reliable structured source (Wikidata) for a **verified fact**; otherwise an **attributed** Wikipedia extract with the **link** ("according to Wikipedia…, verify if needed"). Never presented as its own truth. *("the king of pop" → Michael Jackson; "who invented dynamite?" → Alfred Nobel, 1866.)*
 - **It draws what it knows** — "show me what you know about France" → a **diagram** (graph) of its real relations.
 - **It reads your files** — a file (JSON, CSV, XML, SQLite, ZIP…) → a faithful summary, **read locally**, never sent anywhere.

@@ -52,6 +52,11 @@ La démo tourne sur l'**échantillon** livré (16 domaines de faits) plus les mo
 
 Provara n'est pas qu'une base de faits : c'est un assistant local complet, qui ne ment jamais.
 
+- **Il raisonne — il ne se contente pas de retrouver** — « un chat est-il un mammifère ? » → *Oui — chat → mammifère* ; « sur quel continent est Abuja ? » → *Afrique* (**déduit** : Abuja est la capitale du Nigéria, qui est en Afrique) ; « Phobos fait-il partie du système solaire ? » → la machine **découvre** que « orbiter » est transitive (et rejette la symétrie), puis l'**applique avec preuve**. Un fait non stocké devient connu — et prouvé.
+- **Il compte et classe — exactement** — « combien de pays en Afrique ? » → un décompte **exact** ; « les 5 pays les plus peuplés d'Afrique » → un tri exact avec les valeurs. Là où un LLM devine, Provara **compte**.
+- **Il définit et développe** — « c'est quoi le paludisme ? » → la définition vérifiée ; « parle-moi du Nigéria » / « explique-moi le Japon » → une **fiche développée** (capitale, population avec le **rang calculé** « le plus peuplé d'Afrique », monnaie).
+- **Il te comprend malgré les fautes et l'argot** — « commen vas-tu » → compris (correction orthographe + **phonétique**) ; « combien gagne un toubib » → il comprend *médecin* (**paraphrase**, réseau JeuxDeMots).
+- **Il sait dire qui l'a créé** — « qui t'a créé ? » → Yohan Fauck, avec ses liens.
 - **Il cherche sur le web quand il ne sait pas** (opt-in) — d'abord une source structurée fiable (Wikidata) pour un **fait vérifié** ; sinon un extrait **attribué** de Wikipédia avec le **lien** (« d'après Wikipédia…, à vérifier au besoin »). Jamais présenté comme sa propre vérité. *(« le roi de la pop » → Michael Jackson ; « qui a inventé la dynamite ? » → Alfred Nobel, 1866.)*
 - **Il dessine ce qu'il sait** — « montre-moi ce que tu sais sur la France » → un **schéma** (graphe) de ses relations réelles.
 - **Il lit tes fichiers** — un fichier (JSON, CSV, XML, SQLite, ZIP…) → un résumé fidèle, **lu localement**, jamais envoyé ailleurs.
