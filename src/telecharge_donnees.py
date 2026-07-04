@@ -13,7 +13,7 @@ URL = os.environ.get(
     "https://github.com/Provara-IA/Provara/releases/latest/download/datasets_complets.tar.gz")
 URL_CACHE = os.environ.get(
     "VERAX_CACHE_URL",
-    "https://github.com/Provara-IA/Provara/releases/latest/download/verax_cache_v1.tar.gz")
+    "https://github.com/Provara-IA/Provara/releases/latest/download/Provara_cache_v1.tar.gz")
 
 
 def dossier_donnees():
