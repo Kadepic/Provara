@@ -1,6 +1,6 @@
-# VERAX Architecture
+# Provara Architecture
 
-> Founding rule, engraved in every layer: **FAUX = 0**. VERAX answers only
+> Founding rule, engraved in every layer: **FAUX = 0**. Provara answers only
 > when a real judge (a verified lookup, an actually evaluated computation, a
 > sourced reference) has ruled. Everywhere else, it *frames* (assumption), *asks*
 > (clarification), or *abstains* (HORS). It never asserts at random.
@@ -13,7 +13,7 @@ This document describes the architecture **as it exists in the code**
 
 ## 1. Guiding principle: atomic modules with watertight boundaries
 
-VERAX is not a monolithic model: it is an **assembly of atomic
+Provara is not a monolithic model: it is an **assembly of atomic
 modules**, each responsible for a single kind of truth and each accompanied by
 its own validator.
 
@@ -183,7 +183,7 @@ The module is *import-light* (OOM-safe): at top level, only the stdlib +
 
 ### 2.4 The computation engines (`ia.py` façade)
 
-Beyond lookup, VERAX exposes **deterministic engines** whose every answer
+Beyond lookup, Provara exposes **deterministic engines** whose every answer
 is re-verifiable. The `ia.py` façade groups them by families; the common idea
 is *exact computation or abstention*, never an approximation served as a fact.
 
@@ -240,7 +240,7 @@ reduce the memory peak, without changing the answers.
 ### 2.6 Calibration (families of non-bounded modules, `ia.py` façade)
 
 The non-bounded is not truth: it is opinion that must stay
-*honest about its uncertainty*. VERAX exposes a large family of statistical
+*honest about its uncertainty*. Provara exposes a large family of statistical
 bricks, all accessible behind uniform `ia.*` wrappers (often
 a `phrase=` parameter for a natural-language output). Grouped by what they
 allow you to DO:

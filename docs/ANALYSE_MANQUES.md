@@ -1,9 +1,9 @@
-# VERAX — Analyse des manques (ce qui reste pour performer au maximum)
+# Provara — Analyse des manques (ce qui reste pour performer au maximum)
 
 _Établie 2026-07-03, après le chantier « assistant conversationnel » et les mesures de ressources._
 _Base : 71,9 M faits · 1387 relations · ~30 Mo RAM (colonnaire mémoire-mappée, paginée à la demande — voir P6 RÉSOLU) · lookup ~0,004 ms · 0 GPU · 0 dépendance._
 
-Priorisé par IMPACT × faisabilité model-free. VERAX a une base de faits énorme et un moteur FAUX=0 solide ;
+Priorisé par IMPACT × faisabilité model-free. Provara a une base de faits énorme et un moteur FAUX=0 solide ;
 les vrais leviers ci-dessous exploitent MIEUX ce qui existe déjà plutôt que d'ajouter de la donnée.
 
 ## STATUT (mis à jour 2026-07-03) — la plupart des leviers sont LIVRÉS
@@ -26,7 +26,7 @@ Le détail d'origine de chaque levier suit ci-dessous (conservé pour la traçab
 
 ## P1 — Raisonnement COMPOSITIONNEL (le plus gros levier)
 **Manque** : « monnaie de la capitale de la France », « langue du pays le plus peuplé d'Europe » sont REFUSÉS
-(garde relations-imbriquées) — honnête mais bridant. VERAX répond à un fait atomique, jamais à une CHAÎNE.
+(garde relations-imbriquées) — honnête mais bridant. Provara répond à un fait atomique, jamais à une CHAÎNE.
 **Pourquoi c'est le levier n°1** : avec les 71,9 M faits DÉJÀ présents, composer 2-3 relations démultiplie les
 questions répondables sans ajouter une seule donnée. C'est le passage de « base de faits » à « moteur de
 raisonnement ».
@@ -38,7 +38,7 @@ existent déjà.
 **Manque** : le moteur d'invention (`besoin`/`invention_atomes`) est câblé mais ne s'exécute que sur un CATALOGUE
 de besoins minuscule. L'OBJECTIF FINAL — « déterminer s'il manque des inventions qui changeraient le monde et
 fournir de quoi les construire » — n'est pas systématisé.
-**Pourquoi** : c'est la raison d'être différenciante de VERAX (ce qu'un LLM ne fait pas : parcourir
+**Pourquoi** : c'est la raison d'être différenciante de Provara (ce qu'un LLM ne fait pas : parcourir
 SYSTÉMATIQUEMENT le réel jugé pour trouver les trous). Le substrat (71,9 M faits) est là.
 **Faisabilité** : moyenne — bâtir un « gap-engine » qui balaie le graphe (attributs composites dérivables,
 combinaisons de leviers physiques non exploitées) et propose des candidats jugés par la réalité (coherence_physique).

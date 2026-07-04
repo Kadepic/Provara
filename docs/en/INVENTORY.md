@@ -1,4 +1,4 @@
-# Complete inventory of VERAX
+# Complete inventory of Provara
 
 > Generated mechanically from the code (docstrings + API). Represents the entirety of the shipped modules.
 
@@ -172,7 +172,7 @@
 | `delta_debug` | DELTA-DEBUGGING (ddmin) — failure-reproducer minimization (advanced-code brick, 2026-07-02). | ddmin, est_1_minimal, minimise_texte |
 | `demande` | DEMANDE — THE QUERY INTERFACE ("speech", 2026-06-17, Yohan's reframing "one must be able to ASK it things, | construit_moteur, class Reponse, demande, class AssistantIA |
 | `demo_anglais` |  | main |
-| `demo_verax` | VERAX DEMO — "Either it knows, or it says so. | titre, q, calcule, main |
+| `demo_verax` | Provara DEMO — "Either it knows, or it says so. | titre, q, calcule, main |
 | `demographie` | demographie.py — Demography (populations, facts): | taux_croissance_naturel, densite_population, temps_doublement, taux_dependance, indice_fecondite |
 | `derive_calibration` | TIER 2 — CALIBRATION DRIFT DETECTOR (brick 13, 2026-06-25). | class DetecteurDerive, formule |
 | `deux_enveloppes` | TIER 2 — TWO-ENVELOPE PARADOX: | p_petite_sachant, gain_conditionnel, esperance_gain_inconditionnel, simule, analyse, formule |
@@ -496,7 +496,7 @@
 | `veille` | WATCH / WEB ACCESS — SOVEREIGN search, FAUX=0 (roadmap #11: | recupere, rapporte, independantes, corrobore, approfondit |
 | `veille_corroboration` | WEB -> REALITY -> FACT-STORE LOOP: | juge_coherence_store, corrobore_valeur |
 | `venn_abers` | TIER 2 — VENN-ABERS PREDICTOR (brick 16, 2026-06-25). | class VennAbers, formule |
-| `verifie_demo` | VERAX — out-of-the-box verification / ready-to-use verification. | main |
+| `verifie_demo` | Provara — out-of-the-box verification / ready-to-use verification. | main |
 | `web` | WEB (HTML/CSS/standards) — exact STRUCTURAL checks, FAUX=0 (formula/concept mission 2026-06-29). | balises_equilibrees, specificite, compare_specificite |
 | `will_rogers` | TIER 2 — WILL ROGERS PHENOMENON / STAGE MIGRATION: | moyenne, migrants_will_rogers, migration, analyse, formule |
 | `winner_curse` | TIER 2 — WINNER'S CURSE & SELECTIVE INFERENCE (brick 71, 2026-06-27). | selectionne, ic_naif, ic_simultane, estime, formule |

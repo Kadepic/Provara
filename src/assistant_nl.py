@@ -231,7 +231,7 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
     if _wl:
         _extrait, _titre, _url = _wl
         return Reponse(SUPPOSITION, "D'après Wikipédia (« %s ») : %s" % (_titre, _extrait[:400]),
-                       regime=c.regime, source="Wikipédia — %s (rapporté, non vérifié par VERAX)" % _url)
+                       regime=c.regime, source="Wikipédia — %s (rapporté, non vérifié par Provara)" % _url)
     ok, doms, n = _ping_sources()
     if ok:
         return Reponse(HORS,
@@ -260,7 +260,7 @@ def _reponse_opinion(question, c):
             extrait, titre, url = wl
             return Reponse(SUPPOSITION,
                            base + " Pour te donner des pistes, d'après Wikipédia (« %s ») : %s" % (titre, extrait[:360]),
-                           regime=c.regime, source="Wikipédia — %s (rapporté, non vérifié par VERAX)" % url)
+                           regime=c.regime, source="Wikipédia — %s (rapporté, non vérifié par Provara)" % url)
     return Reponse(SUPPOSITION, base + " Donne-moi un critère objectif (ventes, récompenses…) et je cherche.",
                    regime=c.regime)
 
@@ -339,7 +339,7 @@ def _module_repond():
         if deja is not None and hasattr(deja, "est_fallback"):
             _REPOND_MOD = deja                               # instance du serveur/validateur : on la partage
             return _REPOND_MOD                               # (quel que soit son chemin : layout src/ ou gelé .exe)
-        # Layouts possibles : harnais (interface/ sous _ICI) et Verax (interface/ FRÈRE de src/). L'ancien chemin
+        # Layouts possibles : harnais (interface/ sous _ICI) et Provara (interface/ FRÈRE de src/). L'ancien chemin
         # unique src/interface/repond.py n'existait pas -> FileNotFoundError avalée par les appelants = étage
         # clarification MORT en silence dans le produit.
         for base in (_ICI, os.path.dirname(_ICI)):

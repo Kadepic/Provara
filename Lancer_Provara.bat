@@ -1,5 +1,5 @@
 @echo off
-REM VERAX - double-cliquez pour lancer l'IA (necessite Python 3.10+ installe).
+REM Provara - double-cliquez pour lancer l'IA (necessite Python 3.10+ installe).
 cd /d "%~dp0"
 python lance.py
 if errorlevel 1 (

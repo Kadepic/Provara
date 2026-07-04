@@ -37,7 +37,7 @@ os.environ.setdefault("LECTEUR_AMORCE_SEULE", "1")  # OPTIM T9 : ingestion = amo
 import lecteur as L
 import sources
 
-UA = "VERAX/1.0 (https://github.com/Verax-IA/Verax) offline-knowledge-ingestion"
+UA = "Provara/1.0 (https://github.com/Provara-IA/Provara) offline-knowledge-ingestion"
 DOSSIER = L._DOSSIER_DATASETS                                   # datasets/lecteur/
 RACINE = os.path.dirname(DOSSIER)                               # datasets/
 RAW = os.path.join(RACINE, "_raw")                             # snapshots bruts (repro/trace)

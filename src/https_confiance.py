@@ -2,7 +2,7 @@
 """SORTIE HTTPS FIABLE — contexte système d'abord, repli sur ancres ÉPINGLÉES. Vérification JAMAIS désactivée.
 
 POURQUOI : sous Windows, le magasin de certificats système peut contenir une variante PÉRIMÉE d'une racine
-(cas RÉEL vu sur le .exe VERAX 2026-07-03 : fr.wikipedia.org -> « certificate has expired » alors que la chaîne
+(cas RÉEL vu sur le .exe Provara 2026-07-03 : fr.wikipedia.org -> « certificate has expired » alors que la chaîne
 servie est 100 % valide — Let's Encrypt YE1/Root YE/ISRG X2 ; github.com passait, WSL/Linux passait). Les
 navigateurs récupèrent les racines dynamiquement (AuthRoot), Python/OpenSSL non : il termine la chaîne sur
 l'ancre pourrie du magasin et refuse un site sain.

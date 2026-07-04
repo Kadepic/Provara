@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Liste d'imports pour PyInstaller : garantit que TOUS les modules VERAX (et leurs dépendances
+"""Liste d'imports pour PyInstaller : garantit que TOUS les modules Provara (et leurs dépendances
 stdlib) sont embarqués dans le .exe. Jamais importé au runtime — sert seulement à l'analyse du build."""
 try:
     import abduction

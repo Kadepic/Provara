@@ -27,7 +27,7 @@ import sys
 import time
 
 HARN = os.path.dirname(os.path.abspath(__file__))
-# PORTAGE Verax : les validateurs vivent dans tests/ (et interface/valide_interface.py dans interface/), pas à
+# PORTAGE Provara : les validateurs vivent dans tests/ (et interface/valide_interface.py dans interface/), pas à
 # la racine comme dans le repo d'origine. `_chemin()` résout un nom de validateur vers son chemin réel relatif
 # à HARN ; `TESTS` est le dossier des `valide_*.py`. Le pipeline importe depuis src/ + interface/ + ingestion/.
 TESTS = os.path.join(HARN, "tests")

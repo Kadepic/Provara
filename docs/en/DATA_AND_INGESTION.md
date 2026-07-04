@@ -1,6 +1,6 @@
 # Data & ingestion
 
-This page describes **where VERAX's facts come from** and **how they get in**. It
+This page describes **where Provara's facts come from** and **how they get in**. It
 documents only what actually exists in the code (`sources.py`, `veille.py`,
 `veille_corroboration.py`, the `ingere_*.py` family). One principle governs everything that follows
 and admits no exception:
@@ -117,7 +117,7 @@ source — it is a **dated** snapshot, never served as “live”.
 
 ## 5. The “go fetch → corroborate → judge → write only the verified” loop
 
-To learn beyond deterministic imports, VERAX has a **disciplined** web access
+To learn beyond deterministic imports, Provara has a **disciplined** web access
 (`veille.py`) and the promotion loop (`veille_corroboration.py`). It makes
 learning **non-ephemeral** without ever relaxing FAUX=0.
 

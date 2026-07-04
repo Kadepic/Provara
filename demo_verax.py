@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-DÉMO VERAX — « Ou il sait, ou il le dit. Jamais il n'invente. »
+DÉMO Provara — « Ou il sait, ou il le dit. Jamais il n'invente. »
 
 Lance :  python3 demo_verax.py
 
@@ -24,7 +24,7 @@ def titre(t):
 
 
 def q(question):
-    """Pose une question à VERAX (porte conversationnelle) et affiche son verdict typé."""
+    """Pose une question à Provara (porte conversationnelle) et affiche son verdict typé."""
     r = ia.assistant(question)
     etiquette = {
         "fait": "✔ FAIT",
@@ -44,7 +44,7 @@ def calcule(libelle, valeur):
 
 
 def main():
-    print("\n  VERAX — démonstration")
+    print("\n  Provara — démonstration")
     print("  L'IA qui ne ment pas : elle sait (avec preuve), ou elle s'abstient.")
 
     # ── 1. CE QU'IL SAIT (faits vérifiés, avec provenance) ─────────────────────

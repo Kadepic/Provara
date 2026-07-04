@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """LANGUE — détection + réponse factuelle MULTILINGUE, model-free, FAUX=0 (2026-07-03).
 
-POURQUOI (mission Yohan « pouvoir switcher dans un MAXIMUM de langues ») : VERAX comprend une question factuelle
+POURQUOI (mission Yohan « pouvoir switcher dans un MAXIMUM de langues ») : Provara comprend une question factuelle
 posée dans plusieurs langues et RÉPOND dans cette langue. Approche model-free et EXTENSIBLE : chaque langue est une
 CONFIG DE DONNÉES (mots-relations, noms de pays, gabarits de réponse, traduction des valeurs). Ajouter une langue =
 ajouter une entrée dans `_LANGUES` — aucune logique nouvelle.
@@ -140,7 +140,7 @@ _VALEURS = {
            "italien": "italiano", "portugais": "português", "arabe": "árabe", "japonais": "japonês"},
 }
 
-LANGUES_SUPPORTEES = tuple(k for k in _TEMPLATES if k != "fr")   # langues CIBLES non-FR où VERAX sait répondre
+LANGUES_SUPPORTEES = tuple(k for k in _TEMPLATES if k != "fr")   # langues CIBLES non-FR où Provara sait répondre
 _NOMS = {"fr": "français", "en": "anglais", "es": "espagnol", "de": "allemand", "it": "italien", "pt": "portugais"}
 
 

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """APPRENTISSAGE DE PATRONS CONVERSATIONNELS — apprendre des reformulations de l'utilisateur, FAUX=0 (2026-07-03).
 
-POURQUOI (mandat Yohan « apprentissage des patrons depuis les conversations ») : quand VERAX ne comprend pas une
-formulation (abstention) et que l'utilisateur REFORMULE une question à laquelle VERAX répond alors correctement,
+POURQUOI (mandat Yohan « apprentissage des patrons depuis les conversations ») : quand Provara ne comprend pas une
+formulation (abstention) et que l'utilisateur REFORMULE une question à laquelle Provara répond alors correctement,
 la 1re formulation et la 2e portent sur le MÊME sujet. On APPREND l'alias : la formulation ratée -> la formulation
 réussie. La prochaine fois, la formulation ratée est re-routée vers celle qui marche.
 

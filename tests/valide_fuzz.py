@@ -4,7 +4,7 @@ Validation de la BRIQUE 6 (le crible sécurité / fuzzing différentiel).
 Critère de la brique :
   1. une solution robuste et correcte -> ROBUSTE ;
   2. une solution qui CRASHE sur des entrées aberrantes (liste vide/singleton)
-     -> CRASH — ALORS MÊME QU'ELLE PASSE LES TESTS (la démonstration VERAX :
+     -> CRASH — ALORS MÊME QU'ELLE PASSE LES TESTS (la démonstration Provara :
      "passe les tests" ≠ "survit au réel") ;
   3. une solution subtilement FAUSSE sur du non-vu -> DIVERGENCE ;
   4. une tâche sans oracle/générateur -> INCRIBLABLE (pas de faux "tout va bien").
@@ -23,7 +23,7 @@ from taches import HUMANEVAL_0 as t
 ROBUSTE_OK = t.solution_ref
 
 # Passe les tests visibles (toutes les listes y ont >= 2 éléments) MAIS min([])
-# plante sur liste vide / singleton -> fragile. C'est le cas VERAX.
+# plante sur liste vide / singleton -> fragile. C'est le cas Provara.
 MIN_FRAGILE = '''
 from typing import List
 
@@ -61,7 +61,7 @@ def main() -> int:
     resultats.append(_check(f"solution robuste -> ROBUSTE (vu: {r.type_faille})",
                             r.robuste and r.type_faille == ROBUSTE))
 
-    # 2. Le cas VERAX : passe le juge, mais le crible trouve un CRASH.
+    # 2. Le cas Provara : passe le juge, mais le crible trouve un CRASH.
     passe_juge = juge(MIN_FRAGILE, t.tests, lim).passe
     resultats.append(_check("min-fragile PASSE pourtant les tests visibles (pré-condition)", passe_juge))
     r = crible(t, MIN_FRAGILE, n_essais=300, seed=0, limites=lim)

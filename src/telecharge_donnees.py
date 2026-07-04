@@ -10,10 +10,10 @@ import urllib.request
 
 URL = os.environ.get(
     "VERAX_DONNEES_URL",
-    "https://github.com/Verax-IA/Verax/releases/latest/download/datasets_complets.tar.gz")
+    "https://github.com/Provara-IA/Provara/releases/latest/download/datasets_complets.tar.gz")
 URL_CACHE = os.environ.get(
     "VERAX_CACHE_URL",
-    "https://github.com/Verax-IA/Verax/releases/latest/download/verax_cache_v1.tar.gz")
+    "https://github.com/Provara-IA/Provara/releases/latest/download/verax_cache_v1.tar.gz")
 
 
 def dossier_donnees():
@@ -76,7 +76,7 @@ def assure_base_complete(notifier=None):
             _ouvre = https_confiance.urlopen
         except Exception:
             _ouvre = urllib.request.urlopen   # layout minimal sans src/ -> comportement d'avant
-        req = urllib.request.Request(URL, headers={"User-Agent": "VERAX/1.0 (base complete)"})
+        req = urllib.request.Request(URL, headers={"User-Agent": "Provara/1.0 (base complete)"})
         with _ouvre(req, timeout=60) as r, open(arch, "wb") as fh:
             total = int(r.headers.get("Content-Length") or 0)
             lu = 0
@@ -104,7 +104,7 @@ def assure_base_complete(notifier=None):
     except Exception as e:
         import urllib.error
         if isinstance(e, urllib.error.HTTPError) and e.code == 404:
-            print("\n  (base complète pas encore publiée en ligne — VERAX démarre sur l'échantillon embarqué.\n"
+            print("\n  (base complète pas encore publiée en ligne — Provara démarre sur l'échantillon embarqué.\n"
                   "   Pour la base complète : place le dossier « lecteur » dans %s, ou attends sa publication.)"
                   % os.path.dirname(dossier_donnees()))
         else:
@@ -124,7 +124,7 @@ def assure_base_complete(notifier=None):
 
 def assure_cache_complet(notifier=None):
     """Télécharge + extrait l'INDEX `.colf` pré-construit dans ~/.verax/cache si absent. Renvoie True si prêt.
-    BEST-EFFORT : un échec (réseau, 404, archive absente d'une vieille Release) n'est PAS bloquant — VERAX
+    BEST-EFFORT : un échec (réseau, 404, archive absente d'une vieille Release) n'est PAS bloquant — Provara
     reconstruira simplement l'index au 1er lancement (plus lent/lourd une seule fois). Intégrité : archive
     tronquée -> jamais extraite ; extraction partielle -> purgée (ne pas figer un cache incomplet).
     `notifier(phase=..., pct=...)` (optionnel) : progression pour la modale d'interface."""
@@ -147,7 +147,7 @@ def assure_cache_complet(notifier=None):
             _ouvre = https_confiance.urlopen
         except Exception:
             _ouvre = urllib.request.urlopen
-        req = urllib.request.Request(URL_CACHE, headers={"User-Agent": "VERAX/1.0 (cache)"})
+        req = urllib.request.Request(URL_CACHE, headers={"User-Agent": "Provara/1.0 (cache)"})
         with _ouvre(req, timeout=60) as r, open(arch, "wb") as fh:
             total = int(r.headers.get("Content-Length") or 0)
             lu = 0

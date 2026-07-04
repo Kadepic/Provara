@@ -35,7 +35,7 @@ PREF = ("PREFIX wikibase: <http://wikiba.se/ontology#>\n"
         "PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>\n"
         "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
         "PREFIX wdt: <http://www.wikidata.org/prop/direct/>\n")
-UA = "VERAX/1.0 (https://github.com/Verax-IA/Verax) offline-knowledge-ingestion"
+UA = "Provara/1.0 (https://github.com/Provara-IA/Provara) offline-knowledge-ingestion"
 
 _SEUIL_CAT = 20                                  # une vraie valeur grammaticale a >= 20 occurrences ; la traîne = bruit
 _BLACKLIST = {"Plura", "Noun", "Nomina"}         # labels en langue étrangère qui passent le seuil

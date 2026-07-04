@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """HARNAIS DE CHALLENGE CONVERSATIONNEL — boucle adverse (mandat Yohan 2026-07-03).
 
-But : soumettre à VERAX des énoncés de complexité et de registre CROISSANTS (courant / technique / soutenu /
+But : soumettre à Provara des énoncés de complexité et de registre CROISSANTS (courant / technique / soutenu /
 multi-domaine), classer sa réponse par CLASSE DE COMPORTEMENT (pas par texte exact) et faire ressortir les
 ÉCHECS RÉELS — un vrai message qui tombe sur un repli générique (« famille inconnue », « C'est noté » à tort),
 ou une réponse manifestement à côté du sujet.

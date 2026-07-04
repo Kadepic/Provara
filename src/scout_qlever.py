@@ -40,7 +40,7 @@ ENDPOINT = "https://qlever.dev/api/wikidata"
 PREFIXES = ("PREFIX wdt: <http://www.wikidata.org/prop/direct/>\n"
             "PREFIX wd: <http://www.wikidata.org/entity/>\n"
             "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n")
-UA = "VERAX/1.0 (https://github.com/Verax-IA/Verax) offline-knowledge-ingestion"
+UA = "Provara/1.0 (https://github.com/Provara-IA/Provara) offline-knowledge-ingestion"
 
 
 def val(row: dict, cle: str) -> str:

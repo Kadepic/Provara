@@ -8,7 +8,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VERAX — l'IA qui n'invente jamais</title>
+<title>Provara — l'IA qui n'invente jamais</title>
 <style>
   :root {
     --bg: #faf9f7; --panneau: #ffffff; --bord: #e7e4df; --texte: #2b2a27;
@@ -84,7 +84,7 @@
   .tour.user { background: var(--user); margin-left: auto; }
   .tour .qui { font-size: 11px; color: var(--doux); margin-bottom: 3px; }
   .tour .corps { white-space: pre-wrap; word-wrap: break-word; }
-  /* bulle d'ATTENTE pendant que VERAX travaille (chargement/recherche) — l'utilisateur voit que ça avance */
+  /* bulle d'ATTENTE pendant que Provara travaille (chargement/recherche) — l'utilisateur voit que ça avance */
   .tour.attente .corps { color: var(--doux); font-style: italic; }
   .tour.attente { animation: pulse 1.2s ease-in-out infinite; }
   @keyframes pulse { 0%, 100% { opacity: .45; } 50% { opacity: 1; } }
@@ -110,7 +110,7 @@
 <body>
   <aside id="cote">
     <header>
-      <h1>VERAX</h1>
+      <h1>Provara</h1>
       <p>assistant local &amp; souverain · tes conversations restent ici · internet : optionnel, toujours sourcé</p>
     </header>
     <button id="btn-nouvelle">+ Nouvelle conversation</button>
@@ -134,7 +134,7 @@
         </select>
       </div>
     </div>
-    <div id="tours"><div class="centre">Bonjour, je suis <strong>VERAX</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé), et si je ne trouve pas, je le dis honnêtement.</div></div>
+    <div id="tours"><div class="centre">Bonjour, je suis <strong>Provara</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé), et si je ne trouve pas, je le dis honnêtement.</div></div>
     <div id="saisie">
       <input type="file" id="fichier" style="display:none">
       <button id="btn-fichier" title="Importer un fichier (json, csv, xml, sqlite, zip…)" disabled><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></svg></button>
@@ -196,10 +196,10 @@ async function ouvre(id) {
       const el = document.createElement("div");
       el.className = "tour" + (t.role === "user" ? " user" : "");
       el.innerHTML = `<div class="qui"></div><div class="corps"></div>`;
-      el.querySelector(".qui").textContent = (t.role === "user" ? "vous" : "VERAX") + " · " + horodate(t.ts);
+      el.querySelector(".qui").textContent = (t.role === "user" ? "vous" : "Provara") + " · " + horodate(t.ts);
       const corps = el.querySelector(".corps");
       if (t.role !== "user" && t.texte.trim().startsWith("<svg")) {
-        corps.innerHTML = t.texte;                        // schéma SVG généré par VERAX (contrôlé côté serveur, sûr)
+        corps.innerHTML = t.texte;                        // schéma SVG généré par Provara (contrôlé côté serveur, sûr)
       } else {
         corps.textContent = t.texte;                      // VERBATIM, jamais reformulé
       }
@@ -223,14 +223,14 @@ $("#btn-nouvelle").onclick = async () => {
   ouvre(r.id);
 };
 
-// — envoyer un message (avec RETOUR VISUEL immédiat : ton message + bulle « VERAX cherche… ») —
+// — envoyer un message (avec RETOUR VISUEL immédiat : ton message + bulle « Provara cherche… ») —
 function _bulle(role, texte, attente) {
   const flux = $("#tours");
   if (flux.querySelector(".centre")) flux.innerHTML = "";       // enlève le placeholder « conversation vide »
   const el = document.createElement("div");
   el.className = "tour" + (role === "user" ? " user" : "") + (attente ? " attente" : "");
   el.innerHTML = `<div class="qui"></div><div class="corps"></div>`;
-  el.querySelector(".qui").textContent = role === "user" ? "vous" : "VERAX";
+  el.querySelector(".qui").textContent = role === "user" ? "vous" : "Provara";
   el.querySelector(".corps").textContent = texte;               // verbatim, jamais d'injection
   flux.appendChild(el);
   flux.scrollTop = flux.scrollHeight;
@@ -372,42 +372,42 @@ const I18N = {
        nouvelle:"+ Nouvelle conversation", corbeille:"🗑 Corbeille", theme_s:"🌙 Mode sombre", theme_c:"☀️ Mode clair",
        champ:"Écris un message…", envoyer:"Envoyer", web_on:"🌐 Internet : activé (réponses sourcées)",
        web_off:"⛔ Internet : coupé — données locales seules",
-       accueil:"Bonjour, je suis <strong>VERAX</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé), et si je ne trouve pas, je le dis honnêtement.",
+       accueil:"Bonjour, je suis <strong>Provara</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé), et si je ne trouve pas, je le dis honnêtement.",
        vide_conv:"Conversation vide — écris le premier message.", choisir:"Sélectionne une conversation, ou crée-en une.",
        corbeille_vide:"Corbeille vide.", chargement:"Chargement…"},
   en: {sub:"local & sovereign assistant · your conversations stay here · internet: optional, always sourced",
        nouvelle:"+ New conversation", corbeille:"🗑 Trash", theme_s:"🌙 Dark mode", theme_c:"☀️ Light mode",
        champ:"Type a message…", envoyer:"Send", web_on:"🌐 Internet: on (sourced answers)",
        web_off:"⛔ Internet: off — local data only",
-       accueil:"Hi, I'm <strong>VERAX</strong>. Start a conversation and ask me anything — I answer with what I know or what I find online (always sourced), and if I can't, I say so honestly.",
+       accueil:"Hi, I'm <strong>Provara</strong>. Start a conversation and ask me anything — I answer with what I know or what I find online (always sourced), and if I can't, I say so honestly.",
        vide_conv:"Empty conversation — write the first message.", choisir:"Select a conversation, or create one.",
        corbeille_vide:"Trash is empty.", chargement:"Loading…"},
   es: {sub:"asistente local y soberano · tus conversaciones se quedan aquí · internet: opcional, siempre con fuente",
        nouvelle:"+ Nueva conversación", corbeille:"🗑 Papelera", theme_s:"🌙 Modo oscuro", theme_c:"☀️ Modo claro",
        champ:"Escribe un mensaje…", envoyer:"Enviar", web_on:"🌐 Internet: activado (respuestas con fuente)",
        web_off:"⛔ Internet: desactivado — solo datos locales",
-       accueil:"Hola, soy <strong>VERAX</strong>. Crea una conversación y pregúntame lo que quieras — respondo con lo que sé o lo que encuentro en internet (siempre con fuente), y si no lo encuentro, lo digo con honestidad.",
+       accueil:"Hola, soy <strong>Provara</strong>. Crea una conversación y pregúntame lo que quieras — respondo con lo que sé o lo que encuentro en internet (siempre con fuente), y si no lo encuentro, lo digo con honestidad.",
        vide_conv:"Conversación vacía — escribe el primer mensaje.", choisir:"Selecciona una conversación o crea una.",
        corbeille_vide:"Papelera vacía.", chargement:"Cargando…"},
   de: {sub:"lokaler & souveräner Assistent · deine Gespräche bleiben hier · Internet: optional, stets belegt",
        nouvelle:"+ Neues Gespräch", corbeille:"🗑 Papierkorb", theme_s:"🌙 Dunkelmodus", theme_c:"☀️ Hellmodus",
        champ:"Schreib eine Nachricht…", envoyer:"Senden", web_on:"🌐 Internet: an (belegte Antworten)",
        web_off:"⛔ Internet: aus — nur lokale Daten",
-       accueil:"Hallo, ich bin <strong>VERAX</strong>. Erstelle ein Gespräch und frag mich etwas — ich antworte mit dem, was ich weiß oder online finde (immer belegt), und wenn nicht, sage ich es ehrlich.",
+       accueil:"Hallo, ich bin <strong>Provara</strong>. Erstelle ein Gespräch und frag mich etwas — ich antworte mit dem, was ich weiß oder online finde (immer belegt), und wenn nicht, sage ich es ehrlich.",
        vide_conv:"Leeres Gespräch — schreib die erste Nachricht.", choisir:"Wähle ein Gespräch oder erstelle eines.",
        corbeille_vide:"Papierkorb ist leer.", chargement:"Wird geladen…"},
   it: {sub:"assistente locale e sovrano · le tue conversazioni restano qui · internet: opzionale, sempre con fonte",
        nouvelle:"+ Nuova conversazione", corbeille:"🗑 Cestino", theme_s:"🌙 Modalità scura", theme_c:"☀️ Modalità chiara",
        champ:"Scrivi un messaggio…", envoyer:"Invia", web_on:"🌐 Internet: attivo (risposte con fonte)",
        web_off:"⛔ Internet: spento — solo dati locali",
-       accueil:"Ciao, sono <strong>VERAX</strong>. Crea una conversazione e chiedimi qualcosa — rispondo con ciò che so o trovo online (sempre con fonte), e se non lo trovo lo dico onestamente.",
+       accueil:"Ciao, sono <strong>Provara</strong>. Crea una conversazione e chiedimi qualcosa — rispondo con ciò che so o trovo online (sempre con fonte), e se non lo trovo lo dico onestamente.",
        vide_conv:"Conversazione vuota — scrivi il primo messaggio.", choisir:"Seleziona una conversazione o creane una.",
        corbeille_vide:"Cestino vuoto.", chargement:"Caricamento…"},
   pt: {sub:"assistente local e soberano · as tuas conversas ficam aqui · internet: opcional, sempre com fonte",
        nouvelle:"+ Nova conversa", corbeille:"🗑 Reciclagem", theme_s:"🌙 Modo escuro", theme_c:"☀️ Modo claro",
        champ:"Escreve uma mensagem…", envoyer:"Enviar", web_on:"🌐 Internet: ativo (respostas com fonte)",
        web_off:"⛔ Internet: desligado — só dados locais",
-       accueil:"Olá, sou o <strong>VERAX</strong>. Cria uma conversa e pergunta-me algo — respondo com o que sei ou encontro online (sempre com fonte), e se não encontrar, digo-o com honestidade.",
+       accueil:"Olá, sou o <strong>Provara</strong>. Cria uma conversa e pergunta-me algo — respondo com o que sei ou encontro online (sempre com fonte), e se não encontrar, digo-o com honestidade.",
        vide_conv:"Conversa vazia — escreve a primeira mensagem.", choisir:"Seleciona uma conversa ou cria uma.",
        corbeille_vide:"Reciclagem vazia.", chargement:"A carregar…"},
 };
@@ -430,12 +430,12 @@ Object.assign(I18N.it, {aucune:"Ancora nessuna conversazione.", retour:"← Torn
 Object.assign(I18N.pt, {aucune:"Ainda sem conversas.", retour:"← Voltar às conversas",
   meta_vide:"vazia", corbeille_t:"Conversas removidas do histórico (a IA ainda se lembra): restaurar ou esquecer para sempre",
   restaurer_t:"Restaurar no histórico", purger_t:"Esquecer definitivamente (RGPD)", fichier_t:"Importar um ficheiro (json, csv, xml, sqlite, zip…)"});
-Object.assign(I18N.fr,{web_t_on:"Cliquer pour couper internet : VERAX n'utilisera que ses données locales.",web_t_off:"Cliquer pour autoriser la recherche internet (toujours attribuée, avec la source).",langue_t:"Langue de l'interface et des réponses",theme_t:"Basculer clair / sombre"});
-Object.assign(I18N.en,{web_t_on:"Click to turn internet off: VERAX will use only its local data.",web_t_off:"Click to allow internet search (always attributed, with the source).",langue_t:"Interface and answer language",theme_t:"Toggle light / dark"});
-Object.assign(I18N.es,{web_t_on:"Haz clic para desactivar internet: VERAX usará solo sus datos locales.",web_t_off:"Haz clic para permitir la búsqueda en internet (siempre con fuente).",langue_t:"Idioma de la interfaz y de las respuestas",theme_t:"Cambiar claro / oscuro"});
-Object.assign(I18N.de,{web_t_on:"Klicken, um Internet auszuschalten: VERAX nutzt nur lokale Daten.",web_t_off:"Klicken, um Internetsuche zu erlauben (immer belegt, mit Quelle).",langue_t:"Sprache der Oberfläche und der Antworten",theme_t:"Hell / Dunkel umschalten"});
-Object.assign(I18N.it,{web_t_on:"Clicca per spegnere internet: VERAX userà solo i dati locali.",web_t_off:"Clicca per consentire la ricerca su internet (sempre con fonte).",langue_t:"Lingua dell'interfaccia e delle risposte",theme_t:"Chiaro / scuro"});
-Object.assign(I18N.pt,{web_t_on:"Clica para desligar a internet: VERAX usará só os dados locais.",web_t_off:"Clica para permitir a pesquisa na internet (sempre com fonte).",langue_t:"Idioma da interface e das respostas",theme_t:"Claro / escuro"});
+Object.assign(I18N.fr,{web_t_on:"Cliquer pour couper internet : Provara n'utilisera que ses données locales.",web_t_off:"Cliquer pour autoriser la recherche internet (toujours attribuée, avec la source).",langue_t:"Langue de l'interface et des réponses",theme_t:"Basculer clair / sombre"});
+Object.assign(I18N.en,{web_t_on:"Click to turn internet off: Provara will use only its local data.",web_t_off:"Click to allow internet search (always attributed, with the source).",langue_t:"Interface and answer language",theme_t:"Toggle light / dark"});
+Object.assign(I18N.es,{web_t_on:"Haz clic para desactivar internet: Provara usará solo sus datos locales.",web_t_off:"Haz clic para permitir la búsqueda en internet (siempre con fuente).",langue_t:"Idioma de la interfaz y de las respuestas",theme_t:"Cambiar claro / oscuro"});
+Object.assign(I18N.de,{web_t_on:"Klicken, um Internet auszuschalten: Provara nutzt nur lokale Daten.",web_t_off:"Klicken, um Internetsuche zu erlauben (immer belegt, mit Quelle).",langue_t:"Sprache der Oberfläche und der Antworten",theme_t:"Hell / Dunkel umschalten"});
+Object.assign(I18N.it,{web_t_on:"Clicca per spegnere internet: Provara userà solo i dati locali.",web_t_off:"Clicca per consentire la ricerca su internet (sempre con fonte).",langue_t:"Lingua dell'interfaccia e delle risposte",theme_t:"Chiaro / scuro"});
+Object.assign(I18N.pt,{web_t_on:"Clica para desligar a internet: Provara usará só os dados locais.",web_t_off:"Clica para permitir a pesquisa na internet (sempre com fonte).",langue_t:"Idioma da interface e das respostas",theme_t:"Claro / escuro"});
 let LANG = "fr";
 function T(k) { return (I18N[LANG] || I18N.fr)[k]; }
 function appliqueLangue(code) {
@@ -451,7 +451,7 @@ function appliqueLangue(code) {
   if (typeof $("#btn-web").dataset.actif !== "undefined") majWeb($("#btn-web").dataset.actif === "1");
   // message d'accueil (si affiché) et placeholders de sélection
   const c = $("#tours") && $("#tours").querySelector(".centre");
-  if (c && (c.textContent.includes("VERAX") || c.dataset.k === "accueil")) { c.innerHTML = t.accueil; c.dataset.k = "accueil"; }
+  if (c && (c.textContent.includes("Provara") || c.dataset.k === "accueil")) { c.innerHTML = t.accueil; c.dataset.k = "accueil"; }
   else if (c && c.dataset.k === "choisir") { c.textContent = t.choisir; }
   $("#btn-corbeille").title = t.corbeille_t;
   $("#btn-fichier").title = t.fichier_t;
@@ -492,7 +492,7 @@ chargeListe();
   const cache = () => ov.classList.remove("on");
 
   function vueChargement(s) {
-    html(`<div class="vm-spin"></div><h3>VERAX se prépare…</h3><p>${(s && s.detail) || "Chargement de la connaissance…"}</p>`);
+    html(`<div class="vm-spin"></div><h3>Provara se prépare…</h3><p>${(s && s.detail) || "Chargement de la connaissance…"}</p>`);
     montre();
   }
   function vueInstallation(s) {
@@ -502,17 +502,17 @@ chargeListe();
       : `<div class="vm-bar"><i style="width:${pct}%"></i></div><div class="vm-pct">${pct}%</div>`;
     html(`<div class="vm-ic">⬇️</div><h3>Installation de la base complète</h3>
       <p>${(s && s.detail) || "Installation en cours…"}</p>${bar}
-      <p class="vm-note">Ne fermez pas VERAX. C'est long (15 à 20 minutes), mais UNIQUEMENT cette première fois : les prochains lancements seront quasi instantanés.</p>`);
+      <p class="vm-note">Ne fermez pas Provara. C'est long (15 à 20 minutes), mais UNIQUEMENT cette première fois : les prochains lancements seront quasi instantanés.</p>`);
     montre();
   }
   function vueInstallee() {
     html(`<div class="vm-ic">✅</div><h3>Base complète installée</h3>
-      <p>72 millions de faits sont prêts. VERAX doit redémarrer pour les activer.</p>
+      <p>72 millions de faits sont prêts. Provara doit redémarrer pour les activer.</p>
       <div class="vm-btns"><button id="vm-redem" class="vm-b vm-b-p">Activer maintenant</button>
       <button id="vm-plus-tard2" class="vm-b">Au prochain lancement</button></div>`);
     montre();
     document.getElementById("vm-redem").onclick = async () => {
-      html(`<div class="vm-spin"></div><h3>Redémarrage de VERAX…</h3><p>La page se rechargera automatiquement.</p>`);
+      html(`<div class="vm-spin"></div><h3>Redémarrage de Provara…</h3><p>La page se rechargera automatiquement.</p>`);
       try { await fetch("/api/redemarrer", { method: "POST" }); } catch {}
       for (let i = 0; i < 160; i++) { await new Promise(r => setTimeout(r, 1500)); try { const r = await fetch("/api/status", { cache: "no-store" }); if (r.ok) break; } catch {} }
       location.reload();
@@ -529,10 +529,10 @@ chargeListe();
   }
   function vueOffre() {
     html(`<div class="vm-ic">🧠</div><h3>Passer à la base complète&nbsp;?</h3>
-      <p>VERAX fonctionne déjà sur un échantillon. Pour débloquer <b>72 millions de faits vérifiés</b>, installe la base complète.</p>
+      <p>Provara fonctionne déjà sur un échantillon. Pour débloquer <b>72 millions de faits vérifiés</b>, installe la base complète.</p>
       <ul class="vm-list"><li>📦 environ <b>6 Go d'espace disque</b> nécessaires</li>
       <li>⏱️ comptez <b>15 à 20 minutes</b> (selon connexion et disque)</li>
-      <li>🔁 <b>uniquement cette première fois</b> : ensuite VERAX démarre en ~2&nbsp;s</li></ul>
+      <li>🔁 <b>uniquement cette première fois</b> : ensuite Provara démarre en ~2&nbsp;s</li></ul>
       <div class="vm-btns"><button id="vm-inst" class="vm-b vm-b-p">Installer la base complète</button>
       <button id="vm-later" class="vm-b">Plus tard</button></div>`);
     montre();
@@ -575,13 +575,13 @@ chargeListe();
   const barre = document.getElementById("barre-outils");
   if (!barre || document.getElementById("btn-quitter")) return;
   const q = document.createElement("button");
-  q.id = "btn-quitter"; q.textContent = "⏻ Quitter"; q.title = "Arrêter VERAX (le serveur local s'arrête)";
+  q.id = "btn-quitter"; q.textContent = "⏻ Quitter"; q.title = "Arrêter Provara (le serveur local s'arrête)";
   q.onclick = async () => {
-    if (!confirm("Arrêter VERAX ? Vous pourrez le relancer par son raccourci.")) return;
+    if (!confirm("Arrêter Provara ? Vous pourrez le relancer par son raccourci.")) return;
     try { await fetch("/api/quitter", { method: "POST" }); } catch {}
     document.body.innerHTML = "<div style='display:flex;height:100vh;align-items:center;justify-content:center;"
       + "font-family:system-ui,sans-serif;color:#7C3AED;font-size:18px;text-align:center;padding:24px'>"
-      + "VERAX est arrêté.<br>Vous pouvez fermer cet onglet.</div>";
+      + "Provara est arrêté.<br>Vous pouvez fermer cet onglet.</div>";
   };
   barre.appendChild(q);
 })();
@@ -589,7 +589,7 @@ chargeListe();
 
 <!-- MODALE (chargement / installation base complète) -->
 <div id="verax-modale" class="on"><div id="vm-card">
-  <div class="vm-spin"></div><h3>VERAX se prépare…</h3><p>Chargement de la connaissance…</p>
+  <div class="vm-spin"></div><h3>Provara se prépare…</h3><p>Chargement de la connaissance…</p>
 </div></div>
 <style>
 #verax-modale{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(20,8,39,.72);backdrop-filter:blur(4px)}

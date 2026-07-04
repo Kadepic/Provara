@@ -19,9 +19,9 @@ jobs:
       - name: Tamponner le commit du build (VERSION_BUILD.txt)
         shell: bash
         run: echo "$GITHUB_SHA" > VERSION_BUILD.txt
-      - name: Build VERAX.exe
+      - name: Build Provara.exe
         run: >
-          pyinstaller --onefile --name VERAX --noconsole
+          pyinstaller --onefile --name Provara --noconsole
           --paths src --paths ingestion --paths interface
           --hidden-import _precharge_verax
           --hidden-import ia --hidden-import lecteur --hidden-import base_faits
@@ -44,11 +44,11 @@ jobs:
           lance.py
       - uses: actions/upload-artifact@v4
         with:
-          name: VERAX-windows
-          path: dist/VERAX.exe
-      - name: Attacher VERAX-windows.zip à la Release
+          name: Provara-windows
+          path: dist/Provara.exe
+      - name: Attacher Provara-windows.zip à la Release
         # Sur un évènement "release", attache au tag concerné ; en lancement manuel (workflow_dispatch),
-        # attache à la dernière Release publiée. Zippe l'exe (VERAX-windows.zip) et REMPLACE l'asset de même
+        # attache à la dernière Release publiée. Zippe l'exe (Provara-windows.zip) et REMPLACE l'asset de même
         # nom (--clobber) -> pas de doublon, le zip périmé est écrasé par le build courant (SHA tamponné).
         if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
         shell: bash
@@ -57,6 +57,6 @@ jobs:
         run: |
           TAG="${{ github.event.release.tag_name }}"
           if [ -z "$TAG" ]; then TAG=$(gh release list -L1 --json tagName -q '.[0].tagName'); fi
-          powershell -Command "Compress-Archive -Path dist/VERAX.exe -DestinationPath dist/VERAX-windows.zip -Force"
-          echo "Upload dist/VERAX-windows.zip -> release $TAG"
-          gh release upload "$TAG" dist/VERAX-windows.zip --clobber
+          powershell -Command "Compress-Archive -Path dist/Provara.exe -DestinationPath dist/Provara-windows.zip -Force"
+          echo "Upload dist/Provara-windows.zip -> release $TAG"
+          gh release upload "$TAG" dist/Provara-windows.zip --clobber

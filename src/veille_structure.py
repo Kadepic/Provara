@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """RECHERCHE STRUCTURÉE (Wikidata) — « source fiable -> réponse VÉRIFIÉE », FAUX=0.
 
-Quand VERAX n'a pas un fait en base, il peut l'aller chercher sur une SOURCE STRUCTURÉE de confiance
+Quand Provara n'a pas un fait en base, il peut l'aller chercher sur une SOURCE STRUCTURÉE de confiance
 (Wikidata via le miroir QLever) et en extraire la valeur de façon DÉTERMINISTE. Aucun scraping de texte
 libre ici : une requête SPARQL exacte -> une valeur exacte, ou rien (abstention). L'entité doit se résoudre
 en UN SEUL QID portant la propriété (sinon ambiguïté -> None, jamais un choix arbitraire).
@@ -26,7 +26,7 @@ _PREFIXES = ("PREFIX wdt: <http://www.wikidata.org/prop/direct/> "
              "PREFIX wd: <http://www.wikidata.org/entity/> "
              "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
              "PREFIX wikibase: <http://wikiba.se/ontology#> ")
-_UA = "VERAX/1.0 (https://github.com/Verax-IA/Verax) recherche-structuree"
+_UA = "Provara/1.0 (https://github.com/Provara-IA/Provara) recherche-structuree"
 
 _SIGNALEES: set = set()   # échecs réseau déjà affichés (un par message distinct : pas de spam en mode hors-ligne)
 
@@ -39,7 +39,7 @@ def _signale(ou: str, e: Exception) -> None:
         return
     _SIGNALEES.add(msg)
     try:
-        print("  [VERAX] recherche web en échec — %s" % msg, flush=True)
+        print("  [Provara] recherche web en échec — %s" % msg, flush=True)
     except Exception:
         pass
 
@@ -82,7 +82,7 @@ def _echappe(s: str) -> str:
 def interroge(attribut: str, entite: str, timeout: int = 20):
     """(attribut, entité) -> (valeur, "Wikidata") ou None. L'entité (label FR exact, casse+accents préservés) est
     résolue vers l'entité HOMONYME LA PLUS NOTOIRE (plus de liens Wikipédia) — désambiguïsation défendable et
-    TRANSPARENTE (la réponse est attribuée à Wikidata, jamais présentée comme une vérité absolue de VERAX)."""
+    TRANSPARENTE (la réponse est attribuée à Wikidata, jamais présentée comme une vérité absolue de Provara)."""
     prop = _ATTR_PROP.get(_normalise(attribut).strip())
     if not prop:
         return None
@@ -199,7 +199,7 @@ def _pertinent(terme: str, titre: str, snippet: str) -> bool:
 
 def cherche_web_libre(question: str, timeout: int = 15):
     """WEB LIBRE (Wikipédia, recherche plein-texte) : renvoie (extrait VERBATIM, titre, url) ou None.
-    FAUX=0 : l'extrait est RAPPORTÉ tel quel et ATTRIBUÉ ; jamais présenté comme une vérité vérifiée de VERAX
+    FAUX=0 : l'extrait est RAPPORTÉ tel quel et ATTRIBUÉ ; jamais présenté comme une vérité vérifiée de Provara
     (design Yohan : « d'après [source]… »). Réseau requis (opt-in). Dégradation gracieuse -> None."""
     terme = _termes_wiki(question)
     if not terme:
@@ -236,7 +236,7 @@ def cherche_web_libre(question: str, timeout: int = 15):
 # Index primaire = Bing RSS (flux prévu pour la consommation programmatique, accepte notre UA honnête) ;
 # repli = DuckDuckGo lite (⚠ vécu 2026-07-03 : sert un CAPTCHA « anomaly » aux UA non-navigateur -> 0 résultat).
 _DDG_URL = "https://lite.duckduckgo.com/lite/?q=%s&kl=fr-fr"
-_DDG_UA = "Mozilla/5.0 (compatible; VERAX/1.0; +https://github.com/Verax-IA/Verax)"
+_DDG_UA = "Mozilla/5.0 (compatible; Provara/1.0; +https://github.com/Provara-IA/Provara)"
 _DDG_LINK_RE = re.compile(r"<a\s+([^>]*result-link[^>]*)>(.*?)</a>", re.S | re.I)
 _DDG_HREF_RE = re.compile(r"href\s*=\s*[\"']([^\"']+)[\"']", re.I)
 _DDG_SNIP_RE = re.compile(r"<td[^>]*result-snippet[^>]*>(.*?)</td>", re.S | re.I)

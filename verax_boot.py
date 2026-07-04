@@ -1,4 +1,4 @@
-"""VERAX — bootstrap de chemins (à importer EN PREMIER depuis un point d'entrée).
+"""Provara — bootstrap de chemins (à importer EN PREMIER depuis un point d'entrée).
 
 Rend l'espace de noms « à plat » (import lecteur, import chimie, ...) utilisable alors que les modules
 sont rangés dans src/, ingestion/, tests/, interface/. Conscient du mode « frozen » (.exe PyInstaller) :

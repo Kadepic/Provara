@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """SYSTÈME DE CONFIANCE — l'utilisateur est un JUGE RÉEL, les sources se bannissent, FAUX=0 (2026-07-03).
 
-POURQUOI (mission Yohan « système de confiance ») : au-delà de rapporter des sources, VERAX doit (1) tenir pour
+POURQUOI (mission Yohan « système de confiance ») : au-delà de rapporter des sources, Provara doit (1) tenir pour
 AUTORITÉ les corrections de l'utilisateur (« c'est faux, c'est X ») — l'utilisateur est une confrontation à la
 réalité, un juge ; (2) BANNIR une source sur ordre (« oublie ce site ») ; (3) s'appuyer sur la CONCORDANCE de
 plusieurs sources indépendantes (déléguée à veille_corroboration).
@@ -66,9 +66,9 @@ def _sauve():
 
 # ————————————————————————— CORRECTIONS UTILISATEUR (exigent une SOURCE) —————————————————————————
 # FAUX=0 : une correction NUE (« c'est faux, c'est Toulouse ») ne peut PAS écraser une vérité — sinon
-# l'utilisateur injecterait des faussetés. Elle exige une SOURCE (référence citée), et VERAX la conserve comme
+# l'utilisateur injecterait des faussetés. Elle exige une SOURCE (référence citée), et Provara la conserve comme
 # provenance : la réponse rendue est ATTRIBUÉE à CETTE source (« d'après la source que tu m'as indiquée »),
-# jamais présentée comme la vérité vérifiée de VERAX.
+# jamais présentée comme la vérité vérifiée de Provara.
 def corrige(question: str, valeur: str, source: str) -> bool:
     """Enregistre la correction de l'utilisateur AVEC sa source (obligatoire). `valeur` = la réponse indiquée ;
     `source` = la référence citée (lien/nom). Renvoie True si stockée. Sans source -> refusé."""
@@ -83,7 +83,7 @@ def corrige(question: str, valeur: str, source: str) -> bool:
 
 def reponse_autorisee(question: str):
     """Correction SOURCÉE de l'utilisateur pour cette question : {'valeur', 'source'} ou None. La réponse rendue
-    est attribuée à la source indiquée (jamais présentée comme la vérité vérifiée de VERAX)."""
+    est attribuée à la source indiquée (jamais présentée comme la vérité vérifiée de Provara)."""
     e = _charge()["corrections"].get(_normalise(question or ""))
     if isinstance(e, dict) and e.get("valeur") and e.get("source"):
         return dict(e)

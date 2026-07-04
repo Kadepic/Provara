@@ -1,4 +1,4 @@
-# Journal des modifications — VERAX
+# Journal des modifications — Provara
 
 ## 2026-07-04 — Optimisation RAM majeure (base complète 3,3 Go → ~30 Mo) + docs realignées
 
@@ -98,12 +98,12 @@
   FAUX=0), `interface/` (UI web), `docs/`, `examples/`. Bootstrap `verax_boot.py` (imports à plat depuis les
   sous-dossiers, conscient du mode `.exe`).
 - **Lancement** : `lance.py` (ouvre http://127.0.0.1:8765 + navigateur), `install.sh`/`lance.sh` (Linux/Mac),
-  `Lancer_VERAX.bat` (Windows). **.exe** : `build_exe.bat` + CI GitHub Actions (build auto à chaque push).
+  `Lancer_Provara.bat` (Windows). **.exe** : `build_exe.bat` + CI GitHub Actions (build auto à chaque push).
 - **2 clics = base complète** : `telecharge_donnees.py` — au 1er lancement, le `.exe` installe les 73M faits
   (~563 Mo) depuis la Release, puis charge tout.
 
 ### Conversation (moteur)
-- **Nom = VERAX** (identité/nom câblés) ; salutations robustes et **combinées** (« bonjour comment vas-tu ?
+- **Nom = Provara** (identité/nom câblés) ; salutations robustes et **combinées** (« bonjour comment vas-tu ?
   comment t'appelles-tu ? »), tolérance aux fautes.
 - **Multi-questions NON-BLOQUANT** : répond à chaque sous-question (données + calcul), « je ne l'ai pas » pour
   les inconnues, tout combiné.
@@ -118,23 +118,23 @@
 ### Honnêteté & propreté
 - Formule « **hors-ligne par défaut** » (répond sans réseau ; connexion opt-in pour apprendre/chercher) au lieu
   de « 100 % hors-ligne ».
-- Dé-branding Kadepic -> VERAX ; aucun secret dans le dépôt.
+- Dé-branding Kadepic -> Provara ; aucun secret dans le dépôt.
 
 ### Interface & visualisation
-- **Interface rebrandée VERAX** (titre, en-tête, message d'accueil, libellés « vous »/« VERAX »).
+- **Interface rebrandée Provara** (titre, en-tête, message d'accueil, libellés « vous »/« Provara »).
 - **Schémas visuels** : « montre-moi ce que tu sais sur X » / « schéma de X » / « graphe de X » -> **graphe SVG
-  en étoile** des relations réelles que VERAX connaît sur l'entité (via `graphe_monde` + SVG contrôlé, labels
+  en étoile** des relations réelles que Provara connaît sur l'entité (via `graphe_monde` + SVG contrôlé, labels
   échappés, FAUX=0). Affiché directement dans le chat.
 - **Import de fichiers** : bouton 📎 -> le fichier est lu LOCALEMENT (`ia.lit_fichier` : json/csv/xml/
-  sqlite/zip/ini…) et VERAX en donne un résumé fidèle dans le chat (jamais envoyé ailleurs, effacé après lecture).
+  sqlite/zip/ini…) et Provara en donne un résumé fidèle dans le chat (jamais envoyé ailleurs, effacé après lecture).
 
 ### Recherche web (session 2)
 - **Recherche web STRUCTURÉE étendue** : Wikidata via SPARQL, désambiguïsation par notoriété (« France » -> Paris),
   nettoyage des nombres.
-- **Recherche web LIBRE (Wikipédia)** : quand ni la base ni Wikidata n'ont la réponse, VERAX interroge Wikipédia
+- **Recherche web LIBRE (Wikipédia)** : quand ni la base ni Wikidata n'ont la réponse, Provara interroge Wikipédia
   (recherche plein-texte), rapporte un **extrait VERBATIM attribué** + un **lien** vers la source (« Information
   trouvée sur internet, à vérifier au besoin »). Résout les épithètes (« le roi de la pop » -> Michael Jackson).
-  FAUX=0 préservé : rapporté, jamais présenté comme une vérité vérifiée de VERAX.
+  FAUX=0 préservé : rapporté, jamais présenté comme une vérité vérifiée de Provara.
 - **Questions subjectives** cadrées honnêtement (« ça dépend du critère ») + pistes web.
 - **Multi-questions** : « x »/« × » = multiplication ; engage sur une liste évidente (≥3 parties), non-bloquant.
 - **Corbeille des conversations** (route + à finir côté UI).
@@ -148,7 +148,7 @@
   **Mojeek** (crawler indépendant, primaire) + **Bing RSS** (flux fait pour les programmes) + DDG lite (repli),
   requête **« phrase exacte » d'abord** (précision : « "roi de la pop" » ne remonte plus les sites « ROI »
   marketing) puis mots-clés pleins (rappel ; « un moteur à eau » ne matche plus l'ONU par « UN »).
-- **VÉRIFICATION DE CONTEXTE SUR LE SITE** (demande Yohan) : VERAX **visite chaque page candidate** (borne
+- **VÉRIFICATION DE CONTEXTE SUR LE SITE** (demande Yohan) : Provara **visite chaque page candidate** (borne
   400 Ko, texte extrait sans scripts) et exige les mots pleins du sujet dans une fenêtre de ~70 mots (départage :
   phrase exacte > prose réelle > menus) -> l'extrait rapporté est le **PASSAGE VERBATIM de la page** ; page lue
   mais muette sur le sujet = source REJETÉE ; inaccessible = snippet du moteur (attribué). Visites en parallèle.
@@ -161,7 +161,7 @@
 - **FIX PRODUIT (latent depuis le portage)** : `assistant_nl._module_repond` cherchait `src/interface/repond.py`
   (layout harnais) -> **FileNotFoundError avalée = étage clarification/bornage MORT en silence dans le .exe**.
   Corrigé (réutilise l'instance `repond` chargée ; sinon 2 layouts ; sinon import gelé). `valide_assistant_nl`
-  passe de CRASH TOTAL à 70/77 (7 échecs restants = dérive harnais->Verax à trier, chantier compréhension).
+  passe de CRASH TOTAL à 70/77 (7 échecs restants = dérive harnais->Provara à trier, chantier compréhension).
 - Gates : verifie_demo **31/31** (783 checks) + valide_conversation **9/9** ; e2e .exe : « symptômes de la carence
   en fer » (sans « ? ») -> passage vérifié sur actusante.net + 2 domaines ; « pneu de vélo » -> réponse PRIMAIRE
   depuis un site spécialisé (roulezjeunesse) quand Wikipédia n'a rien.
@@ -217,7 +217,7 @@
   verifie_demo 31/31, valide_conversation 9/9, assistant_nl 70/77. Ajoutés au préchargement PyInstaller.
 
 ### Session 3 quinquies (2026-07-03 nuit) — AUDIT DE CÂBLAGE COMPLET + branchement des orphelines
-- **Comparaison des 2 repos** (Verax ↔ IA_nouvelle_vision d'origine) : rien de RUNTIME ne manque. Écart =
+- **Comparaison des 2 repos** (Provara ↔ IA_nouvelle_vision d'origine) : rien de RUNTIME ne manque. Écart =
   ingere_* (build datasets, pas runtime) + mesure_* (benchmarks) + valide_* (dans tests/) ; 23 vrais modules
   non portés, TOUS dev/analyse/démo, AUCUN importé au runtime. Données : 1068 embarqués + 1369 complets dans le
   tarball Release (aucune donnée perdue). Ressource repérée : lexique_kaikki_full.jsonl (1,9M) pour plus tard.
@@ -257,7 +257,7 @@
   reconnu → « ? » (jamais inventé) ; photo/police non standard → HORS honnête. Branché parseur_fichiers (PNG) +
   résumé d'upload. (Portée déclarée : texte régulier fort contraste — la vraie OCR généraliste exigerait un modèle.)
 - **APPRENTISSAGE DE PATRONS** `src/apprentissage_patrons.py` (11/11) : quand une formulation échoue puis
-  l'utilisateur REFORMULE avec succès (même sujet exigé), VERAX apprend l'alias « ratée→qui marche » (persistant,
+  l'utilisateur REFORMULE avec succès (même sujet exigé), Provara apprend l'alias « ratée→qui marche » (persistant,
   effaçable RGPD). Re-poser la formulation ratée est ré-aiguillé → réponse vérifiée. FAUX=0 : ré-aiguillage seul,
   jamais un fait inventé. Câblé serveur (observation échec→réussite) + repond (consultation avant abstention).
 - **CHALLENGE MULTI-REGISTRES** `tests/challenge_conversation.py` : corpus gradué courant/technique/soutenu +
@@ -285,13 +285,13 @@
   Nouveaux modules au préchargement PyInstaller.
 
 ### Session 3 octies (2026-07-03 nuit) — DETTE 70/77 assistant_nl RÉSOLUE (77/77)
-- Ces 7 checks n'avaient JAMAIS été verts dans Verax : le test plantait avant le fix de chargement de module ;
+- Ces 7 checks n'avaient JAMAIS été verts dans Provara : le test plantait avant le fix de chargement de module ;
   70/77 était sa 1re exécution réelle. Analyse : 1 vrai bug + 4 config manquante + 2 libellé/données.
 - **VRAI BUG corrigé** : une opinion (« quel est le plus beau pays ») passée par la PORTE UNIQUE était étiquetée
   `fait` — `qualifie_texte` ne reconnaissait que l'ancien préfixe « Question non bornée », pas le cadrage
   amélioré « Il n'y a pas de réponse unique, c'est subjectif… ». Ajout du préfixe `_PFX_OPINION` -> classée
   SUPPOSITION (régime opinion). Le TEXTE restait honnête, mais le STATUT était faux : corrigé.
-- **REGISTRE DE SOURCES créé** (`datasets/sources/registry.jsonl`, absent du portage) : VERAX connaît désormais
+- **REGISTRE DE SOURCES créé** (`datasets/sources/registry.jsonl`, absent du portage) : Provara connaît désormais
   ses sources de confiance (Wikidata, QLever, Wikipédia FR, REST Countries). Rend le mécanisme de joignabilité
   (`veille.approfondit`/`_ping_sources`) fonctionnel (4 tests) — amélioration produit, pas seulement un fix test.
 - 2 attentes de test PÉRIMÉES mises à jour sans maquillage : libellé subjectif amélioré ; « cours d'eau du
@@ -320,7 +320,7 @@
 
 ### Session 3 decies (2026-07-03) — CORRECTION UTILISATEUR EXIGE UNE SOURCE (trou FAUX=0 fermé)
 - Faille signalée par Yohan : une correction NUE (« capitale de la France = Toulouse ») écrasait une vérité.
-  Corrigé : `confiance.corrige` EXIGE une source ; correction nue -> VERAX CHALLENGE (« j'avais X ; sur quelle
+  Corrigé : `confiance.corrige` EXIGE une source ; correction nue -> Provara CHALLENGE (« j'avais X ; sur quelle
   SOURCE t'appuies-tu ? »), tient bon sans source (« je m'en tiens à ce que je peux vérifier »), et une fois
   sourcée l'attribue (« d'après la source que tu m'as indiquée »), jamais comme sa propre vérité. État en attente
   côté serveur (la source peut arriver au tour suivant). valide_confiance 20/20.
@@ -341,7 +341,7 @@
 - **COLD-LOAD** : déjà atténué par le préchargement en tâche de fond (`_prechauffe` daemon dans serveur.main) —
   l'UI est instantanée, le lecteur charge pendant que l'utilisateur tape. Optimisation en place, confirmée.
 - **`--noconsole`** : désormais une OPTION de build (`VERAX_NOCONSOLE=1` → release sans fenêtre ; console par
-  défaut pour les diagnostics de dev). VERAX.spec pilote `console` par la variable d'environnement.
+  défaut pour les diagnostics de dev). Provara.spec pilote `console` par la variable d'environnement.
 - **DOCS** : `docs/{fr,en}/CAPABILITIES.md` mis à jour — nouvelle section « Assistant conversationnel » listant
   grammaire, conjugaison, stats NL, explications, lecture de documents/OCR, invention, géo, multi-sources,
   apprentissage, système de confiance, anglais (avec les frontières honnêtes déclarées).
@@ -352,7 +352,7 @@
 ### Session 3 terdecies (2026-07-03) — MULTILINGUE (max de langues) + SÉLECTEUR d'interface
 - **`langue.py` refondu MULTILINGUE et extensible** (25/25) : détection fr/en/es/de/it/pt ; PARSING séparé du
   RENDU (une question peut être écrite dans une langue et répondue dans une autre). Config par DONNÉES
-  (relations, noms de pays, gabarits, valeurs) → ajouter une langue = une entrée, aucune logique. VERAX répond
+  (relations, noms de pays, gabarits, valeurs) → ajouter une langue = une entrée, aucune logique. Provara répond
   aux questions factuelles (capitale/population/monnaie/langue/superficie) dans 5 langues, via le pipeline
   vérifié FR. FAUX=0 : la valeur vient du vérifié.
 - **Bascule** : « réponds en espagnol » (détecté, `demande_de_switch`) ET **sélecteur de langue dans l'interface**
@@ -462,7 +462,7 @@
 - RUNNER CONVERSATIONNEL `tests/suite_conversation.py` : agrège 16 gates conversationnels (hors _nonreg par
   design), chacun en sous-processus isolé avec le bon env → 16/16 (469 checks). Documenté dans VALIDATION.
 - **BUG INFRA CORRIGÉ — `_nonreg.py` cassé par le portage** : la gate cœur cherchait les `valide_*.py` à la
-  RACINE (`os.listdir(HARN)`) alors que le portage Verax les a tous mis dans `tests/` → `python3 _nonreg.py`
+  RACINE (`os.listdir(HARN)`) alors que le portage Provara les a tous mis dans `tests/` → `python3 _nonreg.py`
   ne trouvait qu'**1** validateur (interface) et échouait faute de PYTHONPATH. Correctif : helper `_chemin()`
   (bare→tests/, chemin explicite tel quel), découverte dans `tests/`, `modules_locaux` élargi à src/interface/
   ingestion, et `_env_pipeline()` pose le PYTHONPATH sur chaque sous-processus. Vérifié : `liste_validateurs()`
@@ -474,15 +474,15 @@
   `valide_commun` et parfois un validateur frère comme module, tous dans tests/). Vérifié : valide_vague4 4/4,
   valide_pile 6/6, valide_iteration 5/5 (étaient en échec `ModuleNotFoundError: valide_commun`). ~57 validateurs
   de cette classe débloqués.
-- CONSTAT (honnête) : faire tourner `_nonreg.py` dans Verax révèle que le PORTAGE est incomplet pour la SUITE.
+- CONSTAT (honnête) : faire tourner `_nonreg.py` dans Provara révèle que le PORTAGE est incomplet pour la SUITE.
   La vraie gate historique vit dans le repo d'origine `IA_nouvelle_vision/harnais/` (870 validateurs COLOCALISÉS,
-  layout plat — datasets/src/validateurs ensemble → passe). Le port Verax (src/ tests/ interface/ ingestion/) a
+  layout plat — datasets/src/validateurs ensemble → passe). Le port Provara (src/ tests/ interface/ ingestion/) a
   déplacé 683 validateurs dans tests/ SANS re-router leurs chemins codés en dur : certains cherchent
   `datasets/…` ou `src/ia.py` RELATIFS à leur dossier (→ FileNotFoundError), d'autres exigent la base complète
   71,9M (lecteur_t5..t12, resolution, taxonomie, substrat_reel…). Ce ne sont PAS des régressions — mon fix les a
-  rendus VISIBLES (avant, _nonreg n'en trouvait qu'1). Le vert 683/683 dans Verax = chantier de portage
+  rendus VISIBLES (avant, _nonreg n'en trouvait qu'1). Le vert 683/683 dans Provara = chantier de portage
   (re-router chemins + base complète sous tests/datasets) ; la validation AUTORITÉ reste `harnais/` en amont.
-  Pour la couche conversationnelle, `tests/suite_conversation.py` (16/16) est le contrôle autonome fiable dans Verax.
+  Pour la couche conversationnelle, `tests/suite_conversation.py` (16/16) est le contrôle autonome fiable dans Provara.
 
 ### Session 3 trevicies (2026-07-03) — portage _nonreg : chemins re-routés (structurel fait, contenu = harnais/)
 - 12 validateurs dataset-dépendants re-routés : `dirname(__file__)/datasets/lecteur` → `LECTEUR_DATASETS_DIR`
@@ -494,5 +494,5 @@
   validateurs, l'échantillon embarqué et la base complète NE s'accordent PAS sur les noms de relations/données
   (ex. la base complète ~/.verax n'a même pas `population_pays.jsonl` — nommage différent). C'est un alignement
   par-validateur profond = précisément le rôle de `harnais/` (origine, tout colocalisé et aligné). Décision :
-  arrêt du chantier gate-Verax ici (faible valeur, duplication de harnais/). Gate pratique Verax =
+  arrêt du chantier gate-Provara ici (faible valeur, duplication de harnais/). Gate pratique Provara =
   `tests/suite_conversation.py` (16/16) ; gate AUTORITÉ = `IA_nouvelle_vision/harnais/` (870 validateurs).

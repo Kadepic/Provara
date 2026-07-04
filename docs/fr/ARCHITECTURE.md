@@ -1,6 +1,6 @@
-# Architecture de VERAX
+# Architecture de Provara
 
-> Règle fondatrice, gravée dans chaque couche : **FAUX = 0**. VERAX ne répond que
+> Règle fondatrice, gravée dans chaque couche : **FAUX = 0**. Provara ne répond que
 > lorsqu'un juge réel (lookup vérifié, calcul effectivement évalué, référentiel
 > sourcé) a tranché. Partout ailleurs, il *cadre* (supposition), *demande*
 > (clarification) ou *s'abstient* (HORS). Il n'affirme jamais au hasard.
@@ -13,7 +13,7 @@ Ce document décrit l'architecture **telle qu'elle existe dans le code**
 
 ## 1. Principe directeur : des modules atomiques à frontières étanches
 
-VERAX n'est pas un modèle monolithique : c'est un **assemblage de modules
+Provara n'est pas un modèle monolithique : c'est un **assemblage de modules
 atomiques**, chacun responsable d'un seul type de vérité et chacun accompagné de
 son propre validateur.
 
@@ -183,7 +183,7 @@ Le module est *import-léger* (OOM-safe) : au niveau top, seulement la stdlib +
 
 ### 2.4 Les moteurs de calcul (façade `ia.py`)
 
-Au-delà du lookup, VERAX expose des **moteurs déterministes** dont chaque réponse
+Au-delà du lookup, Provara expose des **moteurs déterministes** dont chaque réponse
 est re-vérifiable. La façade `ia.py` les regroupe par familles ; l'idée commune
 est *calcul exact ou abstention*, jamais d'approximation servie comme un fait.
 
@@ -240,7 +240,7 @@ réduire le pic mémoire, sans changer les réponses.
 ### 2.6 La calibration (familles de modules non-bornés, façade `ia.py`)
 
 Le non-borné n'est pas de la vérité : c'est de l'opinion qui doit rester
-*honnête sur son incertitude*. VERAX expose une large famille de briques
+*honnête sur son incertitude*. Provara expose une large famille de briques
 statistiques, toutes accessibles derrière des wrappers `ia.*` uniformes (souvent
 un paramètre `phrase=` pour une sortie en langue). Regroupées par ce qu'elles
 permettent de FAIRE :

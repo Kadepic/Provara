@@ -2,7 +2,7 @@
 LE LOT D'EXERCICES CURÉS — la matière première, fournie de l'EXTÉRIEUR.
 
 Des problèmes écrits à la main, GRADUÉS en difficulté (1 = facile), du calcul
-simple vers la sécurité (l'angle VERAX). Chacun est complet : énoncé + tests
+simple vers la sécurité (l'angle Provara). Chacun est complet : énoncé + tests
 cachés + held-out + générateur d'entrées (fuzz) + solution de référence.
 
 IMPORTANT (le garde-fou sur le curateur) : chaque exercice ici doit s'AUTO-VALIDER

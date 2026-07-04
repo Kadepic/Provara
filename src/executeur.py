@@ -9,7 +9,7 @@ ligne de Python, de PHP ou de Rust — il demande à l'Executeur.
 C'est l'application directe de la frontière étanche du PLAN-DE-CONSTRUCTION
 (le « trait World » : le cœur ne sait pas dans quel monde il vit). Conséquence :
 
-    Ajouter un langage (PHP pour VERAX, JS, Rust...) = écrire UN nouvel
+    Ajouter un langage (PHP pour Provara, JS, Rust...) = écrire UN nouvel
     Executeur. Le reste — boucle, store, générateur, observatoire — ne bouge pas.
 
 Un Executeur dit trois choses au juge :

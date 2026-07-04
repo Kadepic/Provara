@@ -105,7 +105,7 @@ def _installer_base(*_a):
             if td.assure_base_complete(notifier=_maj_statut):
                 td.assure_cache_complet(notifier=_maj_statut)     # best-effort : index pré-construit
                 _maj_statut(phase="installee", pct=100, installation=False, redemarrage=True,
-                            detail="Base complète installée. Redémarre VERAX pour l'activer.")
+                            detail="Base complète installée. Redémarre Provara pour l'activer.")
             else:
                 _maj_statut(phase="erreur", installation=False, erreur="echec",
                             detail="Le téléchargement a échoué (réseau ?). Tu peux réessayer plus tard.")
@@ -117,7 +117,7 @@ def _installer_base(*_a):
 
 
 def _quitter(*_a):
-    """Arrête VERAX proprement. Utile en mode FENÊTRÉ (.exe sans console -> plus de Ctrl+C)."""
+    """Arrête Provara proprement. Utile en mode FENÊTRÉ (.exe sans console -> plus de Ctrl+C)."""
     def _q():
         import time
         time.sleep(0.4)                          # laisse la réponse HTTP partir
@@ -273,7 +273,7 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
 
 _DERNIER_ECHEC: dict = {}   # conv_id -> dernier message utilisateur resté SANS réponse (abstention), ou None
 _DERNIERE_QUESTION: dict = {}   # conv_id -> dernière question factuelle posée par l'utilisateur (pour corriger)
-_DERNIERE_REPONSE: dict = {}    # conv_id -> réponse de VERAX à cette question (pour la citer quand on challenge)
+_DERNIERE_REPONSE: dict = {}    # conv_id -> réponse de Provara à cette question (pour la citer quand on challenge)
 _CORRECTION_ATTENTE: dict = {}  # conv_id -> {"question", "valeur"} : correction en attente d'une SOURCE
 
 _RE_CORRECTION = re.compile(
@@ -312,7 +312,7 @@ def _valeur_correction(texte: str):
 def _capture_correction(conv_id: str, texte: str):
     """Gère les corrections utilisateur EXIGEANT une source (FAUX=0 : pas d'écrasement de vérité sur simple
     affirmation). Renvoie un message (str) si le tour EST une correction / une source attendue, sinon None.
-      1. correction NUE (« c'est faux, c'est X ») -> VERAX CHALLENGE : cite sa réponse et demande la source ;
+      1. correction NUE (« c'est faux, c'est X ») -> Provara CHALLENGE : cite sa réponse et demande la source ;
       2. correction AVEC source (« c'est X, d'après <src> ») -> enregistrée + attribuée ;
       3. la source arrive au tour SUIVANT (état en attente) -> enregistrée."""
     import confiance
@@ -342,7 +342,7 @@ def _capture_correction(conv_id: str, texte: str):
     if src:                                              # correction SOURCÉE d'emblée -> enregistrée + attribuée
         confiance.corrige(q, val, src)
         return ("Merci, je retiens « %s » : « %s » — d'après la source que tu m'indiques (%s)." % (q, val, src))
-    # correction NUE -> CHALLENGE : cite ce que VERAX avait, exige une source pour modifier
+    # correction NUE -> CHALLENGE : cite ce que Provara avait, exige une source pour modifier
     _CORRECTION_ATTENTE[conv_id] = {"question": q, "valeur": val}
     avait = _DERNIERE_REPONSE.get(conv_id)
     prefixe = ("J'avais « %s ». " % avait[:120]) if avait else ""
@@ -671,7 +671,7 @@ def main():
     serveur = ThreadingHTTPServer(("127.0.0.1", port), Handler)
     n = len(Handler.memoire.conversations())
     mode = "IA PLEINE (connaissance vérifiée + mémoire)" if _IA_PLEINE else "léger (mémoire de dialogue seule)"
-    print(f"VERAX — assistant local souverain · http://127.0.0.1:{port}")
+    print(f"Provara — assistant local souverain · http://127.0.0.1:{port}")
     print(f"  {n} conversation(s) sur le disque · mode : {mode}")
     if _IA_PLEINE:
         # Recherche web AUTONOME de l'assistant (assistant_nl -> veille.py, sources de confiance) : activée par

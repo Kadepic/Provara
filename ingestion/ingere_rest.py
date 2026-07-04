@@ -40,7 +40,7 @@ import urllib.request
 from base_faits import _sans_articles  # pur (regex/normalisation) — n'importe PAS le lecteur
 
 API = "https://www.wikidata.org/w/api.php"
-UA = "VERAX/1.0 (https://github.com/Verax-IA/Verax) base-perso ; ingestion factuelle Wikidata"
+UA = "Provara/1.0 (https://github.com/Provara-IA/Provara) base-perso ; ingestion factuelle Wikidata"
 _ICI = os.path.dirname(os.path.abspath(__file__))
 DOSSIER = os.path.join(_ICI, "datasets", "lecteur")
 RAW_REST = os.path.join(_ICI, "datasets", "_raw_rest")

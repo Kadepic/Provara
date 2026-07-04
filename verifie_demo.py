@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-VERAX — out-of-the-box verification / vérification prête à l'emploi.
+Provara — out-of-the-box verification / vérification prête à l'emploi.
 
 Run:  python3 verifie_demo.py
 
@@ -38,7 +38,7 @@ ENGINE_VALIDATORS = [
 
 
 def main():
-    print("\n  VERAX — out-of-the-box verification (sample only, no knowledge base)\n")
+    print("\n  Provara — out-of-the-box verification (sample only, no knowledge base)\n")
     passed = failed = total_checks = 0
     t0 = time.time()
     for v in ENGINE_VALIDATORS:

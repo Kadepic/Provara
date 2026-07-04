@@ -1,6 +1,6 @@
-# VERAX — Catalogue des capacités
+# Provara — Catalogue des capacités
 
-> Panorama thématique des capacités de VERAX, **tiré des docstrings du code** (rien inventé).
+> Panorama thématique des capacités de Provara, **tiré des docstrings du code** (rien inventé).
 > Pour la liste exhaustive, module par module, voir [`INVENTORY.md`](INVENTORY.md).
 
 ## Géographie & cartographie
@@ -152,7 +152,7 @@ Sur tout le domaine, la posture est uniforme et vérifiée en adverse : les modu
 
 ## Chimie & matériaux
 
-Cette famille de capacités couvre le calcul **borné et exact** en chimie et en science des matériaux : partir d'une formule brute ou de quelques grandeurs mesurées et en déduire, sans jamais deviner, une masse molaire, l'équilibrage d'une réaction, une concentration, une enthalpie, la nature d'une liaison, ou encore une contrainte mécanique dans un matériau. La posture est celle de tout VERAX : le **mécanisme** (la formule, la définition, la règle établie) est EXACT et constitue la garantie ; les **données** qu'il consomme (masses atomiques IUPAC, électronégativités de Pauling, constantes matériau) sont sourcées et fournies, jamais inventées. Toute entrée hors domaine déclenche une **abstention structurelle** (renvoi `HORS` ou `ValueError`) plutôt qu'un résultat plausible mais faux. Les modules sont déterministes et écrits en stdlib pure.
+Cette famille de capacités couvre le calcul **borné et exact** en chimie et en science des matériaux : partir d'une formule brute ou de quelques grandeurs mesurées et en déduire, sans jamais deviner, une masse molaire, l'équilibrage d'une réaction, une concentration, une enthalpie, la nature d'une liaison, ou encore une contrainte mécanique dans un matériau. La posture est celle de tout Provara : le **mécanisme** (la formule, la définition, la règle établie) est EXACT et constitue la garantie ; les **données** qu'il consomme (masses atomiques IUPAC, électronégativités de Pauling, constantes matériau) sont sourcées et fournies, jamais inventées. Toute entrée hors domaine déclenche une **abstention structurelle** (renvoi `HORS` ou `ValueError`) plutôt qu'un résultat plausible mais faux. Les modules sont déterministes et écrits en stdlib pure.
 
 ### Composition et stœchiométrie moléculaire
 
@@ -197,7 +197,7 @@ Le bucket rassemble aussi les modules physiques adjacents mobilisés par la chim
 
 ### Modules connexes regroupés dans ce domaine
 
-Fidèlement au contenu du bucket, celui-ci agrège également des modules de sciences voisines et d'infrastructure, décrits ici par leur objet réel : sciences du vivant (`bioinfo` séquences ADN, `bioingenierie` cinétique de Michaelis-Menten, `proteines`, `transport_membranaire`, `croissance_bacterienne`, `biostatistique` et `essais_cliniques` en épidémiologie) ; sciences de l'espace (`asteroides`, `astronautique`, `big_bang`, `habitabilite`, `drake`) ; l'aéronautique (`aerodynamique`) ; les mathématiques exactes (`maths_discretes`, `cardinalite`, `ordinaux`) ; les conventions et procédures (`recettes`, `conjugaison`) ; et le socle méta de VERAX (`atome` le contrat d'atome, `classifieur_bornage` le routeur de statut anti-hallucination, `invention_atomes`, `boucle_invention`, `veille_corroboration`).
+Fidèlement au contenu du bucket, celui-ci agrège également des modules de sciences voisines et d'infrastructure, décrits ici par leur objet réel : sciences du vivant (`bioinfo` séquences ADN, `bioingenierie` cinétique de Michaelis-Menten, `proteines`, `transport_membranaire`, `croissance_bacterienne`, `biostatistique` et `essais_cliniques` en épidémiologie) ; sciences de l'espace (`asteroides`, `astronautique`, `big_bang`, `habitabilite`, `drake`) ; l'aéronautique (`aerodynamique`) ; les mathématiques exactes (`maths_discretes`, `cardinalite`, `ordinaux`) ; les conventions et procédures (`recettes`, `conjugaison`) ; et le socle méta de Provara (`atome` le contrat d'atome, `classifieur_bornage` le routeur de statut anti-hallucination, `invention_atomes`, `boucle_invention`, `veille_corroboration`).
 
 ### Garantie commune
 
@@ -207,7 +207,7 @@ Sur tout le domaine, la même invariante ressort explicitement des docstrings : 
 
 ## Physique & mesures
 
-Cette famille regroupe les capacités de VERAX qui **calculent une grandeur physique ou une mesure par une formule établie**, plutôt que de la restituer de mémoire. Le principe commun est celui du reste du projet : le mécanisme (la loi) est exact, les constantes sont des données sourcées (SI 2019 / CODATA), et toute entrée hors domaine provoque une abstention explicite (`ValueError`, `None`/`HORS`) au lieu d'un résultat faux. On y trouve le socle de représentation des grandeurs, les grands chapitres de la physique calculable (mécanique, électromagnétisme, quantique, thermique), des domaines de mesure appliqués (acoustique, sismologie, qualité, procédés) et un détecteur d'impossibilités qui sert de garde physique. Le bucket agrège aussi, par proximité de posture (calcul exact + abstention), des briques de mathématiques formelles, de mécanismes du vivant, d'inférence calibrée et des moteurs d'infrastructure, décrits plus bas.
+Cette famille regroupe les capacités de Provara qui **calculent une grandeur physique ou une mesure par une formule établie**, plutôt que de la restituer de mémoire. Le principe commun est celui du reste du projet : le mécanisme (la loi) est exact, les constantes sont des données sourcées (SI 2019 / CODATA), et toute entrée hors domaine provoque une abstention explicite (`ValueError`, `None`/`HORS`) au lieu d'un résultat faux. On y trouve le socle de représentation des grandeurs, les grands chapitres de la physique calculable (mécanique, électromagnétisme, quantique, thermique), des domaines de mesure appliqués (acoustique, sismologie, qualité, procédés) et un détecteur d'impossibilités qui sert de garde physique. Le bucket agrège aussi, par proximité de posture (calcul exact + abstention), des briques de mathématiques formelles, de mécanismes du vivant, d'inférence calibrée et des moteurs d'infrastructure, décrits plus bas.
 
 ### Socle de représentation : grandeurs, dimensions, états
 
@@ -272,7 +272,7 @@ Le bucket rassemble, sous la même exigence de calcul exact et d'abstention, plu
 
 ## Biologie & médecine
 
-Cette famille rassemble des mécanismes **bornés** du vivant (physiologie régulée, électrophysiologie du neurone, rythmes biologiques), des outils de **raisonnement médical** (probabilité diagnostique bayésienne, catalogues de niveau de preuve, rythme d'événements), et un ensemble de briques **transverses de construction du savoir** que le classement automatique a regroupées ici (taxonomies, ontologie, induction de règles, boucle d'auto-amélioration). Le fil commun est celui de tout VERAX : chaque module calcule un résultat **exact** à partir de faits ou de formules établis, ou **s'abstient** (généralement par `ValueError`) plutôt que d'inventer. Les modules sont en Python pur, déterministes, sans réseau ni GPU.
+Cette famille rassemble des mécanismes **bornés** du vivant (physiologie régulée, électrophysiologie du neurone, rythmes biologiques), des outils de **raisonnement médical** (probabilité diagnostique bayésienne, catalogues de niveau de preuve, rythme d'événements), et un ensemble de briques **transverses de construction du savoir** que le classement automatique a regroupées ici (taxonomies, ontologie, induction de règles, boucle d'auto-amélioration). Le fil commun est celui de tout Provara : chaque module calcule un résultat **exact** à partir de faits ou de formules établis, ou **s'abstient** (généralement par `ValueError`) plutôt que d'inventer. Les modules sont en Python pur, déterministes, sans réseau ni GPU.
 
 ### Physiologie et régulation du vivant
 
@@ -326,10 +326,10 @@ Dans tout ce domaine, la règle FAUX=0 tient de bout en bout. Les modules physio
 
 ## Langue, lexique & écriture
 
-Cette famille de capacités permet à VERAX de traiter le mot et la phrase comme des
+Cette famille de capacités permet à Provara de traiter le mot et la phrase comme des
 objets **vérifiables**, et non comme les intuitions d'un modèle : le principe fondateur
 est « la définition officielle = la vérité » — la définition d'un mot est actée,
-officielle, donc un *oracle de sens* que la réalité humaine juge. Sur ce socle, VERAX
+officielle, donc un *oracle de sens* que la réalité humaine juge. Sur ce socle, Provara
 sait constituer un dictionnaire certifié, l'étendre à l'échelle d'un Wiktionnaire
 complet, raisonner sur le sens et les relations des mots (hyperonymie, synonymie,
 antonymie), lire une phrase française de bout en bout et répondre par **logique**,
@@ -383,7 +383,7 @@ sav.chemin("voiture", "objet")          # -> ["voiture", "véhicule", …, "obje
 
 ### Comprendre le texte français
 
-VERAX ne se contente pas de rappeler des mots : il analyse une phrase et en tire des
+Provara ne se contente pas de rappeler des mots : il analyse une phrase et en tire des
 conséquences logiques.
 
 - **`comprehension_integree`** — un seul moteur résout, sur la même phrase, la chaîne
@@ -423,7 +423,7 @@ où **rien de non vérifié n'entre**.
 
 ### Portfolio polyglotte (choisir et écrire dans le bon langage)
 
-Le versant « écriture » : plutôt que de tout écrire en Python, VERAX cumule les langages
+Le versant « écriture » : plutôt que de tout écrire en Python, Provara cumule les langages
 de programmation et trie selon le besoin, en s'assurant que le résultat reste jugeable.
 
 - **`environnement`** — détecte ce qui est réellement exécutable sur la machine (découverte
@@ -447,14 +447,14 @@ Sur tout le domaine, la même règle ressort des docstrings : la vérité vient 
 actée (la définition officielle, le dictionnaire) et non d'une génération ; une relation
 que la brique de sens ne confirme pas n'est **jamais** émise ; ce qui n'est pas dérivable
 est répondu « inconnu » plutôt qu'inventé ; une équivalence n'est déclarée que si elle est
-prouvée ; et un langage n'est proposé que s'il est réellement exécutable et jugeable. VERAX
+prouvée ; et un langage n'est proposé que s'il est réellement exécutable et jugeable. Provara
 préfère systématiquement l'abstention à l'affirmation non vérifiée.
 
 ---
 
 ## Mathématiques & algorithmes
 
-Cette famille rassemble les capacités *calculatoires* de VERAX : arithmétique exacte, analyse, structures discrètes, théorie du calcul, architecture machine, génie logiciel, théorie des jeux et raisonnement statistique. Le fil commun est le même que partout dans le système : le mécanisme est *exact et déterministe* (entiers arbitraires, fractions `Fraction`, arithmétique binaire, énumération), et toute entrée invalide ou hors domaine lève `ValueError` plutôt que de produire une réponse fausse. Ces modules ne « devinent » pas : ils *calculent* quand la réponse est déterminée, et *s'abstiennent* sinon. Ce sont, pour beaucoup, des primitives directement appelables (même posture que `physique.py` : « le réel juge, jamais un faux »).
+Cette famille rassemble les capacités *calculatoires* de Provara : arithmétique exacte, analyse, structures discrètes, théorie du calcul, architecture machine, génie logiciel, théorie des jeux et raisonnement statistique. Le fil commun est le même que partout dans le système : le mécanisme est *exact et déterministe* (entiers arbitraires, fractions `Fraction`, arithmétique binaire, énumération), et toute entrée invalide ou hors domaine lève `ValueError` plutôt que de produire une réponse fausse. Ces modules ne « devinent » pas : ils *calculent* quand la réponse est déterminée, et *s'abstiennent* sinon. Ce sont, pour beaucoup, des primitives directement appelables (même posture que `physique.py` : « le réel juge, jamais un faux »).
 
 ### Arithmétique, théorie des nombres et cryptographie
 
@@ -508,7 +508,7 @@ Une série de modules « Palier 2 » *quantifie* des phénomènes statistiques e
 
 ### Moteurs d'invention, de recherche et de raisonnement
 
-Le domaine contient aussi la machinerie *méta* qui pilote l'exploration de VERAX : `auto_invention_ouverte` (moteur compositionnel multi-domaines), `recherche_dirigee` (dompter l'explosion combinatoire de l'invention), `planification` (plans multi-étapes via opérateurs), `causalite` (graphe causal + intervention), `identite` (identité canonique unifiée), le lot d'exercices curés (`exercices`), et les harnais de mesure d'architecture (`cherche_architecture_max`, `mesure_phase3_exhaustif`, `mesure_structure2`) qui comparent des stratégies de résolution jugées par le réel. `garde_ressources` est le filet kernel qui borne cette exploration (pmap, RLIMIT) pour ne jamais faire tomber l'environnement.
+Le domaine contient aussi la machinerie *méta* qui pilote l'exploration de Provara : `auto_invention_ouverte` (moteur compositionnel multi-domaines), `recherche_dirigee` (dompter l'explosion combinatoire de l'invention), `planification` (plans multi-étapes via opérateurs), `causalite` (graphe causal + intervention), `identite` (identité canonique unifiée), le lot d'exercices curés (`exercices`), et les harnais de mesure d'architecture (`cherche_architecture_max`, `mesure_phase3_exhaustif`, `mesure_structure2`) qui comparent des stratégies de résolution jugées par le réel. `garde_ressources` est le filet kernel qui borne cette exploration (pmap, RLIMIT) pour ne jamais faire tomber l'environnement.
 
 ### Calculs appliqués et modules connexes
 
@@ -522,7 +522,7 @@ Le domaine héberge enfin des calculateurs applicatifs exacts et déterministes 
 
 ## Temps, dates & histoire
 
-Cette famille de capacités permet à VERAX de **situer des faits et des événements dans le temps, de raisonner sur leur ordre, de retenir durablement ce qu'elle a appris, et de prévoir honnêtement** — le tout sans arithmétique floue ni devinette. Son cœur est temporel : une algèbre de relations entre intervalles, une mémoire persistante et horodatée qui « ne perd pas le contexte au fil du temps », et une prévision qui assume l'incertitude du futur par un intervalle plutôt qu'une fausse précision. Autour de ce noyau, le domaine rassemble aussi des catalogues de faits et de conventions établis que l'IA restitue exactement ou pour lesquels elle s'abstient. Partout, la même posture : le mécanisme est exact, et hors référentiel c'est l'abstention, jamais un faux.
+Cette famille de capacités permet à Provara de **situer des faits et des événements dans le temps, de raisonner sur leur ordre, de retenir durablement ce qu'elle a appris, et de prévoir honnêtement** — le tout sans arithmétique floue ni devinette. Son cœur est temporel : une algèbre de relations entre intervalles, une mémoire persistante et horodatée qui « ne perd pas le contexte au fil du temps », et une prévision qui assume l'incertitude du futur par un intervalle plutôt qu'une fausse précision. Autour de ce noyau, le domaine rassemble aussi des catalogues de faits et de conventions établis que l'IA restitue exactement ou pour lesquels elle s'abstient. Partout, la même posture : le mécanisme est exact, et hors référentiel c'est l'abstention, jamais un faux.
 
 ### Situer et ordonner dans le temps
 
@@ -575,7 +575,7 @@ Plusieurs modules bornent un domaine par un **référentiel fermé** de faits ou
 
 ## Raisonnement & logique
 
-Cette famille de capacités permet à VERAX de **tirer des conclusions à partir de prémisses** — et non seulement de restituer des faits. Elle couvre l'inférence logique classique, le raisonnement non-monotone (cas général et exceptions), l'abduction (remonter aux causes), l'application de règles posées par une autorité, ainsi que l'infrastructure qui rend ces raisonnements *sûrs* : vérité-terrain non circulaire, arbitrage des contradictions et traces vérifiables. Le fil conducteur est constant avec le reste du système : chaque module est déterministe, en Python pur (stdlib), souverain/offline, et s'abstient plutôt que d'affirmer quand la réalité ne tranche pas.
+Cette famille de capacités permet à Provara de **tirer des conclusions à partir de prémisses** — et non seulement de restituer des faits. Elle couvre l'inférence logique classique, le raisonnement non-monotone (cas général et exceptions), l'abduction (remonter aux causes), l'application de règles posées par une autorité, ainsi que l'infrastructure qui rend ces raisonnements *sûrs* : vérité-terrain non circulaire, arbitrage des contradictions et traces vérifiables. Le fil conducteur est constant avec le reste du système : chaque module est déterministe, en Python pur (stdlib), souverain/offline, et s'abstient plutôt que d'affirmer quand la réalité ne tranche pas.
 
 ### Inférence logique et argumentation
 
@@ -668,7 +668,7 @@ Toutes ces briques partagent l'invariant FAUX=0 explicité dans leurs docstrings
 
 ## Incertitude & calibration
 
-Ce domaine est le versant **non-borné** de VERAX. Là où le borné garantit « jamais un faux » (réponse exacte, vérifiée, ou abstention), une estimation statistique ne peut pas garantir l'exactitude d'un chiffre isolé. La discipline change donc sans perdre l'honnêteté : au lieu d'une réponse certaine, on produit une **estimation accompagnée d'une confiance calibrée**, et on s'abstient dès que l'échantillon ne permet pas de la garantir. L'invariant qui remplace ici « FAUX=0 » est la **calibration** : une confiance annoncée « 90 % » doit s'avérer juste ~90 % du temps, et un intervalle annoncé « à 90 % » doit contenir la vraie valeur ~90 % du temps. Cette propriété se vérifie par simulation Monte-Carlo contre une vérité connue ; c'est la réalité qui juge l'honnêteté de l'incertitude, pas la réponse. La ligne rouge est la **sur-confiance** (annoncer plus de certitude qu'on n'en a), traitée comme aussi inacceptable qu'un faux dans le borné.
+Ce domaine est le versant **non-borné** de Provara. Là où le borné garantit « jamais un faux » (réponse exacte, vérifiée, ou abstention), une estimation statistique ne peut pas garantir l'exactitude d'un chiffre isolé. La discipline change donc sans perdre l'honnêteté : au lieu d'une réponse certaine, on produit une **estimation accompagnée d'une confiance calibrée**, et on s'abstient dès que l'échantillon ne permet pas de la garantir. L'invariant qui remplace ici « FAUX=0 » est la **calibration** : une confiance annoncée « 90 % » doit s'avérer juste ~90 % du temps, et un intervalle annoncé « à 90 % » doit contenir la vraie valeur ~90 % du temps. Cette propriété se vérifie par simulation Monte-Carlo contre une vérité connue ; c'est la réalité qui juge l'honnêteté de l'incertitude, pas la réponse. La ligne rouge est la **sur-confiance** (annoncer plus de certitude qu'on n'en a), traitée comme aussi inacceptable qu'un faux dans le borné.
 
 La famille regroupe une cinquantaine de modules, purs Python et sans dépendance, organisés autour de ce même juge.
 
@@ -754,7 +754,7 @@ Tous ces modules partagent le même contrat, hérité de la calibration : **on n
 
 ## Invention & besoin
 
-Cette famille de capacités répond à l'objectif final de VERAX : *par rapport à ce qui existe déjà, déterminer ce qui manque et fournir les éléments pour le construire*. Elle ne « génère » pas au hasard : elle part d'un registre de capacités connues, cherche à atteindre une cible par recombinaison, analogie ou relâchement de contrainte, et ne retient une invention que si la réalité la valide (exécution, held-out, unicité). À côté de ces moteurs de découverte, le domaine regroupe des briques d'autonomie (l'IA apprend et s'optimise seule), l'aiguillage vers le bon juge, et une série de domaines de « besoins » concrets (comptabilité, entraînement, psychométrie, citoyenneté, cuisine) où l'on calcule des faits établis plutôt qu'on ne les devine.
+Cette famille de capacités répond à l'objectif final de Provara : *par rapport à ce qui existe déjà, déterminer ce qui manque et fournir les éléments pour le construire*. Elle ne « génère » pas au hasard : elle part d'un registre de capacités connues, cherche à atteindre une cible par recombinaison, analogie ou relâchement de contrainte, et ne retient une invention que si la réalité la valide (exécution, held-out, unicité). À côté de ces moteurs de découverte, le domaine regroupe des briques d'autonomie (l'IA apprend et s'optimise seule), l'aiguillage vers le bon juge, et une série de domaines de « besoins » concrets (comptabilité, entraînement, psychométrie, citoyenneté, cuisine) où l'on calcule des faits établis plutôt qu'on ne les devine.
 
 ### Découvrir ce qui manque : le moteur d'invention
 
@@ -835,7 +835,7 @@ Tout le domaine partage la ligne rouge FAUX=0 : une invention n'est affirmée qu
 
 ## Mémoire & conversation
 
-Cette famille de capacités répond au « fossé de l'intelligence éphémère » : un agent règle un problème, la fenêtre de contexte se vide, et le savoir part avec elle. VERAX y oppose une **mémoire de dialogue persistante, souveraine et exacte**, une **interface locale** pour la consulter, et un module de **décision séquentielle contextuelle** calibrée. Le fil commun est le même que dans tout le projet : on ne restitue que ce qui a réellement été dit (verbatim) ou rien, et on s'abstient quand les données manquent — jamais d'invention.
+Cette famille de capacités répond au « fossé de l'intelligence éphémère » : un agent règle un problème, la fenêtre de contexte se vide, et le savoir part avec elle. Provara y oppose une **mémoire de dialogue persistante, souveraine et exacte**, une **interface locale** pour la consulter, et un module de **décision séquentielle contextuelle** calibrée. Le fil commun est le même que dans tout le projet : on ne restitue que ce qui a réellement été dit (verbatim) ou rien, et on s'abstient quand les données manquent — jamais d'invention.
 
 ### Retenir et retrouver le dialogue (`conversation`)
 
@@ -868,13 +868,13 @@ La classe `Agent` (K bras, `alpha=0` ⇒ glouton, `alpha>0` ⇒ LinUCB) expose `
 
 ### Garantie commune
 
-Comme partout dans VERAX, ce domaine tient la règle FAUX=0. La mémoire de conversation **restitue le verbatim réellement stocké ou rien** (liste vide, « pas de tour pertinent »), et un tour n'est rappelé que s'il partage un token discriminant (hors mots-vides) avec la requête — aucune devinette. L'interface n'affiche que des tours réels, avec des états vides explicites. Et le bandit **s'abstient** plutôt que d'exploiter une estimation trop bruitée. La règle est toujours : dire l'exact, ou se taire.
+Comme partout dans Provara, ce domaine tient la règle FAUX=0. La mémoire de conversation **restitue le verbatim réellement stocké ou rien** (liste vide, « pas de tour pertinent »), et un tour n'est rappelé que s'il partage un token discriminant (hors mots-vides) avec la requête — aucune devinette. L'interface n'affiche que des tours réels, avec des états vides explicites. Et le bandit **s'abstient** plutôt que d'exploiter une estimation trop bruitée. La règle est toujours : dire l'exact, ou se taire.
 
 ---
 
 ## Modalités & production
 
-Ce domaine regroupe les capacités qui permettent à VERAX de **lire et produire des artefacts concrets** (fichiers, son) et de **fabriquer/valider du code de manière fiable**. Là où les autres domaines calculent des réponses, celui-ci s'occupe des *entrées-sorties* de l'IA (comprendre un fichier, générer un signal audio exact) et de la *chaîne de qualité* qui garantit qu'un code produit se comporte comme prévu face au réel. Tous les modules restent purs stdlib, souverains et hors-ligne, et appliquent la même discipline FAUX=0 : quand la réalité ne tranche pas, on s'abstient plutôt que d'inventer.
+Ce domaine regroupe les capacités qui permettent à Provara de **lire et produire des artefacts concrets** (fichiers, son) et de **fabriquer/valider du code de manière fiable**. Là où les autres domaines calculent des réponses, celui-ci s'occupe des *entrées-sorties* de l'IA (comprendre un fichier, générer un signal audio exact) et de la *chaîne de qualité* qui garantit qu'un code produit se comporte comme prévu face au réel. Tous les modules restent purs stdlib, souverains et hors-ligne, et appliquent la même discipline FAUX=0 : quand la réalité ne tranche pas, on s'abstient plutôt que d'inventer.
 
 ### Modalités d'entrée/sortie : lire des fichiers, produire du son
 
@@ -928,7 +928,7 @@ Deux modules donnent à l'IA une vue auditable d'elle-même.
 
 ### Garantie commune
 
-Tout le domaine partage l'invariant FAUX=0 : chaque module rend soit un résultat *vérifiable par la réalité* (round-trip exact, verdict pass/fail issu de l'exécution, table de vérité, minimal ré-testable), soit un statut d'abstention honnête (`HORS`, `ERREUR`, `INDETERMINE`, `ValueError`). Rien n'est jamais deviné ni fabriqué silencieusement : au moindre doute, VERAX s'abstient plutôt que de produire un artefact ou un verdict potentiellement faux.
+Tout le domaine partage l'invariant FAUX=0 : chaque module rend soit un résultat *vérifiable par la réalité* (round-trip exact, verdict pass/fail issu de l'exécution, table de vérité, minimal ré-testable), soit un statut d'abstention honnête (`HORS`, `ERREUR`, `INDETERMINE`, `ValueError`). Rien n'est jamais deviné ni fabriqué silencieusement : au moindre doute, Provara s'abstient plutôt que de produire un artefact ou un verdict potentiellement faux.
 
 ---
 
@@ -985,7 +985,7 @@ Toutes ces briques partagent la même posture FAUX=0, lisible dans leurs docstri
 
 ## Autres capacités
 
-Ce domaine est le point de convergence de VERAX : il rassemble d'un côté les briques *transversales* qui rendent tout le reste utilisable et honnête (le point d'entrée unifié, la politique d'abstention, le routage des candidats), et de l'autre une large collection de capacités bornées qui n'entrent dans aucune famille thématique unique — pièges du raisonnement, statistique robuste, informatique théorique, modalités de sortie vérifiables, domaines appliqués à faits établis, et la machinerie interne d'auto-apprentissage. Toutes partagent la même posture : pur Python (stdlib), déterministe, souverain/hors-ligne, et surtout FAUX=0 — au doute, on s'abstient plutôt que d'affirmer.
+Ce domaine est le point de convergence de Provara : il rassemble d'un côté les briques *transversales* qui rendent tout le reste utilisable et honnête (le point d'entrée unifié, la politique d'abstention, le routage des candidats), et de l'autre une large collection de capacités bornées qui n'entrent dans aucune famille thématique unique — pièges du raisonnement, statistique robuste, informatique théorique, modalités de sortie vérifiables, domaines appliqués à faits établis, et la machinerie interne d'auto-apprentissage. Toutes partagent la même posture : pur Python (stdlib), déterministe, souverain/hors-ligne, et surtout FAUX=0 — au doute, on s'abstient plutôt que d'affirmer.
 
 ### Le point d'entrée unifié et la politique d'honnêteté
 
@@ -1027,7 +1027,7 @@ Quelques modules livrent des résolutions mathématiques directes et vérifiable
 
 ### Modalités et formats bornés vérifiables
 
-VERAX sait produire des sorties dans des formats dont le **noyau est exact et re-vérifiable au bon octet/à la bijection près**, en refusant explicitement tout ce qui sort du domaine supporté (→ `ValueError`). `document_pdf` génère un PDF 1.4 dont la table de références croisées `xref` pointe l'offset-octet réel de chaque objet (re-scanné par le validateur) ; `braille` réalise la bijection lettre ↔ points ↔ caractère Unicode (round-trip prouvé sur l'alphabet grade 1) ; `heraldique` encode les règles fermées du blason (teintures, règle de contraste) ; `web` fait des vérifications structurelles exactes (balises équilibrées, spécificité CSS).
+Provara sait produire des sorties dans des formats dont le **noyau est exact et re-vérifiable au bon octet/à la bijection près**, en refusant explicitement tout ce qui sort du domaine supporté (→ `ValueError`). `document_pdf` génère un PDF 1.4 dont la table de références croisées `xref` pointe l'offset-octet réel de chaque objet (re-scanné par le validateur) ; `braille` réalise la bijection lettre ↔ points ↔ caractère Unicode (round-trip prouvé sur l'alphabet grade 1) ; `heraldique` encode les règles fermées du blason (teintures, règle de contraste) ; `web` fait des vérifications structurelles exactes (balises équilibrées, spécificité CSS).
 
 ```python
 document_pdf.ecris(doc, chemin)          # PDF structurellement valide, xref exacte
@@ -1040,18 +1040,18 @@ Un ensemble de modules « science/ingénierie/société » applique des formules
 
 ### La machinerie d'auto-apprentissage autonome
 
-Enfin, le domaine héberge **l'atelier interne** qui permet à VERAX d'accumuler des succès vérifiés et de construire ses propres briques : `store` (le magasin de succès), `boucle` et `session` (l'orchestration d'entraînement), `taches` (la matière première), `usine_donnees` et `exporte_dataset` (constituer un corpus prêt à apprendre), `mesure` et `mesure_v3b_net` (la « boîte de verre » qui mesure l'apprentissage), `exploits` et `curateur` (observatoire et validation graduée), `executeur` (couture multi-langage : Python, JS, Perl, Bash, C, C++, Rust, Go), `auto_synthese` (synthèse de briques par squelettes), `etend_savoir` et `oracle_definitions` (auto-extension du savoir par les définitions), `diable` et `carte_limites_francais` (éprouver et cartographier les limites du sans-modèle).
+Enfin, le domaine héberge **l'atelier interne** qui permet à Provara d'accumuler des succès vérifiés et de construire ses propres briques : `store` (le magasin de succès), `boucle` et `session` (l'orchestration d'entraînement), `taches` (la matière première), `usine_donnees` et `exporte_dataset` (constituer un corpus prêt à apprendre), `mesure` et `mesure_v3b_net` (la « boîte de verre » qui mesure l'apprentissage), `exploits` et `curateur` (observatoire et validation graduée), `executeur` (couture multi-langage : Python, JS, Perl, Bash, C, C++, Rust, Go), `auto_synthese` (synthèse de briques par squelettes), `etend_savoir` et `oracle_definitions` (auto-extension du savoir par les définitions), `diable` et `carte_limites_francais` (éprouver et cartographier les limites du sans-modèle).
 
 ### Garantie commune
 
-Malgré leur diversité, toutes ces capacités reposent sur le même contrat FAUX=0 qui ressort explicitement des docstrings : l'**abstention est le défaut** et le HORS domine (impossibilité ou contradiction avant tout) ; le **domaine est explicite** (toute entrée hors périmètre est refusée, jamais devinée) ; les sorties sont **déterministes et re-vérifiées** (structure PDF au bon octet, bijection braille, `xref` re-scannée) ; et pour les briques statistiques, la **couverture reste proche du nominal** là où la formule naïve serait sur-confiante. VERAX préfère dire « je ne sais pas » plutôt que se tromper.
+Malgré leur diversité, toutes ces capacités reposent sur le même contrat FAUX=0 qui ressort explicitement des docstrings : l'**abstention est le défaut** et le HORS domine (impossibilité ou contradiction avant tout) ; le **domaine est explicite** (toute entrée hors périmètre est refusée, jamais devinée) ; les sorties sont **déterministes et re-vérifiées** (structure PDF au bon octet, bijection braille, `xref` re-scannée) ; et pour les briques statistiques, la **couverture reste proche du nominal** là où la formule naïve serait sur-confiante. Provara préfère dire « je ne sais pas » plutôt que se tromper.
 
 ---
 
 
 ## Assistant conversationnel (2026-07 — câblé au chat)
 
-Au-delà du moteur de faits vérifiés, VERAX atteint désormais ces capacités directement en conversation, chacune s'abstenant hors de son périmètre garanti (FAUX=0) :
+Au-delà du moteur de faits vérifiés, Provara atteint désormais ces capacités directement en conversation, chacune s'abstenant hors de son périmètre garanti (FAUX=0) :
 
 - **Grammaire française** (`grammaire_fr`, `formes_verbales`) : nature de chaque mot (mots-outils = ensembles finis fermés ; lexique embarqué de 19 200 mots ; formes conjuguées reconnues par modèles Bescherelle sur 116k formes), type de phrase (question/affirmation/ordre/négation) et structure sujet-verbe-objet. Ambigu/inconnu → « inconnu », jamais un tag faux.
 - **Conjugaison** (`conjugaison`) : table du présent d'un verbe régulier ; abstention honnête hors périmètre.
@@ -1064,7 +1064,7 @@ Au-delà du moteur de faits vérifiés, VERAX atteint désormais ces capacités 
 - **Géographie** : distance et cap initial entre deux lieux connus.
 - **Recherche web multi-sources** avec vérification du contexte sur site (Mojeek/Bing/DuckDuckGo), chaque passage attribué et lié.
 - **Apprentissage de patrons** (`apprentissage_patrons`) : apprend les reformulations de l'utilisateur et induit des règles de substitution de mots qui généralisent (FAUX=0 : ré-aiguillage seul, la réponse reste vérifiée).
-- **Système de confiance** (`confiance`) : une correction utilisateur ne prend effet que si elle s'appuie sur une **source** — VERAX challenge les affirmations nues (« sur quelle source t'appuies-tu ? ») et n'écrase jamais une vérité sans source ; les corrections sont attribuées à leur source. « Oublie ce site X » bannit un domaine des recherches.
+- **Système de confiance** (`confiance`) : une correction utilisateur ne prend effet que si elle s'appuie sur une **source** — Provara challenge les affirmations nues (« sur quelle source t'appuies-tu ? ») et n'écrase jamais une vérité sans source ; les corrections sont attribuées à leur source. « Oublie ce site X » bannit un domaine des recherches.
 - **Multilingue** (`langue`) : les questions factuelles posées en anglais/espagnol/allemand/italien/portugais reçoivent une réponse dans la langue (capitale/population/monnaie/langue/superficie de pays), résolues par le pipeline vérifié français. Interface localisée dans ces 6 langues.
 - **Traduction FR↔EN** (`traduction`) : traduction mot-à-mot **assistée** — dictionnaire curé embarqué (mots courants, hors-ligne) + lexique cross-lingue `concept_du_mot` de la base complète (~165k termes). FAUX=0 : un mot inconnu est gardé tel quel et signalé, jamais inventé ; sortie étiquetée « mot-à-mot assisté ». Pas de fluidité/réordonnancement (frontière honnête).
 - **Fraîcheur** (`_est_volatil`) : une question à marqueur temporel (« président **actuel** », « **dernier** vainqueur », « en 2026 ») préfère la source **live** (Wikidata) à la base statique qui peut être périmée — quand le web est autorisé ; repli sur la base sinon. Réponse fraîche et attribuée.

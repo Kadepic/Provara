@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""MESURE DES RESSOURCES — empreinte RÉELLE de VERAX avec TOUT ce qu'il a appris (2026-07-03).
+"""MESURE DES RESSOURCES — empreinte RÉELLE de Provara avec TOUT ce qu'il a appris (2026-07-03).
 
 À lancer APRÈS avoir fini les briques/chantiers, pour des chiffres FIABLES : taille disque (exe + datasets +
 code), RAM (RSS) à froid puis lecteur chargé, temps de chargement, et coût CPU par requête. Souverain, stdlib.
@@ -41,7 +41,7 @@ def _mo(o: int) -> float:
 
 def main():
     print("=" * 70)
-    print("VERAX — MESURE DES RESSOURCES (état complet)")
+    print("Provara — MESURE DES RESSOURCES (état complet)")
     print("=" * 70)
 
     # — DISQUE —
@@ -53,9 +53,9 @@ def main():
                         ("datasets/lecteur (embarqué)", os.path.join(_ICI, "datasets", "lecteur"))]:
         if os.path.isdir(chemin):
             print("  %-32s %8.1f Mo" % (nom, _mo(_taille_dossier(chemin))))
-    exe = os.path.join(_ICI, "dist", "VERAX.exe")
+    exe = os.path.join(_ICI, "dist", "Provara.exe")
     if os.path.isfile(exe):
-        print("  %-32s %8.1f Mo" % ("dist/VERAX.exe", _mo(os.path.getsize(exe))))
+        print("  %-32s %8.1f Mo" % ("dist/Provara.exe", _mo(os.path.getsize(exe))))
     # datasets embarqués : nb de fichiers + nb de faits (lignes)
     dl = os.path.join(_ICI, "datasets", "lecteur")
     if os.path.isdir(dl):
@@ -117,7 +117,7 @@ def main():
     print("  %-32s %8d modules Python en mémoire" % ("modules importés", len(sys.modules)))
 
     print("\n" + "=" * 70)
-    print("Résumé : VERAX charge sa connaissance en %.1f s (I/O disque ; plus rapide en natif), tient dans\n"
+    print("Résumé : Provara charge sa connaissance en %.1f s (I/O disque ; plus rapide en natif), tient dans\n"
           "%.0f Mo de RAM, et répond à un fait vérifié en ~%.3f ms (%.0f req/s). 0 GPU, 0 dépendance."
           % (dt, _rss_mo(), 1000.0 * wall / n, debit))
     print("=" * 70)

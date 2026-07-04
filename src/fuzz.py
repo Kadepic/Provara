@@ -2,7 +2,7 @@
 Brique 6 — LE CRIBLE SÉCURITÉ (fuzzing différentiel).
 
 Le juge v1 demande : « ça passe les tests ? ». Le crible demande la question
-VERAX : « ça SURVIT au réel ? ». Un code peut passer tous les tests visibles
+Provara : « ça SURVIT au réel ? ». Un code peut passer tous les tests visibles
 et held-out, et pourtant CRASHER ou se TROMPER sur des entrées non vues. Le
 crible le débusque (cf. PROJET-AUTO-AMELIORATION-CODE.md §4 juge v2, §6).
 

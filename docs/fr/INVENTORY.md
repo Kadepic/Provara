@@ -1,4 +1,4 @@
-# Inventaire complet de VERAX
+# Inventaire complet de Provara
 
 > Généré mécaniquement depuis le code (docstrings + API). Représente l'intégralité des modules livrés.
 
@@ -172,7 +172,7 @@
 | `delta_debug` | DELTA-DEBUGGING (ddmin) — minimisation de reproducteur d'échec (brique code avancé, 2026-07-02). | ddmin, est_1_minimal, minimise_texte |
 | `demande` | DEMANDE — L'INTERFACE DE REQUÊTE (« la parole », 2026-06-17, recadrage Yohan « il faut pouvoir lui DEMANDER des choses,  | construit_moteur, class Reponse, demande, class AssistantIA |
 | `demo_anglais` |  | main |
-| `demo_verax` | DÉMO VERAX — « Ou il sait, ou il le dit. | titre, q, calcule, main |
+| `demo_verax` | DÉMO Provara — « Ou il sait, ou il le dit. | titre, q, calcule, main |
 | `demographie` | demographie.py — Démographie (populations, faits) : | taux_croissance_naturel, densite_population, temps_doublement, taux_dependance, indice_fecondite |
 | `derive_calibration` | PALIER 2 — DÉTECTEUR DE DÉRIVE DE CALIBRATION (brique 13, 2026-06-25). | class DetecteurDerive, formule |
 | `deux_enveloppes` | PALIER 2 — PARADOXE DES DEUX ENVELOPPES : | p_petite_sachant, gain_conditionnel, esperance_gain_inconditionnel, simule, analyse, formule |
@@ -496,7 +496,7 @@
 | `veille` | VEILLE / ACCÈS WEB — recherche SOUVERAINE, FAUX=0 (roadmap #11 : | recupere, rapporte, independantes, corrobore, approfondit |
 | `veille_corroboration` | BOUCLE WEB -> RÉALITÉ -> FAIT-STORE : | juge_coherence_store, corrobore_valeur |
 | `venn_abers` | PALIER 2 — PRÉDICTEUR DE VENN-ABERS (brique 16, 2026-06-25). | class VennAbers, formule |
-| `verifie_demo` | VERAX — out-of-the-box verification / vérification prête à l'emploi. | main |
+| `verifie_demo` | Provara — out-of-the-box verification / vérification prête à l'emploi. | main |
 | `web` | WEB (HTML/CSS/standards) — vérifications STRUCTURELLES exactes, FAUX=0 (mission formule/concept 2026-06-29). | balises_equilibrees, specificite, compare_specificite |
 | `will_rogers` | PALIER 2 — PHÉNOMÈNE DE WILL ROGERS / MIGRATION DE STADE : | moyenne, migrants_will_rogers, migration, analyse, formule |
 | `winner_curse` | PALIER 2 — MALÉDICTION DU VAINQUEUR & INFÉRENCE SÉLECTIVE (brique 71, 2026-06-27). | selectionne, ic_naif, ic_simultane, estime, formule |

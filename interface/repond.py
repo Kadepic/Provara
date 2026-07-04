@@ -241,7 +241,7 @@ def _charge_ia():
             _VERIFIE = importlib.import_module("base_faits").VERIFIE
         except Exception as _e:         # environnement sans lecteur -> on dégrade proprement (pas d'étage 2)
             import traceback
-            print("  [VERAX] ⚠ moteur de connaissance INDISPONIBLE : %r" % _e, flush=True)
+            print("  [Provara] ⚠ moteur de connaissance INDISPONIBLE : %r" % _e, flush=True)
             traceback.print_exc()
             _IA, _VERIFIE = False, None
     return _IA, _VERIFIE
@@ -818,7 +818,7 @@ _LOC_ADIEU = ("au revoir", "a bientot", "a plus", "a tres bientot", "bonne nuit"
 _LOC_CAVA = ("ca va", "comment ca va", "comment vas tu", "comment allez vous", "comment tu vas", "tu vas bien",
              "comment ca va aujourd hui")
 # Formes ANGLAISES courantes (« hello how are you? » partait en recherche web -> hors-sujet total). On y répond
-# socialement, EN ANGLAIS, avec l'honnêteté sur la langue (VERAX travaille surtout en français pour l'instant).
+# socialement, EN ANGLAIS, avec l'honnêteté sur la langue (Provara travaille surtout en français pour l'instant).
 _LOC_CAVA_EN = ("how are you doing", "how is it going", "how s it going", "hows it going", "how are you",
                 "how do you do", "what s up", "whats up")
 _NOM_EN = ("what is your name", "what s your name", "whats your name")
@@ -864,7 +864,7 @@ def _reponse_sociale(texte: str):
         parts = []
         if flags["salut"]: parts.append("Hello!")
         if flags["cava"]: parts.append("I'm doing well, thank you \U0001F642.")
-        if flags["nom"] or flags["ident"]: parts.append("My name is VERAX.")
+        if flags["nom"] or flags["ident"]: parts.append("My name is Provara.")
         if flags["merci"] and not parts: parts.append("You're welcome!")
         parts.append("For now I answer best in FRENCH (a full English mode is on the roadmap) — "
                      "try « capitale de l'Espagne » or « population du Japon ».")
@@ -872,7 +872,7 @@ def _reponse_sociale(texte: str):
     parts = []
     if flags["salut"]: parts.append("Bonjour !")
     if flags["cava"]: parts.append("Je vais très bien, merci\u202f\U0001F642.")
-    if flags["nom"] or flags["ident"]: parts.append("Je m'appelle VERAX.")
+    if flags["nom"] or flags["ident"]: parts.append("Je m'appelle Provara.")
     if flags["merci"] and not parts: parts.append("Avec plaisir !")
     parts.append("Pose-moi une question et je te réponds avec ce que je sais.")
     return " ".join(parts)
@@ -941,9 +941,9 @@ _META_PATRONS = [
      "fonctionnement"),
 ]
 _META_REPONSES = {
-    "identite": "Je suis VERAX, un assistant conversationnel local et souverain. Je réponds à partir d'une base de "
+    "identite": "Je suis Provara, un assistant conversationnel local et souverain. Je réponds à partir d'une base de "
                 "faits vérifiés (sans GPU, hors-ligne), et je préfère dire que je ne sais pas plutôt que d'inventer.",
-    "nom": "Je m'appelle VERAX. Je réponds à partir d'une base de faits vérifiés, et je préfère dire que je ne sais pas plutôt que d'inventer.",
+    "nom": "Je m'appelle Provara. Je réponds à partir d'une base de faits vérifiés, et je préfère dire que je ne sais pas plutôt que d'inventer.",
     "capacites": "Je réponds à des questions factuelles (géographie, chimie, langues, conversions d'unités, etc.) "
                  "à partir de faits vérifiés, et je m'abstiens quand je n'ai pas l'information.",
     "nature": "Je suis un programme informatique (pas un humain) qui répond à des questions à partir d'une base de "
@@ -1096,7 +1096,7 @@ def _build_id() -> str:
 
 def _diagnostic_connaissance(texte: str):
     """« diagnostic » / « combien de faits connais-tu » -> état RÉEL de la connaissance chargée (nb relations/faits +
-    d'où viennent les données). Sert à vérifier que VERAX a bien accès à sa base (utile pour déboguer le .exe)."""
+    d'où viennent les données). Sert à vérifier que Provara a bien accès à sa base (utile pour déboguer le .exe)."""
     n = _normalise(texte).strip()
     if not (n == "diagnostic" or ("combien" in n and ("relation" in n or "fait" in n or "chose" in n))):
         return None
@@ -1126,7 +1126,7 @@ def _recherche_structuree(question: str):
         if not _WEB_MODULE_SIGNALE:      # console = seul canal de diagnostic du .exe -> jamais silencieux
             _WEB_MODULE_SIGNALE = True
             try:                          # un print qui échoue (console exotique) ne doit pas casser la réponse
-                print("  [VERAX] ⚠ recherche web INDISPONIBLE (import veille_structure) : %r" % e, flush=True)
+                print("  [Provara] ⚠ recherche web INDISPONIBLE (import veille_structure) : %r" % e, flush=True)
             except Exception:
                 pass
         return None
@@ -1169,7 +1169,7 @@ def _recherche_structuree(question: str):
 
 
 def _schema(entite: str):
-    """Graphe SVG en étoile de ce que VERAX CONNAÎT sur `entite` (relations réelles du lecteur). Renvoie une chaîne
+    """Graphe SVG en étoile de ce que Provara CONNAÎT sur `entite` (relations réelles du lecteur). Renvoie une chaîne
     SVG (contrôlée, labels échappés) ou None. FAUX=0 : chaque arête = un fait réel du graphe, jamais inventé."""
     import math, html
     try:
@@ -1491,7 +1491,7 @@ def _cap_confiance(texte: str):
 
 def _reponse_corrigee(texte: str):
     """Réponse d'une correction SOURCÉE de l'utilisateur pour CETTE question. Attribuée à SA source (jamais
-    présentée comme la vérité vérifiée de VERAX). None si aucune correction sourcée."""
+    présentée comme la vérité vérifiée de Provara). None si aucune correction sourcée."""
     try:
         import confiance
         e = confiance.reponse_autorisee(texte)
@@ -1612,7 +1612,7 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     meta = _meta_assistant(t)
     if meta:
         return meta
-    #   (0ter) AUTO-DIAGNOSTIC : « diagnostic » -> combien de faits/relations VERAX a réellement chargés (débogage).
+    #   (0ter) AUTO-DIAGNOSTIC : « diagnostic » -> combien de faits/relations Provara a réellement chargés (débogage).
     diag = _diagnostic_connaissance(t)
     if diag:
         return diag

@@ -1,10 +1,10 @@
 # Validation & FAUX = 0
 
-FAUX = 0 is VERAX's founding invariant: the system never asserts something it cannot prove. This invariant is not an intention, it is a property **enforced by the code** — more precisely by a family of validators and by the non-regression gate that runs them. This document describes that mechanism as it actually exists in the repository.
+FAUX = 0 is Provara's founding invariant: the system never asserts something it cannot prove. This invariant is not an intention, it is a property **enforced by the code** — more precisely by a family of validators and by the non-regression gate that runs them. This document describes that mechanism as it actually exists in the repository.
 
 ## The non-regression gate (`_nonreg.py`)
 
-`_nonreg.py` is VERAX's standard runner: it is the "gate". Its role is to execute the full set of validators and deliver a binary verdict — everything passes, or the gate is red.
+`_nonreg.py` is Provara's standard runner: it is the "gate". Its role is to execute the full set of validators and deliver a binary verdict — everything passes, or the gate is red.
 
 It is called like this:
 
@@ -67,7 +67,7 @@ The validators are not an undifferentiated heap; they group by what they guarant
 
 ## The principle: building block → validator with external anchors → green gate
 
-VERAX is built atom by atom. The working rule is simple and non-negotiable:
+Provara is built atom by atom. The working rule is simple and non-negotiable:
 
 > **a building block is only acquired once its validator passes, and work only advances with a green gate.**
 
@@ -106,4 +106,4 @@ The chain of guarantees closes as follows:
 - **Data changes cannot slip behind a stale cache**, thanks to the fingerprint of the `datasets/lecteur/*.jsonl` folded into the fingerprint of the data-driven validators.
 - **A failure is never absorbed.** A FAIL is not cached, the gate returns a non-zero exit code, and the "green gate before moving on" rule forbids advancing as long as a single false fact remains.
 
-A false fact therefore cannot enter VERAX without making at least one validator fail, which turns the gate red and blocks the work. It is in this precise sense that **FAUX = 0** is proven by the code, and not merely asserted.
+A false fact therefore cannot enter Provara without making at least one validator fail, which turns the gate red and blocks the work. It is in this precise sense that **FAUX = 0** is proven by the code, and not merely asserted.

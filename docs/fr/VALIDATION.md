@@ -1,10 +1,10 @@
 # Validation & FAUX = 0
 
-FAUX = 0 est l'invariant fondateur de VERAX : le système n'affirme jamais quelque chose qu'il ne peut prouver. Cet invariant n'est pas une intention, c'est une propriété **imposée par le code** — plus précisément par une famille de validateurs et par la porte de non-régression qui les exécute. Ce document décrit ce dispositif tel qu'il existe réellement dans le dépôt.
+FAUX = 0 est l'invariant fondateur de Provara : le système n'affirme jamais quelque chose qu'il ne peut prouver. Cet invariant n'est pas une intention, c'est une propriété **imposée par le code** — plus précisément par une famille de validateurs et par la porte de non-régression qui les exécute. Ce document décrit ce dispositif tel qu'il existe réellement dans le dépôt.
 
 ## La gate de non-régression (`_nonreg.py`)
 
-`_nonreg.py` est le runner standard de VERAX : c'est la « gate ». Son rôle est d'exécuter l'ensemble des validateurs et de rendre un verdict binaire — tout passe, ou la porte est rouge.
+`_nonreg.py` est le runner standard de Provara : c'est la « gate ». Son rôle est d'exécuter l'ensemble des validateurs et de rendre un verdict binaire — tout passe, ou la porte est rouge.
 
 Elle s'appelle ainsi :
 
@@ -42,7 +42,7 @@ Sur le disque, les **683 fichiers `valide_*.py`** vivent dans le dossier `tests/
 
 La sélection est **auto-découvrante** : `liste_validateurs()` maintient une liste curée (qui fixe l'ordre et repère les tests lourds), puis **ajoute automatiquement tout `valide_*.py`** non encore listé. Conséquence directe pour FAUX = 0 : aucune capacité réelle ne peut rester « orpheline » hors du filet ; tout nouveau validateur déposé est protégé d'office.
 
-> **Layout `_nonreg` (portage, 2026-07-03) :** la gate historique AUTORITÉ vit dans le repo d'origine `IA_nouvelle_vision/harnais/` (validateurs colocalisés en layout plat, où `_nonreg.py` passe). Le repo Verax est **restructuré** (`src/`+`tests/`+`interface/`+`ingestion/`) : `_nonreg.py` y a été réparé pour DÉCOUVRIR et LANCER les validateurs (résolution via `_chemin()`, `PYTHONPATH` = `tests`+`src`+`interface`+`ingestion` sur chaque sous-processus). Vérifié : `liste_validateurs()` renvoie **683** (était 1) et les validateurs autonomes passent (composition 9/9, ocr 28/28, vague4 4/4…). ⚠️ Le vert **683/683 dans Verax** n'est pas encore atteint : le port n'a pas re-routé les chemins codés en dur de certains validateurs (`datasets/…`, `src/ia.py` relatifs à leur dossier) et plusieurs exigent la **base complète 71,9 M** (lecteur_t5..t12, resolution, taxonomie, substrat_reel). Ce ne sont pas des régressions — c'est un chantier de portage. **Contrôle autonome fiable dans Verax pour la couche conversationnelle : `tests/suite_conversation.py` (16/16).**
+> **Layout `_nonreg` (portage, 2026-07-03) :** la gate historique AUTORITÉ vit dans le repo d'origine `IA_nouvelle_vision/harnais/` (validateurs colocalisés en layout plat, où `_nonreg.py` passe). Le repo Provara est **restructuré** (`src/`+`tests/`+`interface/`+`ingestion/`) : `_nonreg.py` y a été réparé pour DÉCOUVRIR et LANCER les validateurs (résolution via `_chemin()`, `PYTHONPATH` = `tests`+`src`+`interface`+`ingestion` sur chaque sous-processus). Vérifié : `liste_validateurs()` renvoie **683** (était 1) et les validateurs autonomes passent (composition 9/9, ocr 28/28, vague4 4/4…). ⚠️ Le vert **683/683 dans Provara** n'est pas encore atteint : le port n'a pas re-routé les chemins codés en dur de certains validateurs (`datasets/…`, `src/ia.py` relatifs à leur dossier) et plusieurs exigent la **base complète 71,9 M** (lecteur_t5..t12, resolution, taxonomie, substrat_reel). Ce ne sont pas des régressions — c'est un chantier de portage. **Contrôle autonome fiable dans Provara pour la couche conversationnelle : `tests/suite_conversation.py` (16/16).**
 
 ### Suite conversationnelle (`tests/suite_conversation.py`)
 
@@ -67,7 +67,7 @@ Les validateurs ne sont pas un tas indistinct ; ils se regroupent par ce qu'ils 
 
 ## Le principe : brique → validateur à ancres externes → gate verte
 
-VERAX se construit atome par atome. La règle de travail est simple et non négociable :
+Provara se construit atome par atome. La règle de travail est simple et non négociable :
 
 > **une brique n'est acquise que lorsque son validateur passe, et le travail n'avance que gate verte.**
 
@@ -106,4 +106,4 @@ La chaîne de garanties se referme ainsi :
 - **Les changements de données ne peuvent pas se glisser derrière un cache périmé**, grâce à l'empreinte des `datasets/lecteur/*.jsonl` repliée dans le fingerprint des validateurs pilotés par les données.
 - **Un échec n'est jamais absorbé.** Un FAIL n'est pas mis en cache, la gate rend un code de sortie non nul, et la règle « gate verte avant la suite » interdit d'avancer tant qu'un seul fait faux subsiste.
 
-Un fait faux ne peut donc entrer dans VERAX sans faire échouer au moins un validateur, ce qui rougit la gate et bloque le travail. C'est en ce sens précis que **FAUX = 0** est prouvé par le code, et non affirmé.
+Un fait faux ne peut donc entrer dans Provara sans faire échouer au moins un validateur, ce qui rougit la gate et bloque le travail. C'est en ce sens précis que **FAUX = 0** est prouvé par le code, et non affirmé.

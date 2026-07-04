@@ -1,6 +1,6 @@
 @echo off
 cd /d "%~dp0"
-echo === VERAX : compilation de VERAX.exe ===
+echo === Provara : compilation de Provara.exe ===
 where py >nul 2>&1 || ( echo Installe Python 3.10+ ^: https://www.python.org/downloads/ & pause & exit /b 1 )
 rem Tampon de version : le .exe sait de quel commit il vient (affiché au démarrage + « diagnostic »).
 set "VERAX_SHA="
@@ -12,7 +12,7 @@ rem Mode FENÊTRÉ par défaut (pas de console noire au lancement ; les messages
 rem et l'interface web affiche une modale de chargement). Pour rétablir la console : VERAX_CONSOLE=1.
 set "WINFLAG=--noconsole"
 if "%VERAX_CONSOLE%"=="1" set "WINFLAG="
-py -m PyInstaller --onefile --name VERAX %WINFLAG% ^
+py -m PyInstaller --onefile --name Provara %WINFLAG% ^
   --paths src --paths ingestion --paths interface ^
   --hidden-import _precharge_verax ^
   --hidden-import ia --hidden-import lecteur --hidden-import base_faits ^
@@ -29,5 +29,5 @@ py -m PyInstaller --onefile --name VERAX %WINFLAG% ^
   --hidden-import marshal --hidden-import base64 --hidden-import difflib --hidden-import calendar ^
   lance.py
 if errorlevel 1 ( echo ERREUR ^(copie le message^). & pause & exit /b 1 )
-echo OK : dist\VERAX.exe
+echo OK : dist\Provara.exe
 pause

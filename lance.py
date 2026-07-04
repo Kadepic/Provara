@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""VERAX — lanceur. Démarre l'interface web locale et ouvre le navigateur.
+"""Provara — lanceur. Démarre l'interface web locale et ouvre le navigateur.
 
   • Sources :  python3 lance.py   (VERAX_FULL=1 pour installer la base complète)
   • .exe (Windows) : double-clic — installe la base complète au 1er lancement, puis instantané.
@@ -23,7 +23,7 @@ import verax_boot  # noqa: F401,E402  -- chemins + choix des données
 # .exe (ou VERAX_FULL=1) : installe la base complète (72M faits) une fois, puis bascule dessus. Récupère AUSSI
 # l'index .colf pré-construit -> démarrage ~30 Mo direct (sinon build à froid la 1ʳᵉ fois). `verax_boot` a déjà
 # tourné (donc raté le cache tout juste téléchargé) : on fixe ici LECTEUR_CACHE_DIR + mode portable nous-mêmes.
-# DÉMARRAGE INSTANTANÉ : VERAX démarre TOUJOURS sur ce qui est déjà présent (échantillon embarqué au 1er
+# DÉMARRAGE INSTANTANÉ : Provara démarre TOUJOURS sur ce qui est déjà présent (échantillon embarqué au 1er
 # lancement, ou base complète si elle a déjà été installée — verax_boot l'a déjà sélectionnée). Le
 # téléchargement de la base complète (72M faits, ~1,2 Go + ~6 Go disque) est désormais OPTIONNEL et déclenché
 # par l'UTILISATEUR depuis l'interface (bouton + modale d'info), jamais au lancement : on ne bloque JAMAIS
@@ -40,7 +40,7 @@ try:
     if _td.base_complete_presente():
         print("  base    : COMPLÈTE (72 M de faits) active.")
     else:
-        print("  base    : ÉCHANTILLON (VERAX est utilisable tout de suite).")
+        print("  base    : ÉCHANTILLON (Provara est utilisable tout de suite).")
         print("  >> Base complète (72 M de faits) OPTIONNELLE : ~6 Go d'espace disque, 15 à 20 minutes,")
         print("     UNIQUEMENT la première fois. Lancez-la depuis l'interface (bouton « Base complète »),")
         print("     ou en ligne de commande : VERAX_FULL=1 python3 lance.py")
@@ -100,7 +100,7 @@ def _ouvre_navigateur():
 
 
 print("=" * 58)
-print("  VERAX — ouvre  %s" % _URL)
+print("  Provara — ouvre  %s" % _URL)
 print("  localhost uniquement · aucun GPU · Ctrl+C pour arrêter")
 print("=" * 58)
 threading.Thread(target=_ouvre_navigateur, daemon=True).start()

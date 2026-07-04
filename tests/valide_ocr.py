@@ -28,11 +28,11 @@ def check(c, label):
 
 
 # (1) round-trip exact sur des textes variés (lettres MAJ/min, chiffres, ponctuation, espaces)
-for txt in ["HELLO 123", "VERAX", "ABC XYZ 789", "FAUX-0", "THE QUICK BROWN FOX 0123456789",
+for txt in ["HELLO 123", "Provara", "ABC XYZ 789", "FAUX-0", "THE QUICK BROWN FOX 0123456789",
             "BONJOUR: OUI!", "A-B-C 1.2.3", "LE CHAT DORT", "RAPPORT 2026: OK",
             # minuscules + casse mixte (le texte réel est surtout minuscule) — hauteur relative = casse
-            "Hello World", "the cat dort", "VERAX ocr", "Bonjour Paris", "le chat mange",
-            "Verax lit un texte", "abcdefg hijkl", "Page 42: ok"]:
+            "Hello World", "the cat dort", "Provara ocr", "Bonjour Paris", "le chat mange",
+            "Provara lit un texte", "abcdefg hijkl", "Page 42: ok"]:
     got = ocr.ocr(ocr.rend(txt, echelle=3))
     check(got == txt, "round-trip « %s » (obtenu « %s »)" % (txt, got))
 
@@ -80,10 +80,10 @@ check(ocr.ocr(teinte((90, 90, 90), (20, 20, 20))) == "CONTRASTE", "sous-exposé 
 check(ocr.ocr(teinte((255, 255, 255), (180, 180, 180))) == "CONTRASTE", "sur-exposé (Otsu)")
 
 # (6) tolérance à un léger bruit (quelques pixels retournés) : reste lisible
-img = ocr.rend("VERAX", echelle=4)
+img = ocr.rend("Provara", echelle=4)
 # flip d'un pixel isolé au coin (ne doit pas casser la reconnaissance)
 img.pixel(0, 0, (0, 0, 0))
-check("VERAX" in ocr.ocr(img), "tolère un pixel de bruit isolé")
+check("Provara" in ocr.ocr(img), "tolère un pixel de bruit isolé")
 
 print("=== valide_ocr : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)
