@@ -833,6 +833,15 @@ _NOM_PHRASES = ("comment t appelles tu", "comment t appeles tu", "comment tu t a
                 "quel est ton nom", "ton nom c est quoi", "c est quoi ton nom", "tu t appelles comment", "ton nom")
 _IDENT_PHRASES = ("qui es tu", "tu es qui", "qui est tu", "presente toi", "c est quoi toi", "tu es quoi")
 _FILLER_SOCIAL = frozenset("et toi vous stp svp s il te plait le la aussi alors donc bien tres beaucoup mille ok".split())
+# SE PRÉSENTER : « je m'appelle X » / « moi c'est X »... -> saluer par le PRÉNOM, ne JAMAIS chercher X sur le web.
+#   On ne prend QUE les tournures NON ambiguës (« je suis X » est exclu : « je suis fatigué » n'est pas un nom).
+_INTRO_RE = re.compile(
+    r"\b(?:je m'?appelle|je me nomme|on m'?appelle|appelle[-\s]moi|mon\s+(?:pr[ée]nom|nom)\s+(?:est|c'?est)|"
+    r"moi\s+c'?est|my name is|call me)\s+([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ'’\-]{1,29})", re.I)
+# garde-fou : mots qui NE sont pas un prénom (évite « moi c'est fatigué » -> « Bonjour Fatigué »).
+_NON_PRENOM = frozenset("le la les un une des mon ton son ma ta sa mes tes ses pas plus tres bien mal ok "
+                        "content contente ravi ravie enchante enchantee desole desolee fatigue fatiguee "
+                        "ici la bon bonne the a an my your".split())
 
 
 def _reponse_sociale(texte: str):
@@ -841,7 +850,13 @@ def _reponse_sociale(texte: str):
     if not toks:
         return None
     n = " " + " ".join(toks) + " "
-    flags = {"salut": False, "cava": False, "nom": False, "ident": False, "merci": False, "adieu": False}
+    flags = {"salut": False, "cava": False, "nom": False, "ident": False, "merci": False, "adieu": False, "presente": False}
+    m_intro = _INTRO_RE.search(texte)                 # l'utilisateur DONNE son prénom ?
+    prenom = None
+    if m_intro:
+        cand = m_intro.group(1).strip(" .,!?'’’-")
+        if len(cand) >= 2 and _normalise(cand) not in _NON_PRENOM:
+            prenom = cand[:1].upper() + cand[1:]
     en = False                                        # une locution ANGLAISE a matché -> répondre en anglais
     groupes = ([(p, "adieu") for p in _LOC_ADIEU] + [(p, "nom") for p in _NOM_PHRASES + _NOM_EN]
                + [(p, "ident") for p in _IDENT_PHRASES + _IDENT_EN]
@@ -856,23 +871,29 @@ def _reponse_sociale(texte: str):
         if w in _SALUT: flags["salut"] = True; en = en or w in ("hello", "hi", "hey")
         elif w in _MERCI: flags["merci"] = True; en = en or w == "thanks"
         elif w not in _FILLER_SOCIAL: reste.append(w)
+    if prenom:                                # « je m'appelle X » -> X est le prénom, PAS une requête à chercher
+        consommes = set(_normalise(m_intro.group(0)).split())
+        reste = [w for w in reste if w not in consommes]
+        flags["presente"] = True
     if reste or not any(flags.values()):     # contenu factuel résiduel -> pas (que) social
         return None
     if flags["adieu"] and not (flags["salut"] or flags["cava"] or flags["nom"] or flags["ident"]):
         return "See you soon!" if en else "À bientôt !"
     if en:      # réponse EN ANGLAIS + honnêteté : le mode anglais complet est prévu, pas encore là (pas de promesse floue)
         parts = []
-        if flags["salut"]: parts.append("Hello!")
+        if prenom: parts.append(("Hello %s! Nice to meet you." % prenom) if flags["salut"] else ("Nice to meet you, %s!" % prenom))
+        elif flags["salut"]: parts.append("Hello!")
         if flags["cava"]: parts.append("I'm doing well, thank you \U0001F642.")
-        if flags["nom"] or flags["ident"]: parts.append("My name is Provara.")
+        if not prenom and (flags["nom"] or flags["ident"]): parts.append("My name is Provara.")
         if flags["merci"] and not parts: parts.append("You're welcome!")
         parts.append("For now I answer best in FRENCH (a full English mode is on the roadmap) — "
                      "try « capitale de l'Espagne » or « population du Japon ».")
         return " ".join(parts)
     parts = []
-    if flags["salut"]: parts.append("Bonjour !")
+    if prenom: parts.append(("Bonjour %s, enchantée \U0001F642." % prenom) if flags["salut"] else ("Enchantée, %s \U0001F642." % prenom))
+    elif flags["salut"]: parts.append("Bonjour !")
     if flags["cava"]: parts.append("Je vais très bien, merci\u202f\U0001F642.")
-    if flags["nom"] or flags["ident"]: parts.append("Je m'appelle Provara.")
+    if not prenom and (flags["nom"] or flags["ident"]): parts.append("Je m'appelle Provara.")
     if flags["merci"] and not parts: parts.append("Avec plaisir !")
     parts.append("Pose-moi une question et je te réponds avec ce que je sais.")
     return " ".join(parts)
