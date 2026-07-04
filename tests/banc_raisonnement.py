@@ -47,12 +47,15 @@ CAS = [
     ("agregat", R._cap_agregat, "population totale de l'Afrique ?", "somme"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
     ("orbite", R._cap_orbite, "est-ce que Phobos fait partie du système solaire ?", "je le déduis"),
+    ("transitif-hydro", R._cap_transitif, "est-ce que la Lukna finit dans la mer Baltique ?", "Niémen"),
+    ("transitif-groupe", R._cap_transitif, "105 Music fait-elle partie du groupe Sony ?", "Sony Music"),
     ("temporel", R._cap_temporel, "quel est le plus ancien entre la bataille de Marignan et la bataille de Verdun ?", "1515"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     # gardes FAUX=0
     ("faux-filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 5 et 10 milliards d'habitants ?", "Aucun"),
     ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", ""),
+    ("faux-transitif", R._cap_transitif, "est-ce que la Lukna finit dans la mer Noire ?", ""),
     ("faux-compar", R._cap_comparaison, "la France est-elle plus peuplée que l'Inde ?", "l'inverse"),
 ]
 

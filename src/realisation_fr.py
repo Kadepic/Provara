@@ -149,3 +149,21 @@ def un_nom(mot: str) -> str:
 def le_nom(mot: str, majuscule: bool = False) -> str:
     """« le/la/l' <nom commun> » selon le genre du lexique. Ex. « le chat », « la voiture », « l'oiseau »."""
     return article(mot, genre=genre_mot(mot) or "m", majuscule=majuscule)
+
+
+def _genre_syntagme(expr: str) -> str:
+    """Genre d'un syntagme nominal = genre de sa TÊTE (1er mot), repli masculin."""
+    mots = expr.split()
+    tete = mots[0] if mots else expr
+    return genre_mot(tete) or genre_mot(expr) or "m"
+
+
+def le_syntagme(expr: str, majuscule: bool = False) -> str:
+    """« le/la/l' » devant un SYNTAGME NOMINAL : le genre est porté par la TÊTE (1er mot), pas par l'expression
+    entière — « mer Baltique » -> « la mer Baltique », « océan Atlantique » -> « l'océan Atlantique »."""
+    return article(expr, genre=_genre_syntagme(expr), majuscule=majuscule)
+
+
+def de_syntagme(expr: str) -> str:
+    """« de X » CONTRACTÉ pour un syntagme : « du Lukna », « de la mer Baltique », « de l'océan Atlantique »."""
+    return de(expr, genre=_genre_syntagme(expr))

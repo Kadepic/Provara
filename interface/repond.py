@@ -2406,6 +2406,116 @@ def _cap_orbite(texte: str):
     return "Oui — je le déduis : %s%s." % (derivation, note)
 
 
+# ————— TRANSITIVITÉ GÉNÉRALISÉE (au-delà de l'astronomie) : fermetures transitives SÛRES par domaine —————
+# Chaque groupe fusionne des relations parentales chaînables des données ; la conclusion emploie le VERBE DE
+# FERMETURE (« les eaux rejoignent », « fait partie du groupe ») — définitionnellement vrai le long d'une chaîne
+# de faits stockés, montrée en entier (chaque maillon re-vérifiable). GARDE ANTI-HOMONYME : un nom porté par
+# PLUSIEURS entités (valeurs parentales distinctes) est INTRAVERSABLE — on refuse la chaîne plutôt que risquer
+# un faux (FAUX=0). Candidats REJETÉS après audit des données (2026-07-04) : subdivision_localite (homonymes
+# inter-pays -> chaînes absurdes « Rivers -> Iowa »), montagne_pic_parent (parent de PROÉMINENCE topographique,
+# pas une appartenance), généalogie mere/pere_personne (homonymes royaux non désambiguïsés, « Louis de France »).
+# corps_parent_astre reste servi par _cap_orbite (avec sa note de règle découverte).
+_TRANS_GROUPES = (
+    dict(cle="hydro", rels=("embouchure_ruisseau", "embouchure_canal", "embouchure_fleuve"),
+         lien="se jette dans", conclusion="donc les eaux %s rejoignent bien %s", articles=True),
+    dict(cle="groupe", rels=("maison_mere",),                       # pas d'articles : « le 105 Music » serait faux
+         lien="a pour maison mère", conclusion="donc %s fait bien partie du groupe %s", articles=False),
+)
+_TRANS_HYDRO_RE = re.compile(
+    r"^(?:est ce que )?(?:le |la |les |l )?(.+?) (?:se jette(?:nt)?|se deverse(?:nt)?|debouche(?:nt)?|"
+    r"finit|finissent|rejoint|rejoignent|termine(?:nt)?)"
+    r"(?: t (?:il|elle))?(?: elles?)? (?:dans|sur|a|au|en) (?:le |la |les |l )?(.+?)\s*$")
+_TRANS_GROUPE_RE = re.compile(
+    r"^(?:est ce que )?(?:le |la |les |l )?(.+?) (?:fait(?: t)?(?: il| elle)? partie|"
+    r"appartient(?: t)?(?: il| elle)?) (?:du |de |des |au |a |aux )+(?:groupe )?(.+?)\s*$")
+_TRANS_CACHE: dict = {}
+
+
+def _charge_transitif(groupe: dict):
+    """Carte parentale FUSIONNÉE du groupe {norm : (entité_affichée, parent_affiché, parent_norm)} + ensemble des
+    noms AMBIGUS (un même nom -> plusieurs parents distincts : homonymes, intraversables). Chargée une fois."""
+    cle = groupe["cle"]
+    if cle in _TRANS_CACHE:
+        return _TRANS_CACHE[cle]
+    par, valeurs = {}, {}
+    for rel in groupe["rels"]:
+        chemin = os.path.join(_DOSSIER_LECTEUR, rel + ".jsonl")
+        try:
+            with open(chemin, encoding="utf-8") as fh:
+                for ligne in fh:
+                    ligne = ligne.strip()
+                    if not ligne:
+                        continue
+                    try:
+                        obj = json.loads(ligne)
+                    except ValueError:
+                        continue
+                    if "_relation" in obj:
+                        continue
+                    e, v = obj.get("entite"), obj.get("valeur")
+                    if e and v:
+                        ne, nv = _normalise(e), _normalise(v)
+                        valeurs.setdefault(ne, set()).add(nv)
+                        par[ne] = (str(e), str(v), nv)
+        except OSError:
+            continue
+    ambigu = frozenset(k for k, s in valeurs.items() if len(s) > 1)
+    _TRANS_CACHE[cle] = (par, ambigu)
+    return _TRANS_CACHE[cle]
+
+
+def _cap_transitif(texte: str):
+    """TRANSITIVITÉ GÉNÉRALISÉE : « est-ce que la Lukna finit dans la mer Baltique ? » -> la machine marche la
+    chaîne hydrographique RÉELLE (Lukna -> Merkys -> Niémen -> mer Baltique) et répond avec la dérivation complète ;
+    « 105 Music fait-elle partie du groupe Sony ? » -> chaîne des maisons mères. FAUX=0 : uniquement des chaînes de
+    faits stockés, montrées ; noms homonymes intraversables ; sinon None (le fait direct suit la voie normale)."""
+    qn = _normalise(texte).strip().rstrip(" ?")
+    essais = []
+    m = _TRANS_HYDRO_RE.match(qn)
+    if m:
+        essais.append(("hydro", m.group(1), m.group(2)))
+    m = _TRANS_GROUPE_RE.match(qn)
+    if m:
+        essais.append(("groupe", m.group(1), m.group(2)))
+    for cle, sujet, cible in essais:
+        groupe = next(g for g in _TRANS_GROUPES if g["cle"] == cle)
+        par, ambigu = _charge_transitif(groupe)
+        ns = _normalise(_strip_article(sujet))
+        nc = _normalise(_strip_article(cible))
+        if not ns or not nc or ns not in par:
+            continue
+        chaine = [par[ns][0]]
+        cur, vus, atteint = ns, {ns}, False
+        for _ in range(25):
+            if cur in ambigu:                    # nom porté par plusieurs entités -> hop intraversable (FAUX=0)
+                break
+            cell = par.get(cur)
+            if not cell:
+                break
+            chaine.append(cell[1])
+            if cell[2] == nc:
+                atteint = True
+                break
+            cur = cell[2]
+            if cur in vus:                       # cycle de données -> on s'arrête proprement
+                break
+            vus.add(cur)
+        if not atteint or len(chaine) < 3:       # < 2 sauts = fait direct, pas une dérivation -> voie normale
+            continue
+        a_conclu, b_conclu = chaine[0], chaine[-1]
+        if groupe.get("articles"):               # français soigné : « la Lukna », « le Merkys », « la mer Baltique »
+            try:                                 # et conclusion CONTRACTÉE : « les eaux du Lukna »
+                import realisation_fr as _RF
+                a_conclu, b_conclu = _RF.de_syntagme(chaine[0]), _RF.le_syntagme(chaine[-1])
+                chaine = [_RF.le_syntagme(c) for c in chaine]
+            except Exception:
+                pass
+        derivation = ("%s %s " % (chaine[0], groupe["lien"])) + (", qui %s " % groupe["lien"]).join(chaine[1:])
+        return "Oui — je le déduis : %s — %s." % (derivation,
+                                                  groupe["conclusion"] % (a_conclu, b_conclu))
+    return None
+
+
 def _cap_deduction(texte: str):
     """RAISONNEMENT DÉDUCTIF PROUVÉ (moteur Datalog `deduction.py`) : dérive un fait qui n'est stocké NULLE PART et
     MONTRE sa preuve. Ex. « sur quel continent se trouve Abuja ? » -> Afrique, dérivé de « Abuja est la capitale du
@@ -3001,7 +3111,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
