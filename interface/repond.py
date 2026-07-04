@@ -1437,6 +1437,19 @@ _PREF_LANGUE: dict = {}       # conv_id -> code langue préféré (« réponds e
 _PREF_LANGUE_GLOBAL = [None]  # préférence GLOBALE posée par le sélecteur de l'interface (/api/langue)
 
 
+_OUINON_Q_RE = re.compile(
+    r"^\s*est[- ]ce\s+qu"                                    # « est-ce que / qu' … »
+    r"|\b[a-zà-ÿ]+[- ]t[- ](?:il|elle|ils|elles|on)\b"        # « a-t-il », « peut-elle », « possède-t-il »
+    r"|\b(?:est|sont|a|ont|as|peut|peuvent|possede|possedent|contient|contiennent|fait|font)"
+    r"[- ](?:il|elle|ils|elles|ce)\b", re.I)
+
+
+def _question_oui_non(texte: str) -> bool:
+    """La question est-elle FERMÉE (oui/non) ? « est-ce que … », « X a-t-il … », « X est-elle … ». Sert à ne PAS
+    servir un rapport web en texte libre (souvent hors-sujet) à une question qui attend « oui »/« non »."""
+    return bool(_OUINON_Q_RE.search(texte))
+
+
 def _recherche_structuree(question: str):
     """Le lecteur n'a rien -> SOURCE STRUCTURÉE fiable (Wikidata), réponse VÉRIFIÉE + ATTRIBUÉE (FAUX=0).
     Extraction SPARQL déterministe, jamais du texte libre. Réseau requis (opt-in IA_WEB=1). None si rien/erreur."""
@@ -1458,6 +1471,12 @@ def _recherche_structuree(question: str):
     if res:
         _, _, valeur, source = res
         return "%s  (trouvé sur %s)" % (valeur, source)
+    # GARDE OUI/NON : une question fermée (« est-ce que la bagnole a 4 roues ? ») ne se répond PAS par un rapport
+    # web en TEXTE LIBRE — le métamoteur renvoie un article qui matche un mot-clé (« bagnole » -> film « Cars »),
+    # totalement hors-sujet. On préfère l'ABSTENTION honnête au bavardage. La source structurée (Wikidata,
+    # `interroge_nl` ci-dessus) reste autorisée car elle rend un fait, pas du texte libre.
+    if _question_oui_non(question):
+        return None
     try:
         wl = veille_structure.cherche_web_libre(question)      # web LIBRE (Wikipédia) -> rapport attribué + lien
     except Exception:
