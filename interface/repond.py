@@ -531,8 +531,11 @@ _ANALOGIE_RE = re.compile(
     r"^\s*(.+?)\s+est\s+(?:aux?\s+|[àa]\s+(?:la\s+|le\s+|les\s+|l['’])?)(.+?)\s+ce\s+que\s+(.+?)\s+"
     r"est\s+(?:aux?|[àa])\s*(?:quoi|qui)?\s*\??\s*$", re.I)
 # relations candidates pour l'analogie (fonctionnelles, un-à-un fréquentes). Cherchées dans cet ordre.
-_REL_ANALOGIE = ("capitale", "monnaie", "continent", "langue_officielle", "hymne", "gentile", "president_pays",
-                 "point_culminant", "plus_grande_ville", "monnaie_pays")
+# NB : noms VÉRIFIÉS contre les données (2026-07-04) — « hymne » n'existait pas (réel : hymne_national) ;
+# president_pays / plus_grande_ville / monnaie_pays n'ont pas (encore) de dataset : gardés en queue comme
+# intentions, ils ne coûtent rien (candidat jamais chargé) et se câbleront seuls si une base future les fournit.
+_REL_ANALOGIE = ("capitale", "monnaie", "continent", "langue_officielle", "hymne_national", "gentile",
+                 "point_culminant", "president_pays", "plus_grande_ville", "monnaie_pays")
 
 
 def _cap_analogie(texte: str):
