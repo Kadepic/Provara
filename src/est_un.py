@@ -31,6 +31,21 @@ def affiche(n: str) -> str:
     """Forme accentuée d'affichage d'un terme normalisé (« mammifere » -> « mammifère »), sinon le terme tel quel."""
     return _AFFICHE.get(_norm(n), n)
 
+
+_TEXTE = None                # {entite_norm : définition complète} (definition_nom)
+
+
+def definition(mot: str):
+    """Définition COMPLÈTE d'un nom (texte du Wiktionnaire via `definition_nom`), ou None. Sert à « c'est quoi X ? »."""
+    global _TEXTE
+    if _TEXTE is None:
+        _TEXTE = {}
+        for obj in _lignes("definition_nom"):
+            e, v = obj.get("entite"), obj.get("valeur")
+            if e and v:
+                _TEXTE.setdefault(_norm(e), v)
+    return _TEXTE.get(_norm(mot))
+
 _STOP_GENUS = frozenset(
     "un une le la les de du des d l qui se qu il elle qui qu a à en et ou par pour sur qui qui ce qui "
     "action fait partie".split())
@@ -209,6 +224,41 @@ def est_un(x: str, y: str) -> bool:
     if ny == _norm(x):
         return True
     return ny in hyperonymes_directs(x) or ny in set(chaine_isa(x))
+
+
+_ENFANTS = None              # {hyperonyme_norm : set(entités_norm ayant cet hyperonyme direct)} — index inverse
+
+
+def _enfants() -> dict:
+    global _ENFANTS
+    if _ENFANTS is None:
+        _ENFANTS = {}
+        entites = set(_defs().keys()) | set(_classe().keys())
+        for e in entites:
+            for h in hyperonymes_directs(e):
+                _ENFANTS.setdefault(h, set()).add(e)
+    return _ENFANTS
+
+
+def hyponymes(categorie: str, limite: int = 30, max_prof: int = 6) -> list:
+    """Membres (hyponymes) d'une catégorie, transitivement (« félin » -> chat, lion, tigre… ; « poisson » -> requin,
+    thon…). Descente en largeur dans l'index inverse. Faits/définitions réels uniquement. Liste triée, bornée."""
+    from collections import deque
+    dep = _norm(categorie)
+    vus = {dep}
+    trouve = []
+    q = deque([(dep, 0)])
+    enf = _enfants()
+    while q and len(trouve) < limite * 3:
+        c, d = q.popleft()
+        if d >= max_prof:
+            continue
+        for e in sorted(enf.get(c, ())):
+            if e not in vus:
+                vus.add(e)
+                trouve.append(e)
+                q.append((e, d + 1))
+    return sorted(trouve)[:limite]
 
 
 def genre_commun(x: str, y: str):

@@ -1767,6 +1767,144 @@ def _cap_ontologie(texte: str):
     return None
 
 
+_DEF_RE = re.compile(
+    r"^\s*(?:qu['’ ]?est[- ]ce\s+qu['’e]?\s*(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    r"|c['’ ]?est\s+quoi\s+(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    r"|d[ée]finition\s+d[eu'’]\s*(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    r"|d[ée]finis[- ]?(?:moi\s+)?(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    r"|qu['’ ]?est[- ]ce\s+qu['’e]?\s*)"
+    r"([\wà-ÿ][\wà-ÿ'’\- ]*?)\s*\??\s*$", re.I)
+_DEF_RELS_CACHE = None
+
+
+def _relations_definition() -> list:
+    """Relations de DÉFINITION de la base (definition_*), `definition_nom` en tête (couverture générale)."""
+    global _DEF_RELS_CACHE
+    if _DEF_RELS_CACHE is None:
+        try:
+            rels = [f[:-6] for f in os.listdir(_DOSSIER_LECTEUR)
+                    if f.endswith(".jsonl") and f.startswith("definition_")]
+        except OSError:
+            rels = []
+        _DEF_RELS_CACHE = (["definition_nom"] if "definition_nom" in rels else []) + \
+                          [r for r in rels if r != "definition_nom"]
+    return _DEF_RELS_CACHE
+
+
+def _cap_definition(texte: str):
+    """« C'est quoi X ? » / « qu'est-ce qu'un X ? » / « définition de X » -> définition VÉRIFIÉE de la base
+    (definition_nom : 292k+ noms du Wiktionnaire, puis definition_* de domaine). FAUX=0 : texte réel ou None."""
+    m = _DEF_RE.match(texte)
+    if not m:
+        return None
+    ent = _strip_article(m.group(1).strip())
+    if not ent or len(ent) < 2 or len(ent.split()) > 5:
+        return None
+    try:
+        import est_un as _E
+        d = _E.definition(ent)
+    except Exception:
+        d = None
+    if not d:                                    # repli : definition_* de domaine (lecture directe)
+        ne = _normalise(ent)
+        for rel in _relations_definition():
+            cell = _charge_direct(rel).get(ne)
+            if cell and cell[1]:
+                d = cell[1]
+                break
+    if not d:
+        return None
+    d = str(d).strip()
+    return "%s : %s" % (ent[:1].upper() + ent[1:], d[:1].lower() + d[1:] if d else d)
+
+
+_HYPO_RES = (
+    re.compile(r"\b(?:exemples?|types?|sortes?|esp[eè]ces?|vari[ée]t[ée]s?)\s+d[e'’]\s*(?:la\s|le\s|les\s|l['’])?"
+               r"(.+?)\s*\??\s*$", re.I),
+    re.compile(r"^\s*(?:quels?|quelles?)\s+sont\s+les\s+(.+?)\s*\??\s*$", re.I),
+    re.compile(r"\b(?:cite|citez|liste|listez|nomme|nommez|donne(?:[- ]moi)?|donnez[- ]moi)\b.*?"
+               r"\b(?:des|les|quelques|plusieurs)\s+(.+?)\s*\??\s*$", re.I),
+)
+
+
+def _cap_hyponymes(texte: str):
+    """« Quels sont les félins ? » / « cite des mammifères » / « des exemples de poissons » -> liste d'hyponymes
+    RÉELS de la catégorie (index inverse du graphe is-a). FAUX=0 : entités réelles ou None, jamais inventées."""
+    cat = None
+    for rx in _HYPO_RES:
+        m = rx.search(texte)
+        if m:
+            cat = _strip_article(m.group(1).strip())
+            break
+    if cat:                                          # retire une queue interrogative (« … existe-t-il », « … y a-t-il »)
+        cat = re.sub(r"\s+(?:existe[- ]?t[- ]?ils?|existent[- ]?ils?|y\s+a[- ]?t[- ]?il|il\s+y\s+a|"
+                     r"y\s+en\s+a[- ]?t[- ]?il|connais[- ]?tu|peux[- ]?tu)\b.*$", "", cat, flags=re.I).strip()
+    if not cat or len(cat) < 3 or len(cat.split()) > 3:
+        return None
+    try:
+        import est_un as _E
+    except Exception:
+        return None
+    sing = cat[:-1] if (cat.endswith(("s", "x")) and len(cat) > 4) else cat
+    hypos = _E.hyponymes(sing, limite=15) or _E.hyponymes(cat, limite=15)
+    if not hypos or len(hypos) < 2:
+        return None
+    montre = ", ".join(_E.affiche(h) for h in hypos[:15])
+    suffixe = " …" if len(hypos) >= 15 else ""
+    return "Par exemple : %s%s." % (montre, suffixe)
+
+
+_CAUSE_RE = re.compile(
+    r"\b(?:cause[s]?|provoque\w*|responsable|agent[s]?|declenche\w*|entrain\w*|etiologie|du[e]?\s+a|due\s+a|"
+    r"qu['’ ]?est[- ]ce\s+qui\s+(?:cause|provoque|declenche|donne))\b", re.I)
+_CAUSE_RELS_CACHE = None
+
+
+def _relations_cause() -> list:
+    """Relations causales de la base (cause_* / agent_*), triées : les plus SPÉCIFIQUES d'abord (le pathogène précis
+    avant le type d'agent). Lu une fois."""
+    global _CAUSE_RELS_CACHE
+    if _CAUSE_RELS_CACHE is None:
+        prio = ["agent_pathogene_maladie", "agent_maladie", "cause_type_diabete", "cause_deces"]
+        try:
+            rels = [f[:-6] for f in os.listdir(_DOSSIER_LECTEUR)
+                    if f.endswith(".jsonl") and (f.startswith("cause_") or f.startswith("agent_"))]
+        except OSError:
+            rels = []
+        _CAUSE_RELS_CACHE = [r for r in prio if r in rels] + [r for r in rels if r not in prio]
+    return _CAUSE_RELS_CACHE
+
+
+def _cap_cause(texte: str):
+    """« Quelle est la cause de X ? » / « qu'est-ce qui cause/provoque X ? » / « quel est l'agent de X ? » -> cause
+    VÉRIFIÉE depuis les relations causales de la base (cause_*/agent_*). Transforme l'abstention « pourquoi » en
+    réponse LÀ où la donnée causale existe (maladies surtout). FAUX=0 : fait réel ou None (jamais une cause inventée)."""
+    if not _CAUSE_RE.search(_normalise(texte)):
+        return None
+    ent = _strip_article(_sujet_de(texte))
+    if not ent or len(ent) < 3:            # « qu'est-ce qui CAUSE X » : l'entité suit le verbe, sans « de »
+        m = re.search(r"\b(?:cause|causent|provoque\w*|declenche\w*|entrain\w*|donne\w*|responsable\s+de)\s+"
+                      r"(?:la\s|le\s|les\s|l['’\s]|du\s|des\s|de\s|d['’\s]|un\s|une\s)?(.+?)\s*\??\s*$", texte, re.I)
+        ent = _strip_article(m.group(1)) if m else ent
+    if not ent or len(ent) < 3:
+        return None
+    ne = _normalise(ent)
+    trouve = []
+    for rel in _relations_cause():
+        cell = _charge_direct(rel).get(ne)
+        if cell and cell[1] is not None:
+            trouve.append((rel, cell[1]))
+    if not trouve:
+        return None
+    # le plus SPÉCIFIQUE (1er par priorité) porte la réponse ; on cite le type d'agent en complément s'il diffère
+    principal = trouve[0][1]
+    complement = next((v for r, v in trouve[1:] if _normalise(v) != _normalise(principal)), None)
+    de = "de l'" + ent if re.match(r"[aeiouyhàâäéèêëîïôöùûü]", _normalise(ent)) else "de " + ent
+    if complement:
+        return "La cause %s : %s (%s)." % (de, principal, complement)
+    return "La cause %s : %s." % (de, principal)
+
+
 _RE_INVENTION_COMPO = re.compile(
     r"\b(?:invention|inventions|relations?|attributs?)\b.*?\b(?:manqu|composé|compose|dériv|derivab|nouvelle)\w*\b|"
     r"\b(?:que (?:peut[- ]on|pourrait[- ]on)|qu'?est[- ]ce qu'?on peut) (?:dériver|deriver|inventer|composer)\b|"
@@ -2161,7 +2299,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
