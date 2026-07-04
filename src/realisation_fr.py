@@ -43,6 +43,19 @@ _PAYS_FEM = frozenset(
     "coree indonesie malaisie australie nouvelle-zelande croatie serbie slovenie slovaquie lettonie lituanie".split())
 
 
+# pays / cités-États SANS article défini en français : « Monaco » (pas « le Monaco »), « Cuba », « Malte »… On les
+# rend NUS. La plupart sont des îles ou petits États ; « à/de » se disent aussi sans article (« de Monaco »).
+_PAYS_SANS_ARTICLE = frozenset(
+    "monaco cuba malte chypre madagascar singapour haiti bahrein oman djibouti andorre israel taiwan "
+    "saint-marin sri lanka nauru tuvalu kiribati fidji vanuatu samoa tonga palaos maurice".split()
+    + ["sri lanka", "saint-marin", "costa rica", "porto rico"])
+
+
+def sans_article(pays: str) -> bool:
+    """Le pays se dit-il SANS article défini ? (« Monaco », « Cuba » — pas « le Monaco »)."""
+    return _sa(pays).lower().strip() in _PAYS_SANS_ARTICLE
+
+
 def genre_pays(pays: str):
     """'m' / 'f' / None (pluriel ou inconnu) pour un pays. Table curée d'abord, puis heuristique du -e final."""
     n = _sa(pays).lower().strip()
@@ -72,7 +85,9 @@ def de(mot: str, genre: str = None, continent: bool = False) -> str:
 
 
 def de_pays(pays: str) -> str:
-    """« de <pays> » avec le bon article : du Nigéria, de la France, des Pays-Bas, d'Italie."""
+    """« de <pays> » avec le bon article : du Nigéria, de la France, des Pays-Bas, d'Italie, de Monaco (nu)."""
+    if sans_article(pays):
+        return "de " + pays
     return de(pays, genre=genre_pays(pays))
 
 
@@ -93,6 +108,8 @@ def article(mot: str, genre: str = None, majuscule: bool = False) -> str:
 
 
 def article_pays(pays: str, majuscule: bool = False) -> str:
+    if sans_article(pays):                # « Monaco », « Cuba » — jamais « le Monaco »
+        return pays
     return article(pays, genre=genre_pays(pays), majuscule=majuscule)
 
 
