@@ -199,8 +199,29 @@ def _val_verifiee(ia, verifie, requete: str, rel_head: str = None, entite: str =
     except Exception:
         pass
     if rel_head and entite:
-        return _val_par_famille(ia, rel_head, entite)
+        v = _val_par_famille(ia, rel_head, entite)
+        if v is not None:
+            return v
+        return _lookup_direct(rel_head, entite)       # repli INSENSIBLE AUX ACCENTS (« Nigéria »≡« Nigeria »)
     return None
+
+
+def _lookup_direct(rel_head: str, entite: str):
+    """Lookup « rel_head de entite » INSENSIBLE AUX ACCENTS/CASSE, lu directement des .jsonl (contourne les
+    incohérences de nommage entre relations : « Nigéria » vs « Nigeria »). FAUX=0 : normalisation d'accent =
+    IDENTITÉ préservée (pas du flou Levenshtein) ; valeur renvoyée seulement si UNIQUE across la famille."""
+    h = _normalise(rel_head)
+    ne = _normalise(entite)
+    vals = set()
+    try:
+        for rel in _relations():
+            if rel == h or rel.split("_")[0] == h or rel.startswith(h + "_"):
+                cell = _charge_direct(rel).get(ne)
+                if cell and cell[1] is not None:
+                    vals.add(cell[1])
+    except Exception:
+        return None
+    return next(iter(vals)) if len(vals) == 1 else None
 
 
 def _compose_relations(texte: str):
@@ -225,6 +246,87 @@ def _compose_relations(texte: str):
     if not v:
         return None
     return "%s  (en composant : %s de %s = %s, puis %s de %s)" % (v, inner, z, e, outer, e)
+
+
+# ————————————————————— RAISONNEMENT COMPOSITIONNEL N-SAUTS (pensée machine : chaîne EXACTE + dérivation) —————————————
+# Généralise `_compose_relations` (2 sauts, regex) à une PROFONDEUR ARBITRAIRE : « la monnaie de la capitale du pays
+# de <X> », etc. Descente récursive : on épluche la relation de TÊTE, on résout récursivement le RESTE en une entité
+# VÉRIFIÉE, puis on applique la tête. FAUX=0 : chaque maillon est un lookup vérifié ; un maillon manquant -> abstention
+# (jamais une composition inventée). La force machine : la dérivation complète est MONTRÉE et re-vérifiable.
+# Profondeur : PAS de limite conceptuelle (pensée machine). La récursion opère sur le « reste » après un connecteur,
+# qui RACCOURCIT strictement à chaque saut -> terminaison naturelle garantie. Ce plafond n'est qu'un garde-fou très
+# large contre une entrée pathologique ; aucune vraie question ne l'approche.
+_MAX_SAUTS = 64
+_CONNECTEUR_RE = re.compile(r"\s+(?:de\s+la|de\s+l['’]|du|des|de|d['’])\s+", re.I)
+# habillage interrogatif à retirer avant de parser l'expression nominale composée.
+_HABILLAGE_RE = re.compile(
+    r"^\s*(?:quel(?:le)?s?\s+(?:est|sont)\s+|qu['e ]?\s*est[- ]?ce\s+que\s+|c['e ]?\s*est\s+quoi\s+|"
+    r"c['e ]?\s*est\s+|donne(?:s|z)?[- ]?moi\s+|dis[- ]?moi\s+|peux[- ]?tu(?:\s+me)?\s+dire\s+|"
+    r"sais[- ]?tu\s+|connais[- ]?tu\s+)+", re.I)
+
+
+def _decoupe_relation(expr: str):
+    """Sépare « REL de RESTE » au PREMIER connecteur tel que REL (article retiré) soit une TÊTE de relation connue.
+    Si le 1er segment n'est pas une relation (il fait partie d'une entité multi-mot), on essaie le connecteur suivant.
+    Renvoie (rel, reste) ou None."""
+    heads = _attr_heads()
+    m = _CONNECTEUR_RE.search(expr)
+    while m:
+        rel = _strip_article(expr[:m.start()]).strip()
+        reste = expr[m.end():].strip()
+        if rel and _normalise(rel) in heads and reste:
+            return rel, reste
+        m = _CONNECTEUR_RE.search(expr, m.start() + 1)
+    return None
+
+
+def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
+    """Résout une expression nominale en (entité_ou_valeur, [étapes_de_dérivation]). Récursif sur « REL de SUBEXPR ».
+    Base : superlatif (« le plus haut sommet de France ») ou entité littérale. FAUX=0 : maillon vérifié ou (None, None)."""
+    expr = expr.strip(" ?.!\"'«»")
+    if prof > _MAX_SAUTS or not expr:
+        return None, None
+    dec = _decoupe_relation(expr)
+    if dec:
+        rel, reste = dec
+        sous_val, sous_steps = _resout_noeud(reste, ia, verifie, prof + 1)   # résout le RESTE en une entité vérifiée
+        if sous_val is not None:
+            v = _val_verifiee(ia, verifie, "%s de %s" % (rel, sous_val), rel_head=rel, entite=sous_val)
+            if v is not None:
+                return v, (sous_steps or []) + ["%s de %s = %s" % (rel, sous_val, v)]
+        v = _val_verifiee(ia, verifie, "%s de %s" % (rel, reste), rel_head=rel, entite=reste)  # RESTE = entité littérale
+        if v is not None:
+            return v, ["%s de %s = %s" % (rel, reste, v)]
+        return None, None
+    # base : feuille superlative -> entité. D'abord l'ARGMAX borné (« le pays le plus peuplé d'Afrique » -> Nigeria,
+    # comparaison de faits réels), sinon la relation superlative explicite du moteur, sinon entité littérale.
+    arg = _superlatif_argmax(expr)
+    if arg:
+        return _strip_article(str(arg[0])), [arg[1]]
+    try:
+        sup = importlib.import_module("resolution").resout_superlatif(expr)
+    except Exception:
+        sup = None
+    if sup:
+        return _strip_article(str(sup)), ["%s = %s" % (expr, sup)]
+    return _strip_article(expr), []
+
+
+def _compose_relations_n(question: str):
+    """RAISONNEMENT COMPOSITIONNEL N-SAUTS : « population de la capitale de la France » -> valeur + dérivation
+    complète montrée. Exige ≥2 maillons de composition (sinon le lookup simple suffit). FAUX=0 : chaque maillon
+    est vérifié ; abstention si un maillon manque. C'est la profondeur EXACTE qu'un LLM ne peut que deviner."""
+    q = _HABILLAGE_RE.sub("", question).strip(" ?.!\"'«»")
+    if not q:
+        return None
+    ia, verifie = _charge_ia()
+    if not ia:
+        return None
+    val, steps = _resout_noeud(q, ia, verifie, 0)
+    if val is not None and steps and len(steps) >= 2:
+        return "%s  (en composant : %s)" % (val, ", puis ".join(steps))
+    return None
+
 
 # Cache du module lourd (chargé au plus une fois, à la première vraie demande en mode IA pleine).
 _IA = None
@@ -333,6 +435,113 @@ def _charge_reverse(relation: str) -> dict:
     res = {vn: (disp, sorted(set(ents))) for vn, (disp, ents) in par_val.items()}
     _REVERSE_CACHE[relation] = res
     return res
+
+
+_DIRECT_CACHE: dict = {}      # relation -> { entite_normalisée : (entite_affichée, valeur_brute) }
+
+
+def _charge_direct(relation: str) -> dict:
+    """Index DIRECT entité -> valeur d'une relation (lu une fois du .jsonl brut). Sert à l'argmax superlatif
+    (lire l'attribut de chaque candidat sans passer par le moteur lourd)."""
+    if relation in _DIRECT_CACHE:
+        return _DIRECT_CACHE[relation]
+    d: dict = {}
+    chemin = os.path.join(_DOSSIER_LECTEUR, relation + ".jsonl")
+    try:
+        with open(chemin, encoding="utf-8") as fh:
+            for ligne in fh:
+                ligne = ligne.strip()
+                if not ligne:
+                    continue
+                obj = json.loads(ligne)
+                if "_relation" in obj:
+                    continue
+                e, v = obj.get("entite"), obj.get("valeur")
+                if e is not None and v is not None:
+                    d[_normalise(e)] = (e, v)
+    except (OSError, ValueError):
+        d = {}
+    _DIRECT_CACHE[relation] = d
+    return d
+
+
+# Adjectif superlatif -> relations d'attribut candidates (1re existante retenue). Domaine-extensible.
+_ADJ_ATTR = {
+    "peuple": ("population_pays",), "peuplee": ("population_pays",), "peuples": ("population_pays",),
+    "grand": ("superficie_pays", "population_pays"), "grande": ("superficie_pays", "population_pays"),
+    "vaste": ("superficie_pays",), "etendu": ("superficie_pays",), "etendue": ("superficie_pays",),
+    "petit": ("superficie_pays",), "petite": ("superficie_pays",),
+    "riche": ("pib_pays", "pib_habitant_pays"),
+}
+# relations d'APPARTENANCE candidates par type d'entité (zone -> membres). 1re dont le reverse contient la zone.
+_APPARTENANCE = {"pays": ("continent", "region_pays"), "ville": ("pays_ville",), "montagne": ("continent_montagne",)}
+
+
+def _nombre(v):
+    """Extrait un flottant d'une valeur brute (« 43844111 », « 1 234,5 » -> 43844111.0 / 1234.5), ou None."""
+    try:
+        s = re.sub(r"[^\d,.-]", "", str(v)).replace(" ", "")
+        if s.count(",") == 1 and s.count(".") == 0:
+            s = s.replace(",", ".")
+        else:
+            s = s.replace(",", "")
+        return float(s)
+    except (ValueError, TypeError):
+        return None
+
+
+def _superlatif_argmax(expr: str):
+    """FEUILLE SUPERLATIVE par ARGMAX BORNÉ : « le pays le plus peuplé d'Afrique » -> Nigeria, en comparant TOUS les
+    membres énumérés (les pays d'Afrique) sur un attribut vérifié (population). SOUND tant que l'ensemble est complet :
+    on ne devine pas, on COMPARE des faits réels et on peut montrer le décompte. Renvoie (entité, étape) ou None."""
+    nz = _normalise(expr)
+    toks = nz.split()
+    if "plus" not in toks and "moins" not in toks:
+        return None
+    maximise = "moins" not in toks
+    # LEFT (le SN superlatif) de ZONE
+    m = re.search(r"^(.*?)\s+(?:de la|de l|du|des|de|d)\s+(.+)$", nz)
+    if not m:
+        return None
+    gauche, zone = m.group(1).strip(), m.group(2).strip()
+    gtoks = [w for w in gauche.split() if w not in ("le", "la", "les", "l", "plus", "moins", "un", "une")]
+    # adjectif = 1er token juste après plus/moins ; type = un token connu d'appartenance
+    idx = next((i for i, w in enumerate(gauche.split()) if w in ("plus", "moins")), -1)
+    apres = gauche.split()[idx + 1:] if idx >= 0 else []
+    adj = next((w for w in apres if w in _ADJ_ATTR), None) or next((w for w in gtoks if w in _ADJ_ATTR), None)
+    typ = next((w for w in gtoks if w in _APPARTENANCE), None)
+    if not adj or not typ:
+        return None
+    attr_rel = next((r for r in _ADJ_ATTR[adj] if _charge_direct(r)), None)
+    if not attr_rel:
+        return None
+    # membres = entités du type dont l'appartenance == zone (reverse-lookup)
+    membres = None
+    for rel_app in _APPARTENANCE[typ]:
+        rev = _charge_reverse(rel_app)
+        hit = rev.get(zone) or next((v for k, v in rev.items() if k == zone), None)
+        if hit and hit[1]:
+            membres = hit[1]
+            break
+    if not membres:
+        return None
+    attr = _charge_direct(attr_rel)
+    best = None
+    n_compares = 0
+    for ent in membres:
+        cell = attr.get(_normalise(ent))
+        if not cell:
+            continue
+        x = _nombre(cell[1])
+        if x is None:
+            continue
+        n_compares += 1
+        if best is None or (x > best[1] if maximise else x < best[1]):
+            best = (cell[0], x)
+    if not best or n_compares < 2:
+        return None
+    sens = "plus" if maximise else "moins"
+    return best[0], "%s = %s (%s %s sur %d %s comparés)" % (expr, best[0], sens, adj, n_compares, typ)
 
 
 def _dist(a: str, b: str) -> int:
@@ -665,6 +874,75 @@ def _resout_partie(p: str):
     return None
 
 
+# INTENTION DE CALCUL explicite : « combien font/fait/valent/vaut X », « calcule X », « X égale/= ? ». Quand elle est
+# présente, le « x » entre deux nombres N'EST PLUS ambigu (l'utilisateur DEMANDE une multiplication) -> on le lit comme
+# « × ». Sans cette intention, « x » reste un simple séparateur (« relais 4 x 100 m ») et n'est PAS converti (#82).
+_CALC_INTENT = re.compile(
+    r"\b(?:combien\s+(?:font|fait|valent|vaut|ca\s+fait)|calcul\w*|resou\w+|multipli\w+|"
+    r"additionn\w+|soustrai\w+|divis\w+)\b|=\s*\??\s*$|\begale?\s*\??\s*$")
+
+
+def _reponse_calcul(texte: str) -> str | None:
+    """CALCUL DIRECT mono-question (« Combien font 4x10 ? » -> « 40 »). Tenté AVANT le repli web pour qu'une
+    intention de calcul claire obtienne son résultat EXACT plutôt qu'une page web sans rapport. FAUX=0 : on ne
+    renvoie que le verdict VÉRIFIÉ du moteur (entiers exacts) ; sinon None (abstention honnête, pas d'arrondi).
+    Le « x » n'est converti en « × » QUE si l'intention de calcul est explicite (sinon « 4 x 100 » reste intact)."""
+    if not _CALC_INTENT.search(_normalise(texte)):
+        return None
+    # « x »/« × » collés ou espacés entre deux nombres -> « * » ESPACÉ (resout_arithmetique exige des espaces).
+    p_math = re.sub(r"(?<=\d)\s*[x×]\s*(?=\d)", " * ", texte)
+    try:
+        import fonction_nl
+        from base_faits import VERIFIE
+        st, val, _ = fonction_nl.resout_arithmetique(p_math)
+        if st == VERIFIE and val is not None:
+            return str(val)
+    except Exception:
+        pass
+    try:
+        import classifieur_bornage as _CB
+        v = _CB._juge_arith(_CB._norm(p_math))
+        if v is not None:
+            return str(int(v) if isinstance(v, float) and v.is_integer() else v)
+    except Exception:
+        pass
+    return None
+
+
+def _ressemble_calcul(texte: str) -> bool:
+    """La question ressemble-t-elle à un CALCUL non résolu (intention de calcul + au moins deux nombres) ? Sert de
+    GARDE au repli web : on n'envoie PAS une opération arithmétique au métamoteur (qui renverrait une page produit
+    contenant « 4x10 » au lieu d'abstenir). Purement protecteur : ne supprime jamais une vraie réponse factuelle."""
+    if not _CALC_INTENT.search(_normalise(texte)):
+        return False
+    return len(re.findall(r"\d+", texte)) >= 2
+
+
+def _reformule_synonymes(texte: str, conv_id: str | None) -> str | None:
+    """Repli PARAPHRASE : sur échec du lookup exact, substitue un mot INCONNU de la base par un synonyme VALIDÉ
+    (réseau JeuxDeMots) et re-vérifie. Renvoie le fait vérifié préfixé du signal de reformulation, ou None.
+    FAUX=0 : la réponse reste un fait VÉRIFIÉ ; on ne substitue jamais un mot standard (garde anti-mauvais-sens) ;
+    on signale honnêtement le mot compris. Ne tourne qu'en mode plein (base chargée)."""
+    try:
+        import synonymes as _SYN
+    except Exception:
+        return None
+    if not _SYN.disponible():
+        return None
+    _vn, _pi, valides = _guerison()
+    noms, verbes = valides if valides else (set(), set())
+    connu = (lambda mn: mn in noms or _fait_forme_verbale(mn, verbes)) if (noms or verbes) else None
+    try:
+        variantes = _SYN.variantes_requete(texte, k_syn=3, max_variantes=8, est_connu=connu)
+    except Exception:
+        return None
+    for var, _orig, syn in variantes:
+        rep = _connaissance_verifiee(var, conv_id)
+        if rep and not _reponse_incoherente_mesure(var, rep):
+            return "%s  (en comprenant « %s »)" % (rep, syn)
+    return None
+
+
 def _multi_questions(texte: str, conv_id: str | None) -> str | None:
     """MULTI-DEMANDES dans une seule phrase (« capitale de la France ET nombre de continents ET 15 fois 3 »).
     NON-BLOQUANT : répond à CHAQUE sous-partie indépendamment, dit honnêtement « je ne l'ai pas » pour les inconnues,
@@ -891,11 +1169,11 @@ def _reponse_sociale(texte: str):
         return " ".join(parts)
     parts = []
     if prenom: parts.append(("Bonjour %s, enchantée \U0001F642." % prenom) if flags["salut"] else ("Enchantée, %s \U0001F642." % prenom))
-    elif flags["salut"]: parts.append("Bonjour !")
-    if flags["cava"]: parts.append("Je vais très bien, merci\u202f\U0001F642.")
+    elif flags["salut"]: parts.append(_varie("salut", texte, "Bonjour !"))
+    if flags["cava"]: parts.append(_varie("cava", texte, "Je vais très bien, merci 🙂."))
     if not prenom and (flags["nom"] or flags["ident"]): parts.append("Je m'appelle Provara.")
     if flags["merci"] and not parts: parts.append("Avec plaisir !")
-    parts.append("Pose-moi une question et je te réponds avec ce que je sais.")
+    parts.append(_varie("invite", texte, "Pose-moi une question et je te réponds avec ce que je sais."))
     return " ".join(parts)
 
 
@@ -1092,10 +1370,32 @@ _MSG_RAPPEL_PREFIXE = "D'après ce que tu m'as dit : "
 _MSG_DYM_PREFIXE = "Je ne suis pas sûr du mot « "
 
 
+def _varie(cle: str, graine: str, defaut: str) -> str:
+    """Variante naturelle (module `formulation`) pour l'intention `cle`, ou `defaut` si indisponible. Déterministe."""
+    try:
+        import formulation
+        v = formulation.varie(cle, graine)
+        return v or defaut
+    except Exception:
+        return defaut
+
+
+def _variantes(cle: str, defaut) -> list:
+    try:
+        import formulation
+        opts = formulation.variantes(cle)
+        return opts or [defaut]
+    except Exception:
+        return [defaut]
+
+
 def est_fallback(s: str) -> bool:
     """Le texte est-il un message d'ABSENCE (rien trouvé / simple accusé de réception) ? Sert à l'enveloppe
-    d'assistant_nl (porte unique) pour distinguer une vraie réponse d'un aveu d'ignorance."""
-    return isinstance(s, str) and (s.startswith(_MSG_INCONNU_PREFIXE) or s == _MSG_NOTE or s == _MSG_WEB_COUPE)
+    d'assistant_nl (porte unique) pour distinguer une vraie réponse d'un aveu d'ignorance. Robuste aux VARIANTES
+    de formulation (l'accusé « noté » a plusieurs libellés désormais)."""
+    return isinstance(s, str) and (
+        s.startswith(_MSG_INCONNU_PREFIXE) or s == _MSG_WEB_COUPE
+        or s == _MSG_NOTE or s in _variantes("note", _MSG_NOTE))
 
 
 def _build_id() -> str:
@@ -1418,6 +1718,55 @@ def _cap_langue(texte: str, lang: str = None):
         return None
 
 
+_ONTO_ESTUN_RE = re.compile(
+    r"\b([a-zà-ÿ][\wà-ÿ'’\-]{2,})\s+est[- ](?:il|elle|ce)\s+(?:un|une|des|le|la|l['’]|un[e]?\s+sorte\s+de)\s+"
+    r"([a-zà-ÿ][\wà-ÿ'’\-]{2,})\b", re.I)
+_ONTO_ESTUN2_RE = re.compile(
+    r"\best[- ]ce\s+qu['’e]?\s*(?:un |une |le |la |l['’])?([a-zà-ÿ][\wà-ÿ'’\-]{2,})\s+est\s+"
+    r"(?:un|une|le|la|l['’])\s+([a-zà-ÿ][\wà-ÿ'’\-]{2,})\b", re.I)
+_ONTO_COMMUN_RE = re.compile(
+    r"(?:en\s+commun|point\s+commun\s+(?:entre|de|des))\b.*?\b([a-zà-ÿ][\wà-ÿ'’\-]{2,})\s+et\s+"
+    r"(?:le\s+|la\s+|les\s+|l['’]|un\s+|une\s+)?([a-zà-ÿ][\wà-ÿ'’\-]{2,})\b", re.I)
+
+
+def _cap_ontologie(texte: str):
+    """RAISONNEMENT is-a conversationnel (« un chat est-il un mammifère ? » -> « Oui, … »; « qu'ont en commun le
+    chat et le requin ? » -> « animal »), depuis la source SAINE `est_un` (classe_* curées + genre des définitions).
+    FAUX=0 : « Oui » seulement si dérivable ; jamais de « Non » affirmé (monde ouvert) — on énonce plutôt le vrai
+    genre connu. Le réseau de foule (JeuxDeMots) N'est PAS utilisé ici (trop bruité pour une assertion)."""
+    try:
+        import est_un as _E
+    except Exception:
+        return None
+    m = _ONTO_ESTUN_RE.search(texte) or _ONTO_ESTUN2_RE.search(texte)
+    if m:
+        x, y = m.group(1).strip(), m.group(2).strip()
+        if _normalise(x) == _normalise(y):
+            return None
+        if _E.est_un(x, y):
+            chaine = _E.chaine_isa(x)
+            ny = _normalise(y)
+            chemin = [x]
+            for h in chaine:
+                chemin.append(_E.affiche(h))
+                if _normalise(h) == ny:
+                    break
+            return "Oui — %s." % " → ".join(chemin) if len(chemin) >= 2 else "Oui."
+        genre = _E.chaine_isa(x)
+        if genre:                       # x est couvert : on énonce ce qu'on SAIT plutôt qu'un « Non » (monde ouvert)
+            return ("D'après mes données, %s est %s — je ne peux pas le rattacher à « %s »."
+                    % (x, _E.affiche(genre[0]), y))
+        return None
+    m = _ONTO_COMMUN_RE.search(texte)
+    if m:
+        x, y = _strip_article(m.group(1).strip()), _strip_article(m.group(2).strip())
+        commun = _E.genre_commun(x, y)
+        if commun:
+            return "Leur point commun : %s (les deux en sont une sorte)." % _E.affiche(commun)
+        return None
+    return None
+
+
 _RE_INVENTION_COMPO = re.compile(
     r"\b(?:invention|inventions|relations?|attributs?)\b.*?\b(?:manqu|composé|compose|dériv|derivab|nouvelle)\w*\b|"
     r"\b(?:que (?:peut[- ]on|pourrait[- ]on)|qu'?est[- ]ce qu'?on peut) (?:dériver|deriver|inventer|composer)\b|"
@@ -1582,7 +1931,164 @@ def _cap_audit_code(texte: str):
     return "\n".join(lignes)
 
 
+_GUERISON_CACHE = None            # (vocab_norm, phon_index, mots_valides) — construit une fois
+
+
+def _charge_mots_valides() -> set:
+    """Ensemble de mots FR valides (lexique embarqué ~19k : mot/classe/genre) pour la GARDE anti-correction :
+    on ne « corrige » jamais un mot qui EST déjà un vrai mot (« pomme », « ville », « vase » restent intacts)."""
+    mots: set = set()
+    try:
+        import lexique_fr as _LF
+        base = os.path.dirname(os.path.abspath(_LF.__file__))
+    except Exception:
+        base = os.path.join(_HARNAIS, "src")
+    for cand in (os.path.join(base, "lexique_fr_pos.jsonl"), os.path.join(_HARNAIS, "src", "lexique_fr_pos.jsonl")):
+        try:
+            with open(cand, encoding="utf-8") as fh:
+                for ligne in fh:
+                    ligne = ligne.strip()
+                    if not ligne:
+                        continue
+                    try:
+                        o = json.loads(ligne)
+                    except ValueError:
+                        continue
+                    m = o.get("mot")
+                    if m:
+                        mots.add(_normalise(m))
+            if mots:
+                break
+        except OSError:
+            continue
+    return mots
+
+
+def _charge_verbes() -> set:
+    """Infinitifs FR (~6,5k, `verbes_fr.txt`) — pour reconnaître les formes CONJUGUÉES comme des mots valides
+    (le lexique 19k ne porte que des lemmes -> « divise »/« calcule » sinon non protégés et corrompus à tort)."""
+    verbes: set = set()
+    try:
+        import lexique_fr as _LF
+        base = os.path.dirname(os.path.abspath(_LF.__file__))
+    except Exception:
+        base = os.path.join(_HARNAIS, "src")
+    for cand in (os.path.join(base, "verbes_fr.txt"), os.path.join(_HARNAIS, "src", "verbes_fr.txt")):
+        try:
+            with open(cand, encoding="utf-8") as fh:
+                for ligne in fh:
+                    v = _normalise(ligne.strip())
+                    if v:
+                        verbes.add(v)
+            if verbes:
+                break
+        except OSError:
+            continue
+    return verbes
+
+
+def _fait_forme_verbale(mn: str, verbes: set) -> bool:
+    """`mn` (normalisé) est-il une forme conjuguée d'un infinitif connu ? Heuristique de reconstruction du lemme
+    (1er groupe surtout : « divise/divises/divisent/divisé/divisons/divisez » -> « diviser »)."""
+    if not verbes or len(mn) < 4:
+        return False
+    cands = {mn, mn + "r", mn + "er", mn + "ir", mn + "re"}
+    for suf, rempl in (("e", "er"), ("es", "er"), ("ent", "er"), ("ons", "er"), ("ez", "er"),
+                       ("e", "ir"), ("ee", "er"), ("ees", "er"), ("es", "ir")):
+        if mn.endswith(suf):
+            cands.add(mn[: len(mn) - len(suf)] + rempl)
+    return any(c in verbes for c in cands)
+
+
+def _guerison():
+    """Prépare (une fois) l'index de correction : vocabulaire FERMÉ (social + interrogatifs + têtes de relations)
+    et l'ensemble des mots FR valides. Renvoie (vocab_norm, phon_index, mots_valides) ou (None, None, None)."""
+    global _GUERISON_CACHE
+    if _GUERISON_CACHE is None:
+        try:
+            import correction_ortho as _CO
+        except Exception:
+            _GUERISON_CACHE = (None, None, None)
+            return _GUERISON_CACHE
+        vocab: set = set()
+        vocab |= _SALUT | _MERCI | set(_INDICES_DEMANDE)
+        for loc in (_LOC_CAVA + _LOC_ADIEU + _NOM_PHRASES + _IDENT_PHRASES):
+            vocab |= {w for w in loc.split() if len(w) >= 3}
+        try:                                            # têtes de relations réelles (capitale, monnaie, langue…)
+            vocab |= {h for h in _attr_heads() if len(h) >= 4}
+        except Exception:
+            pass
+        vocab |= set("bonjour salut bonsoir coucou merci comment pourquoi combien quand quel quelle quels quelles "
+                     "capitale monnaie population langue president habitant continent drapeau".split())
+        vn, pi = _CO.construit_index(vocab)
+        _GUERISON_CACHE = (vn, pi, (_charge_mots_valides(), _charge_verbes()))
+    return _GUERISON_CACHE
+
+
+def _guerit_entree(texte: str) -> str:
+    """Corrige les fautes de frappe de l'entrée vers un vocabulaire FERMÉ (social/interrogatif/têtes de relations),
+    par FUSION distance d'édition (Damerau) ⊕ clé phonétique française, SANS jamais toucher un mot FR valide ni une
+    entité. « commen vas-tu » -> « comment vas-tu ». FAUX=0 : ne rend lisible que l'INTENTION, ne change aucun fait."""
+    vn, pi, valides = _guerison()
+    if not vn:
+        return texte
+    try:
+        import correction_ortho as _CO
+    except Exception:
+        return texte
+    noms, verbes = valides if valides else (set(), set())
+    gate = (lambda mn: mn in noms or _fait_forme_verbale(mn, verbes)) if (noms or verbes) else None
+    return _CO.guerit(texte, vn, pi, gate)
+
+
+_PROFONDEUR: dict = {}            # conv_id -> nombre de tours (mesure de la profondeur de conversation)
+# INVITES/remplissage à retirer dès qu'on n'est plus au tout premier tour : un pair ne répète pas « pose-moi une
+# question » à chaque réponse. La concision N'EST PAS la brièveté (on ne coupe jamais un contenu utile) — c'est le
+# ZÉRO DÉCHET : on enlève le méta conversationnel superflu, on garde tout le fond.
+_INVITES = (
+    " Pose-moi une question et je te réponds avec ce que je sais.",
+    " Pose-moi une question et je réponds avec ce que je sais.",
+    "Pose-moi une question et je te réponds avec ce que je sais.",
+    "Pose-moi une question et je réponds avec ce que je sais.",
+)
+_DEMANDE_PROFONDEUR = re.compile(
+    r"\b(explique|expliques|detaille|detailles|developpe|approfondi\w*|en detail|precis\w*|pourquoi|"
+    r"comment (?:ca|cela) (?:marche|fonctionne)|dis[- ]?m'?en (?:plus|davantage)|elabore)\b", re.I)
+
+
+def _veut_profondeur(texte: str) -> bool:
+    """Le CONTEXTE réclame-t-il une réponse DÉVELOPPÉE (question de raison/explication, demande explicite de détail) ?
+    Sinon, à profondeur de conversation avancée, on privilégie la réponse la plus dense et directe."""
+    return bool(_DEMANDE_PROFONDEUR.search(_normalise(texte)))
+
+
+def _ajuste_registre(reponse: str, conv_id: str, profondeur: int) -> str:
+    """Adapte le REGISTRE de la réponse au contexte : retire le remplissage conversationnel (invites répétées) dès
+    qu'on a dépassé le 1er tour. FAUX=0 / anti-perte : ne touche JAMAIS au contenu factuel, seulement au méta superflu."""
+    if not reponse:
+        return reponse
+    if profondeur >= 1:
+        invites = list(_INVITES)
+        for v in _variantes("invite", ""):          # retire aussi les VARIANTES de formulation de l'invite
+            invites.append(" " + v)
+            invites.append(v)
+        for inv in invites:
+            reponse = reponse.replace(inv, "")
+        reponse = reponse.strip()
+    return reponse
+
+
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
+    """Enveloppe : calcule la réponse du noyau puis ADAPTE son registre au contexte (concision = zéro déchet ;
+    profondeur allouée selon le besoin). Suit la profondeur de conversation par `conv_id`."""
+    reponse = _repond_noyau(memoire, conv_id, texte, pleine=pleine)
+    profondeur = _PROFONDEUR.get(conv_id, 0)
+    reponse = _ajuste_registre(reponse, conv_id, profondeur)
+    _PROFONDEUR[conv_id] = profondeur + 1
+    return reponse
+
+
+def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     """Réponse SOUND au message `texte`. `pleine`=True autorise l'étage 2 (lourd). N'INVENTE JAMAIS.
 
     IMPORTANT — appeler AVANT d'indexer le message courant (sinon l'assistant se citerait sa propre question).
@@ -1602,7 +2108,7 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         q2 = None
     if q2 is not None:
         if q2 == "":
-            return _MSG_REFUS
+            return _varie("refus", t, _MSG_REFUS)
         t = q2
     #   (0conf) CORRECTION UTILISATEUR (AUTORITÉ) : si l'utilisateur a déjà corrigé cette question, sa réponse
     #       fait foi (il est le juge réel) et PRIME sur tout — connaissance, web, mémoire. FAUX=0 : appliquée
@@ -1614,6 +2120,11 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     _ban = _cap_confiance(t)
     if _ban:
         return _ban
+    #   (0soin) GUÉRISON ORTHOGRAPHIQUE de l'entrée (fusion Damerau ⊕ phonétique FR, vocabulaire FERMÉ) : rend
+    #       l'intention lisible malgré les fautes AVANT tout matching (« commen vas-tu » -> « comment vas-tu »,
+    #       « kapitale de la France » -> « capitale de la France »). FAUX=0 : ne corrige que vers des mots-outils /
+    #       interrogatifs / têtes de relations, jamais une entité ni un mot FR valide -> aucun fait altéré.
+    t = _guerit_entree(t)
     #   (0) POLITESSE (salutation/merci/adieu/« ça va ») — réponse polie immédiate, AVANT tout traitement factuel.
     #       Ne se déclenche que si le message est ENTIÈREMENT de la politesse (sinon la vraie question passe).
     poli = _politesse(t)
@@ -1625,7 +2136,7 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     #       par le pipeline normal, inchangé.
     social, reste = _detache_salutation(t)
     if social and reste:
-        rep_reste = repond(memoire, conv_id, reste, pleine=pleine)
+        rep_reste = _repond_noyau(memoire, conv_id, reste, pleine=pleine)
         social = social.replace(" Pose-moi une question et je te réponds avec ce que je sais.", "")
         return "%s\n\n%s" % (social, rep_reste) if rep_reste else social
     #   (0bis) MÉTA sur l'assistant (« Qui es-tu ? », « Que sais-tu faire ? ») — réponse honnête fixe, AVANT le
@@ -1650,7 +2161,7 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
@@ -1699,7 +2210,7 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     #   si un maillon manque. (Avant, on refusait tout — « monnaie de la capitale de la France » restait sans
     #   réponse ; désormais « population de la capitale de la France » = population de Paris, composée.)
     if pleine and not _negation_bloquante(t) and _est_relation_imbriquee(t) and not _est_causale(t):
-        _comp = _compose_relations(t)
+        _comp = _compose_relations_n(t) or _compose_relations(t)     # N-sauts d'abord ; 2-sauts en repli
         if _comp:
             return _comp
     #   Les composées « et » ne sont PAS imbriquées (attrs séparés par « et », pas « de ») -> elles passent par _multi.
@@ -1712,6 +2223,24 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         #   (1a) RAISONNEMENT (superlatif via relation explicite) — AVANT le lookup, pour donner la VRAIE réponse
         #        (« la plus haute montagne de France » -> mont Blanc) plutôt qu'un HORS. SOUND (pas d'argmax incomplet).
         rep = _raisonnement(t)
+        if rep:
+            return rep
+        #   (1a-comp) COMPOSITION N-SAUTS — tentée aussi ICI (pas seulement quand `_est_relation_imbriquee` est
+        #        vrai) : une chaîne à FEUILLE SUPERLATIVE (« la capitale du pays le plus peuplé d'Afrique ») n'est pas
+        #        détectée comme imbriquée (l'interne n'est pas suivi de « de »). Le résolveur s'auto-protège (≥2
+        #        maillons VÉRIFIÉS), donc l'essayer largement est sûr : une question simple -> None.
+        rep = _compose_relations_n(t)
+        if rep:
+            return rep
+        #   (1a-sup) SUPERLATIF par ARGMAX BORNÉ, en question DIRECTE (« le pays le plus peuplé d'Afrique » ->
+        #        Nigéria). Le résolveur compositionnel l'atteint déjà comme FEUILLE ; ici on sert la question nue.
+        #        SOUND : compare des faits réels sur un ensemble énuméré, jamais une devinette.
+        _arg = _superlatif_argmax(_HABILLAGE_RE.sub("", t).strip(" ?.!\"'«»"))
+        if _arg:
+            return _arg[0]
+        #   (1a-calc) CALCUL DIRECT (« Combien font 4x10 ? » -> 40) : intention de calcul explicite -> résultat
+        #        EXACT, AVANT le repli web (sinon une opération partait au métamoteur -> page produit hors-sujet).
+        rep = _reponse_calcul(t)
         if rep:
             return rep
         #   (1a'') LOCALISATION « où se trouve X » / « coordonnées de X » -> coords ingérées (capitales + villes).
@@ -1733,6 +2262,12 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         rep = _connaissance_verifiee(t, conv_id)
         if rep and _reponse_incoherente_mesure(t, rep):
             rep = None        # question de mesure (poids/taille…) mais réponse non numérique = mauvaise question -> HORS
+        if rep:
+            return rep
+        #   (1b-syn) PARAPHRASE : le lookup exact a échoué -> reformuler un mot INCONNU par un synonyme validé
+        #        (« bagnole »->« voiture », « toubib »->« médecin ») et re-vérifier. FAUX=0 : on ne renvoie qu'un
+        #        fait VÉRIFIÉ, et on SIGNALE la reformulation (honnêteté). Ne substitue jamais un mot standard.
+        rep = _reformule_synonymes(t, conv_id)
         if rep:
             return rep
         #   (1b) REQUÊTE INVERSE « les X d'un pays » (que le lookup par clé ne sait pas faire).
@@ -1767,7 +2302,8 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
 
     #   (1·web) RECHERCHE STRUCTURÉE (opt-in réseau IA_WEB=1) : le lecteur n'a rien -> source fiable Wikidata,
     #           réponse VÉRIFIÉE + ATTRIBUÉE. Avant la mémoire pour qu'une demande factuelle sans « ? » y accède.
-    if pleine and os.environ.get("IA_WEB") == "1" and not _negation_bloquante(t):
+    if (pleine and os.environ.get("IA_WEB") == "1" and not _negation_bloquante(t)
+            and not _ressemble_calcul(t)):        # une opération arithmétique ne se cherche pas sur le web
         rep = _recherche_structuree(t)
         if rep:
             return rep
@@ -1798,7 +2334,7 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         except Exception:
             _al = None
         if _al and _normalise(_al) != _normalise(t):
-            _r = repond(memoire, conv_id, _al, pleine=pleine)
+            _r = _repond_noyau(memoire, conv_id, _al, pleine=pleine)
             if _r and not est_fallback(_r):
                 return _r
 
@@ -1846,4 +2382,4 @@ def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
         indice = "" if pleine else " — ou relance sans IA_LEGER pour la connaissance générale (faits vérifiés)"
         return f"{_MSG_INCONNU_PREFIXE}{indice}."
     # affirmation : accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).
-    return _MSG_NOTE
+    return _varie("note", texte, _MSG_NOTE)
