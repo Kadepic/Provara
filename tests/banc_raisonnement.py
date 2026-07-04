@@ -35,7 +35,13 @@ CAS = [
     ("comptage", R._cap_comptage, "combien de pays en Afrique ?", "pays en Afrique"),
     ("classement", R._cap_classement, "les 3 pays les plus peuplés d'Afrique", "Nigéria"),
     ("filtre", R._cap_filtre, "quels pays d'Afrique ont plus de 100 millions d'habitants ?", "Nigéria"),
+    ("filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 100 et 300 millions d'habitants ?", "Nigéria"),
+    ("filtre-entre-magnitudes", R._cap_filtre,
+     "quels pays d'Europe ont entre 500 000 et 2 millions d'habitants ?", "entre 500 000 et 2 000 000"),
+    ("filtre-entre-decimal", R._cap_filtre, "quels pays d'Asie ont entre 1 et 1,5 milliard d'habitants ?", "Inde"),
+    ("filtre-superficie", R._cap_filtre, "quels pays d'Afrique ont une superficie entre 1 et 2 millions de km² ?", "km²"),
     ("comparaison", R._cap_comparaison, "la Chine est-elle plus peuplée que l'Inde ?", "l'inverse"),
+    ("comparaison-superficie", R._cap_comparaison, "la France est-elle plus vaste que l'Espagne ?", "Oui"),
     ("agregat", R._cap_agregat, "population totale de l'Afrique ?", "somme"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
     ("orbite", R._cap_orbite, "est-ce que Phobos fait partie du système solaire ?", "je le déduis"),
@@ -43,6 +49,7 @@ CAS = [
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     # gardes FAUX=0
+    ("faux-filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 5 et 10 milliards d'habitants ?", "Aucun"),
     ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", ""),
     ("faux-compar", R._cap_comparaison, "la France est-elle plus peuplée que l'Inde ?", "l'inverse"),
 ]

@@ -469,12 +469,17 @@ def _charge_direct(relation: str) -> dict:
 _ADJ_ATTR = {
     "peuple": ("population_pays",), "peuplee": ("population_pays",), "peuples": ("population_pays",),
     "peuplees": ("population_pays",),
-    "grand": ("superficie_pays", "population_pays"), "grande": ("superficie_pays", "population_pays"),
-    "grands": ("superficie_pays", "population_pays"), "grandes": ("superficie_pays", "population_pays"),
-    "vaste": ("superficie_pays",), "vastes": ("superficie_pays",), "etendu": ("superficie_pays",),
-    "etendue": ("superficie_pays",), "etendus": ("superficie_pays",),
-    "petit": ("superficie_pays",), "petite": ("superficie_pays",), "petits": ("superficie_pays",),
-    "petites": ("superficie_pays",),
+    # NB : la relation réelle des données (échantillon ET base complète) est « superficie » (mledoze, km²) ;
+    # « superficie_pays » est gardée en tête au cas où une base future l'introduirait.
+    "grand": ("superficie_pays", "superficie", "population_pays"),
+    "grande": ("superficie_pays", "superficie", "population_pays"),
+    "grands": ("superficie_pays", "superficie", "population_pays"),
+    "grandes": ("superficie_pays", "superficie", "population_pays"),
+    "vaste": ("superficie_pays", "superficie"), "vastes": ("superficie_pays", "superficie"),
+    "etendu": ("superficie_pays", "superficie"), "etendue": ("superficie_pays", "superficie"),
+    "etendus": ("superficie_pays", "superficie"),
+    "petit": ("superficie_pays", "superficie"), "petite": ("superficie_pays", "superficie"),
+    "petits": ("superficie_pays", "superficie"), "petites": ("superficie_pays", "superficie"),
     "riche": ("pib_pays", "pib_habitant_pays"), "riches": ("pib_pays", "pib_habitant_pays"),
 }
 # relations d'APPARTENANCE candidates par type d'entité (zone -> membres). 1re dont le reverse contient la zone.
@@ -689,7 +694,7 @@ _COMPAR2_RE = re.compile(
     r"(?:entre|de|parmi)\s+(.+?)\s+(?:et|ou)\s+(.+?)\s*\??\s*$", re.I)
 _ADJ_PETIT = frozenset("petit petite petits petites court courte courts courtes bas basse leger legere "
                        "legers legeres faible faibles pauvre pauvres".split())
-_ATTR_UNITE = {"superficie_pays": "km²", "population_pays": "habitants", "pib_pays": "$",
+_ATTR_UNITE = {"superficie_pays": "km²", "superficie": "km²", "population_pays": "habitants", "pib_pays": "$",
                "altitude": "m", "hauteur": "m", "longueur": "km"}
 
 
@@ -745,19 +750,59 @@ _FILTRE_RE = re.compile(
     r"(?:ont|a|avec|comptent|possedent|abritent)\b[^0-9]*?"
     r"(plus|moins|superieur\w*|inferieur\w*|au\s+moins|au\s+plus)\s+(?:de\s+|a\s+)?"
     r"(\d[\d\s.,]*)\s*(milliard\w*|million\w*|millier\w*|mille)?", re.I)
+# INTERVALLE : « quels pays d'Afrique ont entre 10 et 50 millions d'habitants ? » — les DEUX bornes, inclusives.
+# La magnitude peut être partagée (« entre 10 et 50 millions » -> 10e6..50e6) ou propre à chaque borne
+# (« entre 500 000 et 2 millions »). Même familles de verbes que le filtre à seuil.
+_FILTRE_ENTRE_RE = re.compile(
+    r"quels?\s+([a-zà-ÿ]+)\s+(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*([\wà-ÿ'’\- ]+?)\s+"
+    r"(?:ont|a|avec|comptent|possedent|abritent)\b[^0-9]*?"
+    r"entre\s+(\d[\d\s.,]*)\s*(milliard\w*|million\w*|millier\w*|mille)?\s*et\s+"
+    r"(\d[\d\s.,]*)\s*(milliard\w*|million\w*|millier\w*|mille)?", re.I)
 _MAGNITUDE = {"mille": 1e3, "millier": 1e3, "milliers": 1e3, "million": 1e6, "millions": 1e6,
               "milliard": 1e9, "milliards": 1e9}
 
 
+def _nombre_seuil(brut: str, magn) -> float:
+    """« 1,5 » + « millions » -> 1_500_000.0 (ValueError si illisible). `brut` vient du texte NORMALISÉ, où la
+    virgule décimale a pu devenir une ESPACE (« 1,5 » -> « 1 5 ») : un dernier groupe de 1-2 chiffres après espace
+    est relu comme décimales ; les groupes de 3 restent des séparateurs de milliers (« 1 500 000 »)."""
+    s = re.sub(r"[^\d\s.,]", "", brut).replace(",", ".").strip()
+    parts = s.split()
+    if len(parts) > 1 and "." not in s and len(parts[-1]) < 3:
+        s = "".join(parts[:-1]) + "." + parts[-1]
+    else:
+        s = "".join(parts)
+    return float(s) * _MAGNITUDE.get(magn, 1.0)
+
+
 def _cap_filtre(texte: str):
-    """FILTRAGE MULTI-CRITÈRES EXACT : « quels pays d'Afrique ont plus de 100 millions d'habitants ? » -> la machine
-    parcourt EXHAUSTIVEMENT l'ensemble énuméré et ne garde que ceux qui passent le seuil. Un LLM énumère de mémoire
-    (et se trompe) ; ici c'est exact et complet. FAUX=0 : entités réelles filtrées sur un attribut vérifié."""
+    """FILTRAGE MULTI-CRITÈRES EXACT : « quels pays d'Afrique ont plus de 100 millions d'habitants ? » (seuil) ou
+    « … ont entre 10 et 50 millions d'habitants ? » (intervalle, bornes incluses) -> la machine parcourt
+    EXHAUSTIVEMENT l'ensemble énuméré et ne garde que ceux qui passent. Un LLM énumère de mémoire (et se trompe) ;
+    ici c'est exact et complet. FAUX=0 : entités réelles filtrées sur un attribut vérifié."""
     qn = _normalise(texte)
-    m = _FILTRE_RE.search(qn)
-    if not m:
-        return None
-    typ_raw, zone, direction, nombre, magn = m.groups()
+    lo = hi = None
+    m = _FILTRE_ENTRE_RE.search(qn)
+    if m:
+        typ_raw, zone, n1, mg1, n2, mg2 = m.groups()
+        try:
+            lo, hi = _nombre_seuil(n1, mg1), _nombre_seuil(n2, mg2)
+            # « entre 10 et 50 millions » : la magnitude porte sur les DEUX bornes — mais SEULEMENT si la 1re
+            # borne est un petit nombre nu (≤ 3 chiffres) ET que la lecture héritée reste croissante.
+            # « entre 500 000 et 2 millions » (nombre complet) garde sa valeur littérale.
+            if mg1 is None and mg2 and len(re.sub(r"\D", "", n1)) <= 3:
+                lo_herite = _nombre_seuil(n1, mg2)
+                if lo_herite <= hi:
+                    lo = lo_herite
+        except ValueError:
+            return None
+        if lo > hi:
+            lo, hi = hi, lo                        # bornes données à l'envers -> on lit l'intervalle voulu
+    else:
+        m = _FILTRE_RE.search(qn)
+        if not m:
+            return None
+        typ_raw, zone, direction, nombre, magn = m.groups()
     typ = typ_raw[:-1] if (typ_raw.endswith(("s", "x")) and len(typ_raw) > 4) else typ_raw
     if typ not in _APPARTENANCE:
         return None
@@ -765,28 +810,32 @@ def _cap_filtre(texte: str):
         adj, unite = "vaste", "km²"
     else:
         adj, unite = "peuple", "habitants"
-    try:
-        seuil = float(re.sub(r"[^\d.,]", "", nombre).replace(",", ".").replace(" ", "")) * _MAGNITUDE.get(magn, 1.0)
-    except ValueError:
-        return None
-    au_dessus = direction.startswith(("plus", "superieur", "au moins"))
-    limite_incluse = direction in ("au moins", "au plus")
+    fmt = lambda v: format(int(v), ",d").replace(",", " ")
+    if lo is not None:                             # INTERVALLE (bornes incluses, lecture naturelle de « entre »)
+        garde = lambda v: lo <= v <= hi
+        sens, seuil_txt = "entre", "%s et %s" % (fmt(lo), fmt(hi))
+    else:                                          # SEUIL (comportement historique inchangé)
+        try:
+            seuil = _nombre_seuil(nombre, magn)
+        except ValueError:
+            return None
+        au_dessus = direction.startswith(("plus", "superieur", "au moins"))
+        limite_incluse = direction in ("au moins", "au plus")
+        def garde(v):
+            if au_dessus:
+                return v >= seuil if limite_incluse else v > seuil
+            return v <= seuil if limite_incluse else v < seuil
+        sens, seuil_txt = ("plus de" if au_dessus else "moins de"), fmt(seuil)
     paires, _ = _membres_attribut(typ, _strip_article(zone), adj)
     if not paires:
         return None
-    def garde(v):
-        if au_dessus:
-            return v >= seuil if limite_incluse else v > seuil
-        return v <= seuil if limite_incluse else v < seuil
     sel = [(e, v) for e, v in paires if garde(v)]        # paires déjà triées desc
     pluriel = typ if typ.endswith(("s", "x")) else typ + "s"
     zone_aff = zone.strip()[:1].upper() + zone.strip()[1:]
-    seuil_txt = format(int(seuil), ",d").replace(",", " ")
-    sens = "plus de" if au_dessus else "moins de"
     if not sel:
         return "Aucun %s %s n'a %s %s %s (d'après mes données)." % (typ, _RF_de(zone_aff), sens, seuil_txt, unite)
     cap = 20
-    lignes = ["· %s (%s %s)" % (e, format(int(v), ",d").replace(",", " "), unite) for e, v in sel[:cap]]
+    lignes = ["· %s (%s %s)" % (e, fmt(v), unite) for e, v in sel[:cap]]
     reste = "\n… (%d autres)" % (len(sel) - cap) if len(sel) > cap else ""
     entete = "%d %s %s ont %s %s %s :" % (len(sel), pluriel, _RF_de(zone_aff), sens, seuil_txt, unite)
     return entete + "\n" + "\n".join(lignes) + reste
