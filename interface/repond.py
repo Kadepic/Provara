@@ -707,6 +707,47 @@ def _valeur_attr(entite: str, attr_rel: str):
     return (_nombre(cell[1]), cell[0]) if cell else (None, None)
 
 
+# ÉCART CHIFFRÉ entre deux entités sur un attribut : « quelle est la différence de population entre X et Y ? ».
+# Réutilise le mapping nom->adjectif de l'agrégat et la lecture d'attribut de la comparaison. FAUX=0 : soustrait
+# DEUX faits vérifiés (sinon None), montre les deux valeurs et l'écart signé + le rapport.
+_DIFF_RE = re.compile(
+    r"(?:quelle?\s+est\s+(?:la\s+|le\s+)?)?(?:difference|ecart|distance)\s+d[eu'’]\s*"
+    r"(population|superficie|pib)\s+(?:entre|de)\s+(.+?)\s+(?:et|avec)\s+(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_difference(texte: str):
+    """ÉCART EXACT entre deux entités sur un attribut chiffré : « quelle est la différence de population entre la
+    France et l'Allemagne ? » -> la valeur absolue de l'écart, les deux populations et le rapport. FAUX=0 : deux
+    faits vérifiés soustraits (sinon None) ; l'ordre est rétabli (« X compte N de plus que Y »)."""
+    m = _DIFF_RE.search(_normalise(texte))
+    if not m:
+        return None
+    attr_mot, x, y = m.group(1), m.group(2), m.group(3)
+    adj = _AGREGAT_ADJ.get(attr_mot)
+    attr_rel = next((r for r in _ADJ_ATTR.get(adj, ()) if _charge_direct(r)), None) if adj else None
+    if not attr_rel:
+        return None
+    vx, ax = _valeur_attr(_strip_article(x.strip()), attr_rel)
+    vy, ay = _valeur_attr(_strip_article(y.strip()), attr_rel)
+    if vx is None or vy is None:
+        return None
+    unite = _ATTR_UNITE.get(attr_rel, "")
+    ecart = abs(vx - vy)
+    fmt = lambda v: (format(int(v), ",d").replace(",", " ") if float(v).is_integer() else "%g" % v)
+    try:
+        import realisation_fr as _RF
+        nx, ny = _RF.article_pays(ax), _RF.article_pays(ay)
+    except Exception:
+        nx, ny = ax, ay
+    if ecart == 0:
+        return "%s et %s sont à égalité : %s %s." % (nx, ny, fmt(vx), unite)
+    haut, bas = (nx, ny) if vx > vy else (ny, nx)
+    rapport = max(vx, vy) / min(vx, vy) if min(vx, vy) else 0
+    txt_rapport = (", soit %.1f× plus" % rapport) if rapport >= 1.15 else ""
+    return ("%s a %s %s de plus que %s (%s vs %s%s)."
+            % (haut, fmt(ecart), unite, bas, fmt(max(vx, vy)), fmt(min(vx, vy)), txt_rapport))
+
+
 def _cap_comparaison(texte: str):
     """COMPARAISON EXACTE de deux entités sur un attribut (« la France est-elle plus grande que l'Espagne ? »,
     « qui est le plus peuplé entre l'Inde et la Chine ? »). Compare DEUX faits vérifiés et montre les valeurs.
@@ -3170,7 +3211,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

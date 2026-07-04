@@ -44,6 +44,8 @@ CAS = [
     ("comparaison", R._cap_comparaison, "la Chine est-elle plus peuplée que l'Inde ?", "l'inverse"),
     ("comparaison-superficie", R._cap_comparaison, "la France est-elle plus vaste que l'Espagne ?", "Oui"),
     ("comparaison-riche", R._cap_comparaison, "la France est-elle plus riche que l'Espagne ?", "Oui"),
+    ("difference-pop", R._cap_difference, "quelle est la différence de population entre la France et l'Allemagne ?", "de plus"),
+    ("difference-superficie", R._cap_difference, "différence de superficie entre la France et l'Espagne ?", "km²"),
     ("agregat-superficie", R._cap_agregat, "superficie totale de l'Afrique ?", "km²"),
     ("agregat", R._cap_agregat, "population totale de l'Afrique ?", "somme"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
@@ -61,6 +63,7 @@ CAS = [
     ("faux-transitif", R._cap_transitif, "est-ce que la Lukna finit dans la mer Noire ?", ""),
     ("faux-inverse", R._cap_inverse, "quel pays a pour capitale Xanadu ?", ""),
     ("inverse-non-hijack", R._cap_inverse, "quelle est la capitale de l'Espagne ?", ""),
+    ("difference-non-hijack", R._cap_difference, "population de la France ?", ""),
     ("faux-compar", R._cap_comparaison, "la France est-elle plus peuplée que l'Inde ?", "l'inverse"),
 ]
 
