@@ -481,7 +481,9 @@ chargeListe();
 //  Sonde /api/status, s'affiche tant que l'IA n'est pas prête, montre la
 //  progression d'un téléchargement, propose la base complète, gère le redémarrage.
 // ─────────────────────────────────────────────────────────────────────────────
-(() => {
+// NB : le <div id="verax-modale"> est placé APRÈS ce <script> -> on attend le DOM complet, sinon
+// getElementById renvoie null au moment de l'exécution et tick() ne démarre jamais (modale figée).
+document.addEventListener("DOMContentLoaded", () => {
   const ov = document.getElementById("verax-modale");
   const card = document.getElementById("vm-card");
   if (!ov || !card) return;
@@ -568,10 +570,10 @@ chargeListe();
     setTimeout(tick, 5000);
   }
   tick();
-})();
+});
 
 // Bouton QUITTER (mode fenêtré .exe : plus de console pour Ctrl+C). Arrêt propre du serveur local.
-(() => {
+document.addEventListener("DOMContentLoaded", () => {
   const barre = document.getElementById("barre-outils");
   if (!barre || document.getElementById("btn-quitter")) return;
   const q = document.createElement("button");
@@ -584,7 +586,7 @@ chargeListe();
       + "Provara est arrêté.<br>Vous pouvez fermer cet onglet.</div>";
   };
   barre.appendChild(q);
-})();
+});
 </script>
 
 <!-- MODALE (chargement / installation base complète) -->
