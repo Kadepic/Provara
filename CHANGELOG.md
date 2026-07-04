@@ -1,5 +1,54 @@
 # Journal des modifications — Provara
 
+## 2026-07-04 — RENOMMAGE « VERAX → Provara » + UX du 1er lancement + 3 bugs d'interface corrigés
+
+### Renommage complet de la marque (raison : antériorité de marque)
+- « **verax** » est une marque UE **enregistrée** (classes 9 & 42 — logiciel/SaaS, DSM IP Assets), plus une société
+  homonyme « Verax AI ». **Provara** (0 antériorité INPI/EUIPO) retenu après recherche. Projet toujours open source,
+  non commercial.
+- **GitHub** : org `Verax-IA` → `Provara-IA`, repo `Verax` → `Provara` → **github.com/Provara-IA/Provara**
+  (redirections GitHub actives). Rebrand du code (57 fichiers) : marque visible VERAX→Provara, exe **`Provara.exe`**,
+  `Lancer_Provara.bat`, workflow `--name Provara`, asset `Provara-windows.zip`, URLs mises à jour.
+- **Identifiants techniques CONSERVÉS** (invisibles, éviter d'orpheliner les données déjà installées) : dossier
+  `~/.verax`, variables `VERAX_*`, module `verax_boot.py`, `demo_verax.py`. Asset cache Release renommé
+  `Provara_cache_v1.tar.gz` (URL_CACHE alignée dans `telecharge_donnees.py`).
+- **Éléments hors-repo rebrandés** : portfolio (yohanfauck.fr), CV (source + PDF régénéré), bannière LinkedIn,
+  post d'annonce.
+
+### UX du PREMIER lancement (plus d'écran figé — demandes Yohan)
+- **Téléchargement des 72M rendu OPTIONNEL** : le `.exe` démarre **instantanément** sur l'échantillon embarqué
+  (~1,1 M faits). La base complète s'installe **à la demande** via un bouton « Base complète » dans l'interface
+  (choix explicite : ~6 Go de disque, 15-20 min, une seule fois) — `lance.py` ne télécharge plus au lancement.
+- **Modale de chargement** pilotée par la nouvelle route **`GET /api/status`** : s'affiche pendant le chargement
+  (« Provara se prépare… »), montre la progression du téléchargement/décompression, et **se ferme** quand l'IA est
+  prête. Offre d'installation + redémarrage automatique (`/api/installer-base`, `/api/redemarrer`) ; bouton
+  **Quitter** (`/api/quitter`).
+- **Exe FENÊTRÉ** (`--noconsole` par défaut) : plus de fenêtre terminal. `verax_boot` redirige `stdout/stderr` vers
+  `~/.verax/verax.log` quand la console est absente (sinon un `print` planterait le thread de préchargement).
+  Documentation + README : « prévoir l'espace disque », « uniquement la première fois », avertissement si lancé
+  depuis un terminal.
+
+### Trois bugs d'interface trouvés EN CONDITIONS RÉELLES (auraient bloqué TOUS les utilisateurs)
+- **Erreur JS `I18N` (zone morte temporelle)** — CAUSE RACINE du blocage : `majTheme()` était appelé au chargement
+  AVANT la déclaration `const I18N` ; le garde `typeof I18N` ne protège pas un `const` en TDZ → `ReferenceError`
+  qui **stoppait tout le script** → la modale ne s'initialisait jamais et restait figée. Corrigé : application du
+  thème différée au `DOMContentLoaded`.
+- **Ordre DOM de la modale** : le `<div id="verax-modale">` est placé APRÈS le `<script>` → `getElementById`
+  renvoyait `null` à l'exécution → `tick()` jamais démarré. Corrigé : init modale + bouton Quitter au
+  `DOMContentLoaded`. Anti-cache `?t=` ajouté sur le sondage `/api/status`.
+- **Nom d'asset cache** : le code pointait `verax_cache_v1.tar.gz` alors que la Release livre
+  `Provara_cache_v1.tar.gz` → 404 → build à froid lent pour les nouveaux utilisateurs. URL alignée.
+- Validé par TEST NAVIGATEUR RÉEL (Chrome headless + API simulée) : modale fermée, app rendue, thème/langue OK.
+
+### Assistant : reconnaître « je me présente » (retour live Yohan)
+- « Bonjour je m'appelle yohan » partait en recherche web → renvoyait « Yoann Gourcuff ». Corrigé
+  (`interface/repond.py`, `_reponse_sociale`) : détection des tournures NON ambiguës (« je m'appelle X »,
+  « moi c'est X », « appelle-moi X », « mon nom est X », « my name is X ») → salue **par le prénom**
+  (« Bonjour Yohan, enchantée 🙂 »), **jamais** de recherche sur le prénom. Distingué de la question sur le nom de
+  l'IA (« comment tu t'appelles ? » → « Je m'appelle Provara »). Garde-fou anti-faux-prénom (« moi c'est fatigué »
+  → non déclenché) ; « je suis X » exclu (ambigu). Gates : assistant_nl **77/77**, conversation **9/9**,
+  restitution **29/29**, capacites_chat **19/19**.
+
 ## 2026-07-04 — Optimisation RAM majeure (base complète 3,3 Go → ~30 Mo) + docs realignées
 
 ### Lecteur : de 3,3 Go à ~30 Mo de RAM pour les 71,9 M faits (FAUX=0 préservé)

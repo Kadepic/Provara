@@ -57,6 +57,7 @@ Provara is not just a fact store: it is a full local assistant that never lies.
 - **It reads your files** — a file (JSON, CSV, XML, SQLite, ZIP…) → a faithful summary, **read locally**, never sent anywhere.
 - **It answers several questions at once** — "capital of Japan, 5×9, and who invented dynamite?" without blocking.
 - **It remembers** — per-conversation memory, recalls the right item, always typed as "reported."
+- **It greets you** — introduce yourself ("my name is Yohan") and it answers socially, by name — it never searches the web for your name.
 
 ## Watch it learn
 

@@ -57,6 +57,7 @@ Provara n'est pas qu'une base de faits : c'est un assistant local complet, qui n
 - **Il lit tes fichiers** — un fichier (JSON, CSV, XML, SQLite, ZIP…) → un résumé fidèle, **lu localement**, jamais envoyé ailleurs.
 - **Il répond à plusieurs questions d'un coup** — « capitale du Japon, 5×9, et qui a inventé la dynamite ? » sans blocage.
 - **Il se souvient** — mémoire par conversation, rappel du bon élément, toujours typé « rapporté ».
+- **Il te salue** — présente-toi (« je m'appelle Yohan ») et il répond socialement, par ton prénom — jamais de recherche web sur ton nom.
 
 ## Regarde-le apprendre
 
