@@ -19,12 +19,15 @@ from __future__ import annotations
 import json
 import os
 import re
+import sys
 import unicodedata
 
 _DOSSIER = None
-_DEFS = None                 # {entite_norm : (genus_norm, genus_affiché)}
+_DEFS = None                 # {entite_norm : genus_norm interné} (affichage du genre via _AFFICHE)
 _CLASSE = None               # {entite_norm : set(hyperonymes_norm)} depuis les relations classe_*/categorie_*
 _AFFICHE = {}                # {norm : forme accentuée d'affichage} (pour rendre « mammifère », pas « mammifere »)
+_OFFSET = None               # {entite_norm : offset_octets dans definition_nom.jsonl} — la définition COMPLÈTE
+                             # n'est PAS gardée en RAM (~70 MB économisés) : on la relit à la demande (seek).
 
 
 def affiche(n: str) -> str:
@@ -32,19 +35,21 @@ def affiche(n: str) -> str:
     return _AFFICHE.get(_norm(n), n)
 
 
-_TEXTE = None                # {entite_norm : définition complète} (definition_nom)
-
-
 def definition(mot: str):
-    """Définition COMPLÈTE d'un nom (texte du Wiktionnaire via `definition_nom`), ou None. Sert à « c'est quoi X ? »."""
-    global _TEXTE
-    if _TEXTE is None:
-        _TEXTE = {}
-        for obj in _lignes("definition_nom"):
-            e, v = obj.get("entite"), obj.get("valeur")
-            if e and v:
-                _TEXTE.setdefault(_norm(e), v)
-    return _TEXTE.get(_norm(mot))
+    """Définition COMPLÈTE d'un nom (texte du Wiktionnaire via `definition_nom`), ou None. Sert à « c'est quoi X ? ».
+    Lecture À LA DEMANDE : l'index d'offsets (construit avec _defs, une passe unique) pointe la ligne du .jsonl ;
+    on la relit au moment voulu au lieu de garder 292k textes en mémoire."""
+    _defs()                                            # construit aussi _OFFSET (même passe)
+    off = (_OFFSET or {}).get(_norm(mot))
+    if off is None:
+        return None
+    try:
+        with open(os.path.join(_dossier(), "definition_nom.jsonl"), "rb") as fh:
+            fh.seek(off)
+            obj = json.loads(fh.readline().decode("utf-8"))
+            return obj.get("valeur")
+    except (OSError, ValueError):
+        return None
 
 _STOP_GENUS = frozenset(
     "un une le la les de du des d l qui se qu il elle qui qu a à en et ou par pour sur qui qui ce qui "
@@ -57,6 +62,8 @@ _META_GENUS = frozenset(
 
 
 def _sans_accent(s: str) -> str:
+    if s.isascii():                                   # fast-path : rien à désaccentuer (majorité des tokens)
+        return s
     return "".join(c for c in unicodedata.normalize("NFD", s) if unicodedata.category(c) != "Mn")
 
 
@@ -123,34 +130,89 @@ def _est_adjectif(n: str) -> bool:
     return n in _ADJ_COURANTS or _pos().get(n) == "adjectif"
 
 
+_MOT_RE = re.compile(r"[A-Za-zÀ-ÿ’'\-]+")
+
+
+def _genus_choisit(tokens):
+    """Applique la cascade genus sur une liste de tokens : 1er nom non-méta non-adjectif, sinon 1er non-méta,
+    sinon 1er contenu. (norm, affiché) ou None."""
+    repli_meta = repli_contenu = None
+    for mot in tokens:
+        n = _norm(mot)
+        if len(n) < 3 or n in _STOP_GENUS:
+            continue
+        if repli_contenu is None:
+            repli_contenu = (n, mot.lower())
+        if n in _META_GENUS:
+            continue
+        if not _est_adjectif(n):
+            return n, mot.lower()         # 1er contenu non-méta, non-adjectif = le vrai genre (nom)
+        if repli_meta is None:
+            repli_meta = (n, mot.lower())
+    return repli_meta or repli_contenu
+
+
 def _genus_de(definition: str):
     """GENRE (genus-first) d'une définition = 1er NOM significatif. On saute : mots-outils, « méta-genres » (« espèce
-    de poisson » -> poisson) ET adjectifs de tête (« grand poisson » -> poisson, via le POS du lexique). (norm, affiché)."""
-    contenu = []
-    for mot in re.findall(r"[A-Za-zÀ-ÿ’'\-]+", definition):
-        n = _norm(mot)
-        if len(n) >= 3 and n not in _STOP_GENUS:
-            contenu.append((n, mot.lower()))
-    for n, aff in contenu:
-        if n not in _META_GENUS and not _est_adjectif(n):
-            return n, aff                 # 1er contenu non-méta, non-adjectif = le vrai genre (nom)
-    for n, aff in contenu:
-        if n not in _META_GENUS:
-            return n, aff
-    return contenu[0] if contenu else None
+    de poisson » -> poisson) ET adjectifs de tête (« grand poisson » -> poisson, via le POS du lexique). (norm, affiché).
+    FENÊTRE DE TÊTE : le genus vit au début de la définition — on ne tokenise que les ~96 premiers caractères
+    (findall C-speed sur 292k définitions au chargement), repli plein texte si la fenêtre ne donne rien. Le dernier
+    token de la fenêtre est écarté s'il a pu être TRONQUÉ à la coupe (« mammif » n'est pas un genre)."""
+    if len(definition) > 96:
+        tokens = _MOT_RE.findall(definition[:96])
+        if tokens:
+            tokens = tokens[:-1]                      # potentiellement coupé en plein mot
+        g = _genus_choisit(tokens)
+        if g:
+            return g
+    return _genus_choisit(_MOT_RE.findall(definition))
 
 
 def _defs() -> dict:
-    global _DEFS
+    """Index {entité -> genus} PLUS index d'offsets (une SEULE passe binaire sur definition_nom.jsonl : le fichier
+    de 292k lignes n'est lu qu'une fois pour les deux structures, et les clés sont PARTAGÉES entre les deux dicts).
+    Le genus est interné (sys.intern) : « mammifere » n'existe qu'une fois en RAM, pas 8 000 fois."""
+    global _DEFS, _OFFSET
     if _DEFS is None:
-        _DEFS = {}
-        for obj in _lignes("definition_nom"):
-            e, v = obj.get("entite"), obj.get("valeur")
-            if e and v:
-                g = _genus_de(v)
-                if g:
-                    _DEFS[_norm(e)] = g
-                    _AFFICHE.setdefault(g[0], g[1])
+        _DEFS, _OFFSET = {}, {}
+        chemin = os.path.join(_dossier(), "definition_nom.jsonl")
+        try:
+            with open(chemin, "rb") as fh:
+                off = 0
+                reste = b""
+                fini = False
+                while not fini:
+                    # GROS BLOCS + split manuel : l'itération binaire ligne-à-ligne est ~8x plus lente sur un
+                    # montage Windows (DrvFS) ; par blocs de 4 Mo on garde la vitesse ET les offsets exacts.
+                    bloc = fh.read(1 << 22)
+                    if bloc:
+                        bloc = reste + bloc
+                        lignes = bloc.split(b"\n")
+                        reste = lignes.pop()
+                    else:                             # fin de fichier : traiter l'éventuelle dernière ligne nue
+                        lignes = [reste] if reste else []
+                        fini = True
+                    for brut in lignes:
+                        ligne_off, off = off, off + len(brut) + 1
+                        ligne = brut.strip()
+                        if not ligne:
+                            continue
+                        try:                          # décodage EXPLICITE : json.loads(bytes) paierait
+                            obj = json.loads(ligne.decode("utf-8"))   # detect_encoding à chaque ligne
+                        except (ValueError, UnicodeDecodeError):
+                            continue
+                        if "_relation" in obj:
+                            continue
+                        e, v = obj.get("entite"), obj.get("valeur")
+                        if e and v:
+                            ne = _norm(e)
+                            _OFFSET.setdefault(ne, ligne_off)
+                            g = _genus_de(v)
+                            if g:
+                                _DEFS[ne] = sys.intern(g[0])
+                                _AFFICHE.setdefault(g[0], g[1])
+        except OSError:
+            pass
     return _DEFS
 
 
@@ -192,8 +254,8 @@ def hyperonymes_directs(mot: str) -> list:
         if h not in res:
             res.append(h)
     g = _defs().get(n)
-    if g and g[0] not in res:
-        res.append(g[0])
+    if g and g not in res:
+        res.append(g)
     return res
 
 
@@ -230,13 +292,16 @@ _ENFANTS = None              # {hyperonyme_norm : set(entités_norm ayant cet hy
 
 
 def _enfants() -> dict:
+    """Index inverse, valeurs stockées en TUPLES PRÉ-TRIÉS (pas des sets) : ~40 % de RAM en moins sur 292k entrées,
+    et `hyponymes` n'a plus à retrier à chaque requête."""
     global _ENFANTS
     if _ENFANTS is None:
-        _ENFANTS = {}
+        brut = {}
         entites = set(_defs().keys()) | set(_classe().keys())
         for e in entites:
             for h in hyperonymes_directs(e):
-                _ENFANTS.setdefault(h, set()).add(e)
+                brut.setdefault(h, []).append(e)
+        _ENFANTS = {h: tuple(sorted(set(l))) for h, l in brut.items()}
     return _ENFANTS
 
 
@@ -253,7 +318,7 @@ def hyponymes(categorie: str, limite: int = 30, max_prof: int = 6) -> list:
         c, d = q.popleft()
         if d >= max_prof:
             continue
-        for e in sorted(enf.get(c, ())):
+        for e in enf.get(c, ()):                     # déjà trié à la construction de l'index
             if e not in vus:
                 vus.add(e)
                 trouve.append(e)
