@@ -361,10 +361,12 @@ function majTheme(sombre) {
   try { localStorage.setItem("verax_theme", sombre ? "sombre" : "clair"); } catch {}
 }
 $("#btn-theme").onclick = () => majTheme(!document.body.classList.contains("sombre"));
-majTheme((() => {
+// Appliqué au DOM prêt : majTheme() lit I18N (déclaré plus bas). L'appeler ici en direct accéderait à I18N
+// dans sa zone morte temporelle (const) -> ReferenceError qui STOPPE tout le script (et fige la modale).
+document.addEventListener("DOMContentLoaded", () => majTheme((() => {
   try { const t = localStorage.getItem("verax_theme"); if (t) return t === "sombre"; } catch {}
   return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-})());
+})()));
 
 // — LANGUE de l'interface + des réponses (sélecteur) — localisation COMPLÈTE + préférence côté serveur —
 const I18N = {
