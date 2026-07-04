@@ -269,16 +269,51 @@ def _classe() -> dict:
     return _CLASSE
 
 
+_SEED = None                 # {entité_norm : genus_norm} — seed curé main (faits certains, prioritaire)
+
+
+def _seed() -> dict:
+    """Seed CURÉ à la main (est_un_seed.jsonl) : noms communs FR absents ou bruités dans definition_nom (rose->
+    fleur, pomme->fruit, chêne->arbre…). Chaque entrée est un is-a VRAI incontestable -> PRIORITAIRE sur la
+    définition (dont le genre peut être bruité : « chêne = *representants* de… », « laitue = *donne*… »)."""
+    global _SEED
+    if _SEED is None:
+        _SEED = {}
+        chemin = os.path.join(os.path.dirname(os.path.abspath(__file__)), "est_un_seed.jsonl")
+        try:
+            with open(chemin, encoding="utf-8") as fh:
+                for ligne in fh:
+                    ligne = ligne.strip()
+                    if not ligne:
+                        continue
+                    try:
+                        o = json.loads(ligne)
+                    except ValueError:
+                        continue
+                    e, v = o.get("entite"), o.get("valeur")
+                    if e and v and "_relation" not in o:
+                        _SEED[_norm(e)] = _norm(v)
+                        _AFFICHE.setdefault(_norm(v), str(v).strip().lower())
+        except OSError:
+            pass
+    return _SEED
+
+
 def hyperonymes_directs(mot: str) -> list:
-    """Hyperonymes DIRECTS sains de `mot` : classe(s) curée(s) + genre de la définition. Normalisés, sans doublon."""
+    """Hyperonymes DIRECTS sains de `mot` : seed curé (prioritaire) + classe(s) curée(s) + genre de la définition.
+    Normalisés, sans doublon. Le seed vient EN TÊTE (fait certain incontestable, prime sur un genre bruité)."""
     n = _norm(mot)
     res = []
+    s = _seed().get(n)                               # fait certain curé -> en tête, FAIT AUTORITÉ
+    if s:
+        res.append(s)
     for h in sorted(_classe().get(n, ())):
         if h not in res:
             res.append(h)
-    g = _defs().get(n)
-    if g and g not in res:
-        res.append(g)
+    if not s:                                        # mot seedé : on IGNORE le genre de définition (souvent bruité
+        g = _defs().get(n)                           # pour ces mots courants : « chêne = representants… ») — le
+        if g and g not in res:                       # seed est la vérité curée pour ce mot
+            res.append(g)
     return res
 
 
@@ -320,7 +355,7 @@ def _enfants() -> dict:
     global _ENFANTS
     if _ENFANTS is None:
         brut = {}
-        entites = set(_defs().keys()) | set(_classe().keys())
+        entites = set(_defs().keys()) | set(_classe().keys()) | set(_seed().keys())
         for e in entites:
             for h in hyperonymes_directs(e):
                 brut.setdefault(h, []).append(e)

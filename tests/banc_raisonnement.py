@@ -36,6 +36,8 @@ CAS = [
     ("is-a", R._cap_ontologie, "un chat est-il un mammifère ?", "Oui"),
     ("is-a-faux", R._cap_ontologie, "un chat est-il un poisson ?", "mammifère"),  # jamais « Oui »
     ("is-a-faux-contexte", R._cap_ontologie, "l'apartheid est-il un continent ?", ""),  # bruit de genre géo nettoyé
+    ("is-a-seed", R._cap_ontologie, "une rose est-elle une fleur ?", "Oui"),          # seed curé (definition_nom vide)
+    ("is-a-seed-fruit", R._cap_ontologie, "une pomme est-elle un fruit ?", "Oui"),
     ("point-commun", R._cap_ontologie, "qu'ont en commun le chat et le requin ?", "animal"),
     ("cause", R._cap_cause, "quelle est la cause du paludisme ?", "du paludisme"),
     ("definition", R._cap_definition, "c'est quoi le paludisme ?", "Paludisme"),
