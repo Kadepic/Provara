@@ -32,6 +32,7 @@ CAS = [
     ("point-commun", R._cap_ontologie, "qu'ont en commun le chat et le requin ?", "animal"),
     ("cause", R._cap_cause, "quelle est la cause du paludisme ?", "du paludisme"),
     ("definition", R._cap_definition, "c'est quoi le paludisme ?", "Paludisme"),
+    ("definition-longue", R._cap_definition, "quelle est la définition du paludisme ?", "Paludisme"),
     ("comptage", R._cap_comptage, "combien de pays en Afrique ?", "pays en Afrique"),
     ("classement", R._cap_classement, "les 3 pays les plus peuplés d'Afrique", "Nigéria"),
     ("filtre", R._cap_filtre, "quels pays d'Afrique ont plus de 100 millions d'habitants ?", "Nigéria"),

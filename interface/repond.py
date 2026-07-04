@@ -2243,6 +2243,10 @@ def _cap_ontologie(texte: str):
 _DEF_RE = re.compile(
     r"^\s*(?:qu['’ ]?est[- ]ce\s+qu['’e]?\s*(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|c['’ ]?est\s+quoi\s+(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    # « quelle est la définition de X » / « quelle est la signification de X » (formes longues courantes) —
+    # sans elles, la requête tombait dans la cascade LOURDE (chargement moteur ~100 s) au lieu de la voie légère.
+    r"|quel(?:le)?\s+est\s+(?:la\s+|le\s+)?(?:d[ée]finition|signification)\s+d[eu'’]\s*"
+    r"(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|d[ée]finition\s+d[eu'’]\s*(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|d[ée]finis[- ]?(?:moi\s+)?(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|qu['’ ]?est[- ]ce\s+qu['’e]?\s*)"
