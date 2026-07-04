@@ -480,7 +480,7 @@ _ADJ_ATTR = {
     "etendus": ("superficie_pays", "superficie"),
     "petit": ("superficie_pays", "superficie"), "petite": ("superficie_pays", "superficie"),
     "petits": ("superficie_pays", "superficie"), "petites": ("superficie_pays", "superficie"),
-    "riche": ("pib_pays", "pib_habitant_pays"), "riches": ("pib_pays", "pib_habitant_pays"),
+    "riche": ("pib_pays", "pib_par_habitant_pays"), "riches": ("pib_pays", "pib_par_habitant_pays"),
 }
 # relations d'APPARTENANCE candidates par type d'entité (zone -> membres). 1re dont le reverse contient la zone.
 _APPARTENANCE = {"pays": ("continent", "region_pays"), "ville": ("pays_ville",), "montagne": ("continent_montagne",)}
@@ -695,7 +695,7 @@ _COMPAR2_RE = re.compile(
 _ADJ_PETIT = frozenset("petit petite petits petites court courte courts courtes bas basse leger legere "
                        "legers legeres faible faibles pauvre pauvres".split())
 _ATTR_UNITE = {"superficie_pays": "km²", "superficie": "km²", "population_pays": "habitants", "pib_pays": "$",
-               "altitude": "m", "hauteur": "m", "longueur": "km"}
+               "pib_par_habitant_pays": "$/habitant", "altitude": "m", "hauteur": "m", "longueur": "km"}
 
 
 def _valeur_attr(entite: str, attr_rel: str):

@@ -42,6 +42,8 @@ CAS = [
     ("filtre-superficie", R._cap_filtre, "quels pays d'Afrique ont une superficie entre 1 et 2 millions de km² ?", "km²"),
     ("comparaison", R._cap_comparaison, "la Chine est-elle plus peuplée que l'Inde ?", "l'inverse"),
     ("comparaison-superficie", R._cap_comparaison, "la France est-elle plus vaste que l'Espagne ?", "Oui"),
+    ("comparaison-riche", R._cap_comparaison, "la France est-elle plus riche que l'Espagne ?", "Oui"),
+    ("agregat-superficie", R._cap_agregat, "superficie totale de l'Afrique ?", "km²"),
     ("agregat", R._cap_agregat, "population totale de l'Afrique ?", "somme"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
     ("orbite", R._cap_orbite, "est-ce que Phobos fait partie du système solaire ?", "je le déduis"),
