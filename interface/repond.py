@@ -1704,6 +1704,34 @@ _SEG_PHRASE_RE = re.compile(r"(?<=[.!?])\s+")
 _SALUT_TETE_RE = re.compile(r"^\s*(bonjour|salut|bonsoir|coucou|hello|hi|hey)[ ,!]+(.{4,})$", re.I | re.S)
 
 
+# CONJONCTION multi-entités : « quelle est la population de la France et de l'Allemagne ? » -> on répond pour
+# CHAQUE entité (via le pipeline normal, chaque réponse vérifiée) puis on combine. Tête d'attribut FERMÉE (formes
+# « la X de Y ») pour ne pas capter « différence de … entre X et Y » (déjà gérée) ni « point commun entre X et Y ».
+_CONJ_HEADS = ("capitale", "population", "superficie", "monnaie", "langue officielle", "langue", "president",
+               "hymne", "gentile", "drapeau", "continent", "altitude", "pib", "indicatif", "point culminant")
+_CONJ_RE = re.compile(
+    r"^\s*(?:quelles?\s+(?:est|sont)\s+)?(?:la\s+|le\s+|les\s+|l['’]\s*)?(" + "|".join(_CONJ_HEADS) + r")\s+"
+    r"(de\s+.+?\s+et\s+.+?)\s*\??\s*$", re.I)
+
+
+def _decoupe_conjonction(texte: str):
+    """(tête, [entités]) si `texte` est « TÊTE de X et (de) Y [et Z] » avec ≥2 entités, sinon None. FAUX=0 :
+    ne fait que DÉCOUPER une demande ; chaque sous-réponse reste vérifiée par le pipeline normal."""
+    m = _CONJ_RE.match(texte)
+    if not m:
+        return None
+    tete, tail = m.group(1), m.group(2).strip()
+    tail = re.sub(r"^de\s+", "", tail, flags=re.I)   # retire le « de » de tête ; les morceaux gardent leur article
+    bruts = re.split(r"\s*,\s*|\s+et\s+", tail)       # coupe sur «, » et « et »
+    ents = [_strip_article(e.strip(" .?!")) for e in bruts if e and e.strip(" .?!")]
+    ents = [e for e in ents if e]
+    if len(ents) < 2 or len(ents) > 6:
+        return None
+    if any(len(e.split()) > 5 for e in ents):        # un morceau trop long n'est pas une entité -> on s'abstient
+        return None
+    return tete, ents
+
+
 def _detache_salutation(texte: str):
     """Sépare une TÊTE purement sociale d'une vraie demande qui suit : (réponse_sociale, reste) ou (None, texte).
     Deux formes : segments de phrase sociaux en tête (« Bonjour comment vas-tu ? <demande> ») et simple mot de
@@ -3256,6 +3284,21 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             _r = _cap(t)
             if _r:
                 return _r
+        #   (0quater-ter) CONJONCTION multi-entités : « la population de la France et de l'Allemagne ? » -> on
+        #   REJOUE « population de <chaque entité> » dans le pipeline (chaque réponse vérifiée) et on combine. En
+        #   AVAL des caps spécialisés (différence/comparaison priment). FAUX=0 : découpe seule, aucune invention.
+        _conj = _decoupe_conjonction(t)
+        if _conj:
+            tete, ents = _conj
+            lignes, ok = [], 0
+            for e in ents:
+                _sous = _repond_noyau(memoire, conv_id, "%s de %s" % (tete, e), pleine=pleine)
+                fiable = _sous and not est_fallback(_sous)
+                if fiable:
+                    ok += 1
+                lignes.append("· %s : %s" % (e[:1].upper() + e[1:], _sous if fiable else "je ne l'ai pas en base."))
+            if ok >= 1:                              # au moins une réponse vérifiée -> on rend la liste combinée
+                return "%s :\n%s" % (tete[:1].upper() + tete[1:], "\n".join(lignes))
     #   (0quinquies) LANGUE MULTILINGUE : un message dans une langue supportée (en/es/de/it/pt) -> on tente d'y
     #   RÉPONDRE DANS CETTE LANGUE (question factuelle traduite vers le pipeline vérifié FR). Sinon, si c'est de
     #   l'anglais non factuel, clarification bilingue ; les autres langues non reconnues passent au pipeline FR.

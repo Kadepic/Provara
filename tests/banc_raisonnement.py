@@ -25,6 +25,12 @@ _spec = _u.spec_from_file_location("repond", os.path.join(_RACINE, "interface", 
 R = _u.module_from_spec(_spec)
 _spec.loader.exec_module(R)
 
+def _conjonction_txt(q):
+    """Adaptateur banc : rend « tête|ent1,ent2,… » du découpage conjonction, ou None (signature fn(msg)->str)."""
+    c = R._decoupe_conjonction(q)
+    return "%s|%s" % (c[0], ",".join(c[1])) if c else None
+
+
 # (capacité, message, attendu). attendu="" => la réponse doit être VIDE/None (garde FAUX=0).
 CAS = [
     ("is-a", R._cap_ontologie, "un chat est-il un mammifère ?", "Oui"),
@@ -47,6 +53,7 @@ CAS = [
     ("comparaison-riche", R._cap_comparaison, "la France est-elle plus riche que l'Espagne ?", "Oui"),
     ("difference-pop", R._cap_difference, "quelle est la différence de population entre la France et l'Allemagne ?", "de plus"),
     ("difference-superficie", R._cap_difference, "différence de superficie entre la France et l'Espagne ?", "km²"),
+    ("conjonction", _conjonction_txt, "quelle est la capitale de la France et de l'Espagne ?", "France,Espagne"),
     ("agregat-superficie", R._cap_agregat, "superficie totale de l'Afrique ?", "km²"),
     ("agregat", R._cap_agregat, "population totale de l'Afrique ?", "somme"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
