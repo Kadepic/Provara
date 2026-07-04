@@ -18,6 +18,8 @@ py -m PyInstaller --onefile --name Provara %WINFLAG% ^
   --hidden-import ia --hidden-import lecteur --hidden-import base_faits ^
   --hidden-import serveur --hidden-import repond --hidden-import conversation ^
   --hidden-import assistant_nl --hidden-import veille_structure --hidden-import fonction_nl ^
+  --hidden-import correction_ortho --hidden-import synonymes --hidden-import formulation ^
+  --hidden-import est_un --hidden-import ontologie --hidden-import classifieur_bornage --hidden-import resolution ^
   --add-data "src;src" --add-data "ingestion;ingestion" --add-data "interface;interface" ^
   --add-data "datasets/lecteur;datasets/lecteur" --add-data "verax_boot.py;." --add-data "VERSION_BUILD.txt;." ^
   --hidden-import json --hidden-import csv --hidden-import sqlite3 --hidden-import wave --hidden-import struct ^
