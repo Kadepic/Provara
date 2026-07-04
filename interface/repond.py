@@ -940,6 +940,57 @@ def _cap_difference(texte: str):
             % (haut, fmt(ecart), unite, bas, fmt(max(vx, vy)), fmt(min(vx, vy)), txt_rapport))
 
 
+# COMPARAISON N-ENTITÉS : « qui est le plus peuplé entre la France, l'Allemagne et l'Italie ? ». ARGMAX borné sur
+# une LISTE explicite (≥3 entités) — le 2-entités reste géré par _cap_comparaison. FAUX=0 : compare des valeurs
+# vérifiées, montre la valeur gagnante et le nombre comparé ; abstention si < 2 entités résolvent.
+_COMPARN_RE = re.compile(
+    r"^\s*(?:qui|quel|quelle|lequel|laquelle)\s+est\s+(?:le\s+|la\s+)?(plus|moins)\s+(\w+)\s+"
+    r"(?:entre|parmi|de)\s+(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_comparaison_nway(texte: str):
+    """ARGMAX sur une LISTE explicite d'entités (« le plus peuplé entre la France, l'Allemagne et l'Italie »).
+    FAUX=0 : compare des valeurs vérifiées ; None si < 2 entités résolvent. Choisit la relation de la famille où
+    le PLUS d'entités ont une valeur (généralise pays/sommets/fleuves via _ADJ_ATTR)."""
+    m = _COMPARN_RE.match(texte.strip())
+    if not m:
+        return None
+    direction, adj_aff, liste = m.group(1), m.group(2).lower(), m.group(3)
+    adj = _normalise(adj_aff)
+    ents = [_strip_article(e.strip()) for e in re.split(r"\s*,\s*|\s+et\s+|\s+ou\s+", liste) if e.strip()]
+    ents = [e for e in ents if e and len(e) >= 2]
+    if len(ents) < 3:                                # 2 entités -> laissé à _cap_comparaison (message dédié)
+        return None
+    familles = _ADJ_ATTR.get(adj, ())
+    if not familles:
+        return None
+    # relation de la famille où le MAXIMUM d'entités résolvent (ensemble comparable le plus large)
+    best_rel, best_vals = None, []
+    for rel in familles:
+        if not _charge_direct(rel):
+            continue
+        vals = [(e,) + _valeur_attr(e, rel) for e in ents]
+        ok = [(e, v, a) for (e, v, a) in vals if v is not None]
+        if len(ok) > len(best_vals):
+            best_rel, best_vals = rel, ok
+    if not best_rel or len(best_vals) < 2:
+        return None
+    maximise = (direction == "plus") != (adj in _ADJ_PETIT)
+    gagnant = (max if maximise else min)(best_vals, key=lambda t: t[1])
+    unite = _unite_attr(best_rel)
+    fmt = lambda v: (format(int(v), ",d").replace(",", " ") if float(v).is_integer() else "%g" % v)
+    pays = best_rel.endswith("_pays") or best_rel in ("superficie", "pib_pays")
+    try:
+        import realisation_fr as _RF
+        nom = _RF.article_pays(gagnant[2]) if pays else _RF.le_syntagme(gagnant[2])
+    except Exception:
+        nom = gagnant[2]
+    manquants = len(ents) - len(best_vals)
+    note = "" if manquants == 0 else " (%d sans donnée, exclu%s)" % (manquants, "s" if manquants > 1 else "")
+    return "%s — le %s %s des %d comparés : %s %s%s." % (
+        nom[:1].upper() + nom[1:], direction, adj_aff, len(best_vals), fmt(gagnant[1]), unite, note)
+
+
 def _cap_comparaison(texte: str):
     """COMPARAISON EXACTE de deux entités sur un attribut (« la France est-elle plus grande que l'Espagne ? »,
     « qui est le plus peuplé entre l'Inde et la Chine ? »). Compare DEUX faits vérifiés et montre les valeurs.
@@ -3464,7 +3515,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

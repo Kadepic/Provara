@@ -52,6 +52,7 @@ CAS = [
     ("filtre-entre-decimal", R._cap_filtre, "quels pays d'Asie ont entre 1 et 1,5 milliard d'habitants ?", "Inde"),
     ("filtre-superficie", R._cap_filtre, "quels pays d'Afrique ont une superficie entre 1 et 2 millions de km² ?", "km²"),
     ("comparaison", R._cap_comparaison, "la Chine est-elle plus peuplée que l'Inde ?", "l'inverse"),
+    ("comparaison-nway", R._cap_comparaison_nway, "quel est le plus peuplé entre la France, l'Allemagne et l'Italie ?", "Allemagne"),
     ("comparaison-superficie", R._cap_comparaison, "la France est-elle plus vaste que l'Espagne ?", "Oui"),
     ("comparaison-altitude", R._cap_comparaison, "l'Abendberg est-il plus haut que l'Ahintziaga ?", "plus haut"),
     ("comparaison-riche", R._cap_comparaison, "la France est-elle plus riche que l'Espagne ?", "Oui"),
