@@ -2389,14 +2389,26 @@ _INV_RELATIONS = {
     "langue": ("langue_officielle",), "hymne": ("hymne_national",), "continent": ("continent",),
     "gentile": ("gentile",), "point culminant": ("point_culminant",), "indicatif": ("indicatif_pays",),
 }
-# forme 1 : « quel TYPE a pour REL VALEUR ? » / « quel TYPE a comme REL VALEUR ? »
+# forme 1 : « quel(s) TYPE a/ont pour REL VALEUR ? » / « … a comme REL VALEUR ? »
 _INV_A_POUR_RE = re.compile(
     r"^(?:quel(?:le|s|les)?)\s+(pays|ville|etat|nation|monnaie|langue|continent)\s+"
-    r"a\s+(?:pour|comme)\s+([a-zà-ÿ' ]+?)\s+(.+?)\s*\??\s*$", re.I)
+    r"(?:a|ont)\s+(?:pour|comme)\s+([a-zà-ÿ' ]+?)\s+(.+?)\s*\??\s*$", re.I)
 # forme 2 : « de quel TYPE VALEUR est(-elle) (la/le) REL ? »
 _INV_DE_QUEL_RE = re.compile(
     r"^de\s+quel(?:le|s|les)?\s+(pays|ville|etat|nation|continent)\s+(.+?)\s+"
     r"est(?:[- ](?:elle|il|ce))?\s+(?:la\s+|le\s+|l['’]\s*|un\s+|une\s+)?([a-zà-ÿ' ]+?)\s*\??\s*$", re.I)
+# forme 3 : phrasé VERBAL (« quels pays parlent français ? », « dans quels pays parle-t-on allemand ? »,
+# « quels pays utilisent l'euro ? »). Le VERBE désigne la relation ; VALEUR = ce qui suit.
+# clés NORMALISÉES (le tiret devient espace via _normalise : « parle-t-on » -> « parle t on »).
+_INV_VERBE_REL = {
+    "parle": "langue_officielle", "parlent": "langue_officielle", "parle t on": "langue_officielle",
+    "utilise": "monnaie", "utilisent": "monnaie", "emploie": "monnaie", "emploient": "monnaie",
+    "utilise t on": "monnaie",
+}
+_INV_VERBE_RE = re.compile(
+    r"^(?:dans\s+)?quel(?:le|s|les)?\s+(?:pays|nation|etat)s?\s+"
+    r"(parlent|parle|parle-t-on|utilisent|utilise|utilise-t-on|emploient|emploie)\s+"
+    r"(?:le\s+|la\s+|les\s+|l['’]\s*|du\s+|de\s+la\s+|des\s+)?([a-zà-ÿ' ]+?)\s*\??\s*$", re.I)
 
 
 def _cap_inverse(texte: str):
@@ -2404,17 +2416,24 @@ def _cap_inverse(texte: str):
     Espagne ; « de quel pays Tokyo est la capitale ? » -> Japon. FAUX=0 : couples réellement stockés, listés si
     plusieurs ; None si la relation/valeur est inconnue. Complète la voie DIRECTE (« capitale de l'Espagne »)."""
     rel_fr = valeur = None
-    m = _INV_A_POUR_RE.match(texte.strip())
+    rels = None
+    m = _INV_VERBE_RE.match(texte.strip())            # forme VERBALE d'abord (« quels pays parlent français »)
     if m:
-        rel_fr, valeur = _normalise(m.group(2)), m.group(3)
-    else:
-        m = _INV_DE_QUEL_RE.match(texte.strip())
+        rel = _INV_VERBE_REL.get(_normalise(m.group(1)))
+        if rel:
+            rels, valeur = (rel,), m.group(2)
+    if rels is None:
+        m = _INV_A_POUR_RE.match(texte.strip())
         if m:
-            rel_fr, valeur = _normalise(m.group(3)), m.group(2)
-    if not rel_fr or not valeur:
-        return None
-    rels = _INV_RELATIONS.get(rel_fr) or _INV_RELATIONS.get(rel_fr.rstrip("s"))
-    if not rels:
+            rel_fr, valeur = _normalise(m.group(2)), m.group(3)
+        else:
+            m = _INV_DE_QUEL_RE.match(texte.strip())
+            if m:
+                rel_fr, valeur = _normalise(m.group(3)), m.group(2)
+        if not rel_fr or not valeur:
+            return None
+        rels = _INV_RELATIONS.get(rel_fr) or _INV_RELATIONS.get(rel_fr.rstrip("s"))
+    if not rels or not valeur:
         return None
     cible = _normalise(_strip_article(valeur.strip()))
     if not cible or len(cible) < 2:

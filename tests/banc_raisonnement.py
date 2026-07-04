@@ -63,6 +63,8 @@ CAS = [
     ("transitif-groupe", R._cap_transitif, "105 Music fait-elle partie du groupe Sony ?", "Sony Music"),
     ("inverse-capitale", R._cap_inverse, "quel pays a pour capitale Madrid ?", "Espagne"),
     ("inverse-de-quel", R._cap_inverse, "de quel pays Tokyo est la capitale ?", "Japon"),
+    ("inverse-verbe-langue", R._cap_inverse, "quels pays parlent français ?", "France"),
+    ("inverse-verbe-monnaie", R._cap_inverse, "dans quel pays utilise-t-on le yen ?", "Japon"),
     ("temporel", R._cap_temporel, "quel est le plus ancien entre la bataille de Marignan et la bataille de Verdun ?", "1515"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
