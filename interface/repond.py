@@ -2264,6 +2264,61 @@ def _relations_definition() -> list:
     return _DEF_RELS_CACHE
 
 
+# ————— RECHERCHE INVERSE : « quel PAYS a pour capitale Madrid ? » / « de quel pays Tokyo est la capitale ? » —————
+# On part d'une VALEUR (Madrid) et on remonte à l'ENTITÉ (Espagne) via l'index inverse d'une relation connue.
+# TYPE (« pays », « ville »…) + nom de relation FR -> relation réelle. FAUX=0 : ne rend que des couples stockés ;
+# multi-valué listé (« quels pays ont pour monnaie l'euro » -> tous) ; index > 64 Mo -> abstention (garde RAM).
+_INV_RELATIONS = {
+    "capitale": ("capitale",), "monnaie": ("monnaie",), "president": ("president_pays",),
+    "langue": ("langue_officielle",), "hymne": ("hymne_national",), "continent": ("continent",),
+    "gentile": ("gentile",), "point culminant": ("point_culminant",), "indicatif": ("indicatif_pays",),
+}
+# forme 1 : « quel TYPE a pour REL VALEUR ? » / « quel TYPE a comme REL VALEUR ? »
+_INV_A_POUR_RE = re.compile(
+    r"^(?:quel(?:le|s|les)?)\s+(pays|ville|etat|nation|monnaie|langue|continent)\s+"
+    r"a\s+(?:pour|comme)\s+([a-zà-ÿ' ]+?)\s+(.+?)\s*\??\s*$", re.I)
+# forme 2 : « de quel TYPE VALEUR est(-elle) (la/le) REL ? »
+_INV_DE_QUEL_RE = re.compile(
+    r"^de\s+quel(?:le|s|les)?\s+(pays|ville|etat|nation|continent)\s+(.+?)\s+"
+    r"est(?:[- ](?:elle|il|ce))?\s+(?:la\s+|le\s+|l['’]\s*|un\s+|une\s+)?([a-zà-ÿ' ]+?)\s*\??\s*$", re.I)
+
+
+def _cap_inverse(texte: str):
+    """RECHERCHE INVERSE d'une relation : de la VALEUR vers l'ENTITÉ. « quel pays a pour capitale Madrid ? » ->
+    Espagne ; « de quel pays Tokyo est la capitale ? » -> Japon. FAUX=0 : couples réellement stockés, listés si
+    plusieurs ; None si la relation/valeur est inconnue. Complète la voie DIRECTE (« capitale de l'Espagne »)."""
+    rel_fr = valeur = None
+    m = _INV_A_POUR_RE.match(texte.strip())
+    if m:
+        rel_fr, valeur = _normalise(m.group(2)), m.group(3)
+    else:
+        m = _INV_DE_QUEL_RE.match(texte.strip())
+        if m:
+            rel_fr, valeur = _normalise(m.group(3)), m.group(2)
+    if not rel_fr or not valeur:
+        return None
+    rels = _INV_RELATIONS.get(rel_fr) or _INV_RELATIONS.get(rel_fr.rstrip("s"))
+    if not rels:
+        return None
+    cible = _normalise(_strip_article(valeur.strip()))
+    if not cible or len(cible) < 2:
+        return None
+    for rel in rels:
+        cell = _charge_reverse(rel).get(cible)
+        if cell and cell[1]:
+            ents = cell[1]
+            if len(ents) == 1:
+                try:
+                    import realisation_fr as _RF
+                    return _RF.article_pays(ents[0], majuscule=True) + "."
+                except Exception:
+                    return ents[0] + "."
+            tete = ", ".join(ents[:20])
+            suite = " …" if len(ents) > 20 else ""
+            return "%d réponses : %s%s." % (len(ents), tete, suite)
+    return None
+
+
 def _cap_definition(texte: str):
     """« C'est quoi X ? » / « qu'est-ce qu'un X ? » / « définition de X » -> définition VÉRIFIÉE de la base
     (definition_nom : 292k+ noms du Wiktionnaire, puis definition_* de domaine). FAUX=0 : texte réel ou None."""
@@ -3111,7 +3166,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
