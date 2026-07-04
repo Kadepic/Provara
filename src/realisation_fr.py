@@ -94,3 +94,58 @@ def article(mot: str, genre: str = None, majuscule: bool = False) -> str:
 
 def article_pays(pays: str, majuscule: bool = False) -> str:
     return article(pays, genre=genre_pays(pays), majuscule=majuscule)
+
+
+_GENRE_MOT = None       # {mot_normalisé : 'm'|'f'} depuis lexique_fr_pos.jsonl (19k noms) — pour les NOMS COMMUNS
+
+
+def genre_mot(mot: str):
+    """Genre grammatical d'un nom commun ('m'/'f'/None) via le lexique embarqué. Pour « le chat », « la voiture »."""
+    global _GENRE_MOT
+    if _GENRE_MOT is None:
+        import json
+        import os
+        _GENRE_MOT = {}
+        base = os.path.dirname(os.path.abspath(__file__))
+        for cand in (os.path.join(base, "lexique_fr_pos.jsonl"),):
+            try:
+                with open(cand, encoding="utf-8") as fh:
+                    for ligne in fh:
+                        ligne = ligne.strip()
+                        if not ligne:
+                            continue
+                        try:
+                            o = json.loads(ligne)
+                        except ValueError:
+                            continue
+                        m, g = o.get("mot"), o.get("genre")
+                        if m and g in ("masculin", "féminin"):
+                            _GENRE_MOT.setdefault(_sa(m).lower(), "m" if g == "masculin" else "f")
+            except OSError:
+                pass
+    return _GENRE_MOT.get(_sa(mot).lower())
+
+
+def genre_maladie(mot: str) -> str:
+    """Genre d'un nom de maladie ('m'/'f'). Lexique d'abord, puis suffixes médicaux fiables (grippe→f, paludisme→m,
+    amibiase→f, diabète→m). Défaut : -e final → féminin, sinon masculin (heuristique française générale)."""
+    g = genre_mot(mot)
+    if g:
+        return g
+    n = _sa(mot).lower().strip()
+    if n.endswith(("ite", "ose", "ase", "emie", "algie", "pathie", "plegie", "phobie", "asthenie", "urie",
+                   "rrhee", "ectomie", "tomie", "ie", "ade", "ure", "rose", "ole", "elle")):
+        return "f"
+    if n.endswith(("isme", "ome", "ospasme", "ere", "er", "at", "us", "ma")):
+        return "m"
+    return "f" if n.endswith("e") else "m"
+
+
+def un_nom(mot: str) -> str:
+    """« un/une <nom commun> » selon le genre du lexique (défaut 'un'). Ex. « un mammifère », « une voiture »."""
+    return ("une " if genre_mot(mot) == "f" else "un ") + mot
+
+
+def le_nom(mot: str, majuscule: bool = False) -> str:
+    """« le/la/l' <nom commun> » selon le genre du lexique. Ex. « le chat », « la voiture », « l'oiseau »."""
+    return article(mot, genre=genre_mot(mot) or "m", majuscule=majuscule)

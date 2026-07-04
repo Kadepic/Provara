@@ -258,7 +258,14 @@ def hyponymes(categorie: str, limite: int = 30, max_prof: int = 6) -> list:
                 vus.add(e)
                 trouve.append(e)
                 q.append((e, d + 1))
-    return sorted(trouve)[:limite]
+    # NOTORIÉTÉ : les termes du lexique COMMUN (19k) d'abord (lion, tigre, léopard…), les obscurs ensuite (« engri »,
+    # « pard ») — on ne les montre que pour compléter. Excellence : une liste d'exemples RECONNAISSABLES.
+    pos = _pos()
+    communs = sorted(e for e in trouve if e in pos)
+    obscurs = sorted(e for e in trouve if e not in pos)
+    if len(communs) >= 5:                # assez d'exemples RECONNAISSABLES -> on ne montre QU'EUX (liste propre)
+        return communs[:limite]
+    return (communs + obscurs)[:limite]  # catégorie peu couverte -> on complète avec les termes rares
 
 
 def genre_commun(x: str, y: str):

@@ -468,10 +468,14 @@ def _charge_direct(relation: str) -> dict:
 # Adjectif superlatif -> relations d'attribut candidates (1re existante retenue). Domaine-extensible.
 _ADJ_ATTR = {
     "peuple": ("population_pays",), "peuplee": ("population_pays",), "peuples": ("population_pays",),
+    "peuplees": ("population_pays",),
     "grand": ("superficie_pays", "population_pays"), "grande": ("superficie_pays", "population_pays"),
-    "vaste": ("superficie_pays",), "etendu": ("superficie_pays",), "etendue": ("superficie_pays",),
-    "petit": ("superficie_pays",), "petite": ("superficie_pays",),
-    "riche": ("pib_pays", "pib_habitant_pays"),
+    "grands": ("superficie_pays", "population_pays"), "grandes": ("superficie_pays", "population_pays"),
+    "vaste": ("superficie_pays",), "vastes": ("superficie_pays",), "etendu": ("superficie_pays",),
+    "etendue": ("superficie_pays",), "etendus": ("superficie_pays",),
+    "petit": ("superficie_pays",), "petite": ("superficie_pays",), "petits": ("superficie_pays",),
+    "petites": ("superficie_pays",),
+    "riche": ("pib_pays", "pib_habitant_pays"), "riches": ("pib_pays", "pib_habitant_pays"),
 }
 # relations d'APPARTENANCE candidates par type d'entité (zone -> membres). 1re dont le reverse contient la zone.
 _APPARTENANCE = {"pays": ("continent", "region_pays"), "ville": ("pays_ville",), "montagne": ("continent_montagne",)}
@@ -522,8 +526,9 @@ _NB_MOTS = {"un": 1, "une": 1, "deux": 2, "trois": 3, "quatre": 4, "cinq": 5, "s
             "huit": 8, "neuf": 9, "dix": 10, "douze": 12, "quinze": 15, "vingt": 20}
 _CLASST_RE = re.compile(
     r"(?:les|quels?\s+sont\s+les|donne(?:[- ]moi)?\s+les|cite(?:[- ]moi)?\s+les|top)\s+"
-    r"(\d+|un|une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|douze|quinze|vingt)\s+"
-    r"(?:(\w+)\s+)?(?:les\s+|la\s+|le\s+)?(?:plus|moins)\s+(\w+)"
+    r"(?:(\d+|un|une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|douze|quinze|vingt)\s+)?"
+    r"(?:des\s+|meilleurs?\s+)?"
+    r"(?:(?!plus\b|moins\b)(\w+)\s+)?(?:les\s+|la\s+|le\s+)?(?:plus|moins)\s+(\w+)"
     r"(?:\s+(\w+))?\s+(?:de\s+l['’]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*(.+?)\s*\??\s*$", re.I)
 
 
@@ -534,7 +539,7 @@ def _cap_classement(texte: str):
     if not m:
         return None
     nb_tok, typ1, adj, typ2, zone = m.group(1), m.group(2), m.group(3), m.group(4), m.group(5).strip()
-    n = int(nb_tok) if nb_tok.isdigit() else _NB_MOTS.get(_normalise(nb_tok), 5)
+    n = 5 if not nb_tok else (int(nb_tok) if nb_tok.isdigit() else _NB_MOTS.get(_normalise(nb_tok), 5))
     maximise = "moins" not in _normalise(texte).split()
     typ = next((t for t in (_normalise(typ1 or ""), _normalise(typ2 or "")) if t in _APPARTENANCE), None)
     adjn = _normalise(adj)
@@ -556,9 +561,10 @@ def _cap_classement(texte: str):
 
 
 _COMPTE_RE = re.compile(
-    r"\bcombien\s+(?:de\s+|d['’])([\wà-ÿ'’\- ]+?)"
+    r"\bcombien\s+(?:y\s+a[- ]?t[- ]?il\s+|existe[- ]?t[- ]?il\s+|il\s+y\s+a\s+)?(?:de\s+|d['’])([\wà-ÿ'’\- ]+?)"
     r"(?:\s+(?:y\s+a[- ]?t[- ]?il|existe[- ]?t[- ]?il|il\s+y\s+a|connais[- ]?tu|as[- ]?tu))?"
-    r"(?:\s+(?:en|dans|de\s+l['’]?|du|des|de|d['’])\s+([\wà-ÿ'’\- ]+?))?\s*\??\s*$", re.I)
+    r"(?:\s+(?:en|dans|de\s+l['’]?|du|des|de|d['’]|compte\s+(?:la\s+|le\s+|l['’])?|comporte\s+(?:la\s+|le\s+|l['’])?|"
+    r"contient\s+(?:la\s+|le\s+|l['’])?)\s*([\wà-ÿ'’\- ]+?))?\s*\??\s*$", re.I)
 
 
 def _cap_comptage(texte: str):
@@ -1882,8 +1888,12 @@ def _cap_ontologie(texte: str):
             return "Oui — %s." % " → ".join(chemin) if len(chemin) >= 2 else "Oui."
         genre = _E.chaine_isa(x)
         if genre:                       # x est couvert : on énonce ce qu'on SAIT plutôt qu'un « Non » (monde ouvert)
-            return ("D'après mes données, %s est %s — je ne peux pas le rattacher à « %s »."
-                    % (x, _E.affiche(genre[0]), y))
+            try:
+                import realisation_fr as _RF
+                sujet, attr = _RF.le_nom(x, majuscule=True), _RF.un_nom(_E.affiche(genre[0]))
+            except Exception:
+                sujet, attr = x.capitalize(), _E.affiche(genre[0])
+            return "%s est %s — je ne le rattache pas à « %s »." % (sujet, attr, y)
         return None
     m = _ONTO_COMMUN_RE.search(texte)
     if m:
@@ -2116,7 +2126,9 @@ def _cap_deduction(texte: str):
 
 _PORTRAIT_RE = re.compile(
     r"^\s*(?:parle[- ]?moi\s+d[eu'’]|pr[ée]sente[- ]?(?:moi\s+)?|d[ée]cris[- ]?(?:moi\s+)?"
-    r"|dis[- ]?m['’]?en\s+plus\s+sur\s+|dis[- ]?moi\s+tout\s+sur\s+)"
+    r"|dis[- ]?m['’]?en\s+plus\s+sur\s+|dis[- ]?moi\s+tout\s+sur\s+|dis[- ]?moi\s+sur\s+"
+    r"|que\s+sais[- ]?tu\s+(?:sur|de|d['’])\s*|qu['’]?\s*sais[- ]?tu\s+(?:sur|de|d['’])\s*"
+    r"|raconte[- ]?moi\s+|parle[- ]?moi\s+de\s+)"
     r"(?:la\s+|le\s+|les\s+|l['’]|un\s+|une\s+)?(.+?)\s*\??\s*$", re.I)
 
 
@@ -2212,7 +2224,11 @@ def _cap_cause(texte: str):
     # le plus SPÉCIFIQUE (1er par priorité) porte la réponse ; on cite le type d'agent en complément s'il diffère
     principal = trouve[0][1]
     complement = next((v for r, v in trouve[1:] if _normalise(v) != _normalise(principal)), None)
-    de = "de l'" + ent if re.match(r"[aeiouyhàâäéèêëîïôöùûü]", _normalise(ent)) else "de " + ent
+    try:
+        import realisation_fr as _RF
+        de = _RF.de(ent, genre=_RF.genre_maladie(ent))     # « de la grippe », « du paludisme », « de l'amibiase »
+    except Exception:
+        de = "de l'" + ent if re.match(r"[aeiouyhàâäéèêëîïôöùûü]", _normalise(ent)) else "de " + ent
     if complement:
         return "La cause %s : %s (%s)." % (de, principal, complement)
     return "La cause %s : %s." % (de, principal)
