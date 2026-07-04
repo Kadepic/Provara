@@ -490,6 +490,106 @@ def _nombre(v):
         return None
 
 
+def _membres_attribut(typ: str, zone: str, adj: str):
+    """(paires triées desc [(entité_affichée, valeur_num)], relation_attribut) pour les membres du TYPE dans la ZONE,
+    évalués sur l'attribut de l'ADJECTIF. Mutualisé par le superlatif (top-1), le classement (top-N) et le tri.
+    FAUX=0 : compare des faits réels sur un ensemble ÉNUMÉRÉ (complet -> exact)."""
+    attr_rel = next((r for r in _ADJ_ATTR.get(adj, ()) if _charge_direct(r)), None)
+    if not attr_rel:
+        return None, None
+    membres = None
+    for rel_app in _APPARTENANCE.get(typ, ()):
+        rev = _charge_reverse(rel_app)
+        hit = rev.get(_normalise(zone))
+        if hit and hit[1]:
+            membres = hit[1]
+            break
+    if not membres:
+        return None, None
+    attr = _charge_direct(attr_rel)
+    paires = []
+    for ent in membres:
+        cell = attr.get(_normalise(ent))
+        if cell:
+            x = _nombre(cell[1])
+            if x is not None:
+                paires.append((cell[0], x))
+    paires.sort(key=lambda p: -p[1])
+    return paires, attr_rel
+
+
+_NB_MOTS = {"un": 1, "une": 1, "deux": 2, "trois": 3, "quatre": 4, "cinq": 5, "six": 6, "sept": 7,
+            "huit": 8, "neuf": 9, "dix": 10, "douze": 12, "quinze": 15, "vingt": 20}
+_CLASST_RE = re.compile(
+    r"(?:les|quels?\s+sont\s+les|donne(?:[- ]moi)?\s+les|cite(?:[- ]moi)?\s+les|top)\s+"
+    r"(\d+|un|une|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|douze|quinze|vingt)\s+"
+    r"(?:(\w+)\s+)?(?:les\s+|la\s+|le\s+)?(?:plus|moins)\s+(\w+)"
+    r"(?:\s+(\w+))?\s+(?:de\s+l['’]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_classement(texte: str):
+    """CLASSEMENT / TOP-N : « les 5 pays les plus peuplés d'Afrique » -> tri EXACT + valeurs. La machine ORDONNE des
+    faits réels ; un LLM devine l'ordre. FAUX=0 : sur un ensemble énuméré, l'ordre est certain."""
+    m = _CLASST_RE.search(texte)
+    if not m:
+        return None
+    nb_tok, typ1, adj, typ2, zone = m.group(1), m.group(2), m.group(3), m.group(4), m.group(5).strip()
+    n = int(nb_tok) if nb_tok.isdigit() else _NB_MOTS.get(_normalise(nb_tok), 5)
+    maximise = "moins" not in _normalise(texte).split()
+    typ = next((t for t in (_normalise(typ1 or ""), _normalise(typ2 or "")) if t in _APPARTENANCE), None)
+    adjn = _normalise(adj)
+    if adjn not in _ADJ_ATTR and _normalise(typ2 or "") in _ADJ_ATTR:
+        adjn = _normalise(typ2)
+    if not typ or adjn not in _ADJ_ATTR:
+        return None
+    paires, _ = _membres_attribut(typ, _strip_article(zone), adjn)
+    if not paires or len(paires) < 2:
+        return None
+    classe = paires if maximise else list(reversed(paires))
+    n = max(1, min(n, len(classe)))
+    lignes = ["%d. %s (%s)" % (i + 1, e, ("%d" % v if float(v).is_integer() else "%g" % v))
+              for i, (e, v) in enumerate(classe[:n])]
+    sens = "plus" if maximise else "moins"
+    pluriel = typ if typ.endswith(("s", "x")) else typ + "s"
+    de = "d'" + zone if re.match(r"[aeiouyhàâäéèêëîïôöùûü]", _normalise(zone)) else "de " + zone
+    return "Les %d %s les %s %s %s :\n%s" % (n, pluriel, sens, adj, de, "\n".join(lignes))
+
+
+_COMPTE_RE = re.compile(
+    r"\bcombien\s+(?:de\s+|d['’])([\wà-ÿ'’\- ]+?)"
+    r"(?:\s+(?:y\s+a[- ]?t[- ]?il|existe[- ]?t[- ]?il|il\s+y\s+a|connais[- ]?tu|as[- ]?tu))?"
+    r"(?:\s+(?:en|dans|de\s+l['’]?|du|des|de|d['’])\s+([\wà-ÿ'’\- ]+?))?\s*\??\s*$", re.I)
+
+
+def _cap_comptage(texte: str):
+    """COMPTAGE EXACT : « combien de pays en Afrique ? » -> 54 (compté, pas deviné) ; « combien de félins ? » ->
+    nombre d'hyponymes réels. C'est LE point fort machine vs LLM (les LLM comptent mal). FAUX=0 : compte des entités
+    RÉELLES d'un ensemble énuméré ; abstention si l'ensemble n'est pas identifiable."""
+    m = _COMPTE_RE.search(texte)
+    if not m:
+        return None
+    typ = _strip_article((m.group(1) or "").strip())
+    zone = _strip_article((m.group(2) or "").strip()) if m.group(2) else None
+    if not typ or len(typ) < 3:
+        return None
+    typn = _normalise(typ)
+    sing = typn[:-1] if (typn.endswith(("s", "x")) and len(typn) > 4) else typn
+    if zone:                                     # membres d'un type dans une zone (pays en Afrique…)
+        for rel_app in _APPARTENANCE.get(sing, _APPARTENANCE.get(typn, ())):
+            hit = _charge_reverse(rel_app).get(_normalise(zone))
+            if hit and hit[1]:
+                return "%d %s en %s (compté exactement dans mes données)." % (len(hit[1]), typ, zone)
+        return None
+    try:                                         # sans zone : nombre d'hyponymes réels (« combien de félins »)
+        import est_un as _E
+        hy = _E.hyponymes(sing, limite=100000)
+    except Exception:
+        hy = []
+    if len(hy) >= 3:
+        return "Je connais %d %s dans mes données." % (len(hy), typ)
+    return None
+
+
 def _superlatif_argmax(expr: str):
     """FEUILLE SUPERLATIVE par ARGMAX BORNÉ : « le pays le plus peuplé d'Afrique » -> Nigeria, en comparant TOUS les
     membres énumérés (les pays d'Afrique) sur un attribut vérifié (population). SOUND tant que l'ensemble est complet :
@@ -1228,6 +1328,12 @@ def _politesse(texte: str) -> str | None:
 # déclenche QUE sur une question méta PURE (« Sais-tu quelle est la capitale… » contient du factuel -> pas de match).
 _META_PATRONS = [
     (re.compile(r"(?:qui es[- ]?tu|tu es qui|qui est tu|c est quoi toi|tu es quoi|presente toi)"), "identite"),
+    (re.compile(r"(?:qui t['e ]?a (?:cree|creee|developpe|developpee|fait|concu|programme|code|construit|imagine)|"
+                r"qui est ton (?:createur|auteur|developpeur|concepteur|createur)|"
+                r"ton (?:createur|auteur|developpeur) c est qui|"
+                r"par qui (?:as[- ]?tu|es[- ]?tu|a[- ]?t[- ]?il) ete (?:cree|creee|fait|developpe|programme)|"
+                r"qui a (?:cree|creee|fait|developpe|code|concu|imagine) (?:provara|cette ia|ce (?:programme|projet|logiciel))|"
+                r"c est qui (?:ton createur|qui t a cree))"), "createur"),
     (re.compile(r"(?:quel est ton nom|comment t['e ]?appelles?[- ]?tu|comment tu t['e ]?appelles|ton nom c est quoi|"
                 r"tu t appelles comment)"), "nom"),
     (re.compile(r"(?:que sais[- ]?tu faire|que peux[- ]?tu faire|tu sais faire quoi|tu peux faire quoi|"
@@ -1240,8 +1346,11 @@ _META_PATRONS = [
      "fonctionnement"),
 ]
 _META_REPONSES = {
-    "identite": "Je suis Provara, un assistant conversationnel local et souverain. Je réponds à partir d'une base de "
-                "faits vérifiés (sans GPU, hors-ligne), et je préfère dire que je ne sais pas plutôt que d'inventer.",
+    "identite": "Je suis Provara, un assistant conversationnel local et souverain, créé par Yohan Fauck "
+                "(https://yohanfauck.fr/). Je réponds à partir d'une base de faits vérifiés (sans GPU, hors-ligne), "
+                "et je préfère dire que je ne sais pas plutôt que d'inventer.",
+    "createur": "J'ai été créé par Yohan Fauck. 👋 Découvre son travail — LinkedIn : "
+                "https://www.linkedin.com/in/yohan-f-1102588a/ · Portfolio : https://yohanfauck.fr/",
     "nom": "Je m'appelle Provara. Je réponds à partir d'une base de faits vérifiés, et je préfère dire que je ne sais pas plutôt que d'inventer.",
     "capacites": "Je réponds à des questions factuelles (géographie, chimie, langues, conversions d'unités, etc.) "
                  "à partir de faits vérifiés, et je m'abstiens quand je n'ai pas l'information.",
@@ -1873,6 +1982,54 @@ def _cap_hyponymes(texte: str):
     return "Par exemple : %s%s." % (montre, suffixe)
 
 
+_PORTRAIT_RE = re.compile(
+    r"^\s*(?:parle[- ]?moi\s+d[eu'’]|pr[ée]sente[- ]?(?:moi\s+)?|d[ée]cris[- ]?(?:moi\s+)?"
+    r"|dis[- ]?m['’]?en\s+plus\s+sur\s+|dis[- ]?moi\s+tout\s+sur\s+)"
+    r"(?:la\s+|le\s+|les\s+|l['’]|un\s+|une\s+)?(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_portrait(texte: str):
+    """RÉPONSE DÉVELOPPÉE (« parle-moi du Nigéria ») : assemble PLUSIEURS faits vérifiés + un INSIGHT calculé (rang
+    dans son continent). Profondeur par la LARGEUR, pas par la génération — chaque brique est vérifiable (FAUX=0).
+    Gate : ne se déclenche que pour un PAYS connu (relation `continent`) ; sinon None -> definition/fiche prennent le relais."""
+    m = _PORTRAIT_RE.match(texte)
+    if not m:
+        return None
+    ne = _normalise(_strip_article(m.group(1).strip()))
+    cont = _charge_direct("continent").get(ne)
+    if not cont:
+        return None
+    nom, continent = cont[0], cont[1]
+    voy = bool(re.match(r"[aeiouyhàâäéèêëîïôöùûü]", _normalise(continent)))
+    phrases = ["%s est un pays d'%s" % (nom, continent) if voy else "%s est un pays de %s" % (nom, continent)]
+    cap = _charge_direct("capitale").get(ne)
+    if cap:
+        phrases[0] += ", dont la capitale est %s" % cap[1]
+    phrases[0] += "."
+    pop = _charge_direct("population_pays").get(ne)
+    if pop and _nombre(pop[1]) is not None:
+        n = int(_nombre(pop[1]))
+        rang = None
+        paires, _ = _membres_attribut("pays", continent, "peuple")
+        if paires:
+            for i, (e, _v) in enumerate(paires):
+                if _normalise(e) == ne:
+                    rang = (i + 1, len(paires))
+                    break
+        s_pop = "Sa population est d'environ %s habitants" % format(n, ",d").replace(",", " ")
+        if rang and rang[0] == 1:
+            s_pop += " — c'est le pays le plus peuplé d'%s" % continent if voy else " — c'est le pays le plus peuplé de %s" % continent
+        elif rang:
+            s_pop += " (le %dᵉ plus peuplé de son continent sur %d)" % rang
+        phrases.append(s_pop + ".")
+    dev = _charge_direct("monnaie").get(ne)          # « monnaie » = devise MONÉTAIRE (yen, naira…) ; PAS `devise_pays`
+    if dev:                                          # (qui est le motto national : « Liberté, Égalité, Fraternité »)
+        phrases.append("Sa monnaie est %s." % str(dev[1]).lower())
+    if len(phrases) < 2:
+        return None                          # trop peu de matière -> laisse la voie normale
+    return " ".join(phrases)
+
+
 _CAUSE_RE = re.compile(
     r"\b(?:cause[s]?|provoque\w*|responsable|agent[s]?|declenche\w*|entrain\w*|etiologie|du[e]?\s+a|due\s+a|"
     r"qu['’ ]?est[- ]ce\s+qui\s+(?:cause|provoque|declenche|donne))\b", re.I)
@@ -2318,7 +2475,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_portrait, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
