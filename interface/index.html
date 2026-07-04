@@ -556,7 +556,7 @@ chargeListe();
   }
   async function tick() {
     let s;
-    try { s = await (await fetch("/api/status", { cache: "no-store" })).json(); }
+    try { s = await (await fetch("/api/status?t=" + Date.now(), { cache: "no-store" })).json(); }
     catch { setTimeout(tick, 1500); return; }
     if (s.installation) { vueInstallation(s); setTimeout(tick, 1200); return; }
     if (s.redemarrage) { vueInstallee(); return; }
