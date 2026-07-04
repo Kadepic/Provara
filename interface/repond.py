@@ -522,6 +522,285 @@ def _membres_attribut(typ: str, zone: str, adj: str):
     return paires, attr_rel
 
 
+_ANALOGIE_RE = re.compile(
+    r"^\s*(.+?)\s+est\s+(?:aux?\s+|[àa]\s+(?:la\s+|le\s+|les\s+|l['’])?)(.+?)\s+ce\s+que\s+(.+?)\s+"
+    r"est\s+(?:aux?|[àa])\s*(?:quoi|qui)?\s*\??\s*$", re.I)
+# relations candidates pour l'analogie (fonctionnelles, un-à-un fréquentes). Cherchées dans cet ordre.
+_REL_ANALOGIE = ("capitale", "monnaie", "continent", "langue_officielle", "hymne", "gentile", "president_pays",
+                 "point_culminant", "plus_grande_ville", "monnaie_pays")
+
+
+def _cap_analogie(texte: str):
+    """RAISONNEMENT ANALOGIQUE : « Paris est à la France ce que Berlin est à … ? » -> la machine DÉCOUVRE la relation
+    qui relie les deux premiers (capitale) et la TRANSFÈRE au troisième. FAUX=0 : la relation est un fait vérifié et
+    la réponse aussi ; sinon None. C'est une correspondance de STRUCTURE, pas une devinette."""
+    m = _ANALOGIE_RE.match(texte)
+    if not m:
+        return None
+    a, b, c = (_strip_article(m.group(i).strip()) for i in (1, 2, 3))
+    na, nb, nc = _normalise(a), _normalise(b), _normalise(c)
+    if not (na and nb and nc):
+        return None
+    for rel in _REL_ANALOGIE:
+        direct = _charge_direct(rel)
+        lbl = rel.replace("_", " ")
+        # sens B->A (« rel de B = A », ex. capitale de France = Paris) : transférer à C via le reverse (qui a rel=C ?)
+        cell = direct.get(nb)
+        if cell and _normalise(cell[1]) == na:
+            hit = _charge_reverse(rel).get(nc)
+            if hit and hit[1] and len(hit[1]) == 1:
+                rep = hit[1][0]
+                return "%s — %s est à %s ce que %s est à %s (relation : %s)." % (rep, c, rep, a, b, lbl)
+        # sens A->B (« rel de A = B ») : transférer à C par lookup direct (rel de C = ?)
+        cell = direct.get(na)
+        if cell and _normalise(cell[1]) == nb:
+            cellc = direct.get(nc)
+            if cellc and cellc[1]:
+                return "%s — %s est à %s ce que %s est à %s (relation : %s)." % (cellc[1], c, cellc[1], a, b, lbl)
+    return None
+
+
+_DATE_RELS_CACHE = None
+
+
+def _relations_date() -> list:
+    """Relations de DATES de la base (annee_*/date_*), les plus courantes d'abord. Pour situer un événement dans le temps."""
+    global _DATE_RELS_CACHE
+    if _DATE_RELS_CACHE is None:
+        prio = ["annee_debut_bataille", "annee_debut_guerre", "annee_debut_siege", "annee_fondation_pays",
+                "annee_signature_traite", "annee_debut_regne", "annee_debut_revolution", "annee_naissance",
+                "annee_debut_operation_militaire", "annee_fondation_organisation_internationale"]
+        try:
+            rels = [f[:-6] for f in os.listdir(_DOSSIER_LECTEUR)
+                    if f.endswith(".jsonl") and (f.startswith("annee_") or f.startswith("date_") or f.startswith("an_"))]
+        except OSError:
+            rels = []
+        _DATE_RELS_CACHE = [r for r in prio if r in rels] + [r for r in rels if r not in prio]
+    return _DATE_RELS_CACHE
+
+
+def _annee_de(entite: str):
+    """Année associée à un événement/entité, cherchée dans les relations de dates (1re trouvée). (annee:int, affiché) ou None."""
+    ne = _normalise(entite)
+    for rel in _relations_date():
+        cell = _charge_direct(rel).get(ne)
+        if cell:
+            a = _nombre(cell[1])
+            if a is not None:
+                return int(a), cell[0]
+    return None, None
+
+
+_TEMPO_AVANT_RE = re.compile(
+    r"^\s*(?:est[- ]ce\s+que\s+)?(.+?)\s+(?:a[- ]t[- ](?:il|elle)|est[- ](?:il|elle)|a|est)\s+"
+    r"(?:eu\s+lieu\s+|commenc[ée]+e?\s+|d[ée]but[ée]+e?\s+)?(avant|apr[eè]s)\s+(.+?)\s*\??\s*$", re.I)
+_TEMPO_ENTRE_RE = re.compile(
+    r"(?:quel|qu[e'’]?\s*est[- ]ce\s+qui|lequel|laquelle|qui)\b[^?]*?"
+    r"(plus\s+ancien\w*|plus\s+r[ée]cent\w*|plus\s+vieux|plus\s+vieille|premier|premi[èe]re|"
+    r"arriv[ée]+\s+(?:en\s+)?premi|en\s+premier|le\s+plus\s+t[ôo]t|le\s+plus\s+tard)\b[^?]*?"
+    r"(?:entre|de|parmi|:)\s+(.+?)\s+(?:et|ou)\s+(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_temporel(texte: str):
+    """RAISONNEMENT TEMPOREL : « quel est le plus ancien entre la bataille de Marignan et Verdun ? », « Marignan
+    a-t-elle eu lieu avant Verdun ? ». Compare des DATES vérifiées et montre les années. FAUX=0 : jamais de verdict
+    sans les deux dates ; on énonce le vrai ordre si l'assertion est fausse."""
+    _maj = lambda s: (s[:1].upper() + s[1:]) if s else s
+    m = _TEMPO_AVANT_RE.match(texte)
+    if m:
+        x, rel_mot, y = _strip_article(m.group(1).strip()), _normalise(m.group(2)), _strip_article(m.group(3).strip())
+        ax, afx = _annee_de(x)
+        ay, afy = _annee_de(y)
+        if ax is None or ay is None:
+            return None
+        veut_avant = rel_mot.startswith("avant")
+        vrai = (ax < ay) if veut_avant else (ax > ay)
+        rel_txt = "avant" if veut_avant else "après"
+        inv_txt = "après" if veut_avant else "avant"
+        if ax == ay:
+            return "Les deux datent de %d — c'est la même année." % ax
+        if vrai:
+            return "Oui — %s (%d) est %s %s (%d)." % (_maj(afx), ax, rel_txt, afy, ay)
+        return "Non — %s (%d) est en fait %s %s (%d)." % (_maj(afx), ax, inv_txt, afy, ay)
+    m = _TEMPO_ENTRE_RE.search(texte)
+    if not m:
+        return None
+    critere, x, y = _normalise(m.group(1)), _strip_article(m.group(2).strip()), _strip_article(m.group(3).strip())
+    ax, afx = _annee_de(x)
+    ay, afy = _annee_de(y)
+    if ax is None or ay is None:
+        return None
+    veut_ancien = ("ancien" in critere or "vieu" in critere or "premi" in critere or "tot" in critere)
+    if ax == ay:
+        return "Les deux datent de %d — c'est la même année." % ax
+    gagnant = (afx, ax, afy, ay) if ((ax < ay) == veut_ancien) else (afy, ay, afx, ax)
+    g_aff, g_an, p_aff, p_an = gagnant
+    qualif = "le plus ancien" if veut_ancien else "le plus récent"
+    return "%s (%d) — c'est %s (%s date de %d)." % (_maj(g_aff), g_an, qualif, p_aff, p_an)
+
+
+_AGREGAT_RE = re.compile(
+    r"(?:quelle?\s+est\s+(?:la\s+|le\s+)?)?(population|superficie|pib)\s+"
+    r"(totale?|cumul[ée]+e?s?|moyenne|globale|mediane)\s+"
+    r"(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*"
+    r"(?:pays\s+(?:de\s+l['’ ]?|d['’]|d\s|du\s|des\s|de\s|en\s)\s*)?([\wà-ÿ'’\- ]+?)\s*\??\s*$", re.I)
+_AGREGAT_ADJ = {"population": "peuple", "superficie": "vaste", "pib": "riche"}
+
+
+def _cap_agregat(texte: str):
+    """AGRÉGATION EXACTE sur un ensemble énuméré : « population totale de l'Afrique ? » -> somme des populations de
+    TOUS les pays d'Afrique ; « population moyenne des pays d'Europe » -> moyenne. Un calcul qu'aucun humain ne fait
+    de tête et qu'un LLM approxime ; ici c'est exact. FAUX=0 : agrège des faits réels et dit sur combien il agrège."""
+    m = _AGREGAT_RE.search(_normalise(texte))
+    if not m:
+        return None
+    attr_mot, op_raw, zone = m.group(1), _normalise(m.group(2)), m.group(3).strip()
+    adj = _AGREGAT_ADJ.get(attr_mot)
+    if not adj:
+        return None
+    paires, attr_rel = _membres_attribut("pays", _strip_article(zone), adj)
+    if not paires or len(paires) < 2:
+        return None
+    vals = [v for _e, v in paires]
+    unite = _ATTR_UNITE.get(attr_rel, "")
+    moyenne = op_raw.startswith("moyen")
+    mediane = op_raw.startswith("median")
+    if mediane:
+        s = sorted(vals)
+        val = s[len(s) // 2] if len(s) % 2 else (s[len(s) // 2 - 1] + s[len(s) // 2]) / 2
+        libelle, mot_op = "médiane", "médiane sur"
+    elif moyenne:
+        val, libelle, mot_op = sum(vals) / len(vals), "moyenne", "moyenne sur"
+    else:
+        val, libelle, mot_op = sum(vals), "totale", "somme de"
+    txt = format(int(round(val)), ",d").replace(",", " ")
+    try:
+        import realisation_fr as _RF
+        de_zone = _RF.de(zone.strip()[:1].upper() + zone.strip()[1:], continent=True)
+    except Exception:
+        de_zone = "de " + zone
+    return "La %s %s %s : %s %s (%s %d pays)." % (attr_mot, libelle, de_zone, txt, unite, mot_op, len(paires))
+
+
+_COMPAR_RE = re.compile(
+    r"^\s*(?:est[- ]ce\s+que\s+)?(.+?)\s+est[- ](?:elle|il)\s+(plus|moins|aussi)\s+(\w+)\s+que\s+(.+?)\s*\??\s*$", re.I)
+_COMPAR2_RE = re.compile(
+    r"(?:qui|quel|quelle|lequel|laquelle)\s+est\s+(?:le\s+|la\s+)?(plus|moins)\s+(\w+)\s+"
+    r"(?:entre|de|parmi)\s+(.+?)\s+(?:et|ou)\s+(.+?)\s*\??\s*$", re.I)
+_ADJ_PETIT = frozenset("petit petite petits petites court courte courts courtes bas basse leger legere "
+                       "legers legeres faible faibles pauvre pauvres".split())
+_ATTR_UNITE = {"superficie_pays": "km²", "population_pays": "habitants", "pib_pays": "$",
+               "altitude": "m", "hauteur": "m", "longueur": "km"}
+
+
+def _valeur_attr(entite: str, attr_rel: str):
+    """Valeur NUMÉRIQUE d'un attribut pour une entité (lecture directe, insensible aux accents), ou None."""
+    cell = _charge_direct(attr_rel).get(_normalise(entite))
+    return (_nombre(cell[1]), cell[0]) if cell else (None, None)
+
+
+def _cap_comparaison(texte: str):
+    """COMPARAISON EXACTE de deux entités sur un attribut (« la France est-elle plus grande que l'Espagne ? »,
+    « qui est le plus peuplé entre l'Inde et la Chine ? »). Compare DEUX faits vérifiés et montre les valeurs.
+    FAUX=0 : jamais de confirmation sans les deux faits ; on énonce le vrai ordre si l'assertion est fausse."""
+    x = y = adj = direction = None
+    m = _COMPAR_RE.match(texte)
+    if m:
+        x, direction, adj, y = m.group(1), m.group(2), m.group(3), m.group(4)
+    else:
+        m = _COMPAR2_RE.search(texte)
+        if not m:
+            return None
+        direction, adj, x, y = m.group(1), m.group(2), m.group(3), m.group(4)
+    adjn = _normalise(adj)
+    attr_rel = next((r for r in _ADJ_ATTR.get(adjn, ()) if _charge_direct(r)), None)
+    if not attr_rel:
+        return None
+    x, y = _strip_article(x.strip()), _strip_article(y.strip())
+    vx, ax = _valeur_attr(x, attr_rel)
+    vy, ay = _valeur_attr(y, attr_rel)
+    if vx is None or vy is None:
+        return None
+    unite = _ATTR_UNITE.get(attr_rel, "")
+    fx = "%s %s" % (format(int(vx), ",d").replace(",", " "), unite) if float(vx).is_integer() else "%g %s" % (vx, unite)
+    fy = "%s %s" % (format(int(vy), ",d").replace(",", " "), unite) if float(vy).is_integer() else "%g %s" % (vy, unite)
+    try:
+        import realisation_fr as _RF
+        nx, ny = _RF.article_pays(ax), _RF.article_pays(ay)      # « la France », « l'Espagne », « l'Inde »
+    except Exception:
+        nx, ny = ax, ay
+    if direction == "aussi" or vx == vy:
+        return "%s (%s) et %s (%s) sont %ségaux sur ce critère." % (nx, fx, ny, fy, "quasi " if vx != vy else "")
+    grand_sens = adjn not in _ADJ_PETIT          # « grand/peuplé » : valeur haute = « plus » ; « petit » : inverse
+    if direction == "moins":
+        grand_sens = not grand_sens
+    passe = (vx > vy) == grand_sens
+    if passe:
+        return "Oui — %s (%s) est %s %s que %s (%s)." % (nx, fx, direction, adj, ny, fy)
+    return "Non — c'est l'inverse : %s (%s) est %s %s que %s (%s)." % (ny, fy, direction, adj, nx, fx)
+
+
+_FILTRE_RE = re.compile(
+    r"quels?\s+([a-zà-ÿ]+)\s+(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*([\wà-ÿ'’\- ]+?)\s+"
+    r"(?:ont|a|avec|comptent|possedent|abritent)\b[^0-9]*?"
+    r"(plus|moins|superieur\w*|inferieur\w*|au\s+moins|au\s+plus)\s+(?:de\s+|a\s+)?"
+    r"(\d[\d\s.,]*)\s*(milliard\w*|million\w*|millier\w*|mille)?", re.I)
+_MAGNITUDE = {"mille": 1e3, "millier": 1e3, "milliers": 1e3, "million": 1e6, "millions": 1e6,
+              "milliard": 1e9, "milliards": 1e9}
+
+
+def _cap_filtre(texte: str):
+    """FILTRAGE MULTI-CRITÈRES EXACT : « quels pays d'Afrique ont plus de 100 millions d'habitants ? » -> la machine
+    parcourt EXHAUSTIVEMENT l'ensemble énuméré et ne garde que ceux qui passent le seuil. Un LLM énumère de mémoire
+    (et se trompe) ; ici c'est exact et complet. FAUX=0 : entités réelles filtrées sur un attribut vérifié."""
+    qn = _normalise(texte)
+    m = _FILTRE_RE.search(qn)
+    if not m:
+        return None
+    typ_raw, zone, direction, nombre, magn = m.groups()
+    typ = typ_raw[:-1] if (typ_raw.endswith(("s", "x")) and len(typ_raw) > 4) else typ_raw
+    if typ not in _APPARTENANCE:
+        return None
+    if re.search(r"superficie|km2|km²|\bkm\b|vaste|grand|etendu", qn):
+        adj, unite = "vaste", "km²"
+    else:
+        adj, unite = "peuple", "habitants"
+    try:
+        seuil = float(re.sub(r"[^\d.,]", "", nombre).replace(",", ".").replace(" ", "")) * _MAGNITUDE.get(magn, 1.0)
+    except ValueError:
+        return None
+    au_dessus = direction.startswith(("plus", "superieur", "au moins"))
+    limite_incluse = direction in ("au moins", "au plus")
+    paires, _ = _membres_attribut(typ, _strip_article(zone), adj)
+    if not paires:
+        return None
+    def garde(v):
+        if au_dessus:
+            return v >= seuil if limite_incluse else v > seuil
+        return v <= seuil if limite_incluse else v < seuil
+    sel = [(e, v) for e, v in paires if garde(v)]        # paires déjà triées desc
+    pluriel = typ if typ.endswith(("s", "x")) else typ + "s"
+    zone_aff = zone.strip()[:1].upper() + zone.strip()[1:]
+    seuil_txt = format(int(seuil), ",d").replace(",", " ")
+    sens = "plus de" if au_dessus else "moins de"
+    if not sel:
+        return "Aucun %s %s n'a %s %s %s (d'après mes données)." % (typ, _RF_de(zone_aff), sens, seuil_txt, unite)
+    cap = 20
+    lignes = ["· %s (%s %s)" % (e, format(int(v), ",d").replace(",", " "), unite) for e, v in sel[:cap]]
+    reste = "\n… (%d autres)" % (len(sel) - cap) if len(sel) > cap else ""
+    entete = "%d %s %s ont %s %s %s :" % (len(sel), pluriel, _RF_de(zone_aff), sens, seuil_txt, unite)
+    return entete + "\n" + "\n".join(lignes) + reste
+
+
+def _RF_de(zone: str) -> str:
+    """« d'Afrique »/« de France »… pour un en-tête de filtre (élision/genre via realisation_fr, repli élision simple)."""
+    try:
+        import realisation_fr as _RF
+        return _RF.de(zone, continent=True)
+    except Exception:
+        return "d'" + zone if re.match(r"[aeiouyàâäéèêëîïôöùûü]", _normalise(zone)) else "de " + zone
+
+
 _NB_MOTS = {"un": 1, "une": 1, "deux": 2, "trois": 3, "quatre": 4, "cinq": 5, "six": 6, "sept": 7,
             "huit": 8, "neuf": 9, "dix": 10, "douze": 12, "quinze": 15, "vingt": 20}
 _CLASST_RE = re.compile(
@@ -2637,7 +2916,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_portrait, _cap_deduction, _cap_orbite, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
