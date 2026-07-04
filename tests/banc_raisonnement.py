@@ -70,6 +70,7 @@ CAS = [
     ("temporel", R._cap_temporel, "quel est le plus ancien entre la bataille de Marignan et la bataille de Verdun ?", "1515"),
     ("duree", R._cap_duree, "combien de temps a duré la guerre de Cent Ans ?", "116 ans"),
     ("duree-regne", R._cap_duree, "combien de temps a duré le règne de Louis XIV ?", "72 ans"),
+    ("age-deces", R._cap_age, "à quel âge est mort Napoléon Ier ?", "52 ans"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     # gardes FAUX=0

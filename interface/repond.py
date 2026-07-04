@@ -465,6 +465,50 @@ def _charge_direct(relation: str) -> dict:
     return d
 
 
+_STREAM_CACHE: dict = {}      # (relation, entite_norm) -> valeur brute | None (mémo des lookups streaming ciblés)
+_STREAM_SEUIL = 64 * 1024 * 1024     # au-delà, on NE charge PAS tout le dict (RAM) : scan ciblé à la demande
+
+
+def _lookup_valeur(relation: str, entite: str):
+    """Valeur brute d'UNE entité pour `relation`, sans matérialiser tout l'index si le fichier est ÉNORME
+    (annee_naissance_personne = 150 Mo, 3,2 M lignes). Petit fichier -> passe par _charge_direct (caché) ;
+    gros fichier -> SCAN ciblé ligne à ligne avec sortie anticipée + mémo par clé (RAM plate). None si absent."""
+    ne = _normalise(entite)
+    chemin = os.path.join(_DOSSIER_LECTEUR, relation + ".jsonl")
+    try:
+        gros = os.path.getsize(chemin) > _STREAM_SEUIL
+    except OSError:
+        return None
+    if not gros:
+        cell = _charge_direct(relation).get(ne)
+        return cell[1] if cell else None
+    clef = (relation, ne)
+    if clef in _STREAM_CACHE:
+        return _STREAM_CACHE[clef]
+    trouve = None
+    cible = '"%s"' % entite                              # pré-filtre bon marché avant le parse JSON (early skip)
+    try:
+        with open(chemin, encoding="utf-8") as fh:
+            for ligne in fh:
+                if cible not in ligne and entite not in ligne:
+                    continue
+                ligne = ligne.strip()
+                if not ligne or '"_relation"' in ligne:
+                    continue
+                try:
+                    obj = json.loads(ligne)
+                except ValueError:
+                    continue
+                e, v = obj.get("entite"), obj.get("valeur")
+                if e is not None and _normalise(e) == ne and v is not None:
+                    trouve = v
+                    break
+    except OSError:
+        trouve = None
+    _STREAM_CACHE[clef] = trouve
+    return trouve
+
+
 # Adjectif superlatif -> relations d'attribut candidates (1re existante retenue). Domaine-extensible.
 _ADJ_ATTR = {
     "peuple": ("population_pays",), "peuplee": ("population_pays",), "peuples": ("population_pays",),
@@ -728,6 +772,39 @@ def _cap_duree(texte: str):
     if n == 0:
         return "%s a eu lieu en %s (moins d'un an dans mes données)." % (sujet, borne(d))
     return "%s a duré %d an%s (de %s à %s)." % (sujet, n, "s" if n > 1 else "", borne(d), borne(f))
+
+
+# ÂGE AU DÉCÈS = année de décès − année de naissance (fait immuable, deux dates stockées). « à quel âge est
+# mort Napoléon ? » -> « 51 ans (1769 → 1821) ». Streaming ciblé (fichiers 150 Mo) -> RAM plate. FAUX=0 : None
+# si l'une des deux dates manque ; les deux années montrées.
+_AGE_RE = re.compile(
+    r"^\s*(?:[àa]\s+quel\s+[âa]ge\s+(?:est|s['’]?est|a[- ]t[- ]il|a[- ]t[- ]elle)?\s*"
+    r"(?:mort|morte|d[ée]c[ée]d[ée]e?|disparu|disparue|p[ée]ri)\s+"
+    r"|quel\s+[âa]ge\s+avait\s+.*?\s+[àa]\s+sa\s+mort\s+)"
+    r"(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_age(texte: str):
+    """ÂGE AU DÉCÈS EXACT : « à quel âge est mort Napoléon Ier ? » -> « 51 ans (de 1769 à 1821) ». Soustrait
+    l'année de naissance de l'année de décès (deux faits vérifiés). FAUX=0 : None si l'une manque ; av. J.-C. géré."""
+    m = _AGE_RE.match(texte.strip())
+    if not m:
+        return None
+    ent = _strip_article(m.group(1).strip())
+    if not ent or len(ent) < 3:
+        return None
+    vn = _lookup_valeur("annee_naissance_personne", ent)
+    vd = _lookup_valeur("annee_deces_personne", ent)
+    n, d = _nombre(vn) if vn else None, _nombre(vd) if vd else None
+    if n is None or d is None:
+        return None
+    n, d = int(n), int(d)
+    if d < n:                                            # données incohérentes -> abstention
+        return None
+    borne = lambda a: ("%d av. J.-C." % -a) if a < 0 else "%d" % a
+    age = d - n
+    sujet = ent[:1].upper() + ent[1:]
+    return "%s avait %d ans à sa mort (de %s à %s)." % (sujet, age, borne(n), borne(d))
 
 
 _AGREGAT_RE = re.compile(
@@ -3372,7 +3449,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
