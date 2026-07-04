@@ -659,6 +659,77 @@ def _cap_temporel(texte: str):
     return "%s (%d) — c'est %s (%s date de %d)." % (_maj(g_aff), g_an, qualif, p_aff, p_an)
 
 
+# DURÉE d'un événement borné = année de FIN − année de DÉBUT (familles appariées annee_debut_*/annee_fin_*).
+# « combien de temps a duré la guerre de Cent Ans ? » -> 116 ans (1337 → 1453). FAUX=0 : deux dates vérifiées
+# soustraites (sinon None) ; les deux années sont montrées (re-vérifiables).
+_DUREE_FAMILLES = ("guerre", "regne", "dynastie", "bataille", "siege", "revolution", "operation_militaire")
+_DUREE_RE = re.compile(
+    r"^\s*(?:combien\s+de\s+temps\s+(?:a|ont|a[- ]t[- ](?:il|elle|on))\s+dur[ée]+\s+"
+    r"|pendant\s+combien\s+d['’]?\s*(?:ann[ée]+es|temps)\s+.*?dur[ée]+\s+"
+    r"|quelle?\s+(?:est|[ée]tait|fut)\s+la\s+dur[ée]e\s+d[eu'’]\s*)"
+    r"(.+?)\s*\??\s*$", re.I)
+
+
+# type-word de tête à retirer pour retrouver la clé PERSONNE (« règne de Louis XIV » -> « Louis XIV » : les
+# relations de règne sont clées par le souverain, pas par « règne de … »).
+_DUREE_TYPE_TETE_RE = re.compile(
+    r"^(?:r[èe]gne|dynastie|mandat|pontificat|principat)\s+(?:du\s+|des\s+|de\s+|d['’]\s*)", re.I)
+
+
+def _duree_de(entite: str):
+    """(début:int, fin:int, affiché, famille) d'un événement borné, ou None. Essaie l'entité TELLE QUELLE puis
+    une version sans type-word de tête (« règne de Louis XIV » -> « Louis XIV »). La 1re famille où un candidat a
+    À LA FOIS un début ET une fin gagne (FAUX=0 : jamais une durée à moitié inventée)."""
+    candidats = [entite]
+    sans_type = _DUREE_TYPE_TETE_RE.sub("", entite).strip()
+    if sans_type and sans_type != entite:
+        candidats.append(sans_type)
+    for cand in candidats:
+        ne = _normalise(cand)
+        for fam in _DUREE_FAMILLES:
+            cd = _charge_direct("annee_debut_" + fam).get(ne)
+            cf = _charge_direct("annee_fin_" + fam).get(ne)
+            if cd and cf:
+                d, f = _nombre(cd[1]), _nombre(cf[1])
+                if d is not None and f is not None:
+                    return int(d), int(f), cd[0], fam
+    return None
+
+
+def _cap_duree(texte: str):
+    """DURÉE EXACTE d'un événement borné : « combien de temps a duré la guerre de Cent Ans ? » -> « 116 ans
+    (de 1337 à 1453) ». Soustrait deux dates VÉRIFIÉES d'une famille appariée. FAUX=0 : None si l'une des deux
+    dates manque ; montre les deux bornes. Gère les dates av. J.-C. (années négatives) et la durée nulle."""
+    m = _DUREE_RE.match(texte.strip())
+    if not m:
+        return None
+    ent = _strip_article(m.group(1).strip())
+    if not ent or len(ent) < 3:
+        return None
+    trouve = _duree_de(ent)
+    if not trouve:
+        return None
+    d, f, aff, fam = trouve
+    if f < d:                                            # données incohérentes -> on s'abstient plutôt qu'un négatif
+        return None
+    # sujet correct : le règne/mandat est clé par la PERSONNE -> on remet « Le règne de … » ; sinon l'entité
+    # contient déjà son type (« la guerre de … », « la bataille de … ») -> article via realisation_fr.
+    prefixe = {"regne": "Le règne de ", "dynastie": "La dynastie ", "mandat": "Le mandat de "}.get(fam)
+    if prefixe:
+        sujet = prefixe + aff
+    else:
+        try:
+            import realisation_fr as _RF
+            sujet = _RF.le_syntagme(aff, majuscule=True)
+        except Exception:
+            sujet = aff[:1].upper() + aff[1:]
+    borne = lambda a: ("%d av. J.-C." % -a) if a < 0 else "%d" % a
+    n = f - d
+    if n == 0:
+        return "%s a eu lieu en %s (moins d'un an dans mes données)." % (sujet, borne(d))
+    return "%s a duré %d an%s (de %s à %s)." % (sujet, n, "s" if n > 1 else "", borne(d), borne(f))
+
+
 _AGREGAT_RE = re.compile(
     r"(?:quelle?\s+est\s+(?:la\s+|le\s+)?)?(population|superficie|pib)\s+"
     r"(totale?|cumul[ée]+e?s?|moyenne|globale|mediane)\s+"
@@ -3301,7 +3372,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

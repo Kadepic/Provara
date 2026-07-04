@@ -68,6 +68,8 @@ CAS = [
     ("inverse-verbe-langue", R._cap_inverse, "quels pays parlent français ?", "France"),
     ("inverse-verbe-monnaie", R._cap_inverse, "dans quel pays utilise-t-on le yen ?", "Japon"),
     ("temporel", R._cap_temporel, "quel est le plus ancien entre la bataille de Marignan et la bataille de Verdun ?", "1515"),
+    ("duree", R._cap_duree, "combien de temps a duré la guerre de Cent Ans ?", "116 ans"),
+    ("duree-regne", R._cap_duree, "combien de temps a duré le règne de Louis XIV ?", "72 ans"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     # gardes FAUX=0
