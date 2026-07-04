@@ -1149,7 +1149,12 @@ def _cap_comptage(texte: str):
         for rel_app in _APPARTENANCE.get(sing, _APPARTENANCE.get(typn, ())):
             hit = _charge_reverse(rel_app).get(_normalise(zone))
             if hit and hit[1]:
-                return "%d %s en %s (compté exactement dans mes données)." % (len(hit[1]), typ, zone)
+                # FAUX=0 : « compté exactement » n'est vrai que pour un ensemble COMPLET (pays). Pour les types à
+                # membership troué (montagnes/villes), on cadre en RECALL (« je connais N … ») — on ne prétend PAS
+                # au total exhaustif (il y a bien plus de montagnes en Europe que celles que la base référence).
+                if sing in _SUPERLAT_TYPES_SÛRS:
+                    return "%d %s en %s (compté exactement dans mes données)." % (len(hit[1]), typ, zone)
+                return "Je connais %d %s en %s dans mes données (liste non exhaustive)." % (len(hit[1]), typ, zone)
         return None
     try:                                         # sans zone : nombre d'hyponymes réels (« combien de félins »)
         import est_un as _E
