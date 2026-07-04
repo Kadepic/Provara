@@ -237,7 +237,7 @@ check(r.statut == A.CLARIFICATION and "vouliez-vous dire" in r.texte,
       "faute de frappe -> l'assistant POSE la question de clarification")
 check(bool(r.attente), "clarification -> attente déclarée dans l'enveloppe")
 r = A.repond("non", "t-flux", memoire=mem_f)
-check(r.statut == A.CLARIFICATION and r.texte.startswith("D'accord — reformule"),
+check(r.statut == A.CLARIFICATION and "eformule" in r.texte,
       "« non » -> invitation à reformuler, statut CLARIFICATION (plus jamais FAIT)")
 
 # flux COMPLET : faute -> DEMANDE -> « oui » -> REJOUE la question corrigée -> vraie réponse (données réelles).
@@ -283,7 +283,8 @@ check(_REP.est_fallback("C'est noté, je m'en souviendrai. Tu pourras me le rede
       "est_fallback reconnaît l'accusé de réception")
 check(not _REP.est_fallback("Paris"), "est_fallback ne capte pas une vraie réponse")
 rr = serveur.ajoute_message(mem2, "c-leger", "Mon plat préféré est la raclette.")
-check(rr["reponse"].startswith("C'est noté"), "léger : affirmation -> accusé inchangé")
+check(rr["reponse"] in _REP._variantes("note", _REP._MSG_NOTE),
+      "léger : affirmation -> accusé de réception (famille « noté », variantes de formulation admises)")
 
 # RGPD de bout en bout : oublier une conversation purge l'état de clarification.
 A.note_clarification("c-oubli", "question secrete flauve ?", "flauve", "fleuve", "…")

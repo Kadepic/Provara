@@ -1547,7 +1547,10 @@ def _reponse_sociale(texte: str):
         if prenom: parts.append(("Hello %s! Nice to meet you." % prenom) if flags["salut"] else ("Nice to meet you, %s!" % prenom))
         elif flags["salut"]: parts.append("Hello!")
         if flags["cava"]: parts.append("I'm doing well, thank you \U0001F642.")
-        if not prenom and (flags["nom"] or flags["ident"]): parts.append("My name is Provara.")
+        if not prenom and flags["ident"]:                 # « who are you » mérite la présentation, pas juste le nom
+            parts.append("I'm Provara, a local, sovereign assistant created by Yohan Fauck. I answer from a base "
+                         "of verified facts (offline, no GPU) and I'd rather say I don't know than make things up.")
+        elif not prenom and flags["nom"]: parts.append("My name is Provara.")
         if flags["merci"] and not parts: parts.append("You're welcome!")
         parts.append("For now I answer best in FRENCH (a full English mode is on the roadmap) — "
                      "try « capitale de l'Espagne » or « population du Japon ».")
@@ -1556,7 +1559,8 @@ def _reponse_sociale(texte: str):
     if prenom: parts.append(("Bonjour %s, enchantée \U0001F642." % prenom) if flags["salut"] else ("Enchantée, %s \U0001F642." % prenom))
     elif flags["salut"]: parts.append(_varie("salut", texte, "Bonjour !"))
     if flags["cava"]: parts.append(_varie("cava", texte, "Je vais très bien, merci 🙂."))
-    if not prenom and (flags["nom"] or flags["ident"]): parts.append("Je m'appelle Provara.")
+    if not prenom and flags["ident"]: parts.append(_META_REPONSES["identite"])  # « qui es-tu » -> vraie présentation
+    elif not prenom and flags["nom"]: parts.append("Je m'appelle Provara.")
     if flags["merci"] and not parts: parts.append("Avec plaisir !")
     parts.append(_varie("invite", texte, "Pose-moi une question et je te réponds avec ce que je sais."))
     return " ".join(parts)
@@ -2833,6 +2837,24 @@ def _ajuste_registre(reponse: str, conv_id: str, profondeur: int) -> str:
     return reponse
 
 
+def _pose_did_you_mean(t: str, conv_id):
+    """Question de clarification « vouliez-vous dire … ? » sur le mot douteux de `t`, avec état EN ATTENTE
+    (le « oui » du tour suivant rejoue la question corrigée via assistant_nl), ou None si aucun mot suspect.
+    Message GÉNÉRIQUE (le did-you-mean est tous-domaines)."""
+    sugg = _suggere_type(t)
+    if not sugg:
+        return None
+    rep_clarif = (f"{_MSG_DYM_PREFIXE}{sugg[0]} » — vouliez-vous dire « {sugg[1]} » ? "
+                  f"Réponds « oui » et je réponds directement, ou reformule.")
+    try:   # état de clarification EN ATTENTE (le « oui » du tour suivant rejoue la question corrigée)
+        import assistant_nl
+        assistant_nl.note_clarification(conv_id, t, sugg[0], sugg[1], rep_clarif)
+    except Exception:
+        rep_clarif = (f"{_MSG_DYM_PREFIXE}{sugg[0]} » — vouliez-vous dire « {sugg[1]} » ? "
+                      f"Reformule et je réponds.")
+    return rep_clarif
+
+
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     """Enveloppe : calcule la réponse du noyau puis ADAPTE son registre au contexte (concision = zéro déchet ;
     profondeur allouée selon le besoin). Suit la profondeur de conversation par `conv_id`."""
@@ -2879,7 +2901,18 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     #       l'intention lisible malgré les fautes AVANT tout matching (« commen vas-tu » -> « comment vas-tu »,
     #       « kapitale de la France » -> « capitale de la France »). FAUX=0 : ne corrige que vers des mots-outils /
     #       interrogatifs / têtes de relations, jamais une entité ni un mot FR valide -> aucun fait altéré.
-    t = _guerit_entree(t)
+    #       AMBITIEUSE MAIS HONNÊTE : la lecture corrigée est TENTÉE d'abord (réponse vérifiée directe, zéro
+    #       friction) ; si elle n'aboutit à RIEN (abstention/accusé), on ne corrige pas en silence — on POSE la
+    #       question (« vouliez-vous dire … ? ») sur le mot d'origine, état rejouable au tour suivant.
+    t_soin = _guerit_entree(t)
+    if t_soin != t:
+        rep_soin = _repond_noyau(memoire, conv_id, t_soin, pleine=pleine)
+        if rep_soin and not est_fallback(rep_soin):
+            return rep_soin
+        rep_clarif = _pose_did_you_mean(t, conv_id)
+        if rep_clarif:
+            return rep_clarif
+        return rep_soin
     #   (0) POLITESSE (salutation/merci/adieu/« ça va ») — réponse polie immédiate, AVANT tout traitement factuel.
     #       Ne se déclenche que si le message est ENTIÈREMENT de la politesse (sinon la vraie question passe).
     poli = _politesse(t)
@@ -3096,16 +3129,8 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         #   (2b) DID-YOU-MEAN — avant d'abandonner : un mot ressemble-t-il à un mot-type CONNU (faute de frappe) ?
         #        Message GÉNÉRIQUE (le did-you-mean est tous-domaines ; l'ancien texte géo « précise le pays et je
         #        liste » était incohérent quand la suggestion n'était pas géo, ex « qui a écrit … »).
-        sugg = _suggere_type(t)
-        if sugg:
-            rep_clarif = (f"{_MSG_DYM_PREFIXE}{sugg[0]} » — vouliez-vous dire « {sugg[1]} » ? "
-                          f"Réponds « oui » et je réponds directement, ou reformule.")
-            try:   # état de clarification EN ATTENTE (le « oui » du tour suivant rejoue la question corrigée)
-                import assistant_nl
-                assistant_nl.note_clarification(conv_id, t, sugg[0], sugg[1], rep_clarif)
-            except Exception:
-                rep_clarif = (f"{_MSG_DYM_PREFIXE}{sugg[0]} » — vouliez-vous dire « {sugg[1]} » ? "
-                              f"Reformule et je réponds.")
+        rep_clarif = _pose_did_you_mean(t, conv_id)
+        if rep_clarif:
             return rep_clarif
 
     #   (2c) ASSISTANT AUTONOME (routeur de bornage) — la cascade factuelle vérifiée ET la mémoire n'ont RIEN :

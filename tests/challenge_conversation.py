@@ -66,7 +66,8 @@ def classe(rep: str) -> str:
         return ABSTENTION
     if any(s in b for s in ("bonjour", "je vais très bien", "à bientôt", "avec plaisir", "hello")):
         return SOCIAL
-    if "je m'appelle verax" in b or "je suis un" in b or "je réponds depuis" in b:
+    if ("je m'appelle provara" in b or "je suis provara" in b or "je suis un" in b
+            or "je réponds depuis" in b or "je réponds à partir" in b):
         return META
     # réponse COURTE et directe, sans marqueur d'échec -> réponse factuelle nue (« Madrid », « Paris »)
     if 0 < len(rep.strip()) <= 60 and "\n" not in rep.strip():

@@ -367,7 +367,12 @@ def qualifie_texte(texte: str) -> Reponse | None:
     R = _module_repond()
     if R.est_fallback(texte):
         return Reponse(HORS, texte)
-    if texte == getattr(R, "_MSG_REFUS", None):
+    _refus = getattr(R, "_MSG_REFUS", None)
+    try:                                                     # les refus sont VARIÉS par formulation.py : reconnaître
+        _refus_tous = set(R._variantes("refus", _refus))     # toute la famille, pas seulement le libellé historique
+    except Exception:
+        _refus_tous = set()
+    if texte == _refus or texte in _refus_tous:
         return Reponse(CLARIFICATION, texte, attente="reformulation")
     if texte.startswith(getattr(R, "_MSG_RAPPEL_PREFIXE", "D'après ce que tu m'as dit : ")):
         return Reponse(SUPPOSITION, texte,
