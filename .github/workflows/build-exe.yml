@@ -21,7 +21,7 @@ jobs:
         run: echo "$GITHUB_SHA" > VERSION_BUILD.txt
       - name: Build VERAX.exe
         run: >
-          pyinstaller --onefile --name VERAX
+          pyinstaller --onefile --name VERAX --noconsole
           --paths src --paths ingestion --paths interface
           --hidden-import _precharge_verax
           --hidden-import ia --hidden-import lecteur --hidden-import base_faits

@@ -74,7 +74,7 @@ python3 ingestion/ingere_elements_ptjson.py   # ingère les 118 éléments chimi
 
 **Prérequis** — c'est tout : **Python 3.10+**, aucune bibliothèque tierce, pas de `pip install`, pas de GPU. (Linux, macOS ou Windows.)
 
-**Windows** — télécharge `VERAX.exe` depuis la page [Releases](https://github.com/Verax-IA/Verax/releases) et **double-clique dessus**. Aucun Python, aucune installation. *(Depuis les sources à la place : double-clique `Lancer_VERAX.bat`, qui nécessite Python installé.)*
+**Windows** — télécharge `VERAX.exe` depuis la page [Releases](https://github.com/Verax-IA/Verax/releases) et **double-clique dessus**. Aucun Python, aucune installation. Il s'ouvre dans ton navigateur et fonctionne **tout de suite** sur un **échantillon** embarqué (~1 M de faits) — sans attente. Pour débloquer la **base complète de 72 M de faits**, clique sur **« Base complète »** dans l'interface : un téléchargement **unique** (environ **6 Go d'espace disque libre**, **15 à 20 minutes**) que tu peux aussi ignorer. Une fenêtre de chargement t'informe en continu ; l'application tourne en mode **fenêtré** (pas de fenêtre console) et propose un bouton **Quitter**. *(Depuis les sources à la place : double-clique `Lancer_VERAX.bat`, qui nécessite Python installé.)*
 
 **Linux / macOS** — depuis les sources :
 

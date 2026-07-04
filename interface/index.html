@@ -475,6 +475,146 @@ $("#sel-langue").onchange = async (e) => {
 })();
 
 chargeListe();
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  MODALE : chargement de l'IA + installation OPTIONNELLE de la base complète 72M
+//  Sonde /api/status, s'affiche tant que l'IA n'est pas prête, montre la
+//  progression d'un téléchargement, propose la base complète, gère le redémarrage.
+// ─────────────────────────────────────────────────────────────────────────────
+(() => {
+  const ov = document.getElementById("verax-modale");
+  const card = document.getElementById("vm-card");
+  if (!ov || !card) return;
+  let offreVue = false;
+  try { offreVue = localStorage.getItem("verax_offre_vue") === "1"; } catch {}
+  const html = (s) => { card.innerHTML = s; };
+  const montre = () => ov.classList.add("on");
+  const cache = () => ov.classList.remove("on");
+
+  function vueChargement(s) {
+    html(`<div class="vm-spin"></div><h3>VERAX se prépare…</h3><p>${(s && s.detail) || "Chargement de la connaissance…"}</p>`);
+    montre();
+  }
+  function vueInstallation(s) {
+    const pct = (s && s.pct != null) ? s.pct : null;
+    const bar = pct == null
+      ? `<div class="vm-bar indet"><i></i></div>`
+      : `<div class="vm-bar"><i style="width:${pct}%"></i></div><div class="vm-pct">${pct}%</div>`;
+    html(`<div class="vm-ic">⬇️</div><h3>Installation de la base complète</h3>
+      <p>${(s && s.detail) || "Installation en cours…"}</p>${bar}
+      <p class="vm-note">Ne fermez pas VERAX. C'est long (15 à 20 minutes), mais UNIQUEMENT cette première fois : les prochains lancements seront quasi instantanés.</p>`);
+    montre();
+  }
+  function vueInstallee() {
+    html(`<div class="vm-ic">✅</div><h3>Base complète installée</h3>
+      <p>72 millions de faits sont prêts. VERAX doit redémarrer pour les activer.</p>
+      <div class="vm-btns"><button id="vm-redem" class="vm-b vm-b-p">Activer maintenant</button>
+      <button id="vm-plus-tard2" class="vm-b">Au prochain lancement</button></div>`);
+    montre();
+    document.getElementById("vm-redem").onclick = async () => {
+      html(`<div class="vm-spin"></div><h3>Redémarrage de VERAX…</h3><p>La page se rechargera automatiquement.</p>`);
+      try { await fetch("/api/redemarrer", { method: "POST" }); } catch {}
+      for (let i = 0; i < 160; i++) { await new Promise(r => setTimeout(r, 1500)); try { const r = await fetch("/api/status", { cache: "no-store" }); if (r.ok) break; } catch {} }
+      location.reload();
+    };
+    document.getElementById("vm-plus-tard2").onclick = cache;
+  }
+  function vueErreur(s) {
+    html(`<div class="vm-ic">⚠️</div><h3>Installation impossible</h3><p>${(s && s.detail) || "Une erreur est survenue."}</p>
+      <div class="vm-btns"><button id="vm-retry" class="vm-b vm-b-p">Réessayer</button>
+      <button id="vm-close-e" class="vm-b">Continuer sur l'échantillon</button></div>`);
+    montre();
+    document.getElementById("vm-retry").onclick = lancerInstall;
+    document.getElementById("vm-close-e").onclick = cache;
+  }
+  function vueOffre() {
+    html(`<div class="vm-ic">🧠</div><h3>Passer à la base complète&nbsp;?</h3>
+      <p>VERAX fonctionne déjà sur un échantillon. Pour débloquer <b>72 millions de faits vérifiés</b>, installe la base complète.</p>
+      <ul class="vm-list"><li>📦 environ <b>6 Go d'espace disque</b> nécessaires</li>
+      <li>⏱️ comptez <b>15 à 20 minutes</b> (selon connexion et disque)</li>
+      <li>🔁 <b>uniquement cette première fois</b> : ensuite VERAX démarre en ~2&nbsp;s</li></ul>
+      <div class="vm-btns"><button id="vm-inst" class="vm-b vm-b-p">Installer la base complète</button>
+      <button id="vm-later" class="vm-b">Plus tard</button></div>`);
+    montre();
+    document.getElementById("vm-inst").onclick = lancerInstall;
+    document.getElementById("vm-later").onclick = () => { offreVue = true; try { localStorage.setItem("verax_offre_vue", "1"); } catch {} cache(); };
+  }
+  async function lancerInstall() {
+    try { await fetch("/api/installer-base", { method: "POST" }); } catch {}
+    vueInstallation({ phase: "telechargement", detail: "Démarrage de l'installation…", pct: 0 });
+  }
+  function majBoutonHeader(s) {
+    const barre = document.getElementById("barre-outils");
+    let b = document.getElementById("btn-base-complete");
+    if (s.installable && barre && !b) {
+      b = document.createElement("button");
+      b.id = "btn-base-complete"; b.textContent = "⬇ Base complète (72M)";
+      b.title = "Installer les 72 millions de faits (téléchargement, ~6 Go d'espace disque)";
+      b.onclick = vueOffre;
+      barre.insertBefore(b, barre.firstChild);
+    } else if (!s.installable && b) { b.remove(); }
+  }
+  async function tick() {
+    let s;
+    try { s = await (await fetch("/api/status", { cache: "no-store" })).json(); }
+    catch { setTimeout(tick, 1500); return; }
+    if (s.installation) { vueInstallation(s); setTimeout(tick, 1200); return; }
+    if (s.redemarrage) { vueInstallee(); return; }
+    if (s.phase === "erreur" && s.erreur) { vueErreur(s); return; }
+    if (!s.pret) { vueChargement(s); setTimeout(tick, 1000); return; }
+    cache();
+    if (s.installable && !offreVue) { offreVue = true; try { localStorage.setItem("verax_offre_vue", "1"); } catch {} vueOffre(); }
+    majBoutonHeader(s);
+    setTimeout(tick, 5000);
+  }
+  tick();
+})();
+
+// Bouton QUITTER (mode fenêtré .exe : plus de console pour Ctrl+C). Arrêt propre du serveur local.
+(() => {
+  const barre = document.getElementById("barre-outils");
+  if (!barre || document.getElementById("btn-quitter")) return;
+  const q = document.createElement("button");
+  q.id = "btn-quitter"; q.textContent = "⏻ Quitter"; q.title = "Arrêter VERAX (le serveur local s'arrête)";
+  q.onclick = async () => {
+    if (!confirm("Arrêter VERAX ? Vous pourrez le relancer par son raccourci.")) return;
+    try { await fetch("/api/quitter", { method: "POST" }); } catch {}
+    document.body.innerHTML = "<div style='display:flex;height:100vh;align-items:center;justify-content:center;"
+      + "font-family:system-ui,sans-serif;color:#7C3AED;font-size:18px;text-align:center;padding:24px'>"
+      + "VERAX est arrêté.<br>Vous pouvez fermer cet onglet.</div>";
+  };
+  barre.appendChild(q);
+})();
 </script>
+
+<!-- MODALE (chargement / installation base complète) -->
+<div id="verax-modale" class="on"><div id="vm-card">
+  <div class="vm-spin"></div><h3>VERAX se prépare…</h3><p>Chargement de la connaissance…</p>
+</div></div>
+<style>
+#verax-modale{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;background:rgba(20,8,39,.72);backdrop-filter:blur(4px)}
+#verax-modale.on{display:flex}
+#vm-card{background:#fff;color:#1A1430;max-width:440px;width:calc(100% - 40px);border-radius:16px;padding:28px;box-shadow:0 20px 60px rgba(0,0,0,.45);text-align:center;font-family:system-ui,-apple-system,sans-serif}
+@media (prefers-color-scheme:dark){#vm-card{background:#221a33;color:#eee}}
+#vm-card h3{font-size:20px;margin:8px 0}
+#vm-card p{font-size:14px;line-height:1.5;color:#5a5570;margin:0 0 10px}
+@media (prefers-color-scheme:dark){#vm-card p{color:#c3bad6}}
+.vm-ic{font-size:38px;line-height:1}
+.vm-spin{width:38px;height:38px;margin:2px auto 12px;border:4px solid rgba(124,58,237,.2);border-top-color:#7C3AED;border-radius:50%;animation:vmsp 1s linear infinite}
+@keyframes vmsp{to{transform:rotate(360deg)}}
+.vm-bar{height:9px;background:rgba(124,58,237,.15);border-radius:6px;overflow:hidden;margin:14px 0 4px}
+.vm-bar i{display:block;height:100%;background:linear-gradient(90deg,#7C3AED,#A78BFA);border-radius:6px;transition:width .4s}
+.vm-bar.indet i{width:35%;animation:vmind 1.2s ease-in-out infinite}
+@keyframes vmind{0%{margin-left:-35%}100%{margin-left:100%}}
+.vm-pct{font-size:13px;color:#7C3AED;font-weight:700}
+.vm-note{font-size:12px!important;color:#8a83a0!important}
+.vm-list{text-align:left;font-size:13.5px;list-style:none;padding:0;margin:14px 0 18px}
+.vm-list li{padding:6px 2px;border-bottom:1px solid rgba(124,58,237,.12)}
+.vm-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:4px}
+.vm-b{border:1px solid rgba(124,58,237,.4);background:transparent;color:#7C3AED;padding:10px 16px;border-radius:10px;font-size:14px;cursor:pointer;font-weight:600}
+.vm-b:hover{background:rgba(124,58,237,.08)}
+.vm-b-p{background:#7C3AED;color:#fff;border-color:#7C3AED}
+.vm-b-p:hover{background:#6d28d9}
+</style>
 </body>
 </html>

@@ -8,8 +8,10 @@ for /f %%i in ('git rev-parse --short=12 HEAD 2^>nul') do set "VERAX_SHA=%%i"
 if not defined VERAX_SHA set "VERAX_SHA=build-local"
 > VERSION_BUILD.txt echo %VERAX_SHA%
 py -m pip install --upgrade pyinstaller
-set "WINFLAG="
-if "%VERAX_NOCONSOLE%"=="1" set "WINFLAG=--noconsole"
+rem Mode FENÊTRÉ par défaut (pas de console noire au lancement ; les messages vont dans ~/.verax/verax.log
+rem et l'interface web affiche une modale de chargement). Pour rétablir la console : VERAX_CONSOLE=1.
+set "WINFLAG=--noconsole"
+if "%VERAX_CONSOLE%"=="1" set "WINFLAG="
 py -m PyInstaller --onefile --name VERAX %WINFLAG% ^
   --paths src --paths ingestion --paths interface ^
   --hidden-import _precharge_verax ^

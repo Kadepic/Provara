@@ -23,22 +23,50 @@ import verax_boot  # noqa: F401,E402  -- chemins + choix des données
 # .exe (ou VERAX_FULL=1) : installe la base complète (72M faits) une fois, puis bascule dessus. Récupère AUSSI
 # l'index .colf pré-construit -> démarrage ~30 Mo direct (sinon build à froid la 1ʳᵉ fois). `verax_boot` a déjà
 # tourné (donc raté le cache tout juste téléchargé) : on fixe ici LECTEUR_CACHE_DIR + mode portable nous-mêmes.
-if getattr(sys, "frozen", False) or os.environ.get("VERAX_FULL") == "1":
-    try:
-        import telecharge_donnees  # noqa: E402
-        if telecharge_donnees.assure_base_complete():
-            os.environ["LECTEUR_DATASETS_DIR"] = telecharge_donnees.dossier_donnees()
-            telecharge_donnees.assure_cache_complet()   # best-effort : index pré-construit
-            if telecharge_donnees.cache_present() and "LECTEUR_CACHE_DIR" not in os.environ:
-                os.environ["LECTEUR_CACHE_DIR"] = telecharge_donnees.dossier_cache()
-                os.environ.setdefault("LECTEUR_CACHE_PORTABLE", "1")
-    except Exception as _e:
-        print("  (base complète non installée : %s)" % _e)
+# DÉMARRAGE INSTANTANÉ : VERAX démarre TOUJOURS sur ce qui est déjà présent (échantillon embarqué au 1er
+# lancement, ou base complète si elle a déjà été installée — verax_boot l'a déjà sélectionnée). Le
+# téléchargement de la base complète (72M faits, ~1,2 Go + ~6 Go disque) est désormais OPTIONNEL et déclenché
+# par l'UTILISATEUR depuis l'interface (bouton + modale d'info), jamais au lancement : on ne bloque JAMAIS
+# l'ouverture. Routes côté serveur : /api/status · /api/installer-base · /api/redemarrer (interface/serveur.py).
+pass
 
 import glob as _glob
 _dd = os.environ.get("LECTEUR_DATASETS_DIR", "")
 _nrel = len(_glob.glob(os.path.join(_dd, "*.jsonl"))) if _dd and os.path.isdir(_dd) else 0
 print("  donnees : %d relation(s) chargeables  [%s]" % (_nrel, _dd))
+# INFO base (visible aussi pour ceux qui lancent depuis le terminal, pas seulement le .exe) :
+try:
+    import telecharge_donnees as _td
+    if _td.base_complete_presente():
+        print("  base    : COMPLÈTE (72 M de faits) active.")
+    else:
+        print("  base    : ÉCHANTILLON (VERAX est utilisable tout de suite).")
+        print("  >> Base complète (72 M de faits) OPTIONNELLE : ~6 Go d'espace disque, 15 à 20 minutes,")
+        print("     UNIQUEMENT la première fois. Lancez-la depuis l'interface (bouton « Base complète »),")
+        print("     ou en ligne de commande : VERAX_FULL=1 python3 lance.py")
+except Exception:
+    pass
+
+# Ligne de commande : `VERAX_FULL=1` installe la base complète AVANT de démarrer (pour les usages scriptés/serveur,
+# hors interface). L'utilisateur qui tape ça sait ce qu'il fait ; on l'avertit quand même clairement.
+if os.environ.get("VERAX_FULL") == "1":
+    try:
+        import telecharge_donnees as _td2
+        if not _td2.base_complete_presente():
+            print("=" * 62)
+            print("  VERAX_FULL=1 : installation de la base complète (72 M de faits).")
+            print("  ~1,2 Go à télécharger + ~6 Go sur le disque. 15 À 20 MINUTES,")
+            print("  une seule fois. Laissez tourner (progression ci-dessous)…")
+            print("=" * 62)
+            if _td2.assure_base_complete():
+                os.environ["LECTEUR_DATASETS_DIR"] = _td2.dossier_donnees()
+                _td2.assure_cache_complet()
+                if _td2.cache_present() and "LECTEUR_CACHE_DIR" not in os.environ:
+                    os.environ["LECTEUR_CACHE_DIR"] = _td2.dossier_cache()
+                    os.environ.setdefault("LECTEUR_CACHE_PORTABLE", "1")
+                print("  ✓ Base complète installée.")
+    except Exception as _e:
+        print("  (VERAX_FULL : installation impossible : %s — démarrage sur l'échantillon)" % _e)
 
 
 def _build_id() -> str:

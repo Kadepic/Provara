@@ -74,7 +74,7 @@ python3 ingestion/ingere_elements_ptjson.py    # ingests the 118 chemical elemen
 
 **Requirements** — that's all: **Python 3.10+**, no third-party libraries, no `pip install`, no GPU. (Linux, macOS, or Windows.)
 
-**Windows** — download `VERAX.exe` from the [Releases](https://github.com/Verax-IA/Verax/releases) page and **double-click it**. No Python, no install needed. *(From source instead: double-click `Lancer_VERAX.bat`, which needs Python installed.)*
+**Windows** — download `VERAX.exe` from the [Releases](https://github.com/Verax-IA/Verax/releases) page and **double-click it**. No Python, no install needed. It opens in your browser and works **immediately** on a bundled **sample** (~1M facts) — no waiting. To unlock the **full 72M-fact base**, click **“Base complète”** in the interface: a **one-time** download (about **6 GB of free disk space**, **15–20 minutes**) that you can also skip. A loading dialog keeps you informed throughout; the app runs **windowed** (no console window) and has a **Quit** button. *(From source instead: double-click `Lancer_VERAX.bat`, which needs Python installed.)*
 
 **Linux / macOS** — from source:
 

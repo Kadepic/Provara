@@ -8,14 +8,27 @@ Données : base COMPLÈTE téléchargée (~/.verax) > échantillon embarqué.
 import os
 import sys
 
-# Sorties TOLÉRANTES : quand stdout est un tube sous Windows, l'encodage retombe sur cp1252 qui ne connaît pas
-# « ✓ », « — »… et un simple print tuait le thread de préchargement (UnicodeEncodeError, vu sur le .exe).
-# errors="replace" : le caractère inconnu devient « ? », le programme ne meurt jamais pour un affichage.
-for _flux in (sys.stdout, sys.stderr):
-    try:
-        _flux.reconfigure(errors="replace")
-    except Exception:
-        pass
+# Sorties TOLÉRANTES. Deux cas à couvrir pour ne JAMAIS planter sur un print :
+#  1) console présente : l'encodage peut retomber sur cp1252 (« ✓ », « — » -> UnicodeEncodeError) -> errors="replace".
+#  2) .exe FENÊTRÉ (--noconsole, pas de console) : sys.stdout/stderr valent None -> tout print() lèverait une erreur.
+#     -> on les redirige vers un fichier journal (~/.verax/verax.log), utile aussi pour diagnostiquer sans console.
+_verax_log = None
+for _n in ("stdout", "stderr"):
+    _flux = getattr(sys, _n, None)
+    if _flux is None:
+        if _verax_log is None:
+            try:
+                _home = os.environ.get("VERAX_DATA_HOME") or os.path.join(os.path.expanduser("~"), ".verax")
+                os.makedirs(_home, exist_ok=True)
+                _verax_log = open(os.path.join(_home, "verax.log"), "a", encoding="utf-8", errors="replace")
+            except Exception:
+                _verax_log = open(os.devnull, "w")
+        setattr(sys, _n, _verax_log)
+    else:
+        try:
+            _flux.reconfigure(errors="replace")
+        except Exception:
+            pass
 
 if getattr(sys, "frozen", False):
     _ROOT = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(sys.executable)))

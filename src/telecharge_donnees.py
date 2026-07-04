@@ -51,9 +51,17 @@ def _progres(lu, total):
         sys.stdout.flush()
 
 
-def assure_base_complete():
+def assure_base_complete(notifier=None):
     """Télécharge + installe la base complète si absente. Renvoie True si la base complète est prête.
-    Échec réseau -> False (l'IA démarre alors sur l'échantillon embarqué : dégradation gracieuse)."""
+    Échec réseau -> False (l'IA démarre alors sur l'échantillon embarqué : dégradation gracieuse).
+    `notifier(phase=..., pct=...)` (optionnel) : rappelé pendant le téléchargement/décompression pour piloter
+    une modale de progression côté interface. Best-effort, jamais bloquant."""
+    def _note(**k):
+        if notifier:
+            try:
+                notifier(**k)
+            except Exception:
+                pass
     if base_complete_presente():
         return True
     d = dossier_donnees()
@@ -61,6 +69,7 @@ def assure_base_complete():
     os.makedirs(parent, exist_ok=True)
     arch = os.path.join(parent, "_datasets_complets.tar.gz")
     print("  Installation unique de la base complète (72M faits, ~560 Mo)…")
+    _note(phase="telechargement", detail="Téléchargement de la base (72 M de faits)…", pct=0)
     try:
         try:
             import https_confiance            # repli épinglé (magasin Windows parfois pollué -> faux « expired »)
@@ -78,9 +87,12 @@ def assure_base_complete():
                 fh.write(bloc)
                 lu += len(bloc)
                 _progres(lu, total)
+                if total:
+                    _note(phase="telechargement", pct=round(lu * 100 / total))
         if total and lu != total:                 # INTÉGRITÉ : une archive tronquée ne doit JAMAIS être extraite
             raise IOError("téléchargement tronqué (%d octets sur %d)" % (lu, total))
         print("\n  extraction…")
+        _note(phase="extraction", detail="Décompression de la base (~4 Go sur le disque)…", pct=None)
         with tarfile.open(arch) as t:
             try:
                 t.extractall(parent, filter="data")   # Python 3.12+ : extraction sûre
@@ -110,17 +122,25 @@ def assure_base_complete():
         return False
 
 
-def assure_cache_complet():
+def assure_cache_complet(notifier=None):
     """Télécharge + extrait l'INDEX `.colf` pré-construit dans ~/.verax/cache si absent. Renvoie True si prêt.
     BEST-EFFORT : un échec (réseau, 404, archive absente d'une vieille Release) n'est PAS bloquant — VERAX
     reconstruira simplement l'index au 1er lancement (plus lent/lourd une seule fois). Intégrité : archive
-    tronquée -> jamais extraite ; extraction partielle -> purgée (ne pas figer un cache incomplet)."""
+    tronquée -> jamais extraite ; extraction partielle -> purgée (ne pas figer un cache incomplet).
+    `notifier(phase=..., pct=...)` (optionnel) : progression pour la modale d'interface."""
+    def _note(**k):
+        if notifier:
+            try:
+                notifier(**k)
+            except Exception:
+                pass
     if cache_present():
         return True
     d = dossier_cache()
     os.makedirs(d, exist_ok=True)
     arch = os.path.join(os.path.dirname(d), "_verax_cache.tar.gz")
     print("  Installation de l'index pré-construit (démarrage ~30 Mo)…")
+    _note(phase="index", detail="Téléchargement de l'index (démarrage rapide)…", pct=0)
     try:
         try:
             import https_confiance
@@ -138,9 +158,12 @@ def assure_cache_complet():
                 fh.write(bloc)
                 lu += len(bloc)
                 _progres(lu, total)
+                if total:
+                    _note(phase="index", pct=round(lu * 100 / total))
         if total and lu != total:
             raise IOError("téléchargement tronqué (%d/%d)" % (lu, total))
         print("\n  extraction de l'index…")
+        _note(phase="extraction_index", detail="Décompression de l'index…", pct=None)
         with tarfile.open(arch) as t:
             try:
                 t.extractall(d, filter="data")

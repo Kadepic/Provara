@@ -61,6 +61,87 @@ def _document_de(conv_id: str):
 _IA_PLEINE = os.environ.get("IA_LEGER") != "1"
 
 
+# ══════════════════════════════════════════════════════════════════════════════
+#  ÉTAT DE CHARGEMENT + INSTALLATION OPTIONNELLE DE LA BASE COMPLÈTE (72M faits)
+#  Pilote la modale d'interface : elle s'affiche tant que `pret=False`, montre la
+#  progression d'un éventuel téléchargement, et disparaît quand l'IA est prête.
+# ══════════════════════════════════════════════════════════════════════════════
+import sys as _sys
+import threading as _threading
+_STATUT_LOCK = _threading.Lock()
+_STATUT = {"pret": False, "phase": "chargement", "detail": "Chargement de la connaissance…",
+           "pct": None, "installation": False, "redemarrage": False, "erreur": ""}
+
+
+def _maj_statut(**kw):
+    with _STATUT_LOCK:
+        _STATUT.update(kw)
+
+
+def statut_chargement():
+    """État courant pour la modale (léger, sans charger le lecteur). Inclut si la base complète est déjà là."""
+    with _STATUT_LOCK:
+        s = dict(_STATUT)
+    try:
+        import telecharge_donnees
+        s["base_complete"] = telecharge_donnees.base_complete_presente()
+    except Exception:
+        s["base_complete"] = False
+    s["installable"] = not s["base_complete"]     # on propose l'install tant que la base complète n'est pas là
+    return s
+
+
+def _installer_base(*_a):
+    """Déclenche le téléchargement + installation de la base complète (72M) EN TÂCHE DE FOND. Idempotent."""
+    with _STATUT_LOCK:
+        if _STATUT.get("installation"):
+            return {"ok": True, "deja": True}
+        _STATUT.update(installation=True, redemarrage=False, phase="telechargement",
+                       detail="Démarrage de l'installation…", pct=0, erreur="")
+
+    def _run():
+        try:
+            import telecharge_donnees as td
+            if td.assure_base_complete(notifier=_maj_statut):
+                td.assure_cache_complet(notifier=_maj_statut)     # best-effort : index pré-construit
+                _maj_statut(phase="installee", pct=100, installation=False, redemarrage=True,
+                            detail="Base complète installée. Redémarre VERAX pour l'activer.")
+            else:
+                _maj_statut(phase="erreur", installation=False, erreur="echec",
+                            detail="Le téléchargement a échoué (réseau ?). Tu peux réessayer plus tard.")
+        except Exception as e:
+            _maj_statut(phase="erreur", installation=False, erreur=str(e),
+                        detail="Installation impossible : %s" % e)
+    _threading.Thread(target=_run, daemon=True).start()
+    return {"ok": True, "demarre": True}
+
+
+def _quitter(*_a):
+    """Arrête VERAX proprement. Utile en mode FENÊTRÉ (.exe sans console -> plus de Ctrl+C)."""
+    def _q():
+        import time
+        time.sleep(0.4)                          # laisse la réponse HTTP partir
+        os._exit(0)
+    _threading.Thread(target=_q, daemon=True).start()
+    return {"ok": True}
+
+
+def _redemarrer(*_a):
+    """Relance le process (pour activer la base complète fraîchement installée). Best-effort."""
+    def _re():
+        import time
+        time.sleep(0.7)                          # laisse le temps de renvoyer la réponse HTTP
+        try:
+            if getattr(_sys, "frozen", False):
+                os.execv(_sys.executable, [_sys.executable])
+            else:
+                os.execv(_sys.executable, [_sys.executable] + _sys.argv)
+        except Exception:
+            os._exit(0)
+    _threading.Thread(target=_re, daemon=True).start()
+    return {"ok": True}
+
+
 # ————————————————————————————————— ARCHIVAGE UI (≠ effacement RGPD) —————————————————————————————————
 # Deux notions DISTINCTES de « suppression », à ne pas confondre :
 #   • ARCHIVER (ce bloc) : RETIRER de l'historique affiché, MAIS garder les données -> l'IA S'EN SOUVIENT
@@ -486,6 +567,10 @@ def _regle_web(actif) -> dict:
 
 
 ROUTES = {
+    ("GET", "/api/status"):        lambda m, q, b: statut_chargement(),
+    ("POST", "/api/installer-base"): lambda m, q, b: _installer_base(),
+    ("POST", "/api/redemarrer"):   lambda m, q, b: _redemarrer(),
+    ("POST", "/api/quitter"):      lambda m, q, b: _quitter(),
     ("GET", "/api/conversations"): lambda m, q, b: liste_conversations(m),
     ("GET", "/api/web"):           lambda m, q, b: {"ok": True, "actif": os.environ.get("IA_WEB") == "1"},
     ("POST", "/api/web"):          lambda m, q, b: _regle_web(bool(b.get("actif"))),
@@ -596,10 +681,17 @@ def main():
         # que tu écrives ta 1ʳᵉ question, la connaissance est déjà prête (sinon la 1ʳᵉ réponse attend la fin).
         import threading
         def _prechauffe():
-            print("  … préchargement de la connaissance en cours (~1 min, en fond)…", flush=True)
-            repond._charge_ia()
+            print("  … préchargement de la connaissance en cours (en fond)…", flush=True)
+            _maj_statut(phase="chargement", detail="Chargement de la connaissance en mémoire…", pct=None)
+            try:
+                repond._charge_ia()
+            except Exception as _e:
+                print("  (préchargement : %s)" % _e, flush=True)
+            _maj_statut(pret=True, phase="pret", detail="")     # ferme la modale d'interface
             print("  ✓ connaissance prête.", flush=True)
         threading.Thread(target=_prechauffe, daemon=True).start()
+    else:
+        _maj_statut(pret=True, phase="pret")                    # mode léger : rien à charger, prêt tout de suite
     print(f"  Ctrl+C pour arrêter. (souverain : localhost uniquement)")
     try:
         serveur.serve_forever()
