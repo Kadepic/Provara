@@ -1982,6 +1982,138 @@ def _cap_hyponymes(texte: str):
     return "Par exemple : %s%s." % (montre, suffixe)
 
 
+_DERIV_CONT_VILLE_RE = re.compile(
+    r"(?:sur|dans|de)\s+quel\s+continent\s+(?:se\s+(?:trouve|situe)|est(?:[- ]elle)?(?:\s+situ\w+)?|se\s+situe)\s+"
+    r"(?:la\s+ville\s+d[eu'’]\s*)?(.+?)\s*\??\s*$", re.I)
+
+
+_ORBITE_RE = re.compile(
+    r"(?:est[- ]ce\s+qu[e'’]?\s*)?(.+?)\s+(?:orbite|gravite|tourne)\b[^?]*?"
+    r"(?:autour\s+)?(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])?([\wà-ÿ'’\- ]+?)\s*\??\s*$", re.I)
+_SYSTEME_RE = re.compile(
+    r"(?:est[- ]ce\s+qu[e'’]?\s*)?(.+?)\s+(?:fait[- ](?:il|elle)\s+partie|fait\s+partie|est[- ](?:il|elle)|appartient|"
+    r"est\s+dans)"
+    r"[^?]*?syst[eè]me\s+(?:(solaire)|(?:de\s+(?:la\s+|l['’])?|d['’])?([\wà-ÿ'’\- ]+?))\s*\??\s*$", re.I)
+
+
+def _cap_orbite(texte: str):
+    """SOMMET : la machine DÉCOUVRE une règle puis l'APPLIQUE avec preuve. « Phobos fait-il partie du système
+    solaire ? » -> la relation `corps_parent_astre` (corps -> corps directement orbité) : la machine INDUIT que
+    « orbiter » est transitive (cohérente avec toutes les données) et REJETTE la symétrie (sinon le Soleil orbiterait
+    la Terre), puis DÉRIVE Phobos -> Mars -> Soleil. FAUX=0 : la conclusion n'est servie qu'avec sa CHAÎNE de faits
+    vérifiés montrée (chaque maillon re-vérifiable) ; sinon None."""
+    cible = None
+    m = _SYSTEME_RE.search(texte)
+    if m:
+        sujet = _strip_article(m.group(1).strip())
+        cible = "soleil" if m.group(2) else _normalise(_strip_article((m.group(3) or "").strip()))
+    else:
+        m = _ORBITE_RE.search(texte)
+        if not m:
+            return None
+        sujet, cible = _strip_article(m.group(1).strip()), _normalise(_strip_article(m.group(2).strip()))
+    ns = _normalise(sujet)
+    if not ns or not cible or len(ns) < 2:
+        return None
+    par = _charge_direct("corps_parent_astre")         # {corps_norm : (corps_affiché, corps_parent)}
+    if not par or ns not in par:
+        return None
+    # marche la chaîne parentale : sujet -> parent -> parent... jusqu'à la cible (dérivation transitive)
+    chaine = [par[ns][0]]
+    vus, cur = {ns}, ns
+    atteint = False
+    for _ in range(20):
+        cell = par.get(cur)
+        if not cell:
+            break
+        parent = cell[1]
+        chaine.append(parent)
+        if _normalise(parent) == cible:
+            atteint = True
+            break
+        np = _normalise(parent)
+        if np in vus:
+            break
+        vus.add(np)
+        cur = np
+    if not atteint or len(chaine) < 2:
+        return None
+    # DÉCOUVERTE : on valide la transitivité (cohérente) et on rejette la symétrie (contre-exemple), pour l'afficher
+    note = ""
+    try:
+        import induction_horn as _IH
+        paires = {(_normalise(k), _normalise(v[1])) for k, v in par.items()}
+        neg = {(y, x) for (x, y) in paires}
+        ev_t = _IH.evalue(_IH.TRANSITIVITE, paires, neg)
+        ev_s = _IH.evalue(_IH.SYMETRIE, paires, neg)
+        if ev_t["consistante"] and not ev_s["consistante"]:
+            cx = sorted(ev_s["viole"])[0]
+            aff = lambda z: (par[z][0] if z in par else z.capitalize())
+            note = (" (règle que j'ai découverte : « orbiter » est transitive — cohérente avec les %d faits — "
+                    "mais PAS symétrique, sinon %s orbiterait %s)" % (len(paires), aff(cx[0]), aff(cx[1])))
+    except Exception:
+        pass
+    if len(chaine) == 2:                                # relation directe, pas une dérivation
+        return None
+    _ASTRO_ART = {"soleil": "le Soleil", "terre": "la Terre", "lune": "la Lune"}
+    chaine = [_ASTRO_ART.get(_normalise(c), c) for c in chaine]
+    derivation = "%s orbite %s" % (chaine[0], ", qui orbite ".join(chaine[1:]))
+    return "Oui — je le déduis : %s%s." % (derivation, note)
+
+
+def _cap_deduction(texte: str):
+    """RAISONNEMENT DÉDUCTIF PROUVÉ (moteur Datalog `deduction.py`) : dérive un fait qui n'est stocké NULLE PART et
+    MONTRE sa preuve. Ex. « sur quel continent se trouve Abuja ? » -> Afrique, dérivé de « Abuja est la capitale du
+    Nigéria » + « le Nigéria est en Afrique » via une règle. FAUX=0 : ne rend que ce qui est logiquement ENTRAÎNÉ par
+    des faits vérifiés (sinon None) ; la provenance rend chaque dérivation re-vérifiable. C'est la pensée machine qui
+    dépasse le simple lookup : un fait NON écrit devient connu et prouvé."""
+    m = _DERIV_CONT_VILLE_RE.search(texte)
+    if not m:
+        return None
+    try:
+        import deduction as _D
+    except Exception:
+        return None
+    ville = _strip_article(m.group(1).strip())
+    nv = _normalise(ville)
+    if not nv or len(nv) < 2:
+        return None
+    hit = _charge_reverse("capitale").get(nv)          # quel(s) pays a/ont cette ville pour capitale ?
+    if not hit or not hit[1]:
+        return None
+    ville_aff = hit[0]
+    moteur = _D.MoteurDeduction()
+    phrase = {}                                        # triplet de base -> phrase FR (pour la preuve)
+    cont_aff = {}                                      # continent normalisé -> forme affichée
+    for pays in hit[1]:
+        np = _normalise(pays)
+        cont = _charge_direct("continent").get(np)
+        if not cont:
+            continue
+        cv = _normalise(cont[1])
+        pays_aff = cont[0]                              # forme ACCENTUÉE (« Nigéria »), pas celle de capitale.jsonl
+        moteur.ajoute_fait("capitale", np, nv, "capitale")
+        moteur.ajoute_fait("continent", np, cv, "continent")
+        try:
+            import realisation_fr as _RF
+            de_pays, le_pays = _RF.de_pays(pays_aff), _RF.article_pays(pays_aff)
+        except Exception:
+            de_pays, le_pays = "de " + pays_aff, pays_aff
+        phrase[("capitale", np, nv)] = "%s est la capitale %s" % (ville_aff, de_pays)
+        phrase[("continent", np, cv)] = "%s est en %s" % (le_pays, cont[1])
+        cont_aff[cv] = cont[1]
+    #   RÈGLE : le continent d'une ville-capitale = le continent de son pays  (fait dérivé, non stocké)
+    moteur.ajoute_regle(("continent_ville", "V", "C"),
+                        (("capitale", "P", "V"), ("continent", "P", "C")), nom="continent-via-pays")
+    reps = moteur.reponses("continent_ville", nv)
+    if not reps:
+        return None
+    cnorm, prov = reps[0]
+    _regle, supports = prov[0]
+    preuve = " et ".join(phrase[s] for s in supports if s in phrase)
+    return "%s — je le déduis : %s." % (cont_aff.get(cnorm, cnorm.capitalize()), preuve)
+
+
 _PORTRAIT_RE = re.compile(
     r"^\s*(?:parle[- ]?moi\s+d[eu'’]|pr[ée]sente[- ]?(?:moi\s+)?|d[ée]cris[- ]?(?:moi\s+)?"
     r"|dis[- ]?m['’]?en\s+plus\s+sur\s+|dis[- ]?moi\s+tout\s+sur\s+)"
@@ -2000,8 +2132,13 @@ def _cap_portrait(texte: str):
     if not cont:
         return None
     nom, continent = cont[0], cont[1]
-    voy = bool(re.match(r"[aeiouyhàâäéèêëîïôöùûü]", _normalise(continent)))
-    phrases = ["%s est un pays d'%s" % (nom, continent) if voy else "%s est un pays de %s" % (nom, continent)]
+    try:
+        import realisation_fr as _RF
+        sujet = _RF.article_pays(nom, majuscule=True)          # « La France », « Le Nigéria », « L'Italie »
+        de_cont = _RF.de(continent, continent=True)            # « d'Afrique », « d'Europe »
+    except Exception:
+        sujet, de_cont = nom, "de " + continent
+    phrases = ["%s est un pays %s" % (sujet, de_cont)]
     cap = _charge_direct("capitale").get(ne)
     if cap:
         phrases[0] += ", dont la capitale est %s" % cap[1]
@@ -2018,7 +2155,7 @@ def _cap_portrait(texte: str):
                     break
         s_pop = "Sa population est d'environ %s habitants" % format(n, ",d").replace(",", " ")
         if rang and rang[0] == 1:
-            s_pop += " — c'est le pays le plus peuplé d'%s" % continent if voy else " — c'est le pays le plus peuplé de %s" % continent
+            s_pop += " — c'est le pays le plus peuplé %s" % de_cont
         elif rang:
             s_pop += " (le %dᵉ plus peuplé de son continent sur %d)" % rang
         phrases.append(s_pop + ".")
@@ -2475,7 +2612,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_portrait, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_portrait, _cap_deduction, _cap_orbite, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
