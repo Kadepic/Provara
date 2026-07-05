@@ -2647,6 +2647,44 @@ _ONTO_COMMUN_RE = re.compile(
     r"(?:le\s+|la\s+|les\s+|l['’]|un\s+|une\s+)?([a-zà-ÿ][\wà-ÿ'’\-]{2,})\b", re.I)
 
 
+# POINT COMMUN sur N ENTITÉS (≥2) : « qu'ont en commun le chat, le chien et le lion ? » -> intersection des chaînes
+# is-a, plus proche ancêtre COMMUN à TOUTES. Corrige le 2-entités qui ignorait la 3e (regex « X et Y » seul). FAUX=0.
+_COMMUN_LISTE_RE = re.compile(
+    r"(?:qu[e'’]?\s*ont[- ]ils?\s+en\s+commun|qu[e'’]?\s*ont\s+en\s+commun|"
+    r"(?:quel\s+est\s+(?:le\s+|leur\s+)?)?point\s+commun\s+(?:entre|de|des|à))\s+(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_point_commun_nway(texte: str):
+    """PLUS PROCHE ANCÊTRE COMMUN à une LISTE d'entités (« qu'ont en commun le chat, le chien et le lion ? » ->
+    mammifère). Intersection des chaînes is-a, vérifiée sur TOUTES les entités (pas seulement deux). FAUX=0 :
+    ancêtre réel commun à tous, sinon None ; s'abstient si < 2 entités couvertes."""
+    m = _COMMUN_LISTE_RE.search(texte)
+    if not m:
+        return None
+    try:
+        import est_un as _E
+    except Exception:
+        return None
+    ents = [_strip_article(e.strip()) for e in re.split(r"\s*,\s*|\s+et\s+|\s+ou\s+", m.group(1)) if e.strip()]
+    ents = [e for e in ents if e and len(e) >= 2]
+    if len(ents) < 2:
+        return None
+    # chaîne is-a (ancêtres, du plus proche au plus lointain) de chaque entité ; on ne garde que celles couvertes
+    chaines = [(e, [_E._norm(e)] + _E.chaine_isa(e)) for e in ents]
+    couvertes = [(e, ch) for (e, ch) in chaines if len(ch) > 1]
+    if len(couvertes) < 2:
+        return None
+    ref_e, ref_ch = couvertes[0]
+    autres = [set(ch) for (_e, ch) in couvertes[1:]]
+    commun = next((a for a in ref_ch[1:] if all(a in s for s in autres)), None)
+    if not commun:
+        return None
+    manquants = len(ents) - len(couvertes)
+    note = "" if manquants == 0 else " (%d non couvert%s)" % (manquants, "s" if manquants > 1 else "")
+    quantif = "les deux" if len(couvertes) == 2 else "tous les %d" % len(couvertes)
+    return "Leur point commun : %s (%s en sont une sorte)%s." % (_E.affiche(commun), quantif, note)
+
+
 def _cap_ontologie(texte: str):
     """RAISONNEMENT is-a conversationnel (« un chat est-il un mammifère ? » -> « Oui, … »; « qu'ont en commun le
     chat et le requin ? » -> « animal »), depuis la source SAINE `est_un` (classe_* curées + genre des définitions).
@@ -3638,7 +3676,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

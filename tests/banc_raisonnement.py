@@ -39,6 +39,7 @@ CAS = [
     ("is-a-seed", R._cap_ontologie, "une rose est-elle une fleur ?", "Oui"),          # seed curé (definition_nom vide)
     ("is-a-seed-fruit", R._cap_ontologie, "une pomme est-elle un fruit ?", "Oui"),
     ("point-commun", R._cap_ontologie, "qu'ont en commun le chat et le requin ?", "animal"),
+    ("point-commun-nway", R._cap_point_commun_nway, "qu'ont en commun le chat, le requin et le lion ?", "animal"),
     ("cause", R._cap_cause, "quelle est la cause du paludisme ?", "du paludisme"),
     ("definition", R._cap_definition, "c'est quoi le paludisme ?", "Paludisme"),
     ("definition-longue", R._cap_definition, "quelle est la définition du paludisme ?", "Paludisme"),
