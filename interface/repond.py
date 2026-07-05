@@ -3527,6 +3527,37 @@ _FAIT_PERSONNE_RULES = (
 )
 
 
+# SUCCESSION : « qui a succédé à Louis XIV ? » -> son successeur ; « qui a précédé X / prédécesseur de X ? » ->
+# son prédécesseur. Relations predecesseur_personne / successeur_personne (personne -> personne). FAUX=0 : fait réel.
+_SUCCESSION_RULES = (
+    (re.compile(r"^\s*(?:qui\s+a\s+succéd[ée]\s+[àa]\s+|qui\s+(?:est|était|etait)\s+(?:le\s+|la\s+|l['’])?"
+                r"successeur\s+d[eu'’]\s*|par\s+qui\s+(.+?)\s+a[- ]t[- ](?:il|elle)\s+[ée]t[ée]\s+remplac[ée]e?)"
+                r"(.*?)\s*\??\s*$", re.I), "successeur_personne", "%s a succédé à %s"),
+    (re.compile(r"^\s*(?:qui\s+a\s+préc[ée]d[ée]\s+|qui\s+(?:est|était|etait)\s+(?:le\s+|la\s+|l['’])?"
+                r"préd[ée]cesseur\s+d[eu'’]\s*)(.+?)\s*\??\s*$", re.I), "predecesseur_personne", "%s a précédé %s"),
+)
+
+
+def _cap_succession(texte: str):
+    """SUCCESSION dynastique/de fonction : « qui a succédé à Louis XIV ? » -> Louis XV ; « qui a précédé Louis XIV ? »
+    -> Louis XIII. Relations predecesseur/successeur_personne. FAUX=0 : personne réellement stockée, None sinon."""
+    for patron, rel, gabarit in _SUCCESSION_RULES:
+        m = patron.match(texte.strip())
+        if not m:
+            continue
+        # certaines formes ont 2 groupes (« par qui X a-t-il été remplacé ») : on prend le 1er non vide
+        ent = next((g for g in m.groups() if g), "")
+        ent = _strip_article(ent.strip())
+        if not ent or len(ent) < 3 or len(ent.split()) > 6:
+            return None
+        cell = _lookup_cell(rel, ent)
+        if not cell or cell[1] in (None, ""):
+            return None
+        # gabarit « <valeur> a succédé à <entité> » (le successeur stocké a succédé à l'entité demandée)
+        return (gabarit % (cell[1], cell[0])) + "."
+    return None
+
+
 def _cap_fait_personne(texte: str):
     """FAIT CIBLÉ sur une personne (lieu/année de naissance ou décès, nationalité, métier) via lookup STREAMING —
     « où est né Napoléon Ier ? » -> « Napoléon Ier est né à Ajaccio. ». FAUX=0 : fait stocké réel, None sinon ;
@@ -4145,7 +4176,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

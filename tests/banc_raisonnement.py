@@ -100,6 +100,8 @@ CAS = [
     ("guerison-mots-outils", R._guerit_entree, "la France a-t-elle des colonies", "des colonies"),  # « des » pas -> « dis »
     ("fait-personne-lieu", R._cap_fait_personne, "où est né Napoléon Ier ?", "Ajaccio"),
     ("fait-personne-fem", R._cap_fait_personne, "où est morte Marie Curie ?", "est morte"),
+    ("succession", R._cap_succession, "qui a succédé à Louis XIV ?", "Louis XV"),
+    ("succession-predecesseur", R._cap_succession, "qui a précédé Louis XIV ?", "Louis XIII"),
     ("localisation-pays", R._cap_localisation, "dans quel pays est 1117 Mountain ?", "États-Unis"),
     ("localisation-continent", R._cap_localisation, "sur quel continent est Abbott Peak ?", "Antarctique"),
     ("faux-localisation-concept", R._cap_localisation, "où se trouve le bonheur ?", ""),  # nom commun -> pas un lieu
