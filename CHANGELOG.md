@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Piste #5 : raisonnement transitif étendu aux CONFLITS militaires
+
+- **Nouveau domaine transitif** (`_TRANS_GROUPES` cle="conflit", relations `conflit_parent_bataille/_operation_
+  militaire/_siege`) : la mereologie « fait partie de » des conflits — bataille → opération → front → guerre.
+  Chaînes RÉELLES de profondeur 3-4 (« opération Tonga → débarquement de Normandie → bataille de Normandie →
+  front de l'Ouest »). Sonde préalable : 5853 entités, seulement 3 multi-parents (quasi-fonctionnel) → sûr
+  sous la garde anti-homonyme existante.
+- **Deux formes** : vérification oui/non (« l'opération Tonga fait-elle partie du front de l'Ouest ? » → Oui,
+  avec la dérivation complète) et question ASCENDANTE ouverte (`_conflit_ascendant` : « de quelle guerre fait
+  partie la bataille de Marignan ? » → guerre de la Ligue de Cambrai ; chaîne montrée si profondeur ≥ 2).
+- FAUX=0 : chaîne de faits stockés re-vérifiable, homonyme intraversable, claim faux refusé (« Marignan fait
+  partie de la guerre de Cent Ans ? » → abstention). Le seuil « ≥ 2 sauts » est relâché à « ≥ 1 saut » pour ce
+  domaine car la relation n'existe nulle part ailleurs (pas de voie normale qui la servirait).
+- Raisonnement **109/109** (4 cas ajoutés), paraphrases 79/79, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — E2E serveur réel 14/14 des nouveautés + bug de rappel mémoire (question SMS) corrigé
 
 - **Validation E2E serveur réel 14/14** (mémoire vierge, base complète, web coupé) des briques de la session

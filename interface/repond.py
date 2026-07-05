@@ -3799,6 +3799,12 @@ _TRANS_GROUPES = (
          lien="se jette dans", conclusion="donc les eaux %s rejoignent bien %s", articles=True),
     dict(cle="groupe", rels=("maison_mere",),                       # pas d'articles : « le 105 Music » serait faux
          lien="a pour maison mère", conclusion="donc %s fait bien partie du groupe %s", articles=False),
+    # CONFLITS militaires (mereologie « fait partie de ») : bataille -> opération -> front -> guerre. Quasi
+    # fonctionnel (3 ambigus / 5853 -> gardés par la garde anti-homonyme). Chaînes réelles de profondeur 3-4
+    # (« opération Tonga -> débarquement de Normandie -> bataille de Normandie -> front de l'Ouest »).
+    dict(cle="conflit", rels=("conflit_parent_bataille", "conflit_parent_operation_militaire",
+                              "conflit_parent_siege"),
+         lien="fait partie de", conclusion="donc %s fait bien partie de %s", articles=False),
 )
 _TRANS_HYDRO_RE = re.compile(
     r"^(?:est ce que )?(?:le |la |les |l )?(.+?) (?:se jette(?:nt)?|se deverse(?:nt)?|debouche(?:nt)?|"
@@ -3808,6 +3814,42 @@ _TRANS_GROUPE_RE = re.compile(
     r"^(?:est ce que )?(?:le |la |les |l )?(.+?) (?:fait(?: t)?(?: il| elle)? partie|"
     r"appartient(?: t)?(?: il| elle)?) (?:du |de |des |au |a |aux )+(?:groupe )?(.+?)\s*$")
 _TRANS_CACHE: dict = {}
+# « de quel conflit / quelle guerre / quel front / quelle bataille fait partie <X> ? » (question ASCENDANTE).
+_TRANS_CONFLIT_OUVERT_RE = re.compile(
+    r"^(?:de |dans )?quel(?:le)?s? (?:conflit|guerre|front|bataille|operation|campagne|offensive)s? "
+    r"(?:fait(?: t)?(?: il| elle)? partie|englobe|contient|inclut|comprend) (?:le |la |les |l |du |de |des )?(.+?)\s*$")
+
+
+def _conflit_ascendant(sujet: str):
+    """Remonte la chaîne mereologique des conflits depuis `sujet` jusqu'au sommet (« bataille de Marignan » ->
+    « guerre de la Ligue de Cambrai ») et renvoie la dérivation. FAUX=0 : chaîne de faits stockés, garde
+    anti-homonyme (un nom à plusieurs parents est intraversable) ; None si le sujet n'est pas une entité connue."""
+    groupe = next(g for g in _TRANS_GROUPES if g["cle"] == "conflit")
+    par, ambigu = _charge_transitif(groupe)
+    ns = _normalise(_strip_article(sujet))
+    if not ns or ns not in par:
+        return None
+    chaine = [par[ns][0]]
+    cur, vus = ns, {ns}
+    for _ in range(25):
+        if cur in ambigu:                        # homonyme -> intraversable (FAUX=0)
+            break
+        cell = par.get(cur)
+        if not cell:
+            break
+        chaine.append(cell[1])
+        cur = cell[2]
+        if cur in vus:
+            break
+        vus.add(cur)
+    if len(chaine) < 2:
+        return None
+    sommet = chaine[-1]
+    tete = chaine[0][:1].upper() + chaine[0][1:]
+    if len(chaine) == 2:                          # un seul saut : réponse directe
+        return "%s fait partie de %s." % (tete, sommet)
+    derivation = " → ".join(chaine)
+    return "%s fait partie de %s.\nLa chaîne complète : %s." % (tete, sommet, derivation)
 
 
 def _charge_transitif(groupe: dict):
@@ -3856,6 +3898,12 @@ def _cap_transitif(texte: str):
     m = _TRANS_GROUPE_RE.match(qn)
     if m:
         essais.append(("groupe", m.group(1), m.group(2)))
+        essais.append(("conflit", m.group(1), m.group(2)))   # « fait partie de » vaut aussi pour les conflits
+    # QUESTION OUVERTE conflit : « de quel conflit / quelle guerre / quelle bataille fait partie X ? » -> on
+    # REMONTE la chaîne jusqu'au sommet et on renvoie la dérivation (pas une vérification oui/non).
+    mo = _TRANS_CONFLIT_OUVERT_RE.match(qn)
+    if mo:
+        return _conflit_ascendant(mo.group(1))
     for cle, sujet, cible in essais:
         groupe = next(g for g in _TRANS_GROUPES if g["cle"] == cle)
         par, ambigu = _charge_transitif(groupe)
@@ -3879,7 +3927,10 @@ def _cap_transitif(texte: str):
             if cur in vus:                       # cycle de données -> on s'arrête proprement
                 break
             vus.add(cur)
-        if not atteint or len(chaine) < 3:       # < 2 sauts = fait direct, pas une dérivation -> voie normale
+        # < 2 sauts = fait direct : pour hydro/groupe il est servi par la voie normale (on exige une dérivation) ;
+        # pour conflit la relation n'existe NULLE PART ailleurs -> on sert même le lien direct (1 saut).
+        min_maillons = 2 if cle == "conflit" else 3
+        if not atteint or len(chaine) < min_maillons:
             continue
         a_conclu, b_conclu = chaine[0], chaine[-1]
         if groupe.get("articles"):               # français soigné : « la Lukna », « le Merkys », « la mer Baltique »

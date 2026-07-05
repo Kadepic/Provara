@@ -159,6 +159,14 @@ CAS = [
     # (« cest koi la capitale du japon » est une question, pas un énoncé à rappeler).
     ("rappel-question-sms", lambda q: "QUESTION" if (R._veut_reponse(q) or R._veut_reponse(R._desms(q)))
      else "ENONCE", "cest koi la capitale du japon", "QUESTION"),
+    # transitivité des conflits militaires (piste #5) : bataille -> opération -> front -> guerre
+    ("transitif-conflit-ouvert", R._cap_transitif, "de quelle guerre fait partie la bataille de Marignan ?",
+     "Ligue de Cambrai"),
+    ("transitif-conflit-chaine", R._cap_transitif, "de quelle bataille fait partie l'opération Tonga ?", "Normandie"),
+    ("transitif-conflit-verif", R._cap_transitif,
+     "est-ce que l'opération Tonga fait partie du front de l'Ouest ?", "Oui"),
+    ("transitif-conflit-faux", R._cap_transitif,
+     "est-ce que la bataille de Marignan fait partie de la guerre de Cent Ans ?", ""),   # FAUX -> abstention
 ]
 
 
