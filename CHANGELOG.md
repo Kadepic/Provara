@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Constructions à trous : l'IA apprend une grammaire en dialoguant (généralisation)
+
+- **Induction de règle À TROU** (`_induit_substitution` réécrit) : une reformulation enseignée sur UNE entité
+  généralise à d'AUTRES jamais vues — l'entité vit dans le contexte partagé (le « trou »), jamais touché.
+  Deux voies : (1) MINIMALE, mots de contenu propres CONTIGUS (« chef-lieu » → « capitale ») ; (2) ALIGNEMENT
+  préfixe/suffixe quand les mots diffèrent de façon DISPERSÉE (« c'est koi le chef-lieu … » → span central).
+  Corrige le bug de l'ancienne induction qui joignait des mots NON contigus (« koi chef lieu ») en une clé qui
+  ne matchait jamais.
+- **Nouveau banc** `tests/banc_constructions.py` : apprend sur le Japon, applique sur Espagne/Italie/Suisse
+  (jamais vues) via le pipeline complet — **4/4**, dont le garde FAUX=0 (une construction ne peut pas échanger
+  d'entité : « mordor » ne devient jamais « France »). Isolation `VERAX_PATRONS_DIR` temporaire.
+- **Garde FAUX=0 affiné** (`_est_entite_probable`) : ne flague que les noms PROPRES (POS « nom propre » ou clé
+  d'une relation à clés propres — pays/ville/personne), plus definition_nom exclu. Corrige un faux positif qui
+  bloquait « chef-lieu → capitale » (capitale est un nom commun DÉFINI, pas une entité nommée). L'échange
+  d'entité réel (« wakanda → france ») reste bloqué car « france » est un nom propre.
+- Raisonnement 118/118, paraphrases 98/98, constructions 4/4, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — RAM : éviction LRU des caches (le vrai « 600 Mo » enfin identifié et borné)
 
 - **Profilage correctif** : le « ~600 Mo du moteur ia » était une MAUVAISE attribution. `import ia` = +16 Mo,

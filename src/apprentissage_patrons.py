@@ -75,18 +75,47 @@ def _sauve():
         pass
 
 
+def _span_contigu(tokens, mots):
+    """Les `mots` (dans l'ordre) forment-ils un SPAN CONTIGU dans `tokens` ? Renvoie True si oui (« chef lieu »
+    contigu dans « le chef lieu du japon »), False si dispersés (« koi … chef lieu »)."""
+    if not mots:
+        return False
+    for i in range(len(tokens) - len(mots) + 1):
+        if tokens[i:i + len(mots)] == mots:
+            return True
+    return False
+
+
 def _induit_substitution(echec: str, succes: str):
-    """INDUCTION DE RÈGLE : si `echec` et `succes` ne diffèrent que par UN mot de contenu (« chef-lieu » vs
-    « capitale », tout le reste identique), on induit la substitution mot->mot, qui GÉNÉRALISE au-delà de la
-    phrase (« chef-lieu du Japon » profitera de « chef-lieu -> capitale »). Renvoie (avant, apres) ou None.
-    Sound : substitution de FORMULATION seulement ; la réponse reste vérifiée par le pipeline."""
+    """INDUCTION DE RÈGLE À TROU : apprend une substitution CONTIGUË généralisable, ancrée sur le contexte partagé
+    (l'entité vit dans ce contexte = le TROU, jamais touché -> FAUX=0). Deux voies :
+      1) MINIMALE (préférée) : les mots de CONTENU propres à chaque côté, s'ils sont contigus (« chef-lieu du
+         Japon » vs « capitale du Japon » -> « chef lieu » -> « capitale »). Plus réutilisable (frame libre).
+      2) ALIGNEMENT préfixe/suffixe : quand les mots de contenu sont DISPERSÉS (« c'est koi le chef-lieu … » a
+         « koi » ET « chef lieu » séparés) -> on prend le span central entre préfixe et suffixe communs.
+    Renvoie (avant, apres) ou None. Sound : reformulation seule ; réponse toujours vérifiée par le pipeline."""
     te, ts = _normalise(echec).split(), _normalise(succes).split()
-    # mots de CONTENU propres à chacun (dans l'ordre) — le reste (mots-outils, sujet partagé) doit coïncider
+    if not te or not ts:
+        return None
+    # (1) voie minimale : mots de contenu propres, contigus des DEUX côtés
     ce = [w for w in te if len(w) >= 3 and w not in _MOTS_OUTILS and w not in ts]
     cs = [w for w in ts if len(w) >= 3 and w not in _MOTS_OUTILS and w not in te]
-    if 1 <= len(ce) <= 3 and 1 <= len(cs) <= 2 and ce != cs:
+    if (1 <= len(ce) <= 3 and 1 <= len(cs) <= 2 and ce != cs
+            and _span_contigu(te, ce) and _span_contigu(ts, cs)):
         return " ".join(ce), " ".join(cs)
-    return None
+    # (2) repli : alignement préfixe/suffixe communs -> span central
+    p = 0
+    while p < len(te) and p < len(ts) and te[p] == ts[p]:
+        p += 1
+    s = 0
+    while s < len(te) - p and s < len(ts) - p and te[-1 - s] == ts[-1 - s]:
+        s += 1
+    avant, apres = te[p:len(te) - s], ts[p:len(ts) - s]
+    if not avant or not apres or avant == apres:
+        return None
+    if (p == 0 and s == 0) or len(avant) > 6 or len(apres) > 6:   # ancrage requis, taille bornée
+        return None
+    return " ".join(avant), " ".join(apres)
 
 
 def enregistre(echec_texte: str, succes_texte: str) -> bool:

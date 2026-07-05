@@ -4578,20 +4578,31 @@ _SVO_BRUIT = frozenset(
     "stp svp merci s'il te vous plait connais sais peux pourrais eh bah ben ah oh".split())
 
 
+# Relations-sonde à clés PROPRES (pays, villes, personnes) pour tester si un mot est une entité NOMMÉE. On EXCLUT
+# definition_nom : un NOM COMMUN y est défini aussi (« capitale », « monnaie » = ville/moyen de paiement) et ne
+# doit PAS compter comme entité — sinon le garde bloque une reformulation légitime « chef-lieu -> capitale ».
+_SONDE_PROPRE = ("capitale", "continent", "monnaie", "population_pays", "superficie", "annee_naissance_personne")
+
+
 def _est_entite_probable(mot: str) -> bool:
-    """`mot` (normalisé) désigne-t-il probablement une ENTITÉ (nom propre / fait ancré) ? Deux signaux OFFLINE :
-    le POS le tague « nom propre » (france, japon) OU une relation-sonde l'ancre (fait vérifié). FAUX=0 : sert à
-    empêcher un alias appris d'échanger un sujet."""
+    """`mot` (normalisé) désigne-t-il probablement une ENTITÉ NOMMÉE (nom propre) ? Deux signaux OFFLINE : le POS
+    le tague « nom propre » (france, japon) OU il est la CLÉ d'un fait dans une relation à clés propres (pays/
+    ville/personne — PAS definition_nom, qui définit aussi les noms communs). FAUX=0 : empêche un alias appris
+    d'échanger un SUJET, sans bloquer une reformulation de mot commun (« chef-lieu » -> « capitale »)."""
     try:
         import est_un as _E
         if _E._pos().get(mot) == "nom propre":
             return True
     except Exception:
         pass
-    try:
-        return bool(_entite_ancree(mot))
-    except Exception:
-        return False
+    for rel in _SONDE_PROPRE:
+        try:
+            cell = _lookup_cell(rel, mot)
+        except Exception:
+            cell = None
+        if cell and cell[1] is not None:
+            return True
+    return False
 
 
 def _alias_change_entite(orig: str, alias: str) -> bool:
