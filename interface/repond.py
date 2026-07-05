@@ -211,12 +211,13 @@ def _lookup_direct(rel_head: str, entite: str):
     incohérences de nommage entre relations : « Nigéria » vs « Nigeria »). FAUX=0 : normalisation d'accent =
     IDENTITÉ préservée (pas du flou Levenshtein) ; valeur renvoyée seulement si UNIQUE across la famille."""
     h = _normalise(rel_head)
-    ne = _normalise(entite)
     vals = set()
     try:
         for rel in _relations():
             if rel == h or rel.split("_")[0] == h or rel.startswith(h + "_"):
-                cell = _charge_direct(rel).get(ne)
+                # RAM-sûr : _lookup_cell fait un scan STREAMING sur les gros fichiers (occupation_personne 135 Mo,
+                # nationalite_personne 143 Mo, taxon_parent 216 Mo…) au lieu de matérialiser tout le dict.
+                cell = _lookup_cell(rel, entite)
                 if cell and cell[1] is not None:
                     vals.add(cell[1])
     except Exception:
