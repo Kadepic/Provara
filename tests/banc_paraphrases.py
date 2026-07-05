@@ -94,9 +94,26 @@ CAS = [
     ("quel âge avait Napoléon Ier à sa mort ?", "52"),
 ]
 
+# ————— 4e VAGUE : COMBINAISONS ADVERSES (SMS léger + fautes + oral + enrobage EMPILÉS) —————
+CAS += [
+    ("c ki ki a ecri 1984 ?", "orwell"),
+    ("cest koi la capitale du japon", "tokyo"),
+    ("kel est la capitale du japon", "tokyo"),
+    ("la capitale du japon c koi", "tokyo"),
+    ("ou se trouve tokyo", "japon"),
+    ("dis moi ou est né napoleon 1er stp", "ajaccio"),
+    ("qui a ecrit 1984", "orwell"),
+    ("combien fon 12 fois 8", "96"),
+    ("QUELLE EST LA CAPITALE DU JAPON", "tokyo"),
+    ("quelle est la capitale du japon????", "tokyo"),
+    ("la joconde c de qui", "vinci"),
+    ("napoleon ier il est né ou", "ajaccio"),
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [
+    ("où est né Napoléon Ier ?", "et dis-moi il est mort quand", "1821"),   # enrobage + anaphore EMPILÉS
     ("où est né Napoléon Ier ?", "il est mort quand ?", "1821"),
     ("où est née Marie Curie ?", "elle est morte quand ?", "1934"),
     ("où est né Napoléon Ier ?", "et il était de quelle nationalité ?", "france"),

@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Robustesse ADVERSE : SMS + fautes + oral EMPILÉS (banc 79 cas, 100 %)
+
+- **Couche SMS fermée** (`_desms`, étage 0sms) : « c ki ki a ecri 1984 ? » → « c'est qui qui a écrit 1984 ? »
+  → George Orwell. Carte prudente (ki/koi/kel/pk/qd/cmb/c/cest…), lookahead anti-élision (le « c » de
+  « c'est » n'est pas une abréviation — sans ça : boucle infinie détectée et corrigée).
+- **Rejeux BORNÉS** (`_rejoue`, plafond de profondeur 6, thread-safe) : tous les étages de réécriture
+  (SMS/dévoilement/recadrage/pronom/continuations) passent par un garde-fou anti-boucle — plus jamais de
+  RecursionError si une règle n'est pas idempotente.
+- **Assouplissements oraux** : virgule OPTIONNELLE dans 8 règles de topicalisation (« la joconde c de qui »),
+  sujet juxtaposé (« napoleon ier il est né ou » — qui devenait un MÉMO « c'est noté » !), « ou » sans accent
+  lu comme « où » dans les patrons fermés, « 1er »→« Ier » (garde mois/« le »), participes sans accent dans
+  les patrons créateur, « et » consommé devant un enrobage (« et dis-moi il est mort quand »).
+- **Piège de protection documenté** : « ecri »+er = « écrier » (verbe réel) → la guérison protège la faute ;
+  résolu côté patron (« écrit? » ancré), pas en affaiblissant la garde. « +re » verbal restreint aux -d/-t.
+- Banc paraphrases : **79 cas, 100 %** (4e vague adverse). Raisonnement 102/102, suite 16/16, challenge 16/16.
+
 ## 2026-07-05 — Abstention structurée : 3e famille (faits ciblés) + RAM est_un : résultat négatif documenté
 
 - **3e famille de structures reconnues** : les FAITS ciblés (« où est né E ? », « quand est mort E ? », « où se

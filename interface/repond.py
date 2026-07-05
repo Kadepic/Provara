@@ -265,11 +265,46 @@ _HABILLAGE_RE = re.compile(
     r"c['e ]?\s*est\s+|donne(?:s|z)?[- ]?moi\s+|dis[- ]?moi\s+|peux[- ]?tu(?:\s+me)?\s+dire\s+|"
     r"sais[- ]?tu\s+|connais[- ]?tu\s+)+", re.I)
 
+# LANGAGE SMS léger : carte FERMÉE token -> forme pleine (« c ki ki a écrit… » -> « c'est qui qui a écrit… »).
+# Prudence FAUX=0 : uniquement des abréviations SANS lecture alternative en français standard (« ou » reste
+# intact : c'est un vrai mot). Appliqué token par token, jamais dans un mot.
+_SMS_MAP = {"ki": "qui", "koi": "quoi", "kel": "quel", "kelle": "quelle", "keske": "qu'est-ce que",
+            "pk": "pourquoi", "pq": "pourquoi", "qd": "quand", "cmb": "combien", "cmt": "comment",
+            "c": "c'est", "cest": "c'est", "bcp": "beaucoup", "bjr": "bonjour", "slt": "salut"}
+_SMS_RE = re.compile(r"\b(" + "|".join(sorted(_SMS_MAP, key=len, reverse=True)) + r")\b(?!['’])", re.I)
+
+
+def _desms(texte: str) -> str:
+    """Déplie les abréviations SMS fermées vers le français plein. Identité si rien à déplier. Le lookahead
+    (?!['’]) protège les élisions : le « c » de « c'est » n'est PAS une abréviation."""
+    return _SMS_RE.sub(lambda m: _SMS_MAP[m.group(1).lower()], texte)
+
+
+import threading as _threading
+
+_REJEU = _threading.local()
+
+
+def _rejoue(memoire, conv_id, texte: str, pleine: bool):
+    """REJEU borné d'une réécriture (SMS/dévoilement/recadrage/pronom/continuation) : chaque tour de réécriture
+    repasse par le pipeline complet, avec un PLAFOND de profondeur — un enchaînement de règles qui bouclerait
+    (réécriture non idempotente) s'arrête net au lieu d'un RecursionError. Thread-safe (serveur multi-thread)."""
+    prof = getattr(_REJEU, "prof", 0)
+    if prof >= 6:
+        return None
+    _REJEU.prof = prof + 1
+    try:
+        return _repond_noyau(memoire, conv_id, texte, pleine=pleine)
+    finally:
+        _REJEU.prof = prof
+
+
 # ENROBAGE CONVERSATIONNEL (fossé de généralisation) : les caps s'ancrent en ^ — « dis-moi qui a écrit 1984 »
 # ratait alors que « qui a écrit 1984 » répond. Couche FERMÉE de préfixes de politesse/remplissage à DÉVOILER
 # (la question nue est REJOUÉE d'abord ; si elle ne donne rien de mieux, l'original reprend — zéro perte).
 _DEVOILE_RE = re.compile(
-    r"^\s*(?:(?:dis|dites)[- ]?(?:moi|nous)\s+|donne(?:s|z)?[- ]?(?:moi|nous)\s+|"
+    r"^\s*(?:et\s+(?=(?:dis|dites|donne|rappelle|rappelez|peux|pouvez|sais|savez|tu\s|vous\s|j['’]|je\s))|"
+    r"(?:dis|dites)[- ]?(?:moi|nous)\s+|donne(?:s|z)?[- ]?(?:moi|nous)\s+|"
     r"j['’] ?aimerais(?:\s+bien)?\s+savoir\s+|je\s+(?:veux|voudrais|souhaite(?:rais)?)\s+savoir\s+|"
     r"(?:est[- ]?ce\s+que\s+)?(?:tu\s+peux|peux[- ]?tu|pouvez[- ]?vous|vous\s+pouvez)\s+(?:me|nous)\s+dire\s+|"
     r"sais[- ]?tu\s+|savez[- ]?vous\s+|(?:est[- ]?ce\s+que\s+)?tu\s+sais\s+|"
@@ -310,6 +345,11 @@ _RECADRE_LEX = (
     # « l'auteur du roman intitulé 1984 » -> « l'auteur de 1984 » (le type-mot + « intitulé » n'est pas la clé)
     (re.compile(r"\b(?:du|de\s+la|de\s+l['’])\s*(?:roman|livre|film|tableau|morceau|chanson|op[ée]ra|"
                 r"oeuvre|œuvre)\s+intitulée?\s+", re.I), "de "),
+    # « napoleon 1er » -> « napoleon Ier » (les clés de la base utilisent l'ordinal ROMAIN). Garde : jamais
+    # après « le » ni un mois (« le 1er janvier » reste intact).
+    (re.compile(r"\b(?!(?:le|janvier|février|fevrier|mars|avril|mai|juin|juillet|août|aout|septembre|"
+                r"octobre|novembre|décembre|decembre)\s)([a-zà-ÿ]{3,})\s+1ere?\b", re.I),
+     lambda m: "%s Ier" % m.group(1)),
 )
 
 _RECADRE_REGLES = (
@@ -317,9 +357,9 @@ _RECADRE_REGLES = (
     (re.compile(r"^\s*(?:qui\s+c['’] ?est\s+qui|c['’] ?est\s+qui\s+qui)\s+(.+)$", re.I), lambda m: "qui " + m.group(1)),
     # « c'est qui X ? » -> « qui est X ? » ; « X, c'est qui (déjà) ? » -> « qui est X ? »
     (re.compile(r"^\s*c['’] ?est\s+qui\s+(.+?)\s*\?*\s*$", re.I), lambda m: "qui est %s ?" % m.group(1)),
-    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+qui(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "qui est %s ?" % m.group(1)),
+    (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?est\s+qui(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "qui est %s ?" % m.group(1)),
     # « X, c'est de qui ? » -> « de qui est X ? » (créateur générique)
-    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+de\s+qui(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "de qui est %s ?" % m.group(1)),
+    (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?est\s+de\s+qui(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "de qui est %s ?" % m.group(1)),
     # DOUBLE topicalisation AVANT la simple (sinon « (.+?), c'est quoi » l'avale) : « et la monnaie, au Japon,
     # c'est quoi ? » -> « c'est quoi la monnaie du Japon ? »
     (re.compile(r"^\s*(?:et\s+)?(l[ae]\s+[\wà-ÿ]+|l['’][\wà-ÿ]+)\s*,\s*(en|au|aux|à)\s+(.+?)\s*,\s*"
@@ -327,13 +367,13 @@ _RECADRE_REGLES = (
      lambda m: "c'est quoi %s %s %s ?" % (m.group(1), _prep_de(m.group(2)), m.group(3))),
     # « c'est quoi (déjà) X » reste canonique ; « X, c'est quoi (déjà) ? » -> « c'est quoi X ? »
     (re.compile(r"^\s*c['’] ?est\s+quoi\s+déjà\s+(.+)$", re.I), lambda m: "c'est quoi " + m.group(1)),
-    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+quoi(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "c'est quoi %s ?" % m.group(1)),
+    (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?est\s+quoi(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "c'est quoi %s ?" % m.group(1)),
     # naissance orale : « il est né où, X ? » / « X, il est né où ? » / « où c'est que X est né ? »
     (re.compile(r"^\s*(?:il|elle)\s+est\s+née?\s+où\s*,\s*(.+?)\s*\?*\s*$", re.I), lambda m: "où est né %s ?" % m.group(1)),
     (re.compile(r"^\s*(.+?)\s*,\s*(?:il|elle)\s+est\s+née?\s+où\s*\?*\s*$", re.I), lambda m: "où est né %s ?" % m.group(1)),
     (re.compile(r"^\s*où\s+c['’] ?est\s+qu[e']\s*(.+?)\s+est\s+née?\s*\?*\s*$", re.I), lambda m: "où est né %s ?" % m.group(1)),
     # temporel oral : « X, c'était quand ? » / « c'était quand, X ? » / « c'était en quelle année, X ? »
-    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?était\s+(?:quand|en\s+quelle\s+année)\s*\?*\s*$", re.I),
+    (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?était\s+(?:quand|en\s+quelle\s+année)\s*\?*\s*$", re.I),
      lambda m: "quand a eu lieu %s ?" % m.group(1)),
     (re.compile(r"^\s*c['’] ?était\s+(?:quand|en\s+quelle\s+année)\s*,\s*(.+?)\s*\?*\s*$", re.I),
      lambda m: "quand a eu lieu %s ?" % m.group(1)),
@@ -347,7 +387,7 @@ _RECADRE_REGLES = (
     (re.compile(r"^\s*(.+?)\s*,?\s*ça\s+(?:fait\s+combien|donne\s+quoi)\s*\?*\s*$", re.I),
      lambda m: "combien font %s ?" % m.group(1)),
     # localisation orale : « X, c'est dans quel pays / sur quel continent ? » (+ forme postposée)
-    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+((?:dans|sur)\s+quel(?:le)?\s+[\wà-ÿ]+)\s*\?*\s*$", re.I),
+    (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?est\s+((?:dans|sur)\s+quel(?:le)?\s+[\wà-ÿ]+)\s*\?*\s*$", re.I),
      lambda m: "%s est %s ?" % (m.group(2), m.group(1))),
     (re.compile(r"^\s*c['’] ?est\s+((?:dans|sur)\s+quel(?:le)?\s+[\wà-ÿ]+)\s*,\s*(.+?)\s*\?*\s*$", re.I),
      lambda m: "%s est %s ?" % (m.group(1), m.group(2))),
@@ -362,7 +402,7 @@ _RECADRE_REGLES = (
      lambda m: "est-ce que " + m.group(1)),
     # CONFIRMATION générique : « la capitale du Japon, c'est bien Tokyo ? » -> forme à inversion (_oui_non).
     # (Après la règle ontologie « c'est bien UN/UNE Y » qui prime.)
-    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+bien\s+(.+?)\s*\?*\s*$", re.I),
+    (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?est\s+bien\s+(.+?)\s*\?*\s*$", re.I),
      lambda m: "%s est-il %s ?" % (m.group(2), m.group(1))),
     # registre SOUTENU : « en quelle année X s'est-elle déroulée ? » ; « où X a-t-il vu le jour ? »
     (re.compile(r"^\s*en\s+quelle\s+année\s+(.+?)\s+s['’] ?est[- ](?:il|elle)\s+(?:déroulée?|produite?|tenue?)\s*\?*\s*$", re.I),
@@ -382,9 +422,11 @@ _RECADRE_REGLES = (
     (re.compile(r"^\s*quel\s+âge\s+avait\s+(.+?)\s+à\s+sa\s+mort\s*\?*\s*$", re.I),
      lambda m: "à quel âge est mort %s ?" % m.group(1)),
     # naissance/décès POSTPOSÉS : « X est né quand ? » / « X est mort où ? » -> forme canonique. Lookahead
-    # ANTI-PRONOM : « il est mort quand ? » relève de l'étage pronom (0pro), pas d'un sujet nominal.
-    (re.compile(r"^\s*(?!(?:et\s+|puis\s+)?(?:il|elle|on|ça|ca)\s)(.+?)\s+est\s+(née?s?|morte?s?)\s+(quand|où|en\s+quelle\s+année)\s*\?*\s*$", re.I),
-     lambda m: "%s est %s %s ?" % ("où" if m.group(3).lower() == "où" else "quand", m.group(2), m.group(1))),
+    # ANTI-PRONOM : « il est mort quand ? » relève de l'étage pronom (0pro), pas d'un sujet nominal. Sujet
+    # JUXTAPOSÉ accepté (« napoleon ier il est né ou ») et « ou » sans accent lu comme « où » (oral/SMS).
+    (re.compile(r"^\s*(?!(?:et\s+|puis\s+)?(?:il|elle|on|ça|ca)\s)(.+?)\s+(?:(?:il|elle)\s+)?est\s+"
+                r"(née?s?|morte?s?)\s+(quand|où|ou|en\s+quelle\s+année)\s*\?*\s*$", re.I),
+     lambda m: "%s est %s %s ?" % ("où" if m.group(3).lower() in ("où", "ou") else "quand", m.group(2), m.group(1))),
     # succession orale : « après X, c'est qui (le roi / la reine / le président) ? »
     (re.compile(r"^\s*après\s+(.+?)\s*,\s*c['’] ?est\s+qui(?:\s+l[ea]\s+[\wà-ÿ]+)?\s*\?*\s*$", re.I),
      lambda m: "qui a succédé à %s ?" % m.group(1)),
@@ -394,7 +436,7 @@ _RECADRE_REGLES = (
      lambda m: "quelle est la population %s %s ?" % (_prep_de(m.group(1)), m.group(2))),
     (re.compile(r"^\s*(?:il\s+)?y\s+a\s+combien\s+d['’]\s*habitants\s+(en|au|aux|à)\s+(.+?)\s*\?*\s*$", re.I),
      lambda m: "quelle est la population %s %s ?" % (_prep_de(m.group(1)), m.group(2))),
-    (re.compile(r"^\s*(.+?)\s*,\s*(?:elle|il)\s+a\s+combien\s+d['’]\s*habitants\s*\?*\s*$", re.I),
+    (re.compile(r"^\s*(.+?)\s*,?\s+(?:elle|il)\s+a\s+combien\s+d['’]\s*habitants\s*\?*\s*$", re.I),
      lambda m: "quelle est la population de %s ?" % m.group(1)),
     # monnaie orale : « on paie avec quoi au Japon ? » / « avec quelle monnaie paie-t-on en X ? »
     (re.compile(r"^\s*on\s+pa(?:ie|ye)\s+avec\s+quoi\s+(en|au|aux|à)\s+(.+?)\s*\?*\s*$", re.I),
@@ -416,7 +458,7 @@ _RECADRE_REGLES = (
     (re.compile(r"^\s*entre\s+(.+?)\s+et\s+(.+?)\s*,\s*(?:qui|lequel|laquelle)\s+est\s+l[ea]\s+plus\s+([\wà-ÿ]+)\s*\?*\s*$", re.I),
      lambda m: "%s est-il plus %s que %s ?" % (m.group(1), m.group(3), m.group(2))),
     # suspens final : « le pays le plus peuplé d'Afrique, c'est lequel ? » -> la forme nominale nue suffit
-    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+(?:lequel|laquelle|lesquels|lesquelles)\s*\?*\s*$", re.I),
+    (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?est\s+(?:lequel|laquelle|lesquels|lesquelles)\s*\?*\s*$", re.I),
      lambda m: "%s ?" % m.group(1)),
 )
 
@@ -4128,10 +4170,10 @@ def _cap_succession(texte: str):
 # (auteur_*, compositeur_*, realisateur_*, architecte_*, inventeur_*, peintre_*). Via _lookup_direct (streaming,
 # valeur UNIQUE dans la famille). FAUX=0 : créateur réellement stocké ou None. Léger (avant le moteur lourd).
 _CREATEUR_RULES = (
-    (re.compile(r"^\s*(?:qui\s+a\s+(?:écrit|rédigé|pondu)|qui\s+est\s+l['’]auteur\s+d[eu'’]|"
+    (re.compile(r"^\s*(?:qui\s+a\s+(?:[ée]crit?|r[ée]dig[ée]|pondu)|qui\s+est\s+l['’]auteur\s+d[eu'’]|"
                 r"de\s+qui\s+est\s+le\s+(?:livre|roman))\s+"
                 r"(.+?)\s*\??\s*$", re.I), "auteur", "%s a été écrit par %s"),
-    (re.compile(r"^\s*(?:qui\s+a\s+compos[ée]|qui\s+est\s+le\s+compositeur\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
+    (re.compile(r"^\s*(?:qui\s+a\s+compos[ée]+|qui\s+est\s+le\s+compositeur\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
      "compositeur", "%s a été composé par %s"),
     (re.compile(r"^\s*(?:qui\s+a\s+(?:r[ée]alis[ée]|tourn[ée])|qui\s+est\s+le\s+r[ée]alisateur\s+d[eu'’])\s+"
                 r"(.+?)\s*\??\s*$", re.I),
@@ -4700,7 +4742,11 @@ def _fait_forme_verbale(mn: str, verbes: set) -> bool:
     (1er groupe surtout : « divise/divises/divisent/divisé/divisons/divisez » -> « diviser »)."""
     if not verbes or len(mn) < 4:
         return False
-    cands = {mn, mn + "r", mn + "er", mn + "ir", mn + "re"}
+    # « +re » seulement après -d/-t (rend->rendre, perd->perdre) : « ecri »+re=« écrire » protégeait à tort
+    # la FAUTE « ecri » — un fragment tronqué n'est pas une forme verbale.
+    cands = {mn, mn + "r", mn + "er", mn + "ir"}
+    if mn.endswith(("d", "t")):
+        cands.add(mn + "re")
     for suf, rempl in (("e", "er"), ("es", "er"), ("ent", "er"), ("ons", "er"), ("ez", "er"),
                        ("e", "ir"), ("ee", "er"), ("ees", "er"), ("es", "ir"),
                        # participes du 3e groupe (reconstruction du lemme ; SÛR : un candidat ne protège que
@@ -4733,6 +4779,8 @@ def _guerison():
             pass
         vocab |= set("bonjour salut bonsoir coucou merci comment pourquoi combien quand quel quelle quels quelles "
                      "capitale monnaie population langue president habitant continent drapeau".split())
+        # participes des patrons créateur : « ecri » -> « ecrit » (le lexique des noms ne les couvre pas tous)
+        vocab |= set("ecrit compose peint realise tourne invente decouvert redige pondu construit".split())
         vn, pi = _CO.construit_index(vocab)
         _GUERISON_CACHE = (vn, pi, (_charge_mots_valides(), _charge_verbes()))
     return _GUERISON_CACHE
@@ -4921,12 +4969,19 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     diag = _diagnostic_connaissance(t)
     if diag:
         return diag
+    #   (0sms) LANGAGE SMS : « c ki ki a ecri 1984 ? » -> « c'est qui qui a ecri 1984 ? », rejoué (les étages
+    #       guérison/recadrage font le reste). Carte fermée, aucun mot standard touché ; repli sans perte.
+    t_sms = _desms(t)
+    if t_sms != t:
+        rep_sms = _rejoue(memoire, conv_id, t_sms, pleine)
+        if _utile(rep_sms):
+            return rep_sms
     #   (0dev) DÉVOILEMENT : « dis-moi qui a écrit 1984 » -> la question NUE est rejouée d'abord (les caps
     #       s'ancrent en ^ et rataient l'enrobage). Si elle ne produit rien de MIEUX que le générique,
     #       l'original continue son chemin normal (zéro perte, aucun fait altéré : on ne retire que du social).
     t_nu = _devoile(t)
     if t_nu != t:
-        rep_nu = _repond_noyau(memoire, conv_id, t_nu, pleine=pleine)
+        rep_nu = _rejoue(memoire, conv_id, t_nu, pleine)
         if _utile(rep_nu):
             return rep_nu
     #   (0oral) RECADRAGE ORAL : topicalisation (« la Joconde, c'est de qui ? »), clivées (« c'est qui qui… »),
@@ -4934,7 +4989,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     #       FAUX=0 : réordonnancement des mots de l'utilisateur, aucune invention ; repli sans perte si échec.
     t_oral = _recadre_oral(t)
     if t_oral:
-        rep_oral = _repond_noyau(memoire, conv_id, t_oral, pleine=pleine)
+        rep_oral = _rejoue(memoire, conv_id, t_oral, pleine)
         if _utile(rep_oral):
             return rep_oral
     #   (0pro) ANAPHORE INTER-TOURS : « il est mort quand ? » après « où est né Napoléon Ier ? » -> le pronom
@@ -4942,7 +4997,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     #       du sujet réellement discuté, réponse toujours vérifiée ; repli sans perte si échec.
     t_pro = _resout_pronom(t, _DERNIER_SUJET.get(conv_id))
     if t_pro:
-        rep_pro = _repond_noyau(memoire, conv_id, t_pro, pleine=pleine)
+        rep_pro = _rejoue(memoire, conv_id, t_pro, pleine)
         if _utile(rep_pro):
             return rep_pro
     #   (0quater) SCHÉMA VISUEL : « montre-moi ce que tu sais sur X » -> graphe SVG des relations connues de X.
@@ -5111,7 +5166,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                 return f"{rep}  — à propos de « {suj} »"
             #   le lookup direct n'a rien : REJOUER q1 dans le pipeline COMPLET (caps compris) — « et sa
             #   hauteur ? » doit atteindre _cap_dimension, pas seulement le lookup par clé.
-            rep = _repond_noyau(memoire, conv_id, q1, pleine=pleine)
+            rep = _rejoue(memoire, conv_id, q1, pleine)
             if _utile(rep):
                 return rep
             #   l'échange continue À TRAVERS l'abstention : « capitale du wakanda ? » (abstention structurée)
@@ -5130,7 +5185,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                     #   REJOUER q2 dans le pipeline COMPLET d'abord : « et celle de Waterloo ? » (après « quand
                     #   a eu lieu la bataille de Marignan ? ») doit atteindre _cap_date_evenement -> 1815, pas le
                     #   lookup brut qui répondrait un fait d'une autre nature (« champ de bataille de Waterloo »).
-                    rep = _repond_noyau(memoire, conv_id, q2, pleine=pleine)
+                    rep = _rejoue(memoire, conv_id, q2, pleine)
                     if _utile(rep):
                         return rep
                     rep = _connaissance_verifiee(q2, conv_id)
