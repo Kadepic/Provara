@@ -116,3 +116,14 @@
 {"entite": "marbre", "valeur": "roche"}
 {"entite": "grès", "valeur": "roche"}
 {"entite": "voiture", "valeur": "véhicule"}
+{"entite": "avion", "valeur": "véhicule"}
+{"entite": "bateau", "valeur": "véhicule"}
+{"entite": "train", "valeur": "véhicule"}
+{"entite": "table", "valeur": "meuble"}
+{"entite": "pomme de terre", "valeur": "légume"}
+{"entite": "pince", "valeur": "outil"}
+{"entite": "pantalon", "valeur": "vêtement"}
+{"entite": "espagnol", "valeur": "langue"}
+{"entite": "rouge", "valeur": "couleur"}
+{"entite": "vert", "valeur": "couleur"}
+{"entite": "jaune", "valeur": "couleur"}

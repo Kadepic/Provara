@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Consolidation : audit de câblage atomique + trous is-a comblés + docs/CI à jour
+
+- **Audit de câblage ATOMIQUE (exigence Yohan)** : vérifié que TOUS les atomes sont câblés — **0 orphelin** sur
+  50 caps `_cap_*`, 113 fonctions de `repond.py`, et 498 modules `src/`. Le seul module « jamais importé »
+  (`_precharge_verax`) est la liste d'imports PyInstaller, référencée par les 2 build files (`--hidden-import`)
+  et intentionnellement non-importée au runtime.
+- **Trous is-a comblés** : 11 mots courants avaient une chaîne is-a VIDE ou bruitée dans definition_nom
+  (avion/bateau/train → *véhicule*, table → *meuble*, pomme de terre → *légume*, pince → *outil*, pantalon →
+  *vêtement*, espagnol → *langue*, rouge/vert/jaune → *couleur*). Ajoutés au seed curé `est_un_seed.jsonl`
+  (bundlé via `--add-data src`) — is-a incontestables, FAUX=0.
+- **CI** : `banc_constructions` (constructions apprises, passe sur l'échantillon) câblé dans la suite → **17/17
+  gates**. Les bancs base-complète (paraphrases/synonymes/raisonnement) restent manuels (trous de données sur
+  le sample, pas des bugs).
+- **README FR + EN à jour** : ajout des capacités majeures de la session — compréhension **quel que soit
+  l'ordre des mots**, **constructions apprises** généralisables, **abstention structurée** (structure reconnue
+  non ancrée), **chaîne transitive des conflits** militaires, **synonymes de relations** (richesse→PIB).
+- Bancs : raisonnement 118/118, paraphrases 98/98, constructions 4/4, synonymes 8/8, suite **17/17**,
+  challenge 16/16. Câblage et données vérifiés bundlés ; aucun fichier de build à modifier.
+
 ## 2026-07-05 — Synonymes familiers : sondé (déjà riche) + chaînage bagnole→voiture→véhicule complété
 
 - **Sonde** : le module `synonymes` (réseau JeuxDeMots embarqué) est DISPONIBLE et riche — bagnole→voiture,
