@@ -1052,6 +1052,38 @@ def _cap_agregat_liste(texte: str):
     return "%s cumulée de %s : %s %s (somme de %d)%s." % (attr_mot.capitalize(), noms, fmt(res), unite, len(ok), note)
 
 
+# DIMENSION d'une entité précise : « quelle est la hauteur de la tour Eiffel ? », « la longueur du Nil ? ». Cherche
+# la valeur via _lookup_direct (repli streaming, famille de relations dont la tête = la dimension) + l'UNITÉ. Léger
+# (avant le moteur lourd). FAUX=0 : valeur réelle unique dans la famille, ou None.
+_DIMENSION_UNITE = {"hauteur": "m", "altitude": "m", "longueur": "m", "profondeur": "m", "superficie": "km²",
+                    "diametre": "m", "largeur": "m", "envergure": "m", "poids": "kg", "masse": "kg"}
+_DIMENSION_RE = re.compile(
+    r"^\s*(?:quelle?\s+est\s+(?:la\s+|le\s+|l['’])?|quel\s+est\s+(?:le\s+|l['’])?)?"
+    r"(hauteur|altitude|longueur|profondeur|superficie|diam[èe]tre|largeur|envergure|poids|masse)\s+"
+    r"(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_dimension(texte: str):
+    """DIMENSION d'une entité : « quelle est la hauteur de la tour Eiffel ? » -> valeur + unité. Cherche dans la
+    FAMILLE de relations de la dimension (hauteur_tour, hauteur_barrage…) via _lookup_direct (streaming). FAUX=0 :
+    valeur réelle unique, ou None (entité absente / ambiguë). Léger : répond sans charger le moteur lourd."""
+    m = _DIMENSION_RE.match(texte.strip())
+    if not m:
+        return None
+    dim, ent = _normalise(m.group(1)), _strip_article(m.group(2).strip())
+    if not ent or len(ent) < 2 or len(ent.split()) > 6:
+        return None
+    val = _lookup_direct(dim, ent)
+    if val is None or str(val).strip() == "":
+        return None
+    n = _nombre(val)
+    unite = _DIMENSION_UNITE.get(dim, "")
+    if n is not None and unite:
+        aff = format(int(n), ",d").replace(",", " ") if float(n).is_integer() else "%g" % n
+        return "%s de %s : %s %s." % (dim.capitalize(), ent, aff, unite)
+    return "%s de %s : %s." % (dim.capitalize(), ent, val)
+
+
 # MÊME ATTRIBUT ? « la France et l'Allemagne sont-elles sur le même continent ? » -> compare la valeur d'un attribut
 # pour DEUX entités. Rare cas où « Non » est SÛR (deux faits vérifiés comparés). FAUX=0 : None si l'un manque.
 _MEME_MOT_REL = {"continent": "continent", "pays": "pays_ville", "monnaie": "monnaie", "capitale": "capitale",
@@ -3994,7 +4026,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

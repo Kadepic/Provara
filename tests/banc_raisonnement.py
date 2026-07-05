@@ -58,6 +58,8 @@ CAS = [
     ("comparaison-nway", R._cap_comparaison_nway, "quel est le plus peuplé entre la France, l'Allemagne et l'Italie ?", "Allemagne"),
     ("meme-attribut-oui", R._cap_meme_attribut, "la France et l'Allemagne sont-elles sur le même continent ?", "Oui"),
     ("meme-attribut-non", R._cap_meme_attribut, "la France et le Japon sont-ils sur le même continent ?", "Non"),
+    ("dimension-superficie", R._cap_dimension, "quelle est la superficie de la France ?", "551 695 km²"),
+    ("dimension-hauteur", R._cap_dimension, "quelle est la hauteur de A'DAM ?", "100 m"),
     ("comparaison-superficie", R._cap_comparaison, "la France est-elle plus vaste que l'Espagne ?", "Oui"),
     ("comparaison-altitude", R._cap_comparaison, "l'Abendberg est-il plus haut que l'Ahintziaga ?", "plus haut"),
     ("comparaison-riche", R._cap_comparaison, "la France est-elle plus riche que l'Espagne ?", "Oui"),
