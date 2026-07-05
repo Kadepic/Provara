@@ -1436,13 +1436,16 @@ def _cap_classement(texte: str):
         return None
     nb_tok, typ1, adj, typ2, zone = m.group(1), m.group(2), m.group(3), m.group(4), m.group(5).strip()
     n = 5 if not nb_tok else (int(nb_tok) if nb_tok.isdigit() else _NB_MOTS.get(_normalise(nb_tok), 5))
-    maximise = "moins" not in _normalise(texte).split()
     typ = next((t for t in (_normalise(typ1 or ""), _normalise(typ2 or "")) if t in _APPARTENANCE), None)
     adjn = _normalise(adj)
     if adjn not in _ADJ_ATTR and _normalise(typ2 or "") in _ADJ_ATTR:
         adjn = _normalise(typ2)
     if not typ or adjn not in _ADJ_ATTR:
         return None
+    # TRI : « plus » -> valeurs hautes, « moins » -> basses ; INVERSÉ si l'adjectif est « petit » (« les 3 plus
+    # PETITS pays » = superficies MINIMALES). Le MOT d'affichage garde l'original (« plus petits »), indépendant.
+    sens_mot = "moins" if "moins" in _normalise(texte).split() else "plus"
+    maximise = (sens_mot == "plus") != (adjn in _ADJ_PETIT)
     paires, _ = _membres_attribut(typ, _strip_article(zone), adjn)
     if not paires or len(paires) < 2:
         return None
@@ -1450,7 +1453,7 @@ def _cap_classement(texte: str):
     n = max(1, min(n, len(classe)))
     lignes = ["%d. %s (%s)" % (i + 1, e, ("%d" % v if float(v).is_integer() else "%g" % v))
               for i, (e, v) in enumerate(classe[:n])]
-    sens = "plus" if maximise else "moins"
+    sens = sens_mot
     pluriel = typ if typ.endswith(("s", "x")) else typ + "s"
     de = "d'" + zone if re.match(r"[aeiouyhàâäéèêëîïôöùûü]", _normalise(zone)) else "de " + zone
     return "Les %d %s les %s %s %s :\n%s" % (n, pluriel, sens, adj, de, "\n".join(lignes))
