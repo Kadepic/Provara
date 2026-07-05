@@ -148,6 +148,18 @@ CAS += [
     ("franchement je me demande quelle est la monnaie du Japon", "yen"),
 ]
 
+# ————— 8e VAGUE : COMPOSITION PROFONDE (enveloppe interrogative + pont ville→pays + élision) —————
+CAS += [
+    ("sur quel continent se trouve la capitale du Japon ?", "asie"),          # ex-FAUX .exe : répondait « Tokyo »
+    ("où est né l'auteur de 1984 ?", "motihari"),                             # créateur -> lieu de naissance (2 sauts)
+    ("quand est mort le successeur de Louis XIV ?", "1774"),                  # succession -> année de décès
+    ("quelle est la monnaie de la capitale du Japon ?", "yen"),               # capitale -> pont ville→pays -> monnaie
+    ("quelle est la monnaie de Tokyo ?", "yen"),                              # pont ville→pays direct
+    ("sur quel continent se trouve la capitale du pays le plus peuplé du monde ?", "asie"),  # feuille superlative + 3 sauts
+    ("quand a eu lieu la bataille de Hastings ?", "1066"),                    # élision « d'Hastings » (répondait « Battle »)
+    ("quelle est la population de la capitale de la France ?", "je m'abstiens"),  # chaîne partielle honnête (Paris sans population_ville)
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [

@@ -107,8 +107,15 @@ def _est_question_mesure(texte: str) -> bool:
 
 def _reponse_incoherente_mesure(question: str, reponse: str) -> bool:
     """True si `question` demande une MESURE mais `reponse` ne contient AUCUN chiffre (mismatch : sous-lookup
-    catégoriel résolu à la place de l'attribut de mesure). Sound : ne rejette qu'une réponse non numérique."""
-    return _est_question_mesure(question) and not any(c.isdigit() for c in reponse)
+    catégoriel résolu à la place de l'attribut de mesure). Sound : ne rejette qu'une réponse non numérique.
+    MÊME FILET pour les questions de DATE (« quand a eu lieu X ») : une réponse sans année (« Battle » — la
+    VILLE du lieu de la bataille d'Hastings, servie par un sous-lookup) est un mismatch de type -> rejetée."""
+    if _est_question_mesure(question) and not any(c.isdigit() for c in reponse):
+        return True
+    qn = _normalise(question)
+    if re.search(r"^\s*quand\b|\ba quelle date\b|\ben quelle annee\b|\bquelle annee\b", qn):
+        return not re.search(r"\b\d{3,4}\b", reponse)     # une vraie réponse de date contient une année
+    return False
 
 
 # GARDE RELATIONS IMBRIQUÉES « X de [la] Y de Z » : le moteur résout la relation INTERNE (« Y de Z ») et renvoie son
@@ -549,6 +556,10 @@ def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
             v = _val_verifiee(ia, verifie, "%s de %s" % (rel, sous_val), rel_head=rel, entite=sous_val)
             if v is not None:
                 return v, (sous_steps or []) + ["%s de %s = %s" % (rel, sous_val, v)]
+            pont = _pont_ville_pays(ia, verifie, rel, sous_val)              # attribut PAYS-CONSTANT d'une ville
+            if pont is not None:
+                v, pas = pont
+                return v, (sous_steps or []) + pas
         v = _val_verifiee(ia, verifie, "%s de %s" % (rel, reste), rel_head=rel, entite=reste)  # RESTE = entité littérale
         if v is not None:
             return v, ["%s de %s = %s" % (rel, reste, v)]
@@ -567,6 +578,28 @@ def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
     return _strip_article(expr), []
 
 
+# Attributs CONSTANTS à l'échelle d'un pays : les demander sur une VILLE se répond via le pays (monnaie de
+# Tokyo = monnaie du Japon). La POPULATION n'y est PAS (population de Tokyo ≠ population du Japon). Liste
+# FERMÉE — n'y ajouter que des attributs vrais pour TOUT point du pays.
+_REL_PAYS_CONST = frozenset(("monnaie", "langue", "continent", "hymne", "devise nationale"))
+
+
+def _pont_ville_pays(ia, verifie, rel: str, ville) -> tuple | None:
+    """PONT ville -> pays pour un attribut pays-constant : (valeur, [étapes]) ou None. FAUX=0 : le pays vient
+    de pays_ville (extraction vérifiée SANS nom multi-pays — audit 2026-07-06 : 9998 villes, 0 homonyme) et la
+    valeur du fait pays est elle-même vérifiée ; la traversée est MONTRÉE (« Tokyo est au Japon »)."""
+    if _normalise(rel) not in _REL_PAYS_CONST:
+        return None
+    cell = _charge_direct("pays_ville").get(_normalise(str(ville)))
+    if not cell:
+        return None
+    ville_aff, pays = cell
+    v = _val_verifiee(ia, verifie, "%s de %s" % (rel, pays), rel_head=rel, entite=pays)
+    if v is None:
+        return None
+    return v, ["%s est %s" % (ville_aff, _locatif_pays(pays)), "%s de %s = %s" % (rel, pays, v)]
+
+
 def _compose_relations_n(question: str):
     """RAISONNEMENT COMPOSITIONNEL N-SAUTS : « population de la capitale de la France » -> valeur + dérivation
     complète montrée. Exige ≥2 maillons de composition (sinon le lookup simple suffit). FAUX=0 : chaque maillon
@@ -580,6 +613,55 @@ def _compose_relations_n(question: str):
     val, steps = _resout_noeud(q, ia, verifie, 0)
     if val is not None and steps and len(steps) >= 2:
         return "%s  (en composant : %s)" % (val, ", puis ".join(steps))
+    # ABSTENTION à CHAÎNE PARTIELLE : l'interne résout (« capitale de la France » = Paris, VÉRIFIÉ) mais le
+    # maillon EXTERNE manque (« population de Paris » absent de population_ville — trou d'extraction Wikidata).
+    # Dire précisément QUEL maillon manque vaut mieux que le générique « rien n'ancre capitale de la France »
+    # (factuellement trompeur : l'interne s'ancre très bien). Préfixe structure -> statut HORS conservé.
+    dec = _decoupe_relation(q)
+    if dec:
+        rel, reste = dec
+        sous_val, sous_steps = _resout_noeud(reste, ia, verifie, 1)
+        if sous_val is not None and sous_steps:
+            return ("%s : j'ai composé %s — mais je n'ai pas de fait vérifié « %s de %s » dans mes données. "
+                    "Plutôt que d'inventer, je m'abstiens sur ce dernier maillon."
+                    % (_MSG_STRUCTURE_PREFIXE, ", puis ".join(sous_steps), rel, sous_val))
+    return None
+
+
+_ENV_INTERNE_RE = re.compile(
+    r"(?:la\s+|le\s+|les\s+|l['’]\s*)?([a-zà-ÿ]{3,})\s+"
+    r"(?:de\s+la\s+|de\s+l['’]\s*|du\s+|des\s+|d['’]\s*|de\s+)(.+?)\s*[?.!]*\s*$", re.I)
+# Préfixe d'ENVELOPPE « réelle » : la question pose une AUTRE question autour du GN composé (« sur quel
+# continent se trouve… », « où est né… », « quand est mort… », « qui a écrit… »). Un simple « quelle est la
+# capitale de la France » n'en est PAS une (le lookup direct doit la servir).
+_ENV_PREFIXE_RE = re.compile(
+    r"\b(?:sur|dans|en|a|à)\s+quel(?:le)?s?\s+[a-zà-ÿ]|\b(?:ou|où|quand|qui|comment|combien)\b", re.I)
+
+
+def _compose_enveloppe(memoire, conv_id, texte: str, pleine: bool):
+    """(2b-env) Voir le commentaire du câblage. Résout le GN composé FINAL de la question (« capitale du
+    Japon » -> Tokyo, maillon vérifié), substitue, rejoue le pipeline. La substitution et la dérivation du
+    rejeu sont toutes deux montrées."""
+    m = _ENV_INTERNE_RE.search(texte)
+    if not m:
+        return None
+    if _normalise(m.group(1)) not in _attr_heads():
+        return None
+    ia, verifie = _charge_ia()
+    if not ia:
+        return None
+    val, steps = _resout_noeud("%s de %s" % (m.group(1), m.group(2)), ia, verifie, 0)
+    if val is None or not steps:                 # steps vides = feuille littérale, rien de VÉRIFIÉ -> on s'abstient
+        return None
+    aff = str(val)
+    if _normalise(aff) == _normalise(m.group(2).strip()):
+        return None
+    nouveau = (texte[:m.start()].strip() + " " + aff + " ?").strip()
+    if _normalise(nouveau) == _normalise(texte):
+        return None
+    rep = _rejoue(memoire, conv_id, nouveau, pleine)
+    if rep and _utile(rep) and not rep.startswith((_MSG_STRUCTURE_PREFIXE, _MSG_STRUCTURE_COURT_PREFIXE)):
+        return "%s  (en composant d'abord : %s)" % (rep, ", puis ".join(steps))
     return None
 
 
@@ -1007,6 +1089,24 @@ def _relations_date() -> list:
     return _DATE_RELS_CACHE
 
 
+def _variantes_elision(nom: str) -> list:
+    """Variantes d'ÉLISION d'un nom d'événement : les clés réelles des datasets élident devant voyelle/h
+    (« bataille d'Hastings ») là où la question dit « de Hastings » — et la guérison/normalisation perd
+    l'apostrophe (« bataille d hastings »). Sans ces variantes, le lookup STREAMING (texte brut) rate la clé
+    et la question file vers la cascade lourde (qui répondait « Battle », la VILLE du lieu de la bataille)."""
+    v = [nom]
+    n = re.sub(r"\bde\s+([aeiouyhàâäéèêëîïôöùûü])", r"d'\1", nom, flags=re.I)   # de Hastings -> d'Hastings
+    if n not in v:
+        v.append(n)
+    n = re.sub(r"\bd\s+([aeiouyhàâäéèêëîïôöùûü])", r"d'\1", nom, flags=re.I)    # d hastings -> d'hastings
+    if n not in v:
+        v.append(n)
+    n = re.sub(r"\bd['’]\s*", "de ", nom)                                       # d'Hastings -> de Hastings
+    if n not in v:
+        v.append(n)
+    return v
+
+
 def _annee_de(entite: str):
     """Année associée à un événement/entité, cherchée dans les relations de dates (1re trouvée). (annee:int, affiché)
     ou (None, None). RAM-sûr : via _lookup_cell -> les gros fichiers de dates (annee_naissance_personne 150 Mo,
@@ -1027,11 +1127,12 @@ def _annee_de(entite: str):
                     if a is not None:
                         return int(a), cell[0]
     for rel in _relations_date():
-        cell = _lookup_cell(rel, entite)
-        if cell:
-            a = _nombre(cell[1])
-            if a is not None:
-                return int(a), cell[0]
+        for var in _variantes_elision(entite):
+            cell = _lookup_cell(rel, var)
+            if cell:
+                a = _nombre(cell[1])
+                if a is not None:
+                    return int(a), cell[0]
     return None, None
 
 
@@ -5525,6 +5626,18 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         rep = _compose_relations_n(t)
         if rep:
             return rep
+        #   (1a-env) ENVELOPPE interrogative RÉELLE autour d'un GN composé (« sur quel continent se trouve la
+        #        capitale du Japon ? », « où est né l'auteur de 1984 ? ») — tentée AVANT le lookup lourd, qui
+        #        sinon résout le GN INTERNE et répond « Tokyo »/« George Orwell » (le MAUVAIS type — FAUX réel
+        #        vu sur le .exe). Gardée par _ENV_PREFIXE_RE : la question doit poser une AUTRE question autour
+        #        du GN (un simple « quelle est la capitale de X » reste au lookup direct). Auto-protégée :
+        #        maillon interne VÉRIFIÉ exigé + réponse rejouée utile, sinon None et la cascade continue.
+        if _ENV_PREFIXE_RE.search(t):
+            _pfx_m = _ENV_INTERNE_RE.search(t)
+            if _pfx_m and _ENV_PREFIXE_RE.search(t[:_pfx_m.start()]):   # l'enveloppe est AVANT le GN interne
+                rep = _compose_enveloppe(memoire, conv_id, t, pleine)
+                if rep:
+                    return rep
         #   (1a-sup) SUPERLATIF par ARGMAX BORNÉ, en question DIRECTE (« le pays le plus peuplé d'Afrique » ->
         #        Nigéria). Le résolveur compositionnel l'atteint déjà comme FEUILLE ; ici on sert la question nue.
         #        SOUND : compare des faits réels sur un ensemble énuméré, jamais une devinette.
@@ -5686,6 +5799,17 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             if conv_id:
                 _DERNIER_SUJET[conv_id] = _ent
                 _DERNIER_QUESTION[conv_id] = "%s de %s" % (_tete, _ent)
+            return rep
+    #   (2b-env) ENVELOPPE interrogative autour d'un GN composé — « sur quel continent se trouve la capitale du
+    #        Japon ? » : l'enveloppe (« sur quel continent se trouve ») n'est pas une tête nominale, donc la
+    #        composition N-sauts ne la voit pas, et AUCUN étage n'a su répondre (on est juste avant l'abstention
+    #        — le .exe répondait « Tokyo », le MAUVAIS type). On résout le GN interne (« capitale du Japon » ->
+    #        Tokyo, maillon VÉRIFIÉ), on SUBSTITUE et on REJOUE le pipeline complet (« sur quel continent se
+    #        trouve Tokyo ? » -> la déduction existante, avec sa preuve). FAUX=0 : maillon montré + réponse
+    #        rejouée elle-même vérifiée ; _rejoue borne la profondeur.
+    if veut and pleine:
+        rep = _compose_enveloppe(memoire, conv_id, t, pleine)
+        if rep:
             return rep
     #   (2c) ASSISTANT AUTONOME (routeur de bornage) — la cascade factuelle vérifiée ET la mémoire n'ont RIEN :
     #        router par le gardien de bornage (cadrage non-borné honnête / calcul réellement évalué / recherche

@@ -1,5 +1,33 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Composition profonde : enveloppe interrogative, pont ville→pays, élision, filet temporel
+
+- **FAUX .exe corrigé — « sur quel continent se trouve la capitale du Japon ? » répondait « Tokyo »** (le
+  moteur lourd résolvait le GN interne et ignorait l'enveloppe). Nouvel étage **(1a-env)** : quand la question
+  pose une AUTRE question autour d'un GN composé (« sur quel continent… », « où est né… », « quand est mort… »),
+  le GN interne est résolu (maillon VÉRIFIÉ montré), substitué, et le pipeline complet est REJOUÉ →
+  *« Asie — je le déduis : Tokyo est la capitale du Japon et le Japon est en Asie (en composant d'abord :
+  capitale de Japon = Tokyo) »*. Marche en profondeur : « où est né l'auteur de 1984 ? » → *Motihari* ;
+  « quand est mort le successeur de Louis XIV ? » → *1774* ; « sur quel continent se trouve la capitale du
+  pays le plus peuplé du monde ? » → *Asie* (feuille superlative + 3 sauts). Un simple « quelle est la
+  capitale de X » reste au lookup direct (garde `_ENV_PREFIXE_RE`).
+- **Pont ville→pays pour attributs PAYS-CONSTANTS** (`_pont_ville_pays`) : « la monnaie de la capitale du
+  Japon ? » → *yen (Tokyo est au Japon, puis monnaie du Japon)*. Liste FERMÉE (monnaie, langue, continent,
+  hymne — PAS la population : population de Tokyo ≠ population du Japon). Audit anti-homonyme : pays_ville =
+  9 998 villes, 0 nom multi-pays.
+- **FAUX .exe corrigé — « quand a eu lieu la bataille de Hastings ? » répondait « Battle »** (la VILLE du lieu
+  de la bataille, East Sussex !) : la clé réelle est « bataille **d'**Hastings » (élision) que le lookup
+  streaming ratait → la cascade servait un sous-lookup du mauvais type. Double correctif : variantes
+  d'ÉLISION dans `_annee_de` (« de Hastings » ↔ « d'Hastings » ↔ « d hastings » apostrophe perdue) → *1066* ;
+  et FILET TEMPOREL générique : une question « quand / en quelle année » ne peut plus rendre une réponse sans
+  année (même filet que les mesures).
+- **Abstention à CHAÎNE PARTIELLE** : « population de la capitale de la France ? » disait « rien n'ancre
+  capitale de la France » (trompeur — ça résout très bien vers Paris). Désormais : *« j'ai composé capitale de
+  France = Paris — mais je n'ai pas de fait vérifié « population de Paris » »* (le maillon manquant est
+  NOMMÉ ; Paris/Tokyo absents de population_ville = trou d'extraction Wikidata, à corriger côté ingestion).
+- Banc paraphrases **113/113** (8e vague : 8 cas de composition profonde), raisonnement 132/132,
+  constructions 4/4, synonymes 8/8, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — FAUX corrigé : « quel fleuve traverse Paris ? » répond « la Seine », plus une liste de 147 rivières
 
 - **Cause** : dans `_liste_inverse`, le mot « fleuve » servait à la fois de mot-TYPE interrogé (« quel fleuve… »)
