@@ -3599,6 +3599,45 @@ def _cap_succession(texte: str):
     return None
 
 
+# CRÉATEUR d'une œuvre : « qui a écrit 1984 ? » -> George Orwell. Le VERBE désigne la famille de relations
+# (auteur_*, compositeur_*, realisateur_*, architecte_*, inventeur_*, peintre_*). Via _lookup_direct (streaming,
+# valeur UNIQUE dans la famille). FAUX=0 : créateur réellement stocké ou None. Léger (avant le moteur lourd).
+_CREATEUR_RULES = (
+    (re.compile(r"^\s*(?:qui\s+a\s+écrit|qui\s+est\s+l['’]auteur\s+d[eu'’]|de\s+qui\s+est\s+le\s+(?:livre|roman))\s+"
+                r"(.+?)\s*\??\s*$", re.I), "auteur", "%s a été écrit par %s"),
+    (re.compile(r"^\s*(?:qui\s+a\s+compos[ée]|qui\s+est\s+le\s+compositeur\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
+     "compositeur", "%s a été composé par %s"),
+    (re.compile(r"^\s*(?:qui\s+a\s+r[ée]alis[ée]|qui\s+est\s+le\s+r[ée]alisateur\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
+     "realisateur", "%s a été réalisé par %s"),
+    (re.compile(r"^\s*(?:qui\s+a\s+peint|qui\s+est\s+le\s+peintre\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
+     "peintre", "%s a été peint par %s"),
+    (re.compile(r"^\s*(?:qui\s+a\s+(?:conçu|construit|bâti|bati|dessin[ée])|qui\s+est\s+l['’]architecte\s+d[eu'’])\s+"
+                r"(.+?)\s*\??\s*$", re.I), "architecte", "%s a été conçu par %s"),
+    (re.compile(r"^\s*(?:qui\s+a\s+invent[ée]|qui\s+est\s+l['’]inventeur\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
+     "inventeur", "%s a été inventé par %s"),
+    (re.compile(r"^\s*(?:qui\s+a\s+d[ée]couvert|qui\s+est\s+le\s+d[ée]couvreur\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
+     "auteur_decouverte", "%s a été découvert par %s"),
+)
+
+
+def _cap_createur(texte: str):
+    """CRÉATEUR d'une œuvre : « qui a écrit 1984 ? » -> George Orwell ; « qui a composé le Boléro ? » -> Ravel ;
+    « qui a réalisé Titanic ? » -> Cameron. Via _lookup_direct sur la famille du verbe. FAUX=0 : valeur UNIQUE
+    stockée ou None. Léger (sans moteur lourd)."""
+    for patron, head, gabarit in _CREATEUR_RULES:
+        m = patron.match(texte.strip())
+        if not m:
+            continue
+        ent = _strip_article(m.group(1).strip())
+        if not ent or len(ent) < 2:
+            return None
+        val = _lookup_direct(head, ent)
+        if val is None or str(val).strip() == "":
+            return None
+        return (gabarit % (ent[:1].upper() + ent[1:], val)) + "."
+    return None
+
+
 def _cap_fait_personne(texte: str):
     """FAIT CIBLÉ sur une personne (lieu/année de naissance ou décès, nationalité, métier) via lookup STREAMING —
     « où est né Napoléon Ier ? » -> « Napoléon Ier est né à Ajaccio. ». FAUX=0 : fait stocké réel, None sinon ;
@@ -4217,7 +4256,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_createur, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

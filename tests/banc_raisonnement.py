@@ -102,6 +102,8 @@ CAS = [
     ("guerison-mots-outils", R._guerit_entree, "la France a-t-elle des colonies", "des colonies"),  # « des » pas -> « dis »
     ("fait-personne-lieu", R._cap_fait_personne, "où est né Napoléon Ier ?", "Ajaccio"),
     ("fait-personne-fem", R._cap_fait_personne, "où est morte Marie Curie ?", "est morte"),
+    ("createur-auteur", R._cap_createur, "qui a écrit 1984 ?", "George Orwell"),
+    ("createur-compositeur", R._cap_createur, "qui a composé le Boléro ?", "Ravel"),
     ("succession", R._cap_succession, "qui a succédé à Louis XIV ?", "Louis XV"),
     ("succession-predecesseur", R._cap_succession, "qui a précédé Louis XIV ?", "Louis XIII"),
     ("localisation-pays", R._cap_localisation, "dans quel pays est 1117 Mountain ?", "États-Unis"),
