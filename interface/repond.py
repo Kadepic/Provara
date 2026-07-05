@@ -756,6 +756,47 @@ def _cap_temporel(texte: str):
     return "%s (%d) — c'est %s (%s date de %d)." % (_maj(g_aff), g_an, qualif, p_aff, p_an)
 
 
+# DATE d'un événement : « quand a eu lieu la bataille de Marignan ? » -> 1515. « commencé/débuté » -> année de
+# début, « terminé/fini » -> année de fin (familles appariées), sinon l'année principale (_annee_de). FAUX=0.
+_DATE_EVT_RE = re.compile(
+    r"^\s*(?:quand\s+(?:a\s+eu\s+lieu\s+|a\s+commenc[ée]\s+|a\s+d[ée]but[ée]\s+|s['’]est\s+termin[ée]e?\s+|"
+    r"s['’]est\s+fini\w*\s+|a\s+pris\s+fin\s+|s['’]est\s+d[ée]roul[ée]e?\s+|a\s+eu\s+lieu\s+)"
+    r"|en\s+quelle\s+ann[ée]+e?\s+(?:a\s+eu\s+lieu\s+|a\s+commenc[ée]\s+|s['’]est\s+termin[ée]e?\s+|"
+    r"(?:a\s+)?(?:d[ée]but[ée]|fini|eu\s+lieu)\s+|est\s+)"
+    r"|de\s+quand\s+date\s+)(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_date_evenement(texte: str):
+    """DATE d'un événement : « quand a eu lieu la bataille de Marignan ? » -> « 1515 ». « quand a commencé la
+    guerre de Cent Ans ? » -> année de début ; « quand s'est terminée … ? » -> année de fin. FAUX=0 : année
+    vérifiée ou None ; av. J.-C. géré."""
+    m = _DATE_EVT_RE.match(texte.strip())
+    if not m:
+        return None
+    ent = _strip_article(m.group(1).strip())
+    if not ent or len(ent) < 3:
+        return None
+    qn = _normalise(texte)
+    borne = lambda a: ("%d av. J.-C." % -a) if a < 0 else "%d" % a
+    trouve = _duree_de(ent)                               # (debut, fin, affiché, fam) si événement borné
+    if trouve and ("commenc" in qn or "debut" in qn):
+        d, _f, aff, _fam = trouve
+        return "%s a commencé en %s." % (aff[:1].upper() + aff[1:], borne(d))
+    if trouve and ("termin" in qn or "fini" in qn or "pris fin" in qn):
+        _d, f, aff, _fam = trouve
+        return "%s s'est terminé%s en %s." % (aff[:1].upper() + aff[1:], "e" if _fem_evt(aff) else "", borne(f))
+    an, aff = _annee_de(ent)
+    if an is None:
+        return None
+    return "%s : %s." % (aff[:1].upper() + aff[1:], borne(an))
+
+
+def _fem_evt(nom: str) -> bool:
+    """L'événement est-il désigné par un mot féminin (bataille, guerre, révolution…) pour l'accord « terminée » ?"""
+    return bool(re.match(r"^(?:bataille|guerre|r[ée]volution|campagne|op[ée]ration|croisade|conqu[êe]te|dynastie)\b",
+                         _normalise(nom)))
+
+
 # TEMPOREL N-ÉVÉNEMENTS : « quel est le plus ancien entre Marignan, Verdun et Waterloo ? ». Argmin/argmax sur les
 # DATES d'une liste explicite (≥3). Le 2-événements reste géré par _cap_temporel. FAUX=0 : dates vérifiées.
 _TEMPON_RE = re.compile(
@@ -4176,7 +4217,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
