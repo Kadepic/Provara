@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — MISES À JOUR AUTOMATIQUES : le .exe se met à jour tout seul (plus de re-téléchargement)
+
+- **Nouveau module `src/maj.py`** : vérifie honnêtement (FAUX=0) contre les Releases GitHub s'il existe une
+  version RÉELLEMENT plus récente (numéro de build monotone `GITHUB_RUN_NUMBER`), télécharge le nouveau `.exe`
+  (brut de préférence, zip en repli) et lance un updater Windows qui attend la fermeture, remplace le binaire et
+  redémarre. Réglage `auto` persistant (`~/.verax/maj_config.json`). Aucun appel réseau sans Internet activé.
+- **UI (2 boutons, selon spec)** : « 🔄 MAJ auto » (toggle) et « 🔍 Rechercher une MAJ » — ce dernier n'apparaît
+  QUE si l'auto est désactivée (sinon redondant). Bannière « nouvelle version disponible → Mettre à jour ». Au
+  démarrage et à l'activation d'Internet, on vérifie et on propose automatiquement (si auto ON).
+- **Routes serveur** : `GET /api/maj`, `POST /api/maj/auto`, `POST /api/maj/verifier`, `POST /api/maj/appliquer`.
+- **CI (build-exe.yml)** : tamponne un numéro de build MONOTONE, et à CHAQUE push publie une Release ROULANTE
+  « latest » avec le `.exe` brut + le zip + `version.txt`. Résultat : **commit + push → les utilisateurs
+  reçoivent la mise à jour sans rien re-télécharger**. L'update embarque TOUS les atomes (le `.exe` re-bundle
+  tout `src/` + seeds). Lien direct stable pour les non-techniciens :
+  `https://github.com/Provara-IA/Provara/releases/latest/download/Provara.exe`
+- **Gate `tests/valide_maj.py`** (13/13, réseau injecté) : parsing du tampon, réglage persistant, détection
+  « plus récent », FAUX=0 (jamais de proposition sans version supérieure ni sans réseau). Suite **18/18**.
+  Build files (CI + .bat) : `--hidden-import maj` ajouté.
+
 ## 2026-07-05 — Chasse au FAUX : 3 défauts de correction trouvés et corrigés
 
 - **Ontologie qui détournait une question relationnelle** : « Berlin est-elle la capitale de l'Allemagne ? »

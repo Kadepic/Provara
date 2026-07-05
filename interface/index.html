@@ -78,6 +78,9 @@
   #barre-outils button:hover, #barre-outils select:hover { color: var(--texte); }
   #barre-outils #btn-web { color: var(--accent); border-color: var(--accent); }
   #barre-outils #btn-web.off { border-color: #c98f7e; color: #a15a4a; }
+  #barre-outils #btn-maj-auto { color: var(--accent); border-color: var(--accent); }
+  #barre-outils #btn-maj-auto.off { border-color: #c98f7e; color: #a15a4a; }
+  #banniere-maj button { border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 8px; padding: 4px 10px; cursor: pointer; font-size: 13px; }
   #titre .scope { font-size: 11px; color: var(--doux); }
   #tours { flex: 1; overflow-y: auto; padding: 20px; }
   .tour { max-width: 70%; margin-bottom: 14px; padding: 10px 13px; border-radius: 12px; background: var(--autre); }
@@ -123,6 +126,8 @@
       <div class="titre-txt"><h2>—</h2><span class="scope"></span></div>
       <div id="barre-outils">
         <button id="btn-web" title="État de l'accès à internet…">🌐 Internet : …</button>
+        <button id="btn-maj-auto" title="Mises à jour automatiques : Provara vérifie et propose les nouveautés dès qu'Internet est actif">🔄 MAJ auto : …</button>
+        <button id="btn-maj-verif" title="Rechercher maintenant une mise à jour sur le dépôt officiel" style="display:none">🔍 Rechercher une MAJ</button>
         <button id="btn-theme" title="Basculer entre thème clair et thème sombre">🌙 Mode sombre</button>
         <select id="sel-langue" title="Langue de l'interface et des réponses">
           <option value="fr">🇫🇷 Français</option>
@@ -348,9 +353,58 @@ function majWeb(actif) {
 $("#btn-web").onclick = async () => {
   const r = await api("/api/web", { method: "POST", headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ actif: $("#btn-web").dataset.actif !== "1" }) });
-  if (r.ok) majWeb(r.actif);
+  if (r.ok) { majWeb(r.actif); if (r.actif) majVerifieMaj(false); }   // internet activé -> on vérifie les MAJ
 };
 api("/api/web").then((r) => majWeb(!!r.actif)).catch(() => {});
+
+// — MISES À JOUR : bouton « auto » (toggle) + bouton « rechercher » (masqué quand auto est ON) + bannière —
+function afficheMajAuto(auto) {
+  const b = $("#btn-maj-auto");
+  b.dataset.auto = auto ? "1" : "0";
+  b.className = auto ? "" : "off";
+  b.textContent = auto ? "🔄 MAJ auto : oui" : "🔄 MAJ auto : non";
+  // le bouton « Rechercher » n'apparaît QUE si l'auto est désactivée (sinon redondant).
+  $("#btn-maj-verif").style.display = auto ? "none" : "";
+}
+function afficheMajDispo(e) {
+  let ban = $("#banniere-maj");
+  if (!ban) {
+    ban = document.createElement("div");
+    ban.id = "banniere-maj";
+    ban.style.cssText = "margin:8px 12px;padding:10px 14px;border-radius:10px;border:1px solid var(--accent);"
+      + "color:var(--accent);display:flex;align-items:center;gap:12px;font-size:14px;";
+    $("#fil").insertBefore(ban, $("#tours"));
+  }
+  if (e && e.disponible) {
+    ban.style.display = "flex";
+    ban.innerHTML = "✨ Une nouvelle version de Provara est disponible."
+      + " <button id='btn-maj-go' style='margin-left:auto'>Mettre à jour maintenant</button>"
+      + " <button id='btn-maj-plus-tard' style='opacity:.7'>Plus tard</button>";
+    $("#btn-maj-go").onclick = async () => {
+      $("#btn-maj-go").textContent = "Mise à jour…"; $("#btn-maj-go").disabled = true;
+      const r = await api("/api/maj/appliquer", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url_exe: e.url_exe }) });
+      ban.textContent = r.ok ? "⏳ " + r.message : "⚠ " + (r.message || "échec de la mise à jour");
+    };
+    $("#btn-maj-plus-tard").onclick = () => { ban.style.display = "none"; };
+  } else {
+    ban.style.display = "none";
+  }
+}
+async function majVerifieMaj(force) {
+  const r = await api(force ? "/api/maj/verifier" : "/api/maj", force ? { method: "POST" } : undefined).catch(() => null);
+  if (!r || !r.ok) return;
+  afficheMajAuto(!!r.auto);
+  if (r.auto || force) afficheMajDispo(r);   // en auto : on PROPOSE ; en manuel : seulement sur clic « rechercher »
+}
+$("#btn-maj-auto").onclick = async () => {
+  const nouv = $("#btn-maj-auto").dataset.auto !== "1";
+  const r = await api("/api/maj/auto", { method: "POST", headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ actif: nouv }) });
+  if (r.ok) { afficheMajAuto(r.auto); if (r.auto) majVerifieMaj(false); }
+};
+$("#btn-maj-verif").onclick = () => majVerifieMaj(true);
+majVerifieMaj(false);   // au démarrage : lit l'état auto + propose si une MAJ existe (et Internet actif)
 
 // — THÈME clair/sombre : préférence mémorisée localement ; défaut = réglage système —
 function majTheme(sombre) {

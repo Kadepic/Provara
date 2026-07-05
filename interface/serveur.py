@@ -584,7 +584,44 @@ ROUTES = {
     ("GET", "/api/corbeille"):      lambda m, q, b: {"ok": True, "items": [i for i in liste_conversations(m, inclure_archivees=True)["items"] if i.get("archivee")]},
     ("POST", "/api/desarchive"):   lambda m, q, b: desarchive_conversation(m, b.get("id", "")),  # ré-afficher
     ("POST", "/api/oublie"):       lambda m, q, b: oublie_conversation(m, b.get("id", "")),       # purger pour de bon
+    # MISES À JOUR : état (auto + disponibilité), réglage auto ON/OFF, vérif manuelle, application.
+    ("GET", "/api/maj"):           lambda m, q, b: _maj_etat(),
+    ("POST", "/api/maj/auto"):     lambda m, q, b: _maj_regle_auto(bool(b.get("actif"))),
+    ("POST", "/api/maj/verifier"): lambda m, q, b: _maj_etat(force=True),
+    ("POST", "/api/maj/appliquer"): lambda m, q, b: _maj_applique(b.get("url_exe")),
 }
+
+
+def _maj_etat(force: bool = False) -> dict:
+    """État des mises à jour. On NE contacte le réseau QUE si Internet est activé (ou vérif manuelle forcée) —
+    sinon on rend l'état local sans réseau (jamais de proposition sans réseau autorisé). FAUX=0 : proposition
+    uniquement si une version réellement plus récente existe sur le dépôt officiel."""
+    try:
+        import maj
+    except Exception as e:
+        return {"ok": False, "message": "module de mise à jour indisponible : %r" % e}
+    web_on = os.environ.get("IA_WEB") == "1"
+    if not (web_on or force):
+        loc = maj.version_locale()
+        return {"ok": True, "auto": maj.auto_active(), "disponible": False, "reseau": False,
+                "version_locale": loc.get("brut"), "version_distante": None, "url_exe": None}
+    return maj.etat()
+
+
+def _maj_regle_auto(actif: bool) -> dict:
+    try:
+        import maj
+        return maj.regle_auto(actif)
+    except Exception as e:
+        return {"ok": False, "message": "%r" % e}
+
+
+def _maj_applique(url_exe) -> dict:
+    try:
+        import maj
+        return maj.applique(url_exe)
+    except Exception as e:
+        return {"ok": False, "message": "%r" % e}
 
 
 class Handler(BaseHTTPRequestHandler):

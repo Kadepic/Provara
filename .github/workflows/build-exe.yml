@@ -16,9 +16,11 @@ jobs:
         with:
           python-version: '3.12'
       - run: pip install pyinstaller
-      - name: Tamponner le commit du build (VERSION_BUILD.txt)
+      - name: Tamponner le build (numéro MONOTONE + commit) dans VERSION_BUILD.txt
         shell: bash
-        run: echo "$GITHUB_SHA" > VERSION_BUILD.txt
+        # GITHUB_RUN_NUMBER = entier qui CROÎT à chaque exécution du workflow -> sert de « version » pour décider
+        # « plus récent » côté auto-update (maj.py compare ces numéros). Le commit reste tamponné pour tracer.
+        run: echo "$GITHUB_RUN_NUMBER $GITHUB_SHA" > VERSION_BUILD.txt
       - name: Build Provara.exe
         run: >
           pyinstaller --onefile --name Provara --noconsole
@@ -29,7 +31,7 @@ jobs:
           --hidden-import assistant_nl --hidden-import veille_structure --hidden-import fonction_nl
           --hidden-import correction_ortho --hidden-import synonymes --hidden-import formulation
           --hidden-import est_un --hidden-import ontologie --hidden-import classifieur_bornage --hidden-import resolution
-          --hidden-import realisation_fr --hidden-import deduction --hidden-import induction_horn
+          --hidden-import realisation_fr --hidden-import deduction --hidden-import induction_horn --hidden-import maj
           --add-data "src;src"
           --add-data "ingestion;ingestion"
           --add-data "interface;interface"
@@ -49,17 +51,31 @@ jobs:
         with:
           name: Provara-windows
           path: dist/Provara.exe
-      - name: Attacher Provara-windows.zip à la Release
-        # Sur un évènement "release", attache au tag concerné ; en lancement manuel (workflow_dispatch),
-        # attache à la dernière Release publiée. Zippe l'exe (Provara-windows.zip) et REMPLACE l'asset de même
-        # nom (--clobber) -> pas de doublon, le zip périmé est écrasé par le build courant (SHA tamponné).
-        if: github.event_name == 'release' || github.event_name == 'workflow_dispatch'
+      - name: Publier la Release ROULANTE « latest » (auto-update à chaque push)
+        # OBJECTIF : après un simple commit+push, les utilisateurs reçoivent la mise à jour SANS action.
+        # On maintient une Release au tag fixe « latest » : on y REMPLACE (--clobber) le paquet .exe (zip) ET un
+        # petit `version.txt` (numéro de build monotone + commit) que maj.py lit pour décider « plus récent ».
+        # Sur un évènement "release" classique, on attache AUSSI au tag concerné (compat historique).
+        if: github.event_name != 'pull_request'
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          TAG="${{ github.event.release.tag_name }}"
-          if [ -z "$TAG" ]; then TAG=$(gh release list -L1 --json tagName -q '.[0].tagName'); fi
+          set -e
           powershell -Command "Compress-Archive -Path dist/Provara.exe -DestinationPath dist/Provara-windows.zip -Force"
-          echo "Upload dist/Provara-windows.zip -> release $TAG"
-          gh release upload "$TAG" dist/Provara-windows.zip --clobber
+          cp VERSION_BUILD.txt dist/version.txt
+          # Release roulante « latest » : créée si absente, sinon mise à jour.
+          if ! gh release view latest >/dev/null 2>&1; then
+            gh release create latest --title "Provara — dernière version" \
+              --notes "Build automatique (run #$GITHUB_RUN_NUMBER, commit $GITHUB_SHA). Mise à jour reçue automatiquement par les .exe installés." \
+              --latest
+          else
+            gh release edit latest --notes "Build automatique (run #$GITHUB_RUN_NUMBER, commit $GITHUB_SHA)." --latest
+          fi
+          # On publie AUSSI le .exe BRUT : lien direct stable pour les non-techniciens (double-clic, aucun
+          # décompactage) -> https://github.com/Provara-IA/Provara/releases/latest/download/Provara.exe
+          gh release upload latest dist/Provara.exe dist/Provara-windows.zip dist/version.txt --clobber
+          # Compat : si l'évènement est une vraie Release taguée, on y met aussi le paquet.
+          if [ "${{ github.event_name }}" = "release" ] && [ -n "${{ github.event.release.tag_name }}" ]; then
+            gh release upload "${{ github.event.release.tag_name }}" dist/Provara-windows.zip dist/version.txt --clobber || true
+          fi
