@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — LE GRAND LEVIER : parse SVO libre (ordre des mots quelconque) + garde concept
+
+- **Parse SVO libre** (`_parse_svo_libre`, ultime recours vérifié) : quand aucune règle ne matche mais que la
+  question porte une TÊTE DE RELATION connue et une ENTITÉ ancrable dans un ORDRE LIBRE, on isole (tête, entité)
+  sans se soucier de la position, on reconstruit « <tête> de <entité> » et on rejoue en lookup vérifié. « du
+  Japon, dis-moi la capitale », « pour le Japon, la monnaie ? », « Japon : monnaie ? », « la capitale, c'est
+  quoi, pour le Japon ? » → réponses vérifiées. FAUX=0 absolu : ne répond QUE si le fait se vérifie, sinon
+  l'abstention structurée prend le relais.
+- **Câblé à deux points** : avant le découpeur multi-questions (une question à ordre libre découpée par virgules
+  n'est PAS une multi-demande — gardé contre les vraies coordinations « et/puis ») et en dernier recours avant
+  l'abstention. Découpe sur le texte BRUT (piège : `_normalise` supprime les virgules).
+- **Bug FAUX=0 préexistant corrigé** : « où se trouve le bonheur ? » renvoyait les coordonnées d'un hameau
+  homonyme « Bonheur » (le chemin coordonnées `_localisation` n'avait pas la garde `_est_concept_commun` que
+  `_cap_localisation` avait déjà) → abstention structurée désormais.
+- 5e vague du banc paraphrases (ordre libre) : **91/91 (100 %)**. Raisonnement **113/113**, suite 16/16
+  (77/77), challenge 16/16.
+
 ## 2026-07-05 — Piste #5 : raisonnement transitif étendu aux CONFLITS militaires
 
 - **Nouveau domaine transitif** (`_TRANS_GROUPES` cle="conflit", relations `conflit_parent_bataille/_operation_

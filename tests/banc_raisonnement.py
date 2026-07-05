@@ -167,6 +167,12 @@ CAS = [
      "est-ce que l'opération Tonga fait partie du front de l'Ouest ?", "Oui"),
     ("transitif-conflit-faux", R._cap_transitif,
      "est-ce que la bataille de Marignan fait partie de la guerre de Cent Ans ?", ""),   # FAUX -> abstention
+    # parse SVO libre (ordre des mots libre) : tête de relation + entité vérifiée, quel que soit l'ordre
+    ("svo-entite-avant", lambda q: (R._parse_svo_libre(q) or ("",))[0], "du Japon, dis-moi la capitale", "Tokyo"),
+    ("svo-pour-entite", lambda q: (R._parse_svo_libre(q) or ("",))[0], "pour le Japon, la monnaie ?", "yen"),
+    ("svo-concept-refuse", lambda q: (R._parse_svo_libre(q) or ("",))[0], "le sens, pour le bonheur ?", ""),  # concept -> None
+    # garde FAUX=0 : « où se trouve le bonheur » (concept) ne renvoie PAS les coords d'un hameau homonyme
+    ("localisation-concept-coords", R._localisation, "où se trouve le bonheur ?", ""),
 ]
 
 

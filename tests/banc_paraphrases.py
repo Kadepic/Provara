@@ -110,6 +110,22 @@ CAS += [
     ("napoleon ier il est né ou", "ajaccio"),
 ]
 
+# ————— 5e VAGUE : ORDRE DES MOTS VRAIMENT LIBRE (le grand levier parse SVO) —————
+CAS += [
+    ("du Japon, dis-moi la capitale", "tokyo"),
+    ("du Japon la capitale ?", "tokyo"),
+    ("la capitale, pour le Japon ?", "tokyo"),
+    ("Japon, capitale ?", "tokyo"),
+    ("pour le Japon, la monnaie ?", "yen"),
+    ("le Japon, sa capitale ?", "tokyo"),
+    ("la France, sa population ?", "68"),
+    ("Napoléon Ier, sa nationalité ?", "france"),   # nationalite_personne stocke « France »
+    ("1984, son auteur ?", "orwell"),
+    ("le Japon : monnaie ?", "yen"),
+    ("la capitale, c'est quoi, pour le Japon ?", "tokyo"),
+    ("dis, la capitale du Japon ?", "tokyo"),
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [

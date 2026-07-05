@@ -2155,8 +2155,8 @@ def _localisation(question: str) -> str | None:
     if not ia:
         return None
     lieu = _strip_article(m.group(1))
-    if not lieu:
-        return None
+    if not lieu or _est_concept_commun(lieu):    # « où se trouve le bonheur ? » : concept, pas un toponyme
+        return None                              # (hameau « Bonheur » = faux-ami) -> abstention (FAUX=0)
     try:
         c = ia.coordonnees_lieu(lieu)
     except Exception:
@@ -4460,6 +4460,55 @@ def _est_concept_commun(ent: str) -> bool:
         return False
 
 
+# Segments d'une question à ordre libre : on découpe sur les virgules / « : » et on cherche la TÊTE DE RELATION
+# d'un côté, l'ENTITÉ de l'autre — quel que soit l'ordre. Mots à ignorer (bruit d'énoncé).
+_SVO_BRUIT = frozenset(
+    "dis dites moi nous quel quelle quels quelles est sont ce c qu quoi la le les un une de du des au aux "
+    "en et pour avec sur dans son sa ses leur leurs mon ma mes ton ta tes alors donc sinon franchement "
+    "stp svp merci s'il te vous plait connais sais peux pourrais eh bah ben ah oh".split())
+
+
+def _parse_svo_libre(texte: str, conv_id: str | None = None):
+    """DERNIER RECOURS de compréhension OUVERTE : aucune règle n'a matché, mais la question contient une TÊTE DE
+    RELATION connue (_attr_heads) et une ENTITÉ ancrable, dans un ordre LIBRE (« du Japon, dis-moi la capitale »,
+    « la capitale, pour le Japon ? », « Japon : monnaie ? »). On isole (tête, entité) sans se soucier de l'ordre,
+    on reconstruit la forme canonique « <tête> de <entité> » et on la REJOUE en lookup vérifié. FAUX=0 absolu :
+    on ne renvoie QUE si le fait se vérifie ; sinon None (l'abstention structurée prend le relais). Renvoie
+    (réponse, tête, entité) ou None."""
+    heads = _attr_heads()
+    # segments = tranches séparées par virgules / deux-points / « pour ». On découpe le texte BRUT puis on
+    # normalise CHAQUE segment (crucial : _normalise supprime les virgules, découper après = un seul bloc).
+    segments = [_normalise(s).strip() for s in re.split(r"\s*[,:]\s*|\s+pour\s+", texte.strip(" ?.!"))
+                if _normalise(s).strip()]
+    if len(segments) < 2:                          # l'ordre libre a besoin d'au moins 2 blocs (relation | entité)
+        return None
+    # TÊTE = un segment (ou son 1er mot de contenu) qui est une tête de relation connue.
+    tete = None
+    reste = []
+    for seg in segments:
+        mots = [w for w in seg.split() if w not in _SVO_BRUIT]
+        cand = next((w for w in mots if w in heads), None)
+        if cand and tete is None:
+            tete = cand
+            autres = [w for w in mots if w != cand]
+            if autres:                             # « la monnaie qu'on utilise » : contenu résiduel = pas l'entité
+                reste.append(" ".join(autres))
+        else:
+            reste.append(seg)
+    if not tete or not reste:
+        return None
+    # ENTITÉ = le plus long segment résiduel qui s'ANCRE (fait vérifié via la sonde) — jamais un concept commun.
+    cand_ents = sorted((s.strip() for s in reste if len(s.strip()) >= 2), key=len, reverse=True)
+    for ent in cand_ents:
+        ent = _strip_article(ent)
+        if not ent or len(ent.split()) > 5 or _est_concept_commun(ent) or _normalise(ent) in heads:
+            continue
+        rep = _connaissance_verifiee("%s de %s" % (tete, ent), conv_id)
+        if rep and not est_fallback(rep):
+            return (rep, tete, ent)
+    return None
+
+
 def _cap_localisation(texte: str):
     """LOCALISATION d'un lieu (montagne/désert/île/lac/rivière/ville) : « dans quel pays est X », « sur quel
     continent est X », « où se trouve X » -> pays ou continent stocké. FAUX=0 : valeur réelle vérifiée ou None
@@ -5144,6 +5193,17 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             return _comp
     #   Les composées « et » ne sont PAS imbriquées (attrs séparés par « et », pas « de ») -> elles passent par _multi.
     if pleine and not _negation_bloquante(t) and not _est_relation_imbriquee(t) and not _est_causale(t):
+        #   (1·svo) ORDRE LIBRE COHÉRENT — tenté AVANT le multi-questions : « la capitale, c'est quoi, pour le
+        #        Japon ? » se découpe en 3 segments par virgule et partirait à tort en multi-demande. Si SVO
+        #        libre y voit UNE seule question (tête + entité vérifiée), c'est elle qu'on sert. FAUX=0 (vérifié).
+        #        GARDE : pas de coordination « et/puis » (une VRAIE multi-demande doit aller au multi-questions).
+        _svo = None if re.search(r"\s+(?:et|puis|ainsi que)\s+", t, re.I) else _parse_svo_libre(t, conv_id)
+        if _svo:
+            rep, _tete, _ent = _svo
+            if conv_id:
+                _DERNIER_SUJET[conv_id] = _ent
+                _DERNIER_QUESTION[conv_id] = "%s de %s" % (_tete, _ent)
+            return rep
         #   (1·multi) DEMANDE COMPOSÉE multi-domaines (« capitale de la France ET numéro du fer ») — tentée en premier
         #        car un « et » coordonnant doit donner LES DEUX réponses, pas une seule. SOUND : ≥2 faits vérifiés requis.
         rep = _multi_questions(t, conv_id)
@@ -5298,6 +5358,18 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if rep_clarif:
             return rep_clarif
 
+    #   (2b-svo) PARSE SVO LIBRE — ultime recours de compréhension OUVERTE avant l'abstention : aucune règle n'a
+    #        matché, mais la question porte une TÊTE DE RELATION connue + une ENTITÉ ancrable dans un ORDRE LIBRE
+    #        (« du Japon, dis-moi la capitale », « Japon : monnaie ? »). On reconstruit « <tête> de <entité> » et
+    #        on REJOUE en lookup vérifié. FAUX=0 : on ne renvoie QUE si le fait se vérifie ; sinon on continue.
+    if veut and pleine:
+        _svo = _parse_svo_libre(t, conv_id)
+        if _svo:
+            rep, _tete, _ent = _svo
+            if conv_id:
+                _DERNIER_SUJET[conv_id] = _ent
+                _DERNIER_QUESTION[conv_id] = "%s de %s" % (_tete, _ent)
+            return rep
     #   (2c) ASSISTANT AUTONOME (routeur de bornage) — la cascade factuelle vérifiée ET la mémoire n'ont RIEN :
     #        router par le gardien de bornage (cadrage non-borné honnête / calcul réellement évalué / recherche
     #        autonome sur les sources de confiance / QUESTION de clarification) plutôt que l'aveu générique.
