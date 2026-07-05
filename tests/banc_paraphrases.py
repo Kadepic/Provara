@@ -94,6 +94,17 @@ CAS = [
     ("quel âge avait Napoléon Ier à sa mort ?", "52"),
 ]
 
+# ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
+# La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
+MULTITOURS = [
+    ("où est né Napoléon Ier ?", "il est mort quand ?", "1821"),
+    ("où est née Marie Curie ?", "elle est morte quand ?", "1934"),
+    ("où est né Napoléon Ier ?", "et il était de quelle nationalité ?", "france"),
+    ("quelle est la capitale du Japon ?", "et sa monnaie ?", "yen"),
+    ("quelle est la capitale du Japon ?", "et sa population ?", "1"),      # population du Japon (chiffre)
+    ("quand a eu lieu la bataille de Marignan ?", "et celle de Waterloo ?", "1815"),
+]
+
 
 def run():
     mem = conversation.MemoireConversation(racine=None)
@@ -107,7 +118,18 @@ def run():
             ok += 1
         else:
             echecs.append((q, rep.replace("\n", " ")[:90]))
-    total = len(CAS)
+    for i, (amorce, suite, attendu) in enumerate(MULTITOURS):
+        cid = "para-mt-%d" % i
+        try:
+            R.repond(mem, cid, amorce, pleine=True)              # pose le contexte (même conversation)
+            rep = R.repond(mem, cid, suite, pleine=True) or ""
+        except Exception as e:
+            rep = "EXCEPTION %r" % e
+        if attendu.lower() in rep.lower():
+            ok += 1
+        else:
+            echecs.append(("%s || %s" % (amorce, suite), rep.replace("\n", " ")[:90]))
+    total = len(CAS) + len(MULTITOURS)
     print("\nPARAPHRASES COMPRISES : %d/%d (%.0f %%)" % (ok, total, 100.0 * ok / total))
     if echecs:
         print("NON COMPRISES :")

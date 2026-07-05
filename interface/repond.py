@@ -381,6 +381,10 @@ _RECADRE_REGLES = (
     # âge à la mort : « quel âge avait X à sa mort ? » -> « à quel âge est mort X ? »
     (re.compile(r"^\s*quel\s+âge\s+avait\s+(.+?)\s+à\s+sa\s+mort\s*\?*\s*$", re.I),
      lambda m: "à quel âge est mort %s ?" % m.group(1)),
+    # naissance/décès POSTPOSÉS : « X est né quand ? » / « X est mort où ? » -> forme canonique. Lookahead
+    # ANTI-PRONOM : « il est mort quand ? » relève de l'étage pronom (0pro), pas d'un sujet nominal.
+    (re.compile(r"^\s*(?!(?:il|elle|on|ça|ca)\s)(.+?)\s+est\s+(née?s?|morte?s?)\s+(quand|où|en\s+quelle\s+année)\s*\?*\s*$", re.I),
+     lambda m: "%s est %s %s ?" % ("où" if m.group(3).lower() == "où" else "quand", m.group(2), m.group(1))),
     # succession orale : « après X, c'est qui (le roi / la reine / le président) ? »
     (re.compile(r"^\s*après\s+(.+?)\s*,\s*c['’] ?est\s+qui(?:\s+l[ea]\s+[\wà-ÿ]+)?\s*\?*\s*$", re.I),
      lambda m: "qui a succédé à %s ?" % m.group(1)),
@@ -415,6 +419,30 @@ _RECADRE_REGLES = (
     (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+(?:lequel|laquelle|lesquels|lesquelles)\s*\?*\s*$", re.I),
      lambda m: "%s ?" % m.group(1)),
 )
+
+
+def _resout_pronom(texte: str, sujet: str) -> str | None:
+    """ANAPHORE INTER-TOURS : substitue un pronom nu au dernier SUJET de la conversation — « il est mort
+    quand ? » après « où est né Napoléon Ier ? » -> « Napoléon Ier est mort quand ? ». Patrons FERMÉS (pronom
+    en tête + prédicat) ; None sinon. FAUX=0 : simple substitution du sujet mémorisé, la réponse reste vérifiée."""
+    if not sujet:
+        return None
+    t = texte.strip()
+    m = re.match(r"^\s*(?:et\s+)?(?:il|elle)\s+((?:est|était|a|avait|vit|vivait|habite|habitait|mesure|pèse|"
+                 r"s['’] ?appelle)\s+.+)$", t, re.I)
+    if m:
+        return "%s %s" % (sujet, m.group(1))
+    m = re.match(r"^\s*(?:et\s+)?(?:ça|ca|c['’] ?est)\s+se\s+trouve\s+où\s*\?*\s*$", t, re.I) or \
+        re.match(r"^\s*(?:et\s+)?(?:ça|ca)\s+(?:est|c['’] ?est)?\s*où\s*\?*\s*$", t, re.I)
+    if m:
+        return "où se trouve %s ?" % sujet
+    m = re.match(r"^\s*parle[- ]?moi\s+(?:de\s+lui|d['’] ?elle|de\s+ça|d['’] ?eux)\s*[.!?]*\s*$", t, re.I)
+    if m:
+        return "parle-moi de %s" % sujet
+    m = re.match(r"^\s*(?:et\s+)?c['’] ?était\s+quand\s*\?*\s*$", t, re.I)
+    if m:
+        return "quand a eu lieu %s ?" % sujet
+    return None
 
 
 def _recadre_oral(texte: str) -> str | None:
@@ -2395,6 +2423,26 @@ def _sujet_de(texte: str) -> str:
     return m.group(1).strip() if m else ""
 
 
+def _sujet_large(texte: str) -> str:
+    """Sujet d'une question, patrons ÉLARGIS aux formes sans préposition finale : « où est né NAPOLÉON IER ? »,
+    « qui est MARIE CURIE ? », « où se trouve TOKYO ? ». Sert à mémoriser le sujet pour les anaphores
+    inter-tours (« il est mort quand ? »). '' si rien d'extractible."""
+    s = _sujet_de(texte)
+    if s:
+        return s
+    t = texte.strip()
+    m = re.search(r"\b(?:née?s?|morte?s?|décédée?s?|succédé\s+à|précédé)\s+(.+?)[\s?]*$", t, re.I)
+    if m:
+        return m.group(1).strip()
+    m = re.search(r"\bse\s+trouvent?\s+(.+?)[\s?]*$", t, re.I)
+    if m:
+        return m.group(1).strip()
+    m = re.match(r"^\s*qui\s+(?:est|était)\s+(.+?)[\s?]*$", t, re.I)
+    if m:
+        return _strip_article(m.group(1).strip())
+    return ""
+
+
 _VOLATIL_RE = re.compile(
     r"\b(actuel|actuelle|actuels|actuelles|actuellement|aujourd'?hui|maintenant|désormais|present|présentement|"
     r"current|latest|dernier|dernière|derniers|dernières|récent|récente|en ce moment|à ce jour|cette année|"
@@ -2780,6 +2828,25 @@ def _avec_web_hint(msg: str, conv_id: str | None) -> str:
     if conv_id:
         _WEB_HINT_VU[conv_id] = True
     return f"{msg} {_MSG_WEB_HINT}"
+
+
+def _utile(rep) -> bool:
+    """Une réponse de REJEU (dévoilement / recadrage oral / pronom / continuation) vaut-elle d'être retenue ?
+    Ni générique, ni aveu d'ignorance (sinon le rejeu court-circuite les étages suivants du texte ORIGINAL).
+    Les abstentions STRUCTURÉES restent utiles (elles disent CE QUI est compris — mieux que le générique)."""
+    if not rep or not isinstance(rep, str):
+        return False
+    if rep.startswith(_MSG_STRUCTURE_PREFIXE) or rep.startswith(_MSG_STRUCTURE_COURT_PREFIXE):
+        return True
+    if est_fallback(rep):
+        return False
+    try:
+        import assistant_nl as _A
+        pfx = tuple(p for p in (getattr(_A, "_PFX_HORS_FAIT", None), getattr(_A, "_PFX_INDECIDABLE", None),
+                                getattr(_A, "_PFX_SATURATION", None), getattr(_A, "_PFX_PRECISER", None)) if p)
+    except Exception:
+        pfx = ()
+    return not (pfx and rep.startswith(pfx))
 
 
 def _varie(cle: str, graine: str, defaut: str) -> str:
@@ -4805,7 +4872,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     t_nu = _devoile(t)
     if t_nu != t:
         rep_nu = _repond_noyau(memoire, conv_id, t_nu, pleine=pleine)
-        if rep_nu and rep_nu != _MSG_WEB_COUPE and not rep_nu.startswith(_MSG_INCONNU_PREFIXE):
+        if _utile(rep_nu):
             return rep_nu
     #   (0oral) RECADRAGE ORAL : topicalisation (« la Joconde, c'est de qui ? »), clivées (« c'est qui qui… »),
     #       interrogatifs postposés (« il est né où, Napoléon ? »)… réécrits vers la forme CANONIQUE et rejoués.
@@ -4813,8 +4880,16 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     t_oral = _recadre_oral(t)
     if t_oral:
         rep_oral = _repond_noyau(memoire, conv_id, t_oral, pleine=pleine)
-        if rep_oral and rep_oral != _MSG_WEB_COUPE and not rep_oral.startswith(_MSG_INCONNU_PREFIXE):
+        if _utile(rep_oral):
             return rep_oral
+    #   (0pro) ANAPHORE INTER-TOURS : « il est mort quand ? » après « où est né Napoléon Ier ? » -> le pronom
+    #       nu est substitué au dernier SUJET mémorisé et la question complète est rejouée. FAUX=0 : substitution
+    #       du sujet réellement discuté, réponse toujours vérifiée ; repli sans perte si échec.
+    t_pro = _resout_pronom(t, _DERNIER_SUJET.get(conv_id))
+    if t_pro:
+        rep_pro = _repond_noyau(memoire, conv_id, t_pro, pleine=pleine)
+        if _utile(rep_pro):
+            return rep_pro
     #   (0quater) SCHÉMA VISUEL : « montre-moi ce que tu sais sur X » -> graphe SVG des relations connues de X.
     if pleine:
         _sch = _demande_schema(t)
@@ -4831,6 +4906,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
+                # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
+                # Napoléon Ier ? » [cap fait-personne] puis « il est mort quand ? »). Garde : une vraie entité
+                # nominale courte, pas un nombre ni une expression.
+                if conv_id:
+                    _suj = _sujet_large(t).strip(" ?.!\"'«»")
+                    if _suj and 2 < len(_suj) <= 60 and len(_suj.split()) <= 5 and not _suj.isdigit():
+                        _DERNIER_SUJET[conv_id] = _suj
+                        _DERNIER_QUESTION[conv_id] = t
                 return _r
         #   (0quater-ter) CONJONCTION multi-entités : « la population de la France et de l'Allemagne ? » -> on
         #   REJOUE « population de <chaque entité> » dans le pipeline (chaque réponse vérifiée) et on combine. En
@@ -4971,6 +5054,11 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             rep = _connaissance_verifiee(q1, conv_id)
             if rep:
                 return f"{rep}  — à propos de « {suj} »"
+            #   le lookup direct n'a rien : REJOUER q1 dans le pipeline COMPLET (caps compris) — « et sa
+            #   hauteur ? » doit atteindre _cap_dimension, pas seulement le lookup par clé.
+            rep = _repond_noyau(memoire, conv_id, q1, pleine=pleine)
+            if _utile(rep):
+                return rep
             #   l'échange continue À TRAVERS l'abstention : « capitale du wakanda ? » (abstention structurée)
             #   puis « et sa population ? » -> abstention structurée sur « population de wakanda », pas le générique.
             _snm = _structure_non_ancree(q1, conv_id)
@@ -4984,6 +5072,12 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             if ent and ent != suj:
                 q2 = re.sub(r"\b" + re.escape(suj) + r"\b", ent, derniere_q, flags=re.IGNORECASE)
                 if q2 != derniere_q:
+                    #   REJOUER q2 dans le pipeline COMPLET d'abord : « et celle de Waterloo ? » (après « quand
+                    #   a eu lieu la bataille de Marignan ? ») doit atteindre _cap_date_evenement -> 1815, pas le
+                    #   lookup brut qui répondrait un fait d'une autre nature (« champ de bataille de Waterloo »).
+                    rep = _repond_noyau(memoire, conv_id, q2, pleine=pleine)
+                    if _utile(rep):
+                        return rep
                     rep = _connaissance_verifiee(q2, conv_id)
                     if rep:
                         return f"{rep}  — à propos de « {ent} »"

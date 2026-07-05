@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — ANAPHORES INTER-TOURS : « il est mort quand ? » comprend de qui on parle
+
+- **Étage pronom (0pro)** : un pronom nu se résout sur le dernier SUJET de la conversation — « où est né
+  Napoléon Ier ? » puis « il est mort quand ? » → « Napoléon Ier est mort en 1821. » Patrons fermés (il/elle +
+  prédicat, « ça se trouve où ? », « parle-moi de lui », « c'était quand ? »). FAUX=0 : substitution du sujet
+  réellement discuté, réponse toujours vérifiée.
+- **Le sujet est mémorisé sur SUCCÈS DES CAPS** (`_sujet_large` : participes, « qui est X », « se trouve X ») —
+  avant, seuls les lookups par clé le mémorisaient : les questions personnes/localisation n'avaient pas
+  d'antécédent pour la suite.
+- **Continuations type A/B rejouées dans le pipeline COMPLET** : « et celle de Waterloo ? » (après Marignan)
+  atteint désormais _cap_date_evenement → « 1815 », au lieu du lookup brut qui répondait un fait d'une autre
+  nature (« champ de bataille de Waterloo » à une question *quand*).
+- **`_utile()` central** : les rejeux (dévoilement/oral/pronom/continuations) ne retiennent plus un AVEU
+  d'ignorance comme s'il était une réponse (l'aveu court-circuitait les étages suivants du texte original) ;
+  les abstentions STRUCTURÉES restent retenues (elles disent ce qui est compris). Lookahead anti-pronom sur la
+  règle né/mort postposé (« il est mort quand ? » relève de 0pro, pas d'un sujet nominal « il »).
+- Banc paraphrases : **66 cas, 100 %** (3e vague : 6 dialogues multi-tours). Raisonnement 97/97, suite 16/16
+  (77/77), challenge 16/16.
+
 ## 2026-07-05 — Compréhension ouverte, 2e vague : 60 cas durs à 100 % + vérification d'attributions
 
 - **Banc de paraphrases durci à 60 cas** (indirectes « j'ai oublié qui… », registre soutenu « où a-t-il vu le
