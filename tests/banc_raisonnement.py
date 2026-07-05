@@ -84,6 +84,8 @@ CAS = [
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
     ("portrait-personne-fem", R._cap_portrait_personne, "qui était Marie Curie ?", "née"),
+    ("fait-personne-lieu", R._cap_fait_personne, "où est né Napoléon Ier ?", "Ajaccio"),
+    ("fait-personne-fem", R._cap_fait_personne, "où est morte Marie Curie ?", "est morte"),
     # gardes FAUX=0
     ("faux-filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 5 et 10 milliards d'habitants ?", "Aucun"),
     ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", ""),

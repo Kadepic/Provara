@@ -3305,6 +3305,57 @@ def _cap_portrait_personne(texte: str):
     return tete + ("." if not bio else " (%s)." % bio)
 
 
+# FAIT CIBLÉ sur une PERSONNE (un seul attribut) : « où est né X », « de quelle nationalité est X », « quel métier
+# faisait X », « quand est mort X ». Lookup STREAMING (RAM-plat) -> rapide sans le moteur lourd. FAUX=0 : fait stocké.
+# (intitulé de l'intention, relation, gabarit d'affichage). L'ordre compte : « où est né » avant « quand est né ».
+_FAIT_PERSONNE_RULES = (
+    (re.compile(r"^\s*o[ùu]\s+(?:est|était|etait)\s+n[ée]e?\s+(.+?)\s*\??\s*$", re.I),
+     "lieu_naissance", "%s est né%s à %s"),
+    (re.compile(r"^\s*o[ùu]\s+(?:est|était|etait)\s+mort\w*\s+(.+?)\s*\??\s*$", re.I),
+     "lieu_deces", "%s est mort%s à %s"),
+    (re.compile(r"^\s*(?:en\s+quelle\s+ann[ée]+e?\s+|quand\s+)(?:est|était|etait)\s+n[ée]e?\s+(.+?)\s*\??\s*$", re.I),
+     "annee_naissance_personne", "%s est né%s en %s"),
+    (re.compile(r"^\s*(?:en\s+quelle\s+ann[ée]+e?\s+|quand\s+)(?:est|était|etait)\s+mort\w*\s+(.+?)\s*\??\s*$", re.I),
+     "annee_deces_personne", "%s est mort%s en %s"),
+    (re.compile(r"^\s*(?:de\s+quelle\s+nationalit[ée]\s+(?:est|était|etait)\s+|quelle\s+(?:est|était|etait)\s+la\s+"
+                r"nationalit[ée]\s+d[eu'’]\s*)(.+?)\s*\??\s*$", re.I),
+     "nationalite_personne", "%s était originaire de %s"),
+    (re.compile(r"^\s*(?:quel\s+(?:m[ée]tier|profession)\s+(?:faisait|avait|exer[çc]ait)\s+|que\s+faisait\s+"
+                r"|quelle\s+(?:est|était|etait)\s+(?:la\s+|l['’])?(?:profession|occupation|activit[ée])\s+d[eu'’]\s*)"
+                r"(.+?)\s*\??\s*$", re.I),
+     "occupation_personne", "%s était %s"),
+)
+
+
+def _cap_fait_personne(texte: str):
+    """FAIT CIBLÉ sur une personne (lieu/année de naissance ou décès, nationalité, métier) via lookup STREAMING —
+    « où est né Napoléon Ier ? » -> « Napoléon Ier est né à Ajaccio. ». FAUX=0 : fait stocké réel, None sinon ;
+    accord en genre via sexe_personne. Rapide (pas de moteur lourd)."""
+    for patron, rel, gabarit in _FAIT_PERSONNE_RULES:
+        m = patron.match(texte.strip())
+        if not m:
+            continue
+        ent = _strip_article(m.group(1).strip())
+        if not ent or len(ent) < 3 or len(ent.split()) > 6:
+            return None
+        if _charge_direct("continent").get(_normalise(ent)):       # pas un pays
+            return None
+        cell = _lookup_cell(rel, ent)
+        if not cell or cell[1] in (None, ""):
+            return None
+        aff, val = cell[0], str(cell[1])
+        if rel.startswith("annee_"):                               # date -> gérer av. J.-C.
+            val = ("%s av. J.-C." % -int(val)) if val.lstrip("-").isdigit() and int(val) < 0 else val
+        if "né%s" in gabarit or "mort%s" in gabarit:               # accord en genre
+            sexe = _lookup_cell("sexe_personne", ent)
+            e = "e" if (sexe and "femin" in _normalise(str(sexe[1]))) else ""
+            return (gabarit % (aff[:1].upper() + aff[1:], e, val)) + "."
+        if rel == "occupation_personne":
+            val = val.lower()
+        return (gabarit % (aff[:1].upper() + aff[1:], val)) + "."
+    return None
+
+
 _CAUSE_RE = re.compile(
     r"\b(?:cause[s]?|provoque\w*|responsable|agent[s]?|declenche\w*|entrain\w*|etiologie|du[e]?\s+a|due\s+a|"
     r"qu['’ ]?est[- ]ce\s+qui\s+(?:cause|provoque|declenche|donne))\b", re.I)
@@ -3783,7 +3834,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_portrait_personne, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
