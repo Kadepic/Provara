@@ -383,7 +383,7 @@ _RECADRE_REGLES = (
      lambda m: "à quel âge est mort %s ?" % m.group(1)),
     # naissance/décès POSTPOSÉS : « X est né quand ? » / « X est mort où ? » -> forme canonique. Lookahead
     # ANTI-PRONOM : « il est mort quand ? » relève de l'étage pronom (0pro), pas d'un sujet nominal.
-    (re.compile(r"^\s*(?!(?:il|elle|on|ça|ca)\s)(.+?)\s+est\s+(née?s?|morte?s?)\s+(quand|où|en\s+quelle\s+année)\s*\?*\s*$", re.I),
+    (re.compile(r"^\s*(?!(?:et\s+|puis\s+)?(?:il|elle|on|ça|ca)\s)(.+?)\s+est\s+(née?s?|morte?s?)\s+(quand|où|en\s+quelle\s+année)\s*\?*\s*$", re.I),
      lambda m: "%s est %s %s ?" % ("où" if m.group(3).lower() == "où" else "quand", m.group(2), m.group(1))),
     # succession orale : « après X, c'est qui (le roi / la reine / le président) ? »
     (re.compile(r"^\s*après\s+(.+?)\s*,\s*c['’] ?est\s+qui(?:\s+l[ea]\s+[\wà-ÿ]+)?\s*\?*\s*$", re.I),
@@ -2434,7 +2434,7 @@ def _sujet_large(texte: str) -> str:
     m = re.search(r"\b(?:née?s?|morte?s?|décédée?s?|succédé\s+à|précédé)\s+(.+?)[\s?]*$", t, re.I)
     if m:
         return m.group(1).strip()
-    m = re.search(r"\bse\s+trouvent?\s+(.+?)[\s?]*$", t, re.I)
+    m = re.search(r"\bse\s+trouve(?:nt)?\s+(.+?)[\s?]*$", t, re.I)
     if m:
         return m.group(1).strip()
     m = re.match(r"^\s*qui\s+(?:est|était)\s+(.+?)[\s?]*$", t, re.I)
@@ -2915,7 +2915,20 @@ def _entite_ancree(entite: str):
 
 # Mots qui trahissent un MIS-PARSE de l'« entité » (copule/inversion : « la capitale du wakanda est-elle grande »
 # capturerait ent=« wakanda est-elle grande ») -> on s'abstient de la brique, le générique reprend.
-_ENT_SUSPECTE_RE = re.compile(r"\b(est|sont|es|suis|etait|était|serait|seront|a-t|ont)\b|[?]", re.I)
+_ENT_SUSPECTE_RE = re.compile(r"\b(est|sont|es|suis|etait|était|serait|seront|a-t|ont|il|ils|elle|elles|on)\b|[?]", re.I)
+
+# 3e famille de structures pour l'abstention structurée : FAITS ciblés (naissance/mort/localisation), patrons
+# fermés MIROIR des caps _cap_fait_personne/_cap_localisation — quand le cap n'a pas trouvé le fait.
+_SNA_FAITS = (
+    (re.compile(r"^\s*(?:où|ou)\s+(?:est|était)\s+née?s?\s+(.+?)\s*\??\s*$", re.I), "où est né %s"),
+    (re.compile(r"^\s*quand\s+(?:est|était)\s+née?s?\s+(.+?)\s*\??\s*$", re.I), "quand est né %s"),
+    (re.compile(r"^\s*(?:où|ou)\s+(?:est|était)\s+morte?s?\s+(.+?)\s*\??\s*$", re.I), "où est mort %s"),
+    (re.compile(r"^\s*quand\s+(?:est|était)\s+morte?s?\s+(.+?)\s*\??\s*$", re.I), "quand est mort %s"),
+    (re.compile(r"^\s*(?:où|ou)\s+se\s+trouve(?:nt)?\s+(.+?)\s*\??\s*$", re.I), "où se trouve %s"),
+    (re.compile(r"^\s*dans\s+quel\s+pays\s+(?:est|se\s+trouve)\s+(.+?)\s*\??\s*$", re.I), "dans quel pays est %s"),
+    (re.compile(r"^\s*sur\s+quel\s+continent\s+(?:est|se\s+trouve)\s+(.+?)\s*\??\s*$", re.I),
+     "sur quel continent est %s"),
+)
 
 
 def _def_lisible(d: str) -> str:
@@ -2932,9 +2945,10 @@ def _structure_non_ancree(texte: str, conv_id: str | None = None) -> str | None:
     entité ancrée nulle part (la sonde n'a rien trouvé) vs entité CONNUE mais sans fait pour CETTE relation.
     Avec `conv_id`, l'échange CONTINUE à travers l'abstention : le sujet et la question sont mémorisés pour les
     enchaînements (« et sa population ? », « et du mordor ? ») — le sens est relationnel, une abstention aussi.
-    Deux familles de structures reconnues : « R de E » (relation nominale) et « qui a écrit/composé/… E »
-    (créateur d'une œuvre, mêmes patrons FERMÉS que _cap_createur)."""
-    tete = part = None
+    Trois familles de structures reconnues : « R de E » (relation nominale), « qui a écrit/composé/… E »
+    (créateur d'une œuvre, mêmes patrons FERMÉS que _cap_createur), et les FAITS ciblés (« où est né E ? »,
+    « où se trouve E ? », « dans quel pays est E ? » — patrons fermés miroir des caps fait-personne/localisation)."""
+    tete = part = quete = None
     m = _REL_DE_ENT_RE.match(texte)
     if m:
         tete, ent = m.group(1).strip(), m.group(2).strip(" ?.!\"'«»").strip()
@@ -2957,7 +2971,19 @@ def _structure_non_ancree(texte: str, conv_id: str | None = None) -> str | None:
             part = mp.group(1) if mp else "créé"
             break
         if part is None:
-            return None
+            for patron, gabarit in _SNA_FAITS:               # 3e famille : fait ciblé (naissance/mort/lieu)
+                mf = patron.match(texte.strip())
+                if not mf:
+                    continue
+                ent_aff = mf.group(1).strip().strip(" ?.!\"'«»")
+                ent = _strip_article(ent_aff)
+                ne = _normalise(ent)
+                if len(ne) < 2 or ne.isdigit() or len(ent.split()) > 6 or _ENT_SUSPECTE_RE.search(ent):
+                    return None
+                quete = gabarit % ent_aff
+                break
+            if quete is None:
+                return None
     tour = _PROFONDEUR.get(conv_id, 0) if conv_id else 0
     consecutif = bool(conv_id) and _STRUCT_TOUR.get(conv_id) == tour - 1
     prec = _DERNIER_SUJET.get(conv_id) if conv_id else None      # sujet du tour précédent (AVANT écrasement)
@@ -2966,10 +2992,11 @@ def _structure_non_ancree(texte: str, conv_id: str | None = None) -> str | None:
         _DERNIER_QUESTION[conv_id] = texte
         _STRUCT_TOUR[conv_id] = tour
     ancre = _entite_ancree(ent) or (None if tete else _entite_ancree(ent_aff))   # titres stockés avec article
-    libelle = (f"{tete} de {ent}") if tete else (f"qui a {part} {ent_aff}")
+    libelle = (f"{tete} de {ent}") if tete else (f"qui a {part} {ent_aff}" if part else quete)
     if ancre:
         affiche, ctx = ancre
-        libelle = (f"{tete} de {affiche}") if tete else (f"qui a {part} {ent_aff}")
+        if tete:
+            libelle = f"{tete} de {affiche}"
         if consecutif:                            # 2 abstentions d'affilée : on ne récite pas la formule complète
             # la présentation de l'entité ne se répète que si elle a CHANGÉ depuis le tour précédent.
             qui = f" ({_def_lisible(ctx)})" if (ctx and (not prec or _normalise(prec) != ne)) else ""
@@ -2981,17 +3008,20 @@ def _structure_non_ancree(texte: str, conv_id: str | None = None) -> str | None:
             return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : {qui} et je connais la relation "
                     f"« {tete} », mais je n'ai pas de fait vérifié « {tete} de {affiche} » qui me permette de "
                     f"trancher. Plutôt que d'inventer, je m'abstiens.")
-        return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : {qui} mais aucun fait vérifié n'en désigne "
-                f"le créateur. Plutôt que d'inventer, je m'abstiens.")
+        if part:
+            return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : {qui} mais aucun fait vérifié n'en désigne "
+                    f"le créateur. Plutôt que d'inventer, je m'abstiens.")
+        return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : {qui} mais aucun fait vérifié ne me permet "
+                f"d'y répondre. Plutôt que d'inventer, je m'abstiens.")
     if consecutif:
         return (f"{_MSG_STRUCTURE_COURT_PREFIXE}{libelle} » : là non plus, aucun fait vérifié pour "
                 f"trancher, je m'abstiens.")
     if tete:
         return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : je connais la relation « {tete} », mais je n'ai "
                 f"trouvé aucun fait vérifié qui ancre « {ent} » dans mes données. Plutôt que d'inventer, je m'abstiens.")
-    return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : je comprends la demande (le créateur d'une œuvre), "
-            f"mais je n'ai trouvé aucun fait vérifié qui ancre « {ent} » dans mes données. Plutôt que "
-            f"d'inventer, je m'abstiens.")
+    return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : je comprends la %s, mais je n'ai trouvé aucun fait "
+            f"vérifié qui ancre « {ent} » dans mes données. Plutôt que d'inventer, je m'abstiens."
+            % ("demande (le créateur d'une œuvre)" if part else "question"))
 
 
 def _build_id() -> str:

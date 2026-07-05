@@ -147,6 +147,10 @@ CAS = [
     ("web-gate-pertinent", lambda q: "OK" if R._extrait_pertinent(
         q, "Tokyo — Wikipédia", "Tokyo est la capitale du Japon depuis 1868.") else "",
      "quelle est la capitale du Japon ?", "OK"),
+    # 3e famille d'abstention structurée : faits ciblés (naissance/mort/localisation)
+    ("structure-fait-personne", R._structure_non_ancree, "quand est mort Dumbledore ?", "dumbledore"),
+    ("structure-localisation", R._structure_non_ancree, "où se trouve Fondcombe ?", "fondcombe"),
+    ("structure-fait-non-hijack", R._structure_non_ancree, "et il est mort quand ?", ""),   # pronom -> pas une entité
 ]
 
 

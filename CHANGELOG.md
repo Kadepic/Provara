@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Abstention structurée : 3e famille (faits ciblés) + RAM est_un : résultat négatif documenté
+
+- **3e famille de structures reconnues** : les FAITS ciblés (« où est né E ? », « quand est mort E ? », « où se
+  trouve E ? », « dans quel pays est E ? ») produisent l'abstention structurée quand le fait manque — « quand
+  est mort Dumbledore ? » → « je comprends la question, mais aucun fait vérifié n'ancre “Dumbledore” ». La
+  chaîne conversationnelle complète marche : « où est né Gandalf ? » → *Pressbaum* (fait réel, un musicien
+  autrichien s'appelle Gandalf) → « et il est mort quand ? » → pronom résolu → abstention structurée honnête.
+- **2 bugs de regex corrigés** : `trouvent?` signifiait « trouven+t? » (jamais « trouve » — 2 occurrences) ;
+  le lookahead anti-pronom ne couvrait pas « ET il est mort quand ? » (la règle capturait « et il » comme
+  sujet). Les pronoms nus (il/elle/ils/elles/on) sont exclus des entités candidates.
+- **RAM est_un : essai de carte compacte REVERTÉ après mesure honnête** — tracemalloc promettait −30 Mo
+  d'objets vifs (46,3 → 15,9 Mo) mais le RSS RÉSIDUEL était PIRE (81,7 vs 74,5 Mo : le dict transitoire de
+  build pollue les arènes malloc, même après malloc_trim), et le build +1,4 s. Leçon consignée : les objets
+  vifs tracés ne sont pas le RSS ; l'ancien code (dicts partageant leurs clés + genus internés) reste le
+  meilleur mesuré. Le vrai poste dominant reste le moteur `ia` préchargé (~600 Mo).
+- Raisonnement **102/102**, paraphrases 66/66, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — GATE DE PERTINENCE des rapports web (FAUX=0 renforcé) + E2E serveur réel 13/13
 
 - **Gate de pertinence** (`_extrait_pertinent`, partagé repond + assistant_nl) : un extrait web n'est servi que
