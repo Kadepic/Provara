@@ -3384,8 +3384,14 @@ def _cap_portrait_personne(texte: str):
         return None
     if _charge_direct("continent").get(_normalise(ent)):     # un PAYS -> laissé au portrait pays
         return None
+    # COURT-CIRCUIT perf : les 6 lookups scannent chacun un fichier de 100-200 Mo (~0,4 s). Pour un NON-personne
+    # (« qui est le président … »), on éviterait 6 scans. On sonde d'abord naissance PUIS décès ; si les DEUX
+    # manquent, l'entité n'est pas une personne documentée -> abandon après 2 scans (au lieu de 6). Presque toutes
+    # les personnes ont une année de naissance ou de décès.
     naiss = _lookup_cell("annee_naissance_personne", ent)
     deces = _lookup_cell("annee_deces_personne", ent)
+    if not naiss and not deces:
+        return None
     lieu_n = _lookup_cell("lieu_naissance", ent)
     lieu_d = _lookup_cell("lieu_deces", ent)
     natio = _lookup_cell("nationalite_personne", ent)
