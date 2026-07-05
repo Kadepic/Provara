@@ -64,6 +64,8 @@ CAS = [
     ("conjonction", _conjonction_txt, "quelle est la capitale de la France et de l'Espagne ?", "France,Espagne"),
     ("agregat-superficie", R._cap_agregat, "superficie totale de l'Afrique ?", "km²"),
     ("agregat", R._cap_agregat, "population totale de l'Afrique ?", "somme"),
+    ("agregat-liste", R._cap_agregat_liste, "quelle est la population cumulée de la France et de l'Allemagne ?", "152 211 586"),
+    ("agregat-liste-moyenne", R._cap_agregat_liste, "population moyenne de la France, l'Allemagne et l'Italie ?", "moyenne"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
     ("orbite", R._cap_orbite, "est-ce que Phobos fait partie du système solaire ?", "je le déduis"),
     ("transitif-hydro", R._cap_transitif, "est-ce que la Lukna finit dans la mer Baltique ?", "Niémen"),

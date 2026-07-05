@@ -972,6 +972,49 @@ _DIFF_RE = re.compile(
     r"(population|superficie|pib)\s+(?:entre|de)\s+(.+?)\s+(?:et|avec)\s+(.+?)\s*\??\s*$", re.I)
 
 
+# SOMME / MOYENNE sur une LISTE EXPLICITE : « quelle est la population cumulée de la France et de l'Allemagne ? ».
+# Additionne (ou moyenne) l'attribut sur des entités NOMMÉES — complète _cap_agregat (sur une zone). FAUX=0 : ne
+# somme que des valeurs vérifiées ; signale les entités sans donnée ; dit sur combien il agrège.
+_AGREGAT_LISTE_RE = re.compile(
+    r"(?:quelle?\s+est\s+(?:la\s+|le\s+)?)?(population|superficie|pib)\s+"
+    r"(cumul[ée]+e?|totale?|combin[ée]+e?|additionn[ée]+e?|moyenne)\s+"
+    r"(?:du\s+|des\s+|d['’]\s*|de\s+|entre\s+)(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_agregat_liste(texte: str):
+    """SOMME (ou MOYENNE) d'un attribut sur une LISTE EXPLICITE : « population cumulée de la France et de
+    l'Allemagne » -> 152 211 586 habitants. FAUX=0 : n'agrège que des valeurs vérifiées ; entités sans donnée
+    exclues et signalées ; None si < 2 résolvent (sinon c'est un simple lookup)."""
+    m = _AGREGAT_LISTE_RE.search(texte.strip())          # BRUT : garde virgules ET apostrophes (le split en dépend)
+    if not m:
+        return None
+    attr_mot, op_mot, liste = _normalise(m.group(1)), _normalise(m.group(2)), m.group(3)
+    # une seule entité « de la France » -> pas une liste (lookup simple) : on exige un séparateur « et/,/ou »
+    if not re.search(r"\bet\b|,|\bou\b", liste, re.I):
+        return None
+    adj = _AGREGAT_ADJ.get(attr_mot)
+    attr_rel = next((r for r in _ADJ_ATTR.get(adj, ()) if _charge_direct(r)), None) if adj else None
+    if not attr_rel:
+        return None
+    ents = [_strip_article(e.strip()) for e in re.split(r"\s*,\s*|\s+et\s+|\s+ou\s+", liste, flags=re.I) if e.strip()]
+    ents = [e for e in ents if e and len(e) >= 2]
+    vals = [(e,) + _valeur_attr(e, attr_rel) for e in ents]
+    ok = [(e, v, a) for (e, v, a) in vals if v is not None]
+    if len(ok) < 2:
+        return None
+    moyenne = op_mot.startswith("moyen")
+    total = sum(v for (_e, v, _a) in ok)
+    res = total / len(ok) if moyenne else total
+    unite = _ATTR_UNITE.get(attr_rel, "")
+    fmt = lambda v: format(int(round(v)), ",d").replace(",", " ")
+    noms = ", ".join(a for (_e, _v, a) in ok)
+    manquants = len(ents) - len(ok)
+    note = "" if manquants == 0 else " (%d sans donnée, exclu%s)" % (manquants, "s" if manquants > 1 else "")
+    if moyenne:
+        return "%s moyenne de %s : %s %s%s." % (attr_mot.capitalize(), noms, fmt(res), unite, note)
+    return "%s cumulée de %s : %s %s (somme de %d)%s." % (attr_mot.capitalize(), noms, fmt(res), unite, len(ok), note)
+
+
 def _cap_difference(texte: str):
     """ÉCART EXACT entre deux entités sur un attribut chiffré : « quelle est la différence de population entre la
     France et l'Allemagne ? » -> la valeur absolue de l'écart, les deux populations et le rapport. FAUX=0 : deux
@@ -3676,7 +3719,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
