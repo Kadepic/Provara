@@ -265,6 +265,28 @@ _HABILLAGE_RE = re.compile(
     r"c['e ]?\s*est\s+|donne(?:s|z)?[- ]?moi\s+|dis[- ]?moi\s+|peux[- ]?tu(?:\s+me)?\s+dire\s+|"
     r"sais[- ]?tu\s+|connais[- ]?tu\s+)+", re.I)
 
+# ENROBAGE CONVERSATIONNEL (fossé de généralisation) : les caps s'ancrent en ^ — « dis-moi qui a écrit 1984 »
+# ratait alors que « qui a écrit 1984 » répond. Couche FERMÉE de préfixes de politesse/remplissage à DÉVOILER
+# (la question nue est REJOUÉE d'abord ; si elle ne donne rien de mieux, l'original reprend — zéro perte).
+_DEVOILE_RE = re.compile(
+    r"^\s*(?:(?:dis|dites)[- ]?(?:moi|nous)\s+|donne(?:s|z)?[- ]?(?:moi|nous)\s+|"
+    r"j['’] ?aimerais(?:\s+bien)?\s+savoir\s+|je\s+(?:veux|voudrais|souhaite(?:rais)?)\s+savoir\s+|"
+    r"(?:est[- ]?ce\s+que\s+)?(?:tu\s+peux|peux[- ]?tu|pouvez[- ]?vous|vous\s+pouvez)\s+(?:me|nous)\s+dire\s+|"
+    r"sais[- ]?tu\s+|savez[- ]?vous\s+|(?:est[- ]?ce\s+que\s+)?tu\s+sais\s+|"
+    r"au\s+fait\s*,?\s+|franchement\s*,?\s+|honnêtement\s*,?\s+|(?:et\s+)?sinon\s*,?\s+|"
+    r"bon\s*,\s+|alors\s*,\s+|donc\s*,\s+|s['’] ?il\s+te\s+pla[iî]t\s*,?\s+|stp\s*,?\s+|svp\s*,?\s+)+", re.I)
+_DEVOILE_FIN_RE = re.compile(r"\s*,?\s*(?:s['’] ?il\s+(?:te|vous)\s+pla[iî]t|stp|svp|merci)\s*([?.!]*)\s*$", re.I)
+
+
+def _devoile(texte: str) -> str:
+    """Retire l'enrobage conversationnel (préfixes fermés + politesse finale) pour dévoiler la QUESTION NUE.
+    Ne renvoie une forme réduite que si elle reste substantielle (≥ 1 mot de 3+ lettres) ; sinon l'original."""
+    nu = _DEVOILE_RE.sub("", texte)
+    nu = _DEVOILE_FIN_RE.sub(r"\1", nu).strip()
+    if nu != texte.strip() and re.search(r"[\wà-ÿ]{3,}", nu):
+        return nu
+    return texte
+
 
 def _decoupe_relation(expr: str):
     """Sépare « REL de RESTE » au PREMIER connecteur tel que REL (article retiré) soit une TÊTE de relation connue.
@@ -3788,11 +3810,13 @@ def _cap_succession(texte: str):
 # (auteur_*, compositeur_*, realisateur_*, architecte_*, inventeur_*, peintre_*). Via _lookup_direct (streaming,
 # valeur UNIQUE dans la famille). FAUX=0 : créateur réellement stocké ou None. Léger (avant le moteur lourd).
 _CREATEUR_RULES = (
-    (re.compile(r"^\s*(?:qui\s+a\s+écrit|qui\s+est\s+l['’]auteur\s+d[eu'’]|de\s+qui\s+est\s+le\s+(?:livre|roman))\s+"
+    (re.compile(r"^\s*(?:qui\s+a\s+(?:écrit|rédigé|pondu)|qui\s+est\s+l['’]auteur\s+d[eu'’]|"
+                r"de\s+qui\s+est\s+le\s+(?:livre|roman))\s+"
                 r"(.+?)\s*\??\s*$", re.I), "auteur", "%s a été écrit par %s"),
     (re.compile(r"^\s*(?:qui\s+a\s+compos[ée]|qui\s+est\s+le\s+compositeur\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
      "compositeur", "%s a été composé par %s"),
-    (re.compile(r"^\s*(?:qui\s+a\s+r[ée]alis[ée]|qui\s+est\s+le\s+r[ée]alisateur\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
+    (re.compile(r"^\s*(?:qui\s+a\s+(?:r[ée]alis[ée]|tourn[ée])|qui\s+est\s+le\s+r[ée]alisateur\s+d[eu'’])\s+"
+                r"(.+?)\s*\??\s*$", re.I),
      "realisateur", "%s a été réalisé par %s"),
     (re.compile(r"^\s*(?:qui\s+a\s+peint|qui\s+est\s+le\s+peintre\s+d[eu'’])\s+(.+?)\s*\??\s*$", re.I),
      "peintre", "%s a été peint par %s"),
@@ -4494,6 +4518,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     diag = _diagnostic_connaissance(t)
     if diag:
         return diag
+    #   (0dev) DÉVOILEMENT : « dis-moi qui a écrit 1984 » -> la question NUE est rejouée d'abord (les caps
+    #       s'ancrent en ^ et rataient l'enrobage). Si elle ne produit rien de MIEUX que le générique,
+    #       l'original continue son chemin normal (zéro perte, aucun fait altéré : on ne retire que du social).
+    t_nu = _devoile(t)
+    if t_nu != t:
+        rep_nu = _repond_noyau(memoire, conv_id, t_nu, pleine=pleine)
+        if rep_nu and rep_nu != _MSG_WEB_COUPE and not rep_nu.startswith(_MSG_INCONNU_PREFIXE):
+            return rep_nu
     #   (0quater) SCHÉMA VISUEL : « montre-moi ce que tu sais sur X » -> graphe SVG des relations connues de X.
     if pleine:
         _sch = _demande_schema(t)

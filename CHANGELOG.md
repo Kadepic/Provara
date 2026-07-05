@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Fossé de généralisation : DÉVOILEMENT de l'enrobage conversationnel + verbes familiers
+
+- **Couche de dévoilement** (`_devoile`, étage 0dev de `_repond_noyau`) : les caps s'ancrent en `^` — « dis-moi
+  qui a écrit 1984 » ratait alors que la question nue répond. Ensemble FERMÉ de préfixes sociaux (dis-moi,
+  donne-moi, j'aimerais savoir, tu peux me dire, sais-tu, au fait, franchement, sinon, stp/svp…) + politesse
+  finale (« …, merci », « …, s'il te plaît ») retirés, question NUE rejouée d'abord ; si elle ne produit rien de
+  mieux que le générique, l'original continue (zéro perte, aucun fait altéré — on ne retire que du social).
+  Fonctionne pour toutes les familles, y compris l'abstention structurée (« donne-moi la capitale du wakanda,
+  merci » → présentation du royaume fictif). « dis-moi bonjour » reste social (la politesse passe avant).
+- **Verbes familiers dans les patrons créateur** : « qui a pondu 1984 ? » → Orwell ; « qui a tourné Titanic ? »
+  → Cameron (écrit|rédigé|pondu ; réalisé|tourné). Banc **97/97** (4 cas ajoutés), suite 16/16, challenge 16/16.
+
 ## 2026-07-05 — Structure reconnue : famille CRÉATEUR + 2 bugs réels corrigés (guérison, articles de titres)
 
 - **La brique « structure reconnue » couvre la famille créateur** (« qui a écrit/composé/peint/inventé X ? »,

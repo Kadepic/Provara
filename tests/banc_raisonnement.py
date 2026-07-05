@@ -134,6 +134,11 @@ CAS = [
     ("structure-createur", R._structure_non_ancree, "qui a écrit le necronomicon ?", "lovecraft"),
     # titres stockés AVEC article : « la joconde » est la clé réelle de peintre_oeuvre (+ accord du participe)
     ("createur-article", R._cap_createur, "qui a peint la joconde ?", "peinte par Léonard de Vinci"),
+    # dévoilement de l'enrobage conversationnel (fossé de généralisation) + verbes familiers
+    ("devoile-enrobage", R._devoile, "dis-moi qui a écrit 1984", "qui a écrit 1984"),
+    ("devoile-politesse-fin", R._devoile, "donne-moi la capitale du japon, merci", "capitale du japon"),
+    ("createur-familier", R._cap_createur, "qui a pondu 1984 ?", "George Orwell"),
+    ("createur-tourne", R._cap_createur, "qui a tourné titanic ?", "Cameron"),
 ]
 
 
