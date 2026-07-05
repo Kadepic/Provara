@@ -137,6 +137,17 @@ CAS += [
     ("la population du Japon ?", "123"),                 # canonique (non-régression)
 ]
 
+# ————— 7e VAGUE : PRÉAMBULES CONVERSATIONNELS + TAGS DE FIN + FILLERS (compréhension de phrases longues) —————
+CAS += [
+    ("j'aimerais beaucoup savoir qui a écrit 1984", "orwell"),
+    ("une question qui me trotte : le chat, c'est bien un félin non ?", "félin"),
+    ("j'ai une colle pour toi : qui a peint la Joconde ?", "vinci"),
+    ("excuse-moi de te déranger mais quelle est la capitale de l'Italie ?", "rome"),
+    ("tiens, à propos, le PIB de l'Allemagne c'est combien ?", "pib"),
+    ("dis-moi, si tu le sais, quelle est la capitale de l'Australie", "canberra"),
+    ("franchement je me demande quelle est la monnaie du Japon", "yen"),
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [

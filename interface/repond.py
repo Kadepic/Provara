@@ -305,21 +305,35 @@ def _rejoue(memoire, conv_id, texte: str, pleine: bool):
 _DEVOILE_RE = re.compile(
     r"^\s*(?:et\s+(?=(?:dis|dites|donne|rappelle|rappelez|peux|pouvez|sais|savez|tu\s|vous\s|j['’]|je\s))|"
     r"(?:dis|dites)[- ]?(?:moi|nous)\s+|donne(?:s|z)?[- ]?(?:moi|nous)\s+|"
-    r"j['’] ?aimerais(?:\s+bien)?\s+savoir\s+|je\s+(?:veux|voudrais|souhaite(?:rais)?)\s+savoir\s+|"
+    r"j['’ ]\s*aimerais(?:\s+(?:bien|beaucoup|tellement|tant))?\s+savoir\s+|"
+    r"je\s+(?:veux|voudrais|souhaite(?:rais)?)\s+savoir\s+|"
     r"(?:est[- ]?ce\s+que\s+)?(?:tu\s+peux|peux[- ]?tu|pouvez[- ]?vous|vous\s+pouvez)\s+(?:me|nous)\s+dire\s+|"
     r"sais[- ]?tu\s+|savez[- ]?vous\s+|(?:est[- ]?ce\s+que\s+)?tu\s+sais\s+|"
     r"j['’] ?ai\s+oublié\s+|je\s+ne\s+sais\s+plus\s+|je\s+me\s+demande(?:\s+bien)?\s+|"
     r"tu\s+te\s+souviens\s+(?:de\s+)?|vous\s+vous\s+souvenez\s+(?:de\s+)?|rappelle[- ]?moi\s+|rappelez[- ]?moi\s+|"
-    r"au\s+fait\s*,?\s+|franchement\s*,?\s+|honnêtement\s*,?\s+|(?:et\s+)?sinon\s*,?\s+|"
-    r"bon\s*,\s+|alors\s*,\s+|donc\s*,\s+|s['’] ?il\s+te\s+pla[iî]t\s*,?\s+|stp\s*,?\s+|svp\s*,?\s+)+", re.I)
-_DEVOILE_FIN_RE = re.compile(r"\s*,?\s*(?:s['’] ?il\s+(?:te|vous)\s+pla[iî]t|stp|svp|merci)\s*([?.!]*)\s*$", re.I)
+    # préambules conversationnels ÉTENDUS : « j'ai une colle pour toi : », « une question qui me trotte : »,
+    # « tiens, à propos », « cette histoire de », « excuse-moi de te déranger mais »…
+    r"j['’ ]\s*ai\s+une\s+(?:colle|question|devinette|énigme|enigme)(?:\s+pour\s+(?:toi|vous))?\s*[:,]?\s+|"
+    r"une\s+question\s+(?:qui\s+me\s+trotte|pour\s+(?:toi|vous))?\s*[:,]?\s+|"
+    r"cette\s+histoire\s+de\s+|excuse[- ]?moi\s+de\s+te\s+déranger\s+mais\s+|"
+    r"tiens\s*,?\s+(?:à\s+propos\s*,?\s+)?|à\s+propos\s*,?\s+|dis\s+donc\s*,?\s+|"
+    r"au\s+fait\s*,?\s+|franchement\s*,?\s+|honnêtement\s*,?\s+|entre\s+nous\s*,?\s+|(?:et\s+)?sinon\s*,?\s+|"
+    r"bon(?:\s+alors)?\s*,\s+|alors\s*,\s+|donc\s*,\s+|eh\s+bien\s*,?\s+|"
+    r"s['’] ?il\s+te\s+pla[iî]t\s*,?\s+|stp\s*,?\s+|svp\s*,?\s+)+", re.I)
+# tags conversationnels de FIN (politesse OU question rhétorique) : « …, non ? », « …, hein ? », « …, tu crois ? »
+_DEVOILE_FIN_RE = re.compile(
+    r"\s*,?\s*(?:s['’] ?il\s+(?:te|vous)\s+pla[iî]t|stp|svp|merci|non|hein|d['’] ?accord|"
+    r"pas\s+vrai|n['’] ?est[- ]?ce\s+pas|tu\s+crois|à\s+ton\s+avis)\s*([?.!]*)\s*$", re.I)
+# fillers INSÉRÉS entre un interrogatif « qui a » et le verbe : « qui a BIEN PU écrit », « qui a DONC écrit ».
+_DEVOILE_FILLER_RE = re.compile(r"\b(qui\s+a)\s+(?:bien\s+pu|donc|déjà|bien|encore)\s+(?=[a-zà-ÿ])", re.I)
 
 
 def _devoile(texte: str) -> str:
-    """Retire l'enrobage conversationnel (préfixes fermés + politesse finale) pour dévoiler la QUESTION NUE.
-    Ne renvoie une forme réduite que si elle reste substantielle (≥ 1 mot de 3+ lettres) ; sinon l'original."""
+    """Retire l'enrobage conversationnel (préfixes/préambules + tags de fin + fillers insérés) pour dévoiler la
+    QUESTION NUE. Ne renvoie une forme réduite que si elle reste substantielle (≥ 1 mot de 3+ lettres)."""
     nu = _DEVOILE_RE.sub("", texte)
-    nu = _DEVOILE_FIN_RE.sub(r"\1", nu).strip()
+    nu = _DEVOILE_FIN_RE.sub(r"\1", nu)
+    nu = _DEVOILE_FILLER_RE.sub(r"\1 ", nu).strip()
     if nu != texte.strip() and re.search(r"[\wà-ÿ]{3,}", nu):
         return nu
     return texte
@@ -368,6 +382,8 @@ _RECADRE_REGLES = (
     # « c'est quoi (déjà) X » reste canonique ; « X, c'est quoi (déjà) ? » -> « c'est quoi X ? »
     (re.compile(r"^\s*c['’] ?est\s+quoi\s+déjà\s+(.+)$", re.I), lambda m: "c'est quoi " + m.group(1)),
     (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?est\s+quoi(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "c'est quoi %s ?" % m.group(1)),
+    # « le PIB de l'Allemagne, c'est combien ? » -> « quel est le PIB de l'Allemagne ? » (valeur chiffrée demandée)
+    (re.compile(r"^\s*(.+?)\s*,?\s+c['’] ?est\s+combien\s*\?*\s*$", re.I), lambda m: "quel est %s ?" % m.group(1)),
     # naissance orale : « il est né où, X ? » / « X, il est né où ? » / « où c'est que X est né ? »
     (re.compile(r"^\s*(?:il|elle)\s+est\s+née?\s+où\s*,\s*(.+?)\s*\?*\s*$", re.I), lambda m: "où est né %s ?" % m.group(1)),
     (re.compile(r"^\s*(.+?)\s*,\s*(?:il|elle)\s+est\s+née?\s+où\s*\?*\s*$", re.I), lambda m: "où est né %s ?" % m.group(1)),
