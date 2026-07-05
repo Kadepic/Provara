@@ -740,6 +740,38 @@ def _cap_temporel_nway(texte: str):
     return "%s (%d) — %s des %d datés%s." % (aff[:1].upper() + aff[1:], gagnant[1], qualif, len(ok), note)
 
 
+# ÉCART TEMPOREL entre DEUX événements = |année(X) − année(Y)|. « combien d'années séparent Marignan et Waterloo ? »
+# -> « 300 ans (1515 et 1815) ». FAUX=0 : deux dates vérifiées ; None si l'une manque ; les deux années montrées.
+_ECART_TEMPO_RE = re.compile(
+    r"^\s*(?:combien\s+d['’]?\s*ann[ée]+es?\s+s[ée]parent\s+"
+    r"|combien\s+de\s+temps\s+(?:s['’]?est\s+[ée]coul[ée]+\s+|(?:il\s+)?y\s+a[- ]t[- ]il\s+)?"
+    r"(?:entre|s[ée]pare)\s+"
+    r"|quel\s+(?:est\s+l['’]?\s*)?[ée]cart\s+(?:de\s+temps\s+|d['’]?\s*ann[ée]+es?\s+)?"
+    r"(?:temporel\s+)?entre\s+)"
+    r"(.+?)\s+(?:et|avec)\s+(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_ecart_temporel(texte: str):
+    """ÉCART EXACT entre deux événements datés : « combien d'années séparent la bataille de Marignan et celle de
+    Waterloo ? » -> « 300 ans (1515 et 1815) ». |année(X) − année(Y)|. FAUX=0 : None si une date manque ; av. J.-C.
+    géré (années négatives) ; les deux années montrées."""
+    m = _ECART_TEMPO_RE.match(texte.strip())
+    if not m:
+        return None
+    x, y = _strip_article(m.group(1).strip()), _strip_article(m.group(2).strip())
+    ax, afx = _annee_de(x)
+    ay, afy = _annee_de(y)
+    if ax is None or ay is None:
+        return None
+    borne = lambda a: ("%d av. J.-C." % -a) if a < 0 else "%d" % a
+    maj = lambda s: (s[:1].upper() + s[1:]) if s else s      # 1re lettre seulement (garde « Marignan », pas « marignan »)
+    ecart = abs(ax - ay)
+    if ecart == 0:
+        return "%s et %s datent de la même année (%s)." % (maj(afx), afy, borne(ax))
+    return "%d an%s séparent %s (%s) et %s (%s)." % (ecart, "s" if ecart > 1 else "",
+                                                     maj(afx), borne(ax), afy, borne(ay))
+
+
 # DURÉE d'un événement borné = année de FIN − année de DÉBUT (familles appariées annee_debut_*/annee_fin_*).
 # « combien de temps a duré la guerre de Cent Ans ? » -> 116 ans (1337 → 1453). FAUX=0 : deux dates vérifiées
 # soustraites (sinon None) ; les deux années sont montrées (re-vérifiables).
@@ -3606,7 +3638,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
