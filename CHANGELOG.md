@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — GATE DE PERTINENCE des rapports web (FAUX=0 renforcé) + E2E serveur réel 13/13
+
+- **Gate de pertinence** (`_extrait_pertinent`, partagé repond + assistant_nl) : un extrait web n'est servi que
+  s'il PARLE de ce qui est demandé. Mesuré en E2E réel : « capitale du wakanda » (web ON) rapportait une page
+  gentilés de « synonyme-du-mot.com » sans un mot sur la capitale — attribué mais hors-sujet. Désormais :
+  structure reconnue (R de E) → la relation ET l'entité doivent apparaître dans titre+extrait ; sinon ≥60 % des
+  mots de contenu. Un extrait refusé → l'abstention STRUCTURÉE (qui dit ce qui est compris) prend le relais.
+- **Validation E2E serveur réel 13/13** (mémoire vierge, base complète, web coupé pour tester l'offline) :
+  recadrage oral, calcul en lettres, abstention structurée + continuité + formes courtes, anaphores pronom
+  multi-tours, vérif créateur + homonymie Joconde, type B Waterloo, faits stables. Script scratchpad
+  `e2e_session.sh`.
+- Raisonnement **99/99** (2 cas gate ajoutés), paraphrases 66/66, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — ANAPHORES INTER-TOURS : « il est mort quand ? » comprend de qui on parle
 
 - **Étage pronom (0pro)** : un pronom nu se résout sur le dernier SUJET de la conversation — « où est né

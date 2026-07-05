@@ -230,6 +230,14 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
         _wl = None
     if _wl:
         _extrait, _titre, _url = _wl
+        try:                                   # GATE DE PERTINENCE (partagé avec repond._recherche_structuree) :
+            _R = _module_repond()              # un extrait qui ne parle pas de la question n'est pas servi.
+            if not getattr(_R, "_extrait_pertinent", lambda *a: True)(question, _titre, _extrait):
+                _wl = None
+        except Exception:
+            pass
+    if _wl:
+        _extrait, _titre, _url = _wl
         return Reponse(SUPPOSITION, "D'après Wikipédia (« %s ») : %s" % (_titre, _extrait[:400]),
                        regime=c.regime, source="Wikipédia — %s (rapporté, non vérifié par Provara)" % _url)
     ok, doms, n = _ping_sources()

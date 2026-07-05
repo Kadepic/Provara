@@ -3047,6 +3047,26 @@ def _question_oui_non(texte: str) -> bool:
     return bool(_OUINON_Q_RE.search(texte))
 
 
+def _extrait_pertinent(question: str, titre: str, extrait: str) -> bool:
+    """GATE DE QUALITÉ des rapports web : un extrait n'est servi que s'il PARLE de ce qui est demandé. Le
+    métamoteur matche parfois UN mot isolé (« capitale du wakanda » -> page gentilés « habitants de Wakanda »
+    sans un mot sur la capitale) : servir ça, même attribué, est du bruit. Structure reconnue (R de E) ->
+    la RELATION et l'ENTITÉ doivent toutes deux apparaître dans titre+extrait ; sinon ≥60 % des mots de
+    contenu de la question. FAUX=0 renforcé : mieux vaut l'abstention structurée qu'un hors-sujet sourcé."""
+    corpus = _normalise("%s %s" % (titre or "", extrait or ""))
+    m = _REL_DE_ENT_RE.match(question)
+    if m and _normalise(m.group(1).strip()) in _attr_heads():
+        tete = _normalise(m.group(1).strip())
+        ent_mots = re.findall(r"[\wà-ÿ]{3,}", _normalise(m.group(2).strip(" ?.!\"'«»")))
+        return tete in corpus and all(w in corpus for w in ent_mots)
+    mots = [w for w in re.findall(r"[\wà-ÿ]{4,}", _normalise(question))
+            if w not in _NEST_SCAFFOLD and w not in _GENERIQUES]
+    if not mots:
+        return True
+    present = sum(1 for w in mots if w in corpus)
+    return present * 5 >= len(mots) * 3
+
+
 def _recherche_structuree(question: str):
     """Le lecteur n'a rien -> SOURCE STRUCTURÉE fiable (Wikidata), réponse VÉRIFIÉE + ATTRIBUÉE (FAUX=0).
     Extraction SPARQL déterministe, jamais du texte libre. Réseau requis (opt-in IA_WEB=1). None si rien/erreur."""
@@ -3082,6 +3102,11 @@ def _recherche_structuree(question: str):
         autres = veille_structure.cherche_web_domaines(question)
     except Exception:
         autres = []
+    # GATE DE PERTINENCE : un extrait qui ne parle pas de ce qui est demandé (match sur un mot isolé) n'est
+    # pas servi — l'abstention structurée en aval dit davantage qu'un hors-sujet sourcé.
+    if wl and not _extrait_pertinent(question, wl[1], wl[0]):
+        wl = None
+    autres = [a for a in (autres or []) if _extrait_pertinent(question, a[0], a[1])]
     if wl:
         extrait, titre, url = wl
         externes = [a for a in autres if not a[3].endswith("wikipedia.org")]

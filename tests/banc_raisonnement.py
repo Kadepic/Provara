@@ -139,6 +139,14 @@ CAS = [
     ("devoile-politesse-fin", R._devoile, "donne-moi la capitale du japon, merci", "capitale du japon"),
     ("createur-familier", R._cap_createur, "qui a pondu 1984 ?", "George Orwell"),
     ("createur-tourne", R._cap_createur, "qui a tourné titanic ?", "Cameron"),
+    # gate de pertinence web : un extrait qui ne parle pas de la question n'est PAS servi (hors-sujet sourcé
+    # mesuré en e2e : « capitale du wakanda » -> page gentilés). Le pertinent passe.
+    ("web-gate-horssujet", lambda q: "" if not R._extrait_pertinent(
+        q, "Comment on appelle les habitants de Wakanda - Synonyme du mot",
+        "la réponse complète sur fr.wikipedia") else "SERVI", "quelle est la capitale du wakanda ?", ""),
+    ("web-gate-pertinent", lambda q: "OK" if R._extrait_pertinent(
+        q, "Tokyo — Wikipédia", "Tokyo est la capitale du Japon depuis 1868.") else "",
+     "quelle est la capitale du Japon ?", "OK"),
 ]
 
 
