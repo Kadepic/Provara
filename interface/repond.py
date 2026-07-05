@@ -3568,6 +3568,47 @@ _FAIT_PERSONNE_RULES = (
 )
 
 
+# COMPARAISON DE NAISSANCE entre deux personnes : « qui est né avant, X ou Y ? », « qui est le plus âgé entre X
+# et Y ? ». Compare les ANNÉES DE NAISSANCE (précis, pas les dates de règne). FAUX=0 : deux dates vérifiées.
+_NAISS_CMP_RE = re.compile(
+    r"^\s*(?:qui\s+est\s+né[e]?\s+(avant|apr[èe]s|le\s+premier|en\s+premier)"
+    r"|qui\s+est\s+le\s+plus\s+(âgé|age|vieux|vieille|jeune|ancien)"
+    r"|lequel\s+est\s+le\s+plus\s+(âgé|age|vieux|jeune))\b[^?]*?"
+    r"(?:entre\s+|,\s*)?(.+?)\s+(?:et|ou)\s+(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_naissance_compare(texte: str):
+    """QUI EST NÉ AVANT / LE PLUS ÂGÉ entre deux personnes : compare les années de NAISSANCE (précis). « qui est
+    le plus âgé entre Napoléon Ier et Louis XIV ? » -> Louis XIV (1638 < 1769). FAUX=0 : deux dates vérifiées ou
+    None ; « plus jeune » inverse. Distinct de _cap_temporel (qui prendrait une date de règne, imprécise)."""
+    m = _NAISS_CMP_RE.match(texte.strip())
+    if not m:
+        return None
+    critere = _normalise(next((g for g in m.groups()[:3] if g), ""))
+    gx = re.sub(r"^(?:entre|parmi)\s+", "", m.group(4).strip(), flags=re.I)   # « entre » parfois avalé dans x
+    x, y = _strip_article(gx), _strip_article(m.group(5).strip())
+    if not x or not y or len(x.split()) > 5 or len(y.split()) > 5:
+        return None
+    cx = _lookup_cell("annee_naissance_personne", x)
+    cy = _lookup_cell("annee_naissance_personne", y)
+    if not cx or not cy:
+        return None
+    ax, ay = _nombre(cx[1]), _nombre(cy[1])
+    if ax is None or ay is None:
+        return None
+    ax, ay = int(ax), int(ay)
+    veut_jeune = ("jeune" in critere or "apres" in critere)   # le plus jeune = né le PLUS TARD
+    borne = lambda a: ("%d av. J.-C." % -a) if a < 0 else "%d" % a
+    if ax == ay:
+        return "%s et %s sont nés la même année (%s)." % (cx[0], cy[0], borne(ax))
+    plus_tot = (ax < ay)
+    gagne = (cx, ax) if (plus_tot != veut_jeune) else (cy, ay)
+    perd = (cy, ay) if (plus_tot != veut_jeune) else (cx, ax)
+    qualif = "le plus jeune" if veut_jeune else "le plus âgé"
+    return "%s — %s (né en %s), contre %s (né en %s)." % (gagne[0][0], qualif, borne(gagne[1]),
+                                                          perd[0][0], borne(perd[1]))
+
+
 # SUCCESSION : « qui a succédé à Louis XIV ? » -> son successeur ; « qui a précédé X / prédécesseur de X ? » ->
 # son prédécesseur. Relations predecesseur_personne / successeur_personne (personne -> personne). FAUX=0 : fait réel.
 _SUCCESSION_RULES = (
@@ -4311,7 +4352,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_createur, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

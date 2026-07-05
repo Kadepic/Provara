@@ -105,6 +105,8 @@ CAS = [
     ("createur-auteur", R._cap_createur, "qui a écrit 1984 ?", "George Orwell"),
     ("createur-compositeur", R._cap_createur, "qui a composé le Boléro ?", "Ravel"),
     ("oeuvres-de", R._cap_oeuvres_de, "qu'a composé Maurice Ravel ?", "Boléro"),
+    ("naissance-compare", R._cap_naissance_compare, "qui est le plus âgé entre Napoléon Ier et Louis XIV ?", "Louis XIV"),
+    ("naissance-compare-jeune", R._cap_naissance_compare, "qui est le plus jeune entre Napoléon Ier et Louis XIV ?", "Napoléon"),
     ("succession", R._cap_succession, "qui a succédé à Louis XIV ?", "Louis XV"),
     ("succession-predecesseur", R._cap_succession, "qui a précédé Louis XIV ?", "Louis XIII"),
     ("localisation-pays", R._cap_localisation, "dans quel pays est 1117 Mountain ?", "États-Unis"),
