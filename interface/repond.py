@@ -1052,6 +1052,40 @@ def _cap_agregat_liste(texte: str):
     return "%s cumulée de %s : %s %s (somme de %d)%s." % (attr_mot.capitalize(), noms, fmt(res), unite, len(ok), note)
 
 
+# MÊME ATTRIBUT ? « la France et l'Allemagne sont-elles sur le même continent ? » -> compare la valeur d'un attribut
+# pour DEUX entités. Rare cas où « Non » est SÛR (deux faits vérifiés comparés). FAUX=0 : None si l'un manque.
+_MEME_MOT_REL = {"continent": "continent", "pays": "pays_ville", "monnaie": "monnaie", "capitale": "capitale",
+                 "langue": "langue_officielle", "president": "president_pays", "region": "region_pays"}
+_MEME_RE = re.compile(
+    r"^\s*(?:est[- ]ce\s+que\s+)?(.+?)\s+et\s+(.+?)\s+(?:sont|ont|est|se\s+trouvent)[- ]?(?:ils|elles|il|elle)?\s+"
+    r"(?:sur\s+|dans\s+|dans\s+l['’]|de\s+|d['’])?(?:le\s+|la\s+|les\s+|l['’]|un\s+|une\s+)?"
+    r"m[êe]mes?\s+(continent|pays|monnaie|capitale|langue|president|region)\b.*$", re.I)
+
+
+def _cap_meme_attribut(texte: str):
+    """« X et Y ont-ils le/la même ATTR ? » (continent, pays, monnaie, capitale, langue…) -> compare les valeurs
+    vérifiées des deux entités. FAUX=0 : « Oui » si égales, « Non » (avec les deux valeurs) si différentes — le
+    « Non » est SOUND car les DEUX faits sont vérifiés ; None si l'un manque (abstention honnête)."""
+    m = _MEME_RE.match(texte.strip())
+    if not m:
+        return None
+    x, y, mot = _strip_article(m.group(1).strip()), _strip_article(m.group(2).strip()), _normalise(m.group(3))
+    rel = _MEME_MOT_REL.get(mot) or _MEME_MOT_REL.get(mot.rstrip("s"))
+    if not rel:
+        return None
+    cx = _lookup_cell(rel, x)
+    cy = _lookup_cell(rel, y)
+    if not cx or not cy or cx[1] in (None, "") or cy[1] in (None, ""):
+        return None
+    vx, vy = str(cx[1]), str(cy[1])
+    nx, ny = cx[0], cy[0]
+    fem = mot in ("monnaie", "capitale", "langue", "region")     # accord « la même » / « le même »
+    meme = "la même" if fem else "le même"
+    if _normalise(vx) == _normalise(vy):
+        return "Oui — %s et %s ont %s %s : %s." % (nx, ny, meme, mot, vx)
+    return "Non — %s a pour %s %s, tandis que %s a %s." % (nx, mot, vx, ny, vy)
+
+
 def _cap_difference(texte: str):
     """ÉCART EXACT entre deux entités sur un attribut chiffré : « quelle est la différence de population entre la
     France et l'Allemagne ? » -> la valeur absolue de l'écart, les deux populations et le rapport. FAUX=0 : deux
@@ -3960,7 +3994,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
