@@ -173,6 +173,15 @@ CAS += [
     ("combien font 80 kg en livres ?", "176,3698"),
 ]
 
+# ————— 10e VAGUE : type-words d'œuvre + alias de personnes célèbres —————
+CAS += [
+    ("qui a réalisé le film Pulp Fiction ?", "tarantino"),
+    ("qui a écrit le roman 1984 ?", "orwell"),
+    ("qui a peint le tableau la Joconde ?", "vinci"),
+    ("où est né Napoléon Bonaparte ?", "ajaccio"),           # alias -> clé réelle « Napoléon Ier »
+    ("quand est mort Napoléon Bonaparte ?", "1821"),
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [

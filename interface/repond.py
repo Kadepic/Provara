@@ -287,6 +287,36 @@ def _desms(texte: str) -> str:
     return _SMS_RE.sub(lambda m: _SMS_MAP[m.group(1).lower()], texte)
 
 
+# ALIAS DE PERSONNES CÉLÈBRES (carte FERMÉE, identités incontestables — le MÊME être humain) : l'usager dit
+# « Napoléon Bonaparte », toutes les relations de personnes des datasets sont clées « Napoléon Ier ». Chaque
+# entrée est vérifiée contre les clés réelles avant d'être ajoutée ici. Insensible accents/casse.
+_ALIAS_PERSONNE = {
+    "napoleon bonaparte": "Napoléon Ier",
+    "bonaparte premier": "Napoléon Ier",
+    "napoleon 1er": "Napoléon Ier",
+}
+_ACCENTS_CLS = {"a": "aàâä", "e": "eèéêë", "i": "iîï", "o": "oôö", "u": "uùûü", "c": "cç"}
+
+
+def _motif_accent_tolerant(cle: str) -> str:
+    """« napoleon 1er » -> motif regex qui matche aussi « Napoléon 1er » (classes accentuées, espaces souples)."""
+    return "".join(("[%s]" % _ACCENTS_CLS[c]) if c in _ACCENTS_CLS else (r"\s+" if c == " " else re.escape(c))
+                   for c in cle)
+
+
+_ALIAS_PERSONNE_RE = re.compile(
+    r"\b(" + "|".join(sorted((_motif_accent_tolerant(k) for k in _ALIAS_PERSONNE), key=len, reverse=True)) + r")\b",
+    re.I)
+
+
+def _applique_alias_personne(texte: str) -> str:
+    """Remplace un alias de personne par la clé réelle des datasets (accent-insensible). Identité sinon."""
+    def _rempl(m):
+        cle = re.sub(r"\s+", " ", _normalise(m.group(1)))
+        return _ALIAS_PERSONNE.get(cle, m.group(1))
+    return _ALIAS_PERSONNE_RE.sub(_rempl, texte)
+
+
 import threading as _threading
 
 _REJEU = _threading.local()
@@ -4694,6 +4724,14 @@ def _cap_oeuvres_de(texte: str):
     return "%s : %s%s." % (pers[:1].upper() + pers[1:], aff, suite)
 
 
+# TYPE-WORD d'œuvre en tête d'un titre (« le film Pulp Fiction », « le roman 1984 ») : la clé réelle des
+# datasets est le titre NU — le type est jeté avant lookup (liste fermée de médias).
+_TYPE_OEUVRE_RE = re.compile(
+    r"^(?:le\s+film|le\s+livre|le\s+roman|le\s+tableau|la\s+peinture|la\s+toile|la\s+statue|la\s+sculpture|"
+    r"la\s+chanson|la\s+s[ée]rie|le\s+jeu(?:\s+vid[ée]o)?|l['’]\s*album|le\s+morceau|l['’]\s*op[ée]ra|"
+    r"la\s+pi[eè]ce(?:\s+de\s+th[ée][âa]tre)?|le\s+po[eè]me|la\s+bd|la\s+bande\s+dessin[ée]e)\s+", re.I)
+
+
 def _cap_createur(texte: str):
     """CRÉATEUR d'une œuvre : « qui a écrit 1984 ? » -> George Orwell ; « qui a composé le Boléro ? » -> Ravel ;
     « qui a réalisé Titanic ? » -> Cameron. Via _lookup_direct sur la famille du verbe. FAUX=0 : valeur UNIQUE
@@ -4706,11 +4744,17 @@ def _cap_createur(texte: str):
         ent = _strip_article(brut)
         if not ent or len(ent) < 2:
             return None
-        affiche, val = ent, _lookup_direct(head, ent)
-        if (val is None or str(val).strip() == "") and _normalise(brut) != _normalise(ent):
-            val = _lookup_direct(head, brut)             # « la joconde » est la clé réelle de peintre_oeuvre
-            affiche = brut
-        if val is None or str(val).strip() == "":
+        # TYPE-WORD d'œuvre jeté (« le film Pulp Fiction » -> « Pulp Fiction » : la clé réelle n'a pas le type)
+        sans_type = _TYPE_OEUVRE_RE.sub("", brut).strip()
+        affiche = val = None
+        for forme in dict.fromkeys((ent, brut, sans_type, _strip_article(sans_type))):
+            if not forme or len(forme) < 2:
+                continue
+            v = _lookup_direct(head, forme)              # « la joconde » est la clé réelle de peintre_oeuvre
+            if v is not None and str(v).strip():
+                affiche, val = forme, v
+                break
+        if val is None:
             return None
         if affiche.lower().startswith("la "):            # accord du participe (« La Joconde a été peintE par »)
             gabarit = gabarit.replace(" par ", "e par ", 1)
@@ -4721,11 +4765,12 @@ def _cap_createur(texte: str):
     if mg:
         brut = mg.group(1).strip().strip(" ?.!\"'«»")
         ent = _strip_article(brut)
+        sans_type = _TYPE_OEUVRE_RE.sub("", brut).strip()
         if ent and len(ent) >= 2:
             trouves = []                                     # (forme, participe, créateur) — TOUS les sens vérifiés
             for head, part in (("auteur", "écrit"), ("peintre", "peint"), ("compositeur", "composé"),
                                ("realisateur", "réalisé"), ("sculpteur", "sculpté")):
-                for forme in dict.fromkeys((brut, ent)):     # forme AVEC article d'abord (clé la plus spécifique)
+                for forme in dict.fromkeys((brut, ent, sans_type, _strip_article(sans_type))):   # article d'abord
                     val = _lookup_direct(head, forme)
                     if val is not None and str(val).strip() and all(v != val for _f, _p, v in trouves):
                         trouves.append((forme, part, val))
@@ -5611,6 +5656,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         rep_sms = _rejoue(memoire, conv_id, t_sms, pleine)
         if _utile(rep_sms):
             return rep_sms
+    #   (0alias) ALIAS DE PERSONNES CÉLÈBRES : « Napoléon Bonaparte » -> « Napoléon Ier » (la clé RÉELLE de
+    #       toutes les relations de personnes). Carte FERMÉE d'identités incontestables (même être humain) —
+    #       aucune devinette ; la question réécrite est rejouée par le pipeline complet, repli sans perte.
+    t_alias = _applique_alias_personne(t)
+    if t_alias != t:
+        rep_alias = _rejoue(memoire, conv_id, t_alias, pleine)
+        if _utile(rep_alias):
+            return rep_alias
     #   (0dev) DÉVOILEMENT : « dis-moi qui a écrit 1984 » -> la question NUE est rejouée d'abord (les caps
     #       s'ancrent en ^ et rataient l'enrobage). Si elle ne produit rien de MIEUX que le générique,
     #       l'original continue son chemin normal (zéro perte, aucun fait altéré : on ne retire que du social).
