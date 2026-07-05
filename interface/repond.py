@@ -1433,6 +1433,50 @@ def _cap_classement_liste(texte: str):
     return "Classement par %s (%s) :\n%s%s" % (attr_mot, ordre, "\n".join(lignes), note)
 
 
+# RANG d'une entité dans son ensemble : « quel est le rang de la France par population en Europe ? » -> position
+# dans le classement. Reuse _membres_attribut (ensemble énuméré, complet). FAUX=0 : rang EXACT ou None.
+_RANG_MOT_ADJ = {"population": "peuple", "habitants": "peuple", "superficie": "vaste", "taille": "vaste",
+                 "pib": "riche", "richesse": "riche"}
+_RANG_RE = re.compile(
+    r"^\s*(?:quel\s+est\s+le\s+rang|[àa]\s+quelle\s+place|quelle\s+place\s+occupe|en\s+quelle\s+position)\s+"
+    r"(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’]|est\s+(?:la\s+|le\s+|l['’])?)?(.+?)\s+"
+    r"(?:par|selon|en\s+termes?\s+de|pour\s+la|au\s+niveau\s+de\s+la)\s+"
+    r"(population|superficie|taille|pib|richesse|habitants)\s+"
+    r"(?:en\s+|dans\s+l['’]?|d['’]|du\s+|des\s+|de\s+l['’]?|de\s+)(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_rang(texte: str):
+    """RANG d'une entité dans son ensemble : « quel est le rang de la France par population en Europe ? » -> « 4ᵉ
+    sur 47 ». Position EXACTE dans le classement d'un ensemble énuméré. FAUX=0 : sur un ensemble complet le rang est
+    certain ; None si l'entité n'est pas dans l'ensemble. Gardé aux types sûrs (pays)."""
+    m = _RANG_RE.match(texte.strip())
+    if not m:
+        return None
+    ent, attr_mot, zone = _strip_article(m.group(1).strip()), _normalise(m.group(2)), _strip_article(m.group(3).strip())
+    adj = _RANG_MOT_ADJ.get(attr_mot) or _RANG_MOT_ADJ.get(attr_mot.rstrip("s"))
+    if not adj:
+        return None
+    paires, _ = _membres_attribut("pays", zone, adj)         # ensemble énuméré (trié desc)
+    if not paires or len(paires) < 2:
+        return None
+    ne = _normalise(ent)
+    rang = next((i + 1 for i, (e, _v) in enumerate(paires) if _normalise(e) == ne), None)
+    if rang is None:
+        return None
+    val = next(v for e, v in paires if _normalise(e) == ne)
+    aff = next(e for e, v in paires if _normalise(e) == ne)
+    ord_txt = "1er" if rang == 1 else "%dᵉ" % rang
+    unite = _ATTR_UNITE.get(next((r for r in _ADJ_ATTR.get(adj, ()) if _charge_direct(r)), ""), "")
+    vf = format(int(val), ",d").replace(",", " ") if float(val).is_integer() else "%g" % val
+    try:
+        import realisation_fr as _RF
+        sujet = _RF.article_pays(aff, majuscule=True)        # « La France », « L'Allemagne »
+    except Exception:
+        sujet = aff
+    ens = "au monde" if _normalise(zone) in _ZONES_GLOBALES else _RF_de(zone.capitalize())
+    return "%s est %s sur %d pays %s par %s (%s %s)." % (sujet, ord_txt, len(paires), ens, attr_mot, vf, unite)
+
+
 def _cap_classement(texte: str):
     """CLASSEMENT / TOP-N : « les 5 pays les plus peuplés d'Afrique » -> tri EXACT + valeurs. La machine ORDONNE des
     faits réels ; un LLM devine l'ordre. FAUX=0 : sur un ensemble énuméré, l'ordre est certain."""
@@ -4058,7 +4102,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

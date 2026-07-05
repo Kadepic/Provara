@@ -47,6 +47,7 @@ CAS = [
     ("comptage-recall", R._cap_comptage, "combien de montagnes en Europe ?", "non exhaustive"),  # ensemble troué
     ("classement", R._cap_classement, "les 3 pays les plus peuplés d'Afrique", "Nigéria"),
     ("classement-petit", R._cap_classement, "les 3 plus petits pays d'Europe", "Vatican"),  # polarité « petit »
+    ("rang", R._cap_rang, "quel est le rang de la France par population en Europe ?", "4ᵉ sur 47"),
     ("classement-liste", R._cap_classement_liste, "classe la France, l'Allemagne et l'Italie par population", "1. Allemagne"),
     ("classement-liste-croissant", R._cap_classement_liste, "trie la France, l'Espagne et l'Italie par population croissante", "1. Espagne"),
     ("filtre", R._cap_filtre, "quels pays d'Afrique ont plus de 100 millions d'habitants ?", "Nigéria"),
