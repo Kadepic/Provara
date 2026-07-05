@@ -467,7 +467,12 @@ def _charge_direct(relation: str) -> dict:
 
 
 _STREAM_CACHE: dict = {}      # (relation, entite_norm) -> (affiché, valeur) | None (mémo des lookups streaming)
-_STREAM_SEUIL = 64 * 1024 * 1024     # au-delà, on NE charge PAS tout le dict (RAM) : scan ciblé à la demande
+_STREAM_SEUIL = 4 * 1024 * 1024      # au-delà, on NE charge PAS tout le dict (RAM) : scan ciblé (bytes.find, sortie
+                                     # anticipée) à la demande. 4 Mo : les fichiers MOYENS (pays_montagne 15 Mo,
+                                     # pays_riviere 14 Mo, date_evenement 12 Mo…) restent en flux — plus léger ET
+                                     # souvent plus rapide (early-exit vs chargement complet du dict). Les petits
+                                     # (<4 Mo : population_pays, continent…) restent cachés pour les scans répétés
+                                     # (superlatif/_membres_attribut, via _charge_direct non concerné par ce seuil).
 
 
 def _lookup_cell(relation: str, entite: str):
