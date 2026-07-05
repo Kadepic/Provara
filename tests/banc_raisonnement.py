@@ -112,6 +112,11 @@ CAS = [
     ("naissance-compare-jeune", R._cap_naissance_compare, "qui est le plus jeune entre Napoléon Ier et Louis XIV ?", "Napoléon"),
     ("succession", R._cap_succession, "qui a succédé à Louis XIV ?", "Louis XV"),
     ("succession-predecesseur", R._cap_succession, "qui a précédé Louis XIV ?", "Louis XIII"),
+    ("fleuve-ville", R._cap_fleuve_ville, "quel fleuve traverse Paris ?", "Seine"),        # ex-FAUX : 147 rivières
+    ("fleuve-ville-multi", R._cap_fleuve_ville, "quelle rivière traverse Lyon ?", "Saône"),
+    ("fleuve-ville-sur", R._cap_fleuve_ville, "sur quel fleuve se trouve Budapest ?", "Danube"),
+    ("fleuve-villes-inverse", R._cap_fleuve_ville, "quelles villes le Danube traverse-t-il ?", "Budapest"),
+    ("fleuve-ville-ouinon", R._cap_fleuve_ville, "est-ce que la Seine traverse Paris ?", "Oui"),
     ("localisation-pays", R._cap_localisation, "dans quel pays est 1117 Mountain ?", "États-Unis"),
     ("localisation-continent", R._cap_localisation, "sur quel continent est Abbott Peak ?", "Antarctique"),
     ("faux-localisation-concept", R._cap_localisation, "où se trouve le bonheur ?", ""),  # nom commun -> pas un lieu
@@ -121,6 +126,9 @@ CAS = [
     ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", "Non — c'est l'inverse"),
     ("faux-orbite-soleil", R._cap_orbite, "le Soleil tourne-t-il autour de la Terre ?", "Non — c'est l'inverse"),
     ("faux-transitif", R._cap_transitif, "est-ce que la Lukna finit dans la mer Noire ?", ""),
+    # paire absente : le fait réel est montré, jamais « Oui » ni « Non » sec (la Bièvre traverse VRAIMENT Paris)
+    ("faux-fleuve-ville", R._cap_fleuve_ville, "la Seine traverse-t-elle Lyon ?", "Rhône"),
+    ("faux-fleuve-inconnu", R._cap_fleuve_ville, "quel fleuve traverse Gotham City ?", ""),
     ("faux-inverse", R._cap_inverse, "quel pays a pour capitale Xanadu ?", ""),
     # superlatif SÛR seulement si l'ensemble est complet : montagnes/villes ont un membership troué -> abstention
     ("faux-superlatif-montagne", R._superlatif_argmax, "la montagne la plus haute d'Europe", ""),

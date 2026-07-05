@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — FAUX corrigé : « quel fleuve traverse Paris ? » répond « la Seine », plus une liste de 147 rivières
+
+- **Cause** : dans `_liste_inverse`, le mot « fleuve » servait à la fois de mot-TYPE interrogé (« quel fleuve… »)
+  et de VALEUR d'ancrage (147 rivières ont type=fleuve dans `type_riviere`) → la question déversait l'échantillon
+  alphabétique complet en ignorant « traverse Paris ». **Garde ancre≠type** ajouté : la valeur d'ancrage ne peut
+  pas être le mot-type lui-même ni son alias (`_base(vn) not in rtoks`).
+- **Trou de données comblé au niveau code** : les datasets Wikidata n'ont AUCUNE relation ville↔fleuve (vérifié :
+  `subdivision_riviere` ne contient pas Paris). Nouveau module **`src/fleuve_ville.py`** + seed curé
+  **`src/fleuve_ville_seed.jsonl`** (~100 couples incontestables, articles inclus — même précédent que
+  `est_un_seed.jsonl`) et nouveau cap **`_cap_fleuve_ville`** :
+  - « quel fleuve traverse Paris ? » → *C'est la Seine qui traverse Paris.* (« coule à », « arrose », « passe
+    par », « sur quel fleuve se trouve Budapest » couverts) ;
+  - « quelle rivière traverse Lyon ? » → *le Rhône et la Saône* (liste complète des fleuves majeurs) ;
+  - « quelles villes le Danube traverse-t-il ? » → *notamment Vienne, Budapest… (liste non exhaustive)* ;
+  - « la Seine traverse-t-elle Paris ? » → *Oui* ; paire inconnue → le fait réel montré, JAMAIS de « non » sec
+    (la Bièvre traverse réellement Paris sans être dans le seed) ; ville hors seed → abstention honnête.
+- Banc raisonnement **132/132** (7 cas ajoutés dont 2 gardes FAUX=0), paraphrases 105/105, constructions 4/4,
+  synonymes 8/8, suite 18/18, challenge 16/16. README FR/EN à jour. (Le module et le seed sont sous `src/` →
+  embarqués automatiquement dans le .exe via `--add-data src`.)
+
 ## 2026-07-06 — FAUX grave corrigé : « la Terre tourne-t-elle autour du Soleil ? » ne répond plus « Baudelaire »
 
 - **Cause double** : (1) `_ORBITE_RE` ne consommait pas le clitique d'inversion (« tourne**-t-elle** ») → le

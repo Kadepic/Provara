@@ -2220,6 +2220,11 @@ def _liste_inverse(question: str) -> str | None:
         #                                `plus_grande_lune` ET sa valeur -> on ne liste pas « terre »).
         best = None       # la VALEUR (la plus longue) nommée dans la question -> ancre la requête
         for vn, (disp, ents) in par_val.items():
+            # GARDE ANCRE≠TYPE : la valeur d'ancrage ne peut pas être le mot-TYPE interrogé lui-même, ni son
+            # alias (« quel FLEUVE traverse Paris » : « fleuve » est une VALEUR de type_riviere ET l'alias du
+            # token « riviere » -> sans ce garde, on listait les 147 rivières de type fleuve en ignorant Paris).
+            if _base(vn) in rtoks:
+                continue
             if (len(vn) >= 3 and vn not in rtoks and re.search(r"\b" + re.escape(vn) + r"\b", qn)
                     and (best is None or len(vn) > len(best[0]))):
                 best = (vn, disp, ents)
@@ -4729,6 +4734,62 @@ def _parse_svo_libre(texte: str, conv_id: str | None = None):
     return None
 
 
+_FV_TYPES = r"(?:fleuve|rivi[eè]re|cours\s+d[e'’]\s*eau)"
+_FV_QUEL_RE = re.compile(
+    r"quel(?:le)?\s+" + _FV_TYPES +
+    r"\s+(?:traverse|arrose|baigne|passe\s+(?:a|à|par|dans)|coule\s+(?:a|à|dans|par))\s+"
+    r"(?:la\s+ville\s+d[e'’]\s*)?(.+?)\s*\??\s*$", re.I)
+_FV_SUR_RE = re.compile(
+    r"sur\s+quel(?:le)?\s+" + _FV_TYPES +
+    r"\s+(?:se\s+trouve|se\s+situe|est\s+situ[ée]+|est)\s+(?:la\s+ville\s+d[e'’]\s*)?(.+?)\s*\??\s*$", re.I)
+_FV_VILLES_RE = re.compile(
+    r"quelles?\s+villes?\s+(?:est|sont)\s+travers[ée]+e?s?\s+par\s+(.+?)\s*\??\s*$"
+    r"|quelles?\s+villes?\s+(.+?)\s+traverse(?:[\s-]*t[\s-]+(?:il|elle))?\s*\??\s*$", re.I)
+_FV_OUINON_RE = re.compile(
+    r"(?:est[- ]ce\s+que\s+)?(.+?)\s+traverse(?:[\s-]*t[\s-]+(?:il|elle))?\s+"
+    r"(?:la\s+ville\s+d[e'’]\s*)?(.+?)\s*\??\s*$", re.I)
+
+
+def _fv_et(items) -> str:
+    return items[0] if len(items) == 1 else "%s et %s" % (", ".join(items[:-1]), items[-1])
+
+
+def _cap_fleuve_ville(texte: str):
+    """« quel fleuve traverse Paris ? » -> la Seine. Seed CURÉ fleuve↔ville (src/fleuve_ville_seed.jsonl) : les
+    datasets Wikidata n'ont AUCUNE relation ville↔fleuve (l'ancienne réponse était un déversement de 147
+    rivières par _liste_inverse, corrigé par le garde ancre≠type). FAUX=0 : une ville du seed est complète pour
+    ses fleuves MAJEURS ; un fleuve n'est pas exhaustif (« notamment ») ; une paire inconnue n'est jamais niée
+    sèchement (la Bièvre traverse réellement Paris sans être dans le seed)."""
+    import fleuve_ville as _FV
+    t = texte.strip()
+    m = _FV_QUEL_RE.search(t) or _FV_SUR_RE.search(t)
+    if m:
+        cell = _FV.fleuves_de(_strip_article(m.group(1).strip()))
+        if cell:
+            v_aff, fls = cell
+            if len(fls) == 1:
+                return "C'est %s qui traverse %s." % (fls[0], v_aff)
+            return "%s est traversée par %s." % (v_aff, _fv_et(fls))
+        return None                       # ville hors seed -> abstention honnête (pas de liste hors-sujet)
+    m = _FV_VILLES_RE.search(t)
+    if m:
+        cell = _FV.villes_de(_strip_article((m.group(1) or m.group(2) or "").strip()))
+        if cell:
+            f_aff, vils = cell
+            return "%s traverse notamment %s (liste non exhaustive)." % (f_aff[0].upper() + f_aff[1:], _fv_et(vils))
+        return None
+    m = _FV_OUINON_RE.search(t)
+    if m:                                 # double ancrage exigé : fleuve ET ville connus du seed, sinon None
+        fl, ville = _strip_article(m.group(1).strip()), _strip_article(m.group(2).strip())
+        cf, cv = _FV.villes_de(fl), _FV.fleuves_de(ville)
+        if cf and cv:
+            if _FV.traverse(fl, ville):
+                return "Oui — %s traverse %s." % (cf[0], cv[0])
+            return ("D'après mes données, %s est traversée par %s — je n'ai pas de fait reliant %s à %s."
+                    % (cv[0], _fv_et(cv[1]), cf[0], cv[0]))
+    return None
+
+
 def _cap_localisation(texte: str):
     """LOCALISATION d'un lieu (montagne/désert/île/lac/rivière/ville) : « dans quel pays est X », « sur quel
     continent est X », « où se trouve X » -> pays ou continent stocké. FAUX=0 : valeur réelle vérifiée ou None
@@ -5359,7 +5420,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
