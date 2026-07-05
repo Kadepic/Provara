@@ -2639,6 +2639,20 @@ _GROUPES_ALIAS = (
 )
 
 
+_RAPPEL_STOP = frozenset((
+    "quel quelle quels quelles est sont le la les un une des du de d au aux en et ou qui que quoi mon ma mes "
+    "ton ta tes son sa ses notre votre leur ce cette ces je tu il elle on nous vous me te se avec pour dans sur "
+    "comment combien quand pourquoi c est appelle appelles nomme dis dit sais connais prefere preferee "
+    "preferee preferees habite fait a ai as").split())
+
+
+def _mots_contenu_rappel(texte: str) -> set:
+    """Mots de CONTENU distinctifs d'un énoncé (pour classer un rappel par pertinence) : ≥3 lettres, hors
+    mots-outils ET hors mots trop GÉNÉRIQUES du champ « préférences » (préféré/habite…) qui, partagés par
+    plusieurs énoncés, ne distinguent pas. Ce qui reste : plat, film, couleur, chien, sport, ville…"""
+    return {m for m in re.findall(r"[a-zà-ÿ]{3,}", _normalise(texte)) if m not in _RAPPEL_STOP}
+
+
 def _expanse_rappel(texte: str) -> str:
     """Requête de rappel ENRICHIE des synonymes du champ sémantique présent (nom↔appelle…). Ne change PAS la
     sûreté : le rappel cite un énoncé réel de l'utilisateur, jamais une invention ; ceci améliore la PERTINENCE."""
@@ -5098,9 +5112,32 @@ def _guerit_entree(texte: str) -> str:
     noms, verbes = valides if valides else (set(), set())
     # PLURIELS reconnus : « habitants » est un mot FR valide même si le lexique ne liste que « habitant » —
     # sans ça, la guérison « corrigeait » un pluriel légitime vers le singulier du vocabulaire (bug réel).
+    # FILET LARGE : le lexique de noms (~19 200) est incomplet — un mot ABSENT (« plat ») était « corrigé » vers
+    # un voisin valide (« plan »), corrompant le SENS. On protège AUSSI tout mot ayant une DÉFINITION dans
+    # definition_nom (292k noms) : s'il est défini, c'est un vrai mot -> jamais corrigé. (est_un.definition =
+    # lookup d'offset rapide ; mémoïsé par mot pour ne pas relire le disque à chaque token.)
     gate = (lambda mn: mn in _PROTEGES or mn in noms or _singulier_fr(mn) in noms
-            or _fait_forme_verbale(mn, verbes)) if (noms or verbes) else None
+            or _fait_forme_verbale(mn, verbes) or _mot_defini(mn)) if (noms or verbes) else None
     return _CO.guerit(texte, vn, pi, gate)
+
+
+_DEFINI_MEMO: dict = {}
+
+
+def _mot_defini(mn: str) -> bool:
+    """`mn` (normalisé) a-t-il une DÉFINITION dans definition_nom (est_un) ? Filet large anti-sur-correction de la
+    guérison (un mot défini est un vrai mot). Mémoïsé ; None/erreur -> False (dégradation sûre)."""
+    if len(mn) < 3:
+        return False
+    v = _DEFINI_MEMO.get(mn)
+    if v is None:
+        try:
+            import est_un as _E
+            v = _E.definition(mn) is not None or _singulier_fr(mn) != mn and _E.definition(_singulier_fr(mn)) is not None
+        except Exception:
+            v = False
+        _DEFINI_MEMO[mn] = bool(v)
+    return v
 
 
 _PROFONDEUR: dict = {}            # conv_id -> nombre de tours (mesure de la profondeur de conversation)
@@ -5503,6 +5540,15 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                    # un « cest koi la capitale du japon » demandé plus tôt — non-sequitur).
                    and not _veut_reponse(h["texte"]) and not _veut_reponse(_desms(h["texte"]))]
         if enonces:
+            # RE-CLASSEMENT par PERTINENCE : on choisit l'énoncé qui partage le PLUS de mots de contenu avec la
+            # question (le mot DISTINCTIF départage) — « quel est mon PLAT préféré » doit rappeler « mon PLAT
+            # préféré… », pas « mon FILM préféré… » (les deux partagent « préféré », seul « plat » tranche). À
+            # score égal, la récence (ordre existant) l'emporte. Stable : tri par (−score, index d'origine).
+            mots_q = _mots_contenu_rappel(t)
+            if mots_q:
+                enonces = sorted(enumerate(enonces),
+                                 key=lambda ie: (-len(mots_q & _mots_contenu_rappel(ie[1]["texte"])), ie[0]))
+                enonces = [e for _i, e in enonces]
             return f"{_MSG_RAPPEL_PREFIXE}« {enonces[0]['texte']} »"
 
         #   (2b0) PATRON APPRIS (avant le did-you-mean : un alias validé par l'utilisateur prime sur une simple
