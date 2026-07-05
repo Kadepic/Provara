@@ -1921,6 +1921,13 @@ def _connaissance_rapide_daemon(question: str, conv_id: str | None = None) -> st
     return None
 
 
+# Gabarit « [quelle est] la REL de [la] ENTITÉ ? » — la structure factuelle nominale la plus courante. Partagé
+# entre le repli-famille de `_connaissance_verifiee` et la brique « structure reconnue mais non ancrée ».
+_REL_DE_ENT_RE = re.compile(
+    r"^\s*(?:quel(?:le)?s?\s+(?:est|sont)\s+)?(?:la\s+|le\s+|les\s+|l['] ?)?"
+    r"([\wà-ÿ]+)\s+(?:de\s+la|de\s+l['] ?|du|des|de)\s+(?:la\s+|le\s+|les\s+|l['] ?)?(.+?)\s*\??\s*$", re.I)
+
+
 def _connaissance_verifiee(question: str, conv_id: str | None = None) -> str | None:
     """Étage 2 : un fait VÉRIFIÉ du borné, ou None. Jamais d'invention (HORS -> None). TOLÈRE une faute de
     frappe sur l'entité via `donnee_nl_floue` (« protugal »->« portugal ») et le SIGNALE honnêtement.
@@ -1950,9 +1957,7 @@ def _connaissance_verifiee(question: str, conv_id: str | None = None) -> str | N
     # REPLI FAMILLE : « continent de France » peut ne pas matcher un gabarit direct alors que la relation existe
     # sous un nom de famille (continent_pays…). On parse « rel de entité » et on essaie la famille (unicité exigée,
     # FAUX=0). N'affecte JAMAIS une réponse déjà résolue (on n'arrive ici que si le DATA a rendu HORS).
-    mfam = re.match(r"^\s*(?:quel(?:le)?s?\s+(?:est|sont)\s+)?(?:la\s+|le\s+|les\s+|l['] ?)?"
-                    r"([\wà-ÿ]+)\s+(?:de\s+la|de\s+l['] ?|du|des|de)\s+(?:la\s+|le\s+|les\s+|l['] ?)?(.+?)\s*\??\s*$",
-                    question, re.I)
+    mfam = _REL_DE_ENT_RE.match(question)
     if mfam and _normalise(mfam.group(1)) in _attr_heads():
         vf = _val_par_famille(ia, mfam.group(1).strip(), mfam.group(2).strip(" ?.\"'«»"))
         if vf:
@@ -2541,6 +2546,9 @@ _MSG_NOTE = "C'est noté, je m'en souviendrai. Tu pourras me le redemander."
 _MSG_REFUS = "D'accord — reformule ta question et je réponds."
 _MSG_RAPPEL_PREFIXE = "D'après ce que tu m'as dit : "
 _MSG_DYM_PREFIXE = "Je ne suis pas sûr du mot « "
+_MSG_STRUCTURE_PREFIXE = "J'ai compris la structure de ta question"
+_MSG_WEB_HINT = ("(L'accès à internet est coupé — réactive-le, bouton « 🌐 Internet » à gauche, "
+                 "et je lance une recherche sourcée.)")
 
 
 def _varie(cle: str, graine: str, defaut: str) -> str:
@@ -2568,7 +2576,73 @@ def est_fallback(s: str) -> bool:
     de formulation (l'accusé « noté » a plusieurs libellés désormais)."""
     return isinstance(s, str) and (
         s.startswith(_MSG_INCONNU_PREFIXE) or s == _MSG_WEB_COUPE
+        or s.startswith(_MSG_STRUCTURE_PREFIXE)      # abstention ENRICHIE (structure reconnue, non ancrée)
         or s == _MSG_NOTE or s in _variantes("note", _MSG_NOTE))
+
+
+# ————— Brique « STRUCTURE RECONNUE mais NON ANCRÉE » (piste EGO #3 : on peut reconnaître une grammaire sans
+# comprendre un mot — l'honnêteté sur cet écart est une INFORMATION, pas un échec). Quand toute la cascade a rendu
+# HORS, on ne se contente plus d'un « je ne sais pas » générique : si la question PARSE en (relation connue R,
+# entité E), on dit EXACTEMENT ce qui est compris (la structure « R de E ») et ce qui manque (aucun fait vérifié
+# pour trancher). FAUX=0 : le message ne rapporte que des recherches réellement faites, jamais un fait. —————
+
+# Relations-SONDE pour tester si une entité est ANCRÉE quelque part (clé d'au moins un fait vérifié) : pays
+# (capitale/continent/monnaie/population/superficie), villes, noms communs (définitions), personnes (naissances).
+# Liste BORNÉE et rapide : petits fichiers via _charge_direct (déjà cachés), gros via _lookup_cell (streaming,
+# mémoïsé). Une absence ici ne « prouve » pas l'inexistence — les messages disent « je n'ai pas trouvé », pas
+# « ça n'existe pas ».
+_ANCRAGE_SONDE = ("capitale", "continent", "monnaie", "population_pays", "superficie",
+                  "population_ville", "definition_nom", "annee_naissance_personne")
+
+
+def _entite_ancree(entite: str):
+    """(nom_affiché, contexte|None) si l'entité est la clé d'un fait vérifié d'une relation-sonde, sinon None.
+    `contexte` = sa DÉFINITION vérifiée (tronquée) quand c'est la sonde qui a ancré — dire QUI est l'entité
+    explique souvent POURQUOI le fait demandé n'existe pas (« Wakanda : royaume FICTIF » -> pas de capitale)."""
+    for rel in _ANCRAGE_SONDE:
+        try:
+            cell = _lookup_cell(rel, entite)
+        except Exception:
+            cell = None
+        if cell and cell[1] is not None:
+            ctx = None
+            if rel == "definition_nom" and isinstance(cell[1], str):
+                ctx = cell[1].strip()
+                if len(ctx) > 110:                            # tronque au mot (lisibilité, pas de coupe brutale)
+                    ctx = ctx[:110].rsplit(" ", 1)[0] + "…"
+            return (cell[0], ctx)
+    return None
+
+
+# Mots qui trahissent un MIS-PARSE de l'« entité » (copule/inversion : « la capitale du wakanda est-elle grande »
+# capturerait ent=« wakanda est-elle grande ») -> on s'abstient de la brique, le générique reprend.
+_ENT_SUSPECTE_RE = re.compile(r"\b(est|sont|es|suis|etait|était|serait|seront|a-t|ont)\b|[?]", re.I)
+
+
+def _structure_non_ancree(texte: str) -> str | None:
+    """Message « structure reconnue mais non ancrée » si `texte` parse en (relation CONNUE, entité) alors que
+    toute la cascade factuelle a rendu HORS ; None sinon (le message générique reprend). Deux cas distingués :
+    entité ancrée nulle part (la sonde n'a rien trouvé) vs entité CONNUE mais sans fait pour CETTE relation."""
+    m = _REL_DE_ENT_RE.match(texte)
+    if not m:
+        return None
+    tete, ent = m.group(1).strip(), m.group(2).strip(" ?.!\"'«»").strip()
+    nt, ne = _normalise(tete), _normalise(ent)
+    if (nt not in _attr_heads() or len(ne) < 2 or ne in _attr_heads() or ne in _NEST_SCAFFOLD
+            or ne.isdigit() or len(ent.split()) > 6 or _ENT_SUSPECTE_RE.search(ent)):
+        return None
+    ancre = _entite_ancree(ent)
+    if ancre:
+        affiche, ctx = ancre
+        # la définition Wiktionnaire commence souvent par un marqueur « (univers de Marvel) » : tirets plutôt
+        # que parenthèses pour ne pas les doubler ; point final retiré (la phrase continue).
+        qui = (f"je connais « {affiche} » — {ctx.rstrip('.')} —" if ctx
+               else f"je connais « {affiche} » (des faits vérifiés l'ancrent)")
+        return (f"{_MSG_STRUCTURE_PREFIXE} — « {tete} de {affiche} » : {qui} et je connais la relation "
+                f"« {tete} », mais je n'ai pas de fait vérifié « {tete} de {affiche} » qui me permette de "
+                f"trancher. Plutôt que d'inventer, je m'abstiens.")
+    return (f"{_MSG_STRUCTURE_PREFIXE} — « {tete} de {ent} » : je connais la relation « {tete} », mais je n'ai "
+            f"trouvé aucun fait vérifié qui ancre « {ent} » dans mes données. Plutôt que d'inventer, je m'abstiens.")
 
 
 def _build_id() -> str:
@@ -4568,20 +4642,33 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         except Exception:
             rep = None
         if rep:
-            # INTERNET COUPÉ par l'utilisateur : ses aveux d'impuissance génériques (« je n'arrive pas à
-            # rattacher… ») deviennent un message ACTIONNABLE (réactive internet -> je cherche). Ses réponses
-            # UTILES (cadrage non-borné, clarification, calcul) restent prioritaires et inchangées.
-            if os.environ.get("IA_WEB") != "1":
-                prefixes = tuple(p for p in (getattr(assistant_nl, "_PFX_INDECIDABLE", None),
-                                             getattr(assistant_nl, "_PFX_SATURATION", None)) if p)
-                if prefixes and rep.startswith(prefixes):
+            # AVEU GÉNÉRIQUE (« je n'arrive pas à rattacher… ») : deux raffinements AVANT de le rendre tel quel.
+            # (a) STRUCTURE RECONNUE NON ANCRÉE : si la question parse en (relation connue, entité), on dit
+            #     exactement ce qui est compris et ce qui manque — bien plus utile que l'aveu générique.
+            # (b) INTERNET COUPÉ par l'utilisateur : message ACTIONNABLE (réactive internet -> je cherche).
+            # Les réponses UTILES d'assistant_nl (cadrage non-borné, clarification, calcul) restent inchangées.
+            pfx_aveu = tuple(p for p in (getattr(assistant_nl, "_PFX_INDECIDABLE", None),
+                                         getattr(assistant_nl, "_PFX_SATURATION", None)) if p)
+            pfx_hors = getattr(assistant_nl, "_PFX_HORS_FAIT", None)
+            est_aveu = bool(pfx_aveu) and rep.startswith(pfx_aveu)
+            est_hors = bool(pfx_hors) and rep.startswith(pfx_hors)
+            if est_aveu or est_hors:
+                _snm = _structure_non_ancree(t)
+                if _snm:
+                    return _snm if os.environ.get("IA_WEB") == "1" else f"{_snm} {_MSG_WEB_HINT}"
+                if est_aveu and os.environ.get("IA_WEB") != "1":
                     return _MSG_WEB_COUPE
             return rep
 
-    #   (3) RIEN trouvé — message selon l'intention (demande vs affirmation).
+    #   (3) RIEN trouvé — message selon l'intention (demande vs affirmation). En mode PLEIN (la connaissance a
+    #       réellement été consultée), la brique « structure reconnue mais non ancrée » remplace le générique
+    #       quand la question parse en (relation connue, entité) : dire CE QUI est compris est une information.
     if veut:
+        _snm = _structure_non_ancree(t) if pleine else None
         if pleine and os.environ.get("IA_WEB") != "1":
-            return _MSG_WEB_COUPE
+            return f"{_snm} {_MSG_WEB_HINT}" if _snm else _MSG_WEB_COUPE
+        if _snm:
+            return _snm
         indice = "" if pleine else " — ou relance sans IA_LEGER pour la connaissance générale (faits vérifiés)"
         return f"{_MSG_INCONNU_PREFIXE}{indice}."
     # affirmation : accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).

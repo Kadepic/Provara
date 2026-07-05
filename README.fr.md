@@ -32,7 +32,9 @@ La démo tourne sur l'**échantillon** livré (16 domaines de faits) plus les mo
   masse molaire du glucose C₆H₁₂O₆         = 180.156   (moteur, zéro donnée)
   distance Tokyo → Paris (grand cercle)    = 9712 km   (calculée)
 
-« Population de la ville de Wakanda ? »      ∅ ABSTENTION    « je m'abstiens plutôt que deviner »
+« Population de la ville de Wakanda ? »      ∅ ABSTENTION    « j'ai compris la structure de ta question —
+                                                             je connais la relation “population”, mais aucun
+                                                             fait vérifié n'ancre “ville de Wakanda” »
 « Quel est le plus beau pays du monde ? »    ≈ SUPPOSITION   « la réalité ne fixe pas de réponse unique »
 ```
 
@@ -41,7 +43,7 @@ La démo tourne sur l'**échantillon** livré (16 domaines de faits) plus les mo
 | | |
 |---|---|
 | **Zéro hallucination (FAUX=0)** | Toute affirmation vient d'un fait vérifié ou d'un calcul réellement évalué. Au moindre doute : abstention. C'est un invariant imposé par **683 tests de non-régression** qui échouent si un seul fait faux entre. |
-| **Il sait ce qu'il ne sait pas (bornage)** | Provara distingue ce que la réalité **tranche** (→ un FAIT, avec source) de ce qu'elle **ne tranche pas** (→ une SUPPOSITION cadrée, jamais servie comme un fait). Cette frontière calibrée est le cœur du système. |
+| **Il sait ce qu'il ne sait pas (bornage)** | Provara distingue ce que la réalité **tranche** (→ un FAIT, avec source) de ce qu'elle **ne tranche pas** (→ une SUPPOSITION cadrée, jamais servie comme un fait). Cette frontière calibrée est le cœur du système. Et quand il s'abstient, il dit **ce qu'il a compris et ce qui manque** — sur la base complète : « je connais “wakanda” — *royaume africain fictif, univers de Marvel* — mais aucun fait vérifié n'en donne la capitale ». |
 | **Souverain, frugal, sans GPU** | la base complète ~72 M faits tient dans ~30 Mo de RAM (colonnaire, mémoire-mappée, paginée à la demande ; ~1,7 Go sur disque), 0 dépendance, aucun cloud requis pour répondre. Déployable là où un LLM est impensable : poste isolé, embarqué, secteur souverain — pour un coût d'exploitation quasi nul. Elle ne se connecte que sur demande, pour apprendre ou chercher sur ses sources de confiance. |
 | **Mémoire non-éphémère** | Il retient les échanges par conversation et sait rappeler le bon élément — mais le rappelé reste **typé « rapporté »**, jamais promu en fait. |
 | **Il apprend en allant chercher** | Provara ne dépend pas de données livrées : il **ingère lui-même** depuis des sources réelles et vérifie chaque fait avant de l'accepter. Voir « Regarde-le apprendre » ci-dessous. |

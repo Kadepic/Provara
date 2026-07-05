@@ -124,6 +124,12 @@ CAS = [
     ("inverse-non-hijack", R._cap_inverse, "quelle est la capitale de l'Espagne ?", ""),
     ("difference-non-hijack", R._cap_difference, "population de la France ?", ""),
     ("faux-compar", R._cap_comparaison, "la France est-elle plus peuplée que l'Inde ?", "l'inverse"),
+    # brique « structure reconnue mais non ancrée » : abstention ENRICHIE qui dit ce qui est compris (relation
+    # connue + entité) et ce qui manque (aucun fait pour trancher) — et QUI est l'entité quand elle est définie.
+    ("structure-ancree-fictif", R._structure_non_ancree, "quelle est la capitale du wakanda ?", "fictif"),
+    ("structure-non-ancree", R._structure_non_ancree, "quelle est la population du blorgistan ?",
+     "aucun fait vérifié qui ancre"),
+    ("structure-non-hijack", R._structure_non_ancree, "la capitale du wakanda est-elle grande ?", ""),  # copule -> mis-parse
 ]
 
 

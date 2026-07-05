@@ -62,7 +62,8 @@ def classe(rep: str) -> str:
         return SUBJECTIF
     if "vouliez-vous dire" in b or "peux-tu préciser" in b or "quel critère" in b or "donne-moi un critère" in b:
         return CLARIF
-    if b.startswith("je n'ai pas l'information") or "internet est coupé" in b:
+    if (b.startswith("je n'ai pas l'information") or "internet est coupé" in b
+            or b.startswith("j'ai compris la structure de ta question")):   # abstention ENRICHIE (non ancrée)
         return ABSTENTION
     if any(s in b for s in ("bonjour", "je vais très bien", "à bientôt", "avec plaisir", "hello")):
         return SOCIAL

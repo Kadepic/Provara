@@ -32,7 +32,9 @@ The demo runs on the bundled **sample** (16 fact domains) plus the computation e
   molar mass of glucose C₆H₁₂O₆         = 180.156   (engine, zero data)
   distance Tokyo → Paris (great circle) = 9712 km   (computed)
 
-"Population of the city of Wakanda?"      ∅ ABSTAINS       "I abstain rather than guess"
+"Population of the city of Wakanda?"      ∅ ABSTAINS       "I understood the structure of your question —
+                                                           I know the relation 'population', but no verified
+                                                           fact grounds 'city of Wakanda'"
 "What is the most beautiful country?"     ≈ SUPPOSITION    "reality does not fix a single answer"
 ```
 
@@ -41,7 +43,7 @@ The demo runs on the bundled **sample** (16 fact domains) plus the computation e
 | | |
 |---|---|
 | **Zero hallucination (FAUX=0)** | Every assertion comes from a verified fact or an actually-evaluated computation. At the slightest doubt: abstention. This is an invariant enforced by **683 non-regression tests** that fail if a single false fact gets in. |
-| **It knows what it doesn't know (bounding)** | Provara tells apart what reality **settles** (→ a FACT, with a source) from what it **does not** (→ a framed SUPPOSITION, never served as a fact). This calibrated boundary is the heart of the system. |
+| **It knows what it doesn't know (bounding)** | Provara tells apart what reality **settles** (→ a FACT, with a source) from what it **does not** (→ a framed SUPPOSITION, never served as a fact). This calibrated boundary is the heart of the system. And when it abstains, it states **what it understood and what is missing** — on the full base: "I know 'wakanda' — *a fictional African kingdom, Marvel universe* — but no verified fact gives its capital". |
 | **Sovereign, frugal, GPU-free** | the full ~72M-fact base runs in ~30 MB of RAM (columnar, memory-mapped, demand-paged; ~1.7 GB on disk), 0 dependencies, no GPU, answers with no cloud. Deployable where an LLM is unthinkable: air-gapped machines, embedded, sovereign sectors — at near-zero running cost. Online only on demand, to learn or to search its trusted sources. |
 | **Non-ephemeral memory** | It remembers exchanges per conversation and can recall the right item — but what is recalled stays **typed as "reported,"** never promoted to a fact. |
 | **It learns by going and fetching** | Provara does not depend on shipped data: it **ingests by itself** from real sources and verifies every fact before accepting it. See "Watch it learn" below. |

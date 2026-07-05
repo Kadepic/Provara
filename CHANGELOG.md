@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Abstention ENRICHIE : « structure reconnue mais non ancrée »
+
+- **Nouvelle brique de compréhension** (`_structure_non_ancree`, interface/repond.py) : quand toute la cascade
+  factuelle a rendu HORS, Provara ne dit plus un « je ne sais pas » générique si la question **parse** en
+  (relation connue, entité) — il dit **ce qu'il a compris** (la structure « R de E ») et **ce qui manque**
+  (aucun fait vérifié pour trancher). Inspirée du déchiffrement du chant des cachalots (projet CETI) : on peut
+  reconnaître une grammaire sans comprendre un mot, et l'honnêteté sur cet écart est une information.
+- **Il dit QUI est l'entité quand il le sait** : une sonde d'ancrage bornée (8 relations : pays, villes,
+  définitions, personnes — petits fichiers cachés, gros fichiers en streaming mémoïsé) distingue « entité
+  inconnue » de « entité connue sans fait pour cette relation », et cite la **définition vérifiée** quand elle
+  existe : « capitale du Wakanda ? » → « je connais “wakanda” — *royaume africain fictif (univers de Marvel)* —
+  mais je n'ai pas de fait vérifié “capitale de wakanda” ». Même chose pour le Mordor (Tolkien).
+- FAUX=0 préservé : les messages ne rapportent que des recherches réellement faites (« je n'ai pas trouvé »,
+  jamais « ça n'existe pas ») ; gardes anti-mis-parse (copule, entité=relation, >6 mots) ; `est_fallback`
+  reconnaît la nouvelle abstention (statut HORS conservé dans toute la chaîne).
+- Banc de raisonnement : **91/91** (3 cas ajoutés) sur base complète ; suite conversationnelle 16/16 gates
+  (valide_assistant_nl 77/77) ; challenge 16/16. README FR/EN : la vitrine cite la nouvelle abstention.
+
 ## 2026-07-04 — RENOMMAGE « VERAX → Provara » + UX du 1er lancement + 3 bugs d'interface corrigés
 
 ### Renommage complet de la marque (raison : antériorité de marque)
