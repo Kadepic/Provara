@@ -574,6 +574,8 @@ _APPARTENANCE = {"pays": ("continent", "region_pays"), "ville": ("pays_ville",),
 # types (montagne/ville) ont un membership troué (extrêmes manquants) : le comptage/filtre les liste en disant
 # « dans mes données », mais un superlatif AFFIRMÉ y serait faux -> _superlatif_argmax s'y abstient.
 _SUPERLAT_TYPES_SÛRS = frozenset({"pays"})
+# marqueurs de ZONE GLOBALE : « le pays le plus peuplé DU MONDE » -> argmax sur TOUS les pays (ensemble complet).
+_ZONES_GLOBALES = frozenset("monde terre planete univers total globe".split())
 
 
 def _nombre(v):
@@ -597,6 +599,16 @@ def _membres_attribut(typ: str, zone: str, adj: str):
     if not attr_rel:
         return None, None
     membres = None
+    # ZONE GLOBALE (« du monde », « au monde », « de la planète ») : l'ensemble est TOUS les membres du type —
+    # pour un pays, l' énumération est complète (attribut couvrant tous les pays) donc le superlatif reste SOUND.
+    # Gardé aux types sûrs (_SUPERLAT_TYPES_SÛRS) : on n'affirme un extrême GLOBAL que sur un ensemble complet.
+    if _normalise(zone) in _ZONES_GLOBALES:
+        if typ not in _SUPERLAT_TYPES_SÛRS:
+            return None, None
+        attr = _charge_direct(attr_rel)
+        paires = sorted(((c[0], _nombre(c[1])) for c in attr.values() if _nombre(c[1]) is not None),
+                        key=lambda p: -p[1])
+        return paires, attr_rel
     for rel_app in _APPARTENANCE.get(typ, ()):
         rev = _charge_reverse(rel_app)
         hit = rev.get(_normalise(zone))
@@ -1496,7 +1508,6 @@ def _superlatif_argmax(expr: str):
     toks = nz.split()
     if "plus" not in toks and "moins" not in toks:
         return None
-    maximise = "moins" not in toks
     # LEFT (le SN superlatif) de ZONE
     m = re.search(r"^(.*?)\s+(?:de la|de l|du|des|de|d)\s+(.+)$", nz)
     if not m:
@@ -1510,6 +1521,9 @@ def _superlatif_argmax(expr: str):
     typ = next((w for w in gtoks if w in _APPARTENANCE), None)
     if not adj or not typ:
         return None
+    # sens : « plus » maximise, « moins » minimise ; INVERSÉ si l'adjectif est lui-même « petit » (« le plus
+    # PETIT pays » = superficie MINIMALE). Sans ça, « le plus petit pays » renvoyait le plus GRAND.
+    maximise = ("moins" not in toks) != (adj in _ADJ_PETIT)
     # FAUX=0 : un superlatif AFFIRME « le plus X » — ce n'est SAIN que si l'ensemble énuméré est COMPLET. Les pays
     # d'un continent le sont (membership « continent » exhaustif). PAS les montagnes/villes : continent_montagne
     # oublie l'Elbrouz (vrai plus haut d'Europe) et le Mont Blanc n'a pas d'altitude -> l'argmax dirait « Cervin »
@@ -1519,17 +1533,21 @@ def _superlatif_argmax(expr: str):
     attr_rel = next((r for r in _ADJ_ATTR[adj] if _charge_direct(r)), None)
     if not attr_rel:
         return None
-    # membres = entités du type dont l'appartenance == zone (reverse-lookup)
-    membres = None
-    for rel_app in _APPARTENANCE[typ]:
-        rev = _charge_reverse(rel_app)
-        hit = rev.get(zone) or next((v for k, v in rev.items() if k == zone), None)
-        if hit and hit[1]:
-            membres = hit[1]
-            break
-    if not membres:
-        return None
     attr = _charge_direct(attr_rel)
+    # membres = entités du type dont l'appartenance == zone (reverse-lookup). ZONE GLOBALE (« du monde ») : TOUS
+    # les membres du type = toutes les entités ayant l'attribut (ensemble pays complet -> superlatif SOUND).
+    if _normalise(zone) in _ZONES_GLOBALES:
+        membres = [c[0] for c in attr.values()]
+    else:
+        membres = None
+        for rel_app in _APPARTENANCE[typ]:
+            rev = _charge_reverse(rel_app)
+            hit = rev.get(zone) or next((v for k, v in rev.items() if k == zone), None)
+            if hit and hit[1]:
+                membres = hit[1]
+                break
+        if not membres:
+            return None
     best = None
     n_compares = 0
     for ent in membres:

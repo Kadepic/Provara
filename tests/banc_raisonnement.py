@@ -101,6 +101,8 @@ CAS = [
     ("faux-inverse", R._cap_inverse, "quel pays a pour capitale Xanadu ?", ""),
     # superlatif SÛR seulement si l'ensemble est complet : montagnes/villes ont un membership troué -> abstention
     ("faux-superlatif-montagne", R._superlatif_argmax, "la montagne la plus haute d'Europe", ""),
+    ("superlatif-global", lambda q: (R._superlatif_argmax(q) or ("",))[0], "le pays le plus vaste du monde", "Russie"),
+    ("superlatif-petit", lambda q: (R._superlatif_argmax(q) or ("",))[0], "le pays le moins peuplé du monde", "Tuvalu"),
     ("inverse-non-hijack", R._cap_inverse, "quelle est la capitale de l'Espagne ?", ""),
     ("difference-non-hijack", R._cap_difference, "population de la France ?", ""),
     ("faux-compar", R._cap_comparaison, "la France est-elle plus peuplée que l'Inde ?", "l'inverse"),
