@@ -465,14 +465,14 @@ def _charge_direct(relation: str) -> dict:
     return d
 
 
-_STREAM_CACHE: dict = {}      # (relation, entite_norm) -> valeur brute | None (mémo des lookups streaming ciblés)
+_STREAM_CACHE: dict = {}      # (relation, entite_norm) -> (affiché, valeur) | None (mémo des lookups streaming)
 _STREAM_SEUIL = 64 * 1024 * 1024     # au-delà, on NE charge PAS tout le dict (RAM) : scan ciblé à la demande
 
 
-def _lookup_valeur(relation: str, entite: str):
-    """Valeur brute d'UNE entité pour `relation`, sans matérialiser tout l'index si le fichier est ÉNORME
-    (annee_naissance_personne = 150 Mo, 3,2 M lignes). Petit fichier -> passe par _charge_direct (caché) ;
-    gros fichier -> SCAN ciblé ligne à ligne avec sortie anticipée + mémo par clé (RAM plate). None si absent."""
+def _lookup_cell(relation: str, entite: str):
+    """(entité_affichée, valeur_brute) d'UNE entité pour `relation`, sans matérialiser tout l'index si le fichier
+    est ÉNORME (annee_naissance_personne = 150 Mo, 3,2 M lignes). Petit fichier -> _charge_direct (caché) ; gros
+    fichier -> SCAN ciblé ligne à ligne (pré-filtre sous-chaîne, sortie anticipée, mémo par clé) -> RAM plate. None."""
     ne = _normalise(entite)
     chemin = os.path.join(_DOSSIER_LECTEUR, relation + ".jsonl")
     try:
@@ -480,8 +480,7 @@ def _lookup_valeur(relation: str, entite: str):
     except OSError:
         return None
     if not gros:
-        cell = _charge_direct(relation).get(ne)
-        return cell[1] if cell else None
+        return _charge_direct(relation).get(ne)
     clef = (relation, ne)
     if clef in _STREAM_CACHE:
         return _STREAM_CACHE[clef]
@@ -501,12 +500,18 @@ def _lookup_valeur(relation: str, entite: str):
                     continue
                 e, v = obj.get("entite"), obj.get("valeur")
                 if e is not None and _normalise(e) == ne and v is not None:
-                    trouve = v
+                    trouve = (str(e), v)
                     break
     except OSError:
         trouve = None
     _STREAM_CACHE[clef] = trouve
     return trouve
+
+
+def _lookup_valeur(relation: str, entite: str):
+    """Valeur brute d'UNE entité (RAM-sûr sur gros fichiers, cf. _lookup_cell). None si absente."""
+    cell = _lookup_cell(relation, entite)
+    return cell[1] if cell else None
 
 
 # Adjectif superlatif -> relations d'attribut candidates (1re existante retenue). Domaine-extensible.
@@ -648,10 +653,11 @@ def _relations_date() -> list:
 
 
 def _annee_de(entite: str):
-    """Année associée à un événement/entité, cherchée dans les relations de dates (1re trouvée). (annee:int, affiché) ou None."""
-    ne = _normalise(entite)
+    """Année associée à un événement/entité, cherchée dans les relations de dates (1re trouvée). (annee:int, affiché)
+    ou (None, None). RAM-sûr : via _lookup_cell -> les gros fichiers de dates (annee_naissance_personne 150 Mo,
+    annee_deces 79 Mo) sont lus en STREAMING ciblé, jamais matérialisés en dict de centaines de Mo."""
     for rel in _relations_date():
-        cell = _charge_direct(rel).get(ne)
+        cell = _lookup_cell(rel, entite)
         if cell:
             a = _nombre(cell[1])
             if a is not None:
