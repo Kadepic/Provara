@@ -2538,7 +2538,44 @@ def _resout_partie(p: str):
 # « × ». Sans cette intention, « x » reste un simple séparateur (« relais 4 x 100 m ») et n'est PAS converti (#82).
 _CALC_INTENT = re.compile(
     r"\b(?:combien\s+(?:font|fait|valent|vaut|ca\s+fait)|calcul\w*|resou\w+|multipli\w+|"
-    r"additionn\w+|soustrai\w+|divis\w+)\b|=\s*\??\s*$|\begale?\s*\??\s*$")
+    r"additionn\w+|soustrai\w+|divis\w+)\b|=\s*\??\s*$|\begale?\s*\??\s*$"
+    r"|\d\s*(?:%|pour\s*cents?)\s+de\s+\d|\bau\s+carr[ée]\b|\bau\s+cube\b")
+
+
+_CONV_UNITE = {"celsius": "C", "c": "C", "°c": "C", "fahrenheit": "F", "f": "F", "°f": "F",
+               "kilometre": "KM", "kilometres": "KM", "km": "KM", "mile": "MI", "miles": "MI",
+               "kilogramme": "KG", "kilogrammes": "KG", "kilo": "KG", "kilos": "KG", "kg": "KG",
+               "livre": "LB", "livres": "LB", "lb": "LB", "lbs": "LB"}
+_CONV_RE = re.compile(
+    r"(-?\d+(?:[.,]\d+)?)\s*(?:degr[ée]s?\s+)?°?\s*([a-zà-ÿ°]+)\s+en\s+(?:degr[ée]s?\s+)?°?\s*([a-zà-ÿ°]+)", re.I)
+
+
+def _cap_conversion(texte: str):
+    """CONVERSION D'UNITÉS FERMÉE et EXACTE : « convertis 100 degrés Celsius en Fahrenheit » -> 212 °F, formule
+    montrée. Couples définis par des constantes LÉGALES exactes (°C↔°F ; 1 mile = 1,609344 km ; 1 lb =
+    0,45359237 kg) — aucun arrondi caché : 4 décimales affichées au plus, formule re-vérifiable. Hors de la
+    liste fermée -> None (jamais d'approximation inventée)."""
+    m = _CONV_RE.search(texte)
+    if not m:
+        return None
+    u1, u2 = _CONV_UNITE.get(_normalise(m.group(2))), _CONV_UNITE.get(_normalise(m.group(3)))
+    if not u1 or not u2 or u1 == u2:
+        return None
+    v = float(m.group(1).replace(",", "."))
+    aff = lambda x: ("%.4f" % x).rstrip("0").rstrip(".").replace(".", ",")
+    if (u1, u2) == ("C", "F"):
+        return "%s °C = %s °F  (formule exacte : (%s × 9/5) + 32)." % (aff(v), aff(v * 9 / 5 + 32), aff(v))
+    if (u1, u2) == ("F", "C"):
+        return "%s °F = %s °C  (formule exacte : (%s − 32) × 5/9)." % (aff(v), aff((v - 32) * 5 / 9), aff(v))
+    if (u1, u2) == ("KM", "MI"):
+        return "%s km = %s mile(s)  (1 mile = 1,609344 km, définition légale)." % (aff(v), aff(v / 1.609344))
+    if (u1, u2) == ("MI", "KM"):
+        return "%s mile(s) = %s km  (1 mile = 1,609344 km, définition légale)." % (aff(v), aff(v * 1.609344))
+    if (u1, u2) == ("KG", "LB"):
+        return "%s kg = %s livre(s)  (1 livre = 0,45359237 kg, définition légale)." % (aff(v), aff(v / 0.45359237))
+    if (u1, u2) == ("LB", "KG"):
+        return "%s livre(s) = %s kg  (1 livre = 0,45359237 kg, définition légale)." % (aff(v), aff(v * 0.45359237))
+    return None
 
 
 def _reponse_calcul(texte: str) -> str | None:
@@ -2555,8 +2592,21 @@ def _reponse_calcul(texte: str) -> str | None:
                 "douze": "12", "treize": "13", "quatorze": "14", "quinze": "15", "seize": "16", "vingt": "20",
                 "trente": "30", "quarante": "40", "cinquante": "50", "soixante": "60", "cent": "100",
                 "mille": "1000"}
+    # POURCENTAGE en PREMIER : « 20 % de 150 » / « 20 pour cent de 150 » -> 20 * 150 / 100 (= 30, précédence
+    # gauche-droite). AVANT _MOTS_NB, qui transformerait « pour cent » en « pour 100 » et casserait le motif.
+    texte = re.sub(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour\s*cents?)\s+de\s+(\d+(?:[.,]\d+)?)",
+                   r"\1 * \2 / 100", texte, flags=re.I)
     texte = re.sub(r"\b(" + "|".join(_MOTS_NB) + r")\b",
                    lambda mm: _MOTS_NB[mm.group(1).lower()], texte, flags=re.I)
+    # OPÉRATEURS EN TOUTES LETTRES avec la VRAIE précédence (« 3 plus 4 fois 5 » -> 3 + 4 * 5 = 23, pas 35) :
+    # _juge_arith évalue en précédence réelle. FERMÉ, uniquement sous intention de calcul (gate ci-dessus).
+    texte = re.sub(r"(?<=\d)\s+divis[ée]s?\s+par\s+(?=\d)", " / ", texte, flags=re.I)
+    texte = re.sub(r"(?<=\d)\s+(?:multipli[ée]s?\s+par|fois)\s+(?=\d)", " * ", texte, flags=re.I)
+    texte = re.sub(r"(?<=\d)\s+plus\s+(?=\d)", " + ", texte, flags=re.I)
+    texte = re.sub(r"(?<=\d)\s+moins\s+(?=\d)", " - ", texte, flags=re.I)
+    # PUISSANCES fermées : « 7 au carré » -> 7 * 7 ; « 3 au cube » -> 3 * 3 * 3.
+    texte = re.sub(r"(\d+(?:[.,]\d+)?)\s+au\s+carr[ée]\b", r"\1 * \1", texte, flags=re.I)
+    texte = re.sub(r"(\d+(?:[.,]\d+)?)\s+au\s+cube\b", r"\1 * \1 * \1", texte, flags=re.I)
     # « x »/« × » collés ou espacés entre deux nombres -> « * » ESPACÉ (resout_arithmetique exige des espaces).
     p_math = re.sub(r"(?<=\d)\s*[x×]\s*(?=\d)", " * ", texte)
     try:
@@ -2572,6 +2622,13 @@ def _reponse_calcul(texte: str) -> str | None:
         v = _CB._juge_arith(_CB._norm(p_math))
         if v is not None:
             return str(int(v) if isinstance(v, float) and v.is_integer() else v)
+        # repli : EXTRAIRE la sous-expression mathématique pure (« QUEL EST 20 * 150 / 100 ? » — le préfixe
+        # interrogatif fait échouer les évaluateurs). On n'évalue que la course chiffres/opérateurs, fermée.
+        mm = re.search(r"-?\d[\d\s+*/,.×-]*\d|\d", p_math)
+        if mm and re.search(r"[+*/×-]", mm.group(0)):
+            v = _CB._juge_arith(_CB._norm(mm.group(0).strip()))
+            if v is not None:
+                return str(int(v) if isinstance(v, float) and v.is_integer() else v)
     except Exception:
         pass
     return None
@@ -5521,7 +5578,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_conversion, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

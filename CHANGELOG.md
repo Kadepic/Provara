@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Calcul étendu : puissances, pourcentages, précédence en toutes lettres, conversions exactes
+
+- `_reponse_calcul` étendu (fermé, sous intention de calcul) : **« 7 au carré » → 49**, « 2 au cube » → 8 ;
+  **« 20 pour cent de 150 » / « 15 % de 200 » → 30** (substitution AVANT les nombres en lettres — « pour
+  cent » devenait « pour 100 » et cassait le motif) ; **« 3 plus 4 fois 5 » → 23** (opérateurs en toutes
+  lettres avec la VRAIE précédence, substitués uniquement ENTRE chiffres) ; repli d'EXTRACTION de la
+  sous-expression mathématique pure (« QUEL EST 20 * 150 / 100 ? » — le préfixe interrogatif faisait échouer
+  les évaluateurs).
+- **Nouveau `_cap_conversion`** : conversions d'unités FERMÉES et EXACTES, formule montrée — « convertis 100
+  degrés Celsius en Fahrenheit » → *212 °F ((100 × 9/5) + 32)* ; km↔miles (1 mile = 1,609344 km, définition
+  légale) ; kg↔livres (1 livre = 0,45359237 kg). Hors liste fermée → None (jamais d'approximation inventée).
+- Banc paraphrases **122/122** (9e vague : 9 cas calcul/conversion), raisonnement 132/132, autres bancs verts.
+
 ## 2026-07-06 — Composition profonde : enveloppe interrogative, pont ville→pays, élision, filet temporel
 
 - **FAUX .exe corrigé — « sur quel continent se trouve la capitale du Japon ? » répondait « Tokyo »** (le

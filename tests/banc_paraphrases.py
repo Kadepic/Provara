@@ -160,6 +160,19 @@ CAS += [
     ("quelle est la population de la capitale de la France ?", "je m'abstiens"),  # chaîne partielle honnête (Paris sans population_ville)
 ]
 
+# ————— 9e VAGUE : CALCUL étendu (puissances, pourcentages, opérateurs en lettres, conversions exactes) —————
+CAS += [
+    ("combien font 7 au carré ?", "49"),
+    ("combien font 2 au cube ?", "8"),
+    ("quel est 20 pour cent de 150 ?", "30"),
+    ("combien font 15 % de 200 ?", "30"),
+    ("combien font 3 plus 4 fois 5 ?", "23"),               # précédence RÉELLE (pas 35)
+    ("combien font 100 divisé par 4 ?", "25"),
+    ("convertis 100 degrés Celsius en Fahrenheit", "212"),
+    ("convertis 10 km en miles", "6,2137"),
+    ("combien font 80 kg en livres ?", "176,3698"),
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [
