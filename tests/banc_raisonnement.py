@@ -130,6 +130,10 @@ CAS = [
     ("structure-non-ancree", R._structure_non_ancree, "quelle est la population du blorgistan ?",
      "aucun fait vérifié qui ancre"),
     ("structure-non-hijack", R._structure_non_ancree, "la capitale du wakanda est-elle grande ?", ""),  # copule -> mis-parse
+    # famille CRÉATEUR : structure reconnue (« qui a écrit X ») + entité définie mais sans fait créateur
+    ("structure-createur", R._structure_non_ancree, "qui a écrit le necronomicon ?", "lovecraft"),
+    # titres stockés AVEC article : « la joconde » est la clé réelle de peintre_oeuvre (+ accord du participe)
+    ("createur-article", R._cap_createur, "qui a peint la joconde ?", "peinte par Léonard de Vinci"),
 ]
 
 

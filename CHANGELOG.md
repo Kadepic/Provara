@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Structure reconnue : famille CRÉATEUR + 2 bugs réels corrigés (guérison, articles de titres)
+
+- **La brique « structure reconnue » couvre la famille créateur** (« qui a écrit/composé/peint/inventé X ? »,
+  mêmes patrons fermés que `_cap_createur`) : « qui a écrit le necronomicon ? » → « je connais “necronomicon” —
+  *titre d'un livre fictif dans l'œuvre de Lovecraft* — mais aucun fait vérifié n'en désigne le créateur. »
+  Formes courtes consécutives et continuité multi-tours partagées avec la famille « R de E ».
+- **BUG GUÉRISON corrigé (préexistant)** : « peint » était « corrigé » en « point » (comme « était »→« état »
+  avant lui) — les participes du 3e groupe n'étaient pas reconstruits vers leur infinitif. `_fait_forme_verbale`
+  reconstruit désormais peint→peindre, écrit→écrire, ouvert→ouvrir, mis→mettre, pris→prendre, reçu→recevoir,
+  bu→boire, venu→venir… (sûr par construction : un candidat ne protège que s'il EST un infinitif connu).
+- **BUG TITRES corrigé (préexistant)** : les œuvres stockées AVEC article (« la joconde » dans peintre_oeuvre)
+  étaient introuvables (lookup sur la forme sans article seulement) → « qui a peint la Joconde ? » restait sans
+  réponse alors que le fait EXISTE. Lookup sous les deux formes + **accord du participe** : « La Joconde a été
+  peint**e** par Léonard de Vinci. » Banc 93/93 (2 cas ajoutés), suite 16/16, challenge 16/16.
+
 ## 2026-07-05 — L'échange continue À TRAVERS l'abstention (le sens est relationnel)
 
 - **Continuité conversationnelle sur abstention** : une abstention structurée mémorise désormais le sujet et la

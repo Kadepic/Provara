@@ -2647,15 +2647,33 @@ def _structure_non_ancree(texte: str, conv_id: str | None = None) -> str | None:
     toute la cascade factuelle a rendu HORS ; None sinon (le message générique reprend). Deux cas distingués :
     entité ancrée nulle part (la sonde n'a rien trouvé) vs entité CONNUE mais sans fait pour CETTE relation.
     Avec `conv_id`, l'échange CONTINUE à travers l'abstention : le sujet et la question sont mémorisés pour les
-    enchaînements (« et sa population ? », « et du mordor ? ») — le sens est relationnel, une abstention aussi."""
+    enchaînements (« et sa population ? », « et du mordor ? ») — le sens est relationnel, une abstention aussi.
+    Deux familles de structures reconnues : « R de E » (relation nominale) et « qui a écrit/composé/… E »
+    (créateur d'une œuvre, mêmes patrons FERMÉS que _cap_createur)."""
+    tete = part = None
     m = _REL_DE_ENT_RE.match(texte)
-    if not m:
-        return None
-    tete, ent = m.group(1).strip(), m.group(2).strip(" ?.!\"'«»").strip()
-    nt, ne = _normalise(tete), _normalise(ent)
-    if (nt not in _attr_heads() or len(ne) < 2 or ne in _attr_heads() or ne in _NEST_SCAFFOLD
-            or ne.isdigit() or len(ent.split()) > 6 or _ENT_SUSPECTE_RE.search(ent)):
-        return None
+    if m:
+        tete, ent = m.group(1).strip(), m.group(2).strip(" ?.!\"'«»").strip()
+        nt, ne = _normalise(tete), _normalise(ent)
+        if (nt not in _attr_heads() or len(ne) < 2 or ne in _attr_heads() or ne in _NEST_SCAFFOLD
+                or ne.isdigit() or len(ent.split()) > 6 or _ENT_SUSPECTE_RE.search(ent)):
+            return None
+    else:
+        ent_aff = None
+        for patron, _head, gabarit in _CREATEUR_RULES:
+            mc = patron.match(texte.strip())
+            if not mc:
+                continue
+            ent_aff = mc.group(1).strip().strip(" ?.!\"'«»")     # AVEC son article (« le necronomicon » : affichage)
+            ent = _strip_article(ent_aff)                        # SANS article (sonde d'ancrage + état multi-tours)
+            ne = _normalise(ent)
+            if len(ne) < 2 or ne.isdigit() or len(ent.split()) > 8 or _ENT_SUSPECTE_RE.search(ent):
+                return None
+            mp = re.search(r"a été (\w+) par", gabarit)      # participe du gabarit (« écrit », « composé »…)
+            part = mp.group(1) if mp else "créé"
+            break
+        if part is None:
+            return None
     tour = _PROFONDEUR.get(conv_id, 0) if conv_id else 0
     consecutif = bool(conv_id) and _STRUCT_TOUR.get(conv_id) == tour - 1
     prec = _DERNIER_SUJET.get(conv_id) if conv_id else None      # sujet du tour précédent (AVANT écrasement)
@@ -2663,24 +2681,33 @@ def _structure_non_ancree(texte: str, conv_id: str | None = None) -> str | None:
         _DERNIER_SUJET[conv_id] = ent
         _DERNIER_QUESTION[conv_id] = texte
         _STRUCT_TOUR[conv_id] = tour
-    ancre = _entite_ancree(ent)
+    ancre = _entite_ancree(ent) or (None if tete else _entite_ancree(ent_aff))   # titres stockés avec article
+    libelle = (f"{tete} de {ent}") if tete else (f"qui a {part} {ent_aff}")
     if ancre:
         affiche, ctx = ancre
+        libelle = (f"{tete} de {affiche}") if tete else (f"qui a {part} {ent_aff}")
         if consecutif:                            # 2 abstentions d'affilée : on ne récite pas la formule complète
             # la présentation de l'entité ne se répète que si elle a CHANGÉ depuis le tour précédent.
             qui = f" ({_def_lisible(ctx)})" if (ctx and (not prec or _normalise(prec) != ne)) else ""
-            return (f"{_MSG_STRUCTURE_COURT_PREFIXE}{tete} de {affiche} »{qui} : là non plus, aucun fait "
+            return (f"{_MSG_STRUCTURE_COURT_PREFIXE}{libelle} »{qui} : là non plus, aucun fait "
                     f"vérifié pour trancher, je m'abstiens.")
         qui = (f"je connais « {affiche} » — {_def_lisible(ctx)} —" if ctx
                else f"je connais « {affiche} » (des faits vérifiés l'ancrent)")
-        return (f"{_MSG_STRUCTURE_PREFIXE} — « {tete} de {affiche} » : {qui} et je connais la relation "
-                f"« {tete} », mais je n'ai pas de fait vérifié « {tete} de {affiche} » qui me permette de "
-                f"trancher. Plutôt que d'inventer, je m'abstiens.")
+        if tete:
+            return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : {qui} et je connais la relation "
+                    f"« {tete} », mais je n'ai pas de fait vérifié « {tete} de {affiche} » qui me permette de "
+                    f"trancher. Plutôt que d'inventer, je m'abstiens.")
+        return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : {qui} mais aucun fait vérifié n'en désigne "
+                f"le créateur. Plutôt que d'inventer, je m'abstiens.")
     if consecutif:
-        return (f"{_MSG_STRUCTURE_COURT_PREFIXE}{tete} de {ent} » : là non plus, aucun fait vérifié pour "
+        return (f"{_MSG_STRUCTURE_COURT_PREFIXE}{libelle} » : là non plus, aucun fait vérifié pour "
                 f"trancher, je m'abstiens.")
-    return (f"{_MSG_STRUCTURE_PREFIXE} — « {tete} de {ent} » : je connais la relation « {tete} », mais je n'ai "
-            f"trouvé aucun fait vérifié qui ancre « {ent} » dans mes données. Plutôt que d'inventer, je m'abstiens.")
+    if tete:
+        return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : je connais la relation « {tete} », mais je n'ai "
+                f"trouvé aucun fait vérifié qui ancre « {ent} » dans mes données. Plutôt que d'inventer, je m'abstiens.")
+    return (f"{_MSG_STRUCTURE_PREFIXE} — « {libelle} » : je comprends la demande (le créateur d'une œuvre), "
+            f"mais je n'ai trouvé aucun fait vérifié qui ancre « {ent} » dans mes données. Plutôt que "
+            f"d'inventer, je m'abstiens.")
 
 
 def _build_id() -> str:
@@ -3841,13 +3868,19 @@ def _cap_createur(texte: str):
         m = patron.match(texte.strip())
         if not m:
             continue
-        ent = _strip_article(m.group(1).strip())
+        brut = m.group(1).strip().strip(" ?.!\"'«»")     # forme AVEC article (certains titres sont stockés ainsi)
+        ent = _strip_article(brut)
         if not ent or len(ent) < 2:
             return None
-        val = _lookup_direct(head, ent)
+        affiche, val = ent, _lookup_direct(head, ent)
+        if (val is None or str(val).strip() == "") and _normalise(brut) != _normalise(ent):
+            val = _lookup_direct(head, brut)             # « la joconde » est la clé réelle de peintre_oeuvre
+            affiche = brut
         if val is None or str(val).strip() == "":
             return None
-        return (gabarit % (ent[:1].upper() + ent[1:], val)) + "."
+        if affiche.lower().startswith("la "):            # accord du participe (« La Joconde a été peintE par »)
+            gabarit = gabarit.replace(" par ", "e par ", 1)
+        return (gabarit % (affiche[:1].upper() + affiche[1:], val)) + "."
     return None
 
 
@@ -4249,7 +4282,12 @@ def _fait_forme_verbale(mn: str, verbes: set) -> bool:
         return False
     cands = {mn, mn + "r", mn + "er", mn + "ir", mn + "re"}
     for suf, rempl in (("e", "er"), ("es", "er"), ("ent", "er"), ("ons", "er"), ("ez", "er"),
-                       ("e", "ir"), ("ee", "er"), ("ees", "er"), ("es", "ir")):
+                       ("e", "ir"), ("ee", "er"), ("ees", "er"), ("es", "ir"),
+                       # participes du 3e groupe (reconstruction du lemme ; SÛR : un candidat ne protège que
+                       # s'il EST un infinitif connu) : peint->peindre, écrit->écrire, ouvert->ouvrir,
+                       # mis->mettre, pris->prendre, reçu->recevoir, bu->boire, venu->venir, vu->voir…
+                       ("t", "dre"), ("it", "ire"), ("ert", "rir"), ("is", "ettre"), ("is", "endre"),
+                       ("u", "evoir"), ("u", "oire"), ("u", "oir"), ("enu", "enir"), ("u", "re")):
         if mn.endswith(suf):
             cands.add(mn[: len(mn) - len(suf)] + rempl)
     return any(c in verbes for c in cands)
