@@ -1181,6 +1181,63 @@ _CLASST_RE = re.compile(
     r"(?:\s+(\w+))?\s+(?:de\s+l['’]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*(.+?)\s*\??\s*$", re.I)
 
 
+# CLASSEMENT d'une LISTE EXPLICITE : « classe la France, l'Allemagne et l'Italie par population ». Tri complet
+# (pas seulement le gagnant) d'entités nommées sur un attribut. FAUX=0 : valeurs vérifiées, exclut les inconnues.
+_CLASST_LISTE_RE = re.compile(
+    r"^\s*(?:classe|classer|range|ranger|ordonne|ordonner|trie|trier)\s+"
+    r"(?:ces\s+\w+\s*:?\s*|les\s+\w+\s*:?\s*)?(.+?)\s+"
+    r"(?:par|selon|d['’]apr[èe]s|en\s+fonction\s+de(?:\s+la|\s+leur)?)\s+"
+    r"(population|superficie|pib|habitants?|taille|altitude|richesse)\s*(croissante?|d[ée]croissante?)?\s*\??\s*$",
+    re.I)
+# forme ALTERNATIVE : « range ces pays par superficie : France, Espagne, Portugal » (liste APRÈS l'attribut).
+_CLASST_LISTE2_RE = re.compile(
+    r"^\s*(?:classe|classer|range|ranger|ordonne|ordonner|trie|trier)\s+(?:ces\s+\w+\s+|les\s+\w+\s+)?"
+    r"(?:par|selon|d['’]apr[èe]s|en\s+fonction\s+de(?:\s+la|\s+leur)?)\s+"
+    r"(population|superficie|pib|habitants?|taille|altitude|richesse)\s*(croissante?|d[ée]croissante?)?\s*:\s*"
+    r"(.+?)\s*\??\s*$", re.I)
+_CLASST_MOT_ADJ = {"population": "peuple", "habitant": "peuple", "habitants": "peuple", "superficie": "vaste",
+                   "taille": "vaste", "pib": "riche", "richesse": "riche", "altitude": "haut"}
+
+
+def _cap_classement_liste(texte: str):
+    """TRI COMPLET d'une LISTE EXPLICITE sur un attribut : « classe la France, l'Allemagne et l'Italie par
+    population » -> l'ordre décroissant (croissant si demandé) avec les valeurs. FAUX=0 : valeurs vérifiées ;
+    entités inconnues exclues et signalées ; None si < 2 résolvent."""
+    m = _CLASST_LISTE_RE.match(texte.strip())
+    if m:
+        liste, attr_mot, sens_mot = m.group(1), _normalise(m.group(2)), _normalise(m.group(3) or "")
+    else:
+        m = _CLASST_LISTE2_RE.match(texte.strip())     # forme « par ATTR : liste »
+        if not m:
+            return None
+        attr_mot, sens_mot, liste = _normalise(m.group(1)), _normalise(m.group(2) or ""), m.group(3)
+    adj = _CLASST_MOT_ADJ.get(attr_mot) or _CLASST_MOT_ADJ.get(attr_mot.rstrip("s"))
+    if not adj:
+        return None
+    ents = [_strip_article(e.strip()) for e in re.split(r"\s*,\s*|\s+et\s+|\s+ou\s+", liste) if e.strip()]
+    ents = [e for e in ents if e and len(e) >= 2]
+    if len(ents) < 2:
+        return None
+    best_rel, best = None, []
+    for rel in _ADJ_ATTR.get(adj, ()):
+        if not _charge_direct(rel):
+            continue
+        ok = [(e, v, a) for e in ents for (v, a) in [_valeur_attr(e, rel)] if v is not None]
+        if len(ok) > len(best):
+            best_rel, best = rel, ok
+    if not best_rel or len(best) < 2:
+        return None
+    croissant = sens_mot.startswith("croiss")
+    best.sort(key=lambda t: t[1], reverse=not croissant)
+    unite = _unite_attr(best_rel)
+    fmt = lambda v: (format(int(v), ",d").replace(",", " ") if float(v).is_integer() else "%g" % v)
+    lignes = ["%d. %s (%s %s)" % (i + 1, a, fmt(v), unite) for i, (e, v, a) in enumerate(best)]
+    manquants = len(ents) - len(best)
+    note = "" if manquants == 0 else "\n(%d sans donnée, exclu%s)" % (manquants, "s" if manquants > 1 else "")
+    ordre = "croissant" if croissant else "décroissant"
+    return "Classement par %s (%s) :\n%s%s" % (attr_mot, ordre, "\n".join(lignes), note)
+
+
 def _cap_classement(texte: str):
     """CLASSEMENT / TOP-N : « les 5 pays les plus peuplés d'Afrique » -> tri EXACT + valeurs. La machine ORDONNE des
     faits réels ; un LLM devine l'ordre. FAUX=0 : sur un ensemble énuméré, l'ordre est certain."""
@@ -3549,7 +3606,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
