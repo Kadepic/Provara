@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Auto-update ÉPROUVÉ EN RÉEL (build 38 → 39) : 4 bugs du flux trouvés et corrigés
+
+- **Test grandeur nature** : mise à jour appliquée sur le .exe réel — téléchargement du build 39, bascule du
+  binaire par l'updater, redémarrage, `version_locale: "39 84180a0"` vérifié à l'arrivée. Le cycle complet
+  commit → release → détection → swap → relance fonctionne.
+- **4 bugs RÉELS corrigés au passage** (le test de détection seul ne les voyait pas) :
+  1. l'app promettait « Provara va se fermer » mais **ne se fermait jamais** → l'updater attendait notre PID
+     pour toujours. Fix : fermeture réelle programmée (1,5 s après la réponse HTTP, `os._exit`) ;
+  2. `timeout /t` dans le .bat **exige une console** — lancé sans fenêtre, il échoue → remplacé par
+     `ping -n` (marche partout) ;
+  3. `CREATE_NO_WINDOW | DETACHED_PROCESS` sont **mutuellement exclusifs** (comportement indéfini, l'updater
+     mourait avec l'app) → `CREATE_NO_WINDOW | CREATE_BREAKAWAY_FROM_JOB` (survit aussi à un job Windows qui
+     tue ses enfants ; repli sans breakaway si le job l'interdit) ;
+  4. `/api/maj/appliquer` **contournait le toggle Internet** (appel réseau silencieux même web OFF) → refus
+     actionnable (« réactive Internet »), aucun octet sans consentement.
+- Gate `valide_maj` **19/19** (6 vérifications ajoutées sur l'updater et les gardes serveur), suite 18/18.
+
 ## 2026-07-06 — Antonymes câblés + « le bouquin X » + batterie serveur : 44 % → 78 %, zéro FAUX
 
 - **`_cap_contraire`** : « quel est le contraire de grand ? » → *petit, microscopique, bref…* — la fonction
