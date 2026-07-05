@@ -1374,6 +1374,63 @@ _DIMENSION_RE = re.compile(
     r"(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])(.+?)\s*\??\s*$", re.I)
 
 
+# SYNONYMES DE TÊTES DE RELATION (compréhension ouverte) : un mot de sens PROCHE d'une relation connue -> la
+# relation EXACTE à interroger (pas la famille : « pib » est ambigu entre pib_pays et pib_par_habitant). Carte
+# CURÉE et fermée (FAUX=0 : le fait vérifié tranche ; un mauvais routage ne trouve simplement rien). Chaque clé
+# NORMALISÉE -> tuple de relations essayées dans l'ordre. Le label d'affichage = le mot de l'utilisateur.
+_SYN_TETE = {
+    "richesse": ("pib_pays",), "pib": ("pib_pays",),
+    "population": ("population_pays", "population_ville"), "superficie": ("superficie", "superficie_pays"),
+    "taille": ("superficie",), "etendue": ("superficie",), "aire": ("superficie",), "surface": ("superficie",),
+}
+# synonymes MULTI-MOTS repliés en un seul token AVANT le parse (« nombre d'habitants » contient un « d' » qui
+# casserait le découpage « tête de entité »). Appliqué sur le texte normalisé.
+_SYN_TETE_PHRASES = (
+    (re.compile(r"\bnombre\s+d['’]?\s*habitants?\b", re.I), "population"),
+    (re.compile(r"\bnombre\s+d['’]?\s*ames\b", re.I), "population"),
+    (re.compile(r"\bproduit\s+interieur\s+brut\b", re.I), "pib"),
+)
+# NB : le texte est NORMALISÉ avant ce match (apostrophes -> espaces), donc l'article élidé « l' » devient « l »
+# suivi d'un espace : le motif d'article accepte « l['’]\s* » ET « l\s+ ».
+_SYN_TETE_RE = re.compile(
+    r"^\s*(?:quel(?:le)?\s+(?:est|sont)\s+)?(?:la\s+|le\s+|les\s+|l['’]\s*|l\s+)?"
+    r"([\wà-ÿ'’ ]+?)\s+(?:de\s+la|de\s+l['’ ]|du|des|de|d['’ ])\s*(?:la\s+|le\s+|les\s+|l['’]\s*|l\s+)?(.+?)\s*\??\s*$",
+    re.I)
+
+
+def _cap_synonyme_tete(texte: str):
+    """SYNONYME DE TÊTE : « la richesse du Japon » -> pib_pays, « la taille de la France » -> superficie, « le
+    nombre d'habitants du Japon » -> population. Route un mot de sens proche vers la relation EXACTE et sert la
+    valeur vérifiée + unité. FAUX=0 : si l'entité n'est pas dans la relation (« taille de Napoléon » -> pas dans
+    superficie), rien n'est renvoyé (None) et le pipeline continue. Léger (lookup streaming, sans moteur lourd)."""
+    prepare = _normalise(texte)
+    for rx, canon in _SYN_TETE_PHRASES:              # replie les synonymes multi-mots -> un token unique
+        prepare = rx.sub(canon, prepare)
+    m = _SYN_TETE_RE.match(prepare.strip())
+    if not m:
+        return None
+    mot, ent = m.group(1).strip(), _strip_article(m.group(2).strip(" ?.!\"'«»"))
+    rels = _SYN_TETE.get(mot)
+    if not rels or not ent or len(ent) < 2 or len(ent.split()) > 5:
+        return None
+    for rel in rels:
+        cell = _lookup_cell(rel, ent)
+        if cell and cell[1] not in (None, ""):
+            n = _nombre(cell[1])
+            unite = _unite_attr(rel)
+            try:                                     # français soigné : « du Japon », « de la France »
+                import realisation_fr as _RF
+                de_ent = _RF.de_syntagme(cell[0])
+            except Exception:
+                de_ent = "de %s" % cell[0]
+            tete_aff = m.group(1).strip().capitalize()
+            if n is not None:
+                aff = format(int(round(n)), ",d").replace(",", " ") if float(n).is_integer() else "%g" % n
+                return "%s %s : %s%s." % (tete_aff, de_ent, aff, (" " + unite) if unite else "")
+            return "%s %s : %s." % (tete_aff, de_ent, cell[1])
+    return None
+
+
 def _cap_dimension(texte: str):
     """DIMENSION d'une entité : « quelle est la hauteur de la tour Eiffel ? » -> valeur + unité. Cherche dans la
     FAMILLE de relations de la dimension (hauteur_tour, hauteur_barrage…) via _lookup_direct (streaming). FAUX=0 :
@@ -4468,6 +4525,35 @@ _SVO_BRUIT = frozenset(
     "stp svp merci s'il te vous plait connais sais peux pourrais eh bah ben ah oh".split())
 
 
+def _est_entite_probable(mot: str) -> bool:
+    """`mot` (normalisé) désigne-t-il probablement une ENTITÉ (nom propre / fait ancré) ? Deux signaux OFFLINE :
+    le POS le tague « nom propre » (france, japon) OU une relation-sonde l'ancre (fait vérifié). FAUX=0 : sert à
+    empêcher un alias appris d'échanger un sujet."""
+    try:
+        import est_un as _E
+        if _E._pos().get(mot) == "nom propre":
+            return True
+    except Exception:
+        pass
+    try:
+        return bool(_entite_ancree(mot))
+    except Exception:
+        return False
+
+
+def _alias_change_entite(orig: str, alias: str) -> bool:
+    """True si l'alias appris ÉCHANGE le SUJET en INJECTANT une entité (nom propre / fait ancré) absente de la
+    question d'origine (« population du WAKANDA » -> « … du FRANCE » injecte « france » -> réponse sur la France,
+    FAUX). On ne regarde QUE les mots INTRODUITS : le danger est de répondre sur une entité NON demandée ; un mot
+    simplement RETIRÉ (« koi » -> « quoi ») ne fabrique pas de faux (le lookup d'un sujet manquant ne trouve rien).
+    FAUX=0 : un patron corrige une FORMULATION, jamais de quoi on parle. Mots de contenu ≥3."""
+    mots_orig = set(re.findall(r"[\wà-ÿ]{3,}", _normalise(orig)))
+    for mot in set(re.findall(r"[\wà-ÿ]{3,}", _normalise(alias))) - mots_orig:
+        if mot not in _NEST_SCAFFOLD and mot not in _GENERIQUES and _est_entite_probable(mot):
+            return True
+    return False
+
+
 def _parse_svo_libre(texte: str, conv_id: str | None = None):
     """DERNIER RECOURS de compréhension OUVERTE : aucune règle n'a matché, mais la question contient une TÊTE DE
     RELATION connue (_attr_heads) et une ENTITÉ ancrable, dans un ordre LIBRE (« du Japon, dis-moi la capitale »,
@@ -5116,7 +5202,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
@@ -5346,7 +5432,11 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             _al = apprentissage_patrons.alias(t)
         except Exception:
             _al = None
-        if _al and _normalise(_al) != _normalise(t):
+        #   GARDE FAUX=0 : un alias appris ne doit JAMAIS échanger une ENTITÉ ANCRÉE contre une autre (« wakanda »
+        #   -> « france » substituerait un fait faux). Si un mot de la question ABSENT de l'alias est lui-même une
+        #   entité ancrée (fait vérifié), l'alias a réécrit le sujet -> on le refuse (le patron sert à corriger une
+        #   FORMULATION, pas à changer de quoi on parle).
+        if _al and _normalise(_al) != _normalise(t) and not _alias_change_entite(t, _al):
             _r = _repond_noyau(memoire, conv_id, _al, pleine=pleine)
             if _r and not est_fallback(_r):
                 return _r

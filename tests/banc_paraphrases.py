@@ -126,6 +126,17 @@ CAS += [
     ("dis, la capitale du Japon ?", "tokyo"),
 ]
 
+# ————— 6e VAGUE : SYNONYMES DE TÊTES DE RELATION (mot proche ≠ tête canonique) —————
+CAS += [
+    ("quelle est la richesse du Japon ?", "4"),          # richesse -> pib_pays (4435 G$)
+    ("quel est le PIB du Japon ?", "4"),
+    ("le nombre d'habitants du Japon ?", "123"),         # nombre d'habitants -> population
+    ("quelle est la taille de la France ?", "551"),      # taille (pays) -> superficie
+    ("quelle est l'étendue de la France ?", "551"),
+    ("la superficie de la France ?", "551"),             # canonique (non-régression)
+    ("la population du Japon ?", "123"),                 # canonique (non-régression)
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [

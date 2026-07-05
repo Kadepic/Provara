@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Synonymes de têtes de relation + garde FAUX=0 sur les alias appris (trou réel comblé)
+
+- **Synonymes de têtes** (`_cap_synonyme_tete`) : un mot de sens proche d'une relation connue route vers la
+  relation EXACTE et sert la valeur vérifiée + unité — « la richesse / le PIB du Japon » → pib_pays (4 435 G$),
+  « la taille / l'étendue / la superficie de la France » → superficie (551 695 km²), « le nombre d'habitants du
+  Japon » → population (123 M). Carte curée fermée. FAUX=0 : si l'entité n'est pas dans la relation (« taille de
+  Napoléon » n'est pas dans superficie), rien n'est renvoyé. Français soigné (« du Japon » via realisation_fr).
+- **TROU FAUX=0 réel comblé** (exposé par le cap ci-dessus) : un patron APPRIS pouvait ÉCHANGER une entité —
+  une substitution `wakanda → france` répondait « Population de la France » à une question sur le Wakanda.
+  `_alias_change_entite` refuse tout alias qui INJECTE une entité (nom propre POS ou fait ancré) absente de la
+  question d'origine : un patron corrige une FORMULATION, jamais de quoi on parle. On ne regarde que les mots
+  INTRODUITS (un mot retiré comme « koi »→« quoi » ne fabrique pas de faux — koï s'ancre pourtant comme poisson).
+- **Bug préexistant corrigé** : `_localisation` (coordonnées) sans garde concept-commun → déplacé au commit
+  précédent ; ici confirmé par non-régression.
+- 6e vague du banc paraphrases (synonymes de têtes) : **98/98 (100 %)**. Raisonnement **118/118**, suite 16/16
+  (77/77), challenge 16/16.
+
 ## 2026-07-05 — LE GRAND LEVIER : parse SVO libre (ordre des mots quelconque) + garde concept
 
 - **Parse SVO libre** (`_parse_svo_libre`, ultime recours vérifié) : quand aucune règle ne matche mais que la

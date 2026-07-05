@@ -173,6 +173,15 @@ CAS = [
     ("svo-concept-refuse", lambda q: (R._parse_svo_libre(q) or ("",))[0], "le sens, pour le bonheur ?", ""),  # concept -> None
     # garde FAUX=0 : « où se trouve le bonheur » (concept) ne renvoie PAS les coords d'un hameau homonyme
     ("localisation-concept-coords", R._localisation, "où se trouve le bonheur ?", ""),
+    # synonymes de têtes de relation : mot proche -> relation exacte, valeur vérifiée
+    ("synonyme-tete-richesse", R._cap_synonyme_tete, "quelle est la richesse du Japon ?", "$"),
+    ("synonyme-tete-taille", R._cap_synonyme_tete, "quelle est la taille de la France ?", "km²"),
+    ("synonyme-tete-faux", R._cap_synonyme_tete, "quelle est la taille de Napoléon Ier ?", ""),  # pas dans superficie
+    # garde FAUX=0 : un alias appris ne peut PAS échanger une entité (« wakanda »->« france » = faux)
+    ("alias-change-entite", lambda q: "BLOQUE" if R._alias_change_entite(
+        "population du wakanda", "population du france") else "PASSE", "x", "BLOQUE"),
+    ("alias-reformulation-ok", lambda q: "PASSE" if not R._alias_change_entite(
+        "cest koi la capitale du japon", "quelle est la capitale du japon") else "BLOQUE", "x", "PASSE"),
 ]
 
 
