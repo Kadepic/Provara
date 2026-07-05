@@ -3556,6 +3556,19 @@ _LOC_OU_RE = re.compile(
     r"(?:la\s+|le\s+|les\s+|l['’]|du\s+|des\s+|de\s+)?(.+?)\s*\??\s*$", re.I)
 
 
+def _est_concept_commun(ent: str) -> bool:
+    """L'entité est-elle un NOM COMMUN abstrait (le bonheur, l'amour…) plutôt qu'un lieu ? Un mot UNIQUE tagué « nom »
+    (commun) dans le lexique POS — PAS « nom propre » — est probablement un concept, pas un toponyme. Évite « où se
+    trouve le bonheur ? » -> un hameau nommé « Bonheur » (faux-ami). FAUX=0 : on s'abstient plutôt que de mal viser."""
+    if len(ent.split()) != 1:
+        return False
+    try:
+        import est_un as _E
+        return _E._pos().get(_normalise(ent)) == "nom"
+    except Exception:
+        return False
+
+
 def _cap_localisation(texte: str):
     """LOCALISATION d'un lieu (montagne/désert/île/lac/rivière/ville) : « dans quel pays est X », « sur quel
     continent est X », « où se trouve X » -> pays ou continent stocké. FAUX=0 : valeur réelle vérifiée ou None
@@ -3576,6 +3589,8 @@ def _cap_localisation(texte: str):
         return None
     ent = _strip_article(ent.strip())
     if not ent or len(ent) < 3 or len(ent.split()) > 6:
+        return None
+    if _est_concept_commun(ent):                         # « où se trouve le bonheur » : nom COMMUN -> pas un lieu
         return None
     cpays = _charge_direct("continent").get(_normalise(ent))
     if cpays:                                            # X est un PAYS -> « où se trouve la France » relève du continent

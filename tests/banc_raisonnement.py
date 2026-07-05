@@ -98,6 +98,7 @@ CAS = [
     ("fait-personne-fem", R._cap_fait_personne, "où est morte Marie Curie ?", "est morte"),
     ("localisation-pays", R._cap_localisation, "dans quel pays est 1117 Mountain ?", "États-Unis"),
     ("localisation-continent", R._cap_localisation, "sur quel continent est Abbott Peak ?", "Antarctique"),
+    ("faux-localisation-concept", R._cap_localisation, "où se trouve le bonheur ?", ""),  # nom commun -> pas un lieu
     # gardes FAUX=0
     ("faux-filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 5 et 10 milliards d'habitants ?", "Aucun"),
     ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", ""),
