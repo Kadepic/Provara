@@ -127,3 +127,5 @@
 {"entite": "rouge", "valeur": "couleur"}
 {"entite": "vert", "valeur": "couleur"}
 {"entite": "jaune", "valeur": "couleur"}
+{"entite": "félin", "valeur": "mammifère"}
+{"entite": "chat", "valeur": "félin"}

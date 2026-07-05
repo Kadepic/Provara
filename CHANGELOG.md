@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Chasse au FAUX : 3 défauts de correction trouvés et corrigés
+
+- **Ontologie qui détournait une question relationnelle** : « Berlin est-elle la capitale de l'Allemagne ? »
+  (question VRAIE) répondait *« Le Berlin est un paquet — je ne le rattache pas à capitale »* (genre bruité de
+  definition_nom : « berlin = paquet de fil »). Garde ajouté : si l'attribut est suivi de « de/du/des Z », c'est
+  un FAIT relationnel, pas un is-a → `_cap_ontologie` s'abstient et laisse `_oui_non` répondre *« Oui »*.
+- **« même monnaie » aveugle à la zone euro** : « la France et l'Allemagne ont-elles la même monnaie ? »
+  abstenait car `_cap_meme_attribut` lisait `monnaie.jsonl` en direct, où les grands pays de la zone euro sont
+  absents (extraction Wikidata : monnaie partagée). Corrigé par un lookup ROBUSTE (famille de relations via le
+  moteur, qui connaît « France → euro ») → *« Oui — même monnaie : euro »*. (Piste écartée : injecter les pays
+  dans monnaie.jsonl déclenchait un conflit d'ingestion « euro » vs « Euro » — le code est le bon niveau de fix.)
+- **is-a qui niait une vérité** : « le chat est-il un félin ? » répondait *« je ne le rattache pas à félin »*
+  (le genre de la définition saute « félin »). Seed complété : `félin → mammifère` + `chat → félin` → *« Oui —
+  chat → félin → mammifère »* (le chaînage vers mammifère est préservé).
+- Aucun FAUX trouvé sur les caps de la session (SVO libre, synonyme-tête, constructions, transitif conflits) :
+  entités sans donnée s'abstiennent, attributions fausses réfutées. Banc raisonnement **121/121** (3 cas
+  ajoutés), paraphrases 98/98, suite 17/17, challenge 16/16, synonymes 8/8.
+
 ## 2026-07-05 — Consolidation : audit de câblage atomique + trous is-a comblés + docs/CI à jour
 
 - **Audit de câblage ATOMIQUE (exigence Yohan)** : vérifié que TOUS les atomes sont câblés — **0 orphelin** sur

@@ -1553,12 +1553,24 @@ def _cap_meme_attribut(texte: str):
     rel = _MEME_MOT_REL.get(mot) or _MEME_MOT_REL.get(mot.rstrip("s"))
     if not rel:
         return None
-    cx = _lookup_cell(rel, x)
-    cy = _lookup_cell(rel, y)
-    if not cx or not cy or cx[1] in (None, "") or cy[1] in (None, ""):
+    # Valeur VÉRIFIÉE par le chemin ROBUSTE (famille de relations via le moteur), PAS un lookup direct sur un
+    # seul .jsonl : la relation exacte peut être incomplète (ex. `monnaie.jsonl` sans les pays de la zone euro,
+    # que le moteur connaît par ailleurs). Sinon « France et Allemagne, même monnaie ? » abstenait à tort.
+    def _valeur(ent):
+        cell = _lookup_cell(rel, ent)
+        if cell and cell[1] not in (None, ""):
+            return cell[0], str(cell[1])
+        ia, _ = _charge_ia()
+        if ia:
+            vf = _val_par_famille(ia, mot, ent) or _lookup_direct(mot, ent)
+            if vf not in (None, ""):
+                return ent, str(vf)
         return None
-    vx, vy = str(cx[1]), str(cy[1])
-    nx, ny = cx[0], cy[0]
+    rx, ry = _valeur(x), _valeur(y)
+    if not rx or not ry:
+        return None
+    nx, vx = rx
+    ny, vy = ry
     fem = mot in ("monnaie", "capitale", "langue", "region")     # accord « la même » / « le même »
     meme = "la même" if fem else "le même"
     if _normalise(vx) == _normalise(vy):
@@ -3605,6 +3617,11 @@ def _cap_ontologie(texte: str):
         # le lookup is-a trouve « argent » (sinon « l argent » ≠ « argent » et « l'argent est-il un métal » ratait).
         x, y = _strip_article(m.group(1).strip()), _strip_article(m.group(2).strip())
         if _normalise(x) == _normalise(y):
+            return None
+        # GARDE RELATIONNEL : « Berlin est-elle la capitale DE l'Allemagne ? » n'est PAS un is-a (« Berlin est-il
+        # un <capitale> »), c'est un FAIT relationnel -> on laisse _oui_non/_connaissance trancher (sinon le genre
+        # bruité de definition_nom « berlin = paquet » produisait une réponse absurde à une question VRAIE).
+        if re.search(r"\b" + re.escape(y) + r"\s+(?:de\s+la|de\s+l['’]|du|des|de|d['’])\b", texte, re.I):
             return None
         if _E.est_un(x, y):
             chaine = _E.chaine_isa(x)

@@ -34,7 +34,7 @@ def _conjonction_txt(q):
 # (capacité, message, attendu). attendu="" => la réponse doit être VIDE/None (garde FAUX=0).
 CAS = [
     ("is-a", R._cap_ontologie, "un chat est-il un mammifère ?", "Oui"),
-    ("is-a-faux", R._cap_ontologie, "un chat est-il un poisson ?", "mammifère"),  # jamais « Oui »
+    ("is-a-faux", R._cap_ontologie, "un chat est-il un poisson ?", "félin"),  # jamais « Oui » ; genre réel = félin
     ("is-a-faux-contexte", R._cap_ontologie, "l'apartheid est-il un continent ?", "régime"),  # réfute : régime, PAS continent
     ("is-a-seed", R._cap_ontologie, "une rose est-elle une fleur ?", "Oui"),          # seed curé (definition_nom vide)
     ("is-a-seed-fruit", R._cap_ontologie, "une pomme est-elle un fruit ?", "Oui"),
@@ -182,6 +182,11 @@ CAS = [
         "population du wakanda", "population du france") else "PASSE", "x", "BLOQUE"),
     ("alias-reformulation-ok", lambda q: "PASSE" if not R._alias_change_entite(
         "cest koi la capitale du japon", "quelle est la capitale du japon") else "BLOQUE", "x", "PASSE"),
+    # FAUX=0 : « Berlin est-elle la capitale de l'Allemagne » est RELATIONNEL, pas un is-a — l'ontologie ne doit
+    # PAS répondre le genre bruité (« Berlin est un paquet ») à cette question VRAIE.
+    ("onto-non-hijack-relation", R._cap_ontologie, "Berlin est-elle la capitale de l'Allemagne ?", ""),
+    ("meme-monnaie-euro", R._cap_meme_attribut, "la France et l'Allemagne ont-elles la même monnaie ?", "Oui"),
+    ("meme-monnaie-diff", R._cap_meme_attribut, "la France et le Japon ont-ils la même monnaie ?", "Non"),
 ]
 
 
