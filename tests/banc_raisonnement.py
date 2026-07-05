@@ -35,9 +35,11 @@ def _conjonction_txt(q):
 CAS = [
     ("is-a", R._cap_ontologie, "un chat est-il un mammifère ?", "Oui"),
     ("is-a-faux", R._cap_ontologie, "un chat est-il un poisson ?", "mammifère"),  # jamais « Oui »
-    ("is-a-faux-contexte", R._cap_ontologie, "l'apartheid est-il un continent ?", ""),  # bruit de genre géo nettoyé
+    ("is-a-faux-contexte", R._cap_ontologie, "l'apartheid est-il un continent ?", "régime"),  # réfute : régime, PAS continent
     ("is-a-seed", R._cap_ontologie, "une rose est-elle une fleur ?", "Oui"),          # seed curé (definition_nom vide)
     ("is-a-seed-fruit", R._cap_ontologie, "une pomme est-elle un fruit ?", "Oui"),
+    ("is-a-metal", R._cap_ontologie, "le fer est-il un métal ?", "Oui"),
+    ("point-commun-metal", R._cap_point_commun_nway, "qu'ont en commun l'or, l'argent et le fer ?", "métal"),
     ("point-commun", R._cap_ontologie, "qu'ont en commun le chat et le requin ?", "animal"),
     ("point-commun-nway", R._cap_point_commun_nway, "qu'ont en commun le chat, le requin et le lion ?", "animal"),
     ("cause", R._cap_cause, "quelle est la cause du paludisme ?", "du paludisme"),

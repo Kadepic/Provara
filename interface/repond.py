@@ -2924,7 +2924,9 @@ def _cap_ontologie(texte: str):
         return None
     m = _ONTO_ESTUN_RE.search(texte) or _ONTO_ESTUN2_RE.search(texte)
     if m:
-        x, y = m.group(1).strip(), m.group(2).strip()
+        # _strip_article : l'article ÉLIDÉ (« l'argent ») est collé au mot par le regex -> on le retire pour que
+        # le lookup is-a trouve « argent » (sinon « l argent » ≠ « argent » et « l'argent est-il un métal » ratait).
+        x, y = _strip_article(m.group(1).strip()), _strip_article(m.group(2).strip())
         if _normalise(x) == _normalise(y):
             return None
         if _E.est_un(x, y):
