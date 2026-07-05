@@ -1236,9 +1236,10 @@ def _cap_comptage(texte: str):
                 # FAUX=0 : « compté exactement » n'est vrai que pour un ensemble COMPLET (pays). Pour les types à
                 # membership troué (montagnes/villes), on cadre en RECALL (« je connais N … ») — on ne prétend PAS
                 # au total exhaustif (il y a bien plus de montagnes en Europe que celles que la base référence).
+                typ_pl = typ if typ.endswith(("s", "x")) else typ + "s"      # accord au pluriel (201 montagnes)
                 if sing in _SUPERLAT_TYPES_SÛRS:
-                    return "%d %s en %s (compté exactement dans mes données)." % (len(hit[1]), typ, zone)
-                return "Je connais %d %s en %s dans mes données (liste non exhaustive)." % (len(hit[1]), typ, zone)
+                    return "%d %s en %s (compté exactement dans mes données)." % (len(hit[1]), typ_pl, zone)
+                return "Je connais %d %s en %s dans mes données (liste non exhaustive)." % (len(hit[1]), typ_pl, zone)
         return None
     try:                                         # sans zone : nombre d'hyponymes réels (« combien de félins »)
         import est_un as _E
