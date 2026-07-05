@@ -665,14 +665,20 @@ def _relations_date() -> list:
     """Relations de DATES de la base (annee_*/date_*), les plus courantes d'abord. Pour situer un événement dans le temps."""
     global _DATE_RELS_CACHE
     if _DATE_RELS_CACHE is None:
-        prio = ["annee_debut_bataille", "annee_debut_guerre", "annee_debut_siege", "annee_fondation_pays",
-                "annee_signature_traite", "annee_debut_regne", "annee_debut_revolution", "annee_naissance",
-                "annee_debut_operation_militaire", "annee_fondation_organisation_internationale"]
+        prio = ["annee_debut_bataille", "annee_debut_guerre", "annee_debut_siege", "date_evenement",
+                "annee_fondation_pays", "annee_signature_traite", "annee_debut_regne", "annee_debut_revolution",
+                "annee_naissance", "annee_debut_operation_militaire", "annee_fondation_organisation_internationale"]
         try:
             rels = [f[:-6] for f in os.listdir(_DOSSIER_LECTEUR)
                     if f.endswith(".jsonl") and (f.startswith("annee_") or f.startswith("date_") or f.startswith("an_"))]
         except OSError:
             rels = []
+        # PERF : les dates de PERSONNES (annee_naissance_personne 151 Mo, annee_deces_personne 79 Mo) sont servies
+        # par les caps personnes (_cap_age, _cap_fait_personne) et n'ont RIEN à faire dans le temporel d'ÉVÉNEMENTS.
+        # Sans cette exclusion, un événement absent des petites relations (« bataille de Waterloo ») faisait scanner
+        # ces 2 gros fichiers -> ~17 s. On les retire du scan générique de dates.
+        _EXCLUS = {"annee_naissance_personne", "annee_deces_personne"}
+        rels = [r for r in rels if r not in _EXCLUS]
         _DATE_RELS_CACHE = [r for r in prio if r in rels] + [r for r in rels if r not in prio]
     return _DATE_RELS_CACHE
 
