@@ -1257,7 +1257,7 @@ def _cap_comparaison(texte: str):
 
 
 _FILTRE_RE = re.compile(
-    r"quels?\s+([a-zà-ÿ]+)\s+(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*([\wà-ÿ'’\- ]+?)\s+"
+    r"(?:quels?|combien\s+de)\s+([a-zà-ÿ]+)\s+(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*([\wà-ÿ'’\- ]+?)\s+"
     r"(?:ont|a|avec|comptent|possedent|abritent)\b[^0-9]*?"
     r"(plus|moins|superieur\w*|inferieur\w*|au\s+moins|au\s+plus)\s+(?:de\s+|a\s+)?"
     r"(\d[\d\s.,]*)\s*(milliard\w*|million\w*|millier\w*|mille)?", re.I)
@@ -1265,7 +1265,7 @@ _FILTRE_RE = re.compile(
 # La magnitude peut être partagée (« entre 10 et 50 millions » -> 10e6..50e6) ou propre à chaque borne
 # (« entre 500 000 et 2 millions »). Même familles de verbes que le filtre à seuil.
 _FILTRE_ENTRE_RE = re.compile(
-    r"quels?\s+([a-zà-ÿ]+)\s+(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*([\wà-ÿ'’\- ]+?)\s+"
+    r"(?:quels?|combien\s+de)\s+([a-zà-ÿ]+)\s+(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*([\wà-ÿ'’\- ]+?)\s+"
     r"(?:ont|a|avec|comptent|possedent|abritent)\b[^0-9]*?"
     r"entre\s+(\d[\d\s.,]*)\s*(milliard\w*|million\w*|millier\w*|mille)?\s*et\s+"
     r"(\d[\d\s.,]*)\s*(milliard\w*|million\w*|millier\w*|mille)?", re.I)
@@ -1343,6 +1343,11 @@ def _cap_filtre(texte: str):
     sel = [(e, v) for e, v in paires if garde(v)]        # paires déjà triées desc
     pluriel = typ if typ.endswith(("s", "x")) else typ + "s"
     zone_aff = zone.strip()[:1].upper() + zone.strip()[1:]
+    # COMPTAGE CONDITIONNEL : « combien de pays d'Afrique ont plus de 50 millions d'habitants ? » -> le NOMBRE
+    # (pas la liste). Exact car l'ensemble est énuméré. FAUX=0 : compte des entités réelles qui passent le seuil.
+    if re.match(r"^\s*combien\b", qn):
+        return "%d %s %s ont %s %s %s (compté exactement)." % (len(sel), pluriel, _RF_de(zone_aff), sens,
+                                                               seuil_txt, unite)
     if not sel:
         return "Aucun %s %s n'a %s %s %s (d'après mes données)." % (typ, _RF_de(zone_aff), sens, seuil_txt, unite)
     cap = 20

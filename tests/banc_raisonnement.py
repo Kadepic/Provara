@@ -51,6 +51,7 @@ CAS = [
     ("classement-liste-croissant", R._cap_classement_liste, "trie la France, l'Espagne et l'Italie par population croissante", "1. Espagne"),
     ("filtre", R._cap_filtre, "quels pays d'Afrique ont plus de 100 millions d'habitants ?", "Nigéria"),
     ("filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 100 et 300 millions d'habitants ?", "Nigéria"),
+    ("filtre-combien", R._cap_filtre, "combien de pays d'Afrique ont plus de 50 millions d'habitants ?", "compté exactement"),
     ("filtre-entre-magnitudes", R._cap_filtre,
      "quels pays d'Europe ont entre 500 000 et 2 millions d'habitants ?", "entre 500 000 et 2 000 000"),
     ("filtre-entre-decimal", R._cap_filtre, "quels pays d'Asie ont entre 1 et 1,5 milliard d'habitants ?", "Inde"),
