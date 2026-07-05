@@ -1,5 +1,3 @@
-import os, sys; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-import verax_boot  # noqa: F401  -- chemins Provara (src/, ...)
 """
 PREUVE que la couture multi-langage tient : le MÊME juge juge du JavaScript.
 
@@ -10,8 +8,10 @@ en Python. C'est la démonstration que le langage ne vit QUE dans l'executeur.
 
 Pré-requis : node installé. (Sinon le test s'auto-saute.)
 """
-
 from __future__ import annotations
+
+import os, sys; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import verax_boot  # noqa: F401  -- chemins Provara (src/, ...)
 
 import shutil
 

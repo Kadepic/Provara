@@ -1,5 +1,3 @@
-import os, sys; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-import verax_boot  # noqa: F401  -- chemins Provara (src/, ...)
 """
 DÉMO ANGLAIS — preuve que le RAISONNEMENT est AGNOSTIQUE à la langue (2026-06-18).
 
@@ -8,6 +6,9 @@ on change SEULEMENT la source de données (English Wiktionary via kaikki) et la 
 L'IA répond « is a cat an animal? -> yes » avec exactement le même moteur. Rien de français n'est touché.
 """
 from __future__ import annotations
+
+import os, sys; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import verax_boot  # noqa: F401  -- chemins Provara (src/, ...)
 
 import sys
 import urllib.parse

@@ -1,5 +1,3 @@
-import os, sys; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
-import verax_boot  # noqa: F401  -- chemins Provara (src/, ...)
 """
 PREUVE de l'AGNOSTICITÉ AU DOMAINE — le même cœur sur 10 domaines sans lien.
 
@@ -18,8 +16,10 @@ Bonus (la vision de Yohan) : ce qu'on apprend dans un domaine se REssert dans un
 autre — le store est commun, donc une solution trouvée en arithmétique peut résoudre
 une tâche de géométrie. Apprendre une fois, réutiliser partout.
 """
-
 from __future__ import annotations
+
+import os, sys; sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
+import verax_boot  # noqa: F401  -- chemins Provara (src/, ...)
 
 import random
 
