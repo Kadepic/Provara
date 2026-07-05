@@ -2547,8 +2547,22 @@ _MSG_REFUS = "D'accord — reformule ta question et je réponds."
 _MSG_RAPPEL_PREFIXE = "D'après ce que tu m'as dit : "
 _MSG_DYM_PREFIXE = "Je ne suis pas sûr du mot « "
 _MSG_STRUCTURE_PREFIXE = "J'ai compris la structure de ta question"
+_MSG_STRUCTURE_COURT_PREFIXE = "Même chose pour « "
+_STRUCT_TOUR: dict = {}       # conv_id -> tour de la dernière abstention structurée : deux abstentions
+                              # CONSÉCUTIVES ne répètent pas la formule complète (« Même chose pour… »)
 _MSG_WEB_HINT = ("(L'accès à internet est coupé — réactive-le, bouton « 🌐 Internet » à gauche, "
                  "et je lance une recherche sourcée.)")
+_WEB_HINT_VU: dict = {}       # conv_id -> True : le conseil « réactive internet » n'est donné qu'UNE fois par
+                              # conversation (le répéter à chaque abstention sonnerait mécanique, pas humain)
+
+
+def _avec_web_hint(msg: str, conv_id: str | None) -> str:
+    """Ajoute le conseil « réactive internet » à `msg`, une seule fois par conversation."""
+    if conv_id and _WEB_HINT_VU.get(conv_id):
+        return msg
+    if conv_id:
+        _WEB_HINT_VU[conv_id] = True
+    return f"{msg} {_MSG_WEB_HINT}"
 
 
 def _varie(cle: str, graine: str, defaut: str) -> str:
@@ -2577,6 +2591,7 @@ def est_fallback(s: str) -> bool:
     return isinstance(s, str) and (
         s.startswith(_MSG_INCONNU_PREFIXE) or s == _MSG_WEB_COUPE
         or s.startswith(_MSG_STRUCTURE_PREFIXE)      # abstention ENRICHIE (structure reconnue, non ancrée)
+        or s.startswith(_MSG_STRUCTURE_COURT_PREFIXE)   # sa forme COURTE (abstentions consécutives)
         or s == _MSG_NOTE or s in _variantes("note", _MSG_NOTE))
 
 
@@ -2619,10 +2634,20 @@ def _entite_ancree(entite: str):
 _ENT_SUSPECTE_RE = re.compile(r"\b(est|sont|es|suis|etait|était|serait|seront|a-t|ont)\b|[?]", re.I)
 
 
-def _structure_non_ancree(texte: str) -> str | None:
+def _def_lisible(d: str) -> str:
+    """« (univers de Marvel) royaume africain fictif. » -> « royaume africain fictif (univers de Marvel) » :
+    le marqueur de registre Wiktionnaire passe en FIN, la définition se lit comme une phrase naturelle."""
+    d = d.strip().rstrip(".")
+    m = re.match(r"^\(([^)]{1,40})\)\s*(.+)$", d)
+    return f"{m.group(2)} ({m.group(1)})" if m else d
+
+
+def _structure_non_ancree(texte: str, conv_id: str | None = None) -> str | None:
     """Message « structure reconnue mais non ancrée » si `texte` parse en (relation CONNUE, entité) alors que
     toute la cascade factuelle a rendu HORS ; None sinon (le message générique reprend). Deux cas distingués :
-    entité ancrée nulle part (la sonde n'a rien trouvé) vs entité CONNUE mais sans fait pour CETTE relation."""
+    entité ancrée nulle part (la sonde n'a rien trouvé) vs entité CONNUE mais sans fait pour CETTE relation.
+    Avec `conv_id`, l'échange CONTINUE à travers l'abstention : le sujet et la question sont mémorisés pour les
+    enchaînements (« et sa population ? », « et du mordor ? ») — le sens est relationnel, une abstention aussi."""
     m = _REL_DE_ENT_RE.match(texte)
     if not m:
         return None
@@ -2631,16 +2656,29 @@ def _structure_non_ancree(texte: str) -> str | None:
     if (nt not in _attr_heads() or len(ne) < 2 or ne in _attr_heads() or ne in _NEST_SCAFFOLD
             or ne.isdigit() or len(ent.split()) > 6 or _ENT_SUSPECTE_RE.search(ent)):
         return None
+    tour = _PROFONDEUR.get(conv_id, 0) if conv_id else 0
+    consecutif = bool(conv_id) and _STRUCT_TOUR.get(conv_id) == tour - 1
+    prec = _DERNIER_SUJET.get(conv_id) if conv_id else None      # sujet du tour précédent (AVANT écrasement)
+    if conv_id:
+        _DERNIER_SUJET[conv_id] = ent
+        _DERNIER_QUESTION[conv_id] = texte
+        _STRUCT_TOUR[conv_id] = tour
     ancre = _entite_ancree(ent)
     if ancre:
         affiche, ctx = ancre
-        # la définition Wiktionnaire commence souvent par un marqueur « (univers de Marvel) » : tirets plutôt
-        # que parenthèses pour ne pas les doubler ; point final retiré (la phrase continue).
-        qui = (f"je connais « {affiche} » — {ctx.rstrip('.')} —" if ctx
+        if consecutif:                            # 2 abstentions d'affilée : on ne récite pas la formule complète
+            # la présentation de l'entité ne se répète que si elle a CHANGÉ depuis le tour précédent.
+            qui = f" ({_def_lisible(ctx)})" if (ctx and (not prec or _normalise(prec) != ne)) else ""
+            return (f"{_MSG_STRUCTURE_COURT_PREFIXE}{tete} de {affiche} »{qui} : là non plus, aucun fait "
+                    f"vérifié pour trancher, je m'abstiens.")
+        qui = (f"je connais « {affiche} » — {_def_lisible(ctx)} —" if ctx
                else f"je connais « {affiche} » (des faits vérifiés l'ancrent)")
         return (f"{_MSG_STRUCTURE_PREFIXE} — « {tete} de {affiche} » : {qui} et je connais la relation "
                 f"« {tete} », mais je n'ai pas de fait vérifié « {tete} de {affiche} » qui me permette de "
                 f"trancher. Plutôt que d'inventer, je m'abstiens.")
+    if consecutif:
+        return (f"{_MSG_STRUCTURE_COURT_PREFIXE}{tete} de {ent} » : là non plus, aucun fait vérifié pour "
+                f"trancher, je m'abstiens.")
     return (f"{_MSG_STRUCTURE_PREFIXE} — « {tete} de {ent} » : je connais la relation « {tete} », mais je n'ai "
             f"trouvé aucun fait vérifié qui ancre « {ent} » dans mes données. Plutôt que d'inventer, je m'abstiens.")
 
@@ -4570,9 +4608,15 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         #   (1c) MULTI-TOURS type A : « et sa monnaie ? » = MÊME entité, NOUVEL attribut (sujet du tour précédent).
         suj = _DERNIER_SUJET.get(conv_id)
         if suj and _est_continuation(t):
-            rep = _connaissance_verifiee(_reformule(t, suj), conv_id)
+            q1 = _reformule(t, suj)
+            rep = _connaissance_verifiee(q1, conv_id)
             if rep:
                 return f"{rep}  — à propos de « {suj} »"
+            #   l'échange continue À TRAVERS l'abstention : « capitale du wakanda ? » (abstention structurée)
+            #   puis « et sa population ? » -> abstention structurée sur « population de wakanda », pas le générique.
+            _snm = _structure_non_ancree(q1, conv_id)
+            if _snm:
+                return _snm
         #   (1c') MULTI-TOURS type B : « et la France ? » = MÊME attribut, NOUVELLE entité (substituée dans la
         #         question précédente). Tenté APRÈS le type A : si le tour nommait un attribut, A a déjà répondu.
         derniere_q = _DERNIER_QUESTION.get(conv_id)
@@ -4584,6 +4628,10 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                     rep = _connaissance_verifiee(q2, conv_id)
                     if rep:
                         return f"{rep}  — à propos de « {ent} »"
+                    #   même continuité à travers l'abstention pour le type B (« et du mordor ? »).
+                    _snm = _structure_non_ancree(q2, conv_id)
+                    if _snm:
+                        return _snm
 
     #   (1·web) RECHERCHE STRUCTURÉE (opt-in réseau IA_WEB=1) : le lecteur n'a rien -> source fiable Wikidata,
     #           réponse VÉRIFIÉE + ATTRIBUÉE. Avant la mémoire pour qu'une demande factuelle sans « ? » y accède.
@@ -4653,9 +4701,9 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             est_aveu = bool(pfx_aveu) and rep.startswith(pfx_aveu)
             est_hors = bool(pfx_hors) and rep.startswith(pfx_hors)
             if est_aveu or est_hors:
-                _snm = _structure_non_ancree(t)
+                _snm = _structure_non_ancree(t, conv_id)
                 if _snm:
-                    return _snm if os.environ.get("IA_WEB") == "1" else f"{_snm} {_MSG_WEB_HINT}"
+                    return _snm if os.environ.get("IA_WEB") == "1" else _avec_web_hint(_snm, conv_id)
                 if est_aveu and os.environ.get("IA_WEB") != "1":
                     return _MSG_WEB_COUPE
             return rep
@@ -4664,9 +4712,9 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     #       réellement été consultée), la brique « structure reconnue mais non ancrée » remplace le générique
     #       quand la question parse en (relation connue, entité) : dire CE QUI est compris est une information.
     if veut:
-        _snm = _structure_non_ancree(t) if pleine else None
+        _snm = _structure_non_ancree(t, conv_id) if pleine else None
         if pleine and os.environ.get("IA_WEB") != "1":
-            return f"{_snm} {_MSG_WEB_HINT}" if _snm else _MSG_WEB_COUPE
+            return _avec_web_hint(_snm, conv_id) if _snm else _MSG_WEB_COUPE
         if _snm:
             return _snm
         indice = "" if pleine else " — ou relance sans IA_LEGER pour la connaissance générale (faits vérifiés)"

@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — L'échange continue À TRAVERS l'abstention (le sens est relationnel)
+
+- **Continuité conversationnelle sur abstention** : une abstention structurée mémorise désormais le sujet et la
+  question — « capitale du Wakanda ? » (abstention) puis « et sa population ? » ou « et du Mordor ? » enchaînent
+  avec une abstention **structurée sur la question reformulée**, plus jamais le générique. Les continuations
+  type A (« et sa/son X ? ») et type B (« et du Y ? ») traversent l'abstention comme elles traversent les faits.
+- **Voix humaine** : deux abstentions structurées CONSÉCUTIVES ne récitent pas deux fois la formule complète —
+  la seconde dit « Même chose pour “population de wakanda” : là non plus, aucun fait vérifié pour trancher » ;
+  la présentation de l'entité (« royaume fictif… ») ne se répète que si l'entité a changé. Le conseil « réactive
+  internet » n'est donné qu'UNE fois par conversation. Le marqueur Wiktionnaire « (univers de Marvel) … » passe
+  en fin de définition (`_def_lisible`) : la présentation se lit comme une phrase.
+- `est_fallback` reconnaît la forme courte (statut HORS conservé). Banc 91/91, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — Abstention ENRICHIE : « structure reconnue mais non ancrée »
 
 - **Nouvelle brique de compréhension** (`_structure_non_ancree`, interface/repond.py) : quand toute la cascade
