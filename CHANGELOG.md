@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — RAM : éviction LRU des caches (le vrai « 600 Mo » enfin identifié et borné)
+
+- **Profilage correctif** : le « ~600 Mo du moteur ia » était une MAUVAISE attribution. `import ia` = +16 Mo,
+  le lecteur est mémoire-mappé (~0 RSS), `est_un` est déjà LAZY (69 Mo à la 1re question is-a, pas au
+  préchauffage). Le VRAI poste : `_DIRECT_CACHE`/`_REVERSE_CACHE` croissaient SANS BORNE — un serveur long
+  touchant beaucoup de relations (superlatifs/argmax/inverse variés) montait à **+487 Mo** (mesuré, 400
+  relations). C'est l'origine probable du « 600 Mo » jamais expliqué.
+- **Éviction LRU par coût + `malloc_trim`** : les deux caches deviennent des `OrderedDict` bornés (~20 Mo de
+  coût-fichier chacun ≈ ~100 Mo RAM). Sous pression, la relation la moins récemment utilisée est évincée et la
+  RAM est RENDUE À L'OS via `malloc_trim` (un `del` Python seul ne réduit pas le RSS — fragmentation glibc, la
+  leçon de l'essai est_un appliquée ici avec succès). Les relations chaudes restent ; les froides se relisent du
+  disque (coût négligeable, fichiers < 4 Mo).
+- **Mesuré** : cas pathologique 400 relations **513 → 126 Mo** (−387 Mo) ; scénario réaliste 60 requêtes variées
+  **RSS 38 Mo, 12 ms/req** (aucune pénalité de latence — l'éviction ne mord que sous forte pression). Les 4 bancs
+  restent verts : raisonnement 118/118, paraphrases 98/98, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — Synonymes de têtes de relation + garde FAUX=0 sur les alias appris (trou réel comblé)
 
 - **Synonymes de têtes** (`_cap_synonyme_tete`) : un mot de sens proche d'une relation connue route vers la

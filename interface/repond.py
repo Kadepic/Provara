@@ -615,7 +615,11 @@ _DET_SINGULIER = frozenset("le la l un une du ce cet cette son sa mon ma ton ta 
 _LABELS = {"pays_riviere": "Cours d'eau"}
 _CAVEATS = {"pays_riviere": "la source ne distingue pas fleuve et rivière"}
 
-_REVERSE_CACHE: dict = {}     # relation -> { valeur_normalisée : (valeur_affichée, [entités triées]) }
+import collections as _collections
+_REVERSE_CACHE = _collections.OrderedDict()   # relation -> { valeur_norm : (val_affichée, [entités]) } (LRU)
+_REVERSE_CACHE_COUT = {}      # relation -> coût approché (octets fichier)
+_REVERSE_BUDGET = 20 * 1024 * 1024   # même plafond/logique que _DIRECT (voir _charge_direct) : borne le RSS d'un
+                              # serveur long qui construit BEAUCOUP d'index inverses (recherche inverse, œuvres_de…).
 _RELATIONS_CACHE = None       # liste des relations (noms de fichiers)
 _VOCAB_CACHE = None           # vocabulaire des tokens de type (pour le « did-you-mean »)
 
@@ -646,16 +650,23 @@ def _vocab_types() -> set:
 
 def _charge_reverse(relation: str) -> dict:
     """Index inverse VALEUR -> [entités] d'une relation, lu une fois depuis le .jsonl brut puis caché. Générique."""
-    if relation in _REVERSE_CACHE:
-        return _REVERSE_CACHE[relation]
+    cached = _REVERSE_CACHE.get(relation)
+    if cached is not None:
+        _REVERSE_CACHE.move_to_end(relation)
+        return cached
     par_val: dict = {}
     chemin = os.path.join(_DOSSIER_LECTEUR, relation + ".jsonl")
+    try:
+        cout = os.path.getsize(chemin)
+    except OSError:
+        cout = 0
     try:
         # GARDE RAM : sur la base COMPLÈTE (~73M faits), certaines relations font des MILLIONS de lignes —
         # matérialiser l'index inverse en dict coûterait des centaines de Mo chez l'utilisateur final (cache
         # sans éviction). Au-delà de 64 Mo on s'abstient (HORS honnête, comme avant) plutôt que saturer la RAM.
-        if os.path.getsize(chemin) > 64 * 1024 * 1024:
+        if cout > 64 * 1024 * 1024:
             _REVERSE_CACHE[relation] = {}
+            _REVERSE_CACHE_COUT[relation] = 0
             return {}
         with open(chemin, encoding="utf-8") as fh:
             for ligne in fh:
@@ -673,19 +684,50 @@ def _charge_reverse(relation: str) -> dict:
         par_val = {}
     res = {vn: (disp, sorted(set(ents))) for vn, (disp, ents) in par_val.items()}
     _REVERSE_CACHE[relation] = res
+    _REVERSE_CACHE_COUT[relation] = cout
+    total = sum(_REVERSE_CACHE_COUT.values())
+    evince = False
+    while total > _REVERSE_BUDGET and len(_REVERSE_CACHE) > 1:
+        vieux, _ = _REVERSE_CACHE.popitem(last=False)
+        total -= _REVERSE_CACHE_COUT.pop(vieux, 0)
+        evince = True
+    if evince:
+        _malloc_trim()
     return res
 
 
-_DIRECT_CACHE: dict = {}      # relation -> { entite_normalisée : (entite_affichée, valeur_brute) }
+_DIRECT_CACHE = _collections.OrderedDict()   # relation -> dict (LRU, voir ci-dessous)
+_DIRECT_CACHE_COUT = {}       # relation -> coût approché (octets fichier) de son entrée cachée
+_DIRECT_BUDGET = 20 * 1024 * 1024    # PLAFOND (coût = taille .jsonl source) des dicts DIRECT cachés. Un dict
+                              # Python pèse ~4-5× son .jsonl (surcoût objets) : 20 Mo de fichiers ≈ ~100 Mo RAM.
+                              # Sans borne, un serveur long touchant BEAUCOUP de relations (superlatifs/argmax
+                              # variés) montait à +487 Mo (mesuré, 400 relations). Éviction LRU + malloc_trim pour
+                              # RENDRE la RAM à l'OS (un free Python seul ne réduit pas le RSS — fragmentation glibc).
+
+
+def _malloc_trim():
+    """Rend au système la mémoire libérée par les évictions (un `del` Python ne réduit pas le RSS : glibc garde
+    les arènes). No-op hors glibc/Linux. Sûr : ne touche qu'à la mémoire déjà libre."""
+    try:
+        import ctypes
+        ctypes.CDLL("libc.so.6").malloc_trim(0)
+    except Exception:
+        pass
 
 
 def _charge_direct(relation: str) -> dict:
     """Index DIRECT entité -> valeur d'une relation (lu une fois du .jsonl brut). Sert à l'argmax superlatif
     (lire l'attribut de chaque candidat sans passer par le moteur lourd)."""
-    if relation in _DIRECT_CACHE:
-        return _DIRECT_CACHE[relation]
+    cached = _DIRECT_CACHE.get(relation)
+    if cached is not None:
+        _DIRECT_CACHE.move_to_end(relation)      # LRU : accès récent -> queue (les plus anciens en tête)
+        return cached
     d: dict = {}
     chemin = os.path.join(_DOSSIER_LECTEUR, relation + ".jsonl")
+    try:
+        cout = os.path.getsize(chemin)
+    except OSError:
+        cout = 0
     try:
         with open(chemin, encoding="utf-8") as fh:
             for ligne in fh:
@@ -701,6 +743,17 @@ def _charge_direct(relation: str) -> dict:
     except (OSError, ValueError):
         d = {}
     _DIRECT_CACHE[relation] = d
+    _DIRECT_CACHE_COUT[relation] = cout
+    # ÉVICTION LRU par coût : tant que le budget est dépassé, on retire la relation la MOINS récemment utilisée
+    # (tête de l'OrderedDict). On garde toujours ≥1 entrée (celle qu'on vient de charger).
+    total = sum(_DIRECT_CACHE_COUT.values())
+    evince = False
+    while total > _DIRECT_BUDGET and len(_DIRECT_CACHE) > 1:
+        vieux, _ = _DIRECT_CACHE.popitem(last=False)
+        total -= _DIRECT_CACHE_COUT.pop(vieux, 0)
+        evince = True
+    if evince:                                   # rendre la RAM libérée à l'OS (sinon le RSS ne baisse pas)
+        _malloc_trim()
     return d
 
 
