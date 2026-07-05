@@ -1257,7 +1257,11 @@ def _cap_comparaison(texte: str):
 
 
 _FILTRE_RE = re.compile(
-    r"(?:quels?|combien\s+de)\s+([a-zà-ÿ]+)\s+(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*([\wà-ÿ'’\- ]+?)\s+"
+    # ordre IMPORTANT : les formes LONGUES (proportion/pourcentage) avant « quels? » — sinon « quel » de « quel
+    # pourcentage » matche « quels? » et le type devient « pourcentage ».
+    r"(?:quelle\s+proportion\s+(?:de\s+l['’ ]?|des\s+|du\s+)|quel\s+pourcentage\s+(?:de\s+l['’ ]?|des\s+|du\s+)|"
+    r"combien\s+de|quels?)\s*([a-zà-ÿ]+)\s+"
+    r"(?:de\s+l['’ ]?|du\s|des\s|de\s|d['’]|d\s|en\s)\s*([\wà-ÿ'’\- ]+?)\s+"
     r"(?:ont|a|avec|comptent|possedent|abritent)\b[^0-9]*?"
     r"(plus|moins|superieur\w*|inferieur\w*|au\s+moins|au\s+plus)\s+(?:de\s+|a\s+)?"
     r"(\d[\d\s.,]*)\s*(milliard\w*|million\w*|millier\w*|mille)?", re.I)
@@ -1343,6 +1347,12 @@ def _cap_filtre(texte: str):
     sel = [(e, v) for e, v in paires if garde(v)]        # paires déjà triées desc
     pluriel = typ if typ.endswith(("s", "x")) else typ + "s"
     zone_aff = zone.strip()[:1].upper() + zone.strip()[1:]
+    # PROPORTION / POURCENTAGE : « quelle proportion des pays d'Afrique ont plus de 50 M d'habitants ? » -> N/total
+    # + pourcentage. Exact (ensemble énuméré). FAUX=0 : ratio de faits réels.
+    if re.match(r"^\s*(?:quelle\s+proportion|quel\s+pourcentage)\b", qn):
+        pct = 100.0 * len(sel) / len(paires)
+        return "%d des %d %s %s ont %s %s %s, soit %.0f %%." % (len(sel), len(paires), pluriel, _RF_de(zone_aff),
+                                                               sens, seuil_txt, unite, pct)
     # COMPTAGE CONDITIONNEL : « combien de pays d'Afrique ont plus de 50 millions d'habitants ? » -> le NOMBRE
     # (pas la liste). Exact car l'ensemble est énuméré. FAUX=0 : compte des entités réelles qui passent le seuil.
     if re.match(r"^\s*combien\b", qn):

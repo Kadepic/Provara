@@ -53,6 +53,7 @@ CAS = [
     ("filtre", R._cap_filtre, "quels pays d'Afrique ont plus de 100 millions d'habitants ?", "Nigéria"),
     ("filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 100 et 300 millions d'habitants ?", "Nigéria"),
     ("filtre-combien", R._cap_filtre, "combien de pays d'Afrique ont plus de 50 millions d'habitants ?", "compté exactement"),
+    ("filtre-proportion", R._cap_filtre, "quelle proportion des pays d'Afrique ont plus de 50 millions d'habitants ?", "%"),
     ("filtre-entre-magnitudes", R._cap_filtre,
      "quels pays d'Europe ont entre 500 000 et 2 millions d'habitants ?", "entre 500 000 et 2 000 000"),
     ("filtre-entre-decimal", R._cap_filtre, "quels pays d'Asie ont entre 1 et 1,5 milliard d'habitants ?", "Inde"),
