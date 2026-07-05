@@ -151,6 +151,10 @@ CAS = [
     ("structure-fait-personne", R._structure_non_ancree, "quand est mort Dumbledore ?", "dumbledore"),
     ("structure-localisation", R._structure_non_ancree, "où se trouve Fondcombe ?", "fondcombe"),
     ("structure-fait-non-hijack", R._structure_non_ancree, "et il est mort quand ?", ""),   # pronom -> pas une entité
+    # hyponymes : phrasé « quels X sont des Y » + anti-bruit (pas de syntagme à article dans la liste)
+    ("hypo-quels-animaux", R._cap_hyponymes, "quels animaux sont des félins ?", "lion"),
+    ("hypo-anti-bruit", lambda q: "BRUIT" if "la recherche" in (R._cap_hyponymes(q) or "") else "OK",
+     "cite des cétacés", "OK"),
 ]
 
 

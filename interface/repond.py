@@ -3673,6 +3673,9 @@ _HYPO_RES = (
     re.compile(r"^\s*(?:quels?|quelles?)\s+sont\s+les\s+(.+?)\s*\??\s*$", re.I),
     re.compile(r"\b(?:cite|citez|liste|listez|nomme|nommez|donne(?:[- ]moi)?|donnez[- ]moi)\b.*?"
                r"\b(?:des|les|quelques|plusieurs)\s+(.+?)\s*\??\s*$", re.I),
+    # « quels ANIMAUX sont des félins ? » / « quelles fleurs sont des orchidées ? » : le TYPE générique
+    # (animaux/plantes…) est ignoré, la vraie catégorie est l'attribut « des X » -> hyponymes de X.
+    re.compile(r"^\s*(?:quels?|quelles?)\s+[\wà-ÿ]+\s+sont\s+(?:des|les)\s+(.+?)\s*\??\s*$", re.I),
 )
 
 

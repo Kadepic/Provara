@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Hyponymes : nouveau phrasé « quels X sont des Y » + filtre anti-bruit
+
+- Sonde de 10 questions « mot inconnu / exemples » : la décomposition par définitions marche déjà largement
+  (« c'est quoi un cétacé ? », « cite des félins/mammifères/métaux/poissons » → listes réelles). Deux défauts
+  corrigés :
+- **Phrasé « quels ANIMAUX sont des félins ? »** (le type générique animaux/fleurs est ignoré, la catégorie
+  réelle est l'attribut « des Y ») → guépard, léopard, lion, ocelot, serval.
+- **Filtre anti-bruit des hyponymes** (`_STOP_HYPO`) : une définition mal parsée rangeait un syntagme à article
+  (« la recherche » sous « cétacé ») — désormais tout hyponyme commençant par un mot-outil est écarté (un vrai
+  nom d'espèce ne commence pas par « la/le/en… »). « cite des cétacés » ne montre plus « la recherche ».
+- Raisonnement **104/104**, paraphrases 79/79, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — Robustesse ADVERSE : SMS + fautes + oral EMPILÉS (banc 79 cas, 100 %)
 
 - **Couche SMS fermée** (`_desms`, étage 0sms) : « c ki ki a ecri 1984 ? » → « c'est qui qui a écrit 1984 ? »

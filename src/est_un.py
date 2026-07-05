@@ -363,6 +363,12 @@ def _enfants() -> dict:
     return _ENFANTS
 
 
+# Mots-outils qui, en TÊTE d'un « hyponyme », trahissent un syntagme mal parsé (pas un nom d'espèce/de membre).
+_STOP_HYPO = frozenset(
+    "la le les l un une de du des d en au aux a et ou qui que dans par pour sur ce cette ces son sa ses "
+    "tout toute tous toutes tel telle tels telles".split())
+
+
 def hyponymes(categorie: str, limite: int = 30, max_prof: int = 6) -> list:
     """Membres (hyponymes) d'une catégorie, transitivement (« félin » -> chat, lion, tigre… ; « poisson » -> requin,
     thon…). Descente en largeur dans l'index inverse. Faits/définitions réels uniquement. Liste triée, bornée."""
@@ -381,6 +387,10 @@ def hyponymes(categorie: str, limite: int = 30, max_prof: int = 6) -> list:
                 vus.add(e)
                 trouve.append(e)
                 q.append((e, d + 1))
+    # ANTI-BRUIT : une définition mal parsée range un SYNTAGME (« la recherche », « en tant que ») sous un genus
+    # -> on écarte tout hyponyme commençant par un mot-outil (article/préposition) : un vrai hyponyme est un nom
+    # (« baleine »), pas un groupe nominal à déterminant. Sûr : aucun nom d'espèce ne commence par « la/le/en… ».
+    trouve = [e for e in trouve if e.split(" ", 1)[0] not in _STOP_HYPO]
     # NOTORIÉTÉ : les termes du lexique COMMUN (19k) d'abord (lion, tigre, léopard…), les obscurs ensuite (« engri »,
     # « pard ») — on ne les montre que pour compléter. Excellence : une liste d'exemples RECONNAISSABLES.
     pos = _pos()
