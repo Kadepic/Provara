@@ -3869,8 +3869,9 @@ _DERIV_CONT_VILLE_RE = re.compile(
 
 
 _ORBITE_RE = re.compile(
-    r"(?:est[- ]ce\s+qu[e'’]?\s*)?(.+?)\s+(?:orbite|gravite|tourne)\b[^?]*?"
-    r"(?:autour\s+)?(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])?([\wà-ÿ'’\- ]+?)\s*\??\s*$", re.I)
+    r"(?:est[- ]ce\s+qu[e'’]?\s*)?(.+?)\s+(?:orbite|gravite|tourne)(?:nt)?"
+    r"(?:[\s-]*t[\s-]+(?:ils?|elles?|on))?\b[^?]*?"
+    r"(?:autour\s+)?(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])?([\wà-ÿ'’\-][\wà-ÿ'’\- ]*?)\s*\??\s*$", re.I)
 _SYSTEME_RE = re.compile(
     r"(?:est[- ]ce\s+qu[e'’]?\s*)?(.+?)\s+(?:fait[- ](?:il|elle)\s+partie|fait\s+partie|est[- ](?:il|elle)|appartient|"
     r"est\s+dans)"
@@ -3897,49 +3898,71 @@ def _cap_orbite(texte: str):
     if not ns or not cible or len(ns) < 2:
         return None
     par = _charge_direct("corps_parent_astre")         # {corps_norm : (corps_affiché, corps_parent)}
-    if not par or ns not in par:
-        return None
-    # marche la chaîne parentale : sujet -> parent -> parent... jusqu'à la cible (dérivation transitive)
-    chaine = [par[ns][0]]
-    vus, cur = {ns}, ns
-    atteint = False
-    for _ in range(20):
-        cell = par.get(cur)
-        if not cell:
-            break
-        parent = cell[1]
-        chaine.append(parent)
-        if _normalise(parent) == cible:
-            atteint = True
-            break
-        np = _normalise(parent)
-        if np in vus:
-            break
-        vus.add(np)
-        cur = np
-    if not atteint or len(chaine) < 2:
-        return None
-    # DÉCOUVERTE : on valide la transitivité (cohérente) et on rejette la symétrie (contre-exemple), pour l'afficher
-    note = ""
-    try:
-        import induction_horn as _IH
-        paires = {(_normalise(k), _normalise(v[1])) for k, v in par.items()}
-        neg = {(y, x) for (x, y) in paires}
-        ev_t = _IH.evalue(_IH.TRANSITIVITE, paires, neg)
-        ev_s = _IH.evalue(_IH.SYMETRIE, paires, neg)
-        if ev_t["consistante"] and not ev_s["consistante"]:
-            cx = sorted(ev_s["viole"])[0]
-            aff = lambda z: (par[z][0] if z in par else z.capitalize())
-            note = (" (règle que j'ai découverte : « orbiter » est transitive — cohérente avec les %d faits — "
-                    "mais PAS symétrique, sinon %s orbiterait %s)" % (len(paires), aff(cx[0]), aff(cx[1])))
-    except Exception:
-        pass
-    if len(chaine) == 2:                                # relation directe, pas une dérivation
+    if not par:
         return None
     _ASTRO_ART = {"soleil": "le Soleil", "terre": "la Terre", "lune": "la Lune"}
-    chaine = [_ASTRO_ART.get(_normalise(c), c) for c in chaine]
-    derivation = "%s orbite %s" % (chaine[0], ", qui orbite ".join(chaine[1:]))
-    return "Oui — je le déduis : %s%s." % (derivation, note)
+
+    def _chaine_vers(depart, but):
+        # marche la chaîne parentale depart -> parent -> ... ; liste affichée si but atteint, sinon None
+        if depart not in par:
+            return None
+        chaine = [par[depart][0]]
+        vus, cur = {depart}, depart
+        for _ in range(20):
+            cell = par.get(cur)
+            if not cell:
+                return None
+            parent = cell[1]
+            chaine.append(parent)
+            np = _normalise(parent)
+            if np == but:
+                return chaine
+            if np in vus:
+                return None
+            vus.add(np)
+            cur = np
+        return None
+
+    def _aff(chaine):
+        return [_ASTRO_ART.get(_normalise(c), c) for c in chaine]
+
+    chaine = _chaine_vers(ns, cible)
+    if chaine and len(chaine) == 2:                     # relation DIRECTE : fait stocké, servi tel quel
+        a, b = _aff(chaine)
+        return "Oui — c'est un fait vérifié dans mes données : %s orbite %s." % (a, b)
+    if chaine:
+        # DÉCOUVERTE : on valide la transitivité (cohérente) et on rejette la symétrie, pour l'afficher
+        note = ""
+        try:
+            import induction_horn as _IH
+            paires = {(_normalise(k), _normalise(v[1])) for k, v in par.items()}
+            neg = {(y, x) for (x, y) in paires}
+            ev_t = _IH.evalue(_IH.TRANSITIVITE, paires, neg)
+            ev_s = _IH.evalue(_IH.SYMETRIE, paires, neg)
+            if ev_t["consistante"] and not ev_s["consistante"]:
+                cx = sorted(ev_s["viole"])[0]
+                aff = lambda z: (par[z][0] if z in par else z.capitalize())
+                note = (" (règle que j'ai découverte : « orbiter » est transitive — cohérente avec les %d faits — "
+                        "mais PAS symétrique, sinon %s orbiterait %s)" % (len(paires), aff(cx[0]), aff(cx[1])))
+        except Exception:
+            pass
+        chaine = _aff(chaine)
+        derivation = "%s orbite %s" % (chaine[0], ", qui orbite ".join(chaine[1:]))
+        return "Oui — je le déduis : %s%s." % (derivation, note)
+    # sens INVERSE vérifié (« le Soleil tourne-t-il autour de la Terre ? ») : « orbiter » n'est pas
+    # symétrique (règle induite) -> Non sûr, la chaîne réelle montrée
+    inverse = _chaine_vers(cible, ns)
+    if inverse:
+        inv = _aff(inverse)
+        return "Non — c'est l'inverse : %s orbite %s." % (inv[0], ", qui orbite ".join(inv[1:]))
+    # sujet astro connu, cible astro connue, mais AUCUNE chaîne : montrer le fait réel plutôt que
+    # laisser la question filer vers la cascade lourde (risque de hors-sujet type FAUX)
+    if ns in par and (cible in par or any(_normalise(v[1]) == cible for v in par.values())):
+        a = _ASTRO_ART.get(ns, par[ns][0])
+        b = _ASTRO_ART.get(_normalise(par[ns][1]), par[ns][1])
+        return ("D'après mes données, %s orbite %s — je n'ai aucun fait vérifié reliant %s à « %s »."
+                % (a, b, a, cible))
+    return None
 
 
 # ————— TRANSITIVITÉ GÉNÉRALISÉE (au-delà de l'astronomie) : fermetures transitives SÛRES par domaine —————

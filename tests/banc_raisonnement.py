@@ -80,6 +80,9 @@ CAS = [
     ("agregat-liste-moyenne", R._cap_agregat_liste, "population moyenne de la France, l'Allemagne et l'Italie ?", "moyenne"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
     ("orbite", R._cap_orbite, "est-ce que Phobos fait partie du système solaire ?", "je le déduis"),
+    ("orbite-direct", R._cap_orbite, "la Terre tourne-t-elle autour du Soleil ?", "Oui"),          # ex-FAUX Baudelaire
+    ("orbite-direct-sms", R._cap_orbite, "est ce que la terre tourne autour du soleil", "Oui"),
+    ("orbite-derive", R._cap_orbite, "la Lune tourne-t-elle autour du Soleil ?", "je le déduis"),
     ("transitif-hydro", R._cap_transitif, "est-ce que la Lukna finit dans la mer Baltique ?", "Niémen"),
     ("transitif-groupe", R._cap_transitif, "105 Music fait-elle partie du groupe Sony ?", "Sony Music"),
     ("inverse-capitale", R._cap_inverse, "quel pays a pour capitale Madrid ?", "Espagne"),
@@ -114,7 +117,9 @@ CAS = [
     ("faux-localisation-concept", R._cap_localisation, "où se trouve le bonheur ?", ""),  # nom commun -> pas un lieu
     # gardes FAUX=0
     ("faux-filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 5 et 10 milliards d'habitants ?", "Aucun"),
-    ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", ""),
+    # le faux n'est plus tu : il est RÉFUTÉ avec le fait réel (anti-symétrie induite), jamais confirmé
+    ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", "Non — c'est l'inverse"),
+    ("faux-orbite-soleil", R._cap_orbite, "le Soleil tourne-t-il autour de la Terre ?", "Non — c'est l'inverse"),
     ("faux-transitif", R._cap_transitif, "est-ce que la Lukna finit dans la mer Noire ?", ""),
     ("faux-inverse", R._cap_inverse, "quel pays a pour capitale Xanadu ?", ""),
     # superlatif SÛR seulement si l'ensemble est complet : montagnes/villes ont un membership troué -> abstention

@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — FAUX grave corrigé : « la Terre tourne-t-elle autour du Soleil ? » ne répond plus « Baudelaire »
+
+- **Cause double** : (1) `_ORBITE_RE` ne consommait pas le clitique d'inversion (« tourne**-t-elle** ») → le
+  groupe capturait « -t-elle autour du Soleil » au lieu de « Soleil » ; (2) même bien parsé, `_cap_orbite`
+  refusait volontairement les relations DIRECTES (chaîne de 2 : Terre → Soleil, « pas une dérivation ») → la
+  question filait vers le moteur lourd qui partait sur le poème « Le Soleil » de **Baudelaire** (hors-sujet).
+- **Correctif** : clitique `-t-il/-t-elle/-t-on` consommé (avec variantes SMS sans tirets) ; le groupe entité ne
+  peut plus commencer par un espace (piège regex lazy) ; un fait direct répond désormais *« Oui — c'est un fait
+  vérifié dans mes données : la Terre orbite le Soleil »*.
+- **Bonus soundness** : le sens inverse est maintenant RÉFUTÉ au lieu d'être tu — « le Soleil tourne-t-il autour
+  de la Terre ? » → *« Non — c'est l'inverse : la Terre orbite le Soleil »* (l'anti-symétrie d'« orbiter » est
+  la règle induite déjà vérifiée sur les 36 faits). Et deux corps connus sans chaîne entre eux (« Mars
+  tourne-t-elle autour de Jupiter ? ») reçoivent le fait réel (*« Mars orbite le Soleil — aucun fait reliant
+  Mars à Jupiter »*) au lieu de risquer un hors-sujet dans la cascade lourde.
+- Banc raisonnement **125/125** (4 cas ajoutés : direct, direct-SMS, dérivé Lune→Soleil, réfutation inverse ×2),
+  paraphrases 105/105, constructions 4/4, synonymes 8/8, suite **18/18**, challenge 16/16.
+
 ## 2026-07-05 — MISES À JOUR AUTOMATIQUES : le .exe se met à jour tout seul (plus de re-téléchargement)
 
 - **Nouveau module `src/maj.py`** : vérifie honnêtement (FAUX=0) contre les Releases GitHub s'il existe une
