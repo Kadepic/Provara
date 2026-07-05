@@ -3386,6 +3386,78 @@ def _cap_fait_personne(texte: str):
     return None
 
 
+# LOCALISATION d'un lieu : « où se trouve X », « dans quel pays est X », « sur quel continent est X ». On cherche
+# X dans les relations géo pays_*/continent_* (montagne/désert/île/lac/rivière/fleuve/ville). FAUX=0 : valeur réelle.
+_LOC_PAYS_REL = ("pays_montagne", "pays_desert", "pays_ile", "pays_lac", "pays_riviere", "pays_fleuve",
+                 "pays_ville", "pays_massif", "pays_volcan", "pays_chute_eau")
+_LOC_CONT_REL = ("continent", "continent_montagne", "continent_desert", "continent_ile", "continent_lac",
+                 "continent_riviere", "continent_fleuve")
+_LOC_PAYS_RE = re.compile(
+    r"^\s*(?:dans\s+|de\s+)?quel\s+pays\s+(?:est|se\s+(?:trouve|situe)|coule|se\s+jette|est\s+situ[ée]e?|"
+    r"fait[- ](?:il|elle)\s+partie|abrite[-]t[-](?:il|elle))?\s*(?:la\s+|le\s+|les\s+|l['’]|du\s+|des\s+|de\s+)?"
+    r"(.+?)\s*\??\s*$", re.I)
+_LOC_CONT_RE = re.compile(
+    r"^\s*(?:sur|dans)\s+quel\s+continent\s+(?:est|se\s+(?:trouve|situe)|est\s+situ[ée]e?)?\s*"
+    r"(?:la\s+|le\s+|les\s+|l['’]|du\s+|des\s+|de\s+)?(.+?)\s*\??\s*$", re.I)
+_LOC_OU_RE = re.compile(
+    r"^\s*o[ùu]\s+(?:se\s+(?:trouve|situe)|est\s+(?:situ[ée]e?)?)\s+"
+    r"(?:la\s+|le\s+|les\s+|l['’]|du\s+|des\s+|de\s+)?(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_localisation(texte: str):
+    """LOCALISATION d'un lieu (montagne/désert/île/lac/rivière/ville) : « dans quel pays est X », « sur quel
+    continent est X », « où se trouve X » -> pays ou continent stocké. FAUX=0 : valeur réelle vérifiée ou None
+    (entité absente des relations géo). « où » générique essaie le PAYS (plus précis) puis le continent."""
+    rels = None
+    m = _LOC_PAYS_RE.match(texte.strip())
+    if m:
+        rels, ent = _LOC_PAYS_REL, m.group(1)
+    else:
+        m = _LOC_CONT_RE.match(texte.strip())
+        if m:
+            rels, ent = _LOC_CONT_REL, m.group(1)
+        else:
+            m = _LOC_OU_RE.match(texte.strip())
+            if m:
+                rels, ent = _LOC_PAYS_REL + _LOC_CONT_REL, m.group(1)   # où : pays d'abord, sinon continent
+    if not rels:
+        return None
+    ent = _strip_article(ent.strip())
+    if not ent or len(ent) < 3 or len(ent.split()) > 6:
+        return None
+    cpays = _charge_direct("continent").get(_normalise(ent))
+    if cpays:                                            # X est un PAYS -> « où se trouve la France » relève du continent
+        try:
+            import realisation_fr as _RF
+            sujet = _RF.article_pays(cpays[0], majuscule=True)
+        except Exception:
+            sujet = cpays[0]
+        return "%s se trouve en %s." % (sujet, cpays[1])
+    for rel in rels:
+        cell = _lookup_cell(rel, ent)
+        if cell and cell[1]:
+            loc = str(cell[1])
+            loc_loc = _locatif_pays(loc) if rel.startswith("pays") else "en " + loc   # « au Portugal », « en Afrique »
+            return "%s se trouve %s." % (cell[0][:1].upper() + cell[0][1:], loc_loc)
+    return None
+
+
+def _locatif_pays(pays: str) -> str:
+    """« en France », « au Portugal », « aux États-Unis », « à Monaco » — préposition locative selon le genre/nombre."""
+    try:
+        import realisation_fr as _RF
+        if _RF.sans_article(pays):
+            return "à " + pays
+        g = _RF.genre_pays(pays)
+        if g == "p":
+            return "aux " + pays
+        if g == "m" and not _RF._voyelle_initiale(pays):
+            return "au " + pays
+        return "en " + pays                              # féminin ou voyelle initiale -> « en »
+    except Exception:
+        return "en " + pays
+
+
 _CAUSE_RE = re.compile(
     r"\b(?:cause[s]?|provoque\w*|responsable|agent[s]?|declenche\w*|entrain\w*|etiologie|du[e]?\s+a|due\s+a|"
     r"qu['’ ]?est[- ]ce\s+qui\s+(?:cause|provoque|declenche|donne))\b", re.I)
@@ -3888,7 +3960,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
