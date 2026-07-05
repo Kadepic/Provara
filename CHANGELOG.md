@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Protons, lunes, et le mur de Berlin : routage verbe→relation de date
+
+- **`_cap_protons`** : « combien de protons a l'hydrogène ? » → *1 proton — le numéro atomique Z (c'est sa
+  définition)* (relu dans numero_atomique, 118 éléments) ; « combien d'électrons possède le carbone ? » →
+  *6 électrons pour l'atome NEUTRE (autant que de protons)*.
+- **`_cap_lunes`** : « combien de lunes a Mars ? » → *2 dans mes données : Déimos, Phobos* — compte RÉEL par
+  lecture inverse de corps_parent_astre, honnête sur la non-exhaustivité (Jupiter en a 95 connues).
+- **Routage VERBE → relation de date** (`_DATE_VERBE_RE`) : « en quelle année est TOMBÉ le mur de Berlin ? »
+  → *1989* (annee_dissolution) et « quand a été CONSTRUIT le mur de Berlin ? » → *1961*
+  (annee_construction_edifice). Sans ce routage, la première relation trouvée aurait décidé entre 1961 et
+  1989 — un coup de dés, pas un fait.
+- Trous d'INGESTION documentés (pas de fix code possible, à corriger côté source) : « traité de Versailles »
+  (1919) absent de date_evenement ; Isaac Newton (le physicien) sans faits-personne (naissance/nationalité) ;
+  Nil/Amazone sans longueur ; Napoléon Ier absent de successeur_personne.
+- Banc raisonnement **146/146** (7 cas ajoutés), paraphrases 127/127, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — Créateur : type-words d'œuvre + alias de personnes célèbres
 
 - « qui a réalisé **le film** Pulp Fiction ? » échouait (la clé réelle est le titre NU) : liste fermée

@@ -79,6 +79,13 @@ CAS = [
     ("agregat-liste", R._cap_agregat_liste, "quelle est la population cumulée de la France et de l'Allemagne ?", "152 211 586"),
     ("agregat-liste-moyenne", R._cap_agregat_liste, "population moyenne de la France, l'Allemagne et l'Italie ?", "moyenne"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
+    ("protons", R._cap_protons, "combien de protons a l'hydrogène ?", "1 proton"),
+    ("electrons", R._cap_protons, "combien d'électrons possède le carbone ?", "6 électrons"),
+    ("lunes-mars", R._cap_lunes, "combien de lunes a Mars ?", "Phobos"),
+    ("lunes-terre", R._cap_lunes, "combien de satellites naturels a la Terre ?", "Lune"),
+    ("date-verbe-chute", R._cap_date_evenement, "en quelle année est tombé le mur de Berlin ?", "1989"),
+    ("date-verbe-construction", R._cap_date_evenement, "quand a été construit le mur de Berlin ?", "1961"),
+    ("date-elision", R._cap_date_evenement, "quand a eu lieu la bataille de Hastings ?", "1066"),
     ("orbite", R._cap_orbite, "est-ce que Phobos fait partie du système solaire ?", "je le déduis"),
     ("orbite-direct", R._cap_orbite, "la Terre tourne-t-elle autour du Soleil ?", "Oui"),          # ex-FAUX Baudelaire
     ("orbite-direct-sms", R._cap_orbite, "est ce que la terre tourne autour du soleil", "Oui"),

@@ -1224,10 +1224,41 @@ _DATE_EVT_RE = re.compile(
     r"|de\s+quand\s+date\s+)(.+?)\s*\??\s*$", re.I)
 
 
+# VERBE -> RELATION de date : « est TOMBÉ le mur de Berlin » = annee_dissolution (1989), « a été CONSTRUIT »
+# = annee_construction_edifice (1961). Sans ce routage, _annee_de rend la PREMIÈRE date trouvée (l'ordre des
+# relations déciderait entre 1961 et 1989 — un coup de dés, pas un fait).
+_DATE_VERBE_RE = re.compile(
+    r"^\s*(?:quand|en\s+quelle\s+ann[ée]+e?)\s+(?:est\s+(tomb[ée]|chut[ée])|a\s+(?:[ée]t[ée]\s+)?"
+    r"(construite?|[ée]rig[ée]e?|b[âa]tie?|d[ée]truite?|d[ée]molie?|dissoute?))\s+"
+    r"(?:le\s+|la\s+|les\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
+_DATE_VERBE_RELS = {"tomb": ("annee_dissolution",), "chut": ("annee_dissolution",),
+                    "detruit": ("annee_dissolution", "annee_demolition"), "demoli": ("annee_demolition",),
+                    "dissou": ("annee_dissolution",),
+                    "construit": ("annee_construction_edifice",), "erig": ("annee_construction_edifice",),
+                    "bati": ("annee_construction_edifice",)}
+
+
 def _cap_date_evenement(texte: str):
     """DATE d'un événement : « quand a eu lieu la bataille de Marignan ? » -> « 1515 ». « quand a commencé la
     guerre de Cent Ans ? » -> année de début ; « quand s'est terminée … ? » -> année de fin. FAUX=0 : année
-    vérifiée ou None ; av. J.-C. géré."""
+    vérifiée ou None ; av. J.-C. géré. Verbes SPÉCIFIQUES routés vers LEUR relation (« est tombé le mur de
+    Berlin » -> annee_dissolution 1989, jamais l'année de construction 1961)."""
+    mv = _DATE_VERBE_RE.match(texte.strip())
+    if mv:
+        verbe = _normalise(mv.group(1) or mv.group(2) or "")
+        ent = mv.group(3).strip()
+        rels = next((r for pref, r in _DATE_VERBE_RELS.items() if verbe.startswith(pref)), None)
+        if rels and len(ent) >= 3:
+            for rel in rels:
+                for var in _variantes_elision(ent):
+                    cell = _lookup_cell(rel, var)
+                    if cell:
+                        a = _nombre(cell[1])
+                        if a is not None:
+                            lib = {"annee_dissolution": "est tombé en", "annee_demolition": "a été démoli en",
+                                   "annee_construction_edifice": "a été construit en"}.get(rel, ":")
+                            return "%s %s %d." % (cell[0][:1].upper() + cell[0][1:], lib, int(a))
+        return None
     m = _DATE_EVT_RE.match(texte.strip())
     if not m:
         return None
@@ -4071,6 +4102,57 @@ _SYSTEME_RE = re.compile(
     r"[^?]*?syst[eè]me\s+(?:(solaire)|(?:de\s+(?:la\s+|l['’])?|d['’])?([\wà-ÿ'’\- ]+?))\s*\??\s*$", re.I)
 
 
+_PROTONS_RE = re.compile(
+    r"combien\s+(?:de\s+|d['’]?\s*)?(protons?|[ée]lectrons?)\s+(?:a|poss[eè]de|contient|compte)\s+"
+    r"(?:le\s+|la\s+|l['’]?\s*)?(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_protons(texte: str):
+    """« combien de protons a l'hydrogène ? » -> 1 : le nombre de protons EST le numéro atomique Z (définition),
+    stocké dans numero_atomique (118 éléments confirmés). Électrons : égaux aux protons pour l'atome NEUTRE
+    (précisé dans la réponse). FAUX=0 : valeur relue, hors éléments -> None."""
+    m = _PROTONS_RE.search(texte)
+    if not m:
+        return None
+    cell = _charge_direct("numero_atomique").get(_normalise(_strip_article(m.group(2).strip())))
+    if not cell:
+        return None
+    aff, z = cell
+    plur = "s" if str(z).strip() not in ("1", "0") else ""
+    if _normalise(m.group(1)).startswith("proton"):
+        return "%s : %s proton%s — le numéro atomique Z (c'est sa définition)." % (aff[:1].upper() + aff[1:], z, plur)
+    return ("%s : %s électron%s pour l'atome NEUTRE (autant que de protons, Z = %s)."
+            % (aff[:1].upper() + aff[1:], z, plur, z))
+
+
+_LUNES_RE = re.compile(
+    r"combien\s+(?:de\s+|d['’]\s*)?(?:lunes?|satellites?(?:\s+naturels?)?)\s+"
+    r"(?:a|poss[eè]de|compte|orbitent\s+autour\s+de)\s+(?:la\s+plan[eè]te\s+)?(?:la\s+|le\s+|l['’]\s*)?"
+    r"(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_lunes(texte: str):
+    """« combien de lunes a Mars ? » -> « 2 dans mes données : Phobos, Déimos ». Compte RÉEL des corps dont le
+    parent orbital stocké (corps_parent_astre) est la cible. HONNÊTE : « dans mes données » — la table n'est pas
+    exhaustive pour les géantes (Jupiter en a 95 connues). FAUX=0 : entités réelles listées, cible inconnue -> None."""
+    m = _LUNES_RE.search(texte)
+    if not m:
+        return None
+    cible = _normalise(_strip_article(m.group(1).strip()))
+    if not cible or len(cible) < 3:
+        return None
+    par = _charge_direct("corps_parent_astre")
+    if not par:
+        return None
+    lunes = sorted(aff for aff, parent in par.values() if _normalise(parent) == cible)
+    connu = cible in par or any(_normalise(p) == cible for _a, p in par.values())
+    if not connu:
+        return None
+    if not lunes:
+        return "Aucune dans mes données (ce qui ne prouve pas qu'il n'y en a pas — ma table orbitale est partielle)."
+    return "%d dans mes données : %s. (Ma table orbitale n'est pas exhaustive.)" % (len(lunes), ", ".join(lunes))
+
+
 def _cap_orbite(texte: str):
     """SOMMET : la machine DÉCOUVRE une règle puis l'APPLIQUE avec preuve. « Phobos fait-il partie du système
     solaire ? » -> la relation `corps_parent_astre` (corps -> corps directement orbité) : la machine INDUIT que
@@ -5701,7 +5783,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_conversion, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_conversion, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
