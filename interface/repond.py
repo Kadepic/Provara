@@ -707,6 +707,39 @@ def _cap_temporel(texte: str):
     return "%s (%d) — c'est %s (%s date de %d)." % (_maj(g_aff), g_an, qualif, p_aff, p_an)
 
 
+# TEMPOREL N-ÉVÉNEMENTS : « quel est le plus ancien entre Marignan, Verdun et Waterloo ? ». Argmin/argmax sur les
+# DATES d'une liste explicite (≥3). Le 2-événements reste géré par _cap_temporel. FAUX=0 : dates vérifiées.
+_TEMPON_RE = re.compile(
+    r"^\s*(?:quel|qu[e'’]?\s*est[- ]ce\s+qui|lequel|laquelle|qui)\b[^?]*?"
+    r"(plus\s+ancien\w*|plus\s+r[ée]cent\w*|plus\s+vieux|plus\s+vieille|premier|premi[èe]re|le\s+plus\s+t[ôo]t|"
+    r"le\s+plus\s+tard|dernier|derni[èe]re)\b[^?]*?"
+    r"(?:entre|parmi|de)\s+(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_temporel_nway(texte: str):
+    """ARGMIN/ARGMAX sur les DATES d'une LISTE explicite d'événements (« le plus ancien entre Marignan, Verdun et
+    Waterloo »). FAUX=0 : dates vérifiées ; None si < 2 événements datés. Montre l'année gagnante et le décompte."""
+    m = _TEMPON_RE.match(texte.strip())
+    if not m:
+        return None
+    critere = _normalise(m.group(1))
+    ents = [_strip_article(e.strip()) for e in re.split(r"\s*,\s*|\s+et\s+|\s+ou\s+", m.group(2)) if e.strip()]
+    ents = [e for e in ents if e and len(e) >= 2]
+    if len(ents) < 3:                                # 2 -> laissé à _cap_temporel (message dédié)
+        return None
+    dates = [(e,) + _annee_de(e) for e in ents]
+    ok = [(e, a, aff) for (e, a, aff) in dates if a is not None]
+    if len(ok) < 2:
+        return None
+    veut_ancien = ("ancien" in critere or "vieu" in critere or "premi" in critere or "tot" in critere)
+    gagnant = (min if veut_ancien else max)(ok, key=lambda t: t[1])
+    qualif = "le plus ancien" if veut_ancien else "le plus récent"
+    manquants = len(ents) - len(ok)
+    note = "" if manquants == 0 else " (%d sans date, exclu%s)" % (manquants, "s" if manquants > 1 else "")
+    aff = gagnant[2]
+    return "%s (%d) — %s des %d datés%s." % (aff[:1].upper() + aff[1:], gagnant[1], qualif, len(ok), note)
+
+
 # DURÉE d'un événement borné = année de FIN − année de DÉBUT (familles appariées annee_debut_*/annee_fin_*).
 # « combien de temps a duré la guerre de Cent Ans ? » -> 116 ans (1337 → 1453). FAUX=0 : deux dates vérifiées
 # soustraites (sinon None) ; les deux années sont montrées (re-vérifiables).
@@ -3515,7 +3548,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
