@@ -180,6 +180,9 @@ CAS += [
     ("qui a peint le tableau la Joconde ?", "vinci"),
     ("où est né Napoléon Bonaparte ?", "ajaccio"),           # alias -> clé réelle « Napoléon Ier »
     ("quand est mort Napoléon Bonaparte ?", "1821"),
+    ("le bouquin 1984, c'est de qui ?", "orwell"),           # type-word familier + recadrage
+    ("quel est le contraire de grand ?", "petit"),           # antonymes JeuxDeMots (fonction câblée)
+    ("le contraire de chaud ?", "froid"),
 ]
 
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).

@@ -4102,6 +4102,37 @@ _SYSTEME_RE = re.compile(
     r"[^?]*?syst[eè]me\s+(?:(solaire)|(?:de\s+(?:la\s+|l['’])?|d['’])?([\wà-ÿ'’\- ]+?))\s*\??\s*$", re.I)
 
 
+_CONTRAIRE_RE = re.compile(
+    r"(?:quel(?:le)?\s+est\s+)?(?:le\s+|l['’]\s*)?(?:contraire|oppos[ée]|antonyme)\s+"
+    r"(?:de\s+|du\s+|d['’]\s*)(?:la\s+|le\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_contraire(texte: str):
+    """« quel est le contraire de grand ? » -> petit. Réseau lexical JeuxDeMots embarqué (synonymes.contraires,
+    fonction qui existait sans être câblée). Le contraire CANONIQUE est celui dont la relation est RÉCIPROQUE
+    (petit∈contraires(grand) ET grand∈contraires(petit)) ; les autres sont listés en complément. FAUX=0 :
+    relation lexicale sourcée, mot inconnu -> None."""
+    m = _CONTRAIRE_RE.search(texte.strip())
+    if not m:
+        return None
+    mot = _strip_article(m.group(1).strip().strip(" ?.!\"'«»"))
+    if not mot or len(mot) < 2 or " " in mot:
+        return None
+    try:
+        import synonymes as _SYN
+        if not _SYN.disponible():
+            return None
+        cs = _SYN.contraires(mot)
+        if not cs:
+            return None
+        if len(cs) == 1:
+            return "Le contraire de « %s » : %s — réseau lexical JeuxDeMots." % (mot, cs[0])
+        return ("Contraires de « %s » d'après mon réseau lexical (JeuxDeMots) : %s."
+                % (mot, ", ".join(cs[:6])))
+    except Exception:
+        return None
+
+
 _PROTONS_RE = re.compile(
     r"combien\s+(?:de\s+|d['’]?\s*)?(protons?|[ée]lectrons?)\s+(?:a|poss[eè]de|contient|compte)\s+"
     r"(?:le\s+|la\s+|l['’]?\s*)?(.+?)\s*\??\s*$", re.I)
@@ -4809,7 +4840,7 @@ def _cap_oeuvres_de(texte: str):
 # TYPE-WORD d'œuvre en tête d'un titre (« le film Pulp Fiction », « le roman 1984 ») : la clé réelle des
 # datasets est le titre NU — le type est jeté avant lookup (liste fermée de médias).
 _TYPE_OEUVRE_RE = re.compile(
-    r"^(?:le\s+film|le\s+livre|le\s+roman|le\s+tableau|la\s+peinture|la\s+toile|la\s+statue|la\s+sculpture|"
+    r"^(?:le\s+film|le\s+livre|le\s+bouquin|le\s+roman|le\s+tableau|la\s+peinture|la\s+toile|la\s+statue|la\s+sculpture|"
     r"la\s+chanson|la\s+s[ée]rie|le\s+jeu(?:\s+vid[ée]o)?|l['’]\s*album|le\s+morceau|l['’]\s*op[ée]ra|"
     r"la\s+pi[eè]ce(?:\s+de\s+th[ée][âa]tre)?|le\s+po[eè]me|la\s+bd|la\s+bande\s+dessin[ée]e)\s+", re.I)
 
@@ -5783,7 +5814,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_conversion, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_conversion, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

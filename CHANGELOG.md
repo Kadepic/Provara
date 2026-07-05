@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Antonymes câblés + « le bouquin X » + batterie serveur : 44 % → 78 %, zéro FAUX
+
+- **`_cap_contraire`** : « quel est le contraire de grand ? » → *petit, microscopique, bref…* — la fonction
+  `synonymes.contraires` (réseau JeuxDeMots embarqué) existait SANS être câblée nulle part (brique orpheline
+  détectée). Liste honnête sans élection arbitraire (les données JDM sont asymétriques), source nommée.
+- « le **bouquin** 1984, c'est de qui ? » → *George Orwell* (« bouquin » ajouté aux type-words d'œuvre).
+- **Batterie massive REJOUÉE contre le serveur source** (88 questions multi-domaines, port 8899, web OFF) :
+  **69/88 OK (78 %) contre 39/88 (44 %) sur le .exe build 38 — et ZÉRO FAUX** (les 2 FAUX du build 38 sont
+  corrigés ; les 19 restants sont des abstentions honnêtes, majoritairement des trous d'extraction Wikidata
+  documentés : Versailles 1919, Newton et Marie Curie sans occupation/nationalité, Nil/Amazone sans longueur,
+  frontières entre pays absentes, formules chimiques absentes).
+- Banc paraphrases **130/130**, raisonnement 146/146, suite 18/18, challenge 16/16, synonymes 8/8,
+  constructions 4/4.
+
 ## 2026-07-06 — Protons, lunes, et le mur de Berlin : routage verbe→relation de date
 
 - **`_cap_protons`** : « combien de protons a l'hydrogène ? » → *1 proton — le numéro atomique Z (c'est sa
