@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Compréhension ouverte, 2e vague : 60 cas durs à 100 % + vérification d'attributions
+
+- **Banc de paraphrases durci à 60 cas** (indirectes « j'ai oublié qui… », registre soutenu « où a-t-il vu le
+  jour ? », ellipses « capitale Japon ? », doubles topicalisations « et la monnaie, au Japon, c'est quoi ? »,
+  confirmations « c'est bien Tokyo ? », nombres en lettres) : 75 % au départ → **100 %**.
+- **Nouveau cap `_cap_verif_createur`** : « c'est bien Orwell qui a écrit 1984 ? » → « Oui — 1984 a été écrit
+  par George Orwell. » ; un « Non » donne le VRAI créateur (fait vérifié). Accepte le nom de famille seul.
+- **`_reverse_famille` : match par nom de famille** unique (« qu'a écrit Orwell ? » → base « George Orwell ») —
+  abstention si deux personnes distinctes partagent le suffixe (FAUX=0).
+- **Nombres en lettres** dans le calcul (« combien font douze fois huit ? » → 96), conversion fermée uniquement
+  sous intention de calcul explicite.
+- **2 bugs réels de plus** : la guérison « corrigeait » les NUMÉRAUX (« huit »→« hui » — ni noms ni verbes au
+  lexique → ensemble protégé dédié) ; ordre des règles de recadrage (la topicalisation simple masquait la
+  double). Confirmations génériques (« X, c'est bien Y ? ») routées vers la forme à inversion (_oui_non).
+- Raisonnement 97/97, paraphrases 60/60, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — COMPRÉHENSION OUVERTE : 28 % → 100 % sur le banc de paraphrases (recadrage oral)
 
 - **Nouveau thermomètre** `tests/banc_paraphrases.py` : 40 reformulations LIBRES (topicalisées, clivées,

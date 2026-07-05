@@ -273,6 +273,8 @@ _DEVOILE_RE = re.compile(
     r"j['’] ?aimerais(?:\s+bien)?\s+savoir\s+|je\s+(?:veux|voudrais|souhaite(?:rais)?)\s+savoir\s+|"
     r"(?:est[- ]?ce\s+que\s+)?(?:tu\s+peux|peux[- ]?tu|pouvez[- ]?vous|vous\s+pouvez)\s+(?:me|nous)\s+dire\s+|"
     r"sais[- ]?tu\s+|savez[- ]?vous\s+|(?:est[- ]?ce\s+que\s+)?tu\s+sais\s+|"
+    r"j['’] ?ai\s+oublié\s+|je\s+ne\s+sais\s+plus\s+|je\s+me\s+demande(?:\s+bien)?\s+|"
+    r"tu\s+te\s+souviens\s+(?:de\s+)?|vous\s+vous\s+souvenez\s+(?:de\s+)?|rappelle[- ]?moi\s+|rappelez[- ]?moi\s+|"
     r"au\s+fait\s*,?\s+|franchement\s*,?\s+|honnêtement\s*,?\s+|(?:et\s+)?sinon\s*,?\s+|"
     r"bon\s*,\s+|alors\s*,\s+|donc\s*,\s+|s['’] ?il\s+te\s+pla[iî]t\s*,?\s+|stp\s*,?\s+|svp\s*,?\s+)+", re.I)
 _DEVOILE_FIN_RE = re.compile(r"\s*,?\s*(?:s['’] ?il\s+(?:te|vous)\s+pla[iî]t|stp|svp|merci)\s*([?.!]*)\s*$", re.I)
@@ -305,6 +307,9 @@ def _prep_de(m_prep: str) -> str:
 _RECADRE_LEX = (
     (re.compile(r"\ba\s+le\s+plus\s+d['’]\s*habitants\b", re.I), "est le plus peuplé"),
     (re.compile(r"\bont\s+le\s+plus\s+d['’]\s*habitants\b", re.I), "sont les plus peuplés"),
+    # « l'auteur du roman intitulé 1984 » -> « l'auteur de 1984 » (le type-mot + « intitulé » n'est pas la clé)
+    (re.compile(r"\b(?:du|de\s+la|de\s+l['’])\s*(?:roman|livre|film|tableau|morceau|chanson|op[ée]ra|"
+                r"oeuvre|œuvre)\s+intitulée?\s+", re.I), "de "),
 )
 
 _RECADRE_REGLES = (
@@ -315,6 +320,11 @@ _RECADRE_REGLES = (
     (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+qui(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "qui est %s ?" % m.group(1)),
     # « X, c'est de qui ? » -> « de qui est X ? » (créateur générique)
     (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+de\s+qui(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "de qui est %s ?" % m.group(1)),
+    # DOUBLE topicalisation AVANT la simple (sinon « (.+?), c'est quoi » l'avale) : « et la monnaie, au Japon,
+    # c'est quoi ? » -> « c'est quoi la monnaie du Japon ? »
+    (re.compile(r"^\s*(?:et\s+)?(l[ae]\s+[\wà-ÿ]+|l['’][\wà-ÿ]+)\s*,\s*(en|au|aux|à)\s+(.+?)\s*,\s*"
+                r"c['’] ?est\s+(?:quoi|combien|lequel|laquelle)\s*\?*\s*$", re.I),
+     lambda m: "c'est quoi %s %s %s ?" % (m.group(1), _prep_de(m.group(2)), m.group(3))),
     # « c'est quoi (déjà) X » reste canonique ; « X, c'est quoi (déjà) ? » -> « c'est quoi X ? »
     (re.compile(r"^\s*c['’] ?est\s+quoi\s+déjà\s+(.+)$", re.I), lambda m: "c'est quoi " + m.group(1)),
     (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+quoi(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "c'est quoi %s ?" % m.group(1)),
@@ -350,6 +360,27 @@ _RECADRE_REGLES = (
      lambda m: "est-ce que %s est %s %s ?" % (m.group(1), m.group(2), m.group(3))),
     (re.compile(r"^\s*est[- ]?ce\s+qu['’] ?on\s+peut\s+dire\s+qu[e']\s*(.+)$", re.I),
      lambda m: "est-ce que " + m.group(1)),
+    # CONFIRMATION générique : « la capitale du Japon, c'est bien Tokyo ? » -> forme à inversion (_oui_non).
+    # (Après la règle ontologie « c'est bien UN/UNE Y » qui prime.)
+    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+bien\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "%s est-il %s ?" % (m.group(2), m.group(1))),
+    # registre SOUTENU : « en quelle année X s'est-elle déroulée ? » ; « où X a-t-il vu le jour ? »
+    (re.compile(r"^\s*en\s+quelle\s+année\s+(.+?)\s+s['’] ?est[- ](?:il|elle)\s+(?:déroulée?|produite?|tenue?)\s*\?*\s*$", re.I),
+     lambda m: "quand a eu lieu %s ?" % m.group(1)),
+    (re.compile(r"^\s*où\s+(.+?)\s+a[- ]?t[- ]?(?:il|elle)\s+vu\s+le\s+jour\s*\?*\s*$", re.I),
+     lambda m: "où est né %s ?" % m.group(1)),
+    # habitants indirect : « combien d'habitants a la France ? » -> « quelle est la population de la France ? »
+    (re.compile(r"^\s*combien\s+d['’]\s*habitants\s+a\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la population de %s ?" % m.group(1)),
+    # localisation postposée : « elle est où, Tokyo ? » / « ça se trouve où, X ? » -> « où se trouve X ? »
+    (re.compile(r"^\s*(?:il|elle|ça|ca|c['’] ?est)\s+(?:est\s+où|se\s+trouve\s+où|où)\s*,\s*(.+?)\s*\?*\s*$", re.I),
+     lambda m: "où se trouve %s ?" % m.group(1)),
+    # œuvres inversées familières : « il a écrit quoi, Orwell ? » -> « qu'a écrit Orwell ? »
+    (re.compile(r"^\s*(?:il|elle)\s+a\s+(écrit|composé|peint|réalisé|tourné)\s+quoi\s*,\s*(.+?)\s*\?*\s*$", re.I),
+     lambda m: "qu'a %s %s ?" % (m.group(1), m.group(2))),
+    # âge à la mort : « quel âge avait X à sa mort ? » -> « à quel âge est mort X ? »
+    (re.compile(r"^\s*quel\s+âge\s+avait\s+(.+?)\s+à\s+sa\s+mort\s*\?*\s*$", re.I),
+     lambda m: "à quel âge est mort %s ?" % m.group(1)),
     # succession orale : « après X, c'est qui (le roi / la reine / le président) ? »
     (re.compile(r"^\s*après\s+(.+?)\s*,\s*c['’] ?est\s+qui(?:\s+l[ea]\s+[\wà-ÿ]+)?\s*\?*\s*$", re.I),
      lambda m: "qui a succédé à %s ?" % m.group(1)),
@@ -2203,6 +2234,15 @@ def _reponse_calcul(texte: str) -> str | None:
     Le « x » n'est converti en « × » QUE si l'intention de calcul est explicite (sinon « 4 x 100 » reste intact)."""
     if not _CALC_INTENT.search(_normalise(texte)):
         return None
+    # NOMBRES EN LETTRES (« combien font douze fois huit ? ») : conversion FERMÉE, UNIQUEMENT sous intention de
+    # calcul explicite (hors de ce contexte « un/six » resteraient des mots normaux). FAUX=0 : mapping exact.
+    _MOTS_NB = {"zéro": "0", "zero": "0", "un": "1", "une": "1", "deux": "2", "trois": "3", "quatre": "4",
+                "cinq": "5", "six": "6", "sept": "7", "huit": "8", "neuf": "9", "dix": "10", "onze": "11",
+                "douze": "12", "treize": "13", "quatorze": "14", "quinze": "15", "seize": "16", "vingt": "20",
+                "trente": "30", "quarante": "40", "cinquante": "50", "soixante": "60", "cent": "100",
+                "mille": "1000"}
+    texte = re.sub(r"\b(" + "|".join(_MOTS_NB) + r")\b",
+                   lambda mm: _MOTS_NB[mm.group(1).lower()], texte, flags=re.I)
     # « x »/« × » collés ou espacés entre deux nombres -> « * » ESPACÉ (resout_arithmetique exige des espaces).
     p_math = re.sub(r"(?<=\d)\s*[x×]\s*(?=\d)", " * ", texte)
     try:
@@ -3989,6 +4029,41 @@ _CREATEUR_RULES = (
 _CREATEUR_GENERIQUE_RE = re.compile(
     r"^\s*(?:de\s+qui\s+est|qui\s+a\s+(?:fait|créé|cree))\s+(.+?)\s*\??\s*$", re.I)
 
+# VÉRIFICATION créateur : « est-ce qu'Orwell a écrit 1984 ? », « c'est bien Orwell qui a écrit 1984 ? » ->
+# Oui/Non VÉRIFIÉ (le « Non » est sound : le vrai créateur est donné). Marqueur de confirmation OBLIGATOIRE.
+_VERIF_CREATEUR_RE = re.compile(
+    r"^\s*(?:est[- ]?ce\s+qu[e'’]\s*|c['’] ?est\s+bien\s+)(.+?)\s+(?:qui\s+)?a\s+"
+    r"(écrit|composé|peint|réalisé|tourné)\s+(.+?)\s*\??\s*$", re.I)
+_PART_FAMILLE = {"écrit": "auteur", "composé": "compositeur", "peint": "peintre",
+                 "réalisé": "realisateur", "tourné": "realisateur"}
+
+
+def _cap_verif_createur(texte: str):
+    """Confirme/réfute une attribution d'œuvre : « c'est bien Orwell qui a écrit 1984 ? » -> « Oui — 1984 a été
+    écrit par George Orwell. » FAUX=0 : le verdict vient du fait vérifié (nom complet OU nom de famille exact) ;
+    le « Non » donne le vrai créateur (fait vérifié) ; None si le fait manque."""
+    m = _VERIF_CREATEUR_RE.match(texte.strip())
+    if not m:
+        return None
+    qui, part, brut = m.group(1).strip(), m.group(2).lower(), m.group(3).strip().strip(" ?.!\"'«»")
+    head = _PART_FAMILLE.get(part)
+    ent = _strip_article(brut)
+    if not head or not ent or len(ent) < 2 or len(qui.split()) > 5:
+        return None
+    val = None
+    for forme in dict.fromkeys((brut, ent)):
+        val = _lookup_direct(head, forme)
+        if val is not None and str(val).strip():
+            break
+    if val is None or str(val).strip() == "":
+        return None
+    nq, nv = _normalise(_strip_article(qui)), _normalise(str(val))
+    aff = brut[:1].upper() + brut[1:]
+    fem = "e" if brut.lower().startswith("la ") else ""
+    if nq == nv or nv.endswith(" " + nq):             # nom complet OU nom de famille (« Orwell » ⊂ « George Orwell »)
+        return "Oui — %s a été %s%s par %s." % (aff, part, fem, val)
+    return "Non — c'est %s qui a %s %s." % (val, part, brut)
+
 
 # ŒUVRES d'un créateur (reverse) : « qu'a écrit George Orwell ? » -> ses livres. On cherche dans la FAMILLE de
 # relations du verbe (auteur_*, compositeur_*…) les entités dont la valeur = la personne. FAUX=0 : œuvres réelles.
@@ -4007,11 +4082,24 @@ def _reverse_famille(head: str, valeur: str, limite: int = 15):
     """Entités dont la VALEUR = `valeur` dans toutes les relations dont la tête = `head` (auteur_livre, auteur_bd…).
     Union, sans doublon, triée. Utilise _charge_reverse (garde 64 Mo). Pour « les œuvres DE <personne> »."""
     nv = _normalise(valeur)
-    trouve = []
+    trouve, nom_retenu = [], None
     for rel in _relations():
         if rel.split("_")[0] != head:
             continue
-        hit = _charge_reverse(rel).get(nv)
+        idx = _charge_reverse(rel)
+        hit = idx.get(nv)
+        if hit is None and len(nv) >= 4 and " " not in nv:
+            # NOM DE FAMILLE seul (« Orwell » alors que la base dit « George Orwell ») : suffixe UNIQUE exigé
+            # dans la relation ET cohérent entre relations — deux personnes distinctes -> abstention (FAUX=0).
+            cles = [k for k in idx if k.endswith(" " + nv)]
+            noms = {idx[k][0] for k in cles}
+            if len(noms) != 1:
+                continue
+            nom = next(iter(noms))
+            if nom_retenu and _normalise(nom_retenu) != _normalise(nom):
+                return []
+            nom_retenu = nom
+            hit = (nom, sorted({e for k in cles for e in idx[k][1]}))
         if hit and hit[1]:
             for e in hit[1]:
                 if e not in trouve:
@@ -4548,7 +4636,12 @@ _MOTS_OUTILS_PROTEGES = frozenset(
     "ne pas plus moins tres trop peu bien mal tout tous toute toutes rien tres aussi encore deja "
     "avec sans sous sur dans par pour vers chez entre apres avant depuis pendant contre selon malgre "
     "a la le du des ici la bas oui non peut etre".split())
-_PROTEGES = _FORMES_VERBALES_PROTEGEES | _MOTS_OUTILS_PROTEGES
+# NUMÉRAUX : ni noms ni verbes au lexique -> la guérison « corrigeait » « huit » -> « hui » (bug réel). Fermé, sûr.
+_NUMERAUX_PROTEGES = frozenset(
+    "zero un une deux trois quatre cinq six sept huit neuf dix onze douze treize quatorze quinze seize "
+    "vingt trente quarante cinquante soixante cent cents mille million millions milliard milliards "
+    "premier premiere deuxieme troisieme quatrieme cinquieme dixieme centieme".split())
+_PROTEGES = _FORMES_VERBALES_PROTEGEES | _MOTS_OUTILS_PROTEGES | _NUMERAUX_PROTEGES
 
 
 def _guerit_entree(texte: str) -> str:
@@ -4735,7 +4828,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r

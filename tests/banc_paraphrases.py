@@ -71,6 +71,27 @@ CAS = [
     ("la monnaie qu'on utilise au Japon, c'est quoi ?", "yen"),
     ("on paie avec quoi au Japon ?", "yen"),
     ("avec quelle monnaie paie-t-on au Japon ?", "yen"),
+    # ————— 2e VAGUE (plus dure) : indirectes, soutenu, ellipses, doubles topicalisations, confirmations —————
+    ("j'ai oublié qui a écrit 1984", "orwell"),
+    ("je ne sais plus quelle est la capitale du Japon", "tokyo"),
+    ("je me demande combien d'habitants a la France", "68"),
+    ("tu te souviens qui a peint la Joconde ?", "vinci"),
+    ("qui est l'auteur du roman intitulé 1984 ?", "orwell"),
+    ("en quelle année la bataille de Marignan s'est-elle déroulée ?", "1515"),
+    ("où Napoléon Ier a-t-il vu le jour ?", "ajaccio"),
+    ("capitale Japon ?", "tokyo"),
+    ("auteur 1984 ?", "orwell"),
+    ("le Japon, sa capitale, c'est quoi ?", "tokyo"),
+    ("et la monnaie, au Japon, c'est quoi ?", "yen"),
+    ("la capitale du Japon, c'est bien Tokyo ?", "oui"),
+    ("c'est bien Orwell qui a écrit 1984 ?", "oui"),
+    ("de la France, quelle est la population ?", "68"),
+    ("c'est laquelle, la capitale du Japon ?", "tokyo"),
+    ("il a écrit quoi, Orwell ?", "1984"),
+    ("elle est où, Tokyo ?", "japon"),
+    ("ça se trouve où, Tokyo ?", "japon"),
+    ("combien font douze fois huit ?", "96"),
+    ("quel âge avait Napoléon Ier à sa mort ?", "52"),
 ]
 
 
