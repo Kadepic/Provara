@@ -183,6 +183,9 @@ CAS += [
     ("le bouquin 1984, c'est de qui ?", "orwell"),           # type-word familier + recadrage
     ("quel est le contraire de grand ?", "petit"),           # antonymes JeuxDeMots (fonction câblée)
     ("le contraire de chaud ?", "froid"),
+    ("quelle est la langue de Tokyo ?", "japonais"),         # ex-FAUX : « français » (langue d'une ŒUVRE homonyme)
+    ("quelle langue parle-t-on à Tokyo ?", "japonais"),      # locatif recadré + pont ville→pays
+    ("quelle langue parle-t-on au Japon ?", "japonais"),
 ]
 
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).

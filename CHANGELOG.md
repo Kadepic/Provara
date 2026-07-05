@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — FAUX corrigé : « la langue de Tokyo » répondait « français » (l'œuvre homonyme)
+
+- Le lookup direct de « langue de Tokyo » matchait la langue d'une **ŒUVRE nommée « Tokyo »** (film en
+  français) au lieu de la ville. Le PONT ville→pays prime désormais sur le lookup direct pour les attributs
+  PAYS-CONSTANTS quand l'entité est une ville connue de pays_ville → *japonais (en composant : Tokyo est au
+  Japon, puis langue de Japon = japonais)*.
+- Recadrage locatif : « quelle langue parle-t-on **à Tokyo / au Japon** ? » → « quelle est la langue de X »
+  (bonus : « au Japon » répond *japonais* au lieu de déverser la liste des 37 langues/dialectes stockés).
+- Banc paraphrases **133/133** (3 cas), raisonnement 146/146, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — Auto-update ÉPROUVÉ EN RÉEL (build 38 → 39) : 4 bugs du flux trouvés et corrigés
 
 - **Test grandeur nature** : mise à jour appliquée sur le .exe réel — téléchargement du build 39, bascule du

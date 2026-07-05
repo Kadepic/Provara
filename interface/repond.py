@@ -404,6 +404,10 @@ _RECADRE_LEX = (
 )
 
 _RECADRE_REGLES = (
+    # « quelle langue parle-t-on à Tokyo / au Japon ? » -> « quelle est la langue de X » (le pont ville->pays
+    # ou le lookup pays répond ensuite). Locatif à/au/aux/en couvert.
+    (re.compile(r"^\s*quelles?\s+langues?\s+parle[\s-]*t[\s-]*on\s+(?:a|à|au|aux|en)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la langue de %s ?" % m.group(1)),
     # clivées redoublées : « qui c'est qui a écrit X » / « c'est qui qui a écrit X » -> « qui a écrit X »
     (re.compile(r"^\s*(?:qui\s+c['’] ?est\s+qui|c['’] ?est\s+qui\s+qui)\s+(.+)$", re.I), lambda m: "qui " + m.group(1)),
     # « c'est qui X ? » -> « qui est X ? » ; « X, c'est qui (déjà) ? » -> « qui est X ? »
@@ -583,13 +587,16 @@ def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
         rel, reste = dec
         sous_val, sous_steps = _resout_noeud(reste, ia, verifie, prof + 1)   # résout le RESTE en une entité vérifiée
         if sous_val is not None:
-            v = _val_verifiee(ia, verifie, "%s de %s" % (rel, sous_val), rel_head=rel, entite=sous_val)
-            if v is not None:
-                return v, (sous_steps or []) + ["%s de %s = %s" % (rel, sous_val, v)]
-            pont = _pont_ville_pays(ia, verifie, rel, sous_val)              # attribut PAYS-CONSTANT d'une ville
+            # PONT ville->pays AVANT le lookup direct pour un attribut PAYS-CONSTANT d'une VILLE connue :
+            # « langue de Tokyo » en direct matche la langue d'une ŒUVRE homonyme (« Tokyo », film -> français,
+            # FAUX réel trouvé au test) — quand la ville est dans pays_ville, le sens géographique prime.
+            pont = _pont_ville_pays(ia, verifie, rel, sous_val)
             if pont is not None:
                 v, pas = pont
                 return v, (sous_steps or []) + pas
+            v = _val_verifiee(ia, verifie, "%s de %s" % (rel, sous_val), rel_head=rel, entite=sous_val)
+            if v is not None:
+                return v, (sous_steps or []) + ["%s de %s = %s" % (rel, sous_val, v)]
         v = _val_verifiee(ia, verifie, "%s de %s" % (rel, reste), rel_head=rel, entite=reste)  # RESTE = entité littérale
         if v is not None:
             return v, ["%s de %s = %s" % (rel, reste, v)]
