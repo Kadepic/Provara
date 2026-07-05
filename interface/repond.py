@@ -288,6 +288,121 @@ def _devoile(texte: str) -> str:
     return texte
 
 
+# ————— RECADRAGE ORAL (fossé de généralisation, mesuré par tests/banc_paraphrases.py) —————
+# Le français PARLÉ topicalise (« la Joconde, c'est de qui ? »), clive (« c'est qui qui a écrit… »), postpose
+# l'interrogatif (« il est né où, Napoléon ? ») : nos patrons canoniques ratent ces formes. Règles de RÉÉCRITURE
+# STRUCTURELLE fermées -> forme canonique, REJOUÉE dans le pipeline (repli sans perte si échec). FAUX=0 : on ne
+# fait que réordonner les mots de l'utilisateur ; la réponse vient toujours d'un fait vérifié. L'enchaînement de
+# plusieurs règles est géré par la récursion du pipeline (chaque réécriture repasse par (0oral)).
+_PREP_DE = {"au": "du", "aux": "des", "en": "de", "à": "de", "a": "de"}   # « au Japon » -> « du Japon »
+
+
+def _prep_de(m_prep: str) -> str:
+    return _PREP_DE.get(m_prep.lower(), "de")
+
+
+# lexique courant -> canonique (substitution EN PLACE n'importe où dans la phrase, puis rejouée)
+_RECADRE_LEX = (
+    (re.compile(r"\ba\s+le\s+plus\s+d['’]\s*habitants\b", re.I), "est le plus peuplé"),
+    (re.compile(r"\bont\s+le\s+plus\s+d['’]\s*habitants\b", re.I), "sont les plus peuplés"),
+)
+
+_RECADRE_REGLES = (
+    # clivées redoublées : « qui c'est qui a écrit X » / « c'est qui qui a écrit X » -> « qui a écrit X »
+    (re.compile(r"^\s*(?:qui\s+c['’] ?est\s+qui|c['’] ?est\s+qui\s+qui)\s+(.+)$", re.I), lambda m: "qui " + m.group(1)),
+    # « c'est qui X ? » -> « qui est X ? » ; « X, c'est qui (déjà) ? » -> « qui est X ? »
+    (re.compile(r"^\s*c['’] ?est\s+qui\s+(.+?)\s*\?*\s*$", re.I), lambda m: "qui est %s ?" % m.group(1)),
+    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+qui(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "qui est %s ?" % m.group(1)),
+    # « X, c'est de qui ? » -> « de qui est X ? » (créateur générique)
+    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+de\s+qui(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "de qui est %s ?" % m.group(1)),
+    # « c'est quoi (déjà) X » reste canonique ; « X, c'est quoi (déjà) ? » -> « c'est quoi X ? »
+    (re.compile(r"^\s*c['’] ?est\s+quoi\s+déjà\s+(.+)$", re.I), lambda m: "c'est quoi " + m.group(1)),
+    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+quoi(?:\s+déjà)?\s*\?*\s*$", re.I), lambda m: "c'est quoi %s ?" % m.group(1)),
+    # naissance orale : « il est né où, X ? » / « X, il est né où ? » / « où c'est que X est né ? »
+    (re.compile(r"^\s*(?:il|elle)\s+est\s+née?\s+où\s*,\s*(.+?)\s*\?*\s*$", re.I), lambda m: "où est né %s ?" % m.group(1)),
+    (re.compile(r"^\s*(.+?)\s*,\s*(?:il|elle)\s+est\s+née?\s+où\s*\?*\s*$", re.I), lambda m: "où est né %s ?" % m.group(1)),
+    (re.compile(r"^\s*où\s+c['’] ?est\s+qu[e']\s*(.+?)\s+est\s+née?\s*\?*\s*$", re.I), lambda m: "où est né %s ?" % m.group(1)),
+    # temporel oral : « X, c'était quand ? » / « c'était quand, X ? » / « c'était en quelle année, X ? »
+    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?était\s+(?:quand|en\s+quelle\s+année)\s*\?*\s*$", re.I),
+     lambda m: "quand a eu lieu %s ?" % m.group(1)),
+    (re.compile(r"^\s*c['’] ?était\s+(?:quand|en\s+quelle\s+année)\s*,\s*(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quand a eu lieu %s ?" % m.group(1)),
+    # durée orale : « elle a duré combien de temps, X ? » / « X a duré combien de temps ? »
+    (re.compile(r"^\s*(?:elle|il)\s+a\s+duré\s+combien\s+de\s+temps\s*,\s*(.+?)\s*\?*\s*$", re.I),
+     lambda m: "combien de temps a duré %s ?" % m.group(1)),
+    (re.compile(r"^\s*(.+?)\s+a\s+duré\s+combien\s+de\s+temps\s*\?*\s*$", re.I),
+     lambda m: "combien de temps a duré %s ?" % m.group(1)),
+    # calcul postposé : « ça fait combien, EXPR ? » / « EXPR, ça fait combien / ça donne quoi ? »
+    (re.compile(r"^\s*ça\s+fait\s+combien\s*,?\s*(.+?)\s*\?*\s*$", re.I), lambda m: "combien font %s ?" % m.group(1)),
+    (re.compile(r"^\s*(.+?)\s*,?\s*ça\s+(?:fait\s+combien|donne\s+quoi)\s*\?*\s*$", re.I),
+     lambda m: "combien font %s ?" % m.group(1)),
+    # localisation orale : « X, c'est dans quel pays / sur quel continent ? » (+ forme postposée)
+    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+((?:dans|sur)\s+quel(?:le)?\s+[\wà-ÿ]+)\s*\?*\s*$", re.I),
+     lambda m: "%s est %s ?" % (m.group(2), m.group(1))),
+    (re.compile(r"^\s*c['’] ?est\s+((?:dans|sur)\s+quel(?:le)?\s+[\wà-ÿ]+)\s*,\s*(.+?)\s*\?*\s*$", re.I),
+     lambda m: "%s est %s ?" % (m.group(1), m.group(2))),
+    # définition orale : « ça veut dire quoi, X ? » / « X, ça veut dire quoi ? »
+    (re.compile(r"^\s*ça\s+veut\s+dire\s+quoi\s*,?\s*(.+?)\s*\?*\s*$", re.I), lambda m: "que veut dire %s ?" % m.group(1)),
+    (re.compile(r"^\s*(.+?)\s*,?\s*ça\s+veut\s+dire\s+quoi\s*\?*\s*$", re.I), lambda m: "que veut dire %s ?" % m.group(1)),
+    # ontologie orale : « X, c'est bien un Y ? » -> « est-ce que X est un Y ? » ; « est-ce qu'on peut dire
+    # que X … » -> « est-ce que X … » (méta-question = la question elle-même)
+    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+bien\s+(une?)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "est-ce que %s est %s %s ?" % (m.group(1), m.group(2), m.group(3))),
+    (re.compile(r"^\s*est[- ]?ce\s+qu['’] ?on\s+peut\s+dire\s+qu[e']\s*(.+)$", re.I),
+     lambda m: "est-ce que " + m.group(1)),
+    # succession orale : « après X, c'est qui (le roi / la reine / le président) ? »
+    (re.compile(r"^\s*après\s+(.+?)\s*,\s*c['’] ?est\s+qui(?:\s+l[ea]\s+[\wà-ÿ]+)?\s*\?*\s*$", re.I),
+     lambda m: "qui a succédé à %s ?" % m.group(1)),
+    # habitants oral : « combien de gens vivent en X » / « (il) y a combien d'habitants en X » / « X, elle a
+    # combien d'habitants ? » -> « population de X »
+    (re.compile(r"^\s*combien\s+de\s+(?:gens|personnes)\s+vivent\s+(en|au|aux|à)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la population %s %s ?" % (_prep_de(m.group(1)), m.group(2))),
+    (re.compile(r"^\s*(?:il\s+)?y\s+a\s+combien\s+d['’]\s*habitants\s+(en|au|aux|à)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la population %s %s ?" % (_prep_de(m.group(1)), m.group(2))),
+    (re.compile(r"^\s*(.+?)\s*,\s*(?:elle|il)\s+a\s+combien\s+d['’]\s*habitants\s*\?*\s*$", re.I),
+     lambda m: "quelle est la population de %s ?" % m.group(1)),
+    # monnaie orale : « on paie avec quoi au Japon ? » / « avec quelle monnaie paie-t-on en X ? »
+    (re.compile(r"^\s*on\s+pa(?:ie|ye)\s+avec\s+quoi\s+(en|au|aux|à)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la monnaie %s %s ?" % (_prep_de(m.group(1)), m.group(2))),
+    (re.compile(r"^\s*avec\s+quelle\s+monnaie\s+pa(?:ie|ye)[- ]?t[- ]?on\s+(en|au|aux|à)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la monnaie %s %s ?" % (_prep_de(m.group(1)), m.group(2))),
+    # relative d'usage : « la monnaie qu'on utilise au Japon » -> « la monnaie du Japon »
+    (re.compile(r"^\s*(.*?la\s+[\wà-ÿ]+)\s+qu['’] ?on\s+utilise\s+(en|au|aux|à)\s+(.+)$", re.I),
+     lambda m: "%s %s %s" % (m.group(1), _prep_de(m.group(2)), m.group(3))),
+    # type interrogé explicite : « quelle ville est la capitale du Japon ? » -> « quelle est la capitale… »
+    (re.compile(r"^\s*quel(?:le)?\s+(?:ville|pays|personne|fleuve|rivière|montagne|langue)\s+est\s+(.+)$", re.I),
+     lambda m: "quelle est " + m.group(1)),
+    # superlatif en tête interrogative : « quel pays d'Afrique est le plus peuplé ? » -> forme nominale canonique
+    (re.compile(r"^\s*quel(?:le)?\s+pays\s+(d['’]\s*[\wà-ÿ]+|de\s+[\wà-ÿ' ]+?)\s+est\s+l[ea]\s+plus\s+([\wà-ÿ]+)\s*\?*\s*$", re.I),
+     lambda m: "le pays le plus %s %s" % (m.group(2), m.group(1))),
+    # comparaison 2 entités orale : « lequel est le plus ADJ : A ou B ? » / « entre A et B, qui est le plus ADJ ? »
+    (re.compile(r"^\s*(?:lequel|laquelle|qui)\s+est\s+l[ea]\s+plus\s+([\wà-ÿ]+)\s*[:,]\s*(.+?)\s+ou\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "%s est-il plus %s que %s ?" % (m.group(2), m.group(1), m.group(3))),
+    (re.compile(r"^\s*entre\s+(.+?)\s+et\s+(.+?)\s*,\s*(?:qui|lequel|laquelle)\s+est\s+l[ea]\s+plus\s+([\wà-ÿ]+)\s*\?*\s*$", re.I),
+     lambda m: "%s est-il plus %s que %s ?" % (m.group(1), m.group(3), m.group(2))),
+    # suspens final : « le pays le plus peuplé d'Afrique, c'est lequel ? » -> la forme nominale nue suffit
+    (re.compile(r"^\s*(.+?)\s*,\s*c['’] ?est\s+(?:lequel|laquelle|lesquels|lesquelles)\s*\?*\s*$", re.I),
+     lambda m: "%s ?" % m.group(1)),
+)
+
+
+def _recadre_oral(texte: str) -> str | None:
+    """Réécrit UNE construction orale vers sa forme canonique (première règle qui matche), ou None. Les
+    enchaînements (plusieurs constructions imbriquées) se résolvent par récursion du pipeline."""
+    for patron, canon in _RECADRE_LEX:                       # lexique en place (peut cohabiter avec une règle)
+        lex = patron.sub(canon, texte)
+        if _normalise(lex) != _normalise(texte):
+            return lex
+    for patron, produit in _RECADRE_REGLES:
+        m = patron.match(texte)
+        if m:
+            reecrit = produit(m).strip()
+            if reecrit and _normalise(reecrit) != _normalise(texte):
+                return reecrit
+            return None
+    return None
+
+
 def _decoupe_relation(expr: str):
     """Sépare « REL de RESTE » au PREMIER connecteur tel que REL (article retiré) soit une TÊTE de relation connue.
     Si le 1er segment n'est pas une relation (il fait partie d'une entité multi-mot), on essaie le connecteur suivant.
@@ -725,7 +840,22 @@ def _relations_date() -> list:
 def _annee_de(entite: str):
     """Année associée à un événement/entité, cherchée dans les relations de dates (1re trouvée). (annee:int, affiché)
     ou (None, None). RAM-sûr : via _lookup_cell -> les gros fichiers de dates (annee_naissance_personne 150 Mo,
-    annee_deces 79 Mo) sont lus en STREAMING ciblé, jamais matérialisés en dict de centaines de Mo."""
+    annee_deces 79 Mo) sont lus en STREAMING ciblé, jamais matérialisés en dict de centaines de Mo.
+    NOM NU CÉLÈBRE (« Marignan ») : l'ÉVÉNEMENT du même nom (« bataille de Marignan », date_evenement) prime sur
+    un homonyme obscur d'une autre relation (« Marignan » -> annee_dissolution 1790 d'une commune). Le nom résolu
+    est AFFICHÉ en entier (« bataille de Marignan ») : l'utilisateur voit quel sens a été retenu — sound."""
+    if len(entite.split()) <= 2:                          # nom court -> tenter l'événement explicite d'abord
+        for tete, rels in (("bataille de %s", ("annee_debut_bataille", "date_evenement")),
+                           ("bataille d'%s", ("annee_debut_bataille", "date_evenement")),
+                           ("guerre de %s", ("annee_debut_guerre", "date_evenement")),
+                           ("siège de %s", ("date_evenement",)),
+                           ("traité de %s", ("date_evenement",))):
+            for rel in rels:
+                cell = _lookup_cell(rel, tete % entite)
+                if cell:
+                    a = _nombre(cell[1])
+                    if a is not None:
+                        return int(a), cell[0]
     for rel in _relations_date():
         cell = _lookup_cell(rel, entite)
         if cell:
@@ -1155,15 +1285,40 @@ def _cap_dimension(texte: str):
         return None
     if _est_concept_commun(ent):                         # « longueur du bonheur » : nom commun -> pas une entité mesurable
         return None
-    val = _lookup_direct(dim, ent)
+    # dimensions SŒURS (« hauteur du mont Everest » : la donnée vit dans altitude_montagne). Le TYPE-WORD de
+    # l'entité (« MONT Everest ») DÉSAMBIGUÏSE : il désigne la relation typée (altitude_MONTAGNE) là où le nom
+    # nu est ambigu (« Everest » est aussi une localité à 350 m). Piste « ne jamais figer l'atome » : l'entité
+    # apparente cache (type + nom) — on exploite les deux au lieu de jeter le type.
+    dims = (dim,) + {"hauteur": ("altitude",), "altitude": ("hauteur",)}.get(dim, ())
+    type_rels, nu = (), None
+    for pref, types in (("mont ", ("montagne", "sommet")), ("montagne ", ("montagne",)),
+                        ("pic ", ("pic", "sommet", "montagne")), ("mont-", ("montagne", "sommet")),
+                        ("lac ", ("lac",)), ("île ", ("ile",)), ("ile ", ("ile",))):
+        if ent.lower().startswith(pref) and len(ent) > len(pref) + 1:
+            type_rels, nu = types, ent[len(pref):]
+            break
+    val = None
+    for d in dims:
+        if nu:                                           # typé : la relation du TYPE d'abord (précise, non ambiguë)
+            for rel in _relations():
+                if rel.split("_")[0] == d and any(t in rel for t in type_rels):
+                    cell = _lookup_cell(rel, nu)
+                    if cell and cell[1] not in (None, ""):
+                        val = cell[1]
+                        break
+        if val is None or str(val).strip() == "":
+            val = _lookup_direct(d, ent)                 # forme complète (unicité exigée across la famille)
+        if val is not None and str(val).strip():
+            break
     if val is None or str(val).strip() == "":
         return None
     n = _nombre(val)
     unite = _DIMENSION_UNITE.get(dim, "")
+    de_ent = ("du %s" % ent) if ent.lower().startswith(("mont ", "pic ", "lac ")) else ("de %s" % ent)
     if n is not None and unite:
         aff = format(int(n), ",d").replace(",", " ") if float(n).is_integer() else "%g" % n
-        return "%s de %s : %s %s." % (dim.capitalize(), ent, aff, unite)
-    return "%s de %s : %s." % (dim.capitalize(), ent, val)
+        return "%s %s : %s %s." % (dim.capitalize(), de_ent, aff, unite)
+    return "%s %s : %s." % (dim.capitalize(), de_ent, val)
 
 
 # MÊME ATTRIBUT ? « la France et l'Allemagne sont-elles sur le même continent ? » -> compare la valeur d'un attribut
@@ -2753,7 +2908,8 @@ def _diagnostic_connaissance(texte: str):
     """« diagnostic » / « combien de faits connais-tu » -> état RÉEL de la connaissance chargée (nb relations/faits +
     d'où viennent les données). Sert à vérifier que Provara a bien accès à sa base (utile pour déboguer le .exe)."""
     n = _normalise(texte).strip()
-    if not (n == "diagnostic" or ("combien" in n and ("relation" in n or "fait" in n or "chose" in n))):
+    # « combien DE faits/relations » exigé : la sous-chaîne nue capturait « ça FAIT combien, 12 fois 8 ? ».
+    if not (n == "diagnostic" or re.search(r"combien\s+de\s+(?:relations?|faits?|choses?)\b", n)):
         return None
     try:
         import os, lecteur
@@ -3828,6 +3984,11 @@ _CREATEUR_RULES = (
      "auteur_decouverte", "%s a été découvert par %s"),
 )
 
+# CRÉATEUR SANS MÉDIA NOMMÉ : « de qui est la Joconde ? », « qui a fait Guernica ? » — la famille est inconnue,
+# on les essaie toutes (auteur, peintre, compositeur, réalisateur, sculpteur) dans _cap_createur.
+_CREATEUR_GENERIQUE_RE = re.compile(
+    r"^\s*(?:de\s+qui\s+est|qui\s+a\s+(?:fait|créé|cree))\s+(.+?)\s*\??\s*$", re.I)
+
 
 # ŒUVRES d'un créateur (reverse) : « qu'a écrit George Orwell ? » -> ses livres. On cherche dans la FAMILLE de
 # relations du verbe (auteur_*, compositeur_*…) les entités dont la valeur = la personne. FAUX=0 : œuvres réelles.
@@ -3905,6 +4066,31 @@ def _cap_createur(texte: str):
         if affiche.lower().startswith("la "):            # accord du participe (« La Joconde a été peintE par »)
             gabarit = gabarit.replace(" par ", "e par ", 1)
         return (gabarit % (affiche[:1].upper() + affiche[1:], val)) + "."
+    # CRÉATEUR GÉNÉRIQUE (« de qui est X ? », « qui a fait/créé X ? ») : le média n'est pas nommé -> on essaie
+    # les familles créatives dans l'ordre. FAUX=0 : premier fait vérifié trouvé, sinon None.
+    mg = _CREATEUR_GENERIQUE_RE.match(texte.strip())
+    if mg:
+        brut = mg.group(1).strip().strip(" ?.!\"'«»")
+        ent = _strip_article(brut)
+        if ent and len(ent) >= 2:
+            trouves = []                                     # (forme, participe, créateur) — TOUS les sens vérifiés
+            for head, part in (("auteur", "écrit"), ("peintre", "peint"), ("compositeur", "composé"),
+                               ("realisateur", "réalisé"), ("sculpteur", "sculpté")):
+                for forme in dict.fromkeys((brut, ent)):     # forme AVEC article d'abord (clé la plus spécifique)
+                    val = _lookup_direct(head, forme)
+                    if val is not None and str(val).strip() and all(v != val for _f, _p, v in trouves):
+                        trouves.append((forme, part, val))
+                        break
+            if len(trouves) == 1:
+                forme, part, val = trouves[0]
+                fem = "e" if forme.lower().startswith("la ") else ""
+                return "%s a été %s%s par %s." % (forme[:1].upper() + forme[1:], part, fem, val)
+            if len(trouves) >= 2:
+                # HOMONYMIE d'œuvres (« Joconde » = tableau de Vinci ET conte de La Fontaine) : on LISTE les
+                # sens vérifiés au lieu d'en choisir un au hasard — FAUX=0 exige de ne pas trancher sans fait.
+                lignes = "\n".join("· %s%s par %s" % (p, "e" if f.lower().startswith("la ") else "", v)
+                                   for f, p, v in trouves)
+                return "Plusieurs œuvres portent ce nom — voici ce que j'ai de vérifié :\n%s" % lignes
     return None
 
 
@@ -4377,7 +4563,9 @@ def _guerit_entree(texte: str) -> str:
     except Exception:
         return texte
     noms, verbes = valides if valides else (set(), set())
-    gate = (lambda mn: mn in _PROTEGES or mn in noms
+    # PLURIELS reconnus : « habitants » est un mot FR valide même si le lexique ne liste que « habitant » —
+    # sans ça, la guérison « corrigeait » un pluriel légitime vers le singulier du vocabulaire (bug réel).
+    gate = (lambda mn: mn in _PROTEGES or mn in noms or _singulier_fr(mn) in noms
             or _fait_forme_verbale(mn, verbes)) if (noms or verbes) else None
     return _CO.guerit(texte, vn, pi, gate)
 
@@ -4526,6 +4714,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         rep_nu = _repond_noyau(memoire, conv_id, t_nu, pleine=pleine)
         if rep_nu and rep_nu != _MSG_WEB_COUPE and not rep_nu.startswith(_MSG_INCONNU_PREFIXE):
             return rep_nu
+    #   (0oral) RECADRAGE ORAL : topicalisation (« la Joconde, c'est de qui ? »), clivées (« c'est qui qui… »),
+    #       interrogatifs postposés (« il est né où, Napoléon ? »)… réécrits vers la forme CANONIQUE et rejoués.
+    #       FAUX=0 : réordonnancement des mots de l'utilisateur, aucune invention ; repli sans perte si échec.
+    t_oral = _recadre_oral(t)
+    if t_oral:
+        rep_oral = _repond_noyau(memoire, conv_id, t_oral, pleine=pleine)
+        if rep_oral and rep_oral != _MSG_WEB_COUPE and not rep_oral.startswith(_MSG_INCONNU_PREFIXE):
+            return rep_oral
     #   (0quater) SCHÉMA VISUEL : « montre-moi ce que tu sais sur X » -> graphe SVG des relations connues de X.
     if pleine:
         _sch = _demande_schema(t)

@@ -1,5 +1,26 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — COMPRÉHENSION OUVERTE : 28 % → 100 % sur le banc de paraphrases (recadrage oral)
+
+- **Nouveau thermomètre** `tests/banc_paraphrases.py` : 40 reformulations LIBRES (topicalisées, clivées,
+  familières, postposées) mesurent la compréhension ouverte de bout en bout. Base de départ : **11/40 (28 %)**.
+- **Recadrage oral** (`_recadre_oral`, étage 0oral) : ~25 règles de réécriture STRUCTURELLE fermées du français
+  parlé vers la forme canonique, rejouée avec repli sans perte — « la Joconde, c'est de qui ? », « c'est qui qui
+  a écrit… », « il est né où, Napoléon ? », « ça fait combien, 12 fois 8 ? », « on paie avec quoi au Japon ? »,
+  « après Louis XIV, c'est qui le roi ? », « X, c'est bien un animal ? »… FAUX=0 : réordonnancement des mots de
+  l'utilisateur, la réponse vient toujours d'un fait vérifié. Score final : **40/40 (100 %)**, zéro régression.
+- **Créateur générique avec désambiguïsation** : « de qui est X / qui a fait X » essaie toutes les familles
+  créatives ; en HOMONYMIE d'œuvres, liste les sens vérifiés au lieu de trancher au hasard (« Joconde » =
+  tableau de Vinci ET conte de La Fontaine — les deux sont donnés).
+- **3 bugs réels préexistants corrigés** : (a) le diagnostic système se déclenchait sur « ça FAIT combien, 12
+  fois 8 ? » (sous-chaîne) ; (b) la guérison « corrigeait » les PLURIELS légitimes (« habitants »→« habitant »,
+  gate sans singularisation) ; (c) « hauteur du mont Everest » échouait : « Everest » est AUSSI une localité à
+  350 m — le TYPE-WORD (« mont ») désambiguïse désormais vers la relation typée (altitude_montagne), au lieu
+  d'être jeté (piste « ne jamais figer l'atome »).
+- **Nom nu d'événement célèbre** : « c'était quand, Marignan ? » → « bataille de Marignan » (annee_debut_bataille,
+  1515) prime sur l'homonyme obscur (commune dissoute en 1790) — le nom RÉSOLU est affiché en entier.
+- Banc raisonnement 97/97, paraphrases 40/40, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — Fossé de généralisation : DÉVOILEMENT de l'enrobage conversationnel + verbes familiers
 
 - **Couche de dévoilement** (`_devoile`, étage 0dev de `_repond_noyau`) : les caps s'ancrent en `^` — « dis-moi
