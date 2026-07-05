@@ -3620,6 +3620,61 @@ _CREATEUR_RULES = (
 )
 
 
+# ŒUVRES d'un créateur (reverse) : « qu'a écrit George Orwell ? » -> ses livres. On cherche dans la FAMILLE de
+# relations du verbe (auteur_*, compositeur_*…) les entités dont la valeur = la personne. FAUX=0 : œuvres réelles.
+_OEUVRES_RE = re.compile(
+    r"^\s*(?:qu['’]?\s*a[- ]t[- ](?:il|elle)\s+(écrit|compos[ée]|r[ée]alis[ée]|peint|invent[ée])"
+    r"|qu['’]?\s*a\s+(écrit|compos[ée]|r[ée]alis[ée]|peint|invent[ée])"
+    r"|quelles?\s+(?:sont\s+les\s+)?(?:œuvres|oeuvres|livres|romans|tableaux|films|compositions)\s+"
+    r"(?:a[- ]t[- ](?:il|elle)\s+(?:écrit|compos[ée]|r[ée]alis[ée])\s+|d[eu'’]\s*|écrit\w*\s+par\s+))\s*(.+?)\s*\??\s*$",
+    re.I)
+_OEUVRES_VERBE_HEAD = {"ecrit": "auteur", "compose": "compositeur", "composee": "compositeur",
+                       "realise": "realisateur", "realisee": "realisateur", "peint": "peintre",
+                       "invente": "inventeur", "inventee": "inventeur"}
+
+
+def _reverse_famille(head: str, valeur: str, limite: int = 15):
+    """Entités dont la VALEUR = `valeur` dans toutes les relations dont la tête = `head` (auteur_livre, auteur_bd…).
+    Union, sans doublon, triée. Utilise _charge_reverse (garde 64 Mo). Pour « les œuvres DE <personne> »."""
+    nv = _normalise(valeur)
+    trouve = []
+    for rel in _relations():
+        if rel.split("_")[0] != head:
+            continue
+        hit = _charge_reverse(rel).get(nv)
+        if hit and hit[1]:
+            for e in hit[1]:
+                if e not in trouve:
+                    trouve.append(e)
+        if len(trouve) >= limite * 2:
+            break
+    return sorted(trouve)[:limite]
+
+
+def _cap_oeuvres_de(texte: str):
+    """ŒUVRES d'un créateur : « qu'a écrit George Orwell ? » / « quelles œuvres de Proust ? » -> la liste. Reverse
+    sur la famille du verbe. FAUX=0 : œuvres réellement attribuées, ou None. Léger."""
+    m = _OEUVRES_RE.match(texte.strip())
+    if not m:
+        return None
+    verbe = next((g for g in m.groups()[:-1] if g), None)
+    pers = _strip_article(m.group(m.lastindex).strip())
+    if not pers or len(pers) < 3:
+        return None
+    # verbe absent (« quelles œuvres de Proust ») -> on tente toutes les familles créatives
+    heads = [_OEUVRES_VERBE_HEAD[_normalise(verbe)]] if verbe else ["auteur", "compositeur", "realisateur", "peintre"]
+    oeuvres = []
+    for h in heads:
+        oeuvres = _reverse_famille(h, pers)
+        if oeuvres:
+            break
+    if not oeuvres:
+        return None
+    aff = ", ".join(o for o in oeuvres)
+    suite = " …" if len(oeuvres) >= 15 else ""
+    return "%s : %s%s." % (pers[:1].upper() + pers[1:], aff, suite)
+
+
 def _cap_createur(texte: str):
     """CRÉATEUR d'une œuvre : « qui a écrit 1984 ? » -> George Orwell ; « qui a composé le Boléro ? » -> Ravel ;
     « qui a réalisé Titanic ? » -> Cameron. Via _lookup_direct sur la famille du verbe. FAUX=0 : valeur UNIQUE
@@ -4256,7 +4311,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_createur, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_createur, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
