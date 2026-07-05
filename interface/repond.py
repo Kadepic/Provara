@@ -3709,6 +3709,17 @@ _FORMES_VERBALES_PROTEGEES = frozenset(
     "pouvait pouvais peut peux peuvent pouvait pourra pourrait pouvoir "
     "devait doit dois doivent devra devrait devoir voulait veut veux veulent voudrait vouloir "
     "allait va vais vont allait ira irait aller vint vient viennent venait venir".split())
+# MOTS-OUTILS FR courants à PROTÉGER de la guérison : articles/déterminants/pronoms/prépositions/conjonctions/
+# adverbes fréquents. Sans ça, des mots ULTRA-courants étaient « corrigés » vers un mot-vocab proche (« des »->
+# « dis », « pas »->« pays », « peu »->« peux », « tes »->« tres », « ses »->« sens »). Ensemble fermé, sûr.
+_MOTS_OUTILS_PROTEGES = frozenset(
+    "le la les un une des du de au aux d l ce cet cette ces mon ton son ma ta sa mes tes ses notre votre leur "
+    "leurs nos vos je tu il elle on nous vous ils elles me te se lui y en moi toi soi eux "
+    "et ou ni or car mais donc que qui quoi dont ou si comme quand puisque lorsque parce "
+    "ne pas plus moins tres trop peu bien mal tout tous toute toutes rien tres aussi encore deja "
+    "avec sans sous sur dans par pour vers chez entre apres avant depuis pendant contre selon malgre "
+    "a la le du des ici la bas oui non peut etre".split())
+_PROTEGES = _FORMES_VERBALES_PROTEGEES | _MOTS_OUTILS_PROTEGES
 
 
 def _guerit_entree(texte: str) -> str:
@@ -3723,7 +3734,7 @@ def _guerit_entree(texte: str) -> str:
     except Exception:
         return texte
     noms, verbes = valides if valides else (set(), set())
-    gate = (lambda mn: mn in _FORMES_VERBALES_PROTEGEES or mn in noms
+    gate = (lambda mn: mn in _PROTEGES or mn in noms
             or _fait_forme_verbale(mn, verbes)) if (noms or verbes) else None
     return _CO.guerit(texte, vn, pi, gate)
 
