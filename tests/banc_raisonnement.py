@@ -84,6 +84,7 @@ CAS = [
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
     ("portrait-personne-fem", R._cap_portrait_personne, "qui était Marie Curie ?", "née"),
+    ("guerison-etait", R._guerit_entree, "qui était Marie Curie ?", "était"),  # « était » protégé (pas -> « état »)
     ("fait-personne-lieu", R._cap_fait_personne, "où est né Napoléon Ier ?", "Ajaccio"),
     ("fait-personne-fem", R._cap_fait_personne, "où est morte Marie Curie ?", "est morte"),
     # gardes FAUX=0

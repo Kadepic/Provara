@@ -3699,6 +3699,18 @@ def _guerison():
     return _GUERISON_CACHE
 
 
+# formes verbales IRRÉGULIÈRES fréquentes (être/avoir + auxiliaires) à PROTÉGER de la guérison : « était » n'est
+# ni un nom ni reconstructible par conjugaison régulière -> sans ça, il était « corrigé » en « état » et cassait
+# « qui était X ? ». Ensemble fermé, sûr (ce sont de vrais mots FR courants).
+_FORMES_VERBALES_PROTEGEES = frozenset(
+    "etait etais etaient etant ete est es sont suis sommes etes fut furent sera seront serait etre "
+    "avait avais avaient ayant eu ont avons avez ai as sera aura auront aurait avoir "
+    "faisait faisais faisaient fait faisant fera feront ferait faire "
+    "pouvait pouvais peut peux peuvent pouvait pourra pourrait pouvoir "
+    "devait doit dois doivent devra devrait devoir voulait veut veux veulent voudrait vouloir "
+    "allait va vais vont allait ira irait aller vint vient viennent venait venir".split())
+
+
 def _guerit_entree(texte: str) -> str:
     """Corrige les fautes de frappe de l'entrée vers un vocabulaire FERMÉ (social/interrogatif/têtes de relations),
     par FUSION distance d'édition (Damerau) ⊕ clé phonétique française, SANS jamais toucher un mot FR valide ni une
@@ -3711,7 +3723,8 @@ def _guerit_entree(texte: str) -> str:
     except Exception:
         return texte
     noms, verbes = valides if valides else (set(), set())
-    gate = (lambda mn: mn in noms or _fait_forme_verbale(mn, verbes)) if (noms or verbes) else None
+    gate = (lambda mn: mn in _FORMES_VERBALES_PROTEGEES or mn in noms
+            or _fait_forme_verbale(mn, verbes)) if (noms or verbes) else None
     return _CO.guerit(texte, vn, pi, gate)
 
 
