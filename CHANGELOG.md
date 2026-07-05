@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Créateur : type-words d'œuvre + alias de personnes célèbres
+
+- « qui a réalisé **le film** Pulp Fiction ? » échouait (la clé réelle est le titre NU) : liste fermée
+  `_TYPE_OEUVRE_RE` (film/livre/roman/tableau/statue/chanson/série/jeu/album/opéra/pièce/poème/BD) jetée avant
+  lookup → *Quentin Tarantino* ; « le roman 1984 », « le tableau la Joconde » pareil.
+- Étage **(0alias)** : « **Napoléon Bonaparte** » → « Napoléon Ier » (la clé RÉELLE de toutes les relations de
+  personnes) — carte FERMÉE d'identités incontestables (même être humain), motifs accent-tolérants, question
+  réécrite rejouée par le pipeline complet. « où est né / quand est mort / qui était Napoléon Bonaparte »
+  répondent désormais (Ajaccio, 1821, fiche complète).
+- Banc paraphrases **127/127** (10e vague), raisonnement 139/139, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — Records géographiques mondiaux : la couche curée qui évite les FAUX d'argmax
 
 - **Pourquoi pas un simple argmax sur les tables ?** Audit des données : `altitude_montagne` contient 37
