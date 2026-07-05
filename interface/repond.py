@@ -5220,7 +5220,10 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         enonces = [h for h in hits
                    if h.get("role") == "user"
                    and h["texte"].strip() != t
-                   and not _veut_reponse(h["texte"])]   # exclut TOUTE question (même sans « ? ») : pas une réponse
+                   # exclut TOUTE question (même sans « ? », même en SMS : « cest koi… » -> « c'est quoi… ») :
+                   # une question stockée n'est pas une RÉPONSE à rappeler (sinon un « capitale du wakanda » ressort
+                   # un « cest koi la capitale du japon » demandé plus tôt — non-sequitur).
+                   and not _veut_reponse(h["texte"]) and not _veut_reponse(_desms(h["texte"]))]
         if enonces:
             return f"{_MSG_RAPPEL_PREFIXE}« {enonces[0]['texte']} »"
 

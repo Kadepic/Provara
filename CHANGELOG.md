@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — E2E serveur réel 14/14 des nouveautés + bug de rappel mémoire (question SMS) corrigé
+
+- **Validation E2E serveur réel 14/14** (mémoire vierge, base complète, web coupé) des briques de la session
+  non couvertes par l'E2E précédent : SMS+oral+fautes empilés, anaphores multi-tours, abstention structurée
+  3e famille, hyponymes « quels X sont des Y » + anti-bruit, gate de pertinence web. Script `e2e_session2.sh`.
+- **Bug réel démasqué et corrigé** : une QUESTION stockée en langage SMS (« cest koi la capitale du japon »)
+  n'était pas reconnue comme question par le filtre de rappel mémoire (`_veut_reponse` ne voit pas « cest
+  koi ») → elle ressortait comme un énoncé rapporté (« D'après ce que tu m'as dit : … ») à une question sans
+  rapport (« capitale du wakanda »). Le filtre applique désormais `_desms` avant `_veut_reponse` : une question
+  SMS est exclue des rappels comme toute autre question.
+- Raisonnement **105/105**, paraphrases 79/79, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — Hyponymes : nouveau phrasé « quels X sont des Y » + filtre anti-bruit
 
 - Sonde de 10 questions « mot inconnu / exemples » : la décomposition par définitions marche déjà largement

@@ -155,6 +155,10 @@ CAS = [
     ("hypo-quels-animaux", R._cap_hyponymes, "quels animaux sont des félins ?", "lion"),
     ("hypo-anti-bruit", lambda q: "BRUIT" if "la recherche" in (R._cap_hyponymes(q) or "") else "OK",
      "cite des cétacés", "OK"),
+    # filtre de rappel mémoire : une QUESTION stockée en SMS ne doit pas être ressortie comme une « réponse »
+    # (« cest koi la capitale du japon » est une question, pas un énoncé à rappeler).
+    ("rappel-question-sms", lambda q: "QUESTION" if (R._veut_reponse(q) or R._veut_reponse(R._desms(q)))
+     else "ENONCE", "cest koi la capitale du japon", "QUESTION"),
 ]
 
 
