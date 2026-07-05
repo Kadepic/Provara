@@ -64,6 +64,7 @@ CAS = [
     ("meme-attribut-non", R._cap_meme_attribut, "la France et le Japon sont-ils sur le même continent ?", "Non"),
     ("dimension-superficie", R._cap_dimension, "quelle est la superficie de la France ?", "551 695 km²"),
     ("dimension-hauteur", R._cap_dimension, "quelle est la hauteur de A'DAM ?", "100 m"),
+    ("faux-dimension-concept", R._cap_dimension, "quelle est la longueur du bonheur ?", ""),  # nom commun -> abstention
     ("comparaison-superficie", R._cap_comparaison, "la France est-elle plus vaste que l'Espagne ?", "Oui"),
     ("comparaison-altitude", R._cap_comparaison, "l'Abendberg est-il plus haut que l'Ahintziaga ?", "plus haut"),
     ("comparaison-riche", R._cap_comparaison, "la France est-elle plus riche que l'Espagne ?", "Oui"),

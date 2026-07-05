@@ -1085,6 +1085,8 @@ def _cap_dimension(texte: str):
     dim, ent = _normalise(m.group(1)), _strip_article(m.group(2).strip())
     if not ent or len(ent) < 2 or len(ent.split()) > 6:
         return None
+    if _est_concept_commun(ent):                         # « longueur du bonheur » : nom commun -> pas une entité mesurable
+        return None
     val = _lookup_direct(dim, ent)
     if val is None or str(val).strip() == "":
         return None
