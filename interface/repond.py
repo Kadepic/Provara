@@ -4892,6 +4892,76 @@ def _parse_svo_libre(texte: str, conv_id: str | None = None):
     return None
 
 
+# ————— RECORDS GÉOGRAPHIQUES MONDIAUX (couche curée, vérifiée LIVE contre les données quand elles existent) —————
+# Les argmax MONDE sur les tables brutes seraient FAUX : altitude_montagne contient 37 reliefs MARTIENS/vénusiens
+# (Tharsis Tholus 8 930 m > Everest !), longueur_fleuve ne couvre NI le Nil NI l'Amazone, superficie_ile n'a pas
+# le Groenland (audit 2026-07-06). Cette table FERMÉE porte les records incontestables ; quand la donnée existe
+# (Everest, Sahara, planètes) la valeur est RELUE en direct ; les primautés DISPUTÉES (Nil/Amazone) sont dites
+# disputées — jamais tranchées arbitrairement.
+_RECORD_ADJS = r"(haute?s?|grande?s?|long(?:ue)?s?|vastes?|profonde?s?)"
+_RECORD_TYPES = r"(sommet|montagne|fleuve|rivi[eè]re|[îi]le|d[ée]sert|oc[ée]an|lac|plan[eè]te|fosse)"
+_RECORD_MONDE_FIN = r"(?:\s+(?:du\s+monde|au\s+monde|de\s+la\s+plan[eè]te|sur\s+terre|du\s+syst[eè]me\s+solaire))?\s*\??\s*$"
+_RECORD_MONDE_RE = re.compile(              # « le plus haut sommet (du monde) »
+    r"(?:quel(?:le)?\s+(?:est\s+)?)?(?:la\s+|le\s+|l['’]\s*)?plus\s+" + _RECORD_ADJS + r"\s+"
+    + _RECORD_TYPES + _RECORD_MONDE_FIN, re.I)
+_RECORD_MONDE_INV_RE = re.compile(          # « quel sommet est le plus haut (du monde) »
+    r"quel(?:le)?\s+" + _RECORD_TYPES + r"\s+est\s+(?:la\s+|le\s+|l['’]\s*)?plus\s+"
+    + _RECORD_ADJS + _RECORD_MONDE_FIN, re.I)
+_RECORD_MONDE_POST_RE = re.compile(         # « le lac le plus profond (du monde) »
+    r"(?:la\s+|le\s+|l['’]\s*)" + _RECORD_TYPES + r"\s+(?:la\s+|le\s+)?plus\s+"
+    + _RECORD_ADJS + _RECORD_MONDE_FIN, re.I)
+
+
+def _cap_record_monde(texte: str):
+    """RECORDS mondiaux fermés (« le plus haut sommet du monde ? » -> Everest). Voir bloc de commentaire
+    ci-dessus : données relues quand présentes, disputes dites disputées, trous de table signalés."""
+    t = texte.strip()
+    m = _RECORD_MONDE_RE.search(t)
+    if m:
+        adj, typ = _normalise(m.group(1)), _normalise(m.group(2))
+    else:
+        m = _RECORD_MONDE_INV_RE.search(t) or _RECORD_MONDE_POST_RE.search(t)
+        if not m:
+            return None
+        typ, adj = _normalise(m.group(1)), _normalise(m.group(2))
+    adj = adj.rstrip("es") if adj not in ("vaste", "vastes") else "vaste"   # haute->haut, longue->longu, long->long
+    if typ in ("sommet", "montagne") and adj in ("haut", "grand"):
+        cell = _lookup_cell("altitude_montagne", "Everest")
+        alt = (" — %s m d'altitude, fait vérifié dans mes données" % cell[1]) if cell else ""
+        return "L'Everest%s. C'est le plus haut sommet du monde." % alt
+    if typ in ("fleuve", "riviere") and adj in ("long", "longu", "grand"):
+        return ("Le Nil (≈ 6 650 km) ou l'Amazone (6 400 à 7 000 km selon le tracé retenu) : la primauté est "
+                "scientifiquement DISPUTÉE — je ne tranche pas. (Ma table des longueurs ne couvre aucun des "
+                "deux ; le plus long qu'elle contienne est le Yangzi Jiang, 6 300 km.)")
+    if typ == "ile" and adj in ("grand", "vaste"):
+        return ("Le Groenland (2 166 086 km²) — l'Australie, plus vaste, est comptée comme un continent. "
+                "(Fait de référence curé : ma table superficie_ile ne contient pas le Groenland.)")
+    if typ == "desert" and adj in ("grand", "vaste"):
+        cell = _lookup_cell("superficie_desert", "Sahara")
+        sah = (" (%s km², fait vérifié dans mes données)" % cell[1]) if cell else ""
+        return ("L'Antarctique (désert polaire, ≈ 14 millions de km²) si l'on prend la définition scientifique ; "
+                "le plus grand désert CHAUD est le Sahara%s." % sah)
+    if typ == "ocean" and adj in ("grand", "vaste", "profond"):
+        if adj == "profond":
+            return "Le Pacifique — il contient la fosse des Mariannes (≈ 10 935 m, le point le plus profond des océans)."
+        return "Le Pacifique (≈ 168,7 millions de km², la moitié de l'océan mondial)."
+    if typ == "fosse" and adj == "profond":
+        return "La fosse des Mariannes (≈ 10 935 m au point Challenger Deep)."
+    if typ == "lac":
+        if adj == "profond":
+            return "Le lac Baïkal (1 642 m) — aussi le plus grand par le VOLUME d'eau douce."
+        return ("La mer Caspienne (≈ 371 000 km²) si on la compte comme un lac ; sinon le lac Supérieur "
+                "(≈ 82 100 km²).")
+    if typ == "planete" and adj in ("grand", "vaste"):
+        par = _charge_direct("diametre_moyen_planete")
+        if par:
+            best = max(par.items(), key=lambda kv: _nombre(kv[1][1]) or 0)
+            return ("Jupiter — %s km de diamètre moyen (comparé sur les %d planètes de mes données)."
+                    % (best[1][1], len(par))) if _normalise(best[0]) == "jupiter" else None
+        return None
+    return None
+
+
 _FV_TYPES = r"(?:fleuve|rivi[eè]re|cours\s+d[e'’]\s*eau)"
 _FV_QUEL_RE = re.compile(
     r"quel(?:le)?\s+" + _FV_TYPES +
@@ -5578,7 +5648,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_conversion, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_conversion, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

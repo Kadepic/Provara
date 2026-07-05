@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Records géographiques mondiaux : la couche curée qui évite les FAUX d'argmax
+
+- **Pourquoi pas un simple argmax sur les tables ?** Audit des données : `altitude_montagne` contient 37
+  reliefs MARTIENS/vénusiens (Tharsis Tholus 8 930 m > Everest !), `longueur_fleuve` ne couvre NI le Nil NI
+  l'Amazone (le max serait le Yangzi — FAUX), `superficie_ile` n'a pas le Groenland (le max serait la
+  Nouvelle-Guinée — FAUX). Un argmax naïf « du monde » inventerait des records.
+- **Nouveau `_cap_record_monde`** (table FERMÉE de records incontestables, 3 ordres de mots) :
+  - « le plus haut sommet du monde ? » → *l'Everest — 8 848,86 m, **relu en direct** dans les données* ;
+  - « le plus long fleuve ? » → *Nil ou Amazone : primauté scientifiquement **DISPUTÉE** — je ne tranche pas*
+    (+ signale honnêtement le trou de la table) ;
+  - « la plus grande île ? » → *Groenland (l'Australie étant un continent)* ; « le plus grand désert ? » →
+    *Antarctique (définition scientifique) / Sahara le plus grand désert CHAUD (9 200 000 km² relus)* ;
+  - « la plus grande planète ? » → *Jupiter — argmax RÉEL sur diametre_moyen_planete (ensemble complet,
+    8 planètes)* ; lac le plus profond (Baïkal), océan (Pacifique), fosse (Mariannes).
+  - Les superlatifs par ZONE (« la plus haute montagne d'Europe ») restent hors de ce cap → abstention
+    FAUX=0 inchangée (membership troué).
+- Banc raisonnement **139/139** (7 cas dont 1 garde), paraphrases 122/122, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — Calcul étendu : puissances, pourcentages, précédence en toutes lettres, conversions exactes
 
 - `_reponse_calcul` étendu (fermé, sous intention de calcul) : **« 7 au carré » → 49**, « 2 au cube » → 8 ;

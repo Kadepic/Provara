@@ -112,6 +112,13 @@ CAS = [
     ("naissance-compare-jeune", R._cap_naissance_compare, "qui est le plus jeune entre Napoléon Ier et Louis XIV ?", "Napoléon"),
     ("succession", R._cap_succession, "qui a succédé à Louis XIV ?", "Louis XV"),
     ("succession-predecesseur", R._cap_succession, "qui a précédé Louis XIV ?", "Louis XIII"),
+    ("record-sommet", R._cap_record_monde, "quel est le plus haut sommet du monde ?", "Everest"),
+    ("record-fleuve-dispute", R._cap_record_monde, "quel est le plus long fleuve du monde ?", "DISPUTÉE"),
+    ("record-ile", R._cap_record_monde, "quelle est la plus grande île du monde ?", "Groenland"),
+    ("record-desert", R._cap_record_monde, "quel désert est le plus grand du monde ?", "Sahara"),
+    ("record-planete", R._cap_record_monde, "quelle est la plus grande planète du système solaire ?", "Jupiter"),
+    ("record-lac-postpose", R._cap_record_monde, "le lac le plus profond du monde", "Baïkal"),
+    ("faux-record-zone", R._cap_record_monde, "la montagne la plus haute d'Europe", ""),   # zone-scopé -> pas ce cap
     ("fleuve-ville", R._cap_fleuve_ville, "quel fleuve traverse Paris ?", "Seine"),        # ex-FAUX : 147 rivières
     ("fleuve-ville-multi", R._cap_fleuve_ville, "quelle rivière traverse Lyon ?", "Saône"),
     ("fleuve-ville-sur", R._cap_fleuve_ville, "sur quel fleuve se trouve Budapest ?", "Danube"),
