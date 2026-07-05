@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-05 — Synonymes familiers : sondé (déjà riche) + chaînage bagnole→voiture→véhicule complété
+
+- **Sonde** : le module `synonymes` (réseau JeuxDeMots embarqué) est DISPONIBLE et riche — bagnole→voiture,
+  toubib→médecin, fric→argent, avec hyperonymes et chaînes. Les frames « c'est quoi un toubib », « une bagnole
+  c'est quoi », « qu'est-ce qu'une bagnole », is-a et définition fonctionnent DÉJÀ (le « faux gap » initial
+  venait d'un test tapé « c est » au lieu de « c'est »).
+- **Un vrai gap comblé** : « voiture » manquait de `definition_nom` (chaîne is-a VIDE) alors qu'« automobile »
+  résolvait — la reformulation « bagnole → voiture » butait donc sur « voiture est-elle un véhicule ». Ajout de
+  `voiture → véhicule` au seed curé `est_un_seed.jsonl` (mécanisme prévu pour les trous de definition_nom,
+  is-a incontestable). « une bagnole est-elle un véhicule ? » → « Oui — bagnole → voiture → véhicule. »
+- **Nouveau banc** `tests/banc_synonymes.py` (8/8) : verrouille la compréhension des mots familiers/argotiques
+  (définition, is-a, chaînage) — fonctionnalité vitrine. Seed sous `src/` → embarqué via `--add-data src;src`.
+- Raisonnement 118/118, paraphrases 98/98, constructions 4/4, synonymes 8/8, suite 16/16 (77/77), challenge 16/16.
+
 ## 2026-07-05 — Constructions à trous : l'IA apprend une grammaire en dialoguant (généralisation)
 
 - **Induction de règle À TROU** (`_induit_substitution` réécrit) : une reformulation enseignée sur UNE entité
