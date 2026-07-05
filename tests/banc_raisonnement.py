@@ -82,6 +82,8 @@ CAS = [
     ("ecart-temporel", R._cap_ecart_temporel, "combien d'années séparent la bataille de Marignan et la bataille de Waterloo ?", "300 ans"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
+    ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
+    ("portrait-personne-fem", R._cap_portrait_personne, "qui était Marie Curie ?", "née"),
     # gardes FAUX=0
     ("faux-filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 5 et 10 milliards d'habitants ?", "Aucun"),
     ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", ""),

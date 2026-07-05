@@ -3248,6 +3248,63 @@ def _cap_portrait(texte: str):
     return " ".join(phrases)
 
 
+# FICHE PERSONNE : « parle-moi de Napoléon Ier », « qui est/était X » -> naissance/décès (année + lieu),
+# nationalité, occupation, assemblés par lookup STREAMING (RAM-plat sur les fichiers de 100-200 Mo). Nouveau : le
+# portrait pays ne couvre que les pays. FAUX=0 : uniquement des faits stockés ; gate = ≥2 attributs de personne.
+_PORTRAIT_QUI_RE = re.compile(
+    r"^\s*qui\s+(?:est|était|etait|a\s+été|a\s+ete)\s+(?:le\s+|la\s+|l['’])?(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_portrait_personne(texte: str):
+    """FICHE PERSONNE : « qui est Napoléon Ier ? » / « parle-moi de Marie Curie » -> phrase assemblant les faits
+    vérifiés (né(e) en ANNÉE à LIEU, mort(e) en ANNÉE à LIEU, nationalité, métier). Lookups en STREAMING (RAM-plat).
+    FAUX=0 : rien que des faits stockés ; gate = au moins 2 attributs -> évite de « portraitiser » un non-humain."""
+    m = _PORTRAIT_RE.match(texte) or _PORTRAIT_QUI_RE.match(texte)
+    if not m:
+        return None
+    ent = _strip_article(m.group(1).strip())
+    if not ent or len(ent) < 3 or len(ent.split()) > 6:
+        return None
+    if _charge_direct("continent").get(_normalise(ent)):     # un PAYS -> laissé au portrait pays
+        return None
+    naiss = _lookup_cell("annee_naissance_personne", ent)
+    deces = _lookup_cell("annee_deces_personne", ent)
+    lieu_n = _lookup_cell("lieu_naissance", ent)
+    lieu_d = _lookup_cell("lieu_deces", ent)
+    natio = _lookup_cell("nationalite_personne", ent)
+    occ = _lookup_cell("occupation_personne", ent)
+    faits = [x for x in (naiss, deces, lieu_n, lieu_d, natio, occ) if x]
+    if len(faits) < 2:                                       # pas assez -> pas une personne connue ici
+        return None
+    aff = (naiss or deces or lieu_n or lieu_d or natio or occ)[0]   # forme d'affichage stockée
+    sujet = aff[:1].upper() + aff[1:]
+    sexe = _lookup_cell("sexe_personne", ent)               # accord né/née, mort/morte (streaming, RAM-plat)
+    fem = bool(sexe) and "femin" in _normalise(str(sexe[1]))   # needle SANS accent (la chaîne est normalisée)
+    ne_e, mort_e = ("née", "morte") if fem else ("né", "mort")
+    bornes = lambda a: ("%s av. J.-C." % -int(a)) if str(a).lstrip("-").isdigit() and int(a) < 0 else str(a)
+    # nationalite_personne stocke le PAYS (« France ») -> on le présente tel quel (« originaire de France »)
+    natio_txt = ("originaire de %s" % natio[1]) if natio else ""
+    if occ:
+        tete = "%s était %s" % (sujet, str(occ[1]).lower())
+        if natio_txt:
+            tete += ", %s" % natio_txt
+    elif natio_txt:
+        tete = "%s, %s" % (sujet, natio_txt)
+    else:
+        tete = sujet
+    seg_n = seg_d = ""
+    if naiss:
+        seg_n = "%s en %s" % (ne_e, bornes(naiss[1])) + (" à %s" % lieu_n[1] if lieu_n else "")
+    elif lieu_n:
+        seg_n = "%s à %s" % (ne_e, lieu_n[1])
+    if deces:
+        seg_d = "%s en %s" % (mort_e, bornes(deces[1])) + (" à %s" % lieu_d[1] if lieu_d else "")
+    elif lieu_d:
+        seg_d = "%s à %s" % (mort_e, lieu_d[1])
+    bio = ", ".join(s for s in (seg_n, seg_d) if s)
+    return tete + ("." if not bio else " (%s)." % bio)
+
+
 _CAUSE_RE = re.compile(
     r"\b(?:cause[s]?|provoque\w*|responsable|agent[s]?|declenche\w*|entrain\w*|etiologie|du[e]?\s+a|due\s+a|"
     r"qu['’ ]?est[- ]ce\s+qui\s+(?:cause|provoque|declenche|donne))\b", re.I)
@@ -3726,7 +3783,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_analogie, _cap_portrait, _cap_portrait_personne, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 return _r
