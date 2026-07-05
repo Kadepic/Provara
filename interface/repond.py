@@ -3086,6 +3086,20 @@ def _cap_definition(texte: str):
     return "%s : %s" % (ent[:1].upper() + ent[1:], d[:1].lower() + d[1:] if d else d)
 
 
+def _singulier_fr(mot: str) -> str:
+    """Singulier d'un nom FR, y compris les pluriels IRRÉGULIERS en -aux : « métaux » -> « métal », « chevaux » ->
+    « cheval », mais « châteaux » -> « château » (-eaux -> -eau). Sinon retire un -s/-x final. Mots courts inchangés."""
+    if len(mot) <= 4:
+        return mot
+    if mot.endswith("eaux"):
+        return mot[:-1]                                  # château(x), bateau(x) : -eaux -> -eau
+    if mot.endswith("aux"):
+        return mot[:-3] + "al"                           # métaux -> métal, journaux -> journal
+    if mot.endswith(("s", "x")):
+        return mot[:-1]
+    return mot
+
+
 _HYPO_RES = (
     re.compile(r"\b(?:exemples?|types?|sortes?|esp[eè]ces?|vari[ée]t[ée]s?)\s+d[e'’]\s*(?:la\s|le\s|les\s|l['’])?"
                r"(.+?)\s*\??\s*$", re.I),
@@ -3113,7 +3127,7 @@ def _cap_hyponymes(texte: str):
         import est_un as _E
     except Exception:
         return None
-    sing = cat[:-1] if (cat.endswith(("s", "x")) and len(cat) > 4) else cat
+    sing = _singulier_fr(cat)
     hypos = _E.hyponymes(sing, limite=15) or _E.hyponymes(cat, limite=15)
     if not hypos or len(hypos) < 2:
         return None

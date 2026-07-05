@@ -40,6 +40,7 @@ CAS = [
     ("is-a-seed-fruit", R._cap_ontologie, "une pomme est-elle un fruit ?", "Oui"),
     ("is-a-metal", R._cap_ontologie, "le fer est-il un métal ?", "Oui"),
     ("point-commun-metal", R._cap_point_commun_nway, "qu'ont en commun l'or, l'argent et le fer ?", "métal"),
+    ("hyponymes-metaux", R._cap_hyponymes, "cite des métaux", "argent"),  # pluriel irrégulier métaux -> métal
     ("point-commun", R._cap_ontologie, "qu'ont en commun le chat et le requin ?", "animal"),
     ("point-commun-nway", R._cap_point_commun_nway, "qu'ont en commun le chat, le requin et le lion ?", "animal"),
     ("cause", R._cap_cause, "quelle est la cause du paludisme ?", "du paludisme"),
