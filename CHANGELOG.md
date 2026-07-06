@@ -20,6 +20,11 @@
 - Batterie complexité/compréhension/mémoire : **18/20** (5/20 au début de nuit ; les 2 restants = trous de
   données documentés : population_ville sans Paris, aucune relation dirigeant/chef d'État nominatif).
 - Banc paraphrases **141/141** (11e vague), raisonnement 146/146, suite 18/18, challenge 16/16, valide_maj 19/19.
+- **Complément (même nuit)** : « en quelle année Christophe Colomb a-t-il découvert l'Amérique ? » → *1492* —
+  variantes d'élision rendues COMPOSABLES (« l Amérique » ↔ « l'Amérique » se combine avec le libellé Wikidata
+  composé « découverte **et exploration** de l'Amérique ») + recadrage « X a-t-il découvert Y » (le sujet est
+  retiré sans être endossé : la réponse nomme l'événement résolu). Paraphrases **142/142**. Validation
+  SERVEUR RÉEL de la nuit entière : **25/25** briques (port 8899, web OFF, RSS 163 Mo après usage).
 
 ## 2026-07-06 — FAUX corrigé : « la langue de Tokyo » répondait « français » (l'œuvre homonyme)
 
