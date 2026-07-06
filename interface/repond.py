@@ -2610,6 +2610,11 @@ def _mot_reel(tok: str) -> bool:
     « did-you-mean » sur un mot réel (« longue »->« langue », « riche »->« roche », « peint »->« point » =
     faux signaux : ce sont des mots, pas des fautes). Ne FORCE PAS le chargement lourd : si la connaissance
     n'est pas prête (mode léger), on s'abstient (False) -> comportement inchangé hors mode plein."""
+    # LEXIQUE POS EMBARQUÉ (~19k mots, sans chargement lourd) : garde universel — « inventer », « créer »,
+    # « lister » y sont. Vécu 2026-07-06 : le did-you-mean proposait « inventer »->« inventeur » sur une
+    # demande créative, car _est_mot_connu (ci-dessous) ne couvre pas les infinitifs verbaux.
+    if _normalise(tok) in _charge_mots_valides():
+        return True
     if not pret():
         return False
     try:
@@ -4125,6 +4130,42 @@ def _cap_distance(texte: str):
     except Exception:
         pass
     return s
+
+
+# Intention CRÉATIVE OUVERTE (« invente/crée quelque chose », « as-tu des idées », « qu'est-ce que je peux
+# créer ») — vécu Yohan 2026-07-06 : ces demandes tombaient dans une correction orthographique fausse puis une
+# recherche web du texte littéral (Reverso !). Provara ne FABRIQUE pas d'idées (ce serait inventer au sens
+# péjoratif = violer FAUX=0) ; il redirige HONNÊTEMENT vers ce qu'il sait vraiment faire.
+_CREER_RE = re.compile(
+    r"\b(?:inventer|invente|inventes|cr[ée]er|cr[ée]e|cr[ée]es|imaginer|imagine|concevoir|con[çc]ois|"
+    r"trouver\s+(?:une\s+id[ée]e|des\s+id[ée]es)|des\s+id[ée]es|une\s+id[ée]e|innover)\b", re.I)
+_CREER_OUVERT_RE = re.compile(
+    r"\b(?:quelque\s+chose|un\s+truc|un\s+produit|un\s+objet|un\s+service|un\s+concept|"
+    r"que\s+(?:puis|peux)[- ]je|qu['e ]est[- ]ce\s+que\s+je\s+(?:peux|pourrais)|"
+    r"as[- ]tu\s+des?\s+id[ée]es?|aurais[- ]tu\s+des?\s+id[ée]es?|donne[- ]moi\s+des?\s+id[ée]es?|"
+    r"aide[- ]moi\s+[àa]\s+(?:inventer|cr[ée]er|imaginer|trouver))\b", re.I)
+
+
+def _cap_creer_ouvert(texte: str):
+    """Demande CRÉATIVE OUVERTE (« invente quelque chose », « as-tu des idées de produit ? », « qu'est-ce que je
+    peux créer ? ») -> réponse HONNÊTE : Provara ne sort pas d'idées du néant (ce serait fabriquer), mais il
+    oriente vers sa vraie mécanique d'invention (reformuler un besoin CONCRET en leviers physiques) et son
+    scanner de manques. Ne se déclenche PAS sur un besoin déjà concret « X sans Y » (laissé à `_cap_invention`)."""
+    if re.search(r"\bsans\s+\w", texte, re.I) or re.search(r"\bque\s+manque[\s-]*t[\s-]*il\b", texte, re.I):
+        return None                                       # besoin concret -> _cap_invention gère
+    if not (_CREER_RE.search(texte) and _CREER_OUVERT_RE.search(texte)):
+        return None
+    return (
+        "Je ne vais pas te sortir une idée du chapeau — inventer au hasard, ce serait bluffer, et je ne bluffe "
+        "jamais (c'est ma règle : un fait vérifié, ou je le dis). Mais voici comment je t'aide VRAIMENT à "
+        "inventer, sans rien fabriquer :\n"
+        "• Donne-moi un BESOIN CONCRET, sous la forme « comment faire X sans Y » — ex. « comment rafraîchir une "
+        "pièce sans climatiseur ? ». Je le décompose alors en OBJECTIF RÉEL et en leviers physiques à explorer "
+        "(conduction, évaporation, rayonnement…), avec la limite physique en jeu.\n"
+        "• Ou demande-moi « quelles relations/attributs manquent dans ce que je connais ? » : je scanne mon "
+        "graphe de 72 M de faits et te montre des manques RÉELS, re-vérifiés — des pistes concrètes, jamais "
+        "inventées.\n"
+        "Quel besoin concret veux-tu attaquer ?")
 
 
 def _cap_invention(texte: str):
@@ -6666,7 +6707,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     if pleine:
         # _cap_quotidien reçoit conv_id (attente à trou « pour quelle ville ? » rejouable au tour suivant).
         for _cap in (lambda _t: _cap_avis_critere(_t, conv_id), lambda _t: _cap_quotidien(_t, conv_id),
-                     _cap_site, lambda _t: _cap_avis(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+                     _cap_site, lambda _t: _cap_avis(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_creer_ouvert, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

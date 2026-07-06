@@ -58,6 +58,21 @@ check(r and r.startswith("<svg"), "graphique : courbe -> SVG")
 check(R._cap_graphique("trace de la route") is None, "graphique : pas de nombres -> None")
 check(R._cap_graphique("quelle est la population du Japon ?") is None, "graphique : question sans intention graphique -> None")
 
+# — DEMANDE CRÉATIVE OUVERTE (vécu Yohan 2026-07-06 : « invente quelque chose » -> fausse correction + web Reverso) —
+r = R._cap_creer_ouvert("je voudrais inventer quelque chose pour un vrai besoin, as-tu des idées ?")
+check(r is not None and "je ne bluffe jamais" in r and "besoin" in r.lower(),
+      "créatif ouvert -> réponse honnête + redirection vers le vrai moteur de besoin (jamais une idée fabriquée)")
+r = R._cap_creer_ouvert("qu'est-ce que je peux créer pour la population ?")
+check(r is not None and "concret" in r.lower(), "« qu'est-ce que je peux créer » capté -> orientation honnête")
+check(R._cap_creer_ouvert("comment rafraîchir une pièce sans climatiseur ?") is None,
+      "besoin CONCRET « X sans Y » -> laissé au vrai moteur d'invention (pas capté par le handler ouvert)")
+check(R._cap_creer_ouvert("quelle est la capitale de la France ?") is None, "question factuelle -> None")
+# garde did-you-mean : un mot VALIDE (« inventer », infinitif) n'est JAMAIS proposé en correction
+check(R._suggere_type("je voudrais inventer quelque chose") is None,
+      "did-you-mean : « inventer » est un vrai mot -> aucune correction proposée (garde lexique embarqué)")
+check(R._suggere_type("quel flauve traverse paris") == ("flauve", "fleuve"),
+      "did-you-mean : une VRAIE faute (« flauve ») reste corrigée")
+
 # — INVENTION (léger : besoin.py) —
 r = R._cap_invention("comment rafraîchir une pièce sans climatiseur ?")
 check(r and ("BESOIN" in r or "but réel" in r or "but reel" in r.lower()), "invention : reformulation physique du besoin")
