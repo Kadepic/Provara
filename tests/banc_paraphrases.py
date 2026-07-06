@@ -157,7 +157,7 @@ CAS += [
     ("quelle est la monnaie de Tokyo ?", "yen"),                              # pont ville→pays direct
     ("sur quel continent se trouve la capitale du pays le plus peuplé du monde ?", "asie"),  # feuille superlative + 3 sauts
     ("quand a eu lieu la bataille de Hastings ?", "1066"),                    # élision « d'Hastings » (répondait « Battle »)
-    ("quelle est la population de la capitale de la France ?", "je m'abstiens"),  # chaîne partielle honnête (Paris sans population_ville)
+    ("quelle est la population de la capitale de la France ?", "2103778"),  # ré-ingestion dominance 2026-07-06 : Paris est revenu
 ]
 
 # ————— 9e VAGUE : CALCUL étendu (puissances, pourcentages, opérateurs en lettres, conversions exactes) —————

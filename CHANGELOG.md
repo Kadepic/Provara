@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — RÉ-INGESTION population_ville : Paris et Berlin sont revenus (garde de dominance)
+
+- **Cause racine du trou historique** : le filtre « fonctionnel » de l'ingestion travaille PAR LIBELLÉ — 
+  « Paris » (France, 2,1 M hab.) coexiste avec Paris (Texas, 24 k) et Paris (Ontario) → multi-valeurs → 
+  REJETÉ. Les villes CÉLÈBRES étaient tuées par leurs homonymes minuscules !
+- **Garde de DOMINANCE** (mode `compte_dominant`, ingere_t7) : valeur max ≥ 20× la 2ᵉ → l'homonyme dominant
+  est retenu (la lecture évidente) ; sinon ambiguïté réelle → HORS. Ré-extraction QLever fraîche :
+  **480 homonymes résolus, 17 399 villes écrites** — « quelle est la population de la capitale de la
+  France ? » → *2 103 778 (en composant : capitale de France = Paris, puis population de Paris)* ENFIN. ✨
+- **Tokyo reste HORS, et c'est VOULU** : deux entités Wikidata portent le label « Tokyo » (préfecture
+  14,26 M vs les 23 arrondissements 9,64 M, ratio 1,5 — sous le seuil) : la question a réellement deux
+  réponses selon le découpage → abstention honnête (présentée « ville du Japon »).
+- Registre des sources : entrée `wikidata-wdqs` restaurée (renommage passé du registre cassait l'import des
+  scripts d'ingestion). Sauvegarde de l'ancien fichier conservée. Bancs : 151/151 (cas « population de la
+  capitale » attend désormais la VRAIE valeur), 162/162, 18/18, 16/16.
+
 ## 2026-07-06 — Faits biologiques curés + métamoteur fiabilisé
 
 - **Seed bio validé par Yohan** (`src/faits_bio_seed.jsonl` + `_cap_fait_bio`) : « combien de chromosomes a
