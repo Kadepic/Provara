@@ -312,6 +312,34 @@ def _reponse_opinion(question, c):
     base = ("Il n'y a pas de réponse unique, c'est subjectif : ça dépend du critère (ventes, remplissage des "
             "salles, notoriété internationale, récompenses, influence…). Je ne tranche donc pas.")
     if os.environ.get("IA_WEB") == "1" or _TRANSPORT is not None:
+        # AVIS 2/2 (brique Yohan « mon avis est… », débats SANS chiffres) : les DEUX FACES sourcées + avis
+        # CONDITIONNEL signé, règle AFFICHÉE. FAUX=0 : les arguments sont RAPPORTÉS (jamais pesés à l'aveugle —
+        # je ne peux pas vérifier leur poids), le verdict est conditionnel au critère de l'utilisateur.
+        # Le comparatif CHIFFRÉ (2 entités mesurables) est déjà tranché en amont par repond._cap_avis.
+        sujet = _sujet_recherche(question) or question
+        try:
+            import veille_structure as _VS0
+            faces = _VS0.cherche_web_domaines("avantages et inconvénients " + sujet, k=2)
+            # GARDE PROSE (vécu au test live : un extrait « menu de navigation » servi comme argument) :
+            # une vraie phrase a des mots-outils ; un menu n'en a presque pas -> ratio ≥ 25 % exigé.
+            def _prose(txt):
+                mots = _normalise(txt).split()
+                return len(mots) >= 5 and sum(1 for m in mots if m in _VS0._WIKI_STOP) * 4 >= len(mots)
+            faces = [f for f in faces if _prose(f[1])]
+        except Exception:
+            faces = []
+        if faces:
+            lignes = ["Mon avis, à MA façon : je ne ressens rien, je PÈSE — et des arguments que je ne peux "
+                      "pas vérifier, je ne les pèse pas à ta place, je te les montre.",
+                      "Ce que disent des sources qui posent le pour et le contre (rapporté, à vérifier) :"]
+            for _titre, _extrait, _url, _dom in faces:
+                lignes.append("· %s : %s" % (_dom, _extrait[:240]))
+            lignes.append("Mon avis CONDITIONNEL (règle affichée : un avis se tranche par CRITÈRE, jamais par "
+                          "goût) : si les avantages ci-dessus collent à ton besoin, c'est un oui ; si un des "
+                          "inconvénients est rédhibitoire pour toi, c'est un non. Donne-moi ton critère n°1 "
+                          "et je tranche en le suivant.")
+            return Reponse(SUPPOSITION, "\n".join(lignes), regime=c.regime,
+                           source="pour/contre rapportés — " + ", ".join(a[3] for a in faces))
         try:
             import veille_structure as _VS
             wl = _VS.cherche_web_libre(_sujet_recherche(question) or question)

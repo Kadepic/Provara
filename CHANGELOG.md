@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Avis 2/2 : débats SANS chiffres — les deux faces sourcées + avis CONDITIONNEL signé
+
+- « Que penses-tu des voitures électriques ? » ne rend plus le seul cadrage générique : `_reponse_opinion`
+  cherche les DEUX FACES (« avantages et inconvénients <sujet> », métamoteur multi-domaines), les RAPPORTE
+  attribuées, puis signe un avis CONDITIONNEL à règle affichée : *« un avis se tranche par CRITÈRE, jamais
+  par goût — si les avantages collent à ton besoin, oui ; si un inconvénient est rédhibitoire, non ; donne-moi
+  ton critère n°1 et je tranche en le suivant »*. FAUX=0 : des arguments invérifiables ne sont jamais pesés à
+  l'aveugle, ils sont montrés ; le comparatif CHIFFRÉ reste tranché en amont par `_cap_avis` (Pareto/vote).
+- **Garde PROSE** (vécu au test live : un extrait « menu de navigation » servi comme argument) : ratio de
+  mots-outils ≥ 25 % exigé — les menus sont écartés, les phrases restent. Aucune source -> repli inchangé.
+- Vérifié en live (voitures électriques → extrait prose ohm-energie.com, menu écarté).
+  `valide_assistant_nl` 89/89, `valide_opinions` 11/11, suite **20/20**.
+
 ## 2026-07-06 — CÂBLAGE 0-ORPHELIN : 501/501 modules atteignables, audit permanent, 280 preuves en direct
 
 - **Mandat Yohan** : « il faut vraiment que tout ce qui a été construit soit câblé — 0 orphelin, assumé ou
