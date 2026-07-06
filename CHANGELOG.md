@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — « Combien mesure le mont Blanc ? » : 4 808 m, plus jamais le tableau de 56 cm
+
+- **FAUX trouvé à la chasse** : « combien mesure le mont Blanc ? » → *0,559 m* (un TABLEAU « Mont Blanc » !).
+  Double correctif : le lookup TYPÉ essaie l'entité ENTIÈRE (« mont Blanc » dans altitude_sommet → 4 808,06 m)
+  avant le nom nu ; et une entité GÉO à type-word (mont/pic/lac/île) n'est JAMAIS servie par une œuvre d'art
+  homonyme dans le repli famille. + recadrage « combien mesure X » → hauteur.
+- **« Napoléon » nu = l'Empereur** : alias vers « Napoléon Ier » avec GARDE ordinale (« Napoléon III » reste
+  intact) → « où est né Napoléon ? » → *Ajaccio*, « quel âge avait Napoléon à sa mort ? » → *52 ans*.
+- **« Combien de pays dans le monde ? »** → *249 rattachés à un continent (compté exactement — le décompte
+  « officiel » dépend de la définition : 193 membres ONU)* — honnête sur la convention.
+- Trous d'ingestion notés : Première/Seconde Guerre mondiale absentes de annee_debut_guerre ; capitale de
+  l'Afrique du Sud absente (3 capitales) ; « qui était Napoléon III » sans faits-personne.
+- Banc paraphrases **151/151** (4 cas), raisonnement 154/154, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — Créateur : l'homonymie d'œuvres est LISTÉE (« la Neuvième Symphonie »)
 
 - « qui a composé la Neuvième Symphonie ? » abstenait en silence : l'œuvre de **Beethoven** coexiste avec un

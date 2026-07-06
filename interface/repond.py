@@ -377,6 +377,7 @@ _ALIAS_PERSONNE = {
     "napoleon bonaparte": "Napoléon Ier",
     "bonaparte premier": "Napoléon Ier",
     "napoleon 1er": "Napoléon Ier",
+    "napoleon": "Napoléon Ier",     # nu = l'Empereur (garde ordinale dans le motif : « Napoléon III » intact)
     # MONONYMES CÉLÈBRES : le nom NU matche un HOMONYME obscur des datasets (« Mozart » -> footballeur
     # brésilien né en 1979 !, « Bach » -> né en 1882). La lecture dominante est incontestable ; cible = clé
     # réelle vérifiée (ou nom complet absent -> abstention honnête, toujours mieux qu'un homonyme faux).
@@ -404,7 +405,8 @@ def _motif_accent_tolerant(cle: str) -> str:
 
 
 _ALIAS_PERSONNE_RE = re.compile(
-    r"\b(" + "|".join(sorted((_motif_accent_tolerant(k) for k in _ALIAS_PERSONNE), key=len, reverse=True)) + r")\b",
+    r"\b(" + "|".join(sorted((_motif_accent_tolerant(k) for k in _ALIAS_PERSONNE), key=len, reverse=True)) + r")\b"
+    r"(?!\s*(?:I(?:er|II|I|V)?|1er|2|3|premier|deuxi[eè]me|troisi[eè]me)\b)",   # « Napoléon III » reste intact
     re.I)
 
 
@@ -533,6 +535,10 @@ _RECADRE_REGLES = (
     (re.compile(r".*?\bcombien\s+de\s+(?:gens|personnes|habitants)\s+(?:vivent|habitent)(?:[- ]ils)?\s+"
                 r"(?:en|au|aux|a|à)\s+(.+?)\s*\?*\s*$", re.I),
      lambda m: "quelle est la population de %s ?" % m.group(1)),
+    # « combien mesure le mont Blanc ? » -> « quelle est la hauteur de X » (rejoué sans perte : si la hauteur
+    # ne donne rien, l'original continue son chemin).
+    (re.compile(r"^\s*combien\s+mesure\s+(?:le\s+|la\s+|l['’]\s*)?(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la hauteur de %s ?" % m.group(1)),
     # « quelle langue parle-t-on à Tokyo / au Japon ? » -> « quelle est la langue de X » (le pont ville->pays
     # ou le lookup pays répond ensuite). Locatif à/au/aux/en couvert.
     # SINGULIER uniquement : « quelLES langUES parle-t-on au Japon ? » (pluriel) veut la LISTE -> laissée
@@ -1899,12 +1905,15 @@ def _cap_dimension(texte: str):
         if nu:                                           # typé : la relation du TYPE d'abord (précise, non ambiguë)
             for rel in _relations():
                 if rel.split("_")[0] == d and any(t in rel for t in type_rels):
-                    cell = _lookup_cell(rel, nu)
+                    cell = _lookup_cell(rel, ent) or _lookup_cell(rel, nu)   # « mont Blanc » ENTIER d'abord
                     if cell and cell[1] not in (None, ""):
                         val = cell[1]
                         break
         if val is None or str(val).strip() == "":
             fam = _lookup_famille(d, ent)                # forme complète, VALEURS de toute la famille
+            if nu:                                       # entité GÉO typée (« mont/lac/île X ») : jamais servie
+                fam = [c for c in fam if not any(          # par un TABLEAU homonyme (« Mont Blanc », 0,559 m !)
+                    tk in _RELS_OEUVRE_ART or tk in ("sculpture", "statue") for tk in c[0].split("_")[1:])]
             uniq = {str(c[2]) for c in fam}
             if len(uniq) == 1:
                 val = fam[0][2]
@@ -2414,6 +2423,18 @@ def _cap_comptage(texte: str):
         return None
     typn = _normalise(typ)
     sing = typn[:-1] if (typn.endswith(("s", "x")) and len(typn) > 4) else typn
+    # MONDE ENTIER : « combien de pays dans le monde ? » -> somme des pays rattachés à un continent (ensemble
+    # complet — même base que le superlatif mondial). HONNÊTE : le décompte « officiel » dépend de la définition
+    # (193 membres ONU) -> on dit ce qu'on compte.
+    if sing == "pays" and (not zone or _normalise(zone) in ("monde", "le monde", "terre", "la terre", "planete")):
+        par_cont = _charge_reverse("continent")
+        if par_cont:
+            tous = set()
+            for _cn, (_aff, ents) in par_cont.items():
+                tous.update(_normalise(e) for e in ents)
+            if tous:
+                return ("%d pays rattachés à un continent dans mes données (compté exactement — le décompte "
+                        "« officiel » dépend de la définition : l'ONU reconnaît 193 États membres)." % len(tous))
     if zone:                                     # membres d'un type dans une zone (pays en Afrique…)
         for rel_app in _APPARTENANCE.get(sing, _APPARTENANCE.get(typn, ())):
             hit = _charge_reverse(rel_app).get(_normalise(zone))

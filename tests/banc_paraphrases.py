@@ -204,6 +204,10 @@ CAS += [
     ("quand est né Bach ?", "1685"),                         # ex-FAUX : nu -> 1882, « Johann S. Bach » -> petit-fils 1748
     ("quand est mort Beethoven ?", "1827"),
     ("où est né Einstein ?", "ulm"),
+    ("où est né Napoléon ?", "ajaccio"),                     # nu = l'Empereur (Napoléon III intact)
+    ("combien mesure le mont Blanc ?", "4808"),              # ex-FAUX : tableau « Mont Blanc » 0,559 m !
+    ("combien de pays dans le monde ?", "249"),
+    ("qui a composé la Neuvième Symphonie ?", "beethoven"),  # homonymie LISTÉE (film K. Schröder aussi)
 ]
 
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
