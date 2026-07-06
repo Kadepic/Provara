@@ -4465,6 +4465,55 @@ def _cap_contraire(texte: str):
         return None
 
 
+_FAITS_BIO = None                 # {(entite_norm, attribut_norm): (valeur, note)} — seed curé (validé Yohan)
+_BIO_RE = re.compile(
+    r"combien\s+(?:de\s+|d['’]?\s*)?(chromosomes?|pattes?|bras|os|dents?|c[œoe]urs?|cavit[ée]s?|vies?)\s+"
+    r"(?:a|poss[eè]de|compte|ont?)\s+(?:un\s+|une\s+|le\s+|la\s+|l['’]?\s*)?(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_fait_bio(texte: str):
+    """« combien de chromosomes a l'être humain ? » -> 46 (23 paires). Seed CURÉ de faits biologiques
+    incontestables (src/faits_bio_seed.jsonl, validé par Yohan) — la précision utile est dite (l'araignée est
+    un arachnide ; les « 9 vies » du chat sont une légende). FAUX=0 : hors seed -> None."""
+    global _FAITS_BIO
+    m = _BIO_RE.search(texte)
+    if not m:
+        return None
+    if _FAITS_BIO is None:
+        _FAITS_BIO = {}
+        try:
+            import json as _json
+            chemin = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src", "faits_bio_seed.jsonl")
+            if not os.path.exists(chemin):                    # bundle .exe : src/ est sur sys.path via _MEIPASS
+                import fleuve_ville as _FVmod
+                chemin = os.path.join(os.path.dirname(os.path.abspath(_FVmod.__file__)), "faits_bio_seed.jsonl")
+            with open(chemin, encoding="utf-8") as fh:
+                for ligne in fh:
+                    try:
+                        o = _json.loads(ligne)
+                    except ValueError:
+                        continue
+                    if o.get("entite") and o.get("attribut") and "_relation" not in o:
+                        _FAITS_BIO[(_normalise(o["entite"]), _normalise(o["attribut"]))] = (
+                            str(o.get("valeur")), o.get("note") or "")
+        except OSError:
+            pass
+    attr = _normalise(m.group(1))
+    attr = {"chromosome": "chromosomes", "patte": "pattes", "dent": "dents", "coeur": "coeurs",
+            "cœur": "coeurs", "vie": "vies", "cavite": "cavites"}.get(attr.rstrip("s") if attr not in
+            ("bras", "os") else attr, attr)
+    ent = _normalise(_strip_article(m.group(2).strip()))
+    cell = _FAITS_BIO.get((ent, attr)) or _FAITS_BIO.get((ent, attr.rstrip("s")))
+    if not cell:
+        return None
+    val, note = cell
+    suffixe = " (%s)" % note if note else ""
+    mot = m.group(1).lower()
+    if val.strip() in ("0", "1") and mot.endswith("s") and mot not in ("bras", "os"):
+        mot = mot[:-1]                                        # « 1 vie », pas « 1 vies »
+    return "%s %s%s." % (val, mot, suffixe)
+
+
 _PROTONS_RE = re.compile(
     r"combien\s+(?:de\s+|d['’]?\s*)?(protons?|[ée]lectrons?)\s+(?:a|poss[eè]de|contient|compte)\s+"
     r"(?:le\s+|la\s+|l['’]?\s*)?(.+?)\s*\??\s*$", re.I)
@@ -6187,7 +6236,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

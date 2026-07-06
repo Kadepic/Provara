@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Faits biologiques curés + métamoteur fiabilisé
+
+- **Seed bio validé par Yohan** (`src/faits_bio_seed.jsonl` + `_cap_fait_bio`) : « combien de chromosomes a
+  l'être humain ? » → *46 (23 paires)* ; araignée *8 pattes (c'est un arachnide, pas un insecte)* ; pieuvre
+  *3 cœurs* ; humain *206 os, 32 dents* ; chat *1 vie (les « 9 vies » sont une légende)* ; hors seed →
+  abstention (« combien de pattes a un dragon ? »).
+- **Métamoteur** : Mojeek rétrogradé en DERNIER (quota serré → 403 dès la 1re requête, observé au challenge
+  web) — Bing RSS et DuckDuckGo lite, fiables, passent devant ; le repli existant reste inchangé.
+- Banc raisonnement **162/162** (4 cas bio dont 1 garde), paraphrases 151/151, suite 18/18, challenge 16/16,
+  valide_maj 25/25.
+
 ## 2026-07-06 — Mises à jour ZÉRO ACTION : l'utilisateur n'a plus RIEN à faire
 
 - Exigence Yohan : « beaucoup d'utilisateurs ne savent pas se servir d'un PC, il faut qu'ils n'aient rien à
