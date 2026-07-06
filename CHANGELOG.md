@@ -1,5 +1,28 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Avis ④ : 3+ candidats — chaque critère VOTE, Condorcet dépouille (choix_social câblé)
+
+- « Quelle est la meilleure destination entre la France, l'Italie et l'Espagne ? » → chaque critère vérifié
+  (superficie, population, PIB, PIB/hab) devient un ÉLECTEUR qui classe les candidats (classements complets
+  montrés, valeurs à l'appui), puis **gagnant de CONDORCET** (bat chacun en duel) ; cycle → repli **BORDA**
+  annoncé comme tel ; personne ne se détache → avis SUSPENDU. `choix_social.py` (Vague scrutins) enfin câblé
+  au conversationnel — après `pareto.py` hier.
+- « Mon critère n°1 est X » re-tranche aussi à N candidats (classement complet sur CE critère).
+- E2E base complète (France/Italie/Espagne → Condorcet : France ; critère superficie re-tranché).
+  `valide_capacites_chat` 40/40, suite **20/20**.
+
+## 2026-07-06 — Avis ③ : « donne-moi ton critère n°1 » n'est plus une impasse — le tour suivant RE-TRANCHE
+
+- L'avis comparatif RETIENT ses critères par conversation (`_AVIS_ATTENTE`, même principe que l'attente à trou
+  météo) : après « mon avis : France… il bascule si ton critère est X », répondre « mon critère n°1 est le
+  PIB par habitant » (ou juste « la population ») **re-tranche sur CE critère**, valeurs montrées :
+  *« Avec TON critère (PIB par habitant) : France 48 985 $/hab devant Espagne 38 627 → mon avis suit ton
+  critère : France. »* Le libellé le PLUS LONG qui matche gagne (« PIB par habitant » ≠ « PIB »).
+- Critère nommé mais NON mesuré (« le climat ») → aveu honnête + liste des critères mesurables. Égalité sur le
+  critère → il ne peut pas trancher, un autre est proposé. Message sans rapport → pipeline normal, l'état
+  reste disponible ; consommé en une fois quand il sert.
+- E2E vérifié base complète (2 tours réels). `valide_capacites_chat` 37/37, suite **20/20**.
+
 ## 2026-07-06 — MAJ : plus de 2e onglet — l'onglet existant se recharge, l'app relancée n'en ouvre pas
 
 - **Vécu Yohan** : « lorsque je lance la mise à jour, il m'ouvre un nouvel onglet, mais le précédent n'est pas

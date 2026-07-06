@@ -4599,7 +4599,100 @@ def _fmt_val(v, unite: str) -> str:
     return (t + " " + unite).strip()
 
 
-def _cap_avis(texte: str):
+# L'avis RETIENT ses critères par conversation : le tour suivant qui en NOMME un re-tranche (« donne-moi ton
+# critère n°1 » n'est plus une impasse — même principe que l'attente à trou météo, vécu 2026-07-06).
+_AVIS_ATTENTE: dict = {}
+_AVIS_CRITERE_RE = re.compile(r"\bcrit[èe]re\b|\bplut[oô]t\b", re.I)
+
+
+def _cap_avis_critere(texte: str, conv_id=None):
+    """Réponse au « donne-moi ton critère n°1 » d'un avis : « la population » / « mon critère est le PIB » ->
+    re-tranche SUR CE critère (valeurs montrées). Critère inconnu nommé explicitement -> aveu honnête + liste
+    des critères mesurables. Message sans rapport -> None (pipeline normal, l'état reste disponible)."""
+    st = _AVIS_ATTENTE.get(conv_id) if conv_id else None
+    if not st:
+        return None
+    tn = _normalise(texte)
+    explicite = bool(_AVIS_CRITERE_RE.search(texte))
+    if not explicite and len(tn.split()) > 6:
+        return None
+    # le libellé le PLUS LONG qui matche gagne (« PIB par habitant » ne doit pas retomber sur « PIB »)
+    choisi = max((c for c in st["crits"] if _normalise(c[1]) in tn), key=lambda c: len(c[1]), default=None)
+    if choisi is None:
+        if not explicite:
+            return None
+        _AVIS_ATTENTE.pop(conv_id, None)
+        qui = "/".join(st["noms"]) if st.get("multi") else "%s/%s" % (st["nx"], st["ny"])
+        return ("Je n'ai pas de mesure VÉRIFIÉE de ce critère pour %s — je ne tranche jamais sur du non "
+                "mesuré. Critères disponibles : %s. Nomme-en un et je conclus."
+                % (qui, ", ".join(c[1] for c in st["crits"])))
+    _AVIS_ATTENTE.pop(conv_id, None)
+    if st.get("multi"):                                  # N candidats : classement complet sur CE critère
+        rel, lib, vals = choisi
+        u = _unite_attr(rel)
+        ordonne = sorted(((n, v) for v, n in vals), key=lambda t: -t[1])
+        return ("Avec TON critère (%s) : %s → mon avis suit ton critère : %s."
+                % (lib, " > ".join("%s %s" % (n, _fmt_val(v, u)) for n, v in ordonne), ordonne[0][0]))
+    rel, lib, vx, ax, vy, ay = choisi
+    u = _unite_attr(rel)
+    if vx == vy:
+        return ("Sur TON critère (%s), %s et %s sont à égalité (%s) — ce critère ne peut pas trancher ; "
+                "un autre ? (%s)" % (lib, ax, ay, _fmt_val(vx, u),
+                                     ", ".join(c[1] for c in st["crits"] if c[1] != lib)))
+    gagnant, vg, perdant, vp = (ax, vx, ay, vy) if vx > vy else (ay, vy, ax, vx)
+    return ("Avec TON critère (%s) : %s %s devant %s %s → mon avis suit ton critère : %s."
+            % (lib, gagnant, _fmt_val(vg, u), perdant, _fmt_val(vp, u), gagnant))
+
+
+def _avis_multi(ents, conv_id=None):
+    """AVIS à 3+ candidats : chaque critère mesuré est un ÉLECTEUR qui classe les candidats par valeur ;
+    verdict par gagnant de CONDORCET (bat chacun en duel), repli BORDA si cycle (choix_social.py — le module
+    de choix social enfin câblé au conversationnel). FAUX=0 : classements dérivés de faits vérifiés montrés."""
+    crits, vus = [], set()
+    for rel in _AVIS_RELS:
+        vals = [_valeur_attr(e, rel) for e in ents]
+        if any(v[0] is None for v in vals):
+            continue
+        lib = _libelle_attr(rel)
+        if lib in vus:
+            continue
+        vus.add(lib)
+        crits.append((rel, lib, vals))                   # vals[i] = (valeur, nom canonique) aligné sur ents
+    if not crits:
+        return None
+    noms = [v[1] for v in crits[0][2]]
+    lignes = ["Mon avis — CONSTRUIT, pas ressenti : chaque critère vérifié est un ÉLECTEUR qui classe les "
+              "candidats, et je dépouille le scrutin (Condorcet)."]
+    profil = []
+    for rel, lib, vals in crits:
+        u = _unite_attr(rel)
+        ordonne = sorted(((n, v) for v, n in vals), key=lambda t: -t[1])
+        profil.append(tuple(n for n, _v in ordonne))
+        lignes.append("· %s : %s" % (lib, " > ".join("%s %s" % (n, _fmt_val(v, u)) for n, v in ordonne)))
+    lignes.append("Ma convention (contestable, et c'est voulu) : « devant » = la plus grande valeur.")
+    try:
+        import choix_social as _CS
+        gagnant = _CS.gagnant_condorcet(profil, noms)
+        borda = None if gagnant else _CS.gagnant_borda(profil, noms)
+    except Exception:
+        gagnant = borda = None
+    if gagnant:
+        lignes.append("Mon avis : %s — gagnant de CONDORCET : il bat chacun des autres en duel, critère par "
+                      "critère.%s" % (gagnant, " (Un seul critère mesurable : avis MINCE, je le signale.)"
+                                      if len(crits) == 1 else ""))
+    elif borda:
+        lignes.append("Pas de gagnant de Condorcet (les critères se contredisent en cycle) — au compte de "
+                      "BORDA, mon avis penche vers %s." % borda)
+    else:
+        lignes.append("Les critères ne départagent personne : je SUSPENDS mon avis — ton critère prioritaire "
+                      "tranchera.")
+    lignes.append("Donne-moi ton critère n°1 (%s) et je re-tranche en le suivant." % ", ".join(c[1] for c in crits))
+    if conv_id:
+        _AVIS_ATTENTE[conv_id] = {"multi": True, "crits": crits, "noms": noms}
+    return "\n".join(lignes)
+
+
+def _cap_avis(texte: str, conv_id=None):
     """« Quelle est la meilleure destination entre la France et l'Espagne ? » -> MON AVIS construit : chaque
     critère est un fait VÉRIFIÉ du lecteur (valeurs montrées), la règle est affichée, le verdict vient de
     pareto.domine (avis ROBUSTE) ou du vote des critères, et la sensibilité dit ce qui le ferait basculer.
@@ -4607,8 +4700,15 @@ def _cap_avis(texte: str):
     m = _AVIS_ENTRE_RE.search(texte) or _AVIS_OU_RE.search(texte)
     if not m:
         return None
-    x = _strip_article(m.group(1).strip(" ?.!«»\"'"))
-    y = _strip_article(m.group(2).strip(" ?.!«»\"'"))
+    # « entre X, Y et Z » -> 3+ candidats : vote de critères par CONDORCET/BORDA (choix_social.py, avis ④)
+    ents = [_strip_article(e.strip(" ?.!«»\"'")) for e in re.split(r"\s*,\s*", m.group(1)) if e.strip()]
+    ents.append(_strip_article(m.group(2).strip(" ?.!«»\"'")))
+    ents = [e for e in ents if 0 < len(e) <= 40]
+    if len(ents) != len({_normalise(e) for e in ents}) or len(ents) < 2:
+        return None
+    if len(ents) > 2:
+        return _avis_multi(ents, conv_id)
+    x, y = ents
     if not (0 < len(x) <= 40 and 0 < len(y) <= 40) or _normalise(x) == _normalise(y):
         return None
     crits, vus = [], set()
@@ -4627,6 +4727,8 @@ def _cap_avis(texte: str):
     if not crits:
         return None
     nx, ny = crits[0][3], crits[0][5]
+    if conv_id:                                          # le tour suivant peut nommer SON critère -> re-tranche
+        _AVIS_ATTENTE[conv_id] = {"crits": crits, "nx": nx, "ny": ny}
     lignes = ["Mon avis — CONSTRUIT, pas ressenti : chaque critère est un fait vérifié, ma règle est affichée."]
     gx = gy = 0
     for rel, lib, vx, _ax, vy, _ay in crits:
@@ -6532,7 +6634,8 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             return _r
     if pleine:
         # _cap_quotidien reçoit conv_id (attente à trou « pour quelle ville ? » rejouable au tour suivant).
-        for _cap in (lambda _t: _cap_quotidien(_t, conv_id), _cap_site, _cap_avis, _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (lambda _t: _cap_avis_critere(_t, conv_id), lambda _t: _cap_quotidien(_t, conv_id),
+                     _cap_site, lambda _t: _cap_avis(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
