@@ -86,6 +86,15 @@ _BORNE_POS = {
     "identite_fait": r"\b(qui a (invente|ecrit|decouvert|compose|peint|realise|fonde|gagne|remporte)|"
                      r"quel est l'auteur|quel est le createur)\b",
     "definition_convention": r"\b(qu'est-ce qu[e']|que signifie|definition de|que veut dire|quelle est la formule)\b",
+    # MÉCANISME/EXPLICATION : « comment fonctionne une pompe à chaleur », « explique-moi le rôle des
+    # mitochondries », « expose-moi les tenants de la photosynthèse » — une VÉRITÉ existe (le mécanisme est
+    # documenté). Classé BORNÉ -> la recherche attribuée (« d'après Wikipédia… », gate de pertinence) peut
+    # servir un RAPPORT sourcé au lieu d'une clarification en boucle. Jamais généré : rapporté ou rien.
+    "mecanisme_explication": r"\b(comment (fonctionne|marche)|explique[- ]?(moi|nous)? (le|la|les|l')|"
+                             r"quel(le)? est le (role|fonctionnement|mecanisme) (de|des|du|d')|"
+                             r"les tenants (de la|du|des|de l')|decri(s|vez)([- ]moi)? (le|la|les|l')|"
+                             r"comprendre (comment|en quoi|pourquoi)|en quoi .{3,60} a (bouleverse|change|transforme)|"
+                             r"quelles? (furent|sont|ont ete) les consequences)\b",
 }
 _RX_NB_DUR = re.compile("|".join(_NB_DUR.values()))
 _RX_BORNE_POS = re.compile("|".join(_BORNE_POS.values()))
