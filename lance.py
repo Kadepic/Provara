@@ -92,6 +92,11 @@ _URL = "http://127.0.0.1:%d" % _PORT
 
 
 def _ouvre_navigateur():
+    # REDÉMARRAGE DE MISE À JOUR (vécu Yohan 2026-07-06 : « il m'ouvre un nouvel onglet, mais le précédent
+    # n'est pas fermé ») : l'ancien onglet se RECHARGE tout seul (watchdog front) et un navigateur ne laisse
+    # jamais le serveur fermer un onglet — donc on n'en OUVRE pas un deuxième. L'updater pose ce marqueur.
+    if os.environ.get("VERAX_RELANCE_MAJ") == "1":
+        return
     time.sleep(2.0)
     try:
         webbrowser.open(_URL)

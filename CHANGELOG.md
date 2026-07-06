@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — MAJ : plus de 2e onglet — l'onglet existant se recharge, l'app relancée n'en ouvre pas
+
+- **Vécu Yohan** : « lorsque je lance la mise à jour, il m'ouvre un nouvel onglet, mais le précédent n'est pas
+  fermé ». Un navigateur n'autorise jamais le serveur à fermer un onglet — la bonne coupe est de ne pas en
+  OUVRIR un deuxième : l'ancien onglet se recharge déjà tout seul (watchdog front, bandeau ⏳ → reload).
+- L'updater pose `VERAX_RELANCE_MAJ=1` dans son `.bat` AVANT le `start` (vaut aussi pour les relances
+  anti-DLL, même session cmd) ; `lance.py` n'ouvre pas de navigateur quand ce marqueur est présent.
+- `valide_maj` **38/38** (marqueur avant tout start + garde lance.py, bat généré inspecté).
+
 ## 2026-07-06 — Avis 2/2 : débats SANS chiffres — les deux faces sourcées + avis CONDITIONNEL signé
 
 - « Que penses-tu des voitures électriques ? » ne rend plus le seul cadrage générique : `_reponse_opinion`

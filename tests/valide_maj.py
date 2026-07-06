@@ -162,5 +162,14 @@ _src_app = inspect.getsource(maj._lance_updater)
 check("_internal.old" in _src_app and "dossier_app" in _src_app,
       "updater : bascule du dossier _internal (l'ancien est renommé, jamais supprimé à chaud)")
 
+# — PAS DE 2e ONGLET après une MAJ (vécu Yohan 2026-07-06) : l'ancien onglet se recharge (watchdog), l'app
+# relancée par l'updater NE rouvre PAS de navigateur. Marqueur posé par le .bat AVANT tout start.
+check(_src_app.index('VERAX_RELANCE_MAJ') < _src_app.index("'start"),
+      "updater : marqueur VERAX_RELANCE_MAJ posé AVANT le start (vaut aussi pour les relances anti-DLL)")
+with open(os.path.join(os.path.dirname(__file__), "..", "lance.py"), encoding="utf-8") as _f:
+    _src_lance = _f.read()
+check("VERAX_RELANCE_MAJ" in _src_lance and "webbrowser.open" in _src_lance,
+      "lance.py : redémarrage de MAJ -> aucun onglet ouvert (l'existant se recharge tout seul)")
+
 print("=== valide_maj : %d/%d ===" % (_ok[0], _ok[0] + _ko[0]))
 sys.exit(0 if _ko[0] == 0 else 1)
