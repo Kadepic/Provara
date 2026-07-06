@@ -71,5 +71,36 @@ check(R._cap_audit_code("parle-moi du code de la route") is None, "audit code : 
 # — DISTANCE : sûreté de routage —
 check(R._cap_distance("bonjour") is None, "distance : message normal -> None")
 
+# — SITE NOMMÉ (vécu 2026-07-06 : « regarde yohanfauck.fr » -> clarification générique) —
+import os as _os
+import veille_structure as _VS_site
+check(R._cap_site("bonjour comment vas-tu ?") is None, "site : message sans domaine -> None")
+check(R._cap_site("relance maj.py stp") is None, "site : « maj.py » n'est PAS un domaine (TLD fermés)")
+_web_avant = _os.environ.get("IA_WEB")
+_apercu_avant = _VS_site.apercu_site
+try:
+    _os.environ["IA_WEB"] = "0"
+    r = R._cap_site("peux-tu regarder le site yohanfauck.fr ?")
+    check(r is not None and "Internet est coupé" in r and "yohanfauck.fr" in r,
+          "site + web OFF -> refus honnête actionnable (bouton 🌐), jamais une invention")
+    _os.environ["IA_WEB"] = "1"
+    _VS_site.apercu_site = lambda cible, timeout=8: ("Yohan Fauck — Portfolio",
+                                                     "Développeur, moteurs de raisonnement vérifiés.",
+                                                     "https://yohanfauck.fr")
+    r = R._cap_site("peux-tu regarder le site yohanfauck.fr et me dire ce que tu en penses ?")
+    check(r is not None and "yohanfauck.fr" in r and "Portfolio" in r and "rapporté" in r.lower(),
+          "site + web ON -> rapport ATTRIBUÉ (domaine, titre, extrait, lien)")
+    check(r is not None and "jugement subjectif" in r,
+          "« ce que tu en penses » -> cadrage honnête (on cite la page, on ne juge pas)")
+    _VS_site.apercu_site = lambda cible, timeout=8: None
+    r = R._cap_site("va voir https://site-injoignable.example/page")
+    check(r is not None and "pas réussi à lire" in r, "site injoignable -> aveu honnête, jamais deviné")
+finally:
+    _VS_site.apercu_site = _apercu_avant
+    if _web_avant is None:
+        _os.environ.pop("IA_WEB", None)
+    else:
+        _os.environ["IA_WEB"] = _web_avant
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

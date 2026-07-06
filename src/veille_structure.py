@@ -360,12 +360,73 @@ def _texte_page(url: str, timeout: int = 6, cap: int = 400_000) -> str:
     if "html" not in ctype and "text" not in ctype:
         return ""
     brut = rep.read(cap)
+    return " ".join(_html.unescape(_BALISE_RE.sub(" ", _SCRIPT_RE.sub(" ", _decode_page(brut, ctype)))).split())
+
+
+def _decode_page(brut: bytes, ctype: str) -> str:
+    """Décodage tolérant d'une page (charset déclaré dans l'en-tête ou le début du HTML, repli utf-8)."""
     m = _CHARSET_RE.search(ctype) or _CHARSET_RE.search(brut[:4096].decode("ascii", "ignore"))
     try:
-        texte = brut.decode(m.group(1) if m else "utf-8", "replace")
+        return brut.decode(m.group(1) if m else "utf-8", "replace")
     except LookupError:                                   # charset exotique déclaré -> utf-8 tolérant
-        texte = brut.decode("utf-8", "replace")
-    return " ".join(_html.unescape(_BALISE_RE.sub(" ", _SCRIPT_RE.sub(" ", texte))).split())
+        return brut.decode("utf-8", "replace")
+
+
+# ———————————— VISITE D'UN SITE EXPLICITEMENT NOMMÉ (« regarde yohanfauck.fr ») ————————————
+_TITRE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.S | re.I)
+
+
+def _fenetre_prose(texte: str, fen: int = 60, pas: int = 30) -> str:
+    """La fenêtre la plus « PROSE » d'un texte de page : max de mots-outils FR — les menus de navigation et
+    les listes de rubriques n'en ont presque pas. Bornée à ~360 caractères (extrait, pas la page entière)."""
+    mots = texte.split()
+    if len(mots) <= fen:
+        seg = " ".join(mots)
+    else:
+        seg, meilleur_n = "", -1
+        for i in range(0, len(mots) - pas, pas):
+            cand = " ".join(mots[i:i + fen])
+            n = sum(1 for m in _normalise(cand).split() if m in _WIKI_STOP)
+            if n > meilleur_n:
+                seg, meilleur_n = cand, n
+    if len(seg) > 360:
+        seg = seg[:360].rsplit(" ", 1)[0] + "…"
+    return seg
+
+
+def apercu_site(hote_ou_url: str, timeout: int = 8):
+    """VISITE le site que l'utilisateur NOMME (vécu 2026-07-06 : « regarde yohanfauck.fr » tombait dans la
+    clarification générique). Renvoie (titre, extrait PROSE, url) ou None (injoignable/vide/non-HTML).
+    FAUX=0 : contenu RAPPORTÉ verbatim et attribué — jamais un jugement. Jamais d'adresse locale ni d'IP
+    (seul le web PUBLIC explicitement demandé est visité). HTTPS d'abord, repli HTTP (petits sites)."""
+    u = (hote_ou_url or "").strip().rstrip(".,;!?»«")
+    if not re.match(r"^https?://", u, re.I):
+        u = "https://" + u
+    hote = (urllib.parse.urlparse(u).hostname or "").lower()
+    if not hote or "." not in hote or hote == "localhost" or re.fullmatch(r"[0-9.:]+", hote):
+        return None
+    brut, ctype, u_finale = b"", "", u
+    for essai in (u, "http://" + hote):
+        try:
+            rep = https_confiance.urlopen(urllib.request.Request(essai, headers={"User-Agent": _DDG_UA}),
+                                          timeout=timeout)
+            ctype = rep.headers.get("Content-Type", "") or ""
+            if "html" not in ctype and "text" not in ctype:
+                return None
+            brut, u_finale = rep.read(400_000), essai
+            break
+        except Exception as e:
+            if essai.startswith("http://"):               # les deux voies ont échoué -> signalé, None
+                _signale(hote, e)
+    if not brut:
+        return None
+    page = _decode_page(brut, ctype)
+    mt = _TITRE_RE.search(page)
+    titre = " ".join(_html.unescape(mt.group(1)).split())[:120] if mt else ""
+    texte = " ".join(_html.unescape(_BALISE_RE.sub(" ", _SCRIPT_RE.sub(" ", page))).split())
+    if len(texte) < 40:                                   # page quasi vide -> rien d'honnête à rapporter
+        return None
+    return (titre, _fenetre_prose(texte), u_finale)
 
 
 def extrait_contextuel(url: str, terme: str, timeout: int = 6):

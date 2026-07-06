@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — « Regarde le site yohanfauck.fr » : Provara VA LIRE le site nommé et rapporte (attribué)
+
+- **Vécu Yohan** : « peux-tu regarder le site yohanfauck.fr et me dire ce que tu en penses ? » tombait dans la
+  clarification générique (le domaine ne « rattache » à aucun fait, la recherche Wikipédia ne trouve rien).
+- **Nouveau cap `_cap_site`** (câblé en tête de cascade) : un domaine/URL explicite dans le message (TLD
+  fermés — jamais « maj.py ») → visite réelle via `veille_structure.apercu_site` : HTTPS puis repli HTTP,
+  jamais d'adresse locale/IP, titre `<title>` + **fenêtre la plus PROSE** de la page (comptage de mots-outils :
+  les menus de navigation sont écartés), rapport ATTRIBUÉ + lien. « Ce que tu en penses » → cadrage honnête
+  (« je ne porte pas de jugement — voilà ce que la page dit »). Web OFF → refus actionnable (bouton 🌐) ;
+  injoignable → aveu honnête. FAUX=0 : contenu rapporté verbatim, jamais un jugement inventé.
+- Vérifié EN LIVE sur yohanfauck.fr (titre réel + passage prose). `valide_veille_structure` 22/22,
+  `valide_capacites_chat` 25/25, suite 19/19.
+
 ## 2026-07-06 — FLIP ONEDIR (build 49) : Provara devient un dossier — démarrage instantané, antivirus apaisé
 
 - Le build 48 (updater v2) vérifié en réel chez Yohan (auto-update 44→48 observé en direct, slot météo et

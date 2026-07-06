@@ -4513,6 +4513,48 @@ def _cap_challenge(texte: str):
             "pas, je te le dirai honnêtement.%s À toi : lance ta première affirmation." % (cible, amorce))
 
 
+# Domaine/URL EXPLICITE dans le message (« regarde yohanfauck.fr ») : URL complète, ou domaine avec une liste
+# FERMÉE de TLD courants (jamais « maj.py » ni un mot à point accidentel). Vécu 2026-07-06 : « peux-tu regarder
+# le site yohanfauck.fr ? » tombait dans la clarification générique — web ON = toujours une réponse.
+_SITE_RE = re.compile(
+    r"\b(https?://[^\s»«\"']+"
+    r"|(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:fr|com|org|net|io|dev|app|eu|be|ch|ca|ai|info|me)\b"
+    r"(?:/[^\s»«\"']*)?)", re.I)
+_SITE_AVIS_RE = re.compile(r"\b(?:penses?|pensez|avis|impressions?|trouves?|trouvez|juges?)\b", re.I)
+
+
+def _cap_site(texte: str):
+    """L'utilisateur NOMME un site : on va le LIRE et on RAPPORTE (titre + passage prose, attribué). FAUX=0 :
+    jamais un jugement subjectif — si on demande « ce que tu en penses », on le dit et on cite la page."""
+    m = _SITE_RE.search(texte)
+    if not m:
+        return None
+    cible = m.group(1).rstrip(".,;!?")
+    if os.environ.get("IA_WEB") != "1":
+        return ("Tu me demandes d'aller voir « %s », mais Internet est coupé. Active-le (bouton « 🌐 » du menu "
+                "⚙️) et j'irai lire la page pour t'en faire un rapport sourcé." % cible)
+    try:
+        import veille_structure as _VS
+        ap = _VS.apercu_site(cible)
+    except Exception:
+        ap = None
+    if not ap:
+        return ("Je n'ai pas réussi à lire « %s » (site injoignable, vide, ou qui bloque les robots) — je "
+                "préfère te le dire que d'inventer." % cible)
+    titre, extrait, url = ap
+    dom = url.split("//", 1)[-1].split("/")[0]
+    lignes = []
+    if _SITE_AVIS_RE.search(texte):
+        lignes.append("Je ne porte pas de jugement subjectif — mais je suis allé LIRE la page, et voilà ce "
+                      "qu'elle dit :")
+    else:
+        lignes.append("Je suis allé lire la page :")
+    lignes.append("D'après %s%s : %s" % (dom, (" (« %s »)" % titre) if titre else "", extrait))
+    lignes += ["", "\U0001F517 La page : %s" % url,
+               "(Contenu rapporté tel quel — trouvé sur internet, à vérifier au besoin.)"]
+    return "\n".join(lignes)
+
+
 def _cap_quotidien(texte: str, conv_id=None):
     """Questions du QUOTIDIEN : météo (refus honnête, chaleureux), heure et date (faits réels de l'horloge
     locale). Demandé par Yohan (2026-07-06) : « il fait quel temps ? » tombait dans l'aveu générique."""
@@ -6372,7 +6414,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             return _r
     if pleine:
         # _cap_quotidien reçoit conv_id (attente à trou « pour quelle ville ? » rejouable au tour suivant).
-        for _cap in (lambda _t: _cap_quotidien(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (lambda _t: _cap_quotidien(_t, conv_id), _cap_site, _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
