@@ -91,13 +91,17 @@ def _annee(litteral: str):
 
 
 def _pull_date(relation, classe_qid, prop, sous_classes=True, filtre_libelle=None):
-    """Tire (entité_fr, annee_str, litteral_brut) pour la propriété date `prop` des instances de `classe_qid`.
+    """Tire (entité_fr, annee_str, sitelinks:int) pour la propriété date `prop` des instances de `classe_qid`.
     `filtre_libelle` (callable libellé->bool) : si fourni, les entités dont le libellé matche sont REJETÉES
-    (honnêteté de libellé, ex. dates de calendrier nues pour date_evenement). Renvoie aussi le compte rejeté."""
+    (honnêteté de libellé, ex. dates de calendrier nues pour date_evenement). Renvoie aussi le compte rejeté.
+    SITELINKS (2026-07-06) : lus pour la dominance par NOTORIÉTÉ — « traité de Versailles » (1919, 135 wikis)
+    était tué par ses homonymes historiques (1756/1768/1783/1787, ≤15 wikis) via le fonctionnel par libellé."""
     chemin = "wdt:P31/wdt:P279*" if sous_classes else "wdt:P31"
-    q = f"""SELECT ?eLabel ?v WHERE {{
+    q = f"""PREFIX wikibase: <http://wikiba.se/ontology#>
+    SELECT ?eLabel ?v ?sl WHERE {{
       ?e {chemin} wd:{classe_qid} ; wdt:{prop} ?v .
       ?e rdfs:label ?eLabel . FILTER(lang(?eLabel)="fr")
+      OPTIONAL {{ ?e wikibase:sitelinks ?sl }}
     }}"""
     rows = IQ._charge_ou_fetch(relation, q)
     out = []
@@ -112,8 +116,43 @@ def _pull_date(relation, classe_qid, prop, sous_classes=True, filtre_libelle=Non
             continue
         an = _annee(v)
         if an is not None:
-            out.append((e, an, v))
+            try:
+                sl = int(float(IQ.val(r, "sl") or 0))
+            except ValueError:
+                sl = 0
+            out.append((e, an, sl))
     return out, rejet_libelle
+
+
+def _dominance_notoriete(paires_sl, ratio=8.0):
+    """DOMINANCE PAR NOTORIÉTÉ sur libellés homonymes à ANNÉES distinctes : l'entité au max de sitelinks est
+    retenue si elle domine la 2ᵉ d'un facteur >= ratio (traité de Versailles 1919 : 135 wikis vs 15). En
+    dessous, l'ambiguïté est RÉELLE (bataille des Ardennes 1914 vs 1944) -> laissée au fonctionnel -> HORS."""
+    import collections
+    from base_faits import _sans_articles as _sa
+    g = collections.defaultdict(list)
+    for e, an, sl in paires_sl:
+        g[_sa(e)].append((int(sl), an, e))
+    out, domines = [], 0
+    for cle, lst in g.items():
+        annees = {an for _sl, an, _e in lst}
+        if len(annees) == 1:
+            _sl, an, e = lst[0]
+            out.append((e, an))
+            continue
+        lst.sort(reverse=True)
+        # 2ᵉ max de sitelinks parmi les entités d'une ANNÉE DIFFÉRENTE de la dominante
+        dom_sl, dom_an, dom_e = lst[0]
+        rival = max((sl for sl, an, _e in lst if an != dom_an), default=0)
+        if dom_sl > 0 and (rival == 0 or dom_sl >= ratio * rival):
+            out.append((dom_e, dom_an))
+            domines += 1
+        else:
+            for _sl, an, e in lst:                        # ambigu réel -> le fonctionnel aval rejettera
+                out.append((e, an))
+    if domines:
+        print(f"  [dominance-notoriété] {domines} libellés homonymes résolus par les sitelinks (≥{ratio:g}×)")
+    return out
 
 
 def ingere_date(relation, classe_qid, prop, source, ymin, ymax, categorie="passe", sous_classes=True):
@@ -123,12 +162,13 @@ def ingere_date(relation, classe_qid, prop, source, ymin, ymax, categorie="passe
     # une chose datée (pays, organisation, événement nommé), jamais une date/année nue (« 883 », « 1492 »).
     triples, rejet_libelle = _pull_date(relation, classe_qid, prop, sous_classes=sous_classes,
                                         filtre_libelle=FILTRES_LIBELLE.get(relation, _est_date_nue))
-    paires, hors_plage = [], 0
-    for e, an, _brut in triples:
+    bornes, hors_plage = [], 0
+    for e, an, sl in triples:
         if ymin <= int(an) <= ymax:
-            paires.append((e, an))
+            bornes.append((e, an, sl))
         else:
             hors_plage += 1
+    paires = _dominance_notoriete(bornes)
     rej = f", {rejet_libelle} libellé-nu(HORS)" if rejet_libelle else ""
     print(f"== {relation} ({prop}, classe {classe_qid}) : {len(triples)} dates parsées, "
           f"plage[{ymin},{ymax}] -> {len(paires)} gardées, {hors_plage} hors-plage(HORS){rej} ==")
@@ -351,7 +391,28 @@ def ingere_batailles():
 TRAITES = [
     ("annee_entree_vigueur_traite", "Q131569", "P7588",
      "Wikidata/QLever — année d'entrée en vigueur (P7588) d'un traité", -1000, 2026),
+    # SIGNATURE (P585) : re-produit via t8 moderne (l'ancien pipeline REST rejetait « traité de Versailles »
+    # 1919 à cause des homonymes 1756/1768/1783/1787 — la dominance-notoriété tranche : 135 wikis vs ≤15).
+    ("annee_signature_traite", "Q131569", "P585",
+     "Wikidata/QLever — année de signature (P585) d'un traité ; homonymes tranchés par NOTORIÉTÉ "
+     "(sitelinks ≥8×, ex. traité de Versailles = 1919), sinon HORS", -1000, 2026),
 ]
+
+# GUERRES (Q198) via P580/P582 : l'ancien pipeline REST n'avait NI la Première NI la Seconde Guerre mondiale.
+# Mêmes garde-fous que les batailles ; dominance-notoriété pour les homonymes.
+GUERRES = [
+    ("annee_debut_guerre", "Q198", "P580",
+     "Wikidata/QLever — année de début (P580) d'une guerre ; homonymes tranchés par notoriété (sitelinks)",
+     -4000, 2026),
+    ("annee_fin_guerre", "Q198", "P582",
+     "Wikidata/QLever — année de fin (P582) d'une guerre ; homonymes tranchés par notoriété (sitelinks)",
+     -4000, 2026),
+]
+
+
+def ingere_guerres():
+    for rel, cls, prop, src, lo, hi, *rest in GUERRES:
+        ingere_date(rel, cls, prop, src, lo, hi, categorie=(rest[0] if rest else "passe"))
 
 
 def ingere_traites():
@@ -652,6 +713,8 @@ if __name__ == "__main__":
         ingere_batailles()
     elif len(sys.argv) > 1 and sys.argv[1] == "traites":
         ingere_traites()
+    elif len(sys.argv) > 1 and sys.argv[1] == "guerres":
+        ingere_guerres()
     elif len(sys.argv) > 1 and sys.argv[1] == "sieges":
         ingere_sieges()
     elif len(sys.argv) > 1 and sys.argv[1] == "operations":

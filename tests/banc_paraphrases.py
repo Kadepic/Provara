@@ -199,6 +199,10 @@ CAS += [
     ("entre nous, tu saurais pas par hasard combien de gens vivent en France ?", "68"),  # population de la France
     ("bon alors, cette histoire de capitale du Japon, c'est quoi déjà ?", "tokyo"),      # « bon » protégé de la guérison
     ("en quelle année Christophe Colomb a-t-il découvert l'Amérique ?", "1492"),         # libellé Wikidata composé
+    ("en quelle année a été signé le traité de Versailles ?", "1919"),   # ré-ingestion dominance-notoriété
+    ("quand a commencé la Première Guerre mondiale ?", "1914"),
+    ("quand s'est terminée la Seconde Guerre mondiale ?", "1945"),
+    ("combien de temps a duré la Première Guerre mondiale ?", "4 ans"),
     ("quelles langues parle-t-on au Japon ?", "37"),         # PLURIEL = liste (singularisation nue dans _base)
     ("en quelle année est né Mozart ?", "1756"),             # ex-FAUX : footballeur brésilien né en 1979 !
     ("quand est né Bach ?", "1685"),                         # ex-FAUX : nu -> 1882, « Johann S. Bach » -> petit-fils 1748

@@ -1432,9 +1432,9 @@ def _cap_temporel(texte: str):
 # DATE d'un événement : « quand a eu lieu la bataille de Marignan ? » -> 1515. « commencé/débuté » -> année de
 # début, « terminé/fini » -> année de fin (familles appariées), sinon l'année principale (_annee_de). FAUX=0.
 _DATE_EVT_RE = re.compile(
-    r"^\s*(?:quand\s+(?:a\s+eu\s+lieu\s+|a\s+commenc[ée]\s+|a\s+d[ée]but[ée]\s+|s['’]est\s+termin[ée]e?\s+|"
+    r"^\s*(?:quand\s+(?:a\s+eu\s+lieu\s+|a\s+commenc[ée]\s+|a\s+d[ée]but[ée]\s+|s['’ ]est\s+termin[ée]e?\s+|"
     r"s['’]est\s+fini\w*\s+|a\s+pris\s+fin\s+|s['’]est\s+d[ée]roul[ée]e?\s+|a\s+eu\s+lieu\s+)"
-    r"|en\s+quelle\s+ann[ée]+e?\s+(?:a\s+eu\s+lieu\s+|a\s+commenc[ée]\s+|s['’]est\s+termin[ée]e?\s+|"
+    r"|en\s+quelle\s+ann[ée]+e?\s+(?:a\s+eu\s+lieu\s+|a\s+commenc[ée]\s+|s['’ ]est\s+termin[ée]e?\s+|"
     r"(?:a\s+)?(?:d[ée]but[ée]|fini|eu\s+lieu)\s+|est\s+)"
     r"|de\s+quand\s+date\s+)(.+?)\s*\??\s*$", re.I)
 
@@ -1444,9 +1444,10 @@ _DATE_EVT_RE = re.compile(
 # relations déciderait entre 1961 et 1989 — un coup de dés, pas un fait).
 _DATE_VERBE_RE = re.compile(
     r"^\s*(?:quand|en\s+quelle\s+ann[ée]+e?)\s+(?:est\s+(tomb[ée]|chut[ée])|a\s+(?:[ée]t[ée]\s+)?"
-    r"(construite?|[ée]rig[ée]e?|b[âa]tie?|d[ée]truite?|d[ée]molie?|dissoute?))\s+"
+    r"(construite?|[ée]rig[ée]e?|b[âa]tie?|d[ée]truite?|d[ée]molie?|dissoute?|sign[ée]e?))\s+"
     r"(?:le\s+|la\s+|les\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
 _DATE_VERBE_RELS = {"tomb": ("annee_dissolution",), "chut": ("annee_dissolution",),
+                    "sign": ("annee_signature_traite", "date_evenement"),
                     "detruit": ("annee_dissolution", "annee_demolition"), "demoli": ("annee_demolition",),
                     "dissou": ("annee_dissolution",),
                     "construit": ("annee_construction_edifice",), "erig": ("annee_construction_edifice",),
@@ -1471,6 +1472,7 @@ def _cap_date_evenement(texte: str):
                         a = _nombre(cell[1])
                         if a is not None:
                             lib = {"annee_dissolution": "est tombé en", "annee_demolition": "a été démoli en",
+                                   "annee_signature_traite": "a été signé en",
                                    "annee_construction_edifice": "a été construit en"}.get(rel, ":")
                             return "%s %s %d." % (cell[0][:1].upper() + cell[0][1:], lib, int(a))
         return None
@@ -1497,7 +1499,8 @@ def _cap_date_evenement(texte: str):
 
 def _fem_evt(nom: str) -> bool:
     """L'événement est-il désigné par un mot féminin (bataille, guerre, révolution…) pour l'accord « terminée » ?"""
-    return bool(re.match(r"^(?:bataille|guerre|r[ée]volution|campagne|op[ée]ration|croisade|conqu[êe]te|dynastie)\b",
+    return bool(re.match(r"^(?:(?:premi[eè]re|seconde|deuxi[eè]me|grande)\s+)?"
+                         r"(?:bataille|guerre|r[ée]volution|campagne|op[ée]ration|croisade|conqu[êe]te|dynastie)\b",
                          _normalise(nom)))
 
 
@@ -1632,6 +1635,8 @@ def _cap_duree(texte: str):
             sujet = _RF.le_syntagme(aff, majuscule=True)
         except Exception:
             sujet = aff[:1].upper() + aff[1:]
+        if _fem_evt(aff) and sujet.startswith("Le "):     # « LA Première Guerre mondiale », pas « Le »
+            sujet = "La " + sujet[3:]
     borne = lambda a: ("%d av. J.-C." % -a) if a < 0 else "%d" % a
     n = f - d
     if n == 0:
