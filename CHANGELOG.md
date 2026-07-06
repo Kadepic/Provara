@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — FLIP ONEDIR (build 49) : Provara devient un dossier — démarrage instantané, antivirus apaisé
+
+- Le build 48 (updater v2) vérifié en réel chez Yohan (auto-update 44→48 observé en direct, slot météo et
+  extraits web testés sur l'exe), le PONT rendant l'attente inutile → `ONEDIR: "1"` dans le CI (GO Yohan).
+- Build 49+ : le CI publie **`Provara-app.zip`** (Provara.exe + `_internal\` à la racine) ; `Provara.exe` et
+  `Provara-windows.zip` restent FIGÉS au build 48 comme pont pour les updaters ≤ 47. Plus AUCUNE
+  ré-extraction `%TEMP%` au lancement : l'antivirus ne rescanne plus rien, l'erreur « Failed to load Python
+  DLL » devient structurellement impossible.
+- README (fr/en) §Windows : télécharger `Provara-app.zip`, dézipper, double-cliquer `Provara.exe`.
+- À VÉRIFIER à la sortie du 49 : migration 48→49 en réel (bascule dossier), premier lancement onedir.
+
 ## 2026-07-06 — Exposés web : « parle-moi de Brive-la-Gaillarde » sert la VILLE, plus la « Rafle de Brive »
 
 - Trouvé au test RÉEL du build 48 (.exe, port 8765) : le terme de recherche partait pollué (« parler de
