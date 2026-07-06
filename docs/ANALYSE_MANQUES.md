@@ -6,19 +6,23 @@ _Base : 71,9 M faits · 1387 relations · ~30 Mo RAM (colonnaire mémoire-mappé
 Priorisé par IMPACT × faisabilité model-free. Provara a une base de faits énorme et un moteur FAUX=0 solide ;
 les vrais leviers ci-dessous exploitent MIEUX ce qui existe déjà plutôt que d'ajouter de la donnée.
 
-## STATUT (mis à jour 2026-07-03) — la plupart des leviers sont LIVRÉS
+## STATUT (mis à jour 2026-07-06) — la plupart des leviers sont LIVRÉS
 
 | # | Levier | Statut |
 |---|--------|--------|
 | P1 | Raisonnement compositionnel (+ résolution par famille) | ✅ **LIVRÉ** (`_compose_relations`, valide_composition 9/9) |
 | P2 | Scanner d'inventions manquantes (OBJECTIF FINAL) | ✅ **LIVRÉ** (`inventions_composites` câblé au chat) |
 | P3 | Fraîcheur / temporel | ✅ **LIVRÉ** (`_est_volatil` → source live, valide_fraicheur 10/10) |
-| P4 | Compréhension conversationnelle (multi-tours/coréférence) | ✅ **EN PLACE** (« et sa monnaie » → yen…) |
+| P4 | Compréhension conversationnelle (multi-tours/coréférence) | ✅ **EN PLACE** (« et sa monnaie » → yen… ; **clarification à trou** : « pour quelle ville ? » → « À Brives » complète, 2026-07-06) |
 | P5 | Traduction FR↔EN | ✅ **LIVRÉ** (`traduction`, concept_du_mot + dico curé, valide_traduction 8/8) |
 | P7 | OCR minuscules | ✅ **LIVRÉ** (casse par hauteur de ligne, valide_ocr 28/28) |
 | P6 | Performance / cold-load | ~ Adressé (préchargement en fond ; daemon = Linux, hors .exe) |
 | P7 | OCR multi-**police** arbitraire / audio | ⛔ Bloqué sur données de polices / hors model-free strict |
 | P8 | Confiance étendue (score fiabilité, concordance de valeurs) | ~ Base en place, extension marginale |
+| P9 | **Avis sur du non-tranché** (« mon avis est… ») | ✅ **LIVRÉ 2026-07-06** (`_cap_avis` : Pareto/Condorcet + critère utilisateur ; `_reponse_opinion` : pour/contre sourcé, avis conditionnel) |
+| P10 | **Apprentissage des faits web** (réutilisables hors-ligne) | ✅ **LIVRÉ 2026-07-06** (`faits_appris` : Wikidata appris, typé source+date, resservi hors-ligne ; FAUX=0 structuré seul) |
+| P11 | **Visite d'un site nommé** + météo en direct | ✅ **LIVRÉ 2026-07-06** (`_cap_site`/`apercu_site` ; `_cap_quotidien`/`meteo` Open-Meteo) |
+| — | **Zéro orphelin** (tout module construit câblé) | ✅ **LIVRÉ 2026-07-06** (`valide_cablage` : atteignabilité prouvée ; 280 capacités auto-prouvées au diagnostic) |
 
 Le détail d'origine de chaque levier suit ci-dessous (conservé pour la traçabilité).
 

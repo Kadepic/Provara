@@ -2,7 +2,7 @@
 
 > Generated mechanically from the code (docstrings + API). Represents the entirety of the shipped modules.
 
-**1304 modules · 4682 public functions/classes · 171 496 lines**
+**1305 modules · 4686 public functions/classes · 171 496 lines** (mechanical snapshot; faits_appris added by hand on 2026-07-06)
 
 
 ## Core — 6 modules
@@ -219,6 +219,7 @@
 | `fabrique_francais` | FABRIQUE_FRANCAIS — VERIFIED French dataset, model-free (2026-06-18, Yohan's idea "train in French" + LEARN leap | instruction, fabrique, resume |
 | `fabrique_semantique` | FABRIQUE_SEMANTIQUE — VERIFIED French COMPREHENSION dataset (2026-06-18, "the official definition = the truth"). | construit_paires, fabrique, resume |
 | `fait_negatif` | FIRST-CLASS NEGATIVE FACT (module `fait_negatif`) — distinguishing the KNOWN-FALSE from the UNKNOWN (representation, 2026-07-02). | statut_fait, negatifs_certains, coherent |
+| `faits_appris` | LEARNED WEB FACTS — persistent local memory of STRUCTURED facts found online (Wikidata), reusable offline, attributed + dated (2026-07-06). FAUX=0: free text is never learned. | apprend, rappelle, rappelle_texte, nombre_appris |
 | `falsification` | ACTIVE FALSIFICATION — Wave 6 brick (Popper: | refute, corrobore, resiste |
 | `fdr_controle` | TIER 2 — FALSE DISCOVERY RATE CONTROL (multiplicity of TESTS, Benjamini-Hochberg) (brick, 2026-06-26). | naif, bonferroni, benjamini_hochberg, decouvre, formule |
 | `fermi` | TIER 2 — ORDER-OF-MAGNITUDE (FERMI) ESTIMATION WITH UNCERTAINTY (brick 29, 2026-06-25). | estime_fermi, estime_fermi_mc, formule |

@@ -163,6 +163,22 @@ entièrement hors réseau et hors lecteur lourd.
 
 ---
 
+## 5 bis. Apprentissage conversationnel des faits web (`faits_appris`, 2026-07-06)
+
+À côté de la boucle d'ingestion **batch** ci-dessus, Provara apprend aussi **au fil du dialogue** :
+quand il résout un fait sur une source **structurée** (Wikidata, via `veille_structure.interroge_nl`
+— extraction SPARQL déterministe), il le **range en local** (`~/.verax/faits_appris.jsonl`, typé
+source + date) et le **ressert ensuite sans réseau, même Internet coupé** — toujours **attribué et
+daté** (« appris de Wikidata le 2026-07-06 »).
+
+La frontière FAUX=0 est la même que pour la veille : **seul le structuré est appris**. Le texte libre
+(Wikipédia, métamoteur) reste « rapporté », **jamais** appris. Un fait resservi est un **instantané
+daté** (le monde a pu changer depuis), pas une vérité intemporelle ; le « dernier appris » d'une clé
+fait foi (rafraîchissement naturel). L'apprentissage est un **bonus en dégradation silencieuse** :
+jamais un point de panne de la réponse. Différence avec la boucle §5 : pas de corroboration
+multi-sources ni de promotion dans le magasin `.jsonl` du lecteur — c'est un **cache personnel
+attribué**, à portée de l'utilisateur, que le diagnostic sait compter.
+
 ## 6. Les familles de scripts d'ingestion
 
 Il existe 147 scripts `ingere_*.py`. Tous convergent vers `publie()` (donc mêmes gardes),

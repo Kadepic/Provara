@@ -163,6 +163,21 @@ entirely off-network and without the heavy reader.
 
 ---
 
+## 5 bis. Conversational learning of web facts (`faits_appris`, 2026-07-06)
+
+Alongside the **batch** ingestion loop above, Provara also learns **as it talks**: when it resolves a
+fact from a **structured** source (Wikidata, via `veille_structure.interroge_nl` — deterministic SPARQL
+extraction), it **stores it locally** (`~/.verax/faits_appris.jsonl`, typed with source + date) and
+**re-serves it later without the network, even with the Internet off** — always **attributed and
+dated** ("learned from Wikidata on 2026-07-06").
+
+The FAUX=0 boundary is the same as for the watch loop: **only structured facts are learned**. Free text
+(Wikipedia, meta-search) stays "reported", **never** learned. A re-served fact is a **dated snapshot**
+(the world may have changed since), not a timeless truth; the "last learned" of a key wins (natural
+refresh). Learning is a **silently-degrading bonus**: never a point of failure for the answer.
+Difference from the §5 loop: no multi-source corroboration nor promotion into the reader's `.jsonl`
+store — this is an **attributed personal cache**, within the user's reach, that the diagnostic counts.
+
 ## 6. The families of ingestion scripts
 
 There are 147 `ingere_*.py` scripts. They all converge on `publie()` (hence the same guards),
