@@ -416,6 +416,12 @@ _RECADRE_LEX = (
 )
 
 _RECADRE_REGLES = (
+    # « en quelle année Christophe Colomb a-t-il découvert l'Amérique ? » -> « quand a eu lieu la découverte
+    # de Y ». Le sujet est retiré SANS être endossé : la réponse nomme l'ÉVÉNEMENT résolu (« Découverte et
+    # exploration de l'Amérique : 1492 »), elle ne confirme pas qui a découvert.
+    (re.compile(r"^\s*(?:en\s+quelle\s+ann[ée]+e?|quand)\s+(?:est[- ]ce\s+que\s+)?.+?\s+"
+                r"a(?:[\s-]*t[\s-]*(?:il|elle))?\s+d[ée]couvert\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quand a eu lieu la découverte de %s ?" % m.group(1)),
     # « combien de gens vivent en France ? » -> « quelle est la population de X » (préambules déjà dévoilés
     # en amont ; .*? tolère un reste d'enrobage). habitent/vivent, en/au/aux/à.
     (re.compile(r".*?\bcombien\s+de\s+(?:gens|personnes|habitants)\s+(?:vivent|habitent)(?:[- ]ils)?\s+"
@@ -1212,17 +1218,21 @@ def _variantes_elision(nom: str) -> list:
     (« bataille d'Hastings ») là où la question dit « de Hastings » — et la guérison/normalisation perd
     l'apostrophe (« bataille d hastings »). Sans ces variantes, le lookup STREAMING (texte brut) rate la clé
     et la question file vers la cascade lourde (qui répondait « Battle », la VILLE du lieu de la bataille)."""
+    regles = (
+        (r"\bde\s+([aeiouyhàâäéèêëîïôöùûü])", r"d'\1"),        # de Hastings -> d'Hastings
+        (r"\bd\s+([aeiouyhàâäéèêëîïôöùûü])", r"d'\1"),         # d hastings -> d'hastings (apostrophe perdue)
+        (r"\bl\s+([aeiouyhàâäéèêëîïôöùûü])", r"l'\1"),         # l amerique -> l'amerique
+        (r"\bd['’]\s*(?=[A-ZÀ-Ü])", "de "),                     # d'Hastings -> de Hastings
+        # libellé Wikidata composé : « découverte de l'Amérique » est stocké « découverte ET EXPLORATION de … »
+        (r"^d[ée]couverte\s+de\s+", "découverte et exploration de "),
+    )
     v = [nom]
-    n = re.sub(r"\bde\s+([aeiouyhàâäéèêëîïôöùûü])", r"d'\1", nom, flags=re.I)   # de Hastings -> d'Hastings
-    if n not in v:
-        v.append(n)
-    n = re.sub(r"\bd\s+([aeiouyhàâäéèêëîïôöùûü])", r"d'\1", nom, flags=re.I)    # d hastings -> d'hastings
-    if n not in v:
-        v.append(n)
-    n = re.sub(r"\bd['’]\s*", "de ", nom)                                       # d'Hastings -> de Hastings
-    if n not in v:
-        v.append(n)
-    return v
+    for pat, rempl in regles:                                   # application CUMULATIVE : les règles se composent
+        for base in list(v):
+            n = re.sub(pat, rempl, base, flags=re.I)
+            if n not in v:
+                v.append(n)
+    return v[:8]                                                # borne dure (coût d'un miss = 1 scan par variante)
 
 
 def _annee_de(entite: str):

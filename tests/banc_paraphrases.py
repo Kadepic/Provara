@@ -198,6 +198,7 @@ CAS += [
     ("j'aimerais beaucoup savoir qui a bien pu écrire ce fameux roman qu'est 1984", "orwell"),
     ("entre nous, tu saurais pas par hasard combien de gens vivent en France ?", "68"),  # population de la France
     ("bon alors, cette histoire de capitale du Japon, c'est quoi déjà ?", "tokyo"),      # « bon » protégé de la guérison
+    ("en quelle année Christophe Colomb a-t-il découvert l'Amérique ?", "1492"),         # libellé Wikidata composé
 ]
 
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
