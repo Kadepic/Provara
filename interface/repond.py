@@ -377,6 +377,22 @@ _ALIAS_PERSONNE = {
     "napoleon bonaparte": "Napoléon Ier",
     "bonaparte premier": "Napoléon Ier",
     "napoleon 1er": "Napoléon Ier",
+    # MONONYMES CÉLÈBRES : le nom NU matche un HOMONYME obscur des datasets (« Mozart » -> footballeur
+    # brésilien né en 1979 !, « Bach » -> né en 1882). La lecture dominante est incontestable ; cible = clé
+    # réelle vérifiée (ou nom complet absent -> abstention honnête, toujours mieux qu'un homonyme faux).
+    "mozart": "Wolfgang Amadeus Mozart",
+    "beethoven": "Ludwig van Beethoven",
+    # ⚠ la clé « Johann Sebastian Bach » des datasets est le PETIT-FILS homonyme exact (peintre, Berlin 1748) —
+    # le compositeur (Eisenach 1685) est ABSENT de l'extraction. On route vers la forme française (absente) :
+    # abstention honnête, toujours mieux que le petit-fils ou l'acteur de 1882 que matchait le nom nu.
+    "bach": "Jean-Sébastien Bach",
+    "einstein": "Albert Einstein",
+    "picasso": "Pablo Picasso",
+    "shakespeare": "William Shakespeare",
+    "churchill": "Winston Churchill",
+    "darwin": "Charles Darwin",
+    "newton": "Isaac Newton",
+    "gandhi": "Mahatma Gandhi",
 }
 _ACCENTS_CLS = {"a": "aàâä", "e": "eèéêë", "i": "iîï", "o": "oôö", "u": "uùûü", "c": "cç"}
 
@@ -393,10 +409,17 @@ _ALIAS_PERSONNE_RE = re.compile(
 
 
 def _applique_alias_personne(texte: str) -> str:
-    """Remplace un alias de personne par la clé réelle des datasets (accent-insensible). Identité sinon."""
+    """Remplace un alias de personne par la clé réelle des datasets (accent-insensible). Identité sinon.
+    GARDE : si le nom COMPLET cible est déjà dans le texte (« Wolfgang Amadeus Mozart »), le mononyme qu'il
+    contient (« mozart ») n'est PAS re-remplacé (sinon imbrication monstrueuse)."""
+    tn = _normalise(texte)
+
     def _rempl(m):
         cle = re.sub(r"\s+", " ", _normalise(m.group(1)))
-        return _ALIAS_PERSONNE.get(cle, m.group(1))
+        cible = _ALIAS_PERSONNE.get(cle)
+        if not cible or _normalise(cible) in tn:
+            return m.group(1)
+        return cible
     return _ALIAS_PERSONNE_RE.sub(_rempl, texte)
 
 

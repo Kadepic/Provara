@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — FAUX mononymes célèbres : « Mozart est né en 1979 » (le footballeur brésilien !) corrigé
+
+- Le nom NU d'un géant matche un HOMONYME obscur des datasets : « Mozart » → footballeur né en 1979,
+  « Bach » → 1882 — et même « Johann Sebastian Bach » (clé stockée) est le PETIT-FILS peintre (Berlin 1748),
+  le compositeur vivant sous la clé FRANÇAISE « Jean-Sébastien Bach » (1685).
+- Carte d'alias (0alias) étendue aux MONONYMES incontestables, chaque cible VÉRIFIÉE contre les clés réelles :
+  Mozart→Wolfgang Amadeus Mozart (*1756* ✓), Beethoven (*mort 1827* ✓), Bach→Jean-Sébastien Bach (*1685* ✓),
+  Einstein (*Ulm* ✓), Picasso (fiche ✓) ; Shakespeare/Churchill/Darwin/Newton/Gandhi → nom complet (absent de
+  l'extraction → abstention honnête, toujours mieux qu'un homonyme faux). Garde anti-imbrication (le mononyme
+  n'est pas re-remplacé si le nom complet est déjà dans la phrase).
+- Banc paraphrases **147/147** (4 cas), raisonnement 153/153, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — FAUX d'homonymes d'œuvres éradiqués : la tour Eiffel n'est plus un tableau de 63 cm
 
 - **Trouvés par mes propres sondes** (la carte de couverture les masquait) : « hauteur de la tour Eiffel ? »

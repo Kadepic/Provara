@@ -200,6 +200,10 @@ CAS += [
     ("bon alors, cette histoire de capitale du Japon, c'est quoi déjà ?", "tokyo"),      # « bon » protégé de la guérison
     ("en quelle année Christophe Colomb a-t-il découvert l'Amérique ?", "1492"),         # libellé Wikidata composé
     ("quelles langues parle-t-on au Japon ?", "37"),         # PLURIEL = liste (singularisation nue dans _base)
+    ("en quelle année est né Mozart ?", "1756"),             # ex-FAUX : footballeur brésilien né en 1979 !
+    ("quand est né Bach ?", "1685"),                         # ex-FAUX : nu -> 1882, « Johann S. Bach » -> petit-fils 1748
+    ("quand est mort Beethoven ?", "1827"),
+    ("où est né Einstein ?", "ulm"),
 ]
 
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
