@@ -5482,9 +5482,12 @@ def _cap_record_monde(texte: str):
         alt = (" — %s m d'altitude, fait vérifié dans mes données" % cell[1]) if cell else ""
         return "L'Everest%s. C'est le plus haut sommet du monde." % alt
     if typ in ("fleuve", "riviere") and adj in ("long", "longu", "grand"):
+        nil, ama = _lookup_cell("longueur_fleuve", "Nil"), _lookup_cell("longueur_fleuve", "Amazone")
+        km = lambda c: format(int(float(c[1]) // 1000), ",d").replace(",", " ")
+        rel = ((" (Mes données — tracé « court » : Nil %s km, Amazone %s km ; les mesures longues de "
+                "l'Amazone montent à ≈ 7 000 km.)" % (km(nil), km(ama))) if (nil and ama) else "")
         return ("Le Nil (≈ 6 650 km) ou l'Amazone (6 400 à 7 000 km selon le tracé retenu) : la primauté est "
-                "scientifiquement DISPUTÉE — je ne tranche pas. (Ma table des longueurs ne couvre aucun des "
-                "deux ; le plus long qu'elle contienne est le Yangzi Jiang, 6 300 km.)")
+                "scientifiquement DISPUTÉE — je ne tranche pas.%s" % rel)
     if typ == "ile" and adj in ("grand", "vaste"):
         return ("Le Groenland (2 166 086 km²) — l'Australie, plus vaste, est comptée comme un continent. "
                 "(Fait de référence curé : ma table superficie_ile ne contient pas le Groenland.)")

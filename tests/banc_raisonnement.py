@@ -81,7 +81,8 @@ CAS = [
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
     # HOMONYMES d'œuvres/monuments : jamais la dimension d'un homonyme (tableau « La Tour Eiffel » 0,632 m,
     # sculpture « La Joconde » 2,48 m, hameau « La France » 3,4 km²) — abstention DITE ou la vraie valeur
-    ("dim-monument-garde", R._cap_dimension, "quelle est la hauteur de la tour Eiffel ?", "je ne confonds pas"),
+    ("dim-tour-eiffel", R._cap_dimension, "quelle est la hauteur de la tour Eiffel ?", "330"),   # hauteur_tour (P2048)
+    ("dim-monument-garde", R._cap_dimension, "quelle est la hauteur de la statue de la Liberté ?", "je ne confonds pas"),
     ("dim-tableau-garde", R._cap_dimension, "quelle est la hauteur de la Joconde ?", "je ne confonds pas"),
     ("dim-exact-prime", R._cap_dimension, "quelle est la superficie de la France ?", "551 695"),
     ("dim-km-lisible", R._cap_dimension, "quelle est la longueur du Yangzi Jiang ?", "6 300 km"),

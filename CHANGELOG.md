@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — BestRank : le Nil, l'Amazone, la tour Eiffel (330 m) et Burj Khalifa (828 m) sont mesurables
+
+- **Cause racine n°3 des trous** : les requêtes unit-aware lisaient TOUS les rangs Wikidata — le Nil portait
+  6 650 km (rang préféré) ET 2 850 km (un tronçon, rang normal) → « désaccord » → rejeté. Les fleuves et
+  monuments CÉLÈBRES, plus documentés donc plus multi-déclarés, étaient les premiers éliminés.
+- **Fix global t7** : `?st a wikibase:BestRank` (équivalent truthy) + labels COALESCE(fr, mul) dans les deux
+  requêtes unitaires. Ré-ingérés : `longueur_fleuve` (Nil *6 650 km*, Amazone *6 400 km* — « le Nil est-il
+  plus long que la Seine ? » → *Oui, chiffré*), **nouvelle relation `hauteur_tour`** (540 tours — la tour
+  Eiffel fait enfin *330 m* au lieu d'une abstention), `hauteur_gratte_ciel` re-produit (Burj Khalifa
+  *828 m*).
+- Le record « plus long fleuve » cite désormais les valeurs RELUES de la table tout en maintenant la dispute
+  Nil/Amazone (tracé court vs long). Bancs : paraphrases **164/164**, raisonnement **163/163**, suite 18/18,
+  challenge 16/16. Sync datasets_complets.
+
 ## 2026-07-06 — Labels « mul » Wikidata : Shakespeare, Gandhi, Darwin récupérés
 
 - **Découverte importante pour TOUTES les ingestions futures** : depuis la migration « mul » de Wikidata

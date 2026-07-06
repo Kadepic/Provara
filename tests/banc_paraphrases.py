@@ -208,6 +208,10 @@ CAS += [
     ("quand est né Shakespeare ?", "1564"),                  # label « mul » Wikidata (plus de label fr !)
     ("qui était Gandhi ?", "1869"),                          # alias -> clé réelle Mohandas Karamchand Gandhi
     ("quel était le métier de Newton ?", "mathématicien"),   # forme « métier de X » + alias
+    ("le Nil est-il plus long que la Seine ?", "Oui"),       # BestRank : les fleuves célèbres sont revenus
+    ("quelle est la longueur du Nil ?", "6 650 km"),
+    ("quelle est la hauteur de la tour Eiffel ?", "330"),    # nouvelle relation hauteur_tour (P2048 BestRank)
+    ("quelle est la hauteur de Burj Khalifa ?", "828"),
     ("quelles langues parle-t-on au Japon ?", "37"),         # PLURIEL = liste (singularisation nue dans _base)
     ("en quelle année est né Mozart ?", "1756"),             # ex-FAUX : footballeur brésilien né en 1979 !
     ("quand est né Bach ?", "1685"),                         # ex-FAUX : nu -> 1882, « Johann S. Bach » -> petit-fils 1748
