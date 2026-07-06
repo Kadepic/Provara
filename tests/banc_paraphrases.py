@@ -205,6 +205,9 @@ CAS += [
     ("combien de temps a duré la Première Guerre mondiale ?", "4 ans"),
     ("quelle est la capitale de l'Afrique du Sud ?", "Pretoria"),        # 3 capitales JOINTES (append ciblé)
     ("quelle est la capitale de la Bolivie ?", "Sucre"),
+    ("quand est né Shakespeare ?", "1564"),                  # label « mul » Wikidata (plus de label fr !)
+    ("qui était Gandhi ?", "1869"),                          # alias -> clé réelle Mohandas Karamchand Gandhi
+    ("quel était le métier de Newton ?", "mathématicien"),   # forme « métier de X » + alias
     ("quelles langues parle-t-on au Japon ?", "37"),         # PLURIEL = liste (singularisation nue dans _base)
     ("en quelle année est né Mozart ?", "1756"),             # ex-FAUX : footballeur brésilien né en 1979 !
     ("quand est né Bach ?", "1685"),                         # ex-FAUX : nu -> 1882, « Johann S. Bach » -> petit-fils 1748

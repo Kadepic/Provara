@@ -66,13 +66,25 @@ def _fetch(q: str) -> list:
 
 
 def dominants(prop: str, label_val: bool, annee: bool, joinmax: int) -> dict:
-    """{clé_norm: (libellé, valeur_jointe)} des célèbres à dominance établie."""
-    ligne_v = '?v rdfs:label ?vLabel . FILTER(lang(?vLabel)="fr")' if label_val else ""
+    """{clé_norm: (libellé, valeur_jointe)} des célèbres à dominance établie.
+    LABELS EN COALESCE(fr, mul, en) : depuis la migration « mul » de Wikidata (2024), les noms identiques
+    dans toutes les langues (William Shakespeare, Gandhi…) n'ont PLUS de label « fr » — un FILTER(lang="fr")
+    sec éliminait précisément les plus célèbres (vécu : Q692 sans label fr)."""
+    if label_val:
+        ligne_v = ('OPTIONAL { ?v rdfs:label ?vfr . FILTER(lang(?vfr)="fr") } '
+                   'OPTIONAL { ?v rdfs:label ?vmul . FILTER(lang(?vmul)="mul") } '
+                   'OPTIONAL { ?v rdfs:label ?ven . FILTER(lang(?ven)="en") } '
+                   'BIND(COALESCE(?vfr, ?vmul, ?ven) AS ?vLabel) FILTER(BOUND(?vLabel))')
+    else:
+        ligne_v = ""
     sel = "?vLabel" if label_val else "?v"
     rows = _fetch(PFX + f"""SELECT ?e ?eLabel ?sl {sel} WHERE {{
   ?e wdt:P31 wd:Q5 ; wikibase:sitelinks ?sl ; wdt:{prop} ?v .
   FILTER(?sl >= {SEUIL_SITELINKS})
-  ?e rdfs:label ?eLabel . FILTER(lang(?eLabel)="fr")
+  OPTIONAL {{ ?e rdfs:label ?efr . FILTER(lang(?efr)="fr") }}
+  OPTIONAL {{ ?e rdfs:label ?emul . FILTER(lang(?emul)="mul") }}
+  OPTIONAL {{ ?e rdfs:label ?een . FILTER(lang(?een)="en") }}
+  BIND(COALESCE(?efr, ?emul, ?een) AS ?eLabel) FILTER(BOUND(?eLabel))
   {ligne_v}
 }}""")
     par_qid, freq = {}, collections.Counter()

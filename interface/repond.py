@@ -393,7 +393,8 @@ _ALIAS_PERSONNE = {
     "churchill": "Winston Churchill",
     "darwin": "Charles Darwin",
     "newton": "Isaac Newton",
-    "gandhi": "Mahatma Gandhi",
+    "gandhi": "Mohandas Karamchand Gandhi",     # clé réelle des datasets (« Mahatma » est un titre)
+    "mahatma gandhi": "Mohandas Karamchand Gandhi",
 }
 _ACCENTS_CLS = {"a": "aàâä", "e": "eèéêë", "i": "iîï", "o": "oôö", "u": "uùûü", "c": "cç"}
 
@@ -5014,6 +5015,7 @@ _FAIT_PERSONNE_RULES = (
                 r"nationalit[ée]\s+d[eu'’]\s*)(.+?)\s*\??\s*$", re.I),
      "nationalite_personne", "%s était originaire de %s"),
     (re.compile(r"^\s*(?:quel\s+(?:m[ée]tier|profession)\s+(?:faisait|avait|exer[çc]ait)\s+|que\s+faisait\s+"
+                r"|quel\s+(?:est|était|etait)\s+(?:le\s+|son\s+)?m[ée]tier\s+d[eu'’]\s*"
                 r"|quelle\s+(?:est|était|etait)\s+(?:la\s+|l['’])?(?:profession|occupation|activit[ée])\s+d[eu'’]\s*)"
                 r"(.+?)\s*\??\s*$", re.I),
      "occupation_personne", "%s était %s"),

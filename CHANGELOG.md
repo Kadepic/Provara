@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Labels « mul » Wikidata : Shakespeare, Gandhi, Darwin récupérés
+
+- **Découverte importante pour TOUTES les ingestions futures** : depuis la migration « mul » de Wikidata
+  (2024), les noms identiques dans toutes les langues (William Shakespeare, Gandhi, Darwin…) n'ont PLUS de
+  label « fr » — un `FILTER(lang="fr")` sec élimine précisément les plus célèbres. `ingere_celebres` passe en
+  `COALESCE(fr, mul, en)` → +1 209 personnes de plus (Shakespeare *né en 1564*, Darwin fiche complète,
+  Gandhi *1869-1948* via l'alias corrigé vers la clé réelle « Mohandas Karamchand Gandhi »).
+- Forme « quel était le MÉTIER de X » ajoutée au cap fait-personne (seul « quel métier faisait X » passait).
+- Banc paraphrases **160/160**, raisonnement 162/162, suite 18/18, challenge 16/16. Sync datasets_complets.
+
 ## 2026-07-06 — RÉ-INGESTION personnes célèbres : Newton, Marie Curie, Churchill… retrouvent leur fiche
 
 - **Cause racine (encore le fonctionnel par libellé, sous deux formes)** : Isaac Newton (le physicien) était
