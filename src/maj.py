@@ -65,6 +65,23 @@ def regle_auto(actif: bool) -> dict:
     return {"ok": True, "auto": bool(actif)}
 
 
+def tentative_recente(cible: str, fenetre_s: int = 6 * 3600) -> bool:
+    """L'auto-application a-t-elle DÉJÀ été tentée pour cette version cible récemment ? GARDE ANTI-BOUCLE :
+    si un swap échoue (updater cassé, antivirus…), l'app redémarrerait sur l'ancienne version, re-détecterait
+    la même MAJ et re-tenterait à l'infini (téléchargements en boucle). Une cible déjà tentée dans la fenêtre
+    -> on ne RE-tente pas tout seul (la bannière manuelle reste disponible)."""
+    import time
+    d = _charge_config().get("tentative") or {}
+    return d.get("cible") == cible and (time.time() - float(d.get("ts", 0))) < fenetre_s
+
+
+def note_tentative(cible: str) -> None:
+    import time
+    d = _charge_config()
+    d["tentative"] = {"cible": cible, "ts": time.time()}
+    _sauve_config(d)
+
+
 def _lire_tampon(texte: str) -> dict:
     """Extrait (build:int, commit:str) d'un tampon de build. Format tolérant : « <n> <commit> » ou juste un
     commit. Le NUMÉRO DE BUILD (entier monotone, tamponné par le CI) est ce qui décide « plus récent »."""

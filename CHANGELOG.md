@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Mises à jour ZÉRO ACTION : l'utilisateur n'a plus RIEN à faire
+
+- Exigence Yohan : « beaucoup d'utilisateurs ne savent pas se servir d'un PC, il faut qu'ils n'aient rien à
+  faire ». Vécu le matin même : app lancée pendant que le CI compilait la release → aucune MAJ proposée
+  jusqu'au prochain démarrage (le build 39 ne vérifiait qu'au boot).
+- **Auto-application au démarrage** : MAJ auto ON + version plus récente détectée 20 s après le boot →
+  téléchargement et remplacement TOUT SEULS (l'app vient de s'ouvrir, le redémarrage est indolore). **Garde
+  anti-boucle** : une cible déjà tentée dans les 6 h n'est pas re-tentée automatiquement (un swap raté — 
+  antivirus, updater cassé — ne re-télécharge pas en boucle ; la bannière manuelle reste disponible).
+- **Re-vérification périodique** : serveur (15 min) + front (`setInterval` sur /api/maj) → une release publiée
+  PENDANT que l'app tourne fait apparaître la bannière toute seule, sans aucun geste.
+- Résidus corrigés du matin : 88 conversations de tests nocturnes nettoyées de `~/.verax/conversations` ;
+  swap manuel 39→40 sur la machine de Yohan (l'updater du 39 avait encore les bugs corrigés dans le 40).
+- Gate `valide_maj` **25/25** (6 vérifications ajoutées : anti-boucle ×3, veille serveur, garde auto-apply,
+  polling front), suite 18/18.
+
 ## 2026-07-06 — Classiques curés : la tomate (fruit ET légume), 7 continents, villes bien présentées
 
 - **« La tomate est-elle un fruit ou un légume ? »** → *les deux points de vue sont vrais : botaniquement un
