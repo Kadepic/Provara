@@ -3847,10 +3847,18 @@ def _diagnostic_connaissance(texte: str):
                 _ok, _ok + _ko, "" if not _echecs else " (en échec : %s)" % ", ".join(_echecs[:3]))
         except Exception:
             pass
-        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s"
+        appris = ""
+        try:
+            import faits_appris as _FA
+            _n = _FA.nombre_appris()
+            if _n:
+                appris = " · %d fait(s) appris du web (structurés, réutilisables hors-ligne)" % _n
+        except Exception:
+            pass
+        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s"
                 % (len(lecteur.LECTEUR.relations()), len(lecteur.LECTEUR),
                    os.environ.get("LECTEUR_DATASETS_DIR", "?"), _build_id(),
-                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap))
+                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap, appris))
     except Exception as e:
         return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
 

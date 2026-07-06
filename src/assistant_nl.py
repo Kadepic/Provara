@@ -245,6 +245,34 @@ def _ping_sources():
     return ok, doms, len(temoins)
 
 
+def _apprend(attribut: str, entite: str, valeur, source: str) -> None:
+    """Apprend un fait STRUCTURÉ trouvé en ligne (dégradation silencieuse si le module/disque est indisponible :
+    l'apprentissage est un BONUS, jamais un point de panne de la réponse)."""
+    try:
+        import faits_appris
+        faits_appris.apprend(attribut, entite, valeur, source)
+    except Exception:
+        pass
+
+
+def _rappelle_appris(question: str, regime: str = ""):
+    """Un fait DÉJÀ appris pour cette question -> Reponse FAIT attribuée+datée, ou None. Parse identique à
+    interroge_nl (même clé). Frontière FAUX=0 : ne ressert que du STRUCTURÉ appris, jamais du texte libre."""
+    try:
+        import veille_structure as _VS
+        import faits_appris
+        ae = _VS.analyse_nl(question)
+        if not ae:
+            return None
+        txt = faits_appris.rappelle_texte(ae[0], ae[1])
+        if txt:
+            return Reponse(FAIT, txt, regime=regime,
+                           source="fait appris d'une source structurée (réutilisé hors-ligne)")
+    except Exception:
+        return None
+    return None
+
+
 def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
     """BORNÉ sans juge -> l'assistant CHERCHE LUI-MÊME côté sources de confiance (veille.py). HONNÊTETÉ STRICTE :
     v1 vérifie la JOIGNABILITÉ des sources du registre et le DIT tel quel — il ne prétend PAS y avoir cherché le
@@ -257,6 +285,12 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
         return Reponse(CLARIFICATION,
                        f"{_PFX_PRECISER} de ta question — par exemple « population du Japon », "
                        f"« altitude du mont Blanc » ?", regime=c.regime, attente="sujet précis")
+    # FAIT DÉJÀ APPRIS (mémoire locale des trouvailles structurées) : resservi SANS réseau, attribué + daté.
+    # Frontière FAUX=0 : seuls les faits STRUCTURÉS ont été appris (jamais le texte libre). Priorité au cache ->
+    # réponse instantanée ET disponible hors-ligne (demande Yohan « réutilisable hors-ligne »).
+    _appris = _rappelle_appris(question, c.regime)
+    if _appris is not None:
+        return _appris
     if _TRANSPORT is None and os.environ.get("IA_WEB") != "1":
         return Reponse(HORS,
                        f"{_PFX_HORS_FAIT}. Une vérité existe (question bornée) : je pourrai la chercher sur mes "
@@ -271,6 +305,7 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
         _res = None
     if _res:
         _a, _e, _valeur, _src = _res
+        _apprend(_a, _e, _valeur, _src)               # ON APPREND le fait structuré (réutilisable hors-ligne)
         return Reponse(FAIT, f"{_valeur}  (trouvé sur {_src})", regime=c.regime,
                        source=f"{_src} — source structurée de confiance")
     # WEB LIBRE (Wikipédia) : rapport ATTRIBUÉ quand le structuré ne tranche pas (design Yohan « d'après [source] »).

@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — APPRENTISSAGE des faits web : Provara retient ce qu'il trouve, réutilisable HORS-LIGNE
+
+- **Demande Yohan** (queue prioritaire) : « que mon IA apprenne les faits STRUCTURÉS qu'elle trouve en ligne,
+  réutilisables hors-ligne ». Nouveau module `src/faits_appris.py` : quand `veille_structure.interroge_nl`
+  résout un fait sur Wikidata (extraction SPARQL déterministe), il est APPRIS — rangé en local
+  (`~/.verax/faits_appris.jsonl`), typé source + date. La prochaine fois, il est resservi **sans réseau** et
+  **même Internet coupé**, toujours attribué et daté (« Strelsau — appris de Wikidata le 2026-07-06 »).
+- **Frontière FAUX=0 (stricte)** : SEUL le structuré est appris ; le texte libre (Wikipédia, métamoteur) reste
+  « rapporté », jamais appris. Jamais de valeur vide ni de fait sans source. Un fait resservi est un
+  INSTANTANÉ daté (le monde a pu changer), pas une vérité intemporelle. « Dernier appris » d'une clé fait foi
+  (rafraîchissement naturel). Apprentissage = bonus en dégradation silencieuse (jamais un point de panne).
+- Câblé dans `assistant_nl._cherche_sources` : le cache appris est consulté AVANT le réseau (réponse
+  instantanée + hors-ligne) et alimenté après chaque succès Wikidata. `interroge_nl` refactoré autour d'un
+  `analyse_nl` (parse seul, même clé). Le diagnostic affiche « N faits appris du web ».
+- Nouveau gate `valide_faits_appris` **14/14** (dans la suite, 21 gates) ; `valide_cablage` 502/502 (le module
+  est atteignable via assistant_nl) ; module embarqué (.exe : `_precharge_verax` + hidden-imports build/CI).
+
 ## 2026-07-06 — « Population du Caire » : phrase complète, plus le nombre BRUT (villes à article dans le nom)
 
 - **Vécu Yohan** : « population du Caire » → *« 9801536 »* nu, alors que « population de Paris » sortait
