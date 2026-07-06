@@ -1,5 +1,12 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Créateur : l'homonymie d'œuvres est LISTÉE (« la Neuvième Symphonie »)
+
+- « qui a composé la Neuvième Symphonie ? » abstenait en silence : l'œuvre de **Beethoven** coexiste avec un
+  FILM homonyme (musique de Kurt Schröder) et l'unicité stricte tuait le lookup. Le branch spécifique de
+  `_cap_createur` LISTE désormais les sens vérifiés (comme le générique) ; l'affichage reprend la clé stockée
+  (« La joconde a été peintE par… », accord conservé). Banc raisonnement **154/154**.
+
 ## 2026-07-06 — FAUX mononymes célèbres : « Mozart est né en 1979 » (le footballeur brésilien !) corrigé
 
 - Le nom NU d'un géant matche un HOMONYME obscur des datasets : « Mozart » → footballeur né en 1979,
