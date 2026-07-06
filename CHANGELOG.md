@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — MAJ : la page se recharge toute seule, et l'app se relance même si l'antivirus grogne
+
+- **Page figée après une mise à jour** (retour Yohan) : l'interface a maintenant un WATCHDOG — serveur perdu →
+  bandeau « ⏳ Mise à jour en cours… » ; serveur revenu → « ✅ Mise à jour terminée » + **rechargement
+  automatique** ; pas de retour après 90 s → consigne actionnable (« Relance Provara.exe — la mise à jour
+  s'appliquera au démarrage »). L'utilisateur n'est plus jamais devant une page morte sans explication.
+- **« Failed to load Python DLL (_MEI…\python312.dll) »** (vécu après une MAJ) : au premier lancement d'un
+  binaire fraîchement téléchargé, l'antivirus peut verrouiller l'extraction PyInstaller et tuer le démarrage —
+  l'app ne revenait pas. L'updater vérifie désormais ~10 s après le `start` que Provara tourne et le **relance
+  une fois** sinon (le second départ passe, le binaire ayant été scanné entre-temps).
+- Gate `valide_maj` **28/28** (watchdog front, consigne de secours, re-lancement updater), suite 18/18.
+
 ## 2026-07-06 — « Web ON = toujours une réponse » : météo réelle, exposés Wikipédia, quotidien, challenge
 
 - **Principe posé par Yohan et implémenté au cœur du routeur** : avec Internet activé, Provara répond à tout —
