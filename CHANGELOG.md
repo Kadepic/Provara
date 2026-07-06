@@ -1,5 +1,47 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Conversation : une précision demandée est RETENUE (« pour quelle ville ? » → « A Brives »)
+
+- **Vécu Yohan** : « Il fait quel temps ? » → « pour quelle ville ? » → « A Brives » partait en recherche web
+  libre (extrait Wikipédia hors-sujet) au lieu de compléter la question météo. « Ce n'est pas ce qu'on appelle
+  une conversation, là c'est du question-réponse. »
+- **Clarification À TROU** (`assistant_nl.note_attente_slot`) : quand l'assistant demande UNE précision, le
+  tour suivant qui y ressemble (valeur nue : « A Brives », « à Saint-Étienne stp ») REMPLIT le gabarit
+  (« quel temps fait-il à %s ? ») et la question complétée est rejouée dans le pipeline normal. Même prudence
+  que le did-you-mean : une nouvelle question pendant l'attente n'est JAMAIS fourrée dans le trou (elle est
+  traitée normalement), un refus (« non merci ») invite à reformuler, l'état est consommé en une fois.
+- `_cap_quotidien` reçoit `conv_id` et enregistre l'attente au moment où il pose la question.
+- Bout-en-bout vérifié (météo factice, zéro réseau) : T1 demande la ville, T2 « A Brives » → relevé de Brives.
+  `valide_assistant_nl` 84/84 (7 cas slot), suite conversationnelle 19/19, bancs data 163/163 + 168/168.
+
+## 2026-07-06 — Web : plus jamais de wikitexte/JSON brut dans un extrait (vécu « A Brives » → infobox {{…}})
+
+- **Cause racine** : `_texte_page` dépouillait les balises avec `<[^>]+>` — or les pages MediaWiki modernes
+  embarquent du JSON Parsoid dans des attributs (`data-mw="{…}"`) contenant des `>` : la balise était coupée
+  au premier `>` et le JSON (`{"wt":"[[Arrondissement de…`) fuyait dans le « texte » servi à l'utilisateur.
+- Regex de balises durcie (attributs quotés traités) pour TOUS les sites + les articles Wikipédia sont
+  désormais lus via l'**API TextExtracts** (texte brut servi par la source : pas de coordonnées, de bandeaux
+  d'homonymie ni d'infobox), plus jamais scrapés.
+- Nouveau gate `valide_veille_structure` (15 cas, OFFLINE : transport factice) — `veille_structure.py` n'avait
+  AUCUN banc ; ajouté à la suite conversationnelle (19 gates).
+
+## 2026-07-06 — Antivirus : migration onedir décidée (GO Yohan) — updater v2 prêt (étape 1/2)
+
+- **Diagnostic** : le `--onefile` se ré-extrait dans `%TEMP%\_MEI…` à CHAQUE lancement → l'antivirus rescanne
+  ~200 fichiers à chaque ouverture (minutes de lenteur) et verrouille parfois `python3xx.dll` (« Failed to
+  load Python DLL », vécu ×2 — la relance unique à 10 s ne suffisait pas, le scan peut durer plus longtemps).
+- **Étape 1 (ce build, 48)** — updater v2 dans `maj.py` : sait installer un paquet DOSSIER `Provara-app.zip`
+  (onedir : `Provara.exe` + `_internal\` extraits À CÔTÉ de l'installation — même volume, bascule par simples
+  renommages ; garde anti zip-slip ; paquet incomplet refusé) ; le paquet-dossier est PRÉFÉRÉ dès qu'il est
+  publié. **Filet anti-DLL en BOUCLE** : surveillance ~60 s, jusqu'à 3 relances (au lieu d'une à 10 s).
+- **Étape 2 (build 49, à déclencher quand le 48 est diffusé)** : bascule `ONEDIR: "1"` dans
+  `.github/workflows/build-exe.yml` (interrupteur prêt, OFF par défaut) → publie `Provara-app.zip`, FIGE
+  `Provara.exe`/`Provara-windows.zip` au dernier onefile comme PONT : un updater ≤ 47 installe le pont (48),
+  qui migre ensuite tout seul vers le paquet-dossier. Jamais d'exe onedir publié sous le nom `Provara.exe`
+  (casserait les vieux updaters). Build local : `VERAX_ONEDIR=1 build_exe.bat`.
+- `valide_maj` **36/36** (préférence de paquet, extraction gardée, zip-slip refusé, bascule `_internal`,
+  boucle anti-DLL). Reste ouvert : signature de code (SmartScreen au 1er téléchargement — coût à trancher).
+
 ## 2026-07-06 — Menu ⚙️ Réglages : un seul bouton en haut à droite (design Yohan)
 
 - La barre d'outils (Internet, MAJ auto, Rechercher une MAJ, thème, langue, Quitter) devient UN bouton
