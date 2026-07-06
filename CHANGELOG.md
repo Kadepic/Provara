@@ -1,5 +1,32 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Faits biologiques curés + métamoteur fiabilisé
+
+- **Seed bio validé par Yohan** (`src/faits_bio_seed.jsonl` + `_cap_fait_bio`) : « combien de chromosomes a
+  l'être humain ? » → *46 (23 paires)* ; araignée *8 pattes (c'est un arachnide, pas un insecte)* ; pieuvre
+  *3 cœurs* ; humain *206 os, 32 dents* ; chat *1 vie (les « 9 vies » sont une légende)* ; hors seed →
+  abstention (« combien de pattes a un dragon ? »).
+- **Métamoteur** : Mojeek rétrogradé en DERNIER (quota serré → 403 dès la 1re requête, observé au challenge
+  web) — Bing RSS et DuckDuckGo lite, fiables, passent devant ; le repli existant reste inchangé.
+- Banc raisonnement **162/162** (4 cas bio dont 1 garde), paraphrases 151/151, suite 18/18, challenge 16/16,
+  valide_maj 25/25.
+
+## 2026-07-06 — Mises à jour ZÉRO ACTION : l'utilisateur n'a plus RIEN à faire
+
+- Exigence Yohan : « beaucoup d'utilisateurs ne savent pas se servir d'un PC, il faut qu'ils n'aient rien à
+  faire ». Vécu le matin même : app lancée pendant que le CI compilait la release → aucune MAJ proposée
+  jusqu'au prochain démarrage (le build 39 ne vérifiait qu'au boot).
+- **Auto-application au démarrage** : MAJ auto ON + version plus récente détectée 20 s après le boot →
+  téléchargement et remplacement TOUT SEULS (l'app vient de s'ouvrir, le redémarrage est indolore). **Garde
+  anti-boucle** : une cible déjà tentée dans les 6 h n'est pas re-tentée automatiquement (un swap raté — 
+  antivirus, updater cassé — ne re-télécharge pas en boucle ; la bannière manuelle reste disponible).
+- **Re-vérification périodique** : serveur (15 min) + front (`setInterval` sur /api/maj) → une release publiée
+  PENDANT que l'app tourne fait apparaître la bannière toute seule, sans aucun geste.
+- Résidus corrigés du matin : 88 conversations de tests nocturnes nettoyées de `~/.verax/conversations` ;
+  swap manuel 39→40 sur la machine de Yohan (l'updater du 39 avait encore les bugs corrigés dans le 40).
+- Gate `valide_maj` **25/25** (6 vérifications ajoutées : anti-boucle ×3, veille serveur, garde auto-apply,
+  polling front), suite 18/18.
+
 ## 2026-07-06 — Classiques curés : la tomate (fruit ET légume), 7 continents, villes bien présentées
 
 - **« La tomate est-elle un fruit ou un légume ? »** → *les deux points de vue sont vrais : botaniquement un

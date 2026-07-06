@@ -1,0 +1,23 @@
+{"_relation": "faits_bio_seed", "_note": "Faits biologiques/anatomiques INCONTESTABLES curés à la main (validés Yohan 2026-07-06) : (entite, attribut, valeur, unite). Servis par _cap_fait_bio avec la précision utile (46 chromosomes = 23 paires ; l'araignée est un arachnide, pas un insecte)."}
+{"entite": "être humain", "attribut": "chromosomes", "valeur": "46", "note": "23 paires"}
+{"entite": "homme", "attribut": "chromosomes", "valeur": "46", "note": "23 paires"}
+{"entite": "humain", "attribut": "chromosomes", "valeur": "46", "note": "23 paires"}
+{"entite": "chien", "attribut": "chromosomes", "valeur": "78", "note": "39 paires"}
+{"entite": "chat", "attribut": "chromosomes", "valeur": "38", "note": "19 paires"}
+{"entite": "araignée", "attribut": "pattes", "valeur": "8", "note": "c'est un arachnide, pas un insecte"}
+{"entite": "insecte", "attribut": "pattes", "valeur": "6", "note": "3 paires — définition de la classe"}
+{"entite": "fourmi", "attribut": "pattes", "valeur": "6", "note": "insecte"}
+{"entite": "abeille", "attribut": "pattes", "valeur": "6", "note": "insecte"}
+{"entite": "mouche", "attribut": "pattes", "valeur": "6", "note": "insecte"}
+{"entite": "papillon", "attribut": "pattes", "valeur": "6", "note": "insecte"}
+{"entite": "crabe", "attribut": "pattes", "valeur": "10", "note": "décapode — pinces comprises"}
+{"entite": "pieuvre", "attribut": "bras", "valeur": "8", "note": "des bras, pas des tentacules"}
+{"entite": "poulpe", "attribut": "bras", "valeur": "8", "note": "des bras, pas des tentacules"}
+{"entite": "mille-pattes", "attribut": "pattes", "valeur": "variable", "note": "de ~30 à 750 selon l'espèce — jamais mille"}
+{"entite": "être humain", "attribut": "os", "valeur": "206", "note": "squelette adulte ; ~270 à la naissance"}
+{"entite": "être humain", "attribut": "dents", "valeur": "32", "note": "adulte, dents de sagesse comprises ; 20 dents de lait"}
+{"entite": "humain", "attribut": "os", "valeur": "206", "note": "squelette adulte ; ~270 à la naissance"}
+{"entite": "humain", "attribut": "dents", "valeur": "32", "note": "adulte, dents de sagesse comprises ; 20 dents de lait"}
+{"entite": "chat", "attribut": "vies", "valeur": "1", "note": "les « 9 vies » sont une légende 🙂"}
+{"entite": "cœur", "attribut": "cavités", "valeur": "4", "note": "2 oreillettes + 2 ventricules"}
+{"entite": "pieuvre", "attribut": "cœurs", "valeur": "3", "note": "1 systémique + 2 branchiaux"}

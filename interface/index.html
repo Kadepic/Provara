@@ -397,6 +397,9 @@ async function majVerifieMaj(force) {
   afficheMajAuto(!!r.auto);
   if (r.auto || force) afficheMajDispo(r);   // en auto : on PROPOSE ; en manuel : seulement sur clic « rechercher »
 }
+// ZÉRO ACTION : re-vérification PÉRIODIQUE (une release publiée pendant que l'app tourne était invisible
+// jusqu'au prochain démarrage — la bannière apparaît maintenant toute seule, sans aucun geste).
+setInterval(() => majVerifieMaj(false), 15 * 60 * 1000);
 $("#btn-maj-auto").onclick = async () => {
   const nouv = $("#btn-maj-auto").dataset.auto !== "1";
   const r = await api("/api/maj/auto", { method: "POST", headers: { "Content-Type": "application/json" },

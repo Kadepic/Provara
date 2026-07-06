@@ -93,6 +93,10 @@ CAS = [
     ("is-a-dual-avocat", R._cap_ontologie, "l'avocat est-il un légume ?", "FRUIT"),
     ("comptage-continents", R._cap_comptage, "combien de continents y a-t-il ?", "CONVENTION"),
     ("comptage-pays-monde", R._cap_comptage, "combien de pays dans le monde ?", "249"),
+    ("bio-chromosomes", R._cap_fait_bio, "combien de chromosomes a l'être humain ?", "46"),
+    ("bio-araignee", R._cap_fait_bio, "combien de pattes a une araignée ?", "arachnide"),
+    ("bio-pieuvre", R._cap_fait_bio, "combien de cœurs a la pieuvre ?", "3"),
+    ("faux-bio-dragon", R._cap_fait_bio, "combien de pattes a un dragon ?", ""),          # hors seed -> None
     ("protons", R._cap_protons, "combien de protons a l'hydrogène ?", "1 proton"),
     ("electrons", R._cap_protons, "combien d'électrons possède le carbone ?", "6 électrons"),
     ("lunes-mars", R._cap_lunes, "combien de lunes a Mars ?", "Phobos"),

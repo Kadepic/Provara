@@ -739,8 +739,38 @@ def main():
             _maj_statut(pret=True, phase="pret", detail="")     # ferme la modale d'interface
             print("  ✓ connaissance prête.", flush=True)
         threading.Thread(target=_prechauffe, daemon=True).start()
+
+        # VEILLE MISES À JOUR — ZÉRO ACTION UTILISATEUR (exigence Yohan : « beaucoup d'utilisateurs ne savent
+        # pas se servir d'un PC, il faut qu'ils n'aient rien à faire ») :
+        #   1) au DÉMARRAGE (20 s après le boot), si MAJ auto ON et version plus récente -> on APPLIQUE tout
+        #      seul (l'app vient de s'ouvrir, le redémarrage est indolore). GARDE ANTI-BOUCLE : une cible déjà
+        #      tentée récemment n'est pas re-tentée (un swap raté ne re-télécharge pas en boucle).
+        #   2) ensuite, RE-VÉRIFICATION toutes les 15 min : une release publiée PENDANT que l'app tourne est
+        #      détectée (bug réel : app lancée pendant le build CI -> aucune proposition jusqu'au prochain
+        #      démarrage). Le front, qui repolle /api/maj, affiche alors la bannière sans aucun geste.
+        def _veille_maj():
+            import time as _t
+            _t.sleep(20)
+            premier = True
+            while True:
+                try:
+                    if os.environ.get("IA_WEB") == "1":
+                        import maj
+                        e = maj.etat()
+                        cible = e.get("version_distante") or ""
+                        if (premier and e.get("disponible") and maj.auto_active()
+                                and not maj.tentative_recente(cible)):
+                            maj.note_tentative(cible)
+                            r = _maj_applique(e.get("url_exe"))
+                            if r.get("ok") and r.get("redemarre"):
+                                return                          # l'app se ferme, l'updater prend le relais
+                except Exception:
+                    pass
+                premier = False
+                _t.sleep(900)
+        threading.Thread(target=_veille_maj, daemon=True).start()
     else:
-        _maj_statut(pret=True, phase="pret")                    # mode léger : rien à charger, prêt tout de suite
+        _maj_statut(pret=True, phase="pret")                    # mode léger : rien à charger, pret tout de suite
     print(f"  Ctrl+C pour arrêter. (souverain : localhost uniquement)")
     try:
         serveur.serve_forever()

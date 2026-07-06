@@ -400,9 +400,12 @@ def cherche_web_domaines(question: str, timeout: int = 12, k: int = 3, verifie_s
     # PERTINENTS) + dédoublonnage par domaine + garde de pertinence sur ce que dit L'INDEX.
     retenus, domaines_vus = [], set()
     for requete in variantes:
-        for backend, nom in ((_resultats_mojeek, "Mojeek (www.mojeek.com)"),
-                             (_resultats_bing_rss, "Bing RSS (www.bing.com)"),
-                             (_resultats_ddg_lite, "DuckDuckGo (lite.duckduckgo.com)")):
+        # Ordre 2026-07-06 : Mojeek RÉTROGRADÉ en dernier — son quota serré renvoyait 403 dès la 1re requête
+        # (observé au challenge web), ajoutant erreur + latence à CHAQUE recherche alors que Bing RSS et DDG
+        # lite répondent fiablement. Le repli existant absorbe les échecs ; on met le fiable DEVANT.
+        for backend, nom in ((_resultats_bing_rss, "Bing RSS (www.bing.com)"),
+                             (_resultats_ddg_lite, "DuckDuckGo (lite.duckduckgo.com)"),
+                             (_resultats_mojeek, "Mojeek (www.mojeek.com)")):
             en_cache = _INDEX_CACHE.get((nom, requete))
             if en_cache and _time.monotonic() - en_cache[0] < _INDEX_TTL:
                 candidats = en_cache[1]                   # redemande/rafale absorbée SANS toucher l'index

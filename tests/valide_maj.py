@@ -85,5 +85,16 @@ with open(os.path.join(os.path.dirname(__file__), "..", "interface", "serveur.py
 check("os._exit(0)" in _src_srv, "serveur : l'app se ferme réellement après « appliquer »")
 check("Internet est coupé" in _src_srv, "serveur : « appliquer » refusé si Internet OFF (pas d'appel caché)")
 
+# ZÉRO ACTION UTILISATEUR (exigence 2026-07-06) : auto-application au démarrage + garde anti-boucle + veille.
+check(maj.tentative_recente("40 abc") is False, "anti-boucle : cible jamais tentée -> False")
+maj.note_tentative("40 abc")
+check(maj.tentative_recente("40 abc") is True, "anti-boucle : cible tentée récemment -> True (pas de re-boucle)")
+check(maj.tentative_recente("41 def") is False, "anti-boucle : NOUVELLE cible -> False (la MAJ suivante passe)")
+check("_veille_maj" in _src_srv, "serveur : veille MAJ périodique câblée")
+check("maj.tentative_recente" in _src_srv, "serveur : auto-apply gardé par l'anti-boucle")
+with open(os.path.join(os.path.dirname(__file__), "..", "interface", "index.html"), encoding="utf-8") as _f:
+    _src_ui = _f.read()
+check("setInterval(() => majVerifieMaj(false)" in _src_ui, "front : re-vérification périodique (bannière seule)")
+
 print("=== valide_maj : %d/%d ===" % (_ok[0], _ok[0] + _ko[0]))
 sys.exit(0 if _ko[0] == 0 else 1)
