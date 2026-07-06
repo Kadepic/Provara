@@ -13,7 +13,7 @@ env:
   # Provara-windows.zip au dernier build onefile : un updater <= 47 installera ce pont, qui migrera ensuite
   # tout seul vers le paquet-dossier. NE JAMAIS publier un exe onedir sous le nom Provara.exe (updaters
   # anciens = app cassée chez tous les users).
-  ONEDIR: "0"
+  ONEDIR: "1"          # FLIP fait le 2026-07-06 (GO Yohan) : build 49+ = paquet-dossier Provara-app.zip
 jobs:
   build-exe:
     runs-on: windows-latest

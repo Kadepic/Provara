@@ -146,9 +146,12 @@ _WIKI_PREFIXES = re.compile(
     re.I)
 # Verbes d'ACTION de tête (après les préfixes) : « construire un moteur à eau » -> « un moteur à eau ».
 # Infinitifs seulement (jamais « construit » : « qui a construit la tour Eiffel » garde son participe).
+# Verbes d'EXPOSÉ avec leur « de » (« peux-tu me PARLER DE Brive » : vécu 2026-07-06 — le terme partait
+# pollué et la recherche plein-texte servait « RAFLE de Brive-la-Gaillarde » au lieu de la ville).
 _WIKI_VERBES = re.compile(
-    r"^(?:construire|fabriquer|cr[ée]er|faire|acheter|trouver|obtenir|installer|r[ée]parer|utiliser|"
-    r"dire|savoir|conna[iî]tre|conseiller|recommander|proposer|sugg[ée]rer)\s+", re.I)
+    r"^(?:(?:me\s+|nous\s+)?(?:parler|pr[ée]senter|d[ée]crire|exposer)\s+(?:de\s+|d['’]\s*)?|"
+    r"(?:construire|fabriquer|cr[ée]er|faire|acheter|trouver|obtenir|installer|r[ée]parer|utiliser|"
+    r"dire|savoir|conna[iî]tre|conseiller|recommander|proposer|sugg[ée]rer)\s+)", re.I)
 
 
 def _termes_wiki(question: str) -> str:
