@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — « Population du Caire » : phrase complète, plus le nombre BRUT (villes à article dans le nom)
+
+- **Vécu Yohan** : « population du Caire » → *« 9801536 »* nu, alors que « population de Paris » sortait
+  *« Population de Paris : 2 103 778 habitants. »*. Cause : « du Caire » = *de + LE Caire* ; le cap formateur
+  `_cap_synonyme_tete` cherchait « Caire » alors que la donnée est stockée « **Le** Caire » (article inclus) →
+  il ratait, et la cascade floue prenait le relais en rendant la valeur nue.
+- Helper `_ville_avec_article` (inverse de `_de_ville`) : la contraction/l'article collé à l'entité
+  (« du » → Le, « des » → Les, « de la » → La, « de l' » → L', + « de le/les » des reformulations) reconstruit
+  la clé réelle, essayée en repli quand le lookup nu échoue. « du Caire », « du Mans », « a le Caire » →
+  phrase complète ; villes sans article (« de Nice », « de Paris ») inchangées.
+- `banc_raisonnement` **166/166** (+3 : du Caire, de le Caire, garde de Nice), suite **20/20**.
+
 ## 2026-07-06 — Avis ④ : 3+ candidats — chaque critère VOTE, Condorcet dépouille (choix_social câblé)
 
 - « Quelle est la meilleure destination entre la France, l'Italie et l'Espagne ? » → chaque critère vérifié

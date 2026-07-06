@@ -1758,6 +1758,28 @@ def _de_ville(nom: str) -> str:
     return "de " + nom
 
 
+def _ville_avec_article(texte: str, ent: str) -> str:
+    """Inverse de `_de_ville` : la CONTRACTION porte l'article du nom de ville (« population DU Caire » = de +
+    LE Caire ; la donnée est stockée « Le Caire », l'article inclus). Rend la forme candidate à essayer si le
+    lookup nu échoue (« Caire » -> None mais « Le Caire » -> trouvé) — vécu 2026-07-06 : « population du Caire »
+    servait le nombre BRUT car le cap ratait et la cascade floue prenait le relais. '' si pas de contraction."""
+    t = _normalise(texte)
+    en = re.escape(_normalise(ent))
+    # contraction (du/des) OU article explicite collé à l'entité (« de le Caire » d'une reformulation, « a le
+    # Caire »…). L'article doit précéder DIRECTEMENT l'entité -> « la POPULATION de Nice » ne matche pas.
+    m = re.search(r"\b(du|des|de\s+la|de\s+l['’]|de\s+le|de\s+les|le|la|les|l['’])\s*" + en + r"\b", t)
+    if not m:
+        return ""
+    a = " ".join(m.group(1).split())
+    if a in ("du", "de le", "le"):
+        return "Le " + ent
+    if a in ("des", "de les", "les"):
+        return "Les " + ent
+    if a in ("de la", "la"):
+        return "La " + ent
+    return "L'" + ent                                    # de l' / l'
+
+
 def _unite_attr(attr_rel: str) -> str:
     """Unité d'affichage d'un attribut : table exacte puis repli par préfixe de famille (« altitude_montagne » -> m)."""
     if attr_rel in _ATTR_UNITE:
@@ -1890,8 +1912,9 @@ def _cap_synonyme_tete(texte: str):
     rels = _SYN_TETE.get(mot)
     if not rels or not ent or len(ent) < 2 or len(ent.split()) > 5:
         return None
+    ville_art = _ville_avec_article(texte, ent)          # « du Caire » -> « Le Caire » (article DANS le nom)
     for rel in rels:
-        cell = _lookup_cell(rel, ent)
+        cell = _lookup_cell(rel, ent) or (_lookup_cell(rel, ville_art) if ville_art else None)
         if cell and cell[1] not in (None, ""):
             n = _nombre(cell[1])
             unite = _unite_attr(rel)
