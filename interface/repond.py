@@ -3451,6 +3451,16 @@ def _entite_ancree(entite: str):
     """(nom_affiché, contexte|None) si l'entité est la clé d'un fait vérifié d'une relation-sonde, sinon None.
     `contexte` = sa DÉFINITION vérifiée (tronquée) quand c'est la sonde qui a ancré — dire QUI est l'entité
     explique souvent POURQUOI le fait demandé n'existe pas (« Wakanda : royaume FICTIF » -> pas de capitale)."""
+    # SEED CURÉ PRIORITAIRE : pour un mot seedé (« jupiter » -> planète), la présentation dit le genre CURÉ —
+    # la définition Wiktionnaire brute peut être du bruit circulaire (« jupiter : exoplanète de taille
+    # similaire à jupiter » !) qui ferait dire une absurdité dans l'abstention.
+    try:
+        import est_un as _E
+        genre_seed = _E._seed().get(_normalise(_strip_article(entite)))
+        if genre_seed:
+            return (entite, _E._AFFICHE.get(genre_seed, genre_seed))   # forme accentuée (« planète »)
+    except Exception:
+        pass
     for rel in _ANCRAGE_SONDE:
         try:
             cell = _lookup_cell(rel, entite)
@@ -5314,6 +5324,38 @@ def _cap_fleuve_ville(texte: str):
     return None
 
 
+_DEVISE_RE = re.compile(
+    r"^\s*(?:quelle\s+est\s+)?(?:la\s+)?devise(\s+nationale)?\s+"
+    r"(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_devise(texte: str):
+    """« la devise de la France ? » est AMBIGU : motto national (« Liberté, Égalité, Fraternité »,
+    devise_pays) OU monnaie (euro). Les DEUX lectures vérifiées sont servies — « devise NATIONALE » explicite
+    -> motto seul. FAUX=0 : motto stocké exigé, sinon None (la voie monnaie existante répond)."""
+    m = _DEVISE_RE.match(texte.strip())
+    if not m:
+        return None
+    ent = _strip_article(m.group(2).strip())
+    cell = _charge_direct("devise_pays").get(_normalise(ent))
+    if not cell:
+        return None
+    aff, motto = cell
+    tete = "La devise nationale de %s : « %s »." % (aff[:1].upper() + aff[1:], motto)
+    if m.group(1):                                    # « devise nationale » demandé explicitement -> motto seul
+        return tete
+    monnaie = None
+    try:
+        ia, verifie = _charge_ia()
+        if ia:
+            monnaie = _val_verifiee(ia, verifie, "monnaie de %s" % ent, rel_head="monnaie", entite=ent)
+    except Exception:
+        monnaie = None
+    if monnaie:
+        return "%s  (Si tu voulais la MONNAIE : %s.)" % (tete, monnaie)
+    return tete
+
+
 def _cap_localisation(texte: str):
     """LOCALISATION d'un lieu (montagne/désert/île/lac/rivière/ville) : « dans quel pays est X », « sur quel
     continent est X », « où se trouve X » -> pays ou continent stocké. FAUX=0 : valeur réelle vérifiée ou None
@@ -5955,7 +5997,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

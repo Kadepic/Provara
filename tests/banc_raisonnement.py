@@ -79,6 +79,9 @@ CAS = [
     ("agregat-liste", R._cap_agregat_liste, "quelle est la population cumulée de la France et de l'Allemagne ?", "152 211 586"),
     ("agregat-liste-moyenne", R._cap_agregat_liste, "population moyenne de la France, l'Allemagne et l'Italie ?", "moyenne"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
+    ("devise-double", R._cap_devise, "quelle est la devise de la France ?", "Liberté"),   # motto + monnaie mentionnée
+    ("devise-nationale", R._cap_devise, "quelle est la devise nationale de la France ?", "Fraternité"),
+    ("is-a-planete", R._cap_ontologie, "jupiter est-elle une planète ?", "Oui"),          # seed (def Wiktionnaire bruitée)
     ("protons", R._cap_protons, "combien de protons a l'hydrogène ?", "1 proton"),
     ("electrons", R._cap_protons, "combien d'électrons possède le carbone ?", "6 électrons"),
     ("lunes-mars", R._cap_lunes, "combien de lunes a Mars ?", "Phobos"),

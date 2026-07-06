@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Couverture atomique 79 % + devise/motto + planètes seedées + N-way court + pluriels listés
+
+- **Couverture atomique rejouée** (3 questions × 1 258 relations testables = 3 738 questions, en processus,
+  base complète) : **79 % résolues**. Le tri des « faux potentiels » montre surtout des artefacts de FORMAT du
+  générateur (valeur brute « 6300000 » vs affichage « 6 300 000 m », symboles, PIB en $ espacé) — les sondes
+  manuelles sur serveur réel confirment les valeurs justes.
+- **« Quelle est la devise de la France ? » désambiguïsé** (`_cap_devise`) : *« Liberté, Égalité,
+  Fraternité » (Si tu voulais la MONNAIE : euro.)* — les DEUX lectures vérifiées ; « devise NATIONALE » →
+  motto seul. (Avant : « euro » sec, le motto stocké dans devise_pays était inatteignable.)
+- **Planètes seedées** (est_un_seed) : la définition Wiktionnaire de « jupiter » est du bruit circulaire
+  (*« exoplanète de taille similaire à jupiter » !*) → « Jupiter est-elle une planète ? » → *Oui*, et
+  l'abstention présente désormais « Jupiter — planète » (le SEED curé prime sur la définition bruitée dans la
+  présentation d'entité). Mercure→Neptune, Pluton (naine), Soleil (étoile), Lune (satellite).
+- **N-way COURT** : « le plus ancien entre Marignan, Verdun et Waterloo ? » sans « quel est » marche
+  (préfixe interrogatif optionnel) — l'énumération ne part plus au multi-questions (découpe virgule = bruit).
+- **Pluriels listés** : « quelLES langUES parle-t-on au Japon ? » → la liste des 37 (singularisation nue dans
+  `_liste_inverse._base` — un pluriel hors-alias ne retombait jamais sur son token) ; le singulier reste
+  « japonais ».
+- Banc raisonnement **149/149**, paraphrases 143/143, suite 18/18, challenge 16/16, synonymes 8/8.
+
 ## 2026-07-06 — Mode web éprouvé : garde subjectivité, définitions citées, outils atteignables (challenge web 14→22/30)
 
 - **Garde SUBJECTIVITÉ avant le web** : « quel est le plus beau pays du monde ? » (web ON) partait au
