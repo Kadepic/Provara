@@ -71,5 +71,68 @@ check(R._cap_audit_code("parle-moi du code de la route") is None, "audit code : 
 # — DISTANCE : sûreté de routage —
 check(R._cap_distance("bonjour") is None, "distance : message normal -> None")
 
+# — SITE NOMMÉ (vécu 2026-07-06 : « regarde yohanfauck.fr » -> clarification générique) —
+import os as _os
+import veille_structure as _VS_site
+check(R._cap_site("bonjour comment vas-tu ?") is None, "site : message sans domaine -> None")
+check(R._cap_site("relance maj.py stp") is None, "site : « maj.py » n'est PAS un domaine (TLD fermés)")
+_web_avant = _os.environ.get("IA_WEB")
+_apercu_avant = _VS_site.apercu_site
+try:
+    _os.environ["IA_WEB"] = "0"
+    r = R._cap_site("peux-tu regarder le site yohanfauck.fr ?")
+    check(r is not None and "Internet est coupé" in r and "yohanfauck.fr" in r,
+          "site + web OFF -> refus honnête actionnable (bouton 🌐), jamais une invention")
+    _os.environ["IA_WEB"] = "1"
+    _VS_site.apercu_site = lambda cible, timeout=8: ("Yohan Fauck — Portfolio",
+                                                     "Développeur, moteurs de raisonnement vérifiés.",
+                                                     "https://yohanfauck.fr")
+    r = R._cap_site("peux-tu regarder le site yohanfauck.fr et me dire ce que tu en penses ?")
+    check(r is not None and "yohanfauck.fr" in r and "Portfolio" in r and "rapporté" in r.lower(),
+          "site + web ON -> rapport ATTRIBUÉ (domaine, titre, extrait, lien)")
+    check(r is not None and "jugement subjectif" in r,
+          "« ce que tu en penses » -> cadrage honnête (on cite la page, on ne juge pas)")
+    _VS_site.apercu_site = lambda cible, timeout=8: None
+    r = R._cap_site("va voir https://site-injoignable.example/page")
+    check(r is not None and "pas réussi à lire" in r, "site injoignable -> aveu honnête, jamais deviné")
+finally:
+    _VS_site.apercu_site = _apercu_avant
+    if _web_avant is None:
+        _os.environ.pop("IA_WEB", None)
+    else:
+        _os.environ["IA_WEB"] = _web_avant
+
+# — « MON AVIS » COMPARATIF (réflexion outillée : Pareto / vote des critères / sensibilité — Yohan 2026-07-06) —
+check(R._cap_avis("quelle est la capitale de la France ?") is None, "avis : lookup factuel -> None")
+check(R._cap_avis("la France est-elle plus grande que l'Espagne ?") is None,
+      "avis : comparaison factuelle (plus/moins) -> None (le cap comparaison garde la main)")
+_valeur_avant = R._valeur_attr
+_FAUX_FAITS = {("superficie", "aaa"): 10, ("superficie", "bbb"): 5,
+               ("population_pays", "aaa"): 1, ("population_pays", "bbb"): 2,
+               ("pib_pays", "aaa"): 1, ("pib_pays", "bbb"): 2}
+try:
+    R._valeur_attr = lambda e, rel: ((_FAUX_FAITS.get((rel, e)), e.upper())
+                                     if (rel, e) in _FAUX_FAITS else (None, None))
+    r = R._cap_avis("tu préfères aaa ou bbb ?")
+    check(r is not None and "Mon avis : BBB" in r and "2 critère(s) sur 3" in r,
+          "avis : vote majoritaire des critères, valeurs montrées")
+    check(r is not None and "BASCULE" in r and "superficie" in r,
+          "avis : SENSIBILITÉ affichée (le critère qui ferait changer d'avis)")
+    _FAUX_FAITS[("pib_pays", "bbb")] = 1                         # pib ex æquo -> vote 1–1
+    r = R._cap_avis("tu préfères aaa ou bbb ?")
+    check(r is not None and "SUSPENDS" in r, "avis : égalité au vote -> avis SUSPENDU (ton critère tranche)")
+    _FAUX_FAITS[("population_pays", "bbb")] = 0.5                # aaa mène partout -> dominance
+    _FAUX_FAITS[("pib_pays", "bbb")] = 0.5
+    r = R._cap_avis("tu préfères aaa ou bbb ?")
+    check(r is not None and "DOMINANCE DE PARETO" in r and "Mon avis : AAA" in r,
+          "avis : dominance de Pareto -> avis ROBUSTE (aucune pondération ne peut inverser)")
+    for k in list(_FAUX_FAITS):
+        if k[0] != "superficie":
+            del _FAUX_FAITS[k]                                   # un seul critère -> avis MINCE assumé
+    r = R._cap_avis("tu préfères aaa ou bbb ?")
+    check(r is not None and "MINCE" in r, "avis : un seul critère mesurable -> avis annoncé MINCE, jamais gonflé")
+finally:
+    R._valeur_attr = _valeur_avant
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

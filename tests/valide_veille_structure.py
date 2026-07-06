@@ -102,7 +102,40 @@ def _leve(url, terme):
 check(_leve("https://exemple.org/x", "tour eiffel") is None,
       "page INACCESSIBLE -> None (on ne peut pas juger, distinct de « muette »)")
 
-# ————— (4) gardes existantes : _termes_wiki + _pertinent —————
+# ————— (4) apercu_site : visite d'un site NOMMÉ (vécu « regarde yohanfauck.fr » -> clarification générique) —————
+class _FauxSite:
+    @staticmethod
+    def urlopen(req, timeout=0):
+        url = req.full_url if hasattr(req, "full_url") else str(req)
+        _reqs.append(url)
+        if url.startswith("https://casse.example"):
+            raise OSError("pas de HTTPS ici")
+        corps = ("<html><head><title>Yohan Fauck — Portfolio</title></head><body>"
+                 "<nav>Accueil Projets Contact CV Blog Liens</nav>"
+                 "<p>Je suis un développeur passionné par les moteurs de raisonnement et je construis des "
+                 "outils qui vérifient les faits avant de les affirmer, parce que la confiance se gagne.</p>"
+                 "</body></html>")
+        return _Rep(corps.encode("utf-8"))
+
+
+VS.https_confiance = _FauxSite
+try:
+    _reqs.clear()
+    ap = VS.apercu_site("yohanfauck.fr")
+    check(ap is not None and ap[0] == "Yohan Fauck — Portfolio", "titre de la page extrait (balise <title>)")
+    check(ap and "développeur" in ap[1] and "raisonnement" in ap[1],
+          "l'extrait choisi est la PROSE (fenêtre à mots-outils), pas le menu de navigation")
+    check(_reqs and _reqs[0].startswith("https://"), "HTTPS tenté d'abord")
+    _reqs.clear()
+    ap2 = VS.apercu_site("casse.example.com")
+    check(ap2 is not None and ap2[2].startswith("http://"), "repli HTTP quand le site n'a pas de HTTPS")
+    check(VS.apercu_site("localhost") is None and VS.apercu_site("127.0.0.1") is None
+          and VS.apercu_site("192.168.1.10") is None, "adresses locales/IP JAMAIS visitées")
+    check(VS.apercu_site("motsanspoint") is None, "pas un domaine -> None")
+finally:
+    VS.https_confiance = _https_reel
+
+# ————— (5) gardes existantes : _termes_wiki + _pertinent —————
 check(VS._termes_wiki("quelle est la capitale du Japon ?") == "la capitale du Japon",
       "préfixes interrogatifs dépouillés, sujet INTACT (articles compris)")
 check(VS._termes_wiki("je voudrais construire un moteur à eau") == "un moteur à eau",

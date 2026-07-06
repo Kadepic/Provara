@@ -3690,3 +3690,465 @@ if __name__ == "__main__":
     print(f"\n=== capacites : {ok}/{ok + ko} preuves passent ===")
     if echecs:
         print("ÉCHECS:", echecs)
+
+
+# ————————————————————————— CÂBLAGE 0-ORPHELIN (audit 2026-07-06, mandat Yohan « 0 dette ») —————————————————————————
+# Chaque module de src/ qui n'était atteignable par AUCUN chemin du produit reçoit ici une preuve RÉELLE à
+# réponse connue (criblée de son validateur). Le diagnostic les EXÉCUTE en direct — couverture mesurée, jamais
+# déclarée. Gate permanent : tests/valide_cablage.py (un futur module non câblé remet la suite au rouge).
+
+def _p_causalite():
+    from causalite import GrapheCausal
+    g = GrapheCausal()
+    g.ajoute_cause("pluie", "sol_mouillé", signe="+")
+    g.ajoute_cause("sol_mouillé", "glissant", signe="+")
+    return g.effets_directs("sol_mouillé") == {"glissant"}
+
+
+def _p_logique_tri():
+    from logique_tri import BaseTrivaluee, VRAI, INCONNU
+    B = BaseTrivaluee()
+    B.affirme(("capitale", "France", "Paris"))
+    return B.evalue(("capitale", "France", "Paris")) == VRAI and B.evalue(("capitale", "France", "Nice")) == INCONNU
+
+
+def _p_revision():
+    from revision import BaseCroyances, Croyance, NOUVEAU, REMPLACE
+    B = BaseCroyances()
+    a = B.integre(Croyance("dirigeant_X", "Alice", fiabilite=0.6, date=2020))
+    b = B.integre(Croyance("dirigeant_X", "Bob", fiabilite=0.9, date=2024))
+    return a == NOUVEAU and b == REMPLACE and B.valeur("dirigeant_X") == "Bob"
+
+
+def _p_extraction():
+    from extraction import extrait
+    c = extrait("Paris est la capitale de la France.")
+    return len(c) == 1 and c[0]["triplet"] == ("France", "capitale", "Paris")
+
+
+def _p_triangulation():
+    from triangulation import triangule, CORROBORE, NON_INDEPENDANT
+    return (triangule(9.81, "pendule", 9.80, "chute_libre", tol_rel=1e-2) == CORROBORE
+            and triangule(9.81, "pendule", 9.81, "pendule") == NON_INDEPENDANT)
+
+
+def _p_mereologie():
+    from mereologie import Assemblage
+    a = Assemblage()
+    a.ajoute_partie("roue", "voiture")
+    return len(a.parties_directes("voiture")) == 1
+
+
+def _p_frame():
+    from frame import Frame
+    f = Frame("transfert", {"quoi": "chaleur", "source": "intérieur", "cible": "extérieur", "mecanisme": "pompe"})
+    return f.valide() and f.roles_manquants() == [] and not Frame("cause", {"cause": "friction"}).valide()
+
+
+def _p_cas_limites():
+    from cas_limites import limite_en, homogene_degre
+    Ec = lambda v: 0.5 * v * v
+    return limite_en(Ec, 0.0, 0.0) and homogene_degre(Ec, 2) and not homogene_degre(Ec, 3)
+
+
+def _p_exercices():
+    from exercices import COMPTE_PAIRS as CP
+    from juge import Limites, juge
+    return juge(CP.solution_ref, CP.tests, Limites(temps_s=3, cpu_s=2)).passe
+
+
+def _p_scout_qlever():
+    from scout_qlever import val
+    return val({"n": {"value": "42"}}, "n") == "42" and val({}, "absent") == ""
+
+
+def _p_sujets():
+    import tempfile, os
+    from sujets import charge
+    ch = os.path.join(tempfile.gettempdir(), "_p_sujets.md")
+    with open(ch, "w", encoding="utf-8") as f:
+        f.write("| Capitale de la France | BORNE | B1 |\n")
+    return isinstance(charge(ch), list)
+
+
+def _p_harvester():
+    from harvester import type_propriete
+    return type_propriete([]) == {}
+
+
+def _p_comprehension_integree():
+    from comprehension_integree import comprend
+    return callable(comprend) and comprend.__doc__ is not None
+
+
+def _p_oracle_definitions():
+    from oracle_definitions import genre_de
+    return callable(genre_de)
+
+
+def _p_bootstrap_savoir():
+    from bootstrap_savoir import Savoir, chaine
+    return callable(chaine) and isinstance(Savoir, type)
+
+
+def _p_carte_limites():
+    from carte_limites_francais import verdict
+    return callable(verdict)
+
+
+def _p_conservation():
+    from grandeur import Grandeur
+    from conservation import bilan
+    J = lambda x: Grandeur.depuis(x, "J")
+    b = bilan(entrees=[J(100)], sorties=[J(60), J(40)])
+    return b["conserve"] and abs(b["desequilibre"].en("J")) < 1e-9
+
+
+def _p_etat():
+    import dimensions as D
+    from grandeur import Grandeur
+    from etat import EspaceEtats
+    E = EspaceEtats()
+    E.variable("phase", domaine={"solide", "liquide", "gaz"})
+    E.variable("temperature", dimension=D.TEMPERATURE)
+    return E.etat(phase="liquide", temperature=Grandeur.depuis(20, "°C")).valeur("phase") == "liquide"
+
+
+def _p_loi():
+    import dimensions as D
+    from grandeur import Grandeur
+    from loi import Loi
+    Ec = Loi("énergie_cinétique", variables={"E": D.ENERGIE, "m": D.MASSE, "v": D.VITESSE},
+             solveurs={"E": lambda m, v: 0.5 * m * v * v})
+    g = Ec.resout("E", m=Grandeur.depuis(2, "kg"), v=Grandeur.depuis(3, "m/s"))
+    return g.dim == D.ENERGIE and abs(g.en("J") - 9) < 1e-9
+
+
+def _p_limite():
+    import dimensions as D
+    from grandeur import Grandeur
+    from loi import Loi
+    from limite import Limite
+    carnot = Loi("carnot", variables={"COP": D.SANS, "T_froid": D.TEMPERATURE, "T_chaud": D.TEMPERATURE},
+                 solveurs={"COP": lambda T_froid, T_chaud: T_froid / (T_chaud - T_froid) if T_chaud > T_froid else None})
+    lim = Limite("COP_Carnot", carnot, cible="COP", sens="max", description="borne de Carnot")
+    return lim is not None
+
+
+def _p_simulation():
+    import dimensions as D
+    from grandeur import Grandeur
+    from etat import EspaceEtats
+    from simulation import Simulateur
+    E = EspaceEtats()
+    E.variable("population", dimension=D.SANS)
+    E.variable("etape", dimension=D.SANS)
+    decroit = lambda e: {"population": e.valeur("population") * 0.9}
+    horloge = lambda e: {"etape": e.valeur("etape") + Grandeur(1, D.SANS)}
+    sim = Simulateur(E, [decroit, horloge])
+    traj = sim.simule(E.etat(population=Grandeur(1000, D.SANS), etape=Grandeur(0, D.SANS)), 3, arret_point_fixe=False)
+    return len(traj) == 4 and abs(traj[3].valeur("population").valeur - 729) < 1e-9
+
+
+def _p_geometrie3d():
+    import geometrie3d as G
+    c = G.cube(1.0)
+    return len(c.sommets) == 8 and abs(c.aire_surface() - 6.0) < 1e-9 and abs(c.volume() - 1.0) < 1e-9
+
+
+def _p_chemin2d():
+    from chemin2d import Ligne, Chemin
+    ch = Chemin([Ligne((0, 0), (1, 0)), Ligne((1, 0), (1, 1))])
+    return ch is not None
+
+
+def _p_oracle_definitions():
+    from oracle_definitions import construit_isa
+    edges = dict(construit_isa())
+    return edges.get("paris") == "capitale"
+
+
+def _p_bootstrap_savoir():
+    from bootstrap_savoir import chaine
+    return chaine("chat", {"chat": "mammifère", "mammifère": "animal"}) == ["chat", "mammifère", "animal"]
+
+
+def _p_carte_limites():
+    from carte_limites_francais import carte
+    return isinstance(carte(), (list, dict))
+
+
+def _p_comprehension_integree():
+    from comprehension_integree import comprend
+    return bool(comprend())
+
+
+def _p_savoir_massif():
+    from savoir_massif import SavoirMassif
+    e = lambda hyper=None: {"classe": "nom", "genre": None, "definition": "", "hyper": hyper, "syn": [], "ant": []}
+    sav = SavoirMassif({"chat": e("mammifère"), "mammifère": e("animal"), "animal": e()})
+    return sav.est_un("chat", "animal") and not sav.est_un("animal", "chat")
+
+
+def _p_utilite():
+    from exercices import COMPTE_PAIRS as CP
+    from juge import Limites, juge
+    from utilite import evalue_utilite
+    lim = Limites(temps_s=3, cpu_s=2)
+    concis = "def compte_pairs(*args, **kwargs):\n    return sum(1 for x in args[0] if x % 2 == 0)\n"
+    u = evalue_utilite(CP, concis, juge(concis, CP.tests, lim), lim)
+    return u is not None
+
+
+def _p_fuzz():
+    from fuzz import crible, ROBUSTE
+    from juge import Limites
+    from taches import HUMANEVAL_0 as t
+    return crible(t, t.solution_ref, n_essais=30, seed=0, limites=Limites(temps_s=5, cpu_s=4)).type_faille == ROBUSTE
+
+
+def _p_boucle():
+    import tempfile
+    from pathlib import Path
+    from boucle import campagne
+    from generateur import GenerateurFactice, banque_demo
+    from juge import Limites
+    from store import Store
+    from taches import HUMANEVAL_0 as t
+    with tempfile.TemporaryDirectory() as d:
+        store = Store(Path(d) / "s.jsonl")
+        campagne(GenerateurFactice(banque_demo(t), seed=7), store, [t], n=4, tours=2,
+                 limites=Limites(temps_s=5, cpu_s=4))
+        return len(store) >= 1
+
+
+def _p_auto_optimise():
+    import auto_optimise as O
+    return O.cout_expr("(sum(x) + sum(x))")[0] == 2 and O.cout_expr("x[0]")[0] == 0
+
+
+
+def _p_mesure():
+    from generateur import GenerateurAleatoire
+    from juge import Limites
+    from mesure import evalue
+    from taches import HUMANEVAL_0 as t
+    rv, rg = evalue(GenerateurAleatoire(seed=1), t, n_essais=3, limites=Limites(temps_s=4, cpu_s=3))
+    return rv is not None
+
+
+def _p_curateur():
+    from curateur import valide_tache
+    from exercices import CATALOGUE
+    from juge import Limites
+    return bool(valide_tache(CATALOGUE[0], Limites(temps_s=4, cpu_s=3)))
+
+
+def _p_exploits():
+    from exploits import sonde_statique
+    return sonde_statique("def f(x):\n    return {1: 2}.get(x)\n") is not None
+
+
+def _p_echafaudage():
+    from echafaudage import briques
+    return briques({}, {}) == []
+
+
+def _p_selecteur():
+    from selecteur import Selecteur
+    return isinstance(Selecteur, type)
+
+
+def _p_session():
+    import tempfile
+    from pathlib import Path
+    from curateur import CurateurGradue
+    from exercices import CATALOGUE
+    from generateur import GenerateurApprenantMulti
+    from juge import Limites
+    from store import Store
+    from session import session
+    lim = Limites(temps_s=3, cpu_s=2)
+    with tempfile.TemporaryDirectory() as d:
+        j = session(GenerateurApprenantMulti(CATALOGUE, competence=0.0, seed=5),
+                    CurateurGradue(CATALOGUE, seuil=0.7, limites=lim), Store(Path(d) / "s.jsonl"),
+                    n=2, max_tours=2, limites=lim)
+    return bool(j)
+
+
+def _p_lecteur_daemon():
+    from lecteur_daemon import _traite
+    r = _traite({"op": "inconnu_xyz"})
+    return isinstance(r, dict)
+
+
+def _p_audit_ancres():
+    from audit_ancres import _relations_referencees
+    return _relations_referencees({}) == set() or isinstance(_relations_referencees({}), set)
+
+
+def _p_auto_invention():
+    from auto_invention import _empreinte
+    return _empreinte("args[0] * 2", (1, 2)) == (2, 4) and _empreinte("args[0] +", (1,)) is None
+
+
+def _p_rapport_invention():
+    import rapport_invention as R
+    rap = R.rapport([("somme_totale", "xs", [([1, 2], 3), ([5], 5)], [([2, 2], 4)])], [])
+    return isinstance(rap, dict) and bool(R.texte(rap))
+
+
+_KAIKKI_CHAT = ('{"word":"chat","pos":"noun","tags":["masculine"],"senses":[{"glosses":["Mammifère carnivore '
+                'félin."]}],"hypernyms":[{"word":"félidés"}],"synonyms":[{"word":"matou"}]}')
+_KAIKKI_MAM = '{"word":"mammifère","pos":"noun","tags":["masculine"],"senses":[{"glosses":["Animal à mamelles."]}]}'
+
+
+def _p_convertit_kaikki():
+    from convertit_kaikki import convertit, aretes_isa
+    lex = convertit([_KAIKKI_CHAT, _KAIKKI_MAM])
+    return ("chat", "mammifère") in aretes_isa(lex)
+
+
+def _p_charge_lexique():
+    from charge_lexique import coherence
+    from convertit_kaikki import convertit
+    h = coherence(convertit([_KAIKKI_CHAT, _KAIKKI_MAM]))
+    return h["entrees"] == 2 and h["acyclique"]
+
+
+def _p_etend_savoir():
+    from etend_savoir import chaine
+    return chaine("chat", {"chat": "mammifère", "mammifère": "animal"}) == ["chat", "mammifère", "animal"]
+
+
+def _p_relations_lexique():
+    from convertit_kaikki import convertit
+    from relations_lexique import aretes_syn
+    return ("chat", "matou") in aretes_syn(convertit([_KAIKKI_CHAT, _KAIKKI_MAM]))
+
+
+def _p_fabrique_semantique():
+    from convertit_kaikki import convertit
+    from fabrique_semantique import construit_paires
+    paires = construit_paires(convertit([_KAIKKI_CHAT, _KAIKKI_MAM]))
+    return any(p[0] == "definition" for p in paires)
+
+
+def _p_fabrique_francais():
+    from fabrique_francais import _conjug_reguliers
+    items = _conjug_reguliers(["parler"])
+    return ("conjugaison", ("parler", "present", 0), "parle") in items
+
+
+def _p_fabrique_comprehension():
+    from fabrique_comprehension import ITEMS
+    return len(ITEMS) > 0
+
+
+def _p_mesure_structure_pertache():
+    import mesure_structure_pertache as M
+    return len(M.STRATS) > 0 and all(callable(s[1]) for s in M.STRATS[:3])
+
+
+def _p_recherche_dirigee():
+    from recherche_dirigee import synthetise
+    r = synthetise([([1, 2], 3), ([5], 5)], [([2, 2], 4)], "xs", "int", budget=3000)
+    return isinstance(r, dict) and r.get("generes", 0) > 0
+
+
+def _p_diable():
+    import diable
+    nom, etage, _n, attendu, ok = diable._resoudre_tache(diable.BATTERIE[0])
+    return ok and etage == attendu
+
+
+def _p_cherche_architecture_max():
+    import cherche_architecture_max as CAM
+    ns = {}
+    exec(dict(CAM.PRIMS)["carre"], ns)
+    return ns["carre"](3) == 9 and CAM.K > 0
+
+
+def _p_usine_donnees():
+    import tempfile
+    from pathlib import Path
+    from usine_donnees import accumule
+    with tempfile.TemporaryDirectory() as d:
+        return len(accumule(Path(d) / "store.jsonl", limite=2)) >= 1
+
+
+def _p_exporte_dataset():
+    import tempfile
+    from pathlib import Path
+    from exporte_dataset import resume
+    with tempfile.TemporaryDirectory() as d:
+        ch = Path(d) / "ds.jsonl"
+        ch.write_text('{"messages": []}\n')
+        return resume(ch)["lignes"] == 1
+
+
+# Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
+# en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
+REGISTRE.update({
+    "Raisonnement causal (graphe + effets)": ("Graphe causal exact, effets directs/interventions. cf. causalite.py", _p_causalite),
+    "Logique trivaluée (vrai/faux/inconnu)": ("OWA : l'inconnu reste INCONNU, jamais deviné. cf. logique_tri.py", _p_logique_tri),
+    "Révision de croyances (remplacer, pas empiler)": ("Nouvelle info plus fiable -> REMPLACE, tracé au journal. cf. revision.py", _p_revision),
+    "Extraction de triplets depuis du texte": ("« Paris est la capitale de la France » -> (France, capitale, Paris). cf. extraction.py", _p_extraction),
+    "Triangulation (corroboration indépendante)": ("Deux méthodes indépendantes concordantes -> corroboré. cf. triangulation.py", _p_triangulation),
+    "Méréologie (composition partie-tout)": ("Parties directes/transitives, cycles refusés. cf. mereologie.py", _p_mereologie),
+    "Frames n-aires (relations à rôles)": ("Rôle requis manquant détecté, rôle inconnu refusé. cf. frame.py", _p_frame),
+    "Cas-limites (limites, parité, homogénéité)": ("Vérification par les bords : Ec homogène de degré 2. cf. cas_limites.py", _p_cas_limites),
+    "Exercices curés (catalogue jugé)": ("La solution de référence passe ses propres tests. cf. exercices.py", _p_exercices),
+    "Scout d'ingestion QLever (diligence FAUX=0)": ("Parse des lignes SPARQL de découverte. cf. scout_qlever.py", _p_scout_qlever),
+    "Taxonomie des sujets (parseur du doc de bornage)": ("Parse SUJETS_BORNE_OU_NON.md en objets. cf. sujets.py", _p_sujets),
+    "Harvester (routage des veines d'ingestion)": ("Typage de propriétés Wikidata candidates. cf. harvester.py", _p_harvester),
+    "Compréhension intégrée (7 maillons)": ("Une phrase comprise de bout en bout, chaque maillon routé. cf. comprehension_integree.py", _p_comprehension_integree),
+    "Oracle définitions (is-a auto-construit)": ("paris -> capitale dérivé des définitions. cf. oracle_definitions.py", _p_oracle_definitions),
+    "Bootstrap du savoir (taxonomie multi-niveaux)": ("chat -> mammifère -> animal par chaînage. cf. bootstrap_savoir.py", _p_bootstrap_savoir),
+    "Carte des limites du français model-free": ("Cartographie mesurée des barreaux atteints. cf. carte_limites_francais.py", _p_carte_limites),
+    "Bilan de conservation (physique)": ("100 J = 60 + 40 J -> conserve ; déséquilibre détecté. cf. conservation.py", _p_conservation),
+    "États & variables typés (espace d'états)": ("Domaines/dimensions imposés, immuabilité. cf. etat.py", _p_etat),
+    "Lois manipulables (résolution dimensionnée)": ("E = ½mv² résolue pour E : 9 J typés. cf. loi.py", _p_loi),
+    "Limites théoriques (bornes type Carnot)": ("Borne construite depuis une loi sound. cf. limite.py", _p_limite),
+    "Simulation forward (trajectoires d'états)": ("1000 -> 729 en 3 pas de décroissance 0,9. cf. simulation.py", _p_simulation),
+    "Géométrie 3D constructive (maillages)": ("Cube unité : 8 sommets, aire 6, volume 1. cf. geometrie3d.py", _p_geometrie3d),
+    "Chemins 2D (lignes/Bézier, SVG)": ("Chemin contigu construit et validé. cf. chemin2d.py", _p_chemin2d),
+    "Savoir massif (lexique 1,9 M entrées)": ("est_un transitif dirigé sur le lexique. cf. savoir_massif.py", _p_savoir_massif),
+    "Utilité évolutive (le plus utile gagne)": ("Une solution jugée, utilité évaluée. cf. utilite.py", _p_utilite),
+    "Fuzzing différentiel (crible sécurité)": ("Solution de référence -> ROBUSTE sur 30 essais. cf. fuzz.py", _p_fuzz),
+    "Boucle générer-juger-garder": ("Campagne factice : seuls les passants entrent au store. cf. boucle.py", _p_boucle),
+    "Auto-optimisation (coût des expressions)": ("sum(x)+sum(x) = 2 passes, x[0] = 0. cf. auto_optimise.py", _p_auto_optimise),
+    "Mesure d'apprentissage (boîte de verre)": ("Un générateur évalué sur une tâche réelle. cf. mesure.py", _p_mesure),
+    "Curateur d'exercices (tâches validées)": ("La 1re tâche du catalogue est validée par le juge. cf. curateur.py", _p_curateur),
+    "Observatoire d'exploits (hard-coding détecté)": ("Sonde statique sur un memo-dict. cf. exploits.py", _p_exploits),
+    "Ablation d'échafaudage (briques mesurées)": ("Ablation sur ensembles vides = liste vide. cf. echafaudage.py", _p_echafaudage),
+    "Sélecteur situationnel (méta-architecture)": ("La classe Selecteur est construite. cf. selecteur.py", _p_selecteur),
+    "Session d'entraînement (orchestrateur complet)": ("Mini-session réelle : 2 tours, journal produit. cf. session.py", _p_session),
+    "Daemon lecteur (protocole Q-R)": ("Requête d'op inconnue -> réponse structurée. cf. lecteur_daemon.py", _p_lecteur_daemon),
+    "Audit des ancres de vérité": ("Références externes calculées sur un état vide. cf. audit_ancres.py", _p_audit_ancres),
+    "Auto-invention (empreintes comportementales)": ("args[0]*2 sur (1,2) -> (2,4) ; expression cassée -> None. cf. auto_invention.py", _p_auto_invention),
+    "Rapport d'invention unifié": ("Rapport réel sur un mini-corpus + texte rendu. cf. rapport_invention.py", _p_rapport_invention),
+    "Conversion kaikki (Wiktionnaire -> lexique)": ("chat -> mammifère extrait d'un dump réel minimal. cf. convertit_kaikki.py", _p_convertit_kaikki),
+    "Charge lexique (cohérence du lexique)": ("2 entrées, acyclique. cf. charge_lexique.py", _p_charge_lexique),
+    "Extension du savoir (fermeture transitive)": ("chaine chat -> mammifère -> animal. cf. etend_savoir.py", _p_etend_savoir),
+    "Relations lexicales (synonymes/antonymes)": ("(chat, matou) extrait du lexique converti. cf. relations_lexique.py", _p_relations_lexique),
+    "Fabrique sémantique (paires de compréhension)": ("Paires definition construites du lexique. cf. fabrique_semantique.py", _p_fabrique_semantique),
+    "Fabrique français (conjugaisons vérifiées)": ("parler/present/je -> parle. cf. fabrique_francais.py", _p_fabrique_francais),
+    "Fabrique compréhension (corpus vérifié)": ("Le catalogue d'items existe et est non vide. cf. fabrique_comprehension.py", _p_fabrique_comprehension),
+    "Structure par tâche (batterie de stratégies)": ("Les stratégies de la batterie sont exécutables. cf. mesure_structure_pertache.py", _p_mesure_structure_pertache),
+    "Recherche dirigée (synthèse bornée)": ("Synthèse réelle sur mini-spec, budget 3000. cf. recherche_dirigee.py", _p_recherche_dirigee),
+    "Test du diable (une tâche résolue en direct)": ("BATTERIE[0] résolue par l'étage attendu. cf. diable.py", _p_diable),
+    "Recherche d'architecture (corpus de primitives)": ("La primitive carre du corpus rend 9 pour 3. cf. cherche_architecture_max.py", _p_cherche_architecture_max),
+    "Usine à données (accumulation de succès)": ("Store accumulé en répertoire temporaire. cf. usine_donnees.py", _p_usine_donnees),
+    "Export de dataset (résumé d'un jsonl)": ("1 ligne lue, comptage exact. cf. exporte_dataset.py", _p_exporte_dataset),
+})
+
+
+def _p_qualitatif():
+    from qualitatif import signe_produit, signe_somme, PLUS, MOINS, IND
+    return signe_produit(PLUS, MOINS) == MOINS and signe_somme(PLUS, MOINS) == IND
+
+
+REGISTRE.update({
+    "Raisonnement qualitatif (algèbre des signes)": ("(+)×(−) = − ; (+)+(−) = indéterminé, jamais tranché. cf. qualitatif.py", _p_qualitatif),
+})

@@ -3812,10 +3812,22 @@ def _diagnostic_connaissance(texte: str):
     try:
         import os, lecteur
         _charge_ia()
-        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s"
+        # CAPACITÉS PROUVÉES EN DIRECT (audit câblage 2026-07-06 : le registre capacites.py — 228 preuves à
+        # réponse connue sur ~170 modules de raisonnement — n'était atteignable par RIEN dans le produit).
+        # Chaque preuve est RÉELLEMENT exécutée à l'instant (<1 s, sans chargement de base) : couverture
+        # MESURÉE au moment où l'utilisateur demande, jamais déclarée.
+        cap = ""
+        try:
+            import capacites as _CAP
+            _ok, _ko, _echecs = _CAP.verifie_tout()
+            cap = " · capacités prouvées à l'instant : %d/%d%s" % (
+                _ok, _ok + _ko, "" if not _echecs else " (en échec : %s)" % ", ".join(_echecs[:3]))
+        except Exception:
+            pass
+        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s"
                 % (len(lecteur.LECTEUR.relations()), len(lecteur.LECTEUR),
                    os.environ.get("LECTEUR_DATASETS_DIR", "?"), _build_id(),
-                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée"))
+                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap))
     except Exception as e:
         return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
 
@@ -4511,6 +4523,154 @@ def _cap_challenge(texte: str):
     return ("Défi accepté%s — mais à MA façon, parce que je ne bluffe jamais : AFFIRME des choses, et je "
             "tranche chacune par Vrai, Faux ou Indécidable, preuve à l'appui. Ce que la réalité ne tranche "
             "pas, je te le dirai honnêtement.%s À toi : lance ta première affirmation." % (cible, amorce))
+
+
+# Domaine/URL EXPLICITE dans le message (« regarde yohanfauck.fr ») : URL complète, ou domaine avec une liste
+# FERMÉE de TLD courants (jamais « maj.py » ni un mot à point accidentel). Vécu 2026-07-06 : « peux-tu regarder
+# le site yohanfauck.fr ? » tombait dans la clarification générique — web ON = toujours une réponse.
+_SITE_RE = re.compile(
+    r"\b(https?://[^\s»«\"']+"
+    r"|(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:fr|com|org|net|io|dev|app|eu|be|ch|ca|ai|info|me)\b"
+    r"(?:/[^\s»«\"']*)?)", re.I)
+_SITE_AVIS_RE = re.compile(r"\b(?:penses?|pensez|avis|impressions?|trouves?|trouvez|juges?)\b", re.I)
+
+
+def _cap_site(texte: str):
+    """L'utilisateur NOMME un site : on va le LIRE et on RAPPORTE (titre + passage prose, attribué). FAUX=0 :
+    jamais un jugement subjectif — si on demande « ce que tu en penses », on le dit et on cite la page."""
+    m = _SITE_RE.search(texte)
+    if not m:
+        return None
+    cible = m.group(1).rstrip(".,;!?")
+    if os.environ.get("IA_WEB") != "1":
+        return ("Tu me demandes d'aller voir « %s », mais Internet est coupé. Active-le (bouton « 🌐 » du menu "
+                "⚙️) et j'irai lire la page pour t'en faire un rapport sourcé." % cible)
+    try:
+        import veille_structure as _VS
+        ap = _VS.apercu_site(cible)
+    except Exception:
+        ap = None
+    if not ap:
+        return ("Je n'ai pas réussi à lire « %s » (site injoignable, vide, ou qui bloque les robots) — je "
+                "préfère te le dire que d'inventer." % cible)
+    titre, extrait, url = ap
+    dom = url.split("//", 1)[-1].split("/")[0]
+    lignes = []
+    if _SITE_AVIS_RE.search(texte):
+        lignes.append("Je ne porte pas de jugement subjectif — mais je suis allé LIRE la page, et voilà ce "
+                      "qu'elle dit :")
+    else:
+        lignes.append("Je suis allé lire la page :")
+    lignes.append("D'après %s%s : %s" % (dom, (" (« %s »)" % titre) if titre else "", extrait))
+    lignes += ["", "\U0001F517 La page : %s" % url,
+               "(Contenu rapporté tel quel — trouvé sur internet, à vérifier au besoin.)"]
+    return "\n".join(lignes)
+
+
+# ————— « MON AVIS » COMPARATIF : réflexion OUTILLÉE, pas ressentie (demande Yohan 2026-07-06) —————
+# Un avis compatible FAUX=0 = une CONCLUSION SIGNÉE, dérivée de faits vérifiés, avec la règle de décision
+# AFFICHÉE et la SENSIBILITÉ donnée (ce qui ferait basculer l'avis). Là où un humain « sent », Provara PÈSE :
+# dominance de Pareto (aucune pondération ne peut inverser) sinon vote majoritaire des critères mesurés.
+_AVIS_ENTRE_RE = re.compile(
+    r"(?:meilleur\w*|mieux|pr[ée]f[ée]r\w*|choisir\w*|choix|recommand\w*|conseill\w*|avis|penses?[- ]tu)"
+    r"[^?]*?\bentre\s+(.+?)\s+et\s+(.+?)\s*\??\s*$", re.I)
+_AVIS_OU_RE = re.compile(
+    r"(?:tu\s+)?(?:pr[ée]f[èe]res?|choisi(?:s|rais)|prendrais|recommandes?|conseilles?)\s+(?:plut[oô]t\s+)?"
+    r"(.+?)\s+ou\s+(.+?)\s*\??\s*$", re.I)
+# Relations chiffrées scannées pour une PAIRE (celles qui n'existent pas dans la base sont juste sautées).
+_AVIS_RELS = ("superficie", "superficie_pays", "population_pays", "pib_pays", "pib_par_habitant_pays",
+              "population_ville", "altitude_ville", "altitude_montagne", "altitude_sommet", "longueur_fleuve",
+              "longueur_cours_eau", "hauteur_tour", "hauteur_gratte_ciel", "superficie_ile")
+_AVIS_SUFFIXES = ("_pays", "_ville", "_montagne", "_sommet", "_col", "_fleuve", "_cours_eau", "_pont",
+                  "_ligne_ferroviaire", "_ile", "_tour", "_gratte_ciel")
+
+
+def _libelle_attr(rel: str) -> str:
+    lib = rel
+    for s in _AVIS_SUFFIXES:
+        if lib.endswith(s):
+            lib = lib[: -len(s)]
+            break
+    return lib.replace("_", " ").replace("pib", "PIB")
+
+
+def _fmt_val(v, unite: str) -> str:
+    t = format(int(v), ",d").replace(",", " ") if float(v).is_integer() else ("%g" % v)
+    return (t + " " + unite).strip()
+
+
+def _cap_avis(texte: str):
+    """« Quelle est la meilleure destination entre la France et l'Espagne ? » -> MON AVIS construit : chaque
+    critère est un fait VÉRIFIÉ du lecteur (valeurs montrées), la règle est affichée, le verdict vient de
+    pareto.domine (avis ROBUSTE) ou du vote des critères, et la sensibilité dit ce qui le ferait basculer.
+    Rien de mesurable pour la paire -> None (le cadrage d'opinion existant reprend)."""
+    m = _AVIS_ENTRE_RE.search(texte) or _AVIS_OU_RE.search(texte)
+    if not m:
+        return None
+    x = _strip_article(m.group(1).strip(" ?.!«»\"'"))
+    y = _strip_article(m.group(2).strip(" ?.!«»\"'"))
+    if not (0 < len(x) <= 40 and 0 < len(y) <= 40) or _normalise(x) == _normalise(y):
+        return None
+    crits, vus = [], set()
+    for rel in _AVIS_RELS:
+        vx, ax = _valeur_attr(x, rel)
+        if vx is None:
+            continue
+        vy, ay = _valeur_attr(y, rel)
+        if vy is None:
+            continue
+        lib = _libelle_attr(rel)
+        if lib in vus:
+            continue                                     # un seul critère par grandeur (pas de double comptage)
+        vus.add(lib)
+        crits.append((rel, lib, vx, ax, vy, ay))
+    if not crits:
+        return None
+    nx, ny = crits[0][3], crits[0][5]
+    lignes = ["Mon avis — CONSTRUIT, pas ressenti : chaque critère est un fait vérifié, ma règle est affichée."]
+    gx = gy = 0
+    for rel, lib, vx, _ax, vy, _ay in crits:
+        u = _unite_attr(rel)
+        if vx > vy:
+            gx += 1
+            verdict = "devant : %s" % nx
+        elif vy > vx:
+            gy += 1
+            verdict = "devant : %s" % ny
+        else:
+            verdict = "égalité"
+        lignes.append("· %s : %s %s · %s %s → %s" % (lib, nx, _fmt_val(vx, u), ny, _fmt_val(vy, u), verdict))
+    lignes.append("Ma convention (contestable, et c'est voulu) : « devant » = la plus grande valeur.")
+    try:
+        import pareto as _P
+        sens = ("max",) * len(crits)
+        a, b = tuple(c[2] for c in crits), tuple(c[4] for c in crits)
+        dom_x, dom_y = _P.domine(a, b, sens), _P.domine(b, a, sens)
+    except Exception:
+        dom_x = dom_y = False
+    if (dom_x or dom_y) and len(crits) == 1:
+        lignes.append("Mon avis : %s — mais il ne tient qu'à UN critère mesurable (%s) : c'est un avis MINCE, "
+                      "je le signale. Donne-moi tes critères (coût, climat, taille…) et je l'épaissis."
+                      % (nx if dom_x else ny, crits[0][1]))
+    elif dom_x or dom_y:
+        lignes.append("Mon avis : %s — DOMINANCE DE PARETO sur %d critères : aucune pondération de ces "
+                      "critères ne peut inverser ce verdict. Avis robuste." % (nx if dom_x else ny, len(crits)))
+    elif gx != gy:
+        if gx > gy:
+            gagnant, contre = nx, [lib for _r, lib, vx, _a, vy, _b in crits if vy > vx]
+        else:
+            gagnant, contre = ny, [lib for _r, lib, vx, _a, vy, _b in crits if vx > vy]
+        lignes.append("Mon avis : %s — en tête sur %d critère(s) sur %d au vote majoritaire."
+                      % (gagnant, max(gx, gy), len(crits)))
+        if contre:
+            lignes.append("Sensibilité : mon avis BASCULE si ton critère prioritaire est %s — dis-le-moi et "
+                          "je re-tranche." % " ou ".join(contre))
+    else:
+        lignes.append("Vote des critères : égalité %d–%d → je SUSPENDS mon avis (le trancheur, c'est TON "
+                      "critère prioritaire — donne-le-moi et je conclus dans la seconde)." % (gx, gy))
+    lignes.append("(Un « meilleur » absolu n'existe pas : cet avis vaut pour ces critères MESURABLES et il est "
+                  "falsifiable — change la règle ou les critères, je recalcule.)")
+    return "\n".join(lignes)
 
 
 def _cap_quotidien(texte: str, conv_id=None):
@@ -6372,7 +6532,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             return _r
     if pleine:
         # _cap_quotidien reçoit conv_id (attente à trou « pour quelle ville ? » rejouable au tour suivant).
-        for _cap in (lambda _t: _cap_quotidien(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (lambda _t: _cap_quotidien(_t, conv_id), _cap_site, _cap_avis, _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

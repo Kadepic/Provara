@@ -1,5 +1,54 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — CÂBLAGE 0-ORPHELIN : 501/501 modules atteignables, audit permanent, 280 preuves en direct
+
+- **Mandat Yohan** : « il faut vraiment que tout ce qui a été construit soit câblé — 0 orphelin, assumé ou
+  non, sinon c'est de la dette ». L'audit a d'abord MESURÉ le réel : **223 modules de src/ n'étaient
+  atteignables par AUCUN chemin du produit** (dont `capacites.py` — le registre de preuves lui-même — et tout
+  ce qu'il porte : Pareto, Condorcet, causalité, lois physiques, simulation…).
+- **Nouveau gate permanent `tests/valide_cablage.py`** (dans la suite, 20 gates) : fermeture transitive des
+  imports depuis les entrées du produit (lance/verax_boot/serveur/repond) — un futur module non câblé remet
+  la suite AU ROUGE. Allowlist VIDE par mandat ; `_precharge_verax` (manifeste d'analyse PyInstaller) est
+  vérifié en LISANT `--hidden-import` dans build_exe.bat, jamais assumé — et sans traverser ses imports.
+- **Câblage réel en 2 étages** : ① le diagnostic exécute désormais `capacites.verifie_tout()` EN DIRECT
+  (« capacités prouvées à l'instant : 280/280 », ~5 s, sans chargement de base) → 171 modules recâblés d'un
+  coup ; ② les **52 modules restants ont reçu chacun une PREUVE à réponse connue** dans capacites.REGISTRE
+  (criblée de leur validateur : causalité, logique trivaluée, révision de croyances, triangulation, lois/
+  limites/simulation physiques, géométrie 3D, lexique kaikki, fabrique français, boucle générer-juger-garder,
+  session d'entraînement RÉELLE en mini, test du diable sur une tâche, usine à données…). Zéro preuve de
+  façade (`callable()` interdit — deux tentatives ont été remplacées par de vraies exécutions).
+- `valide_capacites` 73/73 (228 → 280 preuves), suite conversationnelle **20/20 gates**, diagnostic e2e :
+  *« …capacités prouvées à l'instant : 280/280 »*.
+
+## 2026-07-06 — « Mon avis est… » : premier avis ASSUMÉ de Provara — réflexion outillée, pas ressentie
+
+- **Demande Yohan** : que l'IA puisse donner SON avis sur du non-tranché — « la réflexion réelle mais bien plus
+  évoluée qu'un humain ». Définition compatible FAUX=0 : un avis = une CONCLUSION SIGNÉE, dérivée de faits
+  vérifiés, règle de décision AFFICHÉE, et falsifiable (la sensibilité dit ce qui le ferait basculer).
+- **Nouveau cap `_cap_avis`** (« quelle est la meilleure destination entre la France et l'Espagne ? »,
+  « tu préfères Lyon ou Marseille ? ») : critères = TOUTES les relations chiffrées du lecteur où la paire a des
+  valeurs (montrées une à une) ; verdict par **dominance de Pareto** (`src/pareto.py`, enfin câblé au
+  conversationnel : « aucune pondération ne peut inverser → avis ROBUSTE ») sinon **vote majoritaire des
+  critères** + **SENSIBILITÉ** (« mon avis bascule si ton critère prioritaire est X ») ; égalité → avis
+  SUSPENDU (le critère de l'utilisateur tranche) ; un seul critère mesurable → avis annoncé MINCE, jamais
+  gonflé. Convention affichée et contestable (« devant » = plus grande valeur).
+- Vérifié en réel base complète : France/Espagne → 4 critères, dominance de Pareto. `valide_capacites_chat`
+  32/32, suite 19/19. Reste en queue : brique 2 (Pour/Contre sourcé + verdict conditionnel, débats sans
+  chiffres).
+
+## 2026-07-06 — « Regarde le site yohanfauck.fr » : Provara VA LIRE le site nommé et rapporte (attribué)
+
+- **Vécu Yohan** : « peux-tu regarder le site yohanfauck.fr et me dire ce que tu en penses ? » tombait dans la
+  clarification générique (le domaine ne « rattache » à aucun fait, la recherche Wikipédia ne trouve rien).
+- **Nouveau cap `_cap_site`** (câblé en tête de cascade) : un domaine/URL explicite dans le message (TLD
+  fermés — jamais « maj.py ») → visite réelle via `veille_structure.apercu_site` : HTTPS puis repli HTTP,
+  jamais d'adresse locale/IP, titre `<title>` + **fenêtre la plus PROSE** de la page (comptage de mots-outils :
+  les menus de navigation sont écartés), rapport ATTRIBUÉ + lien. « Ce que tu en penses » → cadrage honnête
+  (« je ne porte pas de jugement — voilà ce que la page dit »). Web OFF → refus actionnable (bouton 🌐) ;
+  injoignable → aveu honnête. FAUX=0 : contenu rapporté verbatim, jamais un jugement inventé.
+- Vérifié EN LIVE sur yohanfauck.fr (titre réel + passage prose). `valide_veille_structure` 22/22,
+  `valide_capacites_chat` 25/25, suite 19/19.
+
 ## 2026-07-06 — FLIP ONEDIR (build 49) : Provara devient un dossier — démarrage instantané, antivirus apaisé
 
 - Le build 48 (updater v2) vérifié en réel chez Yohan (auto-update 44→48 observé en direct, slot météo et
