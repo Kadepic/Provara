@@ -79,7 +79,31 @@ CAS = [
     ("agregat-liste", R._cap_agregat_liste, "quelle est la population cumulée de la France et de l'Allemagne ?", "152 211 586"),
     ("agregat-liste-moyenne", R._cap_agregat_liste, "population moyenne de la France, l'Allemagne et l'Italie ?", "moyenne"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
+    # HOMONYMES d'œuvres/monuments : jamais la dimension d'un homonyme (tableau « La Tour Eiffel » 0,632 m,
+    # sculpture « La Joconde » 2,48 m, hameau « La France » 3,4 km²) — abstention DITE ou la vraie valeur
+    ("dim-monument-garde", R._cap_dimension, "quelle est la hauteur de la tour Eiffel ?", "je ne confonds pas"),
+    ("dim-tableau-garde", R._cap_dimension, "quelle est la hauteur de la Joconde ?", "je ne confonds pas"),
+    ("dim-exact-prime", R._cap_dimension, "quelle est la superficie de la France ?", "551 695"),
+    ("dim-km-lisible", R._cap_dimension, "quelle est la longueur du Yangzi Jiang ?", "6 300 km"),
+    ("createur-homonymie-listee", R._cap_createur, "qui a composé la Neuvième Symphonie ?", "Beethoven"),  # + film homonyme listé
+    ("devise-double", R._cap_devise, "quelle est la devise de la France ?", "Liberté"),   # motto + monnaie mentionnée
+    ("devise-nationale", R._cap_devise, "quelle est la devise nationale de la France ?", "Fraternité"),
+    ("is-a-planete", R._cap_ontologie, "jupiter est-elle une planète ?", "Oui"),          # seed (def Wiktionnaire bruitée)
+    ("is-a-dual-tomate", R._cap_ontologie, "la tomate est-elle un fruit ou un légume ?", "deux points de vue"),
+    ("is-a-dual-avocat", R._cap_ontologie, "l'avocat est-il un légume ?", "FRUIT"),
+    ("comptage-continents", R._cap_comptage, "combien de continents y a-t-il ?", "CONVENTION"),
+    ("comptage-pays-monde", R._cap_comptage, "combien de pays dans le monde ?", "249"),
+    ("protons", R._cap_protons, "combien de protons a l'hydrogène ?", "1 proton"),
+    ("electrons", R._cap_protons, "combien d'électrons possède le carbone ?", "6 électrons"),
+    ("lunes-mars", R._cap_lunes, "combien de lunes a Mars ?", "Phobos"),
+    ("lunes-terre", R._cap_lunes, "combien de satellites naturels a la Terre ?", "Lune"),
+    ("date-verbe-chute", R._cap_date_evenement, "en quelle année est tombé le mur de Berlin ?", "1989"),
+    ("date-verbe-construction", R._cap_date_evenement, "quand a été construit le mur de Berlin ?", "1961"),
+    ("date-elision", R._cap_date_evenement, "quand a eu lieu la bataille de Hastings ?", "1066"),
     ("orbite", R._cap_orbite, "est-ce que Phobos fait partie du système solaire ?", "je le déduis"),
+    ("orbite-direct", R._cap_orbite, "la Terre tourne-t-elle autour du Soleil ?", "Oui"),          # ex-FAUX Baudelaire
+    ("orbite-direct-sms", R._cap_orbite, "est ce que la terre tourne autour du soleil", "Oui"),
+    ("orbite-derive", R._cap_orbite, "la Lune tourne-t-elle autour du Soleil ?", "je le déduis"),
     ("transitif-hydro", R._cap_transitif, "est-ce que la Lukna finit dans la mer Baltique ?", "Niémen"),
     ("transitif-groupe", R._cap_transitif, "105 Music fait-elle partie du groupe Sony ?", "Sony Music"),
     ("inverse-capitale", R._cap_inverse, "quel pays a pour capitale Madrid ?", "Espagne"),
@@ -109,13 +133,30 @@ CAS = [
     ("naissance-compare-jeune", R._cap_naissance_compare, "qui est le plus jeune entre Napoléon Ier et Louis XIV ?", "Napoléon"),
     ("succession", R._cap_succession, "qui a succédé à Louis XIV ?", "Louis XV"),
     ("succession-predecesseur", R._cap_succession, "qui a précédé Louis XIV ?", "Louis XIII"),
+    ("record-sommet", R._cap_record_monde, "quel est le plus haut sommet du monde ?", "Everest"),
+    ("record-fleuve-dispute", R._cap_record_monde, "quel est le plus long fleuve du monde ?", "DISPUTÉE"),
+    ("record-ile", R._cap_record_monde, "quelle est la plus grande île du monde ?", "Groenland"),
+    ("record-desert", R._cap_record_monde, "quel désert est le plus grand du monde ?", "Sahara"),
+    ("record-planete", R._cap_record_monde, "quelle est la plus grande planète du système solaire ?", "Jupiter"),
+    ("record-lac-postpose", R._cap_record_monde, "le lac le plus profond du monde", "Baïkal"),
+    ("faux-record-zone", R._cap_record_monde, "la montagne la plus haute d'Europe", ""),   # zone-scopé -> pas ce cap
+    ("fleuve-ville", R._cap_fleuve_ville, "quel fleuve traverse Paris ?", "Seine"),        # ex-FAUX : 147 rivières
+    ("fleuve-ville-multi", R._cap_fleuve_ville, "quelle rivière traverse Lyon ?", "Saône"),
+    ("fleuve-ville-sur", R._cap_fleuve_ville, "sur quel fleuve se trouve Budapest ?", "Danube"),
+    ("fleuve-villes-inverse", R._cap_fleuve_ville, "quelles villes le Danube traverse-t-il ?", "Budapest"),
+    ("fleuve-ville-ouinon", R._cap_fleuve_ville, "est-ce que la Seine traverse Paris ?", "Oui"),
     ("localisation-pays", R._cap_localisation, "dans quel pays est 1117 Mountain ?", "États-Unis"),
     ("localisation-continent", R._cap_localisation, "sur quel continent est Abbott Peak ?", "Antarctique"),
     ("faux-localisation-concept", R._cap_localisation, "où se trouve le bonheur ?", ""),  # nom commun -> pas un lieu
     # gardes FAUX=0
     ("faux-filtre-entre", R._cap_filtre, "quels pays d'Afrique ont entre 5 et 10 milliards d'habitants ?", "Aucun"),
-    ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", ""),
+    # le faux n'est plus tu : il est RÉFUTÉ avec le fait réel (anti-symétrie induite), jamais confirmé
+    ("faux-orbite", R._cap_orbite, "est-ce que la Terre orbite la Lune ?", "Non — c'est l'inverse"),
+    ("faux-orbite-soleil", R._cap_orbite, "le Soleil tourne-t-il autour de la Terre ?", "Non — c'est l'inverse"),
     ("faux-transitif", R._cap_transitif, "est-ce que la Lukna finit dans la mer Noire ?", ""),
+    # paire absente : le fait réel est montré, jamais « Oui » ni « Non » sec (la Bièvre traverse VRAIMENT Paris)
+    ("faux-fleuve-ville", R._cap_fleuve_ville, "la Seine traverse-t-elle Lyon ?", "Rhône"),
+    ("faux-fleuve-inconnu", R._cap_fleuve_ville, "quel fleuve traverse Gotham City ?", ""),
     ("faux-inverse", R._cap_inverse, "quel pays a pour capitale Xanadu ?", ""),
     # superlatif SÛR seulement si l'ensemble est complet : montagnes/villes ont un membership troué -> abstention
     ("faux-superlatif-montagne", R._superlatif_argmax, "la montagne la plus haute d'Europe", ""),

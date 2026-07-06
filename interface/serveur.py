@@ -617,9 +617,21 @@ def _maj_regle_auto(actif: bool) -> dict:
 
 
 def _maj_applique(url_exe) -> dict:
+    # GARDE INTERNET (trouvée au test LIVE 2026-07-06) : appliquer passait par version_distante() -> appel
+    # réseau MÊME Internet coupé (contournait le toggle). Aucune requête sans consentement : refus actionnable.
+    if os.environ.get("IA_WEB") != "1":
+        return {"ok": False, "message": "Internet est coupé — réactive-le (bouton « 🌐 Internet ») pour "
+                                        "vérifier et télécharger la mise à jour."}
     try:
         import maj
-        return maj.applique(url_exe)
+        r = maj.applique(url_exe)
+        if r.get("ok") and r.get("redemarre"):
+            # BUG RÉEL corrigé (test LIVE) : l'app promettait « va se fermer » mais ne se fermait JAMAIS —
+            # l'updater attendait notre PID indéfiniment. On laisse la réponse HTTP partir (1,5 s) puis on
+            # quitte VRAIMENT (os._exit : serveur threadé, et l'updater guette la fin du processus).
+            import threading
+            threading.Timer(1.5, lambda: os._exit(0)).start()
+        return r
     except Exception as e:
         return {"ok": False, "message": "%r" % e}
 

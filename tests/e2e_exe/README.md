@@ -10,3 +10,11 @@
 PROTOCOLE .exe : serveur Windows sur 127.0.0.1:8765 injoignable directement du WSL -> `/mnt/c/Windows/system32/curl.exe`.
 Couper le web : POST /api/web {"actif":false}. Mémoire propre : rm /mnt/c/Users/yohan/.verax/conversations/*.
 PROTOCOLE source (rapide, code le plus récent) : en processus, LECTEUR_DATASETS_DIR = base complète.
+
+⚠ PIÈGES de harness (appris en réel) :
+- MÉMOIRE : les injections doivent passer par `serveur.ajoute_message(mem, cid, texte)` — `repond()` seul
+  n'INDEXE pas le message (un harness qui l'appelle directement mesure 0/N à tort).
+- SERVEUR SOURCE : `PORT=8899 LECTEUR_DATASETS_DIR=… python3 interface/serveur.py` (VERAX_ROOT vers un dossier
+  jetable pour ne pas toucher la vraie mémoire) ; joignable en `curl` NATIF depuis WSL (contrairement au .exe).
+- Un processus lancé depuis WSL sur le côté Windows (interop, schtasks) MEURT avec la session WSL : pour
+  laisser le .exe tourner, c'est un lancement Windows natif qu'il faut (double-clic / session utilisateur).

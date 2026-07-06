@@ -129,3 +129,16 @@
 {"entite": "jaune", "valeur": "couleur"}
 {"entite": "félin", "valeur": "mammifère"}
 {"entite": "chat", "valeur": "félin"}
+{"entite": "mercure", "valeur": "planète"}
+{"entite": "vénus", "valeur": "planète"}
+{"entite": "terre", "valeur": "planète"}
+{"entite": "mars", "valeur": "planète"}
+{"entite": "jupiter", "valeur": "planète"}
+{"entite": "saturne", "valeur": "planète"}
+{"entite": "uranus", "valeur": "planète"}
+{"entite": "neptune", "valeur": "planète"}
+{"entite": "pluton", "valeur": "planète naine"}
+{"entite": "planète", "valeur": "astre"}
+{"entite": "soleil", "valeur": "étoile"}
+{"entite": "étoile", "valeur": "astre"}
+{"entite": "lune", "valeur": "satellite naturel"}

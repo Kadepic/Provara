@@ -70,5 +70,20 @@ maj._TRANSPORT = _ko_transport
 check(maj.version_distante() is None, "réseau KO -> version distante None")
 check(maj.etat()["disponible"] is False, "réseau KO -> aucune MAJ proposée")
 
+# UPDATER (bugs trouvés au test LIVE build 38->39, 2026-07-06) : le .bat doit marcher SANS console
+# (« timeout /t » exige une console -> « ping -n »), se détacher d'un éventuel job Windows, et l'app doit
+# VRAIMENT se fermer après « appliquer » (garde côté serveur). Vérifié sur les SOURCES, sans lancer d'updater.
+import inspect
+_src = inspect.getsource(maj._lance_updater)
+check("ping -n" in _src, "updater : attente par ping (marche sans console)")
+check("timeout /t 1" not in _src, "updater : plus de la commande « timeout /t 1 » (exige une console)")
+check("CREATE_BREAKAWAY_FROM_JOB" in _src, "updater : breakaway du job (survit à la fermeture de l'app)")
+check('getattr(subprocess, "DETACHED_PROCESS"' not in _src,
+      "updater : plus de DETACHED_PROCESS (exclusif avec CREATE_NO_WINDOW)")
+with open(os.path.join(os.path.dirname(__file__), "..", "interface", "serveur.py"), encoding="utf-8") as _f:
+    _src_srv = _f.read()
+check("os._exit(0)" in _src_srv, "serveur : l'app se ferme réellement après « appliquer »")
+check("Internet est coupé" in _src_srv, "serveur : « appliquer » refusé si Internet OFF (pas d'appel caché)")
+
 print("=== valide_maj : %d/%d ===" % (_ok[0], _ok[0] + _ko[0]))
 sys.exit(0 if _ko[0] == 0 else 1)

@@ -1,0 +1,102 @@
+{"_relation": "fleuve_ville_seed", "_note": "Seed CURÉ à la main : couples fleuve/rivière ↔ ville traversée, faits géographiques incontestables (aucune relation ville↔fleuve dans les datasets Wikidata). Articles inclus dans les formes affichées. FAUX=0 : liste non exhaustive par fleuve (réponses inverses en « notamment »)."}
+{"fleuve": "la Seine", "ville": "Paris"}
+{"fleuve": "la Seine", "ville": "Rouen"}
+{"fleuve": "le Rhône", "ville": "Lyon"}
+{"fleuve": "le Rhône", "ville": "Avignon"}
+{"fleuve": "le Rhône", "ville": "Arles"}
+{"fleuve": "le Rhône", "ville": "Valence"}
+{"fleuve": "le Rhône", "ville": "Genève"}
+{"fleuve": "la Saône", "ville": "Lyon"}
+{"fleuve": "la Saône", "ville": "Mâcon"}
+{"fleuve": "la Saône", "ville": "Chalon-sur-Saône"}
+{"fleuve": "la Garonne", "ville": "Toulouse"}
+{"fleuve": "la Garonne", "ville": "Bordeaux"}
+{"fleuve": "la Garonne", "ville": "Agen"}
+{"fleuve": "la Loire", "ville": "Nantes"}
+{"fleuve": "la Loire", "ville": "Tours"}
+{"fleuve": "la Loire", "ville": "Orléans"}
+{"fleuve": "la Loire", "ville": "Blois"}
+{"fleuve": "la Loire", "ville": "Saumur"}
+{"fleuve": "la Meuse", "ville": "Verdun"}
+{"fleuve": "la Meuse", "ville": "Sedan"}
+{"fleuve": "la Meuse", "ville": "Namur"}
+{"fleuve": "la Meuse", "ville": "Liège"}
+{"fleuve": "la Meuse", "ville": "Maastricht"}
+{"fleuve": "la Moselle", "ville": "Metz"}
+{"fleuve": "la Moselle", "ville": "Épinal"}
+{"fleuve": "la Moselle", "ville": "Thionville"}
+{"fleuve": "la Moselle", "ville": "Trèves"}
+{"fleuve": "la Moselle", "ville": "Coblence"}
+{"fleuve": "le Rhin", "ville": "Bâle"}
+{"fleuve": "le Rhin", "ville": "Cologne"}
+{"fleuve": "le Rhin", "ville": "Mayence"}
+{"fleuve": "le Rhin", "ville": "Bonn"}
+{"fleuve": "le Rhin", "ville": "Düsseldorf"}
+{"fleuve": "l'Ill", "ville": "Strasbourg"}
+{"fleuve": "la Tamise", "ville": "Londres"}
+{"fleuve": "la Tamise", "ville": "Oxford"}
+{"fleuve": "le Danube", "ville": "Vienne"}
+{"fleuve": "le Danube", "ville": "Budapest"}
+{"fleuve": "le Danube", "ville": "Belgrade"}
+{"fleuve": "le Danube", "ville": "Bratislava"}
+{"fleuve": "le Danube", "ville": "Ratisbonne"}
+{"fleuve": "le Danube", "ville": "Ulm"}
+{"fleuve": "le Tibre", "ville": "Rome"}
+{"fleuve": "l'Arno", "ville": "Florence"}
+{"fleuve": "l'Arno", "ville": "Pise"}
+{"fleuve": "le Pô", "ville": "Turin"}
+{"fleuve": "l'Elbe", "ville": "Hambourg"}
+{"fleuve": "l'Elbe", "ville": "Dresde"}
+{"fleuve": "la Spree", "ville": "Berlin"}
+{"fleuve": "la Vltava", "ville": "Prague"}
+{"fleuve": "la Vistule", "ville": "Varsovie"}
+{"fleuve": "la Vistule", "ville": "Cracovie"}
+{"fleuve": "la Moskova", "ville": "Moscou"}
+{"fleuve": "la Neva", "ville": "Saint-Pétersbourg"}
+{"fleuve": "le Dniepr", "ville": "Kiev"}
+{"fleuve": "le Tage", "ville": "Lisbonne"}
+{"fleuve": "le Tage", "ville": "Tolède"}
+{"fleuve": "le Manzanares", "ville": "Madrid"}
+{"fleuve": "le Guadalquivir", "ville": "Séville"}
+{"fleuve": "le Guadalquivir", "ville": "Cordoue"}
+{"fleuve": "l'Èbre", "ville": "Saragosse"}
+{"fleuve": "le Douro", "ville": "Porto"}
+{"fleuve": "le Nil", "ville": "Le Caire"}
+{"fleuve": "le Nil", "ville": "Khartoum"}
+{"fleuve": "le Nil", "ville": "Louxor"}
+{"fleuve": "le Nil", "ville": "Assouan"}
+{"fleuve": "le Congo", "ville": "Kinshasa"}
+{"fleuve": "le Congo", "ville": "Brazzaville"}
+{"fleuve": "le Niger", "ville": "Bamako"}
+{"fleuve": "le Niger", "ville": "Niamey"}
+{"fleuve": "le Mississippi", "ville": "La Nouvelle-Orléans"}
+{"fleuve": "le Mississippi", "ville": "Memphis"}
+{"fleuve": "le Mississippi", "ville": "Minneapolis"}
+{"fleuve": "l'Hudson", "ville": "New York"}
+{"fleuve": "le Potomac", "ville": "Washington"}
+{"fleuve": "le Saint-Laurent", "ville": "Montréal"}
+{"fleuve": "le Saint-Laurent", "ville": "Québec"}
+{"fleuve": "l'Amazone", "ville": "Manaus"}
+{"fleuve": "l'Amazone", "ville": "Iquitos"}
+{"fleuve": "le Gange", "ville": "Varanasi"}
+{"fleuve": "le Yangzi Jiang", "ville": "Shanghai"}
+{"fleuve": "le Yangzi Jiang", "ville": "Nankin"}
+{"fleuve": "le Yangzi Jiang", "ville": "Wuhan"}
+{"fleuve": "le Yangzi Jiang", "ville": "Chongqing"}
+{"fleuve": "le Mékong", "ville": "Phnom Penh"}
+{"fleuve": "le Mékong", "ville": "Vientiane"}
+{"fleuve": "le Chao Phraya", "ville": "Bangkok"}
+{"fleuve": "la Sumida", "ville": "Tokyo"}
+{"fleuve": "le Han", "ville": "Séoul"}
+{"fleuve": "le Tigre", "ville": "Bagdad"}
+{"fleuve": "le Tigre", "ville": "Mossoul"}
+{"fleuve": "la Limmat", "ville": "Zurich"}
+{"fleuve": "l'Aar", "ville": "Berne"}
+{"fleuve": "la Liffey", "ville": "Dublin"}
+{"fleuve": "l'Escaut", "ville": "Anvers"}
+{"fleuve": "l'Escaut", "ville": "Gand"}
+{"fleuve": "l'Escaut", "ville": "Tournai"}
+{"fleuve": "la Senne", "ville": "Bruxelles"}
+{"fleuve": "l'Amstel", "ville": "Amsterdam"}
+{"fleuve": "le Main", "ville": "Francfort-sur-le-Main"}
+{"fleuve": "l'Isar", "ville": "Munich"}

@@ -60,7 +60,9 @@ COMPREH = [
 def memoire_massive():
     mem = conversation.MemoireConversation(racine=None)
     cid = "mem-massive"
-    # on INJECTE beaucoup d'énoncés utilisateur
+    # on INJECTE beaucoup d'énoncés utilisateur — par le VRAI chemin serveur (ajoute_message INDEXE le
+    # message ; repond() seul ne l'indexe pas -> un harness qui l'appelle directement mesure 0/6 à tort)
+    import serveur as S
     faits = [
      "je m'appelle Yohan", "mon plat préféré est la raclette", "ma couleur préférée est le bleu",
      "j'habite à Lyon", "mon chien s'appelle Rex", "je travaille dans l'informatique",
@@ -68,7 +70,7 @@ def memoire_massive():
      "mon sport préféré est le tennis",
     ]
     for f in faits:
-        R.repond(mem, cid, f, pleine=True)
+        S.ajoute_message(mem, cid, f)
     # QUESTIONS de rappel — le bon élément parmi 10
     checks = [
      ("comment je m'appelle ?", "yohan"),

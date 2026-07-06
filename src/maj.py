@@ -209,13 +209,18 @@ def _lance_updater(nouveau_exe: str) -> dict:
     pid = os.getpid()
     import tempfile
     bat = os.path.join(tempfile.gettempdir(), "provara_updater.bat")
+    # PIÈGES RÉELS corrigés (test LIVE 2026-07-06, build 38 -> 39) : (1) `timeout /t` EXIGE une console — lancé
+    # sans fenêtre il échoue ; `ping -n` marche partout. (2) CREATE_NO_WINDOW et DETACHED_PROCESS sont
+    # MUTUELLEMENT EXCLUSIFS (deux modes de console) — combinés, le comportement est indéfini et l'updater
+    # mourait avec l'app. (3) CREATE_BREAKAWAY_FROM_JOB : si l'app vit dans un job Windows qui tue ses enfants,
+    # l'updater doit s'en détacher pour survivre à la fermeture (repli sans le flag si le job l'interdit).
     contenu = (
         "@echo off\r\n"
         "echo Mise a jour de Provara en cours...\r\n"
         ":attente\r\n"
         'tasklist /FI "PID eq %d" 2>NUL | find "%d" >NUL\r\n' % (pid, pid) +
         "if not errorlevel 1 (\r\n"
-        "  timeout /t 1 /nobreak >NUL\r\n"
+        "  ping -n 2 127.0.0.1 >NUL\r\n"
         "  goto attente\r\n"
         ")\r\n"
         'move /Y "%s" "%s" >NUL\r\n' % (nouveau_exe, cible) +
@@ -226,8 +231,12 @@ def _lance_updater(nouveau_exe: str) -> dict:
         with open(bat, "w", encoding="ascii", errors="ignore") as f:
             f.write(contenu)
         import subprocess
-        subprocess.Popen(["cmd.exe", "/c", bat],
-                         creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0) | getattr(subprocess, "DETACHED_PROCESS", 0))
+        no_win = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+        breakaway = getattr(subprocess, "CREATE_BREAKAWAY_FROM_JOB", 0x01000000)
+        try:
+            subprocess.Popen(["cmd.exe", "/c", bat], creationflags=no_win | breakaway)
+        except OSError:                                   # le job interdit le breakaway -> sans le flag
+            subprocess.Popen(["cmd.exe", "/c", bat], creationflags=no_win)
     except Exception as e:
         return {"ok": False, "message": "Lancement de l'updater échoué : %r" % e}
     return {"ok": True, "message": "Mise à jour lancée. Provara va se fermer et redémarrer automatiquement.",

@@ -56,11 +56,20 @@ except Exception:                                   # robustesse : repli minimal
 
 def _veut_reponse(texte: str) -> bool:
     """L'utilisateur attend-il une réponse (question) plutôt qu'il n'affirme un fait ? Tolérant au « ? » oublié
-    et aux fautes de ponctuation : « ? » présent N'IMPORTE OÙ, OU un mot-indice de demande présent."""
+    et aux fautes de ponctuation : « ? » présent N'IMPORTE OÙ, OU un mot-indice de demande présent, OU un
+    NOMINAL-REQUÊTE nu (« distance entre Paris et Madrid », « définition de sérendipité » : une tête d'attribut
+    suivie de son connecteur EST une demande, même sans point d'interrogation)."""
     if "?" in texte:
         return True
-    toks = set(_normalise(texte).split())
-    return bool(toks & _INDICES_DEMANDE)
+    toks = _normalise(texte).split()
+    if set(toks) & _INDICES_DEMANDE:
+        return True
+    if len(toks) >= 3 and toks[1] in ("de", "du", "des", "d", "entre") and not (set(toks) & _TOKENS_AFFIRMATION):
+        try:
+            return toks[0] in _attr_heads() or toks[0] in ("distance", "definition", "difference")
+        except Exception:
+            return False
+    return False
 
 
 # Marqueurs d'AFFIRMATION : verbe conjugué courant (copule, avoir, verbes d'état personnels) ou 1ʳᵉ personne.
@@ -107,8 +116,15 @@ def _est_question_mesure(texte: str) -> bool:
 
 def _reponse_incoherente_mesure(question: str, reponse: str) -> bool:
     """True si `question` demande une MESURE mais `reponse` ne contient AUCUN chiffre (mismatch : sous-lookup
-    catégoriel résolu à la place de l'attribut de mesure). Sound : ne rejette qu'une réponse non numérique."""
-    return _est_question_mesure(question) and not any(c.isdigit() for c in reponse)
+    catégoriel résolu à la place de l'attribut de mesure). Sound : ne rejette qu'une réponse non numérique.
+    MÊME FILET pour les questions de DATE (« quand a eu lieu X ») : une réponse sans année (« Battle » — la
+    VILLE du lieu de la bataille d'Hastings, servie par un sous-lookup) est un mismatch de type -> rejetée."""
+    if _est_question_mesure(question) and not any(c.isdigit() for c in reponse):
+        return True
+    qn = _normalise(question)
+    if re.search(r"^\s*quand\b|\ba quelle date\b|\ben quelle annee\b|\bquelle annee\b", qn):
+        return not re.search(r"\b\d{3,4}\b", reponse)     # une vraie réponse de date contient une année
+    return False
 
 
 # GARDE RELATIONS IMBRIQUÉES « X de [la] Y de Z » : le moteur résout la relation INTERNE (« Y de Z ») et renvoie son
@@ -206,15 +222,49 @@ def _val_verifiee(ia, verifie, requete: str, rel_head: str = None, entite: str =
     return None
 
 
+# Tokens de relations d'ŒUVRES D'ART : une entité MONUMENT (présente dans ville_monument) ne doit JAMAIS être
+# servie par ces relations — « hauteur de la tour Eiffel » matchait « La Tour Eiffel » (un TABLEAU, 0,632 m !).
+# Le tableau homonyme reste servi pour une vraie œuvre (« hauteur de la Joconde » : la Joconde n'est pas un
+# monument). Liste FERMÉE des supports d'art des datasets.
+_RELS_OEUVRE_ART = frozenset(("peinture", "estampe", "aquarelle", "dessin", "gravure", "photographie",
+                              "lithographie", "tableau", "affiche", "icone"))
+
+
+def _est_monument(entite: str) -> bool:
+    try:
+        return bool(_lookup_cell("ville_monument", entite))
+    except Exception:
+        return False
+
+
+def _est_tableau_connu(entite: str) -> bool:
+    """L'entité est-elle une PEINTURE connue (clé de peintre_oeuvre, avec ou sans article) ? Sert au type-check
+    homonyme : la hauteur d'une SCULPTURE « La Joconde » (2,48 m) n'est pas celle du tableau de Vinci."""
+    try:
+        for var in (entite, "la %s" % entite, "le %s" % entite):
+            if _lookup_cell("peintre_oeuvre", var):
+                return True
+    except Exception:
+        pass
+    return False
+
+
 def _lookup_direct(rel_head: str, entite: str):
     """Lookup « rel_head de entite » INSENSIBLE AUX ACCENTS/CASSE, lu directement des .jsonl (contourne les
     incohérences de nommage entre relations : « Nigéria » vs « Nigeria »). FAUX=0 : normalisation d'accent =
-    IDENTITÉ préservée (pas du flou Levenshtein) ; valeur renvoyée seulement si UNIQUE across la famille."""
+    IDENTITÉ préservée (pas du flou Levenshtein) ; valeur renvoyée seulement si UNIQUE across la famille ;
+    GARDE MONUMENT≠ŒUVRE : un monument connu n'est pas servi par une relation d'œuvre d'art homonyme."""
     h = _normalise(rel_head)
     vals = set()
+    est_monu = None                              # calculé PARESSEUSEMENT (1 lookup) et seulement si besoin
     try:
         for rel in _relations():
             if rel == h or rel.split("_")[0] == h or rel.startswith(h + "_"):
+                if any(tk in _RELS_OEUVRE_ART for tk in rel.split("_")[1:]):
+                    if est_monu is None:
+                        est_monu = _est_monument(entite)
+                    if est_monu:                 # l'œuvre homonyme du MONUMENT est un piège -> ignorée
+                        continue
                 # RAM-sûr : _lookup_cell fait un scan STREAMING sur les gros fichiers (occupation_personne 135 Mo,
                 # nationalite_personne 143 Mo, taxon_parent 216 Mo…) au lieu de matérialiser tout le dict.
                 cell = _lookup_cell(rel, entite)
@@ -223,6 +273,46 @@ def _lookup_direct(rel_head: str, entite: str):
     except Exception:
         return None
     return next(iter(vals)) if len(vals) == 1 else None
+
+
+def _lookup_famille(rel_head: str, entite: str) -> list:
+    """Toutes les valeurs « rel_head de entite » across la famille : [(relation, affiché, valeur)]. Même garde
+    monument≠œuvre que _lookup_direct ; les TITRES stockés AVEC article sont aussi essayés (« Joconde » ->
+    « La Joconde »). Sert à DIRE l'ambiguïté au lieu de laisser la cascade en piocher une."""
+    h = _normalise(rel_head)
+    out = []
+    est_monu = None
+    variantes = [entite] + ["%s %s" % (art, entite) for art in ("la", "le")
+                            if not _normalise(entite).startswith(("la ", "le ", "l "))]
+    est_tableau = None
+    try:
+        for rel in _relations():
+            if rel == h or rel.split("_")[0] == h or rel.startswith(h + "_"):
+                toks = rel.split("_")[1:]
+                if any(tk in _RELS_OEUVRE_ART for tk in toks) or "sculpture" in toks or "statue" in toks:
+                    if est_monu is None:
+                        est_monu = _est_monument(entite)
+                    if est_monu:
+                        continue
+                if "sculpture" in toks or "statue" in toks:
+                    # type-check homonyme : une PEINTURE connue n'est pas servie par une SCULPTURE homonyme
+                    # (« hauteur de la Joconde » -> sculpture « La Joconde » 2,48 m, pas le tableau de Vinci)
+                    if est_tableau is None:
+                        est_tableau = _est_tableau_connu(entite)
+                    if est_tableau:
+                        continue
+                for var in variantes:
+                    cell = _lookup_cell(rel, var)
+                    if cell and cell[1] is not None:
+                        out.append((rel, cell[0], cell[1], var is variantes[0]))   # exact (sans article) ?
+                        break
+    except Exception:
+        pass
+    # le match EXACT prime : « superficie de la France » = le PAYS (relation superficie), pas le hameau
+    # « La France » (superficie_localite, via la variante d'article). Les variantes ne servent que s'il
+    # n'existe AUCUN match exact (titres d'œuvres stockés avec article : « La Joconde »).
+    exacts = [c for c in out if c[3]]
+    return [(r, a, v) for r, a, v, _x in (exacts or out)]
 
 
 def _compose_relations(texte: str):
@@ -278,6 +368,61 @@ def _desms(texte: str) -> str:
     """Déplie les abréviations SMS fermées vers le français plein. Identité si rien à déplier. Le lookahead
     (?!['’]) protège les élisions : le « c » de « c'est » n'est PAS une abréviation."""
     return _SMS_RE.sub(lambda m: _SMS_MAP[m.group(1).lower()], texte)
+
+
+# ALIAS DE PERSONNES CÉLÈBRES (carte FERMÉE, identités incontestables — le MÊME être humain) : l'usager dit
+# « Napoléon Bonaparte », toutes les relations de personnes des datasets sont clées « Napoléon Ier ». Chaque
+# entrée est vérifiée contre les clés réelles avant d'être ajoutée ici. Insensible accents/casse.
+_ALIAS_PERSONNE = {
+    "napoleon bonaparte": "Napoléon Ier",
+    "bonaparte premier": "Napoléon Ier",
+    "napoleon 1er": "Napoléon Ier",
+    "napoleon": "Napoléon Ier",     # nu = l'Empereur (garde ordinale dans le motif : « Napoléon III » intact)
+    # MONONYMES CÉLÈBRES : le nom NU matche un HOMONYME obscur des datasets (« Mozart » -> footballeur
+    # brésilien né en 1979 !, « Bach » -> né en 1882). La lecture dominante est incontestable ; cible = clé
+    # réelle vérifiée (ou nom complet absent -> abstention honnête, toujours mieux qu'un homonyme faux).
+    "mozart": "Wolfgang Amadeus Mozart",
+    "beethoven": "Ludwig van Beethoven",
+    # ⚠ la clé « Johann Sebastian Bach » des datasets est le PETIT-FILS homonyme exact (peintre, Berlin 1748) —
+    # le compositeur (Eisenach 1685) est ABSENT de l'extraction. On route vers la forme française (absente) :
+    # abstention honnête, toujours mieux que le petit-fils ou l'acteur de 1882 que matchait le nom nu.
+    "bach": "Jean-Sébastien Bach",
+    "einstein": "Albert Einstein",
+    "picasso": "Pablo Picasso",
+    "shakespeare": "William Shakespeare",
+    "churchill": "Winston Churchill",
+    "darwin": "Charles Darwin",
+    "newton": "Isaac Newton",
+    "gandhi": "Mahatma Gandhi",
+}
+_ACCENTS_CLS = {"a": "aàâä", "e": "eèéêë", "i": "iîï", "o": "oôö", "u": "uùûü", "c": "cç"}
+
+
+def _motif_accent_tolerant(cle: str) -> str:
+    """« napoleon 1er » -> motif regex qui matche aussi « Napoléon 1er » (classes accentuées, espaces souples)."""
+    return "".join(("[%s]" % _ACCENTS_CLS[c]) if c in _ACCENTS_CLS else (r"\s+" if c == " " else re.escape(c))
+                   for c in cle)
+
+
+_ALIAS_PERSONNE_RE = re.compile(
+    r"\b(" + "|".join(sorted((_motif_accent_tolerant(k) for k in _ALIAS_PERSONNE), key=len, reverse=True)) + r")\b"
+    r"(?!\s*(?:I(?:er|II|I|V)?|1er|2|3|premier|deuxi[eè]me|troisi[eè]me)\b)",   # « Napoléon III » reste intact
+    re.I)
+
+
+def _applique_alias_personne(texte: str) -> str:
+    """Remplace un alias de personne par la clé réelle des datasets (accent-insensible). Identité sinon.
+    GARDE : si le nom COMPLET cible est déjà dans le texte (« Wolfgang Amadeus Mozart »), le mononyme qu'il
+    contient (« mozart ») n'est PAS re-remplacé (sinon imbrication monstrueuse)."""
+    tn = _normalise(texte)
+
+    def _rempl(m):
+        cle = re.sub(r"\s+", " ", _normalise(m.group(1)))
+        cible = _ALIAS_PERSONNE.get(cle)
+        if not cible or _normalise(cible) in tn:
+            return m.group(1)
+        return cible
+    return _ALIAS_PERSONNE_RE.sub(_rempl, texte)
 
 
 import threading as _threading
@@ -356,6 +501,18 @@ def _prep_de(m_prep: str) -> str:
 _RECADRE_LEX = (
     (re.compile(r"\ba\s+le\s+plus\s+d['’]\s*habitants\b", re.I), "est le plus peuplé"),
     (re.compile(r"\bont\s+le\s+plus\s+d['’]\s*habitants\b", re.I), "sont les plus peuplés"),
+    # « ce grand pays qu'est l'Australie » -> « l'Australie » (apposition qualifiante : le GN utile est APRÈS)
+    (re.compile(r"\bce(?:tte)?\s+(?:grande?|petite?|beau|belle|fameux|fameuse|c[ée]l[eè]bre|vieux|vieille|"
+                r"bon(?:ne)?|magnifique)?\s*[a-zà-ÿ]+\s+qu['’]est\s+", re.I), ""),
+    # « quelle pourrait bien être la capitale… » -> « quelle est la capitale… » (modal de politesse)
+    (re.compile(r"\b(quel(?:le)?s?)\s+pourrai(?:t|ent)\s+(?:bien\s+)?[êe]tre\b", re.I), r"\1 est"),
+    # « qui a (bien) pu écrire X » -> « qui a écrit X » (infinitif modal -> participe, verbes créateurs fermés)
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+[ée]crire\b", re.I), "a écrit"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+composer\b", re.I), "a composé"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+peindre\b", re.I), "a peint"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+r[ée]aliser\b", re.I), "a réalisé"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+sculpter\b", re.I), "a sculpté"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+inventer\b", re.I), "a inventé"),
     # « l'auteur du roman intitulé 1984 » -> « l'auteur de 1984 » (le type-mot + « intitulé » n'est pas la clé)
     (re.compile(r"\b(?:du|de\s+la|de\s+l['’])\s*(?:roman|livre|film|tableau|morceau|chanson|op[ée]ra|"
                 r"oeuvre|œuvre)\s+intitulée?\s+", re.I), "de "),
@@ -367,6 +524,30 @@ _RECADRE_LEX = (
 )
 
 _RECADRE_REGLES = (
+    # « en quelle année Christophe Colomb a-t-il découvert l'Amérique ? » -> « quand a eu lieu la découverte
+    # de Y ». Le sujet est retiré SANS être endossé : la réponse nomme l'ÉVÉNEMENT résolu (« Découverte et
+    # exploration de l'Amérique : 1492 »), elle ne confirme pas qui a découvert.
+    (re.compile(r"^\s*(?:en\s+quelle\s+ann[ée]+e?|quand)\s+(?:est[- ]ce\s+que\s+)?.+?\s+"
+                r"a(?:[\s-]*t[\s-]*(?:il|elle))?\s+d[ée]couvert\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quand a eu lieu la découverte de %s ?" % m.group(1)),
+    # « combien de gens vivent en France ? » -> « quelle est la population de X » (préambules déjà dévoilés
+    # en amont ; .*? tolère un reste d'enrobage). habitent/vivent, en/au/aux/à.
+    (re.compile(r".*?\bcombien\s+de\s+(?:gens|personnes|habitants)\s+(?:vivent|habitent)(?:[- ]ils)?\s+"
+                r"(?:en|au|aux|a|à)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la population de %s ?" % m.group(1)),
+    # « quel bruit/son fait le cheval ? » -> « quel est le cri de X » (cri_animal : hennissement…)
+    (re.compile(r"^\s*quel\s+(?:bruit|son)\s+fait\s+(?:le\s+|la\s+|l['’]\s*|un\s+|une\s+)?(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quel est le cri du %s ?" % m.group(1)),
+    # « combien mesure le mont Blanc ? » -> « quelle est la hauteur de X » (rejoué sans perte : si la hauteur
+    # ne donne rien, l'original continue son chemin).
+    (re.compile(r"^\s*combien\s+mesure\s+(?:le\s+|la\s+|l['’]\s*)?(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la hauteur de %s ?" % m.group(1)),
+    # « quelle langue parle-t-on à Tokyo / au Japon ? » -> « quelle est la langue de X » (le pont ville->pays
+    # ou le lookup pays répond ensuite). Locatif à/au/aux/en couvert.
+    # SINGULIER uniquement : « quelLES langUES parle-t-on au Japon ? » (pluriel) veut la LISTE -> laissée
+    # au listage inverse existant, pas réécrite.
+    (re.compile(r"^\s*quelle\s+langue\s+parle[\s-]*t[\s-]*on\s+(?:a|à|au|aux|en)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la langue de %s ?" % m.group(1)),
     # clivées redoublées : « qui c'est qui a écrit X » / « c'est qui qui a écrit X » -> « qui a écrit X »
     (re.compile(r"^\s*(?:qui\s+c['’] ?est\s+qui|c['’] ?est\s+qui\s+qui)\s+(.+)$", re.I), lambda m: "qui " + m.group(1)),
     # « c'est qui X ? » -> « qui est X ? » ; « X, c'est qui (déjà) ? » -> « qui est X ? »
@@ -535,6 +716,55 @@ def _decoupe_relation(expr: str):
     return None
 
 
+_DONT_RE = re.compile(
+    r"^(?:le\s+|la\s+|l['’]\s*)?([a-zà-ÿ]{3,})\s+dont\s+(?:la\s+|le\s+|l['’]\s*)([a-zà-ÿ]{3,})\s+est\s+(.+)$", re.I)
+_OU_TROUVE_RE = re.compile(
+    r"^(?:le\s+|la\s+|l['’]\s*)?(pays|ville|continent)\s+(?:o[uù]\s+(?:se\s+(?:trouve|situe)|est(?:\s+situ[ée]+)?)|"
+    r"qui\s+abrite|abritant)\s+(.+)$", re.I)
+
+
+def _resout_relatif(expr: str):
+    """Feuille RELATIVE de _resout_noeud : « pays dont la capitale est Tokyo » -> (Japon, [étape]) par lecture
+    INVERSE (match UNIQUE exigé — FAUX=0) ; « pays où se trouve la tour Eiffel » -> France par les relations de
+    localisation (monument -> ville -> pays si besoin, chaque saut montré). None sinon."""
+    m = _DONT_RE.match(expr.strip())
+    if m:
+        rel2, val = _normalise(m.group(2)), _normalise(_strip_article(m.group(3).strip(" ?.!\"'«»")))
+        if rel2 in _attr_heads() and val:
+            candidates = [r for r in _relations() if r == rel2 or r.startswith(rel2 + "_")]
+            for rel in candidates:
+                cell = _charge_reverse(rel).get(val) if _charge_reverse(rel) else None
+                if cell and len(cell[1]) == 1:                       # UNIQUE, sinon ambigu -> on n'affirme pas
+                    ent = cell[1][0]
+                    return _strip_article(ent), ["%s dont %s est %s = %s" % (m.group(1), rel2, cell[0], ent)]
+        return None
+    m = _OU_TROUVE_RE.match(expr.strip())
+    if m:
+        typ, ent = _normalise(m.group(1)), _strip_article(m.group(2).strip(" ?.!\"'«»"))
+        ne = _normalise(ent)
+        if not ne:
+            return None
+        if typ == "ville":
+            cell = _lookup_cell("ville_monument", ent)
+            if cell:
+                return _strip_article(cell[1]), ["%s est à %s" % (cell[0], cell[1])]
+            return None
+        rels = _LOC_PAYS_REL if typ == "pays" else _LOC_CONT_REL
+        for rel in rels:
+            cell = _charge_direct(rel).get(ne) if rel != "pays_ville" else _charge_direct(rel).get(ne)
+            if cell:
+                return _strip_article(cell[1]), ["%s est dans : %s" % (cell[0], cell[1])]
+        if typ == "pays":                                            # monument -> ville -> pays (2 sauts montrés)
+            cv = _lookup_cell("ville_monument", ent)
+            if cv:
+                cp = _charge_direct("pays_ville").get(_normalise(cv[1]))
+                if cp:
+                    return _strip_article(cp[1]), ["%s est à %s" % (cv[0], cv[1]),
+                                                   "%s est %s" % (cp[0], _locatif_pays(cp[1]))]
+        return None
+    return None
+
+
 def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
     """Résout une expression nominale en (entité_ou_valeur, [étapes_de_dérivation]). Récursif sur « REL de SUBEXPR ».
     Base : superlatif (« le plus haut sommet de France ») ou entité littérale. FAUX=0 : maillon vérifié ou (None, None)."""
@@ -546,6 +776,13 @@ def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
         rel, reste = dec
         sous_val, sous_steps = _resout_noeud(reste, ia, verifie, prof + 1)   # résout le RESTE en une entité vérifiée
         if sous_val is not None:
+            # PONT ville->pays AVANT le lookup direct pour un attribut PAYS-CONSTANT d'une VILLE connue :
+            # « langue de Tokyo » en direct matche la langue d'une ŒUVRE homonyme (« Tokyo », film -> français,
+            # FAUX réel trouvé au test) — quand la ville est dans pays_ville, le sens géographique prime.
+            pont = _pont_ville_pays(ia, verifie, rel, sous_val)
+            if pont is not None:
+                v, pas = pont
+                return v, (sous_steps or []) + pas
             v = _val_verifiee(ia, verifie, "%s de %s" % (rel, sous_val), rel_head=rel, entite=sous_val)
             if v is not None:
                 return v, (sous_steps or []) + ["%s de %s = %s" % (rel, sous_val, v)]
@@ -553,6 +790,12 @@ def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
         if v is not None:
             return v, ["%s de %s = %s" % (rel, reste, v)]
         return None, None
+    # base : PROPOSITION RELATIVE résolue en entité — « le pays DONT LA CAPITALE EST Tokyo » -> Japon (lecture
+    # inverse, match UNIQUE exigé : FAUX=0) ; « le pays OÙ SE TROUVE la tour Eiffel » -> France (relations de
+    # localisation, monument -> ville -> pays si besoin, chaîne montrée).
+    rel_leaf = _resout_relatif(expr)
+    if rel_leaf:
+        return rel_leaf
     # base : feuille superlative -> entité. D'abord l'ARGMAX borné (« le pays le plus peuplé d'Afrique » -> Nigeria,
     # comparaison de faits réels), sinon la relation superlative explicite du moteur, sinon entité littérale.
     arg = _superlatif_argmax(expr)
@@ -565,6 +808,28 @@ def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
     if sup:
         return _strip_article(str(sup)), ["%s = %s" % (expr, sup)]
     return _strip_article(expr), []
+
+
+# Attributs CONSTANTS à l'échelle d'un pays : les demander sur une VILLE se répond via le pays (monnaie de
+# Tokyo = monnaie du Japon). La POPULATION n'y est PAS (population de Tokyo ≠ population du Japon). Liste
+# FERMÉE — n'y ajouter que des attributs vrais pour TOUT point du pays.
+_REL_PAYS_CONST = frozenset(("monnaie", "langue", "continent", "hymne", "devise nationale"))
+
+
+def _pont_ville_pays(ia, verifie, rel: str, ville) -> tuple | None:
+    """PONT ville -> pays pour un attribut pays-constant : (valeur, [étapes]) ou None. FAUX=0 : le pays vient
+    de pays_ville (extraction vérifiée SANS nom multi-pays — audit 2026-07-06 : 9998 villes, 0 homonyme) et la
+    valeur du fait pays est elle-même vérifiée ; la traversée est MONTRÉE (« Tokyo est au Japon »)."""
+    if _normalise(rel) not in _REL_PAYS_CONST:
+        return None
+    cell = _charge_direct("pays_ville").get(_normalise(str(ville)))
+    if not cell:
+        return None
+    ville_aff, pays = cell
+    v = _val_verifiee(ia, verifie, "%s de %s" % (rel, pays), rel_head=rel, entite=pays)
+    if v is None:
+        return None
+    return v, ["%s est %s" % (ville_aff, _locatif_pays(pays)), "%s de %s = %s" % (rel, pays, v)]
 
 
 def _compose_relations_n(question: str):
@@ -580,6 +845,64 @@ def _compose_relations_n(question: str):
     val, steps = _resout_noeud(q, ia, verifie, 0)
     if val is not None and steps and len(steps) >= 2:
         return "%s  (en composant : %s)" % (val, ", puis ".join(steps))
+    # ABSTENTION à CHAÎNE PARTIELLE : l'interne résout (« capitale de la France » = Paris, VÉRIFIÉ) mais le
+    # maillon EXTERNE manque (« population de Paris » absent de population_ville — trou d'extraction Wikidata).
+    # Dire précisément QUEL maillon manque vaut mieux que le générique « rien n'ancre capitale de la France »
+    # (factuellement trompeur : l'interne s'ancre très bien). Préfixe structure -> statut HORS conservé.
+    dec = _decoupe_relation(q)
+    if dec:
+        rel, reste = dec
+        sous_val, sous_steps = _resout_noeud(reste, ia, verifie, 1)
+        if sous_val is not None and sous_steps:
+            return ("%s : j'ai composé %s — mais je n'ai pas de fait vérifié « %s de %s » dans mes données. "
+                    "Plutôt que d'inventer, je m'abstiens sur ce dernier maillon."
+                    % (_MSG_STRUCTURE_PREFIXE, ", puis ".join(sous_steps), rel, sous_val))
+    return None
+
+
+_ENV_INTERNE_RE = re.compile(
+    r"(?:la\s+|le\s+|les\s+|l['’]\s*)?([a-zà-ÿ]{3,})\s+"
+    r"(?:de\s+la\s+|de\s+l['’]\s*|du\s+|des\s+|d['’]\s*|de\s+)(.+?)\s*[?.!]*\s*$", re.I)
+# Préfixe d'ENVELOPPE « réelle » : la question pose une AUTRE question autour du GN composé (« sur quel
+# continent se trouve… », « où est né… », « quand est mort… », « qui a écrit… »). Un simple « quelle est la
+# capitale de la France » n'en est PAS une (le lookup direct doit la servir).
+_ENV_PREFIXE_RE = re.compile(
+    r"\b(?:sur|dans|en|a|à)\s+quel(?:le)?s?\s+[a-zà-ÿ]|\b(?:ou|où|quand|qui|comment|combien)\b", re.I)
+# GN interne RELATIF en fin de question : « … le pays dont la capitale est Tokyo ? », « … le pays où se
+# trouve la tour Eiffel ? » — résolu par la feuille _resout_relatif.
+_ENV_RELATIF_RE = re.compile(
+    r"((?:le\s+|la\s+|l['’]\s*)?[a-zà-ÿ]{3,}\s+(?:dont\s+(?:la\s+|le\s+|l['’]\s*)[a-zà-ÿ]{3,}\s+est\s+.+?|"
+    r"(?:o[uù]\s+(?:se\s+(?:trouve|situe)|est(?:\s+situ[ée]+)?)|qui\s+abrite)\s+.+?))\s*[?.!]*\s*$", re.I)
+
+
+def _compose_enveloppe(memoire, conv_id, texte: str, pleine: bool):
+    """(2b-env) Voir le commentaire du câblage. Résout le GN composé FINAL de la question (« capitale du
+    Japon » -> Tokyo, maillon vérifié), substitue, rejoue le pipeline. La substitution et la dérivation du
+    rejeu sont toutes deux montrées."""
+    interne = reste_interne = None
+    m = _ENV_RELATIF_RE.search(texte)                # « … le pays dont la capitale est Tokyo » / « où se trouve … »
+    if m:
+        interne = reste_interne = m.group(1)
+    else:
+        m = _ENV_INTERNE_RE.search(texte)
+        if not m or _normalise(m.group(1)) not in _attr_heads():
+            return None
+        interne, reste_interne = "%s de %s" % (m.group(1), m.group(2)), m.group(2)
+    ia, verifie = _charge_ia()
+    if not ia:
+        return None
+    val, steps = _resout_noeud(interne, ia, verifie, 0)
+    if val is None or not steps:                 # steps vides = feuille littérale, rien de VÉRIFIÉ -> on s'abstient
+        return None
+    aff = str(val)
+    if _normalise(aff) == _normalise(reste_interne.strip()):
+        return None
+    nouveau = (texte[:m.start()].strip() + " " + aff + " ?").strip()
+    if _normalise(nouveau) == _normalise(texte):
+        return None
+    rep = _rejoue(memoire, conv_id, nouveau, pleine)
+    if rep and _utile(rep) and not rep.startswith((_MSG_STRUCTURE_PREFIXE, _MSG_STRUCTURE_COURT_PREFIXE)):
+        return "%s  (en composant d'abord : %s)" % (rep, ", puis ".join(steps))
     return None
 
 
@@ -1007,6 +1330,28 @@ def _relations_date() -> list:
     return _DATE_RELS_CACHE
 
 
+def _variantes_elision(nom: str) -> list:
+    """Variantes d'ÉLISION d'un nom d'événement : les clés réelles des datasets élident devant voyelle/h
+    (« bataille d'Hastings ») là où la question dit « de Hastings » — et la guérison/normalisation perd
+    l'apostrophe (« bataille d hastings »). Sans ces variantes, le lookup STREAMING (texte brut) rate la clé
+    et la question file vers la cascade lourde (qui répondait « Battle », la VILLE du lieu de la bataille)."""
+    regles = (
+        (r"\bde\s+([aeiouyhàâäéèêëîïôöùûü])", r"d'\1"),        # de Hastings -> d'Hastings
+        (r"\bd\s+([aeiouyhàâäéèêëîïôöùûü])", r"d'\1"),         # d hastings -> d'hastings (apostrophe perdue)
+        (r"\bl\s+([aeiouyhàâäéèêëîïôöùûü])", r"l'\1"),         # l amerique -> l'amerique
+        (r"\bd['’]\s*(?=[A-ZÀ-Ü])", "de "),                     # d'Hastings -> de Hastings
+        # libellé Wikidata composé : « découverte de l'Amérique » est stocké « découverte ET EXPLORATION de … »
+        (r"^d[ée]couverte\s+de\s+", "découverte et exploration de "),
+    )
+    v = [nom]
+    for pat, rempl in regles:                                   # application CUMULATIVE : les règles se composent
+        for base in list(v):
+            n = re.sub(pat, rempl, base, flags=re.I)
+            if n not in v:
+                v.append(n)
+    return v[:8]                                                # borne dure (coût d'un miss = 1 scan par variante)
+
+
 def _annee_de(entite: str):
     """Année associée à un événement/entité, cherchée dans les relations de dates (1re trouvée). (annee:int, affiché)
     ou (None, None). RAM-sûr : via _lookup_cell -> les gros fichiers de dates (annee_naissance_personne 150 Mo,
@@ -1027,11 +1372,12 @@ def _annee_de(entite: str):
                     if a is not None:
                         return int(a), cell[0]
     for rel in _relations_date():
-        cell = _lookup_cell(rel, entite)
-        if cell:
-            a = _nombre(cell[1])
-            if a is not None:
-                return int(a), cell[0]
+        for var in _variantes_elision(entite):
+            cell = _lookup_cell(rel, var)
+            if cell:
+                a = _nombre(cell[1])
+                if a is not None:
+                    return int(a), cell[0]
     return None, None
 
 
@@ -1093,10 +1439,41 @@ _DATE_EVT_RE = re.compile(
     r"|de\s+quand\s+date\s+)(.+?)\s*\??\s*$", re.I)
 
 
+# VERBE -> RELATION de date : « est TOMBÉ le mur de Berlin » = annee_dissolution (1989), « a été CONSTRUIT »
+# = annee_construction_edifice (1961). Sans ce routage, _annee_de rend la PREMIÈRE date trouvée (l'ordre des
+# relations déciderait entre 1961 et 1989 — un coup de dés, pas un fait).
+_DATE_VERBE_RE = re.compile(
+    r"^\s*(?:quand|en\s+quelle\s+ann[ée]+e?)\s+(?:est\s+(tomb[ée]|chut[ée])|a\s+(?:[ée]t[ée]\s+)?"
+    r"(construite?|[ée]rig[ée]e?|b[âa]tie?|d[ée]truite?|d[ée]molie?|dissoute?))\s+"
+    r"(?:le\s+|la\s+|les\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
+_DATE_VERBE_RELS = {"tomb": ("annee_dissolution",), "chut": ("annee_dissolution",),
+                    "detruit": ("annee_dissolution", "annee_demolition"), "demoli": ("annee_demolition",),
+                    "dissou": ("annee_dissolution",),
+                    "construit": ("annee_construction_edifice",), "erig": ("annee_construction_edifice",),
+                    "bati": ("annee_construction_edifice",)}
+
+
 def _cap_date_evenement(texte: str):
     """DATE d'un événement : « quand a eu lieu la bataille de Marignan ? » -> « 1515 ». « quand a commencé la
     guerre de Cent Ans ? » -> année de début ; « quand s'est terminée … ? » -> année de fin. FAUX=0 : année
-    vérifiée ou None ; av. J.-C. géré."""
+    vérifiée ou None ; av. J.-C. géré. Verbes SPÉCIFIQUES routés vers LEUR relation (« est tombé le mur de
+    Berlin » -> annee_dissolution 1989, jamais l'année de construction 1961)."""
+    mv = _DATE_VERBE_RE.match(texte.strip())
+    if mv:
+        verbe = _normalise(mv.group(1) or mv.group(2) or "")
+        ent = mv.group(3).strip()
+        rels = next((r for pref, r in _DATE_VERBE_RELS.items() if verbe.startswith(pref)), None)
+        if rels and len(ent) >= 3:
+            for rel in rels:
+                for var in _variantes_elision(ent):
+                    cell = _lookup_cell(rel, var)
+                    if cell:
+                        a = _nombre(cell[1])
+                        if a is not None:
+                            lib = {"annee_dissolution": "est tombé en", "annee_demolition": "a été démoli en",
+                                   "annee_construction_edifice": "a été construit en"}.get(rel, ":")
+                            return "%s %s %d." % (cell[0][:1].upper() + cell[0][1:], lib, int(a))
+        return None
     m = _DATE_EVT_RE.match(texte.strip())
     if not m:
         return None
@@ -1127,9 +1504,11 @@ def _fem_evt(nom: str) -> bool:
 # TEMPOREL N-ÉVÉNEMENTS : « quel est le plus ancien entre Marignan, Verdun et Waterloo ? ». Argmin/argmax sur les
 # DATES d'une liste explicite (≥3). Le 2-événements reste géré par _cap_temporel. FAUX=0 : dates vérifiées.
 _TEMPON_RE = re.compile(
-    r"^\s*(?:quel|qu[e'’]?\s*est[- ]ce\s+qui|lequel|laquelle|qui)\b[^?]*?"
-    r"(plus\s+ancien\w*|plus\s+r[ée]cent\w*|plus\s+vieux|plus\s+vieille|premier|premi[èe]re|le\s+plus\s+t[ôo]t|"
-    r"le\s+plus\s+tard|dernier|derni[èe]re)\b[^?]*?"
+    # préfixe interrogatif OPTIONNEL : « LE PLUS ANCIEN entre X, Y et Z ? » (forme courte) marche aussi —
+    # sinon la question filait au multi-questions qui découpait l'énumération sur les virgules (bruit).
+    r"^\s*(?:(?:quel|qu[e'’]?\s*est[- ]ce\s+qui|lequel|laquelle|qui)\b[^?]*?)?"
+    r"(?:le\s+|la\s+)?(plus\s+ancien\w*|plus\s+r[ée]cent\w*|plus\s+vieux|plus\s+vieille|premier|premi[èe]re|"
+    r"le\s+plus\s+t[ôo]t|le\s+plus\s+tard|dernier|derni[èe]re)\b[^?]*?"
     r"(?:entre|parmi|de)\s+(.+?)\s*\??\s*$", re.I)
 
 
@@ -1529,21 +1908,50 @@ def _cap_dimension(texte: str):
         if nu:                                           # typé : la relation du TYPE d'abord (précise, non ambiguë)
             for rel in _relations():
                 if rel.split("_")[0] == d and any(t in rel for t in type_rels):
-                    cell = _lookup_cell(rel, nu)
+                    cell = _lookup_cell(rel, ent) or _lookup_cell(rel, nu)   # « mont Blanc » ENTIER d'abord
                     if cell and cell[1] not in (None, ""):
                         val = cell[1]
                         break
         if val is None or str(val).strip() == "":
-            val = _lookup_direct(d, ent)                 # forme complète (unicité exigée across la famille)
+            fam = _lookup_famille(d, ent)                # forme complète, VALEURS de toute la famille
+            if nu:                                       # entité GÉO typée (« mont/lac/île X ») : jamais servie
+                fam = [c for c in fam if not any(          # par un TABLEAU homonyme (« Mont Blanc », 0,559 m !)
+                    tk in _RELS_OEUVRE_ART or tk in ("sculpture", "statue") for tk in c[0].split("_")[1:])]
+            uniq = {str(c[2]) for c in fam}
+            if len(uniq) == 1:
+                val = fam[0][2]
+            elif len(uniq) > 1:
+                # HOMONYMES à valeurs DIFFÉRENTES (« La Joconde » : 2,48 m ET 0,534 m — deux œuvres distinctes,
+                # aucune n'étant forcément celle demandée) : on le DIT — sinon la cascade lourde en pioche une
+                # au hasard (FAUX réel trouvé cette nuit sur « hauteur de la tour Eiffel » -> tableau 0,632 m).
+                vs = " ; ".join(sorted(uniq)[:4])
+                return ("Plusieurs « %s » homonymes ont des valeurs de %s DIFFÉRENTES dans mes données (%s) — "
+                        "je ne devine pas lequel tu veux, précise (« le tableau X », « le monument X »)."
+                        % (ent, dim, vs))
         if val is not None and str(val).strip():
             break
     if val is None or str(val).strip() == "":
+        if _est_monument(ent):
+            # MONUMENT connu sans dimension stockée : couper court ICI — la cascade lourde servirait la
+            # dimension d'une ŒUVRE D'ART homonyme (« La Tour Eiffel », tableau de 0,632 m, pour le monument !)
+            return ("Je connais bien %s (monument), mais je n'ai pas sa %s vérifiée dans mes données — et je ne "
+                    "confonds pas avec les œuvres d'art homonymes qui en ont une. Je m'abstiens." % (ent, dim))
+        if _est_tableau_connu(ent) and dim in ("hauteur", "largeur", "longueur", "taille"):
+            # PEINTURE connue sans dimension picturale stockée : même court-circuit (la sculpture homonyme
+            # « La Joconde » de 2,48 m n'est pas le tableau de Vinci)
+            return ("Je connais bien %s (tableau), mais ses dimensions ne sont pas dans mes données — et je ne "
+                    "confonds pas avec une sculpture homonyme. Je m'abstiens." % ent)
         return None
     n = _nombre(val)
     unite = _DIMENSION_UNITE.get(dim, "")
     de_ent = ("du %s" % ent) if ent.lower().startswith(("mont ", "pic ", "lac ")) else ("de %s" % ent)
     if n is not None and unite:
         aff = format(int(n), ",d").replace(",", " ") if float(n).is_integer() else "%g" % n
+        # LISIBILITÉ : une longueur stockée en mètres ≥ 10 km s'affiche d'abord en km (« 6 300 km ») — la
+        # valeur brute reste montrée (re-vérifiable). Conversion exacte /1000, aucun arrondi caché.
+        if unite == "m" and float(n) >= 10000 and (float(n) / 1000).is_integer():
+            return "%s %s : %s km (%s m)." % (dim.capitalize(), de_ent,
+                                              format(int(n // 1000), ",d").replace(",", " "), aff)
         return "%s %s : %s %s." % (dim.capitalize(), de_ent, aff, unite)
     return "%s %s : %s." % (dim.capitalize(), de_ent, val)
 
@@ -1631,8 +2039,9 @@ def _cap_difference(texte: str):
 # une LISTE explicite (≥3 entités) — le 2-entités reste géré par _cap_comparaison. FAUX=0 : compare des valeurs
 # vérifiées, montre la valeur gagnante et le nombre comparé ; abstention si < 2 entités résolvent.
 _COMPARN_RE = re.compile(
-    r"^\s*(?:qui|quel|quelle|lequel|laquelle)\s+est\s+(?:le\s+|la\s+)?(plus|moins)\s+(\w+)\s+"
-    r"(?:entre|parmi|de)\s+(.+?)\s*\??\s*$", re.I)
+    # préfixe interrogatif OPTIONNEL (« le plus peuplé entre la France, l'Allemagne et l'Italie ? » court)
+    r"^\s*(?:(?:qui|quel|quelle|lequel|laquelle)\s+est\s+)?(?:le\s+|la\s+)?(plus|moins)\s+(\w+)\s+"
+    r"(?:entre|parmi)\s+(.+?)\s*\??\s*$", re.I)
 
 
 def _cap_comparaison_nway(texte: str):
@@ -1693,6 +2102,20 @@ def _cap_comparaison(texte: str):
         direction, adj, x, y = m.group(1), m.group(2), m.group(3), m.group(4)
     adjn = _normalise(adj)
     x, y = _strip_article(x.strip()), _strip_article(y.strip())
+    # FEUILLE SUPERLATIVE d'un côté de la comparaison : « le pays le plus peuplé d'Europe est-il plus peuplé
+    # que le Japon ? » -> résout d'abord l'argmax borné (fait réel), compare ensuite. La résolution est MONTRÉE.
+    notes = []
+    if re.search(r"\b(?:le|la)\s+plus\b|\b(?:le|la)\s+moins\b", x, re.I):
+        arg = _superlatif_argmax(x)
+        if arg:
+            notes.append(arg[1])
+            x = _strip_article(str(arg[0]))
+    if re.search(r"\b(?:le|la)\s+plus\b|\b(?:le|la)\s+moins\b", y, re.I):
+        arg = _superlatif_argmax(y)
+        if arg:
+            notes.append(arg[1])
+            y = _strip_article(str(arg[0]))
+    suffixe_notes = ("  (en résolvant d'abord : %s)" % " ; ".join(notes)) if notes else ""
     trouve = _attr_pour_paire(adjn, x, y)            # relation où les DEUX entités ont une valeur (pays OU sommets/fleuves)
     if not trouve:
         return None
@@ -1710,14 +2133,15 @@ def _cap_comparaison(texte: str):
     except Exception:
         nx, ny = ax, ay
     if direction == "aussi" or vx == vy:
-        return "%s (%s) et %s (%s) sont %ségaux sur ce critère." % (nx, fx, ny, fy, "quasi " if vx != vy else "")
+        return "%s (%s) et %s (%s) sont %ségaux sur ce critère.%s" % (nx, fx, ny, fy,
+                                                                      "quasi " if vx != vy else "", suffixe_notes)
     grand_sens = adjn not in _ADJ_PETIT          # « grand/peuplé » : valeur haute = « plus » ; « petit » : inverse
     if direction == "moins":
         grand_sens = not grand_sens
     passe = (vx > vy) == grand_sens
     if passe:
-        return "Oui — %s (%s) est %s %s que %s (%s)." % (nx, fx, direction, adj, ny, fy)
-    return "Non — c'est l'inverse : %s (%s) est %s %s que %s (%s)." % (ny, fy, direction, adj, nx, fx)
+        return "Oui — %s (%s) est %s %s que %s (%s).%s" % (nx, fx, direction, adj, ny, fy, suffixe_notes)
+    return "Non — c'est l'inverse : %s (%s) est %s %s que %s (%s).%s" % (ny, fy, direction, adj, nx, fx, suffixe_notes)
 
 
 _FILTRE_RE = re.compile(
@@ -2002,6 +2426,18 @@ def _cap_comptage(texte: str):
         return None
     typn = _normalise(typ)
     sing = typn[:-1] if (typn.endswith(("s", "x")) and len(typn) > 4) else typn
+    # MONDE ENTIER : « combien de pays dans le monde ? » -> somme des pays rattachés à un continent (ensemble
+    # complet — même base que le superlatif mondial). HONNÊTE : le décompte « officiel » dépend de la définition
+    # (193 membres ONU) -> on dit ce qu'on compte.
+    if sing == "pays" and (not zone or _normalise(zone) in ("monde", "le monde", "terre", "la terre", "planete")):
+        par_cont = _charge_reverse("continent")
+        if par_cont:
+            tous = set()
+            for _cn, (_aff, ents) in par_cont.items():
+                tous.update(_normalise(e) for e in ents)
+            if tous:
+                return ("%d pays rattachés à un continent dans mes données (compté exactement — le décompte "
+                        "« officiel » dépend de la définition : l'ONU reconnaît 193 États membres)." % len(tous))
     if zone:                                     # membres d'un type dans une zone (pays en Afrique…)
         for rel_app in _APPARTENANCE.get(sing, _APPARTENANCE.get(typn, ())):
             hit = _charge_reverse(rel_app).get(_normalise(zone))
@@ -2014,6 +2450,12 @@ def _cap_comptage(texte: str):
                     return "%d %s en %s (compté exactement dans mes données)." % (len(hit[1]), typ_pl, zone)
                 return "Je connais %d %s en %s dans mes données (liste non exhaustive)." % (len(hit[1]), typ_pl, zone)
         return None
+    # CONTINENTS : le compte est une CONVENTION (5 à 7 selon les modèles) — le graphe is-a rangerait aussi
+    # paléo/super-continents. Réponse curée honnête plutôt que « 27 termes classés continent ».
+    if sing == "continent" and not zone:
+        return ("7 selon le modèle courant (Afrique, Amérique du Nord, Amérique du Sud, Antarctique, Asie, "
+                "Europe, Océanie) — mais c'est une CONVENTION : d'autres modèles en comptent 5 ou 6 "
+                "(Amériques réunies, Eurasie).")
     try:                                         # sans zone : nombre d'hyponymes réels (« combien de félins »)
         import est_un as _E
         hy = _E.hyponymes(sing, limite=100000)
@@ -2141,7 +2583,9 @@ def _suggere_type(question: str) -> tuple[str, str] | None:
     « longue/riche/peint/chine » seraient « corrigés » à tort. Renvoie (mot_saisi, forme_proposée) ou None."""
     cibles = {t for t in _vocab_types() if len(t) >= 5}
     for tok in set(_normalise(question).split()):
-        if len(tok) < 5 or tok in cibles or _mot_reel(tok):
+        # _mot_defini en RENFORT de _mot_reel : « espace » manquait au lexique POS mais est DÉFINI dans
+        # definition_nom -> le did-you-mean proposait « espece » sur un mot parfaitement français (bug réel).
+        if len(tok) < 5 or tok in cibles or _mot_reel(tok) or _mot_defini(tok):
             continue
         meilleure = None
         for cible in cibles:
@@ -2190,7 +2634,13 @@ def _liste_inverse(question: str) -> str | None:
     seq = qn.split()
 
     def _base(w):
-        return _ALIAS.get(w) or (_ALIAS.get(w[:-1]) if w.endswith(("s", "x")) else None) or w
+        # alias d'abord, puis SINGULARISATION nue : « langues » -> « langue » (sans ça, un pluriel hors-alias
+        # ne retombait jamais sur son token de relation -> « quelles langues parle-t-on au Japon » ne listait pas)
+        if w in _ALIAS:
+            return _ALIAS[w]
+        if w.endswith(("s", "x")):
+            return _ALIAS.get(w[:-1]) or w[:-1]
+        return w
 
     def _liste_plausible(rel) -> bool:
         rtoks = [t for t in rel.split("_") if len(t) >= 3 and t not in _GENERIQUES]
@@ -2220,6 +2670,11 @@ def _liste_inverse(question: str) -> str | None:
         #                                `plus_grande_lune` ET sa valeur -> on ne liste pas « terre »).
         best = None       # la VALEUR (la plus longue) nommée dans la question -> ancre la requête
         for vn, (disp, ents) in par_val.items():
+            # GARDE ANCRE≠TYPE : la valeur d'ancrage ne peut pas être le mot-TYPE interrogé lui-même, ni son
+            # alias (« quel FLEUVE traverse Paris » : « fleuve » est une VALEUR de type_riviere ET l'alias du
+            # token « riviere » -> sans ce garde, on listait les 147 rivières de type fleuve en ignorant Paris).
+            if _base(vn) in rtoks:
+                continue
             if (len(vn) >= 3 and vn not in rtoks and re.search(r"\b" + re.escape(vn) + r"\b", qn)
                     and (best is None or len(vn) > len(best[0]))):
                 best = (vn, disp, ents)
@@ -2432,7 +2887,44 @@ def _resout_partie(p: str):
 # « × ». Sans cette intention, « x » reste un simple séparateur (« relais 4 x 100 m ») et n'est PAS converti (#82).
 _CALC_INTENT = re.compile(
     r"\b(?:combien\s+(?:font|fait|valent|vaut|ca\s+fait)|calcul\w*|resou\w+|multipli\w+|"
-    r"additionn\w+|soustrai\w+|divis\w+)\b|=\s*\??\s*$|\begale?\s*\??\s*$")
+    r"additionn\w+|soustrai\w+|divis\w+)\b|=\s*\??\s*$|\begale?\s*\??\s*$"
+    r"|\d\s*(?:%|pour\s*cents?)\s+de\s+\d|\bau\s+carr[ée]\b|\bau\s+cube\b")
+
+
+_CONV_UNITE = {"celsius": "C", "c": "C", "°c": "C", "fahrenheit": "F", "f": "F", "°f": "F",
+               "kilometre": "KM", "kilometres": "KM", "km": "KM", "mile": "MI", "miles": "MI",
+               "kilogramme": "KG", "kilogrammes": "KG", "kilo": "KG", "kilos": "KG", "kg": "KG",
+               "livre": "LB", "livres": "LB", "lb": "LB", "lbs": "LB"}
+_CONV_RE = re.compile(
+    r"(-?\d+(?:[.,]\d+)?)\s*(?:degr[ée]s?\s+)?°?\s*([a-zà-ÿ°]+)\s+en\s+(?:degr[ée]s?\s+)?°?\s*([a-zà-ÿ°]+)", re.I)
+
+
+def _cap_conversion(texte: str):
+    """CONVERSION D'UNITÉS FERMÉE et EXACTE : « convertis 100 degrés Celsius en Fahrenheit » -> 212 °F, formule
+    montrée. Couples définis par des constantes LÉGALES exactes (°C↔°F ; 1 mile = 1,609344 km ; 1 lb =
+    0,45359237 kg) — aucun arrondi caché : 4 décimales affichées au plus, formule re-vérifiable. Hors de la
+    liste fermée -> None (jamais d'approximation inventée)."""
+    m = _CONV_RE.search(texte)
+    if not m:
+        return None
+    u1, u2 = _CONV_UNITE.get(_normalise(m.group(2))), _CONV_UNITE.get(_normalise(m.group(3)))
+    if not u1 or not u2 or u1 == u2:
+        return None
+    v = float(m.group(1).replace(",", "."))
+    aff = lambda x: ("%.4f" % x).rstrip("0").rstrip(".").replace(".", ",")
+    if (u1, u2) == ("C", "F"):
+        return "%s °C = %s °F  (formule exacte : (%s × 9/5) + 32)." % (aff(v), aff(v * 9 / 5 + 32), aff(v))
+    if (u1, u2) == ("F", "C"):
+        return "%s °F = %s °C  (formule exacte : (%s − 32) × 5/9)." % (aff(v), aff((v - 32) * 5 / 9), aff(v))
+    if (u1, u2) == ("KM", "MI"):
+        return "%s km = %s mile(s)  (1 mile = 1,609344 km, définition légale)." % (aff(v), aff(v / 1.609344))
+    if (u1, u2) == ("MI", "KM"):
+        return "%s mile(s) = %s km  (1 mile = 1,609344 km, définition légale)." % (aff(v), aff(v * 1.609344))
+    if (u1, u2) == ("KG", "LB"):
+        return "%s kg = %s livre(s)  (1 livre = 0,45359237 kg, définition légale)." % (aff(v), aff(v / 0.45359237))
+    if (u1, u2) == ("LB", "KG"):
+        return "%s livre(s) = %s kg  (1 livre = 0,45359237 kg, définition légale)." % (aff(v), aff(v * 0.45359237))
+    return None
 
 
 def _reponse_calcul(texte: str) -> str | None:
@@ -2449,8 +2941,21 @@ def _reponse_calcul(texte: str) -> str | None:
                 "douze": "12", "treize": "13", "quatorze": "14", "quinze": "15", "seize": "16", "vingt": "20",
                 "trente": "30", "quarante": "40", "cinquante": "50", "soixante": "60", "cent": "100",
                 "mille": "1000"}
+    # POURCENTAGE en PREMIER : « 20 % de 150 » / « 20 pour cent de 150 » -> 20 * 150 / 100 (= 30, précédence
+    # gauche-droite). AVANT _MOTS_NB, qui transformerait « pour cent » en « pour 100 » et casserait le motif.
+    texte = re.sub(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour\s*cents?)\s+de\s+(\d+(?:[.,]\d+)?)",
+                   r"\1 * \2 / 100", texte, flags=re.I)
     texte = re.sub(r"\b(" + "|".join(_MOTS_NB) + r")\b",
                    lambda mm: _MOTS_NB[mm.group(1).lower()], texte, flags=re.I)
+    # OPÉRATEURS EN TOUTES LETTRES avec la VRAIE précédence (« 3 plus 4 fois 5 » -> 3 + 4 * 5 = 23, pas 35) :
+    # _juge_arith évalue en précédence réelle. FERMÉ, uniquement sous intention de calcul (gate ci-dessus).
+    texte = re.sub(r"(?<=\d)\s+divis[ée]s?\s+par\s+(?=\d)", " / ", texte, flags=re.I)
+    texte = re.sub(r"(?<=\d)\s+(?:multipli[ée]s?\s+par|fois)\s+(?=\d)", " * ", texte, flags=re.I)
+    texte = re.sub(r"(?<=\d)\s+plus\s+(?=\d)", " + ", texte, flags=re.I)
+    texte = re.sub(r"(?<=\d)\s+moins\s+(?=\d)", " - ", texte, flags=re.I)
+    # PUISSANCES fermées : « 7 au carré » -> 7 * 7 ; « 3 au cube » -> 3 * 3 * 3.
+    texte = re.sub(r"(\d+(?:[.,]\d+)?)\s+au\s+carr[ée]\b", r"\1 * \1", texte, flags=re.I)
+    texte = re.sub(r"(\d+(?:[.,]\d+)?)\s+au\s+cube\b", r"\1 * \1 * \1", texte, flags=re.I)
     # « x »/« × » collés ou espacés entre deux nombres -> « * » ESPACÉ (resout_arithmetique exige des espaces).
     p_math = re.sub(r"(?<=\d)\s*[x×]\s*(?=\d)", " * ", texte)
     try:
@@ -2466,6 +2971,13 @@ def _reponse_calcul(texte: str) -> str | None:
         v = _CB._juge_arith(_CB._norm(p_math))
         if v is not None:
             return str(int(v) if isinstance(v, float) and v.is_integer() else v)
+        # repli : EXTRAIRE la sous-expression mathématique pure (« QUEL EST 20 * 150 / 100 ? » — le préfixe
+        # interrogatif fait échouer les évaluateurs). On n'évalue que la course chiffres/opérateurs, fermée.
+        mm = re.search(r"-?\d[\d\s+*/,.×-]*\d|\d", p_math)
+        if mm and re.search(r"[+*/×-]", mm.group(0)):
+            v = _CB._juge_arith(_CB._norm(mm.group(0).strip()))
+            if v is not None:
+                return str(int(v) if isinstance(v, float) and v.is_integer() else v)
     except Exception:
         pass
     return None
@@ -3092,6 +3604,29 @@ def _entite_ancree(entite: str):
     """(nom_affiché, contexte|None) si l'entité est la clé d'un fait vérifié d'une relation-sonde, sinon None.
     `contexte` = sa DÉFINITION vérifiée (tronquée) quand c'est la sonde qui a ancré — dire QUI est l'entité
     explique souvent POURQUOI le fait demandé n'existe pas (« Wakanda : royaume FICTIF » -> pas de capitale)."""
+    # SEED CURÉ PRIORITAIRE : pour un mot seedé (« jupiter » -> planète), la présentation dit le genre CURÉ —
+    # la définition Wiktionnaire brute peut être du bruit circulaire (« jupiter : exoplanète de taille
+    # similaire à jupiter » !) qui ferait dire une absurdité dans l'abstention.
+    try:
+        import est_un as _E
+        genre_seed = _E._seed().get(_normalise(_strip_article(entite)))
+        if genre_seed:
+            return (entite, _E._AFFICHE.get(genre_seed, genre_seed))   # forme accentuée (« planète »)
+    except Exception:
+        pass
+    # VILLE CONNUE : se présenter comme telle (« berlin — ville d'Allemagne ») plutôt que par la définition
+    # Wiktionnaire du nom commun homonyme (« berlin : paquet de fil arrêté par un nœud » !).
+    try:
+        cv = _charge_direct("pays_ville").get(_normalise(_strip_article(entite)))
+        if cv:
+            try:
+                import realisation_fr as _RF
+                de_p = _RF.de_pays(cv[1])
+            except Exception:
+                de_p = "de %s" % cv[1]
+            return (cv[0], "ville %s" % de_p)
+    except Exception:
+        pass
     for rel in _ANCRAGE_SONDE:
         try:
             cell = _lookup_cell(rel, entite)
@@ -3420,7 +3955,8 @@ def _cap_grammaire(texte: str):
     """« nature (grammaticale) du mot X » -> classe + genre ; « analyse grammaticale : phrase » -> analyse.
     Léger (grammaire_fr, pas de lecteur). Abstention honnête si la nature est incertaine (jamais devinée)."""
     m = re.match(r"^\s*(?:quelle?\s+est\s+la\s+)?(?:nature|classe|cat[ée]gorie)\s+(?:grammaticale?\s+)?"
-                 r"(?:du\s+mot\s+|de\s+l['’]|de\s+la\s+|de\s+|d['’])\s*['\"«]?\s*([\wà-ÿ][\wà-ÿ'\-]*)\s*['\"»]?\s*\??\s*$",
+                 r"(?:du\s+(?:mot|vocable|terme)\s+|de\s+l['’]|de\s+la\s+|de\s+|d['’])\s*['\"«]?\s*"
+                 r"([\wà-ÿ][\wà-ÿ'\-]*)\s*['\"»]?\s*\??\s*$",
                  texte, re.I)
     if m:
         try:
@@ -3632,11 +4168,29 @@ def _cap_point_commun_nway(texte: str):
     return "Leur point commun : %s (%s en sont une sorte)%s." % (_E.affiche(commun), quantif, note)
 
 
+# FRUITS BOTANIQUES à usage CULINAIRE de légume : la question-piège classique (« la tomate est-elle un fruit
+# ou un légume ? ») n'a pas UNE réponse — les deux points de vue sont vrais et on les DIT (jamais de « non » sec
+# sur une vérité botanique). Liste fermée incontestable.
+_DUAL_FRUIT_LEGUME = frozenset("tomate avocat concombre courgette aubergine poivron potiron citrouille".split())
+_DUAL_FL_RE = re.compile(
+    r"^\s*(?:est[- ]ce\s+que\s+)?(?:la\s+|le\s+|l['’ ]\s*|une?\s+)?([a-zà-ÿ]{3,})\s+"
+    r"(?:est|c['’]est)[- ]?(?:elle|il)?\s+(?:bien\s+)?(?:un|une)\s+(fruit|l[ée]gume)", re.I)
+
+
 def _cap_ontologie(texte: str):
     """RAISONNEMENT is-a conversationnel (« un chat est-il un mammifère ? » -> « Oui, … »; « qu'ont en commun le
     chat et le requin ? » -> « animal »), depuis la source SAINE `est_un` (classe_* curées + genre des définitions).
     FAUX=0 : « Oui » seulement si dérivable ; jamais de « Non » affirmé (monde ouvert) — on énonce plutôt le vrai
     genre connu. Le réseau de foule (JeuxDeMots) N'est PAS utilisé ici (trop bruité pour une assertion)."""
+    md = _DUAL_FL_RE.match(texte.strip())
+    if md and _normalise(md.group(1)) in _DUAL_FRUIT_LEGUME:
+        n = md.group(1).lower()
+        fem = n in ("tomate", "courgette", "aubergine", "citrouille")
+        gn = ("l'" + n) if n[0] in "aàâeéèêiîouh" else (("la " if fem else "le ") + n)
+        pron = "on la classe" if fem else "on le classe"
+        return ("Les deux points de vue sont vrais pour %s : BOTANIQUEMENT c'est un FRUIT (issu de la fleur, "
+                "il porte les graines) ; en CUISINE %s parmi les LÉGUMES. La réponse dépend de la convention — "
+                "je ne tranche pas l'une contre l'autre." % (gn, pron))
     try:
         import est_un as _E
     except Exception:
@@ -3690,8 +4244,10 @@ _DEF_RE = re.compile(
     r"(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|d[ée]finition\s+d[eu'’]\s*(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|d[ée]finis[- ]?(?:moi\s+)?(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    r"|qu['’ ]?entend[- ]on\s+par\s+(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    r"|que\s+signifie\s+(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|qu['’ ]?est[- ]ce\s+qu['’e]?\s*)"
-    r"([\wà-ÿ][\wà-ÿ'’\- ]*?)\s*\??\s*$", re.I)
+    r"[«\"']?\s*([\wà-ÿ][\wà-ÿ'’\- ]*?)\s*[»\"']?\s*\??\s*$", re.I)   # mot éventuellement CITÉ (« sérendipité »)
 _DEF_RELS_CACHE = None
 
 
@@ -3789,7 +4345,7 @@ def _cap_definition(texte: str):
     m = _DEF_RE.match(texte)
     if not m:
         return None
-    ent = _strip_article(m.group(1).strip())
+    ent = _strip_article(m.group(1).strip().strip("«»\"' ").strip())   # « sérendipité » cité entre guillemets
     if not ent or len(ent) < 2 or len(ent.split()) > 5:
         return None
     try:
@@ -3869,12 +4425,95 @@ _DERIV_CONT_VILLE_RE = re.compile(
 
 
 _ORBITE_RE = re.compile(
-    r"(?:est[- ]ce\s+qu[e'’]?\s*)?(.+?)\s+(?:orbite|gravite|tourne)\b[^?]*?"
-    r"(?:autour\s+)?(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])?([\wà-ÿ'’\- ]+?)\s*\??\s*$", re.I)
+    r"(?:est[- ]ce\s+qu[e'’]?\s*)?(.+?)\s+(?:orbite|gravite|tourne)(?:nt)?"
+    r"(?:[\s-]*t[\s-]+(?:ils?|elles?|on))?\b[^?]*?"
+    r"(?:autour\s+)?(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])?([\wà-ÿ'’\-][\wà-ÿ'’\- ]*?)\s*\??\s*$", re.I)
 _SYSTEME_RE = re.compile(
     r"(?:est[- ]ce\s+qu[e'’]?\s*)?(.+?)\s+(?:fait[- ](?:il|elle)\s+partie|fait\s+partie|est[- ](?:il|elle)|appartient|"
     r"est\s+dans)"
     r"[^?]*?syst[eè]me\s+(?:(solaire)|(?:de\s+(?:la\s+|l['’])?|d['’])?([\wà-ÿ'’\- ]+?))\s*\??\s*$", re.I)
+
+
+_CONTRAIRE_RE = re.compile(
+    r"(?:quel(?:le)?\s+est\s+)?(?:le\s+|l['’]\s*)?(?:contraire|oppos[ée]|antonyme)\s+"
+    r"(?:de\s+|du\s+|d['’]\s*)(?:la\s+|le\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_contraire(texte: str):
+    """« quel est le contraire de grand ? » -> petit. Réseau lexical JeuxDeMots embarqué (synonymes.contraires,
+    fonction qui existait sans être câblée). Le contraire CANONIQUE est celui dont la relation est RÉCIPROQUE
+    (petit∈contraires(grand) ET grand∈contraires(petit)) ; les autres sont listés en complément. FAUX=0 :
+    relation lexicale sourcée, mot inconnu -> None."""
+    m = _CONTRAIRE_RE.search(texte.strip())
+    if not m:
+        return None
+    mot = _strip_article(m.group(1).strip().strip(" ?.!\"'«»"))
+    if not mot or len(mot) < 2 or " " in mot:
+        return None
+    try:
+        import synonymes as _SYN
+        if not _SYN.disponible():
+            return None
+        cs = _SYN.contraires(mot)
+        if not cs:
+            return None
+        if len(cs) == 1:
+            return "Le contraire de « %s » : %s — réseau lexical JeuxDeMots." % (mot, cs[0])
+        return ("Contraires de « %s » d'après mon réseau lexical (JeuxDeMots) : %s."
+                % (mot, ", ".join(cs[:6])))
+    except Exception:
+        return None
+
+
+_PROTONS_RE = re.compile(
+    r"combien\s+(?:de\s+|d['’]?\s*)?(protons?|[ée]lectrons?)\s+(?:a|poss[eè]de|contient|compte)\s+"
+    r"(?:le\s+|la\s+|l['’]?\s*)?(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_protons(texte: str):
+    """« combien de protons a l'hydrogène ? » -> 1 : le nombre de protons EST le numéro atomique Z (définition),
+    stocké dans numero_atomique (118 éléments confirmés). Électrons : égaux aux protons pour l'atome NEUTRE
+    (précisé dans la réponse). FAUX=0 : valeur relue, hors éléments -> None."""
+    m = _PROTONS_RE.search(texte)
+    if not m:
+        return None
+    cell = _charge_direct("numero_atomique").get(_normalise(_strip_article(m.group(2).strip())))
+    if not cell:
+        return None
+    aff, z = cell
+    plur = "s" if str(z).strip() not in ("1", "0") else ""
+    if _normalise(m.group(1)).startswith("proton"):
+        return "%s : %s proton%s — le numéro atomique Z (c'est sa définition)." % (aff[:1].upper() + aff[1:], z, plur)
+    return ("%s : %s électron%s pour l'atome NEUTRE (autant que de protons, Z = %s)."
+            % (aff[:1].upper() + aff[1:], z, plur, z))
+
+
+_LUNES_RE = re.compile(
+    r"combien\s+(?:de\s+|d['’]\s*)?(?:lunes?|satellites?(?:\s+naturels?)?)\s+"
+    r"(?:a|poss[eè]de|compte|orbitent\s+autour\s+de)\s+(?:la\s+plan[eè]te\s+)?(?:la\s+|le\s+|l['’]\s*)?"
+    r"(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_lunes(texte: str):
+    """« combien de lunes a Mars ? » -> « 2 dans mes données : Phobos, Déimos ». Compte RÉEL des corps dont le
+    parent orbital stocké (corps_parent_astre) est la cible. HONNÊTE : « dans mes données » — la table n'est pas
+    exhaustive pour les géantes (Jupiter en a 95 connues). FAUX=0 : entités réelles listées, cible inconnue -> None."""
+    m = _LUNES_RE.search(texte)
+    if not m:
+        return None
+    cible = _normalise(_strip_article(m.group(1).strip()))
+    if not cible or len(cible) < 3:
+        return None
+    par = _charge_direct("corps_parent_astre")
+    if not par:
+        return None
+    lunes = sorted(aff for aff, parent in par.values() if _normalise(parent) == cible)
+    connu = cible in par or any(_normalise(p) == cible for _a, p in par.values())
+    if not connu:
+        return None
+    if not lunes:
+        return "Aucune dans mes données (ce qui ne prouve pas qu'il n'y en a pas — ma table orbitale est partielle)."
+    return "%d dans mes données : %s. (Ma table orbitale n'est pas exhaustive.)" % (len(lunes), ", ".join(lunes))
 
 
 def _cap_orbite(texte: str):
@@ -3897,49 +4536,71 @@ def _cap_orbite(texte: str):
     if not ns or not cible or len(ns) < 2:
         return None
     par = _charge_direct("corps_parent_astre")         # {corps_norm : (corps_affiché, corps_parent)}
-    if not par or ns not in par:
-        return None
-    # marche la chaîne parentale : sujet -> parent -> parent... jusqu'à la cible (dérivation transitive)
-    chaine = [par[ns][0]]
-    vus, cur = {ns}, ns
-    atteint = False
-    for _ in range(20):
-        cell = par.get(cur)
-        if not cell:
-            break
-        parent = cell[1]
-        chaine.append(parent)
-        if _normalise(parent) == cible:
-            atteint = True
-            break
-        np = _normalise(parent)
-        if np in vus:
-            break
-        vus.add(np)
-        cur = np
-    if not atteint or len(chaine) < 2:
-        return None
-    # DÉCOUVERTE : on valide la transitivité (cohérente) et on rejette la symétrie (contre-exemple), pour l'afficher
-    note = ""
-    try:
-        import induction_horn as _IH
-        paires = {(_normalise(k), _normalise(v[1])) for k, v in par.items()}
-        neg = {(y, x) for (x, y) in paires}
-        ev_t = _IH.evalue(_IH.TRANSITIVITE, paires, neg)
-        ev_s = _IH.evalue(_IH.SYMETRIE, paires, neg)
-        if ev_t["consistante"] and not ev_s["consistante"]:
-            cx = sorted(ev_s["viole"])[0]
-            aff = lambda z: (par[z][0] if z in par else z.capitalize())
-            note = (" (règle que j'ai découverte : « orbiter » est transitive — cohérente avec les %d faits — "
-                    "mais PAS symétrique, sinon %s orbiterait %s)" % (len(paires), aff(cx[0]), aff(cx[1])))
-    except Exception:
-        pass
-    if len(chaine) == 2:                                # relation directe, pas une dérivation
+    if not par:
         return None
     _ASTRO_ART = {"soleil": "le Soleil", "terre": "la Terre", "lune": "la Lune"}
-    chaine = [_ASTRO_ART.get(_normalise(c), c) for c in chaine]
-    derivation = "%s orbite %s" % (chaine[0], ", qui orbite ".join(chaine[1:]))
-    return "Oui — je le déduis : %s%s." % (derivation, note)
+
+    def _chaine_vers(depart, but):
+        # marche la chaîne parentale depart -> parent -> ... ; liste affichée si but atteint, sinon None
+        if depart not in par:
+            return None
+        chaine = [par[depart][0]]
+        vus, cur = {depart}, depart
+        for _ in range(20):
+            cell = par.get(cur)
+            if not cell:
+                return None
+            parent = cell[1]
+            chaine.append(parent)
+            np = _normalise(parent)
+            if np == but:
+                return chaine
+            if np in vus:
+                return None
+            vus.add(np)
+            cur = np
+        return None
+
+    def _aff(chaine):
+        return [_ASTRO_ART.get(_normalise(c), c) for c in chaine]
+
+    chaine = _chaine_vers(ns, cible)
+    if chaine and len(chaine) == 2:                     # relation DIRECTE : fait stocké, servi tel quel
+        a, b = _aff(chaine)
+        return "Oui — c'est un fait vérifié dans mes données : %s orbite %s." % (a, b)
+    if chaine:
+        # DÉCOUVERTE : on valide la transitivité (cohérente) et on rejette la symétrie, pour l'afficher
+        note = ""
+        try:
+            import induction_horn as _IH
+            paires = {(_normalise(k), _normalise(v[1])) for k, v in par.items()}
+            neg = {(y, x) for (x, y) in paires}
+            ev_t = _IH.evalue(_IH.TRANSITIVITE, paires, neg)
+            ev_s = _IH.evalue(_IH.SYMETRIE, paires, neg)
+            if ev_t["consistante"] and not ev_s["consistante"]:
+                cx = sorted(ev_s["viole"])[0]
+                aff = lambda z: (par[z][0] if z in par else z.capitalize())
+                note = (" (règle que j'ai découverte : « orbiter » est transitive — cohérente avec les %d faits — "
+                        "mais PAS symétrique, sinon %s orbiterait %s)" % (len(paires), aff(cx[0]), aff(cx[1])))
+        except Exception:
+            pass
+        chaine = _aff(chaine)
+        derivation = "%s orbite %s" % (chaine[0], ", qui orbite ".join(chaine[1:]))
+        return "Oui — je le déduis : %s%s." % (derivation, note)
+    # sens INVERSE vérifié (« le Soleil tourne-t-il autour de la Terre ? ») : « orbiter » n'est pas
+    # symétrique (règle induite) -> Non sûr, la chaîne réelle montrée
+    inverse = _chaine_vers(cible, ns)
+    if inverse:
+        inv = _aff(inverse)
+        return "Non — c'est l'inverse : %s orbite %s." % (inv[0], ", qui orbite ".join(inv[1:]))
+    # sujet astro connu, cible astro connue, mais AUCUNE chaîne : montrer le fait réel plutôt que
+    # laisser la question filer vers la cascade lourde (risque de hors-sujet type FAUX)
+    if ns in par and (cible in par or any(_normalise(v[1]) == cible for v in par.values())):
+        a = _ASTRO_ART.get(ns, par[ns][0])
+        b = _ASTRO_ART.get(_normalise(par[ns][1]), par[ns][1])
+        return ("D'après mes données, %s orbite %s — je n'ai aucun fait vérifié reliant %s à « %s »."
+                % (a, b, a, cible))
+    return None
 
 
 # ————— TRANSITIVITÉ GÉNÉRALISÉE (au-delà de l'astronomie) : fermetures transitives SÛRES par domaine —————
@@ -4508,6 +5169,14 @@ def _cap_oeuvres_de(texte: str):
     return "%s : %s%s." % (pers[:1].upper() + pers[1:], aff, suite)
 
 
+# TYPE-WORD d'œuvre en tête d'un titre (« le film Pulp Fiction », « le roman 1984 ») : la clé réelle des
+# datasets est le titre NU — le type est jeté avant lookup (liste fermée de médias).
+_TYPE_OEUVRE_RE = re.compile(
+    r"^(?:le\s+film|le\s+livre|le\s+bouquin|le\s+roman|le\s+tableau|la\s+peinture|la\s+toile|la\s+statue|la\s+sculpture|"
+    r"la\s+chanson|la\s+s[ée]rie|le\s+jeu(?:\s+vid[ée]o)?|l['’]\s*album|le\s+morceau|l['’]\s*op[ée]ra|"
+    r"la\s+pi[eè]ce(?:\s+de\s+th[ée][âa]tre)?|le\s+po[eè]me|la\s+bd|la\s+bande\s+dessin[ée]e)\s+", re.I)
+
+
 def _cap_createur(texte: str):
     """CRÉATEUR d'une œuvre : « qui a écrit 1984 ? » -> George Orwell ; « qui a composé le Boléro ? » -> Ravel ;
     « qui a réalisé Titanic ? » -> Cameron. Via _lookup_direct sur la famille du verbe. FAUX=0 : valeur UNIQUE
@@ -4520,11 +5189,23 @@ def _cap_createur(texte: str):
         ent = _strip_article(brut)
         if not ent or len(ent) < 2:
             return None
-        affiche, val = ent, _lookup_direct(head, ent)
-        if (val is None or str(val).strip() == "") and _normalise(brut) != _normalise(ent):
-            val = _lookup_direct(head, brut)             # « la joconde » est la clé réelle de peintre_oeuvre
-            affiche = brut
-        if val is None or str(val).strip() == "":
+        # TYPE-WORD d'œuvre jeté (« le film Pulp Fiction » -> « Pulp Fiction » : la clé réelle n'a pas le type)
+        sans_type = _TYPE_OEUVRE_RE.sub("", brut).strip()
+        affiche = val = None
+        for forme in dict.fromkeys((ent, brut, sans_type, _strip_article(sans_type))):
+            if not forme or len(forme) < 2:
+                continue
+            fam = _lookup_famille(head, forme)           # « la joconde » clé réelle ; variantes d'article gérées
+            vals = list(dict.fromkeys(str(c[2]) for c in fam if str(c[2]).strip()))
+            if len(vals) == 1:
+                affiche, val = (fam[0][1] or forme), vals[0]   # forme STOCKÉE (« La Joconde » -> accord peintE)
+                break
+            if len(vals) >= 2:
+                # HOMONYMIE d'œuvres (« la Neuvième Symphonie » : œuvre de Beethoven ET film dont Kurt Schröder
+                # a composé la musique) : on LISTE les sens vérifiés au lieu d'abstenir en silence — FAUX=0.
+                lignes = "\n".join("· %s (%s)" % (c[2], c[0].replace("_", " ")) for c in fam[:4])
+                return "Plusieurs œuvres homonymes portent ce nom — voici ce que j'ai de vérifié :\n%s" % lignes
+        if val is None:
             return None
         if affiche.lower().startswith("la "):            # accord du participe (« La Joconde a été peintE par »)
             gabarit = gabarit.replace(" par ", "e par ", 1)
@@ -4535,11 +5216,12 @@ def _cap_createur(texte: str):
     if mg:
         brut = mg.group(1).strip().strip(" ?.!\"'«»")
         ent = _strip_article(brut)
+        sans_type = _TYPE_OEUVRE_RE.sub("", brut).strip()
         if ent and len(ent) >= 2:
             trouves = []                                     # (forme, participe, créateur) — TOUS les sens vérifiés
             for head, part in (("auteur", "écrit"), ("peintre", "peint"), ("compositeur", "composé"),
                                ("realisateur", "réalisé"), ("sculpteur", "sculpté")):
-                for forme in dict.fromkeys((brut, ent)):     # forme AVEC article d'abord (clé la plus spécifique)
+                for forme in dict.fromkeys((brut, ent, sans_type, _strip_article(sans_type))):   # article d'abord
                     val = _lookup_direct(head, forme)
                     if val is not None and str(val).strip() and all(v != val for _f, _p, v in trouves):
                         trouves.append((forme, part, val))
@@ -4704,6 +5386,164 @@ def _parse_svo_libre(texte: str, conv_id: str | None = None):
         if rep and not est_fallback(rep):
             return (rep, tete, ent)
     return None
+
+
+# ————— RECORDS GÉOGRAPHIQUES MONDIAUX (couche curée, vérifiée LIVE contre les données quand elles existent) —————
+# Les argmax MONDE sur les tables brutes seraient FAUX : altitude_montagne contient 37 reliefs MARTIENS/vénusiens
+# (Tharsis Tholus 8 930 m > Everest !), longueur_fleuve ne couvre NI le Nil NI l'Amazone, superficie_ile n'a pas
+# le Groenland (audit 2026-07-06). Cette table FERMÉE porte les records incontestables ; quand la donnée existe
+# (Everest, Sahara, planètes) la valeur est RELUE en direct ; les primautés DISPUTÉES (Nil/Amazone) sont dites
+# disputées — jamais tranchées arbitrairement.
+_RECORD_ADJS = r"(haute?s?|grande?s?|long(?:ue)?s?|vastes?|profonde?s?)"
+_RECORD_TYPES = r"(sommet|montagne|fleuve|rivi[eè]re|[îi]le|d[ée]sert|oc[ée]an|lac|plan[eè]te|fosse)"
+_RECORD_MONDE_FIN = r"(?:\s+(?:du\s+monde|au\s+monde|de\s+la\s+plan[eè]te|sur\s+terre|du\s+syst[eè]me\s+solaire))?\s*\??\s*$"
+_RECORD_MONDE_RE = re.compile(              # « le plus haut sommet (du monde) »
+    r"(?:quel(?:le)?\s+(?:est\s+)?)?(?:la\s+|le\s+|l['’]\s*)?plus\s+" + _RECORD_ADJS + r"\s+"
+    + _RECORD_TYPES + _RECORD_MONDE_FIN, re.I)
+_RECORD_MONDE_INV_RE = re.compile(          # « quel sommet est le plus haut (du monde) »
+    r"quel(?:le)?\s+" + _RECORD_TYPES + r"\s+est\s+(?:la\s+|le\s+|l['’]\s*)?plus\s+"
+    + _RECORD_ADJS + _RECORD_MONDE_FIN, re.I)
+_RECORD_MONDE_POST_RE = re.compile(         # « le lac le plus profond (du monde) »
+    r"(?:la\s+|le\s+|l['’]\s*)" + _RECORD_TYPES + r"\s+(?:la\s+|le\s+)?plus\s+"
+    + _RECORD_ADJS + _RECORD_MONDE_FIN, re.I)
+
+
+def _cap_record_monde(texte: str):
+    """RECORDS mondiaux fermés (« le plus haut sommet du monde ? » -> Everest). Voir bloc de commentaire
+    ci-dessus : données relues quand présentes, disputes dites disputées, trous de table signalés."""
+    t = texte.strip()
+    m = _RECORD_MONDE_RE.search(t)
+    if m:
+        adj, typ = _normalise(m.group(1)), _normalise(m.group(2))
+    else:
+        m = _RECORD_MONDE_INV_RE.search(t) or _RECORD_MONDE_POST_RE.search(t)
+        if not m:
+            return None
+        typ, adj = _normalise(m.group(1)), _normalise(m.group(2))
+    adj = adj.rstrip("es") if adj not in ("vaste", "vastes") else "vaste"   # haute->haut, longue->longu, long->long
+    if typ in ("sommet", "montagne") and adj in ("haut", "grand"):
+        cell = _lookup_cell("altitude_montagne", "Everest")
+        alt = (" — %s m d'altitude, fait vérifié dans mes données" % cell[1]) if cell else ""
+        return "L'Everest%s. C'est le plus haut sommet du monde." % alt
+    if typ in ("fleuve", "riviere") and adj in ("long", "longu", "grand"):
+        return ("Le Nil (≈ 6 650 km) ou l'Amazone (6 400 à 7 000 km selon le tracé retenu) : la primauté est "
+                "scientifiquement DISPUTÉE — je ne tranche pas. (Ma table des longueurs ne couvre aucun des "
+                "deux ; le plus long qu'elle contienne est le Yangzi Jiang, 6 300 km.)")
+    if typ == "ile" and adj in ("grand", "vaste"):
+        return ("Le Groenland (2 166 086 km²) — l'Australie, plus vaste, est comptée comme un continent. "
+                "(Fait de référence curé : ma table superficie_ile ne contient pas le Groenland.)")
+    if typ == "desert" and adj in ("grand", "vaste"):
+        cell = _lookup_cell("superficie_desert", "Sahara")
+        sah = (" (%s km², fait vérifié dans mes données)" % cell[1]) if cell else ""
+        return ("L'Antarctique (désert polaire, ≈ 14 millions de km²) si l'on prend la définition scientifique ; "
+                "le plus grand désert CHAUD est le Sahara%s." % sah)
+    if typ == "ocean" and adj in ("grand", "vaste", "profond"):
+        if adj == "profond":
+            return "Le Pacifique — il contient la fosse des Mariannes (≈ 10 935 m, le point le plus profond des océans)."
+        return "Le Pacifique (≈ 168,7 millions de km², la moitié de l'océan mondial)."
+    if typ == "fosse" and adj == "profond":
+        return "La fosse des Mariannes (≈ 10 935 m au point Challenger Deep)."
+    if typ == "lac":
+        if adj == "profond":
+            return "Le lac Baïkal (1 642 m) — aussi le plus grand par le VOLUME d'eau douce."
+        return ("La mer Caspienne (≈ 371 000 km²) si on la compte comme un lac ; sinon le lac Supérieur "
+                "(≈ 82 100 km²).")
+    if typ == "planete" and adj in ("grand", "vaste"):
+        par = _charge_direct("diametre_moyen_planete")
+        if par:
+            best = max(par.items(), key=lambda kv: _nombre(kv[1][1]) or 0)
+            return ("Jupiter — %s km de diamètre moyen (comparé sur les %d planètes de mes données)."
+                    % (best[1][1], len(par))) if _normalise(best[0]) == "jupiter" else None
+        return None
+    return None
+
+
+_FV_TYPES = r"(?:fleuve|rivi[eè]re|cours\s+d[e'’]\s*eau)"
+_FV_QUEL_RE = re.compile(
+    r"quel(?:le)?\s+" + _FV_TYPES +
+    r"\s+(?:traverse|arrose|baigne|passe\s+(?:a|à|par|dans)|coule\s+(?:a|à|dans|par))\s+"
+    r"(?:la\s+ville\s+d[e'’]\s*)?(.+?)\s*\??\s*$", re.I)
+_FV_SUR_RE = re.compile(
+    r"sur\s+quel(?:le)?\s+" + _FV_TYPES +
+    r"\s+(?:se\s+trouve|se\s+situe|est\s+situ[ée]+|est)\s+(?:la\s+ville\s+d[e'’]\s*)?(.+?)\s*\??\s*$", re.I)
+_FV_VILLES_RE = re.compile(
+    r"quelles?\s+villes?\s+(?:est|sont)\s+travers[ée]+e?s?\s+par\s+(.+?)\s*\??\s*$"
+    r"|quelles?\s+villes?\s+(.+?)\s+traverse(?:[\s-]*t[\s-]+(?:il|elle))?\s*\??\s*$", re.I)
+_FV_OUINON_RE = re.compile(
+    r"(?:est[- ]ce\s+que\s+)?(.+?)\s+traverse(?:[\s-]*t[\s-]+(?:il|elle))?\s+"
+    r"(?:la\s+ville\s+d[e'’]\s*)?(.+?)\s*\??\s*$", re.I)
+
+
+def _fv_et(items) -> str:
+    return items[0] if len(items) == 1 else "%s et %s" % (", ".join(items[:-1]), items[-1])
+
+
+def _cap_fleuve_ville(texte: str):
+    """« quel fleuve traverse Paris ? » -> la Seine. Seed CURÉ fleuve↔ville (src/fleuve_ville_seed.jsonl) : les
+    datasets Wikidata n'ont AUCUNE relation ville↔fleuve (l'ancienne réponse était un déversement de 147
+    rivières par _liste_inverse, corrigé par le garde ancre≠type). FAUX=0 : une ville du seed est complète pour
+    ses fleuves MAJEURS ; un fleuve n'est pas exhaustif (« notamment ») ; une paire inconnue n'est jamais niée
+    sèchement (la Bièvre traverse réellement Paris sans être dans le seed)."""
+    import fleuve_ville as _FV
+    t = texte.strip()
+    m = _FV_QUEL_RE.search(t) or _FV_SUR_RE.search(t)
+    if m:
+        cell = _FV.fleuves_de(_strip_article(m.group(1).strip()))
+        if cell:
+            v_aff, fls = cell
+            if len(fls) == 1:
+                return "C'est %s qui traverse %s." % (fls[0], v_aff)
+            return "%s est traversée par %s." % (v_aff, _fv_et(fls))
+        return None                       # ville hors seed -> abstention honnête (pas de liste hors-sujet)
+    m = _FV_VILLES_RE.search(t)
+    if m:
+        cell = _FV.villes_de(_strip_article((m.group(1) or m.group(2) or "").strip()))
+        if cell:
+            f_aff, vils = cell
+            return "%s traverse notamment %s (liste non exhaustive)." % (f_aff[0].upper() + f_aff[1:], _fv_et(vils))
+        return None
+    m = _FV_OUINON_RE.search(t)
+    if m:                                 # double ancrage exigé : fleuve ET ville connus du seed, sinon None
+        fl, ville = _strip_article(m.group(1).strip()), _strip_article(m.group(2).strip())
+        cf, cv = _FV.villes_de(fl), _FV.fleuves_de(ville)
+        if cf and cv:
+            if _FV.traverse(fl, ville):
+                return "Oui — %s traverse %s." % (cf[0], cv[0])
+            return ("D'après mes données, %s est traversée par %s — je n'ai pas de fait reliant %s à %s."
+                    % (cv[0], _fv_et(cv[1]), cf[0], cv[0]))
+    return None
+
+
+_DEVISE_RE = re.compile(
+    r"^\s*(?:quelle\s+est\s+)?(?:la\s+)?devise(\s+nationale)?\s+"
+    r"(?:de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_devise(texte: str):
+    """« la devise de la France ? » est AMBIGU : motto national (« Liberté, Égalité, Fraternité »,
+    devise_pays) OU monnaie (euro). Les DEUX lectures vérifiées sont servies — « devise NATIONALE » explicite
+    -> motto seul. FAUX=0 : motto stocké exigé, sinon None (la voie monnaie existante répond)."""
+    m = _DEVISE_RE.match(texte.strip())
+    if not m:
+        return None
+    ent = _strip_article(m.group(2).strip())
+    cell = _charge_direct("devise_pays").get(_normalise(ent))
+    if not cell:
+        return None
+    aff, motto = cell
+    tete = "La devise nationale de %s : « %s »." % (aff[:1].upper() + aff[1:], motto)
+    if m.group(1):                                    # « devise nationale » demandé explicitement -> motto seul
+        return tete
+    monnaie = None
+    try:
+        ia, verifie = _charge_ia()
+        if ia:
+            monnaie = _val_verifiee(ia, verifie, "monnaie de %s" % ent, rel_head="monnaie", entite=ent)
+    except Exception:
+        monnaie = None
+    if monnaie:
+        return "%s  (Si tu voulais la MONNAIE : %s.)" % (tete, monnaie)
+    return tete
 
 
 def _cap_localisation(texte: str):
@@ -5105,7 +5945,10 @@ _MOTS_OUTILS_PROTEGES = frozenset(
     "et ou ni or car mais donc que qui quoi dont ou si comme quand puisque lorsque parce "
     "ne pas plus moins tres trop peu bien mal tout tous toute toutes rien tres aussi encore deja "
     "avec sans sous sur dans par pour vers chez entre apres avant depuis pendant contre selon malgre "
-    "a la le du des ici la bas oui non peut etre".split())
+    "a la le du des ici la bas oui non peut etre "
+    # adjectifs/interjections ULTRA-courants corrompus en contexte (« BON alors » -> « BONNE alors », bug réel
+    # trouvé la nuit du 6/07 : la phrase guérie ne se dévoilait plus -> court-circuit avant (0dev))
+    "bon bonne bons bonnes alors bref enfin voila voilà grand grande petit petite beau belle vieux vieille".split())
 # NUMÉRAUX : ni noms ni verbes au lexique -> la guérison « corrigeait » « huit » -> « hui » (bug réel). Fermé, sûr.
 _NUMERAUX_PROTEGES = frozenset(
     "zero un une deux trois quatre cinq six sept huit neuf dix onze douze treize quatorze quinze seize "
@@ -5299,6 +6142,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         rep_sms = _rejoue(memoire, conv_id, t_sms, pleine)
         if _utile(rep_sms):
             return rep_sms
+    #   (0alias) ALIAS DE PERSONNES CÉLÈBRES : « Napoléon Bonaparte » -> « Napoléon Ier » (la clé RÉELLE de
+    #       toutes les relations de personnes). Carte FERMÉE d'identités incontestables (même être humain) —
+    #       aucune devinette ; la question réécrite est rejouée par le pipeline complet, repli sans perte.
+    t_alias = _applique_alias_personne(t)
+    if t_alias != t:
+        rep_alias = _rejoue(memoire, conv_id, t_alias, pleine)
+        if _utile(rep_alias):
+            return rep_alias
     #   (0dev) DÉVOILEMENT : « dis-moi qui a écrit 1984 » -> la question NUE est rejouée d'abord (les caps
     #       s'ancrent en ^ et rataient l'enrobage). Si elle ne produit rien de MIEUX que le générique,
     #       l'original continue son chemin normal (zéro perte, aucun fait altéré : on ne retire que du social).
@@ -5336,7 +6187,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_localisation, _cap_deduction, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
@@ -5441,6 +6292,18 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         rep = _compose_relations_n(t)
         if rep:
             return rep
+        #   (1a-env) ENVELOPPE interrogative RÉELLE autour d'un GN composé (« sur quel continent se trouve la
+        #        capitale du Japon ? », « où est né l'auteur de 1984 ? ») — tentée AVANT le lookup lourd, qui
+        #        sinon résout le GN INTERNE et répond « Tokyo »/« George Orwell » (le MAUVAIS type — FAUX réel
+        #        vu sur le .exe). Gardée par _ENV_PREFIXE_RE : la question doit poser une AUTRE question autour
+        #        du GN (un simple « quelle est la capitale de X » reste au lookup direct). Auto-protégée :
+        #        maillon interne VÉRIFIÉ exigé + réponse rejouée utile, sinon None et la cascade continue.
+        if _ENV_PREFIXE_RE.search(t):
+            _pfx_m = _ENV_RELATIF_RE.search(t) or _ENV_INTERNE_RE.search(t)
+            if _pfx_m and _ENV_PREFIXE_RE.search(t[:_pfx_m.start()]):   # l'enveloppe est AVANT le GN interne
+                rep = _compose_enveloppe(memoire, conv_id, t, pleine)
+                if rep:
+                    return rep
         #   (1a-sup) SUPERLATIF par ARGMAX BORNÉ, en question DIRECTE (« le pays le plus peuplé d'Afrique » ->
         #        Nigéria). Le résolveur compositionnel l'atteint déjà comme FEUILLE ; ici on sert la question nue.
         #        SOUND : compare des faits réels sur un ensemble énuméré, jamais une devinette.
@@ -5532,11 +6395,21 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
 
     #   (1·web) RECHERCHE STRUCTURÉE (opt-in réseau IA_WEB=1) : le lecteur n'a rien -> source fiable Wikidata,
     #           réponse VÉRIFIÉE + ATTRIBUÉE. Avant la mémoire pour qu'une demande factuelle sans « ? » y accède.
+    #           GARDE SUBJECTIVITÉ : une question NON BORNÉE (« le plus beau pays du monde ») ne part JAMAIS au
+    #           web — le métamoteur matcherait un homonyme (le FILM « Le Plus Beau Pays du monde ») au lieu du
+    #           cadrage honnête « la réalité ne fixe pas de réponse unique » (rendu par le routeur de bornage).
     if (pleine and os.environ.get("IA_WEB") == "1" and not _negation_bloquante(t)
             and not _ressemble_calcul(t)):        # une opération arithmétique ne se cherche pas sur le web
-        rep = _recherche_structuree(t)
-        if rep:
-            return rep
+        _borne_ok = True
+        try:
+            import classifieur_bornage as _CBn
+            _borne_ok = _CBn.classe(t).statut_ontologique != _CBn.NON_BORNE
+        except Exception:
+            pass
+        if _borne_ok:
+            rep = _recherche_structuree(t)
+            if rep:
+                return rep
     #   (2) MÉMOIRE DE DIALOGUE — seulement si l'utilisateur DEMANDE quelque chose (sinon une affirmation
     #       déclencherait un rappel incongru). On ne retient que de vrais ÉNONCÉS : role 'user', pas le message
     #       courant, et AUCUN tour contenant « ? » (une question — même mal ponctuée « …saoudite? Si… » — n'est
@@ -5602,6 +6475,17 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             if conv_id:
                 _DERNIER_SUJET[conv_id] = _ent
                 _DERNIER_QUESTION[conv_id] = "%s de %s" % (_tete, _ent)
+            return rep
+    #   (2b-env) ENVELOPPE interrogative autour d'un GN composé — « sur quel continent se trouve la capitale du
+    #        Japon ? » : l'enveloppe (« sur quel continent se trouve ») n'est pas une tête nominale, donc la
+    #        composition N-sauts ne la voit pas, et AUCUN étage n'a su répondre (on est juste avant l'abstention
+    #        — le .exe répondait « Tokyo », le MAUVAIS type). On résout le GN interne (« capitale du Japon » ->
+    #        Tokyo, maillon VÉRIFIÉ), on SUBSTITUE et on REJOUE le pipeline complet (« sur quel continent se
+    #        trouve Tokyo ? » -> la déduction existante, avec sa preuve). FAUX=0 : maillon montré + réponse
+    #        rejouée elle-même vérifiée ; _rejoue borne la profondeur.
+    if veut and pleine:
+        rep = _compose_enveloppe(memoire, conv_id, t, pleine)
+        if rep:
             return rep
     #   (2c) ASSISTANT AUTONOME (routeur de bornage) — la cascade factuelle vérifiée ET la mémoire n'ont RIEN :
     #        router par le gardien de bornage (cadrage non-borné honnête / calcul réellement évalué / recherche

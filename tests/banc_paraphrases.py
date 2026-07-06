@@ -148,6 +148,68 @@ CAS += [
     ("franchement je me demande quelle est la monnaie du Japon", "yen"),
 ]
 
+# ————— 8e VAGUE : COMPOSITION PROFONDE (enveloppe interrogative + pont ville→pays + élision) —————
+CAS += [
+    ("sur quel continent se trouve la capitale du Japon ?", "asie"),          # ex-FAUX .exe : répondait « Tokyo »
+    ("où est né l'auteur de 1984 ?", "motihari"),                             # créateur -> lieu de naissance (2 sauts)
+    ("quand est mort le successeur de Louis XIV ?", "1774"),                  # succession -> année de décès
+    ("quelle est la monnaie de la capitale du Japon ?", "yen"),               # capitale -> pont ville→pays -> monnaie
+    ("quelle est la monnaie de Tokyo ?", "yen"),                              # pont ville→pays direct
+    ("sur quel continent se trouve la capitale du pays le plus peuplé du monde ?", "asie"),  # feuille superlative + 3 sauts
+    ("quand a eu lieu la bataille de Hastings ?", "1066"),                    # élision « d'Hastings » (répondait « Battle »)
+    ("quelle est la population de la capitale de la France ?", "je m'abstiens"),  # chaîne partielle honnête (Paris sans population_ville)
+]
+
+# ————— 9e VAGUE : CALCUL étendu (puissances, pourcentages, opérateurs en lettres, conversions exactes) —————
+CAS += [
+    ("combien font 7 au carré ?", "49"),
+    ("combien font 2 au cube ?", "8"),
+    ("quel est 20 pour cent de 150 ?", "30"),
+    ("combien font 15 % de 200 ?", "30"),
+    ("combien font 3 plus 4 fois 5 ?", "23"),               # précédence RÉELLE (pas 35)
+    ("combien font 100 divisé par 4 ?", "25"),
+    ("convertis 100 degrés Celsius en Fahrenheit", "212"),
+    ("convertis 10 km en miles", "6,2137"),
+    ("combien font 80 kg en livres ?", "176,3698"),
+]
+
+# ————— 10e VAGUE : type-words d'œuvre + alias de personnes célèbres —————
+CAS += [
+    ("qui a réalisé le film Pulp Fiction ?", "tarantino"),
+    ("qui a écrit le roman 1984 ?", "orwell"),
+    ("qui a peint le tableau la Joconde ?", "vinci"),
+    ("où est né Napoléon Bonaparte ?", "ajaccio"),           # alias -> clé réelle « Napoléon Ier »
+    ("quand est mort Napoléon Bonaparte ?", "1821"),
+    ("le bouquin 1984, c'est de qui ?", "orwell"),           # type-word familier + recadrage
+    ("quel est le contraire de grand ?", "petit"),           # antonymes JeuxDeMots (fonction câblée)
+    ("le contraire de chaud ?", "froid"),
+    ("quelle est la langue de Tokyo ?", "japonais"),         # ex-FAUX : « français » (langue d'une ŒUVRE homonyme)
+    ("quelle langue parle-t-on à Tokyo ?", "japonais"),      # locatif recadré + pont ville→pays
+    ("quelle langue parle-t-on au Japon ?", "japonais"),
+]
+
+# ————— 11e VAGUE : RELATIVES + appositions + comparaison à feuille superlative —————
+CAS += [
+    ("sur quel continent se trouve le pays dont la capitale est Tokyo ?", "asie"),       # relative inverse
+    ("quelle est la monnaie du pays dont la capitale est Madrid ?", "euro"),
+    ("quelle est la langue du pays où se trouve la tour Eiffel ?", "français"),          # monument→ville→pays (3 sauts)
+    ("le pays le plus peuplé d'Europe est-il plus peuplé que le Japon ?", "oui"),        # feuille superlative comparée
+    ("dis-moi, si tu le sais, quelle pourrait bien être la capitale de ce grand pays qu'est l'Australie", "canberra"),
+    ("j'aimerais beaucoup savoir qui a bien pu écrire ce fameux roman qu'est 1984", "orwell"),
+    ("entre nous, tu saurais pas par hasard combien de gens vivent en France ?", "68"),  # population de la France
+    ("bon alors, cette histoire de capitale du Japon, c'est quoi déjà ?", "tokyo"),      # « bon » protégé de la guérison
+    ("en quelle année Christophe Colomb a-t-il découvert l'Amérique ?", "1492"),         # libellé Wikidata composé
+    ("quelles langues parle-t-on au Japon ?", "37"),         # PLURIEL = liste (singularisation nue dans _base)
+    ("en quelle année est né Mozart ?", "1756"),             # ex-FAUX : footballeur brésilien né en 1979 !
+    ("quand est né Bach ?", "1685"),                         # ex-FAUX : nu -> 1882, « Johann S. Bach » -> petit-fils 1748
+    ("quand est mort Beethoven ?", "1827"),
+    ("où est né Einstein ?", "ulm"),
+    ("où est né Napoléon ?", "ajaccio"),                     # nu = l'Empereur (Napoléon III intact)
+    ("combien mesure le mont Blanc ?", "4808"),              # ex-FAUX : tableau « Mont Blanc » 0,559 m !
+    ("combien de pays dans le monde ?", "249"),
+    ("qui a composé la Neuvième Symphonie ?", "beethoven"),  # homonymie LISTÉE (film K. Schröder aussi)
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [

@@ -1,5 +1,303 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Classiques curés : la tomate (fruit ET légume), 7 continents, villes bien présentées
+
+- **« La tomate est-elle un fruit ou un légume ? »** → *les deux points de vue sont vrais : botaniquement un
+  FRUIT, en cuisine un LÉGUME — je ne tranche pas* (liste fermée : tomate, avocat, concombre, courgette,
+  aubergine, poivron, potiron, citrouille ; l'ancien « la tomate est un légume — je ne le rattache pas à
+  fruit » niait une vérité botanique, et « l'avocat » répondait… « un droit », le métier homonyme !).
+- **« Combien de continents ? »** → *7 selon le modèle courant (liste), mais c'est une CONVENTION (5 ou 6
+  selon les modèles)* — au lieu de « 27 termes que je classe comme continent ».
+- **Présentation d'entité** : « berlin — *paquet de fil arrêté par un nœud* » (nom commun Wiktionnaire !) →
+  « Berlin — ville de l'Allemagne » (pays_ville prime sur la définition bruitée dans l'abstention).
+- Banc raisonnement **158/158** (4 cas), paraphrases 151/151, suite 18/18, challenge 16/16.
+
+## 2026-07-06 — « Combien mesure le mont Blanc ? » : 4 808 m, plus jamais le tableau de 56 cm
+
+- **FAUX trouvé à la chasse** : « combien mesure le mont Blanc ? » → *0,559 m* (un TABLEAU « Mont Blanc » !).
+  Double correctif : le lookup TYPÉ essaie l'entité ENTIÈRE (« mont Blanc » dans altitude_sommet → 4 808,06 m)
+  avant le nom nu ; et une entité GÉO à type-word (mont/pic/lac/île) n'est JAMAIS servie par une œuvre d'art
+  homonyme dans le repli famille. + recadrage « combien mesure X » → hauteur.
+- **« Napoléon » nu = l'Empereur** : alias vers « Napoléon Ier » avec GARDE ordinale (« Napoléon III » reste
+  intact) → « où est né Napoléon ? » → *Ajaccio*, « quel âge avait Napoléon à sa mort ? » → *52 ans*.
+- **« Combien de pays dans le monde ? »** → *249 rattachés à un continent (compté exactement — le décompte
+  « officiel » dépend de la définition : 193 membres ONU)* — honnête sur la convention.
+- Trous d'ingestion notés : Première/Seconde Guerre mondiale absentes de annee_debut_guerre ; capitale de
+  l'Afrique du Sud absente (3 capitales) ; « qui était Napoléon III » sans faits-personne.
+- Banc paraphrases **151/151** (4 cas), raisonnement 154/154, suite 18/18, challenge 16/16.
+
+## 2026-07-06 — Créateur : l'homonymie d'œuvres est LISTÉE (« la Neuvième Symphonie »)
+
+- « qui a composé la Neuvième Symphonie ? » abstenait en silence : l'œuvre de **Beethoven** coexiste avec un
+  FILM homonyme (musique de Kurt Schröder) et l'unicité stricte tuait le lookup. Le branch spécifique de
+  `_cap_createur` LISTE désormais les sens vérifiés (comme le générique) ; l'affichage reprend la clé stockée
+  (« La joconde a été peintE par… », accord conservé). Banc raisonnement **154/154**.
+
+## 2026-07-06 — FAUX mononymes célèbres : « Mozart est né en 1979 » (le footballeur brésilien !) corrigé
+
+- Le nom NU d'un géant matche un HOMONYME obscur des datasets : « Mozart » → footballeur né en 1979,
+  « Bach » → 1882 — et même « Johann Sebastian Bach » (clé stockée) est le PETIT-FILS peintre (Berlin 1748),
+  le compositeur vivant sous la clé FRANÇAISE « Jean-Sébastien Bach » (1685).
+- Carte d'alias (0alias) étendue aux MONONYMES incontestables, chaque cible VÉRIFIÉE contre les clés réelles :
+  Mozart→Wolfgang Amadeus Mozart (*1756* ✓), Beethoven (*mort 1827* ✓), Bach→Jean-Sébastien Bach (*1685* ✓),
+  Einstein (*Ulm* ✓), Picasso (fiche ✓) ; Shakespeare/Churchill/Darwin/Newton/Gandhi → nom complet (absent de
+  l'extraction → abstention honnête, toujours mieux qu'un homonyme faux). Garde anti-imbrication (le mononyme
+  n'est pas re-remplacé si le nom complet est déjà dans la phrase).
+- Banc paraphrases **147/147** (4 cas), raisonnement 153/153, suite 18/18, challenge 16/16.
+
+## 2026-07-06 — FAUX d'homonymes d'œuvres éradiqués : la tour Eiffel n'est plus un tableau de 63 cm
+
+- **Trouvés par mes propres sondes** (la carte de couverture les masquait) : « hauteur de la tour Eiffel ? »
+  → *0,632 m* (le TABLEAU « La Tour Eiffel », pas le monument !) ; « hauteur de la Joconde ? » → *2,48 m*
+  (une SCULPTURE homonyme, pas le tableau de Vinci) ; et la variante d'article ramenait le hameau « La
+  France » (3,4 km²) pour « superficie de la France ».
+- **Type-check homonyme dans les dimensions** (`_lookup_famille` + gardes `_cap_dimension`) :
+  - une entité MONUMENT (ville_monument) n'est jamais servie par une relation d'ŒUVRE D'ART (liste fermée :
+    peinture/estampe/aquarelle/dessin/gravure/photo/litho/affiche) ni de sculpture ;
+  - une PEINTURE connue (peintre_oeuvre) n'est jamais servie par une SCULPTURE homonyme ;
+  - le match EXACT (sans article) PRIME sur les variantes d'article (le pays France avant le hameau) ;
+  - valeurs AMBIGUËS across homonymes → l'ambiguïté est DITE (« précise : le tableau X, le monument X ») ;
+  - monument/tableau connu sans dimension stockée → abstention qui COUPE la cascade (le moteur lourd ne peut
+    plus piocher l'homonyme) : *« je ne confonds pas avec les œuvres d'art homonymes »*.
+- **Lisibilité** : longueurs stockées en mètres ≥ 10 km affichées en km d'abord — « longueur du Yangzi
+  Jiang » → *6 300 km (6 300 000 m)* (conversion exacte, valeur brute montrée).
+- Banc raisonnement **153/153** (4 cas), paraphrases 143/143, suite 18/18, challenge 16/16, constructions 4/4.
+
+## 2026-07-06 — Couverture atomique 79 % + devise/motto + planètes seedées + N-way court + pluriels listés
+
+- **Couverture atomique rejouée** (3 questions × 1 258 relations testables = 3 738 questions, en processus,
+  base complète) : **79 % résolues**. Le tri des « faux potentiels » montre surtout des artefacts de FORMAT du
+  générateur (valeur brute « 6300000 » vs affichage « 6 300 000 m », symboles, PIB en $ espacé) — les sondes
+  manuelles sur serveur réel confirment les valeurs justes.
+- **« Quelle est la devise de la France ? » désambiguïsé** (`_cap_devise`) : *« Liberté, Égalité,
+  Fraternité » (Si tu voulais la MONNAIE : euro.)* — les DEUX lectures vérifiées ; « devise NATIONALE » →
+  motto seul. (Avant : « euro » sec, le motto stocké dans devise_pays était inatteignable.)
+- **Planètes seedées** (est_un_seed) : la définition Wiktionnaire de « jupiter » est du bruit circulaire
+  (*« exoplanète de taille similaire à jupiter » !*) → « Jupiter est-elle une planète ? » → *Oui*, et
+  l'abstention présente désormais « Jupiter — planète » (le SEED curé prime sur la définition bruitée dans la
+  présentation d'entité). Mercure→Neptune, Pluton (naine), Soleil (étoile), Lune (satellite).
+- **N-way COURT** : « le plus ancien entre Marignan, Verdun et Waterloo ? » sans « quel est » marche
+  (préfixe interrogatif optionnel) — l'énumération ne part plus au multi-questions (découpe virgule = bruit).
+- **Pluriels listés** : « quelLES langUES parle-t-on au Japon ? » → la liste des 37 (singularisation nue dans
+  `_liste_inverse._base` — un pluriel hors-alias ne retombait jamais sur son token) ; le singulier reste
+  « japonais ».
+- Banc raisonnement **149/149**, paraphrases 143/143, suite 18/18, challenge 16/16, synonymes 8/8.
+
+## 2026-07-06 — Mode web éprouvé : garde subjectivité, définitions citées, outils atteignables (challenge web 14→22/30)
+
+- **Garde SUBJECTIVITÉ avant le web** : « quel est le plus beau pays du monde ? » (web ON) partait au
+  métamoteur et rapportait… le FILM « Le Plus Beau Pays du monde » (extrait Wikipédia hors-sujet). La
+  recherche web consulte désormais le classifieur de bornage : une question NON BORNÉE ne part JAMAIS au web →
+  cadrage honnête (*« pas de réponse unique, c'est subjectif — donne-moi un critère »*). + « serait vraiment
+  rafraîchissante » ajouté aux prédicats subjectifs (recommandation évaluative au conditionnel).
+- **Définitions citées et soutenues** : « Qu'entend-on par « sérendipité » ? » / « que signifie X ? » → la
+  définition (formes ajoutées à `_DEF_RE`, guillemets autour du mot acceptés).
+- **Outils atteignables** : « distance entre Paris et Madrid » SANS point d'interrogation est maintenant une
+  DEMANDE (`_veut_reponse` : tête d'attribut nue + connecteur) → *1 053 km, orthodromie* ; « nature
+  grammaticale du VOCABLE nonobstant » → *préposition* (« vocable/terme » acceptés).
+- **Did-you-mean abusif corrigé** : « espace » (mot français parfaitement valide, absent du lexique POS mais
+  DÉFINI dans definition_nom) déclenchait « vouliez-vous dire espece ? » → `_mot_defini` en renfort de
+  `_mot_reel` dans le générateur de suggestions.
+- Harness challenge : apostrophes typographiques normalisées, marqueurs SOCIAL (« salut »), OUTIL
+  (préposition/conjonction/pronom/déterminant), FACTUEL (définitions longues « Terme : … »).
+- **Explications BORNÉES** : « comment fonctionne une pompe à chaleur ? », « décris le mécanisme de la
+  réaction de Maillard », « en quoi la relativité restreinte a bouleversé… », « quelles furent les
+  conséquences… » — une vérité DOCUMENTÉE existe → classé borné → **rapport web attribué** (« d'après
+  Wikipédia… », gate de pertinence) au lieu d'une clarification en boucle. Jamais généré : rapporté ou rien.
+- Challenge **16/16** (sans web) et **28/30** (web — c'était 14/30 ; les 2 restants sont des artefacts du
+  harness, comportements vérifiés CORRECTS sur le serveur réel ; Mojeek renvoie 403 au métamoteur, à
+  surveiller). Tous bancs verts : 142/142, 146/146, 4/4, 8/8, 18/18, 19/19.
+
+## 2026-07-06 — Relatives, appositions, comparaison superlative : batterie complexité 5/20 → 18/20
+
+- **Propositions RELATIVES résolues en entités** (`_resout_relatif`, feuille de `_resout_noeud`) :
+  - « sur quel continent se trouve le pays **dont la capitale est** Tokyo ? » → *le Japon se trouve en Asie
+    (en composant d'abord : pays dont capitale est Tokyo = Japon)* — lecture INVERSE à match UNIQUE (FAUX=0) ;
+  - « quelle est la langue du pays **où se trouve** la tour Eiffel ? » → *français (tour Eiffel est à Paris,
+    puis Paris est en France, puis langue de France = français)* — monument → ville → pays, 3 sauts montrés.
+- **Comparaison à FEUILLE SUPERLATIVE** : « le pays le plus peuplé d'Europe est-il plus peuplé que le
+  Japon ? » → l'argmax borné est résolu d'abord (fait réel, résolution MONTRÉE), puis la comparaison chiffrée.
+- **Appositions et modaux compris** : « ce grand pays qu'est l'Australie » → *l'Australie* ; « quelle pourrait
+  bien être… » → « quelle est… » ; « qui a bien pu écrire » → « qui a écrit » (verbes créateurs fermés) ;
+  « combien de gens vivent en France ? » → *population de la France*.
+- **Bug réel de guérison corrigé** : « **BON alors**, cette histoire de… » était « corrigé » en « BONNE
+  alors » → la phrase guérie ne se dévoilait plus et court-circuitait tout (retour fallback avant (0dev)).
+  « bon/bonne/alors/bref/voilà… » ajoutés aux mots protégés.
+- **Harness e2e_complexite corrigé** : le bloc mémoire appelait `repond()` directement (qui n'indexe pas) →
+  0/6 à tort ; passage par le VRAI chemin serveur (`ajoute_message`) → 6/6.
+- Batterie complexité/compréhension/mémoire : **18/20** (5/20 au début de nuit ; les 2 restants = trous de
+  données documentés : population_ville sans Paris, aucune relation dirigeant/chef d'État nominatif).
+- Banc paraphrases **141/141** (11e vague), raisonnement 146/146, suite 18/18, challenge 16/16, valide_maj 19/19.
+- **Complément (même nuit)** : « en quelle année Christophe Colomb a-t-il découvert l'Amérique ? » → *1492* —
+  variantes d'élision rendues COMPOSABLES (« l Amérique » ↔ « l'Amérique » se combine avec le libellé Wikidata
+  composé « découverte **et exploration** de l'Amérique ») + recadrage « X a-t-il découvert Y » (le sujet est
+  retiré sans être endossé : la réponse nomme l'événement résolu). Paraphrases **142/142**. Validation
+  SERVEUR RÉEL de la nuit entière : **25/25** briques (port 8899, web OFF, RSS 163 Mo après usage).
+
+## 2026-07-06 — FAUX corrigé : « la langue de Tokyo » répondait « français » (l'œuvre homonyme)
+
+- Le lookup direct de « langue de Tokyo » matchait la langue d'une **ŒUVRE nommée « Tokyo »** (film en
+  français) au lieu de la ville. Le PONT ville→pays prime désormais sur le lookup direct pour les attributs
+  PAYS-CONSTANTS quand l'entité est une ville connue de pays_ville → *japonais (en composant : Tokyo est au
+  Japon, puis langue de Japon = japonais)*.
+- Recadrage locatif : « quelle langue parle-t-on **à Tokyo / au Japon** ? » → « quelle est la langue de X »
+  (bonus : « au Japon » répond *japonais* au lieu de déverser la liste des 37 langues/dialectes stockés).
+- Banc paraphrases **133/133** (3 cas), raisonnement 146/146, suite 18/18, challenge 16/16.
+
+## 2026-07-06 — Auto-update ÉPROUVÉ EN RÉEL (build 38 → 39) : 4 bugs du flux trouvés et corrigés
+
+- **Test grandeur nature** : mise à jour appliquée sur le .exe réel — téléchargement du build 39, bascule du
+  binaire par l'updater, redémarrage, `version_locale: "39 84180a0"` vérifié à l'arrivée. Le cycle complet
+  commit → release → détection → swap → relance fonctionne.
+- **4 bugs RÉELS corrigés au passage** (le test de détection seul ne les voyait pas) :
+  1. l'app promettait « Provara va se fermer » mais **ne se fermait jamais** → l'updater attendait notre PID
+     pour toujours. Fix : fermeture réelle programmée (1,5 s après la réponse HTTP, `os._exit`) ;
+  2. `timeout /t` dans le .bat **exige une console** — lancé sans fenêtre, il échoue → remplacé par
+     `ping -n` (marche partout) ;
+  3. `CREATE_NO_WINDOW | DETACHED_PROCESS` sont **mutuellement exclusifs** (comportement indéfini, l'updater
+     mourait avec l'app) → `CREATE_NO_WINDOW | CREATE_BREAKAWAY_FROM_JOB` (survit aussi à un job Windows qui
+     tue ses enfants ; repli sans breakaway si le job l'interdit) ;
+  4. `/api/maj/appliquer` **contournait le toggle Internet** (appel réseau silencieux même web OFF) → refus
+     actionnable (« réactive Internet »), aucun octet sans consentement.
+- Gate `valide_maj` **19/19** (6 vérifications ajoutées sur l'updater et les gardes serveur), suite 18/18.
+
+## 2026-07-06 — Antonymes câblés + « le bouquin X » + batterie serveur : 44 % → 78 %, zéro FAUX
+
+- **`_cap_contraire`** : « quel est le contraire de grand ? » → *petit, microscopique, bref…* — la fonction
+  `synonymes.contraires` (réseau JeuxDeMots embarqué) existait SANS être câblée nulle part (brique orpheline
+  détectée). Liste honnête sans élection arbitraire (les données JDM sont asymétriques), source nommée.
+- « le **bouquin** 1984, c'est de qui ? » → *George Orwell* (« bouquin » ajouté aux type-words d'œuvre).
+- **Batterie massive REJOUÉE contre le serveur source** (88 questions multi-domaines, port 8899, web OFF) :
+  **69/88 OK (78 %) contre 39/88 (44 %) sur le .exe build 38 — et ZÉRO FAUX** (les 2 FAUX du build 38 sont
+  corrigés ; les 19 restants sont des abstentions honnêtes, majoritairement des trous d'extraction Wikidata
+  documentés : Versailles 1919, Newton et Marie Curie sans occupation/nationalité, Nil/Amazone sans longueur,
+  frontières entre pays absentes, formules chimiques absentes).
+- Banc paraphrases **130/130**, raisonnement 146/146, suite 18/18, challenge 16/16, synonymes 8/8,
+  constructions 4/4.
+
+## 2026-07-06 — Protons, lunes, et le mur de Berlin : routage verbe→relation de date
+
+- **`_cap_protons`** : « combien de protons a l'hydrogène ? » → *1 proton — le numéro atomique Z (c'est sa
+  définition)* (relu dans numero_atomique, 118 éléments) ; « combien d'électrons possède le carbone ? » →
+  *6 électrons pour l'atome NEUTRE (autant que de protons)*.
+- **`_cap_lunes`** : « combien de lunes a Mars ? » → *2 dans mes données : Déimos, Phobos* — compte RÉEL par
+  lecture inverse de corps_parent_astre, honnête sur la non-exhaustivité (Jupiter en a 95 connues).
+- **Routage VERBE → relation de date** (`_DATE_VERBE_RE`) : « en quelle année est TOMBÉ le mur de Berlin ? »
+  → *1989* (annee_dissolution) et « quand a été CONSTRUIT le mur de Berlin ? » → *1961*
+  (annee_construction_edifice). Sans ce routage, la première relation trouvée aurait décidé entre 1961 et
+  1989 — un coup de dés, pas un fait.
+- Trous d'INGESTION documentés (pas de fix code possible, à corriger côté source) : « traité de Versailles »
+  (1919) absent de date_evenement ; Isaac Newton (le physicien) sans faits-personne (naissance/nationalité) ;
+  Nil/Amazone sans longueur ; Napoléon Ier absent de successeur_personne.
+- Banc raisonnement **146/146** (7 cas ajoutés), paraphrases 127/127, suite 18/18, challenge 16/16.
+
+## 2026-07-06 — Créateur : type-words d'œuvre + alias de personnes célèbres
+
+- « qui a réalisé **le film** Pulp Fiction ? » échouait (la clé réelle est le titre NU) : liste fermée
+  `_TYPE_OEUVRE_RE` (film/livre/roman/tableau/statue/chanson/série/jeu/album/opéra/pièce/poème/BD) jetée avant
+  lookup → *Quentin Tarantino* ; « le roman 1984 », « le tableau la Joconde » pareil.
+- Étage **(0alias)** : « **Napoléon Bonaparte** » → « Napoléon Ier » (la clé RÉELLE de toutes les relations de
+  personnes) — carte FERMÉE d'identités incontestables (même être humain), motifs accent-tolérants, question
+  réécrite rejouée par le pipeline complet. « où est né / quand est mort / qui était Napoléon Bonaparte »
+  répondent désormais (Ajaccio, 1821, fiche complète).
+- Banc paraphrases **127/127** (10e vague), raisonnement 139/139, suite 18/18, challenge 16/16.
+
+## 2026-07-06 — Records géographiques mondiaux : la couche curée qui évite les FAUX d'argmax
+
+- **Pourquoi pas un simple argmax sur les tables ?** Audit des données : `altitude_montagne` contient 37
+  reliefs MARTIENS/vénusiens (Tharsis Tholus 8 930 m > Everest !), `longueur_fleuve` ne couvre NI le Nil NI
+  l'Amazone (le max serait le Yangzi — FAUX), `superficie_ile` n'a pas le Groenland (le max serait la
+  Nouvelle-Guinée — FAUX). Un argmax naïf « du monde » inventerait des records.
+- **Nouveau `_cap_record_monde`** (table FERMÉE de records incontestables, 3 ordres de mots) :
+  - « le plus haut sommet du monde ? » → *l'Everest — 8 848,86 m, **relu en direct** dans les données* ;
+  - « le plus long fleuve ? » → *Nil ou Amazone : primauté scientifiquement **DISPUTÉE** — je ne tranche pas*
+    (+ signale honnêtement le trou de la table) ;
+  - « la plus grande île ? » → *Groenland (l'Australie étant un continent)* ; « le plus grand désert ? » →
+    *Antarctique (définition scientifique) / Sahara le plus grand désert CHAUD (9 200 000 km² relus)* ;
+  - « la plus grande planète ? » → *Jupiter — argmax RÉEL sur diametre_moyen_planete (ensemble complet,
+    8 planètes)* ; lac le plus profond (Baïkal), océan (Pacifique), fosse (Mariannes).
+  - Les superlatifs par ZONE (« la plus haute montagne d'Europe ») restent hors de ce cap → abstention
+    FAUX=0 inchangée (membership troué).
+- Banc raisonnement **139/139** (7 cas dont 1 garde), paraphrases 122/122, suite 18/18, challenge 16/16.
+
+## 2026-07-06 — Calcul étendu : puissances, pourcentages, précédence en toutes lettres, conversions exactes
+
+- `_reponse_calcul` étendu (fermé, sous intention de calcul) : **« 7 au carré » → 49**, « 2 au cube » → 8 ;
+  **« 20 pour cent de 150 » / « 15 % de 200 » → 30** (substitution AVANT les nombres en lettres — « pour
+  cent » devenait « pour 100 » et cassait le motif) ; **« 3 plus 4 fois 5 » → 23** (opérateurs en toutes
+  lettres avec la VRAIE précédence, substitués uniquement ENTRE chiffres) ; repli d'EXTRACTION de la
+  sous-expression mathématique pure (« QUEL EST 20 * 150 / 100 ? » — le préfixe interrogatif faisait échouer
+  les évaluateurs).
+- **Nouveau `_cap_conversion`** : conversions d'unités FERMÉES et EXACTES, formule montrée — « convertis 100
+  degrés Celsius en Fahrenheit » → *212 °F ((100 × 9/5) + 32)* ; km↔miles (1 mile = 1,609344 km, définition
+  légale) ; kg↔livres (1 livre = 0,45359237 kg). Hors liste fermée → None (jamais d'approximation inventée).
+- Banc paraphrases **122/122** (9e vague : 9 cas calcul/conversion), raisonnement 132/132, autres bancs verts.
+
+## 2026-07-06 — Composition profonde : enveloppe interrogative, pont ville→pays, élision, filet temporel
+
+- **FAUX .exe corrigé — « sur quel continent se trouve la capitale du Japon ? » répondait « Tokyo »** (le
+  moteur lourd résolvait le GN interne et ignorait l'enveloppe). Nouvel étage **(1a-env)** : quand la question
+  pose une AUTRE question autour d'un GN composé (« sur quel continent… », « où est né… », « quand est mort… »),
+  le GN interne est résolu (maillon VÉRIFIÉ montré), substitué, et le pipeline complet est REJOUÉ →
+  *« Asie — je le déduis : Tokyo est la capitale du Japon et le Japon est en Asie (en composant d'abord :
+  capitale de Japon = Tokyo) »*. Marche en profondeur : « où est né l'auteur de 1984 ? » → *Motihari* ;
+  « quand est mort le successeur de Louis XIV ? » → *1774* ; « sur quel continent se trouve la capitale du
+  pays le plus peuplé du monde ? » → *Asie* (feuille superlative + 3 sauts). Un simple « quelle est la
+  capitale de X » reste au lookup direct (garde `_ENV_PREFIXE_RE`).
+- **Pont ville→pays pour attributs PAYS-CONSTANTS** (`_pont_ville_pays`) : « la monnaie de la capitale du
+  Japon ? » → *yen (Tokyo est au Japon, puis monnaie du Japon)*. Liste FERMÉE (monnaie, langue, continent,
+  hymne — PAS la population : population de Tokyo ≠ population du Japon). Audit anti-homonyme : pays_ville =
+  9 998 villes, 0 nom multi-pays.
+- **FAUX .exe corrigé — « quand a eu lieu la bataille de Hastings ? » répondait « Battle »** (la VILLE du lieu
+  de la bataille, East Sussex !) : la clé réelle est « bataille **d'**Hastings » (élision) que le lookup
+  streaming ratait → la cascade servait un sous-lookup du mauvais type. Double correctif : variantes
+  d'ÉLISION dans `_annee_de` (« de Hastings » ↔ « d'Hastings » ↔ « d hastings » apostrophe perdue) → *1066* ;
+  et FILET TEMPOREL générique : une question « quand / en quelle année » ne peut plus rendre une réponse sans
+  année (même filet que les mesures).
+- **Abstention à CHAÎNE PARTIELLE** : « population de la capitale de la France ? » disait « rien n'ancre
+  capitale de la France » (trompeur — ça résout très bien vers Paris). Désormais : *« j'ai composé capitale de
+  France = Paris — mais je n'ai pas de fait vérifié « population de Paris » »* (le maillon manquant est
+  NOMMÉ ; Paris/Tokyo absents de population_ville = trou d'extraction Wikidata, à corriger côté ingestion).
+- Banc paraphrases **113/113** (8e vague : 8 cas de composition profonde), raisonnement 132/132,
+  constructions 4/4, synonymes 8/8, suite 18/18, challenge 16/16.
+
+## 2026-07-06 — FAUX corrigé : « quel fleuve traverse Paris ? » répond « la Seine », plus une liste de 147 rivières
+
+- **Cause** : dans `_liste_inverse`, le mot « fleuve » servait à la fois de mot-TYPE interrogé (« quel fleuve… »)
+  et de VALEUR d'ancrage (147 rivières ont type=fleuve dans `type_riviere`) → la question déversait l'échantillon
+  alphabétique complet en ignorant « traverse Paris ». **Garde ancre≠type** ajouté : la valeur d'ancrage ne peut
+  pas être le mot-type lui-même ni son alias (`_base(vn) not in rtoks`).
+- **Trou de données comblé au niveau code** : les datasets Wikidata n'ont AUCUNE relation ville↔fleuve (vérifié :
+  `subdivision_riviere` ne contient pas Paris). Nouveau module **`src/fleuve_ville.py`** + seed curé
+  **`src/fleuve_ville_seed.jsonl`** (~100 couples incontestables, articles inclus — même précédent que
+  `est_un_seed.jsonl`) et nouveau cap **`_cap_fleuve_ville`** :
+  - « quel fleuve traverse Paris ? » → *C'est la Seine qui traverse Paris.* (« coule à », « arrose », « passe
+    par », « sur quel fleuve se trouve Budapest » couverts) ;
+  - « quelle rivière traverse Lyon ? » → *le Rhône et la Saône* (liste complète des fleuves majeurs) ;
+  - « quelles villes le Danube traverse-t-il ? » → *notamment Vienne, Budapest… (liste non exhaustive)* ;
+  - « la Seine traverse-t-elle Paris ? » → *Oui* ; paire inconnue → le fait réel montré, JAMAIS de « non » sec
+    (la Bièvre traverse réellement Paris sans être dans le seed) ; ville hors seed → abstention honnête.
+- Banc raisonnement **132/132** (7 cas ajoutés dont 2 gardes FAUX=0), paraphrases 105/105, constructions 4/4,
+  synonymes 8/8, suite 18/18, challenge 16/16. README FR/EN à jour. (Le module et le seed sont sous `src/` →
+  embarqués automatiquement dans le .exe via `--add-data src`.)
+
+## 2026-07-06 — FAUX grave corrigé : « la Terre tourne-t-elle autour du Soleil ? » ne répond plus « Baudelaire »
+
+- **Cause double** : (1) `_ORBITE_RE` ne consommait pas le clitique d'inversion (« tourne**-t-elle** ») → le
+  groupe capturait « -t-elle autour du Soleil » au lieu de « Soleil » ; (2) même bien parsé, `_cap_orbite`
+  refusait volontairement les relations DIRECTES (chaîne de 2 : Terre → Soleil, « pas une dérivation ») → la
+  question filait vers le moteur lourd qui partait sur le poème « Le Soleil » de **Baudelaire** (hors-sujet).
+- **Correctif** : clitique `-t-il/-t-elle/-t-on` consommé (avec variantes SMS sans tirets) ; le groupe entité ne
+  peut plus commencer par un espace (piège regex lazy) ; un fait direct répond désormais *« Oui — c'est un fait
+  vérifié dans mes données : la Terre orbite le Soleil »*.
+- **Bonus soundness** : le sens inverse est maintenant RÉFUTÉ au lieu d'être tu — « le Soleil tourne-t-il autour
+  de la Terre ? » → *« Non — c'est l'inverse : la Terre orbite le Soleil »* (l'anti-symétrie d'« orbiter » est
+  la règle induite déjà vérifiée sur les 36 faits). Et deux corps connus sans chaîne entre eux (« Mars
+  tourne-t-elle autour de Jupiter ? ») reçoivent le fait réel (*« Mars orbite le Soleil — aucun fait reliant
+  Mars à Jupiter »*) au lieu de risquer un hors-sujet dans la cascade lourde.
+- Banc raisonnement **125/125** (4 cas ajoutés : direct, direct-SMS, dérivé Lune→Soleil, réfutation inverse ×2),
+  paraphrases 105/105, constructions 4/4, synonymes 8/8, suite **18/18**, challenge 16/16.
+
 ## 2026-07-05 — MISES À JOUR AUTOMATIQUES : le .exe se met à jour tout seul (plus de re-téléchargement)
 
 - **Nouveau module `src/maj.py`** : vérifie honnêtement (FAUX=0) contre les Releases GitHub s'il existe une
