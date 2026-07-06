@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — RÉ-INGESTION traités & guerres : Versailles 1919 et les guerres mondiales sont là
+
+- **Dominance par NOTORIÉTÉ (sitelinks)** dans le pipeline dates (t8) : « traité de Versailles » (1919,
+  135 wikis) était tué par ses homonymes historiques (1756/1768/1783/1787, ≤15 wikis) via le fonctionnel par
+  libellé. Règle : l'entité au max de sitelinks est retenue si ≥8× la rivale d'une autre année ; sinon
+  l'ambiguïté est réelle (« bataille des Ardennes » 1914 vs 1944) → HORS inchangé.
+- `annee_signature_traite` re-produit via t8 moderne : **1 334 traités** (dont Versailles → *1919*) ;
+  `annee_debut/fin_guerre` re-produits via QLever classe Q198 : **766 → 1 948 guerres**, dont enfin
+  « Première Guerre mondiale » (*1914-1918, durée 4 ans calculée*) et « Seconde » (*1939-1945*).
+- Phrasés branchés : « en quelle année a été SIGNÉ X » (verbe → annee_signature_traite), « quand s est
+  terminée » (apostrophe perdue tolérée), accord « **La** Première Guerre mondiale a duré… ».
+- Fichiers synchronisés vers datasets_complets (release). Banc paraphrases **155/155** (4 cas), raisonnement
+  162/162, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — RÉ-INGESTION population_ville : Paris et Berlin sont revenus (garde de dominance)
 
 - **Cause racine du trou historique** : le filtre « fonctionnel » de l'ingestion travaille PAR LIBELLÉ — 
