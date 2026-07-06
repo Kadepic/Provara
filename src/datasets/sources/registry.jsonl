@@ -3,3 +3,4 @@
 {"id": "qlever-wikidata", "url": "https://qlever.dev/api/wikidata", "domaines": ["general", "geographie", "sciences"], "relations": [], "actif": true}
 {"id": "wikipedia-fr", "url": "https://fr.wikipedia.org", "domaines": ["general", "encyclopedie"], "relations": [], "actif": true}
 {"id": "rest-countries", "url": "https://restcountries.com/v3.1/all", "domaines": ["geographie"], "relations": ["capitale", "population", "superficie"], "actif": true}
+{"id": "wikidata-wdqs", "url": "https://query.wikidata.org/sparql", "domaines": ["general", "geographie", "sciences", "histoire", "personnes"], "relations": [], "actif": true, "note": "endpoint SPARQL officiel (rate-limité) — les ingestions passent par qlever-wikidata en pratique"}

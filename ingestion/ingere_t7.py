@@ -367,11 +367,45 @@ def _fmt(f: float) -> str:
     return repr(round(f, 4))
 
 
+def _dominance(paires, ratio=20.0):
+    """GARDE DE DOMINANCE pour les HOMONYMES de villes (2026-07-06) : le fonctionnel par LIBELLÉ rejetait les
+    villes CÉLÈBRES — « Paris » (France, 2,1 M hab.) coexiste avec Paris (Texas, 24 k) et Paris (Ontario) ->
+    multi-valeurs -> HORS ; population_ville n'avait NI Paris NI Tokyo NI Berlin ! Règle SOUND : si la valeur
+    MAX d'un libellé est >= ratio × la 2ᵉ, l'homonyme dominant est retenu (la lecture évidente de « population
+    de Paris ») ; sinon les multi passent au fonctionnel aval qui les rejette (ambiguïté réelle -> HORS)."""
+    import collections
+    g = collections.defaultdict(dict)                        # clé -> {valeur_float: (surface, valeur_str)}
+    autres = []
+    for e, v in paires:
+        try:
+            f = float(str(v).replace(" ", "").replace(",", "."))
+        except ValueError:
+            autres.append((e, v))
+            continue
+        from base_faits import _sans_articles as _sa
+        g[_sa(e)].setdefault(f, (e, v))
+    out, domines = list(autres), 0
+    for cle, par_val in g.items():
+        vals = sorted(par_val, reverse=True)
+        if len(vals) == 1:
+            out.append(par_val[vals[0]])
+        elif vals[1] <= 0 or vals[0] >= ratio * vals[1]:
+            out.append(par_val[vals[0]])                     # dominant incontestable -> gardé
+            domines += 1
+        else:
+            for f in vals:                                    # ambigu -> laissés au fonctionnel (rejet compté)
+                out.append(par_val[f])
+    if domines:
+        print(f"  [dominance] {domines} libellés homonymes résolus par la valeur dominante (≥{ratio:g}×)")
+    return out
+
+
 def ingere_numerique(relation, classe_qid, prop, source, vmin, vmax,
                      categorie="physique", sous_classes=True, mode="unite"):
-    """Ingère une relation NUMÉRIQUE bornée. mode='unite' -> conversion en mètres ; mode='compte' -> dénombrement.
+    """Ingère une relation NUMÉRIQUE bornée. mode='unite' -> conversion en mètres ; mode='compte' -> dénombrement ;
+    mode='compte_dominant' -> dénombrement + garde de dominance sur les libellés homonymes (villes célèbres).
     PLAGE [vmin, vmax] = garde-fou final (HORS hors-plage). Renvoie les stats publie()."""
-    pull = {"unite": _pull_metres, "compte": _pull_compte, "aire": _pull_aire, "puissance": _pull_puissance, "masse": _pull_masse, "debit": _pull_debit, "vitesse": _pull_vitesse, "frequence": _pull_frequence, "tension": _pull_tension, "passagers": _pull_passagers, "autonomie": _pull_autonomie, "volume": _pull_volume, "temps": _pull_temps, "dalton": _pull_dalton, "mm": _pull_mm, "temperature": _pull_temperature, "gramme": _pull_gramme, "densite": _pull_densite}[mode]
+    pull = {"unite": _pull_metres, "compte": _pull_compte, "compte_dominant": _pull_compte, "aire": _pull_aire, "puissance": _pull_puissance, "masse": _pull_masse, "debit": _pull_debit, "vitesse": _pull_vitesse, "frequence": _pull_frequence, "tension": _pull_tension, "passagers": _pull_passagers, "autonomie": _pull_autonomie, "volume": _pull_volume, "temps": _pull_temps, "dalton": _pull_dalton, "mm": _pull_mm, "temperature": _pull_temperature, "gramme": _pull_gramme, "densite": _pull_densite}[mode]
     triples = pull(relation, classe_qid, prop, sous_classes=sous_classes)
     paires, hors_plage = [], 0
     for e, f, _brut in triples:
@@ -379,6 +413,8 @@ def ingere_numerique(relation, classe_qid, prop, source, vmin, vmax,
             paires.append((e, _fmt(f)))
         else:
             hors_plage += 1
+    if mode == "compte_dominant":
+        paires = _dominance(paires)
     print(f"== {relation} ({prop}, classe {classe_qid}, {mode}) : {len(triples)} entités, "
           f"plage[{vmin},{vmax}] -> {len(paires)} gardés, {hors_plage} hors-plage(HORS) ==")
     return IQ.publie(relation, categorie, source, paires)
@@ -549,7 +585,8 @@ NUMERIQUES = [
     # « longueur » P2043 = 35,75 ≈ envergure 35,8 -> confusion length/wingspan possible dans Wikidata. Doute -> HORS.
     # --- lot 3 (compte sans unité) ---
     ("population_ville",    "Q515",    "P1082", "Wikidata/QLever — population P1082 (rang préféré/truthy ; "
-     "dénombrement, valeur datée pouvant évoluer)", 0, 40_000_000, "physique", "compte"),
+     "dénombrement, valeur datée pouvant évoluer ; homonymes : la valeur DOMINANTE ≥20× est retenue — "
+     "Paris FR 2,1 M vs Paris TX 24 k — sinon HORS)", 0, 40_000_000, "physique", "compte_dominant"),
     # --- lot 21 : nombre de locuteurs d'une langue (compte ; veine orpheline ex-T9, couloir fermé) ---
     # P1098 multi-valué (L1/total/recensements) -> fonctionnel par libellé : langue à 1 seule valeur gardée,
     # multi-valeur (français, allemand…) -> HORS. Plage [1, 2e9] exclut les 0 (langues éteintes) et le bruit.
