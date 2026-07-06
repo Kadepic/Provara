@@ -429,7 +429,9 @@ _RECADRE_REGLES = (
      lambda m: "quelle est la population de %s ?" % m.group(1)),
     # « quelle langue parle-t-on à Tokyo / au Japon ? » -> « quelle est la langue de X » (le pont ville->pays
     # ou le lookup pays répond ensuite). Locatif à/au/aux/en couvert.
-    (re.compile(r"^\s*quelles?\s+langues?\s+parle[\s-]*t[\s-]*on\s+(?:a|à|au|aux|en)\s+(.+?)\s*\?*\s*$", re.I),
+    # SINGULIER uniquement : « quelLES langUES parle-t-on au Japon ? » (pluriel) veut la LISTE -> laissée
+    # au listage inverse existant, pas réécrite.
+    (re.compile(r"^\s*quelle\s+langue\s+parle[\s-]*t[\s-]*on\s+(?:a|à|au|aux|en)\s+(.+?)\s*\?*\s*$", re.I),
      lambda m: "quelle est la langue de %s ?" % m.group(1)),
     # clivées redoublées : « qui c'est qui a écrit X » / « c'est qui qui a écrit X » -> « qui a écrit X »
     (re.compile(r"^\s*(?:qui\s+c['’] ?est\s+qui|c['’] ?est\s+qui\s+qui)\s+(.+)$", re.I), lambda m: "qui " + m.group(1)),
