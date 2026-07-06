@@ -535,6 +535,9 @@ _RECADRE_REGLES = (
     (re.compile(r".*?\bcombien\s+de\s+(?:gens|personnes|habitants)\s+(?:vivent|habitent)(?:[- ]ils)?\s+"
                 r"(?:en|au|aux|a|à)\s+(.+?)\s*\?*\s*$", re.I),
      lambda m: "quelle est la population de %s ?" % m.group(1)),
+    # « quel bruit/son fait le cheval ? » -> « quel est le cri de X » (cri_animal : hennissement…)
+    (re.compile(r"^\s*quel\s+(?:bruit|son)\s+fait\s+(?:le\s+|la\s+|l['’]\s*|un\s+|une\s+)?(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quel est le cri du %s ?" % m.group(1)),
     # « combien mesure le mont Blanc ? » -> « quelle est la hauteur de X » (rejoué sans perte : si la hauteur
     # ne donne rien, l'original continue son chemin).
     (re.compile(r"^\s*combien\s+mesure\s+(?:le\s+|la\s+|l['’]\s*)?(.+?)\s*\?*\s*$", re.I),
