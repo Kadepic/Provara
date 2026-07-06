@@ -101,6 +101,66 @@ check("Relance Provara.exe" in _src_ui, "front : consigne actionnable si l'app n
 _src_maj = inspect.getsource(maj._lance_updater)
 check("IMAGENAME eq Provara.exe" in _src_maj and _src_maj.count("start") >= 2,
       "updater : re-lancement de secours si l'app n'a pas démarré (antivirus/DLL au 1er départ)")
+check(":antidll" in _src_maj and "RETRY" in _src_maj and "goto antidll" in _src_maj,
+      "updater : filet anti-DLL EN BOUCLE (~60 s, relances multiples — la relance unique à 10 s a raté en vécu)")
+
+# — PAQUET DOSSIER onedir (builds >= 49) : préféré dès qu'il existe, extraction gardée, bascule _internal —
+def _transport_app(build_distant):
+    def t(url, timeout=15):
+        if "releases/latest" in url:
+            return 200, json.dumps({"tag_name": "latest", "assets": [
+                {"name": "version.txt", "browser_download_url": "http://x/version.txt"},
+                {"name": "Provara.exe", "browser_download_url": "http://x/Provara.exe"},
+                {"name": "Provara-app.zip", "browser_download_url": "http://x/Provara-app.zip"}]}).encode()
+        if "version.txt" in url:
+            return 200, ("%d cafe1234" % build_distant).encode()
+        return 404, b""
+    return t
+
+
+maj._TRANSPORT = _transport_app(99)
+d = maj.version_distante()
+check(d["est_app"] is True and d["url_exe"].endswith("Provara-app.zip"),
+      "paquet onedir PRÉFÉRÉ au .exe brut dès qu'il est publié (builds >= 49)")
+maj._TRANSPORT = _transport(99)
+check(maj.version_distante()["est_app"] is False, "sans paquet onedir -> voie .exe historique inchangée")
+maj._TRANSPORT = None
+
+import io
+import zipfile
+
+
+def _zip_app(membres):
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w") as z:
+        for nom, contenu in membres:
+            z.writestr(nom, contenu)
+    return buf.getvalue()
+
+
+_appels = []
+_lance_reel = maj._lance_updater
+maj._lance_updater = lambda exe, dossier_app=None: (_appels.append((exe, dossier_app)) or {"ok": True})
+try:
+    _tmp = tempfile.mkdtemp()
+    _cible = os.path.join(_tmp, "Provara.exe")
+    r = maj._applique_app(_zip_app([("Provara.exe", b"exe"), ("_internal/python312.dll", b"dll")]), cible=_cible)
+    check(r.get("ok") is True and _appels and _appels[-1][1] and "_internal" in os.listdir(_appels[-1][1]),
+          "paquet onedir : extrait À CÔTÉ de l'installation (même volume), updater lancé avec le dossier")
+    check(os.path.dirname(os.path.dirname(_appels[-1][0])) == _tmp
+          or os.path.dirname(_appels[-1][0]).startswith(_tmp),
+          "extraction SOUS le dossier d'installation (bascule = renommage, jamais une copie inter-volumes)")
+    r = maj._applique_app(_zip_app([("Provara.exe", b"exe")]), cible=_cible)
+    check(r.get("ok") is False and "_internal" in r.get("message", ""),
+          "paquet incomplet (pas de _internal) -> refus honnête, rien de basculé")
+    r = maj._applique_app(_zip_app([("../evasion.txt", b"x"), ("Provara.exe", b"exe")]), cible=_cible)
+    check(r.get("ok") is False and "suspect" in r.get("message", ""),
+          "zip-slip (chemin ../) -> paquet REFUSÉ avant toute extraction")
+finally:
+    maj._lance_updater = _lance_reel
+_src_app = inspect.getsource(maj._lance_updater)
+check("_internal.old" in _src_app and "dossier_app" in _src_app,
+      "updater : bascule du dossier _internal (l'ancien est renommé, jamais supprimé à chaud)")
 
 print("=== valide_maj : %d/%d ===" % (_ok[0], _ok[0] + _ko[0]))
 sys.exit(0 if _ko[0] == 0 else 1)

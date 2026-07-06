@@ -196,6 +196,26 @@ check(r3.statut == A.HORS and r3.texte.startswith("Je ne sais pas encore traiter
 check(A.reprend_clarification("c-ind", "oui") == "",
       "« oui » après clarification indécidable -> invitation à reformuler (plus jamais « C'est noté »)")
 
+# CLARIFICATION À TROU (slot) — vécu 2026-07-06 : « il fait quel temps ? » -> « pour quelle ville ? » ->
+# « A Brives » partait en recherche web libre au lieu de compléter la question météo.
+A.note_attente_slot("c-slot", "quel temps fait-il à %s ?")
+check(A.reprend_clarification("c-slot", "A Brives") == "quel temps fait-il à Brives ?",
+      "« A Brives » après « pour quelle ville ? » -> question météo COMPLÉTÉE (conversation, pas question-réponse)")
+check(A.reprend_clarification("c-slot", "Toulouse") is None, "état slot consommé une seule fois")
+A.note_attente_slot("c-slot", "quel temps fait-il à %s ?")
+check(A.reprend_clarification("c-slot", "à Saint-Étienne stp") == "quel temps fait-il à Saint-Étienne ?",
+      "préposition + politesse dépouillées, casse/accents de la ville GARDÉS")
+A.note_attente_slot("c-slot", "quel temps fait-il à %s ?")
+check(A.reprend_clarification("c-slot", "quelle est la capitale du japon ?") is None,
+      "nouvelle question pendant l'attente de slot -> None (traitée normalement, jamais fourrée dans le trou)")
+A.note_attente_slot("c-slot", "quel temps fait-il à %s ?")
+check(A.reprend_clarification("c-slot", "non merci") == "",
+      "refus pendant l'attente de slot -> refus explicite (invite à reformuler)")
+A.note_attente_slot(None, "quel temps fait-il à %s ?")
+check(A.reprend_clarification(None, "Paris") is None, "slot avec conv_id None -> no-op sûr")
+A.note_attente_slot("c-slot2", "météo sans trou")
+check(A.reprend_clarification("c-slot2", "Paris") is None, "gabarit sans %s -> jamais enregistré (no-op sûr)")
+
 # RGPD : l'oubli purge AUSSI l'état en-process (plus rien à rejouer).
 A.note_clarification("c-rgpd", "question secrete flauve ?", "flauve", "fleuve", "…")
 A.oublie_etat("c-rgpd")

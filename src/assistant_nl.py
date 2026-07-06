@@ -61,7 +61,8 @@ class Reponse:
 
 
 # ── état par conversation (en-process, même convention que _DERNIER_SUJET de l'interface) ──
-# _EN_ATTENTE[conv] = {"type": "dym", question, mot, proposition} (did-you-mean) ou {"type": "reformule"}.
+# _EN_ATTENTE[conv] = {"type": "dym", question, mot, proposition} (did-you-mean), {"type": "reformule"} ou
+# {"type": "slot", gabarit} (clarification à trou : « pour quelle ville ? » -> le tour suivant remplit le gabarit).
 _EN_ATTENTE: dict = {}
 _INDECIS: dict = {}       # conv_id -> nb de clarifications « indécidable » consécutives (anti-boucle)
 _VERROU = threading.Lock()
@@ -106,6 +107,46 @@ def note_reformulation(conv_id) -> None:
         _EN_ATTENTE[conv_id] = {"type": "reformule"}
 
 
+def note_attente_slot(conv_id, gabarit: str) -> None:
+    """Enregistre une clarification À TROU : l'assistant vient de demander UNE précision (« pour quelle
+    ville ? ») et le tour suivant qui Y RESSEMBLE (une valeur nue : « A Brives », « Toulouse stp ») REMPLIT le
+    gabarit (« quel temps fait-il à %s ? ») puis est rejoué dans le pipeline normal. Vécu 2026-07-06 : sans cet
+    état, « A Brives » partait en recherche web libre — du question-réponse, pas une conversation."""
+    if conv_id and gabarit and "%s" in gabarit:
+        _EN_ATTENTE[conv_id] = {"type": "slot", "gabarit": gabarit}
+
+
+# Réponse-valeur d'un slot : préfixes de liaison à dépouiller (« à/pour/c'est … »), politesse finale à retirer.
+_SLOT_PREFIXE_RE = re.compile(r"^\s*(?:[àa]|au|aux|en|sur|pour|dans|c['’]\s*est|ce\s+serait|plut[oô]t|disons)\s+",
+                              re.I)
+_SLOT_POLI_FIN_RE = re.compile(r"[\s,]*(?:s['’ ]?il\s+(?:te|vous)\s+pla[iî]t|stp|svp|merci)\s*[.!]*\s*$", re.I)
+# Mots qui trahissent une NOUVELLE demande (interrogatifs, verbes de requête) : au moindre doute, pas de
+# substitution — le message repart dans le pipeline normal (même prudence que le did-you-mean).
+_SLOT_REJET = frozenset(
+    "quel quelle quels quelles comment combien pourquoi quand qui que quoi ou est sont sera serait peux "
+    "pourrais veux voudrais dis donne cherche trouve montre explique parle sais laisse oublie non rien".split())
+
+
+def _valeur_slot(texte: str) -> str:
+    """La réponse est-elle une simple VALEUR de précision (« A Brives », « à Saint-Étienne stp ») et non une
+    nouvelle demande ? Renvoie la valeur ORIGINALE nettoyée (casse/accents gardés), '' au moindre doute."""
+    t = (texte or "").strip()
+    if not t or "?" in t:
+        return ""
+    t = _SLOT_POLI_FIN_RE.sub("", t)
+    prev = None
+    while t != prev:
+        prev = t
+        t = _SLOT_PREFIXE_RE.sub("", t).strip()
+    t = t.strip(" .!,;:«»\"'")
+    toks = _normalise(t).split()
+    if not 1 <= len(toks) <= 4:
+        return ""
+    if any(w in _SLOT_REJET or any(ch.isdigit() for ch in w) for w in toks):
+        return ""
+    return t
+
+
 def oublie_etat(conv_id) -> None:
     """Purge l'état en-process de la conversation (pendants RGPD de `oublie`) : plus rien à rejouer."""
     _EN_ATTENTE.pop(conv_id, None)
@@ -126,6 +167,11 @@ def reprend_clarification(conv_id, texte: str):
     tn = " ".join(_normalise(texte).split())
     if st.get("type") == "reformule":
         return "" if (_est_refus(tn) or _est_confirmation(tn)) else None
+    if st.get("type") == "slot":                              # « pour quelle ville ? » -> « A Brives » COMPLÈTE
+        if _est_refus(tn):
+            return ""
+        val = _valeur_slot(texte)
+        return (st["gabarit"] % val) if val else None
     if _est_refus(tn):
         return ""
     if _est_confirmation(tn) or tn == _normalise(st["proposition"]).strip():

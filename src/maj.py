@@ -18,7 +18,10 @@ import urllib.request
 
 _DEPOT = "Provara-IA/Provara"
 _API_LATEST = "https://api.github.com/repos/%s/releases/latest" % _DEPOT
-_ASSET_EXE = "Provara-windows.zip"          # asset contenant le nouveau .exe
+_ASSET_EXE = "Provara-windows.zip"          # asset contenant le nouveau .exe (builds --onefile, <= 48)
+_ASSET_APP = "Provara-app.zip"              # paquet DOSSIER onedir (Provara.exe + _internal\), builds >= 49 :
+                                            # plus de ré-extraction PyInstaller à chaque lancement -> l'antivirus
+                                            # ne rescanne plus tout à chaque ouverture (lenteur + erreur DLL vécues)
 _TIMEOUT = 15
 
 
@@ -139,8 +142,9 @@ def version_distante() -> dict | None:
     corps_notes = rel.get("body") or ""
     # tampon distant : d'abord un asset « version.txt » (le plus fiable), sinon le tag, sinon le corps.
     tampon = None
-    url_exe = None       # .exe BRUT (préféré : aucun décompactage)
-    url_zip = None       # paquet zip (repli)
+    url_app = None       # paquet DOSSIER onedir (PRÉFÉRÉ dès qu'il existe : builds >= 49)
+    url_exe = None       # .exe BRUT --onefile (aucun décompactage)
+    url_zip = None       # paquet zip du .exe (repli historique)
     for a in rel.get("assets", []) or []:
         nom = a.get("name") or ""
         if nom == "version.txt":
@@ -149,14 +153,17 @@ def version_distante() -> dict | None:
                 tampon = _lire_tampon(_b.decode("utf-8", "ignore"))
             except Exception:
                 tampon = None
+        elif nom == _ASSET_APP:
+            url_app = a.get("browser_download_url")
         elif nom.lower() == "provara.exe":
             url_exe = a.get("browser_download_url")
         elif nom == _ASSET_EXE:
             url_zip = a.get("browser_download_url")
     if tampon is None:
         tampon = _lire_tampon(tag or corps_notes)
-    tampon["url_exe"] = url_exe or url_zip
-    tampon["est_zip"] = (url_exe is None and url_zip is not None)
+    tampon["url_exe"] = url_app or url_exe or url_zip
+    tampon["est_app"] = url_app is not None
+    tampon["est_zip"] = (url_app is None and url_exe is None and url_zip is not None)
     tampon["tag"] = tag
     return tampon
 
@@ -196,6 +203,8 @@ def applique(url_exe: str | None = None) -> dict:
         _c, data = _get(url_exe)
     except Exception as e:
         return {"ok": False, "message": "Téléchargement échoué : %r" % e}
+    if url_exe.lower().endswith(_ASSET_APP.lower()):       # paquet DOSSIER onedir (builds >= 49)
+        return _applique_app(data)
     est_zip = url_exe.lower().endswith(".zip")
     if est_zip:
         zip_path = os.path.join(tmp, "Provara-maj.zip")
@@ -220,9 +229,48 @@ def applique(url_exe: str | None = None) -> dict:
     return _lance_updater(nouveau)
 
 
-def _lance_updater(nouveau_exe: str) -> dict:
-    """Écrit un petit script Windows qui ATTEND la fermeture de l'app, remplace le binaire, puis relance."""
+_DOSSIER_MAJ = "Provara-maj-nouveau"        # reliquat d'extraction : SEUL dossier que l'updater a le droit de purger
+
+
+def _applique_app(data: bytes, cible: str | None = None) -> dict:
+    """Paquet DOSSIER onedir (builds >= 49) : Provara.exe + _internal\\ extraits À CÔTÉ de l'installation
+    (même volume -> chaque `move` de l'updater est un simple renommage, jamais une copie), puis bascule
+    exe + dossier au redémarrage. POURQUOI onedir : le --onefile se ré-extrayait dans %TEMP% à CHAQUE
+    lancement -> l'antivirus rescannait ~200 fichiers à chaque ouverture (minutes de lenteur) et verrouillait
+    parfois python3xx.dll (« Failed to load Python DLL », vécu ×2). Le dossier, lui, n'est extrait qu'ICI.
+    `cible` n'est fournie que par les tests (défaut : l'exe courant)."""
+    cible = cible or os.path.abspath(sys.executable)
+    dossier = os.path.dirname(cible)
+    src = os.path.join(dossier, _DOSSIER_MAJ)
+    import io
+    import shutil
+    import zipfile
+    try:
+        shutil.rmtree(src, ignore_errors=True)
+        with zipfile.ZipFile(io.BytesIO(data)) as z:
+            for n in z.namelist():                         # garde anti zip-slip : jamais hors de `src`
+                if n.startswith(("/", "\\")) or ":" in n or ".." in n.replace("\\", "/").split("/"):
+                    return {"ok": False, "message": "Paquet refusé (chemin suspect : %r)." % n}
+            z.extractall(src)
+        racine = src                                       # zip à racine nue, ou emballé dans UN dossier unique
+        if not os.path.exists(os.path.join(racine, "Provara.exe")):
+            sous = [d for d in os.listdir(src) if os.path.isdir(os.path.join(src, d))]
+            if len(sous) == 1 and os.path.exists(os.path.join(src, sous[0], "Provara.exe")):
+                racine = os.path.join(src, sous[0])
+        if not (os.path.exists(os.path.join(racine, "Provara.exe"))
+                and os.path.isdir(os.path.join(racine, "_internal"))):
+            shutil.rmtree(src, ignore_errors=True)
+            return {"ok": False, "message": "Le paquet ne contient pas Provara.exe + _internal\\ (onedir)."}
+    except Exception as e:
+        return {"ok": False, "message": "Extraction du paquet échouée : %r" % e}
+    return _lance_updater(os.path.join(racine, "Provara.exe"), dossier_app=racine)
+
+
+def _lance_updater(nouveau_exe: str, dossier_app: str | None = None) -> dict:
+    """Écrit un petit script Windows qui ATTEND la fermeture de l'app, remplace le binaire, puis relance.
+    `dossier_app` (paquet onedir, builds >= 49) : bascule AUSSI le dossier _internal\\ à côté de l'exe."""
     cible = os.path.abspath(sys.executable)
+    dossier = os.path.dirname(cible)
     pid = os.getpid()
     import tempfile
     bat = os.path.join(tempfile.gettempdir(), "provara_updater.bat")
@@ -231,29 +279,56 @@ def _lance_updater(nouveau_exe: str) -> dict:
     # MUTUELLEMENT EXCLUSIFS (deux modes de console) — combinés, le comportement est indéfini et l'updater
     # mourait avec l'app. (3) CREATE_BREAKAWAY_FROM_JOB : si l'app vit dans un job Windows qui tue ses enfants,
     # l'updater doit s'en détacher pour survivre à la fermeture (repli sans le flag si le job l'interdit).
-    contenu = (
-        "@echo off\r\n"
-        "echo Mise a jour de Provara en cours...\r\n"
-        ":attente\r\n"
-        'tasklist /FI "PID eq %d" 2>NUL | find "%d" >NUL\r\n' % (pid, pid) +
-        "if not errorlevel 1 (\r\n"
-        "  ping -n 2 127.0.0.1 >NUL\r\n"
-        "  goto attente\r\n"
-        ")\r\n"
-        'move /Y "%s" "%s" >NUL\r\n' % (nouveau_exe, cible) +
-        'start "" "%s"\r\n' % cible +
-        # FILET ANTI-DLL (vécu : « Failed to load Python DLL …\_MEI…\python312.dll ») : au premier lancement
-        # d'un binaire fraîchement téléchargé, l'antivirus peut verrouiller l'extraction PyInstaller et tuer
-        # le démarrage. On vérifie après ~10 s que l'app tourne ; sinon on la relance UNE fois (le second
-        # départ passe, le binaire ayant été scanné entre-temps).
-        "ping -n 11 127.0.0.1 >NUL\r\n"
-        'tasklist /FI "IMAGENAME eq Provara.exe" 2>NUL | find /I "Provara.exe" >NUL\r\n'
-        "if errorlevel 1 (\r\n"
-        "  ping -n 4 127.0.0.1 >NUL\r\n"
-        '  start "" "%s"\r\n' % cible +
-        ")\r\n"
-        'del "%%~f0"\r\n'
-    )
+    # (4) Pas de %VAR% dans des blocs parenthésés (expansion à la lecture du bloc) : la boucle anti-DLL est en
+    # `goto`, ligne à ligne.
+    lignes = [
+        "@echo off",
+        "echo Mise a jour de Provara en cours...",
+        ":attente",
+        'tasklist /FI "PID eq %d" 2>NUL | find "%d" >NUL' % (pid, pid),
+        "if not errorlevel 1 (",
+        "  ping -n 2 127.0.0.1 >NUL",
+        "  goto attente",
+        ")",
+    ]
+    if dossier_app:
+        # BASCULE DOSSIER (onedir) : l'ancien _internal est RENOMMÉ (pas supprimé tout de suite : l'antivirus
+        # peut le tenir), le nouveau prend sa place, l'exe suit. Tout est sur le même volume -> renommages purs.
+        vieux = os.path.join(dossier, "_internal.old")
+        lignes += [
+            'rd /s /q "%s" >NUL 2>NUL' % vieux,
+            'if exist "%s" move /Y "%s" "%s" >NUL' % (os.path.join(dossier, "_internal"),
+                                                      os.path.join(dossier, "_internal"), vieux),
+            'move /Y "%s" "%s" >NUL' % (os.path.join(dossier_app, "_internal"),
+                                        os.path.join(dossier, "_internal")),
+        ]
+    lignes += [
+        'move /Y "%s" "%s" >NUL' % (nouveau_exe, cible),
+        'start "" "%s"' % cible,
+        # FILET ANTI-DLL EN BOUCLE (vécu ×2 : « Failed to load Python DLL …\_MEI…\python312.dll ») : au premier
+        # lancement d'un binaire frais, l'antivirus peut verrouiller l'extraction PyInstaller — et son scan peut
+        # durer BIEN plus que 10 s (vécu 2026-07-06 : la relance UNIQUE d'alors ratait aussi). On surveille
+        # ~60 s (4 × 15 s) et on relance jusqu'à 3 fois. onedir (>= 49) rend ce filet inutile mais inoffensif.
+        "set RETRY=0",
+        ":antidll",
+        "ping -n 16 127.0.0.1 >NUL",
+        'tasklist /FI "IMAGENAME eq Provara.exe" 2>NUL | find /I "Provara.exe" >NUL',
+        "if not errorlevel 1 goto fin",
+        "set /a RETRY+=1",
+        "if %RETRY% GEQ 4 goto fin",
+        'start "" "%s"' % cible,
+        "goto antidll",
+        ":fin",
+    ]
+    if dossier_app:
+        # ménage : vieil _internal renommé + reliquat d'extraction. GARDE-FOU : le `rd /s /q` du reliquat ne
+        # vise QUE un dossier nommé _DOSSIER_MAJ (jamais un chemin inféré -> impossible de purger l'installation).
+        src_top = dossier_app if os.path.basename(dossier_app) == _DOSSIER_MAJ else os.path.dirname(dossier_app)
+        lignes += ['rd /s /q "%s" >NUL 2>NUL' % os.path.join(dossier, "_internal.old")]
+        if os.path.basename(src_top) == _DOSSIER_MAJ:
+            lignes += ['rd /s /q "%s" >NUL 2>NUL' % src_top]
+    lignes += ['del "%~f0"']
+    contenu = "\r\n".join(lignes) + "\r\n"
     try:
         with open(bat, "w", encoding="ascii", errors="ignore") as f:
             f.write(contenu)

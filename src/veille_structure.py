@@ -163,7 +163,10 @@ def _termes_wiki(question: str) -> str:
     return q
 
 
-_BALISE_RE = re.compile(r"<[^>]+>")
+# Balises AVEC attributs quotés : les pages MediaWiki modernes embarquent du JSON Parsoid dans data-mw="{…}"
+# qui contient des `>` — la regex naïve <[^>]+> coupait la balise au premier `>` et le JSON fuyait dans le
+# « texte » (vécu 2026-07-06 : « A Brives » servait l'infobox {{…}} illisible comme extrait).
+_BALISE_RE = re.compile(r"<[^>\"']*(?:\"[^\"]*\"[^>\"']*|'[^']*'[^>\"']*)*>")
 
 
 def _dist2(a: str, b: str) -> int:
@@ -327,10 +330,28 @@ _SCRIPT_RE = re.compile(r"<(script|style|noscript|svg|head)[^>]*>.*?</\1>", re.S
 _CHARSET_RE = re.compile(r"charset=[\"']?([a-zA-Z0-9_-]+)", re.I)
 
 
+_WIKI_ARTICLE_RE = re.compile(r"https?://([a-z]{2,3})\.(?:m\.)?wikipedia\.org/wiki/([^?#]+)", re.I)
+
+
 def _texte_page(url: str, timeout: int = 6, cap: int = 400_000) -> str:
     """Télécharge une page (bornée à `cap` octets) et la réduit à son TEXTE (balises/scripts retirés).
     '' si le contenu n'est pas du texte/HTML. Les exceptions réseau remontent (l'appelant distingue
     « inaccessible » de « lue mais hors-sujet »)."""
+    # Article Wikipédia -> API TextExtracts (texte BRUT servi par la source elle-même : pas de coordonnées,
+    # de bandeaux d'homonymie ni de JSON d'infobox — le scraping HTML de MediaWiki est un champ de mines).
+    mw = _WIKI_ARTICLE_RE.match(url)
+    if mw:
+        u = ("https://%s.wikipedia.org/w/api.php?action=query&prop=extracts&explaintext=1&redirects=1"
+             "&format=json&titles=%s" % (mw.group(1).lower(), mw.group(2)))
+        brut = https_confiance.urlopen(
+            urllib.request.Request(u, headers={"User-Agent": _DDG_UA}), timeout=timeout).read(cap)
+        try:
+            pages = json.loads(brut.decode("utf-8", "replace")).get("query", {}).get("pages", {}) or {}
+            texte = " ".join((next(iter(pages.values()), {}).get("extract") or "").split())
+        except Exception:
+            texte = ""
+        if texte:
+            return texte[:cap]                            # repli scraping si l'API est muette (page spéciale…)
     rep = https_confiance.urlopen(urllib.request.Request(url, headers={"User-Agent": _DDG_UA}), timeout=timeout)
     ctype = rep.headers.get("Content-Type", "") or ""
     if "html" not in ctype and "text" not in ctype:

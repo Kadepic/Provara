@@ -4513,7 +4513,7 @@ def _cap_challenge(texte: str):
             "pas, je te le dirai honnêtement.%s À toi : lance ta première affirmation." % (cible, amorce))
 
 
-def _cap_quotidien(texte: str):
+def _cap_quotidien(texte: str, conv_id=None):
     """Questions du QUOTIDIEN : météo (refus honnête, chaleureux), heure et date (faits réels de l'horloge
     locale). Demandé par Yohan (2026-07-06) : « il fait quel temps ? » tombait dans l'aveu générique."""
     if _METEO_RE.search(texte):
@@ -4525,6 +4525,11 @@ def _cap_quotidien(texte: str):
             ville = ((mv.group(1) or mv.group(2)) if mv else "" ) or ""
             ville = ville.strip(" ?.!")
             if not ville or _normalise(ville) in ("moment", "aujourd", "aujourd hui", "instant"):
+                try:      # ATTENTE À TROU : le tour suivant (« A Brives ») COMPLÈTE la question météo au lieu
+                    import assistant_nl as _A                  # de repartir en recherche web (vécu 2026-07-06)
+                    _A.note_attente_slot(conv_id, "quel temps fait-il à %s ?")
+                except Exception:
+                    pass
                 return ("Je peux te donner la météo en direct — pour quelle ville ? (« quel temps fait-il à "
                         "Toulouse ? »)")
             try:
@@ -6366,7 +6371,8 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_quotidien, _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        # _cap_quotidien reçoit conv_id (attente à trou « pour quelle ville ? » rejouable au tour suivant).
+        for _cap in (lambda _t: _cap_quotidien(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
