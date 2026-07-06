@@ -1398,9 +1398,11 @@ def _fem_evt(nom: str) -> bool:
 # TEMPOREL N-ÉVÉNEMENTS : « quel est le plus ancien entre Marignan, Verdun et Waterloo ? ». Argmin/argmax sur les
 # DATES d'une liste explicite (≥3). Le 2-événements reste géré par _cap_temporel. FAUX=0 : dates vérifiées.
 _TEMPON_RE = re.compile(
-    r"^\s*(?:quel|qu[e'’]?\s*est[- ]ce\s+qui|lequel|laquelle|qui)\b[^?]*?"
-    r"(plus\s+ancien\w*|plus\s+r[ée]cent\w*|plus\s+vieux|plus\s+vieille|premier|premi[èe]re|le\s+plus\s+t[ôo]t|"
-    r"le\s+plus\s+tard|dernier|derni[èe]re)\b[^?]*?"
+    # préfixe interrogatif OPTIONNEL : « LE PLUS ANCIEN entre X, Y et Z ? » (forme courte) marche aussi —
+    # sinon la question filait au multi-questions qui découpait l'énumération sur les virgules (bruit).
+    r"^\s*(?:(?:quel|qu[e'’]?\s*est[- ]ce\s+qui|lequel|laquelle|qui)\b[^?]*?)?"
+    r"(?:le\s+|la\s+)?(plus\s+ancien\w*|plus\s+r[ée]cent\w*|plus\s+vieux|plus\s+vieille|premier|premi[èe]re|"
+    r"le\s+plus\s+t[ôo]t|le\s+plus\s+tard|dernier|derni[èe]re)\b[^?]*?"
     r"(?:entre|parmi|de)\s+(.+?)\s*\??\s*$", re.I)
 
 
@@ -1902,8 +1904,9 @@ def _cap_difference(texte: str):
 # une LISTE explicite (≥3 entités) — le 2-entités reste géré par _cap_comparaison. FAUX=0 : compare des valeurs
 # vérifiées, montre la valeur gagnante et le nombre comparé ; abstention si < 2 entités résolvent.
 _COMPARN_RE = re.compile(
-    r"^\s*(?:qui|quel|quelle|lequel|laquelle)\s+est\s+(?:le\s+|la\s+)?(plus|moins)\s+(\w+)\s+"
-    r"(?:entre|parmi|de)\s+(.+?)\s*\??\s*$", re.I)
+    # préfixe interrogatif OPTIONNEL (« le plus peuplé entre la France, l'Allemagne et l'Italie ? » court)
+    r"^\s*(?:(?:qui|quel|quelle|lequel|laquelle)\s+est\s+)?(?:le\s+|la\s+)?(plus|moins)\s+(\w+)\s+"
+    r"(?:entre|parmi)\s+(.+?)\s*\??\s*$", re.I)
 
 
 def _cap_comparaison_nway(texte: str):
