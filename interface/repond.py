@@ -3812,10 +3812,22 @@ def _diagnostic_connaissance(texte: str):
     try:
         import os, lecteur
         _charge_ia()
-        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s"
+        # CAPACITÉS PROUVÉES EN DIRECT (audit câblage 2026-07-06 : le registre capacites.py — 228 preuves à
+        # réponse connue sur ~170 modules de raisonnement — n'était atteignable par RIEN dans le produit).
+        # Chaque preuve est RÉELLEMENT exécutée à l'instant (<1 s, sans chargement de base) : couverture
+        # MESURÉE au moment où l'utilisateur demande, jamais déclarée.
+        cap = ""
+        try:
+            import capacites as _CAP
+            _ok, _ko, _echecs = _CAP.verifie_tout()
+            cap = " · capacités prouvées à l'instant : %d/%d%s" % (
+                _ok, _ok + _ko, "" if not _echecs else " (en échec : %s)" % ", ".join(_echecs[:3]))
+        except Exception:
+            pass
+        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s"
                 % (len(lecteur.LECTEUR.relations()), len(lecteur.LECTEUR),
                    os.environ.get("LECTEUR_DATASETS_DIR", "?"), _build_id(),
-                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée"))
+                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap))
     except Exception as e:
         return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
 

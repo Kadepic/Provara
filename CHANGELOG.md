@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — CÂBLAGE 0-ORPHELIN : 501/501 modules atteignables, audit permanent, 280 preuves en direct
+
+- **Mandat Yohan** : « il faut vraiment que tout ce qui a été construit soit câblé — 0 orphelin, assumé ou
+  non, sinon c'est de la dette ». L'audit a d'abord MESURÉ le réel : **223 modules de src/ n'étaient
+  atteignables par AUCUN chemin du produit** (dont `capacites.py` — le registre de preuves lui-même — et tout
+  ce qu'il porte : Pareto, Condorcet, causalité, lois physiques, simulation…).
+- **Nouveau gate permanent `tests/valide_cablage.py`** (dans la suite, 20 gates) : fermeture transitive des
+  imports depuis les entrées du produit (lance/verax_boot/serveur/repond) — un futur module non câblé remet
+  la suite AU ROUGE. Allowlist VIDE par mandat ; `_precharge_verax` (manifeste d'analyse PyInstaller) est
+  vérifié en LISANT `--hidden-import` dans build_exe.bat, jamais assumé — et sans traverser ses imports.
+- **Câblage réel en 2 étages** : ① le diagnostic exécute désormais `capacites.verifie_tout()` EN DIRECT
+  (« capacités prouvées à l'instant : 280/280 », ~5 s, sans chargement de base) → 171 modules recâblés d'un
+  coup ; ② les **52 modules restants ont reçu chacun une PREUVE à réponse connue** dans capacites.REGISTRE
+  (criblée de leur validateur : causalité, logique trivaluée, révision de croyances, triangulation, lois/
+  limites/simulation physiques, géométrie 3D, lexique kaikki, fabrique français, boucle générer-juger-garder,
+  session d'entraînement RÉELLE en mini, test du diable sur une tâche, usine à données…). Zéro preuve de
+  façade (`callable()` interdit — deux tentatives ont été remplacées par de vraies exécutions).
+- `valide_capacites` 73/73 (228 → 280 preuves), suite conversationnelle **20/20 gates**, diagnostic e2e :
+  *« …capacités prouvées à l'instant : 280/280 »*.
+
 ## 2026-07-06 — « Mon avis est… » : premier avis ASSUMÉ de Provara — réflexion outillée, pas ressentie
 
 - **Demande Yohan** : que l'IA puisse donner SON avis sur du non-tranché — « la réflexion réelle mais bien plus
