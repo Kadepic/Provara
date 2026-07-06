@@ -25,6 +25,7 @@ GATES = [
     "valide_fraicheur", "valide_confiance", "valide_langue", "valide_explications", "valide_fonction_stats_nl",
     "valide_extrait_pdf", "valide_lecteur_document", "valide_apprentissage_patrons", "valide_conversation",
     "valide_capacites_chat", "valide_assistant_nl", "valide_maj", "valide_veille_structure", "valide_cablage",
+    "valide_faits_appris",
     # bancs de COMPRÉHENSION qui passent sur l'ÉCHANTILLON (les autres — paraphrases/synonymes/raisonnement —
     # exigent la base COMPLÈTE : trous de données sur le sample, à lancer manuellement avec LECTEUR_DATASETS_DIR).
     "banc_constructions",

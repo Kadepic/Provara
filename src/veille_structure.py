@@ -108,15 +108,23 @@ def interroge(attribut: str, entite: str, timeout: int = 20):
     return (val, "Wikidata") if val else None
 
 
-def interroge_nl(question: str, timeout: int = 20):
-    """Question en langage naturel (« capitale de la Ruritanie ? ») -> (attribut, entité, valeur, source) si
-    trouvé sur Wikidata, sinon None. Extraction déterministe ; aucune invention."""
+def analyse_nl(question: str):
+    """PARSE SEUL (aucun réseau) : « capitale de la Ruritanie ? » -> (attribut_normalisé, entité) ou None.
+    Sert au rappel du cache des faits appris (faits_appris.py) avec la MÊME clé que ce qu'interroge_nl écrirait."""
     q = " ".join((question or "").strip().split())
     m = _MOTIF.match(q)
     if not m:
         return None
-    attribut = _normalise(m.group(1)).strip()      # sans accents -> table des propriétés
-    entite = m.group(2).strip()                    # CASSE + ACCENTS préservés -> label Wikidata
+    return _normalise(m.group(1)).strip(), m.group(2).strip()
+
+
+def interroge_nl(question: str, timeout: int = 20):
+    """Question en langage naturel (« capitale de la Ruritanie ? ») -> (attribut, entité, valeur, source) si
+    trouvé sur Wikidata, sinon None. Extraction déterministe ; aucune invention."""
+    ae = analyse_nl(question)
+    if not ae:
+        return None
+    attribut, entite = ae                          # attribut sans accents (table) ; entité casse+accents (label)
     res = interroge(attribut, entite, timeout)
     if res is None:
         return None

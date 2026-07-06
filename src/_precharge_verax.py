@@ -90,6 +90,10 @@ try:
 except Exception:
     pass
 try:
+    import faits_appris
+except Exception:
+    pass
+try:
     import astronautique
 except Exception:
     pass

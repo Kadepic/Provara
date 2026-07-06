@@ -223,6 +223,11 @@ CAS = [
     ("synonyme-tete-richesse", R._cap_synonyme_tete, "quelle est la richesse du Japon ?", "$"),
     ("synonyme-tete-taille", R._cap_synonyme_tete, "quelle est la taille de la France ?", "km²"),
     ("synonyme-tete-faux", R._cap_synonyme_tete, "quelle est la taille de Napoléon Ier ?", ""),  # pas dans superficie
+    # ville dont l'article est DANS le nom (« du Caire » = de + LE Caire) : phrase complète, JAMAIS le nombre nu
+    # (vécu 2026-07-06 : « population du Caire » -> « 9801536 » brut car le cap ratait « Caire » ≠ clé « Le Caire »)
+    ("ville-article-du-caire", R._cap_synonyme_tete, "population du Caire", "Population du Caire : "),
+    ("ville-article-a-le-caire", R._cap_synonyme_tete, "population de le Caire", "habitants."),
+    ("ville-sans-article-nice", R._cap_synonyme_tete, "population de Nice", "Population de Nice : "),
     # garde FAUX=0 : un alias appris ne peut PAS échanger une entité (« wakanda »->« france » = faux)
     ("alias-change-entite", lambda q: "BLOQUE" if R._alias_change_entite(
         "population du wakanda", "population du france") else "PASSE", "x", "BLOQUE"),
