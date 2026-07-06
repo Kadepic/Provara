@@ -3605,6 +3605,19 @@ def _entite_ancree(entite: str):
             return (entite, _E._AFFICHE.get(genre_seed, genre_seed))   # forme accentuée (« planète »)
     except Exception:
         pass
+    # VILLE CONNUE : se présenter comme telle (« berlin — ville d'Allemagne ») plutôt que par la définition
+    # Wiktionnaire du nom commun homonyme (« berlin : paquet de fil arrêté par un nœud » !).
+    try:
+        cv = _charge_direct("pays_ville").get(_normalise(_strip_article(entite)))
+        if cv:
+            try:
+                import realisation_fr as _RF
+                de_p = _RF.de_pays(cv[1])
+            except Exception:
+                de_p = "de %s" % cv[1]
+            return (cv[0], "ville %s" % de_p)
+    except Exception:
+        pass
     for rel in _ANCRAGE_SONDE:
         try:
             cell = _lookup_cell(rel, entite)
