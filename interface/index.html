@@ -70,7 +70,16 @@
   #titre { padding: 12px 16px; border-bottom: 1px solid var(--bord); background: var(--panneau);
            display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   #titre h2 { margin: 0; font-size: 15px; font-weight: 600; }
-  #barre-outils { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  #barre-outils { position: relative; display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  #menu-outils {
+    position: absolute; top: calc(100% + 6px); right: 0; z-index: 500; min-width: 230px;
+    display: flex; flex-direction: column; gap: 6px; padding: 10px;
+    background: var(--panneau); border: 1px solid var(--bord); border-radius: 12px;
+    box-shadow: 0 8px 28px rgba(0,0,0,.18);
+  }
+  #menu-outils[hidden] { display: none; }
+  #menu-outils button, #menu-outils select { width: 100%; text-align: left; }
+  #btn-quitter { border-color: #c98f7e !important; color: #a15a4a !important; }
   #barre-outils button, #barre-outils select {
     margin: 0; padding: 6px 10px; border-radius: 8px; font-size: 12.5px; cursor: pointer;
     border: 1px solid var(--bord); background: var(--panneau); color: var(--doux); white-space: nowrap;
@@ -125,6 +134,8 @@
     <div id="titre">
       <div class="titre-txt"><h2>—</h2><span class="scope"></span></div>
       <div id="barre-outils">
+        <button id="btn-menu" title="Réglages" aria-haspopup="true" aria-expanded="false">⚙️ Réglages</button>
+        <div id="menu-outils" hidden>
         <button id="btn-web" title="État de l'accès à internet…">🌐 Internet : …</button>
         <button id="btn-maj-auto" title="Mises à jour automatiques : Provara vérifie et propose les nouveautés dès qu'Internet est actif">🔄 MAJ auto : …</button>
         <button id="btn-maj-verif" title="Rechercher maintenant une mise à jour sur le dépôt officiel" style="display:none">🔍 Rechercher une MAJ</button>
@@ -137,6 +148,8 @@
           <option value="it">🇮🇹 Italiano</option>
           <option value="pt">🇵🇹 Português</option>
         </select>
+        <button id="btn-quitter" title="Fermer complètement Provara (le serveur local s'arrête)">⏻ Quitter Provara</button>
+        </div>
       </div>
     </div>
     <div id="tours"><div class="centre">Bonjour, je suis <strong>Provara</strong>. Crée une conversation et pose-moi une question — je réponds avec ce que je sais ou ce que je trouve sur internet (toujours sourcé), et si je ne trouve pas, je le dis honnêtement.</div></div>
@@ -401,6 +414,26 @@ async function majVerifieMaj(force) {
 // jusqu'au prochain démarrage — la bannière apparaît maintenant toute seule, sans aucun geste).
 setInterval(() => majVerifieMaj(false), 15 * 60 * 1000);
 
+// — MENU RÉGLAGES (design Yohan 06/07) : un seul bouton en haut à droite, tout dedans —
+const _menu = document.getElementById("menu-outils");
+const _btnMenu = document.getElementById("btn-menu");
+_btnMenu.onclick = (e) => {
+  e.stopPropagation();
+  _menu.hidden = !_menu.hidden;
+  _btnMenu.setAttribute("aria-expanded", _menu.hidden ? "false" : "true");
+};
+document.addEventListener("click", (e) => {
+  if (!_menu.hidden && !_menu.contains(e.target) && e.target !== _btnMenu) _menu.hidden = true;
+});
+let _quitteVolontaire = false;
+document.getElementById("btn-quitter").onclick = async () => {
+  if (!confirm("Fermer complètement Provara ? (le serveur local s'arrête)")) return;
+  _quitteVolontaire = true;
+  try { await api("/api/quitter", { method: "POST" }); } catch (e) {}
+  document.body.innerHTML = "<div class='centre'><h2>Provara est fermé.</h2>" +
+    "<p>Tu peux fermer cet onglet. À bientôt 👋</p></div>";
+};
+
 // — WATCHDOG SERVEUR (retours Yohan 06/07) : après une mise à jour, la page restait FIGÉE sans dire si la MAJ
 // avait marché ; et si le redémarrage échouait, recharger ne servait à rien. Ici : ping léger toutes les 4 s ;
 // serveur perdu -> bandeau « mise à jour en cours » ; serveur revenu -> RECHARGEMENT AUTO (nouvelle version à
@@ -431,6 +464,7 @@ setInterval(() => majVerifieMaj(false), 15 * 60 * 1000);
       }
       rates = 0; perduDepuis = 0; bandeau("", "");
     } catch (e) {
+      if (_quitteVolontaire) return;               // fermeture volontaire : silence
       rates += 1;
       if (rates === 3) perduDepuis = Date.now();
       if (rates >= 3) {
@@ -677,21 +711,7 @@ document.addEventListener("DOMContentLoaded", () => {
   tick();
 });
 
-// Bouton QUITTER (mode fenêtré .exe : plus de console pour Ctrl+C). Arrêt propre du serveur local.
-document.addEventListener("DOMContentLoaded", () => {
-  const barre = document.getElementById("barre-outils");
-  if (!barre || document.getElementById("btn-quitter")) return;
-  const q = document.createElement("button");
-  q.id = "btn-quitter"; q.textContent = "⏻ Quitter"; q.title = "Arrêter Provara (le serveur local s'arrête)";
-  q.onclick = async () => {
-    if (!confirm("Arrêter Provara ? Vous pourrez le relancer par son raccourci.")) return;
-    try { await fetch("/api/quitter", { method: "POST" }); } catch {}
-    document.body.innerHTML = "<div style='display:flex;height:100vh;align-items:center;justify-content:center;"
-      + "font-family:system-ui,sans-serif;color:#7C3AED;font-size:18px;text-align:center;padding:24px'>"
-      + "Provara est arrêté.<br>Vous pouvez fermer cet onglet.</div>";
-  };
-  barre.appendChild(q);
-});
+// (le bouton Quitter vit désormais EN DUR dans le menu ⚙️ Réglages — plus d'injection dynamique)
 </script>
 
 <!-- MODALE (chargement / installation base complète) -->
