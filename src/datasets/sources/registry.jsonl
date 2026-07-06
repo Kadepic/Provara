@@ -4,3 +4,4 @@
 {"id": "wikipedia-fr", "url": "https://fr.wikipedia.org", "domaines": ["general", "encyclopedie"], "relations": [], "actif": true}
 {"id": "rest-countries", "url": "https://restcountries.com/v3.1/all", "domaines": ["geographie"], "relations": ["capitale", "population", "superficie"], "actif": true}
 {"id": "wikidata-wdqs", "url": "https://query.wikidata.org/sparql", "domaines": ["general", "geographie", "sciences", "histoire", "personnes"], "relations": [], "actif": true, "note": "endpoint SPARQL officiel (rate-limité) — les ingestions passent par qlever-wikidata en pratique"}
+{"id": "open-meteo", "url": "https://api.open-meteo.com/v1/forecast", "domaines": ["meteo"], "relations": [], "actif": true, "note": "météo en direct, API publique structurée sans clé (+ geocoding-api.open-meteo.com) — relevés RAPPORTÉS, jamais appris en base"}

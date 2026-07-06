@@ -212,6 +212,11 @@ CAS += [
     ("quelle est la longueur du Nil ?", "6 650 km"),
     ("quelle est la hauteur de la tour Eiffel ?", "330"),    # nouvelle relation hauteur_tour (P2048 BestRank)
     ("quelle est la hauteur de Burj Khalifa ?", "828"),
+    # ————— VIE QUOTIDIENNE + demandes ouvertes (retours Yohan du 06/07 matin) —————
+    ("quelle heure est-il ?", "horloge"),
+    ("quel jour sommes-nous ?", "2026"),
+    ("quel temps fait-il ?", "direct"),                      # web ON: demande la ville ; OFF: refus honnête — jamais deviné
+    ("je voudrais que tu me challenges sur les capitales", "Défi accepté"),
     ("quelles langues parle-t-on au Japon ?", "37"),         # PLURIEL = liste (singularisation nue dans _base)
     ("en quelle année est né Mozart ?", "1756"),             # ex-FAUX : footballeur brésilien né en 1979 !
     ("quand est né Bach ?", "1685"),                         # ex-FAUX : nu -> 1882, « Johann S. Bach » -> petit-fils 1748

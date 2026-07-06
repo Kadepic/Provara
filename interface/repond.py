@@ -61,7 +61,13 @@ def _veut_reponse(texte: str) -> bool:
     suivie de son connecteur EST une demande, même sans point d'interrogation)."""
     if "?" in texte:
         return True
-    toks = _normalise(texte).split()
+    tn = _normalise(texte)
+    # DEMANDE D'INTERACTION à la 2e personne (« je voudrais que tu me challenges sur… », « peux-tu me
+    # parler de… ») : c'est une REQUÊTE, jamais un fait à noter (Yohan 2026-07-06 : parti en mémo !).
+    if re.search(r"\b(?:peux[- ]tu|pourrais[- ]tu|je\s+voudrais\s+que\s+tu|j\s*aimerais\s+que\s+tu|"
+                 r"tu\s+peux|challenge|defie|teste[- ]moi|interroge[- ]moi)\b", tn):
+        return True
+    toks = tn.split()
     if set(toks) & _INDICES_DEMANDE:
         return True
     if len(toks) >= 3 and toks[1] in ("de", "du", "des", "d", "entre") and not (set(toks) & _TOKENS_AFFIRMATION):
@@ -1735,6 +1741,23 @@ _UNITE_PREFIXE = (("altitude", "m"), ("hauteur", "m"), ("longueur", "m"),
                   ("superficie", "km²"), ("population", "habitants"), ("pib", "$"), ("debit", "m³/s"))
 
 
+def _de_ville(nom: str) -> str:
+    """« de <ville> » : les villes n'ont PAS d'article (« de Rome », « d'Athènes ») — sauf celles dont le nom
+    l'inclut (« Le Caire » -> « du Caire », « La Havane » -> « de La Havane », « Les Ulis » -> « des Ulis »)."""
+    bas = nom.lower()
+    if bas.startswith("le "):
+        return "du " + nom[3:]
+    if bas.startswith("la "):
+        return "de " + nom
+    if bas.startswith("les "):
+        return "des " + nom[4:]
+    if bas.startswith(("l'", "l’")):
+        return "de " + nom
+    if bas[:1] in "aeiouyàâéèêëîïôöùûh":
+        return "d'" + nom
+    return "de " + nom
+
+
 def _unite_attr(attr_rel: str) -> str:
     """Unité d'affichage d'un attribut : table exacte puis repli par préfixe de famille (« altitude_montagne » -> m)."""
     if attr_rel in _ATTR_UNITE:
@@ -1872,11 +1895,14 @@ def _cap_synonyme_tete(texte: str):
         if cell and cell[1] not in (None, ""):
             n = _nombre(cell[1])
             unite = _unite_attr(rel)
-            try:                                     # français soigné : « du Japon », « de la France »
-                import realisation_fr as _RF
-                de_ent = _RF.de_syntagme(cell[0])
-            except Exception:
-                de_ent = "de %s" % cell[0]
+            if _charge_direct("pays_ville").get(_normalise(cell[0])):
+                de_ent = _de_ville(cell[0])          # VILLE : « de Rome », « d'Athènes » (pas « du Rome »)
+            else:
+                try:                                 # français soigné : « du Japon », « de la France »
+                    import realisation_fr as _RF
+                    de_ent = _RF.de_syntagme(cell[0])
+                except Exception:
+                    de_ent = "de %s" % cell[0]
             tete_aff = m.group(1).strip().capitalize()
             if n is not None:
                 aff = format(int(round(n)), ",d").replace(",", " ") if float(n).is_integer() else "%g" % n
@@ -4440,6 +4466,99 @@ _SYSTEME_RE = re.compile(
     r"[^?]*?syst[eè]me\s+(?:(solaire)|(?:de\s+(?:la\s+|l['’])?|d['’])?([\wà-ÿ'’\- ]+?))\s*\??\s*$", re.I)
 
 
+# ————— VIE QUOTIDIENNE (météo/heure/date) : des questions de tous les jours, pas des lookups de base —————
+# L'HEURE et la DATE sont des FAITS vérifiables (l'horloge de la machine) -> réponse exacte. La MÉTÉO exige
+# des capteurs/une position qu'on n'a pas -> refus honnête et CHALEUREUX (pas l'aveu robotique générique).
+_METEO_RE = re.compile(
+    r"\b(?:quel\s+temps\s+(?:fait[- ]il|il\s+fait|aujourd)|il\s+fait\s+quel\s+temps|la\s+m[ée]t[ée]o|"
+    r"va[- ]?t[- ]?il\s+(?:pleuvoir|neiger)|il\s+(?:pleut|neige|fait\s+beau|fait\s+froid|fait\s+chaud)\b.{0,15}\?|"
+    # température LIVE (« quelle température fait-il à Toulouse aujourd'hui ? ») — le marqueur fait-il/
+    # aujourd'hui/dehors/en ce moment distingue la météo de la PHYSIQUE factuelle (point d'ébullition…)
+    r"quelle\s+temp[ée]rature\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il|dehors)|"
+    r"temp[ée]rature\b[^?]{0,40}\b(?:aujourd['’ ]?hui|demain|dehors|en\s+ce\s+moment|maintenant|cette\s+semaine))", re.I)
+_HEURE_RE = re.compile(r"\bquelle\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quelle\s+heure\b", re.I)
+_DATE_JOUR_RE = re.compile(
+    r"\bquel\s+jour\s+(?:sommes[- ]nous|on\s+est|est[- ]on)\b|\bquelle\s+est\s+la\s+date\s+(?:d['’]aujourd|du\s+jour)|"
+    r"\bon\s+est\s+le\s+combien\b|\bnous\s+sommes\s+le\s+combien\b", re.I)
+_JOURS_FR = ("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche")
+_MOIS_FR = ("janvier", "février", "mars", "avril", "mai", "juin", "juillet",
+            "août", "septembre", "octobre", "novembre", "décembre")
+
+
+_CHALLENGE_RE = re.compile(
+    r"\b(?:challenges?[- ]moi|d[ée]fie[- ]moi|teste[- ]moi|interroge[- ]moi|que\s+tu\s+me\s+challenges?|"
+    r"que\s+tu\s+me\s+testes?|que\s+tu\s+me\s+d[ée]fies?)\b(?:.*?\bsur\s+(.+?))?\s*\??\s*$", re.I)
+
+
+def _cap_challenge(texte: str):
+    """« Challenge-moi sur X » : Provara ne bluffe jamais, donc le défi se joue à SA façon — l'utilisateur
+    AFFIRME, Provara tranche Vrai/Faux/Indécidable avec preuve (capacité réelle existante). Si le sujet a une
+    définition vérifiée, elle amorce l'échange. Demandé par Yohan (2026-07-06 : partait en mémo !)."""
+    m = _CHALLENGE_RE.search(texte)
+    if not m:
+        return None
+    sujet = _strip_article((m.group(1) or "").strip(" ?.!")) if m.group(1) else ""
+    amorce = ""
+    if sujet:
+        try:
+            import est_un as _E
+            d = _E.definition(sujet) or _E.definition(sujet.split()[-1])
+            if d:
+                amorce = " Pour poser le décor, un fait vérifié — %s : %s." % (sujet, d[:160].rstrip("."))
+        except Exception:
+            pass
+    cible = (" sur « %s »" % sujet) if sujet else ""
+    return ("Défi accepté%s — mais à MA façon, parce que je ne bluffe jamais : AFFIRME des choses, et je "
+            "tranche chacune par Vrai, Faux ou Indécidable, preuve à l'appui. Ce que la réalité ne tranche "
+            "pas, je te le dirai honnêtement.%s À toi : lance ta première affirmation." % (cible, amorce))
+
+
+def _cap_quotidien(texte: str):
+    """Questions du QUOTIDIEN : météo (refus honnête, chaleureux), heure et date (faits réels de l'horloge
+    locale). Demandé par Yohan (2026-07-06) : « il fait quel temps ? » tombait dans l'aveu générique."""
+    if _METEO_RE.search(texte):
+        # WEB ON -> VRAIE météo (source STRUCTURÉE Open-Meteo, relevé attribué — exigence Yohan : « si
+        # Internet est activé, il peut très bien aller vérifier »). WEB OFF -> refus honnête + geste.
+        if os.environ.get("IA_WEB") == "1":
+            mv = re.search(r"\b(?:[àa]|au|en|sur|pour)\s+((?:[A-ZÀ-Ü][\wà-ÿ'’-]+)(?:[\s-][A-ZÀ-Ü][\wà-ÿ'’-]+)*)"
+                           r"|\b(?:[àa]|au)\s+([a-zà-ÿ][\wà-ÿ'’-]{2,})\b", texte)
+            ville = ((mv.group(1) or mv.group(2)) if mv else "" ) or ""
+            ville = ville.strip(" ?.!")
+            if not ville or _normalise(ville) in ("moment", "aujourd", "aujourd hui", "instant"):
+                return ("Je peux te donner la météo en direct — pour quelle ville ? (« quel temps fait-il à "
+                        "Toulouse ? »)")
+            try:
+                import meteo as _MET
+                rel = _MET.actuelle(ville)
+            except Exception:
+                rel = None
+            if rel:
+                morceaux = ["%g °C" % rel["temperature"]]
+                if rel.get("libelle"):
+                    morceaux.append(rel["libelle"])
+                if rel.get("vent_kmh") is not None:
+                    morceaux.append("vent %g km/h" % rel["vent_kmh"])
+                ou = rel["nom"] + ((" (%s)" % rel["pays"]) if rel.get("pays") else "")
+                quand = (" à %s" % rel["heure"]) if rel.get("heure") else ""
+                return ("À %s en ce moment : %s (relevé open-meteo.com%s — rapporté, pas de ma base)."
+                        % (ou, ", ".join(morceaux), quand))
+            return ("Je n'ai pas réussi à obtenir le relevé météo pour « %s » (ville inconnue du géocodeur ou "
+                    "réseau) — je préfère te le dire que d'inventer." % ville)
+        return ("Internet est coupé, et la météo est une donnée EN DIRECT : sans réseau, te répondre serait "
+                "deviner — et je ne devine jamais 🙂 Active Internet (bouton « 🌐 ») et je te donne le relevé "
+                "réel, sourcé.")
+    if _HEURE_RE.search(texte):
+        import time as _t
+        lt = _t.localtime()
+        return "Il est %02d h %02d (horloge de ta machine)." % (lt.tm_hour, lt.tm_min)
+    if _DATE_JOUR_RE.search(texte):
+        import time as _t
+        lt = _t.localtime()
+        return ("Nous sommes le %s %d %s %d (horloge de ta machine)."
+                % (_JOURS_FR[lt.tm_wday], lt.tm_mday, _MOIS_FR[lt.tm_mon - 1], lt.tm_year))
+    return None
+
+
 _CONTRAIRE_RE = re.compile(
     r"(?:quel(?:le)?\s+est\s+)?(?:le\s+|l['’]\s*)?(?:contraire|oppos[ée]|antonyme)\s+"
     r"(?:de\s+|du\s+|d['’]\s*)(?:la\s+|le\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
@@ -6247,7 +6366,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if _r:
             return _r
     if pleine:
-        for _cap in (_cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        for _cap in (_cap_quotidien, _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

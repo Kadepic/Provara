@@ -149,7 +149,12 @@ _STOP_SUJET = frozenset(
     "ces cet le la les l un une des du de d au aux en dans sur sous pour par avec sans et puis donc alors "
     "dis dis-moi donne donnez sais peux pourrais saurais connais cherche trouve montre explique il elle on ne "
     "pas plus tu te toi moi je nous vous mon ma mes ton ta tes son sa ses stp svp bonjour merci fait faire "
-    "veut veux dire signifie appelle situe lieu eu ete avoir etre y a t".split())
+    "veut veux dire signifie appelle situe lieu eu ete avoir etre y a t "
+    # verbes d'EXPOSÉ (« peux-tu me PARLER de la gestion de projet » : le sujet est « gestion de projet »,
+    # pas « parler gestion projet » — vécu 2026-07-06, la recherche web partait avec un sujet pollué)
+    "parle parler parles parlez presente presenter presentez decris decrire decrivez expose exposer "
+    "challenge challenges challenger defie defier teste tester interroge interroger voudrais aimerais "
+    "fonctionne fonctionnent fonctionner marche marchent role mecanisme pense penses crois avis".split())
 
 # Préfixes des textes de CE module (source unique -> la porte unique les reclasse POSITIVEMENT, capacité 3).
 _PFX_HORS_FAIT = "Je n'ai pas ce fait vérifié en mémoire"
@@ -225,14 +230,16 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
     # WEB LIBRE (Wikipédia) : rapport ATTRIBUÉ quand le structuré ne tranche pas (design Yohan « d'après [source] »).
     try:
         import veille_structure as _VS2
-        _wl = _VS2.cherche_web_libre(question)
+        _wl = _VS2.cherche_web_libre(sujet or question)   # le SUJET nettoyé, pas la phrase brute (bug vécu)
     except Exception:
         _wl = None
     if _wl:
         _extrait, _titre, _url = _wl
         try:                                   # GATE DE PERTINENCE (partagé avec repond._recherche_structuree) :
             _R = _module_repond()              # un extrait qui ne parle pas de la question n'est pas servi.
-            if not getattr(_R, "_extrait_pertinent", lambda *a: True)(question, _titre, _extrait):
+            # la gate juge le SUJET NETTOYÉ, pas la question brute : « peux-tu me PARLER de la gestion de
+            # projet IT » gardait « parler »/« it » comme mots de contenu -> extrait pertinent refusé à tort
+            if not getattr(_R, "_extrait_pertinent", lambda *a: True)(sujet or question, _titre, _extrait):
                 _wl = None
         except Exception:
             pass
@@ -261,7 +268,7 @@ def _reponse_opinion(question, c):
     if os.environ.get("IA_WEB") == "1" or _TRANSPORT is not None:
         try:
             import veille_structure as _VS
-            wl = _VS.cherche_web_libre(question)
+            wl = _VS.cherche_web_libre(_sujet_recherche(question) or question)
         except Exception:
             wl = None
         if wl:
@@ -300,6 +307,14 @@ def apres_hors(question: str, conv_id=None) -> Reponse | None:
     elif c.statut_ontologique == _CB.BORNE:
         rep = _cherche_sources(q, c, conv_id)
     else:                                                    # indécidable -> demander, jamais deviner
+        # PRINCIPE (Yohan 2026-07-06) : web ON = toujours une réponse — l'indécidable TENTE d'abord les
+        # sources (rapport ATTRIBUÉ, supposition rapportée) ; la clarification n'arrive que si le web n'a rien.
+        if os.environ.get("IA_WEB") == "1" or _TRANSPORT is not None:
+            r_web = _cherche_sources(q, c, conv_id)
+            if r_web is not None and r_web.statut in (FAIT, SUPPOSITION):
+                if conv_id:
+                    _INDECIS.pop(conv_id, None)
+                return r_web
         n = _INDECIS.get(conv_id, 0) + 1 if conv_id else 1
         if conv_id:
             _INDECIS[conv_id] = n
