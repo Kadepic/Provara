@@ -5489,8 +5489,9 @@ def _cap_record_monde(texte: str):
         return ("Le Nil (≈ 6 650 km) ou l'Amazone (6 400 à 7 000 km selon le tracé retenu) : la primauté est "
                 "scientifiquement DISPUTÉE — je ne tranche pas.%s" % rel)
     if typ == "ile" and adj in ("grand", "vaste"):
-        return ("Le Groenland (2 166 086 km²) — l'Australie, plus vaste, est comptée comme un continent. "
-                "(Fait de référence curé : ma table superficie_ile ne contient pas le Groenland.)")
+        cg = _lookup_cell("superficie_ile", "Groenland")     # relu en direct (ré-ingestion BestRank 2026-07-06)
+        v = (" (%s km², fait vérifié dans mes données)" % format(int(float(cg[1])), ",d").replace(",", " ")) if cg else ""
+        return "Le Groenland%s — l'Australie, plus vaste, est comptée comme un continent." % v
     if typ == "desert" and adj in ("grand", "vaste"):
         cell = _lookup_cell("superficie_desert", "Sahara")
         sah = (" (%s km², fait vérifié dans mes données)" % cell[1]) if cell else ""

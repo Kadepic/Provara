@@ -1,5 +1,12 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Le Groenland rejoint la base : superficie_ile ×3,5 (BestRank)
+
+- `superficie_ile` ré-ingéré avec le fix BestRank+mul : **4 851 → 17 031 îles**, dont enfin le Groenland
+  (*2 130 800 km²*). « La plus grande île du monde ? » relit la valeur en direct (plus de « fait curé » —
+  la note honnête sur l'Australie-continent reste). « Le Groenland est-il plus grand que Madagascar ? » →
+  comparaison chiffrée. Bancs : 164/164, 163/163, 18/18, 16/16.
+
 ## 2026-07-06 — BestRank : le Nil, l'Amazone, la tour Eiffel (330 m) et Burj Khalifa (828 m) sont mesurables
 
 - **Cause racine n°3 des trous** : les requêtes unit-aware lisaient TOUS les rangs Wikidata — le Nil portait
