@@ -9,13 +9,13 @@ FAUX = 0 est l'invariant fondateur de Provara : le système n'affirme jamais que
 Elle s'appelle ainsi :
 
 ```bash
-python3 _nonreg.py --jobs 8      # attendu sur la base complète : 683/683
+python3 _nonreg.py --jobs 8      # attendu sur la base complète : 687/687
 ```
 
 À la fin, elle imprime une ligne de synthèse et rend un code de sortie :
 
 ```
-=== NON-RÉG : 683/683 PASS (... via cache) en Xs ===
+=== NON-RÉG : 687/687 PASS (... via cache) en Xs ===
 ```
 
 Le code de retour vaut `0` si et seulement si **aucun** validateur n'a échoué ; il vaut `1` dès qu'un seul échoue (`raise SystemExit(main())`). Il n'y a pas de demi-mesure : un unique fait faux qui entre dans le système fait tomber un validateur, donc fait rougir la gate.
@@ -36,20 +36,20 @@ Le cache est protégé contre trois pièges classiques, ce qui le rend **sound**
 
 ## Combien de validateurs, et lesquels
 
-La gate protège **683 validateurs actifs** (`valide_*.py`) : c'est la gate de référence, **683/683**. Ce nombre correspond exactement aux fichiers `valide_*.py` présents dans le dossier `tests/` (moins `valide_commun.py`, qui est un module de *helpers* partagés explicitement exclu — ce n'est pas un validateur), plus le validateur d'interface `interface/valide_interface.py`.
+La gate protège **687 validateurs actifs** (`valide_*.py`) : c'est la gate de référence, **687/687**. Ce nombre correspond exactement aux fichiers `valide_*.py` présents dans le dossier `tests/` (moins `valide_commun.py`, qui est un module de *helpers* partagés explicitement exclu — ce n'est pas un validateur), plus le validateur d'interface `interface/valide_interface.py`.
 
-Sur le disque, les **683 fichiers `valide_*.py`** vivent dans le dossier `tests/` (il n'y a pas de dossier d'archive séparé).
+Sur le disque, les **687 fichiers `valide_*.py`** vivent dans le dossier `tests/` (il n'y a pas de dossier d'archive séparé).
 
 La sélection est **auto-découvrante** : `liste_validateurs()` maintient une liste curée (qui fixe l'ordre et repère les tests lourds), puis **ajoute automatiquement tout `valide_*.py`** non encore listé. Conséquence directe pour FAUX = 0 : aucune capacité réelle ne peut rester « orpheline » hors du filet ; tout nouveau validateur déposé est protégé d'office.
 
-> **Layout `_nonreg` (portage, 2026-07-03) :** la gate historique AUTORITÉ vit dans le repo d'origine `IA_nouvelle_vision/harnais/` (validateurs colocalisés en layout plat, où `_nonreg.py` passe). Le repo Provara est **restructuré** (`src/`+`tests/`+`interface/`+`ingestion/`) : `_nonreg.py` y a été réparé pour DÉCOUVRIR et LANCER les validateurs (résolution via `_chemin()`, `PYTHONPATH` = `tests`+`src`+`interface`+`ingestion` sur chaque sous-processus). Vérifié : `liste_validateurs()` renvoie **683** (était 1) et les validateurs autonomes passent (composition 9/9, ocr 28/28, vague4 4/4…). ⚠️ Le vert **683/683 dans Provara** n'est pas encore atteint : le port n'a pas re-routé les chemins codés en dur de certains validateurs (`datasets/…`, `src/ia.py` relatifs à leur dossier) et plusieurs exigent la **base complète 71,9 M** (lecteur_t5..t12, resolution, taxonomie, substrat_reel). Ce ne sont pas des régressions — c'est un chantier de portage. **Contrôle autonome fiable dans Provara pour la couche conversationnelle : `tests/suite_conversation.py` (16/16).**
+> **Layout `_nonreg` (portage, 2026-07-03) :** la gate historique AUTORITÉ vit dans le repo d'origine `IA_nouvelle_vision/harnais/` (validateurs colocalisés en layout plat, où `_nonreg.py` passe). Le repo Provara est **restructuré** (`src/`+`tests/`+`interface/`+`ingestion/`) : `_nonreg.py` y a été réparé pour DÉCOUVRIR et LANCER les validateurs (résolution via `_chemin()`, `PYTHONPATH` = `tests`+`src`+`interface`+`ingestion` sur chaque sous-processus). Vérifié : `liste_validateurs()` renvoie **687** (était 1) et les validateurs autonomes passent (composition 9/9, ocr 28/28, vague4 4/4…). ⚠️ Le vert **687/687 dans Provara** n'est pas encore atteint : le port n'a pas re-routé les chemins codés en dur de certains validateurs (`datasets/…`, `src/ia.py` relatifs à leur dossier) et plusieurs exigent la **base complète 71,9 M** (lecteur_t5..t12, resolution, taxonomie, substrat_reel). Ce ne sont pas des régressions — c'est un chantier de portage. **Contrôle autonome fiable dans Provara pour la couche conversationnelle : `tests/suite_conversation.py` (21/21).**
 
 ### Suite conversationnelle (`tests/suite_conversation.py`)
 
 Les gates de l'assistant conversationnel (grammaire, conjugaison, OCR, **traduction**, **composition**, **fraîcheur**, confiance, langue, stats-NL, documents, patrons, capacités du chat, plus conversation/assistant_nl) sont agrégés par un **runner dédié** — car ils demandent le `PYTHONPATH` `interface`+`src`+`ingestion` que la gate cœur ne pose pas :
 
 ```bash
-python3 tests/suite_conversation.py     # attendu : 16/16 gates au vert (469 checks)
+python3 tests/suite_conversation.py     # attendu : 21/21 gates au vert
 ```
 
 Il lance chaque gate en sous-processus isolé, avec le bon environnement, et sort en échec dès qu'un seul régresse. À passer avant tout commit touchant `interface/` ou une brique conversationnelle.

@@ -2,7 +2,7 @@
 
 > Généré mécaniquement depuis le code (docstrings + API). Représente l'intégralité des modules livrés.
 
-**1304 modules · 4682 fonctions/classes publiques · 171 496 lignes**
+**1305 modules · 4686 fonctions/classes publiques · 171 496 lignes** (instantané mécanique ; faits_appris ajouté à la main le 2026-07-06)
 
 
 ## Noyau — 6 modules
@@ -219,6 +219,7 @@
 | `fabrique_francais` | FABRIQUE_FRANCAIS — dataset français VÉRIFIÉ, model-free (2026-06-18, idée Yohan « entraîner en français » + saut APPREN | instruction, fabrique, resume |
 | `fabrique_semantique` | FABRIQUE_SEMANTIQUE — dataset de COMPRÉHENSION français vérifié (2026-06-18, « la définition officielle = la vérité »). | construit_paires, fabrique, resume |
 | `fait_negatif` | FAIT NÉGATIF DE 1RE CLASSE (module `fait_negatif`) — distinguer le FAUX-connu de l'INCONNU (représentation, 2026-07-02). | statut_fait, negatifs_certains, coherent |
+| `faits_appris` | FAITS APPRIS DU WEB — mémoire locale persistante des faits STRUCTURÉS trouvés en ligne (Wikidata), réutilisables hors-ligne, attribués + datés (2026-07-06). FAUX=0 : le texte libre n'est jamais appris. | apprend, rappelle, rappelle_texte, nombre_appris |
 | `falsification` | FALSIFICATION ACTIVE — brique Vague 6 (Popper : | refute, corrobore, resiste |
 | `fdr_controle` | PALIER 2 — CONTRÔLE DU TAUX DE FAUSSES DÉCOUVERTES (multiplicité des TESTS, Benjamini-Hochberg) (brique, 2026-06-26). | naif, bonferroni, benjamini_hochberg, decouvre, formule |
 | `fermi` | PALIER 2 — ESTIMATION D'ORDRE DE GRANDEUR (FERMI) AVEC INCERTITUDE (brique 29, 2026-06-25). | estime_fermi, estime_fermi_mc, formule |
