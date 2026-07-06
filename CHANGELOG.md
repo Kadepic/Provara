@@ -17,9 +17,13 @@
   `_mot_reel` dans le générateur de suggestions.
 - Harness challenge : apostrophes typographiques normalisées, marqueurs SOCIAL (« salut »), OUTIL
   (préposition/conjonction/pronom/déterminant), FACTUEL (définitions longues « Terme : … »).
-- Challenge **16/16** (sans web) et **22/30** (web — restants : famille « comment fonctionne / explique-moi »
-  à router vers le rapport web attribué, décision pour Yohan ; Mojeek renvoie 403 au métamoteur, à surveiller).
-  Tous bancs verts : 142/142, 146/146, 4/4, 8/8, 18/18, 19/19.
+- **Explications BORNÉES** : « comment fonctionne une pompe à chaleur ? », « décris le mécanisme de la
+  réaction de Maillard », « en quoi la relativité restreinte a bouleversé… », « quelles furent les
+  conséquences… » — une vérité DOCUMENTÉE existe → classé borné → **rapport web attribué** (« d'après
+  Wikipédia… », gate de pertinence) au lieu d'une clarification en boucle. Jamais généré : rapporté ou rien.
+- Challenge **16/16** (sans web) et **28/30** (web — c'était 14/30 ; les 2 restants sont des artefacts du
+  harness, comportements vérifiés CORRECTS sur le serveur réel ; Mojeek renvoie 403 au métamoteur, à
+  surveiller). Tous bancs verts : 142/142, 146/146, 4/4, 8/8, 18/18, 19/19.
 
 ## 2026-07-06 — Relatives, appositions, comparaison superlative : batterie complexité 5/20 → 18/20
 
