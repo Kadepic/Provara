@@ -4622,10 +4622,17 @@ def _cap_avis_critere(texte: str, conv_id=None):
         if not explicite:
             return None
         _AVIS_ATTENTE.pop(conv_id, None)
-        return ("Je n'ai pas de mesure VÉRIFIÉE de ce critère pour %s/%s — je ne tranche jamais sur du non "
+        qui = "/".join(st["noms"]) if st.get("multi") else "%s/%s" % (st["nx"], st["ny"])
+        return ("Je n'ai pas de mesure VÉRIFIÉE de ce critère pour %s — je ne tranche jamais sur du non "
                 "mesuré. Critères disponibles : %s. Nomme-en un et je conclus."
-                % (st["nx"], st["ny"], ", ".join(c[1] for c in st["crits"])))
+                % (qui, ", ".join(c[1] for c in st["crits"])))
     _AVIS_ATTENTE.pop(conv_id, None)
+    if st.get("multi"):                                  # N candidats : classement complet sur CE critère
+        rel, lib, vals = choisi
+        u = _unite_attr(rel)
+        ordonne = sorted(((n, v) for v, n in vals), key=lambda t: -t[1])
+        return ("Avec TON critère (%s) : %s → mon avis suit ton critère : %s."
+                % (lib, " > ".join("%s %s" % (n, _fmt_val(v, u)) for n, v in ordonne), ordonne[0][0]))
     rel, lib, vx, ax, vy, ay = choisi
     u = _unite_attr(rel)
     if vx == vy:
@@ -4637,6 +4644,54 @@ def _cap_avis_critere(texte: str, conv_id=None):
             % (lib, gagnant, _fmt_val(vg, u), perdant, _fmt_val(vp, u), gagnant))
 
 
+def _avis_multi(ents, conv_id=None):
+    """AVIS à 3+ candidats : chaque critère mesuré est un ÉLECTEUR qui classe les candidats par valeur ;
+    verdict par gagnant de CONDORCET (bat chacun en duel), repli BORDA si cycle (choix_social.py — le module
+    de choix social enfin câblé au conversationnel). FAUX=0 : classements dérivés de faits vérifiés montrés."""
+    crits, vus = [], set()
+    for rel in _AVIS_RELS:
+        vals = [_valeur_attr(e, rel) for e in ents]
+        if any(v[0] is None for v in vals):
+            continue
+        lib = _libelle_attr(rel)
+        if lib in vus:
+            continue
+        vus.add(lib)
+        crits.append((rel, lib, vals))                   # vals[i] = (valeur, nom canonique) aligné sur ents
+    if not crits:
+        return None
+    noms = [v[1] for v in crits[0][2]]
+    lignes = ["Mon avis — CONSTRUIT, pas ressenti : chaque critère vérifié est un ÉLECTEUR qui classe les "
+              "candidats, et je dépouille le scrutin (Condorcet)."]
+    profil = []
+    for rel, lib, vals in crits:
+        u = _unite_attr(rel)
+        ordonne = sorted(((n, v) for v, n in vals), key=lambda t: -t[1])
+        profil.append(tuple(n for n, _v in ordonne))
+        lignes.append("· %s : %s" % (lib, " > ".join("%s %s" % (n, _fmt_val(v, u)) for n, v in ordonne)))
+    lignes.append("Ma convention (contestable, et c'est voulu) : « devant » = la plus grande valeur.")
+    try:
+        import choix_social as _CS
+        gagnant = _CS.gagnant_condorcet(profil, noms)
+        borda = None if gagnant else _CS.gagnant_borda(profil, noms)
+    except Exception:
+        gagnant = borda = None
+    if gagnant:
+        lignes.append("Mon avis : %s — gagnant de CONDORCET : il bat chacun des autres en duel, critère par "
+                      "critère.%s" % (gagnant, " (Un seul critère mesurable : avis MINCE, je le signale.)"
+                                      if len(crits) == 1 else ""))
+    elif borda:
+        lignes.append("Pas de gagnant de Condorcet (les critères se contredisent en cycle) — au compte de "
+                      "BORDA, mon avis penche vers %s." % borda)
+    else:
+        lignes.append("Les critères ne départagent personne : je SUSPENDS mon avis — ton critère prioritaire "
+                      "tranchera.")
+    lignes.append("Donne-moi ton critère n°1 (%s) et je re-tranche en le suivant." % ", ".join(c[1] for c in crits))
+    if conv_id:
+        _AVIS_ATTENTE[conv_id] = {"multi": True, "crits": crits, "noms": noms}
+    return "\n".join(lignes)
+
+
 def _cap_avis(texte: str, conv_id=None):
     """« Quelle est la meilleure destination entre la France et l'Espagne ? » -> MON AVIS construit : chaque
     critère est un fait VÉRIFIÉ du lecteur (valeurs montrées), la règle est affichée, le verdict vient de
@@ -4645,8 +4700,15 @@ def _cap_avis(texte: str, conv_id=None):
     m = _AVIS_ENTRE_RE.search(texte) or _AVIS_OU_RE.search(texte)
     if not m:
         return None
-    x = _strip_article(m.group(1).strip(" ?.!«»\"'"))
-    y = _strip_article(m.group(2).strip(" ?.!«»\"'"))
+    # « entre X, Y et Z » -> 3+ candidats : vote de critères par CONDORCET/BORDA (choix_social.py, avis ④)
+    ents = [_strip_article(e.strip(" ?.!«»\"'")) for e in re.split(r"\s*,\s*", m.group(1)) if e.strip()]
+    ents.append(_strip_article(m.group(2).strip(" ?.!«»\"'")))
+    ents = [e for e in ents if 0 < len(e) <= 40]
+    if len(ents) != len({_normalise(e) for e in ents}) or len(ents) < 2:
+        return None
+    if len(ents) > 2:
+        return _avis_multi(ents, conv_id)
+    x, y = ents
     if not (0 < len(x) <= 40 and 0 < len(y) <= 40) or _normalise(x) == _normalise(y):
         return None
     crits, vus = [], set()

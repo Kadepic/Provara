@@ -145,6 +145,19 @@ try:
     r = R._cap_avis_critere("mon critère c'est le climat", "cv-avis")
     check(r is not None and "pas de mesure" in r and "superficie" in r,
           "critère NON mesuré nommé explicitement -> aveu honnête + critères disponibles")
+    # — AVIS À 3+ CANDIDATS (Condorcet/Borda — choix_social câblé au conversationnel) —
+    _FAUX_FAITS.clear()
+    _FAUX_FAITS.update({("superficie", "aaa"): 3, ("superficie", "bbb"): 2, ("superficie", "ccc"): 1,
+                        ("population_pays", "aaa"): 30, ("population_pays", "bbb"): 20, ("population_pays", "ccc"): 10,
+                        ("pib_pays", "aaa"): 5, ("pib_pays", "bbb"): 9, ("pib_pays", "ccc"): 1})
+    r = R._cap_avis("quelle est la meilleure destination entre aaa, bbb et ccc ?", "cv-multi")
+    check(r is not None and "CONDORCET" in r and "Mon avis : AAA" in r,
+          "3 candidats -> gagnant de Condorcet (bat chacun en duel, critères = électeurs)")
+    check(r is not None and "AAA 3 > BBB 2 > CCC 1" in r.replace("km²", "").replace("  ", " "),
+          "classement complet montré par critère (valeurs vérifiées)")
+    r = R._cap_avis_critere("mon critère n°1 est le PIB", "cv-multi")
+    check(r is not None and "BBB" in r and "mon avis suit ton critère : BBB" in r,
+          "multi : le critère de l'utilisateur re-tranche (classement complet sur CE critère)")
 finally:
     R._valeur_attr = _valeur_avant
 
