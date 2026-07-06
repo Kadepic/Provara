@@ -89,6 +89,10 @@ CAS = [
     ("devise-double", R._cap_devise, "quelle est la devise de la France ?", "Liberté"),   # motto + monnaie mentionnée
     ("devise-nationale", R._cap_devise, "quelle est la devise nationale de la France ?", "Fraternité"),
     ("is-a-planete", R._cap_ontologie, "jupiter est-elle une planète ?", "Oui"),          # seed (def Wiktionnaire bruitée)
+    ("is-a-dual-tomate", R._cap_ontologie, "la tomate est-elle un fruit ou un légume ?", "deux points de vue"),
+    ("is-a-dual-avocat", R._cap_ontologie, "l'avocat est-il un légume ?", "FRUIT"),
+    ("comptage-continents", R._cap_comptage, "combien de continents y a-t-il ?", "CONVENTION"),
+    ("comptage-pays-monde", R._cap_comptage, "combien de pays dans le monde ?", "249"),
     ("protons", R._cap_protons, "combien de protons a l'hydrogène ?", "1 proton"),
     ("electrons", R._cap_protons, "combien d'électrons possède le carbone ?", "6 électrons"),
     ("lunes-mars", R._cap_lunes, "combien de lunes a Mars ?", "Phobos"),

@@ -2447,6 +2447,12 @@ def _cap_comptage(texte: str):
                     return "%d %s en %s (compté exactement dans mes données)." % (len(hit[1]), typ_pl, zone)
                 return "Je connais %d %s en %s dans mes données (liste non exhaustive)." % (len(hit[1]), typ_pl, zone)
         return None
+    # CONTINENTS : le compte est une CONVENTION (5 à 7 selon les modèles) — le graphe is-a rangerait aussi
+    # paléo/super-continents. Réponse curée honnête plutôt que « 27 termes classés continent ».
+    if sing == "continent" and not zone:
+        return ("7 selon le modèle courant (Afrique, Amérique du Nord, Amérique du Sud, Antarctique, Asie, "
+                "Europe, Océanie) — mais c'est une CONVENTION : d'autres modèles en comptent 5 ou 6 "
+                "(Amériques réunies, Eurasie).")
     try:                                         # sans zone : nombre d'hyponymes réels (« combien de félins »)
         import est_un as _E
         hy = _E.hyponymes(sing, limite=100000)
@@ -4159,11 +4165,29 @@ def _cap_point_commun_nway(texte: str):
     return "Leur point commun : %s (%s en sont une sorte)%s." % (_E.affiche(commun), quantif, note)
 
 
+# FRUITS BOTANIQUES à usage CULINAIRE de légume : la question-piège classique (« la tomate est-elle un fruit
+# ou un légume ? ») n'a pas UNE réponse — les deux points de vue sont vrais et on les DIT (jamais de « non » sec
+# sur une vérité botanique). Liste fermée incontestable.
+_DUAL_FRUIT_LEGUME = frozenset("tomate avocat concombre courgette aubergine poivron potiron citrouille".split())
+_DUAL_FL_RE = re.compile(
+    r"^\s*(?:est[- ]ce\s+que\s+)?(?:la\s+|le\s+|l['’ ]\s*|une?\s+)?([a-zà-ÿ]{3,})\s+"
+    r"(?:est|c['’]est)[- ]?(?:elle|il)?\s+(?:bien\s+)?(?:un|une)\s+(fruit|l[ée]gume)", re.I)
+
+
 def _cap_ontologie(texte: str):
     """RAISONNEMENT is-a conversationnel (« un chat est-il un mammifère ? » -> « Oui, … »; « qu'ont en commun le
     chat et le requin ? » -> « animal »), depuis la source SAINE `est_un` (classe_* curées + genre des définitions).
     FAUX=0 : « Oui » seulement si dérivable ; jamais de « Non » affirmé (monde ouvert) — on énonce plutôt le vrai
     genre connu. Le réseau de foule (JeuxDeMots) N'est PAS utilisé ici (trop bruité pour une assertion)."""
+    md = _DUAL_FL_RE.match(texte.strip())
+    if md and _normalise(md.group(1)) in _DUAL_FRUIT_LEGUME:
+        n = md.group(1).lower()
+        fem = n in ("tomate", "courgette", "aubergine", "citrouille")
+        gn = ("l'" + n) if n[0] in "aàâeéèêiîouh" else (("la " if fem else "le ") + n)
+        pron = "on la classe" if fem else "on le classe"
+        return ("Les deux points de vue sont vrais pour %s : BOTANIQUEMENT c'est un FRUIT (issu de la fleur, "
+                "il porte les graines) ; en CUISINE %s parmi les LÉGUMES. La réponse dépend de la convention — "
+                "je ne tranche pas l'une contre l'autre." % (gn, pron))
     try:
         import est_un as _E
     except Exception:

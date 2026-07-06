@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Classiques curés : la tomate (fruit ET légume), 7 continents, villes bien présentées
+
+- **« La tomate est-elle un fruit ou un légume ? »** → *les deux points de vue sont vrais : botaniquement un
+  FRUIT, en cuisine un LÉGUME — je ne tranche pas* (liste fermée : tomate, avocat, concombre, courgette,
+  aubergine, poivron, potiron, citrouille ; l'ancien « la tomate est un légume — je ne le rattache pas à
+  fruit » niait une vérité botanique, et « l'avocat » répondait… « un droit », le métier homonyme !).
+- **« Combien de continents ? »** → *7 selon le modèle courant (liste), mais c'est une CONVENTION (5 ou 6
+  selon les modèles)* — au lieu de « 27 termes que je classe comme continent ».
+- **Présentation d'entité** : « berlin — *paquet de fil arrêté par un nœud* » (nom commun Wiktionnaire !) →
+  « Berlin — ville de l'Allemagne » (pays_ville prime sur la définition bruitée dans l'abstention).
+- Banc raisonnement **158/158** (4 cas), paraphrases 151/151, suite 18/18, challenge 16/16.
+
 ## 2026-07-06 — « Combien mesure le mont Blanc ? » : 4 808 m, plus jamais le tableau de 56 cm
 
 - **FAUX trouvé à la chasse** : « combien mesure le mont Blanc ? » → *0,559 m* (un TABLEAU « Mont Blanc » !).
