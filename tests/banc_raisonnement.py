@@ -85,6 +85,7 @@ CAS = [
     ("dim-tableau-garde", R._cap_dimension, "quelle est la hauteur de la Joconde ?", "je ne confonds pas"),
     ("dim-exact-prime", R._cap_dimension, "quelle est la superficie de la France ?", "551 695"),
     ("dim-km-lisible", R._cap_dimension, "quelle est la longueur du Yangzi Jiang ?", "6 300 km"),
+    ("createur-homonymie-listee", R._cap_createur, "qui a composé la Neuvième Symphonie ?", "Beethoven"),  # + film homonyme listé
     ("devise-double", R._cap_devise, "quelle est la devise de la France ?", "Liberté"),   # motto + monnaie mentionnée
     ("devise-nationale", R._cap_devise, "quelle est la devise nationale de la France ?", "Fraternité"),
     ("is-a-planete", R._cap_ontologie, "jupiter est-elle une planète ?", "Oui"),          # seed (def Wiktionnaire bruitée)

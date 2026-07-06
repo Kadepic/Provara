@@ -5134,10 +5134,16 @@ def _cap_createur(texte: str):
         for forme in dict.fromkeys((ent, brut, sans_type, _strip_article(sans_type))):
             if not forme or len(forme) < 2:
                 continue
-            v = _lookup_direct(head, forme)              # « la joconde » est la clé réelle de peintre_oeuvre
-            if v is not None and str(v).strip():
-                affiche, val = forme, v
+            fam = _lookup_famille(head, forme)           # « la joconde » clé réelle ; variantes d'article gérées
+            vals = list(dict.fromkeys(str(c[2]) for c in fam if str(c[2]).strip()))
+            if len(vals) == 1:
+                affiche, val = (fam[0][1] or forme), vals[0]   # forme STOCKÉE (« La Joconde » -> accord peintE)
                 break
+            if len(vals) >= 2:
+                # HOMONYMIE d'œuvres (« la Neuvième Symphonie » : œuvre de Beethoven ET film dont Kurt Schröder
+                # a composé la musique) : on LISTE les sens vérifiés au lieu d'abstenir en silence — FAUX=0.
+                lignes = "\n".join("· %s (%s)" % (c[2], c[0].replace("_", " ")) for c in fam[:4])
+                return "Plusieurs œuvres homonymes portent ce nom — voici ce que j'ai de vérifié :\n%s" % lignes
         if val is None:
             return None
         if affiche.lower().startswith("la "):            # accord du participe (« La Joconde a été peintE par »)
