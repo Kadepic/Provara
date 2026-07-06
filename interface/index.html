@@ -400,6 +400,52 @@ async function majVerifieMaj(force) {
 // ZÉRO ACTION : re-vérification PÉRIODIQUE (une release publiée pendant que l'app tourne était invisible
 // jusqu'au prochain démarrage — la bannière apparaît maintenant toute seule, sans aucun geste).
 setInterval(() => majVerifieMaj(false), 15 * 60 * 1000);
+
+// — WATCHDOG SERVEUR (retours Yohan 06/07) : après une mise à jour, la page restait FIGÉE sans dire si la MAJ
+// avait marché ; et si le redémarrage échouait, recharger ne servait à rien. Ici : ping léger toutes les 4 s ;
+// serveur perdu -> bandeau « mise à jour en cours » ; serveur revenu -> RECHARGEMENT AUTO (nouvelle version à
+// l'écran) ; pas de retour après 90 s -> consigne actionnable (relancer Provara.exe).
+(function veilleServeur() {
+  let rates = 0, perduDepuis = 0;
+  function bandeau(txt, teinte) {
+    let b = document.getElementById("bandeau-watchdog");
+    if (!b) {
+      b = document.createElement("div");
+      b.id = "bandeau-watchdog";
+      b.style.cssText = "position:fixed;top:0;left:0;right:0;z-index:9999;padding:10px 16px;text-align:center;"
+        + "font-size:14px;color:#fff;";
+      document.body.appendChild(b);
+    }
+    b.style.background = teinte;
+    b.textContent = txt;
+    b.style.display = txt ? "block" : "none";
+  }
+  setInterval(async () => {
+    try {
+      const r = await fetch("/api/web", { cache: "no-store" });
+      if (!r.ok) throw new Error("ko");
+      if (rates >= 3) {                                   // le serveur REVIENT après une coupure réelle
+        bandeau("✅ Mise à jour terminée — rechargement…", "#2c8a55");
+        setTimeout(() => location.reload(), 800);
+        return;
+      }
+      rates = 0; perduDepuis = 0; bandeau("", "");
+    } catch (e) {
+      rates += 1;
+      if (rates === 3) perduDepuis = Date.now();
+      if (rates >= 3) {
+        const attente = Date.now() - perduDepuis;
+        if (attente > 90 * 1000) {
+          bandeau("⚠ L'application ne répond plus. Relance Provara.exe (dossier Téléchargements) — "
+            + "la mise à jour s'appliquera au démarrage.", "#a04545");
+        } else {
+          bandeau("⏳ Mise à jour en cours… l'application redémarre toute seule, ne ferme pas cette page.",
+            "#6d5bb8");
+        }
+      }
+    }
+  }, 4000);
+})();
 $("#btn-maj-auto").onclick = async () => {
   const nouv = $("#btn-maj-auto").dataset.auto !== "1";
   const r = await api("/api/maj/auto", { method: "POST", headers: { "Content-Type": "application/json" },

@@ -95,6 +95,12 @@ check("maj.tentative_recente" in _src_srv, "serveur : auto-apply gardé par l'an
 with open(os.path.join(os.path.dirname(__file__), "..", "interface", "index.html"), encoding="utf-8") as _f:
     _src_ui = _f.read()
 check("setInterval(() => majVerifieMaj(false)" in _src_ui, "front : re-vérification périodique (bannière seule)")
+check("veilleServeur" in _src_ui and "location.reload()" in _src_ui,
+      "front : watchdog serveur -> rechargement auto quand la MAJ est finie (page plus jamais figée)")
+check("Relance Provara.exe" in _src_ui, "front : consigne actionnable si l'app ne revient pas (échec DLL/AV)")
+_src_maj = inspect.getsource(maj._lance_updater)
+check("IMAGENAME eq Provara.exe" in _src_maj and _src_maj.count("start") >= 2,
+      "updater : re-lancement de secours si l'app n'a pas démarré (antivirus/DLL au 1er départ)")
 
 print("=== valide_maj : %d/%d ===" % (_ok[0], _ok[0] + _ko[0]))
 sys.exit(0 if _ko[0] == 0 else 1)

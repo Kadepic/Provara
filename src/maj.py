@@ -242,6 +242,16 @@ def _lance_updater(nouveau_exe: str) -> dict:
         ")\r\n"
         'move /Y "%s" "%s" >NUL\r\n' % (nouveau_exe, cible) +
         'start "" "%s"\r\n' % cible +
+        # FILET ANTI-DLL (vécu : « Failed to load Python DLL …\_MEI…\python312.dll ») : au premier lancement
+        # d'un binaire fraîchement téléchargé, l'antivirus peut verrouiller l'extraction PyInstaller et tuer
+        # le démarrage. On vérifie après ~10 s que l'app tourne ; sinon on la relance UNE fois (le second
+        # départ passe, le binaire ayant été scanné entre-temps).
+        "ping -n 11 127.0.0.1 >NUL\r\n"
+        'tasklist /FI "IMAGENAME eq Provara.exe" 2>NUL | find /I "Provara.exe" >NUL\r\n'
+        "if errorlevel 1 (\r\n"
+        "  ping -n 4 127.0.0.1 >NUL\r\n"
+        '  start "" "%s"\r\n' % cible +
+        ")\r\n"
         'del "%%~f0"\r\n'
     )
     try:
