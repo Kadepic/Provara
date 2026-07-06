@@ -176,10 +176,16 @@ def _pull_unite(relation, classe_qid, prop, unites, natif_qid, tol_abs, tol_rel,
     si toutes ses déclarations (converties via `unites`) s'accordent à tol = max(tol_abs, tol_rel·|médiane|). Le
     représentant = médiane des valeurs en unité NATIVE (`natif_qid`, conversion ×1) sinon médiane des converties."""
     chemin = "wdt:P31/wdt:P279*" if sous_classes else "wdt:P31"
+    # BESTRANK (2026-07-06) : ne lire QUE les déclarations truthy — le Nil portait 6 650 km (préféré) ET
+    # 2 850 km (tronçon, rang normal) -> désaccord -> rejeté : les fleuves CÉLÈBRES manquaient. + labels en
+    # COALESCE(fr, mul) : migration « mul » Wikidata (cf. ingere_celebres).
     q = _PREF_UNITE + f"""SELECT ?eLabel ?amt ?unit WHERE {{
       ?e {chemin} wd:{classe_qid} ; p:{prop} ?st .
+      ?st a wikibase:BestRank .
       ?st psv:{prop} ?vn . ?vn wikibase:quantityAmount ?amt ; wikibase:quantityUnit ?unit .
-      ?e rdfs:label ?eLabel . FILTER(lang(?eLabel)="fr")
+      OPTIONAL {{ ?e rdfs:label ?efr . FILTER(lang(?efr)="fr") }}
+      OPTIONAL {{ ?e rdfs:label ?emul . FILTER(lang(?emul)="mul") }}
+      BIND(COALESCE(?efr, ?emul) AS ?eLabel) FILTER(BOUND(?eLabel))
     }}"""
     rows = IQ._charge_ou_fetch(relation, q)
     par = {}    # libellé -> liste de (valeur_canonique, est_natif)
@@ -303,10 +309,16 @@ def _pull_temperature(relation, classe_qid, prop, sous_classes=True):
     """TEMPÉRATURE -> kelvin (conversion AFFINE °C/°F→K ; tol 1 K ou 0,5 % ; multi-source/polymorphes désaccord→HORS).
     Valeurs gardées en K (toujours positives → plage simple). Unités hors table ignorées = sound."""
     chemin = "wdt:P31/wdt:P279*" if sous_classes else "wdt:P31"
+    # BESTRANK (2026-07-06) : ne lire QUE les déclarations truthy — le Nil portait 6 650 km (préféré) ET
+    # 2 850 km (tronçon, rang normal) -> désaccord -> rejeté : les fleuves CÉLÈBRES manquaient. + labels en
+    # COALESCE(fr, mul) : migration « mul » Wikidata (cf. ingere_celebres).
     q = _PREF_UNITE + f"""SELECT ?eLabel ?amt ?unit WHERE {{
       ?e {chemin} wd:{classe_qid} ; p:{prop} ?st .
+      ?st a wikibase:BestRank .
       ?st psv:{prop} ?vn . ?vn wikibase:quantityAmount ?amt ; wikibase:quantityUnit ?unit .
-      ?e rdfs:label ?eLabel . FILTER(lang(?eLabel)="fr")
+      OPTIONAL {{ ?e rdfs:label ?efr . FILTER(lang(?efr)="fr") }}
+      OPTIONAL {{ ?e rdfs:label ?emul . FILTER(lang(?emul)="mul") }}
+      BIND(COALESCE(?efr, ?emul) AS ?eLabel) FILTER(BOUND(?eLabel))
     }}"""
     rows = IQ._charge_ou_fetch(relation, q)
     par = {}
@@ -579,6 +591,8 @@ NUMERIQUES = [
     ("nombre_lits_hopital", "Q16917",  "P6801", "Wikidata/QLever — nombre de lits P6801 (dénombrement)", 1, 20_000, "physique", "compte"),
     # --- lot 20 : hauteur du plan focal d'un phare (P2923, mesure de navigation ≠ hauteur de tour) ---
     ("hauteur_focale_phare", "Q39715", "P2923", _SRC.format(p="hauteur focale P2923"), 1, 500, "physique", "unite"),
+    # --- lot 23 : hauteur des TOURS (Q12518 : tour Eiffel, Burj Khalifa…) via P2048 BestRank ---
+    ("hauteur_tour",        "Q12518",  "P2048", _SRC.format(p="hauteur P2048 (tours)"), 1, 1000, "physique", "unite"),
     # DIFFÉRÉ longueur_tunnel/canal (Q44377/Q12284 P2043) + superficie_lac (Q23397 P2046) : statements SANS unité
     # (nombres nus) -> indissociable m/km -> FAUX possible. L'unité-aware n'aide pas sans unité explicite.
     # DIFFÉRÉ envergure_avion/longueur_avion (Q11436 P2050/P2043) : n~100, ancres fr introuvables, et A320

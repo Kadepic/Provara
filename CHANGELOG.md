@@ -1,5 +1,54 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Le Groenland rejoint la base : superficie_ile ×3,5 (BestRank)
+
+- `superficie_ile` ré-ingéré avec le fix BestRank+mul : **4 851 → 17 031 îles**, dont enfin le Groenland
+  (*2 130 800 km²*). « La plus grande île du monde ? » relit la valeur en direct (plus de « fait curé » —
+  la note honnête sur l'Australie-continent reste). « Le Groenland est-il plus grand que Madagascar ? » →
+  comparaison chiffrée. Bancs : 164/164, 163/163, 18/18, 16/16.
+
+## 2026-07-06 — BestRank : le Nil, l'Amazone, la tour Eiffel (330 m) et Burj Khalifa (828 m) sont mesurables
+
+- **Cause racine n°3 des trous** : les requêtes unit-aware lisaient TOUS les rangs Wikidata — le Nil portait
+  6 650 km (rang préféré) ET 2 850 km (un tronçon, rang normal) → « désaccord » → rejeté. Les fleuves et
+  monuments CÉLÈBRES, plus documentés donc plus multi-déclarés, étaient les premiers éliminés.
+- **Fix global t7** : `?st a wikibase:BestRank` (équivalent truthy) + labels COALESCE(fr, mul) dans les deux
+  requêtes unitaires. Ré-ingérés : `longueur_fleuve` (Nil *6 650 km*, Amazone *6 400 km* — « le Nil est-il
+  plus long que la Seine ? » → *Oui, chiffré*), **nouvelle relation `hauteur_tour`** (540 tours — la tour
+  Eiffel fait enfin *330 m* au lieu d'une abstention), `hauteur_gratte_ciel` re-produit (Burj Khalifa
+  *828 m*).
+- Le record « plus long fleuve » cite désormais les valeurs RELUES de la table tout en maintenant la dispute
+  Nil/Amazone (tracé court vs long). Bancs : paraphrases **164/164**, raisonnement **163/163**, suite 18/18,
+  challenge 16/16. Sync datasets_complets.
+
+## 2026-07-06 — Labels « mul » Wikidata : Shakespeare, Gandhi, Darwin récupérés
+
+- **Découverte importante pour TOUTES les ingestions futures** : depuis la migration « mul » de Wikidata
+  (2024), les noms identiques dans toutes les langues (William Shakespeare, Gandhi, Darwin…) n'ont PLUS de
+  label « fr » — un `FILTER(lang="fr")` sec élimine précisément les plus célèbres. `ingere_celebres` passe en
+  `COALESCE(fr, mul, en)` → +1 209 personnes de plus (Shakespeare *né en 1564*, Darwin fiche complète,
+  Gandhi *1869-1948* via l'alias corrigé vers la clé réelle « Mohandas Karamchand Gandhi »).
+- Forme « quel était le MÉTIER de X » ajoutée au cap fait-personne (seul « quel métier faisait X » passait).
+- Banc paraphrases **160/160**, raisonnement 162/162, suite 18/18, challenge 16/16. Sync datasets_complets.
+
+## 2026-07-06 — RÉ-INGESTION personnes célèbres : Newton, Marie Curie, Churchill… retrouvent leur fiche
+
+- **Cause racine (encore le fonctionnel par libellé, sous deux formes)** : Isaac Newton (le physicien) était
+  MASQUÉ par son PÈRE homonyme (fermier — « Isaac Newton → agriculteur » !) ; Marie Curie n'avait NI
+  occupation (physicienne ET chimiste = multi → HORS) ni nationalité (Pologne ET France = multi → HORS).
+  Plus on est célèbre, plus on a d'homonymes et d'attributs multiples — les géants étaient les plus touchés.
+- **Nouveau `ingestion/ingere_celebres.py`** (réutilisable) : les ~11 000 humains à ≥50 sitelinks via QLever ;
+  dominance par notoriété (≥8×) ; valeurs multiples d'une MÊME entité JOINTES honnêtement (« professeur
+  d'université, physicienne et chimiste », « France et Pologne ») triées par fréquence corpus ; append si
+  absent, remplacement si l'entrée existante est l'homonyme obscur ; **passe anti-collision finale** avec la
+  clé exacte du lecteur (une collision réelle ferait refuser le fichier au chargement — vécu et corrigé).
+- Volumes : occupations +8 422 / 660 remplacées, nationalités +3 499 / 1 007 remplacées, naissances +1 740,
+  décès +919, lieux de naissance +1 319, lieux de décès +611.
+- Résultats : « qui était Isaac Newton ? » → *philosophe et mathématicien, né en 1643 à Woolsthorpe…* ;
+  « quel métier faisait Marie Curie ? » → *professeur d'université, physicienne et chimiste* ; Churchill,
+  Napoléon (occupations réordonnées : « personnalité politique, souverain et chef militaire »).
+- Sync datasets_complets (6 fichiers). Bancs : 162/162, 157/157 — capitales multiples incluses.
+
 ## 2026-07-06 — RÉ-INGESTION traités & guerres : Versailles 1919 et les guerres mondiales sont là
 
 - **Dominance par NOTORIÉTÉ (sitelinks)** dans le pipeline dates (t8) : « traité de Versailles » (1919,

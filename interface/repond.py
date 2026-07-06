@@ -393,7 +393,8 @@ _ALIAS_PERSONNE = {
     "churchill": "Winston Churchill",
     "darwin": "Charles Darwin",
     "newton": "Isaac Newton",
-    "gandhi": "Mahatma Gandhi",
+    "gandhi": "Mohandas Karamchand Gandhi",     # clé réelle des datasets (« Mahatma » est un titre)
+    "mahatma gandhi": "Mohandas Karamchand Gandhi",
 }
 _ACCENTS_CLS = {"a": "aàâä", "e": "eèéêë", "i": "iîï", "o": "oôö", "u": "uùûü", "c": "cç"}
 
@@ -5014,6 +5015,7 @@ _FAIT_PERSONNE_RULES = (
                 r"nationalit[ée]\s+d[eu'’]\s*)(.+?)\s*\??\s*$", re.I),
      "nationalite_personne", "%s était originaire de %s"),
     (re.compile(r"^\s*(?:quel\s+(?:m[ée]tier|profession)\s+(?:faisait|avait|exer[çc]ait)\s+|que\s+faisait\s+"
+                r"|quel\s+(?:est|était|etait)\s+(?:le\s+|son\s+)?m[ée]tier\s+d[eu'’]\s*"
                 r"|quelle\s+(?:est|était|etait)\s+(?:la\s+|l['’])?(?:profession|occupation|activit[ée])\s+d[eu'’]\s*)"
                 r"(.+?)\s*\??\s*$", re.I),
      "occupation_personne", "%s était %s"),
@@ -5480,12 +5482,16 @@ def _cap_record_monde(texte: str):
         alt = (" — %s m d'altitude, fait vérifié dans mes données" % cell[1]) if cell else ""
         return "L'Everest%s. C'est le plus haut sommet du monde." % alt
     if typ in ("fleuve", "riviere") and adj in ("long", "longu", "grand"):
+        nil, ama = _lookup_cell("longueur_fleuve", "Nil"), _lookup_cell("longueur_fleuve", "Amazone")
+        km = lambda c: format(int(float(c[1]) // 1000), ",d").replace(",", " ")
+        rel = ((" (Mes données — tracé « court » : Nil %s km, Amazone %s km ; les mesures longues de "
+                "l'Amazone montent à ≈ 7 000 km.)" % (km(nil), km(ama))) if (nil and ama) else "")
         return ("Le Nil (≈ 6 650 km) ou l'Amazone (6 400 à 7 000 km selon le tracé retenu) : la primauté est "
-                "scientifiquement DISPUTÉE — je ne tranche pas. (Ma table des longueurs ne couvre aucun des "
-                "deux ; le plus long qu'elle contienne est le Yangzi Jiang, 6 300 km.)")
+                "scientifiquement DISPUTÉE — je ne tranche pas.%s" % rel)
     if typ == "ile" and adj in ("grand", "vaste"):
-        return ("Le Groenland (2 166 086 km²) — l'Australie, plus vaste, est comptée comme un continent. "
-                "(Fait de référence curé : ma table superficie_ile ne contient pas le Groenland.)")
+        cg = _lookup_cell("superficie_ile", "Groenland")     # relu en direct (ré-ingestion BestRank 2026-07-06)
+        v = (" (%s km², fait vérifié dans mes données)" % format(int(float(cg[1])), ",d").replace(",", " ")) if cg else ""
+        return "Le Groenland%s — l'Australie, plus vaste, est comptée comme un continent." % v
     if typ == "desert" and adj in ("grand", "vaste"):
         cell = _lookup_cell("superficie_desert", "Sahara")
         sah = (" (%s km², fait vérifié dans mes données)" % cell[1]) if cell else ""
