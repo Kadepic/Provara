@@ -74,7 +74,8 @@ _NB_DUR = {
                                      r"dans (10|20|50|cent) ans|va-t-il (arriver|se produire))\b",
     "fiction_hypothetique": r"\b(invente une histoire|imagine (que|un)|et si (le|la|les|on|nous)|"
                             r"raconte-moi une histoire|ecris (un poeme|une fiction|un roman))\b",
-    "opinion_demandee": r"\b(a ton avis|selon toi|penses-tu que|qu'en penses-tu|ton opinion)\b",
+    "opinion_demandee": r"\b(a ton avis|selon toi|penses-tu que|qu'en penses-tu|ton opinion|"
+                        r"que penses[- ]tu (de|des|du|d')|ton avis sur)\b",
 }
 # PRÉDICATS BORNÉS POSITIFS (la réalité fixe : quantité mesurable, date/lieu factuel, identité, définition, calcul).
 _BORNE_POS = {
@@ -94,7 +95,12 @@ _BORNE_POS = {
                              r"quel(le)? est le (role|fonctionnement|mecanisme) (de|des|du|d')|"
                              r"les tenants (de la|du|des|de l')|decri(s|vez)([- ]moi)? (le|la|les|l')|"
                              r"comprendre (comment|en quoi|pourquoi)|en quoi .{3,60} a (bouleverse|change|transforme)|"
-                             r"quelles? (furent|sont|ont ete) les consequences)\b",
+                             r"quelles? (furent|sont|ont ete) les consequences|"
+                             # DEMANDES OUVERTES d'exposé (Yohan 2026-07-06 : « peux-tu me parler de la gestion
+                             # de projet IT ? » tombait en clarification/saturation SANS tenter le web) : un
+                             # sujet encyclopédique a une vérité documentée -> borné -> rapport web attribué.
+                             r"(peux[- ]tu |pourrais[- ]tu )?(me )?parler? ?[- ]?(moi )?(de la|du|des|de l'|de|d')|"
+                             r"que peux[- ]tu me dire (sur|de)|presente[- ]moi (le|la|les|l'))\b",
 }
 _RX_NB_DUR = re.compile("|".join(_NB_DUR.values()))
 _RX_BORNE_POS = re.compile("|".join(_BORNE_POS.values()))

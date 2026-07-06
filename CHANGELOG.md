@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — « Web ON = toujours une réponse » : météo réelle, exposés Wikipédia, quotidien, challenge
+
+- **Principe posé par Yohan et implémenté au cœur du routeur** : avec Internet activé, Provara répond à tout —
+  au pire par une SUPPOSITION rapportée et sourcée. L'« indécidable » tente désormais les sources AVANT toute
+  clarification ; la boucle « je n'arrive pas à rattacher… » ne peut plus se produire web ON.
+- **Météo EN DIRECT** (`src/meteo.py`, source structurée Open-Meteo, sans clé, enregistrée au registre) :
+  « quelle température fait-il à Toulouse ? » → *« À Toulouse (France) en ce moment : 24,4 °C, ciel dégagé,
+  vent 3,6 km/h (relevé open-meteo.com à 09:45 — rapporté) »*. Sans ville → demande la ville ; web OFF →
+  refus honnête actionnable. + heure et date locales (faits réels de l'horloge).
+- **Demandes ouvertes d'exposé** : « peux-tu me parler de la gestion de projet IT ? » → rapport Wikipédia
+  ATTRIBUÉ (2 bugs de plomberie trouvés : `cherche_web_libre` recevait la phrase brute au lieu du sujet
+  nettoyé, et la gate de pertinence jugeait la question brute — « parler »/« IT » comptés comme contenu).
+- **« Challenge-moi sur X »** : partait en MÉMO (« c'est noté ») ! → demande d'interaction reconnue, protocole
+  honnête : *« Défi accepté — à MA façon : affirme, je tranche Vrai/Faux/Indécidable avec preuve »*.
+- **Opinions** : « que penses-tu des voitures électriques ? » → cadrage subjectif + éclairage Wikipédia sourcé.
+- `_cap_quotidien` était défini SANS être câblé (trouvé à l'audit orphelins demandé par Yohan) — branché.
+- Bancs : paraphrases **168/168**, raisonnement 163/163, constructions 4/4, synonymes 8/8, suite 18/18,
+  challenge 16/16 (+28/30 web), valide_maj 25/25.
+
 ## 2026-07-06 — Le Groenland rejoint la base : superficie_ile ×3,5 (BestRank)
 
 - `superficie_ile` ré-ingéré avec le fix BestRank+mul : **4 851 → 17 031 îles**, dont enfin le Groenland
