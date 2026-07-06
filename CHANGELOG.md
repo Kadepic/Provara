@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — RÉ-INGESTION personnes célèbres : Newton, Marie Curie, Churchill… retrouvent leur fiche
+
+- **Cause racine (encore le fonctionnel par libellé, sous deux formes)** : Isaac Newton (le physicien) était
+  MASQUÉ par son PÈRE homonyme (fermier — « Isaac Newton → agriculteur » !) ; Marie Curie n'avait NI
+  occupation (physicienne ET chimiste = multi → HORS) ni nationalité (Pologne ET France = multi → HORS).
+  Plus on est célèbre, plus on a d'homonymes et d'attributs multiples — les géants étaient les plus touchés.
+- **Nouveau `ingestion/ingere_celebres.py`** (réutilisable) : les ~11 000 humains à ≥50 sitelinks via QLever ;
+  dominance par notoriété (≥8×) ; valeurs multiples d'une MÊME entité JOINTES honnêtement (« professeur
+  d'université, physicienne et chimiste », « France et Pologne ») triées par fréquence corpus ; append si
+  absent, remplacement si l'entrée existante est l'homonyme obscur ; **passe anti-collision finale** avec la
+  clé exacte du lecteur (une collision réelle ferait refuser le fichier au chargement — vécu et corrigé).
+- Volumes : occupations +8 422 / 660 remplacées, nationalités +3 499 / 1 007 remplacées, naissances +1 740,
+  décès +919, lieux de naissance +1 319, lieux de décès +611.
+- Résultats : « qui était Isaac Newton ? » → *philosophe et mathématicien, né en 1643 à Woolsthorpe…* ;
+  « quel métier faisait Marie Curie ? » → *professeur d'université, physicienne et chimiste* ; Churchill,
+  Napoléon (occupations réordonnées : « personnalité politique, souverain et chef militaire »).
+- Sync datasets_complets (6 fichiers). Bancs : 162/162, 157/157 — capitales multiples incluses.
+
 ## 2026-07-06 — RÉ-INGESTION traités & guerres : Versailles 1919 et les guerres mondiales sont là
 
 - **Dominance par NOTORIÉTÉ (sitelinks)** dans le pipeline dates (t8) : « traité de Versailles » (1919,
