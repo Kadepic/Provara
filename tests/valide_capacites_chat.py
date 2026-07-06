@@ -102,5 +102,37 @@ finally:
     else:
         _os.environ["IA_WEB"] = _web_avant
 
+# — « MON AVIS » COMPARATIF (réflexion outillée : Pareto / vote des critères / sensibilité — Yohan 2026-07-06) —
+check(R._cap_avis("quelle est la capitale de la France ?") is None, "avis : lookup factuel -> None")
+check(R._cap_avis("la France est-elle plus grande que l'Espagne ?") is None,
+      "avis : comparaison factuelle (plus/moins) -> None (le cap comparaison garde la main)")
+_valeur_avant = R._valeur_attr
+_FAUX_FAITS = {("superficie", "aaa"): 10, ("superficie", "bbb"): 5,
+               ("population_pays", "aaa"): 1, ("population_pays", "bbb"): 2,
+               ("pib_pays", "aaa"): 1, ("pib_pays", "bbb"): 2}
+try:
+    R._valeur_attr = lambda e, rel: ((_FAUX_FAITS.get((rel, e)), e.upper())
+                                     if (rel, e) in _FAUX_FAITS else (None, None))
+    r = R._cap_avis("tu préfères aaa ou bbb ?")
+    check(r is not None and "Mon avis : BBB" in r and "2 critère(s) sur 3" in r,
+          "avis : vote majoritaire des critères, valeurs montrées")
+    check(r is not None and "BASCULE" in r and "superficie" in r,
+          "avis : SENSIBILITÉ affichée (le critère qui ferait changer d'avis)")
+    _FAUX_FAITS[("pib_pays", "bbb")] = 1                         # pib ex æquo -> vote 1–1
+    r = R._cap_avis("tu préfères aaa ou bbb ?")
+    check(r is not None and "SUSPENDS" in r, "avis : égalité au vote -> avis SUSPENDU (ton critère tranche)")
+    _FAUX_FAITS[("population_pays", "bbb")] = 0.5                # aaa mène partout -> dominance
+    _FAUX_FAITS[("pib_pays", "bbb")] = 0.5
+    r = R._cap_avis("tu préfères aaa ou bbb ?")
+    check(r is not None and "DOMINANCE DE PARETO" in r and "Mon avis : AAA" in r,
+          "avis : dominance de Pareto -> avis ROBUSTE (aucune pondération ne peut inverser)")
+    for k in list(_FAUX_FAITS):
+        if k[0] != "superficie":
+            del _FAUX_FAITS[k]                                   # un seul critère -> avis MINCE assumé
+    r = R._cap_avis("tu préfères aaa ou bbb ?")
+    check(r is not None and "MINCE" in r, "avis : un seul critère mesurable -> avis annoncé MINCE, jamais gonflé")
+finally:
+    R._valeur_attr = _valeur_avant
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

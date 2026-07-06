@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — « Mon avis est… » : premier avis ASSUMÉ de Provara — réflexion outillée, pas ressentie
+
+- **Demande Yohan** : que l'IA puisse donner SON avis sur du non-tranché — « la réflexion réelle mais bien plus
+  évoluée qu'un humain ». Définition compatible FAUX=0 : un avis = une CONCLUSION SIGNÉE, dérivée de faits
+  vérifiés, règle de décision AFFICHÉE, et falsifiable (la sensibilité dit ce qui le ferait basculer).
+- **Nouveau cap `_cap_avis`** (« quelle est la meilleure destination entre la France et l'Espagne ? »,
+  « tu préfères Lyon ou Marseille ? ») : critères = TOUTES les relations chiffrées du lecteur où la paire a des
+  valeurs (montrées une à une) ; verdict par **dominance de Pareto** (`src/pareto.py`, enfin câblé au
+  conversationnel : « aucune pondération ne peut inverser → avis ROBUSTE ») sinon **vote majoritaire des
+  critères** + **SENSIBILITÉ** (« mon avis bascule si ton critère prioritaire est X ») ; égalité → avis
+  SUSPENDU (le critère de l'utilisateur tranche) ; un seul critère mesurable → avis annoncé MINCE, jamais
+  gonflé. Convention affichée et contestable (« devant » = plus grande valeur).
+- Vérifié en réel base complète : France/Espagne → 4 critères, dominance de Pareto. `valide_capacites_chat`
+  32/32, suite 19/19. Reste en queue : brique 2 (Pour/Contre sourcé + verdict conditionnel, débats sans
+  chiffres).
+
 ## 2026-07-06 — « Regarde le site yohanfauck.fr » : Provara VA LIRE le site nommé et rapporte (attribué)
 
 - **Vécu Yohan** : « peux-tu regarder le site yohanfauck.fr et me dire ce que tu en penses ? » tombait dans la
