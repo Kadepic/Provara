@@ -107,6 +107,10 @@ check(VS._termes_wiki("quelle est la capitale du Japon ?") == "la capitale du Ja
       "préfixes interrogatifs dépouillés, sujet INTACT (articles compris)")
 check(VS._termes_wiki("je voudrais construire un moteur à eau") == "un moteur à eau",
       "intention + verbe d'action de tête dépouillés")
+check(VS._termes_wiki("peux-tu me parler de Brive-la-Gaillarde ?") == "Brive-la-Gaillarde",
+      "verbe d'exposé + « de » dépouillés (vécu : « parler de Brive » servait la RAFLE de Brive, pas la ville)")
+check(VS._termes_wiki("qui a construit la tour Eiffel ?") == "construit la tour Eiffel",
+      "participe « construit » jamais confondu avec l'infinitif (il reste dans le terme de recherche)")
 check(VS._pertinent("tour eiffel", "Tour Eiffel", "monument parisien de Gustave Eiffel") is True,
       "résultat qui parle du sujet -> pertinent")
 check(VS._pertinent("capitale du wakanda", "Gentilés d'ailleurs", "liste d'habitants") is False,

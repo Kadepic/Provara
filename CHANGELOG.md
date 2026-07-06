@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Exposés web : « parle-moi de Brive-la-Gaillarde » sert la VILLE, plus la « Rafle de Brive »
+
+- Trouvé au test RÉEL du build 48 (.exe, port 8765) : le terme de recherche partait pollué (« parler de
+  Brive-la-Gaillarde ») car `_termes_wiki` dépouillait « peux-tu me » mais pas le verbe d'exposé — la
+  recherche plein-texte Wikipédia servait alors un article connexe au lieu du sujet.
+- Verbes d'exposé (parler/présenter/décrire/exposer) dépouillés AVEC leur « de/d' » ; les participes
+  (« qui a construit … ») restent intacts. `valide_veille_structure` 16/16, suite 19/19, vérifié en live
+  (l'article « Brive-la-Gaillarde » sort, intro propre).
+
 ## 2026-07-06 — Conversation : une précision demandée est RETENUE (« pour quelle ville ? » → « A Brives »)
 
 - **Vécu Yohan** : « Il fait quel temps ? » → « pour quelle ville ? » → « A Brives » partait en recherche web
