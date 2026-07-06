@@ -1735,6 +1735,23 @@ _UNITE_PREFIXE = (("altitude", "m"), ("hauteur", "m"), ("longueur", "m"),
                   ("superficie", "km²"), ("population", "habitants"), ("pib", "$"), ("debit", "m³/s"))
 
 
+def _de_ville(nom: str) -> str:
+    """« de <ville> » : les villes n'ont PAS d'article (« de Rome », « d'Athènes ») — sauf celles dont le nom
+    l'inclut (« Le Caire » -> « du Caire », « La Havane » -> « de La Havane », « Les Ulis » -> « des Ulis »)."""
+    bas = nom.lower()
+    if bas.startswith("le "):
+        return "du " + nom[3:]
+    if bas.startswith("la "):
+        return "de " + nom
+    if bas.startswith("les "):
+        return "des " + nom[4:]
+    if bas.startswith(("l'", "l’")):
+        return "de " + nom
+    if bas[:1] in "aeiouyàâéèêëîïôöùûh":
+        return "d'" + nom
+    return "de " + nom
+
+
 def _unite_attr(attr_rel: str) -> str:
     """Unité d'affichage d'un attribut : table exacte puis repli par préfixe de famille (« altitude_montagne » -> m)."""
     if attr_rel in _ATTR_UNITE:
@@ -1872,11 +1889,14 @@ def _cap_synonyme_tete(texte: str):
         if cell and cell[1] not in (None, ""):
             n = _nombre(cell[1])
             unite = _unite_attr(rel)
-            try:                                     # français soigné : « du Japon », « de la France »
-                import realisation_fr as _RF
-                de_ent = _RF.de_syntagme(cell[0])
-            except Exception:
-                de_ent = "de %s" % cell[0]
+            if _charge_direct("pays_ville").get(_normalise(cell[0])):
+                de_ent = _de_ville(cell[0])          # VILLE : « de Rome », « d'Athènes » (pas « du Rome »)
+            else:
+                try:                                 # français soigné : « du Japon », « de la France »
+                    import realisation_fr as _RF
+                    de_ent = _RF.de_syntagme(cell[0])
+                except Exception:
+                    de_ent = "de %s" % cell[0]
             tete_aff = m.group(1).strip().capitalize()
             if n is not None:
                 aff = format(int(round(n)), ",d").replace(",", " ") if float(n).is_integer() else "%g" % n
