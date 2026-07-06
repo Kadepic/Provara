@@ -393,6 +393,18 @@ def _prep_de(m_prep: str) -> str:
 _RECADRE_LEX = (
     (re.compile(r"\ba\s+le\s+plus\s+d['’]\s*habitants\b", re.I), "est le plus peuplé"),
     (re.compile(r"\bont\s+le\s+plus\s+d['’]\s*habitants\b", re.I), "sont les plus peuplés"),
+    # « ce grand pays qu'est l'Australie » -> « l'Australie » (apposition qualifiante : le GN utile est APRÈS)
+    (re.compile(r"\bce(?:tte)?\s+(?:grande?|petite?|beau|belle|fameux|fameuse|c[ée]l[eè]bre|vieux|vieille|"
+                r"bon(?:ne)?|magnifique)?\s*[a-zà-ÿ]+\s+qu['’]est\s+", re.I), ""),
+    # « quelle pourrait bien être la capitale… » -> « quelle est la capitale… » (modal de politesse)
+    (re.compile(r"\b(quel(?:le)?s?)\s+pourrai(?:t|ent)\s+(?:bien\s+)?[êe]tre\b", re.I), r"\1 est"),
+    # « qui a (bien) pu écrire X » -> « qui a écrit X » (infinitif modal -> participe, verbes créateurs fermés)
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+[ée]crire\b", re.I), "a écrit"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+composer\b", re.I), "a composé"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+peindre\b", re.I), "a peint"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+r[ée]aliser\b", re.I), "a réalisé"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+sculpter\b", re.I), "a sculpté"),
+    (re.compile(r"\ba\s+(?:bien\s+)?pu\s+inventer\b", re.I), "a inventé"),
     # « l'auteur du roman intitulé 1984 » -> « l'auteur de 1984 » (le type-mot + « intitulé » n'est pas la clé)
     (re.compile(r"\b(?:du|de\s+la|de\s+l['’])\s*(?:roman|livre|film|tableau|morceau|chanson|op[ée]ra|"
                 r"oeuvre|œuvre)\s+intitulée?\s+", re.I), "de "),
@@ -404,6 +416,11 @@ _RECADRE_LEX = (
 )
 
 _RECADRE_REGLES = (
+    # « combien de gens vivent en France ? » -> « quelle est la population de X » (préambules déjà dévoilés
+    # en amont ; .*? tolère un reste d'enrobage). habitent/vivent, en/au/aux/à.
+    (re.compile(r".*?\bcombien\s+de\s+(?:gens|personnes|habitants)\s+(?:vivent|habitent)(?:[- ]ils)?\s+"
+                r"(?:en|au|aux|a|à)\s+(.+?)\s*\?*\s*$", re.I),
+     lambda m: "quelle est la population de %s ?" % m.group(1)),
     # « quelle langue parle-t-on à Tokyo / au Japon ? » -> « quelle est la langue de X » (le pont ville->pays
     # ou le lookup pays répond ensuite). Locatif à/au/aux/en couvert.
     (re.compile(r"^\s*quelles?\s+langues?\s+parle[\s-]*t[\s-]*on\s+(?:a|à|au|aux|en)\s+(.+?)\s*\?*\s*$", re.I),
@@ -576,6 +593,55 @@ def _decoupe_relation(expr: str):
     return None
 
 
+_DONT_RE = re.compile(
+    r"^(?:le\s+|la\s+|l['’]\s*)?([a-zà-ÿ]{3,})\s+dont\s+(?:la\s+|le\s+|l['’]\s*)([a-zà-ÿ]{3,})\s+est\s+(.+)$", re.I)
+_OU_TROUVE_RE = re.compile(
+    r"^(?:le\s+|la\s+|l['’]\s*)?(pays|ville|continent)\s+(?:o[uù]\s+(?:se\s+(?:trouve|situe)|est(?:\s+situ[ée]+)?)|"
+    r"qui\s+abrite|abritant)\s+(.+)$", re.I)
+
+
+def _resout_relatif(expr: str):
+    """Feuille RELATIVE de _resout_noeud : « pays dont la capitale est Tokyo » -> (Japon, [étape]) par lecture
+    INVERSE (match UNIQUE exigé — FAUX=0) ; « pays où se trouve la tour Eiffel » -> France par les relations de
+    localisation (monument -> ville -> pays si besoin, chaque saut montré). None sinon."""
+    m = _DONT_RE.match(expr.strip())
+    if m:
+        rel2, val = _normalise(m.group(2)), _normalise(_strip_article(m.group(3).strip(" ?.!\"'«»")))
+        if rel2 in _attr_heads() and val:
+            candidates = [r for r in _relations() if r == rel2 or r.startswith(rel2 + "_")]
+            for rel in candidates:
+                cell = _charge_reverse(rel).get(val) if _charge_reverse(rel) else None
+                if cell and len(cell[1]) == 1:                       # UNIQUE, sinon ambigu -> on n'affirme pas
+                    ent = cell[1][0]
+                    return _strip_article(ent), ["%s dont %s est %s = %s" % (m.group(1), rel2, cell[0], ent)]
+        return None
+    m = _OU_TROUVE_RE.match(expr.strip())
+    if m:
+        typ, ent = _normalise(m.group(1)), _strip_article(m.group(2).strip(" ?.!\"'«»"))
+        ne = _normalise(ent)
+        if not ne:
+            return None
+        if typ == "ville":
+            cell = _lookup_cell("ville_monument", ent)
+            if cell:
+                return _strip_article(cell[1]), ["%s est à %s" % (cell[0], cell[1])]
+            return None
+        rels = _LOC_PAYS_REL if typ == "pays" else _LOC_CONT_REL
+        for rel in rels:
+            cell = _charge_direct(rel).get(ne) if rel != "pays_ville" else _charge_direct(rel).get(ne)
+            if cell:
+                return _strip_article(cell[1]), ["%s est dans : %s" % (cell[0], cell[1])]
+        if typ == "pays":                                            # monument -> ville -> pays (2 sauts montrés)
+            cv = _lookup_cell("ville_monument", ent)
+            if cv:
+                cp = _charge_direct("pays_ville").get(_normalise(cv[1]))
+                if cp:
+                    return _strip_article(cp[1]), ["%s est à %s" % (cv[0], cv[1]),
+                                                   "%s est %s" % (cp[0], _locatif_pays(cp[1]))]
+        return None
+    return None
+
+
 def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
     """Résout une expression nominale en (entité_ou_valeur, [étapes_de_dérivation]). Récursif sur « REL de SUBEXPR ».
     Base : superlatif (« le plus haut sommet de France ») ou entité littérale. FAUX=0 : maillon vérifié ou (None, None)."""
@@ -601,6 +667,12 @@ def _resout_noeud(expr: str, ia, verifie, prof: int = 0):
         if v is not None:
             return v, ["%s de %s = %s" % (rel, reste, v)]
         return None, None
+    # base : PROPOSITION RELATIVE résolue en entité — « le pays DONT LA CAPITALE EST Tokyo » -> Japon (lecture
+    # inverse, match UNIQUE exigé : FAUX=0) ; « le pays OÙ SE TROUVE la tour Eiffel » -> France (relations de
+    # localisation, monument -> ville -> pays si besoin, chaîne montrée).
+    rel_leaf = _resout_relatif(expr)
+    if rel_leaf:
+        return rel_leaf
     # base : feuille superlative -> entité. D'abord l'ARGMAX borné (« le pays le plus peuplé d'Afrique » -> Nigeria,
     # comparaison de faits réels), sinon la relation superlative explicite du moteur, sinon entité littérale.
     arg = _superlatif_argmax(expr)
@@ -673,25 +745,34 @@ _ENV_INTERNE_RE = re.compile(
 # capitale de la France » n'en est PAS une (le lookup direct doit la servir).
 _ENV_PREFIXE_RE = re.compile(
     r"\b(?:sur|dans|en|a|à)\s+quel(?:le)?s?\s+[a-zà-ÿ]|\b(?:ou|où|quand|qui|comment|combien)\b", re.I)
+# GN interne RELATIF en fin de question : « … le pays dont la capitale est Tokyo ? », « … le pays où se
+# trouve la tour Eiffel ? » — résolu par la feuille _resout_relatif.
+_ENV_RELATIF_RE = re.compile(
+    r"((?:le\s+|la\s+|l['’]\s*)?[a-zà-ÿ]{3,}\s+(?:dont\s+(?:la\s+|le\s+|l['’]\s*)[a-zà-ÿ]{3,}\s+est\s+.+?|"
+    r"(?:o[uù]\s+(?:se\s+(?:trouve|situe)|est(?:\s+situ[ée]+)?)|qui\s+abrite)\s+.+?))\s*[?.!]*\s*$", re.I)
 
 
 def _compose_enveloppe(memoire, conv_id, texte: str, pleine: bool):
     """(2b-env) Voir le commentaire du câblage. Résout le GN composé FINAL de la question (« capitale du
     Japon » -> Tokyo, maillon vérifié), substitue, rejoue le pipeline. La substitution et la dérivation du
     rejeu sont toutes deux montrées."""
-    m = _ENV_INTERNE_RE.search(texte)
-    if not m:
-        return None
-    if _normalise(m.group(1)) not in _attr_heads():
-        return None
+    interne = reste_interne = None
+    m = _ENV_RELATIF_RE.search(texte)                # « … le pays dont la capitale est Tokyo » / « où se trouve … »
+    if m:
+        interne = reste_interne = m.group(1)
+    else:
+        m = _ENV_INTERNE_RE.search(texte)
+        if not m or _normalise(m.group(1)) not in _attr_heads():
+            return None
+        interne, reste_interne = "%s de %s" % (m.group(1), m.group(2)), m.group(2)
     ia, verifie = _charge_ia()
     if not ia:
         return None
-    val, steps = _resout_noeud("%s de %s" % (m.group(1), m.group(2)), ia, verifie, 0)
+    val, steps = _resout_noeud(interne, ia, verifie, 0)
     if val is None or not steps:                 # steps vides = feuille littérale, rien de VÉRIFIÉ -> on s'abstient
         return None
     aff = str(val)
-    if _normalise(aff) == _normalise(m.group(2).strip()):
+    if _normalise(aff) == _normalise(reste_interne.strip()):
         return None
     nouveau = (texte[:m.start()].strip() + " " + aff + " ?").strip()
     if _normalise(nouveau) == _normalise(texte):
@@ -1862,6 +1943,20 @@ def _cap_comparaison(texte: str):
         direction, adj, x, y = m.group(1), m.group(2), m.group(3), m.group(4)
     adjn = _normalise(adj)
     x, y = _strip_article(x.strip()), _strip_article(y.strip())
+    # FEUILLE SUPERLATIVE d'un côté de la comparaison : « le pays le plus peuplé d'Europe est-il plus peuplé
+    # que le Japon ? » -> résout d'abord l'argmax borné (fait réel), compare ensuite. La résolution est MONTRÉE.
+    notes = []
+    if re.search(r"\b(?:le|la)\s+plus\b|\b(?:le|la)\s+moins\b", x, re.I):
+        arg = _superlatif_argmax(x)
+        if arg:
+            notes.append(arg[1])
+            x = _strip_article(str(arg[0]))
+    if re.search(r"\b(?:le|la)\s+plus\b|\b(?:le|la)\s+moins\b", y, re.I):
+        arg = _superlatif_argmax(y)
+        if arg:
+            notes.append(arg[1])
+            y = _strip_article(str(arg[0]))
+    suffixe_notes = ("  (en résolvant d'abord : %s)" % " ; ".join(notes)) if notes else ""
     trouve = _attr_pour_paire(adjn, x, y)            # relation où les DEUX entités ont une valeur (pays OU sommets/fleuves)
     if not trouve:
         return None
@@ -1879,14 +1974,15 @@ def _cap_comparaison(texte: str):
     except Exception:
         nx, ny = ax, ay
     if direction == "aussi" or vx == vy:
-        return "%s (%s) et %s (%s) sont %ségaux sur ce critère." % (nx, fx, ny, fy, "quasi " if vx != vy else "")
+        return "%s (%s) et %s (%s) sont %ségaux sur ce critère.%s" % (nx, fx, ny, fy,
+                                                                      "quasi " if vx != vy else "", suffixe_notes)
     grand_sens = adjn not in _ADJ_PETIT          # « grand/peuplé » : valeur haute = « plus » ; « petit » : inverse
     if direction == "moins":
         grand_sens = not grand_sens
     passe = (vx > vy) == grand_sens
     if passe:
-        return "Oui — %s (%s) est %s %s que %s (%s)." % (nx, fx, direction, adj, ny, fy)
-    return "Non — c'est l'inverse : %s (%s) est %s %s que %s (%s)." % (ny, fy, direction, adj, nx, fx)
+        return "Oui — %s (%s) est %s %s que %s (%s).%s" % (nx, fx, direction, adj, ny, fy, suffixe_notes)
+    return "Non — c'est l'inverse : %s (%s) est %s %s que %s (%s).%s" % (ny, fy, direction, adj, nx, fx, suffixe_notes)
 
 
 _FILTRE_RE = re.compile(
@@ -5582,7 +5678,10 @@ _MOTS_OUTILS_PROTEGES = frozenset(
     "et ou ni or car mais donc que qui quoi dont ou si comme quand puisque lorsque parce "
     "ne pas plus moins tres trop peu bien mal tout tous toute toutes rien tres aussi encore deja "
     "avec sans sous sur dans par pour vers chez entre apres avant depuis pendant contre selon malgre "
-    "a la le du des ici la bas oui non peut etre".split())
+    "a la le du des ici la bas oui non peut etre "
+    # adjectifs/interjections ULTRA-courants corrompus en contexte (« BON alors » -> « BONNE alors », bug réel
+    # trouvé la nuit du 6/07 : la phrase guérie ne se dévoilait plus -> court-circuit avant (0dev))
+    "bon bonne bons bonnes alors bref enfin voila voilà grand grande petit petite beau belle vieux vieille".split())
 # NUMÉRAUX : ni noms ni verbes au lexique -> la guérison « corrigeait » « huit » -> « hui » (bug réel). Fermé, sûr.
 _NUMERAUX_PROTEGES = frozenset(
     "zero un une deux trois quatre cinq six sept huit neuf dix onze douze treize quatorze quinze seize "
@@ -5933,7 +6032,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         #        du GN (un simple « quelle est la capitale de X » reste au lookup direct). Auto-protégée :
         #        maillon interne VÉRIFIÉ exigé + réponse rejouée utile, sinon None et la cascade continue.
         if _ENV_PREFIXE_RE.search(t):
-            _pfx_m = _ENV_INTERNE_RE.search(t)
+            _pfx_m = _ENV_RELATIF_RE.search(t) or _ENV_INTERNE_RE.search(t)
             if _pfx_m and _ENV_PREFIXE_RE.search(t[:_pfx_m.start()]):   # l'enveloppe est AVANT le GN interne
                 rep = _compose_enveloppe(memoire, conv_id, t, pleine)
                 if rep:

@@ -1,5 +1,26 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Relatives, appositions, comparaison superlative : batterie complexité 5/20 → 18/20
+
+- **Propositions RELATIVES résolues en entités** (`_resout_relatif`, feuille de `_resout_noeud`) :
+  - « sur quel continent se trouve le pays **dont la capitale est** Tokyo ? » → *le Japon se trouve en Asie
+    (en composant d'abord : pays dont capitale est Tokyo = Japon)* — lecture INVERSE à match UNIQUE (FAUX=0) ;
+  - « quelle est la langue du pays **où se trouve** la tour Eiffel ? » → *français (tour Eiffel est à Paris,
+    puis Paris est en France, puis langue de France = français)* — monument → ville → pays, 3 sauts montrés.
+- **Comparaison à FEUILLE SUPERLATIVE** : « le pays le plus peuplé d'Europe est-il plus peuplé que le
+  Japon ? » → l'argmax borné est résolu d'abord (fait réel, résolution MONTRÉE), puis la comparaison chiffrée.
+- **Appositions et modaux compris** : « ce grand pays qu'est l'Australie » → *l'Australie* ; « quelle pourrait
+  bien être… » → « quelle est… » ; « qui a bien pu écrire » → « qui a écrit » (verbes créateurs fermés) ;
+  « combien de gens vivent en France ? » → *population de la France*.
+- **Bug réel de guérison corrigé** : « **BON alors**, cette histoire de… » était « corrigé » en « BONNE
+  alors » → la phrase guérie ne se dévoilait plus et court-circuitait tout (retour fallback avant (0dev)).
+  « bon/bonne/alors/bref/voilà… » ajoutés aux mots protégés.
+- **Harness e2e_complexite corrigé** : le bloc mémoire appelait `repond()` directement (qui n'indexe pas) →
+  0/6 à tort ; passage par le VRAI chemin serveur (`ajoute_message`) → 6/6.
+- Batterie complexité/compréhension/mémoire : **18/20** (5/20 au début de nuit ; les 2 restants = trous de
+  données documentés : population_ville sans Paris, aucune relation dirigeant/chef d'État nominatif).
+- Banc paraphrases **141/141** (11e vague), raisonnement 146/146, suite 18/18, challenge 16/16, valide_maj 19/19.
+
 ## 2026-07-06 — FAUX corrigé : « la langue de Tokyo » répondait « français » (l'œuvre homonyme)
 
 - Le lookup direct de « langue de Tokyo » matchait la langue d'une **ŒUVRE nommée « Tokyo »** (film en

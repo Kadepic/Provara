@@ -188,6 +188,18 @@ CAS += [
     ("quelle langue parle-t-on au Japon ?", "japonais"),
 ]
 
+# ————— 11e VAGUE : RELATIVES + appositions + comparaison à feuille superlative —————
+CAS += [
+    ("sur quel continent se trouve le pays dont la capitale est Tokyo ?", "asie"),       # relative inverse
+    ("quelle est la monnaie du pays dont la capitale est Madrid ?", "euro"),
+    ("quelle est la langue du pays où se trouve la tour Eiffel ?", "français"),          # monument→ville→pays (3 sauts)
+    ("le pays le plus peuplé d'Europe est-il plus peuplé que le Japon ?", "oui"),        # feuille superlative comparée
+    ("dis-moi, si tu le sais, quelle pourrait bien être la capitale de ce grand pays qu'est l'Australie", "canberra"),
+    ("j'aimerais beaucoup savoir qui a bien pu écrire ce fameux roman qu'est 1984", "orwell"),
+    ("entre nous, tu saurais pas par hasard combien de gens vivent en France ?", "68"),  # population de la France
+    ("bon alors, cette histoire de capitale du Japon, c'est quoi déjà ?", "tokyo"),      # « bon » protégé de la guérison
+]
+
 # ————— 3e VAGUE : ANAPHORES INTER-TOURS — (amorce, suite anaphorique, extrait attendu dans la 2e réponse).
 # La 2e question n'a AUCUN sens seule (« il est mort quand ? ») : elle mesure la mémoire conversationnelle.
 MULTITOURS = [
