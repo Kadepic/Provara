@@ -12,7 +12,11 @@ rem Mode FENÊTRÉ par défaut (pas de console noire au lancement ; les messages
 rem et l'interface web affiche une modale de chargement). Pour rétablir la console : VERAX_CONSOLE=1.
 set "WINFLAG=--noconsole"
 if "%VERAX_CONSOLE%"=="1" set "WINFLAG="
-py -m PyInstaller --onefile --name Provara %WINFLAG% ^
+rem ONEDIR (remede antivirus, builds 49 et suivants) : VERAX_ONEDIR=1 produit dist\Provara\ (exe + _internal,
+rem extrait UNE fois -- plus de re-extraction %%TEMP%% scannee par l'AV a chaque lancement). Defaut : --onefile.
+set "PACKFLAG=--onefile"
+if "%VERAX_ONEDIR%"=="1" set "PACKFLAG=--onedir"
+py -m PyInstaller %PACKFLAG% --name Provara %WINFLAG% ^
   --paths src --paths ingestion --paths interface ^
   --hidden-import _precharge_verax ^
   --hidden-import ia --hidden-import lecteur --hidden-import base_faits ^

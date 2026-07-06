@@ -5,6 +5,15 @@ on:
     branches: [main]
   release:
     types: [created]
+env:
+  # BASCULE ONEDIR (remède antivirus, décision Yohan 2026-07-06) : le --onefile se ré-extrait dans %TEMP% à
+  # CHAQUE lancement -> l'AV rescanne tout (minutes de lenteur) et verrouille parfois python3xx.dll (« Failed
+  # to load Python DLL »). Passer ONEDIR à "1" UNIQUEMENT quand le build 48 (updater v2, sait installer
+  # Provara-app.zip) est largement diffusé. Le flip publie Provara-app.zip et FIGE Provara.exe/
+  # Provara-windows.zip au dernier build onefile : un updater <= 47 installera ce pont, qui migrera ensuite
+  # tout seul vers le paquet-dossier. NE JAMAIS publier un exe onedir sous le nom Provara.exe (updaters
+  # anciens = app cassée chez tous les users).
+  ONEDIR: "0"
 jobs:
   build-exe:
     runs-on: windows-latest
@@ -23,7 +32,7 @@ jobs:
         run: echo "$GITHUB_RUN_NUMBER $GITHUB_SHA" > VERSION_BUILD.txt
       - name: Build Provara.exe
         run: >
-          pyinstaller --onefile --name Provara --noconsole
+          pyinstaller ${{ env.ONEDIR == '1' && '--onedir' || '--onefile' }} --name Provara --noconsole
           --paths src --paths ingestion --paths interface
           --hidden-import _precharge_verax
           --hidden-import ia --hidden-import lecteur --hidden-import base_faits
@@ -50,7 +59,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: Provara-windows
-          path: dist/Provara.exe
+          path: dist/Provara*         # onefile : dist/Provara.exe ; onedir : dist/Provara/ (exe + _internal)
       - name: Publier la Release ROULANTE « latest » (auto-update à chaque push)
         # OBJECTIF : après un simple commit+push, les utilisateurs reçoivent la mise à jour SANS action.
         # On maintient une Release au tag fixe « latest » : on y REMPLACE (--clobber) le paquet .exe (zip) ET un
@@ -62,7 +71,12 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -e
-          powershell -Command "Compress-Archive -Path dist/Provara.exe -DestinationPath dist/Provara-windows.zip -Force"
+          if [ "$ONEDIR" = "1" ]; then
+            # Paquet DOSSIER (builds >= 49) : Provara.exe + _internal\ à la RACINE du zip (attendu par maj.py).
+            powershell -Command "Compress-Archive -Path dist/Provara/* -DestinationPath dist/Provara-app.zip -Force"
+          else
+            powershell -Command "Compress-Archive -Path dist/Provara.exe -DestinationPath dist/Provara-windows.zip -Force"
+          fi
           cp VERSION_BUILD.txt dist/version.txt
           # Release roulante « latest » : créée si absente, sinon mise à jour.
           if ! gh release view latest >/dev/null 2>&1; then
@@ -72,9 +86,15 @@ jobs:
           else
             gh release edit latest --notes "Build automatique (run #$GITHUB_RUN_NUMBER, commit $GITHUB_SHA)." --latest
           fi
-          # On publie AUSSI le .exe BRUT : lien direct stable pour les non-techniciens (double-clic, aucun
-          # décompactage) -> https://github.com/Provara-IA/Provara/releases/latest/download/Provara.exe
-          gh release upload latest dist/Provara.exe dist/Provara-windows.zip dist/version.txt --clobber
+          if [ "$ONEDIR" = "1" ]; then
+            # SURTOUT ne pas toucher Provara.exe / Provara-windows.zip : figés au dernier onefile, ils servent
+            # de PONT aux updaters <= 47 (qui installeront ce pont, lequel migrera seul vers le paquet-dossier).
+            gh release upload latest dist/Provara-app.zip dist/version.txt --clobber
+          else
+            # On publie AUSSI le .exe BRUT : lien direct stable pour les non-techniciens (double-clic, aucun
+            # décompactage) -> https://github.com/Provara-IA/Provara/releases/latest/download/Provara.exe
+            gh release upload latest dist/Provara.exe dist/Provara-windows.zip dist/version.txt --clobber
+          fi
           # Compat : si l'évènement est une vraie Release taguée, on y met aussi le paquet.
           if [ "${{ github.event_name }}" = "release" ] && [ -n "${{ github.event.release.tag_name }}" ]; then
             gh release upload "${{ github.event.release.tag_name }}" dist/Provara-windows.zip dist/version.txt --clobber || true
