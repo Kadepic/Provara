@@ -2478,7 +2478,13 @@ def _liste_inverse(question: str) -> str | None:
     seq = qn.split()
 
     def _base(w):
-        return _ALIAS.get(w) or (_ALIAS.get(w[:-1]) if w.endswith(("s", "x")) else None) or w
+        # alias d'abord, puis SINGULARISATION nue : « langues » -> « langue » (sans ça, un pluriel hors-alias
+        # ne retombait jamais sur son token de relation -> « quelles langues parle-t-on au Japon » ne listait pas)
+        if w in _ALIAS:
+            return _ALIAS[w]
+        if w.endswith(("s", "x")):
+            return _ALIAS.get(w[:-1]) or w[:-1]
+        return w
 
     def _liste_plausible(rel) -> bool:
         rtoks = [t for t in rel.split("_") if len(t) >= 3 and t not in _GENERIQUES]
