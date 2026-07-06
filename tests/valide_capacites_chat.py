@@ -131,6 +131,20 @@ try:
             del _FAUX_FAITS[k]                                   # un seul critère -> avis MINCE assumé
     r = R._cap_avis("tu préfères aaa ou bbb ?")
     check(r is not None and "MINCE" in r, "avis : un seul critère mesurable -> avis annoncé MINCE, jamais gonflé")
+    # — LE CRITÈRE DE L'UTILISATEUR (le « donne-moi ton critère n°1 » n'est PLUS une impasse) —
+    _FAUX_FAITS.update({("population_pays", "aaa"): 1, ("population_pays", "bbb"): 2})
+    check(R._cap_avis_critere("la superficie", "cv-avis") is None, "critère : aucun avis en attente -> None")
+    R._cap_avis("tu préfères aaa ou bbb ?", "cv-avis")
+    r = R._cap_avis_critere("mon critère n°1 est la superficie", "cv-avis")
+    check(r is not None and "TON critère (superficie)" in r and "AAA" in r,
+          "critère nommé au tour suivant -> RE-TRANCHE sur ce critère (valeurs montrées)")
+    check(R._cap_avis_critere("la superficie", "cv-avis") is None, "état consommé une seule fois")
+    R._cap_avis("tu préfères aaa ou bbb ?", "cv-avis")
+    check(R._cap_avis_critere("quelle est la capitale de la France ?", "cv-avis") is None,
+          "message sans rapport -> None (pipeline normal, l'état reste)")
+    r = R._cap_avis_critere("mon critère c'est le climat", "cv-avis")
+    check(r is not None and "pas de mesure" in r and "superficie" in r,
+          "critère NON mesuré nommé explicitement -> aveu honnête + critères disponibles")
 finally:
     R._valeur_attr = _valeur_avant
 
