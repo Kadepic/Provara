@@ -304,6 +304,10 @@ def _lance_updater(nouveau_exe: str, dossier_app: str | None = None) -> dict:
         ]
     lignes += [
         'move /Y "%s" "%s" >NUL' % (nouveau_exe, cible),
+        # MARQUEUR DE RELANCE MAJ (vécu : un 2e onglet s'ouvrait, l'ancien restant ouvert) : l'app relancée
+        # n'ouvre PAS de navigateur — l'onglet existant se recharge tout seul (watchdog front). L'env posé ici
+        # vaut pour ce start ET les relances anti-DLL (même session cmd).
+        'set "VERAX_RELANCE_MAJ=1"',
         'start "" "%s"' % cible,
         # FILET ANTI-DLL EN BOUCLE (vécu ×2 : « Failed to load Python DLL …\_MEI…\python312.dll ») : au premier
         # lancement d'un binaire frais, l'antivirus peut verrouiller l'extraction PyInstaller — et son scan peut

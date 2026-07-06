@@ -216,6 +216,36 @@ check(A.reprend_clarification(None, "Paris") is None, "slot avec conv_id None ->
 A.note_attente_slot("c-slot2", "météo sans trou")
 check(A.reprend_clarification("c-slot2", "Paris") is None, "gabarit sans %s -> jamais enregistré (no-op sûr)")
 
+# AVIS 2/2 — POUR/CONTRE sourcé + verdict CONDITIONNEL (débats sans chiffres, brique Yohan « mon avis est… »).
+import veille_structure as _VS_avis
+_cwd_avant = _VS_avis.cherche_web_domaines
+_wl_avant = _VS_avis.cherche_web_libre
+A._TRANSPORT = lambda url, timeout=15: (200, b"x")
+try:
+    _VS_avis.cherche_web_domaines = lambda q, k=2, **kw: [
+        ("Pour et contre", "Elles font moins de bruit et le coût d'usage est plus faible, mais l'autonomie "
+                           "est plus courte et le prix d'achat est plus élevé.",
+         "http://exemple.fr/ve", "exemple.fr"),
+        ("Menu", "Marques Renault Peugeot Tesla Classements Guides Comparatifs Essais Newsletter",
+         "http://menu.fr/nav", "menu.fr")]
+    r = A.apres_hors("que penses-tu des voitures électriques ?", "c-avis")
+    check(r is not None and r.statut == A.SUPPOSITION and "CONDITIONNEL" in r.texte,
+          "débat sans chiffres -> avis CONDITIONNEL signé (règle affichée), jamais un goût inventé")
+    check(r is not None and "exemple.fr" in r.texte and "rapporté" in r.texte,
+          "les deux faces sont RAPPORTÉES et attribuées (dom + extrait)")
+    check(r is not None and "menu.fr" not in r.texte,
+          "garde PROSE : un extrait « menu de navigation » n'est jamais servi comme argument (vécu live)")
+    check(r is not None and "critère" in r.texte, "le trancheur est le CRITÈRE de l'utilisateur (invité)")
+    _VS_avis.cherche_web_domaines = lambda q, k=2, **kw: []
+    _VS_avis.cherche_web_libre = lambda q, timeout=15: None
+    r = A.apres_hors("que penses-tu des voitures électriques ?", "c-avis")
+    check(r is not None and r.statut == A.SUPPOSITION and r.texte.startswith(A._PFX_OPINION),
+          "aucune source -> repli cadrage subjectif existant, inchangé")
+finally:
+    _VS_avis.cherche_web_domaines = _cwd_avant
+    _VS_avis.cherche_web_libre = _wl_avant
+    A._TRANSPORT = None
+
 # RGPD : l'oubli purge AUSSI l'état en-process (plus rien à rejouer).
 A.note_clarification("c-rgpd", "question secrete flauve ?", "flauve", "fleuve", "…")
 A.oublie_etat("c-rgpd")
