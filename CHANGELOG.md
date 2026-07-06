@@ -1,5 +1,26 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Mode web éprouvé : garde subjectivité, définitions citées, outils atteignables (challenge web 14→22/30)
+
+- **Garde SUBJECTIVITÉ avant le web** : « quel est le plus beau pays du monde ? » (web ON) partait au
+  métamoteur et rapportait… le FILM « Le Plus Beau Pays du monde » (extrait Wikipédia hors-sujet). La
+  recherche web consulte désormais le classifieur de bornage : une question NON BORNÉE ne part JAMAIS au web →
+  cadrage honnête (*« pas de réponse unique, c'est subjectif — donne-moi un critère »*). + « serait vraiment
+  rafraîchissante » ajouté aux prédicats subjectifs (recommandation évaluative au conditionnel).
+- **Définitions citées et soutenues** : « Qu'entend-on par « sérendipité » ? » / « que signifie X ? » → la
+  définition (formes ajoutées à `_DEF_RE`, guillemets autour du mot acceptés).
+- **Outils atteignables** : « distance entre Paris et Madrid » SANS point d'interrogation est maintenant une
+  DEMANDE (`_veut_reponse` : tête d'attribut nue + connecteur) → *1 053 km, orthodromie* ; « nature
+  grammaticale du VOCABLE nonobstant » → *préposition* (« vocable/terme » acceptés).
+- **Did-you-mean abusif corrigé** : « espace » (mot français parfaitement valide, absent du lexique POS mais
+  DÉFINI dans definition_nom) déclenchait « vouliez-vous dire espece ? » → `_mot_defini` en renfort de
+  `_mot_reel` dans le générateur de suggestions.
+- Harness challenge : apostrophes typographiques normalisées, marqueurs SOCIAL (« salut »), OUTIL
+  (préposition/conjonction/pronom/déterminant), FACTUEL (définitions longues « Terme : … »).
+- Challenge **16/16** (sans web) et **22/30** (web — restants : famille « comment fonctionne / explique-moi »
+  à router vers le rapport web attribué, décision pour Yohan ; Mojeek renvoie 403 au métamoteur, à surveiller).
+  Tous bancs verts : 142/142, 146/146, 4/4, 8/8, 18/18, 19/19.
+
 ## 2026-07-06 — Relatives, appositions, comparaison superlative : batterie complexité 5/20 → 18/20
 
 - **Propositions RELATIVES résolues en entités** (`_resout_relatif`, feuille de `_resout_noeud`) :

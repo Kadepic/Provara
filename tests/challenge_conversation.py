@@ -16,6 +16,7 @@ Exécution :  PYTHONPATH="interface:src:ingestion" python3 tests/challenge_conve
 from __future__ import annotations
 
 import os
+import re
 import sys
 
 os.environ.setdefault("LECTEUR_AMORCE_SEULE", "1")
@@ -41,7 +42,7 @@ def classe(rep: str) -> str:
     """Range la réponse dans une classe de comportement (heuristique de SURFACE, tolérante)."""
     if not rep:
         return AUTRE
-    b = rep.lower()
+    b = rep.lower().replace("’", "'")     # apostrophe typographique normalisée (« c'est subjectif » matchait pas)
     # repli d'échec : ce qu'on veut faire DISPARAÎTRE sur les demandes légitimes
     if ("je ne sais pas encore traiter cette famille" in b
             or b.startswith("je n'arrive pas à rattacher")):
@@ -52,7 +53,8 @@ def classe(rep: str) -> str:
             "conjugaison de", "au présent de l'indicatif", "je ne conjugue", "moyenne :", "médiane :", "écart-type",
             "proportion estimée", "taux estimé", "pente robuste", "ordre de grandeur", "miser f", "kelly",
             "regardons le besoin", "audit de sécurité", "distance entre", "type : ", "» : nom", "» : verbe",
-            "» : adjectif", "» : adverbe", "je pense que ça monte", "cette valeur me semble anormale",
+            "» : adjectif", "» : adverbe", "» : préposition", "» : conjonction", "» : pronom",
+            "» : déterminant", "je pense que ça monte", "cette valeur me semble anormale",
             "je ne suis pas certain de la nature")):
         return OUTIL
     if "d'après" in b or "trouvé sur" in b or "🔗" in rep or "d'après ce que tu m'as dit" in b:
@@ -65,13 +67,21 @@ def classe(rep: str) -> str:
     if (b.startswith("je n'ai pas l'information") or "internet est coupé" in b
             or b.startswith("j'ai compris la structure de ta question")):   # abstention ENRICHIE (non ancrée)
         return ABSTENTION
-    if any(s in b for s in ("bonjour", "je vais très bien", "à bientôt", "avec plaisir", "hello")):
+    if any(s in b for s in ("bonjour", "je vais très bien", "à bientôt", "avec plaisir", "hello",
+                            "salut", "tout va bien")):
         return SOCIAL
     if ("je m'appelle provara" in b or "je suis provara" in b or "je suis un" in b
             or "je réponds depuis" in b or "je réponds à partir" in b):
         return META
     # réponse COURTE et directe, sans marqueur d'échec -> réponse factuelle nue (« Madrid », « Paris »)
     if 0 < len(rep.strip()) <= 60 and "\n" not in rep.strip():
+        return FACTUEL
+    # DÉFINITION (« Canicule : période prolongée de chaleur… ») ou fait rédigé (« X a été écrit par Y », « X est
+    # né à Y », « Oui — … fait vérifié ») : réponses factuelles LONGUES que le seuil de 60 c. ratait.
+    if re.match(r"^[A-ZÀ-Ü][\wà-ÿ'’ \-]{1,60} : \S", rep.strip()):
+        return FACTUEL
+    if re.search(r"\ba été (écrit|composé|peint|réalisé|sculpté|inventé)e? par\b|\best née? (à|en)\b|"
+                 r"\best morte? en\b|fait vérifié", rep):
         return FACTUEL
     return AUTRE
 

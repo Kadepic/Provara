@@ -56,11 +56,20 @@ except Exception:                                   # robustesse : repli minimal
 
 def _veut_reponse(texte: str) -> bool:
     """L'utilisateur attend-il une réponse (question) plutôt qu'il n'affirme un fait ? Tolérant au « ? » oublié
-    et aux fautes de ponctuation : « ? » présent N'IMPORTE OÙ, OU un mot-indice de demande présent."""
+    et aux fautes de ponctuation : « ? » présent N'IMPORTE OÙ, OU un mot-indice de demande présent, OU un
+    NOMINAL-REQUÊTE nu (« distance entre Paris et Madrid », « définition de sérendipité » : une tête d'attribut
+    suivie de son connecteur EST une demande, même sans point d'interrogation)."""
     if "?" in texte:
         return True
-    toks = set(_normalise(texte).split())
-    return bool(toks & _INDICES_DEMANDE)
+    toks = _normalise(texte).split()
+    if set(toks) & _INDICES_DEMANDE:
+        return True
+    if len(toks) >= 3 and toks[1] in ("de", "du", "des", "d", "entre") and not (set(toks) & _TOKENS_AFFIRMATION):
+        try:
+            return toks[0] in _attr_heads() or toks[0] in ("distance", "definition", "difference")
+        except Exception:
+            return False
+    return False
 
 
 # Marqueurs d'AFFIRMATION : verbe conjugué courant (copule, avoir, verbes d'état personnels) ou 1ʳᵉ personne.
@@ -2418,7 +2427,9 @@ def _suggere_type(question: str) -> tuple[str, str] | None:
     « longue/riche/peint/chine » seraient « corrigés » à tort. Renvoie (mot_saisi, forme_proposée) ou None."""
     cibles = {t for t in _vocab_types() if len(t) >= 5}
     for tok in set(_normalise(question).split()):
-        if len(tok) < 5 or tok in cibles or _mot_reel(tok):
+        # _mot_defini en RENFORT de _mot_reel : « espace » manquait au lexique POS mais est DÉFINI dans
+        # definition_nom -> le did-you-mean proposait « espece » sur un mot parfaitement français (bug réel).
+        if len(tok) < 5 or tok in cibles or _mot_reel(tok) or _mot_defini(tok):
             continue
         meilleure = None
         for cible in cibles:
@@ -3759,7 +3770,8 @@ def _cap_grammaire(texte: str):
     """« nature (grammaticale) du mot X » -> classe + genre ; « analyse grammaticale : phrase » -> analyse.
     Léger (grammaire_fr, pas de lecteur). Abstention honnête si la nature est incertaine (jamais devinée)."""
     m = re.match(r"^\s*(?:quelle?\s+est\s+la\s+)?(?:nature|classe|cat[ée]gorie)\s+(?:grammaticale?\s+)?"
-                 r"(?:du\s+mot\s+|de\s+l['’]|de\s+la\s+|de\s+|d['’])\s*['\"«]?\s*([\wà-ÿ][\wà-ÿ'\-]*)\s*['\"»]?\s*\??\s*$",
+                 r"(?:du\s+(?:mot|vocable|terme)\s+|de\s+l['’]|de\s+la\s+|de\s+|d['’])\s*['\"«]?\s*"
+                 r"([\wà-ÿ][\wà-ÿ'\-]*)\s*['\"»]?\s*\??\s*$",
                  texte, re.I)
     if m:
         try:
@@ -4029,8 +4041,10 @@ _DEF_RE = re.compile(
     r"(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|d[ée]finition\s+d[eu'’]\s*(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|d[ée]finis[- ]?(?:moi\s+)?(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    r"|qu['’ ]?entend[- ]on\s+par\s+(?:un\s|une\s|le\s|la\s|l['’])?\s*"
+    r"|que\s+signifie\s+(?:un\s|une\s|le\s|la\s|l['’])?\s*"
     r"|qu['’ ]?est[- ]ce\s+qu['’e]?\s*)"
-    r"([\wà-ÿ][\wà-ÿ'’\- ]*?)\s*\??\s*$", re.I)
+    r"[«\"']?\s*([\wà-ÿ][\wà-ÿ'’\- ]*?)\s*[»\"']?\s*\??\s*$", re.I)   # mot éventuellement CITÉ (« sérendipité »)
 _DEF_RELS_CACHE = None
 
 
@@ -4128,7 +4142,7 @@ def _cap_definition(texte: str):
     m = _DEF_RE.match(texte)
     if not m:
         return None
-    ent = _strip_article(m.group(1).strip())
+    ent = _strip_article(m.group(1).strip().strip("«»\"' ").strip())   # « sérendipité » cité entre guillemets
     if not ent or len(ent) < 2 or len(ent.split()) > 5:
         return None
     try:
@@ -6140,11 +6154,21 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
 
     #   (1·web) RECHERCHE STRUCTURÉE (opt-in réseau IA_WEB=1) : le lecteur n'a rien -> source fiable Wikidata,
     #           réponse VÉRIFIÉE + ATTRIBUÉE. Avant la mémoire pour qu'une demande factuelle sans « ? » y accède.
+    #           GARDE SUBJECTIVITÉ : une question NON BORNÉE (« le plus beau pays du monde ») ne part JAMAIS au
+    #           web — le métamoteur matcherait un homonyme (le FILM « Le Plus Beau Pays du monde ») au lieu du
+    #           cadrage honnête « la réalité ne fixe pas de réponse unique » (rendu par le routeur de bornage).
     if (pleine and os.environ.get("IA_WEB") == "1" and not _negation_bloquante(t)
             and not _ressemble_calcul(t)):        # une opération arithmétique ne se cherche pas sur le web
-        rep = _recherche_structuree(t)
-        if rep:
-            return rep
+        _borne_ok = True
+        try:
+            import classifieur_bornage as _CBn
+            _borne_ok = _CBn.classe(t).statut_ontologique != _CBn.NON_BORNE
+        except Exception:
+            pass
+        if _borne_ok:
+            rep = _recherche_structuree(t)
+            if rep:
+                return rep
     #   (2) MÉMOIRE DE DIALOGUE — seulement si l'utilisateur DEMANDE quelque chose (sinon une affirmation
     #       déclencherait un rappel incongru). On ne retient que de vrais ÉNONCÉS : role 'user', pas le message
     #       courant, et AUCUN tour contenant « ? » (une question — même mal ponctuée « …saoudite? Si… » — n'est

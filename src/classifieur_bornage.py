@@ -57,6 +57,9 @@ _NB_DUR = {
                              r"plus beau|plus belle|plus joli|le plus beau|plus sympa|plus agreable|le plus interessant|"
                              # notoriété = pas de mesure unique (streams ? ventes ? sondages ?) et « du moment » fluctue
                              r"plus connue?s?|plus populaires?|plus celebres?|plus stylee?s?|"
+                             # recommandation évaluative au conditionnel (« quelle boisson serait vraiment
+                             # rafraichissante ») : pas de mesure unique -> supposition cadrée, jamais une quête web
+                             r"serait (vraiment |bien )?(rafraichissant|agreable|sympa|ideal|parfait)e?s?|"
                              r"nombre parfait|le plus parfait|le vrai (bonheur|sens))\b",
     "gout_preference": r"\b(preferes?-tu|ton gout|tes gouts|aimes?-tu le plus|quel est ton prefere|"
                        r"quelle est ta prefere)\b",
