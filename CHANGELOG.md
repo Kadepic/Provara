@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — Menu ⚙️ Réglages : un seul bouton en haut à droite (design Yohan)
+
+- La barre d'outils (Internet, MAJ auto, Rechercher une MAJ, thème, langue, Quitter) devient UN bouton
+  « ⚙️ Réglages » -> panneau déroulant. Mêmes identifiants -> zéro régression JS ; clic hors du panneau le
+  ferme ; le bouton « Quitter » (rouge, en bas du menu) réutilise la route /api/quitter existante — les
+  doublons (2ᵉ route, 2ᵉ fonction serveur, injecteur dynamique du bouton) ont été retirés.
+- Le watchdog serveur reste silencieux après un « Quitter » volontaire (pas de faux « mise à jour en cours »).
+- Testé en réel : page servie avec le menu, /api/quitter arrête effectivement le serveur. Suite 18/18,
+  valide_maj 28/28.
+
 ## 2026-07-06 — MAJ : la page se recharge toute seule, et l'app se relance même si l'antivirus grogne
 
 - **Page figée après une mise à jour** (retour Yohan) : l'interface a maintenant un WATCHDOG — serveur perdu →
