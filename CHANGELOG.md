@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-06 — FAUX d'homonymes d'œuvres éradiqués : la tour Eiffel n'est plus un tableau de 63 cm
+
+- **Trouvés par mes propres sondes** (la carte de couverture les masquait) : « hauteur de la tour Eiffel ? »
+  → *0,632 m* (le TABLEAU « La Tour Eiffel », pas le monument !) ; « hauteur de la Joconde ? » → *2,48 m*
+  (une SCULPTURE homonyme, pas le tableau de Vinci) ; et la variante d'article ramenait le hameau « La
+  France » (3,4 km²) pour « superficie de la France ».
+- **Type-check homonyme dans les dimensions** (`_lookup_famille` + gardes `_cap_dimension`) :
+  - une entité MONUMENT (ville_monument) n'est jamais servie par une relation d'ŒUVRE D'ART (liste fermée :
+    peinture/estampe/aquarelle/dessin/gravure/photo/litho/affiche) ni de sculpture ;
+  - une PEINTURE connue (peintre_oeuvre) n'est jamais servie par une SCULPTURE homonyme ;
+  - le match EXACT (sans article) PRIME sur les variantes d'article (le pays France avant le hameau) ;
+  - valeurs AMBIGUËS across homonymes → l'ambiguïté est DITE (« précise : le tableau X, le monument X ») ;
+  - monument/tableau connu sans dimension stockée → abstention qui COUPE la cascade (le moteur lourd ne peut
+    plus piocher l'homonyme) : *« je ne confonds pas avec les œuvres d'art homonymes »*.
+- **Lisibilité** : longueurs stockées en mètres ≥ 10 km affichées en km d'abord — « longueur du Yangzi
+  Jiang » → *6 300 km (6 300 000 m)* (conversion exacte, valeur brute montrée).
+- Banc raisonnement **153/153** (4 cas), paraphrases 143/143, suite 18/18, challenge 16/16, constructions 4/4.
+
 ## 2026-07-06 — Couverture atomique 79 % + devise/motto + planètes seedées + N-way court + pluriels listés
 
 - **Couverture atomique rejouée** (3 questions × 1 258 relations testables = 3 738 questions, en processus,

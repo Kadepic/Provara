@@ -79,6 +79,12 @@ CAS = [
     ("agregat-liste", R._cap_agregat_liste, "quelle est la population cumulée de la France et de l'Allemagne ?", "152 211 586"),
     ("agregat-liste-moyenne", R._cap_agregat_liste, "population moyenne de la France, l'Allemagne et l'Italie ?", "moyenne"),
     ("deduction", R._cap_deduction, "sur quel continent est Abuja ?", "je le déduis"),
+    # HOMONYMES d'œuvres/monuments : jamais la dimension d'un homonyme (tableau « La Tour Eiffel » 0,632 m,
+    # sculpture « La Joconde » 2,48 m, hameau « La France » 3,4 km²) — abstention DITE ou la vraie valeur
+    ("dim-monument-garde", R._cap_dimension, "quelle est la hauteur de la tour Eiffel ?", "je ne confonds pas"),
+    ("dim-tableau-garde", R._cap_dimension, "quelle est la hauteur de la Joconde ?", "je ne confonds pas"),
+    ("dim-exact-prime", R._cap_dimension, "quelle est la superficie de la France ?", "551 695"),
+    ("dim-km-lisible", R._cap_dimension, "quelle est la longueur du Yangzi Jiang ?", "6 300 km"),
     ("devise-double", R._cap_devise, "quelle est la devise de la France ?", "Liberté"),   # motto + monnaie mentionnée
     ("devise-nationale", R._cap_devise, "quelle est la devise nationale de la France ?", "Fraternité"),
     ("is-a-planete", R._cap_ontologie, "jupiter est-elle une planète ?", "Oui"),          # seed (def Wiktionnaire bruitée)

@@ -222,15 +222,49 @@ def _val_verifiee(ia, verifie, requete: str, rel_head: str = None, entite: str =
     return None
 
 
+# Tokens de relations d'ŒUVRES D'ART : une entité MONUMENT (présente dans ville_monument) ne doit JAMAIS être
+# servie par ces relations — « hauteur de la tour Eiffel » matchait « La Tour Eiffel » (un TABLEAU, 0,632 m !).
+# Le tableau homonyme reste servi pour une vraie œuvre (« hauteur de la Joconde » : la Joconde n'est pas un
+# monument). Liste FERMÉE des supports d'art des datasets.
+_RELS_OEUVRE_ART = frozenset(("peinture", "estampe", "aquarelle", "dessin", "gravure", "photographie",
+                              "lithographie", "tableau", "affiche", "icone"))
+
+
+def _est_monument(entite: str) -> bool:
+    try:
+        return bool(_lookup_cell("ville_monument", entite))
+    except Exception:
+        return False
+
+
+def _est_tableau_connu(entite: str) -> bool:
+    """L'entité est-elle une PEINTURE connue (clé de peintre_oeuvre, avec ou sans article) ? Sert au type-check
+    homonyme : la hauteur d'une SCULPTURE « La Joconde » (2,48 m) n'est pas celle du tableau de Vinci."""
+    try:
+        for var in (entite, "la %s" % entite, "le %s" % entite):
+            if _lookup_cell("peintre_oeuvre", var):
+                return True
+    except Exception:
+        pass
+    return False
+
+
 def _lookup_direct(rel_head: str, entite: str):
     """Lookup « rel_head de entite » INSENSIBLE AUX ACCENTS/CASSE, lu directement des .jsonl (contourne les
     incohérences de nommage entre relations : « Nigéria » vs « Nigeria »). FAUX=0 : normalisation d'accent =
-    IDENTITÉ préservée (pas du flou Levenshtein) ; valeur renvoyée seulement si UNIQUE across la famille."""
+    IDENTITÉ préservée (pas du flou Levenshtein) ; valeur renvoyée seulement si UNIQUE across la famille ;
+    GARDE MONUMENT≠ŒUVRE : un monument connu n'est pas servi par une relation d'œuvre d'art homonyme."""
     h = _normalise(rel_head)
     vals = set()
+    est_monu = None                              # calculé PARESSEUSEMENT (1 lookup) et seulement si besoin
     try:
         for rel in _relations():
             if rel == h or rel.split("_")[0] == h or rel.startswith(h + "_"):
+                if any(tk in _RELS_OEUVRE_ART for tk in rel.split("_")[1:]):
+                    if est_monu is None:
+                        est_monu = _est_monument(entite)
+                    if est_monu:                 # l'œuvre homonyme du MONUMENT est un piège -> ignorée
+                        continue
                 # RAM-sûr : _lookup_cell fait un scan STREAMING sur les gros fichiers (occupation_personne 135 Mo,
                 # nationalite_personne 143 Mo, taxon_parent 216 Mo…) au lieu de matérialiser tout le dict.
                 cell = _lookup_cell(rel, entite)
@@ -239,6 +273,46 @@ def _lookup_direct(rel_head: str, entite: str):
     except Exception:
         return None
     return next(iter(vals)) if len(vals) == 1 else None
+
+
+def _lookup_famille(rel_head: str, entite: str) -> list:
+    """Toutes les valeurs « rel_head de entite » across la famille : [(relation, affiché, valeur)]. Même garde
+    monument≠œuvre que _lookup_direct ; les TITRES stockés AVEC article sont aussi essayés (« Joconde » ->
+    « La Joconde »). Sert à DIRE l'ambiguïté au lieu de laisser la cascade en piocher une."""
+    h = _normalise(rel_head)
+    out = []
+    est_monu = None
+    variantes = [entite] + ["%s %s" % (art, entite) for art in ("la", "le")
+                            if not _normalise(entite).startswith(("la ", "le ", "l "))]
+    est_tableau = None
+    try:
+        for rel in _relations():
+            if rel == h or rel.split("_")[0] == h or rel.startswith(h + "_"):
+                toks = rel.split("_")[1:]
+                if any(tk in _RELS_OEUVRE_ART for tk in toks) or "sculpture" in toks or "statue" in toks:
+                    if est_monu is None:
+                        est_monu = _est_monument(entite)
+                    if est_monu:
+                        continue
+                if "sculpture" in toks or "statue" in toks:
+                    # type-check homonyme : une PEINTURE connue n'est pas servie par une SCULPTURE homonyme
+                    # (« hauteur de la Joconde » -> sculpture « La Joconde » 2,48 m, pas le tableau de Vinci)
+                    if est_tableau is None:
+                        est_tableau = _est_tableau_connu(entite)
+                    if est_tableau:
+                        continue
+                for var in variantes:
+                    cell = _lookup_cell(rel, var)
+                    if cell and cell[1] is not None:
+                        out.append((rel, cell[0], cell[1], var is variantes[0]))   # exact (sans article) ?
+                        break
+    except Exception:
+        pass
+    # le match EXACT prime : « superficie de la France » = le PAYS (relation superficie), pas le hameau
+    # « La France » (superficie_localite, via la variante d'article). Les variantes ne servent que s'il
+    # n'existe AUCUN match exact (titres d'œuvres stockés avec article : « La Joconde »).
+    exacts = [c for c in out if c[3]]
+    return [(r, a, v) for r, a, v, _x in (exacts or out)]
 
 
 def _compose_relations(texte: str):
@@ -1807,16 +1881,42 @@ def _cap_dimension(texte: str):
                         val = cell[1]
                         break
         if val is None or str(val).strip() == "":
-            val = _lookup_direct(d, ent)                 # forme complète (unicité exigée across la famille)
+            fam = _lookup_famille(d, ent)                # forme complète, VALEURS de toute la famille
+            uniq = {str(c[2]) for c in fam}
+            if len(uniq) == 1:
+                val = fam[0][2]
+            elif len(uniq) > 1:
+                # HOMONYMES à valeurs DIFFÉRENTES (« La Joconde » : 2,48 m ET 0,534 m — deux œuvres distinctes,
+                # aucune n'étant forcément celle demandée) : on le DIT — sinon la cascade lourde en pioche une
+                # au hasard (FAUX réel trouvé cette nuit sur « hauteur de la tour Eiffel » -> tableau 0,632 m).
+                vs = " ; ".join(sorted(uniq)[:4])
+                return ("Plusieurs « %s » homonymes ont des valeurs de %s DIFFÉRENTES dans mes données (%s) — "
+                        "je ne devine pas lequel tu veux, précise (« le tableau X », « le monument X »)."
+                        % (ent, dim, vs))
         if val is not None and str(val).strip():
             break
     if val is None or str(val).strip() == "":
+        if _est_monument(ent):
+            # MONUMENT connu sans dimension stockée : couper court ICI — la cascade lourde servirait la
+            # dimension d'une ŒUVRE D'ART homonyme (« La Tour Eiffel », tableau de 0,632 m, pour le monument !)
+            return ("Je connais bien %s (monument), mais je n'ai pas sa %s vérifiée dans mes données — et je ne "
+                    "confonds pas avec les œuvres d'art homonymes qui en ont une. Je m'abstiens." % (ent, dim))
+        if _est_tableau_connu(ent) and dim in ("hauteur", "largeur", "longueur", "taille"):
+            # PEINTURE connue sans dimension picturale stockée : même court-circuit (la sculpture homonyme
+            # « La Joconde » de 2,48 m n'est pas le tableau de Vinci)
+            return ("Je connais bien %s (tableau), mais ses dimensions ne sont pas dans mes données — et je ne "
+                    "confonds pas avec une sculpture homonyme. Je m'abstiens." % ent)
         return None
     n = _nombre(val)
     unite = _DIMENSION_UNITE.get(dim, "")
     de_ent = ("du %s" % ent) if ent.lower().startswith(("mont ", "pic ", "lac ")) else ("de %s" % ent)
     if n is not None and unite:
         aff = format(int(n), ",d").replace(",", " ") if float(n).is_integer() else "%g" % n
+        # LISIBILITÉ : une longueur stockée en mètres ≥ 10 km s'affiche d'abord en km (« 6 300 km ») — la
+        # valeur brute reste montrée (re-vérifiable). Conversion exacte /1000, aucun arrondi caché.
+        if unite == "m" and float(n) >= 10000 and (float(n) / 1000).is_integer():
+            return "%s %s : %s km (%s m)." % (dim.capitalize(), de_ent,
+                                              format(int(n // 1000), ",d").replace(",", " "), aff)
         return "%s %s : %s %s." % (dim.capitalize(), de_ent, aff, unite)
     return "%s %s : %s." % (dim.capitalize(), de_ent, val)
 
