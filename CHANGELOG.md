@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — REGISTRE DES SOURCES VÉRIFIÉES complet : 32 sources officielles/structurées (demande Yohan)
+
+- **`src/datasets/sources/registry.jsonl` reconstruit et enrichi** (6 → 32 sources), schéma riche : id, nom,
+  type (sparql/api/dump/web), **autorité** (pourquoi la source fait foi), domaines, relations alimentées, URL,
+  actif, sonde, note. France officiel : INSEE, API Géo (Etalab), Base Adresse Nationale, data.gouv.fr,
+  Légifrance, Vie-publique, Service-Public, IGN Géoplateforme, HAL. International : OMS (GHO), Banque mondiale
+  (source réelle des PIB), Eurostat, UN Data, BCE, Frankfurter (taux BCE), NIST/CODATA, PubChem, USGS séismes,
+  NASA JPL, GBIF, Open Library, MusicBrainz, Nominatim, Wiktionnaire, Open Food Facts (note : corroborer).
+  FAUX=0 typé À LA SOURCE : structuré (api/sparql/dump) peut nourrir un fait vérifié/appris ; consultation
+  (web) ne produit QUE du rapporté attribué ; les notes disent les limites (rate-limit, clé, collaboratif).
+- **Ping de joignabilité rendu LÉGER** : seules les sources marquées `sonde` (3) sont contactées — 32 GET
+  séquentiels auraient rendu chaque question inconnue interminable ; repli historique sans marqueur.
+- **Câblé en conversation** : « d'où viennent tes informations ? » liste désormais le registre RÉEL (32
+  sources, noms cités) au lieu du texte figé. `ia.ou_apprendre(domaine)`/`provenance(relation)` inchangés.
+- **Gate historique RÉPARÉE** : `valide_sources` (rouge depuis le portage — schéma riche + mledoze-countries
+  attendus) repasse **105/105** et entre dans la suite → **24/24 gates**. Bancs : raisonnement 166/166,
+  paraphrases 168/168, challenge 16/16, assistant_nl 89/89.
+
 ## 2026-07-08 — FAUX réel tué (G4) : une expression d'état ne part plus JAMAIS au web
 
 - **Vécu au E2E final (web ON)** : « je suis perdu » servait un extrait hinative hors-sujet (« quelle est la

@@ -3602,7 +3602,20 @@ def _meta_assistant(texte: str) -> str | None:
         return None
     for patron, cle in _META_PATRONS:
         if patron.fullmatch(n):
-            return _META_REPONSES[cle]
+            rep = _META_REPONSES[cle]
+            if cle == "sources":
+                # REGISTRE DES SOURCES VÉRIFIÉES (enrichi 2026-07-08, demande Yohan « une liste complète ») :
+                # la réponse méta LISTE le registre réel (sources.py, donnée pas code) au lieu du texte figé.
+                try:
+                    import sources as _SRCM
+                    _acts = _SRCM.toutes(actives_seulement=True)
+                    if _acts:
+                        _noms = [s.get("nom", s.get("id", "?")) for s in _acts]
+                        rep += (" Mon registre de confiance compte %d sources officielles ou structurées — "
+                                "notamment %s…" % (len(_acts), ", ".join(_noms[:8])))
+                except Exception:
+                    pass
+            return rep
     return None
 
 

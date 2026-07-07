@@ -230,14 +230,23 @@ def _famille_non_borne(justification: str) -> str:
 
 
 def _ping_sources():
-    """Joignabilité des sources de confiance (registre sources.py), avec cache TTL. Renvoie (ok, domaines, n)."""
+    """Joignabilité des sources de confiance (registre sources.py), avec cache TTL. Renvoie (ok, domaines, n).
+    SONDE LÉGÈRE : seules les sources marquées `sonde` au registre sont contactées (le registre complet compte
+    ~30 sources — les GET séquentiels sur toutes rendraient chaque question inconnue interminable). Sans
+    marqueur `sonde` (registre minimal), repli : toutes les sources actives (comportement historique)."""
     global _PING_CACHE
     with _VERROU:
         c = _PING_CACHE
     if c is not None and (time.monotonic() - c[0]) < _PING_TTL:
         return c[1], c[2], c[3]
     import veille as _VEI                                     # léger (atome + sources), paresseux
-    res = _VEI.approfondit("joignabilité des sources de confiance", transport=_TRANSPORT)
+    try:
+        import sources as _SRC
+        _urls = [s.get("url") for s in _SRC.toutes(actives_seulement=True)
+                 if s.get("sonde") and s.get("url")][:4] or None
+    except Exception:
+        _urls = None
+    res = _VEI.approfondit("joignabilité des sources de confiance", urls=_urls, transport=_TRANSPORT)
     temoins = res.get("temoignages") or []
     ok = res.get("statut") == _VEI.OK and bool(temoins)
     doms = ", ".join(sorted({t.domaine for t in temoins}))

@@ -49,7 +49,7 @@ The selection is **self-discovering**: `liste_validateurs()` maintains a curated
 The conversational-assistant gates (grammar, conjugation, OCR, **translation**, **composition**, **freshness**, confidence, language, NL-stats, documents, patterns, chat capabilities, plus conversation/assistant_nl) are aggregated by a **dedicated runner** — they need the `PYTHONPATH` `interface`+`src`+`ingestion` that the core gate does not set:
 
 ```bash
-python3 tests/suite_conversation.py     # expected: 23/23 gates green
+python3 tests/suite_conversation.py     # expected: 24/24 gates green
 ```
 
 It runs each gate in an isolated subprocess with the right environment and exits red as soon as one regresses. Run it before any commit touching `interface/` or a conversational building block.
