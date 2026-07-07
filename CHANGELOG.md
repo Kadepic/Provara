@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX réel tué (G4) : une expression d'état ne part plus JAMAIS au web
+
+- **Vécu au E2E final (web ON)** : « je suis perdu » servait un extrait hinative hors-sujet (« quelle est la
+  différence entre “j'ai perdu” et “je suis perdu” ») — l'attunement était câblé au terminal MÉMO, mais l'étage
+  de recherche web passait AVANT pour les affirmations. L'attunement est REMONTÉ au-dessus de l'étage web
+  (étage 1·état) : une expression d'état (lexique fermé, 1re personne) reçoit sa lecture en supposition, jamais
+  une recherche du texte littéral. Le terminal mémo garde son attunement (mode léger).
+- Épinglé au banc des gardes : `valide_debiaisage` **44/44** (« je suis perdu » + IA_WEB=1 → attunement).
+  Vérifié en réel web ON. Suite **23/23**, raisonnement **166/166**, paraphrases **168/168**, challenge **16/16**.
+
 ## 2026-07-08 — Pondération utilisateur du parapluie + REGISTRE DES MODES D'ÉCHEC du routage (§16)
 
 - **La promesse « dis-le et je re-tranche » devient TENABLE** : marqueurs FERMÉS dans la demande —

@@ -87,6 +87,13 @@ for q in ("des trucs et des machins", "t'aurais pas un truc sur les fractions"):
     rr = T.repli(q)
     check("http" not in rr.lower() and "d'après" not in rr.lower(),
           "G4 : le repli ne rejoue JAMAIS une recherche du texte littéral (« %s »)" % q[:24])
+# G4 vécu 2026-07-08 : « je suis perdu » + web ON servait un extrait hinative hors-sujet — l'attunement prime.
+os.environ["IA_WEB"] = "1"
+import conversation as _CONV  # noqa: E402
+_rep_etat = A.repond("je suis perdu", memoire=_CONV.MemoireConversation(racine=None))
+check(_rep_etat.texte.startswith("Il se peut que") and _rep_etat.statut == A.SUPPOSITION,
+      "G4 : une expression d'état + web ON -> attunement, JAMAIS un extrait web du texte littéral")
+os.environ.pop("IA_WEB", None)
 
 # ————— G5 — MOT VALIDE : ne jamais « corriger » un vrai mot français —————
 for mot in ("inventer", "fleuve", "capitale"):

@@ -7103,6 +7103,18 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                     if _snm:
                         return _snm
 
+    #   (1·état) EXPRIMER_ÉTAT (tronc §13) — AVANT tout web : une expression d'état (lexique FERMÉ, 1re
+    #   personne) ne part JAMAIS en recherche du texte littéral (G4 — vécu 2026-07-08 : « je suis perdu » +
+    #   web ON servait un extrait hinative sur « j'ai perdu vs je suis perdu », hors-sujet). L'attunement du
+    #   terminal mémo est ainsi REMONTÉ au-dessus de l'étage web ; il reste aussi au terminal (mode léger).
+    if not veut:
+        try:
+            import tronc as _TE
+            _att0 = _TE.attunement(t)
+        except Exception:
+            _att0 = None
+        if _att0:
+            return _att0
     #   (1·web) RECHERCHE STRUCTURÉE (opt-in réseau IA_WEB=1) : le lecteur n'a rien -> source fiable Wikidata,
     #           réponse VÉRIFIÉE + ATTRIBUÉE. Avant la mémoire pour qu'une demande factuelle sans « ? » y accède.
     #           GARDE SUBJECTIVITÉ : une question NON BORNÉE (« le plus beau pays du monde ») ne part JAMAIS au
