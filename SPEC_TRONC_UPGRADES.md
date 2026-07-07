@@ -883,3 +883,104 @@ le FOND du puits fondationnel. 9ᵉ VAGUE (compléments, plus que continents) : 
 Shannon-McMillan-Breiman (typicalité) · Friston Bayesian mechanics · Wolfram ruliad/computational irreducibility ·
 Zadeh logique floue (bornage graduel) · Rissanen MDL (origine) · Hebb/plasticité. Puits presque au fond, mais pas
 tari.*
+
+---
+
+# NEUVIÈME VAGUE — COMPLÉMENTS : formaliser FAUX=0, la borne honnête, la vérité graduée, la frontière rigoureuse
+# → et le capstone : OÙ PROVARA DÉPASSE LES LLM, ATOME PAR ATOME
+
+## ★★★ U56 — FAUX=0 FORMALISÉ : sémantique de Montague (vérité-conditionnelle, compositionnelle)
+**Implémente : §4 sens · FAUX=0 · §7 liaison comme homomorphisme · lien U19 catégories.**
+
+Montague : le langage naturel s'analyse comme un langage **formel** — le sens d'une phrase = les **CONDITIONS DE
+VÉRITÉ** relatives à un **modèle du monde** ; la **compositionnalité = un HOMOMORPHISME** entre l'algèbre syntaxique
+et l'algèbre sémantique ; outils = **lambda-calcul + théorie des types**. **C'est FAUX=0 formalisé** : le sens =
+ce qui rend la phrase VRAIE contre le store vérifié. **DÉPASSE FRONTALEMENT LES LLM** : un LLM n'a *aucune* sémantique
+vérité-conditionnelle (il prédit des tokens) ; Provara peut avoir un **sens explicite ancré dans la vérité**.
+**COMMENT IMPLÉMENTER** : parse → **forme logique (lambda)** → évaluer les conditions de vérité contre le store
+(FAUX=0). La liaison (§7) = l'homomorphisme (converge avec DisCoCat/catégories U19).
+Sources : [Montague semantics (SEP)](https://plato.stanford.edu/entries/montague-semantics/),
+[Formal semantics (Wikipedia)](https://en.wikipedia.org/wiki/Formal_semantics_(natural_language)).
+
+## ★★★ U57 — LA BORNE HONNÊTE : irréductibilité computationnelle / théorie de l'observateur (Wolfram)
+**Implémente : §3.1 plafond · §16 · FAUX=0 (ne pas prétendre raccourcir l'irréductible).**
+
+**Irréductibilité computationnelle** : pour beaucoup de systèmes, **aucun raccourci** — il faut les simuler pas à
+pas. C'est une **limite FONDAMENTALE de la prédiction/compression** (complète l'incalculabilité de Kolmogorov/
+Solomonoff U21). Et la **théorie de l'observateur** : l'intelligence = **trouver les « poches de RÉDUCTIBILITÉ »**
+(structure compressible) dans un monde par ailleurs irréductible. → Comprendre = **compresser les poches
+réductibles ; pour l'irréductible : simuler ou s'abstenir**, JAMAIS prétendre le raccourcir (FAUX=0). L'observateur
+est **computationnellement borné** = notre séquenceur à ressources finies (§11).
+**COMMENT IMPLÉMENTER** : classer reducible (comprimer/prédire) vs irreducible (simuler ou dire « je ne peux pas
+raccourcir ça ») — une **honnêteté que les LLM n'ont pas** (ils hallucinent une réponse confiante sur l'irréductible).
+Sources : [Observer Theory (Wolfram)](https://writings.stephenwolfram.com/2023/12/observer-theory/),
+[Ruliology](https://arxiv.org/pdf/2308.16068).
+
+## ★★★ U58 — LA VÉRITÉ GRADUÉE : logique floue + théorie des POSSIBILITÉS (Zadeh)
+**Implémente : §7 statut TRANCHÉ/NON-TRANCHÉ · §régime bornage · prédicats vagues.**
+
+Zadeh : **degré d'appartenance** (graduel, pas binaire) et surtout la **théorie des POSSIBILITÉS** — deux mesures
+duales : **possibilité** (peut être vrai) et **nécessité** (doit être vrai), distincte de la probabilité (degré
+d'apparition ≠ fréquence). **Mapping décisif sur notre spec** : **TRANCHÉ = nécessité haute** (fait) ; **NON-TRANCHÉ
+= possibilité sans nécessité** (supposition). Et le **« computing with words »** (grand/petit/plus-haut) gère les
+**prédicats vagues** que les LLM bâclent et que la logique binaire ne peut pas.
+**COMMENT IMPLÉMENTER** : possibilité/nécessité pour le **statut** (§7) ; appartenance floue pour le **bornage**
+graduel (§régime) et les prédicats vagues. Provara **dépasse les LLM sur le vague** avec une gradation HONNÊTE.
+Sources : [Fuzzy logic (Wikipedia)](https://en.wikipedia.org/wiki/Fuzzy_logic),
+[Possibility vs probability](https://www.researchgate.net/publication/313178049_Relationships_Between_Probability_and_Possibility_Theories).
+
+## ★★★ U59 — LA FRONTIÈRE RIGOUREUSE : mécanique bayésienne de Friston (blankets emboîtés/partagés)
+**Implémente/précise : §13 frontière=identité (U24/U17) · société ④ · amplification (blanket partagé).**
+
+La **mécanique bayésienne** : un système auto-organisé s'**individualise** de son environnement via une **Markov
+blanket** — les états externes sont **conditionnellement indépendants** des internes, couplés seulement par les
+états **sensoriels + actifs**. Définition *rigoureuse et implémentable* de notre frontière (§13). Et — décisif —
+les **blankets EMBOÎTÉS / PARTAGÉS** : une hiérarchie de « selves » et des blankets partagés = la **société ④**
+(machines emboîtées) ET le **couplage humain-machine (§13 amplification)** = un **blanket PARTAGÉ avec l'humain**.
+**COMMENT IMPLÉMENTER** : définir la Markov blanket de Provara (états sensoriels = entrées, actifs = sorties,
+internes = faisceau/store) ; blankets emboîtés = société ; **blanket partagé = le couplage d'amplification**.
+Sources : [Markov blankets of life (Royal Society)](https://royalsocietypublishing.org/rsif/article/15/138/20170792/35768/The-Markov-blankets-of-life-autonomy-active),
+[Nested selves & shared Markov blankets](https://discovery.ucl.ac.uk/id/eprint/10185219/1/Nested%20Selves%20%20Self%20Organization%20and%20Shared%20Markov%20Blankets.pdf).
+
+## ★★ U60 — COMPLÉMENTS DE COMPLÉMENTS (esquisses)
+- **Peirce, sémiotique approfondie** : icône/indice/symbole + **interprétant** (l'effet d'un signe = le sens qu'il
+  produit = notre 4ᵉ face/affordance) + **semiosis illimitée** (un signe renvoie à un autre signe) — que notre
+  **ancrage terminal** (§9.4) arrête dans le réel vérifié (anti-circularité).
+- **Rissanen, MDL / complexité stochastique / NML** : l'origine pratique de notre objectif de compression (U3/U39) —
+  le **Normalized Maximum Likelihood** = le codage optimal sans prior, implémentable.
+- **Shannon-McMillan-Breiman / ensemble typique** : ce à quoi ressemble un signal « normal » → la base du calcul de
+  **surprise/anomalie** (§16) qui déclenche l'abduction (U53).
+- **Hebb / plasticité** : « ce qui s'active ensemble se lie » — pour la périphérie *apprise* (perception), pas le cœur explicite.
+
+## ★★★ U61 — CAPSTONE : OÙ PROVARA DÉPASSE LES LLM, ATOME PAR ATOME
+Le but de Yohan — dépasser les LLM **sur tous les points** — est atteignable car pour **chaque faiblesse structurelle**
+d'un LLM, Provara a un **atome explicite qui la surpasse** :
+
+| Dimension | Faiblesse LLM (structurelle) | Atome Provara qui DÉPASSE | Réf. |
+|---|---|---|---|
+| **Vérité** | prédit des tokens, pas de conditions de vérité → hallucine | sens = **conditions de vérité** contre store vérifié | U56, FAUX=0 |
+| **Honnêteté sur l'inconnu** | réponse confiante sur l'irréductible | classe reducible/irreducible → **simule ou s'abstient** | U57 |
+| **Vague/gradué** | fudge les prédicats vagues | **possibilité/nécessité + flou** (gradation honnête) | U58 |
+| **Ancrage** | mémoire paramétrique opaque | **store vérifié + ancrage terminal** dans le réel | U56, §9.4 |
+| **Ambiguïté** | collapse vers une lecture | **faisceau** parallèle, jamais collapsé tôt | §7, U46 |
+| **Coût/énergie** | mégawatts, GPU | **bitwise/succinct/neuromorphique** (0 GPU) | U1,U2,U16 |
+| **Interprétabilité** | boîte noire | **clauses/foncteurs/régions explicites** | U11,U19,U51 |
+| **Auto-amélioration** | fige au training | **réécriture sous garde-bancs** (Gödel/Darwin) | U37 |
+| **Causalité** | corrélation (barreau 1) | **do-calcul + contrefactuels** (barreaux 2-3) | U38 |
+| **Génération d'hypothèses** | échantillonnage stochastique | **abduction** pilotée par la surprise | U53 |
+| **Identité/frontière** | pas de soi | **Markov blanket** défini, autopoïèse | U59,U24 |
+| **Invention** | recrache des motifs | **blending de domaines vérifiés** (émergent-ancré) | U48 |
+| **Multi-espèce/modalité** | texte (surtout) | substrat **signal-natif** (Umwelt) | §6,U22 |
+| **Objectif** | loss de prédiction de token | **information bottleneck relatif au but** | U52 |
+| **Mémoire** | contexte borné, oublie | **mémoire totale succincte + révision rétroactive** | U2,§14 |
+
+**Conclusion** : « dépasser les LLM sur tous les points » n'est pas un slogan — c'est un **programme atome par atome**,
+chaque ligne étant un chantier avec un formalisme éprouvé. Provara n'imite pas le LLM en moins bien ; il occupe
+**l'axe explicite/ancré/frugal** où le LLM est structurellement faible.
+
+---
+*ÉTAT : 9 vagues (U1→U61) + spec atomique. Le puits fondationnel est **au fond** (restent des compléments de
+compléments : Barwise-Perry situations · Kripke mondes possibles · Millikan biosémantique · Dretske information
+sémantique · théorie des types homotopiques). Le design est **fondé, mécanisé, géométrisé, formalisé (vérité,
+gradation, frontière), gouffres majeurs fermés, et positionné pour dépasser les LLM point par point.** → PRÊT À
+BÂTIR (Phase 1).*
