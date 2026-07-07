@@ -1,5 +1,27 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — TRONC Phase 4 : le SÉQUENCEUR — l'ordre des caps s'APPREND du signal réel (§11-§12)
+
+- **Nouveau `src/sequenceur.py`** : l'exécutif d'allocation de la spec. Il ordonne les caps de la cascade PAR
+  ACTE pour minimiser le **nombre de caps évalués** avant celui qui tranche (ressource rare = le calcul, §15 ;
+  gain = énergie/§3.1, pas la latence déjà à quelques ms). Politique = **PRIOR statique** (familles sûres,
+  ex-`_FAMILLES_ACTES`, déplacé ici) **∪ APPRIS** du journal de routage réel (`tronc_routage.jsonl`). C'est le
+  **bandit contextuel §11 en version discrète** : contexte = acte, bras = cap, récompense = le cap a RÉELLEMENT
+  tranché (anti-Goodhart, mesuré post-hoc). **Exploration = le filet complet** de la cascade (tout cap qui
+  tranche est journalisé → convergence SANS epsilon) ; **exploitation** = la politique rechargée met les
+  gagnants en tête.
+- **Invariant de SÛRETÉ FAUX=0 (prouvé par banc)** : réordonner ne change JAMAIS la réponse, seulement l'ordre
+  d'essai — (1) l'ensemble des caps est préservé (filet complet), (2) l'ordre relatif historique est conservé
+  PARTOUT → aucune priorité vécue inversée (avis_critere avant avis, comparaison_nway avant comparaison…).
+  Seuls les actes du prior sont réordonnés (les factuels/raisonnement gardent l'ordre historique — biais
+  conservateur ; le journal les compte quand même pour extension future sous banc).
+- **Câblé** dans `repond.py` (remplace le boost binaire de Phase 5), journalise désormais à CHAQUE hit avec
+  l'acte classé ; le diagnostic affiche « séquenceur : N cap(s) appris sur M acte(s) ». Cold-start honnête :
+  journal vide / acte hors prior / basse confiance → ordre historique EXACT → zéro régression.
+- Bancs : nouveau `valide_sequenceur` **38/38** (cold-start, prior, apprentissage, invariant de sûreté,
+  mesure de profondeur de sonde, alias de compat) → suite **25/25** ; câblage **504/504, 0 orphelin** ;
+  raisonnement 166/166, paraphrases 168/168, challenge 16/16, capacites_chat 79/79. Embarqué .exe.
+
 ## 2026-07-08 — Invention hors-catalogue : « comment X sans Y » amplifie au lieu de tomber au web
 
 - **Vécu audit** : « comment conserver des aliments sans frigo ? », « comment chauffer une pièce sans

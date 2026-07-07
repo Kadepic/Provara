@@ -2,7 +2,7 @@
 
 > Généré mécaniquement depuis le code (docstrings + API). Représente l'intégralité des modules livrés.
 
-**1306 modules · 4686 fonctions/classes publiques · 171 496 lignes** (instantané mécanique ; faits_appris ajouté à la main le 2026-07-06, tronc le 2026-07-07)
+**1307 modules · 4686 fonctions/classes publiques · 171 496 lignes** (instantané mécanique ; faits_appris ajouté à la main le 2026-07-06, tronc le 2026-07-07, sequenceur le 2026-07-08)
 
 
 ## Noyau — 6 modules
@@ -14,6 +14,7 @@
 | `ia` | IA — POINT D'ENTRÉE UNIFIÉ (« complet ≠ utilisable » : | juge_dispositif, reference, donnee, donnee_nl, coordonnees_lieu, distance_lieux, cap_lieux, dms_vers_dd |
 | `lecteur` | LECTEUR GÉNÉRIQUE DE DONNÉES — le moteur du borné DATA (chantier #3 ; 566 sujets : | class Lecteur, amorce_cherche, cherche, repond, repond_nl |
 | `repond` | COUCHE CONVERSATIONNELLE de l'interface — rendre l'assistant capable de RÉPONDRE, sans jamais inventer. | pret, est_fallback, repond |
+| `sequenceur` | SÉQUENCEUR — l'exécutif d'allocation (SPEC §11-§12, Phase 4) : ordonne les caps de la cascade PAR ACTE (prior sûr ∪ appris du journal de routage réel) pour minimiser le nb de caps évalués ; invariant : réordonner ne change jamais la réponse (ordre relatif historique préservé). Bandit discret (récompense = cap ayant tranché). | ordonne, prioritaires, rapport, couverture, recharge |
 | `serveur` | INTERFACE LOCALE — petit serveur web souverain par-dessus la mémoire de conversation. | liste_conversations, archive_conversation, desarchive_conversation, lire_conversation, ajoute_message, nouvelle_conversation, oublie_conversation, class Handler |
 
 ## Bibliothèque de capacités (moteurs & atomes) — 493 modules

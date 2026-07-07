@@ -3924,6 +3924,11 @@ def _diagnostic_connaissance(texte: str):
             _tot, _hors = _TRD.stats_routage()
             if _tot:
                 routage = " · routage par acte : %d décision(s), %d hors-famille" % (_tot, _hors)
+                import sequenceur as _SQD
+                _appris = _SQD.rapport()
+                if _appris:
+                    _n_appris = sum(len(v) for v in _appris.values())
+                    routage += " · séquenceur : %d cap(s) appris sur %d acte(s)" % (_n_appris, len(_appris))
         except Exception:
             pass
         return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s%s"
@@ -6862,17 +6867,14 @@ def _pose_did_you_mean(t: str, conv_id):
     return rep_clarif
 
 
-# FAMILLES DE CAPS PAR ACTE (Phase 5 du tronc — retrait progressif) : quand `tronc.acte()` classe l'intention
-# avec une confiance NETTE (≥ 0,8), la famille de caps consommatrice de cet acte est tentée EN TÊTE de la
-# cascade (ordre relatif conservé, filet complet derrière -> zéro perte). Carte FERMÉE, seules les familles aux
-# détecteurs SÛRS sont routées ; les actes factuels/raisonnement gardent l'ordre historique (leurs détecteurs
-# de caps sont plus fins que la classification d'acte — on ne dégrade jamais un routage précis par un grossier).
-_FAMILLES_ACTES = {
-    "quotidien": ("quotidien", "site"),
-    "demander_avis": ("avis_critere", "avis"),
-    "creer": ("creer_ouvert", "invention_composite", "invention"),
-    "agir": ("traduction",),
-}
+# FAMILLES DE CAPS PAR ACTE — le PRIOR d'allocation vit désormais dans `sequenceur.PRIOR` (Phase 4 : la
+# politique est apprise du journal de routage réel, prior en cold-start). Alias conservé pour la compat.
+try:
+    import sequenceur as _SEQ
+    _FAMILLES_ACTES = _SEQ.PRIOR
+except Exception:
+    _SEQ = None
+    _FAMILLES_ACTES = {}
 
 
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
@@ -7042,29 +7044,28 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),
                  ("creer_ouvert", _cap_creer_ouvert), ("invention_composite", _cap_invention_composite),
                  ("invention", _cap_invention), ("audit_code", _cap_audit_code))
-        # TRONC ROUTE (Phase 5, retrait progressif) : l'acte classé à HAUTE confiance fait passer SA famille de
-        # caps EN TÊTE (ordre relatif conservé), la cascade complète reste le filet -> zéro perte, mais le
-        # moteur DÉCIDE quelle faculté essayer d'abord (c'est aussi le point d'allocation du séquenceur §11 :
-        # une politique apprise pourra un jour réordonner ICI, sous les mêmes bancs).
-        _ordre, _fam, _acte5 = _caps, None, ""
+        # SÉQUENCEUR (Phase 4, §11) : l'acte classé (haute confiance) fait remonter SA famille de caps —
+        # PRIOR ∪ appris du journal réel — en tête ; l'ordre relatif historique est préservé PARTOUT (invariant
+        # de sûreté : réordonner ne change jamais la RÉPONSE, cf. sequenceur). Filet complet derrière -> zéro perte.
+        _ordre, _prio, _acte5 = _caps, set(), ""
         try:
             import tronc as _T5
             _m5 = _T5.acte(t).meilleur()
-            _fam = _FAMILLES_ACTES.get(_m5.intention) if (_m5 is not None and _m5.confiance >= 0.8) else None
-            if _fam:
-                _acte5 = _m5.intention
-                _ordre = tuple(c for c in _caps if c[0] in _fam) + tuple(c for c in _caps if c[0] not in _fam)
+            if _m5 is not None:
+                _acte5 = _m5.intention if _m5.confiance >= _SEQ.SEUIL_CONF else ""
+            _ordre, _prio = _SEQ.ordonne(_acte5, _caps, _m5.confiance if _m5 else 0.0)
         except Exception:
-            _ordre, _fam = _caps, None
+            _ordre, _prio, _acte5 = _caps, set(), ""
         for _nom_cap, _cap in _ordre:
             _r = _cap(t)
             if _r:
-                # REGISTRE DU ROUTAGE (§16) : décision tranchée -> hit (cap de la famille routée) ou MISS
-                # (cap hors-famille = la classification d'acte s'est trompée : la surprise dont on apprend).
-                if _fam:
+                # REGISTRE DU ROUTAGE (§16) — signal de récompense du séquenceur : à CHAQUE décision tranchée on
+                # journalise (acte classé, cap gagnant, était-il prioritaire ?). Un cap gagnant HORS prio est la
+                # SURPRISE dont on apprend (§9) : rejoué assez souvent, il rejoint la famille (exploration = filet).
+                if _acte5:
                     try:
                         import tronc as _T6
-                        _T6.note_routage(_acte5, _nom_cap, _nom_cap in _fam)
+                        _T6.note_routage(_acte5, _nom_cap, _nom_cap in _prio)
                     except Exception:
                         pass
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
