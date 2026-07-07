@@ -4208,7 +4208,8 @@ _CREER_RE = re.compile(
 _CREER_OUVERT_RE = re.compile(
     r"\b(?:quelque\s+chose|un\s+truc|un\s+produit|un\s+objet|un\s+service|un\s+concept|"
     r"que\s+(?:puis|peux)[- ]je|qu['e ]est[- ]ce\s+que\s+je\s+(?:peux|pourrais)|"
-    r"as[- ]tu\s+des?\s+id[ée]es?|aurais[- ]tu\s+des?\s+id[ée]es?|donne[- ]moi\s+des?\s+id[ée]es?|"
+    r"as[- ]tu\s+des?\s+id[ée]es?|aurais[- ]tu\s+des?\s+id[ée]es?|"
+    r"(?:donne|propose|sugg[èe]re)[- ]?(?:moi|nous)?\s+(?:une|des?)\s+id[ée]es?|id[ée]e\s+de\s+\w+|"
     r"aide[- ]moi\s+[àa]\s+(?:inventer|cr[ée]er|imaginer|trouver))\b", re.I)
 
 
@@ -4238,10 +4239,10 @@ def _cap_invention(texte: str):
     """« comment [faire] X sans Y » / « que manque-t-il pour X » -> reformulation PHYSIQUE du besoin (moteur
     d'invention besoin.py, la vision produit). FAUX=0 : ne répond QUE pour un besoin du catalogue physique ;
     besoin inconnu -> None (le web/pipeline prend le relais). Léger."""
-    besoin_txt = None
+    besoin_txt, explicite = None, False
     m = re.search(r"\bque\s+manque[\s-]*t[\s-]*il\s+pour\s+(.+?)\s*\??\s*$", texte, re.I)
     if m:
-        besoin_txt = m.group(1)
+        besoin_txt, explicite = m.group(1), True         # intention d'invention SANS ambiguïté
     if besoin_txt is None:
         m = re.search(r"\bcomment\s+(?:faire\s+pour\s+|je\s+peux\s+|)(.+?)\s+sans\s+.+?\s*\??\s*$", texte, re.I)
         if m:
@@ -4255,7 +4256,20 @@ def _cap_invention(texte: str):
     except Exception:
         return None
     if not isinstance(d, dict) or d.get("statut") != "decompose":
-        return None                                       # hors catalogue physique -> pipeline continue
+        # HORS CATALOGUE physique. Forme EXPLICITE (« que manque-t-il pour X » = intention d'invention sans
+        # ambiguïté) -> on AMPLIFIE (§13) au lieu de laisser filer vers « internet coupé » (vécu audit
+        # 2026-07-08). Forme générique « comment X sans Y » (ambiguë : « comment dire bonjour sans accent »
+        # n'est PAS une invention) -> None, la cascade sert mieux (pin du banc conservé).
+        if not explicite:
+            return None
+        return ("« %s » : ce besoin précis n'est pas dans mon catalogue de leviers physiques vérifiés — je ne "
+                "bluffe pas la physique que je n'ai pas. Voici comment on avance quand même, à MA façon :\n"
+                "· CHIFFRE l'objectif réel (quelle quantité, sur quelle durée, dans quel volume ?) — un besoin "
+                "chiffré se décompose, un slogan non.\n"
+                "· Reformule en « comment faire X sans Y » avec un X de mon catalogue (rafraîchir, chauffer, "
+                "conserver, déplacer, stocker l'eau…) et je te donne les canaux physiques et la limite dure.\n"
+                "· Ou demande-moi « quelles relations manquent dans ce que tu connais ? » : je scanne mon "
+                "graphe et te montre des manques RÉELS, jamais inventés." % besoin_txt[:80])
     lignes = ["Regardons le BESOIN, pas la solution habituelle.", "", d.get("objectif_reel", "")]
     canaux = d.get("canaux") or []
     if canaux:
@@ -4637,7 +4651,9 @@ _MOIS_FR = ("janvier", "février", "mars", "avril", "mai", "juin", "juillet",
 
 _CHALLENGE_RE = re.compile(
     r"\b(?:challenges?[- ]moi|d[ée]fie[- ]moi|teste[- ]moi|interroge[- ]moi|que\s+tu\s+me\s+challenges?|"
-    r"que\s+tu\s+me\s+testes?|que\s+tu\s+me\s+d[ée]fies?)\b(?:.*?\bsur\s+(.+?))?\s*\??\s*$", re.I)
+    r"que\s+tu\s+me\s+testes?|que\s+tu\s+me\s+d[ée]fies?|teste\s+mes\s+connaissances|"
+    r"pose[- ]moi\s+(?:une|des)\s+questions?(?:\s+difficiles?|\s+dures?)?|fais[- ]moi\s+r[ée]viser|"
+    r"quiz(?:z|ze)?[- ]?moi|un\s+petit\s+quiz)\b(?:.*?\bsur\s+(.+?))?\s*\??\s*$", re.I)
 
 
 def _cap_challenge(texte: str):
@@ -5356,6 +5372,61 @@ def _charge_transitif(groupe: dict):
     ambigu = frozenset(k for k, s in valeurs.items() if len(s) > 1)
     _TRANS_CACHE[cle] = (par, ambigu)
     return _TRANS_CACHE[cle]
+
+
+# SYLLOGISME À PRÉMISSES FOURNIES (audit 2026-07-08 : « si tous les mammifères allaitent et que le chat est un
+# mammifère, que peut-on en déduire ? » partait au DÉCOUPAGE multi-questions — trois « je ne l'ai pas en
+# mémoire »). Barbara / modus ponens DANS les prémisses de l'utilisateur : la conclusion est TYPÉE « d'après
+# TES prémisses » (jamais posée comme un fait Provara) ; si le store CORROBORE la mineure (est_un), on le DIT —
+# la déduction devient doublement ancrée. Un moyen terme qui ne se noue pas -> refus expliqué (pas de garbage).
+_SYLLO_RE = re.compile(
+    r"\bsi\s+tou(?:s|tes)\s+les\s+([\wà-ÿ-]+)\s+(sont\s+[\wà-ÿ' -]+?|[\wà-ÿ-]+ent)\s+et\s+qu[e'’]\s*"
+    r"((?:le\s+|la\s+|l['’]\s*|un\s+|une\s+)?[\wà-ÿ' -]+?)\s+est\s+un[e]?\s+([\wà-ÿ-]+)\b"
+    r".*?\b(?:d[ée]duire|conclure|conclusions?)\b", re.I | re.S)
+
+
+def _verbe_singulier(v: str) -> str:
+    """« allaitent » -> « allaite », « sont mortels » -> « est mortel », « sont des X » -> « est un X »
+    (accord de la conclusion — règles sûres du pluriel régulier, jamais une invention de forme)."""
+    v = v.strip()
+    if v.lower().startswith("sont "):
+        reste = v[5:].strip()
+        if re.match(r"^des\s+", reste, flags=re.I):
+            reste = re.sub(r"^des\s+", "un ", reste, flags=re.I)
+        mots = reste.split()
+        if mots:                                         # pluriels réguliers : -eaux -> -eau, -aux -> -al, -s -> ∅
+            if mots[-1].endswith("eaux"):
+                mots[-1] = mots[-1][:-1]
+            elif mots[-1].endswith("aux"):
+                mots[-1] = mots[-1][:-3] + "al"
+            elif mots[-1].endswith("s") and not mots[-1].endswith("ss"):
+                mots[-1] = mots[-1][:-1]
+        return "est " + " ".join(mots)
+    return (v[:-3] + "e") if v.lower().endswith("ent") else v
+
+
+def _cap_syllogisme(texte: str):
+    """Syllogisme explicite (« si tous les A V… et que C est un A, que peut-on en déduire ? ») -> conclusion
+    dans LES PRÉMISSES DE L'UTILISATEUR, typée comme telle (mode hypothétique balisé — jamais un fait servi).
+    FAUX=0 : la seule affirmation Provara éventuelle est la CORROBORATION de la mineure par le store (est_un)."""
+    m = _SYLLO_RE.search(texte)
+    if not m:
+        return None
+    a, verbe, c, a2 = m.group(1), m.group(2), m.group(3).strip(" '’"), m.group(4)
+    c_nu = re.sub(r"^(?:le|la|l['’]?|un|une)\s+", "", c, flags=re.I).strip()  # lookup nu ; l'article de
+    if _normalise(a).rstrip("s") != _normalise(a2).rstrip("s"):               # l'utilisateur est GARDÉ à l'affichage
+        return ("Je vois deux prémisses, mais le moyen terme ne se noue pas (« %s » d'un côté, « %s » de "
+                "l'autre) — le syllogisme est invalide, je ne déduis rien plutôt que de forcer." % (a, a2))
+    corro = ""
+    try:
+        import est_un as _EUS
+        if _EUS.est_un(c_nu, a2) or _EUS.est_un(c_nu, a):
+            corro = " — et mes faits CORROBORENT la seconde (%s → %s, vérifié dans ma base)" % (c_nu, a2)
+    except Exception:
+        pass
+    return ("D'après TES prémisses (syllogisme en Barbara / modus ponens) : %s %s. "
+            "Je raisonne ICI dans tes prémisses, je ne les pose pas comme des faits%s."
+            % (c, _verbe_singulier(verbe), corro))
 
 
 def _cap_transitif(texte: str):
@@ -6881,7 +6952,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
-                 ("localisation", _cap_localisation), ("deduction", _cap_deduction),
+                 ("localisation", _cap_localisation), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
                  ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),

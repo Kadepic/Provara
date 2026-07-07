@@ -575,6 +575,11 @@ def qualifie_texte(texte: str) -> Reponse | None:
     if texte.startswith("Conseil calculé"):                  # décision sous incertitude : conseil CONDITIONNEL
         return Reponse(SUPPOSITION, texte,
                        source="décision sous incertitude (probabilité rapportée + règle d'utilité affichée)")
+    if texte.startswith("D'après TES prémisses"):            # syllogisme : mode hypothétique BALISÉ (§18)
+        return Reponse(SUPPOSITION, texte,
+                       source="déduction DANS les prémisses de l'utilisateur (non posées comme faits)")
+    if texte.startswith("Je vois deux prémisses"):           # syllogisme invalide : refus expliqué
+        return Reponse(CLARIFICATION, texte, attente="prémisses dont le moyen terme se noue")
     return None
 
 

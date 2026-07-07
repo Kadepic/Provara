@@ -222,5 +222,35 @@ finally:
     _MET.pluie_aujourdhui = _pluie_avant
     os.environ.pop("IA_WEB", None)
 
+# — TROUS DE L'AUDIT ATOMIQUE 2026-07-08 (batterie réelle) : plus jamais mémo/web-coupé sur ces intentions —
+r = R._cap_challenge("teste mes connaissances")
+check(r is not None and "Défi accepté" in r, "« teste mes connaissances » -> challenge (partait en MÉMO)")
+r = R._cap_challenge("pose-moi une question difficile sur la géographie")
+check(r is not None and "géographie" in r, "« pose-moi une question sur X » -> challenge SUR X (partait au web)")
+r = R._cap_creer_ouvert("donne-moi une idée")
+check(r is not None and "idée du chapeau" in r, "« donne-moi UNE idée » -> amplificateur créatif (partait au web)")
+r = R._cap_creer_ouvert("propose-moi une idée de produit innovant")
+check(r is not None and "idée du chapeau" in r, "« propose-moi une idée de X » -> amplificateur créatif")
+r = R._cap_invention("que manque-t-il pour stocker l'énergie solaire la nuit ?")
+check(r is not None and "catalogue" in r and "CHIFFRE" in r,
+      "besoin HORS catalogue -> amplification honnête (méthode donnée), plus jamais « internet coupé »")
+
+# — SYLLOGISME À PRÉMISSES FOURNIES (mode hypothétique balisé, jamais un fait) —
+r = R._cap_syllogisme("si tous les mammifères allaitent et que le chat est un mammifère, que peut-on en déduire ?")
+check(r is not None and r.startswith("D'après TES prémisses") and "le chat allaite" in r,
+      "syllogisme valide -> conclusion DANS les prémisses, article gardé (« le chat allaite »)")
+check(r is not None and "CORROBORENT" in r, "mineure vérifiée dans le store -> corroboration DITE (chat → mammifère)")
+r = R._cap_syllogisme("si tous les oiseaux volent et que la tulipe est une fleur, que peut-on en déduire ?")
+check(r is not None and "ne se noue pas" in r, "moyen terme disjoint -> syllogisme refusé EXPLIQUÉ (jamais forcé)")
+check(R._cap_syllogisme("quelle est la capitale de la France ?") is None, "hors périmètre -> None")
+r = R._cap_syllogisme("si tous les hommes sont mortels et que Socrate est un homme, que peut-on en conclure ?")
+check(r is not None and "Socrate est mortel" in r,
+      "Barbara classique -> « Socrate est mortel » (copule accordée au singulier)")
+r = R._cap_syllogisme("si tous les félins sont des animaux et que le chat est un félin, que peut-on en déduire ?")
+check(r is not None and "le chat est un animal" in r, "« sont des animaux » -> « est un animal » (pluriel -aux)")
+import assistant_nl as _A3
+check(_A3.qualifie_texte("D'après TES prémisses — test").statut == _A3.SUPPOSITION,
+      "porte unique : une conclusion de syllogisme est SUPPOSITION (prémisses de l'utilisateur), jamais FAIT")
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

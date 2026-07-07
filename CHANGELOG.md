@@ -1,5 +1,28 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — AUDIT ATOMIQUE (mandat Yohan « perfection chirurgicale ») : mesures + 6 trous réels tués + syllogisme
+
+- **MESURÉ, pas déclaré** : boot 3,4 s / **31 Mo RAM**, pipeline chaud **5 ms** (les ~250 ms observés = premier
+  chargement des index, par design mmap) ; superlatif 1,6 s à froid puis **0 ms** (cache colonne). `tronc.acte()`
+  0,03 ms (matché) / 0,78 ms (gzip, **optimisé** : exemples précompressés à l'import) / **0,0005 ms en cache**
+  (nouveau cache borné 256 entrées — acte() tourne 2× par message).
+- **Batterie de compréhension réelle → 6 garbage tués** (chaque cas VÉCU à l'audit) :
+  ① « teste mes connaissances » partait en MÉMO (« C'est noté ») → challenge ; ② « pose-moi une question
+  difficile sur X » partait au web → challenge SUR X ; ③ « donne-moi UNE idée » partait au web (le motif
+  n'acceptait que « des idées ») → amplificateur créatif ; ④ « propose/suggère-moi une idée de X » → idem ;
+  ⑤ « que manque-t-il pour X » hors catalogue physique rendait « internet coupé » → **amplification honnête**
+  (chiffrer l'objectif, reformuler en « comment X sans Y », scanner de manques) — la forme ambiguë « comment X
+  sans Y » garde son repli silencieux (pin du banc conservé) ; ⑥ « franchement t'en penses quoi toi ? »
+  (registre oral) partait en indécidable → opinion cadrée (marqueur ajouté au classifieur de bornage + tronc).
+- **NOUVEAU : syllogisme à prémisses fournies** (`_cap_syllogisme`) — « si tous les mammifères allaitent et que
+  le chat est un mammifère, que peut-on en déduire ? » partait au découpage multi-questions (3 × « je ne l'ai
+  pas en mémoire »). Désormais : **« D'après TES prémisses (Barbara/modus ponens) : le chat allaite »** — mode
+  hypothétique BALISÉ (§18 : raisonner DANS un monde posé sans l'affirmer), la porte unique classe SUPPOSITION ;
+  si le store corrobore la mineure (chat → mammifère), c'est DIT. Moyen terme disjoint → refus expliqué.
+  Accords sûrs (« sont mortels » → « est mortel », « des animaux » → « un animal », article utilisateur gardé).
+- Bancs : `valide_capacites_chat` **70/70** (+12), suite **24/24**, raisonnement **166/166**, paraphrases
+  **168/168**, challenge **16/16**, tronc **78/78**.
+
 ## 2026-07-08 — REGISTRE DES SOURCES VÉRIFIÉES complet : 32 sources officielles/structurées (demande Yohan)
 
 - **`src/datasets/sources/registry.jsonl` reconstruit et enrichi** (6 → 32 sources), schéma riche : id, nom,
