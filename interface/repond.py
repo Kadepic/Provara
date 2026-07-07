@@ -4235,6 +4235,13 @@ def _cap_creer_ouvert(texte: str):
         "Quel besoin concret veux-tu attaquer ?")
 
 
+# Verbes d'ACTE DE LANGAGE (carte fermée) : « comment DIRE bonjour sans accent » n'est pas un besoin physique
+# à décomposer -> l'invention s'abstient et laisse la cascade répondre (pin du banc conservé).
+_VERBES_LANGAGE = frozenset(
+    "dire ecrire prononcer traduire epeler parler formuler nommer appeler orthographier rediger conjuguer "
+    "accorder exprimer".split())
+
+
 def _cap_invention(texte: str):
     """« comment [faire] X sans Y » / « que manque-t-il pour X » -> reformulation PHYSIQUE du besoin (moteur
     d'invention besoin.py, la vision produit). FAUX=0 : ne répond QUE pour un besoin du catalogue physique ;
@@ -4243,10 +4250,15 @@ def _cap_invention(texte: str):
     m = re.search(r"\bque\s+manque[\s-]*t[\s-]*il\s+pour\s+(.+?)\s*\??\s*$", texte, re.I)
     if m:
         besoin_txt, explicite = m.group(1), True         # intention d'invention SANS ambiguïté
+    physique = False
     if besoin_txt is None:
         m = re.search(r"\bcomment\s+(?:faire\s+pour\s+|je\s+peux\s+|)(.+?)\s+sans\s+.+?\s*\??\s*$", texte, re.I)
         if m:
             besoin_txt = m.group(1)
+            # « comment X sans Y » est un vrai besoin d'invention SAUF quand X est un acte de LANGAGE
+            # (« comment dire bonjour sans accent » n'est pas de la physique — pin du banc). Carte fermée.
+            _tete = _normalise(besoin_txt).split()[0] if besoin_txt.strip() else ""
+            physique = _tete not in _VERBES_LANGAGE
     if besoin_txt is None:
         return None
     besoin_txt = besoin_txt.strip(" ?.\"'«»")
@@ -4256,20 +4268,20 @@ def _cap_invention(texte: str):
     except Exception:
         return None
     if not isinstance(d, dict) or d.get("statut") != "decompose":
-        # HORS CATALOGUE physique. Forme EXPLICITE (« que manque-t-il pour X » = intention d'invention sans
-        # ambiguïté) -> on AMPLIFIE (§13) au lieu de laisser filer vers « internet coupé » (vécu audit
-        # 2026-07-08). Forme générique « comment X sans Y » (ambiguë : « comment dire bonjour sans accent »
-        # n'est PAS une invention) -> None, la cascade sert mieux (pin du banc conservé).
-        if not explicite:
+        # HORS CATALOGUE physique. Intention d'invention CLAIRE (« que manque-t-il pour X », ou « comment X sans
+        # Y » avec un X non-langagier) -> on AMPLIFIE (§13 : donner la MÉTHODE) au lieu de laisser filer vers
+        # « internet coupé » (vécu audit 2026-07-08). Sinon (X = acte de langage) -> None, la cascade sert mieux.
+        if not (explicite or physique):
             return None
-        return ("« %s » : ce besoin précis n'est pas dans mon catalogue de leviers physiques vérifiés — je ne "
-                "bluffe pas la physique que je n'ai pas. Voici comment on avance quand même, à MA façon :\n"
-                "· CHIFFRE l'objectif réel (quelle quantité, sur quelle durée, dans quel volume ?) — un besoin "
-                "chiffré se décompose, un slogan non.\n"
-                "· Reformule en « comment faire X sans Y » avec un X de mon catalogue (rafraîchir, chauffer, "
-                "conserver, déplacer, stocker l'eau…) et je te donne les canaux physiques et la limite dure.\n"
-                "· Ou demande-moi « quelles relations manquent dans ce que tu connais ? » : je scanne mon "
-                "graphe et te montre des manques RÉELS, jamais inventés." % besoin_txt[:80])
+        return ("« %s » : ce besoin précis n'est pas encore dans mon catalogue de leviers physiques vérifiés "
+                "(aujourd'hui je décompose finement « rafraîchir une pièce ») — et je ne bluffe pas une physique "
+                "que je n'ai pas. Voici comment on avance quand même, à MA façon :\n"
+                "· CHIFFRE l'objectif réel (quelle quantité d'énergie, sur quelle durée, dans quel volume ?) — "
+                "un besoin chiffré se décompose en canaux physiques, un slogan non.\n"
+                "· Identifie le CANAL dominant (conduction, convection, rayonnement, évaporation, changement "
+                "d'état) et le PUITS gratuit disponible (air nocturne, sol, eau du réseau, ciel).\n"
+                "· La limite dure reste Carnot/la thermodynamique : le vrai gain vient de RÉDUIRE la charge et de "
+                "viser un puits déjà favorable, jamais d'un rendement « magique »." % besoin_txt[:80])
     lignes = ["Regardons le BESOIN, pas la solution habituelle.", "", d.get("objectif_reel", "")]
     canaux = d.get("canaux") or []
     if canaux:

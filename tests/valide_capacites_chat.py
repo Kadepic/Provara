@@ -77,7 +77,11 @@ check(R._suggere_type("quel flauve traverse paris") == ("flauve", "fleuve"),
 r = R._cap_invention("comment rafraîchir une pièce sans climatiseur ?")
 check(r and ("BESOIN" in r or "but réel" in r or "but reel" in r.lower()), "invention : reformulation physique du besoin")
 check(R._cap_invention("quelle est la capitale de l'Italie ?") is None, "invention : ne capte pas une question factuelle")
-check(R._cap_invention("comment dire bonjour sans accent ?") is None, "invention : besoin hors catalogue physique -> None (pipeline continue)")
+check(R._cap_invention("comment dire bonjour sans accent ?") is None, "invention : acte de LANGAGE (« dire ») -> None (pipeline continue)")
+check(R._cap_invention("comment écrire mon nom sans faute ?") is None, "invention : acte de langage (« écrire ») -> None")
+r = R._cap_invention("comment conserver des aliments sans frigo ?")
+check(r is not None and "catalogue" in r and "Carnot" in r,
+      "invention : besoin PHYSIQUE hors catalogue -> amplification honnête (méthode + limite dure), plus jamais « internet coupé »")
 
 # — AUDIT CODE : sûreté de routage (None hors périmètre) —
 check(R._cap_audit_code("bonjour comment vas-tu ?") is None, "audit code : message normal -> None")

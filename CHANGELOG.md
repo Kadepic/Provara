@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Invention hors-catalogue : « comment X sans Y » amplifie au lieu de tomber au web
+
+- **Vécu audit** : « comment conserver des aliments sans frigo ? », « comment chauffer une pièce sans
+  électricité ? » (besoins physiques réels hors du catalogue `besoin.py`, qui ne décompose finement que
+  « rafraîchir ») finissaient en « internet coupé ». Choix FAUX=0 : je **n'invente pas** un catalogue physique
+  bâclé (ce serait bluffer la physique) — à la place, `_cap_invention` AMPLIFIE (§13) : chiffrer l'objectif,
+  identifier le canal dominant (conduction/convection/rayonnement/évaporation/changement d'état) et le puits
+  gratuit, rappeler la limite dure (Carnot). Les actes de LANGAGE (« comment dire bonjour sans accent ») restent
+  exclus (carte fermée `_VERBES_LANGAGE`) → cascade normale (pin du banc conservé).
+- Bancs : `valide_capacites_chat` **79/79** (+2), suite **24/24**, raisonnement **166/166**, paraphrases **168/168**.
+
 ## 2026-07-08 — L'IA CHALLENGE pour de vrai : QUIZ VÉRIFIÉ (question posée depuis la base, réponse jugée contre le fait)
 
 - **Mandat Yohan (« que l'IA nous challenge »)** : le défi n'est plus passif. « Challenge-moi sur la
