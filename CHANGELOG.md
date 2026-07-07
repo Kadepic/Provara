@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-07 — TRONC Phase 3 : les 9 GARDES DE DÉBIAISAGE (§20) deviennent un banc permanent
+
+- Nouveau gate `valide_debiaisage` **43/43** (suite → **23/23**) : chaque garde de la spec est un test qui doit
+  passer EN PERMANENCE — **G1** anti-projection (TRANCHÉ exige un juge réel ; hors-store jamais un fait),
+  **G2** pas de collapse précoce (≥2 candidats ; « taille de la France » composée), **G3** individuation
+  (« bonjourno » ≠ « bonjour », « calculateur » ne déclenche pas CALCULER), **G4** calcul frais (un calcul est
+  CALCULÉ, zéro requête web même transport branché — espion à compteur), **G5** mot valide jamais « corrigé »
+  (aucun did-you-mean sur une phrase de mots réels), **G6** repli honnête câblé, **G7** typage supposition
+  (gzip borné ≤ 0,45 ; attunement et subjectif classés SUPPOSITION par la porte unique), **G8** non-distorsion
+  (proxy : le statut est LISIBLE — marqueur dans toute supposition, provenance dans tout fait), **G9**
+  amplification (proxy : zéro flagornerie/émotion feinte, le repli finit par une question — l'humain garde le
+  volant, l'avis affiche sa règle).
+- Honnêteté du banc (documentée dedans) : G1-G7 testées directement ; G8/G9 en PROXYS exécutables — la mesure
+  pleine (inférences licenciées ⊆ vérité, capacité-sans-la-machine) arrive avec les phases 4+.
+
 ## 2026-07-07 — TRONC Phase 2 : le COMPOSITEUR (§10) — l'ambiguïté se COMPOSE, elle ne se choisit plus en silence
 
 - **`tronc.compose(faisceau, terme)`** : le « coup calculé » de la spec (§10.1/10.2) sur un faisceau dont les
