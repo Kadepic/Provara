@@ -563,6 +563,9 @@ def qualifie_texte(texte: str) -> Reponse | None:
         return Reponse(HORS, texte)
     if texte.startswith("Il se peut que"):                   # attunement du tronc : état INFÉRÉ, jamais affirmé
         return Reponse(SUPPOSITION, texte, source="attunement (état de l'interlocuteur supposé, non vérifié)")
+    if texte.startswith("Conseil calculé"):                  # décision sous incertitude : conseil CONDITIONNEL
+        return Reponse(SUPPOSITION, texte,
+                       source="décision sous incertitude (probabilité rapportée + règle d'utilité affichée)")
     return None
 
 

@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-07 — AVIS ⑤ : décision sous incertitude — « dois-je prendre un parapluie ? » (decision.py câblé au chat)
+
+- **Premier consommateur conversationnel de `decision.py`** (utilité espérée + marge d'abstention — le morceau
+  RÉEL de §12) : « dois-je prendre un parapluie (à Toulouse) ? » → probabilité de pluie du jour **RAPPORTÉE**
+  (nouveau `meteo.pluie_aujourdhui`, champ structuré `precipitation_probability_max` d'Open-Meteo, attribué) ×
+  **règle d'utilité AFFICHÉE** (se faire tremper coûte 10× le port du parapluie) → **conseil calculé**
+  (« utilité espérée 0,10 contre −0,10 : sortir sans »), re-tranchable (« si ta pondération diffère, dis-le »).
+  Écart d'utilité sous la marge (~9 % de pluie) → **abstention honnête** (« vrai pile ou face »). Vérifié en
+  RÉEL (Toulouse, 0 % → « sortir sans »).
+- FAUX=0 : la probabilité est rapportée (source structurée), la règle est affichée, le verdict est CONDITIONNEL
+  — la porte unique classe tout « Conseil calculé » en SUPPOSITION, jamais en fait. Sans ville → attente à trou
+  (« pour quelle ville ? » → « à Brives » complète). Web OFF → refus honnête actionnable.
+- `_ville_du_texte` factorisé (météo + parapluie, même extraction). « parapluie » ajouté au détecteur QUOTIDIEN
+  du tronc. Bancs : `valide_capacites_chat` **54/54** (+8), suite **23/23**, raisonnement **166/166**,
+  paraphrases **168/168**, challenge **16/16**.
+
 ## 2026-07-07 — TRONC Phase 5 (tranche 1) : l'acte ROUTE la cascade (retrait progressif des caps entamé)
 
 - La boucle des ~60 caps devient une structure **NOMMÉE** (ordre historique strictement conservé — l'ordre =

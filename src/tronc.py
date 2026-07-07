@@ -202,7 +202,8 @@ _META_RE = re.compile(
     r"(?:ce n est|c est) pas ce que j (?:ai demande|avais demande)|tu n as pas compris|"
     r"reformule|repete|tu peux repeter)\b")
 
-_METEO_RE = re.compile(r"\b(meteo|quel temps|temps fait[- ]?il|il pleut|il neige|previsions?|degres dehors)\b")
+_METEO_RE = re.compile(r"\b(meteo|quel temps|temps fait[- ]?il|il pleut|il neige|previsions?|degres dehors|"
+                       r"parapluie)\b")
 _HEURE_RE = re.compile(r"\b(quelle heure|l heure qu il est|heure est[- ]?il)\b")
 _DATE_RE = re.compile(r"\b(quel jour sommes[- ]?nous|on est quel jour|quelle est la date|date d aujourd hui|"
                       r"quel jour on est)\b")

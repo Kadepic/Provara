@@ -44,6 +44,26 @@ def geocode(ville: str):
         return None
 
 
+def pluie_aujourdhui(ville: str):
+    """Probabilité de PRÉCIPITATION max du JOUR pour `ville` : dict(nom, pays, proba_pluie [0-100]) ou None.
+    Vient du champ STRUCTURÉ daily.precipitation_probability_max de la source — rapporté, jamais complété.
+    Sert la décision quotidienne sous incertitude (« dois-je prendre un parapluie ? », decision.py)."""
+    geo = geocode(ville)
+    if not geo:
+        return None
+    lat, lon, nom, pays = geo
+    try:
+        d = _get(_FCT + urllib.parse.urlencode({
+            "latitude": lat, "longitude": lon, "timezone": "auto",
+            "daily": "precipitation_probability_max", "forecast_days": 1}))
+        probas = (d.get("daily") or {}).get("precipitation_probability_max") or []
+        if not probas or probas[0] is None:
+            return None
+        return {"nom": nom, "pays": pays, "proba_pluie": int(probas[0])}
+    except Exception:
+        return None
+
+
 def actuelle(ville: str):
     """Relevé ACTUEL pour `ville` : dict(nom, pays, temperature, ressenti, libelle, vent_kmh, heure) ou None.
     Tout vient de la réponse structurée de la source — rien n'est complété ni deviné."""

@@ -4892,18 +4892,76 @@ def _cap_avis(texte: str, conv_id=None):
     return "\n".join(lignes)
 
 
+# DÉCISION QUOTIDIENNE SOUS INCERTITUDE (avis ⑤, §12 utilité espérée — 2026-07-07) : « dois-je prendre un
+# parapluie ? ». La probabilité de pluie est RAPPORTÉE (Open-Meteo, structurée) ; les utilités sont une RÈGLE
+# AFFICHÉE (se faire tremper coûte 10× le port) ; le verdict est CONDITIONNEL et re-tranchable — decision.py
+# (utilité espérée + marge d'abstention) reçoit ici son premier consommateur conversationnel.
+_PARAPLUIE_RE = re.compile(r"\b(parapluies?|k[- ]?way|imperm[ée]able|veste\s+de\s+pluie)\b", re.I)
+_DECISION_PLUIE_RE = re.compile(r"\b(dois[- ]?je|faut[- ]?il|je\s+(?:prends|prenne)|prendre|besoin\s+d)\b", re.I)
+_UTILITES_PLUIE = {"prendre le parapluie": {"pluie": 1.0, "sec": -0.1},
+                   "sortir sans": {"pluie": -1.0, "sec": 0.1}}
+_MARGE_PLUIE = 0.05
+
+
+def _ville_du_texte(texte: str) -> str:
+    """Ville nommée dans une question météo/décision (« à Toulouse », « pour Brives ») — '' si absente."""
+    mv = re.search(r"\b(?:[àa]|au|en|sur|pour)\s+((?:[A-ZÀ-Ü][\wà-ÿ'’-]+)(?:[\s-][A-ZÀ-Ü][\wà-ÿ'’-]+)*)"
+                   r"|\b(?:[àa]|au)\s+([a-zà-ÿ][\wà-ÿ'’-]{2,})\b", texte)
+    ville = (((mv.group(1) or mv.group(2)) if mv else "") or "").strip(" ?.!")
+    return "" if _normalise(ville) in ("moment", "aujourd", "aujourd hui", "instant") else ville
+
+
+def _conseil_parapluie(texte: str, conv_id=None):
+    """Conseil CALCULÉ parapluie : probabilité de pluie rapportée × utilités affichées -> utilité espérée
+    (decision.py), abstention honnête si l'écart est trop mince. Jamais un fait : un conseil conditionnel."""
+    if os.environ.get("IA_WEB") != "1":
+        return ("La pluie du jour est une donnée EN DIRECT : sans réseau, te conseiller serait deviner — et je "
+                "ne devine jamais 🙂 Active Internet (bouton « 🌐 ») et je calcule le conseil sur la "
+                "probabilité réelle.")
+    ville = _ville_du_texte(texte)
+    if not ville:
+        try:
+            import assistant_nl as _A
+            _A.note_attente_slot(conv_id, "dois-je prendre un parapluie à %s ?")
+        except Exception:
+            pass
+        return "Je peux calculer ça sur la probabilité de pluie réelle — pour quelle ville ?"
+    try:
+        import meteo as _MET
+        rel = _MET.pluie_aujourdhui(ville)
+    except Exception:
+        rel = None
+    if not rel:
+        return ("Je n'ai pas réussi à obtenir la probabilité de pluie pour « %s » (ville inconnue du géocodeur "
+                "ou réseau) — je préfère te le dire que d'inventer un conseil." % ville)
+    import decision as _DEC
+    p = max(0.0, min(1.0, rel["proba_pluie"] / 100.0))
+    st, action, eu = _DEC.decide({"pluie": p, "sec": 1.0 - p}, _UTILITES_PLUIE, marge_abstention=_MARGE_PLUIE)
+    ou = rel["nom"] + ((" (%s)" % rel["pays"]) if rel.get("pays") else "")
+    tete = ("Conseil calculé — probabilité de pluie aujourd'hui à %s : %d %% (open-meteo.com — rapporté). "
+            % (ou, rel["proba_pluie"]))
+    regle = ("Règle affichée : se faire tremper coûte 10× le port du parapluie ; si ta pondération diffère, "
+             "dis-le et je re-tranche.")
+    if st == _DEC.ABSTENTION:
+        return (tete + "Les deux options ont une utilité espérée trop proche pour trancher honnêtement — "
+                "c'est un vrai pile ou face. " + regle)
+    autre = next(a for a in eu if a != action)
+    return (tete + "Mon conseil (utilité espérée %.2f contre %.2f) : %s. %s"
+            % (eu[action], eu[autre], action, regle))
+
+
 def _cap_quotidien(texte: str, conv_id=None):
     """Questions du QUOTIDIEN : météo (refus honnête, chaleureux), heure et date (faits réels de l'horloge
-    locale). Demandé par Yohan (2026-07-06) : « il fait quel temps ? » tombait dans l'aveu générique."""
+    locale), conseil parapluie CALCULÉ (probabilité rapportée × utilité espérée, decision.py). Demandé par
+    Yohan (2026-07-06) : « il fait quel temps ? » tombait dans l'aveu générique."""
+    if _PARAPLUIE_RE.search(texte) and _DECISION_PLUIE_RE.search(texte):
+        return _conseil_parapluie(texte, conv_id)
     if _METEO_RE.search(texte):
         # WEB ON -> VRAIE météo (source STRUCTURÉE Open-Meteo, relevé attribué — exigence Yohan : « si
         # Internet est activé, il peut très bien aller vérifier »). WEB OFF -> refus honnête + geste.
         if os.environ.get("IA_WEB") == "1":
-            mv = re.search(r"\b(?:[àa]|au|en|sur|pour)\s+((?:[A-ZÀ-Ü][\wà-ÿ'’-]+)(?:[\s-][A-ZÀ-Ü][\wà-ÿ'’-]+)*)"
-                           r"|\b(?:[àa]|au)\s+([a-zà-ÿ][\wà-ÿ'’-]{2,})\b", texte)
-            ville = ((mv.group(1) or mv.group(2)) if mv else "" ) or ""
-            ville = ville.strip(" ?.!")
-            if not ville or _normalise(ville) in ("moment", "aujourd", "aujourd hui", "instant"):
+            ville = _ville_du_texte(texte)
+            if not ville:
                 try:      # ATTENTE À TROU : le tour suivant (« A Brives ») COMPLÈTE la question météo au lieu
                     import assistant_nl as _A                  # de repartir en recherche web (vécu 2026-07-06)
                     _A.note_attente_slot(conv_id, "quel temps fait-il à %s ?")

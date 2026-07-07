@@ -176,5 +176,38 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — CONSEIL PARAPLUIE (avis ⑤ : décision sous incertitude, decision.py — probabilité RAPPORTÉE, règle AFFICHÉE) —
+import meteo as _MET  # noqa: E402
+
+_pluie_avant = _MET.pluie_aujourdhui
+try:
+    os.environ["IA_WEB"] = "1"
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 80}
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and r.startswith("Conseil calculé") and "80 %" in r and "prendre le parapluie" in r,
+          "pluie 80 % -> conseil CALCULÉ « prendre » (utilité espérée, probabilité rapportée)")
+    check(r is not None and "Règle affichée" in r and "re-tranche" in r,
+          "la règle d'utilité est AFFICHÉE et re-tranchable (verdict conditionnel, jamais un fait)")
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 1}
+    r = R._cap_quotidien("faut-il prendre un parapluie à Toulouse ?")
+    check(r is not None and "sortir sans" in r, "pluie 1 % -> conseil « sortir sans » (asymétrie assumée)")
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 9}
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and "pile ou face" in r,
+          "pluie ~9 % (point d'indifférence) -> ABSTENTION honnête (écart d'utilité sous la marge)")
+    r = R._cap_quotidien("dois-je prendre un parapluie ?", "cv-pluie")
+    check(r is not None and "quelle ville" in r, "sans ville -> demande la ville (attente à trou rejouable)")
+    import assistant_nl as _A2
+    check(_A2.reprend_clarification("cv-pluie", "à Brives") == "dois-je prendre un parapluie à Brives ?",
+          "« à Brives » au tour suivant COMPLÈTE la question parapluie (conversation, pas question-réponse)")
+    os.environ.pop("IA_WEB", None)
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and "EN DIRECT" in r and "🌐" in r, "web OFF -> refus honnête actionnable (jamais deviné)")
+    check(_A2.qualifie_texte("Conseil calculé — test").statut == _A2.SUPPOSITION,
+          "porte unique : un conseil calculé est classé SUPPOSITION (conditionnel), jamais FAIT")
+finally:
+    _MET.pluie_aujourdhui = _pluie_avant
+    os.environ.pop("IA_WEB", None)
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)
