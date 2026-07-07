@@ -234,7 +234,8 @@ _ETAT_RE = re.compile(
     r"je trouve (?:ca|cela) (?:dur|difficile|penible|complique|injuste))\b")
 
 _AVIS_RE = re.compile(
-    r"\b(que penses[- ]?tu|qu en penses[- ]?tu|ton avis|a ton avis|selon toi|ton opinion|"
+    r"\b(que penses[- ]?tu|qu en penses[- ]?tu|t en penses quoi|tu en penses quoi|t en dis quoi|"
+    r"ton avis|a ton avis|selon toi|ton opinion|"
     r"le meilleur|la meilleure|le pire|la pire|plus (?:beau|belle|sympa|agreable|interessante?)|"
     r"preferes[- ]?tu|(?:me |tu )(?:recommandes?|conseilles?)|vaut[- ]?il mieux|c est mieux|"
     # jugement évaluatif nu (« il est génial non ? ») : une demande d'accord = une demande d'avis
@@ -327,13 +328,24 @@ def _ncd(a: str, b: str) -> float:
     return (cab - min(ca, cb)) / float(max(ca, cb))
 
 
+# Longueurs COMPRESSÉES des exemples, calculées UNE fois à l'import (les exemples sont figés) : divise le coût
+# du proposeur par ~2 (26 compressions économisées par appel — mesuré 0,98 ms -> ~0,5 ms, chemin INCONNU).
+_EXEMPLES_C = tuple((a, ex, len(zlib.compress(ex.encode(), 9))) for a, ex in _EXEMPLES)
+
+
 def _propose_gzip(nq: str, k: int = 3):
     """Propose (acte, confiance, indice) par plus proches voisins de compression, ou None si le voisinage
     n'est pas net. PÉRIPHÉRIE : la proposition n'est jamais affirmée — elle nourrit le repli honnête qui
     demande à l'humain de confirmer/corriger (propose -> vérifie)."""
     if len(nq) < 8:
         return None
-    voisins = sorted((_ncd(nq, ex), a) for a, ex in _EXEMPLES)[:k]
+    bq = nq.encode()
+    cq = len(zlib.compress(bq, 9))
+    voisins = []
+    for a, ex, cx in _EXEMPLES_C:
+        cab = len(zlib.compress((nq + " " + ex).encode(), 9))
+        voisins.append(((cab - min(cq, cx)) / float(max(cq, cx)), a))
+    voisins = sorted(voisins)[:k]
     votes: dict = {}
     for _d, a in voisins:
         votes[a] = votes.get(a, 0) + 1
@@ -348,6 +360,13 @@ def _propose_gzip(nq: str, k: int = 3):
 
 
 # ═══════════════ acte() — l'entrée unique : signal -> Faisceau ═══════════════
+# Cache BORNÉ des candidats par (signal, anaphore) : acte() tourne jusqu'à 2× par message (routage de la
+# cascade + repli) — les Candidats sont immuables (frozen), le partage est sûr. Vidé quand plein (simple, sans
+# horloge — cristallisation §15 : un calcul stable se replie dans la structure et cesse de coûter).
+_CACHE_ACTE: dict = {}
+_CACHE_ACTE_MAX = 256
+
+
 def acte(signal: str, contexte: dict | None = None) -> Faisceau:
     """Classe l'intention du `signal` parmi les 11 actes fermés (§8), extrait entités/relation UNE fois,
     attache le régime du gardien de bornage, et ROUTE chaque candidat vers sa faculté (recette). Ne collapse
@@ -356,6 +375,10 @@ def acte(signal: str, contexte: dict | None = None) -> Faisceau:
     brut = (signal or "").strip()
     if not brut:
         return Faisceau((), ctx)
+    cle = (brut, str(ctx.get("anaphore") or ""))
+    en_cache = _CACHE_ACTE.get(cle)
+    if en_cache is not None:
+        return Faisceau(en_cache, ctx)
     nq = _norm(brut)
     try:
         regime = _CB.classe(brut).statut_ontologique
@@ -389,6 +412,9 @@ def acte(signal: str, contexte: dict | None = None) -> Faisceau:
                                   signal_discriminant="reformulation ou choix d'une famille d'actes",
                                   confiance=0.0, provenance="aucun détecteur, voisinage gzip trop lointain"))
     cands.sort(key=lambda c: -c.confiance)
+    if len(_CACHE_ACTE) >= _CACHE_ACTE_MAX:
+        _CACHE_ACTE.clear()
+    _CACHE_ACTE[cle] = tuple(cands)
     return Faisceau(tuple(cands), ctx)
 
 

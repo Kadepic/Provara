@@ -1,5 +1,72 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Invention hors-catalogue : « comment X sans Y » amplifie au lieu de tomber au web
+
+- **Vécu audit** : « comment conserver des aliments sans frigo ? », « comment chauffer une pièce sans
+  électricité ? » (besoins physiques réels hors du catalogue `besoin.py`, qui ne décompose finement que
+  « rafraîchir ») finissaient en « internet coupé ». Choix FAUX=0 : je **n'invente pas** un catalogue physique
+  bâclé (ce serait bluffer la physique) — à la place, `_cap_invention` AMPLIFIE (§13) : chiffrer l'objectif,
+  identifier le canal dominant (conduction/convection/rayonnement/évaporation/changement d'état) et le puits
+  gratuit, rappeler la limite dure (Carnot). Les actes de LANGAGE (« comment dire bonjour sans accent ») restent
+  exclus (carte fermée `_VERBES_LANGAGE`) → cascade normale (pin du banc conservé).
+- Bancs : `valide_capacites_chat` **79/79** (+2), suite **24/24**, raisonnement **166/166**, paraphrases **168/168**.
+
+## 2026-07-08 — L'IA CHALLENGE pour de vrai : QUIZ VÉRIFIÉ (question posée depuis la base, réponse jugée contre le fait)
+
+- **Mandat Yohan (« que l'IA nous challenge »)** : le défi n'est plus passif. « Challenge-moi sur la
+  géographie » → Provara **POSE une vraie question tirée de sa base vérifiée** (« Quelle est la capitale de
+  “République populaire de Chine” ? »), mémorise la réponse attendue PAR conversation, et **tranche la réponse
+  du tour suivant contre le fait réel** : « ✔ Exact — Pékin (fait vérifié) » / « ✘ Non — la réponse vérifiée
+  est Saint John's ». FAUX=0 parfait : la question SORT d'un fait vérifié, la correction EST le fait vérifié.
+- Sujets (carte fermée v1) : géographie/capitales → `capitale`, chimie → `numero_atomique` ; sujet sans
+  relation de quiz → mode « affirme et je tranche » conservé (toujours proposé en second mode).
+- **Jamais otage** : une vraie nouvelle demande pendant le quiz est traitée normalement (état consommé) ;
+  « stop » → fin propre ; question de défi purgée par l'oubli RGPD (`/api/oublie`). Porte unique : défi lancé
+  = ÉCHANGE, verdicts = ancrés au fait.
+- Vérifié E2E réel (bonne réponse, mauvaise réponse, digression, stop). Bancs : `valide_capacites_chat`
+  **77/77** (+7), suite **24/24**, raisonnement **166/166**, paraphrases **168/168**, challenge **16/16**.
+
+## 2026-07-08 — AUDIT ATOMIQUE (mandat Yohan « perfection chirurgicale ») : mesures + 6 trous réels tués + syllogisme
+
+- **MESURÉ, pas déclaré** : boot 3,4 s / **31 Mo RAM**, pipeline chaud **5 ms** (les ~250 ms observés = premier
+  chargement des index, par design mmap) ; superlatif 1,6 s à froid puis **0 ms** (cache colonne). `tronc.acte()`
+  0,03 ms (matché) / 0,78 ms (gzip, **optimisé** : exemples précompressés à l'import) / **0,0005 ms en cache**
+  (nouveau cache borné 256 entrées — acte() tourne 2× par message).
+- **Batterie de compréhension réelle → 6 garbage tués** (chaque cas VÉCU à l'audit) :
+  ① « teste mes connaissances » partait en MÉMO (« C'est noté ») → challenge ; ② « pose-moi une question
+  difficile sur X » partait au web → challenge SUR X ; ③ « donne-moi UNE idée » partait au web (le motif
+  n'acceptait que « des idées ») → amplificateur créatif ; ④ « propose/suggère-moi une idée de X » → idem ;
+  ⑤ « que manque-t-il pour X » hors catalogue physique rendait « internet coupé » → **amplification honnête**
+  (chiffrer l'objectif, reformuler en « comment X sans Y », scanner de manques) — la forme ambiguë « comment X
+  sans Y » garde son repli silencieux (pin du banc conservé) ; ⑥ « franchement t'en penses quoi toi ? »
+  (registre oral) partait en indécidable → opinion cadrée (marqueur ajouté au classifieur de bornage + tronc).
+- **NOUVEAU : syllogisme à prémisses fournies** (`_cap_syllogisme`) — « si tous les mammifères allaitent et que
+  le chat est un mammifère, que peut-on en déduire ? » partait au découpage multi-questions (3 × « je ne l'ai
+  pas en mémoire »). Désormais : **« D'après TES prémisses (Barbara/modus ponens) : le chat allaite »** — mode
+  hypothétique BALISÉ (§18 : raisonner DANS un monde posé sans l'affirmer), la porte unique classe SUPPOSITION ;
+  si le store corrobore la mineure (chat → mammifère), c'est DIT. Moyen terme disjoint → refus expliqué.
+  Accords sûrs (« sont mortels » → « est mortel », « des animaux » → « un animal », article utilisateur gardé).
+- Bancs : `valide_capacites_chat` **70/70** (+12), suite **24/24**, raisonnement **166/166**, paraphrases
+  **168/168**, challenge **16/16**, tronc **78/78**.
+
+## 2026-07-08 — REGISTRE DES SOURCES VÉRIFIÉES complet : 32 sources officielles/structurées (demande Yohan)
+
+- **`src/datasets/sources/registry.jsonl` reconstruit et enrichi** (6 → 32 sources), schéma riche : id, nom,
+  type (sparql/api/dump/web), **autorité** (pourquoi la source fait foi), domaines, relations alimentées, URL,
+  actif, sonde, note. France officiel : INSEE, API Géo (Etalab), Base Adresse Nationale, data.gouv.fr,
+  Légifrance, Vie-publique, Service-Public, IGN Géoplateforme, HAL. International : OMS (GHO), Banque mondiale
+  (source réelle des PIB), Eurostat, UN Data, BCE, Frankfurter (taux BCE), NIST/CODATA, PubChem, USGS séismes,
+  NASA JPL, GBIF, Open Library, MusicBrainz, Nominatim, Wiktionnaire, Open Food Facts (note : corroborer).
+  FAUX=0 typé À LA SOURCE : structuré (api/sparql/dump) peut nourrir un fait vérifié/appris ; consultation
+  (web) ne produit QUE du rapporté attribué ; les notes disent les limites (rate-limit, clé, collaboratif).
+- **Ping de joignabilité rendu LÉGER** : seules les sources marquées `sonde` (3) sont contactées — 32 GET
+  séquentiels auraient rendu chaque question inconnue interminable ; repli historique sans marqueur.
+- **Câblé en conversation** : « d'où viennent tes informations ? » liste désormais le registre RÉEL (32
+  sources, noms cités) au lieu du texte figé. `ia.ou_apprendre(domaine)`/`provenance(relation)` inchangés.
+- **Gate historique RÉPARÉE** : `valide_sources` (rouge depuis le portage — schéma riche + mledoze-countries
+  attendus) repasse **105/105** et entre dans la suite → **24/24 gates**. Bancs : raisonnement 166/166,
+  paraphrases 168/168, challenge 16/16, assistant_nl 89/89.
+
 ## 2026-07-08 — FAUX réel tué (G4) : une expression d'état ne part plus JAMAIS au web
 
 - **Vécu au E2E final (web ON)** : « je suis perdu » servait un extrait hinative hors-sujet (« quelle est la

@@ -3602,7 +3602,20 @@ def _meta_assistant(texte: str) -> str | None:
         return None
     for patron, cle in _META_PATRONS:
         if patron.fullmatch(n):
-            return _META_REPONSES[cle]
+            rep = _META_REPONSES[cle]
+            if cle == "sources":
+                # REGISTRE DES SOURCES VÉRIFIÉES (enrichi 2026-07-08, demande Yohan « une liste complète ») :
+                # la réponse méta LISTE le registre réel (sources.py, donnée pas code) au lieu du texte figé.
+                try:
+                    import sources as _SRCM
+                    _acts = _SRCM.toutes(actives_seulement=True)
+                    if _acts:
+                        _noms = [s.get("nom", s.get("id", "?")) for s in _acts]
+                        rep += (" Mon registre de confiance compte %d sources officielles ou structurées — "
+                                "notamment %s…" % (len(_acts), ", ".join(_noms[:8])))
+                except Exception:
+                    pass
+            return rep
     return None
 
 
@@ -4195,7 +4208,8 @@ _CREER_RE = re.compile(
 _CREER_OUVERT_RE = re.compile(
     r"\b(?:quelque\s+chose|un\s+truc|un\s+produit|un\s+objet|un\s+service|un\s+concept|"
     r"que\s+(?:puis|peux)[- ]je|qu['e ]est[- ]ce\s+que\s+je\s+(?:peux|pourrais)|"
-    r"as[- ]tu\s+des?\s+id[ée]es?|aurais[- ]tu\s+des?\s+id[ée]es?|donne[- ]moi\s+des?\s+id[ée]es?|"
+    r"as[- ]tu\s+des?\s+id[ée]es?|aurais[- ]tu\s+des?\s+id[ée]es?|"
+    r"(?:donne|propose|sugg[èe]re)[- ]?(?:moi|nous)?\s+(?:une|des?)\s+id[ée]es?|id[ée]e\s+de\s+\w+|"
     r"aide[- ]moi\s+[àa]\s+(?:inventer|cr[ée]er|imaginer|trouver))\b", re.I)
 
 
@@ -4221,18 +4235,30 @@ def _cap_creer_ouvert(texte: str):
         "Quel besoin concret veux-tu attaquer ?")
 
 
+# Verbes d'ACTE DE LANGAGE (carte fermée) : « comment DIRE bonjour sans accent » n'est pas un besoin physique
+# à décomposer -> l'invention s'abstient et laisse la cascade répondre (pin du banc conservé).
+_VERBES_LANGAGE = frozenset(
+    "dire ecrire prononcer traduire epeler parler formuler nommer appeler orthographier rediger conjuguer "
+    "accorder exprimer".split())
+
+
 def _cap_invention(texte: str):
     """« comment [faire] X sans Y » / « que manque-t-il pour X » -> reformulation PHYSIQUE du besoin (moteur
     d'invention besoin.py, la vision produit). FAUX=0 : ne répond QUE pour un besoin du catalogue physique ;
     besoin inconnu -> None (le web/pipeline prend le relais). Léger."""
-    besoin_txt = None
+    besoin_txt, explicite = None, False
     m = re.search(r"\bque\s+manque[\s-]*t[\s-]*il\s+pour\s+(.+?)\s*\??\s*$", texte, re.I)
     if m:
-        besoin_txt = m.group(1)
+        besoin_txt, explicite = m.group(1), True         # intention d'invention SANS ambiguïté
+    physique = False
     if besoin_txt is None:
         m = re.search(r"\bcomment\s+(?:faire\s+pour\s+|je\s+peux\s+|)(.+?)\s+sans\s+.+?\s*\??\s*$", texte, re.I)
         if m:
             besoin_txt = m.group(1)
+            # « comment X sans Y » est un vrai besoin d'invention SAUF quand X est un acte de LANGAGE
+            # (« comment dire bonjour sans accent » n'est pas de la physique — pin du banc). Carte fermée.
+            _tete = _normalise(besoin_txt).split()[0] if besoin_txt.strip() else ""
+            physique = _tete not in _VERBES_LANGAGE
     if besoin_txt is None:
         return None
     besoin_txt = besoin_txt.strip(" ?.\"'«»")
@@ -4242,7 +4268,20 @@ def _cap_invention(texte: str):
     except Exception:
         return None
     if not isinstance(d, dict) or d.get("statut") != "decompose":
-        return None                                       # hors catalogue physique -> pipeline continue
+        # HORS CATALOGUE physique. Intention d'invention CLAIRE (« que manque-t-il pour X », ou « comment X sans
+        # Y » avec un X non-langagier) -> on AMPLIFIE (§13 : donner la MÉTHODE) au lieu de laisser filer vers
+        # « internet coupé » (vécu audit 2026-07-08). Sinon (X = acte de langage) -> None, la cascade sert mieux.
+        if not (explicite or physique):
+            return None
+        return ("« %s » : ce besoin précis n'est pas encore dans mon catalogue de leviers physiques vérifiés "
+                "(aujourd'hui je décompose finement « rafraîchir une pièce ») — et je ne bluffe pas une physique "
+                "que je n'ai pas. Voici comment on avance quand même, à MA façon :\n"
+                "· CHIFFRE l'objectif réel (quelle quantité d'énergie, sur quelle durée, dans quel volume ?) — "
+                "un besoin chiffré se décompose en canaux physiques, un slogan non.\n"
+                "· Identifie le CANAL dominant (conduction, convection, rayonnement, évaporation, changement "
+                "d'état) et le PUITS gratuit disponible (air nocturne, sol, eau du réseau, ciel).\n"
+                "· La limite dure reste Carnot/la thermodynamique : le vrai gain vient de RÉDUIRE la charge et de "
+                "viser un puits déjà favorable, jamais d'un rendement « magique »." % besoin_txt[:80])
     lignes = ["Regardons le BESOIN, pas la solution habituelle.", "", d.get("objectif_reel", "")]
     canaux = d.get("canaux") or []
     if canaux:
@@ -4624,17 +4663,85 @@ _MOIS_FR = ("janvier", "février", "mars", "avril", "mai", "juin", "juillet",
 
 _CHALLENGE_RE = re.compile(
     r"\b(?:challenges?[- ]moi|d[ée]fie[- ]moi|teste[- ]moi|interroge[- ]moi|que\s+tu\s+me\s+challenges?|"
-    r"que\s+tu\s+me\s+testes?|que\s+tu\s+me\s+d[ée]fies?)\b(?:.*?\bsur\s+(.+?))?\s*\??\s*$", re.I)
+    r"que\s+tu\s+me\s+testes?|que\s+tu\s+me\s+d[ée]fies?|teste\s+mes\s+connaissances|"
+    r"pose[- ]moi\s+(?:une|des)\s+questions?(?:\s+difficiles?|\s+dures?)?|fais[- ]moi\s+r[ée]viser|"
+    r"quiz(?:z|ze)?[- ]?moi|un\s+petit\s+quiz)\b(?:.*?\bsur\s+(.+?))?\s*\??\s*$", re.I)
 
 
-def _cap_challenge(texte: str):
-    """« Challenge-moi sur X » : Provara ne bluffe jamais, donc le défi se joue à SA façon — l'utilisateur
-    AFFIRME, Provara tranche Vrai/Faux/Indécidable avec preuve (capacité réelle existante). Si le sujet a une
-    définition vérifiée, elle amorce l'échange. Demandé par Yohan (2026-07-06 : partait en mémo !)."""
+# QUIZ VÉRIFIÉ (mandat Yohan 2026-07-08 « que l'IA nous challenge ») : Provara POSE une vraie question tirée
+# de sa base VÉRIFIÉE, retient la réponse attendue par conversation, et TRANCHE la réponse de l'utilisateur au
+# tour suivant contre le fait réel. FAUX=0 parfait : la question vient d'un fait vérifié, la correction EST le
+# fait vérifié. Relations de quiz par sujet (carte FERMÉE : réponse courte, non ambiguë).
+_QUIZ: dict = {}          # conv_id -> {"entite", "valeur", "relation", "libelle"}
+_QUIZ_RELATIONS = {
+    "geographie": ("capitale", "Quelle est la capitale de « %s » ?"),
+    "capitales": ("capitale", "Quelle est la capitale de « %s » ?"),
+    "chimie": ("numero_atomique", "Quel est le numéro atomique de « %s » ?"),
+    "": ("capitale", "Quelle est la capitale de « %s » ?"),
+}
+
+
+def _quiz_question(sujet: str, conv_id):
+    """Tire UNE question de la base vérifiée pour `sujet` (ou None si pas de relation de quiz / pas d'état
+    possible). La réponse attendue est mémorisée par conversation — le tour suivant sera JUGÉ contre elle."""
+    if not conv_id:
+        return None
+    rel_lib = _QUIZ_RELATIONS.get(_normalise(sujet or "").replace("la ", "").strip() or "")
+    if rel_lib is None:
+        return None
+    rel, libelle = rel_lib
+    try:
+        import random
+        table = _charge_direct(rel)
+        if not table:
+            return None
+        cle = random.choice(list(table.keys()))
+        cell = _lookup_cell(rel, cle)
+        ent, val = (cell[0], cell[1]) if cell else (cle, table.get(cle))
+        if val in (None, ""):
+            return None
+    except Exception:
+        return None
+    _QUIZ[conv_id] = {"entite": str(ent), "valeur": str(val), "relation": rel, "libelle": libelle}
+    return libelle % ent
+
+
+def _quiz_verdict(conv_id, texte: str):
+    """Réponse au quiz EN ATTENTE -> verdict tranché par le fait vérifié, ou None (pas de quiz / l'utilisateur
+    est passé à autre chose -> l'état est consommé et le pipeline reprend). « stop »-like -> fin propre."""
+    q = _QUIZ.pop(conv_id, None) if conv_id else None
+    if not q or not isinstance(texte, str):
+        return None
+    tn = " ".join(_normalise(texte).split())
+    if tn in ("stop", "arrete", "j arrete", "fin", "on arrete", "non merci", "laisse tomber"):
+        return "Fin du défi — bien joué de t'être prêté au jeu. Redis « challenge-moi » quand tu veux !"
+    # une NOUVELLE demande (question interrogative substantielle) n'est pas une réponse au quiz : on n'otage
+    # jamais la conversation — l'état est simplement consommé et la demande traitée normalement.
+    if _veut_reponse(texte) and len(tn.split()) > 3:
+        return None
+    attendu = _normalise(q["valeur"]).strip()
+    if attendu and (tn == attendu or attendu in tn.split() or attendu in tn):
+        return ("✔ Exact — %s (fait vérifié de ma base). Redis « challenge-moi » pour une autre question."
+                % q["valeur"])
+    return ("✘ Non — pour « %s », la réponse vérifiée est %s (tu as dit : « %s »). "
+            "Redis « challenge-moi » pour une autre." % (q["entite"], q["valeur"], texte.strip()[:60]))
+
+
+def _cap_challenge(texte: str, conv_id=None):
+    """« Challenge-moi sur X » : Provara CHALLENGE pour de vrai — il POSE une question tirée de sa base
+    vérifiée (réponse attendue mémorisée, jugée au tour suivant contre le fait réel), ET accepte toujours le
+    mode inverse (l'utilisateur AFFIRME, Provara tranche V/F/Indécidable avec preuve). Jamais un bluff :
+    question ET correction sortent du vérifié. Demandé par Yohan (2026-07-06 mémo ! ; 2026-07-08 quiz actif)."""
     m = _CHALLENGE_RE.search(texte)
     if not m:
         return None
     sujet = _strip_article((m.group(1) or "").strip(" ?.!")) if m.group(1) else ""
+    cible = (" sur « %s »" % sujet) if sujet else ""
+    question = _quiz_question(sujet, conv_id)
+    if question:
+        return ("Défi accepté%s — ma question, tirée de ma base vérifiée : %s "
+                "(Réponds et je tranche contre le fait réel — ou dis « stop ». Tu peux aussi m'AFFIRMER "
+                "quelque chose : je le jugerai Vrai/Faux/Indécidable, preuve à l'appui.)" % (cible, question))
     amorce = ""
     if sujet:
         try:
@@ -4644,7 +4751,6 @@ def _cap_challenge(texte: str):
                 amorce = " Pour poser le décor, un fait vérifié — %s : %s." % (sujet, d[:160].rstrip("."))
         except Exception:
             pass
-    cible = (" sur « %s »" % sujet) if sujet else ""
     return ("Défi accepté%s — mais à MA façon, parce que je ne bluffe jamais : AFFIRME des choses, et je "
             "tranche chacune par Vrai, Faux ou Indécidable, preuve à l'appui. Ce que la réalité ne tranche "
             "pas, je te le dirai honnêtement.%s À toi : lance ta première affirmation." % (cible, amorce))
@@ -5343,6 +5449,61 @@ def _charge_transitif(groupe: dict):
     ambigu = frozenset(k for k, s in valeurs.items() if len(s) > 1)
     _TRANS_CACHE[cle] = (par, ambigu)
     return _TRANS_CACHE[cle]
+
+
+# SYLLOGISME À PRÉMISSES FOURNIES (audit 2026-07-08 : « si tous les mammifères allaitent et que le chat est un
+# mammifère, que peut-on en déduire ? » partait au DÉCOUPAGE multi-questions — trois « je ne l'ai pas en
+# mémoire »). Barbara / modus ponens DANS les prémisses de l'utilisateur : la conclusion est TYPÉE « d'après
+# TES prémisses » (jamais posée comme un fait Provara) ; si le store CORROBORE la mineure (est_un), on le DIT —
+# la déduction devient doublement ancrée. Un moyen terme qui ne se noue pas -> refus expliqué (pas de garbage).
+_SYLLO_RE = re.compile(
+    r"\bsi\s+tou(?:s|tes)\s+les\s+([\wà-ÿ-]+)\s+(sont\s+[\wà-ÿ' -]+?|[\wà-ÿ-]+ent)\s+et\s+qu[e'’]\s*"
+    r"((?:le\s+|la\s+|l['’]\s*|un\s+|une\s+)?[\wà-ÿ' -]+?)\s+est\s+un[e]?\s+([\wà-ÿ-]+)\b"
+    r".*?\b(?:d[ée]duire|conclure|conclusions?)\b", re.I | re.S)
+
+
+def _verbe_singulier(v: str) -> str:
+    """« allaitent » -> « allaite », « sont mortels » -> « est mortel », « sont des X » -> « est un X »
+    (accord de la conclusion — règles sûres du pluriel régulier, jamais une invention de forme)."""
+    v = v.strip()
+    if v.lower().startswith("sont "):
+        reste = v[5:].strip()
+        if re.match(r"^des\s+", reste, flags=re.I):
+            reste = re.sub(r"^des\s+", "un ", reste, flags=re.I)
+        mots = reste.split()
+        if mots:                                         # pluriels réguliers : -eaux -> -eau, -aux -> -al, -s -> ∅
+            if mots[-1].endswith("eaux"):
+                mots[-1] = mots[-1][:-1]
+            elif mots[-1].endswith("aux"):
+                mots[-1] = mots[-1][:-3] + "al"
+            elif mots[-1].endswith("s") and not mots[-1].endswith("ss"):
+                mots[-1] = mots[-1][:-1]
+        return "est " + " ".join(mots)
+    return (v[:-3] + "e") if v.lower().endswith("ent") else v
+
+
+def _cap_syllogisme(texte: str):
+    """Syllogisme explicite (« si tous les A V… et que C est un A, que peut-on en déduire ? ») -> conclusion
+    dans LES PRÉMISSES DE L'UTILISATEUR, typée comme telle (mode hypothétique balisé — jamais un fait servi).
+    FAUX=0 : la seule affirmation Provara éventuelle est la CORROBORATION de la mineure par le store (est_un)."""
+    m = _SYLLO_RE.search(texte)
+    if not m:
+        return None
+    a, verbe, c, a2 = m.group(1), m.group(2), m.group(3).strip(" '’"), m.group(4)
+    c_nu = re.sub(r"^(?:le|la|l['’]?|un|une)\s+", "", c, flags=re.I).strip()  # lookup nu ; l'article de
+    if _normalise(a).rstrip("s") != _normalise(a2).rstrip("s"):               # l'utilisateur est GARDÉ à l'affichage
+        return ("Je vois deux prémisses, mais le moyen terme ne se noue pas (« %s » d'un côté, « %s » de "
+                "l'autre) — le syllogisme est invalide, je ne déduis rien plutôt que de forcer." % (a, a2))
+    corro = ""
+    try:
+        import est_un as _EUS
+        if _EUS.est_un(c_nu, a2) or _EUS.est_un(c_nu, a):
+            corro = " — et mes faits CORROBORENT la seconde (%s → %s, vérifié dans ma base)" % (c_nu, a2)
+    except Exception:
+        pass
+    return ("D'après TES prémisses (syllogisme en Barbara / modus ponens) : %s %s. "
+            "Je raisonne ICI dans tes prémisses, je ne les pose pas comme des faits%s."
+            % (c, _verbe_singulier(verbe), corro))
 
 
 def _cap_transitif(texte: str):
@@ -6746,6 +6907,11 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if q2 == "":
             return _varie("refus", t, _MSG_REFUS)
         t = q2
+    #   (0quiz) QUIZ EN ATTENTE : le tour précédent a posé une question du défi -> la réponse est JUGÉE
+    #   contre le fait vérifié mémorisé. Une nouvelle vraie demande n'est jamais prise en otage (état consommé).
+    _vq = _quiz_verdict(conv_id, t)
+    if _vq:
+        return _vq
     #   (0conf) CORRECTION UTILISATEUR (AUTORITÉ) : si l'utilisateur a déjà corrigé cette question, sa réponse
     #       fait foi (il est le juge réel) et PRIME sur tout — connaissance, web, mémoire. FAUX=0 : appliquée
     #       telle quelle et attribuée (« tu me l'avais corrigé »).
@@ -6851,7 +7017,8 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         # CAPS NOMMÉS dans l'ordre HISTORIQUE (l'ordre = le comportement, chaque position encode un vécu).
         _caps = (("avis_critere", lambda _t: _cap_avis_critere(_t, conv_id)),
                  ("quotidien", lambda _t: _cap_quotidien(_t, conv_id)),
-                 ("site", _cap_site), ("avis", lambda _t: _cap_avis(_t, conv_id)), ("challenge", _cap_challenge),
+                 ("site", _cap_site), ("avis", lambda _t: _cap_avis(_t, conv_id)),
+                 ("challenge", lambda _t: _cap_challenge(_t, conv_id)),
                  ("conversion", _cap_conversion), ("point_commun_nway", _cap_point_commun_nway),
                  ("ontologie", _cap_ontologie), ("cause", _cap_cause), ("definition", _cap_definition),
                  ("hyponymes", _cap_hyponymes), ("comptage", _cap_comptage),
@@ -6868,7 +7035,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
-                 ("localisation", _cap_localisation), ("deduction", _cap_deduction),
+                 ("localisation", _cap_localisation), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
                  ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),

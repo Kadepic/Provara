@@ -77,7 +77,11 @@ check(R._suggere_type("quel flauve traverse paris") == ("flauve", "fleuve"),
 r = R._cap_invention("comment rafraîchir une pièce sans climatiseur ?")
 check(r and ("BESOIN" in r or "but réel" in r or "but reel" in r.lower()), "invention : reformulation physique du besoin")
 check(R._cap_invention("quelle est la capitale de l'Italie ?") is None, "invention : ne capte pas une question factuelle")
-check(R._cap_invention("comment dire bonjour sans accent ?") is None, "invention : besoin hors catalogue physique -> None (pipeline continue)")
+check(R._cap_invention("comment dire bonjour sans accent ?") is None, "invention : acte de LANGAGE (« dire ») -> None (pipeline continue)")
+check(R._cap_invention("comment écrire mon nom sans faute ?") is None, "invention : acte de langage (« écrire ») -> None")
+r = R._cap_invention("comment conserver des aliments sans frigo ?")
+check(r is not None and "catalogue" in r and "Carnot" in r,
+      "invention : besoin PHYSIQUE hors catalogue -> amplification honnête (méthode + limite dure), plus jamais « internet coupé »")
 
 # — AUDIT CODE : sûreté de routage (None hors périmètre) —
 check(R._cap_audit_code("bonjour comment vas-tu ?") is None, "audit code : message normal -> None")
@@ -221,6 +225,56 @@ try:
 finally:
     _MET.pluie_aujourdhui = _pluie_avant
     os.environ.pop("IA_WEB", None)
+
+# — TROUS DE L'AUDIT ATOMIQUE 2026-07-08 (batterie réelle) : plus jamais mémo/web-coupé sur ces intentions —
+r = R._cap_challenge("teste mes connaissances")
+check(r is not None and "Défi accepté" in r, "« teste mes connaissances » -> challenge (partait en MÉMO)")
+r = R._cap_challenge("pose-moi une question difficile sur la géographie")
+check(r is not None and "géographie" in r, "« pose-moi une question sur X » -> challenge SUR X (partait au web)")
+r = R._cap_creer_ouvert("donne-moi une idée")
+check(r is not None and "idée du chapeau" in r, "« donne-moi UNE idée » -> amplificateur créatif (partait au web)")
+r = R._cap_creer_ouvert("propose-moi une idée de produit innovant")
+check(r is not None and "idée du chapeau" in r, "« propose-moi une idée de X » -> amplificateur créatif")
+r = R._cap_invention("que manque-t-il pour stocker l'énergie solaire la nuit ?")
+check(r is not None and "catalogue" in r and "CHIFFRE" in r,
+      "besoin HORS catalogue -> amplification honnête (méthode donnée), plus jamais « internet coupé »")
+
+# — SYLLOGISME À PRÉMISSES FOURNIES (mode hypothétique balisé, jamais un fait) —
+r = R._cap_syllogisme("si tous les mammifères allaitent et que le chat est un mammifère, que peut-on en déduire ?")
+check(r is not None and r.startswith("D'après TES prémisses") and "le chat allaite" in r,
+      "syllogisme valide -> conclusion DANS les prémisses, article gardé (« le chat allaite »)")
+check(r is not None and "CORROBORENT" in r, "mineure vérifiée dans le store -> corroboration DITE (chat → mammifère)")
+r = R._cap_syllogisme("si tous les oiseaux volent et que la tulipe est une fleur, que peut-on en déduire ?")
+check(r is not None and "ne se noue pas" in r, "moyen terme disjoint -> syllogisme refusé EXPLIQUÉ (jamais forcé)")
+check(R._cap_syllogisme("quelle est la capitale de la France ?") is None, "hors périmètre -> None")
+r = R._cap_syllogisme("si tous les hommes sont mortels et que Socrate est un homme, que peut-on en conclure ?")
+check(r is not None and "Socrate est mortel" in r,
+      "Barbara classique -> « Socrate est mortel » (copule accordée au singulier)")
+r = R._cap_syllogisme("si tous les félins sont des animaux et que le chat est un félin, que peut-on en déduire ?")
+check(r is not None and "le chat est un animal" in r, "« sont des animaux » -> « est un animal » (pluriel -aux)")
+import assistant_nl as _A3
+check(_A3.qualifie_texte("D'après TES prémisses — test").statut == _A3.SUPPOSITION,
+      "porte unique : une conclusion de syllogisme est SUPPOSITION (prémisses de l'utilisateur), jamais FAIT")
+
+# — QUIZ VÉRIFIÉ (mandat « que l'IA nous challenge ») : question POSÉE depuis la base, réponse JUGÉE contre le fait —
+r = R._cap_challenge("challenge-moi sur la géographie", "cv-quiz")
+check(r is not None and "ma question" in r and "capitale de «" in r,
+      "défi -> une VRAIE question tirée de la base vérifiée (plus seulement « affirme »)")
+q = R._QUIZ.get("cv-quiz")
+check(q is not None and bool(q.get("valeur")), "réponse attendue mémorisée par conversation")
+check(R._quiz_verdict("cv-quiz", q["valeur"]).startswith("✔ Exact"),
+      "bonne réponse -> ✔ tranché par le fait vérifié (jamais un jugement au flair)")
+R._cap_challenge("challenge-moi", "cv-quiz")
+v = R._quiz_verdict("cv-quiz", "Ouagadougou-les-Bains")
+check(v is not None and v.startswith("✘ Non") and R._QUIZ.get("cv-quiz") is None,
+      "mauvaise réponse -> ✘ + LA correction vérifiée, état consommé (une seule chance)")
+R._cap_challenge("challenge-moi", "cv-quiz")
+check(R._quiz_verdict("cv-quiz", "quelle est la population du japon ?") is None,
+      "nouvelle vraie demande pendant le quiz -> None (la conversation n'est JAMAIS otage)")
+R._cap_challenge("challenge-moi", "cv-quiz")
+check("Fin du défi" in (R._quiz_verdict("cv-quiz", "stop") or ""), "« stop » -> fin propre du défi")
+check(_A3.qualifie_texte("Défi accepté — test").statut == _A3.ECHANGE,
+      "porte unique : un défi lancé est un ÉCHANGE, pas un fait")
 
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

@@ -75,7 +75,10 @@ _NB_DUR = {
     "fiction_hypothetique": r"\b(invente une histoire|imagine (que|un)|et si (le|la|les|on|nous)|"
                             r"raconte-moi une histoire|ecris (un poeme|une fiction|un roman))\b",
     "opinion_demandee": r"\b(a ton avis|selon toi|penses-tu que|qu'en penses-tu|ton opinion|"
-                        r"que penses[- ]tu (de|des|du|d')|ton avis sur)\b",
+                        r"que penses[- ]tu (de|des|du|d')|ton avis sur|"
+                        # registre ORAL (« franchement t'en penses quoi toi ? » partait en indécidable — audit
+                        # 2026-07-08) : interrogatif postposé, apostrophe conservée par _norm
+                        r"t'?en penses quoi|tu en penses quoi|vous en pensez quoi|t'?en dis quoi)\b",
 }
 # PRÉDICATS BORNÉS POSITIFS (la réalité fixe : quantité mesurable, date/lieu factuel, identité, définition, calcul).
 _BORNE_POS = {
