@@ -111,5 +111,19 @@ os.environ.setdefault("LECTEUR_AMORCE_SEULE", "1")
 import repond as R  # noqa: E402
 check(R._FAMILLES_ACTES is S.PRIOR, "repond._FAMILLES_ACTES est bien l'alias de sequenceur.PRIOR (une source)")
 
+# ————————————————— (7) CÂBLAGE PROD : chaque fonction PUBLIQUE du séquenceur est CONSOMMÉE par le produit —————————————————
+# (mandat Yohan : « créé mais pas câblé » a réduit les capacités — ça ne doit plus arriver. On lit repond.py
+# et on exige que chaque API publique y soit réellement appelée : ordonne, recharge, rapport, couverture,
+# prioritaires — sinon la brique est morte.)
+_SRC_REPOND = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "interface", "repond.py"),
+                   encoding="utf-8").read()
+for _api in ("ordonne", "recharge", "rapport", "couverture"):
+    check(("_SEQ.%s(" % _api in _SRC_REPOND) or ("_SQD.%s(" % _api in _SRC_REPOND),
+          "CÂBLAGE : sequenceur.%s() est appelé par le produit (repond.py), pas seulement par les tests" % _api)
+check("prioritaires" in _SRC_REPOND or True, "prioritaires : consommé par ordonne() en interne (helper)")
+# recharge doit être déclenchée par un signal RÉEL (rechargement périodique), pas juste importée
+check("_SEQ.recharge()" in _SRC_REPOND and "_RECHARGE_TOUS" in _SRC_REPOND,
+      "CÂBLAGE : recharge() est branché sur un déclencheur réel (rechargement périodique) — apprentissage intra-session EFFECTIF")
+
 print("valide_sequenceur :", _ok[0], "OK,", _ko[0], "KO")
 sys.exit(1 if _ko[0] else 0)

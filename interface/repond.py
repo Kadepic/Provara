@@ -3921,14 +3921,19 @@ def _diagnostic_connaissance(texte: str):
         routage = ""
         try:
             import tronc as _TRD
-            _tot, _hors = _TRD.stats_routage()
+            _tot, _hors, _prof = _TRD.stats_routage()
             if _tot:
-                routage = " · routage par acte : %d décision(s), %d hors-famille" % (_tot, _hors)
+                routage = (" · routage par acte : %d décision(s), %d hors-famille, profondeur de sonde "
+                           "moyenne %.1f cap(s)" % (_tot, _hors, _prof))
                 import sequenceur as _SQD
+                _SQD.recharge()                          # diagnostic = point d'observation : politique FRAÎCHE
                 _appris = _SQD.rapport()
                 if _appris:
                     _n_appris = sum(len(v) for v in _appris.values())
                     routage += " · séquenceur : %d cap(s) appris sur %d acte(s)" % (_n_appris, len(_appris))
+                _ctot, _ccouv = _SQD.couverture()
+                if _ctot:
+                    routage += " (couverture prior %d%%)" % round(100 * _ccouv / _ctot)
         except Exception:
             pass
         return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s%s"
@@ -6875,6 +6880,8 @@ try:
 except Exception:
     _SEQ = None
     _FAMILLES_ACTES = {}
+_ROUTAGE_TICK = 0                  # décisions de routage depuis le dernier rechargement de politique
+_RECHARGE_TOUS = 40               # cadence de rechargement de la politique apprise (§11 arrière-plan)
 
 
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
@@ -7056,7 +7063,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             _ordre, _prio = _SEQ.ordonne(_acte5, _caps, _m5.confiance if _m5 else 0.0)
         except Exception:
             _ordre, _prio, _acte5 = _caps, set(), ""
-        for _nom_cap, _cap in _ordre:
+        for _pos_cap, (_nom_cap, _cap) in enumerate(_ordre):
             _r = _cap(t)
             if _r:
                 # REGISTRE DU ROUTAGE (§16) — signal de récompense du séquenceur : à CHAQUE décision tranchée on
@@ -7065,7 +7072,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                 if _acte5:
                     try:
                         import tronc as _T6
-                        _T6.note_routage(_acte5, _nom_cap, _nom_cap in _prio)
+                        _T6.note_routage(_acte5, _nom_cap, _nom_cap in _prio, position=_pos_cap)
+                        # RECHARGE PÉRIODIQUE (§11 split avant/arrière-plan) : le journal grossit pendant la
+                        # session ; toutes les N décisions on recharge la politique pour que l'apprentissage
+                        # du jour devienne effectif SANS relancer le process (la réponse SUIVANTE est meilleure).
+                        global _ROUTAGE_TICK
+                        _ROUTAGE_TICK += 1
+                        if _ROUTAGE_TICK % _RECHARGE_TOUS == 0 and _SEQ is not None:
+                            _SEQ.recharge()
                     except Exception:
                         pass
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

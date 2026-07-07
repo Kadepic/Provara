@@ -18,9 +18,22 @@
 - **Câblé** dans `repond.py` (remplace le boost binaire de Phase 5), journalise désormais à CHAQUE hit avec
   l'acte classé ; le diagnostic affiche « séquenceur : N cap(s) appris sur M acte(s) ». Cold-start honnête :
   journal vide / acte hors prior / basse confiance → ordre historique EXACT → zéro régression.
-- Bancs : nouveau `valide_sequenceur` **38/38** (cold-start, prior, apprentissage, invariant de sûreté,
-  mesure de profondeur de sonde, alias de compat) → suite **25/25** ; câblage **504/504, 0 orphelin** ;
-  raisonnement 166/166, paraphrases 168/168, challenge 16/16, capacites_chat 79/79. Embarqué .exe.
+- **Utilité §12 — le terme « − coût » rendu OBSERVABLE** : `note_routage` enregistre la POSITION du cap gagnant
+  (= profondeur de sonde = nb de caps essayés avant le hit = coût de calcul réel) ; `stats_routage` en donne la
+  moyenne, le diagnostic l'affiche (« profondeur de sonde moyenne X cap(s) »). Mesure POST-HOC, anti-Goodhart.
+  La membrane §10.3 (compression au récepteur) reste `_ajuste_registre` (prudente : ne comprime que le méta,
+  jamais le contenu — la rendre agressive violerait la non-distorsion) ; l'utilité espérée §12 est `decision.py`
+  (déjà livrée, parapluie). Le terme « conséquences réelles » reste un gouffre ouvert borné par FAUX=0 (§18 :
+  observabilité partielle — nécessite du signal humain, non fabriqué).
+- **AUDIT DE CÂBLAGE ATOMIQUE (mandat Yohan « créé mais pas câblé a réduit nos capacités »)** : audit
+  fonction-par-fonction des modules récents → 2 vrais orphelins trouvés et corrigés — `sequenceur.couverture()`
+  (créé, jamais appelé → câblé au diagnostic) et `sequenceur.recharge()` (appelé seulement par les tests →
+  l'apprentissage intra-session était INERTE ; câblé sur un rechargement périodique tous les 40 tours, §11
+  arrière-plan). `valide_sequenceur` gagne un **check de câblage PROD** (chaque API publique DOIT être appelée
+  dans repond.py, pas seulement en test) → ce trou ne peut plus se re-livrer.
+- Bancs : `valide_sequenceur` **44/44** (dont câblage prod), `valide_tronc` **79/79** → suite **25/25** ;
+  câblage **504/504, 0 orphelin** ; raisonnement 166/166, paraphrases 168/168, challenge 16/16,
+  capacites_chat 79/79, faits_appris 21/21. Embarqué .exe.
 
 ## 2026-07-08 — Invention hors-catalogue : « comment X sans Y » amplifie au lieu de tomber au web
 
