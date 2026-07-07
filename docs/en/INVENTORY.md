@@ -484,7 +484,7 @@
 | `transfert` | CROSS-DOMAIN TRANSFER — the ASSEMBLER (machine-inventor): | transfere, manque |
 | `transport_membranaire` | MEMBRANE TRANSPORT — bounded "Membranes, organelles" (established cell biology). | tonicite, sens_osmose, flux_fick |
 | `triangulation` | TRIANGULATION — Wave 6 brick (agreement of two INDEPENDENT derivations = non-circular corroboration). | triangule, confirme |
-| `tronc` | COMPREHENSION TRUNK — Phases 1-2 (SPEC_TRONC_COMPREHENSION §7-§10): acte(signal, contexte) → Faisceau — closed map of 11 speech acts, parallel candidates (G2), intent-aware honest fallback (G6), attunement, §10 composer (ambiguity is composed, never silently picked) (2026-07-07). | acte, compose, repli, attunement, class Candidat, class Faisceau |
+| `tronc` | COMPREHENSION TRUNK — Phases 1-2 (SPEC_TRONC_COMPREHENSION §7-§10): acte(signal, contexte) → Faisceau — closed map of 11 speech acts, parallel candidates (G2), intent-aware honest fallback (G6), attunement, §10 composer (ambiguity is composed, never silently picked), §16 routing registry (2026-07-07/08). | acte, compose, repli, attunement, note_routage, stats_routage, class Candidat, class Faisceau |
 | `trigonometrie` | TRIGONOMETRY — functions and triangle solving, FAUX=0 (formula/concept mission 2026-06-29). | deg_vers_rad, rad_vers_deg, sin_deg, cos_deg, tan_deg, loi_cosinus, angle_par_cotes, hypotenuse |
 | `turing` | TURING MACHINES — bounded DETERMINISTIC simulation, FAUX=0 (formula/concept mission 2026-06-29). | execute |
 | `typage` | OUTPUT TYPING OF CANDIDATES (2026-06-22, "elegance" lever: | type_sortie, type_attendu, reordonne_par_type |
