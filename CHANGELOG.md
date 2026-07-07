@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Pondération utilisateur du parapluie + REGISTRE DES MODES D'ÉCHEC du routage (§16)
+
+- **La promesse « dis-le et je re-tranche » devient TENABLE** : marqueurs FERMÉS dans la demande —
+  « …pas envie de le porter » → le port pèse plus (seuil ~33 %), « …horreur d'être trempé » → l'aversion pluie
+  pèse plus (seuil ~5 %) — chaque pondération AFFICHÉE (« TA pondération : … »), verdict re-tranché par la même
+  utilité espérée. Le texte du conseil montre les phrases exactes qui règlent la pondération.
+- **Registre du routage** (`tronc.note_routage`/`stats_routage`, journal `~/.verax/tronc_routage.jsonl`,
+  isolable par `TRONC_ROUTAGE_PATH`) : chaque décision de routage par acte RÉELLEMENT tranchée par un cap est
+  journalisée — famille servie (hit) ou cap hors-famille (MISS = la surprise dont on apprend, §9/§16). C'est le
+  signal de récompense MESURÉ du futur séquenceur appris (Phase 4) ; le diagnostic affiche « routage par acte :
+  N décision(s), M hors-famille ». La suite isole le journal (les convs de test ne polluent pas le signal).
+- Bancs : `valide_tronc` **78/78**, `valide_capacites_chat` **58/58**, suite **23/23**, raisonnement
+  **166/166**, paraphrases **168/168**, challenge **16/16**. Câblage vérifié en réel (« quelle heure est-il ? »
+  → 1 décision journalisée, 0 hors-famille).
+
 ## 2026-07-07 — AVIS ⑤ : décision sous incertitude — « dois-je prendre un parapluie ? » (decision.py câblé au chat)
 
 - **Premier consommateur conversationnel de `decision.py`** (utilité espérée + marge d'abstention — le morceau

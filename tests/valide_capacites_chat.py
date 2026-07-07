@@ -195,6 +195,19 @@ try:
     r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
     check(r is not None and "pile ou face" in r,
           "pluie ~9 % (point d'indifférence) -> ABSTENTION honnête (écart d'utilité sous la marge)")
+    # PONDÉRATION UTILISATEUR : la promesse « je re-tranche » est TENUE (marqueurs fermés dans la demande).
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 20}
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and "prendre le parapluie" in r, "pluie 20 %, pondération défaut -> prendre")
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ? pas envie de le porter")
+    check(r is not None and "sortir sans" in r and "TA pondération" in r,
+          "même 20 % mais « pas envie de le porter » -> re-tranché « sortir sans », règle utilisateur AFFICHÉE")
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 6}
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and "sortir sans" in r, "pluie 6 %, défaut -> sortir sans")
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ? j'ai horreur d'être trempé")
+    check(r is not None and "prendre le parapluie" in r,
+          "même 6 % mais « horreur d'être trempé » -> re-tranché « prendre » (aversion pondérée)")
     r = R._cap_quotidien("dois-je prendre un parapluie ?", "cv-pluie")
     check(r is not None and "quelle ville" in r, "sans ville -> demande la ville (attente à trou rejouable)")
     import assistant_nl as _A2

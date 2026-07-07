@@ -32,7 +32,10 @@ import du lecteur/pipeline — les facultés sont ROUTÉES par nom, les consomma
 from __future__ import annotations
 
 import dataclasses
+import json
+import os
 import re
+import time
 import unicodedata
 import zlib
 
@@ -469,6 +472,52 @@ def repli(signal: str, faisceau: Faisceau | None = None) -> str:
             "(« combien font 12*7 ? »), une comparaison raisonnée (« quelle différence entre X et Y ? »), "
             "un avis par critères, la météo et l'heure, lire un site nommé, traduire. "
             "Peux-tu préciser ta demande dans une de ces familles ?" % _PFX_REPLI)
+
+
+# ═══════════════ REGISTRE DU ROUTAGE (§16 « registre de ses modes d'échec » · substrat du bandit §11) ═══════════════
+# Quand repond.py route la cascade par acte (Phase 5), chaque décision RÉELLEMENT tranchée par un cap est
+# journalisée : famille servie (hit) ou cap HORS-famille (miss = la classification/la carte s'est trompée —
+# c'est la SURPRISE dont on apprend, §9). Ce journal est le signal de récompense du futur séquenceur appris
+# (Phase 4) : une politique ne se construit que sur des erreurs MESURÉES, jamais sur l'intuition.
+def _chemin_routage() -> str:
+    p = os.environ.get("TRONC_ROUTAGE_PATH")
+    if p:
+        return p
+    base = os.environ.get("VERAX_HOME") or os.path.join(os.path.expanduser("~"), ".verax")
+    try:
+        os.makedirs(base, exist_ok=True)
+    except OSError:
+        pass
+    return os.path.join(base, "tronc_routage.jsonl")
+
+
+def note_routage(acte_nom: str, cap: str, dans_famille: bool) -> None:
+    """Journalise une décision de routage tranchée (append-only, dégradation silencieuse : le journal est un
+    BONUS d'apprentissage, jamais un point de panne de la réponse)."""
+    try:
+        with open(_chemin_routage(), "a", encoding="utf-8") as f:
+            f.write(json.dumps({"date": time.strftime("%Y-%m-%d"), "acte": acte_nom, "cap": cap,
+                                "famille": bool(dans_famille)}, ensure_ascii=False) + "\n")
+    except OSError:
+        pass
+
+
+def stats_routage() -> tuple:
+    """(total, hors_famille) des décisions journalisées — pour le diagnostic (mesuré, jamais déclaré)."""
+    total = hors = 0
+    try:
+        with open(_chemin_routage(), encoding="utf-8") as f:
+            for ligne in f:
+                try:
+                    o = json.loads(ligne)
+                except ValueError:
+                    continue
+                total += 1
+                if not o.get("famille"):
+                    hors += 1
+    except OSError:
+        return (0, 0)
+    return (total, hors)
 
 
 # ═══════════════ ATTUNEMENT (§13) — lire l'état comme VARIABLE, jamais le feindre ═══════════════

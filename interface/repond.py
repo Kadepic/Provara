@@ -3905,10 +3905,18 @@ def _diagnostic_connaissance(texte: str):
                 appris = " · %d fait(s) appris du web (structurés, réutilisables hors-ligne)" % _n
         except Exception:
             pass
-        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s"
+        routage = ""
+        try:
+            import tronc as _TRD
+            _tot, _hors = _TRD.stats_routage()
+            if _tot:
+                routage = " · routage par acte : %d décision(s), %d hors-famille" % (_tot, _hors)
+        except Exception:
+            pass
+        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s%s"
                 % (len(lecteur.LECTEUR.relations()), len(lecteur.LECTEUR),
                    os.environ.get("LECTEUR_DATASETS_DIR", "?"), _build_id(),
-                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap, appris))
+                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap, appris, routage))
     except Exception as e:
         return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
 
@@ -4898,8 +4906,22 @@ def _cap_avis(texte: str, conv_id=None):
 # (utilité espérée + marge d'abstention) reçoit ici son premier consommateur conversationnel.
 _PARAPLUIE_RE = re.compile(r"\b(parapluies?|k[- ]?way|imperm[ée]able|veste\s+de\s+pluie)\b", re.I)
 _DECISION_PLUIE_RE = re.compile(r"\b(dois[- ]?je|faut[- ]?il|je\s+(?:prends|prenne)|prendre|besoin\s+d)\b", re.I)
-_UTILITES_PLUIE = {"prendre le parapluie": {"pluie": 1.0, "sec": -0.1},
-                   "sortir sans": {"pluie": -1.0, "sec": 0.1}}
+# PONDÉRATION UTILISATEUR (marqueurs FERMÉS, sur texte normalisé) : « je re-tranche » n'est une promesse
+# tenable que si la machine SAIT re-trancher — l'utilisateur règle le poids en le DISANT dans sa demande.
+_PORT_PENIBLE_RE = re.compile(r"(pas envie de le (?:porter|trainer)|deteste (?:le )?porter|m encombre|encombrant)")
+_CRAINT_PLUIE_RE = re.compile(r"(horreur d etre trempee?|horreur de la pluie|deteste etre trempee?|"
+                              r"surtout pas (?:etre )?trempee?)")
+# (libellé de règle, utilités) — la règle est TOUJOURS affichée : le verdict reste conditionnel et auditable.
+_PONDERATIONS_PLUIE = {
+    "defaut": ("se faire tremper coûte 10× le port du parapluie",
+               {"prendre le parapluie": {"pluie": 1.0, "sec": -0.1}, "sortir sans": {"pluie": -1.0, "sec": 0.1}}),
+    "port_penible": ("TA pondération : le port t'encombre (tremper ne coûte que 2× le port)",
+                     {"prendre le parapluie": {"pluie": 1.0, "sec": -0.5},
+                      "sortir sans": {"pluie": -1.0, "sec": 0.5}}),
+    "craint_pluie": ("TA pondération : surtout ne pas être trempé (tremper coûte 20× le port)",
+                     {"prendre le parapluie": {"pluie": 2.0, "sec": -0.1},
+                      "sortir sans": {"pluie": -2.0, "sec": 0.1}}),
+}
 _MARGE_PLUIE = 0.05
 
 
@@ -4935,13 +4957,17 @@ def _conseil_parapluie(texte: str, conv_id=None):
         return ("Je n'ai pas réussi à obtenir la probabilité de pluie pour « %s » (ville inconnue du géocodeur "
                 "ou réseau) — je préfère te le dire que d'inventer un conseil." % ville)
     import decision as _DEC
+    tn = _normalise(texte)
+    cle = ("port_penible" if _PORT_PENIBLE_RE.search(tn)
+           else "craint_pluie" if _CRAINT_PLUIE_RE.search(tn) else "defaut")
+    libelle_regle, utilites = _PONDERATIONS_PLUIE[cle]
     p = max(0.0, min(1.0, rel["proba_pluie"] / 100.0))
-    st, action, eu = _DEC.decide({"pluie": p, "sec": 1.0 - p}, _UTILITES_PLUIE, marge_abstention=_MARGE_PLUIE)
+    st, action, eu = _DEC.decide({"pluie": p, "sec": 1.0 - p}, utilites, marge_abstention=_MARGE_PLUIE)
     ou = rel["nom"] + ((" (%s)" % rel["pays"]) if rel.get("pays") else "")
     tete = ("Conseil calculé — probabilité de pluie aujourd'hui à %s : %d %% (open-meteo.com — rapporté). "
             % (ou, rel["proba_pluie"]))
-    regle = ("Règle affichée : se faire tremper coûte 10× le port du parapluie ; si ta pondération diffère, "
-             "dis-le et je re-tranche.")
+    regle = ("Règle affichée : %s. Pondération réglable — redis-le avec « pas envie de le porter » ou "
+             "« horreur d'être trempé » et je re-tranche." % libelle_regle)
     if st == _DEC.ABSTENTION:
         return (tete + "Les deux options ont une utilité espérée trop proche pour trancher honnêtement — "
                 "c'est un vrai pile ou face. " + regle)
@@ -6853,18 +6879,27 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         # caps EN TÊTE (ordre relatif conservé), la cascade complète reste le filet -> zéro perte, mais le
         # moteur DÉCIDE quelle faculté essayer d'abord (c'est aussi le point d'allocation du séquenceur §11 :
         # une politique apprise pourra un jour réordonner ICI, sous les mêmes bancs).
-        _ordre = _caps
+        _ordre, _fam, _acte5 = _caps, None, ""
         try:
             import tronc as _T5
             _m5 = _T5.acte(t).meilleur()
             _fam = _FAMILLES_ACTES.get(_m5.intention) if (_m5 is not None and _m5.confiance >= 0.8) else None
             if _fam:
+                _acte5 = _m5.intention
                 _ordre = tuple(c for c in _caps if c[0] in _fam) + tuple(c for c in _caps if c[0] not in _fam)
         except Exception:
-            _ordre = _caps
+            _ordre, _fam = _caps, None
         for _nom_cap, _cap in _ordre:
             _r = _cap(t)
             if _r:
+                # REGISTRE DU ROUTAGE (§16) : décision tranchée -> hit (cap de la famille routée) ou MISS
+                # (cap hors-famille = la classification d'acte s'est trompée : la surprise dont on apprend).
+                if _fam:
+                    try:
+                        import tronc as _T6
+                        _T6.note_routage(_acte5, _nom_cap, _nom_cap in _fam)
+                    except Exception:
+                        pass
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
                 # Napoléon Ier ? » [cap fait-personne] puis « il est mort quand ? »). Garde : une vraie entité
                 # nominale courte, pas un nombre ni une expression.

@@ -6,7 +6,9 @@ compris + ce que je sais faire ». Ce banc EST la spec du comportement (règle d
 bancs passent — pas l'inverse)."""
 import os
 import sys
+import tempfile
 
+os.environ["TRONC_ROUTAGE_PATH"] = os.path.join(tempfile.mkdtemp(), "routage.jsonl")
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "src"))
 import tronc as T  # noqa: E402
 
@@ -165,6 +167,12 @@ check(all(isinstance(v, tuple) and v for v in R._FAMILLES_ACTES.values()),
       "chaque famille routée est un tuple non vide de caps nommés")
 check("interroger_fait" not in R._FAMILLES_ACTES and "raisonner" not in R._FAMILLES_ACTES,
       "les actes factuels/raisonnement NE sont PAS routés (détecteurs de caps plus fins que l'acte)")
+# REGISTRE DU ROUTAGE (§16) : chaque décision tranchée est journalisée, l'erreur (hors-famille) est MESURÉE.
+check(T.stats_routage() == (0, 0), "journal vierge -> (0, 0), jamais une exception")
+T.note_routage("quotidien", "quotidien", True)
+T.note_routage("demander_avis", "definition", False)
+check(T.stats_routage() == (2, 1),
+      "registre du routage : 2 décisions, 1 hors-famille — le signal d'apprentissage du futur séquenceur (§11)")
 
 # ————————————————— (10) CÂBLAGE assistant_nl : l'indécidable sert le repli intent-aware —————————————————
 os.environ.pop("IA_WEB", None)

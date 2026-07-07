@@ -41,6 +41,9 @@ def _env():
     import tempfile
     e.setdefault("LECTEUR_DATASETS_DIR", os.path.join(_RACINE, "datasets", "lecteur"))  # échantillon embarqué
     e.setdefault("LECTEUR_CACHE_DIR", os.path.join(tempfile.gettempdir(), "verax_suite_conv"))  # hors repo
+    # journal de routage du tronc HORS ~/.verax réel : les conversations de test ne polluent pas le signal
+    # d'apprentissage du séquenceur (même principe que la purge des convs de test).
+    e.setdefault("TRONC_ROUTAGE_PATH", os.path.join(tempfile.gettempdir(), "verax_suite_conv", "tronc_routage.jsonl"))
     e.setdefault("IA_PLEINE", "1")
     # NB : on ne fixe PAS LECTEUR_AMORCE_SEULE — les gates qui en ont besoin (composition/traduction) le posent
     # eux-mêmes (os.environ.setdefault), sans affecter les gates qui chargent l'échantillon (capacites_chat…).
