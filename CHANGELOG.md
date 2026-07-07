@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-07 — QUEUE réelle : TTL des faits appris (verrou de péremption fermé) + anaphore du repli + libellé opinion
+
+- **TTL / rafraîchissement des faits appris** (queue #1) : le cache appris était consulté AVANT le réseau →
+  un fait appris ne se remettait JAMAIS à jour (verrou de péremption). Désormais `faits_appris` porte un TTL
+  (90 j par défaut, `FAITS_APPRIS_TTL_JOURS`) avec `age_jours`/`est_frais` (horloge injectable) : fait FRAIS →
+  servi du cache (instantané, hors-ligne) ; fait PÉRIMÉ + web ON → le réseau prime (re-cherche + ré-apprend la
+  valeur fraîche), repli sur l'instantané DATÉ si la source ne tranche plus ; web OFF → toujours servi (un
+  instantané daté n'est pas un mensonge — le TTL ne prive jamais le hors-ligne). `valide_faits_appris` 21/21 (+7).
+- **Anaphore câblée dans le repli du tronc (§7 contexte)** : le DERNIER SUJET du pipeline nourrit le faisceau —
+  « il est génial non ? » (après un tour sur la tour Eiffel) → hypothèse AVIS « à propos de “la tour Eiffel” ».
+  Nouveau marqueur d'avis évaluatif nu (« il/elle/c'est génial/nul/top… » = demande d'accord = demande d'avis).
+  `valide_tronc` 73/73.
+- **Libellé d'opinion GÉNÉRIQUE** (queue #3, vécu : « ventes, remplissage des salles » — critères de FILMS —
+  sortaient pour « le plus beau pays ») : exemples de critères tous-domaines (mesurable : records, récompenses,
+  chiffres vérifiables… — ou goût pur). Préfixe et marqueurs de classe inchangés (aucune régression d'enveloppe).
+
 ## 2026-07-07 — TRONC Phase 3 : les 9 GARDES DE DÉBIAISAGE (§20) deviennent un banc permanent
 
 - Nouveau gate `valide_debiaisage` **43/43** (suite → **23/23**) : chaque garde de la spec est un test qui doit

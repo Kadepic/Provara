@@ -61,6 +61,33 @@ check(r2.statut == A.FAIT and "Paris-sur-Ruritanie" in r2.texte and "appris de W
 r3 = A._cherche_sources("quelle est la capitale de la Syldavie ?", c)
 check(r3.statut == A.HORS, "web OFF, fait jamais appris -> abstention honnête (jamais une invention)")
 
+# — TTL / RAFRAÎCHISSEMENT (verrou de péremption fermé 2026-07-07 : le cache-d'abord empêchait toute MAJ) —
+check(FA.age_jours("capitale", "Borduristan") == 0 and FA.est_frais("capitale", "Borduristan"),
+      "fait appris aujourd'hui -> âge 0, FRAIS")
+FA._HORLOGE = lambda: "2027-01-06"                     # 6 mois plus tard (TTL défaut 90 j dépassé)
+check(FA.age_jours("capitale", "Borduristan") > 90 and not FA.est_frais("capitale", "Borduristan"),
+      "6 mois plus tard -> PÉRIMÉ (TTL 90 j)")
+check(FA.est_frais("capitale", "Borduristan", ttl=400), "TTL explicite plus large -> encore frais (paramétrable)")
+# web ON + fait périmé -> le RÉSEAU prime (rafraîchit) : la source factice rend une NOUVELLE valeur, apprise.
+VS.interroge = lambda attribut, entite, timeout=20: (
+    ("Neo-Ruritanie", "Wikidata") if attribut == "capitale" and "borduristan" in entite.lower() else None)
+A._TRANSPORT = lambda url, timeout=15: (200, b"x")
+r4 = A._cherche_sources("quelle est la capitale du Borduristan ?", c)
+check(r4.statut == A.FAIT and "Neo-Ruritanie" in r4.texte,
+      "fait PÉRIMÉ + web ON -> re-cherché et RAFRAÎCHI (plus jamais verrouillé sur le vieux cache)")
+check(FA.rappelle("capitale", "Borduristan")["valeur"] == "Neo-Ruritanie", "la valeur fraîche est ré-apprise")
+# fait périmé + web ON mais la source ne tranche PLUS -> repli sur le fait appris DATÉ (mieux que rien, honnête).
+FA._HORLOGE = lambda: "2028-01-06"
+VS.interroge = lambda attribut, entite, timeout=20: None
+r5 = A._cherche_sources("quelle est la capitale du Borduristan ?", c)
+check(r5.statut == A.FAIT and "Neo-Ruritanie" in r5.texte and "appris de Wikidata" in r5.texte,
+      "périmé + réseau muet -> repli sur l'instantané DATÉ (l'âge est lisible, jamais caché)")
+A._TRANSPORT = None
+# web OFF + périmé -> servi quand même (un instantané daté n'est pas un mensonge ; c'est la seule voie hors-ligne).
+r6 = A._cherche_sources("quelle est la capitale du Borduristan ?", c)
+check(r6.statut == A.FAIT and "appris de Wikidata" in r6.texte,
+      "web OFF + périmé -> resservi daté (le TTL ne prive jamais le hors-ligne)")
+
 print("=== valide_faits_appris : %d/%d ===" % (_ok[0], _ok[0] + _ko[0]))
 import sys  # noqa: E402
 sys.exit(0 if _ko[0] == 0 else 1)

@@ -172,6 +172,13 @@ A.oublie_etat("c-tronc2"); A._INDECIS.pop("c-tronc2", None)
 r = A.apres_hors("des trucs et des machins", "c-tronc2")
 check(r is not None and r.statut == A.CLARIFICATION,
       "indécidable SANS hypothèse -> clarification générique conservée (aucune régression)")
+# ANAPHORE CÂBLÉE (§7 contexte) : le dernier sujet du pipeline nourrit le faisceau du repli.
+R._DERNIER_SUJET["c-anaph"] = "la tour Eiffel"
+A.oublie_etat("c-anaph"); A._INDECIS.pop("c-anaph", None)
+r = A.apres_hors("il est genial non ?", "c-anaph")
+check(r is not None and r.statut == A.CLARIFICATION and "la tour Eiffel" in r.texte and "AVIS" in r.texte,
+      "« il est génial non ? » -> hypothèse AVIS à propos du DERNIER SUJET (anaphore du contexte, §7)")
+R._DERNIER_SUJET.pop("c-anaph", None)
 
 print("valide_tronc :", _ok[0], "OK,", _ko[0], "KO")
 sys.exit(1 if _ko[0] else 0)

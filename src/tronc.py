@@ -232,7 +232,9 @@ _ETAT_RE = re.compile(
 _AVIS_RE = re.compile(
     r"\b(que penses[- ]?tu|qu en penses[- ]?tu|ton avis|a ton avis|selon toi|ton opinion|"
     r"le meilleur|la meilleure|le pire|la pire|plus (?:beau|belle|sympa|agreable|interessante?)|"
-    r"preferes[- ]?tu|(?:me |tu )(?:recommandes?|conseilles?)|vaut[- ]?il mieux|c est mieux)\b")
+    r"preferes[- ]?tu|(?:me |tu )(?:recommandes?|conseilles?)|vaut[- ]?il mieux|c est mieux|"
+    # jugement évaluatif nu (« il est génial non ? ») : une demande d'accord = une demande d'avis
+    r"(?:il|elle|c) est (?:geniale?|nulle?|super|horrible|magnifique|moche|top|incroyable)s?)\b")
 
 _RAISONNER_RE = re.compile(
     r"\b(plus \w+ que|moins \w+ que|difference entre|point commun|en commun|"
