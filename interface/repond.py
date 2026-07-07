@@ -1934,6 +1934,51 @@ def _cap_synonyme_tete(texte: str):
     return None
 
 
+# MESURE AMBIGUË (« taille/grandeur/dimension de X ») — COMPOSITEUR du tronc (§10, Phase 2). Vécu 2026-07-07 :
+# « la taille de la France » était collapsée EN SILENCE sur superficie (_SYN_TETE) sans signaler que « taille »
+# peut vouloir dire population ; « la taille de la tour Eiffel » échouait alors que la hauteur est en base.
+_MESURE_AMBIGUE_RE = re.compile(
+    r"^\s*(?:quelle?\s+est\s+)?(?:la\s+|le\s+|l['’]\s*)?(taille|grandeur|dimensions?)\s+"
+    r"(de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])\s*(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_mesure_ambigue(texte: str):
+    """Tête de mesure AMBIGUË -> le faisceau tient TOUTES les lectures en parallèle (G2 : jamais un sens choisi
+    en silence) : chaque lecture est résolue par les caps VÉRIFIÉS existants (_cap_dimension pour hauteur/
+    longueur — avec ses gardes anti-homonymes d'œuvres —, _cap_synonyme_tete pour superficie/population), puis
+    `tronc.compose` sert le coup calculé (§10.1 : le certain + les lectures + l'invitation). FAUX=0 : seule une
+    branche au format « Relation de X : valeur. » (lookup réel) devient un fait servi ; les messages d'abstention
+    des caps ne sont JAMAIS pris pour des branches. None hors périmètre -> cascade inchangée."""
+    m = _MESURE_AMBIGUE_RE.match(texte.strip())
+    if not m:
+        return None
+    try:
+        import tronc as _T
+    except Exception:
+        return None
+    tete = _normalise(m.group(1))
+    lectures = _T.RELATIONS_AMBIGUES.get("dimension" if tete.startswith("dimension") else tete)
+    de, ent = m.group(2), m.group(3).strip(" ?.!\"'«»")
+    if not lectures or not ent or len(ent.split()) > 6:
+        return None
+    # GARDE HOMONYME : un PAYS/une VILLE n'a pas de « hauteur » — sans cette garde, « taille de la France »
+    # servait « Hauteur de France : 232 m » (le PAQUEBOT France, homonyme — FAUX réel vécu 2026-07-07).
+    if _charge_direct("capitale").get(_normalise(ent)) or _charge_direct("pays_ville").get(_normalise(ent)):
+        lectures = tuple(r for r in lectures if r not in ("hauteur", "longueur"))
+    cands = []
+    for rel in lectures:
+        q2 = "%s %s%s" % (rel, de, ent)                       # « hauteur de la tour Eiffel » (article gardé)
+        r = _cap_dimension(q2) if rel in ("hauteur", "longueur") else _cap_synonyme_tete(q2)
+        # une BRANCHE n'est un fait que si le cap a servi un lookup (« X de Y : valeur. »), jamais une abstention
+        ok = bool(r) and " : " in r and not r.startswith(("Je ", "Plusieurs "))
+        cands.append(_T.Candidat(intention=_T.INTERROGER_FAIT, entites=(ent,), relation=rel,
+                                 statut=_T.TRANCHE if ok else _T.NON_TRANCHE, reponse=r if ok else "",
+                                 ancrage="lookup vérifié (lecteur)" if ok else "non ancré",
+                                 signal_discriminant=rel, confiance=0.9 if ok else 0.0,
+                                 provenance="compositeur mesure ambiguë (%s)" % rel))
+    return _T.compose(_T.Faisceau(tuple(cands)), terme=m.group(1).strip().lower())
+
+
 def _cap_dimension(texte: str):
     """DIMENSION d'une entité : « quelle est la hauteur de la tour Eiffel ? » -> valeur + unité. Cherche dans la
     FAMILLE de relations de la dimension (hauteur_tour, hauteur_barrage…) via _lookup_direct (streaming). FAUX=0 :
@@ -6707,7 +6752,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     if pleine:
         # _cap_quotidien reçoit conv_id (attente à trou « pour quelle ville ? » rejouable au tour suivant).
         for _cap in (lambda _t: _cap_avis_critere(_t, conv_id), lambda _t: _cap_quotidien(_t, conv_id),
-                     _cap_site, lambda _t: _cap_avis(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_creer_ouvert, _cap_invention_composite, _cap_invention, _cap_audit_code):
+                     _cap_site, lambda _t: _cap_avis(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_mesure_ambigue, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_creer_ouvert, _cap_invention_composite, _cap_invention, _cap_audit_code):
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

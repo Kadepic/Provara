@@ -1,5 +1,27 @@
 # Journal des modifications — Provara
 
+## 2026-07-07 — TRONC Phase 2 : le COMPOSITEUR (§10) — l'ambiguïté se COMPOSE, elle ne se choisit plus en silence
+
+- **`tronc.compose(faisceau, terme)`** : le « coup calculé » de la spec (§10.1/10.2) sur un faisceau dont les
+  branches ont été résolues par l'appelant — **convergence** → tronc commun servi + ambiguïté signalée non
+  porteuse ; **lecture unique servable** → mener avec le fait, signaler les autres lectures ; **divergence** →
+  toutes les branches vérifiées servies conditionnellement + INVITATION (une porte, pas un mur) ; **trop de
+  branches** → lister et laisser choisir. FAUX=0 : seules les branches TRANCHÉES (lookup réel) sont servies
+  comme faits ; les lectures non résolues ne sont mentionnées QUE comme lectures.
+- **Premier consommateur câblé : `_cap_mesure_ambigue`** (repond.py, avant `_cap_synonyme_tete`) + carte fermée
+  `tronc.RELATIONS_AMBIGUES` (taille/grandeur/dimension). Deux FAUX réels tués, vécus à la sonde du jour :
+  « la taille de la France » était **collapsée en silence** sur superficie (`_SYN_TETE` codé en dur) → désormais
+  composé « superficie 551 695 km² + population 68 720 337 + précise la lecture » ; « la taille de la tour
+  Eiffel » **échouait** (web coupé) alors que la hauteur (330 m) est en base → désormais servie avec les autres
+  lectures signalées. Chaque branche est résolue par les caps VÉRIFIÉS existants (`_cap_dimension` avec ses
+  gardes anti-homonymes d'œuvres, `_cap_synonyme_tete`) — zéro logique de lookup dupliquée.
+- **Garde homonyme** : un PAYS/une VILLE n'a pas de « hauteur » — sans elle, « taille de la France » servait
+  « Hauteur de France : 232 m » (le PAQUEBOT France, trouvé au test réel). Lectures hauteur/longueur écartées
+  pour les entités de `capitale`/`pays_ville`.
+- **Bancs** : `valide_tronc` **72/72** (+11 : compositeur pur — divergence/convergence/lecture unique/trop de
+  branches/None — + câblage échantillon avec garde homonyme) ; suite **22/22** ; raisonnement **166/166**
+  (dont le pin `synonyme-tete-taille` direct, inchangé) ; paraphrases **168/168** ; challenge **16/16**.
+
 ## 2026-07-07 — TRONC DE COMPRÉHENSION, Phase 1 (clé de voûte) : la carte des 11 actes + le repli honnête
 
 - **Spec validée par Yohan** (`SPEC_TRONC_COMPREHENSION.md` §7-§10 + `SPEC_TRONC_UPGRADES.md` U1→U61) → premier

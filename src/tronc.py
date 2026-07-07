@@ -386,6 +386,59 @@ def acte(signal: str, contexte: dict | None = None) -> Faisceau:
     return Faisceau(tuple(cands), ctx)
 
 
+# ═══════════════ LE COMPOSITEUR DE SORTIE (§10) — le « coup calculé », JAMAIS un choix silencieux ═══════════════
+# Têtes de mesure AMBIGUËS (carte FERMÉE, Phase 2) : un mot qui recouvre PLUSIEURS relations vérifiées distinctes.
+# Vécu 2026-07-07 : « la taille de la France » était collapsée en silence sur superficie (_SYN_TETE codé en dur)
+# et « la taille de la tour Eiffel » échouait alors que la hauteur (330 m) est en base. Le compositeur tient les
+# lectures EN PARALLÈLE : chaque branche est résolue par les caps vérifiés existants, puis composée (§10.1).
+RELATIONS_AMBIGUES = {
+    "taille": ("hauteur", "superficie", "population"),
+    "grandeur": ("hauteur", "superficie", "population"),
+    "dimension": ("hauteur", "longueur", "superficie"),
+}
+
+
+def compose(faisceau: Faisceau, terme: str | None = None) -> str | None:
+    """Compose la sortie d'un faisceau dont les candidats ont été RÉSOLUS par l'appelant (réponse remplie +
+    statut TRANCHE pour les branches vérifiées). Le coup est CALCULÉ sur la forme du faisceau (§10.2), les
+    couches sont piochées ENSEMBLE (§10.1 : le certain + les suppositions typées + l'invitation — une porte,
+    jamais un mur). FAUX=0 : seules les branches TRANCHÉES (juge/lookup réel) sont servies comme faits ; les
+    lectures non résolues ne sont mentionnées QUE comme lectures. None si aucune branche n'est servie
+    (l'appelant garde sa cascade)."""
+    servis = [c for c in faisceau.candidats if c.statut == TRANCHE and c.reponse]
+    if not servis:
+        return None
+    quoi = ("« %s »" % terme) if terme else "ta demande"
+    autres = [c.relation for c in faisceau.candidats if (c.statut != TRANCHE or not c.reponse) and c.relation]
+    # ── CONVERGENCE (ou lecture unique servable) : mener avec le tronc commun, en SIGNALANT les lectures ──
+    if len({c.reponse for c in servis}) == 1:
+        rep = servis[0].reponse
+        lectures_ok = [c.relation or _INTITULES.get(c.intention, c.intention) for c in servis]
+        if len(servis) > 1:                                   # plusieurs lectures, MÊME réponse : le dire
+            return ("%s  (NB : %s pouvait se lire %s — toutes les lectures concordent ici.)"
+                    % (rep, quoi, " ou ".join(lectures_ok)))
+        if autres:                                            # une seule lecture ancrée : signaler les autres
+            return ("%s  (NB : %s peut aussi vouloir dire %s — je n'ai que la lecture « %s » vérifiée pour "
+                    "cette entité ; dis-moi si tu voulais autre chose.)"
+                    % (rep, quoi, " ou ".join(autres), lectures_ok[0]))
+        return rep
+    # ── TROP DE BRANCHES : lister les lectures et laisser choisir (§10.2, dernier cas) ──
+    if len(servis) > 4:
+        noms = ", ".join(c.relation or c.intention for c in servis)
+        return ("%s peut vouloir dire trop de choses pour tout servir d'un coup (%s). "
+                "Dis-moi la lecture que tu veux et je réponds avec le fait vérifié." % (quoi, noms))
+    # ── DIVERGENCE : répondre TOUTES les branches conditionnellement + invitation (le certain de chaque
+    #    lecture est servi ; l'interprétation reste typée comme lecture, jamais collapsée) ──
+    lignes = ["%s peut vouloir dire plusieurs choses — voici le vérifié pour chaque lecture :" % quoi]
+    for c in servis:
+        lignes.append("· %s" % c.reponse)
+    invite = "Précise la lecture voulue si tu n'en veux qu'une"
+    if autres:
+        invite += " (« %s » : pas de fait vérifié pour cette entité)" % " », « ".join(autres)
+    lignes.append(invite + ".")
+    return "\n".join(lignes)
+
+
 # ═══════════════ Le REPLI HONNÊTE (§10.4, garde G6) — la brique qui tue le « il comprend rien » ═══════════════
 _PFX_REPLI = "Voici ce que j'ai compris"
 

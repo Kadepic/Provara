@@ -117,7 +117,50 @@ check(T.attunement("quelle est la capitale de la France ?") is None, "pas d'éta
 check(T.attunement("mon plat préféré est la ratatouille") is None,
       "une préférence n'est PAS un état exprimé -> None (le mémo garde sa voie)")
 
-# ————————————————— (8) CÂBLAGE assistant_nl : l'indécidable sert le repli intent-aware —————————————————
+# ————————————————— (8) LE COMPOSITEUR (§10) — le coup CALCULÉ sur la forme du faisceau, jamais un choix —————————————————
+def _cand(rel, rep, ok=True):
+    return T.Candidat(intention=T.INTERROGER_FAIT, relation=rel, statut=T.TRANCHE if ok else T.NON_TRANCHE,
+                      reponse=rep if ok else "", ancrage="lookup vérifié (lecteur)" if ok else "non ancré",
+                      confiance=0.9 if ok else 0.0)
+
+
+r = T.compose(T.Faisceau((_cand("superficie", "Superficie de la France : 551 695 km²."),
+                          _cand("population", "Population de la France : 68 720 337 habitants."))), terme="taille")
+check("Superficie de la France" in r and "Population de la France" in r,
+      "divergence -> TOUTES les branches vérifiées servies conditionnellement (§10.2)")
+check("peut vouloir dire plusieurs choses" in r and "Précise" in r,
+      "divergence -> le certain + les lectures + l'INVITATION (une porte, pas un mur)")
+r = T.compose(T.Faisceau((_cand("hauteur", "Hauteur de tour Eiffel : 330 m."),
+                          _cand("superficie", "", ok=False), _cand("population", "", ok=False))), terme="taille")
+check(r.startswith("Hauteur de tour Eiffel : 330 m.") and "superficie ou population" in r,
+      "lecture unique servable -> mener avec le fait, SIGNALER les autres lectures (jamais en silence)")
+r = T.compose(T.Faisceau((_cand("a", "X : 42."), _cand("b", "X : 42."))), terme="t")
+check(r.startswith("X : 42.") and "concordent" in r,
+      "convergence -> tronc commun servi + ambiguïté signalée non porteuse (§10.2, 1er cas)")
+check(T.compose(T.Faisceau((_cand("a", "", ok=False), _cand("b", "", ok=False)))) is None,
+      "aucune branche servie -> None (l'appelant garde sa cascade, jamais un texte vide)")
+r = T.compose(T.Faisceau(tuple(_cand("r%d" % i, "R%d : %d." % (i, i)) for i in range(5))), terme="t")
+check(r is not None and "trop de choses" in r and "R0 : 0." not in r,
+      "trop de branches -> lister les lectures et laisser choisir (§10.2, dernier cas)")
+check(set(T.RELATIONS_AMBIGUES) == {"taille", "grandeur", "dimension"},
+      "carte FERMÉE des têtes de mesure ambiguës (s'étend par décision, jamais par dérive)")
+
+# ————————————————— (9) CÂBLAGE repond : « taille de X » composée sur l'échantillon embarqué —————————————————
+_RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.environ.setdefault("LECTEUR_DATASETS_DIR", os.path.join(_RACINE, "datasets", "lecteur"))
+sys.path.insert(0, os.path.join(_RACINE, "interface"))
+import repond as R  # noqa: E402
+
+r = R._cap_mesure_ambigue("quelle est la taille de la France ?")
+check(r is not None and "Superficie de la France" in r and "Population de la France" in r,
+      "« taille de la France » -> COMPOSÉ superficie + population (fini le collapse silencieux sur superficie)")
+check(r is not None and "Hauteur" not in r,
+      "garde homonyme : jamais « Hauteur de France » (le paquebot) pour un PAYS — FAUX réel vécu 2026-07-07")
+check(R._cap_mesure_ambigue("quelle est la hauteur de la tour Eiffel ?") is None,
+      "tête NON ambiguë (« hauteur ») -> None (cascade existante inchangée)")
+check(R._cap_mesure_ambigue("bonjour comment vas-tu ?") is None, "hors périmètre -> None (aucun détournement)")
+
+# ————————————————— (10) CÂBLAGE assistant_nl : l'indécidable sert le repli intent-aware —————————————————
 os.environ.pop("IA_WEB", None)
 import assistant_nl as A  # noqa: E402
 A._TRANSPORT = None
