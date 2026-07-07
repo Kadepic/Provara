@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-07 — TRONC Phase 5 (tranche 1) : l'acte ROUTE la cascade (retrait progressif des caps entamé)
+
+- La boucle des ~60 caps devient une structure **NOMMÉE** (ordre historique strictement conservé — l'ordre =
+  le comportement, chaque position encode un vécu) et `tronc.acte()` la **réordonne** : un acte classé à
+  confiance nette (≥ 0,8) fait passer SA famille de caps EN TÊTE (`_FAMILLES_ACTES` fermée : quotidien→
+  quotidien/site, demander_avis→avis_critere/avis, créer→creer_ouvert/inventions, agir→traduction), la cascade
+  complète restant le FILET derrière → zéro perte. Les actes factuels/raisonnement ne sont PAS routés : les
+  détecteurs des caps y sont plus fins que la classification d'acte (on ne dégrade jamais un routage précis
+  par un grossier).
+- C'est aussi le **point d'allocation du séquenceur (§11)** : la Phase 4 (politique apprise/bandit) pourra
+  réordonner ICI, sous les mêmes bancs — le substrat existe désormais.
+- Bancs : `valide_tronc` **76/76** ; suite **23/23** ; raisonnement **166/166** ; paraphrases **168/168** ;
+  challenge **16/16** ; capacites_chat **46/46**.
+
 ## 2026-07-07 — QUEUE réelle : TTL des faits appris (verrou de péremption fermé) + anaphore du repli + libellé opinion
 
 - **TTL / rafraîchissement des faits appris** (queue #1) : le cache appris était consulté AVANT le réseau →

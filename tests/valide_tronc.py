@@ -159,6 +159,12 @@ check(r is not None and "Hauteur" not in r,
 check(R._cap_mesure_ambigue("quelle est la hauteur de la tour Eiffel ?") is None,
       "tête NON ambiguë (« hauteur ») -> None (cascade existante inchangée)")
 check(R._cap_mesure_ambigue("bonjour comment vas-tu ?") is None, "hors périmètre -> None (aucun détournement)")
+# ROUTAGE PAR ACTE (Phase 5, retrait progressif) : la carte des familles est FERMÉE et cohérente avec les actes.
+check(set(R._FAMILLES_ACTES) <= set(T.ACTES), "familles routées ⊆ carte des 11 actes (jamais un acte inventé)")
+check(all(isinstance(v, tuple) and v for v in R._FAMILLES_ACTES.values()),
+      "chaque famille routée est un tuple non vide de caps nommés")
+check("interroger_fait" not in R._FAMILLES_ACTES and "raisonner" not in R._FAMILLES_ACTES,
+      "les actes factuels/raisonnement NE sont PAS routés (détecteurs de caps plus fins que l'acte)")
 
 # ————————————————— (10) CÂBLAGE assistant_nl : l'indécidable sert le repli intent-aware —————————————————
 os.environ.pop("IA_WEB", None)

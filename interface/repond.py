@@ -6617,6 +6617,19 @@ def _pose_did_you_mean(t: str, conv_id):
     return rep_clarif
 
 
+# FAMILLES DE CAPS PAR ACTE (Phase 5 du tronc — retrait progressif) : quand `tronc.acte()` classe l'intention
+# avec une confiance NETTE (≥ 0,8), la famille de caps consommatrice de cet acte est tentée EN TÊTE de la
+# cascade (ordre relatif conservé, filet complet derrière -> zéro perte). Carte FERMÉE, seules les familles aux
+# détecteurs SÛRS sont routées ; les actes factuels/raisonnement gardent l'ordre historique (leurs détecteurs
+# de caps sont plus fins que la classification d'acte — on ne dégrade jamais un routage précis par un grossier).
+_FAMILLES_ACTES = {
+    "quotidien": ("quotidien", "site"),
+    "demander_avis": ("avis_critere", "avis"),
+    "creer": ("creer_ouvert", "invention_composite", "invention"),
+    "agir": ("traduction",),
+}
+
+
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     """Enveloppe : calcule la réponse du noyau puis ADAPTE son registre au contexte (concision = zéro déchet ;
     profondeur allouée selon le besoin). Suit la profondeur de conversation par `conv_id`."""
@@ -6751,8 +6764,47 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             return _r
     if pleine:
         # _cap_quotidien reçoit conv_id (attente à trou « pour quelle ville ? » rejouable au tour suivant).
-        for _cap in (lambda _t: _cap_avis_critere(_t, conv_id), lambda _t: _cap_quotidien(_t, conv_id),
-                     _cap_site, lambda _t: _cap_avis(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_mesure_ambigue, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_creer_ouvert, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        # CAPS NOMMÉS dans l'ordre HISTORIQUE (l'ordre = le comportement, chaque position encode un vécu).
+        _caps = (("avis_critere", lambda _t: _cap_avis_critere(_t, conv_id)),
+                 ("quotidien", lambda _t: _cap_quotidien(_t, conv_id)),
+                 ("site", _cap_site), ("avis", lambda _t: _cap_avis(_t, conv_id)), ("challenge", _cap_challenge),
+                 ("conversion", _cap_conversion), ("point_commun_nway", _cap_point_commun_nway),
+                 ("ontologie", _cap_ontologie), ("cause", _cap_cause), ("definition", _cap_definition),
+                 ("hyponymes", _cap_hyponymes), ("comptage", _cap_comptage),
+                 ("classement_liste", _cap_classement_liste), ("rang", _cap_rang), ("classement", _cap_classement),
+                 ("filtre", _cap_filtre), ("comparaison_nway", _cap_comparaison_nway),
+                 ("comparaison", _cap_comparaison), ("meme_attribut", _cap_meme_attribut), ("devise", _cap_devise),
+                 ("mesure_ambigue", _cap_mesure_ambigue), ("synonyme_tete", _cap_synonyme_tete),
+                 ("dimension", _cap_dimension), ("difference", _cap_difference),
+                 ("agregat_liste", _cap_agregat_liste), ("agregat", _cap_agregat),
+                 ("temporel_nway", _cap_temporel_nway), ("temporel", _cap_temporel),
+                 ("ecart_temporel", _cap_ecart_temporel), ("date_evenement", _cap_date_evenement),
+                 ("analogie", _cap_analogie), ("portrait", _cap_portrait), ("oeuvres_de", _cap_oeuvres_de),
+                 ("verif_createur", _cap_verif_createur), ("createur", _cap_createur),
+                 ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
+                 ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
+                 ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
+                 ("localisation", _cap_localisation), ("deduction", _cap_deduction),
+                 ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
+                 ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
+                 ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
+                 ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),
+                 ("creer_ouvert", _cap_creer_ouvert), ("invention_composite", _cap_invention_composite),
+                 ("invention", _cap_invention), ("audit_code", _cap_audit_code))
+        # TRONC ROUTE (Phase 5, retrait progressif) : l'acte classé à HAUTE confiance fait passer SA famille de
+        # caps EN TÊTE (ordre relatif conservé), la cascade complète reste le filet -> zéro perte, mais le
+        # moteur DÉCIDE quelle faculté essayer d'abord (c'est aussi le point d'allocation du séquenceur §11 :
+        # une politique apprise pourra un jour réordonner ICI, sous les mêmes bancs).
+        _ordre = _caps
+        try:
+            import tronc as _T5
+            _m5 = _T5.acte(t).meilleur()
+            _fam = _FAMILLES_ACTES.get(_m5.intention) if (_m5 is not None and _m5.confiance >= 0.8) else None
+            if _fam:
+                _ordre = tuple(c for c in _caps if c[0] in _fam) + tuple(c for c in _caps if c[0] not in _fam)
+        except Exception:
+            _ordre = _caps
+        for _nom_cap, _cap in _ordre:
             _r = _cap(t)
             if _r:
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
