@@ -54,10 +54,16 @@ périmés. La boucle `veille_corroboration` (N sources concordent → fait) exis
 **Faisabilité** : moyenne — brancher une boucle de veille sur les sources structurées (Wikidata live) pour les
 relations volatiles, avec datation des faits (bitemporel) et le système de confiance déjà construit.
 
-## P4 — COMPRÉHENSION conversationnelle plus profonde
+## P4 — COMPRÉHENSION conversationnelle plus profonde — 🔨 EN CHANTIER (tronc, 2026-07-07)
 **Manque** : la couche grammaticale (nature, SVO) est branchée mais SHALLOW. Manquent : coréférence (« sa
 capitale », « il »), portée de négation, décomposition de questions complexes multi-clauses, suivi d'état de
 dialogue robuste (le contexte du tour précédent est partiel).
+**Avancée 2026-07-07** : le **tronc de compréhension** (spec `SPEC_TRONC_COMPREHENSION.md`, Phases 1 ET 2
+livrées — `src/tronc.py`) attaque le manque à la racine : carte fermée de 11 actes de parole, faisceau de
+candidats parallèles, repli honnête intent-aware (fin du « il comprend rien »), attunement, et le
+**compositeur** (§10) — l'ambiguïté se compose (« taille de la France » → superficie ET population + invitation)
+au lieu d'être choisie en silence. Phases suivantes : gardes G1-G9 (banc `valide_debiaisage`), séquenceur/
+utilité, puis retrait progressif des caps.
 **Faisabilité** : moyenne, model-free — s'appuie sur `grammaire_fr`/`formes_verbales` déjà là ; ajouter
 résolution d'anaphores bornée + parseur de questions.
 

@@ -58,6 +58,21 @@ check(r and r.startswith("<svg"), "graphique : courbe -> SVG")
 check(R._cap_graphique("trace de la route") is None, "graphique : pas de nombres -> None")
 check(R._cap_graphique("quelle est la population du Japon ?") is None, "graphique : question sans intention graphique -> None")
 
+# — DEMANDE CRÉATIVE OUVERTE (vécu Yohan 2026-07-06 : « invente quelque chose » -> fausse correction + web Reverso) —
+r = R._cap_creer_ouvert("je voudrais inventer quelque chose pour un vrai besoin, as-tu des idées ?")
+check(r is not None and "je ne bluffe jamais" in r and "besoin" in r.lower(),
+      "créatif ouvert -> réponse honnête + redirection vers le vrai moteur de besoin (jamais une idée fabriquée)")
+r = R._cap_creer_ouvert("qu'est-ce que je peux créer pour la population ?")
+check(r is not None and "concret" in r.lower(), "« qu'est-ce que je peux créer » capté -> orientation honnête")
+check(R._cap_creer_ouvert("comment rafraîchir une pièce sans climatiseur ?") is None,
+      "besoin CONCRET « X sans Y » -> laissé au vrai moteur d'invention (pas capté par le handler ouvert)")
+check(R._cap_creer_ouvert("quelle est la capitale de la France ?") is None, "question factuelle -> None")
+# garde did-you-mean : un mot VALIDE (« inventer », infinitif) n'est JAMAIS proposé en correction
+check(R._suggere_type("je voudrais inventer quelque chose") is None,
+      "did-you-mean : « inventer » est un vrai mot -> aucune correction proposée (garde lexique embarqué)")
+check(R._suggere_type("quel flauve traverse paris") == ("flauve", "fleuve"),
+      "did-you-mean : une VRAIE faute (« flauve ») reste corrigée")
+
 # — INVENTION (léger : besoin.py) —
 r = R._cap_invention("comment rafraîchir une pièce sans climatiseur ?")
 check(r and ("BESOIN" in r or "but réel" in r or "but reel" in r.lower()), "invention : reformulation physique du besoin")
@@ -160,6 +175,52 @@ try:
           "multi : le critère de l'utilisateur re-tranche (classement complet sur CE critère)")
 finally:
     R._valeur_attr = _valeur_avant
+
+# — CONSEIL PARAPLUIE (avis ⑤ : décision sous incertitude, decision.py — probabilité RAPPORTÉE, règle AFFICHÉE) —
+import meteo as _MET  # noqa: E402
+
+_pluie_avant = _MET.pluie_aujourdhui
+try:
+    os.environ["IA_WEB"] = "1"
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 80}
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and r.startswith("Conseil calculé") and "80 %" in r and "prendre le parapluie" in r,
+          "pluie 80 % -> conseil CALCULÉ « prendre » (utilité espérée, probabilité rapportée)")
+    check(r is not None and "Règle affichée" in r and "re-tranche" in r,
+          "la règle d'utilité est AFFICHÉE et re-tranchable (verdict conditionnel, jamais un fait)")
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 1}
+    r = R._cap_quotidien("faut-il prendre un parapluie à Toulouse ?")
+    check(r is not None and "sortir sans" in r, "pluie 1 % -> conseil « sortir sans » (asymétrie assumée)")
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 9}
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and "pile ou face" in r,
+          "pluie ~9 % (point d'indifférence) -> ABSTENTION honnête (écart d'utilité sous la marge)")
+    # PONDÉRATION UTILISATEUR : la promesse « je re-tranche » est TENUE (marqueurs fermés dans la demande).
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 20}
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and "prendre le parapluie" in r, "pluie 20 %, pondération défaut -> prendre")
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ? pas envie de le porter")
+    check(r is not None and "sortir sans" in r and "TA pondération" in r,
+          "même 20 % mais « pas envie de le porter » -> re-tranché « sortir sans », règle utilisateur AFFICHÉE")
+    _MET.pluie_aujourdhui = lambda v: {"nom": v, "pays": "France", "proba_pluie": 6}
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and "sortir sans" in r, "pluie 6 %, défaut -> sortir sans")
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ? j'ai horreur d'être trempé")
+    check(r is not None and "prendre le parapluie" in r,
+          "même 6 % mais « horreur d'être trempé » -> re-tranché « prendre » (aversion pondérée)")
+    r = R._cap_quotidien("dois-je prendre un parapluie ?", "cv-pluie")
+    check(r is not None and "quelle ville" in r, "sans ville -> demande la ville (attente à trou rejouable)")
+    import assistant_nl as _A2
+    check(_A2.reprend_clarification("cv-pluie", "à Brives") == "dois-je prendre un parapluie à Brives ?",
+          "« à Brives » au tour suivant COMPLÈTE la question parapluie (conversation, pas question-réponse)")
+    os.environ.pop("IA_WEB", None)
+    r = R._cap_quotidien("dois-je prendre un parapluie à Toulouse ?")
+    check(r is not None and "EN DIRECT" in r and "🌐" in r, "web OFF -> refus honnête actionnable (jamais deviné)")
+    check(_A2.qualifie_texte("Conseil calculé — test").statut == _A2.SUPPOSITION,
+          "porte unique : un conseil calculé est classé SUPPOSITION (conditionnel), jamais FAIT")
+finally:
+    _MET.pluie_aujourdhui = _pluie_avant
+    os.environ.pop("IA_WEB", None)
 
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

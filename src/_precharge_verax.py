@@ -94,6 +94,10 @@ try:
 except Exception:
     pass
 try:
+    import tronc
+except Exception:
+    pass
+try:
     import astronautique
 except Exception:
     pass

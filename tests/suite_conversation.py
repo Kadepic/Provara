@@ -25,7 +25,7 @@ GATES = [
     "valide_fraicheur", "valide_confiance", "valide_langue", "valide_explications", "valide_fonction_stats_nl",
     "valide_extrait_pdf", "valide_lecteur_document", "valide_apprentissage_patrons", "valide_conversation",
     "valide_capacites_chat", "valide_assistant_nl", "valide_maj", "valide_veille_structure", "valide_cablage",
-    "valide_faits_appris",
+    "valide_faits_appris", "valide_tronc", "valide_debiaisage",
     # bancs de COMPRÉHENSION qui passent sur l'ÉCHANTILLON (les autres — paraphrases/synonymes/raisonnement —
     # exigent la base COMPLÈTE : trous de données sur le sample, à lancer manuellement avec LECTEUR_DATASETS_DIR).
     "banc_constructions",
@@ -41,6 +41,9 @@ def _env():
     import tempfile
     e.setdefault("LECTEUR_DATASETS_DIR", os.path.join(_RACINE, "datasets", "lecteur"))  # échantillon embarqué
     e.setdefault("LECTEUR_CACHE_DIR", os.path.join(tempfile.gettempdir(), "verax_suite_conv"))  # hors repo
+    # journal de routage du tronc HORS ~/.verax réel : les conversations de test ne polluent pas le signal
+    # d'apprentissage du séquenceur (même principe que la purge des convs de test).
+    e.setdefault("TRONC_ROUTAGE_PATH", os.path.join(tempfile.gettempdir(), "verax_suite_conv", "tronc_routage.jsonl"))
     e.setdefault("IA_PLEINE", "1")
     # NB : on ne fixe PAS LECTEUR_AMORCE_SEULE — les gates qui en ont besoin (composition/traduction) le posent
     # eux-mêmes (os.environ.setdefault), sans affecter les gates qui chargent l'échantillon (capacites_chat…).

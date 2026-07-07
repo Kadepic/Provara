@@ -1934,6 +1934,51 @@ def _cap_synonyme_tete(texte: str):
     return None
 
 
+# MESURE AMBIGUË (« taille/grandeur/dimension de X ») — COMPOSITEUR du tronc (§10, Phase 2). Vécu 2026-07-07 :
+# « la taille de la France » était collapsée EN SILENCE sur superficie (_SYN_TETE) sans signaler que « taille »
+# peut vouloir dire population ; « la taille de la tour Eiffel » échouait alors que la hauteur est en base.
+_MESURE_AMBIGUE_RE = re.compile(
+    r"^\s*(?:quelle?\s+est\s+)?(?:la\s+|le\s+|l['’]\s*)?(taille|grandeur|dimensions?)\s+"
+    r"(de\s+la\s+|de\s+l['’]|du\s+|des\s+|de\s+|d['’])\s*(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_mesure_ambigue(texte: str):
+    """Tête de mesure AMBIGUË -> le faisceau tient TOUTES les lectures en parallèle (G2 : jamais un sens choisi
+    en silence) : chaque lecture est résolue par les caps VÉRIFIÉS existants (_cap_dimension pour hauteur/
+    longueur — avec ses gardes anti-homonymes d'œuvres —, _cap_synonyme_tete pour superficie/population), puis
+    `tronc.compose` sert le coup calculé (§10.1 : le certain + les lectures + l'invitation). FAUX=0 : seule une
+    branche au format « Relation de X : valeur. » (lookup réel) devient un fait servi ; les messages d'abstention
+    des caps ne sont JAMAIS pris pour des branches. None hors périmètre -> cascade inchangée."""
+    m = _MESURE_AMBIGUE_RE.match(texte.strip())
+    if not m:
+        return None
+    try:
+        import tronc as _T
+    except Exception:
+        return None
+    tete = _normalise(m.group(1))
+    lectures = _T.RELATIONS_AMBIGUES.get("dimension" if tete.startswith("dimension") else tete)
+    de, ent = m.group(2), m.group(3).strip(" ?.!\"'«»")
+    if not lectures or not ent or len(ent.split()) > 6:
+        return None
+    # GARDE HOMONYME : un PAYS/une VILLE n'a pas de « hauteur » — sans cette garde, « taille de la France »
+    # servait « Hauteur de France : 232 m » (le PAQUEBOT France, homonyme — FAUX réel vécu 2026-07-07).
+    if _charge_direct("capitale").get(_normalise(ent)) or _charge_direct("pays_ville").get(_normalise(ent)):
+        lectures = tuple(r for r in lectures if r not in ("hauteur", "longueur"))
+    cands = []
+    for rel in lectures:
+        q2 = "%s %s%s" % (rel, de, ent)                       # « hauteur de la tour Eiffel » (article gardé)
+        r = _cap_dimension(q2) if rel in ("hauteur", "longueur") else _cap_synonyme_tete(q2)
+        # une BRANCHE n'est un fait que si le cap a servi un lookup (« X de Y : valeur. »), jamais une abstention
+        ok = bool(r) and " : " in r and not r.startswith(("Je ", "Plusieurs "))
+        cands.append(_T.Candidat(intention=_T.INTERROGER_FAIT, entites=(ent,), relation=rel,
+                                 statut=_T.TRANCHE if ok else _T.NON_TRANCHE, reponse=r if ok else "",
+                                 ancrage="lookup vérifié (lecteur)" if ok else "non ancré",
+                                 signal_discriminant=rel, confiance=0.9 if ok else 0.0,
+                                 provenance="compositeur mesure ambiguë (%s)" % rel))
+    return _T.compose(_T.Faisceau(tuple(cands)), terme=m.group(1).strip().lower())
+
+
 def _cap_dimension(texte: str):
     """DIMENSION d'une entité : « quelle est la hauteur de la tour Eiffel ? » -> valeur + unité. Cherche dans la
     FAMILLE de relations de la dimension (hauteur_tour, hauteur_barrage…) via _lookup_direct (streaming). FAUX=0 :
@@ -2610,6 +2655,11 @@ def _mot_reel(tok: str) -> bool:
     « did-you-mean » sur un mot réel (« longue »->« langue », « riche »->« roche », « peint »->« point » =
     faux signaux : ce sont des mots, pas des fautes). Ne FORCE PAS le chargement lourd : si la connaissance
     n'est pas prête (mode léger), on s'abstient (False) -> comportement inchangé hors mode plein."""
+    # LEXIQUE POS EMBARQUÉ (~19k mots, sans chargement lourd) : garde universel — « inventer », « créer »,
+    # « lister » y sont. Vécu 2026-07-06 : le did-you-mean proposait « inventer »->« inventeur » sur une
+    # demande créative, car _est_mot_connu (ci-dessous) ne couvre pas les infinitifs verbaux.
+    if _normalise(tok) in _charge_mots_valides():
+        return True
     if not pret():
         return False
     try:
@@ -3855,10 +3905,18 @@ def _diagnostic_connaissance(texte: str):
                 appris = " · %d fait(s) appris du web (structurés, réutilisables hors-ligne)" % _n
         except Exception:
             pass
-        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s"
+        routage = ""
+        try:
+            import tronc as _TRD
+            _tot, _hors = _TRD.stats_routage()
+            if _tot:
+                routage = " · routage par acte : %d décision(s), %d hors-famille" % (_tot, _hors)
+        except Exception:
+            pass
+        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s%s"
                 % (len(lecteur.LECTEUR.relations()), len(lecteur.LECTEUR),
                    os.environ.get("LECTEUR_DATASETS_DIR", "?"), _build_id(),
-                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap, appris))
+                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap, appris, routage))
     except Exception as e:
         return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
 
@@ -4125,6 +4183,42 @@ def _cap_distance(texte: str):
     except Exception:
         pass
     return s
+
+
+# Intention CRÉATIVE OUVERTE (« invente/crée quelque chose », « as-tu des idées », « qu'est-ce que je peux
+# créer ») — vécu Yohan 2026-07-06 : ces demandes tombaient dans une correction orthographique fausse puis une
+# recherche web du texte littéral (Reverso !). Provara ne FABRIQUE pas d'idées (ce serait inventer au sens
+# péjoratif = violer FAUX=0) ; il redirige HONNÊTEMENT vers ce qu'il sait vraiment faire.
+_CREER_RE = re.compile(
+    r"\b(?:inventer|invente|inventes|cr[ée]er|cr[ée]e|cr[ée]es|imaginer|imagine|concevoir|con[çc]ois|"
+    r"trouver\s+(?:une\s+id[ée]e|des\s+id[ée]es)|des\s+id[ée]es|une\s+id[ée]e|innover)\b", re.I)
+_CREER_OUVERT_RE = re.compile(
+    r"\b(?:quelque\s+chose|un\s+truc|un\s+produit|un\s+objet|un\s+service|un\s+concept|"
+    r"que\s+(?:puis|peux)[- ]je|qu['e ]est[- ]ce\s+que\s+je\s+(?:peux|pourrais)|"
+    r"as[- ]tu\s+des?\s+id[ée]es?|aurais[- ]tu\s+des?\s+id[ée]es?|donne[- ]moi\s+des?\s+id[ée]es?|"
+    r"aide[- ]moi\s+[àa]\s+(?:inventer|cr[ée]er|imaginer|trouver))\b", re.I)
+
+
+def _cap_creer_ouvert(texte: str):
+    """Demande CRÉATIVE OUVERTE (« invente quelque chose », « as-tu des idées de produit ? », « qu'est-ce que je
+    peux créer ? ») -> réponse HONNÊTE : Provara ne sort pas d'idées du néant (ce serait fabriquer), mais il
+    oriente vers sa vraie mécanique d'invention (reformuler un besoin CONCRET en leviers physiques) et son
+    scanner de manques. Ne se déclenche PAS sur un besoin déjà concret « X sans Y » (laissé à `_cap_invention`)."""
+    if re.search(r"\bsans\s+\w", texte, re.I) or re.search(r"\bque\s+manque[\s-]*t[\s-]*il\b", texte, re.I):
+        return None                                       # besoin concret -> _cap_invention gère
+    if not (_CREER_RE.search(texte) and _CREER_OUVERT_RE.search(texte)):
+        return None
+    return (
+        "Je ne vais pas te sortir une idée du chapeau — inventer au hasard, ce serait bluffer, et je ne bluffe "
+        "jamais (c'est ma règle : un fait vérifié, ou je le dis). Mais voici comment je t'aide VRAIMENT à "
+        "inventer, sans rien fabriquer :\n"
+        "• Donne-moi un BESOIN CONCRET, sous la forme « comment faire X sans Y » — ex. « comment rafraîchir une "
+        "pièce sans climatiseur ? ». Je le décompose alors en OBJECTIF RÉEL et en leviers physiques à explorer "
+        "(conduction, évaporation, rayonnement…), avec la limite physique en jeu.\n"
+        "• Ou demande-moi « quelles relations/attributs manquent dans ce que je connais ? » : je scanne mon "
+        "graphe de 72 M de faits et te montre des manques RÉELS, re-vérifiés — des pistes concrètes, jamais "
+        "inventées.\n"
+        "Quel besoin concret veux-tu attaquer ?")
 
 
 def _cap_invention(texte: str):
@@ -4806,18 +4900,94 @@ def _cap_avis(texte: str, conv_id=None):
     return "\n".join(lignes)
 
 
+# DÉCISION QUOTIDIENNE SOUS INCERTITUDE (avis ⑤, §12 utilité espérée — 2026-07-07) : « dois-je prendre un
+# parapluie ? ». La probabilité de pluie est RAPPORTÉE (Open-Meteo, structurée) ; les utilités sont une RÈGLE
+# AFFICHÉE (se faire tremper coûte 10× le port) ; le verdict est CONDITIONNEL et re-tranchable — decision.py
+# (utilité espérée + marge d'abstention) reçoit ici son premier consommateur conversationnel.
+_PARAPLUIE_RE = re.compile(r"\b(parapluies?|k[- ]?way|imperm[ée]able|veste\s+de\s+pluie)\b", re.I)
+_DECISION_PLUIE_RE = re.compile(r"\b(dois[- ]?je|faut[- ]?il|je\s+(?:prends|prenne)|prendre|besoin\s+d)\b", re.I)
+# PONDÉRATION UTILISATEUR (marqueurs FERMÉS, sur texte normalisé) : « je re-tranche » n'est une promesse
+# tenable que si la machine SAIT re-trancher — l'utilisateur règle le poids en le DISANT dans sa demande.
+_PORT_PENIBLE_RE = re.compile(r"(pas envie de le (?:porter|trainer)|deteste (?:le )?porter|m encombre|encombrant)")
+_CRAINT_PLUIE_RE = re.compile(r"(horreur d etre trempee?|horreur de la pluie|deteste etre trempee?|"
+                              r"surtout pas (?:etre )?trempee?)")
+# (libellé de règle, utilités) — la règle est TOUJOURS affichée : le verdict reste conditionnel et auditable.
+_PONDERATIONS_PLUIE = {
+    "defaut": ("se faire tremper coûte 10× le port du parapluie",
+               {"prendre le parapluie": {"pluie": 1.0, "sec": -0.1}, "sortir sans": {"pluie": -1.0, "sec": 0.1}}),
+    "port_penible": ("TA pondération : le port t'encombre (tremper ne coûte que 2× le port)",
+                     {"prendre le parapluie": {"pluie": 1.0, "sec": -0.5},
+                      "sortir sans": {"pluie": -1.0, "sec": 0.5}}),
+    "craint_pluie": ("TA pondération : surtout ne pas être trempé (tremper coûte 20× le port)",
+                     {"prendre le parapluie": {"pluie": 2.0, "sec": -0.1},
+                      "sortir sans": {"pluie": -2.0, "sec": 0.1}}),
+}
+_MARGE_PLUIE = 0.05
+
+
+def _ville_du_texte(texte: str) -> str:
+    """Ville nommée dans une question météo/décision (« à Toulouse », « pour Brives ») — '' si absente."""
+    mv = re.search(r"\b(?:[àa]|au|en|sur|pour)\s+((?:[A-ZÀ-Ü][\wà-ÿ'’-]+)(?:[\s-][A-ZÀ-Ü][\wà-ÿ'’-]+)*)"
+                   r"|\b(?:[àa]|au)\s+([a-zà-ÿ][\wà-ÿ'’-]{2,})\b", texte)
+    ville = (((mv.group(1) or mv.group(2)) if mv else "") or "").strip(" ?.!")
+    return "" if _normalise(ville) in ("moment", "aujourd", "aujourd hui", "instant") else ville
+
+
+def _conseil_parapluie(texte: str, conv_id=None):
+    """Conseil CALCULÉ parapluie : probabilité de pluie rapportée × utilités affichées -> utilité espérée
+    (decision.py), abstention honnête si l'écart est trop mince. Jamais un fait : un conseil conditionnel."""
+    if os.environ.get("IA_WEB") != "1":
+        return ("La pluie du jour est une donnée EN DIRECT : sans réseau, te conseiller serait deviner — et je "
+                "ne devine jamais 🙂 Active Internet (bouton « 🌐 ») et je calcule le conseil sur la "
+                "probabilité réelle.")
+    ville = _ville_du_texte(texte)
+    if not ville:
+        try:
+            import assistant_nl as _A
+            _A.note_attente_slot(conv_id, "dois-je prendre un parapluie à %s ?")
+        except Exception:
+            pass
+        return "Je peux calculer ça sur la probabilité de pluie réelle — pour quelle ville ?"
+    try:
+        import meteo as _MET
+        rel = _MET.pluie_aujourdhui(ville)
+    except Exception:
+        rel = None
+    if not rel:
+        return ("Je n'ai pas réussi à obtenir la probabilité de pluie pour « %s » (ville inconnue du géocodeur "
+                "ou réseau) — je préfère te le dire que d'inventer un conseil." % ville)
+    import decision as _DEC
+    tn = _normalise(texte)
+    cle = ("port_penible" if _PORT_PENIBLE_RE.search(tn)
+           else "craint_pluie" if _CRAINT_PLUIE_RE.search(tn) else "defaut")
+    libelle_regle, utilites = _PONDERATIONS_PLUIE[cle]
+    p = max(0.0, min(1.0, rel["proba_pluie"] / 100.0))
+    st, action, eu = _DEC.decide({"pluie": p, "sec": 1.0 - p}, utilites, marge_abstention=_MARGE_PLUIE)
+    ou = rel["nom"] + ((" (%s)" % rel["pays"]) if rel.get("pays") else "")
+    tete = ("Conseil calculé — probabilité de pluie aujourd'hui à %s : %d %% (open-meteo.com — rapporté). "
+            % (ou, rel["proba_pluie"]))
+    regle = ("Règle affichée : %s. Pondération réglable — redis-le avec « pas envie de le porter » ou "
+             "« horreur d'être trempé » et je re-tranche." % libelle_regle)
+    if st == _DEC.ABSTENTION:
+        return (tete + "Les deux options ont une utilité espérée trop proche pour trancher honnêtement — "
+                "c'est un vrai pile ou face. " + regle)
+    autre = next(a for a in eu if a != action)
+    return (tete + "Mon conseil (utilité espérée %.2f contre %.2f) : %s. %s"
+            % (eu[action], eu[autre], action, regle))
+
+
 def _cap_quotidien(texte: str, conv_id=None):
     """Questions du QUOTIDIEN : météo (refus honnête, chaleureux), heure et date (faits réels de l'horloge
-    locale). Demandé par Yohan (2026-07-06) : « il fait quel temps ? » tombait dans l'aveu générique."""
+    locale), conseil parapluie CALCULÉ (probabilité rapportée × utilité espérée, decision.py). Demandé par
+    Yohan (2026-07-06) : « il fait quel temps ? » tombait dans l'aveu générique."""
+    if _PARAPLUIE_RE.search(texte) and _DECISION_PLUIE_RE.search(texte):
+        return _conseil_parapluie(texte, conv_id)
     if _METEO_RE.search(texte):
         # WEB ON -> VRAIE météo (source STRUCTURÉE Open-Meteo, relevé attribué — exigence Yohan : « si
         # Internet est activé, il peut très bien aller vérifier »). WEB OFF -> refus honnête + geste.
         if os.environ.get("IA_WEB") == "1":
-            mv = re.search(r"\b(?:[àa]|au|en|sur|pour)\s+((?:[A-ZÀ-Ü][\wà-ÿ'’-]+)(?:[\s-][A-ZÀ-Ü][\wà-ÿ'’-]+)*)"
-                           r"|\b(?:[àa]|au)\s+([a-zà-ÿ][\wà-ÿ'’-]{2,})\b", texte)
-            ville = ((mv.group(1) or mv.group(2)) if mv else "" ) or ""
-            ville = ville.strip(" ?.!")
-            if not ville or _normalise(ville) in ("moment", "aujourd", "aujourd hui", "instant"):
+            ville = _ville_du_texte(texte)
+            if not ville:
                 try:      # ATTENTE À TROU : le tour suivant (« A Brives ») COMPLÈTE la question météo au lieu
                     import assistant_nl as _A                  # de repartir en recherche web (vécu 2026-07-06)
                     _A.note_attente_slot(conv_id, "quel temps fait-il à %s ?")
@@ -6531,6 +6701,19 @@ def _pose_did_you_mean(t: str, conv_id):
     return rep_clarif
 
 
+# FAMILLES DE CAPS PAR ACTE (Phase 5 du tronc — retrait progressif) : quand `tronc.acte()` classe l'intention
+# avec une confiance NETTE (≥ 0,8), la famille de caps consommatrice de cet acte est tentée EN TÊTE de la
+# cascade (ordre relatif conservé, filet complet derrière -> zéro perte). Carte FERMÉE, seules les familles aux
+# détecteurs SÛRS sont routées ; les actes factuels/raisonnement gardent l'ordre historique (leurs détecteurs
+# de caps sont plus fins que la classification d'acte — on ne dégrade jamais un routage précis par un grossier).
+_FAMILLES_ACTES = {
+    "quotidien": ("quotidien", "site"),
+    "demander_avis": ("avis_critere", "avis"),
+    "creer": ("creer_ouvert", "invention_composite", "invention"),
+    "agir": ("traduction",),
+}
+
+
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
     """Enveloppe : calcule la réponse du noyau puis ADAPTE son registre au contexte (concision = zéro déchet ;
     profondeur allouée selon le besoin). Suit la profondeur de conversation par `conv_id`."""
@@ -6665,10 +6848,58 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             return _r
     if pleine:
         # _cap_quotidien reçoit conv_id (attente à trou « pour quelle ville ? » rejouable au tour suivant).
-        for _cap in (lambda _t: _cap_avis_critere(_t, conv_id), lambda _t: _cap_quotidien(_t, conv_id),
-                     _cap_site, lambda _t: _cap_avis(_t, conv_id), _cap_challenge, _cap_conversion, _cap_point_commun_nway, _cap_ontologie, _cap_cause, _cap_definition, _cap_hyponymes, _cap_comptage, _cap_classement_liste, _cap_rang, _cap_classement, _cap_filtre, _cap_comparaison_nway, _cap_comparaison, _cap_meme_attribut, _cap_devise, _cap_synonyme_tete, _cap_dimension, _cap_difference, _cap_agregat_liste, _cap_agregat, _cap_temporel_nway, _cap_temporel, _cap_ecart_temporel, _cap_date_evenement, _cap_analogie, _cap_portrait, _cap_oeuvres_de, _cap_verif_createur, _cap_createur, _cap_naissance_compare, _cap_succession, _cap_fait_personne, _cap_portrait_personne, _cap_record_monde, _cap_fleuve_ville, _cap_localisation, _cap_deduction, _cap_contraire, _cap_fait_bio, _cap_protons, _cap_lunes, _cap_orbite, _cap_transitif, _cap_inverse, _cap_duree, _cap_age, _cap_stats, _cap_explication, _cap_distance, _cap_traduction, _cap_invention_composite, _cap_invention, _cap_audit_code):
+        # CAPS NOMMÉS dans l'ordre HISTORIQUE (l'ordre = le comportement, chaque position encode un vécu).
+        _caps = (("avis_critere", lambda _t: _cap_avis_critere(_t, conv_id)),
+                 ("quotidien", lambda _t: _cap_quotidien(_t, conv_id)),
+                 ("site", _cap_site), ("avis", lambda _t: _cap_avis(_t, conv_id)), ("challenge", _cap_challenge),
+                 ("conversion", _cap_conversion), ("point_commun_nway", _cap_point_commun_nway),
+                 ("ontologie", _cap_ontologie), ("cause", _cap_cause), ("definition", _cap_definition),
+                 ("hyponymes", _cap_hyponymes), ("comptage", _cap_comptage),
+                 ("classement_liste", _cap_classement_liste), ("rang", _cap_rang), ("classement", _cap_classement),
+                 ("filtre", _cap_filtre), ("comparaison_nway", _cap_comparaison_nway),
+                 ("comparaison", _cap_comparaison), ("meme_attribut", _cap_meme_attribut), ("devise", _cap_devise),
+                 ("mesure_ambigue", _cap_mesure_ambigue), ("synonyme_tete", _cap_synonyme_tete),
+                 ("dimension", _cap_dimension), ("difference", _cap_difference),
+                 ("agregat_liste", _cap_agregat_liste), ("agregat", _cap_agregat),
+                 ("temporel_nway", _cap_temporel_nway), ("temporel", _cap_temporel),
+                 ("ecart_temporel", _cap_ecart_temporel), ("date_evenement", _cap_date_evenement),
+                 ("analogie", _cap_analogie), ("portrait", _cap_portrait), ("oeuvres_de", _cap_oeuvres_de),
+                 ("verif_createur", _cap_verif_createur), ("createur", _cap_createur),
+                 ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
+                 ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
+                 ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
+                 ("localisation", _cap_localisation), ("deduction", _cap_deduction),
+                 ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
+                 ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
+                 ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
+                 ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),
+                 ("creer_ouvert", _cap_creer_ouvert), ("invention_composite", _cap_invention_composite),
+                 ("invention", _cap_invention), ("audit_code", _cap_audit_code))
+        # TRONC ROUTE (Phase 5, retrait progressif) : l'acte classé à HAUTE confiance fait passer SA famille de
+        # caps EN TÊTE (ordre relatif conservé), la cascade complète reste le filet -> zéro perte, mais le
+        # moteur DÉCIDE quelle faculté essayer d'abord (c'est aussi le point d'allocation du séquenceur §11 :
+        # une politique apprise pourra un jour réordonner ICI, sous les mêmes bancs).
+        _ordre, _fam, _acte5 = _caps, None, ""
+        try:
+            import tronc as _T5
+            _m5 = _T5.acte(t).meilleur()
+            _fam = _FAMILLES_ACTES.get(_m5.intention) if (_m5 is not None and _m5.confiance >= 0.8) else None
+            if _fam:
+                _acte5 = _m5.intention
+                _ordre = tuple(c for c in _caps if c[0] in _fam) + tuple(c for c in _caps if c[0] not in _fam)
+        except Exception:
+            _ordre, _fam = _caps, None
+        for _nom_cap, _cap in _ordre:
             _r = _cap(t)
             if _r:
+                # REGISTRE DU ROUTAGE (§16) : décision tranchée -> hit (cap de la famille routée) ou MISS
+                # (cap hors-famille = la classification d'acte s'est trompée : la surprise dont on apprend).
+                if _fam:
+                    try:
+                        import tronc as _T6
+                        _T6.note_routage(_acte5, _nom_cap, _nom_cap in _fam)
+                    except Exception:
+                        pass
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né
                 # Napoléon Ier ? » [cap fait-personne] puis « il est mort quand ? »). Garde : une vraie entité
                 # nominale courte, pas un nombre ni une expression.
@@ -6872,6 +7103,18 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                     if _snm:
                         return _snm
 
+    #   (1·état) EXPRIMER_ÉTAT (tronc §13) — AVANT tout web : une expression d'état (lexique FERMÉ, 1re
+    #   personne) ne part JAMAIS en recherche du texte littéral (G4 — vécu 2026-07-08 : « je suis perdu » +
+    #   web ON servait un extrait hinative sur « j'ai perdu vs je suis perdu », hors-sujet). L'attunement du
+    #   terminal mémo est ainsi REMONTÉ au-dessus de l'étage web ; il reste aussi au terminal (mode léger).
+    if not veut:
+        try:
+            import tronc as _TE
+            _att0 = _TE.attunement(t)
+        except Exception:
+            _att0 = None
+        if _att0:
+            return _att0
     #   (1·web) RECHERCHE STRUCTURÉE (opt-in réseau IA_WEB=1) : le lecteur n'a rien -> source fiable Wikidata,
     #           réponse VÉRIFIÉE + ATTRIBUÉE. Avant la mémoire pour qu'une demande factuelle sans « ? » y accède.
     #           GARDE SUBJECTIVITÉ : une question NON BORNÉE (« le plus beau pays du monde ») ne part JAMAIS au
@@ -7007,5 +7250,15 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             return _snm
         indice = "" if pleine else " — ou relance sans IA_LEGER pour la connaissance générale (faits vérifiés)"
         return f"{_MSG_INCONNU_PREFIXE}{indice}."
-    # affirmation : accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).
+    # affirmation : AVANT l'accusé mémo, l'ATTUNEMENT du tronc de compréhension (acte EXPRIMER_ÉTAT, carte §8) —
+    # « je suis perdu » recevait « C'est noté » (vécu : le mémo à côté de la plaque = « il comprend rien »).
+    # SOUND : lexique d'état FERMÉ à haute confiance ; l'état est SUPPOSÉ (« il se peut que »), jamais affirmé.
+    try:
+        import tronc as _TRONC
+        _att = _TRONC.attunement(texte)
+    except Exception:
+        _att = None
+    if _att:
+        return _att
+    # accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).
     return _varie("note", texte, _MSG_NOTE)

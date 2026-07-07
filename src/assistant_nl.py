@@ -209,6 +209,7 @@ _PFX_INDECIDABLE = "Je n'arrive pas à rattacher ta demande"
 _PFX_SATURATION = "Je ne sais pas encore traiter cette famille de demandes"
 _PFX_PRECISER = "Peux-tu préciser le sujet"
 _PFX_OPINION = "Il n'y a pas de réponse unique"     # cadrage subjectif de _reponse_opinion (= SUPPOSITION)
+_PFX_COMPRIS = "Voici ce que j'ai compris"          # repli honnête intent-aware du TRONC (tronc.repli, G6)
 
 # Cache de JOIGNABILITÉ des sources (TTL) : le ping du registre est indépendant du sujet -> inutile (et lent :
 # GET réels à chaque question inconnue du serveur plein) de re-contacter les sources à chaque tour.
@@ -256,8 +257,10 @@ def _apprend(attribut: str, entite: str, valeur, source: str) -> None:
 
 
 def _rappelle_appris(question: str, regime: str = ""):
-    """Un fait DÉJÀ appris pour cette question -> Reponse FAIT attribuée+datée, ou None. Parse identique à
-    interroge_nl (même clé). Frontière FAUX=0 : ne ressert que du STRUCTURÉ appris, jamais du texte libre."""
+    """Un fait DÉJÀ appris pour cette question -> (Reponse FAIT attribuée+datée, frais: bool), ou None. Parse
+    identique à interroge_nl (même clé). Frontière FAUX=0 : ne ressert que du STRUCTURÉ appris, jamais du texte
+    libre. `frais` = plus jeune que le TTL (faits_appris.ttl_jours) — un fait PÉRIMÉ reste servable (daté,
+    honnête) mais l'appelant doit tenter le RAFRAÎCHISSEMENT réseau d'abord quand c'est possible."""
     try:
         import veille_structure as _VS
         import faits_appris
@@ -266,8 +269,9 @@ def _rappelle_appris(question: str, regime: str = ""):
             return None
         txt = faits_appris.rappelle_texte(ae[0], ae[1])
         if txt:
-            return Reponse(FAIT, txt, regime=regime,
-                           source="fait appris d'une source structurée (réutilisé hors-ligne)")
+            return (Reponse(FAIT, txt, regime=regime,
+                            source="fait appris d'une source structurée (réutilisé hors-ligne)"),
+                    faits_appris.est_frais(ae[0], ae[1]))
     except Exception:
         return None
     return None
@@ -286,10 +290,14 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
                        f"{_PFX_PRECISER} de ta question — par exemple « population du Japon », "
                        f"« altitude du mont Blanc » ?", regime=c.regime, attente="sujet précis")
     # FAIT DÉJÀ APPRIS (mémoire locale des trouvailles structurées) : resservi SANS réseau, attribué + daté.
-    # Frontière FAUX=0 : seuls les faits STRUCTURÉS ont été appris (jamais le texte libre). Priorité au cache ->
-    # réponse instantanée ET disponible hors-ligne (demande Yohan « réutilisable hors-ligne »).
-    _appris = _rappelle_appris(question, c.regime)
-    if _appris is not None:
+    # Frontière FAUX=0 : seuls les faits STRUCTURÉS ont été appris (jamais le texte libre). Priorité au cache
+    # FRAIS -> réponse instantanée ET disponible hors-ligne. Un fait PÉRIMÉ (> TTL) n'est PLUS servi avant le
+    # réseau quand celui-ci est disponible (verrou de péremption vécu 2026-07-07 : le cache-d'abord empêchait
+    # tout rafraîchissement à vie) — il reste le REPLI si le web ne tranche pas, et la seule voie hors-ligne.
+    _reseau = _TRANSPORT is not None or os.environ.get("IA_WEB") == "1"
+    _ap = _rappelle_appris(question, c.regime)
+    _appris, _frais = _ap if _ap is not None else (None, False)
+    if _appris is not None and (_frais or not _reseau):
         return _appris
     if _TRANSPORT is None and os.environ.get("IA_WEB") != "1":
         return Reponse(HORS,
@@ -308,6 +316,10 @@ def _cherche_sources(question: str, c, conv_id=None) -> Reponse:
         _apprend(_a, _e, _valeur, _src)               # ON APPREND le fait structuré (réutilisable hors-ligne)
         return Reponse(FAIT, f"{_valeur}  (trouvé sur {_src})", regime=c.regime,
                        source=f"{_src} — source structurée de confiance")
+    # RAFRAÎCHISSEMENT RATÉ : le fait appris PÉRIMÉ reste le meilleur vérifié disponible (structuré, attribué,
+    # DATÉ — l'âge est lisible) ; il prime sur le texte libre. Servi tel quel plutôt que rien.
+    if _appris is not None:
+        return _appris
     # WEB LIBRE (Wikipédia) : rapport ATTRIBUÉ quand le structuré ne tranche pas (design Yohan « d'après [source] »).
     try:
         import veille_structure as _VS2
@@ -344,8 +356,10 @@ def _reponse_opinion(question, c):
     """Question SUBJECTIVE : pas de réponse unique. On CADRE honnêtement (ça dépend du critère) et, si le web
     aide, on RAPPORTE des pistes ATTRIBUÉES (extrait Wikipédia) — jamais une vérité tranchée. Design Yohan :
     même sur du subjectif, proposer selon des critères objectifs + citer la source."""
-    base = ("Il n'y a pas de réponse unique, c'est subjectif : ça dépend du critère (ventes, remplissage des "
-            "salles, notoriété internationale, récompenses, influence…). Je ne tranche donc pas.")
+    # Libellé GÉNÉRIQUE (vécu 2026-07-06 : les exemples « ventes, remplissage des salles » — spécifiques aux
+    # films — sortaient pour « le plus beau pays »). Exemples de critères tous-domaines, mesurable vs goût.
+    base = ("Il n'y a pas de réponse unique, c'est subjectif : ça dépend du critère retenu — mesurable "
+            "(records, récompenses, chiffres vérifiables…) ou de goût pur. Je ne tranche donc pas.")
     if os.environ.get("IA_WEB") == "1" or _TRANSPORT is not None:
         # AVIS 2/2 (brique Yohan « mon avis est… », débats SANS chiffres) : les DEUX FACES sourcées + avis
         # CONDITIONNEL signé, règle AFFICHÉE. FAUX=0 : les arguments sont RAPPORTÉS (jamais pesés à l'aveugle —
@@ -434,10 +448,36 @@ def apres_hors(question: str, conv_id=None) -> Reponse | None:
                           f"« définition de Z ») ou un calcul, et je réponds avec du vérifié.",
                           regime=c.regime)
         else:
-            rep = Reponse(CLARIFICATION,
-                          f"{_PFX_INDECIDABLE} à un fait vérifiable. Peux-tu préciser le sujet et l'attribut "
-                          f"voulu — par exemple « capitale de l'Espagne », « population du Japon », "
-                          f"« définition de sérendipité » ?", regime=c.regime, attente="reformulation précise")
+            # REPLI HONNÊTE INTENT-AWARE (tronc de compréhension, §10.4/G6) : si le moteur d'actes tient une
+            # HYPOTHÈSE d'intention NON-FACTUELLE, on la MONTRE (« voici ce que j'ai compris + ce que je sais
+            # faire ») et l'utilisateur corrige — jamais de garbage. Une hypothèse INTERROGER_FAIT n'apporte
+            # RIEN ici (toute la cascade factuelle vient d'échouer : l'aveu structuré / le conseil « réactive
+            # internet » de repond.py est plus actionnable) -> on la laisse au chemin générique existant.
+            _txt_tronc = None
+            try:
+                import tronc as _TR
+                # CONTEXTE du faisceau (§7) : l'anaphore = le dernier sujet réellement discuté (état du
+                # pipeline, sans forcer son chargement) — « et lui alors ? » parle de la dernière entité.
+                _ctx = None
+                import sys as _sys2
+                _R2 = _sys2.modules.get("repond") or _sys2.modules.get("interface_repond")
+                _suj = getattr(_R2, "_DERNIER_SUJET", {}).get(conv_id) if _R2 is not None else None
+                if _suj:
+                    _ctx = {"anaphore": _suj}
+                _f = _TR.acte(q, _ctx)
+                _m = _f.meilleur()
+                if _m is not None and _m.intention not in (_TR.INCONNU, _TR.INTERROGER_FAIT):
+                    _txt_tronc = _TR.repli(q, _f)
+            except Exception:
+                _txt_tronc = None
+            if _txt_tronc:
+                rep = Reponse(CLARIFICATION, _txt_tronc, regime=c.regime,
+                              attente="confirmation ou correction de l'intention comprise")
+            else:
+                rep = Reponse(CLARIFICATION,
+                              f"{_PFX_INDECIDABLE} à un fait vérifiable. Peux-tu préciser le sujet et l'attribut "
+                              f"voulu — par exemple « capitale de l'Espagne », « population du Japon », "
+                              f"« définition de sérendipité » ?", regime=c.regime, attente="reformulation précise")
     if conv_id and rep is not None and rep.statut != CLARIFICATION and c.statut_ontologique != _CB.INDECIDABLE:
         _INDECIS.pop(conv_id, None)                          # une issue non-indécidable remet le compteur à zéro
     return rep
@@ -517,8 +557,15 @@ def qualifie_texte(texte: str) -> Reponse | None:
         return Reponse(SUPPOSITION, texte, regime=_CB.R_SUPPOSITION_OPINION)
     if texte.startswith(_PFX_INDECIDABLE) or texte.startswith(_PFX_PRECISER):
         return Reponse(CLARIFICATION, texte, attente="reformulation précise")
+    if texte.startswith(_PFX_COMPRIS):                       # repli honnête du tronc : une hypothèse à corriger
+        return Reponse(CLARIFICATION, texte, attente="confirmation ou correction de l'intention comprise")
     if texte.startswith(_PFX_SATURATION):
         return Reponse(HORS, texte)
+    if texte.startswith("Il se peut que"):                   # attunement du tronc : état INFÉRÉ, jamais affirmé
+        return Reponse(SUPPOSITION, texte, source="attunement (état de l'interlocuteur supposé, non vérifié)")
+    if texte.startswith("Conseil calculé"):                  # décision sous incertitude : conseil CONDITIONNEL
+        return Reponse(SUPPOSITION, texte,
+                       source="décision sous incertitude (probabilité rapportée + règle d'utilité affichée)")
     return None
 
 

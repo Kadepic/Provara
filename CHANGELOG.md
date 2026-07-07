@@ -1,5 +1,144 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX réel tué (G4) : une expression d'état ne part plus JAMAIS au web
+
+- **Vécu au E2E final (web ON)** : « je suis perdu » servait un extrait hinative hors-sujet (« quelle est la
+  différence entre “j'ai perdu” et “je suis perdu” ») — l'attunement était câblé au terminal MÉMO, mais l'étage
+  de recherche web passait AVANT pour les affirmations. L'attunement est REMONTÉ au-dessus de l'étage web
+  (étage 1·état) : une expression d'état (lexique fermé, 1re personne) reçoit sa lecture en supposition, jamais
+  une recherche du texte littéral. Le terminal mémo garde son attunement (mode léger).
+- Épinglé au banc des gardes : `valide_debiaisage` **44/44** (« je suis perdu » + IA_WEB=1 → attunement).
+  Vérifié en réel web ON. Suite **23/23**, raisonnement **166/166**, paraphrases **168/168**, challenge **16/16**.
+
+## 2026-07-08 — Pondération utilisateur du parapluie + REGISTRE DES MODES D'ÉCHEC du routage (§16)
+
+- **La promesse « dis-le et je re-tranche » devient TENABLE** : marqueurs FERMÉS dans la demande —
+  « …pas envie de le porter » → le port pèse plus (seuil ~33 %), « …horreur d'être trempé » → l'aversion pluie
+  pèse plus (seuil ~5 %) — chaque pondération AFFICHÉE (« TA pondération : … »), verdict re-tranché par la même
+  utilité espérée. Le texte du conseil montre les phrases exactes qui règlent la pondération.
+- **Registre du routage** (`tronc.note_routage`/`stats_routage`, journal `~/.verax/tronc_routage.jsonl`,
+  isolable par `TRONC_ROUTAGE_PATH`) : chaque décision de routage par acte RÉELLEMENT tranchée par un cap est
+  journalisée — famille servie (hit) ou cap hors-famille (MISS = la surprise dont on apprend, §9/§16). C'est le
+  signal de récompense MESURÉ du futur séquenceur appris (Phase 4) ; le diagnostic affiche « routage par acte :
+  N décision(s), M hors-famille ». La suite isole le journal (les convs de test ne polluent pas le signal).
+- Bancs : `valide_tronc` **78/78**, `valide_capacites_chat` **58/58**, suite **23/23**, raisonnement
+  **166/166**, paraphrases **168/168**, challenge **16/16**. Câblage vérifié en réel (« quelle heure est-il ? »
+  → 1 décision journalisée, 0 hors-famille).
+
+## 2026-07-07 — AVIS ⑤ : décision sous incertitude — « dois-je prendre un parapluie ? » (decision.py câblé au chat)
+
+- **Premier consommateur conversationnel de `decision.py`** (utilité espérée + marge d'abstention — le morceau
+  RÉEL de §12) : « dois-je prendre un parapluie (à Toulouse) ? » → probabilité de pluie du jour **RAPPORTÉE**
+  (nouveau `meteo.pluie_aujourdhui`, champ structuré `precipitation_probability_max` d'Open-Meteo, attribué) ×
+  **règle d'utilité AFFICHÉE** (se faire tremper coûte 10× le port du parapluie) → **conseil calculé**
+  (« utilité espérée 0,10 contre −0,10 : sortir sans »), re-tranchable (« si ta pondération diffère, dis-le »).
+  Écart d'utilité sous la marge (~9 % de pluie) → **abstention honnête** (« vrai pile ou face »). Vérifié en
+  RÉEL (Toulouse, 0 % → « sortir sans »).
+- FAUX=0 : la probabilité est rapportée (source structurée), la règle est affichée, le verdict est CONDITIONNEL
+  — la porte unique classe tout « Conseil calculé » en SUPPOSITION, jamais en fait. Sans ville → attente à trou
+  (« pour quelle ville ? » → « à Brives » complète). Web OFF → refus honnête actionnable.
+- `_ville_du_texte` factorisé (météo + parapluie, même extraction). « parapluie » ajouté au détecteur QUOTIDIEN
+  du tronc. Bancs : `valide_capacites_chat` **54/54** (+8), suite **23/23**, raisonnement **166/166**,
+  paraphrases **168/168**, challenge **16/16**.
+
+## 2026-07-07 — TRONC Phase 5 (tranche 1) : l'acte ROUTE la cascade (retrait progressif des caps entamé)
+
+- La boucle des ~60 caps devient une structure **NOMMÉE** (ordre historique strictement conservé — l'ordre =
+  le comportement, chaque position encode un vécu) et `tronc.acte()` la **réordonne** : un acte classé à
+  confiance nette (≥ 0,8) fait passer SA famille de caps EN TÊTE (`_FAMILLES_ACTES` fermée : quotidien→
+  quotidien/site, demander_avis→avis_critere/avis, créer→creer_ouvert/inventions, agir→traduction), la cascade
+  complète restant le FILET derrière → zéro perte. Les actes factuels/raisonnement ne sont PAS routés : les
+  détecteurs des caps y sont plus fins que la classification d'acte (on ne dégrade jamais un routage précis
+  par un grossier).
+- C'est aussi le **point d'allocation du séquenceur (§11)** : la Phase 4 (politique apprise/bandit) pourra
+  réordonner ICI, sous les mêmes bancs — le substrat existe désormais.
+- Bancs : `valide_tronc` **76/76** ; suite **23/23** ; raisonnement **166/166** ; paraphrases **168/168** ;
+  challenge **16/16** ; capacites_chat **46/46**.
+
+## 2026-07-07 — QUEUE réelle : TTL des faits appris (verrou de péremption fermé) + anaphore du repli + libellé opinion
+
+- **TTL / rafraîchissement des faits appris** (queue #1) : le cache appris était consulté AVANT le réseau →
+  un fait appris ne se remettait JAMAIS à jour (verrou de péremption). Désormais `faits_appris` porte un TTL
+  (90 j par défaut, `FAITS_APPRIS_TTL_JOURS`) avec `age_jours`/`est_frais` (horloge injectable) : fait FRAIS →
+  servi du cache (instantané, hors-ligne) ; fait PÉRIMÉ + web ON → le réseau prime (re-cherche + ré-apprend la
+  valeur fraîche), repli sur l'instantané DATÉ si la source ne tranche plus ; web OFF → toujours servi (un
+  instantané daté n'est pas un mensonge — le TTL ne prive jamais le hors-ligne). `valide_faits_appris` 21/21 (+7).
+- **Anaphore câblée dans le repli du tronc (§7 contexte)** : le DERNIER SUJET du pipeline nourrit le faisceau —
+  « il est génial non ? » (après un tour sur la tour Eiffel) → hypothèse AVIS « à propos de “la tour Eiffel” ».
+  Nouveau marqueur d'avis évaluatif nu (« il/elle/c'est génial/nul/top… » = demande d'accord = demande d'avis).
+  `valide_tronc` 73/73.
+- **Libellé d'opinion GÉNÉRIQUE** (queue #3, vécu : « ventes, remplissage des salles » — critères de FILMS —
+  sortaient pour « le plus beau pays ») : exemples de critères tous-domaines (mesurable : records, récompenses,
+  chiffres vérifiables… — ou goût pur). Préfixe et marqueurs de classe inchangés (aucune régression d'enveloppe).
+
+## 2026-07-07 — TRONC Phase 3 : les 9 GARDES DE DÉBIAISAGE (§20) deviennent un banc permanent
+
+- Nouveau gate `valide_debiaisage` **43/43** (suite → **23/23**) : chaque garde de la spec est un test qui doit
+  passer EN PERMANENCE — **G1** anti-projection (TRANCHÉ exige un juge réel ; hors-store jamais un fait),
+  **G2** pas de collapse précoce (≥2 candidats ; « taille de la France » composée), **G3** individuation
+  (« bonjourno » ≠ « bonjour », « calculateur » ne déclenche pas CALCULER), **G4** calcul frais (un calcul est
+  CALCULÉ, zéro requête web même transport branché — espion à compteur), **G5** mot valide jamais « corrigé »
+  (aucun did-you-mean sur une phrase de mots réels), **G6** repli honnête câblé, **G7** typage supposition
+  (gzip borné ≤ 0,45 ; attunement et subjectif classés SUPPOSITION par la porte unique), **G8** non-distorsion
+  (proxy : le statut est LISIBLE — marqueur dans toute supposition, provenance dans tout fait), **G9**
+  amplification (proxy : zéro flagornerie/émotion feinte, le repli finit par une question — l'humain garde le
+  volant, l'avis affiche sa règle).
+- Honnêteté du banc (documentée dedans) : G1-G7 testées directement ; G8/G9 en PROXYS exécutables — la mesure
+  pleine (inférences licenciées ⊆ vérité, capacité-sans-la-machine) arrive avec les phases 4+.
+
+## 2026-07-07 — TRONC Phase 2 : le COMPOSITEUR (§10) — l'ambiguïté se COMPOSE, elle ne se choisit plus en silence
+
+- **`tronc.compose(faisceau, terme)`** : le « coup calculé » de la spec (§10.1/10.2) sur un faisceau dont les
+  branches ont été résolues par l'appelant — **convergence** → tronc commun servi + ambiguïté signalée non
+  porteuse ; **lecture unique servable** → mener avec le fait, signaler les autres lectures ; **divergence** →
+  toutes les branches vérifiées servies conditionnellement + INVITATION (une porte, pas un mur) ; **trop de
+  branches** → lister et laisser choisir. FAUX=0 : seules les branches TRANCHÉES (lookup réel) sont servies
+  comme faits ; les lectures non résolues ne sont mentionnées QUE comme lectures.
+- **Premier consommateur câblé : `_cap_mesure_ambigue`** (repond.py, avant `_cap_synonyme_tete`) + carte fermée
+  `tronc.RELATIONS_AMBIGUES` (taille/grandeur/dimension). Deux FAUX réels tués, vécus à la sonde du jour :
+  « la taille de la France » était **collapsée en silence** sur superficie (`_SYN_TETE` codé en dur) → désormais
+  composé « superficie 551 695 km² + population 68 720 337 + précise la lecture » ; « la taille de la tour
+  Eiffel » **échouait** (web coupé) alors que la hauteur (330 m) est en base → désormais servie avec les autres
+  lectures signalées. Chaque branche est résolue par les caps VÉRIFIÉS existants (`_cap_dimension` avec ses
+  gardes anti-homonymes d'œuvres, `_cap_synonyme_tete`) — zéro logique de lookup dupliquée.
+- **Garde homonyme** : un PAYS/une VILLE n'a pas de « hauteur » — sans elle, « taille de la France » servait
+  « Hauteur de France : 232 m » (le PAQUEBOT France, trouvé au test réel). Lectures hauteur/longueur écartées
+  pour les entités de `capitale`/`pays_ville`.
+- **Bancs** : `valide_tronc` **72/72** (+11 : compositeur pur — divergence/convergence/lecture unique/trop de
+  branches/None — + câblage échantillon avec garde homonyme) ; suite **22/22** ; raisonnement **166/166**
+  (dont le pin `synonyme-tete-taille` direct, inchangé) ; paraphrases **168/168** ; challenge **16/16**.
+
+## 2026-07-07 — TRONC DE COMPRÉHENSION, Phase 1 (clé de voûte) : la carte des 11 actes + le repli honnête
+
+- **Spec validée par Yohan** (`SPEC_TRONC_COMPREHENSION.md` §7-§10 + `SPEC_TRONC_UPGRADES.md` U1→U61) → premier
+  bâti. Nouveau module `src/tronc.py` : `acte(signal, contexte) → Faisceau` — chaque message est classé dans la
+  **carte FERMÉE des 11 actes de parole** (interroger_fait, calculer, raisonner, demander_avis, créer, méta,
+  social, exprimer_état, quotidien, agir, inconnu), avec entités/relation extraits UNE fois, le régime attaché
+  par `classifieur_bornage` (réutilisé, jamais dupliqué), et des **candidats tenus en PARALLÈLE** (G2 : jamais
+  un sens choisi en silence). NB nommage : `comprehension.py` existait déjà (abstraction du harnais
+  d'invention) → le moteur porte le nom de la spec, le TRONC.
+- **FAUX=0 structurel (G1/G7)** : un candidat n'est TRANCHÉ que si un **vrai juge** a évalué (juge arithmétique
+  AST — « combien font 2+2 ? » → TRANCHÉ « 4 », ancré) ; tout le reste porte une RECETTE (la faculté existante
+  à invoquer : lecteur, raisonnement, `_cap_avis`, `_cap_quotidien`…), jamais une valeur fabriquée.
+- **Deux étages** (« explicite au cœur, appris en périphérie ») : détecteurs FERMÉS par acte (cœur, confiance
+  haute) ; **gzip-kNN** (U13 : distance de compression NCD, zéro entraînement) en périphérie qui PROPOSE une
+  intention voisine à confiance bornée (≤ 0,45) quand aucun motif ne matche — l'humain vérifie.
+- **REPLI HONNÊTE intent-aware (§10.4/G6) — la brique qui tue le « il comprend rien »** : câblé dans
+  `assistant_nl` (branche indécidable) — quand le moteur tient une hypothèse NON-factuelle, il la MONTRE :
+  « voici ce que j'ai compris (hypothèse) + ce que je sais faire + corrige-moi », jamais de garbage (ni fausse
+  correction ortho, ni web du texte littéral). Une hypothèse « fait » n'écrase PAS l'aveu structuré / le
+  conseil « réactive internet » existants (plus actionnables après l'échec de la cascade factuelle).
+- **ATTUNEMENT (§13)** : « je suis perdu » recevait « C'est noté » (mémo à côté de la plaque). Désormais, acte
+  EXPRIMER_ÉTAT (lexique fermé, 1re personne) → lecture d'état en SUPPOSITION (« il se peut que tu te
+  sentes… », jamais « je ressens ») + prise concrète. Câblé dans `repond.py` avant le terminal mémo ; la porte
+  unique le classe SUPPOSITION (jamais un fait). Une préférence (« mon plat préféré… ») garde sa voie mémo.
+- **Bancs** : nouveau gate `valide_tronc` **61/61** (la carte, l'extraction, G1/G2/G4/G5/G6/G7, gzip-kNN,
+  attunement, câblage assistant_nl) ; suite **22/22** ; paraphrases **168/168** ; raisonnement **166/166** ;
+  challenge **16/16** ; synonymes 8/8 ; constructions 4/4 ; assistant_nl 89/89 ; câblage **503/503, 0
+  orphelin** ; capacités prouvées **281/281** (preuve tronc au registre). Embarqué .exe (`_precharge_verax` +
+  hidden-imports bat/CI). Prochaines phases : faisceau+compositeur (Ph2), gardes G1-G9 en banc `valide_debiaisage`
+  (Ph3), séquenceur+utilité (Ph4), retrait des caps (Ph5).
+
 ## 2026-07-06 — APPRENTISSAGE des faits web : Provara retient ce qu'il trouve, réutilisable HORS-LIGNE
 
 - **Demande Yohan** (queue prioritaire) : « que mon IA apprenne les faits STRUCTURÉS qu'elle trouve en ligne,

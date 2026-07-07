@@ -2,7 +2,7 @@
 
 > Généré mécaniquement depuis le code (docstrings + API). Représente l'intégralité des modules livrés.
 
-**1305 modules · 4686 fonctions/classes publiques · 171 496 lignes** (instantané mécanique ; faits_appris ajouté à la main le 2026-07-06)
+**1306 modules · 4686 fonctions/classes publiques · 171 496 lignes** (instantané mécanique ; faits_appris ajouté à la main le 2026-07-06, tronc le 2026-07-07)
 
 
 ## Noyau — 6 modules
@@ -484,6 +484,7 @@
 | `transfert` | TRANSFERT INTER-DOMAINES — l'ASSEMBLEUR (machine-inventeur) : | transfere, manque |
 | `transport_membranaire` | TRANSPORT MEMBRANAIRE — borné « Membranes, organites » (biologie cellulaire établie). | tonicite, sens_osmose, flux_fick |
 | `triangulation` | TRIANGULATION — brique Vague 6 (accord de deux dérivations INDÉPENDANTES = corroboration non-circulaire). | triangule, confirme |
+| `tronc` | TRONC DE COMPRÉHENSION — Phases 1-2 (SPEC_TRONC_COMPREHENSION §7-§10) : acte(signal, contexte) → Faisceau — carte fermée des 11 actes de parole, candidats parallèles (G2), repli honnête intent-aware (G6), attunement, compositeur §10 (l'ambiguïté se compose, jamais choisie en silence), registre du routage §16 (2026-07-07/08). | acte, compose, repli, attunement, note_routage, stats_routage, class Candidat, class Faisceau |
 | `trigonometrie` | TRIGONOMÉTRIE — fonctions et résolution de triangles, FAUX=0 (mission formule/concept 2026-06-29). | deg_vers_rad, rad_vers_deg, sin_deg, cos_deg, tan_deg, loi_cosinus, angle_par_cotes, hypotenuse |
 | `turing` | MACHINES DE TURING — simulation DÉTERMINISTE bornée, FAUX=0 (mission formule/concept 2026-06-29). | execute |
 | `typage` | TYPAGE DE SORTIE DES CANDIDATS (2026-06-22, levier « élégance : | type_sortie, type_attendu, reordonne_par_type |

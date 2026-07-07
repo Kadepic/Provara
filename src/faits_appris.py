@@ -88,6 +88,41 @@ def rappelle(attribut: str, entite: str) -> dict | None:
     return trouve
 
 
+# TTL de FRAÎCHEUR (jours) : au-delà, un fait appris est PÉRIMABLE — toujours honnête (attribué+daté) mais à
+# RAFRAÎCHIR quand le réseau est disponible (sinon un fait appris ne se remettrait JAMAIS à jour : verrou de
+# péremption vécu 2026-07-07). Surchargeable par FAITS_APPRIS_TTL_JOURS. Le fait périmé reste servi HORS-LIGNE
+# (un instantané daté n'est pas un mensonge) — le TTL ne décide que « re-chercher d'abord ? ».
+TTL_JOURS_DEFAUT = 90
+
+
+def ttl_jours() -> int:
+    try:
+        return max(1, int(os.environ.get("FAITS_APPRIS_TTL_JOURS", TTL_JOURS_DEFAUT)))
+    except ValueError:
+        return TTL_JOURS_DEFAUT
+
+
+def age_jours(attribut: str, entite: str) -> int | None:
+    """Âge (en jours) du fait appris pour (attribut, entité), None si absent ou date illisible. Mesuré entre
+    la date d'apprentissage stockée et l'horloge injectable (déterministe en test)."""
+    o = rappelle(attribut, entite)
+    if not o:
+        return None
+    try:
+        t0 = time.mktime(time.strptime(o.get("date", ""), "%Y-%m-%d"))
+        t1 = time.mktime(time.strptime(_HORLOGE(), "%Y-%m-%d"))
+    except (ValueError, OverflowError):
+        return None
+    return max(0, int(round((t1 - t0) / 86400.0)))
+
+
+def est_frais(attribut: str, entite: str, ttl: int | None = None) -> bool:
+    """True si le fait appris existe ET est plus jeune que le TTL. Un âge ILLISIBLE est traité PÉRIMÉ
+    (conservateur : on préfère re-vérifier que resservir un instantané d'âge inconnu)."""
+    a = age_jours(attribut, entite)
+    return a is not None and a <= (ttl if ttl is not None else ttl_jours())
+
+
 def rappelle_texte(attribut: str, entite: str) -> str | None:
     """Le fait appris FORMATÉ, attribué et daté (« … — appris de Wikidata le 2026-07-06 »), ou None. La
     provenance et la date sont TOUJOURS montrées : un fait appris est un instantané honnête, pas une vérité
