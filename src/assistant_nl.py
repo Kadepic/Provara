@@ -580,6 +580,10 @@ def qualifie_texte(texte: str) -> Reponse | None:
                        source="déduction DANS les prémisses de l'utilisateur (non posées comme faits)")
     if texte.startswith("Je vois deux prémisses"):           # syllogisme invalide : refus expliqué
         return Reponse(CLARIFICATION, texte, attente="prémisses dont le moyen terme se noue")
+    if texte.startswith("Défi accepté"):                     # défi lancé : un échange, pas un fait
+        return Reponse(ECHANGE, texte)
+    if texte.startswith("Fin du défi"):
+        return Reponse(ECHANGE, texte)
     return None
 
 

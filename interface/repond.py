@@ -4656,14 +4656,80 @@ _CHALLENGE_RE = re.compile(
     r"quiz(?:z|ze)?[- ]?moi|un\s+petit\s+quiz)\b(?:.*?\bsur\s+(.+?))?\s*\??\s*$", re.I)
 
 
-def _cap_challenge(texte: str):
-    """« Challenge-moi sur X » : Provara ne bluffe jamais, donc le défi se joue à SA façon — l'utilisateur
-    AFFIRME, Provara tranche Vrai/Faux/Indécidable avec preuve (capacité réelle existante). Si le sujet a une
-    définition vérifiée, elle amorce l'échange. Demandé par Yohan (2026-07-06 : partait en mémo !)."""
+# QUIZ VÉRIFIÉ (mandat Yohan 2026-07-08 « que l'IA nous challenge ») : Provara POSE une vraie question tirée
+# de sa base VÉRIFIÉE, retient la réponse attendue par conversation, et TRANCHE la réponse de l'utilisateur au
+# tour suivant contre le fait réel. FAUX=0 parfait : la question vient d'un fait vérifié, la correction EST le
+# fait vérifié. Relations de quiz par sujet (carte FERMÉE : réponse courte, non ambiguë).
+_QUIZ: dict = {}          # conv_id -> {"entite", "valeur", "relation", "libelle"}
+_QUIZ_RELATIONS = {
+    "geographie": ("capitale", "Quelle est la capitale de « %s » ?"),
+    "capitales": ("capitale", "Quelle est la capitale de « %s » ?"),
+    "chimie": ("numero_atomique", "Quel est le numéro atomique de « %s » ?"),
+    "": ("capitale", "Quelle est la capitale de « %s » ?"),
+}
+
+
+def _quiz_question(sujet: str, conv_id):
+    """Tire UNE question de la base vérifiée pour `sujet` (ou None si pas de relation de quiz / pas d'état
+    possible). La réponse attendue est mémorisée par conversation — le tour suivant sera JUGÉ contre elle."""
+    if not conv_id:
+        return None
+    rel_lib = _QUIZ_RELATIONS.get(_normalise(sujet or "").replace("la ", "").strip() or "")
+    if rel_lib is None:
+        return None
+    rel, libelle = rel_lib
+    try:
+        import random
+        table = _charge_direct(rel)
+        if not table:
+            return None
+        cle = random.choice(list(table.keys()))
+        cell = _lookup_cell(rel, cle)
+        ent, val = (cell[0], cell[1]) if cell else (cle, table.get(cle))
+        if val in (None, ""):
+            return None
+    except Exception:
+        return None
+    _QUIZ[conv_id] = {"entite": str(ent), "valeur": str(val), "relation": rel, "libelle": libelle}
+    return libelle % ent
+
+
+def _quiz_verdict(conv_id, texte: str):
+    """Réponse au quiz EN ATTENTE -> verdict tranché par le fait vérifié, ou None (pas de quiz / l'utilisateur
+    est passé à autre chose -> l'état est consommé et le pipeline reprend). « stop »-like -> fin propre."""
+    q = _QUIZ.pop(conv_id, None) if conv_id else None
+    if not q or not isinstance(texte, str):
+        return None
+    tn = " ".join(_normalise(texte).split())
+    if tn in ("stop", "arrete", "j arrete", "fin", "on arrete", "non merci", "laisse tomber"):
+        return "Fin du défi — bien joué de t'être prêté au jeu. Redis « challenge-moi » quand tu veux !"
+    # une NOUVELLE demande (question interrogative substantielle) n'est pas une réponse au quiz : on n'otage
+    # jamais la conversation — l'état est simplement consommé et la demande traitée normalement.
+    if _veut_reponse(texte) and len(tn.split()) > 3:
+        return None
+    attendu = _normalise(q["valeur"]).strip()
+    if attendu and (tn == attendu or attendu in tn.split() or attendu in tn):
+        return ("✔ Exact — %s (fait vérifié de ma base). Redis « challenge-moi » pour une autre question."
+                % q["valeur"])
+    return ("✘ Non — pour « %s », la réponse vérifiée est %s (tu as dit : « %s »). "
+            "Redis « challenge-moi » pour une autre." % (q["entite"], q["valeur"], texte.strip()[:60]))
+
+
+def _cap_challenge(texte: str, conv_id=None):
+    """« Challenge-moi sur X » : Provara CHALLENGE pour de vrai — il POSE une question tirée de sa base
+    vérifiée (réponse attendue mémorisée, jugée au tour suivant contre le fait réel), ET accepte toujours le
+    mode inverse (l'utilisateur AFFIRME, Provara tranche V/F/Indécidable avec preuve). Jamais un bluff :
+    question ET correction sortent du vérifié. Demandé par Yohan (2026-07-06 mémo ! ; 2026-07-08 quiz actif)."""
     m = _CHALLENGE_RE.search(texte)
     if not m:
         return None
     sujet = _strip_article((m.group(1) or "").strip(" ?.!")) if m.group(1) else ""
+    cible = (" sur « %s »" % sujet) if sujet else ""
+    question = _quiz_question(sujet, conv_id)
+    if question:
+        return ("Défi accepté%s — ma question, tirée de ma base vérifiée : %s "
+                "(Réponds et je tranche contre le fait réel — ou dis « stop ». Tu peux aussi m'AFFIRMER "
+                "quelque chose : je le jugerai Vrai/Faux/Indécidable, preuve à l'appui.)" % (cible, question))
     amorce = ""
     if sujet:
         try:
@@ -4673,7 +4739,6 @@ def _cap_challenge(texte: str):
                 amorce = " Pour poser le décor, un fait vérifié — %s : %s." % (sujet, d[:160].rstrip("."))
         except Exception:
             pass
-    cible = (" sur « %s »" % sujet) if sujet else ""
     return ("Défi accepté%s — mais à MA façon, parce que je ne bluffe jamais : AFFIRME des choses, et je "
             "tranche chacune par Vrai, Faux ou Indécidable, preuve à l'appui. Ce que la réalité ne tranche "
             "pas, je te le dirai honnêtement.%s À toi : lance ta première affirmation." % (cible, amorce))
@@ -6830,6 +6895,11 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if q2 == "":
             return _varie("refus", t, _MSG_REFUS)
         t = q2
+    #   (0quiz) QUIZ EN ATTENTE : le tour précédent a posé une question du défi -> la réponse est JUGÉE
+    #   contre le fait vérifié mémorisé. Une nouvelle vraie demande n'est jamais prise en otage (état consommé).
+    _vq = _quiz_verdict(conv_id, t)
+    if _vq:
+        return _vq
     #   (0conf) CORRECTION UTILISATEUR (AUTORITÉ) : si l'utilisateur a déjà corrigé cette question, sa réponse
     #       fait foi (il est le juge réel) et PRIME sur tout — connaissance, web, mémoire. FAUX=0 : appliquée
     #       telle quelle et attribuée (« tu me l'avais corrigé »).
@@ -6935,7 +7005,8 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         # CAPS NOMMÉS dans l'ordre HISTORIQUE (l'ordre = le comportement, chaque position encode un vécu).
         _caps = (("avis_critere", lambda _t: _cap_avis_critere(_t, conv_id)),
                  ("quotidien", lambda _t: _cap_quotidien(_t, conv_id)),
-                 ("site", _cap_site), ("avis", lambda _t: _cap_avis(_t, conv_id)), ("challenge", _cap_challenge),
+                 ("site", _cap_site), ("avis", lambda _t: _cap_avis(_t, conv_id)),
+                 ("challenge", lambda _t: _cap_challenge(_t, conv_id)),
                  ("conversion", _cap_conversion), ("point_commun_nway", _cap_point_commun_nway),
                  ("ontologie", _cap_ontologie), ("cause", _cap_cause), ("definition", _cap_definition),
                  ("hyponymes", _cap_hyponymes), ("comptage", _cap_comptage),

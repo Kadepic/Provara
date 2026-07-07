@@ -252,5 +252,25 @@ import assistant_nl as _A3
 check(_A3.qualifie_texte("D'après TES prémisses — test").statut == _A3.SUPPOSITION,
       "porte unique : une conclusion de syllogisme est SUPPOSITION (prémisses de l'utilisateur), jamais FAIT")
 
+# — QUIZ VÉRIFIÉ (mandat « que l'IA nous challenge ») : question POSÉE depuis la base, réponse JUGÉE contre le fait —
+r = R._cap_challenge("challenge-moi sur la géographie", "cv-quiz")
+check(r is not None and "ma question" in r and "capitale de «" in r,
+      "défi -> une VRAIE question tirée de la base vérifiée (plus seulement « affirme »)")
+q = R._QUIZ.get("cv-quiz")
+check(q is not None and bool(q.get("valeur")), "réponse attendue mémorisée par conversation")
+check(R._quiz_verdict("cv-quiz", q["valeur"]).startswith("✔ Exact"),
+      "bonne réponse -> ✔ tranché par le fait vérifié (jamais un jugement au flair)")
+R._cap_challenge("challenge-moi", "cv-quiz")
+v = R._quiz_verdict("cv-quiz", "Ouagadougou-les-Bains")
+check(v is not None and v.startswith("✘ Non") and R._QUIZ.get("cv-quiz") is None,
+      "mauvaise réponse -> ✘ + LA correction vérifiée, état consommé (une seule chance)")
+R._cap_challenge("challenge-moi", "cv-quiz")
+check(R._quiz_verdict("cv-quiz", "quelle est la population du japon ?") is None,
+      "nouvelle vraie demande pendant le quiz -> None (la conversation n'est JAMAIS otage)")
+R._cap_challenge("challenge-moi", "cv-quiz")
+check("Fin du défi" in (R._quiz_verdict("cv-quiz", "stop") or ""), "« stop » -> fin propre du défi")
+check(_A3.qualifie_texte("Défi accepté — test").statut == _A3.ECHANGE,
+      "porte unique : un défi lancé est un ÉCHANGE, pas un fait")
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

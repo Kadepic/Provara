@@ -440,6 +440,7 @@ def oublie_conversation(memoire, conv_id: str) -> dict:
         pass
     repond._DERNIER_SUJET.pop(cid, None)
     repond._DERNIER_QUESTION.pop(cid, None)
+    getattr(repond, "_QUIZ", {}).pop(cid, None)          # question de défi en attente : oubliée aussi
     return {"ok": memoire.oublie(cid)}
 
 

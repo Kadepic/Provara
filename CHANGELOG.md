@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — L'IA CHALLENGE pour de vrai : QUIZ VÉRIFIÉ (question posée depuis la base, réponse jugée contre le fait)
+
+- **Mandat Yohan (« que l'IA nous challenge »)** : le défi n'est plus passif. « Challenge-moi sur la
+  géographie » → Provara **POSE une vraie question tirée de sa base vérifiée** (« Quelle est la capitale de
+  “République populaire de Chine” ? »), mémorise la réponse attendue PAR conversation, et **tranche la réponse
+  du tour suivant contre le fait réel** : « ✔ Exact — Pékin (fait vérifié) » / « ✘ Non — la réponse vérifiée
+  est Saint John's ». FAUX=0 parfait : la question SORT d'un fait vérifié, la correction EST le fait vérifié.
+- Sujets (carte fermée v1) : géographie/capitales → `capitale`, chimie → `numero_atomique` ; sujet sans
+  relation de quiz → mode « affirme et je tranche » conservé (toujours proposé en second mode).
+- **Jamais otage** : une vraie nouvelle demande pendant le quiz est traitée normalement (état consommé) ;
+  « stop » → fin propre ; question de défi purgée par l'oubli RGPD (`/api/oublie`). Porte unique : défi lancé
+  = ÉCHANGE, verdicts = ancrés au fait.
+- Vérifié E2E réel (bonne réponse, mauvaise réponse, digression, stop). Bancs : `valide_capacites_chat`
+  **77/77** (+7), suite **24/24**, raisonnement **166/166**, paraphrases **168/168**, challenge **16/16**.
+
 ## 2026-07-08 — AUDIT ATOMIQUE (mandat Yohan « perfection chirurgicale ») : mesures + 6 trous réels tués + syllogisme
 
 - **MESURÉ, pas déclaré** : boot 3,4 s / **31 Mo RAM**, pipeline chaud **5 ms** (les ~250 ms observés = premier
