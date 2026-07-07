@@ -2,7 +2,7 @@
 
 > Generated mechanically from the code (docstrings + API). Represents the entirety of the shipped modules.
 
-**1305 modules · 4686 public functions/classes · 171 496 lines** (mechanical snapshot; faits_appris added by hand on 2026-07-06)
+**1306 modules · 4686 public functions/classes · 171 496 lines** (mechanical snapshot; faits_appris added by hand on 2026-07-06, tronc on 2026-07-07)
 
 
 ## Core — 6 modules
@@ -484,6 +484,7 @@
 | `transfert` | CROSS-DOMAIN TRANSFER — the ASSEMBLER (machine-inventor): | transfere, manque |
 | `transport_membranaire` | MEMBRANE TRANSPORT — bounded "Membranes, organelles" (established cell biology). | tonicite, sens_osmose, flux_fick |
 | `triangulation` | TRIANGULATION — Wave 6 brick (agreement of two INDEPENDENT derivations = non-circular corroboration). | triangule, confirme |
+| `tronc` | COMPREHENSION TRUNK — Phase 1 (SPEC_TRONC_COMPREHENSION §7-§10): acte(signal, contexte) → Faisceau — closed map of 11 speech acts, parallel candidates (G2), intent-aware honest fallback (G6), attunement (2026-07-07). | acte, repli, attunement, class Candidat, class Faisceau |
 | `trigonometrie` | TRIGONOMETRY — functions and triangle solving, FAUX=0 (formula/concept mission 2026-06-29). | deg_vers_rad, rad_vers_deg, sin_deg, cos_deg, tan_deg, loi_cosinus, angle_par_cotes, hypotenuse |
 | `turing` | TURING MACHINES — bounded DETERMINISTIC simulation, FAUX=0 (formula/concept mission 2026-06-29). | execute |
 | `typage` | OUTPUT TYPING OF CANDIDATES (2026-06-22, "elegance" lever: | type_sortie, type_attendu, reordonne_par_type |

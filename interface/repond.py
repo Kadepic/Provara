@@ -7048,5 +7048,15 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             return _snm
         indice = "" if pleine else " — ou relance sans IA_LEGER pour la connaissance générale (faits vérifiés)"
         return f"{_MSG_INCONNU_PREFIXE}{indice}."
-    # affirmation : accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).
+    # affirmation : AVANT l'accusé mémo, l'ATTUNEMENT du tronc de compréhension (acte EXPRIMER_ÉTAT, carte §8) —
+    # « je suis perdu » recevait « C'est noté » (vécu : le mémo à côté de la plaque = « il comprend rien »).
+    # SOUND : lexique d'état FERMÉ à haute confiance ; l'état est SUPPOSÉ (« il se peut que »), jamais affirmé.
+    try:
+        import tronc as _TRONC
+        _att = _TRONC.attunement(texte)
+    except Exception:
+        _att = None
+    if _att:
+        return _att
+    # accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).
     return _varie("note", texte, _MSG_NOTE)

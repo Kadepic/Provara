@@ -9,13 +9,13 @@ FAUX = 0 is Provara's founding invariant: the system never asserts something it 
 It is called like this:
 
 ```bash
-python3 _nonreg.py --jobs 8      # expected on the full base: 687/687
+python3 _nonreg.py --jobs 8      # expected on the full base: 688/688
 ```
 
 At the end, it prints a summary line and returns an exit code:
 
 ```
-=== NON-RÉG : 687/687 PASS (... via cache) en Xs ===
+=== NON-RÉG : 688/688 PASS (... via cache) en Xs ===
 ```
 
 The return code is `0` if and only if **no** validator has failed; it is `1` as soon as a single one fails (`raise SystemExit(main())`). There is no middle ground: a single false fact entering the system makes a validator fall, and therefore turns the gate red.
@@ -36,9 +36,9 @@ The cache is protected against three classic pitfalls, which makes it **sound**:
 
 ## How many validators, and which ones
 
-The gate protects **687 active validators** (`valide_*.py`): this is the reference gate, **687/687**. This number corresponds exactly to the `valide_*.py` files present at the root of the repository (minus `valide_commun.py`, which is a module of shared *helpers* explicitly excluded — it is not a validator), plus the interface validator `interface/valide_interface.py`.
+The gate protects **688 active validators** (`valide_*.py`): this is the reference gate, **688/688**. This number corresponds exactly to the `valide_*.py` files present at the root of the repository (minus `valide_commun.py`, which is a module of shared *helpers* explicitly excluded — it is not a validator), plus the interface validator `interface/valide_interface.py`.
 
-On disk, the **687 `valide_*.py` files** live in the `tests/` folder (there is no separate archive directory).
+On disk, the **688 `valide_*.py` files** live in the `tests/` folder (there is no separate archive directory).
 
 The selection is **self-discovering**: `liste_validateurs()` maintains a curated list (which fixes the order and flags the heavy tests), then **automatically adds every `valide_*.py`** not yet listed. Direct consequence for FAUX = 0: no real capability can remain "orphaned" outside the net; any newly deposited validator is protected by default.
 
@@ -49,7 +49,7 @@ The selection is **self-discovering**: `liste_validateurs()` maintains a curated
 The conversational-assistant gates (grammar, conjugation, OCR, **translation**, **composition**, **freshness**, confidence, language, NL-stats, documents, patterns, chat capabilities, plus conversation/assistant_nl) are aggregated by a **dedicated runner** — they need the `PYTHONPATH` `interface`+`src`+`ingestion` that the core gate does not set:
 
 ```bash
-python3 tests/suite_conversation.py     # expected: 21/21 gates green
+python3 tests/suite_conversation.py     # expected: 22/22 gates green
 ```
 
 It runs each gate in an isolated subprocess with the right environment and exits red as soon as one regresses. Run it before any commit touching `interface/` or a conversational building block.

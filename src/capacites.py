@@ -4152,3 +4152,17 @@ def _p_qualitatif():
 REGISTRE.update({
     "Raisonnement qualitatif (algèbre des signes)": ("(+)×(−) = − ; (+)+(−) = indéterminé, jamais tranché. cf. qualitatif.py", _p_qualitatif),
 })
+
+
+def _p_tronc():
+    from tronc import acte, INTERROGER_FAIT, TRANCHE
+    f = acte("quelle est la capitale de la France ?")
+    m = f.meilleur()
+    c = acte("combien font 2+2 ?").meilleur()
+    return (m.intention == INTERROGER_FAIT and m.relation == "capitale" and m.entites == ("france",)
+            and c.statut == TRANCHE and c.reponse == "4")
+
+
+REGISTRE.update({
+    "Tronc de compréhension (acte -> faisceau)": ("Intention classée dans la carte fermée des 11 actes, entités/relation/régime extraits, calcul TRANCHÉ par juge réel. cf. tronc.py", _p_tronc),
+})

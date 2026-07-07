@@ -209,6 +209,7 @@ _PFX_INDECIDABLE = "Je n'arrive pas à rattacher ta demande"
 _PFX_SATURATION = "Je ne sais pas encore traiter cette famille de demandes"
 _PFX_PRECISER = "Peux-tu préciser le sujet"
 _PFX_OPINION = "Il n'y a pas de réponse unique"     # cadrage subjectif de _reponse_opinion (= SUPPOSITION)
+_PFX_COMPRIS = "Voici ce que j'ai compris"          # repli honnête intent-aware du TRONC (tronc.repli, G6)
 
 # Cache de JOIGNABILITÉ des sources (TTL) : le ping du registre est indépendant du sujet -> inutile (et lent :
 # GET réels à chaque question inconnue du serveur plein) de re-contacter les sources à chaque tour.
@@ -434,10 +435,28 @@ def apres_hors(question: str, conv_id=None) -> Reponse | None:
                           f"« définition de Z ») ou un calcul, et je réponds avec du vérifié.",
                           regime=c.regime)
         else:
-            rep = Reponse(CLARIFICATION,
-                          f"{_PFX_INDECIDABLE} à un fait vérifiable. Peux-tu préciser le sujet et l'attribut "
-                          f"voulu — par exemple « capitale de l'Espagne », « population du Japon », "
-                          f"« définition de sérendipité » ?", regime=c.regime, attente="reformulation précise")
+            # REPLI HONNÊTE INTENT-AWARE (tronc de compréhension, §10.4/G6) : si le moteur d'actes tient une
+            # HYPOTHÈSE d'intention NON-FACTUELLE, on la MONTRE (« voici ce que j'ai compris + ce que je sais
+            # faire ») et l'utilisateur corrige — jamais de garbage. Une hypothèse INTERROGER_FAIT n'apporte
+            # RIEN ici (toute la cascade factuelle vient d'échouer : l'aveu structuré / le conseil « réactive
+            # internet » de repond.py est plus actionnable) -> on la laisse au chemin générique existant.
+            _txt_tronc = None
+            try:
+                import tronc as _TR
+                _f = _TR.acte(q)
+                _m = _f.meilleur()
+                if _m is not None and _m.intention not in (_TR.INCONNU, _TR.INTERROGER_FAIT):
+                    _txt_tronc = _TR.repli(q, _f)
+            except Exception:
+                _txt_tronc = None
+            if _txt_tronc:
+                rep = Reponse(CLARIFICATION, _txt_tronc, regime=c.regime,
+                              attente="confirmation ou correction de l'intention comprise")
+            else:
+                rep = Reponse(CLARIFICATION,
+                              f"{_PFX_INDECIDABLE} à un fait vérifiable. Peux-tu préciser le sujet et l'attribut "
+                              f"voulu — par exemple « capitale de l'Espagne », « population du Japon », "
+                              f"« définition de sérendipité » ?", regime=c.regime, attente="reformulation précise")
     if conv_id and rep is not None and rep.statut != CLARIFICATION and c.statut_ontologique != _CB.INDECIDABLE:
         _INDECIS.pop(conv_id, None)                          # une issue non-indécidable remet le compteur à zéro
     return rep
@@ -517,8 +536,12 @@ def qualifie_texte(texte: str) -> Reponse | None:
         return Reponse(SUPPOSITION, texte, regime=_CB.R_SUPPOSITION_OPINION)
     if texte.startswith(_PFX_INDECIDABLE) or texte.startswith(_PFX_PRECISER):
         return Reponse(CLARIFICATION, texte, attente="reformulation précise")
+    if texte.startswith(_PFX_COMPRIS):                       # repli honnête du tronc : une hypothèse à corriger
+        return Reponse(CLARIFICATION, texte, attente="confirmation ou correction de l'intention comprise")
     if texte.startswith(_PFX_SATURATION):
         return Reponse(HORS, texte)
+    if texte.startswith("Il se peut que"):                   # attunement du tronc : état INFÉRÉ, jamais affirmé
+        return Reponse(SUPPOSITION, texte, source="attunement (état de l'interlocuteur supposé, non vérifié)")
     return None
 
 

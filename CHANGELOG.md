@@ -1,5 +1,36 @@
 # Journal des modifications — Provara
 
+## 2026-07-07 — TRONC DE COMPRÉHENSION, Phase 1 (clé de voûte) : la carte des 11 actes + le repli honnête
+
+- **Spec validée par Yohan** (`SPEC_TRONC_COMPREHENSION.md` §7-§10 + `SPEC_TRONC_UPGRADES.md` U1→U61) → premier
+  bâti. Nouveau module `src/tronc.py` : `acte(signal, contexte) → Faisceau` — chaque message est classé dans la
+  **carte FERMÉE des 11 actes de parole** (interroger_fait, calculer, raisonner, demander_avis, créer, méta,
+  social, exprimer_état, quotidien, agir, inconnu), avec entités/relation extraits UNE fois, le régime attaché
+  par `classifieur_bornage` (réutilisé, jamais dupliqué), et des **candidats tenus en PARALLÈLE** (G2 : jamais
+  un sens choisi en silence). NB nommage : `comprehension.py` existait déjà (abstraction du harnais
+  d'invention) → le moteur porte le nom de la spec, le TRONC.
+- **FAUX=0 structurel (G1/G7)** : un candidat n'est TRANCHÉ que si un **vrai juge** a évalué (juge arithmétique
+  AST — « combien font 2+2 ? » → TRANCHÉ « 4 », ancré) ; tout le reste porte une RECETTE (la faculté existante
+  à invoquer : lecteur, raisonnement, `_cap_avis`, `_cap_quotidien`…), jamais une valeur fabriquée.
+- **Deux étages** (« explicite au cœur, appris en périphérie ») : détecteurs FERMÉS par acte (cœur, confiance
+  haute) ; **gzip-kNN** (U13 : distance de compression NCD, zéro entraînement) en périphérie qui PROPOSE une
+  intention voisine à confiance bornée (≤ 0,45) quand aucun motif ne matche — l'humain vérifie.
+- **REPLI HONNÊTE intent-aware (§10.4/G6) — la brique qui tue le « il comprend rien »** : câblé dans
+  `assistant_nl` (branche indécidable) — quand le moteur tient une hypothèse NON-factuelle, il la MONTRE :
+  « voici ce que j'ai compris (hypothèse) + ce que je sais faire + corrige-moi », jamais de garbage (ni fausse
+  correction ortho, ni web du texte littéral). Une hypothèse « fait » n'écrase PAS l'aveu structuré / le
+  conseil « réactive internet » existants (plus actionnables après l'échec de la cascade factuelle).
+- **ATTUNEMENT (§13)** : « je suis perdu » recevait « C'est noté » (mémo à côté de la plaque). Désormais, acte
+  EXPRIMER_ÉTAT (lexique fermé, 1re personne) → lecture d'état en SUPPOSITION (« il se peut que tu te
+  sentes… », jamais « je ressens ») + prise concrète. Câblé dans `repond.py` avant le terminal mémo ; la porte
+  unique le classe SUPPOSITION (jamais un fait). Une préférence (« mon plat préféré… ») garde sa voie mémo.
+- **Bancs** : nouveau gate `valide_tronc` **61/61** (la carte, l'extraction, G1/G2/G4/G5/G6/G7, gzip-kNN,
+  attunement, câblage assistant_nl) ; suite **22/22** ; paraphrases **168/168** ; raisonnement **166/166** ;
+  challenge **16/16** ; synonymes 8/8 ; constructions 4/4 ; assistant_nl 89/89 ; câblage **503/503, 0
+  orphelin** ; capacités prouvées **281/281** (preuve tronc au registre). Embarqué .exe (`_precharge_verax` +
+  hidden-imports bat/CI). Prochaines phases : faisceau+compositeur (Ph2), gardes G1-G9 en banc `valide_debiaisage`
+  (Ph3), séquenceur+utilité (Ph4), retrait des caps (Ph5).
+
 ## 2026-07-06 — APPRENTISSAGE des faits web : Provara retient ce qu'il trouve, réutilisable HORS-LIGNE
 
 - **Demande Yohan** (queue prioritaire) : « que mon IA apprenne les faits STRUCTURÉS qu'elle trouve en ligne,
