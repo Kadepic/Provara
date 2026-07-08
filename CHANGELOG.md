@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 9 : 7 façades de plus (dette 78 → 71)
+
+- 1 preuve REGISTRE composée (diagnostic : 295) : **loi de Goodhart reproduite** (le proxy se décorrèle de
+  la cible sous pression de sélection), **ratio de vraisemblance exact** e^0.5 pour le shift gaussien,
+  migration de stade (Will Rogers), **régression temporelle fallacieuse** (68 % de faux positifs sur les
+  niveaux vs différences — reproduit à graine fixée), **confidentialité différentielle** (échelle de Laplace
+  Δ/ε = 2.0 exacte), conformal normalisé (7.6, 12.4) exact, **détection de nouveauté kNN** (le connu score
+  0, l'aberrant 48.9).
+- Plafond du cliquet : **71**.
+- Bancs : valide_capacites 73/73 (pins 294→295), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 8 : 7 façades de plus (dette 85 → 78)
 
 - 1 preuve REGISTRE composée (diagnostic : 294) — **les pièges statistiques classiques, quantifiés et non

@@ -4132,6 +4132,31 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_14() -> bool:
+    """LOT 9 : Goodhart, shift de covariables, migration de stade, régression fallacieuse, vie privée."""
+    import math
+    import random
+    import ia as _I
+    vg, dg = _I.loi_de_goodhart((0.0, 1.0, 3.0), rng=random.Random(0))
+    if not (vg == "analyse" and abs(dg["courbe"][0][1]["corr_P_U"] - 1.0) < 1e-9):
+        return False                                                  # sans pression, le proxy vaut la cible
+    if abs(_I.poids_shift_gaussien(1.0, 0.0, 1.0, 1.0, 1.0) - math.exp(0.5)) > 1e-9:
+        return False                                                  # ratio de vraisemblance N(1,1)/N(0,1) EXACT
+    vm, dm = _I.migration_de_stade([10, 9, 8, 7, 6] * 2 + [9, 8], [3, 2, 4, 3, 2] * 2 + [3, 4])
+    if not (vm == "analyse" and abs(dm["avant"]["mA"] - 97 / 12) < 1e-9):
+        return False
+    vr, dr = _I.regression_temporelle_fallacieuse(50, T=500, rng=random.Random(0))
+    if not (vr == "analyse" and dr["fp_niveaux"] > dr["fp_differences"]):
+        return False                                                  # la régression fallacieuse est REPRODUITE
+    vp, dp = _I.garantie_confidentialite(1.0, 0.5)
+    if not (vp == "prive" and dp["b_requis"] == 2.0 and dp["epsilon_reel"] == 0.5):
+        return False                                                  # échelle de Laplace = Δ/ε EXACTE
+    if _I.conforme_normalise([1.0, 1.2, 0.8, 1.1, 0.9] * 6, [1.0] * 30, 10.0, 2.0) != ("estimation", (7.6, 12.4), 0.9):
+        return False
+    score = _I.scoreur_nouveaute([[1.0], [1.1], [0.9], [1.05], [0.95]] * 8)
+    return score([1.0]) == 0.0 and score([50.0]) > 10.0               # kNN : le connu score 0, l'aberrant loin
+
+
 def _p_facade_stats_13() -> bool:
     """LOT 8 : base-rate quantifié, pentes (naïve/atténuée), winner's curse, Lindley, RTM, Lord."""
     import ia as _I
@@ -4351,6 +4376,12 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Goodhart, dérive et confidentialité (façade stats 14)": (
+        "loi_de_goodhart (le proxy se décorrèle sous pression — reproduit), poids_shift_gaussien (ratio de "
+        "vraisemblance e^0.5 exact), migration_de_stade, regression_temporelle_fallacieuse (faux positifs "
+        "des niveaux >> différences, graine fixée), garantie_confidentialite (échelle de Laplace Δ/ε exacte), "
+        "conforme_normalise (intervalle exact), scoreur_nouveaute (kNN : connu -> 0, aberrant -> loin).",
+        _p_facade_stats_14),
     "Pièges statistiques quantifiés (façade stats 13)": (
         "probabilite_posterieure_test (écart intuition/Bayes QUANTIFIÉ), pente_ols_naive (abstention n<12 + "
         "vraie pente dans l'IC), pente_erreur_mesure (atténuation corrigée), effet_selectionne (winner's "
