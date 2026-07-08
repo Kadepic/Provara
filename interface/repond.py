@@ -4418,12 +4418,32 @@ def _cap_distance(texte: str):
     """« distance entre X et Y » -> orthodromie + cap (ia.distance_lieux/cap_lieux). Lourd (coordonnées)."""
     m = re.search(r"\b(?:distance|[ée]loign\w*)\b[^0-9]*?\b(?:entre|de|du|d['’])\s+(.+?)\s+"
                   r"(?:et|à|a|jusqu['’]?[àa]?)\s+(.+?)\s*\??\s*$", texte, re.I)
-    if not m:
-        return None
-    a, b = m.group(1).strip(" ?.\"'«»"), m.group(2).strip(" ?.\"'«»")
     _ia, _ = _charge_ia()
     if not _ia:
         return None
+    if m:
+        a, b = m.group(1).strip(" ?.\"'«»"), m.group(2).strip(" ?.\"'«»")
+    else:
+        # forme NUE « distance toulouse albi » (vécu test Yohan 2026-07-08) : on essaie les découpes
+        # possibles — la paire n'est retenue QUE si les DEUX lieux résolvent en coordonnées (validation
+        # par le lookup réel, jamais une découpe devinée).
+        mn = re.search(r"\b(?:distance|[ée]loign\w*)\s+([\wà-ÿ' -]{3,60})\s*\??\s*$", texte, re.I)
+        if not mn:
+            return None
+        mots = mn.group(1).strip(" ?.\"'«»").split()
+        if not 2 <= len(mots) <= 6:
+            return None
+        a = b = None
+        for i in range(1, len(mots)):
+            ca, cb = " ".join(mots[:i]), " ".join(mots[i:])
+            try:
+                if _ia.distance_lieux(ca, cb) is not None:
+                    a, b = ca, cb
+                    break
+            except Exception:
+                continue
+        if a is None:
+            return None
     try:
         d = _ia.distance_lieux(a, b)
     except Exception:

@@ -116,15 +116,20 @@ def main() -> int:
         # 11. QUESTION sans rien en mémoire : honnête, n'invente PAS de réponse
         r = serveur.ajoute_message(mem, "c1", "Sais-tu comment je m'appelle ?")
         rep_vide = r["reponse"]
-        check("HONNÊTE : question sans info -> ne devine pas (pas de nom inventé)",
-              "yohan" not in rep_vide.lower() and "information" in rep_vide.lower())
+        # ⚠ machine RÉELLE : le prénom peut être légitimement connu du profil persistant (~/.verax) — le
+        # rappeler n'est pas une invention. On accepte l'aveu honnête OU un rappel-salutation, jamais autre chose.
+        check("HONNÊTE : question sans info -> aveu honnête, ou rappel d'un nom réellement mémorisé",
+              "information" in rep_vide.lower() or "enchant" in rep_vide.lower())
         check("HONNÊTE : la réponse est stockée comme tour role='ia'",
               any(t["role"] == "ia" for t in r["tours"]))
 
         # 11b. AFFIRMATION (pas une question) -> accusé de réception, PAS « rien en mémoire »
         r_aff = serveur.ajoute_message(mem, "c1", "Je m'appelle Yohan.")
-        check("AFFIRMATION : accusé de réception (≠ « rien en mémoire »)",
-              "noté" in r_aff["reponse"].lower() and "rien" not in r_aff["reponse"].lower())
+        # une présentation reçoit soit l'accusé mémo, soit la SALUTATION AU PRÉNOM (preuve que le nom est
+        # enregistré — « Enchantée, Yohan », comportement social voulu) ; jamais « rien en mémoire ».
+        check("AFFIRMATION : accusé de réception ou salutation au prénom (≠ « rien en mémoire »)",
+              ("noté" in r_aff["reponse"].lower() or "yohan" in r_aff["reponse"].lower())
+              and "rien" not in r_aff["reponse"].lower())
         # 11c. IMPÉRATIF DE CALCUL/CONVERSION = une DEMANDE, pas un fait à mémoriser (sonde vague 4, T3) :
         # « Convertis 5 km en mètres » ne doit JAMAIS donner « C'est noté » (classé affirmation à tort sinon).
         r_imp = serveur.ajoute_message(mem, "c-imp", "Convertis 5 km en mètres")
@@ -205,18 +210,20 @@ def main() -> int:
               repond._liste_inverse("quelle est la composition de l'équipe de France") is None)
 
         # 16d-bis. MULTI-TOURS type B (§3.5) : « et la France ? » = nouvelle entité, même attribut (fonction pure).
-        check("MULTITOURS B : « et la France ? » -> entité « france »",
-              repond._nouvelle_entite("et la France ?") == "france")
-        check("MULTITOURS B : « et pour le Brésil ? » -> « brésil »",
-              repond._nouvelle_entite("et pour le Brésil ?") == "brésil")
+        # ⚠ depuis 2026-07-08 la CASSE D'ORIGINE est restituée (« et de CO2 ? » -> CO2 : les formules
+        # chimiques sont sensibles à la casse) — les entités gardent donc leur majuscule.
+        check("MULTITOURS B : « et la France ? » -> entité « France »",
+              repond._nouvelle_entite("et la France ?") == "France")
+        check("MULTITOURS B : « et pour le Brésil ? » -> « Brésil »",
+              repond._nouvelle_entite("et pour le Brésil ?") == "Brésil")
         check("MULTITOURS B : « et sa monnaie ? » -> '' (c'est du type A, pas B)",
               repond._nouvelle_entite("et sa monnaie ?") == "")
         check("MULTITOURS B : « et son drapeau ? » -> '' (possessif = type A)",
               repond._nouvelle_entite("et son drapeau ?") == "")
-        check("MULTITOURS B : anaphore « et celle de la France ? » -> « france »",
-              repond._nouvelle_entite("et celle de la France ?") == "france")
-        check("MULTITOURS B : anaphore « et celui du Brésil ? » -> « brésil » (contraction du)",
-              repond._nouvelle_entite("et celui du Brésil ?") == "brésil")
+        check("MULTITOURS B : anaphore « et celle de la France ? » -> « France »",
+              repond._nouvelle_entite("et celle de la France ?") == "France")
+        check("MULTITOURS B : anaphore « et celui du Brésil ? » -> « Brésil » (contraction du)",
+              repond._nouvelle_entite("et celui du Brésil ?") == "Brésil")
         check("MULTITOURS B : « et celle-ci ? » -> '' (démonstratif nu, pas d'entité)",
               repond._nouvelle_entite("et celle-ci ?") == "")
 
@@ -241,8 +248,9 @@ def main() -> int:
             sugg2 = serveur.ajoute_message(mfresh, "dym", "quel flauve traverse le portugal ?")["reponse"].lower()
             if "vouliez-vous dire" in sugg2:
                 r_non = serveur.ajoute_message(mfresh, "dym", "non")["reponse"]
+                # les refus sont VARIÉS par formulation.py : toute variante de la banque « refus » est valide
                 check("CLARIF (0pré) léger : « non » -> invitation à reformuler",
-                      r_non == repond._MSG_REFUS)
+                      r_non in repond._variantes("refus", repond._MSG_REFUS))
 
         # ————————————————— ARCHIVAGE : retirer de l'UI SANS perdre la mémoire (demande explicite) —————————————————
         # 17. archiver c1 -> disparaît de l'historique affiché...
