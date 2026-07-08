@@ -1,5 +1,26 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 23 : proba dé/pièce, coefficient binomial nommé, permutations « ranger » (2 garbages tués)
+
+- **2 garbages tués** (une QUESTION avalée par l'accusé mémo « Noté — je le retiens », trouvés à la sonde) :
+  « coefficient binomial 5 parmi 2 » et « probabilité d'obtenir un 6 avec un dé » partaient en mémo.
+- **Coefficient binomial nommé** : « coefficient binomial 2 parmi 5 » → **C(5, 2) = 10** (convention « k parmi
+  n » ; sans « parmi » = ordre de la notation C(n, k)). L'interprétation est MONTRÉE : « 5 parmi 2 » →
+  « C(2, 5) = 0 (choisir 5 éléments parmi 2 : impossible) » — jamais un 0 sec ambigu.
+- **Probabilité élémentaire dé/pièce** (brique équiprobabilité `maximum_entropie.uniforme`) : « probabilité
+  d'obtenir un 6 avec un dé » → « 1/6 (≈ 16.67 %) — **en supposant un dé équilibré à 6 faces** » (l'hypothèse
+  est toujours énoncée) ; « dé à 20 faces » → 1/20 ; face impossible → « 0 — un dé à 6 faces ne peut pas
+  donner 7 » ; « pile avec une pièce » → 1/2. Gardes : « dé » cherché sur la question BRUTE (normalise() efface
+  l'accent → « de » matcherait tout) ; plusieurs dés → abstention (autre loi) ; « pièce » exige pile/face
+  (« pièce de théâtre » intacte) ; « probabilité de pluie » intacte ; « dé pipé » sans face → abstention.
+- **Permutations « ranger/classer »** : « de combien de façons peut-on ranger 4 livres » → « 24 (permutations :
+  4!) » (seul « ordonner » était couvert). Gardes : « façons/manières » OBLIGATOIRE (l'impératif « range mes
+  fichiers » ne matche pas) ; UN SEUL entier (« 4 livres sur 2 étagères » = autre problème → abstention).
+- Sondé OK sans câblage (déjà en place) : chimie (masse molaire H2O/CO2 avec g/mol, nb d'atomes, composition,
+  formule du dioxyde de carbone), factorielle, combinaisons, Fibonacci.
+- Bancs : `valide_assistant_nl` **312/312** (+14), suite 25/25, capacites_chat 147/147, raisonnement 194/194,
+  paraphrases 174/174, challenge 16/16.
+
 ## 2026-07-08 — Vague 22 : date du jour (variantes), congélation de l'eau, mot à l'envers, zéros d'un grand nombre
 
 - **Date/jour du jour** : « quel jour de la semaine sommes-nous », « quelle est la date aujourd'hui »,

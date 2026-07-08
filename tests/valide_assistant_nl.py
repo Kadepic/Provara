@@ -358,6 +358,29 @@ check(_m("5!") == "120", "5! -> 120")
 check(_m("combien de façons d'ordonner 5 éléments") == "120", "permutations 5 -> 120")
 check(_m("combinaisons de 2 parmi 5") == "10", "C(5,2) -> 10")
 check(_m("arrangements de 2 parmi 5") == "20", "A(5,2) -> 20")
+# COEFFICIENT BINOMIAL nommé (tombait en MÉMO « Noté », garbage vécu) : interprétation MONTRÉE.
+check(_m("coefficient binomial 2 parmi 5") == "C(5, 2) = 10", "coefficient binomial 2 parmi 5 -> C(5,2)=10")
+check(_m("coefficient binomial de 5 et 2") == "C(5, 2) = 10", "binomial sans parmi : ordre C(n,k)")
+_bi = _m("coefficient binomial 5 parmi 2")
+check(_bi and _bi.startswith("C(2, 5) = 0") and "impossible" in _bi, "k>n -> 0 EXPLIQUÉ, jamais un 0 sec")
+# PERMUTATIONS par « ranger/classer » (tombait en repli) : façons/manières OBLIGATOIRE + un seul entier.
+check(_m("de combien de façons peut-on ranger 4 livres") == "24 (permutations : 4!)", "ranger 4 livres -> 24")
+check(_m("combien de manières de classer 5 dossiers") == "120 (permutations : 5!)", "classer 5 dossiers -> 120")
+check(_m("range mes fichiers") is None, "garde : impératif « range mes fichiers » ne matche pas")
+check(_m("combien de façons de ranger 4 livres sur 2 étagères") is None,
+      "garde : deux entiers (étagères) = autre problème -> HORS")
+# PROBABILITÉ dé/pièce (brique équiprobabilité ; hypothèse d'équilibre ÉNONCÉE ; « Noté » garbage vécu).
+_p6 = _m("probabilité d'obtenir un 6 avec un dé")
+check(_p6 == "1/6 (≈ 16.67 %) — en supposant un dé équilibré à 6 faces.", "proba 6 au dé -> 1/6 + hypothèse")
+check(_m("probabilité d'obtenir un 7 avec un dé") == "0 — un dé à 6 faces ne peut pas donner 7.",
+      "face impossible -> 0 EXPLIQUÉ")
+check(_m("quelle est la probabilité de tirer un 3 avec un dé à 20 faces")
+      == "1/20 (≈ 5.00 %) — en supposant un dé équilibré à 20 faces.", "dé à 20 faces -> 1/20")
+check(_m("probabilité de faire pile avec une pièce") == "1/2 (50 %) — en supposant une pièce équilibrée.",
+      "proba pile -> 1/2 + hypothèse")
+check(_m("probabilité de pluie demain à Toulouse") is None, "garde : proba de pluie ne matche pas (pas un dé)")
+check(_m("la probabilité que le dé soit pipé") is None, "garde : dé pipé sans face demandée -> HORS")
+check(_m("probabilité d'obtenir un 6 avec deux dés") is None, "garde : plusieurs dés = autre loi -> HORS")
 check(_m("fibonacci de 10") == "55", "Fibonacci 10 -> 55")
 check(_m("sinus de 30 degrés") == "0.5", "sin 30° -> 0.5")
 check(_m("cos de 60°") == "0.5", "cos 60° -> 0.5")

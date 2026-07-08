@@ -1032,11 +1032,60 @@ def resout_math(question: str):
     # 2 parmi 5 » (=binomial), « arrangements de 2 parmi 5 » (=binomial × k!).
     if ("ordonner" in qtoks or "permutations" in qtoks or ("facons" in qtoks and "ordonner" in q)) and ent:
         return (VERIFIE, str(_MD.factorielle(ent[0])), "combinatoire — permutations (n!)")
+    # « de combien de façons peut-on RANGER/classer/disposer 4 livres » = permutations aussi (tombait en repli).
+    # GARDE : « façons/manières » OBLIGATOIRE (l'impératif « range mes fichiers » ne matche pas) + UN SEUL entier
+    # (« ranger 4 livres sur 2 étagères » = autre problème -> HORS honnête).
+    if ("facons" in qtoks or "manieres" in qtoks) and len(ent) == 1 \
+            and re.search(r"\b(?:ranger|classer|disposer|placer|asseoir|aligner)\b", q):
+        return (VERIFIE, "%d (permutations : %d!)" % (_MD.factorielle(ent[0]), ent[0]),
+                "combinatoire — permutations (n!)")
     if ("combinaisons" in qtoks or "combinaison" in qtoks) and "parmi" in qtoks and len(ent) >= 2:
         return (VERIFIE, str(_MD.binomial(ent[1], ent[0])), "combinatoire — combinaisons C(n,k)")
     if ("arrangements" in qtoks or "arrangement" in qtoks) and "parmi" in qtoks and len(ent) >= 2:
         k, n = ent[0], ent[1]
         return (VERIFIE, str(_MD.binomial(n, k) * _MD.factorielle(k)), "combinatoire — arrangements A(n,k)")
+    # COEFFICIENT BINOMIAL nommé : « coefficient binomial 5 parmi 2 » tombait en MÉMO « Noté » (garbage vécu).
+    # Convention « k parmi n » avec « parmi » (comme les combinaisons) ; SANS « parmi » (« binomial de 5 et 2 »)
+    # = ordre de la notation C(n, k). L'interprétation est MONTRÉE (« C(2, 5) = 0 (impossible) ») : jamais un
+    # nombre sec ambigu quand k > n.
+    if "binomial" in qtoks and len(ent) >= 2:
+        k, n = (ent[0], ent[1]) if "parmi" in qtoks else (ent[1], ent[0])
+        v = _MD.binomial(n, k)
+        extra = " (choisir %d éléments parmi %d : impossible)" % (k, n) if k > n else ""
+        return (VERIFIE, "C(%d, %d) = %d%s" % (n, k, v, extra), "combinatoire — coefficient binomial C(n,k)")
+
+    # PROBABILITÉ ÉLÉMENTAIRE dé/pièce (brique : équiprobabilité — maximum_entropie.uniforme ; « probabilité
+    # d'obtenir un 6 avec un dé » tombait en MÉMO « Noté », garbage vécu). L'hypothèse d'équilibre est ÉNONCÉE
+    # dans la réponse, jamais implicite. GARDES : « dé » se cherche sur la question BRUTE (normalise() efface
+    # l'accent -> « de » matcherait tout) ; plusieurs dés (« deux dés ») = autre loi -> HORS ; la pièce exige
+    # pile/face (« pièce de théâtre » ne matche pas) ; face impossible -> 0 EXPLIQUÉ, pas un 0 sec.
+    if {"probabilite", "proba", "chance", "chances"} & qtoks:
+        try:
+            import maximum_entropie as _ME
+            from fractions import Fraction as _Fr
+        except Exception:
+            _ME = None
+        if _ME is not None and re.search(r"\bdé\b", question) and not re.search(r"dés\b", question):
+            faces = 6
+            mfa = re.search(r"dé\s+[àa]\s+(\d+)\s+faces", question)
+            if mfa:
+                faces = int(mfa.group(1))
+            nums = [int(x) for x in re.findall(r"\b\d+\b", question)]
+            if mfa:
+                nums.remove(faces)
+            if len(nums) == 1 and 2 <= faces <= 1000:
+                face = nums[0]
+                if 1 <= face <= faces:
+                    p = _ME.uniforme(faces)[0]
+                    return (VERIFIE, "%s (≈ %.2f %%) — en supposant un dé équilibré à %d faces."
+                            % (_Fr(1, faces), p * 100.0, faces),
+                            "probabilité — équiprobabilité (dé équilibré)")
+                return (VERIFIE, "0 — un dé à %d faces ne peut pas donner %d." % (faces, face),
+                        "probabilité — équiprobabilité (dé équilibré)")
+        if _ME is not None and re.search(r"\bpi[eè]ces?\b", question, re.I) and ("pile" in qtoks or "face" in qtoks):
+            p = _ME.uniforme(2)[0]
+            return (VERIFIE, "%s (%.0f %%) — en supposant une pièce équilibrée." % (_Fr(1, 2), p * 100.0),
+                    "probabilité — équiprobabilité (pièce équilibrée)")
 
     # SUITES : « fibonacci de 10 », « 10e nombre de Fibonacci »
     if "fibonacci" in qtoks and ent:
