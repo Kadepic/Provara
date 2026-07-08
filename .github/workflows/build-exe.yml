@@ -58,6 +58,7 @@ jobs:
           --hidden-import "http.server" --hidden-import socketserver --hidden-import zipfile --hidden-import tarfile
           --hidden-import marshal --hidden-import base64 --hidden-import difflib --hidden-import calendar
           --hidden-import zoneinfo --collect-all tzdata
+          --collect-submodules encodings
           lance.py
       - uses: actions/upload-artifact@v4
         with:

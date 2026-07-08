@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — BUG .exe corrigé : l'updater plantait sur `LookupError('unknown encoding: ascii')`
+
+- **Vécu par l'utilisateur** : « ⚠ Lancement de l'updater échoué : LookupError('unknown encoding: ascii') ».
+  `maj._lance_updater` écrivait le `.bat` via `open(bat, "w", encoding="ascii")` — mais PyInstaller n'embarque
+  pas toujours le module `encodings.ascii` que `TextIOWrapper` exige (contrairement à `str.encode("ascii")`
+  qui a un chemin rapide C sans registre de codecs). Le `.bat` ne s'écrivait pas → **l'auto-update était
+  bloqué**.
+- Fix : écriture en OCTETS filtrés à la main — `bytes(o for o in (ord(c) for c in contenu) if o < 128)` puis
+  `open(bat, "wb")`. AUCUN codec consulté (ni `open(encoding=)`, ni même `str.encode`). Un `.bat` doit être
+  ASCII ; un chemin accentué est purgé comme avant (`errors="ignore"`). Belt-and-suspenders au build :
+  `--collect-submodules encodings` (CI + bat) pour tout futur `open(encoding=…)` dynamique.
+- ⚠ Le build actuel de l'utilisateur ne peut PAS s'auto-corriger (le bug est dans l'updater du binaire qui
+  tourne) : **re-télécharger l'exe UNE fois** depuis la release `latest` ; ensuite l'auto-update reprend.
+- Bancs : `valide_maj` **41/41** (+3), suite 25/25, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vécu sur le .exe 62 (web ON) : 3 fixes que les tests hors-ligne ne voyaient pas
 
 - **Test du produit RÉEL** (port 8765, build 62, Internet activé) — trois comportements que la batterie

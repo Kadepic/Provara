@@ -334,8 +334,13 @@ def _lance_updater(nouveau_exe: str, dossier_app: str | None = None) -> dict:
     lignes += ['del "%~f0"']
     contenu = "\r\n".join(lignes) + "\r\n"
     try:
-        with open(bat, "w", encoding="ascii", errors="ignore") as f:
-            f.write(contenu)
+        # ⚠ ÉCRITURE EN OCTETS, PAS via un codec (vécu 2026-07-08 : LookupError('unknown encoding: ascii') sur
+        # le .exe — PyInstaller n'embarque pas toujours `encodings.ascii`, et même str.encode("ascii") consulte
+        # le registre de codecs). On filtre les octets ASCII (< 128) à la main : aucun lookup de codec possible,
+        # et un chemin à caractères accentués est purgé comme avant (errors="ignore"). Un .bat DOIT être ASCII.
+        donnees = bytes(o for o in (ord(c) for c in contenu) if o < 128)   # ord()+bytes() : AUCUN codec consulté
+        with open(bat, "wb") as f:
+            f.write(donnees)
         import subprocess
         no_win = getattr(subprocess, "CREATE_NO_WINDOW", 0)
         breakaway = getattr(subprocess, "CREATE_BREAKAWAY_FROM_JOB", 0x01000000)

@@ -35,7 +35,7 @@ py -m PyInstaller %PACKFLAG% --name Provara %WINFLAG% ^
   --hidden-import "xml.etree.ElementTree" --hidden-import "urllib.request" --hidden-import "urllib.parse" ^
   --hidden-import "http.server" --hidden-import socketserver --hidden-import zipfile --hidden-import tarfile ^
   --hidden-import marshal --hidden-import base64 --hidden-import difflib --hidden-import calendar ^
-  --hidden-import zoneinfo --collect-all tzdata ^
+  --hidden-import zoneinfo --collect-all tzdata --collect-submodules encodings ^
   lance.py
 if errorlevel 1 ( echo ERREUR ^(copie le message^). & pause & exit /b 1 )
 echo OK : dist\Provara.exe

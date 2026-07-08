@@ -80,6 +80,16 @@ check("timeout /t 1" not in _src, "updater : plus de la commande « timeout /t 1
 check("CREATE_BREAKAWAY_FROM_JOB" in _src, "updater : breakaway du job (survit à la fermeture de l'app)")
 check('getattr(subprocess, "DETACHED_PROCESS"' not in _src,
       "updater : plus de DETACHED_PROCESS (exclusif avec CREATE_NO_WINDOW)")
+# CODEC ASCII (vécu .exe 2026-07-08 : LookupError('unknown encoding: ascii')) : le .bat s'écrit en OCTETS,
+# JAMAIS via open(encoding="ascii") — PyInstaller n'embarque pas toujours encodings.ascii (que TextIOWrapper
+# exige). On vérifie sur les sources : aucun open(...encoding="ascii"...), écriture binaire.
+check('encoding="ascii"' not in _src and "encoding='ascii'" not in _src,
+      "updater : plus d'open(encoding=\"ascii\") (LookupError sur le .exe)")
+check('open(bat, "wb")' in _src, "updater : le .bat s'écrit en octets (mode binaire, aucun codec consulté)")
+# et l'écriture produit bien de l'ASCII pur, même si un chemin contient un accent
+_donnees = bytes(o for o in (ord(c) for c in 'move "C:\\Amélie\\x" "y"\r\n') if o < 128)
+check(all(b < 128 for b in _donnees) and bytes([0xe9]) not in _donnees,
+      "updater : filtre ord()<128 -> ASCII pur, accent purgé (comme errors='ignore')")
 with open(os.path.join(os.path.dirname(__file__), "..", "interface", "serveur.py"), encoding="utf-8") as _f:
     _src_srv = _f.read()
 check("os._exit(0)" in _src_srv, "serveur : l'app se ferme réellement après « appliquer »")
