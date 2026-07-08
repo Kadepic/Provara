@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 — 🔴 RÉGRESSION .EXE DÉCOUVERTE EN LIVE : tout resout_math mort sur le build 75 + l'except muet qui la cachait
+
+- Le diagnostic instrumenté a répondu (69 s) et NOMMÉ les preuves lentes : 5 preuves historiques qui
+  chargent des ressources massives (« Savoir massif — lexique 1,9 M », « Compréhension intégrée »…) — le
+  mystère du gel depuis le build 53 est résolu (pas un deadlock : des chargements géants sérialisés).
+- MAIS il a aussi révélé 3 échecs de preuves MATHS PURES (dénombrement, récurrences, graphes) — enquête
+  live : sur le .exe build 75, **TOUT resout_math est mort** (« factorielle de 6 », « 20 % de 5 000 »,
+  « pgcd » -> servis par Wikipédia !), même sur processus vierge. L'un des trois imports de tête
+  (arithmetique_modulaire / maths_discretes / trigonometrie) échoue dans le bundle — et le
+  `except Exception: return HORS` MUET cachait la cause et laissait le web répondre à la place.
+- **Fix immédiat** : l'échec d'import est signalé UNE fois au log avec traceback complet (« ⚠⚠ resout_math :
+  import des briques ÉCHOUÉ… ») — le prochain build donnera la cause exacte dans verax.log. Leçon : un
+  repli honnête n'a JAMAIS le droit d'être silencieux sur une panne de brique.
+- Bancs : assistant_nl 485/485, suite 26/26 (l'import passe en local — la panne est propre au bundle).
+
 ## 2026-07-08 — Diagnostic .exe, riposte 3 : budget GLOBAL + noms des preuves bloquées au log
 
 - Build 74 vérifié en live : le diagnostic ne répond toujours pas — la réponse n'est JAMAIS stockée, alors
