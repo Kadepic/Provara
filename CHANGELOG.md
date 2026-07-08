@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 34 : continuations sur les CALCULS (« et de CO2 ? », « et en mars ? »)
+
+- « masse molaire de H2O » puis « **et de CO2 ?** » tombait en repli — deux causes : ① le sujet de
+  continuation n'était mémorisé que pour les réponses DATA (jamais pour les calculs de `fonction_nl`) →
+  mémorisation de l'opérande (queue après la dernière préposition, ≤ 3 tokens pour éviter les substitutions
+  absurdes) ; ② la nouvelle entité était **minusculée** (« co2 ») — or les formules chimiques sont sensibles
+  à la casse (H2O ≠ h2o) → casse d'origine restituée dans `_nouvelle_entite`.
+- Marches maintenant : « et de CO2 ? » → 44.009 g/mol ; « combien de jours en février 2024 » → « et en
+  mars ? » → 31. Les continuations existantes (or/celsius/population/villes) inchangées.
+- Perf vérifiée après les 12 vagues de la nuit : médiane **1 ms**, p90 3 ms (chaud).
+- Bancs : raisonnement **200/200** (+2), capacites_chat 174/174, assistant_nl 419/419, paraphrases 174/174,
+  suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 33 : cas limites mathématiques DITS + calendrier courant complet
 
 - **Cas limites** (tombaient en mémo « Noté ») : « 10 divisé par 0 » / « 17 modulo 0 » → « Indéfini — la

@@ -3046,7 +3046,16 @@ def _connaissance_verifiee(question: str, conv_id: str | None = None) -> str | N
             return str(vf)
     # Le DATA n'a rien : tenter un SOUS-SYSTÈME FONCTION (morse/OTAN/masse molaire/complément ADN). Sound : le
     # moteur renvoie VÉRIFIÉ ou HORS (jamais inventé). On exige un mot-clé fort -> aucune question DATA mal routée.
-    return _fonction_calculee(question)
+    fc = _fonction_calculee(question)
+    if fc is not None and conv_id:
+        # CONTINUATION sur un CALCUL (vécu 2026-07-08 : « masse molaire de H2O » puis « et de CO2 ? » tombait
+        # en repli — le sujet n'était mémorisé que pour le DATA). Sujet = queue après la DERNIÈRE préposition
+        # (l'opérande), COURTE seulement (≤ 3 tokens — une queue verbeuse ferait une substitution absurde).
+        msuj = re.search(r"^.*\b(?:de|d['’]|en|à)\s+([\wÀ-ÿ][\w À-ÿ%/.-]*?)\s*\??\s*$", question)
+        if msuj and msuj.group(1).strip() and len(msuj.group(1).split()) <= 3:
+            _DERNIER_SUJET[conv_id] = msuj.group(1).strip()
+            _DERNIER_QUESTION[conv_id] = question
+    return fc
 
 
 def _fonction_calculee(question: str) -> str | None:
@@ -3365,7 +3374,10 @@ def _nouvelle_entite(texte: str) -> str:
     if (not cand or len(mots) > 3 or any(p in mots for p in _POSSESSIFS)
             or cand in {"celle-ci", "celui-ci", "ceux-ci", "celles-ci", "celle-la", "celui-la", "ca", "ça"}):
         return ""                                                  # démonstratif nu sans entité -> pas de type B
-    return cand
+    # CASSE D'ORIGINE restituée (vécu 2026-07-08) : « et de CO2 ? » renvoyait « co2 » — or les formules
+    # chimiques sont sensibles à la casse (H2O ≠ h2o), la continuation sur un calcul échouait.
+    m2 = re.search(re.escape(cand), texte, re.IGNORECASE)
+    return m2.group(0) if m2 else cand
 
 
 def _sujet_de(texte: str) -> str:
