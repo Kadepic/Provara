@@ -4132,9 +4132,52 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_4() -> bool:
+    """LOT 2 (excellence atomique) : ergodicité, AUC avec IC, bande DKW, bornage de question, Yager, UCB."""
+    import math
+    import ia as _I
+    ve, de = _I.analyse_ergodicite([1.5, 0.6], [0.5, 0.5])       # taux temporel = √(1.5×0.6) EXACT
+    if not (de["moyenne_ensemble"] == 1.05 and abs(de["taux_temporel"] - math.sqrt(0.9)) < 1e-12):
+        return False
+    if _I.auc_avec_intervalle([0.9, 0.8, 0.2, 0.1], [1, 1, 0, 0]) != ("estimation", (1.0, (1.0, 1.0)), 0.95):
+        return False
+    vb, db = _I.bande_confiance_cdf(list(range(1, 11)) * 3)      # DKW : eps = √(ln(2/α)/2n), n=30, α=0.05
+    if not (db["n"] == 30 and abs(db["eps"] - math.sqrt(math.log(2 / 0.05) / 60.0)) < 1e-12):
+        return False
+    if _I.classe_bornage("quelle est la capitale de la France ?").statut_ontologique != "borne":
+        return False
+    vc, mc, meta = _I.combine_evidences({"a": 0.7, "b": 0.3}, {"a": 0.6, "b": 0.4})
+    if not (vc == "combinaison" and abs(mc[frozenset({"a"})] - 0.42) < 1e-12 and meta["regle"] == "yager"):
+        return False
+    return abs(_I.acquisition_prochain_essai([0.0, 0.5, 1.0], [1.0, 2.0, 1.5], 0.0, 1.0)
+               - 0.6030150753768845) < 1e-9                       # UCB déterministe
+
+
+def _p_facade_stats_5() -> bool:
+    """LOT 2 : contrats d'ABSTENTION honnête (données insuffisantes / masses invalides -> DIT, jamais un chiffre)."""
+    import ia as _I
+    if _I.bande_prediction([1, 2, 3, 4, 5, 6, 7, 8], [2, 4, 6, 8, 10, 12, 14, 16])[0] != "abstention":
+        return False                                              # n=8 < 30
+    if _I.calibration_predictive([[1, 2, 3]] * 3, [2, 2, 3])[0] != "abstention":
+        return False                                              # n=3 < 30
+    if _I.conforme_ensemble([0.9, 0.85, 0.8, 0.95, 0.9], [[0.7, 0.3], [0.2, 0.8]])[0] != "abstention":
+        return False                                              # calibration n=5 trop courte pour 90 %
+    if _I.corrige_prevalence([[0.8, 0.2], [0.3, 0.7]], [0.5, 0.5])[0] != "abstention":
+        return False                                              # EM exige n ≥ 30
+    return _I.combine_evidences({"a": 0.6, "b": 0.2}, {"a": 0.5, "b": 0.3})[0] == "abstention"  # masses ≠ 1
+
+
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Ergodicité, calibration et fusion d'évidences (façade stats 4)": (
+        "analyse_ergodicite (taux temporel = moyenne géométrique exacte), auc_avec_intervalle, "
+        "bande_confiance_cdf (DKW exact), classe_bornage (borné/non-borné), combine_evidences (Yager, "
+        "conflit tracé), acquisition_prochain_essai (UCB déterministe).", _p_facade_stats_4),
+    "Abstention honnête, lot 2 (façade stats 5)": (
+        "bande_prediction, calibration_predictive, conforme_ensemble, corrige_prevalence : n insuffisant -> "
+        "ABSTENTION DITE ; combine_evidences refuse des masses qui ne somment pas à 1 (FAUX=0).",
+        _p_facade_stats_5),
     "Cohérence probabiliste et découvertes contrôlées (façade stats 1)": (
         "coherence_conjonction (bornes de Fréchet, sophisme de Linda détecté), decouvertes_controlees "
         "(Benjamini-Hochberg), auc_bat_le_hasard, compare_groupes (permutation), biais_de_longueur "

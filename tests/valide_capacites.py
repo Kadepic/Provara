@@ -31,7 +31,7 @@ def proche(a, b, rel=1e-3, abs_=1e-9):
 # ── 1) MANIFESTE LIVE : toutes les preuves passent ──
 n_ok, n_ko, echecs = C.verifie_tout()
 check(n_ko == 0, f"manifeste live : {n_ok}/{n_ok + n_ko} (échecs: {echecs})")
-check(n_ok == 284, f"284 sujets au registre (vu {n_ok})")  # 2026-07-08 : +3 preuves façade ia.py (lot 1, excellence atomique)
+check(n_ok == 286, f"286 sujets au registre (vu {n_ok})")  # 2026-07-08 : +5 preuves façade ia.py (lots 1-2, excellence atomique)
 
 # ── 2) ORACLE INDÉPENDANT — re-dérive les ancres contre les modules (anti auto-certification) ──
 import bayes as B
@@ -191,7 +191,7 @@ check(isinstance(C.preuve_de("Radioactivité"), str), "preuve_de d'un couvert ->
 
 # ── 4) DÉTERMINISME ──
 check(C.couvert("Statistique bayésienne") == C.couvert("Statistique bayésienne"), "déterminisme")
-check(len(C.sujets_couverts()) == 284, "sujets_couverts() = 284")
+check(len(C.sujets_couverts()) == 286, "sujets_couverts() = 286")
 
 print(f"\n=== valide_capacites : {ok}/{ok + ko} ===")
 import sys

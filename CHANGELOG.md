@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 2 : 10 façades de plus (dette 134 → 124)
+
+- 2 nouvelles preuves REGISTRE (diagnostic : 286) : **ergodicité/fusion** (taux temporel = moyenne
+  géométrique exacte √(1.5×0.6), AUC avec IC, bande DKW exacte √(ln(2/α)/2n), bornage de question,
+  combinaison de Yager avec conflit tracé, UCB déterministe) ; **abstention honnête lot 2** (bande de
+  prédiction, calibration prédictive, ensembles conformes, correction de prévalence : n insuffisant ->
+  abstention DITE ; masses qui ne somment pas à 1 -> refusées).
+- Plafond du cliquet : **124**. Pins registre 284→286.
+- Bancs : valide_capacites 73/73, valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 1 : 14 façades ia.py câblées en preuves produit (dette 148 → 134)
 
 - 3 nouvelles capacités prouvées au REGISTRE (diagnostic : 284 preuves exécutées en direct) : **cohérence
