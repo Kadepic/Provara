@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX=0 : « 100 km/h ou 30 m/s, le plus rapide ? » listait des PONTS + comparaison de grandeurs câblée
+
+- **FAUX servi, trouvé à la sonde** : `_liste_inverse` matchait le token « **plus** » de la relation
+  `plus_longue_travee_pont` et ancrait sur « 100 » → « Pont (100, 12) : Hammerbrücke… » pour une question de
+  vitesse. Nouveau `_JAMAIS_TYPE` (fermé : plus/moins/grande/longue/haute/petit…) : un comparatif ne désigne
+  jamais un type d'entité.
+- **CÂBLAGE** `fonction_nl.compare_grandeurs` (branché à `resout_conversion` ET `_cap_comparaison`) :
+  « 100 km/h est-il plus rapide que 30 m/s ? » → « 30 m/s est plus rapide que 100 km/h (100 km/h =
+  27.777778 m/s après conversion) » — conversion EXACTE puis comparaison, équivalence du perdant MONTRÉE dans
+  l'unité du gagnant ; « 36 km/h ou 10 m/s » → « Ils sont égaux » ; « plus léger » inverse le gagnant ;
+  masses/longueurs/volumes/aires/données couverts ; dimensions différentes → abstention. Et la devinette
+  classique : « un kilo de plomb ou un kilo de plumes ? » → « Ils pèsent exactement pareil ».
+- Météo : « combien de degrés fait-il dehors » rejoint la route météo (relevé réel web ON, refus honnête sinon).
+- Bancs : `banc_raisonnement` **191/191** (+5), paraphrases 174/174, suite 25/25, assistant_nl 239/239,
+  capacites_chat 137/137, resolution 50/50, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vague 15 : protons « dans », sel de table, hendécagone, somme des angles, degrés du cercle
 
 - `_cap_protons` : « combien de protons **dans** l'uranium » (le phrasé « dans » ratait) → 92 protons ;

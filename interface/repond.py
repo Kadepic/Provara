@@ -2235,6 +2235,15 @@ def _cap_comparaison(texte: str):
     """COMPARAISON EXACTE de deux entités sur un attribut (« la France est-elle plus grande que l'Espagne ? »,
     « qui est le plus peuplé entre l'Inde et la Chine ? »). Compare DEUX faits vérifiés et montre les valeurs.
     FAUX=0 : jamais de confirmation sans les deux faits ; on énonce le vrai ordre si l'assertion est fausse."""
+    # GRANDEURS À UNITÉS d'abord (« 100 km/h est-il plus rapide que 30 m/s ? ») : conversion exacte puis
+    # comparaison (fonction_nl.compare_grandeurs) — sinon ces questions mouraient en repli honnête (vécu).
+    try:
+        import fonction_nl as _FNL
+        _cg = _FNL.compare_grandeurs(texte)
+    except Exception:
+        _cg = None
+    if _cg:
+        return _cg
     x = y = adj = direction = None
     m = _COMPAR_RE.match(texte)
     if m:
@@ -2758,6 +2767,13 @@ def _suggere_type(question: str) -> tuple[str, str] | None:
     return None
 
 
+# Mots qui ne DÉSIGNENT jamais un type d'entité (comparatifs/liaisons) mais figurent dans des NOMS de relations
+# (`plus_longue_travee_pont`) : « 100 km/h est-il PLUS rapide que 30 m/s » matchait « plus » -> liste de PONTS
+# ancrée sur « 100 » (FAUX vécu 2026-07-08). Fermé, sûr.
+_JAMAIS_TYPE = frozenset({"plus", "moins", "tres", "grande", "grand", "longue", "long", "haute", "haut",
+                          "petite", "petit"})
+
+
 def _liste_inverse(question: str) -> str | None:
     """REQUÊTE INVERSE GÉNÉRIQUE « quels <B> en/de <valeur> ? » sur N'IMPORTE quelle relation `A_B` du registre
     (géo, art, sport, chimie…). Aucun domaine codé en dur. Soundness : on liste les VRAIES entités taguées de la
@@ -2792,7 +2808,7 @@ def _liste_inverse(question: str) -> str | None:
         return w
 
     def _liste_plausible(rel) -> bool:
-        rtoks = [t for t in rel.split("_") if len(t) >= 3 and t not in _GENERIQUES]
+        rtoks = [t for t in rel.split("_") if len(t) >= 3 and t not in _GENERIQUES and t not in _JAMAIS_TYPE]
         for i, w in enumerate(seq):
             # GARDE INVARIABLE (#90) : un mot en -s/-x précédé d'un DÉTERMINANT SINGULIER (« LE prix », « LA voix »)
             # n'est PAS un pluriel-liste — « prix/voix/croix/nez/temps/cas » sont invariables. Sinon « en quelle année
@@ -2809,7 +2825,8 @@ def _liste_inverse(question: str) -> str | None:
     # relations candidates : un token de NOM (≥3, non générique) est demandé dans la question (ET liste plausible).
     candidats = []
     for rel in _relations():
-        toks_match = [tk for tk in rel.split("_") if len(tk) >= 3 and tk not in _GENERIQUES and tk in demandes]
+        toks_match = [tk for tk in rel.split("_")
+                      if len(tk) >= 3 and tk not in _GENERIQUES and tk not in _JAMAIS_TYPE and tk in demandes]
         if toks_match and (intent or _liste_plausible(rel)):
             candidats.append((rel, toks_match))
     for rel, toks_match in candidats:
@@ -4805,6 +4822,7 @@ _METEO_RE = re.compile(
     # température LIVE (« quelle température fait-il à Toulouse aujourd'hui ? ») — le marqueur fait-il/
     # aujourd'hui/dehors/en ce moment distingue la météo de la PHYSIQUE factuelle (point d'ébullition…)
     r"quelle\s+temp[ée]rature\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il|dehors)|"
+    r"combien\s+de\s+degr[ée]s\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il)?\s*(?:dehors|aujourd['’ ]?hui|en\s+ce\s+moment)|"
     r"temp[ée]rature\b[^?]{0,40}\b(?:aujourd['’ ]?hui|demain|dehors|en\s+ce\s+moment|maintenant|cette\s+semaine))", re.I)
 _HEURE_RE = re.compile(r"\bquelle\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quelle\s+heure\b", re.I)
 _DATE_JOUR_RE = re.compile(

@@ -229,6 +229,40 @@ def _norm_conv(s: str) -> str:
     return re.sub(r"\s+", " ", s)
 
 
+def compare_grandeurs(question: str):
+    """COMPARAISON de deux grandeurs d'unités COMPARABLES : « 100 km/h ou 30 m/s, lequel est le plus rapide ? »,
+    « 2 kg est-il plus lourd que 1500 g » -> les deux converties dans la même base (facteurs EXACTS) puis
+    comparées ; l'équivalence du perdant est MONTRÉE dans l'unité du gagnant (re-vérifiable d'un coup d'œil).
+    Dimensions différentes ou unité inconnue -> None. Devinette du kilo (plomb/plumes) : réponse exacte."""
+    q = _norm_conv(question)
+    madj = re.search(r"plus\s+(rapide|vite|lourde?s?|l[ée]g[eè]re?s?|longs?|longues?|courte?s?|grande?s?|petite?s?)\b", q)
+    if madj:
+        mcv = re.search(rf"({_NUM})\s*({_UNIT_ALT})\b\s+(?:ou|que)\s+(?:celui\s+de\s+)?({_NUM})\s*({_UNIT_ALT})\b", q) \
+            or re.search(rf"({_NUM})\s*({_UNIT_ALT})\b[^0-9]{{0,35}}\b(?:ou|que)\b[^0-9]{{0,10}}({_NUM})\s*({_UNIT_ALT})\b", q)
+        if mcv:
+            n1, u1, n2, u2 = (float(mcv.group(1).replace(",", ".")), mcv.group(2).lower(),
+                              float(mcv.group(3).replace(",", ".")), mcv.group(4).lower())
+            d1, d2 = _CONV_UNITS.get(u1), _CONV_UNITS.get(u2)
+            if d1 and d2 and d1[0] == d2[0]:
+                b1, b2 = n1 * d1[1], n2 * d2[1]
+                a1, a2 = "%s %s" % (_fmt_nombre(n1), u1), "%s %s" % (_fmt_nombre(n2), u2)
+                if b1 == b2:
+                    return "Ils sont égaux (%s = %s après conversion)." % (a1, a2)
+                adj = {"vite": "rapide"}.get(madj.group(1), madj.group(1))
+                inverse = bool(re.match(r"l[ée]g|court|petit", adj))     # « plus léger » = le plus PETIT gagne
+                gagne_1 = (b1 > b2) != inverse
+                gagnant, perdant = (a1, a2) if gagne_1 else (a2, a1)
+                u_g, d_g = (u1, d1) if gagne_1 else (u2, d2)
+                b_p = b2 if gagne_1 else b1
+                return ("%s est plus %s que %s (%s = %s %s après conversion)."
+                        % (gagnant, adj, perdant, perdant, _fmt_nombre(b_p / d_g[1]), u_g))
+    # DEVINETTE CLASSIQUE, réponse exacte : un kilo est un kilo, quelle que soit la matière.
+    if re.search(r"plus\s+lourd", q) and re.search(r"(?:kilo|kg)\s+de\s+\w+\s+ou\s+(?:un\s+)?(?:kilo|kg)\s+de\s+\w+", q):
+        return ("Ils pèsent exactement pareil : un kilogramme est un kilogramme, la masse ne dépend "
+                "pas de la matière.")
+    return None
+
+
 def resout_conversion(question: str):
     """Convertit entre 2 unités de MÊME dimension (table fermée, exacte). (VERIFIE, texte, source) ou (HORS,None,None).
     FAUX=0 : unité inconnue ou dimensions différentes -> HORS. Ne fire que sur un motif de conversion explicite."""
@@ -245,6 +279,11 @@ def resout_conversion(question: str):
     if re.search(r"semaines?\s+dans\s+(?:une?\s+|l['’]\s*)?annee", q):
         return (VERIFIE, "52 semaines et 1 jour (année de 365 jours) ; 52 semaines et 2 jours si bissextile (366).",
                 "calendrier — 365 = 52×7 + 1")
+    # COMPARAISON de deux grandeurs d'unités COMPARABLES (logique partagée avec _cap_comparaison de repond).
+    cg = compare_grandeurs(question)
+    if cg:
+        return (VERIFIE, cg, "conversion + comparaison exactes")
+
     m = _CONV_EN.search(q)
     if m:
         num = float(m.group(1).replace(",", ".")); src = m.group(2).lower(); dst = m.group(3).lower()

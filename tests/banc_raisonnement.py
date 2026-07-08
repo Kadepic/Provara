@@ -135,6 +135,16 @@ CAS = [
     ("formule-sel-de-table", lambda q: R._connaissance_verifiee(q, None),
      "quelle est la formule chimique du sel de table ?", "NaCl"),
     ("cotes-hendecagone", lambda q: R._connaissance_verifiee(q, None), "combien de côtés a un hendécagone ?", "11"),
+    # COMPARAISON DE GRANDEURS À UNITÉS (conversion exacte puis comparaison, équivalence MONTRÉE) —
+    # avant : « lequel est le plus rapide : 100 km/h ou 30 m/s » listait des PONTS (ancre « plus » -> travée)
+    ("compare-vitesses", R._cap_comparaison, "100 km/h est-il plus rapide que 30 m/s ?",
+     "30 m/s est plus rapide que 100 km/h"),
+    ("compare-vitesses-egales", R._cap_comparaison, "36 km/h ou 10 m/s, lequel est le plus rapide ?",
+     "Ils sont égaux"),
+    ("compare-masses", R._cap_comparaison, "2 kg est-il plus lourd que 1500 g ?", "2 kg est plus lourd"),
+    ("kilo-plomb-plumes", lambda q: __import__("fonction_nl").compare_grandeurs(q),
+     "qu'est-ce qui est plus lourd : un kilo de plomb ou un kilo de plumes ?", "pèsent exactement pareil"),
+    ("liste-inverse-plus-pont", R._liste_inverse, "100 km/h est-il plus rapide que 30 m/s ?", ""),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
