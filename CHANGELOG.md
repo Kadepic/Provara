@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE des capacités dormantes, vague 1 : maths discrètes / arithmétique / trigo en conversation
+
+- **Mandat Yohan (« tout câbler, augmenter la puissance conversationnelle »)** : audit d'atteignabilité →
+  ~18 capacités sur 27 existaient (modules testés) mais n'étaient PAS déclenchables par une phrase naturelle.
+  Vague 1 câblée via `fonction_nl.resout_math` (greffé dans `resout_fonction`, le hub NL→fonction déjà branché) :
+  **pourcentage** (« 20% de 150 » → 30), **PGCD/PPCM**, **primalité** (« 17 est-il premier ? »), **factorielle**
+  (« 5! »), **combinaisons/arrangements** (« C(5,2) »), **permutations**, **Fibonacci**, **trigonométrie**
+  (sin/cos/tan en degrés). Chaque calcul vient d'un module VÉRIFIÉ (`arithmetique_modulaire`, `maths_discretes`,
+  `trigonometrie`) — jamais fabriqué.
+- **FAUX=0 / anti-faux-positif** : primalité durcie (« premier » est un ordinal courant — « premier président
+  élu en 1958 » ne déclenche PAS un test de primalité sur 1958) ; chaque route exige un mot-clé fort + des
+  opérandes valides ; hors périmètre → HORS, la cascade continue. Aucune question factuelle volée (banc dédié).
+- **Non câblé volontairement** (pas de brique vérifiée dédiée = ne rien fabriquer) : chiffres romains,
+  probabilité élémentaire — à faire quand/si le module existe.
+- Bancs : `valide_assistant_nl` **109/109** (+20 : les 14 calculs + 6 gardes anti-vol), suite **25/25**,
+  raisonnement 166/166, paraphrases 168/168, challenge 16/16.
+
 ## 2026-07-08 — TRONC Phase 4 : le SÉQUENCEUR — l'ordre des caps s'APPREND du signal réel (§11-§12)
 
 - **Nouveau `src/sequenceur.py`** : l'exécutif d'allocation de la spec. Il ordonne les caps de la cascade PAR

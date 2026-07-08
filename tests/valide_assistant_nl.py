@@ -342,5 +342,30 @@ serveur.oublie_conversation(mem2, "c-oubli")
 check(A.reprend_clarification("c-oubli", "oui") is None,
       "oublie_conversation -> l'état assistant est purgé (rien d'« oublié » ne se rejoue)")
 
+# ————————————————— MATHS DISCRÈTES / ARITHMÉTIQUE / TRIGO en NL (câblage « tout câbler » 2026-07-08) —————————————————
+def _m(q):
+    st, tx, _ = FN.resout_fonction(q)
+    return tx if st == _V else None
+
+
+check(_m("20% de 150 ?") == "30", "pourcentage : 20% de 150 -> 30")
+check(_m("pgcd de 12 et 18") == "6", "PGCD de 12 et 18 -> 6")
+check(_m("ppcm de 4 et 6") == "12", "PPCM de 4 et 6 -> 12")
+check(_m("est-ce que 17 est premier ?") and "Oui" in _m("est-ce que 17 est premier ?"), "17 premier -> Oui")
+check(_m("18 est-il un nombre premier ?") and "Non" in _m("18 est-il un nombre premier ?"), "18 premier -> Non")
+check(_m("factorielle de 5") == "120", "factorielle 5 -> 120")
+check(_m("5!") == "120", "5! -> 120")
+check(_m("combien de façons d'ordonner 5 éléments") == "120", "permutations 5 -> 120")
+check(_m("combinaisons de 2 parmi 5") == "10", "C(5,2) -> 10")
+check(_m("arrangements de 2 parmi 5") == "20", "A(5,2) -> 20")
+check(_m("fibonacci de 10") == "55", "Fibonacci 10 -> 55")
+check(_m("sinus de 30 degrés") == "0.5", "sin 30° -> 0.5")
+check(_m("cos de 60°") == "0.5", "cos 60° -> 0.5")
+check(_m("tangente de 45") == "1", "tan 45° -> 1")
+# GARDE anti-faux-positif : « premier »/nombres ordinaux ne déclenchent PAS la primalité sur une question DATA.
+for q in ("le premier président élu en 1958", "premier ministre depuis 2017", "premier roman de 1984",
+          "quelle est la capitale de la France ?", "population du Japon en 2020", "qui a gagné en 2018"):
+    check(_m(q) is None, "maths ne vole PAS « %s » (faux positif interdit)" % q[:34])
+
 print(f"\n=== valide_assistant_nl : {ok}/{ok + ko} ===")
 sys.exit(0 if ko == 0 else 1)
