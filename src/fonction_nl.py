@@ -352,6 +352,34 @@ def resout_math(question: str):
     if "fibonacci" in qtoks and ent:
         return (VERIFIE, str(_MD.fibonacci(ent[0])), "suite de Fibonacci")
 
+    # NOMBRES COMPLEXES : « module de 3+4i », « conjugué de 2-3i », « argument de i » (module `nombres_complexes`,
+    # format tuple (ré, im)). Exige un mot-clé + un « i »/« j » d'unité imaginaire. FAUX=0 : calcul vérifié.
+    if ("complexe" in qtoks or "module" in qtoks or "conjugue" in qtoks or "argument" in qtoks) \
+            and re.search(r"\d\s*[ij]\b|[+-]\s*[ij]\b|\b[ij]\b", question):
+        s = question.replace(" ", "").replace(",", ".").lower()
+        mi = re.search(r"([+-]?\d*(?:\.\d+)?)[ij]\b", s)      # terme imaginaire (coef vide -> 1, « - » -> -1)
+        z = None
+        if mi:
+            coef = mi.group(1)
+            im_part = 1.0 if coef in ("", "+") else -1.0 if coef == "-" else float(coef)
+            mr = re.search(r"(-?\d+(?:\.\d+)?)$", s[:mi.start()])   # partie réelle = nombre juste avant le terme en i
+            re_part = float(mr.group(1)) if mr else 0.0
+            z = (re_part, im_part)
+        if z is not None:
+            try:
+                import nombres_complexes as _NC
+                if "module" in qtoks:
+                    return (VERIFIE, _fmt_nombre(_NC.module(z)), "nombres complexes — module")
+                if "argument" in qtoks:
+                    return (VERIFIE, _fmt_nombre(_NC.argument(z)) + " rad", "nombres complexes — argument")
+                if "conjugue" in qtoks:
+                    c = _NC.conjugue(z)
+                    im = c[1]
+                    return (VERIFIE, "%s %s %si" % (_fmt_nombre(c[0]), "+" if im >= 0 else "-", _fmt_nombre(abs(im))),
+                            "nombres complexes — conjugué")
+            except Exception:
+                return (HORS, None, None)
+
     # TRIGONOMÉTRIE : « sinus de 30 degrés », « cos de 60° », « tangente de 45 »
     mt = re.search(r"\b(sinus|sin|cosinus|cos|tangente|tan)\b.*?(-?\d+(?:[.,]\d+)?)", q)
     if mt:

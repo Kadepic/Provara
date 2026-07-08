@@ -1,5 +1,13 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 5 : NOMBRES COMPLEXES en conversation (module / argument / conjugué)
+
+- `fonction_nl.resout_math` câble `nombres_complexes` : « module de 3+4i » → 5, « argument de i » → 1,57 rad,
+  « conjugué de 2-3i » → 2 + 3i. Parseur a+bi robuste (i seul → coef 1, imaginaire pur « 5i », signes négatifs
+  « -3-4i »). Garde : exige un mot-clé (module/argument/conjugué/complexe) + une unité imaginaire → un « i »
+  dans un nom propre (« Djibouti ») ne déclenche rien. Calcul du module vérifié.
+- Bancs : `valide_assistant_nl` **118/118** (+6), suite 25/25, raisonnement 166/166, paraphrases 168/168.
+
 ## 2026-07-08 — CÂBLAGE vague 4 : THÉORIE DES JEUX en conversation (équilibres de Nash classiques)
 
 - **Correction de mon propre diagnostic** : j'avais annoncé « pas de brique jeux » — FAUX, `jeux_appliques`

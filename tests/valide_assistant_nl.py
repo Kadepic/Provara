@@ -368,6 +368,13 @@ check(_i and "157.63" in _i and "1157.63" in _i, "intérêts composés : gain 15
 _i = _m("1000 euros à 5% pendant 3 ans en intérêts simples")
 check(_i and "150" in _i and "1150" in _i, "intérêts simples : gain 150 + valeur acquise 1150")
 check(_m("20% de 150 ?") == "30", "le pourcentage simple n'est PAS confondu avec la finance (garde 3 composants)")
+# NOMBRES COMPLEXES : module / argument / conjugué (parseur a+bi robuste : i seul, imaginaire pur, signes).
+check(_m("module de 3+4i") == "5", "module de 3+4i -> 5")
+check(_m("module de 5i") == "5", "module d'un imaginaire pur 5i -> 5")
+check(_m("argument de i") and "1.57" in _m("argument de i"), "argument de i -> π/2 rad")
+check(_m("conjugué de 2-3i") and "2 + 3i" in _m("conjugué de 2-3i"), "conjugué de 2-3i -> 2 + 3i")
+check(_m("module de -3-4i") == "5", "module de -3-4i -> 5 (signes négatifs)")
+check(_m("parle-moi de Djibouti") is None, "un « i » dans un nom propre ne déclenche PAS les complexes (garde mot-clé)")
 # GARDE anti-faux-positif : « premier »/nombres ordinaux ne déclenchent PAS la primalité sur une question DATA.
 for q in ("le premier président élu en 1958", "premier ministre depuis 2017", "premier roman de 1984",
           "quelle est la capitale de la France ?", "population du Japon en 2020", "qui a gagné en 2018"):
