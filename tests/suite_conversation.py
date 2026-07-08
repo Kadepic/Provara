@@ -26,6 +26,7 @@ GATES = [
     "valide_extrait_pdf", "valide_lecteur_document", "valide_apprentissage_patrons", "valide_conversation",
     "valide_capacites_chat", "valide_assistant_nl", "valide_maj", "valide_veille_structure", "valide_cablage",
     "valide_faits_appris", "valide_tronc", "valide_debiaisage", "valide_sources", "valide_sequenceur",
+    "valide_atomes",                 # cliquet : aucune fonction publique orpheline (dette ia.py qui ne peut que fondre)
     # bancs de COMPRÉHENSION qui passent sur l'ÉCHANTILLON (les autres — paraphrases/synonymes/raisonnement —
     # exigent la base COMPLÈTE : trous de données sur le sample, à lancer manuellement avec LECTEUR_DATASETS_DIR).
     "banc_constructions",

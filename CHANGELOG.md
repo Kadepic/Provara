@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique : gate à CLIQUET valide_atomes (aucun orphelin possible, dette qui fond)
+
+- **Nouvelle gate `valide_atomes` dans la suite (26 gates)** : ① scan de TOUTES les fonctions publiques du
+  produit — la gate échoue si une NOUVELLE fonction orpheline apparaît ; ② la dette historique (148 façades
+  `ia.py` jamais consommées) est bornée par un plafond qui ne peut que DESCENDRE (câbler ou élaguer, par lots).
+- **17 ex-orphelines hors-façade câblées** avec preuve à réponse connue dans la gate : dopants semiconducteurs,
+  entropie conjointe (2 bits sur l'uniforme 2×2), formules chimiques du référentiel, Good-Turing,
+  clusters Dirichlet, nom de langue, changements d'état, lois des grands nombres (déterminisme à graine
+  fixée), inflation de Kalman, regret logarithmique, switch adaptatif de stratégies, taxonomie des sujets
+  (erreur claire sur document absent), relations-pont, hyperonymie lexicale, compatibilité de relations
+  inverses.
+- Bancs : suite **26/26** (nouvelle gate comprise), valide_atomes 19/19.
+
 ## 2026-07-08 — Perf atome 3 : borne RAM du cache de lookups streaming
 
 - `_STREAM_CACHE` (mémo des lookups sur gros fichiers) grossissait SANS borne avec chaque entité distincte
