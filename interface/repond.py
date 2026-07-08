@@ -5471,6 +5471,21 @@ def _cap_quotidien(texte: str, conv_id=None):
                     "m'abstiens plutôt que de te donner un jour décalé.")
     if _HEURE_RE.search(texte):
         import time as _t
+        # GARDE ÉPHÉMÉRIDES (FAUX vécu 2026-07-08) : « à quelle heure le soleil se couche » recevait l'heure
+        # ACTUELLE. Lever/coucher = astronomie locale (lieu + date) — abstention honnête, pas l'horloge.
+        if re.search(r"soleil|lune\b|aube|crepuscule|cr[ée]puscule", _normalise(texte)):
+            return ("L'heure du lever/coucher dépend du lieu et du jour — je n'ai pas d'éphémérides vérifiées "
+                    "sous la main, je préfère m'abstenir plutôt que te donner l'heure de l'horloge.")
+        # HEURE FUTURE/PASSÉE : « quelle heure sera-t-il dans 3 heures » recevait l'heure ACTUELLE (FAUX
+        # vécu). Décalage exact sur l'horloge machine, modulo 24 h.
+        mfut = re.search(r"dans\s+(\d+)\s+(heures?|minutes?)\b", _normalise(texte))
+        if mfut and re.search(r"sera|serait", _normalise(texte)):
+            import datetime as _dt
+            delta = _dt.timedelta(**{"hours" if mfut.group(2).startswith("heure") else "minutes":
+                                     int(mfut.group(1))})
+            fu = _dt.datetime.now() + delta
+            return ("Il sera %02d h %02d (horloge de ta machine + %s %s)."
+                    % (fu.hour, fu.minute, mfut.group(1), mfut.group(2)))
         # FAUX=0 vécu 2026-07-08 : « quelle heure est-il à New York ? » servait l'heure LOCALE de la machine.
         # Ville nommée -> fuseau IANA (table fermée de grandes villes + zoneinfo, base tz officielle) ;
         # ville APRÈS « à » mais hors table, ou base tz absente -> abstention honnête, JAMAIS l'heure locale.
@@ -5525,8 +5540,28 @@ def _cap_quotidien(texte: str, conv_id=None):
                         % (n, cible.day, _MOIS_FR[cible.month - 1], cible.year))
             except (ValueError, TypeError):
                 return None
-    mage = re.search(r"quel\s+[âa]ge\s+a\s+(?:une\s+personne|quelqu['’]un)\s+n[ée]e?\s+en\s+(\d{4})",
-                     texte, re.I)
+    # DATE COMPLÈTE de naissance -> âge EXACT (« né le 15 mars 1990 » ; tombait en repli, vécu 2026-07-08).
+    mage_d = re.search(r"n[ée]e?\s+le\s+(1er|\d{1,2})\s+([a-zà-ÿ]+)\s+(\d{4})", texte, re.I)
+    if mage_d and re.search(r"[âa]ge", texte, re.I):
+        import datetime as _dt
+        mo = _MOIS_NUM.get(mage_d.group(2).lower())
+        if mo:
+            try:
+                naiss = _dt.date(int(mage_d.group(3)), mo,
+                                 1 if mage_d.group(1).lower() == "1er" else int(mage_d.group(1)))
+            except ValueError:
+                return None
+            auj = _dt.date.today()
+            if naiss <= auj:
+                age = auj.year - naiss.year - ((auj.month, auj.day) < (naiss.month, naiss.day))
+                return ("%d ans (né(e) le %d %s %d, nous sommes le %02d/%02d/%d à l'horloge de ta machine)."
+                        % (age, naiss.day, _MOIS_FR[naiss.month - 1], naiss.year, auj.day, auj.month, auj.year))
+            return None
+    # ANNÉE seule -> fourchette honnête ; phrasés élargis (« si je suis né en 1990 quel âge j'ai », vécu).
+    mage = (re.search(r"quel\s+[âa]ge\s+a\s+(?:une\s+personne|quelqu['’]un)\s+n[ée]e?\s+en\s+(\d{4})",
+                      texte, re.I)
+            or re.search(r"n[ée]e?\s+en\s+(\d{4}).{0,20}?quel\s+[âa]ge", texte, re.I)
+            or re.search(r"quel\s+[âa]ge\b.{0,25}?\bn[ée]e?\s+en\s+(\d{4})", texte, re.I))
     if mage:
         import datetime as _dt
         auj = _dt.date.today()
@@ -5536,6 +5571,23 @@ def _cap_quotidien(texte: str, conv_id=None):
             return ("%d ou %d ans selon que l'anniversaire est passé (né(e) en %d, nous sommes le %02d/%02d/%d "
                     "à l'horloge de ta machine)." % (a2 - 1, a2, an, auj.day, auj.month, auj.year))
         return None
+    # ANNÉE FUTURE / COMPTE D'ANNÉES : « quelle année dans 10 ans » -> 2036 ; « dans combien d'années 2050 »
+    # -> 24 (l'un partait en « c'est subjectif », l'autre en repli — vécu 2026-07-08).
+    tn2 = _normalise(texte)
+    man2 = re.search(r"quelle\s+annee\s+(?:serons[- ]nous\s+|sera[- ]t[- ]on\s+)?dans\s+(\d+)\s+ans", tn2)
+    if man2:
+        import datetime as _dt
+        y = _dt.date.today().year
+        return "En %d (%d + %s, année de l'horloge de ta machine)." % (y + int(man2.group(1)), y, man2.group(1))
+    man3 = re.search(r"dans\s+combien\s+d\s*annees?\s+(?:serons[- ]nous\s+en\s+)?(\d{4})\b", tn2)
+    if man3:
+        import datetime as _dt
+        y, cible_a = _dt.date.today().year, int(man3.group(1))
+        if cible_a > y:
+            return "Dans %d ans (%d − %d, année de l'horloge de ta machine)." % (cible_a - y, cible_a, y)
+        if cible_a == y:
+            return "C'est cette année (%d à l'horloge de ta machine)." % y
+        return "C'était il y a %d ans (%d − %d)." % (y - cible_a, y, cible_a)
     if _DATE_JOUR_RE.search(texte):
         import time as _t
         lt = _t.localtime()

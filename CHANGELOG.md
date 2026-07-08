@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 32 : 2 FAUX horloge (coucher du soleil, heure future) + âge exact, années futures
+
+- **FAUX** : « à quelle heure le **soleil se couche** » → *l'heure ACTUELLE de la machine* ! Garde
+  éphémérides (soleil/lune/aube/crépuscule → abstention DITE : lieu + jour requis, pas d'éphémérides
+  vérifiées).
+- **FAUX** : « quelle heure **sera-t-il dans 3 heures** » → *l'heure actuelle aussi*. → « Il sera 21 h 40
+  (horloge de ta machine + 3 heures) » (décalage exact).
+- **Âge** : date complète → âge EXACT (« né le 15 mars 1990 » → « 36 ans (né(e) le …, nous sommes le …) ») ;
+  phrasé « si je suis né en 1990 quel âge j'ai » → fourchette honnête (l'ancienne route ne connaissait qu'un
+  seul phrasé).
+- **Années** : « quelle année dans 10 ans » → « En 2036 (2026 + 10, année de l'horloge) » (partait en
+  « c'est subjectif » !) ; « dans combien d'années 2050 » → « Dans 24 ans » ; année passée → « C'était il y
+  a N ans ».
+- Sondé, abstention CORRECTE (pas touché) : participe passé de « prendre » (irrégulier — le conjugueur ne
+  fait que les réguliers, dit), calories d'une pomme (data absente), Pâques (pas de brique computus),
+  distance Paris-Marseille (coords FR en attente du re-upload — chantier connu).
+- Bancs : capacites_chat **168/168** (+6), assistant_nl 413/413, raisonnement 198/198, paraphrases 174/174,
+  suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 31 : opérations textuelles avancées (palindrome répondu « à côté », morse décodé volé)
 
 - **FAUX de sens** : « le mot radar est-il un **palindrome** » → *« Le radar est un système — je ne le
