@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 19 : 5 façades de plus (dette 12 → 7)
+
+- 1 preuve REGISTRE composée (diagnostic : 305) : **apprentissage de règle honnête** (deux seuils possibles
+  entre les exemples -> AMBIGU, refus de choisir arbitrairement), **apprend_domaine** (le référentiel OMS de
+  test est réellement appris dans la BASE puis retiré sans trace), **PAC-Bayes** (la borne domine le risque
+  empirique), **biais du survivant MESURÉ** (moyenne des survivants 9.0 vs population 5.5 -> biais 3.5
+  exact), **queues lourdes POT-GPD** (P(X > 20) estimée sur une Pareto ; seuil sous u -> None honnête).
+- Plafond du cliquet : **7** — il ne reste que les fonctions web/réseau et 2 à état lourd.
+- Bancs : valide_capacites 73/73 (pins 304→305), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 18 : 6 façades de plus (dette 18 → 12)
 
 - 1 preuve REGISTRE composée (diagnostic : 304) : **régression quantile** (la médiane conditionnelle

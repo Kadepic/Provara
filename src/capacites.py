@@ -4132,6 +4132,38 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_21() -> bool:
+    """LOT 19 : règles apprises/posées, PAC-Bayes, biais du survivant, queue POT-GPD."""
+    import random
+    import ia as _I
+    if _I.apprend_regle_par_exemples([({"v": 45}, True), ({"v": 50}, True),
+                                      ({"v": 90}, False), ({"v": 95}, False)])[0] != "ambigu":
+        return False                                                  # DEUX seuils possibles -> refus de choisir
+    import regle as _RG
+    r1 = _RG.Regle("R-PREUVE-1", "hygiene-preuve", "cuisine", "id-1", "se laver les mains",
+                   "2020-01-01", 1, predicat=("lave_mains", True))
+    try:
+        ref = _I.apprend_domaine("hygiene-preuve", "OMS", [r1])
+        if getattr(ref, "nom", None) != "hygiene-preuve" or \
+                not any(getattr(x, "nom", "") == "hygiene-preuve" for x in _RG.BASE):
+            return False                                              # le référentiel est réellement APPRIS
+    finally:
+        _RG.BASE[:] = [x for x in _RG.BASE if getattr(x, "nom", "") != "hygiene-preuve"]   # sans trace
+    vb, borne = _I.borne_risque_generalisation({"h1": 0.5, "h2": 0.5}, {"h1": 0.5, "h2": 0.5},
+                                               {"h1": 0.1, "h2": 0.2}, 100)
+    if not (vb == "borne" and borne > 0.15):                          # PAC-Bayes DOMINE le risque empirique
+        return False
+    vs, ds = _I.diagnostique_biais_survie([10.0, 2.0, 9.0, 1.0, 8.0, 3.0] * 8, 5.0)
+    if not (vs == "biais" and ds["moy_survivants"] == 9.0 and ds["biais"] == 3.5):
+        return False                                                  # le biais du survivant est MESURÉ (3.5)
+    rng = random.Random(0)
+    data = [rng.paretovariate(2.0) for _ in range(500)]
+    p = _I.proba_evenement_rare(data, 20.0)
+    if not (p is not None and 0.0001 < p < 0.01):                     # POT-GPD : queue lourde estimée
+        return False
+    return _I.proba_evenement_rare(data, 0.5) is None                 # seuil SOUS u -> None honnête
+
+
 def _p_facade_stats_20() -> bool:
     """LOT 18 : régression quantile, maxmin credal, CRC, VAR couplé honnête, p-box, multiclasse isotone."""
     import random
@@ -4612,6 +4644,12 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Règles, PAC-Bayes et queues lourdes (façade stats 21)": (
+        "apprend_regle_par_exemples (deux seuils possibles -> AMBIGU, refus de choisir), apprend_domaine "
+        "(le référentiel est réellement appris puis retiré sans trace), borne_risque_generalisation "
+        "(PAC-Bayes domine le risque empirique), diagnostique_biais_survie (biais du survivant MESURÉ 3.5), "
+        "proba_evenement_rare (POT-GPD sur queue de Pareto ; seuil sous u -> None honnête).",
+        _p_facade_stats_21),
     "Quantiles conditionnels, credal et p-box (façade stats 20)": (
         "quantile_conditionnel (médiane conditionnelle : y = 2x retrouvé), decision_sous_ambiguite (maxmin "
         "credal exact), controle_risque (CRC : λ le moins invasif), prevoit_series_couplees (singulier -> "
