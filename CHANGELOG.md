@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX=0 : « quinze plus vingt-sept » rendait 28 (le tiret de « vingt-sept » devenait un moins)
+
+- **FAUX servi comme fait** : la substitution mot→chiffre traitait « vingt-sept » mot à mot → « 20-7 », et le
+  trait d'union était évalué comme une SOUSTRACTION : 15 + 20 − 7 = **28** au lieu de 42. Corrigé : les
+  nombres COMPOSÉS 0..100 sont remplacés d'abord, via une table auto-générée par le MÊME générateur que
+  « écris N en lettres » (une seule source de vérité orthographique, 13 ancres épinglées) — « vingt et un »,
+  « soixante-quinze », « quatre-vingt-dix-neuf », tiret ou espace. « vingt et un plus trois » (Rien avant) → 24.
+- Bancs : `banc_paraphrases` **174/174** (+4), suite 25/25, assistant_nl 234/234, capacites_chat 137/137,
+  raisonnement 176/176, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Génération d'anagrammes depuis le dictionnaire embarqué (« anagramme de chien » → niche)
 
 - `_cap_anagramme` : balayage du dictionnaire réel (`definition_nom`, 292k noms du Wiktionnaire) — « anagramme

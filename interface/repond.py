@@ -3102,6 +3102,11 @@ def _reponse_calcul(texte: str) -> str | None:
     # gauche-droite). AVANT _MOTS_NB, qui transformerait « pour cent » en « pour 100 » et casserait le motif.
     texte = re.sub(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour\s*cents?)\s+de\s+(\d+(?:[.,]\d+)?)",
                    r"\1 * \2 / 100", texte, flags=re.I)
+    # NOMBRES COMPOSÉS D'ABORD (FAUX vécu 2026-07-08 : « vingt-sept » passait mot à mot -> « 20-7 » et le
+    # trait d'union devenait une SOUSTRACTION — « quinze plus vingt-sept » rendait 28 au lieu de 42). Table
+    # 0..100 générée par le MÊME générateur que « écris N en lettres » (ancres épinglées au banc), motifs les
+    # plus longs d'abord, trait d'union ou espace acceptés (« vingt sept » = « vingt-sept »).
+    texte = _remplace_nombres_lettres(texte)
     texte = re.sub(r"\b(" + "|".join(_MOTS_NB) + r")\b",
                    lambda mm: _MOTS_NB[mm.group(1).lower()], texte, flags=re.I)
     # OPÉRATEURS EN TOUTES LETTRES avec la VRAIE précédence (« 3 plus 4 fois 5 » -> 3 + 4 * 5 = 23, pas 35) :
@@ -3138,6 +3143,29 @@ def _reponse_calcul(texte: str) -> str | None:
     except Exception:
         pass
     return None
+
+
+_NB_LETTRES_RE = None
+_NB_LETTRES_VAL: dict = {}
+
+
+def _remplace_nombres_lettres(texte: str) -> str:
+    """Remplace les nombres en toutes lettres 0..100 par leurs chiffres, COMPOSÉS d'abord (« vingt et un »,
+    « soixante-quinze », « quatre-vingt-dix-neuf »). Table auto-générée depuis fonction_nl._nombre_en_lettres
+    (le générateur aux 13 ancres épinglées) -> une seule source de vérité orthographique."""
+    global _NB_LETTRES_RE
+    if _NB_LETTRES_RE is None:
+        import fonction_nl as _FNL
+        pats = []
+        for n in range(0, 101):
+            cle = re.sub(r"\s+", " ", _normalise(_FNL._nombre_en_lettres(n)))
+            _NB_LETTRES_VAL[cle] = n
+            pats.append(cle)
+        pats.sort(key=len, reverse=True)
+        alt = "|".join(r"[-\s]+".join(re.escape(tok) for tok in p.split()) for p in pats)
+        _NB_LETTRES_RE = re.compile(r"\b(?:%s)\b" % alt, re.IGNORECASE)
+    return _NB_LETTRES_RE.sub(
+        lambda m: str(_NB_LETTRES_VAL.get(re.sub(r"\s+", " ", _normalise(m.group(0))), m.group(0))), texte)
 
 
 def _ressemble_calcul(texte: str) -> bool:
