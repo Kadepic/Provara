@@ -385,7 +385,8 @@ _HABILLAGE_RE = re.compile(
 # Prudence FAUX=0 : uniquement des abréviations SANS lecture alternative en français standard (« ou » reste
 # intact : c'est un vrai mot). Appliqué token par token, jamais dans un mot.
 _SMS_MAP = {"ki": "qui", "koi": "quoi", "kel": "quel", "kelle": "quelle", "keske": "qu'est-ce que",
-            "pk": "pourquoi", "pq": "pourquoi", "qd": "quand", "cmb": "combien", "cmt": "comment",
+            "pk": "pourquoi", "pq": "pourquoi", "qd": "quand", "cmb": "combien", "cb": "combien",
+            "cmt": "comment",
             "c": "c'est", "cest": "c'est", "bcp": "beaucoup", "bjr": "bonjour", "slt": "salut"}
 _SMS_RE = re.compile(r"\b(" + "|".join(sorted(_SMS_MAP, key=len, reverse=True)) + r")\b(?!['’])", re.I)
 
@@ -5407,20 +5408,24 @@ def _cap_quotidien(texte: str, conv_id=None):
         import time as _t
         # FAUX=0 vécu 2026-07-08 : « quelle heure est-il à New York ? » servait l'heure LOCALE de la machine.
         # Ville nommée -> fuseau IANA (table fermée de grandes villes + zoneinfo, base tz officielle) ;
-        # ville hors table ou base tz absente -> abstention honnête, JAMAIS l'heure locale par défaut.
+        # ville APRÈS « à » mais hors table, ou base tz absente -> abstention honnête, JAMAIS l'heure locale.
+        tn = " %s " % _normalise(texte)
+        ville_conn = next((v for v in _FUSEAUX_VILLES
+                           if " %s " % v in tn), None)          # la ville peut être N'IMPORTE OÙ (« tokyo il
+        #                                                          est quelle heure » servait l'heure locale)
+        if ville_conn:
+            try:
+                from zoneinfo import ZoneInfo
+                import datetime as _dt
+                lh = _dt.datetime.now(ZoneInfo(_FUSEAUX_VILLES[ville_conn]))
+                return ("À %s il est %02d h %02d (fuseau %s, base de fuseaux IANA + horloge de ta machine)."
+                        % (ville_conn.title(), lh.hour, lh.minute, _FUSEAUX_VILLES[ville_conn]))
+            except Exception:
+                return ("Je n'ai pas la base de fuseaux horaires sous la main — je préfère m'abstenir plutôt "
+                        "que te donner l'heure locale de TA machine comme si c'était celle de %s."
+                        % ville_conn.title())
         mv = re.search(r"\b(?:a|à)\s+([A-ZÀ-Ÿ][\w'’-]*(?:\s+[A-ZÀ-Ÿ][\w'’-]*)*)\s*\??\s*$", texte.strip())
         if mv:
-            ville = _normalise(mv.group(1))
-            tz = _FUSEAUX_VILLES.get(ville)
-            if tz:
-                try:
-                    from zoneinfo import ZoneInfo
-                    import datetime as _dt
-                    lh = _dt.datetime.now(ZoneInfo(tz))
-                    return ("À %s il est %02d h %02d (fuseau %s, base de fuseaux IANA + horloge de ta machine)."
-                            % (mv.group(1), lh.hour, lh.minute, tz))
-                except Exception:
-                    pass
             return ("Je ne connais pas le fuseau horaire vérifié de « %s » — je préfère m'abstenir plutôt que "
                     "te donner l'heure locale de TA machine comme si c'était la sienne." % mv.group(1))
         lt = _t.localtime()
@@ -5448,7 +5453,8 @@ def _cap_quotidien(texte: str, conv_id=None):
 # (definition_nom, 292k noms du Wiktionnaire), jamais des lettres mélangées inventées. Comparaison sans
 # accents (génie/neige), affichage de la forme du dictionnaire. Scan streaming unique, mémoïsé par clé triée.
 _ANAG_GEN_RE = re.compile(
-    r"^\s*(?:donne[- ]moi\s+|trouve\s+|cherche\s+)?(?:une?\s+|les?\s+|des\s+)?anagrammes?\s+"
+    r"^\s*(?:c['’]est\s+quoi\s+|quelle?\s+est\s+)?(?:donne[- ]moi\s+|trouve\s+|cherche\s+)?"
+    r"(?:une?\s+|les?\s+|des\s+|l['’]\s*)?anagrammes?\s+"
     r"(?:du\s+mot\s+|de\s+|d['’]\s*)([a-zà-ÿA-ZÀ-Ÿ-]+)\s*\??\s*$", re.I)
 _ANAG_MEMO: dict = {}
 

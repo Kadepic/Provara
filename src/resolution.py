@@ -749,8 +749,8 @@ def resout_nl_generique(question: str):
     # le résolveur ignorait le NOMBRE et servait l'année du FILM « Année bissextile » (2010). Une question
     # « est-ce que <nombre> est … » demande de VÉRIFIER une propriété du nombre — un lookup de valeur qui
     # écarte ce nombre répond à une AUTRE question -> HORS (les routes calcul, en aval, savent trancher).
-    if re.search(r"\best[- ]ce\s+qu[e']\s*\d+([.,]\d+)?\s+(?:est|soit)\b", qn) \
-            or re.search(r"^\s*\d+([.,]\d+)?\s+est[- ](?:il|elle|ce)\b", qn):
+    if re.search(r"\best[- ]ce\s+qu[e']\s*\d+([.,]\d+)?\s+(?:est|soit|sera|serait|c\s*est)\b", qn) \
+            or re.search(r"^\s*\d+([.,]\d+)?\s+(?:est|sera|serait)[- ](?:il|elle|ce)\b", qn):
         return (HORS, None, None)
     # GARDE CADRE-FICHE : « parle-moi de X », « décris-moi X »… sont des frames de FICHE, jamais un lookup d'attribut.
     # Le verbe du cadre (« parle ») coïncide sinon avec un token de relation (`langue_parlee_personne`) et accroche

@@ -597,9 +597,9 @@ def resout_math(question: str):
     # La réponse MONTRE le calcul (« 64 (80 − 20 % = 80 − 16) ») : lève l'ambiguïté remise/prix final.
     _PCT = r"(\d+(?:[.,]\d+)?)"
     _f = lambda g: float(g.replace(",", "."))
-    mred = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+(?:r[ée]duction|remise|rabais)\s+sur\s+{_PCT}",
+    mred = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+(?:r[ée]duc(?:tion)?s?|remises?|rabais)\s+sur\s+{_PCT}",
                       question, re.I)
-            or re.search(rf"(?:r[ée]duction|remise|rabais)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}",
+            or re.search(rf"(?:r[ée]duc(?:tion)?s?|remises?|rabais)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}",
                          question, re.I))
     if mred:
         p, base = _f(mred.group(1)), _f(mred.group(2))
@@ -643,7 +643,8 @@ def resout_math(question: str):
         if 1 <= n <= 3999:
             return (VERIFIE, _en_romain(n), "numération romaine (convention, symboles du lecteur)")
         return (HORS, None, None)
-    mrom2 = re.search(r"\b([ivxlcdm]+)\b\s+en\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q)
+    mrom2 = re.search(r"\b([ivxlcdm]+)\b(?:\s+ca\s+fait\s+combien)?\s+en\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q) \
+        or re.search(r"\b([ivxlcdm]{2,})\b.{0,20}?\ben\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q)
     if mrom2:
         n = _depuis_romain(mrom2.group(1).upper())
         if n is not None:
@@ -898,8 +899,9 @@ def resout_math(question: str):
 
     # ANNÉE BISSEXTILE (règle grégorienne EXACTE — convention). FAUX=0 vécu : « est-ce que 2024 est une année
     # bissextile » servait « 2010 » (l'année du FILM « Année bissextile », lookup d'œuvre détourné).
-    mbi = re.search(r"(\d{1,6})\s+est(?:[- ](?:elle|il|ce))?\s+(?:une\s+)?(?:annee\s+)?bissextile"
-                    r"|annee\s+(\d{1,6})\s+est(?:[- ](?:elle|il))?\s+bissextile", q)
+    mbi = re.search(r"(\d{1,6})\s+(?:c\s*)?(?:est|sera|serait)(?:[-\s]+t)?(?:[-\s]+(?:elle|il|ce))?\s+"
+                    r"(?:une\s+)?(?:annee\s+)?bissextile"
+                    r"|annee\s+(\d{1,6})\s+(?:est|sera)(?:[-\s]+t)?(?:[-\s]+(?:elle|il))?\s+bissextile", q)
     if mbi or ("bissextile" in q and re.search(r"est[- ]ce\s+que\s+(\d{1,6})", q)):
         g = mbi.group(1) or mbi.group(2) if mbi else re.search(r"est[- ]ce\s+que\s+(\d{1,6})", q).group(1)
         n = int(g)

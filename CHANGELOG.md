@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Passe adverse : les variantes de phrasé ne font plus revenir les FAUX
+
+- **Le « 2010 » du film revenait** par « est-ce que 2024 **c'est** une année bissextile » et « 2028
+  **sera-t-elle** bissextile » (garde et route ne couvraient que « est ») → « c'est », futur/conditionnel et
+  « t » euphonique couverts des deux côtés (garde `resolution` + règle grégorienne).
+- **L'heure locale revenait** pour « **tokyo** il est quelle heure » (ville en tête de phrase) → la table de
+  fuseaux est balayée sur TOUTE la phrase, plus seulement après « à ».
+- Variantes câblées : « **cb** de jours entre… » (SMS cb → combien), « XIV **ça fait combien** en chiffres
+  arabes », « 20 % de **réduc** », « **c'est quoi l'**anagramme de chien ».
+- Bancs : `valide_assistant_nl` **257/257** (+4), capacites_chat **138/138** (+1), suite 25/25, raisonnement
+  191/191, paraphrases 174/174, resolution 50/50, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vague 16 : rangs, successions et divisions du temps (cycles fermés)
 
 - `resout_math` : « le **5e mois** de l'année » → Mai (« le 13e » → correction honnête « l'année n'a que 12

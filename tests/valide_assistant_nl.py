@@ -484,6 +484,15 @@ check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup �
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
 # RANGS / SUCCESSIONS / DIVISIONS DU TEMPS (vague 16) : conventions de cycles fermés.
 _c = lambda t: (lambda r: r[1] if r[0] == _V else None)(FN.resout_conversion(t))
+
+# ROBUSTESSE AUX VARIANTES (passe adverse 2026-07-08 : « c'est »/« sera-t-elle » faisaient REVENIR le film 2010).
+_r = _m("est-ce que 2024 c'est une année bissextile")
+check(_r is not None and _r.startswith("Oui, 2024"), "« 2024 c'est une année bissextile » -> Oui (plus jamais 2010)")
+_r = _m("2028 sera-t-elle bissextile")
+check(_r is not None and _r.startswith("Oui, 2028"), "« sera-t-elle » (futur + t euphonique) -> Oui")
+check(_m("XIV ça fait combien en chiffres arabes") == "14", "« XIV ça fait combien en… » -> 14")
+_r = _m("20 % de réduc sur 80 euros")
+check(_r is not None and _r.startswith("64 "), "« réduc » (familier) -> 64")
 check(_m("quel est le 5e mois de l'année") == "Mai (5e mois de l'année)", "5e mois -> Mai")
 _r = _m("le 13e mois de l'année")
 check(_r is not None and "que 12 mois" in _r, "13e mois -> correction honnête (12 mois), plus de mémo garbage")
