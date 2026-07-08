@@ -4132,6 +4132,28 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_12() -> bool:
+    """LOT 7 : possibilités, imputation multiple, filtre d'état, intervalle prédictif décomposé."""
+    import ia as _I
+    if _I.encadre_probabilite({"a": 1.0, "b": 0.5}, ["a"]) != ("mesure", (0.5, 1.0), True):
+        return False                                                  # nécessité/possibilité EXACTES
+    if _I.encadre_probabilite({"a": 0.5, "b": 0.5}, ["a"])[0] != "abstention":
+        return False                                                  # π sous-normalisée -> REFUSÉE (dite)
+    x = list(range(1, 31))
+    y = [2 * i if i % 2 else None for i in x]                         # y = 2x observé une fois sur deux
+    vm, (pt, (lo, hi)), _cm = _I.moyenne_avec_manquants(x, y)
+    if not (vm == "estimation" and pt == 31.0 and lo < 31.0 < hi):    # 2 × moyenne(x) = 31 EXACT retrouvé
+        return False
+    pt2, (lo2, hi2) = _I.imputation_simple_biais(x, y)
+    if not (pt2 == 31.0 and lo2 < 31.0 < hi2):
+        return False
+    vf, _df = _I.filtre_etat_robuste([1.0, 1.1, 0.9, 1.05, 0.95, 5.0, 1.0, 1.02], 1.0, 0.01, 0.1)
+    if vf != "surconfiant":                                           # l'outlier rend le filtre SURCONFIANT — DIT
+        return False
+    vi, (mu, (ilo, ihi)), _ci = _I.intervalle_predictif_decompose([1, 2, 3, 4, 5, 6, 7, 8, 9, 10] * 4)
+    return vi == "estimation" and mu == 5.5 and ilo < 1.0 and ihi > 10.0   # prédictif COUVRE les données
+
+
 def _p_facade_stats_11() -> bool:
     """LOT 6 : propagation d'incertitude, e-process, calibration, IDM, prévision, régime de question."""
     import ia as _I
@@ -4299,6 +4321,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Possibilités, imputation multiple et filtres honnêtes (façade stats 12)": (
+        "encadre_probabilite (nécessité/possibilité exactes ; π sous-normalisée refusée), "
+        "moyenne_avec_manquants et imputation_simple_biais (MCAR : 2×moyenne = 31 exact retrouvé), "
+        "filtre_etat_robuste (l'outlier rend le filtre SURCONFIANT — dit), intervalle_predictif_decompose "
+        "(couvre les données, moyenne 5.5 exacte).", _p_facade_stats_12),
     "Incertitude propagée, e-process et probabilités imprécises (façade stats 11)": (
         "propage_incertitude (3² = 9 exact + IC), test_par_pari (e-process : pièce truquée rejetée au pas 7, "
         "pièce juste jamais), teste_calibration (biais détecté), proba_categorielle_imprecise (bornes IDM "

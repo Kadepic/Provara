@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 7 : 5 façades de plus (dette 90 → 85)
+
+- 1 preuve REGISTRE composée (diagnostic : 293) : **théorie des possibilités** (nécessité/possibilité
+  exactes (0.5, 1.0) ; distribution sous-normalisée REFUSÉE avec raison dite), **imputation multiple MCAR**
+  (y = 2x observé une fois sur deux -> la moyenne 31 = 2×15.5 est retrouvée EXACTEMENT, IC contenant),
+  **filtre d'état honnête** (un outlier rend le filtre SURCONFIANT — diagnostiqué, pas caché),
+  **intervalle prédictif décomposé** (couvre les données, moyenne exacte).
+- Plafond du cliquet : **85**.
+- Bancs : valide_capacites 73/73 (pins 292→293), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 6 : 7 façades de plus (dette 97 → 90)
 
 - 1 preuve REGISTRE composée (diagnostic : 292) : **propagation d'incertitude** (3² = 9 exact + IC),
