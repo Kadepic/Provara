@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 42 : probabilités cartes/deux dés/lancers + traduction en écho tuée
+
+- **Probabilités à hypothèses DITES** (tombaient en mémo) : jeu de 52 cartes (as → 1/13, cœur → 1/4
+  — ⚠ `normalise()` SUPPRIME le œ, question brute exigée ; figures 3/13, rouge/noire 1/2) ; **deux dés**
+  par énumération exacte des 36 couples (double → 1/6, somme 7 → 1/6, somme 13 → « 0 — impossible
+  (2..12) ») ; lancers enchaînés (« deux piles de suite » → 1/4, indépendance dite).
+- **Traduction en écho tuée** : « comment dit-on merci en allemand » rendait *« Merci (traduction mot-à-mot
+  assistée) »* — le texte inchangé étiqueté traduction. Rien traduit → refus honnête ; les traductions
+  réelles (« bonjour » → Hello) intactes.
+- Bancs : `valide_assistant_nl` **471/471** (+6), capacites_chat **184/184** (+2), raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 41 : conventions de l'eau, lumière du Soleil (conditions dites) + vérification globale
 
 - **Eau** (conditions DITES, même famille que la congélation déjà câblée) : « un litre d'eau » → « ≈ 1 kg

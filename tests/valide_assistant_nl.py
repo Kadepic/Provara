@@ -414,6 +414,19 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 42 : probas cartes / deux dés / lancers enchaînés (hypothèses DITES ; tombaient en mémo).
+_ca = _m("probabilité de tirer un as dans un jeu de 52 cartes")
+check(_ca and _ca.startswith("1/13"), "as -> 1/13, jeu standard dit")
+_cc = _m("probabilité de tirer un cœur dans un jeu de 52 cartes")
+check(_cc and _cc.startswith("1/4"), "cœur -> 1/4 (⚠ normalise() supprime le œ — question brute)")
+_dd = _m("probabilité de faire un double avec deux dés")
+check(_dd and _dd.startswith("1/6"), "double avec deux dés -> 1/6 (36 couples)")
+_d7 = _m("probabilité de faire 7 avec deux dés")
+check(_d7 and _d7.startswith("1/6 (6 combinaisons"), "somme 7 -> 1/6")
+_d13 = _m("probabilité de faire 13 avec deux dés")
+check(_d13 and _d13.startswith("0 — deux dés"), "somme 13 -> 0 EXPLIQUÉ (2..12)")
+_2p = _m("probabilité d'obtenir deux piles de suite")
+check(_2p and _2p.startswith("1/4"), "deux piles de suite -> 1/4 (indépendance dite)")
 # VAGUE 41 : conventions de l'eau + lumière du Soleil (conditions DITES partout).
 _le = _m("combien pèse un litre d'eau")
 check(_le and _le.startswith("≈ 1 kg") and "20 °C" in _le, "litre d'eau -> ≈ 1 kg, température dite")

@@ -7410,6 +7410,11 @@ def _cap_traduction(texte: str):
         tr, inconnus = traduction.traduit(a_traduire, cible)
     if not tr:
         return None
+    # RIEN n'a été traduit (tout est resté tel quel) -> refus honnête : « merci » était rendu comme sa
+    # « traduction » allemande (vécu 2026-07-08), le texte inchangé étiqueté traduction est un mensonge doux.
+    if inconnus and _normalise(tr) == _normalise(a_traduire):
+        return ("Je n'ai pas ces mots dans mon dictionnaire vérifié pour cette langue — je préfère ne rien "
+                "traduire plutôt que te rendre le texte inchangé comme si c'était traduit.")
     note = "  (traduction mot-à-mot assistée — à affiner)"
     if inconnus:
         note += "\nMots non trouvés (laissés tels quels, non devinés) : " + ", ".join(inconnus)

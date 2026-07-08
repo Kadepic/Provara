@@ -1706,6 +1706,45 @@ def resout_math(question: str):
             p = _ME.uniforme(2)[0]
             return (VERIFIE, "%s (%.0f %%) — en supposant une pièce équilibrée." % (_Fr(1, 2), p * 100.0),
                     "probabilité — équiprobabilité (pièce équilibrée)")
+        # DEUX DÉS (loi de la somme énumérée sur 36 couples équiprobables — exact) : « un double », « faire 7 ».
+        if _ME is not None and re.search(r"deux\s+d[ée]s", question):
+            if "double" in qtoks:
+                return (VERIFIE, "1/6 (6 doubles sur 36 couples équiprobables) — dés équilibrés supposés.",
+                        "probabilité — deux dés (énumération exacte)")
+            msd = re.search(r"faire\s+(\d{1,2})\s+avec|obtenir\s+(\d{1,2})\b|somme\s+de\s+(\d{1,2})", q)
+            if msd:
+                s = int(msd.group(1) or msd.group(2) or msd.group(3))
+                nb = sum(1 for a in range(1, 7) for b in range(1, 7) if a + b == s)
+                if nb:
+                    return (VERIFIE, "%s (%d combinaisons sur 36 couples équiprobables) — dés équilibrés supposés."
+                            % (_Fr(nb, 36), nb), "probabilité — deux dés (énumération exacte)")
+                return (VERIFIE, "0 — deux dés donnent une somme entre 2 et 12 (%d est impossible)." % s,
+                        "probabilité — deux dés (énumération exacte)")
+        # PILES/FACES DE SUITE : « deux piles de suite » -> (1/2)² = 1/4 (indépendance, hypothèse dite).
+        msu = re.search(r"(deux|trois|quatre|\d)\s+(?:piles?|faces?)\s+(?:de\s+suite|d['’]affilee|consecutifs?)",
+                        q)
+        if _ME is not None and msu:
+            tok = msu.group(1)
+            n = {"deux": 2, "trois": 3, "quatre": 4}.get(tok) or (int(tok) if tok.isdigit() else 0)
+            if 1 <= n <= 20:
+                return (VERIFIE, "%s (1/2 à chaque lancer, lancers indépendants — pièce équilibrée supposée)."
+                        % _Fr(1, 2 ** n), "probabilité — lancers indépendants")
+        # JEU DE 52 CARTES (convention standard DITE ; tirage d'UNE carte) : valeur (4/52), couleur (13/52),
+        # figure (12/52), rouge/noire (26/52).
+        if re.search(r"52\s+cartes|jeu\s+de\s+cartes", q):
+            if re.search(r"\b(as|roi|dame|valet)s?\b", q):
+                return (VERIFIE, "1/13 (4 sur 52) — jeu standard de 52 cartes, tirage d'une carte.",
+                        "probabilité — jeu de 52 cartes (convention dite)")
+            # ⚠ question BRUTE : normalise() SUPPRIME le « œ » (« cœur » -> « c ur », vécu)
+            if re.search(r"\b(c(?:oe|œ)urs?|piques?|carreaux?|tr[eè]fles?)\b", question, re.IGNORECASE):
+                return (VERIFIE, "1/4 (13 sur 52) — jeu standard de 52 cartes, tirage d'une carte.",
+                        "probabilité — jeu de 52 cartes (convention dite)")
+            if "figure" in qtoks:
+                return (VERIFIE, "3/13 (12 figures sur 52) — jeu standard, tirage d'une carte.",
+                        "probabilité — jeu de 52 cartes (convention dite)")
+            if re.search(r"\b(rouge|noire?)\b", q):
+                return (VERIFIE, "1/2 (26 sur 52) — jeu standard, tirage d'une carte.",
+                        "probabilité — jeu de 52 cartes (convention dite)")
 
     # SUITES : « fibonacci de 10 », « 10e nombre de Fibonacci »
     if "fibonacci" in qtoks and ent:
