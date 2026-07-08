@@ -3687,6 +3687,10 @@ _DEF_ALIAS_RE = re.compile(
 def _alias_definition(texte: str) -> str:
     """« que veut dire X » / « que signifie X » / « sens du mot X » -> « définition de X » (voie déjà fonctionnelle).
     Sound : ne réécrit que ces formulations de demande de SENS ; renvoie le texte inchangé sinon."""
+    # GARDE CODE MORSE (vécu 2026-07-08) : « que signifie ... --- ... en morse » n'est pas une demande de
+    # SENS de l'animal — les tokens points/traits partent au décodeur (fonction_nl).
+    if re.search(r"(?:^|\s)[.\-]{2,}(?:\s|$)", texte):
+        return texte
     m = _DEF_ALIAS_RE.match(texte)
     if m and m.group(1).strip():
         return f"définition de {m.group(1).strip()}"
@@ -4624,6 +4628,11 @@ def _cap_ontologie(texte: str):
         # bruité de definition_nom « berlin = paquet » produisait une réponse absurde à une question VRAIE).
         if re.search(r"\b" + re.escape(y) + r"\s+(?:de\s+la|de\s+l['’]|du|des|de|d['’])\b", texte, re.I):
             return None
+        # GARDE PROPRIÉTÉ DE MOT (vécu 2026-07-08) : « radar est-il un PALINDROME » interroge le MOT, pas
+        # l'objet (« Le radar est un système — je ne le rattache pas… » répondait à côté). Famille fermée
+        # de propriétés lexicales -> _cap_texte tranche nativement.
+        if _normalise(y) in ("palindrome", "anagramme", "pangramme"):
+            return None
         if _E.est_un(x, y):
             chaine = _E.chaine_isa(x)
             ny = _normalise(y)
@@ -4759,6 +4768,10 @@ def _cap_inverse(texte: str):
 def _cap_definition(texte: str):
     """« C'est quoi X ? » / « qu'est-ce qu'un X ? » / « définition de X » -> définition VÉRIFIÉE de la base
     (definition_nom : 292k+ noms du Wiktionnaire, puis definition_* de domaine). FAUX=0 : texte réel ou None."""
+    # GARDE CODE MORSE (vécu 2026-07-08) : « que signifie ... --- ... en morse » n'est pas une définition de
+    # l'animal — des tokens points/traits dans la phrase = décodage (fonction_nl).
+    if re.search(r"(?:^|\s)[.\-]{2,}(?:\s|$)", texte):
+        return None
     m = _DEF_RE.match(texte)
     if not m:
         return None
@@ -5707,6 +5720,59 @@ def _cap_texte(texte: str):
             aff = lambda v: str(int(v)) if v == int(v) else str(v)
             return "Dans l'ordre %s : %s." % ("décroissant" if desc else "croissant",
                                               ", ".join(aff(v) for v in vals))
+    # PALINDROME (natif exact — avant : la fiche OBJET répondait « le radar est un système », à côté du mot).
+    m = re.search(r"(?:le\s+mot\s+)?([\wà-ÿ-]+)\s+est[- ](?:il|elle|ce)\s+un\s+palindrome"
+                  r"|est[- ]ce\s+que\s+(?:le\s+mot\s+)?([\wà-ÿ-]+)\s+est\s+un\s+palindrome", t, re.I)
+    if m:
+        mot = m.group(1) or m.group(2)
+        w = [c for c in _normalise(mot) if c.isalpha()]
+        if w and w == w[::-1]:
+            return "Oui — « %s » est un palindrome (il se lit pareil dans les deux sens)." % mot
+        return "Non — « %s » n'est pas un palindrome (à l'envers : « %s »)." % (mot, mot[::-1])
+    # OCCURRENCES D'UNE LETTRE : « combien de fois la lettre s dans mississippi » -> 4 (compte natif).
+    m = re.search(r"combien\s+de\s+fois\s+(?:la\s+lettre\s+)?([a-zà-ÿ])\s+dans\s+(?:le\s+mot\s+)?([\wà-ÿ-]+)",
+                  t, re.I)
+    if m:
+        lettre, mot = _normalise(m.group(1)), m.group(2)
+        n = sum(1 for c in _normalise(mot) if c == lettre)
+        return "%d fois la lettre « %s » dans « %s »." % (n, lettre, mot)
+    # CARACTÈRES (tout compris, DIT — les « lettres » ont leur route qui exclut tirets/apostrophes).
+    m = re.search(r"combien\s+de\s+caract[eè]res\s+dans\s+(?:le\s+mot\s+)?([\wà-ÿ'-]+)", t, re.I)
+    if m:
+        mot = m.group(1)
+        return "%d caractères dans « %s » (tout signe compris)." % (len(mot), mot)
+    # INITIALES : « les initiales de Jean-Claude Van Damme » -> J. C. V. D. (natif ; ≥ 2 mots exigés).
+    m = re.search(r"(?:les\s+)?initiales\s+de\s+([\wà-ÿ' -]+?)\s*\??\s*$", t, re.I)
+    if m:
+        mots_i = [w for w in re.split(r"[\s-]+", m.group(1)) if w and w[0].isalpha()]
+        if len(mots_i) >= 2:
+            return "%s (initiales de %s)." % (" ".join(w[0].upper() + "." for w in mots_i), m.group(1).strip())
+    # PLUS LONG / PLUS COURT MOT : comparaison de longueurs (lettres comptées, natif).
+    m = re.search(r"plus\s+(long|court)\s+mot\s+entre\s+([\wà-ÿ-]+)\s+et\s+([\wà-ÿ-]+)", t, re.I)
+    if m:
+        a, b = m.group(2), m.group(3)
+        la, lb = sum(c.isalpha() for c in a), sum(c.isalpha() for c in b)
+        if la == lb:
+            return "Ils font la même longueur : %d lettres chacun." % la
+        gagnant = (a if la > lb else b) if m.group(1).lower() == "long" else (a if la < lb else b)
+        return "« %s » (%d lettres contre %d)." % (gagnant, max(la, lb) if m.group(1).lower() == "long"
+                                                   else min(la, lb), min(la, lb) if m.group(1).lower() == "long"
+                                                   else max(la, lb))
+    # REMPLACEMENT DE LETTRE : « remplace les a par des o dans banana » -> bonono (natif exact).
+    m = re.search(r"remplace\s+(?:les?\s+|la\s+lettre\s+)?([a-zà-ÿ])\s+par\s+(?:des?\s+|la\s+lettre\s+)?"
+                  r"([a-zà-ÿ])\s+dans\s+(?:le\s+mot\s+)?([\wà-ÿ-]+)", t, re.I)
+    if m:
+        src, dst, mot = m.group(1).lower(), m.group(2).lower(), m.group(3)
+        res = mot.replace(src, dst).replace(src.upper(), dst.upper())
+        return "« %s » → « %s » (%s remplacé par %s)." % (mot, res, src, dst)
+    # TRI DE MOTS : « trie les mots banane, abricot, cerise par ordre alphabétique » (le lexique dumpait ses
+    # entrées « abricot (français), abrikosi… », garbage vécu 2026-07-08).
+    m = re.search(r"(?:trie|classe|ordonne|range)\s+les\s+mots\s+(.+?)(?:\s+par\s+ordre\s+alphab[eé]tique)?"
+                  r"\s*\??\s*$", t, re.I)
+    if m:
+        mots_t = [w.strip(" ,;.") for w in re.split(r"[,;]|\bet\b", m.group(1)) if w.strip(" ,;.")]
+        if len(mots_t) >= 2 and all(" " not in w for w in mots_t):
+            return "Ordre alphabétique : %s." % ", ".join(sorted(mots_t, key=_normalise))
     return None
 
 

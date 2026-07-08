@@ -1819,6 +1819,12 @@ def resout_fonction(question: str):
                     return (HORS, None, None)
                 lettres.append(str(val))
             return (VERIFIE, "".join(lettres), "code morse international (table sourcée)")
+        # « SOS en morse » : le mot à encoder est AVANT « en morse » (l'arg après-préposition ratait, vécu).
+        men = re.search(r"([\w-]+)\s+en\s+(?:code\s+)?morse\b", question, re.IGNORECASE)
+        if men and normalise(men.group(1)) not in ("morse", "code", "signifie", "veut"):
+            out = _compose_par_lettre(men.group(1).upper(), _R.vers_morse)
+            if out:
+                return (VERIFIE, out, "code morse international (table sourcée)")
         # GARDE HOMONYME (#83) : « morse » est AUSSI une ENTITÉ (l'animal, Odobenus rosmarus). Si l'ARGUMENT à traduire
         # EST « morse » lui-même (« c'est quoi un morse », « nom scientifique de morse »), ce n'est PAS une demande de
         # code Morse -> abstention (le lookup DATA répondra l'animal). On ne traduit que si l'arg est DISTINCT (« morse

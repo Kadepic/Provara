@@ -414,6 +414,10 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 31 : « SOS en morse » (l'arg après-préposition ratait) ; le décodage et l'animal restent intacts.
+check(_m("SOS en morse") == "... --- ...", "SOS en morse -> code")
+check(_m("que signifie ... --- ... en morse") == "SOS", "décodage morse intact")
+check(_m("c'est quoi un morse") is None, "l'animal morse reste au lookup DATA")
 # VAGUE 30 : scores en %, durées composées, douzaines, demi/quart d'unité.
 check(_m("15 sur 20 en pourcentage") == "75 %", "15/20 en pourcentage -> 75 % (Wilson volait, FAUX vécu)")
 check(_m("j'ai eu 12 sur 20, ça fait combien sur 100") == "60 %", "12/20 sur 100 -> 60 %")

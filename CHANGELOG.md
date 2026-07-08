@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 31 : opérations textuelles avancées (palindrome répondu « à côté », morse décodé volé)
+
+- **FAUX de sens** : « le mot radar est-il un **palindrome** » → *« Le radar est un système — je ne le
+  rattache pas à palindrome »* (la fiche is-a répondait sur l'OBJET, pas le MOT). Garde propriété-de-mot
+  (palindrome/anagramme/pangramme → route native) : « Oui — radar se lit pareil dans les deux sens » ;
+  « chat » → Non + envers montré.
+- **FAUX préexistant tué** : « que signifie **... --- ...** en morse » → *la définition de l'ANIMAL morse* !
+  (l'alias « que signifie X » → définition volait avant le décodeur). Garde tokens points/traits → « SOS ».
+  « SOS en morse » (l'argument est AVANT « en morse ») → « ... --- ... » ; l'animal (« c'est quoi un
+  morse ») intact.
+- **Texte avancé câblé** (natif exact) : occurrences (« combien de fois s dans mississippi » → 4), tri de
+  MOTS alphabétique (le lexique dumpait ses entrées), plus long/court mot, initiales (« Jean-Claude Van
+  Damme » → J. C. V. D.), remplacement de lettre (« banana » → « bonono »), caractères (tout signe compris,
+  DIT — distinct des « lettres »).
+- Bancs : `valide_assistant_nl` **413/413** (+3), capacites_chat **162/162** (+8), raisonnement 198/198,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 30 : 2 FAUX (« tombera le 25 décembre » → 2019 !, scores→Wilson) + durées composées, douzaines, demi/quart
 
 - **FAUX** : « quel jour **tombera** le 25 décembre cette année » → *« (en comprenant « 24 decembre ») 2019 »*

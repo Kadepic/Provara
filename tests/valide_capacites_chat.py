@@ -327,6 +327,23 @@ check(r is not None and "Asia/Tokyo" in r, "« donne-moi l'heure de Tokyo » -> 
 # GARDE COMPTAGE : la durée composée n'est pas un comptage d'hyponymes (« 10 termes jour », vécu).
 check(R._cap_comptage("2 semaines et 3 jours ça fait combien de jours") is None,
       "durée composée -> pas un comptage lexical")
+# OPÉRATIONS TEXTUELLES vague 31 (« Le radar est un système » répondait à côté du MOT, vécu 2026-07-08).
+r = R._cap_texte("le mot radar est-il un palindrome")
+check(r is not None and r.startswith("Oui — « radar »"), "palindrome radar -> Oui (natif)")
+r = R._cap_texte("le mot chat est-il un palindrome")
+check(r is not None and r.startswith("Non") and "tahc" in r, "palindrome chat -> Non + envers montré")
+check(R._cap_texte("combien de fois la lettre s dans mississippi")
+      == "4 fois la lettre « s » dans « mississippi ».", "occurrences -> 4")
+check(R._cap_texte("trie les mots banane, abricot, cerise par ordre alphabétique")
+      == "Ordre alphabétique : abricot, banane, cerise.", "tri de mots (le lexique dumpait, vécu)")
+check(R._cap_texte("quel est le plus long mot entre chat et éléphant")
+      == "« éléphant » (8 lettres contre 4).", "plus long mot -> éléphant")
+check(R._cap_texte("les initiales de Jean-Claude Van Damme")
+      == "J. C. V. D. (initiales de Jean-Claude Van Damme).", "initiales -> J. C. V. D.")
+r = R._cap_texte("remplace les a par des o dans banana")
+check(r is not None and "bonono" in r, "remplacement de lettre -> bonono")
+r = R._cap_texte("combien de caractères dans anticonstitutionnellement")
+check(r is not None and r.startswith("25 caractères"), "caractères -> 25 (tout signe compris)")
 check(R._cap_quotidien("combien de jours entre le 30 février et le 15 mars ?") is None,
       "date invalide (30 février) -> abstention")
 
