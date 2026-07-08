@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX=0 : la moyenne pondérée moyennait les coefficients avec les valeurs (8 au lieu de 13.8)
+
+- **FAUX servi comme fait, trouvé à la sonde** : « moyenne pondérée de 12 coefficient 2 et 15 coefficient 3 »
+  répondait *« Moyenne : 8 »* — la branche moyenne de `fonction_stats_nl` faisait la moyenne SIMPLE de tous les
+  nombres de la phrase (12, 2, 15, 3), coefficients compris. Corrigé : détection dédiée de l'intention pondérée
+  (« pondérée », « coefficient », « coeff ») → appariement valeur/coefficient (paires « 12 coefficient 2 », notes
+  parenthésées « 12 (coefficient 4) », ou « valeurs … avec les poids … » à listes de même longueur) →
+  `somme(v·w)/somme(w)` → **13.8**. Somme des coefficients nulle → « indéfinie » (honnête).
+- Abstention honnête si l'appariement échoue (« moyenne pondérée de 12 et 15 » → demande le format), JAMAIS la
+  moyenne simple par défaut. Garde anti-faux-positif : « moyenne des poids 70, 80 et 90 » (poids PHYSIQUES, pas
+  de paires) reste une moyenne simple → 80.
+- Bancs : `valide_fonction_stats_nl` **22/22** (+6), capacites_chat 102/102, assistant_nl 126/126, suite 25/25,
+  raisonnement 166/166, paraphrases 168/168, challenge 16/16.
+
 ## 2026-07-08 — CÂBLAGE vague 6 : valeur absolue, conversion de base, inverse modulaire
 
 - `fonction_nl.resout_math` : **valeur absolue** (« valeur absolue de -5 » → 5), **conversion de base** (binaire/

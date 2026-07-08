@@ -33,6 +33,21 @@ check("Écart-type" in S.repond_stats("écart-type de 10, 12, 14, 16, 18"), "éc
 check("Somme : 20" in S.repond_stats("somme de 2, 4, 6, 8"), "somme exacte")
 check("Minimum : 2" in S.repond_stats("min et max de 7, 2, 9, 4"), "min/max")
 
+# — moyenne PONDÉRÉE : les coefficients ne sont JAMAIS moyennés avec les valeurs (bug vécu : 8 au lieu de 13.8) —
+check("Moyenne pondérée : 13.8" in S.repond_stats("moyenne pondérée de 12 coefficient 2 et 15 coefficient 3"),
+      "pondérée paires coefficient")
+check("Moyenne pondérée : 13.8" in S.repond_stats("moyenne de 12 et 15 avec les poids 2 et 3"),
+      "pondérée valeurs puis poids")
+check("Moyenne pondérée : 11 " in S.repond_stats(
+    "quelle est la moyenne pondérée de mes notes : 12 (coefficient 4) et 9 (coefficient 2)"),
+      "pondérée notes parenthésées")
+r = S.repond_stats("moyenne pondérée de 12 et 15")
+check(r and "n'arrive pas à associer" in r, "pondérée sans coefficients -> abstention honnête, jamais 13.5")
+check("Moyenne : 80" in S.repond_stats("moyenne des poids 70, 80 et 90"),
+      "« poids » physiques -> moyenne simple (pas de détournement)")
+check("indéfinie" in S.repond_stats("moyenne pondérée de 10 coefficient 0 et 20 coefficient 0"),
+      "somme des coefficients nulle -> indéfinie")
+
 # — calibré (contenu partiel, tolérant) —
 r = S.repond_stats("est-ce que 100, 102, 101, 105, 108, 110 est en hausse ?")
 check(r and ("monte" in r or "hausse" in r or "pente" in r), "tendance -> hausse")
