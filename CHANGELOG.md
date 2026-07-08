@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 10 : opérations textuelles exactes sur un mot (_cap_texte)
+
+- Nouveau `_cap_texte` dans la cascade : **compter les lettres** (« compte les lettres du mot
+  anticonstitutionnellement » → 25 ; mot à tiret → restriction DITE « tirets/apostrophes non comptés »),
+  **envers** (« épelle chien à l'envers » → neihc), **épellation** (« épelle chien » → c-h-i-e-n),
+  **test d'anagramme** (« niche et chien sont-ils des anagrammes ? » → oui, lettres triées comparées).
+  Opérations natives déterministes = FAUX=0 par construction. Tombaient toutes en repli/mémo avant.
+- Gardes : UN seul mot exigé (« épelle-moi la vérité sur cette affaire » → rien) ; « combien de lettres a
+  envoyées Napoléon » (courriers) → pas volé.
+- Bancs : `valide_capacites_chat` **118/118** (+9), assistant_nl 181/181, suite 25/25, raisonnement 171/171,
+  paraphrases 168/168, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — CÂBLAGE vague 9 : volumes/vitesses, pourcentages appliqués, chiffres romains, triangle/losange
 
 - **Conversions** (`resout_conversion`) : volumes (L/mL/cL/dL/hL/m³/cm³ — « 3 litres en centilitres » → 300),

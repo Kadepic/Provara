@@ -5247,6 +5247,50 @@ def _cap_quotidien(texte: str, conv_id=None):
     return None
 
 
+_TEXTE_LETTRES_RE = re.compile(
+    r"(?:compte\s+les\s+lettres|combien\s+(?:de|y\s+a[- ]t[- ]il\s+de)\s+lettres)\s+(?:dans\s+|a\s+)?"
+    r"(?:du\s+mot\s+|le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s*\??\s*$", re.I)
+_TEXTE_ENVERS_RE = re.compile(
+    r"(?:[ée]pelle|[ée]cris)\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+[àa]\s+l['’]envers\s*\??\s*$", re.I)
+_TEXTE_EPELLE_RE = re.compile(
+    r"[ée]pelle(?:[- ]moi)?\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s*\??\s*$", re.I)
+_TEXTE_ANAG_RE = re.compile(
+    r"(?:est[- ]ce\s+que\s+)?«?\s*([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+et\s+«?\s*([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+"
+    r"sont(?:[- ](?:ils|elles))?\s+(?:des\s+)?anagrammes\s*\??\s*$", re.I)
+
+
+def _cap_texte(texte: str):
+    """OPÉRATIONS TEXTUELLES exactes sur UN mot (natif, déterministe — FAUX=0 par construction) : « compte les
+    lettres du mot anticonstitutionnellement » -> 25, « épelle chien à l'envers » -> n-e-i-h-c, « épelle chien »,
+    « niche et chien sont-ils des anagrammes ? » -> oui (mêmes lettres triées). Un seul MOT exigé (pas de vol
+    de questions factuelles) ; l'envers AVANT l'épellation simple (motif plus long d'abord)."""
+    t = texte.strip()
+    m = _TEXTE_LETTRES_RE.search(t)
+    if m:
+        mot = m.group(1)
+        n = sum(1 for c in mot if c.isalpha())
+        return "%d lettres dans « %s »%s." % (n, mot,
+                                              "" if n == len(mot) else " (tirets/apostrophes non comptés)")
+    m = _TEXTE_ENVERS_RE.search(t)
+    if m:
+        mot = m.group(1)
+        return "« %s » à l'envers : %s." % (mot, mot[::-1])
+    m = _TEXTE_EPELLE_RE.search(t)
+    if m:
+        mot = m.group(1)
+        if len(mot) < 2:
+            return None
+        return "« %s » s'épelle : %s." % (mot, "-".join(mot))
+    m = _TEXTE_ANAG_RE.search(t)
+    if m:
+        a, b = m.group(1).lower(), m.group(2).lower()
+        cle = lambda w: sorted(c for c in w if c.isalpha())
+        if cle(a) == cle(b):
+            return "Oui — « %s » et « %s » sont des anagrammes (mêmes lettres)." % (m.group(1), m.group(2))
+        return "Non — « %s » et « %s » ne sont pas des anagrammes (lettres différentes)." % (m.group(1), m.group(2))
+    return None
+
+
 _CONTRAIRE_RE = re.compile(
     r"(?:quel(?:le)?\s+est\s+)?(?:le\s+|l['’]\s*)?(?:contraire|oppos[ée]|antonyme)\s+"
     r"(?:de\s+|du\s+|d['’]\s*)(?:la\s+|le\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
@@ -7269,7 +7313,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
                  ("localisation", _cap_localisation), ("jeux", _cap_jeux), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
-                 ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
+                 ("contraire", _cap_contraire), ("texte", _cap_texte), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
                  ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),

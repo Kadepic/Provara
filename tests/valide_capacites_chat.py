@@ -180,6 +180,22 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — OPÉRATIONS TEXTUELLES exactes sur un mot (_cap_texte, vague 10 : natif déterministe, FAUX=0 par construction) —
+r = R._cap_texte("compte les lettres du mot anticonstitutionnellement")
+check(r == "25 lettres dans « anticonstitutionnellement ».", "compter les lettres -> 25 (exact)")
+r = R._cap_texte("compte les lettres du mot porte-monnaie")
+check(r is not None and r.startswith("12 lettres") and "non comptés" in r,
+      "mot à tiret -> 12 lettres, restriction DITE (tirets non comptés)")
+check(R._cap_texte("épelle le mot chien à l'envers") == "« chien » à l'envers : neihc.", "envers -> neihc")
+check(R._cap_texte("épelle chien") == "« chien » s'épelle : c-h-i-e-n.", "épeler -> c-h-i-e-n")
+r = R._cap_texte("niche et chien sont-ils des anagrammes ?")
+check(r is not None and r.startswith("Oui"), "niche/chien -> anagrammes (mêmes lettres triées)")
+r = R._cap_texte("chien et chat sont-ils des anagrammes ?")
+check(r is not None and r.startswith("Non"), "chien/chat -> pas anagrammes")
+check(R._cap_texte("épelle-moi la vérité sur cette affaire") is None, "« épelle-moi la vérité sur… » (pas UN mot) -> None")
+check(R._cap_texte("combien de lettres a envoyées Napoléon") is None, "lettres = courriers -> pas volé (garde)")
+check(R._cap_texte("quelle est la capitale de la France") is None, "question factuelle -> None")
+
 # — ARITHMÉTIQUE DE DATES (horloge machine + datetime, calcul calendaire EXACT — vague 9) —
 import datetime as _dt  # noqa: E402
 
