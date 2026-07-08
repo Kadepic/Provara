@@ -1,5 +1,12 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Build : tzdata embarqué (l'heure des villes marche dans le .exe Windows)
+
+- `build-exe.yml` + `build_exe.bat` : `pip install tzdata` + `--hidden-import zoneinfo --hidden-import tzdata
+  --collect-data tzdata`. La base de fuseaux IANA est embarquée → « quelle heure est-il à New York ? » répond
+  dans le .exe Windows (jusqu'ici : abstention honnête, la base tz manquait hors Linux). Dégradation propre
+  conservée si la base venait à manquer. YAML validé ; effet au prochain build CI (59+).
+
 ## 2026-07-08 — Vague 14 : vérification oui/non étendue (« est-ce que X est Y », négations « …, si ? »)
 
 - `_oui_non` étendu dans son esprit FAUX=0 (jamais un « Non » sec — une relation peut être multi-valuée) :

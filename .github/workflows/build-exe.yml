@@ -24,7 +24,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install pyinstaller
+      # tzdata = base de fuseaux IANA pour zoneinfo (l'heure des villes : « quelle heure est-il à New York ? »).
+      # Sans elle le .exe Windows s'abstient honnêtement (dégradation propre) ; avec, il répond.
+      - run: pip install pyinstaller tzdata
       - name: Tamponner le build (numéro MONOTONE + commit) dans VERSION_BUILD.txt
         shell: bash
         # GITHUB_RUN_NUMBER = entier qui CROÎT à chaque exécution du workflow -> sert de « version » pour décider
@@ -55,6 +57,7 @@ jobs:
           --hidden-import "xml.etree.ElementTree" --hidden-import "urllib.request" --hidden-import "urllib.parse"
           --hidden-import "http.server" --hidden-import socketserver --hidden-import zipfile --hidden-import tarfile
           --hidden-import marshal --hidden-import base64 --hidden-import difflib --hidden-import calendar
+          --hidden-import zoneinfo --hidden-import tzdata --collect-data tzdata
           lance.py
       - uses: actions/upload-artifact@v4
         with:
