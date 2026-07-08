@@ -482,6 +482,18 @@ check(_m("périmètre d'un triangle de côtés 1, 1 et 5") is None,
 check(_m("aire d'un losange de diagonales 6 et 8") == "24", "aire losange d=6,8 -> 24 (d₁·d₂/2, Polygone)")
 check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup » (pas de %) ne déclenche RIEN")
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
+# VAGUE 19 : fractions (simplifier, ↔%, ←décimal), pourcentage inverse, prix avant réduction, arrondi à un rang.
+check(_m("simplifie la fraction 6/8") == "3/4 (= 6/8)", "simplifier 6/8 -> 3/4")
+check(_m("simplifie 10/5") == "2 (= 10/5)", "simplifier 10/5 -> 2 (entier)")
+check(_m("convertis 3/4 en pourcentage") == "75 %", "3/4 en % -> 75 %")
+check(_m("1/8 en pourcent") == "12.5 %", "1/8 en % -> 12.5 %")
+check(_m("0,25 en fraction") == "1/4", "0,25 en fraction -> 1/4")
+check(_m("40 est 20% de quel nombre") == "200", "pourcentage inverse : 40 = 20% de 200")
+_r = _m("un article coûte 120 après 20% de réduction, quel était son prix")
+check(_r is not None and _r.startswith("150"), "prix avant réduction : 120 après -20% -> 150")
+check(_m("arrondis 347 à la centaine") == "300", "arrondi 347 à la centaine -> 300")
+check(_m("arrondis 2851 au millier") == "3000", "arrondi 2851 au millier -> 3000")
+check(_m("arrondi 1234 à la dizaine") == "1230", "arrondi 1234 à la dizaine -> 1230")
 # PARTAGE / ARITHMÉTIQUE DÉCIMALE (opérateur explicite seulement, garde anti-FP forte).
 check(_m("partage 20 euros entre 4 personnes") == "5 chacun (20 ÷ 4)", "partage 20/4 -> 5 chacun")
 _r = _m("partage 20 euros entre 3 personnes")

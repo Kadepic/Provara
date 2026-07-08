@@ -831,6 +831,54 @@ def resout_math(question: str):
                 else "Non, %s ≠ %s/%s." % (meg.group(1), meg.group(2), meg.group(3)),
                 "arithmétique — fractions exactes")
 
+    # OPÉRATIONS SUR LES FRACTIONS (exactes via Fraction) : simplification, fraction↔pourcentage, décimal→fraction.
+    from fractions import Fraction as _Fr
+    msimp = re.search(r"simplifie[rz]?\s+(?:la\s+fraction\s+)?(\d+)\s*/\s*(\d+)", question, re.I)
+    if msimp:
+        num, den = int(msimp.group(1)), int(msimp.group(2))
+        if den:
+            fr = _Fr(num, den)
+            if fr.denominator == 1:
+                return (VERIFIE, "%d (= %d/%d)" % (fr.numerator, num, den), "fractions — simplification")
+            deja = (num, den) == (fr.numerator, fr.denominator)
+            return (VERIFIE, "%d/%d%s" % (fr.numerator, fr.denominator,
+                                          "" if deja else " (= %d/%d)" % (num, den)), "fractions — simplification")
+    mf2p = re.search(r"(\d+)\s*/\s*(\d+)\s+en\s+pour ?cent", question, re.I)
+    if mf2p:
+        num, den = int(mf2p.group(1)), int(mf2p.group(2))
+        if den:
+            return (VERIFIE, _fmt_nombre(num / den * 100) + " %", "fractions — vers pourcentage")
+    md2f = re.search(r"(\d+[.,]\d+)\s+en\s+fraction", question, re.I)
+    if md2f:
+        fr = _Fr(md2f.group(1).replace(",", ".")).limit_denominator(10 ** 6)
+        return (VERIFIE, "%d/%d" % (fr.numerator, fr.denominator), "fractions — depuis un décimal")
+
+    # POURCENTAGE INVERSE : « 40 est 20% de quel nombre » -> 200 (40 / 0,20). Le tout à partir d'une part+taux.
+    minv_p = re.search(rf"{_PCT}\s+est\s+{_PCT}\s*(?:%|pour ?cent)\s+de\s+quel\s+nombre", question, re.I)
+    if minv_p:
+        part, taux = _f(minv_p.group(1)), _f(minv_p.group(2))
+        if taux:
+            return (VERIFIE, _fmt_nombre(part / (taux / 100.0)), "calcul — pourcentage inverse (part ÷ taux)")
+    # PRIX AVANT RÉDUCTION : « un article coûte 120 après 20% de réduction, quel était son prix » -> 150.
+    mpv = re.search(rf"co[uû]te\s+{_PCT}\s+apr[eè]s\s+{_PCT}\s*(?:%|pour ?cent)\s+de\s+(?:r[ée]duc\w*|remise)",
+                    question, re.I)
+    if mpv:
+        prix, taux = _f(mpv.group(1)), _f(mpv.group(2))
+        if taux < 100:
+            return (VERIFIE, "%s (prix avant la réduction de %s %%)" % (_fmt_nombre(prix / (1 - taux / 100.0)),
+                                                                        _fmt_nombre(taux)),
+                    "calcul — prix avant réduction")
+
+    # ARRONDI À UN RANG : « arrondis 347 à la centaine » -> 300 (dizaine/centaine/millier ; demi-supérieur).
+    mrr = re.search(r"arrondi[st]?\s+(?:le\s+nombre\s+)?(-?\d+(?:[.,]\d+)?)\s+(?:[àa]\s+la|au)\s+"
+                    r"(dizaine|centaine|millier|unite)", q)
+    if mrr:
+        x = float(mrr.group(1).replace(",", "."))
+        pas = {"unite": 1, "dizaine": 10, "centaine": 100, "millier": 1000}[mrr.group(2)]
+        from decimal import Decimal, ROUND_HALF_UP
+        r = int((Decimal(str(x)) / pas).quantize(0, rounding=ROUND_HALF_UP)) * pas
+        return (VERIFIE, str(r), "calcul — arrondi à la %s" % mrr.group(2))
+
     # PRODUIT / DIFFÉRENCE / QUOTIENT nommés : « le produit de 4 et 25 » -> 100 (exact ; quotient exact seul).
     mpr = re.search(r"\b(produit|difference|quotient)\s+(?:de\s+|d['’]\s*|entre\s+)(-?\d+)\s+et\s+(?:de\s+)?(-?\d+)", q)
     if mpr:

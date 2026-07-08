@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 19 : fractions, pourcentage inverse, prix avant réduction, arrondi à un rang
+
+- **Fractions** (exactes via `Fraction`) : « simplifie 6/8 » → 3/4 (« 10/5 » → 2, entier) ; « 3/4 en
+  pourcentage » → 75 % ; « 0,25 en fraction » → 1/4.
+- **Pourcentage inverse** : « 40 est 20% de quel nombre » → 200 (part ÷ taux) ; **prix avant réduction** :
+  « un article coûte 120 après 20% de réduction » → 150.
+- **Arrondi à un rang** : « arrondis 347 à la centaine » → 300, « au millier » → 3000 (demi-supérieur).
+- Bancs : `valide_assistant_nl` **284/284** (+10), suite 25/25, raisonnement 194/194, paraphrases 174/174,
+  capacites_chat 142/142, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Partage équitable et arithmétique décimale (opérateur explicite)
 
 - **Partage** : « partage 20 euros entre 4 personnes » → « 5 chacun (20 ÷ 4) » ; reste dit quand ça ne tombe
