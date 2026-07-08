@@ -153,6 +153,13 @@ CAS = [
         R.repond(m, "cont-fus", q, pleine=True))[1])(
         __import__("conversation").MemoireConversation(racine=None)),
      "et celui de l'or ?", "1337"),
+    # CONTINUATION TYPE A FORMATÉE : « et sa population ? » sert la réponse du pipeline complet (formatée),
+    # plus la valeur brute du lookup (« 58915656 — à propos de… », vécu 2026-07-08).
+    ("continuation-typeA-formatee", lambda q: (lambda m: (
+        R.repond(m, "cont-ta", "capitale de l'Italie", pleine=True),
+        R.repond(m, "cont-ta", q, pleine=True))[1])(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "et sa population ?", "Population de l'Italie : 58"),
     # CONVERSION DE LA DERNIÈRE RÉPONSE : « et en celsius ? » après « 1811 K » (offset 273,15 exact, montré)
     ("continuation-en-celsius", lambda q: (lambda m: (
         R.repond(m, "cont-cel", "point de fusion du fer", pleine=True),

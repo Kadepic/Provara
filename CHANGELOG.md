@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Continuations type A formatées (« et sa population ? » → la belle réponse, plus la valeur brute)
+
+- Le type A (« même entité, nouvel attribut ») servait la valeur BRUTE du lookup (« 58915656  — à propos de
+  « l'Italie » ») quand la question directe recevait la réponse formatée. Aligné sur le type B : le pipeline
+  COMPLET est rejoué d'abord (un rejeu-aveu ne compte pas comme succès) → « et sa population ? » →
+  « Population de l'Italie : 58 915 656 habitants. », « et sa superficie ? » → « … 301 336 km². »
+  La continuité à travers l'abstention (wakanda) est inchangée.
+- Bancs : `banc_raisonnement` **194/194** (+1), suite 25/25, paraphrases 174/174, assistant_nl 257/257,
+  capacites_chat 139/139, challenge 16/16, lecteur 1613/1613, câblage 504 0 orphelin.
+
 ## 2026-07-08 — « et en celsius ? » : la dernière réponse à unité se convertit au tour suivant
 
 - Mémoire de la dernière valeur-à-unité servie (`_DERNIERE_VALEUR`, posée quand l'unité de la source est

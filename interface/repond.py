@@ -7873,14 +7873,16 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         suj = _DERNIER_SUJET.get(conv_id)
         if suj and _est_continuation(t):
             q1 = _reformule(t, suj)
+            #   REJOUER q1 dans le pipeline COMPLET d'abord (caps compris) : « et sa population ? » obtient la
+            #   réponse FORMATÉE (« Population de l'Italie : 58 915 656 habitants. ») au lieu de la valeur brute
+            #   « 58915656 » du lookup par clé — même choix que le type B (le pipeline sait mieux répondre).
+            rep = _rejoue(memoire, conv_id, q1, pleine)
+            if _utile(rep) and not (rep or "").startswith((_MSG_STRUCTURE_PREFIXE,
+                                                           _MSG_STRUCTURE_COURT_PREFIXE, _MSG_DYM_PREFIXE)):
+                return rep
             rep = _connaissance_verifiee(q1, conv_id)
             if rep:
                 return f"{rep}  — à propos de « {suj} »"
-            #   le lookup direct n'a rien : REJOUER q1 dans le pipeline COMPLET (caps compris) — « et sa
-            #   hauteur ? » doit atteindre _cap_dimension, pas seulement le lookup par clé.
-            rep = _rejoue(memoire, conv_id, q1, pleine)
-            if _utile(rep):
-                return rep
             #   l'échange continue À TRAVERS l'abstention : « capitale du wakanda ? » (abstention structurée)
             #   puis « et sa population ? » -> abstention structurée sur « population de wakanda », pas le générique.
             _snm = _structure_non_ancree(q1, conv_id)
