@@ -3012,7 +3012,7 @@ def _resout_partie(p: str):
 # « × ». Sans cette intention, « x » reste un simple séparateur (« relais 4 x 100 m ») et n'est PAS converti (#82).
 _CALC_INTENT = re.compile(
     r"\b(?:combien\s+(?:font|fait|valent|vaut|ca\s+fait)|calcul\w*|resou\w+|multipli\w+|"
-    r"additionn\w+|soustrai\w+|divis\w+)\b|=\s*\??\s*$|\begale?\s*\??\s*$"
+    r"additionn\w+|soustrai\w+|divis\w+|modulo|\bmod\b|reste\s+de)\b|=\s*\??\s*$|\begale?\s*\??\s*$"
     r"|\d\s*(?:%|pour\s*cents?)\s+de\s+\d|\bau\s+carr[ée]\b|\bau\s+cube\b")
 
 
@@ -3066,6 +3066,13 @@ def _reponse_calcul(texte: str) -> str | None:
                 "douze": "12", "treize": "13", "quatorze": "14", "quinze": "15", "seize": "16", "vingt": "20",
                 "trente": "30", "quarante": "40", "cinquante": "50", "soixante": "60", "cent": "100",
                 "mille": "1000"}
+    # MODULO / RESTE EN PREMIER (FAUX=0 : « reste de 17 divisé par 5 » donnait 3.4 — la division ignorait
+    # « reste ». Un reste est le MODULO, pas le quotient). « reste de X (divisé) par Y », « X modulo/mod Y ».
+    _mod = (re.search(r"reste\s+de\s+(\d+)\s+(?:divis[ée]s?\s+par|par|sur)\s+(\d+)", texte, re.I)
+            or re.search(r"\b(\d+)\s+(?:modulo|mod)\s+(\d+)\b", texte, re.I))
+    if _mod:
+        a, b = int(_mod.group(1)), int(_mod.group(2))
+        return str(a % b) if b else None                # b=0 -> None (pas de reste défini, abstention honnête)
     # POURCENTAGE en PREMIER : « 20 % de 150 » / « 20 pour cent de 150 » -> 20 * 150 / 100 (= 30, précédence
     # gauche-droite). AVANT _MOTS_NB, qui transformerait « pour cent » en « pour 100 » et casserait le motif.
     texte = re.sub(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour\s*cents?)\s+de\s+(\d+(?:[.,]\d+)?)",

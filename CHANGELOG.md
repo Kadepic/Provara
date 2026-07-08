@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX=0 : « reste de 17 divisé par 5 » donnait 3.4 (la division) — corrigé en modulo (2)
+
+- **FAUX servi comme fait, trouvé à la sonde** : « quel est le reste de 17 divisé par 5 » → *3.4* (« reste »
+  ignoré, la division 17/5 servie). Fix dans `_reponse_calcul` : le modulo/reste est intercepté AVANT la
+  conversion « divisé par » → « / » — « reste de X (divisé) par Y », « X modulo Y », « X mod Y » → X % Y
+  (entiers). « modulo/mod/reste de » ajoutés au gate d'intention de calcul. Division exacte préservée (12÷4=3),
+  division/reste par 0 → None (abstention). Nouvelle capacité au passage : le modulo est désormais atteignable.
+- Bancs : `valide_capacites_chat` **102/102** (+5), suite 25/25, assistant_nl 118/118.
+
 ## 2026-07-08 — CÂBLAGE vague 5 : NOMBRES COMPLEXES en conversation (module / argument / conjugué)
 
 - `fonction_nl.resout_math` câble `nombres_complexes` : « module de 3+4i » → 5, « argument de i » → 1,57 rad,

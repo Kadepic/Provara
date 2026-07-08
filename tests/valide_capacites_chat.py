@@ -309,5 +309,12 @@ check(r is not None and "PAS d'équilibre" in r and "mixtes" in r, "matching pen
 check(R._cap_jeux("quelle est la capitale de la France ?") is None, "jeux ne vole pas une question factuelle")
 check(R._cap_jeux("parle-moi du jeu vidéo Zelda") is None, "« jeu » sans jeu catalogué -> None (pas d'invention)")
 
+# — MODULO / RESTE (FAUX=0 : « reste de 17 divisé par 5 » donnait 3.4 = la division, pas le reste) —
+check(R._reponse_calcul("quel est le reste de 17 divisé par 5") == "2", "reste de 17÷5 -> 2 (plus jamais 3.4)")
+check(R._reponse_calcul("17 modulo 5") == "2", "17 modulo 5 -> 2")
+check(R._reponse_calcul("17 mod 5") == "2", "17 mod 5 -> 2")
+check(R._reponse_calcul("12 divisé par 4") == "3", "division exacte préservée (12÷4 -> 3)")
+check(R._reponse_calcul("reste de 10 divisé par 0") is None, "reste par 0 -> None (abstention honnête)")
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)
