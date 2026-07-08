@@ -3589,11 +3589,38 @@ def _strip_article(s: str) -> str:
 
 def _oui_non(texte: str):
     """Confirme « Oui. » une assertion factuelle VÉRIFIÉE (« Paris est-elle la capitale de la France ? »), ou None.
-    Sound : jamais de confirmation d'un faux (mismatch -> None -> flux normal), jamais de « Non » (multi-valué)."""
-    m = _OUINON_RE.match(texte.strip())
-    if not m:
-        return None
-    gauche, droite = m.group(1).strip(), m.group(2).strip()
+    Sound : jamais de confirmation d'un faux (mismatch -> None -> flux normal), jamais de « Non » (multi-valué).
+    Extensions 2026-07-08 : « est-ce que X est Y » (même logique) ; NÉGATION « X n'est pas Y(, si ?) » — si le
+    vérifié CONTREDIT la négation -> « Si — X est bien Y » (confirmer un fait positif est sûr) ; si le vérifié
+    diffère de l'affirmé -> le fait vérifié est servi TEL QUEL (réfutation implicite, jamais un « Non » sec)."""
+    t = texte.strip()
+    t = re.sub(r",?\s*(?:si|non|n['’]est[- ]ce\s+pas)\s*\?*\s*$", " ?", t, flags=re.IGNORECASE)  # « …, si ? »
+    mneg = re.match(r"^\s*(?:est[- ]ce\s+qu[e'’]\s*)?(.+?)\s+n['’e]\s*est\s+pas\s+(.+?)\s*\??\s*$", t,
+                    re.IGNORECASE)
+    if mneg:
+        gauche, droite = mneg.group(1).strip(), mneg.group(2).strip()
+        # GARDE : une question négative OUVERTE (« QUELLE ville n'est pas la capitale… ») n'est pas une
+        # vérification d'assertion -> prudence, flux normal (la garde négation globale s'applique).
+        if re.match(r"^(quelle?s?|qui|quoi|lequel|laquelle|lesquel(?:le)?s|que|o[uù])\b",
+                    _normalise(_strip_article(gauche))):
+            return None
+        vg = _connaissance_verifiee(gauche, None)
+        vd = _connaissance_verifiee(droite, None)
+        if bool(vg) == bool(vd):                      # 0 ou 2 côtés résolus -> prudence, flux normal
+            return None
+        valeur, affirme = (vg, droite) if vg else (vd, gauche)
+        cote = gauche if vg else droite               # la phrase-relation (« la capitale de la France »)
+        if _normalise(_strip_article(affirme)) == _normalise(_strip_article(valeur)):
+            return "Si — %s est bien %s (vérifié)." % (affirme, cote)
+        return "Ce que j'ai de vérifié : %s → %s." % (cote, valeur)
+    mq = re.match(r"^\s*est[- ]ce\s+qu[e'’]\s*(.+?)\s+est\s+(.+?)\s*\??\s*$", t, re.IGNORECASE)
+    if mq:
+        gauche, droite = mq.group(1).strip(), mq.group(2).strip()
+    else:
+        m = _OUINON_RE.match(t)
+        if not m:
+            return None
+        gauche, droite = m.group(1).strip(), m.group(2).strip()
     vg = _connaissance_verifiee(gauche, None)        # conv_id=None : aucun effet de bord multi-tours
     vd = _connaissance_verifiee(droite, None)
     if not vg and not vd:                             # aucun côté ne résout -> flux normal
@@ -7531,6 +7558,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     #   en une entité VÉRIFIÉE E, puis l'OUTER (X de E). FAUX=0 : chaque maillon est un lookup vérifié, abstention
     #   si un maillon manque. (Avant, on refusait tout — « monnaie de la capitale de la France » restait sans
     #   réponse ; désormais « population de la capitale de la France » = population de Paris, composée.)
+    #   EXCEPTION SÛRE à la garde négation (2026-07-08) : la VÉRIFICATION d'une négation (« la capitale de la
+    #   France n'est pas Lyon, si ? ») est traitée par _oui_non — qui ne confirme que du VÉRIFIÉ (« Si — X est
+    #   bien Y ») ou sert le fait vérifié EXPLICITEMENT CADRÉ (« Ce que j'ai de vérifié : … »), jamais un lookup
+    #   positif nu servi comme réponse à la négation.
+    if pleine and _negation_bloquante(t):
+        rep = _oui_non(t)
+        if rep:
+            return rep
     if pleine and not _negation_bloquante(t) and _est_relation_imbriquee(t) and not _est_causale(t):
         _comp = _compose_relations_n(t) or _compose_relations(t)     # N-sauts d'abord ; 2-sauts en repli
         if _comp:

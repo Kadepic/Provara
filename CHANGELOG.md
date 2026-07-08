@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 14 : vérification oui/non étendue (« est-ce que X est Y », négations « …, si ? »)
+
+- `_oui_non` étendu dans son esprit FAUX=0 (jamais un « Non » sec — une relation peut être multi-valuée) :
+  **« est-ce que X est Y »** → « Oui. » quand le fait est vérifié (« est-ce que Tokyo est la capitale du
+  Japon ? » répondait « Tokyo » nu avant) ; **négations** — « Paris n'est pas la capitale de la France, si ? »
+  → « **Si** — Paris est bien la capitale de la France (vérifié) » (confirmer un fait positif est sûr) ;
+  « la capitale de la France n'est pas Lyon, si ? » → « **Ce que j'ai de vérifié** : la capitale de la
+  France → Paris » (réfutation implicite cadrée, jamais un lookup nu servi comme réponse à la négation —
+  ces questions tombaient en repli « pas l'information » avant, la garde négation sautait tout le factuel).
+- Gardes : question négative OUVERTE (« quelle ville n'est pas… ») → prudence, flux normal ; deux côtés
+  résolus ou aucun → prudence. Exception à la garde négation limitée à `_oui_non` (sound par construction).
+- Bancs : `banc_raisonnement` **176/176** (+4), assistant_nl 234/234, capacites_chat 128/128, paraphrases
+  170/170, suite 25/25, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vague 13 : nombre en toutes lettres (« écris 1984 en lettres »)
 
 - `fonction_nl._nombre_en_lettres` (0..999999, orthographe TRADITIONNELLE, dite dans la réponse) : « écris
