@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Perf atome 1 : tokenisation du registre mémoïsée (médiane 3.9 → 1.6 ms, −59 %)
+
+- **Mandat Yohan : optimiser chaque atome (RAM/CPU).** Mesures d'abord : boot produit réel **0.24 s / 23 Mo**
+  (le préchargement des 504 modules n'est PAS dans le chemin produit — c'est le manifeste d'embarquement) ;
+  batterie chaude de 15 questions mixtes : médiane 3.9 ms, max 50 ms, RSS 149 Mo avec données.
+- **Atome n°1 (profilé)** : la boucle candidate de `resout_nl_generique` refaisait `rel.split("_")` + filtre
+  pour CHAQUE relation à CHAQUE question (~1 ms/question). Tokenisation précalculée une fois (`_rel_toks`,
+  cohérente avec le cache du registre qui n'est jamais invalidé à chaud) → **médiane 1.6 ms (−59 %), max
+  20 ms (−60 %)**, RSS inchangé.
+- **Audit câblage 2 niveaux rejoué** : modules 504/504 (0 orphelin) ; fonctions = 0 orpheline dans tout le
+  travail de la nuit ; 165 fonctions publiques jamais appelées PRÉEXISTANTES découvertes (148 dans la façade
+  `ia.py`) — dette listée, à traiter dans le mandat perf.
+- Bancs : resolution 50/50, raisonnement 202/202, paraphrases 174/174, assistant_nl 485/485, suite 25/25.
+
 ## 2026-07-08 — Vague 45 (tests réels Yohan) : horloge N acteurs, liens cliquables, distance nue, valide_interface 58/58
 
 - **Horloge multi-acteurs** (test réel : « un avion part en même temps qu'une voiture à 5h17, l'avion a
