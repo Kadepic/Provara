@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 16 : 6 façades de plus (dette 32 → 26)
+
+- 1 preuve REGISTRE composée (diagnostic : 302) : **fichiers réels** (cree_fichier écrit et le contenu est
+  relu, depot ouvre le dépôt), **protocole de révélation honnête** (protocole inconnu -> la vraisemblance
+  est REFUSÉE, dépendance au protocole type Monty Hall), **calibrations isotoniques exactes** (multi-label
+  {a: 1.0, b: 0.0} et par étapes 0.9 -> 1.0 / 0.6 -> 0.0), **NDCG** (classement parfait = 1.0, inversé < 1).
+- Plafond du cliquet : **26**.
+- Bancs : valide_capacites 73/73 (pins 301→302), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 15 : 6 façades de plus (dette 38 → 32)
 
 - 1 preuve REGISTRE composée (diagnostic : 301) : **conformal par classe** (seuils exacts 0.2/0.2),

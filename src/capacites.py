@@ -4132,6 +4132,37 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_outils_2() -> bool:
+    """LOT 16 : fichiers réels, dépôt, protocoles honnêtes, calibrations isotoniques, NDCG."""
+    import os
+    import tempfile
+    import ia as _I
+    tmp = tempfile.mkdtemp()
+    try:
+        chemin = _I.cree_fichier(tmp, "note.txt", "bonjour")
+        if not (os.path.isfile(chemin) and open(chemin, encoding="utf-8").read() == "bonjour"):
+            return False                                              # le fichier EXISTE avec le bon contenu
+        if _I.depot(tmp) is None:
+            return False
+    finally:
+        try:
+            os.remove(os.path.join(tmp, "note.txt"))
+            os.rmdir(tmp)
+        except OSError:
+            pass
+    if _I.revelation_protocole({"invente": 1.0})[0] != "abstention":
+        return False                                                  # protocole inconnu -> vraisemblance REFUSÉE
+    mm = _I.calibre_multilabel([{"a": 0.9, "b": 0.2}, {"a": 0.1, "b": 0.8}] * 15, [{"a"}, {"b"}] * 15)
+    if mm.applique({"a": 0.9, "b": 0.2}) != {"a": 1.0, "b": 0.0}:     # isotonique par label EXACT
+        return False
+    ce = _I.calibreur_etapes([0.9, 0.7, 0.8, 0.6] * 10, [1, 0, 1, 0] * 10)
+    if not (ce.applique(0.9) == 1.0 and ce.applique(0.6) == 0.0):     # recalibrage isotone EXACT
+        return False
+    if _I.qualite_classement([0, 1, 2], [3.0, 2.0, 1.0]) != 1.0:      # classement PARFAIT -> NDCG = 1
+        return False
+    return _I.qualite_classement([2, 1, 0], [3.0, 2.0, 1.0]) < 1.0    # classement inversé -> < 1
+
+
 def _p_facade_stats_19() -> bool:
     """LOT 15 : conforme par classe, multicalibration honnête, CUSUM de dérive, D-calibration, Rademacher, DP."""
     import random
@@ -4523,6 +4554,10 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Fichiers, protocoles et calibrations isotoniques (façade outils 2)": (
+        "cree_fichier/depot (le fichier existe réellement avec son contenu), revelation_protocole (protocole "
+        "inconnu -> vraisemblance refusée), calibre_multilabel et calibreur_etapes (isotoniques EXACTS), "
+        "qualite_classement (NDCG : parfait = 1, inversé < 1).", _p_facade_outils_2),
     "Calibration par classe, dérive et D-calibration (façade stats 19)": (
         "conforme_label_ajuste (seuil PAR CLASSE exact 0.2), multicalibre (groupes trop petits -> abstention "
         "DITE), detecteur_derive (CUSUM : le sur-confiant déclenche, le calibré jamais), d_calibration_survie "
