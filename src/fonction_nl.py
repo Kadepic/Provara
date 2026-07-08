@@ -1395,28 +1395,36 @@ def resout_math(question: str):
     # FAUX vécu 2026-07-08) : « part à 8h et roule 2 heures » -> 10 h ; « rendez-vous à 14h30 dure 45
     # minutes » -> 15 h 15 ; « il est 23h30 … dans une heure » -> 0 h 30 (lendemain dit) ; « 20h45 plus
     # 30 minutes » -> 21 h 15.
-    mck = re.search(r"(?:^|[àa]\s+|il\s+est\s+)(\d{1,2})\s*h\s*([0-5]\d)?\b(?!\s*/)", qc)
+    mck = re.search(r"(?:^|[àa]\s+|il\s+est\s+|entre\s+)(\d{1,2})\s*h\s*([0-5]\d)?\b(?!\s*/)", qc)
     if mck:
-        mdu = re.search(r"(?:roule|dure|pendant|dans|plus|attend|ajoute)\s+(?:une?\s+(heure|minute)\b"
-                        r"|(\d{1,3})\s*(heures?|minutes?|min\b))", qc)
-        veut_h = (re.search(r"quelle\s+heure|finit|arrive|termine|se\s+terminera|sera", qc)
-                  or re.search(r"^\s*\d{1,2}\s*h\s*[0-5]?\d?\s+plus\b", qc))
+        # durée : mot (« une heure »), nombre+unité (« 45 minutes ») OU compacte (« dure 1h30 ») ;
+        # sens : plus/dans/dure/roule = AVANCE, moins/retire = RECULE (« 20h45 moins 30 min » -> 1245, FAUX vécu).
+        mdu = re.search(r"(?:roule|dure|pendant|dans|plus|moins|attend|ajoute|retire)\s+"
+                        r"(?:une?\s+(heure|minute)\b|(\d{1,3})\s*(heures?|minutes?|min\b)|(\d{1,2})h([0-5]\d)\b)", qc)
+        veut_h = (re.search(r"quelle\s+heure|finit|arrive|termine|se\s+terminera|sera|ce\s+sera", qc)
+                  or re.search(r"^\s*\d{1,2}\s*h\s*[0-5]?\d?\s+(?:plus|moins)\b", qc))
         if mdu and veut_h:
             h0, m0 = int(mck.group(1)), int(mck.group(2) or 0)
             if h0 <= 23:
                 if mdu.group(1):
-                    n, unite = 1, mdu.group(1)
-                else:
+                    dur_min, aff_dur = 60 if mdu.group(1) == "heure" else 1, "1 " + mdu.group(1)
+                elif mdu.group(2):
                     n, unite = int(mdu.group(2)), mdu.group(3)
-                total = h0 * 60 + m0 + (n * 60 if unite.startswith("h") else n)
+                    dur_min = n * 60 if unite.startswith("h") else n
+                    aff_dur = "%d %s%s" % (n, "heure" if unite.startswith("h") else "minute", "s" if n > 1 else "")
+                else:
+                    dur_min = int(mdu.group(4)) * 60 + int(mdu.group(5))
+                    aff_dur = "%sh%s" % (mdu.group(4), mdu.group(5))
+                recule = re.search(r"\b(?:moins|retire)\b", qc) is not None
+                total = h0 * 60 + m0 + (-dur_min if recule else dur_min)
                 h1, m1 = divmod(total % 1440, 60)
-                lend = " — le lendemain" if total >= 1440 else ""
-                return (VERIFIE, "%d h %02d (%d h %02d + %d %s%s)." % (h1, m1, h0, m0, n,
-                                                                       "heure" if unite.startswith("h") else "minute",
-                                                                       "s" if n > 1 else "") + lend,
+                marge = " — le lendemain" if total >= 1440 else (" — la veille" if total < 0 else "")
+                return (VERIFIE, "%d h %02d (%d h %02d %s %s).%s" % (h1, m1, h0, m0, "−" if recule else "+",
+                                                                     aff_dur, marge),
                         "arithmétique d'horloge (heures énoncées, modulo 24 h)")
-        # DURÉE ENTRE DEUX HEURES ÉNONCÉES : « de 9h à 17h30 » -> 8 h 30 (tombait en compte lexical).
-        mde = re.search(r"de\s+(\d{1,2})\s*h\s*([0-5]\d)?\s+(?:[àa]|jusqu['’][àa])\s+(\d{1,2})\s*h\s*([0-5]\d)?\b", qc)
+        # DURÉE ENTRE DEUX HEURES ÉNONCÉES : « de 9h à 17h30 », « entre 9h et 17h30 » -> 8 h 30.
+        mde = re.search(r"(?:de|entre)\s+(\d{1,2})\s*h\s*([0-5]\d)?\s+(?:[àa]|jusqu['’][àa]|et)\s+"
+                        r"(\d{1,2})\s*h\s*([0-5]\d)?\b", qc)
         if mde and re.search(r"combien|duree|heures\s+de", qc):
             t0 = int(mde.group(1)) * 60 + int(mde.group(2) or 0)
             t1 = int(mde.group(3)) * 60 + int(mde.group(4) or 0)
@@ -1472,6 +1480,14 @@ def resout_math(question: str):
             return (VERIFIE, ", ".join(str(k * i) for i in range(1, n + 1)),
                     "arithmétique — multiples (énumération exacte)")
         return (HORS, None, None)
+    mmj = re.search(r"multiples\s+de\s+(\d+)\s+jusqu['’\s]*[àa]\s+(\d+)", q)
+    if mmj:
+        k, borne = int(mmj.group(1)), int(mmj.group(2))
+        if k != 0 and 0 < borne <= 10000 and borne // abs(k) <= 200:
+            vals = [str(k * i) for i in range(1, borne // abs(k) + 1)]
+            if vals:
+                return (VERIFIE, ", ".join(vals), "arithmétique — multiples (énumération exacte)")
+        return (HORS, None, None)
     mtb = re.search(r"table\s+(?:de\s+multiplication\s+)?(?:de\s+|du\s+)(\d+)", q)
     if mtb and ("table" in qtoks):
         k = int(mtb.group(1))
@@ -1480,7 +1496,8 @@ def resout_math(question: str):
                     "arithmétique — table de multiplication")
 
     # VARIATION DE PRIX EN % : « le prix passe de 80 à 60 » -> −25 % (calcul montré ; hausse en +).
-    mvp = re.search(r"passe\s+de\s+(\d+(?:[.,]\d+)?)\s+[àa]\s+(\d+(?:[.,]\d+)?)", qc)
+    mvp = re.search(r"(?:passe|pass[ée]|baisse|baiss[ée]|monte|mont[ée]|augment[ée]|chut[ée])\s+"
+                    r"de\s+(\d+(?:[.,]\d+)?)\s+[àa]\s+(\d+(?:[.,]\d+)?)", qc)
     if mvp and ("pourcentage" in qtoks or "reduction" in qtoks or "augmentation" in qtoks or "%" in question):
         a, b = _fl(mvp.group(1)), _fl(mvp.group(2))
         if a > 0:

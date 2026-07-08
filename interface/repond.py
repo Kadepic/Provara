@@ -3295,6 +3295,10 @@ def _multi_questions(texte: str, conv_id: str | None) -> str | None:
     # est UN raisonnement (prémisses liées), pas des demandes indépendantes — découper le détruit.
     if re.match(r"^\s*si\b", texte, re.IGNORECASE):
         return None
+    # GARDE PROBLÈME D'HORLOGE (vécu 2026-07-08) : « le film commence à 21h ET dure 2h15, il finit à quelle
+    # heure » n'est pas deux demandes — les heures énoncées + « quelle heure » = UN calcul (fonction_nl).
+    if re.search(r"\d{1,2}\s*h\s*[0-5]?\d?\b", texte) and re.search(r"quelle\s+heure", texte, re.IGNORECASE):
+        return None
     parts = [p.strip(" ?.!") for p in _COORD_RE.split(texte) if p and p.strip(" ?.!")]
     parts = [p for p in parts if len(p.split()) >= 2 or re.search(r"\d\s*[-+*/x×]\s*\d", p)]  # ≥2 mots OU un calcul
     if len(parts) < 2:

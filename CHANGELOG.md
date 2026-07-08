@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 40 : passe adverse horloge — soustraction, durées compactes, « entre », variantes
+
+- **FAUX** : « 20h45 **moins** 30 minutes » → *« 1245 minutes »* encore (seul « plus » était routé) →
+  « 20 h 15 (20 h 45 − 30 minutes) » (la veille dite si passage sous minuit).
+- **Durées compactes dans les problèmes** : « le trajet dure **1h30** » → « 10 h 15 (8 h 45 + 1h30) » ;
+  « le film commence à 21h et dure 2h15 » → 23 h 15 (le multi-demandes ne découpe plus les problèmes
+  d'horloge sur « et ») ; « il est 10h20 … dans 45 minutes » → 11 h 05.
+- **Variantes** : « combien d'heures **entre** 9h et 17h30 » → 8 h 30 ; « le prix a **baissé** de 80 à 60 »
+  → −25 % ; « les multiples de 7 **jusqu'à** 50 » → 7, 14, …, 49.
+- Bancs : `valide_assistant_nl` **459/459** (+6), capacites_chat 182/182, raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 39 : robustesse orale/SMS vérifiée + « kel/quel heure »
 
 - Passe de robustesse : « c koi 15% de 80 », « cb font 7 fois 8 », MAJUSCULES intégrales, « combein »

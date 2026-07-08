@@ -414,6 +414,16 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 40 (passe adverse horloge/variantes) : moins, durées compactes, entre, baissé de, jusqu'à.
+check(_m("20h45 moins 30 minutes") == "20 h 15 (20 h 45 − 30 minutes).", "20h45 − 30 min (1245 minutes FAUX vécu)")
+check(_m("un train part à 8h45 et le trajet dure 1h30, à quelle heure arrive-t-il")
+      == "10 h 15 (8 h 45 + 1h30).", "durée compacte 1h30 -> 10 h 15")
+check(_m("combien d'heures entre 9h et 17h30") == "8 h 30 (de 9h à 17h30).", "« entre 9h et 17h30 » -> 8 h 30")
+_rdv = _m("j'ai rendez-vous dans 45 minutes, il est 10h20, ce sera à quelle heure")
+check(_rdv == "11 h 05 (10 h 20 + 45 minutes).", "il est 10h20 + dans 45 min -> 11 h 05")
+_bp = _m("de combien le prix a-t-il baissé de 80 à 60 en pourcentage")
+check(_bp and _bp.startswith("-25 %"), "« baissé de 80 à 60 » -> −25 %")
+check(_m("les multiples de 7 jusqu'à 50") == "7, 14, 21, 28, 35, 42, 49", "multiples jusqu'à 50")
 # VAGUE 38 : multiples (la primalité répondait « Oui, 5 est premier » À CÔTÉ, FAUX vécu), tables, variation %.
 check(_m("les 5 premiers multiples de 7") == "7, 14, 21, 28, 35", "5 premiers multiples de 7")
 _tb = _m("la table de multiplication de 7")
