@@ -382,6 +382,49 @@ check(_m("probabilité de pluie demain à Toulouse") is None, "garde : proba de 
 check(_m("la probabilité que le dé soit pipé") is None, "garde : dé pipé sans face demandée -> HORS")
 check(_m("probabilité d'obtenir un 6 avec deux dés") is None, "garde : plusieurs dés = autre loi -> HORS")
 check(_m("fibonacci de 10") == "55", "Fibonacci 10 -> 55")
+# NOMBRE PREMIER ORDINAL (« Non, 100 n'est pas premier » répondait À CÔTÉ, FAUX vécu 2026-07-08).
+check(_m("quel est le 100e nombre premier") == "Le 100e nombre premier est 541.", "100e premier -> 541")
+check(_m("le 1er nombre premier") == "Le 1er nombre premier est 2.", "1er premier -> 2")
+# SOMME DE SÉRIE (la route stats servait « Somme : 101 (sur 2 valeurs) », bornes prises pour la liste).
+_ss = _m("somme des entiers de 1 à 100")
+check(_ss and _ss.startswith("5050"), "somme des entiers de 1 à 100 -> 5050")
+_ss2 = _m("somme des 100 premiers entiers")
+check(_ss2 and _ss2.startswith("5050"), "somme des 100 premiers entiers -> 5050")
+_ss3 = _m("somme des 5 premiers nombres premiers")
+check(_ss3 and _ss3.startswith("28"), "somme des 5 premiers nombres premiers -> 28")
+# ATOMES D'UN ÉLÉMENT NOMMÉ (« 3 atomes » servait le TOTAL pour « atomes d'oxygène dans CO2 », FAUX vécu).
+check(_m("combien d'atomes d'oxygène dans CO2") == "2 atomes d'oxygène", "atomes d'oxygène dans CO2 -> 2")
+check(_m("combien d'atomes de carbone dans CO2") == "1 atome de carbone", "atomes de carbone dans CO2 -> 1")
+_a0 = _m("combien d'atomes de sodium dans H2O")
+check(_a0 and _a0.startswith("0 — pas d'atome de sodium"), "élément absent -> 0 EXPLIQUÉ")
+check(_m("combien d'atomes de fer dans CO2") is None, "élément hors référentiel -> abstention, JAMAIS le total")
+check(_m("combien d'atomes dans une molécule de H2O") == "3 atomes", "total sans élément nommé -> 3")
+# POURCENTAGE MASSIQUE avec nom d'élément FR (« de l'oxygène » tombait en mémo).
+check(_m("pourcentage massique de l'oxygène dans H2O") == "88.81 %", "pourcentage massique l'oxygène -> 88.81")
+# MOLARITÉ / NOM DE COMPOSÉ / MOLES<->GRAMMES (chimie quantitative + nomenclature, tombaient en mémo).
+check(_m("molarité de 2 moles dans 4 litres") == "0.5 mol/L (2 mol dans 4 L)", "molarité 2 mol / 4 L -> 0.5")
+_cc = _m("concentration si je dissous 0,5 mole dans 2 litres")
+check(_cc and _cc.startswith("0.25 mol/L"), "concentration 0,5 mol / 2 L -> 0.25")
+check(_m("comment s'appelle le composé CO2") == "CO2 : dioxyde de carbone (nomenclature systématique)",
+      "nom du composé CO2")
+_h2s = _m("quel est le nom du composé chimique H2S")
+check(_h2s and "sulfure d'hydrogène" in _h2s, "nom du composé H2S")
+_nm = _m("combien de moles dans 36 grammes d'eau")
+check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'eau -> 1.9983 (n = m/M)")
+check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
+check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
+      "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# CONVERSIONS : ligature « nœuds » (NFD ne la décompose pas) + durée compacte « 2h30 ».
+check(_m("10 nœuds en km/h") == "18.52 km/h", "nœuds avec ligature œ -> 18.52 km/h")
+check(_m("combien de secondes dans 2h30") == "9000 secondes", "2h30 -> 9000 s")
+check(_m("2h30 en minutes") == "150 minutes", "2h30 -> 150 min")
+# JOURS D'UN MOIS (« février 2024 » tombait en repli) : grégorien exact, février sans année = composé honnête.
+check(_m("combien de jours en février 2024") == "29 jours (février 2024)", "février 2024 -> 29")
+check(_m("combien de jours en février 2023") == "28 jours (février 2023)", "février 2023 -> 28")
+check(_m("combien de jours en février") == "28 jours (29 les années bissextiles).", "février sans année")
+check(_m("combien de jours en avril") == "30 jours", "avril -> 30")
+check(_m("dans combien de jours le 25 décembre") is None,
+      "garde : compte à rebours -> pas volé par les jours du mois")
 check(_m("sinus de 30 degrés") == "0.5", "sin 30° -> 0.5")
 check(_m("cos de 60°") == "0.5", "cos 60° -> 0.5")
 check(_m("tangente de 45") == "1", "tan 45° -> 1")

@@ -140,6 +140,13 @@ def repond_stats(texte: str):
             return None
         return _descr("min", vals)
     if re.search(r"\bsomme\b", bas) and vals:
+        # GARDE SÉRIE (FAUX vécu 2026-07-08) : « somme des entiers de 1 à 100 » servait « Somme : 101 (sur
+        # 2 valeurs) » — les BORNES traitées comme la liste ! Une somme « de X à Y » (ou « des N premiers… »)
+        # est une série -> route dédiée (fonction_nl) ; la somme de liste (« somme de 3, 7 et 9 ») reste ici.
+        if re.search(r"\b(?:entiers?|nombres?)\s+de\s+\d+\s+a\s+\d+\b", bas) \
+                or re.search(r"\bdes\s+\d+\s+premiers?\b", bas) \
+                or (len(vals) == 2 and re.search(r"\bde\s+\d+\s+a\s+\d+\b", bas)):
+            return None
         return _descr("somme", vals)
     if re.search(r"\b[ée]tendue\b", bas) and vals:
         return _descr("etendue", vals)

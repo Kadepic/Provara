@@ -31,6 +31,10 @@ check(S.repond_stats("moyenne de 12, 15, 14, 13, 16, 12").startswith("Moyenne : 
 check("Médiane : 3.5" in S.repond_stats("médiane de 3, 1, 4, 1, 5, 9, 2, 6"), "médiane exacte")
 check("Écart-type" in S.repond_stats("écart-type de 10, 12, 14, 16, 18"), "écart-type")
 check("Somme : 20" in S.repond_stats("somme de 2, 4, 6, 8"), "somme exacte")
+# GARDE SÉRIE (FAUX vécu 2026-07-08) : « somme des entiers de 1 à 100 » servait « Somme : 101 (sur 2
+# valeurs) » — les BORNES prises pour la liste. La série revient à fonction_nl (5050), pas ici.
+check(S.repond_stats("somme des entiers de 1 à 100") is None, "somme de série -> None (route dédiée)")
+check(S.repond_stats("somme des 100 premiers entiers") is None, "somme des N premiers -> None (route dédiée)")
 check("Minimum : 2" in S.repond_stats("min et max de 7, 2, 9, 4"), "min/max")
 
 # — moyenne PONDÉRÉE : les coefficients ne sont JAMAIS moyennés avec les valeurs (bug vécu : 8 au lieu de 13.8) —

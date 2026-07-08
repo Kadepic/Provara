@@ -845,6 +845,12 @@ def resout_nl_generique(question: str):
         # déjà traité ci-dessus (il faut alors que le générique soit explicite).
         if attr not in _GENERIQUES and attr not in demandes:
             continue
+        # GARDE QUANTITÉ vs DATE (FAUX vécu 2026-07-08) : « combien de secondes dans une année » accrochait
+        # `annee_publication_oeuvre` (token « année ») et servait 1939 (une œuvre !). Une question « combien … »
+        # attend une QUANTITÉ — jamais une relation d'année/date (qui répond une date, pas un compte). Les
+        # relations de compte réel (population…) ne commencent pas par annee_/date_ et restent servies.
+        if "combien" in qtoks and (rel.startswith("annee_") or rel.startswith("date_")):
+            continue
         candidats.append((score, rel))
     candidats.sort(key=lambda sr: (-sr[0], sr[1]))
 

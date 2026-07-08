@@ -1,5 +1,32 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 24 : 4 FAUX tués (1939 !, 100e premier, somme de série, atomes d'un élément) + chimie quantitative
+
+- **FAUX massif** : « combien de secondes dans une année » → *« 1939 »* (le résolveur générique accrochait
+  `annee_publication_oeuvre` via le token « année » et une entité fuzzy !). Garde structurelle : une question
+  « combien … » attend une **quantité** — les relations `annee_*`/`date_*` sont écartées ; la conversion
+  (31 536 000, année commune étiquetée) reprend la main. Les comptes réels (population…) restent servis.
+- **FAUX** : « quel est le 100e nombre premier » → *« Non, 100 n'est pas premier »* (à côté de la question).
+  Route ordinale exacte : « le 100e nombre premier est 541 » (énumération `est_premier`, 1er → 2, borne 10 000).
+- **FAUX** : « somme des entiers de 1 à 100 » → *« Somme : 101 (sur 2 valeurs) »* (les BORNES prises pour la
+  liste par la route stats). Garde série côté stats + routes exactes : 1 à 100 → 5050 (formule montrée),
+  « les 100 premiers entiers » → n(n+1)/2, « les 5 premiers nombres premiers » → 28 (énumération).
+- **FAUX** : « combien d'atomes d'**oxygène** dans CO2 » → *« 3 atomes »* (le TOTAL de la molécule). Élément
+  nommé → compte de CET élément (2 atomes d'oxygène) ; élément absent → « 0 — pas d'atome de sodium… (composition
+  montrée) » ; élément HORS référentiel (« fer ») → abstention, jamais le total à la place.
+- **Chimie quantitative câblée** (briques `chimie_quantitative`/`nomenclature_chimique`, tombaient en mémo) :
+  molarité (« 2 moles dans 4 litres » → 0.5 mol/L), nom du composé binaire (« CO2 » → dioxyde de carbone),
+  moles↔grammes (« 36 g d'eau » → 1.9983 mol, n = m/M, table fermée nom→formule du lecteur), pourcentage
+  massique avec nom d'élément FR (« de l'oxygène » → 88.81 %).
+- **« combien d'habitants en France ? »** (tombait en repli) : réécriture fermée ANCRÉE → « population de X »
+  en tête de pipeline → réponse FORMATÉE (« Population de la France : 68 720 337 habitants. ») ; le gentilé
+  (« comment s'appellent les habitants de Lyon ») ne passe pas par là (abstention intacte).
+- **Conversions** : ligature « œ » (« 10 nœuds en km/h » ratait — NFD ne décompose pas œ) ; durée compacte
+  « 2h30 » → 150 min/9000 s ; jours d'un mois (« février 2024 » → 29, grégorien exact ; février sans année →
+  « 28 (29 les années bissextiles) » ; le compte à rebours « dans combien de jours… » n'est pas volé).
+- Bancs : `valide_assistant_nl` **338/338** (+26), `valide_fonction_stats_nl` **24/24** (+2), banc_raisonnement
+  **197/197** (+3), resolution 50/50, suite 25/25, capacites_chat 147/147, paraphrases 174/174, challenge 16/16.
+
 ## 2026-07-08 — Vague 23 : proba dé/pièce, coefficient binomial nommé, permutations « ranger » (2 garbages tués)
 
 - **2 garbages tués** (une QUESTION avalée par l'accusé mémo « Noté — je le retiens », trouvés à la sonde) :

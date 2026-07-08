@@ -7577,6 +7577,16 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     t = (texte or "").strip()
     if not t:
         return ""
+    #   (0pré⁻) RÉÉCRITURE FERMÉE « combien d'habitants en France ? » -> « population de France » : la forme
+    #   canonique traverse tout le pipeline (réponse FORMATÉE « Population de la France : 68 720 337
+    #   habitants. ») ; la forme « combien d'habitants » n'extrayait pas l'entité (queue prise après le
+    #   premier « d' » -> repli, vécu 2026-07-08). ANCRÉE en tête de phrase — le gentilé (« comment
+    #   s'appellent les habitants de Lyon ») ne passe PAS par ici. Sens strictement équivalent.
+    _mhab = re.match(r"^\s*combien\s+d['’]\s*habitants?\s+(en|au|aux|à|a|dans)\s+(.+?)\s*\?*\s*$",
+                     t, re.IGNORECASE)
+    if _mhab:
+        _prep = _mhab.group(1).lower()
+        t = "population " + {"au": "du ", "aux": "des "}.get(_prep, "de ") + _mhab.group(2)
     #   (0pré) CLARIFICATION EN ATTENTE : si le tour précédent était une question de clarification de l'assistant
     #   (« vouliez-vous dire … ? ») et que ce message la CONFIRME (« oui » / le mot proposé), la question d'origine
     #   est RÉÉCRITE avec la correction CONFIRMÉE puis traitée normalement. Sound : substitution explicitement

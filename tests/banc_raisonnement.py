@@ -166,6 +166,20 @@ CAS = [
         R.repond(m, "cont-cel", q, pleine=True))[1])(
         __import__("conversation").MemoireConversation(racine=None)),
      "et en celsius ?", "1811 K = 1537.85 °C"),
+    # VOLEUR TUÉ (FAUX vécu 2026-07-08) : « combien de secondes dans une année » servait 1939 — le résolveur
+    # générique accrochait `annee_publication_oeuvre` (token « année », entité fuzzy). Garde : « combien » =
+    # QUANTITÉ, jamais une relation annee_/date_. La conversion (31 536 000) reprend la main.
+    ("secondes-annee-pas-1939", lambda q: (lambda m: R.repond(m, "sec-an", q, pleine=True))(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "combien de secondes dans une année", "31536000"),
+    # RÉÉCRITURE « combien d'habitants en X » -> « population de X » (tombait en repli) : réponse FORMATÉE.
+    ("habitants-france-formate", lambda q: (lambda m: R.repond(m, "hab-fr", q, pleine=True))(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "combien d'habitants en France ?", "Population de la France : 68"),
+    # le GENTILÉ n'est pas volé par la réécriture (pas de table vérifiée -> abstention, jamais la population)
+    ("habitants-gentile-intact", lambda q: (lambda m: R.repond(m, "hab-ge", q, pleine=True))(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "comment s'appellent les habitants de Lyon", "pas l'information"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),

@@ -220,12 +220,30 @@ def _fmt_nombre(val: float) -> str:
     return ("%.6f" % val).rstrip("0").rstrip(".")
 
 
+def _symbole_element(mot: str):
+    """Symbole chimique depuis un NOM français d'élément (« oxygène » -> « O », accents/casse ignorés).
+    None si le mot n'est pas un nom d'élément du référentiel (les symboles bruts ne passent PAS par ici :
+    « o » minuscule ambigu avec la conjonction, la casse des formules reste souveraine ailleurs)."""
+    n = normalise(mot or "")
+    if len(n) < 3:                                     # « or » (conjonction) et consorts : trop ambigu
+        return None
+    try:
+        import nomenclature_chimique as _NCH
+    except Exception:
+        return None
+    for s, nom in _NCH.NOMS_ELEMENTS.items():
+        if normalise(nom) == n:
+            return s
+    return None
+
+
 def _norm_conv(s: str) -> str:
     """Normalisation LOCALE des conversions : accents/casse comme normalise(), mais PRÉSERVE « , . / » —
     normalise() les mange, ce qui tronquait « 1,5 heures » en « 5 heures » (300 min servi pour 90, FAUX vécu
     2026-07-08) et cassait « km/h »."""
     import unicodedata
-    s = unicodedata.normalize("NFD", s.lower())
+    s = s.lower().replace("œ", "oe").replace("æ", "ae")   # ligatures : NFD ne les décompose PAS (« nœuds » ratait)
+    s = unicodedata.normalize("NFD", s)
     s = "".join(c for c in s if unicodedata.category(c) != "Mn")
     return re.sub(r"\s+", " ", s)
 
@@ -276,6 +294,11 @@ def resout_conversion(question: str):
                lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.5, m.group(2)), q)
     q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+quarts?\b",
                lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.25, m.group(2)), q)
+    # DURÉE COMPACTE « 2h30 » -> « 150 minutes » (« combien de secondes dans 2h30 » tombait en repli, vécu
+    # 2026-07-08). Minutes < 60 exigées ; « km/h », « 2 h » nus et les heures d'horloge ailleurs sont intacts
+    # (la réécriture est LOCALE à la route de conversion).
+    q = re.sub(r"\b(\d{1,3})\s*h\s*([0-5]?\d)\b(?!\s*/)",
+               lambda m: "%d minutes" % (int(m.group(1)) * 60 + int(m.group(2))), q)
     # SEMAINES DANS UNE ANNÉE : durée VARIABLE (365/366 j) -> réponse composée honnête, pas un facteur menteur.
     if re.search(r"semaines?\s+dans\s+(?:une?\s+|l['’]\s*)?annee", q):
         return (VERIFIE, "52 semaines et 1 jour (année de 365 jours) ; 52 semaines et 2 jours si bissextile (366).",
@@ -1013,6 +1036,76 @@ def resout_math(question: str):
                     "arithmétique — primalité (énumération exacte)")
         return (HORS, None, None)
 
+    # JOURS D'UN MOIS : « combien de jours en février 2024 » -> 29 (calendar.monthrange, grégorien exact) ;
+    # février SANS année -> réponse composée honnête (28 ; 29 si bissextile), jamais un des deux au pif.
+    # GARDES : « combien/nombre » exigé + « jours en/de <mois> » — le compte à rebours (« dans combien de
+    # jours le 25 décembre ») n'a pas « jours en <mois> » et reste au gabarit dédié ; « le 14 février » (date
+    # précise) est exclu par l'absence de jour chiffré devant le mois.
+    mjm = re.search(r"\bjours?\s+(?:en|au|de|du|dans)\s+(?:le\s+mois\s+de\s+)?"
+                    r"(janvier|fevrier|mars|avril|mai|juin|juillet|aout|septembre|octobre|novembre|decembre)"
+                    r"(?:\s+(\d{4}))?\b", q)
+    if mjm and ("combien" in qtoks or "nombre" in qtoks) and not re.search(r"\d+\s+" + mjm.group(1), q):
+        _MOIS_NUM = {"janvier": 1, "fevrier": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6, "juillet": 7,
+                     "aout": 8, "septembre": 9, "octobre": 10, "novembre": 11, "decembre": 12}
+        num = _MOIS_NUM[mjm.group(1)]
+        _MOIS_AFF = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+                     "septembre", "octobre", "novembre", "décembre"]
+        if mjm.group(2):
+            import calendar as _cal
+            nbj = _cal.monthrange(int(mjm.group(2)), num)[1]
+            return (VERIFIE, "%d jours (%s %s)" % (nbj, _MOIS_AFF[num - 1], mjm.group(2)),
+                    "calendrier grégorien (monthrange exact)")
+        if num == 2:
+            return (VERIFIE, "28 jours (29 les années bissextiles).", "calendrier grégorien")
+        nbj = [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][num - 1]
+        return (VERIFIE, "%d jours" % nbj, "calendrier grégorien")
+
+    # NOMBRE PREMIER ORDINAL : « le 100e nombre premier » -> 541 (énumération exacte via est_premier). AVANT la
+    # primalité simple, sinon elle répondait « Non, 100 n'est pas premier » À CÔTÉ de la question (FAUX vécu
+    # 2026-07-08). Le suffixe ordinal (e/eme/ere/ieme) est OBLIGATOIRE (« 17 est un nombre premier » intact).
+    mop = re.search(r"\b(\d+)\s*(?:ers?|eres?|iemes?|emes?|e)\b\s+nombres?\s+premiers?", q)
+    if mop:
+        n = int(mop.group(1))
+        if 1 <= n <= 10000:
+            cnt, x = 0, 1
+            while cnt < n:
+                x += 1
+                if _AM.est_premier(x):
+                    cnt += 1
+            return (VERIFIE, "Le %d%s nombre premier est %d." % (n, "er" if n == 1 else "e", x),
+                    "arithmétique — primalité (énumération exacte)")
+        return (HORS, None, None)
+
+    # SOMME DE SÉRIE : « somme des entiers de 1 à 100 » -> 5050 (la route stats servait « Somme : 101 (sur
+    # 2 valeurs) », les bornes prises pour la liste — FAUX vécu 2026-07-08). Calcul exact (b−a+1)(a+b)/2,
+    # formule MONTRÉE. Variantes : « somme des 100 premiers entiers », « somme des 5 premiers nombres premiers ».
+    mss = re.search(r"somme\s+des?\s+(?:entiers?|nombres?)?\s*de\s+(\d+)\s+a\s+(\d+)", q)
+    if mss and "premier" not in q:
+        a, b = int(mss.group(1)), int(mss.group(2))
+        if a > b:
+            a, b = b, a
+        if b <= 10 ** 12:
+            s = (b - a + 1) * (a + b) // 2
+            return (VERIFIE, "%d (somme des entiers de %d à %d : (b−a+1)(a+b)/2)" % (s, a, b),
+                    "arithmétique — somme de série (formule exacte)")
+    msp = re.search(r"somme\s+des\s+(\d+)\s+premiers\s+(?:entiers|nombres)(\s+premiers)?", q)
+    if msp:
+        n = int(msp.group(1))
+        if msp.group(2):                                   # « … nombres PREMIERS » : 2+3+5+7+… (énumération)
+            if 1 <= n <= 10000:
+                s, cnt, x = 0, 0, 1
+                while cnt < n:
+                    x += 1
+                    if _AM.est_premier(x):
+                        s += x
+                        cnt += 1
+                return (VERIFIE, "%d (somme des %d premiers nombres premiers)" % (s, n),
+                        "arithmétique — primalité (énumération exacte)")
+        elif 1 <= n <= 10 ** 12:                           # « … premiers ENTIERS » : n(n+1)/2
+            return (VERIFIE, "%d (somme des entiers de 1 à %d : n(n+1)/2)" % (n * (n + 1) // 2, n),
+                    "arithmétique — somme de série (formule exacte)")
+        return (HORS, None, None)
+
     # NOMBRE PREMIER : « est-ce que 17 est (un nombre) premier ? », « 18 est-il un nombre premier ? ». GARDE
     # anti-faux-positif : « premier » est un ordinal courant (« premier président de 1958 ») -> on exige soit
     # « nombre premier », soit la forme « <n> est … premier » (le nombre ADJACENT au prédicat de primalité).
@@ -1382,10 +1475,12 @@ def resout_fonction(question: str):
 
     # CHIMIE (casse préservée : H2O ≠ h2o). On essaie l'arg après-préposition PUIS le dernier token (repli).
     if "pourcentage" in qtoks and ("massique" in qtoks or "masse" in qtoks):
-        # deux arguments : « pourcentage massique de O dans H2O » -> élément O, formule H2O.
-        m = re.search(r"\bde\s+(\w+)\s+dans\s+(\S+)", question, re.IGNORECASE)
+        # deux arguments : « pourcentage massique de O dans H2O » -> élément O, formule H2O. L'élément peut
+        # être un NOM français (« de l'oxygène ») : converti en symbole (tombait en mémo « Noté », vécu).
+        m = re.search(r"\bd[e']\s*(?:l['’]\s*)?(\w+)\s+dans\s+(\S+)", question, re.IGNORECASE)
         if m:
-            st, val = _C.pourcentage_massique(m.group(2).strip(" ?.!"), m.group(1))
+            el = _symbole_element(m.group(1)) or m.group(1)
+            st, val = _C.pourcentage_massique(m.group(2).strip(" ?.!"), el)
             if st == VERIFIE:
                 return (VERIFIE, f"{val} %", "calcul — pourcentage massique (IUPAC)")
         return (HORS, None, None)
@@ -1393,6 +1488,27 @@ def resout_fonction(question: str):
         val = _essaie(_C.masse_molaire, arg, dernier)
         return (VERIFIE, f"{val} g/mol", "calcul — masses atomiques IUPAC") if val is not None else (HORS, None, None)
     if "atomes" in qtoks and ("nombre" in qtoks or "combien" in qtoks or "atomes" in qtoks):
+        # ÉLÉMENT NOMMÉ (FAUX vécu 2026-07-08) : « combien d'atomes d'OXYGÈNE dans CO2 » servait « 3 atomes »
+        # (le TOTAL de la molécule au lieu des 2 O). Un élément nommé -> compte de CET élément via
+        # composition() ; élément absent de la formule -> 0 EXPLIQUÉ, jamais un total à côté.
+        el = next((s for s in (_symbole_element(w) for w in normalise(question).split()) if s), None)
+        if el:
+            comp = _essaie(_C.composition, arg, dernier)
+            if comp is not None:
+                import nomenclature_chimique as _NCH
+                nom_el = _NCH.NOMS_ELEMENTS[el]
+                de_el = ("d'" if nom_el[0] in "aeiouyhéè" else "de ") + nom_el
+                nb = comp.get(el, 0)
+                if nb:
+                    return (VERIFIE, "%d atome%s %s" % (nb, "s" if nb > 1 else "", de_el),
+                            "calcul — formule chimique")
+                return (VERIFIE, "0 — pas d'atome %s dans cette formule (composition : %s)"
+                        % (de_el, ", ".join(f"{n} {e}" for e, n in comp.items())), "calcul — formule chimique")
+            return (HORS, None, None)
+        if re.search(r"atomes?\s+d[e']\s*(?:l['’]\s*)?\w+.*\bdans\b", question, re.IGNORECASE):
+            # un ÉLÉMENT est nommé (« atomes de FER dans CO2 ») mais hors référentiel -> abstention honnête,
+            # JAMAIS le total de la molécule à la place (FAUX vécu 2026-07-08).
+            return (HORS, None, None)
         val = _essaie(_C.nb_atomes, arg, dernier)
         return (VERIFIE, f"{val} atomes", "calcul — formule chimique") if val is not None else (HORS, None, None)
     if "composition" in qtoks:
@@ -1400,6 +1516,62 @@ def resout_fonction(question: str):
         if val is not None:
             txt = ", ".join(f"{n} {el}" for el, n in val.items())
             return (VERIFIE, txt, "calcul — composition atomique")
+        return (HORS, None, None)
+    # MOLARITÉ : « molarité de 2 moles dans 4 litres », « concentration si je dissous 0,5 mole dans 2 litres »
+    # (tombait en mémo « Noté », vécu 2026-07-08). Brique chimie_quantitative.molarite ; moles ET litres exigés
+    # (une « concentration » en grammes = concentration massique, autre route ; sans les deux -> abstention).
+    if "molarite" in qtoks or ("concentration" in qtoks and re.search(r"\bmoles?\b", question, re.IGNORECASE)):
+        mm = re.search(r"(\d+(?:[.,]\d+)?)\s*moles?\b.*?(\d+(?:[.,]\d+)?)\s*(?:litres?|l)\b",
+                       question, re.IGNORECASE | re.DOTALL)
+        if mm:
+            try:
+                import chimie_quantitative as _CQ
+                n_mol = float(mm.group(1).replace(",", "."))
+                vol = float(mm.group(2).replace(",", "."))
+                cc = _CQ.molarite(n_mol, vol)
+                return (VERIFIE, "%s mol/L (%s mol dans %s L)"
+                        % (_fmt_nombre(cc), _fmt_nombre(n_mol), _fmt_nombre(vol)),
+                        "chimie quantitative — molarité n/V")
+            except Exception:
+                pass
+        return (HORS, None, None)
+    # NOM DU COMPOSÉ : « comment s'appelle le composé CO2 » -> dioxyde de carbone (nomenclature systématique
+    # binaire VALIDÉE par le module ; formule non binaire/inconnue -> abstention, jamais un nom deviné).
+    if ("compose" in qtoks or "molecule" in qtoks) and ("nom" in qtoks or "appelle" in qtoks or "nomme" in qtoks):
+        try:
+            import nomenclature_chimique as _NCH
+            for cand in (dernier, arg):
+                try:
+                    nom = _NCH.nom_compose_binaire((cand or "").strip(" ?.!"))
+                    return (VERIFIE, "%s : %s (nomenclature systématique)" % (cand.strip(" ?.!"), nom),
+                            "nomenclature chimique binaire")
+                except Exception:
+                    continue
+        except Exception:
+            pass
+        return (HORS, None, None)
+    # MOLES <-> GRAMMES : « combien de moles dans 36 grammes d'eau » -> n = m/M (masse molaire IUPAC ; le nom
+    # courant passe par la table FERMÉE nom->formule du lecteur ; sinon la formule brute). Inconnue -> abstention.
+    if re.search(r"\bmoles?\b", question, re.IGNORECASE) and re.search(r"\bg\b|grammes?", question, re.IGNORECASE):
+        mg = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:g|grammes?)\s+d[e']\s*(?:l['’]\s*)?([\w()]+)",
+                       question, re.IGNORECASE)
+        if mg:
+            masse = float(mg.group(1).replace(",", "."))
+            cible = mg.group(2).strip(" ?.!")
+            formule = None
+            try:
+                import lecteur as _LCT
+                nn = normalise(cible)
+                formule = next((f for n_, f in _LCT._FORMULE_CHIMIQUE if n_ == nn), None)
+            except Exception:
+                pass
+            st_m, mm_val = _C.masse_molaire(formule or cible)
+            if st_m == VERIFIE and mm_val:
+                n_mol = round(masse / mm_val, 4)
+                return (VERIFIE, "%s mol (%s g / %s g/mol%s)"
+                        % (_fmt_nombre(n_mol), _fmt_nombre(masse), _fmt_nombre(mm_val),
+                           f" — {formule}" if formule else ""),
+                        "chimie — n = m/M (masses atomiques IUPAC)")
         return (HORS, None, None)
 
     # GÉNÉTIQUE : séquences ADN/ARN en MAJUSCULES (repli = dernier token, robuste à « la séquence ATCG »).
