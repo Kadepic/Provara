@@ -4132,6 +4132,29 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_outils_1() -> bool:
+    """LOT 10 : encodeurs binaires (octets magiques), Choquet, besoins décomposés, registre d'apprentissage."""
+    import ia as _I
+    img = _I.image_raster(4, 4, "RGB", (255, 0, 0))
+    png = _I.encode_png(img)
+    if not (isinstance(png, bytes) and png[:8] == b"\x89PNG\r\n\x1a\n"):    # signature PNG EXACTE
+        return False
+    wav = _I.encode_wav([0, 1000, -1000, 500] * 100)
+    if not (isinstance(wav, bytes) and wav[:4] == b"RIFF" and wav[8:12] == b"WAVE"):
+        return False
+    if abs(_I.agrege_choquet(lambda S: len(S) / 2.0, {"a": 0.6, "b": 0.8}) - 0.7) > 1e-12:
+        return False                                                  # intégrale de Choquet EXACTE
+    if _I.decompose_besoin("rafraichir une piece").get("statut") != "decompose":
+        return False
+    if _I.principes_besoin("rafraichir une piece").get("statut") != "principes":
+        return False
+    srcs = _I.ou_apprendre("physique")
+    if not (isinstance(srcs, list) and any(s.get("id") == "nist-codata" for s in srcs)):
+        return False                                                  # le registre RÉEL des sources répond
+    disp = _I.trace_barres([3.0, 7.0])
+    return len(disp.rects) == 2 and disp.rects[1].hauteur > disp.rects[0].hauteur   # la barre 7 domine la barre 3
+
+
 def _p_facade_stats_14() -> bool:
     """LOT 9 : Goodhart, shift de covariables, migration de stade, régression fallacieuse, vie privée."""
     import math
@@ -4376,6 +4399,10 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Encodeurs binaires, Choquet et besoins (façade outils 1)": (
+        "image_raster + encode_png (signature PNG exacte), encode_wav (RIFF/WAVE), agrege_choquet (intégrale "
+        "exacte 0.7), decompose_besoin/principes_besoin (physique du besoin), ou_apprendre (registre réel des "
+        "sources), trace_barres (géométrie : la barre 7 domine la barre 3).", _p_facade_outils_1),
     "Goodhart, dérive et confidentialité (façade stats 14)": (
         "loi_de_goodhart (le proxy se décorrèle sous pression — reproduit), poids_shift_gaussien (ratio de "
         "vraisemblance e^0.5 exact), migration_de_stade, regression_temporelle_fallacieuse (faux positifs "

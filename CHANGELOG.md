@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 10 : 8 façades outils (dette 71 → 63)
+
+- 1 preuve REGISTRE composée (diagnostic : 296) : **encodeurs binaires prouvés par octets magiques**
+  (image_raster + encode_png -> signature PNG exacte \x89PNG, encode_wav -> RIFF/WAVE), **intégrale de
+  Choquet exacte** (0.7), décomposition physique des besoins (decompose_besoin/principes_besoin),
+  **registre réel des sources d'apprentissage** (ou_apprendre("physique") contient NIST-CODATA),
+  géométrie de tracé (la barre 7 domine la barre 3).
+- Plafond du cliquet : **63**.
+- Bancs : valide_capacites 73/73 (pins 295→296), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 9 : 7 façades de plus (dette 78 → 71)
 
 - 1 preuve REGISTRE composée (diagnostic : 295) : **loi de Goodhart reproduite** (le proxy se décorrèle de
