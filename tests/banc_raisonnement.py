@@ -180,6 +180,10 @@ CAS = [
     ("habitants-gentile-intact", lambda q: (lambda m: R.repond(m, "hab-ge", q, pleine=True))(
         __import__("conversation").MemoireConversation(racine=None)),
      "comment s'appellent les habitants de Lyon", "pas l'information"),
+    # SOMME COORDONNÉE (vécu : le décomposeur multi-demandes ET le Fermi volaient la question — pipeline entier)
+    ("pieces-billets-somme", lambda q: (lambda m: R.repond(m, "pb-som", q, pleine=True))(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "j'ai 3 pièces de 2 euros et 2 billets de 5 euros, combien j'ai en tout", "16 euros (3 × 2 + 2 × 5)"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),

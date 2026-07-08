@@ -198,6 +198,10 @@ def repond_stats(texte: str):
 
     # — FERMI (ordre de grandeur d'un produit de facteurs) —
     if re.search(r"\b(fermi|ordre de grandeur|estime.*produit|combien.*en tout|estimation approximative)\b", bas) and len(vals) >= 2:
+        # GARDE MONNAIE (FAUX vécu 2026-07-08) : « 3 pièces de 2 euros et 2 billets de 5, combien en tout »
+        # MULTIPLIAIT tous les nombres (« ~60 » pour 16 !). Pièces/billets/euros = somme EXACTE (fonction_nl).
+        if re.search(r"\b(pieces?|billets?|euros?|centimes?)\b", bas):
+            return None
         try:
             return ia.estime_fermi([(v, v) for v in vals], phrase=True)
         except Exception:

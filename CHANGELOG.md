@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 27 : 2 FAUX (règle de trois décimale, Fermi-monnaie ~60 !) + argent du quotidien, lettres, polygones
+
+- **FAUX** : « si 3 stylos coûtent **4,50** euros combien coûtent 7 stylos » → *« 9.333333 »* (normalise()
+  mangeait la virgule : 4,50 lu 4 !). Motif déplacé sur `_norm_conv` → **10.5** (leçon n°1, rechute épinglée).
+- **FAUX** : « 3 pièces de 2 euros et 2 billets de 5 euros, combien en tout » → *« Estimation d'ordre de
+  grandeur : ~60 »* (le Fermi MULTIPLIAIT tous les nombres ; le décomposeur multi-demandes coupait aussi sur
+  « et »). Deux gardes + route **somme exacte montrée** : « 16 euros (3 × 2 + 2 × 5) ».
+- **Argent du quotidien** (tombaient en mémo) : « 20 euros moins 7,50 » → 12.5 (mot moins/plus accepté quand
+  le résidu hors monnaie est VIDE — « il fait moins 5 degrés », « la guerre de 1939-1945 » intacts) ;
+  **rendu de monnaie** (« sur 50 € pour 37,25 » → « 12.75 (50 − 37.25) » ; achat > billet → « Impossible » dit) ;
+  **prix total** (« 3 baguettes à 1,20 € » → 3.6) ; **fractions multiples** (« les trois quarts de 200 » → 150 ;
+  décimal infini → abstention, règle inchangée).
+- **Géométrie/conversions** : périmètre des polygones réguliers nommés (pentagone→dodécagone ; « hexagone de
+  côté 5 » → « 30 (6 × 5) ») ; arêtes/sommets cube-pavé-tétraèdre ; **mph** (1 mile = 1.609344 km, deux sens).
+- **Lettres** : « la 5e lettre du mot maison » → o ; « la première/10e/30e lettre de l'alphabet » → a/j/borne
+  DITE ; « dernière lettre du mot chat » → t.
+- Bancs : `valide_assistant_nl` **382/382** (+23), `valide_fonction_stats_nl` **27/27** (+1), raisonnement
+  **198/198** (+1), paraphrases 174/174, capacites_chat 148/148, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 26 : cinématique du quotidien (1 FAUX), IMC, pH, TVA, consommation, prix unitaire, angles
 
 - **FAUX** : « vitesse moyenne si je parcours 150 km en 2 heures » → *« Moyenne : 76 »* (la route stats

@@ -414,6 +414,42 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# RÈGLE DE TROIS DÉCIMALE (FAUX vécu : « 4,50 euros » lu « 4 » -> 9.33 au lieu de 10.5 — virgule mangée).
+check(_m("si 3 stylos coûtent 4,50 euros combien coûtent 7 stylos") == "10.5", "règle de trois décimale -> 10.5")
+# DÉCIMALES avec le MOT moins/plus, résidu monnaie vide (« 20 euros moins 7,50 » tombait en mémo).
+check(_m("20 euros moins 7,50") == "12.5", "20 euros moins 7,50 -> 12.5")
+check(_m("combien font 20 euros moins 7,50") == "12.5", "combien font … moins -> 12.5")
+check(_m("il fait moins 5 degrés") is None, "garde : « moins 5 degrés » (résidu non vide) -> pas un calcul")
+check(_m("la guerre de 1939-1945") is None, "garde : intervalle d'années -> pas une soustraction")
+# FRACTIONS MULTIPLES (« les trois quarts de 200 » tombait en mémo) ; décimal FINI exigé.
+check(_m("les trois quarts de 200") == "150", "trois quarts de 200 -> 150")
+check(_m("deux tiers de 90") == "60", "deux tiers de 90 -> 60")
+check(_m("deux tiers de 100") is None, "deux tiers de 100 (décimal infini) -> abstention")
+# MONNAIE : rendu exact + somme pièces/billets (le Fermi multipliait tout : ~60 pour 16, FAUX vécu).
+check(_m("rendu de monnaie sur 50 euros pour un achat de 37,25") == "12.75 (50 − 37.25)", "rendu -> 12.75")
+_ri = _m("rendu sur 20 euros pour 25,50")
+check(_ri and _ri.startswith("Impossible"), "achat > billet -> Impossible DIT")
+check(_m("j'ai 3 pièces de 2 euros et 2 billets de 5 euros, combien j'ai en tout")
+      == "16 euros (3 × 2 + 2 × 5)", "pièces+billets -> 16 (somme exacte montrée)")
+# POLYGONES RÉGULIERS + SOLIDES (tombaient en mémo/repli).
+check(_m("périmètre d'un hexagone régulier de côté 5") == "30 (hexagone régulier : 6 × 5)", "hexagone -> 30")
+check(_m("périmètre d'un octogone de côté 2,5") == "20 (octogone régulier : 8 × 2.5)", "octogone -> 20")
+check(_m("combien d'arêtes a un cube") == "12", "arêtes cube -> 12")
+check(_m("combien de sommets a un tétraèdre") == "4", "sommets tétraèdre -> 4")
+# PRIX TOTAL quantité × prix unitaire (« 3 baguettes à 1,20 euro » tombait en repli).
+check(_m("combien coûtent 3 baguettes à 1,20 euro") == "3.6 euros (3 × 1.2)", "3 baguettes à 1,20 -> 3.6")
+# MPH (1 mile = 1.609344 km, définition légale).
+_mph = _m("convertis 72 km/h en miles par heure")
+check(_mph and _mph.startswith("44.7387"), "72 km/h -> 44.74 mph")
+_mph2 = _m("60 mph en km/h")
+check(_mph2 and _mph2.startswith("96.56064"), "60 mph -> 96.56 km/h")
+# LETTRES ordinales (alphabet et mot) — natif exact, bornes DITES.
+check(_m("quelle est la 5e lettre du mot maison") == "o", "5e lettre de maison -> o")
+check(_m("la dernière lettre du mot chat") == "t", "dernière lettre de chat -> t")
+check(_m("la première lettre de l'alphabet") == "a", "première lettre alphabet -> a")
+check(_m("la 10e lettre de l'alphabet") == "j", "10e lettre alphabet -> j")
+_l30 = _m("la 30e lettre de l'alphabet")
+check(_l30 and _l30.startswith("L'alphabet n'a que 26"), "30e lettre -> borne DITE")
 # CINÉMATIQUE v = d/t (FAUX vécu : « vitesse moyenne … 150 km en 2 heures » -> « Moyenne : 76 », la route
 # stats moyennait distance et durée). Calcul montré ; les trois sens (v, t, d) câblés.
 check(_m("vitesse moyenne si je parcours 150 km en 2 heures") == "75 km/h (150 km / 2 h)", "v = d/t -> 75 km/h")

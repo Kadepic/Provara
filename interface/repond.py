@@ -3272,6 +3272,10 @@ def _multi_questions(texte: str, conv_id: str | None) -> str | None:
     NON-BLOQUANT : répond à CHAQUE sous-partie indépendamment, dit honnêtement « je ne l'ai pas » pour les inconnues,
     et combine le tout. SOUND (FAUX=0) : on n'engage le mode composé QUE si **au moins 2** sous-parties donnent un
     fait VÉRIFIÉ (sinon None -> pipeline normal ; protège les entités contenant « et » comme « Trinité-et-Tobago »)."""
+    # GARDE SOMME COORDONNÉE (vécu 2026-07-08) : « 3 pièces de 2 euros et 2 billets de 5, combien en tout »
+    # n'est PAS trois demandes — le « et » coordonne des quantités à SOMMER (route monnaie de fonction_nl).
+    if re.search(r"\b(?:pi[eè]ces?|billets?)\s+de\s+\d", texte, re.IGNORECASE):
+        return None
     parts = [p.strip(" ?.!") for p in _COORD_RE.split(texte) if p and p.strip(" ?.!")]
     parts = [p for p in parts if len(p.split()) >= 2 or re.search(r"\d\s*[-+*/x×]\s*\d", p)]  # ≥2 mots OU un calcul
     if len(parts) < 2:

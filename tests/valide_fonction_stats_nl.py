@@ -38,6 +38,10 @@ check(S.repond_stats("somme des entiers de 1 à 100") is None, "somme de série 
 check(S.repond_stats("vitesse moyenne si je parcours 150 km en 2 heures") is None,
       "vitesse moyenne d/t -> None (route cinématique)")
 check("Moyenne : 40" in S.repond_stats("moyenne des vitesses 30, 40 et 50"), "moyenne d'une LISTE de vitesses intacte")
+# GARDE FERMI-MONNAIE (FAUX vécu 2026-07-08) : « 3 pièces de 2 euros et 2 billets de 5, combien en tout »
+# MULTIPLIAIT tous les nombres (~60 pour 16). Monnaie = somme exacte (fonction_nl), jamais une estimation.
+check(S.repond_stats("j'ai 3 pièces de 2 euros et 2 billets de 5 euros, combien j'ai en tout") is None,
+      "pièces/billets -> None (somme exacte, pas Fermi)")
 check(S.repond_stats("somme des 100 premiers entiers") is None, "somme des N premiers -> None (route dédiée)")
 check("Minimum : 2" in S.repond_stats("min et max de 7, 2, 9, 4"), "min/max")
 

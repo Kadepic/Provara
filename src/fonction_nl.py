@@ -208,6 +208,9 @@ _CONV_UNITS = {
     "kilometre par heure": ("S", 1000.0 / 3600.0), "kilometres par heure": ("S", 1000.0 / 3600.0),
     "kilometre heure": ("S", 1000.0 / 3600.0), "kilometres heure": ("S", 1000.0 / 3600.0),
     "noeud": ("S", 1852.0 / 3600.0), "noeuds": ("S", 1852.0 / 3600.0),
+    "mph": ("S", 1609.344 / 3600.0), "mile par heure": ("S", 1609.344 / 3600.0),
+    "miles par heure": ("S", 1609.344 / 3600.0), "mile heure": ("S", 1609.344 / 3600.0),
+    "miles heure": ("S", 1609.344 / 3600.0),
 }
 # alternance longest-first : « kilometre » avant « metre » avant « m » ; « secondes » avant « s ».
 _UNIT_ALT = "|".join(sorted((re.escape(u) for u in _CONV_UNITS), key=len, reverse=True))
@@ -1117,6 +1120,62 @@ def resout_math(question: str):
                     "prix — quantité × prix unitaire")
         return (HORS, None, None)
 
+    # RENDU DE MONNAIE : « rendu sur 50 euros pour un achat de 37,25 » -> 12.75 (soustraction montrée) ;
+    # achat qui dépasse -> dit honnêtement, jamais un rendu négatif sec.
+    mrm = re.search(r"rendu\s+(?:de\s+monnaie\s+)?sur\s+(\d+(?:[.,]\d+)?)\s*(?:euros?|€)?"
+                    r".{0,30}?\b(\d+(?:[.,]\d+)?)\s*(?:euros?|€)?", qc)
+    if mrm:
+        billet, achat = _fl(mrm.group(1)), _fl(mrm.group(2))
+        if achat <= billet:
+            return (VERIFIE, "%s (%s − %s)" % (_fmt_nombre(round(billet - achat, 2)),
+                                               _fmt_nombre(billet), _fmt_nombre(achat)),
+                    "monnaie — rendu exact")
+        return (VERIFIE, "Impossible : l'achat (%s) dépasse ce qui est donné (%s) — il manque %s."
+                % (_fmt_nombre(achat), _fmt_nombre(billet), _fmt_nombre(round(achat - billet, 2))),
+                "monnaie — rendu exact")
+
+    # PIÈCES ET BILLETS : « 3 pièces de 2 euros et 2 billets de 5 euros » -> 16 euros (somme exacte, calcul
+    # montré). FAUX vécu 2026-07-08 : l'estimateur d'ordre de grandeur MULTIPLIAIT tous les nombres (« ~60 »).
+    mpieces = re.findall(r"(\d+)\s*(?:pieces?|billets?)\s+de\s+(\d+(?:[.,]\d+)?)", qc)
+    if mpieces and ("combien" in qtoks or "total" in qtoks or "tout" in qtoks):
+        tot = sum(int(n) * _fl(v) for n, v in mpieces)
+        det = " + ".join("%s × %s" % (n, _fmt_nombre(_fl(v))) for n, v in mpieces)
+        return (VERIFIE, "%s euros (%s)" % (_fmt_nombre(tot), det), "monnaie — somme exacte")
+
+    # PÉRIMÈTRE D'UN POLYGONE RÉGULIER NOMMÉ : « hexagone (régulier) de côté 5 » -> 30 (n × c, calcul montré ;
+    # tombait en mémo). Carré/triangle restent aux routes géométrie dédiées (formats épinglés).
+    _POLY_N = {"pentagone": 5, "hexagone": 6, "heptagone": 7, "octogone": 8, "enneagone": 9,
+               "decagone": 10, "hendecagone": 11, "dodecagone": 12}
+    mpoly = re.search(r"perimetre\s+d['’]?\s*un\s+([a-z]+)\s+(?:regulier\s+)?de\s+cote\s+(?:de\s+)?"
+                      r"(\d+(?:[.,]\d+)?)", qc)
+    if mpoly and mpoly.group(1) in _POLY_N:
+        n, c = _POLY_N[mpoly.group(1)], _fl(mpoly.group(2))
+        return (VERIFIE, "%s (%s régulier : %d × %s)" % (_fmt_nombre(n * c), mpoly.group(1), n, _fmt_nombre(c)),
+                "géométrie — périmètre d'un polygone régulier")
+
+    # ARÊTES / SOMMETS des solides usuels (convention exacte, Euler vérifiable ; « faces » a déjà sa route).
+    msol = re.search(r"combien\s+(?:de\s+|d['’]?\s*)(aretes?|sommets?)\s+(?:a|possede|compte|pour)\s+un\s+"
+                     r"(cube|pave\s+droit|tetraedre)", q)
+    if msol:
+        _SOLIDES = {"cube": (12, 8), "pave droit": (12, 8), "tetraedre": (6, 4)}
+        ar, so = _SOLIDES[re.sub(r"\s+", " ", msol.group(2))]
+        val = ar if msol.group(1).startswith("arete") else so
+        return (VERIFIE, str(val), "géométrie — solides usuels (convention)")
+
+    # PRIX TOTAL quantité × prix unitaire : « 3 baguettes à 1,20 euro » -> 3.6 euros (calcul montré). GARDES :
+    # le nom compté n'est pas une unité de mesure ; un mot d'intention prix/combien/coûtent exigé ; la forme
+    # « … le kilo/litre » est déjà routée au-dessus.
+    mqp = re.search(r"(\d+)\s+([a-z][a-z-]{2,})\s+[àa]\s+(\d+(?:[.,]\d+)?)\s*(?:euros?|€)(?!\s+le\s)", qc)
+    if mqp and ("combien" in qtoks or "prix" in qtoks or "cout" in q or "coute" in q or "coutent" in q):
+        nom = mqp.group(2)
+        _UNITES_EXCLUES = {"km", "kg", "kilo", "kilos", "litre", "litres", "gramme", "grammes", "heure",
+                           "heures", "minute", "minutes", "metre", "metres", "euro", "euros", "pieces",
+                           "billets", "pour", "les", "des"}
+        if nom not in _UNITES_EXCLUES:
+            nb, pu = int(mqp.group(1)), _fl(mqp.group(3))
+            return (VERIFIE, "%s euros (%d × %s)" % (_fmt_nombre(nb * pu), nb, _fmt_nombre(pu)),
+                    "prix — quantité × prix unitaire")
+
     # IMC : « IMC pour 70 kg et 1m75 » -> 22.86 (kg/m², définition OMS ; tombait en mémo « Noté »). Formats de
     # taille acceptés : « 1m75 », « 1,75 m », « 175 cm ». Le nombre est donné SANS interprétation médicale.
     if "imc" in qtoks or "indice de masse corporelle" in q:
@@ -1395,6 +1454,25 @@ def resout_math(question: str):
         if c == "a" and sens == "avant":
             return (VERIFIE, "Aucune — a est la première lettre de l'alphabet.", "alphabet latin")
         return (VERIFIE, chr(ord(c) + (1 if sens == "apres" else -1)), "alphabet latin")
+    # LETTRE ORDINALE DE L'ALPHABET / D'UN MOT (« la 5e lettre du mot maison » -> o ; tombaient en repli).
+    mlal = re.search(r"(?:(\d{1,2})\s*(?:eme|ere|e)|(premiere?|derniere?))\s+lettre\s+de\s+l['’]?\s*alphabet", q)
+    if mlal:
+        if mlal.group(2):
+            return (VERIFIE, "a" if mlal.group(2).startswith("premier") else "z", "alphabet latin")
+        n = int(mlal.group(1))
+        if 1 <= n <= 26:
+            return (VERIFIE, chr(96 + n), "alphabet latin")
+        return (VERIFIE, "L'alphabet n'a que 26 lettres — il n'y a pas de %de." % n, "alphabet latin")
+    mlmot = re.search(r"(?:(\d{1,2})\s*(?:eme|ere|e)|(premiere?|derniere?))\s+lettre\s+du\s+mot\s+([a-z-]+)", q)
+    if mlmot:
+        mot = mlmot.group(3)
+        if mlmot.group(2):
+            lettre = mot[0] if mlmot.group(2).startswith("premier") else mot[-1]
+            return (VERIFIE, lettre, "opération textuelle exacte")
+        n = int(mlmot.group(1))
+        if 1 <= n <= len(mot):
+            return (VERIFIE, mot[n - 1], "opération textuelle exacte")
+        return (VERIFIE, "« %s » n'a que %d lettres — pas de %de." % (mot, len(mot), n), "opération textuelle exacte")
 
     # DIVISIONS DU TEMPS (conventions exactes du calendrier).
     mdt = re.search(r"combien\s+(?:de\s+|d['’]?\s*)(trimestres|semestres|mois|jours)\s+dans\s+(?:une?\s+)?"
@@ -1460,10 +1538,22 @@ def resout_math(question: str):
         a = float(mdec.group(1).replace(",", ".")); b = float(mdec.group(3).replace(",", "."))
         r = a - b if mdec.group(2) in "-−" else a + b
         return (VERIFIE, _fmt_nombre(round(r, 10)), "calcul décimal exact")
+    # … et avec le MOT « moins/plus » quand le RÉSIDU est vide hors monnaie/intention (« 20 euros moins
+    # 7,50 » tombait en mémo, vécu 2026-07-08) : un résidu vide lève l'ambiguïté du mot (« la guerre de
+    # 1939-1945 », « il fait moins 5 degrés » gardent leur résidu -> jamais pris pour un calcul).
+    _qnc = _norm_conv(question)
+    mdw = re.search(r"(-?\d+(?:[.,]\d+)?)\s*(?:euros?|€)?\s+(moins|plus)\s+(\d+(?:[.,]\d+)?)", _qnc)
+    _residu_w = re.sub(r"euros?|€|dollars?|\$|centimes?|combien|font|fait|ca|moins|plus|[\d\s.,?]", "", _qnc)
+    if mdw and re.search(r"\d[.,]\d", question) and _residu_w == "":
+        a = float(mdw.group(1).replace(",", ".")); b = float(mdw.group(3).replace(",", "."))
+        r = a - b if mdw.group(2) == "moins" else a + b
+        return (VERIFIE, _fmt_nombre(round(r, 10)), "calcul décimal exact")
 
     # RÈGLE DE TROIS : « si 3 pommes coûtent 2 euros, combien coûtent 9 pommes » -> 6 (proportion exacte).
+    # ⚠ motif sur _norm_conv : normalise() mange la virgule (« 4,50 euros » devenait « 4 » -> 9.33 au lieu
+    # de 10.50 pour « si 3 stylos coûtent 4,50 combien coûtent 7 », FAUX vécu 2026-07-08).
     mr3 = re.search(r"si\s+(\d+(?:[.,]\d+)?)\s+\w+.{0,20}?(?:coutent?|valent?|font?|pour|=)\s+"
-                    r"(\d+(?:[.,]\d+)?).{0,40}?combien.{0,20}?(\d+(?:[.,]\d+)?)", q)
+                    r"(\d+(?:[.,]\d+)?).{0,40}?combien.{0,20}?(\d+(?:[.,]\d+)?)", _norm_conv(question))
     if mr3:
         a, b, c = (float(mr3.group(i).replace(",", ".")) for i in (1, 2, 3))
         if a != 0:
@@ -1479,6 +1569,24 @@ def resout_math(question: str):
     # jamais 0.333 servi comme exact ; « tiers » pareil). GARDE : jamais quand un mot de MESURE est là
     # (« aire d'un carré de 4 » = géométrie, traitée au-dessus ; « périmètre d'un carré de 5 » ≠ 25).
     if not re.search(r"\b(aire|surface|perimetre|circonference|volume|cote|rayon|modulo)\b", q):
+        # FRACTIONS MULTIPLES : « les trois quarts de 200 » -> 150, « deux tiers de 90 » -> 60 (tombait en
+        # mémo « C'est noté »). Même règle que tiers/inverse : décimal FINI exigé, sinon abstention.
+        mopm = re.search(r"\b(deux|trois|quatre)\s+(tiers|quarts?|cinquiemes?|dixiemes?)\s+"
+                         r"(?:de\s+|du\s+|d['’]\s*)(-?\d+(?:[.,]\d+)?)(?!\s*[a-z])", q)
+        if mopm:
+            from fractions import Fraction
+            k = {"deux": 2, "trois": 3, "quatre": 4}[mopm.group(1)]
+            den = {"tiers": 3, "quart": 4, "quarts": 4, "cinquieme": 5, "cinquiemes": 5,
+                   "dixieme": 10, "dixiemes": 10}[mopm.group(2)]
+            fr = Fraction(mopm.group(3).replace(",", ".")) * k / den
+            d = fr.denominator
+            while d % 2 == 0:
+                d //= 2
+            while d % 5 == 0:
+                d //= 5
+            if d != 1:                                     # décimal infini -> abstention (jamais d'arrondi)
+                return (HORS, None, None)
+            return (VERIFIE, _fmt_nombre(float(fr)), "calcul — fraction exacte (%d/%d)" % (k, den))
         mop = re.search(r"\b(double|triple|quadruple|moitie|tiers|quart|carre|cube|oppose|inverse)\s+"
                         r"(?:de\s+|du\s+|d['’]\s*)(-?\d+(?:[.,]\d+)?)(?!\s*[a-z])", q)
         if mop:
