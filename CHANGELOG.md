@@ -1,5 +1,12 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Portabilité .exe : la preuve bash devient conditionnelle à l'hôte
+
+- La preuve de synthèse de code exigeait un interpréteur **bash** — absent du .exe Windows, le diagnostic y
+  aurait viré au rouge. La sous-preuve ne s'exécute que si `shutil.which("bash")` répond ; sans interpréteur
+  sur l'hôte, la synthèse polyglotte n'est pas exigible et le reste de la preuve tient. Vérifié : les 306
+  preuves passent en **7.9 s** (0 échec).
+
 ## 2026-07-08 — 🏆 EXCELLENCE ATOMIQUE, lot final : DETTE SOLDÉE (148 → 0)
 
 - **Chaque fonction publique du produit est désormais consommée par le produit ou prouvée par un test à
