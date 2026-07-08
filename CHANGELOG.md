@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 1 : 14 façades ia.py câblées en preuves produit (dette 148 → 134)
+
+- 3 nouvelles capacités prouvées au REGISTRE (diagnostic : 284 preuves exécutées en direct) : **cohérence
+  probabiliste** (sophisme de Linda détecté ET cohérence reconnue, Benjamini-Hochberg, AUC, test de
+  permutation, inspection paradox — valeurs exactes), **décision/calibration** (EXP3 déterministe,
+  conformal split (9.0, 11.0) exact, Condorcet, correction de prévalence bayésienne exacte 0.16/0.52, MDL),
+  **abstention honnête des estimateurs** (4 façades dont le CONTRAT « trop peu de données -> abstention
+  DITE » est prouvé, plus le seuil franchi -> estimation servie).
+- Plafond du cliquet `valide_atomes` abaissé : **134** (ne peut plus remonter).
+- Bancs : valide_capacites 73/73 (pins 280→284), valide_atomes 19/19, suite 26/26, capacites_chat 184/184.
+
 ## 2026-07-08 — Excellence atomique : gate à CLIQUET valide_atomes (aucun orphelin possible, dette qui fond)
 
 - **Nouvelle gate `valide_atomes` dans la suite (26 gates)** : ① scan de TOUTES les fonctions publiques du

@@ -4087,9 +4087,66 @@ def _p_exporte_dataset():
         return resume(ch)["lignes"] == 1
 
 
+# ————— CÂBLAGE FAÇADE ia.py, LOT 1 (mandat excellence atomique 2026-07-08) : chaque enveloppe statistique
+# de la façade reçoit sa preuve à réponse connue — le plafond de dette de valide_atomes descend d'autant. —————
+def _p_facade_stats_1() -> bool:
+    import ia as _I
+    va, da = _I.coherence_conjonction(0.3, 0.4, 0.5)          # sophisme de conjonction DÉTECTÉ (Linda)
+    vb, db = _I.coherence_conjonction(0.3, 0.4, 0.2)          # et cohérence RECONNUE quand P(A∧B) ≤ min
+    if not (da["sophisme"] is True and db["coherent"] is True):
+        return False
+    if _I.decouvertes_controlees([0.001, 0.01, 0.04, 0.8])[1] != [0, 1]:   # Benjamini-Hochberg q=0.05
+        return False
+    if _I.auc_bat_le_hasard([0.9, 0.8, 0.2, 0.1], [1, 1, 0, 0]) is not True:   # AUC séparable
+        return False
+    if _I.compare_groupes([1, 2, 1, 2, 1], [8, 9, 8, 9, 8])[1]["rejet_perm"] is not True:  # permutation
+        return False
+    return abs(_I.biais_de_longueur([10, 20, 30])[1]["mu_biaisee"] - 70.0 / 3.0) < 1e-9    # inspection paradox
+
+
+def _p_facade_stats_2() -> bool:
+    import ia as _I
+    if _I.bandit_robuste([[1, 0], [0, 1], [1, 0], [1, 0]])[1]["regret"] != 0.0:   # EXP3 graine fixe, régret nul
+        return False
+    if _I.conforme_intervalle([1] * 10, 10.0) != ("estimation", (9.0, 11.0), 0.9):  # conformal split exact
+        return False
+    if _I.agrege_preferences([["a", "b"], ["a", "b"], ["b", "a"]], ["a", "b"])[1]["condorcet"] != "a":
+        return False
+    post = _I.corrige_posterior_prevalence([0.8, 0.2], [0.5, 0.5], [0.1, 0.9])    # Bayes exact : 0.16/0.52
+    if abs(post[0] - 0.16 / 0.52) > 1e-9:
+        return False
+    return _I.choisit_modele_mdl([1, 2, 3, 4, 5, 6], [2, 4, 6, 8, 10, 12], 3)[1]["degre_mdl"] == 1  # MDL -> degré 1
+
+
+def _p_facade_stats_3() -> bool:
+    """Contrats d'ABSTENTION honnête des façades (FAUX=0 : trop peu de données -> jamais un chiffre)."""
+    import ia as _I
+    if _I.comptage_surdisperse([1, 2, 1, 30, 2, 1])[0] != "abstention":            # n=6 < 20 -> abstention DITE
+        return False
+    if _I.comptage_surdisperse([1, 2, 1, 3, 2, 1, 2, 3, 1, 2, 1, 3, 2, 1, 2, 3, 1, 2, 1, 50])[0] != "estimation":
+        return False                                                               # n=20 -> estimation servie
+    if _I.analyse_queue_lourde([1, 1, 2, 2, 3, 100, 3, 2, 1, 200, 1, 2, 3, 150])[0] != "abstention":
+        return False                                                               # < 30 positifs -> abstention
+    if _I.decompose_incertitude([0.9, 0.1, 0.9, 0.1])[0] != "abstention":          # n=4 < 5 -> abstention
+        return False
+    return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
+
+
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Cohérence probabiliste et découvertes contrôlées (façade stats 1)": (
+        "coherence_conjonction (bornes de Fréchet, sophisme de Linda détecté), decouvertes_controlees "
+        "(Benjamini-Hochberg), auc_bat_le_hasard, compare_groupes (permutation), biais_de_longueur "
+        "(inspection paradox, mu biaisée = Σx²/Σx). Preuves numériques exactes.", _p_facade_stats_1),
+    "Décision et calibration sous incertitude (façade stats 2)": (
+        "bandit_robuste (EXP3 déterministe à graine fixe), conforme_intervalle (conformal split exact), "
+        "agrege_preferences (Condorcet), corrige_posterior_prevalence (Bayes exact), choisit_modele_mdl "
+        "(MDL retient le degré 1 sur données linéaires).", _p_facade_stats_2),
+    "Abstention honnête des estimateurs (façade stats 3)": (
+        "comptage_surdisperse, analyse_queue_lourde, decompose_incertitude, classe_taux_robuste : trop peu "
+        "de données -> ABSTENTION DITE, jamais un chiffre fabriqué (FAUX=0) ; seuil franchi -> estimation.",
+        _p_facade_stats_3),
     "Raisonnement causal (graphe + effets)": ("Graphe causal exact, effets directs/interventions. cf. causalite.py", _p_causalite),
     "Logique trivaluée (vrai/faux/inconnu)": ("OWA : l'inconnu reste INCONNU, jamais deviné. cf. logique_tri.py", _p_logique_tri),
     "Révision de croyances (remplacer, pas empiler)": ("Nouvelle info plus fiable -> REMPLACE, tracé au journal. cf. revision.py", _p_revision),
