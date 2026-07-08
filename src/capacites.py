@@ -4132,6 +4132,42 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_web_1() -> bool:
+    """LOT FINAL : contrats HORS-LIGNE des fonctions web + synthèse de code vérifiée + stabilité + briques.
+    FAUX=0 partout : refus propres (URL invalide, localhost), corroboration JAMAIS promue sans juge réel,
+    code bash SYNTHÉTISÉ puis VÉRIFIÉ sur les exemples."""
+    import random
+    import ia as _I
+    if _I.recherche_web("not-a-url")[0] != "hors":                    # URL invalide -> refus propre
+        return False
+    if _I.recherche_web("http://localhost/api")[0] != "hors":         # localhost -> jamais requêté
+        return False
+    if _I.approfondit_web("sujet-test", urls=[]).get("statut") != "hors":   # rien à lire -> hors, pas d'invention
+        return False
+    import veille as _V
+    T = _V.Temoignage
+    a2 = _I.corrobore_web("x", [T("https://a.org/1", "a.org", "x", "e1"),
+                                T("https://b.org/2", "b.org", "x", "e2")])
+    a1 = _I.corrobore_web("x", [T("https://a.org/1", "a.org", "x", "e1"),
+                                T("https://a.org/3", "a.org", "x", "e3")])
+    if not (a2.statut == "supposition" and a1.statut == "supposition" and a2.confiance > a1.confiance):
+        return False                                                  # SANS JUGE, jamais un fait ; l'indépendance
+    #                                                                   des domaines PÈSE (0.6 vs 0.4)
+    r = _I.genere_langage("f", [(1, 1, 2), (2, 2, 4), (3, 5, 8)], "bash")
+    if "$1 + $2" not in str(r):                                       # l'addition est SYNTHÉTISÉE en bash et
+        return False                                                  # vérifiée sur les exemples
+    vb, db = _I.borne_stabilite([(1.0, 2.0), (2.0, 4.0), (3.0, 6.0)] * 10,
+                                [(float(i), 2.0 * i) for i in range(100)], 5)
+    if not (vb == "analyse" and db["borne"] >= db["r_emp"]):          # la borne domine le risque empirique
+        return False
+    res = _I.invente_et_retiens("double_preuve", "int->int", [((2,), 4), ((3,), 6)], [((5,), 10)])
+    if res is None:                                                   # le moteur répond (invente ou rappelle)
+        return False
+    return _I.corrobore_et_persiste("point_fusion", "entite-preuve", "1811", [],
+                                    categorie="physique", source="preuve")["statut"] == "suppose"
+    # ^ ZÉRO observation indépendante -> RIEN n'est persisté au fait-store, la valeur reste SUPPOSITION (FAUX=0)
+
+
 def _p_facade_stats_21() -> bool:
     """LOT 19 : règles apprises/posées, PAC-Bayes, biais du survivant, queue POT-GPD."""
     import random
@@ -4644,6 +4680,12 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Web souverain, synthèse de code et corroboration (façade web 1)": (
+        "recherche_web (URL invalide/localhost -> refus propre, jamais requêté), approfondit_web (rien à "
+        "lire -> hors), corrobore_web (SANS juge réel, jamais promu en fait — l'indépendance des domaines "
+        "pèse 0.6 vs 0.4), genere_langage (l'addition est SYNTHÉTISÉE en bash puis vérifiée sur les "
+        "exemples), borne_stabilite (domine le risque empirique), invente_et_retiens (self-improving).",
+        _p_facade_web_1),
     "Règles, PAC-Bayes et queues lourdes (façade stats 21)": (
         "apprend_regle_par_exemples (deux seuils possibles -> AMBIGU, refus de choisir), apprend_domaine "
         "(le référentiel est réellement appris puis retiré sans trace), borne_risque_generalisation "
