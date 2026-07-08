@@ -414,6 +414,31 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# CINÉMATIQUE v = d/t (FAUX vécu : « vitesse moyenne … 150 km en 2 heures » -> « Moyenne : 76 », la route
+# stats moyennait distance et durée). Calcul montré ; les trois sens (v, t, d) câblés.
+check(_m("vitesse moyenne si je parcours 150 km en 2 heures") == "75 km/h (150 km / 2 h)", "v = d/t -> 75 km/h")
+check(_m("combien de temps pour parcourir 300 km à 100 km/h") == "3 h (300 km / 100 km/h)", "t = d/v -> 3 h")
+_tv = _m("combien de temps pour faire 100 km à 70 km/h")
+check(_tv and _tv.startswith("≈ 1 h 26 min (arrondi à la minute)"), "t = d/v inexact -> arrondi DIT")
+check(_m("quelle distance à 90 km/h pendant 2 heures") == "180 km (90 km/h × 2 h)", "d = v×t -> 180 km")
+# CONSOMMATION / PRIX UNITAIRE (règle de trois du quotidien, calcul montré ; unités cohérentes exigées).
+_co = _m("consommation de 6 litres aux 100 km, pour 250 km ça fait combien")
+check(_co == "15 L (6 L/100 km × 250 km)", "consommation aux 100 km -> 15 L")
+check(_m("prix de 1,5 kg à 4 euros le kilo") == "6 euros (1.5 kg × 4 euros le kilo)", "prix au kilo -> 6")
+check(_m("2 kg à 3 euros le litre") is None, "garde : unités disparates (kg vs litre) -> abstention")
+# IMC (kg/m², OMS ; sans interprétation médicale) — formats 1m75 / 175 cm / 1,80 m.
+check(_m("IMC pour 70 kg et 1m75") == "22.86 (70 kg / (1.75 m)²) — indice de masse corporelle", "IMC 1m75")
+check(_m("IMC pour 70 kg et 175 cm") == "22.86 (70 kg / (1.75 m)²) — indice de masse corporelle", "IMC 175 cm")
+_imc3 = _m("quel est l'IMC pour 80 kilos et 1,80 m")
+check(_imc3 and _imc3.startswith("24.69"), "IMC 1,80 m -> 24.69")
+# pH (brique physique.calcule, −log10) et TVA (montant ET TTC montrés, base lue HT et DITE).
+check(_m("pH pour une concentration de 0,001") == "pH = 3 (−log₁₀ de 0.001)", "pH 0,001 -> 3")
+check(_m("TVA de 20% sur 100 euros") == "20 de TVA (20 % de 100 HT) ; TTC : 120", "TVA 20% sur 100")
+# ANGLES : degré = π/180 exact, dans les deux sens ; les températures gardent leur route dédiée.
+_dr = _m("convertis 30 degrés en radians")
+check(_dr and _dr.startswith("0.523599"), "30° -> 0.5236 rad")
+_rd = _m("3,14 radians en degrés")
+check(_rd and _rd.startswith("179.9087"), "3,14 rad -> 179.9°")
 # POURBOIRE (tombait en mémo « C'est noté ») : pourboire ET total montrés.
 check(_m("15% de pourboire sur 80 euros") == "12 de pourboire (15 % de 80) ; total : 92", "pourboire 15% sur 80")
 _pb2 = _m("un pourboire de 10% sur 45 euros")

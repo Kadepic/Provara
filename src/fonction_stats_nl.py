@@ -106,6 +106,11 @@ def repond_stats(texte: str):
 
     # — stats DESCRIPTIVES exactes (maths) —
     if re.search(r"\b(moyenne|moyen)\b", bas) and "confiance" not in bas and "intervalle" not in bas:
+        # GARDE VITESSE MOYENNE (FAUX vécu 2026-07-08) : « vitesse moyenne si je parcours 150 km en 2 heures »
+        # servait « Moyenne : 76 » (la moyenne de {150, 2} !). Le motif « X km en Y heures » est une division
+        # d/t -> route cinématique (fonction_nl) ; « moyenne des vitesses 30, 40, 50 km/h » (liste) reste ici.
+        if re.search(r"km\b.{0,20}?\ben\s+\d+(?:[.,]\d+)?\s*(?:h\b|heures?)", bas):
+            return None
         # moyenne PONDÉRÉE : ne JAMAIS servir la moyenne simple de tous les nombres (les coefficients
         # ne sont pas des valeurs — « 12 coeff 2 et 15 coeff 3 » vaut 13.8, pas 8)
         if re.search(r"\b(pond[ée]r[ée]e?s?|coefficients?|coeffs?|coefs?)\b", bas):

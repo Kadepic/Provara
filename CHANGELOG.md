@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 26 : cinématique du quotidien (1 FAUX), IMC, pH, TVA, consommation, prix unitaire, angles
+
+- **FAUX** : « vitesse moyenne si je parcours 150 km en 2 heures » → *« Moyenne : 76 »* (la route stats
+  moyennait distance et durée !). Garde stats (motif « X km en Y heures » = division, pas une liste ; la
+  moyenne d'une LISTE de vitesses reste servie) + **cinématique complète, calcul montré** : v = d/t
+  (« 75 km/h (150 km / 2 h) »), t = d/v (« 3 h » ; inexact → « ≈ 1 h 26 min (arrondi à la minute) » DIT),
+  d = v×t (« 180 km (90 km/h × 2 h) »).
+- **Quotidien chiffré** (tombaient en mémo/repli) : **consommation aux 100 km** (« 6 L aux 100 km pour
+  250 km » → 15 L), **prix au kilo/litre** (« 1,5 kg à 4 € le kilo » → 6 € ; unités disparates → abstention),
+  **TVA** (« TVA de 20% sur 100 € » → montant ET TTC, base lue HT et dite), **IMC** (« 70 kg et 1m75 » →
+  22.86, formats 1m75/175 cm/1,80 m, kg/m² OMS, sans interprétation médicale), **pH** (« concentration de
+  0,001 » → 3, brique `physique.calcule`).
+- **Angles** : degré ↔ radian (π/180 exact, deux sens) ; les températures (« 100 degrés celsius en
+  fahrenheit ») gardent leur route dédiée (vérifié).
+- Bancs : `valide_assistant_nl` **359/359** (+14), `valide_fonction_stats_nl` **26/26** (+2), raisonnement
+  197/197, paraphrases 174/174, capacites_chat 148/148, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 25 : pourboire, durées variables honnêtes, romain→nombre élargi, « quelle est la date dans 3 semaines »
 
 - **Pourboire** (tombait en mémo « C'est noté ») : « 15% de pourboire sur 80 euros » → « 12 de pourboire

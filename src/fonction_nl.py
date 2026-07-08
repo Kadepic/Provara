@@ -173,6 +173,10 @@ _CONV_UNITS = {
     "heure": ("T", 3600.0), "heures": ("T", 3600.0),
     "jour": ("T", 86400.0), "jours": ("T", 86400.0), "journee": ("T", 86400.0), "journees": ("T", 86400.0),
     "semaine": ("T", 604800.0), "semaines": ("T", 604800.0),
+    # angle (base = radian ; degré = π/180 EXACT). « degrés » nu ne fire qu'en conversion explicite vers une
+    # unité d'angle (« 30 degrés en radians ») — les températures (« 30 degrés en fahrenheit ») ont leur route.
+    "radian": ("A", 1.0), "radians": ("A", 1.0),
+    "degre": ("A", math.pi / 180.0), "degres": ("A", math.pi / 180.0),
     # volume (base = litre ; m³/cm³ par définition du litre = 1 dm³)
     "ml": ("V", 0.001), "millilitre": ("V", 0.001), "millilitres": ("V", 0.001),
     "cl": ("V", 0.01), "centilitre": ("V", 0.01), "centilitres": ("V", 0.01),
@@ -682,6 +686,16 @@ def resout_math(question: str):
         return (VERIFIE, "%s (%s − %s %% = %s − %s)" % (_fmt_nombre(base * (1 - p / 100.0)), _fmt_nombre(base),
                                                         _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
                 "calcul — prix après réduction")
+    # TVA : « TVA de 20% sur 100 euros » -> montant ET TTC montrés (« 20 » sec laissait deviner le total ;
+    # la base est lue comme HT, DIT dans la réponse).
+    mtva = (re.search(rf"tva\s+(?:de\s+|[àa]\s+)?{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}", question, re.I)
+            or re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+tva\s+sur\s+{_PCT}", question, re.I))
+    if mtva:
+        p, ht = _f(mtva.group(1)), _f(mtva.group(2))
+        tva = ht * p / 100.0
+        return (VERIFIE, "%s de TVA (%s %% de %s HT) ; TTC : %s" % (_fmt_nombre(tva), _fmt_nombre(p),
+                                                                    _fmt_nombre(ht), _fmt_nombre(ht + tva)),
+                "calcul — TVA (pourcentage appliqué sur le HT)")
     # POURBOIRE : « 15% de pourboire sur 80 euros » (tombait en mémo « C'est noté », vécu 2026-07-08).
     # Les DEUX nombres utiles sont montrés : le pourboire ET le total (l'intention usuelle est le total à payer).
     mpb = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+pourboires?\s+sur\s+{_PCT}", question, re.I)
@@ -1052,6 +1066,88 @@ def resout_math(question: str):
                 return (VERIFIE, "Aucun nombre premier entre %d et %d." % (a, b), "arithmétique — primalité")
             return (VERIFIE, "Entre %d et %d : %s." % (a, b, ", ".join(map(str, prems))),
                     "arithmétique — primalité (énumération exacte)")
+        return (HORS, None, None)
+
+    # CINÉMATIQUE DU QUOTIDIEN v = d/t (motifs sur _norm_conv : normalise() mange le « / » de km/h).
+    # FAUX vécu 2026-07-08 : « vitesse moyenne si je parcours 150 km en 2 heures » -> « Moyenne : 76 »
+    # (la route stats moyennait distance et durée !). Chaque réponse MONTRE le calcul.
+    qc = _norm_conv(question)
+    _fl = lambda s: float(s.replace(",", "."))
+    mv = re.search(r"(\d+(?:[.,]\d+)?)\s*km\s+en\s+(\d+(?:[.,]\d+)?)\s*(?:h\b|heures?)", qc)
+    if mv and ("vitesse" in qtoks or "moyenne" in qtoks):
+        d, t = _fl(mv.group(1)), _fl(mv.group(2))
+        if t > 0:
+            return (VERIFIE, "%s km/h (%s km / %s h)" % (_fmt_nombre(d / t), _fmt_nombre(d), _fmt_nombre(t)),
+                    "cinématique — v = d/t")
+    mt = re.search(r"(\d+(?:[.,]\d+)?)\s*km\s+[àa]\s+(\d+(?:[.,]\d+)?)\s*km/h", qc)
+    if mt and ("temps" in qtoks or "duree" in qtoks or "dure" in qtoks or "faut" in qtoks):
+        d, v = _fl(mt.group(1)), _fl(mt.group(2))
+        if v > 0:
+            tm = d / v * 60.0
+            mn_total = round(tm)
+            h, mn = divmod(int(mn_total), 60)
+            aff = ("%d h %02d min" % (h, mn)) if mn else ("%d h" % h)
+            if abs(tm - mn_total) > 1e-9:
+                aff = "≈ " + aff + " (arrondi à la minute)"
+            return (VERIFIE, "%s (%s km / %s km/h)" % (aff, _fmt_nombre(d), _fmt_nombre(v)),
+                    "cinématique — t = d/v")
+    md = re.search(r"(\d+(?:[.,]\d+)?)\s*km/h\s+pendant\s+(\d+(?:[.,]\d+)?)\s*(?:h\b|heures?)", qc)
+    if md:
+        v, t = _fl(md.group(1)), _fl(md.group(2))
+        return (VERIFIE, "%s km (%s km/h × %s h)" % (_fmt_nombre(v * t), _fmt_nombre(v), _fmt_nombre(t)),
+                "cinématique — d = v × t")
+
+    # CONSOMMATION AUX 100 KM : « 6 litres aux 100 km, pour 250 km » -> 15 L (règle de trois, calcul montré).
+    mcons = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:litres?|l)\s+aux?\s+100\s*km.*?(\d+(?:[.,]\d+)?)\s*km", qc)
+    if mcons:
+        c, d = _fl(mcons.group(1)), _fl(mcons.group(2))
+        return (VERIFIE, "%s L (%s L/100 km × %s km)" % (_fmt_nombre(c * d / 100.0), _fmt_nombre(c), _fmt_nombre(d)),
+                "consommation — règle de trois")
+
+    # PRIX AU KILO / AU LITRE : « 1,5 kg à 4 euros le kilo » -> 6 euros (quantité × prix unitaire ; unités
+    # COHÉRENTES exigées — « 2 kg à 3 euros le litre » -> abstention, jamais un produit d'unités disparates).
+    mpk = re.search(r"(\d+(?:[.,]\d+)?)\s*(kg|kilos?|litres?|l)\s+[àa]\s+(\d+(?:[.,]\d+)?)\s*(?:euros?|€)"
+                    r"\s+le\s+(kilo|kg|litre|l)\b", qc)
+    if mpk:
+        _dim = lambda u: "M" if u.startswith(("k", "kg")) else "V"
+        if _dim(mpk.group(2)) == _dim(mpk.group(4)):
+            qte, pu = _fl(mpk.group(1)), _fl(mpk.group(3))
+            return (VERIFIE, "%s euros (%s %s × %s euros le %s)"
+                    % (_fmt_nombre(qte * pu), _fmt_nombre(qte), mpk.group(2), _fmt_nombre(pu), mpk.group(4)),
+                    "prix — quantité × prix unitaire")
+        return (HORS, None, None)
+
+    # IMC : « IMC pour 70 kg et 1m75 » -> 22.86 (kg/m², définition OMS ; tombait en mémo « Noté »). Formats de
+    # taille acceptés : « 1m75 », « 1,75 m », « 175 cm ». Le nombre est donné SANS interprétation médicale.
+    if "imc" in qtoks or "indice de masse corporelle" in q:
+        mkg = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:kg|kilos?)\b", qc)
+        mtaille = (re.search(r"(\d)\s*m\s*(\d{2})\b", qc) or re.search(r"(\d{3})\s*cm\b", qc)
+                   or re.search(r"(\d(?:[.,]\d+))\s*(?:m|metres?)\b", qc))
+        if mkg and mtaille:
+            poids = _fl(mkg.group(1))
+            g = mtaille.groups()
+            taille = (float(g[0]) + int(g[1]) / 100.0 if len(g) > 1 and g[1] is not None
+                      else _fl(g[0]) / 100.0 if len(g[0]) == 3 else _fl(g[0]))
+            if 0.5 <= taille <= 2.6 and poids > 0:
+                return (VERIFIE, "%s (%s kg / (%s m)²) — indice de masse corporelle"
+                        % (_fmt_nombre(round(poids / taille ** 2, 2)), _fmt_nombre(poids), _fmt_nombre(taille)),
+                        "IMC — définition OMS kg/m²")
+        return (HORS, None, None)
+
+    # pH : « pH pour une concentration de 0,001 » -> 3 (physique.calcule, −log10 ; tombait en mémo). UNE seule
+    # concentration exigée, strictement positive.
+    if "ph" in qtoks and ("concentration" in qtoks or "solution" in qtoks):
+        nums = re.findall(r"\d+(?:[.,]\d+)?(?:e-?\d+)?", qc.replace("10^", "1e"))
+        nums = [n for n in nums if _fl(n) > 0]
+        if len(nums) == 1:
+            try:
+                import physique as _PH
+                st_p, val_p, _u = _PH.calcule("ph", {"concentration_H": _fl(nums[0])})
+                if st_p == VERIFIE and val_p is not None:
+                    return (VERIFIE, "pH = %s (−log₁₀ de %s)" % (_fmt_nombre(val_p), nums[0].replace(",", ".")),
+                            "chimie physique — pH = −log10[H+]")
+            except Exception:
+                pass
         return (HORS, None, None)
 
     # JOURS D'UN MOIS : « combien de jours en février 2024 » -> 29 (calendar.monthrange, grégorien exact) ;
