@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 3 : MATHÉMATIQUES FINANCIÈRES en conversation (placement / intérêts)
+
+- `fonction_nl.resout_math` câble `maths_financieres` : « combien rapportent 1000 euros à 5% pendant 3 ans ? »
+  → **157,63 d'intérêts (composés) ; valeur acquise 1157,63** — gain ET total étiquetés explicitement (zéro
+  ambiguïté FAUX), intérêts composés par défaut, simples sur mention. Exige les TROIS composants (capital +
+  taux + durée) pour ne jamais confondre avec un simple pourcentage.
+- Bancs : `valide_assistant_nl` **112/112** (+3), suite 25/25, raisonnement 166/166, paraphrases 168/168.
+- Noté (trous restants, non fabriqués) : distance entre villes = trou de DONNÉES (coords absentes du lecteur,
+  le cap est câblé) ; équilibrage de réaction chimique = pas de brique `chimie.equilibre` (à ingérer un jour) ;
+  Fermi / probabilité élémentaire = pas de brique NL utilisable.
+
 ## 2026-07-08 — CÂBLAGE vague 2 : LOGIQUE PROPOSITIONNELLE en conversation (profondeur de raisonnement)
 
 - **`_cap_logique`** rend `sophismes.py` conversationnel : « si A alors B, or …, donc … » → Provara JUGE la

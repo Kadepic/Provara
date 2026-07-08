@@ -362,6 +362,12 @@ check(_m("fibonacci de 10") == "55", "Fibonacci 10 -> 55")
 check(_m("sinus de 30 degrés") == "0.5", "sin 30° -> 0.5")
 check(_m("cos de 60°") == "0.5", "cos 60° -> 0.5")
 check(_m("tangente de 45") == "1", "tan 45° -> 1")
+# INTÉRÊTS (placement) : valeur acquise + gain, étiquetés (composé par défaut, simple sur mention).
+_i = _m("combien rapportent 1000 euros à 5% pendant 3 ans")
+check(_i and "157.63" in _i and "1157.63" in _i, "intérêts composés : gain 157.63 + valeur acquise 1157.63")
+_i = _m("1000 euros à 5% pendant 3 ans en intérêts simples")
+check(_i and "150" in _i and "1150" in _i, "intérêts simples : gain 150 + valeur acquise 1150")
+check(_m("20% de 150 ?") == "30", "le pourcentage simple n'est PAS confondu avec la finance (garde 3 composants)")
 # GARDE anti-faux-positif : « premier »/nombres ordinaux ne déclenchent PAS la primalité sur une question DATA.
 for q in ("le premier président élu en 1958", "premier ministre depuis 2017", "premier roman de 1984",
           "quelle est la capitale de la France ?", "population du Japon en 2020", "qui a gagné en 2018"):

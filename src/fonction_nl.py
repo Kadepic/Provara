@@ -289,6 +289,25 @@ def resout_math(question: str):
     except Exception:
         return (HORS, None, None)
 
+    # INTÉRÊTS (placement) : « combien rapportent 1000 euros à 5% pendant 3 ans » -> valeur acquise + gain.
+    # Exige les TROIS composants (capital + taux + durée) pour ne pas confondre avec un simple pourcentage.
+    mi = re.search(r"(\d[\d\s]*(?:[.,]\d+)?)\s*(?:euros?|€|dollars?|\$)\b.*?(\d+(?:[.,]\d+)?)\s*(?:%|pour ?cent)"
+                   r".*?(\d+(?:[.,]\d+)?)\s*(?:ans?|ann[ée]es?)", question, re.I)
+    if mi:
+        C = float(mi.group(1).replace(" ", "").replace(",", "."))
+        t = float(mi.group(2).replace(",", ".")) / 100.0
+        n = float(mi.group(3).replace(",", "."))
+        try:
+            import maths_financieres as _MF
+            simple = "simple" in q or "lineaire" in q
+            va = _MF.valeur_acquise_simple(C, t, n) if simple else _MF.interet_compose(C, t, n)
+            gain = round(va - C, 2)
+            mode = "intérêts simples" if simple else "intérêts composés"
+            return (VERIFIE, "%s d'intérêts (%s) ; valeur acquise : %s" % (_fmt_nombre(gain), mode, _fmt_nombre(va)),
+                    "mathématiques financières — %s" % mode)
+        except Exception:
+            return (HORS, None, None)
+
     # POURCENTAGE : « 20% de 150 », « 20 pour cent de 150 » -> 30 (arithmétique exacte, sans module tiers).
     mp = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour ?cent(?:s)?|pourcent)\s+(?:de|du|des|d['’]|sur)\s+(\d+(?:[.,]\d+)?)",
                    question, re.I)
