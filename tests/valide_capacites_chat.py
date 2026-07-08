@@ -180,6 +180,14 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — VOYELLES / CONSONNES (vague 17) : comptage de lettres, PAS le concept « consonne » (37 hyponymes, FAUX vécu) —
+r = R._cap_texte("combien de voyelles dans le mot bonjour")
+check(r is not None and "3 voyelle" in r, "voyelles de bonjour -> 3")
+r = R._cap_texte("le mot chien contient combien de consonnes")
+check(r is not None and "3 consonne" in r, "consonnes de chien -> 3 (« contient » plus corrigé en « continent »)")
+check("continent" not in R._guerit_entree("le mot chien contient combien de consonnes"),
+      "le guérisseur ne corrige PLUS « contient » en « continent »")
+
 # — CONTINUATION heure (indépendante des datasets) : « et à New York ? » après l'heure de Tokyo —
 import conversation as _cvB
 _memB2 = _cvB.MemoireConversation(racine=None)
