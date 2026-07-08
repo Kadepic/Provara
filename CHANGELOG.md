@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 6 : 7 façades de plus (dette 97 → 90)
+
+- 1 preuve REGISTRE composée (diagnostic : 292) : **propagation d'incertitude** (3² = 9 exact + IC),
+  **e-process** (`test_par_pari` : la pièce truquée est rejetée au pas 7 avec E-valeur > seuil, la pièce
+  juste n'est JAMAIS rejetée — test séquentiel anytime-valid), **calibration** (le biais est détecté,
+  p < 0.05), **probabilités imprécises** (bornes IDM exactes 3/11–4/11), prévision à horizon (IC contenant
+  le point), régime de question, survie (D < 15 -> abstention DITE).
+- Plafond du cliquet : **90**.
+- Bancs : valide_capacites 73/73 (pins 291→292), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 5 : 8 façades de plus (dette 105 → 97, sous la barre des 100)
 
 - 1 preuve REGISTRE composée (diagnostic : 291) : **base-rate fallacy** (PPV bayésien EXACT — test à 99 %

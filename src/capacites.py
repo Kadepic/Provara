@@ -4132,6 +4132,32 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_11() -> bool:
+    """LOT 6 : propagation d'incertitude, e-process, calibration, IDM, prévision, régime de question."""
+    import ia as _I
+    vp, (mu, (plo, phi)), _c = _I.propage_incertitude(lambda x: x * x, [(3.0, 0.1)])
+    if not (vp == "estimation" and mu == 9.0 and plo < 9.0 < phi):    # 3² = 9 propagé EXACT, IC autour
+        return False
+    vt, dt = _I.test_par_pari([1] * 20, 0.5)                          # pièce TRUQUÉE : e-process rejette (pas 7)
+    if not (vt == "test" and dt["rejet"] == 7 and dt["E_final"] > dt["seuil"]):
+        return False
+    vt2, dt2 = _I.test_par_pari([1, 0] * 10, 0.5)                     # pièce JUSTE : jamais rejetée
+    if dt2["rejet"] is not None:
+        return False
+    vc, dc = _I.teste_calibration([0.2, 0.8, 0.5, 0.9, 0.1] * 8, [0, 1, 1, 1, 0] * 8)
+    if not (vc == "non_calibre" and dc["p_valeur"] < 0.05):           # le biais de calibration est DÉTECTÉ
+        return False
+    vb, bornes = _I.proba_categorielle_imprecise([3, 5, 2])           # IDM s=1 : bornes EXACTES (c/(n+1), (c+1)/(n+1))
+    if not (vb == "bornes" and abs(bornes[0][0] - 3 / 11) < 1e-12 and abs(bornes[0][1] - 4 / 11) < 1e-12):
+        return False
+    vh, (pt, (hlo, hhi)), _ch = _I.prevoit_horizon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] * 3, 3)
+    if not (vh == "estimation" and hlo < pt < hhi):
+        return False
+    if _I.regime_question("quelle est la capitale de la France ?") != "supposition_a_chercher":
+        return False
+    return _I.survie_estimee([1, 2, 3, 4, 5], [1, 1, 1, 0, 1], 2.5)[0] == "abstention"   # D=4 < 15 -> DIT
+
+
 def _p_facade_stats_10() -> bool:
     """LOT 5 : base-rate fallacy (PPV exact), ridge, survie, surdispersion, log-score, Condorcet, main chaude."""
     import math
@@ -4273,6 +4299,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Incertitude propagée, e-process et probabilités imprécises (façade stats 11)": (
+        "propage_incertitude (3² = 9 exact + IC), test_par_pari (e-process : pièce truquée rejetée au pas 7, "
+        "pièce juste jamais), teste_calibration (biais détecté), proba_categorielle_imprecise (bornes IDM "
+        "exactes 3/11-4/11), prevoit_horizon, regime_question, survie_estimee (D < 15 -> abstention DITE).",
+        _p_facade_stats_11),
     "Base-rate, Condorcet et main chaude (façade stats 10)": (
         "valeur_predictive (PPV bayésien EXACT : test à 99 % + prévalence 0.1 % -> 1.9 %), regression_ridge "
         "(OLS exact, rétrécissement), survie_mediane, teste_surdispersion, score_forecast (log-score exact), "
