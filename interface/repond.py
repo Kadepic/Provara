@@ -2983,13 +2983,18 @@ _UNITE_SOURCE = (("point de fusion (K)", "K"), ("point d'ébullition (K)", "K"),
                  ("convertie en mètres", "m"), ("masse atomique standard (u)", "u"))
 
 
-def _avec_unite(fait) -> str:
+_DERNIERE_VALEUR: dict = {}                   # conv_id -> (valeur float, unité str) de la dernière réponse à unité
+
+
+def _avec_unite(fait, conv_id=None) -> str:
     v = str(fait.valeur)
     if not re.fullmatch(r"-?\d+(?:[.,]\d+)?", v.strip()):
         return v
     src = str(getattr(fait, "source", "") or "")
     for marqueur, unite in _UNITE_SOURCE:
         if marqueur in src:
+            if conv_id:                       # « et en celsius ? » au tour suivant convertit CETTE valeur
+                _DERNIERE_VALEUR[conv_id] = (float(v.replace(",", ".")), unite)
             return f"{v} {unite}"
     return v
 
@@ -3019,8 +3024,8 @@ def _connaissance_verifiee(question: str, conv_id: str | None = None) -> str | N
             _DERNIER_SUJET[conv_id] = suj
             _DERNIER_QUESTION[conv_id] = question  # mémorise la question résolue (pour la continuation type B)
         prefixe = f"(en comprenant « {correction} ») " if correction else ""
-        return f"{prefixe}{_avec_unite(fait)}"    # source vérifiée en interne, non affichée (préférence Yohan) ;
-        #                                           l'UNITÉ déclarée par la source est ajoutée (kelvins, mm…)
+        return f"{prefixe}{_avec_unite(fait, conv_id)}"   # source vérifiée en interne, non affichée (préférence
+        #                                           Yohan) ; l'UNITÉ déclarée par la source est ajoutée (kelvins…)
     # REPLI FAMILLE : « continent de France » peut ne pas matcher un gabarit direct alors que la relation existe
     # sous un nom de famille (continent_pays…). On parse « rel de entité » et on essaie la famille (unicité exigée,
     # FAUX=0). N'affecte JAMAIS une réponse déjà résolue (on n'arrive ici que si le DATA a rendu HORS).
@@ -3710,6 +3715,10 @@ def _oui_non(texte: str):
         if not m:
             return None
         gauche, droite = m.group(1).strip(), m.group(2).strip()
+    # PERF+SOUND : « est-ce que 2024 est … » — un NOMBRE n'est pas une entité à résoudre (chaque côté relance
+    # tout le pipeline : 5 s mesurées) ; les routes de calcul en aval savent trancher (parité, bissextile…).
+    if re.fullmatch(r"\d+(?:[.,]\d+)?", _strip_article(gauche)):
+        return None
     vg = _connaissance_verifiee(gauche, None)        # conv_id=None : aucun effet de bord multi-tours
     vd = _connaissance_verifiee(droite, None)
     if not vg and not vd:                             # aucun côté ne résout -> flux normal
@@ -5418,6 +5427,9 @@ def _cap_quotidien(texte: str, conv_id=None):
                 from zoneinfo import ZoneInfo
                 import datetime as _dt
                 lh = _dt.datetime.now(ZoneInfo(_FUSEAUX_VILLES[ville_conn]))
+                if conv_id:                              # continuation « et à New York ? » (type B rejouable)
+                    _DERNIER_SUJET[conv_id] = ville_conn
+                    _DERNIER_QUESTION[conv_id] = "quelle heure est-il à %s ?" % ville_conn
                 return ("À %s il est %02d h %02d (fuseau %s, base de fuseaux IANA + horloge de ta machine)."
                         % (ville_conn.title(), lh.hour, lh.minute, _FUSEAUX_VILLES[ville_conn]))
             except Exception:
@@ -7844,6 +7856,19 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         rep = _fiche(t)
         if rep:
             return rep
+        #   (1c'0) CONVERSION DE LA DERNIÈRE RÉPONSE : « et en celsius ? » après « 1811 K » -> 1537,85 °C
+        #          (offset 273,15 exact). SOUND : ne convertit que la valeur-à-unité que NOUS venons de servir.
+        _mcu = re.match(r"^\s*(?:et\s+)?en\s+(celsius|fahrenheit|kelvins?)\s*\?*\s*$", t, re.IGNORECASE)
+        if _mcu and conv_id in _DERNIERE_VALEUR:
+            _v, _u = _DERNIERE_VALEUR[conv_id]
+            _cible = {"kelvins": "kelvin"}.get(_mcu.group(1).lower(), _mcu.group(1).lower())
+            _table = {("K", "celsius"): (lambda x: x - 273.15, "°C"),
+                      ("K", "fahrenheit"): (lambda x: (x - 273.15) * 9 / 5 + 32, "°F"),
+                      ("K", "kelvin"): (lambda x: x, "K")}
+            _conv = _table.get((_u, _cible))
+            if _conv:
+                _fmtv = lambda x: ("%.10g" % round(x, 4))
+                return "%s %s = %s %s (conversion exacte)." % (_fmtv(_v), _u, _fmtv(_conv[0](_v)), _conv[1])
         #   (1c) MULTI-TOURS type A : « et sa monnaie ? » = MÊME entité, NOUVEL attribut (sujet du tour précédent).
         suj = _DERNIER_SUJET.get(conv_id)
         if suj and _est_continuation(t):
@@ -7867,18 +7892,35 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if suj and derniere_q:
             ent = _nouvelle_entite(t)
             if ent and ent != suj:
-                q2 = re.sub(r"\b" + re.escape(suj) + r"\b", ent, derniere_q, flags=re.IGNORECASE)
-                if q2 != derniere_q:
-                    #   REJOUER q2 dans le pipeline COMPLET d'abord : « et celle de Waterloo ? » (après « quand
-                    #   a eu lieu la bataille de Marignan ? ») doit atteindre _cap_date_evenement -> 1815, pas le
-                    #   lookup brut qui répondrait un fait d'une autre nature (« champ de bataille de Waterloo »).
+                #   DEUX RÉÉCRITURES candidates : le sujet ENTIER d'abord (bon pour les vraies entités
+                #   multi-mots : « arabie saoudite » -> « japon »), puis son DERNIER token — quand le « sujet »
+                #   mémorisé embarque la relation (« fusion du fer »), la substitution entière donnait
+                #   « point de OR » (relation perdue, vécu 2026-07-08) ; remplacer « fer » seul préserve
+                #   « point de fusion du or », que le lookup résout.
+                cibles = [suj]
+                if " " in suj and suj.split()[-1] != ent:
+                    cibles.append(suj.split()[-1])
+                q2s = []
+                for cible in cibles:
+                    q2 = re.sub(r"\b" + re.escape(cible) + r"\b", ent, derniere_q, flags=re.IGNORECASE)
+                    if q2 != derniere_q and q2 not in q2s:
+                        q2s.append(q2)
+                #   REJOUER q2 dans le pipeline COMPLET d'abord : « et celle de Waterloo ? » (après « quand
+                #   a eu lieu la bataille de Marignan ? ») doit atteindre _cap_date_evenement -> 1815, pas le
+                #   lookup brut qui répondrait un fait d'une autre nature (« champ de bataille de Waterloo »).
+                for q2 in q2s:
                     rep = _rejoue(memoire, conv_id, q2, pleine)
-                    if _utile(rep):
+                    #   une réponse-aveu (« j'ai compris la structure… ») n'est PAS un succès de rejeu : la
+                    #   variante suivante (« point de fusion du or ») peut, elle, résoudre -> on continue.
+                    if _utile(rep) and not (rep or "").startswith((_MSG_STRUCTURE_PREFIXE,
+                                                                   _MSG_STRUCTURE_COURT_PREFIXE, _MSG_DYM_PREFIXE)):
                         return rep
+                for q2 in q2s:
                     rep = _connaissance_verifiee(q2, conv_id)
                     if rep:
                         return f"{rep}  — à propos de « {ent} »"
-                    #   même continuité à travers l'abstention pour le type B (« et du mordor ? »).
+                #   même continuité à travers l'abstention pour le type B (« et du mordor ? »).
+                for q2 in q2s:
                     _snm = _structure_non_ancree(q2, conv_id)
                     if _snm:
                         return _snm

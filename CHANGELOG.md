@@ -1,5 +1,43 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — « et en celsius ? » : la dernière réponse à unité se convertit au tour suivant
+
+- Mémoire de la dernière valeur-à-unité servie (`_DERNIERE_VALEUR`, posée quand l'unité de la source est
+  affichée) + route de continuation : « point de fusion du fer » → « 1811 K » → « **et en celsius ?** » →
+  « 1811 K = 1537.85 °C (conversion exacte). » → « et celui de l'or ? » → « 1337.33 K » → « et en
+  celsius ? » → **la nouvelle valeur** (1064.18 °C). Fahrenheit couvert. SOUND : ne convertit que ce que
+  Provara vient de servir ; sans contexte → flux normal. (Bug de route corrigé au passage : `rstrip("s")`
+  mutilait « celsius » en « celsiu ».)
+- Bancs : `banc_raisonnement` **193/193** (+1), capacites_chat 139/139, suite 25/25, assistant_nl 257/257,
+  paraphrases 174/174, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Continuations : « et celui de l'or ? » préserve la relation, « et à New York ? » suit l'heure
+
+- **Type B robuste** : après « point de fusion du fer », « et celui de l'or ? » réécrivait en « point de
+  **or** » (le sujet mémorisé embarque la relation, « fusion du fer » remplacé en bloc → relation perdue →
+  aveu de structure). Double réécriture : sujet ENTIER d'abord (bon pour les vraies entités multi-mots,
+  « l'Arabie saoudite » → « le Japon » inchangé), puis DERNIER token (« fer » → « or » préserve « fusion ») ;
+  un rejeu qui ne produit qu'un AVEU (structure/did-you-mean) n'est plus considéré comme un succès — la
+  variante suivante est tentée. → « et celui de l'or ? » → 1337.33 K, « et celui du cuivre ? » → 1357.77 K.
+- **L'heure enchaîne** : « quelle heure est-il à Tokyo ? » puis « et à New York ? » → l'heure de New York
+  (la route fuseaux mémorise sujet+question pour la continuation).
+- Bancs : `banc_raisonnement` **192/192** (+1), capacites_chat **139/139** (+1), suite 25/25, assistant_nl
+  257/257, paraphrases 174/174, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — PERF : des questions coûtaient 3-5 s À CHAQUE APPEL (fuzzy sur tables à millions de clés)
+
+- **Profilé** : « est-ce que 2024 est une année bissextile » = 5,2 s et « le 5e mois de l'année » = 3,4 s,
+  NON cachées — `resolution.corrige` (correction de fautes) itérait **14 millions de clés par question**
+  (les tables de 1-3,2 M de personnes/lexèmes scannées pour « corriger » chaque candidat d'entité), et
+  `_oui_non` relançait tout le pipeline pour résoudre « 2024 » comme entité.
+- Fixes : (1) plus de fuzzy au-delà de 500 000 clés (corriger une faute parmi 3,2 M de noms = secondes de
+  scan pour un fort risque d'ambiguïté — lookup exact seulement ; « allemagn » → Allemagne marche toujours,
+  les tables utiles au fuzzy sont toutes sous le seuil) ; (2) mémo borné (4096) des corrections ;
+  (3) `_oui_non` ne résout jamais un NOMBRE comme entité (les routes calcul tranchent).
+- Mesuré (batterie mixte de 20 questions) : 1re passe médiane 10 ms, **2e passe médiane 1 ms, max 16 ms**
+  (avant : 5,2 s récurrentes). Zéro régression : resolution 50/50, raisonnement 191/191, paraphrases 174/174,
+  lecteur 1613/1613, suite 25/25, tout le reste vert.
+
 ## 2026-07-08 — Passe adverse : les variantes de phrasé ne font plus revenir les FAUX
 
 - **Le « 2010 » du film revenait** par « est-ce que 2024 **c'est** une année bissextile » et « 2028
