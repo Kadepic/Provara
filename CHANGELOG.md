@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Listes : un qualificatif non résolu est DIT, jamais ignoré en silence
+
+- « donne-moi un exemple de mammifère **marin** » servait TOUS les ordres de mammifères (chauves-souris
+  comprises) en ignorant « marin » en silence. Désormais la liste est servie avec l'aveu : « ⚠ Je ne sais pas
+  filtrer « marin » — c'est la liste NON filtrée, à toi de trier. » (FAUX=0 : ignorer un qualificatif, c'est
+  répondre à une autre question sans le dire). Sans qualificatif → inchangé.
+- Bancs : `valide_resolution` **50/50** (+2), suite 25/25, raisonnement 176/176, paraphrases 170/170,
+  capacites_chat 134/134, assistant_nl 234/234, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Listes : le nombre demandé est respecté (« cite-moi trois pays d'Europe »)
 
 - `resolution.resout_liste` : « cite-moi **trois** pays d'Europe » servait les **53** — désormais « Pays

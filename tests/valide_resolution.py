@@ -275,6 +275,12 @@ def main() -> int:
     _l5 = resolution.resout_liste("cite 5 pays d'Afrique") or ""
     check("LISTE COMPTÉE : « 5 pays d'Afrique » -> 5 + « parmi N »",
           _l5.count(",") == 4 and "en voici 5 parmi" in _l5)
+    # QUALIFICATIF non résolu -> DIT, jamais ignoré en silence (« mammifère MARIN » servait les chauves-souris)
+    _lm = resolution.resout_liste("cite les mammifères marins") or ""
+    check("QUALIFICATIF DIT : « mammifères marins » -> liste + aveu « je ne sais pas filtrer »",
+          "Je ne sais pas filtrer « marins »" in _lm)
+    _lo = resolution.resout_liste("cite les mammifères") or ""
+    check("SANS qualificatif -> pas d'aveu parasite", _lo and "filtrer" not in _lo)
 
     # DÉSAMBIGUÏSATION par attribut nommé : « quel PAYS de l'athlète X » départage pays_sportif_athlete (vs
     # sport_athlete) -> on récupère la vraie réponse au lieu d'un HORS prudent, sans faire fuir un piège.

@@ -1052,7 +1052,17 @@ def resout_liste(question: str):
                 if len(tk) >= 4 and tk not in _GENERIQUES and (tk in qtoks or tk + "s" in qtoks):
                     valeurs = sorted({disp for (disp, _e) in _reverse_mem(rel).values()})
                     if valeurs:
-                        return _format_liste(tk.capitalize(), "", valeurs, rel, demande=_nombre_demande(qn, qtoks))
+                        rep = _format_liste(tk.capitalize(), "", valeurs, rel, demande=_nombre_demande(qn, qtoks))
+                        # QUALIFICATIF NON RÉSOLU (FAUX=0 vécu 2026-07-08) : « un exemple de mammifère MARIN »
+                        # servait TOUS les ordres, chauves-souris comprises — le qualificatif était ignoré EN
+                        # SILENCE. On ne sait pas le filtrer -> on le DIT (liste honnêtement non filtrée).
+                        mq = re.search(r"\b" + re.escape(tk) + r"s?\b\s+([a-zà-ÿ-]{4,})", qn)
+                        if mq and mq.group(1) not in _GENERIQUES and mq.group(1) not in rel.split("_") \
+                                and mq.group(1) not in ("existants", "existantes", "connus", "connues",
+                                                        "possibles", "differents", "differentes"):
+                            rep += (" ⚠ Je ne sais pas filtrer « %s » — c'est la liste NON filtrée, à toi de "
+                                    "trier." % mq.group(1))
+                        return rep
     return None
 
 
