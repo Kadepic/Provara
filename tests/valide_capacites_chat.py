@@ -276,5 +276,20 @@ check("Fin du défi" in (R._quiz_verdict("cv-quiz", "stop") or ""), "« stop » 
 check(_A3.qualifie_texte("Défi accepté — test").statut == _A3.ECHANGE,
       "porte unique : un défi lancé est un ÉCHANGE, pas un fait")
 
+# — LOGIQUE PROPOSITIONNELLE (câblage « tout câbler » : sophismes.py rendu conversationnel) —
+r = R._cap_logique("si il pleut alors la route est mouillée, or il pleut, donc la route est mouillée")
+check(r is not None and "VALIDE" in r and "modus ponens" in r, "modus ponens -> VALIDE")
+r = R._cap_logique("si il pleut alors la route est mouillée, or la route n'est pas mouillée, donc il ne pleut pas")
+check(r is not None and "VALIDE" in r and "modus tollens" in r, "modus tollens -> VALIDE")
+r = R._cap_logique("si il pleut alors la route est mouillée, or la route est mouillée, donc il pleut")
+check(r is not None and "INVALIDE" in r and "affirmation du conséquent" in r, "affirmation du conséquent -> sophisme")
+r = R._cap_logique("si il pleut alors la route est mouillée, or il ne pleut pas, donc la route n'est pas mouillée")
+check(r is not None and "INVALIDE" in r and "négation de l'antécédent" in r, "négation de l'antécédent -> sophisme")
+check(R._cap_logique("quelle est la capitale de la France ?") is None, "logique ne vole pas une question factuelle")
+check(R._cap_logique("bonjour comment vas-tu ?") is None, "logique hors périmètre -> None")
+import assistant_nl as _A4
+check(_A4.qualifie_texte("Raisonnement VALIDE (modus ponens) : test").statut == _A4.FAIT,
+      "porte unique : verdict logique = FAIT (forme jugée par module vérifié)")
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

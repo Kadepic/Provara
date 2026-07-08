@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 2 : LOGIQUE PROPOSITIONNELLE en conversation (profondeur de raisonnement)
+
+- **`_cap_logique`** rend `sophismes.py` conversationnel : « si A alors B, or …, donc … » → Provara JUGE la
+  validité de l'inférence — **modus ponens / modus tollens = VALIDE**, **affirmation du conséquent / négation
+  de l'antécédent = sophisme formel**, avec le nom de la forme. Verdict issu du module VÉRIFIÉ (logique formelle
+  exacte, FAUX=0). Complète `_cap_syllogisme` (catégoriel « tous les A sont B ») par le CONDITIONNEL. Provara
+  dit explicitement qu'il juge la FORME, pas la vérité des prémisses ni le fond.
+- Parseur NL robuste (mapping des propositions A/B, détection de négation « ne…pas / non »), abstention si la
+  structure n'est pas nette. Ne vole aucune question factuelle. Porte unique → FAIT (forme vérifiée).
+- **Non câblé** : estimation de Fermi (le module exige des facteurs numériques fournis — inutilisable en NL nu
+  sans moteur de décomposition ; ne rien fabriquer).
+- Bancs : `valide_capacites_chat` **86/86** (+7), suite **25/25**, câblage 504 0 orphelin, raisonnement 166/166,
+  paraphrases 168/168, challenge 16/16.
+
 ## 2026-07-08 — CÂBLAGE des capacités dormantes, vague 1 : maths discrètes / arithmétique / trigo en conversation
 
 - **Mandat Yohan (« tout câbler, augmenter la puissance conversationnelle »)** : audit d'atteignabilité →

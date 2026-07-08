@@ -5492,6 +5492,56 @@ def _verbe_singulier(v: str) -> str:
     return (v[:-3] + "e") if v.lower().endswith("ent") else v
 
 
+# LOGIQUE PROPOSITIONNELLE (câblage « tout câbler » 2026-07-08) : « si A alors B, or …, donc … » -> Provara
+# JUGE la validité de l'inférence (modus ponens/tollens = valide ; affirmation du conséquent / négation de
+# l'antécédent = sophisme formel), verdict issu du module VÉRIFIÉ `sophismes`. FAUX=0 : logique formelle exacte ;
+# structure ambiguë -> None (abstention). Complète `_cap_syllogisme` (catégoriel « tous les A ») par le CONDITIONNEL.
+_LOGIQUE_RE = re.compile(
+    r"\bsi\s+(.+?)\s+alors\s+(.+?)\s*[,;.]\s*(?:or|et|mais)\s+(.+?)\s*[,;.]\s*"
+    r"(?:donc|alors|par\s+cons[eé]quent)\s+(.+?)\s*[?.]?\s*$", re.I)
+_LOG_STOP = frozenset("le la les un une des de du d et est sont a l en ce que qui il elle on se sa son ne".split())
+_LOG_NEG_RE = re.compile(r"\bne\b|\bn |\bpas\b|\bnon\b|\baucun", re.I)
+
+
+def _cap_logique(texte: str):
+    """Validité d'un raisonnement conditionnel en langage naturel (modus ponens/tollens vs sophismes formels).
+    Réutilise `sophismes.identifie_forme`/`est_valide` (vérifié). None si la structure n'est pas nette (FAUX=0)."""
+    m = _LOGIQUE_RE.search(texte)
+    if not m:
+        return None
+    A, B, mineure, concl = m.group(1), m.group(2), m.group(3), m.group(4)
+    mA = set(w for w in _normalise(A).split() if len(w) > 2 and w not in _LOG_STOP)
+    mB = set(w for w in _normalise(B).split() if len(w) > 2 and w not in _LOG_STOP)
+    if not mA or not mB:
+        return None
+
+    def classe(prop):
+        sansneg = _LOG_NEG_RE.sub(" ", _normalise(prop))
+        w = set(sansneg.split())
+        sa, sb = len(w & mA), len(w & mB)
+        if sa == 0 and sb == 0:
+            return None
+        return ("a" if sa >= sb else "b", bool(_LOG_NEG_RE.search(_normalise(prop))))
+
+    cm, cc = classe(mineure), classe(concl)
+    if not cm or not cc:
+        return None
+    lit = lambda c: ("~" if c[1] else "") + c[0]
+    try:
+        import sophismes as _SO
+        forme = _SO.identifie_forme("a->b", lit(cm), lit(cc))
+        valide = _SO.est_valide(forme)
+    except Exception:
+        return None
+    noms = {"modus_ponens": "modus ponens", "modus_tollens": "modus tollens",
+            "affirmation_consequent": "affirmation du conséquent", "negation_antecedent": "négation de l'antécédent"}
+    if valide:
+        return ("Raisonnement VALIDE (%s) : la conclusion découle logiquement de tes prémisses. "
+                "Je juge la FORME, pas la vérité des prémisses." % noms.get(forme, forme))
+    return ("Raisonnement INVALIDE — c'est un sophisme formel : %s. La conclusion NE découle pas des prémisses "
+            "(même si elle pouvait être vraie par ailleurs). Je juge la forme, pas le fond." % noms.get(forme, forme))
+
+
 def _cap_syllogisme(texte: str):
     """Syllogisme explicite (« si tous les A V… et que C est un A, que peut-on en déduire ? ») -> conclusion
     dans LES PRÉMISSES DE L'UTILISATEUR, typée comme telle (mode hypothétique balisé — jamais un fait servi).
@@ -7044,7 +7094,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
-                 ("localisation", _cap_localisation), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
+                 ("localisation", _cap_localisation), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
                  ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
