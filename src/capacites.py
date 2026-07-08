@@ -4132,6 +4132,44 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_8() -> bool:
+    """LOT 4 : intervalles (bootstrap BCa, Bernstein empirique, jackknife+), densité, maxent, intensité."""
+    import math
+    import statistics
+    import ia as _I
+    ech = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] * 4
+    vb, (lo, hi), cf = _I.intervalle_bootstrap(ech, statistics.fmean, B=200)
+    if not (vb == "estimation" and lo < 5.5 < hi and cf == 0.9):      # la vraie moyenne est DANS l'intervalle
+        return False
+    vg, (glo, ghi), meth = _I.intervalle_moyenne_garanti([0.2, 0.4, 0.6, 0.8] * 10, 0.0, 1.0)
+    if not (vg == "intervalle" and glo < 0.5 < ghi and meth == "empirical_bernstein"):
+        return False
+    vj, (jlo, jhi), _cj = _I.jackknife_plus(ech)
+    if not (vj == "estimation" and jlo < 5.5 < jhi):
+        return False
+    vd, dd = _I.estime_densite(ech)
+    if not (vd == "densite" and dd["h"] > 0 and dd["h_silverman"] > dd["h"]):   # LOO resserre Silverman ici
+        return False
+    vm, dm = _I.loi_maximum_entropie([1, 2, 3])
+    if not (vm == "maxent" and dm["p"] == [1.0 / 3.0] * 3 and abs(dm["entropie"] - math.log(3)) < 1e-9):
+        return False                                                   # sans contrainte -> UNIFORME exact
+    bins, _homog = _I.intensite_temporelle([0.5, 1.5, 2.5, 3.5] * 10, 24.0)
+    return bins[:4] == [10.0] * 4 and sum(bins) == 40.0              # 40 événements, 4 premières heures
+
+
+def _p_facade_stats_9() -> bool:
+    """LOT 4 (suite) : Dunning-Kruger = artefact statistique reproduit ; contrats d'abstention honnête."""
+    import random
+    import ia as _I
+    vdk, ddk = _I.dunning_kruger_artefact(0.0, n=2000, rng=random.Random(0))
+    if not (vdk == "analyse" and ddk["info"] == 0.0 and len(ddk["quartiles"]) == 4):
+        return False                                                  # l'artefact émerge SANS aucune information
+    if _I.estime_population([10, 20, 30], [100, 100, 100])[0] != "abstention":   # n=3 < 10 -> DIT
+        return False
+    return _I.moyenne_modeles(list(range(1, 11)),
+                              [2.1, 3.9, 6.2, 7.8, 10.1, 12.2, 13.8, 16.1, 18.0, 20.2])[0] == "abstention"
+
+
 def _p_facade_stats_6() -> bool:
     """LOT 3 : décision pignistique, découverte de loi, Berkson, fenêtres de comptage, DMS, échelle de carte."""
     import ia as _I
@@ -4205,6 +4243,14 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Intervalles garantis et maximum d'entropie (façade stats 8)": (
+        "intervalle_bootstrap (BCa), intervalle_moyenne_garanti (Bernstein empirique), jackknife_plus, "
+        "estime_densite (LOO vs Silverman), loi_maximum_entropie (sans contrainte -> uniforme EXACT, "
+        "entropie ln 3), intensite_temporelle (bins exacts).", _p_facade_stats_8),
+    "Dunning-Kruger comme artefact + abstentions (façade stats 9)": (
+        "dunning_kruger_artefact (l'effet émerge à information NULLE — artefact statistique reproduit, "
+        "graine fixée) ; estime_population et moyenne_modeles s'ABSTIENNENT en-dessous de leur n minimal.",
+        _p_facade_stats_9),
     "Décision, lois et biais de sélection (façade stats 6)": (
         "decision_pignistique (transformée exacte), decouvre_loi (y = x² retrouvé, a = 1.0), "
         "detecte_biais_collision (Berkson : corrélation −0.5 -> 0 sous sélection), comptage_fenetre, "

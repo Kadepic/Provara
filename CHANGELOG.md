@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 4 : 9 façades de plus (dette 114 → 105)
+
+- 2 preuves REGISTRE (diagnostic : 290) : **intervalles garantis** (bootstrap BCa et jackknife+ contenant la
+  vraie moyenne, Bernstein empirique, densité LOO vs Silverman, **maximum d'entropie** : sans contrainte ->
+  uniforme EXACT [1/3,1/3,1/3] d'entropie ln 3, intensité temporelle à bins exacts) ; **Dunning-Kruger
+  démontré comme artefact** (l'effet émerge à information NULLE, graine fixée) + abstentions honnêtes
+  (estime_population, moyenne_modeles sous leur n minimal).
+- Plafond du cliquet : **105**.
+- Bancs : valide_capacites 73/73 (pins 288→290), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 3 : 10 façades de plus (dette 124 → 114)
 
 - 2 preuves REGISTRE (diagnostic : 288) : **décision/lois/biais** (transformée pignistique exacte,
