@@ -482,7 +482,13 @@ _DEVOILE_RE = re.compile(
     r"(?:est[- ]?ce\s+que\s+)?(?:tu\s+peux|peux[- ]?tu|pouvez[- ]?vous|vous\s+pouvez)\s+(?:me|nous)\s+dire\s+|"
     r"sais[- ]?tu\s+|savez[- ]?vous\s+|(?:est[- ]?ce\s+que\s+)?tu\s+sais\s+|"
     r"j['’] ?ai\s+oublié\s+|je\s+ne\s+sais\s+plus\s+|je\s+me\s+demande(?:\s+bien)?\s+|"
-    r"tu\s+te\s+souviens\s+(?:de\s+)?|vous\s+vous\s+souvenez\s+(?:de\s+)?|rappelle[- ]?moi\s+|rappelez[- ]?moi\s+|"
+    # « rappelle-moi » n'est une politesse QUE devant une question (« rappelle-moi qui a écrit… ») — devant
+    # de+INFINITIF ou « que » c'est un RAPPEL-TÂCHE à stocker (« rappelle-moi d'acheter du pain »), protégé
+    # du dévoilement (sinon _cap_rappel ne voyait jamais la forme complète, vécu 2026-07-08).
+    r"tu\s+te\s+souviens\s+(?:de\s+)?|vous\s+vous\s+souvenez\s+(?:de\s+)?|"
+    r"rappelle[- ]?moi\s+(?!(?:demain|ce\s+soir|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)?\s*"
+    r"(?:de\s+|d['’]\s*)[a-zà-ÿ]+(?:er|ir|re|oir)\b|que\s+)|"
+    r"rappelez[- ]?moi\s+(?!(?:de\s+|d['’]\s*)[a-zà-ÿ]+(?:er|ir|re|oir)\b|que\s+)|"
     # préambules conversationnels ÉTENDUS : « j'ai une colle pour toi : », « une question qui me trotte : »,
     # « tiens, à propos », « cette histoire de », « excuse-moi de te déranger mais »…
     r"j['’ ]\s*ai\s+une\s+(?:colle|question|devinette|énigme|enigme)(?:\s+pour\s+(?:toi|vous))?\s*[:,]?\s+|"
@@ -5355,6 +5361,44 @@ def _cap_quotidien(texte: str, conv_id=None):
     return None
 
 
+# RAPPELS « à faire » : « rappelle-moi d'acheter du pain » = une TÂCHE à retenir, pas une question factuelle
+# (elle partait en cascade factuelle -> « pas l'information », vécu). Exige de+INFINITIF ou « que … » —
+# « rappelle-moi LA capitale de la France » reste une vraie question (re-servir l'info, flux normal).
+_RAPPEL_TACHE_RE = re.compile(
+    r"^\s*rappelle[- ](?:moi|nous)\s+"
+    r"((?:demain|ce\s+soir|apr[eè]s[- ]demain|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|"
+    r"dans\s+\d+\s+(?:minutes?|heures?|jours?))\s+)?"                       # moment (liste FERMÉE), optionnel
+    r"(?:de\s+|d['’]\s*)([a-zà-ÿ]+(?:er|ir|re|oir))\b(.*)$|"
+    r"^\s*rappelle[- ](?:moi|nous)\s+que\s+(.+)$", re.IGNORECASE)
+_RAPPEL_ALARME_RE = re.compile(
+    r"\b(demain|ce\s+soir|cette\s+nuit|tout\s+[àa]\s+l['’]heure|[àa]\s+\d{1,2}\s*h(?:\d{2})?\b|"
+    r"dans\s+\d+\s+(?:minutes?|heures?|jours?)|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche)\b", re.I)
+_RAPPEL_TODO_RE = re.compile(
+    r"\b(?:qu['e]\s*est[- ]ce\s+que\s+je\s+(?:dois|devais)\s+faire|que\s+(?:dois|devais)[- ]je\s+faire|"
+    r"mes\s+rappels|ma\s+liste\s+de\s+(?:choses\s+[àa]\s+faire|t[âa]ches)|mes\s+t[âa]ches|"
+    r"qu['e]\s*est[- ]ce\s+que\s+je\s+(?:dois|devais)\s+(?:acheter|prendre|apporter))\b", re.I)
+
+
+def _cap_rappel(texte: str):
+    """Accusé HONNÊTE d'un rappel-tâche : Provara n'a PAS d'alarme (aucun démon de notification) — il le dit
+    quand un moment est nommé, et promet seulement de RESSERVIR à la demande. FAUX=0 : promesse tenue par le
+    stage mémoire (le tour est stocké par le serveur ; le rappel-tâche est ré-servable, cf. _RAPPEL_TACHE_RE)."""
+    m = _RAPPEL_TACHE_RE.match(texte.strip())
+    if not m:
+        return None
+    moment = (m.group(1) or "").strip()
+    tache = ((m.group(2) or "") + (m.group(3) or "")).strip() if m.group(2) else (m.group(4) or "").strip()
+    tache = tache.strip(" ?.!\"'«»")
+    if len(tache) < 3:
+        return None
+    if moment or _RAPPEL_ALARME_RE.search(tache):
+        aff = "%s (%s)" % (tache, moment) if moment else tache
+        return ("C'est noté : %s. Honnêtement : je n'ai pas d'alarme, je ne peux pas te prévenir tout seul au "
+                "bon moment — mais je le garde, et je te le ressers dès que tu me demandes « qu'est-ce que je "
+                "devais faire ? »." % aff)
+    return ("C'est noté : %s. Demande-moi « qu'est-ce que je devais faire ? » et je te le rappelle." % tache)
+
+
 _TEXTE_LETTRES_RE = re.compile(
     r"(?:compte\s+les\s+lettres|combien\s+(?:de|y\s+a[- ]t[- ]il\s+de)\s+lettres)\s+(?:dans\s+|a\s+)?"
     r"(?:du\s+mot\s+|le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s*\??\s*$", re.I)
@@ -7736,6 +7780,31 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     #       jamais une réponse). k généreux : questions répétées et échos 'ia' sont plus récents et éjecteraient
     #       l'énoncé d'origine par récence ; on élargit puis on filtre.
     if veut:
+        # STOCKAGE d'un RAPPEL-TÂCHE (« rappelle-moi d'acheter du pain ») : accusé HONNÊTE, AVANT le rappel
+        # mémoire (sinon la demande elle-même déclenchait un écho « D'après ce que tu m'as dit… » absurde).
+        _ack = _cap_rappel(t)
+        if _ack:
+            return _ack
+        # LISTE DE RAPPELS-TÂCHES (« qu'est-ce que je devais faire ? ») : on ressert TOUS les « rappelle-moi
+        # de… » stockés — la promesse de _cap_rappel est TENUE ici. Requête index sur « rappelle » (le mot est
+        # dans chaque tour stocké), filtre par le motif exact.
+        if _RAPPEL_TODO_RE.search(t):
+            _rh = memoire.rappelle("rappelle", conv_id=None, k=200, scope="prive")
+            _taches = []
+            for h in _rh:
+                if h.get("role") != "user":
+                    continue
+                _mt = _RAPPEL_TACHE_RE.match(h["texte"].strip())
+                if _mt:
+                    _tx = (((_mt.group(2) or "") + (_mt.group(3) or "")).strip() if _mt.group(2)
+                           else (_mt.group(4) or "").strip()).strip(" ?.!\"'«»")
+                    _mo = (_mt.group(1) or "").strip()
+                    if _mo:
+                        _tx = "%s (%s)" % (_tx, _mo)
+                    if _tx and _tx not in _taches:
+                        _taches.append(_tx)
+            if _taches:
+                return "Tu m'as demandé de te rappeler :\n" + "\n".join("· %s" % x for x in _taches)
         # k TRÈS généreux : à token unique (« appelle »), rappelle départage par récence -> les questions répétées
         # et échos 'ia' (plus récents) éjecteraient l'énoncé d'origine d'un petit top-k. Lire beaucoup de postings
         # d'un index inversé reste bon marché. (Pour un historique vraiment massif, un index dédié aux ÉNONCÉS
@@ -7747,7 +7816,10 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                    # exclut TOUTE question (même sans « ? », même en SMS : « cest koi… » -> « c'est quoi… ») :
                    # une question stockée n'est pas une RÉPONSE à rappeler (sinon un « capitale du wakanda » ressort
                    # un « cest koi la capitale du japon » demandé plus tôt — non-sequitur).
-                   and not _veut_reponse(h["texte"]) and not _veut_reponse(_desms(h["texte"]))]
+                   # EXCEPTION : un RAPPEL-TÂCHE stocké (« rappelle-moi d'acheter du pain ») est un vrai énoncé
+                   # ré-servable (« qu'est-ce que je dois acheter ? » doit le retrouver), pas une question.
+                   and ((not _veut_reponse(h["texte"]) and not _veut_reponse(_desms(h["texte"])))
+                        or _RAPPEL_TACHE_RE.match(h["texte"].strip()))]
         if enonces:
             # RE-CLASSEMENT par PERTINENCE : on choisit l'énoncé qui partage le PLUS de mots de contenu avec la
             # question (le mot DISTINCTIF départage) — « quel est mon PLAT préféré » doit rappeler « mon PLAT

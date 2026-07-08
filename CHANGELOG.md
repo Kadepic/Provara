@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Rappels-tâches : « rappelle-moi d'acheter du pain » devient un vrai rappel (honnête : pas d'alarme)
+
+- **Trou préexistant** : « rappelle-moi de X » partait en cascade factuelle → « je n'ai pas l'information »
+  (le dévoilement conversationnel dépouillait « rappelle-moi » comme une politesse type « dis-moi », détruisant
+  le sens). Désormais : **accusé de stockage** (« C'est noté : acheter du pain. Demande-moi "qu'est-ce que je
+  devais faire ?" ») ; un **moment nommé** (« demain ») déclenche l'honnêteté totale — « je n'ai pas d'alarme,
+  je ne peux pas te prévenir tout seul » (aucune promesse que la machine ne tient pas) ; la **liste** est
+  re-servie sur demande (« qu'est-ce que je devais faire ? » → « · sortir la poubelle · appeler le médecin
+  (demain) · acheter du pain ») — promesse TENUE par le stage mémoire (les rappels-tâches stockés sont
+  ré-servables, exception au filtre anti-questions).
+- Distinction préservée : « rappelle-moi **la capitale** de la France » / « rappelle-moi **qui** a écrit
+  1984 » restent des QUESTIONS (re-servir l'info) — le dévoilement ne protège que de+INFINITIF et « que … ».
+- Bancs : `valide_capacites_chat` **134/134** (+6), suite 25/25, assistant_nl 234/234, raisonnement 176/176,
+  paraphrases 170/170, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Build : tzdata embarqué (l'heure des villes marche dans le .exe Windows)
 
 - `build-exe.yml` + `build_exe.bat` : `pip install tzdata` + `--hidden-import zoneinfo --hidden-import tzdata
