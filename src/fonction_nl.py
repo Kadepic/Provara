@@ -164,6 +164,7 @@ _CONV_UNITS = {
     "mg": ("M", 0.001), "milligramme": ("M", 0.001), "milligrammes": ("M", 0.001),
     "g": ("M", 1.0), "gramme": ("M", 1.0), "grammes": ("M", 1.0),
     "kg": ("M", 1000.0), "kilogramme": ("M", 1000.0), "kilogrammes": ("M", 1000.0),
+    "kilo": ("M", 1000.0), "kilos": ("M", 1000.0),      # « un kilo » = kilogramme en usage courant
     "tonne": ("M", 1_000_000.0), "tonnes": ("M", 1_000_000.0),
     # temps (base = seconde)
     "milliseconde": ("T", 0.001), "millisecondes": ("T", 0.001),
@@ -574,6 +575,32 @@ def _resout_geometrie(q: str):
                 import math as _math
                 return (VERIFIE, _fmt_nombre(round(4.0 / 3.0 * _math.pi * r ** 3, 4)),
                         "géométrie — volume de la sphère (4/3·π·r³)")
+        if "cylindre" in q:
+            r = dim("rayon")
+            if r is None:
+                d = dim("diametre")
+                r = d / 2.0 if d is not None else None
+            h = dim("hauteur")
+            if r is not None and h is not None and r >= 0 and h >= 0:
+                import math as _math
+                return (VERIFIE, _fmt_nombre(round(_math.pi * r * r * h, 4)),
+                        "géométrie — volume du cylindre (π·r²·h)")
+        if "cone" in q:
+            r = dim("rayon")
+            h = dim("hauteur")
+            if r is not None and h is not None and r >= 0 and h >= 0:
+                import math as _math
+                return (VERIFIE, _fmt_nombre(round(_math.pi * r * r * h / 3.0, 4)),
+                        "géométrie — volume du cône (π·r²·h/3)")
+
+    # TRAPÈZE : aire = (base1 + base2)/2 × hauteur (les deux bases + la hauteur nommées).
+    if "trapeze" in q and aire:
+        mb = re.search(r"bases?\s+(?:de\s+)?(\d+(?:[.,]\d+)?)\s+et\s+(?:de\s+)?(\d+(?:[.,]\d+)?)", q)
+        h = dim("hauteur")
+        if mb and h is not None:
+            b1, b2 = float(mb.group(1).replace(",", ".")), float(mb.group(2).replace(",", "."))
+            return (VERIFIE, _fmt_nombre((b1 + b2) / 2.0 * h),
+                    "géométrie — aire du trapèze ((b₁+b₂)/2 × h)")
     return None
 
 

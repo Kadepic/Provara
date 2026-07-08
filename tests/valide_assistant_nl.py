@@ -482,6 +482,14 @@ check(_m("périmètre d'un triangle de côtés 1, 1 et 5") is None,
 check(_m("aire d'un losange de diagonales 6 et 8") == "24", "aire losange d=6,8 -> 24 (d₁·d₂/2, Polygone)")
 check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup » (pas de %) ne déclenche RIEN")
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
+# VAGUE 21 : volume cylindre/cône, aire trapèze, kilo -> grammes.
+_r = _m("volume d'un cylindre de rayon 2 et hauteur 5")
+check(_r is not None and _r.startswith("62.83"), "volume cylindre r=2 h=5 -> 62.83 (π·r²·h)")
+_r = _m("volume d'un cône de rayon 3 et hauteur 6")
+check(_r is not None and _r.startswith("56.54"), "volume cône r=3 h=6 -> 56.55 (π·r²·h/3)")
+check(_m("aire d'un trapèze de bases 4 et 6 et hauteur 3") == "15", "aire trapèze b=4,6 h=3 -> 15")
+check(_c("combien de grammes dans 2 kilos") == "2000 grammes", "2 kilos -> 2000 grammes (kilo = kg courant)")
+check(_c("combien de grammes dans un kilo") == "1000 grammes", "1 kilo -> 1000 grammes")
 # VAGUE 20 : comparaison directe, extremum, tri de nombres (la route stats min/max ne les coiffe plus).
 _r = _m("est-ce que 8 est plus grand que 5")
 check(_r is not None and _r.startswith("Oui"), "« 8 plus grand que 5 » -> Oui (plus « Minimum:5 max:8 »)")

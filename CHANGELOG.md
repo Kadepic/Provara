@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 21 : volume cylindre/cône, aire trapèze, « kilo » → grammes
+
+- **Géométrie** : volume du cylindre (π·r²·h — « rayon 2 hauteur 5 » → 62.83), volume du cône (π·r²·h/3),
+  aire du trapèze ((b₁+b₂)/2·h — « bases 4 et 6, hauteur 3 » → 15).
+- **Unités** : « un kilo »/« kilos » reconnu comme kilogramme (usage courant) → « combien de grammes dans 2
+  kilos » → 2000.
+- Bancs : `valide_assistant_nl` **296/296** (+5), suite 25/25, paraphrases 174/174, capacites_chat 144/144,
+  câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vague 20 : 1 FAUX (Noël→31) + comparaison directe, extremum, tri, compte à rebours, coef
 
 - **FAUX** : « dans combien de jours le 25 **décembre** » → *« 31 »* (le gabarit `jours_mois` prenait
