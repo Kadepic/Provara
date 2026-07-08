@@ -689,6 +689,9 @@ def _resout_geometrie(q: str):
     return None
 
 
+_IMPORT_MATH_SIGNALE = False       # l'échec d'import des briques maths est signalé UNE fois (jamais muet)
+
+
 def resout_math(question: str):
     """MATHS DISCRÈTES / ARITHMÉTIQUE / TRIGO en NL — capacités RÉELLES (arithmetique_modulaire, maths_discretes,
     trigonometrie) rendues atteignables par une phrase (mandat « tout câbler », 2026-07-08). Renvoie
@@ -701,7 +704,16 @@ def resout_math(question: str):
         import arithmetique_modulaire as _AM
         import maths_discretes as _MD
         import trigonometrie as _TG
-    except Exception:
+    except Exception as _e:
+        # ⚠ JAMAIS silencieux (vécu .exe build 75, 2026-07-09 : TOUT resout_math mort — %/factorielle/pgcd
+        # servis par Wikipédia — et l'except muet cachait la cause). Signalé UNE fois au log/console.
+        global _IMPORT_MATH_SIGNALE
+        if not _IMPORT_MATH_SIGNALE:
+            _IMPORT_MATH_SIGNALE = True
+            import traceback
+            print("⚠⚠ resout_math : import des briques ÉCHOUÉ — toutes les routes maths mortes : %r" % (_e,),
+                  flush=True)
+            traceback.print_exc()
         return (HORS, None, None)
 
     # INTÉRÊTS (placement) : « combien rapportent 1000 euros à 5% pendant 3 ans » -> valeur acquise + gain.
