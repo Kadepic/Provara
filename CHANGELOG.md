@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX=0 : « de quelle année date le roman 1984 » listait 2041 édifices construits en 1984
+
+- **FAUX servi, trouvé à la sonde** : `_liste_inverse` prenait le « 1984 » du TITRE comme ancre-valeur et,
+  « quelle année » rendant les relations `annee_*` liste-plausibles, servait « Edifice (1984, 2041) : … ».
+  Garde ANCRE CIRCULAIRE : quand la question DEMANDE une année (le seul token de relation matché est
+  annee/date), une ancre purement NUMÉRIQUE est un titre/nom, pas une requête de liste → écartée.
+  « quels ÉDIFICES datent de 1984 » (type interrogé ≠ la date) continue de lister.
+- Bancs : `banc_raisonnement` **178/178** (+2), paraphrases 174/174, suite 25/25, assistant_nl 234/234,
+  capacites_chat 137/137, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — FAUX=0 : « quinze plus vingt-sept » rendait 28 (le tiret de « vingt-sept » devenait un moins)
 
 - **FAUX servi comme fait** : la substitution mot→chiffre traitait « vingt-sept » mot à mot → « 20-7 », et le

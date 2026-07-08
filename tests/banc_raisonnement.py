@@ -148,6 +148,10 @@ CAS = [
     ("ouinon-neg-confirmee", R._oui_non, "la capitale de la France n'est pas Lyon, si ?",
      "Ce que j'ai de vérifié : la capitale de la France → Paris."),
     ("ouinon-neg-ouverte", R._oui_non, "quelle ville n'est pas la capitale de la France ?", ""),  # ouverte -> None
+    # GARDE ANCRE CIRCULAIRE : « de quelle ANNÉE date le roman 1984 » ne liste plus les 2041 édifices de 1984
+    # (le nombre de la phrase est un TITRE quand la question DEMANDE une année) ; l'inverse légitime survit.
+    ("liste-inverse-annee-titre", R._liste_inverse, "de quelle année date le roman 1984", ""),
+    ("liste-inverse-edifices-1984", R._liste_inverse, "quels édifices datent de 1984", "Edifice (1984"),
     ("guerison-mots-outils", R._guerit_entree, "la France a-t-elle des colonies", "des colonies"),  # « des » pas -> « dis »
     ("fait-personne-lieu", R._cap_fait_personne, "où est né Napoléon Ier ?", "Ajaccio"),
     ("fait-personne-fem", R._cap_fait_personne, "où est morte Marie Curie ?", "est morte"),

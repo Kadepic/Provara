@@ -2799,10 +2799,12 @@ def _liste_inverse(question: str) -> str | None:
         return False
 
     # relations candidates : un token de NOM (≥3, non générique) est demandé dans la question (ET liste plausible).
-    candidats = [rel for rel in _relations()
-                 if any(len(tk) >= 3 and tk not in _GENERIQUES and tk in demandes for tk in rel.split("_"))
-                 and (intent or _liste_plausible(rel))]
-    for rel in candidats:
+    candidats = []
+    for rel in _relations():
+        toks_match = [tk for tk in rel.split("_") if len(tk) >= 3 and tk not in _GENERIQUES and tk in demandes]
+        if toks_match and (intent or _liste_plausible(rel)):
+            candidats.append((rel, toks_match))
+    for rel, toks_match in candidats:
         par_val = _charge_reverse(rel)
         if not par_val:
             continue
@@ -2815,6 +2817,12 @@ def _liste_inverse(question: str) -> str | None:
             # alias (« quel FLEUVE traverse Paris » : « fleuve » est une VALEUR de type_riviere ET l'alias du
             # token « riviere » -> sans ce garde, on listait les 147 rivières de type fleuve en ignorant Paris).
             if _base(vn) in rtoks:
+                continue
+            # GARDE ANCRE CIRCULAIRE (FAUX vécu 2026-07-08) : « de quelle ANNÉE date le roman 1984 » DEMANDE
+            # une année — le « 1984 » de la phrase est un TITRE (le roman d'Orwell), pas une ancre de liste ;
+            # sans garde, on servait les 2041 édifices construits en 1984. Une ancre NUMÉRIQUE n'est légitime
+            # que si le type interrogé est AUTRE que la date elle-même (« quels ÉDIFICES datent de 1984 » OK).
+            if vn.isdigit() and set(toks_match) <= {"annee", "annees", "date", "dates"}:
                 continue
             if (len(vn) >= 3 and vn not in rtoks and re.search(r"\b" + re.escape(vn) + r"\b", qn)
                     and (best is None or len(vn) > len(best[0]))):
