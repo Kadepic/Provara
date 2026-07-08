@@ -3689,7 +3689,19 @@ def verifie_tout(budget_par_preuve: float | None = None) -> tuple[int, int, list
                 echecs.append(k)
         return ok, ko, echecs
     import threading
-    for k in REGISTRE:
+    import time as _t
+    # BUDGET GLOBAL = 6× le budget unitaire : si les preuves se bloquent EN CASCADE (vécu .exe 2026-07-08 :
+    # un worker coincé qui tient le verrou d'import Python bloque tous les suivants -> 306 × 10 s ≈ 51 min),
+    # on S'ARRÊTE et on le DIT — le diagnostic répond toujours en ≤ ~1 min.
+    _fin = _t.monotonic() + 6.0 * budget_par_preuve
+    restants = list(REGISTRE)
+    for i, k in enumerate(restants):
+        if _t.monotonic() > _fin:
+            ko += len(restants) - i
+            echecs.append("interrompu à %.0fs : %d preuve(s) non exécutée(s)"
+                          % (6.0 * budget_par_preuve, len(restants) - i))
+            print("⚠ verifie_tout : budget global épuisé, %d preuves sautées" % (len(restants) - i), flush=True)
+            break
         res = [None]
         th = threading.Thread(target=lambda kk=k: res.__setitem__(0, couvert(kk)), daemon=True)
         th.start()
@@ -3697,6 +3709,7 @@ def verifie_tout(budget_par_preuve: float | None = None) -> tuple[int, int, list
         if th.is_alive():
             ko += 1
             echecs.append("%s (bloquée > %.0fs)" % (k, budget_par_preuve))
+            print("⚠ preuve BLOQUÉE (> %.0fs) : %s" % (budget_par_preuve, k), flush=True)   # -> verax.log
         elif res[0]:
             ok += 1
         else:

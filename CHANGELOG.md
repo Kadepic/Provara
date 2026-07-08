@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Diagnostic .exe, riposte 3 : budget GLOBAL + noms des preuves bloquées au log
+
+- Build 74 vérifié en live : le diagnostic ne répond toujours pas — la réponse n'est JAMAIS stockée, alors
+  qu'`ia` est chaud (résolution floue en 1 s dans le même processus). Lecture des traces du .exe :
+  **WinError 10053** (un logiciel local — antivirus — abat la connexion pendant la longue attente) et un
+  vieux crash zipimport d'un processus qui avait survécu à l'échange de fichiers de la MAJ.
+- Hypothèse en tête : un worker de preuve coincé TIENT LE VERROU D'IMPORT Python -> tous les workers
+  suivants s'y bloquent -> 306 × 10 s ≈ 51 min. Riposte : **budget global 60 s** (au-delà, les preuves
+  restantes sont sautées et COMPTÉES, le diagnostic répond toujours en ≤ ~1 min) + **chaque preuve bloquée
+  est imprimée au log en direct** (« ⚠ preuve BLOQUÉE (> 10s) : <nom> » -> verax.log) — le prochain
+  diagnostic sur le .exe donnera les noms, même si la réponse HTTP se perd.
+- Local : 7.5 s, 306/306, zéro bloquée ; capacites 73/73, suite 26/26.
+
 ## 2026-07-08 — Diagnostic .exe : WATCHDOG par preuve (le coupable sera nommé)
 
 - Build 73 vérifié en live : le diagnostic pend TOUJOURS (> 280 s) alors que les questions data répondent en
