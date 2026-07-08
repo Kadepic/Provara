@@ -1327,6 +1327,26 @@ def resout_math(question: str):
                         "conventions de durée — composition exacte")
         return (HORS, None, None)
 
+    # CONVENTIONS D'OBJETS ET DE JEUX (standards internationaux non contestés, le CADRE est DIT dans chaque
+    # réponse — même famille que la douzaine et les solides). Table FERMÉE : rien hors d'elle.
+    _CONV_OBJETS = [
+        (r"cases?\b.{0,20}?echiquier|echiquier\b.{0,15}?cases?", "64 cases (8 × 8)"),
+        (r"touches?\b.{0,20}?piano", "88 touches (52 blanches + 36 noires — piano moderne standard)"),
+        (r"cartes?\b.{0,25}?tarot", "78 cartes (jeu de tarot français standard)"),
+        (r"joueurs?\b.{0,30}?(?:foot|football)\b", "11 joueurs par équipe sur le terrain (football association)"),
+        (r"(?:match|partie)\s+de\s+foot\w*\b.{0,20}?(?:dure|temps|duree)|dure\b.{0,15}?match\s+de\s+foot",
+         "90 minutes réglementaires (2 × 45, hors arrêts de jeu et prolongations)"),
+        (r"trous?\b.{0,25}?golf", "18 trous (parcours standard)"),
+        (r"quilles?\b.{0,15}?bowling|bowling\b.{0,15}?quilles?", "10 quilles (bowling à dix quilles)"),
+        (r"cordes?\b.{0,20}?violon", "4 cordes (sol, ré, la, mi)"),
+        (r"cordes?\b.{0,20}?guitare", "6 cordes (guitare standard : mi, la, ré, sol, si, mi)"),
+        (r"cordes?\b.{0,20}?violoncelle", "4 cordes (do, sol, ré, la)"),
+        (r"cases?\b.{0,20}?dames?\b|jeu\s+de\s+dames.{0,15}?cases?", "100 cases (dames internationales, 10 × 10)"),
+    ]
+    for motif, rep in _CONV_OBJETS:
+        if re.search(motif, q):
+            return (VERIFIE, rep + ".", "conventions — règles et standards (cadre dit)")
+
     # DOUZAINES : « 3 douzaines » -> 36, « une demi-douzaine » -> 6, « dans une douzaine » -> 12 (convention).
     mdz = re.search(r"(?:(\d+)\s+douzaines?|demi[- ]douzaine|(?:une\s+|la\s+)?douzaine)", qc)
     if mdz and ("combien" in qtoks or "fait" in qtoks or "font" in qtoks):

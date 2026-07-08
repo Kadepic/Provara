@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 44 : conventions d'objets et de jeux (table fermée, cadre dit)
+
+- Échiquier 64 cases (8 × 8), piano 88 touches (standard moderne dit), tarot 78 cartes, football 11 joueurs
+  et 90 minutes (2 × 45, hors arrêts de jeu — cadre dit), golf 18 trous, bowling 10 quilles, violon 4 cordes
+  (sol ré la mi), guitare 6 cordes, violoncelle 4, dames internationales 100 cases. Tous en abstention
+  auparavant ; gardes : « l'échiquier politique » et « une corde de 10 mètres » ne sont pas volés.
+- Bancs : `valide_assistant_nl` **482/482** (+8), capacites_chat 184/184, raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 43 : douzaine sans chiffre, conversion inverse « pour »
 
 - « combien y a-t-il d'œufs dans **une** douzaine » → 12 (le motif exigeait un chiffre) ; « combien de

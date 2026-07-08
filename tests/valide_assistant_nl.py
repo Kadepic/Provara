@@ -414,6 +414,18 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 44 : conventions d'objets et de jeux (table FERMÉE, cadre DIT dans chaque réponse).
+check(_m("combien de cases sur un échiquier") == "64 cases (8 × 8).", "échiquier -> 64")
+_pi = _m("combien de touches sur un piano")
+check(_pi and _pi.startswith("88 touches") and "standard" in _pi, "piano -> 88, standard dit")
+check(_m("combien de cartes dans un jeu de tarot") == "78 cartes (jeu de tarot français standard).", "tarot -> 78")
+_fo = _m("un match de foot dure combien de temps")
+check(_fo and _fo.startswith("90 minutes") and "hors arrêts" in _fo, "match de foot -> 90 min, cadre dit")
+check(_m("combien de cordes sur un violon") == "4 cordes (sol, ré, la, mi).", "violon -> 4 cordes")
+_gu = _m("combien de cordes a une guitare")
+check(_gu and _gu.startswith("6 cordes"), "guitare -> 6 cordes")
+check(_m("l'échiquier politique français") is None, "garde : échiquier métaphorique -> pas volé")
+check(_m("une corde de 10 mètres") is None, "garde : corde-objet -> pas volée")
 # VAGUE 43 : douzaine sans chiffre + conversion inverse « combien de X pour N Y ».
 check(_m("combien y a-t-il d'œufs dans une douzaine") == "12 (une douzaine = 12)", "une douzaine -> 12")
 _nk = _m("combien de nœuds pour 30 km/h")
