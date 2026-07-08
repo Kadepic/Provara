@@ -4132,6 +4132,31 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_18() -> bool:
+    """LOT 14 : prévisions imprécises de Walley, ambiguïté lisse, Bayes robuste, copules, portefeuille."""
+    import ia as _I
+    if _I.prevision_imprecise([{"a": 0.4, "b": 0.6}, {"a": 0.6, "b": 0.4}],
+                              {"a": 10.0, "b": -5.0}) != ("prevision", (1.0, 4.0)):
+        return False                                                  # bornes inf/sup EXACTES sur le credal
+    vl, choix_l, dl = _I.decision_ambiguite_lisse([{"x": 0.4, "y": 0.6}, {"x": 0.6, "y": 0.4}], [0.5, 0.5],
+                                                  {"agir": {"x": 10.0, "y": -5.0}, "rien": {"x": 0.0, "y": 0.0}})
+    if not (vl == "robuste" and choix_l == "agir" and dl["agir"] > dl["rien"]):
+        return False
+    vp, (plo, phi), _cp = _I.posterieur_robuste({"h1": 0.5, "h2": 0.5}, {"h1": 0.8, "h2": 0.2},
+                                                {"h1": 1.0, "h2": 0.0})
+    if not (vp == "intervalle" and plo < 0.8 < phi):                  # le postérieur nominal est ENCADRÉ (ε)
+        return False
+    vm, choix_m, dm = _I.decision_robuste_modele({"x": 0.5, "y": 0.5},
+                                                 {"agir": {"x": 10.0, "y": -5.0}, "rien": {"x": 0.0, "y": 0.0}})
+    if not (vm == "robuste" and choix_m == "rien"):                   # sous mauvaise spécification, prudence
+        return False
+    vr, dr = _I.risque_conjoint_extreme([(0.99, 0.98), (0.5, 0.5), (0.97, 0.99), (0.2, 0.3)] * 10)
+    if not (vr == "analyse" and dr["jointe_empirique"] >= 0.0 and dr["jointe_independance"] > 0):
+        return False
+    vpf, dpf = _I.portefeuille_robuste([[1.01, 0.99], [0.99, 1.01], [1.02, 0.98]] * 10)
+    return vpf == "analyse" and dpf["w_univ"] > 0 and dpf["w_best"] >= dpf["w_univ"]   # l'universel suit le meilleur
+
+
 def _p_facade_stats_17() -> bool:
     """LOT 13 : inférence sélective, Jensen, jeu à somme nulle, info-gap, décision robuste, importance."""
     import random
@@ -4466,6 +4491,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Prévisions imprécises et robustesse bayésienne (façade stats 18)": (
+        "prevision_imprecise (bornes de Walley EXACTES (1, 4) sur un credal), decision_ambiguite_lisse "
+        "(KMM), posterieur_robuste (ε-contamination encadrant le nominal), decision_robuste_modele (prudence "
+        "sous mauvaise spécification), risque_conjoint_extreme (copules), portefeuille_robuste (universel).",
+        _p_facade_stats_18),
     "Sélection, Jensen et jeux résolus (façade stats 17)": (
         "inference_selective (p-hacking : le minimum de m tests est ajusté 1−(1−p)^m EXACT), flaw_of_averages "
         "(Jensen reproduit), strategie_securite (jeu à somme nulle résolu, valeur ≈ 0), robustesse_infogap "

@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 14 : 6 façades de plus (dette 44 → 38 ; cap des 300 preuves)
+
+- 1 preuve REGISTRE composée — le diagnostic exécute désormais **300 preuves en direct** : **prévisions
+  imprécises de Walley** (bornes EXACTES (1, 4) sur un ensemble credal), **ambiguïté lisse** (KMM),
+  **Bayes robuste** (ε-contamination encadrant le postérieur nominal 0.8), **décision robuste à la mauvaise
+  spécification du modèle** (la prudence l'emporte), **risque conjoint extrême** (copules), **portefeuille
+  universel** (suit le meilleur actif rétrospectif).
+- Plafond du cliquet : **38** — 110 façades prouvées depuis l'audit (148).
+- Bancs : valide_capacites 73/73 (pins 299→300), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 13 : 6 façades de plus (dette 50 → 44)
 
 - 1 preuve REGISTRE composée (diagnostic : 299) : **p-hacking quantifié** (le minimum de m tests ajusté
