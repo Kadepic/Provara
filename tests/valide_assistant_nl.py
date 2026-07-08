@@ -414,6 +414,20 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 35 : milliers à espace (« 5 000 mètres » lu 000 -> 0 km, FAUX vécu), unité nue = 1, exactes ajoutées.
+check(_m("convertis 5 000 mètres en kilomètres") == "5 kilometres", "5 000 m -> 5 km (espace des milliers)")
+check(_m("un hectare en mètres carrés") == "10000 metres carres", "UN hectare -> 10000 m²")
+check(_m("un mile nautique en kilomètres") == "1.852 kilometres", "mile nautique -> 1.852 km (exact)")
+check(_m("année-lumière en kilomètres") == "9460730472580.8 kilometres",
+      "année-lumière nue -> 9 460 730 472 580.8 km (pas de décimales fantômes)")
+check(_m("un carat en grammes") == "0.2 grammes", "carat -> 0.2 g")
+_ga = _m("combien de litres dans un gallon")
+check(_ga and _ga.startswith("Ambigu") and "3.785411784" in _ga and "4.54609" in _ga,
+      "gallon -> ambiguïté US/UK DITE, jamais un facteur unique")
+_ta = _m("3 tasses en millilitres")
+check(_ta and "pas une unité normalisée" in _ta, "tasse -> non normalisée DITE")
+_vs = _m("vitesse du son")
+check(_vs and _vs.startswith("343 m/s dans l'air à 20 °C"), "vitesse du son -> conditions DITES")
 # VAGUE 33 : cas limites DITS (tombaient en mémo « Noté »).
 _d0 = _m("10 divisé par 0")
 check(_d0 and _d0.startswith("Indéfini"), "division par zéro -> indéfini DIT")

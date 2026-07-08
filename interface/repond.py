@@ -4360,9 +4360,18 @@ def _cap_grammaire(texte: str):
 def _cap_conjugaison(texte: str):
     """« conjugue le verbe X » / « conjugaison de X » -> table du présent. FAUX=0 : abstention honnête hors du
     périmètre garanti (verbes réguliers 1er/2e groupe, présent) plutôt qu'une forme fausse."""
-    if not re.search(r"\bconjug(?:ue|ues|uer|aison)\b", texte, re.I):
+    if not (re.search(r"\bconjug(?:ue|ues|uer|aison)\b", texte, re.I)
+            or re.search(r"\b(?:imparfait|pr[ée]sent|futur)\s+d[e'’]", texte, re.I)):
         return None
-    m = re.search(r"\b([a-zàâäéèêëïîôöùûüç]+(?:er|ir|re))\b", texte, re.I)
+    # ⚠ le verbe demandé n'est PAS « conjuguer » lui-même (« comment CONJUGUER aimer » conjuguait
+    # « conjuguer », FAUX vécu 2026-07-08) ; un TEMPS hors présent -> honnêteté, jamais le présent servi
+    # en silence à la place du futur demandé.
+    mt = re.search(r"\b(imparfait|futur|pass[ée]\s+(?:compos[ée]|simple)|conditionnel|subjonctif)\b", texte, re.I)
+    if mt:
+        return ("Je ne conjugue de façon SÛRE que le PRÉSENT des verbes réguliers du 1er/2e groupe — le %s "
+                "sort de ce périmètre garanti et je préfère m'abstenir que risquer une forme fausse."
+                % mt.group(1).lower())
+    m = re.search(r"\b(?!conjugu)([a-zàâäéèêëïîôöùûüç]+(?:er|ir|re))\b", texte, re.I)
     if not m:
         return None
     inf = m.group(1).lower()

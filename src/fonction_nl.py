@@ -211,6 +211,12 @@ _CONV_UNITS = {
     "mph": ("S", 1609.344 / 3600.0), "mile par heure": ("S", 1609.344 / 3600.0),
     "miles par heure": ("S", 1609.344 / 3600.0), "mile heure": ("S", 1609.344 / 3600.0),
     "miles heure": ("S", 1609.344 / 3600.0),
+    # définitions EXACTES (SI/conventions internationales)
+    "mile nautique": ("L", 1852.0), "miles nautiques": ("L", 1852.0),
+    "mille nautique": ("L", 1852.0), "milles nautiques": ("L", 1852.0),
+    "annee-lumiere": ("L", 9460730472580.8e3), "annees-lumiere": ("L", 9460730472580.8e3),
+    "annee lumiere": ("L", 9460730472580.8e3), "annees lumiere": ("L", 9460730472580.8e3),
+    "carat": ("M", 0.2), "carats": ("M", 0.2),
 }
 # alternance longest-first : « kilometre » avant « metre » avant « m » ; « secondes » avant « s ».
 _UNIT_ALT = "|".join(sorted((re.escape(u) for u in _CONV_UNITS), key=len, reverse=True))
@@ -225,6 +231,8 @@ def _fmt_nombre(val: float) -> str:
     """Entier sans décimale si entier, sinon arrondi propre (pas d'artefact flottant)."""
     if val == int(val):
         return str(int(val))
+    if abs(val) >= 1e6:            # grands nombres : « %.6f » fabriquait des décimales FANTÔMES au-delà de la
+        return "%.15g" % val       # précision du float (année-lumière -> « …580.800781 », FAUX vécu)
     return ("%.6f" % val).rstrip("0").rstrip(".")
 
 
@@ -253,6 +261,7 @@ def _norm_conv(s: str) -> str:
     s = s.lower().replace("œ", "oe").replace("æ", "ae")   # ligatures : NFD ne les décompose PAS (« nœuds » ratait)
     s = unicodedata.normalize("NFD", s)
     s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    s = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", s)   # milliers à espace : « 5 000 » lu 000 -> 0 km, FAUX vécu
     return re.sub(r"\s+", " ", s)
 
 
@@ -308,6 +317,20 @@ def resout_conversion(question: str):
     q = re.sub(r"\btrois\s+quarts\s+d['’]\s*", "0.75 ", q)
     q = re.sub(r"\b(?:un\s+)?quart\s+d['’]\s*", "0.25 ", q)
     q = re.sub(r"\b(?:une?\s+)?demi[- ]", "0.5 ", q)
+    q = re.sub(rf"\bune?\s+(?=(?:{_UNIT_ALT})\b)", "1 ", q)   # « UN hectare en m² » ratait (pas de nombre)
+    if not re.search(r"\d", q):                               # unité NUE (« année-lumière en km ») = 1 unité
+        q = re.sub(rf"\b(?=(?:{_UNIT_ALT})\b\s+en\s)", "1 ", q, count=1)
+    # UNITÉS AMBIGUËS / NON NORMALISÉES -> réponse composée honnête, jamais un facteur unique menteur.
+    if re.search(r"\bgallons?\b", q) and re.search(r"litres?|combien", q):
+        return (VERIFIE, "Ambigu — 1 gallon US = 3.785411784 L ; 1 gallon impérial (UK) = 4.54609 L "
+                "(définitions exactes, préciser lequel).", "conversions — unité à double définition")
+    if re.search(r"\bpintes?\b", q) and re.search(r"litres?|ml\b|centilitres?|combien", q):
+        return (VERIFIE, "Ambigu — 1 pinte US = 0.473176 L ; 1 pinte impériale (UK) = 0.568261 L "
+                "(préciser laquelle).", "conversions — unité à double définition")
+    if re.search(r"\btasses?\b", q) and re.search(r"\bml\b|millilitres?|centilitres?|litres?", q):
+        return (VERIFIE, "La « tasse » n'est pas une unité normalisée (200 à 250 ml selon les pays ; "
+                "250 ml en tasse métrique) — je donne la fourchette plutôt que trancher.",
+                "conversions — unité non normalisée (dit)")
     # DURÉE COMPACTE « 2h30 » -> « 150 minutes » (« combien de secondes dans 2h30 » tombait en repli, vécu
     # 2026-07-08). Minutes < 60 exigées ; « km/h », « 2 h » nus et les heures d'horloge ailleurs sont intacts
     # (la réécriture est LOCALE à la route de conversion).
@@ -1222,6 +1245,11 @@ def resout_math(question: str):
             mant = mant.rstrip("0").rstrip(".")
             return (VERIFIE, "%s × 10^%d" % (mant, int(expn)), "notation scientifique (réécriture exacte)")
         return (VERIFIE, "0", "notation scientifique (réécriture exacte)")
+
+    # VITESSE DU SON : valeur de référence, CONDITIONS DITES (elle varie — jamais un chiffre nu).
+    if re.search(r"vitesse\s+du\s+son\b", q):
+        return (VERIFIE, "343 m/s dans l'air à 20 °C — elle varie avec la température et le milieu "
+                "(~1482 m/s dans l'eau).", "physique — valeur de référence (conditions dites)")
 
     # CONSTANTES MATHÉMATIQUES NOMMÉES (pi a déjà sa route) : e, nombre d'or.
     if re.search(r"\bnombre\s+d\s*or\b", q):

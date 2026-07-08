@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 35 : « 5 000 mètres » → 0 km !, conjugueur voleur, unités exactes et ambiguës
+
+- **FAUX** : « convertis **5 000** mètres en kilomètres » → *« 0 kilometres »* (l'espace des milliers cassait
+  le parse — « 000 » lu comme le nombre). Les milliers à espace sont recollés dans `_norm_conv`.
+- **FAUX** : « comment **conjuguer aimer** au futur » → *la conjugaison de « conjuguer » au présent* (le
+  premier mot en -er était pris, et le temps demandé ignoré en silence). Le verbe-requête est exclu ; un
+  temps hors présent → honnêteté explicite (« je ne garantis que le PRÉSENT des réguliers »), « l'imparfait
+  de chanter » pareil ; le présent régulier intact.
+- **Décimales fantômes** : `_fmt_nombre` fabriquait des décimales au-delà de la précision du float sur les
+  grands nombres (année-lumière → « …580.800781 ») → représentation exacte du float (%.15g) au-delà de 10⁶.
+- **Unités** : mile nautique (1852 m), année-lumière (9.4607×10¹² km), carat (0.2 g) — définitions exactes ;
+  « **un** hectare » et l'unité NUE (« année-lumière en km » = 1) acceptées ; **gallon/pinte** → ambiguïté
+  US/UK DITE avec les deux facteurs exacts ; **tasse** → « pas une unité normalisée (200-250 ml) » ;
+  **vitesse du son** → 343 m/s avec conditions DITES (air, 20 °C).
+- Bancs : `valide_assistant_nl` **427/427** (+8), capacites_chat **177/177** (+3), raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 34 : continuations sur les CALCULS (« et de CO2 ? », « et en mars ? »)
 
 - « masse molaire de H2O » puis « **et de CO2 ?** » tombait en repli — deux causes : ① le sujet de
