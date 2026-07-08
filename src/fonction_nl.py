@@ -316,6 +316,37 @@ def resout_math(question: str):
         v = p / 100.0 * base
         return (VERIFIE, _fmt_nombre(v), "calcul — pourcentage")
 
+    # VALEUR ABSOLUE : « valeur absolue de -5 » -> 5 (natif, exact).
+    mabs = re.search(r"valeur\s+absolue\s+(?:de\s+|d['’])?(-?\d+(?:[.,]\d+)?)", question, re.I)
+    if mabs:
+        return (VERIFIE, _fmt_nombre(abs(float(mabs.group(1).replace(",", ".")))), "valeur absolue")
+
+    # CONVERSION DE BASE (binaire/octal/hexadécimal <-> décimal ; conversion MÉCANIQUE exacte, natif Python).
+    # « convertis 42 en binaire », « 42 en hexadécimal », « 1010 binaire en décimal », « 2A hexadécimal en décimal ».
+    _BASES = {"binaire": 2, "binaires": 2, "octal": 8, "octale": 8, "hexadecimal": 16, "hexadecimale": 16, "hexa": 16}
+    m_dec = re.search(r"\b([0-9a-fA-F]+)\s+(binaires?|octale?|hexad[eé]cimale?|hexa)\s+en\s+d[eé]cimal", question, re.I)
+    if m_dec:
+        base = _BASES.get(normalise(m_dec.group(2)), None)
+        try:
+            return (VERIFIE, str(int(m_dec.group(1), base)), "conversion base %d -> décimal" % base)
+        except (ValueError, TypeError):
+            return (HORS, None, None)
+    m_base = re.search(r"\b(\d+)\s+en\s+(binaire|octale?|hexad[eé]cimale?|hexa)\b", question, re.I)
+    if m_base:
+        base = _BASES.get(normalise(m_base.group(2)), None)
+        n = int(m_base.group(1))
+        out = {2: bin, 8: oct, 16: hex}[base](n)[2:].upper()
+        return (VERIFIE, out, "conversion décimal -> base %d" % base)
+
+    # INVERSE MODULAIRE : « inverse de 7 modulo 13 » -> 2 (arithmetique_modulaire, exact ; None si non inversible).
+    minv = re.search(r"inverse\s+(?:de\s+|d['’])?(\d+)\s+modulo\s+(\d+)", question, re.I)
+    if minv:
+        try:
+            return (VERIFIE, str(_AM.inverse_modulaire(int(minv.group(1)), int(minv.group(2)))),
+                    "arithmétique modulaire — inverse")
+        except Exception:
+            return (HORS, None, None)                    # non inversible (pgcd≠1) -> abstention honnête
+
     # PGCD / PPCM : « pgcd de 12 et 18 », « ppcm de 4 et 6 » (2 entiers requis).
     if ("pgcd" in qtoks or "diviseur" in q and "commun" in q) and len(ent) >= 2:
         return (VERIFIE, str(_AM.pgcd(ent[0], ent[1])), "arithmétique — PGCD (Euclide)")

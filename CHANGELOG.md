@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 6 : valeur absolue, conversion de base, inverse modulaire
+
+- `fonction_nl.resout_math` : **valeur absolue** (« valeur absolue de -5 » → 5), **conversion de base** (binaire/
+  octal/hexadécimal ↔ décimal, conversion mécanique exacte native — « 42 en hexadécimal » → 2A, « 1010 binaire
+  en décimal » → 10), **inverse modulaire** (« inverse de 7 modulo 13 » → 2, `arithmetique_modulaire`, abstention
+  honnête si non inversible : 6 mod 9 → HORS). Ces trois tombaient en MÉMO/repli (garbage) avant.
+- Gardes anti-faux-positif : « valeur de la maison » (sans « absolue ») ne déclenche rien ; conversions exigent
+  le mot de base. Bancs : `valide_assistant_nl` **126/126** (+8), suite 25/25, raisonnement 166/166, paraphrases 168/168.
+
 ## 2026-07-08 — FAUX=0 : « reste de 17 divisé par 5 » donnait 3.4 (la division) — corrigé en modulo (2)
 
 - **FAUX servi comme fait, trouvé à la sonde** : « quel est le reste de 17 divisé par 5 » → *3.4* (« reste »

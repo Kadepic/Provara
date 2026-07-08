@@ -375,6 +375,15 @@ check(_m("argument de i") and "1.57" in _m("argument de i"), "argument de i -> �
 check(_m("conjugué de 2-3i") and "2 + 3i" in _m("conjugué de 2-3i"), "conjugué de 2-3i -> 2 + 3i")
 check(_m("module de -3-4i") == "5", "module de -3-4i -> 5 (signes négatifs)")
 check(_m("parle-moi de Djibouti") is None, "un « i » dans un nom propre ne déclenche PAS les complexes (garde mot-clé)")
+# VALEUR ABSOLUE / CONVERSION DE BASE / INVERSE MODULAIRE (vague 6)
+check(_m("valeur absolue de -5") == "5", "valeur absolue de -5 -> 5")
+check(_m("convertis 42 en binaire") == "101010", "42 en binaire -> 101010")
+check(_m("42 en hexadécimal") == "2A", "42 en hexadécimal -> 2A")
+check(_m("convertis 1010 binaire en décimal") == "10", "1010 binaire -> 10 (décimal)")
+check(_m("2A hexadécimal en décimal") == "42", "2A hexa -> 42 (décimal)")
+check(_m("inverse de 7 modulo 13") == "2", "inverse modulaire 7 mod 13 -> 2")
+check(_m("inverse de 6 modulo 9") is None, "6 non inversible mod 9 (pgcd≠1) -> abstention honnête")
+check(_m("valeur de la maison") is None, "« valeur de X » (sans « absolue ») ne déclenche PAS (garde)")
 # GARDE anti-faux-positif : « premier »/nombres ordinaux ne déclenchent PAS la primalité sur une question DATA.
 for q in ("le premier président élu en 1958", "premier ministre depuis 2017", "premier roman de 1984",
           "quelle est la capitale de la France ?", "population du Japon en 2020", "qui a gagné en 2018"):
