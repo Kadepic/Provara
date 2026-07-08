@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 17 : 2 FAUX corrigés + facteurs premiers, nombre parfait, règle de trois, écart en %, voyelles
+
+- **FAUX ×2** : « le plus grand **diviseur commun** de 24 et 36 » → *« Minimum : 24 ; maximum : 36 »* (au lieu
+  du PGCD 12) et « de combien de **%** 40 est plus grand que 25 » → min/max : la route stats min/max coiffait
+  ces questions sur le mot « plus grand ». Garde (diviseur/multiple/commun/pgcd/ppcm/%) → la main aux routes
+  dédiées. « le mot chien **contient** combien de consonnes » : le GUÉRISSEUR corrigeait « contient » →
+  « continent » (fausse correction, comme « mots »→« mode ») → famille -tenir/-ient protégée.
+- **CÂBLAGE** : écart relatif en % (« 40 est +60 % plus grand que 25 »), **décomposition en facteurs
+  premiers** (« 60 = 2² × 3 × 5 », exposants Unicode), **nombre parfait** (« 28 est parfait »), an/heure/jour
+  en sous-unités (« 1 an » → 365 jours, dit ; « 2h30 » → 150 minutes), **règle de trois** (« 3 pommes 2 € →
+  9 pommes » → 6), **diagonale du carré** (côté·√2, approché dit), **aire du triangle équilatéral**
+  ((√3/4)·côté²), **comptage voyelles/consonnes** d'un mot.
+- Bancs : `valide_assistant_nl` **268/268** (+11), capacites_chat **142/142** (+3), stats_nl 22/22, suite
+  25/25, raisonnement 194/194, paraphrases 174/174, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — BUG .exe corrigé : l'updater plantait sur `LookupError('unknown encoding: ascii')`
 
 - **Vécu par l'utilisateur** : « ⚠ Lancement de l'updater échoué : LookupError('unknown encoding: ascii') ».

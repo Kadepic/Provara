@@ -2580,6 +2580,11 @@ def _cap_comptage(texte: str):
         return None
     typn = _normalise(typ)
     sing = typn[:-1] if (typn.endswith(("s", "x")) and len(typn) > 4) else typn
+    # GARDE LETTRES (FAUX vécu 2026-07-08) : « le mot X contient combien de consonnes » comptait les 37
+    # hyponymes du concept « consonne » — c'est un comptage de LETTRES dans un mot, traité par _cap_texte.
+    if sing in ("voyelle", "consonne", "lettre", "syllabe", "mot", "caractere") and re.search(
+            r"\bmot\b|\bdans\b", _normalise(texte)):
+        return None
     # MONDE ENTIER : « combien de pays dans le monde ? » -> somme des pays rattachés à un continent (ensemble
     # complet — même base que le superlatif mondial). HONNÊTE : le décompte « officiel » dépend de la définition
     # (193 membres ONU) -> on dit ce qu'on compte.
@@ -5565,6 +5570,14 @@ def _cap_rappel(texte: str):
 _TEXTE_LETTRES_RE = re.compile(
     r"(?:compte\s+les\s+lettres|combien\s+(?:de|y\s+a[- ]t[- ]il\s+de)\s+lettres)\s+(?:dans\s+|a\s+)?"
     r"(?:du\s+mot\s+|le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s*\??\s*$", re.I)
+# voyelles/consonnes : « combien de voyelles dans chien » OU « le mot chien contient combien de consonnes »
+_TEXTE_VOYCONS_A = re.compile(
+    r"combien\s+de\s+(voyelles?|consonnes?)\s+(?:dans|a|contient|dans\s+le\s+mot)\s+"
+    r"(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s*\??\s*$", re.I)
+_TEXTE_VOYCONS_B = re.compile(
+    r"le\s+mot\s+([a-zà-ÿA-ZÀ-Ÿ\-']+)\s+(?:contient|a|possede)\s+combien\s+de\s+(voyelles?|consonnes?)"
+    r"\s*\??\s*$", re.I)
+_VOYELLES = set("aeiouyàâäéèêëîïôöùûü")
 _TEXTE_ENVERS_RE = re.compile(
     r"(?:[ée]pelle|[ée]cris)\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+[àa]\s+l['’]envers\s*\??\s*$", re.I)
 _TEXTE_EPELLE_RE = re.compile(
@@ -5594,6 +5607,15 @@ def _cap_texte(texte: str):
         n = sum(1 for c in mot if c.isalpha())
         return "%d lettres dans « %s »%s." % (n, mot,
                                               "" if n == len(mot) else " (tirets/apostrophes non comptés)")
+    for m, gm, gk in ((_TEXTE_VOYCONS_A.search(t), 2, 1), (_TEXTE_VOYCONS_B.search(t), 1, 2)):
+        if m:
+            mot, kind = m.group(gm), _normalise(m.group(gk))
+            lettres = [c for c in _normalise(mot) if c.isalpha()]
+            if kind.startswith("voyelle"):
+                n = sum(1 for c in lettres if c in _VOYELLES)
+                return "« %s » contient %d voyelle%s." % (mot, n, "s" if n != 1 else "")
+            n = sum(1 for c in lettres if c not in _VOYELLES)
+            return "« %s » contient %d consonne%s." % (mot, n, "s" if n != 1 else "")
     m = _TEXTE_ENVERS_RE.search(t)
     if m:
         mot = m.group(1)
@@ -7365,7 +7387,11 @@ _FORMES_VERBALES_PROTEGEES = frozenset(
     "faisait faisais faisaient fait faisant fera feront ferait faire "
     "pouvait pouvais peut peux peuvent pouvait pourra pourrait pouvoir "
     "devait doit dois doivent devra devrait devoir voulait veut veux veulent voudrait vouloir "
-    "allait va vais vont allait ira irait aller vint vient viennent venait venir".split())
+    "allait va vais vont allait ira irait aller vint vient viennent venait venir "
+    # verbes en -TENIR/-IENT courants « corrigés » à tort vers un nom proche (« contient » -> « continent »,
+    # vécu 2026-07-08 : « le mot chien CONTIENT combien de consonnes » cassé) : famille fermée, sûre.
+    "contient contiennent contenait contenir tient tiennent tenait tenir obtient obtiennent obtenir "
+    "possede possedent possedait posseder comporte comportent comportait comporter".split())
 # MOTS-OUTILS FR courants à PROTÉGER de la guérison : articles/déterminants/pronoms/prépositions/conjonctions/
 # adverbes fréquents. Sans ça, des mots ULTRA-courants étaient « corrigés » vers un mot-vocab proche (« des »->
 # « dis », « pas »->« pays », « peu »->« peux », « tes »->« tres », « ses »->« sens »). Ensemble fermé, sûr.

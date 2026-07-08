@@ -482,6 +482,25 @@ check(_m("périmètre d'un triangle de côtés 1, 1 et 5") is None,
 check(_m("aire d'un losange de diagonales 6 et 8") == "24", "aire losange d=6,8 -> 24 (d₁·d₂/2, Polygone)")
 check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup » (pas de %) ne déclenche RIEN")
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
+# VAGUE 17 : écart en %, facteurs premiers, nombre parfait, an/heure, règle de trois, diagonale, triangle équilatéral.
+check(_m("le plus grand diviseur commun de 24 et 36") == "12",
+      "« le plus grand diviseur commun » -> 12 (PGCD, plus « Minimum : 24 ; maximum : 36 »)")
+_r = _m("de combien de % 40 est plus grand que 25")
+check(_r is not None and _r.startswith("60 %"), "écart relatif : 40 vs 25 -> +60 %")
+check(_m("décompose 60 en facteurs premiers") == "60 = 2² × 3 × 5", "facteurs premiers de 60")
+check(_m("facteurs premiers de 100") == "100 = 2² × 5²", "facteurs premiers de 100")
+_r = _m("est-ce que 28 est un nombre parfait")
+check(_r is not None and _r.startswith("Oui, 28"), "28 est parfait")
+_r = _m("est-ce que 12 est un nombre parfait")
+check(_r is not None and _r.startswith("Non, 12"), "12 n'est pas parfait")
+_r = _m("1 an en jours")
+check(_r is not None and _r.startswith("365"), "1 an -> 365 jours (année commune, dit)")
+check(_m("combien de minutes dans 2h30") == "150 minutes", "2h30 -> 150 minutes")
+check(_m("si 3 pommes coûtent 2 euros, combien coûtent 9 pommes") == "6", "règle de trois -> 6")
+_r = _m("diagonale d'un carré de côté 5")
+check(_r is not None and _r.startswith("≈ 7.07"), "diagonale carré c=5 -> ≈7.07 (côté·√2, dit approché)")
+_r = _m("aire d'un triangle équilatéral de côté 6")
+check(_r is not None and _r.startswith("≈ 15.58"), "aire triangle équilatéral c=6 -> ≈15.59")
 # RANGS / SUCCESSIONS / DIVISIONS DU TEMPS (vague 16) : conventions de cycles fermés.
 _c = lambda t: (lambda r: r[1] if r[0] == _V else None)(FN.resout_conversion(t))
 

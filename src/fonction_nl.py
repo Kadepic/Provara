@@ -454,7 +454,7 @@ def _resout_geometrie(q: str):
     (4/3·π·r³, mathématique sûre — pas de brique sphère). GARDE anti-faux-positif : exige le mot de MESURE
     (aire/périmètre/circonférence/volume/hypoténuse) + le mot de FIGURE + sa DIMENSION chiffrée — « aire
     urbaine », « périmètre de sécurité », « volume sonore » ne déclenchent rien. Renvoie un triplet ou None."""
-    if not re.search(r"\b(aire|surface|perimetre|circonference|volume|hypotenuse)\b", q):
+    if not re.search(r"\b(aire|surface|perimetre|circonference|volume|hypotenuse|diagonale)\b", q):
         return None
     try:
         from geometrie2d import Cercle, Polygone, Point
@@ -518,6 +518,24 @@ def _resout_geometrie(q: str):
             if a + b > c:
                 return (VERIFIE, _fmt_nombre(a + b + c), "géométrie — périmètre du triangle (somme des côtés)")
             return None                               # triangle impossible -> abstention honnête
+
+    # CARRÉ : diagonale = côté·√2 (irrationnel -> arrondi 4 déc., dit approché).
+    if "carre" in q and re.search(r"\bdiagonale\b", q):
+        c = dim("cote")
+        if c is not None and c >= 0:
+            import math as _m
+            return (VERIFIE, "≈ %s (côté × √2, valeur exacte %s√2)" % (_fmt_nombre(round(c * _m.sqrt(2), 4)),
+                                                                       _fmt_nombre(c)),
+                    "géométrie — diagonale du carré")
+
+    # TRIANGLE ÉQUILATÉRAL : aire = (√3/4)·côté² (irrationnel -> approché, dit).
+    if "triangle" in q and "equilateral" in q and aire:
+        c = dim("cote")
+        if c is not None and c >= 0:
+            import math as _m
+            return (VERIFIE, "≈ %s ((√3/4) × côté², côté = %s)" % (_fmt_nombre(round(_m.sqrt(3) / 4 * c * c, 4)),
+                                                                   _fmt_nombre(c)),
+                    "géométrie — aire du triangle équilatéral")
 
     # LOSANGE : aire par les diagonales (sommets sur les axes -> brique Polygone, d1·d2/2)
     if "losange" in q and aire:
@@ -615,6 +633,17 @@ def resout_math(question: str):
         return (VERIFIE, "%s (%s + %s %% = %s + %s)" % (_fmt_nombre(base * (1 + p / 100.0)), _fmt_nombre(base),
                                                         _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
                 "calcul — valeur après augmentation")
+    # ÉCART EN POURCENTAGE : « de combien de % 40 est plus grand que 25 » -> +60 % ((40−25)/25×100).
+    mecp = re.search(rf"de\s+combien\s+de\s*%?\s*(?:pour ?cents?)?\s+{_PCT}\s+est\s+plus\s+"
+                     r"(grand|petit|[ée]lev[ée]|cher)\w*\s+que\s+" + _PCT, question, re.I)
+    if mecp:
+        a, sens, b = _f(mecp.group(1)), mecp.group(2), _f(mecp.group(3))
+        if b != 0:
+            ecart = (a - b) / b * 100.0
+            return (VERIFIE, "%s %% ((%s − %s) / %s × 100)" % (_fmt_nombre(ecart), _fmt_nombre(a),
+                                                              _fmt_nombre(b), _fmt_nombre(b)),
+                    "calcul — écart relatif en pourcentage")
+
     mpart = re.search(rf"{_PCT}\s+(?:est|repr[ée]sente|fait)\s+quel\s+pourcentage\s+de\s+{_PCT}", question, re.I)
     mpart_inv = None if mpart else re.search(
         rf"quel\s+pourcentage\s+de\s+{_PCT}\s+(?:repr[ée]sente|fait)\s+{_PCT}", question, re.I)
@@ -814,6 +843,41 @@ def resout_math(question: str):
             return (VERIFIE, str(a // b), "arithmétique — quotient exact")
         return (HORS, None, None)                        # quotient non entier -> abstention (cohérent division)
 
+    # DÉCOMPOSITION EN FACTEURS PREMIERS : « décompose 60 en facteurs premiers » -> 2² × 3 × 5 (exact, exposants).
+    mfp = re.search(r"(?:decompose[rz]?|factorise[rz]?|facteurs?\s+premiers?\s+de)\s+(?:le\s+nombre\s+)?(\d+)", q) \
+        or (re.search(r"\b(\d+)\b", q) if "facteurs premiers" in q else None)
+    if mfp and "facteur" in q:
+        n = int(mfp.group(1))
+        if 2 <= n <= 10 ** 12:
+            reste, facteurs, d = n, [], 2
+            while d * d <= reste:
+                e = 0
+                while reste % d == 0:
+                    reste //= d
+                    e += 1
+                if e:
+                    facteurs.append((d, e))
+                d += 1 if d == 2 else 2
+            if reste > 1:
+                facteurs.append((reste, 1))
+            _sup = {0: "⁰", 1: "¹", 2: "²", 3: "³", 4: "⁴", 5: "⁵", 6: "⁶", 7: "⁷", 8: "⁸", 9: "⁹"}
+            expo = lambda e: "" if e == 1 else "".join(_sup[int(c)] for c in str(e))
+            return (VERIFIE, "%d = %s" % (n, " × ".join("%d%s" % (p, expo(e)) for p, e in facteurs)),
+                    "arithmétique — décomposition en facteurs premiers")
+        return (HORS, None, None)
+
+    # NOMBRE PARFAIT : « est-ce que 28 est un nombre parfait » -> oui (somme des diviseurs propres = le nombre).
+    mnp = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+un\s+nombre\s+parfait", q) \
+        or (re.search(r"est[- ]ce\s+que\s+(\d+)\s+est\s+un\s+nombre\s+parfait", q))
+    if mnp:
+        n = int(mnp.group(1))
+        if 1 <= n <= 10 ** 8:
+            s = sum(d for d in range(1, n) if n % d == 0)
+            return (VERIFIE, ("Oui, %d est parfait (1 + … = %d, somme de ses diviseurs propres)." % (n, n)) if s == n
+                    else "Non, %d n'est pas parfait (la somme de ses diviseurs propres vaut %d)." % (n, s),
+                    "arithmétique — nombres parfaits")
+        return (HORS, None, None)
+
     # DIVISEURS d'un entier : énumération exacte (borne anti-DoS).
     mdv = re.search(r"(?:les\s+)?diviseurs\s+(?:de\s+|d['’]\s*)(\d+)", q)
     if mdv:
@@ -974,6 +1038,34 @@ def resout_math(question: str):
                 "calendrier — divisions du temps")
     if re.search(r"combien\s+de\s+siecles\s+dans\s+(?:un\s+)?millenaire", q):
         return (VERIFIE, "10", "calendrier — divisions du temps")
+    # ANNÉE / HEURE / JOUR en sous-unités (conventions ; l'année COMMUNE = 365 j, dit).
+    man = re.search(r"(?:combien\s+(?:de\s+|d['’]?\s*)(jours|heures|minutes|secondes)\s+dans\s+"
+                    r"(?:un\s+|une\s+)?(an|annee|jour|heure|minute)|(\d+)\s+(an|annee|jour|heure)s?\s+en\s+"
+                    r"(jours|heures|minutes|secondes))\b", q)
+    if man:
+        _EN_SEC = {"an": 31536000, "annee": 31536000, "jour": 86400, "heure": 3600, "minute": 60, "seconde": 1}
+        if man.group(1):                                 # « combien de X dans un Y »
+            cible, source, n = man.group(1).rstrip("s"), man.group(2), 1
+        else:                                            # « N Y en X »
+            n, source, cible = int(man.group(3)), man.group(4), man.group(5).rstrip("s")
+        r = n * _EN_SEC.get(source.rstrip("s"), 0) / _EN_SEC.get(cible, 1)
+        if r and r == int(r):
+            note = " (année commune de 365 jours)" if source.rstrip("s") in ("an", "annee") else ""
+            return (VERIFIE, "%s %s%s" % (_fmt_nombre(r), cible + ("s" if r != 1 else ""), note),
+                    "conventions de durée")
+    # « 2h30 en minutes » / « combien de minutes dans 2h30 » -> 150 (H×60 + M).
+    mhm = re.search(r"(\d{1,2})\s*h\s*(\d{1,2})\b", q)
+    if mhm and re.search(r"\bminutes?\b", q):
+        h, mn = int(mhm.group(1)), int(mhm.group(2))
+        return (VERIFIE, "%d minutes" % (h * 60 + mn), "conversion horaire")
+
+    # RÈGLE DE TROIS : « si 3 pommes coûtent 2 euros, combien coûtent 9 pommes » -> 6 (proportion exacte).
+    mr3 = re.search(r"si\s+(\d+(?:[.,]\d+)?)\s+\w+.{0,20}?(?:coutent?|valent?|font?|pour|=)\s+"
+                    r"(\d+(?:[.,]\d+)?).{0,40}?combien.{0,20}?(\d+(?:[.,]\d+)?)", q)
+    if mr3:
+        a, b, c = (float(mr3.group(i).replace(",", ".")) for i in (1, 2, 3))
+        if a != 0:
+            return (VERIFIE, _fmt_nombre(b / a * c), "proportion — règle de trois")
 
     # GÉOMÉTRIE SIMPLE : aire/périmètre/volume de figures nommées (modules geometrie2d/geometrie3d vérifiés).
     geo = _resout_geometrie(q)

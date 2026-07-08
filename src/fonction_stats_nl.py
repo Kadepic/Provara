@@ -125,6 +125,12 @@ def repond_stats(texte: str):
         # deux nombres -> on laisse la main à la route de comparaison exacte de fractions (fonction_nl).
         if re.search(r"\d\s*/\s*\d", t):
             return None
+        # GARDE MOT-CLÉ D'AUTRE INTENTION (FAUX vécu 2026-07-08) : « le plus grand DIVISEUR COMMUN de 24 et
+        # 36 » servait « Minimum : 24 ; maximum : 36 » (au lieu du PGCD 12) ; « de combien de % 40 est plus
+        # grand que 25 » servait min/max. Le « plus grand » de ces phrases qualifie un DIVISEUR/un ÉCART, pas
+        # une liste. On laisse la main aux routes dédiées (fonction_nl : PGCD, comparaison en %).
+        if re.search(r"\b(diviseur|multiple|commun|pgcd|ppcm|pourcent|pour ?cent)\b", bas) or "%" in t:
+            return None
         return _descr("min", vals)
     if re.search(r"\bsomme\b", bas) and vals:
         return _descr("somme", vals)
