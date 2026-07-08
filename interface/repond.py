@@ -5665,7 +5665,8 @@ def _cap_fait_bio(texte: str):
 
 
 _PROTONS_RE = re.compile(
-    r"combien\s+(?:de\s+|d['’]?\s*)?(protons?|[ée]lectrons?)\s+(?:a|poss[eè]de|contient|compte)\s+"
+    r"combien\s+(?:de\s+|d['’]?\s*)?(protons?|[ée]lectrons?)\s+(?:(?:a|poss[eè]de|contient|compte|y\s+a[- ]t[- ]il)\s+"
+    r"(?:dans\s+)?|dans\s+)"
     r"(?:le\s+|la\s+|l['’]?\s*)?(.+?)\s*\??\s*$", re.I)
 
 

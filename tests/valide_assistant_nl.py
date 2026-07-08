@@ -482,6 +482,16 @@ check(_m("périmètre d'un triangle de côtés 1, 1 et 5") is None,
 check(_m("aire d'un losange de diagonales 6 et 8") == "24", "aire losange d=6,8 -> 24 (d₁·d₂/2, Polygone)")
 check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup » (pas de %) ne déclenche RIEN")
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
+# ANGLES / CERCLE (vague 15) : conventions euclidienne exactes, formule montrée.
+_r = _m("somme des angles d'un triangle")
+check(_r is not None and _r.startswith("180°"), "somme des angles d'un triangle -> 180°")
+_r = _m("somme des angles d'un hexagone")
+check(_r is not None and _r.startswith("720°"), "somme des angles d'un hexagone -> 720° ((n−2)·180)")
+_r = _m("combien de degrés dans un cercle")
+check(_r is not None and _r.startswith("360°"), "cercle -> 360°")
+_r = _m("combien de degrés dans un demi-cercle")
+check(_r is not None and _r.startswith("180°"), "demi-cercle -> 180°")
+check(_m("combien de degrés fait-il dehors") is None, "« degrés dehors » (météo) pas volé (garde)")
 # RACINE CUBIQUE / LOG EN BASE / ARRONDI (vague 8) : exact seulement, abstention sinon (jamais d'à-peu-près).
 check(_m("racine cubique de 27") == "3", "racine cubique de 27 -> 3 (cube parfait)")
 check(_m("racine cubique de -8") == "-2", "racine cubique de -8 -> -2")

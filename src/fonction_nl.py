@@ -876,6 +876,21 @@ def resout_math(question: str):
                                                    "bissextile" if biss else "non bissextile"),
                 "calendrier grégorien — règle bissextile")
 
+    # SOMME DES ANGLES d'un polygone (convention euclidienne exacte : (n−2)·180°) et DEGRÉS d'un cercle.
+    mang = re.search(r"somme\s+des\s+angles\s+(?:int[ée]rieurs\s+)?d['’]?\s*(?:un\s+|une\s+)?"
+                     r"(triangle|quadrilatere|pentagone|hexagone|heptagone|octogone|nonagone|decagone"
+                     r"|hendecagone|dodecagone)", q)
+    if mang:
+        _NCOTES = {"triangle": 3, "quadrilatere": 4, "pentagone": 5, "hexagone": 6, "heptagone": 7,
+                   "octogone": 8, "nonagone": 9, "decagone": 10, "hendecagone": 11, "dodecagone": 12}
+        n = _NCOTES[mang.group(1)]
+        return (VERIFIE, "%d° ((n − 2) × 180° avec n = %d, géométrie euclidienne)" % ((n - 2) * 180, n),
+                "géométrie — somme des angles intérieurs")
+    if re.search(r"combien\s+de\s+degr[ée]s\s+dans\s+(?:un\s+)?demi[- ]cercle", q):
+        return (VERIFIE, "180° (un demi-tour, convention)", "géométrie — mesure d'angle")
+    if re.search(r"combien\s+de\s+degr[ée]s\s+dans\s+(?:un\s+)?(?:cercle|tour)(?:\s+complet)?\b", q):
+        return (VERIFIE, "360° (tour complet, convention)", "géométrie — mesure d'angle")
+
     # GÉOMÉTRIE SIMPLE : aire/périmètre/volume de figures nommées (modules geometrie2d/geometrie3d vérifiés).
     geo = _resout_geometrie(q)
     if geo:

@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 15 : protons « dans », sel de table, hendécagone, somme des angles, degrés du cercle
+
+- `_cap_protons` : « combien de protons **dans** l'uranium » (le phrasé « dans » ratait) → 92 protons ;
+  amorce `formule_chimique` : « sel de table »/« sel de cuisine » → NaCl ; `cotes_polygone` : hendécagone (11)
+  ajouté (table + gabarit NL) ; `resout_math` : somme des angles intérieurs d'un polygone nommé (« d'un
+  hexagone » → 720°, formule (n−2)·180° MONTRÉE), degrés d'un cercle (360°) et d'un demi-cercle (180°).
+  Garde : « combien de degrés fait-il dehors » (météo) ne déclenche rien.
+- Bancs : `valide_assistant_nl` **239/239** (+5), raisonnement **186/186** (+3), suite 25/25, lecteur
+  1613/1613, capacites_chat 137/137, paraphrases 174/174, câblage 504 0 orphelin.
+
 ## 2026-07-08 — L'unité déclarée par la source est affichée (« point de fusion du fer » : 1811 **K**, pas « 1811 »)
 
 - **Trompeur, trouvé à la sonde** : les relations numériques à valeur NUE servaient le nombre sans unité —
