@@ -4132,6 +4132,29 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_16() -> bool:
+    """LOT 12 : Aumann, CUSUM précoce, ancrage, Bertrand/Borel-Kolmogorov (mal posé -> refusé), optimisation."""
+    import random
+    import ia as _I
+    va, da = _I.accord_aumann(["w1", "w2", "w3", "w4"], [["w1", "w2"], ["w3", "w4"]],
+                              [["w1", "w3"], ["w2", "w4"]], ["w1"], "w1")
+    if not (va == "analyse" and da["egaux"] is True and da["final1"] == da["final2"] == 1.0):
+        return False                                                  # les deux agents CONVERGENT (théorème)
+    vd, dd = _I.detecte_changement_precoce([1, 1, 1, 1, 5, 5, 5], lambda x: 0.9 if x == 1 else 0.1,
+                                           lambda x: 0.1 if x == 1 else 0.9, 0.1)
+    if not (vd == "detection" and dd["alarme"] == 7):                 # l'alarme tombe au pas EXACT
+        return False
+    vc, dc = _I.effet_ancrage(rng=random.Random(0))
+    if not (vc == "analyse" and dc["contamination"] > 0.5 > abs(dc["contamination_libre"])):
+        return False                                                  # l'ancrage REPRODUIT, le contrôle propre
+    if _I.probabilite_geometrique(rng=random.Random(0))[0] != "abstention":
+        return False                                                  # BERTRAND : « corde aléatoire » mal posée
+    if _I.conditionnement_continu(n=2000, rng=random.Random(0))[0] != "abstention":
+        return False                                                  # BOREL-KOLMOGOROV : mesure nulle refusée
+    vo, (fx, fy), _traj = _I.optimise_couteux(lambda x: (x - 0.3) ** 2, 0.0, 1.0)
+    return vo == "estimation" and fy < 0.5                            # l'optimum coûteux est APPROCHÉ, tracé
+
+
 def _p_facade_stats_15() -> bool:
     """LOT 11 : Gibbard-Satterthwaite, Anscombe, espérances imprécises, CQR, Mondrian, dialogues honnêtes."""
     import ia as _I
@@ -4421,6 +4444,12 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Aumann, questions mal posées et détection précoce (façade stats 16)": (
+        "accord_aumann (les agents bayésiens CONVERGENT — théorème vérifié), detecte_changement_precoce "
+        "(alarme au pas exact), effet_ancrage (reproduit, contrôle propre), probabilite_geometrique "
+        "(BERTRAND : « corde aléatoire » mal posée -> abstention motivée), conditionnement_continu "
+        "(BOREL-KOLMOGOROV : mesure nulle refusée), optimise_couteux (optimum approché, trajet tracé).",
+        _p_facade_stats_16),
     "Vote, Anscombe et prévisions imprécises (façade stats 15)": (
         "vote_manipulable (Gibbard-Satterthwaite : une manipulation est EXHIBÉE), stats_resumees_suffisent "
         "(quartet d'Anscombe), esperance_imprecise (bornes de Choquet exactes 6-10), cqr_correction (0.5 "

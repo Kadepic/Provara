@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 12 : 6 façades de plus (dette 56 → 50 — moitié de la dette brûlée)
+
+- 1 preuve REGISTRE composée (diagnostic : 298) : **théorème d'accord d'Aumann** (les deux agents bayésiens
+  convergent à 1.0 — vérifié, pas récité), **détection de changement précoce** (alarme au pas 7 exact),
+  **effet d'ancrage reproduit** (contamination 0.93 vs contrôle ~0), et deux refus d'excellence : le
+  **paradoxe de Bertrand** (« corde aléatoire » sans mécanisme -> abstention motivée) et
+  **Borel-Kolmogorov** (conditionnement sur mesure nulle -> refusé). Optimisation coûteuse approchée, tracée.
+- Plafond du cliquet : **50** — la moitié de la dette initiale (148 → 50, 98 façades prouvées).
+- Bancs : valide_capacites 73/73 (pins 297→298), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 11 : 7 façades de plus (dette 63 → 56)
 
 - 1 preuve REGISTRE composée (diagnostic : 297) : **théorème de Gibbard-Satterthwaite** (une manipulation de
