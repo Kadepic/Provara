@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — L'unité déclarée par la source est affichée (« point de fusion du fer » : 1811 **K**, pas « 1811 »)
+
+- **Trompeur, trouvé à la sonde** : les relations numériques à valeur NUE servaient le nombre sans unité —
+  « point de fusion du fer » → « 1811 » (lu en °C alors que la vérité stockée est en KELVINS ; 1811 K =
+  1538 °C), « distance Terre-Soleil » → « 150 » (millions de km non dits). Nouveau `_avec_unite` au service
+  générique : table FERMÉE sur le libellé exact des sources (points de fusion/ébullition K, distance Soleil
+  millions de km, masse volumique kg/m³, diamètres m/mm, masse atomique u) — l'unité vient de la SOURCE du
+  fait, jamais devinée ; valeur non numérique ou source sans unité → inchangé (« numéro atomique » reste « 6 »).
+- Bancs : `banc_raisonnement` **183/183** (+3), paraphrases 174/174, suite 25/25, assistant_nl 234/234,
+  capacites_chat 137/137, challenge 16/16, câblage 504, lecteur 1613/1613.
+
 ## 2026-07-08 — Dates d'œuvres : « quand est sorti Avatar ? » → 2009 (routage par verbe, piège homonyme évité)
 
 - `_cap_date_evenement` : verbes « sorti/paru/publié » routés vers LEUR relation — « sorti » (films) →

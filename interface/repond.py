@@ -2956,6 +2956,26 @@ _REL_DE_ENT_RE = re.compile(
     r"([\wà-ÿ]+)\s+(?:de\s+la|de\s+l['] ?|du|des|de)\s+(?:la\s+|le\s+|les\s+|l['] ?)?(.+?)\s*\??\s*$", re.I)
 
 
+# Valeur numérique NUE + unité déclarée par la SOURCE -> on affiche l'unité (FAUX-adjacent vécu 2026-07-08 :
+# « point de fusion du fer » -> « 1811 » nu, lu en °C alors que la vérité stockée est en KELVINS ; « distance
+# Terre-Soleil » -> « 150 » nu). Table FERMÉE sur le libellé exact des sources ; jamais d'unité devinée.
+_UNITE_SOURCE = (("point de fusion (K)", "K"), ("point d'ébullition (K)", "K"),
+                 ("°C/°F→K affine", "K"), ("millions de km", "millions de km"),
+                 ("→ kg/m³", "kg/m³"), ("(en mm)", "mm"),
+                 ("convertie en mètres", "m"), ("masse atomique standard (u)", "u"))
+
+
+def _avec_unite(fait) -> str:
+    v = str(fait.valeur)
+    if not re.fullmatch(r"-?\d+(?:[.,]\d+)?", v.strip()):
+        return v
+    src = str(getattr(fait, "source", "") or "")
+    for marqueur, unite in _UNITE_SOURCE:
+        if marqueur in src:
+            return f"{v} {unite}"
+    return v
+
+
 def _connaissance_verifiee(question: str, conv_id: str | None = None) -> str | None:
     """Étage 2 : un fait VÉRIFIÉ du borné, ou None. Jamais d'invention (HORS -> None). TOLÈRE une faute de
     frappe sur l'entité via `donnee_nl_floue` (« protugal »->« portugal ») et le SIGNALE honnêtement.
@@ -2981,7 +3001,8 @@ def _connaissance_verifiee(question: str, conv_id: str | None = None) -> str | N
             _DERNIER_SUJET[conv_id] = suj
             _DERNIER_QUESTION[conv_id] = question  # mémorise la question résolue (pour la continuation type B)
         prefixe = f"(en comprenant « {correction} ») " if correction else ""
-        return f"{prefixe}{fait.valeur}"          # source vérifiée en interne, non affichée (préférence Yohan)
+        return f"{prefixe}{_avec_unite(fait)}"    # source vérifiée en interne, non affichée (préférence Yohan) ;
+        #                                           l'UNITÉ déclarée par la source est ajoutée (kelvins, mm…)
     # REPLI FAMILLE : « continent de France » peut ne pas matcher un gabarit direct alors que la relation existe
     # sous un nom de famille (continent_pays…). On parse « rel de entité » et on essaie la famille (unicité exigée,
     # FAUX=0). N'affecte JAMAIS une réponse déjà résolue (on n'arrive ici que si le DATA a rendu HORS).

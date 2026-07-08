@@ -127,6 +127,10 @@ CAS = [
     # (« Les Misérables » y est un TABLEAU de 1900 — servir 1900 pour le roman serait un FAUX)
     ("date-oeuvre-sorti", R._cap_date_evenement, "quand est sorti Avatar ?", "2009"),
     ("date-oeuvre-publie-piege", R._cap_date_evenement, "quand a été publié Les Misérables ?", ""),
+    # UNITÉ déclarée par la SOURCE affichée (« 1811 » nu se lisait en °C — la vérité stockée est en KELVINS)
+    ("unite-fusion-kelvin", lambda q: R._connaissance_verifiee(q, None), "point de fusion du fer", "1811 K"),
+    ("unite-terre-soleil", lambda q: R._connaissance_verifiee(q, None), "distance Terre-Soleil", "150 millions de km"),
+    ("unite-pas-devinee", lambda q: R._connaissance_verifiee(q, None), "numéro atomique du carbone", "6"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
