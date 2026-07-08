@@ -166,6 +166,7 @@ _CONV_UNITS = {
     "kg": ("M", 1000.0), "kilogramme": ("M", 1000.0), "kilogrammes": ("M", 1000.0),
     "tonne": ("M", 1_000_000.0), "tonnes": ("M", 1_000_000.0),
     # temps (base = seconde)
+    "milliseconde": ("T", 0.001), "millisecondes": ("T", 0.001),
     "seconde": ("T", 1.0), "secondes": ("T", 1.0),
     "min": ("T", 60.0), "minute": ("T", 60.0), "minutes": ("T", 60.0),
     "heure": ("T", 3600.0), "heures": ("T", 3600.0),
@@ -180,7 +181,8 @@ _CONV_UNITS = {
     "m3": ("V", 1000.0), "metre cube": ("V", 1000.0), "metres cubes": ("V", 1000.0),
     "cm3": ("V", 0.001), "centimetre cube": ("V", 0.001), "centimetres cubes": ("V", 0.001),
     # vitesse (base = m/s ; km/h = 1000/3600 exact ; nœud = 1852 m/h, définition légale du mille marin).
-    # NB : normalise() transforme « km/h » en « km h » et « m/s » en « m s » -> ce sont les clés réelles.
+    # Clés AVEC « / » (la normalisation locale le préserve) ET sans (formes parlées).
+    "m/s": ("S", 1.0), "km/h": ("S", 1000.0 / 3600.0),
     "m s": ("S", 1.0), "metre par seconde": ("S", 1.0), "metres par seconde": ("S", 1.0),
     "km h": ("S", 1000.0 / 3600.0), "kmh": ("S", 1000.0 / 3600.0),
     "kilometre par heure": ("S", 1000.0 / 3600.0), "kilometres par heure": ("S", 1000.0 / 3600.0),
@@ -202,10 +204,20 @@ def _fmt_nombre(val: float) -> str:
     return ("%.6f" % val).rstrip("0").rstrip(".")
 
 
+def _norm_conv(s: str) -> str:
+    """Normalisation LOCALE des conversions : accents/casse comme normalise(), mais PRÉSERVE « , . / » —
+    normalise() les mange, ce qui tronquait « 1,5 heures » en « 5 heures » (300 min servi pour 90, FAUX vécu
+    2026-07-08) et cassait « km/h »."""
+    import unicodedata
+    s = unicodedata.normalize("NFD", s.lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return re.sub(r"\s+", " ", s)
+
+
 def resout_conversion(question: str):
     """Convertit entre 2 unités de MÊME dimension (table fermée, exacte). (VERIFIE, texte, source) ou (HORS,None,None).
     FAUX=0 : unité inconnue ou dimensions différentes -> HORS. Ne fire que sur un motif de conversion explicite."""
-    q = normalise(question)                          # accents/casse -> clés de table normalisées
+    q = _norm_conv(question)                         # accents/casse normalisés, décimales et « / » PRÉSERVÉS
     m = _CONV_EN.search(q)
     if m:
         num = float(m.group(1).replace(",", ".")); src = m.group(2).lower(); dst = m.group(3).lower()
@@ -669,10 +681,56 @@ def resout_math(question: str):
             except Exception:
                 return (HORS, None, None)
 
+    # ANNÉE BISSEXTILE (règle grégorienne EXACTE — convention). FAUX=0 vécu : « est-ce que 2024 est une année
+    # bissextile » servait « 2010 » (l'année du FILM « Année bissextile », lookup d'œuvre détourné).
+    mbi = re.search(r"(\d{1,6})\s+est(?:[- ](?:elle|il|ce))?\s+(?:une\s+)?(?:annee\s+)?bissextile"
+                    r"|annee\s+(\d{1,6})\s+est(?:[- ](?:elle|il))?\s+bissextile", q)
+    if mbi or ("bissextile" in q and re.search(r"est[- ]ce\s+que\s+(\d{1,6})", q)):
+        g = mbi.group(1) or mbi.group(2) if mbi else re.search(r"est[- ]ce\s+que\s+(\d{1,6})", q).group(1)
+        n = int(g)
+        biss = n % 4 == 0 and (n % 100 != 0 or n % 400 == 0)
+        return (VERIFIE, ("Oui, %d est bissextile" if biss else "Non, %d n'est pas bissextile") % n
+                + " (règle grégorienne : divisible par 4, sauf les siècles non divisibles par 400).",
+                "calendrier grégorien — règle bissextile")
+    mjan = re.search(r"(?:nombre|combien)\s+de\s+jours\s+(?:en|dans\s+l['’]?annee)\s+(\d{3,4})\b", q)
+    if mjan:
+        n = int(mjan.group(1))
+        biss = n % 4 == 0 and (n % 100 != 0 or n % 400 == 0)
+        return (VERIFIE, "%d jours (%d est %s)" % (366 if biss else 365, n,
+                                                   "bissextile" if biss else "non bissextile"),
+                "calendrier grégorien — règle bissextile")
+
     # GÉOMÉTRIE SIMPLE : aire/périmètre/volume de figures nommées (modules geometrie2d/geometrie3d vérifiés).
     geo = _resout_geometrie(q)
     if geo:
         return geo
+
+    # OPÉRATIONS NOMMÉES sur UN nombre : « double de 21 » -> 42, « moitié de 42 » -> 21, « carré de 12 » -> 144,
+    # « opposé de 7 » -> -7, « inverse de 4 » -> 0.25 (décimal FINI exigé : « inverse de 3 » -> abstention,
+    # jamais 0.333 servi comme exact ; « tiers » pareil). GARDE : jamais quand un mot de MESURE est là
+    # (« aire d'un carré de 4 » = géométrie, traitée au-dessus ; « périmètre d'un carré de 5 » ≠ 25).
+    if not re.search(r"\b(aire|surface|perimetre|circonference|volume|cote|rayon|modulo)\b", q):
+        mop = re.search(r"\b(double|triple|quadruple|moitie|tiers|quart|carre|cube|oppose|inverse)\s+"
+                        r"(?:de\s+|du\s+|d['’]\s*)(-?\d+(?:[.,]\d+)?)(?!\s*[a-z])", q)
+        if mop:
+            op, x = mop.group(1), float(mop.group(2).replace(",", "."))
+            from fractions import Fraction
+            fx = Fraction(mop.group(2).replace(",", "."))
+            simple = {"double": x * 2, "triple": x * 3, "quadruple": x * 4, "moitie": x / 2, "quart": x / 4,
+                      "carre": x * x, "cube": x ** 3, "oppose": -x}
+            if op in simple:
+                return (VERIFIE, _fmt_nombre(simple[op]), "calcul — %s" % op.replace("moitie", "moitié"))
+            frac = fx / 3 if op == "tiers" else (Fraction(1) / fx if fx != 0 else None)
+            if frac is None:
+                return (HORS, None, None)                      # inverse de 0 -> indéfini
+            d = frac.denominator
+            while d % 2 == 0:
+                d //= 2
+            while d % 5 == 0:
+                d //= 5
+            if d != 1:                                         # décimal infini -> abstention (jamais d'arrondi)
+                return (HORS, None, None)
+            return (VERIFIE, _fmt_nombre(float(frac)), "calcul — %s exact" % ("tiers" if op == "tiers" else "inverse"))
 
     # TRIGONOMÉTRIE : « sinus de 30 degrés », « cos de 60° », « tangente de 45 »
     mt = re.search(r"\b(sinus|sin|cosinus|cos|tangente|tan)\b.*?(-?\d+(?:[.,]\d+)?)", q)

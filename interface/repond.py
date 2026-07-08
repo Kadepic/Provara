@@ -5199,6 +5199,30 @@ def _difference_dates(texte: str):
             % (n, d1.day, _MOIS_FR[d1.month - 1], d1.year, d2.day, _MOIS_FR[d2.month - 1], d2.year, note))
 
 
+# Grandes villes -> fuseau IANA (table FERMÉE, convention officielle tz ; clés normalisées sans accents).
+# Hors table -> abstention honnête (jamais l'heure locale servie pour une ville étrangère, FAUX vécu).
+_FUSEAUX_VILLES = {
+    "paris": "Europe/Paris", "toulouse": "Europe/Paris", "lyon": "Europe/Paris", "marseille": "Europe/Paris",
+    "bruxelles": "Europe/Brussels", "geneve": "Europe/Zurich", "londres": "Europe/London",
+    "berlin": "Europe/Berlin", "madrid": "Europe/Madrid", "rome": "Europe/Rome", "lisbonne": "Europe/Lisbon",
+    "moscou": "Europe/Moscow", "athenes": "Europe/Athens", "istanbul": "Europe/Istanbul",
+    "new york": "America/New_York", "washington": "America/New_York", "montreal": "America/Toronto",
+    "toronto": "America/Toronto", "chicago": "America/Chicago", "denver": "America/Denver",
+    "los angeles": "America/Los_Angeles", "san francisco": "America/Los_Angeles",
+    "mexico": "America/Mexico_City", "sao paulo": "America/Sao_Paulo", "buenos aires": "America/Argentina/Buenos_Aires",
+    "le caire": "Africa/Cairo", "caire": "Africa/Cairo", "dakar": "Africa/Dakar", "abidjan": "Africa/Abidjan",
+    "johannesburg": "Africa/Johannesburg", "casablanca": "Africa/Casablanca", "alger": "Africa/Algiers",
+    "tunis": "Africa/Tunis", "kinshasa": "Africa/Kinshasa", "nairobi": "Africa/Nairobi",
+    "dubai": "Asia/Dubai", "tokyo": "Asia/Tokyo", "pekin": "Asia/Shanghai", "shanghai": "Asia/Shanghai",
+    "hong kong": "Asia/Hong_Kong", "singapour": "Asia/Singapore", "seoul": "Asia/Seoul",
+    "bombay": "Asia/Kolkata", "mumbai": "Asia/Kolkata", "new delhi": "Asia/Kolkata", "delhi": "Asia/Kolkata",
+    "bangkok": "Asia/Bangkok", "jakarta": "Asia/Jakarta", "sydney": "Australia/Sydney",
+    "melbourne": "Australia/Melbourne", "auckland": "Pacific/Auckland", "papeete": "Pacific/Tahiti",
+    "noumea": "Pacific/Noumea", "cayenne": "America/Cayenne", "fort-de-france": "America/Martinique",
+    "pointe-a-pitre": "America/Guadeloupe", "saint-denis": "Indian/Reunion",
+}
+
+
 def _cap_quotidien(texte: str, conv_id=None):
     """Questions du QUOTIDIEN : météo (refus honnête, chaleureux), heure et date (faits réels de l'horloge
     locale), conseil parapluie CALCULÉ (probabilité rapportée × utilité espérée, decision.py). Demandé par
@@ -5246,8 +5270,37 @@ def _cap_quotidien(texte: str, conv_id=None):
         return r
     if _HEURE_RE.search(texte):
         import time as _t
+        # FAUX=0 vécu 2026-07-08 : « quelle heure est-il à New York ? » servait l'heure LOCALE de la machine.
+        # Ville nommée -> fuseau IANA (table fermée de grandes villes + zoneinfo, base tz officielle) ;
+        # ville hors table ou base tz absente -> abstention honnête, JAMAIS l'heure locale par défaut.
+        mv = re.search(r"\b(?:a|à)\s+([A-ZÀ-Ÿ][\w'’-]*(?:\s+[A-ZÀ-Ÿ][\w'’-]*)*)\s*\??\s*$", texte.strip())
+        if mv:
+            ville = _normalise(mv.group(1))
+            tz = _FUSEAUX_VILLES.get(ville)
+            if tz:
+                try:
+                    from zoneinfo import ZoneInfo
+                    import datetime as _dt
+                    lh = _dt.datetime.now(ZoneInfo(tz))
+                    return ("À %s il est %02d h %02d (fuseau %s, base de fuseaux IANA + horloge de ta machine)."
+                            % (mv.group(1), lh.hour, lh.minute, tz))
+                except Exception:
+                    pass
+            return ("Je ne connais pas le fuseau horaire vérifié de « %s » — je préfère m'abstenir plutôt que "
+                    "te donner l'heure locale de TA machine comme si c'était la sienne." % mv.group(1))
         lt = _t.localtime()
         return "Il est %02d h %02d (horloge de ta machine)." % (lt.tm_hour, lt.tm_min)
+    mage = re.search(r"quel\s+[âa]ge\s+a\s+(?:une\s+personne|quelqu['’]un)\s+n[ée]e?\s+en\s+(\d{4})",
+                     texte, re.I)
+    if mage:
+        import datetime as _dt
+        auj = _dt.date.today()
+        an = int(mage.group(1))
+        if an <= auj.year:
+            a2 = auj.year - an
+            return ("%d ou %d ans selon que l'anniversaire est passé (né(e) en %d, nous sommes le %02d/%02d/%d "
+                    "à l'horloge de ta machine)." % (a2 - 1, a2, an, auj.day, auj.month, auj.year))
+        return None
     if _DATE_JOUR_RE.search(texte):
         import time as _t
         lt = _t.localtime()
@@ -5266,6 +5319,14 @@ _TEXTE_EPELLE_RE = re.compile(
 _TEXTE_ANAG_RE = re.compile(
     r"(?:est[- ]ce\s+que\s+)?«?\s*([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+et\s+«?\s*([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+"
     r"sont(?:[- ](?:ils|elles))?\s+(?:des\s+)?anagrammes\s*\??\s*$", re.I)
+_TEXTE_CASSE_RE = re.compile(
+    r"(?:mets?|[ée]cris|convertis)\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+en\s+"
+    r"(majuscules?|minuscules?)\s*\??\s*$", re.I)
+_TEXTE_MOTS_RE = re.compile(
+    r"combien\s+(?:de|y\s+a[- ]t[- ]il\s+de)\s+mots\s+dans\s+(?:la\s+phrase\s+|«\s*)?(.+?)\s*»?\s*\??\s*$", re.I)
+_TEXTE_TRI_RE = re.compile(
+    r"(?:trie|classe|ordonne|range)\s+(?:les\s+nombres\s+|moi\s+)?((?:d[ée]croissant|d[ée]croissante?s?)\s+)?"
+    r"([\d\s,;.\-et]+?)(?:\s+en\s+ordre\s+(d[ée]croissant))?\s*\??\s*$", re.I)
 
 
 def _cap_texte(texte: str):
@@ -5297,6 +5358,26 @@ def _cap_texte(texte: str):
         if cle(a) == cle(b):
             return "Oui — « %s » et « %s » sont des anagrammes (mêmes lettres)." % (m.group(1), m.group(2))
         return "Non — « %s » et « %s » ne sont pas des anagrammes (lettres différentes)." % (m.group(1), m.group(2))
+    m = _TEXTE_CASSE_RE.search(t)
+    if m:
+        mot, casse = m.group(1), m.group(2).lower()
+        return "« %s » en %s : %s." % (mot, "majuscules" if casse.startswith("maj") else "minuscules",
+                                       mot.upper() if casse.startswith("maj") else mot.lower())
+    m = _TEXTE_MOTS_RE.search(t)
+    if m:
+        phrase = m.group(1).strip().strip(" ?.!\"'«»")
+        mots = phrase.split()
+        if mots:
+            return "%d mots dans « %s » (séparés par des espaces)." % (len(mots), phrase)
+    m = _TEXTE_TRI_RE.search(t)
+    if m:
+        desc = bool(m.group(1) or m.group(3))
+        nums = [x.replace(",", ".") for x in re.findall(r"-?\d+(?:[.,]\d+)?", m.group(2))]
+        if len(nums) >= 2:
+            vals = sorted((float(x) for x in nums), reverse=desc)
+            aff = lambda v: str(int(v)) if v == int(v) else str(v)
+            return "Dans l'ordre %s : %s." % ("décroissant" if desc else "croissant",
+                                              ", ".join(aff(v) for v in vals))
     return None
 
 
@@ -7070,7 +7151,11 @@ def _guerit_entree(texte: str) -> str:
     # un voisin valide (« plan »), corrompant le SENS. On protège AUSSI tout mot ayant une DÉFINITION dans
     # definition_nom (292k noms) : s'il est défini, c'est un vrai mot -> jamais corrigé. (est_un.definition =
     # lookup d'offset rapide ; mémoïsé par mot pour ne pas relire le disque à chaque token.)
+    # ⚠ pluriels COURTS : _singulier_fr laisse les mots ≤4 lettres intacts (protège « pas »/« os ») -> « mots »
+    # n'était pas reconnu comme pluriel de « mot » et se faisait « guérir » en « mode » (vécu 2026-07-08).
+    # Un mot de ≥4 lettres en -s/-x dont le RADICAL est un nom du lexique est un vrai pluriel -> jamais corrigé.
     gate = (lambda mn: mn in _PROTEGES or mn in noms or _singulier_fr(mn) in noms
+            or (len(mn) >= 4 and mn[-1] in "sx" and mn[:-1] in noms)
             or _fait_forme_verbale(mn, verbes) or _mot_defini(mn)) if (noms or verbes) else None
     return _CO.guerit(texte, vn, pi, gate)
 

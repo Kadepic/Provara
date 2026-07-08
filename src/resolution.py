@@ -745,6 +745,13 @@ def resout_nl_generique(question: str):
     qn = " ".join(_ftoks)
     if _est_superlatif(qn):              # GARDE : un superlatif n'est jamais un lookup par clé -> HORS (cf. ci-dessus)
         return (HORS, None, None)
+    # GARDE VÉRIFICATION-DE-NOMBRE (FAUX=0 vécu 2026-07-08) : « est-ce que 2024 est une année bissextile ? » ->
+    # le résolveur ignorait le NOMBRE et servait l'année du FILM « Année bissextile » (2010). Une question
+    # « est-ce que <nombre> est … » demande de VÉRIFIER une propriété du nombre — un lookup de valeur qui
+    # écarte ce nombre répond à une AUTRE question -> HORS (les routes calcul, en aval, savent trancher).
+    if re.search(r"\best[- ]ce\s+qu[e']\s*\d+([.,]\d+)?\s+(?:est|soit)\b", qn) \
+            or re.search(r"^\s*\d+([.,]\d+)?\s+est[- ](?:il|elle|ce)\b", qn):
+        return (HORS, None, None)
     # GARDE CADRE-FICHE : « parle-moi de X », « décris-moi X »… sont des frames de FICHE, jamais un lookup d'attribut.
     # Le verbe du cadre (« parle ») coïncide sinon avec un token de relation (`langue_parlee_personne`) et accroche
     # un homonyme-personne (« parle-moi de Lyon » -> « anglais » via P1412 = FAUX+). On laisse `resout_fiche` traiter.

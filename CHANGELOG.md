@@ -1,5 +1,29 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 11 : 4 FAUX corrigés (bissextile→film, heure locale pour New York, 1,5 h→300 min, « mots »→« mode ») + bissextile, fuseaux, âge, opérations nommées
+
+- **FAUX ×4, trouvés à la sonde** :
+  1. « est-ce que 2024 est une année bissextile » → *« 2010 »* — le résolveur générique ignorait le NOMBRE et
+     servait l'année du FILM « Année bissextile ». Garde dans `resolution.resout_nl_generique` (une question
+     « est-ce que <nombre> est … » n'est jamais un lookup d'entité) + vraie règle grégorienne câblée dans
+     `resout_math` : 2024 → Oui, 2023 → Non, 2100 → Non (siècle) ; « nombre de jours en 2024 » → 366.
+  2. « quelle heure est-il à New York » → *l'heure locale de la machine*. Ville nommée → fuseau IANA (table
+     fermée ~50 grandes villes + `zoneinfo`) ; ville hors table ou base tz absente → abstention honnête —
+     plus JAMAIS l'heure locale servie pour une ville étrangère. Sans ville → horloge locale, comme avant.
+  3. « convertis 1,5 heures en minutes » → *300* (!) : `normalise()` mange AUSSI les séparateurs décimaux
+     (« 1 5 heures » → « 5 heures » matché). Normalisation locale des conversions qui préserve « , . / » ;
+     1,5 h → 90 min ; clés « km/h »/« m/s » redevenues directes ; millisecondes ajoutées.
+  4. « combien de mots dans… » : le GUÉRISSEUR réécrivait « mots » → « mode » (pluriel de 4 lettres invisible
+     de `_singulier_fr`). Gate élargi : un mot ≥4 lettres en -s/-x dont le radical est un nom du lexique est
+     un vrai pluriel, jamais corrigé (même classe que « était »→« état », épinglé pareil).
+- CÂBLAGE : opérations nommées (« double/triple/quadruple/moitié/quart/carré/cube/opposé de N » ; « inverse
+  de 4 » → 0.25 décimal FINI exigé, « inverse de 3 »/« tiers de 10 » → abstention, jamais 0.333) avec garde
+  géométrie (« périmètre d'un carré de côté 5 » → 20, pas 25) ; « quel âge a une personne née en 1990 » →
+  fourchette honnête (35 ou 36 selon l'anniversaire) ; `_cap_texte` : majuscules/minuscules, compter les mots
+  (règle dite), trier des nombres (croissant/décroissant).
+- Bancs : `valide_assistant_nl` **199/199** (+18), capacites_chat **125/125** (+7), raisonnement **172/172**,
+  paraphrases 170/170, suite 25/25, lecteur 1613/1613, challenge 16/16, coordonnées 47/47, câblage 504.
+
 ## 2026-07-08 — Kelvin dans les conversions de température (offset 273,15 exact par définition)
 
 - `_cap_conversion` : °C↔K, °F↔K (« 100 celsius en kelvin » → 373,15 K, « 0 kelvin en celsius » → −273,15 °C —

@@ -138,6 +138,8 @@ CAS = [
     ("fait-personne-metier-vivant", R._cap_fait_personne, "quel est le métier de Kylian Mbappé ?",
      "est footballeur."),
     ("guerison-etait", R._guerit_entree, "qui était Marie Curie ?", "était"),  # « était » protégé (pas -> « état »)
+    # pluriel COURT d'un nom du lexique : « mots » n'est plus « guéri » en « mode » (radical « mot » reconnu)
+    ("guerison-mots", R._guerit_entree, "combien de mots dans la phrase le chat mange la souris", "de mots dans"),
     ("guerison-mots-outils", R._guerit_entree, "la France a-t-elle des colonies", "des colonies"),  # « des » pas -> « dis »
     ("fait-personne-lieu", R._cap_fait_personne, "où est né Napoléon Ier ?", "Ajaccio"),
     ("fait-personne-fem", R._cap_fait_personne, "où est morte Marie Curie ?", "est morte"),

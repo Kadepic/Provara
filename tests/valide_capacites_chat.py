@@ -180,6 +180,18 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — FUSEAUX HORAIRES (FAUX=0 vécu : « heure à New York » servait l'heure LOCALE) + ÂGE depuis l'année —
+r = R._cap_quotidien("quelle heure est-il à New York ?")
+check(r is not None and not r.startswith("Il est") and "New York" in r,
+      "heure à New York -> fuseau IANA OU abstention — plus JAMAIS l'heure locale nue")
+r = R._cap_quotidien("quelle heure est-il à Trifouillis-les-Oies ?")
+check(r is not None and "abstenir" in r.lower() or (r is not None and "fuseau" in r),
+      "ville inconnue -> abstention honnête dite")
+r = R._cap_quotidien("quelle heure est-il ?")
+check(r is not None and r.startswith("Il est"), "sans ville -> heure locale (horloge machine), comme avant")
+r = R._cap_quotidien("quel âge a une personne née en 1990 ?")
+check(r is not None and "selon que l'anniversaire" in r, "âge né en 1990 -> fourchette honnête (anniversaire inconnu)")
+
 # — OPÉRATIONS TEXTUELLES exactes sur un mot (_cap_texte, vague 10 : natif déterministe, FAUX=0 par construction) —
 r = R._cap_texte("compte les lettres du mot anticonstitutionnellement")
 check(r == "25 lettres dans « anticonstitutionnellement ».", "compter les lettres -> 25 (exact)")
@@ -195,6 +207,12 @@ check(r is not None and r.startswith("Non"), "chien/chat -> pas anagrammes")
 check(R._cap_texte("épelle-moi la vérité sur cette affaire") is None, "« épelle-moi la vérité sur… » (pas UN mot) -> None")
 check(R._cap_texte("combien de lettres a envoyées Napoléon") is None, "lettres = courriers -> pas volé (garde)")
 check(R._cap_texte("quelle est la capitale de la France") is None, "question factuelle -> None")
+r = R._cap_texte("mets le mot bonjour en majuscules")
+check(r is not None and "BONJOUR" in r, "majuscules -> BONJOUR")
+r = R._cap_texte("combien de mots dans la phrase le chat mange la souris")
+check(r is not None and r.startswith("5 mots"), "compter les mots -> 5 (règle dite : séparés par des espaces)")
+r = R._cap_texte("trie les nombres 5, 2, 9, 1")
+check(r == "Dans l'ordre croissant : 1, 2, 5, 9.", "tri croissant exact")
 
 # — ARITHMÉTIQUE DE DATES (horloge machine + datetime, calcul calendaire EXACT — vague 9) —
 import datetime as _dt  # noqa: E402
