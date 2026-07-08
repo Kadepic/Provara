@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 38 : multiples (FAUX « Oui, 5 est premier »), tables, variation de prix, compter
+
+- **FAUX** : « les 5 premiers **multiples** de 7 » → *« Oui, 5 est premier »* (la primalité accrochait
+  « premiers », à côté). Route multiples AVANT la primalité : « 7, 14, 21, 28, 35 » ; **table de
+  multiplication** (« la table de 7 » → 10 lignes) ; la primalité intacte.
+- **Variation de prix en %** : « le prix passe de 80 à 60 » → « −25 % (… — une baisse) » ; « de 50 à 65 » →
+  « +30 % (… — une hausse) » (calcul montré, sens dit).
+- **Décomposition demandée** : « 90 minutes en heures **et** minutes » → « 1 h 30 » (la conversion simple
+  répondait « 1.5 heures » à côté de la forme demandée).
+- **Énumérations natives** : compte de 1 à 10, compte à rebours, alphabet récité (bornes sûres ≤ 100).
+- Bancs : `valide_assistant_nl` **453/453** (+9), capacites_chat 180/180, raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 37 : arithmétique d'horloge ÉNONCÉE (3 FAUX « heure machine »), syllogisme interrogatif, trivia calendaire
 
 - **FAUX ×3 (même racine)** : « un train part **à 8h** et roule 2 heures, à quelle heure arrive-t-il » /

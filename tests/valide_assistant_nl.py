@@ -414,6 +414,20 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 38 : multiples (la primalité répondait « Oui, 5 est premier » À CÔTÉ, FAUX vécu), tables, variation %.
+check(_m("les 5 premiers multiples de 7") == "7, 14, 21, 28, 35", "5 premiers multiples de 7")
+_tb = _m("la table de multiplication de 7")
+check(_tb and _tb.startswith("7 × 1 = 7") and "7 × 10 = 70" in _tb, "table de 7 -> 10 lignes")
+check(_m("90 minutes en heures et minutes") == "1 h 30", "90 min -> 1 h 30 (décomposition demandée)")
+_vp = _m("quel pourcentage de réduction si le prix passe de 80 à 60")
+check(_vp and _vp.startswith("-25 %") and "baisse" in _vp, "80 -> 60 = −25 % (calcul montré)")
+_vp2 = _m("le prix passe de 50 à 65, quelle augmentation en pourcentage")
+check(_vp2 and _vp2.startswith("+30 %") and "hausse" in _vp2, "50 -> 65 = +30 %")
+check(_m("compte de 1 à 10") == "1, 2, 3, 4, 5, 6, 7, 8, 9, 10", "compte de 1 à 10")
+check(_m("compte à rebours de 10 à 1") == "10, 9, 8, 7, 6, 5, 4, 3, 2, 1", "compte à rebours")
+_al = _m("récite l'alphabet")
+check(_al and _al.startswith("a, b, c") and _al.endswith("z"), "alphabet complet")
+check(_m("est-ce que 5 est premier") is not None and "Oui" in _m("est-ce que 5 est premier"), "primalité intacte")
 # VAGUE 37 : arithmétique d'horloge ÉNONCÉE (l'heure MACHINE était servie, FAUX vécu) + trivia calendaire.
 check(_m("si un train part à 8h et roule 2 heures, à quelle heure arrive-t-il")
       == "10 h 00 (8 h 00 + 2 heures).", "train 8h + 2h -> 10 h")

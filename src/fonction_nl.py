@@ -331,6 +331,16 @@ def resout_conversion(question: str):
         return (VERIFIE, "La « tasse » n'est pas une unité normalisée (200 à 250 ml selon les pays ; "
                 "250 ml en tasse métrique) — je donne la fourchette plutôt que trancher.",
                 "conversions — unité non normalisée (dit)")
+    # DÉCOMPOSITION « en heures ET minutes » : « 90 minutes en heures et minutes » -> 1 h 30 (la conversion
+    # simple répondait « 1.5 heures » à côté de la forme demandée, vécu 2026-07-08).
+    mhem = re.search(r"(\d+(?:[.,]\d+)?)\s*(minutes?|secondes?)\s+en\s+heures?\s+et\s+minutes?", q)
+    if mhem:
+        v = float(mhem.group(1).replace(",", "."))
+        total_min = v if mhem.group(2).startswith("minute") else v / 60.0
+        if total_min == int(total_min):
+            h, mn = divmod(int(total_min), 60)
+            return (VERIFIE, "%d h %02d" % (h, mn), "conversion — décomposition heures/minutes exacte")
+        return (HORS, None, None)
     # DURÉE COMPACTE « 2h30 » -> « 150 minutes » (« combien de secondes dans 2h30 » tombait en repli, vécu
     # 2026-07-08). Minutes < 60 exigées ; « km/h », « 2 h » nus et les heures d'horloge ailleurs sont intacts
     # (la réécriture est LOCALE à la route de conversion).
@@ -1452,6 +1462,45 @@ def resout_math(question: str):
             return (VERIFIE, "28 jours (29 les années bissextiles).", "calendrier grégorien")
         nbj = [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][num - 1]
         return (VERIFIE, "%d jours" % nbj, "calendrier grégorien")
+
+    # MULTIPLES / TABLE (AVANT la primalité : « les 5 PREMIERS multiples de 7 » recevait « Oui, 5 est
+    # premier », À CÔTÉ — FAUX vécu 2026-07-08).
+    mmu = re.search(r"(?:les\s+)?(\d+)\s+premiers\s+multiples\s+de\s+(\d+)", q)
+    if mmu:
+        n, k = int(mmu.group(1)), int(mmu.group(2))
+        if 1 <= n <= 50 and k != 0:
+            return (VERIFIE, ", ".join(str(k * i) for i in range(1, n + 1)),
+                    "arithmétique — multiples (énumération exacte)")
+        return (HORS, None, None)
+    mtb = re.search(r"table\s+(?:de\s+multiplication\s+)?(?:de\s+|du\s+)(\d+)", q)
+    if mtb and ("table" in qtoks):
+        k = int(mtb.group(1))
+        if 1 <= k <= 1000:
+            return (VERIFIE, " ; ".join("%d × %d = %d" % (k, i, k * i) for i in range(1, 11)),
+                    "arithmétique — table de multiplication")
+
+    # VARIATION DE PRIX EN % : « le prix passe de 80 à 60 » -> −25 % (calcul montré ; hausse en +).
+    mvp = re.search(r"passe\s+de\s+(\d+(?:[.,]\d+)?)\s+[àa]\s+(\d+(?:[.,]\d+)?)", qc)
+    if mvp and ("pourcentage" in qtoks or "reduction" in qtoks or "augmentation" in qtoks or "%" in question):
+        a, b = _fl(mvp.group(1)), _fl(mvp.group(2))
+        if a > 0:
+            pct = (b - a) / a * 100.0
+            sens = "hausse" if pct > 0 else "baisse"
+            return (VERIFIE, "%s%s %% (de %s à %s : (%s − %s) / %s × 100 — une %s)"
+                    % ("+" if pct > 0 else "", _fmt_nombre(round(pct, 4)), _fmt_nombre(a), _fmt_nombre(b),
+                       _fmt_nombre(b), _fmt_nombre(a), _fmt_nombre(a), sens),
+                    "calcul — variation relative en pourcentage")
+
+    # COMPTER / ALPHABET (génération native exacte, bornes sûres).
+    mcp = re.search(r"compte\s+(?:[àa]\s+rebours\s+)?de\s+(\d+)\s+[àa]\s+(\d+)", q)
+    if mcp:
+        a, b = int(mcp.group(1)), int(mcp.group(2))
+        if abs(b - a) <= 100:
+            pas = 1 if b >= a else -1
+            return (VERIFIE, ", ".join(str(i) for i in range(a, b + pas, pas)), "énumération exacte")
+        return (HORS, None, None)
+    if re.search(r"recite\s+(?:moi\s+)?l\s*alphabet|alphabet\s+en\s+entier", q):
+        return (VERIFIE, ", ".join(chr(c) for c in range(97, 123)), "alphabet latin (26 lettres)")
 
     # BORNES THÉORIQUES des premiers (tombaient en repli) : le plus grand N'EXISTE PAS (Euclide, dit) ;
     # le plus petit = 2. AVANT l'ordinal et la primalité simple.
