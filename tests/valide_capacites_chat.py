@@ -180,6 +180,17 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — GÉNÉRATION D'ANAGRAMMES (dictionnaire embarqué : mots réels, jamais des lettres mélangées inventées) —
+# checks POSITIFS seulement si le dictionnaire est chargé (la suite tourne sans LECTEUR_DATASETS_DIR).
+if os.path.exists(os.path.join(R._DOSSIER_LECTEUR, "definition_nom.jsonl")):
+    r = R._cap_anagramme("anagramme de chien")
+    check(r is not None and "niche" in r and "dictionnaire" in r, "anagramme de chien -> niche (mot réel, sourcé)")
+    r = R._cap_anagramme("anagramme de xyzzy")
+    check(r is not None and r.startswith("Aucune anagramme") and "verbes" in r,
+          "aucune trouvée -> aveu honnête + limite du dictionnaire DITE (noms seulement)")
+check(R._cap_anagramme("l'anagramme de la phrase entière ne doit pas matcher") is None,
+      "une phrase entière ne déclenche pas la génération (un seul mot)")
+
 # — RAPPELS-TÂCHES (« rappelle-moi de X » partait en cascade factuelle -> « pas l'information », préexistant) —
 r = R._cap_rappel("rappelle-moi d'acheter du pain")
 check(r == "C'est noté : acheter du pain. Demande-moi « qu'est-ce que je devais faire ? » et je te le rappelle.",

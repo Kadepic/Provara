@@ -5361,6 +5361,54 @@ def _cap_quotidien(texte: str, conv_id=None):
     return None
 
 
+# GÉNÉRATION D'ANAGRAMMES : « anagramme de chien » -> niche, chine — mots RÉELS du dictionnaire embarqué
+# (definition_nom, 292k noms du Wiktionnaire), jamais des lettres mélangées inventées. Comparaison sans
+# accents (génie/neige), affichage de la forme du dictionnaire. Scan streaming unique, mémoïsé par clé triée.
+_ANAG_GEN_RE = re.compile(
+    r"^\s*(?:donne[- ]moi\s+|trouve\s+|cherche\s+)?(?:une?\s+|les?\s+|des\s+)?anagrammes?\s+"
+    r"(?:du\s+mot\s+|de\s+|d['’]\s*)([a-zà-ÿA-ZÀ-Ÿ-]+)\s*\??\s*$", re.I)
+_ANAG_MEMO: dict = {}
+
+
+def _cap_anagramme(texte: str):
+    m = _ANAG_GEN_RE.match(texte.strip())
+    if not m:
+        return None
+    mot = m.group(1).lower()
+    if not (3 <= len(mot) <= 14):
+        return None
+    nm = _normalise(mot)
+    cle = "".join(sorted(nm))
+    res = _ANAG_MEMO.get(cle)
+    if res is None:
+        res = []
+        chemin = os.path.join(_DOSSIER_LECTEUR, "definition_nom.jsonl")
+        try:
+            with open(chemin, encoding="utf-8") as fh:
+                for l in fh:
+                    i = l.find('"entite": "')
+                    if i < 0:
+                        continue
+                    j = l.find('"', i + 11)
+                    ent = l[i + 11:j]
+                    if " " in ent or "-" in ent or len(ent) > 16:
+                        continue
+                    ne = _normalise(ent)
+                    if len(ne) == len(cle) and "".join(sorted(ne)) == cle and ent not in res:
+                        res.append(ent)
+                        if len(res) >= 9:
+                            break
+        except OSError:
+            return None
+        _ANAG_MEMO[cle] = res
+    autres = [r for r in res if _normalise(r) != nm]
+    if autres:
+        return ("Anagramme(s) de « %s » dans mon dictionnaire (noms communs du Wiktionnaire) : %s."
+                % (mot, ", ".join(autres[:8])))
+    return ("Aucune anagramme de « %s » parmi mes 292 000 noms communs — il peut en exister parmi les verbes/"
+            "adjectifs, que ce dictionnaire ne couvre pas." % mot)
+
+
 # RAPPELS « à faire » : « rappelle-moi d'acheter du pain » = une TÂCHE à retenir, pas une question factuelle
 # (elle partait en cascade factuelle -> « pas l'information », vécu). Exige de+INFINITIF ou « que … » —
 # « rappelle-moi LA capitale de la France » reste une vraie question (re-servir l'info, flux normal).
@@ -7497,7 +7545,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
                  ("localisation", _cap_localisation), ("jeux", _cap_jeux), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
-                 ("contraire", _cap_contraire), ("texte", _cap_texte), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
+                 ("contraire", _cap_contraire), ("texte", _cap_texte), ("anagramme", _cap_anagramme), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
                  ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),

@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Génération d'anagrammes depuis le dictionnaire embarqué (« anagramme de chien » → niche)
+
+- `_cap_anagramme` : balayage du dictionnaire réel (`definition_nom`, 292k noms du Wiktionnaire) — « anagramme
+  de chien » → cheni, iench, niche ; « de génie » → neige (comparaison sans accents). JAMAIS des lettres
+  mélangées inventées : uniquement des mots existants, source dite. Aucune trouvée → aveu + limite DITE
+  (le dictionnaire ne couvre que les noms). ~1 s au premier appel, mémoïsé ensuite. Sans le dataset →
+  abstention propre (la suite hors-données reste verte).
+- Bancs : `valide_capacites_chat` **137/137** (+3), suite 25/25, assistant_nl 234/234, raisonnement 176/176,
+  paraphrases 170/170, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Listes : un qualificatif non résolu est DIT, jamais ignoré en silence
 
 - « donne-moi un exemple de mammifère **marin** » servait TOUS les ordres de mammifères (chauves-souris
