@@ -4855,8 +4855,11 @@ _METEO_RE = re.compile(
     r"temp[ée]rature\b[^?]{0,40}\b(?:aujourd['’ ]?hui|demain|dehors|en\s+ce\s+moment|maintenant|cette\s+semaine))", re.I)
 _HEURE_RE = re.compile(r"\bquelle\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quelle\s+heure\b", re.I)
 _DATE_JOUR_RE = re.compile(
-    r"\bquel\s+jour\s+(?:sommes[- ]nous|on\s+est|est[- ]on)\b|\bquelle\s+est\s+la\s+date\s+(?:d['’]aujourd|du\s+jour)|"
-    r"\bon\s+est\s+le\s+combien\b|\bnous\s+sommes\s+le\s+combien\b", re.I)
+    r"\bquel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:sommes[- ]nous|on\s+est|est[- ]on)\b"
+    r"|\bquelle\s+est\s+la\s+date(?:\s+(?:d['’]\s*)?aujourd['’\w]*|\s+du\s+jour|\s+de\s+ce\s+jour)?\s*\??\s*$"
+    r"|\bla\s+date\s+d['’]\s*aujourd|\bon\s+est\s+quel\s+jour\s+aujourd"
+    r"|\bquel\s+jour\s+(?:sommes[- ]nous|on\s+est)\b|\bon\s+est\s+quel\s+jour\b"
+    r"|\bon\s+est\s+le\s+combien\b|\bnous\s+sommes\s+le\s+combien\b|\bc['’]est\s+quel\s+jour\s+aujourd", re.I)
 _JOURS_FR = ("lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche")
 _MOIS_FR = ("janvier", "février", "mars", "avril", "mai", "juin", "juillet",
             "août", "septembre", "octobre", "novembre", "décembre")
@@ -5603,7 +5606,10 @@ _TEXTE_VOYCONS_B = re.compile(
     r"\s*\??\s*$", re.I)
 _VOYELLES = set("aeiouyàâäéèêëîïôöùûü")
 _TEXTE_ENVERS_RE = re.compile(
-    r"(?:[ée]pelle|[ée]cris)\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+[àa]\s+l['’]envers\s*\??\s*$", re.I)
+    # « inverse/retourne le mot X » (renversement implicite) OU « épelle/écris X à l'envers » (explicite requis)
+    r"(?:(?:inverse[rz]?|retourne)\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?"
+    r"|(?:[ée]pelle|[ée]cris)\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+[àa]\s+l['’]envers)"
+    r"\s*\??\s*$", re.I)
 _TEXTE_EPELLE_RE = re.compile(
     r"[ée]pelle(?:[- ]moi)?\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s*\??\s*$", re.I)
 _TEXTE_ANAG_RE = re.compile(
@@ -5642,7 +5648,7 @@ def _cap_texte(texte: str):
             return "« %s » contient %d consonne%s." % (mot, n, "s" if n != 1 else "")
     m = _TEXTE_ENVERS_RE.search(t)
     if m:
-        mot = m.group(1)
+        mot = m.group(1) or m.group(2)
         return "« %s » à l'envers : %s." % (mot, mot[::-1])
     m = _TEXTE_EPELLE_RE.search(t)
     if m:

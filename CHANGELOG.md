@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 22 : date du jour (variantes), congélation de l'eau, mot à l'envers, zéros d'un grand nombre
+
+- **Date/jour du jour** : « quel jour de la semaine sommes-nous », « quelle est la date aujourd'hui »,
+  « on est quel jour » (motifs élargis ; « aujourd'hui » avec apostrophe géré). Garde : « date de naissance
+  de Napoléon » n'est pas volée.
+- **Congélation de l'eau** (amorce `congelation_eau`) : « à quelle température l'eau gèle » / « point de
+  congélation/fusion de l'eau » → 0 °C. ⚠ « eau » OBLIGATOIRE dans le motif (« point de fusion **du fer** » =
+  1811 K, à ne pas confondre — régression attrapée + épinglée dans valide_base_faits).
+- **Mot à l'envers** : « inverse le mot chat » / « retourne le mot X » (« à l'envers » implicite) — sans casser
+  « épelle chien » (épellation, « à l'envers » requis pour ce verbe).
+- **Zéros d'un grand nombre** : « combien de zéros dans un million » → 6 (échelle courte).
+- Bancs : `valide_base_faits` **411/411** (+8), assistant_nl 298/298, capacites_chat **149/149** (+5), suite
+  25/25, raisonnement 194/194, paraphrases 174/174, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vague 21 : volume cylindre/cône, aire trapèze, « kilo » → grammes
 
 - **Géométrie** : volume du cylindre (π·r²·h — « rayon 2 hauteur 5 » → 62.83), volume du cône (π·r²·h/3),

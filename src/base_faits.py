@@ -131,6 +131,7 @@ FAITS: dict[tuple[str, str], Fait] = {
     ("capitale", "senegal"): Fait("Dakar", CAT_PHYSIQUE, "géographie politique (référence)"),
     ("vitesse_lumiere", ""): Fait("299792458 m/s (dans le vide)", CAT_PHYSIQUE, "SI / CODATA (valeur exacte)"),
     ("ebullition_eau", ""): Fait("100 °C (à 1 atm = 101325 Pa)", CAT_PHYSIQUE, "définition Celsius / point de référence"),
+    ("congelation_eau", ""): Fait("0 °C (à 1 atm = 101325 Pa)", CAT_PHYSIQUE, "définition Celsius / point de référence"),
     ("zero_absolu", ""): Fait("0 K = -273,15 °C", CAT_PHYSIQUE, "SI (échelle Kelvin)"),
     ("symbole_chimique", "or"): Fait("Au", CAT_PHYSIQUE, "tableau périodique (IUPAC)"),
     ("symbole_chimique", "fer"): Fait("Fe", CAT_PHYSIQUE, "tableau périodique (IUPAC)"),
@@ -259,6 +260,12 @@ _GABARITS = [
     (re.compile(r"\b(?:definition|definir|que veut dire|sens) (?:de |du |d |le mot )?(.+)$"), "definition", 1),
     (re.compile(r"\bvitesse de la lumiere\b"), "vitesse_lumiere", 0),
     (re.compile(r"\b(?:temperature d ebullition|point d ebullition|ebullition) (?:de l )?eau\b"), "ebullition_eau", 0),
+    # ⚠ « eau » OBLIGATOIRE : « point de FUSION » seul désigne n'importe quel corps (« point de fusion du FER »
+    # = 1538 °C, à ne PAS confondre — régression vécue 2026-07-08).
+    (re.compile(r"\b(?:temperature de (?:congelation|fusion|solidification)|point de (?:congelation|fusion))"
+                r" (?:de l )?eau\b"
+                r"|\b(?:a\s+)?quelle temperature (?:l )?eau (?:gele|congele|se solidifie|se transforme en glace)\b"
+                r"|\beau (?:gele|congele) a\b"), "congelation_eau", 0),
     (re.compile(r"\bzero absolu\b"), "zero_absolu", 0),
     (re.compile(r"\bsymbole (?:chimique )?(?:de l |de la |du |de )?(.+)$"), "symbole_chimique", 1),
     (re.compile(r"\bunite (?:de l |de la |du |de )?(.+)$"), "unite", 1),
