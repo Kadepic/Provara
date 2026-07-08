@@ -233,9 +233,18 @@ def libere_cache():
 def coordonnees_lieu(lieu: str):
     """COORDONNÉES (latitude, longitude) en degrés décimaux d'un LIEU ingéré, ou None si inconnu (HORS, jamais
     deviné). Cherche dans toute paire de relations `latitude_*`/`longitude_*` du lecteur (capitales aujourd'hui,
-    extensible villes/sommets…). Fait BORNÉ (la réalité fixe la position). cf. ingere_coordonnees.py."""
+    extensible villes/sommets…). Fait BORNÉ (la réalité fixe la position). cf. ingere_coordonnees.py.
+
+    GARDE FAUX=0 (2026-07-08) : un PAYS/État n'a pas de coordonnée PONCTUELLE pour une distance ville-à-ville —
+    et le crible d'unicité des localités laisse passer des homonymes piégeux (une petite ville « France » aux
+    USA). Si `lieu` est un pays (clé de la relation `capitale`), on n'accepte PAS une coord issue de
+    `latitude_localite` (homonyme) ; seule une coord de `latitude_capitale` resterait valide. Sinon « distance
+    entre la France et X » renvoyait la position d'une bourgade américaine homonyme."""
+    est_pays = _LEC.LECTEUR.cherche("capitale", lieu) is not None
     for rel in _LEC.LECTEUR.relations():
         if not rel.startswith("latitude_"):
+            continue
+        if est_pays and rel != "latitude_capitale":      # pays -> jamais une coord de localité homonyme
             continue
         rel_lon = "longitude_" + rel[len("latitude_"):]
         flat = _LEC.LECTEUR.cherche(rel, lieu)

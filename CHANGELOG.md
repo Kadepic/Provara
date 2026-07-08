@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX=0 : un PAYS ne renvoie plus les coordonnées d'une ville homonyme (distance)
+
+- **FAUX réel trouvé** en auditant le chantier « distance » : `ia.coordonnees_lieu("France")` renvoyait
+  (34.61, −82.77) — une bourgade **France, Caroline du Sud** passée par le crible d'unicité des localités
+  (pas d'homonyme FR) → « distance entre la France et X » était FAUSSE. Garde : un pays (clé de la relation
+  `capitale`) n'accepte jamais une coord issue de `latitude_localite` (seule `latitude_capitale` resterait
+  valide). France/Allemagne/Espagne → None (correct : un pays n'a pas de point pour une distance ville-à-ville).
+- Les villes réelles restent intactes : « distance Paris-Toulouse » → 588 km (vérifié). NB : Lyon/Marseille
+  restent absents des coords PAR CONCEPTION (garde anti-homonyme stricte de l'ingestion — homonymes étrangers) ;
+  les débloquer demande une source de grandes villes FR désambiguïsées (chantier d'ingestion, documenté).
+- Bancs : `valide_coordonnees` **47/47** (+4), suite 25/25.
+
 ## 2026-07-08 — QUALITÉ : une demande impérative non traitée ne répond plus « C'est noté »
 
 - **Garbage vécu** : « équilibre la réaction H2 + O2 -> H2O » (et « range mes fichiers ») → *« C'est noté, je
