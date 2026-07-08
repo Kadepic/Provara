@@ -269,6 +269,101 @@ def resout_arithmetique(question: str):
     return (HORS, None, None)
 
 
+def _deux_entiers(question: str):
+    """Les entiers positifs d'une question (« pgcd de 12 et 18 » -> [12, 18]). Descriptif, jamais une réponse."""
+    return [int(x) for x in re.findall(r"\d+", question)]
+
+
+def resout_math(question: str):
+    """MATHS DISCRÈTES / ARITHMÉTIQUE / TRIGO en NL — capacités RÉELLES (arithmetique_modulaire, maths_discretes,
+    trigonometrie) rendues atteignables par une phrase (mandat « tout câbler », 2026-07-08). Renvoie
+    (VERIFIE, texte, source) ou (HORS, None, None). FAUX=0 : chaque route exige un mot-clé FORT + des opérandes
+    valides ; le calcul vient d'un module vérifié ; hors périmètre -> HORS (le pipeline continue)."""
+    q = normalise(question)
+    qtoks = set(q.split())
+    ent = _deux_entiers(question)
+    try:
+        import arithmetique_modulaire as _AM
+        import maths_discretes as _MD
+        import trigonometrie as _TG
+    except Exception:
+        return (HORS, None, None)
+
+    # INTÉRÊTS (placement) : « combien rapportent 1000 euros à 5% pendant 3 ans » -> valeur acquise + gain.
+    # Exige les TROIS composants (capital + taux + durée) pour ne pas confondre avec un simple pourcentage.
+    mi = re.search(r"(\d[\d\s]*(?:[.,]\d+)?)\s*(?:euros?|€|dollars?|\$)\b.*?(\d+(?:[.,]\d+)?)\s*(?:%|pour ?cent)"
+                   r".*?(\d+(?:[.,]\d+)?)\s*(?:ans?|ann[ée]es?)", question, re.I)
+    if mi:
+        C = float(mi.group(1).replace(" ", "").replace(",", "."))
+        t = float(mi.group(2).replace(",", ".")) / 100.0
+        n = float(mi.group(3).replace(",", "."))
+        try:
+            import maths_financieres as _MF
+            simple = "simple" in q or "lineaire" in q
+            va = _MF.valeur_acquise_simple(C, t, n) if simple else _MF.interet_compose(C, t, n)
+            gain = round(va - C, 2)
+            mode = "intérêts simples" if simple else "intérêts composés"
+            return (VERIFIE, "%s d'intérêts (%s) ; valeur acquise : %s" % (_fmt_nombre(gain), mode, _fmt_nombre(va)),
+                    "mathématiques financières — %s" % mode)
+        except Exception:
+            return (HORS, None, None)
+
+    # POURCENTAGE : « 20% de 150 », « 20 pour cent de 150 » -> 30 (arithmétique exacte, sans module tiers).
+    mp = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour ?cent(?:s)?|pourcent)\s+(?:de|du|des|d['’]|sur)\s+(\d+(?:[.,]\d+)?)",
+                   question, re.I)
+    if mp:
+        p = float(mp.group(1).replace(",", ".")); base = float(mp.group(2).replace(",", "."))
+        v = p / 100.0 * base
+        return (VERIFIE, _fmt_nombre(v), "calcul — pourcentage")
+
+    # PGCD / PPCM : « pgcd de 12 et 18 », « ppcm de 4 et 6 » (2 entiers requis).
+    if ("pgcd" in qtoks or "diviseur" in q and "commun" in q) and len(ent) >= 2:
+        return (VERIFIE, str(_AM.pgcd(ent[0], ent[1])), "arithmétique — PGCD (Euclide)")
+    if ("ppcm" in qtoks or "multiple" in q and "commun" in q) and len(ent) >= 2:
+        g = _AM.pgcd(ent[0], ent[1])
+        return (VERIFIE, str(ent[0] * ent[1] // g) if g else "0", "arithmétique — PPCM")
+
+    # NOMBRE PREMIER : « est-ce que 17 est (un nombre) premier ? », « 18 est-il un nombre premier ? ». GARDE
+    # anti-faux-positif : « premier » est un ordinal courant (« premier président de 1958 ») -> on exige soit
+    # « nombre premier », soit la forme « <n> est … premier » (le nombre ADJACENT au prédicat de primalité).
+    if ent and (re.search(r"nombres?\s+premiers?", q)
+                or re.search(r"\b\d+\b\s+(?:est(?:[- ]il|[- ]elle)?|es[- ]tu)?\s*(?:un\s+nombre\s+)?premier", q)
+                or re.search(r"premier\s*\?*\s*$", q) and re.search(r"\b\d+\b\s+est", q)):
+        prem = _AM.est_premier(ent[0])
+        return (VERIFIE, ("Oui, %d est premier." if prem else "Non, %d n'est pas premier.") % ent[0],
+                "arithmétique — primalité")
+
+    # FACTORIELLE : « factorielle de 5 », « 5! »
+    mf = re.search(r"(\d+)\s*!", question) or (re.search(r"\b(\d+)\b", question) if "factorielle" in qtoks else None)
+    if mf and ("factorielle" in qtoks or "!" in question):
+        return (VERIFIE, str(_MD.factorielle(int(mf.group(1)))), "combinatoire — factorielle")
+
+    # COMBINAISONS / ARRANGEMENTS : « combien de façons d'ordonner 5 éléments » (=factorielle), « combinaisons de
+    # 2 parmi 5 » (=binomial), « arrangements de 2 parmi 5 » (=binomial × k!).
+    if ("ordonner" in qtoks or "permutations" in qtoks or ("facons" in qtoks and "ordonner" in q)) and ent:
+        return (VERIFIE, str(_MD.factorielle(ent[0])), "combinatoire — permutations (n!)")
+    if ("combinaisons" in qtoks or "combinaison" in qtoks) and "parmi" in qtoks and len(ent) >= 2:
+        return (VERIFIE, str(_MD.binomial(ent[1], ent[0])), "combinatoire — combinaisons C(n,k)")
+    if ("arrangements" in qtoks or "arrangement" in qtoks) and "parmi" in qtoks and len(ent) >= 2:
+        k, n = ent[0], ent[1]
+        return (VERIFIE, str(_MD.binomial(n, k) * _MD.factorielle(k)), "combinatoire — arrangements A(n,k)")
+
+    # SUITES : « fibonacci de 10 », « 10e nombre de Fibonacci »
+    if "fibonacci" in qtoks and ent:
+        return (VERIFIE, str(_MD.fibonacci(ent[0])), "suite de Fibonacci")
+
+    # TRIGONOMÉTRIE : « sinus de 30 degrés », « cos de 60° », « tangente de 45 »
+    mt = re.search(r"\b(sinus|sin|cosinus|cos|tangente|tan)\b.*?(-?\d+(?:[.,]\d+)?)", q)
+    if mt:
+        ang = float(mt.group(2).replace(",", "."))
+        fn, nom = ((_TG.sin_deg, "sinus") if mt.group(1) in ("sinus", "sin")
+                   else (_TG.cos_deg, "cosinus") if mt.group(1) in ("cosinus", "cos")
+                   else (_TG.tan_deg, "tangente"))
+        return (VERIFIE, _fmt_nombre(fn(ang)), "trigonométrie — %s (degrés)" % nom)
+
+    return (HORS, None, None)
+
+
 def resout_fonction(question: str):
     """Route vers un sous-système FONCTION (calcul borné). Renvoie (VERIFIE, texte, source) ou (HORS, None, None).
     Aucune invention : on relaie le verdict du moteur (déjà VÉRIFIÉ/HORS). Mot-clé exigé, sinon abstention."""
@@ -278,6 +373,9 @@ def resout_fonction(question: str):
     arith = resout_arithmetique(question)            # calcul exact sur entiers ; sinon HORS -> on continue
     if arith[0] == VERIFIE:
         return arith
+    mth = resout_math(question)                      # maths discrètes / arithmétique / trigo (câblage 2026-07-08)
+    if mth[0] == VERIFIE:
+        return mth
     qtoks = set(normalise(question).split())
     arg = _extrait_arg_brut(question)
     dernier = _dernier_token(question)              # repli robuste (« … de la séquence ATCG » -> « ATCG »)

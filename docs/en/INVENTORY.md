@@ -2,7 +2,7 @@
 
 > Generated mechanically from the code (docstrings + API). Represents the entirety of the shipped modules.
 
-**1306 modules · 4686 public functions/classes · 171 496 lines** (mechanical snapshot; faits_appris added by hand on 2026-07-06, tronc on 2026-07-07)
+**1307 modules · 4686 public functions/classes · 171 496 lines** (mechanical snapshot; faits_appris added by hand on 2026-07-06, tronc on 2026-07-07, sequenceur on 2026-07-08)
 
 
 ## Core — 6 modules
@@ -14,6 +14,7 @@
 | `ia` | AI — UNIFIED ENTRY POINT ("complete ≠ usable": | juge_dispositif, reference, donnee, donnee_nl, coordonnees_lieu, distance_lieux, cap_lieux, dms_vers_dd |
 | `lecteur` | GENERIC DATA READER — the engine of bounded DATA (workstream #3 ; 566 subjects: | class Lecteur, amorce_cherche, cherche, repond, repond_nl |
 | `repond` | CONVERSATIONAL LAYER of the interface — making the assistant able to ANSWER, without ever inventing. | pret, est_fallback, repond |
+| `sequenceur` | SEQUENCER — the allocation executive (SPEC §11-§12, Phase 4): orders the cascade's caps PER ACT (safe prior ∪ learned from the real routing journal) to minimize the number of caps evaluated; invariant: reordering never changes the answer (historical relative order preserved). Discrete bandit (reward = cap that fired). | ordonne, prioritaires, rapport, couverture, recharge |
 | `serveur` | LOCAL INTERFACE — small sovereign web server on top of the conversation memory. | liste_conversations, archive_conversation, desarchive_conversation, lire_conversation, ajoute_message, nouvelle_conversation, oublie_conversation, class Handler |
 
 ## Capability library (engines & atoms) — 493 modules

@@ -1,5 +1,82 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 3 : MATHÉMATIQUES FINANCIÈRES en conversation (placement / intérêts)
+
+- `fonction_nl.resout_math` câble `maths_financieres` : « combien rapportent 1000 euros à 5% pendant 3 ans ? »
+  → **157,63 d'intérêts (composés) ; valeur acquise 1157,63** — gain ET total étiquetés explicitement (zéro
+  ambiguïté FAUX), intérêts composés par défaut, simples sur mention. Exige les TROIS composants (capital +
+  taux + durée) pour ne jamais confondre avec un simple pourcentage.
+- Bancs : `valide_assistant_nl` **112/112** (+3), suite 25/25, raisonnement 166/166, paraphrases 168/168.
+- Noté (trous restants, non fabriqués) : distance entre villes = trou de DONNÉES (coords absentes du lecteur,
+  le cap est câblé) ; équilibrage de réaction chimique = pas de brique `chimie.equilibre` (à ingérer un jour) ;
+  Fermi / probabilité élémentaire = pas de brique NL utilisable.
+
+## 2026-07-08 — CÂBLAGE vague 2 : LOGIQUE PROPOSITIONNELLE en conversation (profondeur de raisonnement)
+
+- **`_cap_logique`** rend `sophismes.py` conversationnel : « si A alors B, or …, donc … » → Provara JUGE la
+  validité de l'inférence — **modus ponens / modus tollens = VALIDE**, **affirmation du conséquent / négation
+  de l'antécédent = sophisme formel**, avec le nom de la forme. Verdict issu du module VÉRIFIÉ (logique formelle
+  exacte, FAUX=0). Complète `_cap_syllogisme` (catégoriel « tous les A sont B ») par le CONDITIONNEL. Provara
+  dit explicitement qu'il juge la FORME, pas la vérité des prémisses ni le fond.
+- Parseur NL robuste (mapping des propositions A/B, détection de négation « ne…pas / non »), abstention si la
+  structure n'est pas nette. Ne vole aucune question factuelle. Porte unique → FAIT (forme vérifiée).
+- **Non câblé** : estimation de Fermi (le module exige des facteurs numériques fournis — inutilisable en NL nu
+  sans moteur de décomposition ; ne rien fabriquer).
+- Bancs : `valide_capacites_chat` **86/86** (+7), suite **25/25**, câblage 504 0 orphelin, raisonnement 166/166,
+  paraphrases 168/168, challenge 16/16.
+
+## 2026-07-08 — CÂBLAGE des capacités dormantes, vague 1 : maths discrètes / arithmétique / trigo en conversation
+
+- **Mandat Yohan (« tout câbler, augmenter la puissance conversationnelle »)** : audit d'atteignabilité →
+  ~18 capacités sur 27 existaient (modules testés) mais n'étaient PAS déclenchables par une phrase naturelle.
+  Vague 1 câblée via `fonction_nl.resout_math` (greffé dans `resout_fonction`, le hub NL→fonction déjà branché) :
+  **pourcentage** (« 20% de 150 » → 30), **PGCD/PPCM**, **primalité** (« 17 est-il premier ? »), **factorielle**
+  (« 5! »), **combinaisons/arrangements** (« C(5,2) »), **permutations**, **Fibonacci**, **trigonométrie**
+  (sin/cos/tan en degrés). Chaque calcul vient d'un module VÉRIFIÉ (`arithmetique_modulaire`, `maths_discretes`,
+  `trigonometrie`) — jamais fabriqué.
+- **FAUX=0 / anti-faux-positif** : primalité durcie (« premier » est un ordinal courant — « premier président
+  élu en 1958 » ne déclenche PAS un test de primalité sur 1958) ; chaque route exige un mot-clé fort + des
+  opérandes valides ; hors périmètre → HORS, la cascade continue. Aucune question factuelle volée (banc dédié).
+- **Non câblé volontairement** (pas de brique vérifiée dédiée = ne rien fabriquer) : chiffres romains,
+  probabilité élémentaire — à faire quand/si le module existe.
+- Bancs : `valide_assistant_nl` **109/109** (+20 : les 14 calculs + 6 gardes anti-vol), suite **25/25**,
+  raisonnement 166/166, paraphrases 168/168, challenge 16/16.
+
+## 2026-07-08 — TRONC Phase 4 : le SÉQUENCEUR — l'ordre des caps s'APPREND du signal réel (§11-§12)
+
+- **Nouveau `src/sequenceur.py`** : l'exécutif d'allocation de la spec. Il ordonne les caps de la cascade PAR
+  ACTE pour minimiser le **nombre de caps évalués** avant celui qui tranche (ressource rare = le calcul, §15 ;
+  gain = énergie/§3.1, pas la latence déjà à quelques ms). Politique = **PRIOR statique** (familles sûres,
+  ex-`_FAMILLES_ACTES`, déplacé ici) **∪ APPRIS** du journal de routage réel (`tronc_routage.jsonl`). C'est le
+  **bandit contextuel §11 en version discrète** : contexte = acte, bras = cap, récompense = le cap a RÉELLEMENT
+  tranché (anti-Goodhart, mesuré post-hoc). **Exploration = le filet complet** de la cascade (tout cap qui
+  tranche est journalisé → convergence SANS epsilon) ; **exploitation** = la politique rechargée met les
+  gagnants en tête.
+- **Invariant de SÛRETÉ FAUX=0 (prouvé par banc)** : réordonner ne change JAMAIS la réponse, seulement l'ordre
+  d'essai — (1) l'ensemble des caps est préservé (filet complet), (2) l'ordre relatif historique est conservé
+  PARTOUT → aucune priorité vécue inversée (avis_critere avant avis, comparaison_nway avant comparaison…).
+  Seuls les actes du prior sont réordonnés (les factuels/raisonnement gardent l'ordre historique — biais
+  conservateur ; le journal les compte quand même pour extension future sous banc).
+- **Câblé** dans `repond.py` (remplace le boost binaire de Phase 5), journalise désormais à CHAQUE hit avec
+  l'acte classé ; le diagnostic affiche « séquenceur : N cap(s) appris sur M acte(s) ». Cold-start honnête :
+  journal vide / acte hors prior / basse confiance → ordre historique EXACT → zéro régression.
+- **Utilité §12 — le terme « − coût » rendu OBSERVABLE** : `note_routage` enregistre la POSITION du cap gagnant
+  (= profondeur de sonde = nb de caps essayés avant le hit = coût de calcul réel) ; `stats_routage` en donne la
+  moyenne, le diagnostic l'affiche (« profondeur de sonde moyenne X cap(s) »). Mesure POST-HOC, anti-Goodhart.
+  La membrane §10.3 (compression au récepteur) reste `_ajuste_registre` (prudente : ne comprime que le méta,
+  jamais le contenu — la rendre agressive violerait la non-distorsion) ; l'utilité espérée §12 est `decision.py`
+  (déjà livrée, parapluie). Le terme « conséquences réelles » reste un gouffre ouvert borné par FAUX=0 (§18 :
+  observabilité partielle — nécessite du signal humain, non fabriqué).
+- **AUDIT DE CÂBLAGE ATOMIQUE (mandat Yohan « créé mais pas câblé a réduit nos capacités »)** : audit
+  fonction-par-fonction des modules récents → 2 vrais orphelins trouvés et corrigés — `sequenceur.couverture()`
+  (créé, jamais appelé → câblé au diagnostic) et `sequenceur.recharge()` (appelé seulement par les tests →
+  l'apprentissage intra-session était INERTE ; câblé sur un rechargement périodique tous les 40 tours, §11
+  arrière-plan). `valide_sequenceur` gagne un **check de câblage PROD** (chaque API publique DOIT être appelée
+  dans repond.py, pas seulement en test) → ce trou ne peut plus se re-livrer.
+- Bancs : `valide_sequenceur` **44/44** (dont câblage prod), `valide_tronc` **79/79** → suite **25/25** ;
+  câblage **504/504, 0 orphelin** ; raisonnement 166/166, paraphrases 168/168, challenge 16/16,
+  capacites_chat 79/79, faits_appris 21/21. Embarqué .exe.
+
 ## 2026-07-08 — Invention hors-catalogue : « comment X sans Y » amplifie au lieu de tomber au web
 
 - **Vécu audit** : « comment conserver des aliments sans frigo ? », « comment chauffer une pièce sans

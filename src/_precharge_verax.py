@@ -98,6 +98,10 @@ try:
 except Exception:
     pass
 try:
+    import sequenceur
+except Exception:
+    pass
+try:
     import astronautique
 except Exception:
     pass

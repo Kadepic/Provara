@@ -21,7 +21,7 @@ py -m PyInstaller %PACKFLAG% --name Provara %WINFLAG% ^
   --hidden-import _precharge_verax ^
   --hidden-import ia --hidden-import lecteur --hidden-import base_faits ^
   --hidden-import serveur --hidden-import repond --hidden-import conversation ^
-  --hidden-import assistant_nl --hidden-import veille_structure --hidden-import faits_appris --hidden-import tronc --hidden-import fonction_nl ^
+  --hidden-import assistant_nl --hidden-import veille_structure --hidden-import faits_appris --hidden-import tronc --hidden-import sequenceur --hidden-import fonction_nl ^
   --hidden-import correction_ortho --hidden-import synonymes --hidden-import formulation ^
   --hidden-import est_un --hidden-import ontologie --hidden-import classifieur_bornage --hidden-import resolution ^
   --hidden-import realisation_fr --hidden-import deduction --hidden-import induction_horn --hidden-import maj ^

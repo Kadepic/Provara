@@ -3921,9 +3921,19 @@ def _diagnostic_connaissance(texte: str):
         routage = ""
         try:
             import tronc as _TRD
-            _tot, _hors = _TRD.stats_routage()
+            _tot, _hors, _prof = _TRD.stats_routage()
             if _tot:
-                routage = " · routage par acte : %d décision(s), %d hors-famille" % (_tot, _hors)
+                routage = (" · routage par acte : %d décision(s), %d hors-famille, profondeur de sonde "
+                           "moyenne %.1f cap(s)" % (_tot, _hors, _prof))
+                import sequenceur as _SQD
+                _SQD.recharge()                          # diagnostic = point d'observation : politique FRAÎCHE
+                _appris = _SQD.rapport()
+                if _appris:
+                    _n_appris = sum(len(v) for v in _appris.values())
+                    routage += " · séquenceur : %d cap(s) appris sur %d acte(s)" % (_n_appris, len(_appris))
+                _ctot, _ccouv = _SQD.couverture()
+                if _ctot:
+                    routage += " (couverture prior %d%%)" % round(100 * _ccouv / _ctot)
         except Exception:
             pass
         return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s%s"
@@ -5482,6 +5492,56 @@ def _verbe_singulier(v: str) -> str:
     return (v[:-3] + "e") if v.lower().endswith("ent") else v
 
 
+# LOGIQUE PROPOSITIONNELLE (câblage « tout câbler » 2026-07-08) : « si A alors B, or …, donc … » -> Provara
+# JUGE la validité de l'inférence (modus ponens/tollens = valide ; affirmation du conséquent / négation de
+# l'antécédent = sophisme formel), verdict issu du module VÉRIFIÉ `sophismes`. FAUX=0 : logique formelle exacte ;
+# structure ambiguë -> None (abstention). Complète `_cap_syllogisme` (catégoriel « tous les A ») par le CONDITIONNEL.
+_LOGIQUE_RE = re.compile(
+    r"\bsi\s+(.+?)\s+alors\s+(.+?)\s*[,;.]\s*(?:or|et|mais)\s+(.+?)\s*[,;.]\s*"
+    r"(?:donc|alors|par\s+cons[eé]quent)\s+(.+?)\s*[?.]?\s*$", re.I)
+_LOG_STOP = frozenset("le la les un une des de du d et est sont a l en ce que qui il elle on se sa son ne".split())
+_LOG_NEG_RE = re.compile(r"\bne\b|\bn |\bpas\b|\bnon\b|\baucun", re.I)
+
+
+def _cap_logique(texte: str):
+    """Validité d'un raisonnement conditionnel en langage naturel (modus ponens/tollens vs sophismes formels).
+    Réutilise `sophismes.identifie_forme`/`est_valide` (vérifié). None si la structure n'est pas nette (FAUX=0)."""
+    m = _LOGIQUE_RE.search(texte)
+    if not m:
+        return None
+    A, B, mineure, concl = m.group(1), m.group(2), m.group(3), m.group(4)
+    mA = set(w for w in _normalise(A).split() if len(w) > 2 and w not in _LOG_STOP)
+    mB = set(w for w in _normalise(B).split() if len(w) > 2 and w not in _LOG_STOP)
+    if not mA or not mB:
+        return None
+
+    def classe(prop):
+        sansneg = _LOG_NEG_RE.sub(" ", _normalise(prop))
+        w = set(sansneg.split())
+        sa, sb = len(w & mA), len(w & mB)
+        if sa == 0 and sb == 0:
+            return None
+        return ("a" if sa >= sb else "b", bool(_LOG_NEG_RE.search(_normalise(prop))))
+
+    cm, cc = classe(mineure), classe(concl)
+    if not cm or not cc:
+        return None
+    lit = lambda c: ("~" if c[1] else "") + c[0]
+    try:
+        import sophismes as _SO
+        forme = _SO.identifie_forme("a->b", lit(cm), lit(cc))
+        valide = _SO.est_valide(forme)
+    except Exception:
+        return None
+    noms = {"modus_ponens": "modus ponens", "modus_tollens": "modus tollens",
+            "affirmation_consequent": "affirmation du conséquent", "negation_antecedent": "négation de l'antécédent"}
+    if valide:
+        return ("Raisonnement VALIDE (%s) : la conclusion découle logiquement de tes prémisses. "
+                "Je juge la FORME, pas la vérité des prémisses." % noms.get(forme, forme))
+    return ("Raisonnement INVALIDE — c'est un sophisme formel : %s. La conclusion NE découle pas des prémisses "
+            "(même si elle pouvait être vraie par ailleurs). Je juge la forme, pas le fond." % noms.get(forme, forme))
+
+
 def _cap_syllogisme(texte: str):
     """Syllogisme explicite (« si tous les A V… et que C est un A, que peut-on en déduire ? ») -> conclusion
     dans LES PRÉMISSES DE L'UTILISATEUR, typée comme telle (mode hypothétique balisé — jamais un fait servi).
@@ -6862,17 +6922,16 @@ def _pose_did_you_mean(t: str, conv_id):
     return rep_clarif
 
 
-# FAMILLES DE CAPS PAR ACTE (Phase 5 du tronc — retrait progressif) : quand `tronc.acte()` classe l'intention
-# avec une confiance NETTE (≥ 0,8), la famille de caps consommatrice de cet acte est tentée EN TÊTE de la
-# cascade (ordre relatif conservé, filet complet derrière -> zéro perte). Carte FERMÉE, seules les familles aux
-# détecteurs SÛRS sont routées ; les actes factuels/raisonnement gardent l'ordre historique (leurs détecteurs
-# de caps sont plus fins que la classification d'acte — on ne dégrade jamais un routage précis par un grossier).
-_FAMILLES_ACTES = {
-    "quotidien": ("quotidien", "site"),
-    "demander_avis": ("avis_critere", "avis"),
-    "creer": ("creer_ouvert", "invention_composite", "invention"),
-    "agir": ("traduction",),
-}
+# FAMILLES DE CAPS PAR ACTE — le PRIOR d'allocation vit désormais dans `sequenceur.PRIOR` (Phase 4 : la
+# politique est apprise du journal de routage réel, prior en cold-start). Alias conservé pour la compat.
+try:
+    import sequenceur as _SEQ
+    _FAMILLES_ACTES = _SEQ.PRIOR
+except Exception:
+    _SEQ = None
+    _FAMILLES_ACTES = {}
+_ROUTAGE_TICK = 0                  # décisions de routage depuis le dernier rechargement de politique
+_RECHARGE_TOUS = 40               # cadence de rechargement de la politique apprise (§11 arrière-plan)
 
 
 def repond(memoire, conv_id: str, texte: str, pleine: bool = False) -> str:
@@ -7035,36 +7094,42 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
-                 ("localisation", _cap_localisation), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
+                 ("localisation", _cap_localisation), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
                  ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
                  ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),
                  ("creer_ouvert", _cap_creer_ouvert), ("invention_composite", _cap_invention_composite),
                  ("invention", _cap_invention), ("audit_code", _cap_audit_code))
-        # TRONC ROUTE (Phase 5, retrait progressif) : l'acte classé à HAUTE confiance fait passer SA famille de
-        # caps EN TÊTE (ordre relatif conservé), la cascade complète reste le filet -> zéro perte, mais le
-        # moteur DÉCIDE quelle faculté essayer d'abord (c'est aussi le point d'allocation du séquenceur §11 :
-        # une politique apprise pourra un jour réordonner ICI, sous les mêmes bancs).
-        _ordre, _fam, _acte5 = _caps, None, ""
+        # SÉQUENCEUR (Phase 4, §11) : l'acte classé (haute confiance) fait remonter SA famille de caps —
+        # PRIOR ∪ appris du journal réel — en tête ; l'ordre relatif historique est préservé PARTOUT (invariant
+        # de sûreté : réordonner ne change jamais la RÉPONSE, cf. sequenceur). Filet complet derrière -> zéro perte.
+        _ordre, _prio, _acte5 = _caps, set(), ""
         try:
             import tronc as _T5
             _m5 = _T5.acte(t).meilleur()
-            _fam = _FAMILLES_ACTES.get(_m5.intention) if (_m5 is not None and _m5.confiance >= 0.8) else None
-            if _fam:
-                _acte5 = _m5.intention
-                _ordre = tuple(c for c in _caps if c[0] in _fam) + tuple(c for c in _caps if c[0] not in _fam)
+            if _m5 is not None:
+                _acte5 = _m5.intention if _m5.confiance >= _SEQ.SEUIL_CONF else ""
+            _ordre, _prio = _SEQ.ordonne(_acte5, _caps, _m5.confiance if _m5 else 0.0)
         except Exception:
-            _ordre, _fam = _caps, None
-        for _nom_cap, _cap in _ordre:
+            _ordre, _prio, _acte5 = _caps, set(), ""
+        for _pos_cap, (_nom_cap, _cap) in enumerate(_ordre):
             _r = _cap(t)
             if _r:
-                # REGISTRE DU ROUTAGE (§16) : décision tranchée -> hit (cap de la famille routée) ou MISS
-                # (cap hors-famille = la classification d'acte s'est trompée : la surprise dont on apprend).
-                if _fam:
+                # REGISTRE DU ROUTAGE (§16) — signal de récompense du séquenceur : à CHAQUE décision tranchée on
+                # journalise (acte classé, cap gagnant, était-il prioritaire ?). Un cap gagnant HORS prio est la
+                # SURPRISE dont on apprend (§9) : rejoué assez souvent, il rejoint la famille (exploration = filet).
+                if _acte5:
                     try:
                         import tronc as _T6
-                        _T6.note_routage(_acte5, _nom_cap, _nom_cap in _fam)
+                        _T6.note_routage(_acte5, _nom_cap, _nom_cap in _prio, position=_pos_cap)
+                        # RECHARGE PÉRIODIQUE (§11 split avant/arrière-plan) : le journal grossit pendant la
+                        # session ; toutes les N décisions on recharge la politique pour que l'apprentissage
+                        # du jour devienne effectif SANS relancer le process (la réponse SUIVANTE est meilleure).
+                        global _ROUTAGE_TICK
+                        _ROUTAGE_TICK += 1
+                        if _ROUTAGE_TICK % _RECHARGE_TOUS == 0 and _SEQ is not None:
+                            _SEQ.recharge()
                     except Exception:
                         pass
                 # SUJET mémorisé sur succès d'un cap (les anaphores inter-tours en dépendent : « où est né

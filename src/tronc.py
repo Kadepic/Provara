@@ -517,20 +517,25 @@ def _chemin_routage() -> str:
     return os.path.join(base, "tronc_routage.jsonl")
 
 
-def note_routage(acte_nom: str, cap: str, dans_famille: bool) -> None:
+def note_routage(acte_nom: str, cap: str, dans_famille: bool, position: int = -1) -> None:
     """Journalise une décision de routage tranchée (append-only, dégradation silencieuse : le journal est un
-    BONUS d'apprentissage, jamais un point de panne de la réponse)."""
+    BONUS d'apprentissage, jamais un point de panne de la réponse). `position` = index (0-based) du cap gagnant
+    dans l'ordre RÉELLEMENT servi = le COÛT de calcul de la décision (nb de caps essayés avant le hit) = le
+    terme « − coût » de l'utilité §12, mesuré POST-HOC (anti-Goodhart). -1 si non fourni (compat)."""
     try:
         with open(_chemin_routage(), "a", encoding="utf-8") as f:
             f.write(json.dumps({"date": time.strftime("%Y-%m-%d"), "acte": acte_nom, "cap": cap,
-                                "famille": bool(dans_famille)}, ensure_ascii=False) + "\n")
+                                "famille": bool(dans_famille), "pos": int(position)}, ensure_ascii=False) + "\n")
     except OSError:
         pass
 
 
 def stats_routage() -> tuple:
-    """(total, hors_famille) des décisions journalisées — pour le diagnostic (mesuré, jamais déclaré)."""
+    """(total, hors_famille, profondeur_moyenne) des décisions journalisées — pour le diagnostic (mesuré, jamais
+    déclaré). profondeur_moyenne = coût de calcul moyen (nb de caps essayés avant le hit) = le « − coût » de
+    l'utilité §12 rendu OBSERVABLE ; 0.0 si aucune position enregistrée."""
     total = hors = 0
+    somme_pos = n_pos = 0
     try:
         with open(_chemin_routage(), encoding="utf-8") as f:
             for ligne in f:
@@ -541,9 +546,13 @@ def stats_routage() -> tuple:
                 total += 1
                 if not o.get("famille"):
                     hors += 1
+                p = o.get("pos", -1)
+                if isinstance(p, int) and p >= 0:
+                    somme_pos += p
+                    n_pos += 1
     except OSError:
-        return (0, 0)
-    return (total, hors)
+        return (0, 0, 0.0)
+    return (total, hors, (somme_pos / n_pos) if n_pos else 0.0)
 
 
 # ═══════════════ ATTUNEMENT (§13) — lire l'état comme VARIABLE, jamais le feindre ═══════════════

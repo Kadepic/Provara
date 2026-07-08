@@ -575,6 +575,8 @@ def qualifie_texte(texte: str) -> Reponse | None:
     if texte.startswith("Conseil calculé"):                  # décision sous incertitude : conseil CONDITIONNEL
         return Reponse(SUPPOSITION, texte,
                        source="décision sous incertitude (probabilité rapportée + règle d'utilité affichée)")
+    if texte.startswith("Raisonnement VALIDE") or texte.startswith("Raisonnement INVALIDE"):
+        return Reponse(FAIT, texte, source="logique propositionnelle (forme jugée par sophismes.py, vérifié)")
     if texte.startswith("D'après TES prémisses"):            # syllogisme : mode hypothétique BALISÉ (§18)
         return Reponse(SUPPOSITION, texte,
                        source="déduction DANS les prémisses de l'utilisateur (non posées comme faits)")

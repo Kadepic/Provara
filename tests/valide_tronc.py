@@ -167,12 +167,14 @@ check(all(isinstance(v, tuple) and v for v in R._FAMILLES_ACTES.values()),
       "chaque famille routée est un tuple non vide de caps nommés")
 check("interroger_fait" not in R._FAMILLES_ACTES and "raisonner" not in R._FAMILLES_ACTES,
       "les actes factuels/raisonnement NE sont PAS routés (détecteurs de caps plus fins que l'acte)")
-# REGISTRE DU ROUTAGE (§16) : chaque décision tranchée est journalisée, l'erreur (hors-famille) est MESURÉE.
-check(T.stats_routage() == (0, 0), "journal vierge -> (0, 0), jamais une exception")
-T.note_routage("quotidien", "quotidien", True)
-T.note_routage("demander_avis", "definition", False)
-check(T.stats_routage() == (2, 1),
-      "registre du routage : 2 décisions, 1 hors-famille — le signal d'apprentissage du futur séquenceur (§11)")
+# REGISTRE DU ROUTAGE (§16) : chaque décision tranchée est journalisée, l'erreur (hors-famille) MESURÉE, ET le
+# COÛT de calcul (position du cap gagnant = profondeur de sonde) = le « − coût » de l'utilité §12 rendu observable.
+check(T.stats_routage() == (0, 0, 0.0), "journal vierge -> (0, 0, 0.0), jamais une exception")
+T.note_routage("quotidien", "quotidien", True, position=0)
+T.note_routage("demander_avis", "definition", False, position=6)
+_tot, _hors, _prof = T.stats_routage()
+check((_tot, _hors) == (2, 1), "registre du routage : 2 décisions, 1 hors-famille (signal du séquenceur §11)")
+check(_prof == 3.0, "profondeur de sonde moyenne mesurée = (0+6)/2 = 3.0 (coût de calcul post-hoc, §12)")
 
 # ————————————————— (10) CÂBLAGE assistant_nl : l'indécidable sert le repli intent-aware —————————————————
 os.environ.pop("IA_WEB", None)
