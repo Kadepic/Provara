@@ -414,6 +414,20 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 37 : arithmétique d'horloge ÉNONCÉE (l'heure MACHINE était servie, FAUX vécu) + trivia calendaire.
+check(_m("si un train part à 8h et roule 2 heures, à quelle heure arrive-t-il")
+      == "10 h 00 (8 h 00 + 2 heures).", "train 8h + 2h -> 10 h")
+check(_m("un rendez-vous à 14h30 dure 45 minutes, à quelle heure finit-il")
+      == "15 h 15 (14 h 30 + 45 minutes).", "14h30 + 45 min -> 15 h 15")
+_mn = _m("il est 23h30, quelle heure sera-t-il dans une heure")
+check(_mn and _mn.startswith("0 h 30") and "lendemain" in _mn, "23h30 + 1h -> 0 h 30, lendemain DIT")
+check(_m("20h45 plus 30 minutes") == "21 h 15 (20 h 45 + 30 minutes).", "20h45 + 30 min -> 21 h 15")
+check(_m("de 9h à 17h30 ça fait combien d'heures") == "8 h 30 (de 9h à 17h30).", "durée 9h-17h30 -> 8 h 30")
+check(_m("quel est le mois le plus court") == "Février (28 jours ; 29 les années bissextiles).", "mois le plus court")
+_m28 = _m("quel mois a 28 jours")
+check(_m28 and _m28.startswith("Tous"), "piège 28 jours -> Tous (dit)")
+_m31 = _m("combien de mois ont 31 jours")
+check(_m31 and _m31.startswith("7"), "7 mois à 31 jours")
 # VAGUE 36 : milliers à espace dans TOUTES les routes % et l'arithmétique (« 20 % de 5 000 » -> 1, FAUX vécu).
 check(_m("20 % de 5 000") == "1000", "20% de 5 000 -> 1000 (milliers recollés)")
 _tva15 = _m("TVA de 20% sur 1 500 euros")

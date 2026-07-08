@@ -1381,6 +1381,54 @@ def resout_math(question: str):
                 pass
         return (HORS, None, None)
 
+    # ARITHMÉTIQUE D'HORLOGE ÉNONCÉE (pur calcul modulo 24 h — l'heure MACHINE était servie à la place,
+    # FAUX vécu 2026-07-08) : « part à 8h et roule 2 heures » -> 10 h ; « rendez-vous à 14h30 dure 45
+    # minutes » -> 15 h 15 ; « il est 23h30 … dans une heure » -> 0 h 30 (lendemain dit) ; « 20h45 plus
+    # 30 minutes » -> 21 h 15.
+    mck = re.search(r"(?:^|[àa]\s+|il\s+est\s+)(\d{1,2})\s*h\s*([0-5]\d)?\b(?!\s*/)", qc)
+    if mck:
+        mdu = re.search(r"(?:roule|dure|pendant|dans|plus|attend|ajoute)\s+(?:une?\s+(heure|minute)\b"
+                        r"|(\d{1,3})\s*(heures?|minutes?|min\b))", qc)
+        veut_h = (re.search(r"quelle\s+heure|finit|arrive|termine|se\s+terminera|sera", qc)
+                  or re.search(r"^\s*\d{1,2}\s*h\s*[0-5]?\d?\s+plus\b", qc))
+        if mdu and veut_h:
+            h0, m0 = int(mck.group(1)), int(mck.group(2) or 0)
+            if h0 <= 23:
+                if mdu.group(1):
+                    n, unite = 1, mdu.group(1)
+                else:
+                    n, unite = int(mdu.group(2)), mdu.group(3)
+                total = h0 * 60 + m0 + (n * 60 if unite.startswith("h") else n)
+                h1, m1 = divmod(total % 1440, 60)
+                lend = " — le lendemain" if total >= 1440 else ""
+                return (VERIFIE, "%d h %02d (%d h %02d + %d %s%s)." % (h1, m1, h0, m0, n,
+                                                                       "heure" if unite.startswith("h") else "minute",
+                                                                       "s" if n > 1 else "") + lend,
+                        "arithmétique d'horloge (heures énoncées, modulo 24 h)")
+        # DURÉE ENTRE DEUX HEURES ÉNONCÉES : « de 9h à 17h30 » -> 8 h 30 (tombait en compte lexical).
+        mde = re.search(r"de\s+(\d{1,2})\s*h\s*([0-5]\d)?\s+(?:[àa]|jusqu['’][àa])\s+(\d{1,2})\s*h\s*([0-5]\d)?\b", qc)
+        if mde and re.search(r"combien|duree|heures\s+de", qc):
+            t0 = int(mde.group(1)) * 60 + int(mde.group(2) or 0)
+            t1 = int(mde.group(3)) * 60 + int(mde.group(4) or 0)
+            if t1 >= t0:
+                h1, m1 = divmod(t1 - t0, 60)
+                return (VERIFIE, "%d h %02d (de %s à %s)." % (h1, m1, mde.group(1) + "h" + (mde.group(2) or ""),
+                                                              mde.group(3) + "h" + (mde.group(4) or "")),
+                        "arithmétique d'horloge (durée entre heures énoncées)")
+            return (HORS, None, None)                    # fin avant début : nuit à cheval, ambigu -> abstention
+
+    # PIÈGES ET TRIVIA CALENDAIRES (conventions exactes ; tombaient en repli).
+    if re.search(r"mois\s+le\s+plus\s+court", q):
+        return (VERIFIE, "Février (28 jours ; 29 les années bissextiles).", "calendrier grégorien")
+    if re.search(r"mois\s+le\s+plus\s+long", q):
+        return (VERIFIE, "Il n'y en a pas UN seul — sept mois font 31 jours (janvier, mars, mai, juillet, "
+                "août, octobre, décembre).", "calendrier grégorien")
+    if re.search(r"quel\s+mois\s+a\s+28\s+jours", q):
+        return (VERIFIE, "Tous — chaque mois a AU MOINS 28 jours ; seul février s'arrête à 28 (29 si "
+                "bissextile).", "calendrier grégorien")
+    if re.search(r"combien\s+de\s+mois\s+ont\s+31\s+jours", q):
+        return (VERIFIE, "7 (janvier, mars, mai, juillet, août, octobre, décembre).", "calendrier grégorien")
+
     # JOURS D'UN MOIS : « combien de jours en février 2024 » -> 29 (calendar.monthrange, grégorien exact) ;
     # février SANS année -> réponse composée honnête (28 ; 29 si bissextile), jamais un des deux au pif.
     # GARDES : « combien/nombre » exigé + « jours en/de <mois> » — le compte à rebours (« dans combien de

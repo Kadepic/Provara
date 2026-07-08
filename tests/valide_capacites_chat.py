@@ -279,6 +279,13 @@ r = R._cap_conjugaison("l'imparfait de chanter ?")
 check(r is not None and "PRÉSENT" in r, "imparfait -> honnêteté (périmètre dit)")
 r = R._cap_conjugaison("conjugue le verbe chanter au présent")
 check(r is not None and "je chante" in r, "présent régulier intact")
+# VAGUE 37 : syllogisme en forme interrogative directe (tombait en mémo) + garde heure énoncée.
+r = R._cap_syllogisme("si tous les chats sont gris et que Félix est un chat, Félix est-il gris ?")
+check(r is not None and "prémisses" in r and "Félix est gris" in r, "syllogisme interrogatif -> conclusion typée")
+r = R._cap_syllogisme("tous les hommes sont mortels, Socrate est un homme, Socrate est-il mortel ?")
+check(r is not None and "Socrate est mortel" in r, "syllogisme à virgules -> conclusion typée")
+check(R._cap_quotidien("si un train part à 8h et roule 2 heures, à quelle heure arrive-t-il ?") is None,
+      "garde : heure ÉNONCÉE -> jamais l'horloge machine (fonction_nl calcule)")
 r = R._cap_quotidien("dans combien de jours le 25 décembre ?")
 check(r is not None and "décembre" in r and "jours" in r, "compte à rebours vers une date (plus le « 31 » du gabarit mois)")
 r = R._cap_quotidien("dans combien de jours Noël ?")

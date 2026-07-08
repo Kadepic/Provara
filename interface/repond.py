@@ -2583,8 +2583,8 @@ def _cap_comptage(texte: str):
     # GARDE DURÉE COMPOSÉE (vécu 2026-07-08) : « 2 semaines et 3 jours ça fait combien de jours » comptait
     # les 10 hyponymes du concept « jour » — c'est une composition de durées (fonction_nl), pas un comptage.
     if sing in ("jour", "heure", "minute", "seconde", "semaine", "moi", "mois", "an", "annee") \
-            and re.search(r"\d\s*(?:ans?|annees?|mois|semaines?|jours?|heures?|minutes?)\b", _normalise(texte)):
-        return None
+            and re.search(r"\d\s*(?:ans?|annees?|mois|semaines?|jours?|heures?|minutes?|h\b)", _normalise(texte)):
+        return None                                      # (h\b compact : « de 9h à 17h30 » = durée, vécu)
     # GARDE LETTRES (FAUX vécu 2026-07-08) : « le mot X contient combien de consonnes » comptait les 37
     # hyponymes du concept « consonne » — c'est un comptage de LETTRES dans un mot, traité par _cap_texte.
     if sing in ("voyelle", "consonne", "lettre", "syllabe", "mot", "caractere") and re.search(
@@ -3290,6 +3290,10 @@ def _multi_questions(texte: str, conv_id: str | None) -> str | None:
     # GARDE SOMME COORDONNÉE (vécu 2026-07-08) : « 3 pièces de 2 euros et 2 billets de 5, combien en tout »
     # n'est PAS trois demandes — le « et » coordonne des quantités à SOMMER (route monnaie de fonction_nl).
     if re.search(r"\b(?:pi[eè]ces?|billets?)\s+de\s+\d", texte, re.IGNORECASE):
+        return None
+    # GARDE CONDITIONNELLE (vécu 2026-07-08) : « SI tous les chats sont gris ET QUE Félix est un chat… »
+    # est UN raisonnement (prémisses liées), pas des demandes indépendantes — découper le détruit.
+    if re.match(r"^\s*si\b", texte, re.IGNORECASE):
         return None
     parts = [p.strip(" ?.!") for p in _COORD_RE.split(texte) if p and p.strip(" ?.!")]
     parts = [p for p in parts if len(p.split()) >= 2 or re.search(r"\d\s*[-+*/x×]\s*\d", p)]  # ≥2 mots OU un calcul
@@ -5493,6 +5497,11 @@ def _cap_quotidien(texte: str, conv_id=None):
                     "m'abstiens plutôt que de te donner un jour décalé.")
     if _HEURE_RE.search(texte):
         import time as _t
+        # GARDE HEURE ÉNONCÉE (FAUX vécu 2026-07-08) : « un train part à 8h et roule 2 heures, à quelle
+        # heure arrive-t-il » recevait l'heure ACTUELLE. Une heure DITE dans la question = un problème
+        # d'arithmétique d'horloge (fonction_nl), jamais l'horloge machine.
+        if re.search(r"(?:[àa]|il\s+est|de)\s+\d{1,2}\s*h\s*[0-5]?\d?\b(?!\s*/)", _normalise(texte)):
+            return None
         # GARDE ÉPHÉMÉRIDES (FAUX vécu 2026-07-08) : « à quelle heure le soleil se couche » recevait l'heure
         # ACTUELLE. Lever/coucher = astronomie locale (lieu + date) — abstention honnête, pas l'horloge.
         if re.search(r"soleil|lune\b|aube|crepuscule|cr[ée]puscule", _normalise(texte)):
@@ -6222,9 +6231,12 @@ def _charge_transitif(groupe: dict):
 # TES prémisses » (jamais posée comme un fait Provara) ; si le store CORROBORE la mineure (est_un), on le DIT —
 # la déduction devient doublement ancrée. Un moyen terme qui ne se noue pas -> refus expliqué (pas de garbage).
 _SYLLO_RE = re.compile(
-    r"\bsi\s+tou(?:s|tes)\s+les\s+([\wà-ÿ-]+)\s+(sont\s+[\wà-ÿ' -]+?|[\wà-ÿ-]+ent)\s+et\s+qu[e'’]\s*"
+    # « si » optionnel, prémisses reliées par « et que » OU une virgule/point, question finale « que peut-on
+    # en déduire » OU directe « Félix est-il gris ? » (vécu 2026-07-08 : la forme interrogative tombait en mémo).
+    r"\b(?:si\s+)?tou(?:s|tes)\s+les\s+([\wà-ÿ-]+)\s+(sont\s+[\wà-ÿ' -]+?|[\wà-ÿ-]+ent)\s*"
+    r"(?:et\s+qu[e'’]|[,.;]\s*(?:et\s+qu[e'’]\s*)?)\s*"
     r"((?:le\s+|la\s+|l['’]\s*|un\s+|une\s+)?[\wà-ÿ' -]+?)\s+est\s+un[e]?\s+([\wà-ÿ-]+)\b"
-    r".*?\b(?:d[ée]duire|conclure|conclusions?)\b", re.I | re.S)
+    r".*?\b(?:d[ée]duire|conclure|conclusions?|est[- ](?:il|elle|ce)|alors)\b", re.I | re.S)
 
 
 # THÉORIE DES JEUX — jeux classiques (câblage « tout câbler » 2026-07-08) : le module `jeux_appliques` CALCULE
@@ -6282,8 +6294,13 @@ def _verbe_singulier(v: str) -> str:
         if re.match(r"^des\s+", reste, flags=re.I):
             reste = re.sub(r"^des\s+", "un ", reste, flags=re.I)
         mots = reste.split()
+        # mots dont le SINGULIER finit déjà en -s (invariables) : « gris » devenait « gri » (vécu 2026-07-08)
+        _INVAR_S = {"gris", "gros", "frais", "mauvais", "bas", "las", "epais", "épais", "precis", "précis",
+                    "francais", "français", "anglais", "confus", "divers", "gras", "ras", "clos", "assis"}
         if mots:                                         # pluriels réguliers : -eaux -> -eau, -aux -> -al, -s -> ∅
-            if mots[-1].endswith("eaux"):
+            if mots[-1].lower() in _INVAR_S:
+                pass
+            elif mots[-1].endswith("eaux"):
                 mots[-1] = mots[-1][:-1]
             elif mots[-1].endswith("aux"):
                 mots[-1] = mots[-1][:-3] + "al"

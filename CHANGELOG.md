@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 37 : arithmétique d'horloge ÉNONCÉE (3 FAUX « heure machine »), syllogisme interrogatif, trivia calendaire
+
+- **FAUX ×3 (même racine)** : « un train part **à 8h** et roule 2 heures, à quelle heure arrive-t-il » /
+  « rendez-vous à 14h30 dure 45 minutes » / « il est 23h30 … dans une heure » recevaient *l'heure ACTUELLE de
+  la machine*. Garde (heure ÉNONCÉE = problème d'arithmétique, jamais l'horloge) + routes pures : « 10 h 00
+  (8 h 00 + 2 heures) », « 15 h 15 », « 0 h 30 … — le lendemain » (modulo 24 h dit) ; « 20h45 plus 30
+  minutes » → 21 h 15 (au lieu de *1245 minutes*) ; **durée entre deux heures** (« de 9h à 17h30 » → 8 h 30 ;
+  fin avant début → abstention, nuit à cheval ambiguë).
+- **Syllogisme en forme interrogative** (« si tous les chats sont gris et que Félix est un chat, Félix
+  est-il gris ? » tombait en mémo ; la forme à virgules aussi) : conclusion typée « d'après TES prémisses ».
+  Au passage : « gris » singularisé en *« gri »* → liste fermée d'invariables en -s. Garde : « si … » n'est
+  plus découpé par le multi-demandes (prémisses liées).
+- **Trivia calendaire** : mois le plus court (février), piège « quel mois a 28 jours » → « Tous — seul
+  février s'arrête à 28 », 7 mois à 31 jours, « mois le plus long » → pas UN seul (dit).
+- Bancs : `valide_assistant_nl` **444/444** (+8), capacites_chat **180/180** (+3), raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 36 : les milliers à espace PARTOUT (« 20 % de 5 000 » → 1 !) + bords théoriques
 
 - **FAUX ×3 (même racine, trois routes)** : l'espace des milliers cassait aussi les **pourcentages**
