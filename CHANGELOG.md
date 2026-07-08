@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 8 : racine cubique, logarithme en base, arrondi / partie entière / plafond
+
+- `fonction_nl.resout_math` : **racine cubique** exacte (« racine cubique de 27 » → 3, « de -8 » → -2 ; cube
+  non parfait → abstention, JAMAIS 3.107 servi comme exact — cohérent avec la racine carrée exacte),
+  **logarithme en base explicite** (« log de 100 en base 10 » → 2 ; exposant non entier ou base non dite →
+  abstention, on ne devine pas ln/log10), **arrondi** demi-supérieur convention française (« arrondi de 2,5 » →
+  3, pas l'arrondi bancaire de `round()` ; « à 2 décimales » → 3.14 ; supérieur/inférieur), **partie entière**
+  = plancher mathématique étiqueté (« partie entière de -2.3 » → -3), **plafond/plancher**. Tous tombaient en
+  MÉMO garbage avant.
+- Gardes anti-faux-positif : plancher/plafond exigent un nombre DÉCIMAL (« le plafond de 3 mètres » ne
+  déclenche rien) ; « l'arrondissement de Paris », « la racine du problème » ne déclenchent rien.
+- Bancs : `valide_assistant_nl` **156/156** (+15), capacites_chat 102/102, suite 25/25, raisonnement 166/166,
+  paraphrases 168/168, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — CÂBLAGE vague 7 : géométrie simple en conversation (aire / périmètre / volume / hypoténuse)
 
 - `fonction_nl._resout_geometrie` (appelé par `resout_math`) câble **geometrie2d** (Cercle, Polygone, Point) et

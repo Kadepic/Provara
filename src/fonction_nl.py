@@ -415,6 +415,57 @@ def resout_math(question: str):
     if mabs:
         return (VERIFIE, _fmt_nombre(abs(float(mabs.group(1).replace(",", ".")))), "valeur absolue")
 
+    # RACINE CUBIQUE : « racine cubique de 27 » -> 3 — cube PARFAIT seulement, sinon abstention (cohérent avec
+    # la racine carrée exacte de resout_arithmetique : JAMAIS un arrondi servi comme exact).
+    mrc = re.search(r"racine\s+cubique\s+(?:de\s+|d['’])?(-?\d+)\b", question, re.I)
+    if mrc:
+        n = int(mrc.group(1))
+        r0 = round(abs(n) ** (1.0 / 3.0)) if n else 0
+        r = next((k for k in (r0 - 1, r0, r0 + 1) if k >= 0 and k ** 3 == abs(n)), None)
+        if r is None:
+            return (HORS, None, None)
+        return (VERIFIE, str(-r if n < 0 else r), "calcul — racine cubique exacte")
+
+    # LOGARITHME en base EXPLICITE : « log de 100 en base 10 » -> 2 — exposant ENTIER exact seulement (base
+    # non dite ou résultat non entier -> abstention : on ne devine pas ln/log10, on n'arrondit pas).
+    mlg = re.search(r"log(?:arithme)?\s+(?:de\s+|d['’])?(\d+)\s+en\s+base\s+(\d+)", question, re.I)
+    if mlg:
+        n, b = int(mlg.group(1)), int(mlg.group(2))
+        if n >= 1 and b >= 2:
+            k, p = 0, 1
+            while p < n:
+                p *= b
+                k += 1
+            if p == n:
+                return (VERIFIE, str(k), "calcul — logarithme exact (base %d)" % b)
+        return (HORS, None, None)
+
+    # ARRONDI / PARTIE ENTIÈRE / PLANCHER / PLAFOND : opérations EXACTES par définition sur le nombre donné.
+    # Arrondi = demi-supérieur (convention française : 2,5 -> 3, jamais l'arrondi bancaire de round()).
+    # Partie entière = définition MATHÉMATIQUE (plancher) : E(-2,3) = -3, étiquetée pour lever l'ambiguïté.
+    mar = re.search(r"\b(arrondi[st]?|partie\s+entiere|plancher|plafond)\b", q)
+    if mar:
+        mnum = re.search(r"(-?\d+[.,]\d+)", question)    # exige un DÉCIMAL (« plafond de 3 mètres » ne matche pas)
+        if mnum:
+            from decimal import Decimal, ROUND_HALF_UP, ROUND_FLOOR, ROUND_CEILING
+            x = Decimal(mnum.group(1).replace(",", "."))
+            op = mar.group(1)
+            if op.startswith("arrondi"):
+                mdec = re.search(r"a\s+(\d+)\s+decimales?", q)
+                if "superieur" in q:
+                    return (VERIFIE, str(x.to_integral_value(rounding=ROUND_CEILING)), "calcul — arrondi supérieur")
+                if "inferieur" in q:
+                    return (VERIFIE, str(x.to_integral_value(rounding=ROUND_FLOOR)), "calcul — arrondi inférieur")
+                if mdec:
+                    quantum = Decimal(1).scaleb(-int(mdec.group(1)))
+                    return (VERIFIE, str(x.quantize(quantum, rounding=ROUND_HALF_UP)),
+                            "calcul — arrondi à %s décimale(s)" % mdec.group(1))
+                return (VERIFIE, str(x.to_integral_value(rounding=ROUND_HALF_UP)), "calcul — arrondi (demi-supérieur)")
+            if op == "plafond":
+                return (VERIFIE, str(x.to_integral_value(rounding=ROUND_CEILING)), "calcul — plafond (entier supérieur)")
+            return (VERIFIE, str(x.to_integral_value(rounding=ROUND_FLOOR)),
+                    "calcul — partie entière (plancher : E(-2,3) = -3)")
+
     # CONVERSION DE BASE (binaire/octal/hexadécimal <-> décimal ; conversion MÉCANIQUE exacte, natif Python).
     # « convertis 42 en binaire », « 42 en hexadécimal », « 1010 binaire en décimal », « 2A hexadécimal en décimal ».
     _BASES = {"binaire": 2, "binaires": 2, "octal": 8, "octale": 8, "hexadecimal": 16, "hexadecimale": 16, "hexa": 16}
