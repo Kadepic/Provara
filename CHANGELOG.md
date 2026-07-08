@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 5 : 8 façades de plus (dette 105 → 97, sous la barre des 100)
+
+- 1 preuve REGISTRE composée (diagnostic : 291) : **base-rate fallacy** (PPV bayésien EXACT — test à 99 %
+  sur prévalence 0.1 % -> 1.9 % de vrais positifs), régression ridge (OLS exact + rétrécissement), survie
+  médiane, sous-dispersion non confondue avec sur-dispersion, log-score exact, probabilité logistique
+  exacte, **jury de Condorcet** (la majorité converge : 0.76 -> 0.93 -> 0.999) et **sophisme de la main
+  chaude** (la conditionnelle vraie reste 0.5, l'estimateur naïf biaisé — l'artefact est REPRODUIT).
+- Plafond du cliquet : **97** — passé sous la barre des 100.
+- Bancs : valide_capacites 73/73 (pins 290→291), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 4 : 9 façades de plus (dette 114 → 105)
 
 - 2 preuves REGISTRE (diagnostic : 290) : **intervalles garantis** (bootstrap BCa et jackknife+ contenant la

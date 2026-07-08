@@ -4132,6 +4132,36 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_10() -> bool:
+    """LOT 5 : base-rate fallacy (PPV exact), ridge, survie, surdispersion, log-score, Condorcet, main chaude."""
+    import math
+    import random
+    import ia as _I
+    ppv = _I.valeur_predictive(0.99, 0.95, 0.001)                     # test à 99 % sur prévalence 0.1 % :
+    if abs(ppv - (0.99 * 0.001) / (0.99 * 0.001 + 0.05 * 0.999)) > 1e-12:   # PPV ≈ 1.9 % (Bayes EXACT)
+        return False
+    vr, dr = _I.regression_ridge([[1], [2], [3], [4]], [2, 4, 6, 8])
+    if not (dr["beta_ols"] == [2.0] and dr["beta_ridge"][0] < 2.0):   # OLS exact, ridge RÉTRÉCIT
+        return False
+    if _I.survie_mediane([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1] * 10) != 5.0:
+        return False
+    ratio, z, rejet = _I.teste_surdispersion([1, 2, 1, 3, 2, 1, 2, 3, 1, 2] * 3)
+    if not (0.31 < ratio < 0.33 and rejet is False):                  # sous-dispersé, PAS déclaré sur-dispersé
+        return False
+    if abs(_I.score_forecast([0.8, 0.2, 0.9], [1, 0, 1])
+           + (math.log(0.8) + math.log(0.8) + math.log(0.9)) / 3.0) > 1e-9:   # log-score exact
+        return False
+    if abs(_I.proba_mieux_classe(0.7, 0.3) - 1.0 / (1.0 + math.exp(-0.4))) > 1e-9:  # logistique exacte
+        return False
+    vs, ds = _I.sagesse_des_foules(0.6, rng=random.Random(0))         # jury de Condorcet : la majorité
+    c = [p for (_n, p) in ds["courbe"]]                               # devient sûre quand le groupe grandit
+    if not (vs == "analyse" and c[0] < c[1] < c[2] and c[2] > 0.99):
+        return False
+    vm, dm = _I.sophisme_main_chaude(0.5, 4, rng=random.Random(0))    # main chaude : la conditionnelle VRAIE
+    return vm == "analyse" and abs(dm["cond_vraie"] - 0.5) < 0.01 and dm["biais_naif"] < 0.45   # reste 0.5,
+    # l'estimateur naïf est biaisé vers le bas — l'artefact est REPRODUIT, pas récité.
+
+
 def _p_facade_stats_8() -> bool:
     """LOT 4 : intervalles (bootstrap BCa, Bernstein empirique, jackknife+), densité, maxent, intensité."""
     import math
@@ -4243,6 +4273,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Base-rate, Condorcet et main chaude (façade stats 10)": (
+        "valeur_predictive (PPV bayésien EXACT : test à 99 % + prévalence 0.1 % -> 1.9 %), regression_ridge "
+        "(OLS exact, rétrécissement), survie_mediane, teste_surdispersion, score_forecast (log-score exact), "
+        "proba_mieux_classe (logistique), sagesse_des_foules (jury de Condorcet : la majorité converge), "
+        "sophisme_main_chaude (l'artefact est REPRODUIT numériquement, graine fixée).", _p_facade_stats_10),
     "Intervalles garantis et maximum d'entropie (façade stats 8)": (
         "intervalle_bootstrap (BCa), intervalle_moyenne_garanti (Bernstein empirique), jackknife_plus, "
         "estime_densite (LOO vs Silverman), loi_maximum_entropie (sans contrainte -> uniforme EXACT, "
