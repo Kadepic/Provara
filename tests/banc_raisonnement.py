@@ -127,6 +127,16 @@ CAS = [
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
     ("portrait-personne-fem", R._cap_portrait_personne, "qui était Marie Curie ?", "née"),
+    # vivant -> PRÉSENT (« était footballeur » implique un décès) + libellé inclusif ACCORDÉ (sexe connu)
+    ("portrait-vivant-present", R._cap_portrait_personne, "qui est Lionel Messi ?", "est footballeur ("),
+    ("portrait-genre-accorde", R._cap_portrait_personne, "qui était Marie Curie ?", "physicienne"),
+    # nationalité : valeur UNIQUE servie ; join tronqué « X et Y » (fréquence de corpus, Argentine de Messi
+    # éjectée !) -> QUARANTAINE, abstention honnête (FAUX=0 vécu 2026-07-08)
+    ("fait-personne-natio-unique", R._cap_fait_personne, "quelle est la nationalité d'Emmanuel Macron ?",
+     "est originaire de France"),
+    ("fait-personne-natio-join", R._cap_fait_personne, "quelle est la nationalité de Lionel Messi ?", ""),
+    ("fait-personne-metier-vivant", R._cap_fait_personne, "quel est le métier de Kylian Mbappé ?",
+     "est footballeur."),
     ("guerison-etait", R._guerit_entree, "qui était Marie Curie ?", "était"),  # « était » protégé (pas -> « état »)
     ("guerison-mots-outils", R._guerit_entree, "la France a-t-elle des colonies", "des colonies"),  # « des » pas -> « dis »
     ("fait-personne-lieu", R._cap_fait_personne, "où est né Napoléon Ier ?", "Ajaccio"),

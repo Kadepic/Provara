@@ -1,5 +1,36 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX=0 : nationalités JOINTES tronquées en quarantaine (Messi « Italie et Espagne », SANS l'Argentine)
+
+- **FAUX par omission, trouvé au banc** : `ingere_celebres` (P27, joinmax=2) triait les nationalités par
+  fréquence GLOBALE de corpus puis tronquait — Messi [Argentine, Espagne, Italie] → « Italie et Espagne »
+  (l'Argentine éjectée !), Einstein → « États-Unis et Allemagne » (sans la Suisse). Une nationalité se lit
+  comme exhaustive : liste incomplète = faux. Corrections : **quarantaine au lookup** (les valeurs « X et Y »
+  de `nationalite_personne` ne sont plus JAMAIS servies — `lecteur.cherche` + `_lookup_cell` de repond, fiches
+  et faits ciblés couverts) ; **ingestion corrigée** (P27 joinmax=1 : multi-nationalité → HORS ; l'ordre des
+  occupations P106 devient l'ordre Wikidata DE LA PERSONNE, plus la fréquence de corpus qui décrivait Einstein
+  « écrivain, professeur, philosophe » sans « physicien »). ⚠ la ré-ingestion attend le re-upload de l'archive.
+- Qualité fiches personne : un VIVANT est au PRÉSENT (« Messi **est** footballeur » — « était » implique un
+  décès) ; libellés inclusifs Wikidata ACCORDÉS quand le sexe est connu (« footballeur ou footballeuse » →
+  « footballeur » / « physicien ou physicienne » → « physicienne » pour Marie Curie).
+- `valide_lecteur` **1613/1613 — première fois VERT contre les datasets complets** : 3 checks à spec fausse
+  réparés (nationalité ≠ « pays actuel » : polities historiques en minuscules + années de désambiguïsation
+  légitimes ; « Chiang Mai » n'est pas une date résiduelle — détecteur par FORME de date complète ;
+  récupérabilité avec exemption quarantaine documentée). banc_raisonnement **171/171** (+5).
+
+## 2026-07-08 — FAUX=0 : « combien de jours entre le 1er janvier et le 15 mars » servait 31 (les jours de janvier) + arithmétique de dates câblée
+
+- **FAUX servi comme fait, trouvé à la sonde** : le gabarit lecteur `jours_mois` (« combien de jours …
+  janvier ») matchait aussi les INTERVALLES → « 31 » servi pour « entre le 1er janvier et le 15 mars ».
+  Garde posée : « entre » ou deux mois cités → le gabarit ne matche plus (les durées de mois restent servies).
+- CÂBLAGE (`_cap_quotidien`) : **différence de dates** — « combien de jours entre le 1er janvier et le 15
+  mars » → 73 (datetime, calcul calendaire exact ; année absente → année de l'horloge, ÉTIQUETÉE — 2024
+  bissextile → 74 ; intervalle inversé sans années ou date invalide → abstention) ; **date relative** —
+  « quel jour serons-nous dans 45 jours / dans 2 semaines » → date+jour exacts, « il y a 10 jours » → passé ;
+  « dans 3 mois » (durée ambiguë) → abstention.
+- Bancs : `valide_capacites_chat` **109/109** (+7), valide_lecteur +2 cas adverses, suite 25/25,
+  assistant_nl 156/156, raisonnement, paraphrases, challenge, coordonnées, câblage — tous verts.
+
 ## 2026-07-08 — CÂBLAGE vague 8 : racine cubique, logarithme en base, arrondi / partie entière / plafond
 
 - `fonction_nl.resout_math` : **racine cubique** exacte (« racine cubique de 27 » → 3, « de -8 » → -2 ; cube

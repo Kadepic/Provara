@@ -1144,13 +1144,23 @@ def _lookup_cell(relation: str, entite: str):
     except OSError:
         return None
     if not gros:
-        return _charge_direct(relation).get(ne)
+        return _quarantaine_cell(relation, _charge_direct(relation).get(ne))
     clef = (relation, ne)
     if clef in _STREAM_CACHE:
-        return _STREAM_CACHE[clef]
+        return _quarantaine_cell(relation, _STREAM_CACHE[clef])
     trouve = _scan_bytes(chemin, ne, entite)
     _STREAM_CACHE[clef] = trouve
-    return trouve
+    return _quarantaine_cell(relation, trouve)
+
+
+def _quarantaine_cell(relation: str, cell):
+    """QUARANTAINE FAUX=0 (vécu 2026-07-08, miroir de lecteur.Lecteur.cherche) : les nationalités JOINTES
+    « X et Y » du dataset livré sont TRONQUÉES à 2 par fréquence de corpus (Messi -> « Italie et Espagne »,
+    SANS l'Argentine !) — une liste incomplète servie comme nationalité = faux par omission -> None (abstention).
+    Protège fiches personne et faits ciblés jusqu'à la ré-ingestion (ingere_celebres P27 joinmax=1)."""
+    if cell is not None and relation == "nationalite_personne" and " et " in str(cell[1]):
+        return None
+    return cell
 
 
 def _scan_bytes(chemin: str, ne: str, entite: str):
@@ -5119,6 +5129,67 @@ def _conseil_parapluie(texte: str, conv_id=None):
             % (eu[action], eu[autre], action, regle))
 
 
+_MOIS_NUM = {"janvier": 1, "fevrier": 2, "février": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6,
+             "juillet": 7, "aout": 8, "août": 8, "septembre": 9, "octobre": 10, "novembre": 11, "decembre": 12,
+             "décembre": 12}
+_DATE_FR_RE = re.compile(r"\b(1er|\d{1,2})\s+(janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[ûu]t|septembre"
+                         r"|octobre|novembre|d[ée]cembre)(?:\s+(\d{4}))?", re.I)
+
+
+def _date_relative(texte: str):
+    """« quel jour serons-nous dans 45 jours ? » / « quel jour était-on il y a 10 jours ? » — horloge de la
+    machine + décalage calendaire EXACT (datetime, bissextiles comprises). Même statut que l'heure/la date
+    locales déjà servies. FAUX=0 : « dans 3 mois » (durée ambiguë, 28-31 j) -> None, abstention."""
+    t = texte.lower()
+    m = re.search(r"\b(?:quel(?:le)?\s+(?:jour|date)|on\s+sera)\b.{0,40}?\b(?:dans|d['’]ici)\s+(\d+)\s+"
+                  r"(jours?|semaines?)\b", t)
+    sens = 1
+    if not m:
+        m = re.search(r"\b(?:quel(?:le)?\s+(?:jour|date))\b.{0,40}?\bil\s+y\s+a\s+(\d+)\s+(jours?|semaines?)\b", t)
+        sens = -1
+    if not m:
+        return None
+    import datetime as _dt
+    n = int(m.group(1)) * (7 if m.group(2).startswith("semaine") else 1)
+    if n > 36600:                                     # ±100 ans : au-delà, la question n'est plus calendaire
+        return None
+    d = _dt.date.today() + _dt.timedelta(days=sens * n)
+    verbe = "Nous serons le" if sens > 0 else "C'était le"
+    return ("%s %s %d %s %d (décalage calendaire exact depuis l'horloge de ta machine)."
+            % (verbe, _JOURS_FR[d.weekday()], d.day, _MOIS_FR[d.month - 1], d.year))
+
+
+def _difference_dates(texte: str):
+    """« combien de jours entre le 1er janvier et le 15 mars ? » -> 73 (calcul calendaire EXACT, datetime).
+    Année absente -> année de l'horloge machine, ÉTIQUETÉE dans la réponse (une bissextile change le compte).
+    FAUX=0 vécu : cette question servait « 31 » (les jours de janvier, gabarit lecteur trop large)."""
+    t = texte.lower()
+    if not re.search(r"\b(?:combien\s+de\s+jours|nombre\s+de\s+jours)\b", t):
+        return None
+    if not re.search(r"\bentre\b|\bdu\b.+?\bau\b", t):
+        return None
+    dates = _DATE_FR_RE.findall(texte)
+    if len(dates) != 2:
+        return None
+    import datetime as _dt
+    annee_defaut = _dt.date.today().year
+    ds = []
+    for jour, mois, annee in dates:
+        j = 1 if jour.lower() == "1er" else int(jour)
+        mo = _MOIS_NUM.get(mois.lower())
+        try:
+            ds.append((_dt.date(int(annee) if annee else annee_defaut, mo, j), bool(annee)))
+        except (ValueError, TypeError):
+            return None                               # 31 février… -> abstention, pas d'à-peu-près
+    (d1, a1), (d2, a2) = ds
+    if d2 < d1 and not (a1 or a2):                    # « entre le 15 mars et le 1er janvier » sans années :
+        return None                                   # intention ambiguë (année suivante ?) -> abstention
+    n = abs((d2 - d1).days)
+    note = "" if (a1 and a2) else " — année %d prise sur l'horloge de ta machine (une bissextile change le compte)" % annee_defaut
+    return ("%d jours entre le %d %s %d et le %d %s %d (calcul calendaire exact%s)."
+            % (n, d1.day, _MOIS_FR[d1.month - 1], d1.year, d2.day, _MOIS_FR[d2.month - 1], d2.year, note))
+
+
 def _cap_quotidien(texte: str, conv_id=None):
     """Questions du QUOTIDIEN : météo (refus honnête, chaleureux), heure et date (faits réels de l'horloge
     locale), conseil parapluie CALCULÉ (probabilité rapportée × utilité espérée, decision.py). Demandé par
@@ -5158,6 +5229,12 @@ def _cap_quotidien(texte: str, conv_id=None):
         return ("Internet est coupé, et la météo est une donnée EN DIRECT : sans réseau, te répondre serait "
                 "deviner — et je ne devine jamais 🙂 Active Internet (bouton « 🌐 ») et je te donne le relevé "
                 "réel, sourcé.")
+    r = _date_relative(texte)
+    if r:
+        return r
+    r = _difference_dates(texte)
+    if r:
+        return r
     if _HEURE_RE.search(texte):
         import time as _t
         lt = _t.localtime()
@@ -5860,7 +5937,12 @@ def _cap_portrait_personne(texte: str):
     # nationalite_personne stocke le PAYS (« France ») -> on le présente tel quel (« originaire de France »)
     natio_txt = ("originaire de %s" % natio[1]) if natio else ""
     if occ:
-        tete = "%s était %s" % (sujet, str(occ[1]).lower())
+        # vivant (pas d'année de décès) -> PRÉSENT : « Messi était footballeur » implique un décès (faux) ;
+        # sexe connu -> forme accordée du libellé inclusif Wikidata (« footballeur ou footballeuse »)
+        occ_txt = str(occ[1]).lower()
+        if sexe:
+            occ_txt = _occupation_selon_genre(occ_txt, fem)
+        tete = "%s %s %s" % (sujet, "était" if deces else "est", occ_txt)
         if natio_txt:
             tete += ", %s" % natio_txt
     elif natio_txt:
@@ -6176,6 +6258,20 @@ def _cap_createur(texte: str):
     return None
 
 
+def _occupation_selon_genre(val: str, fem: bool) -> str:
+    """Les libellés P106 de Wikidata sont INCLUSIFS (« footballeur ou footballeuse ») : quand le sexe de la
+    personne est CONNU, on garde la forme accordée (masc = 1ʳᵉ, fém = 2ᵉ) — transformation de libellé
+    déterministe, pas une invention. Composants d'une jointure traités un à un ; sans « ou », inchangé."""
+    def _forme(part: str) -> str:
+        if " ou " in part:
+            g, d = part.split(" ou ", 1)
+            return d.strip() if fem else g.strip()
+        return part
+    morceaux = val.split(" et ")
+    morceaux = [", ".join(_forme(p) for p in m.split(", ")) for m in morceaux]
+    return " et ".join(morceaux)
+
+
 def _cap_fait_personne(texte: str):
     """FAIT CIBLÉ sur une personne (lieu/année de naissance ou décès, nationalité, métier) via lookup STREAMING —
     « où est né Napoléon Ier ? » -> « Napoléon Ier est né à Ajaccio. ». FAUX=0 : fait stocké réel, None sinon ;
@@ -6201,6 +6297,11 @@ def _cap_fait_personne(texte: str):
             return (gabarit % (aff[:1].upper() + aff[1:], e, val)) + "."
         if rel == "occupation_personne":
             val = val.lower()
+            sexe = _lookup_cell("sexe_personne", ent)
+            if sexe:                                               # sexe connu -> forme accordée du libellé inclusif
+                val = _occupation_selon_genre(val, "femin" in _normalise(str(sexe[1])))
+        if "était" in gabarit and not _lookup_cell("annee_deces_personne", ent):
+            gabarit = gabarit.replace("était", "est")              # vivant -> présent (« était » implique un décès)
         return (gabarit % (aff[:1].upper() + aff[1:], val)) + "."
     return None
 

@@ -180,6 +180,30 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — ARITHMÉTIQUE DE DATES (horloge machine + datetime, calcul calendaire EXACT — vague 9) —
+import datetime as _dt  # noqa: E402
+
+_aujourdhui = _dt.date.today()
+_d45 = _aujourdhui + _dt.timedelta(days=45)
+r = R._cap_quotidien("quel jour serons-nous dans 45 jours ?")
+check(r is not None and ("%d" % _d45.day) in r and "exact" in r,
+      "« dans 45 jours » -> date exacte (horloge + timedelta), étiquetée calculée")
+r = R._cap_quotidien("quel jour était-il il y a 10 jours ?")
+_dm10 = _aujourdhui - _dt.timedelta(days=10)
+check(r is not None and r.startswith("C'était") and ("%d" % _dm10.day) in r, "« il y a 10 jours » -> passé exact")
+r = R._cap_quotidien("combien de jours entre le 1er janvier et le 15 mars ?")
+_n = abs((_dt.date(_aujourdhui.year, 3, 15) - _dt.date(_aujourdhui.year, 1, 1)).days)
+check(r is not None and r.startswith("%d jours" % _n) and "horloge" in r,
+      "intervalle sans année -> %d jours, année de l'horloge ÉTIQUETÉE (bissextile change le compte)" % _n)
+r = R._cap_quotidien("combien de jours entre le 1er janvier 2024 et le 15 mars 2024 ?")
+check(r is not None and r.startswith("74 jours"), "2024 bissextile -> 74 jours (et pas 73)")
+check(R._cap_quotidien("combien de jours entre le 15 mars et le 1er janvier ?") is None,
+      "intervalle INVERSÉ sans années (année suivante ?) -> abstention honnête")
+check(R._cap_quotidien("quel jour serons-nous dans 3 mois ?") is None,
+      "« dans 3 mois » (durée ambiguë 28-31 j) -> abstention, jamais d'à-peu-près")
+check(R._cap_quotidien("combien de jours entre le 30 février et le 15 mars ?") is None,
+      "date invalide (30 février) -> abstention")
+
 # — CONSEIL PARAPLUIE (avis ⑤ : décision sous incertitude, decision.py — probabilité RAPPORTÉE, règle AFFICHÉE) —
 import meteo as _MET  # noqa: E402
 

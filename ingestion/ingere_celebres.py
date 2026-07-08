@@ -46,8 +46,11 @@ PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 """
 
 #           propriété  fichier                          label?  année?  jointure max
+# ⚠ P27 jointure max = 1 (FAUX=0 vécu 2026-07-08) : avec joinmax=2, les nationalités étaient triées par
+# fréquence GLOBALE de corpus puis tronquées — Messi [Argentine, Espagne, Italie] -> « Italie et Espagne »
+# (l'Argentine éjectée !). Une nationalité se lit comme exhaustive : multi-nationalité -> HORS, jamais un join.
 CIBLES = [("P106", "occupation_personne.jsonl",         True,   False,  3),
-          ("P27",  "nationalite_personne.jsonl",        True,   False,  2),
+          ("P27",  "nationalite_personne.jsonl",        True,   False,  1),
           ("P569", "annee_naissance_personne.jsonl",    False,  True,   1),
           ("P570", "annee_deces_personne.jsonl",        False,  True,   1),
           ("P19",  "lieu_naissance.jsonl",              True,   False,  1),
@@ -108,7 +111,11 @@ def dominants(prop: str, label_val: bool, annee: bool, joinmax: int) -> dict:
         lst.sort(key=lambda d: -d["sl"])
         if len(lst) > 1 and lst[0]["sl"] < RATIO_DOMINANCE * max(1, lst[1]["sl"]):
             continue                                        # homonymes célèbres tous les deux -> on ne touche pas
-        vals = sorted(lst[0]["vals"], key=lambda v: -freq[v])[:joinmax]
+        # ORDRE PAR PERSONNE, PAS PAR CORPUS (FAUX=0 vécu 2026-07-08) : trier par fréquence GLOBALE éjectait le
+        # définitoire — Einstein P106 tronqué à « écrivain, professeur d'université et philosophe » SANS
+        # « physicien » (métiers banals sur-représentés dans le corpus). On garde l'ordre Wikidata de la
+        # personne (le définitoire arrive en tête de ses déclarations).
+        vals = lst[0]["vals"][:joinmax]
         if joinmax == 1 and len(lst[0]["vals"]) > 1:
             continue                                        # valeur unique exigée (années/lieux) -> multi = HORS
         val = " et ".join([", ".join(vals[:-1]), vals[-1]]) if len(vals) > 1 else vals[0]
