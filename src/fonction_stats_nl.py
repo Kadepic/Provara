@@ -41,7 +41,7 @@ def _ia():
 
 # — MOYENNE PONDÉRÉE : paires (valeur, coefficient) — jamais la moyenne simple de tous les nombres (FAUX=0).
 _PAIRE_POND = re.compile(
-    r"(-?\d+(?:[.,]\d+)?)\s*\(?\s*(?:coefficients?|coeffs?\.?|poids|pond[ée]r[ée]e?\s+(?:par|de))\s*:?\s*"
+    r"(-?\d+(?:[.,]\d+)?)\s*\(?\s*(?:coefficients?|coeffs?\.?|coefs?\.?|poids|pond[ée]r[ée]e?\s+(?:par|de))\s*:?\s*"
     r"(-?\d+(?:[.,]\d+)?)\)?", re.I)
 
 
@@ -108,7 +108,7 @@ def repond_stats(texte: str):
     if re.search(r"\b(moyenne|moyen)\b", bas) and "confiance" not in bas and "intervalle" not in bas:
         # moyenne PONDÉRÉE : ne JAMAIS servir la moyenne simple de tous les nombres (les coefficients
         # ne sont pas des valeurs — « 12 coeff 2 et 15 coeff 3 » vaut 13.8, pas 8)
-        if re.search(r"\b(pond[ée]r[ée]e?s?|coefficients?|coeffs?)\b", bas):
+        if re.search(r"\b(pond[ée]r[ée]e?s?|coefficients?|coeffs?|coefs?)\b", bas):
             return _moyenne_ponderee(t, bas) if vals else None
         if re.search(r"\bpoids\b", bas) and vals:
             pond = _moyenne_ponderee(t, bas, explicite=False)
@@ -130,6 +130,13 @@ def repond_stats(texte: str):
         # grand que 25 » servait min/max. Le « plus grand » de ces phrases qualifie un DIVISEUR/un ÉCART, pas
         # une liste. On laisse la main aux routes dédiées (fonction_nl : PGCD, comparaison en %).
         if re.search(r"\b(diviseur|multiple|commun|pgcd|ppcm|pourcent|pour ?cent)\b", bas) or "%" in t:
+            return None
+        # GARDE COMPARAISON / TRI / EXTREMUM (FAUX vécu 2026-07-08) : « 8 est plus grand QUE 5 » (comparaison
+        # -> Oui/Non), « CLASSE 3,1,2 par ordre » (tri), « le plus grand ENTRE 7 et 12 » (extremum, réponse
+        # directe) ne sont pas des questions de min/max descriptif. On laisse la main à fonction_nl.
+        if re.search(r"\bplus\s+(?:grand|petit|[ée]lev[ée])\w*\s+(?:a|à|que)\b|\b(?:sup[ée]rieur|inf[ée]rieur)\w*\s+(?:a|à|que)\b"
+                     r"|\b(?:classe|range|trie|ordonne|classer|ranger|trier)\b|\bordre\s+(?:croissant|decroissant)\b"
+                     r"|\bplus\s+(?:grand|petit)\s+(?:entre|de|parmi)\b|\bdu\s+plus\s+(?:petit|grand)\b", bas):
             return None
         return _descr("min", vals)
     if re.search(r"\bsomme\b", bas) and vals:

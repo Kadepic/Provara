@@ -164,6 +164,7 @@ _CONV_UNITS = {
     "mg": ("M", 0.001), "milligramme": ("M", 0.001), "milligrammes": ("M", 0.001),
     "g": ("M", 1.0), "gramme": ("M", 1.0), "grammes": ("M", 1.0),
     "kg": ("M", 1000.0), "kilogramme": ("M", 1000.0), "kilogrammes": ("M", 1000.0),
+    "kilo": ("M", 1000.0), "kilos": ("M", 1000.0),      # « un kilo » = kilogramme en usage courant
     "tonne": ("M", 1_000_000.0), "tonnes": ("M", 1_000_000.0),
     # temps (base = seconde)
     "milliseconde": ("T", 0.001), "millisecondes": ("T", 0.001),
@@ -574,6 +575,32 @@ def _resout_geometrie(q: str):
                 import math as _math
                 return (VERIFIE, _fmt_nombre(round(4.0 / 3.0 * _math.pi * r ** 3, 4)),
                         "géométrie — volume de la sphère (4/3·π·r³)")
+        if "cylindre" in q:
+            r = dim("rayon")
+            if r is None:
+                d = dim("diametre")
+                r = d / 2.0 if d is not None else None
+            h = dim("hauteur")
+            if r is not None and h is not None and r >= 0 and h >= 0:
+                import math as _math
+                return (VERIFIE, _fmt_nombre(round(_math.pi * r * r * h, 4)),
+                        "géométrie — volume du cylindre (π·r²·h)")
+        if "cone" in q:
+            r = dim("rayon")
+            h = dim("hauteur")
+            if r is not None and h is not None and r >= 0 and h >= 0:
+                import math as _math
+                return (VERIFIE, _fmt_nombre(round(_math.pi * r * r * h / 3.0, 4)),
+                        "géométrie — volume du cône (π·r²·h/3)")
+
+    # TRAPÈZE : aire = (base1 + base2)/2 × hauteur (les deux bases + la hauteur nommées).
+    if "trapeze" in q and aire:
+        mb = re.search(r"bases?\s+(?:de\s+)?(\d+(?:[.,]\d+)?)\s+et\s+(?:de\s+)?(\d+(?:[.,]\d+)?)", q)
+        h = dim("hauteur")
+        if mb and h is not None:
+            b1, b2 = float(mb.group(1).replace(",", ".")), float(mb.group(2).replace(",", "."))
+            return (VERIFIE, _fmt_nombre((b1 + b2) / 2.0 * h),
+                    "géométrie — aire du trapèze ((b₁+b₂)/2 × h)")
     return None
 
 
@@ -777,6 +804,40 @@ def resout_math(question: str):
         g = _AM.pgcd(ent[0], ent[1])
         return (VERIFIE, str(ent[0] * ent[1] // g) if g else "0", "arithmétique — PPCM")
 
+    # COMPARAISON DIRECTE de deux nombres : « est-ce que 8 est plus grand que 5 » -> Oui ; « quel est le plus
+    # grand entre 7 et 12 » -> 12 (réponse DIRECTE, pas « Minimum:… maximum:… » de la route stats).
+    mcd = re.search(r"(-?\d+(?:[.,]\d+)?)\s+est(?:[- ](?:il|elle|ce))?\s+(?:plus\s+(grand|petit|[ée]lev[ée])\w*|"
+                    r"(sup[ée]rieur|inf[ée]rieur)\w*)\s+(?:a|à|que)\s+(-?\d+(?:[.,]\d+)?)", question, re.I)
+    if mcd:
+        a = float(mcd.group(1).replace(",", ".")); b = float(mcd.group(4).replace(",", "."))
+        veut_grand = bool(mcd.group(2) and mcd.group(2).startswith(("grand", "ele", "éle"))) or \
+            (mcd.group(3) and mcd.group(3).startswith("sup"))
+        vrai = (a > b) if veut_grand else (a < b)
+        if a == b:
+            return (VERIFIE, "Non, %s = %s (ils sont égaux)." % (_fmt_nombre(a), _fmt_nombre(b)), "comparaison")
+        return (VERIFIE, ("Oui, %s %s %s." if vrai else "Non : %s %s %s.")
+                % (_fmt_nombre(a), ">" if (a > b) else "<", _fmt_nombre(b)), "comparaison de nombres")
+    mpg = re.search(r"(?:le\s+plus\s+(grand|petit)|quel\s+est\s+le\s+plus\s+(grand|petit))\b.*?\b"
+                    r"(?:entre|de|parmi)\s+(-?\d+(?:[.,]\d+)?(?:\s*,\s*-?\d+(?:[.,]\d+)?)*"
+                    r"(?:\s+(?:et|ou)\s+-?\d+(?:[.,]\d+)?)?)", question, re.I)
+    if mpg:
+        nums = [float(x.replace(",", ".")) for x in re.findall(r"-?\d+(?:[.,]\d+)?", mpg.group(3))]
+        if len(nums) >= 2:
+            sens = mpg.group(1) or mpg.group(2)
+            v = max(nums) if sens == "grand" else min(nums)
+            return (VERIFIE, _fmt_nombre(v), "comparaison — extremum d'une liste")
+
+    # TRI d'une liste de nombres : « classe / range / trie 3, 1, 2 par ordre croissant / du plus petit au plus
+    # grand ». Réponse triée exacte (la route _cap_texte tri ne couvre que « trie les nombres » explicite).
+    if re.search(r"\b(classe|range|trie|ordonne|ranger|classer|trier)\b", q) and \
+            re.search(r"\bordre\s+(croissant|decroissant)|du\s+plus\s+(petit|grand)|par\s+ordre", q):
+        nums = re.findall(r"-?\d+(?:[.,]\d+)?", question)
+        if len(nums) >= 2:
+            desc = bool(re.search(r"decroissant|plus\s+grand\s+au\s+plus\s+petit|du\s+plus\s+grand", q))
+            vals = sorted((float(x.replace(",", ".")) for x in nums), reverse=desc)
+            return (VERIFIE, ", ".join(_fmt_nombre(v) for v in vals) + " (ordre %s)"
+                    % ("décroissant" if desc else "croissant"), "tri de nombres")
+
     # VÉRIFICATIONS NUMÉRIQUES exactes : pair/impair, divisible par, multiple de, carré parfait.
     # (La garde de resolution.py renvoie ces « est-ce que <nombre> est … » ici — on y répond VRAIMENT.)
     mvn = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+(?:un\s+nombre\s+)?(pair|impair)e?\b", q) \
@@ -830,6 +891,54 @@ def resout_math(question: str):
         return (VERIFIE, ("Oui, %s = %s/%s." % (meg.group(1), meg.group(2), meg.group(3))) if a == b
                 else "Non, %s ≠ %s/%s." % (meg.group(1), meg.group(2), meg.group(3)),
                 "arithmétique — fractions exactes")
+
+    # OPÉRATIONS SUR LES FRACTIONS (exactes via Fraction) : simplification, fraction↔pourcentage, décimal→fraction.
+    from fractions import Fraction as _Fr
+    msimp = re.search(r"simplifie[rz]?\s+(?:la\s+fraction\s+)?(\d+)\s*/\s*(\d+)", question, re.I)
+    if msimp:
+        num, den = int(msimp.group(1)), int(msimp.group(2))
+        if den:
+            fr = _Fr(num, den)
+            if fr.denominator == 1:
+                return (VERIFIE, "%d (= %d/%d)" % (fr.numerator, num, den), "fractions — simplification")
+            deja = (num, den) == (fr.numerator, fr.denominator)
+            return (VERIFIE, "%d/%d%s" % (fr.numerator, fr.denominator,
+                                          "" if deja else " (= %d/%d)" % (num, den)), "fractions — simplification")
+    mf2p = re.search(r"(\d+)\s*/\s*(\d+)\s+en\s+pour ?cent", question, re.I)
+    if mf2p:
+        num, den = int(mf2p.group(1)), int(mf2p.group(2))
+        if den:
+            return (VERIFIE, _fmt_nombre(num / den * 100) + " %", "fractions — vers pourcentage")
+    md2f = re.search(r"(\d+[.,]\d+)\s+en\s+fraction", question, re.I)
+    if md2f:
+        fr = _Fr(md2f.group(1).replace(",", ".")).limit_denominator(10 ** 6)
+        return (VERIFIE, "%d/%d" % (fr.numerator, fr.denominator), "fractions — depuis un décimal")
+
+    # POURCENTAGE INVERSE : « 40 est 20% de quel nombre » -> 200 (40 / 0,20). Le tout à partir d'une part+taux.
+    minv_p = re.search(rf"{_PCT}\s+est\s+{_PCT}\s*(?:%|pour ?cent)\s+de\s+quel\s+nombre", question, re.I)
+    if minv_p:
+        part, taux = _f(minv_p.group(1)), _f(minv_p.group(2))
+        if taux:
+            return (VERIFIE, _fmt_nombre(part / (taux / 100.0)), "calcul — pourcentage inverse (part ÷ taux)")
+    # PRIX AVANT RÉDUCTION : « un article coûte 120 après 20% de réduction, quel était son prix » -> 150.
+    mpv = re.search(rf"co[uû]te\s+{_PCT}\s+apr[eè]s\s+{_PCT}\s*(?:%|pour ?cent)\s+de\s+(?:r[ée]duc\w*|remise)",
+                    question, re.I)
+    if mpv:
+        prix, taux = _f(mpv.group(1)), _f(mpv.group(2))
+        if taux < 100:
+            return (VERIFIE, "%s (prix avant la réduction de %s %%)" % (_fmt_nombre(prix / (1 - taux / 100.0)),
+                                                                        _fmt_nombre(taux)),
+                    "calcul — prix avant réduction")
+
+    # ARRONDI À UN RANG : « arrondis 347 à la centaine » -> 300 (dizaine/centaine/millier ; demi-supérieur).
+    mrr = re.search(r"arrondi[st]?\s+(?:le\s+nombre\s+)?(-?\d+(?:[.,]\d+)?)\s+(?:[àa]\s+la|au)\s+"
+                    r"(dizaine|centaine|millier|unite)", q)
+    if mrr:
+        x = float(mrr.group(1).replace(",", "."))
+        pas = {"unite": 1, "dizaine": 10, "centaine": 100, "millier": 1000}[mrr.group(2)]
+        from decimal import Decimal, ROUND_HALF_UP
+        r = int((Decimal(str(x)) / pas).quantize(0, rounding=ROUND_HALF_UP)) * pas
+        return (VERIFIE, str(r), "calcul — arrondi à la %s" % mrr.group(2))
 
     # PRODUIT / DIFFÉRENCE / QUOTIENT nommés : « le produit de 4 et 25 » -> 100 (exact ; quotient exact seul).
     mpr = re.search(r"\b(produit|difference|quotient)\s+(?:de\s+|d['’]\s*|entre\s+)(-?\d+)\s+et\s+(?:de\s+)?(-?\d+)", q)

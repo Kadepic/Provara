@@ -1,5 +1,38 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 21 : volume cylindre/cône, aire trapèze, « kilo » → grammes
+
+- **Géométrie** : volume du cylindre (π·r²·h — « rayon 2 hauteur 5 » → 62.83), volume du cône (π·r²·h/3),
+  aire du trapèze ((b₁+b₂)/2·h — « bases 4 et 6, hauteur 3 » → 15).
+- **Unités** : « un kilo »/« kilos » reconnu comme kilogramme (usage courant) → « combien de grammes dans 2
+  kilos » → 2000.
+- Bancs : `valide_assistant_nl` **296/296** (+5), suite 25/25, paraphrases 174/174, capacites_chat 144/144,
+  câblage 504 0 orphelin.
+
+## 2026-07-08 — Vague 20 : 1 FAUX (Noël→31) + comparaison directe, extremum, tri, compte à rebours, coef
+
+- **FAUX** : « dans combien de jours le 25 **décembre** » → *« 31 »* (le gabarit `jours_mois` prenait
+  « décembre » pour une durée de mois). Gardes ajoutées au gabarit (compte à rebours « dans/jusqu/avant », tout
+  chiffre) + **compte à rebours câblé** : « dans combien de jours Noël / le 25 décembre » → nombre exact
+  jusqu'à la date (année courante, l'an prochain si passée).
+- La route stats min/max ne coiffe plus les **comparaisons** (« 8 est plus grand que 5 » → Oui), les
+  **extremums** (« le plus grand entre 7 et 12 » → 12) ni les **tris** (« classe 3, 1, 2 par ordre
+  croissant » → 1, 2, 3 ; « du plus petit au plus grand », décroissant). Gardes stats + routes dédiées dans
+  `resout_math`. Abréviation **« coef »** reconnue pour la moyenne pondérée (le guérisseur la corrompait en
+  « chef » → protégée, comme « contient »→« continent »).
+- Bancs : `valide_assistant_nl` **291/291** (+7), capacites_chat **144/144** (+2), lecteur **1615/1615** (+2),
+  stats_nl 22/22, suite 25/25, raisonnement 194/194, paraphrases 174/174, challenge 16/16, câblage 504.
+
+## 2026-07-08 — Vague 19 : fractions, pourcentage inverse, prix avant réduction, arrondi à un rang
+
+- **Fractions** (exactes via `Fraction`) : « simplifie 6/8 » → 3/4 (« 10/5 » → 2, entier) ; « 3/4 en
+  pourcentage » → 75 % ; « 0,25 en fraction » → 1/4.
+- **Pourcentage inverse** : « 40 est 20% de quel nombre » → 200 (part ÷ taux) ; **prix avant réduction** :
+  « un article coûte 120 après 20% de réduction » → 150.
+- **Arrondi à un rang** : « arrondis 347 à la centaine » → 300, « au millier » → 3000 (demi-supérieur).
+- Bancs : `valide_assistant_nl` **284/284** (+10), suite 25/25, raisonnement 194/194, paraphrases 174/174,
+  capacites_chat 142/142, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Partage équitable et arithmétique décimale (opérateur explicite)
 
 - **Partage** : « partage 20 euros entre 4 personnes » → « 5 chacun (20 ÷ 4) » ; reste dit quand ça ne tombe

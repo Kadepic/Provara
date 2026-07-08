@@ -5461,6 +5461,30 @@ def _cap_quotidien(texte: str, conv_id=None):
                     "te donner l'heure locale de TA machine comme si c'était la sienne." % mv.group(1))
         lt = _t.localtime()
         return "Il est %02d h %02d (horloge de ta machine)." % (lt.tm_hour, lt.tm_min)
+    # COMPTE À REBOURS vers une date de l'année : « dans combien de jours le 25 décembre / Noël » (année
+    # courante ; si la date est passée, l'an prochain). Horloge machine + datetime, calcul calendaire exact.
+    mcr = re.search(r"(?:dans\s+)?combien\s+de\s+jours\s+(?:jusqu['’à]*\s*(?:au|a|à)?\s*|avant\s+|reste[- ]t[- ]il"
+                    r"\s+(?:avant|jusqu[e'’]*)\s*|il\s+reste\s+(?:avant|jusqu[e'’]*)\s*)?"
+                    r"(?:le\s+)?(no[eë]l|(1er|\d{1,2})\s+(janvier|f[ée]vrier|mars|avril|mai|juin|juillet"
+                    r"|ao[ûu]t|septembre|octobre|novembre|d[ée]cembre))", texte, re.I)
+    if mcr:
+        import datetime as _dt
+        auj = _dt.date.today()
+        if mcr.group(1) and _normalise(mcr.group(1)).startswith("noel"):
+            j, mo = 25, 12
+        else:
+            j = 1 if (mcr.group(2) or "").lower() == "1er" else int(mcr.group(2))
+            mo = _MOIS_NUM.get(_normalise(mcr.group(3)))
+        if mo:
+            try:
+                cible = _dt.date(auj.year, mo, j)
+                if cible < auj:
+                    cible = _dt.date(auj.year + 1, mo, j)
+                n = (cible - auj).days
+                return ("%d jours (jusqu'au %d %s %d — calcul depuis l'horloge de ta machine)."
+                        % (n, cible.day, _MOIS_FR[cible.month - 1], cible.year))
+            except (ValueError, TypeError):
+                return None
     mage = re.search(r"quel\s+[âa]ge\s+a\s+(?:une\s+personne|quelqu['’]un)\s+n[ée]e?\s+en\s+(\d{4})",
                      texte, re.I)
     if mage:
@@ -7409,7 +7433,9 @@ _MOTS_OUTILS_PROTEGES = frozenset(
 _NUMERAUX_PROTEGES = frozenset(
     "zero un une deux trois quatre cinq six sept huit neuf dix onze douze treize quatorze quinze seize "
     "vingt trente quarante cinquante soixante cent cents mille million millions milliard milliards "
-    "premier premiere deuxieme troisieme quatrieme cinquieme dixieme centieme".split())
+    "premier premiere deuxieme troisieme quatrieme cinquieme dixieme centieme "
+    # abréviations mathématiques courantes « corrigées » à tort (« coef »->« chef ») : fermé, sûr.
+    "coef coefs coeff coeffs".split())
 _PROTEGES = _FORMES_VERBALES_PROTEGEES | _MOTS_OUTILS_PROTEGES | _NUMERAUX_PROTEGES
 
 
