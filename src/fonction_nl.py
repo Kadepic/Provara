@@ -169,8 +169,23 @@ _CONV_UNITS = {
     "seconde": ("T", 1.0), "secondes": ("T", 1.0),
     "min": ("T", 60.0), "minute": ("T", 60.0), "minutes": ("T", 60.0),
     "heure": ("T", 3600.0), "heures": ("T", 3600.0),
-    "jour": ("T", 86400.0), "jours": ("T", 86400.0),
+    "jour": ("T", 86400.0), "jours": ("T", 86400.0), "journee": ("T", 86400.0), "journees": ("T", 86400.0),
     "semaine": ("T", 604800.0), "semaines": ("T", 604800.0),
+    # volume (base = litre ; m³/cm³ par définition du litre = 1 dm³)
+    "ml": ("V", 0.001), "millilitre": ("V", 0.001), "millilitres": ("V", 0.001),
+    "cl": ("V", 0.01), "centilitre": ("V", 0.01), "centilitres": ("V", 0.01),
+    "dl": ("V", 0.1), "decilitre": ("V", 0.1), "decilitres": ("V", 0.1),
+    "l": ("V", 1.0), "litre": ("V", 1.0), "litres": ("V", 1.0),
+    "hectolitre": ("V", 100.0), "hectolitres": ("V", 100.0),
+    "m3": ("V", 1000.0), "metre cube": ("V", 1000.0), "metres cubes": ("V", 1000.0),
+    "cm3": ("V", 0.001), "centimetre cube": ("V", 0.001), "centimetres cubes": ("V", 0.001),
+    # vitesse (base = m/s ; km/h = 1000/3600 exact ; nœud = 1852 m/h, définition légale du mille marin).
+    # NB : normalise() transforme « km/h » en « km h » et « m/s » en « m s » -> ce sont les clés réelles.
+    "m s": ("S", 1.0), "metre par seconde": ("S", 1.0), "metres par seconde": ("S", 1.0),
+    "km h": ("S", 1000.0 / 3600.0), "kmh": ("S", 1000.0 / 3600.0),
+    "kilometre par heure": ("S", 1000.0 / 3600.0), "kilometres par heure": ("S", 1000.0 / 3600.0),
+    "kilometre heure": ("S", 1000.0 / 3600.0), "kilometres heure": ("S", 1000.0 / 3600.0),
+    "noeud": ("S", 1852.0 / 3600.0), "noeuds": ("S", 1852.0 / 3600.0),
 }
 # alternance longest-first : « kilometre » avant « metre » avant « m » ; « secondes » avant « s ».
 _UNIT_ALT = "|".join(sorted((re.escape(u) for u in _CONV_UNITS), key=len, reverse=True))
@@ -203,7 +218,8 @@ def resout_conversion(question: str):
     if not du or not tu or du[0] != tu[0]:           # unité inconnue OU dimensions différentes -> HORS (jamais faux)
         return (HORS, None, None)
     val = num * du[1] / tu[1]
-    return (VERIFIE, f"{_fmt_nombre(val)} {dst}", "conversion d'unités (facteurs exacts, même dimension)")
+    affiche = {"m s": "m/s", "km h": "km/h", "kmh": "km/h"}.get(dst, dst)   # normalise() a mangé le « / »
+    return (VERIFIE, f"{_fmt_nombre(val)} {affiche}", "conversion d'unités (facteurs exacts, même dimension)")
 
 
 # ————————————————————————————————— ARITHMÉTIQUE (entiers, résultat EXACT uniquement) —————————————————————————————————
@@ -274,6 +290,36 @@ def _deux_entiers(question: str):
     return [int(x) for x in re.findall(r"\d+", question)]
 
 
+# Numération romaine : PAIRES canoniques de la notation soustractive, construites sur les symboles VÉRIFIÉS du
+# lecteur (chiffre_romain, CAT_CONVENTION). Round-trip complet 1..3999 épinglé au banc.
+_ROMAIN_PAIRES = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"),
+                  (50, "L"), (40, "XL"), (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
+
+
+def _en_romain(n: int) -> str:
+    out = []
+    for v, s in _ROMAIN_PAIRES:
+        while n >= v:
+            out.append(s)
+            n -= v
+    return "".join(out)
+
+
+def _depuis_romain(s: str):
+    """Valeur d'un nombre romain CANONIQUE, sinon None (« IIII », « VX », ou un mot qui n'en est pas un —
+    « CIVIL » a tous ses caractères dans l'alphabet romain). Validation par ROUND-TRIP : on reconvertit la
+    valeur lue et on exige l'égalité stricte -> seule l'écriture canonique est acceptée (FAUX=0)."""
+    vals = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    total, prec = 0, 0
+    for c in reversed(s):
+        v = vals.get(c)
+        if v is None:
+            return None
+        total += v if v >= prec else -v
+        prec = max(prec, v)
+    return total if 1 <= total <= 3999 and _en_romain(total) == s else None
+
+
 def _resout_geometrie(q: str):
     """GÉOMÉTRIE simple en NL sur la question NORMALISÉE — « aire d'un cercle de rayon 3 », « périmètre d'un
     carré de côté 4 », « aire d'un rectangle de 3 par 5 », « aire d'un triangle de base 6 et hauteur 4 »,
@@ -336,6 +382,25 @@ def _resout_geometrie(q: str):
         if b is not None and h is not None and b >= 0 and h >= 0:
             p = Polygone([(0.0, 0.0), (b, 0.0), (0.0, h)])
             return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du triangle (base×hauteur/2)")
+
+    # TRIANGLE : périmètre par les 3 côtés — SEULEMENT si l'inégalité triangulaire tient (côtés 1, 1, 5 :
+    # ce triangle n'existe pas -> abstention, pas une somme aveugle).
+    if "triangle" in q and perim and "cote" in q:
+        nums = [float(x.replace(",", ".")) for x in re.findall(r"\d+(?:[.,]\d+)?", q)]
+        if len(nums) == 3 and all(n > 0 for n in nums):
+            a, b, c = sorted(nums)
+            if a + b > c:
+                return (VERIFIE, _fmt_nombre(a + b + c), "géométrie — périmètre du triangle (somme des côtés)")
+            return None                               # triangle impossible -> abstention honnête
+
+    # LOSANGE : aire par les diagonales (sommets sur les axes -> brique Polygone, d1·d2/2)
+    if "losange" in q and aire:
+        md = re.search(r"diagonales?\s+(?:de\s+)?(\d+(?:[.,]\d+)?)\s+et\s+(?:de\s+)?(\d+(?:[.,]\d+)?)", q)
+        if md:
+            d1, d2 = float(md.group(1).replace(",", ".")), float(md.group(2).replace(",", "."))
+            if d1 > 0 and d2 > 0:
+                p = Polygone([(d1 / 2, 0.0), (0.0, d2 / 2), (-d1 / 2, 0.0), (0.0, -d2 / 2)])
+                return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du losange (d₁·d₂/2)")
 
     # HYPOTÉNUSE d'un triangle rectangle (les deux côtés = les deux derniers nombres de la phrase)
     if "hypotenuse" in q:
@@ -401,6 +466,54 @@ def resout_math(question: str):
                     "mathématiques financières — %s" % mode)
         except Exception:
             return (HORS, None, None)
+
+    # POURCENTAGES APPLIQUÉS (arithmétique exacte). ⚠ sur la question BRUTE : normalise() efface le « % ».
+    # La réponse MONTRE le calcul (« 64 (80 − 20 % = 80 − 16) ») : lève l'ambiguïté remise/prix final.
+    _PCT = r"(\d+(?:[.,]\d+)?)"
+    _f = lambda g: float(g.replace(",", "."))
+    mred = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+(?:r[ée]duction|remise|rabais)\s+sur\s+{_PCT}",
+                      question, re.I)
+            or re.search(rf"(?:r[ée]duction|remise|rabais)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}",
+                         question, re.I))
+    if mred:
+        p, base = _f(mred.group(1)), _f(mred.group(2))
+        return (VERIFIE, "%s (%s − %s %% = %s − %s)" % (_fmt_nombre(base * (1 - p / 100.0)), _fmt_nombre(base),
+                                                        _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
+                "calcul — prix après réduction")
+    maug = (re.search(rf"augmente[rz]?\s+{_PCT}\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I)
+            or re.search(rf"{_PCT}\s+augment[ée]e?s?\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I))
+    maug_inv = None if maug else re.search(
+        rf"(?:hausse|augmentation)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}", question, re.I)
+    if maug or maug_inv:
+        base, p = (_f(maug.group(1)), _f(maug.group(2))) if maug else (_f(maug_inv.group(2)), _f(maug_inv.group(1)))
+        return (VERIFIE, "%s (%s + %s %% = %s + %s)" % (_fmt_nombre(base * (1 + p / 100.0)), _fmt_nombre(base),
+                                                        _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
+                "calcul — valeur après augmentation")
+    mpart = re.search(rf"{_PCT}\s+(?:est|repr[ée]sente|fait)\s+quel\s+pourcentage\s+de\s+{_PCT}", question, re.I)
+    mpart_inv = None if mpart else re.search(
+        rf"quel\s+pourcentage\s+de\s+{_PCT}\s+(?:repr[ée]sente|fait)\s+{_PCT}", question, re.I)
+    if mpart or mpart_inv:
+        part, tout = (_f(mpart.group(1)), _f(mpart.group(2))) if mpart else (_f(mpart_inv.group(2)), _f(mpart_inv.group(1)))
+        if tout == 0:
+            return (HORS, None, None)
+        return (VERIFIE, _fmt_nombre(part / tout * 100.0) + " %",
+                "calcul — part en pourcentage (%s sur %s)" % (_fmt_nombre(part), _fmt_nombre(tout)))
+
+    # CHIFFRES ROMAINS (convention de numération, symboles = table lecteur._CHIFFRE_ROMAIN ; notation
+    # soustractive canonique). EXACT dans les deux sens, round-trippé au banc sur 1..3999 ; hors plage ou
+    # forme NON canonique (« IIII ») -> abstention.
+    mrom = re.search(r"(\d+)\s+en\s+(?:chiffres?\s+)?romains?", q)
+    if mrom:
+        n = int(mrom.group(1))
+        if 1 <= n <= 3999:
+            return (VERIFIE, _en_romain(n), "numération romaine (convention, symboles du lecteur)")
+        return (HORS, None, None)
+    mrom2 = re.search(r"\b([ivxlcdm]+)\b\s+en\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q)
+    if mrom2:
+        n = _depuis_romain(mrom2.group(1).upper())
+        if n is not None:
+            return (VERIFIE, str(n), "numération romaine (convention, symboles du lecteur)")
+        return (HORS, None, None)
 
     # POURCENTAGE : « 20% de 150 », « 20 pour cent de 150 » -> 30 (arithmétique exacte, sans module tiers).
     mp = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour ?cent(?:s)?|pourcent)\s+(?:de|du|des|d['’]|sur)\s+(\d+(?:[.,]\d+)?)",

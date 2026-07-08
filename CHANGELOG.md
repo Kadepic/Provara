@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 9 : volumes/vitesses, pourcentages appliqués, chiffres romains, triangle/losange
+
+- **Conversions** (`resout_conversion`) : volumes (L/mL/cL/dL/hL/m³/cm³ — « 3 litres en centilitres » → 300),
+  vitesses (« 90 km/h en m/s » → 25, « 20 nœuds en km/h » → 37.04 — facteurs exacts 1000/3600 et 1852/3600),
+  alias « journée » (« combien de secondes dans une journée » → 86400). ⚠ découverte : `normalise()` mange
+  « / » et « % » — clés d'unités post-normalisation (« km h »), affichage restauré (« m/s »).
+- **Pourcentages appliqués** (`resout_math`, sur la question BRUTE — le « % » disparaît à la normalisation) :
+  réduction (« 20% de réduction sur 80 € » → « 64 (80 − 20 % = 80 − 16) » — le calcul MONTRÉ lève l'ambiguïté
+  remise/prix final ; « remise de 30% sur 200 » donnait 60 par la route simple, c'est le prix final 140 qui
+  est servi désormais), augmentation (« augmente 200 de 15% » → 230, « hausse de 10% sur 50 » → 55),
+  part (« 150 est quel pourcentage de 600 » → 25 %).
+- **Chiffres romains** (convention de numération, symboles = table `chiffre_romain` du lecteur) : « 1984 en
+  chiffres romains » → MCMLXXXIV, « XIV en chiffres arabes » → 14. Round-trip COMPLET 1..3999 épinglé au banc ;
+  écriture non canonique (« IIII »), mot en lettres romaines (« CIVIL »), hors plage → abstention.
+- **Géométrie** : périmètre du triangle par 3 côtés avec INÉGALITÉ TRIANGULAIRE (« côtés 1, 1 et 5 » =
+  triangle impossible → abstention, pas une somme aveugle), aire du losange par diagonales (brique Polygone).
+- Gardes : « le prix a augmenté de beaucoup », « la réduction des inégalités » ne déclenchent rien ;
+  « 5 litres en km » (dimensions différentes) → abstention. Bancs : `valide_assistant_nl` **181/181** (+25),
+  capacites_chat 109/109, suite 25/25, raisonnement 171/171, paraphrases 168/168, challenge 16/16, câblage 504.
+
 ## 2026-07-08 — FAUX=0 : nationalités JOINTES tronquées en quarantaine (Messi « Italie et Espagne », SANS l'Argentine)
 
 - **FAUX par omission, trouvé au banc** : `ingere_celebres` (P27, joinmax=2) triait les nationalités par
