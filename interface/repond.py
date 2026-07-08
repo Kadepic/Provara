@@ -4150,7 +4150,9 @@ def _diagnostic_connaissance(texte: str):
         try:
             import capacites as _CAP
             _t1 = _tm.perf_counter()
-            _ok, _ko, _echecs = _CAP.verifie_tout()
+            # WATCHDOG par preuve (vécu .exe 2026-07-08 : une preuve bloquante gelait le diagnostic entier
+            # sans nommer le coupable) : 10 s max par preuve, la bloquée est DÉSIGNÉE dans la réponse.
+            _ok, _ko, _echecs = _CAP.verifie_tout(budget_par_preuve=10.0)
             _t_preuves = _tm.perf_counter() - _t1
             cap = " · capacités prouvées à l'instant : %d/%d%s" % (
                 _ok, _ok + _ko, "" if not _echecs else " (en échec : %s)" % ", ".join(_echecs[:3]))

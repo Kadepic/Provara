@@ -3671,11 +3671,33 @@ def sujets_couverts() -> set[str]:
     return {k for k in REGISTRE if couvert(k)}
 
 
-def verifie_tout() -> tuple[int, int, list[str]]:
-    """(nb_ok, nb_ko, libellés en échec). Sert au validateur : TOUTE entrée doit passer (sinon manifeste menteur)."""
+def verifie_tout(budget_par_preuve: float | None = None) -> tuple[int, int, list[str]]:
+    """(nb_ok, nb_ko, libellés en échec). Sert au validateur : TOUTE entrée doit passer (sinon manifeste menteur).
+
+    `budget_par_preuve` (secondes) : WATCHDOG par preuve pour le chemin PRODUIT (diagnostic) — vécu .exe
+    2026-07-08 : une preuve qui BLOQUE (spécificité d'environnement) gelait le diagnostic entier, sans nom
+    de coupable. Avec budget : chaque preuve court dans un thread joint(budget) ; celle qui ne revient pas
+    est comptée EN ÉCHEC avec le libellé « (bloquée > Ns) » — le diagnostic termine TOUJOURS et DÉSIGNE le
+    coupable. None (défaut, tests/CI) : comportement historique, exécution directe."""
     ok, ko, echecs = 0, 0, []
+    if budget_par_preuve is None:
+        for k in REGISTRE:
+            if couvert(k):
+                ok += 1
+            else:
+                ko += 1
+                echecs.append(k)
+        return ok, ko, echecs
+    import threading
     for k in REGISTRE:
-        if couvert(k):
+        res = [None]
+        th = threading.Thread(target=lambda kk=k: res.__setitem__(0, couvert(kk)), daemon=True)
+        th.start()
+        th.join(budget_par_preuve)
+        if th.is_alive():
+            ko += 1
+            echecs.append("%s (bloquée > %.0fs)" % (k, budget_par_preuve))
+        elif res[0]:
             ok += 1
         else:
             ko += 1
