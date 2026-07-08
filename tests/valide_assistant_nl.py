@@ -414,6 +414,18 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 30 : scores en %, durées composées, douzaines, demi/quart d'unité.
+check(_m("15 sur 20 en pourcentage") == "75 %", "15/20 en pourcentage -> 75 % (Wilson volait, FAUX vécu)")
+check(_m("j'ai eu 12 sur 20, ça fait combien sur 100") == "60 %", "12/20 sur 100 -> 60 %")
+check(_m("2 semaines et 3 jours ça fait combien de jours") == "17 jours (2 × semaine + 3 × jour)",
+      "durée composée -> 17 jours")
+check(_m("1 an et 6 mois en mois") == "18 mois (1 an = 12 mois)", "1 an 6 mois -> 18 mois (« mois ».rstrip bug vécu)")
+check(_m("combien font 3 douzaines") == "36 (une douzaine = 12)", "3 douzaines -> 36")
+check(_m("une demi-douzaine d'œufs ça fait combien") == "6 (une douzaine = 12)", "demi-douzaine -> 6")
+check(_m("un demi-litre en centilitres") == "50 centilitres", "demi-litre -> 50 cl")
+check(_m("trois quarts d'heure en minutes") == "45 minutes", "trois quarts d'heure -> 45 min")
+check(_m("un quart d'heure en secondes") == "900 secondes", "quart d'heure -> 900 s")
+check(_m("convertis une demi-heure en secondes") == "1800 secondes", "demi-heure -> 1800 s")
 # PASSE ADVERSE vague 29 (les FAUX reviennent par les variantes de phrasé — leçon rechute).
 check(_m("combien y a-t-il de secondes dans une année") is not None
       and _m("combien y a-t-il de secondes dans une année").startswith("31536000"), "« y a-t-il » -> 31536000")

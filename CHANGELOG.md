@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 30 : 2 FAUX (« tombera le 25 décembre » → 2019 !, scores→Wilson) + durées composées, douzaines, demi/quart
+
+- **FAUX** : « quel jour **tombera** le 25 décembre cette année » → *« (en comprenant « 24 decembre ») 2019 »*
+  (le futur n'était pas reconnu → fuzzy vers un titre d'œuvre !). Le jour-de-la-semaine accepte
+  était/est/sera/tombe/tombera + « le X <mois> tombe quel jour » ; date SANS année → année de l'horloge
+  ÉTIQUETÉE, verbe accordé (« Le 25 décembre 2026 sera un vendredi »).
+- **FAUX** : « 15 sur 20 **en pourcentage** » → *intervalle de Wilson* (encore une variante). → 75 % exact ;
+  « 12 sur 20, ça fait combien **sur 100** » → 60 % (garde rescaling à DEUX ratios — « proportion de 37 sur
+  100 » reste du Wilson, pin conservé).
+- **Durées composées** : « 2 semaines et 3 jours en jours » → 17 ; « 1 an et 6 mois en mois » → 18 (deux
+  familles fermées, jamais de mélange an→jours ; piège « mois ».rstrip(« s ») → « moi » vécu et épinglé).
+  Garde comptage : ce n'est plus un compte d'hyponymes (« Je connais 10 termes jour »).
+- **Quotidien** : douzaines (« 3 douzaines » → 36, « demi-douzaine » → 6), « un demi-litre » → 50 cl,
+  « trois quarts d'heure » → 45 min, « un quart d'heure » → 900 s (réécritures locales à la conversion) ;
+  « donne-moi l'heure de Tokyo » (motif élargi).
+- Bancs : `valide_assistant_nl` **410/410** (+10), capacites_chat **154/154** (+4 dont Rio/futur),
+  `valide_fonction_stats_nl` **34/34**, raisonnement 198/198, paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 29 : passe adverse — 3 FAUX par variantes de phrasé (Rio !, composition, 1h30)
 
 - **FAUX** : « quelle heure est-il à **Rio de Janeiro** » → *l'heure LOCALE de la machine servie* ! La garde

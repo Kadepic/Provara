@@ -302,6 +302,12 @@ def resout_conversion(question: str):
                lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.5, m.group(2)), q)
     q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+quarts?\b",
                lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.25, m.group(2)), q)
+    # DEMI / QUART sans nombre : « un demi-litre en centilitres » -> 0.5 litre, « trois quarts d'heure en
+    # minutes » -> 0.75 heure, « un quart d'heure » -> 0.25 heure (tombaient en repli, vécu 2026-07-08).
+    # Réécritures LOCALES à la conversion — « demi-finale » réécrite ne matche aucune unité, inoffensif.
+    q = re.sub(r"\btrois\s+quarts\s+d['’]\s*", "0.75 ", q)
+    q = re.sub(r"\b(?:un\s+)?quart\s+d['’]\s*", "0.25 ", q)
+    q = re.sub(r"\b(?:une?\s+)?demi[- ]", "0.5 ", q)
     # DURÉE COMPACTE « 2h30 » -> « 150 minutes » (« combien de secondes dans 2h30 » tombait en repli, vécu
     # 2026-07-08). Minutes < 60 exigées ; « km/h », « 2 h » nus et les heures d'horloge ailleurs sont intacts
     # (la réécriture est LOCALE à la route de conversion).
@@ -742,8 +748,11 @@ def resout_math(question: str):
                     "calcul — écart relatif en pourcentage")
 
     mpart = (re.search(rf"{_PCT}\s+(?:est|repr[ée]sente|fait)\s+quel\s+pourcentage\s+de\s+{_PCT}", question, re.I)
-             # « quel pourcentage représente 45 sur 60 » (FAUX vécu : partait en intervalle de Wilson)
-             or re.search(rf"quel\s+pourcentage\s+(?:repr[ée]sente|fait|font)\s+{_PCT}\s+sur\s+{_PCT}", question, re.I))
+             # « quel pourcentage représente 45 sur 60 » / « 15 sur 20 en pourcentage » / « 12 sur 20 …
+             # sur 100 » (FAUX vécus : partaient en intervalle de Wilson — l'inférence n'est pas la division)
+             or re.search(rf"quel\s+pourcentage\s+(?:repr[ée]sente|fait|font)\s+{_PCT}\s+sur\s+{_PCT}", question, re.I)
+             or re.search(rf"{_PCT}\s+sur\s+{_PCT}\s+en\s+pourcentage", question, re.I)
+             or re.search(rf"{_PCT}\s+sur\s+{_PCT}\b.{{0,25}}?\bsur\s+100\b", question, re.I))
     mpart_inv = None if mpart else re.search(
         rf"quel\s+pourcentage\s+de\s+{_PCT}\s+(?:repr[ée]sente|fait)\s+{_PCT}", question, re.I)
     if mpart or mpart_inv:
@@ -1202,6 +1211,37 @@ def resout_math(question: str):
         return (VERIFIE, "1.61803399 ((1 + √5) / 2)", "constante — nombre d'or")
     if re.search(r"\be\s+vaut\b|\bvaut\s+e\b|valeur\s+de\s+e\b|constante\s+e\b", q):
         return (VERIFIE, "2.71828183 (e, base du logarithme naturel)", "constante — e")
+
+    # DURÉES COMPOSÉES : « 2 semaines et 3 jours en jours » -> 17 ; « 1 an et 6 mois en mois » -> 18.
+    # Deux familles FERMÉES (calendaire an/mois : 1 an = 12 mois exact ; temps exact semaine…seconde) —
+    # jamais de mélange an→jours ici (durée variable). Tombait en compte lexical (« 10 termes jour »), vécu.
+    mdc = re.search(r"(\d+)\s+(ans?|annees?|mois|semaines?|jours?|heures?|minutes?)\s+et\s+(\d+)\s+"
+                    r"(mois|semaines?|jours?|heures?|minutes?|secondes?)\b.{0,30}?\b(?:en|de)\s+"
+                    r"(jours?|mois|heures?|minutes?|secondes?|semaines?)", q)
+    if mdc:
+        _CAL = {"an": 12, "annee": 12, "mois": 1}                     # base = mois
+        _TPS = {"semaine": 604800, "jour": 86400, "heure": 3600, "minute": 60, "seconde": 1}   # base = seconde
+        _sing = lambda u: u if u == "mois" else u.rstrip("s")     # ⚠ « mois ».rstrip -> « moi » (vécu)
+        u1, u2, uc = (_sing(mdc.group(i)) for i in (2, 4, 5))
+        n1, n2 = int(mdc.group(1)), int(mdc.group(3))
+        if u1 in _CAL and u2 in _CAL and uc in _CAL:
+            tot = (n1 * _CAL[u1] + n2 * _CAL[u2]) / _CAL[uc]
+            if tot == int(tot):
+                return (VERIFIE, "%d %s (1 an = 12 mois)" % (int(tot), uc + ("s" if tot > 1 and uc != "mois" else "")),
+                        "conventions de durée — composition exacte")
+        elif u1 in _TPS and u2 in _TPS and uc in _TPS:
+            tot = (n1 * _TPS[u1] + n2 * _TPS[u2]) / _TPS[uc]
+            if tot == int(tot):
+                return (VERIFIE, "%d %s (%d × %s + %d × %s)" % (int(tot), uc + ("s" if tot > 1 else ""),
+                                                                n1, u1, n2, u2),
+                        "conventions de durée — composition exacte")
+        return (HORS, None, None)
+
+    # DOUZAINES : « 3 douzaines » -> 36, « une demi-douzaine » -> 6 (convention dite).
+    mdz = re.search(r"(?:(\d+)\s+douzaines?|demi[- ]douzaine)", qc)
+    if mdz and ("combien" in qtoks or "fait" in qtoks or "font" in qtoks):
+        n = int(mdz.group(1)) * 12 if mdz.group(1) else 6
+        return (VERIFIE, "%d (une douzaine = 12)" % n, "conventions — douzaine")
 
     # RENDU DE MONNAIE : « rendu sur 50 euros pour un achat de 37,25 » -> 12.75 (soustraction montrée) ;
     # achat qui dépasse -> dit honnêtement, jamais un rendu négatif sec.

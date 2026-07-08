@@ -177,8 +177,9 @@ def repond_stats(texte: str):
     # GARDE ARITHMÉTIQUE (FAUX vécu 2026-07-08) : « quel pourcentage REPRÉSENTE 45 sur 60 » servait un
     # intervalle de Wilson (inférence) au lieu du calcul exact 75 %. « représente/fait » = division exacte
     # -> route pourcentage de fonction_nl ; l'inférence (taux de réussite, confiance) reste ici.
-    if m and re.search(r"\b(represente|fait)\b", bas):
-        m = None
+    if m and (re.search(r"\b(represente|fait)\b", bas) or re.search(r"en\s+pourcentage", bas)
+              or re.search(r"\bsur\s+(?!100\b)\d+\b.{0,30}?\bsur\s+100\b", bas)):
+        m = None                     # (le 3e motif = RESCALING « 12 sur 20 … sur 100 » ; « 37 sur 100 » = Wilson)
     if m and re.search(r"\b(proportion|pourcentage|taux de r[ée]ussite|intervalle|confiance|succ[èe]s|fiab)\b", bas):
         k, n = int(m.group(1)), int(m.group(2))
         if 0 <= k <= n and n > 0:

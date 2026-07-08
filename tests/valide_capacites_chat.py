@@ -316,6 +316,17 @@ r = R._cap_quotidien("quelle heure est-il à Rio de Janeiro ?")
 check(r is not None and "Sao_Paulo" in r, "Rio de Janeiro -> fuseau America/Sao_Paulo, jamais l'heure locale")
 r = R._cap_quotidien("quelle heure est-il à Oulan-Bator ?")
 check(r is not None and "m'abstenir" in r, "ville inconnue multi-mots -> abstention DITE, jamais l'heure locale")
+# JOUR DE LA SEMAINE au FUTUR + année d'horloge ÉTIQUETÉE (« tombera le 25 décembre » partait en fuzzy
+# « 24 decembre » -> « 2019 », FAUX vécu 2026-07-08).
+r = R._cap_quotidien("quel jour de la semaine sera le 1er janvier 2030 ?")
+check(r == "Le 1 janvier 2030 sera un mardi (calendrier grégorien).", "futur explicite -> sera un mardi")
+r = R._cap_quotidien("le 14 juillet tombe quel jour ?")
+check(r is not None and "horloge de ta machine" in r, "date sans année -> année d'horloge ÉTIQUETÉE")
+r = R._cap_quotidien("donne-moi l'heure de Tokyo")
+check(r is not None and "Asia/Tokyo" in r, "« donne-moi l'heure de Tokyo » -> fuseau (motif élargi)")
+# GARDE COMPTAGE : la durée composée n'est pas un comptage d'hyponymes (« 10 termes jour », vécu).
+check(R._cap_comptage("2 semaines et 3 jours ça fait combien de jours") is None,
+      "durée composée -> pas un comptage lexical")
 check(R._cap_quotidien("combien de jours entre le 30 février et le 15 mars ?") is None,
       "date invalide (30 février) -> abstention")
 

@@ -2580,6 +2580,11 @@ def _cap_comptage(texte: str):
         return None
     typn = _normalise(typ)
     sing = typn[:-1] if (typn.endswith(("s", "x")) and len(typn) > 4) else typn
+    # GARDE DURÉE COMPOSÉE (vécu 2026-07-08) : « 2 semaines et 3 jours ça fait combien de jours » comptait
+    # les 10 hyponymes du concept « jour » — c'est une composition de durées (fonction_nl), pas un comptage.
+    if sing in ("jour", "heure", "minute", "seconde", "semaine", "moi", "mois", "an", "annee") \
+            and re.search(r"\d\s*(?:ans?|annees?|mois|semaines?|jours?|heures?|minutes?)\b", _normalise(texte)):
+        return None
     # GARDE LETTRES (FAUX vécu 2026-07-08) : « le mot X contient combien de consonnes » comptait les 37
     # hyponymes du concept « consonne » — c'est un comptage de LETTRES dans un mot, traité par _cap_texte.
     if sing in ("voyelle", "consonne", "lettre", "syllabe", "mot", "caractere") and re.search(
@@ -4857,7 +4862,8 @@ _METEO_RE = re.compile(
     r"quelle\s+temp[ée]rature\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il|dehors)|"
     r"combien\s+de\s+degr[ée]s\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il)?\s*(?:dehors|aujourd['’ ]?hui|en\s+ce\s+moment)|"
     r"temp[ée]rature\b[^?]{0,40}\b(?:aujourd['’ ]?hui|demain|dehors|en\s+ce\s+moment|maintenant|cette\s+semaine))", re.I)
-_HEURE_RE = re.compile(r"\bquelle\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quelle\s+heure\b", re.I)
+_HEURE_RE = re.compile(r"\bquelle\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quelle\s+heure\b"
+                       r"|\b(?:donne|dis)[\w-]*\s+(?:moi\s+)?l['’]heure\b", re.I)
 _DATE_JOUR_RE = re.compile(
     r"\bquel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:sommes[- ]nous|on\s+est|est[- ]on)\b"
     r"|\bquelle\s+est\s+la\s+date(?:\s+(?:d['’]\s*)?aujourd['’\w]*|\s+du\s+jour|\s+de\s+ce\s+jour)?\s*\??\s*$"
@@ -5425,20 +5431,29 @@ def _cap_quotidien(texte: str, conv_id=None):
     # JOUR DE LA SEMAINE d'une date HISTORIQUE : « quel jour de la semaine était le 14 juillet 1789 ? » ->
     # mardi (datetime, calendrier grégorien proleptique — année EXPLICITE ≥ 1583 exigée : avant, le julien
     # s'appliquait -> abstention plutôt qu'un jour décalé).
-    mjs = re.search(r"quel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:[ée]tait|est|tombait|tombe)\s+le\s+", texte, re.I)
+    # FUTUR accepté (« quel jour tombera le 25 décembre » partait en fuzzy « 24 decembre » -> « 2019 », FAUX
+    # vécu 2026-07-08) + date SANS année -> année de l'horloge, ÉTIQUETÉE ; verbe accordé (était/est/sera).
+    mjs = (re.search(r"quel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:[ée]tait|est|sera|tombait|tombe(?:ra)?)\s+le\s+",
+                     texte, re.I)
+           or re.search(r"\ble\s+\d.{0,24}?\btombe(?:ra)?\s+quel\s+jour", texte, re.I))
     if mjs:
         md = _DATE_FR_RE.search(texte)
-        if md and md.group(3):
+        if md:
             j = 1 if md.group(1).lower() == "1er" else int(md.group(1))
-            mo, an = _MOIS_NUM.get(md.group(2).lower()), int(md.group(3))
+            mo = _MOIS_NUM.get(md.group(2).lower())
+            import datetime as _dt
+            annee_horloge = not md.group(3)
+            an = int(md.group(3)) if md.group(3) else _dt.date.today().year
             if an >= 1583:
-                import datetime as _dt
                 try:
                     d = _dt.date(an, mo, j)
                 except (ValueError, TypeError):
                     return None
-                return ("Le %d %s %d était un %s (calendrier grégorien)."
-                        % (d.day, _MOIS_FR[d.month - 1], d.year, _JOURS_FR[d.weekday()]))
+                auj = _dt.date.today()
+                verbe = "sera" if d > auj else ("était" if d < auj else "est")
+                note = (" — année %d prise sur l'horloge de ta machine" % an) if annee_horloge else ""
+                return ("Le %d %s %d %s un %s (calendrier grégorien%s)."
+                        % (d.day, _MOIS_FR[d.month - 1], d.year, verbe, _JOURS_FR[d.weekday()], note))
             return ("Avant 1583, le calendrier julien s'appliquait (bascule grégorienne d'octobre 1582) — je "
                     "m'abstiens plutôt que de te donner un jour décalé.")
     if _HEURE_RE.search(texte):
