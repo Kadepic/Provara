@@ -4132,6 +4132,28 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_15() -> bool:
+    """LOT 11 : Gibbard-Satterthwaite, Anscombe, espérances imprécises, CQR, Mondrian, dialogues honnêtes."""
+    import ia as _I
+    vv, dv = _I.vote_manipulable()
+    if not (vv == "analyse" and dv["gagnant_sincere"] == "A" and dv["manipulation"] is not None):
+        return False                                                  # une manipulation EST exhibée (théorème)
+    va, da = _I.stats_resumees_suffisent()                            # quartet d'Anscombe : mêmes résumés,
+    if not (va == "analyse" and da["stats"]["I"][:2] == da["stats"]["II"][:2]):    # données différentes
+        return False
+    if _I.esperance_imprecise({frozenset({"a"}): 0.6, frozenset({"a", "b"}): 0.4},
+                              {"a": 10.0, "b": 0.0}) != ("valeur", (6.0, 10.0)):
+        return False                                                  # bornes de Choquet EXACTES
+    if _I.cqr_correction([1.0] * 20, [3.0] * 20, [2.0] * 10 + [0.5] * 5 + [3.5] * 5) != 0.5:
+        return False                                                  # correction conforme EXACTE
+    cm = _I.conforme_mondrian(["g1"] * 15 + ["g2"] * 15, [1.0] * 15 + [3.0] * 15)
+    if cm.intervalle("g1", 10.0) != ("estimation", (9.0, 11.0), 0.9):
+        return False                                                  # quantile PAR GROUPE exact
+    if _I.oublie_dialogue("conv-inexistante-xyz") is not False:       # oublier l'inexistant -> False honnête
+        return False
+    return _I.rappelle_dialogue("requete-sans-aucun-echo") == []      # rappel sans matière -> vide, pas inventé
+
+
 def _p_facade_outils_1() -> bool:
     """LOT 10 : encodeurs binaires (octets magiques), Choquet, besoins décomposés, registre d'apprentissage."""
     import ia as _I
@@ -4399,6 +4421,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Vote, Anscombe et prévisions imprécises (façade stats 15)": (
+        "vote_manipulable (Gibbard-Satterthwaite : une manipulation est EXHIBÉE), stats_resumees_suffisent "
+        "(quartet d'Anscombe), esperance_imprecise (bornes de Choquet exactes 6-10), cqr_correction (0.5 "
+        "exact), conforme_mondrian (quantile par groupe), oublie/rappelle_dialogue (honnêtes sur le vide).",
+        _p_facade_stats_15),
     "Encodeurs binaires, Choquet et besoins (façade outils 1)": (
         "image_raster + encode_png (signature PNG exacte), encode_wav (RIFF/WAVE), agrege_choquet (intégrale "
         "exacte 0.7), decompose_besoin/principes_besoin (physique du besoin), ou_apprendre (registre réel des "

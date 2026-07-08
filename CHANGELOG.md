@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 11 : 7 façades de plus (dette 63 → 56)
+
+- 1 preuve REGISTRE composée (diagnostic : 297) : **théorème de Gibbard-Satterthwaite** (une manipulation de
+  vote est EXHIBÉE, pas récitée), **quartet d'Anscombe** (mêmes résumés, données différentes — la preuve que
+  les stats résumées ne suffisent pas), **espérances imprécises** (bornes de Choquet exactes 6–10 sur une
+  masse de croyance), **CQR** (correction conforme 0.5 exacte), **conformal Mondrian** (quantile PAR GROUPE
+  (9.0, 11.0) exact), dialogues honnêtes (oublier l'inexistant -> False ; rappel sans matière -> vide).
+- Plafond du cliquet : **56**.
+- Bancs : valide_capacites 73/73 (pins 296→297), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 10 : 8 façades outils (dette 71 → 63)
 
 - 1 preuve REGISTRE composée (diagnostic : 296) : **encodeurs binaires prouvés par octets magiques**
