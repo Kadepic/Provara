@@ -4132,6 +4132,37 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_outils_3() -> bool:
+    """LOT 17 : cartographie exacte, paradoxe de Stein, reprise verbatim, PDF/XLSX, moteur d'invention."""
+    import random
+    import ia as _I
+    if abs(_I.resolution_sol(300, 25000) - (2.54 / 300) * 25000) > 1e-9:
+        return False                                                  # résolution au sol EXACTE
+    vs, ds = _I.estimation_jointe_stein([1.0, 2.0, 3.0], rng=random.Random(0))
+    if not (vs == "analyse" and ds["risque_js"] < ds["risque_mle"]):  # PARADOXE DE STEIN : JS domine le MLE
+        return False
+    if _I.reprends("conv-inexistante-xyz") != []:                     # reprise verbatim du vide -> vide
+        return False
+    import document_pdf
+    doc = document_pdf.Document()
+    doc.page().texte(50, 700, "preuve")
+    pdf = _I.encode_pdf(doc)
+    if not (isinstance(pdf, bytes) and pdf[:8] == b"%PDF-1.4"):       # en-tête PDF EXACT
+        return False
+    import tableur_xlsx
+    cl = tableur_xlsx.Classeur()
+    cl.feuille("F1").set(1, 1, "preuve")
+    xlsx = _I.encode_xlsx(cl)
+    if not (isinstance(xlsx, bytes) and xlsx[:2] == b"PK"):           # conteneur ZIP (xlsx) EXACT
+        return False
+    if _I.assemble_invention("rafraichir une piece", 3).get("statut") != "candidats":
+        return False
+    if not isinstance(_I.manque_invention("rafraichir une piece"), list):
+        return False
+    lac = _I.lacunes_physiques(3)
+    return isinstance(lac, list) and len(lac) == 3 and all(len(t3) == 3 for t3 in lac)
+
+
 def _p_facade_outils_2() -> bool:
     """LOT 16 : fichiers réels, dépôt, protocoles honnêtes, calibrations isotoniques, NDCG."""
     import os
@@ -4554,6 +4585,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Cartographie, Stein et moteur d'invention (façade outils 3)": (
+        "resolution_sol ((2.54/dpi)×N exact), estimation_jointe_stein (le paradoxe : James-Stein DOMINE le "
+        "MLE, mesuré), reprends (verbatim honnête du vide), encode_pdf (%PDF-1.4) et encode_xlsx (PK) par "
+        "octets magiques, assemble_invention/manque_invention/lacunes_physiques (le moteur d'invention "
+        "répond structuré).", _p_facade_outils_3),
     "Fichiers, protocoles et calibrations isotoniques (façade outils 2)": (
         "cree_fichier/depot (le fichier existe réellement avec son contenu), revelation_protocole (protocole "
         "inconnu -> vraisemblance refusée), calibre_multilabel et calibreur_etapes (isotoniques EXACTS), "

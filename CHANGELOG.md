@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 17 : 8 façades de plus (dette 26 → 18)
+
+- 1 preuve REGISTRE composée (diagnostic : 303) : **résolution cartographique exacte** ((2.54/dpi)×N),
+  **paradoxe de Stein mesuré** (James-Stein domine le MLE sur 3 moyennes, graine fixée), reprise de
+  conversation verbatim honnête, **encode_pdf** (%PDF-1.4) et **encode_xlsx** (conteneur PK) prouvés par
+  octets magiques sur des documents réellement construits, **moteur d'invention** (candidats-stacks,
+  canaux manquants, principes physiques classés par levier).
+- Plafond du cliquet : **18** — 130 façades prouvées sur les 148 de l'audit initial.
+- Bancs : valide_capacites 73/73 (pins 302→303), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 16 : 6 façades de plus (dette 32 → 26)
 
 - 1 preuve REGISTRE composée (diagnostic : 302) : **fichiers réels** (cree_fichier écrit et le contenu est
