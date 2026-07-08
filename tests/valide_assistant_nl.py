@@ -458,6 +458,17 @@ check(_r is not None and _r.startswith("55 "), "hausse de 10 % sur 50 -> 55")
 check(_m("150 est quel pourcentage de 600") == "25 %", "150 sur 600 -> 25 %")
 check(_m("quel pourcentage de 600 représente 150") == "25 %", "forme inversée -> 25 % aussi")
 check(_m("écris 1984 en chiffres romains") == "MCMLXXXIV", "1984 -> MCMLXXXIV")
+# NOMBRE EN TOUTES LETTRES : ancres orthographiques vérifiées À LA MAIN (pièges : et un, vingts/cents, mille inv.)
+_ANCRES_LETTRES = {21: "vingt et un", 71: "soixante et onze", 80: "quatre-vingts", 81: "quatre-vingt-un",
+                   91: "quatre-vingt-onze", 100: "cent", 200: "deux cents", 201: "deux cent un",
+                   1000: "mille", 1984: "mille neuf cent quatre-vingt-quatre", 2000: "deux mille",
+                   80000: "quatre-vingt mille",
+                   999999: "neuf cent quatre-vingt-dix-neuf mille neuf cent quatre-vingt-dix-neuf"}
+for _n, _att in _ANCRES_LETTRES.items():
+    check(FN._nombre_en_lettres(_n) == _att, "%d en lettres -> %s" % (_n, _att))
+_r = _m("écris 1984 en lettres")
+check(_r is not None and _r.startswith("mille neuf cent quatre-vingt-quatre"), "route « en lettres » câblée")
+check(_m("1000000 en lettres") is None, "hors plage (>999999) -> abstention")
 check(_m("que vaut XIV en chiffres arabes") == "14", "XIV -> 14")
 check(_m("MCMLXXXIV en décimal") == "1984", "MCMLXXXIV -> 1984 (round-trip)")
 check(_m("IIII en chiffres arabes") is None, "IIII non canonique -> abstention (round-trip strict)")

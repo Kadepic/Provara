@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 13 : nombre en toutes lettres (« écris 1984 en lettres »)
+
+- `fonction_nl._nombre_en_lettres` (0..999999, orthographe TRADITIONNELLE, dite dans la réponse) : « écris
+  1984 en lettres » → « mille neuf cent quatre-vingt-quatre ». Pièges couverts et ÉPINGLÉS par 13 ancres
+  vérifiées à la main : « vingt **et un** », « soixante **et onze** », « quatre-vingt**s** » (mais
+  « quatre-vingt-un », « quatre-vingt mille »), « deux cent**s** » (mais « deux cent un »), « mille »
+  invariable. Hors plage → abstention. Tombait en mémo garbage avant.
+- Bancs : `valide_assistant_nl` **234/234** (+15), capacites_chat 128/128, suite 25/25, raisonnement 172/172,
+  paraphrases 170/170, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vague 12 : 3 FAUX corrigés (fractions, premier d'intervalle, « 2 heures et demie ») + vérifications numériques, diviseurs, jour historique, nouvelles unités
 
 - **FAUX ×3, trouvés à la sonde** :

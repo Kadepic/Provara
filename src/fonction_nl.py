@@ -331,6 +331,52 @@ def _deux_entiers(question: str):
     return [int(x) for x in re.findall(r"\d+", question)]
 
 
+# Nombre -> LETTRES françaises (orthographe TRADITIONNELLE : traits d'union sous 100 seulement ; « et un » à
+# 21/31/41/51/61/71 ; « quatre-vingts »/« cents » avec s quand rien ne suit ; « mille » invariable). Convention
+# orthographique fermée — ancres vérifiées à la main dans le banc (0, 21, 71, 80, 81, 91, 200, 201, 1984…).
+_UNITES_FR_L = ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix",
+                "onze", "douze", "treize", "quatorze", "quinze", "seize"]
+_DIZAINES_FR_L = {20: "vingt", 30: "trente", 40: "quarante", 50: "cinquante", 60: "soixante"}
+
+
+def _moins_de_cent(n: int) -> str:
+    if n <= 16:
+        return _UNITES_FR_L[n]
+    if n < 20:
+        return "dix-" + _UNITES_FR_L[n - 10]
+    if n < 70:
+        d, u = divmod(n, 10)
+        if u == 0:
+            return _DIZAINES_FR_L[d * 10]
+        if u == 1:
+            return _DIZAINES_FR_L[d * 10] + " et un"
+        return _DIZAINES_FR_L[d * 10] + "-" + _UNITES_FR_L[u]
+    if n < 80:                                        # 70-79 : soixante-dix… (71 = soixante et onze)
+        return "soixante et onze" if n == 71 else "soixante-" + _moins_de_cent(n - 60)
+    if n == 80:
+        return "quatre-vingts"
+    return "quatre-vingt-" + _moins_de_cent(n - 80)   # 81-99 (jamais « et » : quatre-vingt-un)
+
+
+def _nombre_en_lettres(n: int) -> str:
+    """0..999999 en toutes lettres (orthographe traditionnelle)."""
+    if n < 100:
+        return _moins_de_cent(n)
+    if n < 1000:
+        c, r = divmod(n, 100)
+        tete = "cent" if c == 1 else _UNITES_FR_L[c] + " cent"
+        if r == 0:
+            return tete + ("s" if c > 1 else "")      # deux cents, mais deux cent un
+        return tete + " " + _moins_de_cent(r)
+    m, r = divmod(n, 1000)
+    tete = "mille" if m == 1 else _nombre_en_lettres(m) + " mille"    # mille INVARIABLE
+    if m > 1 and tete.endswith("quatre-vingts mille"):
+        tete = tete.replace("quatre-vingts mille", "quatre-vingt mille")   # vingts perd son s devant mille
+    if m > 1 and tete.endswith("cents mille"):
+        tete = tete.replace("cents mille", "cent mille")
+    return tete if r == 0 else tete + " " + _nombre_en_lettres(r)
+
+
 # Numération romaine : PAIRES canoniques de la notation soustractive, construites sur les symboles VÉRIFIÉS du
 # lecteur (chiffre_romain, CAT_CONVENTION). Round-trip complet 1..3999 épinglé au banc.
 _ROMAIN_PAIRES = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"),
@@ -543,6 +589,15 @@ def resout_math(question: str):
     # CHIFFRES ROMAINS (convention de numération, symboles = table lecteur._CHIFFRE_ROMAIN ; notation
     # soustractive canonique). EXACT dans les deux sens, round-trippé au banc sur 1..3999 ; hors plage ou
     # forme NON canonique (« IIII ») -> abstention.
+    # NOMBRE EN TOUTES LETTRES : « écris 1984 en lettres » (convention orthographique traditionnelle, dite).
+    mnl = re.search(r"(\d+)\s+en\s+(?:toutes\s+)?lettres", q)
+    if mnl:
+        n = int(mnl.group(1))
+        if 0 <= n <= 999999:
+            return (VERIFIE, "%s (orthographe traditionnelle)" % _nombre_en_lettres(n),
+                    "numération française — nombre en toutes lettres")
+        return (HORS, None, None)
+
     mrom = re.search(r"(\d+)\s+en\s+(?:chiffres?\s+)?romains?", q)
     if mrom:
         n = int(mrom.group(1))
