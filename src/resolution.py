@@ -997,7 +997,24 @@ def _reverse_mem(rel: str) -> dict:
     return _REV_MEM[rel]
 
 
-def _format_liste(label: str, contexte: str, items: list, source: str) -> str:
+_NB_DEMANDE = {"deux": 2, "trois": 3, "quatre": 4, "cinq": 5, "six": 6, "sept": 7, "huit": 8, "neuf": 9, "dix": 10}
+
+
+def _nombre_demande(qn: str, qtoks: set):
+    """Nombre d'exemples DEMANDÉ (« cite-moi TROIS pays… », « donne 5 fleuves ») ou None. Servir la liste
+    entière quand on demande trois, c'est répondre à côté (vécu 2026-07-08 : 53 pays pour « trois »)."""
+    for w, n in _NB_DEMANDE.items():
+        if w in qtoks:
+            return n
+    m = re.search(r"\b([1-9]\d?)\b", qn)
+    return int(m.group(1)) if m else None
+
+
+def _format_liste(label: str, contexte: str, items: list, source: str, demande: int | None = None) -> str:
+    if demande and 1 <= demande < len(items):
+        montre = ", ".join(items[:demande])
+        ctx = f" ({contexte})" if contexte else ""
+        return f"{label}{ctx} : {montre} — en voici {demande} parmi {len(items)}."
     cap = 15
     montre = ", ".join(items[:cap])
     reste = f" … (échantillon ; {len(items) - cap} autres)" if len(items) > cap else ""
@@ -1026,7 +1043,7 @@ def resout_liste(question: str):
                         meilleur = (rel, vn, disp, ents)
         if meilleur and meilleur[3]:
             rel, _vn, disp, ents = meilleur
-            return _format_liste("Pays", disp, ents, rel)
+            return _format_liste("Pays", disp, ents, rel, demande=_nombre_demande(qn, qtoks))
 
     # (B) list-all : « cite/liste les <X> » -> valeurs distinctes de la relation désignée par son nom.
     if _INTENT_LISTE & qtoks or "quels sont" in qn or "quelles sont" in qn:
@@ -1035,7 +1052,17 @@ def resout_liste(question: str):
                 if len(tk) >= 4 and tk not in _GENERIQUES and (tk in qtoks or tk + "s" in qtoks):
                     valeurs = sorted({disp for (disp, _e) in _reverse_mem(rel).values()})
                     if valeurs:
-                        return _format_liste(tk.capitalize(), "", valeurs, rel)
+                        rep = _format_liste(tk.capitalize(), "", valeurs, rel, demande=_nombre_demande(qn, qtoks))
+                        # QUALIFICATIF NON RÉSOLU (FAUX=0 vécu 2026-07-08) : « un exemple de mammifère MARIN »
+                        # servait TOUS les ordres, chauves-souris comprises — le qualificatif était ignoré EN
+                        # SILENCE. On ne sait pas le filtrer -> on le DIT (liste honnêtement non filtrée).
+                        mq = re.search(r"\b" + re.escape(tk) + r"s?\b\s+([a-zà-ÿ-]{4,})", qn)
+                        if mq and mq.group(1) not in _GENERIQUES and mq.group(1) not in rel.split("_") \
+                                and mq.group(1) not in ("existants", "existantes", "connus", "connues",
+                                                        "possibles", "differents", "differentes"):
+                            rep += (" ⚠ Je ne sais pas filtrer « %s » — c'est la liste NON filtrée, à toi de "
+                                    "trier." % mq.group(1))
+                        return rep
     return None
 
 

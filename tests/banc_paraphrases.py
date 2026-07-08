@@ -167,6 +167,11 @@ CAS += [
     ("quel est 20 pour cent de 150 ?", "30"),
     ("combien font 15 % de 200 ?", "30"),
     ("combien font 3 plus 4 fois 5 ?", "23"),               # précédence RÉELLE (pas 35)
+    # nombres COMPOSÉS en lettres (FAUX vécu : « vingt-sept » -> « 20-7 », le tiret devenait un MOINS -> 28)
+    ("combien font quinze plus vingt-sept ?", "42"),
+    ("combien font vingt et un plus trois ?", "24"),
+    ("combien font soixante-quinze moins quarante-deux ?", "33"),
+    ("combien font quatre-vingt-dix-neuf plus un ?", "100"),
     ("combien font 100 divisé par 4 ?", "25"),
     ("convertis 100 degrés Celsius en Fahrenheit", "212"),
     ("convertis 10 km en miles", "6,2137"),

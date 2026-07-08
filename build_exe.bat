@@ -7,7 +7,8 @@ set "VERAX_SHA="
 for /f %%i in ('git rev-parse --short=12 HEAD 2^>nul') do set "VERAX_SHA=%%i"
 if not defined VERAX_SHA set "VERAX_SHA=build-local"
 > VERSION_BUILD.txt echo %VERAX_SHA%
-py -m pip install --upgrade pyinstaller
+rem tzdata = base de fuseaux IANA pour zoneinfo (heure des villes) ; sans elle le .exe s'abstient proprement.
+py -m pip install --upgrade pyinstaller tzdata
 rem Mode FENÊTRÉ par défaut (pas de console noire au lancement ; les messages vont dans ~/.verax/verax.log
 rem et l'interface web affiche une modale de chargement). Pour rétablir la console : VERAX_CONSOLE=1.
 set "WINFLAG=--noconsole"
@@ -34,6 +35,7 @@ py -m PyInstaller %PACKFLAG% --name Provara %WINFLAG% ^
   --hidden-import "xml.etree.ElementTree" --hidden-import "urllib.request" --hidden-import "urllib.parse" ^
   --hidden-import "http.server" --hidden-import socketserver --hidden-import zipfile --hidden-import tarfile ^
   --hidden-import marshal --hidden-import base64 --hidden-import difflib --hidden-import calendar ^
+  --hidden-import zoneinfo --hidden-import tzdata --collect-data tzdata ^
   lance.py
 if errorlevel 1 ( echo ERREUR ^(copie le message^). & pause & exit /b 1 )
 echo OK : dist\Provara.exe

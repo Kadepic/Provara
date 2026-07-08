@@ -1,5 +1,64 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FAUX=0 : « quinze plus vingt-sept » rendait 28 (le tiret de « vingt-sept » devenait un moins)
+
+- **FAUX servi comme fait** : la substitution mot→chiffre traitait « vingt-sept » mot à mot → « 20-7 », et le
+  trait d'union était évalué comme une SOUSTRACTION : 15 + 20 − 7 = **28** au lieu de 42. Corrigé : les
+  nombres COMPOSÉS 0..100 sont remplacés d'abord, via une table auto-générée par le MÊME générateur que
+  « écris N en lettres » (une seule source de vérité orthographique, 13 ancres épinglées) — « vingt et un »,
+  « soixante-quinze », « quatre-vingt-dix-neuf », tiret ou espace. « vingt et un plus trois » (Rien avant) → 24.
+- Bancs : `banc_paraphrases` **174/174** (+4), suite 25/25, assistant_nl 234/234, capacites_chat 137/137,
+  raisonnement 176/176, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Génération d'anagrammes depuis le dictionnaire embarqué (« anagramme de chien » → niche)
+
+- `_cap_anagramme` : balayage du dictionnaire réel (`definition_nom`, 292k noms du Wiktionnaire) — « anagramme
+  de chien » → cheni, iench, niche ; « de génie » → neige (comparaison sans accents). JAMAIS des lettres
+  mélangées inventées : uniquement des mots existants, source dite. Aucune trouvée → aveu + limite DITE
+  (le dictionnaire ne couvre que les noms). ~1 s au premier appel, mémoïsé ensuite. Sans le dataset →
+  abstention propre (la suite hors-données reste verte).
+- Bancs : `valide_capacites_chat` **137/137** (+3), suite 25/25, assistant_nl 234/234, raisonnement 176/176,
+  paraphrases 170/170, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Listes : un qualificatif non résolu est DIT, jamais ignoré en silence
+
+- « donne-moi un exemple de mammifère **marin** » servait TOUS les ordres de mammifères (chauves-souris
+  comprises) en ignorant « marin » en silence. Désormais la liste est servie avec l'aveu : « ⚠ Je ne sais pas
+  filtrer « marin » — c'est la liste NON filtrée, à toi de trier. » (FAUX=0 : ignorer un qualificatif, c'est
+  répondre à une autre question sans le dire). Sans qualificatif → inchangé.
+- Bancs : `valide_resolution` **50/50** (+2), suite 25/25, raisonnement 176/176, paraphrases 170/170,
+  capacites_chat 134/134, assistant_nl 234/234, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Listes : le nombre demandé est respecté (« cite-moi trois pays d'Europe »)
+
+- `resolution.resout_liste` : « cite-moi **trois** pays d'Europe » servait les **53** — désormais « Pays
+  (Europe) : ahvenanmaa, albanie, allemagne — **en voici 3 parmi 53**. » (nombre en lettres deux→dix ou en
+  chiffres ; sans nombre → liste complète inchangée, échantillon à 15 comme avant).
+- Bancs : `valide_resolution` **48/48** (+2), suite 25/25, capacites_chat 134/134, assistant_nl 234/234,
+  raisonnement 176/176, paraphrases 170/170, câblage 504 0 orphelin.
+
+## 2026-07-08 — Rappels-tâches : « rappelle-moi d'acheter du pain » devient un vrai rappel (honnête : pas d'alarme)
+
+- **Trou préexistant** : « rappelle-moi de X » partait en cascade factuelle → « je n'ai pas l'information »
+  (le dévoilement conversationnel dépouillait « rappelle-moi » comme une politesse type « dis-moi », détruisant
+  le sens). Désormais : **accusé de stockage** (« C'est noté : acheter du pain. Demande-moi "qu'est-ce que je
+  devais faire ?" ») ; un **moment nommé** (« demain ») déclenche l'honnêteté totale — « je n'ai pas d'alarme,
+  je ne peux pas te prévenir tout seul » (aucune promesse que la machine ne tient pas) ; la **liste** est
+  re-servie sur demande (« qu'est-ce que je devais faire ? » → « · sortir la poubelle · appeler le médecin
+  (demain) · acheter du pain ») — promesse TENUE par le stage mémoire (les rappels-tâches stockés sont
+  ré-servables, exception au filtre anti-questions).
+- Distinction préservée : « rappelle-moi **la capitale** de la France » / « rappelle-moi **qui** a écrit
+  1984 » restent des QUESTIONS (re-servir l'info) — le dévoilement ne protège que de+INFINITIF et « que … ».
+- Bancs : `valide_capacites_chat` **134/134** (+6), suite 25/25, assistant_nl 234/234, raisonnement 176/176,
+  paraphrases 170/170, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Build : tzdata embarqué (l'heure des villes marche dans le .exe Windows)
+
+- `build-exe.yml` + `build_exe.bat` : `pip install tzdata` + `--hidden-import zoneinfo --hidden-import tzdata
+  --collect-data tzdata`. La base de fuseaux IANA est embarquée → « quelle heure est-il à New York ? » répond
+  dans le .exe Windows (jusqu'ici : abstention honnête, la base tz manquait hors Linux). Dégradation propre
+  conservée si la base venait à manquer. YAML validé ; effet au prochain build CI (59+).
+
 ## 2026-07-08 — Vague 14 : vérification oui/non étendue (« est-ce que X est Y », négations « …, si ? »)
 
 - `_oui_non` étendu dans son esprit FAUX=0 (jamais un « Non » sec — une relation peut être multi-valuée) :

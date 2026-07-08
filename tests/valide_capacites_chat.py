@@ -180,6 +180,41 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — GÉNÉRATION D'ANAGRAMMES (dictionnaire embarqué : mots réels, jamais des lettres mélangées inventées) —
+# checks POSITIFS seulement si le dictionnaire est chargé (la suite tourne sans LECTEUR_DATASETS_DIR).
+if os.path.exists(os.path.join(R._DOSSIER_LECTEUR, "definition_nom.jsonl")):
+    r = R._cap_anagramme("anagramme de chien")
+    check(r is not None and "niche" in r and "dictionnaire" in r, "anagramme de chien -> niche (mot réel, sourcé)")
+    r = R._cap_anagramme("anagramme de xyzzy")
+    check(r is not None and r.startswith("Aucune anagramme") and "verbes" in r,
+          "aucune trouvée -> aveu honnête + limite du dictionnaire DITE (noms seulement)")
+check(R._cap_anagramme("l'anagramme de la phrase entière ne doit pas matcher") is None,
+      "une phrase entière ne déclenche pas la génération (un seul mot)")
+
+# — RAPPELS-TÂCHES (« rappelle-moi de X » partait en cascade factuelle -> « pas l'information », préexistant) —
+r = R._cap_rappel("rappelle-moi d'acheter du pain")
+check(r == "C'est noté : acheter du pain. Demande-moi « qu'est-ce que je devais faire ? » et je te le rappelle.",
+      "rappel-tâche -> accusé + promesse RE-SERVABLE (pas d'alarme promise)")
+r = R._cap_rappel("rappelle-moi demain d'appeler le médecin")
+check(r is not None and "je n'ai pas d'alarme" in r and "(demain)" in r,
+      "moment nommé -> HONNÊTETÉ : pas d'alarme, re-servi à la demande seulement")
+check(R._cap_rappel("rappelle-moi la capitale de la France") is None,
+      "« rappelle-moi LA capitale » = une QUESTION (re-servir l'info), pas un rappel-tâche")
+check(R._cap_rappel("rappelle-moi qui a écrit 1984") is None, "« rappelle-moi qui… » = question, pas un rappel")
+r = R._cap_rappel("rappelle-moi que mon code porte est 4512")
+check(r is not None and r.startswith("C'est noté : mon code porte est 4512"), "« rappelle-moi que FAIT » stocké")
+# E2E : stockage puis LISTE — la promesse « je te le rappelle » est TENUE par le stage mémoire.
+import tempfile as _tf
+import conversation as _cvx
+_memx = _cvx.MemoireConversation(racine=_tf.mkdtemp(prefix="rappel-gate-"))
+for _q in ("rappelle-moi d'acheter du pain", "rappelle-moi de sortir la poubelle"):
+    _memx.ajoute("cr1", "user", _q, scope="prive")           # la couche serveur note chaque tour (serveur.py)
+    R.repond(_memx, "cr1", _q, pleine=True)
+_memx.ajoute("cr1", "user", "qu'est-ce que je devais faire ?", scope="prive")
+r = R.repond(_memx, "cr1", "qu'est-ce que je devais faire ?", pleine=True)
+check(r is not None and "acheter du pain" in r and "sortir la poubelle" in r,
+      "« qu'est-ce que je devais faire ? » -> la liste des rappels stockés (promesse tenue)")
+
 # — FUSEAUX HORAIRES (FAUX=0 vécu : « heure à New York » servait l'heure LOCALE) + ÂGE depuis l'année —
 r = R._cap_quotidien("quelle heure est-il à New York ?")
 check(r is not None and not r.startswith("Il est") and "New York" in r,

@@ -268,6 +268,19 @@ def main() -> int:
           "estonie" not in (resolution.resout_liste("Quel est le pays de l'athlète Usain Bolt ?") or "").lower())
     check("NON-RÉG listage : « quels sont les pays de l'Europe » -> liste",
           (resolution.resout_liste("Quels sont les pays de l'Europe ?") or "").lower().count("," ) >= 3)
+    # NOMBRE DEMANDÉ respecté (vécu 2026-07-08 : « cite-moi trois pays » servait les 53) : n items + total dit.
+    _l3 = resolution.resout_liste("cite-moi trois pays d'Europe") or ""
+    check("LISTE COMPTÉE : « trois pays d'Europe » -> exactement 3 + « parmi N »",
+          _l3.count(",") == 2 and "en voici 3 parmi" in _l3)
+    _l5 = resolution.resout_liste("cite 5 pays d'Afrique") or ""
+    check("LISTE COMPTÉE : « 5 pays d'Afrique » -> 5 + « parmi N »",
+          _l5.count(",") == 4 and "en voici 5 parmi" in _l5)
+    # QUALIFICATIF non résolu -> DIT, jamais ignoré en silence (« mammifère MARIN » servait les chauves-souris)
+    _lm = resolution.resout_liste("cite les mammifères marins") or ""
+    check("QUALIFICATIF DIT : « mammifères marins » -> liste + aveu « je ne sais pas filtrer »",
+          "Je ne sais pas filtrer « marins »" in _lm)
+    _lo = resolution.resout_liste("cite les mammifères") or ""
+    check("SANS qualificatif -> pas d'aveu parasite", _lo and "filtrer" not in _lo)
 
     # DÉSAMBIGUÏSATION par attribut nommé : « quel PAYS de l'athlète X » départage pays_sportif_athlete (vs
     # sport_athlete) -> on récupère la vraie réponse au lieu d'un HORS prudent, sans faire fuir un piège.
