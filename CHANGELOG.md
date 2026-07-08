@@ -1,5 +1,85 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Passe adverse : les variantes de phrasé ne font plus revenir les FAUX
+
+- **Le « 2010 » du film revenait** par « est-ce que 2024 **c'est** une année bissextile » et « 2028
+  **sera-t-elle** bissextile » (garde et route ne couvraient que « est ») → « c'est », futur/conditionnel et
+  « t » euphonique couverts des deux côtés (garde `resolution` + règle grégorienne).
+- **L'heure locale revenait** pour « **tokyo** il est quelle heure » (ville en tête de phrase) → la table de
+  fuseaux est balayée sur TOUTE la phrase, plus seulement après « à ».
+- Variantes câblées : « **cb** de jours entre… » (SMS cb → combien), « XIV **ça fait combien** en chiffres
+  arabes », « 20 % de **réduc** », « **c'est quoi l'**anagramme de chien ».
+- Bancs : `valide_assistant_nl` **257/257** (+4), capacites_chat **138/138** (+1), suite 25/25, raisonnement
+  191/191, paraphrases 174/174, resolution 50/50, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Vague 16 : rangs, successions et divisions du temps (cycles fermés)
+
+- `resout_math` : « le **5e mois** de l'année » → Mai (« le 13e » → correction honnête « l'année n'a que 12
+  mois », plus de mémo garbage) ; « quel jour vient **après mardi** » → Mercredi (« après dimanche » → Lundi,
+  rebouclage DIT) ; « quelle lettre vient **après le m** » → n (« après le z » → « aucune — dernière lettre ») ;
+  divisions du temps : trimestres/semestres/mois/jours par année ou semaine (4/2/12/7), années par
+  siècle/millénaire/décennie (100/1000/10), siècles par millénaire (10). Conventions de cycles fermés, exactes.
+- Météo : « combien de degrés fait-il dehors » rejoint la route météo. Bancs : `valide_assistant_nl`
+  **253/253** (+14), suite 25/25, raisonnement 191/191, paraphrases 174/174, capacites_chat 137/137,
+  challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — FAUX=0 : « 100 km/h ou 30 m/s, le plus rapide ? » listait des PONTS + comparaison de grandeurs câblée
+
+- **FAUX servi, trouvé à la sonde** : `_liste_inverse` matchait le token « **plus** » de la relation
+  `plus_longue_travee_pont` et ancrait sur « 100 » → « Pont (100, 12) : Hammerbrücke… » pour une question de
+  vitesse. Nouveau `_JAMAIS_TYPE` (fermé : plus/moins/grande/longue/haute/petit…) : un comparatif ne désigne
+  jamais un type d'entité.
+- **CÂBLAGE** `fonction_nl.compare_grandeurs` (branché à `resout_conversion` ET `_cap_comparaison`) :
+  « 100 km/h est-il plus rapide que 30 m/s ? » → « 30 m/s est plus rapide que 100 km/h (100 km/h =
+  27.777778 m/s après conversion) » — conversion EXACTE puis comparaison, équivalence du perdant MONTRÉE dans
+  l'unité du gagnant ; « 36 km/h ou 10 m/s » → « Ils sont égaux » ; « plus léger » inverse le gagnant ;
+  masses/longueurs/volumes/aires/données couverts ; dimensions différentes → abstention. Et la devinette
+  classique : « un kilo de plomb ou un kilo de plumes ? » → « Ils pèsent exactement pareil ».
+- Météo : « combien de degrés fait-il dehors » rejoint la route météo (relevé réel web ON, refus honnête sinon).
+- Bancs : `banc_raisonnement` **191/191** (+5), paraphrases 174/174, suite 25/25, assistant_nl 239/239,
+  capacites_chat 137/137, resolution 50/50, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Vague 15 : protons « dans », sel de table, hendécagone, somme des angles, degrés du cercle
+
+- `_cap_protons` : « combien de protons **dans** l'uranium » (le phrasé « dans » ratait) → 92 protons ;
+  amorce `formule_chimique` : « sel de table »/« sel de cuisine » → NaCl ; `cotes_polygone` : hendécagone (11)
+  ajouté (table + gabarit NL) ; `resout_math` : somme des angles intérieurs d'un polygone nommé (« d'un
+  hexagone » → 720°, formule (n−2)·180° MONTRÉE), degrés d'un cercle (360°) et d'un demi-cercle (180°).
+  Garde : « combien de degrés fait-il dehors » (météo) ne déclenche rien.
+- Bancs : `valide_assistant_nl` **239/239** (+5), raisonnement **186/186** (+3), suite 25/25, lecteur
+  1613/1613, capacites_chat 137/137, paraphrases 174/174, câblage 504 0 orphelin.
+
+## 2026-07-08 — L'unité déclarée par la source est affichée (« point de fusion du fer » : 1811 **K**, pas « 1811 »)
+
+- **Trompeur, trouvé à la sonde** : les relations numériques à valeur NUE servaient le nombre sans unité —
+  « point de fusion du fer » → « 1811 » (lu en °C alors que la vérité stockée est en KELVINS ; 1811 K =
+  1538 °C), « distance Terre-Soleil » → « 150 » (millions de km non dits). Nouveau `_avec_unite` au service
+  générique : table FERMÉE sur le libellé exact des sources (points de fusion/ébullition K, distance Soleil
+  millions de km, masse volumique kg/m³, diamètres m/mm, masse atomique u) — l'unité vient de la SOURCE du
+  fait, jamais devinée ; valeur non numérique ou source sans unité → inchangé (« numéro atomique » reste « 6 »).
+- Bancs : `banc_raisonnement` **183/183** (+3), paraphrases 174/174, suite 25/25, assistant_nl 234/234,
+  capacites_chat 137/137, challenge 16/16, câblage 504, lecteur 1613/1613.
+
+## 2026-07-08 — Dates d'œuvres : « quand est sorti Avatar ? » → 2009 (routage par verbe, piège homonyme évité)
+
+- `_cap_date_evenement` : verbes « sorti/paru/publié » routés vers LEUR relation — « sorti » (films) →
+  `annee_creation_oeuvre_art` (Avatar → 2009) puis publication en repli ; « publié/paru » →
+  `annee_publication_oeuvre` SEULEMENT — jamais oeuvre_art, où « Les Misérables » est un TABLEAU de 1900
+  (servir 1900 pour le roman de 1862 serait un FAUX). Préfixes « le film/le roman/le livre/l'album » dépouillés.
+  « Titanic » reste en abstention honnête (homonymes multi-films, crible fonctionnel).
+- Bancs : `banc_raisonnement` **180/180** (+2), paraphrases 174/174, suite 25/25, assistant_nl 234/234,
+  capacites_chat 137/137, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — FAUX=0 : « de quelle année date le roman 1984 » listait 2041 édifices construits en 1984
+
+- **FAUX servi, trouvé à la sonde** : `_liste_inverse` prenait le « 1984 » du TITRE comme ancre-valeur et,
+  « quelle année » rendant les relations `annee_*` liste-plausibles, servait « Edifice (1984, 2041) : … ».
+  Garde ANCRE CIRCULAIRE : quand la question DEMANDE une année (le seul token de relation matché est
+  annee/date), une ancre purement NUMÉRIQUE est un titre/nom, pas une requête de liste → écartée.
+  « quels ÉDIFICES datent de 1984 » (type interrogé ≠ la date) continue de lister.
+- Bancs : `banc_raisonnement` **178/178** (+2), paraphrases 174/174, suite 25/25, assistant_nl 234/234,
+  capacites_chat 137/137, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — FAUX=0 : « quinze plus vingt-sept » rendait 28 (le tiret de « vingt-sept » devenait un moins)
 
 - **FAUX servi comme fait** : la substitution mot→chiffre traitait « vingt-sept » mot à mot → « 20-7 », et le

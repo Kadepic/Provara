@@ -520,7 +520,7 @@ class Lecteur:
         (re.compile(r"\b(?:monnaie|devise) (?:officielle )?(?:du |de la |de l |des |de )?(.+)$"), "monnaie", 1),
         (re.compile(r"\blangue (?:officielle |parlee )?(?:du |de la |de l |des |de |en |au )?(.+)$"), "langue_officielle", 1),
         (re.compile(r"\b(?:combien de cotes|nombre de cotes)\b.*?\b(triangle|quadrilatere|pentagone|hexagone|"
-                    r"heptagone|octogone|nonagone|decagone|dodecagone)\b"), "cotes_polygone", 1),
+                    r"heptagone|octogone|nonagone|decagone|hendecagone|dodecagone)\b"), "cotes_polygone", 1),
         (re.compile(r"\b(?:combien de faces|nombre de faces)\b.*?\b(tetraedre|cube|hexaedre|octaedre|"
                     r"dodecaedre|icosaedre)\b"), "faces_solide", 1),
     ]
@@ -901,7 +901,8 @@ _NUMERO_JOUR_SEMAINE = [(j, str(i + 1)) for i, (i_str, j) in enumerate(_JOUR_SEM
 _FORMULE_CHIMIQUE = [
     ("eau", "H2O"), ("dioxyde de carbone", "CO2"), ("monoxyde de carbone", "CO"), ("methane", "CH4"),
     ("ammoniac", "NH3"), ("dioxygene", "O2"), ("diazote", "N2"), ("ozone", "O3"),
-    ("chlorure de sodium", "NaCl"), ("acide chlorhydrique", "HCl"), ("peroxyde d hydrogene", "H2O2"),
+    ("chlorure de sodium", "NaCl"), ("sel de table", "NaCl"), ("sel de cuisine", "NaCl"),
+    ("acide chlorhydrique", "HCl"), ("peroxyde d hydrogene", "H2O2"),
     ("glucose", "C6H12O6"),
 ]
 
@@ -927,7 +928,7 @@ _LANGUE_OFFICIELLE = [
 # --- Polygones (CONVENTION géométrique) : nom -> nombre de côtés. Définitionnel. ---
 _COTES_POLYGONE = [
     ("triangle", 3), ("quadrilatere", 4), ("pentagone", 5), ("hexagone", 6), ("heptagone", 7),
-    ("octogone", 8), ("nonagone", 9), ("decagone", 10), ("dodecagone", 12),
+    ("octogone", 8), ("nonagone", 9), ("decagone", 10), ("hendecagone", 11), ("dodecagone", 12),
 ]
 
 # --- Solides de Platon (CONVENTION géométrique) : nom -> nombre de faces. Définitionnel. ---

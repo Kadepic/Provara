@@ -219,6 +219,9 @@ check(r is not None and "acheter du pain" in r and "sortir la poubelle" in r,
 r = R._cap_quotidien("quelle heure est-il à New York ?")
 check(r is not None and not r.startswith("Il est") and "New York" in r,
       "heure à New York -> fuseau IANA OU abstention — plus JAMAIS l'heure locale nue")
+r = R._cap_quotidien("tokyo il est quelle heure ?")
+check(r is not None and "Tokyo" in r and not r.startswith("Il est"),
+      "ville EN TÊTE de phrase -> fuseau aussi (l'heure locale était servie pour Tokyo, FAUX vécu)")
 r = R._cap_quotidien("quelle heure est-il à Trifouillis-les-Oies ?")
 check(r is not None and "abstenir" in r.lower() or (r is not None and "fuseau" in r),
       "ville inconnue -> abstention honnête dite")

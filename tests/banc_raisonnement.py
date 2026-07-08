@@ -123,6 +123,28 @@ CAS = [
     ("ecart-temporel", R._cap_ecart_temporel, "combien d'années séparent la bataille de Marignan et la bataille de Waterloo ?", "300 ans"),
     ("date-evenement", R._cap_date_evenement, "quand a eu lieu la bataille de Marignan ?", "1515"),
     ("date-evenement-fin", R._cap_date_evenement, "quand s'est terminée la guerre de Cent Ans ?", "1453"),
+    # dates d'ŒUVRES routées PAR VERBE : « sorti » -> oeuvre_art (films) ; « publié » n'y touche JAMAIS
+    # (« Les Misérables » y est un TABLEAU de 1900 — servir 1900 pour le roman serait un FAUX)
+    ("date-oeuvre-sorti", R._cap_date_evenement, "quand est sorti Avatar ?", "2009"),
+    ("date-oeuvre-publie-piege", R._cap_date_evenement, "quand a été publié Les Misérables ?", ""),
+    # UNITÉ déclarée par la SOURCE affichée (« 1811 » nu se lisait en °C — la vérité stockée est en KELVINS)
+    ("unite-fusion-kelvin", lambda q: R._connaissance_verifiee(q, None), "point de fusion du fer", "1811 K"),
+    ("unite-terre-soleil", lambda q: R._connaissance_verifiee(q, None), "distance Terre-Soleil", "150 millions de km"),
+    ("unite-pas-devinee", lambda q: R._connaissance_verifiee(q, None), "numéro atomique du carbone", "6"),
+    ("protons-dans", R._cap_protons, "combien de protons dans l'uranium ?", "92 protons"),
+    ("formule-sel-de-table", lambda q: R._connaissance_verifiee(q, None),
+     "quelle est la formule chimique du sel de table ?", "NaCl"),
+    ("cotes-hendecagone", lambda q: R._connaissance_verifiee(q, None), "combien de côtés a un hendécagone ?", "11"),
+    # COMPARAISON DE GRANDEURS À UNITÉS (conversion exacte puis comparaison, équivalence MONTRÉE) —
+    # avant : « lequel est le plus rapide : 100 km/h ou 30 m/s » listait des PONTS (ancre « plus » -> travée)
+    ("compare-vitesses", R._cap_comparaison, "100 km/h est-il plus rapide que 30 m/s ?",
+     "30 m/s est plus rapide que 100 km/h"),
+    ("compare-vitesses-egales", R._cap_comparaison, "36 km/h ou 10 m/s, lequel est le plus rapide ?",
+     "Ils sont égaux"),
+    ("compare-masses", R._cap_comparaison, "2 kg est-il plus lourd que 1500 g ?", "2 kg est plus lourd"),
+    ("kilo-plomb-plumes", lambda q: __import__("fonction_nl").compare_grandeurs(q),
+     "qu'est-ce qui est plus lourd : un kilo de plomb ou un kilo de plumes ?", "pèsent exactement pareil"),
+    ("liste-inverse-plus-pont", R._liste_inverse, "100 km/h est-il plus rapide que 30 m/s ?", ""),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
@@ -148,6 +170,10 @@ CAS = [
     ("ouinon-neg-confirmee", R._oui_non, "la capitale de la France n'est pas Lyon, si ?",
      "Ce que j'ai de vérifié : la capitale de la France → Paris."),
     ("ouinon-neg-ouverte", R._oui_non, "quelle ville n'est pas la capitale de la France ?", ""),  # ouverte -> None
+    # GARDE ANCRE CIRCULAIRE : « de quelle ANNÉE date le roman 1984 » ne liste plus les 2041 édifices de 1984
+    # (le nombre de la phrase est un TITRE quand la question DEMANDE une année) ; l'inverse légitime survit.
+    ("liste-inverse-annee-titre", R._liste_inverse, "de quelle année date le roman 1984", ""),
+    ("liste-inverse-edifices-1984", R._liste_inverse, "quels édifices datent de 1984", "Edifice (1984"),
     ("guerison-mots-outils", R._guerit_entree, "la France a-t-elle des colonies", "des colonies"),  # « des » pas -> « dis »
     ("fait-personne-lieu", R._cap_fait_personne, "où est né Napoléon Ier ?", "Ajaccio"),
     ("fait-personne-fem", R._cap_fait_personne, "où est morte Marie Curie ?", "est morte"),

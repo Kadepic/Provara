@@ -229,6 +229,40 @@ def _norm_conv(s: str) -> str:
     return re.sub(r"\s+", " ", s)
 
 
+def compare_grandeurs(question: str):
+    """COMPARAISON de deux grandeurs d'unités COMPARABLES : « 100 km/h ou 30 m/s, lequel est le plus rapide ? »,
+    « 2 kg est-il plus lourd que 1500 g » -> les deux converties dans la même base (facteurs EXACTS) puis
+    comparées ; l'équivalence du perdant est MONTRÉE dans l'unité du gagnant (re-vérifiable d'un coup d'œil).
+    Dimensions différentes ou unité inconnue -> None. Devinette du kilo (plomb/plumes) : réponse exacte."""
+    q = _norm_conv(question)
+    madj = re.search(r"plus\s+(rapide|vite|lourde?s?|l[ée]g[eè]re?s?|longs?|longues?|courte?s?|grande?s?|petite?s?)\b", q)
+    if madj:
+        mcv = re.search(rf"({_NUM})\s*({_UNIT_ALT})\b\s+(?:ou|que)\s+(?:celui\s+de\s+)?({_NUM})\s*({_UNIT_ALT})\b", q) \
+            or re.search(rf"({_NUM})\s*({_UNIT_ALT})\b[^0-9]{{0,35}}\b(?:ou|que)\b[^0-9]{{0,10}}({_NUM})\s*({_UNIT_ALT})\b", q)
+        if mcv:
+            n1, u1, n2, u2 = (float(mcv.group(1).replace(",", ".")), mcv.group(2).lower(),
+                              float(mcv.group(3).replace(",", ".")), mcv.group(4).lower())
+            d1, d2 = _CONV_UNITS.get(u1), _CONV_UNITS.get(u2)
+            if d1 and d2 and d1[0] == d2[0]:
+                b1, b2 = n1 * d1[1], n2 * d2[1]
+                a1, a2 = "%s %s" % (_fmt_nombre(n1), u1), "%s %s" % (_fmt_nombre(n2), u2)
+                if b1 == b2:
+                    return "Ils sont égaux (%s = %s après conversion)." % (a1, a2)
+                adj = {"vite": "rapide"}.get(madj.group(1), madj.group(1))
+                inverse = bool(re.match(r"l[ée]g|court|petit", adj))     # « plus léger » = le plus PETIT gagne
+                gagne_1 = (b1 > b2) != inverse
+                gagnant, perdant = (a1, a2) if gagne_1 else (a2, a1)
+                u_g, d_g = (u1, d1) if gagne_1 else (u2, d2)
+                b_p = b2 if gagne_1 else b1
+                return ("%s est plus %s que %s (%s = %s %s après conversion)."
+                        % (gagnant, adj, perdant, perdant, _fmt_nombre(b_p / d_g[1]), u_g))
+    # DEVINETTE CLASSIQUE, réponse exacte : un kilo est un kilo, quelle que soit la matière.
+    if re.search(r"plus\s+lourd", q) and re.search(r"(?:kilo|kg)\s+de\s+\w+\s+ou\s+(?:un\s+)?(?:kilo|kg)\s+de\s+\w+", q):
+        return ("Ils pèsent exactement pareil : un kilogramme est un kilogramme, la masse ne dépend "
+                "pas de la matière.")
+    return None
+
+
 def resout_conversion(question: str):
     """Convertit entre 2 unités de MÊME dimension (table fermée, exacte). (VERIFIE, texte, source) ou (HORS,None,None).
     FAUX=0 : unité inconnue ou dimensions différentes -> HORS. Ne fire que sur un motif de conversion explicite."""
@@ -245,6 +279,11 @@ def resout_conversion(question: str):
     if re.search(r"semaines?\s+dans\s+(?:une?\s+|l['’]\s*)?annee", q):
         return (VERIFIE, "52 semaines et 1 jour (année de 365 jours) ; 52 semaines et 2 jours si bissextile (366).",
                 "calendrier — 365 = 52×7 + 1")
+    # COMPARAISON de deux grandeurs d'unités COMPARABLES (logique partagée avec _cap_comparaison de repond).
+    cg = compare_grandeurs(question)
+    if cg:
+        return (VERIFIE, cg, "conversion + comparaison exactes")
+
     m = _CONV_EN.search(q)
     if m:
         num = float(m.group(1).replace(",", ".")); src = m.group(2).lower(); dst = m.group(3).lower()
@@ -558,9 +597,9 @@ def resout_math(question: str):
     # La réponse MONTRE le calcul (« 64 (80 − 20 % = 80 − 16) ») : lève l'ambiguïté remise/prix final.
     _PCT = r"(\d+(?:[.,]\d+)?)"
     _f = lambda g: float(g.replace(",", "."))
-    mred = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+(?:r[ée]duction|remise|rabais)\s+sur\s+{_PCT}",
+    mred = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+(?:r[ée]duc(?:tion)?s?|remises?|rabais)\s+sur\s+{_PCT}",
                       question, re.I)
-            or re.search(rf"(?:r[ée]duction|remise|rabais)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}",
+            or re.search(rf"(?:r[ée]duc(?:tion)?s?|remises?|rabais)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}",
                          question, re.I))
     if mred:
         p, base = _f(mred.group(1)), _f(mred.group(2))
@@ -604,7 +643,8 @@ def resout_math(question: str):
         if 1 <= n <= 3999:
             return (VERIFIE, _en_romain(n), "numération romaine (convention, symboles du lecteur)")
         return (HORS, None, None)
-    mrom2 = re.search(r"\b([ivxlcdm]+)\b\s+en\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q)
+    mrom2 = re.search(r"\b([ivxlcdm]+)\b(?:\s+ca\s+fait\s+combien)?\s+en\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q) \
+        or re.search(r"\b([ivxlcdm]{2,})\b.{0,20}?\ben\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q)
     if mrom2:
         n = _depuis_romain(mrom2.group(1).upper())
         if n is not None:
@@ -859,8 +899,9 @@ def resout_math(question: str):
 
     # ANNÉE BISSEXTILE (règle grégorienne EXACTE — convention). FAUX=0 vécu : « est-ce que 2024 est une année
     # bissextile » servait « 2010 » (l'année du FILM « Année bissextile », lookup d'œuvre détourné).
-    mbi = re.search(r"(\d{1,6})\s+est(?:[- ](?:elle|il|ce))?\s+(?:une\s+)?(?:annee\s+)?bissextile"
-                    r"|annee\s+(\d{1,6})\s+est(?:[- ](?:elle|il))?\s+bissextile", q)
+    mbi = re.search(r"(\d{1,6})\s+(?:c\s*)?(?:est|sera|serait)(?:[-\s]+t)?(?:[-\s]+(?:elle|il|ce))?\s+"
+                    r"(?:une\s+)?(?:annee\s+)?bissextile"
+                    r"|annee\s+(\d{1,6})\s+(?:est|sera)(?:[-\s]+t)?(?:[-\s]+(?:elle|il))?\s+bissextile", q)
     if mbi or ("bissextile" in q and re.search(r"est[- ]ce\s+que\s+(\d{1,6})", q)):
         g = mbi.group(1) or mbi.group(2) if mbi else re.search(r"est[- ]ce\s+que\s+(\d{1,6})", q).group(1)
         n = int(g)
@@ -875,6 +916,64 @@ def resout_math(question: str):
         return (VERIFIE, "%d jours (%d est %s)" % (366 if biss else 365, n,
                                                    "bissextile" if biss else "non bissextile"),
                 "calendrier grégorien — règle bissextile")
+
+    # SOMME DES ANGLES d'un polygone (convention euclidienne exacte : (n−2)·180°) et DEGRÉS d'un cercle.
+    mang = re.search(r"somme\s+des\s+angles\s+(?:int[ée]rieurs\s+)?d['’]?\s*(?:un\s+|une\s+)?"
+                     r"(triangle|quadrilatere|pentagone|hexagone|heptagone|octogone|nonagone|decagone"
+                     r"|hendecagone|dodecagone)", q)
+    if mang:
+        _NCOTES = {"triangle": 3, "quadrilatere": 4, "pentagone": 5, "hexagone": 6, "heptagone": 7,
+                   "octogone": 8, "nonagone": 9, "decagone": 10, "hendecagone": 11, "dodecagone": 12}
+        n = _NCOTES[mang.group(1)]
+        return (VERIFIE, "%d° ((n − 2) × 180° avec n = %d, géométrie euclidienne)" % ((n - 2) * 180, n),
+                "géométrie — somme des angles intérieurs")
+    if re.search(r"combien\s+de\s+degr[ée]s\s+dans\s+(?:un\s+)?demi[- ]cercle", q):
+        return (VERIFIE, "180° (un demi-tour, convention)", "géométrie — mesure d'angle")
+    if re.search(r"combien\s+de\s+degr[ée]s\s+dans\s+(?:un\s+)?(?:cercle|tour)(?:\s+complet)?\b", q):
+        return (VERIFIE, "360° (tour complet, convention)", "géométrie — mesure d'angle")
+
+    # RANGS ET SUCCESSIONS des cycles FERMÉS (mois de l'année, jours de la semaine, alphabet) — conventions.
+    _MOIS_O = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+               "septembre", "octobre", "novembre", "décembre"]
+    _JOURS_O = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
+    mrg = re.search(r"le\s+(\d{1,2})\s*(?:e|eme|ème|er)\s+mois\s+de\s+l['’]?\s*annee", q)
+    if mrg:
+        n = int(mrg.group(1))
+        if 1 <= n <= 12:
+            return (VERIFIE, "%s (%de mois de l'année)" % (_MOIS_O[n - 1].capitalize(), n),
+                    "calendrier — rang des mois")
+        return (VERIFIE, "L'année n'a que 12 mois — il n'y a pas de %de mois." % n, "calendrier — rang des mois")
+    mjs = re.search(r"quel\s+jour\s+vient\s+(apres|avant)\s+(?:le\s+)?(lundi|mardi|mercredi|jeudi|vendredi"
+                    r"|samedi|dimanche)\b", q)
+    if mjs:
+        i = _JOURS_O.index(mjs.group(2))
+        j = _JOURS_O[(i + (1 if mjs.group(1) == "apres" else -1)) % 7]
+        return (VERIFIE, "%s%s" % (j.capitalize(), " (la semaine reboucle)" if (i, mjs.group(1)) in
+                                   ((6, "apres"), (0, "avant")) else ""), "calendrier — ordre des jours")
+    mls = re.search(r"quelle\s+lettre\s+vient\s+(apres|avant)\s+(?:le\s+|la\s+|l['’]\s*)?([a-z])\b", q)
+    if mls:
+        c, sens = mls.group(2), mls.group(1)
+        if c == "z" and sens == "apres":
+            return (VERIFIE, "Aucune — z est la dernière lettre de l'alphabet.", "alphabet latin")
+        if c == "a" and sens == "avant":
+            return (VERIFIE, "Aucune — a est la première lettre de l'alphabet.", "alphabet latin")
+        return (VERIFIE, chr(ord(c) + (1 if sens == "apres" else -1)), "alphabet latin")
+
+    # DIVISIONS DU TEMPS (conventions exactes du calendrier).
+    mdt = re.search(r"combien\s+(?:de\s+|d['’]?\s*)(trimestres|semestres|mois|jours)\s+dans\s+(?:une?\s+)?"
+                    r"(annee|semaine)\b", q)
+    if mdt:
+        val = {("trimestres", "annee"): "4", ("semestres", "annee"): "2", ("mois", "annee"): "12",
+               ("jours", "semaine"): "7"}.get((mdt.group(1), mdt.group(2)))
+        if val:
+            return (VERIFIE, val, "calendrier — divisions de l'année")
+    mds = re.search(r"combien\s+(?:de\s+|d['’]?\s*)(?:annees|ans)\s+dans\s+(?:un\s+|une\s+)?"
+                    r"(siecle|millenaire|decennie)\b", q)
+    if mds:
+        return (VERIFIE, {"siecle": "100", "millenaire": "1000", "decennie": "10"}[mds.group(1)],
+                "calendrier — divisions du temps")
+    if re.search(r"combien\s+de\s+siecles\s+dans\s+(?:un\s+)?millenaire", q):
+        return (VERIFIE, "10", "calendrier — divisions du temps")
 
     # GÉOMÉTRIE SIMPLE : aire/périmètre/volume de figures nommées (modules geometrie2d/geometrie3d vérifiés).
     geo = _resout_geometrie(q)
