@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Dates d'œuvres : « quand est sorti Avatar ? » → 2009 (routage par verbe, piège homonyme évité)
+
+- `_cap_date_evenement` : verbes « sorti/paru/publié » routés vers LEUR relation — « sorti » (films) →
+  `annee_creation_oeuvre_art` (Avatar → 2009) puis publication en repli ; « publié/paru » →
+  `annee_publication_oeuvre` SEULEMENT — jamais oeuvre_art, où « Les Misérables » est un TABLEAU de 1900
+  (servir 1900 pour le roman de 1862 serait un FAUX). Préfixes « le film/le roman/le livre/l'album » dépouillés.
+  « Titanic » reste en abstention honnête (homonymes multi-films, crible fonctionnel).
+- Bancs : `banc_raisonnement` **180/180** (+2), paraphrases 174/174, suite 25/25, assistant_nl 234/234,
+  capacites_chat 137/137, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — FAUX=0 : « de quelle année date le roman 1984 » listait 2041 édifices construits en 1984
 
 - **FAUX servi, trouvé à la sonde** : `_liste_inverse` prenait le « 1984 » du TITRE comme ancre-valeur et,

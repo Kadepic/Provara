@@ -123,6 +123,10 @@ CAS = [
     ("ecart-temporel", R._cap_ecart_temporel, "combien d'années séparent la bataille de Marignan et la bataille de Waterloo ?", "300 ans"),
     ("date-evenement", R._cap_date_evenement, "quand a eu lieu la bataille de Marignan ?", "1515"),
     ("date-evenement-fin", R._cap_date_evenement, "quand s'est terminée la guerre de Cent Ans ?", "1453"),
+    # dates d'ŒUVRES routées PAR VERBE : « sorti » -> oeuvre_art (films) ; « publié » n'y touche JAMAIS
+    # (« Les Misérables » y est un TABLEAU de 1900 — servir 1900 pour le roman serait un FAUX)
+    ("date-oeuvre-sorti", R._cap_date_evenement, "quand est sorti Avatar ?", "2009"),
+    ("date-oeuvre-publie-piege", R._cap_date_evenement, "quand a été publié Les Misérables ?", ""),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),

@@ -1486,15 +1486,21 @@ _DATE_EVT_RE = re.compile(
 # = annee_construction_edifice (1961). Sans ce routage, _annee_de rend la PREMIÈRE date trouvée (l'ordre des
 # relations déciderait entre 1961 et 1989 — un coup de dés, pas un fait).
 _DATE_VERBE_RE = re.compile(
-    r"^\s*(?:quand|en\s+quelle\s+ann[ée]+e?)\s+(?:est\s+(tomb[ée]|chut[ée])|a\s+(?:[ée]t[ée]\s+)?"
-    r"(construite?|[ée]rig[ée]e?|b[âa]tie?|d[ée]truite?|d[ée]molie?|dissoute?|sign[ée]e?))\s+"
-    r"(?:le\s+|la\s+|les\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
+    r"^\s*(?:quand|en\s+quelle\s+ann[ée]+e?)\s+(?:est\s+(tomb[ée]|chut[ée]|sorti[es]?|paru[es]?)|a\s+(?:[ée]t[ée]\s+)?"
+    r"(construite?|[ée]rig[ée]e?|b[âa]tie?|d[ée]truite?|d[ée]molie?|dissoute?|sign[ée]e?|publi[ée]e?s?))\s+"
+    r"(?:le\s+film\s+|le\s+roman\s+|le\s+livre\s+|l['’]album\s+|le\s+|la\s+|les\s+|l['’]\s*)?(.+?)\s*\??\s*$", re.I)
+# ⚠ ROUTAGE PAR VERBE, jamais « première date trouvée » : « publié » ne touche QUE annee_publication_oeuvre —
+# annee_creation_oeuvre_art contient des ŒUVRES D'ART homonymes (« Les Misérables » (tableau, 1900) ≠ le roman
+# de 1862 : servir 1900 pour « quand a été publié Les Misérables » serait un FAUX). « sorti » (films) passe
+# par oeuvre_art (Avatar → 2009) puis publication en repli.
 _DATE_VERBE_RELS = {"tomb": ("annee_dissolution",), "chut": ("annee_dissolution",),
                     "sign": ("annee_signature_traite", "date_evenement"),
                     "detruit": ("annee_dissolution", "annee_demolition"), "demoli": ("annee_demolition",),
                     "dissou": ("annee_dissolution",),
                     "construit": ("annee_construction_edifice",), "erig": ("annee_construction_edifice",),
-                    "bati": ("annee_construction_edifice",)}
+                    "bati": ("annee_construction_edifice",),
+                    "sorti": ("annee_creation_oeuvre_art", "annee_publication_oeuvre"),
+                    "paru": ("annee_publication_oeuvre",), "publi": ("annee_publication_oeuvre",)}
 
 
 def _cap_date_evenement(texte: str):
@@ -1516,7 +1522,9 @@ def _cap_date_evenement(texte: str):
                         if a is not None:
                             lib = {"annee_dissolution": "est tombé en", "annee_demolition": "a été démoli en",
                                    "annee_signature_traite": "a été signé en",
-                                   "annee_construction_edifice": "a été construit en"}.get(rel, ":")
+                                   "annee_construction_edifice": "a été construit en",
+                                   "annee_creation_oeuvre_art": "est sorti en",
+                                   "annee_publication_oeuvre": "a été publié en"}.get(rel, ":")
                             return "%s %s %d." % (cell[0][:1].upper() + cell[0][1:], lib, int(a))
         return None
     m = _DATE_EVT_RE.match(texte.strip())
