@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 36 : les milliers à espace PARTOUT (« 20 % de 5 000 » → 1 !) + bords théoriques
+
+- **FAUX ×3 (même racine, trois routes)** : l'espace des milliers cassait aussi les **pourcentages**
+  (« 20 % de 5 000 » → *1* — « de 5 » lu ; TVA sur « 1 500 » → lue 1) et l'**arithmétique** (« 5 000 plus
+  3 000 » → repli). Corrigé aux trois étages : `_PCT`/`_f` (toutes les routes %), `resout_arithmetique`,
+  `_reponse_calcul` (pipeline).
+- **Bords théoriques** (tombaient en repli) : « le plus grand nombre premier » → « Il n'y en a pas —
+  quantité infinie (théorème d'Euclide) » ; « le plus petit » → 2 (seul premier pair, dit) ; « racine carrée
+  de 2 » → **irrationalité DITE + approximation étiquetée** (≈ 1.414214) au lieu de l'abstention sèche —
+  les carrés parfaits gardent leur route exacte.
+- **Fractions en lettres** : « un tiers plus un quart » → « 7/12 (1/3 + 1/4, fraction exacte) ≈ 0.5833 ».
+- Bancs : `valide_assistant_nl` **436/436** (+9), capacites_chat 177/177, raisonnement 200/200,
+  paraphrases 174/174, stats 34/34, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 35 : « 5 000 mètres » → 0 km !, conjugueur voleur, unités exactes et ambiguës
 
 - **FAUX** : « convertis **5 000** mètres en kilomètres » → *« 0 kilometres »* (l'espace des milliers cassait

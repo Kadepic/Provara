@@ -401,6 +401,7 @@ _AR_RACINE = re.compile(rf"racine\s+(?:carr\w+\s+)?d['e]\s*{_ARN}")
 def resout_arithmetique(question: str):
     """Calcul EXACT sur des entiers (+,−,×,puissance,division-juste,racine-de-carré-parfait). (VERIFIE, texte, source)
     ou (HORS, None, None). FAUX=0 : résultat non exact ou nombre décimal -> HORS (jamais d'arrondi)."""
+    question = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", question)   # « 5 000 plus 3 000 » : milliers recollés
     q = question.lower()
     if re.search(r"\d[.,]\d", q):                    # nombre décimal présent -> hors périmètre (et anti faux-match)
         return (HORS, None, None)
@@ -708,8 +709,9 @@ def resout_math(question: str):
 
     # POURCENTAGES APPLIQUÉS (arithmétique exacte). ⚠ sur la question BRUTE : normalise() efface le « % ».
     # La réponse MONTRE le calcul (« 64 (80 − 20 % = 80 − 16) ») : lève l'ambiguïté remise/prix final.
-    _PCT = r"(\d+(?:[.,]\d+)?)"
-    _f = lambda g: float(g.replace(",", "."))
+    # ⚠ milliers à ESPACE acceptés (« 20 % de 5 000 » répondait 1 — « de 5 » lu, FAUX vécu 2026-07-08)
+    _PCT = r"(\d+(?:[\s  ]\d{3})*(?:[.,]\d+)?)"
+    _f = lambda g: float(g.replace(" ", "").replace(" ", "").replace(",", "."))
     mred = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+(?:r[ée]duc(?:tion)?s?|remises?|rabais)\s+sur\s+{_PCT}",
                       question, re.I)
             or re.search(rf"(?:r[ée]duc(?:tion)?s?|remises?|rabais)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}",
@@ -812,8 +814,10 @@ def resout_math(question: str):
         return (HORS, None, None)
 
     # POURCENTAGE : « 20% de 150 », « 20 pour cent de 150 » -> 30 (arithmétique exacte, sans module tiers).
+    # Milliers à espace acceptés (« 20 % de 5 000 » répondait 1 — « de 5 » lu, FAUX vécu 2026-07-08).
+    _qm = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", question)
     mp = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour ?cent(?:s)?|pourcent)\s+(?:de|du|des|d['’]|sur)\s+(\d+(?:[.,]\d+)?)",
-                   question, re.I)
+                   _qm, re.I)
     if mp:
         p = float(mp.group(1).replace(",", ".")); base = float(mp.group(2).replace(",", "."))
         v = p / 100.0 * base
@@ -1400,6 +1404,37 @@ def resout_math(question: str):
             return (VERIFIE, "28 jours (29 les années bissextiles).", "calendrier grégorien")
         nbj = [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][num - 1]
         return (VERIFIE, "%d jours" % nbj, "calendrier grégorien")
+
+    # BORNES THÉORIQUES des premiers (tombaient en repli) : le plus grand N'EXISTE PAS (Euclide, dit) ;
+    # le plus petit = 2. AVANT l'ordinal et la primalité simple.
+    if re.search(r"plus\s+grand\s+nombre\s+premier", q) and "entre" not in qtoks:
+        return (VERIFIE, "Il n'y en a pas — les nombres premiers sont en quantité infinie (théorème d'Euclide).",
+                "arithmétique — théorème d'Euclide")
+    if re.search(r"plus\s+petit\s+nombre\s+premier", q) and "entre" not in qtoks:
+        return (VERIFIE, "2 (c'est aussi le seul premier pair).", "arithmétique — définition")
+
+    # RACINE CARRÉE IRRATIONNELLE nommée : « racine carrée de 2 » -> irrationalité DITE + approximation
+    # ÉTIQUETÉE (l'abstention sèche laissait l'utilisateur sans rien ; le carré parfait garde sa route exacte).
+    mri = re.search(r"racine\s+carree\s+de\s+(\d+)\s*\?*\s*$", q)
+    if mri:
+        n = int(mri.group(1))
+        r = math.isqrt(n)
+        if r * r != n and n <= 10 ** 12:
+            return (VERIFIE, "√%d est irrationnel — pas de valeur décimale exacte ; ≈ %.6f (approximation dite)."
+                    % (n, math.sqrt(n)), "arithmétique — irrationalité dite")
+
+    # FRACTIONS EN LETTRES additionnées : « un tiers plus un quart » -> 7/12 exact (tombait en repli).
+    _FRL = {"demi": (1, 2), "tiers": (1, 3), "quart": (1, 4), "cinquieme": (1, 5), "dixieme": (1, 10)}
+    mfl = re.search(r"\bun\s+(demi|tiers|quart|cinquieme|dixieme)\s+(plus|moins)\s+un\s+"
+                    r"(demi|tiers|quart|cinquieme|dixieme)\b", q)
+    if mfl:
+        from fractions import Fraction
+        a = Fraction(*_FRL[mfl.group(1)])
+        b = Fraction(*_FRL[mfl.group(3)])
+        res = a + b if mfl.group(2) == "plus" else a - b
+        return (VERIFIE, "%s (%s %s %s, fraction exacte) ≈ %.4f" % (res, a, "+" if mfl.group(2) == "plus" else "−",
+                                                                    b, float(res)),
+                "arithmétique — fractions exactes")
 
     # NOMBRE PREMIER ORDINAL : « le 100e nombre premier » -> 541 (énumération exacte via est_premier). AVANT la
     # primalité simple, sinon elle répondait « Non, 100 n'est pas premier » À CÔTÉ de la question (FAUX vécu

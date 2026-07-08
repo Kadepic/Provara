@@ -414,6 +414,22 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 36 : milliers à espace dans TOUTES les routes % et l'arithmétique (« 20 % de 5 000 » -> 1, FAUX vécu).
+check(_m("20 % de 5 000") == "1000", "20% de 5 000 -> 1000 (milliers recollés)")
+_tva15 = _m("TVA de 20% sur 1 500 euros")
+check(_tva15 and _tva15.startswith("300 de TVA") and "1800" in _tva15, "TVA sur 1 500 -> 300 ; TTC 1800")
+check(_m("combien font 5 000 plus 3 000") == "8000", "5 000 plus 3 000 -> 8000")
+# BORNES THÉORIQUES + IRRATIONNELS + FRACTIONS EN LETTRES (tombaient en repli).
+_pgp = _m("quel est le plus grand nombre premier")
+check(_pgp and "Euclide" in _pgp, "plus grand premier -> infinité (Euclide)")
+check(_m("le plus petit nombre premier") == "2 (c'est aussi le seul premier pair).", "plus petit premier -> 2")
+_r2 = _m("quelle est la racine carrée de 2")
+check(_r2 and "irrationnel" in _r2 and "1.414214" in _r2, "√2 -> irrationalité DITE + approximation étiquetée")
+_tf = _m("un tiers plus un quart")
+check(_tf and _tf.startswith("7/12"), "un tiers plus un quart -> 7/12 exact")
+_dm = _m("un demi moins un tiers")
+check(_dm and _dm.startswith("1/6"), "un demi moins un tiers -> 1/6")
+check(_m("un nombre premier entre 20 et 30") == "Entre 20 et 30 : 23, 29.", "premiers entre 20 et 30 intacts")
 # VAGUE 35 : milliers à espace (« 5 000 mètres » lu 000 -> 0 km, FAUX vécu), unité nue = 1, exactes ajoutées.
 check(_m("convertis 5 000 mètres en kilomètres") == "5 kilometres", "5 000 m -> 5 km (espace des milliers)")
 check(_m("un hectare en mètres carrés") == "10000 metres carres", "UN hectare -> 10000 m²")

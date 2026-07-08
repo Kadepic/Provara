@@ -3163,6 +3163,7 @@ def _reponse_calcul(texte: str) -> str | None:
     Le « x » n'est converti en « × » QUE si l'intention de calcul est explicite (sinon « 4 x 100 » reste intact)."""
     if not _CALC_INTENT.search(_normalise(texte)):
         return None
+    texte = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", texte)   # milliers à espace (« 5 000 » lu 000, FAUX vécu)
     # NOMBRES EN LETTRES (« combien font douze fois huit ? ») : conversion FERMÉE, UNIQUEMENT sous intention de
     # calcul explicite (hors de ce contexte « un/six » resteraient des mots normaux). FAUX=0 : mapping exact.
     _MOTS_NB = {"zéro": "0", "zero": "0", "un": "1", "une": "1", "deux": "2", "trois": "3", "quatre": "4",
