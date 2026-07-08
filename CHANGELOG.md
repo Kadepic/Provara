@@ -1,5 +1,13 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Listes : le nombre demandé est respecté (« cite-moi trois pays d'Europe »)
+
+- `resolution.resout_liste` : « cite-moi **trois** pays d'Europe » servait les **53** — désormais « Pays
+  (Europe) : ahvenanmaa, albanie, allemagne — **en voici 3 parmi 53**. » (nombre en lettres deux→dix ou en
+  chiffres ; sans nombre → liste complète inchangée, échantillon à 15 comme avant).
+- Bancs : `valide_resolution` **48/48** (+2), suite 25/25, capacites_chat 134/134, assistant_nl 234/234,
+  raisonnement 176/176, paraphrases 170/170, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Rappels-tâches : « rappelle-moi d'acheter du pain » devient un vrai rappel (honnête : pas d'alarme)
 
 - **Trou préexistant** : « rappelle-moi de X » partait en cascade factuelle → « je n'ai pas l'information »
