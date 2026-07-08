@@ -3027,6 +3027,7 @@ _CALC_INTENT = re.compile(
 
 
 _CONV_UNITE = {"celsius": "C", "c": "C", "°c": "C", "fahrenheit": "F", "f": "F", "°f": "F",
+               "kelvin": "K", "kelvins": "K", "°k": "K",
                "kilometre": "KM", "kilometres": "KM", "km": "KM", "mile": "MI", "miles": "MI",
                "kilogramme": "KG", "kilogrammes": "KG", "kilo": "KG", "kilos": "KG", "kg": "KG",
                "livre": "LB", "livres": "LB", "lb": "LB", "lbs": "LB"}
@@ -3051,6 +3052,14 @@ def _cap_conversion(texte: str):
         return "%s °C = %s °F  (formule exacte : (%s × 9/5) + 32)." % (aff(v), aff(v * 9 / 5 + 32), aff(v))
     if (u1, u2) == ("F", "C"):
         return "%s °F = %s °C  (formule exacte : (%s − 32) × 5/9)." % (aff(v), aff((v - 32) * 5 / 9), aff(v))
+    if (u1, u2) == ("C", "K"):
+        return "%s °C = %s K  (définition exacte : %s + 273,15)." % (aff(v), aff(v + 273.15), aff(v))
+    if (u1, u2) == ("K", "C"):
+        return "%s K = %s °C  (définition exacte : %s − 273,15)." % (aff(v), aff(v - 273.15), aff(v))
+    if (u1, u2) == ("F", "K"):
+        return "%s °F = %s K  (exact : (%s − 32) × 5/9 + 273,15)." % (aff(v), aff((v - 32) * 5 / 9 + 273.15), aff(v))
+    if (u1, u2) == ("K", "F"):
+        return "%s K = %s °F  (exact : (%s − 273,15) × 9/5 + 32)." % (aff(v), aff((v - 273.15) * 9 / 5 + 32), aff(v))
     if (u1, u2) == ("KM", "MI"):
         return "%s km = %s mile(s)  (1 mile = 1,609344 km, définition légale)." % (aff(v), aff(v / 1.609344))
     if (u1, u2) == ("MI", "KM"):

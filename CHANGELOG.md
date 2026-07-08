@@ -1,5 +1,13 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Kelvin dans les conversions de température (offset 273,15 exact par définition)
+
+- `_cap_conversion` : °C↔K, °F↔K (« 100 celsius en kelvin » → 373,15 K, « 0 kelvin en celsius » → −273,15 °C —
+  zéro absolu), formule montrée comme pour °C↔°F. Trouvé à la sonde : « température d'ébullition de l'eau en
+  kelvin » répondait 100 °C sans convertir ; désormais l'utilisateur peut au moins convertir exactement.
+- Bancs : `banc_paraphrases` **170/170** (+2), capacites_chat 118/118, suite 25/25, assistant_nl 181/181,
+  raisonnement 171/171.
+
 ## 2026-07-08 — CÂBLAGE vague 10 : opérations textuelles exactes sur un mot (_cap_texte)
 
 - Nouveau `_cap_texte` dans la cascade : **compter les lettres** (« compte les lettres du mot
