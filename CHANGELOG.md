@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 4 : THÉORIE DES JEUX en conversation (équilibres de Nash classiques)
+
+- **Correction de mon propre diagnostic** : j'avais annoncé « pas de brique jeux » — FAUX, `jeux_appliques`
+  CALCULE les équilibres de Nash de jeux 2×2 définis. `_cap_jeux` le rend conversationnel : « équilibre de Nash
+  du dilemme du prisonnier » → **(trahir, trahir) + le paradoxe de Pareto** ; « bataille des sexes » → deux
+  équilibres ; « matching pennies » → **pas d'équilibre pur, aveu honnête** (mixte seulement). Les jeux
+  classiques sont des objets mathématiques définis (pas des données contestables) → FAUX=0 respecté.
+- Verdict issu du module vérifié ; jeu non catalogué (« jeu vidéo Zelda ») → None (pas d'invention) ; ne vole
+  aucune question factuelle. Bancs : `valide_capacites_chat` **97/97** (+5), suite 25/25, câblage 504 0 orphelin,
+  raisonnement 166/166, paraphrases 168/168.
+
 ## 2026-07-08 — FAUX=0 : un PAYS ne renvoie plus les coordonnées d'une ville homonyme (distance)
 
 - **FAUX réel trouvé** en auditant le chantier « distance » : `ia.coordonnees_lieu("France")` renvoyait

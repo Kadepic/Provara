@@ -299,5 +299,15 @@ check(not R._est_demande_imperative("mon plat préféré est la ratatouille"), "
 check(not R._est_demande_imperative("rappelle-moi d'acheter du pain"), "verbe de MÉMORISATION -> PAS un ordre (mémo légitime)")
 check(not R._est_demande_imperative("j'ai rendez-vous mardi"), "note datée -> PAS un ordre (mémo légitime)")
 
+# — THÉORIE DES JEUX (jeux_appliques rendu conversationnel : équilibres de Nash de jeux classiques) —
+r = R._cap_jeux("quel est l'équilibre de Nash du dilemme du prisonnier ?")
+check(r is not None and "trahir, trahir" in r and "Pareto" in r, "dilemme du prisonnier -> (trahir, trahir) + paradoxe Pareto")
+r = R._cap_jeux("équilibre de Nash de la bataille des sexes")
+check(r is not None and "bataille des sexes" in r and "(0, 0)" in r and "(1, 1)" in r, "bataille des sexes -> 2 équilibres")
+r = R._cap_jeux("équilibre de Nash du matching pennies")
+check(r is not None and "PAS d'équilibre" in r and "mixtes" in r, "matching pennies -> pas d'équilibre pur (honnête)")
+check(R._cap_jeux("quelle est la capitale de la France ?") is None, "jeux ne vole pas une question factuelle")
+check(R._cap_jeux("parle-moi du jeu vidéo Zelda") is None, "« jeu » sans jeu catalogué -> None (pas d'invention)")
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

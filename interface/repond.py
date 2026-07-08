@@ -5492,6 +5492,52 @@ _SYLLO_RE = re.compile(
     r".*?\b(?:d[ée]duire|conclure|conclusions?)\b", re.I | re.S)
 
 
+# THÉORIE DES JEUX — jeux classiques (câblage « tout câbler » 2026-07-08) : le module `jeux_appliques` CALCULE
+# les équilibres de Nash purs de jeux 2×2 DÉFINIS (objets mathématiques, pas des données contestables). On câble
+# les trois canoniques. FAUX=0 : verdict issu du module vérifié ; jeu non catalogué -> None (pas de fabrication).
+_JEUX_CLASSIQUES = {
+    "prisonnier": ("dilemme_prisonnier", "du dilemme du prisonnier", "Le dilemme du prisonnier"),
+    "sexes": ("bataille_des_sexes", "de la bataille des sexes", "La bataille des sexes"),
+    "pennies": ("matching_pennies", "du matching pennies", "Le matching pennies"),
+    "pieces": ("matching_pennies", "du matching pennies", "Le matching pennies"),
+}
+_JEUX_RE = re.compile(r"\b(nash|[ée]quilibre|jeu|dilemme|strat[ée]gie dominante)\b", re.I)
+
+
+def _cap_jeux(texte: str):
+    """Équilibre de Nash d'un jeu CLASSIQUE nommé (« équilibre de Nash du dilemme du prisonnier »). Verdict
+    calculé par `jeux_appliques` (vérifié). None si aucun jeu catalogué n'est nommé (FAUX=0, pas d'invention)."""
+    if not _JEUX_RE.search(texte):
+        return None
+    n = _normalise(texte)
+    cle = next((k for k in _JEUX_CLASSIQUES if k in n), None)
+    if cle is None:
+        return None
+    fn_nom, de_jeu, le_jeu = _JEUX_CLASSIQUES[cle]
+    try:
+        import jeux_appliques as _J
+        d = getattr(_J, fn_nom)()
+    except Exception:
+        return None
+    actions = d.get("actions")
+    eqs = d.get("equilibres_nash") or []
+
+    def _profil(p):
+        if actions and len(actions) == 2:
+            return "(%s, %s)" % (actions[p[0]], actions[p[1]])
+        return str(tuple(p))
+
+    if not eqs:
+        return ("%s n'a PAS d'équilibre de Nash en stratégies pures (il en a un en stratégies mixtes). "
+                "Calcul vérifié." % le_jeu)
+    profils = ", ".join(_profil(p) for p in eqs)
+    txt = "Équilibre de Nash (pur) %s : %s." % (de_jeu, profils)
+    if d.get("equilibre_pareto_domine"):
+        txt += (" C'est le paradoxe : cet équilibre est Pareto-dominé — les deux gagneraient plus en coopérant, "
+                "mais trahir est la stratégie dominante de chacun.")
+    return txt
+
+
 def _verbe_singulier(v: str) -> str:
     """« allaitent » -> « allaite », « sont mortels » -> « est mortel », « sont des X » -> « est un X »
     (accord de la conclusion — règles sûres du pluriel régulier, jamais une invention de forme)."""
@@ -7114,7 +7160,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
-                 ("localisation", _cap_localisation), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
+                 ("localisation", _cap_localisation), ("jeux", _cap_jeux), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
                  ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
