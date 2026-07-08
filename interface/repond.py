@@ -4901,7 +4901,7 @@ _METEO_RE = re.compile(
     r"quelle\s+temp[ée]rature\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il|dehors)|"
     r"combien\s+de\s+degr[ée]s\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il)?\s*(?:dehors|aujourd['’ ]?hui|en\s+ce\s+moment)|"
     r"temp[ée]rature\b[^?]{0,40}\b(?:aujourd['’ ]?hui|demain|dehors|en\s+ce\s+moment|maintenant|cette\s+semaine))", re.I)
-_HEURE_RE = re.compile(r"\bquelle\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quelle\s+heure\b"
+_HEURE_RE = re.compile(r"\bquel(?:le)?\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quel(?:le)?\s+heure\b"
                        r"|\b(?:donne|dis)[\w-]*\s+(?:moi\s+)?l['’]heure\b", re.I)
 _DATE_JOUR_RE = re.compile(
     r"\bquel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:sommes[- ]nous|on\s+est|est[- ]on)\b"

@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 39 : robustesse orale/SMS vérifiée + « kel/quel heure »
+
+- Passe de robustesse : « c koi 15% de 80 », « cb font 7 fois 8 », MAJUSCULES intégrales, « combein »
+  (typo), politesse (« stp/svp »), fillers (« euh donc en fait ») — **tout tenait déjà** (vérifié).
+- Seul trou : « **kel heure** il est » (le dépliage SMS donne « quel heure », que le motif exigeant
+  « quelle » refusait) → motif assoupli `quel(le)?`.
+- Bancs : capacites_chat **182/182** (+2), assistant_nl 453/453, raisonnement 200/200, paraphrases 174/174,
+  suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 38 : multiples (FAUX « Oui, 5 est premier »), tables, variation de prix, compter
 
 - **FAUX** : « les 5 premiers **multiples** de 7 » → *« Oui, 5 est premier »* (la primalité accrochait

@@ -286,6 +286,10 @@ r = R._cap_syllogisme("tous les hommes sont mortels, Socrate est un homme, Socra
 check(r is not None and "Socrate est mortel" in r, "syllogisme à virgules -> conclusion typée")
 check(R._cap_quotidien("si un train part à 8h et roule 2 heures, à quelle heure arrive-t-il ?") is None,
       "garde : heure ÉNONCÉE -> jamais l'horloge machine (fonction_nl calcule)")
+r = R._cap_quotidien("kel heure il est")
+check(r is None or r.startswith("Il est"), "SMS « kel heure » : dépliage puis motif quel(le) souple")
+r = R._cap_quotidien("quel heure est-il ?")
+check(r is not None and r.startswith("Il est"), "« quel heure » (grammaire relâchée) -> heure servie")
 r = R._cap_quotidien("dans combien de jours le 25 décembre ?")
 check(r is not None and "décembre" in r and "jours" in r, "compte à rebours vers une date (plus le « 31 » du gabarit mois)")
 r = R._cap_quotidien("dans combien de jours Noël ?")
