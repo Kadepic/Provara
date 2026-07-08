@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — FIX CRITIQUE diagnostic .exe : plus aucun spawn d'interpréteur dans le chemin produit
+
+- **Vécu sur le .exe build 70 (live)** : « diagnostic » partait en timeout (> 400 s). Cause : la preuve de
+  synthèse de code spawnait un interpréteur **bash** des dizaines de fois — et sous Windows, « bash »
+  résout vers l'**interop WSL** (chaque spawn coûte des secondes). Ma garde `which("bash")` ne protégeait
+  donc PAS le .exe.
+- La preuve de synthèse vit désormais dans `tests/valide_atomes.py` (hôtes de dev, gardée par which) et
+  **plus jamais dans le diagnostic produit**. Les 306 preuves du diagnostic tournent en ~8 s sans aucun
+  processus externe.
+- ⚠ Sur le build 70 actuel, éviter « diagnostic » (il pendra) — corrigé au prochain build.
+- Bancs : capacites 73/73 (306 preuves), atomes **20/20** (+1, la preuve bash déplacée), suite 26/26.
+
 ## 2026-07-08 — Portabilité .exe : la preuve bash devient conditionnelle à l'hôte
 
 - La preuve de synthèse de code exigeait un interpréteur **bash** — absent du .exe Windows, le diagnostic y
