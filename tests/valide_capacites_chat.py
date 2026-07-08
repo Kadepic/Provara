@@ -291,5 +291,13 @@ import assistant_nl as _A4
 check(_A4.qualifie_texte("Raisonnement VALIDE (modus ponens) : test").statut == _A4.FAIT,
       "porte unique : verdict logique = FAIT (forme jugée par module vérifié)")
 
+# — DEMANDE IMPÉRATIVE NON TRAITÉE : repli honnête, plus jamais « C'est noté » (qualité conversationnelle) —
+check(R._est_demande_imperative("équilibre la réaction H2 + O2 -> H2O"), "« équilibre … » détecté comme ordre")
+check(R._est_demande_imperative("range mes fichiers"), "« range … » détecté comme ordre")
+check(R._est_demande_imperative("stp équilibre la réaction"), "préambule « stp » dépouillé -> ordre impératif")
+check(not R._est_demande_imperative("mon plat préféré est la ratatouille"), "affirmation perso -> PAS un ordre")
+check(not R._est_demande_imperative("rappelle-moi d'acheter du pain"), "verbe de MÉMORISATION -> PAS un ordre (mémo légitime)")
+check(not R._est_demande_imperative("j'ai rendez-vous mardi"), "note datée -> PAS un ordre (mémo légitime)")
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

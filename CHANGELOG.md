@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — QUALITÉ : une demande impérative non traitée ne répond plus « C'est noté »
+
+- **Garbage vécu** : « équilibre la réaction H2 + O2 -> H2O » (et « range mes fichiers ») → *« C'est noté, je
+  m'en souviendrai »* (les chiffres H2/O2 faisaient croire à une affirmation à mémoriser). Fix : `_est_demande_
+  imperative` (carte FERMÉE de verbes d'action à l'impératif en tête, préambules « stp/peux-tu » dépouillés) —
+  un ORDRE qu'aucun cap n'a exécuté reçoit le **repli honnête** du tronc (« voici ce que j'ai compris + ce que
+  je sais faire »), jamais le mémo.
+- **FAUX=0 / non-régression** : les verbes de MÉMORISATION (note, retiens, rappelle, souviens) sont exclus →
+  « rappelle-moi d'acheter du pain », « j'ai rendez-vous mardi », « mon plat préféré est X » restent des mémos
+  légitimes. Testé aux deux bords. `valide_capacites_chat` **92/92** (+6), suite 25/25, raisonnement 166/166,
+  paraphrases 168/168, challenge 16/16.
+
 ## 2026-07-08 — CÂBLAGE vague 3 : MATHÉMATIQUES FINANCIÈRES en conversation (placement / intérêts)
 
 - `fonction_nl.resout_math` câble `maths_financieres` : « combien rapportent 1000 euros à 5% pendant 3 ans ? »

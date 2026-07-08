@@ -90,6 +90,26 @@ _INTERJECTIONS = frozenset(
     "euh bof stp svp please bravo chouette top nickel impec".split())
 
 
+# Verbes d'ACTION à l'impératif (carte FERMÉE) : un ordre commençant par l'un d'eux, si AUCUN cap ne l'a
+# exécuté, mérite le repli honnête, pas un « C'est noté ». EXCLUS volontairement : les verbes de MÉMORISATION
+# (note, retiens, rappelle, souviens) — « rappelle-moi d'acheter du pain » reste un mémo légitime.
+_VERBES_IMPERATIFS = frozenset(
+    "equilibre range resous resume corrige complete trie classe melange transforme genere fabrique "
+    "construis assemble ordonne factorise developpe simplifie additionne multiplie divise soustrais arrondis "
+    "convertis calcule compte compare explique decris definis liste cite nomme trouve cherche montre "
+    "dessine trace affiche traduis code decode chiffre dechiffre encode inverse permute combine".split())
+
+
+def _est_demande_imperative(texte: str) -> bool:
+    """La phrase est-elle un ORDRE (verbe d'action en tête de la carte fermée) ? Utilisé UNIQUEMENT au terminal
+    (aucun cap n'a répondu) pour préférer le repli honnête au mémo. Le premier mot de contenu doit être un verbe
+    d'action ; « peux-tu / stp » en préambule sont dépouillés d'abord."""
+    n = _normalise(texte)
+    n = re.sub(r"^(?:s il te plait|stp|svp|peux[- ]tu|pourrais[- ]tu|tu peux|allez|aller)\s+", "", n).strip()
+    tete = n.split()[0] if n.split() else ""
+    return tete in _VERBES_IMPERATIFS
+
+
 def _semble_affirmation(texte: str) -> bool:
     """Y a-t-il quelque chose à NOTER ? Une affirmation porte un verbe conjugué courant, une marque de première
     personne, ou une VALEUR (chiffre : « rdv dentiste mardi 15h » reste un mémo). Une PHRASE NOMINALE nue
@@ -7492,5 +7512,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         _att = None
     if _att:
         return _att
+    # DEMANDE IMPÉRATIVE NON TRAITÉE (« équilibre la réaction H2+O2->H2O », « range mes fichiers ») : un ORDRE
+    # qu'aucun cap n'a su exécuter n'est PAS une affirmation à mémoriser (« C'est noté » = garbage vécu). On
+    # donne le repli HONNÊTE (ce que j'ai compris + ce que je sais faire) au lieu du mémo. Carte FERMÉE de verbes
+    # d'ACTION en tête ; les verbes de MÉMORISATION (note, retiens, rappelle…) restent des mémos légitimes.
+    if _est_demande_imperative(texte):
+        try:
+            return _TRONC.repli(texte)
+        except Exception:
+            return f"{_MSG_INCONNU_PREFIXE}."
     # accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).
     return _varie("note", texte, _MSG_NOTE)
