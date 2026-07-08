@@ -57,7 +57,7 @@ jobs:
           --hidden-import "xml.etree.ElementTree" --hidden-import "urllib.request" --hidden-import "urllib.parse"
           --hidden-import "http.server" --hidden-import socketserver --hidden-import zipfile --hidden-import tarfile
           --hidden-import marshal --hidden-import base64 --hidden-import difflib --hidden-import calendar
-          --hidden-import zoneinfo --hidden-import tzdata --collect-data tzdata
+          --hidden-import zoneinfo --collect-all tzdata
           lance.py
       - uses: actions/upload-artifact@v4
         with:

@@ -3386,10 +3386,24 @@ _VOLATIL_RE = re.compile(
     r"en 20\d\d)\b", re.I)
 
 
+# Une ANNÉE dans une question de CALCUL/CONVENTION n'est pas un marqueur de fraîcheur : « est-ce que 2024 est
+# une année bissextile » et « écris 1984 en chiffres romains » partaient au WEB (extrait Wikipédia « 2024 »,
+# l'album « 1984 » de Van Halen ! — vécu sur le .exe 62, web ON) alors que la réponse est un calcul exact local.
+_PAS_FRAICHEUR_RE = re.compile(
+    r"\b(bissextile|chiffres?\s+romains?|en\s+(?:toutes\s+)?lettres|modulo|\bmod\b|reste\s+de\s+\d|"
+    r"nombre\s+de\s+jours|combien\s+de\s+jours|"
+    r"est[- ]ce\s+que\s+\d|\d+\s+(?:est|sera)(?:[-\s]+t)?[-\s]+(?:il|elle|ce)\b|"
+    r"\d+\s+est\s+(?:un\s+|une\s+)?(?:nombre\s+)?(?:premi[eè]re?|paire?|impaire?|divisible|multiple|carr[ée]))",
+    re.I)
+
+
 def _est_volatil(texte: str) -> bool:
     """Question à réponse POTENTIELLEMENT PÉRIMÉE dans la base statique (« président ACTUEL », « DERNIER
     vainqueur », « en 2026 ») : on préférera la source LIVE (fraîcheur) quand le web est autorisé. FAUX=0
-    inchangé (la source live est vérifiée + attribuée ; repli sur la base si indisponible)."""
+    inchangé (la source live est vérifiée + attribuée ; repli sur la base si indisponible). GARDE : une année
+    dans une question de CALCUL (bissextile, chiffres romains, parité…) n'est pas un marqueur de fraîcheur."""
+    if _PAS_FRAICHEUR_RE.search(texte):
+        return False
     return bool(_VOLATIL_RE.search(texte))
 
 
@@ -7910,17 +7924,27 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                 #   REJOUER q2 dans le pipeline COMPLET d'abord : « et celle de Waterloo ? » (après « quand
                 #   a eu lieu la bataille de Marignan ? ») doit atteindre _cap_date_evenement -> 1815, pas le
                 #   lookup brut qui répondrait un fait d'une autre nature (« champ de bataille de Waterloo »).
+                _rep_web = None
                 for q2 in q2s:
                     rep = _rejoue(memoire, conv_id, q2, pleine)
                     #   une réponse-aveu (« j'ai compris la structure… ») n'est PAS un succès de rejeu : la
                     #   variante suivante (« point de fusion du or ») peut, elle, résoudre -> on continue.
-                    if _utile(rep) and not (rep or "").startswith((_MSG_STRUCTURE_PREFIXE,
-                                                                   _MSG_STRUCTURE_COURT_PREFIXE, _MSG_DYM_PREFIXE)):
-                        return rep
+                    if not _utile(rep) or (rep or "").startswith((_MSG_STRUCTURE_PREFIXE,
+                                                                  _MSG_STRUCTURE_COURT_PREFIXE, _MSG_DYM_PREFIXE)):
+                        continue
+                    #   web ON : la 1re variante (« point de or ») partait au MÉTAMOTEUR et son extrait Wikipédia
+                    #   coiffait la 2e variante VÉRIFIÉE (« fusion de l'or » -> 1337 K) — vécu .exe 62. Une
+                    #   réponse RAPPORTÉE est gardée en réserve, une réponse vérifiée la remplace.
+                    if (rep or "").lstrip().startswith(("D'après ", "D’après ")):
+                        _rep_web = _rep_web or rep
+                        continue
+                    return rep
                 for q2 in q2s:
                     rep = _connaissance_verifiee(q2, conv_id)
                     if rep:
                         return f"{rep}  — à propos de « {ent} »"
+                if _rep_web:
+                    return _rep_web
                 #   même continuité à travers l'abstention pour le type B (« et du mordor ? »).
                 for q2 in q2s:
                     _snm = _structure_non_ancree(q2, conv_id)

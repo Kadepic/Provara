@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vécu sur le .exe 62 (web ON) : 3 fixes que les tests hors-ligne ne voyaient pas
+
+- **Test du produit RÉEL** (port 8765, build 62, Internet activé) — trois comportements que la batterie
+  locale (web OFF) ne pouvait pas attraper :
+  1. **L'étage FRAÎCHEUR détournait les calculs vers le web** : « est-ce que 2024 est une année bissextile »
+     → extrait Wikipédia « 2024 » ; « écris 1984 en chiffres romains » → **l'album de Van Halen** (!). Une
+     ANNÉE dans une question de calcul/convention n'est pas un marqueur de fraîcheur (`_PAS_FRAICHEUR_RE`,
+     ancré sur les chiffres — « premier ministre ACTUEL » reste volatile → live).
+  2. **La continuation type B se faisait coiffer par le web** : « et celui de l'or ? » → la 1ʳᵉ réécriture
+     (« point de or ») partait au métamoteur et son extrait Wikipédia s'imposait avant la 2ᵉ variante
+     VÉRIFIÉE (1337 K). Une réponse RAPPORTÉE (« D'après … ») est gardée en réserve ; le vérifié la remplace.
+  3. **tzdata manquait dans le .exe** (abstention propre, mais l'heure des villes ne marchait pas) :
+     `--collect-data` n'embarque pas les SOUS-MODULES du paquet → `--collect-all tzdata` (CI + bat).
+- Bancs : suite 25/25, raisonnement 194/194, paraphrases 174/174, assistant_nl 257/257, capacites_chat
+  139/139, challenge 16/16, câblage 504 0 orphelin ; YAML CI validé. Effet complet au prochain build (63+),
+  à re-vérifier sur le .exe réel après merge + redémarrage.
+
 ## 2026-07-08 — Continuations type A formatées (« et sa population ? » → la belle réponse, plus la valeur brute)
 
 - Le type A (« même entité, nouvel attribut ») servait la valeur BRUTE du lookup (« 58915656  — à propos de
