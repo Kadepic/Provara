@@ -306,6 +306,10 @@ check(R._cap_quotidien("combien de jours entre le 15 mars et le 1er janvier ?") 
       "intervalle INVERSÉ sans années (année suivante ?) -> abstention honnête")
 check(R._cap_quotidien("quel jour serons-nous dans 3 mois ?") is None,
       "« dans 3 mois » (durée ambiguë 28-31 j) -> abstention, jamais d'à-peu-près")
+_d21 = _aujourdhui + _dt.timedelta(days=21)
+r = R._cap_quotidien("quelle est la date dans 3 semaines ?")
+check(r is not None and ("%d" % _d21.day) in r and "exact" in r,
+      "« quelle EST LA date dans 3 semaines » -> date exacte (le motif acceptait seulement « quelle date »)")
 check(R._cap_quotidien("combien de jours entre le 30 février et le 15 mars ?") is None,
       "date invalide (30 février) -> abstention")
 

@@ -5298,8 +5298,8 @@ def _date_relative(texte: str):
     machine + décalage calendaire EXACT (datetime, bissextiles comprises). Même statut que l'heure/la date
     locales déjà servies. FAUX=0 : « dans 3 mois » (durée ambiguë, 28-31 j) -> None, abstention."""
     t = texte.lower()
-    m = re.search(r"\b(?:quel(?:le)?\s+(?:jour|date)|on\s+sera)\b.{0,40}?\b(?:dans|d['’]ici)\s+(\d+)\s+"
-                  r"(jours?|semaines?)\b", t)
+    m = re.search(r"\b(?:quel(?:le)?\s+(?:est\s+la\s+|sera\s+la\s+)?(?:jour|date)|on\s+sera)\b.{0,40}?"
+                  r"\b(?:dans|d['’]ici)\s+(\d+)\s+(jours?|semaines?)\b", t)
     sens = 1
     if not m:
         m = re.search(r"\b(?:quel(?:le)?\s+(?:jour|date))\b.{0,40}?\bil\s+y\s+a\s+(\d+)\s+(jours?|semaines?)\b", t)

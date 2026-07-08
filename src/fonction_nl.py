@@ -303,6 +303,14 @@ def resout_conversion(question: str):
     if re.search(r"semaines?\s+dans\s+(?:une?\s+|l['’]\s*)?annee", q):
         return (VERIFIE, "52 semaines et 1 jour (année de 365 jours) ; 52 semaines et 2 jours si bissextile (366).",
                 "calendrier — 365 = 52×7 + 1")
+    # HEURES DANS UN MOIS / JOURS DANS UN SIÈCLE : durées VARIABLES aussi -> réponses composées honnêtes
+    # (même principe ; tombaient en repli, vécu 2026-07-08).
+    if re.search(r"heures?\s+dans\s+(?:une?\s+|le\s+)?mois\b", q):
+        return (VERIFIE, "de 672 h (mois de 28 jours) à 744 h (31 jours) ; 720 h pour un mois de 30 jours.",
+                "conventions de durée")
+    if re.search(r"jours?\s+dans\s+(?:une?\s+|le\s+)?siecle", q):
+        return (VERIFIE, "36 524 ou 36 525 jours (100 ans avec 24 ou 25 années bissextiles, calendrier grégorien).",
+                "calendrier grégorien")
     # COMPARAISON de deux grandeurs d'unités COMPARABLES (logique partagée avec _cap_comparaison de repond).
     cg = compare_grandeurs(question)
     if cg:
@@ -674,6 +682,16 @@ def resout_math(question: str):
         return (VERIFIE, "%s (%s − %s %% = %s − %s)" % (_fmt_nombre(base * (1 - p / 100.0)), _fmt_nombre(base),
                                                         _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
                 "calcul — prix après réduction")
+    # POURBOIRE : « 15% de pourboire sur 80 euros » (tombait en mémo « C'est noté », vécu 2026-07-08).
+    # Les DEUX nombres utiles sont montrés : le pourboire ET le total (l'intention usuelle est le total à payer).
+    mpb = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+pourboires?\s+sur\s+{_PCT}", question, re.I)
+           or re.search(rf"pourboires?\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}", question, re.I))
+    if mpb:
+        p, base = _f(mpb.group(1)), _f(mpb.group(2))
+        tip = base * p / 100.0
+        return (VERIFIE, "%s de pourboire (%s %% de %s) ; total : %s" % (_fmt_nombre(tip), _fmt_nombre(p),
+                                                                         _fmt_nombre(base), _fmt_nombre(base + tip)),
+                "calcul — pourboire (pourcentage appliqué)")
     maug = (re.search(rf"augmente[rz]?\s+{_PCT}\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I)
             or re.search(rf"{_PCT}\s+augment[ée]e?s?\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I))
     maug_inv = None if maug else re.search(
@@ -722,8 +740,8 @@ def resout_math(question: str):
         if 1 <= n <= 3999:
             return (VERIFIE, _en_romain(n), "numération romaine (convention, symboles du lecteur)")
         return (HORS, None, None)
-    mrom2 = re.search(r"\b([ivxlcdm]+)\b(?:\s+ca\s+fait\s+combien)?\s+en\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q) \
-        or re.search(r"\b([ivxlcdm]{2,})\b.{0,20}?\ben\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q)
+    mrom2 = re.search(r"\b([ivxlcdm]+)\b(?:\s+ca\s+fait\s+combien)?\s+en\s+(?:chiffres?(?:\s+arabes?)?|nombres?|d[ée]cimal)", q) \
+        or re.search(r"\b([ivxlcdm]{2,})\b.{0,20}?\ben\s+(?:chiffres?(?:\s+arabes?)?|nombres?|d[ée]cimal)", q)
     if mrom2:
         n = _depuis_romain(mrom2.group(1).upper())
         if n is not None:

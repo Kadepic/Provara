@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 25 : pourboire, durées variables honnêtes, romain→nombre élargi, « quelle est la date dans 3 semaines »
+
+- **Pourboire** (tombait en mémo « C'est noté ») : « 15% de pourboire sur 80 euros » → « 12 de pourboire
+  (15 % de 80) ; **total : 92** » (le total à payer est l'intention usuelle — montré).
+- **Durées variables** → réponses composées honnêtes (même principe que semaines/année) : « heures dans un
+  mois » → 672-744 h selon le mois ; « jours dans un siècle » → 36 524 ou 36 525 (grégorien).
+- **Romain → nombre** : « MMXXVI en nombre », « XIV en chiffres » acceptés (seul « en chiffres arabes/décimal »
+  passait) ; « mille en nombre » ne matche pas (e hors alphabet romain).
+- **Date relative** : « **quelle est la** date dans 3 semaines » (le motif n'acceptait que « quelle date ») →
+  date exacte étiquetée.
+- Bancs : `valide_assistant_nl` **345/345** (+7), capacites_chat **148/148** (+1), raisonnement 197/197,
+  paraphrases 174/174, suite 25/25.
+
 ## 2026-07-08 — Vague 24 : 4 FAUX tués (1939 !, 100e premier, somme de série, atomes d'un élément) + chimie quantitative
 
 - **FAUX massif** : « combien de secondes dans une année » → *« 1939 »* (le résolveur générique accrochait

@@ -414,6 +414,19 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# POURBOIRE (tombait en mémo « C'est noté ») : pourboire ET total montrés.
+check(_m("15% de pourboire sur 80 euros") == "12 de pourboire (15 % de 80) ; total : 92", "pourboire 15% sur 80")
+_pb2 = _m("un pourboire de 10% sur 45 euros")
+check(_pb2 and _pb2.startswith("4.5 de pourboire"), "pourboire de 10% sur 45 -> 4.5")
+# DURÉES VARIABLES -> réponses composées honnêtes (précédent : semaines/année).
+_hm = _m("combien d'heures dans un mois")
+check(_hm and _hm.startswith("de 672 h") and "744" in _hm, "heures dans un mois -> composé honnête 672-744")
+_js = _m("combien de jours dans un siècle")
+check(_js and _js.startswith("36 524 ou 36 525"), "jours dans un siècle -> 36524/36525 grégorien")
+# ROMAIN -> NOMBRE : « en nombre » / « en chiffres » seuls acceptés (seul « arabes/décimal » passait).
+check(_m("MMXXVI en nombre") == "2026", "MMXXVI en nombre -> 2026")
+check(_m("XIV en chiffres") == "14", "XIV en chiffres -> 14")
+check(_m("mille en nombre") is None, "garde : « mille » n'est pas un nombre romain (e hors alphabet)")
 # CONVERSIONS : ligature « nœuds » (NFD ne la décompose pas) + durée compacte « 2h30 ».
 check(_m("10 nœuds en km/h") == "18.52 km/h", "nœuds avec ligature œ -> 18.52 km/h")
 check(_m("combien de secondes dans 2h30") == "9000 secondes", "2h30 -> 9000 s")
