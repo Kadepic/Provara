@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Diagnostic .exe : WATCHDOG par preuve (le coupable sera nommé)
+
+- Build 73 vérifié en live : le diagnostic pend TOUJOURS (> 280 s) alors que les questions data répondent en
+  0 s (donc `_charge_ia` est chaud) — **le blocage est dans UNE des 306 preuves, spécifique à
+  l'environnement .exe** (et probablement historique : le gel existait au build 53).
+- `verifie_tout(budget_par_preuve=10.0)` : chaque preuve court dans un thread joint à 10 s ; celle qui ne
+  revient pas est comptée EN ÉCHEC avec le libellé **« (bloquée > 10s) »** — le diagnostic termine TOUJOURS
+  (≤ ~40 s pire cas réaliste) et DÉSIGNE le coupable dans sa réponse. Le chemin tests/CI garde l'exécution
+  directe historique (None).
+- Local : watchdog 7.4 s, 306/306, zéro bloquée ; suite 26/26, capacites 73/73.
+
 ## 2026-07-08 — Diagnostic .exe : inventaire à budget + étapes chronométrées
 
 - Le timeout du diagnostic .exe persiste au build 72 (> 300 s) alors que le même chemin fait 9.7 s en local
