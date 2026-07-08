@@ -1021,6 +1021,23 @@ def resout_math(question: str):
         r = int((Decimal(str(x)) / pas).quantize(0, rounding=ROUND_HALF_UP)) * pas
         return (VERIFIE, str(r), "calcul — arrondi à la %s" % mrr.group(2))
 
+    # CAS LIMITES DITS (tombaient en mémo « Noté », vécu 2026-07-08) : diviser/modulo par ZÉRO -> indéfini
+    # EXPLIQUÉ ; racine carrée d'un NÉGATIF -> pas de solution réelle, racines complexes DONNÉES si entières.
+    if re.search(r"(?:divis[ée]e?s?\s+par|modulo)\s+(?:0|z[ée]ro)\b", q):
+        op = "le modulo" if "modulo" in q else "la division"
+        return (VERIFIE, "Indéfini — %s par zéro n'est pas défini%s." % (op, "" if "modulo" in q else "e"),
+                "arithmétique — cas limite dit")
+    mrn = re.search(r"racine\s+carree\s+de\s+moins\s+(\d+)", q) \
+        or re.search(r"racine\s+carr[ée]e\s+de\s+-(\d+)", question)
+    if mrn:
+        n = abs(int(mrn.group(1)))
+        r = math.isqrt(n)
+        if r * r == n:
+            return (VERIFIE, "Pas de racine carrée réelle pour −%d ; en nombres complexes : %di et −%di."
+                    % (n, r, r), "nombres complexes — racine d'un négatif")
+        return (VERIFIE, "Pas de racine carrée réelle pour −%d (les racines sont complexes)." % n,
+                "nombres complexes — racine d'un négatif")
+
     # PRODUIT / DIFFÉRENCE / QUOTIENT nommés : « le produit de 4 et 25 » -> 100 (exact ; quotient exact seul).
     mpr = re.search(r"\b(produit|difference|quotient)\s+(?:de\s+|d['’]\s*|entre\s+)(-?\d+)\s+et\s+(?:de\s+)?(-?\d+)", q)
     if mpr:

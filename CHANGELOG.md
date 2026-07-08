@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 33 : cas limites mathématiques DITS + calendrier courant complet
+
+- **Cas limites** (tombaient en mémo « Noté ») : « 10 divisé par 0 » / « 17 modulo 0 » → « Indéfini — la
+  division/le modulo par zéro n'est pas défini(e) » ; « racine carrée de −9 » → « Pas de racine carrée
+  réelle ; en nombres complexes : 3i et −3i » (racines complexes DONNÉES quand entières, sinon dit).
+  Divisions et racines normales intactes.
+- **Calendrier courant** (horloge machine, tout étiqueté ; tombaient en repli) : saison (« Été dans
+  l'hémisphère nord (hiver dans le sud) — bornes astronomiques approximatives ») ; **semaine ISO 8601** ;
+  jours restants avant la fin de l'année ; « 200e jour de l'année » → date exacte (400e → borne DITE) ;
+  jour de l'année courant ; **bissextile relative** (« l'année prochaine » → 2027 résolue + règle dite).
+- Bancs : `valide_assistant_nl` **419/419** (+6), capacites_chat **174/174** (+6), raisonnement 198/198,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 32 : 2 FAUX horloge (coucher du soleil, heure future) + âge exact, années futures
 
 - **FAUX** : « à quelle heure le **soleil se couche** » → *l'heure ACTUELLE de la machine* ! Garde

@@ -414,6 +414,17 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 33 : cas limites DITS (tombaient en mémo « Noté »).
+_d0 = _m("10 divisé par 0")
+check(_d0 and _d0.startswith("Indéfini"), "division par zéro -> indéfini DIT")
+_m0 = _m("17 modulo 0")
+check(_m0 and _m0.startswith("Indéfini"), "modulo zéro -> indéfini DIT")
+check(_m("racine carrée de -9") == "Pas de racine carrée réelle pour −9 ; en nombres complexes : 3i et −3i.",
+      "racine de -9 -> complexes données")
+_r7 = _m("racine carrée de -7")
+check(_r7 and _r7.startswith("Pas de racine carrée réelle pour −7"), "racine de -7 -> pas de réel, dit")
+check(_m("20 divisé par 8") is None, "garde zéro : « par 8 » ne matche pas (le calcul du pipeline sert 2.5)")
+check(_m("racine carrée de 144") == "12", "racine carrée normale intacte")
 # VAGUE 31 : « SOS en morse » (l'arg après-préposition ratait) ; le décodage et l'animal restent intacts.
 check(_m("SOS en morse") == "... --- ...", "SOS en morse -> code")
 check(_m("que signifie ... --- ... en morse") == "SOS", "décodage morse intact")

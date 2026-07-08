@@ -5588,6 +5588,53 @@ def _cap_quotidien(texte: str, conv_id=None):
         if cible_a == y:
             return "C'est cette année (%d à l'horloge de ta machine)." % y
         return "C'était il y a %d ans (%d − %d)." % (y - cible_a, y, cible_a)
+    # CALENDRIER COURANT (horloge machine, tout ÉTIQUETÉ) — saison, semaine ISO, jour de l'année, jours
+    # restants, bissextile relative (tombaient en repli/mémo, vécu 2026-07-08).
+    if re.search(r"quelle\s+saison\s+(?:sommes[- ]nous|est[- ]on|est[- ]ce)|en\s+quelle\s+saison", tn2):
+        import datetime as _dt
+        auj = _dt.date.today()
+        nom = "hiver"
+        for borne, s in (((3, 20), "printemps"), ((6, 21), "été"), ((9, 22), "automne"), ((12, 21), "hiver")):
+            if (auj.month, auj.day) >= borne:
+                nom = s
+        oppose = {"printemps": "automne", "été": "hiver", "automne": "printemps", "hiver": "été"}[nom]
+        return ("%s dans l'hémisphère nord (%s dans le sud) — bornes astronomiques approximatives (±1 jour "
+                "selon l'année) ; nous sommes le %02d/%02d à l'horloge de ta machine."
+                % (nom.capitalize(), oppose, auj.day, auj.month))
+    if re.search(r"num[e]ro\s+de\s+(?:la\s+)?semaine|quelle\s+semaine\s+(?:sommes[- ]nous|est[- ]on)", tn2):
+        import datetime as _dt
+        iso = _dt.date.today().isocalendar()
+        return "Semaine %d de %d (numérotation ISO 8601, horloge de ta machine)." % (iso[1], iso[0])
+    if re.search(r"jours?\b.{0,30}?\bfin\s+de\s+l\s*annee", tn2) and re.search(r"combien|reste|restant", tn2):
+        import datetime as _dt
+        auj = _dt.date.today()
+        n = (_dt.date(auj.year, 12, 31) - auj).days
+        return "%d jours jusqu'au 31 décembre %d (horloge de ta machine)." % (n, auj.year)
+    mjo = re.search(r"(\d{1,3})\s*(?:e|eme)\b\s+jour\s+de\s+l\s*annee", tn2)
+    if mjo:
+        import datetime as _dt
+        auj = _dt.date.today()
+        n = int(mjo.group(1))
+        nb = 366 if (auj.year % 4 == 0 and (auj.year % 100 != 0 or auj.year % 400 == 0)) else 365
+        if 1 <= n <= nb:
+            d = _dt.date(auj.year, 1, 1) + _dt.timedelta(days=n - 1)
+            return ("Le %d %s (%de jour de %d — année de l'horloge de ta machine)."
+                    % (d.day, _MOIS_FR[d.month - 1], n, auj.year))
+        return "L'année %d n'a que %d jours — pas de %de jour." % (auj.year, nb, n)
+    if re.search(r"quel\s+jour\s+de\s+l\s*annee\s+sommes[- ]nous|numero\s+du\s+jour\s+dans\s+l\s*annee", tn2):
+        import datetime as _dt
+        auj = _dt.date.today()
+        return "Le %de jour de %d (horloge de ta machine)." % (auj.timetuple().tm_yday, auj.year)
+    mbis = re.search(r"(?:l\s*)?annee\s+(prochaine|derniere)\b.{0,20}?bissextile"
+                     r"|bissextile.{0,20}?annee\s+(prochaine|derniere)|cette\s+annee\b.{0,25}?bissextile", tn2)
+    if mbis:
+        import calendar as _cal
+        import datetime as _dt
+        y = _dt.date.today().year
+        rel = mbis.group(1) or mbis.group(2)
+        y2 = y + 1 if rel == "prochaine" else y - 1 if rel == "derniere" else y
+        return ("%s — %d %s bissextile (règle grégorienne ; année calculée depuis l'horloge de ta machine)."
+                % ("Oui" if _cal.isleap(y2) else "Non", y2, "est" if _cal.isleap(y2) else "n'est pas"))
     if _DATE_JOUR_RE.search(texte):
         import time as _t
         lt = _t.localtime()
