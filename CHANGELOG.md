@@ -1,5 +1,26 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 29 : passe adverse — 3 FAUX par variantes de phrasé (Rio !, composition, 1h30)
+
+- **FAUX** : « quelle heure est-il à **Rio de Janeiro** » → *l'heure LOCALE de la machine servie* ! La garde
+  anti-ville-inconnue exigeait chaque mot capitalisé — la particule minuscule (« de ») cassait l'ancre de fin.
+  Motif permissif (toute ville à majuscule initiale → abstention si hors table) + Rio/São Paulo/Buenos
+  Aires/Lima/Bogotá/Santiago/La Havane ajoutées à la table IANA. Épinglé : ville inconnue multi-mots
+  (« Oulan-Bator ») → abstention DITE.
+- **FAUX** : « le **triple du quart** de 100 » → *25* (seule l'opération interne était lue). Composition
+  câblée, étapes montrées : « 75 (quart de 100 = 25 ; triple = 75) ».
+- **FAUX** : « vitesse moyenne si je fais 100 km en **1h30** » → *« Moyenne : 43.67 »* (le format compact
+  passait au travers de la garde stats). Garde élargie (h\d{0,2}) + route compacte : « 66.6667 km/h
+  (100 km / 1 h 30) ».
+- **Variantes de phrasé câblées** : « combien **y a-t-il** de secondes dans une année » / « **nombre de**
+  secondes … » (→ 31 536 000) ; « la France **compte combien** d'habitants » (→ réponse formatée ; tombait
+  sur un compte lexical de termes « habitant ») ; « 150 **kilomètres** à 50 km/h » (mot entier) ; ordinal en
+  lettres (« le **millième** nombre premier » → 7919).
+- **Moyenne harmonique/géométrique avec 0** → refus honnête explicite (la stdlib renverrait la convention
+  limite 0).
+- Bancs : `valide_assistant_nl` **400/400** (+7), `valide_fonction_stats_nl` **34/34** (+2),
+  capacites_chat **150/150** (+2), raisonnement 198/198, paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 28 : 3 FAUX (harmonique, Wilson, tendance) + électronique/mécanique, notation scientifique, constantes
 
 - **FAUX** : « moyenne **harmonique** de 2 et 4 » → *« Moyenne : 3 »* (l'arithmétique servie à la place de

@@ -216,7 +216,8 @@ _CONV_UNITS = {
 _UNIT_ALT = "|".join(sorted((re.escape(u) for u in _CONV_UNITS), key=len, reverse=True))
 _CONV_EN = re.compile(rf"({_NUM})\s*({_UNIT_ALT})\b\s+(?:en|vers)\s+({_UNIT_ALT})\b", re.IGNORECASE)
 _CONV_DANS = re.compile(
-    rf"combien\s+d(?:e|')\s*({_UNIT_ALT})\b\s+dans\s+(?:(?:un|une|le|la|l['’])\s+|({_NUM})\s*)?({_UNIT_ALT})\b",
+    rf"(?:combien\s+(?:y\s+a[- ]t[- ]il\s+)?|nombre\s+)d(?:e|')\s*({_UNIT_ALT})\b\s+dans\s+"
+    rf"(?:(?:un|une|le|la|l['’])\s+|({_NUM})\s*)?({_UNIT_ALT})\b",
     re.IGNORECASE)
 
 
@@ -1089,13 +1090,21 @@ def resout_math(question: str):
     # (la route stats moyennait distance et durée !). Chaque réponse MONTRE le calcul.
     qc = _norm_conv(question)
     _fl = lambda s: float(s.replace(",", "."))
-    mv = re.search(r"(\d+(?:[.,]\d+)?)\s*km\s+en\s+(\d+(?:[.,]\d+)?)\s*(?:h\b|heures?)", qc)
+    mvc = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:km|kilometres?)\s+en\s+(\d{1,3})\s*h\s*([0-5]?\d)\b", qc)
+    if mvc and ("vitesse" in qtoks or "moyenne" in qtoks):
+        d = _fl(mvc.group(1))
+        h, mn = int(mvc.group(2)), int(mvc.group(3))
+        t = h + mn / 60.0
+        if t > 0:
+            return (VERIFIE, "%s km/h (%s km / %d h %02d)" % (_fmt_nombre(round(d / t, 4)), _fmt_nombre(d), h, mn),
+                    "cinématique — v = d/t")
+    mv = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:km|kilometres?)\s+en\s+(\d+(?:[.,]\d+)?)\s*(?:h\b|heures?)", qc)
     if mv and ("vitesse" in qtoks or "moyenne" in qtoks):
         d, t = _fl(mv.group(1)), _fl(mv.group(2))
         if t > 0:
             return (VERIFIE, "%s km/h (%s km / %s h)" % (_fmt_nombre(d / t), _fmt_nombre(d), _fmt_nombre(t)),
                     "cinématique — v = d/t")
-    mt = re.search(r"(\d+(?:[.,]\d+)?)\s*km\s+[àa]\s+(\d+(?:[.,]\d+)?)\s*km/h", qc)
+    mt = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:km|kilometres?)\s+[àa]\s+(\d+(?:[.,]\d+)?)\s*km/h", qc)
     if mt and ("temps" in qtoks or "duree" in qtoks or "dure" in qtoks or "faut" in qtoks):
         d, v = _fl(mt.group(1)), _fl(mt.group(2))
         if v > 0:
@@ -1311,6 +1320,15 @@ def resout_math(question: str):
     # primalité simple, sinon elle répondait « Non, 100 n'est pas premier » À CÔTÉ de la question (FAUX vécu
     # 2026-07-08). Le suffixe ordinal (e/eme/ere/ieme) est OBLIGATOIRE (« 17 est un nombre premier » intact).
     mop = re.search(r"\b(\d+)\s*(?:ers?|eres?|iemes?|emes?|e)\b\s+nombres?\s+premiers?", q)
+    if not mop:
+        # ordinal en LETTRES (« le millième nombre premier » tombait en repli) — famille fermée.
+        mopw = re.search(r"\b(deuxieme|troisieme|dixieme|centieme|millieme)\s+nombres?\s+premiers?", q)
+        if mopw:
+            class _M:                                    # même chemin de calcul que l'ordinal chiffré
+                def group(self, i):
+                    return str({"deuxieme": 2, "troisieme": 3, "dixieme": 10,
+                                "centieme": 100, "millieme": 1000}[mopw.group(1)])
+            mop = _M()
     if mop:
         n = int(mop.group(1))
         if 1 <= n <= 10000:
@@ -1564,7 +1582,8 @@ def resout_math(question: str):
     if re.search(r"combien\s+de\s+siecles\s+dans\s+(?:un\s+)?millenaire", q):
         return (VERIFIE, "10", "calendrier — divisions du temps")
     # ANNÉE / HEURE / JOUR en sous-unités (conventions ; l'année COMMUNE = 365 j, dit).
-    man = re.search(r"(?:combien\s+(?:de\s+|d['’]?\s*)(jours|heures|minutes|secondes)\s+dans\s+"
+    man = re.search(r"(?:(?:combien\s+(?:y\s+a[- ]?t[- ]?il\s+)?|nombre\s+)(?:de\s+|d['’]?\s*)"
+                    r"(jours|heures|minutes|secondes)\s+dans\s+"
                     r"(?:un\s+|une\s+)?(an|annee|jour|heure|minute)|(\d+)\s+(an|annee|jour|heure)s?\s+en\s+"
                     r"(jours|heures|minutes|secondes))\b", q)
     if man:
@@ -1643,6 +1662,35 @@ def resout_math(question: str):
     # jamais 0.333 servi comme exact ; « tiers » pareil). GARDE : jamais quand un mot de MESURE est là
     # (« aire d'un carré de 4 » = géométrie, traitée au-dessus ; « périmètre d'un carré de 5 » ≠ 25).
     if not re.search(r"\b(aire|surface|perimetre|circonference|volume|cote|rayon|modulo)\b", q):
+        # COMPOSITION « le triple du quart de 100 » -> 75 (l'opération INTERNE d'abord, étapes montrées).
+        # FAUX vécu 2026-07-08 : seul « quart de 100 » était lu -> 25 servi pour 75.
+        mcomp = re.search(r"\b(double|triple|quadruple|moitie|tiers|quart)\s+(?:du|de\s+la)\s+"
+                          r"(double|triple|quadruple|moitie|tiers|quart)\s+(?:de\s+|du\s+|d['’]\s*)"
+                          r"(-?\d+(?:[.,]\d+)?)", q)
+        if mcomp:
+            from fractions import Fraction
+            _FACT = {"double": Fraction(2), "triple": Fraction(3), "quadruple": Fraction(4),
+                     "moitie": Fraction(1, 2), "tiers": Fraction(1, 3), "quart": Fraction(1, 4)}
+            x0 = Fraction(mcomp.group(3).replace(",", "."))
+            interne = x0 * _FACT[mcomp.group(2)]
+            total = interne * _FACT[mcomp.group(1)]
+            d = total.denominator
+            while d % 2 == 0:
+                d //= 2
+            while d % 5 == 0:
+                d //= 5
+            di = interne.denominator
+            while di % 2 == 0:
+                di //= 2
+            while di % 5 == 0:
+                di //= 5
+            if d != 1 or di != 1:                        # décimal infini -> abstention (règle inchangée)
+                return (HORS, None, None)
+            return (VERIFIE, "%s (%s de %s = %s ; %s = %s)"
+                    % (_fmt_nombre(float(total)), mcomp.group(2).replace("moitie", "moitié"),
+                       _fmt_nombre(float(x0)), _fmt_nombre(float(interne)),
+                       mcomp.group(1).replace("moitie", "moitié"), _fmt_nombre(float(total))),
+                    "calcul — opérations nommées composées")
         # FRACTIONS MULTIPLES : « les trois quarts de 200 » -> 150, « deux tiers de 90 » -> 60 (tombait en
         # mémo « C'est noté »). Même règle que tiers/inverse : décimal FINI exigé, sinon abstention.
         mopm = re.search(r"\b(deux|trois|quatre)\s+(tiers|quarts?|cinquiemes?|dixiemes?)\s+"

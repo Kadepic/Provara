@@ -45,6 +45,10 @@ check(S.repond_stats("j'ai 3 pièces de 2 euros et 2 billets de 5 euros, combien
 # MOYENNES NOMMÉES (FAUX vécu 2026-07-08 : « harmonique de 2 et 4 » servait l'arithmétique 3).
 check("Moyenne harmonique : 2.667" in S.repond_stats("moyenne harmonique de 2 et 4"), "harmonique -> 2.667")
 check("Moyenne géométrique : 4" in S.repond_stats("moyenne géométrique de 2 et 8"), "géométrique -> 4")
+check("strictement positives" in S.repond_stats("moyenne harmonique de 0 et 4"),
+      "harmonique avec 0 -> refus honnête (pas la convention limite 0)")
+check(S.repond_stats("vitesse moyenne si je fais 100 km en 1h30") is None,
+      "vitesse « en 1h30 » compact -> None (FAUX 43.67 vécu)")
 # GARDES INFÉRENCE vs ARITHMÉTIQUE (FAUX vécus : Wilson pour « représente 45 sur 60 », tendance pour
 # « augmente 50 de 10 % puis de 20 % »).
 check(S.repond_stats("quel pourcentage représente 45 sur 60") is None, "représente X sur Y -> None (calcul exact)")

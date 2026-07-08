@@ -109,13 +109,17 @@ def repond_stats(texte: str):
         # GARDE VITESSE MOYENNE (FAUX vécu 2026-07-08) : « vitesse moyenne si je parcours 150 km en 2 heures »
         # servait « Moyenne : 76 » (la moyenne de {150, 2} !). Le motif « X km en Y heures » est une division
         # d/t -> route cinématique (fonction_nl) ; « moyenne des vitesses 30, 40, 50 km/h » (liste) reste ici.
-        if re.search(r"km\b.{0,20}?\ben\s+\d+(?:[.,]\d+)?\s*(?:h\b|heures?)", bas):
-            return None
+        if re.search(r"km\b.{0,20}?\ben\s+\d+(?:[.,]\d+)?\s*(?:h\d{0,2}\b|heures?)", bas):
+            return None                                  # (h\d{0,2} : « en 1h30 » compact, FAUX 43.67 vécu)
         # moyenne PONDÉRÉE : ne JAMAIS servir la moyenne simple de tous les nombres (les coefficients
         # ne sont pas des valeurs — « 12 coeff 2 et 15 coeff 3 » vaut 13.8, pas 8)
         # HARMONIQUE / GÉOMÉTRIQUE nommées (FAUX vécu 2026-07-08 : « moyenne harmonique de 2 et 4 » servait
         # la moyenne ARITHMÉTIQUE 3 au lieu de 2.67). Formule dite ; valeurs non positives -> abstention.
         if ("harmonique" in bas or "geometrique" in bas) and vals:
+            if any(v <= 0 for v in vals):                # hors domaine (la stdlib renverrait 0 par convention
+                nom = "harmonique" if "harmonique" in bas else "géométrique"
+                return ("La moyenne %s exige des valeurs strictement positives — je m'abstiens "
+                        "plutôt que de servir la convention limite." % nom)
             import statistics as _st
             try:
                 if "harmonique" in bas:

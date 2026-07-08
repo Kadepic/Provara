@@ -5362,6 +5362,8 @@ _FUSEAUX_VILLES = {
     "toronto": "America/Toronto", "chicago": "America/Chicago", "denver": "America/Denver",
     "los angeles": "America/Los_Angeles", "san francisco": "America/Los_Angeles",
     "mexico": "America/Mexico_City", "sao paulo": "America/Sao_Paulo", "buenos aires": "America/Argentina/Buenos_Aires",
+    "rio de janeiro": "America/Sao_Paulo", "rio": "America/Sao_Paulo", "lima": "America/Lima",
+    "bogota": "America/Bogota", "santiago": "America/Santiago", "la havane": "America/Havana",
     "le caire": "Africa/Cairo", "caire": "Africa/Cairo", "dakar": "Africa/Dakar", "abidjan": "Africa/Abidjan",
     "johannesburg": "Africa/Johannesburg", "casablanca": "Africa/Casablanca", "alger": "Africa/Algiers",
     "tunis": "Africa/Tunis", "kinshasa": "Africa/Kinshasa", "nairobi": "Africa/Nairobi",
@@ -5462,7 +5464,10 @@ def _cap_quotidien(texte: str, conv_id=None):
                 return ("Je n'ai pas la base de fuseaux horaires sous la main — je préfère m'abstenir plutôt "
                         "que te donner l'heure locale de TA machine comme si c'était celle de %s."
                         % ville_conn.title())
-        mv = re.search(r"\b(?:a|à)\s+([A-ZÀ-Ÿ][\w'’-]*(?:\s+[A-ZÀ-Ÿ][\w'’-]*)*)\s*\??\s*$", texte.strip())
+        # ⚠ la ville peut contenir des particules MINUSCULES (« Rio de Janeiro ») : l'ancien motif exigeait
+        # chaque mot capitalisé -> l'ancre de fin ratait et l'heure LOCALE était servie (FAUX vécu 2026-07-08).
+        # Capture permissive après la majuscule initiale : au pire on s'abstient avec un libellé large.
+        mv = re.search(r"\b(?:a|à)\s+([A-ZÀ-Ÿ][\w'’ -]*?)\s*\??\s*$", texte.strip())
         if mv:
             return ("Je ne connais pas le fuseau horaire vérifié de « %s » — je préfère m'abstenir plutôt que "
                     "te donner l'heure locale de TA machine comme si c'était la sienne." % mv.group(1))
@@ -7591,6 +7596,13 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     if _mhab:
         _prep = _mhab.group(1).lower()
         t = "population " + {"au": "du ", "aux": "des "}.get(_prep, "de ") + _mhab.group(2)
+    else:
+        # variante sujet en tête : « la France compte combien d'habitants ? » (tombait sur un compte LEXICAL
+        # de termes « habitant », vécu 2026-07-08).
+        _mhab2 = re.match(r"^\s*(?:la\s+|le\s+|l['’]\s*|les\s+)?(.+?)\s+compte\s+combien\s+d['’]\s*habitants?\s*\?*\s*$",
+                          t, re.IGNORECASE)
+        if _mhab2:
+            t = "population de " + _mhab2.group(1)
     #   (0pré) CLARIFICATION EN ATTENTE : si le tour précédent était une question de clarification de l'assistant
     #   (« vouliez-vous dire … ? ») et que ce message la CONFIRME (« oui » / le mot proposé), la question d'origine
     #   est RÉÉCRITE avec la correction CONFIRMÉE puis traitée normalement. Sound : substitution explicitement

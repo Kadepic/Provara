@@ -310,6 +310,12 @@ _d21 = _aujourdhui + _dt.timedelta(days=21)
 r = R._cap_quotidien("quelle est la date dans 3 semaines ?")
 check(r is not None and ("%d" % _d21.day) in r and "exact" in r,
       "« quelle EST LA date dans 3 semaines » -> date exacte (le motif acceptait seulement « quelle date »)")
+# HEURE D'UNE VILLE MULTI-MOTS (FAUX vécu 2026-07-08 : « Rio de Janeiro » -> l'heure LOCALE servie, la
+# particule minuscule cassait l'ancre de fin de la garde).
+r = R._cap_quotidien("quelle heure est-il à Rio de Janeiro ?")
+check(r is not None and "Sao_Paulo" in r, "Rio de Janeiro -> fuseau America/Sao_Paulo, jamais l'heure locale")
+r = R._cap_quotidien("quelle heure est-il à Oulan-Bator ?")
+check(r is not None and "m'abstenir" in r, "ville inconnue multi-mots -> abstention DITE, jamais l'heure locale")
 check(R._cap_quotidien("combien de jours entre le 30 février et le 15 mars ?") is None,
       "date invalide (30 février) -> abstention")
 

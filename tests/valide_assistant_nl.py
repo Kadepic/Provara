@@ -414,6 +414,20 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# PASSE ADVERSE vague 29 (les FAUX reviennent par les variantes de phrasé — leçon rechute).
+check(_m("combien y a-t-il de secondes dans une année") is not None
+      and _m("combien y a-t-il de secondes dans une année").startswith("31536000"), "« y a-t-il » -> 31536000")
+_ns = _m("nombre de secondes dans une année")
+check(_ns and _ns.startswith("31536000"), "« nombre de » -> 31536000")
+check(_m("le triple du quart de 100") == "75 (quart de 100 = 25 ; triple = 75)",
+      "composition triple du quart -> 75 (25 servi AVANT, FAUX vécu)")
+check(_m("la moitié du double de 8") == "8 (double de 8 = 16 ; moitié = 8)", "moitié du double -> 8")
+_v130 = _m("vitesse moyenne si je fais 100 km en 1h30")
+check(_v130 == "66.6667 km/h (100 km / 1 h 30)", "vitesse en 1h30 compact -> 66.67 (Moyenne : 43.67 FAUX vécu)")
+check(_m("combien de temps pour 150 kilomètres à 50 km/h") == "3 h (150 km / 50 km/h)",
+      "« kilomètres à » (mot entier) -> 3 h")
+check(_m("quel est le millième nombre premier") == "Le 1000e nombre premier est 7919.",
+      "ordinal en lettres (millième) -> 7919")
 # ÉLECTRONIQUE / MÉCANIQUE (briques electronique + mecanique ; tombaient en mémo « C'est noté »).
 check(_m("résistance équivalente de 10 ohms et 20 ohms en série") == "30 Ω (10 et 20 en série : somme)",
       "résistances en série -> 30")
