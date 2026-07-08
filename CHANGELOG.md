@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Perf atome 2 : stat() mémoïsé + familles de relations précalculées (médiane 0.9 ms, max 5 ms)
+
+- **Atome n°2 (profilé)** : « point de fusion du fer » coûtait **19.3 ms** — `_lookup_direct` payait un
+  `os.path.getsize` (~1 ms de stat sur /mnt/c) PAR relation de la famille À CHAQUE appel, plus le re-split
+  de toutes les relations. Taille des fichiers mémoïsée (`_TAILLE_FICHIER` — datasets statiques en session)
+  + matching tête→relations précalculé (`_RELS_PAR_TETE`) → **1.4 ms (−93 %)**.
+- Batterie complète : médiane **0.9 ms** (3.9 au début du mandat), p90 2.0 ms, max **5.1 ms** (50 au début).
+- Bancs : assistant_nl 485/485, capacites_chat 184/184, raisonnement 202/202, paraphrases 174/174,
+  interface 58/58, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Perf atome 1 : tokenisation du registre mémoïsée (médiane 3.9 → 1.6 ms, −59 %)
 
 - **Mandat Yohan : optimiser chaque atome (RAM/CPU).** Mesures d'abord : boot produit réel **0.24 s / 23 Mo**

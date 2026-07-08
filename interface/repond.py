@@ -283,19 +283,23 @@ def _lookup_direct(rel_head: str, entite: str):
     h = _normalise(rel_head)
     vals = set()
     est_monu = None                              # calculé PARESSEUSEMENT (1 lookup) et seulement si besoin
+    rels_h = _RELS_PAR_TETE.get(h)               # matching tête->relations MÉMOÏSÉ (le split par relation se
+    if rels_h is None:                           # refaisait à chaque appel — même famille d'atome que _rel_toks)
+        rels_h = [r_ for r_ in _relations()
+                  if r_ == h or r_.split("_")[0] == h or r_.startswith(h + "_")]
+        _RELS_PAR_TETE[h] = rels_h
     try:
-        for rel in _relations():
-            if rel == h or rel.split("_")[0] == h or rel.startswith(h + "_"):
-                if any(tk in _RELS_OEUVRE_ART for tk in rel.split("_")[1:]):
-                    if est_monu is None:
-                        est_monu = _est_monument(entite)
-                    if est_monu:                 # l'œuvre homonyme du MONUMENT est un piège -> ignorée
-                        continue
-                # RAM-sûr : _lookup_cell fait un scan STREAMING sur les gros fichiers (occupation_personne 135 Mo,
-                # nationalite_personne 143 Mo, taxon_parent 216 Mo…) au lieu de matérialiser tout le dict.
-                cell = _lookup_cell(rel, entite)
-                if cell and cell[1] is not None:
-                    vals.add(cell[1])
+        for rel in rels_h:
+            if any(tk in _RELS_OEUVRE_ART for tk in rel.split("_")[1:]):
+                if est_monu is None:
+                    est_monu = _est_monument(entite)
+                if est_monu:                     # l'œuvre homonyme du MONUMENT est un piège -> ignorée
+                    continue
+            # RAM-sûr : _lookup_cell fait un scan STREAMING sur les gros fichiers (occupation_personne 135 Mo,
+            # nationalite_personne 143 Mo, taxon_parent 216 Mo…) au lieu de matérialiser tout le dict.
+            cell = _lookup_cell(rel, entite)
+            if cell and cell[1] is not None:
+                vals.add(cell[1])
     except Exception:
         return None
     return next(iter(vals)) if len(vals) == 1 else None
@@ -1137,6 +1141,9 @@ _STREAM_SEUIL = 4 * 1024 * 1024      # au-delà, on NE charge PAS tout le dict (
                                      # souvent plus rapide (early-exit vs chargement complet du dict). Les petits
                                      # (<4 Mo : population_pays, continent…) restent cachés pour les scans répétés
                                      # (superlatif/_membres_attribut, via _charge_direct non concerné par ce seuil).
+_TAILLE_FICHIER: dict = {}           # relation -> True (gros) / False (petit) / "absent" — stat() mémoïsé
+                                     # (datasets statiques en session ; ~1 ms par stat sur /mnt/c, profilé)
+_RELS_PAR_TETE: dict = {}            # tête normalisée -> relations de la famille (borné par les têtes réelles)
 
 
 def _lookup_cell(relation: str, entite: str):
@@ -1146,9 +1153,17 @@ def _lookup_cell(relation: str, entite: str):
     plus rapide que l'itération ligne-à-ligne Python. Repli scan normalisé si la forme diffère (accents/casse). None."""
     ne = _normalise(entite)
     chemin = os.path.join(_DOSSIER_LECTEUR, relation + ".jsonl")
-    try:
-        gros = os.path.getsize(chemin) > _STREAM_SEUIL
-    except OSError:
+    # taille MÉMOÏSÉE : les datasets sont statiques en session, et un stat() sur /mnt/c coûte ~1 ms —
+    # payé par relation à CHAQUE appel, c'était l'atome dominant de « point de fusion du fer » (19 ms,
+    # profilé 2026-07-08).
+    gros = _TAILLE_FICHIER.get(relation)
+    if gros is None:
+        try:
+            gros = os.path.getsize(chemin) > _STREAM_SEUIL
+        except OSError:
+            gros = "absent"
+        _TAILLE_FICHIER[relation] = gros
+    if gros == "absent":
         return None
     if not gros:
         return _quarantaine_cell(relation, _charge_direct(relation).get(ne))
