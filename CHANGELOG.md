@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Partage équitable et arithmétique décimale (opérateur explicite)
+
+- **Partage** : « partage 20 euros entre 4 personnes » → « 5 chacun (20 ÷ 4) » ; reste dit quand ça ne tombe
+  pas juste (« entre 3 » → « 6 chacun, et il reste 2 ») ; décimal → arrondi au centime dit.
+- **Arithmétique décimale** avec opérateur SYMBOLE (pas le mot, ambigu) : « 20 − 7,50 » → 12.5, « 12,50 − 4 »
+  → 8.5. Garde FAUX=0 stricte : après retrait des chiffres/opérateurs/monnaie, il ne doit RIEN rester —
+  « la guerre de 1939-1945 » et « distance 1,5 km » ne sont pas des soustractions.
+- Bancs : `valide_assistant_nl` **274/274** (+6), suite 25/25, raisonnement 194/194, paraphrases 174/174,
+  capacites_chat 142/142, stats_nl 22/22, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vague 17 : 2 FAUX corrigés + facteurs premiers, nombre parfait, règle de trois, écart en %, voyelles
 
 - **FAUX ×2** : « le plus grand **diviseur commun** de 24 et 36 » → *« Minimum : 24 ; maximum : 36 »* (au lieu

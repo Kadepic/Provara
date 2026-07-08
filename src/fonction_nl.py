@@ -1059,6 +1059,35 @@ def resout_math(question: str):
         h, mn = int(mhm.group(1)), int(mhm.group(2))
         return (VERIFIE, "%d minutes" % (h * 60 + mn), "conversion horaire")
 
+    # PARTAGE ÉQUITABLE : « partage 20 euros entre 4 personnes » -> 5 (division exacte ; reste dit s'il y en a).
+    mpa = re.search(r"(?:partage[rz]?|repartis|divise[rz]?|separe[rz]?|repartir)\s+(\d+(?:[.,]\d+)?)\s*"
+                    r"(?:euros?|€|\w+)?\s+(?:entre|en|par)\s+(\d+)\b", q)
+    if mpa:
+        tot, k = float(mpa.group(1).replace(",", ".")), int(mpa.group(2))
+        if k > 0:
+            part = tot / k
+            if part == int(part):
+                return (VERIFIE, "%s chacun (%s ÷ %d)" % (_fmt_nombre(part), _fmt_nombre(tot), k),
+                        "arithmétique — partage équitable")
+            if tot == int(tot):                          # entiers -> quotient + reste (exact, pas d'arrondi)
+                q_, r_ = divmod(int(tot), k)
+                return (VERIFIE, "%d chacun, et il reste %d (%d ÷ %d)" % (q_, r_, int(tot), k),
+                        "arithmétique — partage équitable")
+            return (VERIFIE, _fmt_nombre(round(part, 2)) + " chacun (arrondi au centime)",
+                    "arithmétique — partage équitable")
+
+    # SOUSTRACTION / ADDITION DÉCIMALE avec opérateur EXPLICITE (symbole, pas le mot) : « 20 - 7,50 » -> 12,5.
+    # Garde FAUX=0 : exige le SYMBOLE +/− entre deux nombres (le mot « moins/plus » reste ambigu en langage
+    # naturel et n'est PAS capté ici) ; au moins un décimal (l'entier pur passe déjà par resout_arithmetique).
+    mdec = re.search(r"(-?\d+(?:[.,]\d+)?)\s*([+\-−])\s*(\d+(?:[.,]\d+)?)", question)
+    # garde : une fois retirés chiffres, opérateurs, blancs et mots de monnaie, il ne doit RIEN rester (sinon
+    # « la guerre de 1939-1945 » ou « distance 1,5 km » seraient pris pour des soustractions).
+    _residu = re.sub(r"euros?|€|dollars?|\$|centimes?|[\d\s.,+\-−]", "", q)
+    if mdec and re.search(r"\d[.,]\d", question) and _residu == "":
+        a = float(mdec.group(1).replace(",", ".")); b = float(mdec.group(3).replace(",", "."))
+        r = a - b if mdec.group(2) in "-−" else a + b
+        return (VERIFIE, _fmt_nombre(round(r, 10)), "calcul décimal exact")
+
     # RÈGLE DE TROIS : « si 3 pommes coûtent 2 euros, combien coûtent 9 pommes » -> 6 (proportion exacte).
     mr3 = re.search(r"si\s+(\d+(?:[.,]\d+)?)\s+\w+.{0,20}?(?:coutent?|valent?|font?|pour|=)\s+"
                     r"(\d+(?:[.,]\d+)?).{0,40}?combien.{0,20}?(\d+(?:[.,]\d+)?)", q)

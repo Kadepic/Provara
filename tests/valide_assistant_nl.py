@@ -482,6 +482,14 @@ check(_m("périmètre d'un triangle de côtés 1, 1 et 5") is None,
 check(_m("aire d'un losange de diagonales 6 et 8") == "24", "aire losange d=6,8 -> 24 (d₁·d₂/2, Polygone)")
 check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup » (pas de %) ne déclenche RIEN")
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
+# PARTAGE / ARITHMÉTIQUE DÉCIMALE (opérateur explicite seulement, garde anti-FP forte).
+check(_m("partage 20 euros entre 4 personnes") == "5 chacun (20 ÷ 4)", "partage 20/4 -> 5 chacun")
+_r = _m("partage 20 euros entre 3 personnes")
+check(_r is not None and "6 chacun, et il reste 2" in _r, "partage 20/3 -> 6 chacun + reste 2 (exact)")
+check(_m("20 - 7,50") == "12.5", "20 − 7,50 -> 12.5 (décimal)")
+check(_m("12,50 - 4") == "8.5", "12,50 − 4 -> 8.5")
+check(_m("la guerre de 1939-1945") is None, "« 1939-1945 » (dates) n'est PAS une soustraction (garde)")
+check(_m("distance 1,5 km") is None, "« distance 1,5 km » n'est PAS un calcul (garde)")
 # VAGUE 17 : écart en %, facteurs premiers, nombre parfait, an/heure, règle de trois, diagonale, triangle équilatéral.
 check(_m("le plus grand diviseur commun de 24 et 36") == "12",
       "« le plus grand diviseur commun » -> 12 (PGCD, plus « Minimum : 24 ; maximum : 36 »)")
