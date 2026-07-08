@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 18 : 6 façades de plus (dette 18 → 12)
+
+- 1 preuve REGISTRE composée (diagnostic : 304) : **régression quantile** (la médiane conditionnelle
+  retrouve y = 2x), **décision maxmin sur credal** (pire cas 1.0 exact), **contrôle de risque conforme**
+  (le λ le moins invasif sous la cible), **VAR couplé honnête** (régresseurs singuliers -> abstention DITE,
+  série réelle -> estimé), **p-box** (bornes d'espérance EXACTES (7/6, 2.5) depuis des intervalles),
+  **calibration multiclasse isotone exacte**.
+- Plafond du cliquet : **12** — il reste les fonctions web/réseau et 4 formats complexes.
+- Bancs : valide_capacites 73/73 (pins 303→304), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 17 : 8 façades de plus (dette 26 → 18)
 
 - 1 preuve REGISTRE composée (diagnostic : 303) : **résolution cartographique exacte** ((2.54/dpi)×N),

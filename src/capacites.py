@@ -4132,6 +4132,33 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_20() -> bool:
+    """LOT 18 : régression quantile, maxmin credal, CRC, VAR couplé honnête, p-box, multiclasse isotone."""
+    import random
+    import ia as _I
+    a0, b1 = _I.quantile_conditionnel([1, 2, 3, 4, 5, 6, 7, 8, 9, 10] * 4,
+                                      [2, 4, 6, 8, 10, 12, 14, 16, 18, 20] * 4, 0.5)
+    if not (abs(b1 - 2.0) < 0.01 and abs(a0) < 0.01):                 # médiane conditionnelle : y = 2x retrouvé
+        return False
+    if _I.decision_sous_ambiguite([{"x": 0.4, "y": 0.6}, {"x": 0.6, "y": 0.4}],
+                                  {"agir": {"x": 10.0, "y": -5.0}, "rien": {"x": 0.0, "y": 0.0}}) \
+            != ("robuste", "agir", {"agir": 1.0, "rien": 0.0}):
+        return False                                                  # maxmin sur le credal EXACT (pire cas 1.0)
+    if _I.controle_risque([0.1, 0.5, 0.9], {0.1: [0.3] * 20, 0.5: [0.2] * 20, 0.9: [0.1] * 20},
+                          0.25, 20) != 0.1:
+        return False                                                  # CRC : le λ le moins invasif sous la cible
+    if _I.prevoit_series_couplees([(1, 2), (2, 4), (3, 6), (4, 8), (5, 10)] * 8)[0] != "abstention":
+        return False                                                  # régresseurs singuliers -> abstention DITE
+    bruit = [(1 + 0.1 * random.Random(i).random(), 2 + 0.2 * random.Random(i + 1).random()) for i in range(40)]
+    if _I.prevoit_series_couplees(bruit)[0] != "estimation":          # série réelle -> VAR estimé
+        return False
+    vp, pb = _I.pbox_depuis_intervalles([(1.0, 2.0), (1.5, 2.5), (1.0, 3.0)])
+    if not (vp == "pbox" and abs(pb.esperance()[0] - 3.5 / 3.0) < 1e-9 and pb.esperance()[1] == 2.5):
+        return False                                                  # bornes d'espérance EXACTES du p-box
+    mc = _I.ajuste_calibration_multiclasse([{"a": 0.7, "b": 0.3}, {"a": 0.2, "b": 0.8}] * 15, ["a", "b"] * 15)
+    return mc.applique({"a": 0.7, "b": 0.3}) == {"a": 1.0, "b": 0.0}  # isotone multiclasse EXACT
+
+
 def _p_facade_outils_3() -> bool:
     """LOT 17 : cartographie exacte, paradoxe de Stein, reprise verbatim, PDF/XLSX, moteur d'invention."""
     import random
@@ -4585,6 +4612,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Quantiles conditionnels, credal et p-box (façade stats 20)": (
+        "quantile_conditionnel (médiane conditionnelle : y = 2x retrouvé), decision_sous_ambiguite (maxmin "
+        "credal exact), controle_risque (CRC : λ le moins invasif), prevoit_series_couplees (singulier -> "
+        "abstention DITE ; réel -> VAR), pbox_depuis_intervalles (bornes d'espérance exactes), "
+        "ajuste_calibration_multiclasse (isotone exact).", _p_facade_stats_20),
     "Cartographie, Stein et moteur d'invention (façade outils 3)": (
         "resolution_sol ((2.54/dpi)×N exact), estimation_jointe_stein (le paradoxe : James-Stein DOMINE le "
         "MLE, mesuré), reprends (verbatim honnête du vide), encode_pdf (%PDF-1.4) et encode_xlsx (PK) par "
