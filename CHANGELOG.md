@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — « et en celsius ? » : la dernière réponse à unité se convertit au tour suivant
+
+- Mémoire de la dernière valeur-à-unité servie (`_DERNIERE_VALEUR`, posée quand l'unité de la source est
+  affichée) + route de continuation : « point de fusion du fer » → « 1811 K » → « **et en celsius ?** » →
+  « 1811 K = 1537.85 °C (conversion exacte). » → « et celui de l'or ? » → « 1337.33 K » → « et en
+  celsius ? » → **la nouvelle valeur** (1064.18 °C). Fahrenheit couvert. SOUND : ne convertit que ce que
+  Provara vient de servir ; sans contexte → flux normal. (Bug de route corrigé au passage : `rstrip("s")`
+  mutilait « celsius » en « celsiu ».)
+- Bancs : `banc_raisonnement` **193/193** (+1), capacites_chat 139/139, suite 25/25, assistant_nl 257/257,
+  paraphrases 174/174, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Continuations : « et celui de l'or ? » préserve la relation, « et à New York ? » suit l'heure
 
 - **Type B robuste** : après « point de fusion du fer », « et celui de l'or ? » réécrivait en « point de

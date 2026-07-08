@@ -153,6 +153,12 @@ CAS = [
         R.repond(m, "cont-fus", q, pleine=True))[1])(
         __import__("conversation").MemoireConversation(racine=None)),
      "et celui de l'or ?", "1337"),
+    # CONVERSION DE LA DERNIÈRE RÉPONSE : « et en celsius ? » après « 1811 K » (offset 273,15 exact, montré)
+    ("continuation-en-celsius", lambda q: (lambda m: (
+        R.repond(m, "cont-cel", "point de fusion du fer", pleine=True),
+        R.repond(m, "cont-cel", q, pleine=True))[1])(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "et en celsius ?", "1811 K = 1537.85 °C"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
