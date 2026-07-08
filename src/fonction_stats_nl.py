@@ -113,6 +113,16 @@ def repond_stats(texte: str):
             return None
         # moyenne PONDÉRÉE : ne JAMAIS servir la moyenne simple de tous les nombres (les coefficients
         # ne sont pas des valeurs — « 12 coeff 2 et 15 coeff 3 » vaut 13.8, pas 8)
+        # HARMONIQUE / GÉOMÉTRIQUE nommées (FAUX vécu 2026-07-08 : « moyenne harmonique de 2 et 4 » servait
+        # la moyenne ARITHMÉTIQUE 3 au lieu de 2.67). Formule dite ; valeurs non positives -> abstention.
+        if ("harmonique" in bas or "geometrique" in bas) and vals:
+            import statistics as _st
+            try:
+                if "harmonique" in bas:
+                    return "Moyenne harmonique : %s (n / Σ 1/xᵢ)." % _fmt(round(_st.harmonic_mean(vals), 4))
+                return "Moyenne géométrique : %s (ⁿ√ Π xᵢ)." % _fmt(round(_st.geometric_mean(vals), 4))
+            except Exception:
+                return None
         if re.search(r"\b(pond[ée]r[ée]e?s?|coefficients?|coeffs?|coefs?)\b", bas):
             return _moyenne_ponderee(t, bas) if vals else None
         if re.search(r"\bpoids\b", bas) and vals:
@@ -160,6 +170,11 @@ def repond_stats(texte: str):
 
     # — PROPORTION « k sur n » / « k succès sur n » (AVANT l'IC de moyenne : « intervalle » y figure aussi) —
     m = re.search(r"(\d+)\s*(?:succ[èe]s\s*)?(?:sur|/|parmi)\s*(\d+)", bas)
+    # GARDE ARITHMÉTIQUE (FAUX vécu 2026-07-08) : « quel pourcentage REPRÉSENTE 45 sur 60 » servait un
+    # intervalle de Wilson (inférence) au lieu du calcul exact 75 %. « représente/fait » = division exacte
+    # -> route pourcentage de fonction_nl ; l'inférence (taux de réussite, confiance) reste ici.
+    if m and re.search(r"\b(represente|fait)\b", bas):
+        m = None
     if m and re.search(r"\b(proportion|pourcentage|taux de r[ée]ussite|intervalle|confiance|succ[èe]s|fiab)\b", bas):
         k, n = int(m.group(1)), int(m.group(2))
         if 0 <= k <= n and n > 0:
@@ -176,6 +191,10 @@ def repond_stats(texte: str):
             return None
 
     # — TENDANCE (série qui monte/baisse) —
+    # GARDE CALCUL (FAUX vécu 2026-07-08) : « augmente 50 de 10 % puis de 20 % » partait en détection de
+    # tendance (« série trop courte ») — c'est un calcul de pourcentages enchaînés (fonction_nl).
+    if re.search(r"augmente[rz]?\s+\d", bas) and "%" in t:
+        return None
     if re.search(r"\b(tendance|en hausse|en baisse|monte|augmente|diminue|d[ée]cro[iî]t|[ée]volue)\b", bas) and len(vals) >= 3:
         try:
             return ia.tendance(vals, phrase=True)

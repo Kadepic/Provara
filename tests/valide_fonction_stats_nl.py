@@ -42,6 +42,14 @@ check("Moyenne : 40" in S.repond_stats("moyenne des vitesses 30, 40 et 50"), "mo
 # MULTIPLIAIT tous les nombres (~60 pour 16). Monnaie = somme exacte (fonction_nl), jamais une estimation.
 check(S.repond_stats("j'ai 3 pièces de 2 euros et 2 billets de 5 euros, combien j'ai en tout") is None,
       "pièces/billets -> None (somme exacte, pas Fermi)")
+# MOYENNES NOMMÉES (FAUX vécu 2026-07-08 : « harmonique de 2 et 4 » servait l'arithmétique 3).
+check("Moyenne harmonique : 2.667" in S.repond_stats("moyenne harmonique de 2 et 4"), "harmonique -> 2.667")
+check("Moyenne géométrique : 4" in S.repond_stats("moyenne géométrique de 2 et 8"), "géométrique -> 4")
+# GARDES INFÉRENCE vs ARITHMÉTIQUE (FAUX vécus : Wilson pour « représente 45 sur 60 », tendance pour
+# « augmente 50 de 10 % puis de 20 % »).
+check(S.repond_stats("quel pourcentage représente 45 sur 60") is None, "représente X sur Y -> None (calcul exact)")
+check(S.repond_stats("augmente 50 de 10 % puis de 20 %") is None, "augmente N de X% -> None (calcul)")
+check("Wilson" in S.repond_stats("intervalle de confiance pour 45 succès sur 60"), "inférence Wilson intacte")
 check(S.repond_stats("somme des 100 premiers entiers") is None, "somme des N premiers -> None (route dédiée)")
 check("Minimum : 2" in S.repond_stats("min et max de 7, 2, 9, 4"), "min/max")
 

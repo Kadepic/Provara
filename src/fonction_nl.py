@@ -715,6 +715,17 @@ def resout_math(question: str):
         rf"(?:hausse|augmentation)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}", question, re.I)
     if maug or maug_inv:
         base, p = (_f(maug.group(1)), _f(maug.group(2))) if maug else (_f(maug_inv.group(2)), _f(maug_inv.group(1)))
+        # ENCHAÎNEMENT « puis de Y % » (« augmente 50 de 10 % puis de 20 % » partait en détection de tendance,
+        # vécu 2026-07-08) : chaque étape appliquée sur le RÉSULTAT précédent (66, pas 65), étapes montrées.
+        chaine = re.findall(rf"puis\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I)
+        if chaine:
+            etapes, v = [], base
+            for pc in [p] + [_f(c) for c in chaine]:
+                v2 = v * (1 + pc / 100.0)
+                etapes.append("%s + %s %% = %s" % (_fmt_nombre(v), _fmt_nombre(pc), _fmt_nombre(round(v2, 10))))
+                v = round(v2, 10)
+            return (VERIFIE, "%s (%s)" % (_fmt_nombre(v), " ; ".join(etapes)),
+                    "calcul — augmentations enchaînées (sur le résultat, pas la base)")
         return (VERIFIE, "%s (%s + %s %% = %s + %s)" % (_fmt_nombre(base * (1 + p / 100.0)), _fmt_nombre(base),
                                                         _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
                 "calcul — valeur après augmentation")
@@ -729,7 +740,9 @@ def resout_math(question: str):
                                                               _fmt_nombre(b), _fmt_nombre(b)),
                     "calcul — écart relatif en pourcentage")
 
-    mpart = re.search(rf"{_PCT}\s+(?:est|repr[ée]sente|fait)\s+quel\s+pourcentage\s+de\s+{_PCT}", question, re.I)
+    mpart = (re.search(rf"{_PCT}\s+(?:est|repr[ée]sente|fait)\s+quel\s+pourcentage\s+de\s+{_PCT}", question, re.I)
+             # « quel pourcentage représente 45 sur 60 » (FAUX vécu : partait en intervalle de Wilson)
+             or re.search(rf"quel\s+pourcentage\s+(?:repr[ée]sente|fait|font)\s+{_PCT}\s+sur\s+{_PCT}", question, re.I))
     mpart_inv = None if mpart else re.search(
         rf"quel\s+pourcentage\s+de\s+{_PCT}\s+(?:repr[ée]sente|fait)\s+{_PCT}", question, re.I)
     if mpart or mpart_inv:
@@ -1119,6 +1132,67 @@ def resout_math(question: str):
                     % (_fmt_nombre(qte * pu), _fmt_nombre(qte), mpk.group(2), _fmt_nombre(pu), mpk.group(4)),
                     "prix — quantité × prix unitaire")
         return (HORS, None, None)
+
+    # RÉSISTANCES ÉQUIVALENTES série/parallèle (brique electronique ; tombait en mémo « C'est noté »).
+    if "resistance" in qtoks and ("serie" in qtoks or "parallele" in qtoks):
+        ohms = re.findall(r"(\d+(?:[.,]\d+)?)\s*(?:ohms?|Ω)", qc)
+        if len(ohms) >= 2:
+            try:
+                import electronique as _EL
+                vals_r = [_fl(o) for o in ohms]
+                serie = "serie" in qtoks
+                r_eq = _EL.resistance_serie(vals_r) if serie else _EL.resistance_parallele(vals_r)
+                return (VERIFIE, "%s Ω (%s en %s)" % (_fmt_nombre(r_eq),
+                                                      " et ".join(_fmt_nombre(v) for v in vals_r),
+                                                      "série : somme" if serie else "parallèle : 1/Σ(1/Rᵢ)"),
+                        "électronique — résistance équivalente")
+            except Exception:
+                pass
+        return (HORS, None, None)
+
+    # PÉRIODE D'UN PENDULE : « pendule de 1 mètre » -> 2.006 s (brique mecanique, g terrestre standard DIT).
+    mpen = re.search(r"pendule\s+de\s+(\d+(?:[.,]\d+)?)\s*(?:m|metres?)\b", qc)
+    if mpen and ("periode" in qtoks or "oscillation" in qtoks or "frequence" in qtoks):
+        try:
+            import mecanique as _MEC
+            L = _fl(mpen.group(1))
+            if L > 0:
+                return (VERIFIE, "%s s (2π√(L/g), g = 9.80665 m/s²)" % _fmt_nombre(_MEC.periode_pendule(L)),
+                        "mécanique — période du pendule simple")
+        except Exception:
+            pass
+        return (HORS, None, None)
+
+    # PRESSION = FORCE / SURFACE : « 100 newtons sur 2 mètres carrés » -> 50 Pa (brique mecanique).
+    mpre = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:newtons?|n)\s+sur\s+(\d+(?:[.,]\d+)?)\s*(?:m2|m²|metres?\s+carres?)",
+                     qc)
+    if mpre and "pression" in qtoks:
+        try:
+            import mecanique as _MEC
+            F, S = _fl(mpre.group(1)), _fl(mpre.group(2))
+            if S > 0:
+                return (VERIFIE, "%s Pa (%s N / %s m²)" % (_fmt_nombre(_MEC.pression(F, S)),
+                                                           _fmt_nombre(F), _fmt_nombre(S)),
+                        "mécanique — pression P = F/S")
+        except Exception:
+            pass
+        return (HORS, None, None)
+
+    # NOTATION SCIENTIFIQUE : « notation scientifique de 123000 » -> 1.23 × 10⁵ (réécriture exacte).
+    mns = re.search(r"notation\s+scientifique\s+(?:de\s+|du\s+|d['’]\s*)(-?\d+(?:[.,]\d+)?)", qc)
+    if mns:
+        val = _fl(mns.group(1))
+        if val != 0:
+            mant, expn = ("%e" % val).split("e")
+            mant = mant.rstrip("0").rstrip(".")
+            return (VERIFIE, "%s × 10^%d" % (mant, int(expn)), "notation scientifique (réécriture exacte)")
+        return (VERIFIE, "0", "notation scientifique (réécriture exacte)")
+
+    # CONSTANTES MATHÉMATIQUES NOMMÉES (pi a déjà sa route) : e, nombre d'or.
+    if re.search(r"\bnombre\s+d\s*or\b", q):
+        return (VERIFIE, "1.61803399 ((1 + √5) / 2)", "constante — nombre d'or")
+    if re.search(r"\be\s+vaut\b|\bvaut\s+e\b|valeur\s+de\s+e\b|constante\s+e\b", q):
+        return (VERIFIE, "2.71828183 (e, base du logarithme naturel)", "constante — e")
 
     # RENDU DE MONNAIE : « rendu sur 50 euros pour un achat de 37,25 » -> 12.75 (soustraction montrée) ;
     # achat qui dépasse -> dit honnêtement, jamais un rendu négatif sec.

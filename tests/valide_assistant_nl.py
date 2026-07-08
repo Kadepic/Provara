@@ -414,6 +414,27 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# ÉLECTRONIQUE / MÉCANIQUE (briques electronique + mecanique ; tombaient en mémo « C'est noté »).
+check(_m("résistance équivalente de 10 ohms et 20 ohms en série") == "30 Ω (10 et 20 en série : somme)",
+      "résistances en série -> 30")
+_rp = _m("résistance équivalente de 10 ohms et 10 ohms en parallèle")
+check(_rp and _rp.startswith("5 Ω"), "résistances en parallèle -> 5")
+check(_m("résistance de 10 ohms") is None, "garde : une seule résistance sans série/parallèle -> HORS")
+_pd = _m("période d'un pendule de 1 mètre")
+check(_pd and _pd.startswith("2.00641 s") and "9.80665" in _pd, "pendule 1 m -> 2.006 s, g DIT")
+check(_m("pression de 100 newtons sur 2 mètres carrés") == "50 Pa (100 N / 2 m²)", "pression -> 50 Pa")
+# POURCENTAGES : part exacte « représente X sur Y » (partait en intervalle de Wilson, FAUX vécu) +
+# augmentations ENCHAÎNÉES (sur le résultat, pas la base ; partait en détection de tendance).
+check(_m("quel pourcentage représente 45 sur 60") == "75 %", "45 sur 60 -> 75 %")
+check(_m("augmente 50 de 10 % puis de 20 %") == "66 (50 + 10 % = 55 ; 55 + 20 % = 66)",
+      "augmentations enchaînées -> 66 (étapes montrées)")
+# NOTATION SCIENTIFIQUE + CONSTANTES NOMMÉES.
+check(_m("notation scientifique de 123000") == "1.23 × 10^5", "123000 -> 1.23e5")
+check(_m("notation scientifique de 0,00042") == "4.2 × 10^-4", "0,00042 -> 4.2e-4")
+_or = _m("le nombre d'or")
+check(_or and _or.startswith("1.61803399"), "nombre d'or -> 1.618")
+_e = _m("e vaut combien")
+check(_e and _e.startswith("2.71828183"), "e -> 2.718")
 # RÈGLE DE TROIS DÉCIMALE (FAUX vécu : « 4,50 euros » lu « 4 » -> 9.33 au lieu de 10.5 — virgule mangée).
 check(_m("si 3 stylos coûtent 4,50 euros combien coûtent 7 stylos") == "10.5", "règle de trois décimale -> 10.5")
 # DÉCIMALES avec le MOT moins/plus, résidu monnaie vide (« 20 euros moins 7,50 » tombait en mémo).

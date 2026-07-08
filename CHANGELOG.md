@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 28 : 3 FAUX (harmonique, Wilson, tendance) + électronique/mécanique, notation scientifique, constantes
+
+- **FAUX** : « moyenne **harmonique** de 2 et 4 » → *« Moyenne : 3 »* (l'arithmétique servie à la place de
+  2.667). Harmonique et géométrique câblées avec formule dite ; valeurs non positives → abstention.
+- **FAUX** : « quel pourcentage représente 45 sur 60 » → *un intervalle de Wilson* (inférence) au lieu du
+  calcul exact **75 %**. Garde (« représente/fait » = division exacte) ; l'inférence (« intervalle de
+  confiance pour 45 succès sur 60 ») reste servie.
+- **FAUX** : « augmente 50 de 10 % **puis de 20 %** » → *« série trop courte »* (détection de tendance !).
+  Garde + **augmentations enchaînées** appliquées sur le résultat : « 66 (50 + 10 % = 55 ; 55 + 20 % = 66) ».
+- **Électronique/mécanique câblées** (briques `electronique`/`mecanique`, tombaient en mémo) : résistances
+  équivalentes série (somme) et parallèle (1/Σ(1/Rᵢ)), période du pendule simple (g = 9.80665 DIT),
+  pression P = F/S.
+- **Notation scientifique** (« 123000 » → 1.23 × 10^5, « 0,00042 » → 4.2 × 10^-4) ; **constantes nommées** :
+  nombre d'or ((1+√5)/2), e (base du log naturel).
+- Bancs : `valide_assistant_nl` **393/393** (+11), `valide_fonction_stats_nl` **32/32** (+5), raisonnement
+  198/198, paraphrases 174/174, capacites_chat 148/148, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 27 : 2 FAUX (règle de trois décimale, Fermi-monnaie ~60 !) + argent du quotidien, lettres, polygones
 
 - **FAUX** : « si 3 stylos coûtent **4,50** euros combien coûtent 7 stylos » → *« 9.333333 »* (normalise()
