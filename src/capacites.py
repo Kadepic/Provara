@@ -4153,12 +4153,10 @@ def _p_facade_web_1() -> bool:
     if not (a2.statut == "supposition" and a1.statut == "supposition" and a2.confiance > a1.confiance):
         return False                                                  # SANS JUGE, jamais un fait ; l'indépendance
     #                                                                   des domaines PÈSE (0.6 vs 0.4)
-    import shutil
-    if shutil.which("bash"):                                          # ⚠ portabilité .exe Windows : bash absent
-        r = _I.genere_langage("f", [(1, 1, 2), (2, 2, 4), (3, 5, 8)], "bash")
-        if "$1 + $2" not in str(r):                                   # l'addition est SYNTHÉTISÉE en bash et
-            return False                                              # vérifiée sur les exemples
-    # sans interpréteur sur l'hôte, la synthèse polyglotte n'est pas exigible — le reste de la preuve tient
+    # ⚠ la synthèse de code (genere_langage) spawne un interpréteur externe DES DIZAINES de fois — sur le
+    # .exe Windows, « bash » résout vers l'interop WSL et chaque spawn coûte des secondes : le diagnostic
+    # partait en minutes (vécu 2026-07-08, timeout > 400 s). Sa preuve vit dans tests/valide_atomes.py
+    # (hôtes de dev, gardée par which) — JAMAIS dans le chemin du diagnostic produit.
     vb, db = _I.borne_stabilite([(1.0, 2.0), (2.0, 4.0), (3.0, 6.0)] * 10,
                                 [(float(i), 2.0 * i) for i in range(100)], 5)
     if not (vb == "analyse" and db["borne"] >= db["r_emp"]):          # la borne domine le risque empirique

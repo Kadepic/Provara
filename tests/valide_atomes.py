@@ -121,6 +121,18 @@ try:
 except Exception:
     check("schema_relations.inverses_compatibles : données indisponibles -> gate sautée proprement", True)
 
+# SYNTHÈSE DE CODE (ia.genere_langage) : spawne un interpréteur externe des dizaines de fois — sa preuve vit
+# ICI (hôte de dev) et JAMAIS dans le diagnostic produit (le .exe Windows résout « bash » vers l'interop WSL,
+# chaque spawn coûte des secondes : diagnostic parti en minutes, vécu 2026-07-08).
+import shutil
+if shutil.which("bash"):
+    import ia as _IA
+    _r = _IA.genere_langage("f", [(1, 1, 2), (2, 2, 4), (3, 5, 8)], "bash")
+    check("ia.genere_langage : l'addition est SYNTHÉTISÉE en bash puis vérifiée sur les exemples",
+          "$1 + $2" in str(_r))
+else:
+    check("ia.genere_langage : pas d'interpréteur bash sur l'hôte -> gate sautée proprement", True)
+
 # ————————————————— ① SCAN À CLIQUET : aucune NOUVELLE orpheline, dette qui ne peut que fondre —————————————————
 # Dette HISTORIQUE assumée (audit 2026-07-08) : façade `ia.py` uniquement — 148 enveloppes dont les modules
 # sous-jacents sont validés, mais que rien ne consomme encore. À câbler (preuves) ou élaguer, par lots.
