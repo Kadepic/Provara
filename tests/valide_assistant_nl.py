@@ -414,6 +414,17 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 45 : horloge MULTI-ACTEURS (test réel Yohan — départ commun + N durées propres).
+_ma = _m("un avion part en même temps qu'une voiture à 5h17 et l'avion a 4h58 de vol et la voiture a 17h03 "
+         "à rouler à quelle heure arrivent les 2?")
+check(_ma == "L'avion : 10 h 15 (5 h 17 + 4h58) ; La voiture : 22 h 20 (5 h 17 + 17h03).",
+      "2 acteurs -> une arrivée chacun")
+_m3 = _m("un train, un bus et une moto partent à 6h00 ; le train a 2h30 de trajet, le bus 3h15 et la moto "
+         "1h45, à quelle heure arrivent-ils ?")
+check(_m3 is not None and "8 h 30" in _m3 and "9 h 15" in _m3 and "7 h 45" in _m3, "3 acteurs -> 3 arrivées")
+_m4 = _m("quatre véhicules partent à 22h00 : l'avion a 3h10 de vol, le tgv 4h20, le ferry 9h45 et le taxi "
+         "1h05, quelle heure d'arrivée ?")
+check(_m4 is not None and _m4.count("lendemain") == 3 and "23 h 05" in _m4, "4 acteurs, 3 lendemains DITS")
 # VAGUE 44 : conventions d'objets et de jeux (table FERMÉE, cadre DIT dans chaque réponse).
 check(_m("combien de cases sur un échiquier") == "64 cases (8 × 8).", "échiquier -> 64")
 _pi = _m("combien de touches sur un piano")

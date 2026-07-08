@@ -180,6 +180,10 @@ CAS = [
     ("habitants-gentile-intact", lambda q: (lambda m: R.repond(m, "hab-ge", q, pleine=True))(
         __import__("conversation").MemoireConversation(racine=None)),
      "comment s'appellent les habitants de Lyon", "pas l'information"),
+    # DISTANCE FORME NUE (test réel Yohan 2026-07-08) : « distance paris toulouse » sans « entre » — la
+    # découpe n'est retenue QUE si les deux lieux résolvent en coordonnées.
+    ("distance-nue", R._cap_distance, "distance paris toulouse", "588"),
+    ("distance-entre-intacte", R._cap_distance, "distance entre Paris et Berlin", "876"),
     # SOMME COORDONNÉE (vécu : le décomposeur multi-demandes ET le Fermi volaient la question — pipeline entier)
     ("pieces-billets-somme", lambda q: (lambda m: R.repond(m, "pb-som", q, pleine=True))(
         __import__("conversation").MemoireConversation(racine=None)),

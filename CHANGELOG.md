@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 45 (tests réels Yohan) : horloge N acteurs, liens cliquables, distance nue, valide_interface 58/58
+
+- **Horloge multi-acteurs** (test réel : « un avion part en même temps qu'une voiture à 5h17, l'avion a
+  4h58 de vol, la voiture 17h03 à rouler, à quelle heure arrivent les 2 ? » tombait en repli) → une arrivée
+  PAR acteur, N acteurs (2, 3, 4 épinglés), l'heure de départ écartée des durées par position, lendemains
+  dits : « L'avion : 10 h 15 (5 h 17 + 4h58) ; La voiture : 22 h 20 (5 h 17 + 17h03). »
+- **Liens cliquables** (test réel : les URLs des réponses web étaient du texte mort) : construction DOM
+  sûre (nœuds texte + <a>, jamais d'innerHTML — zéro injection), target _blank + noopener.
+- **Distance forme nue** (« distance toulouse albi ») : découpe validée par le lookup réel des coordonnées
+  — « distance paris toulouse » → 588 km ; Albi/Montauban restent SANS coordonnées (crible anti-homonyme,
+  chantier latitude_ville_fr documenté, en attente d'ingestion + re-upload).
+- **valide_interface 58/58** (jamais lancé dans le protocole — 3 échecs PRÉEXISTANTS à la nuit corrigés
+  comme pins dérivés : la présentation reçoit la salutation au prénom, les refus sont variés par
+  formulation.py, le prénom du profil persistant ~/.verax est un rappel légitime ; + 4 pins de casse
+  MULTITOURS alignés sur la restitution de casse de la vague 34).
+- Bancs : `valide_assistant_nl` **485/485** (+3), raisonnement **202/202** (+2), `valide_interface`
+  **58/58**, capacites_chat 184/184, paraphrases 174/174, stats 34/34, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 44 : conventions d'objets et de jeux (table fermée, cadre dit)
 
 - Échiquier 64 cases (8 × 8), piano 88 touches (standard moderne dit), tarot 78 cartes, football 11 joueurs

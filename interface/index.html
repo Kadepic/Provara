@@ -218,6 +218,8 @@ async function ouvre(id) {
       const corps = el.querySelector(".corps");
       if (t.role !== "user" && t.texte.trim().startsWith("<svg")) {
         corps.innerHTML = t.texte;                        // schéma SVG généré par Provara (contrôlé côté serveur, sûr)
+      } else if (t.role !== "user") {
+        _corpsAvecLiens(corps, t.texte);                  // VERBATIM + URLs cliquables (nœuds sûrs)
       } else {
         corps.textContent = t.texte;                      // VERBATIM, jamais reformulé
       }
@@ -242,6 +244,20 @@ $("#btn-nouvelle").onclick = async () => {
 };
 
 // — envoyer un message (avec RETOUR VISUEL immédiat : ton message + bulle « Provara cherche… ») —
+function _corpsAvecLiens(corps, texte) {
+  // URLs CLIQUABLES sans innerHTML (vécu Yohan 2026-07-08 : les liens des réponses web étaient du texte
+  // mort). Zéro injection : nœuds texte + <a> construits à la main, jamais de HTML parsé.
+  const re = /(https?:\/\/[^\s)»"'<>]+)/g;
+  let i = 0, m;
+  while ((m = re.exec(texte)) !== null) {
+    if (m.index > i) corps.appendChild(document.createTextNode(texte.slice(i, m.index)));
+    const a = document.createElement("a");
+    a.href = m[0]; a.textContent = m[0]; a.target = "_blank"; a.rel = "noopener noreferrer";
+    corps.appendChild(a);
+    i = m.index + m[0].length;
+  }
+  if (i < texte.length) corps.appendChild(document.createTextNode(texte.slice(i)));
+}
 function _bulle(role, texte, attente) {
   const flux = $("#tours");
   if (flux.querySelector(".centre")) flux.innerHTML = "";       // enlève le placeholder « conversation vide »
@@ -249,7 +265,8 @@ function _bulle(role, texte, attente) {
   el.className = "tour" + (role === "user" ? " user" : "") + (attente ? " attente" : "");
   el.innerHTML = `<div class="qui"></div><div class="corps"></div>`;
   el.querySelector(".qui").textContent = role === "user" ? "vous" : "Provara";
-  el.querySelector(".corps").textContent = texte;               // verbatim, jamais d'injection
+  if (role !== "user") { _corpsAvecLiens(el.querySelector(".corps"), texte); }  // verbatim + liens cliquables
+  else { el.querySelector(".corps").textContent = texte; }      // verbatim, jamais d'injection
   flux.appendChild(el);
   flux.scrollTop = flux.scrollHeight;
   return el;

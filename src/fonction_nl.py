@@ -1446,6 +1446,38 @@ def resout_math(question: str):
     # FAUX vécu 2026-07-08) : « part à 8h et roule 2 heures » -> 10 h ; « rendez-vous à 14h30 dure 45
     # minutes » -> 15 h 15 ; « il est 23h30 … dans une heure » -> 0 h 30 (lendemain dit) ; « 20h45 plus
     # 30 minutes » -> 21 h 15.
+    # PROBLÈME D'HORLOGE MULTI-ACTEURS (vécu test Yohan 2026-07-08) : « un avion part en même temps qu'une
+    # voiture à 5h17, l'avion a 4h58 de vol et la voiture 17h03 à rouler, à quelle heure arrivent les 2 ? »
+    # -> une arrivée PAR acteur (départ commun + durée propre, modulo 24 h, lendemain dit). L'heure de DÉPART
+    # est écartée des durées par position (la « voiture à 5h17 » n'est pas une durée).
+    if re.search(r"quelle\s+heure", qc) and re.search(r"arriv|finiss|termin", qc):
+        mdep = re.search(r"(?:part(?:ent)?|demarrent?|commencent?)\b.{0,50}?[àa]\s+(\d{1,2})\s*h\s*([0-5]\d)?\b",
+                         qc)
+        if mdep:
+            t0 = int(mdep.group(1)) * 60 + int(mdep.group(2) or 0)
+            pos_dep = mdep.start(1)
+            acteurs = []
+            for ma in re.finditer(r"(avion|voiture|train|bus|camion|bateau|velo|cycliste|pieton|coureur|marcheur"
+                                  r"|moto|scooter|tgv|tramway|metro|ferry|helicoptere|randonneur|cavalier|skieur"
+                                  r"|marathonien|navire|fusee|drone|taxi)"
+                                  r"\b.{0,14}?(\d{1,2})\s*h\s*([0-5]\d)\b", qc):
+                if ma.start(2) == pos_dep:               # c'est l'heure de départ, pas une durée
+                    continue
+                acteurs.append((ma.group(1), int(ma.group(2)) * 60 + int(ma.group(3)),
+                                "%sh%s" % (ma.group(2), ma.group(3))))
+            if acteurs and t0 < 1440:
+                parts = []
+                for nom, dur, aff in acteurs:
+                    tt = t0 + dur
+                    h1, m1 = divmod(tt % 1440, 60)
+                    art = "l'" if nom[0] in "aeiouh" else ("la " if nom in ("voiture", "moto", "fusee") else "le ")
+                    parts.append("%s%s : %d h %02d (%d h %02d + %s)%s"
+                                 % (art, nom, h1, m1, t0 // 60, t0 % 60, aff,
+                                    " — le lendemain" if tt >= 1440 else ""))
+                if parts:
+                    return (VERIFIE, " ; ".join(p[0].upper() + p[1:] for p in parts) + ".",
+                            "arithmétique d'horloge (départ commun + durées propres, modulo 24 h)")
+
     mck = re.search(r"(?:^|[àa]\s+|il\s+est\s+|entre\s+)(\d{1,2})\s*h\s*([0-5]\d)?\b(?!\s*/)", qc)
     if mck:
         # durée : mot (« une heure »), nombre+unité (« 45 minutes ») OU compacte (« dure 1h30 ») ;
