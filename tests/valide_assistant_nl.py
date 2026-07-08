@@ -414,6 +414,11 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 43 : douzaine sans chiffre + conversion inverse « combien de X pour N Y ».
+check(_m("combien y a-t-il d'œufs dans une douzaine") == "12 (une douzaine = 12)", "une douzaine -> 12")
+_nk = _m("combien de nœuds pour 30 km/h")
+check(_nk and _nk.startswith("16.1987"), "30 km/h -> 16.2 nœuds (motif « pour »)")
+check(_m("combien de minutes pour 2 heures") == "120 minutes", "2 heures -> 120 min (motif « pour »)")
 # VAGUE 42 : probas cartes / deux dés / lancers enchaînés (hypothèses DITES ; tombaient en mémo).
 _ca = _m("probabilité de tirer un as dans un jeu de 52 cartes")
 check(_ca and _ca.startswith("1/13"), "as -> 1/13, jeu standard dit")

@@ -221,6 +221,9 @@ _CONV_UNITS = {
 # alternance longest-first : « kilometre » avant « metre » avant « m » ; « secondes » avant « s ».
 _UNIT_ALT = "|".join(sorted((re.escape(u) for u in _CONV_UNITS), key=len, reverse=True))
 _CONV_EN = re.compile(rf"({_NUM})\s*({_UNIT_ALT})\b\s+(?:en|vers)\s+({_UNIT_ALT})\b", re.IGNORECASE)
+# INVERSE « combien de X pour N Y » (« combien de nœuds pour 30 km/h » tombait en clarification, vécu)
+_CONV_POUR = re.compile(rf"combien\s+d(?:e|')\s*({_UNIT_ALT})\b\s+pour\s+({_NUM})\s*({_UNIT_ALT})\b",
+                        re.IGNORECASE)
 _CONV_DANS = re.compile(
     rf"(?:combien\s+(?:y\s+a[- ]t[- ]il\s+)?|nombre\s+)d(?:e|')\s*({_UNIT_ALT})\b\s+dans\s+"
     rf"(?:(?:un|une|le|la|l['’])\s+|({_NUM})\s*)?({_UNIT_ALT})\b",
@@ -370,7 +373,7 @@ def resout_conversion(question: str):
     if m:
         num = float(m.group(1).replace(",", ".")); src = m.group(2).lower(); dst = m.group(3).lower()
     else:
-        m = _CONV_DANS.search(q)
+        m = _CONV_DANS.search(q) or _CONV_POUR.search(q)
         if not m:
             return (HORS, None, None)
         dst = m.group(1).lower(); num = float((m.group(2) or "1").replace(",", ".")); src = m.group(3).lower()
@@ -1324,10 +1327,10 @@ def resout_math(question: str):
                         "conventions de durée — composition exacte")
         return (HORS, None, None)
 
-    # DOUZAINES : « 3 douzaines » -> 36, « une demi-douzaine » -> 6 (convention dite).
-    mdz = re.search(r"(?:(\d+)\s+douzaines?|demi[- ]douzaine)", qc)
+    # DOUZAINES : « 3 douzaines » -> 36, « une demi-douzaine » -> 6, « dans une douzaine » -> 12 (convention).
+    mdz = re.search(r"(?:(\d+)\s+douzaines?|demi[- ]douzaine|(?:une\s+|la\s+)?douzaine)", qc)
     if mdz and ("combien" in qtoks or "fait" in qtoks or "font" in qtoks):
-        n = int(mdz.group(1)) * 12 if mdz.group(1) else 6
+        n = int(mdz.group(1)) * 12 if mdz.group(1) else (6 if "demi" in qc else 12)
         return (VERIFIE, "%d (une douzaine = 12)" % n, "conventions — douzaine")
 
     # RENDU DE MONNAIE : « rendu sur 50 euros pour un achat de 37,25 » -> 12.75 (soustraction montrée) ;

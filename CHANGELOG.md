@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 43 : douzaine sans chiffre, conversion inverse « pour »
+
+- « combien y a-t-il d'œufs dans **une** douzaine » → 12 (le motif exigeait un chiffre) ; « combien de
+  **nœuds pour** 30 km/h » → 16.2 (motif de conversion inverse « combien de X pour N Y » ; « minutes pour
+  2 heures » → 120). Balayage ligature œ : le reste des cas sondés (œuf, sœur, bœuf…) = abstention
+  honnête correcte (data absente).
+- Bancs : `valide_assistant_nl` **474/474** (+3), capacites_chat 184/184, raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
 ## 2026-07-08 — Vague 42 : probabilités cartes/deux dés/lancers + traduction en écho tuée
 
 - **Probabilités à hypothèses DITES** (tombaient en mémo) : jeu de 52 cartes (as → 1/13, cœur → 1/4
