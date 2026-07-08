@@ -5422,6 +5422,9 @@ def _cap_quotidien(texte: str, conv_id=None):
                 from zoneinfo import ZoneInfo
                 import datetime as _dt
                 lh = _dt.datetime.now(ZoneInfo(_FUSEAUX_VILLES[ville_conn]))
+                if conv_id:                              # continuation « et à New York ? » (type B rejouable)
+                    _DERNIER_SUJET[conv_id] = ville_conn
+                    _DERNIER_QUESTION[conv_id] = "quelle heure est-il à %s ?" % ville_conn
                 return ("À %s il est %02d h %02d (fuseau %s, base de fuseaux IANA + horloge de ta machine)."
                         % (ville_conn.title(), lh.hour, lh.minute, _FUSEAUX_VILLES[ville_conn]))
             except Exception:
@@ -7871,18 +7874,35 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         if suj and derniere_q:
             ent = _nouvelle_entite(t)
             if ent and ent != suj:
-                q2 = re.sub(r"\b" + re.escape(suj) + r"\b", ent, derniere_q, flags=re.IGNORECASE)
-                if q2 != derniere_q:
-                    #   REJOUER q2 dans le pipeline COMPLET d'abord : « et celle de Waterloo ? » (après « quand
-                    #   a eu lieu la bataille de Marignan ? ») doit atteindre _cap_date_evenement -> 1815, pas le
-                    #   lookup brut qui répondrait un fait d'une autre nature (« champ de bataille de Waterloo »).
+                #   DEUX RÉÉCRITURES candidates : le sujet ENTIER d'abord (bon pour les vraies entités
+                #   multi-mots : « arabie saoudite » -> « japon »), puis son DERNIER token — quand le « sujet »
+                #   mémorisé embarque la relation (« fusion du fer »), la substitution entière donnait
+                #   « point de OR » (relation perdue, vécu 2026-07-08) ; remplacer « fer » seul préserve
+                #   « point de fusion du or », que le lookup résout.
+                cibles = [suj]
+                if " " in suj and suj.split()[-1] != ent:
+                    cibles.append(suj.split()[-1])
+                q2s = []
+                for cible in cibles:
+                    q2 = re.sub(r"\b" + re.escape(cible) + r"\b", ent, derniere_q, flags=re.IGNORECASE)
+                    if q2 != derniere_q and q2 not in q2s:
+                        q2s.append(q2)
+                #   REJOUER q2 dans le pipeline COMPLET d'abord : « et celle de Waterloo ? » (après « quand
+                #   a eu lieu la bataille de Marignan ? ») doit atteindre _cap_date_evenement -> 1815, pas le
+                #   lookup brut qui répondrait un fait d'une autre nature (« champ de bataille de Waterloo »).
+                for q2 in q2s:
                     rep = _rejoue(memoire, conv_id, q2, pleine)
-                    if _utile(rep):
+                    #   une réponse-aveu (« j'ai compris la structure… ») n'est PAS un succès de rejeu : la
+                    #   variante suivante (« point de fusion du or ») peut, elle, résoudre -> on continue.
+                    if _utile(rep) and not (rep or "").startswith((_MSG_STRUCTURE_PREFIXE,
+                                                                   _MSG_STRUCTURE_COURT_PREFIXE, _MSG_DYM_PREFIXE)):
                         return rep
+                for q2 in q2s:
                     rep = _connaissance_verifiee(q2, conv_id)
                     if rep:
                         return f"{rep}  — à propos de « {ent} »"
-                    #   même continuité à travers l'abstention pour le type B (« et du mordor ? »).
+                #   même continuité à travers l'abstention pour le type B (« et du mordor ? »).
+                for q2 in q2s:
                     _snm = _structure_non_ancree(q2, conv_id)
                     if _snm:
                         return _snm

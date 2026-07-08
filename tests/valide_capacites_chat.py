@@ -180,6 +180,14 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — CONTINUATION heure (indépendante des datasets) : « et à New York ? » après l'heure de Tokyo —
+import conversation as _cvB
+_memB2 = _cvB.MemoireConversation(racine=None)
+R.repond(_memB2, "cont-h", "quelle heure est-il à Tokyo ?", pleine=True)
+rh = R.repond(_memB2, "cont-h", "et à New York ?", pleine=True)
+check(rh is not None and "New York" in rh and not rh.startswith("Il est"),
+      "« et à New York ? » après l'heure de Tokyo -> l'heure de New York (continuation)")
+
 # — GÉNÉRATION D'ANAGRAMMES (dictionnaire embarqué : mots réels, jamais des lettres mélangées inventées) —
 # checks POSITIFS seulement si le dictionnaire est chargé (la suite tourne sans LECTEUR_DATASETS_DIR).
 if os.path.exists(os.path.join(R._DOSSIER_LECTEUR, "definition_nom.jsonl")):

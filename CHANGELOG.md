@@ -1,5 +1,18 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Continuations : « et celui de l'or ? » préserve la relation, « et à New York ? » suit l'heure
+
+- **Type B robuste** : après « point de fusion du fer », « et celui de l'or ? » réécrivait en « point de
+  **or** » (le sujet mémorisé embarque la relation, « fusion du fer » remplacé en bloc → relation perdue →
+  aveu de structure). Double réécriture : sujet ENTIER d'abord (bon pour les vraies entités multi-mots,
+  « l'Arabie saoudite » → « le Japon » inchangé), puis DERNIER token (« fer » → « or » préserve « fusion ») ;
+  un rejeu qui ne produit qu'un AVEU (structure/did-you-mean) n'est plus considéré comme un succès — la
+  variante suivante est tentée. → « et celui de l'or ? » → 1337.33 K, « et celui du cuivre ? » → 1357.77 K.
+- **L'heure enchaîne** : « quelle heure est-il à Tokyo ? » puis « et à New York ? » → l'heure de New York
+  (la route fuseaux mémorise sujet+question pour la continuation).
+- Bancs : `banc_raisonnement` **192/192** (+1), capacites_chat **139/139** (+1), suite 25/25, assistant_nl
+  257/257, paraphrases 174/174, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — PERF : des questions coûtaient 3-5 s À CHAQUE APPEL (fuzzy sur tables à millions de clés)
 
 - **Profilé** : « est-ce que 2024 est une année bissextile » = 5,2 s et « le 5e mois de l'année » = 3,4 s,
