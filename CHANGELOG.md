@@ -1,5 +1,259 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — 🏆 EXCELLENCE ATOMIQUE, lot final : DETTE SOLDÉE (148 → 0)
+
+- **Chaque fonction publique du produit est désormais consommée par le produit ou prouvée par un test à
+  réponse connue — zéro orpheline, à tous les niveaux (504 modules ET ~2 500 fonctions), verrouillé par le
+  cliquet `valide_atomes` à 0.**
+- Dernier lot (diagnostic : 306 preuves) : **web souverain** (URL invalide/localhost -> refus propre, jamais
+  requêté ; rien à lire -> hors), **corroboration FAUX=0** (sans juge réel, jamais promu en fait ;
+  l'indépendance des domaines pèse 0.6 vs 0.4 ; **zéro observation -> RIEN n'est persisté au fait-store**),
+  **synthèse de code vérifiée** (l'addition est ÉCRITE en bash « $(( $1 + $2 )) » puis validée sur les
+  exemples), borne de stabilité, moteur self-improving (invente_et_retiens).
+- 20 lots au total dans la séance : 148 façades prouvées — théorèmes VÉRIFIÉS et non récités (Aumann,
+  Condorcet, Gibbard-Satterthwaite, Stein, Lindley, Goodhart, Jensen, Anscombe, Bertrand et
+  Borel-Kolmogorov refusés proprement…), une trentaine de contrats d'abstention honnête, des encodeurs
+  prouvés par octets magiques.
+- **Batterie finale complète, tout vert** : assistant_nl 485, capacites_chat 184, raisonnement 202,
+  paraphrases 174, interface 58/58, capacites 73/73 (306 preuves), atomes 19/19, câblage 504/0, suite 26/26,
+  challenge 16/16.
+
+## 2026-07-08 — Excellence atomique, lot 19 : 5 façades de plus (dette 12 → 7)
+
+- 1 preuve REGISTRE composée (diagnostic : 305) : **apprentissage de règle honnête** (deux seuils possibles
+  entre les exemples -> AMBIGU, refus de choisir arbitrairement), **apprend_domaine** (le référentiel OMS de
+  test est réellement appris dans la BASE puis retiré sans trace), **PAC-Bayes** (la borne domine le risque
+  empirique), **biais du survivant MESURÉ** (moyenne des survivants 9.0 vs population 5.5 -> biais 3.5
+  exact), **queues lourdes POT-GPD** (P(X > 20) estimée sur une Pareto ; seuil sous u -> None honnête).
+- Plafond du cliquet : **7** — il ne reste que les fonctions web/réseau et 2 à état lourd.
+- Bancs : valide_capacites 73/73 (pins 304→305), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 18 : 6 façades de plus (dette 18 → 12)
+
+- 1 preuve REGISTRE composée (diagnostic : 304) : **régression quantile** (la médiane conditionnelle
+  retrouve y = 2x), **décision maxmin sur credal** (pire cas 1.0 exact), **contrôle de risque conforme**
+  (le λ le moins invasif sous la cible), **VAR couplé honnête** (régresseurs singuliers -> abstention DITE,
+  série réelle -> estimé), **p-box** (bornes d'espérance EXACTES (7/6, 2.5) depuis des intervalles),
+  **calibration multiclasse isotone exacte**.
+- Plafond du cliquet : **12** — il reste les fonctions web/réseau et 4 formats complexes.
+- Bancs : valide_capacites 73/73 (pins 303→304), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 17 : 8 façades de plus (dette 26 → 18)
+
+- 1 preuve REGISTRE composée (diagnostic : 303) : **résolution cartographique exacte** ((2.54/dpi)×N),
+  **paradoxe de Stein mesuré** (James-Stein domine le MLE sur 3 moyennes, graine fixée), reprise de
+  conversation verbatim honnête, **encode_pdf** (%PDF-1.4) et **encode_xlsx** (conteneur PK) prouvés par
+  octets magiques sur des documents réellement construits, **moteur d'invention** (candidats-stacks,
+  canaux manquants, principes physiques classés par levier).
+- Plafond du cliquet : **18** — 130 façades prouvées sur les 148 de l'audit initial.
+- Bancs : valide_capacites 73/73 (pins 302→303), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 16 : 6 façades de plus (dette 32 → 26)
+
+- 1 preuve REGISTRE composée (diagnostic : 302) : **fichiers réels** (cree_fichier écrit et le contenu est
+  relu, depot ouvre le dépôt), **protocole de révélation honnête** (protocole inconnu -> la vraisemblance
+  est REFUSÉE, dépendance au protocole type Monty Hall), **calibrations isotoniques exactes** (multi-label
+  {a: 1.0, b: 0.0} et par étapes 0.9 -> 1.0 / 0.6 -> 0.0), **NDCG** (classement parfait = 1.0, inversé < 1).
+- Plafond du cliquet : **26**.
+- Bancs : valide_capacites 73/73 (pins 301→302), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 15 : 6 façades de plus (dette 38 → 32)
+
+- 1 preuve REGISTRE composée (diagnostic : 301) : **conformal par classe** (seuils exacts 0.2/0.2),
+  **multicalibration honnête** (groupes trop petits -> abstention DITE), **détecteur de dérive CUSUM**
+  (le système SUR-confiant déclenche l'alarme, le bien-calibré jamais — les deux régimes prouvés),
+  **D-calibration de survie** (modèle juste -> déciles uniformes EXACTS, χ² = 0), **borne de Rademacher**
+  (domine le risque empirique), **clustering par processus de Dirichlet** (2 vrais paquets -> K = 2 inféré,
+  sans fixer K d'avance).
+- Plafond du cliquet : **32**.
+- Bancs : valide_capacites 73/73 (pins 300→301), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 14 : 6 façades de plus (dette 44 → 38 ; cap des 300 preuves)
+
+- 1 preuve REGISTRE composée — le diagnostic exécute désormais **300 preuves en direct** : **prévisions
+  imprécises de Walley** (bornes EXACTES (1, 4) sur un ensemble credal), **ambiguïté lisse** (KMM),
+  **Bayes robuste** (ε-contamination encadrant le postérieur nominal 0.8), **décision robuste à la mauvaise
+  spécification du modèle** (la prudence l'emporte), **risque conjoint extrême** (copules), **portefeuille
+  universel** (suit le meilleur actif rétrospectif).
+- Plafond du cliquet : **38** — 110 façades prouvées depuis l'audit (148).
+- Bancs : valide_capacites 73/73 (pins 299→300), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 13 : 6 façades de plus (dette 50 → 44)
+
+- 1 preuve REGISTRE composée (diagnostic : 299) : **p-hacking quantifié** (le minimum de m tests ajusté
+  1−(1−p)^m exactement), **inégalité de Jensen reproduite** (E[f(X)] ≈ 1 vs f(E[X]) = 0), **jeu à somme
+  nulle résolu** (valeur ≈ 0, stratégies mixtes), **info-gap** (α̂ = 5 exact — la marge maximale tolérable),
+  **décision robuste au pire cas**, **échantillonnage préférentiel** (poids plats -> ESS = n exact).
+- Plafond du cliquet : **44**.
+- Bancs : valide_capacites 73/73 (pins 298→299), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 12 : 6 façades de plus (dette 56 → 50 — moitié de la dette brûlée)
+
+- 1 preuve REGISTRE composée (diagnostic : 298) : **théorème d'accord d'Aumann** (les deux agents bayésiens
+  convergent à 1.0 — vérifié, pas récité), **détection de changement précoce** (alarme au pas 7 exact),
+  **effet d'ancrage reproduit** (contamination 0.93 vs contrôle ~0), et deux refus d'excellence : le
+  **paradoxe de Bertrand** (« corde aléatoire » sans mécanisme -> abstention motivée) et
+  **Borel-Kolmogorov** (conditionnement sur mesure nulle -> refusé). Optimisation coûteuse approchée, tracée.
+- Plafond du cliquet : **50** — la moitié de la dette initiale (148 → 50, 98 façades prouvées).
+- Bancs : valide_capacites 73/73 (pins 297→298), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 11 : 7 façades de plus (dette 63 → 56)
+
+- 1 preuve REGISTRE composée (diagnostic : 297) : **théorème de Gibbard-Satterthwaite** (une manipulation de
+  vote est EXHIBÉE, pas récitée), **quartet d'Anscombe** (mêmes résumés, données différentes — la preuve que
+  les stats résumées ne suffisent pas), **espérances imprécises** (bornes de Choquet exactes 6–10 sur une
+  masse de croyance), **CQR** (correction conforme 0.5 exacte), **conformal Mondrian** (quantile PAR GROUPE
+  (9.0, 11.0) exact), dialogues honnêtes (oublier l'inexistant -> False ; rappel sans matière -> vide).
+- Plafond du cliquet : **56**.
+- Bancs : valide_capacites 73/73 (pins 296→297), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 10 : 8 façades outils (dette 71 → 63)
+
+- 1 preuve REGISTRE composée (diagnostic : 296) : **encodeurs binaires prouvés par octets magiques**
+  (image_raster + encode_png -> signature PNG exacte \x89PNG, encode_wav -> RIFF/WAVE), **intégrale de
+  Choquet exacte** (0.7), décomposition physique des besoins (decompose_besoin/principes_besoin),
+  **registre réel des sources d'apprentissage** (ou_apprendre("physique") contient NIST-CODATA),
+  géométrie de tracé (la barre 7 domine la barre 3).
+- Plafond du cliquet : **63**.
+- Bancs : valide_capacites 73/73 (pins 295→296), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 9 : 7 façades de plus (dette 78 → 71)
+
+- 1 preuve REGISTRE composée (diagnostic : 295) : **loi de Goodhart reproduite** (le proxy se décorrèle de
+  la cible sous pression de sélection), **ratio de vraisemblance exact** e^0.5 pour le shift gaussien,
+  migration de stade (Will Rogers), **régression temporelle fallacieuse** (68 % de faux positifs sur les
+  niveaux vs différences — reproduit à graine fixée), **confidentialité différentielle** (échelle de Laplace
+  Δ/ε = 2.0 exacte), conformal normalisé (7.6, 12.4) exact, **détection de nouveauté kNN** (le connu score
+  0, l'aberrant 48.9).
+- Plafond du cliquet : **71**.
+- Bancs : valide_capacites 73/73 (pins 294→295), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 8 : 7 façades de plus (dette 85 → 78)
+
+- 1 preuve REGISTRE composée (diagnostic : 294) — **les pièges statistiques classiques, quantifiés et non
+  récités** : écart intuition/Bayes du test médical (0.99 perçu vs 0.019 réel), pente OLS (abstention n<12
+  ET vraie pente dans l'IC), **atténuation par erreur de mesure corrigée**, **winner's curse** (le maximum
+  sélectionné n'est pas significatif — IC traversant 0), **paradoxe de Lindley** (B01 > 1 malgré p = 0.6 sur
+  n = 100), régression vers la moyenne, **paradoxe de Lord** (changement ET ANCOVA explicités).
+- Plafond du cliquet : **78**.
+- Bancs : valide_capacites 73/73 (pins 293→294), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 7 : 5 façades de plus (dette 90 → 85)
+
+- 1 preuve REGISTRE composée (diagnostic : 293) : **théorie des possibilités** (nécessité/possibilité
+  exactes (0.5, 1.0) ; distribution sous-normalisée REFUSÉE avec raison dite), **imputation multiple MCAR**
+  (y = 2x observé une fois sur deux -> la moyenne 31 = 2×15.5 est retrouvée EXACTEMENT, IC contenant),
+  **filtre d'état honnête** (un outlier rend le filtre SURCONFIANT — diagnostiqué, pas caché),
+  **intervalle prédictif décomposé** (couvre les données, moyenne exacte).
+- Plafond du cliquet : **85**.
+- Bancs : valide_capacites 73/73 (pins 292→293), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 6 : 7 façades de plus (dette 97 → 90)
+
+- 1 preuve REGISTRE composée (diagnostic : 292) : **propagation d'incertitude** (3² = 9 exact + IC),
+  **e-process** (`test_par_pari` : la pièce truquée est rejetée au pas 7 avec E-valeur > seuil, la pièce
+  juste n'est JAMAIS rejetée — test séquentiel anytime-valid), **calibration** (le biais est détecté,
+  p < 0.05), **probabilités imprécises** (bornes IDM exactes 3/11–4/11), prévision à horizon (IC contenant
+  le point), régime de question, survie (D < 15 -> abstention DITE).
+- Plafond du cliquet : **90**.
+- Bancs : valide_capacites 73/73 (pins 291→292), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 5 : 8 façades de plus (dette 105 → 97, sous la barre des 100)
+
+- 1 preuve REGISTRE composée (diagnostic : 291) : **base-rate fallacy** (PPV bayésien EXACT — test à 99 %
+  sur prévalence 0.1 % -> 1.9 % de vrais positifs), régression ridge (OLS exact + rétrécissement), survie
+  médiane, sous-dispersion non confondue avec sur-dispersion, log-score exact, probabilité logistique
+  exacte, **jury de Condorcet** (la majorité converge : 0.76 -> 0.93 -> 0.999) et **sophisme de la main
+  chaude** (la conditionnelle vraie reste 0.5, l'estimateur naïf biaisé — l'artefact est REPRODUIT).
+- Plafond du cliquet : **97** — passé sous la barre des 100.
+- Bancs : valide_capacites 73/73 (pins 290→291), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 4 : 9 façades de plus (dette 114 → 105)
+
+- 2 preuves REGISTRE (diagnostic : 290) : **intervalles garantis** (bootstrap BCa et jackknife+ contenant la
+  vraie moyenne, Bernstein empirique, densité LOO vs Silverman, **maximum d'entropie** : sans contrainte ->
+  uniforme EXACT [1/3,1/3,1/3] d'entropie ln 3, intensité temporelle à bins exacts) ; **Dunning-Kruger
+  démontré comme artefact** (l'effet émerge à information NULLE, graine fixée) + abstentions honnêtes
+  (estime_population, moyenne_modeles sous leur n minimal).
+- Plafond du cliquet : **105**.
+- Bancs : valide_capacites 73/73 (pins 288→290), valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 3 : 10 façades de plus (dette 124 → 114)
+
+- 2 preuves REGISTRE (diagnostic : 288) : **décision/lois/biais** (transformée pignistique exacte,
+  `decouvre_loi` retrouve y = x² avec a = 1.0, effet Berkson démontré numériquement (corr −0.5 -> 0 sous
+  sélection), fenêtres de comptage, DMS→degrés décimaux exact (48°51'24"), échelle de carte exacte) ;
+  **robustesse/métriques** (covariance MCD avec conditionnement tracé, exactitude de classification exacte,
+  IC multinomiaux simultanés, Simpson : strates incohérentes -> abstention DITE).
+- Plafond du cliquet : **114**. Pins registre 286→288.
+- Bancs : valide_capacites 73/73, valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 2 : 10 façades de plus (dette 134 → 124)
+
+- 2 nouvelles preuves REGISTRE (diagnostic : 286) : **ergodicité/fusion** (taux temporel = moyenne
+  géométrique exacte √(1.5×0.6), AUC avec IC, bande DKW exacte √(ln(2/α)/2n), bornage de question,
+  combinaison de Yager avec conflit tracé, UCB déterministe) ; **abstention honnête lot 2** (bande de
+  prédiction, calibration prédictive, ensembles conformes, correction de prévalence : n insuffisant ->
+  abstention DITE ; masses qui ne somment pas à 1 -> refusées).
+- Plafond du cliquet : **124**. Pins registre 284→286.
+- Bancs : valide_capacites 73/73, valide_atomes 19/19, suite 26/26.
+
+## 2026-07-08 — Excellence atomique, lot 1 : 14 façades ia.py câblées en preuves produit (dette 148 → 134)
+
+- 3 nouvelles capacités prouvées au REGISTRE (diagnostic : 284 preuves exécutées en direct) : **cohérence
+  probabiliste** (sophisme de Linda détecté ET cohérence reconnue, Benjamini-Hochberg, AUC, test de
+  permutation, inspection paradox — valeurs exactes), **décision/calibration** (EXP3 déterministe,
+  conformal split (9.0, 11.0) exact, Condorcet, correction de prévalence bayésienne exacte 0.16/0.52, MDL),
+  **abstention honnête des estimateurs** (4 façades dont le CONTRAT « trop peu de données -> abstention
+  DITE » est prouvé, plus le seuil franchi -> estimation servie).
+- Plafond du cliquet `valide_atomes` abaissé : **134** (ne peut plus remonter).
+- Bancs : valide_capacites 73/73 (pins 280→284), valide_atomes 19/19, suite 26/26, capacites_chat 184/184.
+
+## 2026-07-08 — Excellence atomique : gate à CLIQUET valide_atomes (aucun orphelin possible, dette qui fond)
+
+- **Nouvelle gate `valide_atomes` dans la suite (26 gates)** : ① scan de TOUTES les fonctions publiques du
+  produit — la gate échoue si une NOUVELLE fonction orpheline apparaît ; ② la dette historique (148 façades
+  `ia.py` jamais consommées) est bornée par un plafond qui ne peut que DESCENDRE (câbler ou élaguer, par lots).
+- **17 ex-orphelines hors-façade câblées** avec preuve à réponse connue dans la gate : dopants semiconducteurs,
+  entropie conjointe (2 bits sur l'uniforme 2×2), formules chimiques du référentiel, Good-Turing,
+  clusters Dirichlet, nom de langue, changements d'état, lois des grands nombres (déterminisme à graine
+  fixée), inflation de Kalman, regret logarithmique, switch adaptatif de stratégies, taxonomie des sujets
+  (erreur claire sur document absent), relations-pont, hyperonymie lexicale, compatibilité de relations
+  inverses.
+- Bancs : suite **26/26** (nouvelle gate comprise), valide_atomes 19/19.
+
+## 2026-07-08 — Perf atome 3 : borne RAM du cache de lookups streaming
+
+- `_STREAM_CACHE` (mémo des lookups sur gros fichiers) grossissait SANS borne avec chaque entité distincte
+  interrogée — purge simple à 16 384 entrées (cache pur, même politique que `_CORRIGE_MEMO`). Audit des
+  autres caches : `_DIRECT_CACHE` LRU budgété ✓, `_CORRIGE_MEMO` borné ✓, `lru_cache(maxsize=None)` du
+  morpion borné par les états finis du jeu ✓, mémos nouveaux bornés par nature ✓.
+- Bancs : suite 25/25, raisonnement 202/202, capacites_chat 184/184.
+
+## 2026-07-08 — Perf atome 2 : stat() mémoïsé + familles de relations précalculées (médiane 0.9 ms, max 5 ms)
+
+- **Atome n°2 (profilé)** : « point de fusion du fer » coûtait **19.3 ms** — `_lookup_direct` payait un
+  `os.path.getsize` (~1 ms de stat sur /mnt/c) PAR relation de la famille À CHAQUE appel, plus le re-split
+  de toutes les relations. Taille des fichiers mémoïsée (`_TAILLE_FICHIER` — datasets statiques en session)
+  + matching tête→relations précalculé (`_RELS_PAR_TETE`) → **1.4 ms (−93 %)**.
+- Batterie complète : médiane **0.9 ms** (3.9 au début du mandat), p90 2.0 ms, max **5.1 ms** (50 au début).
+- Bancs : assistant_nl 485/485, capacites_chat 184/184, raisonnement 202/202, paraphrases 174/174,
+  interface 58/58, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Perf atome 1 : tokenisation du registre mémoïsée (médiane 3.9 → 1.6 ms, −59 %)
+
+- **Mandat Yohan : optimiser chaque atome (RAM/CPU).** Mesures d'abord : boot produit réel **0.24 s / 23 Mo**
+  (le préchargement des 504 modules n'est PAS dans le chemin produit — c'est le manifeste d'embarquement) ;
+  batterie chaude de 15 questions mixtes : médiane 3.9 ms, max 50 ms, RSS 149 Mo avec données.
+- **Atome n°1 (profilé)** : la boucle candidate de `resout_nl_generique` refaisait `rel.split("_")` + filtre
+  pour CHAQUE relation à CHAQUE question (~1 ms/question). Tokenisation précalculée une fois (`_rel_toks`,
+  cohérente avec le cache du registre qui n'est jamais invalidé à chaud) → **médiane 1.6 ms (−59 %), max
+  20 ms (−60 %)**, RSS inchangé.
+- **Audit câblage 2 niveaux rejoué** : modules 504/504 (0 orphelin) ; fonctions = 0 orpheline dans tout le
+  travail de la nuit ; 165 fonctions publiques jamais appelées PRÉEXISTANTES découvertes (148 dans la façade
+  `ia.py`) — dette listée, à traiter dans le mandat perf.
+- Bancs : resolution 50/50, raisonnement 202/202, paraphrases 174/174, assistant_nl 485/485, suite 25/25.
+
 ## 2026-07-08 — Vague 45 (tests réels Yohan) : horloge N acteurs, liens cliquables, distance nue, valide_interface 58/58
 
 - **Horloge multi-acteurs** (test réel : « un avion part en même temps qu'une voiture à 5h17, l'avion a

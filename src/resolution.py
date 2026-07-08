@@ -398,6 +398,21 @@ def _ambigu_famille(rel0, cle0, vval, qtoks):
     return False
 
 
+_REL_TOKS = None
+
+
+def _rel_toks():
+    """[(relation, tokens-de-nom filtrés ≥3 non génériques, attribut-tête)] — calculé UNE fois (le split par
+    relation se refaisait à CHAQUE question dans la boucle candidate : ~1 ms/question au profil, 2026-07-08)."""
+    global _REL_TOKS
+    if _REL_TOKS is None:
+        _REL_TOKS = [(rel,
+                      [t for t in rel.split("_") if len(t) >= 3 and t not in _GENERIQUES],
+                      rel.split("_")[0])
+                     for rel in _registre()]
+    return _REL_TOKS
+
+
 def _vocab_rel() -> set:
     """Vocabulaire des MOTS-ATTRIBUTS = tokens de noms de relation (≥4, non générique). Pour corriger une faute
     sur le mot-attribut lui-même (« cpaitale » -> « capitale »)."""
@@ -824,8 +839,7 @@ def resout_nl_generique(question: str):
     # relations candidates = un token de NOM (≥4, non générique) est demandé dans la question. Les plus
     # SPÉCIFIQUES d'abord (plus de tokens de nom reconnus = relation mieux désignée).
     candidats = []
-    for rel in _registre():
-        toks = [t for t in rel.split("_") if len(t) >= 3 and t not in _GENERIQUES]   # ≥3 : « cri », « lac », « ile »…
+    for rel, toks, attr in _rel_toks():                  # tokens précalculés (≥3 : « cri », « lac », « ile »…)
         score = sum(1 for t in toks if t in demandes)
         if not score:
             continue
@@ -834,7 +848,6 @@ def resout_nl_generique(question: str):
         # type fait souvent partie de l'ENTITÉ (« la TOUR eiffel ») et non de l'attribut demandé. On n'accepte alors
         # la relation QUE si l'attribut générique est EXPLICITEMENT dans la question (« quel PAYS de … »). Sinon,
         # « qui a construit la tour eiffel » accrocherait `pays_tour` et répondrait le PAYS (« France ») = FAUX+.
-        attr = rel.split("_")[0]
         if attr in _GENERIQUES and attr not in qtoks:
             continue
         # GARDE anti-coïncidence ENTITÉ-TYPE (attribut NON générique) : si l'attribut-tête réel de la relation n'est

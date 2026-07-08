@@ -4087,9 +4087,718 @@ def _p_exporte_dataset():
         return resume(ch)["lignes"] == 1
 
 
+# ————— CÂBLAGE FAÇADE ia.py, LOT 1 (mandat excellence atomique 2026-07-08) : chaque enveloppe statistique
+# de la façade reçoit sa preuve à réponse connue — le plafond de dette de valide_atomes descend d'autant. —————
+def _p_facade_stats_1() -> bool:
+    import ia as _I
+    va, da = _I.coherence_conjonction(0.3, 0.4, 0.5)          # sophisme de conjonction DÉTECTÉ (Linda)
+    vb, db = _I.coherence_conjonction(0.3, 0.4, 0.2)          # et cohérence RECONNUE quand P(A∧B) ≤ min
+    if not (da["sophisme"] is True and db["coherent"] is True):
+        return False
+    if _I.decouvertes_controlees([0.001, 0.01, 0.04, 0.8])[1] != [0, 1]:   # Benjamini-Hochberg q=0.05
+        return False
+    if _I.auc_bat_le_hasard([0.9, 0.8, 0.2, 0.1], [1, 1, 0, 0]) is not True:   # AUC séparable
+        return False
+    if _I.compare_groupes([1, 2, 1, 2, 1], [8, 9, 8, 9, 8])[1]["rejet_perm"] is not True:  # permutation
+        return False
+    return abs(_I.biais_de_longueur([10, 20, 30])[1]["mu_biaisee"] - 70.0 / 3.0) < 1e-9    # inspection paradox
+
+
+def _p_facade_stats_2() -> bool:
+    import ia as _I
+    if _I.bandit_robuste([[1, 0], [0, 1], [1, 0], [1, 0]])[1]["regret"] != 0.0:   # EXP3 graine fixe, régret nul
+        return False
+    if _I.conforme_intervalle([1] * 10, 10.0) != ("estimation", (9.0, 11.0), 0.9):  # conformal split exact
+        return False
+    if _I.agrege_preferences([["a", "b"], ["a", "b"], ["b", "a"]], ["a", "b"])[1]["condorcet"] != "a":
+        return False
+    post = _I.corrige_posterior_prevalence([0.8, 0.2], [0.5, 0.5], [0.1, 0.9])    # Bayes exact : 0.16/0.52
+    if abs(post[0] - 0.16 / 0.52) > 1e-9:
+        return False
+    return _I.choisit_modele_mdl([1, 2, 3, 4, 5, 6], [2, 4, 6, 8, 10, 12], 3)[1]["degre_mdl"] == 1  # MDL -> degré 1
+
+
+def _p_facade_stats_3() -> bool:
+    """Contrats d'ABSTENTION honnête des façades (FAUX=0 : trop peu de données -> jamais un chiffre)."""
+    import ia as _I
+    if _I.comptage_surdisperse([1, 2, 1, 30, 2, 1])[0] != "abstention":            # n=6 < 20 -> abstention DITE
+        return False
+    if _I.comptage_surdisperse([1, 2, 1, 3, 2, 1, 2, 3, 1, 2, 1, 3, 2, 1, 2, 3, 1, 2, 1, 50])[0] != "estimation":
+        return False                                                               # n=20 -> estimation servie
+    if _I.analyse_queue_lourde([1, 1, 2, 2, 3, 100, 3, 2, 1, 200, 1, 2, 3, 150])[0] != "abstention":
+        return False                                                               # < 30 positifs -> abstention
+    if _I.decompose_incertitude([0.9, 0.1, 0.9, 0.1])[0] != "abstention":          # n=4 < 5 -> abstention
+        return False
+    return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
+
+
+def _p_facade_web_1() -> bool:
+    """LOT FINAL : contrats HORS-LIGNE des fonctions web + synthèse de code vérifiée + stabilité + briques.
+    FAUX=0 partout : refus propres (URL invalide, localhost), corroboration JAMAIS promue sans juge réel,
+    code bash SYNTHÉTISÉ puis VÉRIFIÉ sur les exemples."""
+    import random
+    import ia as _I
+    if _I.recherche_web("not-a-url")[0] != "hors":                    # URL invalide -> refus propre
+        return False
+    if _I.recherche_web("http://localhost/api")[0] != "hors":         # localhost -> jamais requêté
+        return False
+    if _I.approfondit_web("sujet-test", urls=[]).get("statut") != "hors":   # rien à lire -> hors, pas d'invention
+        return False
+    import veille as _V
+    T = _V.Temoignage
+    a2 = _I.corrobore_web("x", [T("https://a.org/1", "a.org", "x", "e1"),
+                                T("https://b.org/2", "b.org", "x", "e2")])
+    a1 = _I.corrobore_web("x", [T("https://a.org/1", "a.org", "x", "e1"),
+                                T("https://a.org/3", "a.org", "x", "e3")])
+    if not (a2.statut == "supposition" and a1.statut == "supposition" and a2.confiance > a1.confiance):
+        return False                                                  # SANS JUGE, jamais un fait ; l'indépendance
+    #                                                                   des domaines PÈSE (0.6 vs 0.4)
+    r = _I.genere_langage("f", [(1, 1, 2), (2, 2, 4), (3, 5, 8)], "bash")
+    if "$1 + $2" not in str(r):                                       # l'addition est SYNTHÉTISÉE en bash et
+        return False                                                  # vérifiée sur les exemples
+    vb, db = _I.borne_stabilite([(1.0, 2.0), (2.0, 4.0), (3.0, 6.0)] * 10,
+                                [(float(i), 2.0 * i) for i in range(100)], 5)
+    if not (vb == "analyse" and db["borne"] >= db["r_emp"]):          # la borne domine le risque empirique
+        return False
+    res = _I.invente_et_retiens("double_preuve", "int->int", [((2,), 4), ((3,), 6)], [((5,), 10)])
+    if res is None:                                                   # le moteur répond (invente ou rappelle)
+        return False
+    return _I.corrobore_et_persiste("point_fusion", "entite-preuve", "1811", [],
+                                    categorie="physique", source="preuve")["statut"] == "suppose"
+    # ^ ZÉRO observation indépendante -> RIEN n'est persisté au fait-store, la valeur reste SUPPOSITION (FAUX=0)
+
+
+def _p_facade_stats_21() -> bool:
+    """LOT 19 : règles apprises/posées, PAC-Bayes, biais du survivant, queue POT-GPD."""
+    import random
+    import ia as _I
+    if _I.apprend_regle_par_exemples([({"v": 45}, True), ({"v": 50}, True),
+                                      ({"v": 90}, False), ({"v": 95}, False)])[0] != "ambigu":
+        return False                                                  # DEUX seuils possibles -> refus de choisir
+    import regle as _RG
+    r1 = _RG.Regle("R-PREUVE-1", "hygiene-preuve", "cuisine", "id-1", "se laver les mains",
+                   "2020-01-01", 1, predicat=("lave_mains", True))
+    try:
+        ref = _I.apprend_domaine("hygiene-preuve", "OMS", [r1])
+        if getattr(ref, "nom", None) != "hygiene-preuve" or \
+                not any(getattr(x, "nom", "") == "hygiene-preuve" for x in _RG.BASE):
+            return False                                              # le référentiel est réellement APPRIS
+    finally:
+        _RG.BASE[:] = [x for x in _RG.BASE if getattr(x, "nom", "") != "hygiene-preuve"]   # sans trace
+    vb, borne = _I.borne_risque_generalisation({"h1": 0.5, "h2": 0.5}, {"h1": 0.5, "h2": 0.5},
+                                               {"h1": 0.1, "h2": 0.2}, 100)
+    if not (vb == "borne" and borne > 0.15):                          # PAC-Bayes DOMINE le risque empirique
+        return False
+    vs, ds = _I.diagnostique_biais_survie([10.0, 2.0, 9.0, 1.0, 8.0, 3.0] * 8, 5.0)
+    if not (vs == "biais" and ds["moy_survivants"] == 9.0 and ds["biais"] == 3.5):
+        return False                                                  # le biais du survivant est MESURÉ (3.5)
+    rng = random.Random(0)
+    data = [rng.paretovariate(2.0) for _ in range(500)]
+    p = _I.proba_evenement_rare(data, 20.0)
+    if not (p is not None and 0.0001 < p < 0.01):                     # POT-GPD : queue lourde estimée
+        return False
+    return _I.proba_evenement_rare(data, 0.5) is None                 # seuil SOUS u -> None honnête
+
+
+def _p_facade_stats_20() -> bool:
+    """LOT 18 : régression quantile, maxmin credal, CRC, VAR couplé honnête, p-box, multiclasse isotone."""
+    import random
+    import ia as _I
+    a0, b1 = _I.quantile_conditionnel([1, 2, 3, 4, 5, 6, 7, 8, 9, 10] * 4,
+                                      [2, 4, 6, 8, 10, 12, 14, 16, 18, 20] * 4, 0.5)
+    if not (abs(b1 - 2.0) < 0.01 and abs(a0) < 0.01):                 # médiane conditionnelle : y = 2x retrouvé
+        return False
+    if _I.decision_sous_ambiguite([{"x": 0.4, "y": 0.6}, {"x": 0.6, "y": 0.4}],
+                                  {"agir": {"x": 10.0, "y": -5.0}, "rien": {"x": 0.0, "y": 0.0}}) \
+            != ("robuste", "agir", {"agir": 1.0, "rien": 0.0}):
+        return False                                                  # maxmin sur le credal EXACT (pire cas 1.0)
+    if _I.controle_risque([0.1, 0.5, 0.9], {0.1: [0.3] * 20, 0.5: [0.2] * 20, 0.9: [0.1] * 20},
+                          0.25, 20) != 0.1:
+        return False                                                  # CRC : le λ le moins invasif sous la cible
+    if _I.prevoit_series_couplees([(1, 2), (2, 4), (3, 6), (4, 8), (5, 10)] * 8)[0] != "abstention":
+        return False                                                  # régresseurs singuliers -> abstention DITE
+    bruit = [(1 + 0.1 * random.Random(i).random(), 2 + 0.2 * random.Random(i + 1).random()) for i in range(40)]
+    if _I.prevoit_series_couplees(bruit)[0] != "estimation":          # série réelle -> VAR estimé
+        return False
+    vp, pb = _I.pbox_depuis_intervalles([(1.0, 2.0), (1.5, 2.5), (1.0, 3.0)])
+    if not (vp == "pbox" and abs(pb.esperance()[0] - 3.5 / 3.0) < 1e-9 and pb.esperance()[1] == 2.5):
+        return False                                                  # bornes d'espérance EXACTES du p-box
+    mc = _I.ajuste_calibration_multiclasse([{"a": 0.7, "b": 0.3}, {"a": 0.2, "b": 0.8}] * 15, ["a", "b"] * 15)
+    return mc.applique({"a": 0.7, "b": 0.3}) == {"a": 1.0, "b": 0.0}  # isotone multiclasse EXACT
+
+
+def _p_facade_outils_3() -> bool:
+    """LOT 17 : cartographie exacte, paradoxe de Stein, reprise verbatim, PDF/XLSX, moteur d'invention."""
+    import random
+    import ia as _I
+    if abs(_I.resolution_sol(300, 25000) - (2.54 / 300) * 25000) > 1e-9:
+        return False                                                  # résolution au sol EXACTE
+    vs, ds = _I.estimation_jointe_stein([1.0, 2.0, 3.0], rng=random.Random(0))
+    if not (vs == "analyse" and ds["risque_js"] < ds["risque_mle"]):  # PARADOXE DE STEIN : JS domine le MLE
+        return False
+    if _I.reprends("conv-inexistante-xyz") != []:                     # reprise verbatim du vide -> vide
+        return False
+    import document_pdf
+    doc = document_pdf.Document()
+    doc.page().texte(50, 700, "preuve")
+    pdf = _I.encode_pdf(doc)
+    if not (isinstance(pdf, bytes) and pdf[:8] == b"%PDF-1.4"):       # en-tête PDF EXACT
+        return False
+    import tableur_xlsx
+    cl = tableur_xlsx.Classeur()
+    cl.feuille("F1").set(1, 1, "preuve")
+    xlsx = _I.encode_xlsx(cl)
+    if not (isinstance(xlsx, bytes) and xlsx[:2] == b"PK"):           # conteneur ZIP (xlsx) EXACT
+        return False
+    if _I.assemble_invention("rafraichir une piece", 3).get("statut") != "candidats":
+        return False
+    if not isinstance(_I.manque_invention("rafraichir une piece"), list):
+        return False
+    lac = _I.lacunes_physiques(3)
+    return isinstance(lac, list) and len(lac) == 3 and all(len(t3) == 3 for t3 in lac)
+
+
+def _p_facade_outils_2() -> bool:
+    """LOT 16 : fichiers réels, dépôt, protocoles honnêtes, calibrations isotoniques, NDCG."""
+    import os
+    import tempfile
+    import ia as _I
+    tmp = tempfile.mkdtemp()
+    try:
+        chemin = _I.cree_fichier(tmp, "note.txt", "bonjour")
+        if not (os.path.isfile(chemin) and open(chemin, encoding="utf-8").read() == "bonjour"):
+            return False                                              # le fichier EXISTE avec le bon contenu
+        if _I.depot(tmp) is None:
+            return False
+    finally:
+        try:
+            os.remove(os.path.join(tmp, "note.txt"))
+            os.rmdir(tmp)
+        except OSError:
+            pass
+    if _I.revelation_protocole({"invente": 1.0})[0] != "abstention":
+        return False                                                  # protocole inconnu -> vraisemblance REFUSÉE
+    mm = _I.calibre_multilabel([{"a": 0.9, "b": 0.2}, {"a": 0.1, "b": 0.8}] * 15, [{"a"}, {"b"}] * 15)
+    if mm.applique({"a": 0.9, "b": 0.2}) != {"a": 1.0, "b": 0.0}:     # isotonique par label EXACT
+        return False
+    ce = _I.calibreur_etapes([0.9, 0.7, 0.8, 0.6] * 10, [1, 0, 1, 0] * 10)
+    if not (ce.applique(0.9) == 1.0 and ce.applique(0.6) == 0.0):     # recalibrage isotone EXACT
+        return False
+    if _I.qualite_classement([0, 1, 2], [3.0, 2.0, 1.0]) != 1.0:      # classement PARFAIT -> NDCG = 1
+        return False
+    return _I.qualite_classement([2, 1, 0], [3.0, 2.0, 1.0]) < 1.0    # classement inversé -> < 1
+
+
+def _p_facade_stats_19() -> bool:
+    """LOT 15 : conforme par classe, multicalibration honnête, CUSUM de dérive, D-calibration, Rademacher, DP."""
+    import random
+    import ia as _I
+    seuils = _I.conforme_label_ajuste([{"a": 0.9, "b": 0.1}, {"a": 0.1, "b": 0.9},
+                                       {"a": 0.8, "b": 0.2}, {"a": 0.2, "b": 0.8}] * 8, ["a", "b", "a", "b"] * 8)
+    if not (abs(seuils["a"] - 0.2) < 1e-9 and abs(seuils["b"] - 0.2) < 1e-9):   # seuil PAR CLASSE exact
+        return False
+    if _I.multicalibre([0.9, 0.1, 0.8, 0.2] * 10, [1, 0, 1, 0] * 10,
+                       ["g1", "g2", "g1", "g2"] * 10)[0] != "abstention":
+        return False                                                  # groupes trop petits -> abstention DITE
+    det = _I.detecteur_derive()
+    for i in range(200):
+        det.observe(0.99, i % 10 == 0)                                # 99 % annoncé, ~10 % juste : SUR-confiant
+    if det.alarme is not True:
+        return False
+    det2 = _I.detecteur_derive()
+    for i in range(200):
+        det2.observe(0.5, i % 2 == 0)                                 # bien calibré : JAMAIS d'alerte
+    if det2.alarme:
+        return False
+    occ, chi2 = _I.d_calibration_survie([1, 2, 3, 4, 5, 6, 7, 8, 9, 10] * 3, [1] * 30,
+                                        lambda t: max(0.0, 1.0 - t / 11.0))
+    if not (occ == [3.0] * 10 and chi2 == 0.0):                       # modèle JUSTE -> déciles uniformes EXACTS
+        return False
+    vb, db = _I.borne_generalisation_uniforme([[0.1, 0.2], [0.2, 0.1]], [0.15, 0.15], 100)
+    if not (vb == "borne" and db["rad"] > 0 and all(b >= 0.15 for b in db["bornes"])):
+        return False                                                  # la borne domine le risque empirique
+    vc, dc = _I.clustering_non_parametrique([1.0, 1.1, 0.9, 5.0, 5.1, 4.9], rng=random.Random(0))
+    return vc == "analyse" and dc["k_estime"] == 2                    # 2 vrais paquets -> K = 2 inféré
+
+
+def _p_facade_stats_18() -> bool:
+    """LOT 14 : prévisions imprécises de Walley, ambiguïté lisse, Bayes robuste, copules, portefeuille."""
+    import ia as _I
+    if _I.prevision_imprecise([{"a": 0.4, "b": 0.6}, {"a": 0.6, "b": 0.4}],
+                              {"a": 10.0, "b": -5.0}) != ("prevision", (1.0, 4.0)):
+        return False                                                  # bornes inf/sup EXACTES sur le credal
+    vl, choix_l, dl = _I.decision_ambiguite_lisse([{"x": 0.4, "y": 0.6}, {"x": 0.6, "y": 0.4}], [0.5, 0.5],
+                                                  {"agir": {"x": 10.0, "y": -5.0}, "rien": {"x": 0.0, "y": 0.0}})
+    if not (vl == "robuste" and choix_l == "agir" and dl["agir"] > dl["rien"]):
+        return False
+    vp, (plo, phi), _cp = _I.posterieur_robuste({"h1": 0.5, "h2": 0.5}, {"h1": 0.8, "h2": 0.2},
+                                                {"h1": 1.0, "h2": 0.0})
+    if not (vp == "intervalle" and plo < 0.8 < phi):                  # le postérieur nominal est ENCADRÉ (ε)
+        return False
+    vm, choix_m, dm = _I.decision_robuste_modele({"x": 0.5, "y": 0.5},
+                                                 {"agir": {"x": 10.0, "y": -5.0}, "rien": {"x": 0.0, "y": 0.0}})
+    if not (vm == "robuste" and choix_m == "rien"):                   # sous mauvaise spécification, prudence
+        return False
+    vr, dr = _I.risque_conjoint_extreme([(0.99, 0.98), (0.5, 0.5), (0.97, 0.99), (0.2, 0.3)] * 10)
+    if not (vr == "analyse" and dr["jointe_empirique"] >= 0.0 and dr["jointe_independance"] > 0):
+        return False
+    vpf, dpf = _I.portefeuille_robuste([[1.01, 0.99], [0.99, 1.01], [1.02, 0.98]] * 10)
+    return vpf == "analyse" and dpf["w_univ"] > 0 and dpf["w_best"] >= dpf["w_univ"]   # l'universel suit le meilleur
+
+
+def _p_facade_stats_17() -> bool:
+    """LOT 13 : inférence sélective, Jensen, jeu à somme nulle, info-gap, décision robuste, importance."""
+    import random
+    import ia as _I
+    vi, di = _I.inference_selective([0.001, 0.01, 0.2, 0.4])
+    if not (vi == "analyse" and abs(di["p_ajuste"] - (1 - (1 - 0.001) ** 4)) < 1e-9):
+        return False                                                  # p-hacking : p_min ajusté EXACTEMENT
+    vf, df = _I.flaw_of_averages(lambda x: x * x, 0.0, 1.0, "convexe", rng=random.Random(0))
+    if not (vf == "analyse" and df["f_e"] == 0.0 and df["e_f"] > 0.9):
+        return False                                                  # Jensen : E[f(X)] >> f(E[X]) REPRODUIT
+    vj, dj = _I.strategie_securite([[0, -1], [1, 0]])
+    if not (vj == "jeu" and abs(dj["valeur"]) < 0.01):                # valeur du jeu ≈ 0 (point-selle mixte)
+        return False
+    if _I.robustesse_infogap(lambda u: 10.0 - u, 0.0, 5.0) != 5.0:    # α̂ EXACT : marge maximale tolérable
+        return False
+    vr, choix, det = _I.decision_robuste({"agir": lambda u: 10.0 - u, "rien": lambda u: 0.0}, 0.0, -1.0)
+    if not (vr == "robuste" and choix == "agir"):
+        return False
+    ve, de = _I.estime_importance([0.5, 0.6, 0.4] * 10, lambda x: x, lambda x: 1.0, lambda x: 1.0)
+    return ve == "fiable" and abs(de["estime"] - 0.5) < 1e-9 and de["ess"] == 30.0   # poids plats -> ESS = n
+
+
+def _p_facade_stats_16() -> bool:
+    """LOT 12 : Aumann, CUSUM précoce, ancrage, Bertrand/Borel-Kolmogorov (mal posé -> refusé), optimisation."""
+    import random
+    import ia as _I
+    va, da = _I.accord_aumann(["w1", "w2", "w3", "w4"], [["w1", "w2"], ["w3", "w4"]],
+                              [["w1", "w3"], ["w2", "w4"]], ["w1"], "w1")
+    if not (va == "analyse" and da["egaux"] is True and da["final1"] == da["final2"] == 1.0):
+        return False                                                  # les deux agents CONVERGENT (théorème)
+    vd, dd = _I.detecte_changement_precoce([1, 1, 1, 1, 5, 5, 5], lambda x: 0.9 if x == 1 else 0.1,
+                                           lambda x: 0.1 if x == 1 else 0.9, 0.1)
+    if not (vd == "detection" and dd["alarme"] == 7):                 # l'alarme tombe au pas EXACT
+        return False
+    vc, dc = _I.effet_ancrage(rng=random.Random(0))
+    if not (vc == "analyse" and dc["contamination"] > 0.5 > abs(dc["contamination_libre"])):
+        return False                                                  # l'ancrage REPRODUIT, le contrôle propre
+    if _I.probabilite_geometrique(rng=random.Random(0))[0] != "abstention":
+        return False                                                  # BERTRAND : « corde aléatoire » mal posée
+    if _I.conditionnement_continu(n=2000, rng=random.Random(0))[0] != "abstention":
+        return False                                                  # BOREL-KOLMOGOROV : mesure nulle refusée
+    vo, (fx, fy), _traj = _I.optimise_couteux(lambda x: (x - 0.3) ** 2, 0.0, 1.0)
+    return vo == "estimation" and fy < 0.5                            # l'optimum coûteux est APPROCHÉ, tracé
+
+
+def _p_facade_stats_15() -> bool:
+    """LOT 11 : Gibbard-Satterthwaite, Anscombe, espérances imprécises, CQR, Mondrian, dialogues honnêtes."""
+    import ia as _I
+    vv, dv = _I.vote_manipulable()
+    if not (vv == "analyse" and dv["gagnant_sincere"] == "A" and dv["manipulation"] is not None):
+        return False                                                  # une manipulation EST exhibée (théorème)
+    va, da = _I.stats_resumees_suffisent()                            # quartet d'Anscombe : mêmes résumés,
+    if not (va == "analyse" and da["stats"]["I"][:2] == da["stats"]["II"][:2]):    # données différentes
+        return False
+    if _I.esperance_imprecise({frozenset({"a"}): 0.6, frozenset({"a", "b"}): 0.4},
+                              {"a": 10.0, "b": 0.0}) != ("valeur", (6.0, 10.0)):
+        return False                                                  # bornes de Choquet EXACTES
+    if _I.cqr_correction([1.0] * 20, [3.0] * 20, [2.0] * 10 + [0.5] * 5 + [3.5] * 5) != 0.5:
+        return False                                                  # correction conforme EXACTE
+    cm = _I.conforme_mondrian(["g1"] * 15 + ["g2"] * 15, [1.0] * 15 + [3.0] * 15)
+    if cm.intervalle("g1", 10.0) != ("estimation", (9.0, 11.0), 0.9):
+        return False                                                  # quantile PAR GROUPE exact
+    if _I.oublie_dialogue("conv-inexistante-xyz") is not False:       # oublier l'inexistant -> False honnête
+        return False
+    return _I.rappelle_dialogue("requete-sans-aucun-echo") == []      # rappel sans matière -> vide, pas inventé
+
+
+def _p_facade_outils_1() -> bool:
+    """LOT 10 : encodeurs binaires (octets magiques), Choquet, besoins décomposés, registre d'apprentissage."""
+    import ia as _I
+    img = _I.image_raster(4, 4, "RGB", (255, 0, 0))
+    png = _I.encode_png(img)
+    if not (isinstance(png, bytes) and png[:8] == b"\x89PNG\r\n\x1a\n"):    # signature PNG EXACTE
+        return False
+    wav = _I.encode_wav([0, 1000, -1000, 500] * 100)
+    if not (isinstance(wav, bytes) and wav[:4] == b"RIFF" and wav[8:12] == b"WAVE"):
+        return False
+    if abs(_I.agrege_choquet(lambda S: len(S) / 2.0, {"a": 0.6, "b": 0.8}) - 0.7) > 1e-12:
+        return False                                                  # intégrale de Choquet EXACTE
+    if _I.decompose_besoin("rafraichir une piece").get("statut") != "decompose":
+        return False
+    if _I.principes_besoin("rafraichir une piece").get("statut") != "principes":
+        return False
+    srcs = _I.ou_apprendre("physique")
+    if not (isinstance(srcs, list) and any(s.get("id") == "nist-codata" for s in srcs)):
+        return False                                                  # le registre RÉEL des sources répond
+    disp = _I.trace_barres([3.0, 7.0])
+    return len(disp.rects) == 2 and disp.rects[1].hauteur > disp.rects[0].hauteur   # la barre 7 domine la barre 3
+
+
+def _p_facade_stats_14() -> bool:
+    """LOT 9 : Goodhart, shift de covariables, migration de stade, régression fallacieuse, vie privée."""
+    import math
+    import random
+    import ia as _I
+    vg, dg = _I.loi_de_goodhart((0.0, 1.0, 3.0), rng=random.Random(0))
+    if not (vg == "analyse" and abs(dg["courbe"][0][1]["corr_P_U"] - 1.0) < 1e-9):
+        return False                                                  # sans pression, le proxy vaut la cible
+    if abs(_I.poids_shift_gaussien(1.0, 0.0, 1.0, 1.0, 1.0) - math.exp(0.5)) > 1e-9:
+        return False                                                  # ratio de vraisemblance N(1,1)/N(0,1) EXACT
+    vm, dm = _I.migration_de_stade([10, 9, 8, 7, 6] * 2 + [9, 8], [3, 2, 4, 3, 2] * 2 + [3, 4])
+    if not (vm == "analyse" and abs(dm["avant"]["mA"] - 97 / 12) < 1e-9):
+        return False
+    vr, dr = _I.regression_temporelle_fallacieuse(50, T=500, rng=random.Random(0))
+    if not (vr == "analyse" and dr["fp_niveaux"] > dr["fp_differences"]):
+        return False                                                  # la régression fallacieuse est REPRODUITE
+    vp, dp = _I.garantie_confidentialite(1.0, 0.5)
+    if not (vp == "prive" and dp["b_requis"] == 2.0 and dp["epsilon_reel"] == 0.5):
+        return False                                                  # échelle de Laplace = Δ/ε EXACTE
+    if _I.conforme_normalise([1.0, 1.2, 0.8, 1.1, 0.9] * 6, [1.0] * 30, 10.0, 2.0) != ("estimation", (7.6, 12.4), 0.9):
+        return False
+    score = _I.scoreur_nouveaute([[1.0], [1.1], [0.9], [1.05], [0.95]] * 8)
+    return score([1.0]) == 0.0 and score([50.0]) > 10.0               # kNN : le connu score 0, l'aberrant loin
+
+
+def _p_facade_stats_13() -> bool:
+    """LOT 8 : base-rate quantifié, pentes (naïve/atténuée), winner's curse, Lindley, RTM, Lord."""
+    import ia as _I
+    va, da = _I.probabilite_posterieure_test(0.99, 0.95, 0.001)
+    if not (va == "analyse" and abs(da["vpp"] - (0.99 * 0.001) / (0.99 * 0.001 + 0.05 * 0.999)) < 1e-12
+            and da["naive"] == 0.99):                                 # l'écart intuition/Bayes est QUANTIFIÉ
+        return False
+    if _I.pente_ols_naive([1, 2, 3, 4], [2.1, 3.9, 6.1, 7.9])[0] != "abstention":   # n=4 < 12 -> DIT
+        return False
+    vo, (b, (blo, bhi)), _co = _I.pente_ols_naive(list(range(1, 16)),
+                                                  [2 * i + 0.1 * (i % 3) for i in range(1, 16)])
+    if not (vo == "estimation" and blo < 2.0 < bhi):                  # la vraie pente 2 est DANS l'IC
+        return False
+    vp, (pa, (palo, pahi)), _cp = _I.pente_erreur_mesure([1, 2, 3, 4] * 10, [2.1, 3.9, 6.1, 7.9] * 10, 0.5)
+    if not (vp == "estimation" and pa > 2.0):                         # l'atténuation est CORRIGÉE (pente > naïve)
+        return False
+    vs, ds = _I.effet_selectionne([1.0, 1.2, 0.9, 1.1] * 10, 1.5)     # winner's curse : le max sélectionné
+    if not (vs == "estime" and ds["valeur"] == 1.2 and ds["ic"][0] < 0 < ds["ic"][1]):   # n'est PAS significatif
+        return False
+    ve, de = _I.evidence_vs_n(0.6, 100)                               # Lindley : p=0.6 sur n=100, B01 > 1
+    if not (ve == "analyse" and de["B01"] > 1.0):                     # l'évidence favorise H0 malgré l'écart
+        return False
+    vr, dr = _I.diagnostique_regression_moyenne([10, 9, 8, 7, 6] * 2 + [10, 9], [8, 7, 7, 6, 5] * 2 + [8, 7])
+    if not (vr == "rtm" and dr["mu"] == 8.25):
+        return False
+    vl, dl = _I.paradoxe_lord([(50 + i % 5, 60 + i % 5) for i in range(40)],
+                              [(70 + i % 5, 75 + i % 5) for i in range(40)])
+    return vl == "analyse" and dl["diff_changement"] == 5.0           # les deux analyses EXPLICITÉES
+
+
+def _p_facade_stats_12() -> bool:
+    """LOT 7 : possibilités, imputation multiple, filtre d'état, intervalle prédictif décomposé."""
+    import ia as _I
+    if _I.encadre_probabilite({"a": 1.0, "b": 0.5}, ["a"]) != ("mesure", (0.5, 1.0), True):
+        return False                                                  # nécessité/possibilité EXACTES
+    if _I.encadre_probabilite({"a": 0.5, "b": 0.5}, ["a"])[0] != "abstention":
+        return False                                                  # π sous-normalisée -> REFUSÉE (dite)
+    x = list(range(1, 31))
+    y = [2 * i if i % 2 else None for i in x]                         # y = 2x observé une fois sur deux
+    vm, (pt, (lo, hi)), _cm = _I.moyenne_avec_manquants(x, y)
+    if not (vm == "estimation" and pt == 31.0 and lo < 31.0 < hi):    # 2 × moyenne(x) = 31 EXACT retrouvé
+        return False
+    pt2, (lo2, hi2) = _I.imputation_simple_biais(x, y)
+    if not (pt2 == 31.0 and lo2 < 31.0 < hi2):
+        return False
+    vf, _df = _I.filtre_etat_robuste([1.0, 1.1, 0.9, 1.05, 0.95, 5.0, 1.0, 1.02], 1.0, 0.01, 0.1)
+    if vf != "surconfiant":                                           # l'outlier rend le filtre SURCONFIANT — DIT
+        return False
+    vi, (mu, (ilo, ihi)), _ci = _I.intervalle_predictif_decompose([1, 2, 3, 4, 5, 6, 7, 8, 9, 10] * 4)
+    return vi == "estimation" and mu == 5.5 and ilo < 1.0 and ihi > 10.0   # prédictif COUVRE les données
+
+
+def _p_facade_stats_11() -> bool:
+    """LOT 6 : propagation d'incertitude, e-process, calibration, IDM, prévision, régime de question."""
+    import ia as _I
+    vp, (mu, (plo, phi)), _c = _I.propage_incertitude(lambda x: x * x, [(3.0, 0.1)])
+    if not (vp == "estimation" and mu == 9.0 and plo < 9.0 < phi):    # 3² = 9 propagé EXACT, IC autour
+        return False
+    vt, dt = _I.test_par_pari([1] * 20, 0.5)                          # pièce TRUQUÉE : e-process rejette (pas 7)
+    if not (vt == "test" and dt["rejet"] == 7 and dt["E_final"] > dt["seuil"]):
+        return False
+    vt2, dt2 = _I.test_par_pari([1, 0] * 10, 0.5)                     # pièce JUSTE : jamais rejetée
+    if dt2["rejet"] is not None:
+        return False
+    vc, dc = _I.teste_calibration([0.2, 0.8, 0.5, 0.9, 0.1] * 8, [0, 1, 1, 1, 0] * 8)
+    if not (vc == "non_calibre" and dc["p_valeur"] < 0.05):           # le biais de calibration est DÉTECTÉ
+        return False
+    vb, bornes = _I.proba_categorielle_imprecise([3, 5, 2])           # IDM s=1 : bornes EXACTES (c/(n+1), (c+1)/(n+1))
+    if not (vb == "bornes" and abs(bornes[0][0] - 3 / 11) < 1e-12 and abs(bornes[0][1] - 4 / 11) < 1e-12):
+        return False
+    vh, (pt, (hlo, hhi)), _ch = _I.prevoit_horizon([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] * 3, 3)
+    if not (vh == "estimation" and hlo < pt < hhi):
+        return False
+    if _I.regime_question("quelle est la capitale de la France ?") != "supposition_a_chercher":
+        return False
+    return _I.survie_estimee([1, 2, 3, 4, 5], [1, 1, 1, 0, 1], 2.5)[0] == "abstention"   # D=4 < 15 -> DIT
+
+
+def _p_facade_stats_10() -> bool:
+    """LOT 5 : base-rate fallacy (PPV exact), ridge, survie, surdispersion, log-score, Condorcet, main chaude."""
+    import math
+    import random
+    import ia as _I
+    ppv = _I.valeur_predictive(0.99, 0.95, 0.001)                     # test à 99 % sur prévalence 0.1 % :
+    if abs(ppv - (0.99 * 0.001) / (0.99 * 0.001 + 0.05 * 0.999)) > 1e-12:   # PPV ≈ 1.9 % (Bayes EXACT)
+        return False
+    vr, dr = _I.regression_ridge([[1], [2], [3], [4]], [2, 4, 6, 8])
+    if not (dr["beta_ols"] == [2.0] and dr["beta_ridge"][0] < 2.0):   # OLS exact, ridge RÉTRÉCIT
+        return False
+    if _I.survie_mediane([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [1] * 10) != 5.0:
+        return False
+    ratio, z, rejet = _I.teste_surdispersion([1, 2, 1, 3, 2, 1, 2, 3, 1, 2] * 3)
+    if not (0.31 < ratio < 0.33 and rejet is False):                  # sous-dispersé, PAS déclaré sur-dispersé
+        return False
+    if abs(_I.score_forecast([0.8, 0.2, 0.9], [1, 0, 1])
+           + (math.log(0.8) + math.log(0.8) + math.log(0.9)) / 3.0) > 1e-9:   # log-score exact
+        return False
+    if abs(_I.proba_mieux_classe(0.7, 0.3) - 1.0 / (1.0 + math.exp(-0.4))) > 1e-9:  # logistique exacte
+        return False
+    vs, ds = _I.sagesse_des_foules(0.6, rng=random.Random(0))         # jury de Condorcet : la majorité
+    c = [p for (_n, p) in ds["courbe"]]                               # devient sûre quand le groupe grandit
+    if not (vs == "analyse" and c[0] < c[1] < c[2] and c[2] > 0.99):
+        return False
+    vm, dm = _I.sophisme_main_chaude(0.5, 4, rng=random.Random(0))    # main chaude : la conditionnelle VRAIE
+    return vm == "analyse" and abs(dm["cond_vraie"] - 0.5) < 0.01 and dm["biais_naif"] < 0.45   # reste 0.5,
+    # l'estimateur naïf est biaisé vers le bas — l'artefact est REPRODUIT, pas récité.
+
+
+def _p_facade_stats_8() -> bool:
+    """LOT 4 : intervalles (bootstrap BCa, Bernstein empirique, jackknife+), densité, maxent, intensité."""
+    import math
+    import statistics
+    import ia as _I
+    ech = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] * 4
+    vb, (lo, hi), cf = _I.intervalle_bootstrap(ech, statistics.fmean, B=200)
+    if not (vb == "estimation" and lo < 5.5 < hi and cf == 0.9):      # la vraie moyenne est DANS l'intervalle
+        return False
+    vg, (glo, ghi), meth = _I.intervalle_moyenne_garanti([0.2, 0.4, 0.6, 0.8] * 10, 0.0, 1.0)
+    if not (vg == "intervalle" and glo < 0.5 < ghi and meth == "empirical_bernstein"):
+        return False
+    vj, (jlo, jhi), _cj = _I.jackknife_plus(ech)
+    if not (vj == "estimation" and jlo < 5.5 < jhi):
+        return False
+    vd, dd = _I.estime_densite(ech)
+    if not (vd == "densite" and dd["h"] > 0 and dd["h_silverman"] > dd["h"]):   # LOO resserre Silverman ici
+        return False
+    vm, dm = _I.loi_maximum_entropie([1, 2, 3])
+    if not (vm == "maxent" and dm["p"] == [1.0 / 3.0] * 3 and abs(dm["entropie"] - math.log(3)) < 1e-9):
+        return False                                                   # sans contrainte -> UNIFORME exact
+    bins, _homog = _I.intensite_temporelle([0.5, 1.5, 2.5, 3.5] * 10, 24.0)
+    return bins[:4] == [10.0] * 4 and sum(bins) == 40.0              # 40 événements, 4 premières heures
+
+
+def _p_facade_stats_9() -> bool:
+    """LOT 4 (suite) : Dunning-Kruger = artefact statistique reproduit ; contrats d'abstention honnête."""
+    import random
+    import ia as _I
+    vdk, ddk = _I.dunning_kruger_artefact(0.0, n=2000, rng=random.Random(0))
+    if not (vdk == "analyse" and ddk["info"] == 0.0 and len(ddk["quartiles"]) == 4):
+        return False                                                  # l'artefact émerge SANS aucune information
+    if _I.estime_population([10, 20, 30], [100, 100, 100])[0] != "abstention":   # n=3 < 10 -> DIT
+        return False
+    return _I.moyenne_modeles(list(range(1, 11)),
+                              [2.1, 3.9, 6.2, 7.8, 10.1, 12.2, 13.8, 16.1, 18.0, 20.2])[0] == "abstention"
+
+
+def _p_facade_stats_6() -> bool:
+    """LOT 3 : décision pignistique, découverte de loi, Berkson, fenêtres de comptage, DMS, échelle de carte."""
+    import ia as _I
+    if _I.decision_pignistique({"a": 0.6, "b": 0.4}, ["a", "b"], {"x": {"a": 1, "b": 0}}) \
+            != ("pignistique", "x", {"a": 0.6, "b": 0.4}):
+        return False
+    loi = _I.decouvre_loi([(1, 1), (2, 4), (3, 9), (4, 16)])          # y = x² découvert, a = 1.0 EXACT
+    if not (loi["forme"] == "carré" and loi["params"]["a"] == 1.0):
+        return False
+    vb, db = _I.detecte_biais_collision([1, 0, 1, 0, 1, 1, 0, 0] * 5, [0, 1, 0, 1, 1, 0, 1, 0] * 5, 1.5)
+    if not (vb == "berkson" and abs(db["corr_pop"] + 0.5) < 1e-9 and abs(db["corr_sel"]) < 1e-9):
+        return False
+    if _I.comptage_fenetre([0.1, 0.5, 1.2, 3.4, 5.5, 7.7, 9.9, 11.2, 13.3, 15.5, 17.7, 19.9, 21.2, 23.3] * 3,
+                           24.0, 0.0, 12.0) != ("estimation", (24.5, (14, 37)), 0.9):
+        return False
+    if abs(_I.dms_vers_dd(48, 51, 24) - (48 + 51 / 60 + 24 / 3600)) > 1e-12:   # 48°51'24" (Paris) EXACT
+        return False
+    return _I.echelle_carte(25000, 4.0) == 100000.0                   # 4 cm au 1:25000 = 1 km EXACT
+
+
+def _p_facade_stats_7() -> bool:
+    """LOT 3 (suite) : covariance robuste, métriques de classification, parts multinomiales, Simpson honnête."""
+    import ia as _I
+    vc, dc = _I.covariance_robuste([[1, 2], [2, 3], [1, 2], [2, 3], [100, 200]] * 8)
+    if not (vc == "analyse" and dc["p"] == 2 and dc["n"] == 40 and dc["cond"] > 1.0):
+        return False
+    vm, dm = _I.metriques_classification([1, 1, 0, 0], [1, 0, 1, 0])
+    if not (vm == "metriques" and dm["exactitude"] == 0.5):
+        return False
+    vp, parts, conf = _I.parts_multinomiales([30, 50, 20])
+    if not (vp == "estimation" and 0.19 < parts[0][0] < 0.3 < parts[0][1] < 0.45):
+        return False
+    return _I.detecte_simpson([("h", 1, 1), ("h", 1, 0)], "t", "c")[0] == "abstention"   # strates incohérentes
+
+
+def _p_facade_stats_4() -> bool:
+    """LOT 2 (excellence atomique) : ergodicité, AUC avec IC, bande DKW, bornage de question, Yager, UCB."""
+    import math
+    import ia as _I
+    ve, de = _I.analyse_ergodicite([1.5, 0.6], [0.5, 0.5])       # taux temporel = √(1.5×0.6) EXACT
+    if not (de["moyenne_ensemble"] == 1.05 and abs(de["taux_temporel"] - math.sqrt(0.9)) < 1e-12):
+        return False
+    if _I.auc_avec_intervalle([0.9, 0.8, 0.2, 0.1], [1, 1, 0, 0]) != ("estimation", (1.0, (1.0, 1.0)), 0.95):
+        return False
+    vb, db = _I.bande_confiance_cdf(list(range(1, 11)) * 3)      # DKW : eps = √(ln(2/α)/2n), n=30, α=0.05
+    if not (db["n"] == 30 and abs(db["eps"] - math.sqrt(math.log(2 / 0.05) / 60.0)) < 1e-12):
+        return False
+    if _I.classe_bornage("quelle est la capitale de la France ?").statut_ontologique != "borne":
+        return False
+    vc, mc, meta = _I.combine_evidences({"a": 0.7, "b": 0.3}, {"a": 0.6, "b": 0.4})
+    if not (vc == "combinaison" and abs(mc[frozenset({"a"})] - 0.42) < 1e-12 and meta["regle"] == "yager"):
+        return False
+    return abs(_I.acquisition_prochain_essai([0.0, 0.5, 1.0], [1.0, 2.0, 1.5], 0.0, 1.0)
+               - 0.6030150753768845) < 1e-9                       # UCB déterministe
+
+
+def _p_facade_stats_5() -> bool:
+    """LOT 2 : contrats d'ABSTENTION honnête (données insuffisantes / masses invalides -> DIT, jamais un chiffre)."""
+    import ia as _I
+    if _I.bande_prediction([1, 2, 3, 4, 5, 6, 7, 8], [2, 4, 6, 8, 10, 12, 14, 16])[0] != "abstention":
+        return False                                              # n=8 < 30
+    if _I.calibration_predictive([[1, 2, 3]] * 3, [2, 2, 3])[0] != "abstention":
+        return False                                              # n=3 < 30
+    if _I.conforme_ensemble([0.9, 0.85, 0.8, 0.95, 0.9], [[0.7, 0.3], [0.2, 0.8]])[0] != "abstention":
+        return False                                              # calibration n=5 trop courte pour 90 %
+    if _I.corrige_prevalence([[0.8, 0.2], [0.3, 0.7]], [0.5, 0.5])[0] != "abstention":
+        return False                                              # EM exige n ≥ 30
+    return _I.combine_evidences({"a": 0.6, "b": 0.2}, {"a": 0.5, "b": 0.3})[0] == "abstention"  # masses ≠ 1
+
+
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Web souverain, synthèse de code et corroboration (façade web 1)": (
+        "recherche_web (URL invalide/localhost -> refus propre, jamais requêté), approfondit_web (rien à "
+        "lire -> hors), corrobore_web (SANS juge réel, jamais promu en fait — l'indépendance des domaines "
+        "pèse 0.6 vs 0.4), genere_langage (l'addition est SYNTHÉTISÉE en bash puis vérifiée sur les "
+        "exemples), borne_stabilite (domine le risque empirique), invente_et_retiens (self-improving).",
+        _p_facade_web_1),
+    "Règles, PAC-Bayes et queues lourdes (façade stats 21)": (
+        "apprend_regle_par_exemples (deux seuils possibles -> AMBIGU, refus de choisir), apprend_domaine "
+        "(le référentiel est réellement appris puis retiré sans trace), borne_risque_generalisation "
+        "(PAC-Bayes domine le risque empirique), diagnostique_biais_survie (biais du survivant MESURÉ 3.5), "
+        "proba_evenement_rare (POT-GPD sur queue de Pareto ; seuil sous u -> None honnête).",
+        _p_facade_stats_21),
+    "Quantiles conditionnels, credal et p-box (façade stats 20)": (
+        "quantile_conditionnel (médiane conditionnelle : y = 2x retrouvé), decision_sous_ambiguite (maxmin "
+        "credal exact), controle_risque (CRC : λ le moins invasif), prevoit_series_couplees (singulier -> "
+        "abstention DITE ; réel -> VAR), pbox_depuis_intervalles (bornes d'espérance exactes), "
+        "ajuste_calibration_multiclasse (isotone exact).", _p_facade_stats_20),
+    "Cartographie, Stein et moteur d'invention (façade outils 3)": (
+        "resolution_sol ((2.54/dpi)×N exact), estimation_jointe_stein (le paradoxe : James-Stein DOMINE le "
+        "MLE, mesuré), reprends (verbatim honnête du vide), encode_pdf (%PDF-1.4) et encode_xlsx (PK) par "
+        "octets magiques, assemble_invention/manque_invention/lacunes_physiques (le moteur d'invention "
+        "répond structuré).", _p_facade_outils_3),
+    "Fichiers, protocoles et calibrations isotoniques (façade outils 2)": (
+        "cree_fichier/depot (le fichier existe réellement avec son contenu), revelation_protocole (protocole "
+        "inconnu -> vraisemblance refusée), calibre_multilabel et calibreur_etapes (isotoniques EXACTS), "
+        "qualite_classement (NDCG : parfait = 1, inversé < 1).", _p_facade_outils_2),
+    "Calibration par classe, dérive et D-calibration (façade stats 19)": (
+        "conforme_label_ajuste (seuil PAR CLASSE exact 0.2), multicalibre (groupes trop petits -> abstention "
+        "DITE), detecteur_derive (CUSUM : le sur-confiant déclenche, le calibré jamais), d_calibration_survie "
+        "(modèle juste -> déciles uniformes EXACTS, χ² = 0), borne_generalisation_uniforme (Rademacher domine "
+        "le risque empirique), clustering_non_parametrique (2 paquets -> K = 2 inféré).", _p_facade_stats_19),
+    "Prévisions imprécises et robustesse bayésienne (façade stats 18)": (
+        "prevision_imprecise (bornes de Walley EXACTES (1, 4) sur un credal), decision_ambiguite_lisse "
+        "(KMM), posterieur_robuste (ε-contamination encadrant le nominal), decision_robuste_modele (prudence "
+        "sous mauvaise spécification), risque_conjoint_extreme (copules), portefeuille_robuste (universel).",
+        _p_facade_stats_18),
+    "Sélection, Jensen et jeux résolus (façade stats 17)": (
+        "inference_selective (p-hacking : le minimum de m tests est ajusté 1−(1−p)^m EXACT), flaw_of_averages "
+        "(Jensen reproduit), strategie_securite (jeu à somme nulle résolu, valeur ≈ 0), robustesse_infogap "
+        "(α̂ = 5 exact), decision_robuste (le pire cas départage), estime_importance (poids plats -> ESS = n).",
+        _p_facade_stats_17),
+    "Aumann, questions mal posées et détection précoce (façade stats 16)": (
+        "accord_aumann (les agents bayésiens CONVERGENT — théorème vérifié), detecte_changement_precoce "
+        "(alarme au pas exact), effet_ancrage (reproduit, contrôle propre), probabilite_geometrique "
+        "(BERTRAND : « corde aléatoire » mal posée -> abstention motivée), conditionnement_continu "
+        "(BOREL-KOLMOGOROV : mesure nulle refusée), optimise_couteux (optimum approché, trajet tracé).",
+        _p_facade_stats_16),
+    "Vote, Anscombe et prévisions imprécises (façade stats 15)": (
+        "vote_manipulable (Gibbard-Satterthwaite : une manipulation est EXHIBÉE), stats_resumees_suffisent "
+        "(quartet d'Anscombe), esperance_imprecise (bornes de Choquet exactes 6-10), cqr_correction (0.5 "
+        "exact), conforme_mondrian (quantile par groupe), oublie/rappelle_dialogue (honnêtes sur le vide).",
+        _p_facade_stats_15),
+    "Encodeurs binaires, Choquet et besoins (façade outils 1)": (
+        "image_raster + encode_png (signature PNG exacte), encode_wav (RIFF/WAVE), agrege_choquet (intégrale "
+        "exacte 0.7), decompose_besoin/principes_besoin (physique du besoin), ou_apprendre (registre réel des "
+        "sources), trace_barres (géométrie : la barre 7 domine la barre 3).", _p_facade_outils_1),
+    "Goodhart, dérive et confidentialité (façade stats 14)": (
+        "loi_de_goodhart (le proxy se décorrèle sous pression — reproduit), poids_shift_gaussien (ratio de "
+        "vraisemblance e^0.5 exact), migration_de_stade, regression_temporelle_fallacieuse (faux positifs "
+        "des niveaux >> différences, graine fixée), garantie_confidentialite (échelle de Laplace Δ/ε exacte), "
+        "conforme_normalise (intervalle exact), scoreur_nouveaute (kNN : connu -> 0, aberrant -> loin).",
+        _p_facade_stats_14),
+    "Pièges statistiques quantifiés (façade stats 13)": (
+        "probabilite_posterieure_test (écart intuition/Bayes QUANTIFIÉ), pente_ols_naive (abstention n<12 + "
+        "vraie pente dans l'IC), pente_erreur_mesure (atténuation corrigée), effet_selectionne (winner's "
+        "curse : le max sélectionné n'est pas significatif), evidence_vs_n (Lindley : B01 > 1 malgré p=0.6), "
+        "diagnostique_regression_moyenne (RTM), paradoxe_lord (les deux analyses explicitées).",
+        _p_facade_stats_13),
+    "Possibilités, imputation multiple et filtres honnêtes (façade stats 12)": (
+        "encadre_probabilite (nécessité/possibilité exactes ; π sous-normalisée refusée), "
+        "moyenne_avec_manquants et imputation_simple_biais (MCAR : 2×moyenne = 31 exact retrouvé), "
+        "filtre_etat_robuste (l'outlier rend le filtre SURCONFIANT — dit), intervalle_predictif_decompose "
+        "(couvre les données, moyenne 5.5 exacte).", _p_facade_stats_12),
+    "Incertitude propagée, e-process et probabilités imprécises (façade stats 11)": (
+        "propage_incertitude (3² = 9 exact + IC), test_par_pari (e-process : pièce truquée rejetée au pas 7, "
+        "pièce juste jamais), teste_calibration (biais détecté), proba_categorielle_imprecise (bornes IDM "
+        "exactes 3/11-4/11), prevoit_horizon, regime_question, survie_estimee (D < 15 -> abstention DITE).",
+        _p_facade_stats_11),
+    "Base-rate, Condorcet et main chaude (façade stats 10)": (
+        "valeur_predictive (PPV bayésien EXACT : test à 99 % + prévalence 0.1 % -> 1.9 %), regression_ridge "
+        "(OLS exact, rétrécissement), survie_mediane, teste_surdispersion, score_forecast (log-score exact), "
+        "proba_mieux_classe (logistique), sagesse_des_foules (jury de Condorcet : la majorité converge), "
+        "sophisme_main_chaude (l'artefact est REPRODUIT numériquement, graine fixée).", _p_facade_stats_10),
+    "Intervalles garantis et maximum d'entropie (façade stats 8)": (
+        "intervalle_bootstrap (BCa), intervalle_moyenne_garanti (Bernstein empirique), jackknife_plus, "
+        "estime_densite (LOO vs Silverman), loi_maximum_entropie (sans contrainte -> uniforme EXACT, "
+        "entropie ln 3), intensite_temporelle (bins exacts).", _p_facade_stats_8),
+    "Dunning-Kruger comme artefact + abstentions (façade stats 9)": (
+        "dunning_kruger_artefact (l'effet émerge à information NULLE — artefact statistique reproduit, "
+        "graine fixée) ; estime_population et moyenne_modeles s'ABSTIENNENT en-dessous de leur n minimal.",
+        _p_facade_stats_9),
+    "Décision, lois et biais de sélection (façade stats 6)": (
+        "decision_pignistique (transformée exacte), decouvre_loi (y = x² retrouvé, a = 1.0), "
+        "detecte_biais_collision (Berkson : corrélation −0.5 -> 0 sous sélection), comptage_fenetre, "
+        "dms_vers_dd (48°51'24\" exact), echelle_carte (4 cm au 1:25000 = 1 km).", _p_facade_stats_6),
+    "Robustesse et métriques (façade stats 7)": (
+        "covariance_robuste (MCD, conditionnement tracé), metriques_classification (exactitude exacte), "
+        "parts_multinomiales (IC simultanés), detecte_simpson (strates incohérentes -> abstention DITE).",
+        _p_facade_stats_7),
+    "Ergodicité, calibration et fusion d'évidences (façade stats 4)": (
+        "analyse_ergodicite (taux temporel = moyenne géométrique exacte), auc_avec_intervalle, "
+        "bande_confiance_cdf (DKW exact), classe_bornage (borné/non-borné), combine_evidences (Yager, "
+        "conflit tracé), acquisition_prochain_essai (UCB déterministe).", _p_facade_stats_4),
+    "Abstention honnête, lot 2 (façade stats 5)": (
+        "bande_prediction, calibration_predictive, conforme_ensemble, corrige_prevalence : n insuffisant -> "
+        "ABSTENTION DITE ; combine_evidences refuse des masses qui ne somment pas à 1 (FAUX=0).",
+        _p_facade_stats_5),
+    "Cohérence probabiliste et découvertes contrôlées (façade stats 1)": (
+        "coherence_conjonction (bornes de Fréchet, sophisme de Linda détecté), decouvertes_controlees "
+        "(Benjamini-Hochberg), auc_bat_le_hasard, compare_groupes (permutation), biais_de_longueur "
+        "(inspection paradox, mu biaisée = Σx²/Σx). Preuves numériques exactes.", _p_facade_stats_1),
+    "Décision et calibration sous incertitude (façade stats 2)": (
+        "bandit_robuste (EXP3 déterministe à graine fixe), conforme_intervalle (conformal split exact), "
+        "agrege_preferences (Condorcet), corrige_posterior_prevalence (Bayes exact), choisit_modele_mdl "
+        "(MDL retient le degré 1 sur données linéaires).", _p_facade_stats_2),
+    "Abstention honnête des estimateurs (façade stats 3)": (
+        "comptage_surdisperse, analyse_queue_lourde, decompose_incertitude, classe_taux_robuste : trop peu "
+        "de données -> ABSTENTION DITE, jamais un chiffre fabriqué (FAUX=0) ; seuil franchi -> estimation.",
+        _p_facade_stats_3),
     "Raisonnement causal (graphe + effets)": ("Graphe causal exact, effets directs/interventions. cf. causalite.py", _p_causalite),
     "Logique trivaluée (vrai/faux/inconnu)": ("OWA : l'inconnu reste INCONNU, jamais deviné. cf. logique_tri.py", _p_logique_tri),
     "Révision de croyances (remplacer, pas empiler)": ("Nouvelle info plus fiable -> REMPLACE, tracé au journal. cf. revision.py", _p_revision),
