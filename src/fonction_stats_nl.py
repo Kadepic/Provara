@@ -39,6 +39,37 @@ def _ia():
     return importlib.import_module("ia")
 
 
+# — MOYENNE PONDÉRÉE : paires (valeur, coefficient) — jamais la moyenne simple de tous les nombres (FAUX=0).
+_PAIRE_POND = re.compile(
+    r"(-?\d+(?:[.,]\d+)?)\s*\(?\s*(?:coefficients?|coeffs?\.?|poids|pond[ée]r[ée]e?\s+(?:par|de))\s*:?\s*"
+    r"(-?\d+(?:[.,]\d+)?)\)?", re.I)
+
+
+def _moyenne_ponderee(texte: str, bas: str, explicite: bool = True):
+    """« 12 coefficient 2 et 15 coefficient 3 » -> 13.8 ; « de 12 et 15 avec les poids 2 et 3 » -> 13.8.
+    Si l'appariement valeur/coefficient est ambigu : abstention honnête EXPLICITE quand l'intention est sûre
+    (« pondérée »/« coefficient ») — surtout pas la moyenne simple ; None quand seul « poids » apparaît
+    (des poids PHYSIQUES se moyennent simplement : « moyenne des poids 70, 80, 90 »)."""
+    paires = [(float(v.replace(",", ".")), float(w.replace(",", "."))) for v, w in _PAIRE_POND.findall(texte)]
+    if not paires:
+        # forme « valeurs … poids/coefficients … » : les nombres AVANT le mot-clé sont les valeurs, APRÈS les poids
+        parts = re.split(r"\b(?:poids|coefficients?|coeffs?)\b", bas, maxsplit=1)
+        if len(parts) == 2:
+            vs, ws = _nombres(parts[0]), _nombres(parts[1])
+            if vs and len(vs) == len(ws):
+                paires = list(zip(vs, ws))
+    if paires:
+        total = sum(w for _, w in paires)
+        if total <= 0:
+            return "Moyenne pondérée : indéfinie (la somme des coefficients doit être strictement positive)."
+        return "Moyenne pondérée : %s (coefficients %s)." % (
+            _fmt(sum(v * w for v, w in paires) / total), ", ".join(_fmt(w) for _, w in paires))
+    if not explicite:
+        return None
+    return ("Je vois une demande de moyenne pondérée, mais je n'arrive pas à associer chaque valeur à son "
+            "coefficient. Donne-les sous la forme « 12 coefficient 2, 15 coefficient 3 » et je calcule.")
+
+
 # — table d'intentions : (regex de déclenchement, fonction de traitement) —
 def _descr(op, vals):
     if not vals:
@@ -75,12 +106,25 @@ def repond_stats(texte: str):
 
     # — stats DESCRIPTIVES exactes (maths) —
     if re.search(r"\b(moyenne|moyen)\b", bas) and "confiance" not in bas and "intervalle" not in bas:
+        # moyenne PONDÉRÉE : ne JAMAIS servir la moyenne simple de tous les nombres (les coefficients
+        # ne sont pas des valeurs — « 12 coeff 2 et 15 coeff 3 » vaut 13.8, pas 8)
+        if re.search(r"\b(pond[ée]r[ée]e?s?|coefficients?|coeffs?)\b", bas):
+            return _moyenne_ponderee(t, bas) if vals else None
+        if re.search(r"\bpoids\b", bas) and vals:
+            pond = _moyenne_ponderee(t, bas, explicite=False)
+            if pond:
+                return pond
         return _descr("moyenne", vals) if vals else None
     if re.search(r"\bmediane?\b", bas):
         return _descr("mediane", vals) if vals else None
     if re.search(r"\b(ecart[- ]?type|variance|dispersion)\b", bas):
         return _descr("ecart", vals) if vals else None
     if re.search(r"\b(minimum|maximum|min et max|plus petit|plus grand)\b", bas) and vals:
+        # GARDE FRACTIONS (FAUX vécu 2026-07-08) : « le plus grand : 2/3 ou 3/5 » servait « Minimum : 2 ;
+        # maximum : 5 » (les numérateurs/dénominateurs traités comme des valeurs). Une fraction a/b n'est pas
+        # deux nombres -> on laisse la main à la route de comparaison exacte de fractions (fonction_nl).
+        if re.search(r"\d\s*/\s*\d", t):
+            return None
         return _descr("min", vals)
     if re.search(r"\bsomme\b", bas) and vals:
         return _descr("somme", vals)

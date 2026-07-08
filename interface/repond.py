@@ -90,6 +90,26 @@ _INTERJECTIONS = frozenset(
     "euh bof stp svp please bravo chouette top nickel impec".split())
 
 
+# Verbes d'ACTION à l'impératif (carte FERMÉE) : un ordre commençant par l'un d'eux, si AUCUN cap ne l'a
+# exécuté, mérite le repli honnête, pas un « C'est noté ». EXCLUS volontairement : les verbes de MÉMORISATION
+# (note, retiens, rappelle, souviens) — « rappelle-moi d'acheter du pain » reste un mémo légitime.
+_VERBES_IMPERATIFS = frozenset(
+    "equilibre range resous resume corrige complete trie classe melange transforme genere fabrique "
+    "construis assemble ordonne factorise developpe simplifie additionne multiplie divise soustrais arrondis "
+    "convertis calcule compte compare explique decris definis liste cite nomme trouve cherche montre "
+    "dessine trace affiche traduis code decode chiffre dechiffre encode inverse permute combine".split())
+
+
+def _est_demande_imperative(texte: str) -> bool:
+    """La phrase est-elle un ORDRE (verbe d'action en tête de la carte fermée) ? Utilisé UNIQUEMENT au terminal
+    (aucun cap n'a répondu) pour préférer le repli honnête au mémo. Le premier mot de contenu doit être un verbe
+    d'action ; « peux-tu / stp » en préambule sont dépouillés d'abord."""
+    n = _normalise(texte)
+    n = re.sub(r"^(?:s il te plait|stp|svp|peux[- ]tu|pourrais[- ]tu|tu peux|allez|aller)\s+", "", n).strip()
+    tete = n.split()[0] if n.split() else ""
+    return tete in _VERBES_IMPERATIFS
+
+
 def _semble_affirmation(texte: str) -> bool:
     """Y a-t-il quelque chose à NOTER ? Une affirmation porte un verbe conjugué courant, une marque de première
     personne, ou une VALEUR (chiffre : « rdv dentiste mardi 15h » reste un mémo). Une PHRASE NOMINALE nue
@@ -1124,13 +1144,23 @@ def _lookup_cell(relation: str, entite: str):
     except OSError:
         return None
     if not gros:
-        return _charge_direct(relation).get(ne)
+        return _quarantaine_cell(relation, _charge_direct(relation).get(ne))
     clef = (relation, ne)
     if clef in _STREAM_CACHE:
-        return _STREAM_CACHE[clef]
+        return _quarantaine_cell(relation, _STREAM_CACHE[clef])
     trouve = _scan_bytes(chemin, ne, entite)
     _STREAM_CACHE[clef] = trouve
-    return trouve
+    return _quarantaine_cell(relation, trouve)
+
+
+def _quarantaine_cell(relation: str, cell):
+    """QUARANTAINE FAUX=0 (vécu 2026-07-08, miroir de lecteur.Lecteur.cherche) : les nationalités JOINTES
+    « X et Y » du dataset livré sont TRONQUÉES à 2 par fréquence de corpus (Messi -> « Italie et Espagne »,
+    SANS l'Argentine !) — une liste incomplète servie comme nationalité = faux par omission -> None (abstention).
+    Protège fiches personne et faits ciblés jusqu'à la ré-ingestion (ingere_celebres P27 joinmax=1)."""
+    if cell is not None and relation == "nationalite_personne" and " et " in str(cell[1]):
+        return None
+    return cell
 
 
 def _scan_bytes(chemin: str, ne: str, entite: str):
@@ -2992,11 +3022,12 @@ def _resout_partie(p: str):
 # « × ». Sans cette intention, « x » reste un simple séparateur (« relais 4 x 100 m ») et n'est PAS converti (#82).
 _CALC_INTENT = re.compile(
     r"\b(?:combien\s+(?:font|fait|valent|vaut|ca\s+fait)|calcul\w*|resou\w+|multipli\w+|"
-    r"additionn\w+|soustrai\w+|divis\w+)\b|=\s*\??\s*$|\begale?\s*\??\s*$"
+    r"additionn\w+|soustrai\w+|divis\w+|modulo|\bmod\b|reste\s+de)\b|=\s*\??\s*$|\begale?\s*\??\s*$"
     r"|\d\s*(?:%|pour\s*cents?)\s+de\s+\d|\bau\s+carr[ée]\b|\bau\s+cube\b")
 
 
 _CONV_UNITE = {"celsius": "C", "c": "C", "°c": "C", "fahrenheit": "F", "f": "F", "°f": "F",
+               "kelvin": "K", "kelvins": "K", "°k": "K",
                "kilometre": "KM", "kilometres": "KM", "km": "KM", "mile": "MI", "miles": "MI",
                "kilogramme": "KG", "kilogrammes": "KG", "kilo": "KG", "kilos": "KG", "kg": "KG",
                "livre": "LB", "livres": "LB", "lb": "LB", "lbs": "LB"}
@@ -3021,6 +3052,14 @@ def _cap_conversion(texte: str):
         return "%s °C = %s °F  (formule exacte : (%s × 9/5) + 32)." % (aff(v), aff(v * 9 / 5 + 32), aff(v))
     if (u1, u2) == ("F", "C"):
         return "%s °F = %s °C  (formule exacte : (%s − 32) × 5/9)." % (aff(v), aff((v - 32) * 5 / 9), aff(v))
+    if (u1, u2) == ("C", "K"):
+        return "%s °C = %s K  (définition exacte : %s + 273,15)." % (aff(v), aff(v + 273.15), aff(v))
+    if (u1, u2) == ("K", "C"):
+        return "%s K = %s °C  (définition exacte : %s − 273,15)." % (aff(v), aff(v - 273.15), aff(v))
+    if (u1, u2) == ("F", "K"):
+        return "%s °F = %s K  (exact : (%s − 32) × 5/9 + 273,15)." % (aff(v), aff((v - 32) * 5 / 9 + 273.15), aff(v))
+    if (u1, u2) == ("K", "F"):
+        return "%s K = %s °F  (exact : (%s − 273,15) × 9/5 + 32)." % (aff(v), aff((v - 273.15) * 9 / 5 + 32), aff(v))
     if (u1, u2) == ("KM", "MI"):
         return "%s km = %s mile(s)  (1 mile = 1,609344 km, définition légale)." % (aff(v), aff(v / 1.609344))
     if (u1, u2) == ("MI", "KM"):
@@ -3046,6 +3085,13 @@ def _reponse_calcul(texte: str) -> str | None:
                 "douze": "12", "treize": "13", "quatorze": "14", "quinze": "15", "seize": "16", "vingt": "20",
                 "trente": "30", "quarante": "40", "cinquante": "50", "soixante": "60", "cent": "100",
                 "mille": "1000"}
+    # MODULO / RESTE EN PREMIER (FAUX=0 : « reste de 17 divisé par 5 » donnait 3.4 — la division ignorait
+    # « reste ». Un reste est le MODULO, pas le quotient). « reste de X (divisé) par Y », « X modulo/mod Y ».
+    _mod = (re.search(r"reste\s+de\s+(\d+)\s+(?:divis[ée]s?\s+par|par|sur)\s+(\d+)", texte, re.I)
+            or re.search(r"\b(\d+)\s+(?:modulo|mod)\s+(\d+)\b", texte, re.I))
+    if _mod:
+        a, b = int(_mod.group(1)), int(_mod.group(2))
+        return str(a % b) if b else None                # b=0 -> None (pas de reste défini, abstention honnête)
     # POURCENTAGE en PREMIER : « 20 % de 150 » / « 20 pour cent de 150 » -> 20 * 150 / 100 (= 30, précédence
     # gauche-droite). AVANT _MOTS_NB, qui transformerait « pour cent » en « pour 100 » et casserait le motif.
     texte = re.sub(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour\s*cents?)\s+de\s+(\d+(?:[.,]\d+)?)",
@@ -3543,11 +3589,38 @@ def _strip_article(s: str) -> str:
 
 def _oui_non(texte: str):
     """Confirme « Oui. » une assertion factuelle VÉRIFIÉE (« Paris est-elle la capitale de la France ? »), ou None.
-    Sound : jamais de confirmation d'un faux (mismatch -> None -> flux normal), jamais de « Non » (multi-valué)."""
-    m = _OUINON_RE.match(texte.strip())
-    if not m:
-        return None
-    gauche, droite = m.group(1).strip(), m.group(2).strip()
+    Sound : jamais de confirmation d'un faux (mismatch -> None -> flux normal), jamais de « Non » (multi-valué).
+    Extensions 2026-07-08 : « est-ce que X est Y » (même logique) ; NÉGATION « X n'est pas Y(, si ?) » — si le
+    vérifié CONTREDIT la négation -> « Si — X est bien Y » (confirmer un fait positif est sûr) ; si le vérifié
+    diffère de l'affirmé -> le fait vérifié est servi TEL QUEL (réfutation implicite, jamais un « Non » sec)."""
+    t = texte.strip()
+    t = re.sub(r",?\s*(?:si|non|n['’]est[- ]ce\s+pas)\s*\?*\s*$", " ?", t, flags=re.IGNORECASE)  # « …, si ? »
+    mneg = re.match(r"^\s*(?:est[- ]ce\s+qu[e'’]\s*)?(.+?)\s+n['’e]\s*est\s+pas\s+(.+?)\s*\??\s*$", t,
+                    re.IGNORECASE)
+    if mneg:
+        gauche, droite = mneg.group(1).strip(), mneg.group(2).strip()
+        # GARDE : une question négative OUVERTE (« QUELLE ville n'est pas la capitale… ») n'est pas une
+        # vérification d'assertion -> prudence, flux normal (la garde négation globale s'applique).
+        if re.match(r"^(quelle?s?|qui|quoi|lequel|laquelle|lesquel(?:le)?s|que|o[uù])\b",
+                    _normalise(_strip_article(gauche))):
+            return None
+        vg = _connaissance_verifiee(gauche, None)
+        vd = _connaissance_verifiee(droite, None)
+        if bool(vg) == bool(vd):                      # 0 ou 2 côtés résolus -> prudence, flux normal
+            return None
+        valeur, affirme = (vg, droite) if vg else (vd, gauche)
+        cote = gauche if vg else droite               # la phrase-relation (« la capitale de la France »)
+        if _normalise(_strip_article(affirme)) == _normalise(_strip_article(valeur)):
+            return "Si — %s est bien %s (vérifié)." % (affirme, cote)
+        return "Ce que j'ai de vérifié : %s → %s." % (cote, valeur)
+    mq = re.match(r"^\s*est[- ]ce\s+qu[e'’]\s*(.+?)\s+est\s+(.+?)\s*\??\s*$", t, re.IGNORECASE)
+    if mq:
+        gauche, droite = mq.group(1).strip(), mq.group(2).strip()
+    else:
+        m = _OUINON_RE.match(t)
+        if not m:
+            return None
+        gauche, droite = m.group(1).strip(), m.group(2).strip()
     vg = _connaissance_verifiee(gauche, None)        # conv_id=None : aucun effet de bord multi-tours
     vd = _connaissance_verifiee(droite, None)
     if not vg and not vd:                             # aucun côté ne résout -> flux normal
@@ -5092,6 +5165,91 @@ def _conseil_parapluie(texte: str, conv_id=None):
             % (eu[action], eu[autre], action, regle))
 
 
+_MOIS_NUM = {"janvier": 1, "fevrier": 2, "février": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6,
+             "juillet": 7, "aout": 8, "août": 8, "septembre": 9, "octobre": 10, "novembre": 11, "decembre": 12,
+             "décembre": 12}
+_DATE_FR_RE = re.compile(r"\b(1er|\d{1,2})\s+(janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[ûu]t|septembre"
+                         r"|octobre|novembre|d[ée]cembre)(?:\s+(\d{4}))?", re.I)
+
+
+def _date_relative(texte: str):
+    """« quel jour serons-nous dans 45 jours ? » / « quel jour était-on il y a 10 jours ? » — horloge de la
+    machine + décalage calendaire EXACT (datetime, bissextiles comprises). Même statut que l'heure/la date
+    locales déjà servies. FAUX=0 : « dans 3 mois » (durée ambiguë, 28-31 j) -> None, abstention."""
+    t = texte.lower()
+    m = re.search(r"\b(?:quel(?:le)?\s+(?:jour|date)|on\s+sera)\b.{0,40}?\b(?:dans|d['’]ici)\s+(\d+)\s+"
+                  r"(jours?|semaines?)\b", t)
+    sens = 1
+    if not m:
+        m = re.search(r"\b(?:quel(?:le)?\s+(?:jour|date))\b.{0,40}?\bil\s+y\s+a\s+(\d+)\s+(jours?|semaines?)\b", t)
+        sens = -1
+    if not m:
+        return None
+    import datetime as _dt
+    n = int(m.group(1)) * (7 if m.group(2).startswith("semaine") else 1)
+    if n > 36600:                                     # ±100 ans : au-delà, la question n'est plus calendaire
+        return None
+    d = _dt.date.today() + _dt.timedelta(days=sens * n)
+    verbe = "Nous serons le" if sens > 0 else "C'était le"
+    return ("%s %s %d %s %d (décalage calendaire exact depuis l'horloge de ta machine)."
+            % (verbe, _JOURS_FR[d.weekday()], d.day, _MOIS_FR[d.month - 1], d.year))
+
+
+def _difference_dates(texte: str):
+    """« combien de jours entre le 1er janvier et le 15 mars ? » -> 73 (calcul calendaire EXACT, datetime).
+    Année absente -> année de l'horloge machine, ÉTIQUETÉE dans la réponse (une bissextile change le compte).
+    FAUX=0 vécu : cette question servait « 31 » (les jours de janvier, gabarit lecteur trop large)."""
+    t = texte.lower()
+    if not re.search(r"\b(?:combien\s+de\s+jours|nombre\s+de\s+jours)\b", t):
+        return None
+    if not re.search(r"\bentre\b|\bdu\b.+?\bau\b", t):
+        return None
+    dates = _DATE_FR_RE.findall(texte)
+    if len(dates) != 2:
+        return None
+    import datetime as _dt
+    annee_defaut = _dt.date.today().year
+    ds = []
+    for jour, mois, annee in dates:
+        j = 1 if jour.lower() == "1er" else int(jour)
+        mo = _MOIS_NUM.get(mois.lower())
+        try:
+            ds.append((_dt.date(int(annee) if annee else annee_defaut, mo, j), bool(annee)))
+        except (ValueError, TypeError):
+            return None                               # 31 février… -> abstention, pas d'à-peu-près
+    (d1, a1), (d2, a2) = ds
+    if d2 < d1 and not (a1 or a2):                    # « entre le 15 mars et le 1er janvier » sans années :
+        return None                                   # intention ambiguë (année suivante ?) -> abstention
+    n = abs((d2 - d1).days)
+    note = "" if (a1 and a2) else " — année %d prise sur l'horloge de ta machine (une bissextile change le compte)" % annee_defaut
+    return ("%d jours entre le %d %s %d et le %d %s %d (calcul calendaire exact%s)."
+            % (n, d1.day, _MOIS_FR[d1.month - 1], d1.year, d2.day, _MOIS_FR[d2.month - 1], d2.year, note))
+
+
+# Grandes villes -> fuseau IANA (table FERMÉE, convention officielle tz ; clés normalisées sans accents).
+# Hors table -> abstention honnête (jamais l'heure locale servie pour une ville étrangère, FAUX vécu).
+_FUSEAUX_VILLES = {
+    "paris": "Europe/Paris", "toulouse": "Europe/Paris", "lyon": "Europe/Paris", "marseille": "Europe/Paris",
+    "bruxelles": "Europe/Brussels", "geneve": "Europe/Zurich", "londres": "Europe/London",
+    "berlin": "Europe/Berlin", "madrid": "Europe/Madrid", "rome": "Europe/Rome", "lisbonne": "Europe/Lisbon",
+    "moscou": "Europe/Moscow", "athenes": "Europe/Athens", "istanbul": "Europe/Istanbul",
+    "new york": "America/New_York", "washington": "America/New_York", "montreal": "America/Toronto",
+    "toronto": "America/Toronto", "chicago": "America/Chicago", "denver": "America/Denver",
+    "los angeles": "America/Los_Angeles", "san francisco": "America/Los_Angeles",
+    "mexico": "America/Mexico_City", "sao paulo": "America/Sao_Paulo", "buenos aires": "America/Argentina/Buenos_Aires",
+    "le caire": "Africa/Cairo", "caire": "Africa/Cairo", "dakar": "Africa/Dakar", "abidjan": "Africa/Abidjan",
+    "johannesburg": "Africa/Johannesburg", "casablanca": "Africa/Casablanca", "alger": "Africa/Algiers",
+    "tunis": "Africa/Tunis", "kinshasa": "Africa/Kinshasa", "nairobi": "Africa/Nairobi",
+    "dubai": "Asia/Dubai", "tokyo": "Asia/Tokyo", "pekin": "Asia/Shanghai", "shanghai": "Asia/Shanghai",
+    "hong kong": "Asia/Hong_Kong", "singapour": "Asia/Singapore", "seoul": "Asia/Seoul",
+    "bombay": "Asia/Kolkata", "mumbai": "Asia/Kolkata", "new delhi": "Asia/Kolkata", "delhi": "Asia/Kolkata",
+    "bangkok": "Asia/Bangkok", "jakarta": "Asia/Jakarta", "sydney": "Australia/Sydney",
+    "melbourne": "Australia/Melbourne", "auckland": "Pacific/Auckland", "papeete": "Pacific/Tahiti",
+    "noumea": "Pacific/Noumea", "cayenne": "America/Cayenne", "fort-de-france": "America/Martinique",
+    "pointe-a-pitre": "America/Guadeloupe", "saint-denis": "Indian/Reunion",
+}
+
+
 def _cap_quotidien(texte: str, conv_id=None):
     """Questions du QUOTIDIEN : météo (refus honnête, chaleureux), heure et date (faits réels de l'horloge
     locale), conseil parapluie CALCULÉ (probabilité rapportée × utilité espérée, decision.py). Demandé par
@@ -5131,15 +5289,141 @@ def _cap_quotidien(texte: str, conv_id=None):
         return ("Internet est coupé, et la météo est une donnée EN DIRECT : sans réseau, te répondre serait "
                 "deviner — et je ne devine jamais 🙂 Active Internet (bouton « 🌐 ») et je te donne le relevé "
                 "réel, sourcé.")
+    r = _date_relative(texte)
+    if r:
+        return r
+    r = _difference_dates(texte)
+    if r:
+        return r
+    # JOUR DE LA SEMAINE d'une date HISTORIQUE : « quel jour de la semaine était le 14 juillet 1789 ? » ->
+    # mardi (datetime, calendrier grégorien proleptique — année EXPLICITE ≥ 1583 exigée : avant, le julien
+    # s'appliquait -> abstention plutôt qu'un jour décalé).
+    mjs = re.search(r"quel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:[ée]tait|est|tombait|tombe)\s+le\s+", texte, re.I)
+    if mjs:
+        md = _DATE_FR_RE.search(texte)
+        if md and md.group(3):
+            j = 1 if md.group(1).lower() == "1er" else int(md.group(1))
+            mo, an = _MOIS_NUM.get(md.group(2).lower()), int(md.group(3))
+            if an >= 1583:
+                import datetime as _dt
+                try:
+                    d = _dt.date(an, mo, j)
+                except (ValueError, TypeError):
+                    return None
+                return ("Le %d %s %d était un %s (calendrier grégorien)."
+                        % (d.day, _MOIS_FR[d.month - 1], d.year, _JOURS_FR[d.weekday()]))
+            return ("Avant 1583, le calendrier julien s'appliquait (bascule grégorienne d'octobre 1582) — je "
+                    "m'abstiens plutôt que de te donner un jour décalé.")
     if _HEURE_RE.search(texte):
         import time as _t
+        # FAUX=0 vécu 2026-07-08 : « quelle heure est-il à New York ? » servait l'heure LOCALE de la machine.
+        # Ville nommée -> fuseau IANA (table fermée de grandes villes + zoneinfo, base tz officielle) ;
+        # ville hors table ou base tz absente -> abstention honnête, JAMAIS l'heure locale par défaut.
+        mv = re.search(r"\b(?:a|à)\s+([A-ZÀ-Ÿ][\w'’-]*(?:\s+[A-ZÀ-Ÿ][\w'’-]*)*)\s*\??\s*$", texte.strip())
+        if mv:
+            ville = _normalise(mv.group(1))
+            tz = _FUSEAUX_VILLES.get(ville)
+            if tz:
+                try:
+                    from zoneinfo import ZoneInfo
+                    import datetime as _dt
+                    lh = _dt.datetime.now(ZoneInfo(tz))
+                    return ("À %s il est %02d h %02d (fuseau %s, base de fuseaux IANA + horloge de ta machine)."
+                            % (mv.group(1), lh.hour, lh.minute, tz))
+                except Exception:
+                    pass
+            return ("Je ne connais pas le fuseau horaire vérifié de « %s » — je préfère m'abstenir plutôt que "
+                    "te donner l'heure locale de TA machine comme si c'était la sienne." % mv.group(1))
         lt = _t.localtime()
         return "Il est %02d h %02d (horloge de ta machine)." % (lt.tm_hour, lt.tm_min)
+    mage = re.search(r"quel\s+[âa]ge\s+a\s+(?:une\s+personne|quelqu['’]un)\s+n[ée]e?\s+en\s+(\d{4})",
+                     texte, re.I)
+    if mage:
+        import datetime as _dt
+        auj = _dt.date.today()
+        an = int(mage.group(1))
+        if an <= auj.year:
+            a2 = auj.year - an
+            return ("%d ou %d ans selon que l'anniversaire est passé (né(e) en %d, nous sommes le %02d/%02d/%d "
+                    "à l'horloge de ta machine)." % (a2 - 1, a2, an, auj.day, auj.month, auj.year))
+        return None
     if _DATE_JOUR_RE.search(texte):
         import time as _t
         lt = _t.localtime()
         return ("Nous sommes le %s %d %s %d (horloge de ta machine)."
                 % (_JOURS_FR[lt.tm_wday], lt.tm_mday, _MOIS_FR[lt.tm_mon - 1], lt.tm_year))
+    return None
+
+
+_TEXTE_LETTRES_RE = re.compile(
+    r"(?:compte\s+les\s+lettres|combien\s+(?:de|y\s+a[- ]t[- ]il\s+de)\s+lettres)\s+(?:dans\s+|a\s+)?"
+    r"(?:du\s+mot\s+|le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s*\??\s*$", re.I)
+_TEXTE_ENVERS_RE = re.compile(
+    r"(?:[ée]pelle|[ée]cris)\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+[àa]\s+l['’]envers\s*\??\s*$", re.I)
+_TEXTE_EPELLE_RE = re.compile(
+    r"[ée]pelle(?:[- ]moi)?\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s*\??\s*$", re.I)
+_TEXTE_ANAG_RE = re.compile(
+    r"(?:est[- ]ce\s+que\s+)?«?\s*([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+et\s+«?\s*([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+"
+    r"sont(?:[- ](?:ils|elles))?\s+(?:des\s+)?anagrammes\s*\??\s*$", re.I)
+_TEXTE_CASSE_RE = re.compile(
+    r"(?:mets?|[ée]cris|convertis)\s+(?:le\s+mot\s+|«\s*)?([a-zà-ÿA-ZÀ-Ÿ\-']+)\s*»?\s+en\s+"
+    r"(majuscules?|minuscules?)\s*\??\s*$", re.I)
+_TEXTE_MOTS_RE = re.compile(
+    r"combien\s+(?:de|y\s+a[- ]t[- ]il\s+de)\s+mots\s+dans\s+(?:la\s+phrase\s+|«\s*)?(.+?)\s*»?\s*\??\s*$", re.I)
+_TEXTE_TRI_RE = re.compile(
+    r"(?:trie|classe|ordonne|range)\s+(?:les\s+nombres\s+|moi\s+)?((?:d[ée]croissant|d[ée]croissante?s?)\s+)?"
+    r"([\d\s,;.\-et]+?)(?:\s+en\s+ordre\s+(d[ée]croissant))?\s*\??\s*$", re.I)
+
+
+def _cap_texte(texte: str):
+    """OPÉRATIONS TEXTUELLES exactes sur UN mot (natif, déterministe — FAUX=0 par construction) : « compte les
+    lettres du mot anticonstitutionnellement » -> 25, « épelle chien à l'envers » -> n-e-i-h-c, « épelle chien »,
+    « niche et chien sont-ils des anagrammes ? » -> oui (mêmes lettres triées). Un seul MOT exigé (pas de vol
+    de questions factuelles) ; l'envers AVANT l'épellation simple (motif plus long d'abord)."""
+    t = texte.strip()
+    m = _TEXTE_LETTRES_RE.search(t)
+    if m:
+        mot = m.group(1)
+        n = sum(1 for c in mot if c.isalpha())
+        return "%d lettres dans « %s »%s." % (n, mot,
+                                              "" if n == len(mot) else " (tirets/apostrophes non comptés)")
+    m = _TEXTE_ENVERS_RE.search(t)
+    if m:
+        mot = m.group(1)
+        return "« %s » à l'envers : %s." % (mot, mot[::-1])
+    m = _TEXTE_EPELLE_RE.search(t)
+    if m:
+        mot = m.group(1)
+        if len(mot) < 2:
+            return None
+        return "« %s » s'épelle : %s." % (mot, "-".join(mot))
+    m = _TEXTE_ANAG_RE.search(t)
+    if m:
+        a, b = m.group(1).lower(), m.group(2).lower()
+        cle = lambda w: sorted(c for c in w if c.isalpha())
+        if cle(a) == cle(b):
+            return "Oui — « %s » et « %s » sont des anagrammes (mêmes lettres)." % (m.group(1), m.group(2))
+        return "Non — « %s » et « %s » ne sont pas des anagrammes (lettres différentes)." % (m.group(1), m.group(2))
+    m = _TEXTE_CASSE_RE.search(t)
+    if m:
+        mot, casse = m.group(1), m.group(2).lower()
+        return "« %s » en %s : %s." % (mot, "majuscules" if casse.startswith("maj") else "minuscules",
+                                       mot.upper() if casse.startswith("maj") else mot.lower())
+    m = _TEXTE_MOTS_RE.search(t)
+    if m:
+        phrase = m.group(1).strip().strip(" ?.!\"'«»")
+        mots = phrase.split()
+        if mots:
+            return "%d mots dans « %s » (séparés par des espaces)." % (len(mots), phrase)
+    m = _TEXTE_TRI_RE.search(t)
+    if m:
+        desc = bool(m.group(1) or m.group(3))
+        nums = [x.replace(",", ".") for x in re.findall(r"-?\d+(?:[.,]\d+)?", m.group(2))]
+        if len(nums) >= 2:
+            vals = sorted((float(x) for x in nums), reverse=desc)
+            aff = lambda v: str(int(v)) if v == int(v) else str(v)
+            return "Dans l'ordre %s : %s." % ("décroissant" if desc else "croissant",
+                                              ", ".join(aff(v) for v in vals))
     return None
 
 
@@ -5472,6 +5756,52 @@ _SYLLO_RE = re.compile(
     r".*?\b(?:d[ée]duire|conclure|conclusions?)\b", re.I | re.S)
 
 
+# THÉORIE DES JEUX — jeux classiques (câblage « tout câbler » 2026-07-08) : le module `jeux_appliques` CALCULE
+# les équilibres de Nash purs de jeux 2×2 DÉFINIS (objets mathématiques, pas des données contestables). On câble
+# les trois canoniques. FAUX=0 : verdict issu du module vérifié ; jeu non catalogué -> None (pas de fabrication).
+_JEUX_CLASSIQUES = {
+    "prisonnier": ("dilemme_prisonnier", "du dilemme du prisonnier", "Le dilemme du prisonnier"),
+    "sexes": ("bataille_des_sexes", "de la bataille des sexes", "La bataille des sexes"),
+    "pennies": ("matching_pennies", "du matching pennies", "Le matching pennies"),
+    "pieces": ("matching_pennies", "du matching pennies", "Le matching pennies"),
+}
+_JEUX_RE = re.compile(r"\b(nash|[ée]quilibre|jeu|dilemme|strat[ée]gie dominante)\b", re.I)
+
+
+def _cap_jeux(texte: str):
+    """Équilibre de Nash d'un jeu CLASSIQUE nommé (« équilibre de Nash du dilemme du prisonnier »). Verdict
+    calculé par `jeux_appliques` (vérifié). None si aucun jeu catalogué n'est nommé (FAUX=0, pas d'invention)."""
+    if not _JEUX_RE.search(texte):
+        return None
+    n = _normalise(texte)
+    cle = next((k for k in _JEUX_CLASSIQUES if k in n), None)
+    if cle is None:
+        return None
+    fn_nom, de_jeu, le_jeu = _JEUX_CLASSIQUES[cle]
+    try:
+        import jeux_appliques as _J
+        d = getattr(_J, fn_nom)()
+    except Exception:
+        return None
+    actions = d.get("actions")
+    eqs = d.get("equilibres_nash") or []
+
+    def _profil(p):
+        if actions and len(actions) == 2:
+            return "(%s, %s)" % (actions[p[0]], actions[p[1]])
+        return str(tuple(p))
+
+    if not eqs:
+        return ("%s n'a PAS d'équilibre de Nash en stratégies pures (il en a un en stratégies mixtes). "
+                "Calcul vérifié." % le_jeu)
+    profils = ", ".join(_profil(p) for p in eqs)
+    txt = "Équilibre de Nash (pur) %s : %s." % (de_jeu, profils)
+    if d.get("equilibre_pareto_domine"):
+        txt += (" C'est le paradoxe : cet équilibre est Pareto-dominé — les deux gagneraient plus en coopérant, "
+                "mais trahir est la stratégie dominante de chacun.")
+    return txt
+
+
 def _verbe_singulier(v: str) -> str:
     """« allaitent » -> « allaite », « sont mortels » -> « est mortel », « sont des X » -> « est un X »
     (accord de la conclusion — règles sûres du pluriel régulier, jamais une invention de forme)."""
@@ -5787,7 +6117,12 @@ def _cap_portrait_personne(texte: str):
     # nationalite_personne stocke le PAYS (« France ») -> on le présente tel quel (« originaire de France »)
     natio_txt = ("originaire de %s" % natio[1]) if natio else ""
     if occ:
-        tete = "%s était %s" % (sujet, str(occ[1]).lower())
+        # vivant (pas d'année de décès) -> PRÉSENT : « Messi était footballeur » implique un décès (faux) ;
+        # sexe connu -> forme accordée du libellé inclusif Wikidata (« footballeur ou footballeuse »)
+        occ_txt = str(occ[1]).lower()
+        if sexe:
+            occ_txt = _occupation_selon_genre(occ_txt, fem)
+        tete = "%s %s %s" % (sujet, "était" if deces else "est", occ_txt)
         if natio_txt:
             tete += ", %s" % natio_txt
     elif natio_txt:
@@ -6103,6 +6438,20 @@ def _cap_createur(texte: str):
     return None
 
 
+def _occupation_selon_genre(val: str, fem: bool) -> str:
+    """Les libellés P106 de Wikidata sont INCLUSIFS (« footballeur ou footballeuse ») : quand le sexe de la
+    personne est CONNU, on garde la forme accordée (masc = 1ʳᵉ, fém = 2ᵉ) — transformation de libellé
+    déterministe, pas une invention. Composants d'une jointure traités un à un ; sans « ou », inchangé."""
+    def _forme(part: str) -> str:
+        if " ou " in part:
+            g, d = part.split(" ou ", 1)
+            return d.strip() if fem else g.strip()
+        return part
+    morceaux = val.split(" et ")
+    morceaux = [", ".join(_forme(p) for p in m.split(", ")) for m in morceaux]
+    return " et ".join(morceaux)
+
+
 def _cap_fait_personne(texte: str):
     """FAIT CIBLÉ sur une personne (lieu/année de naissance ou décès, nationalité, métier) via lookup STREAMING —
     « où est né Napoléon Ier ? » -> « Napoléon Ier est né à Ajaccio. ». FAUX=0 : fait stocké réel, None sinon ;
@@ -6128,6 +6477,11 @@ def _cap_fait_personne(texte: str):
             return (gabarit % (aff[:1].upper() + aff[1:], e, val)) + "."
         if rel == "occupation_personne":
             val = val.lower()
+            sexe = _lookup_cell("sexe_personne", ent)
+            if sexe:                                               # sexe connu -> forme accordée du libellé inclusif
+                val = _occupation_selon_genre(val, "femin" in _normalise(str(sexe[1])))
+        if "était" in gabarit and not _lookup_cell("annee_deces_personne", ent):
+            gabarit = gabarit.replace("était", "est")              # vivant -> présent (« était » implique un décès)
         return (gabarit % (aff[:1].upper() + aff[1:], val)) + "."
     return None
 
@@ -6843,7 +7197,11 @@ def _guerit_entree(texte: str) -> str:
     # un voisin valide (« plan »), corrompant le SENS. On protège AUSSI tout mot ayant une DÉFINITION dans
     # definition_nom (292k noms) : s'il est défini, c'est un vrai mot -> jamais corrigé. (est_un.definition =
     # lookup d'offset rapide ; mémoïsé par mot pour ne pas relire le disque à chaque token.)
+    # ⚠ pluriels COURTS : _singulier_fr laisse les mots ≤4 lettres intacts (protège « pas »/« os ») -> « mots »
+    # n'était pas reconnu comme pluriel de « mot » et se faisait « guérir » en « mode » (vécu 2026-07-08).
+    # Un mot de ≥4 lettres en -s/-x dont le RADICAL est un nom du lexique est un vrai pluriel -> jamais corrigé.
     gate = (lambda mn: mn in _PROTEGES or mn in noms or _singulier_fr(mn) in noms
+            or (len(mn) >= 4 and mn[-1] in "sx" and mn[:-1] in noms)
             or _fait_forme_verbale(mn, verbes) or _mot_defini(mn)) if (noms or verbes) else None
     return _CO.guerit(texte, vn, pi, gate)
 
@@ -7094,8 +7452,8 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
-                 ("localisation", _cap_localisation), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
-                 ("contraire", _cap_contraire), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
+                 ("localisation", _cap_localisation), ("jeux", _cap_jeux), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
+                 ("contraire", _cap_contraire), ("texte", _cap_texte), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
                  ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),
@@ -7200,6 +7558,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     #   en une entité VÉRIFIÉE E, puis l'OUTER (X de E). FAUX=0 : chaque maillon est un lookup vérifié, abstention
     #   si un maillon manque. (Avant, on refusait tout — « monnaie de la capitale de la France » restait sans
     #   réponse ; désormais « population de la capitale de la France » = population de Paris, composée.)
+    #   EXCEPTION SÛRE à la garde négation (2026-07-08) : la VÉRIFICATION d'une négation (« la capitale de la
+    #   France n'est pas Lyon, si ? ») est traitée par _oui_non — qui ne confirme que du VÉRIFIÉ (« Si — X est
+    #   bien Y ») ou sert le fait vérifié EXPLICITEMENT CADRÉ (« Ce que j'ai de vérifié : … »), jamais un lookup
+    #   positif nu servi comme réponse à la négation.
+    if pleine and _negation_bloquante(t):
+        rep = _oui_non(t)
+        if rep:
+            return rep
     if pleine and not _negation_bloquante(t) and _est_relation_imbriquee(t) and not _est_causale(t):
         _comp = _compose_relations_n(t) or _compose_relations(t)     # N-sauts d'abord ; 2-sauts en repli
         if _comp:
@@ -7492,5 +7858,14 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         _att = None
     if _att:
         return _att
+    # DEMANDE IMPÉRATIVE NON TRAITÉE (« équilibre la réaction H2+O2->H2O », « range mes fichiers ») : un ORDRE
+    # qu'aucun cap n'a su exécuter n'est PAS une affirmation à mémoriser (« C'est noté » = garbage vécu). On
+    # donne le repli HONNÊTE (ce que j'ai compris + ce que je sais faire) au lieu du mémo. Carte FERMÉE de verbes
+    # d'ACTION en tête ; les verbes de MÉMORISATION (note, retiens, rappelle…) restent des mémos légitimes.
+    if _est_demande_imperative(texte):
+        try:
+            return _TRONC.repli(texte)
+        except Exception:
+            return f"{_MSG_INCONNU_PREFIXE}."
     # accuser réception (le message vient d'être stocké : c'est VRAI, donc sound).
     return _varie("note", texte, _MSG_NOTE)

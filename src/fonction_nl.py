@@ -166,11 +166,43 @@ _CONV_UNITS = {
     "kg": ("M", 1000.0), "kilogramme": ("M", 1000.0), "kilogrammes": ("M", 1000.0),
     "tonne": ("M", 1_000_000.0), "tonnes": ("M", 1_000_000.0),
     # temps (base = seconde)
+    "milliseconde": ("T", 0.001), "millisecondes": ("T", 0.001),
     "seconde": ("T", 1.0), "secondes": ("T", 1.0),
     "min": ("T", 60.0), "minute": ("T", 60.0), "minutes": ("T", 60.0),
     "heure": ("T", 3600.0), "heures": ("T", 3600.0),
-    "jour": ("T", 86400.0), "jours": ("T", 86400.0),
+    "jour": ("T", 86400.0), "jours": ("T", 86400.0), "journee": ("T", 86400.0), "journees": ("T", 86400.0),
     "semaine": ("T", 604800.0), "semaines": ("T", 604800.0),
+    # volume (base = litre ; m³/cm³ par définition du litre = 1 dm³)
+    "ml": ("V", 0.001), "millilitre": ("V", 0.001), "millilitres": ("V", 0.001),
+    "cl": ("V", 0.01), "centilitre": ("V", 0.01), "centilitres": ("V", 0.01),
+    "dl": ("V", 0.1), "decilitre": ("V", 0.1), "decilitres": ("V", 0.1),
+    "l": ("V", 1.0), "litre": ("V", 1.0), "litres": ("V", 1.0),
+    "hectolitre": ("V", 100.0), "hectolitres": ("V", 100.0),
+    "m3": ("V", 1000.0), "metre cube": ("V", 1000.0), "metres cubes": ("V", 1000.0),
+    "cm3": ("V", 0.001), "centimetre cube": ("V", 0.001), "centimetres cubes": ("V", 0.001),
+    # aire (base = m² ; hectare/are = définitions exactes)
+    "m2": ("A", 1.0), "metre carre": ("A", 1.0), "metres carres": ("A", 1.0),
+    "cm2": ("A", 0.0001), "centimetre carre": ("A", 0.0001), "centimetres carres": ("A", 0.0001),
+    "km2": ("A", 1_000_000.0), "kilometre carre": ("A", 1_000_000.0), "kilometres carres": ("A", 1_000_000.0),
+    "hectare": ("A", 10000.0), "hectares": ("A", 10000.0), "ha": ("A", 10000.0),
+    "are": ("A", 100.0), "ares": ("A", 100.0),
+    # longueurs impériales (définitions légales exactes : 1 pied = 0,3048 m ; 1 pouce = 0,0254 m)
+    "pied": ("L", 0.3048), "pieds": ("L", 0.3048), "pouce": ("L", 0.0254), "pouces": ("L", 0.0254),
+    "yard": ("L", 0.9144), "yards": ("L", 0.9144), "mile": ("L", 1609.344), "miles": ("L", 1609.344),
+    # données (préfixes SI DÉCIMAUX : 1 Go = 1000 Mo — les préfixes binaires Gio/Mio valent 1024, dit en source)
+    "octet": ("D", 1.0), "octets": ("D", 1.0),
+    "ko": ("D", 1000.0), "kilooctet": ("D", 1000.0), "kilooctets": ("D", 1000.0),
+    "mo": ("D", 1_000_000.0), "megaoctet": ("D", 1_000_000.0), "megaoctets": ("D", 1_000_000.0),
+    "go": ("D", 1_000_000_000.0), "gigaoctet": ("D", 1_000_000_000.0), "gigaoctets": ("D", 1_000_000_000.0),
+    "to": ("D", 1_000_000_000_000.0), "teraoctet": ("D", 1_000_000_000_000.0), "teraoctets": ("D", 1_000_000_000_000.0),
+    # vitesse (base = m/s ; km/h = 1000/3600 exact ; nœud = 1852 m/h, définition légale du mille marin).
+    # Clés AVEC « / » (la normalisation locale le préserve) ET sans (formes parlées).
+    "m/s": ("S", 1.0), "km/h": ("S", 1000.0 / 3600.0),
+    "m s": ("S", 1.0), "metre par seconde": ("S", 1.0), "metres par seconde": ("S", 1.0),
+    "km h": ("S", 1000.0 / 3600.0), "kmh": ("S", 1000.0 / 3600.0),
+    "kilometre par heure": ("S", 1000.0 / 3600.0), "kilometres par heure": ("S", 1000.0 / 3600.0),
+    "kilometre heure": ("S", 1000.0 / 3600.0), "kilometres heure": ("S", 1000.0 / 3600.0),
+    "noeud": ("S", 1852.0 / 3600.0), "noeuds": ("S", 1852.0 / 3600.0),
 }
 # alternance longest-first : « kilometre » avant « metre » avant « m » ; « secondes » avant « s ».
 _UNIT_ALT = "|".join(sorted((re.escape(u) for u in _CONV_UNITS), key=len, reverse=True))
@@ -187,10 +219,32 @@ def _fmt_nombre(val: float) -> str:
     return ("%.6f" % val).rstrip("0").rstrip(".")
 
 
+def _norm_conv(s: str) -> str:
+    """Normalisation LOCALE des conversions : accents/casse comme normalise(), mais PRÉSERVE « , . / » —
+    normalise() les mange, ce qui tronquait « 1,5 heures » en « 5 heures » (300 min servi pour 90, FAUX vécu
+    2026-07-08) et cassait « km/h »."""
+    import unicodedata
+    s = unicodedata.normalize("NFD", s.lower())
+    s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    return re.sub(r"\s+", " ", s)
+
+
 def resout_conversion(question: str):
     """Convertit entre 2 unités de MÊME dimension (table fermée, exacte). (VERIFIE, texte, source) ou (HORS,None,None).
     FAUX=0 : unité inconnue ou dimensions différentes -> HORS. Ne fire que sur un motif de conversion explicite."""
-    q = normalise(question)                          # accents/casse -> clés de table normalisées
+    q = _norm_conv(question)                         # accents/casse normalisés, décimales et « / » PRÉSERVÉS
+    # « X <unité> et demie / et quart / et trois quarts » -> X.5 / X.25 / X.75 (« 2 heures et demie » valait
+    # 2 heures : 7200 s servi pour 9000, FAUX vécu 2026-07-08). Réécriture AVANT le motif de conversion.
+    q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+trois\s+quarts?\b",
+               lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.75, m.group(2)), q)
+    q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+demie?s?\b",
+               lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.5, m.group(2)), q)
+    q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+quarts?\b",
+               lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.25, m.group(2)), q)
+    # SEMAINES DANS UNE ANNÉE : durée VARIABLE (365/366 j) -> réponse composée honnête, pas un facteur menteur.
+    if re.search(r"semaines?\s+dans\s+(?:une?\s+|l['’]\s*)?annee", q):
+        return (VERIFIE, "52 semaines et 1 jour (année de 365 jours) ; 52 semaines et 2 jours si bissextile (366).",
+                "calendrier — 365 = 52×7 + 1")
     m = _CONV_EN.search(q)
     if m:
         num = float(m.group(1).replace(",", ".")); src = m.group(2).lower(); dst = m.group(3).lower()
@@ -203,7 +257,10 @@ def resout_conversion(question: str):
     if not du or not tu or du[0] != tu[0]:           # unité inconnue OU dimensions différentes -> HORS (jamais faux)
         return (HORS, None, None)
     val = num * du[1] / tu[1]
-    return (VERIFIE, f"{_fmt_nombre(val)} {dst}", "conversion d'unités (facteurs exacts, même dimension)")
+    affiche = {"m s": "m/s", "km h": "km/h", "kmh": "km/h"}.get(dst, dst)   # normalise() a mangé le « / »
+    src_lib = ("conversion de données (préfixes SI décimaux : 1 Go = 1000 Mo ; les préfixes binaires Gio/Mio "
+               "valent 1024)") if du[0] == "D" else "conversion d'unités (facteurs exacts, même dimension)"
+    return (VERIFIE, f"{_fmt_nombre(val)} {affiche}", src_lib)
 
 
 # ————————————————————————————————— ARITHMÉTIQUE (entiers, résultat EXACT uniquement) —————————————————————————————————
@@ -274,6 +331,195 @@ def _deux_entiers(question: str):
     return [int(x) for x in re.findall(r"\d+", question)]
 
 
+# Nombre -> LETTRES françaises (orthographe TRADITIONNELLE : traits d'union sous 100 seulement ; « et un » à
+# 21/31/41/51/61/71 ; « quatre-vingts »/« cents » avec s quand rien ne suit ; « mille » invariable). Convention
+# orthographique fermée — ancres vérifiées à la main dans le banc (0, 21, 71, 80, 81, 91, 200, 201, 1984…).
+_UNITES_FR_L = ["zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit", "neuf", "dix",
+                "onze", "douze", "treize", "quatorze", "quinze", "seize"]
+_DIZAINES_FR_L = {20: "vingt", 30: "trente", 40: "quarante", 50: "cinquante", 60: "soixante"}
+
+
+def _moins_de_cent(n: int) -> str:
+    if n <= 16:
+        return _UNITES_FR_L[n]
+    if n < 20:
+        return "dix-" + _UNITES_FR_L[n - 10]
+    if n < 70:
+        d, u = divmod(n, 10)
+        if u == 0:
+            return _DIZAINES_FR_L[d * 10]
+        if u == 1:
+            return _DIZAINES_FR_L[d * 10] + " et un"
+        return _DIZAINES_FR_L[d * 10] + "-" + _UNITES_FR_L[u]
+    if n < 80:                                        # 70-79 : soixante-dix… (71 = soixante et onze)
+        return "soixante et onze" if n == 71 else "soixante-" + _moins_de_cent(n - 60)
+    if n == 80:
+        return "quatre-vingts"
+    return "quatre-vingt-" + _moins_de_cent(n - 80)   # 81-99 (jamais « et » : quatre-vingt-un)
+
+
+def _nombre_en_lettres(n: int) -> str:
+    """0..999999 en toutes lettres (orthographe traditionnelle)."""
+    if n < 100:
+        return _moins_de_cent(n)
+    if n < 1000:
+        c, r = divmod(n, 100)
+        tete = "cent" if c == 1 else _UNITES_FR_L[c] + " cent"
+        if r == 0:
+            return tete + ("s" if c > 1 else "")      # deux cents, mais deux cent un
+        return tete + " " + _moins_de_cent(r)
+    m, r = divmod(n, 1000)
+    tete = "mille" if m == 1 else _nombre_en_lettres(m) + " mille"    # mille INVARIABLE
+    if m > 1 and tete.endswith("quatre-vingts mille"):
+        tete = tete.replace("quatre-vingts mille", "quatre-vingt mille")   # vingts perd son s devant mille
+    if m > 1 and tete.endswith("cents mille"):
+        tete = tete.replace("cents mille", "cent mille")
+    return tete if r == 0 else tete + " " + _nombre_en_lettres(r)
+
+
+# Numération romaine : PAIRES canoniques de la notation soustractive, construites sur les symboles VÉRIFIÉS du
+# lecteur (chiffre_romain, CAT_CONVENTION). Round-trip complet 1..3999 épinglé au banc.
+_ROMAIN_PAIRES = [(1000, "M"), (900, "CM"), (500, "D"), (400, "CD"), (100, "C"), (90, "XC"),
+                  (50, "L"), (40, "XL"), (10, "X"), (9, "IX"), (5, "V"), (4, "IV"), (1, "I")]
+
+
+def _en_romain(n: int) -> str:
+    out = []
+    for v, s in _ROMAIN_PAIRES:
+        while n >= v:
+            out.append(s)
+            n -= v
+    return "".join(out)
+
+
+def _depuis_romain(s: str):
+    """Valeur d'un nombre romain CANONIQUE, sinon None (« IIII », « VX », ou un mot qui n'en est pas un —
+    « CIVIL » a tous ses caractères dans l'alphabet romain). Validation par ROUND-TRIP : on reconvertit la
+    valeur lue et on exige l'égalité stricte -> seule l'écriture canonique est acceptée (FAUX=0)."""
+    vals = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
+    total, prec = 0, 0
+    for c in reversed(s):
+        v = vals.get(c)
+        if v is None:
+            return None
+        total += v if v >= prec else -v
+        prec = max(prec, v)
+    return total if 1 <= total <= 3999 and _en_romain(total) == s else None
+
+
+def _resout_geometrie(q: str):
+    """GÉOMÉTRIE simple en NL sur la question NORMALISÉE — « aire d'un cercle de rayon 3 », « périmètre d'un
+    carré de côté 4 », « aire d'un rectangle de 3 par 5 », « aire d'un triangle de base 6 et hauteur 4 »,
+    « hypoténuse d'un triangle rectangle de côtés 3 et 4 », « volume d'un cube de côté 2 / d'une sphère de rayon 2 ».
+    Briques : geometrie2d.Cercle/Polygone/Point, geometrie3d.cube ; la sphère est la seule formule directe
+    (4/3·π·r³, mathématique sûre — pas de brique sphère). GARDE anti-faux-positif : exige le mot de MESURE
+    (aire/périmètre/circonférence/volume/hypoténuse) + le mot de FIGURE + sa DIMENSION chiffrée — « aire
+    urbaine », « périmètre de sécurité », « volume sonore » ne déclenchent rien. Renvoie un triplet ou None."""
+    if not re.search(r"\b(aire|surface|perimetre|circonference|volume|hypotenuse)\b", q):
+        return None
+    try:
+        from geometrie2d import Cercle, Polygone, Point
+    except Exception:
+        return None
+
+    def dim(mot):
+        m = re.search(mot + r"s?\s+(?:de\s+|d['’]\s*|:\s*)?(-?\d+(?:[.,]\d+)?)", q)
+        return float(m.group(1).replace(",", ".")) if m else None
+
+    aire = re.search(r"\b(aire|surface)\b", q) is not None
+    perim = re.search(r"\b(perimetre|circonference)\b", q) is not None
+
+    # CERCLE / DISQUE (rayon ou diamètre)
+    if re.search(r"\b(cercle|disque)\b", q) and (aire or perim):
+        r = dim("rayon")
+        if r is None:
+            d = dim("diametre")
+            r = d / 2.0 if d is not None else None
+        if r is not None and r >= 0:
+            c = Cercle(Point(0.0, 0.0), r)
+            if aire:
+                return (VERIFIE, _fmt_nombre(round(c.aire(), 4)), "géométrie — aire du disque (π·r²)")
+            return (VERIFIE, _fmt_nombre(round(c.perimetre(), 4)), "géométrie — circonférence (2·π·r)")
+
+    # CARRÉ (côté)
+    if "carre" in q and (aire or perim):
+        c = dim("cote")
+        if c is not None and c >= 0:
+            p = Polygone([(0.0, 0.0), (c, 0.0), (c, c), (0.0, c)])
+            if aire:
+                return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du carré")
+            return (VERIFIE, _fmt_nombre(p.perimetre()), "géométrie — périmètre du carré")
+
+    # RECTANGLE (« longueur 5 et largeur 3 » ou « de 3 par 5 »)
+    if "rectangle" in q and (aire or perim):
+        L, l = dim("longueur"), dim("largeur")
+        if L is None or l is None:
+            m2 = re.search(r"(-?\d+(?:[.,]\d+)?)\s*(?:par|x|×|sur)\s*(-?\d+(?:[.,]\d+)?)", q)
+            if m2:
+                L, l = float(m2.group(1).replace(",", ".")), float(m2.group(2).replace(",", "."))
+        if L is not None and l is not None and L >= 0 and l >= 0:
+            p = Polygone([(0.0, 0.0), (L, 0.0), (L, l), (0.0, l)])
+            if aire:
+                return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du rectangle")
+            return (VERIFIE, _fmt_nombre(p.perimetre()), "géométrie — périmètre du rectangle")
+
+    # TRIANGLE : aire par base × hauteur (l'aire ne dépend pas de la position de l'apex — triangle rectangle posé)
+    if "triangle" in q and aire:
+        b, h = dim("base"), dim("hauteur")
+        if b is not None and h is not None and b >= 0 and h >= 0:
+            p = Polygone([(0.0, 0.0), (b, 0.0), (0.0, h)])
+            return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du triangle (base×hauteur/2)")
+
+    # TRIANGLE : périmètre par les 3 côtés — SEULEMENT si l'inégalité triangulaire tient (côtés 1, 1, 5 :
+    # ce triangle n'existe pas -> abstention, pas une somme aveugle).
+    if "triangle" in q and perim and "cote" in q:
+        nums = [float(x.replace(",", ".")) for x in re.findall(r"\d+(?:[.,]\d+)?", q)]
+        if len(nums) == 3 and all(n > 0 for n in nums):
+            a, b, c = sorted(nums)
+            if a + b > c:
+                return (VERIFIE, _fmt_nombre(a + b + c), "géométrie — périmètre du triangle (somme des côtés)")
+            return None                               # triangle impossible -> abstention honnête
+
+    # LOSANGE : aire par les diagonales (sommets sur les axes -> brique Polygone, d1·d2/2)
+    if "losange" in q and aire:
+        md = re.search(r"diagonales?\s+(?:de\s+)?(\d+(?:[.,]\d+)?)\s+et\s+(?:de\s+)?(\d+(?:[.,]\d+)?)", q)
+        if md:
+            d1, d2 = float(md.group(1).replace(",", ".")), float(md.group(2).replace(",", "."))
+            if d1 > 0 and d2 > 0:
+                p = Polygone([(d1 / 2, 0.0), (0.0, d2 / 2), (-d1 / 2, 0.0), (0.0, -d2 / 2)])
+                return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du losange (d₁·d₂/2)")
+
+    # HYPOTÉNUSE d'un triangle rectangle (les deux côtés = les deux derniers nombres de la phrase)
+    if "hypotenuse" in q:
+        nums = [float(x.replace(",", ".")) for x in re.findall(r"-?\d+(?:[.,]\d+)?", q)]
+        if len(nums) >= 2 and nums[-2] > 0 and nums[-1] > 0:
+            d = Point(0.0, 0.0).distance(Point(nums[-2], nums[-1]))
+            return (VERIFIE, _fmt_nombre(round(d, 4)), "géométrie — hypoténuse (Pythagore)")
+
+    # VOLUMES : cube (brique geometrie3d.cube) et sphère (formule mathématique directe)
+    if "volume" in q:
+        if "cube" in q:
+            c = dim("cote")
+            if c is None:
+                c = dim("arete")
+            if c is not None and c >= 0:
+                try:
+                    from geometrie3d import cube as _cube
+                    return (VERIFIE, _fmt_nombre(round(_cube(c).volume(), 4)), "géométrie — volume du cube")
+                except Exception:
+                    return None
+        if "sphere" in q or "boule" in q:
+            r = dim("rayon")
+            if r is None:
+                d = dim("diametre")
+                r = d / 2.0 if d is not None else None
+            if r is not None and r >= 0:
+                import math as _math
+                return (VERIFIE, _fmt_nombre(round(4.0 / 3.0 * _math.pi * r ** 3, 4)),
+                        "géométrie — volume de la sphère (4/3·π·r³)")
+    return None
+
+
 def resout_math(question: str):
     """MATHS DISCRÈTES / ARITHMÉTIQUE / TRIGO en NL — capacités RÉELLES (arithmetique_modulaire, maths_discretes,
     trigonometrie) rendues atteignables par une phrase (mandat « tout câbler », 2026-07-08). Renvoie
@@ -308,6 +554,63 @@ def resout_math(question: str):
         except Exception:
             return (HORS, None, None)
 
+    # POURCENTAGES APPLIQUÉS (arithmétique exacte). ⚠ sur la question BRUTE : normalise() efface le « % ».
+    # La réponse MONTRE le calcul (« 64 (80 − 20 % = 80 − 16) ») : lève l'ambiguïté remise/prix final.
+    _PCT = r"(\d+(?:[.,]\d+)?)"
+    _f = lambda g: float(g.replace(",", "."))
+    mred = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+(?:r[ée]duction|remise|rabais)\s+sur\s+{_PCT}",
+                      question, re.I)
+            or re.search(rf"(?:r[ée]duction|remise|rabais)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}",
+                         question, re.I))
+    if mred:
+        p, base = _f(mred.group(1)), _f(mred.group(2))
+        return (VERIFIE, "%s (%s − %s %% = %s − %s)" % (_fmt_nombre(base * (1 - p / 100.0)), _fmt_nombre(base),
+                                                        _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
+                "calcul — prix après réduction")
+    maug = (re.search(rf"augmente[rz]?\s+{_PCT}\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I)
+            or re.search(rf"{_PCT}\s+augment[ée]e?s?\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I))
+    maug_inv = None if maug else re.search(
+        rf"(?:hausse|augmentation)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}", question, re.I)
+    if maug or maug_inv:
+        base, p = (_f(maug.group(1)), _f(maug.group(2))) if maug else (_f(maug_inv.group(2)), _f(maug_inv.group(1)))
+        return (VERIFIE, "%s (%s + %s %% = %s + %s)" % (_fmt_nombre(base * (1 + p / 100.0)), _fmt_nombre(base),
+                                                        _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
+                "calcul — valeur après augmentation")
+    mpart = re.search(rf"{_PCT}\s+(?:est|repr[ée]sente|fait)\s+quel\s+pourcentage\s+de\s+{_PCT}", question, re.I)
+    mpart_inv = None if mpart else re.search(
+        rf"quel\s+pourcentage\s+de\s+{_PCT}\s+(?:repr[ée]sente|fait)\s+{_PCT}", question, re.I)
+    if mpart or mpart_inv:
+        part, tout = (_f(mpart.group(1)), _f(mpart.group(2))) if mpart else (_f(mpart_inv.group(2)), _f(mpart_inv.group(1)))
+        if tout == 0:
+            return (HORS, None, None)
+        return (VERIFIE, _fmt_nombre(part / tout * 100.0) + " %",
+                "calcul — part en pourcentage (%s sur %s)" % (_fmt_nombre(part), _fmt_nombre(tout)))
+
+    # CHIFFRES ROMAINS (convention de numération, symboles = table lecteur._CHIFFRE_ROMAIN ; notation
+    # soustractive canonique). EXACT dans les deux sens, round-trippé au banc sur 1..3999 ; hors plage ou
+    # forme NON canonique (« IIII ») -> abstention.
+    # NOMBRE EN TOUTES LETTRES : « écris 1984 en lettres » (convention orthographique traditionnelle, dite).
+    mnl = re.search(r"(\d+)\s+en\s+(?:toutes\s+)?lettres", q)
+    if mnl:
+        n = int(mnl.group(1))
+        if 0 <= n <= 999999:
+            return (VERIFIE, "%s (orthographe traditionnelle)" % _nombre_en_lettres(n),
+                    "numération française — nombre en toutes lettres")
+        return (HORS, None, None)
+
+    mrom = re.search(r"(\d+)\s+en\s+(?:chiffres?\s+)?romains?", q)
+    if mrom:
+        n = int(mrom.group(1))
+        if 1 <= n <= 3999:
+            return (VERIFIE, _en_romain(n), "numération romaine (convention, symboles du lecteur)")
+        return (HORS, None, None)
+    mrom2 = re.search(r"\b([ivxlcdm]+)\b\s+en\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q)
+    if mrom2:
+        n = _depuis_romain(mrom2.group(1).upper())
+        if n is not None:
+            return (VERIFIE, str(n), "numération romaine (convention, symboles du lecteur)")
+        return (HORS, None, None)
+
     # POURCENTAGE : « 20% de 150 », « 20 pour cent de 150 » -> 30 (arithmétique exacte, sans module tiers).
     mp = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour ?cent(?:s)?|pourcent)\s+(?:de|du|des|d['’]|sur)\s+(\d+(?:[.,]\d+)?)",
                    question, re.I)
@@ -316,12 +619,186 @@ def resout_math(question: str):
         v = p / 100.0 * base
         return (VERIFIE, _fmt_nombre(v), "calcul — pourcentage")
 
+    # VALEUR ABSOLUE : « valeur absolue de -5 » -> 5 (natif, exact).
+    mabs = re.search(r"valeur\s+absolue\s+(?:de\s+|d['’])?(-?\d+(?:[.,]\d+)?)", question, re.I)
+    if mabs:
+        return (VERIFIE, _fmt_nombre(abs(float(mabs.group(1).replace(",", ".")))), "valeur absolue")
+
+    # RACINE CUBIQUE : « racine cubique de 27 » -> 3 — cube PARFAIT seulement, sinon abstention (cohérent avec
+    # la racine carrée exacte de resout_arithmetique : JAMAIS un arrondi servi comme exact).
+    mrc = re.search(r"racine\s+cubique\s+(?:de\s+|d['’])?(-?\d+)\b", question, re.I)
+    if mrc:
+        n = int(mrc.group(1))
+        r0 = round(abs(n) ** (1.0 / 3.0)) if n else 0
+        r = next((k for k in (r0 - 1, r0, r0 + 1) if k >= 0 and k ** 3 == abs(n)), None)
+        if r is None:
+            return (HORS, None, None)
+        return (VERIFIE, str(-r if n < 0 else r), "calcul — racine cubique exacte")
+
+    # LOGARITHME en base EXPLICITE : « log de 100 en base 10 » -> 2 — exposant ENTIER exact seulement (base
+    # non dite ou résultat non entier -> abstention : on ne devine pas ln/log10, on n'arrondit pas).
+    mlg = re.search(r"log(?:arithme)?\s+(?:de\s+|d['’])?(\d+)\s+en\s+base\s+(\d+)", question, re.I)
+    if mlg:
+        n, b = int(mlg.group(1)), int(mlg.group(2))
+        if n >= 1 and b >= 2:
+            k, p = 0, 1
+            while p < n:
+                p *= b
+                k += 1
+            if p == n:
+                return (VERIFIE, str(k), "calcul — logarithme exact (base %d)" % b)
+        return (HORS, None, None)
+
+    # ARRONDI / PARTIE ENTIÈRE / PLANCHER / PLAFOND : opérations EXACTES par définition sur le nombre donné.
+    # Arrondi = demi-supérieur (convention française : 2,5 -> 3, jamais l'arrondi bancaire de round()).
+    # Partie entière = définition MATHÉMATIQUE (plancher) : E(-2,3) = -3, étiquetée pour lever l'ambiguïté.
+    mar = re.search(r"\b(arrondi[st]?|partie\s+entiere|plancher|plafond)\b", q)
+    if mar:
+        mnum = re.search(r"(-?\d+[.,]\d+)", question)    # exige un DÉCIMAL (« plafond de 3 mètres » ne matche pas)
+        if mnum:
+            from decimal import Decimal, ROUND_HALF_UP, ROUND_FLOOR, ROUND_CEILING
+            x = Decimal(mnum.group(1).replace(",", "."))
+            op = mar.group(1)
+            if op.startswith("arrondi"):
+                mdec = re.search(r"a\s+(\d+)\s+decimales?", q)
+                if "superieur" in q:
+                    return (VERIFIE, str(x.to_integral_value(rounding=ROUND_CEILING)), "calcul — arrondi supérieur")
+                if "inferieur" in q:
+                    return (VERIFIE, str(x.to_integral_value(rounding=ROUND_FLOOR)), "calcul — arrondi inférieur")
+                if mdec:
+                    quantum = Decimal(1).scaleb(-int(mdec.group(1)))
+                    return (VERIFIE, str(x.quantize(quantum, rounding=ROUND_HALF_UP)),
+                            "calcul — arrondi à %s décimale(s)" % mdec.group(1))
+                return (VERIFIE, str(x.to_integral_value(rounding=ROUND_HALF_UP)), "calcul — arrondi (demi-supérieur)")
+            if op == "plafond":
+                return (VERIFIE, str(x.to_integral_value(rounding=ROUND_CEILING)), "calcul — plafond (entier supérieur)")
+            return (VERIFIE, str(x.to_integral_value(rounding=ROUND_FLOOR)),
+                    "calcul — partie entière (plancher : E(-2,3) = -3)")
+
+    # CONVERSION DE BASE (binaire/octal/hexadécimal <-> décimal ; conversion MÉCANIQUE exacte, natif Python).
+    # « convertis 42 en binaire », « 42 en hexadécimal », « 1010 binaire en décimal », « 2A hexadécimal en décimal ».
+    _BASES = {"binaire": 2, "binaires": 2, "octal": 8, "octale": 8, "hexadecimal": 16, "hexadecimale": 16, "hexa": 16}
+    m_dec = re.search(r"\b([0-9a-fA-F]+)\s+(binaires?|octale?|hexad[eé]cimale?|hexa)\s+en\s+d[eé]cimal", question, re.I)
+    if m_dec:
+        base = _BASES.get(normalise(m_dec.group(2)), None)
+        try:
+            return (VERIFIE, str(int(m_dec.group(1), base)), "conversion base %d -> décimal" % base)
+        except (ValueError, TypeError):
+            return (HORS, None, None)
+    m_base = re.search(r"\b(\d+)\s+en\s+(binaire|octale?|hexad[eé]cimale?|hexa)\b", question, re.I)
+    if m_base:
+        base = _BASES.get(normalise(m_base.group(2)), None)
+        n = int(m_base.group(1))
+        out = {2: bin, 8: oct, 16: hex}[base](n)[2:].upper()
+        return (VERIFIE, out, "conversion décimal -> base %d" % base)
+
+    # INVERSE MODULAIRE : « inverse de 7 modulo 13 » -> 2 (arithmetique_modulaire, exact ; None si non inversible).
+    minv = re.search(r"inverse\s+(?:de\s+|d['’])?(\d+)\s+modulo\s+(\d+)", question, re.I)
+    if minv:
+        try:
+            return (VERIFIE, str(_AM.inverse_modulaire(int(minv.group(1)), int(minv.group(2)))),
+                    "arithmétique modulaire — inverse")
+        except Exception:
+            return (HORS, None, None)                    # non inversible (pgcd≠1) -> abstention honnête
+
     # PGCD / PPCM : « pgcd de 12 et 18 », « ppcm de 4 et 6 » (2 entiers requis).
     if ("pgcd" in qtoks or "diviseur" in q and "commun" in q) and len(ent) >= 2:
         return (VERIFIE, str(_AM.pgcd(ent[0], ent[1])), "arithmétique — PGCD (Euclide)")
     if ("ppcm" in qtoks or "multiple" in q and "commun" in q) and len(ent) >= 2:
         g = _AM.pgcd(ent[0], ent[1])
         return (VERIFIE, str(ent[0] * ent[1] // g) if g else "0", "arithmétique — PPCM")
+
+    # VÉRIFICATIONS NUMÉRIQUES exactes : pair/impair, divisible par, multiple de, carré parfait.
+    # (La garde de resolution.py renvoie ces « est-ce que <nombre> est … » ici — on y répond VRAIMENT.)
+    mvn = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+(?:un\s+nombre\s+)?(pair|impair)e?\b", q) \
+        or (re.search(r"est[- ]ce\s+que\s+(\d+)\s+est\s+(?:un\s+nombre\s+)?(pair|impair)e?\b", q))
+    if mvn:
+        n, quoi = int(mvn.group(1)), mvn.group(2)
+        est = (n % 2 == 0) if quoi == "pair" else (n % 2 == 1)
+        return (VERIFIE, ("Oui, %d est %s." if est else "Non, %d n'est pas %s.") % (n, quoi),
+                "arithmétique — parité")
+    mdiv = re.search(r"(\d+)\s+(?:est(?:[- ](?:il|elle|ce))?\s+)?divisible\s+par\s+(\d+)", q)
+    if mdiv:
+        a, b = int(mdiv.group(1)), int(mdiv.group(2))
+        if b == 0:
+            return (VERIFIE, "La divisibilité par 0 n'est pas définie.", "arithmétique — divisibilité")
+        est = a % b == 0
+        return (VERIFIE, ("Oui, %d est divisible par %d (%d × %d)." % (a, b, b, a // b)) if est
+                else "Non, %d n'est pas divisible par %d (reste %d)." % (a, b, a % b),
+                "arithmétique — divisibilité")
+    mmu = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+un\s+multiple\s+de\s+(\d+)", q)
+    if mmu:
+        a, b = int(mmu.group(1)), int(mmu.group(2))
+        est = b != 0 and a % b == 0
+        return (VERIFIE, ("Oui, %d est un multiple de %d (%d × %d)." % (a, b, b, a // b)) if est
+                else "Non, %d n'est pas un multiple de %d." % (a, b), "arithmétique — multiples")
+    mcp = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+un\s+carr[ée]\s+parfait", q)
+    if mcp:
+        n = int(mcp.group(1))
+        r0 = math.isqrt(n)
+        return (VERIFIE, ("Oui, %d est un carré parfait (%d²)." % (n, r0)) if r0 * r0 == n
+                else "Non, %d n'est pas un carré parfait (%d² = %d, %d² = %d)."
+                % (n, r0, r0 * r0, r0 + 1, (r0 + 1) ** 2), "arithmétique — carrés parfaits")
+
+    # COMPARAISON DE FRACTIONS / ÉGALITÉ décimal-fraction : EXACTE via Fraction (jamais de flottant menteur).
+    # ⚠ sur la question BRUTE : normalise() mange le « / » (« 2/3 » -> « 2 3 »).
+    mfr = re.search(r"plus\s+grand\w*\s*:?\s*(\d+)\s*/\s*(\d+)\s+ou\s+(\d+)\s*/\s*(\d+)", question, re.I) \
+        or re.search(r"(\d+)\s*/\s*(\d+)\s+ou\s+(\d+)\s*/\s*(\d+).*plus\s+grand", question, re.I)
+    if mfr:
+        from fractions import Fraction
+        a = Fraction(int(mfr.group(1)), int(mfr.group(2)))
+        b = Fraction(int(mfr.group(3)), int(mfr.group(4)))
+        sa, sb = "%s/%s" % (mfr.group(1), mfr.group(2)), "%s/%s" % (mfr.group(3), mfr.group(4))
+        if a == b:
+            return (VERIFIE, "Ils sont égaux (%s = %s)." % (sa, sb), "arithmétique — fractions exactes")
+        return (VERIFIE, "%s est plus grand (%s %s %s)." % (sa if a > b else sb, sa, ">" if a > b else "<", sb),
+                "arithmétique — fractions exactes")
+    meg = re.search(r"(\d+(?:[.,]\d+)?)\s+est(?:[- ](?:il|elle|ce))?\s+[ée]gale?\s+[àa]\s+(\d+)\s*/\s*(\d+)", question, re.I)
+    if meg:
+        from fractions import Fraction
+        a = Fraction(meg.group(1).replace(",", "."))
+        b = Fraction(int(meg.group(2)), int(meg.group(3)))
+        return (VERIFIE, ("Oui, %s = %s/%s." % (meg.group(1), meg.group(2), meg.group(3))) if a == b
+                else "Non, %s ≠ %s/%s." % (meg.group(1), meg.group(2), meg.group(3)),
+                "arithmétique — fractions exactes")
+
+    # PRODUIT / DIFFÉRENCE / QUOTIENT nommés : « le produit de 4 et 25 » -> 100 (exact ; quotient exact seul).
+    mpr = re.search(r"\b(produit|difference|quotient)\s+(?:de\s+|d['’]\s*|entre\s+)(-?\d+)\s+et\s+(?:de\s+)?(-?\d+)", q)
+    if mpr:
+        op, a, b = mpr.group(1), int(mpr.group(2)), int(mpr.group(3))
+        if op == "produit":
+            return (VERIFIE, str(a * b), "arithmétique — produit")
+        if op == "difference":
+            return (VERIFIE, str(a - b), "arithmétique — différence")
+        if b != 0 and a % b == 0:
+            return (VERIFIE, str(a // b), "arithmétique — quotient exact")
+        return (HORS, None, None)                        # quotient non entier -> abstention (cohérent division)
+
+    # DIVISEURS d'un entier : énumération exacte (borne anti-DoS).
+    mdv = re.search(r"(?:les\s+)?diviseurs\s+(?:de\s+|d['’]\s*)(\d+)", q)
+    if mdv:
+        n = int(mdv.group(1))
+        if 1 <= n <= 10 ** 7:
+            divs = [d for d in range(1, math.isqrt(n) + 1) if n % d == 0]
+            tous = sorted(set(divs + [n // d for d in divs]))
+            return (VERIFIE, "%d a %d diviseurs : %s." % (n, len(tous), ", ".join(map(str, tous))),
+                    "arithmétique — diviseurs (énumération exacte)")
+        return (HORS, None, None)
+
+    # NOMBRE(S) PREMIER(S) DANS UN INTERVALLE : « un nombre premier entre 20 et 30 » -> 23, 29 (énumération
+    # exacte, AVANT la primalité simple — sinon « Non, 20 n'est pas premier » répondait à côté, FAUX vécu).
+    mpe = re.search(r"(?:nombres?\s+premiers?|premiers?)\s+entre\s+(\d+)\s+et\s+(\d+)", q)
+    if mpe:
+        a, b = int(mpe.group(1)), int(mpe.group(2))
+        if a > b:
+            a, b = b, a
+        if b - a <= 10000 and b <= 10 ** 9:
+            prems = [x for x in range(max(a, 2), b + 1) if _AM.est_premier(x)]
+            if not prems:
+                return (VERIFIE, "Aucun nombre premier entre %d et %d." % (a, b), "arithmétique — primalité")
+            return (VERIFIE, "Entre %d et %d : %s." % (a, b, ", ".join(map(str, prems))),
+                    "arithmétique — primalité (énumération exacte)")
+        return (HORS, None, None)
 
     # NOMBRE PREMIER : « est-ce que 17 est (un nombre) premier ? », « 18 est-il un nombre premier ? ». GARDE
     # anti-faux-positif : « premier » est un ordinal courant (« premier président de 1958 ») -> on exige soit
@@ -351,6 +828,85 @@ def resout_math(question: str):
     # SUITES : « fibonacci de 10 », « 10e nombre de Fibonacci »
     if "fibonacci" in qtoks and ent:
         return (VERIFIE, str(_MD.fibonacci(ent[0])), "suite de Fibonacci")
+
+    # NOMBRES COMPLEXES : « module de 3+4i », « conjugué de 2-3i », « argument de i » (module `nombres_complexes`,
+    # format tuple (ré, im)). Exige un mot-clé + un « i »/« j » d'unité imaginaire. FAUX=0 : calcul vérifié.
+    if ("complexe" in qtoks or "module" in qtoks or "conjugue" in qtoks or "argument" in qtoks) \
+            and re.search(r"\d\s*[ij]\b|[+-]\s*[ij]\b|\b[ij]\b", question):
+        s = question.replace(" ", "").replace(",", ".").lower()
+        mi = re.search(r"([+-]?\d*(?:\.\d+)?)[ij]\b", s)      # terme imaginaire (coef vide -> 1, « - » -> -1)
+        z = None
+        if mi:
+            coef = mi.group(1)
+            im_part = 1.0 if coef in ("", "+") else -1.0 if coef == "-" else float(coef)
+            mr = re.search(r"(-?\d+(?:\.\d+)?)$", s[:mi.start()])   # partie réelle = nombre juste avant le terme en i
+            re_part = float(mr.group(1)) if mr else 0.0
+            z = (re_part, im_part)
+        if z is not None:
+            try:
+                import nombres_complexes as _NC
+                if "module" in qtoks:
+                    return (VERIFIE, _fmt_nombre(_NC.module(z)), "nombres complexes — module")
+                if "argument" in qtoks:
+                    return (VERIFIE, _fmt_nombre(_NC.argument(z)) + " rad", "nombres complexes — argument")
+                if "conjugue" in qtoks:
+                    c = _NC.conjugue(z)
+                    im = c[1]
+                    return (VERIFIE, "%s %s %si" % (_fmt_nombre(c[0]), "+" if im >= 0 else "-", _fmt_nombre(abs(im))),
+                            "nombres complexes — conjugué")
+            except Exception:
+                return (HORS, None, None)
+
+    # ANNÉE BISSEXTILE (règle grégorienne EXACTE — convention). FAUX=0 vécu : « est-ce que 2024 est une année
+    # bissextile » servait « 2010 » (l'année du FILM « Année bissextile », lookup d'œuvre détourné).
+    mbi = re.search(r"(\d{1,6})\s+est(?:[- ](?:elle|il|ce))?\s+(?:une\s+)?(?:annee\s+)?bissextile"
+                    r"|annee\s+(\d{1,6})\s+est(?:[- ](?:elle|il))?\s+bissextile", q)
+    if mbi or ("bissextile" in q and re.search(r"est[- ]ce\s+que\s+(\d{1,6})", q)):
+        g = mbi.group(1) or mbi.group(2) if mbi else re.search(r"est[- ]ce\s+que\s+(\d{1,6})", q).group(1)
+        n = int(g)
+        biss = n % 4 == 0 and (n % 100 != 0 or n % 400 == 0)
+        return (VERIFIE, ("Oui, %d est bissextile" if biss else "Non, %d n'est pas bissextile") % n
+                + " (règle grégorienne : divisible par 4, sauf les siècles non divisibles par 400).",
+                "calendrier grégorien — règle bissextile")
+    mjan = re.search(r"(?:nombre|combien)\s+de\s+jours\s+(?:en|dans\s+l['’]?annee)\s+(\d{3,4})\b", q)
+    if mjan:
+        n = int(mjan.group(1))
+        biss = n % 4 == 0 and (n % 100 != 0 or n % 400 == 0)
+        return (VERIFIE, "%d jours (%d est %s)" % (366 if biss else 365, n,
+                                                   "bissextile" if biss else "non bissextile"),
+                "calendrier grégorien — règle bissextile")
+
+    # GÉOMÉTRIE SIMPLE : aire/périmètre/volume de figures nommées (modules geometrie2d/geometrie3d vérifiés).
+    geo = _resout_geometrie(q)
+    if geo:
+        return geo
+
+    # OPÉRATIONS NOMMÉES sur UN nombre : « double de 21 » -> 42, « moitié de 42 » -> 21, « carré de 12 » -> 144,
+    # « opposé de 7 » -> -7, « inverse de 4 » -> 0.25 (décimal FINI exigé : « inverse de 3 » -> abstention,
+    # jamais 0.333 servi comme exact ; « tiers » pareil). GARDE : jamais quand un mot de MESURE est là
+    # (« aire d'un carré de 4 » = géométrie, traitée au-dessus ; « périmètre d'un carré de 5 » ≠ 25).
+    if not re.search(r"\b(aire|surface|perimetre|circonference|volume|cote|rayon|modulo)\b", q):
+        mop = re.search(r"\b(double|triple|quadruple|moitie|tiers|quart|carre|cube|oppose|inverse)\s+"
+                        r"(?:de\s+|du\s+|d['’]\s*)(-?\d+(?:[.,]\d+)?)(?!\s*[a-z])", q)
+        if mop:
+            op, x = mop.group(1), float(mop.group(2).replace(",", "."))
+            from fractions import Fraction
+            fx = Fraction(mop.group(2).replace(",", "."))
+            simple = {"double": x * 2, "triple": x * 3, "quadruple": x * 4, "moitie": x / 2, "quart": x / 4,
+                      "carre": x * x, "cube": x ** 3, "oppose": -x}
+            if op in simple:
+                return (VERIFIE, _fmt_nombre(simple[op]), "calcul — %s" % op.replace("moitie", "moitié"))
+            frac = fx / 3 if op == "tiers" else (Fraction(1) / fx if fx != 0 else None)
+            if frac is None:
+                return (HORS, None, None)                      # inverse de 0 -> indéfini
+            d = frac.denominator
+            while d % 2 == 0:
+                d //= 2
+            while d % 5 == 0:
+                d //= 5
+            if d != 1:                                         # décimal infini -> abstention (jamais d'arrondi)
+                return (HORS, None, None)
+            return (VERIFIE, _fmt_nombre(float(frac)), "calcul — %s exact" % ("tiers" if op == "tiers" else "inverse"))
 
     # TRIGONOMÉTRIE : « sinus de 30 degrés », « cos de 60° », « tangente de 45 »
     mt = re.search(r"\b(sinus|sin|cosinus|cos|tangente|tan)\b.*?(-?\d+(?:[.,]\d+)?)", q)

@@ -58,9 +58,17 @@ for rel, t in L.LECTEUR.tables.items():
                 and isinstance(fait.source, str) and fait.source.strip() != ""):
             _mauvais_integrite = (rel, cle)
         if _mauvais_recup is None:
-            st, f = L.repond(rel, cle)
-            if not (st == VERIFIE and f.valeur == fait.valeur):
-                _mauvais_recup = (rel, cle)
+            # EXEMPTION documentée (FAUX=0 2026-07-08) : les nationalités JOINTES « X et Y » du dataset livré
+            # sont en QUARANTAINE au lookup (join tronqué par fréquence de corpus -> faux par omission) —
+            # délibérément NON récupérables jusqu'à la ré-ingestion (ingere_celebres joinmax P27 = 1).
+            if rel == "nationalite_personne" and " et " in fait.valeur:
+                st, f = L.repond(rel, cle)
+                if st != HORS:
+                    _mauvais_recup = (rel, cle)      # la quarantaine doit TENIR (jamais servi)
+            else:
+                st, f = L.repond(rel, cle)
+                if not (st == VERIFIE and f.valeur == fait.valeur):
+                    _mauvais_recup = (rel, cle)
 check(f"INTÉGRITÉ : tous les faits complets+typés (catégorie∈CATS, valeur/source non vides) "
       f"[contre-ex: {_mauvais_integrite}]", _mauvais_integrite is None)
 check(f"RÉCUPÉRABILITÉ : tout fait ingéré se retrouve via repond (VERIFIE+même valeur) "
@@ -1167,8 +1175,7 @@ for _rel in ("pays_aeroport", "pays_universite", "pays_lac", "pays_gare", "pays_
              "pays_carriere", "pays_viaduc",
              "pays_affleurement", "pays_escarpement", "pays_faille", "pays_karst", "pays_doline",
              "pays_crete",
-             "pays_bassin_sedimentaire",
-             "nationalite_personne"):
+             "pays_bassin_sedimentaire"):
     if _rel in L.LECTEUR.tables:
         _v = _vals(_rel)
         # « capitalisé » = contient une MAJUSCULE (nom propre), pas forcément en tête : les noms d'États français
@@ -1178,6 +1185,21 @@ for _rel in ("pays_aeroport", "pays_universite", "pays_lac", "pays_gare", "pays_
         # cap = ensemble borné « pays » (sanité anti-explosion homonymes) ; 260 couvre pays actuels + États
         # historiques (ROC, Sud-Vietnam, URSS, protectorats…) sans laisser passer une explosion (villes captées…).
         check(f"STRUCT {_rel} : <=260 pays distincts (ensemble borné)", len(set(_v)) <= 260)
+# NATIONALITÉ (P27) : la valeur n'est PAS un « pays actuel » — la citoyenneté couvre les polities HISTORIQUES
+# aux libellés Wikidata fidèles : minuscules légitimes en français (« califat abbasside », « royaume séleucide »),
+# désambiguïsation par années (« royaume de Norvège (872-1397) »). Le check « pays plausibles » (majuscule
+# requise, zéro chiffre, ≤260) était une SPEC FAUSSE pour cette relation — vécu 2026-07-08 : 12 valeurs
+# légitimes le cassaient. Invariants VRAIS : ≥3 car., chiffres UNIQUEMENT dans une parenthèse d'années, pas
+# d'explosion (≤2000 distinctes : ~1244 aujourd'hui). NB : les valeurs JOINTES « X et Y » restantes dans le
+# dataset livré sont mises en QUARANTAINE au lookup (join tronqué par fréquence de corpus = faux par omission).
+if "nationalite_personne" in L.LECTEUR.tables:
+    import re as _re_nat
+    _v = _vals("nationalite_personne")
+    _sans_annees = [_re_nat.sub(r"\(\d{1,4}[–-]\d{1,4}\)", "", c) for c in set(_v)]
+    check("STRUCT nationalite_personne : >=3 car., chiffres seulement en parenthèse d'années",
+          all(len(c) >= 3 for c in _v) and not any(any(ch.isdigit() for ch in c) for c in _sans_annees))
+    check("STRUCT nationalite_personne : <=2000 polities distinctes (anti-explosion)", len(set(_v)) <= 2000)
+
 # VEINES GÉNÉRALISÉES « X -> valeur d'un ENSEMBLE FERMÉ » (scout généralisé) : valeur non vide, ensemble borné.
 for _rel, _maxd in (("genre_film", 600), ("style_batiment", 600), ("langue_oeuvre", 200), ("tonalite_oeuvre", 64),
                     ("moteur_jeu_video", 2000), ("systeme_exploitation_logiciel", 400),
@@ -1200,13 +1222,17 @@ for _rel in ("lieu_naissance", "lieu_deces", "lieu_inhumation", "lieu_travail", 
         _v = _vals(_rel)
         # un VRAI lieu peut commencer par un chiffre (« 100 Mile House », « 10e arrondissement de Paris ») -> on
         # n'exige PAS « capitalisé/sans chiffre ». FAUX=0 vient du filtre `_est_lieu_plausible` à l'ingestion (rejette
-        # dates/années nues). Sanité ici = contient au moins une lettre + pas une date résiduelle (mois/année nue).
-        _mois = {"janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
-                 "septembre", "octobre", "novembre", "décembre"}
+        # dates/années nues). Sanité ici = contient au moins une lettre + pas une date résiduelle : la valeur ENTIÈRE
+        # a la FORME d'une date (« 12 mai 1994 », « mai 1994 », année nue) — un token de mois DANS un toponyme est
+        # légitime (« Chiang Mai » cassait l'ancien détecteur par tokens, vécu 2026-07-08).
+        import re as _re_dat
+        _DATE_RESIDUELLE = _re_dat.compile(
+            r"^\s*(?:\d{1,2}(?:er)?\s+)?(?:janvier|f[ée]vrier|mars|avril|mai|juin|juillet|ao[ûu]t"
+            r"|septembre|octobre|novembre|d[ée]cembre)(?:\s+\d{1,4})?\s*$|^\s*\d+\s*$", _re_dat.I)
         check(f"STRUCT {_rel} : valeurs = lieux (>=2 car., contient une lettre)",
               all(len(c) >= 2 and any(ch.isalpha() for ch in c) for c in _v))
         check(f"STRUCT {_rel} : 0 date/année résiduelle (FAUX=0)",
-              not any(c.strip().isdigit() or any(t in _mois for t in c.lower().split()) for c in _v))
+              not any(_DATE_RESIDUELLE.match(c) for c in _v))
 # NB : ancres = personnes au label FR NON ambigu (« charles de gaulle » écarté : homonyme porte-avions/aéroport/
 # petit-fils -> multi-valeur -> HORS = comportement FAUX=0 CORRECT, mais inutilisable comme ancre).
 if "lieu_naissance" in L.LECTEUR.tables:
@@ -1704,7 +1730,10 @@ for q in ("numéro atomique du vibranium", "Combien de jours en smarch ?", "Quel
           "code ISO du Wakanda", "dureté du plastique", "formule chimique de l'amour",
           "Sur quel continent se trouve l'Atlantide ?", "préfixe zillion",
           "Quelle est la monnaie de l'Atlantide ?", "Combien de côtés a un cercle ?",
-          "Combien de faces a une sphère ?"):
+          "Combien de faces a une sphère ?",
+          # FAUX=0 vécu 2026-07-08 : un INTERVALLE de dates n'est pas la durée d'un mois (« 31 » servi à tort)
+          "Combien de jours entre le 1er janvier et le 15 mars ?",
+          "Combien de jours du 1er janvier au 15 mars ?"):
     st, f = L.repond_nl(q)
     check(f"NL adverse « {q} » -> HORS", st == HORS and f is None)
 

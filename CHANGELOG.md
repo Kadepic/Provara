@@ -1,5 +1,248 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 14 : vérification oui/non étendue (« est-ce que X est Y », négations « …, si ? »)
+
+- `_oui_non` étendu dans son esprit FAUX=0 (jamais un « Non » sec — une relation peut être multi-valuée) :
+  **« est-ce que X est Y »** → « Oui. » quand le fait est vérifié (« est-ce que Tokyo est la capitale du
+  Japon ? » répondait « Tokyo » nu avant) ; **négations** — « Paris n'est pas la capitale de la France, si ? »
+  → « **Si** — Paris est bien la capitale de la France (vérifié) » (confirmer un fait positif est sûr) ;
+  « la capitale de la France n'est pas Lyon, si ? » → « **Ce que j'ai de vérifié** : la capitale de la
+  France → Paris » (réfutation implicite cadrée, jamais un lookup nu servi comme réponse à la négation —
+  ces questions tombaient en repli « pas l'information » avant, la garde négation sautait tout le factuel).
+- Gardes : question négative OUVERTE (« quelle ville n'est pas… ») → prudence, flux normal ; deux côtés
+  résolus ou aucun → prudence. Exception à la garde négation limitée à `_oui_non` (sound par construction).
+- Bancs : `banc_raisonnement` **176/176** (+4), assistant_nl 234/234, capacites_chat 128/128, paraphrases
+  170/170, suite 25/25, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Vague 13 : nombre en toutes lettres (« écris 1984 en lettres »)
+
+- `fonction_nl._nombre_en_lettres` (0..999999, orthographe TRADITIONNELLE, dite dans la réponse) : « écris
+  1984 en lettres » → « mille neuf cent quatre-vingt-quatre ». Pièges couverts et ÉPINGLÉS par 13 ancres
+  vérifiées à la main : « vingt **et un** », « soixante **et onze** », « quatre-vingt**s** » (mais
+  « quatre-vingt-un », « quatre-vingt mille »), « deux cent**s** » (mais « deux cent un »), « mille »
+  invariable. Hors plage → abstention. Tombait en mémo garbage avant.
+- Bancs : `valide_assistant_nl` **234/234** (+15), capacites_chat 128/128, suite 25/25, raisonnement 172/172,
+  paraphrases 170/170, câblage 504 0 orphelin.
+
+## 2026-07-08 — Vague 12 : 3 FAUX corrigés (fractions, premier d'intervalle, « 2 heures et demie ») + vérifications numériques, diviseurs, jour historique, nouvelles unités
+
+- **FAUX ×3, trouvés à la sonde** :
+  1. « lequel est le plus grand : 2/3 ou 3/5 » → *« Minimum : 2 ; maximum : 5 »* (les numérateurs/dénominateurs
+     traités comme des valeurs par la route min/max). Garde fractions dans `fonction_stats_nl` + comparaison
+     EXACTE via `Fraction` : « 4/8 ou 1/2 » → « Ils sont égaux », « 0.5 est-il égal à 1/2 » → Oui.
+  2. « un nombre premier entre 20 et 30 » → *« Non, 20 n'est pas premier »* (répondait à côté). Énumération
+     exacte : → « Entre 20 et 30 : 23, 29 » ; intervalle vide dit ; borne anti-DoS.
+  3. « combien de secondes dans 2 heures et demie » → *7200* (le « et demie » ignoré). Réécriture « X et
+     demie/quart/trois quarts » → X,5/X,25/X,75 avant conversion : → 9000 s.
+- CÂBLAGE : vérifications numériques exactes (pair/impair, divisible par — avec le quotient ou le reste MONTRÉ —,
+  multiple de, carré parfait avec encadrement quand Non) ; produit/différence/quotient nommés (quotient exact
+  seulement) ; diviseurs énumérés (« 36 a 9 diviseurs : … ») ; **jour de la semaine historique** (« le 14
+  juillet 1789 était un mardi » — datetime grégorien ; avant 1583 → abstention DITE, calendrier julien) ;
+  « semaines dans une année » → réponse composée honnête (52 sem + 1 j ; +2 si bissextile) ; unités : aires
+  (hectares/ares/m²/km²), longueurs impériales (pieds/pouces/yards, définitions légales), données (octets,
+  préfixes SI décimaux — convention DITE en source).
+- Bancs : `valide_assistant_nl` **219/219** (+20), capacites_chat **128/128** (+3), stats_nl 22/22, suite 25/25,
+  raisonnement 172/172, paraphrases 170/170, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — Vague 11 : 4 FAUX corrigés (bissextile→film, heure locale pour New York, 1,5 h→300 min, « mots »→« mode ») + bissextile, fuseaux, âge, opérations nommées
+
+- **FAUX ×4, trouvés à la sonde** :
+  1. « est-ce que 2024 est une année bissextile » → *« 2010 »* — le résolveur générique ignorait le NOMBRE et
+     servait l'année du FILM « Année bissextile ». Garde dans `resolution.resout_nl_generique` (une question
+     « est-ce que <nombre> est … » n'est jamais un lookup d'entité) + vraie règle grégorienne câblée dans
+     `resout_math` : 2024 → Oui, 2023 → Non, 2100 → Non (siècle) ; « nombre de jours en 2024 » → 366.
+  2. « quelle heure est-il à New York » → *l'heure locale de la machine*. Ville nommée → fuseau IANA (table
+     fermée ~50 grandes villes + `zoneinfo`) ; ville hors table ou base tz absente → abstention honnête —
+     plus JAMAIS l'heure locale servie pour une ville étrangère. Sans ville → horloge locale, comme avant.
+  3. « convertis 1,5 heures en minutes » → *300* (!) : `normalise()` mange AUSSI les séparateurs décimaux
+     (« 1 5 heures » → « 5 heures » matché). Normalisation locale des conversions qui préserve « , . / » ;
+     1,5 h → 90 min ; clés « km/h »/« m/s » redevenues directes ; millisecondes ajoutées.
+  4. « combien de mots dans… » : le GUÉRISSEUR réécrivait « mots » → « mode » (pluriel de 4 lettres invisible
+     de `_singulier_fr`). Gate élargi : un mot ≥4 lettres en -s/-x dont le radical est un nom du lexique est
+     un vrai pluriel, jamais corrigé (même classe que « était »→« état », épinglé pareil).
+- CÂBLAGE : opérations nommées (« double/triple/quadruple/moitié/quart/carré/cube/opposé de N » ; « inverse
+  de 4 » → 0.25 décimal FINI exigé, « inverse de 3 »/« tiers de 10 » → abstention, jamais 0.333) avec garde
+  géométrie (« périmètre d'un carré de côté 5 » → 20, pas 25) ; « quel âge a une personne née en 1990 » →
+  fourchette honnête (35 ou 36 selon l'anniversaire) ; `_cap_texte` : majuscules/minuscules, compter les mots
+  (règle dite), trier des nombres (croissant/décroissant).
+- Bancs : `valide_assistant_nl` **199/199** (+18), capacites_chat **125/125** (+7), raisonnement **172/172**,
+  paraphrases 170/170, suite 25/25, lecteur 1613/1613, challenge 16/16, coordonnées 47/47, câblage 504.
+
+## 2026-07-08 — Kelvin dans les conversions de température (offset 273,15 exact par définition)
+
+- `_cap_conversion` : °C↔K, °F↔K (« 100 celsius en kelvin » → 373,15 K, « 0 kelvin en celsius » → −273,15 °C —
+  zéro absolu), formule montrée comme pour °C↔°F. Trouvé à la sonde : « température d'ébullition de l'eau en
+  kelvin » répondait 100 °C sans convertir ; désormais l'utilisateur peut au moins convertir exactement.
+- Bancs : `banc_paraphrases` **170/170** (+2), capacites_chat 118/118, suite 25/25, assistant_nl 181/181,
+  raisonnement 171/171.
+
+## 2026-07-08 — CÂBLAGE vague 10 : opérations textuelles exactes sur un mot (_cap_texte)
+
+- Nouveau `_cap_texte` dans la cascade : **compter les lettres** (« compte les lettres du mot
+  anticonstitutionnellement » → 25 ; mot à tiret → restriction DITE « tirets/apostrophes non comptés »),
+  **envers** (« épelle chien à l'envers » → neihc), **épellation** (« épelle chien » → c-h-i-e-n),
+  **test d'anagramme** (« niche et chien sont-ils des anagrammes ? » → oui, lettres triées comparées).
+  Opérations natives déterministes = FAUX=0 par construction. Tombaient toutes en repli/mémo avant.
+- Gardes : UN seul mot exigé (« épelle-moi la vérité sur cette affaire » → rien) ; « combien de lettres a
+  envoyées Napoléon » (courriers) → pas volé.
+- Bancs : `valide_capacites_chat` **118/118** (+9), assistant_nl 181/181, suite 25/25, raisonnement 171/171,
+  paraphrases 168/168, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — CÂBLAGE vague 9 : volumes/vitesses, pourcentages appliqués, chiffres romains, triangle/losange
+
+- **Conversions** (`resout_conversion`) : volumes (L/mL/cL/dL/hL/m³/cm³ — « 3 litres en centilitres » → 300),
+  vitesses (« 90 km/h en m/s » → 25, « 20 nœuds en km/h » → 37.04 — facteurs exacts 1000/3600 et 1852/3600),
+  alias « journée » (« combien de secondes dans une journée » → 86400). ⚠ découverte : `normalise()` mange
+  « / » et « % » — clés d'unités post-normalisation (« km h »), affichage restauré (« m/s »).
+- **Pourcentages appliqués** (`resout_math`, sur la question BRUTE — le « % » disparaît à la normalisation) :
+  réduction (« 20% de réduction sur 80 € » → « 64 (80 − 20 % = 80 − 16) » — le calcul MONTRÉ lève l'ambiguïté
+  remise/prix final ; « remise de 30% sur 200 » donnait 60 par la route simple, c'est le prix final 140 qui
+  est servi désormais), augmentation (« augmente 200 de 15% » → 230, « hausse de 10% sur 50 » → 55),
+  part (« 150 est quel pourcentage de 600 » → 25 %).
+- **Chiffres romains** (convention de numération, symboles = table `chiffre_romain` du lecteur) : « 1984 en
+  chiffres romains » → MCMLXXXIV, « XIV en chiffres arabes » → 14. Round-trip COMPLET 1..3999 épinglé au banc ;
+  écriture non canonique (« IIII »), mot en lettres romaines (« CIVIL »), hors plage → abstention.
+- **Géométrie** : périmètre du triangle par 3 côtés avec INÉGALITÉ TRIANGULAIRE (« côtés 1, 1 et 5 » =
+  triangle impossible → abstention, pas une somme aveugle), aire du losange par diagonales (brique Polygone).
+- Gardes : « le prix a augmenté de beaucoup », « la réduction des inégalités » ne déclenchent rien ;
+  « 5 litres en km » (dimensions différentes) → abstention. Bancs : `valide_assistant_nl` **181/181** (+25),
+  capacites_chat 109/109, suite 25/25, raisonnement 171/171, paraphrases 168/168, challenge 16/16, câblage 504.
+
+## 2026-07-08 — FAUX=0 : nationalités JOINTES tronquées en quarantaine (Messi « Italie et Espagne », SANS l'Argentine)
+
+- **FAUX par omission, trouvé au banc** : `ingere_celebres` (P27, joinmax=2) triait les nationalités par
+  fréquence GLOBALE de corpus puis tronquait — Messi [Argentine, Espagne, Italie] → « Italie et Espagne »
+  (l'Argentine éjectée !), Einstein → « États-Unis et Allemagne » (sans la Suisse). Une nationalité se lit
+  comme exhaustive : liste incomplète = faux. Corrections : **quarantaine au lookup** (les valeurs « X et Y »
+  de `nationalite_personne` ne sont plus JAMAIS servies — `lecteur.cherche` + `_lookup_cell` de repond, fiches
+  et faits ciblés couverts) ; **ingestion corrigée** (P27 joinmax=1 : multi-nationalité → HORS ; l'ordre des
+  occupations P106 devient l'ordre Wikidata DE LA PERSONNE, plus la fréquence de corpus qui décrivait Einstein
+  « écrivain, professeur, philosophe » sans « physicien »). ⚠ la ré-ingestion attend le re-upload de l'archive.
+- Qualité fiches personne : un VIVANT est au PRÉSENT (« Messi **est** footballeur » — « était » implique un
+  décès) ; libellés inclusifs Wikidata ACCORDÉS quand le sexe est connu (« footballeur ou footballeuse » →
+  « footballeur » / « physicien ou physicienne » → « physicienne » pour Marie Curie).
+- `valide_lecteur` **1613/1613 — première fois VERT contre les datasets complets** : 3 checks à spec fausse
+  réparés (nationalité ≠ « pays actuel » : polities historiques en minuscules + années de désambiguïsation
+  légitimes ; « Chiang Mai » n'est pas une date résiduelle — détecteur par FORME de date complète ;
+  récupérabilité avec exemption quarantaine documentée). banc_raisonnement **171/171** (+5).
+
+## 2026-07-08 — FAUX=0 : « combien de jours entre le 1er janvier et le 15 mars » servait 31 (les jours de janvier) + arithmétique de dates câblée
+
+- **FAUX servi comme fait, trouvé à la sonde** : le gabarit lecteur `jours_mois` (« combien de jours …
+  janvier ») matchait aussi les INTERVALLES → « 31 » servi pour « entre le 1er janvier et le 15 mars ».
+  Garde posée : « entre » ou deux mois cités → le gabarit ne matche plus (les durées de mois restent servies).
+- CÂBLAGE (`_cap_quotidien`) : **différence de dates** — « combien de jours entre le 1er janvier et le 15
+  mars » → 73 (datetime, calcul calendaire exact ; année absente → année de l'horloge, ÉTIQUETÉE — 2024
+  bissextile → 74 ; intervalle inversé sans années ou date invalide → abstention) ; **date relative** —
+  « quel jour serons-nous dans 45 jours / dans 2 semaines » → date+jour exacts, « il y a 10 jours » → passé ;
+  « dans 3 mois » (durée ambiguë) → abstention.
+- Bancs : `valide_capacites_chat` **109/109** (+7), valide_lecteur +2 cas adverses, suite 25/25,
+  assistant_nl 156/156, raisonnement, paraphrases, challenge, coordonnées, câblage — tous verts.
+
+## 2026-07-08 — CÂBLAGE vague 8 : racine cubique, logarithme en base, arrondi / partie entière / plafond
+
+- `fonction_nl.resout_math` : **racine cubique** exacte (« racine cubique de 27 » → 3, « de -8 » → -2 ; cube
+  non parfait → abstention, JAMAIS 3.107 servi comme exact — cohérent avec la racine carrée exacte),
+  **logarithme en base explicite** (« log de 100 en base 10 » → 2 ; exposant non entier ou base non dite →
+  abstention, on ne devine pas ln/log10), **arrondi** demi-supérieur convention française (« arrondi de 2,5 » →
+  3, pas l'arrondi bancaire de `round()` ; « à 2 décimales » → 3.14 ; supérieur/inférieur), **partie entière**
+  = plancher mathématique étiqueté (« partie entière de -2.3 » → -3), **plafond/plancher**. Tous tombaient en
+  MÉMO garbage avant.
+- Gardes anti-faux-positif : plancher/plafond exigent un nombre DÉCIMAL (« le plafond de 3 mètres » ne
+  déclenche rien) ; « l'arrondissement de Paris », « la racine du problème » ne déclenchent rien.
+- Bancs : `valide_assistant_nl` **156/156** (+15), capacites_chat 102/102, suite 25/25, raisonnement 166/166,
+  paraphrases 168/168, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — CÂBLAGE vague 7 : géométrie simple en conversation (aire / périmètre / volume / hypoténuse)
+
+- `fonction_nl._resout_geometrie` (appelé par `resout_math`) câble **geometrie2d** (Cercle, Polygone, Point) et
+  **geometrie3d** (cube) au dialogue : « aire d'un cercle de rayon 3 » → 28.2743, « périmètre d'un carré de
+  côté 4 » → 16, « aire d'un rectangle de 3 par 5 » → 15, « aire d'un triangle de base 6 et hauteur 4 » → 12,
+  « hypoténuse d'un triangle rectangle de côtés 3 et 4 » → 5 (Pythagore via `Point.distance`), « volume d'un
+  cube de côté 2 » → 8 (`geometrie3d.cube().volume()`), « volume d'une sphère de rayon 2 » → 33.5103 (seule
+  formule directe : 4/3·π·r³, mathématique sûre — pas de brique sphère). Diamètre accepté (rayon = d/2).
+  Tous ces cas tombaient en MÉMO garbage avant (« C'est noté »).
+- GARDE anti-faux-positif triple (mesure + figure + dimension chiffrée) : « aire urbaine de Toulouse »,
+  « périmètre de sécurité », « volume sonore », « aire d'un cercle » (sans rayon) ne déclenchent RIEN ;
+  « superficie de la France » reste servie par les données (551 695 km²).
+- Bancs : `valide_assistant_nl` **141/141** (+15), capacites_chat 102/102, suite 25/25, geometrie2d 22/22,
+  geometrie3d 18/18, raisonnement 166/166, paraphrases 168/168, challenge 16/16, câblage 504 0 orphelin.
+
+## 2026-07-08 — FAUX=0 : la moyenne pondérée moyennait les coefficients avec les valeurs (8 au lieu de 13.8)
+
+- **FAUX servi comme fait, trouvé à la sonde** : « moyenne pondérée de 12 coefficient 2 et 15 coefficient 3 »
+  répondait *« Moyenne : 8 »* — la branche moyenne de `fonction_stats_nl` faisait la moyenne SIMPLE de tous les
+  nombres de la phrase (12, 2, 15, 3), coefficients compris. Corrigé : détection dédiée de l'intention pondérée
+  (« pondérée », « coefficient », « coeff ») → appariement valeur/coefficient (paires « 12 coefficient 2 », notes
+  parenthésées « 12 (coefficient 4) », ou « valeurs … avec les poids … » à listes de même longueur) →
+  `somme(v·w)/somme(w)` → **13.8**. Somme des coefficients nulle → « indéfinie » (honnête).
+- Abstention honnête si l'appariement échoue (« moyenne pondérée de 12 et 15 » → demande le format), JAMAIS la
+  moyenne simple par défaut. Garde anti-faux-positif : « moyenne des poids 70, 80 et 90 » (poids PHYSIQUES, pas
+  de paires) reste une moyenne simple → 80.
+- Bancs : `valide_fonction_stats_nl` **22/22** (+6), capacites_chat 102/102, assistant_nl 126/126, suite 25/25,
+  raisonnement 166/166, paraphrases 168/168, challenge 16/16.
+
+## 2026-07-08 — CÂBLAGE vague 6 : valeur absolue, conversion de base, inverse modulaire
+
+- `fonction_nl.resout_math` : **valeur absolue** (« valeur absolue de -5 » → 5), **conversion de base** (binaire/
+  octal/hexadécimal ↔ décimal, conversion mécanique exacte native — « 42 en hexadécimal » → 2A, « 1010 binaire
+  en décimal » → 10), **inverse modulaire** (« inverse de 7 modulo 13 » → 2, `arithmetique_modulaire`, abstention
+  honnête si non inversible : 6 mod 9 → HORS). Ces trois tombaient en MÉMO/repli (garbage) avant.
+- Gardes anti-faux-positif : « valeur de la maison » (sans « absolue ») ne déclenche rien ; conversions exigent
+  le mot de base. Bancs : `valide_assistant_nl` **126/126** (+8), suite 25/25, raisonnement 166/166, paraphrases 168/168.
+
+## 2026-07-08 — FAUX=0 : « reste de 17 divisé par 5 » donnait 3.4 (la division) — corrigé en modulo (2)
+
+- **FAUX servi comme fait, trouvé à la sonde** : « quel est le reste de 17 divisé par 5 » → *3.4* (« reste »
+  ignoré, la division 17/5 servie). Fix dans `_reponse_calcul` : le modulo/reste est intercepté AVANT la
+  conversion « divisé par » → « / » — « reste de X (divisé) par Y », « X modulo Y », « X mod Y » → X % Y
+  (entiers). « modulo/mod/reste de » ajoutés au gate d'intention de calcul. Division exacte préservée (12÷4=3),
+  division/reste par 0 → None (abstention). Nouvelle capacité au passage : le modulo est désormais atteignable.
+- Bancs : `valide_capacites_chat` **102/102** (+5), suite 25/25, assistant_nl 118/118.
+
+## 2026-07-08 — CÂBLAGE vague 5 : NOMBRES COMPLEXES en conversation (module / argument / conjugué)
+
+- `fonction_nl.resout_math` câble `nombres_complexes` : « module de 3+4i » → 5, « argument de i » → 1,57 rad,
+  « conjugué de 2-3i » → 2 + 3i. Parseur a+bi robuste (i seul → coef 1, imaginaire pur « 5i », signes négatifs
+  « -3-4i »). Garde : exige un mot-clé (module/argument/conjugué/complexe) + une unité imaginaire → un « i »
+  dans un nom propre (« Djibouti ») ne déclenche rien. Calcul du module vérifié.
+- Bancs : `valide_assistant_nl` **118/118** (+6), suite 25/25, raisonnement 166/166, paraphrases 168/168.
+
+## 2026-07-08 — CÂBLAGE vague 4 : THÉORIE DES JEUX en conversation (équilibres de Nash classiques)
+
+- **Correction de mon propre diagnostic** : j'avais annoncé « pas de brique jeux » — FAUX, `jeux_appliques`
+  CALCULE les équilibres de Nash de jeux 2×2 définis. `_cap_jeux` le rend conversationnel : « équilibre de Nash
+  du dilemme du prisonnier » → **(trahir, trahir) + le paradoxe de Pareto** ; « bataille des sexes » → deux
+  équilibres ; « matching pennies » → **pas d'équilibre pur, aveu honnête** (mixte seulement). Les jeux
+  classiques sont des objets mathématiques définis (pas des données contestables) → FAUX=0 respecté.
+- Verdict issu du module vérifié ; jeu non catalogué (« jeu vidéo Zelda ») → None (pas d'invention) ; ne vole
+  aucune question factuelle. Bancs : `valide_capacites_chat` **97/97** (+5), suite 25/25, câblage 504 0 orphelin,
+  raisonnement 166/166, paraphrases 168/168.
+
+## 2026-07-08 — FAUX=0 : un PAYS ne renvoie plus les coordonnées d'une ville homonyme (distance)
+
+- **FAUX réel trouvé** en auditant le chantier « distance » : `ia.coordonnees_lieu("France")` renvoyait
+  (34.61, −82.77) — une bourgade **France, Caroline du Sud** passée par le crible d'unicité des localités
+  (pas d'homonyme FR) → « distance entre la France et X » était FAUSSE. Garde : un pays (clé de la relation
+  `capitale`) n'accepte jamais une coord issue de `latitude_localite` (seule `latitude_capitale` resterait
+  valide). France/Allemagne/Espagne → None (correct : un pays n'a pas de point pour une distance ville-à-ville).
+- Les villes réelles restent intactes : « distance Paris-Toulouse » → 588 km (vérifié). NB : Lyon/Marseille
+  restent absents des coords PAR CONCEPTION (garde anti-homonyme stricte de l'ingestion — homonymes étrangers) ;
+  les débloquer demande une source de grandes villes FR désambiguïsées (chantier d'ingestion, documenté).
+- Bancs : `valide_coordonnees` **47/47** (+4), suite 25/25.
+
+## 2026-07-08 — QUALITÉ : une demande impérative non traitée ne répond plus « C'est noté »
+
+- **Garbage vécu** : « équilibre la réaction H2 + O2 -> H2O » (et « range mes fichiers ») → *« C'est noté, je
+  m'en souviendrai »* (les chiffres H2/O2 faisaient croire à une affirmation à mémoriser). Fix : `_est_demande_
+  imperative` (carte FERMÉE de verbes d'action à l'impératif en tête, préambules « stp/peux-tu » dépouillés) —
+  un ORDRE qu'aucun cap n'a exécuté reçoit le **repli honnête** du tronc (« voici ce que j'ai compris + ce que
+  je sais faire »), jamais le mémo.
+- **FAUX=0 / non-régression** : les verbes de MÉMORISATION (note, retiens, rappelle, souviens) sont exclus →
+  « rappelle-moi d'acheter du pain », « j'ai rendez-vous mardi », « mon plat préféré est X » restent des mémos
+  légitimes. Testé aux deux bords. `valide_capacites_chat` **92/92** (+6), suite 25/25, raisonnement 166/166,
+  paraphrases 168/168, challenge 16/16.
+
 ## 2026-07-08 — CÂBLAGE vague 3 : MATHÉMATIQUES FINANCIÈRES en conversation (placement / intérêts)
 
 - `fonction_nl.resout_math` câble `maths_financieres` : « combien rapportent 1000 euros à 5% pendant 3 ans ? »

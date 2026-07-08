@@ -180,6 +180,70 @@ try:
 finally:
     R._valeur_attr = _valeur_avant
 
+# — FUSEAUX HORAIRES (FAUX=0 vécu : « heure à New York » servait l'heure LOCALE) + ÂGE depuis l'année —
+r = R._cap_quotidien("quelle heure est-il à New York ?")
+check(r is not None and not r.startswith("Il est") and "New York" in r,
+      "heure à New York -> fuseau IANA OU abstention — plus JAMAIS l'heure locale nue")
+r = R._cap_quotidien("quelle heure est-il à Trifouillis-les-Oies ?")
+check(r is not None and "abstenir" in r.lower() or (r is not None and "fuseau" in r),
+      "ville inconnue -> abstention honnête dite")
+r = R._cap_quotidien("quelle heure est-il ?")
+check(r is not None and r.startswith("Il est"), "sans ville -> heure locale (horloge machine), comme avant")
+r = R._cap_quotidien("quel âge a une personne née en 1990 ?")
+check(r is not None and "selon que l'anniversaire" in r, "âge né en 1990 -> fourchette honnête (anniversaire inconnu)")
+r = R._cap_quotidien("quel jour de la semaine était le 14 juillet 1789 ?")
+check(r == "Le 14 juillet 1789 était un mardi (calendrier grégorien).", "14 juillet 1789 -> mardi (exact)")
+r = R._cap_quotidien("quel jour était le 11 novembre 1918 ?")
+check(r is not None and "lundi" in r, "11 novembre 1918 -> lundi")
+r = R._cap_quotidien("quel jour était le 3 mars 1400 ?")
+check(r is not None and "julien" in r, "avant 1583 -> abstention DITE (calendrier julien), jamais un jour décalé")
+
+# — OPÉRATIONS TEXTUELLES exactes sur un mot (_cap_texte, vague 10 : natif déterministe, FAUX=0 par construction) —
+r = R._cap_texte("compte les lettres du mot anticonstitutionnellement")
+check(r == "25 lettres dans « anticonstitutionnellement ».", "compter les lettres -> 25 (exact)")
+r = R._cap_texte("compte les lettres du mot porte-monnaie")
+check(r is not None and r.startswith("12 lettres") and "non comptés" in r,
+      "mot à tiret -> 12 lettres, restriction DITE (tirets non comptés)")
+check(R._cap_texte("épelle le mot chien à l'envers") == "« chien » à l'envers : neihc.", "envers -> neihc")
+check(R._cap_texte("épelle chien") == "« chien » s'épelle : c-h-i-e-n.", "épeler -> c-h-i-e-n")
+r = R._cap_texte("niche et chien sont-ils des anagrammes ?")
+check(r is not None and r.startswith("Oui"), "niche/chien -> anagrammes (mêmes lettres triées)")
+r = R._cap_texte("chien et chat sont-ils des anagrammes ?")
+check(r is not None and r.startswith("Non"), "chien/chat -> pas anagrammes")
+check(R._cap_texte("épelle-moi la vérité sur cette affaire") is None, "« épelle-moi la vérité sur… » (pas UN mot) -> None")
+check(R._cap_texte("combien de lettres a envoyées Napoléon") is None, "lettres = courriers -> pas volé (garde)")
+check(R._cap_texte("quelle est la capitale de la France") is None, "question factuelle -> None")
+r = R._cap_texte("mets le mot bonjour en majuscules")
+check(r is not None and "BONJOUR" in r, "majuscules -> BONJOUR")
+r = R._cap_texte("combien de mots dans la phrase le chat mange la souris")
+check(r is not None and r.startswith("5 mots"), "compter les mots -> 5 (règle dite : séparés par des espaces)")
+r = R._cap_texte("trie les nombres 5, 2, 9, 1")
+check(r == "Dans l'ordre croissant : 1, 2, 5, 9.", "tri croissant exact")
+
+# — ARITHMÉTIQUE DE DATES (horloge machine + datetime, calcul calendaire EXACT — vague 9) —
+import datetime as _dt  # noqa: E402
+
+_aujourdhui = _dt.date.today()
+_d45 = _aujourdhui + _dt.timedelta(days=45)
+r = R._cap_quotidien("quel jour serons-nous dans 45 jours ?")
+check(r is not None and ("%d" % _d45.day) in r and "exact" in r,
+      "« dans 45 jours » -> date exacte (horloge + timedelta), étiquetée calculée")
+r = R._cap_quotidien("quel jour était-il il y a 10 jours ?")
+_dm10 = _aujourdhui - _dt.timedelta(days=10)
+check(r is not None and r.startswith("C'était") and ("%d" % _dm10.day) in r, "« il y a 10 jours » -> passé exact")
+r = R._cap_quotidien("combien de jours entre le 1er janvier et le 15 mars ?")
+_n = abs((_dt.date(_aujourdhui.year, 3, 15) - _dt.date(_aujourdhui.year, 1, 1)).days)
+check(r is not None and r.startswith("%d jours" % _n) and "horloge" in r,
+      "intervalle sans année -> %d jours, année de l'horloge ÉTIQUETÉE (bissextile change le compte)" % _n)
+r = R._cap_quotidien("combien de jours entre le 1er janvier 2024 et le 15 mars 2024 ?")
+check(r is not None and r.startswith("74 jours"), "2024 bissextile -> 74 jours (et pas 73)")
+check(R._cap_quotidien("combien de jours entre le 15 mars et le 1er janvier ?") is None,
+      "intervalle INVERSÉ sans années (année suivante ?) -> abstention honnête")
+check(R._cap_quotidien("quel jour serons-nous dans 3 mois ?") is None,
+      "« dans 3 mois » (durée ambiguë 28-31 j) -> abstention, jamais d'à-peu-près")
+check(R._cap_quotidien("combien de jours entre le 30 février et le 15 mars ?") is None,
+      "date invalide (30 février) -> abstention")
+
 # — CONSEIL PARAPLUIE (avis ⑤ : décision sous incertitude, decision.py — probabilité RAPPORTÉE, règle AFFICHÉE) —
 import meteo as _MET  # noqa: E402
 
@@ -290,6 +354,31 @@ check(R._cap_logique("bonjour comment vas-tu ?") is None, "logique hors périmè
 import assistant_nl as _A4
 check(_A4.qualifie_texte("Raisonnement VALIDE (modus ponens) : test").statut == _A4.FAIT,
       "porte unique : verdict logique = FAIT (forme jugée par module vérifié)")
+
+# — DEMANDE IMPÉRATIVE NON TRAITÉE : repli honnête, plus jamais « C'est noté » (qualité conversationnelle) —
+check(R._est_demande_imperative("équilibre la réaction H2 + O2 -> H2O"), "« équilibre … » détecté comme ordre")
+check(R._est_demande_imperative("range mes fichiers"), "« range … » détecté comme ordre")
+check(R._est_demande_imperative("stp équilibre la réaction"), "préambule « stp » dépouillé -> ordre impératif")
+check(not R._est_demande_imperative("mon plat préféré est la ratatouille"), "affirmation perso -> PAS un ordre")
+check(not R._est_demande_imperative("rappelle-moi d'acheter du pain"), "verbe de MÉMORISATION -> PAS un ordre (mémo légitime)")
+check(not R._est_demande_imperative("j'ai rendez-vous mardi"), "note datée -> PAS un ordre (mémo légitime)")
+
+# — THÉORIE DES JEUX (jeux_appliques rendu conversationnel : équilibres de Nash de jeux classiques) —
+r = R._cap_jeux("quel est l'équilibre de Nash du dilemme du prisonnier ?")
+check(r is not None and "trahir, trahir" in r and "Pareto" in r, "dilemme du prisonnier -> (trahir, trahir) + paradoxe Pareto")
+r = R._cap_jeux("équilibre de Nash de la bataille des sexes")
+check(r is not None and "bataille des sexes" in r and "(0, 0)" in r and "(1, 1)" in r, "bataille des sexes -> 2 équilibres")
+r = R._cap_jeux("équilibre de Nash du matching pennies")
+check(r is not None and "PAS d'équilibre" in r and "mixtes" in r, "matching pennies -> pas d'équilibre pur (honnête)")
+check(R._cap_jeux("quelle est la capitale de la France ?") is None, "jeux ne vole pas une question factuelle")
+check(R._cap_jeux("parle-moi du jeu vidéo Zelda") is None, "« jeu » sans jeu catalogué -> None (pas d'invention)")
+
+# — MODULO / RESTE (FAUX=0 : « reste de 17 divisé par 5 » donnait 3.4 = la division, pas le reste) —
+check(R._reponse_calcul("quel est le reste de 17 divisé par 5") == "2", "reste de 17÷5 -> 2 (plus jamais 3.4)")
+check(R._reponse_calcul("17 modulo 5") == "2", "17 modulo 5 -> 2")
+check(R._reponse_calcul("17 mod 5") == "2", "17 mod 5 -> 2")
+check(R._reponse_calcul("12 divisé par 4") == "3", "division exacte préservée (12÷4 -> 3)")
+check(R._reponse_calcul("reste de 10 divisé par 0") is None, "reste par 0 -> None (abstention honnête)")
 
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

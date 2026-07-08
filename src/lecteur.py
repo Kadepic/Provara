@@ -501,7 +501,12 @@ class Lecteur:
     # sur base_faits (cf. repond_nl) -> on n'invente jamais et on ne régresse jamais l'amorce.
     _GABARITS = [
         (re.compile(r"\bnumero atomique (?:de l |de la |du |de )?(.+)$"), "numero_atomique", 1),
-        (re.compile(r"\b(?:combien de jours|nombre de jours)\b.*?\b(janvier|fevrier|mars|avril|mai|juin|"
+        # GARDE (FAUX=0 vécu 2026-07-08) : « combien de jours ENTRE le 1er janvier et le 15 mars » servait les
+        # 31 jours de janvier. Un intervalle (« entre », ou DEUX mois cités) n'est PAS la durée d'un mois.
+        (re.compile(r"\b(?:combien de jours|nombre de jours)\b(?!.*\bentre\b)"
+                    r"(?!(?:.*\b(?:janvier|fevrier|mars|avril|mai|juin|juillet|aout|septembre|octobre"
+                    r"|novembre|decembre)\b){2})"
+                    r".*?\b(janvier|fevrier|mars|avril|mai|juin|"
                     r"juillet|aout|septembre|octobre|novembre|decembre)\b"), "jours_mois", 1),
         (re.compile(r"\bprefixe (?:si )?(?:du |de la |de l |des |de )?(.+)$"), "prefixe_si", 1),
         (re.compile(r"\bcode iso (?:du |de la |de l |des |de )?(?:pays )?(.+)$"), "code_iso_pays", 1),
@@ -677,6 +682,13 @@ class Lecteur:
         if t is not None:
             f = t.get(self._cle(relation, entite))
             if f is not None:
+                # QUARANTAINE FAUX=0 (vécu 2026-07-08) : les nationalités JOINTES « X et Y » du dataset livré
+                # sont TRONQUÉES à 2 par fréquence de corpus (Messi -> « Italie et Espagne », SANS l'Argentine !).
+                # Une liste incomplète servie comme nationalité = faux par omission -> abstention honnête.
+                # (ingere_celebres corrigé : multi-nationalité -> plus jamais joint ; cette garde protège les
+                # données déjà livrées jusqu'à la ré-ingestion + re-upload.)
+                if relation == "nationalite_personne" and " et " in f.valeur:
+                    return None
                 return f
         return _cherche_base(relation, entite)
 

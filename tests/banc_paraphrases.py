@@ -171,6 +171,8 @@ CAS += [
     ("convertis 100 degrés Celsius en Fahrenheit", "212"),
     ("convertis 10 km en miles", "6,2137"),
     ("combien font 80 kg en livres ?", "176,3698"),
+    ("convertis 100 celsius en kelvin", "373,15"),           # kelvin = offset 273,15 exact par définition
+    ("0 kelvin en celsius", "-273,15"),                      # zéro absolu
 ]
 
 # ————— 10e VAGUE : type-words d'œuvre + alias de personnes célèbres —————

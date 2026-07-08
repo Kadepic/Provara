@@ -88,6 +88,14 @@ for nom, v in lon_t.items():
         hors_borne += 1
 check(hors_borne == 0, f"toutes les coordonnées dans les bornes (violations : {hors_borne})")
 
+# ── GARDE FAUX=0 (2026-07-08) : un PAYS n'a pas de coord ponctuelle ; ne jamais servir une localité homonyme ──
+# (« France » = aussi une bourgade aux USA passée par le crible d'unicité -> « distance France-X » était FAUSSE).
+for pays in ("France", "Allemagne", "Espagne"):
+    if ia._LEC.LECTEUR.cherche("capitale", pays) is not None:     # le pays est bien connu de la base
+        check(ia.coordonnees_lieu(pays) is None,
+              f"« {pays} » (pays) -> pas de coord de localité homonyme (garde anti-homonyme)")
+check(ia.coordonnees_lieu("Paris") is not None, "une VILLE réelle (Paris) garde sa coord (garde n'affecte que les pays)")
+
 print(f"\n=== valide_coordonnees : {ok}/{ok + ko} ===")
 import sys
 
