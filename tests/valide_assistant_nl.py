@@ -482,6 +482,11 @@ check(_m("périmètre d'un triangle de côtés 1, 1 et 5") is None,
 check(_m("aire d'un losange de diagonales 6 et 8") == "24", "aire losange d=6,8 -> 24 (d₁·d₂/2, Polygone)")
 check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup » (pas de %) ne déclenche RIEN")
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
+# VAGUE 22 : zéros d'un grand nombre (la congélation de l'eau est un fait base_faits, testé dans valide_base_faits).
+_r = _m("combien de zéros dans un million")
+check(_r is not None and _r.startswith("6 zéros"), "zéros d'un million -> 6")
+_r = _m("combien de zéros dans un milliard")
+check(_r is not None and _r.startswith("9 zéros"), "zéros d'un milliard -> 9")
 # VAGUE 21 : volume cylindre/cône, aire trapèze, kilo -> grammes.
 _r = _m("volume d'un cylindre de rayon 2 et hauteur 5")
 check(_r is not None and _r.startswith("62.83"), "volume cylindre r=2 h=5 -> 62.83 (π·r²·h)")

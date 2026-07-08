@@ -75,6 +75,9 @@ cas_ok = [
     ("pluriel de journal", "journaux", BF.CAT_CONVENTION),
     ("quelle est l'unité de la seconde ?", "temps", BF.CAT_CONVENTION),
     ("en quelle année la première guerre mondiale ?", "1914", BF.CAT_PASSE),
+    ("à quelle température l'eau gèle", "0", BF.CAT_PHYSIQUE),
+    ("point de congélation de l'eau", "0", BF.CAT_PHYSIQUE),
+    ("température d'ébullition de l'eau", "100", BF.CAT_PHYSIQUE),
 ]
 for q, attendu, cat in cas_ok:
     st, f = BF.repond_nl(q)
@@ -87,6 +90,8 @@ pieges_entite = [
     "Quelle est la capitale de la Mongolie ?", "capitale du Burkina Faso",
     "Quel est le pluriel de licorne ?", "symbole chimique du plomb",
     "définition de zorglub",
+    # « point de fusion du fer/or » ne doit PAS matcher la congélation de l'EAU (0 °C) — régression 2026-07-08
+    "point de fusion du fer", "point de fusion de l'or",
 ]
 for q in pieges_entite:
     st, f = BF.repond_nl(q)

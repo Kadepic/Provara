@@ -1090,6 +1090,14 @@ def resout_math(question: str):
                                                    "bissextile" if biss else "non bissextile"),
                 "calendrier grégorien — règle bissextile")
 
+    # ZÉROS d'un grand nombre nommé : « combien de zéros dans un million » -> 6 (échelle courte, convention).
+    mz = re.search(r"combien\s+de\s+z[ée]ros?\s+(?:dans|a|pour|comporte|contient)\s+(?:un\s+|une\s+|le\s+|1\s+)?"
+                   r"(millier|million|milliard|billion|trillion)s?\b", q)
+    if mz:
+        z = {"millier": 3, "million": 6, "milliard": 9, "billion": 12, "trillion": 18}[mz.group(1)]
+        return (VERIFIE, "%d zéros (un %s = 1 suivi de %d zéros, échelle courte)." % (z, mz.group(1), z),
+                "convention — grands nombres")
+
     # SOMME DES ANGLES d'un polygone (convention euclidienne exacte : (n−2)·180°) et DEGRÉS d'un cercle.
     mang = re.search(r"somme\s+des\s+angles\s+(?:int[ée]rieurs\s+)?d['’]?\s*(?:un\s+|une\s+)?"
                      r"(triangle|quadrilatere|pentagone|hexagone|heptagone|octogone|nonagone|decagone"
