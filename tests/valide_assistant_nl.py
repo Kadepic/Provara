@@ -482,6 +482,29 @@ check(_m("périmètre d'un triangle de côtés 1, 1 et 5") is None,
 check(_m("aire d'un losange de diagonales 6 et 8") == "24", "aire losange d=6,8 -> 24 (d₁·d₂/2, Polygone)")
 check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup » (pas de %) ne déclenche RIEN")
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
+# RANGS / SUCCESSIONS / DIVISIONS DU TEMPS (vague 16) : conventions de cycles fermés.
+_c = lambda t: (lambda r: r[1] if r[0] == _V else None)(FN.resout_conversion(t))
+check(_m("quel est le 5e mois de l'année") == "Mai (5e mois de l'année)", "5e mois -> Mai")
+_r = _m("le 13e mois de l'année")
+check(_r is not None and "que 12 mois" in _r, "13e mois -> correction honnête (12 mois), plus de mémo garbage")
+check(_m("quel jour vient après mardi") == "Mercredi", "après mardi -> Mercredi")
+check(_m("quel jour vient après dimanche") == "Lundi (la semaine reboucle)", "après dimanche -> Lundi (reboucle)")
+check(_m("quelle lettre vient après le m") == "n", "après m -> n")
+_r = _m("quelle lettre vient après le z")
+check(_r is not None and "dernière lettre" in _r, "après z -> aucune (dite)")
+check(_m("combien de trimestres dans une année") == "4", "trimestres/année -> 4")
+check(_m("combien d'années dans un siècle") == "100", "années/siècle -> 100")
+check(_m("combien de siècles dans un millénaire") == "10", "siècles/millénaire -> 10")
+check(_m("combien de mois dans une année") == "12", "mois/année -> 12")
+# COMPARAISON DE GRANDEURS (partagée avec _cap_comparaison) — via resout_conversion.
+check(_c("lequel est le plus rapide : 100 km/h ou 30 m/s") is not None
+      and _c("lequel est le plus rapide : 100 km/h ou 30 m/s").startswith("30 m/s est plus rapide"),
+      "100 km/h vs 30 m/s -> 30 m/s (conversion exacte montrée)")
+check(_c("36 km/h ou 10 m/s, lequel est le plus rapide") == "Ils sont égaux (36 km/h = 10 m/s après conversion).",
+      "36 km/h = 10 m/s -> égaux")
+check(_c("plus léger : 500 g ou 1 kg") is not None and _c("plus léger : 500 g ou 1 kg").startswith("500 g est plus"),
+      "« plus léger » inverse le gagnant")
+check(_c("plus rapide : 10 km ou 3 kg") is None, "dimensions différentes -> abstention")
 # ANGLES / CERCLE (vague 15) : conventions euclidienne exactes, formule montrée.
 _r = _m("somme des angles d'un triangle")
 check(_r is not None and _r.startswith("180°"), "somme des angles d'un triangle -> 180°")

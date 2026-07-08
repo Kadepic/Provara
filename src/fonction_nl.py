@@ -930,6 +930,49 @@ def resout_math(question: str):
     if re.search(r"combien\s+de\s+degr[ée]s\s+dans\s+(?:un\s+)?(?:cercle|tour)(?:\s+complet)?\b", q):
         return (VERIFIE, "360° (tour complet, convention)", "géométrie — mesure d'angle")
 
+    # RANGS ET SUCCESSIONS des cycles FERMÉS (mois de l'année, jours de la semaine, alphabet) — conventions.
+    _MOIS_O = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+               "septembre", "octobre", "novembre", "décembre"]
+    _JOURS_O = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
+    mrg = re.search(r"le\s+(\d{1,2})\s*(?:e|eme|ème|er)\s+mois\s+de\s+l['’]?\s*annee", q)
+    if mrg:
+        n = int(mrg.group(1))
+        if 1 <= n <= 12:
+            return (VERIFIE, "%s (%de mois de l'année)" % (_MOIS_O[n - 1].capitalize(), n),
+                    "calendrier — rang des mois")
+        return (VERIFIE, "L'année n'a que 12 mois — il n'y a pas de %de mois." % n, "calendrier — rang des mois")
+    mjs = re.search(r"quel\s+jour\s+vient\s+(apres|avant)\s+(?:le\s+)?(lundi|mardi|mercredi|jeudi|vendredi"
+                    r"|samedi|dimanche)\b", q)
+    if mjs:
+        i = _JOURS_O.index(mjs.group(2))
+        j = _JOURS_O[(i + (1 if mjs.group(1) == "apres" else -1)) % 7]
+        return (VERIFIE, "%s%s" % (j.capitalize(), " (la semaine reboucle)" if (i, mjs.group(1)) in
+                                   ((6, "apres"), (0, "avant")) else ""), "calendrier — ordre des jours")
+    mls = re.search(r"quelle\s+lettre\s+vient\s+(apres|avant)\s+(?:le\s+|la\s+|l['’]\s*)?([a-z])\b", q)
+    if mls:
+        c, sens = mls.group(2), mls.group(1)
+        if c == "z" and sens == "apres":
+            return (VERIFIE, "Aucune — z est la dernière lettre de l'alphabet.", "alphabet latin")
+        if c == "a" and sens == "avant":
+            return (VERIFIE, "Aucune — a est la première lettre de l'alphabet.", "alphabet latin")
+        return (VERIFIE, chr(ord(c) + (1 if sens == "apres" else -1)), "alphabet latin")
+
+    # DIVISIONS DU TEMPS (conventions exactes du calendrier).
+    mdt = re.search(r"combien\s+(?:de\s+|d['’]?\s*)(trimestres|semestres|mois|jours)\s+dans\s+(?:une?\s+)?"
+                    r"(annee|semaine)\b", q)
+    if mdt:
+        val = {("trimestres", "annee"): "4", ("semestres", "annee"): "2", ("mois", "annee"): "12",
+               ("jours", "semaine"): "7"}.get((mdt.group(1), mdt.group(2)))
+        if val:
+            return (VERIFIE, val, "calendrier — divisions de l'année")
+    mds = re.search(r"combien\s+(?:de\s+|d['’]?\s*)(?:annees|ans)\s+dans\s+(?:un\s+|une\s+)?"
+                    r"(siecle|millenaire|decennie)\b", q)
+    if mds:
+        return (VERIFIE, {"siecle": "100", "millenaire": "1000", "decennie": "10"}[mds.group(1)],
+                "calendrier — divisions du temps")
+    if re.search(r"combien\s+de\s+siecles\s+dans\s+(?:un\s+)?millenaire", q):
+        return (VERIFIE, "10", "calendrier — divisions du temps")
+
     # GÉOMÉTRIE SIMPLE : aire/périmètre/volume de figures nommées (modules geometrie2d/geometrie3d vérifiés).
     geo = _resout_geometrie(q)
     if geo:

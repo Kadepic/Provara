@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 16 : rangs, successions et divisions du temps (cycles fermés)
+
+- `resout_math` : « le **5e mois** de l'année » → Mai (« le 13e » → correction honnête « l'année n'a que 12
+  mois », plus de mémo garbage) ; « quel jour vient **après mardi** » → Mercredi (« après dimanche » → Lundi,
+  rebouclage DIT) ; « quelle lettre vient **après le m** » → n (« après le z » → « aucune — dernière lettre ») ;
+  divisions du temps : trimestres/semestres/mois/jours par année ou semaine (4/2/12/7), années par
+  siècle/millénaire/décennie (100/1000/10), siècles par millénaire (10). Conventions de cycles fermés, exactes.
+- Météo : « combien de degrés fait-il dehors » rejoint la route météo. Bancs : `valide_assistant_nl`
+  **253/253** (+14), suite 25/25, raisonnement 191/191, paraphrases 174/174, capacites_chat 137/137,
+  challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — FAUX=0 : « 100 km/h ou 30 m/s, le plus rapide ? » listait des PONTS + comparaison de grandeurs câblée
 
 - **FAUX servi, trouvé à la sonde** : `_liste_inverse` matchait le token « **plus** » de la relation
