@@ -386,6 +386,36 @@ check(_m("inverse de 6 modulo 9") is None, "6 non inversible mod 9 (pgcd≠1) ->
 check(_m("valeur de la maison") is None, "« valeur de X » (sans « absolue ») ne déclenche PAS (garde)")
 # BISSEXTILE / JOURS D'UNE ANNÉE / OPÉRATIONS NOMMÉES / DÉCIMALES DE CONVERSION (vague 11).
 _c = lambda t: (lambda r: r[1] if r[0] == _V else None)(FN.resout_conversion(t))
+
+# VÉRIFICATIONS NUMÉRIQUES / FRACTIONS / DIVISEURS / PREMIERS D'INTERVALLE / UNITÉS (vague 12).
+check(_m("est-ce que 7 est un nombre pair") == "Non, 7 n'est pas pair.", "7 pair -> Non")
+check(_m("17 est-il impair") == "Oui, 17 est impair.", "17 impair -> Oui")
+check(_m("est-ce que 15 est divisible par 3") == "Oui, 15 est divisible par 3 (3 × 5).", "15 divisible par 3")
+check(_m("est-ce que 21 est un multiple de 7") is not None and "Oui" in _m("est-ce que 21 est un multiple de 7"),
+      "21 multiple de 7 -> Oui")
+check(_m("est-ce que 100 est un carré parfait") == "Oui, 100 est un carré parfait (10²).", "100 carré parfait")
+_r = _m("est-ce que 50 est un carré parfait")
+check(_r is not None and _r.startswith("Non") and "49" in _r and "64" in _r, "50 -> Non, encadré par 49 et 64")
+check(_m("lequel est le plus grand : 2/3 ou 3/5") == "2/3 est plus grand (2/3 > 3/5).",
+      "fractions comparées EXACTEMENT (plus jamais « Minimum : 2 ; maximum : 5 »)")
+check(_m("4/8 ou 1/2, lequel est le plus grand") == "Ils sont égaux (4/8 = 1/2).", "4/8 = 1/2 (égalité exacte)")
+check(_m("0.5 est-il égal à 1/2") == "Oui, 0.5 = 1/2.", "décimal = fraction (exact)")
+check(_m("le produit de 4 et 25") == "100", "produit de 4 et 25 -> 100")
+check(_m("la différence de 100 et 58") == "42", "différence de 100 et 58 -> 42")
+check(_m("le quotient de 100 et 7") is None, "quotient non entier -> abstention")
+_r = _m("les diviseurs de 36")
+check(_r is not None and "9 diviseurs" in _r and "1, 2, 3, 4, 6, 9, 12, 18, 36" in _r, "diviseurs de 36 (énumérés)")
+check(_m("un nombre premier entre 20 et 30") == "Entre 20 et 30 : 23, 29.",
+      "premiers entre 20 et 30 -> 23, 29 (plus jamais « Non, 20 n'est pas premier »)")
+check(_m("nombres premiers entre 24 et 28") == "Aucun nombre premier entre 24 et 28.", "intervalle sans premier")
+check(_c("convertis 3 hectares en m2") == "30000 m2", "3 ha -> 30000 m²")
+check(_c("2 gigaoctets en mégaoctets") == "2000 megaoctets", "2 Go -> 2000 Mo (SI, convention dite en source)")
+_r = _c("150 centimètres en pieds")
+check(_r is not None and _r.startswith("4.92"), "150 cm -> ~4.92 pieds (0,3048 exact)")
+check(_c("combien de secondes dans 2 heures et demie") == "9000 secondes",
+      "2 h et demie -> 9000 s (le « et demie » n'est PLUS ignoré : 7200 était FAUX)")
+_r = _c("combien de semaines dans une année")
+check(_r is not None and _r.startswith("52 semaines et 1 jour"), "semaines/année -> réponse composée honnête")
 _r = _m("est-ce que 2024 est une année bissextile")
 check(_r is not None and _r.startswith("Oui, 2024"), "2024 bissextile -> Oui (règle grégorienne, plus JAMAIS « 2010 » du film)")
 _r = _m("2023 est-elle une année bissextile")

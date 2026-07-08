@@ -180,6 +180,21 @@ _CONV_UNITS = {
     "hectolitre": ("V", 100.0), "hectolitres": ("V", 100.0),
     "m3": ("V", 1000.0), "metre cube": ("V", 1000.0), "metres cubes": ("V", 1000.0),
     "cm3": ("V", 0.001), "centimetre cube": ("V", 0.001), "centimetres cubes": ("V", 0.001),
+    # aire (base = m² ; hectare/are = définitions exactes)
+    "m2": ("A", 1.0), "metre carre": ("A", 1.0), "metres carres": ("A", 1.0),
+    "cm2": ("A", 0.0001), "centimetre carre": ("A", 0.0001), "centimetres carres": ("A", 0.0001),
+    "km2": ("A", 1_000_000.0), "kilometre carre": ("A", 1_000_000.0), "kilometres carres": ("A", 1_000_000.0),
+    "hectare": ("A", 10000.0), "hectares": ("A", 10000.0), "ha": ("A", 10000.0),
+    "are": ("A", 100.0), "ares": ("A", 100.0),
+    # longueurs impériales (définitions légales exactes : 1 pied = 0,3048 m ; 1 pouce = 0,0254 m)
+    "pied": ("L", 0.3048), "pieds": ("L", 0.3048), "pouce": ("L", 0.0254), "pouces": ("L", 0.0254),
+    "yard": ("L", 0.9144), "yards": ("L", 0.9144), "mile": ("L", 1609.344), "miles": ("L", 1609.344),
+    # données (préfixes SI DÉCIMAUX : 1 Go = 1000 Mo — les préfixes binaires Gio/Mio valent 1024, dit en source)
+    "octet": ("D", 1.0), "octets": ("D", 1.0),
+    "ko": ("D", 1000.0), "kilooctet": ("D", 1000.0), "kilooctets": ("D", 1000.0),
+    "mo": ("D", 1_000_000.0), "megaoctet": ("D", 1_000_000.0), "megaoctets": ("D", 1_000_000.0),
+    "go": ("D", 1_000_000_000.0), "gigaoctet": ("D", 1_000_000_000.0), "gigaoctets": ("D", 1_000_000_000.0),
+    "to": ("D", 1_000_000_000_000.0), "teraoctet": ("D", 1_000_000_000_000.0), "teraoctets": ("D", 1_000_000_000_000.0),
     # vitesse (base = m/s ; km/h = 1000/3600 exact ; nœud = 1852 m/h, définition légale du mille marin).
     # Clés AVEC « / » (la normalisation locale le préserve) ET sans (formes parlées).
     "m/s": ("S", 1.0), "km/h": ("S", 1000.0 / 3600.0),
@@ -218,6 +233,18 @@ def resout_conversion(question: str):
     """Convertit entre 2 unités de MÊME dimension (table fermée, exacte). (VERIFIE, texte, source) ou (HORS,None,None).
     FAUX=0 : unité inconnue ou dimensions différentes -> HORS. Ne fire que sur un motif de conversion explicite."""
     q = _norm_conv(question)                         # accents/casse normalisés, décimales et « / » PRÉSERVÉS
+    # « X <unité> et demie / et quart / et trois quarts » -> X.5 / X.25 / X.75 (« 2 heures et demie » valait
+    # 2 heures : 7200 s servi pour 9000, FAUX vécu 2026-07-08). Réécriture AVANT le motif de conversion.
+    q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+trois\s+quarts?\b",
+               lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.75, m.group(2)), q)
+    q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+demie?s?\b",
+               lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.5, m.group(2)), q)
+    q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+quarts?\b",
+               lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.25, m.group(2)), q)
+    # SEMAINES DANS UNE ANNÉE : durée VARIABLE (365/366 j) -> réponse composée honnête, pas un facteur menteur.
+    if re.search(r"semaines?\s+dans\s+(?:une?\s+|l['’]\s*)?annee", q):
+        return (VERIFIE, "52 semaines et 1 jour (année de 365 jours) ; 52 semaines et 2 jours si bissextile (366).",
+                "calendrier — 365 = 52×7 + 1")
     m = _CONV_EN.search(q)
     if m:
         num = float(m.group(1).replace(",", ".")); src = m.group(2).lower(); dst = m.group(3).lower()
@@ -231,7 +258,9 @@ def resout_conversion(question: str):
         return (HORS, None, None)
     val = num * du[1] / tu[1]
     affiche = {"m s": "m/s", "km h": "km/h", "kmh": "km/h"}.get(dst, dst)   # normalise() a mangé le « / »
-    return (VERIFIE, f"{_fmt_nombre(val)} {affiche}", "conversion d'unités (facteurs exacts, même dimension)")
+    src_lib = ("conversion de données (préfixes SI décimaux : 1 Go = 1000 Mo ; les préfixes binaires Gio/Mio "
+               "valent 1024)") if du[0] == "D" else "conversion d'unités (facteurs exacts, même dimension)"
+    return (VERIFIE, f"{_fmt_nombre(val)} {affiche}", src_lib)
 
 
 # ————————————————————————————————— ARITHMÉTIQUE (entiers, résultat EXACT uniquement) —————————————————————————————————
@@ -623,6 +652,98 @@ def resout_math(question: str):
     if ("ppcm" in qtoks or "multiple" in q and "commun" in q) and len(ent) >= 2:
         g = _AM.pgcd(ent[0], ent[1])
         return (VERIFIE, str(ent[0] * ent[1] // g) if g else "0", "arithmétique — PPCM")
+
+    # VÉRIFICATIONS NUMÉRIQUES exactes : pair/impair, divisible par, multiple de, carré parfait.
+    # (La garde de resolution.py renvoie ces « est-ce que <nombre> est … » ici — on y répond VRAIMENT.)
+    mvn = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+(?:un\s+nombre\s+)?(pair|impair)e?\b", q) \
+        or (re.search(r"est[- ]ce\s+que\s+(\d+)\s+est\s+(?:un\s+nombre\s+)?(pair|impair)e?\b", q))
+    if mvn:
+        n, quoi = int(mvn.group(1)), mvn.group(2)
+        est = (n % 2 == 0) if quoi == "pair" else (n % 2 == 1)
+        return (VERIFIE, ("Oui, %d est %s." if est else "Non, %d n'est pas %s.") % (n, quoi),
+                "arithmétique — parité")
+    mdiv = re.search(r"(\d+)\s+(?:est(?:[- ](?:il|elle|ce))?\s+)?divisible\s+par\s+(\d+)", q)
+    if mdiv:
+        a, b = int(mdiv.group(1)), int(mdiv.group(2))
+        if b == 0:
+            return (VERIFIE, "La divisibilité par 0 n'est pas définie.", "arithmétique — divisibilité")
+        est = a % b == 0
+        return (VERIFIE, ("Oui, %d est divisible par %d (%d × %d)." % (a, b, b, a // b)) if est
+                else "Non, %d n'est pas divisible par %d (reste %d)." % (a, b, a % b),
+                "arithmétique — divisibilité")
+    mmu = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+un\s+multiple\s+de\s+(\d+)", q)
+    if mmu:
+        a, b = int(mmu.group(1)), int(mmu.group(2))
+        est = b != 0 and a % b == 0
+        return (VERIFIE, ("Oui, %d est un multiple de %d (%d × %d)." % (a, b, b, a // b)) if est
+                else "Non, %d n'est pas un multiple de %d." % (a, b), "arithmétique — multiples")
+    mcp = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+un\s+carr[ée]\s+parfait", q)
+    if mcp:
+        n = int(mcp.group(1))
+        r0 = math.isqrt(n)
+        return (VERIFIE, ("Oui, %d est un carré parfait (%d²)." % (n, r0)) if r0 * r0 == n
+                else "Non, %d n'est pas un carré parfait (%d² = %d, %d² = %d)."
+                % (n, r0, r0 * r0, r0 + 1, (r0 + 1) ** 2), "arithmétique — carrés parfaits")
+
+    # COMPARAISON DE FRACTIONS / ÉGALITÉ décimal-fraction : EXACTE via Fraction (jamais de flottant menteur).
+    # ⚠ sur la question BRUTE : normalise() mange le « / » (« 2/3 » -> « 2 3 »).
+    mfr = re.search(r"plus\s+grand\w*\s*:?\s*(\d+)\s*/\s*(\d+)\s+ou\s+(\d+)\s*/\s*(\d+)", question, re.I) \
+        or re.search(r"(\d+)\s*/\s*(\d+)\s+ou\s+(\d+)\s*/\s*(\d+).*plus\s+grand", question, re.I)
+    if mfr:
+        from fractions import Fraction
+        a = Fraction(int(mfr.group(1)), int(mfr.group(2)))
+        b = Fraction(int(mfr.group(3)), int(mfr.group(4)))
+        sa, sb = "%s/%s" % (mfr.group(1), mfr.group(2)), "%s/%s" % (mfr.group(3), mfr.group(4))
+        if a == b:
+            return (VERIFIE, "Ils sont égaux (%s = %s)." % (sa, sb), "arithmétique — fractions exactes")
+        return (VERIFIE, "%s est plus grand (%s %s %s)." % (sa if a > b else sb, sa, ">" if a > b else "<", sb),
+                "arithmétique — fractions exactes")
+    meg = re.search(r"(\d+(?:[.,]\d+)?)\s+est(?:[- ](?:il|elle|ce))?\s+[ée]gale?\s+[àa]\s+(\d+)\s*/\s*(\d+)", question, re.I)
+    if meg:
+        from fractions import Fraction
+        a = Fraction(meg.group(1).replace(",", "."))
+        b = Fraction(int(meg.group(2)), int(meg.group(3)))
+        return (VERIFIE, ("Oui, %s = %s/%s." % (meg.group(1), meg.group(2), meg.group(3))) if a == b
+                else "Non, %s ≠ %s/%s." % (meg.group(1), meg.group(2), meg.group(3)),
+                "arithmétique — fractions exactes")
+
+    # PRODUIT / DIFFÉRENCE / QUOTIENT nommés : « le produit de 4 et 25 » -> 100 (exact ; quotient exact seul).
+    mpr = re.search(r"\b(produit|difference|quotient)\s+(?:de\s+|d['’]\s*|entre\s+)(-?\d+)\s+et\s+(?:de\s+)?(-?\d+)", q)
+    if mpr:
+        op, a, b = mpr.group(1), int(mpr.group(2)), int(mpr.group(3))
+        if op == "produit":
+            return (VERIFIE, str(a * b), "arithmétique — produit")
+        if op == "difference":
+            return (VERIFIE, str(a - b), "arithmétique — différence")
+        if b != 0 and a % b == 0:
+            return (VERIFIE, str(a // b), "arithmétique — quotient exact")
+        return (HORS, None, None)                        # quotient non entier -> abstention (cohérent division)
+
+    # DIVISEURS d'un entier : énumération exacte (borne anti-DoS).
+    mdv = re.search(r"(?:les\s+)?diviseurs\s+(?:de\s+|d['’]\s*)(\d+)", q)
+    if mdv:
+        n = int(mdv.group(1))
+        if 1 <= n <= 10 ** 7:
+            divs = [d for d in range(1, math.isqrt(n) + 1) if n % d == 0]
+            tous = sorted(set(divs + [n // d for d in divs]))
+            return (VERIFIE, "%d a %d diviseurs : %s." % (n, len(tous), ", ".join(map(str, tous))),
+                    "arithmétique — diviseurs (énumération exacte)")
+        return (HORS, None, None)
+
+    # NOMBRE(S) PREMIER(S) DANS UN INTERVALLE : « un nombre premier entre 20 et 30 » -> 23, 29 (énumération
+    # exacte, AVANT la primalité simple — sinon « Non, 20 n'est pas premier » répondait à côté, FAUX vécu).
+    mpe = re.search(r"(?:nombres?\s+premiers?|premiers?)\s+entre\s+(\d+)\s+et\s+(\d+)", q)
+    if mpe:
+        a, b = int(mpe.group(1)), int(mpe.group(2))
+        if a > b:
+            a, b = b, a
+        if b - a <= 10000 and b <= 10 ** 9:
+            prems = [x for x in range(max(a, 2), b + 1) if _AM.est_premier(x)]
+            if not prems:
+                return (VERIFIE, "Aucun nombre premier entre %d et %d." % (a, b), "arithmétique — primalité")
+            return (VERIFIE, "Entre %d et %d : %s." % (a, b, ", ".join(map(str, prems))),
+                    "arithmétique — primalité (énumération exacte)")
+        return (HORS, None, None)
 
     # NOMBRE PREMIER : « est-ce que 17 est (un nombre) premier ? », « 18 est-il un nombre premier ? ». GARDE
     # anti-faux-positif : « premier » est un ordinal courant (« premier président de 1958 ») -> on exige soit

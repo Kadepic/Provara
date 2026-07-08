@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 12 : 3 FAUX corrigés (fractions, premier d'intervalle, « 2 heures et demie ») + vérifications numériques, diviseurs, jour historique, nouvelles unités
+
+- **FAUX ×3, trouvés à la sonde** :
+  1. « lequel est le plus grand : 2/3 ou 3/5 » → *« Minimum : 2 ; maximum : 5 »* (les numérateurs/dénominateurs
+     traités comme des valeurs par la route min/max). Garde fractions dans `fonction_stats_nl` + comparaison
+     EXACTE via `Fraction` : « 4/8 ou 1/2 » → « Ils sont égaux », « 0.5 est-il égal à 1/2 » → Oui.
+  2. « un nombre premier entre 20 et 30 » → *« Non, 20 n'est pas premier »* (répondait à côté). Énumération
+     exacte : → « Entre 20 et 30 : 23, 29 » ; intervalle vide dit ; borne anti-DoS.
+  3. « combien de secondes dans 2 heures et demie » → *7200* (le « et demie » ignoré). Réécriture « X et
+     demie/quart/trois quarts » → X,5/X,25/X,75 avant conversion : → 9000 s.
+- CÂBLAGE : vérifications numériques exactes (pair/impair, divisible par — avec le quotient ou le reste MONTRÉ —,
+  multiple de, carré parfait avec encadrement quand Non) ; produit/différence/quotient nommés (quotient exact
+  seulement) ; diviseurs énumérés (« 36 a 9 diviseurs : … ») ; **jour de la semaine historique** (« le 14
+  juillet 1789 était un mardi » — datetime grégorien ; avant 1583 → abstention DITE, calendrier julien) ;
+  « semaines dans une année » → réponse composée honnête (52 sem + 1 j ; +2 si bissextile) ; unités : aires
+  (hectares/ares/m²/km²), longueurs impériales (pieds/pouces/yards, définitions légales), données (octets,
+  préfixes SI décimaux — convention DITE en source).
+- Bancs : `valide_assistant_nl` **219/219** (+20), capacites_chat **128/128** (+3), stats_nl 22/22, suite 25/25,
+  raisonnement 172/172, paraphrases 170/170, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — Vague 11 : 4 FAUX corrigés (bissextile→film, heure locale pour New York, 1,5 h→300 min, « mots »→« mode ») + bissextile, fuseaux, âge, opérations nommées
 
 - **FAUX ×4, trouvés à la sonde** :

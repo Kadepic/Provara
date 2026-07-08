@@ -120,6 +120,11 @@ def repond_stats(texte: str):
     if re.search(r"\b(ecart[- ]?type|variance|dispersion)\b", bas):
         return _descr("ecart", vals) if vals else None
     if re.search(r"\b(minimum|maximum|min et max|plus petit|plus grand)\b", bas) and vals:
+        # GARDE FRACTIONS (FAUX vécu 2026-07-08) : « le plus grand : 2/3 ou 3/5 » servait « Minimum : 2 ;
+        # maximum : 5 » (les numérateurs/dénominateurs traités comme des valeurs). Une fraction a/b n'est pas
+        # deux nombres -> on laisse la main à la route de comparaison exacte de fractions (fonction_nl).
+        if re.search(r"\d\s*/\s*\d", t):
+            return None
         return _descr("min", vals)
     if re.search(r"\bsomme\b", bas) and vals:
         return _descr("somme", vals)

@@ -191,6 +191,12 @@ r = R._cap_quotidien("quelle heure est-il ?")
 check(r is not None and r.startswith("Il est"), "sans ville -> heure locale (horloge machine), comme avant")
 r = R._cap_quotidien("quel âge a une personne née en 1990 ?")
 check(r is not None and "selon que l'anniversaire" in r, "âge né en 1990 -> fourchette honnête (anniversaire inconnu)")
+r = R._cap_quotidien("quel jour de la semaine était le 14 juillet 1789 ?")
+check(r == "Le 14 juillet 1789 était un mardi (calendrier grégorien).", "14 juillet 1789 -> mardi (exact)")
+r = R._cap_quotidien("quel jour était le 11 novembre 1918 ?")
+check(r is not None and "lundi" in r, "11 novembre 1918 -> lundi")
+r = R._cap_quotidien("quel jour était le 3 mars 1400 ?")
+check(r is not None and "julien" in r, "avant 1583 -> abstention DITE (calendrier julien), jamais un jour décalé")
 
 # — OPÉRATIONS TEXTUELLES exactes sur un mot (_cap_texte, vague 10 : natif déterministe, FAUX=0 par construction) —
 r = R._cap_texte("compte les lettres du mot anticonstitutionnellement")

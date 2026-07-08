@@ -5268,6 +5268,25 @@ def _cap_quotidien(texte: str, conv_id=None):
     r = _difference_dates(texte)
     if r:
         return r
+    # JOUR DE LA SEMAINE d'une date HISTORIQUE : « quel jour de la semaine était le 14 juillet 1789 ? » ->
+    # mardi (datetime, calendrier grégorien proleptique — année EXPLICITE ≥ 1583 exigée : avant, le julien
+    # s'appliquait -> abstention plutôt qu'un jour décalé).
+    mjs = re.search(r"quel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:[ée]tait|est|tombait|tombe)\s+le\s+", texte, re.I)
+    if mjs:
+        md = _DATE_FR_RE.search(texte)
+        if md and md.group(3):
+            j = 1 if md.group(1).lower() == "1er" else int(md.group(1))
+            mo, an = _MOIS_NUM.get(md.group(2).lower()), int(md.group(3))
+            if an >= 1583:
+                import datetime as _dt
+                try:
+                    d = _dt.date(an, mo, j)
+                except (ValueError, TypeError):
+                    return None
+                return ("Le %d %s %d était un %s (calendrier grégorien)."
+                        % (d.day, _MOIS_FR[d.month - 1], d.year, _JOURS_FR[d.weekday()]))
+            return ("Avant 1583, le calendrier julien s'appliquait (bascule grégorienne d'octobre 1582) — je "
+                    "m'abstiens plutôt que de te donner un jour décalé.")
     if _HEURE_RE.search(texte):
         import time as _t
         # FAUX=0 vécu 2026-07-08 : « quelle heure est-il à New York ? » servait l'heure LOCALE de la machine.
