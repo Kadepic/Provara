@@ -4137,16 +4137,21 @@ def _diagnostic_connaissance(texte: str):
     if not (n == "diagnostic" or re.search(r"combien\s+de\s+(?:relations?|faits?|choses?)\b", n)):
         return None
     try:
-        import os, lecteur
+        import os, time as _tm, lecteur
+        _t0 = _tm.perf_counter()
         _charge_ia()
+        _t_charge = _tm.perf_counter() - _t0
         # CAPACITÉS PROUVÉES EN DIRECT (audit câblage 2026-07-06 : le registre capacites.py — 228 preuves à
         # réponse connue sur ~170 modules de raisonnement — n'était atteignable par RIEN dans le produit).
         # Chaque preuve est RÉELLEMENT exécutée à l'instant (<1 s, sans chargement de base) : couverture
         # MESURÉE au moment où l'utilisateur demande, jamais déclarée.
         cap = ""
+        _t_preuves = 0.0
         try:
             import capacites as _CAP
+            _t1 = _tm.perf_counter()
             _ok, _ko, _echecs = _CAP.verifie_tout()
+            _t_preuves = _tm.perf_counter() - _t1
             cap = " · capacités prouvées à l'instant : %d/%d%s" % (
                 _ok, _ok + _ko, "" if not _echecs else " (en échec : %s)" % ", ".join(_echecs[:3]))
         except Exception:
@@ -4177,10 +4182,28 @@ def _diagnostic_connaissance(texte: str):
                     routage += " (couverture prior %d%%)" % round(100 * _ccouv / _ctot)
         except Exception:
             pass
-        return ("Diagnostic : je connais %d relation(s) et %d fait(s). Données : %s · build %s · recherche web %s%s%s%s"
-                % (len(lecteur.LECTEUR.relations()), len(lecteur.LECTEUR),
+        # INVENTAIRE À BUDGET (vécu .exe 2026-07-08 : le diagnostic partait en timeout — compter 72 M de
+        # faits force le chargement de TOUTES les tables ; sur données froides, ça peut durer des minutes).
+        # Budget 10 s : au-delà, le compte partiel est rendu HONNÊTEMENT (« au moins N ») et l'inventaire
+        # progresse au diagnostic suivant (les tables chargées restent chargées).
+        _t2 = _tm.perf_counter()
+        _lim = _t2 + 10.0
+        n_faits, complet = 0, True
+        for _tab in lecteur.LECTEUR.tables.values():
+            n_faits += len(_tab)
+            if _tm.perf_counter() > _lim:
+                complet = False
+                break
+        _t_inv = _tm.perf_counter() - _t2
+        aff_faits = ("%d fait(s)" % n_faits) if complet else \
+            ("au moins %d faits (inventaire complet interrompu à 10 s — il reprendra au prochain diagnostic)"
+             % n_faits)
+        return ("Diagnostic : je connais %d relation(s) et %s. Données : %s · build %s · recherche web %s%s%s%s"
+                " · étapes : chargement %.1f s, preuves %.1f s, inventaire %.1f s"
+                % (len(lecteur.LECTEUR.relations()), aff_faits,
                    os.environ.get("LECTEUR_DATASETS_DIR", "?"), _build_id(),
-                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap, appris, routage))
+                   "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap, appris, routage,
+                   _t_charge, _t_preuves, _t_inv))
     except Exception as e:
         return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
 

@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Diagnostic .exe : inventaire à budget + étapes chronométrées
+
+- Le timeout du diagnostic .exe persiste au build 72 (> 300 s) alors que le même chemin fait 9.7 s en local
+  — bug PRÉEXISTANT (déjà noté au build 53), pas causé par les preuves. Deux armes embarquées :
+  ① **inventaire à budget** : compter les 72 M de faits force le chargement de toutes les tables ; sur
+  données froides c'est potentiellement des minutes -> budget 10 s, au-delà le compte partiel est rendu
+  honnêtement (« au moins N — l'inventaire reprendra au prochain diagnostic ») ;
+  ② **étapes chronométrées DANS la réponse** (« étapes : chargement X s, preuves Y s, inventaire Z s ») —
+  le prochain diagnostic sur le .exe dira exactement où le temps part.
+- Bancs : suite 26/26, capacites_chat 184/184, assistant_nl 485/485.
+
 ## 2026-07-08 — FIX CRITIQUE diagnostic .exe : plus aucun spawn d'interpréteur dans le chemin produit
 
 - **Vécu sur le .exe build 70 (live)** : « diagnostic » partait en timeout (> 400 s). Cause : la preuve de
