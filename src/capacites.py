@@ -4132,6 +4132,41 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_6() -> bool:
+    """LOT 3 : décision pignistique, découverte de loi, Berkson, fenêtres de comptage, DMS, échelle de carte."""
+    import ia as _I
+    if _I.decision_pignistique({"a": 0.6, "b": 0.4}, ["a", "b"], {"x": {"a": 1, "b": 0}}) \
+            != ("pignistique", "x", {"a": 0.6, "b": 0.4}):
+        return False
+    loi = _I.decouvre_loi([(1, 1), (2, 4), (3, 9), (4, 16)])          # y = x² découvert, a = 1.0 EXACT
+    if not (loi["forme"] == "carré" and loi["params"]["a"] == 1.0):
+        return False
+    vb, db = _I.detecte_biais_collision([1, 0, 1, 0, 1, 1, 0, 0] * 5, [0, 1, 0, 1, 1, 0, 1, 0] * 5, 1.5)
+    if not (vb == "berkson" and abs(db["corr_pop"] + 0.5) < 1e-9 and abs(db["corr_sel"]) < 1e-9):
+        return False
+    if _I.comptage_fenetre([0.1, 0.5, 1.2, 3.4, 5.5, 7.7, 9.9, 11.2, 13.3, 15.5, 17.7, 19.9, 21.2, 23.3] * 3,
+                           24.0, 0.0, 12.0) != ("estimation", (24.5, (14, 37)), 0.9):
+        return False
+    if abs(_I.dms_vers_dd(48, 51, 24) - (48 + 51 / 60 + 24 / 3600)) > 1e-12:   # 48°51'24" (Paris) EXACT
+        return False
+    return _I.echelle_carte(25000, 4.0) == 100000.0                   # 4 cm au 1:25000 = 1 km EXACT
+
+
+def _p_facade_stats_7() -> bool:
+    """LOT 3 (suite) : covariance robuste, métriques de classification, parts multinomiales, Simpson honnête."""
+    import ia as _I
+    vc, dc = _I.covariance_robuste([[1, 2], [2, 3], [1, 2], [2, 3], [100, 200]] * 8)
+    if not (vc == "analyse" and dc["p"] == 2 and dc["n"] == 40 and dc["cond"] > 1.0):
+        return False
+    vm, dm = _I.metriques_classification([1, 1, 0, 0], [1, 0, 1, 0])
+    if not (vm == "metriques" and dm["exactitude"] == 0.5):
+        return False
+    vp, parts, conf = _I.parts_multinomiales([30, 50, 20])
+    if not (vp == "estimation" and 0.19 < parts[0][0] < 0.3 < parts[0][1] < 0.45):
+        return False
+    return _I.detecte_simpson([("h", 1, 1), ("h", 1, 0)], "t", "c")[0] == "abstention"   # strates incohérentes
+
+
 def _p_facade_stats_4() -> bool:
     """LOT 2 (excellence atomique) : ergodicité, AUC avec IC, bande DKW, bornage de question, Yager, UCB."""
     import math
@@ -4170,6 +4205,14 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Décision, lois et biais de sélection (façade stats 6)": (
+        "decision_pignistique (transformée exacte), decouvre_loi (y = x² retrouvé, a = 1.0), "
+        "detecte_biais_collision (Berkson : corrélation −0.5 -> 0 sous sélection), comptage_fenetre, "
+        "dms_vers_dd (48°51'24\" exact), echelle_carte (4 cm au 1:25000 = 1 km).", _p_facade_stats_6),
+    "Robustesse et métriques (façade stats 7)": (
+        "covariance_robuste (MCD, conditionnement tracé), metriques_classification (exactitude exacte), "
+        "parts_multinomiales (IC simultanés), detecte_simpson (strates incohérentes -> abstention DITE).",
+        _p_facade_stats_7),
     "Ergodicité, calibration et fusion d'évidences (façade stats 4)": (
         "analyse_ergodicite (taux temporel = moyenne géométrique exacte), auc_avec_intervalle, "
         "bande_confiance_cdf (DKW exact), classe_bornage (borné/non-borné), combine_evidences (Yager, "

@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 3 : 10 façades de plus (dette 124 → 114)
+
+- 2 preuves REGISTRE (diagnostic : 288) : **décision/lois/biais** (transformée pignistique exacte,
+  `decouvre_loi` retrouve y = x² avec a = 1.0, effet Berkson démontré numériquement (corr −0.5 -> 0 sous
+  sélection), fenêtres de comptage, DMS→degrés décimaux exact (48°51'24"), échelle de carte exacte) ;
+  **robustesse/métriques** (covariance MCD avec conditionnement tracé, exactitude de classification exacte,
+  IC multinomiaux simultanés, Simpson : strates incohérentes -> abstention DITE).
+- Plafond du cliquet : **114**. Pins registre 286→288.
+- Bancs : valide_capacites 73/73, valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 2 : 10 façades de plus (dette 134 → 124)
 
 - 2 nouvelles preuves REGISTRE (diagnostic : 286) : **ergodicité/fusion** (taux temporel = moyenne
