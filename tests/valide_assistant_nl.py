@@ -414,6 +414,18 @@ check(_nm and _nm.startswith("1.9983 mol") and "H2O" in _nm, "moles dans 36 g d'
 check(_m("combien de moles dans 10 grammes de kryptonite") is None, "substance inconnue -> abstention")
 check(_m("quelle est la concentration de CO2 dans l'atmosphère") is None,
       "garde : concentration sans moles/litres -> HORS (pas un calcul)")
+# VAGUE 41 : conventions de l'eau + lumière du Soleil (conditions DITES partout).
+_le = _m("combien pèse un litre d'eau")
+check(_le and _le.startswith("≈ 1 kg") and "20 °C" in _le, "litre d'eau -> ≈ 1 kg, température dite")
+_mc = _m("combien pèse un mètre cube d'eau")
+check(_mc and _mc.startswith("≈ 1000 kg"), "m³ d'eau -> ≈ 1000 kg (une tonne)")
+_de = _m("densité de l'eau")
+check(_de and _de.startswith("1 par convention"), "densité de l'eau -> 1, variation dite")
+_eb = _m("à quelle température l'eau bout en altitude")
+check(_eb and _eb.startswith("Plus bas qu'à 100 °C"), "ébullition en altitude -> loi qualitative + exemple dit")
+_ls = _m("combien de temps met la lumière du Soleil pour nous atteindre")
+check(_ls and _ls.startswith("≈ 8 min 19 s") and "elliptique" in _ls, "lumière du Soleil -> 8 min 19 s, moyenne dite")
+check(_m("2 litres d'eau en centilitres") == "200 centilitres", "« d'eau » intercalé ne casse plus la conversion")
 # VAGUE 40 (passe adverse horloge/variantes) : moins, durées compactes, entre, baissé de, jusqu'à.
 check(_m("20h45 moins 30 minutes") == "20 h 15 (20 h 45 − 30 minutes).", "20h45 − 30 min (1245 minutes FAUX vécu)")
 check(_m("un train part à 8h45 et le trajet dure 1h30, à quelle heure arrive-t-il")

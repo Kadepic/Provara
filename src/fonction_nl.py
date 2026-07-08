@@ -320,6 +320,9 @@ def resout_conversion(question: str):
     q = re.sub(rf"\bune?\s+(?=(?:{_UNIT_ALT})\b)", "1 ", q)   # « UN hectare en m² » ratait (pas de nombre)
     if not re.search(r"\d", q):                               # unité NUE (« année-lumière en km ») = 1 unité
         q = re.sub(rf"\b(?=(?:{_UNIT_ALT})\b\s+en\s)", "1 ", q, count=1)
+    # « 2 litres D'EAU en centilitres » : le qualificatif de substance s'intercale — retiré (le volume d'eau
+    # se convertit comme tout volume ; la MASSE de l'eau a sa route dédiée plus bas).
+    q = re.sub(rf"\b((?:{_UNIT_ALT}))\s+d['’]\s*(?:eau|essence|lait|huile)\b", r"\1", q)
     # UNITÉS AMBIGUËS / NON NORMALISÉES -> réponse composée honnête, jamais un facteur unique menteur.
     if re.search(r"\bgallons?\b", q) and re.search(r"litres?|combien", q):
         return (VERIFIE, "Ambigu — 1 gallon US = 3.785411784 L ; 1 gallon impérial (UK) = 4.54609 L "
@@ -1259,6 +1262,31 @@ def resout_math(question: str):
             mant = mant.rstrip("0").rstrip(".")
             return (VERIFIE, "%s × 10^%d" % (mant, int(expn)), "notation scientifique (réécriture exacte)")
         return (VERIFIE, "0", "notation scientifique (réécriture exacte)")
+
+    # EAU — conventions physiques, CONDITIONS DITES (même famille que la congélation 0 °C déjà câblée).
+    if re.search(r"(?:pese|poids|masse)\b.{0,20}?\blitre\s+d['’]?\s*eau|litre\s+d['’]?\s*eau\s+en\s+(?:kg|kilo)", qc):
+        return (VERIFIE, "≈ 1 kg (0.998 kg à 20 °C — le litre d'eau a historiquement défini le kilogramme).",
+                "physique — masse volumique de l'eau (conditions dites)")
+    if re.search(r"(?:pese|poids|masse)\b.{0,25}?metre\s+cube\s+d['’]?\s*eau", qc):
+        return (VERIFIE, "≈ 1000 kg — une tonne (998 kg à 20 °C).",
+                "physique — masse volumique de l'eau (conditions dites)")
+    if re.search(r"densite\s+de\s+l['’]?\s*eau", q):
+        return (VERIFIE, "1 par convention (999.97 kg/m³ au maximum, à 4 °C ; 998 à 20 °C — varie avec la "
+                "température).", "physique — masse volumique de l'eau (conditions dites)")
+    if re.search(r"eau\s+bout\b.{0,20}?altitude|ebullition\b.{0,25}?altitude", q):
+        return (VERIFIE, "Plus bas qu'à 100 °C : la pression diminue avec l'altitude (≈ 90 °C vers 3000 m, "
+                "valeur approximative — dépend de la météo locale).",
+                "physique — ébullition et pression (loi qualitative, exemple approximatif dit)")
+
+    # LUMIÈRE DU SOLEIL : composition de deux constantes vérifiées (distance moyenne 149.6 millions de km /
+    # c = 299 792 458 m/s) -> ≈ 8 min 19 s, « moyenne » DITE (l'orbite est elliptique).
+    if re.search(r"lumiere\s+du\s+soleil.{0,40}?(?:atteindre|arriver|parvenir|terre)"
+                 r"|temps.{0,30}?lumiere.{0,20}?soleil", q):
+        secs = 149_600_000_000.0 / 299_792_458.0
+        mn, sc = divmod(int(round(secs)), 60)
+        return (VERIFIE, "≈ %d min %d s (149.6 millions de km en moyenne / 299 792 458 m/s — l'orbite est "
+                "elliptique, ça varie de ±8 s)." % (mn, sc),
+                "physique — distance moyenne Terre-Soleil / vitesse de la lumière")
 
     # VITESSE DU SON : valeur de référence, CONDITIONS DITES (elle varie — jamais un chiffre nu).
     if re.search(r"vitesse\s+du\s+son\b", q):

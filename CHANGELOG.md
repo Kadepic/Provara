@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 41 : conventions de l'eau, lumière du Soleil (conditions dites) + vérification globale
+
+- **Eau** (conditions DITES, même famille que la congélation déjà câblée) : « un litre d'eau » → « ≈ 1 kg
+  (0.998 kg à 20 °C — le litre a historiquement défini le kilogramme) » ; m³ → ≈ 1000 kg (une tonne) ;
+  densité → 1 par convention (variation dite) ; **ébullition en altitude** → loi qualitative + exemple
+  approximatif dit (jamais un chiffre nu). « 2 litres **d'eau** en centilitres » → le qualificatif de
+  substance ne casse plus la conversion (200 cl).
+- **Lumière du Soleil** : « ≈ 8 min 19 s (149.6 millions de km en moyenne / c — orbite elliptique, ±8 s) »
+  (composition de deux constantes vérifiées).
+- Sondé, abstention CORRECTE maintenue : température du corps, battements/minute, vitesse de rotation de la
+  Terre (candidats amorce — à voir avec Yohan, décision antérieure respectée).
+- **Vérification globale de fin de nuit — TOUT VERT** : lecteur **1615/1615**, base_faits 411, maj 41,
+  coordonnées 47, câblage **504 modules / 0 orphelin**, assistant_nl **465/465**, capacites_chat 182,
+  raisonnement 200, paraphrases 174, stats 34, suite 25, challenge 16, resolution 50.
+
 ## 2026-07-08 — Vague 40 : passe adverse horloge — soustraction, durées compactes, « entre », variantes
 
 - **FAUX** : « 20h45 **moins** 30 minutes » → *« 1245 minutes »* encore (seul « plus » était routé) →
