@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — CÂBLAGE vague 7 : géométrie simple en conversation (aire / périmètre / volume / hypoténuse)
+
+- `fonction_nl._resout_geometrie` (appelé par `resout_math`) câble **geometrie2d** (Cercle, Polygone, Point) et
+  **geometrie3d** (cube) au dialogue : « aire d'un cercle de rayon 3 » → 28.2743, « périmètre d'un carré de
+  côté 4 » → 16, « aire d'un rectangle de 3 par 5 » → 15, « aire d'un triangle de base 6 et hauteur 4 » → 12,
+  « hypoténuse d'un triangle rectangle de côtés 3 et 4 » → 5 (Pythagore via `Point.distance`), « volume d'un
+  cube de côté 2 » → 8 (`geometrie3d.cube().volume()`), « volume d'une sphère de rayon 2 » → 33.5103 (seule
+  formule directe : 4/3·π·r³, mathématique sûre — pas de brique sphère). Diamètre accepté (rayon = d/2).
+  Tous ces cas tombaient en MÉMO garbage avant (« C'est noté »).
+- GARDE anti-faux-positif triple (mesure + figure + dimension chiffrée) : « aire urbaine de Toulouse »,
+  « périmètre de sécurité », « volume sonore », « aire d'un cercle » (sans rayon) ne déclenchent RIEN ;
+  « superficie de la France » reste servie par les données (551 695 km²).
+- Bancs : `valide_assistant_nl` **141/141** (+15), capacites_chat 102/102, suite 25/25, geometrie2d 22/22,
+  geometrie3d 18/18, raisonnement 166/166, paraphrases 168/168, challenge 16/16, câblage 504 0 orphelin.
+
 ## 2026-07-08 — FAUX=0 : la moyenne pondérée moyennait les coefficients avec les valeurs (8 au lieu de 13.8)
 
 - **FAUX servi comme fait, trouvé à la sonde** : « moyenne pondérée de 12 coefficient 2 et 15 coefficient 3 »

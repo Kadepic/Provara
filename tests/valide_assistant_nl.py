@@ -384,6 +384,20 @@ check(_m("2A hexadécimal en décimal") == "42", "2A hexa -> 42 (décimal)")
 check(_m("inverse de 7 modulo 13") == "2", "inverse modulaire 7 mod 13 -> 2")
 check(_m("inverse de 6 modulo 9") is None, "6 non inversible mod 9 (pgcd≠1) -> abstention honnête")
 check(_m("valeur de la maison") is None, "« valeur de X » (sans « absolue ») ne déclenche PAS (garde)")
+# GÉOMÉTRIE SIMPLE (vague 7) : aire/périmètre/volume/hypoténuse via geometrie2d/3d (brique vérifiée).
+check(_m("aire d'un cercle de rayon 3") == "28.2743", "aire cercle r=3 -> 28.2743 (π·r², geometrie2d)")
+check(_m("circonférence d'un cercle de diamètre 10") == "31.4159", "circonférence d=10 -> 31.4159")
+check(_m("périmètre d'un carré de côté 4") == "16", "périmètre carré c=4 -> 16")
+check(_m("aire d'un rectangle de 3 par 5") == "15", "aire rectangle 3×5 -> 15")
+check(_m("périmètre d'un rectangle de longueur 5 et largeur 3") == "16", "périmètre rectangle 5×3 -> 16")
+check(_m("aire d'un triangle de base 6 et hauteur 4") == "12", "aire triangle b=6 h=4 -> 12")
+check(_m("hypoténuse d'un triangle rectangle de côtés 3 et 4") == "5", "hypoténuse 3-4 -> 5 (Pythagore)")
+check(_m("volume d'un cube de côté 2") == "8", "volume cube c=2 -> 8 (geometrie3d)")
+check(_m("volume d'une sphère de rayon 2") == "33.5103", "volume sphère r=2 -> 33.5103 (4/3·π·r³)")
+# GARDE : aire/périmètre/volume NON géométriques ne déclenchent RIEN (pas de vol de questions data).
+for q in ("l'aire urbaine de Toulouse", "périmètre de sécurité autour du stade", "le volume sonore de 90 décibels",
+          "quelle est la superficie de la France", "aire d'un cercle", "l'aire de repos à 3 km"):
+    check(_m(q) is None, "géométrie ne vole PAS « %s » (garde)" % q[:36])
 # GARDE anti-faux-positif : « premier »/nombres ordinaux ne déclenchent PAS la primalité sur une question DATA.
 for q in ("le premier président élu en 1958", "premier ministre depuis 2017", "premier roman de 1984",
           "quelle est la capitale de la France ?", "population du Japon en 2020", "qui a gagné en 2018"):

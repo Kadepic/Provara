@@ -274,6 +274,100 @@ def _deux_entiers(question: str):
     return [int(x) for x in re.findall(r"\d+", question)]
 
 
+def _resout_geometrie(q: str):
+    """GÉOMÉTRIE simple en NL sur la question NORMALISÉE — « aire d'un cercle de rayon 3 », « périmètre d'un
+    carré de côté 4 », « aire d'un rectangle de 3 par 5 », « aire d'un triangle de base 6 et hauteur 4 »,
+    « hypoténuse d'un triangle rectangle de côtés 3 et 4 », « volume d'un cube de côté 2 / d'une sphère de rayon 2 ».
+    Briques : geometrie2d.Cercle/Polygone/Point, geometrie3d.cube ; la sphère est la seule formule directe
+    (4/3·π·r³, mathématique sûre — pas de brique sphère). GARDE anti-faux-positif : exige le mot de MESURE
+    (aire/périmètre/circonférence/volume/hypoténuse) + le mot de FIGURE + sa DIMENSION chiffrée — « aire
+    urbaine », « périmètre de sécurité », « volume sonore » ne déclenchent rien. Renvoie un triplet ou None."""
+    if not re.search(r"\b(aire|surface|perimetre|circonference|volume|hypotenuse)\b", q):
+        return None
+    try:
+        from geometrie2d import Cercle, Polygone, Point
+    except Exception:
+        return None
+
+    def dim(mot):
+        m = re.search(mot + r"s?\s+(?:de\s+|d['’]\s*|:\s*)?(-?\d+(?:[.,]\d+)?)", q)
+        return float(m.group(1).replace(",", ".")) if m else None
+
+    aire = re.search(r"\b(aire|surface)\b", q) is not None
+    perim = re.search(r"\b(perimetre|circonference)\b", q) is not None
+
+    # CERCLE / DISQUE (rayon ou diamètre)
+    if re.search(r"\b(cercle|disque)\b", q) and (aire or perim):
+        r = dim("rayon")
+        if r is None:
+            d = dim("diametre")
+            r = d / 2.0 if d is not None else None
+        if r is not None and r >= 0:
+            c = Cercle(Point(0.0, 0.0), r)
+            if aire:
+                return (VERIFIE, _fmt_nombre(round(c.aire(), 4)), "géométrie — aire du disque (π·r²)")
+            return (VERIFIE, _fmt_nombre(round(c.perimetre(), 4)), "géométrie — circonférence (2·π·r)")
+
+    # CARRÉ (côté)
+    if "carre" in q and (aire or perim):
+        c = dim("cote")
+        if c is not None and c >= 0:
+            p = Polygone([(0.0, 0.0), (c, 0.0), (c, c), (0.0, c)])
+            if aire:
+                return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du carré")
+            return (VERIFIE, _fmt_nombre(p.perimetre()), "géométrie — périmètre du carré")
+
+    # RECTANGLE (« longueur 5 et largeur 3 » ou « de 3 par 5 »)
+    if "rectangle" in q and (aire or perim):
+        L, l = dim("longueur"), dim("largeur")
+        if L is None or l is None:
+            m2 = re.search(r"(-?\d+(?:[.,]\d+)?)\s*(?:par|x|×|sur)\s*(-?\d+(?:[.,]\d+)?)", q)
+            if m2:
+                L, l = float(m2.group(1).replace(",", ".")), float(m2.group(2).replace(",", "."))
+        if L is not None and l is not None and L >= 0 and l >= 0:
+            p = Polygone([(0.0, 0.0), (L, 0.0), (L, l), (0.0, l)])
+            if aire:
+                return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du rectangle")
+            return (VERIFIE, _fmt_nombre(p.perimetre()), "géométrie — périmètre du rectangle")
+
+    # TRIANGLE : aire par base × hauteur (l'aire ne dépend pas de la position de l'apex — triangle rectangle posé)
+    if "triangle" in q and aire:
+        b, h = dim("base"), dim("hauteur")
+        if b is not None and h is not None and b >= 0 and h >= 0:
+            p = Polygone([(0.0, 0.0), (b, 0.0), (0.0, h)])
+            return (VERIFIE, _fmt_nombre(p.aire()), "géométrie — aire du triangle (base×hauteur/2)")
+
+    # HYPOTÉNUSE d'un triangle rectangle (les deux côtés = les deux derniers nombres de la phrase)
+    if "hypotenuse" in q:
+        nums = [float(x.replace(",", ".")) for x in re.findall(r"-?\d+(?:[.,]\d+)?", q)]
+        if len(nums) >= 2 and nums[-2] > 0 and nums[-1] > 0:
+            d = Point(0.0, 0.0).distance(Point(nums[-2], nums[-1]))
+            return (VERIFIE, _fmt_nombre(round(d, 4)), "géométrie — hypoténuse (Pythagore)")
+
+    # VOLUMES : cube (brique geometrie3d.cube) et sphère (formule mathématique directe)
+    if "volume" in q:
+        if "cube" in q:
+            c = dim("cote")
+            if c is None:
+                c = dim("arete")
+            if c is not None and c >= 0:
+                try:
+                    from geometrie3d import cube as _cube
+                    return (VERIFIE, _fmt_nombre(round(_cube(c).volume(), 4)), "géométrie — volume du cube")
+                except Exception:
+                    return None
+        if "sphere" in q or "boule" in q:
+            r = dim("rayon")
+            if r is None:
+                d = dim("diametre")
+                r = d / 2.0 if d is not None else None
+            if r is not None and r >= 0:
+                import math as _math
+                return (VERIFIE, _fmt_nombre(round(4.0 / 3.0 * _math.pi * r ** 3, 4)),
+                        "géométrie — volume de la sphère (4/3·π·r³)")
+    return None
+
+
 def resout_math(question: str):
     """MATHS DISCRÈTES / ARITHMÉTIQUE / TRIGO en NL — capacités RÉELLES (arithmetique_modulaire, maths_discretes,
     trigonometrie) rendues atteignables par une phrase (mandat « tout câbler », 2026-07-08). Renvoie
@@ -410,6 +504,11 @@ def resout_math(question: str):
                             "nombres complexes — conjugué")
             except Exception:
                 return (HORS, None, None)
+
+    # GÉOMÉTRIE SIMPLE : aire/périmètre/volume de figures nommées (modules geometrie2d/geometrie3d vérifiés).
+    geo = _resout_geometrie(q)
+    if geo:
+        return geo
 
     # TRIGONOMÉTRIE : « sinus de 30 degrés », « cos de 60° », « tangente de 45 »
     mt = re.search(r"\b(sinus|sin|cosinus|cos|tangente|tan)\b.*?(-?\d+(?:[.,]\d+)?)", q)
