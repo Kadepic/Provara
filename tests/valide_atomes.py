@@ -124,7 +124,7 @@ except Exception:
 # ————————————————— ① SCAN À CLIQUET : aucune NOUVELLE orpheline, dette qui ne peut que fondre —————————————————
 # Dette HISTORIQUE assumée (audit 2026-07-08) : façade `ia.py` uniquement — 148 enveloppes dont les modules
 # sous-jacents sont validés, mais que rien ne consomme encore. À câbler (preuves) ou élaguer, par lots.
-_DETTE_ATTENDUE_MAX = 85             # 148 à l'audit initial ; lots 1-7 câblés (63 façades -> preuves REGISTRE)
+_DETTE_ATTENDUE_MAX = 78             # 148 à l'audit initial ; lots 1-8 câblés (70 façades -> preuves REGISTRE)
 _DETTE_MODULES_TOLERES = {"ia"}
 
 

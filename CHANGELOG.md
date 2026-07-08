@@ -1,5 +1,15 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 8 : 7 façades de plus (dette 85 → 78)
+
+- 1 preuve REGISTRE composée (diagnostic : 294) — **les pièges statistiques classiques, quantifiés et non
+  récités** : écart intuition/Bayes du test médical (0.99 perçu vs 0.019 réel), pente OLS (abstention n<12
+  ET vraie pente dans l'IC), **atténuation par erreur de mesure corrigée**, **winner's curse** (le maximum
+  sélectionné n'est pas significatif — IC traversant 0), **paradoxe de Lindley** (B01 > 1 malgré p = 0.6 sur
+  n = 100), régression vers la moyenne, **paradoxe de Lord** (changement ET ANCOVA explicités).
+- Plafond du cliquet : **78**.
+- Bancs : valide_capacites 73/73 (pins 293→294), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 7 : 5 façades de plus (dette 90 → 85)
 
 - 1 preuve REGISTRE composée (diagnostic : 293) : **théorie des possibilités** (nécessité/possibilité

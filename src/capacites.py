@@ -4132,6 +4132,36 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_13() -> bool:
+    """LOT 8 : base-rate quantifié, pentes (naïve/atténuée), winner's curse, Lindley, RTM, Lord."""
+    import ia as _I
+    va, da = _I.probabilite_posterieure_test(0.99, 0.95, 0.001)
+    if not (va == "analyse" and abs(da["vpp"] - (0.99 * 0.001) / (0.99 * 0.001 + 0.05 * 0.999)) < 1e-12
+            and da["naive"] == 0.99):                                 # l'écart intuition/Bayes est QUANTIFIÉ
+        return False
+    if _I.pente_ols_naive([1, 2, 3, 4], [2.1, 3.9, 6.1, 7.9])[0] != "abstention":   # n=4 < 12 -> DIT
+        return False
+    vo, (b, (blo, bhi)), _co = _I.pente_ols_naive(list(range(1, 16)),
+                                                  [2 * i + 0.1 * (i % 3) for i in range(1, 16)])
+    if not (vo == "estimation" and blo < 2.0 < bhi):                  # la vraie pente 2 est DANS l'IC
+        return False
+    vp, (pa, (palo, pahi)), _cp = _I.pente_erreur_mesure([1, 2, 3, 4] * 10, [2.1, 3.9, 6.1, 7.9] * 10, 0.5)
+    if not (vp == "estimation" and pa > 2.0):                         # l'atténuation est CORRIGÉE (pente > naïve)
+        return False
+    vs, ds = _I.effet_selectionne([1.0, 1.2, 0.9, 1.1] * 10, 1.5)     # winner's curse : le max sélectionné
+    if not (vs == "estime" and ds["valeur"] == 1.2 and ds["ic"][0] < 0 < ds["ic"][1]):   # n'est PAS significatif
+        return False
+    ve, de = _I.evidence_vs_n(0.6, 100)                               # Lindley : p=0.6 sur n=100, B01 > 1
+    if not (ve == "analyse" and de["B01"] > 1.0):                     # l'évidence favorise H0 malgré l'écart
+        return False
+    vr, dr = _I.diagnostique_regression_moyenne([10, 9, 8, 7, 6] * 2 + [10, 9], [8, 7, 7, 6, 5] * 2 + [8, 7])
+    if not (vr == "rtm" and dr["mu"] == 8.25):
+        return False
+    vl, dl = _I.paradoxe_lord([(50 + i % 5, 60 + i % 5) for i in range(40)],
+                              [(70 + i % 5, 75 + i % 5) for i in range(40)])
+    return vl == "analyse" and dl["diff_changement"] == 5.0           # les deux analyses EXPLICITÉES
+
+
 def _p_facade_stats_12() -> bool:
     """LOT 7 : possibilités, imputation multiple, filtre d'état, intervalle prédictif décomposé."""
     import ia as _I
@@ -4321,6 +4351,12 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Pièges statistiques quantifiés (façade stats 13)": (
+        "probabilite_posterieure_test (écart intuition/Bayes QUANTIFIÉ), pente_ols_naive (abstention n<12 + "
+        "vraie pente dans l'IC), pente_erreur_mesure (atténuation corrigée), effet_selectionne (winner's "
+        "curse : le max sélectionné n'est pas significatif), evidence_vs_n (Lindley : B01 > 1 malgré p=0.6), "
+        "diagnostique_regression_moyenne (RTM), paradoxe_lord (les deux analyses explicitées).",
+        _p_facade_stats_13),
     "Possibilités, imputation multiple et filtres honnêtes (façade stats 12)": (
         "encadre_probabilite (nécessité/possibilité exactes ; π sous-normalisée refusée), "
         "moyenne_avec_manquants et imputation_simple_biais (MCAR : 2×moyenne = 31 exact retrouvé), "
