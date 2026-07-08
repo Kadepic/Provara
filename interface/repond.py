@@ -1171,6 +1171,8 @@ def _lookup_cell(relation: str, entite: str):
     if clef in _STREAM_CACHE:
         return _quarantaine_cell(relation, _STREAM_CACHE[clef])
     trouve = _scan_bytes(chemin, ne, entite)
+    if len(_STREAM_CACHE) >= 16384:              # BORNE RAM (mandat 2026-07-08) : cache pur -> purge simple,
+        _STREAM_CACHE.clear()                    # jamais de croissance illimitée sur les longues sessions
     _STREAM_CACHE[clef] = trouve
     return _quarantaine_cell(relation, trouve)
 

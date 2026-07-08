@@ -1,5 +1,13 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Perf atome 3 : borne RAM du cache de lookups streaming
+
+- `_STREAM_CACHE` (mémo des lookups sur gros fichiers) grossissait SANS borne avec chaque entité distincte
+  interrogée — purge simple à 16 384 entrées (cache pur, même politique que `_CORRIGE_MEMO`). Audit des
+  autres caches : `_DIRECT_CACHE` LRU budgété ✓, `_CORRIGE_MEMO` borné ✓, `lru_cache(maxsize=None)` du
+  morpion borné par les états finis du jeu ✓, mémos nouveaux bornés par nature ✓.
+- Bancs : suite 25/25, raisonnement 202/202, capacites_chat 184/184.
+
 ## 2026-07-08 — Perf atome 2 : stat() mémoïsé + familles de relations précalculées (médiane 0.9 ms, max 5 ms)
 
 - **Atome n°2 (profilé)** : « point de fusion du fer » coûtait **19.3 ms** — `_lookup_direct` payait un
