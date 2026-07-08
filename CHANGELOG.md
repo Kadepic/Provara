@@ -1,5 +1,14 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 13 : 6 façades de plus (dette 50 → 44)
+
+- 1 preuve REGISTRE composée (diagnostic : 299) : **p-hacking quantifié** (le minimum de m tests ajusté
+  1−(1−p)^m exactement), **inégalité de Jensen reproduite** (E[f(X)] ≈ 1 vs f(E[X]) = 0), **jeu à somme
+  nulle résolu** (valeur ≈ 0, stratégies mixtes), **info-gap** (α̂ = 5 exact — la marge maximale tolérable),
+  **décision robuste au pire cas**, **échantillonnage préférentiel** (poids plats -> ESS = n exact).
+- Plafond du cliquet : **44**.
+- Bancs : valide_capacites 73/73 (pins 298→299), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 12 : 6 façades de plus (dette 56 → 50 — moitié de la dette brûlée)
 
 - 1 preuve REGISTRE composée (diagnostic : 298) : **théorème d'accord d'Aumann** (les deux agents bayésiens

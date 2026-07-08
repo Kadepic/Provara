@@ -4132,6 +4132,28 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_17() -> bool:
+    """LOT 13 : inférence sélective, Jensen, jeu à somme nulle, info-gap, décision robuste, importance."""
+    import random
+    import ia as _I
+    vi, di = _I.inference_selective([0.001, 0.01, 0.2, 0.4])
+    if not (vi == "analyse" and abs(di["p_ajuste"] - (1 - (1 - 0.001) ** 4)) < 1e-9):
+        return False                                                  # p-hacking : p_min ajusté EXACTEMENT
+    vf, df = _I.flaw_of_averages(lambda x: x * x, 0.0, 1.0, "convexe", rng=random.Random(0))
+    if not (vf == "analyse" and df["f_e"] == 0.0 and df["e_f"] > 0.9):
+        return False                                                  # Jensen : E[f(X)] >> f(E[X]) REPRODUIT
+    vj, dj = _I.strategie_securite([[0, -1], [1, 0]])
+    if not (vj == "jeu" and abs(dj["valeur"]) < 0.01):                # valeur du jeu ≈ 0 (point-selle mixte)
+        return False
+    if _I.robustesse_infogap(lambda u: 10.0 - u, 0.0, 5.0) != 5.0:    # α̂ EXACT : marge maximale tolérable
+        return False
+    vr, choix, det = _I.decision_robuste({"agir": lambda u: 10.0 - u, "rien": lambda u: 0.0}, 0.0, -1.0)
+    if not (vr == "robuste" and choix == "agir"):
+        return False
+    ve, de = _I.estime_importance([0.5, 0.6, 0.4] * 10, lambda x: x, lambda x: 1.0, lambda x: 1.0)
+    return ve == "fiable" and abs(de["estime"] - 0.5) < 1e-9 and de["ess"] == 30.0   # poids plats -> ESS = n
+
+
 def _p_facade_stats_16() -> bool:
     """LOT 12 : Aumann, CUSUM précoce, ancrage, Bertrand/Borel-Kolmogorov (mal posé -> refusé), optimisation."""
     import random
@@ -4444,6 +4466,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Sélection, Jensen et jeux résolus (façade stats 17)": (
+        "inference_selective (p-hacking : le minimum de m tests est ajusté 1−(1−p)^m EXACT), flaw_of_averages "
+        "(Jensen reproduit), strategie_securite (jeu à somme nulle résolu, valeur ≈ 0), robustesse_infogap "
+        "(α̂ = 5 exact), decision_robuste (le pire cas départage), estime_importance (poids plats -> ESS = n).",
+        _p_facade_stats_17),
     "Aumann, questions mal posées et détection précoce (façade stats 16)": (
         "accord_aumann (les agents bayésiens CONVERGENT — théorème vérifié), detecte_changement_precoce "
         "(alarme au pas exact), effet_ancrage (reproduit, contrôle propre), probabilite_geometrique "
