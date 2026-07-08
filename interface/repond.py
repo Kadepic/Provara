@@ -2580,6 +2580,11 @@ def _cap_comptage(texte: str):
         return None
     typn = _normalise(typ)
     sing = typn[:-1] if (typn.endswith(("s", "x")) and len(typn) > 4) else typn
+    # GARDE DURÉE COMPOSÉE (vécu 2026-07-08) : « 2 semaines et 3 jours ça fait combien de jours » comptait
+    # les 10 hyponymes du concept « jour » — c'est une composition de durées (fonction_nl), pas un comptage.
+    if sing in ("jour", "heure", "minute", "seconde", "semaine", "moi", "mois", "an", "annee") \
+            and re.search(r"\d\s*(?:ans?|annees?|mois|semaines?|jours?|heures?|minutes?|h\b)", _normalise(texte)):
+        return None                                      # (h\b compact : « de 9h à 17h30 » = durée, vécu)
     # GARDE LETTRES (FAUX vécu 2026-07-08) : « le mot X contient combien de consonnes » comptait les 37
     # hyponymes du concept « consonne » — c'est un comptage de LETTRES dans un mot, traité par _cap_texte.
     if sing in ("voyelle", "consonne", "lettre", "syllabe", "mot", "caractere") and re.search(
@@ -3041,7 +3046,16 @@ def _connaissance_verifiee(question: str, conv_id: str | None = None) -> str | N
             return str(vf)
     # Le DATA n'a rien : tenter un SOUS-SYSTÈME FONCTION (morse/OTAN/masse molaire/complément ADN). Sound : le
     # moteur renvoie VÉRIFIÉ ou HORS (jamais inventé). On exige un mot-clé fort -> aucune question DATA mal routée.
-    return _fonction_calculee(question)
+    fc = _fonction_calculee(question)
+    if fc is not None and conv_id:
+        # CONTINUATION sur un CALCUL (vécu 2026-07-08 : « masse molaire de H2O » puis « et de CO2 ? » tombait
+        # en repli — le sujet n'était mémorisé que pour le DATA). Sujet = queue après la DERNIÈRE préposition
+        # (l'opérande), COURTE seulement (≤ 3 tokens — une queue verbeuse ferait une substitution absurde).
+        msuj = re.search(r"^.*\b(?:de|d['’]|en|à)\s+([\wÀ-ÿ][\w À-ÿ%/.-]*?)\s*\??\s*$", question)
+        if msuj and msuj.group(1).strip() and len(msuj.group(1).split()) <= 3:
+            _DERNIER_SUJET[conv_id] = msuj.group(1).strip()
+            _DERNIER_QUESTION[conv_id] = question
+    return fc
 
 
 def _fonction_calculee(question: str) -> str | None:
@@ -3149,6 +3163,7 @@ def _reponse_calcul(texte: str) -> str | None:
     Le « x » n'est converti en « × » QUE si l'intention de calcul est explicite (sinon « 4 x 100 » reste intact)."""
     if not _CALC_INTENT.search(_normalise(texte)):
         return None
+    texte = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", texte)   # milliers à espace (« 5 000 » lu 000, FAUX vécu)
     # NOMBRES EN LETTRES (« combien font douze fois huit ? ») : conversion FERMÉE, UNIQUEMENT sous intention de
     # calcul explicite (hors de ce contexte « un/six » resteraient des mots normaux). FAUX=0 : mapping exact.
     _MOTS_NB = {"zéro": "0", "zero": "0", "un": "1", "une": "1", "deux": "2", "trois": "3", "quatre": "4",
@@ -3272,6 +3287,18 @@ def _multi_questions(texte: str, conv_id: str | None) -> str | None:
     NON-BLOQUANT : répond à CHAQUE sous-partie indépendamment, dit honnêtement « je ne l'ai pas » pour les inconnues,
     et combine le tout. SOUND (FAUX=0) : on n'engage le mode composé QUE si **au moins 2** sous-parties donnent un
     fait VÉRIFIÉ (sinon None -> pipeline normal ; protège les entités contenant « et » comme « Trinité-et-Tobago »)."""
+    # GARDE SOMME COORDONNÉE (vécu 2026-07-08) : « 3 pièces de 2 euros et 2 billets de 5, combien en tout »
+    # n'est PAS trois demandes — le « et » coordonne des quantités à SOMMER (route monnaie de fonction_nl).
+    if re.search(r"\b(?:pi[eè]ces?|billets?)\s+de\s+\d", texte, re.IGNORECASE):
+        return None
+    # GARDE CONDITIONNELLE (vécu 2026-07-08) : « SI tous les chats sont gris ET QUE Félix est un chat… »
+    # est UN raisonnement (prémisses liées), pas des demandes indépendantes — découper le détruit.
+    if re.match(r"^\s*si\b", texte, re.IGNORECASE):
+        return None
+    # GARDE PROBLÈME D'HORLOGE (vécu 2026-07-08) : « le film commence à 21h ET dure 2h15, il finit à quelle
+    # heure » n'est pas deux demandes — les heures énoncées + « quelle heure » = UN calcul (fonction_nl).
+    if re.search(r"\d{1,2}\s*h\s*[0-5]?\d?\b", texte) and re.search(r"quelle\s+heure", texte, re.IGNORECASE):
+        return None
     parts = [p.strip(" ?.!") for p in _COORD_RE.split(texte) if p and p.strip(" ?.!")]
     parts = [p for p in parts if len(p.split()) >= 2 or re.search(r"\d\s*[-+*/x×]\s*\d", p)]  # ≥2 mots OU un calcul
     if len(parts) < 2:
@@ -3356,7 +3383,10 @@ def _nouvelle_entite(texte: str) -> str:
     if (not cand or len(mots) > 3 or any(p in mots for p in _POSSESSIFS)
             or cand in {"celle-ci", "celui-ci", "ceux-ci", "celles-ci", "celle-la", "celui-la", "ca", "ça"}):
         return ""                                                  # démonstratif nu sans entité -> pas de type B
-    return cand
+    # CASSE D'ORIGINE restituée (vécu 2026-07-08) : « et de CO2 ? » renvoyait « co2 » — or les formules
+    # chimiques sont sensibles à la casse (H2O ≠ h2o), la continuation sur un calcul échouait.
+    m2 = re.search(re.escape(cand), texte, re.IGNORECASE)
+    return m2.group(0) if m2 else cand
 
 
 def _sujet_de(texte: str) -> str:
@@ -3678,6 +3708,10 @@ _DEF_ALIAS_RE = re.compile(
 def _alias_definition(texte: str) -> str:
     """« que veut dire X » / « que signifie X » / « sens du mot X » -> « définition de X » (voie déjà fonctionnelle).
     Sound : ne réécrit que ces formulations de demande de SENS ; renvoie le texte inchangé sinon."""
+    # GARDE CODE MORSE (vécu 2026-07-08) : « que signifie ... --- ... en morse » n'est pas une demande de
+    # SENS de l'animal — les tokens points/traits partent au décodeur (fonction_nl).
+    if re.search(r"(?:^|\s)[.\-]{2,}(?:\s|$)", texte):
+        return texte
     m = _DEF_ALIAS_RE.match(texte)
     if m and m.group(1).strip():
         return f"définition de {m.group(1).strip()}"
@@ -4335,9 +4369,18 @@ def _cap_grammaire(texte: str):
 def _cap_conjugaison(texte: str):
     """« conjugue le verbe X » / « conjugaison de X » -> table du présent. FAUX=0 : abstention honnête hors du
     périmètre garanti (verbes réguliers 1er/2e groupe, présent) plutôt qu'une forme fausse."""
-    if not re.search(r"\bconjug(?:ue|ues|uer|aison)\b", texte, re.I):
+    if not (re.search(r"\bconjug(?:ue|ues|uer|aison)\b", texte, re.I)
+            or re.search(r"\b(?:imparfait|pr[ée]sent|futur)\s+d[e'’]", texte, re.I)):
         return None
-    m = re.search(r"\b([a-zàâäéèêëïîôöùûüç]+(?:er|ir|re))\b", texte, re.I)
+    # ⚠ le verbe demandé n'est PAS « conjuguer » lui-même (« comment CONJUGUER aimer » conjuguait
+    # « conjuguer », FAUX vécu 2026-07-08) ; un TEMPS hors présent -> honnêteté, jamais le présent servi
+    # en silence à la place du futur demandé.
+    mt = re.search(r"\b(imparfait|futur|pass[ée]\s+(?:compos[ée]|simple)|conditionnel|subjonctif)\b", texte, re.I)
+    if mt:
+        return ("Je ne conjugue de façon SÛRE que le PRÉSENT des verbes réguliers du 1er/2e groupe — le %s "
+                "sort de ce périmètre garanti et je préfère m'abstenir que risquer une forme fausse."
+                % mt.group(1).lower())
+    m = re.search(r"\b(?!conjugu)([a-zàâäéèêëïîôöùûüç]+(?:er|ir|re))\b", texte, re.I)
     if not m:
         return None
     inf = m.group(1).lower()
@@ -4615,6 +4658,11 @@ def _cap_ontologie(texte: str):
         # bruité de definition_nom « berlin = paquet » produisait une réponse absurde à une question VRAIE).
         if re.search(r"\b" + re.escape(y) + r"\s+(?:de\s+la|de\s+l['’]|du|des|de|d['’])\b", texte, re.I):
             return None
+        # GARDE PROPRIÉTÉ DE MOT (vécu 2026-07-08) : « radar est-il un PALINDROME » interroge le MOT, pas
+        # l'objet (« Le radar est un système — je ne le rattache pas… » répondait à côté). Famille fermée
+        # de propriétés lexicales -> _cap_texte tranche nativement.
+        if _normalise(y) in ("palindrome", "anagramme", "pangramme"):
+            return None
         if _E.est_un(x, y):
             chaine = _E.chaine_isa(x)
             ny = _normalise(y)
@@ -4750,6 +4798,10 @@ def _cap_inverse(texte: str):
 def _cap_definition(texte: str):
     """« C'est quoi X ? » / « qu'est-ce qu'un X ? » / « définition de X » -> définition VÉRIFIÉE de la base
     (definition_nom : 292k+ noms du Wiktionnaire, puis definition_* de domaine). FAUX=0 : texte réel ou None."""
+    # GARDE CODE MORSE (vécu 2026-07-08) : « que signifie ... --- ... en morse » n'est pas une définition de
+    # l'animal — des tokens points/traits dans la phrase = décodage (fonction_nl).
+    if re.search(r"(?:^|\s)[.\-]{2,}(?:\s|$)", texte):
+        return None
     m = _DEF_RE.match(texte)
     if not m:
         return None
@@ -4853,7 +4905,8 @@ _METEO_RE = re.compile(
     r"quelle\s+temp[ée]rature\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il|dehors)|"
     r"combien\s+de\s+degr[ée]s\s+(?:fait[- ]il|y\s+a[- ]?t[- ]?il)?\s*(?:dehors|aujourd['’ ]?hui|en\s+ce\s+moment)|"
     r"temp[ée]rature\b[^?]{0,40}\b(?:aujourd['’ ]?hui|demain|dehors|en\s+ce\s+moment|maintenant|cette\s+semaine))", re.I)
-_HEURE_RE = re.compile(r"\bquelle\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quelle\s+heure\b", re.I)
+_HEURE_RE = re.compile(r"\bquel(?:le)?\s+heure\b|\bl['’]heure\s+qu['’]il\s+est\b|\bil\s+est\s+quel(?:le)?\s+heure\b"
+                       r"|\b(?:donne|dis)[\w-]*\s+(?:moi\s+)?l['’]heure\b", re.I)
 _DATE_JOUR_RE = re.compile(
     r"\bquel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:sommes[- ]nous|on\s+est|est[- ]on)\b"
     r"|\bquelle\s+est\s+la\s+date(?:\s+(?:d['’]\s*)?aujourd['’\w]*|\s+du\s+jour|\s+de\s+ce\s+jour)?\s*\??\s*$"
@@ -5298,8 +5351,8 @@ def _date_relative(texte: str):
     machine + décalage calendaire EXACT (datetime, bissextiles comprises). Même statut que l'heure/la date
     locales déjà servies. FAUX=0 : « dans 3 mois » (durée ambiguë, 28-31 j) -> None, abstention."""
     t = texte.lower()
-    m = re.search(r"\b(?:quel(?:le)?\s+(?:jour|date)|on\s+sera)\b.{0,40}?\b(?:dans|d['’]ici)\s+(\d+)\s+"
-                  r"(jours?|semaines?)\b", t)
+    m = re.search(r"\b(?:quel(?:le)?\s+(?:est\s+la\s+|sera\s+la\s+)?(?:jour|date)|on\s+sera)\b.{0,40}?"
+                  r"\b(?:dans|d['’]ici)\s+(\d+)\s+(jours?|semaines?)\b", t)
     sens = 1
     if not m:
         m = re.search(r"\b(?:quel(?:le)?\s+(?:jour|date))\b.{0,40}?\bil\s+y\s+a\s+(\d+)\s+(jours?|semaines?)\b", t)
@@ -5358,6 +5411,8 @@ _FUSEAUX_VILLES = {
     "toronto": "America/Toronto", "chicago": "America/Chicago", "denver": "America/Denver",
     "los angeles": "America/Los_Angeles", "san francisco": "America/Los_Angeles",
     "mexico": "America/Mexico_City", "sao paulo": "America/Sao_Paulo", "buenos aires": "America/Argentina/Buenos_Aires",
+    "rio de janeiro": "America/Sao_Paulo", "rio": "America/Sao_Paulo", "lima": "America/Lima",
+    "bogota": "America/Bogota", "santiago": "America/Santiago", "la havane": "America/Havana",
     "le caire": "Africa/Cairo", "caire": "Africa/Cairo", "dakar": "Africa/Dakar", "abidjan": "Africa/Abidjan",
     "johannesburg": "Africa/Johannesburg", "casablanca": "Africa/Casablanca", "alger": "Africa/Algiers",
     "tunis": "Africa/Tunis", "kinshasa": "Africa/Kinshasa", "nairobi": "Africa/Nairobi",
@@ -5419,24 +5474,53 @@ def _cap_quotidien(texte: str, conv_id=None):
     # JOUR DE LA SEMAINE d'une date HISTORIQUE : « quel jour de la semaine était le 14 juillet 1789 ? » ->
     # mardi (datetime, calendrier grégorien proleptique — année EXPLICITE ≥ 1583 exigée : avant, le julien
     # s'appliquait -> abstention plutôt qu'un jour décalé).
-    mjs = re.search(r"quel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:[ée]tait|est|tombait|tombe)\s+le\s+", texte, re.I)
+    # FUTUR accepté (« quel jour tombera le 25 décembre » partait en fuzzy « 24 decembre » -> « 2019 », FAUX
+    # vécu 2026-07-08) + date SANS année -> année de l'horloge, ÉTIQUETÉE ; verbe accordé (était/est/sera).
+    mjs = (re.search(r"quel\s+jour\s+(?:de\s+la\s+semaine\s+)?(?:[ée]tait|est|sera|tombait|tombe(?:ra)?)\s+le\s+",
+                     texte, re.I)
+           or re.search(r"\ble\s+\d.{0,24}?\btombe(?:ra)?\s+quel\s+jour", texte, re.I))
     if mjs:
         md = _DATE_FR_RE.search(texte)
-        if md and md.group(3):
+        if md:
             j = 1 if md.group(1).lower() == "1er" else int(md.group(1))
-            mo, an = _MOIS_NUM.get(md.group(2).lower()), int(md.group(3))
+            mo = _MOIS_NUM.get(md.group(2).lower())
+            import datetime as _dt
+            annee_horloge = not md.group(3)
+            an = int(md.group(3)) if md.group(3) else _dt.date.today().year
             if an >= 1583:
-                import datetime as _dt
                 try:
                     d = _dt.date(an, mo, j)
                 except (ValueError, TypeError):
                     return None
-                return ("Le %d %s %d était un %s (calendrier grégorien)."
-                        % (d.day, _MOIS_FR[d.month - 1], d.year, _JOURS_FR[d.weekday()]))
+                auj = _dt.date.today()
+                verbe = "sera" if d > auj else ("était" if d < auj else "est")
+                note = (" — année %d prise sur l'horloge de ta machine" % an) if annee_horloge else ""
+                return ("Le %d %s %d %s un %s (calendrier grégorien%s)."
+                        % (d.day, _MOIS_FR[d.month - 1], d.year, verbe, _JOURS_FR[d.weekday()], note))
             return ("Avant 1583, le calendrier julien s'appliquait (bascule grégorienne d'octobre 1582) — je "
                     "m'abstiens plutôt que de te donner un jour décalé.")
     if _HEURE_RE.search(texte):
         import time as _t
+        # GARDE HEURE ÉNONCÉE (FAUX vécu 2026-07-08) : « un train part à 8h et roule 2 heures, à quelle
+        # heure arrive-t-il » recevait l'heure ACTUELLE. Une heure DITE dans la question = un problème
+        # d'arithmétique d'horloge (fonction_nl), jamais l'horloge machine.
+        if re.search(r"(?:[àa]|il\s+est|de)\s+\d{1,2}\s*h\s*[0-5]?\d?\b(?!\s*/)", _normalise(texte)):
+            return None
+        # GARDE ÉPHÉMÉRIDES (FAUX vécu 2026-07-08) : « à quelle heure le soleil se couche » recevait l'heure
+        # ACTUELLE. Lever/coucher = astronomie locale (lieu + date) — abstention honnête, pas l'horloge.
+        if re.search(r"soleil|lune\b|aube|crepuscule|cr[ée]puscule", _normalise(texte)):
+            return ("L'heure du lever/coucher dépend du lieu et du jour — je n'ai pas d'éphémérides vérifiées "
+                    "sous la main, je préfère m'abstenir plutôt que te donner l'heure de l'horloge.")
+        # HEURE FUTURE/PASSÉE : « quelle heure sera-t-il dans 3 heures » recevait l'heure ACTUELLE (FAUX
+        # vécu). Décalage exact sur l'horloge machine, modulo 24 h.
+        mfut = re.search(r"dans\s+(\d+)\s+(heures?|minutes?)\b", _normalise(texte))
+        if mfut and re.search(r"sera|serait", _normalise(texte)):
+            import datetime as _dt
+            delta = _dt.timedelta(**{"hours" if mfut.group(2).startswith("heure") else "minutes":
+                                     int(mfut.group(1))})
+            fu = _dt.datetime.now() + delta
+            return ("Il sera %02d h %02d (horloge de ta machine + %s %s)."
+                    % (fu.hour, fu.minute, mfut.group(1), mfut.group(2)))
         # FAUX=0 vécu 2026-07-08 : « quelle heure est-il à New York ? » servait l'heure LOCALE de la machine.
         # Ville nommée -> fuseau IANA (table fermée de grandes villes + zoneinfo, base tz officielle) ;
         # ville APRÈS « à » mais hors table, ou base tz absente -> abstention honnête, JAMAIS l'heure locale.
@@ -5458,7 +5542,10 @@ def _cap_quotidien(texte: str, conv_id=None):
                 return ("Je n'ai pas la base de fuseaux horaires sous la main — je préfère m'abstenir plutôt "
                         "que te donner l'heure locale de TA machine comme si c'était celle de %s."
                         % ville_conn.title())
-        mv = re.search(r"\b(?:a|à)\s+([A-ZÀ-Ÿ][\w'’-]*(?:\s+[A-ZÀ-Ÿ][\w'’-]*)*)\s*\??\s*$", texte.strip())
+        # ⚠ la ville peut contenir des particules MINUSCULES (« Rio de Janeiro ») : l'ancien motif exigeait
+        # chaque mot capitalisé -> l'ancre de fin ratait et l'heure LOCALE était servie (FAUX vécu 2026-07-08).
+        # Capture permissive après la majuscule initiale : au pire on s'abstient avec un libellé large.
+        mv = re.search(r"\b(?:a|à)\s+([A-ZÀ-Ÿ][\w'’ -]*?)\s*\??\s*$", texte.strip())
         if mv:
             return ("Je ne connais pas le fuseau horaire vérifié de « %s » — je préfère m'abstenir plutôt que "
                     "te donner l'heure locale de TA machine comme si c'était la sienne." % mv.group(1))
@@ -5488,8 +5575,28 @@ def _cap_quotidien(texte: str, conv_id=None):
                         % (n, cible.day, _MOIS_FR[cible.month - 1], cible.year))
             except (ValueError, TypeError):
                 return None
-    mage = re.search(r"quel\s+[âa]ge\s+a\s+(?:une\s+personne|quelqu['’]un)\s+n[ée]e?\s+en\s+(\d{4})",
-                     texte, re.I)
+    # DATE COMPLÈTE de naissance -> âge EXACT (« né le 15 mars 1990 » ; tombait en repli, vécu 2026-07-08).
+    mage_d = re.search(r"n[ée]e?\s+le\s+(1er|\d{1,2})\s+([a-zà-ÿ]+)\s+(\d{4})", texte, re.I)
+    if mage_d and re.search(r"[âa]ge", texte, re.I):
+        import datetime as _dt
+        mo = _MOIS_NUM.get(mage_d.group(2).lower())
+        if mo:
+            try:
+                naiss = _dt.date(int(mage_d.group(3)), mo,
+                                 1 if mage_d.group(1).lower() == "1er" else int(mage_d.group(1)))
+            except ValueError:
+                return None
+            auj = _dt.date.today()
+            if naiss <= auj:
+                age = auj.year - naiss.year - ((auj.month, auj.day) < (naiss.month, naiss.day))
+                return ("%d ans (né(e) le %d %s %d, nous sommes le %02d/%02d/%d à l'horloge de ta machine)."
+                        % (age, naiss.day, _MOIS_FR[naiss.month - 1], naiss.year, auj.day, auj.month, auj.year))
+            return None
+    # ANNÉE seule -> fourchette honnête ; phrasés élargis (« si je suis né en 1990 quel âge j'ai », vécu).
+    mage = (re.search(r"quel\s+[âa]ge\s+a\s+(?:une\s+personne|quelqu['’]un)\s+n[ée]e?\s+en\s+(\d{4})",
+                      texte, re.I)
+            or re.search(r"n[ée]e?\s+en\s+(\d{4}).{0,20}?quel\s+[âa]ge", texte, re.I)
+            or re.search(r"quel\s+[âa]ge\b.{0,25}?\bn[ée]e?\s+en\s+(\d{4})", texte, re.I))
     if mage:
         import datetime as _dt
         auj = _dt.date.today()
@@ -5499,6 +5606,70 @@ def _cap_quotidien(texte: str, conv_id=None):
             return ("%d ou %d ans selon que l'anniversaire est passé (né(e) en %d, nous sommes le %02d/%02d/%d "
                     "à l'horloge de ta machine)." % (a2 - 1, a2, an, auj.day, auj.month, auj.year))
         return None
+    # ANNÉE FUTURE / COMPTE D'ANNÉES : « quelle année dans 10 ans » -> 2036 ; « dans combien d'années 2050 »
+    # -> 24 (l'un partait en « c'est subjectif », l'autre en repli — vécu 2026-07-08).
+    tn2 = _normalise(texte)
+    man2 = re.search(r"quelle\s+annee\s+(?:serons[- ]nous\s+|sera[- ]t[- ]on\s+)?dans\s+(\d+)\s+ans", tn2)
+    if man2:
+        import datetime as _dt
+        y = _dt.date.today().year
+        return "En %d (%d + %s, année de l'horloge de ta machine)." % (y + int(man2.group(1)), y, man2.group(1))
+    man3 = re.search(r"dans\s+combien\s+d\s*annees?\s+(?:serons[- ]nous\s+en\s+)?(\d{4})\b", tn2)
+    if man3:
+        import datetime as _dt
+        y, cible_a = _dt.date.today().year, int(man3.group(1))
+        if cible_a > y:
+            return "Dans %d ans (%d − %d, année de l'horloge de ta machine)." % (cible_a - y, cible_a, y)
+        if cible_a == y:
+            return "C'est cette année (%d à l'horloge de ta machine)." % y
+        return "C'était il y a %d ans (%d − %d)." % (y - cible_a, y, cible_a)
+    # CALENDRIER COURANT (horloge machine, tout ÉTIQUETÉ) — saison, semaine ISO, jour de l'année, jours
+    # restants, bissextile relative (tombaient en repli/mémo, vécu 2026-07-08).
+    if re.search(r"quelle\s+saison\s+(?:sommes[- ]nous|est[- ]on|est[- ]ce)|en\s+quelle\s+saison", tn2):
+        import datetime as _dt
+        auj = _dt.date.today()
+        nom = "hiver"
+        for borne, s in (((3, 20), "printemps"), ((6, 21), "été"), ((9, 22), "automne"), ((12, 21), "hiver")):
+            if (auj.month, auj.day) >= borne:
+                nom = s
+        oppose = {"printemps": "automne", "été": "hiver", "automne": "printemps", "hiver": "été"}[nom]
+        return ("%s dans l'hémisphère nord (%s dans le sud) — bornes astronomiques approximatives (±1 jour "
+                "selon l'année) ; nous sommes le %02d/%02d à l'horloge de ta machine."
+                % (nom.capitalize(), oppose, auj.day, auj.month))
+    if re.search(r"num[e]ro\s+de\s+(?:la\s+)?semaine|quelle\s+semaine\s+(?:sommes[- ]nous|est[- ]on)", tn2):
+        import datetime as _dt
+        iso = _dt.date.today().isocalendar()
+        return "Semaine %d de %d (numérotation ISO 8601, horloge de ta machine)." % (iso[1], iso[0])
+    if re.search(r"jours?\b.{0,30}?\bfin\s+de\s+l\s*annee", tn2) and re.search(r"combien|reste|restant", tn2):
+        import datetime as _dt
+        auj = _dt.date.today()
+        n = (_dt.date(auj.year, 12, 31) - auj).days
+        return "%d jours jusqu'au 31 décembre %d (horloge de ta machine)." % (n, auj.year)
+    mjo = re.search(r"(\d{1,3})\s*(?:e|eme)\b\s+jour\s+de\s+l\s*annee", tn2)
+    if mjo:
+        import datetime as _dt
+        auj = _dt.date.today()
+        n = int(mjo.group(1))
+        nb = 366 if (auj.year % 4 == 0 and (auj.year % 100 != 0 or auj.year % 400 == 0)) else 365
+        if 1 <= n <= nb:
+            d = _dt.date(auj.year, 1, 1) + _dt.timedelta(days=n - 1)
+            return ("Le %d %s (%de jour de %d — année de l'horloge de ta machine)."
+                    % (d.day, _MOIS_FR[d.month - 1], n, auj.year))
+        return "L'année %d n'a que %d jours — pas de %de jour." % (auj.year, nb, n)
+    if re.search(r"quel\s+jour\s+de\s+l\s*annee\s+sommes[- ]nous|numero\s+du\s+jour\s+dans\s+l\s*annee", tn2):
+        import datetime as _dt
+        auj = _dt.date.today()
+        return "Le %de jour de %d (horloge de ta machine)." % (auj.timetuple().tm_yday, auj.year)
+    mbis = re.search(r"(?:l\s*)?annee\s+(prochaine|derniere)\b.{0,20}?bissextile"
+                     r"|bissextile.{0,20}?annee\s+(prochaine|derniere)|cette\s+annee\b.{0,25}?bissextile", tn2)
+    if mbis:
+        import calendar as _cal
+        import datetime as _dt
+        y = _dt.date.today().year
+        rel = mbis.group(1) or mbis.group(2)
+        y2 = y + 1 if rel == "prochaine" else y - 1 if rel == "derniere" else y
+        return ("%s — %d %s bissextile (règle grégorienne ; année calculée depuis l'horloge de ta machine)."
+                % ("Oui" if _cal.isleap(y2) else "Non", y2, "est" if _cal.isleap(y2) else "n'est pas"))
     if _DATE_JOUR_RE.search(texte):
         import time as _t
         lt = _t.localtime()
@@ -5683,6 +5854,59 @@ def _cap_texte(texte: str):
             aff = lambda v: str(int(v)) if v == int(v) else str(v)
             return "Dans l'ordre %s : %s." % ("décroissant" if desc else "croissant",
                                               ", ".join(aff(v) for v in vals))
+    # PALINDROME (natif exact — avant : la fiche OBJET répondait « le radar est un système », à côté du mot).
+    m = re.search(r"(?:le\s+mot\s+)?([\wà-ÿ-]+)\s+est[- ](?:il|elle|ce)\s+un\s+palindrome"
+                  r"|est[- ]ce\s+que\s+(?:le\s+mot\s+)?([\wà-ÿ-]+)\s+est\s+un\s+palindrome", t, re.I)
+    if m:
+        mot = m.group(1) or m.group(2)
+        w = [c for c in _normalise(mot) if c.isalpha()]
+        if w and w == w[::-1]:
+            return "Oui — « %s » est un palindrome (il se lit pareil dans les deux sens)." % mot
+        return "Non — « %s » n'est pas un palindrome (à l'envers : « %s »)." % (mot, mot[::-1])
+    # OCCURRENCES D'UNE LETTRE : « combien de fois la lettre s dans mississippi » -> 4 (compte natif).
+    m = re.search(r"combien\s+de\s+fois\s+(?:la\s+lettre\s+)?([a-zà-ÿ])\s+dans\s+(?:le\s+mot\s+)?([\wà-ÿ-]+)",
+                  t, re.I)
+    if m:
+        lettre, mot = _normalise(m.group(1)), m.group(2)
+        n = sum(1 for c in _normalise(mot) if c == lettre)
+        return "%d fois la lettre « %s » dans « %s »." % (n, lettre, mot)
+    # CARACTÈRES (tout compris, DIT — les « lettres » ont leur route qui exclut tirets/apostrophes).
+    m = re.search(r"combien\s+de\s+caract[eè]res\s+dans\s+(?:le\s+mot\s+)?([\wà-ÿ'-]+)", t, re.I)
+    if m:
+        mot = m.group(1)
+        return "%d caractères dans « %s » (tout signe compris)." % (len(mot), mot)
+    # INITIALES : « les initiales de Jean-Claude Van Damme » -> J. C. V. D. (natif ; ≥ 2 mots exigés).
+    m = re.search(r"(?:les\s+)?initiales\s+de\s+([\wà-ÿ' -]+?)\s*\??\s*$", t, re.I)
+    if m:
+        mots_i = [w for w in re.split(r"[\s-]+", m.group(1)) if w and w[0].isalpha()]
+        if len(mots_i) >= 2:
+            return "%s (initiales de %s)." % (" ".join(w[0].upper() + "." for w in mots_i), m.group(1).strip())
+    # PLUS LONG / PLUS COURT MOT : comparaison de longueurs (lettres comptées, natif).
+    m = re.search(r"plus\s+(long|court)\s+mot\s+entre\s+([\wà-ÿ-]+)\s+et\s+([\wà-ÿ-]+)", t, re.I)
+    if m:
+        a, b = m.group(2), m.group(3)
+        la, lb = sum(c.isalpha() for c in a), sum(c.isalpha() for c in b)
+        if la == lb:
+            return "Ils font la même longueur : %d lettres chacun." % la
+        gagnant = (a if la > lb else b) if m.group(1).lower() == "long" else (a if la < lb else b)
+        return "« %s » (%d lettres contre %d)." % (gagnant, max(la, lb) if m.group(1).lower() == "long"
+                                                   else min(la, lb), min(la, lb) if m.group(1).lower() == "long"
+                                                   else max(la, lb))
+    # REMPLACEMENT DE LETTRE : « remplace les a par des o dans banana » -> bonono (natif exact).
+    m = re.search(r"remplace\s+(?:les?\s+|la\s+lettre\s+)?([a-zà-ÿ])\s+par\s+(?:des?\s+|la\s+lettre\s+)?"
+                  r"([a-zà-ÿ])\s+dans\s+(?:le\s+mot\s+)?([\wà-ÿ-]+)", t, re.I)
+    if m:
+        src, dst, mot = m.group(1).lower(), m.group(2).lower(), m.group(3)
+        res = mot.replace(src, dst).replace(src.upper(), dst.upper())
+        return "« %s » → « %s » (%s remplacé par %s)." % (mot, res, src, dst)
+    # TRI DE MOTS : « trie les mots banane, abricot, cerise par ordre alphabétique » (le lexique dumpait ses
+    # entrées « abricot (français), abrikosi… », garbage vécu 2026-07-08).
+    m = re.search(r"(?:trie|classe|ordonne|range)\s+les\s+mots\s+(.+?)(?:\s+par\s+ordre\s+alphab[eé]tique)?"
+                  r"\s*\??\s*$", t, re.I)
+    if m:
+        mots_t = [w.strip(" ,;.") for w in re.split(r"[,;]|\bet\b", m.group(1)) if w.strip(" ,;.")]
+        if len(mots_t) >= 2 and all(" " not in w for w in mots_t):
+            return "Ordre alphabétique : %s." % ", ".join(sorted(mots_t, key=_normalise))
     return None
 
 
@@ -6011,9 +6235,12 @@ def _charge_transitif(groupe: dict):
 # TES prémisses » (jamais posée comme un fait Provara) ; si le store CORROBORE la mineure (est_un), on le DIT —
 # la déduction devient doublement ancrée. Un moyen terme qui ne se noue pas -> refus expliqué (pas de garbage).
 _SYLLO_RE = re.compile(
-    r"\bsi\s+tou(?:s|tes)\s+les\s+([\wà-ÿ-]+)\s+(sont\s+[\wà-ÿ' -]+?|[\wà-ÿ-]+ent)\s+et\s+qu[e'’]\s*"
+    # « si » optionnel, prémisses reliées par « et que » OU une virgule/point, question finale « que peut-on
+    # en déduire » OU directe « Félix est-il gris ? » (vécu 2026-07-08 : la forme interrogative tombait en mémo).
+    r"\b(?:si\s+)?tou(?:s|tes)\s+les\s+([\wà-ÿ-]+)\s+(sont\s+[\wà-ÿ' -]+?|[\wà-ÿ-]+ent)\s*"
+    r"(?:et\s+qu[e'’]|[,.;]\s*(?:et\s+qu[e'’]\s*)?)\s*"
     r"((?:le\s+|la\s+|l['’]\s*|un\s+|une\s+)?[\wà-ÿ' -]+?)\s+est\s+un[e]?\s+([\wà-ÿ-]+)\b"
-    r".*?\b(?:d[ée]duire|conclure|conclusions?)\b", re.I | re.S)
+    r".*?\b(?:d[ée]duire|conclure|conclusions?|est[- ](?:il|elle|ce)|alors)\b", re.I | re.S)
 
 
 # THÉORIE DES JEUX — jeux classiques (câblage « tout câbler » 2026-07-08) : le module `jeux_appliques` CALCULE
@@ -6071,8 +6298,13 @@ def _verbe_singulier(v: str) -> str:
         if re.match(r"^des\s+", reste, flags=re.I):
             reste = re.sub(r"^des\s+", "un ", reste, flags=re.I)
         mots = reste.split()
+        # mots dont le SINGULIER finit déjà en -s (invariables) : « gris » devenait « gri » (vécu 2026-07-08)
+        _INVAR_S = {"gris", "gros", "frais", "mauvais", "bas", "las", "epais", "épais", "precis", "précis",
+                    "francais", "français", "anglais", "confus", "divers", "gras", "ras", "clos", "assis"}
         if mots:                                         # pluriels réguliers : -eaux -> -eau, -aux -> -al, -s -> ∅
-            if mots[-1].endswith("eaux"):
+            if mots[-1].lower() in _INVAR_S:
+                pass
+            elif mots[-1].endswith("eaux"):
                 mots[-1] = mots[-1][:-1]
             elif mots[-1].endswith("aux"):
                 mots[-1] = mots[-1][:-3] + "al"
@@ -7178,6 +7410,11 @@ def _cap_traduction(texte: str):
         tr, inconnus = traduction.traduit(a_traduire, cible)
     if not tr:
         return None
+    # RIEN n'a été traduit (tout est resté tel quel) -> refus honnête : « merci » était rendu comme sa
+    # « traduction » allemande (vécu 2026-07-08), le texte inchangé étiqueté traduction est un mensonge doux.
+    if inconnus and _normalise(tr) == _normalise(a_traduire):
+        return ("Je n'ai pas ces mots dans mon dictionnaire vérifié pour cette langue — je préfère ne rien "
+                "traduire plutôt que te rendre le texte inchangé comme si c'était traduit.")
     note = "  (traduction mot-à-mot assistée — à affiner)"
     if inconnus:
         note += "\nMots non trouvés (laissés tels quels, non devinés) : " + ", ".join(inconnus)
@@ -7577,6 +7814,23 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     t = (texte or "").strip()
     if not t:
         return ""
+    #   (0pré⁻) RÉÉCRITURE FERMÉE « combien d'habitants en France ? » -> « population de France » : la forme
+    #   canonique traverse tout le pipeline (réponse FORMATÉE « Population de la France : 68 720 337
+    #   habitants. ») ; la forme « combien d'habitants » n'extrayait pas l'entité (queue prise après le
+    #   premier « d' » -> repli, vécu 2026-07-08). ANCRÉE en tête de phrase — le gentilé (« comment
+    #   s'appellent les habitants de Lyon ») ne passe PAS par ici. Sens strictement équivalent.
+    _mhab = re.match(r"^\s*combien\s+d['’]\s*habitants?\s+(en|au|aux|à|a|dans)\s+(.+?)\s*\?*\s*$",
+                     t, re.IGNORECASE)
+    if _mhab:
+        _prep = _mhab.group(1).lower()
+        t = "population " + {"au": "du ", "aux": "des "}.get(_prep, "de ") + _mhab.group(2)
+    else:
+        # variante sujet en tête : « la France compte combien d'habitants ? » (tombait sur un compte LEXICAL
+        # de termes « habitant », vécu 2026-07-08).
+        _mhab2 = re.match(r"^\s*(?:la\s+|le\s+|l['’]\s*|les\s+)?(.+?)\s+compte\s+combien\s+d['’]\s*habitants?\s*\?*\s*$",
+                          t, re.IGNORECASE)
+        if _mhab2:
+            t = "population de " + _mhab2.group(1)
     #   (0pré) CLARIFICATION EN ATTENTE : si le tour précédent était une question de clarification de l'assistant
     #   (« vouliez-vous dire … ? ») et que ce message la CONFIRME (« oui » / le mot proposé), la question d'origine
     #   est RÉÉCRITE avec la correction CONFIRMÉE puis traitée normalement. Sound : substitution explicitement

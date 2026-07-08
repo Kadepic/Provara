@@ -173,6 +173,10 @@ _CONV_UNITS = {
     "heure": ("T", 3600.0), "heures": ("T", 3600.0),
     "jour": ("T", 86400.0), "jours": ("T", 86400.0), "journee": ("T", 86400.0), "journees": ("T", 86400.0),
     "semaine": ("T", 604800.0), "semaines": ("T", 604800.0),
+    # angle (base = radian ; degré = π/180 EXACT). « degrés » nu ne fire qu'en conversion explicite vers une
+    # unité d'angle (« 30 degrés en radians ») — les températures (« 30 degrés en fahrenheit ») ont leur route.
+    "radian": ("A", 1.0), "radians": ("A", 1.0),
+    "degre": ("A", math.pi / 180.0), "degres": ("A", math.pi / 180.0),
     # volume (base = litre ; m³/cm³ par définition du litre = 1 dm³)
     "ml": ("V", 0.001), "millilitre": ("V", 0.001), "millilitres": ("V", 0.001),
     "cl": ("V", 0.01), "centilitre": ("V", 0.01), "centilitres": ("V", 0.01),
@@ -204,12 +208,25 @@ _CONV_UNITS = {
     "kilometre par heure": ("S", 1000.0 / 3600.0), "kilometres par heure": ("S", 1000.0 / 3600.0),
     "kilometre heure": ("S", 1000.0 / 3600.0), "kilometres heure": ("S", 1000.0 / 3600.0),
     "noeud": ("S", 1852.0 / 3600.0), "noeuds": ("S", 1852.0 / 3600.0),
+    "mph": ("S", 1609.344 / 3600.0), "mile par heure": ("S", 1609.344 / 3600.0),
+    "miles par heure": ("S", 1609.344 / 3600.0), "mile heure": ("S", 1609.344 / 3600.0),
+    "miles heure": ("S", 1609.344 / 3600.0),
+    # définitions EXACTES (SI/conventions internationales)
+    "mile nautique": ("L", 1852.0), "miles nautiques": ("L", 1852.0),
+    "mille nautique": ("L", 1852.0), "milles nautiques": ("L", 1852.0),
+    "annee-lumiere": ("L", 9460730472580.8e3), "annees-lumiere": ("L", 9460730472580.8e3),
+    "annee lumiere": ("L", 9460730472580.8e3), "annees lumiere": ("L", 9460730472580.8e3),
+    "carat": ("M", 0.2), "carats": ("M", 0.2),
 }
 # alternance longest-first : « kilometre » avant « metre » avant « m » ; « secondes » avant « s ».
 _UNIT_ALT = "|".join(sorted((re.escape(u) for u in _CONV_UNITS), key=len, reverse=True))
 _CONV_EN = re.compile(rf"({_NUM})\s*({_UNIT_ALT})\b\s+(?:en|vers)\s+({_UNIT_ALT})\b", re.IGNORECASE)
+# INVERSE « combien de X pour N Y » (« combien de nœuds pour 30 km/h » tombait en clarification, vécu)
+_CONV_POUR = re.compile(rf"combien\s+d(?:e|')\s*({_UNIT_ALT})\b\s+pour\s+({_NUM})\s*({_UNIT_ALT})\b",
+                        re.IGNORECASE)
 _CONV_DANS = re.compile(
-    rf"combien\s+d(?:e|')\s*({_UNIT_ALT})\b\s+dans\s+(?:(?:un|une|le|la|l['’])\s+|({_NUM})\s*)?({_UNIT_ALT})\b",
+    rf"(?:combien\s+(?:y\s+a[- ]t[- ]il\s+)?|nombre\s+)d(?:e|')\s*({_UNIT_ALT})\b\s+dans\s+"
+    rf"(?:(?:un|une|le|la|l['’])\s+|({_NUM})\s*)?({_UNIT_ALT})\b",
     re.IGNORECASE)
 
 
@@ -217,7 +234,26 @@ def _fmt_nombre(val: float) -> str:
     """Entier sans décimale si entier, sinon arrondi propre (pas d'artefact flottant)."""
     if val == int(val):
         return str(int(val))
+    if abs(val) >= 1e6:            # grands nombres : « %.6f » fabriquait des décimales FANTÔMES au-delà de la
+        return "%.15g" % val       # précision du float (année-lumière -> « …580.800781 », FAUX vécu)
     return ("%.6f" % val).rstrip("0").rstrip(".")
+
+
+def _symbole_element(mot: str):
+    """Symbole chimique depuis un NOM français d'élément (« oxygène » -> « O », accents/casse ignorés).
+    None si le mot n'est pas un nom d'élément du référentiel (les symboles bruts ne passent PAS par ici :
+    « o » minuscule ambigu avec la conjonction, la casse des formules reste souveraine ailleurs)."""
+    n = normalise(mot or "")
+    if len(n) < 3:                                     # « or » (conjonction) et consorts : trop ambigu
+        return None
+    try:
+        import nomenclature_chimique as _NCH
+    except Exception:
+        return None
+    for s, nom in _NCH.NOMS_ELEMENTS.items():
+        if normalise(nom) == n:
+            return s
+    return None
 
 
 def _norm_conv(s: str) -> str:
@@ -225,8 +261,10 @@ def _norm_conv(s: str) -> str:
     normalise() les mange, ce qui tronquait « 1,5 heures » en « 5 heures » (300 min servi pour 90, FAUX vécu
     2026-07-08) et cassait « km/h »."""
     import unicodedata
-    s = unicodedata.normalize("NFD", s.lower())
+    s = s.lower().replace("œ", "oe").replace("æ", "ae")   # ligatures : NFD ne les décompose PAS (« nœuds » ratait)
+    s = unicodedata.normalize("NFD", s)
     s = "".join(c for c in s if unicodedata.category(c) != "Mn")
+    s = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", s)   # milliers à espace : « 5 000 » lu 000 -> 0 km, FAUX vécu
     return re.sub(r"\s+", " ", s)
 
 
@@ -276,10 +314,56 @@ def resout_conversion(question: str):
                lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.5, m.group(2)), q)
     q = re.sub(r"(\d+(?:[.,]\d+)?)\s+([a-z³²/ ]+?)\s+et\s+quarts?\b",
                lambda m: "%s %s" % (float(m.group(1).replace(",", ".")) + 0.25, m.group(2)), q)
+    # DEMI / QUART sans nombre : « un demi-litre en centilitres » -> 0.5 litre, « trois quarts d'heure en
+    # minutes » -> 0.75 heure, « un quart d'heure » -> 0.25 heure (tombaient en repli, vécu 2026-07-08).
+    # Réécritures LOCALES à la conversion — « demi-finale » réécrite ne matche aucune unité, inoffensif.
+    q = re.sub(r"\btrois\s+quarts\s+d['’]\s*", "0.75 ", q)
+    q = re.sub(r"\b(?:un\s+)?quart\s+d['’]\s*", "0.25 ", q)
+    q = re.sub(r"\b(?:une?\s+)?demi[- ]", "0.5 ", q)
+    q = re.sub(rf"\bune?\s+(?=(?:{_UNIT_ALT})\b)", "1 ", q)   # « UN hectare en m² » ratait (pas de nombre)
+    if not re.search(r"\d", q):                               # unité NUE (« année-lumière en km ») = 1 unité
+        q = re.sub(rf"\b(?=(?:{_UNIT_ALT})\b\s+en\s)", "1 ", q, count=1)
+    # « 2 litres D'EAU en centilitres » : le qualificatif de substance s'intercale — retiré (le volume d'eau
+    # se convertit comme tout volume ; la MASSE de l'eau a sa route dédiée plus bas).
+    q = re.sub(rf"\b((?:{_UNIT_ALT}))\s+d['’]\s*(?:eau|essence|lait|huile)\b", r"\1", q)
+    # UNITÉS AMBIGUËS / NON NORMALISÉES -> réponse composée honnête, jamais un facteur unique menteur.
+    if re.search(r"\bgallons?\b", q) and re.search(r"litres?|combien", q):
+        return (VERIFIE, "Ambigu — 1 gallon US = 3.785411784 L ; 1 gallon impérial (UK) = 4.54609 L "
+                "(définitions exactes, préciser lequel).", "conversions — unité à double définition")
+    if re.search(r"\bpintes?\b", q) and re.search(r"litres?|ml\b|centilitres?|combien", q):
+        return (VERIFIE, "Ambigu — 1 pinte US = 0.473176 L ; 1 pinte impériale (UK) = 0.568261 L "
+                "(préciser laquelle).", "conversions — unité à double définition")
+    if re.search(r"\btasses?\b", q) and re.search(r"\bml\b|millilitres?|centilitres?|litres?", q):
+        return (VERIFIE, "La « tasse » n'est pas une unité normalisée (200 à 250 ml selon les pays ; "
+                "250 ml en tasse métrique) — je donne la fourchette plutôt que trancher.",
+                "conversions — unité non normalisée (dit)")
+    # DÉCOMPOSITION « en heures ET minutes » : « 90 minutes en heures et minutes » -> 1 h 30 (la conversion
+    # simple répondait « 1.5 heures » à côté de la forme demandée, vécu 2026-07-08).
+    mhem = re.search(r"(\d+(?:[.,]\d+)?)\s*(minutes?|secondes?)\s+en\s+heures?\s+et\s+minutes?", q)
+    if mhem:
+        v = float(mhem.group(1).replace(",", "."))
+        total_min = v if mhem.group(2).startswith("minute") else v / 60.0
+        if total_min == int(total_min):
+            h, mn = divmod(int(total_min), 60)
+            return (VERIFIE, "%d h %02d" % (h, mn), "conversion — décomposition heures/minutes exacte")
+        return (HORS, None, None)
+    # DURÉE COMPACTE « 2h30 » -> « 150 minutes » (« combien de secondes dans 2h30 » tombait en repli, vécu
+    # 2026-07-08). Minutes < 60 exigées ; « km/h », « 2 h » nus et les heures d'horloge ailleurs sont intacts
+    # (la réécriture est LOCALE à la route de conversion).
+    q = re.sub(r"\b(\d{1,3})\s*h\s*([0-5]?\d)\b(?!\s*/)",
+               lambda m: "%d minutes" % (int(m.group(1)) * 60 + int(m.group(2))), q)
     # SEMAINES DANS UNE ANNÉE : durée VARIABLE (365/366 j) -> réponse composée honnête, pas un facteur menteur.
     if re.search(r"semaines?\s+dans\s+(?:une?\s+|l['’]\s*)?annee", q):
         return (VERIFIE, "52 semaines et 1 jour (année de 365 jours) ; 52 semaines et 2 jours si bissextile (366).",
                 "calendrier — 365 = 52×7 + 1")
+    # HEURES DANS UN MOIS / JOURS DANS UN SIÈCLE : durées VARIABLES aussi -> réponses composées honnêtes
+    # (même principe ; tombaient en repli, vécu 2026-07-08).
+    if re.search(r"heures?\s+dans\s+(?:une?\s+|le\s+)?mois\b", q):
+        return (VERIFIE, "de 672 h (mois de 28 jours) à 744 h (31 jours) ; 720 h pour un mois de 30 jours.",
+                "conventions de durée")
+    if re.search(r"jours?\s+dans\s+(?:une?\s+|le\s+)?siecle", q):
+        return (VERIFIE, "36 524 ou 36 525 jours (100 ans avec 24 ou 25 années bissextiles, calendrier grégorien).",
+                "calendrier grégorien")
     # COMPARAISON de deux grandeurs d'unités COMPARABLES (logique partagée avec _cap_comparaison de repond).
     cg = compare_grandeurs(question)
     if cg:
@@ -289,7 +373,7 @@ def resout_conversion(question: str):
     if m:
         num = float(m.group(1).replace(",", ".")); src = m.group(2).lower(); dst = m.group(3).lower()
     else:
-        m = _CONV_DANS.search(q)
+        m = _CONV_DANS.search(q) or _CONV_POUR.search(q)
         if not m:
             return (HORS, None, None)
         dst = m.group(1).lower(); num = float((m.group(2) or "1").replace(",", ".")); src = m.group(3).lower()
@@ -333,6 +417,7 @@ _AR_RACINE = re.compile(rf"racine\s+(?:carr\w+\s+)?d['e]\s*{_ARN}")
 def resout_arithmetique(question: str):
     """Calcul EXACT sur des entiers (+,−,×,puissance,division-juste,racine-de-carré-parfait). (VERIFIE, texte, source)
     ou (HORS, None, None). FAUX=0 : résultat non exact ou nombre décimal -> HORS (jamais d'arrondi)."""
+    question = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", question)   # « 5 000 plus 3 000 » : milliers recollés
     q = question.lower()
     if re.search(r"\d[.,]\d", q):                    # nombre décimal présent -> hors périmètre (et anti faux-match)
         return (HORS, None, None)
@@ -640,8 +725,9 @@ def resout_math(question: str):
 
     # POURCENTAGES APPLIQUÉS (arithmétique exacte). ⚠ sur la question BRUTE : normalise() efface le « % ».
     # La réponse MONTRE le calcul (« 64 (80 − 20 % = 80 − 16) ») : lève l'ambiguïté remise/prix final.
-    _PCT = r"(\d+(?:[.,]\d+)?)"
-    _f = lambda g: float(g.replace(",", "."))
+    # ⚠ milliers à ESPACE acceptés (« 20 % de 5 000 » répondait 1 — « de 5 » lu, FAUX vécu 2026-07-08)
+    _PCT = r"(\d+(?:[\s  ]\d{3})*(?:[.,]\d+)?)"
+    _f = lambda g: float(g.replace(" ", "").replace(" ", "").replace(",", "."))
     mred = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+(?:r[ée]duc(?:tion)?s?|remises?|rabais)\s+sur\s+{_PCT}",
                       question, re.I)
             or re.search(rf"(?:r[ée]duc(?:tion)?s?|remises?|rabais)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}",
@@ -651,12 +737,43 @@ def resout_math(question: str):
         return (VERIFIE, "%s (%s − %s %% = %s − %s)" % (_fmt_nombre(base * (1 - p / 100.0)), _fmt_nombre(base),
                                                         _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
                 "calcul — prix après réduction")
+    # TVA : « TVA de 20% sur 100 euros » -> montant ET TTC montrés (« 20 » sec laissait deviner le total ;
+    # la base est lue comme HT, DIT dans la réponse).
+    mtva = (re.search(rf"tva\s+(?:de\s+|[àa]\s+)?{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}", question, re.I)
+            or re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+tva\s+sur\s+{_PCT}", question, re.I))
+    if mtva:
+        p, ht = _f(mtva.group(1)), _f(mtva.group(2))
+        tva = ht * p / 100.0
+        return (VERIFIE, "%s de TVA (%s %% de %s HT) ; TTC : %s" % (_fmt_nombre(tva), _fmt_nombre(p),
+                                                                    _fmt_nombre(ht), _fmt_nombre(ht + tva)),
+                "calcul — TVA (pourcentage appliqué sur le HT)")
+    # POURBOIRE : « 15% de pourboire sur 80 euros » (tombait en mémo « C'est noté », vécu 2026-07-08).
+    # Les DEUX nombres utiles sont montrés : le pourboire ET le total (l'intention usuelle est le total à payer).
+    mpb = (re.search(rf"{_PCT}\s*(?:%|pour ?cents?)\s+de\s+pourboires?\s+sur\s+{_PCT}", question, re.I)
+           or re.search(rf"pourboires?\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}", question, re.I))
+    if mpb:
+        p, base = _f(mpb.group(1)), _f(mpb.group(2))
+        tip = base * p / 100.0
+        return (VERIFIE, "%s de pourboire (%s %% de %s) ; total : %s" % (_fmt_nombre(tip), _fmt_nombre(p),
+                                                                         _fmt_nombre(base), _fmt_nombre(base + tip)),
+                "calcul — pourboire (pourcentage appliqué)")
     maug = (re.search(rf"augmente[rz]?\s+{_PCT}\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I)
             or re.search(rf"{_PCT}\s+augment[ée]e?s?\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I))
     maug_inv = None if maug else re.search(
         rf"(?:hausse|augmentation)\s+de\s+{_PCT}\s*(?:%|pour ?cents?)\s+sur\s+{_PCT}", question, re.I)
     if maug or maug_inv:
         base, p = (_f(maug.group(1)), _f(maug.group(2))) if maug else (_f(maug_inv.group(2)), _f(maug_inv.group(1)))
+        # ENCHAÎNEMENT « puis de Y % » (« augmente 50 de 10 % puis de 20 % » partait en détection de tendance,
+        # vécu 2026-07-08) : chaque étape appliquée sur le RÉSULTAT précédent (66, pas 65), étapes montrées.
+        chaine = re.findall(rf"puis\s+de\s+{_PCT}\s*(?:%|pour ?cents?)", question, re.I)
+        if chaine:
+            etapes, v = [], base
+            for pc in [p] + [_f(c) for c in chaine]:
+                v2 = v * (1 + pc / 100.0)
+                etapes.append("%s + %s %% = %s" % (_fmt_nombre(v), _fmt_nombre(pc), _fmt_nombre(round(v2, 10))))
+                v = round(v2, 10)
+            return (VERIFIE, "%s (%s)" % (_fmt_nombre(v), " ; ".join(etapes)),
+                    "calcul — augmentations enchaînées (sur le résultat, pas la base)")
         return (VERIFIE, "%s (%s + %s %% = %s + %s)" % (_fmt_nombre(base * (1 + p / 100.0)), _fmt_nombre(base),
                                                         _fmt_nombre(p), _fmt_nombre(base), _fmt_nombre(base * p / 100.0)),
                 "calcul — valeur après augmentation")
@@ -671,7 +788,12 @@ def resout_math(question: str):
                                                               _fmt_nombre(b), _fmt_nombre(b)),
                     "calcul — écart relatif en pourcentage")
 
-    mpart = re.search(rf"{_PCT}\s+(?:est|repr[ée]sente|fait)\s+quel\s+pourcentage\s+de\s+{_PCT}", question, re.I)
+    mpart = (re.search(rf"{_PCT}\s+(?:est|repr[ée]sente|fait)\s+quel\s+pourcentage\s+de\s+{_PCT}", question, re.I)
+             # « quel pourcentage représente 45 sur 60 » / « 15 sur 20 en pourcentage » / « 12 sur 20 …
+             # sur 100 » (FAUX vécus : partaient en intervalle de Wilson — l'inférence n'est pas la division)
+             or re.search(rf"quel\s+pourcentage\s+(?:repr[ée]sente|fait|font)\s+{_PCT}\s+sur\s+{_PCT}", question, re.I)
+             or re.search(rf"{_PCT}\s+sur\s+{_PCT}\s+en\s+pourcentage", question, re.I)
+             or re.search(rf"{_PCT}\s+sur\s+{_PCT}\b.{{0,25}}?\bsur\s+100\b", question, re.I))
     mpart_inv = None if mpart else re.search(
         rf"quel\s+pourcentage\s+de\s+{_PCT}\s+(?:repr[ée]sente|fait)\s+{_PCT}", question, re.I)
     if mpart or mpart_inv:
@@ -699,8 +821,8 @@ def resout_math(question: str):
         if 1 <= n <= 3999:
             return (VERIFIE, _en_romain(n), "numération romaine (convention, symboles du lecteur)")
         return (HORS, None, None)
-    mrom2 = re.search(r"\b([ivxlcdm]+)\b(?:\s+ca\s+fait\s+combien)?\s+en\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q) \
-        or re.search(r"\b([ivxlcdm]{2,})\b.{0,20}?\ben\s+(?:chiffres?\s+)?(?:arabes?|d[ée]cimal)", q)
+    mrom2 = re.search(r"\b([ivxlcdm]+)\b(?:\s+ca\s+fait\s+combien)?\s+en\s+(?:chiffres?(?:\s+arabes?)?|nombres?|d[ée]cimal)", q) \
+        or re.search(r"\b([ivxlcdm]{2,})\b.{0,20}?\ben\s+(?:chiffres?(?:\s+arabes?)?|nombres?|d[ée]cimal)", q)
     if mrom2:
         n = _depuis_romain(mrom2.group(1).upper())
         if n is not None:
@@ -708,8 +830,10 @@ def resout_math(question: str):
         return (HORS, None, None)
 
     # POURCENTAGE : « 20% de 150 », « 20 pour cent de 150 » -> 30 (arithmétique exacte, sans module tiers).
+    # Milliers à espace acceptés (« 20 % de 5 000 » répondait 1 — « de 5 » lu, FAUX vécu 2026-07-08).
+    _qm = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", question)
     mp = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:%|pour ?cent(?:s)?|pourcent)\s+(?:de|du|des|d['’]|sur)\s+(\d+(?:[.,]\d+)?)",
-                   question, re.I)
+                   _qm, re.I)
     if mp:
         p = float(mp.group(1).replace(",", ".")); base = float(mp.group(2).replace(",", "."))
         v = p / 100.0 * base
@@ -940,6 +1064,23 @@ def resout_math(question: str):
         r = int((Decimal(str(x)) / pas).quantize(0, rounding=ROUND_HALF_UP)) * pas
         return (VERIFIE, str(r), "calcul — arrondi à la %s" % mrr.group(2))
 
+    # CAS LIMITES DITS (tombaient en mémo « Noté », vécu 2026-07-08) : diviser/modulo par ZÉRO -> indéfini
+    # EXPLIQUÉ ; racine carrée d'un NÉGATIF -> pas de solution réelle, racines complexes DONNÉES si entières.
+    if re.search(r"(?:divis[ée]e?s?\s+par|modulo)\s+(?:0|z[ée]ro)\b", q):
+        op = "le modulo" if "modulo" in q else "la division"
+        return (VERIFIE, "Indéfini — %s par zéro n'est pas défini%s." % (op, "" if "modulo" in q else "e"),
+                "arithmétique — cas limite dit")
+    mrn = re.search(r"racine\s+carree\s+de\s+moins\s+(\d+)", q) \
+        or re.search(r"racine\s+carr[ée]e\s+de\s+-(\d+)", question)
+    if mrn:
+        n = abs(int(mrn.group(1)))
+        r = math.isqrt(n)
+        if r * r == n:
+            return (VERIFIE, "Pas de racine carrée réelle pour −%d ; en nombres complexes : %di et −%di."
+                    % (n, r, r), "nombres complexes — racine d'un négatif")
+        return (VERIFIE, "Pas de racine carrée réelle pour −%d (les racines sont complexes)." % n,
+                "nombres complexes — racine d'un négatif")
+
     # PRODUIT / DIFFÉRENCE / QUOTIENT nommés : « le produit de 4 et 25 » -> 100 (exact ; quotient exact seul).
     mpr = re.search(r"\b(produit|difference|quotient)\s+(?:de\s+|d['’]\s*|entre\s+)(-?\d+)\s+et\s+(?:de\s+)?(-?\d+)", q)
     if mpr:
@@ -1013,6 +1154,508 @@ def resout_math(question: str):
                     "arithmétique — primalité (énumération exacte)")
         return (HORS, None, None)
 
+    # CINÉMATIQUE DU QUOTIDIEN v = d/t (motifs sur _norm_conv : normalise() mange le « / » de km/h).
+    # FAUX vécu 2026-07-08 : « vitesse moyenne si je parcours 150 km en 2 heures » -> « Moyenne : 76 »
+    # (la route stats moyennait distance et durée !). Chaque réponse MONTRE le calcul.
+    qc = _norm_conv(question)
+    _fl = lambda s: float(s.replace(",", "."))
+    mvc = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:km|kilometres?)\s+en\s+(\d{1,3})\s*h\s*([0-5]?\d)\b", qc)
+    if mvc and ("vitesse" in qtoks or "moyenne" in qtoks):
+        d = _fl(mvc.group(1))
+        h, mn = int(mvc.group(2)), int(mvc.group(3))
+        t = h + mn / 60.0
+        if t > 0:
+            return (VERIFIE, "%s km/h (%s km / %d h %02d)" % (_fmt_nombre(round(d / t, 4)), _fmt_nombre(d), h, mn),
+                    "cinématique — v = d/t")
+    mv = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:km|kilometres?)\s+en\s+(\d+(?:[.,]\d+)?)\s*(?:h\b|heures?)", qc)
+    if mv and ("vitesse" in qtoks or "moyenne" in qtoks):
+        d, t = _fl(mv.group(1)), _fl(mv.group(2))
+        if t > 0:
+            return (VERIFIE, "%s km/h (%s km / %s h)" % (_fmt_nombre(d / t), _fmt_nombre(d), _fmt_nombre(t)),
+                    "cinématique — v = d/t")
+    mt = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:km|kilometres?)\s+[àa]\s+(\d+(?:[.,]\d+)?)\s*km/h", qc)
+    if mt and ("temps" in qtoks or "duree" in qtoks or "dure" in qtoks or "faut" in qtoks):
+        d, v = _fl(mt.group(1)), _fl(mt.group(2))
+        if v > 0:
+            tm = d / v * 60.0
+            mn_total = round(tm)
+            h, mn = divmod(int(mn_total), 60)
+            aff = ("%d h %02d min" % (h, mn)) if mn else ("%d h" % h)
+            if abs(tm - mn_total) > 1e-9:
+                aff = "≈ " + aff + " (arrondi à la minute)"
+            return (VERIFIE, "%s (%s km / %s km/h)" % (aff, _fmt_nombre(d), _fmt_nombre(v)),
+                    "cinématique — t = d/v")
+    md = re.search(r"(\d+(?:[.,]\d+)?)\s*km/h\s+pendant\s+(\d+(?:[.,]\d+)?)\s*(?:h\b|heures?)", qc)
+    if md:
+        v, t = _fl(md.group(1)), _fl(md.group(2))
+        return (VERIFIE, "%s km (%s km/h × %s h)" % (_fmt_nombre(v * t), _fmt_nombre(v), _fmt_nombre(t)),
+                "cinématique — d = v × t")
+
+    # CONSOMMATION AUX 100 KM : « 6 litres aux 100 km, pour 250 km » -> 15 L (règle de trois, calcul montré).
+    mcons = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:litres?|l)\s+aux?\s+100\s*km.*?(\d+(?:[.,]\d+)?)\s*km", qc)
+    if mcons:
+        c, d = _fl(mcons.group(1)), _fl(mcons.group(2))
+        return (VERIFIE, "%s L (%s L/100 km × %s km)" % (_fmt_nombre(c * d / 100.0), _fmt_nombre(c), _fmt_nombre(d)),
+                "consommation — règle de trois")
+
+    # PRIX AU KILO / AU LITRE : « 1,5 kg à 4 euros le kilo » -> 6 euros (quantité × prix unitaire ; unités
+    # COHÉRENTES exigées — « 2 kg à 3 euros le litre » -> abstention, jamais un produit d'unités disparates).
+    mpk = re.search(r"(\d+(?:[.,]\d+)?)\s*(kg|kilos?|litres?|l)\s+[àa]\s+(\d+(?:[.,]\d+)?)\s*(?:euros?|€)"
+                    r"\s+le\s+(kilo|kg|litre|l)\b", qc)
+    if mpk:
+        _dim = lambda u: "M" if u.startswith(("k", "kg")) else "V"
+        if _dim(mpk.group(2)) == _dim(mpk.group(4)):
+            qte, pu = _fl(mpk.group(1)), _fl(mpk.group(3))
+            return (VERIFIE, "%s euros (%s %s × %s euros le %s)"
+                    % (_fmt_nombre(qte * pu), _fmt_nombre(qte), mpk.group(2), _fmt_nombre(pu), mpk.group(4)),
+                    "prix — quantité × prix unitaire")
+        return (HORS, None, None)
+
+    # RÉSISTANCES ÉQUIVALENTES série/parallèle (brique electronique ; tombait en mémo « C'est noté »).
+    if "resistance" in qtoks and ("serie" in qtoks or "parallele" in qtoks):
+        ohms = re.findall(r"(\d+(?:[.,]\d+)?)\s*(?:ohms?|Ω)", qc)
+        if len(ohms) >= 2:
+            try:
+                import electronique as _EL
+                vals_r = [_fl(o) for o in ohms]
+                serie = "serie" in qtoks
+                r_eq = _EL.resistance_serie(vals_r) if serie else _EL.resistance_parallele(vals_r)
+                return (VERIFIE, "%s Ω (%s en %s)" % (_fmt_nombre(r_eq),
+                                                      " et ".join(_fmt_nombre(v) for v in vals_r),
+                                                      "série : somme" if serie else "parallèle : 1/Σ(1/Rᵢ)"),
+                        "électronique — résistance équivalente")
+            except Exception:
+                pass
+        return (HORS, None, None)
+
+    # PÉRIODE D'UN PENDULE : « pendule de 1 mètre » -> 2.006 s (brique mecanique, g terrestre standard DIT).
+    mpen = re.search(r"pendule\s+de\s+(\d+(?:[.,]\d+)?)\s*(?:m|metres?)\b", qc)
+    if mpen and ("periode" in qtoks or "oscillation" in qtoks or "frequence" in qtoks):
+        try:
+            import mecanique as _MEC
+            L = _fl(mpen.group(1))
+            if L > 0:
+                return (VERIFIE, "%s s (2π√(L/g), g = 9.80665 m/s²)" % _fmt_nombre(_MEC.periode_pendule(L)),
+                        "mécanique — période du pendule simple")
+        except Exception:
+            pass
+        return (HORS, None, None)
+
+    # PRESSION = FORCE / SURFACE : « 100 newtons sur 2 mètres carrés » -> 50 Pa (brique mecanique).
+    mpre = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:newtons?|n)\s+sur\s+(\d+(?:[.,]\d+)?)\s*(?:m2|m²|metres?\s+carres?)",
+                     qc)
+    if mpre and "pression" in qtoks:
+        try:
+            import mecanique as _MEC
+            F, S = _fl(mpre.group(1)), _fl(mpre.group(2))
+            if S > 0:
+                return (VERIFIE, "%s Pa (%s N / %s m²)" % (_fmt_nombre(_MEC.pression(F, S)),
+                                                           _fmt_nombre(F), _fmt_nombre(S)),
+                        "mécanique — pression P = F/S")
+        except Exception:
+            pass
+        return (HORS, None, None)
+
+    # NOTATION SCIENTIFIQUE : « notation scientifique de 123000 » -> 1.23 × 10⁵ (réécriture exacte).
+    mns = re.search(r"notation\s+scientifique\s+(?:de\s+|du\s+|d['’]\s*)(-?\d+(?:[.,]\d+)?)", qc)
+    if mns:
+        val = _fl(mns.group(1))
+        if val != 0:
+            mant, expn = ("%e" % val).split("e")
+            mant = mant.rstrip("0").rstrip(".")
+            return (VERIFIE, "%s × 10^%d" % (mant, int(expn)), "notation scientifique (réécriture exacte)")
+        return (VERIFIE, "0", "notation scientifique (réécriture exacte)")
+
+    # EAU — conventions physiques, CONDITIONS DITES (même famille que la congélation 0 °C déjà câblée).
+    if re.search(r"(?:pese|poids|masse)\b.{0,20}?\blitre\s+d['’]?\s*eau|litre\s+d['’]?\s*eau\s+en\s+(?:kg|kilo)", qc):
+        return (VERIFIE, "≈ 1 kg (0.998 kg à 20 °C — le litre d'eau a historiquement défini le kilogramme).",
+                "physique — masse volumique de l'eau (conditions dites)")
+    if re.search(r"(?:pese|poids|masse)\b.{0,25}?metre\s+cube\s+d['’]?\s*eau", qc):
+        return (VERIFIE, "≈ 1000 kg — une tonne (998 kg à 20 °C).",
+                "physique — masse volumique de l'eau (conditions dites)")
+    if re.search(r"densite\s+de\s+l['’]?\s*eau", q):
+        return (VERIFIE, "1 par convention (999.97 kg/m³ au maximum, à 4 °C ; 998 à 20 °C — varie avec la "
+                "température).", "physique — masse volumique de l'eau (conditions dites)")
+    if re.search(r"eau\s+bout\b.{0,20}?altitude|ebullition\b.{0,25}?altitude", q):
+        return (VERIFIE, "Plus bas qu'à 100 °C : la pression diminue avec l'altitude (≈ 90 °C vers 3000 m, "
+                "valeur approximative — dépend de la météo locale).",
+                "physique — ébullition et pression (loi qualitative, exemple approximatif dit)")
+
+    # LUMIÈRE DU SOLEIL : composition de deux constantes vérifiées (distance moyenne 149.6 millions de km /
+    # c = 299 792 458 m/s) -> ≈ 8 min 19 s, « moyenne » DITE (l'orbite est elliptique).
+    if re.search(r"lumiere\s+du\s+soleil.{0,40}?(?:atteindre|arriver|parvenir|terre)"
+                 r"|temps.{0,30}?lumiere.{0,20}?soleil", q):
+        secs = 149_600_000_000.0 / 299_792_458.0
+        mn, sc = divmod(int(round(secs)), 60)
+        return (VERIFIE, "≈ %d min %d s (149.6 millions de km en moyenne / 299 792 458 m/s — l'orbite est "
+                "elliptique, ça varie de ±8 s)." % (mn, sc),
+                "physique — distance moyenne Terre-Soleil / vitesse de la lumière")
+
+    # VITESSE DU SON : valeur de référence, CONDITIONS DITES (elle varie — jamais un chiffre nu).
+    if re.search(r"vitesse\s+du\s+son\b", q):
+        return (VERIFIE, "343 m/s dans l'air à 20 °C — elle varie avec la température et le milieu "
+                "(~1482 m/s dans l'eau).", "physique — valeur de référence (conditions dites)")
+
+    # CONSTANTES MATHÉMATIQUES NOMMÉES (pi a déjà sa route) : e, nombre d'or.
+    if re.search(r"\bnombre\s+d\s*or\b", q):
+        return (VERIFIE, "1.61803399 ((1 + √5) / 2)", "constante — nombre d'or")
+    if re.search(r"\be\s+vaut\b|\bvaut\s+e\b|valeur\s+de\s+e\b|constante\s+e\b", q):
+        return (VERIFIE, "2.71828183 (e, base du logarithme naturel)", "constante — e")
+
+    # DURÉES COMPOSÉES : « 2 semaines et 3 jours en jours » -> 17 ; « 1 an et 6 mois en mois » -> 18.
+    # Deux familles FERMÉES (calendaire an/mois : 1 an = 12 mois exact ; temps exact semaine…seconde) —
+    # jamais de mélange an→jours ici (durée variable). Tombait en compte lexical (« 10 termes jour »), vécu.
+    mdc = re.search(r"(\d+)\s+(ans?|annees?|mois|semaines?|jours?|heures?|minutes?)\s+et\s+(\d+)\s+"
+                    r"(mois|semaines?|jours?|heures?|minutes?|secondes?)\b.{0,30}?\b(?:en|de)\s+"
+                    r"(jours?|mois|heures?|minutes?|secondes?|semaines?)", q)
+    if mdc:
+        _CAL = {"an": 12, "annee": 12, "mois": 1}                     # base = mois
+        _TPS = {"semaine": 604800, "jour": 86400, "heure": 3600, "minute": 60, "seconde": 1}   # base = seconde
+        _sing = lambda u: u if u == "mois" else u.rstrip("s")     # ⚠ « mois ».rstrip -> « moi » (vécu)
+        u1, u2, uc = (_sing(mdc.group(i)) for i in (2, 4, 5))
+        n1, n2 = int(mdc.group(1)), int(mdc.group(3))
+        if u1 in _CAL and u2 in _CAL and uc in _CAL:
+            tot = (n1 * _CAL[u1] + n2 * _CAL[u2]) / _CAL[uc]
+            if tot == int(tot):
+                return (VERIFIE, "%d %s (1 an = 12 mois)" % (int(tot), uc + ("s" if tot > 1 and uc != "mois" else "")),
+                        "conventions de durée — composition exacte")
+        elif u1 in _TPS and u2 in _TPS and uc in _TPS:
+            tot = (n1 * _TPS[u1] + n2 * _TPS[u2]) / _TPS[uc]
+            if tot == int(tot):
+                return (VERIFIE, "%d %s (%d × %s + %d × %s)" % (int(tot), uc + ("s" if tot > 1 else ""),
+                                                                n1, u1, n2, u2),
+                        "conventions de durée — composition exacte")
+        return (HORS, None, None)
+
+    # CONVENTIONS D'OBJETS ET DE JEUX (standards internationaux non contestés, le CADRE est DIT dans chaque
+    # réponse — même famille que la douzaine et les solides). Table FERMÉE : rien hors d'elle.
+    _CONV_OBJETS = [
+        (r"cases?\b.{0,20}?echiquier|echiquier\b.{0,15}?cases?", "64 cases (8 × 8)"),
+        (r"touches?\b.{0,20}?piano", "88 touches (52 blanches + 36 noires — piano moderne standard)"),
+        (r"cartes?\b.{0,25}?tarot", "78 cartes (jeu de tarot français standard)"),
+        (r"joueurs?\b.{0,30}?(?:foot|football)\b", "11 joueurs par équipe sur le terrain (football association)"),
+        (r"(?:match|partie)\s+de\s+foot\w*\b.{0,20}?(?:dure|temps|duree)|dure\b.{0,15}?match\s+de\s+foot",
+         "90 minutes réglementaires (2 × 45, hors arrêts de jeu et prolongations)"),
+        (r"trous?\b.{0,25}?golf", "18 trous (parcours standard)"),
+        (r"quilles?\b.{0,15}?bowling|bowling\b.{0,15}?quilles?", "10 quilles (bowling à dix quilles)"),
+        (r"cordes?\b.{0,20}?violon", "4 cordes (sol, ré, la, mi)"),
+        (r"cordes?\b.{0,20}?guitare", "6 cordes (guitare standard : mi, la, ré, sol, si, mi)"),
+        (r"cordes?\b.{0,20}?violoncelle", "4 cordes (do, sol, ré, la)"),
+        (r"cases?\b.{0,20}?dames?\b|jeu\s+de\s+dames.{0,15}?cases?", "100 cases (dames internationales, 10 × 10)"),
+    ]
+    for motif, rep in _CONV_OBJETS:
+        if re.search(motif, q):
+            return (VERIFIE, rep + ".", "conventions — règles et standards (cadre dit)")
+
+    # DOUZAINES : « 3 douzaines » -> 36, « une demi-douzaine » -> 6, « dans une douzaine » -> 12 (convention).
+    mdz = re.search(r"(?:(\d+)\s+douzaines?|demi[- ]douzaine|(?:une\s+|la\s+)?douzaine)", qc)
+    if mdz and ("combien" in qtoks or "fait" in qtoks or "font" in qtoks):
+        n = int(mdz.group(1)) * 12 if mdz.group(1) else (6 if "demi" in qc else 12)
+        return (VERIFIE, "%d (une douzaine = 12)" % n, "conventions — douzaine")
+
+    # RENDU DE MONNAIE : « rendu sur 50 euros pour un achat de 37,25 » -> 12.75 (soustraction montrée) ;
+    # achat qui dépasse -> dit honnêtement, jamais un rendu négatif sec.
+    mrm = re.search(r"rendu\s+(?:de\s+monnaie\s+)?sur\s+(\d+(?:[.,]\d+)?)\s*(?:euros?|€)?"
+                    r".{0,30}?\b(\d+(?:[.,]\d+)?)\s*(?:euros?|€)?", qc)
+    if mrm:
+        billet, achat = _fl(mrm.group(1)), _fl(mrm.group(2))
+        if achat <= billet:
+            return (VERIFIE, "%s (%s − %s)" % (_fmt_nombre(round(billet - achat, 2)),
+                                               _fmt_nombre(billet), _fmt_nombre(achat)),
+                    "monnaie — rendu exact")
+        return (VERIFIE, "Impossible : l'achat (%s) dépasse ce qui est donné (%s) — il manque %s."
+                % (_fmt_nombre(achat), _fmt_nombre(billet), _fmt_nombre(round(achat - billet, 2))),
+                "monnaie — rendu exact")
+
+    # PIÈCES ET BILLETS : « 3 pièces de 2 euros et 2 billets de 5 euros » -> 16 euros (somme exacte, calcul
+    # montré). FAUX vécu 2026-07-08 : l'estimateur d'ordre de grandeur MULTIPLIAIT tous les nombres (« ~60 »).
+    mpieces = re.findall(r"(\d+)\s*(?:pieces?|billets?)\s+de\s+(\d+(?:[.,]\d+)?)", qc)
+    if mpieces and ("combien" in qtoks or "total" in qtoks or "tout" in qtoks):
+        tot = sum(int(n) * _fl(v) for n, v in mpieces)
+        det = " + ".join("%s × %s" % (n, _fmt_nombre(_fl(v))) for n, v in mpieces)
+        return (VERIFIE, "%s euros (%s)" % (_fmt_nombre(tot), det), "monnaie — somme exacte")
+
+    # PÉRIMÈTRE D'UN POLYGONE RÉGULIER NOMMÉ : « hexagone (régulier) de côté 5 » -> 30 (n × c, calcul montré ;
+    # tombait en mémo). Carré/triangle restent aux routes géométrie dédiées (formats épinglés).
+    _POLY_N = {"pentagone": 5, "hexagone": 6, "heptagone": 7, "octogone": 8, "enneagone": 9,
+               "decagone": 10, "hendecagone": 11, "dodecagone": 12}
+    mpoly = re.search(r"perimetre\s+d['’]?\s*un\s+([a-z]+)\s+(?:regulier\s+)?de\s+cote\s+(?:de\s+)?"
+                      r"(\d+(?:[.,]\d+)?)", qc)
+    if mpoly and mpoly.group(1) in _POLY_N:
+        n, c = _POLY_N[mpoly.group(1)], _fl(mpoly.group(2))
+        return (VERIFIE, "%s (%s régulier : %d × %s)" % (_fmt_nombre(n * c), mpoly.group(1), n, _fmt_nombre(c)),
+                "géométrie — périmètre d'un polygone régulier")
+
+    # ARÊTES / SOMMETS des solides usuels (convention exacte, Euler vérifiable ; « faces » a déjà sa route).
+    msol = re.search(r"combien\s+(?:de\s+|d['’]?\s*)(aretes?|sommets?)\s+(?:a|possede|compte|pour)\s+un\s+"
+                     r"(cube|pave\s+droit|tetraedre)", q)
+    if msol:
+        _SOLIDES = {"cube": (12, 8), "pave droit": (12, 8), "tetraedre": (6, 4)}
+        ar, so = _SOLIDES[re.sub(r"\s+", " ", msol.group(2))]
+        val = ar if msol.group(1).startswith("arete") else so
+        return (VERIFIE, str(val), "géométrie — solides usuels (convention)")
+
+    # PRIX TOTAL quantité × prix unitaire : « 3 baguettes à 1,20 euro » -> 3.6 euros (calcul montré). GARDES :
+    # le nom compté n'est pas une unité de mesure ; un mot d'intention prix/combien/coûtent exigé ; la forme
+    # « … le kilo/litre » est déjà routée au-dessus.
+    mqp = re.search(r"(\d+)\s+([a-z][a-z-]{2,})\s+[àa]\s+(\d+(?:[.,]\d+)?)\s*(?:euros?|€)(?!\s+le\s)", qc)
+    if mqp and ("combien" in qtoks or "prix" in qtoks or "cout" in q or "coute" in q or "coutent" in q):
+        nom = mqp.group(2)
+        _UNITES_EXCLUES = {"km", "kg", "kilo", "kilos", "litre", "litres", "gramme", "grammes", "heure",
+                           "heures", "minute", "minutes", "metre", "metres", "euro", "euros", "pieces",
+                           "billets", "pour", "les", "des"}
+        if nom not in _UNITES_EXCLUES:
+            nb, pu = int(mqp.group(1)), _fl(mqp.group(3))
+            return (VERIFIE, "%s euros (%d × %s)" % (_fmt_nombre(nb * pu), nb, _fmt_nombre(pu)),
+                    "prix — quantité × prix unitaire")
+
+    # IMC : « IMC pour 70 kg et 1m75 » -> 22.86 (kg/m², définition OMS ; tombait en mémo « Noté »). Formats de
+    # taille acceptés : « 1m75 », « 1,75 m », « 175 cm ». Le nombre est donné SANS interprétation médicale.
+    if "imc" in qtoks or "indice de masse corporelle" in q:
+        mkg = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:kg|kilos?)\b", qc)
+        mtaille = (re.search(r"(\d)\s*m\s*(\d{2})\b", qc) or re.search(r"(\d{3})\s*cm\b", qc)
+                   or re.search(r"(\d(?:[.,]\d+))\s*(?:m|metres?)\b", qc))
+        if mkg and mtaille:
+            poids = _fl(mkg.group(1))
+            g = mtaille.groups()
+            taille = (float(g[0]) + int(g[1]) / 100.0 if len(g) > 1 and g[1] is not None
+                      else _fl(g[0]) / 100.0 if len(g[0]) == 3 else _fl(g[0]))
+            if 0.5 <= taille <= 2.6 and poids > 0:
+                return (VERIFIE, "%s (%s kg / (%s m)²) — indice de masse corporelle"
+                        % (_fmt_nombre(round(poids / taille ** 2, 2)), _fmt_nombre(poids), _fmt_nombre(taille)),
+                        "IMC — définition OMS kg/m²")
+        return (HORS, None, None)
+
+    # pH : « pH pour une concentration de 0,001 » -> 3 (physique.calcule, −log10 ; tombait en mémo). UNE seule
+    # concentration exigée, strictement positive.
+    if "ph" in qtoks and ("concentration" in qtoks or "solution" in qtoks):
+        nums = re.findall(r"\d+(?:[.,]\d+)?(?:e-?\d+)?", qc.replace("10^", "1e"))
+        nums = [n for n in nums if _fl(n) > 0]
+        if len(nums) == 1:
+            try:
+                import physique as _PH
+                st_p, val_p, _u = _PH.calcule("ph", {"concentration_H": _fl(nums[0])})
+                if st_p == VERIFIE and val_p is not None:
+                    return (VERIFIE, "pH = %s (−log₁₀ de %s)" % (_fmt_nombre(val_p), nums[0].replace(",", ".")),
+                            "chimie physique — pH = −log10[H+]")
+            except Exception:
+                pass
+        return (HORS, None, None)
+
+    # ARITHMÉTIQUE D'HORLOGE ÉNONCÉE (pur calcul modulo 24 h — l'heure MACHINE était servie à la place,
+    # FAUX vécu 2026-07-08) : « part à 8h et roule 2 heures » -> 10 h ; « rendez-vous à 14h30 dure 45
+    # minutes » -> 15 h 15 ; « il est 23h30 … dans une heure » -> 0 h 30 (lendemain dit) ; « 20h45 plus
+    # 30 minutes » -> 21 h 15.
+    mck = re.search(r"(?:^|[àa]\s+|il\s+est\s+|entre\s+)(\d{1,2})\s*h\s*([0-5]\d)?\b(?!\s*/)", qc)
+    if mck:
+        # durée : mot (« une heure »), nombre+unité (« 45 minutes ») OU compacte (« dure 1h30 ») ;
+        # sens : plus/dans/dure/roule = AVANCE, moins/retire = RECULE (« 20h45 moins 30 min » -> 1245, FAUX vécu).
+        mdu = re.search(r"(?:roule|dure|pendant|dans|plus|moins|attend|ajoute|retire)\s+"
+                        r"(?:une?\s+(heure|minute)\b|(\d{1,3})\s*(heures?|minutes?|min\b)|(\d{1,2})h([0-5]\d)\b)", qc)
+        veut_h = (re.search(r"quelle\s+heure|finit|arrive|termine|se\s+terminera|sera|ce\s+sera", qc)
+                  or re.search(r"^\s*\d{1,2}\s*h\s*[0-5]?\d?\s+(?:plus|moins)\b", qc))
+        if mdu and veut_h:
+            h0, m0 = int(mck.group(1)), int(mck.group(2) or 0)
+            if h0 <= 23:
+                if mdu.group(1):
+                    dur_min, aff_dur = 60 if mdu.group(1) == "heure" else 1, "1 " + mdu.group(1)
+                elif mdu.group(2):
+                    n, unite = int(mdu.group(2)), mdu.group(3)
+                    dur_min = n * 60 if unite.startswith("h") else n
+                    aff_dur = "%d %s%s" % (n, "heure" if unite.startswith("h") else "minute", "s" if n > 1 else "")
+                else:
+                    dur_min = int(mdu.group(4)) * 60 + int(mdu.group(5))
+                    aff_dur = "%sh%s" % (mdu.group(4), mdu.group(5))
+                recule = re.search(r"\b(?:moins|retire)\b", qc) is not None
+                total = h0 * 60 + m0 + (-dur_min if recule else dur_min)
+                h1, m1 = divmod(total % 1440, 60)
+                marge = " — le lendemain" if total >= 1440 else (" — la veille" if total < 0 else "")
+                return (VERIFIE, "%d h %02d (%d h %02d %s %s).%s" % (h1, m1, h0, m0, "−" if recule else "+",
+                                                                     aff_dur, marge),
+                        "arithmétique d'horloge (heures énoncées, modulo 24 h)")
+        # DURÉE ENTRE DEUX HEURES ÉNONCÉES : « de 9h à 17h30 », « entre 9h et 17h30 » -> 8 h 30.
+        mde = re.search(r"(?:de|entre)\s+(\d{1,2})\s*h\s*([0-5]\d)?\s+(?:[àa]|jusqu['’][àa]|et)\s+"
+                        r"(\d{1,2})\s*h\s*([0-5]\d)?\b", qc)
+        if mde and re.search(r"combien|duree|heures\s+de", qc):
+            t0 = int(mde.group(1)) * 60 + int(mde.group(2) or 0)
+            t1 = int(mde.group(3)) * 60 + int(mde.group(4) or 0)
+            if t1 >= t0:
+                h1, m1 = divmod(t1 - t0, 60)
+                return (VERIFIE, "%d h %02d (de %s à %s)." % (h1, m1, mde.group(1) + "h" + (mde.group(2) or ""),
+                                                              mde.group(3) + "h" + (mde.group(4) or "")),
+                        "arithmétique d'horloge (durée entre heures énoncées)")
+            return (HORS, None, None)                    # fin avant début : nuit à cheval, ambigu -> abstention
+
+    # PIÈGES ET TRIVIA CALENDAIRES (conventions exactes ; tombaient en repli).
+    if re.search(r"mois\s+le\s+plus\s+court", q):
+        return (VERIFIE, "Février (28 jours ; 29 les années bissextiles).", "calendrier grégorien")
+    if re.search(r"mois\s+le\s+plus\s+long", q):
+        return (VERIFIE, "Il n'y en a pas UN seul — sept mois font 31 jours (janvier, mars, mai, juillet, "
+                "août, octobre, décembre).", "calendrier grégorien")
+    if re.search(r"quel\s+mois\s+a\s+28\s+jours", q):
+        return (VERIFIE, "Tous — chaque mois a AU MOINS 28 jours ; seul février s'arrête à 28 (29 si "
+                "bissextile).", "calendrier grégorien")
+    if re.search(r"combien\s+de\s+mois\s+ont\s+31\s+jours", q):
+        return (VERIFIE, "7 (janvier, mars, mai, juillet, août, octobre, décembre).", "calendrier grégorien")
+
+    # JOURS D'UN MOIS : « combien de jours en février 2024 » -> 29 (calendar.monthrange, grégorien exact) ;
+    # février SANS année -> réponse composée honnête (28 ; 29 si bissextile), jamais un des deux au pif.
+    # GARDES : « combien/nombre » exigé + « jours en/de <mois> » — le compte à rebours (« dans combien de
+    # jours le 25 décembre ») n'a pas « jours en <mois> » et reste au gabarit dédié ; « le 14 février » (date
+    # précise) est exclu par l'absence de jour chiffré devant le mois.
+    mjm = re.search(r"\bjours?\s+(?:en|au|de|du|dans)\s+(?:le\s+mois\s+de\s+)?"
+                    r"(janvier|fevrier|mars|avril|mai|juin|juillet|aout|septembre|octobre|novembre|decembre)"
+                    r"(?:\s+(\d{4}))?\b", q)
+    if mjm and ("combien" in qtoks or "nombre" in qtoks) and not re.search(r"\d+\s+" + mjm.group(1), q):
+        _MOIS_NUM = {"janvier": 1, "fevrier": 2, "mars": 3, "avril": 4, "mai": 5, "juin": 6, "juillet": 7,
+                     "aout": 8, "septembre": 9, "octobre": 10, "novembre": 11, "decembre": 12}
+        num = _MOIS_NUM[mjm.group(1)]
+        _MOIS_AFF = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
+                     "septembre", "octobre", "novembre", "décembre"]
+        if mjm.group(2):
+            import calendar as _cal
+            nbj = _cal.monthrange(int(mjm.group(2)), num)[1]
+            return (VERIFIE, "%d jours (%s %s)" % (nbj, _MOIS_AFF[num - 1], mjm.group(2)),
+                    "calendrier grégorien (monthrange exact)")
+        if num == 2:
+            return (VERIFIE, "28 jours (29 les années bissextiles).", "calendrier grégorien")
+        nbj = [31, 0, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][num - 1]
+        return (VERIFIE, "%d jours" % nbj, "calendrier grégorien")
+
+    # MULTIPLES / TABLE (AVANT la primalité : « les 5 PREMIERS multiples de 7 » recevait « Oui, 5 est
+    # premier », À CÔTÉ — FAUX vécu 2026-07-08).
+    mmu = re.search(r"(?:les\s+)?(\d+)\s+premiers\s+multiples\s+de\s+(\d+)", q)
+    if mmu:
+        n, k = int(mmu.group(1)), int(mmu.group(2))
+        if 1 <= n <= 50 and k != 0:
+            return (VERIFIE, ", ".join(str(k * i) for i in range(1, n + 1)),
+                    "arithmétique — multiples (énumération exacte)")
+        return (HORS, None, None)
+    mmj = re.search(r"multiples\s+de\s+(\d+)\s+jusqu['’\s]*[àa]\s+(\d+)", q)
+    if mmj:
+        k, borne = int(mmj.group(1)), int(mmj.group(2))
+        if k != 0 and 0 < borne <= 10000 and borne // abs(k) <= 200:
+            vals = [str(k * i) for i in range(1, borne // abs(k) + 1)]
+            if vals:
+                return (VERIFIE, ", ".join(vals), "arithmétique — multiples (énumération exacte)")
+        return (HORS, None, None)
+    mtb = re.search(r"table\s+(?:de\s+multiplication\s+)?(?:de\s+|du\s+)(\d+)", q)
+    if mtb and ("table" in qtoks):
+        k = int(mtb.group(1))
+        if 1 <= k <= 1000:
+            return (VERIFIE, " ; ".join("%d × %d = %d" % (k, i, k * i) for i in range(1, 11)),
+                    "arithmétique — table de multiplication")
+
+    # VARIATION DE PRIX EN % : « le prix passe de 80 à 60 » -> −25 % (calcul montré ; hausse en +).
+    mvp = re.search(r"(?:passe|pass[ée]|baisse|baiss[ée]|monte|mont[ée]|augment[ée]|chut[ée])\s+"
+                    r"de\s+(\d+(?:[.,]\d+)?)\s+[àa]\s+(\d+(?:[.,]\d+)?)", qc)
+    if mvp and ("pourcentage" in qtoks or "reduction" in qtoks or "augmentation" in qtoks or "%" in question):
+        a, b = _fl(mvp.group(1)), _fl(mvp.group(2))
+        if a > 0:
+            pct = (b - a) / a * 100.0
+            sens = "hausse" if pct > 0 else "baisse"
+            return (VERIFIE, "%s%s %% (de %s à %s : (%s − %s) / %s × 100 — une %s)"
+                    % ("+" if pct > 0 else "", _fmt_nombre(round(pct, 4)), _fmt_nombre(a), _fmt_nombre(b),
+                       _fmt_nombre(b), _fmt_nombre(a), _fmt_nombre(a), sens),
+                    "calcul — variation relative en pourcentage")
+
+    # COMPTER / ALPHABET (génération native exacte, bornes sûres).
+    mcp = re.search(r"compte\s+(?:[àa]\s+rebours\s+)?de\s+(\d+)\s+[àa]\s+(\d+)", q)
+    if mcp:
+        a, b = int(mcp.group(1)), int(mcp.group(2))
+        if abs(b - a) <= 100:
+            pas = 1 if b >= a else -1
+            return (VERIFIE, ", ".join(str(i) for i in range(a, b + pas, pas)), "énumération exacte")
+        return (HORS, None, None)
+    if re.search(r"recite\s+(?:moi\s+)?l\s*alphabet|alphabet\s+en\s+entier", q):
+        return (VERIFIE, ", ".join(chr(c) for c in range(97, 123)), "alphabet latin (26 lettres)")
+
+    # BORNES THÉORIQUES des premiers (tombaient en repli) : le plus grand N'EXISTE PAS (Euclide, dit) ;
+    # le plus petit = 2. AVANT l'ordinal et la primalité simple.
+    if re.search(r"plus\s+grand\s+nombre\s+premier", q) and "entre" not in qtoks:
+        return (VERIFIE, "Il n'y en a pas — les nombres premiers sont en quantité infinie (théorème d'Euclide).",
+                "arithmétique — théorème d'Euclide")
+    if re.search(r"plus\s+petit\s+nombre\s+premier", q) and "entre" not in qtoks:
+        return (VERIFIE, "2 (c'est aussi le seul premier pair).", "arithmétique — définition")
+
+    # RACINE CARRÉE IRRATIONNELLE nommée : « racine carrée de 2 » -> irrationalité DITE + approximation
+    # ÉTIQUETÉE (l'abstention sèche laissait l'utilisateur sans rien ; le carré parfait garde sa route exacte).
+    mri = re.search(r"racine\s+carree\s+de\s+(\d+)\s*\?*\s*$", q)
+    if mri:
+        n = int(mri.group(1))
+        r = math.isqrt(n)
+        if r * r != n and n <= 10 ** 12:
+            return (VERIFIE, "√%d est irrationnel — pas de valeur décimale exacte ; ≈ %.6f (approximation dite)."
+                    % (n, math.sqrt(n)), "arithmétique — irrationalité dite")
+
+    # FRACTIONS EN LETTRES additionnées : « un tiers plus un quart » -> 7/12 exact (tombait en repli).
+    _FRL = {"demi": (1, 2), "tiers": (1, 3), "quart": (1, 4), "cinquieme": (1, 5), "dixieme": (1, 10)}
+    mfl = re.search(r"\bun\s+(demi|tiers|quart|cinquieme|dixieme)\s+(plus|moins)\s+un\s+"
+                    r"(demi|tiers|quart|cinquieme|dixieme)\b", q)
+    if mfl:
+        from fractions import Fraction
+        a = Fraction(*_FRL[mfl.group(1)])
+        b = Fraction(*_FRL[mfl.group(3)])
+        res = a + b if mfl.group(2) == "plus" else a - b
+        return (VERIFIE, "%s (%s %s %s, fraction exacte) ≈ %.4f" % (res, a, "+" if mfl.group(2) == "plus" else "−",
+                                                                    b, float(res)),
+                "arithmétique — fractions exactes")
+
+    # NOMBRE PREMIER ORDINAL : « le 100e nombre premier » -> 541 (énumération exacte via est_premier). AVANT la
+    # primalité simple, sinon elle répondait « Non, 100 n'est pas premier » À CÔTÉ de la question (FAUX vécu
+    # 2026-07-08). Le suffixe ordinal (e/eme/ere/ieme) est OBLIGATOIRE (« 17 est un nombre premier » intact).
+    mop = re.search(r"\b(\d+)\s*(?:ers?|eres?|iemes?|emes?|e)\b\s+nombres?\s+premiers?", q)
+    if not mop:
+        # ordinal en LETTRES (« le millième nombre premier » tombait en repli) — famille fermée.
+        mopw = re.search(r"\b(deuxieme|troisieme|dixieme|centieme|millieme)\s+nombres?\s+premiers?", q)
+        if mopw:
+            class _M:                                    # même chemin de calcul que l'ordinal chiffré
+                def group(self, i):
+                    return str({"deuxieme": 2, "troisieme": 3, "dixieme": 10,
+                                "centieme": 100, "millieme": 1000}[mopw.group(1)])
+            mop = _M()
+    if mop:
+        n = int(mop.group(1))
+        if 1 <= n <= 10000:
+            cnt, x = 0, 1
+            while cnt < n:
+                x += 1
+                if _AM.est_premier(x):
+                    cnt += 1
+            return (VERIFIE, "Le %d%s nombre premier est %d." % (n, "er" if n == 1 else "e", x),
+                    "arithmétique — primalité (énumération exacte)")
+        return (HORS, None, None)
+
+    # SOMME DE SÉRIE : « somme des entiers de 1 à 100 » -> 5050 (la route stats servait « Somme : 101 (sur
+    # 2 valeurs) », les bornes prises pour la liste — FAUX vécu 2026-07-08). Calcul exact (b−a+1)(a+b)/2,
+    # formule MONTRÉE. Variantes : « somme des 100 premiers entiers », « somme des 5 premiers nombres premiers ».
+    mss = re.search(r"somme\s+des?\s+(?:entiers?|nombres?)?\s*de\s+(\d+)\s+a\s+(\d+)", q)
+    if mss and "premier" not in q:
+        a, b = int(mss.group(1)), int(mss.group(2))
+        if a > b:
+            a, b = b, a
+        if b <= 10 ** 12:
+            s = (b - a + 1) * (a + b) // 2
+            return (VERIFIE, "%d (somme des entiers de %d à %d : (b−a+1)(a+b)/2)" % (s, a, b),
+                    "arithmétique — somme de série (formule exacte)")
+    msp = re.search(r"somme\s+des\s+(\d+)\s+premiers\s+(?:entiers|nombres)(\s+premiers)?", q)
+    if msp:
+        n = int(msp.group(1))
+        if msp.group(2):                                   # « … nombres PREMIERS » : 2+3+5+7+… (énumération)
+            if 1 <= n <= 10000:
+                s, cnt, x = 0, 0, 1
+                while cnt < n:
+                    x += 1
+                    if _AM.est_premier(x):
+                        s += x
+                        cnt += 1
+                return (VERIFIE, "%d (somme des %d premiers nombres premiers)" % (s, n),
+                        "arithmétique — primalité (énumération exacte)")
+        elif 1 <= n <= 10 ** 12:                           # « … premiers ENTIERS » : n(n+1)/2
+            return (VERIFIE, "%d (somme des entiers de 1 à %d : n(n+1)/2)" % (n * (n + 1) // 2, n),
+                    "arithmétique — somme de série (formule exacte)")
+        return (HORS, None, None)
+
     # NOMBRE PREMIER : « est-ce que 17 est (un nombre) premier ? », « 18 est-il un nombre premier ? ». GARDE
     # anti-faux-positif : « premier » est un ordinal courant (« premier président de 1958 ») -> on exige soit
     # « nombre premier », soit la forme « <n> est … premier » (le nombre ADJACENT au prédicat de primalité).
@@ -1032,11 +1675,99 @@ def resout_math(question: str):
     # 2 parmi 5 » (=binomial), « arrangements de 2 parmi 5 » (=binomial × k!).
     if ("ordonner" in qtoks or "permutations" in qtoks or ("facons" in qtoks and "ordonner" in q)) and ent:
         return (VERIFIE, str(_MD.factorielle(ent[0])), "combinatoire — permutations (n!)")
+    # « de combien de façons peut-on RANGER/classer/disposer 4 livres » = permutations aussi (tombait en repli).
+    # GARDE : « façons/manières » OBLIGATOIRE (l'impératif « range mes fichiers » ne matche pas) + UN SEUL entier
+    # (« ranger 4 livres sur 2 étagères » = autre problème -> HORS honnête).
+    if ("facons" in qtoks or "manieres" in qtoks) and len(ent) == 1 \
+            and re.search(r"\b(?:ranger|classer|disposer|placer|asseoir|aligner)\b", q):
+        return (VERIFIE, "%d (permutations : %d!)" % (_MD.factorielle(ent[0]), ent[0]),
+                "combinatoire — permutations (n!)")
     if ("combinaisons" in qtoks or "combinaison" in qtoks) and "parmi" in qtoks and len(ent) >= 2:
         return (VERIFIE, str(_MD.binomial(ent[1], ent[0])), "combinatoire — combinaisons C(n,k)")
     if ("arrangements" in qtoks or "arrangement" in qtoks) and "parmi" in qtoks and len(ent) >= 2:
         k, n = ent[0], ent[1]
         return (VERIFIE, str(_MD.binomial(n, k) * _MD.factorielle(k)), "combinatoire — arrangements A(n,k)")
+    # COEFFICIENT BINOMIAL nommé : « coefficient binomial 5 parmi 2 » tombait en MÉMO « Noté » (garbage vécu).
+    # Convention « k parmi n » avec « parmi » (comme les combinaisons) ; SANS « parmi » (« binomial de 5 et 2 »)
+    # = ordre de la notation C(n, k). L'interprétation est MONTRÉE (« C(2, 5) = 0 (impossible) ») : jamais un
+    # nombre sec ambigu quand k > n.
+    if "binomial" in qtoks and len(ent) >= 2:
+        k, n = (ent[0], ent[1]) if "parmi" in qtoks else (ent[1], ent[0])
+        v = _MD.binomial(n, k)
+        extra = " (choisir %d éléments parmi %d : impossible)" % (k, n) if k > n else ""
+        return (VERIFIE, "C(%d, %d) = %d%s" % (n, k, v, extra), "combinatoire — coefficient binomial C(n,k)")
+
+    # PROBABILITÉ ÉLÉMENTAIRE dé/pièce (brique : équiprobabilité — maximum_entropie.uniforme ; « probabilité
+    # d'obtenir un 6 avec un dé » tombait en MÉMO « Noté », garbage vécu). L'hypothèse d'équilibre est ÉNONCÉE
+    # dans la réponse, jamais implicite. GARDES : « dé » se cherche sur la question BRUTE (normalise() efface
+    # l'accent -> « de » matcherait tout) ; plusieurs dés (« deux dés ») = autre loi -> HORS ; la pièce exige
+    # pile/face (« pièce de théâtre » ne matche pas) ; face impossible -> 0 EXPLIQUÉ, pas un 0 sec.
+    if {"probabilite", "proba", "chance", "chances"} & qtoks:
+        try:
+            import maximum_entropie as _ME
+            from fractions import Fraction as _Fr
+        except Exception:
+            _ME = None
+        if _ME is not None and re.search(r"\bdé\b", question) and not re.search(r"dés\b", question):
+            faces = 6
+            mfa = re.search(r"dé\s+[àa]\s+(\d+)\s+faces", question)
+            if mfa:
+                faces = int(mfa.group(1))
+            nums = [int(x) for x in re.findall(r"\b\d+\b", question)]
+            if mfa:
+                nums.remove(faces)
+            if len(nums) == 1 and 2 <= faces <= 1000:
+                face = nums[0]
+                if 1 <= face <= faces:
+                    p = _ME.uniforme(faces)[0]
+                    return (VERIFIE, "%s (≈ %.2f %%) — en supposant un dé équilibré à %d faces."
+                            % (_Fr(1, faces), p * 100.0, faces),
+                            "probabilité — équiprobabilité (dé équilibré)")
+                return (VERIFIE, "0 — un dé à %d faces ne peut pas donner %d." % (faces, face),
+                        "probabilité — équiprobabilité (dé équilibré)")
+        if _ME is not None and re.search(r"\bpi[eè]ces?\b", question, re.I) and ("pile" in qtoks or "face" in qtoks):
+            p = _ME.uniforme(2)[0]
+            return (VERIFIE, "%s (%.0f %%) — en supposant une pièce équilibrée." % (_Fr(1, 2), p * 100.0),
+                    "probabilité — équiprobabilité (pièce équilibrée)")
+        # DEUX DÉS (loi de la somme énumérée sur 36 couples équiprobables — exact) : « un double », « faire 7 ».
+        if _ME is not None and re.search(r"deux\s+d[ée]s", question):
+            if "double" in qtoks:
+                return (VERIFIE, "1/6 (6 doubles sur 36 couples équiprobables) — dés équilibrés supposés.",
+                        "probabilité — deux dés (énumération exacte)")
+            msd = re.search(r"faire\s+(\d{1,2})\s+avec|obtenir\s+(\d{1,2})\b|somme\s+de\s+(\d{1,2})", q)
+            if msd:
+                s = int(msd.group(1) or msd.group(2) or msd.group(3))
+                nb = sum(1 for a in range(1, 7) for b in range(1, 7) if a + b == s)
+                if nb:
+                    return (VERIFIE, "%s (%d combinaisons sur 36 couples équiprobables) — dés équilibrés supposés."
+                            % (_Fr(nb, 36), nb), "probabilité — deux dés (énumération exacte)")
+                return (VERIFIE, "0 — deux dés donnent une somme entre 2 et 12 (%d est impossible)." % s,
+                        "probabilité — deux dés (énumération exacte)")
+        # PILES/FACES DE SUITE : « deux piles de suite » -> (1/2)² = 1/4 (indépendance, hypothèse dite).
+        msu = re.search(r"(deux|trois|quatre|\d)\s+(?:piles?|faces?)\s+(?:de\s+suite|d['’]affilee|consecutifs?)",
+                        q)
+        if _ME is not None and msu:
+            tok = msu.group(1)
+            n = {"deux": 2, "trois": 3, "quatre": 4}.get(tok) or (int(tok) if tok.isdigit() else 0)
+            if 1 <= n <= 20:
+                return (VERIFIE, "%s (1/2 à chaque lancer, lancers indépendants — pièce équilibrée supposée)."
+                        % _Fr(1, 2 ** n), "probabilité — lancers indépendants")
+        # JEU DE 52 CARTES (convention standard DITE ; tirage d'UNE carte) : valeur (4/52), couleur (13/52),
+        # figure (12/52), rouge/noire (26/52).
+        if re.search(r"52\s+cartes|jeu\s+de\s+cartes", q):
+            if re.search(r"\b(as|roi|dame|valet)s?\b", q):
+                return (VERIFIE, "1/13 (4 sur 52) — jeu standard de 52 cartes, tirage d'une carte.",
+                        "probabilité — jeu de 52 cartes (convention dite)")
+            # ⚠ question BRUTE : normalise() SUPPRIME le « œ » (« cœur » -> « c ur », vécu)
+            if re.search(r"\b(c(?:oe|œ)urs?|piques?|carreaux?|tr[eè]fles?)\b", question, re.IGNORECASE):
+                return (VERIFIE, "1/4 (13 sur 52) — jeu standard de 52 cartes, tirage d'une carte.",
+                        "probabilité — jeu de 52 cartes (convention dite)")
+            if "figure" in qtoks:
+                return (VERIFIE, "3/13 (12 figures sur 52) — jeu standard, tirage d'une carte.",
+                        "probabilité — jeu de 52 cartes (convention dite)")
+            if re.search(r"\b(rouge|noire?)\b", q):
+                return (VERIFIE, "1/2 (26 sur 52) — jeu standard, tirage d'une carte.",
+                        "probabilité — jeu de 52 cartes (convention dite)")
 
     # SUITES : « fibonacci de 10 », « 10e nombre de Fibonacci »
     if "fibonacci" in qtoks and ent:
@@ -1139,6 +1870,25 @@ def resout_math(question: str):
         if c == "a" and sens == "avant":
             return (VERIFIE, "Aucune — a est la première lettre de l'alphabet.", "alphabet latin")
         return (VERIFIE, chr(ord(c) + (1 if sens == "apres" else -1)), "alphabet latin")
+    # LETTRE ORDINALE DE L'ALPHABET / D'UN MOT (« la 5e lettre du mot maison » -> o ; tombaient en repli).
+    mlal = re.search(r"(?:(\d{1,2})\s*(?:eme|ere|e)|(premiere?|derniere?))\s+lettre\s+de\s+l['’]?\s*alphabet", q)
+    if mlal:
+        if mlal.group(2):
+            return (VERIFIE, "a" if mlal.group(2).startswith("premier") else "z", "alphabet latin")
+        n = int(mlal.group(1))
+        if 1 <= n <= 26:
+            return (VERIFIE, chr(96 + n), "alphabet latin")
+        return (VERIFIE, "L'alphabet n'a que 26 lettres — il n'y a pas de %de." % n, "alphabet latin")
+    mlmot = re.search(r"(?:(\d{1,2})\s*(?:eme|ere|e)|(premiere?|derniere?))\s+lettre\s+du\s+mot\s+([a-z-]+)", q)
+    if mlmot:
+        mot = mlmot.group(3)
+        if mlmot.group(2):
+            lettre = mot[0] if mlmot.group(2).startswith("premier") else mot[-1]
+            return (VERIFIE, lettre, "opération textuelle exacte")
+        n = int(mlmot.group(1))
+        if 1 <= n <= len(mot):
+            return (VERIFIE, mot[n - 1], "opération textuelle exacte")
+        return (VERIFIE, "« %s » n'a que %d lettres — pas de %de." % (mot, len(mot), n), "opération textuelle exacte")
 
     # DIVISIONS DU TEMPS (conventions exactes du calendrier).
     mdt = re.search(r"combien\s+(?:de\s+|d['’]?\s*)(trimestres|semestres|mois|jours)\s+dans\s+(?:une?\s+)?"
@@ -1156,7 +1906,8 @@ def resout_math(question: str):
     if re.search(r"combien\s+de\s+siecles\s+dans\s+(?:un\s+)?millenaire", q):
         return (VERIFIE, "10", "calendrier — divisions du temps")
     # ANNÉE / HEURE / JOUR en sous-unités (conventions ; l'année COMMUNE = 365 j, dit).
-    man = re.search(r"(?:combien\s+(?:de\s+|d['’]?\s*)(jours|heures|minutes|secondes)\s+dans\s+"
+    man = re.search(r"(?:(?:combien\s+(?:y\s+a[- ]?t[- ]?il\s+)?|nombre\s+)(?:de\s+|d['’]?\s*)"
+                    r"(jours|heures|minutes|secondes)\s+dans\s+"
                     r"(?:un\s+|une\s+)?(an|annee|jour|heure|minute)|(\d+)\s+(an|annee|jour|heure)s?\s+en\s+"
                     r"(jours|heures|minutes|secondes))\b", q)
     if man:
@@ -1204,10 +1955,22 @@ def resout_math(question: str):
         a = float(mdec.group(1).replace(",", ".")); b = float(mdec.group(3).replace(",", "."))
         r = a - b if mdec.group(2) in "-−" else a + b
         return (VERIFIE, _fmt_nombre(round(r, 10)), "calcul décimal exact")
+    # … et avec le MOT « moins/plus » quand le RÉSIDU est vide hors monnaie/intention (« 20 euros moins
+    # 7,50 » tombait en mémo, vécu 2026-07-08) : un résidu vide lève l'ambiguïté du mot (« la guerre de
+    # 1939-1945 », « il fait moins 5 degrés » gardent leur résidu -> jamais pris pour un calcul).
+    _qnc = _norm_conv(question)
+    mdw = re.search(r"(-?\d+(?:[.,]\d+)?)\s*(?:euros?|€)?\s+(moins|plus)\s+(\d+(?:[.,]\d+)?)", _qnc)
+    _residu_w = re.sub(r"euros?|€|dollars?|\$|centimes?|combien|font|fait|ca|moins|plus|[\d\s.,?]", "", _qnc)
+    if mdw and re.search(r"\d[.,]\d", question) and _residu_w == "":
+        a = float(mdw.group(1).replace(",", ".")); b = float(mdw.group(3).replace(",", "."))
+        r = a - b if mdw.group(2) == "moins" else a + b
+        return (VERIFIE, _fmt_nombre(round(r, 10)), "calcul décimal exact")
 
     # RÈGLE DE TROIS : « si 3 pommes coûtent 2 euros, combien coûtent 9 pommes » -> 6 (proportion exacte).
+    # ⚠ motif sur _norm_conv : normalise() mange la virgule (« 4,50 euros » devenait « 4 » -> 9.33 au lieu
+    # de 10.50 pour « si 3 stylos coûtent 4,50 combien coûtent 7 », FAUX vécu 2026-07-08).
     mr3 = re.search(r"si\s+(\d+(?:[.,]\d+)?)\s+\w+.{0,20}?(?:coutent?|valent?|font?|pour|=)\s+"
-                    r"(\d+(?:[.,]\d+)?).{0,40}?combien.{0,20}?(\d+(?:[.,]\d+)?)", q)
+                    r"(\d+(?:[.,]\d+)?).{0,40}?combien.{0,20}?(\d+(?:[.,]\d+)?)", _norm_conv(question))
     if mr3:
         a, b, c = (float(mr3.group(i).replace(",", ".")) for i in (1, 2, 3))
         if a != 0:
@@ -1223,6 +1986,53 @@ def resout_math(question: str):
     # jamais 0.333 servi comme exact ; « tiers » pareil). GARDE : jamais quand un mot de MESURE est là
     # (« aire d'un carré de 4 » = géométrie, traitée au-dessus ; « périmètre d'un carré de 5 » ≠ 25).
     if not re.search(r"\b(aire|surface|perimetre|circonference|volume|cote|rayon|modulo)\b", q):
+        # COMPOSITION « le triple du quart de 100 » -> 75 (l'opération INTERNE d'abord, étapes montrées).
+        # FAUX vécu 2026-07-08 : seul « quart de 100 » était lu -> 25 servi pour 75.
+        mcomp = re.search(r"\b(double|triple|quadruple|moitie|tiers|quart)\s+(?:du|de\s+la)\s+"
+                          r"(double|triple|quadruple|moitie|tiers|quart)\s+(?:de\s+|du\s+|d['’]\s*)"
+                          r"(-?\d+(?:[.,]\d+)?)", q)
+        if mcomp:
+            from fractions import Fraction
+            _FACT = {"double": Fraction(2), "triple": Fraction(3), "quadruple": Fraction(4),
+                     "moitie": Fraction(1, 2), "tiers": Fraction(1, 3), "quart": Fraction(1, 4)}
+            x0 = Fraction(mcomp.group(3).replace(",", "."))
+            interne = x0 * _FACT[mcomp.group(2)]
+            total = interne * _FACT[mcomp.group(1)]
+            d = total.denominator
+            while d % 2 == 0:
+                d //= 2
+            while d % 5 == 0:
+                d //= 5
+            di = interne.denominator
+            while di % 2 == 0:
+                di //= 2
+            while di % 5 == 0:
+                di //= 5
+            if d != 1 or di != 1:                        # décimal infini -> abstention (règle inchangée)
+                return (HORS, None, None)
+            return (VERIFIE, "%s (%s de %s = %s ; %s = %s)"
+                    % (_fmt_nombre(float(total)), mcomp.group(2).replace("moitie", "moitié"),
+                       _fmt_nombre(float(x0)), _fmt_nombre(float(interne)),
+                       mcomp.group(1).replace("moitie", "moitié"), _fmt_nombre(float(total))),
+                    "calcul — opérations nommées composées")
+        # FRACTIONS MULTIPLES : « les trois quarts de 200 » -> 150, « deux tiers de 90 » -> 60 (tombait en
+        # mémo « C'est noté »). Même règle que tiers/inverse : décimal FINI exigé, sinon abstention.
+        mopm = re.search(r"\b(deux|trois|quatre)\s+(tiers|quarts?|cinquiemes?|dixiemes?)\s+"
+                         r"(?:de\s+|du\s+|d['’]\s*)(-?\d+(?:[.,]\d+)?)(?!\s*[a-z])", q)
+        if mopm:
+            from fractions import Fraction
+            k = {"deux": 2, "trois": 3, "quatre": 4}[mopm.group(1)]
+            den = {"tiers": 3, "quart": 4, "quarts": 4, "cinquieme": 5, "cinquiemes": 5,
+                   "dixieme": 10, "dixiemes": 10}[mopm.group(2)]
+            fr = Fraction(mopm.group(3).replace(",", ".")) * k / den
+            d = fr.denominator
+            while d % 2 == 0:
+                d //= 2
+            while d % 5 == 0:
+                d //= 5
+            if d != 1:                                     # décimal infini -> abstention (jamais d'arrondi)
+                return (HORS, None, None)
+            return (VERIFIE, _fmt_nombre(float(fr)), "calcul — fraction exacte (%d/%d)" % (k, den))
         mop = re.search(r"\b(double|triple|quadruple|moitie|tiers|quart|carre|cube|oppose|inverse)\s+"
                         r"(?:de\s+|du\s+|d['’]\s*)(-?\d+(?:[.,]\d+)?)(?!\s*[a-z])", q)
         if mop:
@@ -1293,6 +2103,12 @@ def resout_fonction(question: str):
                     return (HORS, None, None)
                 lettres.append(str(val))
             return (VERIFIE, "".join(lettres), "code morse international (table sourcée)")
+        # « SOS en morse » : le mot à encoder est AVANT « en morse » (l'arg après-préposition ratait, vécu).
+        men = re.search(r"([\w-]+)\s+en\s+(?:code\s+)?morse\b", question, re.IGNORECASE)
+        if men and normalise(men.group(1)) not in ("morse", "code", "signifie", "veut"):
+            out = _compose_par_lettre(men.group(1).upper(), _R.vers_morse)
+            if out:
+                return (VERIFIE, out, "code morse international (table sourcée)")
         # GARDE HOMONYME (#83) : « morse » est AUSSI une ENTITÉ (l'animal, Odobenus rosmarus). Si l'ARGUMENT à traduire
         # EST « morse » lui-même (« c'est quoi un morse », « nom scientifique de morse »), ce n'est PAS une demande de
         # code Morse -> abstention (le lookup DATA répondra l'animal). On ne traduit que si l'arg est DISTINCT (« morse
@@ -1333,10 +2149,12 @@ def resout_fonction(question: str):
 
     # CHIMIE (casse préservée : H2O ≠ h2o). On essaie l'arg après-préposition PUIS le dernier token (repli).
     if "pourcentage" in qtoks and ("massique" in qtoks or "masse" in qtoks):
-        # deux arguments : « pourcentage massique de O dans H2O » -> élément O, formule H2O.
-        m = re.search(r"\bde\s+(\w+)\s+dans\s+(\S+)", question, re.IGNORECASE)
+        # deux arguments : « pourcentage massique de O dans H2O » -> élément O, formule H2O. L'élément peut
+        # être un NOM français (« de l'oxygène ») : converti en symbole (tombait en mémo « Noté », vécu).
+        m = re.search(r"\bd[e']\s*(?:l['’]\s*)?(\w+)\s+dans\s+(\S+)", question, re.IGNORECASE)
         if m:
-            st, val = _C.pourcentage_massique(m.group(2).strip(" ?.!"), m.group(1))
+            el = _symbole_element(m.group(1)) or m.group(1)
+            st, val = _C.pourcentage_massique(m.group(2).strip(" ?.!"), el)
             if st == VERIFIE:
                 return (VERIFIE, f"{val} %", "calcul — pourcentage massique (IUPAC)")
         return (HORS, None, None)
@@ -1344,6 +2162,27 @@ def resout_fonction(question: str):
         val = _essaie(_C.masse_molaire, arg, dernier)
         return (VERIFIE, f"{val} g/mol", "calcul — masses atomiques IUPAC") if val is not None else (HORS, None, None)
     if "atomes" in qtoks and ("nombre" in qtoks or "combien" in qtoks or "atomes" in qtoks):
+        # ÉLÉMENT NOMMÉ (FAUX vécu 2026-07-08) : « combien d'atomes d'OXYGÈNE dans CO2 » servait « 3 atomes »
+        # (le TOTAL de la molécule au lieu des 2 O). Un élément nommé -> compte de CET élément via
+        # composition() ; élément absent de la formule -> 0 EXPLIQUÉ, jamais un total à côté.
+        el = next((s for s in (_symbole_element(w) for w in normalise(question).split()) if s), None)
+        if el:
+            comp = _essaie(_C.composition, arg, dernier)
+            if comp is not None:
+                import nomenclature_chimique as _NCH
+                nom_el = _NCH.NOMS_ELEMENTS[el]
+                de_el = ("d'" if nom_el[0] in "aeiouyhéè" else "de ") + nom_el
+                nb = comp.get(el, 0)
+                if nb:
+                    return (VERIFIE, "%d atome%s %s" % (nb, "s" if nb > 1 else "", de_el),
+                            "calcul — formule chimique")
+                return (VERIFIE, "0 — pas d'atome %s dans cette formule (composition : %s)"
+                        % (de_el, ", ".join(f"{n} {e}" for e, n in comp.items())), "calcul — formule chimique")
+            return (HORS, None, None)
+        if re.search(r"atomes?\s+d[e']\s*(?:l['’]\s*)?\w+.*\bdans\b", question, re.IGNORECASE):
+            # un ÉLÉMENT est nommé (« atomes de FER dans CO2 ») mais hors référentiel -> abstention honnête,
+            # JAMAIS le total de la molécule à la place (FAUX vécu 2026-07-08).
+            return (HORS, None, None)
         val = _essaie(_C.nb_atomes, arg, dernier)
         return (VERIFIE, f"{val} atomes", "calcul — formule chimique") if val is not None else (HORS, None, None)
     if "composition" in qtoks:
@@ -1351,6 +2190,62 @@ def resout_fonction(question: str):
         if val is not None:
             txt = ", ".join(f"{n} {el}" for el, n in val.items())
             return (VERIFIE, txt, "calcul — composition atomique")
+        return (HORS, None, None)
+    # MOLARITÉ : « molarité de 2 moles dans 4 litres », « concentration si je dissous 0,5 mole dans 2 litres »
+    # (tombait en mémo « Noté », vécu 2026-07-08). Brique chimie_quantitative.molarite ; moles ET litres exigés
+    # (une « concentration » en grammes = concentration massique, autre route ; sans les deux -> abstention).
+    if "molarite" in qtoks or ("concentration" in qtoks and re.search(r"\bmoles?\b", question, re.IGNORECASE)):
+        mm = re.search(r"(\d+(?:[.,]\d+)?)\s*moles?\b.*?(\d+(?:[.,]\d+)?)\s*(?:litres?|l)\b",
+                       question, re.IGNORECASE | re.DOTALL)
+        if mm:
+            try:
+                import chimie_quantitative as _CQ
+                n_mol = float(mm.group(1).replace(",", "."))
+                vol = float(mm.group(2).replace(",", "."))
+                cc = _CQ.molarite(n_mol, vol)
+                return (VERIFIE, "%s mol/L (%s mol dans %s L)"
+                        % (_fmt_nombre(cc), _fmt_nombre(n_mol), _fmt_nombre(vol)),
+                        "chimie quantitative — molarité n/V")
+            except Exception:
+                pass
+        return (HORS, None, None)
+    # NOM DU COMPOSÉ : « comment s'appelle le composé CO2 » -> dioxyde de carbone (nomenclature systématique
+    # binaire VALIDÉE par le module ; formule non binaire/inconnue -> abstention, jamais un nom deviné).
+    if ("compose" in qtoks or "molecule" in qtoks) and ("nom" in qtoks or "appelle" in qtoks or "nomme" in qtoks):
+        try:
+            import nomenclature_chimique as _NCH
+            for cand in (dernier, arg):
+                try:
+                    nom = _NCH.nom_compose_binaire((cand or "").strip(" ?.!"))
+                    return (VERIFIE, "%s : %s (nomenclature systématique)" % (cand.strip(" ?.!"), nom),
+                            "nomenclature chimique binaire")
+                except Exception:
+                    continue
+        except Exception:
+            pass
+        return (HORS, None, None)
+    # MOLES <-> GRAMMES : « combien de moles dans 36 grammes d'eau » -> n = m/M (masse molaire IUPAC ; le nom
+    # courant passe par la table FERMÉE nom->formule du lecteur ; sinon la formule brute). Inconnue -> abstention.
+    if re.search(r"\bmoles?\b", question, re.IGNORECASE) and re.search(r"\bg\b|grammes?", question, re.IGNORECASE):
+        mg = re.search(r"(\d+(?:[.,]\d+)?)\s*(?:g|grammes?)\s+d[e']\s*(?:l['’]\s*)?([\w()]+)",
+                       question, re.IGNORECASE)
+        if mg:
+            masse = float(mg.group(1).replace(",", "."))
+            cible = mg.group(2).strip(" ?.!")
+            formule = None
+            try:
+                import lecteur as _LCT
+                nn = normalise(cible)
+                formule = next((f for n_, f in _LCT._FORMULE_CHIMIQUE if n_ == nn), None)
+            except Exception:
+                pass
+            st_m, mm_val = _C.masse_molaire(formule or cible)
+            if st_m == VERIFIE and mm_val:
+                n_mol = round(masse / mm_val, 4)
+                return (VERIFIE, "%s mol (%s g / %s g/mol%s)"
+                        % (_fmt_nombre(n_mol), _fmt_nombre(masse), _fmt_nombre(mm_val),
+                           f" — {formule}" if formule else ""),
+                        "chimie — n = m/M (masses atomiques IUPAC)")
         return (HORS, None, None)
 
     # GÉNÉTIQUE : séquences ADN/ARN en MAJUSCULES (repli = dernier token, robuste à « la séquence ATCG »).

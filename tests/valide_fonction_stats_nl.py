@@ -31,6 +31,30 @@ check(S.repond_stats("moyenne de 12, 15, 14, 13, 16, 12").startswith("Moyenne : 
 check("Médiane : 3.5" in S.repond_stats("médiane de 3, 1, 4, 1, 5, 9, 2, 6"), "médiane exacte")
 check("Écart-type" in S.repond_stats("écart-type de 10, 12, 14, 16, 18"), "écart-type")
 check("Somme : 20" in S.repond_stats("somme de 2, 4, 6, 8"), "somme exacte")
+# GARDE SÉRIE (FAUX vécu 2026-07-08) : « somme des entiers de 1 à 100 » servait « Somme : 101 (sur 2
+# valeurs) » — les BORNES prises pour la liste. La série revient à fonction_nl (5050), pas ici.
+check(S.repond_stats("somme des entiers de 1 à 100") is None, "somme de série -> None (route dédiée)")
+# GARDE VITESSE MOYENNE (FAUX vécu 2026-07-08) : « 150 km en 2 heures » moyennait {150, 2} -> 76.
+check(S.repond_stats("vitesse moyenne si je parcours 150 km en 2 heures") is None,
+      "vitesse moyenne d/t -> None (route cinématique)")
+check("Moyenne : 40" in S.repond_stats("moyenne des vitesses 30, 40 et 50"), "moyenne d'une LISTE de vitesses intacte")
+# GARDE FERMI-MONNAIE (FAUX vécu 2026-07-08) : « 3 pièces de 2 euros et 2 billets de 5, combien en tout »
+# MULTIPLIAIT tous les nombres (~60 pour 16). Monnaie = somme exacte (fonction_nl), jamais une estimation.
+check(S.repond_stats("j'ai 3 pièces de 2 euros et 2 billets de 5 euros, combien j'ai en tout") is None,
+      "pièces/billets -> None (somme exacte, pas Fermi)")
+# MOYENNES NOMMÉES (FAUX vécu 2026-07-08 : « harmonique de 2 et 4 » servait l'arithmétique 3).
+check("Moyenne harmonique : 2.667" in S.repond_stats("moyenne harmonique de 2 et 4"), "harmonique -> 2.667")
+check("Moyenne géométrique : 4" in S.repond_stats("moyenne géométrique de 2 et 8"), "géométrique -> 4")
+check("strictement positives" in S.repond_stats("moyenne harmonique de 0 et 4"),
+      "harmonique avec 0 -> refus honnête (pas la convention limite 0)")
+check(S.repond_stats("vitesse moyenne si je fais 100 km en 1h30") is None,
+      "vitesse « en 1h30 » compact -> None (FAUX 43.67 vécu)")
+# GARDES INFÉRENCE vs ARITHMÉTIQUE (FAUX vécus : Wilson pour « représente 45 sur 60 », tendance pour
+# « augmente 50 de 10 % puis de 20 % »).
+check(S.repond_stats("quel pourcentage représente 45 sur 60") is None, "représente X sur Y -> None (calcul exact)")
+check(S.repond_stats("augmente 50 de 10 % puis de 20 %") is None, "augmente N de X% -> None (calcul)")
+check("Wilson" in S.repond_stats("intervalle de confiance pour 45 succès sur 60"), "inférence Wilson intacte")
+check(S.repond_stats("somme des 100 premiers entiers") is None, "somme des N premiers -> None (route dédiée)")
 check("Minimum : 2" in S.repond_stats("min et max de 7, 2, 9, 4"), "min/max")
 
 # — moyenne PONDÉRÉE : les coefficients ne sont JAMAIS moyennés avec les valeurs (bug vécu : 8 au lieu de 13.8) —

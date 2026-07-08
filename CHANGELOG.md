@@ -1,5 +1,347 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 44 : conventions d'objets et de jeux (table fermée, cadre dit)
+
+- Échiquier 64 cases (8 × 8), piano 88 touches (standard moderne dit), tarot 78 cartes, football 11 joueurs
+  et 90 minutes (2 × 45, hors arrêts de jeu — cadre dit), golf 18 trous, bowling 10 quilles, violon 4 cordes
+  (sol ré la mi), guitare 6 cordes, violoncelle 4, dames internationales 100 cases. Tous en abstention
+  auparavant ; gardes : « l'échiquier politique » et « une corde de 10 mètres » ne sont pas volés.
+- Bancs : `valide_assistant_nl` **482/482** (+8), capacites_chat 184/184, raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 43 : douzaine sans chiffre, conversion inverse « pour »
+
+- « combien y a-t-il d'œufs dans **une** douzaine » → 12 (le motif exigeait un chiffre) ; « combien de
+  **nœuds pour** 30 km/h » → 16.2 (motif de conversion inverse « combien de X pour N Y » ; « minutes pour
+  2 heures » → 120). Balayage ligature œ : le reste des cas sondés (œuf, sœur, bœuf…) = abstention
+  honnête correcte (data absente).
+- Bancs : `valide_assistant_nl` **474/474** (+3), capacites_chat 184/184, raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 42 : probabilités cartes/deux dés/lancers + traduction en écho tuée
+
+- **Probabilités à hypothèses DITES** (tombaient en mémo) : jeu de 52 cartes (as → 1/13, cœur → 1/4
+  — ⚠ `normalise()` SUPPRIME le œ, question brute exigée ; figures 3/13, rouge/noire 1/2) ; **deux dés**
+  par énumération exacte des 36 couples (double → 1/6, somme 7 → 1/6, somme 13 → « 0 — impossible
+  (2..12) ») ; lancers enchaînés (« deux piles de suite » → 1/4, indépendance dite).
+- **Traduction en écho tuée** : « comment dit-on merci en allemand » rendait *« Merci (traduction mot-à-mot
+  assistée) »* — le texte inchangé étiqueté traduction. Rien traduit → refus honnête ; les traductions
+  réelles (« bonjour » → Hello) intactes.
+- Bancs : `valide_assistant_nl` **471/471** (+6), capacites_chat **184/184** (+2), raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 41 : conventions de l'eau, lumière du Soleil (conditions dites) + vérification globale
+
+- **Eau** (conditions DITES, même famille que la congélation déjà câblée) : « un litre d'eau » → « ≈ 1 kg
+  (0.998 kg à 20 °C — le litre a historiquement défini le kilogramme) » ; m³ → ≈ 1000 kg (une tonne) ;
+  densité → 1 par convention (variation dite) ; **ébullition en altitude** → loi qualitative + exemple
+  approximatif dit (jamais un chiffre nu). « 2 litres **d'eau** en centilitres » → le qualificatif de
+  substance ne casse plus la conversion (200 cl).
+- **Lumière du Soleil** : « ≈ 8 min 19 s (149.6 millions de km en moyenne / c — orbite elliptique, ±8 s) »
+  (composition de deux constantes vérifiées).
+- Sondé, abstention CORRECTE maintenue : température du corps, battements/minute, vitesse de rotation de la
+  Terre (candidats amorce — à voir avec Yohan, décision antérieure respectée).
+- **Vérification globale de fin de nuit — TOUT VERT** : lecteur **1615/1615**, base_faits 411, maj 41,
+  coordonnées 47, câblage **504 modules / 0 orphelin**, assistant_nl **465/465**, capacites_chat 182,
+  raisonnement 200, paraphrases 174, stats 34, suite 25, challenge 16, resolution 50.
+
+## 2026-07-08 — Vague 40 : passe adverse horloge — soustraction, durées compactes, « entre », variantes
+
+- **FAUX** : « 20h45 **moins** 30 minutes » → *« 1245 minutes »* encore (seul « plus » était routé) →
+  « 20 h 15 (20 h 45 − 30 minutes) » (la veille dite si passage sous minuit).
+- **Durées compactes dans les problèmes** : « le trajet dure **1h30** » → « 10 h 15 (8 h 45 + 1h30) » ;
+  « le film commence à 21h et dure 2h15 » → 23 h 15 (le multi-demandes ne découpe plus les problèmes
+  d'horloge sur « et ») ; « il est 10h20 … dans 45 minutes » → 11 h 05.
+- **Variantes** : « combien d'heures **entre** 9h et 17h30 » → 8 h 30 ; « le prix a **baissé** de 80 à 60 »
+  → −25 % ; « les multiples de 7 **jusqu'à** 50 » → 7, 14, …, 49.
+- Bancs : `valide_assistant_nl` **459/459** (+6), capacites_chat 182/182, raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 39 : robustesse orale/SMS vérifiée + « kel/quel heure »
+
+- Passe de robustesse : « c koi 15% de 80 », « cb font 7 fois 8 », MAJUSCULES intégrales, « combein »
+  (typo), politesse (« stp/svp »), fillers (« euh donc en fait ») — **tout tenait déjà** (vérifié).
+- Seul trou : « **kel heure** il est » (le dépliage SMS donne « quel heure », que le motif exigeant
+  « quelle » refusait) → motif assoupli `quel(le)?`.
+- Bancs : capacites_chat **182/182** (+2), assistant_nl 453/453, raisonnement 200/200, paraphrases 174/174,
+  suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 38 : multiples (FAUX « Oui, 5 est premier »), tables, variation de prix, compter
+
+- **FAUX** : « les 5 premiers **multiples** de 7 » → *« Oui, 5 est premier »* (la primalité accrochait
+  « premiers », à côté). Route multiples AVANT la primalité : « 7, 14, 21, 28, 35 » ; **table de
+  multiplication** (« la table de 7 » → 10 lignes) ; la primalité intacte.
+- **Variation de prix en %** : « le prix passe de 80 à 60 » → « −25 % (… — une baisse) » ; « de 50 à 65 » →
+  « +30 % (… — une hausse) » (calcul montré, sens dit).
+- **Décomposition demandée** : « 90 minutes en heures **et** minutes » → « 1 h 30 » (la conversion simple
+  répondait « 1.5 heures » à côté de la forme demandée).
+- **Énumérations natives** : compte de 1 à 10, compte à rebours, alphabet récité (bornes sûres ≤ 100).
+- Bancs : `valide_assistant_nl` **453/453** (+9), capacites_chat 180/180, raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 37 : arithmétique d'horloge ÉNONCÉE (3 FAUX « heure machine »), syllogisme interrogatif, trivia calendaire
+
+- **FAUX ×3 (même racine)** : « un train part **à 8h** et roule 2 heures, à quelle heure arrive-t-il » /
+  « rendez-vous à 14h30 dure 45 minutes » / « il est 23h30 … dans une heure » recevaient *l'heure ACTUELLE de
+  la machine*. Garde (heure ÉNONCÉE = problème d'arithmétique, jamais l'horloge) + routes pures : « 10 h 00
+  (8 h 00 + 2 heures) », « 15 h 15 », « 0 h 30 … — le lendemain » (modulo 24 h dit) ; « 20h45 plus 30
+  minutes » → 21 h 15 (au lieu de *1245 minutes*) ; **durée entre deux heures** (« de 9h à 17h30 » → 8 h 30 ;
+  fin avant début → abstention, nuit à cheval ambiguë).
+- **Syllogisme en forme interrogative** (« si tous les chats sont gris et que Félix est un chat, Félix
+  est-il gris ? » tombait en mémo ; la forme à virgules aussi) : conclusion typée « d'après TES prémisses ».
+  Au passage : « gris » singularisé en *« gri »* → liste fermée d'invariables en -s. Garde : « si … » n'est
+  plus découpé par le multi-demandes (prémisses liées).
+- **Trivia calendaire** : mois le plus court (février), piège « quel mois a 28 jours » → « Tous — seul
+  février s'arrête à 28 », 7 mois à 31 jours, « mois le plus long » → pas UN seul (dit).
+- Bancs : `valide_assistant_nl` **444/444** (+8), capacites_chat **180/180** (+3), raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 36 : les milliers à espace PARTOUT (« 20 % de 5 000 » → 1 !) + bords théoriques
+
+- **FAUX ×3 (même racine, trois routes)** : l'espace des milliers cassait aussi les **pourcentages**
+  (« 20 % de 5 000 » → *1* — « de 5 » lu ; TVA sur « 1 500 » → lue 1) et l'**arithmétique** (« 5 000 plus
+  3 000 » → repli). Corrigé aux trois étages : `_PCT`/`_f` (toutes les routes %), `resout_arithmetique`,
+  `_reponse_calcul` (pipeline).
+- **Bords théoriques** (tombaient en repli) : « le plus grand nombre premier » → « Il n'y en a pas —
+  quantité infinie (théorème d'Euclide) » ; « le plus petit » → 2 (seul premier pair, dit) ; « racine carrée
+  de 2 » → **irrationalité DITE + approximation étiquetée** (≈ 1.414214) au lieu de l'abstention sèche —
+  les carrés parfaits gardent leur route exacte.
+- **Fractions en lettres** : « un tiers plus un quart » → « 7/12 (1/3 + 1/4, fraction exacte) ≈ 0.5833 ».
+- Bancs : `valide_assistant_nl` **436/436** (+9), capacites_chat 177/177, raisonnement 200/200,
+  paraphrases 174/174, stats 34/34, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 35 : « 5 000 mètres » → 0 km !, conjugueur voleur, unités exactes et ambiguës
+
+- **FAUX** : « convertis **5 000** mètres en kilomètres » → *« 0 kilometres »* (l'espace des milliers cassait
+  le parse — « 000 » lu comme le nombre). Les milliers à espace sont recollés dans `_norm_conv`.
+- **FAUX** : « comment **conjuguer aimer** au futur » → *la conjugaison de « conjuguer » au présent* (le
+  premier mot en -er était pris, et le temps demandé ignoré en silence). Le verbe-requête est exclu ; un
+  temps hors présent → honnêteté explicite (« je ne garantis que le PRÉSENT des réguliers »), « l'imparfait
+  de chanter » pareil ; le présent régulier intact.
+- **Décimales fantômes** : `_fmt_nombre` fabriquait des décimales au-delà de la précision du float sur les
+  grands nombres (année-lumière → « …580.800781 ») → représentation exacte du float (%.15g) au-delà de 10⁶.
+- **Unités** : mile nautique (1852 m), année-lumière (9.4607×10¹² km), carat (0.2 g) — définitions exactes ;
+  « **un** hectare » et l'unité NUE (« année-lumière en km » = 1) acceptées ; **gallon/pinte** → ambiguïté
+  US/UK DITE avec les deux facteurs exacts ; **tasse** → « pas une unité normalisée (200-250 ml) » ;
+  **vitesse du son** → 343 m/s avec conditions DITES (air, 20 °C).
+- Bancs : `valide_assistant_nl` **427/427** (+8), capacites_chat **177/177** (+3), raisonnement 200/200,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 34 : continuations sur les CALCULS (« et de CO2 ? », « et en mars ? »)
+
+- « masse molaire de H2O » puis « **et de CO2 ?** » tombait en repli — deux causes : ① le sujet de
+  continuation n'était mémorisé que pour les réponses DATA (jamais pour les calculs de `fonction_nl`) →
+  mémorisation de l'opérande (queue après la dernière préposition, ≤ 3 tokens pour éviter les substitutions
+  absurdes) ; ② la nouvelle entité était **minusculée** (« co2 ») — or les formules chimiques sont sensibles
+  à la casse (H2O ≠ h2o) → casse d'origine restituée dans `_nouvelle_entite`.
+- Marches maintenant : « et de CO2 ? » → 44.009 g/mol ; « combien de jours en février 2024 » → « et en
+  mars ? » → 31. Les continuations existantes (or/celsius/population/villes) inchangées.
+- Perf vérifiée après les 12 vagues de la nuit : médiane **1 ms**, p90 3 ms (chaud).
+- Bancs : raisonnement **200/200** (+2), capacites_chat 174/174, assistant_nl 419/419, paraphrases 174/174,
+  suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 33 : cas limites mathématiques DITS + calendrier courant complet
+
+- **Cas limites** (tombaient en mémo « Noté ») : « 10 divisé par 0 » / « 17 modulo 0 » → « Indéfini — la
+  division/le modulo par zéro n'est pas défini(e) » ; « racine carrée de −9 » → « Pas de racine carrée
+  réelle ; en nombres complexes : 3i et −3i » (racines complexes DONNÉES quand entières, sinon dit).
+  Divisions et racines normales intactes.
+- **Calendrier courant** (horloge machine, tout étiqueté ; tombaient en repli) : saison (« Été dans
+  l'hémisphère nord (hiver dans le sud) — bornes astronomiques approximatives ») ; **semaine ISO 8601** ;
+  jours restants avant la fin de l'année ; « 200e jour de l'année » → date exacte (400e → borne DITE) ;
+  jour de l'année courant ; **bissextile relative** (« l'année prochaine » → 2027 résolue + règle dite).
+- Bancs : `valide_assistant_nl` **419/419** (+6), capacites_chat **174/174** (+6), raisonnement 198/198,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 32 : 2 FAUX horloge (coucher du soleil, heure future) + âge exact, années futures
+
+- **FAUX** : « à quelle heure le **soleil se couche** » → *l'heure ACTUELLE de la machine* ! Garde
+  éphémérides (soleil/lune/aube/crépuscule → abstention DITE : lieu + jour requis, pas d'éphémérides
+  vérifiées).
+- **FAUX** : « quelle heure **sera-t-il dans 3 heures** » → *l'heure actuelle aussi*. → « Il sera 21 h 40
+  (horloge de ta machine + 3 heures) » (décalage exact).
+- **Âge** : date complète → âge EXACT (« né le 15 mars 1990 » → « 36 ans (né(e) le …, nous sommes le …) ») ;
+  phrasé « si je suis né en 1990 quel âge j'ai » → fourchette honnête (l'ancienne route ne connaissait qu'un
+  seul phrasé).
+- **Années** : « quelle année dans 10 ans » → « En 2036 (2026 + 10, année de l'horloge) » (partait en
+  « c'est subjectif » !) ; « dans combien d'années 2050 » → « Dans 24 ans » ; année passée → « C'était il y
+  a N ans ».
+- Sondé, abstention CORRECTE (pas touché) : participe passé de « prendre » (irrégulier — le conjugueur ne
+  fait que les réguliers, dit), calories d'une pomme (data absente), Pâques (pas de brique computus),
+  distance Paris-Marseille (coords FR en attente du re-upload — chantier connu).
+- Bancs : capacites_chat **168/168** (+6), assistant_nl 413/413, raisonnement 198/198, paraphrases 174/174,
+  suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 31 : opérations textuelles avancées (palindrome répondu « à côté », morse décodé volé)
+
+- **FAUX de sens** : « le mot radar est-il un **palindrome** » → *« Le radar est un système — je ne le
+  rattache pas à palindrome »* (la fiche is-a répondait sur l'OBJET, pas le MOT). Garde propriété-de-mot
+  (palindrome/anagramme/pangramme → route native) : « Oui — radar se lit pareil dans les deux sens » ;
+  « chat » → Non + envers montré.
+- **FAUX préexistant tué** : « que signifie **... --- ...** en morse » → *la définition de l'ANIMAL morse* !
+  (l'alias « que signifie X » → définition volait avant le décodeur). Garde tokens points/traits → « SOS ».
+  « SOS en morse » (l'argument est AVANT « en morse ») → « ... --- ... » ; l'animal (« c'est quoi un
+  morse ») intact.
+- **Texte avancé câblé** (natif exact) : occurrences (« combien de fois s dans mississippi » → 4), tri de
+  MOTS alphabétique (le lexique dumpait ses entrées), plus long/court mot, initiales (« Jean-Claude Van
+  Damme » → J. C. V. D.), remplacement de lettre (« banana » → « bonono »), caractères (tout signe compris,
+  DIT — distinct des « lettres »).
+- Bancs : `valide_assistant_nl` **413/413** (+3), capacites_chat **162/162** (+8), raisonnement 198/198,
+  paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 30 : 2 FAUX (« tombera le 25 décembre » → 2019 !, scores→Wilson) + durées composées, douzaines, demi/quart
+
+- **FAUX** : « quel jour **tombera** le 25 décembre cette année » → *« (en comprenant « 24 decembre ») 2019 »*
+  (le futur n'était pas reconnu → fuzzy vers un titre d'œuvre !). Le jour-de-la-semaine accepte
+  était/est/sera/tombe/tombera + « le X <mois> tombe quel jour » ; date SANS année → année de l'horloge
+  ÉTIQUETÉE, verbe accordé (« Le 25 décembre 2026 sera un vendredi »).
+- **FAUX** : « 15 sur 20 **en pourcentage** » → *intervalle de Wilson* (encore une variante). → 75 % exact ;
+  « 12 sur 20, ça fait combien **sur 100** » → 60 % (garde rescaling à DEUX ratios — « proportion de 37 sur
+  100 » reste du Wilson, pin conservé).
+- **Durées composées** : « 2 semaines et 3 jours en jours » → 17 ; « 1 an et 6 mois en mois » → 18 (deux
+  familles fermées, jamais de mélange an→jours ; piège « mois ».rstrip(« s ») → « moi » vécu et épinglé).
+  Garde comptage : ce n'est plus un compte d'hyponymes (« Je connais 10 termes jour »).
+- **Quotidien** : douzaines (« 3 douzaines » → 36, « demi-douzaine » → 6), « un demi-litre » → 50 cl,
+  « trois quarts d'heure » → 45 min, « un quart d'heure » → 900 s (réécritures locales à la conversion) ;
+  « donne-moi l'heure de Tokyo » (motif élargi).
+- Bancs : `valide_assistant_nl` **410/410** (+10), capacites_chat **154/154** (+4 dont Rio/futur),
+  `valide_fonction_stats_nl` **34/34**, raisonnement 198/198, paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 29 : passe adverse — 3 FAUX par variantes de phrasé (Rio !, composition, 1h30)
+
+- **FAUX** : « quelle heure est-il à **Rio de Janeiro** » → *l'heure LOCALE de la machine servie* ! La garde
+  anti-ville-inconnue exigeait chaque mot capitalisé — la particule minuscule (« de ») cassait l'ancre de fin.
+  Motif permissif (toute ville à majuscule initiale → abstention si hors table) + Rio/São Paulo/Buenos
+  Aires/Lima/Bogotá/Santiago/La Havane ajoutées à la table IANA. Épinglé : ville inconnue multi-mots
+  (« Oulan-Bator ») → abstention DITE.
+- **FAUX** : « le **triple du quart** de 100 » → *25* (seule l'opération interne était lue). Composition
+  câblée, étapes montrées : « 75 (quart de 100 = 25 ; triple = 75) ».
+- **FAUX** : « vitesse moyenne si je fais 100 km en **1h30** » → *« Moyenne : 43.67 »* (le format compact
+  passait au travers de la garde stats). Garde élargie (h\d{0,2}) + route compacte : « 66.6667 km/h
+  (100 km / 1 h 30) ».
+- **Variantes de phrasé câblées** : « combien **y a-t-il** de secondes dans une année » / « **nombre de**
+  secondes … » (→ 31 536 000) ; « la France **compte combien** d'habitants » (→ réponse formatée ; tombait
+  sur un compte lexical de termes « habitant ») ; « 150 **kilomètres** à 50 km/h » (mot entier) ; ordinal en
+  lettres (« le **millième** nombre premier » → 7919).
+- **Moyenne harmonique/géométrique avec 0** → refus honnête explicite (la stdlib renverrait la convention
+  limite 0).
+- Bancs : `valide_assistant_nl` **400/400** (+7), `valide_fonction_stats_nl` **34/34** (+2),
+  capacites_chat **150/150** (+2), raisonnement 198/198, paraphrases 174/174, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 28 : 3 FAUX (harmonique, Wilson, tendance) + électronique/mécanique, notation scientifique, constantes
+
+- **FAUX** : « moyenne **harmonique** de 2 et 4 » → *« Moyenne : 3 »* (l'arithmétique servie à la place de
+  2.667). Harmonique et géométrique câblées avec formule dite ; valeurs non positives → abstention.
+- **FAUX** : « quel pourcentage représente 45 sur 60 » → *un intervalle de Wilson* (inférence) au lieu du
+  calcul exact **75 %**. Garde (« représente/fait » = division exacte) ; l'inférence (« intervalle de
+  confiance pour 45 succès sur 60 ») reste servie.
+- **FAUX** : « augmente 50 de 10 % **puis de 20 %** » → *« série trop courte »* (détection de tendance !).
+  Garde + **augmentations enchaînées** appliquées sur le résultat : « 66 (50 + 10 % = 55 ; 55 + 20 % = 66) ».
+- **Électronique/mécanique câblées** (briques `electronique`/`mecanique`, tombaient en mémo) : résistances
+  équivalentes série (somme) et parallèle (1/Σ(1/Rᵢ)), période du pendule simple (g = 9.80665 DIT),
+  pression P = F/S.
+- **Notation scientifique** (« 123000 » → 1.23 × 10^5, « 0,00042 » → 4.2 × 10^-4) ; **constantes nommées** :
+  nombre d'or ((1+√5)/2), e (base du log naturel).
+- Bancs : `valide_assistant_nl` **393/393** (+11), `valide_fonction_stats_nl` **32/32** (+5), raisonnement
+  198/198, paraphrases 174/174, capacites_chat 148/148, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 27 : 2 FAUX (règle de trois décimale, Fermi-monnaie ~60 !) + argent du quotidien, lettres, polygones
+
+- **FAUX** : « si 3 stylos coûtent **4,50** euros combien coûtent 7 stylos » → *« 9.333333 »* (normalise()
+  mangeait la virgule : 4,50 lu 4 !). Motif déplacé sur `_norm_conv` → **10.5** (leçon n°1, rechute épinglée).
+- **FAUX** : « 3 pièces de 2 euros et 2 billets de 5 euros, combien en tout » → *« Estimation d'ordre de
+  grandeur : ~60 »* (le Fermi MULTIPLIAIT tous les nombres ; le décomposeur multi-demandes coupait aussi sur
+  « et »). Deux gardes + route **somme exacte montrée** : « 16 euros (3 × 2 + 2 × 5) ».
+- **Argent du quotidien** (tombaient en mémo) : « 20 euros moins 7,50 » → 12.5 (mot moins/plus accepté quand
+  le résidu hors monnaie est VIDE — « il fait moins 5 degrés », « la guerre de 1939-1945 » intacts) ;
+  **rendu de monnaie** (« sur 50 € pour 37,25 » → « 12.75 (50 − 37.25) » ; achat > billet → « Impossible » dit) ;
+  **prix total** (« 3 baguettes à 1,20 € » → 3.6) ; **fractions multiples** (« les trois quarts de 200 » → 150 ;
+  décimal infini → abstention, règle inchangée).
+- **Géométrie/conversions** : périmètre des polygones réguliers nommés (pentagone→dodécagone ; « hexagone de
+  côté 5 » → « 30 (6 × 5) ») ; arêtes/sommets cube-pavé-tétraèdre ; **mph** (1 mile = 1.609344 km, deux sens).
+- **Lettres** : « la 5e lettre du mot maison » → o ; « la première/10e/30e lettre de l'alphabet » → a/j/borne
+  DITE ; « dernière lettre du mot chat » → t.
+- Bancs : `valide_assistant_nl` **382/382** (+23), `valide_fonction_stats_nl` **27/27** (+1), raisonnement
+  **198/198** (+1), paraphrases 174/174, capacites_chat 148/148, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 26 : cinématique du quotidien (1 FAUX), IMC, pH, TVA, consommation, prix unitaire, angles
+
+- **FAUX** : « vitesse moyenne si je parcours 150 km en 2 heures » → *« Moyenne : 76 »* (la route stats
+  moyennait distance et durée !). Garde stats (motif « X km en Y heures » = division, pas une liste ; la
+  moyenne d'une LISTE de vitesses reste servie) + **cinématique complète, calcul montré** : v = d/t
+  (« 75 km/h (150 km / 2 h) »), t = d/v (« 3 h » ; inexact → « ≈ 1 h 26 min (arrondi à la minute) » DIT),
+  d = v×t (« 180 km (90 km/h × 2 h) »).
+- **Quotidien chiffré** (tombaient en mémo/repli) : **consommation aux 100 km** (« 6 L aux 100 km pour
+  250 km » → 15 L), **prix au kilo/litre** (« 1,5 kg à 4 € le kilo » → 6 € ; unités disparates → abstention),
+  **TVA** (« TVA de 20% sur 100 € » → montant ET TTC, base lue HT et dite), **IMC** (« 70 kg et 1m75 » →
+  22.86, formats 1m75/175 cm/1,80 m, kg/m² OMS, sans interprétation médicale), **pH** (« concentration de
+  0,001 » → 3, brique `physique.calcule`).
+- **Angles** : degré ↔ radian (π/180 exact, deux sens) ; les températures (« 100 degrés celsius en
+  fahrenheit ») gardent leur route dédiée (vérifié).
+- Bancs : `valide_assistant_nl` **359/359** (+14), `valide_fonction_stats_nl` **26/26** (+2), raisonnement
+  197/197, paraphrases 174/174, capacites_chat 148/148, suite 25/25, challenge 16/16.
+
+## 2026-07-08 — Vague 25 : pourboire, durées variables honnêtes, romain→nombre élargi, « quelle est la date dans 3 semaines »
+
+- **Pourboire** (tombait en mémo « C'est noté ») : « 15% de pourboire sur 80 euros » → « 12 de pourboire
+  (15 % de 80) ; **total : 92** » (le total à payer est l'intention usuelle — montré).
+- **Durées variables** → réponses composées honnêtes (même principe que semaines/année) : « heures dans un
+  mois » → 672-744 h selon le mois ; « jours dans un siècle » → 36 524 ou 36 525 (grégorien).
+- **Romain → nombre** : « MMXXVI en nombre », « XIV en chiffres » acceptés (seul « en chiffres arabes/décimal »
+  passait) ; « mille en nombre » ne matche pas (e hors alphabet romain).
+- **Date relative** : « **quelle est la** date dans 3 semaines » (le motif n'acceptait que « quelle date ») →
+  date exacte étiquetée.
+- Bancs : `valide_assistant_nl` **345/345** (+7), capacites_chat **148/148** (+1), raisonnement 197/197,
+  paraphrases 174/174, suite 25/25.
+
+## 2026-07-08 — Vague 24 : 4 FAUX tués (1939 !, 100e premier, somme de série, atomes d'un élément) + chimie quantitative
+
+- **FAUX massif** : « combien de secondes dans une année » → *« 1939 »* (le résolveur générique accrochait
+  `annee_publication_oeuvre` via le token « année » et une entité fuzzy !). Garde structurelle : une question
+  « combien … » attend une **quantité** — les relations `annee_*`/`date_*` sont écartées ; la conversion
+  (31 536 000, année commune étiquetée) reprend la main. Les comptes réels (population…) restent servis.
+- **FAUX** : « quel est le 100e nombre premier » → *« Non, 100 n'est pas premier »* (à côté de la question).
+  Route ordinale exacte : « le 100e nombre premier est 541 » (énumération `est_premier`, 1er → 2, borne 10 000).
+- **FAUX** : « somme des entiers de 1 à 100 » → *« Somme : 101 (sur 2 valeurs) »* (les BORNES prises pour la
+  liste par la route stats). Garde série côté stats + routes exactes : 1 à 100 → 5050 (formule montrée),
+  « les 100 premiers entiers » → n(n+1)/2, « les 5 premiers nombres premiers » → 28 (énumération).
+- **FAUX** : « combien d'atomes d'**oxygène** dans CO2 » → *« 3 atomes »* (le TOTAL de la molécule). Élément
+  nommé → compte de CET élément (2 atomes d'oxygène) ; élément absent → « 0 — pas d'atome de sodium… (composition
+  montrée) » ; élément HORS référentiel (« fer ») → abstention, jamais le total à la place.
+- **Chimie quantitative câblée** (briques `chimie_quantitative`/`nomenclature_chimique`, tombaient en mémo) :
+  molarité (« 2 moles dans 4 litres » → 0.5 mol/L), nom du composé binaire (« CO2 » → dioxyde de carbone),
+  moles↔grammes (« 36 g d'eau » → 1.9983 mol, n = m/M, table fermée nom→formule du lecteur), pourcentage
+  massique avec nom d'élément FR (« de l'oxygène » → 88.81 %).
+- **« combien d'habitants en France ? »** (tombait en repli) : réécriture fermée ANCRÉE → « population de X »
+  en tête de pipeline → réponse FORMATÉE (« Population de la France : 68 720 337 habitants. ») ; le gentilé
+  (« comment s'appellent les habitants de Lyon ») ne passe pas par là (abstention intacte).
+- **Conversions** : ligature « œ » (« 10 nœuds en km/h » ratait — NFD ne décompose pas œ) ; durée compacte
+  « 2h30 » → 150 min/9000 s ; jours d'un mois (« février 2024 » → 29, grégorien exact ; février sans année →
+  « 28 (29 les années bissextiles) » ; le compte à rebours « dans combien de jours… » n'est pas volé).
+- Bancs : `valide_assistant_nl` **338/338** (+26), `valide_fonction_stats_nl` **24/24** (+2), banc_raisonnement
+  **197/197** (+3), resolution 50/50, suite 25/25, capacites_chat 147/147, paraphrases 174/174, challenge 16/16.
+
+## 2026-07-08 — Vague 23 : proba dé/pièce, coefficient binomial nommé, permutations « ranger » (2 garbages tués)
+
+- **2 garbages tués** (une QUESTION avalée par l'accusé mémo « Noté — je le retiens », trouvés à la sonde) :
+  « coefficient binomial 5 parmi 2 » et « probabilité d'obtenir un 6 avec un dé » partaient en mémo.
+- **Coefficient binomial nommé** : « coefficient binomial 2 parmi 5 » → **C(5, 2) = 10** (convention « k parmi
+  n » ; sans « parmi » = ordre de la notation C(n, k)). L'interprétation est MONTRÉE : « 5 parmi 2 » →
+  « C(2, 5) = 0 (choisir 5 éléments parmi 2 : impossible) » — jamais un 0 sec ambigu.
+- **Probabilité élémentaire dé/pièce** (brique équiprobabilité `maximum_entropie.uniforme`) : « probabilité
+  d'obtenir un 6 avec un dé » → « 1/6 (≈ 16.67 %) — **en supposant un dé équilibré à 6 faces** » (l'hypothèse
+  est toujours énoncée) ; « dé à 20 faces » → 1/20 ; face impossible → « 0 — un dé à 6 faces ne peut pas
+  donner 7 » ; « pile avec une pièce » → 1/2. Gardes : « dé » cherché sur la question BRUTE (normalise() efface
+  l'accent → « de » matcherait tout) ; plusieurs dés → abstention (autre loi) ; « pièce » exige pile/face
+  (« pièce de théâtre » intacte) ; « probabilité de pluie » intacte ; « dé pipé » sans face → abstention.
+- **Permutations « ranger/classer »** : « de combien de façons peut-on ranger 4 livres » → « 24 (permutations :
+  4!) » (seul « ordonner » était couvert). Gardes : « façons/manières » OBLIGATOIRE (l'impératif « range mes
+  fichiers » ne matche pas) ; UN SEUL entier (« 4 livres sur 2 étagères » = autre problème → abstention).
+- Sondé OK sans câblage (déjà en place) : chimie (masse molaire H2O/CO2 avec g/mol, nb d'atomes, composition,
+  formule du dioxyde de carbone), factorielle, combinaisons, Fibonacci.
+- Bancs : `valide_assistant_nl` **312/312** (+14), suite 25/25, capacites_chat 147/147, raisonnement 194/194,
+  paraphrases 174/174, challenge 16/16.
+
 ## 2026-07-08 — Vague 22 : date du jour (variantes), congélation de l'eau, mot à l'envers, zéros d'un grand nombre
 
 - **Date/jour du jour** : « quel jour de la semaine sommes-nous », « quelle est la date aujourd'hui »,

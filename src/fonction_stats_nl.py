@@ -106,8 +106,27 @@ def repond_stats(texte: str):
 
     # — stats DESCRIPTIVES exactes (maths) —
     if re.search(r"\b(moyenne|moyen)\b", bas) and "confiance" not in bas and "intervalle" not in bas:
+        # GARDE VITESSE MOYENNE (FAUX vécu 2026-07-08) : « vitesse moyenne si je parcours 150 km en 2 heures »
+        # servait « Moyenne : 76 » (la moyenne de {150, 2} !). Le motif « X km en Y heures » est une division
+        # d/t -> route cinématique (fonction_nl) ; « moyenne des vitesses 30, 40, 50 km/h » (liste) reste ici.
+        if re.search(r"km\b.{0,20}?\ben\s+\d+(?:[.,]\d+)?\s*(?:h\d{0,2}\b|heures?)", bas):
+            return None                                  # (h\d{0,2} : « en 1h30 » compact, FAUX 43.67 vécu)
         # moyenne PONDÉRÉE : ne JAMAIS servir la moyenne simple de tous les nombres (les coefficients
         # ne sont pas des valeurs — « 12 coeff 2 et 15 coeff 3 » vaut 13.8, pas 8)
+        # HARMONIQUE / GÉOMÉTRIQUE nommées (FAUX vécu 2026-07-08 : « moyenne harmonique de 2 et 4 » servait
+        # la moyenne ARITHMÉTIQUE 3 au lieu de 2.67). Formule dite ; valeurs non positives -> abstention.
+        if ("harmonique" in bas or "geometrique" in bas) and vals:
+            if any(v <= 0 for v in vals):                # hors domaine (la stdlib renverrait 0 par convention
+                nom = "harmonique" if "harmonique" in bas else "géométrique"
+                return ("La moyenne %s exige des valeurs strictement positives — je m'abstiens "
+                        "plutôt que de servir la convention limite." % nom)
+            import statistics as _st
+            try:
+                if "harmonique" in bas:
+                    return "Moyenne harmonique : %s (n / Σ 1/xᵢ)." % _fmt(round(_st.harmonic_mean(vals), 4))
+                return "Moyenne géométrique : %s (ⁿ√ Π xᵢ)." % _fmt(round(_st.geometric_mean(vals), 4))
+            except Exception:
+                return None
         if re.search(r"\b(pond[ée]r[ée]e?s?|coefficients?|coeffs?|coefs?)\b", bas):
             return _moyenne_ponderee(t, bas) if vals else None
         if re.search(r"\bpoids\b", bas) and vals:
@@ -140,6 +159,13 @@ def repond_stats(texte: str):
             return None
         return _descr("min", vals)
     if re.search(r"\bsomme\b", bas) and vals:
+        # GARDE SÉRIE (FAUX vécu 2026-07-08) : « somme des entiers de 1 à 100 » servait « Somme : 101 (sur
+        # 2 valeurs) » — les BORNES traitées comme la liste ! Une somme « de X à Y » (ou « des N premiers… »)
+        # est une série -> route dédiée (fonction_nl) ; la somme de liste (« somme de 3, 7 et 9 ») reste ici.
+        if re.search(r"\b(?:entiers?|nombres?)\s+de\s+\d+\s+a\s+\d+\b", bas) \
+                or re.search(r"\bdes\s+\d+\s+premiers?\b", bas) \
+                or (len(vals) == 2 and re.search(r"\bde\s+\d+\s+a\s+\d+\b", bas)):
+            return None
         return _descr("somme", vals)
     if re.search(r"\b[ée]tendue\b", bas) and vals:
         return _descr("etendue", vals)
@@ -148,6 +174,12 @@ def repond_stats(texte: str):
 
     # — PROPORTION « k sur n » / « k succès sur n » (AVANT l'IC de moyenne : « intervalle » y figure aussi) —
     m = re.search(r"(\d+)\s*(?:succ[èe]s\s*)?(?:sur|/|parmi)\s*(\d+)", bas)
+    # GARDE ARITHMÉTIQUE (FAUX vécu 2026-07-08) : « quel pourcentage REPRÉSENTE 45 sur 60 » servait un
+    # intervalle de Wilson (inférence) au lieu du calcul exact 75 %. « représente/fait » = division exacte
+    # -> route pourcentage de fonction_nl ; l'inférence (taux de réussite, confiance) reste ici.
+    if m and (re.search(r"\b(represente|fait)\b", bas) or re.search(r"en\s+pourcentage", bas)
+              or re.search(r"\bsur\s+(?!100\b)\d+\b.{0,30}?\bsur\s+100\b", bas)):
+        m = None                     # (le 3e motif = RESCALING « 12 sur 20 … sur 100 » ; « 37 sur 100 » = Wilson)
     if m and re.search(r"\b(proportion|pourcentage|taux de r[ée]ussite|intervalle|confiance|succ[èe]s|fiab)\b", bas):
         k, n = int(m.group(1)), int(m.group(2))
         if 0 <= k <= n and n > 0:
@@ -164,6 +196,10 @@ def repond_stats(texte: str):
             return None
 
     # — TENDANCE (série qui monte/baisse) —
+    # GARDE CALCUL (FAUX vécu 2026-07-08) : « augmente 50 de 10 % puis de 20 % » partait en détection de
+    # tendance (« série trop courte ») — c'est un calcul de pourcentages enchaînés (fonction_nl).
+    if re.search(r"augmente[rz]?\s+\d", bas) and "%" in t:
+        return None
     if re.search(r"\b(tendance|en hausse|en baisse|monte|augmente|diminue|d[ée]cro[iî]t|[ée]volue)\b", bas) and len(vals) >= 3:
         try:
             return ia.tendance(vals, phrase=True)
@@ -186,6 +222,10 @@ def repond_stats(texte: str):
 
     # — FERMI (ordre de grandeur d'un produit de facteurs) —
     if re.search(r"\b(fermi|ordre de grandeur|estime.*produit|combien.*en tout|estimation approximative)\b", bas) and len(vals) >= 2:
+        # GARDE MONNAIE (FAUX vécu 2026-07-08) : « 3 pièces de 2 euros et 2 billets de 5, combien en tout »
+        # MULTIPLIAIT tous les nombres (« ~60 » pour 16 !). Pièces/billets/euros = somme EXACTE (fonction_nl).
+        if re.search(r"\b(pieces?|billets?|euros?|centimes?)\b", bas):
+            return None
         try:
             return ia.estime_fermi([(v, v) for v in vals], phrase=True)
         except Exception:

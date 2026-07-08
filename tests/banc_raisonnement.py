@@ -166,6 +166,36 @@ CAS = [
         R.repond(m, "cont-cel", q, pleine=True))[1])(
         __import__("conversation").MemoireConversation(racine=None)),
      "et en celsius ?", "1811 K = 1537.85 °C"),
+    # VOLEUR TUÉ (FAUX vécu 2026-07-08) : « combien de secondes dans une année » servait 1939 — le résolveur
+    # générique accrochait `annee_publication_oeuvre` (token « année », entité fuzzy). Garde : « combien » =
+    # QUANTITÉ, jamais une relation annee_/date_. La conversion (31 536 000) reprend la main.
+    ("secondes-annee-pas-1939", lambda q: (lambda m: R.repond(m, "sec-an", q, pleine=True))(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "combien de secondes dans une année", "31536000"),
+    # RÉÉCRITURE « combien d'habitants en X » -> « population de X » (tombait en repli) : réponse FORMATÉE.
+    ("habitants-france-formate", lambda q: (lambda m: R.repond(m, "hab-fr", q, pleine=True))(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "combien d'habitants en France ?", "Population de la France : 68"),
+    # le GENTILÉ n'est pas volé par la réécriture (pas de table vérifiée -> abstention, jamais la population)
+    ("habitants-gentile-intact", lambda q: (lambda m: R.repond(m, "hab-ge", q, pleine=True))(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "comment s'appellent les habitants de Lyon", "pas l'information"),
+    # SOMME COORDONNÉE (vécu : le décomposeur multi-demandes ET le Fermi volaient la question — pipeline entier)
+    ("pieces-billets-somme", lambda q: (lambda m: R.repond(m, "pb-som", q, pleine=True))(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "j'ai 3 pièces de 2 euros et 2 billets de 5 euros, combien j'ai en tout", "16 euros (3 × 2 + 2 × 5)"),
+    # CONTINUATION SUR UN CALCUL (vécu 2026-07-08 : le sujet n'était mémorisé que pour le DATA ; et la
+    # nouvelle entité était minusculée -> « co2 » cassait la chimie sensible à la casse).
+    ("continuation-calcul-chimie", lambda q: (lambda m: (
+        R.repond(m, "cont-chim", "masse molaire de H2O", pleine=True),
+        R.repond(m, "cont-chim", q, pleine=True))[1])(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "et de CO2 ?", "44.009"),
+    ("continuation-calcul-mois", lambda q: (lambda m: (
+        R.repond(m, "cont-mois", "combien de jours en février 2024", pleine=True),
+        R.repond(m, "cont-mois", q, pleine=True))[1])(
+        __import__("conversation").MemoireConversation(racine=None)),
+     "et en mars ?", "31"),
     ("analogie", R._cap_analogie, "Paris est à la France ce que Berlin est à ?", "Allemagne"),
     ("portrait", R._cap_portrait, "parle-moi du Nigéria", "Le Nigéria est un pays"),
     ("portrait-personne", R._cap_portrait_personne, "qui est Napoléon Ier ?", "Ajaccio"),
