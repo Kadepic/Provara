@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — PERF : des questions coûtaient 3-5 s À CHAQUE APPEL (fuzzy sur tables à millions de clés)
+
+- **Profilé** : « est-ce que 2024 est une année bissextile » = 5,2 s et « le 5e mois de l'année » = 3,4 s,
+  NON cachées — `resolution.corrige` (correction de fautes) itérait **14 millions de clés par question**
+  (les tables de 1-3,2 M de personnes/lexèmes scannées pour « corriger » chaque candidat d'entité), et
+  `_oui_non` relançait tout le pipeline pour résoudre « 2024 » comme entité.
+- Fixes : (1) plus de fuzzy au-delà de 500 000 clés (corriger une faute parmi 3,2 M de noms = secondes de
+  scan pour un fort risque d'ambiguïté — lookup exact seulement ; « allemagn » → Allemagne marche toujours,
+  les tables utiles au fuzzy sont toutes sous le seuil) ; (2) mémo borné (4096) des corrections ;
+  (3) `_oui_non` ne résout jamais un NOMBRE comme entité (les routes calcul tranchent).
+- Mesuré (batterie mixte de 20 questions) : 1re passe médiane 10 ms, **2e passe médiane 1 ms, max 16 ms**
+  (avant : 5,2 s récurrentes). Zéro régression : resolution 50/50, raisonnement 191/191, paraphrases 174/174,
+  lecteur 1613/1613, suite 25/25, tout le reste vert.
+
 ## 2026-07-08 — Passe adverse : les variantes de phrasé ne font plus revenir les FAUX
 
 - **Le « 2010 » du film revenait** par « est-ce que 2024 **c'est** une année bissextile » et « 2028

@@ -3710,6 +3710,10 @@ def _oui_non(texte: str):
         if not m:
             return None
         gauche, droite = m.group(1).strip(), m.group(2).strip()
+    # PERF+SOUND : « est-ce que 2024 est … » — un NOMBRE n'est pas une entité à résoudre (chaque côté relance
+    # tout le pipeline : 5 s mesurées) ; les routes de calcul en aval savent trancher (parité, bissextile…).
+    if re.fullmatch(r"\d+(?:[.,]\d+)?", _strip_article(gauche)):
+        return None
     vg = _connaissance_verifiee(gauche, None)        # conv_id=None : aucun effet de bord multi-tours
     vd = _connaissance_verifiee(droite, None)
     if not vg and not vd:                             # aucun côté ne résout -> flux normal

@@ -106,6 +106,12 @@ def _est_mot_connu(cle: str) -> bool:
     return False
 
 
+_CORRIGE_MEMO: dict = {}                     # (relation, cible) -> résultat ; borné (purgé à 4096)
+_CORRIGE_MAX_CLES = 500_000                  # au-delà : PAS de fuzzy — scanner des MILLIONS de clés coûtait des
+#                                              SECONDES PAR QUESTION (14 M d'itérations profilées, 2026-07-08)
+#                                              pour des corrections à fort risque d'ambiguïté. Exact seulement.
+
+
 def corrige(relation: str, saisie: str):
     """Meilleure correction UNIQUE de `saisie` parmi les clés de `relation`, ou None.
     Renvoie (cle_corrigee, distance) si une seule clé atteint le minimum (≤ seuil), sinon None (rien/ambigu).
@@ -114,6 +120,15 @@ def corrige(relation: str, saisie: str):
     cible = lecteur.LECTEUR._cle(relation, saisie)
     if not cible:
         return None
+    _t = lecteur.LECTEUR.tables.get(relation)
+    if _t is not None and len(_t) > _CORRIGE_MAX_CLES:
+        return None
+    _cle_memo = (relation, cible)
+    if _cle_memo in _CORRIGE_MEMO:
+        return _CORRIGE_MEMO[_cle_memo]
+    if len(_CORRIGE_MEMO) > 4096:
+        _CORRIGE_MEMO.clear()
+    _CORRIGE_MEMO[_cle_memo] = None          # posé d'avance : tout `return None` en aval reste cohérent
     if _est_mot_connu(cible) or _est_mot_connu(normalise(saisie)):
         return None
     seuil = _seuil(cible)
@@ -148,6 +163,7 @@ def corrige(relation: str, saisie: str):
             for w in gagnante.split():
                 if len(w) >= 4 and w not in mots_cible and not _est_mot_connu(w):
                     return None
+        _CORRIGE_MEMO[_cle_memo] = (gagnante, meilleure_d)
         return (gagnante, meilleure_d)
     return None                          # rien d'assez proche, OU ambigu (≥2 candidats au même minimum)
 
