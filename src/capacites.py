@@ -4132,6 +4132,38 @@ def _p_facade_stats_3() -> bool:
     return _I.classe_taux_robuste([45, 50], [60, 60])[0] == "abstention"           # entrée hors contrat -> dite
 
 
+def _p_facade_stats_19() -> bool:
+    """LOT 15 : conforme par classe, multicalibration honnête, CUSUM de dérive, D-calibration, Rademacher, DP."""
+    import random
+    import ia as _I
+    seuils = _I.conforme_label_ajuste([{"a": 0.9, "b": 0.1}, {"a": 0.1, "b": 0.9},
+                                       {"a": 0.8, "b": 0.2}, {"a": 0.2, "b": 0.8}] * 8, ["a", "b", "a", "b"] * 8)
+    if not (abs(seuils["a"] - 0.2) < 1e-9 and abs(seuils["b"] - 0.2) < 1e-9):   # seuil PAR CLASSE exact
+        return False
+    if _I.multicalibre([0.9, 0.1, 0.8, 0.2] * 10, [1, 0, 1, 0] * 10,
+                       ["g1", "g2", "g1", "g2"] * 10)[0] != "abstention":
+        return False                                                  # groupes trop petits -> abstention DITE
+    det = _I.detecteur_derive()
+    for i in range(200):
+        det.observe(0.99, i % 10 == 0)                                # 99 % annoncé, ~10 % juste : SUR-confiant
+    if det.alarme is not True:
+        return False
+    det2 = _I.detecteur_derive()
+    for i in range(200):
+        det2.observe(0.5, i % 2 == 0)                                 # bien calibré : JAMAIS d'alerte
+    if det2.alarme:
+        return False
+    occ, chi2 = _I.d_calibration_survie([1, 2, 3, 4, 5, 6, 7, 8, 9, 10] * 3, [1] * 30,
+                                        lambda t: max(0.0, 1.0 - t / 11.0))
+    if not (occ == [3.0] * 10 and chi2 == 0.0):                       # modèle JUSTE -> déciles uniformes EXACTS
+        return False
+    vb, db = _I.borne_generalisation_uniforme([[0.1, 0.2], [0.2, 0.1]], [0.15, 0.15], 100)
+    if not (vb == "borne" and db["rad"] > 0 and all(b >= 0.15 for b in db["bornes"])):
+        return False                                                  # la borne domine le risque empirique
+    vc, dc = _I.clustering_non_parametrique([1.0, 1.1, 0.9, 5.0, 5.1, 4.9], rng=random.Random(0))
+    return vc == "analyse" and dc["k_estime"] == 2                    # 2 vrais paquets -> K = 2 inféré
+
+
 def _p_facade_stats_18() -> bool:
     """LOT 14 : prévisions imprécises de Walley, ambiguïté lisse, Bayes robuste, copules, portefeuille."""
     import ia as _I
@@ -4491,6 +4523,11 @@ def _p_facade_stats_5() -> bool:
 # Chaque libellé est une CAPACITÉ visible de l'utilisateur (« est-ce que tu sais… ») ; la preuve est exécutée
 # en direct par couvert()/verifie_tout() (diagnostic). Un module retiré/ cassé -> preuve rouge -> gate rouge.
 REGISTRE.update({
+    "Calibration par classe, dérive et D-calibration (façade stats 19)": (
+        "conforme_label_ajuste (seuil PAR CLASSE exact 0.2), multicalibre (groupes trop petits -> abstention "
+        "DITE), detecteur_derive (CUSUM : le sur-confiant déclenche, le calibré jamais), d_calibration_survie "
+        "(modèle juste -> déciles uniformes EXACTS, χ² = 0), borne_generalisation_uniforme (Rademacher domine "
+        "le risque empirique), clustering_non_parametrique (2 paquets -> K = 2 inféré).", _p_facade_stats_19),
     "Prévisions imprécises et robustesse bayésienne (façade stats 18)": (
         "prevision_imprecise (bornes de Walley EXACTES (1, 4) sur un credal), decision_ambiguite_lisse "
         "(KMM), posterieur_robuste (ε-contamination encadrant le nominal), decision_robuste_modele (prudence "

@@ -1,5 +1,16 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Excellence atomique, lot 15 : 6 façades de plus (dette 38 → 32)
+
+- 1 preuve REGISTRE composée (diagnostic : 301) : **conformal par classe** (seuils exacts 0.2/0.2),
+  **multicalibration honnête** (groupes trop petits -> abstention DITE), **détecteur de dérive CUSUM**
+  (le système SUR-confiant déclenche l'alarme, le bien-calibré jamais — les deux régimes prouvés),
+  **D-calibration de survie** (modèle juste -> déciles uniformes EXACTS, χ² = 0), **borne de Rademacher**
+  (domine le risque empirique), **clustering par processus de Dirichlet** (2 vrais paquets -> K = 2 inféré,
+  sans fixer K d'avance).
+- Plafond du cliquet : **32**.
+- Bancs : valide_capacites 73/73 (pins 300→301), valide_atomes 19/19, suite 26/26.
+
 ## 2026-07-08 — Excellence atomique, lot 14 : 6 façades de plus (dette 44 → 38 ; cap des 300 preuves)
 
 - 1 preuve REGISTRE composée — le diagnostic exécute désormais **300 preuves en direct** : **prévisions
