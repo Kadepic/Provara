@@ -1,5 +1,19 @@
 # Journal des modifications — Provara
 
+## 2026-07-08 — Vague 20 : 1 FAUX (Noël→31) + comparaison directe, extremum, tri, compte à rebours, coef
+
+- **FAUX** : « dans combien de jours le 25 **décembre** » → *« 31 »* (le gabarit `jours_mois` prenait
+  « décembre » pour une durée de mois). Gardes ajoutées au gabarit (compte à rebours « dans/jusqu/avant », tout
+  chiffre) + **compte à rebours câblé** : « dans combien de jours Noël / le 25 décembre » → nombre exact
+  jusqu'à la date (année courante, l'an prochain si passée).
+- La route stats min/max ne coiffe plus les **comparaisons** (« 8 est plus grand que 5 » → Oui), les
+  **extremums** (« le plus grand entre 7 et 12 » → 12) ni les **tris** (« classe 3, 1, 2 par ordre
+  croissant » → 1, 2, 3 ; « du plus petit au plus grand », décroissant). Gardes stats + routes dédiées dans
+  `resout_math`. Abréviation **« coef »** reconnue pour la moyenne pondérée (le guérisseur la corrompait en
+  « chef » → protégée, comme « contient »→« continent »).
+- Bancs : `valide_assistant_nl` **291/291** (+7), capacites_chat **144/144** (+2), lecteur **1615/1615** (+2),
+  stats_nl 22/22, suite 25/25, raisonnement 194/194, paraphrases 174/174, challenge 16/16, câblage 504.
+
 ## 2026-07-08 — Vague 19 : fractions, pourcentage inverse, prix avant réduction, arrondi à un rang
 
 - **Fractions** (exactes via `Fraction`) : « simplifie 6/8 » → 3/4 (« 10/5 » → 2, entier) ; « 3/4 en

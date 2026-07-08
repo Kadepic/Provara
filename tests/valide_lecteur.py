@@ -1733,7 +1733,10 @@ for q in ("numéro atomique du vibranium", "Combien de jours en smarch ?", "Quel
           "Combien de faces a une sphère ?",
           # FAUX=0 vécu 2026-07-08 : un INTERVALLE de dates n'est pas la durée d'un mois (« 31 » servi à tort)
           "Combien de jours entre le 1er janvier et le 15 mars ?",
-          "Combien de jours du 1er janvier au 15 mars ?"):
+          "Combien de jours du 1er janvier au 15 mars ?",
+          # ni un COMPTE À REBOURS vers une date datée (« dans combien de jours le 25 décembre » -> 31 à tort)
+          "dans combien de jours le 25 décembre ?",
+          "combien de jours jusqu'au 25 décembre ?"):
     st, f = L.repond_nl(q)
     check(f"NL adverse « {q} » -> HORS", st == HORS and f is None)
 

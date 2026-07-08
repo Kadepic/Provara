@@ -502,8 +502,11 @@ class Lecteur:
     _GABARITS = [
         (re.compile(r"\bnumero atomique (?:de l |de la |du |de )?(.+)$"), "numero_atomique", 1),
         # GARDE (FAUX=0 vécu 2026-07-08) : « combien de jours ENTRE le 1er janvier et le 15 mars » servait les
-        # 31 jours de janvier. Un intervalle (« entre », ou DEUX mois cités) n'est PAS la durée d'un mois.
-        (re.compile(r"\b(?:combien de jours|nombre de jours)\b(?!.*\bentre\b)"
+        # 31 jours de janvier. GARDES (FAUX vécus 2026-07-08) : un INTERVALLE (« entre », ou DEUX mois), un
+        # COMPTE À REBOURS (« DANS combien de jours … 25 décembre » -> 31 servi à tort), ou tout CHIFFRE (un
+        # jour daté « le 25 décembre ») ne sont PAS la durée d'un mois. La durée d'un mois n'a aucun nombre.
+        (re.compile(r"\b(?:combien de jours|nombre de jours)\b(?!.*\bentre\b)(?!.*\b(?:dans|jusqu|avant|reste)\b)"
+                    r"(?!.*\d)"
                     r"(?!(?:.*\b(?:janvier|fevrier|mars|avril|mai|juin|juillet|aout|septembre|octobre"
                     r"|novembre|decembre)\b){2})"
                     r".*?\b(janvier|fevrier|mars|avril|mai|juin|"

@@ -482,6 +482,16 @@ check(_m("périmètre d'un triangle de côtés 1, 1 et 5") is None,
 check(_m("aire d'un losange de diagonales 6 et 8") == "24", "aire losange d=6,8 -> 24 (d₁·d₂/2, Polygone)")
 check(_m("le prix a augmenté de beaucoup") is None, "« augmenté de beaucoup » (pas de %) ne déclenche RIEN")
 check(_m("la réduction des inégalités sur le continent") is None, "« réduction des inégalités » ne déclenche RIEN")
+# VAGUE 20 : comparaison directe, extremum, tri de nombres (la route stats min/max ne les coiffe plus).
+_r = _m("est-ce que 8 est plus grand que 5")
+check(_r is not None and _r.startswith("Oui"), "« 8 plus grand que 5 » -> Oui (plus « Minimum:5 max:8 »)")
+_r = _m("est-ce que 3 est supérieur à 10")
+check(_r is not None and _r.startswith("Non"), "« 3 supérieur à 10 » -> Non")
+check(_m("quel est le plus grand entre 7 et 12") == "12", "extremum : plus grand entre 7 et 12 -> 12")
+check(_m("quel est le plus petit de 5, 2 et 9") == "2", "extremum : plus petit de 5,2,9 -> 2")
+check(_m("classe 3, 1 et 2 par ordre croissant") == "1, 2, 3 (ordre croissant)", "tri croissant")
+check(_m("range 5, 2, 8, 1 du plus petit au plus grand") == "1, 2, 5, 8 (ordre croissant)", "tri « du plus petit »")
+check(_m("trie 9, 3, 7 par ordre décroissant") == "9, 7, 3 (ordre décroissant)", "tri décroissant")
 # VAGUE 19 : fractions (simplifier, ↔%, ←décimal), pourcentage inverse, prix avant réduction, arrondi à un rang.
 check(_m("simplifie la fraction 6/8") == "3/4 (= 6/8)", "simplifier 6/8 -> 3/4")
 check(_m("simplifie 10/5") == "2 (= 10/5)", "simplifier 10/5 -> 2 (entier)")

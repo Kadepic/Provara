@@ -777,6 +777,40 @@ def resout_math(question: str):
         g = _AM.pgcd(ent[0], ent[1])
         return (VERIFIE, str(ent[0] * ent[1] // g) if g else "0", "arithmétique — PPCM")
 
+    # COMPARAISON DIRECTE de deux nombres : « est-ce que 8 est plus grand que 5 » -> Oui ; « quel est le plus
+    # grand entre 7 et 12 » -> 12 (réponse DIRECTE, pas « Minimum:… maximum:… » de la route stats).
+    mcd = re.search(r"(-?\d+(?:[.,]\d+)?)\s+est(?:[- ](?:il|elle|ce))?\s+(?:plus\s+(grand|petit|[ée]lev[ée])\w*|"
+                    r"(sup[ée]rieur|inf[ée]rieur)\w*)\s+(?:a|à|que)\s+(-?\d+(?:[.,]\d+)?)", question, re.I)
+    if mcd:
+        a = float(mcd.group(1).replace(",", ".")); b = float(mcd.group(4).replace(",", "."))
+        veut_grand = bool(mcd.group(2) and mcd.group(2).startswith(("grand", "ele", "éle"))) or \
+            (mcd.group(3) and mcd.group(3).startswith("sup"))
+        vrai = (a > b) if veut_grand else (a < b)
+        if a == b:
+            return (VERIFIE, "Non, %s = %s (ils sont égaux)." % (_fmt_nombre(a), _fmt_nombre(b)), "comparaison")
+        return (VERIFIE, ("Oui, %s %s %s." if vrai else "Non : %s %s %s.")
+                % (_fmt_nombre(a), ">" if (a > b) else "<", _fmt_nombre(b)), "comparaison de nombres")
+    mpg = re.search(r"(?:le\s+plus\s+(grand|petit)|quel\s+est\s+le\s+plus\s+(grand|petit))\b.*?\b"
+                    r"(?:entre|de|parmi)\s+(-?\d+(?:[.,]\d+)?(?:\s*,\s*-?\d+(?:[.,]\d+)?)*"
+                    r"(?:\s+(?:et|ou)\s+-?\d+(?:[.,]\d+)?)?)", question, re.I)
+    if mpg:
+        nums = [float(x.replace(",", ".")) for x in re.findall(r"-?\d+(?:[.,]\d+)?", mpg.group(3))]
+        if len(nums) >= 2:
+            sens = mpg.group(1) or mpg.group(2)
+            v = max(nums) if sens == "grand" else min(nums)
+            return (VERIFIE, _fmt_nombre(v), "comparaison — extremum d'une liste")
+
+    # TRI d'une liste de nombres : « classe / range / trie 3, 1, 2 par ordre croissant / du plus petit au plus
+    # grand ». Réponse triée exacte (la route _cap_texte tri ne couvre que « trie les nombres » explicite).
+    if re.search(r"\b(classe|range|trie|ordonne|ranger|classer|trier)\b", q) and \
+            re.search(r"\bordre\s+(croissant|decroissant)|du\s+plus\s+(petit|grand)|par\s+ordre", q):
+        nums = re.findall(r"-?\d+(?:[.,]\d+)?", question)
+        if len(nums) >= 2:
+            desc = bool(re.search(r"decroissant|plus\s+grand\s+au\s+plus\s+petit|du\s+plus\s+grand", q))
+            vals = sorted((float(x.replace(",", ".")) for x in nums), reverse=desc)
+            return (VERIFIE, ", ".join(_fmt_nombre(v) for v in vals) + " (ordre %s)"
+                    % ("décroissant" if desc else "croissant"), "tri de nombres")
+
     # VÉRIFICATIONS NUMÉRIQUES exactes : pair/impair, divisible par, multiple de, carré parfait.
     # (La garde de resolution.py renvoie ces « est-ce que <nombre> est … » ici — on y répond VRAIMENT.)
     mvn = re.search(r"(\d+)\s+est(?:[- ](?:il|elle|ce))?\s+(?:un\s+nombre\s+)?(pair|impair)e?\b", q) \
