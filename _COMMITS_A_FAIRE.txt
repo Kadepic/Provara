@@ -1,12 +1,19 @@
-2 commits atomiques à faire (GitHub Desktop, tout est stagé — sépare si tu veux) :
+4 commits atomiques suggérés (tout est stagé ; GitHub Desktop, ta signature GPG requise) :
 
-COMMIT 1 — src/pont_grandeurs.py + interface/serveur.py + tests/valide_et_si_pourquoi.py + tests/suite_conversation.py
-  Fil brique 3 : actes « et si » (intervention + simulation avant, avant/après montré, fil réel jamais
-  modifié, °C jamais multiplié) et « pourquoi » (ordre causal + directions q± PROUVÉES par recalcul 2 points,
-  prémisse fausse corrigée, « pourquoi ? » nu -> mécanisme) — gate 37/37, e2e .exe 9/9 ; _dtlm_num extrait +
-  correctif FAUX=0 (sens d'écoulement jamais lu d'une clause hypothèse)
+COMMIT 1 — tests/valide_fonction.py + tests/valide_villes_coordonnees.py
+  Décisions Yohan : piège √145 mis à jour (irrationalité DITE + approximation MARQUÉE exigées, 39/39) ;
+  villes_coordonnees re-pointé LECTEUR_DATASETS_DIR (base réelle, 50/50, classe base complète)
 
-COMMIT 2 — interface/repond.py + tests/valide_assistant_nl.py + CHANGELOG.md
-  Fil brique 4 : écho-repli à-côté MORT (couverture totale exigée, exception rappel-tâche) + question
-  personnelle jamais au web (repli honnête dédié, classé est_fallback) — assistant_nl 506/506, suite 32/32,
-  e2e .exe vert
+COMMIT 2 — src/tronc.py + interface/repond.py (partie _cap_tete_polysemique) + tests/valide_tete_polysemique.py
+  TRONC Phase 2 généralisée (§7/§10 validés) : têtes polysémiques jugées par le STORE — capacité
+  stade/salle/église/navire/réservoir + création œuvre/organisation ; net / concordance dite / divergence
+  listée (Acapulco 1978|1520, 2893 entités dans les 2 tables) ; millésimes non groupés ; 14/14, e2e 5/5
+
+COMMIT 3 — src/audit_ancres.py
+  audit_ancres réparé (2 causes racines : join tests/ cassé -> aucun validateur lu ; racine src/ + env
+  ignoré) : 6/22 -> 22/22 ; diagnostic réel 1371 relations / 72M faits, 93 % référencées
+
+COMMIT 4 — src/situation.py + src/pont_grandeurs.py + tests/valide_pont_electrique.py + tests/suite_conversation.py
+  ②bis pont ÉLECTRIQUE : roue U=R·I / P=U·I fermée par saturation depuis les grandeurs énoncées (V/A/Ω
+  typées, « a » nu exclu), dérivation montrée, demande nommée, et-si électrique, pourquoi nu -> roue
+  expliquée ; 14/14 ; suite 34/34

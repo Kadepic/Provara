@@ -2092,6 +2092,75 @@ def _cap_mesure_ambigue(texte: str):
     return _T.compose(_T.Faisceau(tuple(cands)), terme=m.group(1).strip().lower())
 
 
+# TÊTE POLYSÉMIQUE (« capacité de X », « création de X ») — Phase 2 GÉNÉRALISÉE du compositeur (§7/§10, validée
+# Yohan 2026-07-09 nuit) : la tête porte PLUSIEURS relations candidates (tronc.TETES_POLYSEMIQUES, carte fermée) ;
+# toutes sont TENTÉES contre le store — le lookup réel juge quelles lectures s'ancrent (sous-spécification :
+# le pluggage est jugé, jamais choisi) — puis compose() sert le coup : 1 ancrée -> réponse nette ; ≥2 ancrées ->
+# CONCORDANCE dite ou DIVERGENCE listée (le générique « première date trouvée » servait un coup de dés pour les
+# 2893 entités présentes dans les DEUX tables de création) ; 0 -> None (cascade inchangée). FAUX=0 : seules des
+# lignes RÉELLES de tables vérifiées deviennent des candidats TRANCHÉS.
+_TETE_POLY_PHRASES = (
+    (re.compile(r"\b(?:annee|date)\s+de\s+(?:la\s+)?creation\b"), "creation"),
+    (re.compile(r"\bcapacite\s+d\s*accueil\b"), "capacite"),
+)
+_TETE_POLY_RE = re.compile(
+    r"^\s*(?:quelle?\s+est\s+)?(?:la\s+|le\s+|l\s+)?(capacite|creation)\s+"
+    r"(?:de\s+la\s+|de\s+l\s+|du\s+|des\s+|de\s+|d\s+)(.+?)\s*$")
+
+
+def _cap_tete_polysemique(texte: str):
+    try:
+        import tronc as _T
+    except Exception:
+        return None
+    prepare = _normalise(texte).rstrip(" ?.!").strip()
+    for rx, canon in _TETE_POLY_PHRASES:                 # replis multi-mots (« année de création » -> creation)
+        prepare = rx.sub(canon, prepare)
+    m = _TETE_POLY_RE.match(prepare)
+    if not m:
+        return None
+    lectures = _T.TETES_POLYSEMIQUES.get(m.group(1))
+    ent = m.group(2).strip(" ?.!\"'«»")
+    if not lectures or len(ent) < 2 or len(ent.split()) > 6:
+        return None
+    cands = []
+    for rel, libelle, unite in lectures:
+        cell = None
+        for var in _variantes_elision(ent):
+            cell = _lookup_cell(rel, var)
+            if cell and cell[1] not in (None, ""):
+                break
+            cell = None
+        if not cell:
+            continue
+        n = _nombre(cell[1])
+        if n is not None and float(n).is_integer():
+            # un MILLÉSIME ne se groupe pas par milliers (« 1 978 » n'est pas une année — vécu e2e)
+            aff = ("%d" % int(round(n))) if rel.startswith("annee_") \
+                else format(int(round(n)), ",d").replace(",", " ")
+        else:
+            aff = "%g" % n if n is not None else str(cell[1])
+        rep = "%s « %s » : %s%s." % (libelle[:1].upper() + libelle[1:], cell[0], aff,
+                                     (" " + unite) if unite else "")
+        cands.append(_T.Candidat(intention=_T.INTERROGER_FAIT, entites=(cell[0],), relation=libelle,
+                                 statut=_T.TRANCHE, reponse=rep, ancrage="lookup vérifié (%s)" % rel,
+                                 signal_discriminant=libelle, confiance=0.9,
+                                 provenance="compositeur tête polysémique (%s)" % rel))
+    if not cands:
+        return None
+    tete_aff = "capacité" if m.group(1) == "capacite" else "création"
+    # lectures multiples ancrées sur la MÊME valeur -> concordance DITE en un seul coup (compose compare des
+    # CHAÎNES : les libellés de lecture diffèrent même à valeur égale — arènes de Malaga, stade ET salle, 9 032)
+    if len(cands) > 1:
+        vals = {c.reponse.rsplit(" : ", 1)[1] for c in cands}
+        if len(vals) == 1:
+            return ("%s « %s » : %s  (NB : les lectures « %s » concordent ici.)" %
+                    (tete_aff[:1].upper() + tete_aff[1:], cands[0].entites[0], vals.pop(),
+                     " » et « ".join(c.relation for c in cands)))
+    terme = "%s de %s" % (tete_aff, cands[0].entites[0])
+    return _T.compose(_T.Faisceau(tuple(cands)), terme=terme)
+
+
 def _cap_dimension(texte: str):
     """DIMENSION d'une entité : « quelle est la hauteur de la tour Eiffel ? » -> valeur + unité. Cherche dans la
     FAMILLE de relations de la dimension (hauteur_tour, hauteur_barrage…) via _lookup_direct (streaming). FAUX=0 :
@@ -8322,7 +8391,8 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("classement_liste", _cap_classement_liste), ("rang", _cap_rang), ("classement", _cap_classement),
                  ("filtre", _cap_filtre), ("comparaison_nway", _cap_comparaison_nway),
                  ("comparaison", _cap_comparaison), ("meme_attribut", _cap_meme_attribut), ("devise", _cap_devise),
-                 ("mesure_ambigue", _cap_mesure_ambigue), ("synonyme_tete", _cap_synonyme_tete),
+                 ("mesure_ambigue", _cap_mesure_ambigue), ("tete_polysemique", _cap_tete_polysemique),
+                 ("synonyme_tete", _cap_synonyme_tete),
                  ("dimension", _cap_dimension), ("difference", _cap_difference),
                  ("agregat_liste", _cap_agregat_liste), ("agregat", _cap_agregat),
                  ("temporel_nway", _cap_temporel_nway), ("temporel", _cap_temporel),

@@ -30,7 +30,8 @@ from fonction_nl import _CONV_UNITS
 # (température/pression/puissance/débit — absentes de _CONV_UNITS car non linéaires ou composées).
 _DIMS = {"L": "longueur", "M": "masse", "T": "temps", "V": "volume", "A": "aire", "S": "vitesse", "D": "données",
          "TEMP": "température", "P": "pression", "W": "puissance", "E": "énergie", "F": "débit", "PC": "proportion",
-         "U": "coefficient d'échange", "EUR": "montant"}
+         "U": "coefficient d'échange", "EUR": "montant",
+         "TEN": "tension", "AMP": "courant", "OHM": "résistance"}
 _UNITES_LOCALES = {
     "°c": "TEMP", "degre": "TEMP", "degres": "TEMP", "degré": "TEMP", "degrés": "TEMP", "kelvin": "TEMP", "k": "TEMP",
     "bar": "P", "bars": "P", "pa": "P", "kpa": "P", "mpa": "P", "hpa": "P",
@@ -39,6 +40,10 @@ _UNITES_LOCALES = {
     "kg/s": "F", "kg/h": "F", "l/s": "F", "l/min": "F", "l/h": "F", "m3/h": "F", "m3/s": "F",
     "w/m2k": "U", "w/m2.k": "U", "w/m²k": "U",
     "%": "PC", "€": "EUR", "euro": "EUR", "euros": "EUR",
+    # électricité (②bis pont hors-thermo) — « a » nu EXCLU : normalise() rend « à » -> « a » (« entre à 90 »)
+    "v": "TEN", "volt": "TEN", "volts": "TEN", "kv": "TEN",
+    "ampere": "AMP", "amperes": "AMP", "ampère": "AMP", "ampères": "AMP",
+    "ohm": "OHM", "ohms": "OHM",
 }
 _TOUTES_UNITES = {u: dim for u, (dim, _) in _CONV_UNITS.items()} | _UNITES_LOCALES
 # les unités multi-caractères d'abord (w/m2k avant w ; km/h avant km) ; échappées pour le motif.

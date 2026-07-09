@@ -1,5 +1,64 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 nuit — ②bis PONT ÉLECTRIQUE : le pont grandeurs→moteurs généralisé hors-thermo
+
+- **`situation.py`** : unités électriques typées (V/volts/kV -> tension, ampère(s) -> courant, ohm(s) ->
+  résistance) — « a » nu EXCLU (normalise rend « à » -> « a » : « entre à 90 » aurait typé un courant).
+- **`pont_grandeurs._electrique`** : la ROUE U = R·I / P = U·I fermée par SATURATION depuis les grandeurs
+  ÉNONCÉES (2 connues ferment les 4), chaque pas de dérivation NOTÉ et montré (« P ≈ 2300 W (P = U×I —
+  d'après ce que tu m'as donné : tension = 230 V, courant = 10 A) ») ; kV convertis ; garde d'ancrage : sans
+  grandeur V/A/Ω dans le fil ou la question -> None (« quelle puissance passe dans l'échangeur ? » n'est pas
+  capté). Mêmes comportements-clés hérités : dernière valeur fait foi, hypothèses jamais opérandes, manquant
+  DEMANDÉ NOMMÉMENT (« donne-moi le courant (en ampères) ou la résistance (en ohms) »).
+- **« Et si » électrique** (`_etsi_electrique`) : même simulation avant — « et si le moteur tirait 20 A ? »
+  -> « Puissance ≈ 4600 W au lieu de 2300 W … le fil réel reste inchangé ». **« Pourquoi ? » nu** sur une
+  réponse électrique -> les DEUX définitions de la roue expliquées (loi d'Ohm + P = U·I).
+- Gate `valide_pont_electrique` **14/14** ; gates sœurs intactes (situation 21/21, pont 16/16,
+  et_si_pourquoi 37/37) ; suite **34/34**. **E2E .exe 5/5** (accusé du fil -> P -> et-si -> R -> pourquoi).
+  Conversation de test purgée, exe test tué par PID.
+
+## 2026-07-09 nuit — audit_ancres RÉPARÉ (dossier 6/22 clos) : 2 causes racines, vrai diagnostic livré
+
+- **Cause racine 1 (le « classe mal »)** : `_relations_referencees` listait `tests/` mais OUVRAIT depuis la
+  racine (`_ICI/f`) — aucun validateur jamais lu (OSError silencieux), TOUT partait en « non référencé ».
+- **Cause racine 2 (l'« inventaire partiel »)** : `_ICI = dirname(src/audit_ancres.py)` cherchait
+  `src/datasets/lecteur` (inexistant) ; l'outil ignorait `LECTEUR_DATASETS_DIR`. Racine = repo, store = env.
+- **valide_audit_ancres : 22/22** (était 6/22). Vrai diagnostic sur la base réelle : **1371 relations /
+  71 981 264 faits, 93 % référencées par un validateur** ; 98 tables non ancrées = 5 120 405 faits, top :
+  type_etoile 1,28M · type_subdivision 1,05M · type_localite 865k · type_galaxie 361k · type_site_archeo 155k.
+  Cette liste priorisée = le backlog d'ancrage (gate de classe « base complète », hors suite).
+
+## 2026-07-09 nuit — TRONC Phase 2 GÉNÉRALISÉE : têtes polysémiques jugées par le STORE (§7/§10)
+
+- **Théorie adaptée machine (recherche à la brique)** : représentation SOUS-SPÉCIFIÉE (QLF Alshawi-Crouch
+  1992, hole semantics) — une seule représentation retient TOUTES les lectures, résolution différée. Twist
+  Provara : le pluggage n'est pas choisi par heuristique, il est JUGÉ PAR LE STORE (les lectures que la
+  réalité ancre survivent).
+- **`tronc.TETES_POLYSEMIQUES`** (carte fermée) + **`repond._cap_tete_polysemique`** : « capacité de X »
+  (stade/salle/église/passagers navire/réservoir — unités justes) et « création de X » (œuvre/organisation).
+  Toutes les lectures TENTÉES contre le store -> 1 ancrée = réponse nette (« Capacité du stade « Camp Nou » :
+  105 000 places ») ; ≥2 même valeur = CONCORDANCE DITE (arènes de Malaga, stade ET salle, 9 032 — fusion
+  amont : compose() compare des chaînes) ; ≥2 valeurs = DIVERGENCE LISTÉE + invitation (« création de
+  Acapulco » -> œuvre 1978 / organisation 1520 — 2893 entités vivent dans les DEUX tables de création, le
+  générique « première date trouvée » y jouait un coup de dés) ; 0 -> None (cascade inchangée).
+- **Architecture émergée saine (vérifiée e2e)** : `ia.donnee_nl` (amont) exige l'UNICITÉ -> entité unique =
+  voie rapide DATA ; ambiguë = le faisceau composé prend la main. Millésimes plus jamais groupés par
+  milliers (« 1 978 » n'est pas une année — vécu e2e, corrigé).
+- Gate `valide_tete_polysemique` **14/14** (net/concordance/unité m³/divergence/replis multi-mots « année de
+  création », « capacité d'accueil »/zéro capture dont « capacité thermique molaire ») ; suite **33/33** ;
+  e2e .exe base complète : 5/5 (Camp Nou, Malaga, Acapulco, ONU, Akkajaure). Conversation de test purgée.
+
+## 2026-07-09 nuit — 2 décisions Yohan appliquées (√145, villes_coordonnees) + TRONC §7/§8 VALIDÉ
+
+- **Piège √145 MIS À JOUR** (décision : maj plutôt que re-brider) : le check exige désormais l'irrationalité
+  DITE + l'approximation MARQUÉE (« √145 est irrationnel — … ≈ 12.041595 (approximation dite) ») — jamais une
+  décimale nue présentée comme exacte. valide_fonction **39/39** (était 37/38 avec le piège périmé).
+- **valide_villes_coordonnees RE-POINTÉ base réelle** (décision : re-pointer plutôt que fixture) : l'ancien
+  chemin `tests/datasets/lecteur` n'a jamais existé dans ce repo (héritage harnais) -> `LECTEUR_DATASETS_DIR`.
+  Gate de classe « base complète » : **50/50** sur les 72M (~/.verax/datasets/lecteur).
+- **TRONC §7/§8 VALIDÉS par Yohan** (faisceau population-de-candidats + carte fermée des 11 actes) — bâti
+  démarré (cf. entrée suivante). audit_ancres : décision = passage dédié (planifié cette nuit).
+
 ## 2026-07-09 nuit — FIL brique 4 : l'écho-repli à-côté est MORT (+ garde « question personnelle »)
 
 - **Anti-à-côté (`repond.py` étage 2)** : l'écho « D'après ce que tu m'as dit » exige désormais la COUVERTURE

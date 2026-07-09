@@ -69,7 +69,10 @@ cap = ia.cap_lieux("Toulouse", "Barcelone")
 check(cap is not None and 0 <= cap < 360, f"cap Toulouse->Barcelone dans [0,360) (obtenu {cap})")
 
 # ── BULK : les deux tables jumelles saines (relues indépendamment) ──
-DOSSIER = os.path.join(_ICI, "datasets", "lecteur")
+# RE-POINTÉ base réelle (décision Yohan 2026-07-09 nuit) : l'ancien chemin tests/datasets/lecteur n'a jamais
+# existé dans CE repo (héritage harnais). Gate de classe « base complète » : exige LECTEUR_DATASETS_DIR
+# pointant les 72M (l'échantillon embarqué n'a pas les >200k localités).
+DOSSIER = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(os.path.dirname(_ICI), "datasets", "lecteur")
 
 
 def _charge(rel):
