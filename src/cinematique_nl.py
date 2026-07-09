@@ -32,7 +32,10 @@ _RE_RENCONTRE = re.compile(
     r"(?:distants?\s+de|s[ée]par[ée]s?\s+de|[ée]loign[ée]s?\s+de|[àa])\s+" + _D_KM +
     r".*?l['’]un\s+vers\s+l['’]autre.*?" + _V2 + r"|"
     r"(?:deux|2)\s+(?:trains?|voitures?|v[ée]los?|cyclistes?|coureurs?|mobiles?|bateaux?|camions?)\b.*?"
-    r"l['’]un\s+vers\s+l['’]autre.*?(?:distants?\s+de|s[ée]par[ée]s?\s+de|[àa])\s+" + _D_KM + r".*?" + _V2,
+    r"l['’]un\s+vers\s+l['’]autre.*?(?:distants?\s+de|s[ée]par[ée]s?\s+de|[àa])\s+" + _D_KM + r".*?" + _V2 + r"|"
+    # vitesses AVANT la distance : « … l'un vers l'autre à 60 et 40 km/h, distance 150 km »
+    r"(?:deux|2)\s+(?:trains?|voitures?|v[ée]los?|cyclistes?|coureurs?|mobiles?|bateaux?|camions?)\b.*?"
+    r"l['’]un\s+vers\s+l['’]autre.*?" + _V2 + r".*?(?:distance|distants?|s[ée]par[ée]s?)\s+(?:de\s+)?" + _D_KM,
     re.I | re.S)
 _RE_CROISE = re.compile(r"se\s+(?:croisent|rencontrent|croiseront|rencontreront)|croisement|rencontre", re.I)
 _RE_POURSUITE = re.compile(
@@ -71,7 +74,10 @@ def resout(question: str):
         g = [x for x in m.groups() if x is not None]
         if len(g) != 5:
             return None
-        d, u_d, v1, v2, u_v = _f(g[0]), g[1], _f(g[2]), _f(g[3]), g[4]
+        if re.fullmatch(r"km|kilom[èe]tres?|m[èe]tres?|m", g[1], re.I):     # ordre distance-d'abord
+            d, u_d, v1, v2, u_v = _f(g[0]), g[1], _f(g[2]), _f(g[3]), g[4]
+        else:                                                                # ordre vitesses-d'abord (alt. 3)
+            v1, v2, u_v, d, u_d = _f(g[0]), _f(g[1]), g[2], _f(g[3]), g[4]
         if u_d.startswith("m") and "km" not in u_d and not u_v.startswith("m/s"):
             return None                                              # mètres avec km/h -> pas de conversion devinée
         if v1 + v2 == 0:
