@@ -1,0 +1,12 @@
+2 commits atomiques à faire (GitHub Desktop, tout est stagé — sépare si tu veux) :
+
+COMMIT 1 — src/pont_grandeurs.py + interface/serveur.py + tests/valide_et_si_pourquoi.py + tests/suite_conversation.py
+  Fil brique 3 : actes « et si » (intervention + simulation avant, avant/après montré, fil réel jamais
+  modifié, °C jamais multiplié) et « pourquoi » (ordre causal + directions q± PROUVÉES par recalcul 2 points,
+  prémisse fausse corrigée, « pourquoi ? » nu -> mécanisme) — gate 37/37, e2e .exe 9/9 ; _dtlm_num extrait +
+  correctif FAUX=0 (sens d'écoulement jamais lu d'une clause hypothèse)
+
+COMMIT 2 — interface/repond.py + tests/valide_assistant_nl.py + CHANGELOG.md
+  Fil brique 4 : écho-repli à-côté MORT (couverture totale exigée, exception rappel-tâche) + question
+  personnelle jamais au web (repli honnête dédié, classé est_fallback) — assistant_nl 506/506, suite 32/32,
+  e2e .exe vert

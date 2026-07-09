@@ -1,5 +1,50 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 nuit — FIL brique 4 : l'écho-repli à-côté est MORT (+ garde « question personnelle »)
+
+- **Anti-à-côté (`repond.py` étage 2)** : l'écho « D'après ce que tu m'as dit » exige désormais la COUVERTURE
+  TOTALE des mots de contenu de la question par l'énoncé rappelé — un recouvrement PARTIEL ressortait un
+  énoncé qui « parle du même sujet » sans y répondre (vécu sonde : « quelle puissance… ? » -> écho du fluide
+  chaud). Exception : un rappel-tâche stocké reste ré-servable dès qu'un mot de contenu est partagé. Sans
+  couverture -> la main passe aux étages HONNÊTES.
+- **Garde PERSONNELLE (débusquée par l'e2e de la brique)** : « quel est MON plat préféré ? » partait au
+  MÉTAMOTEUR et servait Wikipédia « Plat » en guise de réponse (l'étage 1·web tourne AVANT la mémoire de
+  dialogue). Une question à possessif 1ʳᵉ personne ne part plus JAMAIS au web ; sans rappel couvrant ->
+  repli honnête DÉDIÉ (« Ça te concerne, et tu ne me l'as pas encore dit — dis-le-moi et je le retiendrai »),
+  classé message d'ABSENCE (est_fallback) pour ne jamais coiffer le « vouliez-vous dire » d'une lecture guérie.
+- **Piège traversé en construisant** : en gate LÉGÈRE la guérison corrompait « mon plaT préféré » -> « plaN »
+  (lexique échantillon sans « plat » ; en base complète le filet definition_nom le protège — vérifié e2e .exe).
+  Gate écrite sur des mots stables de l'échantillon (« sport », « couleur »).
+- assistant_nl **506/506** (4 checks nouveaux), suite **32/32**. **E2E .exe** : écho à-côté mort (q2 -> web
+  attribué), rappel personnel couvrant servi (« ratatouille »), question personnelle sans matière -> repli
+  dédié. Conversation de test purgée, exe test tué par PID.
+
+## 2026-07-09 nuit — FIL brique 3 : actes « ET SI » (simulation avant) et « POURQUOI » (causal PROUVÉ par recalcul)
+
+- **Théories adaptées machine (recherche web à la brique)** : contrefactuel = intervenir sur UNE variable puis
+  re-propager dans les MÊMES équations (équations structurelles) — le registre fermé du pont EST déjà un
+  modèle causal structurel ; ordre causal extrait de la structure des équations (Iwasaki-Simon 1986) ;
+  directions q± (Forbus, qualitative process theory) — twist machine : la direction n'est JAMAIS affirmée à la
+  main, elle est PROUVÉE PAR RECALCUL à deux points sur les données de l'utilisateur.
+- **« ET SI » (`_et_si`)** : remplacement d'un slot température (« et si le froid sortait à 60 ? » — nombre nu
+  -> degrés IMPLICITES étiquetés), valeur sur Q/U/ΔTlm, multiplicateurs fermés (doublait/triplait/−20 %) —
+  monde hypothétique JETÉ après réponse (fil réel jamais modifié, vérifié e2e), avant/après montré (« DTLM ≈
+  30 au lieu de 36,9946 » + surface RE-PROPAGÉE), hypothèse qui casse la physique -> « impossible » DIT,
+  **°C jamais multiplié** (échelle non-ratio — refus expliqué), ×2 sans valeur réelle -> demande NOMMÉE.
+- **« POURQUOI » (`_pourquoi` + `pourquoi_dernier` câblé serveur)** : « pourquoi ? » NU -> mécanisme de la
+  dernière réponse du pont (log-mean exact sous hypothèses standard / définition de U / principe FAUX=0 sur une
+  demande d'opérande) ; « pourquoi A augmente quand ΔTlm baisse » -> formule + preuve 2 points ; **prémisse
+  fausse -> CORRIGÉE** (« Ce n'est pas ce qui se passe : … A DIMINUE »), jamais validée ; « pourquoi le sens
+  compte » -> les DEUX sens calculés sur les données ; effet slot→DTLM MESURÉ par perturbation ±5° ; sans
+  données -> jamais une tendance affirmée sans preuve ; « de quoi dépend » -> ordre causal complet.
+- **Au passage** : cœur numérique `_dtlm_num` extrait (tue le re-parsing de texte dans `_surface`) ; correctif
+  FAUX=0 — le sens contre/co-courant ne se lit PLUS dans une clause hypothèse (« si c'était à contre-courant »
+  fixait silencieusement le monde réel) ; `_SENS` étendu à l'imparfait/conditionnel (« sortait/entrerait »).
+- Gate `valide_et_si_pourquoi` **37/37** ; pont 16/16, situation 21/21 intacts ; suite **32/32**. **E2E .exe
+  9/9** (sonde ingénieur complète : accusés -> DTLM -> pourquoi nu -> et-si slot -> pourquoi causal -> ×2
+  puissance -> fil intact -> ordre causal). Conversation de test purgée, exe test tué par PID.
+- Reste du chantier : généraliser le pont au-delà du thermo ; ④ tuer l'écho-repli à-côté ; ⑤ TRONC §7/§8.
+
 ## 2026-07-09 nuit — FIL brique 2 : PONT GRANDEURS→MOTEURS — la sonde échangeur passe 7/7 dans le .exe
 
 - **`src/pont_grandeurs.py`** : les grandeurs ÉNONCÉES deviennent des OPÉRANDES. Machine à états sur les
