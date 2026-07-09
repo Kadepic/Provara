@@ -5045,8 +5045,16 @@ def _quiz_verdict(conv_id, texte: str):
     # jamais la conversation — l'état est simplement consommé et la demande traitée normalement.
     if _veut_reponse(texte) and len(tn.split()) > 3:
         return None
+    # ÉGALITÉ DE JETONS ÉPURÉS, jamais une sous-chaîne (vécu 2026-07-09, violation FAUX=0 mesurée : le tirage
+    # « capitale du Burkina Faso » jugeait ✔ « Ouagadougou-les-Bains » (sous-chaîne) ET « pas Paris » (le mot y
+    # est). On retire un lexique BORNÉ de remplissage (« c'est … je crois ») des DEUX côtés puis on exige
+    # l'égalité exacte des jetons restants : la négation (« pas ») et tout excédent (« …-les-Bains ») recalent.
+    _FILLER = {"c", "est", "ce", "je", "crois", "pense", "dirais", "dirai", "reponse", "la", "le", "les",
+               "l", "il", "me", "semble", "euh", "heu", "hum", "ben", "bah", "alors", "oui", "ca", "doit",
+               "peut", "etre"}
+    _epure = lambda s: [m for m in s.split() if m not in _FILLER]
     attendu = _normalise(q["valeur"]).strip()
-    if attendu and (tn == attendu or attendu in tn.split() or attendu in tn):
+    if attendu and _epure(tn) == _epure(attendu):
         return ("✔ Exact — %s (fait vérifié de ma base). Redis « challenge-moi » pour une autre question."
                 % q["valeur"])
     return ("✘ Non — pour « %s », la réponse vérifiée est %s (tu as dit : « %s »). "
