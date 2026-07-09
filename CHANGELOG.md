@@ -1,5 +1,64 @@
 # Journal des modifications — Provara
 
+## 2026-07-10 — TARBALL RELEASE régénéré (l'item en attente depuis l'audit)
+
+- **`C:\Users\yohan\Downloads\datasets_complets.tar.gz` régénéré depuis la base réelle À JOUR**
+  (590 600 948 octets ≈ 563 Mo, 1371 tables) : contient désormais Honshū réinjecté (superficie_ile) et les
+  veines dirigeants (chef_etat_pays_annee, chef_gouvernement_pays_annee…) absentes de l'ancien tarball.
+  Artefact de travail `superficie_ile.jsonl.bak-honshu` EXCLU. Structure vérifiée (racine `lecteur/`,
+  1372 entrées listées). **Reste à faire par Yohan : uploader sur la Release GitHub (nom EXACT).**
+
+## 2026-07-10 — COMPILATEUR : VAGUE 4 — t = Q/I (autonomie) + « combien de temps » multi-roues
+
+- **Roue AUTONOMIE t = Q/I** : « la batterie fait 5 Ah et le circuit tire 0,5 ampères » + « combien de temps
+  va-t-elle tenir ? » -> « Autonomie ≈ 10 h (t = Q/I…) NB : à courant constant ». Et-si vécu e2e : « et si le
+  circuit tirait 1 ampère ? » -> 5 h au lieu de 10 — la roue NOMMÉE par la cible prime sur la branche élec.
+- **« combien de temps » routé par ANCRES sur 3 roues sans collision** : batterie+courant -> t = Q/I (10 h) ;
+  Wh+W -> t = E/P (3,7 h, roue E = P·t ouverte à cette cible) ; distance+vitesse -> t = d/v (3 h) ; aucun
+  ancrage -> None (jamais capturé).
+- Gate **valide_roues_compilees 47/47** (10 roues compilées), suite **37/37**, e2e .exe 3/3, convs purgées,
+  exe test tué par PID.
+- **CARTE DES ROUES introspectable** (« quelles grandeurs sais-tu relier ? ») : les 10 roues + les
+  grandeurs PARTAGÉES (les ponts) listées — transparence des capacités ET substrat du gap-engine v2
+  (l'invention = chercher des chemins dans ce graphe). Gate 49/49, suite 37/37.
+
+## 2026-07-10 — COMPILATEUR : VAGUE 3 (l'or du quotidien) — 9 roues compilées au total
+
+- **C = 100·V/d** : « j'ai mis 45 litres pour 600 km » -> « Consommation ≈ 7,5 L/100 km » (jamais en
+  collision avec l'alias consommation->énergie de la roue E = P·t : les ancrages diffèrent).
+- **E = Q·U (batterie)** : « 5000 mAh en 3,7 volts » -> « Énergie ≈ 18,5 Wh (E = Q×U…) NB : énergie
+  NOMINALE » ; inversion « quelle capacité ? » (74 Wh / 3,7 V -> 20 Ah — alias capacité -> charge, la tête
+  polysémique stade/salle reste au pipeline sans Ah/Wh énoncés). Unités ah/mah typées (sûres après un
+  chiffre) ; ancre héritée du banc : E+U énoncés SANS Ah ancrent aussi (l'inversion vécue).
+- Gate **valide_roues_compilees 43/43**, suite **37/37**, **e2e .exe 4/4** (conso 7,5 L/100 km + batterie
+  18,5 Wh vécus dans le produit). Convs purgées, exe test tué par PID.
+
+## 2026-07-10 — COMPILATEUR FORMULES -> ROUES (validé Yohan) + vagues 1-2 : 7 roues compilées
+
+- **Le mouvement (la suite logique vers l'invention, validée par Yohan)** : une formule MONÔME
+  (résultat = c·Π varᵃ) se compile en roue COMPLÈTE — relation directe + TOUTES les inverses en FORME FERMÉE
+  (xᵢ = (y/(c·Π autres))^(1/aᵢ)), gardes numériques du compilateur (`_puiss` : zéro, négatif sous racine,
+  overflow -> None, jamais une exception ni une valeur inventée — prouvé par ALLER-RETOUR en gate). Une roue
+  = une DÉCLARATION (~30 lignes : unités, ancres, libellés) — plus aucune lambda d'inversion à la main.
+  Les non-monômes (sommes, logs, Carnot, pH) restent HORS périmètre — dit, jamais approximé.
+- **VAGUE 1 (l'utile quotidien)** : v = d/t (« 150 km en 2 heures » -> 75 km/h ; « combien de temps pour
+  300 km à 100 km/h ? » -> 3 h depuis la question seule) · P = m·g (« je pèse 80 kg » -> 784,532 N,
+  pédagogie masse/force DITE) · Ec = ½mv² (90 km/h converti 25 m/s -> 375 000 J ; **q± QUADRATIQUE prouvé
+  par recalcul : v ×1,2 -> Ec ×1,44**) · ρ = m/V (2 kg / 3 L -> 666,67 kg/m³, note densité-stricte).
+- **VAGUE 2** : P = F/S (2 MPa, note bar) · P = F·v (12 kW mécanique SANS voler la cible électrique — ancre
+  force) · V = Q·t (**pont hydro-temps** : 20 l/s pendant 2 h -> 144 m³).
+- **Anti-capture par ancres** : durée seule n'ancre pas (« à quelle vitesse va le TGV ? » -> None),
+  « quel temps fait-il ? » jamais pris, « densité de population » exclue par lookahead, pression seule
+  (thermo « 3 bars ») n'ancre pas F/S.
+- **3 correctifs nés du banc/e2e** : les branches et-si laissent PASSER le None (l'hydro avalait « et si
+  elle roulait à 45 km/h » -> réponse plate) ; la roue NOMMÉE par la cible prime sur la roue du dim de
+  l'hypothèse (« et si le débit…, quel VOLUME ? ») ; la QUESTION fournit aussi des opérandes aux mondes
+  et-si (« …quel volume écoulé en 2 HEURES ? » — avant/après comparables).
+- Moteur : extraction de cible multi-groupes ; `pourquoi_dernier` discrimine désormais par SIGNATURE de
+  formule (« Vitesse ≈ » hydro vs cinématique) ; unités force (newton/newtons/kN — « n » nu exclu) typées
+  dans situation.py. Gate **valide_roues_compilees 38/38** (ajoutée à la suite -> 37 gates), toutes les
+  gates de roues sœurs intactes.
+
 ## 2026-07-09 jour (suite) — BACKLOG ANCRAGE ÉPUISÉ : 1371/1371 relations référencées (100 %), 0 fait non ancré
 
 - **TRANCHE 5 = LA TRAÎNE ENTIÈRE (73 tables, ≈ 327k faits)** dans `valide_ancres_types` (**309/309**) :

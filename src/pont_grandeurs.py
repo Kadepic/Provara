@@ -364,9 +364,10 @@ _ROUE_ENERGIE = {
                   ("durée", ("énergie", "puissance"), lambda e, p: e * 1000.0 / p if p else None, "t = E/P")),
     "cible_re": re.compile(
         r"\b([ée]nergie|consommation)\b.{0,40}\??\s*$|"
-        r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|le\s+|l['’])?)?([ée]nergie|consommation)\b", re.I),
+        r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|le\s+|l['’])?)?([ée]nergie|consommation)\b|"
+        r"\bcombien\s+de\s+(temps)\b", re.I),
     "q_re": re.compile(r"\b([ée]nergie|consommation|puissance|dur[ée]e)\b", re.I),
-    "alias": {"energie": "énergie", "consommation": "énergie", "duree": "durée"},
+    "alias": {"energie": "énergie", "consommation": "énergie", "duree": "durée", "temps": "durée"},
     "cible_defaut": "énergie",
     "devise": "roue E = P·t",
     "note": " NB : à puissance constante sur la durée — si elle varie, donne-moi la puissance moyenne.",
@@ -380,7 +381,358 @@ _ROUE_ENERGIE = {
     "paire_exemple": "l'énergie ou la puissance",
 }
 
-_ROUES = (_ROUE_ELEC, _ROUE_HYDRO, _ROUE_ENERGIE)
+# ═══ COMPILATEUR FORMULES -> ROUES (validé Yohan 2026-07-10) — la suite logique vers l'invention ═══
+# Une formule MONÔME (résultat = c·Π varᵃ) se compile en roue COMPLÈTE : la relation directe ET toutes les
+# inverses en FORME FERMÉE (xᵢ = (y/(c·Π autres))^(1/aᵢ)), gardes numériques incluses (zéro, négatif sous
+# racine, overflow -> None, jamais une exception ni une valeur fausse). Fini les lambdas d'inversion à la
+# main : une roue = une déclaration. Les formules NON monômes (sommes, logs, Carnot, pH…) restent HORS
+# périmètre du compilateur — dit, jamais approximé.
+def _puiss(x, a):
+    """x^a gardé : 0^(a>0) = 0, 0^(a≤0) = None, négatif sous exposant non entier = None, overflow = None."""
+    if x == 0:
+        return 0.0 if a > 0 else None
+    if x < 0 and a != int(a):
+        return None
+    try:
+        return float(x ** a)
+    except (ValueError, OverflowError, ZeroDivisionError):
+        return None
+
+
+def _relations_monome(resultat: str, constante: float, exposants: dict, labels: dict) -> tuple:
+    """Compile `resultat = constante · Π var^exp` -> les relations de roue (directe + toutes les inverses)."""
+    ordre = tuple(exposants)
+
+    def _fwd(*vals):
+        r = constante
+        for x, v in zip(vals, ordre):
+            p = _puiss(x, exposants[v])
+            if p is None:
+                return None
+            r *= p
+        return r
+
+    rels = [(resultat, ordre, _fwd, labels[resultat])]
+    for v in ordre:
+        autres = tuple(w for w in ordre if w != v)
+
+        def _inv(y, *vals, _v=v, _autres=autres):
+            den = constante
+            for x, w in zip(vals, _autres):
+                p = _puiss(x, exposants[w])
+                if p is None:
+                    return None
+                den *= p
+            if den == 0:
+                return None
+            return _puiss(y / den, 1.0 / exposants[_v])
+
+        rels.append((v, (resultat,) + autres, _inv, labels[v]))
+    return tuple(rels)
+
+
+# ── VAGUE 1 (l'utile quotidien) : v = d/t · P = m·g · Ec = ½mv² · ρ = m/V ──
+G_PESANTEUR = 9.80665                                     # pesanteur normale (même valeur que physique.py)
+
+_ROUE_CINEMATIQUE = {
+    "nom": "cinématique moyenne",
+    "dims": ("vitesse", "distance", "durée"),
+    "unites": {"vitesse": "km/h", "distance": "km", "durée": "h"},
+    "fil_dims": {"vitesse": "vitesse", "longueur": "distance", "temps": "durée"},
+    "conv": {"vitesse": {"km/h": 1.0, "km h": 1.0, "kmh": 1.0, "kilometre heure": 1.0, "kilometres heure": 1.0,
+                         "kilometre par heure": 1.0, "kilometres par heure": 1.0,
+                         "m/s": 3.6, "m s": 3.6, "metre par seconde": 3.6, "metres par seconde": 3.6},
+             "distance": {"km": 1.0, "kilometre": 1.0, "kilometres": 1.0,
+                          "m": 1e-3, "metre": 1e-3, "metres": 1e-3},
+             "durée": {"heure": 1.0, "heures": 1.0, "jour": 24.0, "jours": 24.0,
+                       "min": 1.0 / 60, "minute": 1.0 / 60, "minutes": 1.0 / 60,
+                       "seconde": 1.0 / 3600, "secondes": 1.0 / 3600}},
+    "ancres": ("distance",),                    # une durée seule n'ancre pas (« à quelle vitesse va le TGV ? »)
+    "articles": {"vitesse": "la vitesse", "distance": "la distance", "durée": "la durée"},
+    "noms": {"vitesse": "la vitesse (en km/h)", "distance": "la distance (en km)",
+             "durée": "la durée du trajet (en heures ou minutes)"},
+    "relations": _relations_monome("vitesse", 1.0, {"distance": 1, "durée": -1},
+                                   {"vitesse": "v = d/t", "distance": "d = v×t", "durée": "t = d/v"}),
+    "cible_re": re.compile(
+        r"\b(vitesse|distance)\b.{0,40}\??\s*$|"
+        r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|l['’])?)?(vitesse|distance)\b|"
+        r"\bcombien\s+de\s+(temps)\b", re.I),
+    "q_re": re.compile(r"\b(vitesse|distance|dur[ée]e)\b", re.I),
+    "alias": {"temps": "durée", "duree": "durée"},
+    "cible_defaut": "vitesse",
+    "devise": "roue v = d/t",
+    "note": " NB : vitesse MOYENNE sur le trajet (d/t).",
+    "deps": {"vitesse": "v = d/t (la vitesse moyenne est la distance divisée par la durée)",
+             "distance": "d = v×t (la distance est la vitesse moyenne × la durée)",
+             "durée": "t = d/v (la durée est la distance divisée par la vitesse moyenne)"},
+    "paire_exemple": "la distance ou la durée",
+}
+
+_ROUE_POIDS = {
+    "nom": "poids",
+    "dims": ("poids", "masse"),
+    "unites": {"poids": "N", "masse": "kg"},
+    "fil_dims": {"force": "poids", "masse": "masse"},
+    "conv": {"poids": {"newton": 1.0, "newtons": 1.0, "kn": 1e3},
+             "masse": {"kg": 1.0, "kilo": 1.0, "kilos": 1.0, "kilogramme": 1.0, "kilogrammes": 1.0,
+                       "g": 1e-3, "gramme": 1e-3, "grammes": 1e-3, "tonne": 1e3, "tonnes": 1e3}},
+    "ancres": ("masse", "poids"),
+    "articles": {"poids": "le poids", "masse": "la masse"},
+    "noms": {"poids": "le poids (en newtons)", "masse": "la masse (en kg)"},
+    "relations": _relations_monome("poids", G_PESANTEUR, {"masse": 1},
+                                   {"poids": "P = m×g (g = 9,80665 m/s²)", "masse": "m = P/g"}),
+    "cible_re": re.compile(r"\b(poids)\b.{0,40}\??\s*$|^\s*(?:quel\s+(?:est\s+)?(?:le\s+)?)?(poids)\b", re.I),
+    "q_re": re.compile(r"\b(poids|masse)\b", re.I),
+    "alias": {},
+    "cible_defaut": "poids",
+    "devise": "roue P = m·g",
+    "note": " NB : le poids est une FORCE (en newtons) — ce que tu donnes en kg est ta MASSE ; g pris à "
+            "9,80665 m/s² (pesanteur normale, au niveau de la mer).",
+    "deps": {"poids": "P = m·g (le poids est la masse × l'accélération de la pesanteur)",
+             "masse": "m = P/g (la masse est le poids divisé par g)"},
+    "paire_exemple": "le poids",
+}
+
+_ROUE_EC = {
+    "nom": "énergie cinétique",
+    "dims": ("énergie cinétique", "masse", "vitesse"),
+    "unites": {"énergie cinétique": "J", "masse": "kg", "vitesse": "m/s"},
+    "fil_dims": {"énergie": "énergie cinétique", "masse": "masse", "vitesse": "vitesse"},
+    "conv": {"énergie cinétique": {"j": 1.0, "kj": 1e3, "mj": 1e6, "kwh": 3.6e6, "wh": 3600.0},
+             "masse": {"kg": 1.0, "kilo": 1.0, "kilos": 1.0, "kilogramme": 1.0, "kilogrammes": 1.0,
+                       "g": 1e-3, "gramme": 1e-3, "grammes": 1e-3, "tonne": 1e3, "tonnes": 1e3},
+             "vitesse": {"m/s": 1.0, "m s": 1.0, "metre par seconde": 1.0, "metres par seconde": 1.0,
+                         "km/h": 1 / 3.6, "km h": 1 / 3.6, "kmh": 1 / 3.6, "kilometre heure": 1 / 3.6,
+                         "kilometres heure": 1 / 3.6, "kilometre par heure": 1 / 3.6,
+                         "kilometres par heure": 1 / 3.6}},
+    "ancres": ("masse",),
+    "articles": {"énergie cinétique": "l'énergie cinétique", "masse": "la masse", "vitesse": "la vitesse"},
+    "noms": {"énergie cinétique": "l'énergie cinétique (en joules)", "masse": "la masse (en kg)",
+             "vitesse": "la vitesse (en km/h ou m/s)"},
+    "relations": _relations_monome("énergie cinétique", 0.5, {"masse": 1, "vitesse": 2},
+                                   {"énergie cinétique": "Ec = ½·m·v²", "masse": "m = 2·Ec/v²",
+                                    "vitesse": "v = √(2·Ec/m)"}),
+    "cible_re": re.compile(r"\b([ée]nergie\s+cin[ée]tique)\b", re.I),
+    "q_re": re.compile(r"\b([ée]nergie\s+cin[ée]tique|masse|vitesse)\b", re.I),
+    "alias": {"energie cinetique": "énergie cinétique"},
+    "cible_defaut": "énergie cinétique",
+    "devise": "roue Ec = ½·m·v²",
+    "deps": {"énergie cinétique": "Ec = ½·m·v² (l'énergie cinétique croît comme le CARRÉ de la vitesse — "
+                                  "2× plus vite = 4× plus d'énergie)",
+             "masse": "m = 2·Ec/v²", "vitesse": "v = √(2·Ec/m)"},
+    "paire_exemple": "la masse ou la vitesse",
+}
+
+_ROUE_MASSE_VOL = {
+    "nom": "masse volumique",
+    "dims": ("masse volumique", "masse", "volume"),
+    "unites": {"masse volumique": "kg/m³", "masse": "kg", "volume": "m³"},
+    "fil_dims": {"masse": "masse", "volume": "volume"},
+    "conv": {"masse volumique": {},
+             "masse": {"kg": 1.0, "kilo": 1.0, "kilos": 1.0, "kilogramme": 1.0, "kilogrammes": 1.0,
+                       "g": 1e-3, "gramme": 1e-3, "grammes": 1e-3, "tonne": 1e3, "tonnes": 1e3},
+             "volume": {"m3": 1.0, "metre cube": 1.0, "metres cubes": 1.0, "l": 1e-3, "litre": 1e-3,
+                        "litres": 1e-3, "cl": 1e-5, "centilitre": 1e-5, "centilitres": 1e-5,
+                        "ml": 1e-6, "millilitre": 1e-6, "millilitres": 1e-6, "cm3": 1e-6,
+                        "hectolitre": 0.1, "hectolitres": 0.1, "dl": 1e-4}},
+    "ancres": ("masse", "volume"),
+    "articles": {"masse volumique": "la masse volumique", "masse": "la masse", "volume": "le volume"},
+    "noms": {"masse volumique": "la masse volumique (en kg/m³)", "masse": "la masse (en kg)",
+             "volume": "le volume (en litres ou m³)"},
+    "relations": _relations_monome("masse volumique", 1.0, {"masse": 1, "volume": -1},
+                                   {"masse volumique": "ρ = m/V", "masse": "m = ρ×V", "volume": "V = m/ρ"}),
+    "cible_re": re.compile(r"\b(masse\s+volumique|densit[ée](?!\s+de\s+population))\b", re.I),
+    "q_re": re.compile(r"\b(masse\s+volumique|densit[ée]|volume)\b", re.I),
+    "alias": {"densite": "masse volumique"},
+    "cible_defaut": "masse volumique",
+    "devise": "roue ρ = m/V",
+    "note": " NB : masse volumique en kg/m³ — la densité au sens strict est le rapport à l'eau, sans unité "
+            "(divise par 1000).",
+    "deps": {"masse volumique": "ρ = m/V (la masse volumique est la masse divisée par le volume)",
+             "masse": "m = ρ×V", "volume": "V = m/ρ"},
+    "paire_exemple": "la masse ou le volume",
+}
+
+
+# ── VAGUE 2 (2026-07-10) : P = F/S · P = F·v · V = Q·t (le volume écoulé ponte l'hydraulique et le temps) ──
+_ROUE_PRESSION = {
+    "nom": "pression",
+    "dims": ("pression", "force", "surface"),
+    "unites": {"pression": "Pa", "force": "N", "surface": "m²"},
+    "fil_dims": {"pression": "pression", "force": "force", "aire": "surface"},
+    "conv": {"pression": {"pa": 1.0, "kpa": 1e3, "mpa": 1e6, "hpa": 100.0, "bar": 1e5, "bars": 1e5},
+             "force": {"newton": 1.0, "newtons": 1.0, "kn": 1e3},
+             "surface": {"m2": 1.0, "m²": 1.0, "metre carre": 1.0, "metres carres": 1.0,
+                         "cm2": 1e-4, "cm²": 1e-4, "centimetre carre": 1e-4, "centimetres carres": 1e-4,
+                         "mm2": 1e-6, "mm²": 1e-6}},
+    "ancres": ("force", "surface"),                       # une pression seule (thermo « 3 bars ») n'ancre pas
+    "articles": {"pression": "la pression", "force": "la force", "surface": "la surface"},
+    "noms": {"pression": "la pression (en Pa ou bars)", "force": "la force (en newtons)",
+             "surface": "la surface d'appui (en m² ou cm²)"},
+    "relations": _relations_monome("pression", 1.0, {"force": 1, "surface": -1},
+                                   {"pression": "P = F/S", "force": "F = P×S", "surface": "S = F/P"}),
+    "cible_re": re.compile(r"\b(pression)\b.{0,40}\??\s*$|"
+                           r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|l['\u2019])?)?(pression)\b", re.I),
+    "q_re": re.compile(r"\b(pression|force|surface)\b", re.I),
+    "alias": {},
+    "cible_defaut": "pression",
+    "devise": "roue P = F/S",
+    "note": " NB : 1 bar = 100 000 Pa.",
+    "deps": {"pression": "P = F/S (la pression est la force par unité de surface — même force, surface "
+                         "2× plus petite = pression 2× plus grande)",
+             "force": "F = P×S", "surface": "S = F/P"},
+    "paire_exemple": "la force ou la surface",
+}
+
+_ROUE_PUISSANCE_MECA = {
+    "nom": "puissance mécanique",
+    "dims": ("puissance", "force", "vitesse"),
+    "unites": {"puissance": "W", "force": "N", "vitesse": "m/s"},
+    "fil_dims": {"puissance": "puissance", "force": "force", "vitesse": "vitesse"},
+    "conv": {"puissance": dict(_W_FACT),
+             "force": {"newton": 1.0, "newtons": 1.0, "kn": 1e3},
+             "vitesse": {"m/s": 1.0, "m s": 1.0, "metre par seconde": 1.0, "metres par seconde": 1.0,
+                         "km/h": 1 / 3.6, "km h": 1 / 3.6, "kmh": 1 / 3.6, "kilometre heure": 1 / 3.6,
+                         "kilometres heure": 1 / 3.6, "kilometre par heure": 1 / 3.6,
+                         "kilometres par heure": 1 / 3.6}},
+    "ancres": ("force",),                                 # la force est la signature mécanique (jamais le W seul)
+    "articles": {"puissance": "la puissance", "force": "la force", "vitesse": "la vitesse"},
+    "noms": {"puissance": "la puissance (en watts)", "force": "la force (en newtons)",
+             "vitesse": "la vitesse (en m/s ou km/h)"},
+    "relations": _relations_monome("puissance", 1.0, {"force": 1, "vitesse": 1},
+                                   {"puissance": "P = F×v", "force": "F = P/v", "vitesse": "v = P/F"}),
+    "cible_re": re.compile(r"\b(puissance|force)\b.{0,40}\??\s*$|"
+                           r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|l['\u2019])?)?(puissance|force)\b", re.I),
+    "q_re": re.compile(r"\b(puissance|force|vitesse)\b", re.I),
+    "alias": {},
+    "cible_defaut": "puissance",
+    "devise": "roue P = F·v",
+    "note": " NB : puissance mécanique à force et vitesse colinéaires et constantes.",
+    "deps": {"puissance": "P = F·v (la puissance mécanique est la force × la vitesse de déplacement)",
+             "force": "F = P/v", "vitesse": "v = P/F"},
+    "paire_exemple": "la force ou la vitesse",
+}
+
+_ROUE_VOLUME_ECOULE = {
+    "nom": "volume écoulé",
+    "dims": ("volume", "débit", "durée"),
+    "unites": {"volume": "m³", "débit": "m³/s", "durée": "s"},
+    "fil_dims": {"volume": "volume", "débit": "débit", "temps": "durée"},
+    "conv": {"volume": {"m3": 1.0, "metre cube": 1.0, "metres cubes": 1.0, "l": 1e-3, "litre": 1e-3,
+                        "litres": 1e-3, "hectolitre": 0.1, "hectolitres": 0.1},
+             "débit": {"m3/s": 1.0, "m³/s": 1.0, "m3/h": 1.0 / 3600, "m³/h": 1.0 / 3600,
+                       "l/s": 1e-3, "l/min": 1.0 / 60000, "l/h": 1.0 / 3.6e6},
+             "durée": {"seconde": 1.0, "secondes": 1.0, "min": 60.0, "minute": 60.0, "minutes": 60.0,
+                       "heure": 3600.0, "heures": 3600.0, "jour": 86400.0, "jours": 86400.0}},
+    "ancres": ("débit",),                                 # un volume/une durée seuls n'ancrent pas l'écoulement
+    "articles": {"volume": "le volume", "débit": "le débit", "durée": "la durée"},
+    "noms": {"volume": "le volume (en litres ou m³)", "débit": "le débit (en l/s ou m³/h)",
+             "durée": "la durée d'écoulement (en minutes ou heures)"},
+    "relations": _relations_monome("volume", 1.0, {"débit": 1, "durée": 1},
+                                   {"volume": "V = Q×t", "débit": "Q = V/t", "durée": "t = V/Q"}),
+    "cible_re": re.compile(r"\b(volume)\b.{0,40}\??\s*$|"
+                           r"^\s*(?:quel\s+(?:est\s+)?(?:le\s+)?)?(volume)\b", re.I),
+    "q_re": re.compile(r"\b(volume|d[ée]bit|dur[ée]e)\b", re.I),
+    "alias": {"debit": "débit", "duree": "durée"},
+    "cible_defaut": "volume",
+    "devise": "roue V = Q·t",
+    "note": " NB : à débit constant sur la durée.",
+    "deps": {"volume": "V = Q·t (le volume écoulé est le débit × la durée, à débit constant)",
+             "débit": "Q = V/t", "durée": "t = V/Q"},
+    "paire_exemple": "le débit ou la durée",
+}
+
+
+# ── VAGUE 3 (2026-07-10) : C = 100·V/d (conso carburant) · E = Q·U (batterie) ──
+_ROUE_CONSO = {
+    "nom": "consommation carburant",
+    "dims": ("consommation", "carburant", "distance"),
+    "unites": {"consommation": "L/100 km", "carburant": "L", "distance": "km"},
+    "fil_dims": {"volume": "carburant", "longueur": "distance"},
+    "conv": {"consommation": {},
+             "carburant": {"l": 1.0, "litre": 1.0, "litres": 1.0},
+             "distance": {"km": 1.0, "kilometre": 1.0, "kilometres": 1.0,
+                          "m": 1e-3, "metre": 1e-3, "metres": 1e-3}},
+    "ancres": ("carburant", "distance"),
+    "articles": {"consommation": "la consommation", "carburant": "le carburant", "distance": "la distance"},
+    "noms": {"consommation": "la consommation (en L/100 km)", "carburant": "le volume de carburant (en litres)",
+             "distance": "la distance parcourue (en km)"},
+    "relations": _relations_monome("consommation", 100.0, {"carburant": 1, "distance": -1},
+                                   {"consommation": "C = 100·V/d", "carburant": "V = C×d/100",
+                                    "distance": "d = 100·V/C"}),
+    "cible_re": re.compile(r"\b(consommation|consomme)\b.{0,40}\??\s*$|"
+                           r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|l['\u2019])?)?(consommation)\b", re.I),
+    "q_re": re.compile(r"\b(consommation|carburant|distance)\b", re.I),
+    "alias": {"consomme": "consommation"},
+    "cible_defaut": "consommation",
+    "devise": "roue C = 100·V/d",
+    "note": " NB : consommation MOYENNE sur le trajet.",
+    "deps": {"consommation": "C = 100·V/d (la consommation moyenne est le volume consommé rapporté à 100 km)",
+             "carburant": "V = C×d/100", "distance": "d = 100·V/C"},
+    "paire_exemple": "le volume ou la distance",
+}
+
+_ROUE_BATTERIE = {
+    "nom": "batterie",
+    "dims": ("énergie", "charge", "tension"),
+    "unites": {"énergie": "Wh", "charge": "Ah", "tension": "V"},
+    "fil_dims": {"énergie": "énergie", "charge": "charge", "tension": "tension"},
+    "conv": {"énergie": {"wh": 1.0, "kwh": 1e3, "j": 1.0 / 3600, "kj": 1.0 / 3.6},
+             "charge": {"ah": 1.0, "mah": 1e-3},
+             "tension": {"v": 1.0, "volt": 1.0, "volts": 1.0, "kv": 1e3}},
+    "ancres": ("charge", "énergie"),                      # la tension seule = contexte électrique, pas batterie
+    "articles": {"énergie": "l'énergie", "charge": "la charge", "tension": "la tension"},
+    "noms": {"énergie": "l'énergie (en Wh)", "charge": "la charge (en Ah ou mAh)",
+             "tension": "la tension nominale (en volts)"},
+    "relations": _relations_monome("énergie", 1.0, {"charge": 1, "tension": 1},
+                                   {"énergie": "E = Q×U", "charge": "Q = E/U", "tension": "U = E/Q"}),
+    "cible_re": re.compile(r"\b([ée]nergie|capacit[ée])\b.{0,40}\??\s*$|"
+                           r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|l['\u2019])?)?([ée]nergie|capacit[ée])\b", re.I),
+    "q_re": re.compile(r"\b([ée]nergie|charge|tension|capacit[ée])\b", re.I),
+    "alias": {"energie": "énergie", "capacite": "charge"},
+    "cible_defaut": "énergie",
+    "devise": "roue E = Q·U",
+    "note": " NB : énergie NOMINALE (charge × tension nominale).",
+    "deps": {"énergie": "E = Q·U (l'énergie d'une batterie est sa charge × sa tension nominale — "
+                        "5000 mAh sous 3,7 V = 18,5 Wh)",
+             "charge": "Q = E/U", "tension": "U = E/Q"},
+    "paire_exemple": "la charge ou la tension",
+}
+
+
+# ── VAGUE 4 (2026-07-10) : t = Q/I (autonomie de batterie — ponte l'électrique et la charge) ──
+_ROUE_AUTONOMIE = {
+    "nom": "autonomie",
+    "dims": ("autonomie", "charge", "courant"),
+    "unites": {"autonomie": "h", "charge": "Ah", "courant": "A"},
+    "fil_dims": {"charge": "charge", "courant": "courant", "temps": "autonomie"},
+    "conv": {"autonomie": {"heure": 1.0, "heures": 1.0, "min": 1.0 / 60, "minute": 1.0 / 60,
+                           "minutes": 1.0 / 60, "jour": 24.0, "jours": 24.0},
+             "charge": {"ah": 1.0, "mah": 1e-3},
+             "courant": {"ampere": 1.0, "amperes": 1.0, "ampère": 1.0, "ampères": 1.0}},
+    "ancres": ("charge",),                                # le courant seul = contexte élec, pas autonomie
+    "articles": {"autonomie": "l'autonomie", "charge": "la charge", "courant": "le courant"},
+    "noms": {"autonomie": "l'autonomie (en heures)", "charge": "la charge (en Ah ou mAh)",
+             "courant": "le courant tiré (en ampères)"},
+    "relations": _relations_monome("autonomie", 1.0, {"charge": 1, "courant": -1},
+                                   {"autonomie": "t = Q/I", "charge": "Q = t×I", "courant": "I = Q/t"}),
+    "cible_re": re.compile(r"\b(autonomie)\b.{0,40}\??\s*$|"
+                           r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|l['\u2019])?)?(autonomie)\b|"
+                           r"\bcombien\s+de\s+(temps)\b", re.I),
+    "q_re": re.compile(r"\b(autonomie|charge|courant)\b", re.I),
+    "alias": {"temps": "autonomie"},
+    "cible_defaut": "autonomie",
+    "devise": "roue t = Q/I",
+    "note": " NB : à courant constant (autonomie nominale).",
+    "deps": {"autonomie": "t = Q/I (l'autonomie est la charge divisée par le courant tiré, à courant constant)",
+             "charge": "Q = t×I", "courant": "I = Q/t"},
+    "paire_exemple": "la charge ou le courant",
+}
+
+_ROUES_COMPILEES = (_ROUE_CINEMATIQUE, _ROUE_POIDS, _ROUE_EC, _ROUE_MASSE_VOL,
+                    _ROUE_PRESSION, _ROUE_PUISSANCE_MECA, _ROUE_VOLUME_ECOULE,
+                    _ROUE_CONSO, _ROUE_BATTERIE, _ROUE_AUTONOMIE)
+_ROUES = (_ROUE_ELEC, _ROUE_HYDRO, _ROUE_ENERGIE) + _ROUES_COMPILEES
 
 
 def _liste_ou(noms: list) -> str:
@@ -453,7 +805,7 @@ def _roue_repond(question: str, sit, roue: dict):
     m = roue["cible_re"].search(question)
     if not m:
         return None
-    cible = normalise(m.group(1) or m.group(2) or "")
+    cible = normalise(next((g for g in m.groups() if g), ""))
     cible = roue["alias"].get(cible, cible)
     if cible not in roue["dims"]:
         return None
@@ -487,6 +839,15 @@ def _hydraulique(question: str, sit):
 def _energie(question: str, sit):
     """La roue énergie E = P·t (instance du moteur générique, pont amont électrique)."""
     return _roue_repond(question, sit, _ROUE_ENERGIE)
+
+
+def _roues_compilees(question: str, sit):
+    """Les roues COMPILÉES (formules monômes) — essayées après les artisanales, ancrage par roue."""
+    for roue in _ROUES_COMPILEES:
+        r = _roue_repond(question, sit, roue)
+        if r:
+            return r
+    return None
 
 
 # ── « ET SI » : monde contrefactuel = intervention + SIMULATION AVANT (brique 3 du fil) ────────────────────
@@ -614,14 +975,16 @@ def _etsi_roue(sit, hyp: str, cible_txt: str, roue: dict):
     if not n:
         return None
     m = roue["cible_re"].search(cible_txt or "")
-    cible = normalise((m.group(1) or m.group(2)) if m else roue["cible_defaut"])
+    cible = normalise(next((g for g in m.groups() if g), "") if m else roue["cible_defaut"])
     cible = roue["alias"].get(cible, cible)
     if cible not in roue["dims"]:
         cible = roue["cible_defaut"]
-    ap_vals, ap_enonces, ap_amont = _vals_pontees(cf, roue)
+    # la QUESTION fournit aussi des opérandes (« …quel volume écoulé en 2 HEURES ? ») — même contrat que
+    # _roue_repond, pour les deux mondes (avant/après comparables).
+    ap_vals, ap_enonces, ap_amont = _vals_pontees(cf, roue, cible_txt or "")
     if not any(d in ap_enonces for d in roue["ancres"]):
         return None
-    av_vals, _env, _cav = _vals_pontees(sit, roue)
+    av_vals, _env, _cav = _vals_pontees(sit, roue, cible_txt or "")
     av, _ = _roue_resout(av_vals, roue)
     ap, chemins = _roue_resout(ap_vals, roue)
     chemins = ap_amont + chemins
@@ -705,10 +1068,21 @@ def _et_si(question: str, sit):
     if "coefficient d'échange" in dims:
         return _etsi_surface(sit, hyp, cible_txt,
                              u_val=next(v for v, u, d in grs if d == "coefficient d'échange"))
+    # la roue COMPILÉE nommée par la CIBLE prime sur la roue du dim de l'hypothèse (vécu : « et si le débit
+    # était de 40 l/s, quel VOLUME écoulé ? » -> volume_ecoule, pas l'écho hydro du débit) — ancrage exigé.
+    if cible_txt:
+        for rc in _ROUES_COMPILEES:
+            if rc["cible_re"].search(cible_txt) and dims & set(rc["fil_dims"]) \
+                    and any(d in _vals_roue(sit, rc) for d in rc["ancres"]):
+                r = _etsi_roue(sit, hyp, cible_txt, rc)
+                if r:
+                    return r
     if dims & {"tension", "courant", "résistance"}:       # ②bis : et-si électrique (même simulation avant)
         return _etsi_roue(sit, hyp, cible_txt, _ROUE_ELEC)
     if dims & {"débit", "aire", "vitesse"}:               # et-si hydraulique (Q = S·v) — ancrage vérifié dedans
-        return _etsi_roue(sit, hyp, cible_txt, _ROUE_HYDRO)
+        r = _etsi_roue(sit, hyp, cible_txt, _ROUE_HYDRO)
+        if r:                                             # None -> les roues suivantes gardent leur chance
+            return r
     if dims & {"énergie", "temps"}:                       # et-si énergie (E = P·t)
         # une DURÉE seule n'est pas un contexte énergétique (« et si on partait dans 2 heures ? ») : il faut
         # du kWh dans l'hypothèse, ou une puissance/énergie DÉJÀ énoncée dans le fil réel — le contexte
@@ -717,7 +1091,19 @@ def _et_si(question: str, sit):
         elec = _vals_roue(sit, _ROUE_ELEC)
         if dims & {"énergie"} or {"puissance", "énergie"} & reels.keys() \
                 or any(d in elec for d in _ROUE_ELEC["ancres"]):
-            return _etsi_roue(sit, hyp, cible_txt, _ROUE_ENERGIE)
+            r = _etsi_roue(sit, hyp, cible_txt, _ROUE_ENERGIE)
+            if r:
+                return r
+    # roues COMPILÉES : le fil réel doit DÉJÀ être ancré pour la roue (jamais de capture d'un « et si on
+    # partait à 3 heures ») ; si la cible nomme une roue précise, elle prime sur l'ordre.
+    cands = [rc for rc in _ROUES_COMPILEES
+             if dims & set(rc["fil_dims"]) and any(d in _vals_roue(sit, rc) for d in rc["ancres"])]
+    if cands:
+        nommees = [rc for rc in cands if cible_txt and rc["cible_re"].search(cible_txt)]
+        for rc in (nommees or cands):
+            r = _etsi_roue(sit, hyp, cible_txt, rc)
+            if r:
+                return r
     return None
 
 
@@ -1012,16 +1398,21 @@ def pourquoi_dernier(texte: str, derniere_reponse, sit):
                 "résistance est le rapport tension/courant) et la puissance électrique P = U·I (énergie par "
                 "seconde = tension × débit de charges). Deux valeurs suffisent donc à fermer les quatre — j'ai "
                 "montré dans ma réponse le chemin exact suivi depuis TES données.")
-    if r.startswith(("Débit ≈", "Section ≈", "Vitesse ≈")):
+    if r.startswith(("Débit ≈", "Section ≈", "Vitesse ≈")) and ("Q = S" in r or "Q/S" in r or "S = Q" in r):
         return ("Parce que le débit volumique est, PAR DÉFINITION, le volume qui traverse la section chaque "
                 "seconde : Q = S·v (section de passage × vitesse d'écoulement). Deux de ces trois grandeurs "
                 "suffisent donc à fermer la troisième — j'ai montré dans ma réponse le chemin exact suivi "
                 "depuis TES données.")
-    if r.startswith(("Énergie ≈", "Durée ≈")):
+    if r.startswith(("Énergie ≈", "Durée ≈")) and ("E = P" in r or "P = E" in r or "t = E" in r):
         return ("Parce que l'énergie est, PAR DÉFINITION, la puissance intégrée sur la durée : E = P·t à "
                 "puissance constante (1 kWh = 1000 W pendant 1 heure). Deux de ces trois grandeurs suffisent "
                 "à fermer la troisième — et si la puissance n'était pas énoncée, je l'ai d'abord fermée par la "
                 "roue électrique (P = U·I), chemin montré dans ma réponse.")
+    for _rc in _ROUES_COMPILEES:                          # roues compilées : reconnues par la SIGNATURE
+        if any(lbl in r for _c, _o, _f, lbl in _rc["relations"]):
+            return ("Parce que %s — une définition fermée : chaque grandeur s'en déduit des autres, et j'ai "
+                    "montré dans ma réponse le chemin exact suivi depuis TES données.%s"
+                    % (_rc["deps"][_rc["cible_defaut"]], _rc.get("note", "")))
     if r.startswith("Dans ton hypothèse"):
         return ("Parce que j'ai re-propagé TA modification dans les mêmes équations fermées (simulation "
                 "avant) : mêmes formules, un seul opérande changé — c'est pour ça que je montre l'avant/après.")
@@ -1030,6 +1421,35 @@ def pourquoi_dernier(texte: str, derniere_reponse, sit):
                 "valeur — et je ne devine jamais (règle FAUX=0 : calcul exact, ou demande nommée de ce qui "
                 "manque). Donne la valeur demandée et je calcule.")
     return None
+
+
+
+
+# ── CARTE DES ROUES (introspection) — le GRAPHE des grandeurs, substrat du gap-engine v2 ───────────────────
+# L'invention (étape ③ du plan validé) cherchera des CHEMINS de grandeurs faisables non exploités dans ce
+# graphe ; en attendant, la carte est INTROSPECTABLE par l'utilisateur (transparence des capacités).
+_RE_CARTE = re.compile(
+    r"quel(?:le)?s?\s+(?:grandeurs|formules|roues)\s+(?:sais|peux)[- ]tu\s+(?:relier|calculer|fermer)|"
+    r"quel(?:le)?s?\s+(?:calculs?|formules?)\s+(?:physiques?\s+)?(?:connais|sais)[- ]tu", re.I)
+
+
+def _carte(question: str, sit):
+    """« Quelles grandeurs sais-tu relier ? » -> la carte des roues + les grandeurs PARTAGÉES (les ponts)."""
+    if not _RE_CARTE.search(question or ""):
+        return None
+    lignes = ["Voici les roues de grandeurs que je sais fermer (2 connues suffisent, dérivation montrée) :"]
+    partage: dict = {}
+    for roue in _ROUES:
+        lignes.append("· %s — %s (%s)" % (roue["nom"], roue["devise"], ", ".join(roue["dims"])))
+        for d in roue["dims"]:
+            partage.setdefault(d, []).append(roue["nom"])
+    ponts = sorted((d, n) for d, n in partage.items() if len(n) > 1)
+    if ponts:
+        lignes.append("Grandeurs PARTAGÉES entre roues (les ponts — une roue peut nourrir l'autre) : " +
+                      " ; ".join("%s (%s)" % (d, ", ".join(n)) for d, n in ponts) + ".")
+    lignes.append("Donne-moi des grandeurs chiffrées avec leurs unités, et pose ta question — je calcule, "
+                  "je simule (« et si… ») et je prouve (« pourquoi… »).")
+    return "\n".join(lignes)
 
 
 def repond(question: str, sit):
@@ -1041,7 +1461,8 @@ def repond(question: str, sit):
     q = str(question or "")
     if not q.strip():
         return None
-    for resolveur in (_et_si, _pourquoi, _dtlm, _surface, _electrique, _hydraulique, _energie, _ecart):
+    for resolveur in (_carte, _et_si, _pourquoi, _dtlm, _surface, _electrique, _hydraulique, _energie,
+                      _roues_compilees, _ecart):
         try:
             r = resolveur(q, sit)
         except Exception:
