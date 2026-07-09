@@ -759,6 +759,52 @@ _DONT_RE = re.compile(
 _OU_TROUVE_RE = re.compile(
     r"^(?:le\s+|la\s+|l['’]\s*)?(pays|ville|continent)\s+(?:o[uù]\s+(?:se\s+(?:trouve|situe)|est(?:\s+situ[ée]+)?)|"
     r"qui\s+abrite|abritant)\s+(.+)$", re.I)
+# PROPOSITION RELATIVE ÉVÉNEMENTIELLE (Route 4, 2026-07-09) : « le pays OÙ EST NÉ Einstein », « la ville OÙ EST
+# MORT Napoléon ». Le verbe choisit la relation (lieu_naissance P19 / lieu_deces P20), le TYPE demandé choisit
+# la profondeur (ville = le lieu même ; pays = lieu -> pays_ville/pays_localite ; continent = pays -> continent).
+_OU_EVT_RE = re.compile(
+    r"^(?:le\s+|la\s+|l['’]\s*)?(pays|ville|continent|localit[ée])\s+o[uù]\s+"
+    r"(est\s+n[ée]e?|naquit|vit\s+le\s+jour|est\s+mort[e]?|mourut|est\s+d[ée]c[ée]d[ée]e?|s['’]est\s+[ée]teinte?)"
+    r"\s+(.+)$", re.I)
+_EVT_NAISSANCE_RE = re.compile(r"n[ée]|naquit|jour", re.I)
+
+
+def _resout_relatif_evenement(typ: str, verbe: str, personne: str):
+    """« pays où est né X » -> (entité, [étapes]). Chaque maillon = fait vérifié des datasets (lieu_naissance/
+    lieu_deces puis pays_ville/pays_localite puis continent) ; maillon manquant -> None (jamais deviné).
+    HONNÊTETÉ TEMPORELLE : pays_ville (P17) donne le pays ACTUEL du lieu — la dérivation le DIT (« pays
+    actuel ») : Einstein est né à Ulm (Empire allemand en 1879), Ulm est en Allemagne aujourd'hui."""
+    naissance = bool(_EVT_NAISSANCE_RE.search(verbe))
+    rel = "lieu_naissance" if naissance else "lieu_deces"
+    ent = _strip_article(personne.strip(" ?.!\"'«»"))
+    if not ent:
+        return None
+    cell = _lookup_cell(rel, ent)
+    if not cell:
+        return None
+    personne_aff, lieu = cell[0], str(cell[1])
+    evt = ("est née" if re.search(r"n[ée]e\b|morte\b|d[ée]c[ée]d[ée]e\b|[ée]teinte\b", verbe, re.I) else "est né") \
+        if naissance else ("est morte" if re.search(r"morte\b|d[ée]c[ée]d[ée]e\b|[ée]teinte\b", verbe, re.I) else "est mort")
+    steps = ["%s %s à %s" % (personne_aff, evt, lieu)]
+    typ = _normalise(typ)
+    if typ in ("ville", "localite"):
+        return _strip_article(lieu), steps
+    # pays : le lieu peut déjà ÊTRE un pays (clé de `capitale`) ; sinon ville/localité -> pays (P17, mono-gardé)
+    if _lookup_cell("capitale", lieu):
+        pays_aff = lieu
+    else:
+        cp = _lookup_cell("pays_ville", lieu) or _lookup_cell("pays_localite", lieu)
+        if not cp:
+            return None
+        pays_aff = str(cp[1])
+        steps.append("%s est %s (pays actuel)" % (lieu, _locatif_pays(pays_aff)))
+    if typ == "pays":
+        return _strip_article(pays_aff), steps
+    cc = _lookup_cell("continent", pays_aff)                         # continent : un saut de plus, montré
+    if not cc:
+        return None
+    steps.append("%s est en %s" % (pays_aff, cc[1]))
+    return _strip_article(str(cc[1])), steps
 
 
 def _resout_relatif(expr: str):
@@ -776,6 +822,9 @@ def _resout_relatif(expr: str):
                     ent = cell[1][0]
                     return _strip_article(ent), ["%s dont %s est %s = %s" % (m.group(1), rel2, cell[0], ent)]
         return None
+    m = _OU_EVT_RE.match(expr.strip())                               # AVANT _OU_TROUVE_RE : son « où est » nu
+    if m:                                                            # gobait « où est né X » (branche -> None)
+        return _resout_relatif_evenement(m.group(1), m.group(2), m.group(3))
     m = _OU_TROUVE_RE.match(expr.strip())
     if m:
         typ, ent = _normalise(m.group(1)), _strip_article(m.group(2).strip(" ?.!\"'«»"))
@@ -910,7 +959,9 @@ _ENV_PREFIXE_RE = re.compile(
 # trouve la tour Eiffel ? » — résolu par la feuille _resout_relatif.
 _ENV_RELATIF_RE = re.compile(
     r"((?:le\s+|la\s+|l['’]\s*)?[a-zà-ÿ]{3,}\s+(?:dont\s+(?:la\s+|le\s+|l['’]\s*)[a-zà-ÿ]{3,}\s+est\s+.+?|"
-    r"(?:o[uù]\s+(?:se\s+(?:trouve|situe)|est(?:\s+situ[ée]+)?)|qui\s+abrite)\s+.+?))\s*[?.!]*\s*$", re.I)
+    r"(?:o[uù]\s+(?:se\s+(?:trouve|situe)|est(?:\s+situ[ée]+)?)|qui\s+abrite)\s+.+?|"
+    r"o[uù]\s+(?:est\s+n[ée]e?|naquit|vit\s+le\s+jour|est\s+morte?|mourut|est\s+d[ée]c[ée]d[ée]e?)\s+.+?))"
+    r"\s*[?.!]*\s*$", re.I)
 
 
 def _compose_enveloppe(memoire, conv_id, texte: str, pleine: bool):
@@ -3125,7 +3176,8 @@ def _resout_partie(p: str):
 _CALC_INTENT = re.compile(
     r"\b(?:combien\s+(?:font|fait|valent|vaut|ca\s+fait)|calcul\w*|resou\w+|multipli\w+|"
     r"additionn\w+|soustrai\w+|divis\w+|modulo|\bmod\b|reste\s+de)\b|=\s*\??\s*$|\begale?\s*\??\s*$"
-    r"|\d\s*(?:%|pour\s*cents?)\s+de\s+\d|\bau\s+carr[ée]\b|\bau\s+cube\b")
+    r"|\d\s*(?:%|pour\s*cents?)\s+de\s+\d|\bau\s+carr[ée]\b|\bau\s+cube\b"
+    r"|√\s*\d|racine\s+(?:carr[ée]+e?\s+)?d[e'’]")     # un radical = intention de calcul en soi (« √20 × √5 » nu)
 
 
 _CONV_UNITE = {"celsius": "C", "c": "C", "°c": "C", "fahrenheit": "F", "f": "F", "°f": "F",
@@ -3178,8 +3230,8 @@ def _reponse_calcul(texte: str) -> str | None:
     intention de calcul claire obtienne son résultat EXACT plutôt qu'une page web sans rapport. FAUX=0 : on ne
     renvoie que le verdict VÉRIFIÉ du moteur (entiers exacts) ; sinon None (abstention honnête, pas d'arrondi).
     Le « x » n'est converti en « × » QUE si l'intention de calcul est explicite (sinon « 4 x 100 » reste intact)."""
-    if not _CALC_INTENT.search(_normalise(texte)):
-        return None
+    if not _CALC_INTENT.search(_normalise(texte)) and not _CALC_INTENT.search(texte):
+        return None                                  # brut AUSSI : « √ » (intention en soi) meurt dans _normalise
     texte = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", texte)   # milliers à espace (« 5 000 » lu 000, FAUX vécu)
     # NOMBRES EN LETTRES (« combien font douze fois huit ? ») : conversion FERMÉE, UNIQUEMENT sous intention de
     # calcul explicite (hors de ce contexte « un/six » resteraient des mots normaux). FAUX=0 : mapping exact.
@@ -6854,6 +6906,115 @@ _SUCCESSION_RULES = (
 )
 
 
+# ————————————————— « PROUVE-LE » : PRODUCTION DE PREUVE À LA DEMANDE (audit item 11, 2026-07-09) —————————————————
+# « es-tu sûr ? », « prouve-le », « ta source ? » après une réponse -> on REFAIT le chemin de la réponse et on
+# MONTRE d'où elle vient : chaîne de composition (chaque maillon = entrée de table), liens web déjà attribués,
+# ou RE-DÉRIVATION par le moteur (lookup exact -> valeur + source de la table). FAUX=0 : si on ne sait pas
+# produire une preuve pour ce type de réponse, on le DIT — jamais une justification fabriquée.
+_PREUVE_RE = re.compile(
+    r"^\s*(?:prouve[- ]?(?:le|la|les|moi ça|moi)|es[- ]?tu (?:bien )?s[ûu]re?|t['’]es s[ûu]re?|"
+    r"(?:tu es|vous êtes) s[ûu]re?s?|c['’]est s[ûu]r|vraiment s[ûu]re?|s[ûu]re?|"
+    r"comment (?:tu )?(?:le |la )?sais(?:[- ]tu)?|comment tu sais(?: ça)?|"
+    r"d['’]o[ùu] (?:tu )?(?:sors|tiens|sais)(?:[- ]tu)?(?: ça| ca)?|"
+    r"(?:quelle est )?(?:ta|la|votre) source|sources?|une preuve|des preuves|tu peux le prouver|peux[- ]tu le prouver)"
+    r"\s*\??\s*$", re.I)
+
+
+def est_demande_preuve(texte: str) -> bool:
+    """Le message est-il UNIQUEMENT une demande de preuve/certitude sur la dernière réponse ?"""
+    return bool(_PREUVE_RE.match(str(texte or "").strip()))
+
+
+def preuve_de(question: str, reponse: str):
+    """PREUVE de la dernière réponse servie, ou None si on ne sait pas la produire pour ce type de réponse.
+    Chaque branche ne montre QUE du réel : chaîne déjà dérivée, liens déjà cités, ou re-lookup + source de table."""
+    if not question or not reponse:
+        return None
+    m = re.search(r"\((?:en composant(?: d['’]abord)?|dérivation) : (.+)\)\s*$", reponse, re.S)
+    if m:                                                            # composition : la preuve EST la chaîne
+        return ("Oui. La preuve, maillon par maillon : %s. Chaque maillon est une ENTRÉE RÉELLE de mes tables "
+                "vérifiées (extraction Wikidata sourcée) — rien n'est généré, tu peux recouper chaque étape." % m.group(1))
+    liens = re.findall(r"https?://\S+", reponse)
+    if liens:                                                        # réponse web : les liens cités sont la preuve
+        return ("Ma réponse était ATTRIBUÉE : elle vient de %s. Je ne l'ai pas inventée — c'est un rapport "
+                "sourcé, à toi de juger la source. Si tu veux plus solide, je peux chercher d'autres sources." %
+                " et ".join(liens[:3]))
+    m = re.match(r"^Dans « (.+?) »", reponse)
+    if m:                                                            # réponse tirée du FICHIER attaché (Route 3)
+        return ("Ma réponse vient du fichier « %s » que TU as attaché à cette conversation : je n'ai fait que "
+                "lire et calculer dessus (opération exacte, localisation citée dans ma réponse — relis la ligne "
+                "indiquée pour vérifier)." % m.group(1))
+    ia, verifie = _charge_ia()                                       # fait de table : RE-DÉRIVATION + source
+    if ia:
+        try:
+            st, fait = ia.donnee_nl(question)
+        except Exception:
+            st, fait = None, None
+        if st == verifie and fait is not None and str(fait.valeur):
+            val = str(fait.valeur)
+            if _normalise(val) and _normalise(val) in _normalise(reponse):
+                src = str(getattr(fait, "source", "") or "table vérifiée embarquée")
+                return ("Oui — je viens de LE RE-VÉRIFIER : ma table donne exactement « %s » pour cette "
+                        "question. Source de la table : %s. C'est un lookup exact (le fait est relu tel quel, "
+                        "jamais généré) ; s'il n'était pas dans mes tables, je dirais « je ne sais pas »." % (val, src))
+    if "Wikidata" in reponse:                                        # réponse déjà auto-sourcée (ex. dirigeants)
+        return ("La source est déjà dans la réponse : Wikidata (statements vérifiés, mandats terminés "
+                "seulement). Tu peux recouper sur wikidata.org — et si tu trouves un écart, dis-le moi : "
+                "ta correction sourcée fait autorité.")
+    return None
+
+
+# DIRIGEANT PAR PAYS ET ANNÉE (Route 4 temporelle, 2026-07-09) : « qui dirigeait la France en 1962 ? », « qui
+# était président des États-Unis en 1963 ? », « qui régnait sur l'Espagne en 1975 ? ». Tables dédiées
+# chef_etat_pays_annee / chef_gouvernement_pays_annee (Wikidata, statements P39 des fonctions OFFICIELLES du
+# pays P1906/P1313, MANDATS TERMINÉS seulement — un mandat en cours est une vérité datée, jamais figé en base).
+# Année de transition -> valeur chronologique réelle (« Kennedy puis Johnson »). FAUX=0 : lookup-ou-None ;
+# pays/année hors couverture -> None (la cascade continue, la recherche web ATTRIBUÉE peut prendre le relais).
+_DIRIGEANT_RE = re.compile(
+    r"^\s*qui\s+(?:dirigeait|gouvernait|r[ée]gnait\s+(?:sur|en)|[ée]tait|fut|a\s+dirig[ée]|a\s+gouvern[ée])\s*"
+    r"(?:le\s+|la\s+|l['’]\s*)?"
+    r"(pr[ée]sidente?\s+du\s+conseil|premi(?:er|[èe]re)\s+ministre|chef\s+du\s+gouvernement|"
+    r"chanceli(?:er|[èe]re)(?:\s+f[ée]d[ée]rale?)?|pr[ée]sidente?|chef\s+d(?:e\s+l['’][ée]tat|['’][ée]tat)|"
+    r"roi|reine|monarque|empereur|imp[ée]ratrice|dirigeante?)?\s*"
+    r"(?:de\s+la\s+|de\s+l['’]\s*|du\s+|des\s+|de\s+|d['’]\s*|en\s+|au\s+|aux\s+)?"
+    r"(.+?)\s+en\s+(-?\d{1,4})\s*\?*\s*$", re.I)
+_FONCTION_GOUV_RE = re.compile(r"ministre|gouvernement|conseil|chancel", re.I)
+
+
+def _cap_dirigeant_annee(texte: str):
+    """« qui dirigeait <pays> en <année> ? » -> dirigeant(s) réel(s) de l'année, table vérifiée. None sinon."""
+    m = _DIRIGEANT_RE.match(texte.strip())
+    if not m:
+        return None
+    fonction = (m.group(1) or "").strip()
+    pays = _strip_article(m.group(2).strip(" ?.!\"'«»"))
+    annee = m.group(3)
+    if not pays or pays.isdigit():
+        return None
+    cle = "%s %s" % (pays, annee)
+    veut_gouv = bool(fonction) and bool(_FONCTION_GOUV_RE.search(fonction))
+    veut_etat = bool(fonction) and not veut_gouv
+    ce = None if veut_gouv else _lookup_cell("chef_etat_pays_annee", cle)
+    cg = None if veut_etat else _lookup_cell("chef_gouvernement_pays_annee", cle)
+    if not ce and not cg:
+        return None
+    pays_aff = (ce or cg)[0].rsplit(" ", 1)[0]                       # libellé réel du pays (clé = « pays année »)
+    loc = _locatif_pays(pays_aff)
+    def _ligne(cell, role, rel_titre):
+        val = str(cell[1])
+        titre = _lookup_cell(rel_titre, pays_aff)
+        role_aff = ("%s (%s)" % (role, titre[1])) if titre else role
+        if " puis " in val or " et " in val:
+            return "%s : %s (transitions dans l'année, ordre réel)" % (role_aff, val)
+        return "%s : %s" % (role_aff, val)
+    lignes = []
+    if ce:
+        lignes.append(_ligne(ce, "chef de l'État", "fonction_chef_etat_pays"))
+    if cg and (not ce or _normalise(str(cg[1])) != _normalise(str(ce[1]))):
+        lignes.append(_ligne(cg, "chef du gouvernement", "fonction_chef_gouvernement_pays"))
+    return "En %s %s — %s. (Wikidata, mandats terminés.)" % (annee, loc, " ; ".join(lignes))
+
+
 def _cap_succession(texte: str):
     """SUCCESSION dynastique/de fonction : « qui a succédé à Louis XIV ? » -> Louis XV ; « qui a précédé Louis XIV ? »
     -> Louis XIII. Relations predecesseur/successeur_personne. FAUX=0 : personne réellement stockée, None sinon."""
@@ -7087,6 +7248,45 @@ def _occupation_selon_genre(val: str, fem: bool) -> str:
     morceaux = val.split(" et ")
     morceaux = [", ".join(_forme(p) for p in m.split(", ")) for m in morceaux]
     return " et ".join(morceaux)
+
+
+# « dans quel(le) ville/pays/continent est né(e)/mort(e) X ? » (Route 4) : réutilise la feuille relative
+# événementielle (lieu réel + saut pays/continent MONTRÉ). Vécu e2e sans ce cap : « dans quelle ville est né
+# Einstein ? » partait au reverse-liste géographique (villes de la région Est du Cameroun !).
+_QUEL_LIEU_EVT_RE = re.compile(
+    r"^\s*(?:dans|sur|en)\s+quel(?:le)?\s+(pays|ville|continent|localit[ée])\s+"
+    r"(est\s+n[ée]e?|naquit|est\s+morte?|mourut|est\s+d[ée]c[ée]d[ée]e?)\s+(.+?)\s*\??\s*$", re.I)
+
+
+def _cap_lieu_evenement(texte: str):
+    """« dans quelle ville est né X ? » -> le lieu vérifié ; « dans quel pays… » -> saut pays/continent montré.
+    FAUX=0 : chaque maillon = fait stocké réel, None sinon (la cascade continue)."""
+    m = _QUEL_LIEU_EVT_RE.match(texte.strip())
+    if not m:
+        return None
+    ent = m.group(3).strip()
+    if not ent or len(ent) < 3 or len(ent.split()) > 6:
+        return None
+    r = _resout_relatif_evenement(m.group(1), m.group(2), ent)
+    if not r:
+        return None
+    val, steps = r
+    if len(steps) == 1:
+        return steps[0] + "."
+    return "%s  (dérivation : %s)" % (val, ", puis ".join(steps))
+
+
+def _cap_cinematique(texte: str):
+    """PROBLÈME À ÉTAPES du mouvement uniforme (audit item 7) : « deux trains distants de 300 km partent l'un
+    vers l'autre à 80 et 70 km/h : quand se croisent-ils ? » -> temps + point de croisement EXACTS, dérivation
+    montrée. FAUX=0 : motifs fermés (distance + 2 vitesses + mot-clé exigés), sinon None. cf. cinematique_nl."""
+    if not re.search(r"croise|rencontre|rattrape|rejoin|poursuite", texte, re.I):
+        return None
+    try:
+        import cinematique_nl
+        return cinematique_nl.resout(texte)
+    except Exception:
+        return None
 
 
 def _cap_fait_personne(texte: str):
@@ -8114,13 +8314,16 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("ecart_temporel", _cap_ecart_temporel), ("date_evenement", _cap_date_evenement),
                  ("analogie", _cap_analogie), ("portrait", _cap_portrait), ("oeuvres_de", _cap_oeuvres_de),
                  ("verif_createur", _cap_verif_createur), ("createur", _cap_createur),
-                 ("naissance_compare", _cap_naissance_compare), ("succession", _cap_succession),
+                 ("naissance_compare", _cap_naissance_compare), ("dirigeant_annee", _cap_dirigeant_annee),
+                 ("succession", _cap_succession),
+                 ("lieu_evenement", _cap_lieu_evenement),
                  ("fait_personne", _cap_fait_personne), ("portrait_personne", _cap_portrait_personne),
                  ("record_monde", _cap_record_monde), ("fleuve_ville", _cap_fleuve_ville),
                  ("localisation", _cap_localisation), ("jeux", _cap_jeux), ("logique", _cap_logique), ("syllogisme", _cap_syllogisme), ("deduction", _cap_deduction),
                  ("contraire", _cap_contraire), ("texte", _cap_texte), ("anagramme", _cap_anagramme), ("fait_bio", _cap_fait_bio), ("protons", _cap_protons),
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
-                 ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
+                 ("inverse", _cap_inverse), ("cinematique", _cap_cinematique), ("duree", _cap_duree),
+                 ("age", _cap_age), ("stats", _cap_stats),
                  ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),
                  ("code_prouve", _cap_code_prouve),
                  ("creer_ouvert", _cap_creer_ouvert), ("invention_composite", _cap_invention_composite),

@@ -326,6 +326,20 @@ def resout_conversion(question: str):
     # « 2 litres D'EAU en centilitres » : le qualificatif de substance s'intercale — retiré (le volume d'eau
     # se convertit comme tout volume ; la MASSE de l'eau a sa route dédiée plus bas).
     q = re.sub(rf"\b((?:{_UNIT_ALT}))\s+d['’]\s*(?:eau|essence|lait|huile)\b", r"\1", q)
+    # LONGUEUR IMPÉRIALE COMPOSÉE (audit item 5, 2026-07-09) : « 6 pieds 2 pouces » (taille anglo-saxonne)
+    # partait au web alors que c'est EXACT : n1×0,3048 + n2×0,0254 m (définitions légales). Cible cm si demandée.
+    m = re.search(r"(\d+)\s*pieds?\s+(?:et\s+)?(\d+)\s*(pouces?)?\b(?:\s*en\s+(centimetres?|cm|metres?|m)\b)?", q)
+    # GARDE capture indue : sans le mot « pouces », le 2ᵉ nombre n'est des pouces QUE si rien de textuel ne
+    # suit (« il a marché 3 pieds 2 FOIS » ne devient jamais 3 ft 2 in).
+    if m and not m.group(3) and re.match(r"\s*[a-zà-ÿ0-9]", q[m.end():]):
+        m = None
+    if m:
+        metres = int(m.group(1)) * 0.3048 + int(m.group(2)) * 0.0254
+        cible = (m.group(4) or "").strip()
+        val = ("%s cm" % _fmt_nombre(round(metres * 100, 4))) if cible.startswith("c") \
+            else ("%s m" % _fmt_nombre(round(metres, 4)))
+        return (VERIFIE, "%s pied(s) %s pouce(s) = %s  (1 pied = 0,3048 m ; 1 pouce = 0,0254 m, définitions "
+                "légales)." % (m.group(1), m.group(2), val), "conversion — longueur impériale composée exacte")
     # UNITÉS AMBIGUËS / NON NORMALISÉES -> réponse composée honnête, jamais un facteur unique menteur.
     if re.search(r"\bgallons?\b", q) and re.search(r"litres?|combien", q):
         return (VERIFIE, "Ambigu — 1 gallon US = 3.785411784 L ; 1 gallon impérial (UK) = 4.54609 L "
@@ -414,13 +428,125 @@ _AR_BINAIRES = [
 _AR_RACINE = re.compile(rf"racine\s+(?:carr\w+\s+)?d['e]\s*{_ARN}")
 
 
+# ————————————————— RADICAUX : COMPOSITION D'OPÉRATIONS EXACTE (audit 2026-07-09, item 6) —————————————————
+# « √20 × √5 » répondait sur √5 seul ; la vraie réponse est EXACTE : 10. Calcul SYMBOLIQUE en forme canonique
+# c·√d (c = Fraction exacte, d entier sans facteur carré) : ×,/ = √a×√b=√(ab) puis extraction des carrés ;
+# +,− SEULEMENT à radicande identique après simplification (√8+√2 = 3√2) ; « au carré »/« ² » inverse la racine.
+# FAUX=0 : tout est exact (Fraction) ; somme de radicandes différents / division par zéro / précédence mixte
+# -> HORS ; résultat irrationnel -> forme exacte DONNÉE + approximation MARQUÉE. Le « x » redevient un
+# opérateur ICI seulement : un √ rend le contexte mathématique non ambigu (aucun « 4 x 100 m » n'a de radical).
+_RAD_TOKEN = re.compile(
+    r"(?:(?P<coef>\d+)\s*[·.]?\s*)?(?:(?P<rad>√|racine\s+(?:carr[ée]+e?\s+)?d[e'’]\s*)\s*\(?\s*(?P<n>\d+)\s*\)?|"
+    r"(?P<int>\d+))(?P<carre>\s*(?:au\s+carr[ée]+|²))?", re.I)
+_RAD_OP = re.compile(r"\s*(?P<op>[×*/÷+−]|-|x(?=[\s√(])|fois|multipli\w+\s+par|divis\w+\s+par|sur|plus|moins)\s*", re.I)
+# normalisation CANONIQUE des opérateurs (le bug vécu : « divisé par » absent des ensembles -> traité en ADDITION)
+_OP_CANON = {"×": "*", "x": "*", "fois": "*", "÷": "/", "sur": "/", "plus": "+", "−": "-", "moins": "-"}
+
+
+def _op_canon(o: str) -> str:
+    o = o.lower().strip()
+    if o.startswith("multipli"):
+        return "*"
+    if o.startswith("divis"):
+        return "/"
+    return _OP_CANON.get(o, o)
+
+
+def _radical_simplifie(c, d: int):
+    """Forme canonique : extrait le plus grand carré du radicande (c·√d, d sans facteur carré)."""
+    from fractions import Fraction
+    c = Fraction(c)
+    f = math.isqrt(d)
+    while f > 1:
+        if d % (f * f) == 0:
+            c *= f
+            d //= f * f
+            f = math.isqrt(d)
+        else:
+            f -= 1
+    return c, d
+
+
+def _resout_radicaux(q: str):
+    """Expression de radicaux composés -> (VERIFIE, texte, source) ou (HORS, None, None). Voir bloc ci-dessus."""
+    from fractions import Fraction
+    if "√" not in q and "racine" not in q:
+        return (HORS, None, None)
+    m0 = _RAD_TOKEN.search(q)
+    if not m0:
+        return (HORS, None, None)
+    termes, ops, pos, nb_vus, nb_rad, carre_vu = [], [], m0.start(), 0, 0, False
+    while True:
+        m = _RAD_TOKEN.match(q, pos)
+        if not m:
+            return (HORS, None, None)
+        coef = int(m.group("coef")) if m.group("coef") else 1
+        nb_vus += 2 if m.group("coef") else 1
+        if m.group("rad"):
+            nb_rad += 1
+            c, d = _radical_simplifie(coef, int(m.group("n")))
+        else:
+            c, d = Fraction(coef * int(m.group("int"))), 1
+        if m.group("carre"):                         # (√n)² / « √n au carré » : la racine s'annule, tout exact
+            c, d = c * c * d, 1
+            carre_vu = True
+        termes.append((c, d))
+        pos = m.end()
+        mo = _RAD_OP.match(q, pos)
+        if not mo:
+            break
+        ops.append(_op_canon(mo.group("op")))
+        pos = mo.end()
+    if nb_rad == 0 or (len(termes) < 2 and not carre_vu):
+        return (HORS, None, None)                    # « √12 » seul reste à la voie racine-simple (HORS honnête)
+    # COUVERTURE TOTALE : tous les nombres de la question appartiennent à l'expression (« √16 plus 9 personnes »
+    # n'évalue jamais un fragment), et rien ne suit l'expression sauf la ponctuation.
+    if len(re.findall(r"\d+", q)) != nb_vus or q[pos:].strip(" ?.!\"'«»="):
+        return (HORS, None, None)
+    if all(o in ("*", "/") for o in ops):
+        c, d = termes[0]
+        for o, (c2, d2) in zip(ops, termes[1:]):
+            if o == "/":
+                if c2 == 0 or d2 == 0:
+                    return (HORS, None, None)
+                c, d = c / (c2 * d2), d * d2         # √d / √d2 = √(d·d2) / d2 (rationalisé, exact)
+            else:
+                c, d = c * c2, d * d2
+            c, d = _radical_simplifie(c, d)
+    elif all(o in ("+", "-") for o in ops):
+        c, d = termes[0]
+        for o, (c2, d2) in zip(ops, termes[1:]):
+            if d2 != d:                              # radicandes différents -> pas de forme c·√d unique
+                return (HORS, None, None)
+            c = c - c2 if o == "-" else c + c2
+    else:
+        return (HORS, None, None)                    # précédence mixte (+ et ×) -> on ne parie pas
+    if d == 1 and c.denominator == 1:
+        return (VERIFIE, str(c.numerator), "calcul — radicaux composés exacts (√a×√b = √(ab))")
+    if d == 1:
+        return (VERIFIE, "%d/%d (fraction exacte ; ≈ %s)" % (c.numerator, c.denominator,
+                                                             _fmt_nombre(round(float(c), 4))),
+                "calcul — radicaux composés exacts")
+    coef = ("" if c == 1 else "-" if c == -1 else
+            (str(c.numerator) if c.denominator == 1 else "(%d/%d)·" % (c.numerator, c.denominator)))
+    approx = _fmt_nombre(round(float(c) * math.sqrt(d), 4))
+    return (VERIFIE, "%s√%d (valeur exacte ; ≈ %s, approximation)" % (coef, d, approx),
+            "calcul — radicaux composés exacts (simplification des carrés)")
+
+
 def resout_arithmetique(question: str):
-    """Calcul EXACT sur des entiers (+,−,×,puissance,division-juste,racine-de-carré-parfait). (VERIFIE, texte, source)
-    ou (HORS, None, None). FAUX=0 : résultat non exact ou nombre décimal -> HORS (jamais d'arrondi)."""
+    """Calcul EXACT sur des entiers (+,−,×,puissance,division-juste,racine-de-carré-parfait ; RADICAUX composés :
+    « √20 × √5 » -> 10). (VERIFIE, texte, source) ou (HORS, None, None). FAUX=0 : résultat non exact ou nombre
+    décimal -> HORS (jamais d'arrondi non marqué)."""
     question = re.sub(r"(?<=\d)[\s  ]+(?=\d{3}\b)", "", question)   # « 5 000 plus 3 000 » : milliers recollés
     q = question.lower()
     if re.search(r"\d[.,]\d", q):                    # nombre décimal présent -> hors périmètre (et anti faux-match)
         return (HORS, None, None)
+    st_rad = _resout_radicaux(q)                     # composition de radicaux AVANT la racine simple (item 6)
+    if st_rad[0] == VERIFIE:
+        return st_rad
+    if "√" in q:                                     # FAUX latent trouvé en durcissant : « √16 plus 9 personnes »
+        return (HORS, None, None)                    # -> les binaires répondaient 25 en IGNORANT le √ (vrai : 13)
     m = _AR_RACINE.search(q)
     if m:
         # COUVERTURE TOTALE : l'opérande doit être le SEUL contenu numérique de la question — « racine de 16

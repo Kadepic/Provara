@@ -111,9 +111,41 @@ check(st == _H, "fonction_nl : « 2 + 2 fois 3 » -> HORS (plus jamais un fragme
 st, tx, _ = FN.resout_arithmetique("calcule 3 plus 4")
 check(st == _V and tx == "7", "fonction_nl : « 3 plus 4 » -> 7 (le cas légitime marche toujours)")
 st, tx, _ = FN.resout_arithmetique("racine de 16 plus 9")
-check(st == _H, "fonction_nl : « racine de 16 plus 9 » -> HORS (fragment racine refusé)")
+check(st == _V and tx == "13", "fonction_nl : « racine de 16 plus 9 » -> 13 EXACT (le moteur radicaux évalue "
+                               "l'expression ENTIÈRE ; l'ancien HORS anti-fragment est dépassé par le haut)")
 st, tx, _ = FN.resout_arithmetique("racine carree de 144")
 check(st == _V and tx == "12", "fonction_nl : racine de 144 -> 12 (cas légitime)")
+
+# RADICAUX COMPOSÉS (audit 2026-07-09 item 6) : composition d'opérations EXACTE en forme canonique c·√d.
+st, tx, _ = FN.resout_arithmetique("combien font √20 × √5 ?")
+check(st == _V and tx == "10", "radicaux : √20 × √5 -> 10 EXACT (plus jamais une réponse sur √5 seul)")
+st, tx, _ = FN.resout_arithmetique("que vaut √50 divisé par √2 ?")
+check(st == _V and tx == "5", "radicaux : √50 ÷ √2 -> 5 (division rationalisée — le bug « divisé par = addition » est mort)")
+st, tx, _ = FN.resout_arithmetique("√2 + √8")
+check(st == _V and tx.startswith("3√2") and "approximation" in tx,
+      "radicaux : √2 + √8 -> 3√2 exact, approximation MARQUÉE")
+st, tx, _ = FN.resout_arithmetique("√5 au carré")
+check(st == _V and tx == "5", "radicaux : (√5)² -> 5 (le carré annule la racine, exact)")
+st, tx, _ = FN.resout_arithmetique("√2 + √3")
+check(st == _H, "radicaux : radicandes irréductibles différents -> HORS (pas de forme c·√d unique)")
+st, tx, _ = FN.resout_arithmetique("√16 plus 9 personnes")
+check(st == _H, "radicaux : « √16 plus 9 personnes » -> HORS (FAUX latent tué : les binaires répondaient 25 en ignorant le √)")
+st, tx, _ = FN.resout_arithmetique("√145")
+check(st == _H, "radicaux : « √145 » seul -> HORS inchangé (la voie irrationalité-dite/décision Yohan reste intacte)")
+st, tx, _ = FN.resout_arithmetique("4 x 100 m relais")
+check(st == _H, "radicaux : « 4 x 100 m » sans radical -> jamais capté (le x n'est un opérateur qu'avec un √)")
+
+# LONGUEUR IMPÉRIALE COMPOSÉE (audit item 5) : « 6 pieds 2 pouces » partait au web ; c'est EXACT localement.
+st, tx, _ = FN.resout_conversion("quelle taille fait 6 pieds 2 pouces ?")
+check(st == _V and "1.8796 m" in tx and "0,3048" in tx,
+      "impérial composé : 6 pieds 2 pouces -> 1,8796 m + définitions légales citées")
+st, tx, _ = FN.resout_conversion("5 pieds 11 en centimètres")
+check(st == _V and "180.34 cm" in tx, "impérial composé : pouces implicites + cible cm (5 ft 11 -> 180,34 cm)")
+st, tx, _ = FN.resout_conversion("il a marché 3 pieds 2 fois")
+check(not (st == _V and "pouce" in (tx or "")),
+      "impérial composé : « 3 pieds 2 FOIS » jamais lu 3 ft 2 in (garde capture indue)")
+st, tx, _ = FN.resout_conversion("6 pieds en mètres")
+check(st == _V and "1.8288" in tx, "impérial simple : voie existante intacte (6 pieds -> 1,8288 m)")
 
 # ————————————————— (2) RECHERCHE AUTONOME (transport factice, offline strict, cache TTL) —————————————————
 A._PING_CACHE = None

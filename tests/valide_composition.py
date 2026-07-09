@@ -80,5 +80,49 @@ check(not repond._est_relation_imbriquee("capitale de la France"), "une relation
 # (4) non-imbriqué -> le composeur ne s'applique pas
 check(repond._compose_relations("quelle est la capitale de la France ?") is None, "simple -> composeur inactif (None)")
 
+# (5) ROUTE 4 — RELATIVE ÉVÉNEMENTIELLE « où est né / où est mort » (multi-hop). On mocke _lookup_cell (les
+# datasets lieu_naissance/pays_ville sont absents de l'échantillon) pour prouver le MÉCANISME ; le réel est
+# prouvé e2e dans le .exe sur la base complète. FAUX=0 : maillon manquant -> None, chaîne montrée sinon.
+_CELLS = {("lieu_naissance", "albert einstein"): ("Albert Einstein", "Ulm"),
+          ("lieu_deces", "marie curie"): ("Marie Curie", "sanatorium de Sancellemoz"),
+          ("pays_ville", "ulm"): ("Ulm", "Allemagne"),
+          ("continent", "allemagne"): ("Allemagne", "Europe")}
+repond._lookup_cell = lambda rel, ent: _CELLS.get((rel, repond._normalise(str(ent))))
+
+r = repond._resout_relatif("pays où est né Albert Einstein")
+check(r is not None and r[0] == "Allemagne" and "pays actuel" in " ".join(r[1]),
+      "« pays où est né Einstein » -> Allemagne, honnêteté temporelle DITE (pays actuel)")
+r = repond._resout_relatif("la ville où est né Albert Einstein")
+check(r is not None and r[0] == "Ulm", "« ville où est né » -> le lieu même (Ulm)")
+r = repond._resout_relatif("le continent où est né Albert Einstein")
+check(r is not None and r[0] == "Europe" and len(r[1]) == 3, "« continent où est né » -> Europe (3 sauts montrés)")
+r = repond._resout_relatif("la ville où est morte Marie Curie")
+check(r is not None and "Sancellemoz" in r[0], "« où est morte » (féminin) -> lieu_deces")
+check(repond._resout_relatif("le pays où est né Zorglub Introuvable") is None,
+      "personne inconnue -> None (jamais deviné)")
+check(repond._resout_relatif("le pays où est morte Marie Curie") is None,
+      "lieu de décès sans rattachement pays -> None (abstention, pas d'à-peu-près)")
+_FAITS["capitale de allemagne"] = "Berlin"
+r = repond._compose_relations_n("quelle est la capitale du pays où est né Albert Einstein ?")
+check(r is not None and r.startswith("Berlin") and "est né à Ulm" in r and "pays actuel" in r,
+      "COMPOSITION COMPLÈTE : capitale du pays où est né Einstein -> Berlin + dérivation entière")
+# garde : la relative LOCALISATION existante n'est pas volée par l'événementiel
+check(repond._OU_EVT_RE.match("pays où se trouve la tour Eiffel") is None,
+      "« où se trouve » ne matche PAS le motif événementiel (chacun sa feuille)")
+
+# (6) CAP DIRECT « dans quel(le) TYPE est né/mort X ? » (vécu e2e : « dans quelle ville est né Einstein ? »
+# partait au reverse-liste géographique — villes de la région Est du Cameroun)
+r = repond._cap_lieu_evenement("dans quelle ville est né Albert Einstein ?")
+check(r == "Albert Einstein est né à Ulm.", "« dans quelle ville est né X » -> le lieu vérifié, phrase directe")
+r = repond._cap_lieu_evenement("dans quel pays est né Albert Einstein ?")
+check(r is not None and r.startswith("Allemagne") and "pays actuel" in r,
+      "« dans quel pays est né X » -> saut pays MONTRÉ (honnêteté temporelle)")
+r = repond._cap_lieu_evenement("sur quel continent est né Albert Einstein ?")
+check(r is not None and r.startswith("Europe"), "« sur quel continent est né X » -> Europe (dérivation)")
+check(repond._cap_lieu_evenement("dans quelle ville est né Zorglub Introuvable ?") is None,
+      "personne inconnue -> None (la cascade continue)")
+check(repond._cap_lieu_evenement("dans quelle ville est la tour Eiffel ?") is None,
+      "« est » sans verbe d'événement -> None (la localisation existante garde sa route)")
+
 print("=== valide_composition : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)

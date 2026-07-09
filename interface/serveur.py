@@ -51,9 +51,30 @@ _HTML = os.path.join(_ICI, "index.html")
 # VERBATIM + page). En mémoire de session (reconstruit à l'upload) ; jamais envoyé ailleurs (souverain).
 _DOCS: dict = {}
 
+# DONNÉES STRUCTURÉES attachées par conversation (upload CSV/TSV/JSON) : conv_id -> interroge_donnees.Tableau|Arbre.
+# Route 3 (2026-07-09) : le document structuré n'est plus seulement LU, il est INTERROGEABLE (max/min/somme/
+# moyenne d'une colonne, comptages, extraction de cellule/clé — opérations EXACTES, preuve de localisation).
+_DONNEES: dict = {}
+
 
 def _document_de(conv_id: str):
     return _DOCS.get(conv_id)
+
+
+# FAITS PERSONNELS confiés par l'utilisateur (« le chien s'appelle Rex ») : conv_id -> faits_conversation.
+# FaitsConversation, REJOUÉ depuis les tours stockés (zéro stockage nouveau ; RGPD : purgé avec la conversation).
+_FAITS_CONV: dict = {}
+
+
+def _faits_de(memoire, conv_id: str):
+    """État des faits personnels d'une conversation (cache par conv, rejoué des tours au premier accès —
+    appelé AVANT le stockage du message courant, qui est ensuite appris incrémentalement)."""
+    fc = _FAITS_CONV.get(conv_id)
+    if fc is None:
+        import faits_conversation
+        fc = faits_conversation.depuis_tours(memoire.tours.get(conv_id, []))
+        _FAITS_CONV[conv_id] = fc
+    return fc
 
 # IA pleine (étage 2 de repond.py) : ACTIVE PAR DÉFAUT (l'utilisateur veut tester l'IA réelle). Le lecteur
 # (~622 Mo) est chargé PARESSEUSEMENT à la première question (pas au démarrage). Pour forcer le mode léger
@@ -239,6 +260,42 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
     if conv_id in arch:
         arch.discard(conv_id)
         _ecrit_archive(memoire, arch)
+    #   FAITS PERSONNELS (extraction, 2026-07-09) : « le chien s'appelle Rex » -> fait INTERROGEABLE ; « comment
+    #   s'appelle le chien ? » -> réponse ATTRIBUÉE ; « en fait c'est Max » (sous focus) -> correction d'AUTORITÉ
+    #   sans exigence de source (sur SA vie, l'utilisateur EST la source — ≠ faits-monde ci-dessous). AVANT la
+    #   correction-monde : motifs fermés, zéro capture d'une question générale (sujet inconnu -> None).
+    try:
+        _fc = _faits_de(memoire, conv_id)
+        _res_fc = _fc.apprend(texte)
+        _rep_fc = _fc.accuse(_res_fc) if _res_fc else _fc.repond(texte)
+    except Exception:
+        _rep_fc = None
+    if _rep_fc:
+        seq = memoire.ajoute(conv_id, "user", texte, scope=scope)
+        memoire.ajoute(conv_id, "ia", _rep_fc, scope=scope)
+        _DERNIERE_QUESTION[conv_id] = texte            # « prouve-le » au tour suivant doit retrouver cet échange
+        _DERNIERE_REPONSE[conv_id] = _rep_fc
+        return {"ok": seq >= 0, "seq": seq, "reponse": _rep_fc, **lire_conversation(memoire, conv_id)}
+    #   « PROUVE-LE » (audit item 11, 2026-07-09) : « es-tu sûr ? », « ta source ? » -> production de PREUVE sur
+    #   la dernière réponse (chaîne de composition, liens attribués, re-dérivation + source de table) ; type de
+    #   réponse improuvable -> on le DIT (jamais une justification fabriquée).
+    if repond.est_demande_preuve(texte):
+        q0, r0 = _DERNIERE_QUESTION.get(conv_id), _DERNIERE_REPONSE.get(conv_id)
+        if r0 and "toi qui me l'as dit" in r0:
+            rep_p = ("La preuve est dans cette conversation même : c'est TOI qui me l'as dit, je n'ai fait que "
+                     "le retenir (relis tes messages plus haut). Si c'est faux, corrige-moi — ta correction "
+                     "fait autorité.")
+        else:
+            rep_p = repond.preuve_de(q0, r0) if (q0 and r0) else None
+        if rep_p is None:
+            rep_p = ("Honnêtement : je ne sais pas produire de preuve formelle pour %s Ma règle reste FAUX=0 : "
+                     "fait vérifié, rapport attribué à sa source, ou abstention — jamais une justification "
+                     "fabriquée. Repose la question et demande-moi la preuve juste après : je te montrerai "
+                     "d'où vient chaque élément." %
+                     ("cette réponse-là." if r0 else "l'instant (je ne retrouve pas de réponse récente à prouver)."))
+        seq = memoire.ajoute(conv_id, "user", texte, scope=scope)
+        memoire.ajoute(conv_id, "ia", rep_p, scope=scope)
+        return {"ok": seq >= 0, "seq": seq, "reponse": rep_p, **lire_conversation(memoire, conv_id)}
     #   CORRECTION UTILISATEUR (AUTORITÉ) : « c'est faux, c'est X » / « non, la réponse est X » se rapporte à la
     #   DERNIÈRE question factuelle -> on enregistre la correction (l'utilisateur juge la réalité). FAUX=0 :
     #   simple mémorisation de SA réponse, ré-appliquée telle quelle et attribuée ensuite.
@@ -248,8 +305,20 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
         memoire.ajoute(conv_id, "ia", _corr, scope=scope)
         return {"ok": seq >= 0, "seq": seq, "reponse": _corr, **lire_conversation(memoire, conv_id)}
     seq = memoire.ajoute(conv_id, "user", texte, scope=scope)        # STOCKE D'ABORD : jamais perdu, jamais bloqué
+    # DONNÉES STRUCTURÉES ATTACHÉES (Route 3) : les opérations sur le CSV/JSON importé passent AVANT le pipeline —
+    # elles sont CHIRURGICALES (ne répondent que si la question nomme les colonnes/clés/valeurs RÉELLES du fichier,
+    # ou ses lignes/colonnes) et attribuées au fichier. Vécu e2e : « combien de lignes ? » partait au lexique
+    # (« 18 termes classés ligne ») au lieu du CSV attaché. Le document TEXTE, lui, reste en repli d'abstention.
+    reponse = None
+    if _DONNEES.get(conv_id) is not None:
+        try:
+            import interroge_donnees
+            reponse = interroge_donnees.repond(texte, _DONNEES[conv_id])
+        except Exception:
+            reponse = None
     # La réponse filtre déjà le message courant (texte != courant) -> pas d'auto-citation malgré l'indexation.
-    reponse = repond.repond(memoire, conv_id, texte, pleine=pleine)
+    if not reponse:
+        reponse = repond.repond(memoire, conv_id, texte, pleine=pleine)
     # DOCUMENT ATTACHÉ : si la connaissance vérifiée/le web n'ont RIEN donné (repli honnête) et qu'un document
     # est importé dans cette conversation, on répond depuis LUI (passage VERBATIM + page). Le document ne
     # détourne jamais une bonne réponse — il ne parle que quand l'IA allait dire « je ne sais pas ».
@@ -382,13 +451,23 @@ def _est_abstention(reponse: str) -> bool:
     return False
 
 
-_RE_SOMMAIRE = re.compile(r"\b(sommaire|plan|table des mati[èe]res|de quoi (?:parle|traite)|"
+_RE_SOMMAIRE = re.compile(r"\b(sommaire|plan|table des mati[èe]res|de quoi (?:parle|traite)|r[ée]sum(?:e|é|er)|"
                           r"structure du (?:document|m[ée]moire|texte)|quelles? (?:sont les )?sections?)\b", re.I)
 
 
 def _reponse_document(conv_id: str, question: str):
-    """Réponse depuis le document attaché : sommaire si demandé, sinon meilleur passage attribué. None si pas de
-    document ou rien de pertinent (FAUX=0 : uniquement du texte réel du document, jamais d'invention)."""
+    """Réponse depuis le document attaché : opérations EXACTES sur les données structurées (Route 3), sommaire si
+    demandé, sinon meilleur passage attribué. None si pas de document ou rien de pertinent (FAUX=0 : uniquement
+    du contenu réel du document — valeur exacte localisée ou passage verbatim, jamais d'invention)."""
+    donnees = _DONNEES.get(conv_id)
+    if donnees is not None:
+        try:
+            import interroge_donnees
+            r = interroge_donnees.repond(question, donnees)
+            if r:
+                return r
+        except Exception:
+            pass
     doc = _document_de(conv_id)
     if doc is None:
         return None
@@ -442,6 +521,9 @@ def oublie_conversation(memoire, conv_id: str) -> dict:
     repond._DERNIER_SUJET.pop(cid, None)
     repond._DERNIER_QUESTION.pop(cid, None)
     getattr(repond, "_QUIZ", {}).pop(cid, None)          # question de défi en attente : oubliée aussi
+    _DOCS.pop(cid, None)                                 # document attaché : purgé aussi (RGPD en-process)
+    _DONNEES.pop(cid, None)
+    _FAITS_CONV.pop(cid, None)                           # faits personnels extraits : oubliés avec la conversation
     return {"ok": memoire.oublie(cid)}
 
 
@@ -480,6 +562,32 @@ def _resume_fichier(nom: str, res: dict) -> str:
         return ("J'ai ouvert l'image « %s » mais je n'y ai reconnu aucun texte net (mon OCR ne lit que du "
                 "texte régulier à fort contraste, jamais deviné). Une photo ou une police manuscrite reste "
                 "hors de portée pour l'instant." % nom)
+    # CSV/TSV : résumé ACTIONNABLE (Route 3) — colonnes réelles + ce qu'on peut me demander dessus.
+    if typ in ("csv", "tsv") and isinstance(contenu, list):
+        try:
+            import interroge_donnees
+            tab = interroge_donnees.Tableau(contenu, titre=nom)
+            if tab.n > 0:
+                exemple = tab.entete[1] if len(tab.entete) > 1 else tab.entete[0]
+                return ("J'ai lu « %s » : %d ligne(s) de données, colonnes : %s.\nTu peux m'interroger dessus, "
+                        "par exemple : « quel est le max de %s ? », « moyenne de %s », « combien de lignes ? », "
+                        "« quel est le %s de <une valeur de la 1ʳᵉ colonne> ? »." %
+                        (nom, tab.n, ", ".join(tab.entete), exemple, exemple, exemple))
+        except Exception:
+            pass
+    # JSON : résumé ACTIONNABLE — forme réelle du sommet + opérations disponibles.
+    if typ == "json":
+        try:
+            import interroge_donnees
+            arb = interroge_donnees.Arbre(contenu, titre=nom)
+            cles, ou = arb._cles()
+            forme = ("une liste de %d élément(s)" % len(contenu)) if isinstance(contenu, list) else \
+                    ("un objet à %d clé(s)" % len(contenu)) if isinstance(contenu, dict) else "une valeur simple"
+            det = (" Clés %s : %s." % (ou, ", ".join(map(str, cles[:15])))) if cles else ""
+            return ("J'ai lu « %s » : %s.%s\nTu peux m'interroger dessus : « combien de <clé> ? », "
+                    "« quelles sont les clés ? », « quel est le <clé> ? »." % (nom, forme, det))
+        except Exception:
+            pass
     apercu = str(contenu)
     if len(apercu) > 700:
         apercu = apercu[:700] + " …"
@@ -533,6 +641,17 @@ def _indexe_document(conv_id: str, nom: str, res: dict) -> None:
         if not isinstance(res, dict) or res.get("statut") != "verifie":
             return
         typ, contenu = res.get("type"), res.get("contenu")
+        # STRUCTURÉ (Route 3) : csv/tsv -> Tableau, json -> Arbre. Opérations exactes aux tours suivants.
+        if typ in ("csv", "tsv") and isinstance(contenu, list):
+            import interroge_donnees
+            tab = interroge_donnees.Tableau(contenu, titre=nom)
+            if tab.n > 0:
+                _DONNEES[conv_id] = tab
+            return
+        if typ == "json":
+            import interroge_donnees
+            _DONNEES[conv_id] = interroge_donnees.Arbre(contenu, titre=nom)
+            return
         import lecteur_document
         if typ == "pdf" and isinstance(contenu, dict) and contenu.get("pages"):
             doc = lecteur_document.Document(contenu["pages"], titre_document=nom)

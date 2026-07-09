@@ -559,5 +559,143 @@ check(R._reponse_calcul("17 mod 5") == "2", "17 mod 5 -> 2")
 check(R._reponse_calcul("12 divisé par 4") == "3", "division exacte préservée (12÷4 -> 3)")
 check(R._reponse_calcul("reste de 10 divisé par 0") is None, "reste par 0 -> None (abstention honnête)")
 
+# — RADICAUX COMPOSÉS au chat (audit item 6 : « √20 × √5 » répondait sur √5 seul) —
+check(R._reponse_calcul("combien font √20 × √5 ?") == "10", "radicaux chat : √20 × √5 -> 10 EXACT")
+check(R._reponse_calcul("√20 × √5") == "10", "radicaux chat : expression NUE routée (un √ = intention de calcul)")
+check(R._reponse_calcul("que vaut √50 divisé par √2 ?") == "5", "radicaux chat : division rationalisée -> 5")
+r = R._reponse_calcul("combien font √2 + √8 ?")
+check(r is not None and r.startswith("3√2"), "radicaux chat : √2 + √8 -> 3√2 exact (approximation marquée)")
+check(R._reponse_calcul("la source du Nil est où ?") is None, "radicaux chat : question factuelle jamais captée")
+check(R._reponse_calcul("4 x 100 m relais") is None, "radicaux chat : « 4 x 100 m » jamais capté (pas de √)")
+
+# — ROUTE 4 : DIRIGEANT PAR PAYS ET ANNÉE (« qui dirigeait la France en 1962 ? » — tables chef_etat/gouvernement
+#   _pays_annee, échantillon 6 pays embarqué ; mandats terminés seulement, transitions chronologiques dites) —
+r = R._cap_dirigeant_annee("qui dirigeait la France en 1962 ?")
+check(r is not None and "Charles de Gaulle" in r and "Debré puis Georges Pompidou" in r and "Wikidata" in r,
+      "dirigeant : France 1962 -> de Gaulle (État) + Debré puis Pompidou (gouvernement), attribué")
+r = R._cap_dirigeant_annee("qui était président des États-Unis en 1963 ?")
+check(r is not None and "Kennedy puis Lyndon B. Johnson" in r and "transitions" in r,
+      "dirigeant : États-Unis 1963 -> Kennedy puis Johnson, transition DITE")
+r = R._cap_dirigeant_annee("qui était premier ministre du Royaume-Uni en 1940 ?")
+check(r is not None and "Chamberlain puis Winston Churchill" in r and "chef de l'État" not in r,
+      "dirigeant : fonction GOUVERNEMENT demandée -> pas de ligne chef d'État")
+r = R._cap_dirigeant_annee("qui régnait sur l'Espagne en 1975 ?")
+check(r is not None and "Juan Carlos" in r and "prise de fonction" in r,
+      "dirigeant : Espagne 1975 -> Juan Carlos avec BORNE honnête (année non pleine)")
+check(R._cap_dirigeant_annee("qui dirigeait la réunion en 1962 ?") is None,
+      "dirigeant : « la réunion » (pas un état souverain) -> None, zéro capture")
+check(R._cap_dirigeant_annee("qui dirigeait l'URSS en 1950 ?") is None,
+      "dirigeant : état disparu hors couverture -> None (abstention, la cascade continue)")
+check(R._cap_dirigeant_annee("qui dirigeait la France ?") is None,
+      "dirigeant : sans année -> None (le présent est une vérité datée, pas cette table)")
+check(R._cap_dirigeant_annee("qui a inventé la machine à vapeur ?") is None,
+      "dirigeant : question étrangère -> None")
+
+# — ROUTE 3 : FICHIERS INTERROGEABLES (câblage serveur : upload structuré -> opérations exactes + purge RGPD) —
+import serveur as S
+
+_res_csv = {"statut": "verifie", "type": "csv", "meta": {},
+            "contenu": [["nom", "prix"], ["pomme", "1,20"], ["poire", "2,50"]]}
+S._indexe_document("_gate_r3", "fruits.csv", _res_csv)
+check("_gate_r3" in S._DONNEES, "route 3 : CSV importé -> indexé dans _DONNEES (interrogeable)")
+r = S._reponse_document("_gate_r3", "quel est le max de prix ?")
+check(r is not None and "2,5" in r and "poire" in r and "ligne 3" in r,
+      "route 3 : max de colonne EXACT + preuve de ligne, depuis le câblage serveur")
+r = S._reponse_document("_gate_r3", "quel est le prix de la pomme ?")
+check(r is not None and "1,20" in r, "route 3 : extraction de cellule verbatim")
+check(S._reponse_document("_gate_r3", "quelle est la capitale de la France ?") is None,
+      "route 3 : question générale JAMAIS capturée par le document")
+r = S._resume_fichier("fruits.csv", _res_csv)
+check(r and "nom, prix" in r and "max" in r, "route 3 : résumé d'upload ACTIONNABLE (colonnes + exemples)")
+_res_json = {"statut": "verifie", "type": "json", "meta": {}, "contenu": {"livres": [1, 2, 3], "auteur": "Zola"}}
+S._indexe_document("_gate_r3j", "b.json", _res_json)
+r = S._reponse_document("_gate_r3j", "combien de livres ?")
+check(r is not None and "3" in r and "racine.livres" in r, "route 3 : comptage JSON exact + chemin en preuve")
+check(S._RE_SOMMAIRE.search("résume le document") is not None, "route 3 : « résume » déclenche le sommaire (MD/PDF)")
+# PRIORITÉ au document structuré dans le point d'entrée réel (vécu e2e : « combien de lignes ? » partait au
+# lexique « 18 termes classés ligne » au lieu du CSV attaché) — via ajoute_message, mémoire réelle en tempdir.
+import tempfile as _tf
+import conversation as _conv
+_mem = _conv.MemoireConversation(_tf.mkdtemp(prefix="gate_r3_"))
+r = S.ajoute_message(_mem, "_gate_r3", "combien de lignes ?", pleine=False)
+check("2 ligne(s) de données" in (r.get("reponse") or ""),
+      "route 3 : « combien de lignes ? » -> le CSV attaché répond, PAS le lexique (priorité structuré)")
+r = S.ajoute_message(_mem, "_gate_r3", "bonjour", pleine=False)
+check("fruits.csv" not in (r.get("reponse") or ""),
+      "route 3 : une interjection ne déclenche JAMAIS le document (zéro capture)")
+# purge RGPD : oublier la conversation retire AUSSI le document attaché (donnees + texte)
+S._DOCS["_gate_r3"] = object()
+class _MemNulle:
+    def oublie(self, cid):
+        return True
+try:
+    S.oublie_conversation(_MemNulle(), "_gate_r3")
+except Exception:
+    pass
+check("_gate_r3" not in S._DONNEES and "_gate_r3" not in S._DOCS,
+      "route 3 : oublie_conversation purge le document attaché (RGPD en-process)")
+S._DONNEES.pop("_gate_r3j", None)
+
+# — « PROUVE-LE » (audit item 11) : production de preuve à la demande —
+for t in ("prouve-le", "es-tu sûr ?", "t'es sûr", "ta source ?", "comment tu sais ça ?", "d'où tu sors ça ?"):
+    check(R.est_demande_preuve(t), "preuve : %r reconnu" % t)
+for t in ("quelle est la capitale de la France ?", "sur quel continent est la France ?",
+          "je suis sûr de moi", "la source du Nil"):
+    check(not R.est_demande_preuve(t), "preuve : %r NON capturé" % t)
+r = R.preuve_de("quelle est la population de la capitale de la France ?",
+                "2103778  (en composant : capitale de France = Paris, puis population de Paris = 2103778)")
+check(r is not None and "maillon par maillon" in r and "capitale de France = Paris" in r,
+      "preuve : composition -> la chaîne EST la preuve, re-montrée")
+r = R.preuve_de("qui est le roi de la pop ?", "D'après Wikipédia : Michael Jackson…\nhttps://fr.wikipedia.org/wiki/MJ")
+check(r is not None and "https://fr.wikipedia.org/wiki/MJ" in r and "ATTRIBUÉE" in r,
+      "preuve : réponse web -> les liens cités sont la preuve")
+r = R.preuve_de("quelle est la capitale de la France ?", "Paris")
+check(r is not None and "RE-VÉRIFIER" in r and "Paris" in r and "Source" in r,
+      "preuve : fait de table -> re-dérivation + source de la table")
+r = R.preuve_de("qui dirigeait la France en 1962 ?",
+                "En 1962 en France — chef de l'État : Charles de Gaulle. (Wikidata, mandats terminés.)")
+check(r is not None and "Wikidata" in r, "preuve : réponse auto-sourcée -> renvoi source + invitation à recouper")
+check(R.preuve_de("raconte une blague", "Pourquoi les plongeurs plongent en arrière ?") is None,
+      "preuve : type improuvable -> None (le serveur dira l'honnête « je ne sais pas prouver ça »)")
+r = R.preuve_de("quel est le max de prix ?", "Dans « fruits.csv » : max de « prix » = 2,5 (ligne 3 du fichier).")
+check(r is not None and "fruits.csv" in r and "attaché" in r,
+      "preuve : réponse tirée du fichier attaché -> la preuve est le fichier de l'utilisateur")
+
+# — MÉMOIRE À EXTRACTION (audit item 12, flux Rex->Max) : câblage serveur réel via ajoute_message —
+_mem_fc = _conv.MemoireConversation(_tf.mkdtemp(prefix="gate_fc_"))
+r = S.ajoute_message(_mem_fc, "_gate_fc", "le chien s'appelle Rex", pleine=False)
+check("le chien s'appelle Rex" in (r.get("reponse") or ""),
+      "mémoire-extraction : déclaration -> accusé SPÉCIFIQUE (fini le « C'est noté » générique)")
+r = S.ajoute_message(_mem_fc, "_gate_fc", "comment s'appelle le chien ?", pleine=False)
+check((r.get("reponse") or "").startswith("Rex"), "mémoire-extraction : re-demande -> Rex extrait, attribué")
+r = S.ajoute_message(_mem_fc, "_gate_fc", "en fait c'est Max", pleine=False)
+check("Corrigé" in (r.get("reponse") or "") and "autorité" in (r.get("reponse") or ""),
+      "mémoire-extraction : correction nue sous focus -> autorité utilisateur (pas de demande de source)")
+r = S.ajoute_message(_mem_fc, "_gate_fc", "comment s'appelle le chien ?", pleine=False)
+check((r.get("reponse") or "").startswith("Max"), "mémoire-extraction : re-demande -> MAX (l'audit item 12 est mort)")
+S._FAITS_CONV.pop("_gate_fc", None)                    # simule un redémarrage : rejeu depuis les tours stockés
+r = S.ajoute_message(_mem_fc, "_gate_fc", "comment s'appelle le chien ?", pleine=False)
+check((r.get("reponse") or "").startswith("Max"), "mémoire-extraction : PERSISTANT (rejeu des tours après redémarrage)")
+S.oublie_conversation(_mem_fc, "_gate_fc")
+check("_gate_fc" not in S._FAITS_CONV, "mémoire-extraction : oublie_conversation purge aussi les faits (RGPD)")
+
+# — « PROUVE-LE » côté serveur (dernier échange suivi + cas fait personnel + cas sans réponse récente) —
+_mem_p = _conv.MemoireConversation(_tf.mkdtemp(prefix="gate_pv_"))
+S._DERNIERE_QUESTION["_gate_pv"] = "quelle est la capitale de la France ?"
+S._DERNIERE_REPONSE["_gate_pv"] = "Paris"
+r = S.ajoute_message(_mem_p, "_gate_pv", "es-tu sûr ?", pleine=False)
+check("RE-VÉRIFIER" in (r.get("reponse") or "") and "Paris" in (r.get("reponse") or ""),
+      "prouve-le serveur : es-tu sûr après « Paris » -> re-dérivation + source")
+S._DERNIERE_REPONSE["_gate_pv"] = "Rex. (C'est toi qui me l'as dit dans cette conversation.)"
+r = S.ajoute_message(_mem_p, "_gate_pv", "prouve-le", pleine=False)
+check("TOI" in (r.get("reponse") or ""), "prouve-le serveur : fait personnel -> la preuve, c'est l'utilisateur")
+r = S.ajoute_message(_mem_p, "_gate_pv", "raconte une blague", pleine=False)
+S._DERNIERE_QUESTION["_gate_pv"] = "raconte une blague"
+S._DERNIERE_REPONSE["_gate_pv"] = (r.get("reponse") or "…")
+r = S.ajoute_message(_mem_p, "_gate_pv", "prouve-le", pleine=False)
+check("je ne sais pas produire de preuve" in (r.get("reponse") or ""),
+      "prouve-le serveur : type improuvable -> honnêteté dite, jamais une justification fabriquée")
+S.oublie_conversation(_mem_p, "_gate_pv")
+
 print("=== valide_capacites_chat : %d/%d ===" % (ok, ok + ko))
 sys.exit(0 if ko == 0 else 1)
