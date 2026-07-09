@@ -493,6 +493,20 @@ check("Fin du défi" in (R._quiz_verdict("cv-quiz", "stop") or ""), "« stop » 
 check(_A3.qualifie_texte("Défi accepté — test").statut == _A3.ECHANGE,
       "porte unique : un défi lancé est un ÉCHANGE, pas un fait")
 
+# — CODE PROUVÉ EN NL (route Phase 2 2026-07-09 : l'axe code 0/5 tombait au fallback/lexique alors que les
+#   moteurs de synthèse sont prouvés au diagnostic — la route manquait) —
+r = R._cap_code_prouve("écris une fonction python qui additionne, exemples (2, 3) -> 5, (1, 1) -> 2 et (4, 5) -> 9")
+check(r is not None and r.startswith("Code PROUVÉ") and "sum(x)" in r and "en aveugle" in r,
+      "code python AVEC exemples -> code PROUVÉ (juge) + held-out aveugle dit")
+r = R._cap_code_prouve("écris une fonction python qui trouve le plus long palindrome d'une chaîne")
+check(r is not None and "exemples entrée → sortie" in r and "PROUVÉ" in r,
+      "code SANS exemples -> demande ACTIONNABLE de la méthode (plus jamais fallback/lexique)")
+r = R._cap_code_prouve("écris en bash une fonction qui additionne, exemples (2, 3) -> 5 et (10, 4) -> 14")
+check(r is not None and r.startswith("Code PROUVÉ (bash)") and "$(( $1 + $2 ))" in r,
+      "bash binaire scalaire -> vrai code bash exécuté-vérifié")
+check(R._cap_code_prouve("qui a écrit les misérables ?") is None,
+      "« qui a écrit X » sans fonction/code -> None, le pipeline continue (aucune capture indue)")
+
 # — LOGIQUE PROPOSITIONNELLE (câblage « tout câbler » : sophismes.py rendu conversationnel) —
 r = R._cap_logique("si il pleut alors la route est mouillée, or il pleut, donc la route est mouillée")
 check(r is not None and "VALIDE" in r and "modus ponens" in r, "modus ponens -> VALIDE")
