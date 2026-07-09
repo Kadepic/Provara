@@ -56,7 +56,7 @@ check([n for n, _ in ordre] == NOMS and prio == set(),
       "acte factuel (hors prior) -> ordre historique (biais conservateur, jamais de famille inventée)")
 
 # ————————————————— (4) SÛRETÉ FAUX=0 : ensemble préservé + ordre relatif historique jamais inversé —————————————————
-for acte in ("quotidien", "demander_avis", "creer", "agir", "interroger_fait", ""):
+for acte in ("quotidien", "demander_avis", "creer", "agir", "calculer", "interroger_fait", ""):
     ordre, _ = S.ordonne(acte, CAPS, 0.95)
     check(sorted(n for n, _ in ordre) == sorted(NOMS), "SÛRETÉ : ensemble des caps préservé (%s)" % (acte or "∅"))
     pos = _positions(ordre)
@@ -124,6 +124,63 @@ check("prioritaires" in _SRC_REPOND or True, "prioritaires : consommé par ordon
 # recharge doit être déclenchée par un signal RÉEL (rechargement périodique), pas juste importée
 check("_SEQ.recharge()" in _SRC_REPOND and "_RECHARGE_TOUS" in _SRC_REPOND,
       "CÂBLAGE : recharge() est branché sur un déclencheur réel (rechargement périodique) — apprentissage intra-session EFFECTIF")
+
+# ————————————————— (8) PHASE 5 : COUPE DU FILET — mesurée, auditée, réversible —————————————————
+# (a) immaturité -> jamais de coupe (le journal courant n'a aucune décision « quotidien »)
+S.recharge()
+S._AUDIT_TICK.clear()
+check(not S.coupe("quotidien", 0.95), "COUPE : support insuffisant -> filet complet (jamais de coupe au doute)")
+# (b) maturité MESURÉE : 30 décisions quotidien toutes en famille -> coupe active à confiance haute seulement
+with open(os.environ["TRONC_ROUTAGE_PATH"], "w", encoding="utf-8") as f:
+    for _ in range(30):
+        f.write(json.dumps({"date": "2026-07-09", "acte": "quotidien", "cap": "quotidien",
+                            "famille": True, "pos": 0}) + "\n")
+S.recharge()
+S._AUDIT_TICK.clear()
+check(S.coupe("quotidien", 0.95), "COUPE : maturité prouvée (30 décisions, 0 hors-famille) -> filet coupé")
+check(not S.coupe("quotidien", 0.85),
+      "COUPE : confiance 0,85 < 0,9 -> filet complet (couper exige plus que réordonner)")
+check(not S.coupe("interroger_fait", 0.99), "COUPE : acte hors prior -> jamais coupé")
+# (c) passe d'AUDIT : exactement 1 décision sur AUDIT_TOUS repasse au filet complet (exploration vivante)
+S._AUDIT_TICK.clear()
+_serie = [S.coupe("quotidien", 0.95) for _ in range(S.AUDIT_TOUS * 2)]
+check(_serie.count(False) == 2 and not _serie[S.AUDIT_TOUS - 1] and not _serie[2 * S.AUDIT_TOUS - 1],
+      "AUDIT : 1 tour sur %d garde le filet complet, les autres coupent" % S.AUDIT_TOUS)
+# (d) AUTO-RÉVOCATION : un hit hors-famille journalisé (trouvé par l'audit) -> le filet se ré-ouvre
+with open(os.environ["TRONC_ROUTAGE_PATH"], "a", encoding="utf-8") as f:
+    f.write(json.dumps({"date": "2026-07-09", "acte": "quotidien", "cap": "definition",
+                        "famille": False, "pos": 41}) + "\n")
+S.recharge()
+S._AUDIT_TICK.clear()
+check(not S.coupe("quotidien", 0.95), "RÉVOCATION : un hit hors-famille -> coupe révoquée au rechargement")
+_et = S.etat_coupe()
+check(_et["quotidien"]["total"] == 31 and _et["quotidien"]["hors"] == 1 and not _et["quotidien"]["mure"],
+      "etat_coupe : total/hors/mûre MESURÉS du journal (jamais déclarés)")
+check(all(a in _et for a in S.PRIOR), "etat_coupe couvre tous les actes du prior")
+# (d bis) FAMILLE MESURÉE « calculer -> conversion » + maturité jugée contre la famille COURANTE : les vieilles
+# lignes portaient famille=False (le prior d'alors n'avait pas de famille calculer) — elles COMPTENT quand même
+# (l'histoire d'un cap suit le cap quand il devient famille, elle n'est pas perdue).
+ordre, prioset = S.ordonne("calculer", CAPS, 0.95)
+check([n for n, _ in ordre][0] == "conversion" and prioset == {"conversion"},
+      "PRIOR MESURÉ : calculer -> conversion en tête (74/74 décisions réelles au journal du jour)")
+with open(os.environ["TRONC_ROUTAGE_PATH"], "w", encoding="utf-8") as f:
+    for _ in range(30):                                  # flags HISTORIQUES famille=False (prior d'alors)
+        f.write(json.dumps({"date": "2026-07-08", "acte": "calculer", "cap": "conversion",
+                            "famille": False, "pos": 5}) + "\n")
+S.recharge()
+S._AUDIT_TICK.clear()
+check(S.coupe("calculer", 0.95),
+      "MATURITÉ vs famille COURANTE : 30 décisions toutes « conversion » -> coupe mûre malgré les flags d'époque")
+with open(os.environ["TRONC_ROUTAGE_PATH"], "a", encoding="utf-8") as f:
+    f.write(json.dumps({"date": "2026-07-09", "acte": "calculer", "cap": "stats", "famille": False,
+                        "pos": 60}) + "\n")
+S.recharge()
+S._AUDIT_TICK.clear()
+check(not S.coupe("calculer", 0.95), "un cap étranger à la famille courante (1 hit < support) -> coupe révoquée")
+# (e) CÂBLAGE PROD : coupe() dans la boucle de cascade, etat_coupe() dans le diagnostic
+for _api in ("coupe", "etat_coupe"):
+    check(("_SEQ.%s(" % _api in _SRC_REPOND) or ("_SQD.%s(" % _api in _SRC_REPOND),
+          "CÂBLAGE : sequenceur.%s() est appelé par le produit (repond.py)" % _api)
 
 print("valide_sequenceur :", _ok[0], "OK,", _ko[0], "KO")
 sys.exit(1 if _ko[0] else 0)

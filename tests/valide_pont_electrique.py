@@ -78,6 +78,35 @@ for q in ("quelle puissance passe dans l'échangeur ?", "quelle est la résistan
     check(P.repond(q, sit6) is None, "sans grandeur électrique : %r -> None" % q[:45])
 check(P._electrique("quelle intensité ?", S.Situation()) is None, "fil vide -> None (pas d'ancrage)")
 
+# — POURQUOI-ÉLECTRIQUE contentful (q±) : direction PROUVÉE par recalcul, constantes = les données ÉNONCÉES —
+sit7 = S.Situation()
+sit7.apprend(1, "le circuit est en 230 volts et le moteur tire 5 ampères")
+r = P.repond("de quoi dépend la puissance ?", sit7)
+check(r is not None and "P = U·I" in r and "racines causales" in r and "1150" in r,
+      "dep puissance (U,I énoncés) : roue + racines causales = TES données + dérivation 1150 W")
+r = P.repond("de quoi dépend la résistance ?", sit7)
+check(r is not None and "loi d'Ohm" in r and "46" in r, "dep résistance : R = U/I + valeur dérivée 46 Ω")
+r = P.repond("pourquoi la puissance augmente quand le courant augmente ?", sit7)
+check(r is not None and "PROUVÉ" in r and "1150" in r and "1380" in r and "AUGMENTE" in r
+      and "tension constante" in r,
+      "dir vraie : preuve 2 points (5 A->1150 W ; 6 A->1380 W), tension DITE constante")
+r = P.repond("pourquoi la puissance baisse quand le courant augmente ?", sit7)
+check(r is not None and "Ce n'est pas ce qui se passe" in r and "AUGMENTE" in r,
+      "prémisse fausse -> corrigée (elle AUGMENTE), jamais validée")
+r = P.repond("pourquoi la puissance baisse quand la résistance augmente ?", sit7)
+check(r is not None and "DÉRIVÉE" in r and "46" in r,
+      "influence non énoncée (R dérivée) -> dit honnêtement + demande laquelle des données bouge")
+r = P.repond("pourquoi le courant baisse quand la tension augmente ?", sit7)
+check(r is not None and "ne dépend PAS" in r and "indépendantes" in r,
+      "cible = donnée de l'utilisateur (U,I énoncés) : I indépendant de U DANS SES DONNÉES (de Kleer)")
+sit8 = S.Situation()
+sit8.apprend(1, "la plaque est en 230 volts et consomme 4600 watts")
+r = P.repond("pourquoi le courant baisse quand la tension augmente ?", sit8)
+check(r is not None and "PROUVÉ" in r and "DIMINUE" in r and "20 A" in r and "16,6667" in r,
+      "MÊME question, données (P,U) : I = P/U prouvé décroissant (20 -> 16,6667 A) — la vérité dépend de l'énoncé")
+check(P.repond("pourquoi la puissance augmente quand le courant augmente ?", sit6) is None,
+      "sans ancrage électrique (fil thermo) : le pourquoi-électrique ne capture pas")
+
 # — « pourquoi ? » nu sur une réponse électrique -> la roue expliquée (loi d'Ohm + P = U·I) —
 rd = P.repond("quelle est la résistance du circuit ?", sit)
 r = P.pourquoi_dernier("pourquoi ?", rd, sit)
