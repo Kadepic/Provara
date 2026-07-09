@@ -679,6 +679,25 @@ check((r.get("reponse") or "").startswith("Max"), "mémoire-extraction : PERSIST
 S.oublie_conversation(_mem_fc, "_gate_fc")
 check("_gate_fc" not in S._FAITS_CONV, "mémoire-extraction : oublie_conversation purge aussi les faits (RGPD)")
 
+# — LE FIL (situation) : câblage serveur — la sonde « échangeur thermique » du 09/07 ne doit plus JAMAIS
+#   s'auto-citer ni perdre les données énoncées —
+_mem_sit = _conv.MemoireConversation(_tf.mkdtemp(prefix="gate_sit_"))
+S.ajoute_message(_mem_sit, "_gate_sit",
+                 "Je conçois un échangeur thermique ; le fluide chaud entre à 90 degrés et sort à 50.", pleine=False)
+r = S.ajoute_message(_mem_sit, "_gate_sit", "reprends ce que je t'ai dit sur le fluide chaud", pleine=False)
+check("90 degrés" in (r.get("reponse") or "") and "tour" in (r.get("reponse") or ""),
+      "fil : rappel filtré -> clause verbatim citée (fini l'auto-citation de la demande)")
+r = S.ajoute_message(_mem_sit, "_gate_sit", "résume notre conversation", pleine=False)
+check("échangeur" in (r.get("reponse") or "") and "Grandeurs" in (r.get("reponse") or ""),
+      "fil : « résume notre conversation » -> résumé calculé depuis l'ancré (fini le repli)")
+r = S.ajoute_message(_mem_sit, "_gate_sit", "quelles données je t'ai données ?", pleine=False)
+check("90 degrés (température)" in (r.get("reponse") or ""), "fil : grandeurs typées restituées")
+S._SITUATIONS.pop("_gate_sit", None)                    # redémarrage simulé : rejeu depuis les tours stockés
+r = S.ajoute_message(_mem_sit, "_gate_sit", "reprends ce que je t'ai dit sur le fluide chaud", pleine=False)
+check("90 degrés" in (r.get("reponse") or ""), "fil : PERSISTANT (rejeu des tours après redémarrage)")
+S.oublie_conversation(_mem_sit, "_gate_sit")
+check("_gate_sit" not in S._SITUATIONS, "fil : oublie_conversation purge la situation (RGPD)")
+
 # — « PROUVE-LE » côté serveur (dernier échange suivi + cas fait personnel + cas sans réponse récente) —
 _mem_p = _conv.MemoireConversation(_tf.mkdtemp(prefix="gate_pv_"))
 S._DERNIERE_QUESTION["_gate_pv"] = "quelle est la capitale de la France ?"

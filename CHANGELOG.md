@@ -1,5 +1,48 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 nuit — FIL brique 2 : PONT GRANDEURS→MOTEURS — la sonde échangeur passe 7/7 dans le .exe
+
+- **`src/pont_grandeurs.py`** : les grandeurs ÉNONCÉES deviennent des OPÉRANDES. Machine à états sur les
+  températures du fil (le FLUIDE COURANT chaud/froid se propage de segment en segment ; le SENS entre/sort
+  vient du segment de chaque nombre — situation.py : rôle = tokens du SEGMENT depuis la grandeur précédente,
+  la fenêtre fixe mélangeait les fluides). Calculs v1 : ÉCART entre deux grandeurs (cité), DTLM (4 températures
+  + sens d'écoulement exigés ; ΔT de borne ≤ 0 -> « physiquement impossible » DIT), SURFACE A = Q/(U·ΔTlm)
+  (Q et U pris dans la QUESTION ou le fil). Exactitude prouvée contre calcul indépendant (36,9946 ; 5,4062 m²).
+- **LE comportement-clé (perfection FAUX=0)** : opérande manquant -> DEMANDÉ NOMMÉMENT (« il me manque la
+  température de SORTIE du fluide froid — donne-la-moi et je calcule ») ; sens inconnu -> demandé (il change
+  les bornes) ; hypothèses « si… » JAMAIS opérandes ; ré-énoncé -> la dernière valeur fait foi (autorité
+  utilisateur) ; ambigu -> dit ; hors périmètre -> None. Pièges regex tués en construisant : « entre » était
+  mot-vide (verbe porteur tué), normalise() mange le tiret de « contre-courant ».
+- **E2E .exe : la sonde d'ingénieur du début de soirée passe 7/7** — accusé du fil, demande nommée, DTLM exact
+  dès la donnée fournie, surface, écart cité, résumé. Gate valide_pont_grandeurs 16/16 ; suite **31/31**.
+- Reste du chantier : actes « et si » (re-calcul à grandeur modifiée)/« pourquoi », écho-repli à-côté, TRONC §7/§8.
+
+## 2026-07-09 nuit — CHANTIER « TENIR LE FIL » lancé (mandat Yohan : perfection irrattrapable, carte blanche) — brique 1 LIVRÉE
+
+- **Sonde fondatrice** (conversation d'ingénieur, échangeur thermique, 8 tours dans le pipeline réel) : le
+  front-end route des actes mais ne tient AUCUNE situation — grandeurs énoncées inertes, « résume notre
+  conversation » → repli, « reprends ce que je t'ai dit sur X » → auto-citation, « quelle surface pour
+  100 kW » → « c'est subjectif ». Constat consigné, feuille de route en mémoire persistante
+  (project-ia-chantier-tenir-le-fil).
+- **`src/situation.py` — LE FIL (brique 1)** : tout ce que l'utilisateur AFFIRME est tenu — clauses VERBATIM
+  jamais compressées (constitution machine SPEC_TRONC §1 : le résumé se CALCULE à la demande), grandeurs
+  typées par dimension (réutilise _CONV_UNITS + températures/pressions/puissances/débits/W/m²K), ELLIPSE
+  d'unité en SUPPOSITION étiquetée (« entre à 90 degrés et sort à 50 » → « 50 (degrés implicite) », jamais
+  affirmé), hypothèses « si… » étiquetées jamais promues, index inversé ouvert (pas de slots DST figés — idées
+  DRT/Kamp adaptées machine), questions ET impératifs exclus du fil, interjections filtrées. FAUX=0 PAR
+  CONSTRUCTION : toute restitution CITE sa clause + son tour. Rejouable des tours (persistance/RGPD gratuits).
+- **Routes chat** : « résume notre conversation / fais le point » → résumé calculé de l'ancré ; « reprends /
+  rappelle / qu'est-ce que je t'ai dit sur X » → rappel FILTRÉ cité ; « quelles données je t'ai données ? » →
+  grandeurs typées ; déclaration technique → accusé DU FIL (« C'est noté, je tiens le fil : 90 degrés, 50
+  (degrés implicite), 20 degrés… ») à la place du lookup fragmenté « pas en mémoire » ×N. `grandeurs_de(sujet)`
+  = interface du futur PONT grandeurs→moteurs.
+- Gate `valide_situation` 21/21 (ellipse, hypothèses, zéro capture, rejeu) ; capacites_chat 246/246 ; suite
+  **30/30 gates** ; e2e .exe : accusé + rappel + résumé + grandeurs verts, zéro capture (« capitale de la
+  France » → Paris). Conversations de test purgées.
+- **SUITE (ordre)** : ② pont situation→moteurs (les grandeurs énoncées deviennent OPÉRANDES : ΔT, DTLM,
+  surface = Q/(U·ΔTlm) — formules thermo fermées) ; ③ actes « et si » (re-calcul à grandeur modifiée) et
+  « pourquoi » (causal) ; ④ tuer l'écho-repli à-côté ; ⑤ TRONC §7/§8 (validation Yohan).
+
 ## 2026-07-09 — CINÉMATIQUE NL (audit item 7, DERNIER item du pont) + bug de guérison « autre→astre » tué
 
 - **`src/cinematique_nl.py`** : problèmes à étapes du mouvement uniforme, EXACTS (Fractions de bout en bout).
