@@ -65,6 +65,21 @@ def _document_de(conv_id: str):
 # FaitsConversation, REJOUÉ depuis les tours stockés (zéro stockage nouveau ; RGPD : purgé avec la conversation).
 _FAITS_CONV: dict = {}
 
+# LE FIL (chantier compréhension 2026-07-09) : conv_id -> situation.Situation — tout ce que l'utilisateur
+# AFFIRME (clauses verbatim, grandeurs typées, hypothèses étiquetées), rejoué des tours. Sert « résume notre
+# conversation », « reprends ce que je t'ai dit sur X », « quelles données je t'ai données ? » — et le PONT
+# grandeurs→moteurs à venir.
+_SITUATIONS: dict = {}
+
+
+def _situation_de(memoire, conv_id: str):
+    sit = _SITUATIONS.get(conv_id)
+    if sit is None:
+        import situation
+        sit = situation.depuis_tours(memoire.tours.get(conv_id, []))
+        _SITUATIONS[conv_id] = sit
+    return sit
+
 
 def _faits_de(memoire, conv_id: str):
     """État des faits personnels d'une conversation (cache par conv, rejoué des tours au premier accès —
@@ -270,6 +285,24 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
         _rep_fc = _fc.accuse(_res_fc) if _res_fc else _fc.repond(texte)
     except Exception:
         _rep_fc = None
+    #   LE FIL (situation) : apprend CHAQUE tour utilisateur ; répond sur ses motifs fermés (« résume notre
+    #   conversation », « reprends ce que je t'ai dit sur X », « quelles données je t'ai données ? »).
+    try:
+        _sit = _situation_de(memoire, conv_id)
+        _seq_prochain = len(memoire.tours.get(conv_id, [])) + 1
+        _n_sit = _sit.apprend(_seq_prochain, texte)
+        if not _rep_fc:
+            _rep_fc = _sit.repond(texte)
+        if not _rep_fc:
+            import pont_grandeurs                    # PONT : les grandeurs énoncées deviennent des opérandes
+            _rep_fc = pont_grandeurs.repond(texte, _sit)
+        # déclaration TECHNIQUE (grandeurs, pas de question) -> accusé du FIL, à la place du lookup fragmenté
+        # « je ne l'ai pas encore en mémoire » ×N (vécu sonde échangeur). Les affirmations sans grandeur
+        # gardent leurs flux existants (mémo, attunement, apprentissage de patrons).
+        if not _rep_fc and _n_sit and "?" not in texte:
+            _rep_fc = _sit.accuse_tour(_seq_prochain)
+    except Exception:
+        pass
     if _rep_fc:
         seq = memoire.ajoute(conv_id, "user", texte, scope=scope)
         memoire.ajoute(conv_id, "ia", _rep_fc, scope=scope)
@@ -524,6 +557,7 @@ def oublie_conversation(memoire, conv_id: str) -> dict:
     _DOCS.pop(cid, None)                                 # document attaché : purgé aussi (RGPD en-process)
     _DONNEES.pop(cid, None)
     _FAITS_CONV.pop(cid, None)                           # faits personnels extraits : oubliés avec la conversation
+    _SITUATIONS.pop(cid, None)                           # le fil : oublié aussi (RGPD en-process)
     return {"ok": memoire.oublie(cid)}
 
 
