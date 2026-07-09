@@ -21,11 +21,21 @@ SÛRETÉ (« sûr avant rapide ») — invariants :
 
 from __future__ import annotations
 
-import resource
 import signal
 from contextlib import contextmanager
 
+try:
+    import resource                     # POSIX seulement — le pré-filtre en-process exige les gardes kernel
+except ImportError:                     # Windows (.exe) : vécu 2026-07-09, l'import en dur tuait demande/
+    resource = None                     # strategies et toutes les routes au-dessus (invente_et_retiens…).
+
 from juge import juge
+
+# Sans les DEUX gardes kernel (setrlimit + SIGALRM — Windows n'a ni l'un ni l'autre), exécuter un candidat
+# EN-PROCESS serait un risque réel (boucle infinie = thread gelé, allocation folle = process à terre).
+# HONNÊTE ET SÛR : le pré-filtre se déclare indisponible et TOUT passe par la sandbox juge (sous-processus
+# bornés par timeout) — même verdict final, juste sans l'optimisation.
+GARDES_KERNEL = resource is not None and hasattr(signal, "SIGALRM")
 
 
 class _Timeout(Exception):
@@ -103,6 +113,8 @@ def pre_juge(code: str, tests: str, held: str | None = None, timeout: float = 0.
       - "pass"      : tous les asserts passent en-process -> candidat PROMETTEUR (à sandbox-confirmer).
       - "incertain" : exec/exception non-assertion/timeout -> on NE conclut pas -> sandbox décide.
     Mime la sémantique du juge (exec code puis exec tests qui appellent check(fn)), mais en-process."""
+    if not GARDES_KERNEL:
+        return "incertain"             # pas de filet kernel -> JAMAIS d'exec en-process ; la sandbox tranche
     ns: dict = {}
     try:
         with _limite_temps(timeout), _limite_memoire():
