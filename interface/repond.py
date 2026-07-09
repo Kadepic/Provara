@@ -4562,6 +4562,17 @@ def _cap_invention(texte: str):
     m = re.search(r"\bque\s+manque[\s-]*t[\s-]*il\s+pour\s+(.+?)\s*\??\s*$", texte, re.I)
     if m:
         besoin_txt, explicite = m.group(1), True         # intention d'invention SANS ambiguïté
+    if besoin_txt is None:
+        # FORME DIRECTE (vécu Phase 2 2026-07-09 : « invente un dispositif pour refroidir une maison sans
+        # électricité » n'était PAS reconnue -> l'étage de clarification amont répondait à côté du moteur) :
+        # « invente/imagine/propose/conçois … pour X » = intention d'invention EXPLICITE, X = le besoin.
+        m = re.search(r"\b(?:invente[sz]?|imagine[sz]?|propose[sz]?|con[çc]oi[st])\b.{0,50}?\bpour\s+(.+?)\s*\??\s*$",
+                      texte, re.I)
+        # OBJET LANGAGIER/SOCIAL (carte fermée) : « invente une excuse pour mon retard » n'est pas un besoin
+        # PHYSIQUE à décomposer — la méthode thermodynamique y serait à côté ; la cascade sert mieux.
+        if m and not re.search(r"\b(?:excuses?|blagues?|histoires?|mensonges?|slogans?|po[èe]mes?|chansons?|"
+                               r"noms?|titres?|surnoms?|pr[ée]textes?)\b", texte, re.I):
+            besoin_txt, explicite = m.group(1), True
     physique = False
     if besoin_txt is None:
         m = re.search(r"\bcomment\s+(?:faire\s+pour\s+|je\s+peux\s+|)(.+?)\s+sans\s+.+?\s*\??\s*$", texte, re.I)

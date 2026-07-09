@@ -507,6 +507,18 @@ check(r is not None and r.startswith("Code PROUVÉ (bash)") and "$(( $1 + $2 ))"
 check(R._cap_code_prouve("qui a écrit les misérables ?") is None,
       "« qui a écrit X » sans fonction/code -> None, le pipeline continue (aucune capture indue)")
 
+# — INVENTION EN FORME DIRECTE (route Phase 2 2026-07-09 : « invente … pour X » tombait à l'étage de
+#   clarification amont au lieu du moteur besoin.py) —
+r = R._cap_invention("invente un dispositif pour refroidir une maison sans électricité")
+check(r is not None and ("leviers physiques" in r or "BESOIN" in r),
+      "« invente … pour X sans Y » -> le moteur d'invention répond (méthode physique, plus jamais à côté)")
+r = R._cap_invention("propose une invention qui n'existe pas pour économiser l'eau douce")
+check(r is not None and "leviers physiques" in r, "« propose une invention pour X » -> méthode amplifiée")
+check(R._cap_invention("invente une excuse pour mon retard") is None,
+      "objet langagier/social (excuse) -> None, jamais la thermodynamique à côté")
+check(R._cap_invention("peux-tu me proposer un restaurant pour ce soir ?") is None,
+      "« proposer un restaurant » -> None (aucune capture indue)")
+
 # — LOGIQUE PROPOSITIONNELLE (câblage « tout câbler » : sophismes.py rendu conversationnel) —
 r = R._cap_logique("si il pleut alors la route est mouillée, or il pleut, donc la route est mouillée")
 check(r is not None and "VALIDE" in r and "modus ponens" in r, "modus ponens -> VALIDE")
