@@ -106,9 +106,15 @@ def main():
     s, v, _ = F("Combien font 12 plus 30 ?")
     check("ARITH : « 12 plus 30 » -> 42", s == VERIFIE and v == "42")
 
+    # RACINE NON PARFAITE (piège MIS À JOUR — décision Yohan 2026-07-09 nuit) : l'ancien piège exigeait HORS ;
+    # le produit répond désormais MIEUX — l'irrationalité est DITE et l'approximation MARQUÉE (jamais une
+    # décimale présentée comme exacte). Le check garde l'esprit FAUX=0 : les deux mentions sont EXIGÉES.
+    s, v, _ = F("Quelle est la racine carrée de 145 ?")
+    check("ARITH : « √145 » -> irrationalité DITE + approximation MARQUÉE (jamais une valeur nue)",
+          s == VERIFIE and "irrationnel" in v and "approximation" in v and "12.04" in v)
+
     pieges = [
         "Combien font 100 divisé par 3 ?",  # ARITH division NON exacte -> HORS (jamais un arrondi)
-        "Quelle est la racine carrée de 145 ?",  # ARITH racine NON parfaite -> HORS
         "Combien font 3.5 fois 2 ?",       # ARITH nombre décimal -> HORS (hors périmètre)
         "qu3ll3 3st l4 l4ngu3 du m3x1qu3 ?",  # ARITH leet : « m3x1qu3 » ne doit PAS matcher « 3x1 » (invariance)
         "l4 c4p1t4l3 d3 l4 fr4nc3",        # ARITH leet : digits collés dans des mots -> jamais un calcul

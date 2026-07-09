@@ -429,6 +429,23 @@ RELATIONS_AMBIGUES = {
     "dimension": ("hauteur", "longueur", "superficie"),
 }
 
+# ── TÊTES POLYSÉMIQUES jugées par le STORE (Phase 2 GÉNÉRALISÉE, validée Yohan 2026-07-09) : une tête nominale
+# porte PLUSIEURS relations candidates — représentation SOUS-SPÉCIFIÉE (idée QLF Alshawi-Crouch 1992 / hole
+# semantics, adaptée machine) : le faisceau tient toutes les lectures, le LOOKUP RÉEL juge lesquelles s'ancrent
+# (le pluggage est jugé par le store, pas par heuristique), compose() sert le coup — 1 ancrée -> net ;
+# ≥2 ancrées -> divergence LISTÉE (jamais « la première trouvée » : 2893 entités vivent dans les DEUX tables de
+# création) ; 0 -> None, cascade inchangée. Chaque entrée : tête -> ((relation, libellé de lecture, unité), …).
+# Carte FERMÉE : une tête ne s'ajoute qu'avec ses relations VÉRIFIÉES en base.
+TETES_POLYSEMIQUES = {
+    "capacite": (("capacite_stade", "capacité du stade", "places"),
+                 ("capacite_salle", "capacité de la salle", "places"),
+                 ("capacite_eglise", "capacité de l'église", "places"),
+                 ("capacite_passagers_navire", "capacité en passagers du navire", "passagers"),
+                 ("capacite_reservoir", "capacité du réservoir", "m³")),
+    "creation": (("annee_creation_oeuvre_art", "année de création de l'œuvre", ""),
+                 ("annee_creation_organisation", "année de création de l'organisation", "")),
+}
+
 
 def compose(faisceau: Faisceau, terme: str | None = None) -> str | None:
     """Compose la sortie d'un faisceau dont les candidats ont été RÉSOLUS par l'appelant (réponse remplie +

@@ -252,6 +252,89 @@ def _surface(question: str, sit):
             "ΔTlm calculé de TES températures)." % (_fmt(round(a, 4)), _fmt(q_w), _fmt(u), _fmt(dtlm_val)))
 
 
+# ── ÉLECTRICITÉ (②bis : le pont GÉNÉRALISÉ hors-thermo, 2026-07-09 nuit) ───────────────────────────────────
+# Domaine fermé et exact : la « roue » U = R·I / P = U·I lie 4 grandeurs — 2 connues suffisent à fermer les
+# 4 (fermeture par saturation, chaque pas NOTÉ pour montrer la dérivation). Mêmes comportements-clés que le
+# thermo : dernière valeur fait foi, hypothèses jamais opérandes, opérande manquant DEMANDÉ NOMMÉMENT.
+_ELEC_DIMS = ("tension", "courant", "résistance", "puissance")
+_ELEC_UNITES = {"tension": "V", "courant": "A", "résistance": "Ω", "puissance": "W"}
+_RE_ELEC_CIBLE = re.compile(
+    r"\b(puissance|tension|courant|intensit[ée]|r[ée]sistance)\b.{0,40}\??\s*$|"
+    r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|le\s+|l['’])?)?(puissance|tension|courant|intensit[ée]|r[ée]sistance)\b", re.I)
+
+
+def _elec_valeurs(sit, question: str = "") -> dict:
+    """Les grandeurs électriques UTILISABLES (fil sûr + question), dernière valeur par dimension fait foi.
+    La puissance est convertie en W (kW/MW)."""
+    locales = []
+    for mq in _S._RE_GRANDEUR.finditer(question or ""):
+        try:
+            val = float(mq.group(1).replace(",", "."))
+        except ValueError:
+            continue
+        unite = mq.group(2).lower()
+        locales.append({"valeur": val, "unite": unite,
+                        "dim": _S._DIMS.get(_S._TOUTES_UNITES.get(unite, ""), "")})
+    vals = {}
+    for g in _grandeurs_sures(sit) + locales:
+        if g["dim"] in ("tension", "courant", "résistance"):
+            vals[g["dim"]] = g["valeur"] * (1e3 if g["unite"] == "kv" else 1.0)
+        elif g["dim"] == "puissance":
+            vals["puissance"] = g["valeur"] * _W_FACT.get(g["unite"], 1.0)
+    return vals
+
+
+def _elec_resout(vals: dict) -> tuple:
+    """Ferme {U, I, R, P} sous la roue (saturation ; divisions par zéro écartées). -> (valeurs, chemins notés)."""
+    v, chemins = dict(vals), []
+    for _ in range(3):
+        if "tension" not in v and {"résistance", "courant"} <= v.keys():
+            v["tension"] = v["résistance"] * v["courant"]
+            chemins.append("U = R×I")
+        if "tension" not in v and {"puissance", "courant"} <= v.keys() and v["courant"]:
+            v["tension"] = v["puissance"] / v["courant"]
+            chemins.append("U = P/I")
+        if "courant" not in v and {"tension", "résistance"} <= v.keys() and v["résistance"]:
+            v["courant"] = v["tension"] / v["résistance"]
+            chemins.append("I = U/R")
+        if "courant" not in v and {"puissance", "tension"} <= v.keys() and v["tension"]:
+            v["courant"] = v["puissance"] / v["tension"]
+            chemins.append("I = P/U")
+        if "résistance" not in v and {"tension", "courant"} <= v.keys() and v["courant"]:
+            v["résistance"] = v["tension"] / v["courant"]
+            chemins.append("R = U/I")
+        if "puissance" not in v and {"tension", "courant"} <= v.keys():
+            v["puissance"] = v["tension"] * v["courant"]
+            chemins.append("P = U×I")
+    return v, chemins
+
+
+def _electrique(question: str, sit):
+    """Calcul électrique depuis les grandeurs ÉNONCÉES. Ne s'engage que si le contexte est électrique
+    (au moins une grandeur V/A/Ω dans le fil ou la question — « quelle puissance passe dans l'échangeur ? »
+    n'est pas pour moi). Opérande manquant -> demandé NOMMÉMENT."""
+    m = _RE_ELEC_CIBLE.search(question)
+    if not m:
+        return None
+    cible = normalise(m.group(1) or m.group(2) or "")
+    cible = {"intensite": "courant", "resistance": "résistance"}.get(cible, cible)
+    vals = _elec_valeurs(sit, question)
+    if not any(d in vals for d in ("tension", "courant", "résistance")):
+        return None                                       # aucun ancrage électrique : pas pour moi
+    ferme, chemins = _elec_resout(vals)
+    if cible not in ferme:
+        manque = [d for d in ("tension", "courant", "résistance", "puissance") if d not in ferme and d != cible]
+        noms = {"tension": "la tension (en volts)", "courant": "le courant (en ampères)",
+                "résistance": "la résistance (en ohms)", "puissance": "la puissance (en watts)"}
+        return ("Je sais calculer %s (roue U = R·I, P = U·I), mais il me manque une donnée : donne-moi %s "
+                "et je calcule exactement." % ("le " + cible if cible == "courant" else "la " + cible,
+                                               " ou ".join(noms[d] for d in manque[:2])))
+    donnees = ", ".join("%s = %s %s" % (d, _fmt(vals[d]), _ELEC_UNITES[d]) for d in _ELEC_DIMS if d in vals)
+    deriv = " ; ".join(chemins) if chemins else "donnée énoncée telle quelle"
+    return ("%s ≈ %s %s (%s — d'après ce que tu m'as donné : %s)." %
+            (cible[:1].upper() + cible[1:], _fmt(round(ferme[cible], 4)), _ELEC_UNITES[cible], deriv, donnees))
+
+
 # ── « ET SI » : monde contrefactuel = intervention + SIMULATION AVANT (brique 3 du fil) ────────────────────
 # Théorie (recherche 2026-07-09) : un contrefactuel = intervenir sur UNE variable puis re-propager dans les
 # MÊMES équations (équations structurelles, Pearl) — le registre fermé du pont (DTLM ← 4 temp + sens ;
@@ -369,6 +452,27 @@ def _etsi_surface(sit, hyp: str, cible_txt: str, q_val=None, u_val=None, d_val=N
             (etiquette, _fmt(round(a1, 4)), avant, _fmt(q1), _fmt(u1), _fmt(round(d1, 4))))
 
 
+def _etsi_electrique(sit, hyp: str, cible_txt: str):
+    """Hypothèse sur U/I/R -> la roue re-fermée dans le monde hypothétique, avant/après montré."""
+    cf, n = _monde_hypothetique(sit, hyp)
+    if not n:
+        return None
+    m = _RE_ELEC_CIBLE.search(cible_txt or "")
+    cible = normalise((m.group(1) or m.group(2)) if m else "puissance")
+    cible = {"intensite": "courant", "resistance": "résistance"}.get(cible, cible)
+    av, _ = _elec_resout(_elec_valeurs(sit))
+    ap, chemins = _elec_resout(_elec_valeurs(cf))
+    etiquette = "Dans ton hypothèse (%s)" % hyp
+    if cible not in ap:
+        return ("%s, il me manque encore de quoi fermer le calcul — donne-moi la tension (en volts), le "
+                "courant (en ampères) ou la résistance (en ohms)." % etiquette)
+    lieu = (" au lieu de %s %s avec tes données réelles" % (_fmt(round(av[cible], 4)), _ELEC_UNITES[cible])) \
+        if cible in av and abs(av[cible] - ap[cible]) > 1e-9 else ""
+    return ("%s : %s ≈ %s %s%s (%s). Le fil réel reste inchangé — affirme la nouvelle valeur si tu veux "
+            "que je la retienne." % (etiquette, cible[:1].upper() + cible[1:], _fmt(round(ap[cible], 4)),
+                                     _ELEC_UNITES[cible], lieu, " ; ".join(chemins) or "donnée énoncée"))
+
+
 def _et_si(question: str, sit):
     """Acte « et si … » : intervention sur une grandeur + re-propagation. None si la modification n'est pas
     du registre (jamais de capture des « et si on allait à la plage ? »)."""
@@ -438,6 +542,8 @@ def _et_si(question: str, sit):
     if "coefficient d'échange" in dims:
         return _etsi_surface(sit, hyp, cible_txt,
                              u_val=next(v for v, u, d in grs if d == "coefficient d'échange"))
+    if dims & {"tension", "courant", "résistance"}:       # ②bis : et-si électrique (même simulation avant)
+        return _etsi_electrique(sit, hyp, cible_txt)
     return None
 
 
@@ -609,6 +715,11 @@ def pourquoi_dernier(texte: str, derniere_reponse, sit):
     if r.startswith("Écart"):
         return ("Simple soustraction des deux grandeurs que TU m'as données (citées dans ma réponse avec leur "
                 "tour d'origine) : je n'ai rien ajouté, j'ai soustrait tes valeurs.")
+    if r.startswith(("Tension ≈", "Courant ≈", "Résistance ≈", "Puissance ≈")):
+        return ("Parce que ces quatre grandeurs sont liées par DEUX définitions : la loi d'Ohm U = R·I (la "
+                "résistance est le rapport tension/courant) et la puissance électrique P = U·I (énergie par "
+                "seconde = tension × débit de charges). Deux valeurs suffisent donc à fermer les quatre — j'ai "
+                "montré dans ma réponse le chemin exact suivi depuis TES données.")
     if r.startswith("Dans ton hypothèse"):
         return ("Parce que j'ai re-propagé TA modification dans les mêmes équations fermées (simulation "
                 "avant) : mêmes formules, un seul opérande changé — c'est pour ça que je montre l'avant/après.")
@@ -628,7 +739,7 @@ def repond(question: str, sit):
     q = str(question or "")
     if not q.strip():
         return None
-    for resolveur in (_et_si, _pourquoi, _dtlm, _surface, _ecart):
+    for resolveur in (_et_si, _pourquoi, _dtlm, _surface, _electrique, _ecart):
         try:
             r = resolveur(q, sit)
         except Exception:

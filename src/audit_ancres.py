@@ -20,8 +20,11 @@ from __future__ import annotations
 import os
 import re
 
-_ICI = (os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.abspath(__file__)))
-_LECT = os.path.join(_ICI, "datasets", "lecteur")
+# RACINE = le REPO (ce fichier vit dans src/) — l'ancien dirname(__file__) cherchait src/datasets/lecteur
+# (inexistant : inventaire vide/partiel, cause du dossier « 6/22 » de l'audit 2026-07-09). Le store audité
+# honore LECTEUR_DATASETS_DIR (la base réelle) avant le chemin embarqué.
+_ICI = (os.environ.get("VERAX_ROOT") or os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_LECT = os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(_ICI, "datasets", "lecteur")
 
 
 def _relations_et_tailles() -> dict:
@@ -58,11 +61,16 @@ def _relations_referencees(relations) -> set:
     motif = re.compile(r"(?<![a-z0-9_])(" + "|".join(re.escape(r) for r in sorted(relations, key=len, reverse=True))
                        + r")(?![a-z0-9_])")
     refs = set()
-    for f in os.listdir(os.path.join(_ICI, "tests")):
+    # ⚠ cause racine du « classe mal » (audit 2026-07-09) : on listait tests/ mais on OUVRAIT depuis la racine
+    # (_ICI/f) -> aucun validateur jamais lu (OSError silencieux), tout partait en « non référencé ».
+    dossier_tests = os.path.join(_ICI, "tests")
+    if not os.path.isdir(dossier_tests):
+        return set()
+    for f in os.listdir(dossier_tests):
         if not (f.startswith("valide_") and f.endswith(".py")):
             continue
         try:
-            with open(os.path.join(_ICI, f), encoding="utf-8") as fh:
+            with open(os.path.join(dossier_tests, f), encoding="utf-8") as fh:
                 txt = fh.read()
         except OSError:
             continue
