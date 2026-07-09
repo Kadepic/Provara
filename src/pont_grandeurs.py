@@ -337,7 +337,50 @@ _ROUE_HYDRO = {
     "paire_exemple": "le débit",
 }
 
-_ROUES = (_ROUE_ELEC, _ROUE_HYDRO)
+# Roue ÉNERGIE E = P·t (3e instance, 2026-07-09 jour) : le cas « facture » — « 2000 W pendant 3 heures ->
+# 6 kWh ». Canonique : E en kWh, P en W, t en heures. « h » NU délibérément EXCLU des unités de durée
+# (« à 14 h » est un INSTANT, pas une durée — même logique FAUX=0 que « a » nu pour l'ampère) ; seules les
+# formes explicites (heures, minutes, secondes, jours…) typent une durée. E = P·t n'est exact qu'à puissance
+# CONSTANTE -> la note l'affiche sur chaque réponse (supposition DITE, jamais silencieuse).
+# PONT INTER-ROUES (« amont ») : puissance absente des énoncés -> la roue ÉLECTRIQUE la ferme depuis U/I/R
+# énoncés (chemins concaténés : « P = U×I ; E = P×t ») — dérivé n'est JAMAIS montré comme « donné ».
+_ROUE_ENERGIE = {
+    "nom": "énergie",
+    "dims": ("énergie", "puissance", "durée"),
+    "unites": {"énergie": "kWh", "puissance": "W", "durée": "h"},
+    "fil_dims": {"énergie": "énergie", "puissance": "puissance", "temps": "durée"},
+    "conv": {"énergie": {"kwh": 1.0, "wh": 1e-3, "j": 1.0 / 3.6e6, "kj": 1.0 / 3600, "mj": 1.0 / 3.6},
+             "puissance": _W_FACT,
+             "durée": {"heure": 1.0, "heures": 1.0, "jour": 24.0, "jours": 24.0, "journee": 24.0,
+                       "journees": 24.0, "semaine": 168.0, "semaines": 168.0,
+                       "min": 1.0 / 60, "minute": 1.0 / 60, "minutes": 1.0 / 60,
+                       "seconde": 1.0 / 3600, "secondes": 1.0 / 3600}},
+    "ancres": ("énergie", "durée", "puissance"),          # une puissance énoncée + « quelle énergie ? » = à nous
+    "articles": {"énergie": "l'énergie", "puissance": "la puissance", "durée": "la durée"},
+    "noms": {"énergie": "l'énergie (en kWh)", "puissance": "la puissance (en watts)",
+             "durée": "la durée de fonctionnement (en heures ou minutes)"},
+    "relations": (("énergie", ("puissance", "durée"), lambda p, t: p * t / 1000.0, "E = P×t"),
+                  ("puissance", ("énergie", "durée"), lambda e, t: e * 1000.0 / t if t else None, "P = E/t"),
+                  ("durée", ("énergie", "puissance"), lambda e, p: e * 1000.0 / p if p else None, "t = E/P")),
+    "cible_re": re.compile(
+        r"\b([ée]nergie|consommation)\b.{0,40}\??\s*$|"
+        r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|le\s+|l['’])?)?([ée]nergie|consommation)\b", re.I),
+    "q_re": re.compile(r"\b([ée]nergie|consommation|puissance|dur[ée]e)\b", re.I),
+    "alias": {"energie": "énergie", "consommation": "énergie", "duree": "durée"},
+    "cible_defaut": "énergie",
+    "devise": "roue E = P·t",
+    "note": " NB : à puissance constante sur la durée — si elle varie, donne-moi la puissance moyenne.",
+    "amont": ("puissance", 1.0),                      # fermable par la roue ÉLECTRIQUE (P = U×I) si non énoncée
+    "deps": {
+        "énergie": "E = P·t (l'énergie est la puissance × la durée de fonctionnement — 1 kWh = 1000 W "
+                   "pendant 1 heure)",
+        "puissance": "P = E/t (la puissance est l'énergie par unité de temps)",
+        "durée": "t = E/P (la durée est l'énergie divisée par la puissance)",
+    },
+    "paire_exemple": "l'énergie ou la puissance",
+}
+
+_ROUES = (_ROUE_ELEC, _ROUE_HYDRO, _ROUE_ENERGIE)
 
 
 def _liste_ou(noms: list) -> str:
@@ -370,6 +413,24 @@ def _vals_roue(sit, roue: dict, question: str = "") -> dict:
     return vals
 
 
+def _vals_pontees(sit, roue: dict, question: str = "") -> tuple:
+    """(vals avec pont amont appliqué, énoncées SEULES, chemins du pont). Le PONT INTER-ROUES (« amont ») :
+    une grandeur absente des énoncés est fermée par la roue amont (l'électrique ferme la puissance depuis
+    U/I/R) — dérivée, jamais montrée comme « donnée »."""
+    vals = _vals_roue(sit, roue, question)
+    enonces = dict(vals)
+    chemins_amont = []
+    am = roue.get("amont")
+    if am and am[0] not in vals:
+        av = _vals_roue(sit, _ROUE_ELEC, question)
+        if any(d in av for d in _ROUE_ELEC["ancres"]):
+            fa, ca = _roue_resout(av, _ROUE_ELEC)
+            if am[0] in fa:
+                vals[am[0]] = fa[am[0]] * am[1]
+                chemins_amont = ca
+    return vals, enonces, chemins_amont
+
+
 def _roue_resout(vals: dict, roue: dict) -> tuple:
     """Ferme la roue par SATURATION (divisions par zéro écartées par les relations). -> (valeurs, chemins)."""
     v, chemins = dict(vals), []
@@ -396,8 +457,8 @@ def _roue_repond(question: str, sit, roue: dict):
     cible = roue["alias"].get(cible, cible)
     if cible not in roue["dims"]:
         return None
-    vals = _vals_roue(sit, roue, question)
-    if not any(d in vals for d in roue["ancres"]):
+    vals, enonces, chemins_amont = _vals_pontees(sit, roue, question)
+    if not any(d in enonces for d in roue["ancres"]):
         return None                                       # aucun ancrage du domaine : pas pour moi
     ferme, chemins = _roue_resout(vals, roue)
     if cible not in ferme:
@@ -405,10 +466,12 @@ def _roue_repond(question: str, sit, roue: dict):
         return ("Je sais calculer %s (%s), mais il me manque une donnée : donne-moi %s "
                 "et je calcule exactement." % (roue["articles"][cible], roue["devise"],
                                                " ou ".join(roue["noms"][d] for d in manque[:2])))
-    donnees = ", ".join("%s = %s %s" % (d, _fmt(vals[d]), roue["unites"][d]) for d in roue["dims"] if d in vals)
-    deriv = " ; ".join(chemins) if chemins else "donnée énoncée telle quelle"
-    return ("%s ≈ %s %s (%s — d'après ce que tu m'as donné : %s)." %
-            (cible[:1].upper() + cible[1:], _fmt(round(ferme[cible], 4)), roue["unites"][cible], deriv, donnees))
+    donnees = ", ".join("%s = %s %s" % (d, _fmt(enonces[d]), roue["unites"][d])
+                        for d in roue["dims"] if d in enonces)
+    deriv = " ; ".join(chemins_amont + chemins) if (chemins_amont or chemins) else "donnée énoncée telle quelle"
+    return ("%s ≈ %s %s (%s — d'après ce que tu m'as donné : %s).%s" %
+            (cible[:1].upper() + cible[1:], _fmt(round(ferme[cible], 4)), roue["unites"][cible], deriv, donnees,
+             roue.get("note", "")))
 
 
 def _electrique(question: str, sit):
@@ -419,6 +482,11 @@ def _electrique(question: str, sit):
 def _hydraulique(question: str, sit):
     """La roue hydraulique Q = S·v (instance du moteur générique)."""
     return _roue_repond(question, sit, _ROUE_HYDRO)
+
+
+def _energie(question: str, sit):
+    """La roue énergie E = P·t (instance du moteur générique, pont amont électrique)."""
+    return _roue_repond(question, sit, _ROUE_ENERGIE)
 
 
 # ── « ET SI » : monde contrefactuel = intervention + SIMULATION AVANT (brique 3 du fil) ────────────────────
@@ -550,11 +618,13 @@ def _etsi_roue(sit, hyp: str, cible_txt: str, roue: dict):
     cible = roue["alias"].get(cible, cible)
     if cible not in roue["dims"]:
         cible = roue["cible_defaut"]
-    ap_vals = _vals_roue(cf, roue)
-    if not any(d in ap_vals for d in roue["ancres"]):
+    ap_vals, ap_enonces, ap_amont = _vals_pontees(cf, roue)
+    if not any(d in ap_enonces for d in roue["ancres"]):
         return None
-    av, _ = _roue_resout(_vals_roue(sit, roue), roue)
+    av_vals, _env, _cav = _vals_pontees(sit, roue)
+    av, _ = _roue_resout(av_vals, roue)
     ap, chemins = _roue_resout(ap_vals, roue)
+    chemins = ap_amont + chemins
     etiquette = "Dans ton hypothèse (%s)" % hyp
     if cible not in ap:
         return ("%s, il me manque encore de quoi fermer le calcul — donne-moi %s." %
@@ -639,6 +709,15 @@ def _et_si(question: str, sit):
         return _etsi_roue(sit, hyp, cible_txt, _ROUE_ELEC)
     if dims & {"débit", "aire", "vitesse"}:               # et-si hydraulique (Q = S·v) — ancrage vérifié dedans
         return _etsi_roue(sit, hyp, cible_txt, _ROUE_HYDRO)
+    if dims & {"énergie", "temps"}:                       # et-si énergie (E = P·t)
+        # une DURÉE seule n'est pas un contexte énergétique (« et si on partait dans 2 heures ? ») : il faut
+        # du kWh dans l'hypothèse, ou une puissance/énergie DÉJÀ énoncée dans le fil réel — le contexte
+        # ÉLECTRIQUE compte (U/I/R énoncés : le pont amont ferme P, vécu e2e n4 2026-07-09).
+        reels = _vals_roue(sit, _ROUE_ENERGIE)
+        elec = _vals_roue(sit, _ROUE_ELEC)
+        if dims & {"énergie"} or {"puissance", "énergie"} & reels.keys() \
+                or any(d in elec for d in _ROUE_ELEC["ancres"]):
+            return _etsi_roue(sit, hyp, cible_txt, _ROUE_ENERGIE)
     return None
 
 
@@ -938,6 +1017,11 @@ def pourquoi_dernier(texte: str, derniere_reponse, sit):
                 "seconde : Q = S·v (section de passage × vitesse d'écoulement). Deux de ces trois grandeurs "
                 "suffisent donc à fermer la troisième — j'ai montré dans ma réponse le chemin exact suivi "
                 "depuis TES données.")
+    if r.startswith(("Énergie ≈", "Durée ≈")):
+        return ("Parce que l'énergie est, PAR DÉFINITION, la puissance intégrée sur la durée : E = P·t à "
+                "puissance constante (1 kWh = 1000 W pendant 1 heure). Deux de ces trois grandeurs suffisent "
+                "à fermer la troisième — et si la puissance n'était pas énoncée, je l'ai d'abord fermée par la "
+                "roue électrique (P = U·I), chemin montré dans ma réponse.")
     if r.startswith("Dans ton hypothèse"):
         return ("Parce que j'ai re-propagé TA modification dans les mêmes équations fermées (simulation "
                 "avant) : mêmes formules, un seul opérande changé — c'est pour ça que je montre l'avant/après.")
@@ -957,7 +1041,7 @@ def repond(question: str, sit):
     q = str(question or "")
     if not q.strip():
         return None
-    for resolveur in (_et_si, _pourquoi, _dtlm, _surface, _electrique, _hydraulique, _ecart):
+    for resolveur in (_et_si, _pourquoi, _dtlm, _surface, _electrique, _hydraulique, _energie, _ecart):
         try:
             r = resolveur(q, sit)
         except Exception:

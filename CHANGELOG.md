@@ -1,5 +1,46 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 jour (suite) — BACKLOG ANCRAGE ÉPUISÉ : 1371/1371 relations référencées (100 %), 0 fait non ancré
+
+- **TRANCHE 5 = LA TRAÎNE ENTIÈRE (73 tables, ≈ 327k faits)** dans `valide_ancres_types` (**309/309**) :
+  distributions top-6 MESURÉES sur le store réel puis CERTIFIÉES à la relecture (pont routier, qanat, wat,
+  Tchitalichté, colombier, pierre de Caen, codes ISO 4217… — tous des types/lieux réels) ; check = CLIQUET
+  anti-dérive à marge (top-4 ⊆ top-6 observé, volume ≥ 95 % du mesuré, zéro valeur vide, 73 tables scannées
+  en flux). Ancres d'entité certaines en bonus : France->EUR, Japon->JPY, Suisse->CHF (ISO 4217),
+  M87->amas de la Vierge, Cervin->Weisshorn (parent topographique).
+- **Mesure finale (audit_ancres, base réelle 72M)** : non référencées **98 -> 0**, faits non ancrés
+  **5 120 405 -> 0**. Le diagnostic d'hier (93 % référencées) est clos : **100 %**.
+
+## 2026-07-09 jour (suite) — ROUE n°3 : ÉNERGIE E = P·t + PONT INTER-ROUES (élec -> énergie)
+
+- **`_ROUE_ENERGIE`** (~40 lignes de spec, comme promis par le moteur générique) : le cas « facture » —
+  « le radiateur consomme 2000 watts » + « il tourne pendant 3 heures » -> « Énergie ≈ 6 kWh (E = P×t…) ».
+  Supposition « à puissance constante » DITE sur CHAQUE réponse (E = P·t n'est exact qu'à P constante —
+  jamais silencieuse). **« h » nu délibérément EXCLU des durées** (« à 14 h » est un instant — même logique
+  FAUX=0 que « a » nu pour l'ampère) ; une durée seule n'ancre rien (« je pars dans 2 heures » + « et si on
+  partait dans 3 heures ? » -> None).
+- **PONT INTER-ROUES (`amont`)** : puissance non énoncée -> fermée par la roue ÉLECTRIQUE depuis U/I/R
+  énoncés, chemins concaténés (« P = U×I ; E = P×t ») — le P ponté n'est JAMAIS montré comme « donné »
+  (seules les énoncées de la roue apparaissent dans « d'après ce que tu m'as donné »). Vérifié :
+  « 230 V, 10 A, pendant 2 h » -> 4,6 kWh.
+- Et-si (12 kWh au lieu de 6, fil intact), pourquoi q± (preuve 2 points, « à puissance constante »),
+  prémisse fausse corrigée, dep (1 kWh = 1000 W pendant 1 h), pourquoi-nu câblés — tout hérité du moteur.
+- Gate **valide_roue_energie 18/18** (nouvelle, ajoutée à la suite -> 36 gates) ; sœurs intactes
+  (électrique 22/22, hydraulique 19/19, pont 16/16, et_si_pourquoi 37/37, situation 21/21).
+- **Bug trouvé PAR l'e2e et tué en gate** : « et si elle chauffait pendant 4 heures, quelle énergie ? » sur
+  un fil U/I partait en réponse PLATE (9,2 kWh sans cadre hypothèse — la garde et-si ignorait le contexte
+  électrique et le pont amont manquait au chemin et-si). Correctif : `_vals_pontees` factorisé (partagé
+  `_roue_repond`/`_etsi_roue`), garde élargie au contexte élec. **E2E .exe 6/6 rejoué** : accusés -> 4,6 kWh
+  ponté (« d'après ce que tu m'as donné : durée = 2 h » — le P dérivé jamais « donné ») -> et-si CADRÉ
+  (9,2 au lieu de 4,6, fil inchangé) -> pourquoi-nu simulation -> fil intact (4,6). Convs purgées, exe tué.
+
+## 2026-07-09 jour (suite) — PRIOR des autres actes : RIEN À ÉTENDRE (mesuré, pas déclaré)
+
+- Les journaux réels (WSL 427 lignes + app Yohan) ne parlent QUE pour `quotidien` (353+5, famille prior) et
+  `calculer` (74+1, famille mesurée du jour). Aucun autre acte n'a UNE SEULE décision journalisée -> aucune
+  preuve pour une nouvelle famille. Le mécanisme Phase 5 s'étendra de lui-même avec l'usage réel
+  (apprentissage ≥ 3 succès, coupe ≥ 25 décisions propres) — décision : ne rien forcer.
+
 ## 2026-07-09 jour — BACKLOG ANCRAGE : 25 tables ancrées, faits non ancrés −93,6 % (5,12M -> 327k)
 
 - **`tests/valide_ancres_types.py` 87/87** (classe BASE COMPLÈTE, hors suite — `LECTEUR_DATASETS_DIR` requis) :
