@@ -172,6 +172,14 @@ def etat() -> dict:
     """État complet pour l'interface : auto ON/OFF, disponibilité, tampons local/distant. Ne fait un appel réseau
     QUE si l'appelant l'a autorisé (le serveur ne l'appelle que quand Internet est activé)."""
     loc = version_locale()
+    # BUILD DE DÉVELOPPEMENT (tampon sans numéro : « build-local » de build_exe.bat, ou source) : il n'est PAS
+    # « périmé » — c'est en général le code le PLUS FRAIS. Annoncer « nouvelle version disponible » contre lui
+    # est FAUX (vécu 2026-07-09 : bannière sur un build de test -> clic -> le build de dev écrasé par la Release
+    # en plein diagnostic, installation mixte à l'arrivée). Un build dev se met à jour en REBUILDANT, jamais
+    # par la Release ; on ne propose donc RIEN (ni bannière, ni veille auto) — et on économise l'appel réseau.
+    if loc.get("build", 0) == 0:
+        return {"ok": True, "auto": auto_active(), "disponible": False, "version_locale": loc.get("brut"),
+                "version_distante": None, "url_exe": None, "reseau": None, "dev": True}
     dist = version_distante()
     dispo = bool(dist and dist.get("build", 0) > loc.get("build", 0)
                  and dist.get("commit") and dist.get("commit") != loc.get("commit"))
@@ -191,11 +199,21 @@ def applique(url_exe: str | None = None) -> dict:
     pour la bascule .exe. Renvoie {ok, message}. NE bloque PAS : l'updater tourne à part, l'app se ferme ensuite."""
     if not getattr(sys, "frozen", False):
         return {"ok": False, "message": "Mise à jour du binaire disponible seulement dans le .exe."}
+    d = None
     if not url_exe:
         d = version_distante()
         url_exe = d.get("url_exe") if d else None
     if not url_exe:
         return {"ok": False, "message": "Aucun paquet de mise à jour trouvé sur le dépôt."}
+    # TRAÇABILITÉ ANTI-BOUCLE sur TOUTES les voies (veille auto ET bouton de l'interface — vécu 2026-07-09 :
+    # les applications déclenchées par le front n'étaient pas notées, la garde de la veille ne voyait rien) :
+    # la cible est notée ICI ; la veille du prochain boot ne re-tentera pas la même cible pendant 6 h.
+    try:
+        d = d or version_distante()
+        if d and d.get("brut"):
+            note_tentative(d["brut"])
+    except Exception:
+        pass
     import tempfile
     tmp = tempfile.gettempdir()
     nouveau = os.path.join(tmp, "Provara-nouveau.exe")
@@ -292,18 +310,33 @@ def _lance_updater(nouveau_exe: str, dossier_app: str | None = None) -> dict:
         ")",
     ]
     if dossier_app:
-        # BASCULE DOSSIER (onedir) : l'ancien _internal est RENOMMÉ (pas supprimé tout de suite : l'antivirus
-        # peut le tenir), le nouveau prend sa place, l'exe suit. Tout est sur le même volume -> renommages purs.
-        vieux = os.path.join(dossier, "_internal.old")
+        # BASCULE DOSSIER (onedir) VÉRIFIÉE : l'ancien _internal est RENOMMÉ (pas supprimé tout de suite :
+        # l'antivirus peut le tenir), le nouveau prend sa place, l'exe suit. Tout est sur le même volume ->
+        # renommages purs. ⚠ CHAQUE move est CONTRÔLÉ (vécu 2026-07-09 : un move raté — verrou antivirus —
+        # laissait une installation MIXTE exe build N + _internal build M ; les imports paresseux mouraient
+        # alors même sur processus vierge, cf. régression resout_math du build 75). Si un move échoue, on
+        # RESTAURE l'ancien état cohérent et on redémarre l'ANCIENNE app — jamais un panachage.
+        interne, vieux = os.path.join(dossier, "_internal"), os.path.join(dossier, "_internal.old")
         lignes += [
             'rd /s /q "%s" >NUL 2>NUL' % vieux,
-            'if exist "%s" move /Y "%s" "%s" >NUL' % (os.path.join(dossier, "_internal"),
-                                                      os.path.join(dossier, "_internal"), vieux),
-            'move /Y "%s" "%s" >NUL' % (os.path.join(dossier_app, "_internal"),
-                                        os.path.join(dossier, "_internal")),
+            'if not exist "%s" goto place' % interne,
+            'move /Y "%s" "%s" >NUL' % (interne, vieux),
+            "if errorlevel 1 goto demarre",
+            ":place",
+            'move /Y "%s" "%s" >NUL' % (os.path.join(dossier_app, "_internal"), interne),
+            "if errorlevel 1 goto restaure",
+            'move /Y "%s" "%s" >NUL' % (nouveau_exe, cible),
+            "if errorlevel 1 goto annule",
+            "goto demarre",
+            ":annule",
+            'rd /s /q "%s" >NUL 2>NUL' % interne,
+            ":restaure",
+            'if exist "%s" move /Y "%s" "%s" >NUL' % (vieux, vieux, interne),
+            ":demarre",
         ]
+    else:
+        lignes += ['move /Y "%s" "%s" >NUL' % (nouveau_exe, cible)]
     lignes += [
-        'move /Y "%s" "%s" >NUL' % (nouveau_exe, cible),
         # MARQUEUR DE RELANCE MAJ (vécu : un 2e onglet s'ouvrait, l'ancien restant ouvert) : l'app relancée
         # n'ouvre PAS de navigateur — l'onglet existant se recharge tout seul (watchdog front). L'env posé ici
         # vaut pour ce start ET les relances anti-DLL (même session cmd).
