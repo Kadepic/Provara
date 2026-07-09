@@ -17,8 +17,19 @@ import sys
 # s'exécute tel quel, exception -> traceback + code retour ≠ 0, sentinelle imprimée sur stdout (pipé par juge).
 if len(sys.argv) == 3 and sys.argv[1] == "--juge-exec":
     import runpy
+    import traceback
     sys.argv = [sys.argv[2]]
-    runpy.run_path(sys.argv[0], run_name="__main__")
+    try:
+        runpy.run_path(sys.argv[0], run_name="__main__")
+    except SystemExit:
+        raise
+    except BaseException:
+        # ⚠ TOUJOURS rattraper (vécu build 77, 2026-07-09) : en --noconsole, le bootloader PyInstaller affiche
+        # une BOÎTE DE DIALOGUE pour toute exception non rattrapée — chaque candidat recalé par le juge ouvrait
+        # un popup sur le bureau de l'utilisateur (averse pendant le préchauffage). Contrat du juge conservé à
+        # l'identique : traceback sur stderr (il y lit « AssertionError » -> FAIL) + code retour 1, sans dialogue.
+        traceback.print_exc()
+        sys.exit(1)
     sys.exit(0)
 
 import threading

@@ -196,6 +196,8 @@ def juge(solution: str, tests: str, limites: Limites | None = None,
                 timeout=limites.temps_s,
                 preexec_fn=preexec,
                 cwd=bac,                               # cwd jetable
+                # Windows : jamais de fenêtre console pour un candidat (0 ailleurs — sans effet POSIX).
+                creationflags=getattr(subprocess, "CREATE_NO_WINDOW", 0),
             )
         except subprocess.TimeoutExpired as e:
             return Verdict(
