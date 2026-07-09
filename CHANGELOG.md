@@ -1,5 +1,39 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 — 🏆 CAUSE RACINE build 75 TROUVÉE + 3 correctifs de fond (juge .exe, MAJ honnête, bascule vérifiée)
+
+- **Régression build 75 CLOSE, mécanisme prouvé en live** : la bascule de MAJ remplace `_internal\` PUIS l'exe ;
+  un move raté (verrou antivirus) laissait une installation MIXTE (exe build N + `_internal` build M) -> les
+  imports paresseux (briques resout_math…) mouraient même sur processus vierge. Vérifié : builds 76/77 frais
+  -> factorielle 720, pgcd 12, 20 % de 5 000 = 1000, tout DANS le .exe. Reproduit en live : dist s'est retrouvé
+  panaché (exe local 32 Mo + `_internal` Release) après une application déclenchée pendant mes tests.
+- **① JUGE DANS LE .EXE : mode interpréteur `--juge-exec`** — `sys.executable` EST Provara.exe dans le bundle :
+  chaque candidat jugé relançait l'APPLICATION ENTIÈRE (gel du diagnostic depuis le build 53, processus
+  fantômes vus en live pendant le diagnostic). `lance.py` (tout en tête, avant tout boot) exécute le fichier
+  candidat et sort ; `executeur.py` route vers ce mode en frozen. Vérifié e2e .exe (onedir) : « Exercices
+  curés » repasse, boucle/mesure ne bloquent plus, diagnostic 273 -> 276/306.
+- **② MAJ HONNÊTE (FAUX=0)** : un build DEV (tampon sans numéro, « build-local ») n'est PAS périmé — la
+  bannière « nouvelle version disponible » contre lui était FAUSSE (vécu : clic -> build de test écrasé par
+  la Release en plein diagnostic). `maj.etat()` : build 0 -> jamais disponible, zéro appel réseau, champ
+  `dev`. + `note_tentative` posé DANS `applique()` (le front n'était pas tracé, la garde anti-boucle de la
+  veille ne voyait rien). valide_maj 39/41 -> **42/42** (contrat du test mis à jour + cas build utilisateur).
+- **③ BASCULE ONEDIR VÉRIFIÉE (updater .bat)** : chaque `move` est contrôlé ; si l'exe ne peut pas être
+  remplacé, le `_internal` neuf est retiré et l'ancien restauré -> on redémarre TOUJOURS une installation
+  cohérente, jamais un panachage (le mécanisme exact du cadavre build 75).
+- **④ PRÉCHAUFFAGE DES PREUVES** (`capacites.chauffe_preuves`, thread de fond après la connaissance) : les
+  preuves qui résolvent leurs briques via le juge (compréhension intégrée, carte des limites, savoir massif…)
+  coûtent 10-60 s à froid sur le .exe -> le diagnostic les servait « bloquée > 10s » puis sautait ~24 preuves
+  (budget global). Désormais : mémo daté par preuve ; le diagnostic sert les LENTES du mémo (affiché « dont N
+  au préchauffage, il y a X min » — jamais menteur) et re-prouve les rapides EN DIRECT. En local le mémo ne
+  s'active pas (aucune preuve > 5 s).
+- **Hygiène de session consignée** (_REPRISE_SESSION.md) : tests .exe sur PORT 8799 + VERAX_RELANCE_MAJ=1
+  (aucun onglet sur le bureau de Yohan), jamais de taskkill /IM global (son app tourne sur 8765), build test
+  en ONEDIR (`VERAX_ONEDIR=1`) — l'onefile ré-extrait à chaque spawn juge (+ scan antivirus) et fausse tout.
+- Bancs : suite 26/26, valide_capacites 73/73, valide_maj 42/42, juge 6/6 + juge_rapide 25/25, demo 31/31,
+  interface 55/58 (les 3 échecs = données base complète absentes de l'env source, identiques sur HEAD).
+- RESTE À FAIRE : ⑤ les 2 échecs réels du diagnostic .exe (« façade web 1 », « façade outils 2 ») à trier
+  sur le .exe ; ⑥ vérifier le préchauffage e2e sur un build (diagnostic attendu ~306/306 après chauffe).
+
 ## 2026-07-09 — 🔴 RÉGRESSION .EXE DÉCOUVERTE EN LIVE : tout resout_math mort sur le build 75 + l'except muet qui la cachait
 
 - Le diagnostic instrumenté a répondu (69 s) et NOMMÉ les preuves lentes : 5 preuves historiques qui
