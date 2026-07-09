@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 — LOT 2 (pont vocabulaire→moteurs) : routes 1-2 câblées — code prouvé + invention invoquée
+
+- **Route 1 « écris une fonction/du code » -> CODE PROUVÉ** (`_cap_code_prouve`) : exemples « (2, 3) -> 5 »
+  extraits de la demande -> `invente_et_retiens` (python, expression jugée + held-out AVEUGLE) ou
+  `genere_langage` (bash/js/perl, code exécuté-vérifié) ; réponse = le code + ce qui a été prouvé (« + 1 en
+  aveugle », « proche de “somme” » quand le self-improving rappelle). Sans exemples -> demande ACTIONNABLE
+  de la méthode. Fini le fallback/lexique de la Phase 2 (axe code 0/5). capacites_chat 184 -> 188/188.
+- **Route 2 « invente/imagine/propose/conçois … pour X » -> moteur d'invention INVOQUÉ** : la forme directe
+  rejoint `besoin.decompose` (décomposition fine si au catalogue, sinon méthode physique amplifiée — chiffrer,
+  canaux, Carnot) au lieu de la clarification à côté ; garde carte fermée sur les objets langagiers/sociaux
+  (« invente une excuse » -> cascade). capacites_chat 192/192.
+- RESTE DU LOT 2 (prochaine session) : Route 3 fichiers INTERROGEABLES (max/comptage/extraction sur le
+  document attaché — lu 5/5 mais muet) ; Route 4 multi-hop (« capitale du pays où est né X ») + temporel
+  (« en 1962 ») ; puis mémoire conversationnelle à extraction (Rex→Max) et « prouve-le » (production de preuve).
+
 ## 2026-07-09 — LOT 1 post-audit : les 2 FAUX de la Phase 2 tués + le fait perdu réinjecté
 
 - **FAUX n°1 (horloge)** : « pars à 14h37, roule 2 heures 48 » -> 16 h 37 (minutes AVALÉES). Le motif de durée
