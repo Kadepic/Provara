@@ -54,7 +54,15 @@ d = maj.version_distante()
 check(d["build"] == 99 and d["url_exe"].endswith("Provara.exe"), "version distante lue (build + url .exe brut)")
 check(d["est_zip"] is False, "asset .exe brut préféré (pas le zip)")
 
-# hors .exe (source), version_locale build 0 -> distant 99 -> disponible
+# BUILD DEV (source ou « build-local », numéro 0) : JAMAIS « disponible » — un build dev n'est pas périmé,
+# c'est en général le code le plus frais (vécu 2026-07-09 : bannière contre un build de test -> clic -> build
+# écrasé par la Release en plein diagnostic). Il ne fait même AUCUN appel réseau.
+e = maj.etat()
+check(e["disponible"] is False and e.get("dev") is True, "build dev : jamais de MAJ proposée")
+
+# VRAI build utilisateur PÉRIMÉ (tampon numéroté) -> distant 99 -> disponible + version distante rapportée
+_vl = maj.version_locale
+maj.version_locale = lambda: {"build": 5, "commit": "abc123", "brut": "5 abc123"}
 e = maj.etat()
 check(e["disponible"] is True, "MAJ disponible quand distant > local")
 check(e["version_distante"] == "99 cafe1234", "état : version distante rapportée")
@@ -63,12 +71,14 @@ check(e["version_distante"] == "99 cafe1234", "état : version distante rapport�
 maj._TRANSPORT = _transport(0)
 check(maj.etat()["disponible"] is False, "FAUX=0 : pas de MAJ si distant <= local")
 
-# réseau indisponible -> pas de proposition (dégradation silencieuse)
+# réseau indisponible -> pas de proposition (dégradation silencieuse) — toujours sur le build utilisateur
+# injecté (build 5) : sur un build dev, etat() court-circuite le réseau et le test serait creux.
 def _ko_transport(url, timeout=15):
     raise OSError("pas de réseau")
 maj._TRANSPORT = _ko_transport
 check(maj.version_distante() is None, "réseau KO -> version distante None")
 check(maj.etat()["disponible"] is False, "réseau KO -> aucune MAJ proposée")
+maj.version_locale = _vl
 
 # UPDATER (bugs trouvés au test LIVE build 38->39, 2026-07-06) : le .bat doit marcher SANS console
 # (« timeout /t » exige une console -> « ping -n »), se détacher d'un éventuel job Windows, et l'app doit

@@ -3671,6 +3671,27 @@ def sujets_couverts() -> set[str]:
     return {k for k in REGISTRE if couvert(k)}
 
 
+_MEMO_PREUVES: dict = {}     # label -> {"ok": bool, "duree": s, "ts": epoch} — preuves passées DANS CE PROCESSUS
+MEMO_UTILISES: list = []     # (label, ts) servis du mémo par le DERNIER verifie_tout budgété (pour l'affichage daté)
+
+
+def chauffe_preuves() -> None:
+    """PRÉCHAUFFAGE (thread de fond au boot du produit) : passe chaque preuve UNE fois et mémorise
+    (verdict, durée, date). Pourquoi : sur le .exe, les preuves qui RÉSOLVENT leurs briques via le juge
+    (un sous-processus par candidat — compréhension intégrée, carte des limites, savoir massif…) coûtent
+    10-60 s à froid ; le diagnostic les comptait « bloquée > 10s » (vécu builds 53-77, 2026-07-09). Passées
+    ici, le diagnostic lit le mémo DATÉ pour les lentes et reste rapide ET complet — jamais menteur :
+    le verdict vient d'une exécution réelle de CE processus, l'âge est affiché."""
+    import time as _t
+    for k in list(REGISTRE):
+        t0 = _t.monotonic()
+        try:
+            ok = bool(couvert(k))
+        except Exception:
+            ok = False
+        _MEMO_PREUVES[k] = {"ok": ok, "duree": _t.monotonic() - t0, "ts": _t.time()}
+
+
 def verifie_tout(budget_par_preuve: float | None = None) -> tuple[int, int, list[str]]:
     """(nb_ok, nb_ko, libellés en échec). Sert au validateur : TOUTE entrée doit passer (sinon manifeste menteur).
 
@@ -3695,7 +3716,20 @@ def verifie_tout(budget_par_preuve: float | None = None) -> tuple[int, int, list
     # on S'ARRÊTE et on le DIT — le diagnostic répond toujours en ≤ ~1 min.
     _fin = _t.monotonic() + 6.0 * budget_par_preuve
     restants = list(REGISTRE)
+    MEMO_UTILISES.clear()
     for i, k in enumerate(restants):
+        # PREUVE LENTE DÉJÀ PASSÉE AU PRÉCHAUFFAGE (durée mesurée > demi-budget : elle bloquerait le watchdog) :
+        # on sert le verdict du mémo — exécution RÉELLE de ce processus, datée pour l'affichage. Les preuves
+        # rapides, elles, re-tournent EN DIRECT à chaque diagnostic (garantie « à l'instant » conservée).
+        m = _MEMO_PREUVES.get(k)
+        if m and m["duree"] > budget_par_preuve / 2.0:
+            MEMO_UTILISES.append((k, m["ts"]))
+            if m["ok"]:
+                ok += 1
+            else:
+                ko += 1
+                echecs.append("%s (au préchauffage)" % k)
+            continue
         if _t.monotonic() > _fin:
             ko += len(restants) - i
             echecs.append("interrompu à %.0fs : %d preuve(s) non exécutée(s)"

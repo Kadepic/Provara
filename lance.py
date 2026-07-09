@@ -9,6 +9,18 @@ Localhost uniquement : les données ne quittent jamais la machine. Aucun GPU, au
 """
 import os
 import sys
+
+# MODE INTERPRÉTEUR JUGE (.exe) — AVANT TOUT AUTRE TRAVAIL : dans le bundle, sys.executable est Provara.exe ;
+# le juge (juge.py/executeur.py) lance « Provara.exe --juge-exec candidat.py » pour exécuter un candidat dans
+# un process isolé. Sans ce court-circuit, chaque candidat relançait l'APPLICATION ENTIÈRE (vécu .exe build 76,
+# 2026-07-09 : preuves boucle/mesure bloquées, processus fantômes). Contrat du juge conservé : le fichier
+# s'exécute tel quel, exception -> traceback + code retour ≠ 0, sentinelle imprimée sur stdout (pipé par juge).
+if len(sys.argv) == 3 and sys.argv[1] == "--juge-exec":
+    import runpy
+    sys.argv = [sys.argv[2]]
+    runpy.run_path(sys.argv[0], run_name="__main__")
+    sys.exit(0)
+
 import threading
 import time
 import webbrowser

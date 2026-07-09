@@ -739,6 +739,15 @@ def main():
                 print("  (préchargement : %s)" % _e, flush=True)
             _maj_statut(pret=True, phase="pret", detail="")     # ferme la modale d'interface
             print("  ✓ connaissance prête.", flush=True)
+            # PRÉCHAUFFAGE DES PREUVES (après la connaissance, même thread de fond — un seul travail lourd à
+            # la fois) : les preuves à sous-processus juge coûtent 10-60 s à froid sur le .exe ; passées ici,
+            # « diagnostic » les sert du mémo daté au lieu de les compter « bloquée > 10s » (vécu 2026-07-09).
+            try:
+                import capacites as _CAPP
+                _CAPP.chauffe_preuves()
+                print("  ✓ preuves préchauffées (diagnostic complet immédiat).", flush=True)
+            except Exception as _e:
+                print("  (préchauffage preuves : %s)" % _e, flush=True)
         threading.Thread(target=_prechauffe, daemon=True).start()
 
         # VEILLE MISES À JOUR — ZÉRO ACTION UTILISATEUR (exigence Yohan : « beaucoup d'utilisateurs ne savent

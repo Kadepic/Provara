@@ -65,6 +65,14 @@ class ExecuteurPython:
         #      gain sur CHAQUE appel juge donc sur tout le système) ; (2) DURCISSEMENT sécurité : neutralise
         #      l'exécution automatique des fichiers .pth (vecteur d'exécution de code à l'import de site).
         # La stdlib reste importable (collections/math/itertools…) — vérifié. Vitesse ET sécurité, sans concession.
+        if getattr(sys, "frozen", False):
+            # .exe PyInstaller : sys.executable EST Provara.exe — « python -I -S » relançait l'APPLICATION
+            # ENTIÈRE par candidat (vécu .exe build 76, 2026-07-09 : preuves boucle/mesure bloquées > 10 s,
+            # « Exercices curés » en échec, processus Provara fantômes pendant le diagnostic). L'exe expose
+            # donc un mode interpréteur : « Provara.exe --juge-exec candidat.py » exécute le fichier et sort
+            # AVANT tout boot (cf. lance.py, tout en tête). Le contrat du juge (process isolé + returncode +
+            # sentinelle sur stdout) est inchangé ; -I/-S sans objet dans un bundle figé.
+            return [sys.executable, "--juge-exec", chemin]
         return [sys.executable, "-I", "-S", chemin]
 
     def classe_echec(self, returncode: int, stderr: str) -> str:
