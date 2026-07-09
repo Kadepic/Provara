@@ -774,8 +774,13 @@ def main():
                             r = _maj_applique(e.get("url_exe"))
                             if r.get("ok") and r.get("redemarre"):
                                 return                          # l'app se ferme, l'updater prend le relais
-                except Exception:
-                    pass
+                            # ⚠ ÉCHEC JAMAIS MUET (vécu build 77, 2026-07-09 : la 1ʳᵉ tentative auto vers 78 a
+                            # échoué SANS TRACE ; la garde anti-boucle bloquait ensuite tout retry 6 h -> l'app
+                            # restait en 77 sans que personne ne sache pourquoi). La cause va au log.
+                            print("⚠ MAJ auto : échec de l'application -> %s"
+                                  % (r.get("message") or r), flush=True)
+                except Exception as _e:
+                    print("⚠ MAJ auto : veille en erreur -> %r" % (_e,), flush=True)
                 premier = False
                 _t.sleep(900)
         threading.Thread(target=_veille_maj, daemon=True).start()
