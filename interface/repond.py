@@ -4154,8 +4154,15 @@ def _diagnostic_connaissance(texte: str):
             # sans nommer le coupable) : 10 s max par preuve, la bloquée est DÉSIGNÉE dans la réponse.
             _ok, _ko, _echecs = _CAP.verifie_tout(budget_par_preuve=10.0)
             _t_preuves = _tm.perf_counter() - _t1
-            cap = " · capacités prouvées à l'instant : %d/%d%s" % (
-                _ok, _ok + _ko, "" if not _echecs else " (en échec : %s)" % ", ".join(_echecs[:3]))
+            # Preuves LENTES servies du mémo de préchauffage (exécution réelle de ce processus, datée) :
+            # l'affichage le DIT — « prouvées à l'instant » ne doit jamais mentir sur la fraîcheur.
+            _memo = getattr(_CAP, "MEMO_UTILISES", [])
+            _dont = ""
+            if _memo:
+                _age_min = max(0, int((_tm.time() - min(ts for _, ts in _memo)) / 60))
+                _dont = " (dont %d au préchauffage, il y a %d min)" % (len(_memo), _age_min)
+            cap = " · capacités prouvées : %d/%d%s%s" % (
+                _ok, _ok + _ko, _dont, "" if not _echecs else " (en échec : %s)" % ", ".join(_echecs[:3]))
         except Exception:
             pass
         appris = ""
