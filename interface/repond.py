@@ -4562,6 +4562,17 @@ def _cap_invention(texte: str):
     m = re.search(r"\bque\s+manque[\s-]*t[\s-]*il\s+pour\s+(.+?)\s*\??\s*$", texte, re.I)
     if m:
         besoin_txt, explicite = m.group(1), True         # intention d'invention SANS ambiguïté
+    if besoin_txt is None:
+        # FORME DIRECTE (vécu Phase 2 2026-07-09 : « invente un dispositif pour refroidir une maison sans
+        # électricité » n'était PAS reconnue -> l'étage de clarification amont répondait à côté du moteur) :
+        # « invente/imagine/propose/conçois … pour X » = intention d'invention EXPLICITE, X = le besoin.
+        m = re.search(r"\b(?:invente[sz]?|imagine[sz]?|propose[sz]?|con[çc]oi[st])\b.{0,50}?\bpour\s+(.+?)\s*\??\s*$",
+                      texte, re.I)
+        # OBJET LANGAGIER/SOCIAL (carte fermée) : « invente une excuse pour mon retard » n'est pas un besoin
+        # PHYSIQUE à décomposer — la méthode thermodynamique y serait à côté ; la cascade sert mieux.
+        if m and not re.search(r"\b(?:excuses?|blagues?|histoires?|mensonges?|slogans?|po[èe]mes?|chansons?|"
+                               r"noms?|titres?|surnoms?|pr[ée]textes?)\b", texte, re.I):
+            besoin_txt, explicite = m.group(1), True
     physique = False
     if besoin_txt is None:
         m = re.search(r"\bcomment\s+(?:faire\s+pour\s+|je\s+peux\s+|)(.+?)\s+sans\s+.+?\s*\??\s*$", texte, re.I)
@@ -5059,6 +5070,63 @@ def _quiz_verdict(conv_id, texte: str):
                 % q["valeur"])
     return ("✘ Non — pour « %s », la réponse vérifiée est %s (tu as dit : « %s »). "
             "Redis « challenge-moi » pour une autre." % (q["entite"], q["valeur"], texte.strip()[:60]))
+
+
+def _cap_code_prouve(texte: str):
+    """« écris une fonction/du code/un script [python|bash|javascript|perl] qui X » -> code PROUVÉ : les moteurs
+    de synthèse (invente_et_retiens / genere_langage) génèrent des candidats et le JUGE les EXÉCUTE contre les
+    exemples fournis (« (2, 3) -> 5 », le dernier gardé en aveugle). Sans exemples -> demande ACTIONNABLE (la
+    méthode expliquée), jamais du code récité non exécuté. FAUX=0 : tout code livré a été jugé.
+    Vécu Phase 2 2026-07-09 : l'axe code entier (0/5) tombait au fallback — voire au LEXIQUE (« tours de
+    hanoï » -> liste de mots) — alors que les moteurs sont prouvés au diagnostic ; la ROUTE manquait."""
+    n = _normalise(texte)
+    if not (re.search(r"\b(?:ecris|ecrit|code|programme|implemente|genere|fais)\b", n)
+            and re.search(r"\b(?:fonction|script|code|programme|algorithme)\b", n)):
+        return None
+    mlang = re.search(r"\b(python|bash|shell|javascript|js|perl)\b", n)
+    lang = {"js": "javascript", "shell": "bash"}.get(mlang.group(1), mlang.group(1)) if mlang else "python"
+    import ast
+    exemples = []
+    for m in re.finditer(r"\(([^()]*)\)\s*(?:->|=>|→|devient|donne)\s*([-\w.\"'\[\]]+)", texte):
+        try:
+            exemples.append((ast.literal_eval("(%s,)" % m.group(1).rstrip(",")), ast.literal_eval(m.group(2))))
+        except (ValueError, SyntaxError):
+            continue
+    if len(exemples) < 2:
+        return ("Je code à MA façon : je génère des candidats et mon JUGE les exécute contre des exemples "
+                "réels — donne-moi 2 ou 3 exemples entrée → sortie dans ta demande (ex. « (2, 3) -> 5 » ; le "
+                "3ᵉ est gardé en aveugle) et je te livre du code PROUVÉ (python, bash, javascript ou perl), "
+                "jamais du code récité.")
+    held = [exemples[-1]] if len(exemples) >= 3 else []
+    vis = exemples[:-1] if held else exemples
+    try:
+        if lang == "python":
+            import ia as _I
+            sig = "%s->%s" % (type(vis[0][0][0]).__name__, type(vis[0][1]).__name__)
+            v = _I.invente_et_retiens("fonction_demandee", sig, vis, held)
+            if v is not None and getattr(v, "par", None) and v.statut in ("invention", "existe_deja"):
+                src_code = v.par if v.par.lstrip().startswith("def ") else "def f(x):\n    return %s" % v.par
+                return ("Code PROUVÉ — mon juge l'a exécuté sur tes %d exemple(s)%s :\n```python\n%s\n```\n"
+                        "(x = le tuple des arguments · statut : %s%s)"
+                        % (len(vis), (" + %d en aveugle" % len(held)) if held else "", src_code,
+                           "invention nouvelle" if v.statut == "invention" else "capacité déjà connue",
+                           (" — proche de « %s »" % v.proche_de) if getattr(v, "proche_de", None) else ""))
+        else:
+            bins = [(a[0], a[1], att) for a, att in exemples if isinstance(a, tuple) and len(a) == 2]
+            if len(bins) >= 2:
+                import ia as _I
+                r = _I.genere_langage("fonction_demandee", bins[:-1] if len(bins) >= 3 else bins, lang,
+                                      [bins[-1]] if len(bins) >= 3 else None)
+                if r.ok:
+                    return ("Code PROUVÉ (%s) — exécuté et vérifié sur tes exemples%s :\n```%s\n%s\n```"
+                            % (lang, " + held-out" if r.generalise else "", lang, r.code))
+            else:
+                return ("Pour du %s je sais prouver les fonctions à DEUX arguments scalaires — donne les "
+                        "exemples sous la forme « (a, b) -> résultat » (ou demande-la en python)." % lang)
+    except Exception:
+        pass
+    return ("Aucun de mes candidats n'a passé TES exemples — je m'abstiens plutôt que de livrer du code non "
+            "prouvé. Ajoute un exemple, vérifie-les, ou reformule la spécification.")
 
 
 def _cap_challenge(texte: str, conv_id=None):
@@ -8054,6 +8122,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                  ("lunes", _cap_lunes), ("orbite", _cap_orbite), ("transitif", _cap_transitif),
                  ("inverse", _cap_inverse), ("duree", _cap_duree), ("age", _cap_age), ("stats", _cap_stats),
                  ("explication", _cap_explication), ("distance", _cap_distance), ("traduction", _cap_traduction),
+                 ("code_prouve", _cap_code_prouve),
                  ("creer_ouvert", _cap_creer_ouvert), ("invention_composite", _cap_invention_composite),
                  ("invention", _cap_invention), ("audit_code", _cap_audit_code))
         # SÉQUENCEUR (Phase 4, §11) : l'acte classé (haute confiance) fait remonter SA famille de caps —
