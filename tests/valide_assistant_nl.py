@@ -478,6 +478,14 @@ check(_m("je pars à 10h et je roule 3 heures 20 minutes, j'arrive à quelle heu
       == "13 h 20 (10 h 00 + 3h20).", "« 3 heures 20 minutes » -> 13 h 20")
 check(_m("je pars à 22h50 et je roule 2 heures 30, j'arrive à quelle heure")
       == "1 h 20 (22 h 50 + 2h30). — le lendemain", "« 2 heures 30 » + passage minuit -> 1 h 20 le lendemain")
+# MASSE vs POIDS en contexte céleste — FAUX vécu Phase 2 2026-07-09 : « sur la Lune » IGNORÉ (répondait ≈ 1 kg).
+_pl = _m("que pèse un litre d'eau sur la lune")
+check(_pl and "MASSE reste ≈ 1 kg" in _pl and "1.62 N" in _pl,
+      "litre d'eau SUR LA LUNE -> masse invariante + poids 1.62 N (contexte plus jamais avalé)")
+check((_m("que pèse un litre d'eau") or "").startswith("≈ 1 kg"), "litre d'eau sans contexte -> ≈ 1 kg inchangé")
+_pk = _m("que pèse un litre d'eau sur krypton")
+check(_pk and "je m'abstiens" in _pk and "MASSE" in _pk,
+      "astre hors référence -> abstention DITE sur le poids, masse quand même")
 check(_m("combien d'heures entre 9h et 17h30") == "8 h 30 (de 9h à 17h30).", "« entre 9h et 17h30 » -> 8 h 30")
 _rdv = _m("j'ai rendez-vous dans 45 minutes, il est 10h20, ce sera à quelle heure")
 check(_rdv == "11 h 05 (10 h 20 + 45 minutes).", "il est 10h20 + dans 45 min -> 11 h 05")

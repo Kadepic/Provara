@@ -1279,12 +1279,34 @@ def resout_math(question: str):
         return (VERIFIE, "0", "notation scientifique (réécriture exacte)")
 
     # EAU — conventions physiques, CONDITIONS DITES (même famille que la congélation 0 °C déjà câblée).
+    # ⚠ CONTEXTE CÉLESTE (FAUX vécu Phase 2 2026-07-09 : « que pèse un litre d'eau sur la Lune » -> « ≈ 1 kg »,
+    # la Lune IGNORÉE) : la MASSE est invariante, le POIDS dépend de g — gravités de surface de RÉFÉRENCE
+    # (valeurs IAU/CODATA, bornées) ; astre hors table -> abstention DITE sur le poids, masse quand même.
+    _G_ASTRES = {"lune": 1.62, "mars": 3.71, "mercure": 3.70, "venus": 8.87, "jupiter": 24.79,
+                 "saturne": 10.44, "uranus": 8.87, "neptune": 11.15, "pluton": 0.62, "soleil": 274.0}
+    m_eau = None
     if re.search(r"(?:pese|poids|masse)\b.{0,20}?\blitre\s+d['’]?\s*eau|litre\s+d['’]?\s*eau\s+en\s+(?:kg|kilo)", qc):
-        return (VERIFIE, "≈ 1 kg (0.998 kg à 20 °C — le litre d'eau a historiquement défini le kilogramme).",
-                "physique — masse volumique de l'eau (conditions dites)")
-    if re.search(r"(?:pese|poids|masse)\b.{0,25}?metre\s+cube\s+d['’]?\s*eau", qc):
-        return (VERIFIE, "≈ 1000 kg — une tonne (998 kg à 20 °C).",
-                "physique — masse volumique de l'eau (conditions dites)")
+        m_eau = (1.0, "un litre d'eau", "≈ 1 kg (0.998 kg à 20 °C — le litre d'eau a historiquement défini le kilogramme).")
+    elif re.search(r"(?:pese|poids|masse)\b.{0,25}?metre\s+cube\s+d['’]?\s*eau", qc):
+        m_eau = (998.0, "un mètre cube d'eau", "≈ 1000 kg — une tonne (998 kg à 20 °C).")
+    if m_eau:
+        masse, quoi, rep_terre = m_eau
+        mast = re.search(r"\bsur\s+(?:la\s+|le\s+)?([a-z]+)\b", qc)
+        astre = (mast.group(1) if mast else "")
+        if astre and astre not in ("terre", "balance", "pese"):
+            g = _G_ASTRES.get(astre)
+            if g is None:
+                return (VERIFIE, "La MASSE de %s reste ≈ %s partout ; son POIDS sur « %s » dépend de la gravité "
+                        "locale, que je n'ai pas en référence — je m'abstiens sur le chiffre plutôt que d'inventer."
+                        % (quoi, "1 kg" if masse == 1.0 else "1000 kg", astre),
+                        "physique — masse invariante, gravité locale inconnue (abstention dite)")
+            return (VERIFIE, "Sa MASSE reste ≈ %s partout ; son POIDS sur %s est ≈ %s N (g ≈ %.2f m/s² — "
+                    "contre ≈ %s N sur Terre, g ≈ 9.81)."
+                    % ("1 kg" if masse == 1.0 else "1000 kg",
+                       astre.capitalize() if astre != "lune" else "la Lune",
+                       _fmt_nombre(round(masse * g, 2)), g, _fmt_nombre(round(masse * 9.81, 1))),
+                    "physique — masse invariante vs poids (g de surface, valeurs de référence)")
+        return (VERIFIE, rep_terre, "physique — masse volumique de l'eau (conditions dites)")
     if re.search(r"densite\s+de\s+l['’]?\s*eau", q):
         return (VERIFIE, "1 par convention (999.97 kg/m³ au maximum, à 4 °C ; 998 à 20 °C — varie avec la "
                 "température).", "physique — masse volumique de l'eau (conditions dites)")
