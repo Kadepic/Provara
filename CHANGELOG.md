@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 — ⑥ E2E FINAL : diagnostic .exe 305→306/306 attendu en ~13 s + fix AVERSE DE POPUPS (build 77 vécu par Yohan)
+
+- **🔴 Vécu par Yohan sur le build 77 en live : une BOÎTE DE DIALOGUE par candidat recalé, en boucle.** Cause :
+  en `--noconsole`, le bootloader PyInstaller affiche un popup pour TOUTE exception non rattrapée — et le mode
+  `--juge-exec` laissait volontairement l'AssertionError du candidat remonter (pour le code retour). Fix :
+  rattraper, traceback sur stderr (le juge y lit « AssertionError » -> FAIL, contrat identique), `exit(1)`
+  propre + `CREATE_NO_WINDOW` sur les spawns du juge. Vérifié frozen : pass->pass, fail->fail, zéro dialogue.
+- **Dernière preuve rouge « Daemon lecteur (protocole Q-R) »** : `class _Serveur(socketserver.
+  ThreadingUnixStreamServer)` AU NIVEAU MODULE tuait l'import entier sous Windows (pas de socket Unix). La
+  classe est conditionnelle ; `main()` se déclare indisponible honnêtement ; `_traite` (pur) vit partout.
+  Vérifié frozen : réponse structurée OK.
+- **Mesures e2e sur le .exe rebuilé (onedir, port 8799)** : préchauffage des preuves ~1 min en fond après le
+  boot ; « diagnostic » = **305/306 en 12,6 s** (dont 3 preuves du mémo daté « il y a 0 min » ; l'unique échec
+  était le daemon, corrigé depuis -> 306/306 attendu au build 78). Ce matin : 273/306 en 63-70 s, 5 bloquées,
+  24 sautées.
+- Leçon consignée ([[_REPRISE_SESSION.md]]) : le .exe de test se lance PORT 8799 + VERAX_RELANCE_MAJ=1, on tue
+  par PID — l'app PERSO de Yohan (Downloads\Provara-app) vit sur 8765 et son build 77 souffrait encore des
+  popups pendant mes tests (tuée proprement, à relancer au build 78).
+
 ## 2026-07-09 — ⑤ RÉSOLU : les 2 dernières preuves rouges du diagnostic .exe = 3 modules POSIX-only (portage Windows)
 
 - **Méthode nouvelle** : le mode `--juge-exec` sert AUSSI de sonde — un script exécuté DANS l'environnement
