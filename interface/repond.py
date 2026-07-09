@@ -8016,7 +8016,14 @@ _MOTS_OUTILS_PROTEGES = frozenset(
     "a la le du des ici la bas oui non peut etre "
     # adjectifs/interjections ULTRA-courants corrompus en contexte (« BON alors » -> « BONNE alors », bug réel
     # trouvé la nuit du 6/07 : la phrase guérie ne se dévoilait plus -> court-circuit avant (0dev))
-    "bon bonne bons bonnes alors bref enfin voila voilà grand grande petit petite beau belle vieux vieille".split())
+    "bon bonne bons bonnes alors bref enfin voila voilà grand grande petit petite beau belle vieux vieille "
+    # INDÉFINIS + adjectifs de position (bug réel 2026-07-09 : « l'un vers l'AUTRE » -> « l'astre »,
+    # « distants de 300 km » -> « distance » — la cinématique NL devenait une liste de trains) : ni noms ni
+    # verbes au lexique, donc « corrigés ». Classe fermée des indéfinis/quantifieurs + adjectifs courants.
+    "autre autres meme memes tel telle tels telles chaque plusieurs certain certaine certains certaines "
+    "quelque quelques aucun aucune nul nulle divers diverses different differente differents differentes "
+    "distant distante distants distantes separe separee separes separees eloigne eloignee eloignes eloignees "
+    "proche proches loin pres ensemble".split())
 # NUMÉRAUX : ni noms ni verbes au lexique -> la guérison « corrigeait » « huit » -> « hui » (bug réel). Fermé, sûr.
 _NUMERAUX_PROTEGES = frozenset(
     "zero un une deux trois quatre cinq six sept huit neuf dix onze douze treize quatorze quinze seize "

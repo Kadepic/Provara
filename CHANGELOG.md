@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 — CINÉMATIQUE NL (audit item 7, DERNIER item du pont) + bug de guérison « autre→astre » tué
+
+- **`src/cinematique_nl.py`** : problèmes à étapes du mouvement uniforme, EXACTS (Fractions de bout en bout).
+  RENCONTRE : « deux trains distants de 300 km partent l'un vers l'autre à 80 et 70 km/h : quand se croisent-
+  ils ? » -> « au bout de 2 h : vitesse de rapprochement = 80+70 = 150 km/h ; temps = 300÷150 = 2 h ; croisement
+  à 160 km du premier (140 du second) » — dérivation MONTRÉE, 2 h 30 exactes (jamais 2.4999). POURSUITE :
+  « avance de 15 km, 20 vs 30 km/h » -> 1 h 30 ; vitesses égales -> « ne le rattrape jamais » DIT. Motifs
+  FERMÉS (distance + 2 vitesses + mot-clé croisent/rattrape exigés ; « pourquoi les trains se croisent-ils la
+  nuit ? » -> None). Cap `_cap_cinematique` + gate valide_cinematique_nl 12/12 (suite 29 gates).
+- **BUG DE CORRUPTION préexistant TUÉ (trouvé par l'e2e du .exe)** : la guérison orthographique « corrigeait »
+  des mots FR VALIDES absents du lexique noms/verbes — « l'un vers l'AUTRE » -> « l'ASTRE », « DISTANTS de
+  300 km » -> « DISTANCE » : la question cinématique devenait… une liste de trains roulant à 300 km/h
+  (reverse-liste). Classe fermée ajoutée aux protégés : indéfinis/quantifieurs (autre, même, tel, chaque,
+  plusieurs, certains, quelques, aucun, divers, différents) + adjectifs de position (distant, séparé,
+  éloigné, proche, loin, près, ensemble) — même famille que le précédent « bon alors -> bonne ».
+- E2E .exe rebuilé : K0 rencontre VERT, poursuite VERT, piège « pourquoi » -> clarification honnête.
+
 ## 2026-07-09 — LONGUEUR IMPÉRIALE COMPOSÉE (audit item 5, dernier petit item du pont)
 
 - Constat e2e AVANT fix : les conversions impériales SIMPLES marchaient déjà (6 pieds -> 1.8288 m, 5 miles ->
