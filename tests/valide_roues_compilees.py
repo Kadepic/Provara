@@ -190,7 +190,32 @@ check(r is not None and "roue v = d/t" in r and "PARTAGÉES" in r and "vitesse (
       "carte : toutes les roues listées + grandeurs partagées (les ponts) montrées")
 check(P.repond("quelle heure il est ?", S.Situation()) is None, "la carte ne capture pas les questions ordinaires")
 
-# ═══ (10) les roues artisanales ne régressent pas (spot) ═══
+# ═══ (10) VAGUE 5 : le registre physique.py passé au compilateur (6 roues) ═══
+def _roue1(enonce, question, attendus, label):
+    sit = S.Situation()
+    sit.apprend(1, enonce)
+    r = P.repond(question, sit)
+    check(r is not None and all(a in r for a in attendus), label + (" [%r]" % (r or "None")[:80] if not (r and all(a in r for a in attendus)) else ""))
+
+
+_roue1("la caisse fait 800 kg et accélère à 3 m/s2", "quelle force ?",
+       ("2400 N", "F = m×a"), "Newton : 800 kg × 3 m/s² -> 2400 N")
+_roue1("je pousse avec 50 newtons sur 10 mètres", "quel travail fourni ?",
+       ("500 J", "W = F×d", "colinéaire"), "travail : 50 N × 10 m -> 500 J, hypothèse dite")
+_roue1("le projectile fait 2 kg à 30 m/s", "quelle quantité de mouvement ?",
+       ("60 kg·m/s", "p = m×v"), "quantité de mouvement : 2 kg × 30 m/s -> 60 kg·m/s")
+_roue1("l'échantillon pèse 1 gramme", "quelle énergie de masse ?",
+       ("89875517873681", "E = m×c²", "combustion"), "E = mc² : 1 g -> ~9e13 J, contexte dit")
+_roue1("la masse de 5 kg est à 12 mètres de haut", "quelle énergie potentielle ?",
+       ("588,399 J", "Ep = m×g×h"), "Ep : 5 kg × g × 12 m -> 588,399 J")
+_roue1("la clé applique 200 newtons sur 0,25 metres", "quel moment de la force ?",
+       ("50 N·m", "M = F×b"), "moment : 200 N × 0,25 m -> 50 N·m — la cible SPÉCIFIQUE prime sur « force »")
+_roue1("la traction est de 800 newtons à 15 m/s", "quelle puissance ?",
+       ("12000 W", "P = F×v"), "puissance méca toujours servie après réordonnancement")
+check(P.repond("quelle force ?", S.Situation()) is None, "« quelle force ? » sans ancrage -> None")
+check(P.repond("quelle énergie de masse ?", S.Situation()) is None, "E=mc² sans masse énoncée -> None")
+
+# ═══ (11) les roues artisanales ne régressent pas (spot) ═══
 sit7 = S.Situation()
 sit7.apprend(1, "le circuit est en 230 volts et le moteur tire 10 ampères")
 r = P.repond("quelle puissance ?", sit7)

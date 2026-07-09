@@ -1,5 +1,32 @@
 # Journal des modifications — Provara
 
+## 2026-07-10 — VAGUE 5 (physique.py -> compilateur) + ③ GRAPHE DES ROUES (graine du gap-engine v2)
+
+- **VAGUE 5 — le registre physique.py passé au compilateur** (résorption formule/concept sur le périmètre
+  ACCESSIBLE — le doc des 690 vit dans le repo harnais, absent de ce disque, dit) : **6 roues** — F = m·a
+  (2400 N), W = F·d (500 J), p = m·v (60 kg·m/s), E = m·c² (1 g -> ~9e13 J, « pas une combustion » dit),
+  Ep = m·g·h (588,399 J), M = F·b (50 N·m). Unités m/s² typées ; tables d'unités PARTAGÉES
+  (MASSE/FORCE/METRES/VIT_MS — une seule source). **Piège tué : l'ORDRE d'essai** — les roues à cible
+  SPÉCIFIQUE (« moment de la force », « quantité de mouvement ») passent avant les cibles génériques
+  (« force » volait le moment). **19 roues au total** (3 artisanales + 16 compilées),
+  valide_roues_compilees **58/58**.
+- **③ `src/graphe_roues.py` — la graine du GAP-ENGINE v2** : nœuds = grandeurs, arêtes = roues ; `chemins()`
+  (BFS), `composantes()` (îlots), `gaps()` (**les ponts manquants NOMMÉS** — l'aveu du gap est la graine
+  d'invention : on sait QUELLE relation chercher). Mesuré aujourd'hui : **1 seule composante** (les 19 roues
+  se relient toutes), gap-détection PROUVÉE par isolation (élec+hydro seules -> gap « courant<->débit »
+  nommé). Capacité NL « comment relier X et Y ? » -> chemin narratif de roues (« section -> consommation en
+  3 étapes : hydraulique -> cinématique -> consommation carburant ») ; grandeur inconnue -> inventaire
+  honnête. Gate **valide_graphe_roues 11/11** (suite -> **38 gates**), e2e .exe 4/4.
+
+## 2026-07-10 — CACHE PRÉ-CONSTRUIT régénéré (Provara_cache_v1.tar.gz, aligné base du 10)
+
+- Le cache Release du 4 juillet était SÛR mais périmé (validation par taille table par table +
+  reconstruction locale = jamais un faux ; seulement moins de préchauffage). Régénéré via
+  `build_cache_release.py` depuis la base à jour : **71 981 503 faits / 1364 index .colf (3,4 Go) ->
+  archive 603 Mo**, chef_etat_pays_annee + superficie_ile (Honshū) inclus. Déposé
+  `Downloads\Provara_cache_v1.tar.gz` (nom EXACT de l'URL produit) — **Yohan remplace l'asset de la
+  Release** à côté de datasets_complets.tar.gz.
+
 ## 2026-07-10 — TARBALL RELEASE régénéré (l'item en attente depuis l'audit)
 
 - **`C:\Users\yohan\Downloads\datasets_complets.tar.gz` régénéré depuis la base réelle À JOUR**

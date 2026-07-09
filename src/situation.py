@@ -31,7 +31,7 @@ from fonction_nl import _CONV_UNITS
 _DIMS = {"L": "longueur", "M": "masse", "T": "temps", "V": "volume", "A": "aire", "S": "vitesse", "D": "données",
          "TEMP": "température", "P": "pression", "W": "puissance", "E": "énergie", "F": "débit", "PC": "proportion",
          "U": "coefficient d'échange", "EUR": "montant",
-         "TEN": "tension", "AMP": "courant", "OHM": "résistance", "NEW": "force", "QAH": "charge"}
+         "TEN": "tension", "AMP": "courant", "OHM": "résistance", "NEW": "force", "QAH": "charge", "ACC": "accélération"}
 _UNITES_LOCALES = {
     "°c": "TEMP", "degre": "TEMP", "degres": "TEMP", "degré": "TEMP", "degrés": "TEMP", "kelvin": "TEMP", "k": "TEMP",
     "bar": "P", "bars": "P", "pa": "P", "kpa": "P", "mpa": "P", "hpa": "P",
@@ -50,6 +50,8 @@ _UNITES_LOCALES = {
     "newton": "NEW", "newtons": "NEW", "kn": "NEW",
     # charge électrique de batterie (roue E = Q·U) — sûres APRÈS un chiffre seulement (regex des grandeurs)
     "ah": "QAH", "mah": "QAH",
+    # accélération (roue F = m·a)
+    "m/s2": "ACC", "m/s²": "ACC",
 }
 _TOUTES_UNITES = {u: dim for u, (dim, _) in _CONV_UNITS.items()} | _UNITES_LOCALES
 # les unités multi-caractères d'abord (w/m2k avant w ; km/h avant km) ; échappées pour le motif.

@@ -729,7 +729,150 @@ _ROUE_AUTONOMIE = {
     "paire_exemple": "la charge ou le courant",
 }
 
+
+# tables d'unités PARTAGÉES par les roues compilées (une seule source par famille d'unités)
+MASSE = {"kg": 1.0, "kilo": 1.0, "kilos": 1.0, "kilogramme": 1.0, "kilogrammes": 1.0, "g": 1e-3, "gramme": 1e-3, "grammes": 1e-3, "tonne": 1e3, "tonnes": 1e3}
+FORCE = {"newton": 1.0, "newtons": 1.0, "kn": 1e3}
+METRES = {"m": 1.0, "metre": 1.0, "metres": 1.0, "km": 1e3, "kilometre": 1e3, "kilometres": 1e3, "cm": 1e-2, "centimetre": 1e-2, "centimetres": 1e-2}
+VIT_MS = {"m/s": 1.0, "m s": 1.0, "metre par seconde": 1.0, "metres par seconde": 1.0, "km/h": 1 / 3.6, "km h": 1 / 3.6, "kmh": 1 / 3.6, "kilometre heure": 1 / 3.6, "kilometres heure": 1 / 3.6, "kilometre par heure": 1 / 3.6, "kilometres par heure": 1 / 3.6}
+
+# ── VAGUE 5 (2026-07-10, « enchaîne les 2 points ») : le registre physique.py passé au COMPILATEUR ──
+# Résorption formule/concept SUR LE PÉRIMÈTRE ACCESSIBLE (le doc des 690 vit dans le repo harnais, absent de
+# ce disque — dit) : toutes les monômes du registre à unités TYPABLES deviennent des roues conversationnelles.
+_C_LUMIERE = 299792458.0
+
+_ROUE_NEWTON = {
+    "nom": "force (Newton)", "dims": ("force", "masse", "accélération"),
+    "unites": {"force": "N", "masse": "kg", "accélération": "m/s²"},
+    "fil_dims": {"force": "force", "masse": "masse", "accélération": "accélération"},
+    "conv": {"force": FORCE, "masse": MASSE, "accélération": {"m/s2": 1.0, "m/s²": 1.0}},
+    "ancres": ("accélération", "force"),
+    "articles": {"force": "la force", "masse": "la masse", "accélération": "l'accélération"},
+    "noms": {"force": "la force (en newtons)", "masse": "la masse (en kg)",
+             "accélération": "l'accélération (en m/s²)"},
+    "relations": _relations_monome("force", 1.0, {"masse": 1, "accélération": 1},
+                                   {"force": "F = m×a", "masse": "m = F/a", "accélération": "a = F/m"}),
+    "cible_re": re.compile(r"\b(force|acc[ée]l[ée]ration)\b.{0,40}\??\s*$|"
+                           r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|l['\u2019])?)?(force|acc[ée]l[ée]ration)\b", re.I),
+    "q_re": re.compile(r"\b(force|masse|acc[ée]l[ée]ration)\b", re.I),
+    "alias": {"acceleration": "accélération"}, "cible_defaut": "force", "devise": "roue F = m·a",
+    "deps": {"force": "F = m·a (2e loi de Newton : la force est la masse × l'accélération)",
+             "masse": "m = F/a", "accélération": "a = F/m"},
+    "paire_exemple": "la masse ou l'accélération",
+}
+
+_ROUE_TRAVAIL = {
+    "nom": "travail", "dims": ("travail", "force", "déplacement"),
+    "unites": {"travail": "J", "force": "N", "déplacement": "m"},
+    "fil_dims": {"énergie": "travail", "force": "force", "longueur": "déplacement"},
+    "conv": {"travail": {"j": 1.0, "kj": 1e3, "mj": 1e6}, "force": FORCE, "déplacement": METRES},
+    "ancres": ("force",),
+    "articles": {"travail": "le travail", "force": "la force", "déplacement": "le déplacement"},
+    "noms": {"travail": "le travail (en joules)", "force": "la force (en newtons)",
+             "déplacement": "le déplacement (en mètres)"},
+    "relations": _relations_monome("travail", 1.0, {"force": 1, "déplacement": 1},
+                                   {"travail": "W = F×d", "force": "F = W/d", "déplacement": "d = W/F"}),
+    "cible_re": re.compile(r"\b(travail)\s+(?:de\s+la\s+force|m[ée]canique|fourni)\b|"
+                           r"^\s*(?:quel\s+(?:est\s+)?(?:le\s+)?)?(travail)\b", re.I),
+    "q_re": re.compile(r"\b(travail|force|d[ée]placement)\b", re.I),
+    "alias": {"deplacement": "déplacement"}, "cible_defaut": "travail", "devise": "roue W = F·d",
+    "note": " NB : force constante colinéaire au déplacement.",
+    "deps": {"travail": "W = F·d (le travail est la force × le déplacement, force constante colinéaire)",
+             "force": "F = W/d", "déplacement": "d = W/F"},
+    "paire_exemple": "la force ou le déplacement",
+}
+
+_ROUE_QMV = {
+    "nom": "quantité de mouvement", "dims": ("quantité de mouvement", "masse", "vitesse"),
+    "unites": {"quantité de mouvement": "kg·m/s", "masse": "kg", "vitesse": "m/s"},
+    "fil_dims": {"masse": "masse", "vitesse": "vitesse"},
+    "conv": {"quantité de mouvement": {}, "masse": MASSE, "vitesse": VIT_MS},
+    "ancres": ("masse",),
+    "articles": {"quantité de mouvement": "la quantité de mouvement", "masse": "la masse",
+                 "vitesse": "la vitesse"},
+    "noms": {"quantité de mouvement": "la quantité de mouvement (en kg·m/s)", "masse": "la masse (en kg)",
+             "vitesse": "la vitesse (en m/s ou km/h)"},
+    "relations": _relations_monome("quantité de mouvement", 1.0, {"masse": 1, "vitesse": 1},
+                                   {"quantité de mouvement": "p = m×v", "masse": "m = p/v",
+                                    "vitesse": "v = p/m"}),
+    "cible_re": re.compile(r"\b(quantit[ée]\s+de\s+mouvement)\b", re.I),
+    "q_re": re.compile(r"\b(quantit[ée]\s+de\s+mouvement|masse|vitesse)\b", re.I),
+    "alias": {"quantite de mouvement": "quantité de mouvement"},
+    "cible_defaut": "quantité de mouvement", "devise": "roue p = m·v",
+    "deps": {"quantité de mouvement": "p = m·v (la quantité de mouvement est la masse × la vitesse)",
+             "masse": "m = p/v", "vitesse": "v = p/m"},
+    "paire_exemple": "la masse ou la vitesse",
+}
+
+_ROUE_EMC2 = {
+    "nom": "énergie de masse", "dims": ("énergie de masse", "masse"),
+    "unites": {"énergie de masse": "J", "masse": "kg"},
+    "fil_dims": {"masse": "masse"},
+    "conv": {"énergie de masse": {}, "masse": MASSE},
+    "ancres": ("masse",),
+    "articles": {"énergie de masse": "l'énergie de masse", "masse": "la masse"},
+    "noms": {"énergie de masse": "l'énergie de masse (en joules)", "masse": "la masse (en kg ou g)"},
+    "relations": _relations_monome("énergie de masse", _C_LUMIERE ** 2, {"masse": 1},
+                                   {"énergie de masse": "E = m×c²", "masse": "m = E/c²"}),
+    "cible_re": re.compile(r"\b([ée]nergie\s+de\s+masse|[ée]quivalent\s+[ée]nerg)", re.I),
+    "q_re": re.compile(r"\b([ée]nergie\s+de\s+masse|masse)\b", re.I),
+    "alias": {"energie de masse": "énergie de masse", "equivalent energ": "énergie de masse"},
+    "cible_defaut": "énergie de masse", "devise": "roue E = m·c²",
+    "note": " NB : équivalence masse-énergie (c = 299 792 458 m/s) — l'énergie TOTALE contenue, pas celle "
+            "d'une combustion.",
+    "deps": {"énergie de masse": "E = m·c² (équivalence masse-énergie : 1 g équivaut à ~90 térajoules)",
+             "masse": "m = E/c²"},
+    "paire_exemple": "la masse",
+}
+
+_ROUE_EP = {
+    "nom": "énergie potentielle", "dims": ("énergie potentielle", "masse", "hauteur"),
+    "unites": {"énergie potentielle": "J", "masse": "kg", "hauteur": "m"},
+    "fil_dims": {"masse": "masse", "longueur": "hauteur"},
+    "conv": {"énergie potentielle": {}, "masse": MASSE, "hauteur": METRES},
+    "ancres": ("masse",),
+    "articles": {"énergie potentielle": "l'énergie potentielle", "masse": "la masse", "hauteur": "la hauteur"},
+    "noms": {"énergie potentielle": "l'énergie potentielle (en joules)", "masse": "la masse (en kg)",
+             "hauteur": "la hauteur (en mètres)"},
+    "relations": _relations_monome("énergie potentielle", G_PESANTEUR, {"masse": 1, "hauteur": 1},
+                                   {"énergie potentielle": "Ep = m×g×h", "masse": "m = Ep/(g×h)",
+                                    "hauteur": "h = Ep/(m×g)"}),
+    "cible_re": re.compile(r"\b([ée]nergie\s+potentielle)\b", re.I),
+    "q_re": re.compile(r"\b([ée]nergie\s+potentielle|masse|hauteur)\b", re.I),
+    "alias": {"energie potentielle": "énergie potentielle"},
+    "cible_defaut": "énergie potentielle", "devise": "roue Ep = m·g·h",
+    "note": " NB : pesanteur normale g = 9,80665 m/s², hauteur comptée depuis la référence choisie.",
+    "deps": {"énergie potentielle": "Ep = m·g·h (l'énergie potentielle de pesanteur est masse × g × hauteur)",
+             "masse": "m = Ep/(g×h)", "hauteur": "h = Ep/(m×g)"},
+    "paire_exemple": "la masse ou la hauteur",
+}
+
+_ROUE_MOMENT = {
+    "nom": "moment de force", "dims": ("moment", "force", "bras de levier"),
+    "unites": {"moment": "N·m", "force": "N", "bras de levier": "m"},
+    "fil_dims": {"force": "force", "longueur": "bras de levier"},
+    "conv": {"moment": {}, "force": FORCE, "bras de levier": METRES},
+    "ancres": ("force",),
+    "articles": {"moment": "le moment", "force": "la force", "bras de levier": "le bras de levier"},
+    "noms": {"moment": "le moment (en N·m)", "force": "la force (en newtons)",
+             "bras de levier": "le bras de levier (en mètres)"},
+    "relations": _relations_monome("moment", 1.0, {"force": 1, "bras de levier": 1},
+                                   {"moment": "M = F×b", "force": "F = M/b", "bras de levier": "b = M/F"}),
+    "cible_re": re.compile(r"\b(moment|couple)\s+(?:de\s+(?:la\s+)?force|de\s+serrage|m[ée]canique)\b|"
+                           r"^\s*(?:quel\s+(?:est\s+)?(?:le\s+)?)?(moment)\b", re.I),
+    "q_re": re.compile(r"\b(moment|force|bras)\b", re.I),
+    "alias": {"couple": "moment"}, "cible_defaut": "moment", "devise": "roue M = F·b",
+    "note": " NB : force perpendiculaire au bras de levier.",
+    "deps": {"moment": "M = F·b (le moment est la force × le bras de levier, force perpendiculaire)",
+             "force": "F = M/b", "bras de levier": "b = M/F"},
+    "paire_exemple": "la force ou le bras de levier",
+}
+
+# ORDRE D'ESSAI : les roues à cible SPÉCIFIQUE (multi-mots : « moment de la force », « quantité de
+# mouvement »…) passent AVANT les cibles génériques (« force », « puissance ») — sinon le générique vole la
+# question (vécu : « quel moment de la force ? » servait un écho de la force).
 _ROUES_COMPILEES = (_ROUE_CINEMATIQUE, _ROUE_POIDS, _ROUE_EC, _ROUE_MASSE_VOL,
+                    _ROUE_QMV, _ROUE_EMC2, _ROUE_EP, _ROUE_MOMENT, _ROUE_TRAVAIL, _ROUE_NEWTON,
                     _ROUE_PRESSION, _ROUE_PUISSANCE_MECA, _ROUE_VOLUME_ECOULE,
                     _ROUE_CONSO, _ROUE_BATTERIE, _ROUE_AUTONOMIE)
 _ROUES = (_ROUE_ELEC, _ROUE_HYDRO, _ROUE_ENERGIE) + _ROUES_COMPILEES
@@ -1452,6 +1595,41 @@ def _carte(question: str, sit):
     return "\n".join(lignes)
 
 
+
+
+_RE_RELIE = re.compile(
+    r"comment\s+(?:relier|relies[- ]tu|obtenir|calculer|passer\s+de)\s+(?:la\s+|le\s+|l['\u2019])?(.+?)\s+"
+    r"(?:et|avec|[àa]|depuis|vers)\s+(?:la\s+|le\s+|l['\u2019])?(.+?)\s*\??\s*$", re.I)
+
+
+def _relie(question: str, sit):
+    """« Comment relier X et Y ? » -> le CHEMIN de roues (mécanismes vérifiés), ou le GAP NOMMÉ (« il
+    manquerait une relation reliant X et Y ») — l'aveu du pont manquant est la graine d'invention (étape ③)."""
+    m = _RE_RELIE.search(str(question or ""))
+    if not m:
+        return None
+    try:
+        import graphe_roues as _G
+    except Exception:
+        return None
+    a, b = normalise(m.group(1).strip()), normalise(m.group(2).strip())
+    # les grandeurs du graphe sont accentuées : re-mappe par forme normalisée
+    idx = {normalise(g): g for g in _G.grandeurs()}
+    ga, gb = idx.get(a), idx.get(b)
+    if not ga or not gb:
+        inconnu = m.group(1).strip() if not ga else m.group(2).strip()
+        return ("Aucune de mes roues ne porte la grandeur « %s » — je relie aujourd'hui : %s." %
+                (inconnu, ", ".join(sorted(idx.values()))))
+    ch = _G.chemins(ga, gb)
+    if ch is None:
+        return ("Il n'existe AUCUN pont entre « %s » et « %s » dans mes roues actuelles — il manquerait une "
+                "relation vérifiée les reliant. C'est un trou nommé, pas une invention silencieuse." % (ga, gb))
+    etapes = " -> ".join("%s (%s)" % (nom, devise) for nom, devise, _e in ch)
+    return ("« %s » se relie à « %s » en %d étape(s) : %s. Donne-moi les grandeurs énoncées et je ferme le "
+            "calcul de proche en proche (chaque pas est une définition vérifiée)." %
+            (ga, gb, len(ch), etapes))
+
+
 def repond(question: str, sit):
     """Point d'entrée du PONT : calcul exact depuis les grandeurs énoncées, monde « et si » re-propagé,
     explication causale prouvée, demande NOMMÉE de l'opérande manquant, ou None (hors périmètre — le
@@ -1461,7 +1639,7 @@ def repond(question: str, sit):
     q = str(question or "")
     if not q.strip():
         return None
-    for resolveur in (_carte, _et_si, _pourquoi, _dtlm, _surface, _electrique, _hydraulique, _energie,
+    for resolveur in (_carte, _relie, _et_si, _pourquoi, _dtlm, _surface, _electrique, _hydraulique, _energie,
                       _roues_compilees, _ecart):
         try:
             r = resolveur(q, sit)
