@@ -29,6 +29,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import socket
 import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from urllib.parse import urlparse, parse_qs
@@ -715,10 +716,37 @@ class Handler(BaseHTTPRequestHandler):
         pass
 
 
+class _ServeurExclusif(ThreadingHTTPServer):
+    """MONO-INSTANCE GARANTIE (vécu 2026-07-09 : DEUX Provara.exe écoutaient TOUS LES DEUX 127.0.0.1:8765 —
+    netstat montrait un double LISTENING, requêtes routées au hasard). Cause : `allow_reuse_address` pose
+    SO_REUSEADDR, et sous Windows deux sockets SO_REUSEADDR peuvent se lier au MÊME port. Ici : sous Windows,
+    SO_EXCLUSIVEADDRUSE (le 2e bind échoue net) ; sur POSIX, SO_REUSEADDR reste (relance immédiate après
+    TIME_WAIT, le double-bind n'y existe pas pour un port en écoute)."""
+    allow_reuse_address = not hasattr(socket, "SO_EXCLUSIVEADDRUSE")
+
+    def server_bind(self):
+        if hasattr(socket, "SO_EXCLUSIVEADDRUSE"):
+            self.socket.setsockopt(socket.SOL_SOCKET, socket.SO_EXCLUSIVEADDRUSE, 1)
+        super().server_bind()
+
+
 def main():
     # Localhost STRICT : on lie 127.0.0.1, jamais 0.0.0.0 — les données ne sortent pas de la machine.
     port = int(os.environ.get("PORT", "8765"))
-    serveur = ThreadingHTTPServer(("127.0.0.1", port), Handler)
+    try:
+        serveur = _ServeurExclusif(("127.0.0.1", port), Handler)
+    except OSError:
+        # Une instance tourne DÉJÀ : on le DIT, on amène l'utilisateur à l'onglet existant, et on sort proprement
+        # (jamais deux serveurs muets ; vécu : double-clic + relance = 2 instances silencieuses).
+        print("Provara tourne déjà sur http://127.0.0.1:%d — j'ouvre l'onglet existant et je m'efface." % port,
+              flush=True)
+        if os.environ.get("VERAX_RELANCE_MAJ") != "1":
+            try:
+                import webbrowser
+                webbrowser.open("http://127.0.0.1:%d" % port)
+            except Exception:
+                pass
+        return
     n = len(Handler.memoire.conversations())
     mode = "IA PLEINE (connaissance vérifiée + mémoire)" if _IA_PLEINE else "léger (mémoire de dialogue seule)"
     print(f"Provara — assistant local souverain · http://127.0.0.1:{port}")
