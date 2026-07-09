@@ -19,7 +19,11 @@ runner lourd (`_diag_dirigee.py`, le `__main__` du moteur, les balayages).
 from __future__ import annotations
 
 import os
-import resource
+
+try:
+    import resource                     # POSIX seulement (WSL/Linux : le filet dur kernel fonctionne)
+except ImportError:                     # Windows (.exe) : pas de setrlimit — vécu 2026-07-09, l'import en dur
+    resource = None                     # tuait TOUTES les briques appelantes (invente_et_retiens & co.)
 
 
 def pmap(fn, items):
@@ -42,6 +46,11 @@ def borne(max_go: float = 2.0, max_cpu_s: int = 120) -> dict:
     max_cpu_s borne un run parti en vrille. Les deux ne font que durcir une limite existante.
     """
     applique = {}
+    if resource is None:
+        # Windows : setrlimit n'existe pas. HONNÊTE : on le DIT (dict vide + clé explicite) au lieu de mentir
+        # avec de fausses limites. Le risque WSL (vmmem) n'existe pas ici ; la sandbox juge garde ses propres
+        # bornes par sous-processus (timeout subprocess), et l'utilisateur .exe reste protégé par le système.
+        return {"indisponible": "setrlimit absent (Windows)"}
     octets = int(max_go * 1024 ** 3)
     for nom, ressource, val in (("AS", resource.RLIMIT_AS, octets),
                                 ("CPU", resource.RLIMIT_CPU, max_cpu_s)):

@@ -39,11 +39,24 @@ from __future__ import annotations
 
 import difflib
 import errno
-import fcntl
 import hashlib
 import os
 import stat
 import tempfile
+
+try:
+    import fcntl                        # POSIX : flock par dossier
+except ImportError:                     # Windows (.exe) — vécu 2026-07-09 : l'import en dur tuait cree_fichier/
+    fcntl = None                        # edite_fichier (« façade outils 2 » rouge au diagnostic du .exe).
+
+# MODE PORTABLE (Windows) : pas de dir_fd/O_NOFOLLOW/flock. Les GARANTIES FONCTIONNELLES restent identiques
+# (confinement realpath, non-écrasement O_EXCL, ancre exacte, écriture atomique tmp+replace, refus des liens
+# via lstat, verrou par dossier via msvcrt sur un fichier de verrou HORS dépôt) ; seules les protections
+# TOCTOU kernel (inode épinglé par dir_fd) deviennent best-effort — cohérent avec le modèle de menace du
+# module : outil souverain mono-utilisateur, un processus tiers hostile sort déjà du périmètre.
+_DIRFD = (fcntl is not None and hasattr(os, "O_DIRECTORY") and hasattr(os, "O_NOFOLLOW")
+          and os.open in os.supports_dir_fd)
+_O_BIN = getattr(os, "O_BINARY", 0)     # Windows : IO binaire exact ; 0 ailleurs
 
 _TAILLE = 1 << 16
 
@@ -127,9 +140,19 @@ class Depot:
     def _ouvre_dir(self, parent: str, creer: bool = False) -> int:
         """Ouvre un dir_fd sur `parent` (déjà confiné en chaîne) et RE-confine via /proc/self/fd (l'inode ouvert
         est bien dans la racine, quel que soit un éventuel échange concurrent). O_NOFOLLOW : `parent` étant déjà
-        realpath, pas un lien ; garde défensive. `creer` crée l'arborescence parente (confinée) si absente."""
+        realpath, pas un lien ; garde défensive. `creer` crée l'arborescence parente (confinée) si absente.
+        PORTABLE (Windows) : un dossier ne s'ouvre pas en fd -> on ouvre un FICHIER DE VERROU hors dépôt
+        (tempdir, nommé par empreinte du chemin parent : même parent -> même verrou) ; os.close() le libère."""
         if creer and not os.path.isdir(parent):
             os.makedirs(parent, exist_ok=True)                 # parent déjà confiné
+        if not _DIRFD:
+            if not os.path.isdir(parent):
+                raise ValueError(f"dossier parent inexistant : {parent!r}")
+            nom = "provara_verrou_" + hashlib.sha256(parent.encode("utf-8")).hexdigest()[:16]
+            try:
+                return os.open(os.path.join(tempfile.gettempdir(), nom), os.O_CREAT | os.O_RDWR | _O_BIN)
+            except OSError as e:
+                raise ValueError(f"ouverture du dossier impossible : {e.strerror}")
         try:
             dfd = os.open(parent, os.O_DIRECTORY | os.O_RDONLY | os.O_NOFOLLOW)
         except FileNotFoundError:
@@ -145,22 +168,30 @@ class Depot:
 
     def _verrou(self, dfd: int) -> None:
         try:
-            fcntl.flock(dfd, fcntl.LOCK_EX)                      # sérialise nos mutations concurrentes par dossier
-        except OSError:
-            pass                                                # FS sans flock -> best-effort
+            if _DIRFD:
+                fcntl.flock(dfd, fcntl.LOCK_EX)                  # sérialise nos mutations concurrentes par dossier
+            else:
+                import msvcrt
+                msvcrt.locking(dfd, msvcrt.LK_LOCK, 1)           # verrou 1 octet, libéré à la fermeture du fd
+        except (OSError, ImportError):
+            pass                                                # FS/hôte sans verrou -> best-effort (documenté)
 
-    def _refuse_lien(self, dfd: int, base: str, rel: str) -> None:
+    def _refuse_lien(self, dfd: int, parent: str, base: str, rel: str) -> None:
         try:
-            st = os.lstat(base, dir_fd=dfd)
+            st = (os.lstat(base, dir_fd=dfd) if _DIRFD else os.lstat(os.path.join(parent, base)))
         except FileNotFoundError:
             return                                              # absent -> traité en aval
         if stat.S_ISLNK(st.st_mode):
             raise ValueError(f"la cible est un lien symbolique (refusé) : {rel!r}")
 
-    def _lit_fd(self, dfd: int, base: str, rel: str, obligatoire: bool):
-        """Lit le fichier régulier via dir_fd + O_NOFOLLOW. `obligatoire` : absent -> ValueError, sinon None."""
+    def _lit_fd(self, dfd: int, parent: str, base: str, rel: str, obligatoire: bool):
+        """Lit le fichier régulier via dir_fd + O_NOFOLLOW (portable : chemin joint + refus lstat du lien)."""
         try:
-            fd = os.open(base, os.O_RDONLY | os.O_NOFOLLOW, dir_fd=dfd)
+            if _DIRFD:
+                fd = os.open(base, os.O_RDONLY | os.O_NOFOLLOW, dir_fd=dfd)
+            else:
+                self._refuse_lien(dfd, parent, base, rel)       # pas d'O_NOFOLLOW -> refus AVANT ouverture
+                fd = os.open(os.path.join(parent, base), os.O_RDONLY | _O_BIN)
         except FileNotFoundError:
             if obligatoire:
                 raise ValueError(f"fichier inexistant : {rel!r}")
@@ -195,17 +226,21 @@ class Depot:
                 fh.write(contenu.encode("utf-8"))
                 fh.flush()
                 os.fsync(fh.fileno())
-            os.replace(tmpbase, base, src_dir_fd=dfd, dst_dir_fd=dfd)
+            if _DIRFD:
+                os.replace(tmpbase, base, src_dir_fd=dfd, dst_dir_fd=dfd)
+            else:
+                os.replace(tmp, os.path.join(parent, base))     # atomique sur même volume (NTFS inclus)
         except BaseException:
             try:
-                os.unlink(tmpbase, dir_fd=dfd)
+                os.unlink(tmpbase, dir_fd=dfd) if _DIRFD else os.unlink(tmp)
             except OSError:
                 pass
             raise
-        try:
-            os.fsync(dfd)                                       # durabilité du renommage (best-effort 9p/drvfs)
-        except OSError:
-            pass
+        if _DIRFD:
+            try:
+                os.fsync(dfd)                                   # durabilité du renommage (best-effort 9p/drvfs)
+            except OSError:
+                pass
 
     # ── API publique ──────────────────────────────────────────────────────────────────────────────────────
     def chemin_absolu(self, rel: str) -> str:
@@ -218,7 +253,7 @@ class Depot:
         parent, base = self._resout_parent(rel)
         dfd = self._ouvre_dir(parent)
         try:
-            st = os.lstat(base, dir_fd=dfd)
+            st = (os.lstat(base, dir_fd=dfd) if _DIRFD else os.lstat(os.path.join(parent, base)))
             return stat.S_ISREG(st.st_mode)
         except FileNotFoundError:
             return False
@@ -233,7 +268,7 @@ class Depot:
         except ValueError:
             return (None, None)                                 # dossier parent absent -> fichier absent
         try:
-            c = self._lit_fd(dfd, base, rel, obligatoire=False)
+            c = self._lit_fd(dfd, parent, base, rel, obligatoire=False)
             return (c, empreinte(c)) if c is not None else (None, None)
         finally:
             os.close(dfd)
@@ -248,7 +283,11 @@ class Depot:
         try:
             self._verrou(dfd)
             try:
-                fd = os.open(base, os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o644, dir_fd=dfd)
+                if _DIRFD:
+                    fd = os.open(base, os.O_CREAT | os.O_EXCL | os.O_WRONLY | os.O_NOFOLLOW, 0o644, dir_fd=dfd)
+                else:
+                    # O_EXCL refuse TOUTE entrée existante (fichier, dossier, lien) : non-écrasement identique.
+                    fd = os.open(os.path.join(parent, base), os.O_CREAT | os.O_EXCL | os.O_WRONLY | _O_BIN, 0o644)
             except FileExistsError:
                 raise ValueError(f"le fichier existe déjà (utiliser edite/remplace) : {rel!r}")
             except OSError as e:
@@ -260,14 +299,15 @@ class Depot:
                     os.fsync(fh.fileno())
             except BaseException:
                 try:
-                    os.unlink(base, dir_fd=dfd)
+                    os.unlink(base, dir_fd=dfd) if _DIRFD else os.unlink(os.path.join(parent, base))
                 except OSError:
                     pass
                 raise
-            try:
-                os.fsync(dfd)
-            except OSError:
-                pass
+            if _DIRFD:
+                try:
+                    os.fsync(dfd)
+                except OSError:
+                    pass
             return os.path.join(parent, base)
         finally:
             os.close(dfd)
@@ -279,10 +319,11 @@ class Depot:
         dfd = self._ouvre_dir(parent)
         try:
             self._verrou(dfd)
-            self._refuse_lien(dfd, base, rel)
-            contenu = self._lit_fd(dfd, base, rel, obligatoire=True)
+            self._refuse_lien(dfd, parent, base, rel)
+            contenu = self._lit_fd(dfd, parent, base, rel, obligatoire=True)
             n, neuf = _prepare_edition(contenu, ancien, nouveau, tous)
-            mode = os.stat(base, dir_fd=dfd, follow_symlinks=False).st_mode
+            mode = (os.stat(base, dir_fd=dfd, follow_symlinks=False) if _DIRFD
+                    else os.lstat(os.path.join(parent, base))).st_mode
             self._ecrit_atomique(dfd, parent, base, neuf, mode)
             return n
         finally:
@@ -299,11 +340,12 @@ class Depot:
         dfd = self._ouvre_dir(parent)
         try:
             self._verrou(dfd)
-            self._refuse_lien(dfd, base, rel)
-            actuel = self._lit_fd(dfd, base, rel, obligatoire=True)
+            self._refuse_lien(dfd, parent, base, rel)
+            actuel = self._lit_fd(dfd, parent, base, rel, obligatoire=True)
             if empreinte(actuel) != empreinte_attendue:
                 raise ValueError("empreinte périmée (le fichier a changé depuis sa lecture) — relire avant d'écrire")
-            mode = os.stat(base, dir_fd=dfd, follow_symlinks=False).st_mode
+            mode = (os.stat(base, dir_fd=dfd, follow_symlinks=False) if _DIRFD
+                    else os.lstat(os.path.join(parent, base))).st_mode
             self._ecrit_atomique(dfd, parent, base, contenu, mode)
             return os.path.join(parent, base)
         finally:
@@ -315,15 +357,16 @@ class Depot:
         dfd = self._ouvre_dir(parent)
         try:
             self._verrou(dfd)
-            self._refuse_lien(dfd, base, rel)
-            actuel = self._lit_fd(dfd, base, rel, obligatoire=True)
+            self._refuse_lien(dfd, parent, base, rel)
+            actuel = self._lit_fd(dfd, parent, base, rel, obligatoire=True)
             if empreinte(actuel) != empreinte_attendue:
                 raise ValueError("empreinte périmée — relire avant de supprimer")
-            os.unlink(base, dir_fd=dfd)
-            try:
-                os.fsync(dfd)
-            except OSError:
-                pass
+            os.unlink(base, dir_fd=dfd) if _DIRFD else os.unlink(os.path.join(parent, base))
+            if _DIRFD:
+                try:
+                    os.fsync(dfd)
+                except OSError:
+                    pass
         finally:
             os.close(dfd)
 
@@ -333,8 +376,8 @@ class Depot:
         parent, base = self._resout_parent(rel)
         dfd = self._ouvre_dir(parent)
         try:
-            self._refuse_lien(dfd, base, rel)
-            contenu = self._lit_fd(dfd, base, rel, obligatoire=True)
+            self._refuse_lien(dfd, parent, base, rel)
+            contenu = self._lit_fd(dfd, parent, base, rel, obligatoire=True)
             _, neuf = _prepare_edition(contenu, ancien, nouveau, tous)
         finally:
             os.close(dfd)

@@ -63,12 +63,22 @@ class _Handler(socketserver.StreamRequestHandler):
             self.wfile.flush()
 
 
-class _Serveur(socketserver.ThreadingUnixStreamServer):
-    daemon_threads = True
-    allow_reuse_address = True
+if hasattr(socketserver, "ThreadingUnixStreamServer"):
+    class _Serveur(socketserver.ThreadingUnixStreamServer):
+        daemon_threads = True
+        allow_reuse_address = True
+else:
+    # Windows (.exe) : pas de socket Unix — vécu 2026-07-09 : la CLASSE au niveau module tuait l'IMPORT entier
+    # (preuve « Daemon lecteur » rouge au diagnostic alors que `_traite`, pur, marche partout). Le daemon est
+    # un confort de dev POSIX (cold-load partagé) ; sur cet hôte il se déclare indisponible, honnêtement.
+    _Serveur = None
 
 
 def main():
+    if _Serveur is None:
+        print("[daemon] indisponible sur cet hôte (pas de socket Unix) — le lecteur en-process reste la voie.",
+              flush=True)
+        return
     t0 = time.time()
     _charge()
     print("[daemon] base chargee len=%d relations=%d en %.1fs"
