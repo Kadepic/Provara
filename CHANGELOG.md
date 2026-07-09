@@ -1,5 +1,107 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 — LONGUEUR IMPÉRIALE COMPOSÉE (audit item 5, dernier petit item du pont)
+
+- Constat e2e AVANT fix : les conversions impériales SIMPLES marchaient déjà (6 pieds -> 1.8288 m, 5 miles ->
+  8,0467 km, 3 pouces -> 7,62 cm) — le seul trou réel : la forme COMPOSÉE anglo-saxonne « 6 pieds 2 pouces »
+  (partait au web, attribué mais calculable exactement en local).
+- `resout_conversion` : « X pieds Y (pouces) (en cm/m) » -> n1×0,3048 + n2×0,0254 EXACT, définitions légales
+  citées (« 6 pieds 2 pouces = 1,8796 m »), pouces implicites (« 5 pieds 11 » = 5 ft 11 in), cible cm gérée.
+  GARDE capture indue : sans le mot « pouces », le 2ᵉ nombre n'est des pouces que si rien ne suit (« il a
+  marché 3 pieds 2 FOIS » jamais lu 3 ft 2 in). 2 pièges de regex corrigés en écrivant (le \s* qui avalait
+  l'espace de « en mètres » ; l'alternation cm|m coupant « metres » à « m »).
+- assistant_nl 503/503 ; suite 28/28 ; e2e .exe : « quelle taille fait 6 pieds 2 pouces ? » -> 1,8796 m.
+
+## 2026-07-09 — RADICAUX COMPOSÉS EXACTS (audit item 6) + 1 FAUX latent tué
+
+- **`fonction_nl._resout_radicaux`** : « √20 × √5 » répondait sur √5 seul — désormais **10 EXACT**. Calcul
+  symbolique en forme canonique c·√d (c = Fraction exacte, d sans facteur carré) : ×,/ (√a×√b=√(ab), division
+  RATIONALISÉE : √50÷√2 -> 5), +,− à radicande identique (√2+√8 -> 3√2 exact, approximation MARQUÉE),
+  « au carré »/« ² » annule la racine ((√7)² -> 7), coefficients (2√3×√3 -> 6, 3×√2 -> 3√2). Garde-fous :
+  COUVERTURE TOTALE des nombres, radicandes irréductibles différents -> HORS, précédence mixte -> HORS,
+  « √145 » SEUL inchangé (la décision Yohan sur le piège reste ouverte), « 4 x 100 m » jamais capté (le x
+  n'est opérateur qu'en présence d'un √). Bug débusqué pendant l'écriture : « divisé par » absent des
+  ensembles -> traité en ADDITION (√50÷√2 rendait 6√2) — normalisation canonique des opérateurs.
+- **FAUX latent préexistant TUÉ** : « √16 plus 9 personnes » -> les binaires répondaient **25** en IGNORANT
+  le √ (le mot « racine » était gardé, le symbole non). Un √ non parsé -> HORS. Bonus : « racine de 16
+  plus 9 » -> 13 exact (l'ancien HORS anti-fragment est dépassé par le haut — gate mise à jour).
+- Chat : un radical = intention de calcul en soi (« √20 × √5 » nu marche ; _normalise mangeait le √ -> test
+  d'intention sur le brut aussi). assistant_nl 499/499, capacites_chat 241/241, suite 28/28. **E2E .exe :
+  10 / 5 / 3√2 verts.** _nonreg complet : 674/694, les 20 FAILS = classe « base complète » de l'audit
+  (vérifié : t7 492/492 sur la base réelle ; valide_interface identique AVANT/APRÈS via git stash — aucun
+  n'est une régression de la session).
+
+## 2026-07-09 — MÉMOIRE À EXTRACTION (Rex→Max) + « PROUVE-LE » (audit items 12 et 11 : les 2 derniers du mandat)
+
+- **`src/faits_conversation.py`** : les faits que l'utilisateur CONFIE (« le chien s'appelle Rex » — motifs
+  FERMÉS nom/âge/lieu, ancrés message entier) deviennent INTERROGEABLES (« comment s'appelle le chien ? » ->
+  « Rex. (C'est toi qui me l'as dit…) », toujours attribué, jamais présenté comme fait du monde) et la
+  correction fait AUTORITÉ SANS exigence de source (sur SA vie, l'utilisateur EST la source — ≠ faits-monde) :
+  verbale (« il s'appelle Max ») ou nue (« en fait c'est Max ») SOUS FOCUS seulement (tour précédent = ce fait ;
+  sinon la correction-monde garde sa route). Historique bitemporel DIT (« tu avais d'abord dit Rex »).
+  MACHINE-NATIF, zéro stockage nouveau : l'état se REJOUE des tours stockés -> persistance (redémarrage) et
+  RGPD (oublie purge tout) gratuits. Câblé serveur AVANT la correction-monde ; accusé SPÉCIFIQUE (fini le
+  « C'est noté » générique quand on a vraiment extrait). Gate valide_faits_conversation 19/19 (+ ambiguïté
+  2 sujets refusée, redite sans bruit, zéro capture des questions-monde).
+- **« Prouve-le » / « es-tu sûr ? » / « ta source ? »** (`repond.est_demande_preuve` + `preuve_de`, câblé
+  serveur sur le dernier échange) : composition -> la CHAÎNE re-montrée maillon par maillon ; réponse web ->
+  les liens cités ; fait de table -> RE-DÉRIVATION live + source de la table (« ma table donne exactement
+  “Tokyo”… source : géographie politique (référence) ») ; réponse auto-sourcée Wikidata -> renvoi + invitation
+  à recouper ; fichier attaché -> « la preuve est TON fichier, ligne citée » ; fait personnel -> « la preuve,
+  c'est TOI » ; type improuvable -> DIT honnêtement (jamais une justification fabriquée). Fix vécu e2e : la
+  branche faits-perso ne renseignait pas _DERNIERE_QUESTION/_REPONSE -> « prouve-le » ne retrouvait rien.
+- capacites_chat 235/235 ; suite 28/28 ; **e2e .exe rebuilé : les 5 tours Rex->Max->preuve verts + preuve
+  table (Tokyo) + preuve Wikidata (dirigeants)**. Conversations de test purgées.
+
+## 2026-07-09 — LOT 2 ROUTE 4 : multi-hop « où est né X » + temporel « qui dirigeait <pays> en <année> »
+
+- **Relative ÉVÉNEMENTIELLE** (`_OU_EVT_RE` + `_resout_relatif_evenement`, feuille de `_resout_noeud`) :
+  « capitale du pays où est né Einstein » -> Berlin AVEC la chaîne (« Albert Einstein est né à Ulm, puis Ulm
+  est en Allemagne (pays actuel), puis capitale de Allemagne = Berlin »). Verbe -> relation (lieu_naissance/
+  lieu_deces), type demandé -> profondeur (ville = le lieu ; pays = +pays_ville/pays_localite ; continent = +1).
+  HONNÊTETÉ TEMPORELLE : « (pays actuel) » dit dans la dérivation (P17 = le pays d'aujourd'hui). ⚠ piège
+  évité : le « où est » nu de _OU_TROUVE_RE gobait la forme -> l'événementiel passe AVANT. Napoléon mort à
+  Longwood House (sans rattachement pays en base) -> abstention honnête.
+- **Cap direct `_cap_lieu_evenement`** : « dans quelle ville est né Einstein ? » — vécu e2e AVANT le cap :
+  partait au reverse-liste géo (villes de la région Est du CAMEROUN !). Désormais : « Albert Einstein est né
+  à Ulm. » ; « dans quel pays… » -> Allemagne + dérivation.
+- **NOUVELLE VEINE `ingestion/ingere_dirigeants.py`** : chef_etat_pays_annee (23 777) + chef_gouvernement_
+  pays_annee (14 596) — statements P39 des fonctions OFFICIELLES du pays (P1906/P1313 : la sonde par classe
+  P279* ramenait les MAIRES — Italie 1985 pollué, tué), qualificatifs P580/P582, MANDATS TERMINÉS seulement
+  (mandat en cours = vérité datée -> HORS), dépliage annuel, transitions chronologiques à la date complète
+  (« Kennedy puis Johnson » 1963, « de Gaulle puis Poher puis Pompidou » 1969), bornes d'année non pleine
+  dites (« Juan Carlos (prise de fonction cette année-là) » 1975 — Franco = autre fonction). Déployée :
+  ~/.verax (base .exe, 1371 relations) + échantillon 6 pays dans le repo. ⚠ À reporter dans la prochaine
+  régénération du tarball datasets de la Release.
+- **Cap `_cap_dirigeant_annee`** : « qui dirigeait la France en 1962 ? » -> « chef de l'État (président de la
+  République française) : Charles de Gaulle ; chef du gouvernement : Michel Debré puis Georges Pompidou …
+  (Wikidata, mandats terminés.) » ; fonction demandée respectée (« premier ministre » -> pas de ligne État) ;
+  pays hors couverture (URSS, « la réunion ») -> None, zéro capture.
+- **Gates** : valide_composition 22/22 (relative événementielle + cap, mocks), valide_lecteur_dirigeants 22/22
+  (ancres manuelles + adverse, PASSE sur échantillon ET base complète, enregistré _nonreg amorce-légère),
+  capacites_chat 210/210, suite 27/27. **E2E .exe rebuilé : les 4 formes vertes** (S2-S5), capitale de la
+  France -> Paris et composition population/capitale intactes. Conversations de test purgées.
+
+## 2026-07-09 — LOT 2 ROUTE 3 : fichiers INTERROGEABLES (opérations exactes sur CSV/JSON attachés)
+
+- **Nouvelle brique `src/interroge_donnees.py`** (approche NLIDB : mots-clés d'agrégat → opération déterministe,
+  résolution de colonne par le SCHÉMA réel du fichier) : `Tableau` (csv/tsv) = colonnes, nb lignes, max/min/
+  somme/moyenne d'une colonne, comptage conditionnel (« combien de lignes ont X »), extraction de cellule
+  (« quel est le prix de la poire ? ») ; `Arbre` (json) = comptages, clés, valeur d'une clé (chemin en preuve).
+  FAUX=0 : chaque réponse localisée (ligne réelle du fichier, étiquette, chemin JSON) ; unités MÉLANGÉES
+  (2 kg vs 500 g) → refus honnête de l'agrégat ; nombres FR stricts (« 12,5 », « 1 234 », « 1.234,56 » ;
+  ambigu → cellule ignorée ET comptée). Gate `valide_interroge_donnees` 61/61 (pièges de capture inclus).
+- **Câblage serveur** : `_DONNEES` (conv → Tableau|Arbre) rempli à l'upload ; les opérations structurées passent
+  AVANT le pipeline (chirurgicales : ne répondent que sur le schéma/valeurs réels du fichier) — vécu e2e :
+  « combien de lignes ? » partait au LEXIQUE (« 18 termes classés ligne ») au lieu du CSV attaché. Le document
+  TEXTE reste en repli d'abstention (inchangé). Résumé d'upload ACTIONNABLE (colonnes réelles + exemples de
+  questions). « résume » déclenche le sommaire (MD/PDF). Trou RGPD bouché au passage : `oublie_conversation`
+  purge désormais AUSSI le document attaché (`_DOCS`/`_DONNEES`).
+- **Vérifié e2e DANS le .exe rebuilé (port 8799)** : upload fruits.csv → max prix = 2,5 (ligne 3, « poire »),
+  moyenne, cellule, « combien de lignes » → 4 (plus jamais le lexique), capitale de la France → Paris (zéro
+  capture) ; biblio.json → comptage + valeur avec chemins. capacites_chat 202/202 ; suite conversationnelle
+  27/27 gates. Conversations de test purgées.
+
 ## 2026-07-09 — LOT 2 (pont vocabulaire→moteurs) : routes 1-2 câblées — code prouvé + invention invoquée
 
 - **Route 1 « écris une fonction/du code » -> CODE PROUVÉ** (`_cap_code_prouve`) : exemples « (2, 3) -> 5 »

@@ -250,7 +250,8 @@ def liste_validateurs():
                 "valide_lecteur_t10.py",                                        # T10 : SPORT & COMPÉTITIONS
                 "valide_lecteur_t12.py",                                        # T12 : RELIGION/MYTHO/PHILO
                 "valide_lecteur_t5.py",                                          # T5 : ŒUVRES (créateurs/production)
-                "valide_lecteur_nuit.py"]                                        # NUIT 2026-06-29 : veines harvester (amorce-seule+mmap)
+                "valide_lecteur_nuit.py",                                        # NUIT 2026-06-29 : veines harvester (amorce-seule+mmap)
+                "valide_lecteur_dirigeants.py"]                                  # ROUTE 4 : dirigeants pays-année (jsonl pur, léger)
     memoire = ["valide_memoire.py", "valide_restitution.py", "valide_deduction.py",   # moteur de mémoire/restitution
                "valide_conversation.py"]                                              # mémoire de DIALOGUE (anti-éphémère)
     incertitude = ["valide_calibration.py", "valide_bayes.py",                        # PALIER 2 (T2) : calibration + bayes
@@ -571,7 +572,7 @@ def main():
     # parallélisables plein. NE PAS y mettre valide_lecteur.py / t4 / t5 : eux itèrent le singleton global.
     _LEGER_AMORCE = {"valide_lecteur_t6.py", "valide_lecteur_t8.py", "valide_lecteur_t9.py",
                      "valide_lecteur_t10.py", "valide_lecteur_t11.py", "valide_lecteur_t12.py",
-                     "valide_lecteur_nuit.py"}
+                     "valide_lecteur_nuit.py", "valide_lecteur_dirigeants.py"}
     # Empreinte des DONNÉES calculée UNE fois (stat de ~1351 .jsonl ~1 s sur 9p) puis repliée dans le
     # fingerprint de chaque validateur data-driven -> le cache n'est plus aveugle aux ingestions.
     emp_data = empreinte_datasets()
