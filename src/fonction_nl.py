@@ -1494,8 +1494,12 @@ def resout_math(question: str):
     if mck:
         # durée : mot (« une heure »), nombre+unité (« 45 minutes ») OU compacte (« dure 1h30 ») ;
         # sens : plus/dans/dure/roule = AVANCE, moins/retire = RECULE (« 20h45 moins 30 min » -> 1245, FAUX vécu).
+        # ⚠ « 2 heures 48 » (minutes énoncées APRÈS l'unité) : capturées par le groupe 4 — vécu Phase 2
+        # 2026-07-09 : « pars à 14h37, roule 2 heures 48 » répondait 16 h 37 (les 48 minutes AVALÉES, FAUX).
         mdu = re.search(r"(?:roule|dure|pendant|dans|plus|moins|attend|ajoute|retire)\s+"
-                        r"(?:une?\s+(heure|minute)\b|(\d{1,3})\s*(heures?|minutes?|min\b)|(\d{1,2})h([0-5]\d)\b)", qc)
+                        r"(?:une?\s+(heure|minute)\b"
+                        r"|(\d{1,3})\s*(heures?|minutes?|min\b)(?:\s+(?:et\s+)?([0-5]?\d)\b\s*(?:minutes?|min\b)?)?"
+                        r"|(\d{1,2})h([0-5]\d)\b)", qc)
         veut_h = (re.search(r"quelle\s+heure|finit|arrive|termine|se\s+terminera|sera|ce\s+sera", qc)
                   or re.search(r"^\s*\d{1,2}\s*h\s*[0-5]?\d?\s+(?:plus|moins)\b", qc))
         if mdu and veut_h:
@@ -1507,9 +1511,17 @@ def resout_math(question: str):
                     n, unite = int(mdu.group(2)), mdu.group(3)
                     dur_min = n * 60 if unite.startswith("h") else n
                     aff_dur = "%d %s%s" % (n, "heure" if unite.startswith("h") else "minute", "s" if n > 1 else "")
+                    # minutes énoncées après les heures (« 2 heures 48 [minutes] ») — SEULEMENT si l'unité est
+                    # l'heure ET que le nombre traînant n'appartient pas à une autre grandeur (« 2 heures 15
+                    # personnes… ») : au moindre nom d'unité étrangère, on ne prend PAS (sûr avant complet).
+                    if unite.startswith("h") and mdu.group(4):
+                        queue = qc[mdu.end(4):mdu.end(4) + 16].lstrip()
+                        if not re.match(r"(?:km|kilometres?|metres?|euros?|ans?\b|personnes?|%|kg\b|litres?)", queue):
+                            dur_min += int(mdu.group(4))
+                            aff_dur = "%dh%02d" % (n, int(mdu.group(4)))
                 else:
-                    dur_min = int(mdu.group(4)) * 60 + int(mdu.group(5))
-                    aff_dur = "%sh%s" % (mdu.group(4), mdu.group(5))
+                    dur_min = int(mdu.group(5)) * 60 + int(mdu.group(6))
+                    aff_dur = "%sh%s" % (mdu.group(5), mdu.group(6))
                 recule = re.search(r"\b(?:moins|retire)\b", qc) is not None
                 total = h0 * 60 + m0 + (-dur_min if recule else dur_min)
                 h1, m1 = divmod(total % 1440, 60)
