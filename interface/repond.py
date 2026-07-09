@@ -3544,6 +3544,11 @@ def _mots_contenu_rappel(texte: str) -> set:
     return {m for m in re.findall(r"[a-zà-ÿ]{3,}", _normalise(texte)) if m not in _RAPPEL_STOP}
 
 
+# Question PERSONNELLE (possessif 1ʳᵉ personne) : elle porte sur l'utilisateur — aucune source externe ne peut
+# y répondre (brique 4 du fil : garde anti-web + repli honnête dédié au lieu d'un extrait hors-sujet).
+_RE_QUESTION_PERSO = re.compile(r"\b(?:mon|ma|mes)\b", re.I)
+
+
 def _expanse_rappel(texte: str) -> str:
     """Requête de rappel ENRICHIE des synonymes du champ sémantique présent (nom↔appelle…). Ne change PAS la
     sûreté : le rappel cite un énoncé réel de l'utilisateur, jamais une invention ; ceci améliore la PERTINENCE."""
@@ -3927,6 +3932,8 @@ _MSG_WEB_COUPE = ("Je n'ai pas l'information dans mes données locales — et l'
 _MSG_NOTE = "C'est noté, je m'en souviendrai. Tu pourras me le redemander."
 _MSG_REFUS = "D'accord — reformule ta question et je réponds."
 _MSG_RAPPEL_PREFIXE = "D'après ce que tu m'as dit : "
+_MSG_PERSO_INCONNU = ("Ça te concerne, et tu ne me l'as pas encore dit dans nos conversations — je ne vais pas "
+                      "chercher ça sur internet. Dis-le-moi et je le retiendrai.")
 _MSG_DYM_PREFIXE = "Je ne suis pas sûr du mot « "
 _MSG_STRUCTURE_PREFIXE = "J'ai compris la structure de ta question"
 _MSG_STRUCTURE_COURT_PREFIXE = "Même chose pour « "
@@ -3993,6 +4000,7 @@ def est_fallback(s: str) -> bool:
         s.startswith(_MSG_INCONNU_PREFIXE) or s == _MSG_WEB_COUPE
         or s.startswith(_MSG_STRUCTURE_PREFIXE)      # abstention ENRICHIE (structure reconnue, non ancrée)
         or s.startswith(_MSG_STRUCTURE_COURT_PREFIXE)   # sa forme COURTE (abstentions consécutives)
+        or s == _MSG_PERSO_INCONNU                   # repli personnel « tu ne me l'as pas dit » (brique 4 du fil)
         or s == _MSG_NOTE or s in _variantes("note", _MSG_NOTE))
 
 
@@ -8636,7 +8644,12 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
     #           GARDE SUBJECTIVITÉ : une question NON BORNÉE (« le plus beau pays du monde ») ne part JAMAIS au
     #           web — le métamoteur matcherait un homonyme (le FILM « Le Plus Beau Pays du monde ») au lieu du
     #           cadrage honnête « la réalité ne fixe pas de réponse unique » (rendu par le routeur de bornage).
+    #           GARDE PERSONNELLE (brique 4 du fil, 2026-07-09 nuit) : une question sur l'UTILISATEUR
+    #           (« quel est MON plat préféré ? ») ne part JAMAIS au web — seul ce qu'il a dit peut y répondre
+    #           (vécu e2e : Wikipédia « Plat » servi en guise de plat préféré). La mémoire de dialogue (2) et
+    #           le repli honnête prennent la main.
     if (pleine and os.environ.get("IA_WEB") == "1" and not _negation_bloquante(t)
+            and not (veut and _RE_QUESTION_PERSO.search(t))
             and not _ressemble_calcul(t)):        # une opération arithmétique ne se cherche pas sur le web
         _borne_ok = True
         try:
@@ -8704,7 +8717,23 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
                 enonces = sorted(enumerate(enonces),
                                  key=lambda ie: (-len(mots_q & _mots_contenu_rappel(ie[1]["texte"])), ie[0]))
                 enonces = [e for _i, e in enonces]
-            return f"{_MSG_RAPPEL_PREFIXE}« {enonces[0]['texte']} »"
+            # ANTI-À-CÔTÉ (brique 4 du fil, 2026-07-09 nuit) : l'écho ne sort que si l'énoncé rappelé COUVRE
+            # TOUS les mots de contenu de la question — un recouvrement PARTIEL ressortait un énoncé qui
+            # « parle du même sujet » sans y RÉPONDRE (vécu sonde échangeur : « quelle surface… ? » -> écho
+            # « le fluide chaud entre à 90 degrés »). Couverture totale = l'énoncé contient de quoi répondre ;
+            # sinon on laisse la main aux étages HONNÊTES (calcul, web, clarification) au lieu du à-côté.
+            # Exception : un RAPPEL-TÂCHE stocké reste ré-servable dès qu'il partage un mot de contenu.
+            _e0 = enonces[0]
+            _mots_e0 = _mots_contenu_rappel(_e0["texte"])
+            _est_tache = bool(_RAPPEL_TACHE_RE.match(_e0["texte"].strip()))
+            if (mots_q and mots_q <= _mots_e0) or (_est_tache and (not mots_q or mots_q & _mots_e0)):
+                return f"{_MSG_RAPPEL_PREFIXE}« {_e0['texte']} »"
+        # question PERSONNELLE restée sans rappel couvrant -> repli honnête DÉDIÉ (brique 4 du fil) : sur SA
+        # vie, seule SA parole peut répondre — jamais le web, jamais un énoncé à-côté, jamais une invention.
+        # Classé message d'ABSENCE (est_fallback) : sous une lecture GUÉRIE il ne coiffe jamais le
+        # « vouliez-vous dire … ? » posé sur le mot d'origine.
+        if _RE_QUESTION_PERSO.search(t):
+            return _MSG_PERSO_INCONNU
 
         #   (2b0) PATRON APPRIS (avant le did-you-mean : un alias validé par l'utilisateur prime sur une simple
         #         suggestion de faute) — une reformulation antérieure a été apprise pour CETTE formulation ratée ->

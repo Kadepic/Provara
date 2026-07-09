@@ -312,6 +312,26 @@ check(r.statut == A.SUPPOSITION and r.texte.startswith("D'après ce que tu m'as 
 check("non vérifié" in r.source, "rappel -> source honnête (contenu non vérifié)")
 check(r.regime == "", "rappel -> aucun régime de juge forgé")
 
+# BRIQUE 4 DU FIL (anti-à-côté, 2026-07-09 nuit) : l'écho « D'après ce que tu m'as dit » ne sort que si
+# l'énoncé rappelé COUVRE TOUS les mots de contenu de la question. Un énoncé qui ne fait que PARTAGER un mot
+# (« échangeur ») sans contenir de quoi répondre (« puissance ») ne doit plus être resservi en guise de réponse.
+mem_ac = conversation.MemoireConversation(racine=None)
+mem_ac.ajoute("t-acote", "user", "le fluide chaud entre à 90 degrés dans l'échangeur")
+r = A.repond("quelle puissance passe dans l'échangeur ?", "t-acote", pleine=False, memoire=mem_ac)
+check(not r.texte.startswith("D'après ce que tu m'as dit"),
+      "recouvrement PARTIEL (échangeur sans puissance) -> plus jamais d'écho à-côté")
+# … mais un rappel PERSONNEL couvrant reste servi, et une question personnelle SANS matière reçoit le repli
+# honnête dédié (jamais le web, jamais un à-côté : sur SA vie, seule SA parole peut répondre). NB : « sport »/
+# « couleur » sont dans le lexique de l'ÉCHANTILLON (la guérison ne les touche pas en gate légère — « plat »,
+# lui, n'est protégé que par definition_nom de la base complète : validé e2e .exe).
+mem_ac.ajoute("t-acote", "user", "mon sport préféré est l'escalade")
+r = A.repond("quel est mon sport préféré ?", "t-acote", pleine=False, memoire=mem_ac)
+check(r.texte.startswith("D'après ce que tu m'as dit") and "escalade" in r.texte,
+      "question personnelle avec matière -> l'énoncé couvrant est bien resservi")
+r = A.repond("quelle est ma couleur préférée ?", "t-acote", pleine=False, memoire=mem_ac)
+check("te concerne" in r.texte and "retiendrai" in r.texte,
+      "question personnelle SANS matière -> repli honnête dédié (pas de web, pas d'à-côté)")
+
 # NON-RÉG : le refus « non » d'une clarification n'est PAS un fait.
 mem_f = conversation.MemoireConversation(racine=None)
 r = A.repond("quel flauve traverse le portugal ?", "t-flux", memoire=mem_f)

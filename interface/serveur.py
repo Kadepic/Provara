@@ -296,6 +296,8 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
         if not _rep_fc:
             import pont_grandeurs                    # PONT : les grandeurs énoncées deviennent des opérandes
             _rep_fc = pont_grandeurs.repond(texte, _sit)
+            if not _rep_fc:                          # « pourquoi ? » NU -> mécanisme de la dernière réponse du pont
+                _rep_fc = pont_grandeurs.pourquoi_dernier(texte, _DERNIERE_REPONSE.get(conv_id), _sit)
         # déclaration TECHNIQUE (grandeurs, pas de question) -> accusé du FIL, à la place du lookup fragmenté
         # « je ne l'ai pas encore en mémoire » ×N (vécu sonde échangeur). Les affirmations sans grandeur
         # gardent leurs flux existants (mémo, attunement, apprentissage de patrons).
