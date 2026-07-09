@@ -309,5 +309,103 @@ check(all(v in _VOCAB_MUSEE for v in _top8),
 check(n >= 20_000, "type_musee : volume ≥ 20k (%d)" % n)
 check(vides == 0, "type_musee : zéro valeur vide (%d)" % vides)
 
+
+# ═══ TRANCHE 5 (2026-07-09 jour) — LA TRAÎNE ENTIÈRE (73 tables, ≈ 327k faits) : backlog ÉPUISÉ ═══
+# Chaque vocabulaire top-6 a été MESURÉ sur le store réel puis CERTIFIÉ à la relecture (tous des types/lieux
+# réels : pont routier, qanat, wat, Tchitalichté, colombier, pierre de Caen, codes ISO 4217…). Le check est un
+# CLIQUET anti-dérive avec marge : top-4 ⊆ top-6 observé (l'ordre peut bouger à la réingestion, pas la nature),
+# volume ≥ 95 % du mesuré, zéro valeur vide.
+_TRAINE = {
+    'type_pont': (18984, ('pont routier', 'pont ferroviaire', 'passerelle', 'viaduc ferroviaire', 'pont-pipeline', 'pont en arc')),
+    'type_baie': (18978, ('port', 'lagune', 'fjord', 'havre', 'port de pêche', 'crique')),
+    'subdivision_promontoire': (15895, ('Petites Îles de la Sonde orientales', 'province de Palawan', 'Sulawesi central', 'Svalbard', 'Sulawesi du Nord', 'Queensland')),
+    'type_canal': (14865, ('qanat', "canal d'irrigation souterrain", 'canal de drainage', 'pont-canal', 'seguia', 'gracht')),
+    'type_tour': (14551, ('colombier', 'tour de surveillance des incendies', "château d'eau", "tour d'observation", 'clocher-tour', 'tour fortifiée')),
+    'type_monastere': (13915, ('wat', 'monastère bouddhiste tibétain', 'couvent', 'abbaye', 'prieuré', 'monastère orthodoxe oriental')),
+    'type_jardin': (12256, ('jardin public', 'jardin botanique', 'square-jardin', 'jardin communautaire', 'jardin de sculptures', 'arboretum')),
+    'embouchure_ruisseau': (11070, ('Vltava', 'Elbe', 'Tweed', 'océan Pacifique', 'Niémen', 'Sázava')),
+    'subdivision_affleurement': (10254, ('Puebla', 'Michoacán', 'Sonora', 'Ontario', 'Guerrero', 'Québec')),
+    'type_chapelle': (10125, ('église de succursale', 'chapelle funéraire', 'ermitage', 'chapelle de cimetière', 'chapelle de chemin', 'chapelle orthodoxe')),
+    'type_peninsule': (9596, ('cap', "presqu'île")),
+    'subdivision_aeroport': (8994, ('Texas', 'Ontario', 'Oregon', 'Illinois', 'Californie', 'Kansas')),
+    'type_chateau': (8652, ('ruine de château', 'Burgstall', 'motte castrale', 'maison-tour', 'wasserburg', 'rocca')),
+    'subdivision_zone_humide': (6475, ('Québec', 'Basse-Saxe', 'Australie-Occidentale', 'Terre-Neuve-et-Labrador', 'Norrbotten', 'Manitoba')),
+    'type_universite': (6411, ('université privée', 'université publique', 'école polytechnique', 'académie militaire', 'séminaire catholique', 'collège ecclésiastique')),
+    'type_mine': (6230, ('carrière', 'charbonnage', "mine d'or", 'mine de plomb', 'carrière de pierre', 'mine de cuivre')),
+    'type_hopital': (5947, ('ancien hôpital', 'hôpital public', 'hôpital privé', 'hôpital psychiatrique', 'centre hospitalier universitaire', 'centre hospitalier')),
+    'subdivision_crete': (5591, ('Baloutchistan', 'Colombie-Britannique', 'Svalbard', 'Miranda', 'Lima', 'Khyber Pakhtunkhwa')),
+    'galaxie_amas_galaxies': (5381, ('Abell 2199', 'amas de la Vierge', 'Abell 2029', 'amas de la Chevelure de Bérénice', 'Abell 2163', 'Amas du Boulet')),
+    'type_theatre': (5083, ('Tchitalichté', 'opéra', 'théâtre en plein air', 'arène', 'amphithéâtre romain', 'théâtre romain')),
+    'subdivision_pont': (4987, ('Pennsylvanie', 'Saint-Pétersbourg', 'Nouvelle-Galles du Sud', 'canton de Zurich', 'canton de Saint-Gall', 'New York')),
+    'type_prison': (4759, ('camp de concentration', 'camp de prisonniers de guerre', 'centre pénitentiaire', 'centre de détention', "maison d'arrêt", 'prison fédérale des États-Unis')),
+    'statut_patrimonial_aire_protegee': (4665, ('monument naturel en Allemagne', 'site Ramsar', 'Monument naturel en Saxe', 'Monument naturel unique en Hesse', 'inscrit au Registre national des lieux historiques', 'National Natural Landmark')),
+    'subdivision_plaine': (4436, ('Oruro', 'Nouvelle-Écosse', 'Potosí', 'Colombie-Britannique', 'La Paz', 'Helmand')),
+    'type_stade': (4069, ('stade de football', 'arène', 'vélodrome', 'stade de rugby à XV', 'stade de rugby à XIII', 'stade de football américain')),
+    'type_barrage': (3764, ('digue', 'seuil', 'barrage poids', 'barrage en remblais', 'barrage voûte', 'barrage de régulation')),
+    'type_exoplanete': (3682, ('exoplanète candidate', 'Jupiter chaud', 'super-Terre', 'Sous-Neptune', 'planète super-enflée', 'Neptune chaud')),
+    'type_montagne': (3675, ('volcan', 'mont sous-marin', 'stratovolcan', 'mons', 'volcan éteint', 'fjäll')),
+    'subdivision_anse': (3314, ('Tasmanie', 'kraï de Krasnoïarsk', 'Svalbard', 'Nouvelle-Galles du Sud', 'Nouvelle-Calédonie', 'Baie de Milne')),
+    'type_asteroide': (3232, ('astéroïde géocroiseur', 'astéroïde potentiellement dangereux', 'damocloïde', 'astéroïde troyen de Jupiter', 'astéroïde troyen de Neptune', 'astéroïde Apollon')),
+    'type_observatoire': (3193, ('observatoire astronomique', 'télescope spatial', 'observatoire magnétique', 'observatoire ornithologique', 'observatoire public', 'observatoire volcanologique')),
+    'statut_patrimonial_parc': (3162, ('inscrit au Registre national des lieux historiques', 'Monument historique', "bien recensé dans l'Inventaire général du patrimoine culturel", 'Parc protégé', 'Rijksmonument', 'parc ou jardin classé de grade II')),
+    'type_foret': (2886, ('réserve forestière', "forêt d'État", 'forêt nationale des États-Unis', 'forêt classée', 'Bambois (toponyme)', 'jardin forestier')),
+    'type_place': (2776, ('square-jardin', 'rond-point', 'arène', 'place du marché', 'place centrale', 'parvis')),
+    'subdivision_cinema': (2653, ('Hong Kong', 'Nouvelle-Galles du Sud', 'Buenos Aires', 'Saint-Louis', 'Washington', 'Manchester')),
+    'subdivision_chenal': (2588, ('Ontario', 'Manitoba', 'Colombie-Britannique', 'Hordaland', 'Nouvelle-Calédonie', 'Territoires du Nord-Ouest')),
+    'type_palais': (2506, ('palazzo', 'palais urbain', 'palais royal', 'palais épiscopal', 'palais archiépiscopal', 'palais présidentiel')),
+    'type_source': (2445, ('crénon', 'source chaude', 'fontaine à dévotion', 'onsen', 'geyser', 'exsurgence')),
+    'plan_eau_baie': (2415, ('mer Méditerranée', 'océan Indien', 'océan Atlantique', 'mer Adriatique', 'mer Tyrrhénienne', 'Tamise')),
+    'type_cathedrale': (2337, ('cathédrale catholique', 'cathédrale orthodoxe', 'cathédrale anglicane ou épiscopalienne', 'cocathédrale', 'cathédrale luthérienne', 'pro-cathédrale')),
+    'subdivision_lagune': (2332, ('Bolívar', 'Meta', 'Jammu-et-Cachemire', 'Colombie-Britannique', 'Córdoba', 'Nariño')),
+    'subdivision_centrale_electrique': (2311, ('Australie-Occidentale', 'Texas', 'Nouvelle-Galles du Sud', 'Arizona', 'Victoria', 'Queensland')),
+    'type_grotte': (2183, ('grotte touristique', 'abri sous roche', 'gouffre', 'grotte ornée', 'grotte ornementale', 'grotte de Lourdes')),
+    'subdivision_dune': (1912, ('Ach-Charqiya', 'région de Tombouctou', 'Haïl', 'Riyad', 'Kandahâr', 'Rajasthan')),
+    'subdivision_metro': (1691, ('Istanbul', 'Mexico', 'São Paulo', 'Séoul', 'Bucarest', 'Shanghaï')),
+    'subdivision_escarpement': (1623, ('Nouvelle-Écosse', 'Terre-Neuve-et-Labrador', 'Colombie-Britannique', 'Québec', 'Nunavut', 'Nouveau-Brunswick')),
+    'montagne_pic_parent': (1527, ('Finsteraarhorn', 'Rheinwaldhorn', 'Dammastock', 'Piz Bernina', 'Tödi', 'Monte Basòdino')),
+    'lieu_sur_montagne': (1459, ('Spitzberg', 'Aragats', 'mont Ruapehu', 'Platchkovitsa', 'pics de Combeynot', 'mont Rainier')),
+    'plan_eau_presquile': (1459, ('océan Atlantique', 'océan Pacifique', 'mer Méditerranée', 'océan Indien', 'océan Austral', 'golfe du Morbihan')),
+    'plan_eau_centrale': (1450, ('mer du Nord', 'bassin du Glomma', 'Danube', 'Arendalsvassdraget', 'Nea-Nidelvvassdraget', 'Numedalsvassdraget')),
+    'type_aeroport': (1430, ('aéroport international', 'aéroport intérieur', 'aéroport fédéral', 'aéroport allemand', 'aéroport abandonné', 'aéroport à cheval sur des frontières')),
+    'subdivision_detroit': (1352, ('Terre-Neuve-et-Labrador', 'Polynésie française', 'Nunavut', 'kraï de Krasnoïarsk', 'Colombie-Britannique', "Magallanes et l'Antarctique chilien")),
+    'lieu_sur_chaine': (1298, ('Jura cracovien', 'Ardennes flamandes', 'Odenwald', 'Basse-Terre', 'cordillère des Andes', "Collines d'Utrecht")),
+    'subdivision_statue': (1148, ('Prague', 'São Paulo', 'préfecture de Nara', 'Brest', 'Washington', "Région d'Auckland")),
+    'subdivision_fontaine': (986, ('Prague', 'canton de Berne', 'Edirne', 'Istanbul', 'Kastamonu', 'Loja')),
+    'type_formation_geologique': (960, ('patera', 'monument géologique', 'dorsum', 'chasma', 'catena', 'colles')),
+    'type_volcan': (949, ('stratovolcan', 'volcan éteint', 'cône volcanique', 'volcan bouclier', 'volcan sous-marin', 'dôme de lave')),
+    'type_phare': (909, ('feu à secteurs', 'feu directionnel', 'phare en bois', 'maison-phare', 'phare caisson', 'feu de code')),
+    'embouchure_canal': (853, ('Chao Phraya', 'Elbe', 'Grand Canal', 'Oder', 'Khlong Bang Talat', 'IJ')),
+    'subdivision_tunnel': (843, ('Himachal Pradesh', 'Oslo', 'Pennsylvanie', 'Moscou', 'New York', 'Gibraltar')),
+    'type_etang': (843, ('vivier', 'réservoir de moulin', "miroir d'eau", 'mare résiduelle', 'pataugeoire', 'Bassin de refroidissement')),
+    'subdivision_estuaire': (778, ('Sinaloa', 'Basse-Californie du Sud', 'Choluteca', 'Guayas', 'Sonora', 'Valle')),
+    'subdivision_bras_de_mer': (530, ('Polynésie française', 'Colombie-Britannique', 'comté de Stockholm', 'Petites Îles de la Sonde orientales', 'Sulawesi du Sud-Est', 'Southland')),
+    'subdivision_fjord': (475, ('Nunavut', 'Sermersooq', 'Svalbard', 'Avannaata', 'Kujalleq', 'Qeqqata')),
+    'plan_eau_recif': (417, ('océan Pacifique', 'océan Indien', 'mer de Chine méridionale', 'mer de Corail', 'mer des Salomon', 'océan Atlantique')),
+    'subdivision_prairie': (383, ('Californie', 'Nouveau-Brunswick', 'Municipalité de Bohinj', 'Washington', 'Ontario', 'Tržič')),
+    'subdivision_source_thermale': (362, ('Wyoming', 'Colombie-Britannique', "préfecture d'Akita", 'préfecture de Nagano', 'préfecture de Hokkaidō', 'préfecture de Miyagi')),
+    'type_reservoir': (329, ('Ab anbar', 'bassin de rétention', 'réservoir de moulin', 'bassin de compensation', 'réservoir supérieur', 'réservoir inférieur')),
+    'subdivision_faille': (264, ('Californie', 'Alaska', 'Tainan', 'Nevada', 'comté de Hualien', 'Java occidental')),
+    'subdivision_carriere': (231, ('Québec', 'pays de Galles', 'Prague', 'Australie-Occidentale', 'Hong Kong', 'Jiangsu')),
+    'code_devise_pays': (212, ('EUR', 'USD', 'XCD', 'XOF', 'XAF', 'AUD')),
+    'plan_eau_pont': (193, ('Elbe', 'Prudnik', 'Oder', 'Canal de Macclesfield', 'Vltava', 'IJ')),
+    'materiau_eglise': (78, ('Brique en céramique', 'pierre de Caen', "pierre d'Euville", 'Fer des marais', 'Gaize', 'pierre de Portland')),
+}
+for _table, (_vol_min, _vocab) in _TRAINE.items():
+    t, n, vides, _, vals = scanne(_table, {}, _vol_min, compte_valeurs=True)
+    _top4 = [v for v, _c in vals.most_common(4)]
+    check(all(v in _vocab for v in _top4),
+          "%s : top-4 ⊆ vocabulaire certifié (%s)" % (_table, ", ".join(v for v in _top4 if v not in _vocab)))
+    check(n >= _vol_min, "%s : volume ≥ %d (%d)" % (_table, _vol_min, n))
+    check(vides == 0, "%s : zéro valeur vide (%d)" % (_table, vides))
+
+# Ancres d'entité CERTAINES de la traîne (sondées puis recoupées) :
+t, n, _, _, _v = scanne("code_devise_pays", {"France": 0, "Japon": 0, "Suisse": 0}, 200)
+check(t.get("France") == "EUR" and t.get("Japon") == "JPY" and t.get("Suisse") == "CHF",
+      "code_devise_pays : France->EUR, Japon->JPY, Suisse->CHF (ISO 4217, certaines)")
+t, n, _, _, _v = scanne("galaxie_amas_galaxies", {"M87": 0}, 5_000)
+check(t.get("M87") == "amas de la Vierge", "galaxie_amas_galaxies : M87 -> amas de la Vierge (certaine)")
+t, n, _, _, _v = scanne("montagne_pic_parent", {"Cervin": 0}, 1_500)
+check(t.get("Cervin") == "Weisshorn", "montagne_pic_parent : Cervin -> Weisshorn (parent topographique, certaine)")
+
 print("=== valide_ancres_types : %d/%d ===" % (ok, ok + ko))
 sys.exit(1 if ko else 0)
