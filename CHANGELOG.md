@@ -1,5 +1,17 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 — ⑦ Bascule 77→78 VÉCUE en live : 2 trous de l'updater bouchés/consignés
+
+- **Vécu chez Yohan** : la 1ʳᵉ tentative auto 77→78 a échoué SANS AUCUNE TRACE (ni bat écrit, ni paquet
+  extrait, ni ligne de log) — et la garde anti-boucle (6 h) bloquait ensuite tout retry : l'app restait en 77,
+  préchauffage popup-eux à l'infini. Fix : **l'échec de la veille MAJ n'est plus jamais muet** (message
+  d'`applique()` ou exception -> verax.log). Bascule finale faite À LA MAIN (paquet Release vérifié tampon
+  78, swap dossier, ancien gardé en `Provara-app.old-77`) ; `/api/maj` confirme `version_locale: 78…`.
+- **Découvert au relancement : DEUX instances Provara.exe écoutaient TOUTES LES DEUX sur 127.0.0.1:8765**
+  (netstat : double LISTENING — `allow_reuse_address` = SO_REUSEADDR permet le double-bind sous Windows,
+  routage des requêtes non déterministe). À FAIRE : SO_EXCLUSIVEADDRUSE sous Windows (ou garde
+  mono-instance) + l'app qui ne peut pas se binder doit LE DIRE et sortir.
+
 ## 2026-07-09 — ⑥ E2E FINAL : diagnostic .exe 305→306/306 attendu en ~13 s + fix AVERSE DE POPUPS (build 77 vécu par Yohan)
 
 - **🔴 Vécu par Yohan sur le build 77 en live : une BOÎTE DE DIALOGUE par candidat recalé, en boucle.** Cause :
