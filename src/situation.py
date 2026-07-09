@@ -44,6 +44,8 @@ _UNITES_LOCALES = {
     "v": "TEN", "volt": "TEN", "volts": "TEN", "kv": "TEN",
     "ampere": "AMP", "amperes": "AMP", "ampère": "AMP", "ampères": "AMP",
     "ohm": "OHM", "ohms": "OHM",
+    # hydraulique (roue Q = S·v) : variantes superscript + mm² absentes de _CONV_UNITS
+    "m³/s": "F", "m³/h": "F", "m²": "A", "cm²": "A", "mm2": "A", "mm²": "A",
 }
 _TOUTES_UNITES = {u: dim for u, (dim, _) in _CONV_UNITS.items()} | _UNITES_LOCALES
 # les unités multi-caractères d'abord (w/m2k avant w ; km/h avant km) ; échappées pour le motif.

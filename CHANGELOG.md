@@ -1,5 +1,103 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 jour — BACKLOG ANCRAGE : 25 tables ancrées, faits non ancrés −93,6 % (5,12M -> 327k)
+
+- **`tests/valide_ancres_types.py` 87/87** (classe BASE COMPLÈTE, hors suite — `LECTEUR_DATASETS_DIR` requis) :
+  4 tranches priorisées par volume du diagnostic audit_ancres. Méthode FAUX=0 : chaque ancre SONDÉE dans le
+  store réel PUIS recoupée avec une connaissance certaine ; au doute -> écartée. Tables sans entité célèbre ->
+  contrôle de DISTRIBUTION (top valeurs ⊆ vocabulaire fermé RÉEL — certitude linguistique, pas devinette).
+- Ancres livrées (extraits) : Soleil->naine jaune, Voie lactée->spirale barrée, Bavière->Land, Stonehenge->
+  cromlech, Honshū->île du Japon, Loire->fleuve, lac Titicaca->monomictique, BnF->bibliothèque nationale,
+  château de Vincennes/tour de Londres->château fort, Vanoise/Écrins->parc national, phare d'Alexandrie->
+  détruit, temple d'Artémis->en ruine, Delphes->site archéologique de Grèce, Everglades->prairies inondées…
+- **Pièges FAUX débusqués à la sonde (anti-ancres documentées dans la gate)** : type_localite
+  [Mont-Saint-Michel]=« municipalité du Québec » et subdivision_localite[Montmartre]=« Saskatchewan »
+  (homonymes RÉELS — l'entité célèbre est shadowée par le COALESCE une-valeur-par-nom) ;
+  etat_conservation[Colisée]=« démoli ou détruit » (douteux -> écarté). **CLIQUET qualité** : entités-débris
+  de type_subdivision (fragments de coordonnées) bornées < 0,5 %.
+- Mesure avant/après (audit_ancres, base réelle 72M) : non référencées **98 -> 73 tables**, faits non ancrés
+  **5 120 405 -> 326 951 (−93,6 %)**. Traîne restante : 73 tables ≤ 20k faits (top : type_pont 20k,
+  type_baie 20k, subdivision_promontoire 17k, type_canal 16k, type_tour 15k) — même patron de tranche à suivre.
+
+## 2026-07-09 jour — TRONC PHASE 5 (brique 1) : RETRAIT PROGRESSIF DES CAPS — la coupe du filet, mesurée
+
+- **Le mouvement (§21 Phase 5)** : la cascade cesse d'être le contrôle — pour un acte à famille FERMÉE dont le
+  journal RÉEL a prouvé la maturité, le filet des ~60 autres caps N'EST PLUS PAYÉ. Les caps deviennent des
+  facultés atteintes PAR ROUTE, plus par essai aveugle.
+- **`sequenceur.coupe(acte, confiance)`** — conditions DURES toutes mesurées : acte du PRIOR ; confiance
+  ≥ 0,9 (couper exige plus que réordonner) ; ≥ 25 décisions journalisées pour l'acte avec ZÉRO hors-famille.
+  **Passe d'AUDIT** : 1 décision sur 8 garde le filet complet (l'exploration reste vivante) ; un hit
+  hors-famille trouvé par l'audit est journalisé et RÉVOQUE la coupe au prochain rechargement
+  (auto-guérison par le journal — réversible par construction). `etat_coupe()` -> diagnostic
+  (« filet coupé (Phase 5) : quotidien »).
+- **FAUX=0** : couper n'invente rien — si la famille s'abstient, le pipeline continue (conjonction, web,
+  moteur lourd, repli honnête), même issue que si la cascade complète s'était abstenue.
+- **Verrou « bancs reproduits » exercé EN RÉEL** : le journal persistant de la suite était mûr (quotidien :
+  58 décisions, 0 hors-famille) -> la coupe était ACTIVE pendant les bancs — capacites_chat **246/246**,
+  assistant_nl **506/506** inchangés sous coupe. `valide_sequenceur` **54 OK** (+14 : maturité, seuils,
+  audit 1/8, révocation, etat_coupe, câblage prod).
+- Journal réel WSL au moment du livre : quotidien 353 décisions / 0 hors-famille (coupe mûre) ; calculer 74
+  décisions hors-prior (jamais coupé — biais conservateur inchangé).
+
+## 2026-07-09 jour — PHASE 5 (brique 2) : famille MESURÉE « calculer -> conversion » + maturité vs famille courante
+
+- **Le journal réel a dicté une famille** : 74/74 décisions « calculer » tranchées par `conversion`
+  (l'arithmétique pure est déjà TRANCHÉE en amont par le juge AST du tronc — ce qui atteint la cascade sous
+  CALCULER, ce sont les conversions d'unités). `sequenceur.PRIOR["calculer"] = ("conversion",)` — carte
+  étendue par MESURE, jamais par intuition.
+- **Refonte de la maturité (défaut de conception tué à la 2e brique)** : le flag `famille` journalisé reflète
+  le prior D'ALORS — la maturité de la coupe se juge désormais contre la famille COURANTE
+  (`_hors_actuels` : hors = décisions dont le cap ∉ prioritaires actuels). Une famille élargie HÉRITE de
+  l'histoire de ses caps (les 74 décisions comptent le jour où conversion devient famille) ; un cap apprenti
+  qui atteint le support rejoint la famille sans invalider son passé ; un hit d'audit étranger révoque.
+- `valide_sequenceur` **61 OK** (+7 : prior mesuré calculer, coupe mûre malgré flags d'époque, révocation par
+  cap étranger, sûreté ordonnancement étendue à calculer). Suite complète relancée derrière.
+
+## 2026-07-09 jour — PONT HYDRAULIQUE (Q = S·v) + le moteur de ROUES rendu GÉNÉRIQUE
+
+- **Re-recherche d'architecture à la brique** : l'électrique (U = R·I / P = U·I) et l'hydraulique (Q = S·v)
+  sont deux INSTANCES d'un même patron « roue de définitions fermée par saturation ». Livré :
+  `pont_grandeurs._ROUES` (spec par domaine : dims, tables d'unités→SI, relations avec labels, ancres,
+  articles, deps) + moteur unique `_vals_roue`/`_roue_resout`/`_roue_repond`/`_etsi_roue`/
+  `_pourquoi_roue_dep`/`_pourquoi_roue_dir`. L'électrique refondu dessus **bit-identique** (gate 22/22
+  inchangée = la preuve) ; un 3e domaine fermé se paie désormais en ~40 lignes de spec.
+- **Roue HYDRAULIQUE** : Q = S·v (définition du débit volumique) — « le débit est de 20 l/s dans une conduite
+  de 100 cm2 » -> « quelle vitesse ? » -> « Vitesse ≈ 2 m/s (v = Q/S — d'après ce que tu m'as donné…) » ;
+  et-si (40 l/s -> 4 m/s au lieu de 2, fil intact) ; pourquoi q± prouvé 2 points (« à section constante ») ;
+  prémisse fausse corrigée ; dep : racines causales = les données énoncées.
+- **FAUX=0 par TABLE D'UNITÉS** : un débit MASSIQUE (kg/s — même dimension « débit » dans le fil) n'entre
+  JAMAIS dans Q = S·v ; hectare jamais une section de conduite ; la vitesse SEULE n'ancre pas le domaine
+  (« la voiture roule à 130 km/h » + « quel débit ? » -> None). **P = Q·Δp ÉCARTÉ** (une « pression » énoncée
+  n'est pas forcément une DIFFÉRENCE de pression — pas de modèle à hypothèse cachée).
+- **Correctif né du banc** : « de quoi dépend le débit ? » quand le débit est LEUR donnée -> « c'est une
+  RACINE causale de tes données » (avant : « je ne peux pas encore la fermer », faux-à-côté).
+- `situation.py` : unités superscript (m³/s, m³/h, m², cm², mm², mm2) typées.
+- Gates : **valide_pont_hydraulique 19/19** (nouvelle, ajoutée à la suite), pont_electrique 22/22,
+  pont_grandeurs 16/16, et_si_pourquoi 37/37, situation 21/21. **Suite 35/35.**
+- **E2E .exe 8/8** (build onedir, port 8799) : hydraulique 5/5 (accusé du fil -> v = Q/S -> pourquoi nu ->
+  et-si 4 m/s au lieu de 2 -> q± prouvé 2->2,4 « à la section constante ») ; électrique q± 3/3 (prémisse
+  fausse corrigée avec preuve 1150->1380 W ; cas de Kleer : « le courant ne dépend PAS de la tension — tu
+  m'as donné les deux séparément »). Conversations de test purgées (reste ['diag']), exe test tué par PID.
+
+## 2026-07-09 jour — POURQUOI-ÉLECTRIQUE contentful : q± prouvé, les constantes = les données ÉNONCÉES
+
+- **Théorie adaptée machine (recherche à la brique)** : de Kleer (confluences) — sur une roue de définitions,
+  une direction q± N'EXISTE PAS dans l'absolu, elle dépend de ce qui est TENU CONSTANT. Twist Provara FAUX=0 :
+  les constantes ne sont jamais choisies par heuristique — ce sont les données ÉNONCÉES (ordre causal
+  d'Iwasaki-Simon : l'exogène = le donné). Cas-vitrine PROUVÉ en gate : « pourquoi le courant baisse quand la
+  tension augmente ? » -> avec (U, I) énoncés : « I ne dépend PAS de U dans TES données (indépendantes) » ;
+  avec (P, U) énoncés : I = P/U prouvé décroissant par recalcul (20 -> 16,6667 A). MÊME question, vérités
+  opposées, chacune juste pour SON énoncé.
+- **`pont_grandeurs._pourquoi_elec_dir`** : direction prouvée par recalcul 2 points (var ×1,2 ou ×0,8), les
+  autres données DITES constantes (« à tension constante — tes autres données ») ; prémisse fausse CORRIGÉE
+  (« Ce n'est pas ce qui se passe : … elle AUGMENTE ») ; influence DÉRIVÉE (pas énoncée) -> dit honnêtement
+  (« je l'ai DÉRIVÉE de tes données (R ≈ 46 Ω, via R = U/I) — dis-moi laquelle de tes données bouge »).
+- **`_pourquoi_elec_dep`** : « de quoi dépend la puissance ? » -> la roue (P = U·I, aussi R·I²/U²/R) + les
+  RACINES CAUSALES du fil réel (les données énoncées) + la dérivation chiffrée. Garde d'ancrage héritée :
+  sans grandeur V/A/Ω énoncée -> None (un fil thermo ne déclenche jamais le pourquoi-électrique).
+- Gate `valide_pont_electrique` **22/22** (14 + 8) ; sœurs intactes : pont 16/16, et_si_pourquoi 37/37,
+  situation 21/21, tete_polysemique 14/14.
+
 ## 2026-07-09 nuit — ②bis PONT ÉLECTRIQUE : le pont grandeurs→moteurs généralisé hors-thermo
 
 - **`situation.py`** : unités électriques typées (V/volts/kV -> tension, ampère(s) -> courant, ohm(s) ->

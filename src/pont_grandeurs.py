@@ -252,20 +252,103 @@ def _surface(question: str, sit):
             "ΔTlm calculé de TES températures)." % (_fmt(round(a, 4)), _fmt(q_w), _fmt(u), _fmt(dtlm_val)))
 
 
-# ── ÉLECTRICITÉ (②bis : le pont GÉNÉRALISÉ hors-thermo, 2026-07-09 nuit) ───────────────────────────────────
-# Domaine fermé et exact : la « roue » U = R·I / P = U·I lie 4 grandeurs — 2 connues suffisent à fermer les
-# 4 (fermeture par saturation, chaque pas NOTÉ pour montrer la dérivation). Mêmes comportements-clés que le
-# thermo : dernière valeur fait foi, hypothèses jamais opérandes, opérande manquant DEMANDÉ NOMMÉMENT.
-_ELEC_DIMS = ("tension", "courant", "résistance", "puissance")
-_ELEC_UNITES = {"tension": "V", "courant": "A", "résistance": "Ω", "puissance": "W"}
-_RE_ELEC_CIBLE = re.compile(
-    r"\b(puissance|tension|courant|intensit[ée]|r[ée]sistance)\b.{0,40}\??\s*$|"
-    r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|le\s+|l['’])?)?(puissance|tension|courant|intensit[ée]|r[ée]sistance)\b", re.I)
+# ── ROUES DE DÉFINITIONS — moteur GÉNÉRIQUE (généralisation du ②bis, 2026-07-09 jour) ──────────────────────
+# Une ROUE = quelques grandeurs liées par des DÉFINITIONS exactes, fermée par SATURATION depuis les grandeurs
+# ÉNONCÉES (chaque pas de dérivation NOTÉ et montré). L'électrique (U = R·I / P = U·I) et l'hydraulique
+# (Q = S·v : débit volumique = section × vitesse) sont deux INSTANCES du même moteur — mêmes comportements-clés
+# partout : dernière valeur fait foi, hypothèses jamais opérandes, manquant DEMANDÉ NOMMÉMENT, et-si simulé
+# avant, pourquoi q± prouvé par recalcul. FAUX=0 : chaque relation est une DÉFINITION, jamais un modèle à
+# hypothèses cachées (P = Q·Δp hydraulique ÉCARTÉ : une « pression » énoncée n'est pas forcément une
+# DIFFÉRENCE de pression) ; les unités sont FILTRÉES par table (un débit MASSIQUE kg/s n'entre jamais dans
+# Q = S·v — même dimension « débit » dans le fil, mais pas la même grandeur).
+_ROUE_ELEC = {
+    "nom": "électrique",
+    "dims": ("tension", "courant", "résistance", "puissance"),
+    "unites": {"tension": "V", "courant": "A", "résistance": "Ω", "puissance": "W"},
+    "fil_dims": {"tension": "tension", "courant": "courant", "résistance": "résistance",
+                 "puissance": "puissance"},
+    "conv": {"tension": {"v": 1.0, "volt": 1.0, "volts": 1.0, "kv": 1e3},
+             "courant": {"ampere": 1.0, "amperes": 1.0, "ampère": 1.0, "ampères": 1.0},
+             "résistance": {"ohm": 1.0, "ohms": 1.0},
+             "puissance": _W_FACT},
+    "ancres": ("tension", "courant", "résistance"),
+    "articles": {"tension": "la tension", "courant": "le courant", "résistance": "la résistance",
+                 "puissance": "la puissance"},
+    "noms": {"tension": "la tension (en volts)", "courant": "le courant (en ampères)",
+             "résistance": "la résistance (en ohms)", "puissance": "la puissance (en watts)"},
+    "relations": (("tension", ("résistance", "courant"), lambda r, i: r * i, "U = R×I"),
+                  ("tension", ("puissance", "courant"), lambda p, i: p / i if i else None, "U = P/I"),
+                  ("courant", ("tension", "résistance"), lambda u, r: u / r if r else None, "I = U/R"),
+                  ("courant", ("puissance", "tension"), lambda p, u: p / u if u else None, "I = P/U"),
+                  ("résistance", ("tension", "courant"), lambda u, i: u / i if i else None, "R = U/I"),
+                  ("puissance", ("tension", "courant"), lambda u, i: u * i, "P = U×I")),
+    "cible_re": re.compile(
+        r"\b(puissance|tension|courant|intensit[ée]|r[ée]sistance)\b.{0,40}\??\s*$|"
+        r"^\s*(?:quelle?\s+(?:est\s+)?(?:la\s+|le\s+|l['’])?)?(puissance|tension|courant|intensit[ée]|r[ée]sistance)\b",
+        re.I),
+    "q_re": re.compile(r"\b(puissance|tension|courant|intensit[ée]|r[ée]sistance)\b", re.I),
+    "alias": {"intensite": "courant", "resistance": "résistance"},
+    "cible_defaut": "puissance",
+    "devise": "roue U = R·I, P = U·I",
+    "deps": {
+        "puissance": "P = U·I (énergie par seconde = tension × débit de charges) ; et comme U = R·I "
+                     "(loi d'Ohm), elle s'écrit aussi P = R·I² ou P = U²/R",
+        "tension": "U = R·I (loi d'Ohm) — ou U = P/I depuis la puissance",
+        "courant": "I = U/R (loi d'Ohm) — ou I = P/U depuis la puissance",
+        "résistance": "R = U/I (loi d'Ohm : la résistance est le rapport tension/courant)",
+    },
+    "paire_exemple": "la puissance ou la résistance",
+}
+
+_ROUE_HYDRO = {
+    "nom": "hydraulique",
+    "dims": ("débit", "section", "vitesse"),
+    "unites": {"débit": "m³/s", "section": "m²", "vitesse": "m/s"},
+    "fil_dims": {"débit": "débit", "aire": "section", "vitesse": "vitesse"},
+    "conv": {"débit": {"m3/s": 1.0, "m³/s": 1.0, "m3/h": 1.0 / 3600, "m³/h": 1.0 / 3600,
+                       "l/s": 1e-3, "l/min": 1.0 / 60000, "l/h": 1.0 / 3.6e6},
+             "section": {"m2": 1.0, "m²": 1.0, "metre carre": 1.0, "metres carres": 1.0,
+                         "cm2": 1e-4, "cm²": 1e-4, "centimetre carre": 1e-4, "centimetres carres": 1e-4,
+                         "mm2": 1e-6, "mm²": 1e-6},
+             "vitesse": {"m/s": 1.0, "m s": 1.0, "metre par seconde": 1.0, "metres par seconde": 1.0,
+                         "km/h": 1.0 / 3.6, "km h": 1.0 / 3.6, "kmh": 1.0 / 3.6,
+                         "kilometre heure": 1.0 / 3.6, "kilometres heure": 1.0 / 3.6,
+                         "kilometre par heure": 1.0 / 3.6, "kilometres par heure": 1.0 / 3.6}},
+    "ancres": ("débit", "section"),                       # la vitesse SEULE n'ancre pas (une voiture roule aussi)
+    "articles": {"débit": "le débit", "section": "la section", "vitesse": "la vitesse"},
+    "noms": {"débit": "le débit (en m³/s ou l/s)", "section": "la section (en m² ou cm²)",
+             "vitesse": "la vitesse d'écoulement (en m/s)"},
+    "relations": (("débit", ("section", "vitesse"), lambda s, v: s * v, "Q = S×v"),
+                  ("section", ("débit", "vitesse"), lambda q, v: q / v if v else None, "S = Q/v"),
+                  ("vitesse", ("débit", "section"), lambda q, s: q / s if s else None, "v = Q/S")),
+    "cible_re": re.compile(
+        r"\b(d[ée]bit|section|vitesse)\b.{0,40}\??\s*$|"
+        r"^\s*(?:quel(?:le)?\s+(?:est\s+)?(?:la\s+|le\s+|l['’])?)?(d[ée]bit|section|vitesse)\b", re.I),
+    "q_re": re.compile(r"\b(d[ée]bit|section|vitesse)\b", re.I),
+    "alias": {"debit": "débit"},
+    "cible_defaut": "débit",
+    "devise": "roue Q = S·v",
+    "deps": {
+        "débit": "Q = S·v (le débit volumique est, par définition, la section de passage × la vitesse "
+                 "d'écoulement)",
+        "section": "S = Q/v (la section de passage est le rapport débit/vitesse)",
+        "vitesse": "v = Q/S (la vitesse d'écoulement est le rapport débit/section)",
+    },
+    "paire_exemple": "le débit",
+}
+
+_ROUES = (_ROUE_ELEC, _ROUE_HYDRO)
 
 
-def _elec_valeurs(sit, question: str = "") -> dict:
-    """Les grandeurs électriques UTILISABLES (fil sûr + question), dernière valeur par dimension fait foi.
-    La puissance est convertie en W (kW/MW)."""
+def _liste_ou(noms: list) -> str:
+    """« a, b ou c » — l'énumération des demandes nommées."""
+    return noms[0] if len(noms) == 1 else ", ".join(noms[:-1]) + " ou " + noms[-1]
+
+
+def _vals_roue(sit, roue: dict, question: str = "") -> dict:
+    """Les grandeurs de la roue UTILISABLES (fil sûr + question), dernière valeur par dimension fait foi,
+    converties en unité SI de la roue. FILTRE PAR TABLE D'UNITÉS : une unité hors table (kg/s massique pour
+    l'hydraulique, hectare pour une section de conduite) n'entre JAMAIS comme opérande."""
     locales = []
     for mq in _S._RE_GRANDEUR.finditer(question or ""):
         try:
@@ -277,62 +360,65 @@ def _elec_valeurs(sit, question: str = "") -> dict:
                         "dim": _S._DIMS.get(_S._TOUTES_UNITES.get(unite, ""), "")})
     vals = {}
     for g in _grandeurs_sures(sit) + locales:
-        if g["dim"] in ("tension", "courant", "résistance"):
-            vals[g["dim"]] = g["valeur"] * (1e3 if g["unite"] == "kv" else 1.0)
-        elif g["dim"] == "puissance":
-            vals["puissance"] = g["valeur"] * _W_FACT.get(g["unite"], 1.0)
+        rdim = roue["fil_dims"].get(g["dim"])
+        if not rdim:
+            continue
+        f = roue["conv"][rdim].get(g["unite"])
+        if f is None:
+            continue
+        vals[rdim] = g["valeur"] * f
     return vals
 
 
-def _elec_resout(vals: dict) -> tuple:
-    """Ferme {U, I, R, P} sous la roue (saturation ; divisions par zéro écartées). -> (valeurs, chemins notés)."""
+def _roue_resout(vals: dict, roue: dict) -> tuple:
+    """Ferme la roue par SATURATION (divisions par zéro écartées par les relations). -> (valeurs, chemins)."""
     v, chemins = dict(vals), []
-    for _ in range(3):
-        if "tension" not in v and {"résistance", "courant"} <= v.keys():
-            v["tension"] = v["résistance"] * v["courant"]
-            chemins.append("U = R×I")
-        if "tension" not in v and {"puissance", "courant"} <= v.keys() and v["courant"]:
-            v["tension"] = v["puissance"] / v["courant"]
-            chemins.append("U = P/I")
-        if "courant" not in v and {"tension", "résistance"} <= v.keys() and v["résistance"]:
-            v["courant"] = v["tension"] / v["résistance"]
-            chemins.append("I = U/R")
-        if "courant" not in v and {"puissance", "tension"} <= v.keys() and v["tension"]:
-            v["courant"] = v["puissance"] / v["tension"]
-            chemins.append("I = P/U")
-        if "résistance" not in v and {"tension", "courant"} <= v.keys() and v["courant"]:
-            v["résistance"] = v["tension"] / v["courant"]
-            chemins.append("R = U/I")
-        if "puissance" not in v and {"tension", "courant"} <= v.keys():
-            v["puissance"] = v["tension"] * v["courant"]
-            chemins.append("P = U×I")
+    for _ in range(max(1, len(roue["dims"]) - 1)):
+        for cible, ops, fn, label in roue["relations"]:
+            if cible in v or not all(o in v for o in ops):
+                continue
+            r = fn(*[v[o] for o in ops])
+            if r is None:
+                continue
+            v[cible] = r
+            chemins.append(label)
     return v, chemins
 
 
-def _electrique(question: str, sit):
-    """Calcul électrique depuis les grandeurs ÉNONCÉES. Ne s'engage que si le contexte est électrique
-    (au moins une grandeur V/A/Ω dans le fil ou la question — « quelle puissance passe dans l'échangeur ? »
-    n'est pas pour moi). Opérande manquant -> demandé NOMMÉMENT."""
-    m = _RE_ELEC_CIBLE.search(question)
+def _roue_repond(question: str, sit, roue: dict):
+    """Calcul de roue depuis les grandeurs ÉNONCÉES. Ne s'engage que si une grandeur d'ANCRAGE du domaine est
+    énoncée (« quelle puissance passe dans l'échangeur ? » n'est pas pour l'électrique ; « à quelle vitesse
+    roule le TGV ? » n'est pas pour l'hydraulique). Opérande manquant -> demandé NOMMÉMENT."""
+    m = roue["cible_re"].search(question)
     if not m:
         return None
     cible = normalise(m.group(1) or m.group(2) or "")
-    cible = {"intensite": "courant", "resistance": "résistance"}.get(cible, cible)
-    vals = _elec_valeurs(sit, question)
-    if not any(d in vals for d in ("tension", "courant", "résistance")):
-        return None                                       # aucun ancrage électrique : pas pour moi
-    ferme, chemins = _elec_resout(vals)
+    cible = roue["alias"].get(cible, cible)
+    if cible not in roue["dims"]:
+        return None
+    vals = _vals_roue(sit, roue, question)
+    if not any(d in vals for d in roue["ancres"]):
+        return None                                       # aucun ancrage du domaine : pas pour moi
+    ferme, chemins = _roue_resout(vals, roue)
     if cible not in ferme:
-        manque = [d for d in ("tension", "courant", "résistance", "puissance") if d not in ferme and d != cible]
-        noms = {"tension": "la tension (en volts)", "courant": "le courant (en ampères)",
-                "résistance": "la résistance (en ohms)", "puissance": "la puissance (en watts)"}
-        return ("Je sais calculer %s (roue U = R·I, P = U·I), mais il me manque une donnée : donne-moi %s "
-                "et je calcule exactement." % ("le " + cible if cible == "courant" else "la " + cible,
-                                               " ou ".join(noms[d] for d in manque[:2])))
-    donnees = ", ".join("%s = %s %s" % (d, _fmt(vals[d]), _ELEC_UNITES[d]) for d in _ELEC_DIMS if d in vals)
+        manque = [d for d in roue["dims"] if d not in ferme and d != cible]
+        return ("Je sais calculer %s (%s), mais il me manque une donnée : donne-moi %s "
+                "et je calcule exactement." % (roue["articles"][cible], roue["devise"],
+                                               " ou ".join(roue["noms"][d] for d in manque[:2])))
+    donnees = ", ".join("%s = %s %s" % (d, _fmt(vals[d]), roue["unites"][d]) for d in roue["dims"] if d in vals)
     deriv = " ; ".join(chemins) if chemins else "donnée énoncée telle quelle"
     return ("%s ≈ %s %s (%s — d'après ce que tu m'as donné : %s)." %
-            (cible[:1].upper() + cible[1:], _fmt(round(ferme[cible], 4)), _ELEC_UNITES[cible], deriv, donnees))
+            (cible[:1].upper() + cible[1:], _fmt(round(ferme[cible], 4)), roue["unites"][cible], deriv, donnees))
+
+
+def _electrique(question: str, sit):
+    """La roue électrique (instance du moteur générique — signature conservée)."""
+    return _roue_repond(question, sit, _ROUE_ELEC)
+
+
+def _hydraulique(question: str, sit):
+    """La roue hydraulique Q = S·v (instance du moteur générique)."""
+    return _roue_repond(question, sit, _ROUE_HYDRO)
 
 
 # ── « ET SI » : monde contrefactuel = intervention + SIMULATION AVANT (brique 3 du fil) ────────────────────
@@ -452,25 +538,32 @@ def _etsi_surface(sit, hyp: str, cible_txt: str, q_val=None, u_val=None, d_val=N
             (etiquette, _fmt(round(a1, 4)), avant, _fmt(q1), _fmt(u1), _fmt(round(d1, 4))))
 
 
-def _etsi_electrique(sit, hyp: str, cible_txt: str):
-    """Hypothèse sur U/I/R -> la roue re-fermée dans le monde hypothétique, avant/après montré."""
+def _etsi_roue(sit, hyp: str, cible_txt: str, roue: dict):
+    """Hypothèse sur une grandeur de roue -> la roue re-fermée dans le monde hypothétique, avant/après montré.
+    None sans ancrage du domaine dans le monde hypothétique (« et si la voiture roulait à 3 m/s » n'est pas
+    pour l'hydraulique)."""
     cf, n = _monde_hypothetique(sit, hyp)
     if not n:
         return None
-    m = _RE_ELEC_CIBLE.search(cible_txt or "")
-    cible = normalise((m.group(1) or m.group(2)) if m else "puissance")
-    cible = {"intensite": "courant", "resistance": "résistance"}.get(cible, cible)
-    av, _ = _elec_resout(_elec_valeurs(sit))
-    ap, chemins = _elec_resout(_elec_valeurs(cf))
+    m = roue["cible_re"].search(cible_txt or "")
+    cible = normalise((m.group(1) or m.group(2)) if m else roue["cible_defaut"])
+    cible = roue["alias"].get(cible, cible)
+    if cible not in roue["dims"]:
+        cible = roue["cible_defaut"]
+    ap_vals = _vals_roue(cf, roue)
+    if not any(d in ap_vals for d in roue["ancres"]):
+        return None
+    av, _ = _roue_resout(_vals_roue(sit, roue), roue)
+    ap, chemins = _roue_resout(ap_vals, roue)
     etiquette = "Dans ton hypothèse (%s)" % hyp
     if cible not in ap:
-        return ("%s, il me manque encore de quoi fermer le calcul — donne-moi la tension (en volts), le "
-                "courant (en ampères) ou la résistance (en ohms)." % etiquette)
-    lieu = (" au lieu de %s %s avec tes données réelles" % (_fmt(round(av[cible], 4)), _ELEC_UNITES[cible])) \
+        return ("%s, il me manque encore de quoi fermer le calcul — donne-moi %s." %
+                (etiquette, _liste_ou([roue["noms"][d] for d in roue["ancres"]])))
+    lieu = (" au lieu de %s %s avec tes données réelles" % (_fmt(round(av[cible], 4)), roue["unites"][cible])) \
         if cible in av and abs(av[cible] - ap[cible]) > 1e-9 else ""
     return ("%s : %s ≈ %s %s%s (%s). Le fil réel reste inchangé — affirme la nouvelle valeur si tu veux "
             "que je la retienne." % (etiquette, cible[:1].upper() + cible[1:], _fmt(round(ap[cible], 4)),
-                                     _ELEC_UNITES[cible], lieu, " ; ".join(chemins) or "donnée énoncée"))
+                                     roue["unites"][cible], lieu, " ; ".join(chemins) or "donnée énoncée"))
 
 
 def _et_si(question: str, sit):
@@ -543,7 +636,9 @@ def _et_si(question: str, sit):
         return _etsi_surface(sit, hyp, cible_txt,
                              u_val=next(v for v, u, d in grs if d == "coefficient d'échange"))
     if dims & {"tension", "courant", "résistance"}:       # ②bis : et-si électrique (même simulation avant)
-        return _etsi_electrique(sit, hyp, cible_txt)
+        return _etsi_roue(sit, hyp, cible_txt, _ROUE_ELEC)
+    if dims & {"débit", "aire", "vitesse"}:               # et-si hydraulique (Q = S·v) — ancrage vérifié dedans
+        return _etsi_roue(sit, hyp, cible_txt, _ROUE_HYDRO)
     return None
 
 
@@ -651,6 +746,116 @@ def _pourquoi_dtlm_slot(sit, v_part: str, dir_v: int):
              _fmt(v0 + delta), _fmt(round(e1["val"], 4)), "monte" if monte else "baisse"))
 
 
+# ── POURQUOI-ROUE contentful (q± générique — né électrique, 2026-07-09) ────────────────────────────────────
+# Théorie (de Kleer, confluences) : sur une roue de définitions, une direction q± N'EXISTE PAS dans l'absolu —
+# elle dépend de CE QUI EST TENU CONSTANT. Le twist machine FAUX=0 : les constantes ne sont jamais choisies par
+# heuristique, ce sont les données ÉNONCÉES par l'utilisateur (ordre causal d'Iwasaki-Simon : l'exogène = le
+# donné). Même question « pourquoi I baisse quand U monte ? » -> réponses OPPOSÉES selon que le fil porte (U, I)
+# (deux données indépendantes) ou (P, U) (I = P/U, prouvé par recalcul 2 points).
+def _var_roue_de(txt: str, roue: dict):
+    """La grandeur de la roue nommée dans un bout de question (registre fermé) — None si aucune."""
+    m = roue["q_re"].search(txt or "")
+    if not m:
+        return None
+    v = normalise(m.group(1))
+    return roue["alias"].get(v, v)
+
+
+def _pourquoi_roue_dep(sit, cible, roue: dict):
+    """« De quoi dépend la puissance ? » en contexte de roue : les définitions + l'ordre causal RÉEL du fil
+    (les données énoncées sont les racines — c'est d'elles que tout dérive, chemins montrés)."""
+    if cible not in roue["deps"]:
+        return None
+    vals = _vals_roue(sit, roue)
+    if not any(d in vals for d in roue["ancres"]):
+        return None                                           # aucun ancrage du domaine : pas pour moi
+    ferme, chemins = _roue_resout({k: v for k, v in vals.items() if k != cible}, roue)
+    art = roue["articles"]
+    donnees = ", ".join("%s = %s %s" % (d, _fmt(vals[d]), roue["unites"][d]) for d in roue["dims"]
+                        if d in vals and d != cible)
+    reponse = "%s se déduit de la roue des définitions : %s." % (
+        art[cible][:1].upper() + art[cible][1:], roue["deps"][cible])
+    if cible in ferme and donnees:
+        via = " ; ".join(chemins) if chemins else "donnée énoncée telle quelle"
+        reponse += (" Dans TES données, les racines causales sont ce que tu m'as donné (%s) : c'est de là que "
+                    "tout dérive — ici %s ≈ %s %s via %s." %
+                    (donnees, art[cible], _fmt(round(ferme[cible], 4)), roue["unites"][cible], via))
+    elif cible in vals:                                       # la cible est LEUR donnée : une racine, pas une dérivée
+        reponse += (" Dans TES données, %s est justement une RACINE causale : tu me l'as donné%s directement "
+                    "(%s %s) — rien ne le dérive ici, c'est de lui que le reste peut dériver." %
+                    (art[cible], "e" if art[cible].startswith("la ") else "",
+                     _fmt(vals[cible]), roue["unites"][cible]))
+    elif donnees:
+        reponse += (" Avec tes données (%s), je ne peux pas encore la fermer — donne-moi une grandeur de plus "
+                    "de la roue et je te montre la dérivation exacte." % donnees)
+    return reponse
+
+
+def _pourquoi_roue_dir(sit, c_part: str, v_part: str, roue: dict):
+    """Direction d'influence sur la roue, PROUVÉE par recalcul 2 points sur les données énoncées — les autres
+    données de l'utilisateur tenues constantes (et DITES constantes). Prémisse fausse -> corrigée. Grandeur
+    d'influence DÉRIVÉE (pas énoncée) -> dit honnêtement + demande laquelle des données change."""
+    cible, var = _var_roue_de(c_part, roue), _var_roue_de(v_part, roue)
+    if not cible or not var or cible == var or cible not in roue["dims"] or var not in roue["dims"]:
+        return None
+    vals = _vals_roue(sit, roue)
+    if not any(d in vals for d in roue["ancres"]):
+        return None
+    art, unites = roue["articles"], roue["unites"]
+    dir_c, dir_v = _dir_de(c_part), _dir_de(v_part)
+    if not dir_v:
+        return None
+    if var not in vals:                                       # influence non énoncée : dérivée ou absente
+        ferme, chemins = _roue_resout(vals, roue)
+        if var in ferme:
+            return ("Cette grandeur (%s), tu ne me l'as pas donnée : je l'ai DÉRIVÉE de tes données "
+                    "(%s ≈ %s %s, via %s). La faire varier, c'est changer une de TES données — dis-moi "
+                    "laquelle bouge (%s) et je mesure l'effet par recalcul." %
+                    (art[var], art[var], _fmt(round(ferme[var], 4)), unites[var],
+                     " ; ".join(chemins) or "donnée énoncée",
+                     " ou ".join(art[d] for d in vals if d in roue["dims"])))
+        return ("Je ne connais pas %s de ton installation — donne-la-moi (ou donne-moi de quoi la dériver) et "
+                "je te prouve l'effet par recalcul sur TES chiffres." % art[var])
+    base = {k: v for k, v in vals.items() if k != cible}
+    f0, _ch0 = _roue_resout(base, roue)
+    if cible not in f0:
+        if cible in vals:                                     # la cible est LEUR donnée : indépendante chez eux
+            return ("Dans TES données, %s ne dépend PAS de %s : tu m'as donné les deux séparément (%s = %s %s), "
+                    "ce sont deux données indépendantes de ton énoncé. %s dépendrait de %s si tu me donnais "
+                    "plutôt une autre paire de la roue (par exemple %s)." %
+                    (art[cible], art[var], cible, _fmt(vals[cible]), unites[cible],
+                     art[cible][:1].upper() + art[cible][1:], art[var], roue["paire_exemple"]))
+        return ("Je sais prouver ce genre d'effet par recalcul, mais il me manque de quoi fermer %s depuis "
+                "tes données — donne-moi une grandeur de plus de la roue (%s)." %
+                (art[cible], ", ".join(roue["dims"])))
+    f = 1.2 if dir_v > 0 else 0.8
+    base1 = dict(base)
+    base1[var] = base[var] * f
+    f1, ch1 = _roue_resout(base1, roue)
+    if cible not in f1:
+        return None
+    v0, v1 = f0[cible], f1[cible]
+    attendu = 0 if abs(v1 - v0) < 1e-12 else (1 if v1 > v0 else -1)
+    tenus = [d for d in base if d != var]
+    constantes = (" — à %s constante%s (tes autres données)" %
+                  (" et ".join(art[d] for d in tenus), "s" if len(tenus) > 1 else "")) if tenus else ""
+    preuve = ("%s = %s %s -> %s ≈ %s %s ; %s = %s %s -> %s ≈ %s %s" %
+              (var, _fmt(base[var]), unites[var], cible, _fmt(round(v0, 4)), unites[cible],
+               var, _fmt(round(base1[var], 4)), unites[var], cible, _fmt(round(v1, 4)), unites[cible]))
+    mecanisme = " ; ".join(ch1) if ch1 else "donnée énoncée"
+    if attendu == 0:
+        return ("Effet mesuré sur TES données%s : %s — %s ne bouge pas. Mécanisme : %s." %
+                (constantes, preuve, art[cible], mecanisme))
+    verbe = "AUGMENTE" if attendu > 0 else "DIMINUE"
+    if dir_c and dir_c != attendu:                            # prémisse FAUSSE -> corrigée, jamais validée
+        return ("Ce n'est pas ce qui se passe : quand %s %s%s, %s %s. Preuve par recalcul sur TES données : "
+                "%s. Mécanisme : %s." %
+                (art[var], "augmente" if dir_v > 0 else "baisse", constantes, art[cible], verbe,
+                 preuve, mecanisme))
+    return ("Effet PROUVÉ par recalcul sur TES données (je ne déclare pas une tendance, je la mesure)%s : "
+            "%s — %s %s. Mécanisme : %s." % (constantes, preuve, art[cible], verbe, mecanisme))
+
+
 def _pourquoi(question: str, sit):
     """Acte « pourquoi » : ordre causal, effet du sens d'écoulement, ou direction d'influence PROUVÉE.
     None dès que la question sort du registre (« pourquoi le ciel est bleu ? » n'est pas pour moi)."""
@@ -662,6 +867,10 @@ def _pourquoi(question: str, sit):
             return _DEP_SURFACE
         if cible == "dtlm":
             return _DEP_DTLM
+        for roue in _ROUES:
+            r = _pourquoi_roue_dep(sit, _var_roue_de(m.group(1) or m.group(2) or "", roue), roue)
+            if r:
+                return r
         return None
     if _RE_PQ_SENS.match(q) and re.search(
             r"\b(?:compte|importe|change|demandes?|besoin|sert|utile|influe)\b|dtlm|r[ée]sultat", q, re.I):
@@ -692,6 +901,10 @@ def _pourquoi(question: str, sit):
             return "Parce que %s.%s" % (_EXPL_SURFACE[var], preuve)
         if cible == "dtlm":
             return _pourquoi_dtlm_slot(sit, v_part, dir_v)
+        for roue in _ROUES:
+            r = _pourquoi_roue_dir(sit, c_part, v_part, roue)
+            if r:
+                return r
     return None
 
 
@@ -720,6 +933,11 @@ def pourquoi_dernier(texte: str, derniere_reponse, sit):
                 "résistance est le rapport tension/courant) et la puissance électrique P = U·I (énergie par "
                 "seconde = tension × débit de charges). Deux valeurs suffisent donc à fermer les quatre — j'ai "
                 "montré dans ma réponse le chemin exact suivi depuis TES données.")
+    if r.startswith(("Débit ≈", "Section ≈", "Vitesse ≈")):
+        return ("Parce que le débit volumique est, PAR DÉFINITION, le volume qui traverse la section chaque "
+                "seconde : Q = S·v (section de passage × vitesse d'écoulement). Deux de ces trois grandeurs "
+                "suffisent donc à fermer la troisième — j'ai montré dans ma réponse le chemin exact suivi "
+                "depuis TES données.")
     if r.startswith("Dans ton hypothèse"):
         return ("Parce que j'ai re-propagé TA modification dans les mêmes équations fermées (simulation "
                 "avant) : mêmes formules, un seul opérande changé — c'est pour ça que je montre l'avant/après.")
@@ -739,7 +957,7 @@ def repond(question: str, sit):
     q = str(question or "")
     if not q.strip():
         return None
-    for resolveur in (_et_si, _pourquoi, _dtlm, _surface, _electrique, _ecart):
+    for resolveur in (_et_si, _pourquoi, _dtlm, _surface, _electrique, _hydraulique, _ecart):
         try:
             r = resolveur(q, sit)
         except Exception:

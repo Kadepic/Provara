@@ -4318,6 +4318,10 @@ def _diagnostic_connaissance(texte: str):
                 _ctot, _ccouv = _SQD.couverture()
                 if _ctot:
                     routage += " (couverture prior %d%%)" % round(100 * _ccouv / _ctot)
+                # PHASE 5 : l'état MESURÉ du retrait (actes dont le filet est coupé — mûrs au journal)
+                _mures = [a for a, e in _SQD.etat_coupe().items() if e["mure"]]
+                if _mures:
+                    routage += " · filet coupé (Phase 5) : %s" % ", ".join(sorted(_mures))
         except Exception:
             pass
         # INVENTAIRE À BUDGET (vécu .exe 2026-07-08 : le diagnostic partait en timeout — compter 72 M de
@@ -8416,7 +8420,7 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
         # SÉQUENCEUR (Phase 4, §11) : l'acte classé (haute confiance) fait remonter SA famille de caps —
         # PRIOR ∪ appris du journal réel — en tête ; l'ordre relatif historique est préservé PARTOUT (invariant
         # de sûreté : réordonner ne change jamais la RÉPONSE, cf. sequenceur). Filet complet derrière -> zéro perte.
-        _ordre, _prio, _acte5 = _caps, set(), ""
+        _ordre, _prio, _acte5, _m5 = _caps, set(), "", None
         try:
             import tronc as _T5
             _m5 = _T5.acte(t).meilleur()
@@ -8425,7 +8429,19 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             _ordre, _prio = _SEQ.ordonne(_acte5, _caps, _m5.confiance if _m5 else 0.0)
         except Exception:
             _ordre, _prio, _acte5 = _caps, set(), ""
-        for _pos_cap, (_nom_cap, _cap) in enumerate(_ordre):
+        # PHASE 5 (§21) — RETRAIT PROGRESSIF DES CAPS : quand le journal RÉEL a prouvé la maturité de la
+        # famille (sequenceur.coupe : support ≥ 25, zéro hors-famille, confiance ≥ 0,9, tours d'audit
+        # préservés), le filet des ~60 autres caps N'EST PLUS PAYÉ. Une abstention de la famille continue le
+        # pipeline (conjonction, web, moteur lourd, repli honnête) — même issue que si la cascade complète
+        # s'était abstenue ; la passe d'audit ré-ouvre tout dès qu'un hit hors-famille réapparaît.
+        _essais = _ordre
+        if _prio and _SEQ is not None:
+            try:
+                if _SEQ.coupe(_acte5, _m5.confiance if _m5 else 0.0):
+                    _essais = [c for c in _ordre if c[0] in _prio]
+            except Exception:
+                _essais = _ordre
+        for _pos_cap, (_nom_cap, _cap) in enumerate(_essais):
             _r = _cap(t)
             if _r:
                 # REGISTRE DU ROUTAGE (§16) — signal de récompense du séquenceur : à CHAQUE décision tranchée on
