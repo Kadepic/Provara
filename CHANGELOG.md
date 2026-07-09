@@ -1,5 +1,20 @@
 # Journal des modifications — Provara
 
+## 2026-07-09 — LOT 1 post-audit : les 2 FAUX de la Phase 2 tués + le fait perdu réinjecté
+
+- **FAUX n°1 (horloge)** : « pars à 14h37, roule 2 heures 48 » -> 16 h 37 (minutes AVALÉES). Le motif de durée
+  capture désormais les minutes énoncées après l'unité (« 2 heures 48 », « 3 heures 20 minutes »), garde
+  anti-grandeur étrangère (« 2 heures 15 personnes » ne devient pas 2h15). 17 h 25 exact, passage minuit dit.
+  3 pièges gate ; assistant_nl 485 -> 488/488. (commit 7ad5ce2)
+- **FAUX n°2 (masse vs poids)** : « que pèse un litre d'eau sur la Lune » -> « ≈ 1 kg » (contexte céleste
+  IGNORÉ). Désormais : MASSE invariante DITE + POIDS calculé (g de surface de référence IAU/CODATA, 10 astres,
+  1 kg -> 1.62 N sur la Lune) ; astre hors table -> abstention DITE sur le chiffre. 3 pièges gate ;
+  assistant_nl 491/491. (commit 2430beb)
+- **Fait perdu réinjecté** : superficie_ile(Honshū) = 227 960 km² absent de la base livrée (17 032 faits ;
+  cause probable : garde anti-ambiguïté HAVING COUNT=1 à l'ingestion). Réinjecté dans ~/.verax (backup gardé),
+  **T7 re-prouvé DANS le .exe : 492/492, ancre VERIFIE**. ⚠ À reporter dans la prochaine régénération du
+  tarball datasets de la Release.
+
 ## 2026-07-09 — ⑦ Bascule 77→78 VÉCUE en live : 2 trous de l'updater bouchés/consignés
 
 - **Vécu chez Yohan** : la 1ʳᵉ tentative auto 77→78 a échoué SANS AUCUNE TRACE (ni bat écrit, ni paquet
