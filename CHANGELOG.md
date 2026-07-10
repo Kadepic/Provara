@@ -1,5 +1,63 @@
 # Journal des modifications — Provara
 
+## 2026-07-11 — LOT « TOUT CÂBLER » : les 3 rouges tués, 48 briques branchées au produit, suite 90/90
+
+Reprise du mandat après commit du lot de nuit. Objectif : identifier les rouges, les corriger
+chirurgicalement, et brancher réellement ce qui n'était que bâti.
+
+### 1. Les trois gates rouges, nommées et corrigées
+- **`valide_cablage` — 48 ORPHELINS.** Les 48 briques de la nuit étaient vertes en isolé mais **inaccessibles
+  depuis le produit** (« validé A/B ≠ actif dans la boucle »). Chacune reçoit désormais une sonde
+  `_p_<module>()` dans `src/capacites.py` **et** une entrée au REGISTRE sous son libellé exact de la carte.
+  Une sonde n'est pas un import : sa preuve **s'exécute** (ancres vérifiées à la main : Cayley-Hamilton pour
+  les valeurs propres, Huygens-Steiner pour l'inertie, Wiedemann-Franz croisant deux tables indépendantes,
+  OEIS A000602 pour les isomères, JDN 2451545 pour les calendriers…). **357 preuves du REGISTRE au vert.**
+  Sept sondes ont d'abord échoué : mes appels d'API étaient des hypothèses. L'une d'elles a révélé un piège —
+  `phenomene_attendu('transformante')` **contient** le mot « volcanisme », dans « *pas de* volcanisme ».
+- **`valide_atomes` — 19/20.** `anatomie_systemes.liste_organes` n'était consommée nulle part ; la sonde
+  d'anatomie la consomme. **20/20.**
+- **`valide_assistant_nl` — 500/506.** Aucune régression du produit : **506/506 sur l'échantillon**, 500/506
+  sur la base complète. Cause réelle : `suite_conversation._env()` faisait un `setdefault` sur
+  `LECTEUR_DATASETS_DIR`, si bien qu'**une variable exportée dans le shell changeait le verdict de la suite**
+  (les cas d'abstention « donnée absente » trouvaient soudain la donnée). L'échantillon est désormais
+  **ÉPINGLÉ**. Une suite dont le résultat dépend de l'appelant ne prouve rien.
+
+### 2. Le cliquet d'atomicité ne protégeait rien en intégration
+Conséquence de l'épinglage : `valide_sujets` ne trouvait plus les tables métiers et son cliquet ne
+s'exerçait pas. Il est rejoué sur une **FIXTURE** (store fabriqué en `tempfile`) : métier présent -> TRAITÉ
+nommément ; métier absent -> NON TRAITÉ nommément ; axe « gestes » -> PARTIEL, jamais TRAITÉ ; axes sans
+source -> 0 traité ; et une **contre-épreuve** qui sabote un axe pour vérifier que la gate le détecte.
+Le cliquet s'exerce maintenant **toujours**, avec ou sans la base réelle.
+
+### 3. Deux distinctions posées, deux faux tués
+- **Dette de CODE vs donnée absente.** Une preuve-`table` introuvable n'est pas une dette : c'est un fait sur
+  ce store (l'échantillon n'embarque pas `famille_langue`). Une preuve-`module`/`gate` introuvable **reste**
+  une dette (contre-épreuve faite).
+- **FAUX corrigé : « conséquence en logique du premier ordre (cas général) »** était déclaré TRAITÉ par ma
+  règle trop large. Le cas général est **semi-décidable** (Church-Turing) ; le module ne fait que du
+  model-checking sur domaine fini. La règle est resserrée au « cas décidables ».
+
+### 4. Reconstruit et développé
+- **`versification_fr`** (supprimé à tort la nuit précédente, jamais committé). Rebâti **plus honnête** :
+  il refuse de trancher la diérèse (« lion » = 1 ou 2) **et** la finale `-ent`. Une première version comptait
+  11 syllabes à l'alexandrin de Verlaine (« Je fais **souvent** ce rêve étrange et pénétrant ») : « -vent »
+  n'est pas une désinence verbale, et l'orthographe ne le dit pas. Le compte est donc AMBIGU par défaut,
+  certain pour une liste fermée de mots non verbaux. Gate 78/78 ; une de mes propres ancres était fausse
+  (jardin/matin = rime *suffisante*, pas riche).
+- **`heredite_mendelienne`** (63/63) : échiquier de Punnett exact en `Fraction`, ratios **3:1**, **1:2:1**,
+  **9:3:3:1**, croisement-test. Le régime de dominance est toujours NOMMÉ ; les gènes liés -> abstention.
+- **`dynamique_populations`** (69/69) : Malthus, Verhulst, carte logistique **discrète** avec ses régimes
+  (May 1976) et Lotka-Volterra. Au-delà du seuil de Feigenbaum (3,5699…), le point fixe existe mais n'est
+  jamais atteint : **abstention** — c'était le faux le plus tentant du module.
+  Ces deux modules remplacent la preuve fausse qui citait `bioinfo.py` (séquences ADN).
+
+### 5. Mesure
+`84 595 sujets · 21 532 traités · 496 partiels · 62 567 NON traités · 0 dette.`
+**Suite conversationnelle : 90/90 gates.** `valide_cablage` : 562 modules atteignables, **0 orphelin**.
+Il reste **6 sujets conceptuels** sur 1 704, **tous bloqués sur un corpus externe** (texte d'une loi à une
+date, jurisprudence, programmes et diplômes officiels, équivalences de diplômes, mix électrique par
+pays/année, datation des faits religieux). Ils restent NON TRAITÉS, et le disent.
+
 ## 2026-07-10 (nuit) — MANDAT « TRAITER TOUT LE BACKLOG DES SUJETS » : fermeture ATOMIQUE, vague A
 
 Mandat Yohan : traiter les 79 partiels et les 66 258 sujets au backlog, en autonomie, sans jamais s'arrêter,

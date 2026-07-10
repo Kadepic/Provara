@@ -3413,8 +3413,608 @@ def _p_pseudo_paranormal() -> bool:
     return _p_pseudo("phenomenes_paranormaux", "non_demontree")
 
 
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════
+# VAGUE A/B/C (2026-07-10 nuit, mandat « traiter tout le backlog des sujets ») — 48 briques CÂBLÉES.
+# Le mandat de Yohan (2026-07-06) : « tout ce qui a été construit doit être câblé, sinon on ne s'en sort pas ».
+# Bâties et vertes en isolé, ces briques étaient ORPHELINES du produit (valide_cablage les a débusquées).
+# Chaque preuve ci-dessous S'EXÉCUTE : ses ancres sont celles que j'ai vérifiées à la main, jamais des
+# valeurs recopiées du module. Si un mécanisme régresse, sa capacité redevient NON couverte.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+def _p_valeurs_propres() -> bool:
+    import valeurs_propres as M
+    from fractions import Fraction as F
+    r = M.valeurs_propres([[2, 1], [1, 2]])
+    jordan = M.valeurs_propres([[2, 1], [0, 2]])
+    rot = M.valeurs_propres([[0, -1], [1, 0]])
+    ch = M.evalue_polynome_en_matrice([[1, 2], [3, 4]], M.polynome_caracteristique([[1, 2], [3, 4]]))
+    return (M.polynome_caracteristique([[1, 2], [3, 4]]) == (F(1), F(-5), F(-2))
+            and all(x == 0 for lg in ch for x in lg)                       # Cayley–Hamilton : p(A) = 0
+            and r["rationnelles"] == [(F(1), 1), (F(3), 1)]
+            and jordan["rationnelles"] == [(F(2), 2)]
+            and M.multiplicite_algebrique([[2, 1], [0, 2]], 2) == 2
+            and M.multiplicite_geometrique([[2, 1], [0, 2]], 2) == 1      # bloc de Jordan : alg ≠ géom
+            and rot["nb_complexes_non_reelles"] == 2 and not rot["rationnelles"]
+            and _leve_v(M.valeurs_propres, [[0.1, 0], [0, 1]]))           # flottant refusé (exactitude)
+
+def _p_anneaux_corps() -> bool:
+    import anneaux_corps as M
+    def zn(n):
+        e = list(range(n))
+        return e, [[(i + j) % n for j in e] for i in e], [[(i * j) % n for j in e] for i in e]
+    return (all(M.est_corps(*zn(p)) is True for p in (2, 3, 5, 7))        # Z/pZ corps ssi p premier
+            and all(M.est_corps(*zn(n)) is False for n in (4, 6, 8, 9))
+            and M.est_anneau(*zn(4)) is True
+            and M.est_anneau_commutatif(*zn(6)) is True
+            and _leve_v(M.est_anneau, [0, 1], [[0]], [[0]]))
+
+def _p_limites_usuelles() -> bool:
+    import limites_usuelles as M
+    from fractions import Fraction as F
+    # coefficients du degré le PLUS HAUT d'abord : [3,0,1] = 3x²+1 ; [2,1,0] = 2x²+x.
+    return (M.limite_rationnelle_infini([3, 0, 1], [2, 1, 0]) == F(3, 2)   # degrés égaux -> rapport dominant
+            and M.limite_rationnelle_infini([1, 1], [1, 0, 1]) == 0        # deg num < deg den -> 0
+            and M.limite_suite_geometrique(F(1, 2)) == 0
+            and M.limite_suite_geometrique(2) == "+inf"
+            and M.limite_suite_geometrique(-1) == "divergente_sans_limite"
+            and _leve_v(M.limite_usuelle, "forme_inventee"))
+
+def _p_logique_premier_ordre() -> bool:
+    import logique_premier_ordre as M
+    P = lambda v: ("pred", "P", (v,))
+    R = lambda a, b: ("pred", "R", (a, b))
+    # ∃xP ⊭ ∀xP : contre-modèle EXISTE.  ∀xP ⊨ ∃xP : aucun contre-modèle.
+    r1 = M.cherche_contre_modele([("existe", "x", P("x"))], ("tous", "x", P("x")), 3)
+    r2 = M.cherche_contre_modele([("tous", "x", P("x"))], ("existe", "x", P("x")), 3)
+    # ∀y∃xR ⊭ ∃x∀yR (piège classique des quantificateurs)
+    r3 = M.cherche_contre_modele([("tous", "y", ("existe", "x", R("x", "y")))],
+                                 ("existe", "x", ("tous", "y", R("x", "y"))), 2)
+    return (r1["refute"] is True and r1["contre_modele"] is not None
+            and r2["refute"] is False and "portee" in r2      # « non réfuté jusqu'à N », jamais « valide »
+            and r3["refute"] is True)
+
+def _p_developpement_decimal() -> bool:
+    import developpement_decimal as M
+    from fractions import Fraction as F
+    d7 = M.developpement(1, 7)
+    d6 = M.developpement(1, 6)
+    return (d7["periode"] == "142857" and d7["fini"] is False
+            and d6["prefixe"] == "1" and d6["periode"] == "6"
+            and M.developpement(1, 2)["fini"] is True
+            and M.longueur_periode(17) == 16                              # ordre de 10 modulo 17
+            and all(M.reconstruit(M.developpement(p, q)) == F(p, q)       # boucle fermée
+                    for p in (1, 5, 22) for q in (2, 3, 7, 11, 13))
+            and _leve_v(M.developpement, 1, 0))
+
+def _p_equations_polynomiales() -> bool:
+    import equations_polynomiales as M
+    from fractions import Fraction as F
+    r = M.resout([1, -6, 11, -6])                                          # (x−1)(x−2)(x−3)
+    c = M.resout([1, 0, 0, -2])                                            # x³ − 2
+    q = M.resout([1, 0, 0, 0, 1])                                          # x⁴ + 1
+    lo, hi = c["reelles_irrationnelles"][0]["intervalle"]
+    return (sorted(x for x, _ in r["rationnelles"]) == [F(1), F(2), F(3)]
+            and c["nb_complexes_non_reelles"] == 2 and len(c["reelles_irrationnelles"]) == 1
+            and float(lo) <= 2 ** (1 / 3) <= float(hi)                     # ∛2 encadré, calculé hors module
+            and q["nb_complexes_non_reelles"] == 4 and not q["reelles_irrationnelles"]
+            and _leve_v(M.resout, [1, 0, 0, 0, 0, 1]))                     # degré 5 -> abstention
+
+def _p_integrale_elementaire() -> bool:
+    import integrale_elementaire as M
+    # ANCRE DISCRIMINANTE : le facteur x change tout (substitution u = −x²).
+    return (M.primitive_elementaire("exp(-x^2)") is False
+            and M.primitive_elementaire("x*exp(-x^2)") is True
+            and M.primitive_elementaire("sin(x)/x") is False
+            and M.primitive_elementaire("1/ln(x)") is False
+            and M.primitive_elementaire("1/x") is True
+            and _leve_v(M.primitive_elementaire, "foobar"))
+
+def _p_conjectures_celebres() -> bool:
+    import conjectures_celebres as M
+    mil = M.problemes_du_millenaire()
+    return (M.demontree("conjecture de Poincaré") is True
+            and M.annee_preuve("conjecture de Poincaré") == 2003
+            and "Perelman" in M.auteur_preuve("conjecture de Poincaré")
+            and M.ouverte("hypothèse de Riemann") is True
+            and M.refutee("conjecture de Mertens") is True                 # piège : beaucoup la croient vraie
+            and len(mil) == 7 and sum(1 for n in mil if M.demontree(n)) == 1
+            and _leve_v(M.auteur_preuve, "hypothèse de Riemann")           # ouverte -> aucun auteur
+            and _leve_v(M.statut, "conjecture inventée"))
+
+def _p_geometrie_hyperbolique() -> bool:
+    import geometrie_hyperbolique as M
+    import math
+    return (_proche(M.courbure_gauss_hyperbolique(1.0), -1.0)
+            and _proche(M.aire_triangle_hyperbolique((math.pi / 4,) * 3, 1.0), math.pi / 4)
+            and _proche(M.aire_maximale(1.0), math.pi)
+            and _proche(M.distance_poincare((0.0, 0.0), (0.5, 0.0)), math.log(3.0))   # arcosh(5/3) = ln 3
+            and _leve_v(M.aire_triangle_hyperbolique, (math.pi / 3,) * 3, 1.0)        # euclidien Σ=π refusé
+            and "Beltrami" in M.coherence_relative())
+
+def _p_cinematique_uniformement_acceleree() -> bool:
+    import cinematique_uniformement_acceleree as M
+    g = 9.80665
+    v = M.vitesse_finale(0.0, g, 1.0)
+    return (_proche(v, g) and _proche(M.position(0.0, 0.0, g, 1.0), 0.5 * g)
+            and _proche(M.vitesse_carre(0.0, g, 0.5 * g), v * v)           # Torricelli = v0+at (2 chemins)
+            and _proche(M.temps_pour_vitesse(0.0, g, g), 1.0)
+            and _leve_v(M.temps_pour_position, 0.0, 0.0, -1.0, 10.0))      # jamais atteinte -> abstention
+
+def _p_energie_mecanique() -> bool:
+    import energie_mecanique as M
+    import math
+    return (_proche(M.energie_cinetique(2.0, 3.0), 9.0)
+            and _proche(M.vitesse_depuis_hauteur(1.0, 9.80665), math.sqrt(2 * 9.80665))
+            and M.conserve((1.0, 0.0, 1.0), (1.0, math.sqrt(2 * 9.80665), 0.0), 1e-6) is True
+            and M.conserve((1.0, 0.0, 1.0), (1.0, 1.0, 0.0), 1e-6) is False   # frottement détecté
+            and _leve_v(M.energie_cinetique, 0.0, 3.0))
+
+def _p_rotation_solide() -> bool:
+    import rotation_solide as M
+    # Huygens-Steiner : deux entrées INDÉPENDANTES du catalogue doivent coïncider.
+    ic = M.moment_inertie("tige_axe_centre", 3.0, 2.0)
+    ie = M.moment_inertie("tige_axe_extremite", 3.0, 2.0)
+    return (_proche(M.moment_inertie("disque_plein", 2.0, 0.5), 0.25)
+            and _proche(M.moment_inertie("sphere_pleine", 1.0, 1.0), 0.4)
+            and _proche(M.inertie_axe_parallele(ic, 3.0, 1.0), ie)
+            and _proche(M.conservation_moment_cinetique(5.0, 2.0, 1.0), 10.0)
+            and _proche(M.moment_cinetique(5.0, 2.0), M.moment_cinetique(1.0, 10.0))   # L conservé
+            and _leve_v(M.moment_inertie, "forme_inventee", 1.0, 1.0))
+
+def _p_thermique() -> bool:
+    import thermique as M
+    return (_proche(M.chaleur_sensible(1.0, M.capacite_massique("eau"), 80.0), 334800.0)
+            and _proche(M.chaleur_latente(1.0, 334000.0), 334000.0)
+            and _proche(M.temperature_equilibre(1.0, 4185.0, 80.0, 1.0, 4185.0, 20.0), 50.0)
+            and _leve_v(M.capacite_massique, "vibranium"))
+
+def _p_circuits_kirchhoff() -> bool:
+    import circuits_kirchhoff as M
+    from fractions import Fraction as F
+    c = M.Circuit()
+    c.ajoute_branche("a", "b", 2, 0)
+    c.ajoute_branche("b", "c", 3, 0)
+    c.ajoute_branche("c", "a", F(1, 1000000), 10)          # source quasi idéale
+    s = c.resout()
+    i = [abs(v) for v in s["courants"].values()]
+    return (all(isinstance(v, F) for v in s["courants"].values())          # exact, aucun flottant
+            and all(abs(x - F(2)) < F(1, 100) for x in i)                  # I = E/(R1+R2) = 2 A
+            and _leve_v(M.Circuit().resout))
+
+def _p_induction_em() -> bool:
+    import induction_em as M
+    import math
+    return (_proche(M.flux_magnetique(0.5, 0.2, 0.0), 0.1)
+            and abs(M.flux_magnetique(0.5, 0.2, math.pi / 2)) < 1e-12       # champ dans le plan
+            and _proche(abs(M.fem_faraday(100, 0.01, 0.1)), 10.0)
+            and M.fem_faraday(100, 0.01, 0.1) < 0                           # loi de Lenz : signe négatif
+            and _proche(M.fem_deplacement(0.4, 0.5, 2.0), 0.4)
+            and _leve_v(M.fem_faraday, 100, 0.01, 0.0))
+
+def _p_optique_geometrique() -> bool:
+    import optique_geometrique as M
+    import math
+    t1 = math.radians(30.0)
+    t2 = M.angle_refraction(M.indice("air"), t1, M.indice("eau"))
+    return (_proche(math.degrees(t2), 22.03, rel=2e-3)
+            and _proche(M.angle_refraction(M.indice("eau"), t2, M.indice("air")), t1)   # réversibilité
+            and _proche(math.degrees(M.angle_critique(2.417, 1.0)), 24.4, rel=5e-3)
+            and M.reflexion_totale(1.333, math.radians(60.0), 1.0) is True
+            and _leve_v(M.angle_critique, 1.0, 1.333))                       # n1 < n2 : pas d'angle critique
+
+def _p_interferences_diffraction() -> bool:
+    import interferences_diffraction as M
+    i = M.interfrange_young(500e-9, 2.0, 0.5e-3)
+    return (_proche(i, 2e-3)
+            and _proche(M.position_frange_brillante(1, 500e-9, 2.0, 0.5e-3), i)   # ordre 1 en x = i
+            and _leve_v(M.angle_reseau, 1.0 / 600e3, 4, 500e-9)                   # ordre inexistant
+            and _leve_v(M.angle_minimum_fente, 1e-4, 0, 500e-9))                  # m=0 = maximum central
+
+def _p_effet_doppler() -> bool:
+    import effet_doppler as M
+    return (_proche(M.doppler_acoustique(1000.0, 0.0, 0.0, 343.0), 1000.0)
+            and _proche(M.doppler_acoustique(1000.0, 30.0, 0.0, 343.0), 1000.0 * 343.0 / 313.0)
+            and _proche(M.doppler_relativiste_longitudinal(100.0, 0.6), 200.0)   # sqrt(1.6/0.4) = 2, exact
+            and _leve_v(M.doppler_acoustique, 1000.0, 343.0, 0.0, 343.0)         # mur du son
+            and _leve_v(M.doppler_relativiste_longitudinal, 100.0, 1.0))
+
+def _p_atome_hydrogene() -> bool:
+    import atome_hydrogene as M
+    return (_proche(M.energie_niveau(1), -13.6057, rel=1e-4)
+            and _proche(M.energie_niveau(2), M.energie_niveau(1) / 4.0)
+            and _proche(M.longueur_onde_transition(3, 2) * 1e9, 656.3, rel=1e-3)   # Balmer Hα mesurée
+            and _proche(M.longueur_onde_transition(2, 1) * 1e9, 121.6, rel=1e-3)   # Lyman α mesurée
+            and _leve_v(M.energie_niveau, 0)
+            and _leve_v(M.energie_transition, 2, 2))
+
+def _p_configuration_electronique() -> bool:
+    import configuration_electronique as M
+    import re as _re
+    somme = lambda z: sum(int(x) for x in _re.findall(r"[spdf](\d+)", M.configuration(z)))
+    return ("3d5" in M.configuration(24) and "4s1" in M.configuration(24)        # Cr : exception mesurée
+            and "3d10" in M.configuration(29) and "4s1" in M.configuration(29)   # Cu : exception
+            and "5s" not in M.configuration(46)                                  # Pd : couche 5s VIDE
+            and M.configuration(10).replace(" ", "") == "1s22s22p6"
+            and all(somme(z) == z for z in (1, 6, 26, 46, 79, 118))              # Σ électrons = Z
+            and _leve_v(M.configuration, 119))
+
+def _p_proprietes_periodiques() -> bool:
+    import proprietes_periodiques as M
+    e = M.energie_premiere_ionisation
+    return (_proche(e("H"), 1312.0, rel=3e-2) and _proche(e("He"), 2372.0, rel=3e-2)
+            and e("He") > e("Ne") > e("Ar")                                      # décroissance du groupe 18
+            and e("B") < e("Be") and e("O") < e("N")                             # anomalies d'appariement
+            and _leve_v(M.energie_premiere_ionisation, "Xx"))
+
+def _p_isomerie_constitutionnelle() -> bool:
+    import isomerie_constitutionnelle as M
+    # OEIS A000602 : aucune formule close ne les donne, seule une énumération correcte les retrouve.
+    return ([M.nombre_isomeres_alcane(n) for n in range(1, 11)] == [1, 1, 1, 2, 3, 5, 9, 18, 35, 75]
+            and M.nombre_isomeres("C4H10") == 2
+            and _leve_v(M.nombre_isomeres, "C6H6"))                              # benzène : pas un alcane
+
+def _p_proprietes_mecaniques_materiaux() -> bool:
+    import proprietes_mecaniques_materiaux as M
+    emin, emax = M.module_young("acier doux")
+    return (200.0 <= emin <= emax <= 215.0
+            and M.resiste("acier doux", 50.0) == "oui"
+            and M.resiste("acier doux", 900.0) == "non"
+            and M.resiste("acier doux", 300.0) == "indéterminé"                  # l'intervalle ne tranche pas
+            and _leve_v(M.module_young, "vibranium"))
+
+def _p_conductivite_materiaux() -> bool:
+    import conductivite_materiaux as M
+    k_ag, k_cu = M.conductivite_thermique("argent"), M.conductivite_thermique("cuivre")
+    r_ag, r_cu = M.resistivite_electrique("argent"), M.resistivite_electrique("cuivre")
+    lor = M.nombre_lorenz("cuivre", 293.0)
+    return (k_ag > k_cu and r_ag < r_cu                                          # l'argent, meilleur des deux
+            and _proche(M.flux_thermique(401.0, 0.01, 100.0, 0.5), 802.0)
+            and _proche(M.resistance_electrique(1.68e-8, 100.0, 1e-6), 1.68)
+            and abs(lor - 2.44e-8) <= 0.15 * 2.44e-8                             # Wiedemann-Franz : 2 tables
+            and _leve_v(M.nombre_lorenz, "verre", 293.0))                        # loi réservée aux métaux
+
+def _p_tectonique_plaques() -> bool:
+    import tectonique_plaques as M
+    return (_proche(M.distance_parcourue(2.5, 100.0), 2500.0)                    # 2,5 cm/an × 1e8 ans
+            and "pas de volcanisme" in M.phenomene_attendu("transformante").lower()   # San Andreas
+            and "subduction" in M.phenomene_attendu("convergente").lower()
+            and _leve_v(M.type_frontiere, "plaque de Pangée", "Eurasie"))
+
+def _p_temps_geologiques() -> bool:
+    import temps_geologiques as M
+    return (_proche(M.intervalle("Crétacé")[1], 66.0)                            # limite K/Pg
+            and _proche(M.intervalle("Trias")[0], 251.902)                       # extinction Permien/Trias
+            and M.periode_a(70.0) == "Crétacé" and M.periode_a(60.0) == "Paléogène"
+            and M.ere_a(100.0) == "Mésozoïque" and M.eon_a(3000.0) == "Archéen"
+            and _leve_v(M.intervalle, "Précambrien tardif inventé"))
+
+def _p_classification_roches() -> bool:
+    import classification_roches as M
+    return (M.sous_type("granite") == "plutonique"                               # refroidissement lent
+            and M.sous_type("basalte") == "volcanique"                           # même chimie, autre texture
+            and M.protolithe("marbre") == "calcaire"
+            and M.protolithe("quartzite") == "grès"
+            and M.famille("calcaire") == "sédimentaire"
+            and _leve_v(M.protolithe, "granite"))                                # non métamorphique
+
+def _p_cycle_eau() -> bool:
+    import cycle_eau as M
+    return (M.verifie_invariants() is True                                       # Σ% ≈ 100, évap = précip
+            and "gaz" in M.changement_etat("condensation") and "liquide" in M.changement_etat("condensation")
+            and _proche(M.temps_residence(12900.0, 505000.0) * 365.25, 9.3, rel=5e-2)
+            and _leve_v(M.reservoir, "nappe de Mars"))
+
+def _p_effet_de_serre() -> bool:
+    import effet_de_serre as M
+    return (_proche(M.temperature_equilibre_sans_atmosphere(1361.0, 0.306), 254.0, rel=5e-3)
+            and _proche(M.forcage_radiatif_co2(560.0, 280.0), 3.708, rel=1e-3)   # 5,35·ln 2
+            and isinstance(M.sensibilite_climatique(3.708), tuple)               # intervalle, jamais un point
+            and _leve_v(M.temperature_equilibre_sans_atmosphere, 1361.0, 1.5))
+
+def _p_climats_biomes() -> bool:
+    import climats_biomes as M
+    return (M.biome_associe("Af").startswith("forêt tropicale")
+            and "désert" in M.biome_associe("BWh")
+            and M.biome_associe("ET") == "toundra"
+            and _leve_v(M.koppen, [1.0] * 11, [1.0] * 12, "nord"))               # 11 mois -> abstention
+
+def _p_expression_genique() -> bool:
+    import expression_genique as M
+    x = "ATGGCTTAA"
+    return (M.replique(M.replique(x)) == x                                       # boucle fermée
+            and M.replique("ATGC") == "GCAT"                                     # complément ANTIPARALLÈLE
+            and "hybride" in str(M.semi_conservative("ATGC")).lower()            # Meselson-Stahl
+            and _leve_v(M.replique, "ATGZ"))
+
+def _p_selection_naturelle() -> bool:
+    import selection_naturelle as M
+    from fractions import Fraction as F
+    p = M.p_generation_suivante(F(1, 2), 1, 1, 0)                                 # récessif létal
+    return (M.frequences_genotypiques(F(1, 2)) == (F(1, 4), F(1, 2), F(1, 4))
+            and sum(M.frequences_genotypiques(F(9, 10))) == 1
+            and 1 - p == F(1, 3)                                                  # q1 = q0/(1+q0) = 1/3
+            and M.equilibre_hw(100, 200, 100) is True
+            and _leve_v(M.generations_pour_frequence, F(1, 2), F(3, 4), 1, 1, 1)  # fitness égales
+            and _leve_v(M.generations_pour_frequence, F(1, 4), F(1, 2), 1, 2, 1, 50))  # explosion exacte
+
+def _p_reseau_trophique() -> bool:
+    import reseau_trophique as M
+    r = M.Reseau()
+    for n, t in (("herbe", "producteur"), ("truite", "herbivore"),
+                 ("saumon", "carnivore"), ("ours", "omnivore")):
+        r.ajoute_espece(n, t)
+    for a, b in (("herbe", "truite"), ("truite", "saumon"), ("herbe", "ours"), ("saumon", "ours")):
+        r.ajoute_lien(a, b)
+    c = M.Reseau()
+    c.ajoute_espece("a", "producteur")
+    c.ajoute_espece("b", "herbivore")
+    c.ajoute_lien("a", "b")
+    return (_proche(r.niveau_trophique("herbe"), 1.0)
+            and _proche(r.niveau_trophique("saumon"), 3.0)
+            and _proche(r.niveau_trophique("ours"), 3.0)                          # niveau FRACTIONNAIRE
+            and _leve_v(c.ajoute_lien, "b", "a"))                                 # cycle trophique refusé
+
+def _p_etiologie_infectieuse() -> bool:
+    import etiologie_infectieuse as M
+    return (M.type_agent("paludisme") == "parasite"                               # PAS un virus, PAS le vecteur
+            and "Plasmodium" in M.agent("paludisme")
+            and "Helicobacter" in M.agent("ulcère gastroduodénal")                # Nobel 2005, pas le stress
+            and M.type_agent("maladie de Creutzfeldt-Jakob") == "prion"
+            and M.vaccin_existe("VIH/sida") is False and M.vaccin_existe("rougeole") is True
+            and _leve_v(M.agent, "diabète"))                                      # non infectieuse
+
+def _p_anatomie_systemes() -> bool:
+    import anatomie_systemes as M
+    return (M.chiffre_anatomique("os_adulte") == 206                              # le nouveau-né en a ~270
+            and M.chiffre_anatomique("cavites_cardiaques") == 4
+            and M.organe("foie")["systeme"] == "digestif"
+            and M.est_normal("frequence_cardiaque", 72) is True
+            and M.est_normal("frequence_cardiaque", 40) is False
+            and len(M.liste_organes()) >= 16
+            and _leve_v(M.organe, "rate dorsale imaginaire"))
+
+def _p_finance_actualisation() -> bool:
+    import finance_actualisation as M
+    r = M.tri([-100.0, 110.0])
+    lo, hi = r["lo"], r["hi"]
+    return (_proche(M.van([-1000.0, 500.0, 500.0, 500.0], 0.10), 243.4260, rel=1e-4)
+            and float(lo) <= 0.10 <= float(hi) and r["approchee"] is True         # TRI = 10 %, ENCADRÉ
+            and _proche(M.annuite_constante(100000.0, 0.05, 20), 8024.26, rel=1e-4)
+            and _leve_v(M.tri, [-1.0, 5.0, -6.0]))                                # TRI non unique -> abstention
+
+def _p_elasticite_prix() -> bool:
+    import elasticite_prix as M
+    e = M.elasticite_arc(10.0, 100.0, 12.0, 80.0)
+    return (_proche(e, -11.0 / 9.0)                                               # ((-20/90)/(2/11))
+            and _proche(e, M.elasticite_arc(12.0, 80.0, 10.0, 100.0))             # la formule des arcs est symétrique
+            and M.classe(e) == "élastique"
+            and M.relation_biens(M.elasticite_croisee(100.0, 120.0, 2.0, 3.0)) == "substituable"
+            and _leve_v(M.elasticite_arc, 10.0, 100.0, 10.0, 80.0))               # Δp = 0 -> indéfinie
+
+def _p_pyramide_ages() -> bool:
+    import pyramide_ages as M
+    rect = M.Pyramide([(i, i + 10, 100, 100) for i in range(0, 100, 10)])
+    tri = M.Pyramide([(0, 20, 500, 500), (20, 40, 400, 400), (40, 60, 300, 300), (60, 80, 100, 100)])
+    return (rect.effectif_total() == 2000 and _proche(rect.sex_ratio(), 100.0)
+            and _proche(rect.age_median(), 50.0)
+            and rect.type_pyramide()[0] == "stationnaire"
+            and tri.type_pyramide()[0] == "expansive"
+            and _leve_v(M.Pyramide, [(0, 10, 1, 1), (20, 30, 1, 1)]))             # trou entre 10 et 20
+
+def _p_mobilite_sociale() -> bool:
+    import mobilite_sociale as M
+    fluide = M.MatriceTransition(["a", "b"], [[50, 50], [50, 50]])                # indépendance
+    fige = M.MatriceTransition(["a", "b"], [[80, 20], [20, 80]])
+    return (_proche(fluide.odds_ratio(0, 1), 1.0)                                 # indépendance -> OR = 1
+            and _proche(fige.odds_ratio(0, 1), 16.0)                              # (80·80)/(20·20)
+            and _proche(fige.taux_immobilite(), 0.8)
+            and _leve_v(M.MatriceTransition, ["a", "b"], [[0, 0], [1, 1]]))       # ligne vide
+
+def _p_compression_sans_perte() -> bool:
+    import compression_sans_perte as M
+    f = {"a": 0.4, "b": 0.35, "c": 0.2, "d": 0.05}
+    codes = M.huffman(f)
+    return (_proche(M.kraft_somme([1, 2, 3, 3]), 1.0) and M.kraft_satisfaite([1, 2, 3, 3]) is True
+            and M.kraft_satisfaite([1, 1, 2]) is False                            # aucun code préfixe
+            and _proche(M.longueur_moyenne(codes, f), 1.85)                       # H ≤ L < H+1
+            and M.est_prefixe(codes) is True
+            and "".join(M.decode(codes, M.encode(codes, "abcd"))) == "abcd"       # boucle fermée
+            and _leve_v(M.huffman, {"a": 1.0}))                                   # un seul symbole
+
+def _p_codes_correcteurs() -> bool:
+    import codes_correcteurs as M
+    def aller_retour(mot, pos):
+        c = list(M.hamming74_encode(mot))
+        c[pos] = "1" if c[pos] == "0" else "0"
+        return M.hamming74_extrait(M.hamming74_corrige("".join(c))) == mot
+    mots = [format(i, "04b") for i in range(16)]
+    return (M.distance_hamming("0000", "1111") == 4
+            and M.detecte_jusqu_a(3) == 2 and M.corrige_jusqu_a(3) == 1
+            and all(aller_retour(m, p) for m in mots for p in range(7))           # 112 cas : 1 erreur corrigée
+            and M.distance_minimale(["000", "111"]) == 3
+            and _leve_v(M.distance_hamming, "000", "0000"))
+
+def _p_musique_gammes() -> bool:
+    import musique_gammes as M
+    from fractions import Fraction as F
+    # le système musical est TOUJOURS nommé : « tempere_12 » n'est pas « juste ».
+    return (_proche(M.frequence("A", 4, "tempere_12"), 440.0)
+            and _proche(M.frequence("A", 5, "tempere_12"), 880.0)              # octave = ×2
+            and _proche(M.frequence("C", 4, "tempere_12"), 261.6256, rel=1e-5)
+            and M.rapport_juste("quinte_juste") == F(3, 2)                     # exact, pas 2^(7/12)
+            and _leve_v(M.rapport_juste, "triton")            # ambigu en intonation juste -> abstention
+            and _proche(M.comma_pythagoricien_cents(), 23.460, rel=1e-3)
+            and M.accord("C", "majeur") == ["C", "E", "G"]
+            and _leve_v(M.frequence, "H", 4, "tempere_12")
+            and _leve_v(M.frequence, "A", 4, "systeme_invente"))
+
+def _p_colorimetrie() -> bool:
+    import colorimetrie as M
+    lab = M.rgb_vers_lab((255, 255, 255))
+    return (_proche(lab[0], 100.0, rel=1e-3) and abs(lab[1]) < 0.1 and abs(lab[2]) < 0.1
+            and _proche(M.contraste_wcag((255, 255, 255), (0, 0, 0)), 21.0)       # ancre normative WCAG
+            and _proche(M.contraste_wcag((10, 20, 30), (10, 20, 30)), 1.0)
+            and all(_proche(a, b, rel=1e-4)
+                    for a, b in zip(M.lab_vers_rgb(M.rgb_vers_lab((12, 200, 77))), (12, 200, 77)))
+            and _leve_v(M.rgb_vers_lab, (256, 0, 0)))
+
+def _p_bilan_energetique() -> bool:
+    import bilan_energetique as M
+    s = M.Systeme()
+    s.ajoute_flux("secteur", 100.0, "entrant")
+    s.ajoute_flux("utile", 30.0, "sortant")
+    s.ajoute_perte("chaleur", 70.0)
+    faux = M.Systeme()
+    faux.ajoute_flux("in", 100.0, "entrant")
+    faux.ajoute_flux("out", 120.0, "sortant")
+    return (s.conserve(1e-9) is True and _proche(s.rendement(), 0.30)
+            and _proche(s.bilan()["ecart"], 0.0)
+            and _leve_v(faux.rendement))                                          # rendement > 1 interdit
+
+def _p_reproductibilite_build() -> bool:
+    import reproductibilite_build as M
+    causes = M.causes_connues()
+    return (any("horodatage" in c for c in causes)
+            and "SOURCE_DATE_EPOCH" in M.remede("horodatage")
+            and _leve_v(M.empreinte, "/chemin/qui/n/existe/pas/xyz"))
+
+def _p_datation_radiocarbone() -> bool:
+    import datation_radiocarbone as M
+    import math
+    return (_proche(M.age_reel_demi_vie(0.5, 5730.0), 5730.0)                     # une demi-vie
+            and _proche(M.age_reel_demi_vie(0.25, 5730.0), 11460.0)
+            and _proche(M.age_radiocarbone(0.5), 8033.0 * math.log(2.0), rel=1e-3)   # convention Libby
+            and _proche(M.fraction_restante(M.age_reel_demi_vie(0.3, 5730.0), 5730.0), 0.3)
+            and M.calibration_disponible() is False
+            and _leve_v(M.age_radiocarbone, 0.001)                                # au-delà de ~50 000 ans
+            and _leve_v(M.age_calendaire, 3000.0))                                # IntCal non embarquée
+
+def _p_calendriers() -> bool:
+    import calendriers as M
+    dates = [(a, m, j) for a in (1600, 1900, 2000, 2024, 2400) for m in (1, 2, 12) for j in (1, 28)]
+    return (M.gregorien_vers_jdn(2000, 1, 1) == 2451545                           # JDN de référence
+            and M.gregorien_vers_jdn(1970, 1, 1) == 2440588
+            and M.est_bissextile_gregorien(2000) is True
+            and M.est_bissextile_gregorien(1900) is False                         # règle /400, piège du /4
+            and M.est_bissextile_julien(1900) is True
+            and all(M.jdn_vers_gregorien(M.gregorien_vers_jdn(*d)) == d for d in dates)
+            and _leve_v(M.gregorien_vers_jdn, 2024, 2, 30))
+
+def _p_formats_locaux() -> bool:
+    import formats_locaux as M
+    return (M.formate_nombre(1234567, "Inde") == "12,34,567"                      # lakh : groupement par 2
+            and M.separateur_decimal("France") == ","
+            and M.separateur_decimal("États-Unis") == "."
+            and M.separateur_milliers("Suisse") == "'"
+            and all(_proche(M.parse_nombre(M.formate_nombre(v, p), p), v)
+                    for v in (0.5, 1234.56, 1234567.0) for p in ("France", "États-Unis", "Allemagne"))
+            and _leve_v(M.format_date, "Atlantide"))
+
+
+def _p_versification_fr() -> bool:
+    import versification_fr as M
+    # Ancre PIÈGE : « souvent » n'est pas une désinence verbale -> l'alexandrin de Verlaine vaut 12, pas 11.
+    return (M.compte_syllabes("Je fais souvent ce rêve étrange et pénétrant") == (12, 12)
+            and M.compte_syllabes("Demain, dès l'aube, à l'heure où blanchit la campagne") == (12, 12)
+            and M.compte_syllabes("Un cheval blanc") == (4, 4)
+            and M.compte_syllabes("nuit") == (1, 1)                       # « ui » monosyllabique
+            and M.compte_syllabes("lion")[0] < M.compte_syllabes("lion")[1]   # diérèse indécidable
+            and M.nom_metre(12) == "alexandrin"
+            and M.genre_rime("rose") == "féminine"
+            and M.schema_rimes(["le vent", "la dent", "le jour", "l'amour"]) == "AABB"
+            and _leve_v(M.type_rime, "chien", "table")
+            and _leve_v(M.nom_metre, 13))
+
+
+def _p_heredite_mendelienne() -> bool:
+    import heredite_mendelienne as M
+    from fractions import Fraction as F
+    complete = M.proportions_phenotypiques("Aa", "Aa", "complete")
+    incomplete = M.proportions_phenotypiques("Aa", "Aa", "incomplete")
+    dihybride = M.proportions_phenotypiques_dihybride("AaBb", "AaBb", "complete")
+    return (complete == {"[A]": F(3, 4), "[a]": F(1, 4)}                     # le 3:1 de Mendel
+            and sorted(incomplete.values()) == [F(1, 4), F(1, 4), F(1, 2)]   # le MEME croisement -> 1:2:1
+            and complete != incomplete                                       # le regime change tout
+            and sorted(dihybride.values()) == [F(1, 16), F(3, 16), F(3, 16), F(9, 16)]   # le 9:3:3:1
+            and M.test_cross("Aa") == {"[A]": F(1, 2), "[a]": F(1, 2)}
+            and _leve_v(M.croisement, "Ab", "Aa")                            # alleles de genes differents
+            and _leve_v(M.phenotype, "Aa", "dominant")                       # regime non nomme
+            and _leve_v(M.croisement_dihybride, "AaBb", "AaBb", False))      # genes lies -> abstention
+
+
+def _p_dynamique_populations() -> bool:
+    import dynamique_populations as M
+    import math
+    t = M.logistique_discrete(10.0, 2.0, 1000.0, 60)
+    return (_proche(M.croissance_exponentielle(100.0, math.log(2.0), 1.0), 200.0)
+            and _proche(M.temps_de_doublement(math.log(2.0)), 1.0)
+            and _proche(M.croissance_logistique(1000.0, 0.5, 1000.0, 7.0), 1000.0)
+            and M.regime_logistique_discrete(2.0) == "équilibre stable"
+            and M.regime_logistique_discrete(3.9) == "chaos"
+            and _proche(M.point_fixe_logistique_discrete(2.0, 1000.0), 500.0)
+            and _proche(t["trajectoire"][-1], 500.0, rel=1e-4)               # chemin independant
+            and _leve_v(M.point_fixe_logistique_discrete, 3.9, 1000.0)       # chaos -> abstention
+            and M.equilibre_lotka_volterra(1.0, 0.1, 0.5, 0.02)[0]
+                == M.equilibre_lotka_volterra(2.0, 0.1, 0.5, 0.02)[0]        # x* ne depend que du predateur
+            and _leve_v(M.equilibre_lotka_volterra, 1.0, 0.0, 0.5, 0.02))
+
+
 # ── REGISTRE : libellé EXACT (sujets.py) -> (description du mécanisme, preuve exécutable) ──
 REGISTRE: dict[str, tuple[str, object]] = {
+    'hérédité mendélienne (croisements)': ('Lois de Mendel : echiquier de Punnett EXACT (Fraction), ratios 3:1, 1:2:1 et 9:3:3:1, croisement-test. Le regime de dominance est TOUJOURS nomme ; genes lies -> abstention.', _p_heredite_mendelienne),
+    'dynamique des populations (modèles donnés)': ('Malthus, Verhulst (logistique), carte logistique DISCRETE et ses regimes (May 1976), Lotka-Volterra. Au-dela du seuil de chaos (3,5699...), le point fixe existe mais nest jamais atteint -> abstention.', _p_dynamique_populations),
+    "métrique et versification": ("Metrique francaise CLASSIQUE : compte syllabique, elision du e muet, cesure a la 6e syllabe, genre et richesse des rimes, schemas AABB/ABAB/ABBA. La dierese et la finale -ent ne sont PAS tranchees : le compte est rendu comme INTERVALLE.", _p_versification_fr),
+    # ── VAGUE A/B/C (2026-07-10 nuit) : 48 briques neuves, désormais CÂBLÉES au produit ──
+    'anatomie et physiologie descriptives': ("Anatomie et physiologie descriptives : 11 systemes, organes, chiffres etablis (206 os chez l'adulte), valeurs normales rendues comme INTERVALLES, circulation sanguine.", _p_anatomie_systemes),
+    "structures de groupe/anneau/corps (vérification d'axiomes)": ("Verification des axiomes d'ANNEAU et de CORPS sur tables de Cayley finies. Z/pZ est un corps ssi p premier ; diagnostic nommant l'axiome viole.", _p_anneaux_corps),
+    "niveaux d'énergie de l'atome d'hydrogène": ("Niveaux d'energie de l'atome d'hydrogene : En = -13,6057 eV / n2, transitions, longueurs d'onde (Balmer, Lyman), rayon de Bohr. Distinct du puits infini.", _p_atome_hydrogene),
+    "bilan énergétique d'un système décrit": ("Bilan energetique d'un systeme decrit : flux entrants/sortants/pertes/stockage, ecart chiffre, flux manquant deduit. Un rendement > 1 leve une erreur (1er principe).", _p_bilan_energetique),
+    'calendriers et fuseaux horaires': ("Conversions de calendriers par le JOUR JULIEN (entier pur) : gregorien, julien, hijri tabulaire, jour de la semaine, bissextiles. Les regles d'heure d'ete ne sont PAS embarquees -> abstention.", _p_calendriers),
+    'cinématique à accélération constante': ('Cinematique a acceleration constante : v = v0+at, x = x0+v0t+at2/2, v2 = v02+2a.dx. Discriminant negatif -> abstention (position jamais atteinte).', _p_cinematique_uniformement_acceleree),
+    'lois de Kirchhoff sur un circuit donné': ('Solveur GENERAL des lois de Kirchhoff sur une topologie quelconque, en arithmetique EXACTE (Fraction). KCL re-verifiee apres resolution : jamais un resultat faux.', _p_circuits_kirchhoff),
+    "classification d'une roche donnée": ('Classification petrologique par MODE DE FORMATION : magmatique (plutonique/volcanique), sedimentaire, metamorphique + protolithe. Granite et basalte : meme chimie, textures distinctes.', _p_classification_roches),
+    'types de biomes et de climats (classification)': ('Classification KOPPEN-GEIGER calculee depuis les normales mensuelles + biome associe. Arbre de decision deterministe.', _p_climats_biomes),
+    "correction d'erreurs (codes donnés)": ("Codes correcteurs sur GF(2) : distance minimale, capacites de detection/correction, Hamming(7,4) (encode, syndrome, correction d'une erreur), bornes de Singleton et de Hamming.", _p_codes_correcteurs),
+    'colorimétrie (espaces, conversions)': ('Colorimetrie : sRGB (courbe IEC exacte), XYZ D65, CIE L*a*b*, HSV/HSL, contraste WCAG (noir sur blanc = 21). Conversions reversibles en boucle fermee.', _p_colorimetrie),
+    'encodage et compression sans perte (garanties)': ("Garanties de la compression sans perte : inegalite de Kraft, codes prefixes, Huffman et son encadrement de Shannon (H <= L < H+1), impossibilite d'un compresseur universel (tiroirs).", _p_compression_sans_perte),
+    "conductivité thermique/électrique d'un matériau": ('Conductivite thermique (loi de Fourier) et electrique (rho.L/A) avec catalogue sourceurs. Loi de Wiedemann-Franz reservee aux METAUX (abstention sur le verre).', _p_conductivite_materiaux),
+    "configuration électronique d'un élément": ("Configuration electronique : remplissage d'Aufbau (Klechkowski) + catalogue des 20 EXCEPTIONS mesurees (Cr, Cu, Pd sans couche 5s, Au...). La somme des electrons vaut toujours Z.", _p_configuration_electronique),
+    'conjecture de Poincaré (statut)': ("Statut etabli des grandes conjectures : Poincare DEMONTREE (Perelman 2003), Mertens REFUTEE, Riemann/Goldbach/P-vs-NP OUVERTES. Une conjecture ouverte n'expose jamais d'auteur de preuve.", _p_conjectures_celebres),
+    "cycle de l'eau (mécanismes)": ("Cycle de l'eau : etapes ordonnees, changement d'etat et moteur energetique, reservoirs mesures, temps de residence. Invariant : evaporation totale = precipitation totale.", _p_cycle_eau),
+    "archéologie : datation d'un site": ("Datation radiometrique (probleme INVERSE) : age depuis la fraction de 14C restante, conventions Libby et Cambridge distinguees. Au-dela de ~50 000 ans, et pour l'age CALENDAIRE (IntCal absente) -> abstention.", _p_datation_radiocarbone),
+    "développement décimal d'un rationnel": ("Developpement decimal EXACT d'un rationnel : prefixe, periode (ordre multiplicatif de 10 mod q'), reconstruction inverse. Arithmetique entiere, aucun flottant.", _p_developpement_decimal),
+    'effet de serre (mécanisme radiatif)': ("Effet de serre RADIATIF : temperature d'equilibre sans atmosphere (254 K), modele a une couche, forcage du CO2 (Myhre : 5,35.ln(C/C0)). La sensibilite climatique est un INTERVALLE, jamais un point.", _p_effet_de_serre),
+    'effet Doppler (source/observateur)': ('Effet Doppler acoustique (convention documentee) et relativiste longitudinal. Source au mur du son ou beta >= 1 -> abstention.', _p_effet_doppler),
+    'élasticité prix mesurée sur données': ('Elasticite-prix par la formule des ARCS (symetrique), elasticite revenu et croisee, classification. Variation de prix nulle -> abstention.', _p_elasticite_prix),
+    "conservation de l'énergie mécanique (système isolé)": ("Conservation de l'energie mecanique d'un systeme isole : Ec + Ep = constante, verifiee en arithmetique EXACTE (aucun ecart absorbe par l'ulp). Le frottement est detecte, pas absorbe.", _p_energie_mecanique),
+    "résolution d'équations de degré 3 et 4": ('Resolution EFFECTIVE des equations de degre 1 a 4 (Cardan, Ferrari) : racines rationnelles exactes certifiees, irrationnelles encadrees par Sturm, complexes comptees. Degre >= 5 -> abstention (Abel-Ruffini).', _p_equations_polynomiales),
+    'étiologie des maladies infectieuses courantes': ("Etiologie etablie des maladies infectieuses courantes : agent, type, transmission, vaccin. Le paludisme est cause par un PARASITE (le moustique est le vecteur) ; l'ulcere par H. pylori.", _p_etiologie_infectieuse),
+    'réplication, transcription, traduction (mécanismes)': ("Dogme central : replication (brin antiparallele, semi-conservative — Meselson-Stahl), transcription, traduction. La double replication est l'identite (boucle fermee).", _p_expression_genique),
+    "calcul d'intérêts, annuités, TRI, VAN": ("VAN, annuites, tableau d'amortissement et TRI. Le TRI est ENCADRE par bissection ; plusieurs changements de signe -> abstention (le TRI n'est pas unique).", _p_finance_actualisation),
+    'formats de date/nombre par pays': ('Formats de date et de nombre par PAYS (CLDR) : separateurs, ordre de date, groupement indien (lakh), apostrophe suisse. Pays hors catalogue -> abstention (jamais un format « par defaut »).', _p_formats_locaux),
+    'géométries non euclidiennes (cohérence)': ('Geometrie HYPERBOLIQUE : courbure K = -1/R2, aire = R2(pi - somme des angles), disque de Poincare. Fait de COHERENCE RELATIVE (Beltrami) : le postulat des paralleles est independant.', _p_geometrie_hyperbolique),
+    'induction (Faraday-Lenz)': ('Induction electromagnetique : flux B.A.cos(theta), loi de Faraday eps = -N.dPhi/dt, loi de Lenz (le signe), fem de deplacement B.L.v.', _p_induction_em),
+    'intégrale sans primitive élémentaire (Risch)': ("Catalogue des integrales SANS primitive elementaire (theoreme de Liouville / Risch). exp(-x^2) non elementaire mais x*exp(-x^2) l'est. Fonction hors catalogue -> abstention.", _p_integrale_elementaire),
+    'interférences et diffraction (dispositifs standards)': ('Interferences et diffraction : interfrange de Young, reseau d.sin(t) = m.lambda, minima de la fente simple. Ordre inexistant -> abstention.', _p_interferences_diffraction),
+    'isomérie (dénombrement pour formule brute)': ("Denombrement EXACT des isomeres constitutionnels d'un alcane par enumeration canonique des arbres de degre <= 4 (OEIS A000602 : 1,1,1,2,3,5,9,18,35,75...). Formule non alcane -> abstention.", _p_isomerie_constitutionnelle),
+    "limite d'une suite/fonction usuelle": ("Limites de suites et de fractions rationnelles a l'INFINI (comparaison exacte des degres) + catalogue des limites usuelles etablies. Forme hors catalogue -> abstention.", _p_limites_usuelles),
+    'conséquence en logique du premier ordre (cas décidables)': ("Consequence en logique du PREMIER ORDRE sur domaine FINI (fragment decidable) par model-checking exhaustif. Contre-modele TROUVE = refutation certaine ; aucun contre-modele = « non refute jusqu'a N », JAMAIS « valide ».", _p_logique_premier_ordre),
+    'mobilité sociale mesurée sur cohorte': ("Mobilite sociale intergenerationnelle : matrice de transition, taux d'immobilite, ODDS RATIO (mesure de fluidite independante des marges), elasticite intergenerationnelle.", _p_mobilite_sociale),
+    "harmonie et gammes (règles d'un système donné)": ('Systeme musical NOMME (tempere_12 ou juste) : frequences (A4 = 440 Hz), gammes, accords, rapports justes EXACTS et comma pythagoricien. Le triton est ambigu en intonation juste -> abstention.', _p_musique_gammes),
+    'réflexion, réfraction (Snell-Descartes)': ('Reflexion et refraction (Snell-Descartes) : n1.sin(t1) = n2.sin(t2), angle critique, reflexion totale. Le rayon est reversible. Pas de rayon refracte -> abstention.', _p_optique_geometrique),
+    "propriétés mécaniques d'un matériau nommé": ("Proprietes mecaniques des materiaux NOMMES : module d'Young, limite elastique, masse volumique, rendus comme INTERVALLES avec conditions. Contrainte dans l'intervalle -> « indetermine », jamais un verdict force.", _p_proprietes_mecaniques_materiaux),
+    'propriétés périodiques (rayon, ionisation)': ("Proprietes periodiques : energie de premiere ionisation et rayon atomique (valeurs mesurees), tendances de periode et de groupe. Les anomalies d'appariement (B<Be, O<N) ne sont pas lissees.", _p_proprietes_periodiques),
+    "pyramide des âges d'une population donnée": ('Pyramide des ages : tranches contigues (invariant dur), sex-ratio, age median, type (expansive/stationnaire/regressive) rendu AVEC son rapport chiffre.', _p_pyramide_ages),
+    "reproductibilité d'un build (déterminisme)": ("Reproductibilite d'un build : empreinte SHA-256 d'une arborescence INDEPENDANTE de l'ordre de parcours, diff, catalogue des causes de non-determinisme et leurs remedes.", _p_reproductibilite_build),
+    "réseaux trophiques d'un écosystème décrit": ("Reseau trophique d'un ecosysteme decrit : niveaux trophiques FRACTIONNAIRES pour les omnivores, especes cles, effet de retrait. Un cycle trophique -> abstention.", _p_reseau_trophique),
+    'moment cinétique et rotation du solide': ("Rotation du solide : catalogue exact des moments d'inertie, L = I.omega, tau = I.alpha, conservation du moment cinetique, theoreme de Huygens-Steiner.", _p_rotation_solide),
+    'sélection naturelle (mécanisme)': ("Genetique des populations EXACTE : Hardy-Weinberg, equation de selection, recessif letal (q decroit en 1/n). Garde d'explosion exacte : abstention plutot que boucle infinie.", _p_selection_naturelle),
+    'tectonique des plaques (mouvements mesurés)': ("Tectonique des plaques : types de frontiere, vitesses geodesiques mesurees, distance parcourue, phenomene attendu. Une frontiere transformante n'a PAS de volcanisme.", _p_tectonique_plaques),
+    'échelle des temps géologiques': ('Echelle des temps geologiques (charte ICS) : eons, eres, periodes, epoques et leurs bornes. Les enfants PAVENT exactement leur parent (invariant dur).', _p_temps_geologiques),
+    'température, chaleur, capacité thermique': ("Chaleur et capacite thermique : Q = m.c.dT, chaleurs latentes, temperature d'equilibre d'un melange (calorimetrie). Materiau hors catalogue -> abstention.", _p_thermique),
+    "valeurs propres d'une matrice donnée": ("Spectre EXACT d'une matrice rationnelle : polynome caracteristique par Faddeev-LeVerrier, racines rationnelles certifiees, racines reelles irrationnelles ENCADREES (Sturm), complexes comptees. Cayley-Hamilton verifie.", _p_valeurs_propres),
     "Vote / processus électoral (mécanique)": ("Mecanique electorale EXACTE (repartition des sieges en arithmetique rationnelle Fraction, donc comparaisons de quotients exactes, FAUX=0). Fonctions p", _p_scrutin),
     "Stratégie optimale (jeux résolus : morpion, etc.)": ("MECANISME EXACT : minimax enumere exhaustivement l'arbre complet du morpion (memoise par lru_cache). La valeur d'une position EST le resultat du jeu p", _p_strategie_jeux),
     "Théorie des jeux appliquée": ("Mécanisme/algorithme EXACT (théorie des jeux, équilibres de Nash en stratégies pures). equilibre_nash_pur(gains_J1, gains_J2) énumère les profils (i,j", _p_jeux_appliques),

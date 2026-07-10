@@ -42,12 +42,13 @@ GATES = [
     "valide_temps_geologiques", "valide_classification_roches", "valide_cycle_eau", "valide_effet_de_serre",
     "valide_climats_biomes", "valide_expression_genique", "valide_selection_naturelle",
     "valide_reseau_trophique", "valide_etiologie_infectieuse",
-    # VAGUE C : PARTIES VI a XII. (« versification_fr » non batie — limite de session — sujet NON TRAITÉ.)
+    "valide_heredite_mendelienne", "valide_dynamique_populations",
+    # VAGUE C : PARTIES VI a XII.
     "valide_finance_actualisation", "valide_elasticite_prix", "valide_pyramide_ages",
     "valide_mobilite_sociale", "valide_compression_sans_perte", "valide_codes_correcteurs",
     "valide_musique_gammes", "valide_colorimetrie", "valide_bilan_energetique",
     "valide_reproductibilite_build", "valide_datation_radiocarbone", "valide_calendriers",
-    "valide_formats_locaux", "valide_anatomie_systemes",
+    "valide_formats_locaux", "valide_anatomie_systemes", "valide_versification_fr",
     "valide_apprentissage_patrons", "valide_conversation",
     "valide_capacites_chat", "valide_assistant_nl", "valide_maj", "valide_veille_structure", "valide_cablage",
     "valide_faits_appris", "valide_tronc", "valide_debiaisage", "valide_sources", "valide_sequenceur",
@@ -65,8 +66,15 @@ def _env():
                           os.path.join(_RACINE, "ingestion")])
     e["PYTHONPATH"] = pp + (os.pathsep + e["PYTHONPATH"] if e.get("PYTHONPATH") else "")
     import tempfile
-    e.setdefault("LECTEUR_DATASETS_DIR", os.path.join(_RACINE, "datasets", "lecteur"))  # échantillon embarqué
-    e.setdefault("LECTEUR_CACHE_DIR", os.path.join(tempfile.gettempdir(), "verax_suite_conv"))  # hors repo
+    # ── DÉTERMINISME DE LA SUITE (correctif 2026-07-11) ──────────────────────────────────────────────────
+    # `setdefault` laissait fuir le LECTEUR_DATASETS_DIR du shell appelant. Conséquence MESURÉE : lancée
+    # depuis un shell pointant la base complète (72 M de faits), `valide_assistant_nl` rendait 500/506 au
+    # lieu de 506/506 — non parce que le produit régressait, mais parce que ses cas d'ABSTENTION (« donnée
+    # absente ») trouvaient soudain la donnée. Une suite dont le verdict dépend de l'environnement de
+    # l'appelant ne prouve rien. On ÉPINGLE donc l'échantillon embarqué, sans discuter.
+    # Pour éprouver le produit sur la base complète, on lance les gates concernées à la main.
+    e["LECTEUR_DATASETS_DIR"] = os.path.join(_RACINE, "datasets", "lecteur")   # échantillon embarqué, ÉPINGLÉ
+    e["LECTEUR_CACHE_DIR"] = os.path.join(tempfile.gettempdir(), "verax_suite_conv")   # hors repo, ÉPINGLÉ
     # journal de routage du tronc HORS ~/.verax réel : les conversations de test ne polluent pas le signal
     # d'apprentissage du séquenceur (même principe que la purge des convs de test).
     e.setdefault("TRONC_ROUTAGE_PATH", os.path.join(tempfile.gettempdir(), "verax_suite_conv", "tronc_routage.jsonl"))
