@@ -4180,8 +4180,122 @@ def _p_biais_collision() -> bool:
             and rt["biais_detecte"] is False)
 
 
+def _p_thermodynamique_principes() -> bool:
+    import thermodynamique_principes as M
+    # ANCRE PIEGE : m.c.ln(T2/T1) en KELVIN. La meme formule en degres Celsius (27 -> 127) donnerait
+    # 6486 J/K au lieu de 1204 : un faux d un facteur 5. Le module exige des kelvins.
+    return (_proche(M.variation_energie_interne(100.0, 30.0), 70.0)          # convention thermodynamique
+            and _proche(M.travail_isotherme_gaz_parfait(1.0, 300.0, 1.0, 2.0), 1728.85, rel=1e-4)
+            and _proche(M.entropie_echauffement(1.0, 4185.0, 300.0, 400.0), 1203.9, rel=1e-3)
+            and _proche(M.rendement_carnot(300.0, 600.0), 0.5)
+            and _leve_v(M.verifie_second_principe, 0.6, 300.0, 600.0)        # au-dela de Carnot
+            and _leve_v(M.rendement_carnot, 0.0, 600.0))
+
+
+def _p_trigonometrie_triangle() -> bool:
+    import trigonometrie_triangle as M
+    import math
+    # LE CAS AMBIGU SSA : zero, une ou DEUX solutions. Rendre un triangle unique serait FAUX.
+    return (_proche(M.aire_heron(3, 4, 5), 6.0)
+            and _proche(M.aire_heron(2, 2, 2), math.sqrt(3.0))
+            and _proche(M.loi_sinus(10, 30, 45), 14.1421356, rel=1e-6)
+            and len(M.resout_triangle({"cas": "CCA", "a": 6, "b": 8, "A": 30})) == 2
+            and len(M.resout_triangle({"cas": "CCA", "a": 3, "b": 8, "A": 30})) == 0
+            and len(M.resout_triangle({"cas": "CCA", "a": 10, "b": 8, "A": 30})) == 1
+            and _leve_v(M.aire_heron, 1, 2, 10))                             # inegalite triangulaire
+
+
+def _p_grammaires_formelles() -> bool:
+    import grammaires_formelles as M
+    g = {"S": (("a", "S", "b"), ())}                                          # a^n b^n
+    par = {"S": (("S", "S"), ("(", "S", ")"), ())}                            # parentheses bien formees
+    return (all(M.appartient(g, m) is True for m in ("", "ab", "aabb", "aaabbb"))
+            and all(M.appartient(g, m) is False for m in ("a", "ba", "aab", "abb"))
+            and all(M.appartient(par, m) is True for m in ("", "()", "(())", "()()"))
+            and all(M.appartient(par, m) is False for m in ("(", ")(", "(()")))
+
+
+def _p_nomenclature_organique() -> bool:
+    import nomenclature_organique as M
+    # C3H6O est compatible avec l aldehyde (propanal) ET la cetone (propanone) : rendre un seul serait FAUX.
+    return ([M.nom_alcane(i) for i in (1, 2, 3, 4)] == ["méthane", "éthane", "propane", "butane"]
+            and M.formule_brute(4, "alcane") == "C4H10"
+            and len(M.identifie("C3H6O")) >= 2
+            and _leve_v(M.identifie, "C6H6")                                  # cyclique : hors perimetre
+            and _leve_v(M.nom_alcane, 13))
+
+
+def _p_jeux_institues() -> bool:
+    import jeux_institues as M
+    # THEOREME DE BOUTON : la position (1,2,3) a une somme de Nim nulle, donc AUCUN coup gagnant.
+    c = M.nim_coup_gagnant((1, 2, 4))
+    tas = list((1, 2, 4))
+    tas[c[0]] -= c[1]
+    return (M.nim_somme((1, 2, 3)) == 0
+            and M.nim_position_perdante((1, 2, 3)) is True
+            and _leve_v(M.nim_coup_gagnant, (1, 2, 3))                        # abstention VRAIE
+            and M.nim_somme(tuple(tas)) == 0                                  # le coup mene a une somme nulle
+            and _leve_v(M.coup_optimal, "echecs", None))                      # le module ne joue pas aux echecs
+
+
+def _p_pharmacocinetique() -> bool:
+    import pharmacocinetique as M
+    # L ASC = dose/Cl est INDEPENDANTE du volume de distribution : identite exacte, ancre elegante.
+    return (_proche(M.demi_vie(0.1), 6.9314718, rel=1e-6)
+            and _proche(M.constante_elimination(5.0, 50.0), 0.1)
+            and _proche(M.aire_sous_courbe(500.0, 5.0), 100.0)
+            and _proche(M.concentration_equilibre_moyenne(500.0, 12.0, 5.0, 1.0), 8.3333, rel=1e-4)
+            and "thanol" in str(M.catalogue_saturables()).lower()             # cinetique saturable
+            and _leve_v(M.constante_elimination, 0.0, 50.0))
+
+
+def _p_familles_langues() -> bool:
+    import familles_langues as M
+    return ("indo-européen" in M.parente("français")
+            and M.ancetre_commun("français", "espagnol") == "roman"
+            and M.ancetre_commun("français", "anglais") == "indo-européen"
+            and M.apparentees("hindi", "anglais") is True                     # contre-intuitif
+            and M.apparentees("hongrois", "français") is False                # ouralien vs indo-europeen
+            and M.est_isolat("basque") is True and M.famille("basque") == "isolat"
+            and M.famille("turc") == "turcique"                               # jamais « altaique » (conteste)
+            and _leve_v(M.ancetre_commun, "français", "arabe"))               # aucune parente etablie
+
+
+def _p_dimensionnement_structure() -> bool:
+    import dimensionnement_structure as M
+    sa = M.contrainte_admissible("acier doux", 1.5)                           # 235 / 1,5 = 156,67 MPa
+    h = M.dimensionne_poutre_rectangulaire(1e7, "acier doux", 1.5, 100.0)
+    return (_proche(sa, 156.667, rel=1e-4)
+            and _proche(h, 61.9, rel=5e-3)
+            and _proche(6 * 1e7 / (100 * h * h), sa, rel=1e-3)                # boucle fermee
+            and M.verifie_section("acier doux", 50.0, 1.5) == "sûr"
+            and M.verifie_section("acier doux", 900.0, 1.5) == "insuffisant"
+            and M.verifie_section("acier doux", 200.0, 1.5) == "indéterminé"  # l intervalle ne tranche pas
+            and _leve_v(M.contrainte_admissible, "acier doux", 0.9)           # gamma < 1
+            and _leve_v(M.contrainte_admissible, "béton", 1.5))               # fragile : pas de limite elastique
+
+
+def _p_densites_ingredients() -> bool:
+    import densites_ingredients as M
+    masse, incertitude = M.volume_vers_masse(236.588, "farine T55")
+    return (_leve_v(M.cup_vers_ml, 1)                                          # convention de cup non precisee
+            and masse - incertitude <= 125.0 <= masse + incertitude            # 1 cup de farine ~ 125 g
+            and M.masse_volumique("miel")[0] > 1.0 > M.masse_volumique("huile")[0]
+            and _proche(M.volume_vers_masse(250, "eau")[0], 250.0)
+            and _leve_v(M.masse_volumique, "poudre de perlimpinpin"))
+
+
 # ── REGISTRE : libellé EXACT (sujets.py) -> (description du mécanisme, preuve exécutable) ──
 REGISTRE: dict[str, tuple[str, object]] = {
+    'premier principe (bilan énergétique)': ('Premier principe (dU = Q - W, convention thermodynamique NOMMEE) et second principe pour processus NON isothermes : m.c.ln(T2/T1) en KELVIN. La meme formule en Celsius donnerait un faux d un facteur 5 : le module refuse les degres.', _p_thermodynamique_principes),
+    'trigonométrie du triangle (valeurs exactes ou approchées MARQUÉES)': ('Resolution complete d un triangle : loi des sinus, loi des cosinus, Heron. Le cas SSA est AMBIGU (zero, une ou DEUX solutions) : le module rend la LISTE des triangles, jamais un seul choisi au hasard.', _p_trigonometrie_triangle),
+    'grammaires formelles et automates (appartenance)': ('Conversion d une grammaire hors-contexte en forme normale de Chomsky (START/TERM/BIN/DEL/UNIT), verifiee par EQUIVALENCE DE LANGAGE, puis appartenance par CYK. Determinisation des AFN par construction des sous-ensembles.', _p_grammaires_formelles),
+    "nomenclature IUPAC d'une molécule donnée": ("Nomenclature organique des chaines lineaires monofonctionnelles. identifie('C3H6O') rend l AMBIGUITE (propanal ET propanone) : rendre un composé unique serait un faux. Ramifiees et cycliques -> abstention.", _p_nomenclature_organique),
+    'coup optimal dans une position finie donnée': ('Minimax generique memoise sur tout jeu FINI a information parfaite. NIM par le theoreme de Bouton : la position (1,2,3) a une somme de Nim nulle, donc AUCUN coup gagnant -> abstention. Le module refuse de jouer aux echecs.', _p_jeux_institues),
+    'pharmacocinétique (demi-vie, posologie standard)': ('Modele a un compartiment, elimination d ordre 1 : k = Cl/Vd, demi-vie, ASC = dose/Cl (independante de Vd), concentration d equilibre, facteur d accumulation. Ethanol et phenytoine (cinetique saturable) -> abstention.', _p_pharmacocinetique),
+    "famille et parenté d'une langue": ('Genealogie des langues (linguistique comparee) : parente complete jusqu a la macro-famille, ancetre commun, isolats. Le basque est un ISOLAT ; le turc est « turcique », jamais « altaique » (regroupement conteste). Familles distinctes -> abstention.', _p_familles_langues),
+    "dimensionnement d'une structure sous charge donnée": ('Verification et dimensionnement contre la contrainte admissible, prise sur la borne BASSE de l intervalle de limite elastique (dimensionner sur la borne haute serait dangereux). Contrainte dans l intervalle -> « indetermine ». Materiau fragile -> abstention.', _p_dimensionnement_structure),
+    'calcul de recette (proportions, conversions)': ('Masses volumiques APPARENTES culinaires, rendues avec leur incertitude (une tasse de farine tassee pese 30 % de plus qu une tasse aeree). Conventions de cup nommees. Ingredient hors catalogue -> abstention.', _p_densites_ingredients),
     "test d'hypothèse (p-valeur) sur données fournies": ('Inference CLASSIQUE : test z, test t, khi-deux ; intervalles de confiance et intervalle de WILSON pour une proportion (celui de Wald est faux pres de 0 et 1). Une p-valeur n est pas la probabilite que H0 soit vraie, et le module le dit.', _p_inference_classique),
     "dérivée d'une fonction élémentaire": ('Derivation SYMBOLIQUE des fonctions elementaires (sin, cos, tan, exp, ln, sqrt) : Leibniz, quotient, chaine. Primitives sur catalogue ferme ; forme non reconnue -> abstention (l integration generale exige Risch).', _p_derivation_symbolique),
     "convergence d'une série donnée": ('Criteres generaux de convergence : d Alembert, Cauchy, series alternees (Leibniz), comparaison. Le cas limite (rapport = 1) est rendu INDETERMINE, jamais tranche : la serie harmonique diverge alors que son terme general tend vers 0.', _p_convergence_series),

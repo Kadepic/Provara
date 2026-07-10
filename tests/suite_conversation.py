@@ -48,6 +48,9 @@ GATES = [
     "valide_inference_classique", "valide_derivation_symbolique", "valide_convergence_series",
     "valide_edo_lineaires", "valide_recurrences", "valide_entropie_source",
     "valide_ajustement_causal", "valide_biais_collision",
+    "valide_thermodynamique_principes", "valide_trigonometrie_triangle", "valide_grammaires_formelles",
+    "valide_nomenclature_organique", "valide_jeux_institues", "valide_pharmacocinetique",
+    "valide_familles_langues", "valide_dimensionnement_structure", "valide_densites_ingredients",
     # VAGUE C : PARTIES VI a XII.
     "valide_finance_actualisation", "valide_elasticite_prix", "valide_pyramide_ages",
     "valide_mobilite_sociale", "valide_compression_sans_perte", "valide_codes_correcteurs",
