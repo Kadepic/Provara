@@ -288,6 +288,64 @@ _CACHE_DIR = os.environ.get("LECTEUR_CACHE_DIR") or os.path.join(os.path.expandu
 # (opt-in) fait confiance à la TAILLE du jsonl seule (contrôle d'intégrité qui survit à l'extraction). Défaut OFF.
 _CACHE_PORTABLE = os.environ.get("LECTEUR_CACHE_PORTABLE", "0") != "0"
 
+# FUITE DE .tmp — cause racine mesurée le 2026-07-12 : 4 371 fichiers .tmp (26 Go) dans un cache vécu.
+# Le motif d'écriture `mkstemp -> write -> os.replace` laisse un .tmp orphelin si le process meurt AVANT le
+# replace. `except: pass` ne le supprimait pas (échec Python) ; et un kill DUR (OOM/SIGKILL, fréquent ici,
+# cf. l'historique OOM) n'est rattrapable par AUCUN except. Deux défenses :
+#   1. `_ecrit_atomique` : try/finally qui unlink le .tmp si le replace n'a pas eu lieu (échec Python) ;
+#   2. `_purge_tmp_orphelins` : au 1ᵉʳ write d'un process, balaie les .tmp ABANDONNÉS (mtime vieux) — seule
+#      parade au kill dur. Fenêtre d'âge : un write réel se termine en secondes ; un .tmp de plus de
+#      _TMP_TTL secondes est forcément abandonné, JAMAIS un writer concurrent (pas de course).
+# Vérifié le 2026-07-12 : sur ce cache, AUCUN .tmp ne portait une relation absente du store (donc aucun
+# « manque à câbler » caché dedans) — ce sont tous des écritures interrompues de tables VIVANTES.
+_TMP_TTL = 600
+_purge_tmp_faite = False
+
+
+def _purge_tmp_orphelins():
+    """Best-effort, une fois par process : supprime les .tmp de cache abandonnés (plus vieux que _TMP_TTL).
+    Ne touche jamais un .tmp récent (un writer concurrent le finit en secondes)."""
+    global _purge_tmp_faite
+    if _purge_tmp_faite:
+        return
+    _purge_tmp_faite = True
+    try:
+        seuil = _horloge() - _TMP_TTL
+        with os.scandir(_CACHE_DIR) as it:
+            for e in it:
+                if e.name.endswith(".tmp"):
+                    try:
+                        if e.stat().st_mtime < seuil:
+                            os.unlink(e.path)
+                    except OSError:
+                        pass
+    except OSError:
+        pass
+
+
+def _horloge():
+    import time
+    return time.time()
+
+
+def _ecrit_atomique(chemin_final, ecrire):
+    """Écrit `chemin_final` atomiquement : un .tmp est rempli par `ecrire(fh)` puis os.replace'é. Le .tmp est
+    TOUJOURS retiré si le replace n'a pas eu lieu (le motif fuyait sinon). Balaie les .tmp abandonnés d'abord."""
+    os.makedirs(_CACHE_DIR, exist_ok=True)
+    _purge_tmp_orphelins()
+    fd, tmp = tempfile.mkstemp(dir=_CACHE_DIR, suffix=".tmp")
+    try:
+        with os.fdopen(fd, "wb") as fh:
+            ecrire(fh)
+        os.replace(tmp, chemin_final)             # atomique (writers concurrents OK)
+        tmp = None                                # consommé par le replace
+    finally:
+        if tmp is not None:
+            try:
+                os.unlink(tmp)
+            except OSError:
+                pass
+
 
 def _ecris_cache_coltable(nom, chemin_jsonl, ct, rel, articles):
     try:
@@ -297,11 +355,8 @@ def _ecris_cache_coltable(nom, chemin_jsonl, ct, rel, articles):
             ct._keys._blob, ct._keys._off.typecode, ct._keys._off.tobytes(),
             ct._codes.typecode, ct._codes.tobytes(), ct._labels,
         ))
-        os.makedirs(_CACHE_DIR, exist_ok=True)
-        fd, tmp = tempfile.mkstemp(dir=_CACHE_DIR, suffix=".tmp")
-        with os.fdopen(fd, "wb") as fh:
-            fh.write(_CACHE_MAGIC); fh.write(payload)
-        os.replace(tmp, os.path.join(_CACHE_DIR, nom + ".bin"))   # atomique (writers concurrents OK)
+        _ecrit_atomique(os.path.join(_CACHE_DIR, nom + ".bin"),
+                        lambda fh: (fh.write(_CACHE_MAGIC), fh.write(payload)))
     except Exception:
         pass
 
@@ -420,11 +475,7 @@ def _ecris_colf(nom, chemin_jsonl, ct, rel, articles):
             while len(buf) % 8:
                 buf.append(0)                   # chaque région alignée 8 (blob/off/codes/lab_blob/lab_off)
             buf += region
-        os.makedirs(_CACHE_DIR, exist_ok=True)
-        fd, tmp = tempfile.mkstemp(dir=_CACHE_DIR, suffix=".tmp")
-        with os.fdopen(fd, "wb") as fh:
-            fh.write(buf)
-        os.replace(tmp, os.path.join(_CACHE_DIR, nom + ".colf"))
+        _ecrit_atomique(os.path.join(_CACHE_DIR, nom + ".colf"), lambda fh: fh.write(buf))
     except Exception:
         pass
 
