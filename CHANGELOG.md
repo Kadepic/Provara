@@ -1,5 +1,29 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — UX : UN ÉCRAN LONG NE DOIT JAMAIS SEMBLER FIGÉ (barre + %)
+
+Yohan : « quand j'ai le message de mise à jour il faudrait 3 points qui défilent ou une barre ou un %, car
+on peut penser que c'est bloqué. » Deux écrans muets de plusieurs minutes le méritaient — la modale ne
+montrait qu'un spinner immobile.
+
+### Préchargement de la connaissance → vraie barre + pourcentage
+`lecteur.charge_dossier` publie désormais sa progression (`PROGRES_CHARGE` : tables chargées / total,
+drapeau `fini`) — état module lu par un **poller** côté serveur, sans couplage inverse (le lecteur ne
+connaît pas l'interface). Le poller alimente `_maj_statut(pct=…)` (barre déterminée dans la modale) et une
+ligne CLI mise à jour en place (`… connaissance : 42 % (583/1390 tables)`). Le front `vueChargement` rend
+la barre — **déterminée** quand le % est là, **animée** (indéterminée) sinon : plus jamais un écran muet,
+même si le backend ne fournit pas de %.
+
+### Mise à jour de l'application (.exe) → vue dédiée avec barre animée
+Le téléchargement du paquet de mise à jour est bloquant et ne rapporte pas de %. Il était **muet côté UI**
+— c'est très probablement le « message de mise à jour » figé qu'a vu Yohan. Statut neuf `maj_appli` +
+vue `vueMajApp` (barre animée, libellé correct « Mise à jour de Provara… l'app va redémarrer seule »),
+posé avant l'application et effacé si elle échoue.
+
+Découplage respecté (le lecteur publie, il n'appelle personne), dégradation propre (pas de % → barre
+animée). Gate `valide_progression` (19/19 : contrat `PROGRES_CHARGE`, `pct`/`maj_appli` surfacés, les
+trois vues longues portent une barre). Suite **130 gates**.
+
 ## 2026-07-12 — FUITE DE .tmp DU CACHE : 26 Go → 3,4 Go, cause racine colmatée (inspectés AVANT nettoyage)
 
 Le préchargement de la connaissance mettait « plusieurs minutes » (Yohan) — c'était une reconstruction de
