@@ -1,5 +1,34 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — `_nonreg` DÉTERMINISTE : il épingle sa fixture, les gates « base complète » SKIPPENT proprement
+
+Sur la remarque de Yohan (« pourquoi tu n'adaptes pas le `_nonreg` ? si ça a bougé il faut qu'il suive »).
+Deux défauts structurels, corrigés ensemble.
+
+### `_nonreg` suivait la MACHINE, pas le dépôt
+`_nonreg._env_pipeline` héritait du `LECTEUR_DATASETS_DIR` du shell : lancé avec la base complète dans
+l'environnement, des gates d'ABSTENTION trouvaient la donnée et tombaient à tort (mesuré :
+`valide_assistant_nl` 500/506). C'est exactement la fragilité que `suite_conversation` avait déjà fermée.
+Correctif : `_nonreg` **épingle lui-même** l'échantillon COMMITTÉ (`datasets/lecteur`) + un cache hors-dépôt.
+Son verdict ne dépend plus de l'ambiant ; il suit le dépôt (l'échantillon est versionné, il évolue avec le
+code). Échappatoire `NONREG_BASE_REELLE=1` pour un run volontaire sur base réelle.
+
+### 16 gates « base complète » tombaient en FAUX-échec sur l'échantillon
+Baseline propre des 793 (jamais obtenu avant) : 16 rouges — **toutes** des gates qui exigent la base réelle
+(72 M) et échouaient faute de leur donnée sur l'échantillon. **Zéro défaut réel** : les 8 non déjà couvertes
+par la passe manuelle passent sur la base complète (villes_coordonnees, substrat_reel, resolution, taxonomie,
+invention_atomes, graphe_typé, ancres_types, audit_ancres) ; `valide_lecteur` = 1615/1615 (juste un timeout
+dans le batch). Une gate honnête ne TOMBE pas quand sa donnée manque : elle SKIPPE. Garde inline ajoutée aux
+16 (marqueur de base réelle : `occupation_personne`, 2,35 M faits, jamais committé ; `type_etoile` pour
+`ancres_types` qui le détectait déjà mais sortait en `exit(1)` au lieu de `exit(0)`). Vérifié : **16/16 SKIP
+propre (exit 0) sur l'échantillon, et RUN+PASS sur la base réelle** (ancres_types 309/309, audit_ancres
+22/22, graphe_typé 24/24, taxonomie 32/32). La base réelle reste vérifiée par la passe manuelle
+`valide_lecteur*`.
+
+Résultat : `_nonreg` donne enfin un baseline **déterministe** — même avec la base complète dans le shell, il
+épingle l'échantillon, les 16 skippent, aucun faux-rouge. Chaque gate est correcte dans TOUS les contextes,
+pas seulement sous une variable d'environnement particulière (leçon de `valide_lecteur_client`).
+
 ## 2026-07-12 — PASSE DE VÉRIFICATION BASE COMPLÈTE : 14 gates dormantes, 1 défaut trouvé et corrigé
 
 Après avoir touché le cœur (clé canonique, version de cache), diligence due : passer sur les 72 M de faits

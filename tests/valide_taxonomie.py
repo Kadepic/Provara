@@ -14,6 +14,18 @@ from __future__ import annotations
 
 import sys
 
+# ─── GARDE « BASE COMPLÈTE » (2026-07-12) — SKIP propre sur l'échantillon ───────────────────────────────
+# Cette gate exige la base RÉELLE (72 M). Sur l'échantillon committé (que `_nonreg` épingle) ses tables
+# sont absentes et ses ancres tomberaient en FAUX-échec. Marqueur de base réelle : `occupation_personne`
+# (2,35 M faits, jamais committé — trop gros). La base réelle est vérifiée par la passe manuelle
+# valide_lecteur* (cf. CHANGELOG). Une gate honnête SKIPPE quand sa donnée manque, elle ne tombe pas.
+import os as _os
+_bc = _os.environ.get("LECTEUR_DATASETS_DIR")
+if _bc and not _os.path.exists(_os.path.join(_bc, "occupation_personne.jsonl")):
+    print("=== valide_taxonomie : SKIP — base complète requise (occupation_personne absent de ce store) ===")
+    sys.exit(0)
+# ───────────────────────────────────────────────────────────────────────────────────────────────────────
+
 import taxonomie
 
 

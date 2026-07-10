@@ -3,6 +3,18 @@ Extensible : chaque veine = (relation, ratio_max_fermeture, valeurs-noyau, ancre
 Pattern frugal : amorce-seule (jamais le global) + cache mmap .colf (chargement quasi-gratuit, par relation).
 FAUX=0 : table fermée (ratio bas), valeurs sensées, noyau présent, ANCRES exactes (vérité indépendante,
 non-circulaire), adversaire -> HORS. Lance seul : `python3 valide_lecteur_nuit.py`."""
+# ─── GARDE « BASE COMPLÈTE » (2026-07-12) — SKIP propre sur l'échantillon ───
+# Gate de classe BASE RÉELLE (72 M). Sur l'échantillon committé (que _nonreg épingle) sa donnée est
+# absente et ses ancres tomberaient en FAUX-échec. Marqueur de base réelle : occupation_personne (2,35 M,
+# jamais committé). Base réelle vérifiée par la passe manuelle valide_lecteur* (cf. CHANGELOG). Une gate
+# honnête SKIPPE quand sa donnée manque, elle ne tombe pas.
+import os as _os, sys as _sys
+_bc = _os.environ.get("LECTEUR_DATASETS_DIR")
+if _bc and not _os.path.exists(_os.path.join(_bc, "occupation_personne.jsonl")):
+    print("=== valide_lecteur_nuit : SKIP — base complète requise (occupation_personne absent de ce store) ===")
+    _sys.exit(0)
+# ──────────────────────────────────────────────────────
+
 from garde_ressources import borne
 borne(max_go=4.0, max_cpu_s=900)   # veines DATE millionnaires (naissance 3,2M) chargées par relation (fresh Lecteur)
 
