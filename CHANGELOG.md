@@ -1,5 +1,37 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — FUITE DE .tmp DU CACHE : 26 Go → 3,4 Go, cause racine colmatée (inspectés AVANT nettoyage)
+
+Le préchargement de la connaissance mettait « plusieurs minutes » (Yohan) — c'était une reconstruction de
+cache à froid, attendue : j'avais réécrit beaucoup de `.jsonl` aujourd'hui, invalidant le cache par mtime.
+Coût unique. Mais en creusant, le cache `~/.verax/cache` pesait **26 Go / 7 139 fichiers** pour seulement
+1 390 relations. La cause : **4 371 fichiers `.tmp` orphelins** (23,5 Go).
+
+### Inspectés CHIRURGICALEMENT avant de nettoyer (consigne de Yohan : « vérifier que ce ne sont pas des manques à câbler »)
+Scan exhaustif des 4 371 en-têtes : 1 984 lisibles → **tous rattachés à une relation VIVANTE du store** ;
+2 387 tronqués (interrompus avant l'en-tête, contenu nul) ; **0 portant une relation absente du store**.
+Aucun savoir orphelin, aucun manque à câbler — ce sont des écritures de cache interrompues de tables déjà
+présentes. Le seul orphelin `.colf`/`.bin` réel (`densite_demo`) est une fixture de test (`source=test`,
+utilisée par `valide_lecteur`).
+
+### La cause racine, et sa correction
+Le cache écrivait `mkstemp → write → os.replace` sous `except: pass`. Un échec après `mkstemp`, ou un kill
+DUR (OOM/SIGKILL — fréquent ici, cf. l'historique OOM ; non rattrapable par un `except`), laissait le `.tmp`.
+Deux défenses, dans `src/lecteur.py` :
+- **`_ecrit_atomique`** (les deux écrivains l'utilisent) : `try/finally` qui retire le `.tmp` si le
+  `os.replace` n'a pas eu lieu — plus de fuite sur échec Python.
+- **`_purge_tmp_orphelins`** : au 1ᵉʳ write d'un process, balaie les `.tmp` plus vieux que `_TMP_TTL`
+  (600 s) — seule parade au kill dur. Un `.tmp` récent (writer concurrent) n'est JAMAIS touché (pas de
+  course). Auto-cicatrisant : le cache ne ré-accumulera plus.
+
+Gate `valide_cache_tmp` (8/8 : écriture propre, non-fuite sur échec, purge âge-filtrée, une seule par
+process). Suite **129 gates**. `valide_lecteur` **1615/1615** (base complète, cœur du cache inchangé).
+
+### Nettoyage immédiat, sûr
+Les 4 371 `.tmp` (tous âgés de 25 h à 105 h, aucun récent) supprimés en âge-filtré : **23,5 Go libérés**,
+cache **26,9 → 3,4 Go**, exactement 2 768 fichiers (1 384 relations × 2). Le serveur en cours n'est pas
+affecté — il ne tient pas les `.tmp` en mmap ; ses `.colf`/`.bin` actifs sont intacts.
+
 ## 2026-07-12 — MÉMOIRE CONVERSATIONNELLE : SIX COMPORTEMENTS CASSÉS, RÉPARÉS (« zéro dette », Yohan)
 
 `interface/valide_interface.py` dormait hors suite : **52/58 sur la base complète**. A/B fait — le défaut
