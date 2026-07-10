@@ -1,5 +1,73 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — TROIS SONDES NÉGATIVES, CONSIGNÉES (ce qu'on ne publiera pas, et pourquoi)
+
+Le mandat dit « traiter », pas « couvrir ». Trois pistes sondées le même jour, trois refus mesurés :
+
+- **« Résultats établis du domaine » par Wikidata** — 1 714 items typés théorème/loi/constante/principe/
+  équation. Rattachement P921 : 49 liens. P361 : 725 liens mais **pollué comme P2283** (« arbre → écorce »,
+  « droits LGBT → Principes de Jogjakarta »). Rendement : **40 domaines sur 7 584 (0,5 %)**, faux compris.
+  Une couverture de façade est pire que « non traité ». HORS.
+- **Définitions manquantes par description Wikidata** — 242 métiers sans définition, 133 mono-QID,
+  **27 descriptions FR : toutes vides** (« profession », « métier », « occupation »). Traiter un sujet avec
+  « boulanger : profession » serait un traitement de façade. HORS.
+- **P867 (code ROME Wikidata)** — 5 items, 1 métier net, et le seul chevauchement CONFIRME un drift de
+  millésime (tatoueur : D1208 v3 vs D1244 v4). MORT.
+
+**Rejeu vérifié** : les 7 ingesteurs du jour re-publient les 8 tables **bit-à-bit identiques** (md5).
+Un pipeline non rejouable est une dette silencieuse ; celui-ci n'en est pas une.
+
+## 2026-07-12 — L'ORACLE DE DOMAINE : 906 sujets-domaines FAUX retirés de l'ANNEXE D (le pas de l'oracle métier, rejoué)
+
+### Le même faux de mesure que les métiers, dans l'autre annexe
+`genere_sujets` prenait CHAQUE valeur de `domaine_travail` (P101) pour un domaine. Échantillonné avant de
+traiter l'ANNEXE D : « **Friedrich Nietzsche** » (une PERSONNE — le philologue qui l'étudie a
+P101 = l'item Nietzsche), « **Fonds des Nations unies pour l'enfance** » (une ORGANISATION, mésusage
+employeur), « **France** » (une ENTITÉ GÉOGRAPHIQUE), « chauffeur de taxi » (un métier). « Résultats
+établis du domaine Friedrich Nietzsche » est un sujet MAL FORMÉ — et « questions ouvertes du domaine
+France » comptait comme TRAITÉ (routage) : on comptait des traités sur des non-domaines.
+
+### Deux pièges PROPRES aux domaines, mesurés pendant la construction
+- **La sur-exclusion.** Première version : exclure tout libellé porté par un item de classe exclue —
+  « peinture » tombait à cause de sa PAGE D'HOMONYMIE, alors que les 4 962 peintres pointent Q11629
+  (peinture, forme d'art). La garde juge les **QID réellement utilisés** comme cible de P101 ; un libellé
+  n'est retiré que si TOUTES ses cibles sont exclues. Et une garde POSITIVE (« disciplines seulement »)
+  sous-comptait : « permaculture » (mouvement social), « peinture », « gospel » sont des domaines
+  TRAITABLES — retirer un sujet traitable est l'autre mesure fausse.
+- **La collision de clés.** « physique »/« Physique » émis en deux paires se rejetaient en MULTIVALUÉ
+  dans `fonctionnel` : « physique » sortait de l'oracle EN SILENCE (139 rejets, mesuré). L'oracle groupe
+  par la clé `_sans_articles` et émet UNE surface ; `domaines_de_la_carte()` cherche par la même clé.
+
+### Le correctif
+`ingestion/ingere_domaines_attestes.py` publie **`est_domaine`** (30 008 clés attestées — cibles P101
+réelles moins humain/patronyme/prénom/homonymie/organisation/entité géographique, en DEUX requêtes QLever
+POST). `genere_sujets.domaines_de_la_carte()` filtre par lookup et LÈVE si l'oracle manque. Gate
+`valide_oracle_domaine` (10/10 : sur-exclusion, collision, sabotage, absence). Suite **124 gates**.
+Juge : **45 901 → 44 090 sujets (−1 811), traités 16 734 → 15 829 (−905 faux traités), non traités
+25 633 → 24 727**. Ne jamais « restaurer » l'ancien compteur : ces sujets n'existaient pas.
+
+## 2026-07-12 — LE LEVIER D'ALIGNEMENT : P8283 (+347 métiers ISCO), et le PIÈGE DE MILLÉSIME P952
+
+### Un code à 4 chiffres n'est pas une nomenclature
+Wikidata a DEUX propriétés de code ISCO. **P952 sondée d'abord : c'est l'ISCO-88** — « acteur de
+cinéma → 2455 », « acrobate → 3474 », des codes 88 aux mêmes formes que les codes 08. Les injecter dans
+la chaîne BLS (crosswalk ISCO-**08**→SOC) aurait été un faux SYSTÉMATIQUE et silencieux — attrapé aux
+ancres avant toute publication. La bonne propriété est **P8283** (ISCO-08) : acteur → 2655 ✓.
+
+### `ingestion/ingere_isco_wikidata.py` — table `code_isco_p8283_metier` (347 métiers)
+La jointure est par **QID** (l'oracle `est_metier` porte les QID de chaque libellé) — l'alignement le plus
+direct du projet, zéro appariement de chaînes. Trois gardes, chacune payée d'un faux mesuré : **mono-QID
+seulement** (« compositeur »-musique prenait le 7321 du compositeur-TYPOGRAPHE, seul homonyme à porter
+P8283 — 25 écartés) ; multi-groupes écartés (13) ; hors-ESCO seulement. La fusion vit dans
+`_isco_du_store` : un métier que deux sources classent différemment est **écarté et compté** (25 conflits
+ESCO/P8283 mesurés sur le chevauchement), jamais arbitré en silence.
+
+### L'effet levier, mesuré
+L'alignement ISCO passe de 481 à 828 métiers ; les trois chaînes re-publiées bondissent :
+**rémunération 470 → 808, outils 478 → 822, risques 398 → 706** (+990 sujets sortis du backlog d'un seul
+lot d'alignement — plus que n'importe quel lot de source). Gate `valide_isco_wikidata` (11/11, fusion et
+désaccord compris). Suite **123 gates**. Juge : **26 623 → 25 633 non traités**, partiels 2 544 → 3 534.
+
 ## 2026-07-12 — L'AXE « RISQUES PROFESSIONNELS » S'OUVRE : BLS SOII — LES 5 AXES « SANS SOURCE » SONT TOUS OUVERTS
 
 Dernier des cinq axes métier réputés bloqués. Le SOII (table **R100** 2023-2024) publie les taux
