@@ -1,0 +1,1808 @@
+# SUJETS BORNÉ OU NON — carte des sujets et de leur bornage
+
+> **RECONSTRUCTION + EXTENSION 2026-07-10** (l'original vivait à la racine du projet harnais, absent de ce
+> disque). Mandat Yohan : « cartographier réellement tout ce qui existe, séparer ceux qui sont traités de ceux
+> qui ne le sont pas, et parmi les traités : complets ou non ; à terme dépasser largement 10 000 sujets — et
+> si on prend les métiers et tout ce qui les entoure, bien plus ; pas seulement Wikidata ; il n'y a pas de
+> limites. »
+>
+> **CE FICHIER** = les parties CONCEPTUELLES (rédigées, jugement de bornage assumé) + l'ANNEXE T
+> (taxonomies normalisées HORS-Wikidata : Dewey/OCLC, ISCO-08/OIT) + l'ANNEXE S (une table vérifiée du store
+> = un sujet borné DE FAIT ; ancrage audité à 100 %).
+> **`SUJETS_ANNEXES_AUTO.md`** (généré par `outils/genere_sujets.py`, gitignoré car dérivable) porte les
+> dizaines de milliers de sujets MÉTIERS × AXES et DOMAINES × AXES, lus du store réel.
+>
+> **À VALIDER / CORRIGER PAR YOHAN** : les codes de bornage engagent un jugement. Au doute, le code prudent
+> a été choisi (NB-INDEC / MIX plutôt qu'un B- forcé). `src/couverture_borne.py` mesure — jamais ne déclare —
+> ce qui est TRAITÉ, PARTIEL ou NON TRAITÉ, et produit le backlog des vagues suivantes.
+
+Légende des codes (héritée, cf. `src/sujets.py`) :
+  B-NEC   — borné par NÉCESSITÉ (logique/mathématiques : la réponse découle des définitions)
+  B-PHY   — borné par la PHYSIQUE (lois et mécanismes mesurables, rejouables)
+  B-FAIT  — borné par les FAITS enregistrés (vérifiables dans une source)
+  B-CONV  — borné par CONVENTION humaine figée (orthographe, unités, normes, codes)
+  NB-OUV  — borné EN PRINCIPE, accès manquant (science ouverte)
+  NB-SUBJ — non borné : subjectif (goûts, préférences)
+  NB-SPEC — non borné : spéculatif (futur contingent)
+  NB-NORM — non borné : normatif (morale, politique, esthétique)
+  NB-INDEC— non borné : indécidable en l'état
+  MIX     — part bornée + part non bornée (les séparer dans la réponse)
+
+# PARTIE I — Logique, mathématiques et calcul (le nécessaire)
+## I.1 — Logique formelle
+  - validité d'un raisonnement propositionnel :: B-NEC → tables de vérité, décidable
+  - syllogismes et déduction classique :: B-NEC → règles d'inférence vérifiables mécaniquement
+  - satisfiabilité d'un système de contraintes borné :: B-NEC → énumération/propagation exacte
+  - conséquence en logique du premier ordre (cas décidables) :: B-NEC → fragments décidables
+  - conséquence en logique du premier ordre (cas général) :: NB-INDEC → semi-décidable seulement
+  - logiques modales (nécessité, possibilité) :: B-NEC → sémantique des mondes possibles fixée
+  - logique temporelle (Allen, intervalles) :: B-NEC → algèbre d'intervalles exacte
+  - logique trivaluée / paraconsistante :: B-NEC → tables fixées par la définition
+  - paradoxes autoréférentiels (menteur) :: NB-INDEC → indécidable par construction
+  - théorèmes d'incomplétude (portée) :: B-NEC → résultat prouvé
+  - problème de l'arrêt sur machine universelle :: NB-INDEC → indécidable (prouvé)
+## I.2 — Arithmétique et théorie des nombres
+  - calcul arithmétique exact :: B-NEC → évaluation mécanique (juge AST)
+  - primalité d'un entier donné :: B-NEC → test déterministe
+  - factorisation d'un entier de taille modérée :: B-NEC → algorithme exact
+  - PGCD, PPCM, arithmétique modulaire :: B-NEC → Euclide, exact
+  - divisibilité et congruences :: B-NEC → définitions
+  - développement décimal d'un rationnel :: B-NEC → division exacte, période calculable
+  - irrationalité d'un radical donné :: B-NEC → critère décidable
+  - conjecture de Goldbach :: NB-OUV → bornée en principe, preuve manquante
+  - conjecture des nombres premiers jumeaux :: NB-OUV
+  - hypothèse de Riemann :: NB-OUV
+## I.3 — Algèbre
+  - identités remarquables et simplification symbolique :: B-NEC → réécriture prouvable
+  - résolution d'équation du 1er degré :: B-NEC → forme fermée
+  - résolution d'équation du 2nd degré (discriminant) :: B-NEC → forme fermée
+  - résolution d'équations de degré 3 et 4 :: B-NEC → formules de Cardan/Ferrari
+  - insolubilité par radicaux du degré ≥ 5 :: B-NEC → théorème d'Abel-Ruffini
+  - systèmes linéaires (pivot de Gauss) :: B-NEC → algorithme exact
+  - déterminant, rang, inverse d'une matrice :: B-NEC → calcul exact
+  - valeurs propres d'une matrice donnée :: B-NEC → polynôme caractéristique
+  - algèbre de Boole (simplification) :: B-NEC → tables et lois fixées
+  - structures de groupe/anneau/corps (vérification d'axiomes) :: B-NEC
+## I.4 — Analyse
+  - limite d'une suite/fonction usuelle :: B-NEC → définition, calcul
+  - dérivée d'une fonction élémentaire :: B-NEC → règles de dérivation
+  - primitive/intégrale d'une fonction élémentaire :: B-NEC → tables et méthodes exactes
+  - intégrale sans primitive élémentaire (Risch) :: B-NEC → décidable pour les élémentaires
+  - développement limité / série de Taylor :: B-NEC → coefficients exacts
+  - convergence d'une série donnée :: B-NEC → critères
+  - équations différentielles linéaires à coefficients constants :: B-NEC → forme fermée
+  - solutions d'équations différentielles non linéaires générales :: NB-OUV → pas de forme fermée générale
+## I.5 — Géométrie et topologie
+  - périmètres, aires, volumes des figures usuelles :: B-NEC → formules exactes
+  - théorème de Pythagore et applications :: B-NEC → calcul exact
+  - trigonométrie du triangle (valeurs exactes ou approchées MARQUÉES) :: B-NEC
+  - géométrie analytique (droites, cercles, coniques) :: B-NEC → équations exactes
+  - géométrie vectorielle (produit scalaire, vectoriel) :: B-NEC
+  - transformations affines et isométries :: B-NEC
+  - géométries non euclidiennes (cohérence) :: B-NEC → modèles prouvés
+  - conjecture de Poincaré (statut) :: B-FAIT → résolue (Perelman, 2003)
+  - invariants topologiques d'un objet donné :: B-NEC → calculables sur objets finis
+## I.6 — Probabilités et statistiques
+  - dénombrement combinatoire :: B-NEC → formules exactes
+  - probabilité d'un événement dans un modèle donné :: B-NEC → axiomes de Kolmogorov
+  - espérance, variance, moments d'une loi donnée :: B-NEC → définitions
+  - théorème de Bayes appliqué à des données :: B-NEC → calcul exact
+  - statistiques descriptives d'un jeu de données fourni :: B-NEC → calcul sur les données
+  - test d'hypothèse (p-valeur) sur données fournies :: B-NEC → procédure définie
+  - intervalle de confiance / conformal prediction :: B-NEC → couverture garantie
+  - inférence causale depuis l'observationnel seul :: MIX → calcul borné, identifiabilité conditionnelle
+  - paradoxe de Simpson (détection sur données) :: B-NEC → vérifiable
+  - biais de sélection / survie / publication (détection) :: B-NEC → diagnostics définis
+  - « chance » au sens du sort personnel :: NB-SUBJ
+## I.7 — Informatique théorique
+  - complexité d'un algorithme donné :: B-NEC → analyse prouvable
+  - classes P, NP, NP-complétude d'un problème connu :: B-FAIT → résultats établis
+  - P vs NP :: NB-OUV → question ouverte
+  - correction d'un programme fourni (spécification donnée) :: B-NEC → preuve/exécution
+  - comportement d'un code exécutable fourni :: B-NEC → exécution = juge
+  - terminaison d'un programme arbitraire :: NB-INDEC → problème de l'arrêt
+  - compressibilité (complexité de Kolmogorov) d'une chaîne :: NB-INDEC → non calculable
+  - grammaires formelles et automates (appartenance) :: B-NEC → décidable
+
+# PARTIE II — Matière et énergie (physique fondamentale)
+## II.1 — Mécanique classique
+  - cinématique moyenne (v = d/t) :: B-PHY → définition, roue compilée
+  - cinématique à accélération constante :: B-PHY → équations horaires exactes
+  - problème de rencontre / poursuite :: B-PHY → résolution exacte
+  - dynamique newtonienne F = m·a :: B-PHY → loi vérifiée, roue
+  - poids et pesanteur locale :: B-PHY → P = m·g, roue
+  - travail et puissance mécanique :: B-PHY → W = F·d, P = F·v, roues
+  - énergie cinétique et potentielle :: B-PHY → formules exactes, roues
+  - conservation de l'énergie mécanique (système isolé) :: B-PHY
+  - quantité de mouvement et chocs :: B-PHY → conservation, roue p = m·v
+  - moment de force et équilibre du levier :: B-PHY → M = F·b, roue
+  - moment cinétique et rotation du solide :: B-PHY → lois exactes
+  - oscillateur harmonique (période) :: B-PHY → formule exacte
+  - pendule simple aux petites oscillations :: B-PHY → approximation DITE
+  - problème à trois corps (solution générale) :: NB-OUV → pas de forme fermée
+  - frottements réels d'un système décrit :: MIX → lois bornées, coefficients à mesurer
+## II.2 — Thermodynamique
+  - température, chaleur, capacité thermique :: B-PHY → définitions
+  - premier principe (bilan énergétique) :: B-PHY → loi
+  - second principe et entropie :: B-PHY → loi
+  - rendement de Carnot :: B-PHY → borne théorique exacte
+  - COP d'une pompe à chaleur idéale :: B-PHY → formule exacte
+  - échangeur : DTLM et surface d'échange :: B-PHY → formules sous hypothèses DITES
+  - loi des gaz parfaits :: B-PHY → équation d'état
+  - transitions de phase (conditions standard) :: B-FAIT → tables mesurées
+  - cohérence thermodynamique d'un dispositif décrit :: B-PHY → principes = juge
+  - mouvement perpétuel de 1re/2e espèce :: B-PHY → impossible (prouvé par les principes)
+## II.3 — Électromagnétisme
+  - loi d'Ohm U = R·I :: B-PHY → roue
+  - puissance et énergie électriques :: B-PHY → roues P = U·I, E = P·t
+  - autonomie d'une batterie (charge/courant) :: B-PHY → roue t = Q/I
+  - énergie d'une batterie (charge × tension) :: B-PHY → roue E = Q·U
+  - loi de Coulomb et champ électrostatique :: B-PHY → formules exactes
+  - lois de Kirchhoff sur un circuit donné :: B-PHY → système linéaire exact
+  - induction (Faraday-Lenz) :: B-PHY → loi
+  - équations de Maxwell (conséquences) :: B-PHY → cadre prouvé
+  - propagation d'une onde électromagnétique dans le vide :: B-PHY → c constante
+## II.4 — Ondes, optique et acoustique
+  - relation v = λ·f :: B-PHY → définition
+  - réflexion, réfraction (Snell-Descartes) :: B-PHY → loi exacte
+  - interférences et diffraction (dispositifs standards) :: B-PHY → formules exactes
+  - effet Doppler (source/observateur) :: B-PHY → formule exacte
+  - intensité sonore en décibels :: B-CONV → échelle conventionnelle définie
+  - seuil d'audibilité d'une personne donnée :: MIX → mécanisme borné, valeur individuelle mesurée
+## II.5 — Physique moderne
+  - dilatation du temps / contraction des longueurs (relativité restreinte) :: B-PHY → formules exactes
+  - équivalence masse-énergie E = m·c² :: B-PHY → roue
+  - décroissance radioactive (demi-vie donnée) :: B-PHY → loi exponentielle exacte
+  - défaut de masse et énergie de liaison nucléaire :: B-PHY → calcul exact
+  - niveaux d'énergie de l'atome d'hydrogène :: B-PHY → formule exacte
+  - énergie d'un photon (E = h·ν) :: B-PHY → définition
+  - principe d'incertitude (borne) :: B-PHY → inégalité prouvée
+  - interprétation de la mécanique quantique :: NB-INDEC → interprétations empiriquement équivalentes
+  - gravité quantique / théorie du tout :: NB-OUV
+  - nature de la matière noire et de l'énergie noire :: NB-OUV
+## II.6 — Fluides
+  - masse volumique et densité :: B-PHY → roue ρ = m/V
+  - pression hydrostatique et poussée d'Archimède :: B-PHY → formules exactes
+  - pression = force / surface :: B-PHY → roue P = F/S
+  - conservation du débit (Q = S·v) :: B-PHY → roue
+  - volume écoulé (V = Q·t) :: B-PHY → roue
+  - théorème de Bernoulli (fluide parfait) :: B-PHY → hypothèses DITES
+  - pertes de charge d'un réseau réel :: MIX → mécanisme borné, coefficients empiriques
+  - turbulence pleinement développée (prédiction fine) :: NB-OUV
+  - aérodynamique d'un profil donné (portance/traînée) :: MIX → lois bornées, coefficients mesurés
+
+# PARTIE III — Chimie et matériaux
+## III.1 — Chimie générale
+  - masse molaire d'un composé :: B-PHY → table périodique + calcul exact
+  - stœchiométrie d'une réaction équilibrée :: B-PHY → conservation des atomes
+  - équilibrage d'une équation chimique :: B-NEC → système linéaire exact
+  - pH d'une concentration donnée :: B-PHY → définition (-log₁₀)
+  - constante d'équilibre et déplacement (Le Chatelier) :: B-PHY → lois
+  - oxydoréduction (nombres d'oxydation) :: B-CONV → règles fixées
+  - électronégativité et polarité d'une liaison :: B-FAIT → échelle mesurée (Pauling)
+  - configuration électronique d'un élément :: B-NEC → règles de remplissage
+  - propriétés périodiques (rayon, ionisation) :: B-FAIT → mesures tabulées
+## III.2 — Chimie organique et biochimie
+  - nomenclature IUPAC d'une molécule donnée :: B-CONV → règles publiées
+  - identification d'un composé par sa formule :: B-FAIT → registres (CAS/PubChem)
+  - isomérie (dénombrement pour formule brute) :: B-NEC → énumération exacte
+  - mécanismes réactionnels canoniques :: B-FAIT → mécanismes établis
+  - prédiction de réactivité d'une molécule inédite :: NB-OUV
+  - « meilleure » molécule pour un usage ouvert :: NB-OUV → espace chimique non exploré
+## III.3 — Matériaux
+  - propriétés mécaniques d'un matériau nommé :: B-FAIT → mesures tabulées
+  - composition d'un alliage nommé :: B-FAIT → normes/registres
+  - conductivité thermique/électrique d'un matériau :: B-FAIT → mesurée
+  - dopage et semi-conducteurs (principe) :: B-PHY → mécanisme établi
+  - toxicité d'une substance à dose donnée :: MIX → mécanismes bornés, seuils réglementaires conventionnels
+
+# PARTIE IV — La Terre
+## IV.1 — Géologie
+  - structure interne de la Terre :: B-FAIT → sismologie
+  - tectonique des plaques (mouvements mesurés) :: B-FAIT → GPS/paléomagnétisme
+  - datation radiométrique d'un échantillon :: B-PHY → loi de décroissance
+  - échelle des temps géologiques :: B-CONV → nomenclature ratifiée (ICS)
+  - classification d'une roche donnée :: B-CONV → nomenclature pétrographique
+  - prédiction de la date d'un séisme :: NB-OUV → pas de mécanisme prédictif fiable
+## IV.2 — Hydrosphère et atmosphère
+  - cycle de l'eau (mécanismes) :: B-PHY
+  - composition de l'atmosphère :: B-FAIT → mesures
+  - effet de serre (mécanisme radiatif) :: B-PHY → physique établie
+  - météo à quelques jours :: MIX → borné à court terme, chaotique au-delà
+  - météo au-delà de deux semaines :: NB-SPEC → horizon de prédictibilité dépassé
+  - climat projeté sous scénario d'émissions donné :: MIX → physique bornée, scénario = hypothèse
+## IV.3 — Géographie physique
+  - relief, sommets, altitudes :: B-FAIT → mesures enregistrées
+  - fleuves, longueurs, bassins, embouchures :: B-FAIT
+  - superficies des terres émergées et des îles :: B-FAIT
+  - coordonnées d'un lieu nommé :: B-FAIT → géodésie
+  - distances orthodromiques entre deux lieux :: B-NEC → calcul exact sur le géoïde
+  - types de biomes et de climats (classification) :: B-CONV → Köppen et consorts
+  - « le plus beau paysage » :: NB-SUBJ
+
+# PARTIE V — La vie
+## V.1 — Biologie fondamentale
+  - taxonomie (règne, embranchement, classe, ordre, famille, genre, espèce) :: B-FAIT → classifications
+  - caractéristiques d'une espèce nommée (habitat, régime, longévité) :: B-FAIT
+  - anatomie et physiologie descriptives :: B-FAIT → connaissances établies
+  - code génétique (correspondance codon-acide aminé) :: B-CONV → table universelle établie
+  - réplication, transcription, traduction (mécanismes) :: B-PHY
+  - hérédité mendélienne (croisements) :: B-NEC → calcul probabiliste exact
+  - phylogénie d'un clade (arbre) :: MIX → données bornées, topologie parfois débattue
+  - origine de la vie :: NB-OUV
+## V.2 — Écologie et évolution
+  - sélection naturelle (mécanisme) :: B-PHY → mécanisme établi
+  - dynamique des populations (modèles donnés) :: B-NEC → équations exactes
+  - réseaux trophiques d'un écosystème décrit :: B-FAIT
+  - statut de conservation d'une espèce :: B-FAIT → registres (UICN)
+  - date d'extinction future d'une espèce :: NB-SPEC
+## V.3 — Médecine et santé
+  - étiologie des maladies infectieuses courantes :: B-FAIT → agents identifiés
+  - pharmacocinétique (demi-vie, posologie standard) :: B-FAIT → études enregistrées
+  - efficacité d'un traitement (essais publiés) :: B-FAIT → résultats mesurés, incertitude DITE
+  - diagnostic d'un cas individuel :: NB-INDEC → exige examen, hors périmètre
+  - « faut-il » tel traitement pour telle personne :: NB-NORM → décision médicale individuelle
+  - conscience et expérience subjective (problème difficile) :: NB-OUV
+
+# PARTIE VI — Société humaine
+## VI.1 — Économie
+  - comptabilité d'une entité (bilan, compte de résultat) :: B-CONV → normes comptables
+  - calcul d'intérêts, annuités, TRI, VAN :: B-NEC → formules exactes
+  - inflation mesurée sur une période :: B-FAIT → indices publiés
+  - PIB, chômage, balance commerciale d'un pays/année :: B-FAIT → statistiques publiées
+  - élasticité prix mesurée sur données :: B-NEC → calcul sur les données
+  - « la bonne politique économique » :: NB-NORM → arbitrage de valeurs
+  - cours d'un actif dans six mois :: NB-SPEC
+  - valeur « juste » d'une entreprise :: MIX → méthodes bornées, hypothèses ouvertes
+## VI.2 — Droit
+  - texte en vigueur d'une loi à une date :: B-FAIT → journaux officiels
+  - hiérarchie des normes d'un pays :: B-CONV → constitution
+  - qualification juridique d'un fait décrit :: MIX → règles bornées, appréciation ouverte
+  - jurisprudence d'une cour sur un point :: B-FAIT → arrêts publiés
+  - « la loi est-elle juste » :: NB-NORM
+  - issue d'un procès en cours :: NB-SPEC
+## VI.3 — Politique et institutions
+  - régime politique d'un pays/année :: B-FAIT → registres
+  - dirigeants par pays et par année :: B-FAIT → registres (chef_etat/gouvernement_pays_annee)
+  - résultats d'élections passées :: B-FAIT → proclamations officielles
+  - mode de scrutin et paradoxes de vote (Arrow, Condorcet) :: B-NEC → théorèmes prouvés
+  - « le meilleur système politique » :: NB-NORM
+  - issue d'une élection future :: NB-SPEC
+## VI.4 — Sociologie et démographie
+  - population, natalité, mortalité d'un pays/année :: B-FAIT → recensements
+  - pyramide des âges d'une population donnée :: B-FAIT
+  - mobilité sociale mesurée sur cohorte :: B-FAIT → études longitudinales
+  - causes profondes d'un phénomène social :: MIX → mesures bornées, interprétation débattue
+## VI.5 — Éducation
+  - programmes et diplômes officiels :: B-CONV → textes publiés
+  - équivalences internationales de diplômes :: B-CONV → conventions
+  - « la meilleure pédagogie » :: MIX → effets mesurés bornés, finalités normatives
+
+# PARTIE VII — Langue, signes et communication
+## VII.1 — Langue française
+  - orthographe d'un mot :: B-CONV → dictionnaires de référence
+  - conjugaison d'un verbe à un temps donné :: B-CONV → tables (Bescherelle)
+  - accord du participe passé dans un cas donné :: B-CONV → règles codifiées
+  - genre grammatical d'un nom :: B-CONV
+  - sens lexical d'un mot :: B-CONV → lexiques enregistrés
+  - synonymes, antonymes, hyperonymes :: B-CONV → relations lexicales attestées
+  - étymologie d'un mot :: B-FAIT → étymons attestés
+  - registre de langue d'un énoncé :: MIX → indices bornés, frontière graduelle
+  - « la plus belle tournure » :: NB-SUBJ
+  - norme future d'un néologisme :: NB-SPEC
+## VII.2 — Langues et traduction
+  - traduction d'un mot ou d'une formule figée :: B-CONV → correspondances attestées
+  - famille et parenté d'une langue :: B-FAIT → linguistique historique
+  - nombre de locuteurs d'une langue :: B-FAIT → estimations sourcées, incertitude DITE
+  - déchiffrement d'une écriture non déchiffrée :: NB-OUV
+  - « la langue la plus riche » :: NB-SUBJ
+## VII.3 — Sémiotique et information
+  - encodage et compression sans perte (garanties) :: B-NEC → théorèmes de Shannon
+  - entropie d'une source donnée :: B-NEC → calcul exact
+  - correction d'erreurs (codes donnés) :: B-NEC → propriétés prouvées
+  - cryptographie : sécurité prouvée sous hypothèse :: MIX → réduction bornée, hypothèse ouverte
+
+# PARTIE VIII — Arts et œuvres
+## VIII.1 — Attribution et description
+  - auteur, compositeur, réalisateur d'une œuvre :: B-FAIT → registres
+  - année de création d'une œuvre :: B-FAIT
+  - dimensions, durée, support d'une œuvre :: B-FAIT → mesures
+  - mouvement artistique d'une œuvre :: MIX → critères bornés, classement parfois débattu
+## VIII.2 — Théorie et technique
+  - harmonie et gammes (règles d'un système donné) :: B-CONV → théorie fixée
+  - métrique et versification :: B-CONV → règles codifiées
+  - perspective géométrique :: B-NEC → construction exacte
+  - colorimétrie (espaces, conversions) :: B-CONV → standards
+## VIII.3 — Jugement
+  - « chef-d'œuvre ou pas » :: NB-NORM → canon esthétique débattu
+  - interprétation du sens d'une œuvre :: MIX → éléments factuels bornés, lecture ouverte
+  - « le plus grand artiste » :: NB-SUBJ
+
+# PARTIE IX — Technologie et ingénierie
+## IX.1 — Génie et conception
+  - dimensionnement d'une structure sous charge donnée :: B-PHY → résistance des matériaux
+  - bilan énergétique d'un système décrit :: B-PHY → premier principe
+  - rendement d'une machine réelle :: MIX → borné par Carnot, pertes à mesurer
+  - faisabilité d'une invention décrite contre les lois physiques :: MIX → les lois bornent, le design est ouvert
+  - « le meilleur design » :: NB-SUBJ
+## IX.2 — Informatique appliquée
+  - vulnérabilités canoniques (CWE) sur code fourni :: B-FAIT → motifs audités
+  - complexité et coût d'un algorithme donné :: B-NEC
+  - reproductibilité d'un build (déterminisme) :: B-NEC → vérifiable
+  - « le meilleur langage » :: NB-SUBJ
+  - performance d'un système sur charge future :: NB-SPEC
+## IX.3 — Transport et énergie
+  - consommation de carburant (L/100 km) :: B-PHY → roue C = 100·V/d
+  - autonomie d'un véhicule électrique (conditions données) :: MIX → calcul borné, conditions réelles variables
+  - production d'une centrale (puissance × temps) :: B-PHY → roue E = P·t
+  - mix électrique d'un pays/année :: B-FAIT → statistiques publiées
+
+# PARTIE X — Religion, philosophie, mythologie
+  - doctrines et textes d'une religion :: B-FAIT → corpus attestés
+  - histoire et datation des faits religieux :: B-FAIT
+  - généalogies mythologiques (corpus donné) :: B-FAIT → textes
+  - écoles philosophiques et thèses attestées :: B-FAIT → corpus
+  - validité d'un argument philosophique :: B-NEC → logique
+  - vérité d'une doctrine métaphysique :: NB-INDEC
+  - existence de Dieu :: NB-INDEC
+  - sens de la vie :: NB-INDEC
+  - libre arbitre :: NB-INDEC
+  - « la bonne morale » :: NB-NORM
+
+# PARTIE XI — Histoire de l'humanité
+  - datation d'un événement historique :: B-FAIT → sources
+  - chronologie et successions :: B-FAIT
+  - biographies (naissance, mort, faits) :: B-FAIT
+  - archéologie : datation d'un site :: B-PHY → méthodes physiques
+  - causes profondes d'un événement historique :: MIX → chronologie bornée, pondération débattue
+  - « ce qui serait arrivé si… » (uchronie) :: NB-SPEC
+  - « le meilleur dirigeant » :: NB-NORM
+
+# PARTIE XII — Conventions, mesures, jeux et vie quotidienne
+## XII.1 — Mesures et conventions
+  - unités du système international :: B-CONV → définitions figées (SI 2019)
+  - conversions d'unités :: B-CONV → tables exactes
+  - calendriers et fuseaux horaires :: B-CONV
+  - codes normalisés (ISO 4217, indicatifs, ISBN, plaques) :: B-CONV → registres officiels
+  - formats de date/nombre par pays :: B-CONV
+## XII.2 — Jeux et sports
+  - règles d'un jeu institué (échecs, go, cartes) :: B-CONV → règlements publiés
+  - coup optimal dans une position finie donnée :: B-NEC → calculable (exact si arbre borné)
+  - résultats sportifs passés :: B-FAIT → archives
+  - records du monde homologués :: B-FAIT → fédérations
+  - issue d'un match futur :: NB-SPEC
+  - « le sport le plus intéressant » :: NB-SUBJ
+## XII.3 — Vie quotidienne
+  - heure et date locales :: B-FAIT → horloge et fuseau
+  - météo observée à l'instant :: B-FAIT → mesure sourcée
+  - calcul de recette (proportions, conversions) :: B-NEC → arithmétique exacte
+  - temps de cuisson d'un aliment (conditions données) :: MIX → transferts bornés, préférence subjective
+  - « le meilleur plat » :: NB-SUBJ
+  - préférences personnelles de l'utilisateur :: NB-SUBJ → l'utilisateur est la seule source (mémoire)
+
+# PARTIE XIII — Le non-borné cartographié (pour router honnêtement, jamais pour répondre)
+  - goûts et préférences personnelles :: NB-SUBJ → l'utilisateur est la seule source
+  - morale et politique normatives :: NB-NORM → pas de juge réel commun
+  - futurs contingents (cours, matchs, décisions) :: NB-SPEC
+  - métaphysique (sens, libre arbitre, Dieu) :: NB-INDEC
+  - fronts de science ouverte (P vs NP, matière noire, conscience) :: NB-OUV → bornés en principe
+  - états mentaux d'autrui :: NB-INDEC → inaccessibles directement
+  - intentions cachées d'une personne :: NB-INDEC
+  - existence de vie extraterrestre :: NB-OUV
+  - astrologie, numérologie, voyance :: NB-INDEC → aucun mécanisme vérifiable
+
+# ANNEXE T — TAXONOMIES NORMALISÉES (hors Wikidata : OCLC/Dewey, OIT/ISCO-08)
+## T.1 — Classes principales de la Classification décimale de Dewey (OCLC)
+  - classe Dewey 000 — Généralités, informatique, information :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 100 — Philosophie et psychologie :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 200 — Religion :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 300 — Sciences sociales :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 400 — Langues :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 500 — Sciences de la nature et mathématiques :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 600 — Technologie (sciences appliquées) :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 700 — Arts et loisirs :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 800 — Littérature :: B-CONV → classification publiée (OCLC)
+  - classe Dewey 900 — Histoire et géographie :: B-CONV → classification publiée (OCLC)
+## T.2 — Divisions Dewey des sciences (500)
+  - division Dewey 500 — Sciences naturelles :: B-CONV → classification publiée (OCLC)
+  - division Dewey 510 — Mathématiques :: B-CONV → classification publiée (OCLC)
+  - division Dewey 520 — Astronomie :: B-CONV → classification publiée (OCLC)
+  - division Dewey 530 — Physique :: B-CONV → classification publiée (OCLC)
+  - division Dewey 540 — Chimie :: B-CONV → classification publiée (OCLC)
+  - division Dewey 550 — Sciences de la Terre :: B-CONV → classification publiée (OCLC)
+  - division Dewey 560 — Paléontologie :: B-CONV → classification publiée (OCLC)
+  - division Dewey 570 — Sciences de la vie :: B-CONV → classification publiée (OCLC)
+  - division Dewey 580 — Botanique :: B-CONV → classification publiée (OCLC)
+  - division Dewey 590 — Zoologie :: B-CONV → classification publiée (OCLC)
+## T.3 — Grands groupes professionnels ISCO-08 (Organisation internationale du travail)
+  - grand groupe ISCO-08 0 — Forces armées :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 1 — Directeurs, cadres de direction et gérants :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 2 — Professions intellectuelles et scientifiques :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 3 — Professions intermédiaires :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 4 — Employés de type administratif :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 5 — Personnel des services directs aux particuliers, commerçants et vendeurs :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 6 — Agriculteurs et ouvriers qualifiés de l'agriculture, de la sylviculture et de la pêche :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 7 — Métiers qualifiés de l'industrie et de l'artisanat :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 8 — Conducteurs d'installations et de machines, et ouvriers de l'assemblage :: B-CONV → nomenclature publiée (OIT)
+  - grand groupe ISCO-08 9 — Professions élémentaires :: B-CONV → nomenclature publiée (OIT)
+## T.4 — Structures de classification citées (périmètre déclaré, contenu non énuméré ici)
+  - structure de classification : Mathematics Subject Classification MSC2020 (63 classes à 2 chiffres) :: B-CONV → publiée (AMS/zbMATH) ; contenu à ingérer
+  - structure de classification : ACM Computing Classification System :: B-CONV → publiée (ACM) ; contenu à ingérer
+  - structure de classification : Classification internationale des maladies CIM-11 :: B-CONV → publiée (OMS) ; contenu à ingérer
+  - structure de classification : Nomenclature statistique des activités NACE :: B-CONV → publiée (Eurostat) ; contenu à ingérer
+  - structure de classification : Répertoire opérationnel des métiers et des emplois ROME :: B-CONV → publiée (France Travail) ; contenu à ingérer
+
+# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1371 tables vérifiées)
+## S.1 — Chaque relation vérifiée du lecteur est un sujet borné DE FAIT
+## (couverture d'ancrage prouvée : audit_ancres 1371/1371, valide_ancres_types)
+  - donnée du store : activite_circadienne_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : adjectif_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : affinite_electronique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : agent_dispersion_graine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : agent_maladie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : agent_pathogene_maladie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : agent_pollinisation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : agent_selection :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : alignement_morphosyntaxique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : alliance_compagnie_aerienne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : alphabet_otan :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : altitude_aeroport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : altitude_col :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : altitude_gare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : altitude_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : altitude_localite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : altitude_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : altitude_sommet :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : altitude_ville :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : animal_dieu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : anneaux_planete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_adoption_constitution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_construction_edifice :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_creation_oeuvre_art :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_creation_organisation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_bataille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_dynastie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_guerre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_mandat_ambassadeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_mandat_chef_etat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_mandat_chef_gouvernement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_mandat_gouverneur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_mandat_juge :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_mandat_ministre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_operation_militaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_regne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_revolution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_debut_siege :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_deces_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_decouverte_astre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_dissolution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_entree_vigueur_traite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_bataille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_dynastie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_guerre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_mandat_ambassadeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_mandat_chef_etat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_mandat_chef_gouvernement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_mandat_gouverneur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_mandat_juge :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_mandat_ministre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_operation_militaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_regne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_revolution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fin_siege :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fondation_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fondation_organisation_internationale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fondation_organisation_militaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fondation_parti_politique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_fondation_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_lancement_sonde :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_naissance_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_ouverture_edifice :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_premier_vol_aeronef :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_publication_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : annee_signature_traite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : appareil_circulatoire_type :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : appariement_base_adn :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : arbre_fruit :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : architecte_edifice :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : arme_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : astre_du_relief :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : astre_personnifie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : atmosphere_planete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : attribut_saint :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : auteur_bd :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : auteur_decouverte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : auteur_jeu_role :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : auteur_jeu_societe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : auteur_manga :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : auteur_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : auteur_oeuvre_ecrite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : autonomie_vehicule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : autorite_nomination_fonction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : banque_centrale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : barrage_reservoir :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : base_azotee_type :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : bassin_fleuve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : bassin_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : beaufort_description :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : bilan_photosynthese :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : bloc_element :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : bonjour_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : bourse_cotation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : branche_militaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : callsign_compagnie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capacite_eglise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capacite_passagers_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capacite_reservoir :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capacite_salle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capacite_stade :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capacite_thermique_molaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capitale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capitale_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : capitale_subdivision :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : caractere_cycle_viral :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : caractere_fruit_sec :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : caractere_immunite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : caractere_reponse_immunitaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : caractere_reproduction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : caractere_symbiose :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : carence_vitamine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : categorie_element :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : categorie_epreuve_athletisme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : categorie_lexicale_mot :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : categorie_uicn_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : cause_deces :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : cause_type_diabete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : chaine_diffusion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : chaine_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : charge_ion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : chef_decorateur_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : chef_etat_pays_annee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : chef_gouvernement_pays_annee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : chef_religion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : choregraphe_ballet :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : choregraphe_comedie_musicale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : chromosome_gene :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : circonscription_electorale_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_antibiotique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_enzyme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_invertebre_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_mollusque :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_poisson :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_therapeutique_medicament :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classe_vertebre_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : classificateurs_numeraux_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : climat_koppen_localite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_aat_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_aiatsis_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_babelnet_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_bnf_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_britannica_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_devise_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_endangered_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_ethnologue_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_freebase_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_glottolog_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_gnd_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_hex_couleur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_iata_aeroport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_iata_compagnie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_icao_aeroport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_icao_compagnie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_ietf_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_iso3_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_iso6392_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_iso6393_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_iso_numerique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_iso_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_j9u_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_lccn_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_linguasphere_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_morse :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_ndl_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_nkc_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_olympique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_unesco_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_wals_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : col_chaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : collection_peinture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : coloration_gram_bacterie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : coloriste_bd :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : comportement_migrateur_oiseau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_ballet :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_comedie_musicale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_hymne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_musique_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_musique_serie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_opera :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_operette :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_oratorio :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_requiem :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : compositeur_zarzuela :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : composition_alliage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : composition_vaccin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : concept_du_mot :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : concepteur_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : condition_respiration_cellulaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : configuration_electronique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : conflit_parent_bataille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : conflit_parent_operation_militaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : conflit_parent_siege :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : conjoint_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : conjoint_personnage_mythique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : conjoint_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : consistance_fruit :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constellation_amas :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constellation_astre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constellation_exoplanete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constellation_galaxie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constellation_nebuleuse :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constellation_quasar :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constituant_paroi_cellulaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constructeur_lanceur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constructeur_materiel_roulant :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constructeur_moteur_avion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constructeur_satellite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : constructeur_vehicule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_archipel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_baie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_cap :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_chaine_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_chute_eau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_col :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_desert :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_fleuve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_foret :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_glacier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_grotte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_peninsule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_plateau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_riviere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_vallee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : continent_volcan :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : corps_parent_astre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : costumier_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : cote_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_cepage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_complementaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_episode :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_flamme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_pierre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_pigment_biologique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_sang_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_serie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_trait_mineral :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : couleur_yeux :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_drapeau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_installation_art :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_langage_programmation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_langue_construite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_logiciel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_logo :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_objet_design :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_personnage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_police_ecriture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_serie_television :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : createur_systeme_ecriture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : cri_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : culture_artefact :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : date_evenement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : debit_fleuve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : decalage_fuseau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : dedicace_edifice_religieux :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_acide_gras :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_adjectif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_adverbe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_anomalie_chromosomique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_brassage_genetique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_caractere_sexuel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_categorie_aliment :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_categorie_glucide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_cellule_reproductrice :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_classe_vertebre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_croisement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_etape_cycle_cellulaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_etape_developpement_embryon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_etape_digestion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_etape_expression_genetique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_etape_formation_urine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_fruit_graine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_groupe_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_groupe_invertebre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_groupe_vegetal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_mecanisme_evolution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_micro_organisme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_multiplication_vegetative :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_niveau_ecologique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_niveau_organisation_corps :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_niveau_prevention :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_nom :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_partie_squelette :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_partie_tige :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_regime_alimentaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_sens :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_structure_proteine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_technique_genetique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_appareil_locomoteur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_arc_reflexe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_biochimie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_biodiversite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_biotechnologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_botanique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_cellulaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_circulation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_code_genetique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_comportement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_cycle_vie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_cytogenetique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_developpement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_digestion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_ecologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_endocrinologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_epidemiologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_ethologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_evolution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_evolution_preuve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_excretion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_genetique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_hygiene :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_immunite_pratique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_immunologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_microbiologie_culture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_neurologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_nutrition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_nutrition_sante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_oncologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_parasitologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_pharmacologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_physiologie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_physiologie_effort :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_physiologie_vegetale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_relation_alimentaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_reproduction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_reproduction_vegetale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_respiration :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_sang :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_sante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_structure_adn :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_terme_systematique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_thermoregulation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_transport_membranaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_type_chromosome :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_type_dentition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_type_maladie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_type_mutation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_verbe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_voie_administration :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : definition_zygotie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : demeure_dieu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : demi_vie_isotope :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : densite_chimie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : deplacement_piece :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : dessinateur_bd :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : dessinateur_dessin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : destination_secretion_glande :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : developpement_mode_reproduction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : developpeur_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : devise_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : diametre_cratere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : diametre_moyen_planete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : diametre_piece_monnaie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : diametre_telescope :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : dieu_supreme_religion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : diocese_eglise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : diocese_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : diplome_universitaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : directeur_photo_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : directeur_these :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : direction_ecriture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : distance_soleil :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : distributeur_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : division_admin_ville :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : division_champignon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : domaine_dieu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : domaine_internet :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : domaine_muse :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : domaine_prix :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : domaine_travail :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : domaine_vivant :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : drapeau_emoji :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : duree_cycle_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : duree_match :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : duree_note :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : durete_mohs_mineral :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ecartement_rails :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ecriture_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : editeur_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : effet_classe_medicament :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : election_acces_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : electronegativite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : element_zodiaque :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : elements_biomolecule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : eleve_de :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : embleme_floral :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : embouchure_canal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : embouchure_fleuve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : embouchure_ruisseau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : employeur_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : endemique_de_taxon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : energie_ionisation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : epreuve_sport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : equivalent_grec_divinite_romaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : equivalent_metrique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : equivalent_romain :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : esperance_vie_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : etat_conservation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : etat_standard :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : etoile_galaxie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : etoile_hote_exoplanete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : etudie_a :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : etymon_du_mot :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : evenement_phase_mitose :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_aeroport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_chemin_fer :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_funiculaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_gare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_ligne_ferroviaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_ligne_ferry :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_metro :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_phare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_port :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_reseau_tramway :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_satellite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_telepherique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_tunnel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exploitant_vehicule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : expression_allele :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : extension_format :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : exutoire_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fabricant_guitare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fabricant_piano :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fabricant_sonde :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fabricant_synthetiseur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : famille_chimique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : famille_instrument :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : famille_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : famille_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : federation_internationale_sport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fete_nationale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : feuillage_arbre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fips_subdivision :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fleuve_enfers_fonction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_arn :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_brigue_election :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_chef_etat_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_chef_gouvernement_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_dent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_dieu_trimurti :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_organite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_partie_neurone :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_personnage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_predecesseur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_successeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_systeme_complement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_systeme_humain :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_tissu_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fonction_tissu_vegetal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fondateur_courant_philosophique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fondateur_ordre_religieux :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fondateur_organisation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : fondateur_religion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : format_album :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : format_distribution_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : format_distribution_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : format_distribution_serie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : format_edition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : format_image_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : format_image_serie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : format_single :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : forme_bacterie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : forme_de_gouvernement_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : forme_feuille_conifere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : forme_juridique_entreprise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : forme_proteine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : formule_chimique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : formule_chimique_mineral :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : frequence_station_radio :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : galaxie_amas_galaxies :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : galaxie_morpho :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : gaz_respiration :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : genre_album :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : genre_emission_tv :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : genre_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : genre_grammatical :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : genre_grammatical_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : genre_grammatical_mot :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : genre_groupe_musique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : genre_jeu_video :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : gentile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : gestionnaire_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : glacier_chaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : glande_hormone :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : graveur_estampe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : groupe_aliment :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : groupe_element :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : groupe_orbital_asteroide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : groupe_parlementaire_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : groupe_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : guerre_bataille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_aquarelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_arbre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_barrage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_cascade :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_colline :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_dessin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_eglise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_estampe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_focale_phare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_gratte_ciel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_immeuble :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_montagnes_russes :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_peinture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_phare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_pyramide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_sculpture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_statue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_structure :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_tour :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hauteur_volcan :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hormone_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : humeur_element :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : hymne_national :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ile_archipel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : illustrateur_oeuvre_ecrite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : incarnation_de :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : indicatif_telephonique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : indice_gini_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : instrument_joue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : interprete_album :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : interprete_single :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : inventeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : inventeur_instrument_musique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : iso_subdivision :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : joueurs_par_equipe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : jour_saint_religion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : juridiction_fonction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : label_album :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : label_chanson :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lac_sur_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lanceur_sonde :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langage_extension :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langage_programmation_logiciel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langue_ecriture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langue_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langue_maternelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langue_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langue_officielle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langue_officielle_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : langue_parlee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : largeur_aquarelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : largeur_dessin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : largeur_estampe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : largeur_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : largeur_peinture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : largeur_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : largeur_route :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lateralite_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : latitude_capitale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : latitude_localite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : liaison_polymere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : librettiste_comedie_musicale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : librettiste_opera :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : licence_logiciel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_action_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_assassinat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_attentat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_bataille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_coup_etat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_culte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_dans_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_deces :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_decouverte_asteroide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_etape_expression_genetique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_genocide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_greve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_guerre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_guerre_civile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_inhumation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_manifestation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_massacre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_naissance :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_operation_militaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_revolution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_saint_religion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_siege :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_signature_traite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_sur_chaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_sur_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : lieu_travail :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ligue_club :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ligue_parente_saison :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : localisation_materiel_genetique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : localisation_organe_corps :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : localisation_valve_cardiaque :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longitude_capitale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longitude_localite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_aqueduc :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_canal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_cours_eau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_crete_barrage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_fleuve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_glacier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_grotte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_ligne_ferroviaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_montagnes_russes :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_route :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_sentier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : longueur_tunnel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : macromolecule_biologique_fonction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : maison_edition_oeuvre_ecrite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : maison_mere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : maison_noble_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : maitre_philosophe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : masse_atomique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : masse_moleculaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : masse_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : masse_piece_monnaie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : masse_vehicule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : masse_vehicule_spatial :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_calice :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_chaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_cloche :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_construction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_eglise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_manuscrit :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_meuble :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_monnaie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_objet_art :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : materiau_vase :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : medecin_specialiste_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : melange_couleur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : membre_de :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : merci_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mere_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mere_personnage_mythique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mere_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mesure_angle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mesure_instrument :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : metal_planete_alchimie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : methode_decouverte_exoplanete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : metropole_colonie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : milieu_de_vie_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : milieu_respiration :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mmsi_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_acquisition_immunite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_deplacement_protozoaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_distribution_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_germination_graine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_heredite_maladie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_jeu_video :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_nutrition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_pollinisation_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_reproduction_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_vie_champignon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mode_vie_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : monnaie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : monnaie_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : monomere_polymere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : montagne_chaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : montagne_pic_parent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : montagne_sur_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : monteur_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : monture_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : moteur_jeu_video :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mouvement_peinture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mouvement_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mouvement_philosophe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nationalite_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nature_hormone :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nature_metabolisme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nervation_feuille_definition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : niveau_organisation_vivant :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : niveau_trophique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nom_actuel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nom_famille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nom_groupe_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nom_groupe_animaux :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nom_scientifique_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nom_scientifique_champignon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nom_scientifique_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nom_vitamine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_ailes_insecte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_carbone_ose :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_chambres_coeur_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_chromosomes_espece :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_cordes :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_cotyledons_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_cylindres :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_eleves :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_en_lettres :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_etages :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_lits_hopital :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_locuteurs_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_notes_gamme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_pattes_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_produit_auto :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_produit_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_produit_vehicule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_quais_gare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nombre_travees :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nomine_pour :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nomme_par_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : notation_anglaise_note :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : numero_atomique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : numero_imo_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : nuts_subdivision :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : objet_branche_philosophie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : objet_etude :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : objet_phobie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : occupation_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ocean_mer :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : operateur_sonde :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : oppose_cardinal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_amphibien :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_arc_en_ciel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_ceinture_judo :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_insecte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_mammifere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_mots_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_oiseau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_religieux_monastere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_reptile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ordre_signe_chinois :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : organe_atteint_maladie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : organe_plante_fonction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : organe_producteur_enzyme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : organisateur_competition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : organisation_internationale_predecesseur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : organisation_internationale_successeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : organisme_gene :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : organite_processus :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : origine_creature :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : origine_epice :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : origine_fleuve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : origine_vent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : os_partie_squelette :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : os_type :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pKa_chimie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pantheon_dieu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : parede_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : parfumeur_parfum :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : parolier_comedie_musicale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : parolier_hymne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : parti_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : parti_predecesseur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : parti_successeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : partie_comestible_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : partie_corps_vetement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : patronage_saint :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_abbaye :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_aeroport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_affleurement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_agence_renseignement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_anse :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_aqueduc :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_archipel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_art_martial :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_assassinat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_attentat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_baie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_banc :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_banque_centrale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_barrage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_bassin_sedimentaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_bataille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_bibliotheque :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_bras_de_mer :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_brasserie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_canal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_canyon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_cap :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_carriere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_cascade :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_casino :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_cathedrale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_centrale_electrique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_centrale_nucleaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_centre_commercial :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_chantier_naval :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_chapelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_chateau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_chenal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_cimetiere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_cinema :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_club_foot :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_code_vehicule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_col :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_colline :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_competition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_constitution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_coup_etat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_cratere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_crete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_crique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_danse :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_de_capitale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_desert :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_detroit :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_doline :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_dune :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_dynastie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_ecluse :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_ecole :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_eglise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_election :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_entreprise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_equipe_nationale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_equipe_sport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_escarpement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_estuaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_etang :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_faille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_fjord :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_fontaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_foret :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_fort :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_fromage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_gare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_gare_metro :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_gare_routiere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_genocide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_genre_musical :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_geotope :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_glacier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_gratte_ciel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_greve :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_grotte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_groupe_musique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_guerre_civile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_hopital :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_hotel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_jardin_botanique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_journal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_karst :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_lagune :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_localite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_mairie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_manifestation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_marais :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_marche :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_marque_auto :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_marque_luxe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_marque_tech :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_massacre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_massif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_metro :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_mine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_monastere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_monument :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_monument_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_mosquee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_moulin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_musee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_observatoire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_opera :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_operateur_fonction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_operation_militaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_ordre_honorifique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_organisation_militaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_palais :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_parc_attraction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_parc_national :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_parlement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_parti_politique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_peninsule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_phare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_place :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_place_forte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_plage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_plaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_plat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_plateau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_point_bas :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_prairie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_prison :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_promontoire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_puits :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_quartier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_race_chat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_race_chien :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_raffinerie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_recif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_referendum :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_reserve_biosphere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_reserve_naturelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_reservoir :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_revolution :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_riviere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_route :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_rue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_sculpture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_serie_tv :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_siege :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_site_archeologique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_source :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_source_thermale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_sportif_athlete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_stade :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_statue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_subdivision :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_synagogue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_temple :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_theatre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_torrent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_tour :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_tourbiere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_tunnel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_universite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_vallee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_viaduc :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_ville :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_volcan :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_zone_humide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pays_zoo :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : paysagiste_jardin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : peintre_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pere_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pere_personnage_mythique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pere_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : periode_element :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : periode_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : periode_revolution_planete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : petit_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ph_substance :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : phare_sur_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : phase_mitose_evenement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : photographe_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : phyllotaxie_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : phylum_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pib_par_habitant_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pib_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_baie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_barrage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_cap :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_centrale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_peninsule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_phare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_plage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_port :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_presquile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plan_eau_recif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : planete_naine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : planete_parente :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : planete_parente_lune :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plante_sacree_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plateforme_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ploidie_cellule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : pluriel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plus_grande_lune :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : plus_longue_travee_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : point_culminant :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : point_culminant_massif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : point_ebullition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : point_ebullition_chimie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : point_eclair_chimie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : point_fusion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : point_fusion_chimie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : population_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : population_ville :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : port_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : position_politique_parti :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : position_yeux_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : poste_occupe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : predecesseur_etat :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : predecesseur_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : predecesseur_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : prenom :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : presence_articles_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : prix_recu_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : producteur_album :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : produit_excretion_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : produit_fermentation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : profondeur_grotte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : profondeur_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : proprietaire_organisation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : propulse_par :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : proteine_du_gene :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : puissance_centrale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : puissance_centrale_charbon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : puissance_centrale_hydro :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : puissance_centrale_solaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : puissance_parc_eolien :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : raccourci_clavier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : rang_ocean :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : rang_taxon_superieur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : realisateur_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : realisateur_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : regime_alimentaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : region_os :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : regne_organisme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : regulateur_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : religion_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : religion_fete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : religion_lieu_culte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : religion_ordre_religieux :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : religion_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : respiration_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : resultat_division_cellulaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : revetement_corps_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : robe_cheval :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_acide_nucleique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_annexe_embryonnaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_annexe_peau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_archange :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_categorie_organe_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_cellule_immunitaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_cellule_sanguine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_classe_lipide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_constituant_membrane :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_constituant_os :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_couche_peau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_division_systeme_nerveux :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_element_squelette :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_gaz_respiratoire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_glande_endocrine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_gros_vaisseau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_hormone :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_hormone_sexuelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_immunoglobuline :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_leucocyte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_liquide_corporel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_macronutriment :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_microorganisme_alimentaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_neurone :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_oligoelement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_organe_digestif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_organe_lymphoide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_organe_reproducteur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_organe_respiratoire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_organe_systeme_nerveux_central :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_organite_supplementaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_cerveau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_coeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_dent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_feuille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_fleur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_graine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_oeil :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_oreille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_poumon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_rein :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_systeme_urinaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_partie_virus :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_phase_cardiaque :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_phytohormone :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_pigment_biologique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_pigment_vegetal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_segment_digestif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_sn_autonome :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_structure_locomotion_cellulaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_systeme_nerveux_fonctionnel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_type_dent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_type_vaisseau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : role_vitamine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : saison_olympique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sans_littoral :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : scenariste_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sculpteur_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : secretion_organe_digestif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : secteur_entreprise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sens_conduite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sens_locution_latine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sens_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sens_prefixe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sens_suffixe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : serie_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sexe_caryotype_humain :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sexe_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : siege_club :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : siege_organisation_internationale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : signification_sigle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : societe_production_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : solubilite_vitamine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : source_energie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : specialite_medicale_maladie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sport_athlete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sport_competition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : sport_equipe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : stade_club :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : statut_conservation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : statut_patrimonial_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : statut_patrimonial_monument :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : statut_patrimonial_parc :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : statut_patrimonial_site_archeo :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : statut_patrimonial_structure :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : statut_unesco_danger_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : statut_vitalite_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : stimulus_recepteur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : stimulus_taxie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : stimulus_tropisme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : style_batiment :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_aeroport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_affleurement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_anse :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_baie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_barrage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_bibliotheque :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_bras_de_mer :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_canal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_canyon :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_cap :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_carriere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_cathedrale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_centrale_electrique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_chateau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_chenal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_chute_eau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_cimetiere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_cinema :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_col :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_colline :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_crete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_delta :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_desert :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_detroit :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_dune :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_eglise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_escarpement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_estuaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_faille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_fjord :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_fontaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_foret :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_fortification :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_glacier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_gratte_ciel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_grotte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_hopital :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_hotel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_lagune :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_langue_off :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_localite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_marecage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_metro :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_mine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_monastere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_monnaie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_monument :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_mosquee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_musee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_observatoire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_palais :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_parc_attraction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_parc_national :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_peninsule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_phare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_place :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_plage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_plaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_plateau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_port :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_prairie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_prison :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_promontoire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_quartier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_recif :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_reserve_naturelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_reservoir :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_riviere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_rue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_sculpture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_site_archeo :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_source :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_source_thermale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_stade :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_statue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_temple :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_theatre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_tour :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_tunnel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_universite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_vallee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_volcan :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : subdivision_zone_humide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : substrat_enzyme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : successeur_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : successeur_personne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_aeroport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_baie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_desert :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_etang :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_foret :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_glacier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_localite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_parc_national :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_reserve_naturelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : superficie_reservoir :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : surface_tournoi_tennis :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : surnom_roi :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_astro_planete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_chimique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_evangeliste :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_grec :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_math :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_monnaie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_ponctuation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : symbole_religion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : systeme_cristallin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : systeme_ecriture_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : systeme_exploitation_logiciel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : systeme_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : systeme_organe_humain :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : taux_chomage_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : taux_inflation_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : taxon_parent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : taxon_rang :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : technique_creation_peinture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : temperament_humeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : tension_poste_electrique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : texte_sacre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : thermoregulation_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : tirant_eau_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : tissu_animal_fondamental :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : tissu_vegetal_fonction :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : tonalite_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : tonalite_oeuvre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : tonnage_brut :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : traite_predecesseur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : traite_successeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : travee_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : tueur_de_monstre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_acide_amine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_acide_gras :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_aeroport :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_algue_couleur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_aliment_origine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_appendice_cephalique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_arbre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_arn_role :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_articulation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_asteroide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_astre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_baie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_barrage :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_bibliotheque :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_canal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_cathedrale :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_cellule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_chapelle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_chateau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_chromosome_humain :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_cimetiere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_coquille_mollusque :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_culture_agricole :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_dent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_dentition_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_developpement :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_digestion_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_ecaille_poisson :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_eglise :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_etang :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_etoile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_etoile_variable :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_excretion_azotee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_exoplanete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_fecondation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_feuille_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_fichier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_fleur_symetrie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_foret :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_formation_geologique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_fortification :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_fruit_botanique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_galaxie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_gare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_genome_virus :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_glande :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_glucide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_grotte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_hopital :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_inflorescence_definition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_jardin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_leucocyte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_lipide_classe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_localite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_metamorphose_insecte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_microorganisme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_mime_format :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_mine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_monastere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_morphologique_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_muscle :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_musee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_nebuleuse :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_neurone_role :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_observatoire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_oeil_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_palais :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_parc :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_peninsule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_phare :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_place :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_planete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_pont :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_prison :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_quartier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_racine_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_reserve_graine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_reservoir :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_riviere :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_roche :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_site_archeo :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_source :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_spectral_etoile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_squelette_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_stade :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_subdivision :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_symetrie_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_systeme_ecriture :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_theatre :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_tige_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_tour :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_universite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_vaisseau_sanguin :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_voix :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_volcan :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : type_zone_humide :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : usage_batiment :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : usage_instrument_optique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vaccin_maladie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vainqueur_competition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vainqueur_election :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : valeur_constante :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : valeur_couleur_resistance :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : valeur_piece_echecs :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vecteur_maladie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vertu_opposee_peche :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ville_equipe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ville_jo_ete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ville_jo_hiver :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ville_monument :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : ville_sur_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vitamine_carence :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vitesse_max_vehicule :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vitesse_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : vitesse_train :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : volcan_chaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : volcan_sur_ile :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : volume_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)

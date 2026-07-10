@@ -26,7 +26,7 @@ GATES = [
     "valide_extrait_pdf", "valide_lecteur_document", "valide_interroge_donnees", "valide_faits_conversation", "valide_cinematique_nl",
     "valide_situation", "valide_pont_grandeurs", "valide_et_si_pourquoi", "valide_tete_polysemique",
     "valide_pont_electrique", "valide_pont_hydraulique", "valide_roue_energie", "valide_roues_compilees",
-    "valide_graphe_roues",
+    "valide_graphe_roues", "valide_sujets",
     "valide_apprentissage_patrons", "valide_conversation",
     "valide_capacites_chat", "valide_assistant_nl", "valide_maj", "valide_veille_structure", "valide_cablage",
     "valide_faits_appris", "valide_tronc", "valide_debiaisage", "valide_sources", "valide_sequenceur",
