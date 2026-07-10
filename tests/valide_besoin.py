@@ -84,9 +84,60 @@ check(B.chaines_physiques(sources=("grandeur_bidon",), cible="chaleur")[0]["stat
 check(B.decompose("rafraichir une piece")["objectif_reel"] == B.decompose("rafraichir une piece")["objectif_reel"],
       "décomposition déterministe")
 
-# ── 7) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
-check(B.domaines_connus() == ["rafraichissement_confort"],
-      "un seul domaine modélisé au départ (le cooling)")
+# ── 7) DEUXIÈME DOMAINE : chauffage / confort d'hiver (le symétrique, via le registre — mêmes exigences) ──
+dh = B.decompose("chauffer une piece")
+check(dh["statut"] == "decompose", "besoin chauffage connu -> decompose")
+check("corps" in dh["objectif_reel"].lower() and "100" in dh["objectif_reel"] and "source" in dh["objectif_reel"].lower(),
+      "objectif réel hiver = le corps est une SOURCE de ~100 W (asymétrie, pas un copier-coller du cooling)")
+check(dh["production_corps_W"] == 100, "production du corps ~100 W (extras propres au domaine)")
+ch_canaux = {c.canal for c in dh["canaux"]}
+check(ch_canaux == {"rayonnement", "conduction", "convection", "evaporation"},
+      f"mêmes 4 canaux physiologiques, sens inversé ({ch_canaux})")
+check(all(c.silencieux is True for c in dh["canaux"]),
+      "réduire une perte est passif -> tous les canaux hiver silencieux (l'asymétrie rend le silence gratuit)")
+prh = B.principes("chauffer une piece")
+check(prh["statut"] == "principes", "principes pour le chauffage")
+ph = {e["nom"]: e for e in prh["liste"]}
+# l'impossible est RÉFUTÉ : rendement > 1 (conservation) et COP > Carnot chauffage
+r150 = ph["radiateur « à rendement 150 % »"]
+check(r150["atome"].statut == A.REFUTE, "rendement 150 % -> RÉFUTÉ (conservation de l'énergie)")
+check(A.est_refute(r150["atome"].contenu), "contenu réfuté (150 %) dans la garde anti-blanchiment")
+pac40 = ph["PAC magique COP 40 (ΔT 20 K)"]
+check(pac40["atome"].statut == A.REFUTE, "COP 40 chauffage > Carnot Th/(Th−Tc) ≈ 14,7 -> RÉFUTÉ")
+# le cas LIMITE exact : rendement 1.0 n'est PAS une violation (tout le courant finit en chaleur, jamais plus)
+resistif = ph["convecteur résistif (référence basse)"]
+check(resistif["atome"].statut == A.SUPPOSITION, "rendement exactement 1.0 -> cohérent (cas limite, pas de faux positif)")
+# les cohérents restent des SUPPOSITIONS, confiance dans ]0,1[ — jamais de FAIT
+for nom in ("pompe à chaleur air/air (COP 3–4)", "superisolation + chaleur métabolique (igloo / Passivhaus)",
+            "solaire passif (vitrage sud + masse, mur Trombe)"):
+    e = ph[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION (cohérent ≠ prouvé)")
+    check(0.0 < e["atome"].confiance < 1.0, f"{nom} confiance dans ]0,1[")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prh["liste"]),
+      "aucun principe de chauffage promu en FAIT")
+# la portée nomme SON domaine (pas de fuite du cooling)
+check("candidat pour chauffage_confort" in resistif["atome"].portee.condition,
+      "portée des principes chauffage nommant chauffage_confort")
+# pistes sous-exploitées présentes (miroirs hiver : caloriques, thermochimique, chaleur fatale)
+noms_h = set(ph)
+check(any("calorique" in n for n in noms_h) and any("thermochimique" in n for n in noms_h)
+      and any("chaleur fatale" in n for n in noms_h), "pistes sous-exploitées hiver présentes")
+# libellé nu ambigu -> HORS honnête (« chauffage » seul peut viser l'industriel, l'eau sanitaire…)
+check(B.decompose("chauffage")["statut"] == B.HORS, "« chauffage » nu (ambigu) -> HORS")
+# stratégies naturelles PROPRES au domaine (pas celles du cooling)
+nath = B.strategies_naturelles("chauffer une piece")
+check(len(nath) >= 4, "plusieurs stratégies naturelles hiver")
+check(any("manchot" in s["exemple"] for s in nath), "les manchots (mutualisation) sont répertoriés")
+check(not any("forêt" in s["exemple"] for s in nath), "pas de fuite des stratégies été vers l'hiver")
+check(all(s["leviers"] and s["lecon"] for s in nath), "chaque stratégie hiver réduite à des leviers + une leçon")
+# le cooling est INTACT après l'ajout du chauffage (isolation entre domaines réels)
+check(B.decompose("rafraichir une piece")["charge_corps_W"] == 100
+      and len(B.principes("rafraichir une piece")["liste"]) == 18,
+      "le cooling est inchangé après l'ajout du domaine chauffage")
+
+# ── 8) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort"],
+      "deux domaines modélisés (cooling puis chauffage), dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

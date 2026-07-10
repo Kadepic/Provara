@@ -33,7 +33,9 @@ HARN = os.path.dirname(os.path.abspath(__file__))
 TESTS = os.path.join(HARN, "tests")
 # tests/ EN TÊTE : les validateurs importent leur helper `valide_commun` et parfois un validateur frère
 # (valide_invention…) comme module — tous dans tests/. Puis les modules du pipeline (src/interface/ingestion).
-_SRCPATH = os.pathsep.join(os.path.join(HARN, d) for d in ("tests", "src", "interface", "ingestion"))
+# `outils/` EST du pipeline : `genere_sujets.py` y vit et les gates oracle (valide_oracle_metier/_domaine)
+# l'importent — l'omettre les faisait échouer en ModuleNotFoundError, une gate qui dort hors suite.
+_SRCPATH = os.pathsep.join(os.path.join(HARN, d) for d in ("tests", "src", "interface", "ingestion", "outils"))
 
 
 def _chemin(f):
@@ -443,9 +445,12 @@ def liste_validateurs():
 
 
 def modules_locaux():
-    # modules LOCAUX (pour l'analyse de dépendances du cache) : racine + src/ + interface/ + ingestion/.
+    # modules LOCAUX (pour l'analyse de dépendances du cache) : racine + src/ + interface/ + ingestion/ + outils/.
+    # `outils/` doit y figurer sinon un changement de `genere_sujets.py` n'invaliderait pas le cache des gates
+    # oracle qui l'importent (cache périmé = gate qui ne re-tourne pas sur un vrai changement).
     mods = set()
-    for d in (HARN, os.path.join(HARN, "src"), os.path.join(HARN, "interface"), os.path.join(HARN, "ingestion")):
+    for d in (HARN, os.path.join(HARN, "src"), os.path.join(HARN, "interface"),
+              os.path.join(HARN, "ingestion"), os.path.join(HARN, "outils")):
         try:
             mods |= {f[:-3] for f in os.listdir(d) if f.endswith(".py")}
         except OSError:
