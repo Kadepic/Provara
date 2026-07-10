@@ -33,6 +33,46 @@ import substrat_physique as SP
 
 HORS = "hors"
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  REGISTRE DE DOMAINES (généralisation 2026-07-12 — Yohan « généralise d'abord l'archi »).
+#  Le module ne modélisait qu'UN besoin-domaine (refroidissement). La structure — objectif réel + canaux
+#  physiques + principes JUGÉS + stratégies naturelles + loi structurante — est la MÊME pour tout besoin
+#  borné. On la factorise : un `Domaine` porte ces pièces ; `enregistre` l'ajoute ; les fonctions publiques
+#  (decompose/objectif_reel/principes/strategies_naturelles) DISPATCHENT via le registre. Ajouter un domaine
+#  = enregistrer un `Domaine`, RIEN d'autre à toucher. Le cooling est le premier domaine enregistré (comportement
+#  préservé à l'identique : mêmes constantes, mêmes sorties — vérifié par valide_besoin). FAUX=0 inchangé :
+#  les principes restent des SUPPOSITIONS jugées, jamais des faits.
+#    `objectif`  : le REFRAMING machine (str).            `canaux`  : leviers physiques (list[Canal]).
+#    `principes` : candidats à juger (list[_P]).          `strategies` : exemples naturels (list[_Nature]).
+#    `loi`       : la loi structurante (str).             `extras`  : champs de decompose propres au domaine (dict).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+from collections import namedtuple as _nt
+
+Domaine = _nt("Domaine", ["nom", "aliases", "objectif", "canaux", "principes", "strategies", "loi", "extras"])
+_DOMAINES: list = []
+_INDEX_ALIAS: dict = {}
+
+
+def enregistre(domaine: "Domaine") -> "Domaine":
+    """Ajoute un besoin-domaine au registre (idempotent par nom : ré-enregistrer remplace). Indexe ses alias
+    NORMALISÉS pour le dispatch. Renvoie le domaine."""
+    global _DOMAINES
+    _DOMAINES = [d for d in _DOMAINES if d.nom != domaine.nom] + [domaine]
+    for a in domaine.aliases:
+        _INDEX_ALIAS[_norm(a)] = domaine
+    return domaine
+
+
+def _domaine(besoin: str):
+    """Le domaine dont un alias == besoin normalisé, ou None (besoin non modélisé -> HORS honnête)."""
+    return _INDEX_ALIAS.get(_norm(besoin))
+
+
+def domaines_connus() -> list[str]:
+    """Les noms des besoins-domaines modélisés (introspection : « ce que le moteur sait inventer »)."""
+    return [d.nom for d in _DOMAINES]
+
+
 # ── Canaux d'échange thermique du corps humain (physiologie établie) ────────────────────────────────────────────
 # canal, grandeur (substrat_physique), levier qui AUGMENTE la perte de chaleur du corps, silencieux, note honnête.
 Canal = namedtuple("Canal", ["canal", "grandeur", "levier", "silencieux", "note"])
@@ -174,30 +214,38 @@ _PRINCIPES = [
 ]
 
 
+# Objectif réel + loi structurante du domaine COOLING (extraits en constantes pour le registre).
+_OBJECTIF_COOL = ("Le but réel n'est pas de refroidir l'AIR de la pièce (~500–1000 W à combattre en continu) mais de "
+                  "permettre au CORPS de dissiper ses ~100 W à température de peau confortable. On cible donc les canaux "
+                  "d'échange du corps (rayonnement, conduction, convection, évaporation), pas l'air — soit un ordre de "
+                  "grandeur de charge en moins (estimation), dans les lois (chaque principe reste jugé séparément).")
+_LOI_COOL = ("aucun principe ne bat Carnot (COP de FROID ≤ Tc/(Th−Tc)) ; gains réels = réduire la charge (cibler "
+             "le corps), viser un puits déjà froid (ΔT faible), empêcher les apports")
+
+
 def objectif_reel(besoin: str) -> str:
     """Le REFRAMING machine : ce que le besoin veut VRAIMENT (pas la solution humaine par défaut). HORS si inconnu."""
-    if _norm(besoin) not in _ALIAS_COOL:
+    d = _domaine(besoin)
+    if d is None:
         return f"[{HORS}] besoin non modélisé : {besoin!r} — le manque est visible (brique d'objectif à ajouter)"
-    return ("Le but réel n'est pas de refroidir l'AIR de la pièce (~500–1000 W à combattre en continu) mais de "
-            "permettre au CORPS de dissiper ses ~100 W à température de peau confortable. On cible donc les canaux "
-            "d'échange du corps (rayonnement, conduction, convection, évaporation), pas l'air — soit un ordre de "
-            "grandeur de charge en moins (estimation), dans les lois (chaque principe reste jugé séparément).")
+    return d.objectif
 
 
 def decompose(besoin: str) -> dict:
-    """Décompose un besoin borné en objectif réel + canaux/leviers physiques. Besoin inconnu -> {statut: HORS}."""
-    if _norm(besoin) not in _ALIAS_COOL:
+    """Décompose un besoin borné en objectif réel + canaux/leviers physiques. Besoin inconnu -> {statut: HORS}.
+    Dispatch par le registre de domaines : chaque domaine fournit son objectif, ses canaux, sa loi et ses
+    `extras` (champs propres, ex. charges thermiques pour le cooling)."""
+    d = _domaine(besoin)
+    if d is None:
         return {"statut": HORS, "besoin": besoin,
                 "raison": "besoin non modélisé — décomposition à construire (c'est le manque que le test révèle)"}
     return {
         "statut": "decompose",
         "besoin": besoin,
-        "objectif_reel": objectif_reel(besoin),
-        "charge_corps_W": 100,
-        "charge_piece_W": "≈ 500–1000 (selon apports/isolation — conditionnel)",
-        "canaux": list(_CANAUX_CORPS),
-        "loi": ("aucun principe ne bat Carnot (COP de FROID ≤ Tc/(Th−Tc)) ; gains réels = réduire la charge (cibler "
-                "le corps), viser un puits déjà froid (ΔT faible), empêcher les apports"),
+        "objectif_reel": d.objectif,
+        "canaux": list(d.canaux),
+        "loi": d.loi,
+        **d.extras,
     }
 
 
@@ -205,12 +253,13 @@ def principes(besoin: str = "rafraichir une piece") -> dict:
     """Liste les PRINCIPES candidats, chacun en atome + verdict physique. Impossible -> atome RÉFUTÉ ; possible ->
     RESTE une SUPPOSITION (jamais promu en FAIT : la cohérence n'est pas une preuve d'efficacité). Besoin inconnu
     -> {statut: HORS}."""
-    if _norm(besoin) not in _ALIAS_COOL:
+    d = _domaine(besoin)
+    if d is None:
         return {"statut": HORS, "besoin": besoin,
                 "raison": "aucun catalogue de principes pour ce besoin — à construire (manque visible)"}
     liste = []
-    for p in _PRINCIPES:
-        at = A.suppose(p.contenu, A.GENERATIF, A.Portee(A.DOMAINE, "candidat pour " + _COOL + " ; efficacité non jugée"),
+    for p in d.principes:
+        at = A.suppose(p.contenu, A.GENERATIF, A.Portee(A.DOMAINE, "candidat pour " + d.nom + " ; efficacité non jugée"),
                        p.conf, p.base)
         st, raison, loi = COH.juge_dispositif(p.spec)
         if st == COH.VIOLE:
@@ -249,11 +298,15 @@ _STRATEGIES_NATURE = [
 ]
 
 
-def strategies_naturelles() -> list[dict]:
-    """Transfert inter-domaines : exemples naturels de rafraîchissement, RÉDUITS à leurs leviers (bloquer les
-    apports / évaporer / puits nocturne ou terrestre / masse). Catalogue INFORMATIF à peigner ; chaque levier reste
-    jugeable par coherence_physique — on ne PROMET pas ici qu'un exemple « marche » (efficacité non jugée)."""
-    return [{"exemple": n.exemple, "leviers": list(n.leviers), "lecon": n.lecon} for n in _STRATEGIES_NATURE]
+def strategies_naturelles(besoin: str = "rafraichir une piece") -> list[dict]:
+    """Transfert inter-domaines : exemples naturels RÉDUITS à leurs leviers physiques. Catalogue INFORMATIF à
+    peigner ; chaque levier reste jugeable par coherence_physique — on ne PROMET pas qu'un exemple « marche »
+    (efficacité non jugée). Dispatch par domaine ; besoin inconnu -> [] (dégradation propre). Défaut = cooling
+    (compat : les appelants historiques sans argument gardent les stratégies de rafraîchissement)."""
+    d = _domaine(besoin)
+    if d is None:
+        return []
+    return [{"exemple": n.exemple, "leviers": list(n.leviers), "lecon": n.lecon} for n in d.strategies]
 
 
 def chaines_physiques(sources=("lumiere", "pression", "mouvement", "magnetisme"),
@@ -273,6 +326,19 @@ def chaines_physiques(sources=("lumiere", "pression", "mouvement", "magnetisme")
         c = SP.examine(s, cible, max_len=max_len)
         out.append({"source": s, "cible": cible, "statut": c.statut, "chaine": list(getattr(c, "chaine", ()))})
     return out
+
+
+# ── PREMIER DOMAINE ENREGISTRÉ : refroidissement / confort thermique (comportement historique, à l'identique) ──
+enregistre(Domaine(
+    nom=_COOL,
+    aliases=frozenset(_ALIAS_COOL),
+    objectif=_OBJECTIF_COOL,
+    canaux=_CANAUX_CORPS,
+    principes=_PRINCIPES,
+    strategies=_STRATEGIES_NATURE,
+    loi=_LOI_COOL,
+    extras={"charge_corps_W": 100, "charge_piece_W": "≈ 500–1000 (selon apports/isolation — conditionnel)"},
+))
 
 
 if __name__ == "__main__":

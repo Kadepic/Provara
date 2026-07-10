@@ -347,6 +347,13 @@ _AXES_M = (
     # dite dans la valeur). La rémunération des autres pays (dont la France) reste non couverte.
     (re.compile(r"rémunération médiane", re.I), "lookup_partiel", ("salaire_median_soc_us_metier",),
      "part ÉTATS-UNIS fermée par BLS OEWS (médianes par occupation SOC) ; autres pays non couverts (sujet MIX)"),
+    # MIX assumé : O*NET Job Zones donne le niveau de préparation par occupation SOC (marché US, granularité
+    # dite). Hors de ce référentiel, le niveau n'est pas borné.
+    (re.compile(r"niveau de préparation", re.I), "lookup_partiel", ("niveau_preparation_soc_metier",),
+     "part US fermée par O*NET Job Zones (niveau par occupation SOC) ; hors de ce référentiel non couvert (sujet MIX)"),
+    # MIX assumé : O*NET Interests donne l'intérêt dominant (RIASEC) par occupation SOC (argmax, marché US).
+    (re.compile(r"profil d'intérêt dominant", re.I), "lookup_partiel", ("interet_dominant_soc_metier",),
+     "part US fermée par O*NET Interests (RIASEC par occupation SOC) ; hors de ce référentiel non couvert (sujet MIX)"),
     # « résultats établis du domaine » N'EST PLUS UN AXE (retiré le 2026-07-12 : sujet MAL POSÉ, cf.
     # outils/genere_sujets.AXES_DOMAINE). La règle survit en GARDE : si l'axe reparaissait dans une carte,
     # il ne serait JAMAIS déclaré traité — et `valide_sujets` rougit sur sa seule présence.

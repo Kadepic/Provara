@@ -435,7 +435,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - structure de classification : Nomenclature statistique des activités NACE :: B-CONV → publiée (Eurostat) ; contenu à ingérer
   - structure de classification : Répertoire opérationnel des métiers et des emplois ROME :: B-CONV → publiée (France Travail) ; contenu à ingérer
 
-# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1390 tables vérifiées)
+# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1392 tables vérifiées)
 ## S.1 — Chaque relation vérifiée du lecteur est un sujet borné DE FAIT
 ## (couverture d'ancrage prouvée : audit_ancres 1371/1371, valide_ancres_types)
   - donnée du store : activite_circadienne_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -981,6 +981,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : indicatif_telephonique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : indice_gini_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : instrument_joue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : interet_dominant_soc_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : interprete_album :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : interprete_single :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : inventeur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -1130,6 +1131,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : nature_metabolisme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : nervation_feuille_definition :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : niveau_organisation_vivant :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : niveau_preparation_soc_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : niveau_trophique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : nom_actuel :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : nom_famille :: B-FAIT → table vérifiée du lecteur (ancrage audité)
