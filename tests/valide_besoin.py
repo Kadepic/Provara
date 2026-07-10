@@ -378,10 +378,52 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "humidite_relative_moteur" in B.decompose("produire de l eau de l air"),
       "les 6 domaines précédents inchangés après l'ajout de la propulsion (isolation)")
 
-# ── 13) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+# ── 13) HUITIÈME DOMAINE : éclairer (nouvelle loi L5 = efficacité lumineuse ≤ 683 lm/W) ──
+dl = B.decompose("eclairer une piece")
+check(dl["statut"] == "decompose", "besoin éclairage connu -> decompose")
+check("oeil" in dl["objectif_reel"].lower().replace("œ", "oe") and "683" in dl["objectif_reel"],
+      "objectif réel éclairage = lumens vus par l'œil, plafond 683 lm/W")
+check("plafond_lm_par_W" in dl, "extras propres : le plafond lm/W")
+ecl_canaux = {c.canal for c in dl["canaux"]}
+check(ecl_canaux == {"efficacite spectrale", "direction", "couleur adaptee", "lumiere naturelle"},
+      f"4 canaux d'éclairage ({ecl_canaux})")
+prl = B.principes("eclairer une piece")
+pl = {e["nom"]: e for e in prl["liste"]}
+# l'IMPOSSIBLE (> 683 lm/W) est RÉFUTÉ
+led800 = pl["LED « à 800 lm/W »"]
+check(led800["atome"].statut == A.REFUTE, "LED 800 lm/W > 683 -> RÉFUTÉ")
+check(A.est_refute(led800["atome"].contenu), "contenu réfuté (800 lm/W) dans la garde")
+amp1000 = pl["ampoule « à 1000 lm/W »"]
+check(amp1000["atome"].statut == A.REFUTE, "ampoule 1000 lm/W -> RÉFUTÉ")
+# procédés réels (dont la lumière du jour, sans efficacité déclarée) -> SUPPOSITIONS
+for nom in ("LED blanche (référence)", "sodium basse pression (monochromatique)",
+            "lumière du jour guidée (puits de lumière, fibres optiques)"):
+    e = pl[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prl["liste"]), "aucun principe d'éclairage promu en FAIT")
+check("candidat pour eclairage" in pl["LED blanche (référence)"]["atome"].portee.condition,
+      "portée des principes éclairage nommant eclairage")
+# la loi L5 : > 683 réfuté, AU plafond 683 cohérent (cas limite), record labo 330 cohérent
+st_800, _, loi_800 = COH.juge_dispositif({"type": "eclairage", "efficacite_lm_par_W": 800})
+check(st_800 == COH.VIOLE and loi_800 == COH.L5, "juge : 800 lm/W -> VIOLE via L5")
+check(COH.juge_dispositif({"type": "eclairage", "efficacite_lm_par_W": 683})[0] == COH.COHERENT_BORNE,
+      "683 lm/W (AU plafond) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (luciole, tapetum)
+natl = B.strategies_naturelles("eclairer une piece")
+check(len(natl) >= 4 and any("luciole" in s["exemple"] for s in natl), "stratégies éclairage propres (luciole)")
+check(not any("calmar" in s["exemple"] for s in natl) and not any("Namib" in s["exemple"] for s in natl),
+      "pas de fuite des stratégies propulsion/AWG vers l'éclairage")
+# les SEPT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "regle_or" in B.decompose("se propulser")
+      and "humidite_relative_moteur" in B.decompose("produire de l eau de l air"),
+      "les 7 domaines précédents inchangés après l'ajout de l'éclairage (isolation)")
+
+# ── 14) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
-                              "stockage_energie", "capture_co2", "eau_potable_air", "propulsion"],
-      "sept domaines modélisés, dans l'ordre d'enregistrement")
+                              "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage"],
+      "huit domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

@@ -1263,6 +1263,148 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  HUITIÈME DOMAINE : éclairer. Nouvelle loi dure au juge (L5) : l'EFFICACITÉ LUMINEUSE ≤ 683 lm/W (l'œil répond
+#  au maximum à 555 nm ; au-delà, il faudrait > 100 % de rendement radiant). Une lampe revendiquant plus est
+#  réfutée. La lumière BLANCHE à bon rendu plafonne plus bas (~300–350 lm/W) — noté au domaine, pas réfuté (c'est
+#  fonction du spectre, pas une violation certaine).
+#  REFRAMING machine : le but n'est pas de « produire de la lumière » mais de METTRE des lumens là où l'ŒIL en a
+#  besoin, aux longueurs d'onde qu'il voit. Leviers : n'émettre que le VISIBLE (aucun watt en IR/UV) ; DIRIGER la
+#  lumière (tâche, optique) au lieu d'inonder ; couleur ADAPTÉE (monochromatique là où le rendu n'importe pas) ;
+#  et surtout — le lumen le moins cher est celui qu'on NE génère PAS (lumière du jour guidée).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_ECLAIRAGE = "eclairage"
+_ALIAS_ECLAIRAGE = {
+    "eclairer", "produire de la lumiere", "eclairer une piece", "eclairage efficace",
+    "s eclairer", "eclairer un espace", "eclairer sans gaspiller",
+}
+
+# ── « Canaux » : les leviers d'un éclairage efficace ─────────────────────────────────────────────────────────────
+_CANAUX_ECLAIRAGE = [
+    Canal("efficacite spectrale", "lumiere", "n'émettre QUE les longueurs d'onde visibles (aucun watt en IR/UV)",
+          True, "l'incandescence gaspille ~95 % en IR (chaleur) ; une source « froide » qui n'émet que le visible "
+                "s'approche du plafond — le levier premier"),
+    Canal("direction", "lumiere", "diriger les lumens là où l'œil regarde (optique, éclairage de tâche)",
+          True, "inonder une pièce pour éclairer un livre gaspille l'essentiel ; l'optique met la lumière au bon "
+                "endroit — souvent plus de gain que d'améliorer la source"),
+    Canal("couleur adaptee", "lumiere", "monochromatique là où le rendu des couleurs n'importe pas (rue), large sinon",
+          True, "une lumière monochromatique à 555 nm approche 683 lm/W mais rend mal les couleurs → parfait pour "
+                "un lampadaire, inadapté à un salon : apparier le spectre au besoin"),
+    Canal("lumiere naturelle", "lumiere", "guider la lumière du JOUR (puits de lumière, fibres) au lieu d'en générer",
+          True, "le lumen le moins cher est celui qu'on ne produit pas : zéro électricité aux heures de jour — "
+                "le levier le plus sous-exploité en bâtiment"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par l'efficacité lumineuse (type `eclairage`, ≤ 683 lm/W) ──────────────────
+_PRINCIPES_ECLAIRAGE = [
+    _P("LED blanche (référence)",
+       "éclairer : diode électroluminescente blanche (bleu + luminophore)",
+       {"type": "eclairage", "efficacite_lm_par_W": 150.0}, True, True,
+       "lumière visible", "mature (dominant)",
+       0.65, "~150 lm/W en pratique, ~10× l'incandescence ; marge encore réelle vers le plafond blanc (~300–350) ; "
+             "la référence à dépasser en spectre et en optique"),
+    _P("LED de laboratoire haute efficacité",
+       "éclairer : LED blanche optimisée (record de laboratoire)",
+       {"type": "eclairage", "efficacite_lm_par_W": 330.0}, True, True,
+       "lumière visible", "recherche",
+       0.5, "~330 lm/W en labo → approche le plafond de la lumière BLANCHE (~350) ; industrialiser le spectre et "
+            "la thermique reste le verrou — sous le plafond physique de 683"),
+    _P("sodium basse pression (monochromatique)",
+       "éclairer : lampe à vapeur de sodium émettant une raie jaune quasi monochromatique",
+       {"type": "eclairage", "efficacite_lm_par_W": 200.0}, True, True,
+       "lumière jaune (589 nm)", "mature (déclin)",
+       0.45, "très efficace CAR monochromatique (peu de spectre gaspillé) MAIS rend les couleurs en noir et blanc "
+             "→ réservé aux routes ; illustre « couleur adaptée au besoin »"),
+    _P("fluorescent (tube)",
+       "éclairer : décharge dans un gaz excitant un luminophore",
+       {"type": "eclairage", "efficacite_lm_par_W": 90.0}, True, False,
+       "lumière visible", "mature (déclin)",
+       0.4, "~90 lm/W, supplanté par la LED ; contient du mercure — en voie de remplacement"),
+    _P("incandescence (référence basse)",
+       "éclairer : filament chauffé au blanc (rayonnement thermique)",
+       {"type": "eclairage", "efficacite_lm_par_W": 15.0}, False, True,
+       "lumière + BEAUCOUP d'IR (chaleur)", "obsolète",
+       0.5, "~15 lm/W : ~95 % de l'énergie part en IR invisible → l'archétype du gaspillage spectral, la barre "
+            "basse qui montre le levier « n'émettre que le visible »"),
+    _P("laser blanc (RGB) / éclairage laser",
+       "éclairer : combiner des lasers rouge/vert/bleu en lumière blanche, faisceau dirigeable",
+       {"type": "eclairage", "efficacite_lm_par_W": 250.0}, True, True,
+       "lumière visible dirigée", "émergent (phares, projection)",
+       0.4, "spectre choisi (peu de gaspillage) ET directivité extrême (optique) → double levier ; sécurité "
+            "oculaire et coût à maîtriser — piste pour l'éclairage ciblé"),
+    _P("électroluminescence directe (QLED / OLED efficace)",
+       "éclairer : émission directe par des points quantiques/molécules, sans luminophore de conversion",
+       {"type": "eclairage", "efficacite_lm_par_W": 200.0}, True, True,
+       "lumière visible", "recherche",
+       0.4, "évite la perte de conversion du luminophore ; spectre réglable finement → viser le plafond blanc en "
+            "gaspillant moins ; durée de vie des émetteurs à prouver"),
+    _P("lumière du jour guidée (puits de lumière, fibres optiques)",
+       "éclairer : capter la lumière du soleil et la conduire à l'intérieur (conduits, fibres) sans électricité",
+       {"type": "eclairage"}, True, True,
+       "lumière solaire (zéro électricité de jour)", "mature (sous-exploité)",
+       0.55, "le lumen le moins cher est celui qu'on NE génère PAS : de jour, zéro watt électrique ; conditionné à "
+             "l'accès au soleil et à des conduits courts — le plus gros gain souvent ignoré en bâtiment"),
+    _P("éclairage de tâche + détection de présence",
+       "éclairer : n'éclairer QUE la zone utile et QUE quand quelqu'un est présent (optique + capteurs)",
+       {"type": "eclairage"}, True, True,
+       "lumière visible ciblée", "mature (sous-exploité)",
+       0.5, "le gain n'est pas dans la source mais dans NE PAS éclairer l'inutile (pièces vides, plafonds) ; "
+            "souvent plus d'économie que de changer d'ampoule — le levier « direction + à la demande »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : efficacité lumineuse > 683 lm/W) ──
+    _P("LED « à 800 lm/W »",
+       "éclairer : LED revendiquant 800 lm par watt électrique",
+       {"type": "eclairage", "efficacite_lm_par_W": 800.0}, True, True,
+       "lumière", "revendication",
+       0.3, "800 > 683 lm/W (maximum spectral à 555 nm) — à réfuter par l'efficacité lumineuse maximale"),
+    _P("ampoule « à 1000 lm/W »",
+       "éclairer : ampoule revendiquant 1000 lm par watt électrique",
+       {"type": "eclairage", "efficacite_lm_par_W": 1000.0}, True, True,
+       "lumière", "revendication",
+       0.25, "1000 > 683 lm/W = impossible (il faudrait un rendement radiant supérieur à 100 %)"),
+]
+
+_OBJECTIF_ECLAIRAGE = ("Le but réel n'est pas de « produire de la lumière » mais de METTRE des lumens là où l'ŒIL "
+                       "en a besoin, aux longueurs d'onde qu'il voit (l'œil culmine à 555 nm ; le plafond absolu "
+                       "est 683 lm/W, la lumière blanche à bon rendu ~300–350). Leviers : n'émettre que le VISIBLE "
+                       "(l'incandescence gaspille ~95 % en IR) ; DIRIGER la lumière (optique, tâche) au lieu "
+                       "d'inonder ; couleur ADAPTÉE (monochromatique là où le rendu n'importe pas) ; et surtout, "
+                       "le lumen le moins cher est celui qu'on NE génère PAS (lumière du jour guidée, ne pas "
+                       "éclairer l'inutile). Chaque principe reste jugé par l'efficacité lumineuse maximale.")
+_LOI_ECLAIRAGE = ("l'efficacité lumineuse ≤ 683 lm/W (maximum spectral à 555 nm, rendement radiant 100 %) ; la "
+                  "lumière blanche à bon rendu plafonne plus bas (~300–350 lm/W) ; gains réels = n'émettre que le "
+                  "visible, diriger les lumens, adapter le spectre au besoin, et d'abord ne pas générer (jour, "
+                  "présence)")
+
+# La nature éclaire à froid (luciole), recycle les photons (tapetum), n'éclaire qu'à la demande (plancton).
+_STRATEGIES_NATURE_ECLAIRAGE = [
+    _Nature("luciole (bioluminescence froide)",
+            ["réaction chimique émettant surtout du VISIBLE", "quasi aucune chaleur (lumière froide)",
+             "rendement quantique élevé"],
+            "n'émettre que le visible, sans gaspillage thermique — le levier de l'efficacité spectrale"),
+    _Nature("tapetum lucidum (œil nocturne du chat)",
+            ["couche réfléchissante derrière la rétine", "renvoie les photons non absorbés pour un 2e passage"],
+            "RECYCLER la lumière (la faire repasser) plutôt que d'en produire plus — voir mieux à énergie égale"),
+    _Nature("plancton / champignon bioluminescent (lumière à la demande)",
+            ["émission déclenchée (stimulus, rythme)", "pas de lumière quand elle est inutile"],
+            "n'éclairer QUE quand c'est utile — le levier « à la demande », zéro lumen gaspillé"),
+    _Nature("feuille / structures qui guident la lumière",
+            ["conduits qui amènent la lumière aux cellules utiles", "diffusion contrôlée"],
+            "GUIDER la lumière vers la cible plutôt que la disperser — le levier de la direction"),
+]
+
+enregistre(Domaine(
+    nom=_ECLAIRAGE,
+    aliases=frozenset(_ALIAS_ECLAIRAGE),
+    objectif=_OBJECTIF_ECLAIRAGE,
+    canaux=_CANAUX_ECLAIRAGE,
+    principes=_PRINCIPES_ECLAIRAGE,
+    strategies=_STRATEGIES_NATURE_ECLAIRAGE,
+    loi=_LOI_ECLAIRAGE,
+    extras={"plafond_lm_par_W": "683 lm/W (monochromatique 555 nm) ; lumière blanche à bon rendu ~300–350 lm/W",
+            "note": "le lumen le moins cher est celui qu'on ne génère pas (jour guidé, ne pas éclairer l'inutile)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

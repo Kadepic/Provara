@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 8e domaine « eclairage » + loi L5 (efficacité lumineuse ≤ 683 lm/W)
+
+Éclairer efficacement. Nouvelle loi dure au juge (`L5`) : l'**efficacité lumineuse ≤ 683 lm/W** (l'œil culmine à
+555 nm ; au-delà il faudrait un rendement radiant > 100 %). Une lampe revendiquant plus est RÉFUTÉE. CONSERVATEUR :
+on ne réfute qu'au-delà de 683 (le plafond CERTAIN) ; la lumière blanche à bon rendu plafonne plus bas
+(~300–350 lm/W) mais c'est fonction du spectre — noté, pas réfuté. Gate `valide_coherence_physique` **82 → 94/94**.
+
+`enregistre(...)`, rien d'autre. **11 principes**, 9 suppositions + 2 RÉFUTÉS (LED 800 lm/W, ampoule 1000 lm/W).
+Reframing : mettre des lumens là où l'ŒIL en a besoin, aux longueurs d'onde qu'il voit → n'émettre que le VISIBLE
+(l'incandescence gaspille ~95 % en IR), DIRIGER (optique/tâche) au lieu d'inonder, couleur ADAPTÉE (monochromatique
+là où le rendu n'importe pas), et surtout le lumen le moins cher est celui qu'on NE génère PAS (jour guidé, ne pas
+éclairer l'inutile). Couvre LED blanche, LED de labo, sodium basse pression, fluorescent, incandescence, laser
+blanc, QLED, lumière du jour guidée, éclairage de tâche + présence. 5 stratégies naturelles propres (luciole =
+lumière froide, tapetum = recyclage des photons, plancton = à la demande, feuille = guidage). Gate `valide_besoin`
+**169 → 186/186** ; les 7 domaines précédents intacts.
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 7e domaine « propulsion » + loi L4 (conservation de la quantité de mouvement)
 
 Se propulser. Nouvelle loi dure au juge (`L4`) : **conservation de la quantité de mouvement** (3e loi de Newton)
