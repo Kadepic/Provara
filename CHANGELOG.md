@@ -1,5 +1,30 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — PASSE DE VÉRIFICATION BASE COMPLÈTE : 14 gates dormantes, 1 défaut trouvé et corrigé
+
+Après avoir touché le cœur (clé canonique, version de cache), diligence due : passer sur les 72 M de faits
+les 14 gates `valide_lecteur*` qui exigent la base complète et NE tournent donc PAS dans la suite (qui
+épingle l'échantillon). Séquentiel, un process lourd à la fois.
+
+**13/14 vertes** sur base complète : t4 (1185/1185), t5 (316/316), t6, t7, t8, t9, t10, t11, t12, nuit,
+norme (14/14), dirigeants (22/22), document (18/18). Les domaines les plus massifs (t6 personnes 9,4 M,
+t4 vivant 4 M, t9 langue 1,76 M, t8 histoire 1,25 M) sont sains — mes changements de clé/cache n'ont rien
+cassé à l'échelle.
+
+**1 défaut DORMANT trouvé — dans la gate `valide_lecteur_client`.** Elle prenait `_ICI` (= `tests/`) pour la
+racine du projet : elle lançait donc le daemon à `tests/src/lecteur_daemon.py` (INEXISTANT) et cherchait
+`tests/datasets/lecteur/` — échec silencieux (stderr masqué), `disponible()` jamais True. `VERAX_ROOT` posé
+par `_nonreg` MASQUAIT le défaut ; en autonome (ma passe, sans `VERAX_ROOT`) il tombait. Et sur l'échantillon
+sans `LECTEUR_DATASETS_DIR`, la fixture cherchée dans `tests/datasets/` était absente -> la gate SKIPPAIT au
+lieu d'exercer. Le daemon lui-même est sain (reproduit à la main : socket en 1 s, parité stricte).
+
+Correctif : `_RACINE` dérivé robustement (VERAX_ROOT ou parent de `tests/`), et le daemon localisé **à côté
+du module `lecteur`** (`os.path.dirname(_L.__file__)`) — cwd/VERAX_ROOT indifférents. La gate passe désormais
+**10/10 dans les trois contextes** (autonome base-complète, échantillon sans skip, `_nonreg`).
+
+Confirme la leçon du jour : une gate qui ne s'exerce pas partout dort — et un défaut peut se cacher dans la
+gate elle-même, pas seulement dans le produit.
+
 ## 2026-07-12 — UX : UN ÉCRAN LONG NE DOIT JAMAIS SEMBLER FIGÉ (barre + %)
 
 Yohan : « quand j'ai le message de mise à jour il faudrait 3 points qui défilent ou une barre ou un %, car
