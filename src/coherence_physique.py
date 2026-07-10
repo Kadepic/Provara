@@ -36,6 +36,9 @@ HORS = "hors"
 L1 = "1er principe (conservation de l'énergie)"
 L2 = "2nd principe (entropie / Carnot)"
 L3 = "2nd principe (travail minimal de séparation / énergie de mélange de Gibbs)"
+L4 = "conservation de la quantité de mouvement (3e loi de Newton) / vitesse d'éjection ≤ c"
+
+_C_LUMIERE = 299_792_458.0  # m/s
 
 
 def _nb(x):
@@ -59,7 +62,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         return (HORS, "spec absente ou invalide", None)
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
-                 "dessalement", "separation"):
+                 "dessalement", "separation", "propulsion"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -155,6 +158,23 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                 return (VIOLE, f"énergie déclarée {e_mol} kJ/mol < travail minimal de séparation "
                                f"{round(w_min_kJ, 3)} kJ/mol (fraction molaire x={x}, récupération → 0) : "
                                f"séparation sous l'énergie de mélange", L3)
+
+    # --- Conservation de la QUANTITÉ DE MOUVEMENT : pas de poussée sans réaction (moteur « réactionless »). ---
+    # Pour produire une poussée NETTE, il faut pousser sur QUELQUE CHOSE : éjecter de la masse/du rayonnement,
+    # OU s'appuyer sur un milieu externe (air, eau, sol, champ). Une poussée revendiquée en l'ABSENCE des deux
+    # (moteur clos dans le vide, type EmDrive/Dean) viole la conservation de la quantité de mouvement. CONSERVATEUR :
+    # on ne réfute QUE si la spec déclare explicitement « ni milieu externe, ni éjection » — sinon (info absente,
+    # ou l'un des deux présent) on ne tranche pas → jamais un faux positif sur une fusée, un jet, une voile.
+    if t == "propulsion":
+        milieu = bool(spec.get("milieu_externe", False))
+        ejecte = bool(spec.get("ejecte_masse_ou_rayonnement", False))
+        poussee = spec.get("poussee_nette", spec.get("poussee_revendiquee"))
+        if (poussee is True or (_nb(poussee) and poussee > 0)) and not milieu and not ejecte:
+            return (VIOLE, "poussée nette sans milieu externe NI éjection de masse/rayonnement : moteur sans "
+                           "réaction — viole la conservation de la quantité de mouvement", L4)
+        v = spec.get("vitesse_ejection_m_s")
+        if _nb(v) and v > _C_LUMIERE:
+            return (VIOLE, f"vitesse d'éjection {v} m/s > c ({_C_LUMIERE:.0f}) : impossible", L4)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

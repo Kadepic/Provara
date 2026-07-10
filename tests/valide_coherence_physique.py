@@ -71,6 +71,15 @@ check(loi({"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol
       "séparation diluée = travail minimal (L3)")
 check(statut({"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 0.0}) == P.VIOLE,
       "capture CO₂ à énergie NULLE depuis l'air : impossible")
+# conservation de la QUANTITÉ DE MOUVEMENT : moteur sans réaction (EmDrive) et éjection supraluminique.
+check(statut({"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": False,
+              "ejecte_masse_ou_rayonnement": False}) == P.VIOLE,
+      "moteur sans réaction (poussée sans milieu ni éjection) -> VIOLE")
+check(loi({"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": False,
+           "ejecte_masse_ou_rayonnement": False}) == P.L4, "réactionless = conservation de la quantité de mouvement (L4)")
+check(statut({"type": "propulsion", "poussee_nette": 1.0, "ejecte_masse_ou_rayonnement": True,
+              "vitesse_ejection_m_s": 3.0e8}) == P.VIOLE,
+      "éjection à v > c -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -96,6 +105,16 @@ reels = [
     {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120, "t_K": 298.15},    # amines aux fumées (x élevé)
     {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 25, "t_K": 298.15},   # juste au-dessus du plancher ~19.3
     {"type": "separation", "fraction_molaire": 4.2e-4},                                # sans énergie déclarée : indéterminé, PAS un faux positif
+    # propulsions RÉELLES : toujours un milieu OU une éjection -> jamais réactionless.
+    {"type": "propulsion", "poussee_nette": 1e5, "ejecte_masse_ou_rayonnement": True,
+     "vitesse_ejection_m_s": 4500},                                                    # fusée chimique (éjecte masse)
+    {"type": "propulsion", "poussee_nette": 0.1, "ejecte_masse_ou_rayonnement": True,
+     "vitesse_ejection_m_s": 30000},                                                   # moteur ionique (Isp élevé)
+    {"type": "propulsion", "poussee_nette": 0.01, "milieu_externe": True},             # voile solaire (rayonnement externe)
+    {"type": "propulsion", "poussee_nette": 5e4, "milieu_externe": True},              # turboréacteur (pousse l'air)
+    {"type": "propulsion", "poussee_nette": 1e-6, "ejecte_masse_ou_rayonnement": True,
+     "vitesse_ejection_m_s": 2.99e8},                                                  # fusée à photons (v proche de c, < c)
+    {"type": "propulsion"},                                                            # spec insuffisante : PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
