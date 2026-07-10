@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 4e domaine « stockage_energie » (le patron passe SANS toucher au juge)
+
+Clé de la transition (intermittence solaire/éolien) et démonstration que le registre passe à l'échelle **sans
+étendre `coherence_physique`** : la loi dure ici est le 1er principe (**rendement ALLER-RETOUR ≤ 1**), déjà jugé
+par le type `conversion` (rendement > 1 → over-unity → VIOLE). Contraste voulu avec le dessalement, dont la loi
+manquait et qu'il a fallu ajouter (`L3`). `enregistre(...)`, rien d'autre touché.
+
+**13 principes**, 11 suppositions jugées + 2 RÉFUTÉS par la conservation (« stockage à rendement 115 % » et
+« batterie auto-rechargeante perpétuelle »). Reframing machine : le besoin n'est pas « stocker de l'électricité »
+mais DÉCALER l'énergie dans le TEMPS — APPARIER la techno à la durée (secondes → volant/supercondensateur ;
+heures → batterie/pompage ; saisonnier → hydrogène/thermochimique) et MINIMISER les conversions (chacune perd
+définitivement ; si le besoin final est de la chaleur, stocker de la chaleur — pas d'aller-retour électrique).
+Couvre lithium-ion, pompage-turbinage, air comprimé, volant, hydrogène, thermique sels fondus, supercondensateur,
+gravitaire solide, thermochimique saisonnier (zéro auto-décharge), batterie à flux, air liquide. 5 stratégies
+naturelles propres (graisse/hibernation = chimique saisonnier, ATP = supercondensateur, graine dormante =
+thermochimique, tendon élastique = volant, inertie thermique du sol). Gate `valide_besoin` **89 → 112/112** ;
+cooling (18), chauffage (13) et dessalement (14) restent intacts (isolation prouvée). Le juge n'a PAS bougé
+(56/56 inchangé) — la preuve que le plafond du patron n'est pas le juge mais la modélisation des besoins.
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 3e domaine « dessalement_eau » + loi DURE (travail minimal de séparation)
 
 Le dessalement de l'eau est un enjeu mondial ET durement borné : le **travail minimal de séparation** (énergie
