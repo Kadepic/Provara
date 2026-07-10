@@ -37,6 +37,17 @@ constructible. Neuf briques ferment neuf sujets et en servent quatre autres mieu
   masses volumiques **apparentes** sont rendues avec leur incertitude (une tasse de farine tassée pèse 30 %
   de plus qu'une tasse aérée). La convention de « cup » doit être nommée, sinon abstention.
 
+### Deux faux tués par la vérification adverse, après le vert des gates
+- **`familles_langues` — un isolat qui avait un parent.** `est_isolat` s'appuyait sur une liste de familles
+  « isolées » et déclarait donc **le japonais ET le ryukyu isolats** — alors qu'ils sont apparentés entre eux
+  (famille japonique). Un isolat qui a un apparenté n'en est pas un. La fonction est désormais
+  **STRUCTURELLE** : une langue est un isolat si et seulement si aucune autre langue du catalogue ne partage
+  sa racine. Un contrôle de non-contradiction (est_isolat(x) ⟹ aucun apparenté) est ajouté à la gate.
+- **`densites_ingredients` — deux entorses.** `adapte_recette` acceptait NaN et ±inf (la validation déléguée
+  ne testait pas la finitude) ; et le round-trip masse↔volume était annoncé **exact** alors qu'il n'est
+  exact que pour l'eau (densité 1) et seulement **stable à ~10 chiffres** ailleurs. La docstring ne
+  sur-affirme plus, et la gate le prouve par balayage de 3 600 volumes non ronds.
+
 ### Mesure
 `84 595 sujets · 21 597 traités · 446 partiels · 62 552 NON traités · 0 dette.`
 **Suite : 114/114 gates.** `capacites.REGISTRE` : **381 preuves exécutables, 0 orphelin.**
