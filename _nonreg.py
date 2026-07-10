@@ -46,10 +46,23 @@ def _chemin(f):
 
 def _env_pipeline(base=None):
     """Env avec le PYTHONPATH du pipeline (src+interface+ingestion) — sinon les validateurs de tests/ ne trouvent
-    pas repond/conversation/ia. Préserve un PYTHONPATH éventuel existant."""
+    pas repond/conversation/ia. Préserve un PYTHONPATH éventuel existant.
+
+    DÉTERMINISME (2026-07-12, sur la remarque de Yohan « si ça a bougé il faut que _nonreg suive ») : on
+    ÉPINGLE la fixture — l'échantillon COMMITTÉ (`datasets/lecteur`) et un cache hors-dépôt. Sinon le verdict
+    de _nonreg dépend du `LECTEUR_DATASETS_DIR` du shell appelant : lancé sur la base complète, des gates
+    d'ABSTENTION (« donnée absente -> abstiens-toi ») trouvent la donnée et tombent à tort (mesuré :
+    `valide_assistant_nl` 500/506). C'est la fixture du dépôt qui doit juger, jamais la machine — même
+    principe que `tests/suite_conversation._env`. L'échantillon suit le code (il est versionné) ; la base
+    complète, elle, se vérifie en lançant à la main les gates `valide_lecteur*` (déjà fait, cf. CHANGELOG).
+    Échappatoire explicite pour un run intentionnel sur base réelle : `NONREG_BASE_REELLE=1`."""
+    import tempfile
     e = dict(base if base is not None else os.environ)
     e["PYTHONPATH"] = _SRCPATH + (os.pathsep + e["PYTHONPATH"] if e.get("PYTHONPATH") else "")
     e.setdefault("VERAX_ROOT", HARN)            # validateurs qui cherchent src/ia.py etc. relatif à la racine
+    if os.environ.get("NONREG_BASE_REELLE") != "1":
+        e["LECTEUR_DATASETS_DIR"] = os.path.join(HARN, "datasets", "lecteur")   # échantillon COMMITTÉ, ÉPINGLÉ
+        e["LECTEUR_CACHE_DIR"] = os.path.join(tempfile.gettempdir(), "verax_nonreg")   # hors dépôt, ÉPINGLÉ
     return e
 
 
