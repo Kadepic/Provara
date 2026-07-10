@@ -1,5 +1,64 @@
 # Journal des modifications — Provara
 
+## 2026-07-11 (suite 4) — ESCO complet ; un sujet « bloqué » qui ne l'était pas ; deux faux d'étiquette
+
+### 1. Le bug de descente coûtait 1 239 occupations
+Moissonnage relancé avec la descente complète (`narrowerOccupation`) et le filet réseau élargi :
+**2 938 occupations** contre 1 699. « assistant de justice » et 1 238 autres étaient invisibles.
+Gain sur la carte : axe définition 3 086 -> **3 238** ; axe gestes 414 -> **552**.
+
+**Le plafond d'alignement est structurel, et mesuré** : 7 607 des 8 238 métiers du store n'ont AUCUN libellé
+ESCO correspondant (ESCO couvre le marché européen contemporain ; le store porte des métiers historiques
+comme « Akyn » ou « forgeron de lames »). 75 sont perdus par ambiguïté côté ESCO. Les échecs restants sont
+des abstentions JUSTES : « médecin » n'est ni « médecin généraliste » ni « médecin spécialiste ». Forcer
+l'appariement rejouerait le vol de gestes.
+
+### 2. Un faux d'étiquette : « avocat : non réglementée »
+Le drapeau `unregulated` d'ESCO ne signifie **pas** « non réglementée ». Son texte dit : « pour vérifier si
+cette profession est réglementée dans les États membres, veuillez consulter la base de données ». C'est une
+**absence d'information**, que j'avais transformée en affirmation. La table publiait « avocat ou avocate :
+non réglementée au sens de la directive 2005/36/CE » — un faux.
+Seul `regulated` est un fait : il marque les professions **sectorielles à reconnaissance automatique**
+(médecin, infirmier, dentiste, sage-femme, pharmacien, vétérinaire, architecte) — **15 sur 2 938**. La table
+ne publie plus qu'elles (8 appariées au store), et l'axe « normes » reste NON TRAITÉ.
+
+### 3. « mix électrique d'un pays/année » n'était pas bloqué
+Ce sujet figurait parmi les six « bloqués sur un corpus externe ». Il ne l'était pas : **Our World in Data**
+publie la part de l'électricité par source, par pays et par année (données Ember, CC BY).
+**5 907 couples pays/année ingérés. Sujet FERMÉ.** France 2023 : nucléaire 65,2 %.
+
+Trois gardes, dont deux nées d'un faux mesuré :
+- **agrégats** : rejeter les lignes sans code ne suffit pas — OWID donne un code à ses agrégats
+  (`World` -> `OWID_WRL`). « World (2023) » était entré dans la table. On rejette les codes `OWID_`, sauf
+  le **Kosovo** (`OWID_KOS`), territoire réel dépourvu de code ISO ;
+- **couverture partielle** : 670 lignes anciennes ne somment pas à 100 % (« Algérie 1985 : 5,26 % ») ; les
+  publier serait un faux par omission ;
+- **vérité datée** : l'année est dans la clé.
+
+**Leçon : « bloqué sur un corpus externe » doit être RE-SONDÉ, pas tenu pour acquis.**
+
+### 4. Deux autres sujets « bloqués » qui ne l'étaient pas
+- **`equivalences_diplomes`** (65/65) : la CITE 2011 (UNESCO, **9** niveaux) et le CEC/EQF (UE, **8** niveaux)
+  sont publiés et stables. Le baccalauréat est **CITE 3 mais CEC 4** — la CITE classe les programmes, le CEC
+  les acquis d'apprentissage ; les aligner mécaniquement serait faux. Et surtout : un même niveau CITE
+  **n'emporte pas reconnaissance juridique**. `reconnaissance_juridique()` **abstient** : elle relève des
+  autorités nationales (ENIC-NARIC) et, pour les professions réglementées, de la directive 2005/36/CE.
+- **`chronologie_religieuse`** (77/77) : le sujet se scinde nettement. Les conciles, édits et schismes sont
+  **datés** par des sources contemporaines (Nicée 325, Hégire 622, schisme 1054, 95 thèses 1517, Vatican II
+  1962-1965, séparation 1905). Les faits fondateurs ne le sont pas. `date('naissance_jesus')` **abstient** et
+  renvoie une **fourchette (−6, −4)** : Hérode meurt en −4, l'ère chrétienne n'a pas d'an 0, et le
+  25 décembre est une date liturgique fixée au IVᵉ siècle. Deux chronologies concurrentes pour le Bouddha :
+  `consensus = False`. Un module qui daterait la naissance de Jésus à l'an 1 serait FAUX.
+
+### 5. Mesure
+`84 597 sujets · 21 644 traités · 584 partiels · 62 369 NON traités · 0 dette.`
+**Suite : 116/116 gates.** `capacites.REGISTRE` : **383 preuves exécutables, 0 orphelin.**
+
+**PARTIE I : 67 traités, 0 partiel, 0 non traité — entièrement fermée.**
+Toutes les parties conceptuelles sont à zéro non traité, sauf la PARTIE VI (3 sujets).
+Backlog conceptuel : **6 -> 3**, et les trois sont réellement bloqués : texte d'une loi à une date
+(Légifrance exige OAuth), jurisprudence d'une cour, programmes et diplômes officiels (par pays et par année).
+
 ## 2026-07-11 (suite 3) — NEUF BRIQUES : le cas ambigu, l'abstention vraie, le périmètre dit
 
 Les 36 partiels conceptuels restants se répartissaient en deux natures : **20 sont MIX par construction**

@@ -4285,8 +4285,40 @@ def _p_densites_ingredients() -> bool:
             and _leve_v(M.masse_volumique, "poudre de perlimpinpin"))
 
 
+def _p_equivalences_diplomes() -> bool:
+    import equivalences_diplomes as M
+    eq = M.equivalent("licence", "France", "États-Unis")
+    # La CITE a 9 niveaux (0-8), le CEC en a 8 (1-8) : leur donner le meme nombre serait FAUX.
+    # Le baccalaureat est CITE 3 (programmes) mais CEC 4 (acquis d apprentissage) : les cadres different.
+    return (M.nombre_niveaux_cite() == 9 and M.nombre_niveaux_cec() == 8
+            and M.cite("baccalauréat", "France") == 3 and M.cec("baccalauréat", "France") == 4
+            and M.cite("licence", "France") == 6 and M.cite("doctorat", "France") == 8
+            and M.cite("bachelor's degree", "États-Unis") == 6
+            and any("bachelor" in str(x).lower() for x in eq["meme_niveau_cite"])
+            and "reconnaissance" in eq["avertissement"].lower()
+            and _leve_v(M.reconnaissance_juridique, "licence", "France", "Allemagne")   # autorites nationales
+            and _leve_v(M.cite, "diplôme inventé", "France"))
+
+
+def _p_chronologie_religieuse() -> bool:
+    import chronologie_religieuse as M
+    d = M.datation_contestee("naissance_jesus")
+    # Un module qui daterait la naissance de Jesus a l an 1 serait FAUX : Herode meurt en -4 et l ere
+    # chretienne n a pas d an 0. Le module rend une FOURCHETTE et refuse la date.
+    return (M.date("nicee_1") == 325 and M.date("hegire") == 622
+            and M.date("schisme_orient") == 1054 and M.date("theses_luther") == 1517
+            and M.date("vatican_ii") == (1962, 1965) and M.date("separation_eglises_etat") == 1905
+            and _leve_v(M.date, "naissance_jesus")                       # abstention capitale
+            and d["fourchette"] == (-6, -4)
+            and M.datation_contestee("bouddha")["consensus"] is False    # deux chronologies concurrentes
+            and _leve_v(M.datation_contestee, "nicee_1")                 # cet evenement EST date
+            and _leve_v(M.date, "concile inventé"))
+
+
 # ── REGISTRE : libellé EXACT (sujets.py) -> (description du mécanisme, preuve exécutable) ──
 REGISTRE: dict[str, tuple[str, object]] = {
+    'équivalences internationales de diplômes': ('Cadres PUBLIES de comparabilite : CITE 2011 (UNESCO, 9 niveaux) et CEC/EQF (UE, 8 niveaux). Le baccalaureat est CITE 3 mais CEC 4. Un meme niveau CITE n emporte PAS reconnaissance juridique : reconnaissance_juridique() abstient (ENIC-NARIC).', _p_equivalences_diplomes),
+    'histoire et datation des faits religieux': ('Evenements DATES par des sources contemporaines (Nicee 325, Hegire 622, schisme 1054, Vatican II 1962-1965) SEPARES des faits a datation CONTESTEE. La naissance de Jesus n est pas datee : fourchette (-6,-4), Herode meurt en -4 et l ere chretienne n a pas d an 0.', _p_chronologie_religieuse),
     'premier principe (bilan énergétique)': ('Premier principe (dU = Q - W, convention thermodynamique NOMMEE) et second principe pour processus NON isothermes : m.c.ln(T2/T1) en KELVIN. La meme formule en Celsius donnerait un faux d un facteur 5 : le module refuse les degres.', _p_thermodynamique_principes),
     'trigonométrie du triangle (valeurs exactes ou approchées MARQUÉES)': ('Resolution complete d un triangle : loi des sinus, loi des cosinus, Heron. Le cas SSA est AMBIGU (zero, une ou DEUX solutions) : le module rend la LISTE des triangles, jamais un seul choisi au hasard.', _p_trigonometrie_triangle),
     'grammaires formelles et automates (appartenance)': ('Conversion d une grammaire hors-contexte en forme normale de Chomsky (START/TERM/BIN/DEL/UNIT), verifiee par EQUIVALENCE DE LANGAGE, puis appartenance par CYK. Determinisation des AFN par construction des sous-ensembles.', _p_grammaires_formelles),
