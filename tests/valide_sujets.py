@@ -160,7 +160,9 @@ if os.path.exists(S.DOC_AUTO):
                           ("normes, réglementation", "les normes techniques restent non couvertes"),
                           ("rémunération médiane", "les autres pays restent non couverts"),
                           ("outils, machines", "l'outillage réel n'est borné par aucun référentiel"),
-                          ("risques professionnels", "la prévention et la part française restent non couvertes")):
+                          ("risques professionnels", "la prévention et la part française restent non couvertes"),
+                          ("niveau de préparation", "hors du référentiel O*NET, non borné"),
+                          ("profil d'intérêt dominant", "hors du référentiel O*NET, non borné")):
         lot = [s for s in metiers if axe in s.libelle]
         check(lot and not any(C.etat(s)[0] == C.TRAITE for s in lot),
               "axe MIX « %s » : aucun sujet déclaré TRAITÉ (%s)" % (axe[:20], pourquoi))
@@ -194,7 +196,9 @@ with tempfile.TemporaryDirectory() as _tmp:
                              ("profession_reglementee_metier", ["boulanger ou boulangère"]),
                              ("salaire_median_soc_us_metier", ["boulanger ou boulangère"]),
                              ("outil_technologie_soc_metier", ["boulanger ou boulangère"]),
-                             ("risque_professionnel_soc_metier", ["boulanger ou boulangère"])):
+                             ("risque_professionnel_soc_metier", ["boulanger ou boulangère"]),
+                             ("niveau_preparation_soc_metier", ["boulanger ou boulangère"]),
+                             ("interet_dominant_soc_metier", ["boulanger ou boulangère"])):
         with open(os.path.join(_tmp, _table + ".jsonl"), "w", encoding="utf-8") as _f:
             _f.write('{"_relation": "%s", "_categorie": "convention", "_source": "fixture"}\n' % _table)
             for _e in _entites:
@@ -254,6 +258,20 @@ with tempfile.TemporaryDirectory() as _tmp:
     check(_q_pres[0] == C.PARTIEL, "FIXTURE : risques d'un métier couvert -> PARTIEL (part mesurée US)")
     check("SOII" in _q_pres[1], "FIXTURE : le PARTIEL nomme le SOII et sa part")
     check(_q_abs[0] == C.NON_TRAITE, "FIXTURE : risques d'un métier absent -> NON TRAITÉ")
+
+    # l'axe « niveau de préparation » est MIX : échelle O*NET Job Zones (US) -> PARTIEL, jamais TRAITÉ.
+    _nv_pres = C.etat(_sujet("boulanger ou boulangère — niveau de préparation requise (formation, expérience)"))
+    _nv_abs = C.etat(_sujet("métier fantôme — niveau de préparation requise (formation, expérience)"))
+    check(_nv_pres[0] == C.PARTIEL, "FIXTURE : niveau d'un métier couvert -> PARTIEL (échelle O*NET, part US)")
+    check("O*NET" in _nv_pres[1], "FIXTURE : le PARTIEL nomme O*NET Job Zones")
+    check(_nv_abs[0] == C.NON_TRAITE, "FIXTURE : niveau d'un métier absent -> NON TRAITÉ")
+
+    # l'axe « profil d'intérêt dominant » est MIX : RIASEC O*NET (US) -> PARTIEL, jamais TRAITÉ.
+    _ri_pres = C.etat(_sujet("boulanger ou boulangère — profil d'intérêt dominant (RIASEC)"))
+    _ri_abs = C.etat(_sujet("métier fantôme — profil d'intérêt dominant (RIASEC)"))
+    check(_ri_pres[0] == C.PARTIEL, "FIXTURE : intérêt d'un métier couvert -> PARTIEL (RIASEC O*NET, part US)")
+    check("O*NET" in _ri_pres[1], "FIXTURE : le PARTIEL nomme O*NET Interests")
+    check(_ri_abs[0] == C.NON_TRAITE, "FIXTURE : intérêt d'un métier absent -> NON TRAITÉ")
 
     # le NON BORNÉ reste traité par le routage honnête (ce n'est pas une réponse inventée).
     _e, _ = C.etat(_sujet("boulanger ou boulangère — « ce métier est-il fait pour moi ? »"))

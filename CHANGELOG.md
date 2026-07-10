@@ -1,5 +1,120 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : archi généralisée (cooling-hardcodé → REGISTRE DE DOMAINES)
+
+Croissance vers l'objectif final. Cartographie d'abord : le moteur d'invention a 3 briques — `substrat_reel`
+(relationnel : MESURÉ sans carburant, 5 relations typées seulement, le substrat 71 M est attribut pas
+relationnel) ; `chercheur_invention` (synthèse de programmes sur corpus I/O) ; **`boucle_invention`
+(invention PHYSIQUE, la vraie voie)** — piloté par un BESOIN, il compose des principes en stacks candidats
+(suppositions, jamais des faits) + gaps. MARCHE (« rafraîchir une pièce » → 4 candidats + gap évaporation),
+mais `besoin.py` ne modélisait QU'UN domaine (refroidissement) : tout autre besoin → HORS.
+
+Sur décision de Yohan (« généralise d'abord l'archi »), refactor de `src/besoin.py` **cooling-hardcodé →
+registre de domaines**, à comportement PRÉSERVÉ À L'IDENTIQUE :
+- `Domaine` (nom, aliases, objectif, canaux, principes, strategies, loi, extras) + `enregistre()` +
+  `_domaine()` (dispatch par alias) + `domaines_connus()`.
+- `decompose`/`objectif_reel`/`principes`/`strategies_naturelles` DISPATCHENT via le registre au lieu du
+  `_ALIAS_COOL` codé en dur. Le refroidissement devient le 1er domaine enregistré, depuis les MÊMES
+  constantes → sorties identiques (decompose mêmes clés/valeurs, principes 18, HORS inchangé).
+- **Ajouter un domaine = `enregistre(Domaine(...))`, rien d'autre à toucher.** FAUX=0 intact (principes =
+  suppositions jugées). Isolation prouvée (un nouveau domaine ne fuit pas dans le cooling).
+
+Gate `valide_besoin` étendue (30 → **38/38** : enregistrement, dispatch, extras propres, isolation, HORS
+hors-registre). `valide_boucle_invention` 16/16, `valide_transfert` 16/16 inchangés. C'est la FONDATION :
+les prochains lots ajouteront des besoins-domaines (dessaler, chauffer, stocker l'énergie…) proprement.
+
+## 2026-07-12 — RECHERCHE : élargir l'alignement métier — MESURÉ IMPOSSIBLE en FAUX=0 (rien construit)
+
+Carte blanche pour élargir l'alignement (2277 métiers non alignés à ISCO/SOC/ROME : historiques/étrangers).
+Trois avenues sondées et **validées contre ESCO (vérité-terrain)**, toutes rejetées — l'œil trompait, le
+held-out a tranché :
+
+- **Héritage P279 (sous-classe hérite du code d'un ancêtre)** : 833 candidats propres à l'œil (« peintre de
+  vases → 2651 »), mais **56 % d'accord ESCO seulement**. Erreurs SYSTÉMATIQUES : niveau (ouvrier agricole
+  9213 ≠ 6111 hérité), manager vs pro (directeur pub 1222 ≠ 2431), art vs artisanat (sculpteur sur bois
+  7317 ≠ 2651), homonyme (compositeur → 7321 typographe).
+- **+ garde « nom de tête partagé »** : 69 % — insuffisant (sous-spécialités adjacentes, ingénieur
+  électronique 2152 ≠ 2151).
+- **Autres codes de classification Wikidata** : AUCUN. Les non-alignés ne portent que des identifiants de
+  bibliothèque/autorité (GND, LoC, BnF, WordNet, Dewey) — zéro code d'occupation à croiser.
+
+**Conclusion : le plafond d'alignement est STRUCTUREL.** Aucune heuristique n'aligne les métiers
+historiques/étrangers sans 30-44 % de faux ; aucun code direct n'existe. On ne construit RIEN (c'est la
+bonne décision FAUX=0). La croissance ne viendra plus de l'alignement. Documenté au runbook pour ne pas
+re-tenter. (« recombinaison sur peu d'exemples = coïncidence ; le held-out durci tranche. »)
+
+## 2026-07-12 — 10ᵉ axe métier « profil d'intérêt dominant (RIASEC) », et PLAFOND de la chaîne SOC atteint
+
+Sur « aller dans les métiers atomiquement jusqu'au plafond ». Un axe de plus, puis le plafond documenté.
+
+### 10ᵉ axe : profil d'intérêt dominant (RIASEC / Holland)
+`ingestion/ingere_onet_interets.py` — table `interet_dominant_soc_metier` (**822 métiers**), même chaîne
+ISCO→SOC. Le point sensible : PAS de seuil. Le dominant est l'**argmax** des 6 scores RIASEC (le high-point
+de Holland), opération DÉTERMINISTE, ex-aequo listés — jamais un choix arbitraire. Honnêteté portée dans la
+source : les scores d'intérêt O*NET 30.0 sont IMPUTÉS par apprentissage (soft) → axe MIX (marché US). Gate
+`valide_onet_interets` (9/9, dont l'argmax et les ex-aequo). Suite **132 gates**.
+
+### PLAFOND de la chaîne SOC atteint — ce qu'on n'ajoute PAS, et pourquoi
+Les fichiers O*NET/BLS restants indexés SOC ne qualifient plus comme axe borné :
+- **Work Context, Work Styles** : notations continues (Data Value) — dire « ce métier a tel contexte »
+  exigerait un SEUIL arbitraire. Arbitraire = HORS (leçon P2283/`unregulated`).
+- **Work Values** : argmax mesuré, mais NOISY — souvent 4 ex-aequo sur 6 (« dominant » vide de sens), et
+  redondant-thème avec RIASEC. Une façade soft. HORS.
+- **Abilities, Skills, Knowledge** : notations + seuil, ET recouvrent `geste_metier`/`savoir_metier` (ESCO).
+  Redondant. HORS.
+
+Deux axes nets ajoutés depuis la chaîne SOC (niveau de préparation, intérêt dominant) ; au-delà, les sources
+deviennent arbitraires (seuils), noisy ou redondantes. **Le plafond de la couverture métier par la chaîne
+SOC est atteint** — les 10 axes caractérisent les ~822-828 métiers alignés ISCO ; en débloquer d'autres
+demanderait de l'ALIGNEMENT (P8283/P867 épuisés), pas de nouvelles sources.
+
+## 2026-07-12 — CROISSANCE : 9ᵉ axe métier « niveau de préparation requise » (O*NET Job Zones)
+
+Retour à la croissance après le durcissement. Piste rémunération FR (DARES×FAP) sondée puis ÉCARTÉE : les
+« portraits statistiques des métiers » s'arrêtent à 2011, la correspondance FAP/PCS/ROME n'est qu'une page
+HTML, et une FAP est plus large qu'un code ROME — au mieux un PARTIEL grossier, une façade. Au doute, HORS.
+
+À la place, un attribut métier STANDARD qu'aucun des 8 axes ne portait : le **niveau de préparation** requis
+(échelle O*NET Job Zones 1-5 : de « peu ou pas de préparation » à « préparation extensive »), distinct de
+l'axe formation (RNCP = certifications nommées ; ici une ordinale comparable entre métiers).
+
+`ingestion/ingere_onet_jobzones.py` — table `niveau_preparation_soc_metier` (**822 métiers**), par la MÊME
+chaîne ISCO→SOC réutilisée (rémunération/outils/risques). Valeur auto-descriptive : le niveau + le libellé
+du référentiel O*NET (« actuaire → niveaux 4-5, Considerable/Extensive Preparation »). Granularité dite
+(groupe ISCO, pas le métier), MIX → PARTIEL (marché US ; hors de ce référentiel, non borné). Gate
+`valide_onet_jobzones` (11/11 : référentiel 5 niveaux, troncature, granularité, sabotages). **9ᵉ axe** dans
+`AXES_METIER`, câblé au juge et au cliquet `valide_sujets` (80/80). Suite **131 gates**.
+
+La carte passe à 39 909 sujets (le nouvel axe ajoute 3 400 sujets-métier, 822 partiels couverts) : le
+backlog monte HONNÊTEMENT — une dimension réelle de plus, couverte à 24 % comme les autres axes de la chaîne
+US, jamais une couverture inventée.
+
+## 2026-07-12 — VÉRIFICATION CROISÉE .exe DÉPLOYÉ ↔ SOURCE : parité byte-identique confirmée
+
+Durcissement : prouver que le binaire compilé se comporte comme le code. Le serveur du `.exe` est lié à
+`127.0.0.1` **côté Windows** (souverain), donc inatteignable depuis la VM WSL2 — la battery HTTP directe
+n'est pas faisable. Levier utilisé : `lance.py` supporte `Provara.exe --juge-exec <script.py>`, qui exécute
+un script dans le Python **bundlé** du `.exe` (3.12.10) sans démarrer le serveur. On a donc lancé la MÊME
+battery déterministe dans le binaire déployé et dans le source, et comparé.
+
+**Déployé = build 105, commit `2206fb7`** (Merge PR #68), en retard sur HEAD (normal : l'updater installe la
+dernière *release* CI, pas les commits du jour). Base RÉELLE **externe** (`~/.verax`, partagée avec le
+source) → la parité des données est structurelle.
+
+Résultats :
+- **Échantillon bundlé (1088 tables)** : 11 requêtes vérité-terrain, **11/11 identiques exe/source**, toutes
+  correctes (Tokyo, Paris, H2O, hexagone→6, français→romane…), abstention préservée (Wakanda → None).
+- **Base réelle (1408 tables)** : 5/5 identiques, dont `regime_alimentaire(sanglier)→omnivore`,
+  `(grand requin blanc)→carnivore`, abstention → None. La seule « divergence » apparente était un artefact
+  d'encodage du pipe Windows (cp1252) : `famille_immediate_langue(français)` = **byte-identique** des deux
+  côtés (`6c616e6775652064276fc3af6c` = « langue d'oïl » UTF-8), prouvé en hex.
+- **Robustesse data-driven confirmée** : le `.exe`@2206fb7 lit correctement `famille_immediate_langue`, une
+  relation CRÉÉE aujourd'hui (après son build) — parce que la base est externe et le lookup data-driven.
+
+**Verdict : le `.exe` déployé répond exactement comme le source, byte pour byte, sur l'échantillon comme sur
+les 72 M de faits.** Les correctifs du jour (clé, cache, barres de progression, gates) landeront dans le
+prochain build de release. Scripts de diagnostic temporaires nettoyés (aucun résidu dans l'app déployée).
+
 ## 2026-07-12 — `_nonreg` DÉTERMINISTE : il épingle sa fixture, les gates « base complète » SKIPPENT proprement
 
 Sur la remarque de Yohan (« pourquoi tu n'adaptes pas le `_nonreg` ? si ça a bougé il faut qu'il suive »).

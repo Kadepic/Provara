@@ -41,6 +41,14 @@ AXES_METIER = (
     ("risques professionnels et prévention", "B-FAIT", "tables de risques et obligations publiées"),
     ("formation, diplômes et voies d'accès", "B-FAIT", "référentiels de formation publiés"),
     ("rémunération médiane (pays et année donnés)", "B-FAIT", "statistiques publiques"),
+    # Niveau de préparation requise (échelle O*NET Job Zones 1-5) — ajouté 2026-07-12. MIX : borné pour le
+    # marché du travail US (O*NET) ; ailleurs, non couvert par ce seul référentiel.
+    ("niveau de préparation requise (formation, expérience)", "MIX", "échelle O*NET Job Zones (marché US) ; "
+                                                                     "non borné hors de ce référentiel"),
+    # Profil d'intérêt dominant (RIASEC/Holland) — ajouté 2026-07-12. MIX : high-point O*NET (argmax
+    # déterministe, marché US, scores imputés) ; hors de ce référentiel, non borné.
+    ("profil d'intérêt dominant (RIASEC)", "MIX", "high-point O*NET Interests (marché US, scores imputés) ; "
+                                                  "non borné hors de ce référentiel"),
     ("« ce métier est-il fait pour moi ? »", "NB-SUBJ", "préférence personnelle : l'utilisateur est la seule source"),
 )
 # L'axe « résultats établis du domaine » A ÉTÉ RETIRÉ le 2026-07-12 : c'était un sujet MAL POSÉ (7 584

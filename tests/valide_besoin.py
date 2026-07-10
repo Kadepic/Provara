@@ -84,6 +84,33 @@ check(B.chaines_physiques(sources=("grandeur_bidon",), cible="chaleur")[0]["stat
 check(B.decompose("rafraichir une piece")["objectif_reel"] == B.decompose("rafraichir une piece")["objectif_reel"],
       "décomposition déterministe")
 
+# ── 7) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+check(B.domaines_connus() == ["rafraichissement_confort"],
+      "un seul domaine modélisé au départ (le cooling)")
+# on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
+_TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
+              "puits", "test", 0.5, "base test")
+_TESTC = B.Canal("canal_test", "chaleur", "levier test", True, "note test")
+_TESTN = B._Nature("exemple test", ["levier a", "levier b"], "leçon test")
+B.enregistre(B.Domaine(nom="besoin_test_xyz", aliases=frozenset({"besoin de test xyz"}),
+                       objectif="objectif reel du test", canaux=[_TESTC], principes=[_TESTP],
+                       strategies=[_TESTN], loi="loi test", extras={"param_test": 42}))
+check("besoin_test_xyz" in B.domaines_connus(), "un domaine enregistré apparaît dans domaines_connus()")
+dt = B.decompose("besoin de test xyz")
+check(dt["statut"] == "decompose" and dt["objectif_reel"] == "objectif reel du test" and dt["param_test"] == 42,
+      "decompose dispatche vers le nouveau domaine (objectif + extras propres)")
+check(dt["loi"] == "loi test" and len(dt["canaux"]) == 1, "canaux et loi du nouveau domaine servis")
+pt = B.principes("besoin de test xyz")
+check(pt["statut"] == "principes" and len(pt["liste"]) == 1
+      and "candidat pour besoin_test_xyz" in pt["liste"][0]["atome"].portee.condition,
+      "principes dispatche vers le nouveau domaine (portée nommant SON domaine)")
+check(len(B.strategies_naturelles("besoin de test xyz")) == 1, "strategies dispatche vers le nouveau domaine")
+# le cooling reste INTACT après l'ajout (pas de fuite entre domaines)
+check(B.decompose("rafraichir une piece")["charge_corps_W"] == 100 and len(B.principes("rafraichir une piece")["liste"]) == 18,
+      "le cooling est inchangé après l'ajout d'un domaine (isolation)")
+# un besoin toujours inconnu reste HORS
+check(B.decompose("teleporter un objet")["statut"] == B.HORS, "besoin hors registre -> HORS (inchangé)")
+
 print(f"\n=== valide_besoin : {ok}/{ok + ko} ===")
 import sys
 
