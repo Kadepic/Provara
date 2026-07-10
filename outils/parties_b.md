@@ -144,3 +144,4 @@
   - intentions cachées d'une personne :: NB-INDEC
   - existence de vie extraterrestre :: NB-OUV
   - astrologie, numérologie, voyance :: NB-INDEC → aucun mécanisme vérifiable
+  - énumérer les « résultats établis » d'un domaine :: NB-VAGUE → ni « un résultat » (granularité) ni « établi » (seuil) n'ont d'individuation canonique ; aucun corpus clos ne l'arrête ; la MEMBERSHIP d'un résultat NOMMÉ, elle, est bornée et relève du store (ANNEXE S)

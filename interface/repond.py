@@ -3603,7 +3603,12 @@ _RAPPEL_STOP = frozenset((
     "quel quelle quels quelles est sont le la les un une des du de d au aux en et ou qui que quoi mon ma mes "
     "ton ta tes son sa ses notre votre leur ce cette ces je tu il elle on nous vous me te se avec pour dans sur "
     "comment combien quand pourquoi c est appelle appelles nomme dis dit sais connais prefere preferee "
-    "preferee preferees habite fait a ai as").split())
+    "preferee preferees habite fait a ai as "
+    # MARQUEURS DE DISCOURS (correctif 2026-07-12). « Alors, comment je m'appelle ? » rendait
+    # mots_contenu = {« alors »} : la garde ANTI-À-CÔTÉ exigeait alors que l'énoncé rappelé contienne
+    # « alors », et « Je m'appelle Yohan. » était REJETÉ. Un marqueur de discours n'est pas un mot de
+    # contenu — il n'individualise aucun sujet.
+    "alors donc bref voila enfin ensuite puis or ainsi").split())
 
 
 def _mots_contenu_rappel(texte: str) -> set:
@@ -3616,6 +3621,41 @@ def _mots_contenu_rappel(texte: str) -> set:
 # Question PERSONNELLE (possessif 1ʳᵉ personne) : elle porte sur l'utilisateur — aucune source externe ne peut
 # y répondre (brique 4 du fil : garde anti-web + repli honnête dédié au lieu d'un extrait hors-sujet).
 _RE_QUESTION_PERSO = re.compile(r"\b(?:mon|ma|mes)\b", re.I)
+
+
+def _champs_alias(texte: str) -> frozenset:
+    """Les GROUPES d'alias (champs sémantiques) présents dans un texte, identifiés par leur index. Sert à
+    dire « ces deux phrases parlent du même champ » quand aucun mot de contenu ne subsiste."""
+    toks = set(_normalise(texte).split())
+    return frozenset(i for i, g in enumerate(_GROUPES_ALIAS) if toks & g)
+
+
+def _couvre_avec_alias(mots_q: set, mots_e: set, texte_e: str = "") -> bool:
+    """Les mots de contenu de la QUESTION sont-ils couverts par l'ÉNONCÉ, **au champ sémantique près** ?
+
+    Correctif 2026-07-12. Le rappel interroge l'index avec `_expanse_rappel` (« nom » cherche aussi
+    « appelle », « prénom »…) mais la garde ANTI-À-CÔTÉ comparait ensuite les mots BRUTS : « tu sais mon
+    NOM ? » retrouvait bien « Je m'APPELLE Yohan. », puis le rejetait faute de contenir « nom ». Deux
+    étages du même rappel utilisaient deux notions de synonymie — l'un l'avait, l'autre pas.
+
+    Un mot de la question est couvert s'il figure dans l'énoncé, OU s'il partage un GROUPE D'ALIAS avec un
+    mot de l'énoncé. **On cherche l'alias dans les tokens BRUTS de l'énoncé, pas dans ses mots de contenu** :
+    « appelle » est un mot-outil de `_RAPPEL_STOP` (à raison — il ne distingue pas), donc absent des mots de
+    contenu de « Je m'appelle Yohan. » ; le chercher là ne l'y trouverait jamais.
+
+    La sûreté est inchangée : on ne fabrique rien, on cite un énoncé RÉEL de l'utilisateur ; on cesse
+    seulement de le jeter pour une différence de vocabulaire que le projet connaît déjà."""
+    if not mots_q:
+        return False
+    manquants = mots_q - mots_e
+    if not manquants:
+        return True
+    toks_e = mots_e | set(_normalise(texte_e).split())
+    for m in manquants:
+        grp = next((g for g in _GROUPES_ALIAS if m in g), None)
+        if grp is None or not (grp & toks_e):
+            return False
+    return True
 
 
 def _expanse_rappel(texte: str) -> str:
@@ -8824,7 +8864,17 @@ def _repond_noyau(memoire, conv_id: str, texte: str, pleine: bool = False) -> st
             _e0 = enonces[0]
             _mots_e0 = _mots_contenu_rappel(_e0["texte"])
             _est_tache = bool(_RAPPEL_TACHE_RE.match(_e0["texte"].strip()))
-            if (mots_q and mots_q <= _mots_e0) or (_est_tache and (not mots_q or mots_q & _mots_e0)):
+            # Trois voies de sortie, toutes SOUND (on cite un énoncé RÉEL, jamais une invention) :
+            #   • couverture des mots de contenu, au CHAMP SÉMANTIQUE près (nom ≡ appelle ≡ prénom) ;
+            #   • rappel-tâche, ré-servable dès un mot partagé ;
+            #   • question SANS mot de contenu (« Au fait, comment je m'appelle ? » : tout est mot-outil) —
+            #     la garde `mots_q and …` la condamnait au silence alors que le rappel avait trouvé par le
+            #     champ sémantique. On exige alors qu'un GROUPE D'ALIAS soit partagé : c'est ce champ, et
+            #     lui seul, qui a fait le rappel. (Correctif 2026-07-12.)
+            _partage_champ = bool(_champs_alias(t) & _champs_alias(_e0["texte"]))
+            if (_couvre_avec_alias(mots_q, _mots_e0, _e0["texte"])
+                    or (_est_tache and (not mots_q or mots_q & _mots_e0))
+                    or (not mots_q and _partage_champ)):
                 return f"{_MSG_RAPPEL_PREFIXE}« {_e0['texte']} »"
         # question PERSONNELLE restée sans rappel couvrant -> repli honnête DÉDIÉ (brique 4 du fil) : sur SA
         # vie, seule SA parole peut répondre — jamais le web, jamais un énoncé à-côté, jamais une invention.

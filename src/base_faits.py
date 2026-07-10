@@ -238,13 +238,40 @@ FAITS: dict[tuple[str, str], Fait] = {
 
 _ARTICLES = {"de", "du", "des", "d", "la", "le", "les", "l"}
 
+# VERSION DE LA POLITIQUE DE CLÉ CANONIQUE. Les caches du lecteur (`.bin` marshal et `.colf` mmap)
+# STOCKENT les clés : si `normalise` ou `_sans_articles` change, un cache ancien sert des clés PÉRIMÉES
+# et le lookup ment (mesuré le 2026-07-12 : après le correctif de clé vide, `createur_langage_programmation
+# ("D")` rendait encore None depuis un cache chaud). Les signatures de cache incorporent donc CETTE
+# constante : l'invalidation est MÉCANIQUE, pas disciplinaire. **Incrémenter à CHAQUE changement de clé.**
+#   1 — clé initiale (dépouillement des articles, pouvait rendre une clé VIDE)
+#   2 — 2026-07-12 : une clé n'est jamais vide (repli clé entière, puis NFC casefold)
+CLE_VER = 2
+
 
 def _sans_articles(entite: str) -> str:
-    """Retire les déterminants en tête (« la france » -> « france ») pour fiabiliser le lookup."""
+    """Retire les déterminants en tête (« la france » -> « france ») pour fiabiliser le lookup.
+
+    UNE CLÉ N'EST JAMAIS VIDE (garde posée le 2026-07-12, MANQUE mesuré : 47 faits dans 45 tables).
+    `lecteur.ingere_table` IGNORE les clés vides — silencieusement. Deux familles d'entités s'y perdaient :
+
+      • celles qui SONT un article français : « D » (le langage de programmation), « d », « l ».
+        `createur_langage_programmation("D")` rendait None alors que le fait est sur le disque ;
+      • celles écrites hors alphabet latin : `normalise` compacte sur `[^a-z0-9 ]+`, donc
+        « Πетергофский десант », « Αθανάσιος » deviennent vides — introuvables, à jamais.
+
+    On replie donc, dans l'ordre : clé dépouillée -> clé normalisée entière (l'entité EST un article :
+    « d » reste « d », distinct de « l ») -> l'entité NFC casefold (écriture non latine, jamais vidée).
+    Les deux replis ne s'appliquent QUE si la clé serait vide : aucune clé existante ne change."""
     mots = normalise(entite).split()
     while mots and mots[0] in _ARTICLES:
         mots = mots[1:]
-    return " ".join(mots)
+    cle = " ".join(mots)
+    if cle:
+        return cle
+    plein = normalise(entite)
+    if plein:
+        return plein
+    return unicodedata.normalize("NFC", str(entite).strip()).casefold()
 
 
 def cherche(relation: str, entite: str) -> Fait | None:

@@ -28,6 +28,7 @@ GATES = [
     "valide_pont_electrique", "valide_pont_hydraulique", "valide_roue_energie", "valide_roues_compilees",
     "valide_graphe_roues", "valide_sujets", "valide_oracle_metier", "valide_rome_rncp", "valide_regprof",
     "valide_bls_oes", "valide_onet", "valide_bls_soii", "valide_isco_wikidata", "valide_oracle_domaine",
+    "valide_cles_canoniques", "valide_collision_relations", "valide_capacites",
     # VAGUE A (2026-07-10 nuit, mandat « traiter tout le backlog des sujets ») : 19 briques conceptuelles
     # neuves, chacune avec mécanisme exact, abstention structurelle et gate à ancres NON CIRCULAIRES.
     # Elles ferment à ZÉRO le backlog des PARTIES I et II (14 + 21 sujets non traités -> 0).
@@ -60,7 +61,7 @@ GATES = [
     "valide_reproductibilite_build", "valide_datation_radiocarbone", "valide_calendriers",
     "valide_formats_locaux", "valide_anatomie_systemes", "valide_versification_fr",
     "valide_apprentissage_patrons", "valide_conversation",
-    "valide_capacites_chat", "valide_assistant_nl", "valide_maj", "valide_veille_structure", "valide_cablage",
+    "valide_capacites_chat", "valide_assistant_nl", "interface/valide_interface", "valide_maj", "valide_veille_structure", "valide_cablage",
     "valide_faits_appris", "valide_tronc", "valide_debiaisage", "valide_sources", "valide_sequenceur",
     "valide_atomes",                 # cliquet : aucune fonction publique orpheline (dette ia.py qui ne peut que fondre)
     # bancs de COMPRÉHENSION qui passent sur l'ÉCHANTILLON (les autres — paraphrases/synonymes/raisonnement —
@@ -102,7 +103,11 @@ def main() -> int:
     print("SUITE CONVERSATIONNELLE — %d gates" % len(GATES))
     print("=" * 66)
     for nom in GATES:
-        chemin = os.path.join(_ICI, nom + ".py")
+        # Un nom SIMPLE vit dans tests/ ; un nom avec « / » est résolu depuis la RACINE du projet.
+        # (2026-07-12 : `interface/valide_interface` est une gate de plein droit — elle dormait hors suite,
+        # et six comportements de mémoire conversationnelle étaient cassés sans que rien ne rougisse.)
+        chemin = (os.path.join(_RACINE, nom + ".py") if "/" in nom
+                  else os.path.join(_ICI, nom + ".py"))
         if not os.path.isfile(chemin):
             print("  %-30s INTROUVABLE" % nom)
             resultats.append((nom, "INTROUVABLE"))

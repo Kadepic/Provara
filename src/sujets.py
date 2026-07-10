@@ -34,7 +34,13 @@ if _BUNDLE and not os.path.exists(DOC_AUTO):                # annexes auto : pr�
 # Codes de bornage reconnus (cf. légende du document).
 BORNE = {"B-NEC", "B-PHY", "B-FAIT", "B-CONV"}          # la réalité fixe la réponse, accès suffisant
 FRONTIERE = {"NB-OUV"}                                   # borné EN PRINCIPE, accès manquant (science ouverte)
-NON_BORNE = {"NB-SUBJ", "NB-SPEC", "NB-NORM", "NB-INDEC"}
+# NB-VAGUE (2026-07-12) : non borné par VAGUEUR CONSTITUTIVE — la question n'a pas d'individuation
+# canonique de ses termes, donc la réalité ne fixe AUCUNE réponse unique. Distinct de NB-OUV (la réponse
+# existe, l'accès manque) et de NB-INDEC (la réponse existe peut-être, elle est inatteignable).
+# Cas fondateur : « énumérer les résultats établis d'un domaine » — ni « un résultat » (granularité) ni
+# « établi » (seuil) n'ont de découpe canonique ; aucun corpus clos ne l'arrête. La question de
+# MEMBERSHIP d'un résultat NOMMÉ, elle, est bornée : elle relève du store.
+NON_BORNE = {"NB-SUBJ", "NB-SPEC", "NB-NORM", "NB-INDEC", "NB-VAGUE"}
 MIXTE = {"MIX"}                                          # part bornée + part non-bornée
 CODES = BORNE | FRONTIERE | NON_BORNE | MIXTE
 

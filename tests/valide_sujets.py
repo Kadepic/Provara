@@ -136,6 +136,20 @@ if os.path.exists(S.DOC_AUTO):
     # 4) plus AUCUN axe métier « sans source » : les huit sont soit routés, soit MIX par entité.
     #    (Le cliquet vit désormais en §5 : PARTIEL par entité, JAMAIS TRAITÉ.)
 
+    # 4bis) L'AXE MAL POSÉ NE DOIT JAMAIS REPARAÎTRE. « résultats établis du domaine » promettait une
+    # énumération que rien ne borne (NB-VAGUE) : 7 584 sujets structurellement intraitables. Le
+    # ressusciter — même « pour mémoire » — remettrait un mensonge dans le compteur.
+    ressuscite = [s for s in complet if "résultats établis du domaine" in s.libelle
+                  and s.partie.startswith("ANNEXE")]
+    check(not ressuscite,
+          "l'axe MAL POSÉ « résultats établis du domaine » est absent des annexes (%d trouvés)"
+          % len(ressuscite))
+    # ... et sa formulation HONNÊTE existe, une seule fois, dans le non-borné cartographié.
+    honnete = [s for s in tous if "résultats établis" in s.libelle and s.code == "NB-VAGUE"]
+    check(len(honnete) == 1, "le sujet honnête (NB-VAGUE) existe exactement une fois (%d)" % len(honnete))
+    check(honnete and C.etat(honnete[0])[0] == C.TRAITE and "routage" in C.etat(honnete[0])[1],
+          "le sujet NB-VAGUE est TRAITÉ par routage honnête (abstention dite), jamais par une liste")
+
     # 5) les axes MIX peuvent être PARTIELS par entité, JAMAIS TRAITÉS : « gestes » (le tour de main
     # tacite reste non borné), « formation » (le RNCP ferme la part FRANÇAISE ; la formation varie
     # par pays et par année), « normes » (REGPROF/ESCO ferment la réglementation d'ACCÈS ; les

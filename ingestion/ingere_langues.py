@@ -4,8 +4,14 @@ INGESTION LANGUES — « famille et parenté d'une langue » + « nombre de locu
 SOURCE : Wikidata via QLever.
 
 TROIS RELATIONS :
-  • `famille_langue`   — la famille IMMÉDIATE (P279 vers un item typé « famille de langues », Q25295) :
-                         « le français est une langue d'oïl » ;
+  • `famille_immediate_langue` — la famille IMMÉDIATE (P279 vers un item typé « famille de langues »,
+                         Q25295) : « le français est une langue d'oïl ». NOMMÉE AINSI DEPUIS LE 2026-07-12.
+                         Elle s'appelait `famille_langue` et ÉCRASAIT SILENCIEUSEMENT la table curée du
+                         même nom (`ingere_langues_famille.py`, 81 langues, grandes familles) : même
+                         relation, deux sémantiques, `ecrit_jsonl` régénère le fichier -> dernier écrivain
+                         gagne. Le store répondait « famille de l'anglais : langues angliques » là où la
+                         gate `valide_lecteur` attend « germanique ». Le nom disait plus que le contenu :
+                         le péché même que ce fichier dénonce trois lignes plus bas pour `parente_langue`.
   • `locuteurs_langue` — le nombre de locuteurs, **TOUJOURS DATÉ**.
 
 LA PARENTÉ COMPLÈTE N'EST PAS PUBLIÉE, ET C'EST UNE DÉCISION. On voulait la chaîne « français < langue d'oïl
@@ -131,7 +137,7 @@ def ingere():
     time.sleep(3)
     locs = locuteurs()
     snapshot_brut("langues_axes", [{"familles": len(fam), "locuteurs": len(locs)}])
-    publie("famille_langue", "convention", SRC_FAM, sorted(fam.items()))
+    publie("famille_immediate_langue", "convention", SRC_FAM, sorted(fam.items()))
     publie("locuteurs_langue", "passe", SRC_LOC, locs)
 
 

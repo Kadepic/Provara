@@ -347,7 +347,11 @@ _AXES_M = (
     # dite dans la valeur). La rémunération des autres pays (dont la France) reste non couverte.
     (re.compile(r"rémunération médiane", re.I), "lookup_partiel", ("salaire_median_soc_us_metier",),
      "part ÉTATS-UNIS fermée par BLS OEWS (médianes par occupation SOC) ; autres pays non couverts (sujet MIX)"),
-    (re.compile(r"résultats établis du domaine", re.I), "aucun", (), "corpus de domaine non ingéré"),
+    # « résultats établis du domaine » N'EST PLUS UN AXE (retiré le 2026-07-12 : sujet MAL POSÉ, cf.
+    # outils/genere_sujets.AXES_DOMAINE). La règle survit en GARDE : si l'axe reparaissait dans une carte,
+    # il ne serait JAMAIS déclaré traité — et `valide_sujets` rougit sur sa seule présence.
+    (re.compile(r"résultats établis du domaine", re.I), "aucun", (),
+     "AXE RETIRÉ (sujet mal posé, NB-VAGUE) : ne doit plus figurer dans la carte"),
 )
 
 _DOSSIER_STORE = os.environ.get(

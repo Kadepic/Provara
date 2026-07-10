@@ -301,7 +301,13 @@ def ajoute_message(memoire, conv_id: str, texte: str, scope: str = "prive", plei
         # déclaration TECHNIQUE (grandeurs, pas de question) -> accusé du FIL, à la place du lookup fragmenté
         # « je ne l'ai pas encore en mémoire » ×N (vécu sonde échangeur). Les affirmations sans grandeur
         # gardent leurs flux existants (mémo, attunement, apprentissage de patrons).
-        if not _rep_fc and _n_sit and "?" not in texte:
+        # …MAIS un ORDRE n'est pas une déclaration (correctif 2026-07-12). « Convertis 5 km en mètres »
+        # porte une grandeur et aucun « ? » : le fil l'accusait en « C'est noté, je tiens le fil : 5 km ».
+        # C'est exactement le faux que `repond._est_demande_imperative` interdit DÉJÀ en fin de cascade —
+        # mais le fil répondait AVANT elle. Une même règle, appliquée à un seul endroit, laissait passer
+        # l'autre. On la consulte donc ici aussi : ordre -> on rend la main au pipeline (calcul, puis repli
+        # honnête). Sound : ne change que le ROUTAGE, jamais un fait.
+        if not _rep_fc and _n_sit and "?" not in texte and not repond._est_demande_imperative(texte):
             _rep_fc = _sit.accuse_tour(_seq_prochain)
     except Exception:
         pass
