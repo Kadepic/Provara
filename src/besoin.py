@@ -1114,6 +1114,155 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  SEPTIÈME DOMAINE : se propulser. Nouvelle loi dure ajoutée au juge (L4) : la conservation de la QUANTITÉ DE
+#  MOUVEMENT. Pour produire une poussée, il faut pousser sur QUELQUE CHOSE — éjecter de la masse/du rayonnement
+#  OU s'appuyer sur un milieu/momentum externe. Un « moteur sans réaction » (EmDrive, Dean drive) est réfuté ;
+#  l'éjection supraluminique aussi.
+#  REFRAMING machine : on ne CONTOURNE pas cette loi (impossible), on CHOISIT la meilleure réaction. Dans le VIDE
+#  sans milieu, il FAUT emporter de la masse → maximiser la vitesse d'éjection (impulsion spécifique) pour en
+#  emporter moins ; sinon emprunter un momentum qu'on ne porte PAS (lumière du Soleil, laser depuis le sol,
+#  fronde gravitationnelle). S'il y a un milieu (air, eau, sol, champ), pousser dessus = zéro ergol.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_PROP = "propulsion"
+_ALIAS_PROP = {
+    "se propulser", "propulsion spatiale", "propulser un engin", "avancer dans le vide",
+    "propulser une fusee", "propulsion sans ergol", "se deplacer dans l espace",
+}
+
+# ── « Canaux » : ce sur quoi on POUSSE pour avancer ──────────────────────────────────────────────────────────────
+_CANAUX_PROP = [
+    Canal("ejection de masse", "quantite_mouvement", "emporter puis éjecter de la masse/du rayonnement (fusée, ion, photon)",
+          False, "la SEULE option dans le vide sans milieu ; le levier = maximiser la vitesse d'éjection (Isp) "
+                 "pour emporter moins d'ergol ; bruit/chaleur du jet"),
+    Canal("milieu fluide", "quantite_mouvement", "pousser sur l'air ou l'eau (hélice, réacteur, nage)",
+          False, "zéro ergol emporté (le milieu EST la réaction) ; inutilisable dans le vide"),
+    Canal("momentum externe", "quantite_mouvement", "emprunter un momentum qu'on ne porte pas (voile solaire, laser, fronde gravitationnelle)",
+          True, "zéro ergol : la lumière/le champ/la planète fournit l'impulsion ; poussée faible ou source "
+                "externe requise — sous-exploité pour l'espace lointain"),
+    Canal("appui solide", "quantite_mouvement", "pousser sur le sol par friction ou champ (roue, patte, sustentation magnétique)",
+          True, "très efficace au sol ; le rail/la route fournissent la réaction ; hors sol, inopérant"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la conservation de la quantité de mouvement (type `propulsion`, L4) ─────
+_PRINCIPES_PROP = [
+    _P("fusée chimique (référence, vide)",
+       "se propulser : brûler un ergol et éjecter les gaz à grande vitesse",
+       {"type": "propulsion", "poussee_nette": 1e6, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 4500}, False, False,
+       "gaz éjectés (masse emportée)", "mature",
+       0.6, "forte poussée MAIS vitesse d'éjection faible → il faut emporter ÉNORMÉMENT d'ergol (équation de "
+            "Tsiolkovski) ; la référence pour décoller — à dépasser en Isp pour l'espace lointain"),
+    _P("moteur ionique / à plasma",
+       "se propulser : accélérer des ions par un champ électrique et les éjecter à très grande vitesse",
+       {"type": "propulsion", "poussee_nette": 0.2, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 30000}, True, True,
+       "ions éjectés", "mature (spatial)",
+       0.6, "vitesse d'éjection ~7× la chimie → emporte BEAUCOUP moins d'ergol pour la même mission ; poussée "
+            "minuscule (accélération lente) → idéal espace lointain, pas le décollage — le levier « Isp élevé »"),
+    _P("voile solaire (momentum de la lumière)",
+       "se propulser : une grande voile réfléchit la lumière du Soleil, dont l'impulsion pousse le vaisseau",
+       {"type": "propulsion", "poussee_nette": 0.01, "milieu_externe": True}, True, True,
+       "aucun ergol (momentum externe : photons du Soleil)", "démontré (niche)",
+       0.55, "ZÉRO ergol emporté : c'est le Soleil qui fournit l'impulsion ; poussée très faible mais CONTINUE et "
+             "gratuite → vitesse cumulée élevée sur la durée ; s'affaiblit loin du Soleil"),
+    _P("propulsion laser (voile poussée depuis le sol)",
+       "se propulser : un laser puissant reste au sol/en orbite et pousse une voile légère embarquée",
+       {"type": "propulsion", "poussee_nette": 0.1, "milieu_externe": True}, True, True,
+       "aucun ergol embarqué (momentum externe : le laser)", "recherche (Breakthrough Starshot)",
+       0.45, "l'ÉNERGIE reste à la maison → le vaisseau n'emporte presque rien → accélérations extrêmes possibles "
+             "pour une sonde minuscule ; exige un laser gigantesque et un pointage parfait — sous-exploité"),
+    _P("turboréacteur / hélice (atmosphère)",
+       "se propulser : accélérer l'air vers l'arrière pour avancer (réacteur, hélice)",
+       {"type": "propulsion", "poussee_nette": 5e4, "milieu_externe": True}, False, True,
+       "aucun ergol de réaction (le milieu = l'air)", "mature",
+       0.5, "n'emporte pas la masse de réaction (l'air est gratuit) → très efficace DANS l'atmosphère ; "
+            "totalement inopérant dans le vide — apparier au milieu"),
+    _P("fronde gravitationnelle (assistance gravitationnelle)",
+       "se propulser : passer près d'une planète pour emprunter une part de sa quantité de mouvement orbitale",
+       {"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": True}, True, True,
+       "aucun ergol (momentum emprunté à la planète)", "mature (missions lointaines)",
+       0.5, "gain de vitesse SANS ergol en volant la quantité de mouvement d'une planète (conservée à l'échelle "
+            "du système) ; conditionné aux alignements et aux fenêtres de tir — le levier « momentum externe »"),
+    _P("voile magnétique / magnétoplasma (vent solaire)",
+       "se propulser : un champ magnétique embarqué dévie le vent solaire, qui pousse le vaisseau",
+       {"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": True}, True, True,
+       "aucun ergol (momentum externe : vent solaire / champ planétaire)", "recherche",
+       0.4, "s'appuie sur le plasma interplanétaire ou le champ d'une planète → zéro ergol ; poussée faible et "
+            "conditionnée à la présence de plasma/champ — piste peu explorée"),
+    _P("propulsion nucléaire thermique",
+       "se propulser : un réacteur chauffe un gaz léger (hydrogène) éjecté à haute vitesse",
+       {"type": "propulsion", "poussee_nette": 5e5, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 9000}, False, False,
+       "hydrogène éjecté", "démonstrateur",
+       0.45, "vitesse d'éjection ~2× la chimie avec une forte poussée → compromis pour l'espace habité ; "
+             "contraintes de sûreté nucléaire — emporte tout de même sa masse de réaction"),
+    _P("fusée à photons",
+       "se propulser : éjecter des photons (lumière) dont l'impulsion propulse le vaisseau",
+       {"type": "propulsion", "poussee_nette": 1e-6, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 2.99e8}, True, True,
+       "photons éjectés (vitesse d'éjection = c, l'ultime)", "théorique",
+       0.3, "vitesse d'éjection = c → impulsion spécifique ULTIME (emporte le minimum de « masse ») ; MAIS poussée "
+            "infime pour une énergie colossale → horizon lointain, strictement dans les lois"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : conservation de la quantité de mouvement / v ≤ c) ──
+    _P("moteur sans réaction (type EmDrive)",
+       "se propulser : produire une poussée nette dans le vide sans éjecter de masse ni s'appuyer sur rien",
+       {"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": False,
+        "ejecte_masse_ou_rayonnement": False}, True, True,
+       "— (aucune réaction)", "revendication",
+       0.3, "poussée sans réaction = viole la conservation de la quantité de mouvement — à réfuter (EmDrive/Dean)"),
+    _P("éjection supraluminique",
+       "se propulser : éjecter la masse de réaction plus vite que la lumière pour une impulsion spécifique infinie",
+       {"type": "propulsion", "poussee_nette": 1.0, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 3.0e8}, True, True,
+       "masse éjectée", "revendication",
+       0.25, "vitesse d'éjection > c = impossible (relativité)"),
+]
+
+_OBJECTIF_PROP = ("Le but réel n'est pas de « trouver un moteur qui avance tout seul » (impossible : il faut "
+                  "pousser sur QUELQUE CHOSE) mais de CHOISIR la meilleure réaction. S'il y a un milieu (air, eau, "
+                  "sol, champ), pousser dessus = zéro ergol emporté. Dans le VIDE sans milieu, il FAUT emporter de "
+                  "la masse → maximiser la vitesse d'éjection (impulsion spécifique) pour en emporter moins ; ou "
+                  "EMPRUNTER un momentum qu'on ne porte pas (lumière du Soleil, laser depuis le sol, fronde "
+                  "gravitationnelle). Chaque principe reste jugé par la conservation de la quantité de mouvement.")
+_LOI_PROP = ("conservation de la quantité de mouvement (3e loi de Newton) : pas de poussée nette sans réaction — "
+             "éjecter de la masse/du rayonnement, s'appuyer sur un milieu, ou emprunter un momentum externe ; la "
+             "vitesse d'éjection ≤ c ; gains réels = apparier au milieu, maximiser l'impulsion spécifique, "
+             "emprunter un momentum gratuit (lumière/planète)")
+
+# La nature se propulse par réaction (calmar), en poussant le fluide (poisson) ou le sol (serpent), ou emprunte le vent.
+_STRATEGIES_NATURE_PROP = [
+    _Nature("calmar / poulpe (jet d'eau)",
+            ["remplir puis EXPULSER de l'eau", "poussée par réaction (masse éjectée)",
+             "orientation du siphon"],
+            "la fusée biologique : éjecter une masse pour avancer — le principe de la réaction pure"),
+    _Nature("poisson / oiseau (pousser le fluide)",
+            ["nageoires/ailes qui accélèrent l'eau/l'air vers l'arrière", "le milieu fournit la réaction"],
+            "pousser sur le milieu = avancer sans rien emporter — inapplicable dans le vide"),
+    _Nature("serpent / ver (pousser le sol)",
+            ["friction directionnelle contre le substrat", "le sol fournit la réaction"],
+            "s'appuyer sur le solide : la réaction vient de la route, pas d'un ergol"),
+    _Nature("samare (graine ailée d'érable) / pissenlit",
+            ["capte le momentum du VENT extérieur", "géométrie qui maximise la portance/traînée"],
+            "emprunter le momentum de l'air en mouvement — zéro énergie propre, comme la voile"),
+    _Nature("araignée « ballooning » (vol par fil de soie)",
+            ["fil de soie captant le vent/le champ électrique atmosphérique", "s'élève sans muscle propulsif"],
+            "emprunter un momentum/champ externe pour voyager loin — le levier de la voile, en vivant"),
+]
+
+enregistre(Domaine(
+    nom=_PROP,
+    aliases=frozenset(_ALIAS_PROP),
+    objectif=_OBJECTIF_PROP,
+    canaux=_CANAUX_PROP,
+    principes=_PRINCIPES_PROP,
+    strategies=_STRATEGIES_NATURE_PROP,
+    loi=_LOI_PROP,
+    extras={"regle_or": "pour avancer il faut pousser sur quelque chose : masse éjectée, milieu, ou momentum externe",
+            "vide_note": "dans le vide sans milieu, il FAUT éjecter de la masse/du rayonnement — pas d'échappatoire"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 7e domaine « propulsion » + loi L4 (conservation de la quantité de mouvement)
+
+Se propulser. Nouvelle loi dure au juge (`L4`) : **conservation de la quantité de mouvement** (3e loi de Newton)
++ vitesse d'éjection ≤ c. Un « moteur sans réaction » (EmDrive/Dean : poussée nette sans milieu externe NI
+éjection de masse/rayonnement) est RÉFUTÉ ; l'éjection supraluminique aussi. CONSERVATEUR : on ne réfute QUE si
+la spec déclare explicitement « ni milieu, ni éjection » → aucun faux positif (fusée, jet, voile, ion, fronde
+jamais réfutés). Gate `valide_coherence_physique` **67 → 82/82**.
+
+`enregistre(...)`, rien d'autre. **11 principes**, 9 suppositions + 2 RÉFUTÉS (EmDrive, éjection > c). Reframing :
+on ne CONTOURNE pas la loi (impossible), on CHOISIT la réaction — s'il y a un milieu (air/eau/sol/champ), pousser
+dessus = zéro ergol ; dans le vide, emporter de la masse et maximiser l'impulsion spécifique (Isp), ou EMPRUNTER
+un momentum externe (lumière du Soleil, laser au sol, fronde gravitationnelle). Couvre fusée chimique, ionique,
+voile solaire, propulsion laser, turboréacteur, fronde gravitationnelle, voile magnétique, nucléaire thermique,
+fusée à photons. 5 stratégies naturelles propres (calmar/jet, poisson/oiseau, serpent, samare, araignée
+ballooning). Gate `valide_besoin` **151 → 169/169** ; les 6 domaines précédents intacts.
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 6e domaine « eau_potable_air » (AWG) — loi séparation RÉUTILISÉE (x = HR)
 
 Produire de l'eau potable de l'air. La loi est DÉJÀ couverte par le type `separation` généralisé : extraire

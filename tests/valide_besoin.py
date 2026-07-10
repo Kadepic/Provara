@@ -334,10 +334,54 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "fraction_co2_air" in B.decompose("capter le co2"),
       "les 5 domaines précédents inchangés après l'ajout de l'AWG (isolation)")
 
-# ── 12) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+# ── 12) SEPTIÈME DOMAINE : se propulser (nouvelle loi L4 = conservation de la quantité de mouvement) ──
+dp = B.decompose("se propulser")
+check(dp["statut"] == "decompose", "besoin propulsion connu -> decompose")
+check("reaction" in dp["objectif_reel"].lower().replace("é", "e") and "vide" in dp["objectif_reel"].lower(),
+      "objectif réel propulsion = choisir la réaction (pousser sur quelque chose ; vide = éjecter)")
+check("regle_or" in dp, "extras propres : la règle d'or de la propulsion")
+prop_canaux = {c.canal for c in dp["canaux"]}
+check(prop_canaux == {"ejection de masse", "milieu fluide", "momentum externe", "appui solide"},
+      f"4 canaux de propulsion ({prop_canaux})")
+prp = B.principes("se propulser")
+pp = {e["nom"]: e for e in prp["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : moteur sans réaction ET éjection supraluminique
+emd = pp["moteur sans réaction (type EmDrive)"]
+check(emd["atome"].statut == A.REFUTE, "moteur sans réaction -> RÉFUTÉ (quantité de mouvement)")
+check(A.est_refute(emd["atome"].contenu), "contenu réfuté (EmDrive) dans la garde")
+supralum = pp["éjection supraluminique"]
+check(supralum["atome"].statut == A.REFUTE, "éjection v > c -> RÉFUTÉ (relativité)")
+# procédés réels (fusée, ionique, voile) -> SUPPOSITIONS, JAMAIS réfutés
+for nom in ("fusée chimique (référence, vide)", "moteur ionique / à plasma", "voile solaire (momentum de la lumière)",
+            "fronde gravitationnelle (assistance gravitationnelle)"):
+    e = pp[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION (jamais réfuté : réaction réelle)")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prp["liste"]), "aucun principe de propulsion promu en FAIT")
+check("candidat pour propulsion" in pp["fusée chimique (référence, vide)"]["atome"].portee.condition,
+      "portée des principes propulsion nommant propulsion")
+# la loi L4 : réactionless réfuté, mais une fusée à photons (v proche de c mais < c) est cohérente
+st_emd, _, loi_emd = COH.juge_dispositif({"type": "propulsion", "poussee_nette": 1.0,
+                                          "milieu_externe": False, "ejecte_masse_ou_rayonnement": False})
+check(st_emd == COH.VIOLE and loi_emd == COH.L4, "juge : moteur sans réaction -> VIOLE via L4")
+st_photon, _, _ = COH.juge_dispositif({"type": "propulsion", "poussee_nette": 1e-6,
+                                       "ejecte_masse_ou_rayonnement": True, "vitesse_ejection_m_s": 2.99e8})
+check(st_photon == COH.COHERENT_BORNE, "fusée à photons (v < c) -> COHÉRENT, jamais réfutée")
+# stratégies naturelles propres (calmar/jet, samare)
+natp = B.strategies_naturelles("se propulser")
+check(len(natp) >= 4 and any("calmar" in s["exemple"] for s in natp), "stratégies propulsion propres (calmar)")
+check(not any("Namib" in s["exemple"] for s in natp) and not any("photosynthèse" in s["exemple"] for s in natp),
+      "pas de fuite des stratégies AWG/CO₂ vers la propulsion")
+# les SIX domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "fraction_co2_air" in B.decompose("capter le co2")
+      and "humidite_relative_moteur" in B.decompose("produire de l eau de l air"),
+      "les 6 domaines précédents inchangés après l'ajout de la propulsion (isolation)")
+
+# ── 13) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
-                              "stockage_energie", "capture_co2", "eau_potable_air"],
-      "six domaines modélisés, dans l'ordre d'enregistrement")
+                              "stockage_energie", "capture_co2", "eau_potable_air", "propulsion"],
+      "sept domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
