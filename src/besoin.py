@@ -822,6 +822,158 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  CINQUIÈME DOMAINE : capter le CO₂ — enjeu climatique. Même FAMILLE de loi que le dessalement (travail minimal
+#  de séparation), mais pas osmotique : on a GÉNÉRALISÉ `coherence_physique` d'un type `separation` (plancher
+#  R·T·ln(1/x) pour une fraction molaire x quelconque). Le CO₂ de l'air est ULTRA-dilué (x ≈ 4,2e-4 = 420 ppm) →
+#  travail minimal ≈ 19,3 kJ/mol ; aux fumées (x ≈ 0,12) il tombe à ≈ 5,3 kJ/mol. La DILUTION est l'ennemi.
+#  REFRAMING machine : capter d'abord LÀ où c'est concentré (fumées, cimenterie) ; pour la capture dans l'air
+#  (DAC) l'énergie réelle est dominée par la RÉGÉNÉRATION du sorbant (chaleur) → l'adosser à la chaleur fatale/
+#  solaire ; et le PUITS compte (minéralisation permanente vs stockage géologique). FAUX=0 : principes =
+#  suppositions jugées, 2 revendications sous le plancher RÉFUTÉES.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CO2 = "capture_co2"
+_ALIAS_CO2 = {
+    "capter le co2", "capturer le co2", "capture du co2", "capter le dioxyde de carbone",
+    "capture directe dans l air", "capter le carbone atmospherique", "capturer le carbone",
+}
+
+# ── « Canaux » de capture : les mécanismes physiques par lesquels on isole le CO₂ ────────────────────────────────
+_CANAUX_CO2 = [
+    Canal("absorption chimique", "co2", "lier le CO₂ dans un liquide (amines, hydroxydes), le relâcher par chauffage",
+          True, "sélectivité élevée même en gaz dilué ; l'énergie part surtout dans la RÉGÉNÉRATION (chaleur) — "
+                "à adosser à de la chaleur fatale"),
+    Canal("adsorption solide", "co2", "fixer le CO₂ sur un solide poreux, le relâcher (chaleur, vide, humidité)",
+          True, "modulable (amines greffées, MOF, zéolithes) ; la régénération par HUMIDITÉ (moisture-swing) ou "
+                "vide évite la chaleur — piste sous-exploitée pour la capture dans l'air"),
+    Canal("membrane", "co2", "laisser passer sélectivement le CO₂ à travers une membrane",
+          True, "compact, sans consommable ; sélectivité qui chute quand le CO₂ est très dilué → mieux aux fumées"),
+    Canal("mineralisation", "co2", "réagir le CO₂ avec des minéraux (olivine, basalte) en carbonate STABLE",
+          True, "le seul canal qui donne un PUITS permanent en une étape (pas de fuite) ; lent, exploite l'énergie "
+                "de réaction naturelle — l'altération des roches accélérée"),
+]
+
+# ── PRINCIPES candidats de capture — chacun JUGÉ par le travail minimal de séparation (type `separation`, L3) ─────
+_PRINCIPES_CO2 = [
+    _P("amines post-combustion (fumées, référence)",
+       "capter : laver les fumées (~12 % CO₂) par une solution d'amines, régénérée à la chaleur",
+       {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120.0}, True, False,
+       "CO₂ concentré (à stocker/valoriser)", "mature (industrie)",
+       0.6, "la référence : capter LÀ où le CO₂ est concentré (x élevé → plancher ~5 kJ/mol) ; l'énergie réelle "
+            "est dominée par la régénération à la chaleur — bien au-dessus du minimum, marge à réduire"),
+    _P("sorbant solide DAC (capture dans l'air)",
+       "capter : fixer le CO₂ de l'air ambiant (420 ppm) sur un sorbant solide, régénéré à ~100 °C",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 230.0}, True, True,
+       "CO₂ (stockage/valorisation)", "émergent (DAC)",
+       0.5, "capte l'air ULTRA-dilué → plancher ~19 kJ/mol, mais l'énergie réelle (régénération) est ~10× → "
+            "le levier n'est pas de battre le minimum mais de valoriser une chaleur GRATUITE pour régénérer"),
+    _P("solvant hydroxyde DAC (haute température)",
+       "capter : absorber le CO₂ de l'air dans une solution alcaline, régénérée par calcination à ~900 °C",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 350.0}, True, False,
+       "CO₂ (stockage géologique)", "démonstrateur (DAC)",
+       0.45, "voie industrielle robuste MAIS calcination très chaude = beaucoup d'énergie ; intérêt = échelle et "
+             "sorbant régénérable indéfiniment — à décarboner par la chaleur de la source"),
+    _P("séparation membranaire (fumées)",
+       "capter : membrane sélective au CO₂ sur un flux de fumées concentré",
+       {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 80.0}, True, True,
+       "CO₂ concentré", "émergent",
+       0.5, "compacte, sans solvant ni chaleur de régénération ; efficace tant que le CO₂ est CONCENTRÉ "
+            "(inadaptée à l'air ambiant) — le miroir « apparier à la concentration »"),
+    _P("moisture-swing (régénération par l'humidité, DAC)",
+       "capter : sorbant qui fixe le CO₂ sec et le relâche humide — régénéré par l'EAU, pas la chaleur",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 60.0}, True, True,
+       "CO₂ (valorisation)", "recherche (sous-exploité)",
+       0.45, "évite la chaleur de régénération en jouant sur l'humidité ambiante → énergie potentiellement bien "
+             "plus basse pour la capture dans l'air ; débit et durabilité du sorbant à prouver"),
+    _P("électrochimique (électro-swing / bascule de pH)",
+       "capter : fixer puis relâcher le CO₂ par un cycle électrique (bascule de pH ou quinones)",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 100.0}, True, True,
+       "CO₂ (valorisation)", "recherche",
+       0.45, "entraîné par l'ÉLECTRICITÉ (pas la chaleur) → se marie au renouvelable intermittent, modulable ; "
+             "encore au laboratoire, électrodes à faire durer — piste prometteuse"),
+    _P("altération accélérée / minéralisation (olivine, basalte)",
+       "capter : broyer des silicates (olivine) qui réagissent avec le CO₂ en carbonate stable",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 30.0}, True, True,
+       "carbonate SOLIDE (puits permanent, zéro fuite)", "recherche (terrain)",
+       0.5, "exploite l'énergie de RÉACTION naturelle (exothermique) → très peu d'énergie (broyage) ; donne "
+            "directement un puits PERMANENT ; lent, à l'échelle géologique — copie l'altération des roches"),
+    _P("BECCS (la biomasse capte, on stocke)",
+       "capter : laisser la photosynthèse capter le CO₂, brûler la biomasse et capter le CO₂ concentré des fumées",
+       {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120.0}, True, False,
+       "CO₂ concentré (stockage)", "déployé (niche)",
+       0.5, "délègue la capture DILUÉE (la plus chère) à la plante, gratuite et solaire ; on ne capte que le CO₂ "
+            "déjà CONCENTRÉ à la combustion — conditionné à la biomasse durable et à sa surface"),
+    _P("valorisation directe (CO₂ → carburant/matériau)",
+       "capter : convertir le CO₂ capté en carburant de synthèse ou en matériau (minéralisation du béton)",
+       {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120.0}, True, False,
+       "produit (carburant, béton) — puits selon durée de vie", "émergent",
+       0.4, "referme la boucle carbone SI l'énergie de conversion est décarbonée ; attention : un carburant "
+            "re-brûlé n'est PAS un puits (neutre au mieux) — seul un matériau durable stocke vraiment"),
+    _P("océan : alcalinité renforcée",
+       "capter : ajouter de l'alcalinité (roche broyée) à l'océan pour qu'il absorbe plus de CO₂ atmosphérique",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 40.0}, True, True,
+       "carbone dissous (bicarbonate stable ~millénaire)", "recherche",
+       0.4, "utilise l'immense capacité de l'océan comme puits ; énergie surtout pour broyer/transporter la "
+            "roche ; effets écologiques à cadrer — piste à grande échelle mais incertaine"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : sous le travail minimal de séparation d'un gaz dilué) ──
+    _P("DAC « à 10 kJ/mol depuis l'air ambiant »",
+       "capter : capture directe dans l'air (420 ppm) revendiquée à 10 kJ/mol",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 10.0}, True, True,
+       "CO₂", "revendication",
+       0.3, "revendication SOUS le plancher R·T·ln(1/x) ≈ 19,3 kJ/mol à 420 ppm — à réfuter par le travail minimal"),
+    _P("capture du CO₂ de l'air « sans énergie »",
+       "capter : extraire le CO₂ de l'air ambiant sans aucun apport d'énergie",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 0.0}, True, True,
+       "CO₂", "revendication",
+       0.25, "séparer un gaz dilué sans énergie ferait baisser l'entropie de mélange sans travail — impossible"),
+]
+
+_OBJECTIF_CO2 = ("Le but réel n'est pas d'« aspirer le CO₂ de l'air ambiant » (420 ppm : le composant est "
+                 "ULTRA-dilué, le travail minimal par mole y est le PLUS élevé, ≈ 19,3 kJ/mol) quand on peut le "
+                 "capter À LA SOURCE (fumées ~12 %, x 100–300× plus grand → minimum ≈ 5,3 kJ/mol). La DILUTION "
+                 "est l'ennemi. Leviers : capter d'abord aux sources concentrées ; pour la capture dans l'air, "
+                 "l'énergie réelle est dominée par la RÉGÉNÉRATION du sorbant (chaleur) → l'adosser à de la "
+                 "chaleur fatale/solaire, ou régénérer autrement (humidité, électricité) ; et le PUITS compte "
+                 "(minéralisation permanente vs stockage géologique vs valorisation). Chaque principe reste jugé "
+                 "par le travail minimal de séparation.")
+_LOI_CO2 = ("on ne sépare pas un composant dilué pour moins que R·T·ln(1/x) par mole (énergie de mélange) ; plus "
+            "x est petit (air ambiant 420 ppm → ~19,3 kJ/mol) plus le minimum MONTE ; gains réels = capter là où "
+            "c'est concentré (fumées), valoriser une chaleur/électricité gratuite pour la régénération, viser un "
+            "puits stable (minéralisation/géologie)")
+
+# La nature capte déjà le CO₂ : photosynthèse (solaire, dilué), biominéralisation, altération, sols, enzyme.
+_STRATEGIES_NATURE_CO2 = [
+    _Nature("photosynthèse (forêts, phytoplancton)",
+            ["capture SOLAIRE du CO₂ dilué (gratuite)", "à l'échelle planétaire", "fixé en matière organique"],
+            "déléguer la capture DILUÉE (la plus chère) à une machine solaire gratuite — le levier de BECCS"),
+    _Nature("coccolithophores / coraux / coquilles (biominéralisation)",
+            ["fixation du CO₂ en carbonate de calcium", "puits SOLIDE permanent", "catalysé par le vivant"],
+            "transformer le CO₂ en minéral stable = puits sans fuite — le modèle de la minéralisation"),
+    _Nature("altération des silicates (olivine, basalte)",
+            ["réaction lente roche + CO₂ → carbonate", "puits géologique du cycle du carbone long",
+             "énergie de réaction naturelle"],
+            "le thermostat géologique de la Terre : l'altération accélérée ne fait que le HÂTER"),
+    _Nature("tourbière / sol anoxique",
+            ["stockage du carbone en matière organique non décomposée", "conservé des millénaires si anoxique"],
+            "stocker le carbone en le soustrayant à la décomposition — garder le milieu privé d'oxygène"),
+    _Nature("anhydrase carbonique (enzyme)",
+            ["catalyse l'hydratation du CO₂ ~10⁶×", "accélère la capture sans la forcer"],
+            "un catalyseur rend la capture du dilué RAPIDE sans en changer l'énergie — copier l'enzyme"),
+]
+
+enregistre(Domaine(
+    nom=_CO2,
+    aliases=frozenset(_ALIAS_CO2),
+    objectif=_OBJECTIF_CO2,
+    canaux=_CANAUX_CO2,
+    principes=_PRINCIPES_CO2,
+    strategies=_STRATEGIES_NATURE_CO2,
+    loi=_LOI_CO2,
+    extras={"fraction_co2_air": "≈ 4,2e-4 (420 ppm)", "travail_min_air_kJ_mol": "≈ 19,3 (420 ppm, 298 K)",
+            "note_source": "aux fumées x ≈ 0,12 le minimum tombe à ≈ 5,3 kJ/mol — capter concentré d'abord"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

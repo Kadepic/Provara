@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 5e domaine « capture_co2 » + loi L3 GÉNÉRALISÉE (gaz dilué R·T·ln(1/x))
+
+Enjeu climatique, et même FAMILLE de loi que le dessalement — mais pas osmotique. On a donc **généralisé
+`coherence_physique`** d'un type `separation` : le travail minimal d'extraction d'un composant à la fraction
+molaire x vaut R·T·ln(1/x) par mole (le dessalement en est le cas osmotique). Le CO₂ de l'air est ultra-dilué
+(x ≈ 4,2e-4 = 420 ppm → plancher ≈ 19,3 kJ/mol) ; aux fumées (x ≈ 0,12) il tombe à ≈ 5,3 kJ/mol. Plancher
+CONSERVATEUR (récupération → 0) → zéro faux positif (DAC réel ~230 kJ/mol jamais réfuté). Gate
+`valide_coherence_physique` **56 → 67/67**.
+
+Puis 5e domaine (`enregistre(...)`, rien d'autre) : **12 principes**, 10 suppositions + 2 RÉFUTÉS (« DAC à
+10 kJ/mol depuis l'air » et « capture sans énergie » — sous le plancher). Reframing machine : la DILUTION est
+l'ennemi → capter d'abord À LA SOURCE concentrée (fumées, BECCS délègue la capture diluée à la photosynthèse) ;
+pour la capture dans l'air, l'énergie réelle est la RÉGÉNÉRATION du sorbant → l'adosser à une chaleur/électricité
+gratuite (moisture-swing, électro-swing) ; viser un PUITS permanent (minéralisation). Couvre amines, sorbant
+solide DAC, hydroxyde, membrane, moisture-swing, électrochimique, altération accélérée, BECCS, valorisation,
+alcalinité océanique. 5 stratégies naturelles propres (photosynthèse, biominéralisation, altération des
+silicates, tourbière, anhydrase carbonique). Gate `valide_besoin` **112 → 135/135** ; les 4 domaines précédents
+intacts. La loi généralisée renforce aussi le dessalement (même L3, deux formes : osmotique et molaire).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 4e domaine « stockage_energie » (le patron passe SANS toucher au juge)
 
 Clé de la transition (intermittence solaire/éolien) et démonstration que le registre passe à l'échelle **sans

@@ -238,9 +238,64 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35,
       "cooling, chauffage et dessalement inchangés après l'ajout du stockage (isolation)")
 
-# ── 10) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
-check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau", "stockage_energie"],
-      "quatre domaines modélisés (cooling, chauffage, dessalement, stockage), dans l'ordre d'enregistrement")
+# ── 10) CINQUIÈME DOMAINE : capter le CO₂ (loi L3 GÉNÉRALISÉE au gaz dilué : R·T·ln(1/x)) ──
+dc = B.decompose("capter le co2")
+check(dc["statut"] == "decompose", "besoin capture CO₂ connu -> decompose")
+check("dilu" in dc["objectif_reel"].lower() and "source" in dc["objectif_reel"].lower(),
+      "objectif réel CO₂ = la dilution est l'ennemi + capter à la source concentrée")
+check("fraction_co2_air" in dc, "extras propres : fraction CO₂ de l'air")
+co2_canaux = {c.canal for c in dc["canaux"]}
+check(co2_canaux == {"absorption chimique", "adsorption solide", "membrane", "mineralisation"},
+      f"4 canaux de capture ({co2_canaux})")
+prc = B.principes("capter le co2")
+check(prc["statut"] == "principes", "principes pour la capture CO₂")
+pc = {e["nom"]: e for e in prc["liste"]}
+# l'IMPOSSIBLE (sous R·T·ln(1/x)) est RÉFUTÉ
+sous_air = pc["DAC « à 10 kJ/mol depuis l'air ambiant »"]
+check(sous_air["atome"].statut == A.REFUTE, "DAC 10 kJ/mol < plancher ~19,3 (420 ppm) -> RÉFUTÉ")
+check(A.est_refute(sous_air["atome"].contenu), "contenu réfuté (DAC 10 kJ/mol) dans la garde")
+sans_e = pc["capture du CO₂ de l'air « sans énergie »"]
+check(sans_e["atome"].statut == A.REFUTE, "capture CO₂ sans énergie -> RÉFUTÉ (entropie de mélange)")
+# les procédés RÉELS restent des SUPPOSITIONS
+for nom in ("amines post-combustion (fumées, référence)", "sorbant solide DAC (capture dans l'air)",
+            "altération accélérée / minéralisation (olivine, basalte)"):
+    e = pc[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION (au-dessus du minimum)")
+    check(0.0 < e["atome"].confiance < 1.0, f"{nom} confiance dans ]0,1[")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prc["liste"]),
+      "aucun principe de capture promu en FAIT")
+check("candidat pour capture_co2" in pc["amines post-combustion (fumées, référence)"]["atome"].portee.condition,
+      "portée des principes CO₂ nommant capture_co2")
+# la loi GÉNÉRALISÉE : le juge réfute le gaz dilué sous R·T·ln(1/x), et jamais un procédé réel
+st_air, _, loi_air = COH.juge_dispositif({"type": "separation", "fraction_molaire": 4.2e-4,
+                                          "energie_kJ_par_mol": 10, "t_K": 298.15})
+check(st_air == COH.VIOLE and loi_air == COH.L3, "juge : DAC 10 kJ/mol (420 ppm) -> VIOLE via L3")
+st_real, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 4.2e-4,
+                                     "energie_kJ_par_mol": 230, "t_K": 298.15})
+check(st_real == COH.COHERENT_BORNE, "DAC réel (230 kJ/mol) -> COHÉRENT, jamais réfuté")
+# capter à la source (x élevé) abaisse le plancher : mêmes 10 kJ/mol seraient cohérents aux fumées
+st_fumee, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 10})
+check(st_fumee == COH.COHERENT_BORNE, "10 kJ/mol aux fumées (x=0,12, plancher ~5,3) -> cohérent : la dilution est l'ennemi")
+# pistes sous-exploitées (moisture-swing, électrochimique, minéralisation) présentes
+noms_c = set(pc)
+check(any("moisture-swing" in n for n in noms_c) and any("électrochimique" in n for n in noms_c)
+      and any("minéralisation" in n for n in noms_c), "pistes sous-exploitées CO₂ présentes")
+# stratégies naturelles propres (photosynthèse/biominéralisation/enzyme)
+natc = B.strategies_naturelles("capter le co2")
+check(len(natc) >= 4 and any("photosynthèse" in s["exemple"] for s in natc), "stratégies CO₂ propres (photosynthèse)")
+check(not any("graisse" in s["exemple"] for s in natc) and not any("mangrove" in s["exemple"] for s in natc),
+      "pas de fuite des stratégies stockage/eau vers la capture CO₂")
+# les QUATRE domaines précédents restent INTACTS après le 5e (isolation)
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("chauffer une piece")["production_corps_W"] == 100
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "rendement_aller_retour" in B.decompose("stocker de l energie"),
+      "cooling, chauffage, dessalement et stockage inchangés après l'ajout de la capture CO₂ (isolation)")
+
+# ── 11) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
+                              "stockage_energie", "capture_co2"],
+      "cinq domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
