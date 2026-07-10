@@ -80,6 +80,9 @@ check(loi({"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": False,
 check(statut({"type": "propulsion", "poussee_nette": 1.0, "ejecte_masse_ou_rayonnement": True,
               "vitesse_ejection_m_s": 3.0e8}) == P.VIOLE,
       "éjection à v > c -> VIOLE")
+# efficacité lumineuse > 683 lm/W (maximum spectral à 555 nm).
+check(statut({"type": "eclairage", "efficacite_lm_par_W": 800}) == P.VIOLE, "800 lm/W > 683 -> VIOLE")
+check(loi({"type": "eclairage", "efficacite_lm_par_W": 800}) == P.L5, "efficacité lumineuse = L5")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -115,6 +118,12 @@ reels = [
     {"type": "propulsion", "poussee_nette": 1e-6, "ejecte_masse_ou_rayonnement": True,
      "vitesse_ejection_m_s": 2.99e8},                                                  # fusée à photons (v proche de c, < c)
     {"type": "propulsion"},                                                            # spec insuffisante : PAS un faux positif
+    # éclairages RÉELS : sous le plafond de 683 lm/W.
+    {"type": "eclairage", "efficacite_lm_par_W": 150},                                 # LED blanche courante
+    {"type": "eclairage", "efficacite_lm_par_W": 330},                                 # LED de labo (record) < 683
+    {"type": "eclairage", "efficacite_lm_par_W": 683},                                 # AU plafond (limite, ok)
+    {"type": "eclairage", "efficacite_lm_par_W": 15},                                  # incandescence
+    {"type": "eclairage"},                                                             # sans efficacité : PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

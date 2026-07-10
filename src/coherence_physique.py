@@ -37,8 +37,10 @@ L1 = "1er principe (conservation de l'énergie)"
 L2 = "2nd principe (entropie / Carnot)"
 L3 = "2nd principe (travail minimal de séparation / énergie de mélange de Gibbs)"
 L4 = "conservation de la quantité de mouvement (3e loi de Newton) / vitesse d'éjection ≤ c"
+L5 = "efficacité lumineuse ≤ 683 lm/W (maximum spectral à 555 nm, rendement radiant 100 %)"
 
 _C_LUMIERE = 299_792_458.0  # m/s
+_EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
 
 
 def _nb(x):
@@ -62,7 +64,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         return (HORS, "spec absente ou invalide", None)
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
-                 "dessalement", "separation", "propulsion"):
+                 "dessalement", "separation", "propulsion", "eclairage"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -175,6 +177,17 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         v = spec.get("vitesse_ejection_m_s")
         if _nb(v) and v > _C_LUMIERE:
             return (VIOLE, f"vitesse d'éjection {v} m/s > c ({_C_LUMIERE:.0f}) : impossible", L4)
+
+    # --- Efficacité lumineuse : ≤ 683 lm/W (maximum spectral à 555 nm). ---
+    # L'œil répond au maximum à 555 nm, où 1 W de rayonnement = 683 lm. Aucune source ne peut dépasser 683 lm par
+    # watt ÉLECTRIQUE (il faudrait > 100 % de rendement radiant OU une réponse de l'œil > son pic). CONSERVATEUR :
+    # on ne réfute qu'au-DELÀ de 683 (le plafond CERTAIN) ; la lumière blanche à bon rendu plafonne plus bas
+    # (~300–350 lm/W) mais c'est fonction du spectre — pas une violation, donc jamais réfuté ici.
+    if t == "eclairage":
+        eff = spec.get("efficacite_lm_par_W")
+        if _nb(eff) and eff > _EFFICACITE_LUM_MAX + 1e-9:
+            return (VIOLE, f"efficacité lumineuse {eff} lm/W > {_EFFICACITE_LUM_MAX:.0f} lm/W (maximum à 555 nm, "
+                           f"rendement radiant 100 %) : impossible", L5)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:
