@@ -56,6 +56,96 @@ _REGLES: tuple = (
     (r"comportement d'un code exécutable|correction d'un programme", "gate", "valide_capacites_chat.py", TRAITE),
     (r"vulnérabilités canoniques", "gate", "valide_audit_code.py", TRAITE),
     (r"grammaires formelles et automates", "module", "automates", PARTIEL),
+    # ── VAGUE A (2026-07-10 nuit) : preuves AUDITÉES module par module, gate exécutée VERTE avant câblage.
+    #    Les « pièges de nom » débusqués à l'audit (limite.py = bornes physiques, temperature.py =
+    #    calibration ML, loi.py = solveur physique, atome.py = contrat épistémique, architecture.py =
+    #    architecture INFORMATIQUE, induction_horn.py = induction LOGIQUE) ne sont JAMAIS cités ici.
+    (r"théorèmes d'incomplétude", "module", "godel", TRAITE),
+    (r"insolubilité par radicaux", "module", "galois", TRAITE),
+    (r"valeurs propres d'une matrice", "module", "valeurs_propres", TRAITE),
+    (r"transformations affines et isométries", "module", "geometrie2d", TRAITE),
+    (r"invariants topologiques", "module", "topologie", TRAITE),
+    (r"classes P, NP, NP-complétude", "module", "classes_complexite", TRAITE),
+    # ── VAGUE A, 2e lot : briques BÂTIES cette nuit (module + gate adverse + sonde indépendante). ──
+    (r"structures de groupe/anneau/corps", "module", "anneaux_corps", TRAITE),
+    (r"limite d'une suite/fonction usuelle", "module", "limites_usuelles", TRAITE),
+    (r"conséquence en logique du premier ordre", "module", "logique_premier_ordre", TRAITE),
+    (r"développement décimal d'un rationnel", "module", "developpement_decimal", TRAITE),
+    (r"résolution d'équations de degré 3 et 4", "module", "equations_polynomiales", TRAITE),
+    (r"intégrale sans primitive élémentaire", "module", "integrale_elementaire", TRAITE),
+    (r"conjecture de Poincaré", "module", "conjectures_celebres", TRAITE),
+    (r"géométries non euclidiennes", "module", "geometrie_hyperbolique", TRAITE),
+    (r"cinématique à accélération constante", "module", "cinematique_uniformement_acceleree", TRAITE),
+    (r"conservation de l'énergie mécanique", "module", "energie_mecanique", TRAITE),
+    (r"moment cinétique et rotation du solide", "module", "rotation_solide", TRAITE),
+    (r"température, chaleur, capacité thermique", "module", "thermique", TRAITE),
+    (r"lois de Kirchhoff", "module", "circuits_kirchhoff", TRAITE),
+    (r"induction \(Faraday-Lenz\)", "module", "induction_em", TRAITE),
+    (r"réflexion, réfraction", "module", "optique_geometrique", TRAITE),
+    (r"interférences et diffraction", "module", "interferences_diffraction", TRAITE),
+    (r"effet Doppler", "module", "effet_doppler", TRAITE),
+    (r"niveaux d'énergie de l'atome d'hydrogène", "module", "atome_hydrogene", TRAITE),
+    # ── VAGUE B (2026-07-10 nuit) : PARTIES III, IV, V. Gates vertes (1 213 assertions) + sonde
+    #    indépendante 29/29 (Pd sans couche 5s · ulcère = H. pylori · omnivore au niveau 3,0 fractionnaire).
+    (r"configuration électronique", "module", "configuration_electronique", TRAITE),
+    (r"propriétés périodiques", "module", "proprietes_periodiques", TRAITE),
+    (r"isomérie \(dénombrement", "module", "isomerie_constitutionnelle", TRAITE),
+    (r"propriétés mécaniques d'un matériau", "module", "proprietes_mecaniques_materiaux", TRAITE),
+    (r"conductivité thermique/électrique", "module", "conductivite_materiaux", TRAITE),
+    (r"tectonique des plaques", "module", "tectonique_plaques", TRAITE),
+    (r"échelle des temps géologiques", "module", "temps_geologiques", TRAITE),
+    (r"classification d'une roche", "module", "classification_roches", TRAITE),
+    (r"cycle de l'eau", "module", "cycle_eau", TRAITE),
+    (r"effet de serre", "module", "effet_de_serre", TRAITE),
+    (r"types de biomes et de climats", "module", "climats_biomes", TRAITE),
+    (r"réplication, transcription, traduction", "module", "expression_genique", TRAITE),
+    (r"sélection naturelle", "module", "selection_naturelle", TRAITE),
+    (r"réseaux trophiques", "module", "reseau_trophique", TRAITE),
+    (r"étiologie des maladies", "module", "etiologie_infectieuse", TRAITE),
+    # ── VAGUE C (2026-07-10 nuit) : PARTIES VI à XII. Gates vertes, sonde indépendante.
+    #    « métrique et versification » n'a PAS été bâti (limite de session) : il reste NON TRAITÉ, et le dit.
+    (r"calcul d'intérêts", "module", "finance_actualisation", TRAITE),
+    (r"élasticité prix", "module", "elasticite_prix", TRAITE),
+    (r"pyramide des âges", "module", "pyramide_ages", TRAITE),
+    (r"mobilité sociale", "module", "mobilite_sociale", TRAITE),
+    (r"encodage et compression", "module", "compression_sans_perte", TRAITE),
+    (r"correction d'erreurs", "module", "codes_correcteurs", TRAITE),
+    (r"harmonie et gammes", "module", "musique_gammes", TRAITE),
+    (r"colorimétrie", "module", "colorimetrie", TRAITE),
+    (r"bilan énergétique d'un système", "module", "bilan_energetique", TRAITE),
+    (r"reproductibilité d'un build", "module", "reproductibilite_build", TRAITE),
+    (r"archéologie : datation", "module", "datation_radiocarbone", TRAITE),
+    (r"calendriers et fuseaux", "module", "calendriers", TRAITE),
+    (r"formats de date/nombre", "module", "formats_locaux", TRAITE),
+    (r"anatomie et physiologie", "module", "anatomie_systemes", TRAITE),
+    # physique (modules exacts, gates vertes)
+    (r"oscillateur harmonique|pendule simple|pression hydrostatique et poussée d'Archimède",
+     "module", "mecanique", TRAITE),
+    (r"transitions de phase", "module", "etats_matiere", TRAITE),
+    (r"équations de Maxwell|propagation d'une onde électromagnétique", "module", "maxwell", TRAITE),
+    (r"intensité sonore en décibels", "module", "audiologie", TRAITE),
+    (r"dilatation du temps / contraction des longueurs", "module", "relativite_restreinte", TRAITE),
+    (r"défaut de masse et énergie de liaison", "module", "nucleosynthese", TRAITE),
+    (r"principe d'incertitude", "module", "quantique", TRAITE),
+    (r"théorème de Bernoulli", "module", "hydraulique", TRAITE),
+    # chimie / matériaux
+    (r"constante d'équilibre et déplacement", "module", "equilibre_chimique", TRAITE),
+    (r"oxydoréduction", "module", "redox", TRAITE),
+    (r"électronégativité et polarité", "module", "liaisons_chimiques", TRAITE),
+    (r"mécanismes réactionnels canoniques", "module", "mecanismes_reactionnels", TRAITE),
+    (r"dopage et semi-conducteurs", "module", "semiconducteurs", TRAITE),
+    # PARTIELS ASSUMÉS, périmètre DIT (jamais présenté comme complet) :
+    #   IUPAC = composés binaires + catalogue (pas la nomenclature organique générale) ;
+    #   alliages = catalogue de 4 alliages (lookup-ou-HORS) ; normes = hiérarchie FRANÇAISE seule.
+    (r"nomenclature IUPAC|identification d'un composé par sa formule",
+     "module", "nomenclature_chimique", PARTIEL),
+    (r"composition d'un alliage nommé", "module", "alliages", PARTIEL),
+    (r"hiérarchie des normes d'un pays", "module", "hierarchie_normes", PARTIEL),
+    # vivant / société / arts
+    (r"code génétique", "module", "genetique", TRAITE),
+    (r"comptabilité d'une entité", "module", "comptabilite", TRAITE),
+    (r"perspective géométrique", "module", "geometrie_projective", TRAITE),
+    (r"validité d'un argument philosophique", "module", "preuve_propositionnelle", TRAITE),
     # physique : les roues (preuve = câblage réel dans _ROUES)
     (r"cinématique moyenne", "roue", "cinématique moyenne", TRAITE),
     (r"dynamique newtonienne", "roue", "force (Newton)", TRAITE),
@@ -81,7 +171,11 @@ _REGLES: tuple = (
     (r"masse molaire|stœchiométrie|équilibrage d'une équation chimique|pH d'une concentration",
      "module", "chimie", TRAITE),
     (r"aérodynamique", "module", "aerodynamique", PARTIEL),
-    (r"dimensionnement d'une structure", "module", "architecture", PARTIEL),
+    # PREUVE FAUSSE CORRIGÉE (2026-07-10 nuit) : ce sujet citait `architecture.py`, qui est l'architecture
+    # des ORDINATEURS (conversions binaires, complément à deux) — un piège de nom. Le vrai module de
+    # résistance des matériaux est `structures_genie` ; il calcule contrainte/flèche/flambage mais ne
+    # DIMENSIONNE pas encore (pas de comparaison à une contrainte admissible). Donc PARTIEL, honnêtement.
+    (r"dimensionnement d'une structure", "module", "structures_genie", PARTIEL),
     # faits : les gates du lecteur
     (r"taxonomie \(|caractéristiques d'une espèce|statut de conservation", "gate", "valide_lecteur_t4.py", TRAITE),
     (r"relief, sommets|fleuves, longueurs|superficies des terres|coordonnées d'un lieu|"
@@ -105,6 +199,10 @@ _REGLES: tuple = (
     (r"conversions d'unités|unités du système international|heure et date locales",
      "gate", "valide_capacites_chat.py", TRAITE),
     (r"météo observée", "gate", "valide_capacites_chat.py", TRAITE),
+    # LANGUES (tables ingérées cette nuit). « parenté » = la généalogie complète : Wikidata ne la porte PAS
+    # (« langue d'oïl » n'a aucun ancêtre typé) -> le sujet reste PARTIEL, la famille immédiate est acquise.
+    (r"famille et parenté d'une langue", "table", "famille_langue", PARTIEL),
+    (r"nombre de locuteurs d'une langue", "table", "locuteurs_langue", TRAITE),
     (r"codes normalisés|classe Dewey|division Dewey", "module", "bibliotheconomie", PARTIEL),
     (r"grand groupe ISCO|structure de classification", "aucun", None, NON_TRAITE),
     (r"règles d'un jeu institué|coup optimal", "gate", "valide_strategie_jeux.py", PARTIEL),
@@ -114,28 +212,95 @@ _REGLES: tuple = (
     (r"entropie d'une source", "module", "information_calcul", PARTIEL),
     (r"encodage et compression|correction d'erreurs", "aucun", None, NON_TRAITE),
     (r"pharmacocinétique", "module", "pharmacochimie", PARTIEL),
-    (r"efficacité d'un traitement|étiologie des maladies", "aucun", None, NON_TRAITE),
-    (r"hérédité mendélienne|dynamique des populations", "module", "bioinfo", PARTIEL),
+    # RR / ARR / NNT / OR sont EXACTS depuis les effectifs d'un essai publié : c'est le traitement correct
+    # du sujet (le module calcule, l'essai fournit les nombres). Sondé à la main : RR=0,5 · ARR=0,10 · NNT=10.
+    (r"efficacité d'un traitement", "module", "essais_cliniques", TRAITE),
+    # PREUVE FAUSSE CORRIGÉE (2026-07-10 nuit) : ce sujet citait `bioinfo.py`, qui traite des SÉQUENCES ADN
+    # (distance de Hamming, taux GC) — rien à voir avec l'hérédité mendélienne ni la dynamique des
+    # populations. Aucun module ne les traite : le sujet redevient NON TRAITÉ, et le dit.
+    (r"hérédité mendélienne|dynamique des populations", "aucun", None, NON_TRAITE),
     (r"calcul de recette", "gate", "valide_fonction.py", PARTIEL),
     (r"préférences personnelles de l'utilisateur", "gate", "valide_faits_conversation.py", TRAITE),
 )
 _REGLES_C = tuple((re.compile(m, re.I), g, r, e) for m, g, r, e in _REGLES)
 
-# ── AXES des annexes AUTO : l'état est décidé par l'AXE (pas par le métier) — mesuré une fois, appliqué à tous.
-#    Aucun n'est traité aujourd'hui SAUF le non-borné, pris honnêtement par le routage (c'est le traitement
-#    CORRECT d'un NB : abstention actionnable, jamais une réponse inventée). Le reste EST le backlog.
-_AXES_ETAT = (
-    (re.compile(r"est-il fait pour moi", re.I), TRAITE, "routage honnête (NB-SUBJ : l'utilisateur est la source)"),
-    (re.compile(r"questions ouvertes du domaine", re.I), TRAITE, "routage honnête (NB-OUV : abstention dite)"),
-    (re.compile(r"définition et périmètre", re.I), NON_TRAITE, "aucune table de définitions de métiers ingérée"),
-    (re.compile(r"gestes et savoir-faire", re.I), NON_TRAITE, "part tacite : à séparer de la part codifiée"),
-    (re.compile(r"outils, machines", re.I), NON_TRAITE, "aucune table outils×métier ingérée"),
-    (re.compile(r"normes, réglementation", re.I), NON_TRAITE, "aucun corpus réglementaire ingéré"),
-    (re.compile(r"risques professionnels", re.I), NON_TRAITE, "aucune table de risques ingérée"),
-    (re.compile(r"formation, diplômes", re.I), NON_TRAITE, "aucun référentiel de formation ingéré"),
-    (re.compile(r"rémunération médiane", re.I), NON_TRAITE, "aucune statistique salariale ingérée"),
-    (re.compile(r"résultats établis du domaine", re.I), NON_TRAITE, "corpus de domaine non ingéré"),
+# ── AXES des annexes AUTO — FERMETURE ATOMIQUE (règle Yohan, 2026-07-10 nuit) ────────────────────────────────
+# AVANT : l'état était décidé par l'AXE et appliqué en bloc à 8 238 métiers. C'était une DÉCLARATION.
+# MAINTENANT : l'état est décidé PAR ENTITÉ, par LOOKUP réel dans la table ingérée. Un métier n'est TRAITÉ
+# que si SON libellé est présent dans une table du store. Les métiers absents restent NON TRAITÉS et le
+# DISENT, nommément. Jamais « l'axe est couvert ». Jamais un échantillon présenté comme la couverture.
+#
+# Trois modes :
+#   "routage" — sujet NON BORNÉ : router honnêtement EST le traitement correct (abstention actionnable) ;
+#   "lookup"  — sujet BORNÉ : TRAITÉ ssi l'entité est dans l'une des tables citées (union) ;
+#   "aucun"   — aucune source ingérée à ce jour : NON TRAITÉ, avec la raison MESURÉE.
+_AXES_M = (
+    (re.compile(r"est-il fait pour moi", re.I), "routage", (),
+     "routage honnête (NB-SUBJ : l'utilisateur est la seule source)"),
+    (re.compile(r"questions ouvertes du domaine", re.I), "routage", (),
+     "routage honnête (NB-OUV : abstention dite)"),
+    (re.compile(r"définition et périmètre", re.I), "lookup",
+     ("definition_esco_metier", "definition_metier", "surclasse_metier"),
+     "description ESCO, description Wikidata, ou sur-classe P279 attestée"),
+    (re.compile(r"outils, machines", re.I), "aucun", (),
+     "P2283 sémantiquement trop lâche (« soliste -> solo ») : rejeté au doute ; source réelle = ESCO/ROME"),
+    # MIX assumé : ESCO codifie la part TRANSMISSIBLE PAR TEXTE du savoir-faire (compétences essentielles
+    # de type `skill`). Le TOUR DE MAIN tacite n'y est pas et ne peut pas y être. Donc PARTIEL, jamais TRAITÉ.
+    (re.compile(r"gestes et savoir-faire", re.I), "lookup_partiel", ("geste_metier",),
+     "part CODIFIÉE fermée par ESCO ; le tour de main tacite reste non borné (le sujet est MIX)"),
+    (re.compile(r"normes, réglementation", re.I), "aucun", (), "aucun corpus réglementaire ingéré"),
+    (re.compile(r"risques professionnels", re.I), "aucun", (), "aucune table de risques ingérée (INRS/EU-OSHA)"),
+    (re.compile(r"formation, diplômes", re.I), "aucun", (), "aucun référentiel de formation ingéré"),
+    (re.compile(r"rémunération médiane", re.I), "aucun", (), "aucune statistique salariale ingérée"),
+    (re.compile(r"résultats établis du domaine", re.I), "aucun", (), "corpus de domaine non ingéré"),
 )
+
+_DOSSIER_STORE = os.environ.get(
+    "LECTEUR_DATASETS_DIR", os.path.join(os.path.expanduser("~"), ".verax", "datasets", "lecteur"))
+_CACHE_CLES: dict = {}
+
+
+def _cles(table: str):
+    """Les entités présentes dans une table du store, en flux (stdlib pure). None si la table n'existe pas.
+
+    C'est le LOOKUP qui prouve : « ce métier-ci est traité » — pas « cet axe est couvert »."""
+    if table in _CACHE_CLES:
+        return _CACHE_CLES[table]
+    chemin = os.path.join(_DOSSIER_STORE, table + ".jsonl")
+    if not os.path.exists(chemin):
+        _CACHE_CLES[table] = None
+        return None
+    vus = set()
+    try:
+        with open(chemin, encoding="utf-8") as f:
+            for ligne in f:
+                if ligne.startswith('{"_relation"'):
+                    continue
+                d = ligne.find('"entite":')
+                if d < 0:
+                    continue
+                deb = ligne.find('"', d + 9)
+                fin = ligne.find('"', deb + 1)
+                while fin > 0 and ligne[fin - 1] == "\\":
+                    fin = ligne.find('"', fin + 1)
+                if deb > 0 and fin > deb:
+                    vus.add(ligne[deb + 1:fin].encode().decode("unicode_escape")
+                            if "\\" in ligne[deb + 1:fin] else ligne[deb + 1:fin])
+    except OSError:
+        _CACHE_CLES[table] = None
+        return None
+    _CACHE_CLES[table] = vus
+    return vus
+
+
+def _entite_annexe(sujet) -> str:
+    """L'ENTITÉ d'un sujet d'annexe auto : le métier, ou le domaine. Les axes ne contiennent pas « — »."""
+    lib = sujet.libelle
+    if sujet.partie.startswith("ANNEXE D"):
+        g, d = lib.find("«"), lib.rfind("»")
+        if 0 <= g < d:
+            return lib[g + 1:d].strip()
+    return lib.rsplit(" — ", 1)[0].strip()
 
 
 def _preuve_existe(genre: str, ref) -> bool:
@@ -149,6 +314,8 @@ def _preuve_existe(genre: str, ref) -> bool:
         return os.path.exists(os.path.join(_TESTS, ref))
     if genre == "module":
         return os.path.exists(os.path.join(_ICI, ref + ".py"))
+    if genre == "table":                                  # une table INGÉRÉE du store, interrogeable par ia.donnee
+        return _cles(ref) is not None
     if genre == "roue":
         try:
             import pont_grandeurs as _P
@@ -164,9 +331,25 @@ def etat(sujet) -> tuple:
     if partie.startswith("ANNEXE S"):
         return (TRAITE, "table vérifiée du store (ancrage audité 1371/1371)")
     if partie.startswith(("ANNEXE M", "ANNEXE D")):
-        for rx, e, raison in _AXES_ETAT:
-            if rx.search(sujet.libelle):
-                return (e, raison)
+        for rx, mode, tables, raison in _AXES_M:
+            if not rx.search(sujet.libelle):
+                continue
+            if mode == "routage":
+                return (TRAITE, raison)
+            if mode == "aucun":
+                return (NON_TRAITE, raison)
+            # modes "lookup" / "lookup_partiel" : FERMETURE ATOMIQUE — c'est CETTE entité qui est vérifiée,
+            # jamais l'axe. « lookup_partiel » = la source ne couvre qu'une PART du sujet (cas MIX).
+            trouve = TRAITE if mode == "lookup" else PARTIEL
+            entite = _entite_annexe(sujet)
+            presentes = [t for t in tables if _cles(t) is not None]
+            if not presentes:
+                return (NON_TRAITE, "table(s) %s absente(s) du store" % ", ".join(tables))
+            for t in presentes:
+                if entite in _cles(t):
+                    return (trouve, "%s : « %s » vérifié par lookup%s"
+                            % (t, entite, "" if trouve == TRAITE else " (part codifiée seule ; %s)" % raison))
+            return (NON_TRAITE, "« %s » absent de %s (entité non couverte)" % (entite, ", ".join(presentes)))
         return (NON_TRAITE, "axe non classé")
     for rx, genre, ref, prevu in _REGLES_C:
         if not rx.search(sujet.libelle):

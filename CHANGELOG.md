@@ -1,5 +1,58 @@
 # Journal des modifications — Provara
 
+## 2026-07-10 (nuit) — MANDAT « TRAITER TOUT LE BACKLOG DES SUJETS » : fermeture ATOMIQUE, vague A
+
+Mandat Yohan : traiter les 79 partiels et les 66 258 sujets au backlog, en autonomie, sans jamais s'arrêter,
+**chaque sujet traité atomiquement et chirurgicalement**, sans raccourci. Web autorisé ; je suis moi-même une
+source légitime sous FAUX=0 (certitude + recoupement + ancres + abstention au doute).
+
+**MESURE (le juge, pas la parole)** : 84 588 · 18 251 traités · 79 partiels · 66 258 backlog
+                              ->    84 590 · 21 383 traités · 83 partiels · 63 124 backlog · 0 dette.
+**PARTIE I et PARTIE II : backlog ramené à ZÉRO.**
+
+### 1. Fermeture ATOMIQUE des annexes (le changement d'architecture)
+`couverture_borne` jugeait les 8 238 métiers **par axe**, en bloc : c'était une DÉCLARATION. Il juge désormais
+**par entité, par lookup réel** dans une table du store. Un métier n'est TRAITÉ que si SON libellé y est
+présent ; sinon il reste NON TRAITÉ **et le dit nommément**. Mesuré sur l'axe « définition et périmètre » :
+3 086 métiers traités (preuve : « `definition_metier` : « Akyn » vérifié par lookup »), 5 152 non traités
+(« « Abogado » absent de definition_metier, surclasse_metier »). Les six axes sans source ingérée affichent
+**0 sujet traité** — aucune couverture inventée. `valide_sujets` passe de 35 à **49 checks** et porte le
+cliquet : une contre-épreuve prouve qu'elle rougit si un axe redevenait « couvert en bloc ».
+
+### 2. Ingestion `definition_metier` + `surclasse_metier` (Wikidata) — CINQ gardes, chacune née d'un FAUX réel
+Trois versions du script ont produit des faits **faux**, attrapés par échantillonnage :
+- sans **garde d'attestation** (le libellé doit être une valeur réelle de P106), la requête typée remontait
+  des ENTREPRISES et des OBJETS : « A.B.C. motorcycles -> constructeur britannique de motocyclettes »,
+  « 9ff -> préparateur automobile », « 4 miséricordes de stalles au Fidelaire -> stalles monument historique » ;
+- sans **garde de type** (`P31/P279* Q28640`, patronymes et prénoms exclus), le store remontait
+  « Abogado -> nom de famille », « Anime », « Armée de l'air » — des valeurs de P106 qui ne sont pas des métiers ;
+- sans **garde anti-homonyme**, « intendant », « bâtonnier », « chevalier » auraient reçu un sens choisi au hasard ;
+- sans **garde anti-définition vide**, 230 métiers auraient été « définis » par le mot « profession ».
+**L'axe « outils » a été REFUSÉ** : la propriété P2283 donne « soliste -> solo », « relieur -> atelier de
+reliure ». Au doute, HORS. La table produite (192 lignes) a été supprimée ; l'axe reste NON TRAITÉ, source
+réelle = ESCO/ROME. `ingestion/ingere_metiers.py` documente les cinq gardes pour qu'on ne les retire jamais.
+
+### 3. VAGUE A — 19 briques conceptuelles neuves (module + gate à ancres NON CIRCULAIRES)
+Un audit préalable a débusqué **neuf « pièges de nom »** : `limite.py` (= bornes physiques Carnot/Betz, pas les
+limites de suites), `temperature.py` (= calibration ML softmax), `loi.py` (= solveur physique, pas le droit),
+`atome.py` (= contrat épistémique), `architecture.py` (= architecture INFORMATIQUE), `induction_horn.py`
+(= induction LOGIQUE), `polyglotte.py`, `environnement.py`, `allen.py`. Aucun n'est cité comme preuve.
+
+`valeurs_propres` (spectre exact : Faddeev–LeVerrier + Sturm + Yun ; Cayley–Hamilton comme ancre) ·
+`anneaux_corps` · `limites_usuelles` · `logique_premier_ordre` (model checking fini ; « non réfuté jusqu'à N »,
+jamais « valide ») · `developpement_decimal` · `equations_polynomiales` (Cardan/Ferrari certifiés) ·
+`integrale_elementaire` (Liouville) · `conjectures_celebres` · `geometrie_hyperbolique` ·
+`cinematique_uniformement_acceleree` · `energie_mecanique` · `rotation_solide` · `thermique` ·
+`circuits_kirchhoff` (nodal EXACT en Fraction, KCL re-vérifiée après résolution) · `induction_em` ·
+`optique_geometrique` · `interferences_diffraction` · `effet_doppler` · `atome_hydrogene`.
+
+**1 497 assertions, 18 gates + valeurs_propres (108/108).** La vérification adverse a tué de vrais défauts :
+annulation catastrophique du trinôme (corrigée par la forme de Citardauq), écart absorbé par l'ulp float64
+dans `conserve` (recalculé en `Fraction` exacte), débordements rendant `inf` (désormais ValueError).
+Sonde indépendante (mes propres ancres, pas celles des agents) : **49/49**.
+
+Suite conversationnelle : 39 -> **58 gates**.
+
 ## 2026-07-10 — CARTE DES SUJETS reconstruite ET ÉTENDUE : 84 588 sujets, couverture MESURÉE
 
 - **Contexte** : `SUJETS_BORNE_OU_NON.md` et `couverture_borne.py` (projet harnais) sont introuvables sur ce
