@@ -660,6 +660,168 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  QUATRIÈME DOMAINE : stocker l'énergie — clé de la transition (intermittence solaire/éolien). Démonstration
+#  que le patron passe SANS toucher au juge : la loi dure ici est le 1er principe (rendement ALLER-RETOUR ≤ 1),
+#  DÉJÀ jugé par le type `conversion` existant (rendement > 1 → over-unity → VIOLE). On n'étend donc PAS
+#  `coherence_physique` (contraste avec le dessalement, dont la loi manquait). FAUX=0 : principes = suppositions
+#  jugées, 2 revendications over-unity/mouvement perpétuel RÉFUTÉES.
+#  REFRAMING machine : le besoin n'est pas « stocker de l'électricité » mais DÉCALER l'énergie dans le TEMPS.
+#  Leviers : (a) APPARIER la techno à la DURÉE (secondes → volant/supercap ; heures → batterie/pompage ;
+#  saisonnier → hydrogène/thermochimique) ; (b) MINIMISER les conversions (chaque conversion perd — stocker
+#  dans la forme la plus proche de l'usage final : si le besoin est de la chaleur, stocker de la chaleur).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_ENERGIE = "stockage_energie"
+_ALIAS_ENERGIE = {
+    "stocker de l energie", "stocker l energie", "stockage d energie", "stocker l electricite",
+    "stockage d electricite", "conserver l energie pour plus tard", "lisser la production intermittente",
+}
+
+# ── « Canaux » de stockage : la FORME physique dans laquelle l'énergie est retenue ───────────────────────────────
+_CANAUX_ENERGIE = [
+    Canal("chimique", "energie", "stocker dans des liaisons chimiques (batterie, hydrogène)",
+          True, "haute densité et longue durée, MAIS chaque conversion électricité↔chimique perd → rendement "
+                "aller-retour plafonné (≈ 0,9 batterie, ≈ 0,4 hydrogène)"),
+    Canal("mecanique", "energie", "stocker en énergie potentielle/cinétique (pompage, gravité, volant, air comprimé)",
+          False, "robuste, très longue durée de vie, mais faible densité ; compresseurs/turbines = bruit ; le "
+                 "pompage-turbinage reste le stockage de masse dominant"),
+    Canal("thermique", "energie", "stocker en chaleur (sensible, latente, thermochimique)",
+          True, "le MOINS cher et SANS perte de conversion SI le besoin final est de la chaleur (chauffage, "
+                "procédé) — le levier clé : ne pas passer par l'électricité inutilement"),
+    Canal("electrostatique", "energie", "stocker en séparation de charges (supercondensateur)",
+          True, "très rapide, quasi sans perte, mais faible densité → sert la PUISSANCE (pics courts), pas "
+                "l'énergie (autonomie)"),
+]
+
+# ── PRINCIPES candidats de stockage — chacun JUGÉ par le rendement aller-retour (type `conversion`, ≤ 1) ──────────
+_PRINCIPES_ENERGIE = [
+    _P("batterie lithium-ion (référence)",
+       "stocker : batterie électrochimique lithium-ion, rendement aller-retour ~0,90",
+       {"type": "conversion", "rendement": 0.90}, True, True,
+       "réservoir chimique (électrodes)", "mature (dominant mobile/résidentiel)",
+       0.65, "rendement élevé et réponse rapide ; densité et coût en baisse ; durée limitée (heures), "
+             "ressources et cyclage à gérer — la référence pour l'intra-journalier"),
+    _P("pompage-turbinage (STEP)",
+       "stocker : pomper l'eau vers un réservoir d'altitude, la turbiner pour restituer, rendement ~0,80",
+       {"type": "conversion", "rendement": 0.80}, False, False,
+       "réservoir d'altitude (énergie potentielle)", "mature (dominant en masse)",
+       0.6, "le stockage de MASSE dominant du réseau ; très longue durée de vie, grande capacité ; conditionné "
+            "au relief et à l'eau — le mètre-étalon du stockage de plusieurs heures"),
+    _P("air comprimé (CAES adiabatique)",
+       "stocker : comprimer l'air dans une cavité, le détendre pour restituer, rendement ~0,65",
+       {"type": "conversion", "rendement": 0.65}, False, True,
+       "cavité d'air comprimé", "mature (niche)",
+       0.5, "grande capacité, longue durée de vie ; la chaleur de compression doit être RÉCUPÉRÉE (adiabatique) "
+            "sinon le rendement chute — sinon rejetée = perte ; conditionné à une cavité géologique"),
+    _P("volant d'inertie (flywheel)",
+       "stocker : accumuler l'énergie en rotation d'une masse, rendement aller-retour ~0,85",
+       {"type": "conversion", "rendement": 0.85}, True, False,
+       "rotor en rotation (énergie cinétique)", "mature (puissance)",
+       0.5, "réponse quasi instantanée, cycles quasi illimités ; se décharge en heures (frottements) → sert la "
+            "PUISSANCE et la stabilité de fréquence, pas l'autonomie longue"),
+    _P("hydrogène (électrolyse → pile/combustion)",
+       "stocker : produire de l'hydrogène par électrolyse, le restituer en pile, rendement aller-retour ~0,38",
+       {"type": "conversion", "rendement": 0.38}, True, True,
+       "réservoir chimique (H₂)", "émergent (saisonnier)",
+       0.5, "faible rendement (double conversion) MAIS stockage SAISONNIER et très haute densité massique → le "
+            "seul candidat crédible pour tenir des semaines/mois ; le levier n'est pas le rendement mais la DURÉE"),
+    _P("thermique haute température (sels fondus, roche)",
+       "stocker : chauffer une masse (sels fondus/roche), restituer en chaleur ou via un cycle, rendement élec ~0,45",
+       {"type": "conversion", "rendement": 0.45}, True, True,
+       "réservoir de chaleur", "mature (solaire concentré)",
+       0.55, "peu cher, grande capacité ; rendement élec médiocre MAIS ~0,90 si le besoin final est de la CHALEUR "
+             "(pas de conversion) — le levier « stocker dans la forme de l'usage »"),
+    _P("supercondensateur",
+       "stocker : séparation de charges dans un supercondensateur, rendement aller-retour ~0,95",
+       {"type": "conversion", "rendement": 0.95}, True, True,
+       "réservoir électrostatique", "mature (puissance)",
+       0.5, "rendement et cycles excellents, réponse ultra-rapide ; TRÈS faible densité → pics de puissance "
+            "(secondes), jamais l'autonomie ; complément d'une batterie, pas un substitut"),
+    _P("stockage gravitaire solide (masses levées)",
+       "stocker : lever des masses solides, les redescendre pour restituer, rendement ~0,80",
+       {"type": "conversion", "rendement": 0.80}, False, False,
+       "masses en hauteur (énergie potentielle)", "émergent",
+       0.4, "principe du pompage SANS l'eau ni le relief (blocs, mines désaffectées) ; durée de vie longue ; "
+            "densité faible → encombrant — piste pour sites sans hydro"),
+    _P("thermochimique saisonnier (hydrates de sels)",
+       "stocker : réaction réversible (hydratation de sels) stockant l'énergie sans perte dans le temps",
+       {"type": "conversion", "rendement": 0.50}, True, True,
+       "réservoir chimique (sels, ZÉRO auto-décharge)", "recherche",
+       0.5, "AUCUNE auto-décharge (l'énergie est chimique, pas thermique) → stocker l'été pour l'hiver sans "
+            "perte ; densité 5–10× le stockage de chaleur sensible — le levier saisonnier sous-exploité"),
+    _P("batterie à flux (redox)",
+       "stocker : électrolytes liquides pompés à travers une pile, rendement aller-retour ~0,75",
+       {"type": "conversion", "rendement": 0.75}, True, True,
+       "réservoirs d'électrolyte", "émergent (réseau)",
+       0.5, "DÉCOUPLE puissance (pile) et énergie (taille des réservoirs) → dimensionnable pour de longues "
+            "durées ; densité modeste, encombrant — piste réseau stationnaire"),
+    _P("air liquide (LAES)",
+       "stocker : liquéfier l'air, le regazéifier pour restituer, rendement ~0,55 (mieux avec chaleur/froid fatals)",
+       {"type": "conversion", "rendement": 0.55}, False, True,
+       "réservoir cryogénique", "émergent",
+       0.45, "sans contrainte géologique (contrairement au CAES/hydro) ; rendement modeste MAIS remonte si l'on "
+             "récupère le froid/la chaleur d'autres procédés — valorise l'énergie fatale"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : conservation de l'énergie) ──
+    _P("stockage « à rendement aller-retour 115 % »",
+       "stocker : dispositif restituant plus d'énergie qu'on n'en injecte (rendement 1,15)",
+       {"type": "conversion", "rendement": 1.15}, True, True,
+       "—", "revendication",
+       0.3, "rendement aller-retour > 1 = énergie créée nette — à réfuter par la conservation"),
+    _P("batterie « auto-rechargeante » perpétuelle",
+       "stocker : batterie qui se recharge seule indéfiniment et fournit un courant en continu sans source",
+       {"type": "conversion", "mouvement_perpetuel": True}, True, True,
+       "—", "revendication",
+       0.25, "auto-recharge sans source = mouvement perpétuel — impossible"),
+]
+
+_OBJECTIF_ENERGIE = ("Le but réel n'est pas « stocker de l'électricité » mais DÉCALER l'énergie dans le TEMPS "
+                     "(emmagasiner quand elle est abondante/bon marché, restituer au besoin). Leviers : APPARIER "
+                     "la techno à la DURÉE de décalage (secondes → volant/supercondensateur ; heures → "
+                     "batterie/pompage ; saisonnier → hydrogène/thermochimique) ; MINIMISER les conversions "
+                     "(chacune perd définitivement — stocker dans la forme la plus proche de l'usage final : si le "
+                     "besoin est de la chaleur, stocker de la chaleur, pas de l'électricité) ; rendement, densité, "
+                     "durée et coût sont en TENSION — aucun gagnant universel, chaque principe reste jugé séparément.")
+_LOI_ENERGIE = ("conservation de l'énergie : rendement ALLER-RETOUR ≤ 1 (jamais plus d'énergie récupérée "
+                "qu'injectée) ; toute perte de conversion est DÉFINITIVE ; gains réels = réduire le nombre de "
+                "conversions, apparier la techno à la durée de stockage et à la FORME d'énergie finale")
+
+# La nature stocke déjà : graisse (saisonnier chimique), ATP (rapide), graine dormante (zéro auto-décharge), tendon.
+_STRATEGIES_NATURE_ENERGIE = [
+    _Nature("graisse / hibernation (ours, oiseaux migrateurs)",
+            ["stockage CHIMIQUE haute densité", "constitué quand la nourriture abonde",
+             "mobilisé lentement sur des mois"],
+            "réserve chimique dense pour le LONG terme (saisonnier), faite quand l'énergie est abondante — "
+            "l'analogue de l'hydrogène/thermochimique"),
+    _Nature("ATP (monnaie énergétique de la cellule)",
+            ["stock PETIT mais restitution instantanée", "recyclé des milliers de fois par jour",
+             "tampon entre production et usage"],
+            "stocker peu et cycler très vite pour lisser l'instantané — l'analogue du supercondensateur"),
+    _Nature("graine / amidon dormant",
+            ["stockage chimique à AUCUNE auto-décharge sur des années", "libéré sur déclencheur (eau, chaleur)"],
+            "conserver l'énergie des années sans perte jusqu'au besoin — l'analogue du thermochimique saisonnier"),
+    _Nature("tendon élastique (kangourou, puce, tendon d'Achille)",
+            ["stockage MÉCANIQUE élastique", "restitution quasi instantanée à forte puissance",
+             "rendement de restitution élevé"],
+            "emmagasiner puis relâcher vite pour la PUISSANCE — l'analogue du volant/ressort, pas de l'autonomie"),
+    _Nature("inertie thermique du sol / de la roche",
+            ["stockage THERMIQUE sensible", "chargé le jour, restitué la nuit (déphasage)",
+             "aucune conversion si le besoin est thermique"],
+            "quand l'usage final est de la chaleur, stocker de la chaleur : zéro conversion, le levier le moins cher"),
+]
+
+enregistre(Domaine(
+    nom=_ENERGIE,
+    aliases=frozenset(_ALIAS_ENERGIE),
+    objectif=_OBJECTIF_ENERGIE,
+    canaux=_CANAUX_ENERGIE,
+    principes=_PRINCIPES_ENERGIE,
+    strategies=_STRATEGIES_NATURE_ENERGIE,
+    loi=_LOI_ENERGIE,
+    extras={"rendement_aller_retour": "0,38 (hydrogène) à 0,95 (supercondensateur) selon la techno",
+            "note_duree": "secondes → volant/supercap ; heures → batterie/pompage ; saisonnier → hydrogène/thermochimique"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

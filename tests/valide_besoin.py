@@ -191,9 +191,56 @@ check(B.decompose("rafraichir une piece")["charge_corps_W"] == 100
       and B.decompose("chauffer une piece")["production_corps_W"] == 100,
       "cooling et chauffage inchangés après l'ajout du dessalement (isolation)")
 
-# ── 9) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
-check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau"],
-      "trois domaines modélisés (cooling, chauffage, dessalement), dans l'ordre d'enregistrement")
+# ── 9) QUATRIÈME DOMAINE : stocker l'énergie (loi DÉJÀ jugeable — rendement aller-retour ≤ 1, SANS étendre le juge) ──
+dg = B.decompose("stocker de l energie")
+check(dg["statut"] == "decompose", "besoin stockage connu -> decompose")
+check("temps" in dg["objectif_reel"].lower() and "conversion" in dg["objectif_reel"].lower(),
+      "objectif réel stockage = décaler dans le TEMPS + minimiser les conversions")
+check("rendement_aller_retour" in dg, "extras propres : rendement aller-retour")
+en_canaux = {c.canal for c in dg["canaux"]}
+check(en_canaux == {"chimique", "mecanique", "thermique", "electrostatique"},
+      f"4 canaux = 4 formes de stockage ({en_canaux})")
+prg = B.principes("stocker de l energie")
+check(prg["statut"] == "principes", "principes pour le stockage")
+pg = {e["nom"]: e for e in prg["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ par la conservation (type `conversion` existant, PAS d'extension du juge)
+over = pg["stockage « à rendement aller-retour 115 % »"]
+check(over["atome"].statut == A.REFUTE, "rendement aller-retour 1,15 > 1 -> RÉFUTÉ (conservation)")
+check(A.est_refute(over["atome"].contenu), "contenu réfuté (115 %) dans la garde anti-blanchiment")
+perp = pg["batterie « auto-rechargeante » perpétuelle"]
+check(perp["atome"].statut == A.REFUTE, "batterie auto-rechargeante -> RÉFUTÉ (mouvement perpétuel)")
+# les technos RÉELLES (rendement < 1) restent des SUPPOSITIONS
+for nom in ("batterie lithium-ion (référence)", "pompage-turbinage (STEP)",
+            "hydrogène (électrolyse → pile/combustion)", "thermochimique saisonnier (hydrates de sels)"):
+    e = pg[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION (rendement < 1, non prouvé optimal)")
+    check(0.0 < e["atome"].confiance < 1.0, f"{nom} confiance dans ]0,1[")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prg["liste"]),
+      "aucun principe de stockage promu en FAIT")
+check("candidat pour stockage_energie" in pg["batterie lithium-ion (référence)"]["atome"].portee.condition,
+      "portée des principes stockage nommant stockage_energie")
+# le cas limite rendement aller-retour = 1.0 (idéal, sans perte) n'est PAS une violation
+import coherence_physique as COH
+check(COH.juge_dispositif({"type": "conversion", "rendement": 1.0})[0] == COH.COHERENT_BORNE,
+      "rendement aller-retour 1.0 (idéal) -> cohérent, pas réfuté")
+# le levier « minimiser les conversions » présent + techno saisonnière (hydrogène/thermochimique)
+noms_g = set(pg)
+check(any("hydrogène" in n for n in noms_g) and any("thermochimique" in n for n in noms_g)
+      and any("supercondensateur" in n for n in noms_g), "technos couvrant durée courte→saisonnière présentes")
+# stratégies naturelles propres au domaine (graisse/ATP/graine/tendon)
+natg = B.strategies_naturelles("stocker de l energie")
+check(len(natg) >= 4 and any("graisse" in s["exemple"] for s in natg), "stratégies stockage propres (graisse)")
+check(not any("mangrove" in s["exemple"] for s in natg) and not any("forêt" in s["exemple"] for s in natg),
+      "pas de fuite des stratégies eau/froid vers le stockage")
+# les TROIS domaines précédents restent INTACTS après le 4e (isolation)
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("chauffer une piece")["production_corps_W"] == 100
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35,
+      "cooling, chauffage et dessalement inchangés après l'ajout du stockage (isolation)")
+
+# ── 10) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau", "stockage_energie"],
+      "quatre domaines modélisés (cooling, chauffage, dessalement, stockage), dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
