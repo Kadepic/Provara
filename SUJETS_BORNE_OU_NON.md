@@ -432,7 +432,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - structure de classification : Nomenclature statistique des activités NACE :: B-CONV → publiée (Eurostat) ; contenu à ingérer
   - structure de classification : Répertoire opérationnel des métiers et des emplois ROME :: B-CONV → publiée (France Travail) ; contenu à ingérer
 
-# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1380 tables vérifiées)
+# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1381 tables vérifiées)
 ## S.1 — Chaque relation vérifiée du lecteur est un sujet borné DE FAIT
 ## (couverture d'ancrage prouvée : audit_ancres 1371/1371, valide_ancres_types)
   - donnée du store : activite_circadienne_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -846,6 +846,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : equivalent_metrique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : equivalent_romain :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : esperance_vie_pays :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : est_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : etat_conservation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : etat_standard :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : etoile_galaxie :: B-FAIT → table vérifiée du lecteur (ancrage audité)

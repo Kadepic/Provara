@@ -76,7 +76,13 @@ _REQUETE = """SELECT ?o ?l ?d ?sur WHERE {
   OPTIONAL { ?o wdt:P279 ?s . ?s rdfs:label ?sur . FILTER(lang(?sur) = 'fr') }
 }""" % _GARDE_TYPE
 
-_ATTESTATION = "occupation_personne"          # la table qui dit quels libellés sont VRAIMENT des métiers
+# GARDE 1 — la table des libellés RÉELLEMENT PORTÉS par quelqu'un (valeurs de P106). Ce n'est PAS un oracle
+# de « métier » : elle contient des noms de famille (« Abogado »), des objets (« Anime ») et, depuis
+# `ingere_celebres` (joinmax=3 sur P106), des ÉNUMÉRATIONS (« physicien, professeur d'université et
+# philosophe »). L'oracle de TYPE, c'est la table `est_metier` (cf. ingere_metiers_attestes.py). Les deux
+# gardes se couvrent : celle-ci écarte les items typés occupation que PERSONNE n'exerce (mesuré : Q136296945,
+# un ivoire que la chaîne P279* de Wikidata raccroche à « profession ») ; l'oracle écarte le bruit de P106.
+_ATTESTATION = "occupation_personne"
 
 # GARDE 4 : une description qui se réduit à ces mots ne définit RIEN (ce n'est pas un faux, c'est un vide).
 _DEFINITIONS_VIDES = frozenset((

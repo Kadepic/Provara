@@ -1,5 +1,63 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — UN SUJET FAUX EST AUSSI GRAVE QU'UN FAIT FAUX (oracle de métier)
+
+### Le défaut
+`outils/genere_sujets.py` peuplait l'ANNEXE M en prenant **chaque valeur distincte** de la table
+`occupation_personne` pour un métier. Trois familles de valeurs n'en sont pas :
+
+- **Les énumérations fabriquées.** `ingestion/ingere_celebres.py` réécrit la table pour les personnalités
+  célèbres et joint leurs occupations (`joinmax=3` sur P106) : « Einstein → physicien, professeur
+  d'université et philosophe ». **Le fait est vrai** ; la valeur n'est pas *un* métier. Mesuré : 2 207
+  valeurs composées, et la requête `?item rdfs:label "acteur ou actrice de cinéma, acteur ou actrice de
+  théâtre et acteur ou actrice de genre"@fr` ne rend **aucun** item Wikidata. C'est aussi la cause racine du
+  vol de gestes ESCO (« écrivain ou écrivaine, militaire ») corrigé le 2026-07-11 : on avait soigné le
+  symptôme. Les cinq autres tables de `CIBLES` ont `joinmax=1` : `occupation_personne` est la **seule**
+  touchée.
+- **Le bruit de P106** : « Abogado » (nom de famille), « Anime », « Armée de l'air ».
+- **Les entreprises** que la hiérarchie Wikidata range sous « profession » : « Mann » = Q2552697,
+  *English lorry manufacturer (1896–1928)*.
+
+`ingere_metiers.py` documentait déjà « Abogado » et concluait : *« ces entrées restent NON TRAITÉES »*.
+C'est la mauvaise conclusion. **Un nom de famille ne pourra jamais être traité** — ni sa définition, ni ses
+gestes, ni ses risques professionnels n'existent. Les compter fabriquait **38 703 sujets inépuisables** :
+un backlog qui ment. Pire, son commentaire nommait `occupation_personne` « la table qui dit quels libellés
+sont VRAIMENT des métiers » — l'oracle contenait exactement ce qu'il prétendait exclure.
+
+### Le correctif
+`ingestion/ingere_metiers_attestes.py` publie l'oracle manquant : **`est_metier`**, 7 869 libellés
+(214 homonymes multi-QID conservés — « professeur » reste un métier), définis par la seule garde de type
+`P31/P279* Q28640` moins patronymes (Q101352) et prénoms (Q202444). `genere_sujets.metiers_de_la_carte()`
+filtre par **lookup**, et **lève** si l'oracle manque : régénérer une carte gonflée en silence est pire que
+ne rien régénérer.
+
+**Deux gardes qui se couvrent, et la seconde n'est pas redondante.** L'oracle (type) tue les valeurs de P106
+qui ne sont pas des occupations. L'usage P106 tue les items *typés* occupation que **personne n'exerce** :
+mesuré, Q136296945 « Plaque de reliure crucifixion, saintes femmes au tombeau, ascension et Christ
+bénissant » est un **ivoire** (`P31 → Q351853`) que la chaîne `P279*` raccroche à « profession ». Zéro
+personne ne l'a pour occupation : il n'entre pas dans la carte.
+
+**Aucune heuristique de ponctuation.** « voyageur, représentant et placier » (VRP), « professeurs des
+écoles, instituteurs et assimilés », « Manœuvres des mines, du bâtiment et des travaux publics… » sont de
+**vrais** libellés à virgules. Un filtre sur la virgule les aurait perdus. La source tranche, pas le texte.
+
+**L'oracle est français, délibérément.** Mesuré : accepter aussi les libellés anglais ne rattrape que 6
+libellés sur 2 636 — dont « Mann » (une entreprise), tandis que « magistrate », « general manager » et
+« credit manager » sont **déjà** dans l'oracle sous leur nom français. Élargir réimporterait le bruit
+d'entreprises sans gagner un seul métier réel.
+
+### Cliquet
+`tests/valide_oracle_metier.py` (36/36) : fixture écrite à la main (s'exerce **sans** la base réelle),
+**contre-épreuve de sabotage** (oracle vidé → zéro métier : le filtre le consulte donc bien),
+**contre-épreuve d'absence** (table retirée → `SystemExit` qui nomme la table et la commande), et ancres
+nommées sur la base réelle. Câblé à la suite ; `outils/` ajouté au `PYTHONPATH` de `suite_conversation`.
+
+### Mesure — le compteur BAISSE, et c'est le bon signe
+`45 894 sujets · 16 727 traités · 512 partiels · 28 655 NON traités · 0 dette.` (avant : 84 597 · 21 644 ·
+584 · 62 369). Les « traités » baissent de 4 917 parce qu'on comptait des *traités* sur des non-métiers :
+« Abogado — ce métier est-il fait pour moi ? » passait en routage. **Suite : 117/117.** `valide_cablage` :
+588 modules, 0 orphelin.
+
 ## 2026-07-11 (suite 4) — ESCO complet ; un sujet « bloqué » qui ne l'était pas ; deux faux d'étiquette
 
 ### 1. Le bug de descente coûtait 1 239 occupations
