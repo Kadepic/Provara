@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 6e domaine « eau_potable_air » (AWG) — loi séparation RÉUTILISÉE (x = HR)
+
+Produire de l'eau potable de l'air. La loi est DÉJÀ couverte par le type `separation` généralisé : extraire
+l'eau d'un air à humidité relative φ coûte au minimum R·T·ln(1/φ) par mole (φ = activité de la vapeur ; on
+réutilise `fraction_molaire = HR`). **Aucune extension du juge** — deuxième domaine à ne rien lui coûter (après
+le stockage). À φ → 0 (air sec) le minimum DIVERGE, ce que le juge exprime : on ne tire pas d'eau d'un air
+parfaitement sec.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS pédagogiquement distincts :
+« 0,5 kJ/mol à 50 % HR » (sous le plancher) ET « eau d'un air à 5 % HR à 2 kJ/mol » (la SÉCHERESSE renchérit —
+plancher ~7,4 kJ/mol). Reframing : le rendement dépend d'abord de l'HUMIDITÉ, pas de la techno → opérer quand/où
+l'air est humide, SORBER plutôt que refroidir tout l'air (capter la nuit, régénérer au soleil → marche en climat
+sec), intercepter le brouillard existant (quasi gratuit), viser un puits froid gratuit (sol, ciel nocturne).
+Couvre condensation, sorption solaire, MOF (récolte en désert), filet à brouillard, condensation radiative,
+dessiccant liquide, condenseur couplé au sol, membrane. 5 stratégies naturelles propres (scarabée du Namib,
+toile d'araignée, lézard Moloch, rosée nocturne, cactus conique). Gate `valide_besoin` **135 → 151/151** ; les
+5 domaines précédents intacts ; juge inchangé (67/67).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 5e domaine « capture_co2 » + loi L3 GÉNÉRALISÉE (gaz dilué R·T·ln(1/x))
 
 Enjeu climatique, et même FAMILLE de loi que le dessalement — mais pas osmotique. On a donc **généralisé

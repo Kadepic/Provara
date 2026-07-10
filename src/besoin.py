@@ -974,6 +974,146 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  SIXIÈME DOMAINE : produire de l'eau potable de l'air (AWG). La loi est DÉJÀ couverte par le type `separation`
+#  généralisé : extraire l'eau d'un air à humidité relative φ vaut au minimum R·T·ln(1/φ) par mole (φ = ACTIVITÉ
+#  de la vapeur d'eau ; on réutilise `fraction_molaire = HR`). Aucune extension du juge. À φ → 0 (air sec) le
+#  minimum DIVERGE : on ne tire pas d'eau d'un air parfaitement sec.
+#  REFRAMING machine : le rendement dépend D'ABORD de l'humidité, pas de la techno. Leviers : opérer QUAND/OÙ
+#  l'air est humide (nuit, côte, brouillard) ; ne pas refroidir tout l'air mais SORBER (capter la nuit humide,
+#  relâcher au soleil le jour) ; là où le brouillard existe, l'INTERCEPTER est quasi gratuit (un filet).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_AWG = "eau_potable_air"
+_ALIAS_AWG = {
+    "produire de l eau de l air", "produire de l eau potable de l air", "generateur d eau atmospherique",
+    "extraire l eau de l air", "recuperer l eau de l air", "capter l humidite de l air",
+}
+
+# ── « Canaux » : les mécanismes pour tirer l'eau de l'air ────────────────────────────────────────────────────────
+_CANAUX_AWG = [
+    Canal("refroidissement", "eau", "refroidir une surface SOUS le point de rosée pour condenser la vapeur",
+          False, "simple mais on paie le refroidissement de TOUT l'air ; gratuit si un puits froid existe (sol, "
+                 "nuit) ; compresseur = bruit"),
+    Canal("sorption", "eau", "capter la vapeur sur un dessiccant/MOF la nuit, la relâcher au soleil le jour",
+          True, "découple capture (air humide, nuit) et régénération (chaleur solaire, jour) → marche en climat "
+                "SEC là où la condensation échoue ; le levier clé"),
+    Canal("interception", "eau", "intercepter les gouttelettes déjà condensées du brouillard/de la rosée sur un filet",
+          True, "quasi gratuit LÀ où le brouillard existe (côtes, montagnes) : pas de séparation, juste une "
+                "collecte — mais conditionné à la présence de brouillard"),
+    Canal("membrane", "eau", "transporter sélectivement la vapeur à travers une membrane (dessiccant liquide)",
+          True, "compact ; l'énergie reste dans la régénération du dessiccant — à adosser à une chaleur fatale"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le travail minimal de séparation (type `separation`, x = HR) ────────────
+_PRINCIPES_AWG = [
+    _P("condensation par refroidissement (référence)",
+       "produire de l'eau : refroidir l'air humide sous le point de rosée, collecter le condensat",
+       {"type": "separation", "fraction_molaire": 0.6, "energie_kJ_par_mol": 26.0}, False, False,
+       "condensat (eau liquide)", "mature",
+       0.6, "la référence : ~0,3–0,5 kWh/L par air modérément humide ; on refroidit tout l'air (irréversible, "
+            "latente non récupérée) → loin du minimum ; échoue en air sec — la barre à descendre"),
+    _P("sorption solaire (dessiccant régénéré au soleil)",
+       "produire de l'eau : un dessiccant capte la vapeur la nuit, le soleil la relâche le jour, condensée à part",
+       {"type": "separation", "fraction_molaire": 0.3, "energie_kJ_par_mol": 20.0}, True, True,
+       "condensat", "émergent",
+       0.55, "marche en climat SEC (capte à basse HR) et l'énergie est SOLAIRE (gratuite) → le levier « découpler "
+             "capture et régénération » ; débit par cycle jour/nuit limité"),
+    _P("MOF hygroscopique (récolte d'eau à basse humidité)",
+       "produire de l'eau : un réseau métallo-organique (MOF) capte l'eau à 10–20 % HR, relâchée par une chaleur douce",
+       {"type": "separation", "fraction_molaire": 0.2, "energie_kJ_par_mol": 15.0}, True, True,
+       "condensat", "recherche (démonstrateurs désert)",
+       0.5, "capte l'eau même en plein désert (HR très basse) ; réglable par chimie du MOF ; coût et débit du "
+            "matériau à industrialiser — piste sous-exploitée qui repousse la limite d'humidité"),
+    _P("filet à brouillard (interception)",
+       "produire de l'eau : un maillage intercepte les gouttelettes du brouillard, l'eau ruisselle par gravité",
+       {"type": "separation", "fraction_molaire": 0.98, "energie_kJ_par_mol": 0.3}, True, True,
+       "eau ruisselée", "mature (déployé)",
+       0.55, "quasi ZÉRO énergie (maillage passif) LÀ où le brouillard existe (côtes, altitude) ; ce n'est pas de "
+            "la séparation mais une COLLECTE de gouttes déjà formées — conditionné au brouillard"),
+    _P("condensation radiative nocturne",
+       "produire de l'eau : une surface rayonne vers le ciel, descend sous le point de rosée, la rosée est collectée",
+       {"type": "separation", "fraction_molaire": 0.9, "energie_kJ_par_mol": 0.5}, True, True,
+       "rosée collectée", "connu (peu diffusé)",
+       0.5, "puits = le ciel (gratuit) ; passif, silencieux ; débit modeste, exige un ciel dégagé et un air déjà "
+            "humide la nuit — sous-exploité en complément"),
+    _P("dessiccant liquide (saumure LiCl, régénération solaire/fatale)",
+       "produire de l'eau : une saumure hygroscopique absorbe la vapeur, régénérée par chaleur, l'eau condensée à part",
+       {"type": "separation", "fraction_molaire": 0.4, "energie_kJ_par_mol": 22.0}, True, True,
+       "condensat", "émergent",
+       0.5, "absorbe fort même à HR modérée ; l'énergie part dans la régénération de la saumure → l'adosser à une "
+            "chaleur fatale/solaire ; corrosion à gérer"),
+    _P("condenseur couplé au sol (puits froid géothermique)",
+       "produire de l'eau : condenser l'air humide sur une surface refroidie par le sol (température stable)",
+       {"type": "separation", "fraction_molaire": 0.7, "energie_kJ_par_mol": 8.0}, True, False,
+       "condensat", "simple",
+       0.5, "utilise le SOL comme puits froid gratuit (comme la grotte) → atteindre le point de rosée coûte peu ; "
+            "conditionné à un sol assez frais et à un air assez humide"),
+    _P("membrane à dessiccant (vapeur transportée sélectivement)",
+       "produire de l'eau : une membrane laisse passer la vapeur d'eau, condensée du côté sec",
+       {"type": "separation", "fraction_molaire": 0.5, "energie_kJ_par_mol": 18.0}, True, True,
+       "condensat", "recherche",
+       0.45, "compacte, sans pièce froide ; l'énergie reste dans le maintien du gradient/de la régénération — "
+             "piste jeune à valider hors labo"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : sous le travail minimal de séparation R·T·ln(1/HR)) ──
+    _P("générateur d'eau « à 0,5 kJ/mol par 50 % d'humidité »",
+       "produire de l'eau : extraire l'eau d'un air à 50 % HR revendiqué à 0,5 kJ/mol",
+       {"type": "separation", "fraction_molaire": 0.5, "energie_kJ_par_mol": 0.5}, True, True,
+       "eau", "revendication",
+       0.3, "revendication SOUS le plancher R·T·ln(1/0,5) ≈ 1,72 kJ/mol — à réfuter par le travail minimal"),
+    _P("eau d'un air TRÈS SEC (5 % HR) « aussi peu cher qu'à 80 % »",
+       "produire de l'eau : extraire l'eau d'un air à 5 % HR pour seulement 2 kJ/mol",
+       {"type": "separation", "fraction_molaire": 0.05, "energie_kJ_par_mol": 2.0}, True, True,
+       "eau", "revendication",
+       0.25, "à 5 % HR le plancher monte à R·T·ln(20) ≈ 7,4 kJ/mol : la SÉCHERESSE renchérit l'extraction — 2 kJ/mol "
+             "est impossible (à air parfaitement sec, le minimum diverge)"),
+]
+
+_OBJECTIF_AWG = ("Le but réel n'est pas d'« arracher de l'eau à n'importe quel air » : le rendement dépend "
+                 "D'ABORD de l'HUMIDITÉ relative (le travail minimal est R·T·ln(1/HR) par mole — il DIVERGE quand "
+                 "l'air devient sec). Leviers : opérer QUAND/OÙ l'air est humide (nuit, côte, brouillard) ; ne pas "
+                 "refroidir TOUT l'air mais SORBER (capter la nuit humide, régénérer au soleil le jour → marche "
+                 "même en climat sec) ; là où le brouillard existe, l'INTERCEPTER est quasi gratuit (un filet) ; "
+                 "viser un puits froid gratuit (sol, ciel nocturne) plutôt qu'un compresseur. Chaque principe "
+                 "reste jugé par le travail minimal de séparation.")
+_LOI_AWG = ("on ne condense pas l'eau de l'air pour moins que R·T·ln(1/HR) par mole (HR = humidité relative = "
+            "activité de la vapeur) ; plus l'air est SEC plus le minimum MONTE (il diverge à HR → 0) ; gains "
+            "réels = opérer à HR élevée, sorber plutôt que tout refroidir, puits froid gratuit (sol/ciel), "
+            "intercepter le brouillard existant")
+
+# La nature récolte déjà l'eau de l'air : scarabée du Namib, toile d'araignée, lézard cornu, rosée, cactus.
+_STRATEGIES_NATURE_AWG = [
+    _Nature("scarabée du Namib (récolte le brouillard sur son dos)",
+            ["surface à motifs hydrophiles/hydrophobes", "gouttes qui grossissent puis roulent vers la bouche",
+             "posture face au vent de brouillard"],
+            "structurer la MOUILLABILITÉ d'une surface capte le brouillard sans énergie — copier le motif"),
+    _Nature("toile d'araignée (capte les gouttelettes de brouillard)",
+            ["fibres à nœuds périodiques", "gradient de Laplace qui rassemble les gouttes aux nœuds"],
+            "la GÉOMÉTRIE des fibres (nœuds) collecte l'eau du brouillard — un levier de matériau, pas d'énergie"),
+    _Nature("lézard cornu (Moloch) — l'eau remonte sur la peau",
+            ["réseau de micro-canaux entre les écailles", "transport CAPILLAIRE de la rosée vers la bouche",
+             "contre la gravité, sans muscle"],
+            "des canaux capillaires acheminent l'eau collectée sans énergie — copier le transport passif"),
+    _Nature("rosée nocturne sur les feuilles",
+            ["refroidissement RADIATIF vers le ciel", "descente sous le point de rosée", "collecte par ruissellement"],
+            "le ciel nocturne est un puits froid gratuit : rayonner, condenser, collecter — sans machine"),
+    _Nature("cactus / épines coniques",
+            ["gouttes captées sur des épines CONIQUES", "gradient de Laplace qui les pousse vers la base"],
+            "une géométrie conique déplace les gouttes toute seule — le levier de forme, zéro énergie"),
+]
+
+enregistre(Domaine(
+    nom=_AWG,
+    aliases=frozenset(_ALIAS_AWG),
+    objectif=_OBJECTIF_AWG,
+    canaux=_CANAUX_AWG,
+    principes=_PRINCIPES_AWG,
+    strategies=_STRATEGIES_NATURE_AWG,
+    loi=_LOI_AWG,
+    extras={"humidite_relative_moteur": "le rendement dépend D'ABORD de l'humidité relative (HR), pas de la techno",
+            "note_secheresse": "à HR très basse le travail minimal R·T·ln(1/HR) diverge — pas d'eau d'un air parfaitement sec"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

@@ -292,10 +292,52 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "rendement_aller_retour" in B.decompose("stocker de l energie"),
       "cooling, chauffage, dessalement et stockage inchangés après l'ajout de la capture CO₂ (isolation)")
 
-# ── 11) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+# ── 11) SIXIÈME DOMAINE : eau potable de l'air (AWG) — loi séparation RÉUTILISÉE (x = HR, sans étendre le juge) ──
+da = B.decompose("produire de l eau de l air")
+check(da["statut"] == "decompose", "besoin AWG connu -> decompose")
+check("humidit" in da["objectif_reel"].lower() and "diverge" in da["objectif_reel"].lower(),
+      "objectif réel AWG = le rendement dépend d'abord de l'humidité (minimum diverge à sec)")
+check("humidite_relative_moteur" in da, "extras propres : l'humidité relative est le moteur")
+awg_canaux = {c.canal for c in da["canaux"]}
+check(awg_canaux == {"refroidissement", "sorption", "interception", "membrane"}, f"4 canaux AWG ({awg_canaux})")
+pra = B.principes("produire de l eau de l air")
+pa = {e["nom"]: e for e in pra["liste"]}
+# l'IMPOSSIBLE (sous R·T·ln(1/HR)) est RÉFUTÉ, et la SÉCHERESSE renchérit (deux réfutations distinctes)
+sous_hr = pa["générateur d'eau « à 0,5 kJ/mol par 50 % d'humidité »"]
+check(sous_hr["atome"].statut == A.REFUTE, "0,5 kJ/mol à 50 % HR < plancher ~1,72 -> RÉFUTÉ")
+sec = pa["eau d'un air TRÈS SEC (5 % HR) « aussi peu cher qu'à 80 % »"]
+check(sec["atome"].statut == A.REFUTE, "2 kJ/mol à 5 % HR < plancher ~7,4 -> RÉFUTÉ (la sécheresse renchérit)")
+# procédés réels -> SUPPOSITIONS
+for nom in ("condensation par refroidissement (référence)", "MOF hygroscopique (récolte d'eau à basse humidité)",
+            "filet à brouillard (interception)"):
+    e = pa[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in pra["liste"]), "aucun principe AWG promu en FAIT")
+check("candidat pour eau_potable_air" in pa["condensation par refroidissement (référence)"]["atome"].portee.condition,
+      "portée des principes AWG nommant eau_potable_air")
+# la loi séparation RÉUTILISÉE (x = HR) : plus l'air est sec, plus le plancher monte
+st_50, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 0.5, "energie_kJ_par_mol": 0.5})
+st_05, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 0.05, "energie_kJ_par_mol": 2.0})
+check(st_50 == COH.VIOLE and st_05 == COH.VIOLE, "le juge réfute AWG sous plancher, à 50 % ET à 5 % HR")
+st_awg_reel, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 0.6, "energie_kJ_par_mol": 26})
+check(st_awg_reel == COH.COHERENT_BORNE, "AWG réel (26 kJ/mol, 60 % HR) -> COHÉRENT, jamais réfuté")
+# stratégies naturelles propres (scarabée du Namib, toile d'araignée)
+nata = B.strategies_naturelles("produire de l eau de l air")
+check(len(nata) >= 4 and any("Namib" in s["exemple"] for s in nata), "stratégies AWG propres (scarabée du Namib)")
+check(not any("photosynthèse" in s["exemple"] for s in nata) and not any("mangrove" in s["exemple"] for s in nata),
+      "pas de fuite des stratégies CO₂/eau de mer vers l'AWG")
+# les CINQ domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("chauffer une piece")["production_corps_W"] == 100
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "rendement_aller_retour" in B.decompose("stocker de l energie")
+      and "fraction_co2_air" in B.decompose("capter le co2"),
+      "les 5 domaines précédents inchangés après l'ajout de l'AWG (isolation)")
+
+# ── 12) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
-                              "stockage_energie", "capture_co2"],
-      "cinq domaines modélisés, dans l'ordre d'enregistrement")
+                              "stockage_energie", "capture_co2", "eau_potable_air"],
+      "six domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
