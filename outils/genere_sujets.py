@@ -81,9 +81,47 @@ def _valeurs(table: str) -> collections.Counter:
     return c
 
 
+def _entites(table: str) -> set:
+    """Les ENTITÉS d'une table du store (les clés). Lève si la table manque : mieux vaut ne rien régénérer
+    qu'écrire une carte fausse."""
+    chemin = os.path.join(_STORE, table + ".jsonl")
+    if not os.path.exists(chemin):
+        raise SystemExit(
+            "ERREUR : table « %s » absente du store (%s).\n"
+            "La liste des métiers se filtre par LOOKUP dans cet oracle. Sans lui, l'ANNEXE M compterait des\n"
+            "non-métiers (noms de famille, énumérations jointes par ingere_celebres) comme sujets à traiter :\n"
+            "une MESURE FAUSSE. Ingère-le d'abord :\n"
+            "    PYTHONPATH=src:ingestion python3 ingestion/ingere_metiers_attestes.py" % (table, _STORE))
+    out = set()
+    with open(chemin, encoding="utf-8") as f:
+        for ligne in f:
+            if ligne.startswith('{"_relation"'):
+                continue
+            try:
+                out.add(json.loads(ligne)["entite"])
+            except (ValueError, KeyError):
+                continue
+    return out
+
+
 def _propre(libelle: str) -> bool:
     """Un libellé utilisable : non vide, sans « :: » (séparateur du format), longueur raisonnable."""
     return bool(libelle) and "::" not in libelle and 2 <= len(libelle) <= 90 and "\n" not in libelle
+
+
+def metiers_de_la_carte() -> tuple:
+    """(métiers, taille de l'oracle, nombre de valeurs écartées).
+
+    Une valeur de `occupation_personne` n'est PAS un métier du seul fait d'y figurer. Le filtre est un
+    LOOKUP dans `est_metier`, jamais une heuristique de chaîne : « Employés de réception, guichetiers et
+    assimilés » est UN libellé CITP, alors que « acteur ou actrice, basketteur ou basketteuse et athlète
+    professionnel » est une énumération fabriquée. Aucune règle sur la virgule ne les sépare ; la source, si.
+    """
+    atteste = _entites("est_metier")
+    bruts = sorted(m for m, n in _valeurs("occupation_personne").items()
+                   if n >= SUPPORT_MIN and _propre(m))
+    metiers = [m for m in bruts if m in atteste]
+    return metiers, len(atteste), len(bruts) - len(metiers)
 
 
 def _entete() -> str:
@@ -177,8 +215,19 @@ def main() -> int:
         print("ERREUR : store introuvable (%s). Exporte LECTEUR_DATASETS_DIR." % _STORE, file=sys.stderr)
         return 2
     tables = sorted(f[:-6] for f in os.listdir(_STORE) if f.endswith(".jsonl"))
-    metiers = sorted(m for m, n in _valeurs("occupation_personne").items()
-                     if n >= SUPPORT_MIN and _propre(m))
+    # ORACLE DE MÉTIER (correctif de MESURE, 2026-07-12). Une valeur de `occupation_personne` n'est pas un
+    # métier du seul fait d'y figurer : la table contient des noms de famille (« Abogado »), des objets
+    # (« Anime ») et des ÉNUMÉRATIONS fabriquées par `ingere_celebres` (« physicien, professeur d'université
+    # et philosophe » — le fait est vrai, mais ce n'est pas UN métier). Aucun d'eux ne peut jamais être
+    # traité : ni définition, ni gestes, ni risques professionnels n'existent pour un nom de famille. Les
+    # compter comme sujets fabriquait un backlog inépuisable. On filtre par LOOKUP dans `est_metier`.
+    #
+    # L'oracle est défini sur les libellés FRANÇAIS, et c'est délibéré : la carte est française. Mesuré,
+    # accepter aussi les libellés anglais ne rattrape que 6 libellés sur 2 636 — dont « Mann » (Q2552697,
+    # constructeur anglais de camions, rangé sous « profession » par conflation Wikidata), tandis que
+    # « magistrate », « general manager » et « credit manager » sont DÉJÀ dans l'oracle sous leur nom
+    # français. Élargir à l'anglais réimporterait le bruit d'entreprises pour ne gagner aucun métier réel.
+    metiers, n_atteste, ecartes = metiers_de_la_carte()
     domaines = sorted(d for d, n in _valeurs("domaine_travail").items()
                       if n >= SUPPORT_MIN and _propre(d))
 
@@ -198,6 +247,8 @@ def main() -> int:
     print("SUJETS_BORNE_OU_NON.md : parties conceptuelles + %d tables (annexe S) + annexe T" % len(tables))
     print("SUJETS_ANNEXES_AUTO.md : %d métiers × %d axes + %d domaines × %d axes = %d sujets"
           % (len(metiers), len(AXES_METIER), len(domaines), len(AXES_DOMAINE), n_auto))
+    print("  oracle `est_metier` : %d libellés attestés ; %d valeurs de P106 ÉCARTÉES (non-métiers : noms "
+          "de famille, objets, énumérations jointes) — elles ne sont PAS des sujets." % (n_atteste, ecartes))
     return 0
 
 

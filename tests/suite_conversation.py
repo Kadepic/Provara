@@ -26,7 +26,7 @@ GATES = [
     "valide_extrait_pdf", "valide_lecteur_document", "valide_interroge_donnees", "valide_faits_conversation", "valide_cinematique_nl",
     "valide_situation", "valide_pont_grandeurs", "valide_et_si_pourquoi", "valide_tete_polysemique",
     "valide_pont_electrique", "valide_pont_hydraulique", "valide_roue_energie", "valide_roues_compilees",
-    "valide_graphe_roues", "valide_sujets",
+    "valide_graphe_roues", "valide_sujets", "valide_oracle_metier",
     # VAGUE A (2026-07-10 nuit, mandat « traiter tout le backlog des sujets ») : 19 briques conceptuelles
     # neuves, chacune avec mécanisme exact, abstention structurelle et gate à ancres NON CIRCULAIRES.
     # Elles ferment à ZÉRO le backlog des PARTIES I et II (14 + 21 sujets non traités -> 0).
@@ -72,7 +72,7 @@ def _env():
     e = dict(os.environ)
     # le pipeline conversationnel importe depuis interface/ + src/ + ingestion/
     pp = os.pathsep.join([os.path.join(_RACINE, "interface"), os.path.join(_RACINE, "src"),
-                          os.path.join(_RACINE, "ingestion")])
+                          os.path.join(_RACINE, "ingestion"), os.path.join(_RACINE, "outils")])
     e["PYTHONPATH"] = pp + (os.pathsep + e["PYTHONPATH"] if e.get("PYTHONPATH") else "")
     import tempfile
     # ── DÉTERMINISME DE LA SUITE (correctif 2026-07-11) ──────────────────────────────────────────────────
