@@ -33,6 +33,7 @@ HORS = "hors"
 # Lois invoquées (référence lisible).
 L1 = "1er principe (conservation de l'énergie)"
 L2 = "2nd principe (entropie / Carnot)"
+L3 = "2nd principe (travail minimal de séparation / énergie de mélange de Gibbs)"
 
 
 def _nb(x):
@@ -55,7 +56,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     if not isinstance(spec, dict):
         return (HORS, "spec absente ou invalide", None)
     t = spec.get("type")
-    if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur"):
+    if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur", "dessalement"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -109,6 +110,30 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         if _nb(cop) and cop > cop_carnot + 1e-9:
             return (VIOLE, f"COP {cop} > COP de Carnot {round(cop_carnot, 3)} "
                            f"(Th={th} K, Tc={tc} K)", L2)
+
+    # --- 2nd principe : dessalement/séparation SOUS le travail minimal (énergie de mélange de Gibbs). ---
+    # Le travail réversible minimal pour extraire de l'eau PURE d'une solution vaut, à récupération → 0,
+    # la PRESSION OSMOTIQUE de l'alimentation (π = i·C·R·T, van 't Hoff). Toute énergie déclarée SOUS ce
+    # plancher est impossible : on ne « démélange » pas pour moins que l'énergie de mélange (l'entropie de
+    # mélange baisserait sans travail compensatoire). Plancher CONSERVATEUR (récupération → 0) : le minimum
+    # réel d'un procédé à récupération finie ne peut qu'être PLUS grand → aucun faux positif. On accepte π en
+    # bar, ou on le calcule depuis (concentration mol/L, facteur de van 't Hoff, température K).
+    if t == "dessalement":
+        e = spec.get("energie_kWh_par_m3")
+        pi_bar = spec.get("osmose_pression_bar")
+        if pi_bar is None:
+            c = spec.get("concentration_mol_par_L")
+            i = spec.get("facteur_vant_hoff", 1.0)
+            tk = spec.get("t_K", 298.15)
+            if _nb(c) and _nb(i) and _nb(tk) and c > 0 and i > 0 and tk > 0:
+                pi_pa = i * (c * 1000.0) * 8.314462618 * tk        # C mol/L → mol/m³ ; π en Pa
+                pi_bar = pi_pa / 1e5
+        if _nb(e) and _nb(pi_bar) and pi_bar > 0:
+            e_min = (pi_bar * 1e5) / 3.6e6                          # π (bar) → J/m³ → kWh/m³
+            if e < e_min - 1e-9:
+                return (VIOLE, f"énergie déclarée {e} kWh/m³ < travail minimal de séparation "
+                               f"{round(e_min, 3)} kWh/m³ (π = {round(pi_bar, 2)} bar, récupération → 0) : "
+                               f"séparation sous l'énergie de mélange de Gibbs", L3)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:
