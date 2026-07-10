@@ -104,37 +104,34 @@ if os.path.exists(S.DOC_AUTO):
           "l'honnêteté : le NON TRAITÉ domine (le backlog métiers est immense, et c'est DIT)")
     check(not rc["dettes"], "zéro dette sur la carte complète")
 
-    # ── FERMETURE ATOMIQUE (règle Yohan, 2026-07-10 nuit) : un métier n'est TRAITÉ que si SON entité est
-    #    vérifiée par lookup. Jamais « l'axe est couvert ». C'est le cliquet qui interdit la régression.
+    # ── FERMETURE ATOMIQUE, sur la carte RÉELLE (ne s'exerce que si les tables sont là) ────────────────
     metiers = [s for s in complet if s.partie.startswith("ANNEXE M")]
     axe_def = [s for s in metiers if "définition et périmètre" in s.libelle]
     check(bool(axe_def), "l'axe « définition et périmètre » existe dans la carte")
 
-    etats = {s: C.etat(s) for s in axe_def}
-    traites = [s for s, (e, _) in etats.items() if e == C.TRAITE]
-    non_tr = [s for s, (e, _) in etats.items() if e == C.NON_TRAITE]
-
-    # 1) l'axe n'est PAS couvert en bloc : il reste des métiers non traités, et ils le DISENT nommément.
-    check(traites and non_tr, "axe « définition » : couverture PARTIELLE par entité (ni tout, ni rien)")
-    check(all("vérifié par lookup" in p for _, p in
-              (etats[s] for s in traites)), "chaque TRAITÉ nomme la table ET l'entité vérifiée")
-    check(all(C._entite_annexe(s) in p for s, p in ((s, etats[s][1]) for s in non_tr[:200])),
-          "chaque NON TRAITÉ nomme l'entité manquante")
-
-    # 2) le lookup est RÉEL : toute entité déclarée traitée est effectivement présente dans une table.
     tables = ("definition_esco_metier", "definition_metier", "surclasse_metier")
-    cles = {t: C._cles(t) for t in tables}
-    if any(cles[t] is not None for t in tables):
-        check(all(any(cles[t] is not None and C._entite_annexe(s) in cles[t] for t in tables)
-                  for s in traites), "toute entité TRAITÉE est présente sur le disque (aucune déclaration)")
-        check(not any(any(cles[t] is not None and C._entite_annexe(s) in cles[t] for t in tables)
-                      for s in non_tr), "aucune entité NON TRAITÉE n'est en réalité présente (pas de faux négatif)")
-        # 3) anti-FAUX mesuré : ces valeurs de P106 ne sont PAS des métiers, elles ne doivent JAMAIS passer.
+    if any(C._cles(t) is not None for t in tables):
+        etats = {s: C.etat(s) for s in axe_def}
+        traites = [s for s, (e, _) in etats.items() if e == C.TRAITE]
+        non_tr = [s for s, (e, _) in etats.items() if e == C.NON_TRAITE]
+        check(traites and non_tr, "axe « définition » : couverture PARTIELLE par entité (ni tout, ni rien)")
+        check(all("vérifié par lookup" in etats[s][1] for s in traites),
+              "chaque TRAITÉ nomme la table ET l'entité vérifiée")
+        check(all(C._entite_annexe(s) in etats[s][1] for s in non_tr[:200]),
+              "chaque NON TRAITÉ nomme l'entité manquante")
+        cles = {t: C._cles(t) for t in tables}
+        check(all(any(cles[t] is not None and C._entite_annexe(s) in cles[t] for t in tables) for s in traites),
+              "toute entité TRAITÉE est présente sur le disque (aucune déclaration)")
+        check(not any(any(cles[t] is not None and C._entite_annexe(s) in cles[t] for t in tables) for s in non_tr),
+              "aucune entité NON TRAITÉE n'est en réalité présente (pas de faux négatif)")
+        # anti-FAUX mesuré : ces valeurs de P106 ne sont PAS des métiers.
         faux = {"Abogado", "Anime", "Armée de l'air"}
         pieges = [s for s in axe_def if C._entite_annexe(s) in faux]
         check(len(pieges) == len(faux), "les 3 non-métiers connus sont bien dans la carte (pièges présents)")
         check(all(C.etat(s)[0] == C.NON_TRAITE for s in pieges),
-              "« Abogado » / « Anime » / « Armée de l'air » ne sont JAMAIS déclarés traités")
+              "« Abogado » / « Anime » / « Armée de l\'air » ne sont JAMAIS déclarés traités")
+    else:
+        check(True, "(tables métiers absentes de ce store : cliquet réel non applicable — voir la FIXTURE)")
 
     # 4) les axes sans source ingérée restent ENTIÈREMENT non traités (aucune couverture inventée).
     for axe in ("outils, machines", "risques professionnels", "rémunération médiane",
@@ -143,19 +140,82 @@ if os.path.exists(S.DOC_AUTO):
         check(lot and all(C.etat(s)[0] == C.NON_TRAITE for s in lot),
               "axe sans source « %s » : 0 sujet déclaré traité" % axe)
 
-    # 5) l'axe « gestes et savoir-faire » est MIX : ESCO ferme la part CODIFIÉE, jamais le tour de main
-    #    tacite. Il peut donc être PARTIEL par entité, mais JAMAIS TRAITÉ. C'est le cliquet anti-sur-promesse.
+    # 5) l'axe « gestes » est MIX : il peut être PARTIEL par entité, JAMAIS TRAITÉ.
     gestes = [s for s in metiers if "gestes et savoir-faire" in s.libelle]
-    etats_g = [C.etat(s) for s in gestes]
-    check(gestes and not any(e == C.TRAITE for e, _ in etats_g),
+    check(gestes and not any(C.etat(s)[0] == C.TRAITE for s in gestes),
           "axe « gestes » : aucun sujet déclaré TRAITÉ (la part tacite reste non bornée)")
-    partiels_g = [p for e, p in etats_g if e == C.PARTIEL]
-    if C._cles("geste_metier") is not None:
-        check(partiels_g, "axe « gestes » : la part codifiée d'ESCO ferme des entités en PARTIEL")
-        check(all("part codifiée seule" in p for p in partiels_g),
-              "chaque PARTIEL « gestes » DIT que seule la part codifiée est couverte")
 else:
     check(True, "(annexes auto non générées : outils/genere_sujets.py — sauté)")
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════
+# CLIQUET D'ATOMICITÉ SUR FIXTURE — il s'exerce TOUJOURS, même sans la base réelle.
+#
+# Pourquoi : la première version de ce cliquet ne se déclenchait que si les tables métiers étaient présentes
+# dans le store. Or la suite épingle l'ÉCHANTILLON embarqué (où elles ne sont pas). Le cliquet le plus
+# important du mandat — « jamais un axe couvert en bloc » — ne protégeait donc RIEN en intégration.
+# On le rejoue ici sur un store FABRIQUÉ : deux métiers, un seul présent dans la table.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════
+import json
+import tempfile
+
+_ANNEXE_M = "ANNEXE M — MÉTIERS RÉELS × AXES ATOMIQUES"
+
+
+def _sujet(libelle):
+    return S.Sujet(libelle=libelle, code="B-CONV", raison="fixture", partie=_ANNEXE_M, section="M.1", ligne=1)
+
+
+_garde_dossier, _garde_cache = C._DOSSIER_STORE, dict(C._CACHE_CLES)
+with tempfile.TemporaryDirectory() as _tmp:
+    for _table, _entites in (("definition_metier", ["boulanger ou boulangère"]),
+                             ("geste_metier", ["boulanger ou boulangère"])):
+        with open(os.path.join(_tmp, _table + ".jsonl"), "w", encoding="utf-8") as _f:
+            _f.write('{"_relation": "%s", "_categorie": "convention", "_source": "fixture"}\n' % _table)
+            for _e in _entites:
+                _f.write(json.dumps({"entite": _e, "valeur": "x"}, ensure_ascii=False) + "\n")
+    C._DOSSIER_STORE = _tmp
+    C._CACHE_CLES.clear()
+
+    _present = _sujet("boulanger ou boulangère — définition et périmètre du métier")
+    _absent = _sujet("métier fantôme — définition et périmètre du métier")
+    _e_pres, _p_pres = C.etat(_present)
+    _e_abs, _p_abs = C.etat(_absent)
+    check(_e_pres == C.TRAITE, "FIXTURE : le métier PRÉSENT dans la table est TRAITÉ")
+    check("boulanger ou boulangère" in _p_pres and "definition_metier" in _p_pres,
+          "FIXTURE : la preuve nomme la table ET l'entité")
+    check(_e_abs == C.NON_TRAITE, "FIXTURE : le métier ABSENT n'est jamais TRAITÉ (pas de couverture en bloc)")
+    check("métier fantôme" in _p_abs, "FIXTURE : le refus nomme l'entité manquante")
+
+    # l'axe « gestes » est MIX : présent -> PARTIEL, jamais TRAITÉ.
+    _g_pres = C.etat(_sujet("boulanger ou boulangère — gestes et savoir-faire techniques"))
+    _g_abs = C.etat(_sujet("métier fantôme — gestes et savoir-faire techniques"))
+    check(_g_pres[0] == C.PARTIEL, "FIXTURE : gestes d'un métier couvert -> PARTIEL (part codifiée seule)")
+    check("part codifiée seule" in _g_pres[1], "FIXTURE : le PARTIEL dit que seule la part codifiée est couverte")
+    check(_g_abs[0] == C.NON_TRAITE, "FIXTURE : gestes d'un métier absent -> NON TRAITÉ")
+
+    # un axe SANS table ingérée n'est jamais traité, même pour un métier connu par ailleurs.
+    for _axe in ("outils, machines et logiciels", "risques professionnels et prévention",
+                 "rémunération médiane (pays et année donnés)"):
+        _e, _ = C.etat(_sujet("boulanger ou boulangère — " + _axe))
+        check(_e == C.NON_TRAITE, "FIXTURE : axe sans source « %s » -> NON TRAITÉ" % _axe[:22])
+
+    # le NON BORNÉ reste traité par le routage honnête (ce n'est pas une réponse inventée).
+    _e, _ = C.etat(_sujet("boulanger ou boulangère — « ce métier est-il fait pour moi ? »"))
+    check(_e == C.TRAITE, "FIXTURE : le NB-SUBJ est traité par routage honnête")
+
+    # SABOTAGE : si un axe redevenait « couvert en bloc », le cliquet DOIT rougir.
+    _sauve = C._AXES_M
+    C._AXES_M = tuple((rx, "routage" if "outils" in rx.pattern else m, t, r) for rx, m, t, r in C._AXES_M)
+    _sabote, _ = C.etat(_sujet("métier fantôme — outils, machines et logiciels"))
+    C._AXES_M = _sauve
+    check(_sabote == C.TRAITE, "FIXTURE (contre-épreuve) : un axe déclaré en bloc EST détectable")
+    _reel, _ = C.etat(_sujet("métier fantôme — outils, machines et logiciels"))
+    check(_reel == C.NON_TRAITE, "FIXTURE : après restauration, l'axe « outils » redevient NON TRAITÉ")
+
+C._DOSSIER_STORE = _garde_dossier
+C._CACHE_CLES.clear()
+C._CACHE_CLES.update(_garde_cache)
 
 print("=== valide_sujets : %d/%d ===" % (ok, ok + ko))
 sys.exit(1 if ko else 0)

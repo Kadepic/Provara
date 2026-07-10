@@ -69,7 +69,10 @@ _REGLES: tuple = (
     # ── VAGUE A, 2e lot : briques BÂTIES cette nuit (module + gate adverse + sonde indépendante). ──
     (r"structures de groupe/anneau/corps", "module", "anneaux_corps", TRAITE),
     (r"limite d'une suite/fonction usuelle", "module", "limites_usuelles", TRAITE),
-    (r"conséquence en logique du premier ordre", "module", "logique_premier_ordre", TRAITE),
+    # ATTENTION au périmètre : le module fait du model-checking sur DOMAINE FINI (fragment décidable).
+    # Le sujet « cas général » est SEMI-décidable (Church-Turing) : il ne doit PAS matcher ici, sinon on
+    # déclare traité ce qu'aucun algorithme ne termine. Faux corrigé le 2026-07-11.
+    (r"conséquence en logique du premier ordre \(cas décidables\)", "module", "logique_premier_ordre", TRAITE),
     (r"développement décimal d'un rationnel", "module", "developpement_decimal", TRAITE),
     (r"résolution d'équations de degré 3 et 4", "module", "equations_polynomiales", TRAITE),
     (r"intégrale sans primitive élémentaire", "module", "integrale_elementaire", TRAITE),
@@ -103,7 +106,7 @@ _REGLES: tuple = (
     (r"réseaux trophiques", "module", "reseau_trophique", TRAITE),
     (r"étiologie des maladies", "module", "etiologie_infectieuse", TRAITE),
     # ── VAGUE C (2026-07-10 nuit) : PARTIES VI à XII. Gates vertes, sonde indépendante.
-    #    « métrique et versification » n'a PAS été bâti (limite de session) : il reste NON TRAITÉ, et le dit.
+    (r"métrique et versification", "module", "versification_fr", TRAITE),
     (r"calcul d'intérêts", "module", "finance_actualisation", TRAITE),
     (r"élasticité prix", "module", "elasticite_prix", TRAITE),
     (r"pyramide des âges", "module", "pyramide_ages", TRAITE),
@@ -215,10 +218,10 @@ _REGLES: tuple = (
     # RR / ARR / NNT / OR sont EXACTS depuis les effectifs d'un essai publié : c'est le traitement correct
     # du sujet (le module calcule, l'essai fournit les nombres). Sondé à la main : RR=0,5 · ARR=0,10 · NNT=10.
     (r"efficacité d'un traitement", "module", "essais_cliniques", TRAITE),
-    # PREUVE FAUSSE CORRIGÉE (2026-07-10 nuit) : ce sujet citait `bioinfo.py`, qui traite des SÉQUENCES ADN
-    # (distance de Hamming, taux GC) — rien à voir avec l'hérédité mendélienne ni la dynamique des
-    # populations. Aucun module ne les traite : le sujet redevient NON TRAITÉ, et le dit.
-    (r"hérédité mendélienne|dynamique des populations", "aucun", None, NON_TRAITE),
+    # Ce sujet citait jadis `bioinfo.py` (séquences ADN) : preuve FAUSSE, corrigée le 2026-07-10.
+    # Les deux vrais modules ont été bâtis le 2026-07-11, chacun avec sa gate à ancres non circulaires.
+    (r"hérédité mendélienne", "module", "heredite_mendelienne", TRAITE),
+    (r"dynamique des populations", "module", "dynamique_populations", TRAITE),
     (r"calcul de recette", "gate", "valide_fonction.py", PARTIEL),
     (r"préférences personnelles de l'utilisateur", "gate", "valide_faits_conversation.py", TRAITE),
 )
@@ -355,6 +358,11 @@ def etat(sujet) -> tuple:
         if not rx.search(sujet.libelle):
             continue
         if not _preuve_existe(genre, ref):
+            if genre == "table":
+                # Une TABLE est une DONNÉE, pas du code. Son absence d'un store donné (l'échantillon
+                # embarqué, par exemple) n'est PAS une dette : c'est un fait sur ce store, et on le dit.
+                # Confondre les deux ferait rougir la suite pour une base volontairement allégée.
+                return (NON_TRAITE, "table « %s » absente de ce store (donnée non embarquée ici)" % ref)
             return (NON_TRAITE, "preuve DÉCLARÉE INTROUVABLE (%s %s) — dette détectée" % (genre, ref))
         if genre == "aucun":
             return (NON_TRAITE, "aucun mécanisme dédié (backlog assumé)")
