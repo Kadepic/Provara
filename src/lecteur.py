@@ -27,7 +27,7 @@ référentiel connu, comme `physique.py` transcrit CODATA ; ce n'est pas de l'in
 """
 from __future__ import annotations
 
-from base_faits import (VERIFIE, HORS, Fait, normalise, _sans_articles,
+from base_faits import (CLE_VER, VERIFIE, HORS, Fait, normalise, _sans_articles,
                         CAT_PHYSIQUE, CAT_CONVENTION,
                         cherche as _cherche_base, repond_nl as _repond_base)
 import re
@@ -279,7 +279,9 @@ class _ColTableMmap:
 #  = MISS -> parse normal (FAUX=0 : le cache stocke EXACTEMENT la table batie+validee ; A/B hash=egal).
 # ============================================================================================
 _CACHE_MAGIC = b"LCT9"
-_CACHE_VER = 1
+# La version du cache INCORPORE la version de la politique de clé (base_faits.CLE_VER) : changer la clé
+# invalide les caches MÉCANIQUEMENT. Un cache chaud aux clés périmées fait mentir le lookup.
+_CACHE_VER = (2, CLE_VER)
 _CACHE_DIR = os.environ.get("LECTEUR_CACHE_DIR") or os.path.join(os.path.expanduser("~"), ".cache", "ia-lecteur")
 # CACHE PORTABLE : quand un `.colf` pré-construit est LIVRÉ (Release) et extrait sur une autre machine, le mtime du
 # jsonl change (l'extraction en pose un neuf) et invaliderait le cache à tort -> rebuild à froid non voulu. Ce mode
@@ -334,7 +336,9 @@ def _charge_cache_coltable(nom, chemin_jsonl):
 #  FAUX=0 : blob ASCII -> octets latin-1 1:1, offsets/codes = array.tobytes() exacts (hash A/B = égal).
 # ============================================================================================
 _COLF_MAGIC = b"LCF9"
-_COLF_VER = 2   # VER 2 : labels dé-objetisés en blob UTF-8 mmappé (_LabelsMmap) — sort ~245 Mo du tas anonyme
+# VER 2 : labels dé-objetisés en blob UTF-8 mmappé (_LabelsMmap) — sort ~245 Mo du tas anonyme.
+# Le tuple INCORPORE base_faits.CLE_VER : le .colf stocke les clés, changer la clé doit l'invalider.
+_COLF_VER = (2, CLE_VER)
 # OPTIM LEVIER 3 — RÉSIDENCE PAGINÉE À LA DEMANDE. Les pages .colf sont file-backed CLEAN donc réclamables,
 # mais restent RÉSIDENTES (comptées dans le RSS) tant que le noyau ne subit pas de pression — le RSS affiché
 # gonfle alors à la taille du corpus chaud alors que la mémoire RÉELLEMENT possédée par le process est ~13 Mo.

@@ -43,8 +43,19 @@ AXES_METIER = (
     ("rémunération médiane (pays et année donnés)", "B-FAIT", "statistiques publiques"),
     ("« ce métier est-il fait pour moi ? »", "NB-SUBJ", "préférence personnelle : l'utilisateur est la seule source"),
 )
+# L'axe « résultats établis du domaine » A ÉTÉ RETIRÉ le 2026-07-12 : c'était un sujet MAL POSÉ (7 584
+# sujets structurellement intraitables — un backlog qui ment, la leçon d'« Abogado » rejouée). CINQ mesures
+# l'établissent, aucune n'est une opinion :
+#   1. aucune autorité ne publie l'énumération exhaustive des résultats établis d'un domaine ;
+#   2. « un résultat » n'a pas de granularité canonique, « établi » pas de seuil -> la réalité ne fixe
+#      AUCUNE réponse unique (code NB-VAGUE, cf. src/sujets.py) ;
+#   3. Wikidata : 1 714 items typés théorème/loi/constante, rattachés par P921 (49 liens) ou P361 (pollué
+#      comme P2283 : « arbre -> écorce ») -> 40 domaines sur 7 584, faux compris. HORS ;
+#   4. « la requête d'ingestion atteste la classe du sujet » : 4 tables sur 1 389 seulement. HORS ;
+#   5. et même mappé, cela RECOMPTERAIT l'ANNEXE S, où chaque table vérifiée est DÉJÀ un sujet traité.
+# Le sujet survit, honnête et unique, en PARTIE XIII (le non-borné cartographié). La MEMBERSHIP d'un
+# résultat NOMMÉ reste bornée et couverte par le store.
 AXES_DOMAINE = (
-    ("résultats établis du domaine", "B-FAIT", "littérature et mesures attestées"),
     ("questions ouvertes du domaine", "NB-OUV", "bornées en principe, accès manquant"),
 )
 
@@ -66,17 +77,50 @@ ISCO_MAJEURS = (("0", "Forces armées"), ("1", "Directeurs, cadres de direction 
                 ("9", "Professions élémentaires"))
 
 
+_DECODEUR = json.JSONDecoder()
+_CLE_VALEUR = '"valeur": '
+
+
 def _valeurs(table: str) -> collections.Counter:
-    """Les valeurs distinctes d'une table du store, avec leur support (lecture en flux, stdlib pure)."""
+    """Les valeurs distinctes d'une table du store, avec leur support (lecture en flux, stdlib pure).
+
+    FRUGALITÉ (2026-07-12) : on ne décode QUE le champ `valeur`. `occupation_personne` fait 136 Mo et
+    2,35 M de lignes ; `json.loads` y reconstruisait un dict complet — dont la clé `entite` (les noms de
+    personnes, la part longue de la ligne) que cette fonction JETTE aussitôt.
+
+    Deux paliers, chacun MESURÉ par A/B strict (résultat identique exigé, sinon on annule) :
+      1. décoder le seul littéral qui suit `"valeur": ` (`raw_decode`, le décodeur JSON RÉEL, jamais un
+         découpage à la main : `\\"` et `\\u00e9` restent traités exactement comme avant) ;
+      2. si ce littéral est une chaîne SANS antislash, la trancher directement — une chaîne JSON sans
+         échappement est, par définition, son propre contenu. Le décodeur reste le repli.
+
+    Mesuré (A/B, mêmes Counter à l'égalité stricte) : `occupation_personne` 10,7 s -> 7,3 s (×1,5),
+    `domaine_travail` 0,62 s -> 0,41 s ; `genere_sujets` complet 11,4 s -> 8,8 s. RSS inchangé (44 Mo).
+    Le reste du coût est le PARCOURS des 136 Mo et le hachage de 2,35 M de chaînes, pas le JSON : on
+    n'ira pas plus loin sans changer le format de stockage — et ce serait un autre chantier, mesuré.
+    Le repli `json.loads` intégral subsiste pour toute ligne au format inattendu (vérifié sur des valeurs
+    à échappements : `gui\\"llemet`, `café é`)."""
     c: collections.Counter = collections.Counter()
     chemin = os.path.join(_STORE, table + ".jsonl")
+    compte = c.__getitem__          # micro : on évite la résolution d'attribut dans la boucle chaude
     with open(chemin, encoding="utf-8") as f:
         for ligne in f:
             if ligne.startswith('{"_relation"'):
                 continue
+            i = ligne.find(_CLE_VALEUR)
             try:
-                c[json.loads(ligne)["valeur"]] += 1
-            except (ValueError, KeyError):
+                if i < 0:
+                    c[json.loads(ligne)["valeur"]] += 1
+                    continue
+                d = i + len(_CLE_VALEUR)
+                if ligne[d] == '"':                       # littéral chaîne : le cas de 99,9 % des faits
+                    fin = ligne.find('"', d + 1)
+                    if fin > 0 and "\\" not in ligne[d + 1:fin]:
+                        v = ligne[d + 1:fin]
+                        c[v] = compte(v) + 1
+                        continue
+                c[_DECODEUR.raw_decode(ligne, d)[0]] += 1
+            except (ValueError, KeyError, IndexError):
                 continue
     return c
 
@@ -171,6 +215,8 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   NB-SPEC — non borné : spéculatif (futur contingent)
   NB-NORM — non borné : normatif (morale, politique, esthétique)
   NB-INDEC— non borné : indécidable en l'état
+  NB-VAGUE— non borné par VAGUEUR CONSTITUTIVE : les termes n'ont pas d'individuation canonique, donc la
+            réalité ne fixe aucune réponse unique (≠ NB-OUV, où la réponse existe et l'accès manque)
   MIX     — part bornée + part non bornée (les séparer dans la réponse)
 
 """

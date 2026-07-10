@@ -26,6 +26,8 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   NB-SPEC — non borné : spéculatif (futur contingent)
   NB-NORM — non borné : normatif (morale, politique, esthétique)
   NB-INDEC— non borné : indécidable en l'état
+  NB-VAGUE— non borné par VAGUEUR CONSTITUTIVE : les termes n'ont pas d'individuation canonique, donc la
+            réalité ne fixe aucune réponse unique (≠ NB-OUV, où la réponse existe et l'accès manque)
   MIX     — part bornée + part non bornée (les séparer dans la réponse)
 
 # PARTIE I — Logique, mathématiques et calcul (le nécessaire)
@@ -390,6 +392,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - intentions cachées d'une personne :: NB-INDEC
   - existence de vie extraterrestre :: NB-OUV
   - astrologie, numérologie, voyance :: NB-INDEC → aucun mécanisme vérifiable
+  - énumérer les « résultats établis » d'un domaine :: NB-VAGUE → ni « un résultat » (granularité) ni « établi » (seuil) n'ont d'individuation canonique ; aucun corpus clos ne l'arrête ; la MEMBERSHIP d'un résultat NOMMÉ, elle, est bornée et relève du store (ANNEXE S)
 
 # ANNEXE T — TAXONOMIES NORMALISÉES (hors Wikidata : OCLC/Dewey, OIT/ISCO-08)
 ## T.1 — Classes principales de la Classification décimale de Dewey (OCLC)
@@ -432,7 +435,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - structure de classification : Nomenclature statistique des activités NACE :: B-CONV → publiée (Eurostat) ; contenu à ingérer
   - structure de classification : Répertoire opérationnel des métiers et des emplois ROME :: B-CONV → publiée (France Travail) ; contenu à ingérer
 
-# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1389 tables vérifiées)
+# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1390 tables vérifiées)
 ## S.1 — Chaque relation vérifiée du lecteur est un sujet borné DE FAIT
 ## (couverture d'ancrage prouvée : audit_ancres 1371/1371, valide_ancres_types)
   - donnée du store : activite_circadienne_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -880,6 +883,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : fabricant_sonde :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : fabricant_synthetiseur :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : famille_chimique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : famille_immediate_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : famille_instrument :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : famille_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : famille_plante :: B-FAIT → table vérifiée du lecteur (ancrage audité)

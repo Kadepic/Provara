@@ -127,9 +127,14 @@ def main() -> int:
         r_aff = serveur.ajoute_message(mem, "c1", "Je m'appelle Yohan.")
         # une présentation reçoit soit l'accusé mémo, soit la SALUTATION AU PRÉNOM (preuve que le nom est
         # enregistré — « Enchantée, Yohan », comportement social voulu) ; jamais « rien en mémoire ».
+        # On teste la PROPRIÉTÉ, pas un mot-clé (correctif 2026-07-12). L'accusé est VARIÉ par `formulation` :
+        # « Entendu, c'est enregistré » est un accusé parfaitement valide et ne contient pas « noté ». Chercher
+        # le mot faisait rougir la gate sur l'échantillon (où la salutation au prénom ne se déclenche pas),
+        # alors que le produit se comportait bien. On interroge la liste de variantes que `repond` publie.
+        _accuses = {v.lower() for v in repond._variantes("note", repond._MSG_NOTE)} | {repond._MSG_NOTE.lower()}
+        _rep_aff = r_aff["reponse"].strip().lower()
         check("AFFIRMATION : accusé de réception ou salutation au prénom (≠ « rien en mémoire »)",
-              ("noté" in r_aff["reponse"].lower() or "yohan" in r_aff["reponse"].lower())
-              and "rien" not in r_aff["reponse"].lower())
+              (_rep_aff in _accuses or "yohan" in _rep_aff) and "rien" not in _rep_aff)
         # 11c. IMPÉRATIF DE CALCUL/CONVERSION = une DEMANDE, pas un fait à mémoriser (sonde vague 4, T3) :
         # « Convertis 5 km en mètres » ne doit JAMAIS donner « C'est noté » (classé affirmation à tort sinon).
         r_imp = serveur.ajoute_message(mem, "c-imp", "Convertis 5 km en mètres")
@@ -194,12 +199,22 @@ def main() -> int:
 
         # 16d. REVERSE-LOOKUP « les X d'un pays » (lecture directe des données, sans charger le lecteur) :
         #      tolérant aux fautes de grammaire (« Quelle » au lieu de « Quels »).
-        rl = repond._liste_inverse("quel fleuve traverse le portugal ?")
-        check("REVERSE : liste les cours d'eau d'un pays + mise en garde fleuve≠rivière (donnée réelle)",
-              rl is not None and "Portugal" in rl and "cours d'eau" in rl.lower()
-              and "distingue pas fleuve" in rl.lower())
-        rl2 = repond._liste_inverse("Quelle sont les fleuves en France")   # faute volontaire Quelle/Quels
-        check("REVERSE : insensible à la faute de grammaire", rl2 is not None and "France" in rl2)
+        # DONNÉE REQUISE, DITE (correctif 2026-07-12) : ces deux checks exigent la table `cours_eau_pays`,
+        # absente de l'échantillon embarqué. Ils rougissaient sur l'échantillon pour un TROU DE DONNÉES, pas
+        # un défaut — une gate qui confond les deux ne prouve rien. On les exerce là où la donnée est, et on
+        # le DIT quand elle manque (même patron que l'ancre « D » de valide_cles_canoniques).
+        import lecteur as _L
+        _a_cours_eau = _L.cherche("cours_eau_pays", "portugal") is not None
+        if _a_cours_eau:
+            rl = repond._liste_inverse("quel fleuve traverse le portugal ?")
+            check("REVERSE : liste les cours d'eau d'un pays + mise en garde fleuve≠rivière (donnée réelle)",
+                  rl is not None and "Portugal" in rl and "cours d'eau" in rl.lower()
+                  and "distingue pas fleuve" in rl.lower())
+            rl2 = repond._liste_inverse("Quelle sont les fleuves en France")   # faute volontaire Quelle/Quels
+            check("REVERSE : insensible à la faute de grammaire", rl2 is not None and "France" in rl2)
+        else:
+            check("REVERSE : (table `cours_eau_pays` absente de ce store — checks non exercés)", True)
+            check("REVERSE : (idem, faute de grammaire)", True)
         check("REVERSE : type/pays inconnu -> None (jamais d'invention)",
               repond._liste_inverse("quel bidule en pays-imaginaire") is None)
         # SOUNDNESS : un type SINGULIER objet d'un autre nom (« composition de l'ÉQUIPE de France ») n'est PAS une

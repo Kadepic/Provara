@@ -31,7 +31,14 @@ def proche(a, b, rel=1e-3, abs_=1e-9):
 # ── 1) MANIFESTE LIVE : toutes les preuves passent ──
 n_ok, n_ko, echecs = C.verifie_tout()
 check(n_ko == 0, f"manifeste live : {n_ok}/{n_ok + n_ko} (échecs: {echecs})")
-check(n_ok == 306, f"306 sujets au registre (vu {n_ok})")  # 2026-07-08 : +25 preuves façade ia.py (20 lots, excellence atomique)
+# CLIQUET MONOTONE, pas une égalité (correctif 2026-07-12). Ce check figeait « == 306 » (2026-07-08).
+# Le REGISTRE a grandi à 383 preuves ; la gate rougissait donc depuis des jours — mais elle n'est PAS dans
+# la suite, alors personne ne la voyait. Une égalité sur un nombre CROISSANT est un cliquet qui ment : il
+# rougit quand le produit s'améliore, et il exige une retouche à chaque brique. Le plancher, lui, attrape
+# ce qui compte : une PERTE de couverture. (Même faute que le cliquet « Abogado » de ce matin.)
+_PLANCHER_REGISTRE = 383    # mesuré le 2026-07-12 ; ne peut que MONTER
+check(n_ok >= _PLANCHER_REGISTRE,
+      f"registre : {n_ok} preuves vertes >= plancher {_PLANCHER_REGISTRE} (une perte de couverture rougit)")
 
 # ── 2) ORACLE INDÉPENDANT — re-dérive les ancres contre les modules (anti auto-certification) ──
 import bayes as B
@@ -191,7 +198,8 @@ check(isinstance(C.preuve_de("Radioactivité"), str), "preuve_de d'un couvert ->
 
 # ── 4) DÉTERMINISME ──
 check(C.couvert("Statistique bayésienne") == C.couvert("Statistique bayésienne"), "déterminisme")
-check(len(C.sujets_couverts()) == 306, "sujets_couverts() = 306")
+check(len(C.sujets_couverts()) >= _PLANCHER_REGISTRE,
+      f"sujets_couverts() = {len(C.sujets_couverts())} >= plancher {_PLANCHER_REGISTRE}")
 
 print(f"\n=== valide_capacites : {ok}/{ok + ko} ===")
 import sys

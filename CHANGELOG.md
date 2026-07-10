@@ -1,5 +1,133 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MÉMOIRE CONVERSATIONNELLE : SIX COMPORTEMENTS CASSÉS, RÉPARÉS (« zéro dette », Yohan)
+
+`interface/valide_interface.py` dormait hors suite : **52/58 sur la base complète**. A/B fait — le défaut
+**préexistait** aux chantiers du jour. Yohan : « même si c'est préexistant il faut corriger ». Fait.
+
+### Le défaut de fond : DEUX ÉTAGES DU MÊME RAPPEL, DEUX NOTIONS DE SYNONYMIE
+Le rappel de dialogue interroge l'index avec `_expanse_rappel` (« nom » cherche aussi « appelle »,
+« prénom »…). Mais la garde **ANTI-À-CÔTÉ** (posée le 2026-07-09, et juste dans son principe) comparait
+ensuite les mots **bruts** : « tu sais mon **nom** ? » retrouvait bien « Je m'**appelle** Yohan. » — puis
+le **jetait**. Un étage connaissait le champ sémantique, l'autre l'ignorait. Trois causes, une garde :
+
+1. **« alors » comptait comme mot de contenu.** « Alors, comment je m'appelle ? » exigeait donc que
+   l'énoncé rappelé contienne « alors ». Les marqueurs de discours (alors, donc, bref, voilà, enfin,
+   ensuite, puis, or, ainsi) rejoignent les mots-outils : ils n'individualisent aucun sujet.
+2. **La couverture ignorait les alias.** `_couvre_avec_alias()` : un mot de la question est couvert s'il
+   figure dans l'énoncé **ou** partage un groupe d'alias avec lui — et l'alias se cherche dans les tokens
+   **bruts** de l'énoncé, car « appelle » est (à raison) un mot-outil, donc absent de ses mots de contenu.
+3. **Question sans aucun mot de contenu** (« Au fait, comment je m'appelle ? ») : `if mots_q and …`
+   court-circuitait à faux, condamnant l'écho au silence. On sert alors l'énoncé **si un champ sémantique
+   est partagé** — c'est ce champ, et lui seul, qui a fait le rappel. `_champs_alias()`.
+
+Sûreté inchangée : on cite un énoncé **réel** de l'utilisateur, jamais une invention. On cesse seulement
+de le jeter pour une différence de vocabulaire que le projet connaissait déjà.
+
+### Et un ORDRE n'est pas une déclaration
+« Convertis 5 km en mètres » recevait « **C'est noté, je tiens le fil : 5 km** ». Le cap « fil » de
+`serveur.py` accusait tout tour porteur d'une grandeur et sans « ? » — **avant** la garde
+`repond._est_demande_imperative`, qui interdit déjà exactement ce faux en fin de cascade. Une même règle,
+appliquée à un seul endroit, laissait passer l'autre. Le fil la consulte désormais aussi.
+
+### Deux GATES corrigées (elles testaient un mot, pas une propriété)
+- `AFFIRMATION` cherchait le mot « noté » ; or l'accusé est **varié** par `formulation` (« Entendu, c'est
+  enregistré » est valide). La gate interroge maintenant la liste de variantes que `repond` publie.
+- Deux checks `REVERSE` exigeaient la table `cours_eau_pays`, absente de l'échantillon : ils rougissaient
+  pour un **trou de données**, pas un défaut. Ils s'exercent là où la donnée est, et le **disent** sinon
+  (même patron que l'ancre « D »).
+
+**Résultat : `valide_interface` 58/58 sur la base complète ET sur l'échantillon.** La gate entre dans la
+suite (**128 gates**) — le runner résout désormais un nom de gate contenant « / » depuis la racine.
+
+## 2026-07-12 — L'IA TRANCHE : « résultats établis du domaine » est un SUJET MAL POSÉ (7 584 sujets retirés)
+
+Yohan : « et si justement on laissait l'IA trancher ce qui serait le mieux ». Tranché — **par la mesure,
+pas par le goût**. Cinq mesures, aucune opinion :
+
+1. **Aucune autorité** ne publie l'énumération exhaustive des résultats établis d'un domaine.
+2. **« un résultat » n'a pas de granularité canonique, « établi » pas de seuil** → la réalité ne fixe
+   AUCUNE réponse unique. C'est une vagueur CONSTITUTIVE, pas un défaut d'accès.
+3. **Wikidata** : 1 714 items typés théorème/loi/constante/principe/équation ; rattachement P921 = 49 liens,
+   P361 = 725 mais **pollué comme P2283** (« arbre → écorce », « droits LGBT → Principes de Jogjakarta »).
+   Rendement : **40 domaines sur 7 584 (0,5 %)**, faux compris.
+4. **« la requête d'ingestion atteste la classe du sujet »** : 4 tables sur 1 389. Mort.
+5. **Et même mappé, cela RECOMPTERAIT l'ANNEXE S**, où chaque table vérifiée est DÉJÀ un sujet traité.
+   Recompter le même savoir sous un autre nom : la définition d'une couverture de façade.
+
+**Décision.** L'axe est retiré des annexes (7 584 sujets structurellement intraitables = un backlog qui
+ment, la leçon d'« Abogado » rejouée). Un code de bornage neuf, **NB-VAGUE**, entre au vocabulaire :
+*non borné par vagueur constitutive — les termes n'ont pas d'individuation canonique* (distinct de NB-OUV,
+où la réponse existe et l'accès manque ; et de NB-INDEC). Le sujet survit **une fois**, honnête, en
+PARTIE XIII (le non-borné cartographié), traité par **routage honnête** — la MEMBERSHIP d'un résultat
+**nommé** reste bornée et relève du store.
+
+Cliquet dans `valide_sujets` : l'axe mal posé ne doit **jamais** reparaître dans une annexe, et la
+formulation honnête doit exister exactement une fois. Juge : **44 090 → 36 507 sujets ; non traités
+24 727 → 17 143**. Le compteur baisse parce que la mesure était fausse — ne jamais le « restaurer ».
+
+## 2026-07-12 — VÉRIFICATION TOTALE : DEUX DÉFAUTS DORMANTS, TROUVÉS ET TUÉS
+
+Yohan : « il faut tout revérifier pour être sûr que tout le travail est bien totalement fonctionnel ».
+C'est `valide_lecteur` — qui exige la base COMPLÈTE et ne tourne donc **pas** dans la suite — qui a parlé.
+Deux défauts y dormaient, aucun visible à la lecture du code.
+
+### ① UNE CLÉ CANONIQUE VIDE : 47 faits PERDUS en silence, et une confusion d'entités
+`lecteur.ingere_table` **ignore les clés vides**, sans un mot. `_sans_articles` en produisait pour deux
+familles d'entités :
+- **celles qui SONT un article français** : « D » (le langage de Walter Bright), « d », « l ».
+  `createur_langage_programmation("D")` rendait `None` alors que le fait est sur le disque. Pire :
+  « d » et « l » avaient la **même** clé vide — deux entités confondues.
+- **celles hors alphabet latin** : `normalise` compacte sur `[^a-z0-9 ]+`, donc « Петергофский десант »,
+  « Αθανάσιος » devenaient vides. Introuvables, à jamais.
+
+Correctif : une clé n'est **jamais** vide — repli sur la clé normalisée entière (« d » reste « d »,
+distinct de « l »), puis sur l'entité NFC casefold (écriture non latine). Les replis ne s'arment QUE si
+la clé serait vide : **aucune clé existante ne change**. Mesuré sur les **72 041 162 faits** du store :
+clés vides **47 → 0** ; collisions **6 → 4**, les 4 restantes étant la même personne sous deux graphies
+(« Jacques Bénigne » / « Jacques-Bénigne » Bossuet) — c'est le travail d'une clé canonique, pas un défaut.
+`createur_langage_programmation("D") → Walter Bright` de nouveau. Gate `valide_cles_canoniques` (27/27,
+avec contre-épreuve de sabotage rejouant l'ancienne règle).
+
+### ② COLLISION DE RELATION : `famille_langue` écrasée, six ancres fausses
+`ecrit_jsonl` **régénère** le fichier d'une relation. Deux scripts publiaient `famille_langue` :
+- `ingere_langues_famille.py` — catalogue curé, 81 langues, **grandes familles** (« français → romane ») ;
+- `ingere_langues.py` — Wikidata, **famille immédiate** (« français → langue d'oïl »).
+
+Le second, exécuté en dernier, avait effacé le premier. Le store répondait « famille de l'anglais :
+langues angliques » ; **hindi et finnois avaient disparu**. Ironie : le fichier fautif documente lui-même
+ce péché trois lignes plus bas, à propos de `parente_langue` (« le nom dirait plus que le contenu »).
+
+Correctif : la relation Wikidata s'appelle désormais **`famille_immediate_langue`** — deux questions, deux
+noms — et le catalogue curé est restauré. Les six ancres de `valide_lecteur` sont vertes.
+Gate systémique `valide_collision_relations` (16/16) : **toute** relation publiée par deux scripts rougit,
+sauf allowlist à raison écrite et vérifiée (5 collisions héritées, entités disjointes, même sémantique).
+
+### ③ LE CACHE NE SIGNAIT PAS LA POLITIQUE DE CLÉ — révélé par le correctif ①
+Après avoir tué la clé vide, `createur_langage_programmation("D")` rendait **encore** `None` dans la suite :
+les caches (`.bin` marshal et `.colf` mmap) **stockent les clés** et leur signature ne portait que le
+format, la source et le mtime — **pas la fonction de clé**. Un cache chaud servait donc des clés périmées,
+et le lookup mentait. L'invalidation reposait sur la discipline ; la discipline venait justement d'échouer.
+
+Correctif STRUCTUREL : `base_faits.CLE_VER` (= 2) versionne la politique de clé, et les deux signatures de
+cache l'incorporent (`_CACHE_VER = (2, CLE_VER)`, `_COLF_VER = (2, CLE_VER)`). Changer `normalise` ou
+`_sans_articles` invalide désormais les caches **mécaniquement**. La gate vérifie ce câblage : oublier le
+bump n'est plus possible sans rougir.
+
+### ④ FRUGALITÉ, MESURÉE (jamais annoncée)
+`genere_sujets._valeurs` décodait 2,35 M de lignes JSON entières pour n'en garder que le champ `valeur` —
+la clé `entite` (les noms de personnes, la part longue) était jetée aussitôt. Deux paliers : décoder le
+seul littéral qui suit `"valeur": ` (`raw_decode`, le décodeur RÉEL — jamais un découpage à la main), puis
+trancher directement les chaînes sans antislash. **Mesuré, A/B à égalité stricte des `Counter` :
+`occupation_personne` 10,7 s → 7,3 s (×1,5) ; `genere_sujets` 11,4 s → 8,8 s ; RSS inchangé (44 Mo).**
+Le premier docstring annonçait ×4,2 puis ×2,7 : **chiffres non mesurés, corrigés**. Le reste du coût est
+le parcours des 136 Mo et le hachage de 2,35 M de chaînes — pas le JSON.
+
+**Leçon systémique** : une gate hors suite est une gate qui dort. `valide_cles_canoniques` et
+`valide_collision_relations` entrent dans la suite (**126 gates**) et s'exercent sur l'échantillon comme
+sur la base complète. **Et un défaut en cache un autre** : ① (clé vide) n'était pas réparable sans ③
+(cache non versionné) — c'est la vérification de bout en bout, pas la lecture du code, qui l'a montré.
+
 ## 2026-07-12 — TROIS SONDES NÉGATIVES, CONSIGNÉES (ce qu'on ne publiera pas, et pourquoi)
 
 Le mandat dit « traiter », pas « couvrir ». Trois pistes sondées le même jour, trois refus mesurés :
