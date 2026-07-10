@@ -341,6 +341,159 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DEUXIÈME DOMAINE : chauffage / confort d'hiver — le symétrique du cooling, avec l'ASYMÉTRIE clé : en hiver le
+#  corps est une SOURCE (~100 W produits en continu), pas un puits. Le reframing machine s'inverse donc : ne pas
+#  PRODUIRE de la chaleur pour l'air, RETENIR celle qui existe déjà (corps, soleil, chaleur fatale) et n'apporter
+#  que le complément. Les mêmes quatre canaux physiologiques deviennent des PERTES à réduire (tous les leviers
+#  sont passifs -> silencieux). FAUX=0 : chaque principe = SUPPOSITION jugée par coherence_physique ; les
+#  revendications impossibles (rendement 150 % -> conservation ; COP 40 -> Carnot chauffage Th/(Th−Tc)) sont
+#  RÉFUTÉES ; rien n'est jamais promu en FAIT.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CHAUF = "chauffage_confort"
+# Libellés QUALIFIÉS seulement — « chauffage » nu est ambigu (industriel, eau sanitaire, four) -> HORS honnête.
+_ALIAS_CHAUF = {
+    "chauffer une piece", "chauffer une personne", "avoir moins froid", "se chauffer en hiver",
+    "confort thermique en hiver", "chauffer sans radiateur", "se chauffer a moindre cout",
+}
+
+# Les mêmes canaux d'échange du corps, sens inversé : levier qui RÉDUIT la perte de chaleur du corps.
+# Réduire une perte est passif -> tous silencieux (l'asymétrie d'hiver rend le silence gratuit).
+_CANAUX_CORPS_HIVER = [
+    Canal("rayonnement", "chaleur", "supprimer les PAROIS FROIDES (vitrage nu = puits radiatif) : rideaux/low-e, "
+          "surfaces radiantes tièdes",
+          True, "part dominante en air calme : une paroi froide « aspire » le rayonnement du corps même dans un air à 20 °C"),
+    Canal("conduction", "chaleur", "isoler le CONTACT (sol, assise) ; masses tièdes locales (bouillotte, plancher tempéré)",
+          True, "très efficace localement : quelques dizaines de watts ciblés remplacent des centaines dans l'air"),
+    Canal("convection", "chaleur", "supprimer COURANTS D'AIR et infiltrations ; piéger de l'air immobile (étanchéité, couches)",
+          True, "l'air en mouvement arrache la couche limite chaude du corps ; l'air IMMOBILE est un excellent isolant"),
+    Canal("evaporation", "chaleur", "rester SEC (peau, vêtements) : l'humidité multiplie la perte par chaleur latente",
+          True, "un vêtement humide évacue la chaleur du corps bien plus vite qu'un sec (chaleur latente)"),
+]
+
+_PRINCIPES_CHAUF = [
+    _P("convecteur résistif (référence basse)",
+       "chauffer : résistance électrique chauffant l'air de la pièce",
+       {"type": "conversion", "rendement": 1.0}, True, True,
+       "aucun (la pièce reçoit tout)", "mature",
+       0.5, "COP = 1 par construction : chaque joule électrique finit en chaleur, jamais plus — la référence à "
+            "DÉPASSER (une pompe à chaleur en déplace 3–5× plus pour le même courant)"),
+    _P("radiateur « à rendement 150 % »",
+       "chauffer : appareil électrique revendiquant plus de chaleur que d'électricité consommée, sans pompe",
+       {"type": "conversion", "rendement": 1.5}, True, True,
+       "aucun (revendiqué)", "revendication",
+       0.3, "revendication marketing récurrente — créerait de l'énergie nette ; à confronter à la conservation"),
+    _P("PAC magique COP 40 (ΔT 20 K)",
+       "chauffer : pompe à chaleur revendiquant un COP de 40 entre 0 °C dehors et 20 °C dedans",
+       {"type": "pompe_chaleur", "cop": 40, "t_chaud_K": 293, "t_froid_K": 273}, True, True,
+       "source = air extérieur (revendiqué)", "revendication",
+       0.4, "revendication au-delà de la limite de Carnot chauffage (≈ 14,7 pour cet écart) — à réfuter si c'est le cas"),
+    _P("pompe à chaleur air/air (COP 3–4)",
+       "chauffer : cycle à compression prélevant la chaleur de l'air extérieur",
+       {"type": "pompe_chaleur", "cop": 3.5, "t_chaud_K": 293, "t_froid_K": 273}, False, False,
+       "SOURCE = air extérieur", "mature",
+       0.6, "la référence moderne : 1 kWh électrique en déplace 3–4 depuis l'air ; bruit (unité extérieure) et "
+            "COP qui chute au grand froid (givrage) — c'est la référence à dépasser en silence"),
+    _P("PAC sur sol/eau (source stable ~12 °C)",
+       "chauffer : pompe à chaleur couplée au sol ou à une nappe (température stable, ΔT faible)",
+       {"type": "pompe_chaleur", "cop": 5.5, "t_chaud_K": 303, "t_froid_K": 285}, True, False,
+       "SOURCE = sol/nappe (découplée de la météo)", "mature (coût de forage)",
+       0.6, "le miroir de la grotte : source stable ~12 °C toute l'année, pas de givrage, ΔT faible -> COP élevé ; "
+            "pas d'unité extérieure ventilée -> silencieux"),
+    _P("solaire passif (vitrage sud + masse, mur Trombe)",
+       "chauffer : capter le rayonnement solaire par vitrage, le stocker dans une masse, le restituer la nuit",
+       {"type": "conversion", "rendement": 0.6}, True, True,
+       "SOURCE = soleil (gratuite, même en hiver par ciel clair)", "ancestral (sous-exploité en rénovation)",
+       0.65, "zéro énergie payante : orientation + vitrage + masse ; le vitrage laisse entrer le rayonnement "
+             "solaire et bloque l'infrarouge sortant ; la masse déphase le gain du jour vers la nuit"),
+    _P("superisolation + chaleur métabolique (igloo / Passivhaus)",
+       "chauffer : réduire les pertes jusqu'à ce que les ~100 W du corps (+ appareils) suffisent",
+       {"type": "conversion", "puissance_entree": 100, "puissance_utile": 100}, True, True,
+       "aucune source dédiée (le corps EST la source)", "prouvé (igloo ; Passivhaus certifié)",
+       0.7, "l'inversion machine : ne pas PRODUIRE, RETENIR — l'igloo tient des dizaines de degrés d'écart avec la "
+            "seule chaleur des corps ; le Passivhaus supprime le chauffage dédié"),
+    _P("radiant infrarouge ciblé corps (panneau dirigé)",
+       "chauffer : panneau rayonnant dirigé vers la personne, l'air restant frais",
+       {"type": "conversion", "rendement": 0.98}, True, True,
+       "aucun (chaleur directe au corps)", "mature (sous-exploité en domestique)",
+       0.6, "chauffer la PERSONNE, pas l'air : quelques centaines de watts ciblés remplacent des kilowatts de "
+            "pièce — le miroir hiver du « cibler le corps » d'été"),
+    _P("récupération de chaleur fatale (double flux, eaux grises)",
+       "chauffer : échangeur récupérant la chaleur de l'air extrait et des eaux chaudes évacuées",
+       {"type": "conversion", "rendement": 0.85}, True, True,
+       "SOURCE = chaleur déjà payée (ventilation, douche)", "mature (peu diffusé)",
+       0.65, "sous-exploité : la chaleur déjà payée repart par la ventilation et l'égout ; un échangeur en rend "
+             "une large part sans rien produire"),
+    _P("thermochimique inter-saisonnier (hydrates de sels : été -> hiver)",
+       "chauffer : stocker la chaleur solaire d'été dans une réaction réversible (hydratation de sels), la libérer l'hiver",
+       {"type": "conversion", "rendement": 0.5}, True, True,
+       "SOURCE = soleil d'été (stocké chimiquement, sans perte dans le temps)", "recherche (pilotes)",
+       0.55, "densité 2–10× l'eau et AUCUNE perte au stockage (l'énergie est chimique, pas thermique) — le miroir "
+             "hiver du thermochimique froid ; corrosion/cyclage à maîtriser"),
+    _P("MCP déphasé (chaleur latente chargée quand l'énergie est bon marché)",
+       "chauffer : stocker en chaleur latente (paraffine/sels) aux heures creuses ou solaires, restituer au besoin",
+       {"type": "conversion", "rendement": 0.9}, True, True,
+       "SOURCE = électricité creuse / soleil (déphasés)", "émergent (couplage PAC+MCP étudié)",
+       0.55, "ne crée rien : DÉPLACE la source bon marché vers l'heure du besoin ; lisse aussi la pompe à chaleur "
+             "(moins de cycles au pire moment)"),
+    _P("élasto/magnétocalorique en mode pompe (solide, sans gaz)",
+       "chauffer : effet calorique d'un solide (contrainte/champ) pompant la chaleur de dehors vers dedans",
+       {"type": "pompe_chaleur", "cop": 4, "t_chaud_K": 293, "t_froid_K": 278}, True, True,
+       "SOURCE = air extérieur", "recherche",
+       0.5, "les mêmes effets caloriques que le froid, en sens inverse : sans fluide frigorigène, potentiellement "
+            "silencieux — sous-exploités en chauffage aussi"),
+    _P("micro-cogénération (chaleur + électricité du même combustible)",
+       "chauffer : produire l'électricité sur place et récupérer la chaleur du moteur / de la pile",
+       {"type": "conversion", "rendement": 0.9}, False, False,
+       "SOURCE = combustible (gaz/bois/H2)", "mature (niche)",
+       0.45, "un combustible brûlé pour l'électricité seule jette une grande part en chaleur ; produite sur place, "
+             "cette chaleur chauffe la maison — rendement global élevé, bruit et combustible en contrepartie"),
+]
+
+_OBJECTIF_CHAUF = ("Le but réel n'est pas de chauffer l'AIR de la pièce (~1000–3000 W de pertes à compenser en "
+                   "continu — conditionnel à l'isolation) mais de conserver les ~100 W que le corps PRODUIT déjà : "
+                   "l'asymétrie d'hiver — le corps est une SOURCE, pas un puits. On réduit d'abord ses pertes par "
+                   "les quatre canaux (parois froides, contact, courants d'air, humidité), puis on n'apporte que le "
+                   "complément depuis les sources les moins chères (soleil, sol, chaleur fatale) — chaque principe "
+                   "reste jugé séparément.")
+_LOI_CHAUF = ("l'énergie ne se crée pas : résistif = COP 1 exactement ; pompe à chaleur : COP ≤ Th/(Th−Tc) (Carnot "
+              "chauffage) ; gains réels = réduire les PERTES (isolation, étanchéité), cibler le corps (~100 W déjà "
+              "produits), capter les sources gratuites ou déjà payées (soleil, sol, chaleur fatale)")
+
+# La nature n'a pas de radiateur : elle RETIENT (isolation), MUTUALISE (groupe) et CAPTE (soleil, sol, déphasage).
+_STRATEGIES_NATURE_HIVER = [
+    _Nature("manchots empereurs (la « tortue » par −40 °C)",
+            ["mutualiser la chaleur métabolique (groupe serré)", "réduire la surface exposée par individu",
+             "rotation du bord vers le centre"],
+            "réduire la SURFACE d'échange et mutualiser la production — aucun apport externe, que de la géométrie"),
+    _Nature("fourrure d'hiver / duvet (air immobile piégé)",
+            ["air immobilisé = isolant (conduction faible)", "épaisseur accrue en hiver (mue)",
+             "couche limite protégée du vent"],
+            "le meilleur isolant courant est l'air qu'on empêche de bouger — c'est l'ÉPAISSEUR qui compte, pas la matière"),
+    _Nature("lézard au soleil du matin (thermorégulation comportementale)",
+            ["capter le rayonnement solaire direct", "s'orienter face au soleil", "surface sombre (absorptivité)"],
+            "la source gratuite existe même par air glacial : le rayonnement direct — s'orienter ne coûte rien"),
+    _Nature("vie sous la neige (subnivium) / terrier",
+            ["la neige est un isolant (air piégé)", "le sol est une source stable", "petit volume à tenir"],
+            "sous une épaisse couche de neige la température reste proche de 0 °C par grand froid : l'isolant est "
+            "déjà sur place, le sol fournit le reste"),
+    _Nature("pierre/adobe du désert (nuits glaciales)",
+            ["masse stockant le soleil du jour", "restitution déphasée la nuit"],
+            "le même levier que l'été, inversé : stocker le CHAUD du jour pour la nuit froide — le déphasage est le levier"),
+]
+
+enregistre(Domaine(
+    nom=_CHAUF,
+    aliases=frozenset(_ALIAS_CHAUF),
+    objectif=_OBJECTIF_CHAUF,
+    canaux=_CANAUX_CORPS_HIVER,
+    principes=_PRINCIPES_CHAUF,
+    strategies=_STRATEGIES_NATURE_HIVER,
+    loi=_LOI_CHAUF,
+    extras={"production_corps_W": 100, "pertes_piece_W": "≈ 1000–3000 (selon isolation/ΔT — conditionnel)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

@@ -1,5 +1,29 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 2e domaine « chauffage_confort » (le symétrique d'hiver, via le registre)
+
+Premier usage réel du registre : `enregistre(Domaine(...))` et RIEN d'autre — la promesse du refactor tenue.
+Le domaine n'est PAS un copier-coller : l'asymétrie d'hiver est modélisée (le corps est une **SOURCE** de
+~100 W, pas un puits → inventer = RETENIR, pas produire ; réduire une perte est passif → les 4 canaux
+physiologiques, sens inversé, sont tous silencieux). 13 principes jugés par `coherence_physique` dont
+2 revendications RÉFUTÉES par les lois déjà câblées (« rendement 150 % » → conservation ; « PAC COP 40
+ΔT 20 K » → Carnot chauffage Th/(Th−Tc) ≈ 14,7) et le cas limite exact rendement = 1.0 prouvé sans faux
+positif. Pistes sous-exploitées : superisolation+métabolique (igloo/Passivhaus), radiant ciblé corps,
+chaleur fatale, thermochimique inter-saisonnier (hydrates de sels), caloriques solides en mode pompe,
+MCP déphasé, PAC sol/eau, solaire passif (mur Trombe). 5 stratégies naturelles propres (manchots/mutualisation,
+duvet/air immobile, lézard au soleil, subnivium, adobe déphasé) — pas de fuite depuis l'été.
+
+Gate `valide_besoin` étendue **38 → 63/63** (asymétrie source, cas limite rendement 1.0, ambiguïté « chauffage »
+nu → HORS, isolation inter-domaines : cooling intact = 18 principes/100 W). Recherche web (NREL/Nature Energy
+2024-2025) : thermochimique salins (densité 2–10× l'eau, zéro perte au stockage) et PAC solides/haute
+température confirmés comme pistes émergentes réelles — intégrés en suppositions honnêtes.
+
+La non-régression COMPLÈTE lancée pour valider ce lot a débusqué **deux gates qui dormaient hors suite** :
+`valide_oracle_metier`/`valide_oracle_domaine` importent `outils/genere_sujets.py`, mais `_nonreg._SRCPATH`
+n'incluait pas `outils/` → `ModuleNotFoundError` (elles passaient en manuel, jamais dans la suite). Corrigé :
+`outils/` ajouté au PYTHONPATH ET à `modules_locaux()` (sinon un changement de `genere_sujets` n'invaliderait
+pas leur cache). Suite complète re-tournée À FROID : **797/797 PASS** (0 via cache, 662 s).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : archi généralisée (cooling-hardcodé → REGISTRE DE DOMAINES)
 
 Croissance vers l'objectif final. Cartographie d'abord : le moteur d'invention a 3 briques — `substrat_reel`
