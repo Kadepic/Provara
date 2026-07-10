@@ -15,9 +15,21 @@ import dataclasses
 import os
 import re
 
-# Le document est à la racine du projet (un cran au-dessus de harnais/).
+# Le document vit à la racine du projet. FROZEN-AWARE (.exe PyInstaller) : la carte est embarquée à la racine
+# du bundle (`sys._MEIPASS`) — sans ça le produit ignorerait sa propre carte (vécu e2e 2026-07-10 : le
+# diagnostic n'affichait pas la couverture dans le .exe).
+import sys as _sys
+
 _RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_BUNDLE = getattr(_sys, "_MEIPASS", "")
 DOC = os.path.join(_RACINE, "SUJETS_BORNE_OU_NON.md")
+if _BUNDLE and not os.path.exists(DOC):
+    DOC = os.path.join(_BUNDLE, "SUJETS_BORNE_OU_NON.md")
+# ANNEXES AUTO (métiers × axes, domaines × axes) : générées par `outils/genere_sujets.py`, gitignorées car
+# DÉRIVABLES du store (frugalité : 11 Mo de texte régénérable ne vivent pas dans git). Absentes -> ignorées.
+DOC_AUTO = os.path.join(_RACINE, "SUJETS_ANNEXES_AUTO.md")
+if _BUNDLE and not os.path.exists(DOC_AUTO):                # annexes auto : présentes seulement si générées
+    DOC_AUTO = os.path.join(_BUNDLE, "SUJETS_ANNEXES_AUTO.md")
 
 # Codes de bornage reconnus (cf. légende du document).
 BORNE = {"B-NEC", "B-PHY", "B-FAIT", "B-CONV"}          # la réalité fixe la réponse, accès suffisant
@@ -91,6 +103,15 @@ def charge(chemin: str = DOC) -> list[Sujet]:
             raison = _RX_PREFIXE.sub("", raison).strip()
             sujets.append(Sujet(libelle, code, raison, partie, section, i))
     return sujets
+
+
+def charge_tout() -> list[Sujet]:
+    """La carte COMPLÈTE : le document committé + les annexes auto si elles ont été générées (métiers × axes,
+    domaines × axes). C'est l'entrée du moteur de couverture (`couverture_borne`)."""
+    tous = charge(DOC)
+    if os.path.exists(DOC_AUTO):
+        tous += charge(DOC_AUTO)
+    return tous
 
 
 def bornes(chemin: str = DOC) -> list[Sujet]:

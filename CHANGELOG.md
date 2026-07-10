@@ -1,5 +1,38 @@
 # Journal des modifications — Provara
 
+## 2026-07-10 — CARTE DES SUJETS reconstruite ET ÉTENDUE : 84 588 sujets, couverture MESURÉE
+
+- **Contexte** : `SUJETS_BORNE_OU_NON.md` et `couverture_borne.py` (projet harnais) sont introuvables sur ce
+  disque — recherche exhaustive faite (C:, D:, WSL, corbeille, historique git). Mandat Yohan : reconstruire,
+  **puis compléter avec tous les sujets manquants**, « cartographier réellement tout ce qui existe, séparer
+  traités/non traités, et parmi les traités : complets ou non ; pas seulement Wikidata ; pas de limites ».
+- **`SUJETS_BORNE_OU_NON.md` (committé, 1704 sujets)** : 13 PARTIES conceptuelles rédigées (logique, physique,
+  chimie, Terre, vie, société, langue, arts, technique, religion, histoire, conventions, non-borné) sous les
+  codes d'origine — **prudence au doute** (NB-INDEC/MIX plutôt qu'un B- forcé) ; **ANNEXE T** = taxonomies
+  normalisées HORS-Wikidata (Dewey/OCLC, ISCO-08/OIT, MSC, ACM, CIM-11, NACE, ROME) ; **ANNEXE S** = les
+  1371 tables vérifiées du store (une table = un sujet borné DE FAIT, ancrage audité 100 %).
+- **`outils/genere_sujets.py` (committé) -> `SUJETS_ANNEXES_AUTO.md` (gitignoré, dérivable, 11 Mo)** :
+  **8238 métiers RÉELS** (lus de `occupation_personne`, jamais inventés) **× 8 axes atomiques** (définition,
+  gestes/savoir-faire, outils, normes, risques, formation, rémunération, « fait pour moi ? ») + **8490
+  domaines réels × 2 axes** = **82 884 sujets**. Chaque axe porte un code JUSTIFIÉ une fois (le tour de main
+  tacite = MIX ; « fait pour moi ? » = NB-SUBJ). Frugalité : 11 Mo dérivables ne vivent pas dans git.
+- **`src/couverture_borne.py` (reconstruit)** — MESURÉ, JAMAIS DÉCLARÉ : un sujet n'est TRAITÉ que si sa
+  preuve EXISTE sur le disque (gate `tests/x.py` · module `src/x.py` · roue câblée dans `_ROUES` · table du
+  store). Une preuve déclarée introuvable = **dette DITE** (c'est ainsi que `valide_jeux.py`, `medecine`,
+  `economie`, `compression` inexistants ont été débusqués et corrigés). Le NON-BORNÉ est « traité » par le
+  ROUTAGE honnête (repli intent-aware + G1-G9), jamais par une réponse.
+- **Mesure au 2026-07-10** : **84 588 sujets · 18 251 traités · 79 partiels · 66 258 au backlog · 0 dette**.
+  Backlog conceptuel = 87 sujets (trigonométrie, degré 3-4, valeurs propres, Risch, ISCO…) ; backlog métiers
+  = 57 666 ; domaines = 8 490. **C'est la carte de travail des prochaines vagues.**
+- **Câblage produit** : le diagnostic expose la carte (« carte des sujets : 1704 sujets (1523 traités avec
+  preuve, 79 partiels, 102 au backlog, 0 dette) ») — `valide_cablage` avait justement détecté le module
+  orphelin. Carte EMBARQUÉE dans le .exe (`build_exe.bat` + `Provara.spec` + `sujets.py` frozen-aware) ;
+  **honnêteté frozen** : les `tests/` n'étant pas embarqués, le binaire DIT que les preuves-gate sont
+  « vérifiées en source » au lieu d'annoncer 69 fausses dettes (bug vécu e2e, corrigé).
+- Gate **valide_sujets 35/35** (dont : preuve fantôme -> NON TRAITÉ + dette dite ; chaque preuve-roue
+  réellement câblée ; sens d'inclusion sound carte ⊇ store pointé). Suite -> **39 gates**, toutes vertes.
+  E2E .exe vérifié, conversations de test purgées, exe tué par PID.
+
 ## 2026-07-10 — VAGUE 5 (physique.py -> compilateur) + ③ GRAPHE DES ROUES (graine du gap-engine v2)
 
 - **VAGUE 5 — le registre physique.py passé au compilateur** (résorption formule/concept sur le périmètre

@@ -27,7 +27,7 @@ py -m PyInstaller %PACKFLAG% --name Provara %WINFLAG% ^
   --hidden-import est_un --hidden-import ontologie --hidden-import classifieur_bornage --hidden-import resolution ^
   --hidden-import realisation_fr --hidden-import deduction --hidden-import induction_horn --hidden-import maj ^
   --add-data "src;src" --add-data "ingestion;ingestion" --add-data "interface;interface" ^
-  --add-data "datasets/lecteur;datasets/lecteur" --add-data "verax_boot.py;." --add-data "VERSION_BUILD.txt;." ^
+  --add-data "datasets/lecteur;datasets/lecteur" --add-data "verax_boot.py;." --add-data "VERSION_BUILD.txt;." --add-data "SUJETS_BORNE_OU_NON.md;." ^
   --hidden-import json --hidden-import csv --hidden-import sqlite3 --hidden-import wave --hidden-import struct ^
   --hidden-import array --hidden-import zlib --hidden-import gzip --hidden-import bz2 --hidden-import lzma ^
   --hidden-import hashlib --hidden-import decimal --hidden-import fractions --hidden-import statistics ^

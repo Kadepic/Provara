@@ -4324,6 +4324,18 @@ def _diagnostic_connaissance(texte: str):
                     routage += " · filet coupé (Phase 5) : %s" % ", ".join(sorted(_mures))
         except Exception:
             pass
+        # CARTE DES SUJETS (reconstruite 2026-07-10) : la couverture MESURÉE — combien de sujets la carte
+        # tient, combien sont TRAITÉS avec preuve existante, et la taille honnête du backlog. Câblage du
+        # module `couverture_borne` (sinon carte morte) ; dégradation silencieuse si le doc est absent.
+        sujets_txt = ""
+        try:
+            import couverture_borne as _CB
+            _rs = _CB.rapport()
+            sujets_txt = (" · carte des sujets : %d sujets (%d traités avec preuve, %d partiels, %d au backlog"
+                          % (_rs["total"], _rs[_CB.TRAITE], _rs[_CB.PARTIEL], _rs[_CB.NON_TRAITE]))
+            sujets_txt += (", %d dette(s))" % len(_rs["dettes"])) if _rs["dettes"] else ", 0 dette)"
+        except Exception:
+            pass
         # INVENTAIRE À BUDGET (vécu .exe 2026-07-08 : le diagnostic partait en timeout — compter 72 M de
         # faits force le chargement de TOUTES les tables ; sur données froides, ça peut durer des minutes).
         # Budget 10 s : au-delà, le compte partiel est rendu HONNÊTEMENT (« au moins N ») et l'inventaire
@@ -4340,12 +4352,12 @@ def _diagnostic_connaissance(texte: str):
         aff_faits = ("%d fait(s)" % n_faits) if complet else \
             ("au moins %d faits (inventaire complet interrompu à 10 s — il reprendra au prochain diagnostic)"
              % n_faits)
-        return ("Diagnostic : je connais %d relation(s) et %s. Données : %s · build %s · recherche web %s%s%s%s"
+        return ("Diagnostic : je connais %d relation(s) et %s. Données : %s · build %s · recherche web %s%s%s%s%s"
                 " · étapes : chargement %.1f s, preuves %.1f s, inventaire %.1f s"
                 % (len(lecteur.LECTEUR.relations()), aff_faits,
                    os.environ.get("LECTEUR_DATASETS_DIR", "?"), _build_id(),
                    "activée" if os.environ.get("IA_WEB") == "1" else "désactivée", cap, appris, routage,
-                   _t_charge, _t_preuves, _t_inv))
+                   sujets_txt, _t_charge, _t_preuves, _t_inv))
     except Exception as e:
         return "Diagnostic : impossible de lire l'\u00e9tat de la base (%s)" % e
 
