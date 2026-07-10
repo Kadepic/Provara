@@ -53,6 +53,17 @@ check(statut({"type": "moteur_thermique", "t_chaud_K": 300, "t_froid_K": 300}) =
 # 2nd principe : COP de Carnot pompe à chaleur.
 check(statut({"type": "pompe_chaleur", "cop": 25, "t_chaud_K": 293, "t_froid_K": 278}) == P.VIOLE,
       "COP 25 > COP Carnot ~19.5")
+# 2nd principe : dessalement SOUS le travail minimal de séparation (π ≈ 27 bar → ~0.75 kWh/m³ pour l'eau de mer).
+check(statut({"type": "dessalement", "energie_kWh_par_m3": 0.3, "osmose_pression_bar": 27}) == P.VIOLE,
+      "dessalement 0.3 kWh/m³ < plancher 0.75 (π 27 bar)")
+check(loi({"type": "dessalement", "energie_kWh_par_m3": 0.3, "osmose_pression_bar": 27}) == P.L3,
+      "travail minimal de séparation = 2nd principe (L3)")
+check(statut({"type": "dessalement", "energie_kWh_par_m3": 0.0, "osmose_pression_bar": 27}) == P.VIOLE,
+      "dessalement à énergie NULLE d'une saumure : impossible")
+# plancher calculé depuis la concentration (i·C·R·T) : c=0.6 mol/L, i=2, 298 K → π ≈ 29.7 bar → ~0.83 kWh/m³.
+check(statut({"type": "dessalement", "energie_kWh_par_m3": 0.5, "concentration_mol_par_L": 0.6,
+              "facteur_vant_hoff": 2, "t_K": 298.15}) == P.VIOLE,
+      "dessalement 0.5 kWh/m³ < plancher calculé ~0.83 (van 't Hoff)")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -66,6 +77,13 @@ reels = [
     {"type": "pompe_chaleur", "cop": 12, "t_chaud_K": 293, "t_froid_K": 278},               # élevé mais < Carnot ~19.5
     # source externe DÉCLARÉE : utile > mesuré n'est plus une création nette.
     {"type": "conversion", "rendement": 3.0, "source_energie_externe": True},
+    # dessalements RÉELS : au-DESSUS du plancher thermodynamique (osmose inverse, distillation).
+    {"type": "dessalement", "energie_kWh_par_m3": 3.5, "osmose_pression_bar": 27},   # osmose inverse mer réelle
+    {"type": "dessalement", "energie_kWh_par_m3": 10.0, "osmose_pression_bar": 27},  # distillation thermique
+    {"type": "dessalement", "energie_kWh_par_m3": 0.75, "osmose_pression_bar": 27},  # AU plancher (limite, ok)
+    {"type": "dessalement", "energie_kWh_par_m3": 1.0, "concentration_mol_par_L": 0.6,
+     "facteur_vant_hoff": 2, "t_K": 298.15},                                          # > plancher calculé ~0.83
+    {"type": "dessalement", "energie_kWh_par_m3": 2.0},                               # sans base π : indéterminé, PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
