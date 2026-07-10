@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 10e domaine « communication » + loi L7 (limite de Shannon)
+
+Communiquer/transmettre. Nouvelle loi dure au juge (`L7`) : la **limite de Shannon** — débit sans erreur ≤
+B·log₂(1 + S/N). Un débit revendiqué au-dessus de la capacité est RÉFUTÉ. CONSERVATEUR : réfute seulement si B,
+S/N ET débit sont donnés et débit > capacité → jamais un faux positif (système réel toujours sous la capacité).
+Gate `valide_coherence_physique` **105 → 114/114**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (20 Mbit/s sur 1 MHz@30 dB, débit
+sans bande passante). Reframing : ne pas « crier plus fort » (capacité LOGARITHMIQUE en S/N) mais élargir la
+BANDE (LINÉAIRE en B), relayer plutôt qu'émettre fort (S/N ∝ 1/d²), coder près de la capacité et COMPRESSER la
+source, diriger l'antenne. Couvre radio 5G, UWB, MIMO/directif, mesh, codage LDPC/turbo/polaire, optique,
+compression de source, rétrodiffusion ambiante (backscatter zéro énergie). 4 stratégies naturelles propres
+(baleine = choisir le canal qui porte, fourmi = médium persistant, abeille = code dense, mycélium = relais).
+Gate `valide_besoin` **203 → 220/220** ; les 9 domaines précédents intacts.
+
+**JALON : 10 DOMAINES D'INVENTION, 7 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3
+travail minimal de séparation [osmotique + molaire], L4 quantité de mouvement + v≤c, L5 efficacité lumineuse
+≤ 683 lm/W, L6 Landauer, L7 Shannon). Chaque domaine : reframing machine + principes suppositions jugées +
+impossibles réfutés + stratégies naturelles ; FAUX=0, isolation prouvée entre domaines.
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 9e domaine « calcul » + loi L6 (limite de Landauer)
 
 Calculer à basse énergie — au cœur de la vision Provara (l'IA légère). Nouvelle loi dure au juge (`L6`) : la

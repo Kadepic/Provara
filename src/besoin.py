@@ -1547,6 +1547,141 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DIXIÈME DOMAINE : communiquer / transmettre de l'information. Nouvelle loi dure au juge (L7) : la limite de
+#  SHANNON — le débit sans erreur ≤ B·log₂(1 + S/N). Un débit revendiqué au-dessus de la capacité est réfuté.
+#  REFRAMING machine : le but n'est pas de « crier plus fort » (la capacité ne croît que LOGARITHMIQUEMENT avec
+#  le rapport signal/bruit) mais de livrer des bits fiables par joule et par Hz. Leviers : élargir la BANDE
+#  (capacité LINÉAIRE en B → bien plus rentable que la puissance) ; se rapprocher/relayer (S/N chute en 1/d²) ;
+#  bon CODAGE (approcher la capacité) et COMPRESSER la source (ne pas transmettre de bits redondants) ;
+#  DIRIGER l'antenne (concentrer la puissance sans en dépenser plus).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_COMM = "communication"
+_ALIAS_COMM = {
+    "transmettre de l information", "communiquer a distance", "transmettre des donnees",
+    "communication sans fil", "envoyer un signal loin", "communiquer efficacement",
+}
+
+# ── « Canaux » : les leviers de la capacité de communication ─────────────────────────────────────────────────────
+_CANAUX_COMM = [
+    Canal("bande passante", "information", "élargir la bande (la capacité croît LINÉAIREMENT avec B)",
+          True, "doubler la bande double la capacité ; doubler la puissance ne l'augmente que de log₂(...) → "
+                "élargir la bande est le levier le plus rentable ; le spectre est la ressource rare"),
+    Canal("rapport signal sur bruit", "information", "augmenter S/N : antenne directive, se rapprocher, relayer",
+          False, "gain seulement LOGARITHMIQUE en capacité → crier plus fort rapporte peu ; mais une antenne "
+                 "directive concentre la puissance existante (S monte sans dépenser plus)"),
+    Canal("codage", "information", "approcher la capacité (codes correcteurs) et COMPRESSER la source",
+          True, "un bon code atteint presque la limite de Shannon ; compresser retire les bits redondants AVANT "
+                "l'envoi → transmettre moins pour dire autant, le levier le moins cher"),
+    Canal("energie par bit", "information", "minimiser l'énergie par bit (rétrodiffusion, proche de la limite de Shannon)",
+          True, "la rétrodiffusion (backscatter) module un signal AMBIANT → communiquer à quasi zéro énergie "
+                "propre ; sous-exploité pour les capteurs"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Shannon (type `communication`, débit ≤ B·log₂(1+S/N)) ─────
+_PRINCIPES_COMM = [
+    _P("radio numérique moderne (5G, référence)",
+       "communiquer : modulation numérique adaptative avec codage correcteur proche de la capacité",
+       {"type": "communication", "debit_bits_par_s": 9.0e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "signal reçu", "mature",
+       0.65, "exploite déjà presque toute la capacité du canal avec de bons codes ; les gains restants viennent de "
+             "la bande et de la directivité, pas de la puissance — la référence"),
+    _P("étalement de spectre / ultra-large bande (UWB)",
+       "communiquer : étaler le signal sur une très large bande à faible puissance",
+       {"type": "communication", "debit_bits_par_s": 5e7, "bande_passante_Hz": 5e8, "rapport_signal_bruit": 0.1},
+       True, True, "signal étalé", "mature",
+       0.55, "échange de la BANDE contre de la puissance (capacité linéaire en B) → transmet SOUS le bruit, "
+             "robuste et discret ; consomme du spectre — le levier « élargir la bande »"),
+    _P("antenne directive / MIMO",
+       "communiquer : concentrer et multiplexer le signal sur plusieurs antennes (faisceaux, flux parallèles)",
+       {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "faisceaux dirigés", "mature",
+       0.55, "concentre la puissance EXISTANTE (S monte) et multiplie les canaux spatiaux (MIMO) → plus de "
+             "capacité sans plus d'énergie totale ; conditionné à la propagation — un des grands leviers"),
+    _P("réseau maillé / relais (mesh)",
+       "communiquer : relayer de proche en proche plutôt qu'émettre fort et loin",
+       {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "signal relayé", "mature",
+       0.5, "S/N chute en 1/d² → deux sauts courts battent un long saut en énergie ; le réseau se répare et "
+            "s'étend tout seul ; latence et coordination à gérer — le levier « se rapprocher »"),
+    _P("codage correcteur avancé (LDPC / turbo / polaire)",
+       "communiquer : coder l'information pour corriger les erreurs et approcher la capacité de Shannon",
+       {"type": "communication", "debit_bits_par_s": 9.8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "signal robuste", "mature",
+       0.55, "atteint presque la limite théorique → tirer le MAXIMUM d'un canal donné sans plus de puissance ni "
+             "de bande ; le levier « ne pas gaspiller le canal »"),
+    _P("communication optique (fibre / laser espace libre)",
+       "communiquer : porter l'information sur une porteuse optique à très large bande",
+       {"type": "communication", "debit_bits_par_s": 1e11, "bande_passante_Hz": 1e13, "rapport_signal_bruit": 100},
+       True, True, "signal optique", "mature (fibre)",
+       0.5, "la bande optique est ÉNORME → capacité colossale ; en espace libre exige un pointage précis et un "
+            "ciel clair (laser) — le levier « bande » poussé à l'extrême"),
+    _P("compression de source avant émission",
+       "communiquer : retirer la redondance de l'information AVANT de la transmettre",
+       {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "flux compressé", "mature (sous-exploité en bord)",
+       0.5, "le bit le moins cher à transmettre est celui qu'on n'envoie pas : compresser/résumer à la source "
+            "réduit le débit requis → l'analogue de « ne pas générer » en éclairage"),
+    _P("rétrodiffusion ambiante (backscatter, RFID passif)",
+       "communiquer : moduler la réflexion d'un signal radio AMBIANT au lieu d'émettre le sien",
+       {"type": "communication", "debit_bits_par_s": 1e3, "bande_passante_Hz": 1e5, "rapport_signal_bruit": 10},
+       True, True, "signal réfléchi modulé", "émergent",
+       0.45, "communique à quasi ZÉRO énergie propre (l'émetteur ambiant fournit la porteuse) → capteurs sans "
+             "pile ; débit faible et portée courte — piste basse conso sous-exploitée"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : au-dessus de la capacité de Shannon) ──
+    _P("liaison « 20 Mbit/s sur 1 MHz à 30 dB »",
+       "communiquer : 20 Mbit/s sans erreur sur 1 MHz de bande à un rapport signal/bruit de 1000",
+       {"type": "communication", "debit_bits_par_s": 2e7, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "—", "revendication",
+       0.3, "20 Mbit/s > capacité de Shannon (~9,97 Mbit/s ici) — à réfuter par la limite de Shannon"),
+    _P("transmission « sans bande passante »",
+       "communiquer : transmettre 1 Mbit/s sur une bande passante nulle",
+       {"type": "communication", "debit_bits_par_s": 1e6, "bande_passante_Hz": 0, "rapport_signal_bruit": 1000},
+       True, True, "—", "revendication",
+       0.25, "sans bande passante la capacité est nulle : transmettre de l'information exige de la bande — impossible"),
+]
+
+_OBJECTIF_COMM = ("Le but réel n'est pas de « crier plus fort » : la capacité d'un canal ne croît que "
+                  "LOGARITHMIQUEMENT avec le rapport signal/bruit, mais LINÉAIREMENT avec la bande passante "
+                  "(Shannon : débit ≤ B·log₂(1+S/N)). On vise donc des bits fiables par joule et par Hz. Leviers : "
+                  "élargir la BANDE (bien plus rentable que la puissance) ; se rapprocher ou RELAYER (S/N chute en "
+                  "1/d² → deux sauts courts battent un long) ; bon CODAGE pour approcher la capacité et COMPRESSER "
+                  "la source (ne pas transmettre de redondance) ; DIRIGER l'antenne (concentrer la puissance "
+                  "existante). Chaque principe reste jugé par la limite de Shannon.")
+_LOI_COMM = ("le débit sans erreur ≤ B·log₂(1 + S/N) (limite de Shannon) : la capacité est LINÉAIRE en bande "
+             "passante mais seulement LOGARITHMIQUE en signal/bruit ; gains réels = élargir la bande, relayer "
+             "plutôt qu'émettre fort, coder près de la capacité, compresser la source, diriger l'antenne")
+
+# La nature communique par le canal qui porte (baleine), un médium persistant (fourmi), un code dense (abeille), un relais (mycélium).
+_STRATEGIES_NATURE_COMM = [
+    _Nature("chant des baleines (très basse fréquence)",
+            ["basse fréquence = faible atténuation dans l'eau", "porte sur des centaines de km",
+             "choix du canal qui transmet le mieux"],
+            "choisir la FRÉQUENCE/le canal qui se propage le mieux plutôt que d'émettre plus fort"),
+    _Nature("phéromones de fourmis (canal chimique persistant)",
+            ["signal DÉPOSÉ dans l'environnement (persistant)", "lu en différé (asynchrone)", "quasi zéro énergie"],
+            "un médium persistant transmet sans émetteur actif — communiquer en différé pour presque rien"),
+    _Nature("danse frétillante des abeilles (code dense)",
+            ["direction ET distance encodées en peu de gestes", "information compressée dans un signal court"],
+            "COMPRESSER beaucoup d'information dans un signal minimal — le levier du codage de source"),
+    _Nature("réseau mycélien (relais chimique/électrique)",
+            ["signaux propagés de proche en proche dans le réseau", "pas d'émetteur central puissant"],
+            "RELAYER à travers un maillage plutôt qu'émettre fort et loin — le levier du mesh"),
+]
+
+enregistre(Domaine(
+    nom=_COMM,
+    aliases=frozenset(_ALIAS_COMM),
+    objectif=_OBJECTIF_COMM,
+    canaux=_CANAUX_COMM,
+    principes=_PRINCIPES_COMM,
+    strategies=_STRATEGIES_NATURE_COMM,
+    loi=_LOI_COMM,
+    extras={"capacite_shannon": "débit ≤ B·log₂(1 + S/N) bits/s",
+            "note": "élargir la BANDE bat augmenter la puissance (capacité linéaire en B, logarithmique en S/N)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

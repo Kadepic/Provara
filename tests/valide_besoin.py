@@ -461,11 +461,55 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "plafond_lm_par_W" in B.decompose("eclairer une piece"),
       "les 8 domaines précédents inchangés après l'ajout du calcul (isolation)")
 
-# ── 15) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+# ── 15) DIXIÈME DOMAINE : communiquer (nouvelle loi L7 = limite de Shannon, débit ≤ B·log₂(1+S/N)) ──
+dco = B.decompose("transmettre de l information")
+check(dco["statut"] == "decompose", "besoin communication connu -> decompose")
+check("bande" in dco["objectif_reel"].lower() and "shannon" in dco["objectif_reel"].lower(),
+      "objectif réel communication = élargir la bande (Shannon), pas crier plus fort")
+check("capacite_shannon" in dco, "extras propres : la capacité de Shannon")
+com_canaux = {c.canal for c in dco["canaux"]}
+check(com_canaux == {"bande passante", "rapport signal sur bruit", "codage", "energie par bit"},
+      f"4 canaux de communication ({com_canaux})")
+prco = B.principes("transmettre de l information")
+pco = {e["nom"]: e for e in prco["liste"]}
+# l'IMPOSSIBLE (au-dessus de la capacité) est RÉFUTÉ
+sur_cap = pco["liaison « 20 Mbit/s sur 1 MHz à 30 dB »"]
+check(sur_cap["atome"].statut == A.REFUTE, "20 Mbit/s > capacité ~9,97 -> RÉFUTÉ (Shannon)")
+check(A.est_refute(sur_cap["atome"].contenu), "contenu réfuté (20 Mbit/s) dans la garde")
+sans_b = pco["transmission « sans bande passante »"]
+check(sans_b["atome"].statut == A.REFUTE, "débit > 0 sans bande passante -> RÉFUTÉ")
+# procédés réels -> SUPPOSITIONS
+for nom in ("radio numérique moderne (5G, référence)", "étalement de spectre / ultra-large bande (UWB)",
+            "rétrodiffusion ambiante (backscatter, RFID passif)"):
+    e = pco[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prco["liste"]), "aucun principe de communication promu en FAIT")
+check("candidat pour communication" in pco["radio numérique moderne (5G, référence)"]["atome"].portee.condition,
+      "portée des principes communication nommant communication")
+# la loi L7 : au-dessus de la capacité réfuté, en dessous cohérent
+st_sur, _, loi_sur = COH.juge_dispositif({"type": "communication", "debit_bits_par_s": 2e7,
+                                          "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000})
+check(st_sur == COH.VIOLE and loi_sur == COH.L7, "juge : 20 Mbit/s -> VIOLE via L7")
+st_sous, _, _ = COH.juge_dispositif({"type": "communication", "debit_bits_par_s": 8e6,
+                                     "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000})
+check(st_sous == COH.COHERENT_BORNE, "8 Mbit/s (< capacité) -> COHÉRENT, jamais réfuté")
+# stratégies naturelles propres (baleine, fourmi)
+natco = B.strategies_naturelles("transmettre de l information")
+check(len(natco) >= 4 and any("baleine" in s["exemple"] for s in natco), "stratégies communication propres (baleine)")
+check(not any("cerveau" in s["exemple"] for s in natco) and not any("luciole" in s["exemple"] for s in natco),
+      "pas de fuite des stratégies calcul/éclairage vers la communication")
+# les NEUF domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "regle_or" in B.decompose("se propulser")
+      and "limite_landauer_J_bit" in B.decompose("calculer efficacement"),
+      "les 9 domaines précédents inchangés après l'ajout de la communication (isolation)")
+
+# ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
-                              "calcul"],
-      "neuf domaines modélisés, dans l'ordre d'enregistrement")
+                              "calcul", "communication"],
+      "dix domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
