@@ -1,5 +1,110 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 10e domaine « communication » + loi L7 (limite de Shannon)
+
+Communiquer/transmettre. Nouvelle loi dure au juge (`L7`) : la **limite de Shannon** — débit sans erreur ≤
+B·log₂(1 + S/N). Un débit revendiqué au-dessus de la capacité est RÉFUTÉ. CONSERVATEUR : réfute seulement si B,
+S/N ET débit sont donnés et débit > capacité → jamais un faux positif (système réel toujours sous la capacité).
+Gate `valide_coherence_physique` **105 → 114/114**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (20 Mbit/s sur 1 MHz@30 dB, débit
+sans bande passante). Reframing : ne pas « crier plus fort » (capacité LOGARITHMIQUE en S/N) mais élargir la
+BANDE (LINÉAIRE en B), relayer plutôt qu'émettre fort (S/N ∝ 1/d²), coder près de la capacité et COMPRESSER la
+source, diriger l'antenne. Couvre radio 5G, UWB, MIMO/directif, mesh, codage LDPC/turbo/polaire, optique,
+compression de source, rétrodiffusion ambiante (backscatter zéro énergie). 4 stratégies naturelles propres
+(baleine = choisir le canal qui porte, fourmi = médium persistant, abeille = code dense, mycélium = relais).
+Gate `valide_besoin` **203 → 220/220** ; les 9 domaines précédents intacts.
+
+**JALON : 10 DOMAINES D'INVENTION, 7 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3
+travail minimal de séparation [osmotique + molaire], L4 quantité de mouvement + v≤c, L5 efficacité lumineuse
+≤ 683 lm/W, L6 Landauer, L7 Shannon). Chaque domaine : reframing machine + principes suppositions jugées +
+impossibles réfutés + stratégies naturelles ; FAUX=0, isolation prouvée entre domaines.
+
+## 2026-07-12 — MOTEUR D'INVENTION : 9e domaine « calcul » + loi L6 (limite de Landauer)
+
+Calculer à basse énergie — au cœur de la vision Provara (l'IA légère). Nouvelle loi dure au juge (`L6`) : la
+**limite de Landauer** — effacer un bit dissipe au moins k·T·ln2 (≈ 2,87e-21 J à 300 K). Une machine qui déclare
+effacer des bits pour moins est RÉFUTÉE. CONSERVATEUR : ne s'applique qu'à l'énergie par bit EFFACÉ — le calcul
+réversible/adiabatique (qui n'efface pas) n'est jamais réfuté. Gate `valide_coherence_physique` **94 → 105/105**.
+
+`enregistre(...)`, rien d'autre. **11 principes**, 9 suppositions + 2 RÉFUTÉS (1e-23 J/bit, effacement à énergie
+nulle). Reframing : le but n'est pas la vitesse mais le calcul PAR JOULE ; les puces actuelles sont ~10⁴–10⁶×
+au-dessus de Landauer donc le mur n'est PAS physique aujourd'hui → ne pas EFFACER (réversible/adiabatique), ne pas
+DÉPLACER les bits (le vrai coût actuel = le transport → in-memory), moins d'OPÉRATIONS (algorithmes, événementiel,
+analogique), calculer FROID. Couvre CMOS, sous-seuil, réversible, in-memory, neuromorphique, analogique, SFQ
+supraconducteur, spintronique, photonique. 4 stratégies naturelles propres (cerveau ~20 W = analogique +
+événementiel + en-mémoire, rétine = calcul au capteur, ADN = stockage dense, essaim = distribué). Gate
+`valide_besoin` **186 → 203/203** ; les 8 domaines précédents intacts.
+
+## 2026-07-12 — MOTEUR D'INVENTION : 8e domaine « eclairage » + loi L5 (efficacité lumineuse ≤ 683 lm/W)
+
+Éclairer efficacement. Nouvelle loi dure au juge (`L5`) : l'**efficacité lumineuse ≤ 683 lm/W** (l'œil culmine à
+555 nm ; au-delà il faudrait un rendement radiant > 100 %). Une lampe revendiquant plus est RÉFUTÉE. CONSERVATEUR :
+on ne réfute qu'au-delà de 683 (le plafond CERTAIN) ; la lumière blanche à bon rendu plafonne plus bas
+(~300–350 lm/W) mais c'est fonction du spectre — noté, pas réfuté. Gate `valide_coherence_physique` **82 → 94/94**.
+
+`enregistre(...)`, rien d'autre. **11 principes**, 9 suppositions + 2 RÉFUTÉS (LED 800 lm/W, ampoule 1000 lm/W).
+Reframing : mettre des lumens là où l'ŒIL en a besoin, aux longueurs d'onde qu'il voit → n'émettre que le VISIBLE
+(l'incandescence gaspille ~95 % en IR), DIRIGER (optique/tâche) au lieu d'inonder, couleur ADAPTÉE (monochromatique
+là où le rendu n'importe pas), et surtout le lumen le moins cher est celui qu'on NE génère PAS (jour guidé, ne pas
+éclairer l'inutile). Couvre LED blanche, LED de labo, sodium basse pression, fluorescent, incandescence, laser
+blanc, QLED, lumière du jour guidée, éclairage de tâche + présence. 5 stratégies naturelles propres (luciole =
+lumière froide, tapetum = recyclage des photons, plancton = à la demande, feuille = guidage). Gate `valide_besoin`
+**169 → 186/186** ; les 7 domaines précédents intacts.
+
+## 2026-07-12 — MOTEUR D'INVENTION : 7e domaine « propulsion » + loi L4 (conservation de la quantité de mouvement)
+
+Se propulser. Nouvelle loi dure au juge (`L4`) : **conservation de la quantité de mouvement** (3e loi de Newton)
++ vitesse d'éjection ≤ c. Un « moteur sans réaction » (EmDrive/Dean : poussée nette sans milieu externe NI
+éjection de masse/rayonnement) est RÉFUTÉ ; l'éjection supraluminique aussi. CONSERVATEUR : on ne réfute QUE si
+la spec déclare explicitement « ni milieu, ni éjection » → aucun faux positif (fusée, jet, voile, ion, fronde
+jamais réfutés). Gate `valide_coherence_physique` **67 → 82/82**.
+
+`enregistre(...)`, rien d'autre. **11 principes**, 9 suppositions + 2 RÉFUTÉS (EmDrive, éjection > c). Reframing :
+on ne CONTOURNE pas la loi (impossible), on CHOISIT la réaction — s'il y a un milieu (air/eau/sol/champ), pousser
+dessus = zéro ergol ; dans le vide, emporter de la masse et maximiser l'impulsion spécifique (Isp), ou EMPRUNTER
+un momentum externe (lumière du Soleil, laser au sol, fronde gravitationnelle). Couvre fusée chimique, ionique,
+voile solaire, propulsion laser, turboréacteur, fronde gravitationnelle, voile magnétique, nucléaire thermique,
+fusée à photons. 5 stratégies naturelles propres (calmar/jet, poisson/oiseau, serpent, samare, araignée
+ballooning). Gate `valide_besoin` **151 → 169/169** ; les 6 domaines précédents intacts.
+
+## 2026-07-12 — MOTEUR D'INVENTION : 6e domaine « eau_potable_air » (AWG) — loi séparation RÉUTILISÉE (x = HR)
+
+Produire de l'eau potable de l'air. La loi est DÉJÀ couverte par le type `separation` généralisé : extraire
+l'eau d'un air à humidité relative φ coûte au minimum R·T·ln(1/φ) par mole (φ = activité de la vapeur ; on
+réutilise `fraction_molaire = HR`). **Aucune extension du juge** — deuxième domaine à ne rien lui coûter (après
+le stockage). À φ → 0 (air sec) le minimum DIVERGE, ce que le juge exprime : on ne tire pas d'eau d'un air
+parfaitement sec.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS pédagogiquement distincts :
+« 0,5 kJ/mol à 50 % HR » (sous le plancher) ET « eau d'un air à 5 % HR à 2 kJ/mol » (la SÉCHERESSE renchérit —
+plancher ~7,4 kJ/mol). Reframing : le rendement dépend d'abord de l'HUMIDITÉ, pas de la techno → opérer quand/où
+l'air est humide, SORBER plutôt que refroidir tout l'air (capter la nuit, régénérer au soleil → marche en climat
+sec), intercepter le brouillard existant (quasi gratuit), viser un puits froid gratuit (sol, ciel nocturne).
+Couvre condensation, sorption solaire, MOF (récolte en désert), filet à brouillard, condensation radiative,
+dessiccant liquide, condenseur couplé au sol, membrane. 5 stratégies naturelles propres (scarabée du Namib,
+toile d'araignée, lézard Moloch, rosée nocturne, cactus conique). Gate `valide_besoin` **135 → 151/151** ; les
+5 domaines précédents intacts ; juge inchangé (67/67).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 5e domaine « capture_co2 » + loi L3 GÉNÉRALISÉE (gaz dilué R·T·ln(1/x))
+
+Enjeu climatique, et même FAMILLE de loi que le dessalement — mais pas osmotique. On a donc **généralisé
+`coherence_physique`** d'un type `separation` : le travail minimal d'extraction d'un composant à la fraction
+molaire x vaut R·T·ln(1/x) par mole (le dessalement en est le cas osmotique). Le CO₂ de l'air est ultra-dilué
+(x ≈ 4,2e-4 = 420 ppm → plancher ≈ 19,3 kJ/mol) ; aux fumées (x ≈ 0,12) il tombe à ≈ 5,3 kJ/mol. Plancher
+CONSERVATEUR (récupération → 0) → zéro faux positif (DAC réel ~230 kJ/mol jamais réfuté). Gate
+`valide_coherence_physique` **56 → 67/67**.
+
+Puis 5e domaine (`enregistre(...)`, rien d'autre) : **12 principes**, 10 suppositions + 2 RÉFUTÉS (« DAC à
+10 kJ/mol depuis l'air » et « capture sans énergie » — sous le plancher). Reframing machine : la DILUTION est
+l'ennemi → capter d'abord À LA SOURCE concentrée (fumées, BECCS délègue la capture diluée à la photosynthèse) ;
+pour la capture dans l'air, l'énergie réelle est la RÉGÉNÉRATION du sorbant → l'adosser à une chaleur/électricité
+gratuite (moisture-swing, électro-swing) ; viser un PUITS permanent (minéralisation). Couvre amines, sorbant
+solide DAC, hydroxyde, membrane, moisture-swing, électrochimique, altération accélérée, BECCS, valorisation,
+alcalinité océanique. 5 stratégies naturelles propres (photosynthèse, biominéralisation, altération des
+silicates, tourbière, anhydrase carbonique). Gate `valide_besoin` **112 → 135/135** ; les 4 domaines précédents
+intacts. La loi généralisée renforce aussi le dessalement (même L3, deux formes : osmotique et molaire).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 4e domaine « stockage_energie » (le patron passe SANS toucher au juge)
 
 Clé de la transition (intermittence solaire/éolien) et démonstration que le registre passe à l'échelle **sans

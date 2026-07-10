@@ -238,9 +238,278 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35,
       "cooling, chauffage et dessalement inchangés après l'ajout du stockage (isolation)")
 
-# ── 10) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
-check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau", "stockage_energie"],
-      "quatre domaines modélisés (cooling, chauffage, dessalement, stockage), dans l'ordre d'enregistrement")
+# ── 10) CINQUIÈME DOMAINE : capter le CO₂ (loi L3 GÉNÉRALISÉE au gaz dilué : R·T·ln(1/x)) ──
+dc = B.decompose("capter le co2")
+check(dc["statut"] == "decompose", "besoin capture CO₂ connu -> decompose")
+check("dilu" in dc["objectif_reel"].lower() and "source" in dc["objectif_reel"].lower(),
+      "objectif réel CO₂ = la dilution est l'ennemi + capter à la source concentrée")
+check("fraction_co2_air" in dc, "extras propres : fraction CO₂ de l'air")
+co2_canaux = {c.canal for c in dc["canaux"]}
+check(co2_canaux == {"absorption chimique", "adsorption solide", "membrane", "mineralisation"},
+      f"4 canaux de capture ({co2_canaux})")
+prc = B.principes("capter le co2")
+check(prc["statut"] == "principes", "principes pour la capture CO₂")
+pc = {e["nom"]: e for e in prc["liste"]}
+# l'IMPOSSIBLE (sous R·T·ln(1/x)) est RÉFUTÉ
+sous_air = pc["DAC « à 10 kJ/mol depuis l'air ambiant »"]
+check(sous_air["atome"].statut == A.REFUTE, "DAC 10 kJ/mol < plancher ~19,3 (420 ppm) -> RÉFUTÉ")
+check(A.est_refute(sous_air["atome"].contenu), "contenu réfuté (DAC 10 kJ/mol) dans la garde")
+sans_e = pc["capture du CO₂ de l'air « sans énergie »"]
+check(sans_e["atome"].statut == A.REFUTE, "capture CO₂ sans énergie -> RÉFUTÉ (entropie de mélange)")
+# les procédés RÉELS restent des SUPPOSITIONS
+for nom in ("amines post-combustion (fumées, référence)", "sorbant solide DAC (capture dans l'air)",
+            "altération accélérée / minéralisation (olivine, basalte)"):
+    e = pc[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION (au-dessus du minimum)")
+    check(0.0 < e["atome"].confiance < 1.0, f"{nom} confiance dans ]0,1[")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prc["liste"]),
+      "aucun principe de capture promu en FAIT")
+check("candidat pour capture_co2" in pc["amines post-combustion (fumées, référence)"]["atome"].portee.condition,
+      "portée des principes CO₂ nommant capture_co2")
+# la loi GÉNÉRALISÉE : le juge réfute le gaz dilué sous R·T·ln(1/x), et jamais un procédé réel
+st_air, _, loi_air = COH.juge_dispositif({"type": "separation", "fraction_molaire": 4.2e-4,
+                                          "energie_kJ_par_mol": 10, "t_K": 298.15})
+check(st_air == COH.VIOLE and loi_air == COH.L3, "juge : DAC 10 kJ/mol (420 ppm) -> VIOLE via L3")
+st_real, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 4.2e-4,
+                                     "energie_kJ_par_mol": 230, "t_K": 298.15})
+check(st_real == COH.COHERENT_BORNE, "DAC réel (230 kJ/mol) -> COHÉRENT, jamais réfuté")
+# capter à la source (x élevé) abaisse le plancher : mêmes 10 kJ/mol seraient cohérents aux fumées
+st_fumee, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 10})
+check(st_fumee == COH.COHERENT_BORNE, "10 kJ/mol aux fumées (x=0,12, plancher ~5,3) -> cohérent : la dilution est l'ennemi")
+# pistes sous-exploitées (moisture-swing, électrochimique, minéralisation) présentes
+noms_c = set(pc)
+check(any("moisture-swing" in n for n in noms_c) and any("électrochimique" in n for n in noms_c)
+      and any("minéralisation" in n for n in noms_c), "pistes sous-exploitées CO₂ présentes")
+# stratégies naturelles propres (photosynthèse/biominéralisation/enzyme)
+natc = B.strategies_naturelles("capter le co2")
+check(len(natc) >= 4 and any("photosynthèse" in s["exemple"] for s in natc), "stratégies CO₂ propres (photosynthèse)")
+check(not any("graisse" in s["exemple"] for s in natc) and not any("mangrove" in s["exemple"] for s in natc),
+      "pas de fuite des stratégies stockage/eau vers la capture CO₂")
+# les QUATRE domaines précédents restent INTACTS après le 5e (isolation)
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("chauffer une piece")["production_corps_W"] == 100
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "rendement_aller_retour" in B.decompose("stocker de l energie"),
+      "cooling, chauffage, dessalement et stockage inchangés après l'ajout de la capture CO₂ (isolation)")
+
+# ── 11) SIXIÈME DOMAINE : eau potable de l'air (AWG) — loi séparation RÉUTILISÉE (x = HR, sans étendre le juge) ──
+da = B.decompose("produire de l eau de l air")
+check(da["statut"] == "decompose", "besoin AWG connu -> decompose")
+check("humidit" in da["objectif_reel"].lower() and "diverge" in da["objectif_reel"].lower(),
+      "objectif réel AWG = le rendement dépend d'abord de l'humidité (minimum diverge à sec)")
+check("humidite_relative_moteur" in da, "extras propres : l'humidité relative est le moteur")
+awg_canaux = {c.canal for c in da["canaux"]}
+check(awg_canaux == {"refroidissement", "sorption", "interception", "membrane"}, f"4 canaux AWG ({awg_canaux})")
+pra = B.principes("produire de l eau de l air")
+pa = {e["nom"]: e for e in pra["liste"]}
+# l'IMPOSSIBLE (sous R·T·ln(1/HR)) est RÉFUTÉ, et la SÉCHERESSE renchérit (deux réfutations distinctes)
+sous_hr = pa["générateur d'eau « à 0,5 kJ/mol par 50 % d'humidité »"]
+check(sous_hr["atome"].statut == A.REFUTE, "0,5 kJ/mol à 50 % HR < plancher ~1,72 -> RÉFUTÉ")
+sec = pa["eau d'un air TRÈS SEC (5 % HR) « aussi peu cher qu'à 80 % »"]
+check(sec["atome"].statut == A.REFUTE, "2 kJ/mol à 5 % HR < plancher ~7,4 -> RÉFUTÉ (la sécheresse renchérit)")
+# procédés réels -> SUPPOSITIONS
+for nom in ("condensation par refroidissement (référence)", "MOF hygroscopique (récolte d'eau à basse humidité)",
+            "filet à brouillard (interception)"):
+    e = pa[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in pra["liste"]), "aucun principe AWG promu en FAIT")
+check("candidat pour eau_potable_air" in pa["condensation par refroidissement (référence)"]["atome"].portee.condition,
+      "portée des principes AWG nommant eau_potable_air")
+# la loi séparation RÉUTILISÉE (x = HR) : plus l'air est sec, plus le plancher monte
+st_50, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 0.5, "energie_kJ_par_mol": 0.5})
+st_05, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 0.05, "energie_kJ_par_mol": 2.0})
+check(st_50 == COH.VIOLE and st_05 == COH.VIOLE, "le juge réfute AWG sous plancher, à 50 % ET à 5 % HR")
+st_awg_reel, _, _ = COH.juge_dispositif({"type": "separation", "fraction_molaire": 0.6, "energie_kJ_par_mol": 26})
+check(st_awg_reel == COH.COHERENT_BORNE, "AWG réel (26 kJ/mol, 60 % HR) -> COHÉRENT, jamais réfuté")
+# stratégies naturelles propres (scarabée du Namib, toile d'araignée)
+nata = B.strategies_naturelles("produire de l eau de l air")
+check(len(nata) >= 4 and any("Namib" in s["exemple"] for s in nata), "stratégies AWG propres (scarabée du Namib)")
+check(not any("photosynthèse" in s["exemple"] for s in nata) and not any("mangrove" in s["exemple"] for s in nata),
+      "pas de fuite des stratégies CO₂/eau de mer vers l'AWG")
+# les CINQ domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("chauffer une piece")["production_corps_W"] == 100
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "rendement_aller_retour" in B.decompose("stocker de l energie")
+      and "fraction_co2_air" in B.decompose("capter le co2"),
+      "les 5 domaines précédents inchangés après l'ajout de l'AWG (isolation)")
+
+# ── 12) SEPTIÈME DOMAINE : se propulser (nouvelle loi L4 = conservation de la quantité de mouvement) ──
+dp = B.decompose("se propulser")
+check(dp["statut"] == "decompose", "besoin propulsion connu -> decompose")
+check("reaction" in dp["objectif_reel"].lower().replace("é", "e") and "vide" in dp["objectif_reel"].lower(),
+      "objectif réel propulsion = choisir la réaction (pousser sur quelque chose ; vide = éjecter)")
+check("regle_or" in dp, "extras propres : la règle d'or de la propulsion")
+prop_canaux = {c.canal for c in dp["canaux"]}
+check(prop_canaux == {"ejection de masse", "milieu fluide", "momentum externe", "appui solide"},
+      f"4 canaux de propulsion ({prop_canaux})")
+prp = B.principes("se propulser")
+pp = {e["nom"]: e for e in prp["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : moteur sans réaction ET éjection supraluminique
+emd = pp["moteur sans réaction (type EmDrive)"]
+check(emd["atome"].statut == A.REFUTE, "moteur sans réaction -> RÉFUTÉ (quantité de mouvement)")
+check(A.est_refute(emd["atome"].contenu), "contenu réfuté (EmDrive) dans la garde")
+supralum = pp["éjection supraluminique"]
+check(supralum["atome"].statut == A.REFUTE, "éjection v > c -> RÉFUTÉ (relativité)")
+# procédés réels (fusée, ionique, voile) -> SUPPOSITIONS, JAMAIS réfutés
+for nom in ("fusée chimique (référence, vide)", "moteur ionique / à plasma", "voile solaire (momentum de la lumière)",
+            "fronde gravitationnelle (assistance gravitationnelle)"):
+    e = pp[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION (jamais réfuté : réaction réelle)")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prp["liste"]), "aucun principe de propulsion promu en FAIT")
+check("candidat pour propulsion" in pp["fusée chimique (référence, vide)"]["atome"].portee.condition,
+      "portée des principes propulsion nommant propulsion")
+# la loi L4 : réactionless réfuté, mais une fusée à photons (v proche de c mais < c) est cohérente
+st_emd, _, loi_emd = COH.juge_dispositif({"type": "propulsion", "poussee_nette": 1.0,
+                                          "milieu_externe": False, "ejecte_masse_ou_rayonnement": False})
+check(st_emd == COH.VIOLE and loi_emd == COH.L4, "juge : moteur sans réaction -> VIOLE via L4")
+st_photon, _, _ = COH.juge_dispositif({"type": "propulsion", "poussee_nette": 1e-6,
+                                       "ejecte_masse_ou_rayonnement": True, "vitesse_ejection_m_s": 2.99e8})
+check(st_photon == COH.COHERENT_BORNE, "fusée à photons (v < c) -> COHÉRENT, jamais réfutée")
+# stratégies naturelles propres (calmar/jet, samare)
+natp = B.strategies_naturelles("se propulser")
+check(len(natp) >= 4 and any("calmar" in s["exemple"] for s in natp), "stratégies propulsion propres (calmar)")
+check(not any("Namib" in s["exemple"] for s in natp) and not any("photosynthèse" in s["exemple"] for s in natp),
+      "pas de fuite des stratégies AWG/CO₂ vers la propulsion")
+# les SIX domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "fraction_co2_air" in B.decompose("capter le co2")
+      and "humidite_relative_moteur" in B.decompose("produire de l eau de l air"),
+      "les 6 domaines précédents inchangés après l'ajout de la propulsion (isolation)")
+
+# ── 13) HUITIÈME DOMAINE : éclairer (nouvelle loi L5 = efficacité lumineuse ≤ 683 lm/W) ──
+dl = B.decompose("eclairer une piece")
+check(dl["statut"] == "decompose", "besoin éclairage connu -> decompose")
+check("oeil" in dl["objectif_reel"].lower().replace("œ", "oe") and "683" in dl["objectif_reel"],
+      "objectif réel éclairage = lumens vus par l'œil, plafond 683 lm/W")
+check("plafond_lm_par_W" in dl, "extras propres : le plafond lm/W")
+ecl_canaux = {c.canal for c in dl["canaux"]}
+check(ecl_canaux == {"efficacite spectrale", "direction", "couleur adaptee", "lumiere naturelle"},
+      f"4 canaux d'éclairage ({ecl_canaux})")
+prl = B.principes("eclairer une piece")
+pl = {e["nom"]: e for e in prl["liste"]}
+# l'IMPOSSIBLE (> 683 lm/W) est RÉFUTÉ
+led800 = pl["LED « à 800 lm/W »"]
+check(led800["atome"].statut == A.REFUTE, "LED 800 lm/W > 683 -> RÉFUTÉ")
+check(A.est_refute(led800["atome"].contenu), "contenu réfuté (800 lm/W) dans la garde")
+amp1000 = pl["ampoule « à 1000 lm/W »"]
+check(amp1000["atome"].statut == A.REFUTE, "ampoule 1000 lm/W -> RÉFUTÉ")
+# procédés réels (dont la lumière du jour, sans efficacité déclarée) -> SUPPOSITIONS
+for nom in ("LED blanche (référence)", "sodium basse pression (monochromatique)",
+            "lumière du jour guidée (puits de lumière, fibres optiques)"):
+    e = pl[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prl["liste"]), "aucun principe d'éclairage promu en FAIT")
+check("candidat pour eclairage" in pl["LED blanche (référence)"]["atome"].portee.condition,
+      "portée des principes éclairage nommant eclairage")
+# la loi L5 : > 683 réfuté, AU plafond 683 cohérent (cas limite), record labo 330 cohérent
+st_800, _, loi_800 = COH.juge_dispositif({"type": "eclairage", "efficacite_lm_par_W": 800})
+check(st_800 == COH.VIOLE and loi_800 == COH.L5, "juge : 800 lm/W -> VIOLE via L5")
+check(COH.juge_dispositif({"type": "eclairage", "efficacite_lm_par_W": 683})[0] == COH.COHERENT_BORNE,
+      "683 lm/W (AU plafond) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (luciole, tapetum)
+natl = B.strategies_naturelles("eclairer une piece")
+check(len(natl) >= 4 and any("luciole" in s["exemple"] for s in natl), "stratégies éclairage propres (luciole)")
+check(not any("calmar" in s["exemple"] for s in natl) and not any("Namib" in s["exemple"] for s in natl),
+      "pas de fuite des stratégies propulsion/AWG vers l'éclairage")
+# les SEPT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "regle_or" in B.decompose("se propulser")
+      and "humidite_relative_moteur" in B.decompose("produire de l eau de l air"),
+      "les 7 domaines précédents inchangés après l'ajout de l'éclairage (isolation)")
+
+# ── 14) NEUVIÈME DOMAINE : calculer à basse énergie (nouvelle loi L6 = limite de Landauer) ──
+dk = B.decompose("calculer efficacement")
+check(dk["statut"] == "decompose", "besoin calcul connu -> decompose")
+check("joule" in dk["objectif_reel"].lower() and "landauer" in dk["objectif_reel"].lower(),
+      "objectif réel calcul = calcul par joule, plancher Landauer")
+check("limite_landauer_J_bit" in dk, "extras propres : la limite de Landauer")
+cal_canaux = {c.canal for c in dk["canaux"]}
+check(cal_canaux == {"ne pas effacer", "ne pas deplacer", "moins d operations", "basse temperature"},
+      f"4 canaux de calcul ({cal_canaux})")
+prk = B.principes("calculer efficacement")
+pk = {e["nom"]: e for e in prk["liste"]}
+# l'IMPOSSIBLE (sous Landauer) est RÉFUTÉ
+sous_land = pk["effacement de bit « à 1e-23 J » (300 K)"]
+check(sous_land["atome"].statut == A.REFUTE, "1e-23 J/bit < Landauer ~2,87e-21 -> RÉFUTÉ")
+check(A.est_refute(sous_land["atome"].contenu), "contenu réfuté (1e-23 J/bit) dans la garde")
+nul = pk["calcul irréversible « à énergie nulle »"]
+check(nul["atome"].statut == A.REFUTE, "effacement à énergie nulle -> RÉFUTÉ")
+# procédés réels (dont le réversible, TRÈS bas mais > 0) -> SUPPOSITIONS
+for nom in ("CMOS numérique actuel (référence)", "calcul réversible / adiabatique", "calcul in-memory (près de la mémoire)"):
+    e = pk[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prk["liste"]), "aucun principe de calcul promu en FAIT")
+check("candidat pour calcul" in pk["CMOS numérique actuel (référence)"]["atome"].portee.condition,
+      "portée des principes calcul nommant calcul")
+# la loi L6 : sous Landauer réfuté, juste au-dessus cohérent (le réversible n'efface pas → jamais réfuté)
+st_land, _, loi_land = COH.juge_dispositif({"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300})
+check(st_land == COH.VIOLE and loi_land == COH.L6, "juge : 1e-23 J/bit -> VIOLE via L6")
+check(COH.juge_dispositif({"type": "calcul", "energie_par_bit_efface_J": 2.9e-21, "t_K": 300})[0] == COH.COHERENT_BORNE,
+      "2,9e-21 J/bit (juste au-dessus de Landauer) -> cohérent")
+# stratégies naturelles propres (cerveau, rétine)
+natk = B.strategies_naturelles("calculer efficacement")
+check(len(natk) >= 4 and any("cerveau" in s["exemple"] for s in natk), "stratégies calcul propres (cerveau)")
+check(not any("luciole" in s["exemple"] for s in natk) and not any("calmar" in s["exemple"] for s in natk),
+      "pas de fuite des stratégies éclairage/propulsion vers le calcul")
+# les HUIT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "regle_or" in B.decompose("se propulser")
+      and "plafond_lm_par_W" in B.decompose("eclairer une piece"),
+      "les 8 domaines précédents inchangés après l'ajout du calcul (isolation)")
+
+# ── 15) DIXIÈME DOMAINE : communiquer (nouvelle loi L7 = limite de Shannon, débit ≤ B·log₂(1+S/N)) ──
+dco = B.decompose("transmettre de l information")
+check(dco["statut"] == "decompose", "besoin communication connu -> decompose")
+check("bande" in dco["objectif_reel"].lower() and "shannon" in dco["objectif_reel"].lower(),
+      "objectif réel communication = élargir la bande (Shannon), pas crier plus fort")
+check("capacite_shannon" in dco, "extras propres : la capacité de Shannon")
+com_canaux = {c.canal for c in dco["canaux"]}
+check(com_canaux == {"bande passante", "rapport signal sur bruit", "codage", "energie par bit"},
+      f"4 canaux de communication ({com_canaux})")
+prco = B.principes("transmettre de l information")
+pco = {e["nom"]: e for e in prco["liste"]}
+# l'IMPOSSIBLE (au-dessus de la capacité) est RÉFUTÉ
+sur_cap = pco["liaison « 20 Mbit/s sur 1 MHz à 30 dB »"]
+check(sur_cap["atome"].statut == A.REFUTE, "20 Mbit/s > capacité ~9,97 -> RÉFUTÉ (Shannon)")
+check(A.est_refute(sur_cap["atome"].contenu), "contenu réfuté (20 Mbit/s) dans la garde")
+sans_b = pco["transmission « sans bande passante »"]
+check(sans_b["atome"].statut == A.REFUTE, "débit > 0 sans bande passante -> RÉFUTÉ")
+# procédés réels -> SUPPOSITIONS
+for nom in ("radio numérique moderne (5G, référence)", "étalement de spectre / ultra-large bande (UWB)",
+            "rétrodiffusion ambiante (backscatter, RFID passif)"):
+    e = pco[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prco["liste"]), "aucun principe de communication promu en FAIT")
+check("candidat pour communication" in pco["radio numérique moderne (5G, référence)"]["atome"].portee.condition,
+      "portée des principes communication nommant communication")
+# la loi L7 : au-dessus de la capacité réfuté, en dessous cohérent
+st_sur, _, loi_sur = COH.juge_dispositif({"type": "communication", "debit_bits_par_s": 2e7,
+                                          "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000})
+check(st_sur == COH.VIOLE and loi_sur == COH.L7, "juge : 20 Mbit/s -> VIOLE via L7")
+st_sous, _, _ = COH.juge_dispositif({"type": "communication", "debit_bits_par_s": 8e6,
+                                     "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000})
+check(st_sous == COH.COHERENT_BORNE, "8 Mbit/s (< capacité) -> COHÉRENT, jamais réfuté")
+# stratégies naturelles propres (baleine, fourmi)
+natco = B.strategies_naturelles("transmettre de l information")
+check(len(natco) >= 4 and any("baleine" in s["exemple"] for s in natco), "stratégies communication propres (baleine)")
+check(not any("cerveau" in s["exemple"] for s in natco) and not any("luciole" in s["exemple"] for s in natco),
+      "pas de fuite des stratégies calcul/éclairage vers la communication")
+# les NEUF domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "regle_or" in B.decompose("se propulser")
+      and "limite_landauer_J_bit" in B.decompose("calculer efficacement"),
+      "les 9 domaines précédents inchangés après l'ajout de la communication (isolation)")
+
+# ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
+                              "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
+                              "calcul", "communication"],
+      "dix domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

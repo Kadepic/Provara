@@ -64,6 +64,37 @@ check(statut({"type": "dessalement", "energie_kWh_par_m3": 0.0, "osmose_pression
 check(statut({"type": "dessalement", "energie_kWh_par_m3": 0.5, "concentration_mol_par_L": 0.6,
               "facteur_vant_hoff": 2, "t_K": 298.15}) == P.VIOLE,
       "dessalement 0.5 kWh/m³ < plancher calculé ~0.83 (van 't Hoff)")
+# 2nd principe GÉNÉRALISÉ : séparation d'un composant dilué sous R·T·ln(1/x) (capture du CO₂ : x ≈ 4.2e-4 → ~19.3 kJ/mol).
+check(statut({"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 10, "t_K": 298.15}) == P.VIOLE,
+      "capture CO₂ air 10 kJ/mol < plancher ~19.3 (x=420 ppm)")
+check(loi({"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 10, "t_K": 298.15}) == P.L3,
+      "séparation diluée = travail minimal (L3)")
+check(statut({"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 0.0}) == P.VIOLE,
+      "capture CO₂ à énergie NULLE depuis l'air : impossible")
+# conservation de la QUANTITÉ DE MOUVEMENT : moteur sans réaction (EmDrive) et éjection supraluminique.
+check(statut({"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": False,
+              "ejecte_masse_ou_rayonnement": False}) == P.VIOLE,
+      "moteur sans réaction (poussée sans milieu ni éjection) -> VIOLE")
+check(loi({"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": False,
+           "ejecte_masse_ou_rayonnement": False}) == P.L4, "réactionless = conservation de la quantité de mouvement (L4)")
+check(statut({"type": "propulsion", "poussee_nette": 1.0, "ejecte_masse_ou_rayonnement": True,
+              "vitesse_ejection_m_s": 3.0e8}) == P.VIOLE,
+      "éjection à v > c -> VIOLE")
+# efficacité lumineuse > 683 lm/W (maximum spectral à 555 nm).
+check(statut({"type": "eclairage", "efficacite_lm_par_W": 800}) == P.VIOLE, "800 lm/W > 683 -> VIOLE")
+check(loi({"type": "eclairage", "efficacite_lm_par_W": 800}) == P.L5, "efficacité lumineuse = L5")
+# limite de Landauer : effacer un bit sous k·T·ln2 (~2.87e-21 J à 300 K).
+check(statut({"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300}) == P.VIOLE,
+      "1e-23 J/bit < Landauer ~2.87e-21 -> VIOLE")
+check(loi({"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300}) == P.L6, "Landauer = L6")
+check(statut({"type": "calcul", "energie_par_bit_efface_J": 0.0}) == P.VIOLE, "effacer un bit à énergie nulle -> VIOLE")
+# limite de Shannon : débit > B·log2(1+S/N) (B=1 MHz, S/N=1000 -> capacité ~9.97 Mbit/s).
+check(statut({"type": "communication", "debit_bits_par_s": 20e6, "bande_passante_Hz": 1e6,
+              "rapport_signal_bruit": 1000}) == P.VIOLE, "20 Mbit/s > capacité ~9.97 -> VIOLE")
+check(loi({"type": "communication", "debit_bits_par_s": 20e6, "bande_passante_Hz": 1e6,
+           "rapport_signal_bruit": 1000}) == P.L7, "capacité de canal = Shannon (L7)")
+check(statut({"type": "communication", "debit_bits_par_s": 1e6, "bande_passante_Hz": 0,
+              "rapport_signal_bruit": 1000}) == P.VIOLE, "débit > 0 à bande passante NULLE -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -84,6 +115,36 @@ reels = [
     {"type": "dessalement", "energie_kWh_par_m3": 1.0, "concentration_mol_par_L": 0.6,
      "facteur_vant_hoff": 2, "t_K": 298.15},                                          # > plancher calculé ~0.83
     {"type": "dessalement", "energie_kWh_par_m3": 2.0},                               # sans base π : indéterminé, PAS un faux positif
+    # séparations RÉELLES au-dessus du plancher R·T·ln(1/x).
+    {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 230, "t_K": 298.15},  # DAC solide réel (air)
+    {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120, "t_K": 298.15},    # amines aux fumées (x élevé)
+    {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 25, "t_K": 298.15},   # juste au-dessus du plancher ~19.3
+    {"type": "separation", "fraction_molaire": 4.2e-4},                                # sans énergie déclarée : indéterminé, PAS un faux positif
+    # propulsions RÉELLES : toujours un milieu OU une éjection -> jamais réactionless.
+    {"type": "propulsion", "poussee_nette": 1e5, "ejecte_masse_ou_rayonnement": True,
+     "vitesse_ejection_m_s": 4500},                                                    # fusée chimique (éjecte masse)
+    {"type": "propulsion", "poussee_nette": 0.1, "ejecte_masse_ou_rayonnement": True,
+     "vitesse_ejection_m_s": 30000},                                                   # moteur ionique (Isp élevé)
+    {"type": "propulsion", "poussee_nette": 0.01, "milieu_externe": True},             # voile solaire (rayonnement externe)
+    {"type": "propulsion", "poussee_nette": 5e4, "milieu_externe": True},              # turboréacteur (pousse l'air)
+    {"type": "propulsion", "poussee_nette": 1e-6, "ejecte_masse_ou_rayonnement": True,
+     "vitesse_ejection_m_s": 2.99e8},                                                  # fusée à photons (v proche de c, < c)
+    {"type": "propulsion"},                                                            # spec insuffisante : PAS un faux positif
+    # éclairages RÉELS : sous le plafond de 683 lm/W.
+    {"type": "eclairage", "efficacite_lm_par_W": 150},                                 # LED blanche courante
+    {"type": "eclairage", "efficacite_lm_par_W": 330},                                 # LED de labo (record) < 683
+    {"type": "eclairage", "efficacite_lm_par_W": 683},                                 # AU plafond (limite, ok)
+    {"type": "eclairage", "efficacite_lm_par_W": 15},                                  # incandescence
+    {"type": "eclairage"},                                                             # sans efficacité : PAS un faux positif
+    # calculs RÉELS : bien AU-DESSUS de la limite de Landauer.
+    {"type": "calcul", "energie_par_bit_efface_J": 1e-17, "t_K": 300},                 # CMOS actuel (~10^4× Landauer)
+    {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300},                 # sous-seuil / basse tension
+    {"type": "calcul", "energie_par_bit_efface_J": 2.9e-21, "t_K": 300},               # juste au-dessus de Landauer
+    {"type": "calcul"},                                                                # sans énergie déclarée : PAS un faux positif
+    # communications RÉELLES : sous la capacité de Shannon.
+    {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},  # sous capacité
+    {"type": "communication", "debit_bits_par_s": 9.9e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000}, # proche capacité
+    {"type": "communication", "debit_bits_par_s": 1e6},                                # sans B/SNR : indéterminé, PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

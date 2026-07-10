@@ -26,6 +26,8 @@ Détecteurs CONSERVATEURS : on ne déclare VIOLE que sur une contradiction CERTA
 """
 from __future__ import annotations
 
+import math
+
 VIOLE = "viole"
 COHERENT_BORNE = "coherent_borne"
 HORS = "hors"
@@ -34,6 +36,14 @@ HORS = "hors"
 L1 = "1er principe (conservation de l'énergie)"
 L2 = "2nd principe (entropie / Carnot)"
 L3 = "2nd principe (travail minimal de séparation / énergie de mélange de Gibbs)"
+L4 = "conservation de la quantité de mouvement (3e loi de Newton) / vitesse d'éjection ≤ c"
+L5 = "efficacité lumineuse ≤ 683 lm/W (maximum spectral à 555 nm, rendement radiant 100 %)"
+L6 = "limite de Landauer (≥ k·T·ln2 dissipés par bit d'information effacé)"
+L7 = "limite de Shannon (débit ≤ B·log₂(1 + S/N))"
+
+_C_LUMIERE = 299_792_458.0  # m/s
+_EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
+_K_BOLTZMANN = 1.380649e-23  # J/K
 
 
 def _nb(x):
@@ -56,7 +66,8 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     if not isinstance(spec, dict):
         return (HORS, "spec absente ou invalide", None)
     t = spec.get("type")
-    if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur", "dessalement"):
+    if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
+                 "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -134,6 +145,81 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                 return (VIOLE, f"énergie déclarée {e} kWh/m³ < travail minimal de séparation "
                                f"{round(e_min, 3)} kWh/m³ (π = {round(pi_bar, 2)} bar, récupération → 0) : "
                                f"séparation sous l'énergie de mélange de Gibbs", L3)
+
+    # --- 2nd principe : séparation d'un composant DILUÉ sous le travail minimal (généralise L3 au gaz/mélange). ---
+    # Le travail réversible minimal pour extraire un composant présent à la fraction molaire x d'un mélange idéal
+    # vaut, à la limite diluée (récupération → 0), R·T·ln(1/x) par mole extraite (énergie de mélange). Toute
+    # énergie déclarée SOUS ce plancher est impossible : on ne « démélange » pas pour moins que l'énergie de
+    # mélange. CONSERVATEUR (récupération → 0) : le minimum réel d'un procédé à récupération finie ne peut
+    # qu'être PLUS grand → aucun faux positif. C'est la forme GÉNÉRALE de la loi L3 (le dessalement en est le cas
+    # osmotique) : elle borne aussi la capture du CO₂ (x ≈ 4,2e-4 dans l'air), la séparation de gaz, etc.
+    if t == "separation":
+        x = spec.get("fraction_molaire")
+        tk = spec.get("t_K", 298.15)
+        e_mol = spec.get("energie_kJ_par_mol")
+        if _nb(x) and _nb(tk) and _nb(e_mol) and 0.0 < x < 1.0 and tk > 0:
+            w_min_kJ = 8.314462618 * tk * math.log(1.0 / x) / 1000.0     # R·T·ln(1/x), J/mol → kJ/mol
+            if e_mol < w_min_kJ - 1e-9:
+                return (VIOLE, f"énergie déclarée {e_mol} kJ/mol < travail minimal de séparation "
+                               f"{round(w_min_kJ, 3)} kJ/mol (fraction molaire x={x}, récupération → 0) : "
+                               f"séparation sous l'énergie de mélange", L3)
+
+    # --- Conservation de la QUANTITÉ DE MOUVEMENT : pas de poussée sans réaction (moteur « réactionless »). ---
+    # Pour produire une poussée NETTE, il faut pousser sur QUELQUE CHOSE : éjecter de la masse/du rayonnement,
+    # OU s'appuyer sur un milieu externe (air, eau, sol, champ). Une poussée revendiquée en l'ABSENCE des deux
+    # (moteur clos dans le vide, type EmDrive/Dean) viole la conservation de la quantité de mouvement. CONSERVATEUR :
+    # on ne réfute QUE si la spec déclare explicitement « ni milieu externe, ni éjection » — sinon (info absente,
+    # ou l'un des deux présent) on ne tranche pas → jamais un faux positif sur une fusée, un jet, une voile.
+    if t == "propulsion":
+        milieu = bool(spec.get("milieu_externe", False))
+        ejecte = bool(spec.get("ejecte_masse_ou_rayonnement", False))
+        poussee = spec.get("poussee_nette", spec.get("poussee_revendiquee"))
+        if (poussee is True or (_nb(poussee) and poussee > 0)) and not milieu and not ejecte:
+            return (VIOLE, "poussée nette sans milieu externe NI éjection de masse/rayonnement : moteur sans "
+                           "réaction — viole la conservation de la quantité de mouvement", L4)
+        v = spec.get("vitesse_ejection_m_s")
+        if _nb(v) and v > _C_LUMIERE:
+            return (VIOLE, f"vitesse d'éjection {v} m/s > c ({_C_LUMIERE:.0f}) : impossible", L4)
+
+    # --- Efficacité lumineuse : ≤ 683 lm/W (maximum spectral à 555 nm). ---
+    # L'œil répond au maximum à 555 nm, où 1 W de rayonnement = 683 lm. Aucune source ne peut dépasser 683 lm par
+    # watt ÉLECTRIQUE (il faudrait > 100 % de rendement radiant OU une réponse de l'œil > son pic). CONSERVATEUR :
+    # on ne réfute qu'au-DELÀ de 683 (le plafond CERTAIN) ; la lumière blanche à bon rendu plafonne plus bas
+    # (~300–350 lm/W) mais c'est fonction du spectre — pas une violation, donc jamais réfuté ici.
+    if t == "eclairage":
+        eff = spec.get("efficacite_lm_par_W")
+        if _nb(eff) and eff > _EFFICACITE_LUM_MAX + 1e-9:
+            return (VIOLE, f"efficacité lumineuse {eff} lm/W > {_EFFICACITE_LUM_MAX:.0f} lm/W (maximum à 555 nm, "
+                           f"rendement radiant 100 %) : impossible", L5)
+
+    # --- Limite de Landauer : effacer un bit dissipe au moins k·T·ln2. ---
+    # Effacer un bit d'information (opération LOGIQUEMENT IRRÉVERSIBLE) réduit l'entropie informationnelle et
+    # dissipe donc au minimum k·T·ln2 en chaleur (~2,87e-21 J à 300 K). Une machine qui déclare effacer des bits
+    # pour MOINS viole ce principe. CONSERVATEUR : ne s'applique qu'à l'énergie déclarée par bit EFFACÉ (le calcul
+    # réversible/adiabatique, qui n'efface pas, n'est pas concerné et n'est donc jamais réfuté ici).
+    if t == "calcul":
+        e_bit = spec.get("energie_par_bit_efface_J")
+        tk = spec.get("t_K", 300.0)
+        if _nb(e_bit) and _nb(tk) and tk > 0:
+            e_min = _K_BOLTZMANN * tk * math.log(2.0)
+            if e_bit < e_min * (1.0 - 1e-9):
+                return (VIOLE, f"énergie par bit effacé {e_bit} J < limite de Landauer {e_min:.3e} J "
+                               f"(k·T·ln2 à {tk} K) : impossible", L6)
+
+    # --- Limite de Shannon : débit ≤ B·log₂(1 + S/N). ---
+    # La capacité d'un canal (débit SANS erreur maximal) vaut B·log₂(1 + S/N) : on ne transmet pas d'information
+    # plus vite, quel que soit le codage. Un débit revendiqué AU-DESSUS de la capacité (bande passante nulle, ou
+    # rapport signal/bruit donné) est impossible. CONSERVATEUR : on ne réfute que si B, S/N ET débit sont donnés
+    # et débit > capacité → jamais un faux positif sur un système réel (toujours sous la capacité).
+    if t == "communication":
+        debit = spec.get("debit_bits_par_s")
+        b = spec.get("bande_passante_Hz")
+        snr = spec.get("rapport_signal_bruit")
+        if _nb(debit) and _nb(b) and _nb(snr) and b >= 0 and snr >= 0:
+            capacite = b * math.log2(1.0 + snr)
+            if debit > capacite + 1e-6:
+                return (VIOLE, f"débit {debit} bit/s > capacité de Shannon {capacite:.4g} bit/s "
+                               f"(B={b} Hz, S/N={snr}) : impossible", L7)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

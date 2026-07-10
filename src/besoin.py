@@ -822,6 +822,866 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  CINQUIÈME DOMAINE : capter le CO₂ — enjeu climatique. Même FAMILLE de loi que le dessalement (travail minimal
+#  de séparation), mais pas osmotique : on a GÉNÉRALISÉ `coherence_physique` d'un type `separation` (plancher
+#  R·T·ln(1/x) pour une fraction molaire x quelconque). Le CO₂ de l'air est ULTRA-dilué (x ≈ 4,2e-4 = 420 ppm) →
+#  travail minimal ≈ 19,3 kJ/mol ; aux fumées (x ≈ 0,12) il tombe à ≈ 5,3 kJ/mol. La DILUTION est l'ennemi.
+#  REFRAMING machine : capter d'abord LÀ où c'est concentré (fumées, cimenterie) ; pour la capture dans l'air
+#  (DAC) l'énergie réelle est dominée par la RÉGÉNÉRATION du sorbant (chaleur) → l'adosser à la chaleur fatale/
+#  solaire ; et le PUITS compte (minéralisation permanente vs stockage géologique). FAUX=0 : principes =
+#  suppositions jugées, 2 revendications sous le plancher RÉFUTÉES.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CO2 = "capture_co2"
+_ALIAS_CO2 = {
+    "capter le co2", "capturer le co2", "capture du co2", "capter le dioxyde de carbone",
+    "capture directe dans l air", "capter le carbone atmospherique", "capturer le carbone",
+}
+
+# ── « Canaux » de capture : les mécanismes physiques par lesquels on isole le CO₂ ────────────────────────────────
+_CANAUX_CO2 = [
+    Canal("absorption chimique", "co2", "lier le CO₂ dans un liquide (amines, hydroxydes), le relâcher par chauffage",
+          True, "sélectivité élevée même en gaz dilué ; l'énergie part surtout dans la RÉGÉNÉRATION (chaleur) — "
+                "à adosser à de la chaleur fatale"),
+    Canal("adsorption solide", "co2", "fixer le CO₂ sur un solide poreux, le relâcher (chaleur, vide, humidité)",
+          True, "modulable (amines greffées, MOF, zéolithes) ; la régénération par HUMIDITÉ (moisture-swing) ou "
+                "vide évite la chaleur — piste sous-exploitée pour la capture dans l'air"),
+    Canal("membrane", "co2", "laisser passer sélectivement le CO₂ à travers une membrane",
+          True, "compact, sans consommable ; sélectivité qui chute quand le CO₂ est très dilué → mieux aux fumées"),
+    Canal("mineralisation", "co2", "réagir le CO₂ avec des minéraux (olivine, basalte) en carbonate STABLE",
+          True, "le seul canal qui donne un PUITS permanent en une étape (pas de fuite) ; lent, exploite l'énergie "
+                "de réaction naturelle — l'altération des roches accélérée"),
+]
+
+# ── PRINCIPES candidats de capture — chacun JUGÉ par le travail minimal de séparation (type `separation`, L3) ─────
+_PRINCIPES_CO2 = [
+    _P("amines post-combustion (fumées, référence)",
+       "capter : laver les fumées (~12 % CO₂) par une solution d'amines, régénérée à la chaleur",
+       {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120.0}, True, False,
+       "CO₂ concentré (à stocker/valoriser)", "mature (industrie)",
+       0.6, "la référence : capter LÀ où le CO₂ est concentré (x élevé → plancher ~5 kJ/mol) ; l'énergie réelle "
+            "est dominée par la régénération à la chaleur — bien au-dessus du minimum, marge à réduire"),
+    _P("sorbant solide DAC (capture dans l'air)",
+       "capter : fixer le CO₂ de l'air ambiant (420 ppm) sur un sorbant solide, régénéré à ~100 °C",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 230.0}, True, True,
+       "CO₂ (stockage/valorisation)", "émergent (DAC)",
+       0.5, "capte l'air ULTRA-dilué → plancher ~19 kJ/mol, mais l'énergie réelle (régénération) est ~10× → "
+            "le levier n'est pas de battre le minimum mais de valoriser une chaleur GRATUITE pour régénérer"),
+    _P("solvant hydroxyde DAC (haute température)",
+       "capter : absorber le CO₂ de l'air dans une solution alcaline, régénérée par calcination à ~900 °C",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 350.0}, True, False,
+       "CO₂ (stockage géologique)", "démonstrateur (DAC)",
+       0.45, "voie industrielle robuste MAIS calcination très chaude = beaucoup d'énergie ; intérêt = échelle et "
+             "sorbant régénérable indéfiniment — à décarboner par la chaleur de la source"),
+    _P("séparation membranaire (fumées)",
+       "capter : membrane sélective au CO₂ sur un flux de fumées concentré",
+       {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 80.0}, True, True,
+       "CO₂ concentré", "émergent",
+       0.5, "compacte, sans solvant ni chaleur de régénération ; efficace tant que le CO₂ est CONCENTRÉ "
+            "(inadaptée à l'air ambiant) — le miroir « apparier à la concentration »"),
+    _P("moisture-swing (régénération par l'humidité, DAC)",
+       "capter : sorbant qui fixe le CO₂ sec et le relâche humide — régénéré par l'EAU, pas la chaleur",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 60.0}, True, True,
+       "CO₂ (valorisation)", "recherche (sous-exploité)",
+       0.45, "évite la chaleur de régénération en jouant sur l'humidité ambiante → énergie potentiellement bien "
+             "plus basse pour la capture dans l'air ; débit et durabilité du sorbant à prouver"),
+    _P("électrochimique (électro-swing / bascule de pH)",
+       "capter : fixer puis relâcher le CO₂ par un cycle électrique (bascule de pH ou quinones)",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 100.0}, True, True,
+       "CO₂ (valorisation)", "recherche",
+       0.45, "entraîné par l'ÉLECTRICITÉ (pas la chaleur) → se marie au renouvelable intermittent, modulable ; "
+             "encore au laboratoire, électrodes à faire durer — piste prometteuse"),
+    _P("altération accélérée / minéralisation (olivine, basalte)",
+       "capter : broyer des silicates (olivine) qui réagissent avec le CO₂ en carbonate stable",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 30.0}, True, True,
+       "carbonate SOLIDE (puits permanent, zéro fuite)", "recherche (terrain)",
+       0.5, "exploite l'énergie de RÉACTION naturelle (exothermique) → très peu d'énergie (broyage) ; donne "
+            "directement un puits PERMANENT ; lent, à l'échelle géologique — copie l'altération des roches"),
+    _P("BECCS (la biomasse capte, on stocke)",
+       "capter : laisser la photosynthèse capter le CO₂, brûler la biomasse et capter le CO₂ concentré des fumées",
+       {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120.0}, True, False,
+       "CO₂ concentré (stockage)", "déployé (niche)",
+       0.5, "délègue la capture DILUÉE (la plus chère) à la plante, gratuite et solaire ; on ne capte que le CO₂ "
+            "déjà CONCENTRÉ à la combustion — conditionné à la biomasse durable et à sa surface"),
+    _P("valorisation directe (CO₂ → carburant/matériau)",
+       "capter : convertir le CO₂ capté en carburant de synthèse ou en matériau (minéralisation du béton)",
+       {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120.0}, True, False,
+       "produit (carburant, béton) — puits selon durée de vie", "émergent",
+       0.4, "referme la boucle carbone SI l'énergie de conversion est décarbonée ; attention : un carburant "
+            "re-brûlé n'est PAS un puits (neutre au mieux) — seul un matériau durable stocke vraiment"),
+    _P("océan : alcalinité renforcée",
+       "capter : ajouter de l'alcalinité (roche broyée) à l'océan pour qu'il absorbe plus de CO₂ atmosphérique",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 40.0}, True, True,
+       "carbone dissous (bicarbonate stable ~millénaire)", "recherche",
+       0.4, "utilise l'immense capacité de l'océan comme puits ; énergie surtout pour broyer/transporter la "
+            "roche ; effets écologiques à cadrer — piste à grande échelle mais incertaine"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : sous le travail minimal de séparation d'un gaz dilué) ──
+    _P("DAC « à 10 kJ/mol depuis l'air ambiant »",
+       "capter : capture directe dans l'air (420 ppm) revendiquée à 10 kJ/mol",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 10.0}, True, True,
+       "CO₂", "revendication",
+       0.3, "revendication SOUS le plancher R·T·ln(1/x) ≈ 19,3 kJ/mol à 420 ppm — à réfuter par le travail minimal"),
+    _P("capture du CO₂ de l'air « sans énergie »",
+       "capter : extraire le CO₂ de l'air ambiant sans aucun apport d'énergie",
+       {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 0.0}, True, True,
+       "CO₂", "revendication",
+       0.25, "séparer un gaz dilué sans énergie ferait baisser l'entropie de mélange sans travail — impossible"),
+]
+
+_OBJECTIF_CO2 = ("Le but réel n'est pas d'« aspirer le CO₂ de l'air ambiant » (420 ppm : le composant est "
+                 "ULTRA-dilué, le travail minimal par mole y est le PLUS élevé, ≈ 19,3 kJ/mol) quand on peut le "
+                 "capter À LA SOURCE (fumées ~12 %, x 100–300× plus grand → minimum ≈ 5,3 kJ/mol). La DILUTION "
+                 "est l'ennemi. Leviers : capter d'abord aux sources concentrées ; pour la capture dans l'air, "
+                 "l'énergie réelle est dominée par la RÉGÉNÉRATION du sorbant (chaleur) → l'adosser à de la "
+                 "chaleur fatale/solaire, ou régénérer autrement (humidité, électricité) ; et le PUITS compte "
+                 "(minéralisation permanente vs stockage géologique vs valorisation). Chaque principe reste jugé "
+                 "par le travail minimal de séparation.")
+_LOI_CO2 = ("on ne sépare pas un composant dilué pour moins que R·T·ln(1/x) par mole (énergie de mélange) ; plus "
+            "x est petit (air ambiant 420 ppm → ~19,3 kJ/mol) plus le minimum MONTE ; gains réels = capter là où "
+            "c'est concentré (fumées), valoriser une chaleur/électricité gratuite pour la régénération, viser un "
+            "puits stable (minéralisation/géologie)")
+
+# La nature capte déjà le CO₂ : photosynthèse (solaire, dilué), biominéralisation, altération, sols, enzyme.
+_STRATEGIES_NATURE_CO2 = [
+    _Nature("photosynthèse (forêts, phytoplancton)",
+            ["capture SOLAIRE du CO₂ dilué (gratuite)", "à l'échelle planétaire", "fixé en matière organique"],
+            "déléguer la capture DILUÉE (la plus chère) à une machine solaire gratuite — le levier de BECCS"),
+    _Nature("coccolithophores / coraux / coquilles (biominéralisation)",
+            ["fixation du CO₂ en carbonate de calcium", "puits SOLIDE permanent", "catalysé par le vivant"],
+            "transformer le CO₂ en minéral stable = puits sans fuite — le modèle de la minéralisation"),
+    _Nature("altération des silicates (olivine, basalte)",
+            ["réaction lente roche + CO₂ → carbonate", "puits géologique du cycle du carbone long",
+             "énergie de réaction naturelle"],
+            "le thermostat géologique de la Terre : l'altération accélérée ne fait que le HÂTER"),
+    _Nature("tourbière / sol anoxique",
+            ["stockage du carbone en matière organique non décomposée", "conservé des millénaires si anoxique"],
+            "stocker le carbone en le soustrayant à la décomposition — garder le milieu privé d'oxygène"),
+    _Nature("anhydrase carbonique (enzyme)",
+            ["catalyse l'hydratation du CO₂ ~10⁶×", "accélère la capture sans la forcer"],
+            "un catalyseur rend la capture du dilué RAPIDE sans en changer l'énergie — copier l'enzyme"),
+]
+
+enregistre(Domaine(
+    nom=_CO2,
+    aliases=frozenset(_ALIAS_CO2),
+    objectif=_OBJECTIF_CO2,
+    canaux=_CANAUX_CO2,
+    principes=_PRINCIPES_CO2,
+    strategies=_STRATEGIES_NATURE_CO2,
+    loi=_LOI_CO2,
+    extras={"fraction_co2_air": "≈ 4,2e-4 (420 ppm)", "travail_min_air_kJ_mol": "≈ 19,3 (420 ppm, 298 K)",
+            "note_source": "aux fumées x ≈ 0,12 le minimum tombe à ≈ 5,3 kJ/mol — capter concentré d'abord"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  SIXIÈME DOMAINE : produire de l'eau potable de l'air (AWG). La loi est DÉJÀ couverte par le type `separation`
+#  généralisé : extraire l'eau d'un air à humidité relative φ vaut au minimum R·T·ln(1/φ) par mole (φ = ACTIVITÉ
+#  de la vapeur d'eau ; on réutilise `fraction_molaire = HR`). Aucune extension du juge. À φ → 0 (air sec) le
+#  minimum DIVERGE : on ne tire pas d'eau d'un air parfaitement sec.
+#  REFRAMING machine : le rendement dépend D'ABORD de l'humidité, pas de la techno. Leviers : opérer QUAND/OÙ
+#  l'air est humide (nuit, côte, brouillard) ; ne pas refroidir tout l'air mais SORBER (capter la nuit humide,
+#  relâcher au soleil le jour) ; là où le brouillard existe, l'INTERCEPTER est quasi gratuit (un filet).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_AWG = "eau_potable_air"
+_ALIAS_AWG = {
+    "produire de l eau de l air", "produire de l eau potable de l air", "generateur d eau atmospherique",
+    "extraire l eau de l air", "recuperer l eau de l air", "capter l humidite de l air",
+}
+
+# ── « Canaux » : les mécanismes pour tirer l'eau de l'air ────────────────────────────────────────────────────────
+_CANAUX_AWG = [
+    Canal("refroidissement", "eau", "refroidir une surface SOUS le point de rosée pour condenser la vapeur",
+          False, "simple mais on paie le refroidissement de TOUT l'air ; gratuit si un puits froid existe (sol, "
+                 "nuit) ; compresseur = bruit"),
+    Canal("sorption", "eau", "capter la vapeur sur un dessiccant/MOF la nuit, la relâcher au soleil le jour",
+          True, "découple capture (air humide, nuit) et régénération (chaleur solaire, jour) → marche en climat "
+                "SEC là où la condensation échoue ; le levier clé"),
+    Canal("interception", "eau", "intercepter les gouttelettes déjà condensées du brouillard/de la rosée sur un filet",
+          True, "quasi gratuit LÀ où le brouillard existe (côtes, montagnes) : pas de séparation, juste une "
+                "collecte — mais conditionné à la présence de brouillard"),
+    Canal("membrane", "eau", "transporter sélectivement la vapeur à travers une membrane (dessiccant liquide)",
+          True, "compact ; l'énergie reste dans la régénération du dessiccant — à adosser à une chaleur fatale"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le travail minimal de séparation (type `separation`, x = HR) ────────────
+_PRINCIPES_AWG = [
+    _P("condensation par refroidissement (référence)",
+       "produire de l'eau : refroidir l'air humide sous le point de rosée, collecter le condensat",
+       {"type": "separation", "fraction_molaire": 0.6, "energie_kJ_par_mol": 26.0}, False, False,
+       "condensat (eau liquide)", "mature",
+       0.6, "la référence : ~0,3–0,5 kWh/L par air modérément humide ; on refroidit tout l'air (irréversible, "
+            "latente non récupérée) → loin du minimum ; échoue en air sec — la barre à descendre"),
+    _P("sorption solaire (dessiccant régénéré au soleil)",
+       "produire de l'eau : un dessiccant capte la vapeur la nuit, le soleil la relâche le jour, condensée à part",
+       {"type": "separation", "fraction_molaire": 0.3, "energie_kJ_par_mol": 20.0}, True, True,
+       "condensat", "émergent",
+       0.55, "marche en climat SEC (capte à basse HR) et l'énergie est SOLAIRE (gratuite) → le levier « découpler "
+             "capture et régénération » ; débit par cycle jour/nuit limité"),
+    _P("MOF hygroscopique (récolte d'eau à basse humidité)",
+       "produire de l'eau : un réseau métallo-organique (MOF) capte l'eau à 10–20 % HR, relâchée par une chaleur douce",
+       {"type": "separation", "fraction_molaire": 0.2, "energie_kJ_par_mol": 15.0}, True, True,
+       "condensat", "recherche (démonstrateurs désert)",
+       0.5, "capte l'eau même en plein désert (HR très basse) ; réglable par chimie du MOF ; coût et débit du "
+            "matériau à industrialiser — piste sous-exploitée qui repousse la limite d'humidité"),
+    _P("filet à brouillard (interception)",
+       "produire de l'eau : un maillage intercepte les gouttelettes du brouillard, l'eau ruisselle par gravité",
+       {"type": "separation", "fraction_molaire": 0.98, "energie_kJ_par_mol": 0.3}, True, True,
+       "eau ruisselée", "mature (déployé)",
+       0.55, "quasi ZÉRO énergie (maillage passif) LÀ où le brouillard existe (côtes, altitude) ; ce n'est pas de "
+            "la séparation mais une COLLECTE de gouttes déjà formées — conditionné au brouillard"),
+    _P("condensation radiative nocturne",
+       "produire de l'eau : une surface rayonne vers le ciel, descend sous le point de rosée, la rosée est collectée",
+       {"type": "separation", "fraction_molaire": 0.9, "energie_kJ_par_mol": 0.5}, True, True,
+       "rosée collectée", "connu (peu diffusé)",
+       0.5, "puits = le ciel (gratuit) ; passif, silencieux ; débit modeste, exige un ciel dégagé et un air déjà "
+            "humide la nuit — sous-exploité en complément"),
+    _P("dessiccant liquide (saumure LiCl, régénération solaire/fatale)",
+       "produire de l'eau : une saumure hygroscopique absorbe la vapeur, régénérée par chaleur, l'eau condensée à part",
+       {"type": "separation", "fraction_molaire": 0.4, "energie_kJ_par_mol": 22.0}, True, True,
+       "condensat", "émergent",
+       0.5, "absorbe fort même à HR modérée ; l'énergie part dans la régénération de la saumure → l'adosser à une "
+            "chaleur fatale/solaire ; corrosion à gérer"),
+    _P("condenseur couplé au sol (puits froid géothermique)",
+       "produire de l'eau : condenser l'air humide sur une surface refroidie par le sol (température stable)",
+       {"type": "separation", "fraction_molaire": 0.7, "energie_kJ_par_mol": 8.0}, True, False,
+       "condensat", "simple",
+       0.5, "utilise le SOL comme puits froid gratuit (comme la grotte) → atteindre le point de rosée coûte peu ; "
+            "conditionné à un sol assez frais et à un air assez humide"),
+    _P("membrane à dessiccant (vapeur transportée sélectivement)",
+       "produire de l'eau : une membrane laisse passer la vapeur d'eau, condensée du côté sec",
+       {"type": "separation", "fraction_molaire": 0.5, "energie_kJ_par_mol": 18.0}, True, True,
+       "condensat", "recherche",
+       0.45, "compacte, sans pièce froide ; l'énergie reste dans le maintien du gradient/de la régénération — "
+             "piste jeune à valider hors labo"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : sous le travail minimal de séparation R·T·ln(1/HR)) ──
+    _P("générateur d'eau « à 0,5 kJ/mol par 50 % d'humidité »",
+       "produire de l'eau : extraire l'eau d'un air à 50 % HR revendiqué à 0,5 kJ/mol",
+       {"type": "separation", "fraction_molaire": 0.5, "energie_kJ_par_mol": 0.5}, True, True,
+       "eau", "revendication",
+       0.3, "revendication SOUS le plancher R·T·ln(1/0,5) ≈ 1,72 kJ/mol — à réfuter par le travail minimal"),
+    _P("eau d'un air TRÈS SEC (5 % HR) « aussi peu cher qu'à 80 % »",
+       "produire de l'eau : extraire l'eau d'un air à 5 % HR pour seulement 2 kJ/mol",
+       {"type": "separation", "fraction_molaire": 0.05, "energie_kJ_par_mol": 2.0}, True, True,
+       "eau", "revendication",
+       0.25, "à 5 % HR le plancher monte à R·T·ln(20) ≈ 7,4 kJ/mol : la SÉCHERESSE renchérit l'extraction — 2 kJ/mol "
+             "est impossible (à air parfaitement sec, le minimum diverge)"),
+]
+
+_OBJECTIF_AWG = ("Le but réel n'est pas d'« arracher de l'eau à n'importe quel air » : le rendement dépend "
+                 "D'ABORD de l'HUMIDITÉ relative (le travail minimal est R·T·ln(1/HR) par mole — il DIVERGE quand "
+                 "l'air devient sec). Leviers : opérer QUAND/OÙ l'air est humide (nuit, côte, brouillard) ; ne pas "
+                 "refroidir TOUT l'air mais SORBER (capter la nuit humide, régénérer au soleil le jour → marche "
+                 "même en climat sec) ; là où le brouillard existe, l'INTERCEPTER est quasi gratuit (un filet) ; "
+                 "viser un puits froid gratuit (sol, ciel nocturne) plutôt qu'un compresseur. Chaque principe "
+                 "reste jugé par le travail minimal de séparation.")
+_LOI_AWG = ("on ne condense pas l'eau de l'air pour moins que R·T·ln(1/HR) par mole (HR = humidité relative = "
+            "activité de la vapeur) ; plus l'air est SEC plus le minimum MONTE (il diverge à HR → 0) ; gains "
+            "réels = opérer à HR élevée, sorber plutôt que tout refroidir, puits froid gratuit (sol/ciel), "
+            "intercepter le brouillard existant")
+
+# La nature récolte déjà l'eau de l'air : scarabée du Namib, toile d'araignée, lézard cornu, rosée, cactus.
+_STRATEGIES_NATURE_AWG = [
+    _Nature("scarabée du Namib (récolte le brouillard sur son dos)",
+            ["surface à motifs hydrophiles/hydrophobes", "gouttes qui grossissent puis roulent vers la bouche",
+             "posture face au vent de brouillard"],
+            "structurer la MOUILLABILITÉ d'une surface capte le brouillard sans énergie — copier le motif"),
+    _Nature("toile d'araignée (capte les gouttelettes de brouillard)",
+            ["fibres à nœuds périodiques", "gradient de Laplace qui rassemble les gouttes aux nœuds"],
+            "la GÉOMÉTRIE des fibres (nœuds) collecte l'eau du brouillard — un levier de matériau, pas d'énergie"),
+    _Nature("lézard cornu (Moloch) — l'eau remonte sur la peau",
+            ["réseau de micro-canaux entre les écailles", "transport CAPILLAIRE de la rosée vers la bouche",
+             "contre la gravité, sans muscle"],
+            "des canaux capillaires acheminent l'eau collectée sans énergie — copier le transport passif"),
+    _Nature("rosée nocturne sur les feuilles",
+            ["refroidissement RADIATIF vers le ciel", "descente sous le point de rosée", "collecte par ruissellement"],
+            "le ciel nocturne est un puits froid gratuit : rayonner, condenser, collecter — sans machine"),
+    _Nature("cactus / épines coniques",
+            ["gouttes captées sur des épines CONIQUES", "gradient de Laplace qui les pousse vers la base"],
+            "une géométrie conique déplace les gouttes toute seule — le levier de forme, zéro énergie"),
+]
+
+enregistre(Domaine(
+    nom=_AWG,
+    aliases=frozenset(_ALIAS_AWG),
+    objectif=_OBJECTIF_AWG,
+    canaux=_CANAUX_AWG,
+    principes=_PRINCIPES_AWG,
+    strategies=_STRATEGIES_NATURE_AWG,
+    loi=_LOI_AWG,
+    extras={"humidite_relative_moteur": "le rendement dépend D'ABORD de l'humidité relative (HR), pas de la techno",
+            "note_secheresse": "à HR très basse le travail minimal R·T·ln(1/HR) diverge — pas d'eau d'un air parfaitement sec"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  SEPTIÈME DOMAINE : se propulser. Nouvelle loi dure ajoutée au juge (L4) : la conservation de la QUANTITÉ DE
+#  MOUVEMENT. Pour produire une poussée, il faut pousser sur QUELQUE CHOSE — éjecter de la masse/du rayonnement
+#  OU s'appuyer sur un milieu/momentum externe. Un « moteur sans réaction » (EmDrive, Dean drive) est réfuté ;
+#  l'éjection supraluminique aussi.
+#  REFRAMING machine : on ne CONTOURNE pas cette loi (impossible), on CHOISIT la meilleure réaction. Dans le VIDE
+#  sans milieu, il FAUT emporter de la masse → maximiser la vitesse d'éjection (impulsion spécifique) pour en
+#  emporter moins ; sinon emprunter un momentum qu'on ne porte PAS (lumière du Soleil, laser depuis le sol,
+#  fronde gravitationnelle). S'il y a un milieu (air, eau, sol, champ), pousser dessus = zéro ergol.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_PROP = "propulsion"
+_ALIAS_PROP = {
+    "se propulser", "propulsion spatiale", "propulser un engin", "avancer dans le vide",
+    "propulser une fusee", "propulsion sans ergol", "se deplacer dans l espace",
+}
+
+# ── « Canaux » : ce sur quoi on POUSSE pour avancer ──────────────────────────────────────────────────────────────
+_CANAUX_PROP = [
+    Canal("ejection de masse", "quantite_mouvement", "emporter puis éjecter de la masse/du rayonnement (fusée, ion, photon)",
+          False, "la SEULE option dans le vide sans milieu ; le levier = maximiser la vitesse d'éjection (Isp) "
+                 "pour emporter moins d'ergol ; bruit/chaleur du jet"),
+    Canal("milieu fluide", "quantite_mouvement", "pousser sur l'air ou l'eau (hélice, réacteur, nage)",
+          False, "zéro ergol emporté (le milieu EST la réaction) ; inutilisable dans le vide"),
+    Canal("momentum externe", "quantite_mouvement", "emprunter un momentum qu'on ne porte pas (voile solaire, laser, fronde gravitationnelle)",
+          True, "zéro ergol : la lumière/le champ/la planète fournit l'impulsion ; poussée faible ou source "
+                "externe requise — sous-exploité pour l'espace lointain"),
+    Canal("appui solide", "quantite_mouvement", "pousser sur le sol par friction ou champ (roue, patte, sustentation magnétique)",
+          True, "très efficace au sol ; le rail/la route fournissent la réaction ; hors sol, inopérant"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la conservation de la quantité de mouvement (type `propulsion`, L4) ─────
+_PRINCIPES_PROP = [
+    _P("fusée chimique (référence, vide)",
+       "se propulser : brûler un ergol et éjecter les gaz à grande vitesse",
+       {"type": "propulsion", "poussee_nette": 1e6, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 4500}, False, False,
+       "gaz éjectés (masse emportée)", "mature",
+       0.6, "forte poussée MAIS vitesse d'éjection faible → il faut emporter ÉNORMÉMENT d'ergol (équation de "
+            "Tsiolkovski) ; la référence pour décoller — à dépasser en Isp pour l'espace lointain"),
+    _P("moteur ionique / à plasma",
+       "se propulser : accélérer des ions par un champ électrique et les éjecter à très grande vitesse",
+       {"type": "propulsion", "poussee_nette": 0.2, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 30000}, True, True,
+       "ions éjectés", "mature (spatial)",
+       0.6, "vitesse d'éjection ~7× la chimie → emporte BEAUCOUP moins d'ergol pour la même mission ; poussée "
+            "minuscule (accélération lente) → idéal espace lointain, pas le décollage — le levier « Isp élevé »"),
+    _P("voile solaire (momentum de la lumière)",
+       "se propulser : une grande voile réfléchit la lumière du Soleil, dont l'impulsion pousse le vaisseau",
+       {"type": "propulsion", "poussee_nette": 0.01, "milieu_externe": True}, True, True,
+       "aucun ergol (momentum externe : photons du Soleil)", "démontré (niche)",
+       0.55, "ZÉRO ergol emporté : c'est le Soleil qui fournit l'impulsion ; poussée très faible mais CONTINUE et "
+             "gratuite → vitesse cumulée élevée sur la durée ; s'affaiblit loin du Soleil"),
+    _P("propulsion laser (voile poussée depuis le sol)",
+       "se propulser : un laser puissant reste au sol/en orbite et pousse une voile légère embarquée",
+       {"type": "propulsion", "poussee_nette": 0.1, "milieu_externe": True}, True, True,
+       "aucun ergol embarqué (momentum externe : le laser)", "recherche (Breakthrough Starshot)",
+       0.45, "l'ÉNERGIE reste à la maison → le vaisseau n'emporte presque rien → accélérations extrêmes possibles "
+             "pour une sonde minuscule ; exige un laser gigantesque et un pointage parfait — sous-exploité"),
+    _P("turboréacteur / hélice (atmosphère)",
+       "se propulser : accélérer l'air vers l'arrière pour avancer (réacteur, hélice)",
+       {"type": "propulsion", "poussee_nette": 5e4, "milieu_externe": True}, False, True,
+       "aucun ergol de réaction (le milieu = l'air)", "mature",
+       0.5, "n'emporte pas la masse de réaction (l'air est gratuit) → très efficace DANS l'atmosphère ; "
+            "totalement inopérant dans le vide — apparier au milieu"),
+    _P("fronde gravitationnelle (assistance gravitationnelle)",
+       "se propulser : passer près d'une planète pour emprunter une part de sa quantité de mouvement orbitale",
+       {"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": True}, True, True,
+       "aucun ergol (momentum emprunté à la planète)", "mature (missions lointaines)",
+       0.5, "gain de vitesse SANS ergol en volant la quantité de mouvement d'une planète (conservée à l'échelle "
+            "du système) ; conditionné aux alignements et aux fenêtres de tir — le levier « momentum externe »"),
+    _P("voile magnétique / magnétoplasma (vent solaire)",
+       "se propulser : un champ magnétique embarqué dévie le vent solaire, qui pousse le vaisseau",
+       {"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": True}, True, True,
+       "aucun ergol (momentum externe : vent solaire / champ planétaire)", "recherche",
+       0.4, "s'appuie sur le plasma interplanétaire ou le champ d'une planète → zéro ergol ; poussée faible et "
+            "conditionnée à la présence de plasma/champ — piste peu explorée"),
+    _P("propulsion nucléaire thermique",
+       "se propulser : un réacteur chauffe un gaz léger (hydrogène) éjecté à haute vitesse",
+       {"type": "propulsion", "poussee_nette": 5e5, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 9000}, False, False,
+       "hydrogène éjecté", "démonstrateur",
+       0.45, "vitesse d'éjection ~2× la chimie avec une forte poussée → compromis pour l'espace habité ; "
+             "contraintes de sûreté nucléaire — emporte tout de même sa masse de réaction"),
+    _P("fusée à photons",
+       "se propulser : éjecter des photons (lumière) dont l'impulsion propulse le vaisseau",
+       {"type": "propulsion", "poussee_nette": 1e-6, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 2.99e8}, True, True,
+       "photons éjectés (vitesse d'éjection = c, l'ultime)", "théorique",
+       0.3, "vitesse d'éjection = c → impulsion spécifique ULTIME (emporte le minimum de « masse ») ; MAIS poussée "
+            "infime pour une énergie colossale → horizon lointain, strictement dans les lois"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : conservation de la quantité de mouvement / v ≤ c) ──
+    _P("moteur sans réaction (type EmDrive)",
+       "se propulser : produire une poussée nette dans le vide sans éjecter de masse ni s'appuyer sur rien",
+       {"type": "propulsion", "poussee_nette": 1.0, "milieu_externe": False,
+        "ejecte_masse_ou_rayonnement": False}, True, True,
+       "— (aucune réaction)", "revendication",
+       0.3, "poussée sans réaction = viole la conservation de la quantité de mouvement — à réfuter (EmDrive/Dean)"),
+    _P("éjection supraluminique",
+       "se propulser : éjecter la masse de réaction plus vite que la lumière pour une impulsion spécifique infinie",
+       {"type": "propulsion", "poussee_nette": 1.0, "ejecte_masse_ou_rayonnement": True,
+        "vitesse_ejection_m_s": 3.0e8}, True, True,
+       "masse éjectée", "revendication",
+       0.25, "vitesse d'éjection > c = impossible (relativité)"),
+]
+
+_OBJECTIF_PROP = ("Le but réel n'est pas de « trouver un moteur qui avance tout seul » (impossible : il faut "
+                  "pousser sur QUELQUE CHOSE) mais de CHOISIR la meilleure réaction. S'il y a un milieu (air, eau, "
+                  "sol, champ), pousser dessus = zéro ergol emporté. Dans le VIDE sans milieu, il FAUT emporter de "
+                  "la masse → maximiser la vitesse d'éjection (impulsion spécifique) pour en emporter moins ; ou "
+                  "EMPRUNTER un momentum qu'on ne porte pas (lumière du Soleil, laser depuis le sol, fronde "
+                  "gravitationnelle). Chaque principe reste jugé par la conservation de la quantité de mouvement.")
+_LOI_PROP = ("conservation de la quantité de mouvement (3e loi de Newton) : pas de poussée nette sans réaction — "
+             "éjecter de la masse/du rayonnement, s'appuyer sur un milieu, ou emprunter un momentum externe ; la "
+             "vitesse d'éjection ≤ c ; gains réels = apparier au milieu, maximiser l'impulsion spécifique, "
+             "emprunter un momentum gratuit (lumière/planète)")
+
+# La nature se propulse par réaction (calmar), en poussant le fluide (poisson) ou le sol (serpent), ou emprunte le vent.
+_STRATEGIES_NATURE_PROP = [
+    _Nature("calmar / poulpe (jet d'eau)",
+            ["remplir puis EXPULSER de l'eau", "poussée par réaction (masse éjectée)",
+             "orientation du siphon"],
+            "la fusée biologique : éjecter une masse pour avancer — le principe de la réaction pure"),
+    _Nature("poisson / oiseau (pousser le fluide)",
+            ["nageoires/ailes qui accélèrent l'eau/l'air vers l'arrière", "le milieu fournit la réaction"],
+            "pousser sur le milieu = avancer sans rien emporter — inapplicable dans le vide"),
+    _Nature("serpent / ver (pousser le sol)",
+            ["friction directionnelle contre le substrat", "le sol fournit la réaction"],
+            "s'appuyer sur le solide : la réaction vient de la route, pas d'un ergol"),
+    _Nature("samare (graine ailée d'érable) / pissenlit",
+            ["capte le momentum du VENT extérieur", "géométrie qui maximise la portance/traînée"],
+            "emprunter le momentum de l'air en mouvement — zéro énergie propre, comme la voile"),
+    _Nature("araignée « ballooning » (vol par fil de soie)",
+            ["fil de soie captant le vent/le champ électrique atmosphérique", "s'élève sans muscle propulsif"],
+            "emprunter un momentum/champ externe pour voyager loin — le levier de la voile, en vivant"),
+]
+
+enregistre(Domaine(
+    nom=_PROP,
+    aliases=frozenset(_ALIAS_PROP),
+    objectif=_OBJECTIF_PROP,
+    canaux=_CANAUX_PROP,
+    principes=_PRINCIPES_PROP,
+    strategies=_STRATEGIES_NATURE_PROP,
+    loi=_LOI_PROP,
+    extras={"regle_or": "pour avancer il faut pousser sur quelque chose : masse éjectée, milieu, ou momentum externe",
+            "vide_note": "dans le vide sans milieu, il FAUT éjecter de la masse/du rayonnement — pas d'échappatoire"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  HUITIÈME DOMAINE : éclairer. Nouvelle loi dure au juge (L5) : l'EFFICACITÉ LUMINEUSE ≤ 683 lm/W (l'œil répond
+#  au maximum à 555 nm ; au-delà, il faudrait > 100 % de rendement radiant). Une lampe revendiquant plus est
+#  réfutée. La lumière BLANCHE à bon rendu plafonne plus bas (~300–350 lm/W) — noté au domaine, pas réfuté (c'est
+#  fonction du spectre, pas une violation certaine).
+#  REFRAMING machine : le but n'est pas de « produire de la lumière » mais de METTRE des lumens là où l'ŒIL en a
+#  besoin, aux longueurs d'onde qu'il voit. Leviers : n'émettre que le VISIBLE (aucun watt en IR/UV) ; DIRIGER la
+#  lumière (tâche, optique) au lieu d'inonder ; couleur ADAPTÉE (monochromatique là où le rendu n'importe pas) ;
+#  et surtout — le lumen le moins cher est celui qu'on NE génère PAS (lumière du jour guidée).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_ECLAIRAGE = "eclairage"
+_ALIAS_ECLAIRAGE = {
+    "eclairer", "produire de la lumiere", "eclairer une piece", "eclairage efficace",
+    "s eclairer", "eclairer un espace", "eclairer sans gaspiller",
+}
+
+# ── « Canaux » : les leviers d'un éclairage efficace ─────────────────────────────────────────────────────────────
+_CANAUX_ECLAIRAGE = [
+    Canal("efficacite spectrale", "lumiere", "n'émettre QUE les longueurs d'onde visibles (aucun watt en IR/UV)",
+          True, "l'incandescence gaspille ~95 % en IR (chaleur) ; une source « froide » qui n'émet que le visible "
+                "s'approche du plafond — le levier premier"),
+    Canal("direction", "lumiere", "diriger les lumens là où l'œil regarde (optique, éclairage de tâche)",
+          True, "inonder une pièce pour éclairer un livre gaspille l'essentiel ; l'optique met la lumière au bon "
+                "endroit — souvent plus de gain que d'améliorer la source"),
+    Canal("couleur adaptee", "lumiere", "monochromatique là où le rendu des couleurs n'importe pas (rue), large sinon",
+          True, "une lumière monochromatique à 555 nm approche 683 lm/W mais rend mal les couleurs → parfait pour "
+                "un lampadaire, inadapté à un salon : apparier le spectre au besoin"),
+    Canal("lumiere naturelle", "lumiere", "guider la lumière du JOUR (puits de lumière, fibres) au lieu d'en générer",
+          True, "le lumen le moins cher est celui qu'on ne produit pas : zéro électricité aux heures de jour — "
+                "le levier le plus sous-exploité en bâtiment"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par l'efficacité lumineuse (type `eclairage`, ≤ 683 lm/W) ──────────────────
+_PRINCIPES_ECLAIRAGE = [
+    _P("LED blanche (référence)",
+       "éclairer : diode électroluminescente blanche (bleu + luminophore)",
+       {"type": "eclairage", "efficacite_lm_par_W": 150.0}, True, True,
+       "lumière visible", "mature (dominant)",
+       0.65, "~150 lm/W en pratique, ~10× l'incandescence ; marge encore réelle vers le plafond blanc (~300–350) ; "
+             "la référence à dépasser en spectre et en optique"),
+    _P("LED de laboratoire haute efficacité",
+       "éclairer : LED blanche optimisée (record de laboratoire)",
+       {"type": "eclairage", "efficacite_lm_par_W": 330.0}, True, True,
+       "lumière visible", "recherche",
+       0.5, "~330 lm/W en labo → approche le plafond de la lumière BLANCHE (~350) ; industrialiser le spectre et "
+            "la thermique reste le verrou — sous le plafond physique de 683"),
+    _P("sodium basse pression (monochromatique)",
+       "éclairer : lampe à vapeur de sodium émettant une raie jaune quasi monochromatique",
+       {"type": "eclairage", "efficacite_lm_par_W": 200.0}, True, True,
+       "lumière jaune (589 nm)", "mature (déclin)",
+       0.45, "très efficace CAR monochromatique (peu de spectre gaspillé) MAIS rend les couleurs en noir et blanc "
+             "→ réservé aux routes ; illustre « couleur adaptée au besoin »"),
+    _P("fluorescent (tube)",
+       "éclairer : décharge dans un gaz excitant un luminophore",
+       {"type": "eclairage", "efficacite_lm_par_W": 90.0}, True, False,
+       "lumière visible", "mature (déclin)",
+       0.4, "~90 lm/W, supplanté par la LED ; contient du mercure — en voie de remplacement"),
+    _P("incandescence (référence basse)",
+       "éclairer : filament chauffé au blanc (rayonnement thermique)",
+       {"type": "eclairage", "efficacite_lm_par_W": 15.0}, False, True,
+       "lumière + BEAUCOUP d'IR (chaleur)", "obsolète",
+       0.5, "~15 lm/W : ~95 % de l'énergie part en IR invisible → l'archétype du gaspillage spectral, la barre "
+            "basse qui montre le levier « n'émettre que le visible »"),
+    _P("laser blanc (RGB) / éclairage laser",
+       "éclairer : combiner des lasers rouge/vert/bleu en lumière blanche, faisceau dirigeable",
+       {"type": "eclairage", "efficacite_lm_par_W": 250.0}, True, True,
+       "lumière visible dirigée", "émergent (phares, projection)",
+       0.4, "spectre choisi (peu de gaspillage) ET directivité extrême (optique) → double levier ; sécurité "
+            "oculaire et coût à maîtriser — piste pour l'éclairage ciblé"),
+    _P("électroluminescence directe (QLED / OLED efficace)",
+       "éclairer : émission directe par des points quantiques/molécules, sans luminophore de conversion",
+       {"type": "eclairage", "efficacite_lm_par_W": 200.0}, True, True,
+       "lumière visible", "recherche",
+       0.4, "évite la perte de conversion du luminophore ; spectre réglable finement → viser le plafond blanc en "
+            "gaspillant moins ; durée de vie des émetteurs à prouver"),
+    _P("lumière du jour guidée (puits de lumière, fibres optiques)",
+       "éclairer : capter la lumière du soleil et la conduire à l'intérieur (conduits, fibres) sans électricité",
+       {"type": "eclairage"}, True, True,
+       "lumière solaire (zéro électricité de jour)", "mature (sous-exploité)",
+       0.55, "le lumen le moins cher est celui qu'on NE génère PAS : de jour, zéro watt électrique ; conditionné à "
+             "l'accès au soleil et à des conduits courts — le plus gros gain souvent ignoré en bâtiment"),
+    _P("éclairage de tâche + détection de présence",
+       "éclairer : n'éclairer QUE la zone utile et QUE quand quelqu'un est présent (optique + capteurs)",
+       {"type": "eclairage"}, True, True,
+       "lumière visible ciblée", "mature (sous-exploité)",
+       0.5, "le gain n'est pas dans la source mais dans NE PAS éclairer l'inutile (pièces vides, plafonds) ; "
+            "souvent plus d'économie que de changer d'ampoule — le levier « direction + à la demande »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : efficacité lumineuse > 683 lm/W) ──
+    _P("LED « à 800 lm/W »",
+       "éclairer : LED revendiquant 800 lm par watt électrique",
+       {"type": "eclairage", "efficacite_lm_par_W": 800.0}, True, True,
+       "lumière", "revendication",
+       0.3, "800 > 683 lm/W (maximum spectral à 555 nm) — à réfuter par l'efficacité lumineuse maximale"),
+    _P("ampoule « à 1000 lm/W »",
+       "éclairer : ampoule revendiquant 1000 lm par watt électrique",
+       {"type": "eclairage", "efficacite_lm_par_W": 1000.0}, True, True,
+       "lumière", "revendication",
+       0.25, "1000 > 683 lm/W = impossible (il faudrait un rendement radiant supérieur à 100 %)"),
+]
+
+_OBJECTIF_ECLAIRAGE = ("Le but réel n'est pas de « produire de la lumière » mais de METTRE des lumens là où l'ŒIL "
+                       "en a besoin, aux longueurs d'onde qu'il voit (l'œil culmine à 555 nm ; le plafond absolu "
+                       "est 683 lm/W, la lumière blanche à bon rendu ~300–350). Leviers : n'émettre que le VISIBLE "
+                       "(l'incandescence gaspille ~95 % en IR) ; DIRIGER la lumière (optique, tâche) au lieu "
+                       "d'inonder ; couleur ADAPTÉE (monochromatique là où le rendu n'importe pas) ; et surtout, "
+                       "le lumen le moins cher est celui qu'on NE génère PAS (lumière du jour guidée, ne pas "
+                       "éclairer l'inutile). Chaque principe reste jugé par l'efficacité lumineuse maximale.")
+_LOI_ECLAIRAGE = ("l'efficacité lumineuse ≤ 683 lm/W (maximum spectral à 555 nm, rendement radiant 100 %) ; la "
+                  "lumière blanche à bon rendu plafonne plus bas (~300–350 lm/W) ; gains réels = n'émettre que le "
+                  "visible, diriger les lumens, adapter le spectre au besoin, et d'abord ne pas générer (jour, "
+                  "présence)")
+
+# La nature éclaire à froid (luciole), recycle les photons (tapetum), n'éclaire qu'à la demande (plancton).
+_STRATEGIES_NATURE_ECLAIRAGE = [
+    _Nature("luciole (bioluminescence froide)",
+            ["réaction chimique émettant surtout du VISIBLE", "quasi aucune chaleur (lumière froide)",
+             "rendement quantique élevé"],
+            "n'émettre que le visible, sans gaspillage thermique — le levier de l'efficacité spectrale"),
+    _Nature("tapetum lucidum (œil nocturne du chat)",
+            ["couche réfléchissante derrière la rétine", "renvoie les photons non absorbés pour un 2e passage"],
+            "RECYCLER la lumière (la faire repasser) plutôt que d'en produire plus — voir mieux à énergie égale"),
+    _Nature("plancton / champignon bioluminescent (lumière à la demande)",
+            ["émission déclenchée (stimulus, rythme)", "pas de lumière quand elle est inutile"],
+            "n'éclairer QUE quand c'est utile — le levier « à la demande », zéro lumen gaspillé"),
+    _Nature("feuille / structures qui guident la lumière",
+            ["conduits qui amènent la lumière aux cellules utiles", "diffusion contrôlée"],
+            "GUIDER la lumière vers la cible plutôt que la disperser — le levier de la direction"),
+]
+
+enregistre(Domaine(
+    nom=_ECLAIRAGE,
+    aliases=frozenset(_ALIAS_ECLAIRAGE),
+    objectif=_OBJECTIF_ECLAIRAGE,
+    canaux=_CANAUX_ECLAIRAGE,
+    principes=_PRINCIPES_ECLAIRAGE,
+    strategies=_STRATEGIES_NATURE_ECLAIRAGE,
+    loi=_LOI_ECLAIRAGE,
+    extras={"plafond_lm_par_W": "683 lm/W (monochromatique 555 nm) ; lumière blanche à bon rendu ~300–350 lm/W",
+            "note": "le lumen le moins cher est celui qu'on ne génère pas (jour guidé, ne pas éclairer l'inutile)"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  NEUVIÈME DOMAINE : calculer à basse énergie — au cœur de la vision Provara (l'IA légère). Nouvelle loi dure au
+#  juge (L6) : la limite de LANDAUER (effacer un bit dissipe au moins k·T·ln2 ≈ 2,87e-21 J à 300 K). Une machine
+#  qui prétend effacer des bits pour moins est réfutée. Les puces actuelles sont ~10⁴–10⁶× AU-DESSUS → l'immense
+#  marge est réelle, ce n'est pas le mur physique qui limite aujourd'hui.
+#  REFRAMING machine : le but n'est pas la VITESSE brute mais le calcul PAR JOULE. Leviers : (a) ne pas EFFACER
+#  d'information inutilement (calcul réversible/adiabatique échappe entièrement à Landauer — le plus profond) ;
+#  (b) ne pas DÉPLACER les bits (le vrai coût aujourd'hui est le transport des données, pas le calcul) ;
+#  (c) moins d'OPÉRATIONS (algorithmes, matériel spécialisé — le gain court terme) ; (d) calcul froid (k·T ∝ T).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CALCUL = "calcul"
+_ALIAS_CALCUL = {
+    "calculer efficacement", "reduire l energie du calcul", "calculer a basse consommation",
+    "calcul econome en energie", "reduire la consommation d un ordinateur", "calcul basse consommation",
+}
+
+# ── « Canaux » : les leviers d'un calcul économe ─────────────────────────────────────────────────────────────────
+_CANAUX_CALCUL = [
+    Canal("ne pas effacer", "information", "calculer sans effacer d'information (logique réversible/adiabatique)",
+          True, "Landauer ne coûte QUE sur l'effacement → un calcul réversible peut en principe descendre bien "
+                "plus bas ; verrou = surcoût de complexité et de vitesse — le levier le plus profond"),
+    Canal("ne pas deplacer", "information", "calculer LÀ où sont les données (in-memory, près du capteur)",
+          True, "aujourd'hui l'énergie part surtout à DÉPLACER les bits (mémoire↔calcul), pas à les calculer → "
+                "rapprocher calcul et données est le plus gros gain court terme"),
+    Canal("moins d operations", "information", "réduire le nombre d'opérations (algorithme, matériel spécialisé)",
+          True, "un meilleur algorithme ou un circuit dédié fait la même tâche en moins d'opérations → très loin "
+                "du mur physique, l'essentiel des gains atteignables"),
+    Canal("basse temperature", "information", "calculer à froid (k·T·ln2 diminue avec T) ou en supraconducteur",
+          False, "le plancher de Landauer baisse avec la température ; les circuits supraconducteurs dissipent "
+                 "très peu ; coût = le refroidissement lui-même — à réserver aux grands centres"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Landauer (type `calcul`, ≥ k·T·ln2 par bit effacé) ────────
+_PRINCIPES_CALCUL = [
+    _P("CMOS numérique actuel (référence)",
+       "calculer : logique CMOS irréversible, ~1e-17 J par opération de bit",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-17, "t_K": 300}, True, True,
+       "chaleur dissipée", "mature (dominant)",
+       0.65, "~10⁴× au-dessus de Landauer → l'énorme marge est réelle ; l'énergie réelle part surtout dans les "
+             "fuites et le déplacement des données, pas dans la limite physique — la référence à descendre"),
+    _P("calcul sous-seuil (basse tension)",
+       "calculer : faire fonctionner les transistors sous la tension de seuil, ~1e-18 J/bit",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300}, True, True,
+       "chaleur", "mature (basse conso)",
+       0.55, "l'énergie de commutation ∝ tension² → baisser la tension économe énormément ; verrou = lenteur et "
+             "sensibilité au bruit — le levier « baisser la tension » déjà exploité en IoT"),
+    _P("calcul réversible / adiabatique",
+       "calculer : logique qui n'efface pas d'information (récupère la charge au lieu de la dissiper)",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-20, "t_K": 300}, True, True,
+       "chaleur minime (pas d'effacement)", "recherche",
+       0.5, "en n'EFFAÇANT pas, échappe en principe à la limite de Landauer → plancher bien plus bas ; surcoût de "
+            "portes et de vitesse à maîtriser — le levier le plus profond, sous-exploité"),
+    _P("calcul in-memory (près de la mémoire)",
+       "calculer : effectuer l'opération DANS la mémoire pour éviter de transporter les données",
+       {"type": "calcul", "energie_par_bit_efface_J": 5e-18, "t_K": 300}, True, True,
+       "chaleur", "émergent",
+       0.55, "attaque le VRAI coût actuel : déplacer un bit entre mémoire et processeur coûte ~100× l'opération "
+             "elle-même → calculer sur place est le plus gros levier court terme"),
+    _P("calcul neuromorphique / événementiel (spikes)",
+       "calculer : circuits qui ne consomment QUE lors d'événements (comme des neurones), pour tâches approximatives",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300}, True, True,
+       "chaleur (activité éparse)", "émergent",
+       0.5, "ne dépense QUE quand il se passe quelque chose (activité éparse) et tolère l'approximation → très "
+            "économe pour la perception/l'inférence — s'inspire du cerveau (le levier « à la demande »)"),
+    _P("calcul analogique",
+       "calculer : effectuer l'opération dans la physique du circuit (courants, charges) plutôt qu'en bits",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300}, True, True,
+       "chaleur", "recherche (regain)",
+       0.45, "une addition/multiplication « gratuite » dans la loi d'Ohm/Kirchhoff, sans effacer de bits ; "
+             "précision limitée → pour l'approximatif (IA, filtrage) ; regain d'intérêt sous-exploité"),
+    _P("logique supraconductrice (SFQ, cryogénique)",
+       "calculer : logique à quantum de flux unique, dissipant très peu, à basse température",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-19, "t_K": 4}, True, True,
+       "chaleur minime (mais refroidissement à payer)", "recherche",
+       0.4, "commutation à très basse énergie ET k·T·ln2 plus bas à 4 K ; MAIS il faut PAYER le refroidissement "
+            "cryogénique → gagnant surtout à grande échelle — le levier « froid »"),
+    _P("spintronique / logique magnétique",
+       "calculer : coder l'information dans le spin (aimantation), non-volatile, faible énergie de commutation",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300}, True, True,
+       "chaleur", "recherche",
+       0.4, "non-volatile (zéro énergie au repos, pas de rafraîchissement) et commutation économe ; maturité des "
+            "matériaux à prouver — piste pour la mémoire-calcul basse conso"),
+    _P("calcul photonique",
+       "calculer : effectuer certaines opérations (produits matriciels) avec de la lumière",
+       {"type": "calcul", "energie_par_bit_efface_J": 5e-18, "t_K": 300}, True, True,
+       "chaleur", "émergent",
+       0.4, "très rapide et peu dissipatif pour l'algèbre linéaire (cœur de l'IA) ; conversion optique/électrique "
+            "coûteuse aux interfaces — piste ciblée, pas universelle"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : sous la limite de Landauer) ──
+    _P("effacement de bit « à 1e-23 J » (300 K)",
+       "calculer : machine irréversible effaçant un bit pour 1e-23 J à température ambiante",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300}, True, True,
+       "—", "revendication",
+       0.3, "1e-23 J < limite de Landauer (~2,87e-21 J à 300 K) — à réfuter par le 2nd principe (Landauer)"),
+    _P("calcul irréversible « à énergie nulle »",
+       "calculer : effacer des bits sans dissiper aucune énergie",
+       {"type": "calcul", "energie_par_bit_efface_J": 0.0, "t_K": 300}, True, True,
+       "—", "revendication",
+       0.25, "effacer de l'information sans dissipation ferait baisser l'entropie sans compensation — impossible"),
+]
+
+_OBJECTIF_CALCUL = ("Le but réel n'est pas la VITESSE brute mais le calcul PAR JOULE. Le plancher physique est la "
+                    "limite de Landauer (≥ k·T·ln2 par bit EFFACÉ, ≈ 2,87e-21 J à 300 K) — mais les puces "
+                    "actuelles sont ~10⁴–10⁶× au-dessus, donc le mur n'est PAS Landauer aujourd'hui. Leviers : ne "
+                    "pas EFFACER d'information inutilement (calcul réversible/adiabatique échappe à Landauer) ; ne "
+                    "pas DÉPLACER les bits (le vrai coût actuel est le transport, pas le calcul → in-memory) ; "
+                    "moins d'OPÉRATIONS (algorithmes, matériel spécialisé, événementiel) ; calculer FROID (k·T ∝ "
+                    "T). Chaque principe reste jugé par la limite de Landauer.")
+_LOI_CALCUL = ("effacer un bit d'information dissipe au moins k·T·ln2 (limite de Landauer, ≈ 2,87e-21 J à 300 K) ; "
+               "le calcul réversible qui n'efface pas échappe à ce plancher ; gains réels = ne pas effacer, ne pas "
+               "déplacer les données, moins d'opérations, calculer à basse tension/température")
+
+# La nature calcule à ~20 W (cerveau) : analogique, événementiel, en mémoire, au capteur.
+_STRATEGIES_NATURE_CALCUL = [
+    _Nature("cerveau humain (~20 W pour 10¹¹ neurones)",
+            ["calcul ANALOGIQUE massivement parallèle", "événementiel (impulsions seulement quand utile)",
+             "mémoire et calcul au MÊME endroit (synapses)"],
+            "analogique + événementiel + en-mémoire : la cognition à ~20 W écrase le numérique — les 3 leviers réunis"),
+    _Nature("rétine (pré-traitement au capteur)",
+            ["extraction de contours/mouvement AVANT transmission", "n'envoie au cerveau que l'utile"],
+            "calculer AU capteur et ne transmettre que l'essentiel — ne pas déplacer les données brutes"),
+    _Nature("ADN (stockage d'information ultra-dense)",
+            ["densité d'information proche de la molécule", "conservation passive à très basse énergie"],
+            "stocker l'information dense et sans énergie de maintien — le levier du « repos gratuit »"),
+    _Nature("fourmilière / essaim (calcul distribué émergent)",
+            ["règles locales simples", "solution GLOBALE émergente (chemins, tri) sans contrôleur central"],
+            "résoudre collectivement par des règles locales économes — pas de calcul central coûteux"),
+]
+
+enregistre(Domaine(
+    nom=_CALCUL,
+    aliases=frozenset(_ALIAS_CALCUL),
+    objectif=_OBJECTIF_CALCUL,
+    canaux=_CANAUX_CALCUL,
+    principes=_PRINCIPES_CALCUL,
+    strategies=_STRATEGIES_NATURE_CALCUL,
+    loi=_LOI_CALCUL,
+    extras={"limite_landauer_J_bit": "≈ 2,87e-21 J/bit effacé à 300 K (k·T·ln2)",
+            "note": "les puces actuelles sont ~10⁴–10⁶× au-dessus ; le vrai coût aujourd'hui est de DÉPLACER les bits"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DIXIÈME DOMAINE : communiquer / transmettre de l'information. Nouvelle loi dure au juge (L7) : la limite de
+#  SHANNON — le débit sans erreur ≤ B·log₂(1 + S/N). Un débit revendiqué au-dessus de la capacité est réfuté.
+#  REFRAMING machine : le but n'est pas de « crier plus fort » (la capacité ne croît que LOGARITHMIQUEMENT avec
+#  le rapport signal/bruit) mais de livrer des bits fiables par joule et par Hz. Leviers : élargir la BANDE
+#  (capacité LINÉAIRE en B → bien plus rentable que la puissance) ; se rapprocher/relayer (S/N chute en 1/d²) ;
+#  bon CODAGE (approcher la capacité) et COMPRESSER la source (ne pas transmettre de bits redondants) ;
+#  DIRIGER l'antenne (concentrer la puissance sans en dépenser plus).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_COMM = "communication"
+_ALIAS_COMM = {
+    "transmettre de l information", "communiquer a distance", "transmettre des donnees",
+    "communication sans fil", "envoyer un signal loin", "communiquer efficacement",
+}
+
+# ── « Canaux » : les leviers de la capacité de communication ─────────────────────────────────────────────────────
+_CANAUX_COMM = [
+    Canal("bande passante", "information", "élargir la bande (la capacité croît LINÉAIREMENT avec B)",
+          True, "doubler la bande double la capacité ; doubler la puissance ne l'augmente que de log₂(...) → "
+                "élargir la bande est le levier le plus rentable ; le spectre est la ressource rare"),
+    Canal("rapport signal sur bruit", "information", "augmenter S/N : antenne directive, se rapprocher, relayer",
+          False, "gain seulement LOGARITHMIQUE en capacité → crier plus fort rapporte peu ; mais une antenne "
+                 "directive concentre la puissance existante (S monte sans dépenser plus)"),
+    Canal("codage", "information", "approcher la capacité (codes correcteurs) et COMPRESSER la source",
+          True, "un bon code atteint presque la limite de Shannon ; compresser retire les bits redondants AVANT "
+                "l'envoi → transmettre moins pour dire autant, le levier le moins cher"),
+    Canal("energie par bit", "information", "minimiser l'énergie par bit (rétrodiffusion, proche de la limite de Shannon)",
+          True, "la rétrodiffusion (backscatter) module un signal AMBIANT → communiquer à quasi zéro énergie "
+                "propre ; sous-exploité pour les capteurs"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Shannon (type `communication`, débit ≤ B·log₂(1+S/N)) ─────
+_PRINCIPES_COMM = [
+    _P("radio numérique moderne (5G, référence)",
+       "communiquer : modulation numérique adaptative avec codage correcteur proche de la capacité",
+       {"type": "communication", "debit_bits_par_s": 9.0e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "signal reçu", "mature",
+       0.65, "exploite déjà presque toute la capacité du canal avec de bons codes ; les gains restants viennent de "
+             "la bande et de la directivité, pas de la puissance — la référence"),
+    _P("étalement de spectre / ultra-large bande (UWB)",
+       "communiquer : étaler le signal sur une très large bande à faible puissance",
+       {"type": "communication", "debit_bits_par_s": 5e7, "bande_passante_Hz": 5e8, "rapport_signal_bruit": 0.1},
+       True, True, "signal étalé", "mature",
+       0.55, "échange de la BANDE contre de la puissance (capacité linéaire en B) → transmet SOUS le bruit, "
+             "robuste et discret ; consomme du spectre — le levier « élargir la bande »"),
+    _P("antenne directive / MIMO",
+       "communiquer : concentrer et multiplexer le signal sur plusieurs antennes (faisceaux, flux parallèles)",
+       {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "faisceaux dirigés", "mature",
+       0.55, "concentre la puissance EXISTANTE (S monte) et multiplie les canaux spatiaux (MIMO) → plus de "
+             "capacité sans plus d'énergie totale ; conditionné à la propagation — un des grands leviers"),
+    _P("réseau maillé / relais (mesh)",
+       "communiquer : relayer de proche en proche plutôt qu'émettre fort et loin",
+       {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "signal relayé", "mature",
+       0.5, "S/N chute en 1/d² → deux sauts courts battent un long saut en énergie ; le réseau se répare et "
+            "s'étend tout seul ; latence et coordination à gérer — le levier « se rapprocher »"),
+    _P("codage correcteur avancé (LDPC / turbo / polaire)",
+       "communiquer : coder l'information pour corriger les erreurs et approcher la capacité de Shannon",
+       {"type": "communication", "debit_bits_par_s": 9.8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "signal robuste", "mature",
+       0.55, "atteint presque la limite théorique → tirer le MAXIMUM d'un canal donné sans plus de puissance ni "
+             "de bande ; le levier « ne pas gaspiller le canal »"),
+    _P("communication optique (fibre / laser espace libre)",
+       "communiquer : porter l'information sur une porteuse optique à très large bande",
+       {"type": "communication", "debit_bits_par_s": 1e11, "bande_passante_Hz": 1e13, "rapport_signal_bruit": 100},
+       True, True, "signal optique", "mature (fibre)",
+       0.5, "la bande optique est ÉNORME → capacité colossale ; en espace libre exige un pointage précis et un "
+            "ciel clair (laser) — le levier « bande » poussé à l'extrême"),
+    _P("compression de source avant émission",
+       "communiquer : retirer la redondance de l'information AVANT de la transmettre",
+       {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "flux compressé", "mature (sous-exploité en bord)",
+       0.5, "le bit le moins cher à transmettre est celui qu'on n'envoie pas : compresser/résumer à la source "
+            "réduit le débit requis → l'analogue de « ne pas générer » en éclairage"),
+    _P("rétrodiffusion ambiante (backscatter, RFID passif)",
+       "communiquer : moduler la réflexion d'un signal radio AMBIANT au lieu d'émettre le sien",
+       {"type": "communication", "debit_bits_par_s": 1e3, "bande_passante_Hz": 1e5, "rapport_signal_bruit": 10},
+       True, True, "signal réfléchi modulé", "émergent",
+       0.45, "communique à quasi ZÉRO énergie propre (l'émetteur ambiant fournit la porteuse) → capteurs sans "
+             "pile ; débit faible et portée courte — piste basse conso sous-exploitée"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : au-dessus de la capacité de Shannon) ──
+    _P("liaison « 20 Mbit/s sur 1 MHz à 30 dB »",
+       "communiquer : 20 Mbit/s sans erreur sur 1 MHz de bande à un rapport signal/bruit de 1000",
+       {"type": "communication", "debit_bits_par_s": 2e7, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},
+       True, True, "—", "revendication",
+       0.3, "20 Mbit/s > capacité de Shannon (~9,97 Mbit/s ici) — à réfuter par la limite de Shannon"),
+    _P("transmission « sans bande passante »",
+       "communiquer : transmettre 1 Mbit/s sur une bande passante nulle",
+       {"type": "communication", "debit_bits_par_s": 1e6, "bande_passante_Hz": 0, "rapport_signal_bruit": 1000},
+       True, True, "—", "revendication",
+       0.25, "sans bande passante la capacité est nulle : transmettre de l'information exige de la bande — impossible"),
+]
+
+_OBJECTIF_COMM = ("Le but réel n'est pas de « crier plus fort » : la capacité d'un canal ne croît que "
+                  "LOGARITHMIQUEMENT avec le rapport signal/bruit, mais LINÉAIREMENT avec la bande passante "
+                  "(Shannon : débit ≤ B·log₂(1+S/N)). On vise donc des bits fiables par joule et par Hz. Leviers : "
+                  "élargir la BANDE (bien plus rentable que la puissance) ; se rapprocher ou RELAYER (S/N chute en "
+                  "1/d² → deux sauts courts battent un long) ; bon CODAGE pour approcher la capacité et COMPRESSER "
+                  "la source (ne pas transmettre de redondance) ; DIRIGER l'antenne (concentrer la puissance "
+                  "existante). Chaque principe reste jugé par la limite de Shannon.")
+_LOI_COMM = ("le débit sans erreur ≤ B·log₂(1 + S/N) (limite de Shannon) : la capacité est LINÉAIRE en bande "
+             "passante mais seulement LOGARITHMIQUE en signal/bruit ; gains réels = élargir la bande, relayer "
+             "plutôt qu'émettre fort, coder près de la capacité, compresser la source, diriger l'antenne")
+
+# La nature communique par le canal qui porte (baleine), un médium persistant (fourmi), un code dense (abeille), un relais (mycélium).
+_STRATEGIES_NATURE_COMM = [
+    _Nature("chant des baleines (très basse fréquence)",
+            ["basse fréquence = faible atténuation dans l'eau", "porte sur des centaines de km",
+             "choix du canal qui transmet le mieux"],
+            "choisir la FRÉQUENCE/le canal qui se propage le mieux plutôt que d'émettre plus fort"),
+    _Nature("phéromones de fourmis (canal chimique persistant)",
+            ["signal DÉPOSÉ dans l'environnement (persistant)", "lu en différé (asynchrone)", "quasi zéro énergie"],
+            "un médium persistant transmet sans émetteur actif — communiquer en différé pour presque rien"),
+    _Nature("danse frétillante des abeilles (code dense)",
+            ["direction ET distance encodées en peu de gestes", "information compressée dans un signal court"],
+            "COMPRESSER beaucoup d'information dans un signal minimal — le levier du codage de source"),
+    _Nature("réseau mycélien (relais chimique/électrique)",
+            ["signaux propagés de proche en proche dans le réseau", "pas d'émetteur central puissant"],
+            "RELAYER à travers un maillage plutôt qu'émettre fort et loin — le levier du mesh"),
+]
+
+enregistre(Domaine(
+    nom=_COMM,
+    aliases=frozenset(_ALIAS_COMM),
+    objectif=_OBJECTIF_COMM,
+    canaux=_CANAUX_COMM,
+    principes=_PRINCIPES_COMM,
+    strategies=_STRATEGIES_NATURE_COMM,
+    loi=_LOI_COMM,
+    extras={"capacite_shannon": "débit ≤ B·log₂(1 + S/N) bits/s",
+            "note": "élargir la BANDE bat augmenter la puissance (capacité linéaire en B, logarithmique en S/N)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
