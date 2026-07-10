@@ -86,12 +86,13 @@ def _entites(table: str) -> set:
     qu'écrire une carte fausse."""
     chemin = os.path.join(_STORE, table + ".jsonl")
     if not os.path.exists(chemin):
+        remede = ("ingere_domaines_attestes" if table == "est_domaine" else "ingere_metiers_attestes")
         raise SystemExit(
             "ERREUR : table « %s » absente du store (%s).\n"
-            "La liste des métiers se filtre par LOOKUP dans cet oracle. Sans lui, l'ANNEXE M compterait des\n"
-            "non-métiers (noms de famille, énumérations jointes par ingere_celebres) comme sujets à traiter :\n"
+            "La carte se filtre par LOOKUP dans cet oracle. Sans lui, les annexes compteraient des\n"
+            "non-métiers/non-domaines (noms de famille, personnes, organisations) comme sujets à traiter :\n"
             "une MESURE FAUSSE. Ingère-le d'abord :\n"
-            "    PYTHONPATH=src:ingestion python3 ingestion/ingere_metiers_attestes.py" % (table, _STORE))
+            "    PYTHONPATH=src:ingestion python3 ingestion/%s.py" % (table, _STORE, remede))
     out = set()
     with open(chemin, encoding="utf-8") as f:
         for ligne in f:
@@ -122,6 +123,23 @@ def metiers_de_la_carte() -> tuple:
                    if n >= SUPPORT_MIN and _propre(m))
     metiers = [m for m in bruts if m in atteste]
     return metiers, len(atteste), len(bruts) - len(metiers)
+
+
+def domaines_de_la_carte() -> tuple:
+    """(domaines, taille de l'oracle, nombre de valeurs écartées) — le miroir de `metiers_de_la_carte`.
+
+    Une valeur de `domaine_travail` (P101) n'est PAS un domaine du seul fait d'y figurer : mesuré le
+    2026-07-12, « Friedrich Nietzsche » (une PERSONNE — son philologue a P101 = l'item Nietzsche),
+    « Fonds des Nations unies pour l'enfance » (une ORGANISATION), « France » (une ENTITÉ GÉOGRAPHIQUE).
+    « Résultats établis du domaine Friedrich Nietzsche » est un sujet MAL FORMÉ — 905 valeurs retirées.
+    Le filtre est un LOOKUP dans `est_domaine` par la clé de `fonctionnel` (`_sans_articles` : l'oracle
+    unifie « physique »/« Physique » sous une surface unique), jamais une heuristique de chaîne."""
+    from base_faits import _sans_articles
+    cles = {_sans_articles(e) for e in _entites("est_domaine")}
+    bruts = sorted(d for d, n in _valeurs("domaine_travail").items()
+                   if n >= SUPPORT_MIN and _propre(d))
+    domaines = [d for d in bruts if _sans_articles(d) in cles]
+    return domaines, len(cles), len(bruts) - len(domaines)
 
 
 def _entete() -> str:
@@ -228,8 +246,7 @@ def main() -> int:
     # « magistrate », « general manager » et « credit manager » sont DÉJÀ dans l'oracle sous leur nom
     # français. Élargir à l'anglais réimporterait le bruit d'entreprises pour ne gagner aucun métier réel.
     metiers, n_atteste, ecartes = metiers_de_la_carte()
-    domaines = sorted(d for d, n in _valeurs("domaine_travail").items()
-                      if n >= SUPPORT_MIN and _propre(d))
+    domaines, n_atteste_dom, ecartes_dom = domaines_de_la_carte()
 
     doc = _entete()
     for frag in ("parties_a.md", "parties_b.md"):
@@ -249,6 +266,9 @@ def main() -> int:
           % (len(metiers), len(AXES_METIER), len(domaines), len(AXES_DOMAINE), n_auto))
     print("  oracle `est_metier` : %d libellés attestés ; %d valeurs de P106 ÉCARTÉES (non-métiers : noms "
           "de famille, objets, énumérations jointes) — elles ne sont PAS des sujets." % (n_atteste, ecartes))
+    print("  oracle `est_domaine` : %d clés attestées ; %d valeurs de P101 ÉCARTÉES (non-domaines : "
+          "personnes, organisations, entités géographiques) — elles ne sont PAS des sujets."
+          % (n_atteste_dom, ecartes_dom))
     return 0
 
 

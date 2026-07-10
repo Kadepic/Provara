@@ -212,21 +212,35 @@ def medianes_oes() -> dict:
 
 
 def _isco_du_store() -> dict:
-    """metier -> groupe ISCO-08 4 chiffres, depuis `code_isco_metier` (ESCO ajoute un suffixe « .n »)."""
-    chemin = os.path.join(os.environ.get("LECTEUR_DATASETS_DIR",
-                          os.path.join(os.path.expanduser("~"), ".verax", "datasets", "lecteur")),
-                          "code_isco_metier.jsonl")
-    if not os.path.exists(chemin):
+    """metier -> groupe ISCO-08 4 chiffres. FUSION de `code_isco_metier` (ESCO, suffixe « .n ») et
+    `code_isco_p8283_metier` (Wikidata P8283, jointure par QID — cf. ingere_isco_wikidata). Un métier
+    présent dans les DEUX avec des groupes différents est ÉCARTÉ et compté : deux sources en désaccord,
+    au doute HORS — jamais d'arbitrage silencieux."""
+    dossier = os.environ.get("LECTEUR_DATASETS_DIR",
+                             os.path.join(os.path.expanduser("~"), ".verax", "datasets", "lecteur"))
+    chemin_esco = os.path.join(dossier, "code_isco_metier.jsonl")
+    if not os.path.exists(chemin_esco):
         raise SystemExit("table `code_isco_metier` absente du store — lancer d'abord ingere_esco.py")
-    table = {}
-    with open(chemin, encoding="utf-8") as fh:
-        for ligne in fh:
-            if ligne.startswith('{"_relation"'):
-                continue
-            o = json.loads(ligne)
-            g = o["valeur"].split(".")[0]
-            if re.fullmatch(r"\d{4}", g):
-                table[o["entite"]] = g
+    table, desaccords = {}, 0
+    for nom in ("code_isco_metier.jsonl", "code_isco_p8283_metier.jsonl"):
+        chemin = os.path.join(dossier, nom)
+        if not os.path.exists(chemin):
+            continue                                    # l'extension P8283 est optionnelle, l'ESCO non
+        with open(chemin, encoding="utf-8") as fh:
+            for ligne in fh:
+                if ligne.startswith('{"_relation"'):
+                    continue
+                o = json.loads(ligne)
+                g = o["valeur"].split(".")[0]
+                if not re.fullmatch(r"\d{4}", g):
+                    continue
+                if o["entite"] in table and table[o["entite"]] != g:
+                    del table[o["entite"]]
+                    desaccords += 1
+                else:
+                    table.setdefault(o["entite"], g)
+    if desaccords:
+        print("  ATTENTION : %d métier(s) écarté(s), sources ISCO en désaccord (au doute, HORS)" % desaccords)
     return table
 
 
