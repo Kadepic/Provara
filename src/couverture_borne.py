@@ -60,7 +60,8 @@ _REGLES: tuple = (
     (r"convergence d'une série donnée", "module", "convergence_series", TRAITE),   # d'Alembert, Cauchy, Leibniz
     (r"équations différentielles linéaires", "module", "edo_lineaires", TRAITE),   # 2e ordre, 3 régimes
     (r"périmètres, aires|Pythagore|géométrie analytique|géométrie vectorielle", "gate", "valide_fonction.py", TRAITE),
-    (r"trigonométrie", "module", "fonction_nl", PARTIEL),
+    # Le cas SSA est ambigu : ZÉRO, UNE ou DEUX solutions. `resout_triangle` rend la LISTE des triangles.
+    (r"trigonométrie", "module", "trigonometrie_triangle", TRAITE),
     # DÉCOUPE : le dénombrement est COMPLET (maths_discretes : binomial, Catalan, dérangements, partitions).
     # `bayes` fait la mise à jour en log-cotes (équivalente au théorème), mais la probabilité CLASSIQUE d'un
     # événement, l'espérance et la variance d'une loi n'existent nulle part.
@@ -85,7 +86,9 @@ _REGLES: tuple = (
     (r"complexité d'un algorithme|complexité et coût", "module", "recurrences", TRAITE),
     (r"comportement d'un code exécutable|correction d'un programme", "gate", "valide_capacites_chat.py", TRAITE),
     (r"vulnérabilités canoniques", "gate", "valide_audit_code.py", TRAITE),
-    (r"grammaires formelles et automates", "module", "automates", PARTIEL),
+    # `langages_formels` exigeait une grammaire DÉJÀ en CNF. `grammaires_formelles` convertit (START/TERM/
+    # BIN/DEL/UNIT) et VÉRIFIE que le langage engendré est inchangé, puis déterminise les AFN.
+    (r"grammaires formelles et automates", "module", "grammaires_formelles", TRAITE),
     # ── VAGUE A (2026-07-10 nuit) : preuves AUDITÉES module par module, gate exécutée VERTE avant câblage.
     #    Les « pièges de nom » débusqués à l'audit (limite.py = bornes physiques, temperature.py =
     #    calibration ML, loi.py = solveur physique, atome.py = contrat épistémique, architecture.py =
@@ -170,8 +173,11 @@ _REGLES: tuple = (
     # PARTIELS ASSUMÉS, périmètre DIT (jamais présenté comme complet) :
     #   IUPAC = composés binaires + catalogue (pas la nomenclature organique générale) ;
     #   alliages = catalogue de 4 alliages (lookup-ou-HORS) ; normes = hiérarchie FRANÇAISE seule.
+    # PARTIEL ASSUMÉ, périmètre DIT : chaînes linéaires monofonctionnelles (+ composés binaires via
+    # `nomenclature_chimique`). Ramifiées et cycliques -> abstention. `identifie('C3H6O')` rend l'AMBIGUÏTÉ
+    # (propanal ET propanone) : rendre un composé unique serait un faux.
     (r"nomenclature IUPAC|identification d'un composé par sa formule",
-     "module", "nomenclature_chimique", PARTIEL),
+     "module", "nomenclature_organique", PARTIEL),
     (r"composition d'un alliage nommé", "module", "alliages", PARTIEL),
     (r"hiérarchie des normes d'un pays", "module", "hierarchie_normes", PARTIEL),
     # vivant / société / arts
@@ -200,7 +206,10 @@ _REGLES: tuple = (
     (r"rendement de Carnot|COP d'une pompe|loi des gaz parfaits|loi de Coulomb|"
      r"décroissance radioactive|énergie d'un photon|relation v = λ", "module", "physique", TRAITE),
     (r"cohérence thermodynamique|mouvement perpétuel", "module", "coherence_physique", TRAITE),
-    (r"premier principe|second principe et entropie", "module", "coherence_physique", PARTIEL),
+    # `coherence_physique` JUGE des dispositifs ; `entropie_thermo` ne fait que l'isotherme réversible.
+    # `thermodynamique_principes` calcule : ΔU = Q − W, travaux, et l'entropie des processus NON isothermes
+    # (m·c·ln(T2/T1), en KELVIN — la même formule en °C donnerait un faux d'un facteur 5).
+    (r"premier principe|second principe et entropie", "module", "thermodynamique_principes", TRAITE),
     (r"masse molaire|stœchiométrie|équilibrage d'une équation chimique|pH d'une concentration",
      "module", "chimie", TRAITE),
     (r"aérodynamique", "module", "aerodynamique", PARTIEL),
@@ -208,7 +217,9 @@ _REGLES: tuple = (
     # des ORDINATEURS (conversions binaires, complément à deux) — un piège de nom. Le vrai module de
     # résistance des matériaux est `structures_genie` ; il calcule contrainte/flèche/flambage mais ne
     # DIMENSIONNE pas encore (pas de comparaison à une contrainte admissible). Donc PARTIEL, honnêtement.
-    (r"dimensionnement d'une structure", "module", "structures_genie", PARTIEL),
+    # `structures_genie` CALCULE ; `dimensionnement_structure` VÉRIFIE et DIMENSIONNE contre la contrainte
+    # admissible (borne BASSE de l'intervalle : dimensionner sur la borne haute serait dangereux).
+    (r"dimensionnement d'une structure", "module", "dimensionnement_structure", TRAITE),
     # faits : les gates du lecteur
     (r"taxonomie \(|caractéristiques d'une espèce|statut de conservation", "gate", "valide_lecteur_t4.py", TRAITE),
     (r"relief, sommets|fleuves, longueurs|superficies des terres|coordonnées d'un lieu|"
@@ -236,7 +247,9 @@ _REGLES: tuple = (
     (r"météo observée", "gate", "valide_capacites_chat.py", TRAITE),
     # LANGUES (tables ingérées cette nuit). « parenté » = la généalogie complète : Wikidata ne la porte PAS
     # (« langue d'oïl » n'a aucun ancêtre typé) -> le sujet reste PARTIEL, la famille immédiate est acquise.
-    (r"famille et parenté d'une langue", "table", "famille_langue", PARTIEL),
+    # Wikidata ne porte pas la généalogie (mesuré) ; `familles_langues` la catalogue.
+    # « turc » -> turcique, jamais « altaïque » (regroupement contesté) ; le basque est un ISOLAT.
+    (r"famille et parenté d'une langue", "module", "familles_langues", TRAITE),
     (r"nombre de locuteurs d'une langue", "table", "locuteurs_langue", TRAITE),
     # ANNEXE T — DÉCOUPE (2026-07-11). `bibliotheconomie` porte les 10 classes Dewey (complet) et l'ISBN
     # (1 des 4 codes normalisés cités). `nomenclatures` ajoute ISCO-08, les divisions Dewey du 500 et la
@@ -250,7 +263,11 @@ _REGLES: tuple = (
     # 25 monnaies, les indicatifs 23 pays, les plaques la France seule. Hors table -> abstention, jamais une
     # devinette. Même standard que `alliages` : un catalogue étroit se déclare étroit.
     (r"codes normalisés", "module", "codes_normalises", PARTIEL),
-    (r"règles d'un jeu institué|coup optimal", "gate", "valide_strategie_jeux.py", PARTIEL),
+    # « coup optimal » : minimax générique sur tout jeu FINI à information parfaite -> TRAITÉ.
+    # « règles d'un jeu institué (échecs, go, cartes) » : le go et les cartes ne sont pas au catalogue,
+    # et le module REFUSE de jouer aux échecs -> PARTIEL, périmètre dit.
+    (r"coup optimal", "module", "jeux_institues", TRAITE),
+    (r"règles d'un jeu institué", "module", "jeux_institues", PARTIEL),
     # PREUVE MAL DIRIGÉE : `cycles_economiques` est un CATALOGUE de phases, il ne calcule rien. Les formules
     # exactes vivent dans `inflation.py`, `pib.py`, `chomage.py`. Sondé : IPC 100->110 = +10 %, chômage 10 %.
     (r"inflation mesurée sur une période", "module", "inflation", TRAITE),
@@ -261,7 +278,8 @@ _REGLES: tuple = (
     # d'une chaîne de Markov (la mémoire réduit l'incertitude : 0,469 bit au lieu de 1).
     (r"entropie d'une source", "module", "entropie_source", TRAITE),
     (r"encodage et compression|correction d'erreurs", "aucun", None, NON_TRAITE),
-    (r"pharmacocinétique", "module", "pharmacochimie", PARTIEL),
+    # Modèle à un compartiment, ordre 1. Refuse l'éthanol et la phénytoïne (cinétique saturable).
+    (r"pharmacocinétique", "module", "pharmacocinetique", TRAITE),
     # RR / ARR / NNT / OR sont EXACTS depuis les effectifs d'un essai publié : c'est le traitement correct
     # du sujet (le module calcule, l'essai fournit les nombres). Sondé à la main : RR=0,5 · ARR=0,10 · NNT=10.
     (r"efficacité d'un traitement", "module", "essais_cliniques", TRAITE),
@@ -269,7 +287,9 @@ _REGLES: tuple = (
     # Les deux vrais modules ont été bâtis le 2026-07-11, chacun avec sa gate à ancres non circulaires.
     (r"hérédité mendélienne", "module", "heredite_mendelienne", TRAITE),
     (r"dynamique des populations", "module", "dynamique_populations", TRAITE),
-    (r"calcul de recette", "gate", "valide_fonction.py", PARTIEL),
+    # `recettes` abstenait sur tout ingrédient autre que l'eau. Les masses volumiques APPARENTES sont
+    # rendues avec leur incertitude : une tasse de farine tassée pèse 30 % de plus qu'une tasse aérée.
+    (r"calcul de recette", "module", "densites_ingredients", TRAITE),
     (r"préférences personnelles de l'utilisateur", "gate", "valide_faits_conversation.py", TRAITE),
 )
 _REGLES_C = tuple((re.compile(m, re.I), g, r, e) for m, g, r, e in _REGLES)

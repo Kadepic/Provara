@@ -1,5 +1,47 @@
 # Journal des modifications — Provara
 
+## 2026-07-11 (suite 3) — NEUF BRIQUES : le cas ambigu, l'abstention vraie, le périmètre dit
+
+Les 36 partiels conceptuels restants se répartissaient en deux natures : **20 sont MIX par construction**
+(part bornée + part non bornée — leur état PARTIEL est le bon, les forcer serait mentir), et le reste était
+constructible. Neuf briques ferment neuf sujets et en servent quatre autres mieux.
+
+### Trois abstentions que ces briques rendent obligatoires
+- **`trigonometrie_triangle`** (72/72) : le cas **SSA** (côté-côté-angle) admet **ZÉRO, UNE ou DEUX**
+  solutions. `resout_triangle` rend la LISTE des triangles. Vérifié : a=6,b=8,A=30° -> deux ;
+  a=3,b=8,A=30° -> zéro ; a=10,b=8,A=30° -> un. Un module qui rendrait toujours un triangle serait FAUX.
+- **`jeux_institues`** (89/89) : théorème de Bouton. La position de Nim (1,2,3) a une somme de Nim **nulle**,
+  donc **aucun coup gagnant n'existe** — `nim_coup_gagnant((1,2,3))` abstient. C'est une abstention VRAIE,
+  pas un échec. Et le module **refuse de jouer aux échecs** plutôt que d'improviser.
+- **`nomenclature_organique`** (113/113) : `identifie('C3H6O')` rend l'**ambiguïté** (propanal ET propanone
+  sont isomères). Rendre un composé unique serait un faux. Les cycliques -> abstention.
+
+### Les six autres
+- **`thermodynamique_principes`** (72/72) : ΔU = Q − W (convention thermodynamique **nommée** — la
+  convention chimiste donne le signe opposé) et l'entropie des processus **non isothermes**,
+  m·c·ln(T2/T1), **en kelvins**. La même formule en °C (27 -> 127) donnerait 6 486 J/K au lieu de 1 204 :
+  **un faux d'un facteur 5**. Le module refuse les degrés Celsius.
+- **`grammaires_formelles`** (330/330) : conversion en forme normale de Chomsky (START/TERM/BIN/DEL/UNIT),
+  **vérifiée par équivalence de langage** sur tous les mots courts (deux chemins : dérivation exhaustive vs
+  CYK), puis déterminisation des AFN.
+- **`pharmacocinetique`** (88/88) : modèle à un compartiment. L'**ASC = dose/Cl est indépendante du volume
+  de distribution** (identité exacte, ancre non circulaire). Éthanol et phénytoïne (cinétique saturable)
+  -> abstention. Cinq demi-vies éliminent **96,875 %**, jamais « 100 % ».
+- **`familles_langues`** (88/88) : le basque est un **isolat** ; hindi et anglais **sont** apparentés
+  (contre-intuitif) ; hongrois et français ne le sont pas malgré la proximité géographique ; le turc est
+  **« turcique »**, jamais « altaïque » (regroupement contesté). Familles distinctes -> abstention.
+- **`dimensionnement_structure`** (70/70) : la contrainte admissible se prend sur la **borne basse** de
+  l'intervalle de limite élastique — dimensionner sur la borne haute serait dangereux. Une contrainte
+  tombant DANS l'intervalle rend « indéterminé ». Matériau fragile -> abstention.
+- **`densites_ingredients`** (135/135) : `recettes` abstenait sur tout ingrédient autre que l'eau. Les
+  masses volumiques **apparentes** sont rendues avec leur incertitude (une tasse de farine tassée pèse 30 %
+  de plus qu'une tasse aérée). La convention de « cup » doit être nommée, sinon abstention.
+
+### Mesure
+`84 595 sujets · 21 597 traités · 446 partiels · 62 552 NON traités · 0 dette.`
+**Suite : 114/114 gates.** `capacites.REGISTRE` : **381 preuves exécutables, 0 orphelin.**
+Sonde indépendante des 9 briques, avec mes propres ancres : **60/60**.
+
 ## 2026-07-11 (suite 2) — HUIT BRIQUES ferment douze partiels ; deux bugs d'ingestion invisibles
 
 ### 1. Deux bugs d'ESCO qui n'étaient pas des FAUX — donc que rien ne signalait
