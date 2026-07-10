@@ -27,6 +27,27 @@ GATES = [
     "valide_situation", "valide_pont_grandeurs", "valide_et_si_pourquoi", "valide_tete_polysemique",
     "valide_pont_electrique", "valide_pont_hydraulique", "valide_roue_energie", "valide_roues_compilees",
     "valide_graphe_roues", "valide_sujets",
+    # VAGUE A (2026-07-10 nuit, mandat « traiter tout le backlog des sujets ») : 19 briques conceptuelles
+    # neuves, chacune avec mécanisme exact, abstention structurelle et gate à ancres NON CIRCULAIRES.
+    # Elles ferment à ZÉRO le backlog des PARTIES I et II (14 + 21 sujets non traités -> 0).
+    "valide_valeurs_propres", "valide_anneaux_corps", "valide_limites_usuelles",
+    "valide_logique_premier_ordre", "valide_developpement_decimal", "valide_equations_polynomiales",
+    "valide_integrale_elementaire", "valide_conjectures_celebres", "valide_geometrie_hyperbolique",
+    "valide_cinematique_uniformement_acceleree", "valide_energie_mecanique", "valide_rotation_solide",
+    "valide_thermique", "valide_circuits_kirchhoff", "valide_induction_em", "valide_optique_geometrique",
+    "valide_interferences_diffraction", "valide_effet_doppler", "valide_atome_hydrogene",
+    # VAGUE B : ferment à ZÉRO le backlog des PARTIES III (chimie/matériaux), IV (Terre) et une part de V.
+    "valide_configuration_electronique", "valide_proprietes_periodiques", "valide_isomerie_constitutionnelle",
+    "valide_proprietes_mecaniques_materiaux", "valide_conductivite_materiaux", "valide_tectonique_plaques",
+    "valide_temps_geologiques", "valide_classification_roches", "valide_cycle_eau", "valide_effet_de_serre",
+    "valide_climats_biomes", "valide_expression_genique", "valide_selection_naturelle",
+    "valide_reseau_trophique", "valide_etiologie_infectieuse",
+    # VAGUE C : PARTIES VI a XII. (« versification_fr » non batie — limite de session — sujet NON TRAITÉ.)
+    "valide_finance_actualisation", "valide_elasticite_prix", "valide_pyramide_ages",
+    "valide_mobilite_sociale", "valide_compression_sans_perte", "valide_codes_correcteurs",
+    "valide_musique_gammes", "valide_colorimetrie", "valide_bilan_energetique",
+    "valide_reproductibilite_build", "valide_datation_radiocarbone", "valide_calendriers",
+    "valide_formats_locaux", "valide_anatomie_systemes",
     "valide_apprentissage_patrons", "valide_conversation",
     "valide_capacites_chat", "valide_assistant_nl", "valide_maj", "valide_veille_structure", "valide_cablage",
     "valide_faits_appris", "valide_tronc", "valide_debiaisage", "valide_sources", "valide_sequenceur",
