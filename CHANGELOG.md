@@ -1,5 +1,134 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — L'AXE « RISQUES PROFESSIONNELS » S'OUVRE : BLS SOII — LES 5 AXES « SANS SOURCE » SONT TOUS OUVERTS
+
+Dernier des cinq axes métier réputés bloqués. Le SOII (table **R100** 2023-2024) publie les taux
+d'incidence annualisés des blessures/maladies professionnelles par occupation SOC détaillée et par
+famille d'événements (contacts, chutes, surmenage, transports, violences…), pour 10 000 ETP, industrie
+privée US. `ingestion/ingere_bls_soii.py` — table `risque_professionnel_soc_metier` (**398 métiers**),
+même chaîne ISCO→SOC réutilisée. Type de cas publié et DIT : **DAFW** (cas avec arrêt de travail) ; les
+agrégats (« 11-0000 ») tombent (une moyenne déguisée n'est pas le taux d'une occupation) ; colonnes de
+familles DÉRIVÉES des deux rangées d'en-tête, jamais codées en dur ; « 4.0999… » du xlsx reformé au
+dixième publié ; « - » (non publié) verbatim. MIX → PARTIEL : la PRÉVENTION n'est pas une statistique, et
+la part française (INRS) reste sans table structurée. Gate `valide_bls_soii` (15/15). Suite **122 gates**.
+Juge : **27 021 → 26 623 non traités (−398)**, partiels 2 146 → 2 544.
+
+**Bilan du jour sur l'ANNEXE M : les 8 axes métier sont tous soit routés, soit fermés par entité (lookup),
+soit MIX par entité — plus aucun « aucun ». Cinq référentiels officiels neufs (RNCP×ROME, REGPROF,
+BLS OEWS, O*NET, BLS SOII), 2 578 sujets sortis du backlog (28 655 → 26 623 avec +6 sujets-tables), 0 faux.**
+
+## 2026-07-12 — L'AXE « OUTILS, MACHINES ET LOGICIELS » S'OUVRE : O*NET (P2283 reste mort)
+
+L'axe était à « aucun » depuis le rejet de P2283 (« soliste → solo »). ESCO ne type pas ses compétences en
+« outil » ; c'est **O*NET 30.0** (US DOL, CC BY 4.0) qui codifie « Tools Used » (41 662 lignes) et
+« Technology Skills » (32 681) par occupation SOC. **La 30.3 ne porte plus ces fichiers** (T2 sorti du
+produit principal) : db_30_0 est épinglé, et le module le documente.
+
+`ingestion/ingere_onet.py` — table `outil_technologie_soc_metier` (**478 métiers**), par la MÊME chaîne
+que la rémunération (maillons d'`ingere_bls_oes` RÉUTILISÉS, une seule définition de la chaîne) :
+métier → groupe ISCO (ESCO) → SOC 2010 → SOC 2018 → catégories O*NET. On publie la **catégorie UNSPSC**
+(« Desktop calculator »), pas chaque exemple commercial : un niveau COMPLET vaut mieux qu'un extrait d'un
+niveau plus fin — même choix que `geste_metier`. Granularité dite dans la valeur (groupe, pas métier
+précis), dédoublonnage à l'échelle du groupe, axe MIX → PARTIEL.
+
+Au passage, `lit_xlsx` apprend les **chaînes inline** du format xlsx (la gate fixture l'exigeait — rejeu
+BLS idempotent vérifié, 470/470 identiques). Gate `valide_onet` (9/9). Suite **121 gates**.
+Juge : **27 499 → 27 021 non traités (−478)**, partiels 1 668 → 2 146.
+
+## 2026-07-12 — L'AXE « RÉMUNÉRATION MÉDIANE » S'OUVRE : BLS OEWS (la vraie médiane, jamais la moyenne)
+
+### La chaîne à quatre maillons, tous officiels, aucun de nous
+Eurostat avait été écarté à raison (MOYENNE par grand groupe ISCO-1-chiffre : double faux en puissance).
+Le BLS publie la vraie **médiane**, par occupation SOC détaillée (831 occupations, OEWS mai 2024). Chaîne :
+métier → groupe ISCO-08 (**`code_isco_metier`**, ESCO, déjà au store — le « problème SOC↔Wikidata » du
+runbook était déjà à moitié résolu) → SOC 2010 (crosswalk officiel BLS 2012/2015, STATIQUE) → SOC 2018
+(crosswalk BLS/SOCPC) → médiane annuelle US (OEWS, `A_MEDIAN`, lignes `detailed`).
+
+### `ingestion/ingere_bls_oes.py` — table `salaire_median_soc_us_metier` (470 métiers)
+La granularité est DITE (leçon Eurostat, jusque dans le NOM de la table) : la médiane est PAR OCCUPATION
+SOC, un groupe ISCO en couvre plusieurs — « actuaire » → groupe 2120 → « Actuaries 125 770 $ » mais aussi
+« Mathematicians », « Statisticians »… La valeur liste TOUTES les occupations du groupe. Le « # » d'OEWS
+(médiane ≥ 239 200 $/an, plafond de publication) est encodé comme FAIT (4 métiers) ; « * » (non publié)
+est écarté ET compté ; 11 métiers dont AUCUNE occupation n'a de médiane (militaires, hors champ OEWS)
+restent NON TRAITÉS. Axe → `lookup_partiel` : part ÉTATS-UNIS seule, MIX, jamais TRAITÉ.
+
+### Le crosswalk .xls : conversion unique documentée, pas de parseur deviné
+Le crosswalk ISCO↔SOC n'existe qu'en .xls binaire (BIFF). Converti UNE FOIS en CSV (xlrd 1.2.0) — fichier
+STATIQUE depuis 2015, l'original conservé dans `_raw/` pour la traçabilité ; un parseur BIFF maison
+risquait le faux de parse silencieux. Les .xlsx (SOC 2010→2018, OEWS) se lisent en stdlib pur (zip+XML).
+Gate `valide_bls_oes` (10/10). Suite **120 gates**. Juge : **27 969 → 27 499 non traités (−470)**,
+partiels 1 198 → 1 668.
+
+## 2026-07-12 — L'AXE « NORMES, RÉGLEMENTATION » S'OUVRE : REGPROF ; et le drapeau ROME est REJETÉ
+
+### Un drapeau au sens inénonçable ne publie rien, même ses positifs
+Le référentiel ROME porte `emploi_reglemente` (tri-état ''/N/O). Sondé AVANT usage (leçon `unregulated`
+d'ESCO) : la documentation technique de France Travail le définit **circulairement** (« indication de si
+l'appellation/emploi est un emploi réglementé » — aucun critère, aucune source), et il échoue sur deux
+ancres en direction **négative** : `F1101 Architecte = N` (titre protégé, ordre, loi de 1977) et `D1102
+Boulanger = N` (loi 96-603). Positifs invraisemblables (« arbitre assistant », « archiviste » — absents de
+REGPROF). REJETÉ comme P2283. Au doute, HORS.
+
+### La source d'autorité : REGPROF
+La base officielle des professions réglementées de la Commission (déclarations des États membres,
+directive 2005/36/CE) — celle que le `regulated` d'ESCO référence — expose une API JSON publique (apiUrl
+dans `assets/config.json` de l'application Angular ; les chemins `/rest` du domaine servent le fallback
+SPA, piège classique). **255 entrées France**, libellées en français, avec régime de reconnaissance et
+niveau de qualification. Ancres : Avocat ✓, Infirmier(ère) ✓, « notaire » ABSENT (hors champ de la
+directive — donc **pas de monde clos** : l'absence n'est jamais publiée comme « non réglementé »,
+contraste assumé avec le RNCP exhaustif).
+
+### `ingestion/ingere_regprof.py` — table `profession_reglementee_metier` (36 métiers)
+Alignement sous les gardes maison + une règle neuve : la **parenthèse de genre collée** se déplie
+(« Infirmier(ère) » → « infirmier »), le **qualificatif espacé jamais** (« Architecte (droits acquis) »
+est un périmètre réduit — « architecte » n'en hérite pas ; l'axe le récupère par la table ESCO des
+7 sectorielles, enfin câblée comme preuve). Axe « normes, réglementation et certifications » →
+`lookup_partiel` : la réglementation d'**ACCÈS** est fermée, les normes **techniques** (ISO/AFNOR, contenu
+payant) restent non couvertes — MIX, jamais TRAITÉ. Gate `valide_regprof` (16/16). Suite **119 gates**.
+Juge : **28 009 → 27 969 non traités (−40)**, partiels 1 158 → 1 198.
+
+## 2026-07-12 — L'AXE « FORMATION, DIPLÔMES » S'OUVRE : ROME×RNCP (la piste « jamais interrogée » était vivante)
+
+### Le pas
+Le runbook (§4) tenait l'axe formation pour bloqué (« ROME : api.francetravail.io, clé requise, HTTP 401 »)
+mais listait le RNCP comme piste **jamais sondée**. Sondé : deux sources officielles, ouvertes, sans clé.
+
+- **ROME v4** (France Travail) — le zip open-data « Toutes les données du ROME » publie
+  `referentiel_appellation` : **14 301 appellations → code ROME**, librement. Le 401 ne concernait que
+  l'API temps réel ; la croyance « arborescences seulement » était fausse.
+- **RNCP** (France Compétences, export CSV quotidien sur data.gouv) — `Standard` (intitulé, niveau CEC,
+  statut ACTIF de 35 776 fiches) + `Rome` (67 075 liens fiche → code ROME).
+
+### Ce que la table affirme, mot à mot (leçon ESCO : ne pas voler une granularité qu'aucune source n'affirme)
+Personne n'affirme « la fiche F prépare au métier M ». Les deux faits attribués sont : l'appellation relève
+du code ROME (France Travail, niveau **appellation**) ; la fiche est enregistrée sous le code (France
+Compétences, niveau **code**). La valeur publiée dit donc les deux, code visible : « code ROME K2402
+(Ingénieur de recherche…) ; 104 certifications actives enregistrées sous ce code : … ». Exemple qui impose
+cette forme : « nanotechnologue » relève de K2402, dont les fiches vont des neurosciences au sport.
+
+`ingestion/ingere_rome_rncp.py`, deux relations : **`code_rome_metier`** et **`certification_rncp_metier`**
+(646 métiers de la carte chacune). Alignement sous les gardes ESCO : expansion genrée **structurelle**
+(« Abatteur / Abatteuse de carrière » → « abatteur de carrière », jamais le masculin nu ; aucune expansion
+si ≠ 2 segments, virgule, ou féminin plus court), unicité bilatérale (7 formes multi-codes écartées,
+0 métier ambigu), égalité exacte NFC. **372 métiers** avec ≥ 1 fiche active (exhaustif par code, trié,
+daté par l'export du 09/07/2026 — jamais de top-N) ; **274 faits négatifs** clos et datés (« allergologue :
+code J1129, aucune certification active » — les DES de médecine ne passent pas par le RNCP, et le
+répertoire est exhaustif : l'absence y est un fait).
+
+### Le sujet reste MIX
+La formation varie par **pays** et par **année** (la PARTIE VI le dit). Le RNCP ferme la part FRANÇAISE :
+`couverture_borne` passe l'axe en `lookup_partiel` → **646 sujets NON TRAITÉS → PARTIELS** (28 655 →
+28 009), jamais TRAITÉS. Les 2 754 métiers sans appellation ROME (« Akyn », « Busshi ») sont le même
+plafond structurel qu'ESCO : un référentiel du marché du travail contemporain ne décrit pas les métiers
+historiques. Gate `valide_rome_rncp` (30/30) : expansion, gardes d'unicité, fiches INACTIVE écartées,
+négatif daté, sabotages nommant le remède. Suite **118 gates**.
+
+### Un cliquet périmé débusqué
+`valide_sujets` exigeait encore la **présence** d'« Abogado »/« Anime »/« Armée de l'air » dans la carte
+(comme sujets non traités) — exigence inversée par l'oracle du 2026-07-12, qui les retire : un sujet faux
+se **retire**, il ne reste pas « non traité ». Le check ne rougissait que sur la base complète, jamais dans
+la suite (échantillon épinglé). Corrigé en son contraire : leur **absence** est vérifiée (64/64).
+
 ## 2026-07-12 — UN SUJET FAUX EST AUSSI GRAVE QU'UN FAIT FAUX (oracle de métier)
 
 ### Le défaut

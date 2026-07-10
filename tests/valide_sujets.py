@@ -124,26 +124,32 @@ if os.path.exists(S.DOC_AUTO):
               "toute entité TRAITÉE est présente sur le disque (aucune déclaration)")
         check(not any(any(cles[t] is not None and C._entite_annexe(s) in cles[t] for t in tables) for s in non_tr),
               "aucune entité NON TRAITÉE n'est en réalité présente (pas de faux négatif)")
-        # anti-FAUX mesuré : ces valeurs de P106 ne sont PAS des métiers.
+        # anti-FAUX mesuré : ces valeurs de P106 ne sont PAS des métiers. Depuis l'oracle `est_metier`
+        # (2026-07-12), elles ne sont plus DANS la carte du tout — un sujet faux se retire, il ne reste
+        # pas « non traité ». (L'ancienne version exigeait leur PRÉSENCE : cliquet périmé par l'oracle.)
         faux = {"Abogado", "Anime", "Armée de l'air"}
-        pieges = [s for s in axe_def if C._entite_annexe(s) in faux]
-        check(len(pieges) == len(faux), "les 3 non-métiers connus sont bien dans la carte (pièges présents)")
-        check(all(C.etat(s)[0] == C.NON_TRAITE for s in pieges),
-              "« Abogado » / « Anime » / « Armée de l\'air » ne sont JAMAIS déclarés traités")
+        check(not any(C._entite_annexe(s) in faux for s in metiers),
+              "« Abogado » / « Anime » / « Armée de l\'air » ne sont PLUS des sujets (oracle est_metier)")
     else:
         check(True, "(tables métiers absentes de ce store : cliquet réel non applicable — voir la FIXTURE)")
 
-    # 4) les axes sans source ingérée restent ENTIÈREMENT non traités (aucune couverture inventée).
-    for axe in ("outils, machines", "risques professionnels", "rémunération médiane",
-                "formation, diplômes", "normes, réglementation"):
-        lot = [s for s in metiers if axe in s.libelle]
-        check(lot and all(C.etat(s)[0] == C.NON_TRAITE for s in lot),
-              "axe sans source « %s » : 0 sujet déclaré traité" % axe)
+    # 4) plus AUCUN axe métier « sans source » : les huit sont soit routés, soit MIX par entité.
+    #    (Le cliquet vit désormais en §5 : PARTIEL par entité, JAMAIS TRAITÉ.)
 
-    # 5) l'axe « gestes » est MIX : il peut être PARTIEL par entité, JAMAIS TRAITÉ.
-    gestes = [s for s in metiers if "gestes et savoir-faire" in s.libelle]
-    check(gestes and not any(C.etat(s)[0] == C.TRAITE for s in gestes),
-          "axe « gestes » : aucun sujet déclaré TRAITÉ (la part tacite reste non bornée)")
+    # 5) les axes MIX peuvent être PARTIELS par entité, JAMAIS TRAITÉS : « gestes » (le tour de main
+    # tacite reste non borné), « formation » (le RNCP ferme la part FRANÇAISE ; la formation varie
+    # par pays et par année), « normes » (REGPROF/ESCO ferment la réglementation d'ACCÈS ; les
+    # normes techniques restent non couvertes) et « rémunération » (BLS OEWS ferme la part
+    # ÉTATS-UNIS ; les autres pays restent non couverts).
+    for axe, pourquoi in (("gestes et savoir-faire", "la part tacite reste non bornée"),
+                          ("formation, diplômes", "les autres systèmes nationaux restent non couverts"),
+                          ("normes, réglementation", "les normes techniques restent non couvertes"),
+                          ("rémunération médiane", "les autres pays restent non couverts"),
+                          ("outils, machines", "l'outillage réel n'est borné par aucun référentiel"),
+                          ("risques professionnels", "la prévention et la part française restent non couvertes")):
+        lot = [s for s in metiers if axe in s.libelle]
+        check(lot and not any(C.etat(s)[0] == C.TRAITE for s in lot),
+              "axe MIX « %s » : aucun sujet déclaré TRAITÉ (%s)" % (axe[:20], pourquoi))
 else:
     check(True, "(annexes auto non générées : outils/genere_sujets.py — sauté)")
 
@@ -169,7 +175,12 @@ def _sujet(libelle):
 _garde_dossier, _garde_cache = C._DOSSIER_STORE, dict(C._CACHE_CLES)
 with tempfile.TemporaryDirectory() as _tmp:
     for _table, _entites in (("definition_metier", ["boulanger ou boulangère"]),
-                             ("geste_metier", ["boulanger ou boulangère"])):
+                             ("geste_metier", ["boulanger ou boulangère"]),
+                             ("certification_rncp_metier", ["boulanger ou boulangère"]),
+                             ("profession_reglementee_metier", ["boulanger ou boulangère"]),
+                             ("salaire_median_soc_us_metier", ["boulanger ou boulangère"]),
+                             ("outil_technologie_soc_metier", ["boulanger ou boulangère"]),
+                             ("risque_professionnel_soc_metier", ["boulanger ou boulangère"])):
         with open(os.path.join(_tmp, _table + ".jsonl"), "w", encoding="utf-8") as _f:
             _f.write('{"_relation": "%s", "_categorie": "convention", "_source": "fixture"}\n' % _table)
             for _e in _entites:
@@ -194,11 +205,41 @@ with tempfile.TemporaryDirectory() as _tmp:
     check("part codifiée seule" in _g_pres[1], "FIXTURE : le PARTIEL dit que seule la part codifiée est couverte")
     check(_g_abs[0] == C.NON_TRAITE, "FIXTURE : gestes d'un métier absent -> NON TRAITÉ")
 
-    # un axe SANS table ingérée n'est jamais traité, même pour un métier connu par ailleurs.
-    for _axe in ("outils, machines et logiciels", "risques professionnels et prévention",
-                 "rémunération médiane (pays et année donnés)"):
-        _e, _ = C.etat(_sujet("boulanger ou boulangère — " + _axe))
-        check(_e == C.NON_TRAITE, "FIXTURE : axe sans source « %s » -> NON TRAITÉ" % _axe[:22])
+    # l'axe « formation » est MIX lui aussi : présent -> PARTIEL (part française RNCP), jamais TRAITÉ.
+    _f_pres = C.etat(_sujet("boulanger ou boulangère — formation, diplômes et voies d'accès"))
+    _f_abs = C.etat(_sujet("métier fantôme — formation, diplômes et voies d'accès"))
+    check(_f_pres[0] == C.PARTIEL, "FIXTURE : formation d'un métier couvert -> PARTIEL (part française seule)")
+    check("FRANÇAISE" in _f_pres[1], "FIXTURE : le PARTIEL dit que seule la part française est couverte")
+    check(_f_abs[0] == C.NON_TRAITE, "FIXTURE : formation d'un métier absent -> NON TRAITÉ")
+
+    # l'axe « normes » est MIX : réglementation d'ACCÈS (REGPROF/ESCO) -> PARTIEL, jamais TRAITÉ.
+    _n_pres = C.etat(_sujet("boulanger ou boulangère — normes, réglementation et certifications"))
+    _n_abs = C.etat(_sujet("métier fantôme — normes, réglementation et certifications"))
+    check(_n_pres[0] == C.PARTIEL, "FIXTURE : normes d'un métier couvert -> PARTIEL (accès seul)")
+    check("ACCÈS" in _n_pres[1], "FIXTURE : le PARTIEL dit que seule la réglementation d'accès est couverte")
+    check(_n_abs[0] == C.NON_TRAITE,
+          "FIXTURE : normes d'un métier absent -> NON TRAITÉ (l'absence de REGPROF n'est pas un fait)")
+
+    # l'axe « rémunération » est MIX : part États-Unis (BLS OEWS) -> PARTIEL, jamais TRAITÉ.
+    _r_pres = C.etat(_sujet("boulanger ou boulangère — rémunération médiane (pays et année donnés)"))
+    _r_abs = C.etat(_sujet("métier fantôme — rémunération médiane (pays et année donnés)"))
+    check(_r_pres[0] == C.PARTIEL, "FIXTURE : rémunération d'un métier couvert -> PARTIEL (États-Unis seuls)")
+    check("ÉTATS-UNIS" in _r_pres[1], "FIXTURE : le PARTIEL dit que seule la part États-Unis est couverte")
+    check(_r_abs[0] == C.NON_TRAITE, "FIXTURE : rémunération d'un métier absent -> NON TRAITÉ")
+
+    # l'axe « outils » est MIX : part codifiée O*NET -> PARTIEL, jamais TRAITÉ.
+    _o_pres = C.etat(_sujet("boulanger ou boulangère — outils, machines et logiciels du métier"))
+    _o_abs = C.etat(_sujet("métier fantôme — outils, machines et logiciels du métier"))
+    check(_o_pres[0] == C.PARTIEL, "FIXTURE : outils d'un métier couvert -> PARTIEL (part codifiée O*NET)")
+    check("O*NET" in _o_pres[1], "FIXTURE : le PARTIEL nomme O*NET et sa granularité")
+    check(_o_abs[0] == C.NON_TRAITE, "FIXTURE : outils d'un métier absent -> NON TRAITÉ")
+
+    # l'axe « risques » est MIX : part mesurée BLS SOII -> PARTIEL, jamais TRAITÉ.
+    _q_pres = C.etat(_sujet("boulanger ou boulangère — risques professionnels et prévention"))
+    _q_abs = C.etat(_sujet("métier fantôme — risques professionnels et prévention"))
+    check(_q_pres[0] == C.PARTIEL, "FIXTURE : risques d'un métier couvert -> PARTIEL (part mesurée US)")
+    check("SOII" in _q_pres[1], "FIXTURE : le PARTIEL nomme le SOII et sa part")
+    check(_q_abs[0] == C.NON_TRAITE, "FIXTURE : risques d'un métier absent -> NON TRAITÉ")
 
     # le NON BORNÉ reste traité par le routage honnête (ce n'est pas une réponse inventée).
     _e, _ = C.etat(_sujet("boulanger ou boulangère — « ce métier est-il fait pour moi ? »"))

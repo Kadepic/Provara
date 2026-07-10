@@ -321,16 +321,32 @@ _AXES_M = (
     (re.compile(r"définition et périmètre", re.I), "lookup",
      ("definition_esco_metier", "definition_metier", "surclasse_metier"),
      "description ESCO, description Wikidata, ou sur-classe P279 attestée"),
-    (re.compile(r"outils, machines", re.I), "aucun", (),
-     "P2283 sémantiquement trop lâche (« soliste -> solo ») : rejeté au doute ; source réelle = ESCO/ROME"),
+    # MIX assumé : O*NET codifie l'outillage du marché US par occupation SOC (granularité dite dans la
+    # valeur). P2283 reste rejeté (« soliste -> solo ») ; l'outillage réel n'est borné par aucun référentiel.
+    (re.compile(r"outils, machines", re.I), "lookup_partiel", ("outil_technologie_soc_metier",),
+     "part CODIFIÉE fermée par O*NET (catégories par occupation SOC, marché US) ; le reste non couvert (sujet MIX)"),
     # MIX assumé : ESCO codifie la part TRANSMISSIBLE PAR TEXTE du savoir-faire (compétences essentielles
     # de type `skill`). Le TOUR DE MAIN tacite n'y est pas et ne peut pas y être. Donc PARTIEL, jamais TRAITÉ.
     (re.compile(r"gestes et savoir-faire", re.I), "lookup_partiel", ("geste_metier",),
      "part CODIFIÉE fermée par ESCO ; le tour de main tacite reste non borné (le sujet est MIX)"),
-    (re.compile(r"normes, réglementation", re.I), "aucun", (), "aucun corpus réglementaire ingéré"),
-    (re.compile(r"risques professionnels", re.I), "aucun", (), "aucune table de risques ingérée (INRS/EU-OSHA)"),
-    (re.compile(r"formation, diplômes", re.I), "aucun", (), "aucun référentiel de formation ingéré"),
-    (re.compile(r"rémunération médiane", re.I), "aucun", (), "aucune statistique salariale ingérée"),
+    # MIX assumé : REGPROF (Commission, directive 2005/36/CE) et ESCO couvrent la réglementation d'ACCÈS
+    # à la profession ; les normes TECHNIQUES du métier (ISO/AFNOR, contenu payant) restent non couvertes.
+    (re.compile(r"normes, réglementation", re.I), "lookup_partiel",
+     ("profession_reglementee_metier", "reglementation_metier"),
+     "réglementation d'ACCÈS fermée par REGPROF/ESCO ; les normes techniques restent non couvertes (sujet MIX)"),
+    # MIX assumé : le SOII mesure les taux d'incidence US par occupation SOC (granularité dite). La
+    # PRÉVENTION n'est pas une statistique, et la part française (INRS) reste sans table structurée.
+    (re.compile(r"risques professionnels", re.I), "lookup_partiel", ("risque_professionnel_soc_metier",),
+     "part MESURÉE fermée par BLS SOII (taux par occupation SOC, États-Unis) ; prévention et part FR non couvertes (sujet MIX)"),
+    # MIX assumé : le RNCP ferme la part FRANÇAISE (certifications actives sous le code ROME du métier,
+    # granularité CODE dite dans la valeur — cf. ingere_rome_rncp). La formation varie par PAYS et par
+    # ANNÉE (la PARTIE VI le dit : « programmes et diplômes officiels »). Donc PARTIEL, jamais TRAITÉ.
+    (re.compile(r"formation, diplômes", re.I), "lookup_partiel", ("certification_rncp_metier",),
+     "part FRANÇAISE fermée par RNCP×ROME ; les autres systèmes nationaux restent non couverts (sujet MIX)"),
+    # MIX assumé : BLS OEWS ferme la part ÉTATS-UNIS (vraies MÉDIANES, par occupation SOC — granularité
+    # dite dans la valeur). La rémunération des autres pays (dont la France) reste non couverte.
+    (re.compile(r"rémunération médiane", re.I), "lookup_partiel", ("salaire_median_soc_us_metier",),
+     "part ÉTATS-UNIS fermée par BLS OEWS (médianes par occupation SOC) ; autres pays non couverts (sujet MIX)"),
     (re.compile(r"résultats établis du domaine", re.I), "aucun", (), "corpus de domaine non ingéré"),
 )
 
