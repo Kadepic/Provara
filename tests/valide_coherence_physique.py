@@ -64,6 +64,13 @@ check(statut({"type": "dessalement", "energie_kWh_par_m3": 0.0, "osmose_pression
 check(statut({"type": "dessalement", "energie_kWh_par_m3": 0.5, "concentration_mol_par_L": 0.6,
               "facteur_vant_hoff": 2, "t_K": 298.15}) == P.VIOLE,
       "dessalement 0.5 kWh/m³ < plancher calculé ~0.83 (van 't Hoff)")
+# 2nd principe GÉNÉRALISÉ : séparation d'un composant dilué sous R·T·ln(1/x) (capture du CO₂ : x ≈ 4.2e-4 → ~19.3 kJ/mol).
+check(statut({"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 10, "t_K": 298.15}) == P.VIOLE,
+      "capture CO₂ air 10 kJ/mol < plancher ~19.3 (x=420 ppm)")
+check(loi({"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 10, "t_K": 298.15}) == P.L3,
+      "séparation diluée = travail minimal (L3)")
+check(statut({"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 0.0}) == P.VIOLE,
+      "capture CO₂ à énergie NULLE depuis l'air : impossible")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -84,6 +91,11 @@ reels = [
     {"type": "dessalement", "energie_kWh_par_m3": 1.0, "concentration_mol_par_L": 0.6,
      "facteur_vant_hoff": 2, "t_K": 298.15},                                          # > plancher calculé ~0.83
     {"type": "dessalement", "energie_kWh_par_m3": 2.0},                               # sans base π : indéterminé, PAS un faux positif
+    # séparations RÉELLES au-dessus du plancher R·T·ln(1/x).
+    {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 230, "t_K": 298.15},  # DAC solide réel (air)
+    {"type": "separation", "fraction_molaire": 0.12, "energie_kJ_par_mol": 120, "t_K": 298.15},    # amines aux fumées (x élevé)
+    {"type": "separation", "fraction_molaire": 4.2e-4, "energie_kJ_par_mol": 25, "t_K": 298.15},   # juste au-dessus du plancher ~19.3
+    {"type": "separation", "fraction_molaire": 4.2e-4},                                # sans énergie déclarée : indéterminé, PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

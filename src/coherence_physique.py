@@ -26,6 +26,8 @@ Détecteurs CONSERVATEURS : on ne déclare VIOLE que sur une contradiction CERTA
 """
 from __future__ import annotations
 
+import math
+
 VIOLE = "viole"
 COHERENT_BORNE = "coherent_borne"
 HORS = "hors"
@@ -56,7 +58,8 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     if not isinstance(spec, dict):
         return (HORS, "spec absente ou invalide", None)
     t = spec.get("type")
-    if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur", "dessalement"):
+    if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
+                 "dessalement", "separation"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -134,6 +137,24 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                 return (VIOLE, f"énergie déclarée {e} kWh/m³ < travail minimal de séparation "
                                f"{round(e_min, 3)} kWh/m³ (π = {round(pi_bar, 2)} bar, récupération → 0) : "
                                f"séparation sous l'énergie de mélange de Gibbs", L3)
+
+    # --- 2nd principe : séparation d'un composant DILUÉ sous le travail minimal (généralise L3 au gaz/mélange). ---
+    # Le travail réversible minimal pour extraire un composant présent à la fraction molaire x d'un mélange idéal
+    # vaut, à la limite diluée (récupération → 0), R·T·ln(1/x) par mole extraite (énergie de mélange). Toute
+    # énergie déclarée SOUS ce plancher est impossible : on ne « démélange » pas pour moins que l'énergie de
+    # mélange. CONSERVATEUR (récupération → 0) : le minimum réel d'un procédé à récupération finie ne peut
+    # qu'être PLUS grand → aucun faux positif. C'est la forme GÉNÉRALE de la loi L3 (le dessalement en est le cas
+    # osmotique) : elle borne aussi la capture du CO₂ (x ≈ 4,2e-4 dans l'air), la séparation de gaz, etc.
+    if t == "separation":
+        x = spec.get("fraction_molaire")
+        tk = spec.get("t_K", 298.15)
+        e_mol = spec.get("energie_kJ_par_mol")
+        if _nb(x) and _nb(tk) and _nb(e_mol) and 0.0 < x < 1.0 and tk > 0:
+            w_min_kJ = 8.314462618 * tk * math.log(1.0 / x) / 1000.0     # R·T·ln(1/x), J/mol → kJ/mol
+            if e_mol < w_min_kJ - 1e-9:
+                return (VIOLE, f"énergie déclarée {e_mol} kJ/mol < travail minimal de séparation "
+                               f"{round(w_min_kJ, 3)} kJ/mol (fraction molaire x={x}, récupération → 0) : "
+                               f"séparation sous l'énergie de mélange", L3)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:
