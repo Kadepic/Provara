@@ -22,6 +22,12 @@ import tempfile
 import time
 
 _ICI = os.path.dirname(os.path.abspath(__file__)) or "."
+# RACINE du projet = parent de tests/ (2026-07-12 : bug DORMANT trouvé par la passe base-complète). `_ICI`
+# est `tests/`, mais le code s'en servait comme de la racine pour trouver `src/lecteur_daemon.py` et
+# `datasets/lecteur/` -> daemon lancé sur `tests/src/lecteur_daemon.py` (INEXISTANT), échec silencieux,
+# `disponible()` jamais True. `VERAX_ROOT` (posé par _nonreg) masquait le défaut ; en autonome il tombait.
+# On dérive la racine de façon robuste : VERAX_ROOT si posé, sinon le parent de tests/.
+_RACINE = os.environ.get("VERAX_ROOT") or os.path.dirname(_ICI)
 sys.path.insert(0, _ICI)
 
 ok = 0
@@ -41,7 +47,7 @@ def check(c, l):
 _TMP = tempfile.mkdtemp(prefix="verax_daemon_")
 _DS = os.path.join(_TMP, "lecteur")
 os.makedirs(_DS)
-_SRC = os.path.join(os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(_ICI, "datasets", "lecteur"), "capitale.jsonl")
+_SRC = os.path.join(os.environ.get("LECTEUR_DATASETS_DIR") or os.path.join(_RACINE, "datasets", "lecteur"), "capitale.jsonl")
 if not os.path.exists(_SRC):
     print("=== valide_lecteur_client : 0/0 (fixture capitale.jsonl absente — SKIP) ===")
     shutil.rmtree(_TMP, ignore_errors=True)
@@ -67,7 +73,9 @@ check(ref_val is not None, "référence : lecteur.cherche(capitale, Japon) trouv
 daemon = None
 try:
     env = dict(os.environ)
-    daemon = subprocess.Popen([sys.executable, os.path.join(os.environ.get("VERAX_ROOT") or _ICI, "src", "lecteur_daemon.py")],
+    # daemon localisé À CÔTÉ du module lecteur (robuste : cwd / VERAX_ROOT indifférents)
+    _daemon_py = os.path.join(os.path.dirname(os.path.abspath(_L.__file__)), "lecteur_daemon.py")
+    daemon = subprocess.Popen([sys.executable, _daemon_py],
                               env=env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, cwd=_ICI)
     # attendre que le daemon écoute (fixture = charge quasi-instantanée)
     t0 = time.time()
@@ -96,9 +104,9 @@ try:
               "parité repond_nl : (statut, valeur) identiques au lecteur")
 
         # CHEMIN RAPIDE de l'interface : même valeur que le chemin lourd, sans cold-load
-        sys.path.insert(0, os.path.join(os.environ.get("VERAX_ROOT") or _ICI, "interface"))
+        sys.path.insert(0, os.path.join(_RACINE, "interface"))
         import importlib.util
-        spec = importlib.util.spec_from_file_location("repond_test", os.path.join(os.environ.get("VERAX_ROOT") or _ICI, "interface", "repond.py"))
+        spec = importlib.util.spec_from_file_location("repond_test", os.path.join(_RACINE, "interface", "repond.py"))
         R = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(R)
         rapide = R._connaissance_rapide_daemon("Quelle est la capitale du Japon ?")
