@@ -36,9 +36,10 @@ def check(c, label):
 
 
 if not D or not os.path.exists(os.path.join(D, "type_etoile.jsonl")):
-    print("valide_ancres_types : LECTEUR_DATASETS_DIR doit pointer sur la BASE COMPLÈTE "
-          "(type_etoile.jsonl introuvable) — gate de classe « base complète », à lancer manuellement.")
-    sys.exit(1)
+    # SKIP propre (exit 0), pas un FAUX-échec (2026-07-12) : gate de classe BASE COMPLÈTE lancée sur
+    # l'échantillon (type_etoile absent). Vérifiée sur la base réelle par la passe manuelle valide_lecteur*.
+    print("=== valide_ancres_types : SKIP — base complète requise (type_etoile absent de ce store) ===")
+    sys.exit(0)
 
 
 def scanne(table: str, ancres: dict, volume_min: int, prefixe_debris: bool = False, compte_valeurs: bool = False):
