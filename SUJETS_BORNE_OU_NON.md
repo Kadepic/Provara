@@ -432,7 +432,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - structure de classification : Nomenclature statistique des activités NACE :: B-CONV → publiée (Eurostat) ; contenu à ingérer
   - structure de classification : Répertoire opérationnel des métiers et des emplois ROME :: B-CONV → publiée (France Travail) ; contenu à ingérer
 
-# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1381 tables vérifiées)
+# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1387 tables vérifiées)
 ## S.1 — Chaque relation vérifiée du lecteur est un sujet borné DE FAIT
 ## (couverture d'ancrage prouvée : audit_ancres 1371/1371, valide_ancres_types)
   - donnée du store : activite_circadienne_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -554,6 +554,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : categorie_uicn_aire_protegee :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : cause_deces :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : cause_type_diabete :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : certification_rncp_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : chaine_diffusion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : chaine_montagne :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : charge_ion :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -607,6 +608,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : code_ndl_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : code_nkc_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : code_olympique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : code_rome_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : code_unesco_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : code_wals_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : col_chaine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -1188,6 +1190,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : origine_vent :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : os_partie_squelette :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : os_type :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : outil_technologie_soc_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : pKa_chimie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : pantheon_dieu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : parede_divinite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -1432,6 +1435,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : producteur_album :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : produit_excretion_organe :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : produit_fermentation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : profession_reglementee_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : profondeur_grotte :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : profondeur_lac :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : proprietaire_organisation :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -1460,6 +1464,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : respiration_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : resultat_division_cellulaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : revetement_corps_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : risque_professionnel_soc_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : robe_cheval :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : role_acide_nucleique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : role_annexe_embryonnaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -1516,6 +1521,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : role_type_vaisseau :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : role_vitamine :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : saison_olympique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : salaire_median_soc_us_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : sans_littoral :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : savoir_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : scenariste_film :: B-FAIT → table vérifiée du lecteur (ancrage audité)
