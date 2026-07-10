@@ -38,9 +38,11 @@ L2 = "2nd principe (entropie / Carnot)"
 L3 = "2nd principe (travail minimal de séparation / énergie de mélange de Gibbs)"
 L4 = "conservation de la quantité de mouvement (3e loi de Newton) / vitesse d'éjection ≤ c"
 L5 = "efficacité lumineuse ≤ 683 lm/W (maximum spectral à 555 nm, rendement radiant 100 %)"
+L6 = "limite de Landauer (≥ k·T·ln2 dissipés par bit d'information effacé)"
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
+_K_BOLTZMANN = 1.380649e-23  # J/K
 
 
 def _nb(x):
@@ -64,7 +66,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         return (HORS, "spec absente ou invalide", None)
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
-                 "dessalement", "separation", "propulsion", "eclairage"):
+                 "dessalement", "separation", "propulsion", "eclairage", "calcul"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -188,6 +190,20 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         if _nb(eff) and eff > _EFFICACITE_LUM_MAX + 1e-9:
             return (VIOLE, f"efficacité lumineuse {eff} lm/W > {_EFFICACITE_LUM_MAX:.0f} lm/W (maximum à 555 nm, "
                            f"rendement radiant 100 %) : impossible", L5)
+
+    # --- Limite de Landauer : effacer un bit dissipe au moins k·T·ln2. ---
+    # Effacer un bit d'information (opération LOGIQUEMENT IRRÉVERSIBLE) réduit l'entropie informationnelle et
+    # dissipe donc au minimum k·T·ln2 en chaleur (~2,87e-21 J à 300 K). Une machine qui déclare effacer des bits
+    # pour MOINS viole ce principe. CONSERVATEUR : ne s'applique qu'à l'énergie déclarée par bit EFFACÉ (le calcul
+    # réversible/adiabatique, qui n'efface pas, n'est pas concerné et n'est donc jamais réfuté ici).
+    if t == "calcul":
+        e_bit = spec.get("energie_par_bit_efface_J")
+        tk = spec.get("t_K", 300.0)
+        if _nb(e_bit) and _nb(tk) and tk > 0:
+            e_min = _K_BOLTZMANN * tk * math.log(2.0)
+            if e_bit < e_min * (1.0 - 1e-9):
+                return (VIOLE, f"énergie par bit effacé {e_bit} J < limite de Landauer {e_min:.3e} J "
+                               f"(k·T·ln2 à {tk} K) : impossible", L6)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

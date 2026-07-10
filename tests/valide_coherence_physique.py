@@ -83,6 +83,11 @@ check(statut({"type": "propulsion", "poussee_nette": 1.0, "ejecte_masse_ou_rayon
 # efficacité lumineuse > 683 lm/W (maximum spectral à 555 nm).
 check(statut({"type": "eclairage", "efficacite_lm_par_W": 800}) == P.VIOLE, "800 lm/W > 683 -> VIOLE")
 check(loi({"type": "eclairage", "efficacite_lm_par_W": 800}) == P.L5, "efficacité lumineuse = L5")
+# limite de Landauer : effacer un bit sous k·T·ln2 (~2.87e-21 J à 300 K).
+check(statut({"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300}) == P.VIOLE,
+      "1e-23 J/bit < Landauer ~2.87e-21 -> VIOLE")
+check(loi({"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300}) == P.L6, "Landauer = L6")
+check(statut({"type": "calcul", "energie_par_bit_efface_J": 0.0}) == P.VIOLE, "effacer un bit à énergie nulle -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -124,6 +129,11 @@ reels = [
     {"type": "eclairage", "efficacite_lm_par_W": 683},                                 # AU plafond (limite, ok)
     {"type": "eclairage", "efficacite_lm_par_W": 15},                                  # incandescence
     {"type": "eclairage"},                                                             # sans efficacité : PAS un faux positif
+    # calculs RÉELS : bien AU-DESSUS de la limite de Landauer.
+    {"type": "calcul", "energie_par_bit_efface_J": 1e-17, "t_K": 300},                 # CMOS actuel (~10^4× Landauer)
+    {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300},                 # sous-seuil / basse tension
+    {"type": "calcul", "energie_par_bit_efface_J": 2.9e-21, "t_K": 300},               # juste au-dessus de Landauer
+    {"type": "calcul"},                                                                # sans énergie déclarée : PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
