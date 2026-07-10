@@ -494,6 +494,172 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  TROISIÈME DOMAINE : dessaler / purifier l'eau — enjeu mondial (rareté), physique RICHE et surtout DUREMENT
+#  bornée : le travail minimal de séparation (énergie de mélange de Gibbs ≈ π osmotique, van 't Hoff) est
+#  l'analogue de Carnot. On a d'abord ÉTENDU `coherence_physique` d'un type `dessalement` qui RÉFUTE toute
+#  énergie déclarée SOUS ce plancher (≈ 0,76 kWh/m³ pour l'eau de mer à récupération → 0) — donc ici, comme pour
+#  le froid, l'impossible devient un atome RÉFUTÉ, pas une simple supposition. FAUX=0 : les principes cohérents
+#  restent des SUPPOSITIONS jugées, jamais des faits.
+#  REFRAMING machine : ne pas « bouillir toute l'eau » ni pousser en bloc contre π ; payer le MOINS possible
+#  au-dessus du minimum en (a) ne sur-récupérant pas, (b) appariant la méthode à la salinité, (c) exploitant
+#  les sources GRATUITES (solaire, chaleur fatale, gradient de salinité).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_EAU = "dessalement_eau"
+# Libellés QUALIFIÉS (séparation du SEL) ; « purifier l'eau » nu est ambigu (bactéries, turbidité) → écarté.
+_ALIAS_EAU = {
+    "dessaler l eau de mer", "dessaler l eau", "dessaler l eau saumatre", "produire de l eau douce",
+    "rendre l eau de mer potable", "dessalement de l eau", "dessalement",
+}
+
+# ── « Canaux » de séparation : les leviers physiques par lesquels on sépare l'eau du sel ─────────────────────────
+# (grandeur = ce qu'on déplace : l'eau, ou l'ion.)
+_CANAUX_EAU = [
+    Canal("pression", "eau", "pousser l'eau à travers une membrane en DÉPASSANT π (osmose inverse)",
+          False, "pompe haute pression = bruit + énergie ; l'échangeur de pression récupère l'énergie de la saumure"),
+    Canal("changement de phase", "eau", "évaporer OU congeler : le sel reste dans la phase liquide résiduelle",
+          True, "la congélation prend la chaleur latente de FUSION (334 kJ/kg) « au lieu » de vaporisation (2260) "
+                "— théoriquement moins d'énergie, mais séparer les cristaux de glace du sel est délicat"),
+    Canal("champ electrique", "ions", "tirer les IONS hors de l'eau (électrodialyse, désionisation capacitive)",
+          True, "on déplace l'ion MINORITAIRE, pas toute l'eau → très économe en eau PEU salée, inadapté à l'eau de mer"),
+    Canal("affinite selective", "ions", "capter sélectivement les ions (adsorption, résines, aquaporines, hydrates)",
+          True, "sélectivité biomimétique (aquaporines) ou piégeage (clathrates) — jeune, prometteur hors labo"),
+]
+
+# ── PRINCIPES candidats de dessalement — chacun JUGÉ par le travail minimal de séparation (L3) ───────────────────
+_PRINCIPES_EAU = [
+    _P("osmose inverse eau de mer (SWRO, référence)",
+       "dessaler : pousser l'eau de mer à travers une membrane semi-perméable au-delà de la pression osmotique",
+       {"type": "dessalement", "energie_kWh_par_m3": 3.0, "osmose_pression_bar": 27}, False, True,
+       "saumure concentrée (rejet à gérer)", "mature (dominant)",
+       0.65, "la référence moderne : ~3 kWh/m³ avec échangeurs de pression, ~4× le minimum thermodynamique ; "
+             "bruit de pompe et colmatage des membranes — la barre à descendre"),
+    _P("osmose inverse eau saumâtre (BWRO)",
+       "dessaler : osmose inverse sur une eau peu salée (nappe saumâtre), à basse pression",
+       {"type": "dessalement", "energie_kWh_par_m3": 1.0, "osmose_pression_bar": 5}, False, True,
+       "saumure (rejet, plus faible volume)", "mature",
+       0.7, "π faible → énergie faible : APPARIER la méthode à la salinité est le premier levier (une eau "
+            "saumâtre ne se traite pas comme l'eau de mer)"),
+    _P("distillation multi-effet / MSF (thermique)",
+       "dessaler : évaporer puis condenser l'eau en plusieurs effets, le sel restant dans la saumure",
+       {"type": "dessalement", "energie_kWh_par_m3": 12.0, "osmose_pression_bar": 27}, True, False,
+       "saumure chaude concentrée", "mature (pays chauds/pétroliers)",
+       0.5, "robuste et insensible au colmatage, traite l'hypersalin ; ÉNERGIVORE (chaleur), rentable surtout "
+            "adossé à de la chaleur fatale (centrale, industrie)"),
+    _P("dessalement par congélation (freeze desalination)",
+       "dessaler : congeler partiellement l'eau — la glace exclut le sel — puis séparer et fondre les cristaux",
+       {"type": "dessalement", "energie_kWh_par_m3": 6.0, "osmose_pression_bar": 27}, True, False,
+       "saumure froide concentrée", "recherche (sous-exploité)",
+       0.5, "la chaleur latente de FUSION est ~7× plus faible que celle de vaporisation → potentiel d'énergie "
+            "moindre que la distillation ; verrou = laver le sel piégé entre les cristaux ; peu exploité"),
+    _P("électrodialyse (ED / EDR)",
+       "dessaler : un champ électrique tire les ions à travers des membranes échangeuses d'ions",
+       {"type": "dessalement", "energie_kWh_par_m3": 1.5, "osmose_pression_bar": 5}, True, True,
+       "concentrat ionique", "mature (eau saumâtre)",
+       0.6, "on déplace l'ION, pas toute l'eau → très efficace en eau PEU salée ; le coût monte avec la salinité "
+            "(inadapté à l'eau de mer) — le miroir « cibler le minoritaire »"),
+    _P("désionisation capacitive (CDI)",
+       "dessaler : adsorber les ions sur des électrodes poreuses chargées, puis les relâcher en déchargeant",
+       {"type": "dessalement", "energie_kWh_par_m3": 0.6, "osmose_pression_bar": 3}, True, True,
+       "saumure de régénération", "émergent",
+       0.5, "récupère une partie de l'énergie à la décharge ; réservé aux eaux FAIBLEMENT salées (l'adsorption "
+            "sature) — sous-exploité pour l'eau saumâtre domestique"),
+    _P("distillation membranaire (MD, chaleur fatale)",
+       "dessaler : la vapeur traverse une membrane hydrophobe sous un faible écart de température",
+       {"type": "dessalement", "energie_kWh_par_m3": 5.0, "osmose_pression_bar": 27}, True, False,
+       "saumure", "recherche (niche chaleur fatale)",
+       0.5, "fonctionne sur de la chaleur BASSE température (fatale, solaire) que rien d'autre ne valorise → "
+            "l'énergie « payée » est quasi nulle si la chaleur est un déchet ; sous-exploité"),
+    _P("dessalement solaire (still / solaire thermique)",
+       "dessaler : évaporer l'eau au soleil sous une vitre, condenser le distillat (le sel reste)",
+       {"type": "dessalement", "energie_kWh_par_m3": 630.0, "osmose_pression_bar": 27}, True, False,
+       "saumure (bassin)", "ancestral (hors réseau)",
+       0.55, "ÉNORME énergie thermique MAIS entièrement SOLAIRE (gratuite) et passive → idéal hors réseau / "
+             "petite échelle ; le débit par m² de capteur est le vrai plafond, pas l'énergie"),
+    _P("osmose directe (forward osmosis)",
+       "dessaler : une solution d'appel très concentrée attire l'eau à travers la membrane, puis on régénère l'appel",
+       {"type": "dessalement", "energie_kWh_par_m3": 4.0, "osmose_pression_bar": 27}, True, True,
+       "solution d'appel à régénérer", "recherche",
+       0.4, "l'étape membranaire est douce (peu de pression) MAIS l'énergie se paie à la RÉGÉNÉRATION de l'appel "
+            "— pas de repas gratuit ; intérêt = adosser la régénération à de la chaleur fatale"),
+    _P("extraction par solvant directionnel (chaleur fatale)",
+       "dessaler : un solvant dont la solubilité dépend de la température capte l'eau à chaud, la relâche à froid",
+       {"type": "dessalement", "energie_kWh_par_m3": 2.5, "osmose_pression_bar": 27}, True, True,
+       "saumure", "recherche (sous-exploité)",
+       0.4, "sans membrane (pas de colmatage), entraîné par un petit écart de température → valorise la chaleur "
+            "fatale ; encore au stade laboratoire"),
+    _P("hydrates de gaz (clathrates)",
+       "dessaler : former des hydrates de gaz (cages d'eau) qui excluent le sel, puis les dissocier",
+       {"type": "dessalement", "energie_kWh_par_m3": 5.0, "osmose_pression_bar": 27}, True, True,
+       "saumure", "recherche",
+       0.35, "les cages d'hydrate n'admettent que l'eau → séparation intrinsèque ; gestion de la pression/du gaz "
+             "invité à maîtriser — piste peu explorée"),
+    _P("membranes biomimétiques (aquaporines / graphène)",
+       "dessaler : osmose inverse à travers des membranes à aquaporines ou à nanopores de graphène",
+       {"type": "dessalement", "energie_kWh_par_m3": 2.5, "osmose_pression_bar": 27}, False, True,
+       "saumure", "émergent",
+       0.5, "perméabilité bien plus élevée → moins de perte de charge, on APPROCHE le minimum thermodynamique ; "
+            "reste une osmose inverse (l'énergie ne descend JAMAIS sous π) ; industrialisation en cours"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : sous le travail minimal de séparation) ──
+    _P("osmose inverse « à 0,3 kWh/m³ pour l'eau de mer »",
+       "dessaler : osmose inverse de l'eau de mer revendiquée à 0,3 kWh/m³",
+       {"type": "dessalement", "energie_kWh_par_m3": 0.3, "osmose_pression_bar": 27}, False, True,
+       "saumure", "revendication",
+       0.3, "revendication SOUS le plancher thermodynamique (~0,76 kWh/m³) — à réfuter par le travail minimal"),
+    _P("dessalement passif « sans énergie »",
+       "dessaler : produire de l'eau douce à partir d'eau de mer sans aucun apport d'énergie",
+       {"type": "dessalement", "energie_kWh_par_m3": 0.0, "osmose_pression_bar": 27}, True, True,
+       "saumure", "revendication",
+       0.25, "séparer le sel sans énergie ferait baisser l'entropie de mélange sans travail — impossible"),
+]
+
+_OBJECTIF_EAU = ("Le but réel n'est pas de « bouillir toute l'eau » ni de la pousser en bloc contre la pression "
+                 "osmotique totale, mais de payer le MOINS possible au-dessus du travail minimal de séparation "
+                 "(≈ 0,76 kWh/m³ pour l'eau de mer à récupération → 0, ≈ 1,06 à 50 %). Leviers : ne pas SUR-récupérer "
+                 "(à récupération → 1 la saumure concentre π et l'énergie diverge), viser le procédé réversible "
+                 "(échangeurs de pression, étages à contre-courant), APPARIER la méthode à la salinité (saumâtre → "
+                 "osmose inverse bon marché ; hypersalin → thermique), exploiter les sources GRATUITES (chaleur "
+                 "fatale, solaire, gradient de salinité) — chaque principe reste jugé par le travail minimal.")
+_LOI_EAU = ("on ne sépare pas l'eau du sel pour moins que l'énergie de mélange de Gibbs (≈ π osmotique, van 't "
+            "Hoff ≈ 0,76 kWh/m³ pour l'eau de mer) ; à récupération finie le minimum MONTE (la saumure se "
+            "concentre) ; gains réels = récupération d'énergie, apparier la méthode à la salinité, sources "
+            "gratuites (solaire / chaleur fatale / gradient de salinité)")
+
+# La nature dessale déjà : membrane solaire (mangrove), pompe ionique (glande à sel), distillation planétaire.
+_STRATEGIES_NATURE_EAU = [
+    _Nature("mangrove / palétuvier (boit l'eau de mer)",
+            ["ultrafiltration racinaire (~90–97 % du sel exclu)",
+             "moteur = transpiration SOLAIRE (osmose inverse alimentée par le soleil)",
+             "excrétion foliaire du sel résiduel"],
+            "une membrane d'osmose inverse alimentée GRATUITEMENT par le soleil via la transpiration — sans pompe"),
+    _Nature("glande à sel des oiseaux marins / tortues",
+            ["transport ACTIF d'ions (pompe ionique dédiée)", "excrétion d'une saumure très concentrée",
+             "organe séparé du métabolisme"],
+            "concentrer puis rejeter activement le sel — l'analogue de l'électrodialyse, ciblé sur l'ion pas l'eau"),
+    _Nature("néphron du rein (multiplicateur à contre-courant)",
+            ["échange à CONTRE-COURANT", "concentration par étages", "réabsorption sélective de l'eau"],
+            "l'étagement à contre-courant approche la séparation réversible — le levier contre la sur-récupération"),
+    _Nature("cycle de l'eau (évaporation océan → pluie)",
+            ["distillation SOLAIRE à l'échelle planétaire", "le sel reste dans l'océan (changement de phase)",
+             "condensation gratuite en altitude"],
+            "la plus grande usine de dessalement est solaire et passive : évaporer, le sel reste, la pluie est douce"),
+    _Nature("cellules à chlorure des branchies de poisson",
+            ["transport actif d'ions à travers un épithélium", "sélectivité ionique fine"],
+            "pomper l'ion sélectivement plutôt que filtrer toute l'eau — économe quand le sel est minoritaire"),
+]
+
+enregistre(Domaine(
+    nom=_EAU,
+    aliases=frozenset(_ALIAS_EAU),
+    objectif=_OBJECTIF_EAU,
+    canaux=_CANAUX_EAU,
+    principes=_PRINCIPES_EAU,
+    strategies=_STRATEGIES_NATURE_EAU,
+    loi=_LOI_EAU,
+    extras={"travail_min_kWh_m3_mer": "≈ 0,76 (récupération → 0) à 1,06 (50 %)", "salinite_mer_g_L": 35},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

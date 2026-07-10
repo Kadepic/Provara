@@ -135,9 +135,65 @@ check(B.decompose("rafraichir une piece")["charge_corps_W"] == 100
       and len(B.principes("rafraichir une piece")["liste"]) == 18,
       "le cooling est inchangé après l'ajout du domaine chauffage")
 
-# ── 8) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
-check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort"],
-      "deux domaines modélisés (cooling puis chauffage), dans l'ordre d'enregistrement")
+# ── 8) TROISIÈME DOMAINE : dessaler / purifier l'eau (loi DURE = travail minimal de séparation) ──
+de = B.decompose("dessaler l eau de mer")
+check(de["statut"] == "decompose", "besoin dessalement connu -> decompose")
+check("minimal" in de["objectif_reel"].lower() and "salinite" in de["objectif_reel"].lower().replace("é", "e"),
+      "objectif réel dessalement = payer au-dessus du travail minimal + apparier à la salinité")
+check(de["salinite_mer_g_L"] == 35, "extras propres : salinité mer 35 g/L")
+eau_canaux = {c.canal for c in de["canaux"]}
+check(eau_canaux == {"pression", "changement de phase", "champ electrique", "affinite selective"},
+      f"4 canaux de séparation ({eau_canaux})")
+pre = B.principes("dessaler l eau de mer")
+check(pre["statut"] == "principes", "principes pour le dessalement")
+pe = {e["nom"]: e for e in pre["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ par le travail minimal de séparation (pas une simple supposition)
+sous = pe["osmose inverse « à 0,3 kWh/m³ pour l'eau de mer »"]
+check(sous["atome"].statut == A.REFUTE, "0,3 kWh/m³ < plancher ~0,76 -> RÉFUTÉ (travail minimal)")
+check(A.est_refute(sous["atome"].contenu), "contenu réfuté (0,3 kWh/m³) dans la garde anti-blanchiment")
+passif = pe["dessalement passif « sans énergie »"]
+check(passif["atome"].statut == A.REFUTE, "dessalement sans énergie -> RÉFUTÉ (entropie de mélange)")
+# les procédés RÉELS au-dessus du plancher restent des SUPPOSITIONS (jamais des faits)
+for nom in ("osmose inverse eau de mer (SWRO, référence)", "distillation multi-effet / MSF (thermique)",
+            "électrodialyse (ED / EDR)", "membranes biomimétiques (aquaporines / graphène)"):
+    e = pe[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION (au-dessus du minimum, non prouvé efficace)")
+    check(0.0 < e["atome"].confiance < 1.0, f"{nom} confiance dans ]0,1[")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in pre["liste"]),
+      "aucun principe de dessalement promu en FAIT")
+# la portée nomme SON domaine
+check("candidat pour dessalement_eau" in pe["osmose inverse eau de mer (SWRO, référence)"]["atome"].portee.condition,
+      "portée des principes dessalement nommant dessalement_eau")
+# la MÊME loi dure réfute la revendication sous-plancher, quelle que soit la base π (bar direct ou concentration)
+import coherence_physique as COH
+st_bar, _, loi_bar = COH.juge_dispositif({"type": "dessalement", "energie_kWh_par_m3": 0.3, "osmose_pression_bar": 27})
+check(st_bar == COH.VIOLE and loi_bar == COH.L3, "juge : 0,3 kWh/m³ (π 27 bar) -> VIOLE via L3")
+st_c, _, _ = COH.juge_dispositif({"type": "dessalement", "energie_kWh_par_m3": 0.5,
+                                  "concentration_mol_par_L": 0.6, "facteur_vant_hoff": 2, "t_K": 298.15})
+check(st_c == COH.VIOLE, "juge : plancher calculé depuis la concentration (van 't Hoff) réfute aussi")
+# un procédé réel n'est JAMAIS réfuté (soundness : pas de faux positif)
+st_ro, _, _ = COH.juge_dispositif({"type": "dessalement", "energie_kWh_par_m3": 3.0, "osmose_pression_bar": 27})
+check(st_ro == COH.COHERENT_BORNE, "osmose inverse réelle (3 kWh/m³) -> COHÉRENT, jamais réfutée")
+# pistes sous-exploitées présentes (congélation, chaleur fatale, biomimétique)
+noms_e = set(pe)
+check(any("congélation" in n for n in noms_e) and any("membranaire" in n for n in noms_e)
+      and any("biomimétiques" in n for n in noms_e), "pistes sous-exploitées dessalement présentes")
+# libellé ambigu (« purifier l'eau » = bactéries/turbidité) écarté du dessalement
+check(B.decompose("purifier l eau")["statut"] == B.HORS, "« purifier l'eau » nu (ambigu) -> HORS")
+# stratégies naturelles propres au domaine
+nate = B.strategies_naturelles("dessaler l eau de mer")
+check(len(nate) >= 4 and any("mangrove" in s["exemple"] for s in nate), "stratégies dessalement propres (mangrove)")
+check(not any("forêt" in s["exemple"] for s in nate) and not any("manchot" in s["exemple"] for s in nate),
+      "pas de fuite des stratégies froid/chaud vers l'eau")
+# cooling ET chauffage restent INTACTS après le 3e domaine
+check(B.decompose("rafraichir une piece")["charge_corps_W"] == 100
+      and len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("chauffer une piece")["production_corps_W"] == 100,
+      "cooling et chauffage inchangés après l'ajout du dessalement (isolation)")
+
+# ── 9) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau"],
+      "trois domaines modélisés (cooling, chauffage, dessalement), dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

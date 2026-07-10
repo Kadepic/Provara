@@ -1,5 +1,27 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 3e domaine « dessalement_eau » + loi DURE (travail minimal de séparation)
+
+Le dessalement de l'eau est un enjeu mondial ET durement borné : le **travail minimal de séparation** (énergie
+de mélange de Gibbs ≈ pression osmotique π, van 't Hoff — ≈ 0,76 kWh/m³ pour l'eau de mer à récupération → 0)
+est l'analogue de Carnot. Pour que l'impossible soit RÉFUTÉ (comme pour le froid) et pas seulement « supposé »,
+on a d'abord **étendu `coherence_physique`** d'un type `dessalement` : toute énergie déclarée SOUS le plancher
+π est déclarée VIOLE (nouvelle loi `L3`). Plancher CONSERVATEUR (récupération → 0, le minimum réel ne peut que
+monter) → **zéro faux positif** : aucun procédé réel (osmose inverse ~3 kWh/m³, distillation ~12) n'est jamais
+réfuté. π accepté en bar OU calculé depuis (concentration, van 't Hoff, T). Gate `valide_coherence_physique`
+**37 → 56/56** (violations sous-plancher + cas limite AU plancher + réels jamais réfutés).
+
+Puis 3e domaine enregistré dans `besoin.py` (`enregistre(...)`, rien d'autre) : **14 principes**, 12 suppositions
+jugées + 2 RÉFUTÉS (« osmose inverse à 0,3 kWh/m³ » et « dessalement passif sans énergie » — sous le plancher).
+Reframing machine : ne pas « bouillir toute l'eau » ni pousser en bloc contre π, mais payer le MOINS possible
+au-dessus du minimum — ne pas sur-récupérer, APPARIER la méthode à la salinité (saumâtre → osmose inverse bon
+marché ; hypersalin → thermique), exploiter les sources GRATUITES (chaleur fatale, solaire, gradient de
+salinité). Pistes sous-exploitées : congélation (chaleur latente de fusion ~7× < vaporisation), distillation
+membranaire sur chaleur fatale, extraction par solvant directionnel, hydrates de gaz, membranes biomimétiques
+(aquaporines/graphène). 5 stratégies naturelles propres (mangrove = osmose inverse solaire, glande à sel =
+pompe ionique, néphron = contre-courant, cycle de l'eau = distillation planétaire, branchies). Gate
+`valide_besoin` **63 → 89/89** ; cooling (18) et chauffage (13) restent intacts (isolation prouvée).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 2e domaine « chauffage_confort » (le symétrique d'hiver, via le registre)
 
 Premier usage réel du registre : `enregistre(Domaine(...))` et RIEN d'autre — la promesse du refactor tenue.
