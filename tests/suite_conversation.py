@@ -42,7 +42,12 @@ GATES = [
     "valide_temps_geologiques", "valide_classification_roches", "valide_cycle_eau", "valide_effet_de_serre",
     "valide_climats_biomes", "valide_expression_genique", "valide_selection_naturelle",
     "valide_reseau_trophique", "valide_etiologie_infectieuse",
-    "valide_heredite_mendelienne", "valide_dynamique_populations",
+    "valide_heredite_mendelienne", "valide_dynamique_populations", "valide_nomenclatures",
+    "valide_algebre_lineaire", "valide_algebre_symbolique", "valide_simplification_booleenne",
+    "valide_developpement_limite", "valide_probabilites_elementaires", "valide_codes_normalises",
+    "valide_inference_classique", "valide_derivation_symbolique", "valide_convergence_series",
+    "valide_edo_lineaires", "valide_recurrences", "valide_entropie_source",
+    "valide_ajustement_causal", "valide_biais_collision",
     # VAGUE C : PARTIES VI a XII.
     "valide_finance_actualisation", "valide_elasticite_prix", "valide_pyramide_ages",
     "valide_mobilite_sociale", "valide_compression_sans_perte", "valide_codes_correcteurs",

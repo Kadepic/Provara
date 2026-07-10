@@ -1,5 +1,136 @@
 # Journal des modifications — Provara
 
+## 2026-07-11 (suite 2) — HUIT BRIQUES ferment douze partiels ; deux bugs d'ingestion invisibles
+
+### 1. Deux bugs d'ESCO qui n'étaient pas des FAUX — donc que rien ne signalait
+- **Descente d'arbre incomplète.** Une occupation ESCO peut avoir des occupations FILLES
+  (`narrowerOccupation` : « employé de bureau » -> « assistant d'ingénieur »). Le moissonneur s'arrêtait à la
+  première occupation rencontrée : **1 699 des ~3 000 occupations**, soit un tiers du référentiel invisible.
+  La donnée était juste, simplement amputée — aucune gate ne peut voir ce genre de manque.
+- **Retry trop étroit.** Après ~30 minutes de réseau, une réponse tronquée a levé
+  `http.client.IncompleteRead`, que le retry ne connaissait pas (il n'attrapait que `HTTPError`, `URLError`,
+  `TimeoutError`). **Tout le moissonnage a été perdu.** Sur 3 600 requêtes un aléa réseau est certain.
+  Filet élargi (lecture tronquée, connexion coupée, socket cassé) + **points de reprise tous les 200**.
+
+### 2. Sources sondées pour les axes métier, et pourquoi elles ne ferment pas
+- **ROME** : data.gouv ne publie que des arborescences ; le lien métier -> compétence exige une clé
+  `api.francetravail.io` (HTTP 401).
+- **Eurostat SES** (`earn_ses18_25`) : atteignable, mais c'est le salaire **MOYEN** par **grand groupe ISCO**.
+  Le publier comme « rémunération médiane du boulanger » serait un DOUBLE faux (moyenne ≠ médiane ;
+  groupe ≠ métier). Piste écartée, consignée avec sa limite.
+
+### 3. Huit briques, douze partiels fermés
+- **`inference_classique`** (85/85) : test z / t / khi-deux, IC, et l'intervalle de **Wilson** pour une
+  proportion — celui de Wald est faux près de 0 et 1 (il donnerait [0,0] pour 0 succès sur 10). Le module
+  énonce qu'une p-valeur n'est **pas** la probabilité que H0 soit vraie.
+- **`derivation_symbolique`** (94/94) : dérivation des fonctions élémentaires, confrontée aux **différences
+  finies centrées** (deux chemins de code). `primitive(exp(-x²))` -> abstention.
+- **`convergence_series`** (69/69) : d'Alembert, Cauchy, Leibniz. Le cas limite (rapport = 1) rend
+  **'indeterminé'**, jamais « converge » : la série harmonique diverge alors que son terme tend vers 0.
+- **`edo_lineaires`** (71/71) : 2e ordre, trois régimes ; Cauchy résolu exactement (C1 = −1, C2 = 1 pour
+  y''−3y'+2y = 0, y(1) = e²−e).
+- **`recurrences`** (94/94) : **théorème maître**. Le n·log n du tri fusion est DÉRIVÉ, pas lu dans une table ;
+  Karatsuba (cas 1) est bien sous-quadratique, Strassen bat le n³ naïf.
+- **`entropie_source`** (53/53) : l'entropie d'une SOURCE n'est pas celle d'une distribution. Estimation
+  plug-in **biaisée vers le bas** + Miller-Madow ; taux d'entropie d'une chaîne de Markov : **0,469 bit au
+  lieu de 1** — la mémoire réduit l'incertitude. `entropie_empirique` rend le couple (H, N) : une entropie
+  sans son nombre d'observations ne signifie rien.
+- **`ajustement_causal`** (55/55) : critère de porte dérobée par d-séparation, puis P(Y|do(X)).
+  Sondé sur les **calculs rénaux (Charig 1986)** : en brut B semble meilleur (82,6 % > 78 %), **après
+  ajustement A l'emporte (0,8325 > 0,7789)**. Si Z ne bloque pas les portes dérobées, ou contient un
+  descendant du traitement -> **abstention**.
+- **`biais_collision`** (61/61) : le mécanisme générique du biais de sélection est la COLLISION.
+  **Berkson** : deux maladies indépendantes (OR = 1 exact) deviennent négativement associées chez les
+  hospitalisés (OR = 9/25). Témoin à sélection indépendante : aucun biais.
+
+Le théorème de Bayes DIRECT sur données existait déjà dans `probabilites_elementaires` alors que le sujet
+pointait encore vers `bayes.py` (log-cotes) : recâblé.
+
+### 4. La vérification adverse a tué trois faux que les gates initiales laissaient passer
+- **`inference_classique` — un FAUX POSITIF de test statistique.** La queue du khi-deux était estimée par
+  quadrature de Simpson, qui **ratait le pic interne du pdf** quand la statistique tombait sous le mode :
+  pour 21 catégories quasi uniformes (statistique = 0,1), elle rendait **p = 3,29e-13** au lieu de **p = 1**.
+  Un test qui aurait rejeté H0 sur un dé parfaitement équilibré. Remplacée par la fonction gamma incomplète
+  régularisée (série + fraction continue de Lentz), exacte à ~1e-15, et la gate est ancrée sur les valeurs
+  critiques tabulées (χ²₁ > 3,841 -> 0,05 ; χ²₂₀ > 31,410 -> 0,05) recalculées par un algorithme DIFFÉRENT.
+- **`convergence_series` — un verdict trop sûr.** « diverge » se déclenchait dès qu'une fenêtre finie ne
+  tendait pas vers 0, même croissante. Le champ devient tri-état : une queue non stabilisée rend
+  « indéterminé ». Une méthode numérique finie ne prouve pas une divergence, et la docstring le dit.
+- **`entropie_source` — un estimateur faux et une garde manquante.** La correction de Miller-Madow était
+  calculée en **nats** alors que l'entropie du module est en **bits** (facteur ln 2 manquant) ; et
+  `entropie_conditionnelle_markov` acceptait une distribution **non stationnaire**. Les deux sont corrigés,
+  et la stationnarité πP = π est désormais vérifiée à 1e-9, sinon ValueError.
+
+Aucun de ces trois n'aurait été vu par la seule lecture du code. C'est le rôle de l'auditeur adverse.
+
+### 5. Mesure
+`84 595 sujets · 21 588 traités · 455 partiels · 62 552 NON traités · 0 dette.`
+**Suite : 105/105 gates.** `capacites.REGISTRE` : **372 preuves exécutables, 0 orphelin.**
+Sonde indépendante des 8 briques, avec mes propres ancres : verte.
+
+## 2026-07-11 (suite) — DÉCOUPE DES RÈGLES : rendre à chaque sujet son état réel ; ANNEXE T fermée
+
+### 1. Un regex trop large est une mesure FAUSSE
+Six règles de `couverture_borne._REGLES` couvraient chacune plusieurs sujets et les alignaient sur le plus
+faible : **une seule règle forçait six sujets en PARTIEL**, alors que deux d'entre eux étaient pleinement
+traités. Un motif trop large masque à la fois ce qui est fait et ce qui manque. Chaque sujet a désormais sa
+règle et son état MESURÉ. Sondé avant de découper (17 vérifications) :
+- `contrainte.CSP` fait une recherche **complète** (SAT et UNSAT décidés, jamais devinés) -> TRAITÉ ;
+- les équations de degré 1 et 2 sont mieux servies par `equations_polynomiales` (racines exactes,
+  irrationnelles ENCADRÉES par Sturm) que par `algebre_calcul` -> TRAITÉ ;
+- le dénombrement combinatoire est complet dans `maths_discretes` (C(52,5) = 2 598 960) -> TRAITÉ ;
+- **preuve mal dirigée** : « inflation mesurée » et « PIB, chômage » citaient `cycles_economiques`, qui est
+  un CATALOGUE de phases et ne calcule rien. Les formules vivent dans `inflation.py` / `pib.py` -> TRAITÉ ;
+- « datation radiométrique » citait `physique` (décroissance DIRECTE) ; la datation est le problème
+  INVERSE, bâti la veille -> `datation_radiocarbone`, TRAITÉ.
+
+**Effet mesuré : +7 traités, et le backlog conceptuel MONTE de 6 à 13.** Sept manques réels étaient cachés
+derrière des règles trop larges. C'est le résultat attendu : l'honnêteté fait monter le compteur avant de
+le faire descendre. (Trois de mes propres sondes étaient fausses : `'aucune_reelle'` contient « reelle »,
+`'deux_irrationnelles'` contient « rationnelles », et C(5,−1) = 0 est la convention standard.)
+
+### 2. `nomenclatures.py` — ANNEXE T ramenée à ZÉRO non traité
+ISCO-08 (OIT) : les 10 grands groupes, leurs **niveaux de compétence** rendus comme TUPLES (le grand groupe 1
+en couvre deux, le 0 en couvre trois — réduire à un scalaire serait un faux), et les cardinalités officielles
+10 / 43 / 130 / 436. `grand_groupe_du_code` exploite la propriété de la nomenclature (le premier chiffre EST
+le grand groupe) : **contrôle croisé sur la table `code_isco_metier` ingérée la veille — les 415 métiers
+alignés sur ESCO se répartissent sur les 10 grands groupes, 0 code rejeté**, et le boulanger (7512.1) tombe
+bien dans « métiers qualifiés de l'industrie et de l'artisanat ».
+Ajoute aussi les 10 divisions Dewey du 500 et les 21 sections NACE Rév. 2.
+
+**Abstention structurelle** : MSC2020, ACM CCS, CIM-11 et ROME sont CITÉES (éditeur, nature) mais leur
+contenu n'est pas embarqué — `classes()` y lève ValueError. Énumérer de mémoire 63 classes MSC ou les
+chapitres de la CIM-11 produirait exactement le genre de faux plausible que ce projet interdit.
+Gate 77/77. **ANNEXE T : 30 traités, 5 partiels, 0 non traité.**
+
+### 3. Sept briques neuves ferment les manques exposés par la découpe
+- **`algebre_lineaire`** (84/84) : pivot de Gauss EXACT, Rouché-Capelli (unique / infinite / aucune),
+  inverse par Gauss-Jordan. `M·M⁻¹ = I` est **re-vérifié** après inversion, sinon RuntimeError.
+- **`algebre_symbolique`** (96/96) : développement et factorisation exacts ; le facteur irréductible sur ℚ
+  est rendu tel quel, aucune racine inventée.
+- **`simplification_booleenne`** (67/67) : Quine-McCluskey. La forme minimisée est re-vérifiée équivalente
+  par `algebre_boole` — **chemin de code indépendant du minimiseur**.
+- **`developpement_limite`** (79/79) : un développement limité sans borne du reste ne dit rien.
+  `approxime()` rend **(valeur, borne de Lagrange)**, jamais une valeur nue ; hors rayon -> abstention.
+- **`probabilites_elementaires`** (131/131) : probabilité classique exacte, lois discrètes, moments.
+  `Var = E[X²] − E[X]²` re-vérifié par deux chemins. **Piège du taux de base** vérifié en ancre :
+  sensibilité 0,99 / spécificité 0,99 / prévalence 1/1000 -> P(malade | test +) = **99/1098 ≈ 9 %**, pas 0,99.
+- **`nomenclatures`** (77/77) et **`codes_normalises`** (84/84) — cf. §2 et ci-dessous.
+
+`codes_normalises` traite les trois codes que `bibliotheconomie` ne couvrait pas, avec leurs pièges :
+le **yen n'a aucune décimale** et le dinar koweïtien en a trois (supposer 2 fausse les montants d'un facteur
+100) ; **le +1 n'identifie pas un pays** (États-Unis *et* Canada) — `pays_unique_depuis_indicatif` abstient
+plutôt que de choisir ; l'ISBN-10 dont la clé est « X » ; la plaque SIV française (les lettres I, O et U sont
+exclues), tout autre pays -> ValueError. Il reste **PARTIEL** et le dit : 25 monnaies, 23 pays, une plaque.
+
+Toutes sont **câblées** (`capacites.REGISTRE` : 364 preuves exécutables, 0 orphelin), et sondées par mes
+propres ancres, indépendamment de leurs gates : **36/36**.
+
+### 4. Mesure
+`84 595 sujets · 21 575 traités · 468 partiels · 62 552 NON traités · 0 dette.`
+**Suite : 97/97 gates.** Backlog conceptuel : **6 sujets**, tous bloqués sur un corpus externe.
+PARTIES I à V, VII, VIII, XI, XII et ANNEXE T : **zéro non traité**.
+
 ## 2026-07-11 — LOT « TOUT CÂBLER » : les 3 rouges tués, 48 briques branchées au produit, suite 90/90
 
 Reprise du mandat après commit du lot de nuit. Objectif : identifier les rouges, les corriger

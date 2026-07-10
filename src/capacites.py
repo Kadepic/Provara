@@ -3961,8 +3961,242 @@ def _p_dynamique_populations() -> bool:
             and _leve_v(M.equilibre_lotka_volterra, 1.0, 0.0, 0.5, 0.02))
 
 
+def _p_nomenclatures() -> bool:
+    import nomenclatures as M
+    # Le premier chiffre d un code ISCO EST son grand groupe : le boulanger ESCO (7512.1) tombe
+    # dans « metiers qualifies de l industrie et de l artisanat ». Coherence metier <-> nomenclature.
+    return (len(M.grands_groupes_isco()) == 10
+            and M.niveau_competence_isco("2") == (4,)
+            and M.niveau_competence_isco("0") == (1, 2, 4)          # trois niveaux, jamais reduits
+            and M.cardinalites_isco()["groupes_de_base"] == 436
+            and M.grand_groupe_du_code("7512.1") == "7"
+            and M.division_dewey(510) == "Mathématiques"
+            and len(M.sections_nace()) == 21
+            and M.structure("MSC2020")["contenu_ingere"] is False
+            and _leve_v(M.classes, "MSC2020")                       # jamais une enumeration de memoire
+            and _leve_v(M.grand_groupe_isco, "10")
+            and _leve_v(M.section_nace, "V"))
+
+
+def _p_algebre_lineaire() -> bool:
+    import algebre_lineaire as M
+    from fractions import Fraction as F
+    r = M.resout_systeme([[1, 1], [1, -1]], [3, 1])              # x+y=3, x-y=1
+    return (r["type"] == "unique" and [F(x) for x in r["solution"]] == [F(2), F(1)]
+            and M.determinant([[1, 2], [3, 4]]) == F(-2)
+            and [[F(x) for x in lg] for lg in M.inverse([[1, 2], [3, 4]])]
+                == [[F(-2), F(1)], [F(3, 2), F(-1, 2)]]
+            and M.rang([[1, 2], [2, 4]]) == 1                    # lignes proportionnelles
+            and M.resout_systeme([[1, 1], [1, 1]], [1, 2])["type"] == "aucune"     # Rouche-Capelli
+            and M.resout_systeme([[1, 1]], [1])["type"] == "infinite"
+            and _leve_v(M.inverse, [[1, 2], [2, 4]])             # singuliere -> abstention
+            and _leve_v(M.determinant, [[0.5, 0], [0, 1]]))      # flottant refuse (exactitude)
+
+
+def _p_algebre_symbolique() -> bool:
+    import algebre_symbolique as M
+    from fractions import Fraction as F
+    un = ("const", F(1))
+    cube = ("^", ("+", ("var",), un), 3)                          # (x+1)^3
+    prod = ("*", ("+", ("var",), un), ("-", ("var",), un))        # (x+1)(x-1)
+    return ([F(k) for k in M.developpe(cube)] == [F(1), F(3), F(3), F(1)]   # coefficients binomiaux
+            and [F(k) for k in M.developpe(prod)] == [F(-1), F(0), F(1)]    # x^2 - 1
+            and _leve_v(M.developpe, ("^", ("var",), -1)))        # exposant negatif -> abstention
+
+
+def _p_simplification_booleenne() -> bool:
+    import simplification_booleenne as M
+    import algebre_boole as AB
+    # L equivalence est verifiee par algebre_boole : CHEMIN DE CODE INDEPENDANT du minimiseur.
+    return (AB.equivalent(M.minimise("a & b | a & ~b", ["a", "b"]), "a")
+            and AB.equivalent(M.minimise("a | a & b", ["a", "b"]), "a")          # absorption
+            and M.minimise("a & ~a", ["a"]) == "0"
+            and M.minimise("a | ~a", ["a"]) == "1"
+            and AB.equivalent(M.minimise("~(a & b)", ["a", "b"]), "~a | ~b")     # De Morgan
+            and _leve_v(M.minimise, "a", [chr(97 + i) for i in range(9)]))       # 9 variables -> budget dit
+
+
+def _p_developpement_limite() -> bool:
+    import developpement_limite as M
+    import math
+    from fractions import Fraction as F
+    v, borne = M.approxime("exp", 4, 0.1)
+    vs, bs = M.approxime("sin", 5, 0.5)
+    return ([F(k) for k in M.taylor("exp", 4)] == [F(1), F(1), F(1, 2), F(1, 6), F(1, 24)]
+            and [F(k) for k in M.taylor("sin", 5)] == [F(0), F(1), F(0), F(-1, 6), F(0), F(1, 120)]
+            and [F(k) for k in M.taylor("cos", 4)] == [F(1), F(0), F(-1, 2), F(0), F(1, 24)]
+            and abs(v - math.exp(0.1)) <= borne                   # la borne de Lagrange TIENT
+            and abs(vs - math.sin(0.5)) <= bs
+            and _leve_v(M.taylor, "foobar", 3))
+
+
+def _p_probabilites_elementaires() -> bool:
+    import probabilites_elementaires as M
+    from fractions import Fraction as F
+    # PIEGE DU TAUX DE BASE : sensibilite 0,99, specificite 0,99, prevalence 1/1000.
+    # P(malade | test +) = 99/1098 ~ 9 %, PAS 0,99. Un module qui rendrait 0,99 serait FAUX.
+    p_b = F(99, 100) * F(1, 1000) + F(1, 100) * F(999, 1000)
+    post = M.bayes(F(99, 100), F(1, 1000), p_b)
+    b10 = M.binomiale(10, F(1, 2))
+    geo = M.geometrique(F(1, 4))
+    return (post == F(99, 1098) and post != F(99, 100)
+            and M.esperance(b10) == F(5) and M.variance(b10) == F(5, 2)
+            and M.esperance(geo) == F(4) and M.variance(geo) == F(12)
+            and M.variance(b10) == M.moment(b10, 2) - M.esperance(b10) ** 2   # deux chemins
+            and _leve_v(M.bernoulli, F(3, 2))
+            and _leve_v(M.conditionnelle, F(1, 2), F(0)))         # P(B)=0 -> abstention
+
+
+def _p_codes_normalises() -> bool:
+    import codes_normalises as M
+    # Deux pieges : le yen n a AUCUNE decimale ; le +1 n identifie PAS un pays.
+    return (M.code_numerique("EUR") == 978 and M.code_numerique("JPY") == 392
+            and M.decimales("JPY") == 0 and M.decimales("EUR") == 2 and M.decimales("KWD") == 3
+            and M.formate_montant(1000, "JPY") == "1000 JPY"
+            and M.pays_depuis_indicatif("+1") == {"États-Unis", "Canada"}
+            and M.pays_unique_depuis_indicatif("+33") == "France"
+            and _leve_v(M.pays_unique_depuis_indicatif, "+1")     # indicatif PARTAGE -> abstention
+            and M.isbn13_valide("978-0-306-40615-7") is True
+            and M.isbn10_valide("0-8044-2957-X") is True          # la cle « X » vaut 10
+            and M.plaque_valide("AB-123-CD") is True
+            and M.plaque_valide("AI-123-CD") is False             # la lettre I est exclue du SIV
+            and _leve_v(M.format_plaque, "Allemagne"))            # jamais un format devine
+
+
+def _p_inference_classique() -> bool:
+    import inference_classique as M
+    z = M.test_z(105.0, 100.0, 15.0, 36)                 # (105-100)/(15/6) = 2.0, pose a la main
+    lo, hi = M.ic_moyenne_sigma_connu(105.0, 15.0, 36, 0.95)
+    wlo, whi = M.ic_proportion_wilson(0, 10, 0.95)       # Wald donnerait [0,0] : absurde
+    return (_proche(M.phi(0.0), 0.5)
+            and _proche(M.phi_inverse(0.975), 1.959964, rel=1e-4)
+            and _proche(z["statistique"], 2.0)
+            and _proche(z["p_valeur"], 0.0455, rel=5e-2)
+            and _proche(lo, 100.10, rel=1e-3) and _proche(hi, 109.90, rel=1e-3)
+            and 0.0 <= wlo <= whi <= 1.0 and whi > 0.01  # Wilson reste dans [0,1] et n est pas degenere
+            and _leve_v(M.ic_moyenne_sigma_connu, 105.0, -1.0, 36, 0.95))
+
+
+def _p_derivation_symbolique() -> bool:
+    import derivation_symbolique as M
+    from fractions import Fraction as F
+    x = ("var",)
+    # La derivee SYMBOLIQUE est confrontee aux differences finies centrees : DEUX chemins distincts.
+    def num(e, xv, h=1e-6):
+        return (M.evalue(e, xv + h) - M.evalue(e, xv - h)) / (2 * h)
+    exprs = [("^", x, 2), ("sin", x), ("exp", x), ("*", x, ("sin", x)),
+             ("sin", ("^", x, 2)), ("/", x, ("+", x, ("const", F(1))))]
+    concordent = all(abs(M.evalue(M.derive(e), xv) - num(e, xv)) < 1e-4
+                     for e in exprs for xv in (0.3, 1.1, 2.7))
+    return (concordent
+            and _leve_v(M.primitive, ("exp", ("-", ("const", F(0)), ("^", x, 2)))))   # exp(-x^2) : pas de primitive
+
+
+def _p_convergence_series() -> bool:
+    import convergence_series as M
+    import math
+    return (M.converge_riemann(2) == "converge"
+            and M.converge_riemann(1) == "diverge"                     # harmonique : u(n)->0 et pourtant diverge
+            and M.critere_dalembert(lambda n: 1.0 / n, 1, 60)["verdict"] == "indetermine"   # jamais « converge »
+            and M.critere_dalembert(lambda n: 1.0 / math.factorial(n), 1, 20)["verdict"] == "converge"
+            and M.terme_general_tend_vers_zero(lambda n: n / (n + 1), 1, 200)["tend_vers_zero"] is False)
+
+
+def _p_edo_lineaires() -> bool:
+    import edo_lineaires as M
+    import math
+    s = M.resout_cauchy(1, -3, 2, 0, 1)                   # y'' -3y' +2y = 0 -> e^{2x} - e^{x}
+    return (M.solution_homogene(1, -3, 2)["regime"] == "aperiodique"
+            and M.solution_homogene(1, 2, 1)["regime"] == "critique"
+            and M.solution_homogene(1, 0, 1)["regime"] == "pseudo-periodique"
+            and (s["C1"], s["C2"]) == (-1, 1)
+            and _proche(s["solution"](1.0), math.e ** 2 - math.e)
+            and _proche(M.resout_cauchy(1, 2, 1, 1, 0)["solution"](1.0), 2 / math.e)
+            and _proche(M.resout_cauchy(1, 0, 1, 0, 1)["solution"](math.pi / 2), 1.0)
+            and _leve_v(M.solution_homogene, 0, 1, 1))
+
+
+def _p_recurrences() -> bool:
+    import recurrences as M
+    # Le n log n du tri fusion est DERIVE du theoreme maitre, pas lu dans une table.
+    return (M.theoreme_maitre(2, 2, 1)["cas"] == 2                      # tri fusion
+            and M.theoreme_maitre(1, 2, 0)["cas"] == 2                  # dichotomie
+            and M.theoreme_maitre(3, 2, 1)["cas"] == 1                  # Karatsuba : sous-quadratique
+            and M.theoreme_maitre(7, 2, 2)["cas"] == 1                  # Strassen : moins que n^3
+            and M.theoreme_maitre(2, 2, 2)["cas"] == 3
+            and _leve_v(M.theoreme_maitre, 2, 1, 1))
+
+
+def _p_entropie_source() -> bool:
+    import entropie_source as M
+    h, n = M.entropie_empirique(list("AB" * 500))
+    h0, _ = M.entropie_empirique(list("A" * 100))
+    tr = [[0.9, 0.1], [0.1, 0.9]]
+    pi = M.distribution_stationnaire(tr)
+    taux = M.entropie_conditionnelle_markov(tr, pi)
+    # ANCRE : la memoire REDUIT l incertitude. Entropie stationnaire = 1 bit, taux d entropie = 0,469 bit.
+    return (_proche(h, 1.0) and n == 1000 and abs(h0) < 1e-12
+            and all(_proche(float(p), 0.5) for p in pi)
+            and _proche(taux, 0.4690, rel=5e-3) and taux < 1.0
+            and M.fiable(list("ABCDEFGH" * 2 + "ABCD"), list("ABCDEFGH")) is False)
+
+
+def _p_ajustement_causal() -> bool:
+    import ajustement_causal as M
+    import causalite as CA
+    g = CA.GrapheCausal()
+    g.ajoute_cause("taille", "traitement")
+    g.ajoute_cause("taille", "guerison")
+    g.ajoute_cause("traitement", "guerison")
+    brut = [("A", "petit", 1, 81), ("A", "petit", 0, 6), ("A", "gros", 1, 192), ("A", "gros", 0, 71),
+            ("B", "petit", 1, 234), ("B", "petit", 0, 36), ("B", "gros", 1, 55), ("B", "gros", 0, 25)]
+    donnees = []
+    for tr, ta, gu, n in brut:
+        donnees += [{"traitement": tr, "taille": ta, "guerison": gu}] * n
+    ea = M.effet_causal_backdoor(g, donnees, "traitement", "guerison", {"taille"}, "A", 1)
+    eb = M.effet_causal_backdoor(g, donnees, "traitement", "guerison", {"taille"}, "B", 1)
+    # Calculs renaux (Charig 1986) : B parait meilleur en brut (82,6 % > 78 %), A l est apres ajustement.
+    return (M.critere_backdoor(g, "traitement", "guerison", {"taille"}) is True
+            and M.critere_backdoor(g, "traitement", "guerison", set()) is False
+            and ea > eb                                                 # le renversement est corrige
+            and _leve_v(M.effet_causal_backdoor, g, donnees, "traitement", "guerison", set(), "A", 1)
+            and _leve_v(M.effet_causal_backdoor, g, donnees, "traitement", "guerison", {"guerison"}, "A", 1))
+
+
+def _p_biais_collision() -> bool:
+    import biais_collision as M
+    from fractions import Fraction as F
+    # 1000 personnes, A et B INDEPENDANTES. Hospitalisation : 90 % si les deux, 50 % si une, 10 % si aucune.
+    donnees = {(1, 1, 1): 9, (1, 1, 0): 1, (1, 0, 1): 45, (1, 0, 0): 45,
+               (0, 1, 1): 45, (0, 1, 0): 45, (0, 0, 1): 81, (0, 0, 0): 729}
+    r = M.biais_berkson(donnees)
+    temoin = {(1, 1, 1): 5, (1, 1, 0): 5, (1, 0, 1): 45, (1, 0, 0): 45,
+              (0, 1, 1): 45, (0, 1, 0): 45, (0, 0, 1): 405, (0, 0, 0): 405}
+    rt = M.biais_berkson(temoin)
+    return (r["or_population"] == F(1)                                  # A et B independantes
+            and r["or_selectionne"] == F(9, 25)                         # association CREEE par la selection
+            and r["biais_detecte"] is True
+            and rt["or_population"] == rt["or_selectionne"]             # selection independante : aucun biais
+            and rt["biais_detecte"] is False)
+
+
 # ── REGISTRE : libellé EXACT (sujets.py) -> (description du mécanisme, preuve exécutable) ──
 REGISTRE: dict[str, tuple[str, object]] = {
+    "test d'hypothèse (p-valeur) sur données fournies": ('Inference CLASSIQUE : test z, test t, khi-deux ; intervalles de confiance et intervalle de WILSON pour une proportion (celui de Wald est faux pres de 0 et 1). Une p-valeur n est pas la probabilite que H0 soit vraie, et le module le dit.', _p_inference_classique),
+    "dérivée d'une fonction élémentaire": ('Derivation SYMBOLIQUE des fonctions elementaires (sin, cos, tan, exp, ln, sqrt) : Leibniz, quotient, chaine. Primitives sur catalogue ferme ; forme non reconnue -> abstention (l integration generale exige Risch).', _p_derivation_symbolique),
+    "convergence d'une série donnée": ('Criteres generaux de convergence : d Alembert, Cauchy, series alternees (Leibniz), comparaison. Le cas limite (rapport = 1) est rendu INDETERMINE, jamais tranche : la serie harmonique diverge alors que son terme general tend vers 0.', _p_convergence_series),
+    'équations différentielles linéaires à coefficients constants': ('EDO lineaires du 2e ordre par l equation caracteristique : trois regimes (aperiodique, critique, pseudo-periodique). Le probleme de Cauchy est resolu exactement et la solution re-verifiee contre ses conditions initiales.', _p_edo_lineaires),
+    "complexité d'un algorithme donné": ('THEOREME MAITRE : le n log n du tri fusion est DERIVE, pas lu dans une table. Karatsuba (cas 1) est sous-quadratique, Strassen bat le n^3 naif. Recurrences lineaires par equation caracteristique.', _p_recurrences),
+    "entropie d'une source donnée": ('Entropie d une SOURCE (pas d une distribution donnee) : estimation plug-in BIAISEE vers le bas + correction de Miller-Madow, taux d entropie d une chaine de Markov. La memoire reduit l incertitude : 0,469 bit au lieu de 1.', _p_entropie_source),
+    "inférence causale depuis l'observationnel seul": ('Critere de PORTE DEROBEE (d-separation) et estimation de P(Y|do(X)) par ajustement. Calculs renaux (Charig 1986) : B parait meilleur en brut, A l est apres ajustement. Si Z ne bloque pas les portes derobees -> abstention.', _p_ajustement_causal),
+    'biais de sélection / survie / publication (détection)': ('Le mecanisme GENERIQUE du biais de selection est la COLLISION. Berkson : deux maladies independantes (OR = 1) deviennent negativement associees chez les hospitalises (OR = 9/25). Selection independante -> aucun biais.', _p_biais_collision),
+    'systèmes linéaires (pivot de Gauss)': ('Pivot de Gauss EXACT sur Fraction : resolution (Rouche-Capelli : unique / infinite / aucune), inverse par Gauss-Jordan, determinant, rang. M.M-1 = I re-verifie apres inversion.', _p_algebre_lineaire),
+    'identités remarquables et simplification symbolique': ('Developpement et factorisation EXACTS de polynomes (Fraction) : identites remarquables verifiees membre a membre, racines rationnelles + deflation, facteur irreductible rendu tel quel.', _p_algebre_symbolique),
+    'algèbre de Boole (simplification)': ('Minimisation exacte par QUINE-McCLUSKEY : impliquants premiers, couverture minimale. La forme minimisee est re-verifiee equivalente par algebre_boole (chemin independant). Budget n_vars <= 8, dit.', _p_simplification_booleenne),
+    'développement limité / série de Taylor': ('Developpements de Maclaurin a coefficients EXACTS + BORNE DE LAGRANGE du reste. approxime() rend (valeur, borne), jamais une valeur nue. Hors rayon de convergence -> abstention.', _p_developpement_limite),
+    "probabilité d'un événement dans un modèle donné": ('Probabilite classique EXACTE (Fraction) : modele fini, union, conditionnelle, Bayes DIRECT, probabilites totales. Lois discretes avec esperance, variance et moments ; Var = E[X2]-E[X]2 re-verifie.', _p_probabilites_elementaires),
+    'codes normalisés (ISO 4217, indicatifs, ISBN, plaques)': ('ISO 4217 (le yen n a AUCUNE decimale, le dinar koweitien en a trois), indicatifs E.164 (le +1 est PARTAGE : aucun pays unique), ISBN-10 et 13, plaque SIV francaise. Hors table -> abstention.', _p_codes_normalises),
+    'grand groupe ISCO-08 0 — Forces armées': ('Nomenclatures publiees : ISCO-08 (10 grands groupes, niveaux de competence, cardinalites 10/43/130/436), divisions Dewey du 500, 21 sections NACE. Le premier chiffre d un code ISCO est son grand groupe. MSC/ACM/CIM-11/ROME sont citees mais leur contenu n est PAS ingere -> classes() abstient.', _p_nomenclatures),
     'hérédité mendélienne (croisements)': ('Lois de Mendel : echiquier de Punnett EXACT (Fraction), ratios 3:1, 1:2:1 et 9:3:3:1, croisement-test. Le regime de dominance est TOUJOURS nomme ; genes lies -> abstention.', _p_heredite_mendelienne),
     'dynamique des populations (modèles donnés)': ('Malthus, Verhulst (logistique), carte logistique DISCRETE et ses regimes (May 1976), Lotka-Volterra. Au-dela du seuil de chaos (3,5699...), le point fixe existe mais nest jamais atteint -> abstention.', _p_dynamique_populations),
     "métrique et versification": ("Metrique francaise CLASSIQUE : compte syllabique, elision du e muet, cesure a la 6e syllabe, genre et richesse des rimes, schemas AABB/ABAB/ABBA. La dierese et la finale -ent ne sont PAS tranchees : le compte est rendu comme INTERVALLE.", _p_versification_fr),

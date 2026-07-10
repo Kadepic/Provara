@@ -37,22 +37,52 @@ TRAITE, PARTIEL, NON_TRAITE = "TRAITÉ", "PARTIEL", "NON TRAITÉ"
 _REGLES: tuple = (
     (r"raisonnement propositionnel|syllogisme|logiques? modale|logique temporelle|logique trivalu",
      "gate", "valide_logique.py", TRAITE),
-    (r"satisfiabilité d'un système|cohérence d'un petit système", "module", "contrainte", PARTIEL),
+    # Sondé : backtracking COMPLET (SAT et UNSAT décidés, jamais devinés) + re-vérification de la solution.
+    (r"satisfiabilité d'un système|cohérence d'un petit système", "module", "contrainte", TRAITE),
     (r"calcul arithmétique|primalité|PGCD|factorisation|divisibilité|congruence|irrationalité",
      "gate", "valide_fonction.py", TRAITE),
-    (r"identités remarquables|équation du 1er degré|équation du 2nd degré|systèmes linéaires|"
-     r"déterminant, rang|algèbre de Boole", "gate", "valide_algebre_calcul.py", PARTIEL),
-    (r"dérivée|primitive/intégrale|développement limité|convergence d'une série|"
-     r"équations différentielles linéaires", "module", "algebre_calcul", PARTIEL),
+    # DÉCOUPE (2026-07-11) : une seule règle couvrait SIX sujets et les forçait tous en PARTIEL, alors que
+    # deux d'entre eux sont pleinement traités. Un regex trop large est une mesure fausse : il masque ce qui
+    # est fait ET ce qui ne l'est pas. Chaque sujet a désormais sa règle et son état mesuré.
+    (r"résolution d'équation du 1er degré|résolution d'équation du 2nd degré",
+     "module", "equations_polynomiales", TRAITE),      # racines exactes + irrationnelles ENCADRÉES (Sturm)
+    (r"identités remarquables", "module", "algebre_symbolique", TRAITE),
+    (r"systèmes linéaires \(pivot de Gauss\)|déterminant, rang, inverse d'une matrice",
+     "module", "algebre_lineaire", TRAITE),             # Gauss exact + Rouché-Capelli ; M·M⁻¹ re-vérifié
+    (r"algèbre de Boole \(simplification\)", "module", "simplification_booleenne", TRAITE),  # Quine-McCluskey
+    # DÉCOUPE : `calcul_infinitesimal` dérive et intègre EXACTEMENT — mais des POLYNÔMES seulement.
+    # « fonction élémentaire » englobe sin/cos/exp/ln et les règles produit/quotient/chaîne : donc PARTIEL,
+    # avec le périmètre DIT. Les trois autres sujets ont chacun leur manque propre.
+    (r"dérivée d'une fonction élémentaire|primitive/intégrale d'une fonction élémentaire",
+     "module", "derivation_symbolique", TRAITE),   # sin/cos/exp/ln + Leibniz, quotient, chaîne
+    # Un développement limité SANS borne du reste ne dit rien : `approxime` rend (valeur, borne de Lagrange).
+    (r"développement limité", "module", "developpement_limite", TRAITE),
+    (r"convergence d'une série donnée", "module", "convergence_series", TRAITE),   # d'Alembert, Cauchy, Leibniz
+    (r"équations différentielles linéaires", "module", "edo_lineaires", TRAITE),   # 2e ordre, 3 régimes
     (r"périmètres, aires|Pythagore|géométrie analytique|géométrie vectorielle", "gate", "valide_fonction.py", TRAITE),
     (r"trigonométrie", "module", "fonction_nl", PARTIEL),
-    (r"dénombrement combinatoire|probabilité d'un événement|espérance, variance|théorème de Bayes",
-     "module", "bayes", PARTIEL),
+    # DÉCOUPE : le dénombrement est COMPLET (maths_discretes : binomial, Catalan, dérangements, partitions).
+    # `bayes` fait la mise à jour en log-cotes (équivalente au théorème), mais la probabilité CLASSIQUE d'un
+    # événement, l'espérance et la variance d'une loi n'existent nulle part.
+    (r"dénombrement combinatoire", "module", "maths_discretes", TRAITE),
+    (r"probabilité d'un événement dans un modèle donné|espérance, variance, moments",
+     "module", "probabilites_elementaires", TRAITE),    # Fraction exacte ; Var = E[X²]−E[X]² re-vérifié
+    # `bayes.py` fait la mise à jour en LOG-COTES ; la forme DIRECTE P(A|B) = P(B|A)P(A)/P(B) et la loi des
+    # probabilités totales vivent dans `probabilites_elementaires` (exactes en Fraction). Sondé : le piège du
+    # taux de base rend 11/122 (= 99/1098), pas 0,99.
+    (r"théorème de Bayes appliqué à des données", "module", "probabilites_elementaires", TRAITE),
     (r"statistiques descriptives", "gate", "valide_fonction_stats_nl.py", TRAITE),
-    (r"test d'hypothèse|intervalle de confiance", "module", "conformal", PARTIEL),
-    (r"inférence causale|paradoxe de Simpson", "module", "causalite", PARTIEL),
-    (r"biais de sélection", "module", "biais_survie", PARTIEL),
-    (r"complexité d'un algorithme|complexité et coût", "module", "algo_analyse", PARTIEL),
+    # `conformal` fait de la PRÉDICTION conforme (une observation future) ; le test d'hypothèse et
+    # l'intervalle de confiance portent sur un PARAMÈTRE. Deux questions distinctes, deux modules.
+    (r"test d'hypothèse|intervalle de confiance", "module", "inference_classique", TRAITE),
+    # `causalite` porte le GRAPHE, `simpson` DÉTECTE le renversement ; ni l'un ni l'autre n'ESTIMAIT l'effet.
+    # Sondé sur les calculs rénaux (Charig 1986) : ajusté, A = 0,8325 > B = 0,7789, le renversement est corrigé.
+    (r"inférence causale|paradoxe de Simpson", "module", "ajustement_causal", TRAITE),
+    # Le mécanisme GÉNÉRIQUE du biais de sélection est la COLLISION. Sondé : deux maladies indépendantes
+    # (OR = 1) deviennent négativement associées chez les hospitalisés (OR = 9/25).
+    (r"biais de sélection", "module", "biais_collision", TRAITE),
+    # `algo_analyse` lisait le n·log n du tri fusion dans une table ; `recurrences` le DÉRIVE du théorème maître.
+    (r"complexité d'un algorithme|complexité et coût", "module", "recurrences", TRAITE),
     (r"comportement d'un code exécutable|correction d'un programme", "gate", "valide_capacites_chat.py", TRAITE),
     (r"vulnérabilités canoniques", "gate", "valide_audit_code.py", TRAITE),
     (r"grammaires formelles et automates", "module", "automates", PARTIEL),
@@ -186,7 +216,9 @@ _REGLES: tuple = (
     (r"distances orthodromiques", "gate", "valide_coordonnees.py", TRAITE),
     (r"astronomie descriptive|structure interne de la Terre|composition de l'atmosphère",
      "gate", "valide_ancres_types.py", TRAITE),
-    (r"mécanique céleste|datation radiométrique", "module", "physique", PARTIEL),
+    # `physique` n'a que la décroissance DIRECTE ; la datation est le problème INVERSE, bâti le 2026-07-10.
+    (r"datation radiométrique", "module", "datation_radiocarbone", TRAITE),
+    (r"mécanique céleste", "module", "physique", PARTIEL),          # orbites circulaires seules
     (r"datation d'un événement|chronologie et successions|dirigeants par pays|régime politique|"
      r"résultats d'élections passées", "gate", "valide_lecteur_t8.py", TRAITE),
     (r"biographies", "gate", "valide_lecteur_t6.py", TRAITE),
@@ -206,13 +238,28 @@ _REGLES: tuple = (
     # (« langue d'oïl » n'a aucun ancêtre typé) -> le sujet reste PARTIEL, la famille immédiate est acquise.
     (r"famille et parenté d'une langue", "table", "famille_langue", PARTIEL),
     (r"nombre de locuteurs d'une langue", "table", "locuteurs_langue", TRAITE),
-    (r"codes normalisés|classe Dewey|division Dewey", "module", "bibliotheconomie", PARTIEL),
-    (r"grand groupe ISCO|structure de classification", "aucun", None, NON_TRAITE),
+    # ANNEXE T — DÉCOUPE (2026-07-11). `bibliotheconomie` porte les 10 classes Dewey (complet) et l'ISBN
+    # (1 des 4 codes normalisés cités). `nomenclatures` ajoute ISCO-08, les divisions Dewey du 500 et la
+    # NACE. Les cinq classifications CITÉES mais non ingérées (MSC, ACM, CIM-11, ROME) restent PARTIELLES :
+    # on connaît leur éditeur et leur nature, pas leur contenu — et `classes()` y lève ValueError.
+    (r"classe Dewey", "module", "bibliotheconomie", TRAITE),
+    (r"division Dewey", "module", "nomenclatures", TRAITE),
+    (r"grand groupe ISCO", "module", "nomenclatures", TRAITE),
+    (r"structure de classification", "module", "nomenclatures", PARTIEL),
+    # PARTIEL ASSUMÉ, périmètre DIT : l'ISBN est complet (algorithmique, 10 et 13) ; l'ISO 4217 embarque
+    # 25 monnaies, les indicatifs 23 pays, les plaques la France seule. Hors table -> abstention, jamais une
+    # devinette. Même standard que `alliages` : un catalogue étroit se déclare étroit.
+    (r"codes normalisés", "module", "codes_normalises", PARTIEL),
     (r"règles d'un jeu institué|coup optimal", "gate", "valide_strategie_jeux.py", PARTIEL),
-    (r"inflation mesurée|PIB, chômage", "module", "cycles_economiques", PARTIEL),
+    # PREUVE MAL DIRIGÉE : `cycles_economiques` est un CATALOGUE de phases, il ne calcule rien. Les formules
+    # exactes vivent dans `inflation.py`, `pib.py`, `chomage.py`. Sondé : IPC 100->110 = +10 %, chômage 10 %.
+    (r"inflation mesurée sur une période", "module", "inflation", TRAITE),
+    (r"PIB, chômage, balance commerciale", "module", "pib", TRAITE),
     (r"calcul d'intérêts", "aucun", None, NON_TRAITE),
     (r"mode de scrutin et paradoxes", "module", "choix_social", TRAITE),
-    (r"entropie d'une source", "module", "information_calcul", PARTIEL),
+    # L'entropie d'une SOURCE n'est pas celle d'une distribution donnée : estimation biaisée, taux d'entropie
+    # d'une chaîne de Markov (la mémoire réduit l'incertitude : 0,469 bit au lieu de 1).
+    (r"entropie d'une source", "module", "entropie_source", TRAITE),
     (r"encodage et compression|correction d'erreurs", "aucun", None, NON_TRAITE),
     (r"pharmacocinétique", "module", "pharmacochimie", PARTIEL),
     # RR / ARR / NNT / OR sont EXACTS depuis les effectifs d'un essai publié : c'est le traitement correct

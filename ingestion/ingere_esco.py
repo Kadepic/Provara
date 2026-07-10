@@ -17,7 +17,15 @@ TROIS RELATIONS PUBLIÉES :
   • `definition_esco_metier` — la description ESCO du métier ;
   • `geste_metier`           — les gestes/compétences CODIFIÉS (liste triée) ;
   • `savoir_metier`          — les savoirs essentiels (liste triée) ;
-  • `code_isco_metier`       — le code ISCO-08 de l'occupation.
+  • `code_isco_metier`       — le code ISCO-08 de l'occupation ;
+  • `reglementation_metier`  — le STATUT réglementé (directive 2005/36/CE). C'est un statut, pas le contenu
+                               des normes : il rend l'axe « normes » PARTIEL pour ce métier, jamais TRAITÉ.
+
+DESCENTE COMPLÈTE DE L'ARBRE (bug corrigé le 2026-07-11) : une occupation ESCO peut avoir des occupations
+FILLES (`narrowerOccupation` : « employé de bureau » -> « assistant d'ingénieur »). La première version
+s'arrêtait à la première occupation rencontrée et n'a ramené que 1 699 des ~3 000 occupations — un tiers du
+référentiel manquait, sans qu'aucun signal ne le dise. Rien n'était FAUX, mais la couverture était
+silencieusement amputée : c'est le genre de manque qu'aucune gate ne voit.
 
 HONNÊTETÉ SUR L'AXE « GESTES ». ESCO codifie la part TRANSMISSIBLE PAR TEXTE du savoir-faire. Le TOUR DE MAIN
 tacite (le geste qu'on apprend par imitation et répétition) n'est PAS dans ESCO et ne peut pas l'être : la
@@ -51,6 +59,7 @@ Usage :
 from __future__ import annotations
 
 import collections
+import http.client
 import json
 import os
 import sys
@@ -72,9 +81,19 @@ SRC_GESTE = ("ESCO v1 (Commission européenne) — compétences essentielles de 
              "savoir-faire. Le tour de main tacite n'y est pas et ne peut pas y être (le sujet reste MIX).")
 SRC_SAVOIR = "ESCO v1 (Commission européenne) — savoirs essentiels de l'occupation (skill-type/knowledge)"
 SRC_ISCO = "ESCO v1 (Commission européenne) — code ISCO-08 (OIT) de l'occupation"
+SRC_REGL = ("ESCO v1 (Commission européenne) — STATUT réglementé de la profession au titre de la directive "
+            "2005/36/CE. C'est un statut, PAS le contenu des normes : il ne ferme donc jamais l'axe "
+            "« normes, réglementation et certifications », il le rend PARTIEL pour ce métier.")
 
 
-def _get(url: str, essais: int = 5, timeout: int = 30):
+def _get(url: str, essais: int = 6, timeout: int = 30):
+    """GET JSON avec retry. Le filet doit être LARGE.
+
+    Vécu le 2026-07-11 : après ~30 minutes de moissonnage, une réponse tronquée a levé
+    `http.client.IncompleteRead` — que ce retry ne connaissait pas (il n'attrapait que HTTPError, URLError
+    et TimeoutError). Tout le travail a été perdu. Sur 3 600 requêtes, un aléa réseau est CERTAIN : le retry
+    doit couvrir la lecture tronquée, la connexion coupée, le socket cassé. On ne laisse remonter que ce qui
+    n'est pas réessayable (un 404, un 400)."""
     req = urllib.request.Request(url, headers={"User-Agent": UA, "Accept": "application/json"})
     for k in range(essais):
         try:
@@ -85,9 +104,10 @@ def _get(url: str, essais: int = 5, timeout: int = 30):
                 time.sleep(2 * (k + 1))
                 continue
             raise
-        except (urllib.error.URLError, TimeoutError):
+        except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.HTTPException,
+                json.JSONDecodeError, OSError):
             time.sleep(2 * (k + 1))
-    raise RuntimeError("ESCO injoignable : " + url[:90])
+    raise RuntimeError("ESCO injoignable après %d essais : %s" % (essais, url[:90]))
 
 
 def _concept(uri: str) -> dict:
@@ -110,17 +130,20 @@ def _uris_occupations() -> list:
         vus.add(uri)
         if "/occupation/" in uri:
             occupations.append(uri)
-            continue
+            # NE PAS S'ARRÊTER ICI. Une occupation ESCO peut avoir des occupations FILLES
+            # (« employé de bureau » -> « assistant d'ingénieur »), reliées par `narrowerOccupation`.
+            # Une première version coupait la descente sur la première occupation rencontrée et n'a
+            # ramené que 1 699 des ~3 000 occupations : un tiers du référentiel était invisible, sans
+            # que rien ne le signale. On continue donc à descendre.
         try:
             n = _concept(uri)
         except RuntimeError:
             continue
-        for enfant in n.get("_links", {}).get("narrowerConcept", []):
-            if enfant["uri"] not in vus:
-                file_.append(enfant["uri"])
-        for enfant in n.get("_links", {}).get("narrowerOccupation", []):
-            if enfant["uri"] not in vus:
-                file_.append(enfant["uri"])
+        liens = n.get("_links", {})
+        for cle in ("narrowerConcept", "narrowerOccupation"):
+            for enfant in liens.get(cle, []):
+                if enfant["uri"] not in vus:
+                    file_.append(enfant["uri"])
         if len(vus) % 200 == 0:
             print("    ... %d concepts visités, %d occupations" % (len(vus), len(occupations)))
     return sorted(occupations)
@@ -138,8 +161,18 @@ def moissonne() -> None:
     print("== ESCO — moissonnage (réseau) ==")
     uris = _uris_occupations()
     print("  occupations trouvées : %d" % len(uris))
-    out = []
+    # POINT DE REPRISE : 3 000 appels réseau ne doivent pas s'évaporer sur un aléa. On sauve tous les 200,
+    # et on repart de ce qui est déjà lu. Le fichier partiel est remplacé par le cache final à la fin.
+    partiel = _cache_chemin() + ".encours"
+    out, deja = [], set()
+    if os.path.exists(partiel):
+        with open(partiel, encoding="utf-8") as f:
+            out = json.load(f)
+        deja = {o["uri"] for o in out}
+        print("  reprise : %d occupations déjà lues" % len(deja))
     for i, uri in enumerate(uris, 1):
+        if uri in deja:
+            continue
         try:
             o = _occupation(uri)
         except RuntimeError as e:
@@ -166,10 +199,15 @@ def moissonne() -> None:
         })
         if i % 100 == 0:
             print("    ... %d/%d occupations lues" % (i, len(uris)))
+        if len(out) % 200 == 0:
+            with open(partiel, "w", encoding="utf-8") as f:
+                json.dump(out, f, ensure_ascii=False)
         time.sleep(0.05)
     chemin = _cache_chemin()
     with open(chemin, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False)
+    if os.path.exists(partiel):
+        os.remove(partiel)
     print("  cache écrit : %s (%d occupations)" % (chemin, len(out)))
 
 
@@ -257,11 +295,13 @@ def publie_depuis_cache() -> None:
     gestes = [(m, ", ".join(o["gestes"])) for m, o in sorted(apparie.items()) if o["gestes"]]
     savoirs = [(m, ", ".join(o["savoirs"])) for m, o in sorted(apparie.items()) if o["savoirs"]]
     iscos = [(m, o["code_isco"]) for m, o in sorted(apparie.items()) if o["code_isco"]]
+    regl = [(m, o["reglementee"]) for m, o in sorted(apparie.items()) if o.get("reglementee")]
 
     _publie("definition_esco_metier", "convention", SRC_DEF, defs)
     _publie("geste_metier", "convention", SRC_GESTE, gestes)
     _publie("savoir_metier", "convention", SRC_SAVOIR, savoirs)
     _publie("code_isco_metier", "convention", SRC_ISCO, iscos)
+    _publie("reglementation_metier", "convention", SRC_REGL, regl)
 
 
 if __name__ == "__main__":
