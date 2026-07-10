@@ -432,7 +432,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - structure de classification : Nomenclature statistique des activités NACE :: B-CONV → publiée (Eurostat) ; contenu à ingérer
   - structure de classification : Répertoire opérationnel des métiers et des emplois ROME :: B-CONV → publiée (France Travail) ; contenu à ingérer
 
-# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1378 tables vérifiées)
+# ANNEXE S — SUJETS DÉRIVÉS DU STORE RÉEL (1380 tables vérifiées)
 ## S.1 — Chaque relation vérifiée du lecteur est un sujet borné DE FAIT
 ## (couverture d'ancrage prouvée : audit_ancres 1371/1371, valide_ancres_types)
   - donnée du store : activite_circadienne_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -1091,6 +1091,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : metropole_colonie :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : milieu_de_vie_animal :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : milieu_respiration :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : mix_electrique :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : mmsi_navire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : mode_acquisition_immunite :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : mode_deplacement_protozoaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
@@ -1447,6 +1448,7 @@ Légende des codes (héritée, cf. `src/sujets.py`) :
   - donnée du store : realisateur_jeu :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : regime_alimentaire :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : region_os :: B-FAIT → table vérifiée du lecteur (ancrage audité)
+  - donnée du store : reglementation_metier :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : regne_organisme :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : regulateur_langue :: B-FAIT → table vérifiée du lecteur (ancrage audité)
   - donnée du store : religion_etat_historique :: B-FAIT → table vérifiée du lecteur (ancrage audité)

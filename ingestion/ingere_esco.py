@@ -18,8 +18,11 @@ TROIS RELATIONS PUBLIÉES :
   • `geste_metier`           — les gestes/compétences CODIFIÉS (liste triée) ;
   • `savoir_metier`          — les savoirs essentiels (liste triée) ;
   • `code_isco_metier`       — le code ISCO-08 de l'occupation ;
-  • `reglementation_metier`  — le STATUT réglementé (directive 2005/36/CE). C'est un statut, pas le contenu
-                               des normes : il rend l'axe « normes » PARTIEL pour ce métier, jamais TRAITÉ.
+  • `reglementation_metier`  — les professions SECTORIELLES à reconnaissance automatique (directive
+                               2005/36/CE). ATTENTION : le drapeau `unregulated` d'ESCO signifie « consultez
+                               la base des professions réglementées », pas « non réglementée ». Une première
+                               version publiait « avocat : non réglementée » — un FAUX. On ne publie que les
+                               professions effectivement marquées `regulated` (15 sur 2 938).
 
 DESCENTE COMPLÈTE DE L'ARBRE (bug corrigé le 2026-07-11) : une occupation ESCO peut avoir des occupations
 FILLES (`narrowerOccupation` : « employé de bureau » -> « assistant d'ingénieur »). La première version
@@ -81,9 +84,11 @@ SRC_GESTE = ("ESCO v1 (Commission européenne) — compétences essentielles de 
              "savoir-faire. Le tour de main tacite n'y est pas et ne peut pas y être (le sujet reste MIX).")
 SRC_SAVOIR = "ESCO v1 (Commission européenne) — savoirs essentiels de l'occupation (skill-type/knowledge)"
 SRC_ISCO = "ESCO v1 (Commission européenne) — code ISCO-08 (OIT) de l'occupation"
-SRC_REGL = ("ESCO v1 (Commission européenne) — STATUT réglementé de la profession au titre de la directive "
-            "2005/36/CE. C'est un statut, PAS le contenu des normes : il ne ferme donc jamais l'axe "
-            "« normes, réglementation et certifications », il le rend PARTIEL pour ce métier.")
+SRC_REGL = ("ESCO v1 (Commission européenne) — professions SECTORIELLES à reconnaissance automatique au "
+            "titre de la directive 2005/36/CE (médecin, infirmier, dentiste, sage-femme, pharmacien, "
+            "vétérinaire, architecte et leurs spécialités). L'absence d'un métier de cette table ne signifie "
+            "PAS qu'il n'est pas réglementé : ESCO ne le dit pas, et on ne l'invente pas. Ce statut ne ferme "
+            "donc JAMAIS l'axe « normes, réglementation et certifications ».")
 
 
 def _get(url: str, essais: int = 6, timeout: int = 30):
@@ -191,9 +196,16 @@ def moissonne() -> None:
             "alternatifs": (o.get("alternativeLabel") or {}).get("fr", []) or [],
             "description": ((o.get("description") or {}).get("fr") or {}).get("literal", ""),
             "code_isco": o.get("code", ""),
-            "reglementee": ("réglementée (directive 2005/36/CE)" if uri_note.endswith("/regulated")
-                            else "non réglementée au sens de la directive 2005/36/CE"
-                            if uri_note.endswith("/unregulated") else ""),
+            # NE PAS écrire « non réglementée » quand ESCO dit `unregulated`. Le texte associé à ce drapeau
+            # dit littéralement : « pour vérifier si cette profession est réglementée dans les États membres,
+            # veuillez consulter la base de données des professions réglementées ». C'est une ABSENCE
+            # D'INFORMATION, pas un fait. Vécu : la table affirmait « avocat : non réglementée », ce qui est
+            # FAUX. Le drapeau `regulated` ne marque que les professions SECTORIELLES à reconnaissance
+            # automatique (médecin, infirmier, dentiste, sage-femme, pharmacien, vétérinaire, architecte) :
+            # 15 sur 2 938. On ne publie QUE celles-là, et on nomme exactement ce qu'elles sont.
+            "reglementee": ("profession sectorielle à reconnaissance automatique "
+                            "(directive 2005/36/CE, titre III chapitre III)"
+                            if uri_note.endswith("/regulated") else ""),
             "gestes": sorted({s["title"] for s in essentielles if s.get("skillType") == TYPE_GESTE}),
             "savoirs": sorted({s["title"] for s in essentielles if s.get("skillType") == TYPE_SAVOIR}),
         })

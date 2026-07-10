@@ -251,6 +251,15 @@ _REGLES: tuple = (
     # « turc » -> turcique, jamais « altaïque » (regroupement contesté) ; le basque est un ISOLAT.
     (r"famille et parenté d'une langue", "module", "familles_langues", TRAITE),
     (r"nombre de locuteurs d'une langue", "table", "locuteurs_langue", TRAITE),
+    # Ce sujet était classé « bloqué sur un corpus externe ». Il ne l'était pas : Our World in Data publie
+    # la part de l'électricité par source, par PAYS et par ANNÉE (données Ember). 5 907 couples ingérés ;
+    # les agrégats (« World ») et les années à couverture partielle (« Algérie 1985 : somme = 5 % ») rejetés.
+    (r"mix électrique d'un pays/année", "table", "mix_electrique", TRAITE),
+    # Deux autres sujets crus « bloqués sur un corpus externe » : les cadres CITE (UNESCO) et CEC (UE) sont
+    # PUBLIÉS ; les conciles, édits et schismes sont DATÉS par des sources contemporaines. Ce qui est
+    # réellement contesté (naissance de Jésus, vie du Bouddha) est rendu comme FOURCHETTE, jamais comme date.
+    (r"équivalences internationales de diplômes", "module", "equivalences_diplomes", TRAITE),
+    (r"histoire et datation des faits religieux", "module", "chronologie_religieuse", TRAITE),
     # ANNEXE T — DÉCOUPE (2026-07-11). `bibliotheconomie` porte les 10 classes Dewey (complet) et l'ISBN
     # (1 des 4 codes normalisés cités). `nomenclatures` ajoute ISCO-08, les divisions Dewey du 500 et la
     # NACE. Les cinq classifications CITÉES mais non ingérées (MSC, ACM, CIM-11, ROME) restent PARTIELLES :
