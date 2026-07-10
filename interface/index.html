@@ -650,7 +650,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const cache = () => ov.classList.remove("on");
 
   function vueChargement(s) {
-    html(`<div class="vm-spin"></div><h3>Provara se prépare…</h3><p>${(s && s.detail) || "Chargement de la connaissance…"}</p>`);
+    // Barre de progression : DÉTERMINÉE quand le backend fournit un % réel (tables chargées / total),
+    // ANIMÉE (indéterminée) sinon. Sans elle, un préchargement muet de plusieurs minutes semble bloqué.
+    const pct = (s && s.pct != null) ? s.pct : null;
+    const bar = pct == null
+      ? `<div class="vm-bar indet"><i></i></div>`
+      : `<div class="vm-bar"><i style="width:${pct}%"></i></div><div class="vm-pct">${pct}%</div>`;
+    html(`<div class="vm-spin"></div><h3>Provara se prépare…</h3>
+      <p>${(s && s.detail) || "Chargement de la connaissance…"}</p>${bar}`);
+    montre();
+  }
+  function vueMajApp(s) {
+    // Mise à jour de l'APPLICATION (.exe) : téléchargement bloquant sans %, donc barre ANIMÉE
+    // (indéterminée) — sans elle, l'écran semble figé plusieurs minutes.
+    const pct = (s && s.pct != null) ? s.pct : null;
+    const bar = pct == null
+      ? `<div class="vm-bar indet"><i></i></div>`
+      : `<div class="vm-bar"><i style="width:${pct}%"></i></div><div class="vm-pct">${pct}%</div>`;
+    html(`<div class="vm-ic">🔄</div><h3>Mise à jour de Provara</h3>
+      <p>${(s && s.detail) || "Mise à jour en cours… l'app va redémarrer seule."}</p>${bar}
+      <p class="vm-note">Ne fermez pas Provara. Le redémarrage est automatique.</p>`);
     montre();
   }
   function vueInstallation(s) {
@@ -716,6 +735,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let s;
     try { s = await (await fetch("/api/status?t=" + Date.now(), { cache: "no-store" })).json(); }
     catch { setTimeout(tick, 1500); return; }
+    if (s.maj_appli) { vueMajApp(s); setTimeout(tick, 1000); return; }
     if (s.installation) { vueInstallation(s); setTimeout(tick, 1200); return; }
     if (s.redemarrage) { vueInstallee(); return; }
     if (s.phase === "erreur" && s.erreur) { vueErreur(s); return; }

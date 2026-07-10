@@ -301,6 +301,12 @@ _CACHE_PORTABLE = os.environ.get("LECTEUR_CACHE_PORTABLE", "0") != "0"
 _TMP_TTL = 600
 _purge_tmp_faite = False
 
+# PROGRESSION DU CHARGEMENT (2026-07-12) — état module lu par un poller externe (serveur) pour afficher une
+# vraie barre/%. Défini au niveau module (donc visible dès l'import, AVANT que `charge_dossier` ne s'exécute
+# à la fin du module) : un poller peut lire `sys.modules['lecteur'].PROGRES_CHARGE` pendant que la boucle
+# tourne encore. AUCUNE dépendance vers l'interface (respect des couches) : on publie, on n'appelle personne.
+PROGRES_CHARGE = {"charges": 0, "total": 0, "relation": "", "fini": False}
+
 
 def _purge_tmp_orphelins():
     """Best-effort, une fois par process : supprime les .tmp de cache abandonnés (plus vieux que _TMP_TTL).
@@ -676,10 +682,13 @@ class Lecteur:
         charges: dict[str, int] = {}
         use_mmap = _MMAP if utiliser_mmap is None else utiliser_mmap   # OPTIM Levier2 : backend mmap frugal opt-in
         if not os.path.isdir(dossier):
+            PROGRES_CHARGE["fini"] = True
             return charges
-        for nom in sorted(os.listdir(dossier)):
-            if not nom.endswith(".jsonl"):
-                continue
+        _fichiers = [n for n in sorted(os.listdir(dossier)) if n.endswith(".jsonl")]
+        PROGRES_CHARGE.update(total=len(_fichiers), charges=0, relation="", fini=False)
+        for _i, nom in enumerate(_fichiers, 1):
+            # progression PUBLIÉE (un poller externe l'affiche en barre/%) — pas de couplage inverse.
+            PROGRES_CHARGE.update(charges=_i, relation=nom[:-6])
             chemin = os.path.join(dossier, nom)
             if use_mmap:                                           # Levier2 : .colf mmappé (RAM partagée+réclamable, load ~gratuit)
                 _mct, _mrel, _mart = _charge_colf_mmap(nom, chemin)
@@ -732,6 +741,7 @@ class Lecteur:
                     _mtb, _mrel, _mart = _charge_colf_mmap(nom, chemin)
                     if _mtb is not None:
                         self.tables[tete["_relation"]] = _mtb
+        PROGRES_CHARGE["fini"] = True
         return charges
 
     def cherche(self, relation: str, entite: str) -> Fait | None:

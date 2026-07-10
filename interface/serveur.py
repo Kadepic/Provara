@@ -107,7 +107,7 @@ import sys as _sys
 import threading as _threading
 _STATUT_LOCK = _threading.Lock()
 _STATUT = {"pret": False, "phase": "chargement", "detail": "Chargement de la connaissance…",
-           "pct": None, "installation": False, "redemarrage": False, "erreur": ""}
+           "pct": None, "installation": False, "redemarrage": False, "erreur": "", "maj_appli": False}
 
 
 def _maj_statut(**kw):
@@ -919,15 +919,41 @@ def main():
         # Préchauffe le lecteur (~622 Mo, ~70 s) EN TÂCHE DE FOND : la page se sert tout de suite et, le temps
         # que tu écrives ta 1ʳᵉ question, la connaissance est déjà prête (sinon la 1ʳᵉ réponse attend la fin).
         import threading
+        def _suit_progression(arret):
+            """Poller (2026-07-12) : lit la progression PUBLIÉE par lecteur.PROGRES_CHARGE et l'expose en
+            barre/% (web) + ligne CLI mise à jour en place. Sans ce retour, un préchargement muet de plusieurs
+            minutes semble BLOQUÉ. Découplé : on lit un état, on n'appelle pas le lecteur (respect des couches ;
+            le module apparaît dans sys.modules dès le début de son import, avant même la fin de son body)."""
+            import sys as _sys, time as _t
+            dernier = -1
+            while not arret.is_set():
+                m = _sys.modules.get("lecteur")
+                p = getattr(m, "PROGRES_CHARGE", None) if m else None
+                if p and p.get("total"):
+                    pct = min(99, int(p["charges"] * 100 / p["total"]))   # 100 % réservé à « prêt »
+                    if pct != dernier:
+                        dernier = pct
+                        _maj_statut(phase="chargement", pct=pct,
+                                    detail="Chargement de la connaissance… %d/%d tables" % (p["charges"], p["total"]))
+                        print("\r  … connaissance : %3d %% (%d/%d tables)   " % (pct, p["charges"], p["total"]),
+                              end="", flush=True)
+                    if p.get("fini"):
+                        break
+                _t.sleep(0.25)
+
         def _prechauffe():
             print("  … préchargement de la connaissance en cours (en fond)…", flush=True)
-            _maj_statut(phase="chargement", detail="Chargement de la connaissance en mémoire…", pct=None)
+            _maj_statut(phase="chargement", detail="Chargement de la connaissance en mémoire…", pct=0)
+            _arret = threading.Event()
+            _poll = threading.Thread(target=_suit_progression, args=(_arret,), daemon=True)
+            _poll.start()
             try:
                 repond._charge_ia()
             except Exception as _e:
                 print("  (préchargement : %s)" % _e, flush=True)
-            _maj_statut(pret=True, phase="pret", detail="")     # ferme la modale d'interface
-            print("  ✓ connaissance prête.", flush=True)
+            _arret.set()
+            _maj_statut(pret=True, phase="pret", detail="", pct=100)   # ferme la modale d'interface
+            print("\r  ✓ connaissance prête.                              ", flush=True)
             # PRÉCHAUFFAGE DES PREUVES (après la connaissance, même thread de fond — un seul travail lourd à
             # la fois) : les preuves à sous-processus juge coûtent 10-60 s à froid sur le .exe ; passées ici,
             # « diagnostic » les sert du mémo daté au lieu de les compter « bloquée > 10s » (vécu 2026-07-09).
@@ -960,7 +986,17 @@ def main():
                         if (premier and e.get("disponible") and maj.auto_active()
                                 and not maj.tentative_recente(cible)):
                             maj.note_tentative(cible)
+                            # RETOUR VISUEL (2026-07-12) : le téléchargement du .exe est bloquant et était
+                            # MUET côté UI — un « message de mise à jour » figé plusieurs minutes semble
+                            # planté. On affiche une barre animée (indéterminée : le téléchargement ne
+                            # rapporte pas de %) AVANT de lancer. `_maj_applique` ferme le process au succès ;
+                            # sinon on efface le statut (l'app continue normalement).
+                            _maj_statut(phase="maj_appli", maj_appli=True,
+                                        detail="Mise à jour de Provara en cours… l'app va redémarrer seule.",
+                                        pct=None)
                             r = _maj_applique(e.get("url_exe"))
+                            if not (r.get("ok") and r.get("redemarre")):
+                                _maj_statut(phase="", maj_appli=False, detail="")   # échec : on ne laisse pas la modale
                             if r.get("ok") and r.get("redemarre"):
                                 return                          # l'app se ferme, l'updater prend le relais
                             # ⚠ ÉCHEC JAMAIS MUET (vécu build 77, 2026-07-09 : la 1ʳᵉ tentative auto vers 78 a
