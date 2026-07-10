@@ -1,5 +1,21 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 9e domaine « calcul » + loi L6 (limite de Landauer)
+
+Calculer à basse énergie — au cœur de la vision Provara (l'IA légère). Nouvelle loi dure au juge (`L6`) : la
+**limite de Landauer** — effacer un bit dissipe au moins k·T·ln2 (≈ 2,87e-21 J à 300 K). Une machine qui déclare
+effacer des bits pour moins est RÉFUTÉE. CONSERVATEUR : ne s'applique qu'à l'énergie par bit EFFACÉ — le calcul
+réversible/adiabatique (qui n'efface pas) n'est jamais réfuté. Gate `valide_coherence_physique` **94 → 105/105**.
+
+`enregistre(...)`, rien d'autre. **11 principes**, 9 suppositions + 2 RÉFUTÉS (1e-23 J/bit, effacement à énergie
+nulle). Reframing : le but n'est pas la vitesse mais le calcul PAR JOULE ; les puces actuelles sont ~10⁴–10⁶×
+au-dessus de Landauer donc le mur n'est PAS physique aujourd'hui → ne pas EFFACER (réversible/adiabatique), ne pas
+DÉPLACER les bits (le vrai coût actuel = le transport → in-memory), moins d'OPÉRATIONS (algorithmes, événementiel,
+analogique), calculer FROID. Couvre CMOS, sous-seuil, réversible, in-memory, neuromorphique, analogique, SFQ
+supraconducteur, spintronique, photonique. 4 stratégies naturelles propres (cerveau ~20 W = analogique +
+événementiel + en-mémoire, rétine = calcul au capteur, ADN = stockage dense, essaim = distribué). Gate
+`valide_besoin` **186 → 203/203** ; les 8 domaines précédents intacts.
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 8e domaine « eclairage » + loi L5 (efficacité lumineuse ≤ 683 lm/W)
 
 Éclairer efficacement. Nouvelle loi dure au juge (`L5`) : l'**efficacité lumineuse ≤ 683 lm/W** (l'œil culmine à

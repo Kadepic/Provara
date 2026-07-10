@@ -420,10 +420,52 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "humidite_relative_moteur" in B.decompose("produire de l eau de l air"),
       "les 7 domaines précédents inchangés après l'ajout de l'éclairage (isolation)")
 
-# ── 14) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
+# ── 14) NEUVIÈME DOMAINE : calculer à basse énergie (nouvelle loi L6 = limite de Landauer) ──
+dk = B.decompose("calculer efficacement")
+check(dk["statut"] == "decompose", "besoin calcul connu -> decompose")
+check("joule" in dk["objectif_reel"].lower() and "landauer" in dk["objectif_reel"].lower(),
+      "objectif réel calcul = calcul par joule, plancher Landauer")
+check("limite_landauer_J_bit" in dk, "extras propres : la limite de Landauer")
+cal_canaux = {c.canal for c in dk["canaux"]}
+check(cal_canaux == {"ne pas effacer", "ne pas deplacer", "moins d operations", "basse temperature"},
+      f"4 canaux de calcul ({cal_canaux})")
+prk = B.principes("calculer efficacement")
+pk = {e["nom"]: e for e in prk["liste"]}
+# l'IMPOSSIBLE (sous Landauer) est RÉFUTÉ
+sous_land = pk["effacement de bit « à 1e-23 J » (300 K)"]
+check(sous_land["atome"].statut == A.REFUTE, "1e-23 J/bit < Landauer ~2,87e-21 -> RÉFUTÉ")
+check(A.est_refute(sous_land["atome"].contenu), "contenu réfuté (1e-23 J/bit) dans la garde")
+nul = pk["calcul irréversible « à énergie nulle »"]
+check(nul["atome"].statut == A.REFUTE, "effacement à énergie nulle -> RÉFUTÉ")
+# procédés réels (dont le réversible, TRÈS bas mais > 0) -> SUPPOSITIONS
+for nom in ("CMOS numérique actuel (référence)", "calcul réversible / adiabatique", "calcul in-memory (près de la mémoire)"):
+    e = pk[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prk["liste"]), "aucun principe de calcul promu en FAIT")
+check("candidat pour calcul" in pk["CMOS numérique actuel (référence)"]["atome"].portee.condition,
+      "portée des principes calcul nommant calcul")
+# la loi L6 : sous Landauer réfuté, juste au-dessus cohérent (le réversible n'efface pas → jamais réfuté)
+st_land, _, loi_land = COH.juge_dispositif({"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300})
+check(st_land == COH.VIOLE and loi_land == COH.L6, "juge : 1e-23 J/bit -> VIOLE via L6")
+check(COH.juge_dispositif({"type": "calcul", "energie_par_bit_efface_J": 2.9e-21, "t_K": 300})[0] == COH.COHERENT_BORNE,
+      "2,9e-21 J/bit (juste au-dessus de Landauer) -> cohérent")
+# stratégies naturelles propres (cerveau, rétine)
+natk = B.strategies_naturelles("calculer efficacement")
+check(len(natk) >= 4 and any("cerveau" in s["exemple"] for s in natk), "stratégies calcul propres (cerveau)")
+check(not any("luciole" in s["exemple"] for s in natk) and not any("calmar" in s["exemple"] for s in natk),
+      "pas de fuite des stratégies éclairage/propulsion vers le calcul")
+# les HUIT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and B.decompose("dessaler l eau de mer")["salinite_mer_g_L"] == 35
+      and "regle_or" in B.decompose("se propulser")
+      and "plafond_lm_par_W" in B.decompose("eclairer une piece"),
+      "les 8 domaines précédents inchangés après l'ajout du calcul (isolation)")
+
+# ── 15) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
-                              "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage"],
-      "huit domaines modélisés, dans l'ordre d'enregistrement")
+                              "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
+                              "calcul"],
+      "neuf domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

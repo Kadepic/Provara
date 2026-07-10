@@ -1405,6 +1405,148 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  NEUVIÈME DOMAINE : calculer à basse énergie — au cœur de la vision Provara (l'IA légère). Nouvelle loi dure au
+#  juge (L6) : la limite de LANDAUER (effacer un bit dissipe au moins k·T·ln2 ≈ 2,87e-21 J à 300 K). Une machine
+#  qui prétend effacer des bits pour moins est réfutée. Les puces actuelles sont ~10⁴–10⁶× AU-DESSUS → l'immense
+#  marge est réelle, ce n'est pas le mur physique qui limite aujourd'hui.
+#  REFRAMING machine : le but n'est pas la VITESSE brute mais le calcul PAR JOULE. Leviers : (a) ne pas EFFACER
+#  d'information inutilement (calcul réversible/adiabatique échappe entièrement à Landauer — le plus profond) ;
+#  (b) ne pas DÉPLACER les bits (le vrai coût aujourd'hui est le transport des données, pas le calcul) ;
+#  (c) moins d'OPÉRATIONS (algorithmes, matériel spécialisé — le gain court terme) ; (d) calcul froid (k·T ∝ T).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CALCUL = "calcul"
+_ALIAS_CALCUL = {
+    "calculer efficacement", "reduire l energie du calcul", "calculer a basse consommation",
+    "calcul econome en energie", "reduire la consommation d un ordinateur", "calcul basse consommation",
+}
+
+# ── « Canaux » : les leviers d'un calcul économe ─────────────────────────────────────────────────────────────────
+_CANAUX_CALCUL = [
+    Canal("ne pas effacer", "information", "calculer sans effacer d'information (logique réversible/adiabatique)",
+          True, "Landauer ne coûte QUE sur l'effacement → un calcul réversible peut en principe descendre bien "
+                "plus bas ; verrou = surcoût de complexité et de vitesse — le levier le plus profond"),
+    Canal("ne pas deplacer", "information", "calculer LÀ où sont les données (in-memory, près du capteur)",
+          True, "aujourd'hui l'énergie part surtout à DÉPLACER les bits (mémoire↔calcul), pas à les calculer → "
+                "rapprocher calcul et données est le plus gros gain court terme"),
+    Canal("moins d operations", "information", "réduire le nombre d'opérations (algorithme, matériel spécialisé)",
+          True, "un meilleur algorithme ou un circuit dédié fait la même tâche en moins d'opérations → très loin "
+                "du mur physique, l'essentiel des gains atteignables"),
+    Canal("basse temperature", "information", "calculer à froid (k·T·ln2 diminue avec T) ou en supraconducteur",
+          False, "le plancher de Landauer baisse avec la température ; les circuits supraconducteurs dissipent "
+                 "très peu ; coût = le refroidissement lui-même — à réserver aux grands centres"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Landauer (type `calcul`, ≥ k·T·ln2 par bit effacé) ────────
+_PRINCIPES_CALCUL = [
+    _P("CMOS numérique actuel (référence)",
+       "calculer : logique CMOS irréversible, ~1e-17 J par opération de bit",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-17, "t_K": 300}, True, True,
+       "chaleur dissipée", "mature (dominant)",
+       0.65, "~10⁴× au-dessus de Landauer → l'énorme marge est réelle ; l'énergie réelle part surtout dans les "
+             "fuites et le déplacement des données, pas dans la limite physique — la référence à descendre"),
+    _P("calcul sous-seuil (basse tension)",
+       "calculer : faire fonctionner les transistors sous la tension de seuil, ~1e-18 J/bit",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300}, True, True,
+       "chaleur", "mature (basse conso)",
+       0.55, "l'énergie de commutation ∝ tension² → baisser la tension économe énormément ; verrou = lenteur et "
+             "sensibilité au bruit — le levier « baisser la tension » déjà exploité en IoT"),
+    _P("calcul réversible / adiabatique",
+       "calculer : logique qui n'efface pas d'information (récupère la charge au lieu de la dissiper)",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-20, "t_K": 300}, True, True,
+       "chaleur minime (pas d'effacement)", "recherche",
+       0.5, "en n'EFFAÇANT pas, échappe en principe à la limite de Landauer → plancher bien plus bas ; surcoût de "
+            "portes et de vitesse à maîtriser — le levier le plus profond, sous-exploité"),
+    _P("calcul in-memory (près de la mémoire)",
+       "calculer : effectuer l'opération DANS la mémoire pour éviter de transporter les données",
+       {"type": "calcul", "energie_par_bit_efface_J": 5e-18, "t_K": 300}, True, True,
+       "chaleur", "émergent",
+       0.55, "attaque le VRAI coût actuel : déplacer un bit entre mémoire et processeur coûte ~100× l'opération "
+             "elle-même → calculer sur place est le plus gros levier court terme"),
+    _P("calcul neuromorphique / événementiel (spikes)",
+       "calculer : circuits qui ne consomment QUE lors d'événements (comme des neurones), pour tâches approximatives",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300}, True, True,
+       "chaleur (activité éparse)", "émergent",
+       0.5, "ne dépense QUE quand il se passe quelque chose (activité éparse) et tolère l'approximation → très "
+            "économe pour la perception/l'inférence — s'inspire du cerveau (le levier « à la demande »)"),
+    _P("calcul analogique",
+       "calculer : effectuer l'opération dans la physique du circuit (courants, charges) plutôt qu'en bits",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300}, True, True,
+       "chaleur", "recherche (regain)",
+       0.45, "une addition/multiplication « gratuite » dans la loi d'Ohm/Kirchhoff, sans effacer de bits ; "
+             "précision limitée → pour l'approximatif (IA, filtrage) ; regain d'intérêt sous-exploité"),
+    _P("logique supraconductrice (SFQ, cryogénique)",
+       "calculer : logique à quantum de flux unique, dissipant très peu, à basse température",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-19, "t_K": 4}, True, True,
+       "chaleur minime (mais refroidissement à payer)", "recherche",
+       0.4, "commutation à très basse énergie ET k·T·ln2 plus bas à 4 K ; MAIS il faut PAYER le refroidissement "
+            "cryogénique → gagnant surtout à grande échelle — le levier « froid »"),
+    _P("spintronique / logique magnétique",
+       "calculer : coder l'information dans le spin (aimantation), non-volatile, faible énergie de commutation",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300}, True, True,
+       "chaleur", "recherche",
+       0.4, "non-volatile (zéro énergie au repos, pas de rafraîchissement) et commutation économe ; maturité des "
+            "matériaux à prouver — piste pour la mémoire-calcul basse conso"),
+    _P("calcul photonique",
+       "calculer : effectuer certaines opérations (produits matriciels) avec de la lumière",
+       {"type": "calcul", "energie_par_bit_efface_J": 5e-18, "t_K": 300}, True, True,
+       "chaleur", "émergent",
+       0.4, "très rapide et peu dissipatif pour l'algèbre linéaire (cœur de l'IA) ; conversion optique/électrique "
+            "coûteuse aux interfaces — piste ciblée, pas universelle"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER : sous la limite de Landauer) ──
+    _P("effacement de bit « à 1e-23 J » (300 K)",
+       "calculer : machine irréversible effaçant un bit pour 1e-23 J à température ambiante",
+       {"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300}, True, True,
+       "—", "revendication",
+       0.3, "1e-23 J < limite de Landauer (~2,87e-21 J à 300 K) — à réfuter par le 2nd principe (Landauer)"),
+    _P("calcul irréversible « à énergie nulle »",
+       "calculer : effacer des bits sans dissiper aucune énergie",
+       {"type": "calcul", "energie_par_bit_efface_J": 0.0, "t_K": 300}, True, True,
+       "—", "revendication",
+       0.25, "effacer de l'information sans dissipation ferait baisser l'entropie sans compensation — impossible"),
+]
+
+_OBJECTIF_CALCUL = ("Le but réel n'est pas la VITESSE brute mais le calcul PAR JOULE. Le plancher physique est la "
+                    "limite de Landauer (≥ k·T·ln2 par bit EFFACÉ, ≈ 2,87e-21 J à 300 K) — mais les puces "
+                    "actuelles sont ~10⁴–10⁶× au-dessus, donc le mur n'est PAS Landauer aujourd'hui. Leviers : ne "
+                    "pas EFFACER d'information inutilement (calcul réversible/adiabatique échappe à Landauer) ; ne "
+                    "pas DÉPLACER les bits (le vrai coût actuel est le transport, pas le calcul → in-memory) ; "
+                    "moins d'OPÉRATIONS (algorithmes, matériel spécialisé, événementiel) ; calculer FROID (k·T ∝ "
+                    "T). Chaque principe reste jugé par la limite de Landauer.")
+_LOI_CALCUL = ("effacer un bit d'information dissipe au moins k·T·ln2 (limite de Landauer, ≈ 2,87e-21 J à 300 K) ; "
+               "le calcul réversible qui n'efface pas échappe à ce plancher ; gains réels = ne pas effacer, ne pas "
+               "déplacer les données, moins d'opérations, calculer à basse tension/température")
+
+# La nature calcule à ~20 W (cerveau) : analogique, événementiel, en mémoire, au capteur.
+_STRATEGIES_NATURE_CALCUL = [
+    _Nature("cerveau humain (~20 W pour 10¹¹ neurones)",
+            ["calcul ANALOGIQUE massivement parallèle", "événementiel (impulsions seulement quand utile)",
+             "mémoire et calcul au MÊME endroit (synapses)"],
+            "analogique + événementiel + en-mémoire : la cognition à ~20 W écrase le numérique — les 3 leviers réunis"),
+    _Nature("rétine (pré-traitement au capteur)",
+            ["extraction de contours/mouvement AVANT transmission", "n'envoie au cerveau que l'utile"],
+            "calculer AU capteur et ne transmettre que l'essentiel — ne pas déplacer les données brutes"),
+    _Nature("ADN (stockage d'information ultra-dense)",
+            ["densité d'information proche de la molécule", "conservation passive à très basse énergie"],
+            "stocker l'information dense et sans énergie de maintien — le levier du « repos gratuit »"),
+    _Nature("fourmilière / essaim (calcul distribué émergent)",
+            ["règles locales simples", "solution GLOBALE émergente (chemins, tri) sans contrôleur central"],
+            "résoudre collectivement par des règles locales économes — pas de calcul central coûteux"),
+]
+
+enregistre(Domaine(
+    nom=_CALCUL,
+    aliases=frozenset(_ALIAS_CALCUL),
+    objectif=_OBJECTIF_CALCUL,
+    canaux=_CANAUX_CALCUL,
+    principes=_PRINCIPES_CALCUL,
+    strategies=_STRATEGIES_NATURE_CALCUL,
+    loi=_LOI_CALCUL,
+    extras={"limite_landauer_J_bit": "≈ 2,87e-21 J/bit effacé à 300 K (k·T·ln2)",
+            "note": "les puces actuelles sont ~10⁴–10⁶× au-dessus ; le vrai coût aujourd'hui est de DÉPLACER les bits"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
