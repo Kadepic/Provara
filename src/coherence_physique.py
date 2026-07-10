@@ -39,6 +39,7 @@ L3 = "2nd principe (travail minimal de séparation / énergie de mélange de Gib
 L4 = "conservation de la quantité de mouvement (3e loi de Newton) / vitesse d'éjection ≤ c"
 L5 = "efficacité lumineuse ≤ 683 lm/W (maximum spectral à 555 nm, rendement radiant 100 %)"
 L6 = "limite de Landauer (≥ k·T·ln2 dissipés par bit d'information effacé)"
+L7 = "limite de Shannon (débit ≤ B·log₂(1 + S/N))"
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -66,7 +67,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         return (HORS, "spec absente ou invalide", None)
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
-                 "dessalement", "separation", "propulsion", "eclairage", "calcul"):
+                 "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -204,6 +205,21 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
             if e_bit < e_min * (1.0 - 1e-9):
                 return (VIOLE, f"énergie par bit effacé {e_bit} J < limite de Landauer {e_min:.3e} J "
                                f"(k·T·ln2 à {tk} K) : impossible", L6)
+
+    # --- Limite de Shannon : débit ≤ B·log₂(1 + S/N). ---
+    # La capacité d'un canal (débit SANS erreur maximal) vaut B·log₂(1 + S/N) : on ne transmet pas d'information
+    # plus vite, quel que soit le codage. Un débit revendiqué AU-DESSUS de la capacité (bande passante nulle, ou
+    # rapport signal/bruit donné) est impossible. CONSERVATEUR : on ne réfute que si B, S/N ET débit sont donnés
+    # et débit > capacité → jamais un faux positif sur un système réel (toujours sous la capacité).
+    if t == "communication":
+        debit = spec.get("debit_bits_par_s")
+        b = spec.get("bande_passante_Hz")
+        snr = spec.get("rapport_signal_bruit")
+        if _nb(debit) and _nb(b) and _nb(snr) and b >= 0 and snr >= 0:
+            capacite = b * math.log2(1.0 + snr)
+            if debit > capacite + 1e-6:
+                return (VIOLE, f"débit {debit} bit/s > capacité de Shannon {capacite:.4g} bit/s "
+                               f"(B={b} Hz, S/N={snr}) : impossible", L7)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

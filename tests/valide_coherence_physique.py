@@ -88,6 +88,13 @@ check(statut({"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300}) 
       "1e-23 J/bit < Landauer ~2.87e-21 -> VIOLE")
 check(loi({"type": "calcul", "energie_par_bit_efface_J": 1e-23, "t_K": 300}) == P.L6, "Landauer = L6")
 check(statut({"type": "calcul", "energie_par_bit_efface_J": 0.0}) == P.VIOLE, "effacer un bit à énergie nulle -> VIOLE")
+# limite de Shannon : débit > B·log2(1+S/N) (B=1 MHz, S/N=1000 -> capacité ~9.97 Mbit/s).
+check(statut({"type": "communication", "debit_bits_par_s": 20e6, "bande_passante_Hz": 1e6,
+              "rapport_signal_bruit": 1000}) == P.VIOLE, "20 Mbit/s > capacité ~9.97 -> VIOLE")
+check(loi({"type": "communication", "debit_bits_par_s": 20e6, "bande_passante_Hz": 1e6,
+           "rapport_signal_bruit": 1000}) == P.L7, "capacité de canal = Shannon (L7)")
+check(statut({"type": "communication", "debit_bits_par_s": 1e6, "bande_passante_Hz": 0,
+              "rapport_signal_bruit": 1000}) == P.VIOLE, "débit > 0 à bande passante NULLE -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -134,6 +141,10 @@ reels = [
     {"type": "calcul", "energie_par_bit_efface_J": 1e-18, "t_K": 300},                 # sous-seuil / basse tension
     {"type": "calcul", "energie_par_bit_efface_J": 2.9e-21, "t_K": 300},               # juste au-dessus de Landauer
     {"type": "calcul"},                                                                # sans énergie déclarée : PAS un faux positif
+    # communications RÉELLES : sous la capacité de Shannon.
+    {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},  # sous capacité
+    {"type": "communication", "debit_bits_par_s": 9.9e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000}, # proche capacité
+    {"type": "communication", "debit_bits_par_s": 1e6},                                # sans B/SNR : indéterminé, PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
