@@ -230,6 +230,66 @@ def _sondes_liste_liste(exemples) -> list[tuple]:
     return res
 
 
+# FORME DE TYPE DICT×LISTE (atome 20 du palier structurel) : un mapping + une liste de clés — la classe
+# TABLE DE TRADUCTION (map-par-table [d[e] for e in l], restriction par liste, retrait par liste).
+# Frontière MESURÉE : les trois = brique_manquante. Registre VIDE honnête. Templates {D}/{L} instanciés
+# selon l'ordre observé ((dict, liste) ou (liste, dict) : même classe, l'ordre = donnée du spec).
+_DL_OPS = [
+    "[{D}[_k] for _k in {L}]",                                   # valeurs dans l'ordre / traduction par table
+    "[{D}.get(_k, 0) for _k in {L}]",                            # traduction avec défaut
+    "{{_k: {D}[_k] for _k in {L}}}",                             # restriction par liste (ordre de la liste)
+    "{{_k: _v for _k, _v in {D}.items() if _k not in {L}}}",     # retrait des clés listées
+    "[_k for _k in {L} if _k in {D}]",                           # clés de la liste présentes dans la table
+]
+
+
+def _forme_dict_liste(toutes):
+    """(dict, liste de scalaires) ou l'ordre inverse sur TOUS les exemples -> (var_dict, var_liste), sinon None."""
+    def _cles(v):
+        return (isinstance(v, list)
+                and all(isinstance(e, str) or (isinstance(e, int) and not isinstance(e, bool)) for e in v))
+    if all(len(x) == 2 and isinstance(x[0], dict) and _cles(x[1]) for x, _ in toutes):
+        return ("a", "b")
+    if all(len(x) == 2 and isinstance(x[1], dict) and _cles(x[0]) for x, _ in toutes):
+        return ("b", "a")
+    return None
+
+
+def _candidats_dict_liste(exemples, forme) -> list[str]:
+    D, L = forme
+    cands = {t.format(D=D, L=L) for t in _DL_OPS}
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_dict_liste(exemples, forme) -> list[tuple]:
+    """Sondes de FORME : liste RENVERSÉE (l'ordre de sortie suit la liste), clé de la liste RETIRÉE du dict
+    (d[k] vs get vs filtre), valeur perturbée, clé du dict hors liste ajoutée à la liste."""
+    dict_premier = forme == ("a", "b")
+    out = []
+    for args, _ in exemples:
+        d, l = (args[0], args[1]) if dict_premier else (args[1], args[0])
+
+        def mk(dd, ll):
+            return (dd, ll) if dict_premier else (ll, dd)
+        out.append(mk(dict(d), list(l)))
+        out.append(mk(dict(d), list(l)[::-1]))                  # ordre de la liste
+        if l:
+            k = l[0]
+            out.append(mk({k2: v for k2, v in d.items() if k2 != k}, list(l)))   # clé listée retirée du dict
+            if k in d and isinstance(d[k], int):
+                out.append(mk({**d, k: d[k] + 1}, list(l)))
+        hors = sorted((k2 for k2 in d if k2 not in l), key=repr)
+        if hors:
+            out.append(mk(dict(d), list(l) + [hors[0]]))        # clé du dict ajoutée à la liste
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # FORME DE TYPE MATRICE×MATRICE (atome 17 du palier structurel) : deux matrices en deux arguments.
 # Frontière MESURÉE : somme élément à élément et PRODUIT MATRICIEL = brique_manquante. Registre = concat
 # (a + b, listes) ; ops = arithmétique élément à élément (somme/différence/Hadamard) + produit matriciel.
@@ -867,6 +927,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     forme_cc = _forme_chaine_chaine(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll) else None
     forme_dd = _forme_dict_dict(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc) else None
     forme_mm = _forme_matrice_matrice(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc or forme_dd) else None
+    forme_dl = _forme_dict_liste(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc or forme_dd or forme_mm) else None
     forme_t3 = _forme_seq_int_int(toutes) if arite == 3 else None
     forme_sss = _forme_str_str_str(toutes) if arite == 3 and not forme_t3 else None
     forme_dcd = _forme_dict_cle_defaut(toutes) if arite == 3 and not (forme_t3 or forme_sss) else None
@@ -879,6 +940,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                     else dict(_CC_REGISTRE) if forme_cc
                     else dict(_DD_REGISTRE) if forme_dd
                     else dict(_MM_REGISTRE) if forme_mm
+                    else {} if forme_dl
                     else dict(_T3_REGISTRE) if forme_t3
                     else dict(_SSS_REGISTRE) if forme_sss
                     else dict(_DCD_REGISTRE) if forme_dcd
@@ -900,6 +962,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
               else _sondes_chaine_chaine(toutes) if forme_cc
               else _sondes_dict_dict(toutes) if forme_dd
               else _sondes_matrice_matrice(toutes) if forme_mm
+              else _sondes_dict_liste(toutes, forme_dl) if forme_dl
               else _sondes_binaires(toutes)) if arite == 2 \
         else (_sondes_seq_int_int(toutes) if forme_t3 else _sondes_ternaires(toutes)) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
@@ -919,6 +982,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                  else _candidats_chaine_chaine(toutes) if forme_cc
                  else _candidats_dict_dict(toutes) if forme_dd
                  else _candidats_matrice_matrice(toutes) if forme_mm
+                 else _candidats_dict_liste(toutes, forme_dl) if forme_dl
                  else _candidats_binaires(toutes)) \
         if arite == 2 else (_candidats_seq_int_int(toutes) if forme_t3
                             else _candidats_ternaires_het(toutes, _SSS_REGISTRE, _SSS_OPS) if forme_sss
