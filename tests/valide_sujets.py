@@ -195,6 +195,8 @@ with tempfile.TemporaryDirectory() as _tmp:
                              ("certification_rncp_metier", ["boulanger ou boulangère"]),
                              ("profession_reglementee_metier", ["boulanger ou boulangère"]),
                              ("salaire_median_soc_us_metier", ["boulanger ou boulangère"]),
+                             # la part FRANCE porte un AUTRE métier : elle doit suffire à rendre PARTIEL
+                             ("salaire_median_fap_fr_metier", ["charcutier ou charcutière"]),
                              ("outil_technologie_soc_metier", ["boulanger ou boulangère"]),
                              ("risque_professionnel_soc_metier", ["boulanger ou boulangère"]),
                              ("niveau_preparation_soc_metier", ["boulanger ou boulangère"]),
@@ -238,11 +240,16 @@ with tempfile.TemporaryDirectory() as _tmp:
     check(_n_abs[0] == C.NON_TRAITE,
           "FIXTURE : normes d'un métier absent -> NON TRAITÉ (l'absence de REGPROF n'est pas un fait)")
 
-    # l'axe « rémunération » est MIX : part États-Unis (BLS OEWS) -> PARTIEL, jamais TRAITÉ.
+    # l'axe « rémunération » est MIX : parts États-Unis (BLS OEWS) et France (Dares×FAP) -> PARTIEL,
+    # jamais TRAITÉ. L'union des tables joue : CHAQUE part suffit à rendre PARTIEL, aucune ne rend TRAITÉ.
     _r_pres = C.etat(_sujet("boulanger ou boulangère — rémunération médiane (pays et année donnés)"))
+    _r_fr = C.etat(_sujet("charcutier ou charcutière — rémunération médiane (pays et année donnés)"))
     _r_abs = C.etat(_sujet("métier fantôme — rémunération médiane (pays et année donnés)"))
-    check(_r_pres[0] == C.PARTIEL, "FIXTURE : rémunération d'un métier couvert -> PARTIEL (États-Unis seuls)")
-    check("ÉTATS-UNIS" in _r_pres[1], "FIXTURE : le PARTIEL dit que seule la part États-Unis est couverte")
+    check(_r_pres[0] == C.PARTIEL, "FIXTURE : rémunération d'un métier couvert (part US) -> PARTIEL")
+    check("ÉTATS-UNIS" in _r_pres[1] and "FRANCE" in _r_pres[1],
+          "FIXTURE : le PARTIEL nomme les parts fermées (États-Unis, France) et le reste non couvert")
+    check(_r_fr[0] == C.PARTIEL,
+          "FIXTURE : la part FRANCE (Dares×FAP) SEULE suffit à rendre PARTIEL (union des tables)")
     check(_r_abs[0] == C.NON_TRAITE, "FIXTURE : rémunération d'un métier absent -> NON TRAITÉ")
 
     # l'axe « outils » est MIX : part codifiée O*NET -> PARTIEL, jamais TRAITÉ.
