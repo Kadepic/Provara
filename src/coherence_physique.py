@@ -52,6 +52,8 @@ L12 = ("limite de Betz : une éolienne extrait au plus 16/27 (≈ 59,3 %) de la 
        "son disque (rotor ouvert) — on ne peut pas arrêter tout l'air")
 L13 = ("équation de Tsiolkovski : Δv ≤ ve·ln(m₀/mf) — le gain de vitesse d'une fusée croît seulement au "
        "logarithme du rapport de masse (le propergol embarqué donne des retours décroissants)")
+L14 = ("plafond de rendement photosynthétique : la conversion solaire→biomasse ≤ ~12 % (maximum théorique avant "
+       "respiration ; réalisé ~1–6 %) — bornée par la fraction utile du spectre et le rendement quantique")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -64,6 +66,7 @@ _F_FARADAY = 96485.33        # C/mol ; n = 2 électrons par H₂ -> E_rev standa
 _RHO_AIR = 1.225             # kg/m³ : masse volumique de l'air au niveau de la mer (puissance induite du vol)
 _G_TERRE = 9.80665           # m/s² : pesanteur standard (poussée de sustentation = masse × g)
 _BETZ = 16.0 / 27.0          # ≈ 0,592593 : fraction maximale de la puissance du vent extractible (rotor ouvert)
+_RENDEMENT_PHOTO_MAX = 0.12  # plafond théorique de la conversion solaire->biomasse (réalisé ~1–6 % ; champ ~1–2 %)
 
 
 def _nb(x):
@@ -88,7 +91,8 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
-                 "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee"):
+                 "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
+                 "photosynthese"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -389,6 +393,17 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                 return (VIOLE, f"Δv {dv} m/s > Δv max de Tsiolkovski {round(dv_max)} m/s (ve·ln(m₀/mf), "
                                f"ve={ve} m/s, rapport de masse {round(ratio, 3)}) : impossible avec ce propergol "
                                f"embarqué", L13)
+
+    # --- Plafond de rendement photosynthétique : la conversion solaire→biomasse ≤ ~12 %. ---
+    # La photosynthèse ne convertit qu'une fraction du spectre solaire (PAR) et perd aux étapes quantiques : le
+    # maximum THÉORIQUE (avant respiration) est ~12 % ; le réalisé C3/C4 ~4,6–6 %, le champ ~1–2 %. CONSERVATEUR
+    # (faux positif INTERDIT) : le plancher de réfutation (12 %) est bien AU-DESSUS du record (~8 % en pointe) → une
+    # culture/algue réelle n'est jamais réfutée ; seul un rendement solaire→biomasse déclaré au-delà l'est.
+    if t == "photosynthese":
+        r = spec.get("rendement_solaire_biomasse")
+        if _nb(r) and r > _RENDEMENT_PHOTO_MAX + 1e-9:
+            return (VIOLE, f"rendement solaire→biomasse {r} > plafond photosynthétique {_RENDEMENT_PHOTO_MAX} "
+                           f"(maximum théorique ; réalisé ~1–6 %) : impossible", L14)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

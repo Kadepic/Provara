@@ -137,6 +137,12 @@ check(loi({"type": "fusee", "delta_v_m_s": 30000, "vitesse_ejection_m_s": 4500,
            "rapport_masse": 20}) == P.L13, "Tsiolkovski = L13")
 check(statut({"type": "fusee", "delta_v_m_s": 5000, "vitesse_ejection_m_s": 4500,
               "rapport_masse": 1}) == P.VIOLE, "Δv > 0 sans ergols (rapport de masse 1) -> VIOLE")
+# plafond photosynthétique : rendement solaire→biomasse au-dessus de ~12 %.
+check(statut({"type": "photosynthese", "rendement_solaire_biomasse": 0.25}) == P.VIOLE,
+      "25 % solaire→biomasse > plafond ~12 % -> VIOLE")
+check(loi({"type": "photosynthese", "rendement_solaire_biomasse": 0.25}) == P.L14, "plafond photosynthétique = L14")
+check(statut({"type": "photosynthese", "rendement_solaire_biomasse": 1.5}) == P.VIOLE,
+      "150 % (over-unity végétale) -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -234,6 +240,11 @@ reels = [
     {"type": "fusee", "delta_v_m_s": 13480, "vitesse_ejection_m_s": 4500, "rapport_masse": 20},   # AU max ~13480,8 (limite, ok)
     {"type": "fusee", "vitesse_ejection_m_s": 9000},                                  # sans Δv/rapport : PAS un faux positif
     {"type": "fusee"},                                                                # vide (voile solaire, momentum externe) -> PAS un faux positif
+    # productions alimentaires RÉELLES : sous le plafond photosynthétique (ou découplées, non jugées).
+    {"type": "photosynthese", "rendement_solaire_biomasse": 0.01},                    # culture C3 en champ
+    {"type": "photosynthese", "rendement_solaire_biomasse": 0.06},                    # C4 / algue optimisée
+    {"type": "photosynthese", "rendement_solaire_biomasse": 0.12},                    # AU plafond théorique (limite, ok)
+    {"type": "photosynthese"},                                                        # sans rendement (fermentation gazeuse) -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
