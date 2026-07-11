@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 29e domaine « mesurer le temps » + loi L26 (limite quantique standard)
+
+Mesurer le temps / horloge de précision. Nouvelle loi dure au juge (`L26`) : la LIMITE QUANTIQUE STANDARD —
+l'instabilité fractionnaire d'une horloge à N atomes NON intriqués ≥ 1/(2π·f₀·τ·√N) (bruit de projection
+quantique). CONSERVATEUR (FAUX=0) : l'INTRICATION (spin squeezing) descend sous la LQS vers la limite de Heisenberg
+(1/N) → on ne réfute qu'une horloge NON intriquée revendiquant une stabilité sous la LQS. Gate
+`valide_coherence_physique` **362 → 374/374**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (optique « 1e-19 » non intriquée,
+césium « 1e-16 »). Reframing : la précision vient de moyenner le bruit quantique — monter la FRÉQUENCE f₀
+(optique/nucléaire), plus d'ATOMES (√N), interrogation de Ramsey plus longue (τ), ou INTRIQUER (spin squeezing).
+Couvre césium, optique, réseau optique, fontaine, plus d'atomes, Ramsey longue, intriquée, nucléaire (thorium). 4
+stratégies naturelles propres (horloge circadienne = oscillateur recalé, cigale = cycle premier long, pacemaker =
+oscillateur à rétroaction, migration = calage astronomique). Gate `valide_besoin` **527 → 544/544** ; les 28
+domaines précédents intacts.
+
+**JALON : 29 DOMAINES D'INVENTION, 26 LOIS PHYSIQUES DANS LE JUGE** (… L25 troisième principe, L26 limite quantique
+standard d'une horloge).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 28e domaine « cryogénie / zéro absolu » + loi L25 (troisième principe)
 
 Refroidir vers le zéro absolu / cryogénie. Nouvelle loi dure au juge (`L25`) : le TROISIÈME PRINCIPE — le zéro

@@ -4196,6 +4196,144 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-NEUVIÈME DOMAINE : mesurer le temps / horloge de précision. Nouvelle loi dure au juge (L26) : la LIMITE
+#  QUANTIQUE STANDARD — l'instabilité fractionnaire d'une horloge à N atomes NON intriqués ≥ 1/(2π·f₀·τ·√N) (bruit
+#  de projection quantique). REFRAMING machine : la précision ne vient pas d'un meilleur « comptage » mais de
+#  moyenner le bruit quantique — plus d'ATOMES (√N), une FRÉQUENCE plus haute (optique > micro-onde), une
+#  INTERROGATION plus longue (τ). L'INTRICATION (spin squeezing) descend sous la LQS vers la limite de Heisenberg
+#  (1/N). Leviers : monter f₀ (horloge optique/nucléaire) ; plus d'atomes ; interrogation de Ramsey longue ; intriquer.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_HORLOGE = "mesure_temps"
+_ALIAS_HORLOGE = {
+    "mesurer le temps", "concevoir une horloge de precision", "ameliorer la stabilite d une horloge",
+    "mesurer une frequence precisement", "horloge atomique", "garder le temps precisement",
+}
+
+# ── « Canaux » : les leviers de la stabilité d'horloge ───────────────────────────────────────────────────────────
+_CANAUX_HORLOGE = [
+    Canal("frequence", "information", "MONTER la fréquence f₀ (horloge optique/nucléaire) : l'instabilité décroît en 1/f₀",
+          True, "une transition optique (~5e14 Hz) bat une micro-onde (~9e9 Hz) de ~10⁵ → les horloges optiques "
+                "surpassent le césium ; la fréquence nucléaire (thorium) irait plus haut encore — le levier « f₀ »"),
+    Canal("nombre d atomes", "information", "INTERROGER plus d'ATOMES : le bruit de projection décroît en 1/√N",
+          True, "moyenner sur N atomes indépendants réduit le bruit de projection quantique en √N → les réseaux "
+                "optiques interrogent des milliers d'atomes ; le levier « moyenner »"),
+    Canal("interrogation", "information", "ALLONGER l'interrogation de Ramsey (τ) : l'instabilité décroît en 1/τ",
+          True, "plus longtemps l'atome évolue librement, plus finement on mesure sa fréquence → limité par la "
+                "cohérence (bruit du laser d'interrogation) ; le levier « temps de Ramsey »"),
+    Canal("intrication", "information", "INTRIQUER les atomes (spin squeezing) : descendre SOUS la LQS vers Heisenberg (1/N)",
+          True, "des atomes intriqués corrèlent leur bruit quantique → l'instabilité décroît en 1/N au lieu de 1/√N "
+                "(limite de Heisenberg) ; états fragiles → métrologie quantique — le levier « quantique »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite quantique standard (type `horloge`, σ ≥ 1/(2π·f₀·τ·√N)) ──────
+_PRINCIPES_HORLOGE = [
+    _P("horloge à césium (référence micro-onde)",
+       "mesurer le temps : transition hyperfine du césium à 9,19 GHz (définition de la seconde)",
+       {"type": "horloge", "frequence_Hz": 9.19e9, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 1e-13}, True, True,
+       "—", "mature",
+       0.6, "la référence historique (définit la seconde) ; fréquence micro-onde relativement basse → surpassée par "
+            "les horloges optiques ; le levier restant est de monter en fréquence — la référence à dépasser"),
+    _P("horloge optique (fréquence plus haute)",
+       "mesurer le temps : transition optique (~5e14 Hz) interrogée par laser ultra-stable",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-16}, True, True,
+       "—", "mature",
+       0.6, "~10⁵× la fréquence du césium → gain direct de stabilité (1/f₀) ; record de précision (perdrait <1 s "
+            "sur l'âge de l'univers) ; laser d'interrogation à stabiliser — le levier « f₀ »"),
+    _P("horloge à réseau optique (nombreux atomes)",
+       "mesurer le temps : piéger des milliers d'atomes dans un réseau optique magique",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 5e-18}, True, True,
+       "—", "mature",
+       0.55, "interroge des milliers d'atomes simultanément (√N) à une longueur d'onde « magique » qui annule le "
+             "déplacement lumineux → stabilité record ; le levier « nombre d'atomes » + « f₀ »"),
+    _P("fontaine atomique (interrogation longue)",
+       "mesurer le temps : lancer les atomes en fontaine pour une interrogation de Ramsey longue",
+       {"type": "horloge", "frequence_Hz": 9.19e9, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 5e-14}, True, True,
+       "—", "mature",
+       0.5, "la chute libre allonge le temps d'interrogation (τ) → meilleure résolution que le jet thermique ; "
+            "gravité et taille de la fontaine → le levier « temps de Ramsey » en micro-onde"),
+    _P("davantage d'atomes (moyennage √N)",
+       "mesurer le temps : augmenter le nombre d'atomes interrogés pour réduire le bruit de projection",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 5e-18}, True, True,
+       "—", "mature",
+       0.5, "N×100 atomes → bruit de projection ÷10 (√N) ; densité limitée par les interactions entre atomes "
+            "(déplacement collisionnel) — le levier « moyenner » jusqu'à la LQS"),
+    _P("interrogation de Ramsey longue (laser ultra-stable)",
+       "mesurer le temps : prolonger l'évolution libre grâce à un laser d'interrogation très cohérent",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 10, "nb_atomes": 10000, "stabilite": 1e-17}, True, True,
+       "—", "recherche",
+       0.5, "τ×10 → instabilité ÷10 (1/τ), à condition d'un laser assez cohérent pour interroger si longtemps → "
+            "cavités cryogéniques ultra-stables ; le levier « temps » poussé par la cohérence du laser"),
+    _P("horloge intriquée (spin squeezing)",
+       "mesurer le temps : corréler les atomes par intrication pour descendre sous la limite quantique standard",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-18,
+        "intrication": True}, True, True,
+       "—", "recherche",
+       0.45, "REFRAMING : l'intrication (spin squeezing) fait décroître le bruit en 1/N au lieu de 1/√N (vers la "
+             "limite de Heisenberg) → SOUS la LQS ; états fragiles et gain modeste aujourd'hui — le levier « quantique »"),
+    _P("horloge nucléaire (thorium-229)",
+       "mesurer le temps : transition nucléaire (bien plus haute fréquence, insensible aux champs)",
+       {"type": "horloge", "frequence_Hz": 2e19, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-19}, True, True,
+       "—", "recherche",
+       0.4, "une transition NUCLÉAIRE (thorium-229) monte encore en fréquence et se blinde des perturbations "
+            "extérieures (noyau compact) → stabilité potentielle inédite ; excitation UV à maîtriser — le levier « f₀ » ultime"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("horloge « à 1e-19 » non intriquée (10⁴ atomes optiques)",
+       "mesurer le temps : horloge optique non intriquée revendiquant une instabilité de 1e-19 avec 10⁴ atomes",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-19}, True, True,
+       "—", "revendication",
+       0.3, "1e-19 < limite quantique standard (~3,2e-18 ici) sans intrication : sous le bruit de projection "
+            "quantique — impossible ; à réfuter"),
+    _P("césium « à 1e-16 » non intriqué",
+       "mesurer le temps : horloge à césium non intriquée revendiquant une instabilité de 1e-16",
+       {"type": "horloge", "frequence_Hz": 9.19e9, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 1e-16}, True, True,
+       "—", "revendication",
+       0.25, "1e-16 < limite quantique standard (~1,7e-14 pour cette fréquence micro-onde) sans intrication — "
+             "impossible sans monter en fréquence ou intriquer"),
+]
+
+_OBJECTIF_HORLOGE = ("Le but réel n'est pas un meilleur « comptage » mais de moyenner le BRUIT QUANTIQUE : "
+                     "l'instabilité fractionnaire d'une horloge à N atomes non intriqués est bornée par "
+                     "1/(2π·f₀·τ·√N) (limite quantique standard, bruit de projection quantique). Leviers : monter la "
+                     "FRÉQUENCE f₀ (horloge optique/nucléaire, ~10⁵× le césium) ; interroger plus d'ATOMES (√N) ; "
+                     "allonger l'INTERROGATION de Ramsey (τ, limitée par la cohérence du laser) ; INTRIQUER les "
+                     "atomes (spin squeezing) pour descendre sous la LQS vers la limite de Heisenberg (1/N). Chaque "
+                     "principe reste jugé par la limite quantique standard.")
+_LOI_HORLOGE = ("limite quantique standard d'une horloge : l'instabilité fractionnaire ≥ 1/(2π·f₀·τ·√N) (bruit de "
+                "projection quantique, N atomes non intriqués) ; gains réels = monter la fréquence f₀ (optique/"
+                "nucléaire), plus d'atomes (√N), interrogation plus longue (τ), ou intrication (spin squeezing, "
+                "vers Heisenberg 1/N)")
+
+# La nature garde le temps par l'oscillateur circadien, le cycle premier (cigale), le rythme cardiaque (pacemaker), le calage astronomique (migration).
+_STRATEGIES_NATURE_HORLOGE = [
+    _Nature("horloge circadienne (oscillateur biologique)",
+            ["oscillateur moléculaire robuste ~24 h", "se recale chaque jour sur la lumière"],
+            "un oscillateur stable RECALÉ périodiquement sur une référence — l'analogue de l'asservissement d'horloge"),
+    _Nature("cigale à cycle premier (13 / 17 ans)",
+            ["période très longue et en nombre premier", "évite la synchronisation avec les prédateurs"],
+            "une période longue et robuste pour un comptage fiable sur le long terme — la stabilité par la durée"),
+    _Nature("rythme cardiaque (pacemaker)",
+            ["cellules pacemaker à rétroaction", "cadence régulière ajustée aux besoins"],
+            "un oscillateur à rétroaction qui tient une cadence régulière — l'horloge locale du vivant"),
+    _Nature("calage astronomique de la migration",
+            ["timing calé sur la durée du jour et les repères célestes", "référence extérieure stable"],
+            "se caler sur une RÉFÉRENCE extérieure stable pour tenir le temps long — l'analogue de l'étalon"),
+]
+
+enregistre(Domaine(
+    nom=_HORLOGE,
+    aliases=frozenset(_ALIAS_HORLOGE),
+    objectif=_OBJECTIF_HORLOGE,
+    canaux=_CANAUX_HORLOGE,
+    principes=_PRINCIPES_HORLOGE,
+    strategies=_STRATEGIES_NATURE_HORLOGE,
+    loi=_LOI_HORLOGE,
+    extras={"limite_quantique_standard": "σ ≥ 1/(2π·f₀·τ·√N) (bruit de projection quantique)",
+            "note": "l'intrication (spin squeezing) descend sous la LQS vers la limite de Heisenberg (1/N) ; monter "
+                    "f₀ (optique/nucléaire) est le plus grand levier"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

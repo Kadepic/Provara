@@ -1264,6 +1264,49 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "borne_recherche" in B.decompose("rechercher un element"),
       "les 27 domaines précédents inchangés après l'ajout de la cryogénie (isolation)")
 
+# ── 35) VINGT-NEUVIÈME DOMAINE : mesurer le temps (nouvelle loi L26 = limite quantique standard d'une horloge) ──
+dho = B.decompose("mesurer le temps")
+check(dho["statut"] == "decompose", "besoin mesure du temps connu -> decompose")
+check("atomes" in dho["objectif_reel"].lower() and "quantique" in dho["objectif_reel"].lower(),
+      "objectif réel horloge = N atomes, bruit quantique")
+check("limite_quantique_standard" in dho, "extras propres : la limite quantique standard")
+ho_canaux = {c.canal for c in dho["canaux"]}
+check(ho_canaux == {"frequence", "nombre d atomes", "interrogation", "intrication"},
+      f"4 canaux de l'horloge ({ho_canaux})")
+prho = B.principes("mesurer le temps")
+pho = {e["nom"]: e for e in prho["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : stabilité sous la LQS (non intriquée)
+h19 = pho["horloge « à 1e-19 » non intriquée (10⁴ atomes optiques)"]
+check(h19["atome"].statut == A.REFUTE, "1e-19 non intriquée < LQS -> RÉFUTÉ")
+check(A.est_refute(h19["atome"].contenu), "contenu réfuté (1e-19) dans la garde")
+cs16 = pho["césium « à 1e-16 » non intriqué"]
+check(cs16["atome"].statut == A.REFUTE, "césium 1e-16 < LQS -> RÉFUTÉ")
+# procédés réels (dont horloge intriquée, exemptée) -> SUPPOSITIONS
+for nom in ("horloge optique (fréquence plus haute)", "horloge à réseau optique (nombreux atomes)",
+            "horloge intriquée (spin squeezing)"):
+    e = pho[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prho["liste"]), "aucun principe d'horloge promu en FAIT")
+check("candidat pour mesure_temps" in pho["horloge optique (fréquence plus haute)"]["atome"].portee.condition,
+      "portée des principes d'horloge nommant mesure_temps")
+# la loi L26 : stabilité sous la LQS réfutée, horloge optique réelle cohérente
+st_ho, _, loi_ho = COH.juge_dispositif({"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1,
+                                        "nb_atomes": 10000, "stabilite": 1e-19})
+check(st_ho == COH.VIOLE and loi_ho == COH.L26, "juge : 1e-19 non intriquée -> VIOLE via L26")
+check(COH.juge_dispositif({"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000,
+                           "stabilite": 1e-16})[0] == COH.COHERENT_BORNE,
+      "horloge optique 1e-16 (> LQS) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (circadienne, cigale)
+natho = B.strategies_naturelles("mesurer le temps")
+check(len(natho) >= 4 and any("circadienne" in s["exemple"].lower() for s in natho), "stratégies horloge propres (circadienne)")
+check(not any("boomerang" in s["exemple"].lower() for s in natho) and not any("étourneaux" in s["exemple"] for s in natho),
+      "pas de fuite des stratégies cryogénie/parallélisation vers l'horloge")
+# les VINGT-HUIT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "zero_absolu" in B.decompose("refroidir vers le zero absolu")
+      and "amdahl" in B.decompose("accelerer un calcul"),
+      "les 28 domaines précédents inchangés après l'ajout de l'horloge (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
@@ -1272,8 +1315,8 @@ check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "
                               "production_alimentaire", "compression_information", "isolation_thermique",
                               "confidentialite_information", "vol_croisiere", "detection_signal",
                               "amplification_signal", "numerisation_signal", "tri_donnees", "recherche_donnees",
-                              "parallelisation_calcul", "refroidissement_cryogenique"],
-      "vingt-huit domaines modélisés, dans l'ordre d'enregistrement")
+                              "parallelisation_calcul", "refroidissement_cryogenique", "mesure_temps"],
+      "vingt-neuf domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
