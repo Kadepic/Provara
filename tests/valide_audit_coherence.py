@@ -100,6 +100,48 @@ with tempfile.TemporaryDirectory() as tmp:
     check(rn["violations"] == 1 and rn["exemples"][0][0] == "Yann",
           "sens min/max correct : Yann (2005>1405) détecté, Zoé (1970<1990) non")
 
+# ─────────────────────────── 1bis) SOUNDNESS du type ACYCLIQUE sur fixture synthétique ───────────────────────────
+with tempfile.TemporaryDirectory() as tmp:
+    # Relation ENDOGÈNE avec un CYCLE posé (C -> D -> E -> C) + un arbre propre (A -> B -> racine).
+    _ecris(tmp, "genre_parent", [
+        ("A", "B"), ("B", "racine"),       # branche acyclique
+        ("C", "D"), ("D", "E"), ("E", "C"),  # CYCLE de 3 nœuds
+        ("F", "F"),                          # auto-boucle (F parent de lui-même) -> cycle de 1
+    ])
+    # Relation EXOGÈNE (types disjoints : bataille -> conflit) : jamais de cycle possible.
+    _ecris(tmp, "conflit_parent_bataille", [("b1", "guerreX"), ("b2", "guerreX"), ("b3", "guerreY")])
+    # Relation SANS mot-clé hiérarchique -> pas candidate acyclique (ne doit pas être auditée).
+    _ecris(tmp, "annee_naissance_personne", [("Zoé", "1970")])
+
+    os.environ["LECTEUR_DATASETS_DIR"] = tmp
+    importlib.reload(AC)
+
+    # -- sélection : seules les relations à mot-clé parent/parente sont candidates --
+    rels = set(AC.relations_acycliques())
+    check("genre_parent" in rels, "relation 'genre_parent' candidate acyclique (mot-clé 'parent')")
+    check("conflit_parent_bataille" in rels, "relation exogène '..._parent_...' candidate (mot-clé présent)")
+    check("annee_naissance_personne" not in rels, "relation sans mot-clé hiérarchique EXCLUE de l'acyclique")
+
+    # -- détection de cycle : C,D,E,F sur cycle ; A,B non --
+    a = AC.audite_acyclique("genre_parent")
+    check(a["noeuds_sur_cycle"] == 4, f"cycle {{C,D,E}} + auto-boucle {{F}} = 4 nœuds (obtenu {a['noeuds_sur_cycle']})")
+    plats = {x for cyc in a["exemples"] for x in cyc}
+    check("A" not in plats and "B" not in plats and "racine" not in plats,
+          "les nœuds de la branche acyclique (A,B,racine) NE sont PAS signalés")
+    # chaque exemple est un cycle REFERMÉ (premier == dernier)
+    check(all(cyc[0] == cyc[-1] for cyc in a["exemples"]), "chaque cycle exemple est refermé (a -> … -> a)")
+
+    # -- relation exogène : détecteur SOUND, zéro faux cycle --
+    e = AC.audite_acyclique("conflit_parent_bataille")
+    check(e["noeuds_sur_cycle"] == 0, "relation exogène (types disjoints) : AUCUN cycle (soundness)")
+
+    # -- audit global acyclique : agrégation exacte --
+    g = AC.audit_cycles(details=True)
+    check(g["relations_en_conflit"] == 1, "1 seule relation en conflit (genre_parent)")
+    check(g["noeuds_sur_cycle"] == 4, "total nœuds sur cycle == 4")
+    check(sum(n for _, n in g["top"]) == g["noeuds_sur_cycle"], "somme du top == total (rien perdu/doublé)")
+    check(all(g["top"][i][1] >= g["top"][i + 1][1] for i in range(len(g["top"]) - 1)), "top acyclique trié décroissant")
+
 # ─────────────────────────── 2) NON-RÉGRESSION sur l'échantillon committé ───────────────────────────
 _ECHANT = os.path.join(os.path.dirname(_ICI), "datasets", "lecteur")
 if os.path.isdir(_ECHANT):
@@ -112,6 +154,11 @@ if os.path.isdir(_ECHANT):
     check(e["paires_en_conflit"] <= e["paires"], "paires en conflit ≤ paires totales")
     check(all(e["top"][i][3] >= e["top"][i + 1][3] for i in range(len(e["top"]) - 1)),
           "top de l'échantillon trié décroissant")
+    c = AC.audit_cycles()
+    check(c["relations"] >= 0, "échantillon : audit acyclique s'exécute sans crash")
+    check(0 <= c["relations_en_conflit"] <= c["relations"], "relations en conflit ≤ relations hiérarchiques")
+    check(all(c["top"][i][1] >= c["top"][i + 1][1] for i in range(len(c["top"]) - 1)),
+          "top acyclique de l'échantillon trié décroissant")
 else:
     print("  (échantillon committé absent : partie 2 sautée)")
 

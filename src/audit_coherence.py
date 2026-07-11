@@ -42,7 +42,13 @@ PAIRES_SEMANTIQUES = [
 _PREFIXE_DEBUT = "annee_debut_"
 _PREFIXE_FIN = "annee_fin_"
 
-# Nombre d'exemples de violation retenus PAR PAIRE pour le rapport (borne mémoire du rapport).
+# Type ACYCLIQUE : une relation « x -> parent(x) » ENDOGÈNE (valeur du même type que l'entité) est un ordre
+# partiel STRICT -> sans cycle. Un cycle (A parent de B, B parent de A) est une contradiction dure. Sélection
+# par mot-clé dans le nom ; le détecteur est intrinsèquement SOUND (il ne peut boucler que si les valeurs
+# reviennent vers des entités -> sur une relation exogène il ne trouve simplement jamais de cycle).
+_MOTS_ACYCLIQUES = ("parent", "parente")
+
+# Nombre d'exemples retenus PAR RÈGLE pour le rapport (borne mémoire du rapport).
 _MAX_EXEMPLES = 12
 
 
@@ -166,6 +172,77 @@ def audite_paire(rmin: str, rmax: str) -> dict:
     return {"communs": communs, "comparables": comparables, "violations": violations, "exemples": exemples}
 
 
+# ─────────────────────────────── TYPE ACYCLIQUE (relation x -> parent(x)) ───────────────────────────────
+
+def relations_acycliques() -> list:
+    """Relations présentes dont le nom porte un mot-clé hiérarchique (parent/parente) -> candidates à
+    l'invariant « sans cycle ». Sélection par le nom ; la détection reste SOUND sur toute relation (un cycle
+    trouvé est réel ; une relation exogène n'en produit simplement aucun)."""
+    presentes = _relations_presentes()
+    out = []
+    for r in sorted(presentes):
+        toks = r.split("_")
+        if any(m in toks for m in _MOTS_ACYCLIQUES):
+            out.append(r)
+    return out
+
+
+def audite_acyclique(relation: str) -> dict:
+    """Détecte les cycles de la relation `x -> parent(x)`. Charge {entite: parent} puis colorie
+    (blanc/gris/noir) en suivant chaque chaîne SANS récursion. Renvoie {n, noeuds_sur_cycle, exemples:
+    [[a, b, …, a], …]} — chaque exemple est un cycle concret refermé. SOUND : un cycle détecté existe
+    réellement dans les données (relation antisymétrique par sémantique -> contradiction dure)."""
+    d = _charge_dico(os.path.join(_LECT, relation + ".jsonl"))
+    BLANC, GRIS, NOIR = 0, 1, 2
+    coul = {}
+    sur_cycle = set()
+    exemples = []
+    for depart in d:
+        if coul.get(depart, BLANC) != BLANC:
+            continue
+        pile = []
+        x = depart
+        while x in d and coul.get(x, BLANC) == BLANC:
+            coul[x] = GRIS
+            pile.append(x)
+            x = d[x]
+        if x in d and coul.get(x, BLANC) == GRIS:      # retombé sur un gris de LA pile courante -> cycle
+            i = pile.index(x)
+            cycle = pile[i:]
+            for y in cycle:
+                sur_cycle.add(y)
+            if len(exemples) < _MAX_EXEMPLES:
+                exemples.append(cycle + [x])           # refermé : a -> … -> a
+        for y in pile:
+            coul[y] = NOIR
+    return {"n": len(d), "noeuds_sur_cycle": len(sur_cycle), "exemples": exemples}
+
+
+def audit_cycles(details: bool = False) -> dict:
+    """Rapport de cohérence ACYCLIQUE sur tout le store. Renvoie {relations, relations_en_conflit,
+    noeuds_sur_cycle, top:[(relation, n_noeuds_cycle), …]}. `details=True` ajoute `par_relation` (exemples)."""
+    rels = relations_acycliques()
+    total = 0
+    top = []
+    par_relation = {}
+    for r in rels:
+        a = audite_acyclique(r)
+        total += a["noeuds_sur_cycle"]
+        top.append((r, a["noeuds_sur_cycle"]))
+        if details:
+            par_relation[r] = a
+    top.sort(key=lambda t: -t[1])
+    out = {
+        "relations": len(rels),
+        "relations_en_conflit": sum(1 for t in top if t[1] > 0),
+        "noeuds_sur_cycle": total,
+        "top": top,
+    }
+    if details:
+        out["par_relation"] = par_relation
+    return out
+
+
 def audit(details: bool = False) -> dict:
     """Rapport de cohérence ORDRE sur tout le store. Renvoie {paires, paires_en_conflit, communs, comparables,
     violations, top:[(rmin, rmax, étiquette, n_violations), …]}. `details=True` ajoute `par_paire` (exemples)."""
@@ -206,3 +283,14 @@ if __name__ == "__main__":
         print(f"  {n:>6,}  {etiq}")
         for e, vmin, vmax in r["par_paire"][(rmin, rmax)]["exemples"][:4]:
             print(f"            {e!r} : {vmin} > {vmax}")
+
+    c = audit_cycles(details=True)
+    print(f"\n=== AUDIT DE COHÉRENCE ACYCLIQUE ({c['relations']} relations hiérarchiques) ===")
+    print(f"  relations avec cycle : {c['relations_en_conflit']}/{c['relations']}")
+    print(f"  NŒUDS SUR UN CYCLE (contradiction dure) : {c['noeuds_sur_cycle']:,}\n")
+    for rel, n in c["top"]:
+        if n == 0:
+            continue
+        print(f"  {n:>6,}  {rel}")
+        for cycle in c["par_relation"][rel]["exemples"][:3]:
+            print(f"            {' -> '.join(repr(x) for x in cycle)}")
