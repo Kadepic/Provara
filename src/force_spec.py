@@ -129,16 +129,17 @@ def mutants(expr: str):
 
 
 # ── MESURE DE LA FORCE ───────────────────────────────────────────────────────────────────────────────────
-def _diverge(f, g, sondes):
+def _diverge(f, g, sondes, appel=lambda fn, s: fn(s)):
     """Première sonde où f et g diffèrent (résultat OU erreur), sinon None. Sert à la fois à écarter les
-    mutants équivalents ET à fournir l'exemple discriminant."""
+    mutants équivalents ET à fournir l'exemple discriminant. `appel` = comment appeler f sur une sonde
+    (mono : fn(s) ; multi-argument : fn(*s)) — le mono par défaut garde le comportement historique."""
     for s in sondes:
         try:
-            rf, ef = f(s), None
+            rf, ef = appel(f, s), None
         except Exception as e:
             rf, ef = None, type(e).__name__
         try:
-            rg, eg = g(s), None
+            rg, eg = appel(g, s), None
         except Exception as e:
             rg, eg = None, type(e).__name__
         if ef != eg or (ef is None and (rf != rg or isinstance(rf, bool) != isinstance(rg, bool))):
@@ -165,34 +166,51 @@ def _sondes_asymetriques(spec):
     return out
 
 
-def force_du_spec(expr: str, exemples, held, sondes=None) -> dict:
+def force_du_spec(expr: str, exemples, held, sondes=None, params=("x",)) -> dict:
     """MESURE la force du spec (exemples+held) à déterminer `expr`, par mutation testing.
 
     Renvoie un rapport : nb de mutants, tués, équivalents (écartés), SURVIVANTS non équivalents, score de
     mutation ∈ [0,1] (tués / non-équivalents), et — s'il existe un survivant — un `discriminant` : une entrée
     (input, sortie attendue = expr(input)) qui, ajoutée au spec, TUE ce survivant. score == 1.0 => le spec
-    fixe la brique de façon unique parmi ses mutations (aucune faiblesse détectée)."""
+    fixe la brique de façon unique parmi ses mutations (aucune faiblesse détectée).
+
+    `params` (défaut ('x',) = mono-argument, comportement historique) : pour une brique MULTI-ARGUMENT
+    (params ('a','b'…)), l'expression et les mutants sont appelés en splat f(*args) et les sondes sont
+    dérivées de l'arité — le mutation testing sert alors une brique binaire/ternaire (cap multi-arg)."""
+    params = list(params)
+    multi = len(params) > 1
     spec = list(exemples) + list(held)
-    f = MI._callable(expr, "f")
-    if f is None or not MI._reproduit(f, spec):
+    if multi:
+        import invention_multi as IMM
+        f = IMM._callable_multi(expr, "f", params)
+        reprod, appel = IMM._reproduit_multi, (lambda fn, s: fn(*s))
+    else:
+        f = MI._callable(expr, "f")
+        reprod, appel = MI._reproduit, (lambda fn, s: fn(s))
+    if f is None or not reprod(f, spec):
         raise ValueError("force_du_spec : l'expression de référence doit reproduire son propre spec")
     # sondes : celles fournies, + les entrées du spec, + des variantes structurelles automatiques.
     base_sondes = list(sondes or [])
     base_sondes += [a for a, _ in spec]
-    auto = MI.MoteurAutonome.sondes_auto(spec) or []
-    base_sondes += [s[0] if isinstance(s, tuple) and len(s) == 1 else s for s in auto]
-    base_sondes += _sondes_asymetriques(spec)      # brise les symétries que les sondes auto conservent
+    if multi:
+        import invention_multi as IMM
+        base_sondes += (IMM._sondes_binaires(spec) if len(params) == 2
+                        else IMM._sondes_ternaires(spec) if len(params) == 3 else [])
+    else:
+        auto = MI.MoteurAutonome.sondes_auto(spec) or []
+        base_sondes += [s[0] if isinstance(s, tuple) and len(s) == 1 else s for s in auto]
+        base_sondes += _sondes_asymetriques(spec)  # brise les symétries que les sondes auto conservent
 
     muts = mutants(expr)
     tues = equivalents = 0
     survivants = []
     for m in muts:
-        g = MI._callable(m, "f")
-        if g is None or not MI._reproduit(g, spec):
+        g = (IMM._callable_multi(m, "f", params) if multi else MI._callable(m, "f"))
+        if g is None or not reprod(g, spec):
             tues += 1                                          # le spec le distingue de l'original : tué
             continue
         # survit au spec : équivalent (coïncide partout) ou vraie faiblesse (diverge hors spec) ?
-        d = _diverge(f, g, base_sondes)
+        d = _diverge(f, g, base_sondes, appel)
         if d is None:
             equivalents += 1                                   # indistinguable même hors spec -> équivalent (écarté)
         else:
@@ -208,7 +226,7 @@ def force_du_spec(expr: str, exemples, held, sondes=None) -> dict:
         # l'exemple discriminant : sur l'entrée où le 1er survivant diverge, la BONNE sortie est celle de
         # l'original (vérité = expr, déjà prouvée sur le spec). L'ajouter tue ce survivant (par construction).
         m0, d0 = survivants[0]
-        rap["discriminant"] = (d0, f(d0))
+        rap["discriminant"] = (d0, appel(f, d0))
         rap["survivant_exemple"] = m0
     return rap
 

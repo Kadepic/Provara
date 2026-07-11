@@ -2859,14 +2859,15 @@ def invente_multi(nom: str, exemples, exemples_held=None, *, existant=None):
     return _IMM.examine_cible_multi(nom, exemples, exemples_held, existant=existant)
 
 
-def force_du_spec(expr: str, exemples, exemples_held=None):
+def force_du_spec(expr: str, exemples, exemples_held=None, *, params=("x",)):
     """FORGE — mesure si un besoin (spec) est assez FORT pour déterminer sa brique (mutation testing).
     Renvoie le rapport de `force_spec.force_du_spec` : score de mutation ∈ [0,1], survivants non
     équivalents, et — si le spec est sous-déterminé — un `discriminant` (entrée, sortie attendue) à
     ajouter pour le renforcer (boucle CEGIS). Sortie de première classe : servable au moteur d'invention
-    ET à l'utilisateur (« ton exemple manque une distinction : essaie %s »)."""
+    ET à l'utilisateur (« ton exemple manque une distinction : essaie %s »).
+    `params` (défaut ('x',) = mono) : pour une brique multi-argument, mesure la force du spec en splat."""
     from force_spec import force_du_spec as _fds
-    return _fds(expr, exemples, exemples_held or [])
+    return _fds(expr, exemples, exemples_held or [], params=params)
 
 
 def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budget: int = 2000,
@@ -2958,6 +2959,59 @@ def materialise_brique(nom: str, signature: str, exemples, exemples_held=None, *
         import materialise as _MAT
         res["materialise"] = _MAT.materialise_brique(
             nom, res["code"], list(exemples), list(exemples_held or []), dossier, origine=nom)
+    return res
+
+
+def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str | None = None):
+    """FORGE MULTI-ARGUMENT — sortie de PREMIÈRE CLASSE pour une brique à plusieurs arguments (cap multi-arg).
+    Combine en une porte, chaque affirmation étiquetée par son statut épistémique, ce que la forge sait dire
+    d'une brique binaire/ternaire : verdict (invente_multi), FAIT borné (certain), SUPPOSITION générative
+    (jamais servie comme un fait), force du spec (mutation testing multi-arg), besoin_a_renforcer unifié, et
+    matérialisation optionnelle (.py + gate arité-consciente). JSON-sérialisable, servable inter-moteurs.
+
+    `exemples`/`exemples_held` = listes de (args, sortie). `dossier` (optionnel) : grave l'artefact durable.
+    La rétention self-improving (mémoire mono) n'est PAS câblée ici : une mémoire multi-arité est un concern
+    distinct — l'honnêteté prime (on ne prétend pas apprendre dans un store d'arité incompatible)."""
+    import expression_sure as _ES
+    import invention_atomes as _IA
+    import invention_multi as _IMM
+    exemples = [(tuple(a), o) for a, o in exemples]
+    held = [(tuple(a), o) for a, o in (exemples_held or [])]
+    verdict = _IMM.examine_cible_multi(nom, exemples, held)
+    arite = len((exemples or held)[0][0]) if (exemples or held) else 0
+    params = _IMM._params(arite)
+    sup, fait = _IA.atome_capacite(verdict, exemples, held)
+
+    code = verdict.par if verdict.statut in (_MI.INVENTION, _MI.EXISTE_DEJA) else None
+    danger = _ES.raison_danger(code) if code is not None else None
+    res = {
+        "statut": verdict.statut,
+        "arite": arite,
+        "code": code if danger is None else None,
+        "code_refuse": danger,
+        "fait_borne": fait.sert() if fait is not None else None,
+        "supposition": sup.sert() if sup is not None else None,
+        "force_spec": None,
+        "besoin_a_renforcer": None,
+        "materialise": None,
+    }
+    if verdict.statut == _MI.AMBIGU and verdict.sonde is not None:
+        res["besoin_a_renforcer"] = {"entree": verdict.sonde,
+                                     "raison": "deux réalisations binaires satisfont le spec et divergent sur cette entrée"}
+    if verdict.statut == _MI.INVENTION and code and danger is None:
+        try:
+            fs = force_du_spec(code, exemples, held, params=params)
+            res["force_spec"] = {k: fs[k] for k in ("mutants", "tues", "equivalents", "survivants", "score")}
+            if fs["discriminant"] is not None and res["besoin_a_renforcer"] is None:
+                res["besoin_a_renforcer"] = {
+                    "entree": fs["discriminant"][0], "sortie_attendue": fs["discriminant"][1],
+                    "raison": "une variation de la réalisation (mutant) reproduit le spec mais diffère sur cette entrée"}
+        except ValueError:
+            pass
+        if dossier is not None:
+            import materialise as _MAT
+            res["materialise"] = _MAT.materialise_brique(nom, code, exemples, held, dossier,
+                                                         origine=nom, params=params)
     return res
 
 
