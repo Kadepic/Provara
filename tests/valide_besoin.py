@@ -885,13 +885,57 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "rendement_photo_max" in B.decompose("cultiver"),
       "les 18 domaines précédents inchangés après l'ajout de l'isolation (isolation)")
 
+# ── 26) VINGTIÈME DOMAINE : chiffrer / garder un secret (nouvelle loi L17 = secret parfait de Shannon) ──
+dcr = B.decompose("chiffrer un message")
+check(dcr["statut"] == "decompose", "besoin confidentialité connu -> decompose")
+check("secret" in dcr["objectif_reel"].lower() and "shannon" in dcr["objectif_reel"].lower(),
+      "objectif réel chiffrement = secret parfait de Shannon")
+check("secret_parfait" in dcr, "extras propres : le secret parfait H(clé) >= H(message)")
+cr_canaux = {c.canal for c in dcr["canaux"]}
+check(cr_canaux == {"longueur de cle", "hypothese calculatoire", "entropie du message", "distribution de cle"},
+      f"4 canaux de la confidentialité ({cr_canaux})")
+prcr = B.principes("chiffrer un message")
+pcr = {e["nom"]: e for e in prcr["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : clé trop courte pour un secret parfait, et clé réutilisée
+cle128 = pcr["secret « parfait » avec clé de 128 bits pour 1 Mo"]
+check(cle128["atome"].statut == A.REFUTE, "clé 128 bits < message, secret parfait -> RÉFUTÉ")
+check(A.est_refute(cle128["atome"].contenu), "contenu réfuté (clé 128) dans la garde")
+ttp = pcr["masque jetable réutilisé (two-time pad)"]
+check(ttp["atome"].statut == A.REFUTE, "masque jetable réutilisé -> RÉFUTÉ")
+# procédés réels (dont AES calculatoire, non réfuté) -> SUPPOSITIONS
+for nom in ("masque jetable (OTP)", "chiffrement symétrique (AES)",
+            "chiffrement asymétrique (RSA / courbes elliptiques)"):
+    e = pcr[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prcr["liste"]), "aucun principe de chiffrement promu en FAIT")
+check("candidat pour confidentialite_information" in pcr["masque jetable (OTP)"]["atome"].portee.condition,
+      "portée des principes de chiffrement nommant confidentialite_information")
+# la loi L17 : clé sous l'entropie du message (secret parfait) réfutée, AES calculatoire cohérent
+st_cr, _, loi_cr = COH.juge_dispositif({"type": "chiffrement", "securite_parfaite": True,
+                                        "entropie_cle_bits": 128, "entropie_message_bits": 8e6})
+check(st_cr == COH.VIOLE and loi_cr == COH.L17, "juge : clé 128 secret parfait -> VIOLE via L17")
+check(COH.juge_dispositif({"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256,
+                           "entropie_message_bits": 8e6})[0] == COH.COHERENT_BORNE,
+      "AES calculatoire (pas parfait) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (seiche, gymnote)
+natcr = B.strategies_naturelles("chiffrer un message")
+check(len(natcr) >= 4 and any("seiche" in s["exemple"].lower() for s in natcr), "stratégies chiffrement propres (seiche)")
+check(not any("ours polaire" in s["exemple"] for s in natcr) and not any("fractale" in s["exemple"] for s in natcr),
+      "pas de fuite des stratégies isolation/compression vers le chiffrement")
+# les DIX-NEUF domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "plancher_radiatif" in B.decompose("isoler thermiquement")
+      and "borne_entropie" in B.decompose("compresser des donnees"),
+      "les 19 domaines précédents inchangés après l'ajout du chiffrement (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
-                              "production_alimentaire", "compression_information", "isolation_thermique"],
-      "dix-neuf domaines modélisés, dans l'ordre d'enregistrement")
+                              "production_alimentaire", "compression_information", "isolation_thermique",
+                              "confidentialite_information"],
+      "vingt domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

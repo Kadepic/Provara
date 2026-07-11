@@ -1,5 +1,28 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 20e domaine « chiffrer / garder un secret » + loi L17 (secret parfait de Shannon)
+
+Chiffrer / garder un secret. Nouvelle loi dure au juge (`L17`) : le SECRET PARFAIT de Shannon (1949) — une
+confidentialité PARFAITE (inconditionnelle) exige une entropie de clé ≥ l'entropie du message (le masque jetable
+l'atteint). CONSERVATEUR (FAUX=0) : on ne juge QUE le secret PARFAIT déclaré — la sécurité CALCULATOIRE (AES, RSA),
+qui ne prétend pas à l'inconditionnel, n'est jamais réfutée. Troisième théorème de Shannon distinct (secret ≠
+capacité L7 ≠ source L15). Gate `valide_coherence_physique` **246 → 257/257**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (secret « parfait » clé 128 bits pour
+1 Mo, masque jetable réutilisé / two-time pad). Reframing : pas de secret parfait gratuit — payer une clé aussi
+longue que le message (inconditionnel) ou se rabattre sur le calculatoire (problème dur). Leviers : allonger la
+clé (OTP), réduire l'entropie du message (compresser avant), distribuer la clé sûrement (QKD), ou assumer
+l'hypothèse calculatoire. Couvre OTP, AES, RSA/ECC, QKD, compression pré-chiffrement, partage à seuil (Shamir),
+AEAD, homomorphe. 4 stratégies naturelles propres (seiche = camouflage, gymnote = signature privée, immunité =
+authentification soi/non-soi, phéromone = canal keyé). Gate `valide_besoin` **374 → 391/391** ; les 19 domaines
+précédents intacts.
+
+**JALON : 20 DOMAINES D'INVENTION, 17 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon
+capacité, L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol, L11
+diffraction d'Abbe, L12 Betz, L13 Tsiolkovski, L14 plafond photosynthétique, L15 borne d'entropie / codage source,
+L16 plancher radiatif Stefan-Boltzmann, L17 secret parfait de Shannon).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 19e domaine « isoler thermiquement » + loi L16 (plancher radiatif Stefan-Boltzmann)
 
 Isoler thermiquement / conserver la chaleur. Nouvelle loi dure au juge (`L16`) : le PLANCHER RADIATIF de

@@ -2950,6 +2950,144 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGTIÈME DOMAINE : chiffrer / garder un secret. Nouvelle loi dure au juge (L17) : le SECRET PARFAIT de Shannon
+#  — une confidentialité PARFAITE (inconditionnelle) exige une entropie de clé ≥ l'entropie du message (le masque
+#  jetable l'atteint). REFRAMING machine : il n'y a pas de secret parfait « gratuit ». Soit on paie une clé aussi
+#  longue que le message (secret INCONDITIONNEL, coûteux à distribuer), soit on se rabat sur la sécurité
+#  CALCULATOIRE (s'appuyer sur un problème réputé dur, non prouvé inconditionnel). Leviers : allonger la clé
+#  (jusqu'au masque jetable) ; réduire l'entropie du message (compresser avant de chiffrer) ; distribuer la clé
+#  sûrement (QKD) ; ou assumer l'hypothèse calculatoire (pratique, mais conditionnelle).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CRYPTO = "confidentialite_information"
+_ALIAS_CRYPTO = {
+    "chiffrer un message", "garder un secret", "proteger une information", "chiffrer des donnees",
+    "securiser une communication", "rendre un message confidentiel",
+}
+
+# ── « Canaux » : les leviers de la confidentialité ───────────────────────────────────────────────────────────────
+_CANAUX_CRYPTO = [
+    Canal("longueur de cle", "information", "ALLONGER la clé jusqu'au message (masque jetable) pour un secret INCONDITIONNEL",
+          True, "H(clé) ≥ H(message) est le prix du secret parfait ; le masque jetable (clé = message) est "
+                "incassable même par une puissance infinie — mais la clé est aussi lourde à distribuer que le message"),
+    Canal("hypothese calculatoire", "information", "S'APPUYER sur un problème réputé DUR (factorisation, log discret, réseaux)",
+          True, "la sécurité calculatoire échange l'inconditionnel contre le PRATIQUE : clé courte réutilisable, "
+                "mais reposant sur une hypothèse non prouvée (et menacée par le quantique pour RSA/ECC)"),
+    Canal("entropie du message", "information", "RÉDUIRE l'entropie du message : compresser/normaliser AVANT de chiffrer",
+          True, "moins de bits imprévisibles à protéger = moins de clé nécessaire (et pas de motif exploitable) → "
+                "compresser avant de chiffrer est le levier « moins à cacher »"),
+    Canal("distribution de cle", "information", "DISTRIBUER la clé sûrement : échange Diffie-Hellman, distribution quantique (QKD)",
+          True, "le point faible n'est souvent pas l'algorithme mais l'ACHEMINEMENT de la clé ; la QKD détecte "
+                "toute interception → clé fraîche prouvée sûre, à combiner avec le masque jetable — le levier « la clé »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le secret parfait (type `chiffrement`, parfait ⇒ H(clé) ≥ H(message)) ───
+_PRINCIPES_CRYPTO = [
+    _P("masque jetable (OTP)",
+       "chiffrer : combiner le message avec une clé aléatoire aussi longue, utilisée une seule fois",
+       {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 1000000},
+       True, True, "—", "mature",
+       0.6, "le SEUL secret prouvé parfait (inconditionnel), incassable par toute puissance de calcul ; MAIS clé "
+            "aussi longue que le message et jamais réutilisable → la distribution de clé est le vrai problème"),
+    _P("chiffrement symétrique (AES)",
+       "chiffrer : une même clé courte chiffre et déchiffre, sécurité reposant sur la difficulté de casse",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 8e6},
+       True, True, "—", "mature",
+       0.6, "clé courte réutilisable, rapide → la référence pratique ; sécurité CALCULATOIRE (pas inconditionnelle) "
+            "mais hors de portée de la force brute (2²⁵⁶) — le compromis qui fait tourner le monde"),
+    _P("chiffrement asymétrique (RSA / courbes elliptiques)",
+       "chiffrer : clé publique pour chiffrer, clé privée pour déchiffrer (résout la distribution)",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 3072, "entropie_message_bits": 8e6},
+       True, True, "—", "mature",
+       0.55, "résout la DISTRIBUTION (pas besoin de partager un secret d'avance) ; repose sur factorisation/log "
+             "discret → menacé par le quantique (Shor) — d'où la cryptographie post-quantique"),
+    _P("distribution quantique de clé (QKD)",
+       "chiffrer : distribuer une clé dont toute interception est détectable, puis masque jetable",
+       {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 1000000},
+       True, True, "—", "émergent",
+       0.45, "génère une clé fraîche PROUVÉE sûre (l'espion perturbe l'état quantique et se trahit) → alimente un "
+             "masque jetable inconditionnel ; portée et débit limités (fibre/satellite) — le levier « la clé »"),
+    _P("compresser avant de chiffrer",
+       "chiffrer : retirer la redondance du message avant chiffrement pour réduire l'entropie à protéger",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 4e6},
+       True, True, "—", "mature (sous-exploité)",
+       0.45, "moins de bits imprévisibles = moins de motif exploitable et moins de clé nécessaire → la compression "
+             "renforce le chiffrement ; attention aux fuites par la LONGUEUR (CRIME) — le levier « moins à cacher »"),
+    _P("partage de secret à seuil (Shamir)",
+       "chiffrer : découper le secret en parts dont k sur n suffisent à reconstruire, aucune seule n'informe",
+       {"type": "chiffrement"}, True, True,
+       "—", "mature",
+       0.45, "aucune part isolée ne révèle rien (secret parfait par part) → résilience et contrôle d'accès "
+             "réparti ; gestion des parts à organiser — le levier « pas de point unique »"),
+    _P("chiffrement authentifié (AEAD)",
+       "chiffrer : garantir à la fois la confidentialité ET l'intégrité/authenticité du message",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 8e6},
+       True, True, "—", "mature",
+       0.5, "le secret sans intégrité est fragile (un message chiffré peut être altéré) → lier chiffrement et "
+            "authentification est la bonne pratique — le levier « secret ET intégrité »"),
+    _P("chiffrement homomorphe (calculer sur le chiffré)",
+       "chiffrer : permettre des calculs sur les données chiffrées sans les déchiffrer",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 4096, "entropie_message_bits": 8e6},
+       True, True, "—", "recherche",
+       0.4, "traiter des données sans jamais les exposer en clair (cloud, santé) → confidentialité pendant le "
+            "CALCUL ; coût de calcul encore lourd — le levier « secret même en usage »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("secret « parfait » avec clé de 128 bits pour 1 Mo",
+       "chiffrer : garantir un secret PARFAIT d'un message de 1 Mo avec une clé de 128 bits",
+       {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 128, "entropie_message_bits": 8e6},
+       True, True, "—", "revendication",
+       0.3, "clé 128 bits < message 8 Mbits pour un secret PARFAIT revendiqué : impossible (Shannon — la clé doit "
+            "être au moins aussi longue que le message)"),
+    _P("masque jetable réutilisé (two-time pad)",
+       "chiffrer : réutiliser une même clé jetable pour deux messages en gardant le secret parfait",
+       {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000, "entropie_message_bits": 2000},
+       True, True, "—", "revendication",
+       0.25, "réutiliser la clé (deux messages pour une clé) casse le secret parfait : l'entropie de clé (1000) < "
+             "celle des messages combinés (2000) — impossible"),
+]
+
+_OBJECTIF_CRYPTO = ("Le but réel n'est pas un secret parfait « gratuit » (il n'existe pas) : la confidentialité "
+                    "PARFAITE de Shannon exige une entropie de clé ≥ l'entropie du message (le masque jetable "
+                    "l'atteint, clé = message). Soit on paie ce prix (secret INCONDITIONNEL, mais distribution de "
+                    "clé coûteuse), soit on se rabat sur la sécurité CALCULATOIRE (problème réputé dur, non prouvé "
+                    "inconditionnel). Leviers : allonger la clé (jusqu'au masque jetable) ; réduire l'entropie du "
+                    "message (compresser avant de chiffrer) ; distribuer la clé sûrement (QKD) ; ou assumer "
+                    "l'hypothèse calculatoire. Chaque principe reste jugé par le secret parfait de Shannon.")
+_LOI_CRYPTO = ("secret parfait de Shannon : une confidentialité PARFAITE (inconditionnelle) exige une entropie de "
+               "clé ≥ l'entropie du message (masque jetable) ; sinon on relève de la sécurité CALCULATOIRE "
+               "(conditionnelle) ; gains réels = allonger la clé, réduire l'entropie du message, sécuriser la "
+               "distribution de clé, ou assumer une hypothèse de difficulté")
+
+# La nature protège l'information par la dissimulation (seiche), la signature privée (gymnote), l'authentification (immunité), le canal keyé (phéromone).
+_STRATEGIES_NATURE_CRYPTO = [
+    _Nature("seiche / pieuvre (camouflage)",
+            ["se fond dans le décor pour ne pas être vue", "dissimule le signal plutôt que de le brouiller"],
+            "CACHER l'existence même du message (dissimulation/stéganographie) — un axe orthogonal au chiffrement"),
+    _Nature("gymnote (poisson électrique à décharge propre)",
+            ["signature de décharge propre à l'individu", "communique sur un canal que les autres ne décodent pas"],
+            "un canal à SIGNATURE privée que seul le bon récepteur interprète — l'analogue de la clé"),
+    _Nature("système immunitaire (reconnaissance soi / non-soi)",
+            ["distingue le soi du non-soi par des marqueurs", "rejette ce qui ne présente pas le bon marqueur"],
+            "AUTHENTIFIER par un marqueur partagé (soi/non-soi) — le pendant biologique de l'authentification"),
+    _Nature("phéromone spécifique d'espèce (canal keyé)",
+            ["molécule que seuls les congénères décodent", "message invisible aux autres espèces"],
+            "émettre sur un canal que seul le détenteur de la bonne « clé » (récepteur) peut lire — le canal keyé"),
+]
+
+enregistre(Domaine(
+    nom=_CRYPTO,
+    aliases=frozenset(_ALIAS_CRYPTO),
+    objectif=_OBJECTIF_CRYPTO,
+    canaux=_CANAUX_CRYPTO,
+    principes=_PRINCIPES_CRYPTO,
+    strategies=_STRATEGIES_NATURE_CRYPTO,
+    loi=_LOI_CRYPTO,
+    extras={"secret_parfait": "H(clé) ≥ H(message) (masque jetable)",
+            "note": "OTP = inconditionnel mais clé = message ; sinon sécurité calculatoire (problème dur, "
+                    "conditionnel) ; L17 (secret) ≠ L7 (capacité) ≠ L15 (source)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
