@@ -2860,7 +2860,8 @@ def force_du_spec(expr: str, exemples, exemples_held=None):
     return _fds(expr, exemples, exemples_held or [])
 
 
-def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budget: int = 2000):
+def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budget: int = 2000,
+                 tours_cegis: int = 0):
     """FORGE — SORTIE DE PREMIÈRE CLASSE (mandat Yohan : « servir le moteur d'invention en sortie à
     l'utilisateur et aux autres moteurs »). UNE porte qui COMBINE tout ce que la forge sait dire d'une
     brique, chaque affirmation étiquetée par son statut épistémique — jamais un fait qui n'en est pas.
@@ -2876,7 +2877,10 @@ def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budg
       • besoin_a_renforcer : l'ENTRÉE discriminante actionnable UNIFIÉE — qu'elle vienne du moteur (AMBIGU :
                        deux réalisations connues divergent) ou de la mutation (spec faible : un mutant survit).
                        Dans les DEUX cas : « ton besoin est sous-déterminé, ajoute cette entrée pour trancher » ;
-      • appris       : True si la brique vient d'être RETENUE en mémoire persistante (self-improving)."""
+      • appris       : True si la brique vient d'être RETENUE en mémoire persistante (self-improving).
+    `tours_cegis` (opt-in, défaut 0 = flux inchangé) : boucle CEGIS côté recherche — face à une frontière,
+    promeut au spec le contre-exemple du held-out qui tue les candidats partiels et RELANCE la recherche
+    (au plus `tours_cegis` fois ; le held-out n'est jamais vidé) — cf. moteur_invention.examine_cible."""
     global _BRIQUES
     if _BRIQUES is None:
         from memoire_briques import MemoireBriques
@@ -2884,7 +2888,8 @@ def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budg
     import invention_atomes as _IA
     exemples = list(exemples)
     held = list(exemples_held or [])
-    verdict = _MI.examine_cible(nom, signature, exemples, held, budget=budget, existant=_BRIQUES.existant())
+    verdict = _MI.examine_cible(nom, signature, exemples, held, budget=budget, existant=_BRIQUES.existant(),
+                                tours_cegis=tours_cegis)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 
     res = {

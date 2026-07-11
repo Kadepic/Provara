@@ -166,10 +166,18 @@ def _asserts_held(nom, paires):
 
 
 def examine_cible(nom: str, signature: str, exemples, exemples_held, budget: int = 2000,
-                  existant: dict | None = None) -> Verdict:
+                  existant: dict | None = None, tours_cegis: int = 0) -> Verdict:
     """Tranche une fonction-cible en EXISTE_DEJA / INVENTION / AMBIGU / BRIQUE_MANQUANTE / INCOHERENT.
     `existant` = registre de capacités à utiliser (défaut : EXISTANT global) ; permet de juger contre une
-    bibliothèque ÉTENDUE (phase « sommeil » : voir bibliotheque_invention.py)."""
+    bibliothèque ÉTENDUE (phase « sommeil » : voir bibliotheque_invention.py).
+    `tours_cegis` (opt-in, défaut 0 = flux INCHANGÉ) = boucle CEGIS côté RECHERCHE (Solar-Lezama 2006) :
+    face à une frontière, si un candidat PARTIEL (reproduit les exemples) est tué par une paire du held-out,
+    cette paire est un CONTRE-EXEMPLE : promue au spec, elle REDIRIGE les familles etend_* (dirigées par les
+    exemples : seuils/constantes synthétisés depuis les données) et la recherche est relancée, `tours_cegis`
+    fois au plus. GARDES : le held-out n'est JAMAIS vidé (≥ 2 paires requises pour consommer : il reste
+    toujours un juge final à froid) ; un tour par contre-exemple (le plus discriminant, déterministe) ; les
+    gardes de soundness (unicité comportementale, juge subprocess, nouveauté) s'appliquent inchangées au
+    résultat ; la promotion est TRACÉE dans la justification (provenance servable)."""
     existant = EXISTANT if existant is None else existant
     exemples = list(exemples)
     held = list(exemples_held or [])
@@ -246,7 +254,26 @@ def examine_cible(nom: str, signature: str, exemples, exemples_held, budget: int
         return Verdict(INVENTION, nom, par=S,
                        justification="recombinaison unique sous le spec, vérifiée (held-out), comportement nouveau")
 
-    # 3) Aucune recombinaison connue -> FRONTIÈRE : il manque un atome (invention plus profonde).
+    # 3) Aucune recombinaison connue -> FRONTIÈRE… sauf si la boucle CEGIS (opt-in) peut la repousser :
+    #    un candidat PARTIEL (reproduit les exemples, tué par le held-out) prouve que la recherche pointait
+    #    dans une direction que le spec visible ne détermine pas. La paire tueuse est le contre-exemple du
+    #    vérificateur : promue au spec, elle enrichit les DONNÉES qui dirigent etend_* (seuils, constantes,
+    #    types) et on relance — au lieu de conclure. `len(held) > 1` : on ne consomme JAMAIS le dernier juge.
+    if tours_cegis > 0 and len(held) > 1:
+        partiels = [e for e, _ti, _to in m.atomes if _reproduit(_fn(e), exemples)]
+        if partiels:
+            # Contre-exemple LE PLUS DISCRIMINANT : la paire du held-out qui tue le plus de partiels
+            # (sélection arbitraire ⊇ minimale en pouvoir — littérature CEGIS ; on maximise l'information
+            # par tour). Déterministe : première paire à égalité. > 0 garanti (aucun partiel n'est candidat,
+            # donc chacun est tué par au moins une paire du held-out).
+            tue = [sum(not _reproduit(_fn(e), [p]) for e in partiels) for p in held]
+            k = max(range(len(held)), key=lambda i: tue[i])
+            v = examine_cible(nom, signature, exemples + [held[k]], held[:k] + held[k + 1:],
+                              budget=budget, existant=existant, tours_cegis=tours_cegis - 1)
+            return dataclasses.replace(v, justification=(
+                v.justification + f" ; CEGIS : contre-exemple {held[k]!r} promu du held-out au spec"))
+
+    # Aucune recombinaison connue -> FRONTIÈRE : il manque un atome (invention plus profonde).
     return Verdict(BRIQUE_MANQUANTE, nom,
                    justification="cohérente mais non réalisable par recombinaison connue : un principe neuf est requis")
 
