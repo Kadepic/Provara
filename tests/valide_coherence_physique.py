@@ -125,6 +125,11 @@ check(loi({"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numer
 check(statut({"type": "imagerie_optique", "ouverture_numerique": 1.7, "indice_milieu": 1.0,
               "longueur_onde_nm": 550, "resolution_nm": 300}) == P.VIOLE, "NA 1,7 dans l'air (n=1) -> VIOLE")
 check(loi({"type": "imagerie_optique", "ouverture_numerique": 1.7, "indice_milieu": 1.0}) == P.L11, "NA > n = L11")
+# limite de Betz : coefficient de puissance ou puissance extraite au-dessus de 16/27 (rotor ouvert).
+check(statut({"type": "eolienne", "coefficient_puissance": 0.7}) == P.VIOLE, "Cp 0,7 > Betz 0,593 -> VIOLE")
+check(loi({"type": "eolienne", "coefficient_puissance": 0.7}) == P.L12, "limite de Betz = L12")
+check(statut({"type": "eolienne", "puissance_W": 50000, "aire_balayee_m2": 100,
+              "vitesse_vent_m_s": 10}) == P.VIOLE, "50 kW > Betz ~36,3 kW (100 m², 10 m/s) -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -209,6 +214,12 @@ reels = [
     {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 0.9, "resolution_nm": 50, "super_resolution": True},   # NSOM champ proche (exempté)
     {"type": "imagerie_optique", "ouverture_numerique": 1.4, "indice_milieu": 1.5},   # NA < n, sans résolution : PAS un faux positif
     {"type": "imagerie_optique"},                                                     # vide -> PAS un faux positif
+    # éoliennes RÉELLES : sous la limite de Betz (ou carénée, exemptée).
+    {"type": "eolienne", "coefficient_puissance": 0.45},                              # turbine moderne (< Betz)
+    {"type": "eolienne", "coefficient_puissance": 0.592},                             # juste SOUS Betz (16/27 ~0,5926) (limite, ok)
+    {"type": "eolienne", "puissance_W": 27000, "aire_balayee_m2": 100, "vitesse_vent_m_s": 10},  # Cp ~0,44 (< Betz ~36,3 kW)
+    {"type": "eolienne", "coefficient_puissance": 0.7, "avec_diffuseur": True},       # carénée : Cp>Betz par aire rotor -> PAS un faux positif
+    {"type": "eolienne"},                                                             # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
