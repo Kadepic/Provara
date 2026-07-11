@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 27e domaine « paralléliser un calcul » + loi L24 (loi d'Amdahl)
+
+Accélérer un calcul par parallélisation. Nouvelle loi dure au juge (`L24`) : la loi d'AMDAHL — pour un problème de
+taille FIXE, l'accélération est bornée par 1/(s + (1−s)/p) ≤ 1/s (s = fraction séquentielle), quel que soit le
+nombre de processeurs. CONSERVATEUR (FAUX=0) : la loi de Gustafson (problème AGRANDI, weak scaling,
+`probleme_agrandi`) obtient une accélération quasi linéaire — métrique différente → on ne réfute qu'une
+accélération à taille FIXE dépassant la borne d'Amdahl. Gate `valide_coherence_physique` **335 → 348/348**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (×20 avec 10 % de série, ×100 linéaire
+avec 5 %). Reframing : ajouter des cœurs ne sert à rien si une part reste séquentielle ; RÉDUIRE la fraction série.
+Leviers : réduire la part séquentielle (algorithme, verrous), agrandir le problème (Gustafson), recouvrir la
+communication, équilibrer la charge. Couvre réduction de série, GPU massif, réduction des verrous, équilibrage,
+Gustafson, pipeline calcul/comm, SIMD, map-reduce distribué. 4 stratégies naturelles propres (murmuration
+d'étourneaux = coordination distribuée, corail = croissance indépendante, meute = rôles répartis, moules =
+filtration parallèle). Gate `valide_besoin` **493 → 510/510** ; les 26 domaines précédents intacts.
+
+**JALON : 27 DOMAINES D'INVENTION, 24 LOIS PHYSIQUES DANS LE JUGE** (… L23 borne de la recherche, L24 loi d'Amdahl).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 26e domaine « rechercher dans des données » + loi L23 (borne de la recherche)
 
 Rechercher un élément dans des données. Nouvelle loi dure au juge (`L23`) : la BORNE DE LA RECHERCHE — trouver un

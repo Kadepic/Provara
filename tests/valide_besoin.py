@@ -1180,6 +1180,49 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "nyquist" in B.decompose("numeriser un signal"),
       "les 25 domaines précédents inchangés après l'ajout de la recherche (isolation)")
 
+# ── 33) VINGT-SEPTIÈME DOMAINE : paralléliser un calcul (nouvelle loi L24 = loi d'Amdahl, accélération ≤ 1/s) ──
+dpa = B.decompose("accelerer un calcul")
+check(dpa["statut"] == "decompose", "besoin parallélisation connu -> decompose")
+check("amdahl" in dpa["objectif_reel"].lower() and "fraction" in dpa["objectif_reel"].lower(),
+      "objectif réel parallélisation = loi d'Amdahl, fraction série")
+check("amdahl" in dpa, "extras propres : la loi d'Amdahl")
+pa_canaux = {c.canal for c in dpa["canaux"]}
+check(pa_canaux == {"fraction serie", "agrandir le probleme", "communication", "equilibrage"},
+      f"4 canaux de la parallélisation ({pa_canaux})")
+prpa = B.principes("accelerer un calcul")
+ppa = {e["nom"]: e for e in prpa["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : accélération au-dessus de la borne d'Amdahl
+acc20 = ppa["accélération « ×20 » avec 10 % de série"]
+check(acc20["atome"].statut == A.REFUTE, "×20 avec 10% série (> 1/s=10) -> RÉFUTÉ")
+check(A.est_refute(acc20["atome"].contenu), "contenu réfuté (×20) dans la garde")
+acclin = ppa["accélération LINÉAIRE (×100 sur 100 cœurs) avec 5 % de série"]
+check(acclin["atome"].statut == A.REFUTE, "×100 linéaire avec 5% série -> RÉFUTÉ")
+# procédés réels (dont Gustafson problème agrandi, exempté) -> SUPPOSITIONS
+for nom in ("réduction de la fraction série (algorithme)", "parallélisme massif (GPU, milliers de cœurs)",
+            "problème agrandi (loi de Gustafson, weak scaling)"):
+    e = ppa[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prpa["liste"]), "aucun principe de parallélisation promu en FAIT")
+check("candidat pour parallelisation_calcul" in ppa["réduction de la fraction série (algorithme)"]["atome"].portee.condition,
+      "portée des principes de parallélisation nommant parallelisation_calcul")
+# la loi L24 : accélération au-dessus d'Amdahl réfutée, sous la borne cohérente
+st_pa, _, loi_pa = COH.juge_dispositif({"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 1000,
+                                        "acceleration": 20})
+check(st_pa == COH.VIOLE and loi_pa == COH.L24, "juge : ×20 avec s=0,1 -> VIOLE via L24")
+check(COH.juge_dispositif({"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16,
+                           "acceleration": 9})[0] == COH.COHERENT_BORNE,
+      "×9 avec s=0,05 sur 16 cœurs (< Amdahl) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (étourneaux, corail)
+natpa = B.strategies_naturelles("accelerer un calcul")
+check(len(natpa) >= 4 and any("étourneaux" in s["exemple"].lower() for s in natpa), "stratégies parallélisation propres (étourneaux)")
+check(not any("pisteur" in s["exemple"] for s in natpa) and not any("rivière" in s["exemple"] for s in natpa),
+      "pas de fuite des stratégies recherche/tri vers la parallélisation")
+# les VINGT-SIX domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "borne_recherche" in B.decompose("rechercher un element")
+      and "borne_tri" in B.decompose("trier des donnees"),
+      "les 26 domaines précédents inchangés après l'ajout de la parallélisation (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
@@ -1187,8 +1230,9 @@ check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
                               "production_alimentaire", "compression_information", "isolation_thermique",
                               "confidentialite_information", "vol_croisiere", "detection_signal",
-                              "amplification_signal", "numerisation_signal", "tri_donnees", "recherche_donnees"],
-      "vingt-six domaines modélisés, dans l'ordre d'enregistrement")
+                              "amplification_signal", "numerisation_signal", "tri_donnees", "recherche_donnees",
+                              "parallelisation_calcul"],
+      "vingt-sept domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

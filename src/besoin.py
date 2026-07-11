@@ -3922,6 +3922,142 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-SEPTIÈME DOMAINE : accélérer un calcul par parallélisation. Nouvelle loi dure au juge (L24) : la LOI
+#  D'AMDAHL — pour un problème de taille FIXE, l'accélération est bornée par 1/(s + (1−s)/p), donc ≤ 1/s (s =
+#  fraction séquentielle), quel que soit le nombre de processeurs p. REFRAMING machine : ajouter des cœurs ne sert
+#  à rien si une part du travail reste séquentielle ; le levier est de RÉDUIRE la fraction série. Leviers : réduire
+#  la partie séquentielle (algorithme, verrous, synchronisation) ; AGRANDIR le problème (loi de Gustafson, weak
+#  scaling, où la part série s'amenuise) ; recouvrir calcul et communication ; équilibrer la charge.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_PARAL = "parallelisation_calcul"
+_ALIAS_PARAL = {
+    "accelerer un calcul", "paralleliser un calcul", "repartir un calcul sur plusieurs coeurs",
+    "accelerer par parallelisation", "distribuer un calcul", "gagner en vitesse de calcul",
+}
+
+# ── « Canaux » : les leviers de l'accélération parallèle ─────────────────────────────────────────────────────────
+_CANAUX_PARAL = [
+    Canal("fraction serie", "information", "RÉDUIRE la fraction séquentielle (algorithme, verrous) : elle plafonne le gain à 1/s",
+          True, "la partie qui ne se parallélise pas fixe le plafond (Amdahl : accélération ≤ 1/s) → attaquer les "
+                "verrous, les sections critiques et les dépendances prime sur l'ajout de cœurs — le levier maître"),
+    Canal("agrandir le probleme", "information", "AGRANDIR le problème avec p (loi de Gustafson) : la part série s'amenuise",
+          True, "si l'on traite un problème plus GRAND quand on a plus de cœurs (weak scaling), la fraction série "
+                "relative diminue → accélération quasi linéaire ; c'est le régime réel du calcul scientifique"),
+    Canal("communication", "information", "RÉDUIRE et RECOUVRIR la communication/synchronisation entre processeurs",
+          True, "l'échange de données et la synchronisation sont un surcoût qui grandit avec p → les minimiser et les "
+                "recouvrir avec le calcul évite que la parallélisation se paie en attente — le levier « moins d'attente »"),
+    Canal("equilibrage", "information", "ÉQUILIBRER la charge : éviter les traînards (le plus lent fixe le temps)",
+          True, "un seul processeur surchargé (straggler) fait attendre tous les autres → répartir finement le "
+                "travail et voler les tâches (work stealing) — le levier « pas de maillon lent »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la loi d'Amdahl (type `parallelisation`, accélération ≤ 1/(s+(1−s)/p)) ──
+_PRINCIPES_PARAL = [
+    _P("réduction de la fraction série (algorithme)",
+       "accélérer : refondre l'algorithme pour diminuer la part strictement séquentielle",
+       {"type": "parallelisation", "fraction_serie": 0.02, "nb_processeurs": 64, "acceleration": 27}, True, True,
+       "—", "mature",
+       0.65, "abaisser s relève le plafond 1/s → le gain le plus profond ; supprimer une dépendance vaut plus que "
+             "doubler les cœurs (Amdahl) — le levier « moins de série »"),
+    _P("parallélisme massif (GPU, milliers de cœurs)",
+       "accélérer : exécuter un noyau très parallèle sur des milliers de fils (GPU)",
+       {"type": "parallelisation", "fraction_serie": 0.01, "nb_processeurs": 1000, "acceleration": 90}, True, True,
+       "—", "mature",
+       0.6, "des milliers de cœurs sur une partie très parallèle (algèbre, IA) → énormes accélérations SI s est "
+            "minuscule ; transferts hôte↔GPU à masquer — le levier « beaucoup de cœurs sur peu de série »"),
+    _P("réduction des verrous / synchronisation",
+       "accélérer : remplacer les verrous par des structures sans verrou et moins de sections critiques",
+       {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16, "acceleration": 9}, True, True,
+       "—", "mature",
+       0.55, "chaque section critique sérialise → structures lock-free, partitionnement des données réduisent la "
+             "part série effective ; justesse concurrente délicate — le levier « moins d'exclusion mutuelle »"),
+    _P("équilibrage de charge / vol de tâches",
+       "accélérer : répartir dynamiquement le travail pour éviter les processeurs oisifs",
+       {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 32, "acceleration": 12}, True, True,
+       "—", "mature",
+       0.5, "le temps est fixé par le processeur le plus lent → un ordonnancement dynamique (work stealing) évite "
+            "les traînards ; surcoût de coordination — le levier « pas de maillon lent »"),
+    _P("problème agrandi (loi de Gustafson, weak scaling)",
+       "accélérer : traiter un problème plus grand à mesure qu'on ajoute des cœurs",
+       {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 1000, "acceleration": 100,
+        "probleme_agrandi": True}, True, True,
+       "—", "mature (HPC)",
+       0.55, "REFRAMING : en agrandissant le problème avec p, la part série relative diminue → accélération quasi "
+             "linéaire (métrique de Gustafson, ≠ Amdahl à taille fixe) ; c'est le régime réel du HPC — « grandir avec les cœurs »"),
+    _P("recouvrement calcul / communication (pipeline)",
+       "accélérer : masquer les transferts en les recouvrant avec du calcul utile",
+       {"type": "parallelisation", "fraction_serie": 0.03, "nb_processeurs": 100, "acceleration": 25}, True, True,
+       "—", "mature",
+       0.5, "pendant qu'un bloc calcule, le suivant se transfère → la communication ne s'ajoute plus au temps ; "
+            "profondeur de pipeline à gérer — le levier « moins d'attente »"),
+    _P("parallélisme de données (SIMD / vectorisation)",
+       "accélérer : appliquer la même opération à plusieurs données par instruction",
+       {"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 8, "acceleration": 4}, True, True,
+       "—", "mature",
+       0.5, "une instruction traite un vecteur de données (SIMD, AVX) → accélération sur les boucles régulières, "
+            "sans threads ; dépend de la régularité des accès — le levier « une op, plusieurs données »"),
+    _P("calcul distribué (map-reduce)",
+       "accélérer : découper le calcul en tâches indépendantes réparties sur un cluster",
+       {"type": "parallelisation", "fraction_serie": 0.02, "nb_processeurs": 500, "acceleration": 40}, True, True,
+       "—", "mature",
+       0.5, "des tâches indépendantes (map) puis une agrégation (reduce) passent à l'échelle sur des milliers de "
+            "machines ; le reduce et le réseau sont la part série — le levier « échelle horizontale »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("accélération « ×20 » avec 10 % de série",
+       "accélérer : obtenir une accélération de 20 sur un problème à taille fixe dont 10 % est séquentiel",
+       {"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 1000, "acceleration": 20}, True, True,
+       "—", "revendication",
+       0.3, "avec 10 % de série, l'accélération est plafonnée à 1/0,1 = 10 (Amdahl) quel que soit p → 20 est "
+            "impossible à taille fixe ; à réfuter"),
+    _P("accélération LINÉAIRE (×100 sur 100 cœurs) avec 5 % de série",
+       "accélérer : obtenir une accélération de 100 sur 100 processeurs malgré 5 % de partie séquentielle",
+       {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 100, "acceleration": 100}, True, True,
+       "—", "revendication",
+       0.25, "avec 5 % de série, la borne d'Amdahl à p=100 est ~16,8 → une accélération linéaire (100) est "
+             "impossible à taille fixe — à réfuter"),
+]
+
+_OBJECTIF_PARAL = ("Le but réel n'est pas d'« ajouter des cœurs » mais de réduire ce qui ne se parallélise pas : la "
+                   "loi d'Amdahl borne l'accélération à taille fixe par 1/(s + (1−s)/p), donc ≤ 1/s (s = fraction "
+                   "séquentielle), quel que soit le nombre de processeurs. Leviers : RÉDUIRE la part séquentielle "
+                   "(algorithme, verrous, synchronisation) ; AGRANDIR le problème (loi de Gustafson, weak scaling, "
+                   "où la part série s'amenuise) ; recouvrir calcul et communication ; équilibrer la charge (pas de "
+                   "traînard). Chaque principe reste jugé par la loi d'Amdahl.")
+_LOI_PARAL = ("loi d'Amdahl : l'accélération par parallélisation d'un problème de taille fixe ≤ 1/(s + (1−s)/p) ≤ "
+              "1/s (s = fraction série) ; gains réels = réduire la fraction série (algorithme, verrous), agrandir le "
+              "problème (Gustafson), recouvrir la communication, équilibrer la charge")
+
+# La nature parallélise par la coordination distribuée (étourneaux), la croissance indépendante (corail), les rôles répartis (loups), la filtration (moules).
+_STRATEGIES_NATURE_PARAL = [
+    _Nature("nuée d'étourneaux (murmuration)",
+            ["coordination distribuée sans chef", "chaque oiseau suit quelques voisins"],
+            "coordonner un grand nombre d'acteurs par des règles LOCALES, sans goulot central — minimiser la part série"),
+    _Nature("colonie de corail (croissance parallèle)",
+            ["chaque polype croît indépendamment", "aucune dépendance entre polypes"],
+            "des tâches TOTALEMENT indépendantes passent à l'échelle sans coordination — le cas idéal (s ≈ 0)"),
+    _Nature("meute de loups en chasse (rôles répartis)",
+            ["rôles distribués (rabatteurs, intercepteurs)", "une part de coordination reste nécessaire"],
+            "répartir les rôles tout en gardant une COORDINATION minimale — la fraction série incompressible"),
+    _Nature("banc de moules filtreuses",
+            ["chaque moule filtre l'eau en parallèle", "débit total ∝ nombre d'individus"],
+            "un travail massivement parallèle dont le débit croît avec le nombre — le weak scaling du vivant"),
+]
+
+enregistre(Domaine(
+    nom=_PARAL,
+    aliases=frozenset(_ALIAS_PARAL),
+    objectif=_OBJECTIF_PARAL,
+    canaux=_CANAUX_PARAL,
+    principes=_PRINCIPES_PARAL,
+    strategies=_STRATEGIES_NATURE_PARAL,
+    loi=_LOI_PARAL,
+    extras={"amdahl": "accélération ≤ 1/(s + (1−s)/p) ≤ 1/s (s = fraction série)",
+            "note": "la loi de Gustafson (problème agrandi, weak scaling) obtient une accélération quasi linéaire — "
+                    "métrique différente de l'Amdahl à taille fixe"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
