@@ -2992,13 +2992,15 @@ def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str |
     # registre complet) : UNION registre de la forme détectée ∪ appris — l'appris garde la priorité de nom.
     if arite == 2 and existant is not None:
         toutes = exemples + held
-        forme = _IMM._forme_liste_scalaire(toutes)
-        if forme is not None:
-            existant = {**_IMM._registre_liste_scalaire(forme), **existant}
-        else:
-            forme_d = _IMM._forme_dict_scalaire(toutes)
-            if forme_d is not None:
-                existant = {**_IMM._registre_dict_scalaire(forme_d), **existant}
+        # même ordre de spécificité que le moteur : liste-de-dicts×clé (registre vide, rien à unir) d'abord.
+        if _IMM._forme_liste_dicts(toutes) is None:
+            forme = _IMM._forme_liste_scalaire(toutes)
+            if forme is not None:
+                existant = {**_IMM._registre_liste_scalaire(forme), **existant}
+            else:
+                forme_d = _IMM._forme_dict_scalaire(toutes)
+                if forme_d is not None:
+                    existant = {**_IMM._registre_dict_scalaire(forme_d), **existant}
     verdict = _IMM.examine_cible_multi(nom, exemples, held, existant=existant)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 
