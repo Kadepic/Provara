@@ -3006,6 +3006,8 @@ def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str |
             existant = {**_IMM._LL_REGISTRE, **existant}
         elif _IMM._forme_chaine_chaine(toutes):
             existant = {**_IMM._CC_REGISTRE, **existant}
+        elif _IMM._forme_dict_dict(toutes):
+            existant = {**_IMM._DD_REGISTRE, **existant}
     verdict = _IMM.examine_cible_multi(nom, exemples, held, existant=existant)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 

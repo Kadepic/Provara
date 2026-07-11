@@ -221,6 +221,60 @@ def _sondes_liste_liste(exemples) -> list[tuple]:
     return res
 
 
+# FORME DE TYPE DICT×DICT (atome 13 du palier structurel) : deux mappings en deux arguments. Frontière
+# MESURÉE : clés communes, soustraction/restriction = brique_manquante — et la fusion était servie par le
+# vocab SCALAIRE (a | b, union dict exacte) : une fois la forme routée, ce chemin disparaît -> la fusion
+# passe au REGISTRE (primitive du langage, les 2 ordres : la priorité de fusion est une donnée du spec).
+_DD_REGISTRE: dict[str, str] = {
+    "fusion": "{**a, **b}",
+    "fusion_inverse": "{**b, **a}",
+}
+_DD_OPS = [
+    "sorted(set(a) & set(b))", "sorted(set(a) | set(b))", "sorted(set(a) - set(b))",   # clés
+    "{_k: _v for _k, _v in a.items() if _k not in b}",                                 # soustraction
+    "{_k: _v for _k, _v in a.items() if _k in b}",                                     # restriction
+    "{_k: a[_k] + b[_k] for _k in sorted(set(a) & set(b))}",                           # somme sur clés communes
+]
+
+
+def _forme_dict_dict(toutes):
+    """(dict, dict) sur TOUS les exemples -> True, sinon None. Le SWAP discrimine l'asymétrie."""
+    if all(len(x) == 2 and isinstance(x[0], dict) and isinstance(x[1], dict) for x, _ in toutes):
+        return True
+    return None
+
+
+def _candidats_dict_dict(exemples) -> list[str]:
+    cands: set[str] = set(_DD_REGISTRE.values()) | set(_DD_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_dict_dict(exemples) -> list[tuple]:
+    """Sondes de FORME : SWAP (fusion/soustraction asymétriques), clé commune RETIRÉE de b, clé de a copiée
+    dans b avec une AUTRE valeur (discrimine l'ordre de fusion), valeur commune perturbée."""
+    out = []
+    for (x, y), _ in exemples:
+        out.append((dict(x), dict(y)))
+        out.append((dict(y), dict(x)))                          # SWAP
+        communes = sorted(set(x) & set(y), key=repr)
+        if communes:
+            k = communes[0]
+            out.append((dict(x), {k2: v for k2, v in y.items() if k2 != k}))
+            if isinstance(y.get(k), int):
+                out.append((dict(x), {**y, k: y[k] + 1}))       # valeur commune perturbée
+        propres = sorted(set(x) - set(y), key=repr)
+        if propres:
+            k = propres[0]
+            out.append((dict(x), {**y, k: (x[k] + 1 if isinstance(x[k], int) else x[k])}))   # conflit de fusion
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # FORME DE TYPE CHAÎNE×CHAÎNE (atome 12 du palier structurel) : deux chaînes en deux arguments — la classe
 # FlashFill/BlinkFill des transformations de paires de chaînes. Frontière MESURÉE : préfixe commun (canonique,
 # l'edit distance le saute en linéaire), concat avec séparateur, Hamming, mots communs = brique_manquante.
@@ -656,6 +710,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     forme_ds = _forme_dict_scalaire(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls) else None
     forme_ll = _forme_liste_liste(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds) else None
     forme_cc = _forme_chaine_chaine(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll) else None
+    forme_dd = _forme_dict_dict(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc) else None
     if existant is None:
         existant = (dict(_TT_REGISTRE) if forme_tt
                     else {} if forme_ld                  # registre VIDE honnête (rien ne servait la classe)
@@ -663,6 +718,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                     else _registre_dict_scalaire(forme_ds) if forme_ds
                     else dict(_LL_REGISTRE) if forme_ll
                     else dict(_CC_REGISTRE) if forme_cc
+                    else dict(_DD_REGISTRE) if forme_dd
                     else _REGISTRES.get(arite, {}))
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
@@ -679,6 +735,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
               else _sondes_dict_scalaire(toutes, forme_ds) if forme_ds
               else _sondes_liste_liste(toutes) if forme_ll
               else _sondes_chaine_chaine(toutes) if forme_cc
+              else _sondes_dict_dict(toutes) if forme_dd
               else _sondes_binaires(toutes)) if arite == 2 \
         else _sondes_ternaires(toutes) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
@@ -696,6 +753,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                  else _candidats_dict_scalaire(toutes, forme_ds) if forme_ds
                  else _candidats_liste_liste(toutes) if forme_ll
                  else _candidats_chaine_chaine(toutes) if forme_cc
+                 else _candidats_dict_dict(toutes) if forme_dd
                  else _candidats_binaires(toutes)) \
         if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
     if candidats:
