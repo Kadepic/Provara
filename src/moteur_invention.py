@@ -237,6 +237,7 @@ def examine_cible(nom: str, signature: str, exemples, exemples_held, budget: int
     m.etend_composition_filtree(exemples)    # + AGG/liste(F for _e in x if COND) (filtrer+transformer+agréger : somme_carres_pairs…)
     m.etend_indexe(exemples)                 # + AGG(G for _i,_e in enumerate(x) if COND) INDEXÉ (points fixes x[i]==i, positions paires, _e*_i…)
     m.etend_paires(exemples)                 # + AGG sur couples (i<j) TOUTES-PAIRES O(n²) (nb inversions, paires égales, produits/écarts de couples)
+    m.etend_sous_tableaux(exemples)          # + AGG sur sommes de sous-tableaux CONTIGUS x[i:j] (Kadane = meilleur segment)
     m.etend_matrice(exemples)                # + vocabulaire matriciel (primitives + AGG∘matrice : trace, grand_total…)
     m.etend_dict(exemples)                   # + vocabulaire dict (AGG∘values/keys + argmax/argmin : somme_valeurs…)
     m.etend_chaines(exemples)                # + vocabulaire chaînes-compositions (initiales, mot_le_plus_long, compte_voyelles…)

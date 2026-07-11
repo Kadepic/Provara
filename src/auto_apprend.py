@@ -680,6 +680,30 @@ class MoteurAutonome(MoteurOuvert):
                 ajoutes += 1
         return ajoutes
 
+    def etend_sous_tableaux(self, exemples):
+        """Compositions SOUS-TABLEAUX CONTIGUS : AGG sur les sommes des tranches x[i:j] (i<j). Le mécanisme
+        du meilleur segment contigu (Kadane = max des sommes de sous-tableaux, min des sommes…) qu'aucune
+        famille ne couvrait — distinct de etend_paires (couples d'ÉLÉMENTS) et de accumulate (préfixes seuls).
+        Formes canoniques bornées, validation CONTEXTUELLE. SÛR : gardes d'examine_cible -> jamais de faux."""
+        S = "for _i in range(len(x)) for _j in range(_i + 1, len(x) + 1)"
+        FORMES = [f"max(sum(x[_i:_j]) {S})",              # Kadane : meilleur sous-tableau contigu
+                  f"min(sum(x[_i:_j]) {S})"]              # pire sous-tableau contigu
+        existants = {e for e, _, _ in self.atomes}
+        ajoutes = 0
+        for expr in FORMES:
+            if expr in existants:
+                continue
+            try:
+                f = _fn(expr)
+                outs = [f(x) for x, _ in exemples]
+            except Exception:
+                continue
+            if all(isinstance(o, int) and not isinstance(o, bool) for o in outs):
+                self.atomes.append((expr, "list", "int"))
+                existants.add(expr)
+                ajoutes += 1
+        return ajoutes
+
     def etend_composition_liste(self, exemples):
         """Compositions LISTE-OP∘map -> LISTE : trier/renverser un map(f) (carres_tries = sorted∘map(carré),
         carres_renverses = map(carré)[::-1]). Complète etend_composition (qui ne fait que AGG∘map -> scalaire) :
