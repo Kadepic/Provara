@@ -528,6 +528,59 @@ def _sondes_liste_scalaire(exemples, forme) -> list[tuple]:
     return res
 
 
+# FORME DE TYPE SÉQUENCE×INT×INT (atome 14 du palier structurel) : première forme STRUCTURÉE à l'arité 3 —
+# la TRANCHE À DEUX BORNES a[b:c] (liste ou chaîne) et ses agrégats. Frontière MESURÉE : tranche et
+# somme_tranche = brique_manquante à l'arité 3 (le vocabulaire ternaire est scalaire pur). Registre =
+# la tranche elle-même (primitive du langage, comme a[b] ou d[k]) ; ops = agrégats ∘ tranche. Séquence en
+# POSITION 0 (le cas canonique mesuré) — autre position -> chemin scalaire, brique_manquante honnête.
+_T3_REGISTRE: dict[str, str] = {
+    "tranche": "a[b:c]",
+}
+_T3_OPS = [
+    "sum(a[b:c])", "max(a[b:c])", "min(a[b:c])",
+    "a[c:b]",                                    # bornes inversées (l'ordre des bornes = donnée du spec)
+]
+
+
+def _forme_seq_int_int(toutes):
+    """(séquence, entier, entier) sur TOUS les exemples -> True, sinon None."""
+    def _est_int(v):
+        return isinstance(v, int) and not isinstance(v, bool)
+    if all(len(x) == 3 and isinstance(x[0], (list, str)) and _est_int(x[1]) and _est_int(x[2])
+           for x, _ in toutes):
+        return True
+    return None
+
+
+def _candidats_seq_int_int(exemples) -> list[str]:
+    cands: set[str] = set(_T3_REGISTRE.values()) | set(_T3_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b", "c"]), exemples)]
+
+
+def _sondes_seq_int_int(exemples) -> list[tuple]:
+    """Sondes de FORME : séquence renversée/triée (tranche brute vs triée), bornes ±1 DANS le domaine,
+    bornes ÉCHANGÉES (tranche vide -> discrimine a[b:c] de a[c:b])."""
+    out = []
+    for (x, i, j), _ in exemples:
+        est_str = isinstance(x, str)
+        copie = (lambda s: s) if est_str else list
+        out.append((copie(x), i, j))
+        out.append((x[::-1], i, j))
+        out.append(("".join(sorted(x)) if est_str else sorted(x), i, j))
+        out.append((copie(x), j, i))                            # bornes échangées
+        if i + 1 <= j:
+            out.append((copie(x), i + 1, j))
+        if j - 1 >= i:
+            out.append((copie(x), i, j - 1))
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # Registre TERNAIRE : capacités connues à trois arguments entiers (rung suivant, patron identique au binaire).
 EXISTANT_TERNAIRE: dict[str, str] = {
     "somme3": "a + b + c",
@@ -711,6 +764,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     forme_ll = _forme_liste_liste(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds) else None
     forme_cc = _forme_chaine_chaine(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll) else None
     forme_dd = _forme_dict_dict(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc) else None
+    forme_t3 = _forme_seq_int_int(toutes) if arite == 3 else None
     if existant is None:
         existant = (dict(_TT_REGISTRE) if forme_tt
                     else {} if forme_ld                  # registre VIDE honnête (rien ne servait la classe)
@@ -719,6 +773,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                     else dict(_LL_REGISTRE) if forme_ll
                     else dict(_CC_REGISTRE) if forme_cc
                     else dict(_DD_REGISTRE) if forme_dd
+                    else dict(_T3_REGISTRE) if forme_t3
                     else _REGISTRES.get(arite, {}))
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
@@ -737,7 +792,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
               else _sondes_chaine_chaine(toutes) if forme_cc
               else _sondes_dict_dict(toutes) if forme_dd
               else _sondes_binaires(toutes)) if arite == 2 \
-        else _sondes_ternaires(toutes) if arite == 3 \
+        else (_sondes_seq_int_int(toutes) if forme_t3 else _sondes_ternaires(toutes)) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
 
     # 1) EXISTE DÉJÀ : une capacité connue reproduit la cible ?
@@ -755,7 +810,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                  else _candidats_chaine_chaine(toutes) if forme_cc
                  else _candidats_dict_dict(toutes) if forme_dd
                  else _candidats_binaires(toutes)) \
-        if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
+        if arite == 2 else (_candidats_seq_int_int(toutes) if forme_t3
+                            else _candidats_ternaires(toutes)) if arite == 3 else []
     if candidats:
         sigs = {e: _sig_multi(_callable_multi(e, nom, params), sondes) for e in candidats}
         for j, s in enumerate(sondes):
