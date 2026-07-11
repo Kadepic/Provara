@@ -1,5 +1,23 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 17e domaine « nourrir / cultiver » + loi L14 (plafond photosynthétique)
+
+Nourrir / cultiver. Nouvelle loi dure au juge (`L14`) : le PLAFOND de rendement PHOTOSYNTHÉTIQUE — la conversion
+solaire→biomasse ≤ ~12 % (maximum théorique avant respiration ; réalisé ~1–6 %, champ ~1–2 %), bornée par la
+fraction utile du spectre (PAR) et le rendement quantique. CONSERVATEUR (FAUX=0) : le plancher de réfutation
+(12 %) est bien au-dessus du record (~8 % en pointe) → aucune culture/algue réelle n'est réfutée. Gate
+`valide_coherence_physique` **213 → 224/224**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (culture « à 25 % », biomasse
+over-unity). Reframing : pas la biomasse brute mais un maximum de CALORIES COMESTIBLES par surface/eau/intrant.
+Leviers : combler l'écart au plafond (C4, court-circuiter la photorespiration, canopée), SAUTER la photosynthèse
+(fermentation gazeuse H₂/CO₂ → protéine microbienne, découplée du sol/soleil), organismes plus efficaces
+(algues/cyanobactéries), environnement contrôlé, indice de récolte, manger BAS dans la chaîne trophique (−90 % par
+niveau). 4 stratégies naturelles propres (C4 = pompe à CO₂, CAM = stockage nocturne/eau, symbiose rhizobium =
+azote gratuit, phytoplancton = échelle). Gate `valide_besoin` **323 → 340/340** ; les 16 domaines précédents intacts.
+
+**JALON : 17 DOMAINES D'INVENTION, 14 LOIS PHYSIQUES DANS LE JUGE** (… L13 Tsiolkovski, L14 plafond photosynthétique).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 16e domaine « propulsion spatiale » + loi L13 (équation de Tsiolkovski)
 
 Atteindre une grande vitesse dans le vide. Nouvelle loi dure au juge (`L13`) : l'équation de TSIOLKOVSKI — Δv ≤

@@ -2530,6 +2530,146 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DIX-SEPTIÈME DOMAINE : nourrir / cultiver. Nouvelle loi dure au juge (L14) : le PLAFOND de rendement
+#  PHOTOSYNTHÉTIQUE — la conversion solaire→biomasse est bornée (~12 % théorique avant respiration ; réalisé
+#  ~1–6 % ; champ ~1–2 %) par la fraction utile du spectre (PAR ~48 %) et le rendement quantique. REFRAMING
+#  machine : le but n'est pas la biomasse brute mais un maximum de CALORIES COMESTIBLES par surface, par eau et
+#  par intrant. Leviers : combler l'écart au théorique (voie C4, court-circuiter la photorespiration, architecture
+#  de canopée) ; SAUTER la photosynthèse (fermentation gazeuse H₂/CO₂ → protéine microbienne, découplée du sol et
+#  du soleil) ; algues/cyanobactéries (plus efficaces) ; environnement contrôlé ; améliorer l'indice de récolte et
+#  manger BAS dans la chaîne trophique (chaque niveau perd ~90 %).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_NOURRIR = "production_alimentaire"
+_ALIAS_NOURRIR = {
+    "nourrir", "cultiver", "produire de la nourriture", "produire des calories",
+    "faire pousser des aliments", "produire de la biomasse alimentaire",
+}
+
+# ── « Canaux » : les leviers de la production de calories comestibles ─────────────────────────────────────────────
+_CANAUX_NOURRIR = [
+    Canal("rendement photosynthetique", "biomasse", "COMBLER l'écart au plafond théorique : voie C4, court-circuiter la photorespiration, canopée optimale",
+          True, "le champ (~1–2 %) est loin du théorique (~6 %) : réduire la photorespiration (Rubisco), concentrer "
+                "le CO₂ (C4), optimiser l'architecture foliaire — le levier « approcher le plafond »"),
+    Canal("decouplage", "biomasse", "SAUTER la photosynthèse : fermentation gazeuse (H₂/CO₂ → protéine microbienne)",
+          True, "produire des protéines à partir d'électricité, d'H₂ et de CO₂ (microbes) découple la nourriture du "
+                "sol et du soleil → rendement surfacique bien supérieur ; énergie et bioréacteurs à fournir"),
+    Canal("niveau trophique", "biomasse", "manger BAS dans la chaîne : chaque niveau trophique perd ~90 % de l'énergie",
+          True, "convertir la biomasse végétale en viande gaspille ~90 % de l'énergie par niveau → manger les "
+                "plantes (ou des microbes) directement multiplie les calories disponibles — le levier « chaîne courte »"),
+    Canal("indice de recolte", "biomasse", "augmenter la FRACTION COMESTIBLE (indice de récolte) et réduire les pertes",
+          True, "ne compte que ce qui finit dans l'assiette : maximiser la part comestible de la plante et réduire "
+                "les pertes post-récolte donne des calories sans plus de photosynthèse — le levier « moins de gaspillage »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le plafond photosynthétique (type `photosynthese`, rendement ≤ ~12 %) ───
+_PRINCIPES_NOURRIR = [
+    _P("grande culture C3 en plein champ (référence)",
+       "nourrir : culture C3 (blé, riz) en plein champ",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.01}, True, True,
+       "—", "mature",
+       0.65, "la référence mondiale : ~1 % du solaire en biomasse (photorespiration, saison, canopée) → loin du "
+             "théorique ~4,6 % ; l'écart est le gisement, pas un mur physique"),
+    _P("plante en C4 (maïs, canne, sorgho)",
+       "nourrir : culture C4 qui concentre le CO₂ autour de la Rubisco",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.03}, True, True,
+       "—", "mature",
+       0.6, "la voie C4 supprime la photorespiration en pompant le CO₂ → ~2–3× le rendement du C3 en climat chaud ; "
+            "porter le C4 dans le riz est un grand chantier — le levier « supprimer la photorespiration »"),
+    _P("microalgue en photobioréacteur",
+       "nourrir : cultiver des microalgues en réacteur éclairé",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.05}, True, True,
+       "—", "émergent",
+       0.5, "les microalgues approchent mieux le plafond (~5 %) et poussent sur des terres non arables/eau salée ; "
+            "coût de récolte et d'énergie du réacteur — le levier « organisme plus efficace »"),
+    _P("cyanobactérie optimisée",
+       "nourrir : cyanobactéries ingénierées pour la protéine et les lipides",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.06}, True, True,
+       "—", "recherche",
+       0.45, "proches du maximum réaliste (~6 %), croissance rapide, fixation directe du CO₂ ; passage à l'échelle "
+             "et stabilité des souches à prouver — pousser vers le plafond théorique"),
+    _P("ingénierie de la photorespiration (court-circuit)",
+       "nourrir : voie synthétique qui recycle le sous-produit de la photorespiration dans le chloroplaste",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.04}, True, True,
+       "—", "recherche",
+       0.45, "récupérer l'énergie perdue par la photorespiration a montré +20–40 % de biomasse au champ (essais "
+             "tabac) → gisement direct ; transfert aux céréales à valider — le levier « colmater les pertes »"),
+    _P("fermentation gazeuse (H₂/CO₂ → protéine microbienne)",
+       "nourrir : produire des protéines microbiennes à partir d'électricité, d'hydrogène et de CO₂",
+       {"type": "photosynthese"}, True, True,
+       "—", "émergent",
+       0.5, "REFRAMING : découple la nourriture du SOL et du SOLEIL (usine, pas champ) → rendement surfacique "
+            "colossal, insensible à la météo ; demande de l'énergie propre et des bioréacteurs — « sauter la photosynthèse »"),
+    _P("agriculture en environnement contrôlé (vertical, LED accordées)",
+       "nourrir : cultures empilées sous LED aux longueurs d'onde optimales, climat maîtrisé",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.05}, True, True,
+       "—", "mature (niche)",
+       0.4, "éclairage accordé à la photosynthèse, zéro pesticide, très peu d'eau, rendement surfacique élevé ; "
+            "MAIS l'électricité de la LED est un coût — gagnant si l'énergie est propre et bon marché"),
+    _P("bas niveau trophique / indice de récolte",
+       "nourrir : manger directement plantes/microbes et maximiser la fraction comestible récoltée",
+       {"type": "photosynthese"}, True, True,
+       "—", "mature (sous-exploité)",
+       0.5, "chaque niveau trophique perd ~90 % → manger bas dans la chaîne et augmenter la part comestible multiplie "
+            "les calories SANS plus de photosynthèse ; changement de régime et de variétés — le levier « chaîne courte »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("culture « à 25 % de rendement solaire »",
+       "nourrir : culture convertissant 25 % de l'énergie solaire en biomasse",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.25}, True, True,
+       "—", "revendication",
+       0.3, "25 % > plafond photosynthétique (~12 % théorique, ~6 % réalisé) — impossible ; à réfuter par le plafond "
+            "de rendement photosynthétique"),
+    _P("biomasse « produisant plus d'énergie que le soleil reçu »",
+       "nourrir : plante restituant plus d'énergie qu'elle n'en reçoit du soleil",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 1.5}, True, True,
+       "—", "revendication",
+       0.25, "rendement 150 % : la biomasse contiendrait plus d'énergie que le rayonnement reçu = création nette — "
+             "impossible"),
+]
+
+_OBJECTIF_NOURRIR = ("Le but réel n'est pas la biomasse brute mais un maximum de CALORIES COMESTIBLES par surface, "
+                     "par eau et par intrant, sous le plafond de la photosynthèse : la conversion solaire→biomasse "
+                     "est bornée (~12 % théorique, ~1–6 % réalisé). Leviers : combler l'écart au plafond (voie C4, "
+                     "court-circuiter la photorespiration, canopée) ; SAUTER la photosynthèse (fermentation gazeuse "
+                     "H₂/CO₂ → protéine microbienne, découplée du sol et du soleil) ; organismes plus efficaces "
+                     "(algues/cyanobactéries) ; environnement contrôlé ; améliorer l'indice de récolte et manger BAS "
+                     "dans la chaîne trophique (chaque niveau perd ~90 %). Chaque principe reste jugé par le plafond "
+                     "photosynthétique.")
+_LOI_NOURRIR = ("plafond de rendement photosynthétique : la conversion solaire→biomasse ≤ ~12 % (théorique, avant "
+                "respiration ; réalisé ~1–6 %) ; gains réels = combler l'écart au plafond (C4, photorespiration, "
+                "canopée), sauter la photosynthèse (fermentation gazeuse), manger bas dans la chaîne trophique, "
+                "améliorer l'indice de récolte")
+
+# La nature nourrit par la concentration du CO₂ (C4), l'économie d'eau (CAM), la symbiose (rhizobium), l'échelle (phytoplancton).
+_STRATEGIES_NATURE_NOURRIR = [
+    _Nature("plante en C4 (pompe à CO₂ autour de la Rubisco)",
+            ["concentre le CO₂ sur le site de fixation", "supprime la photorespiration", "meilleur rendement en climat chaud"],
+            "concentrer le CO₂ pour supprimer la perte de photorespiration — le levier « approcher le plafond »"),
+    _Nature("plante CAM (stockage nocturne du CO₂)",
+            ["fixe le CO₂ la nuit pour ouvrir les stomates au frais", "économise l'eau en milieu aride"],
+            "séparer dans le TEMPS la capture du CO₂ et la photosynthèse pour économiser l'eau — cultiver le sec"),
+    _Nature("symbiose légumineuse-rhizobium (azote gratuit)",
+            ["bactéries fixant l'azote de l'air dans les racines", "fertilité sans engrais de synthèse"],
+            "externaliser la fourniture de nutriments à un partenaire — réduire l'intrant, pas le rendement brut"),
+    _Nature("phytoplancton océanique (fixation à grande échelle)",
+            ["fixe la moitié du carbone de la planète", "croissance rapide sur une immense surface d'eau"],
+            "produire de la biomasse à l'ÉCHELLE sur l'eau plutôt que sur des terres arables rares — le levier « surface »"),
+]
+
+enregistre(Domaine(
+    nom=_NOURRIR,
+    aliases=frozenset(_ALIAS_NOURRIR),
+    objectif=_OBJECTIF_NOURRIR,
+    canaux=_CANAUX_NOURRIR,
+    principes=_PRINCIPES_NOURRIR,
+    strategies=_STRATEGIES_NATURE_NOURRIR,
+    loi=_LOI_NOURRIR,
+    extras={"rendement_photo_max": "≈ 12 % (théorique, solaire→biomasse) ; réalisé ~1–6 %, champ ~1–2 %",
+            "note": "sauter la photosynthèse (fermentation gazeuse H₂/CO₂→protéine) découple du sol et du soleil ; "
+                    "manger bas dans la chaîne trophique évite la perte de ~90 % par niveau"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

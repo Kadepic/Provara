@@ -758,12 +758,54 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "limite_abbe" in B.decompose("voir plus petit"),
       "les 15 domaines précédents inchangés après l'ajout de la fusée (isolation)")
 
+# ── 23) DIX-SEPTIÈME DOMAINE : nourrir / cultiver (nouvelle loi L14 = plafond de rendement photosynthétique) ──
+dno = B.decompose("cultiver")
+check(dno["statut"] == "decompose", "besoin production alimentaire connu -> decompose")
+check("photosynth" in dno["objectif_reel"].lower() and "biomasse" in dno["objectif_reel"].lower(),
+      "objectif réel nourrir = plafond photosynthétique, calories par surface")
+check("rendement_photo_max" in dno, "extras propres : le plafond photosynthétique")
+no_canaux = {c.canal for c in dno["canaux"]}
+check(no_canaux == {"rendement photosynthetique", "decouplage", "niveau trophique", "indice de recolte"},
+      f"4 canaux de la production alimentaire ({no_canaux})")
+prno = B.principes("cultiver")
+pno = {e["nom"]: e for e in prno["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : au-dessus du plafond et over-unity
+c25 = pno["culture « à 25 % de rendement solaire »"]
+check(c25["atome"].statut == A.REFUTE, "25 % solaire→biomasse > plafond -> RÉFUTÉ")
+check(A.est_refute(c25["atome"].contenu), "contenu réfuté (25 %) dans la garde")
+ou = pno["biomasse « produisant plus d'énergie que le soleil reçu »"]
+check(ou["atome"].statut == A.REFUTE, "biomasse over-unity -> RÉFUTÉ")
+# procédés réels (dont la fermentation gazeuse découplée) -> SUPPOSITIONS
+for nom in ("grande culture C3 en plein champ (référence)", "plante en C4 (maïs, canne, sorgho)",
+            "fermentation gazeuse (H₂/CO₂ → protéine microbienne)"):
+    e = pno[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prno["liste"]), "aucun principe alimentaire promu en FAIT")
+check("candidat pour production_alimentaire" in pno["grande culture C3 en plein champ (référence)"]["atome"].portee.condition,
+      "portée des principes alimentaires nommant production_alimentaire")
+# la loi L14 : rendement au-dessus du plafond réfuté, C4 réaliste cohérent
+st_no, _, loi_no = COH.juge_dispositif({"type": "photosynthese", "rendement_solaire_biomasse": 0.25})
+check(st_no == COH.VIOLE and loi_no == COH.L14, "juge : 25 % solaire→biomasse -> VIOLE via L14")
+check(COH.juge_dispositif({"type": "photosynthese", "rendement_solaire_biomasse": 0.06})[0] == COH.COHERENT_BORNE,
+      "C4/algue 6 % (< plafond) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (C4, rhizobium)
+natno = B.strategies_naturelles("cultiver")
+check(len(natno) >= 4 and any("c4" in s["exemple"].lower() for s in natno), "stratégies alimentaires propres (C4)")
+check(not any("diatomée" in s["exemple"] for s in natno) and not any("salpe" in s["exemple"] for s in natno),
+      "pas de fuite des stratégies optique/fusée vers l'alimentaire")
+# les SEIZE domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "tsiolkovski" in B.decompose("propulsion spatiale")
+      and "limite_betz" in B.decompose("capter l energie du vent"),
+      "les 16 domaines précédents inchangés après l'ajout de l'alimentaire (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
-                              "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale"],
-      "seize domaines modélisés, dans l'ordre d'enregistrement")
+                              "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
+                              "production_alimentaire"],
+      "dix-sept domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
