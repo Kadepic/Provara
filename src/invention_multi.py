@@ -49,6 +49,230 @@ _COMBINE = ["{pa} + {pb}", "{pa} - {pb}", "{pa} * {pb}", "max({pa}, {pb})", "min
 _BASE_SUPPL = ["b - a", "b // a", "b % a", "b ** a", "a * a + b * b", "a * a - b * b",
                "a * b + a + b", "__import__('math').gcd(a, b)"]
 
+# FORME DE TYPE LISTE×SCALAIRE (palier structurel 2026-07-12) : l'arité 2 HÉTÉROGÈNE — un argument-STRUCTURE
+# (liste) + un paramètre scalaire (entier). Frontière MESURÉE : n_premiers, kieme_plus_grand, compte_superieurs,
+# rotation restaient brique_manquante (le vocabulaire binaire est scalaire pur). MÊME PATRON que les arités
+# (un registre + un générateur + des sondes), routé par FORME DE TYPE détectée sur TOUS les exemples — le
+# chemin entier×entier ne bouge pas. C'est la classe DeepCoder des opérateurs de premier ordre (take/drop/
+# access/count paramétrés). Templates {L}/{K} : instanciés selon l'ordre observé (liste, k) ou (k, liste) —
+# l'ordre des arguments est une donnée du spec, pas une convention.
+_LS_REGISTRE: dict[str, str] = {
+    "compte_occurrences": "{L}.count({K})",
+    "appartient": "{K} in {L}",
+    "element_a_l_indice": "{L}[{K}]",
+    "premier_indice": "{L}.index({K})",
+}
+# Générateur borné, sémantique EXACTE (pas d'aimant à coïncidences arithmétiques) : tranches des deux bords,
+# k-ième trié, rotations, comptages/filtres vs seuil, map paramétré, paquets de taille k.
+_LS_OPS = [
+    "{L}[:{K}]", "{L}[{K}:]", "{L}[-{K}:]", "{L}[:-{K}]",
+    "sorted({L})[-{K}]", "sorted({L})[{K} - 1]",
+    "sorted({L})[:{K}]", "sorted({L})[-{K}:]",
+    "{L}[{K}:] + {L}[:{K}]", "{L}[-{K}:] + {L}[:-{K}]",
+    "sum(1 for _e in {L} if _e > {K})", "sum(1 for _e in {L} if _e < {K})",
+    "sum(1 for _e in {L} if _e >= {K})",
+    "[_e for _e in {L} if _e > {K}]", "[_e for _e in {L} if _e < {K}]",
+    "[_e for _e in {L} if _e != {K}]",
+    "[_e + {K} for _e in {L}]", "[_e * {K} for _e in {L}]",
+    "[{L}[_i:_i + {K}] for _i in range(0, len({L}), {K})]",
+    # AGG∘TRANCHE (frontière MESURÉE après le 1er lot : somme_k_plus_grands & co = brique_manquante) — la
+    # classe canonique top-k (sum/max/min d'une tranche brute ou triée). EXCLUES les identités déguisées
+    # max(sorted[-k:]) ≡ max et min(sorted[:k]) ≡ min (k-invariantes, jamais une capacité neuve — même esprit
+    # que le filtre identité de composition_filtree).
+    "sum({L}[:{K}])", "sum({L}[{K}:])", "sum(sorted({L})[:{K}])", "sum(sorted({L})[-{K}:])",
+    "max({L}[:{K}])", "max({L}[{K}:])", "max(sorted({L})[:{K}])",
+    "min({L}[:{K}])", "min({L}[{K}:])", "min(sorted({L})[-{K}:])",
+]
+
+
+# FORME DE TYPE DICT×SCALAIRE (2e forme hétérogène, même patron) : un dict + une clé OU un seuil scalaire.
+# Frontière MESURÉE : valeur_de_cle, retrait de clé, get-avec-défaut, clés/comptes par seuil sur les VALEURS =
+# brique_manquante. Un scalaire ENTIER peut être clé OU seuil : les DEUX vocabulaires sont émis, les sondes
+# discriminent (spec faible -> AMBIGU honnête). Sorties ordonnées par sorted() : déterminisme.
+_DS_REGISTRE: dict[str, str] = {
+    "valeur_de_cle": "{L}[{K}]",
+    "appartient_cles": "{K} in {L}",
+}
+_DS_OPS = [
+    "{L}.get({K}, 0)",                                                    # lookup avec défaut (clé absente -> 0)
+    "{{_k2: _v for _k2, _v in {L}.items() if _k2 != {K}}}",               # retrait de la clé
+    "sorted(_k2 for _k2, _v in {L}.items() if _v > {K})",                 # clés dont la valeur dépasse le seuil
+    "sorted(_k2 for _k2, _v in {L}.items() if _v < {K})",
+    "sum(1 for _v in {L}.values() if _v > {K})",                          # comptes par seuil sur les valeurs
+    "sum(1 for _v in {L}.values() if _v < {K})",
+    "sum(1 for _v in {L}.values() if _v >= {K})",
+]
+
+
+def _forme_dict_scalaire(toutes):
+    """(dict, clé/seuil str|int) ou l'ordre inverse sur TOUS les exemples -> (var_dict, var_scalaire), sinon None."""
+    def _scal(v):
+        return isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool))
+    if all(len(a) == 2 and isinstance(a[0], dict) and _scal(a[1]) for a, _ in toutes):
+        return ("a", "b")
+    if all(len(a) == 2 and isinstance(a[1], dict) and _scal(a[0]) for a, _ in toutes):
+        return ("b", "a")
+    return None
+
+
+def _registre_dict_scalaire(forme) -> dict[str, str]:
+    L, K = forme
+    return {n: t.format(L=L, K=K) for n, t in _DS_REGISTRE.items()}
+
+
+def _candidats_dict_scalaire(exemples, forme) -> list[str]:
+    L, K = forme
+    cands: set[str] = set(_registre_dict_scalaire(forme).values())
+    cands.update(t.format(L=L, K=K) for t in _DS_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_dict_scalaire(exemples, forme) -> list[tuple]:
+    """Sondes de FORME : dict SANS la clé (discrimine d[k] vs get vs appartenance), valeur À la clé perturbée
+    (discrimine lecture de valeur vs structure), AUTRE clé du dict, seuil±1 pour les entiers (> vs >=)."""
+    scal_premier = forme == ("b", "a")
+    out = []
+    for args, _ in exemples:
+        d, k = (args[1], args[0]) if scal_premier else (args[0], args[1])
+
+        def mk(dd, kk):
+            return (kk, dd) if scal_premier else (dd, kk)
+        out.append(mk(dict(d), k))
+        out.append(mk({k2: v for k2, v in d.items() if k2 != k}, k))       # clé retirée
+        if k in d:
+            out.append(mk({**d, k: (d[k] + 1 if isinstance(d[k], int) else d[k])}, k))
+        autres = sorted((k2 for k2 in d if k2 != k), key=repr)
+        if autres:
+            out.append(mk(dict(d), autres[0]))                             # autre clé observée
+        if isinstance(k, int) and not isinstance(k, bool):
+            out.append(mk(dict(d), k + 1))
+            out.append(mk(dict(d), k - 1))
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
+# FORME DE TYPE LISTE-DE-DICTS×CLÉ (3e forme hétérogène, atome 9 du palier structurel) : la COLONNE
+# relationnelle — une table (liste d'enregistrements) + un champ PARAMÈTRE. Frontière MESURÉE : colonne =
+# brique_manquante (etend_liste_dicts mono découvre le champ dans les DONNÉES ; ici le champ est un ARGUMENT —
+# croisement multi-arg × structures). Détectée AVANT liste×scalaire (forme plus spécifique : une clé entière
+# matcherait (liste, int) à tort). Registre VIDE honnête : rien ne servait cette classe avant.
+_LD_OPS = [
+    "[_d[{K}] for _d in {L}]",                       # colonne (projection du champ)
+    "[_d.get({K}, 0) for _d in {L}]",                # colonne avec défaut (champ absent -> 0)
+    "sum(_d[{K}] for _d in {L})",                    # agrégats de colonne
+    "max(_d[{K}] for _d in {L})",
+    "min(_d[{K}] for _d in {L})",
+    "sorted(_d[{K}] for _d in {L})",                 # colonne triée
+    "[_d for _d in {L} if {K} in _d]",               # sélection des enregistrements possédant le champ
+]
+
+
+def _forme_liste_dicts(toutes):
+    """(liste NON VIDE de dicts, clé str|int) ou l'ordre inverse sur TOUS les exemples, sinon None."""
+    def _cle(v):
+        return isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool))
+    def _table(v):
+        return isinstance(v, list) and v and all(isinstance(d, dict) for d in v)
+    if all(len(a) == 2 and _table(a[0]) and _cle(a[1]) for a, _ in toutes):
+        return ("a", "b")
+    if all(len(a) == 2 and _table(a[1]) and _cle(a[0]) for a, _ in toutes):
+        return ("b", "a")
+    return None
+
+
+def _candidats_liste_dicts(exemples, forme) -> list[str]:
+    L, K = forme
+    cands = {t.format(L=L, K=K) for t in _LD_OPS}
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_liste_dicts(exemples, forme) -> list[tuple]:
+    """Sondes de FORME : table RENVERSÉE (l'ordre des enregistrements), champ RETIRÉ du 1er enregistrement
+    (discrimine d[k] vs get vs sélection), valeur du champ perturbée, autre champ commun observé."""
+    scal_premier = forme == ("b", "a")
+    out = []
+    for args, _ in exemples:
+        x, k = (args[1], args[0]) if scal_premier else (args[0], args[1])
+
+        def mk(xx, kk):
+            return (kk, xx) if scal_premier else (xx, kk)
+        out.append(mk([dict(d) for d in x], k))
+        out.append(mk([dict(d) for d in reversed(x)], k))
+        if x and k in x[0]:
+            prive = [{k2: v for k2, v in x[0].items() if k2 != k}] + [dict(d) for d in x[1:]]
+            out.append(mk(prive, k))
+            if isinstance(x[0][k], int) and not isinstance(x[0][k], bool):
+                out.append(mk([{**x[0], k: x[0][k] + 1}] + [dict(d) for d in x[1:]], k))
+        communs = sorted((k2 for k2 in x[0] if k2 != k and all(k2 in d for d in x)), key=repr) if x else []
+        if communs:
+            out.append(mk([dict(d) for d in x], communs[0]))
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
+def _forme_liste_scalaire(toutes):
+    """(liste, entier) ou (entier, liste) sur TOUS les exemples -> (var_liste, var_scalaire), sinon None."""
+    def _est(v, t):
+        return isinstance(v, t) and not isinstance(v, bool)
+    if all(len(a) == 2 and _est(a[0], list) and _est(a[1], int) for a, _ in toutes):
+        return ("a", "b")
+    if all(len(a) == 2 and _est(a[0], int) and _est(a[1], list) for a, _ in toutes):
+        return ("b", "a")
+    return None
+
+
+def _registre_liste_scalaire(forme) -> dict[str, str]:
+    L, K = forme
+    return {n: t.format(L=L, K=K) for n, t in _LS_REGISTRE.items()}
+
+
+def _candidats_liste_scalaire(exemples, forme) -> list[str]:
+    """Expressions liste×scalaire qui REPRODUISENT les exemples. Bornée, dédupliquée ; soundness par les gardes."""
+    L, K = forme
+    cands: set[str] = set(_registre_liste_scalaire(forme).values())
+    cands.update(t.format(L=L, K=K) for t in _LS_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_liste_scalaire(exemples, forme) -> list[tuple]:
+    """Sondes de FORME : liste RENVERSÉE (discrimine take vs sorted-take), liste TRIÉE, k±1 DANS le domaine,
+    doublon ajouté (discrimine comptage vs appartenance). Pas de SWAP : types invalides -> ERR uniforme sur
+    tous les candidats de la forme, aucune discrimination à y gagner."""
+    scal_premier = forme == ("b", "a")
+    out = []
+    for args, _ in exemples:
+        x, k = (args[1], args[0]) if scal_premier else (args[0], args[1])
+
+        def mk(xx, kk):
+            return (kk, xx) if scal_premier else (xx, kk)
+        out.append(mk(list(x), k))
+        out.append(mk(list(reversed(x)), k))
+        out.append(mk(sorted(x), k))
+        if 1 <= k + 1 <= len(x):
+            out.append(mk(list(x), k + 1))
+        if k - 1 >= 1:
+            out.append(mk(list(x), k - 1))
+        if x:
+            out.append(mk(list(x) + [x[0]], k))
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # Registre TERNAIRE : capacités connues à trois arguments entiers (rung suivant, patron identique au binaire).
 EXISTANT_TERNAIRE: dict[str, str] = {
     "somme3": "a + b + c",
@@ -222,8 +446,17 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
         return Verdict(INCOHERENT, nom, justification="arité incohérente entre les exemples")
     arite = arites.pop()
     params = _params(arite)
+    # FORMES DE TYPE (palier structurel) : arité 2 hétérogène liste-de-dicts×clé (la plus spécifique,
+    # détectée en premier), liste×scalaire ou dict×scalaire -> registre/candidats/sondes de la forme ;
+    # sinon chemins scalaires INCHANGÉS. `existant` de l'appelant prioritaire.
+    forme_ld = _forme_liste_dicts(toutes) if arite == 2 else None
+    forme_ls = _forme_liste_scalaire(toutes) if arite == 2 and not forme_ld else None
+    forme_ds = _forme_dict_scalaire(toutes) if arite == 2 and not forme_ld and not forme_ls else None
     if existant is None:
-        existant = _REGISTRES.get(arite, {})
+        existant = ({} if forme_ld                       # registre VIDE honnête (rien ne servait la classe)
+                    else _registre_liste_scalaire(forme_ls) if forme_ls
+                    else _registre_dict_scalaire(forme_ds) if forme_ds
+                    else _REGISTRES.get(arite, {}))
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
     vus: dict = {}
@@ -233,7 +466,11 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
             return Verdict(INCOHERENT, nom, justification="deux sorties différentes pour la même entrée")
         vus[k] = o
 
-    sondes = _sondes_binaires(toutes) if arite == 2 else _sondes_ternaires(toutes) if arite == 3 \
+    sondes = (_sondes_liste_dicts(toutes, forme_ld) if forme_ld
+              else _sondes_liste_scalaire(toutes, forme_ls) if forme_ls
+              else _sondes_dict_scalaire(toutes, forme_ds) if forme_ds
+              else _sondes_binaires(toutes)) if arite == 2 \
+        else _sondes_ternaires(toutes) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
 
     # 1) EXISTE DÉJÀ : une capacité connue reproduit la cible ?
@@ -243,7 +480,11 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                            justification="déjà couvert par l'inventaire binaire existant")
 
     # 2) RÉALISABLE par recombinaison ? (arité 2 = binaire, arité 3 = ternaire ; patron reproductible)
-    candidats = _candidats_binaires(toutes) if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
+    candidats = (_candidats_liste_dicts(toutes, forme_ld) if forme_ld
+                 else _candidats_liste_scalaire(toutes, forme_ls) if forme_ls
+                 else _candidats_dict_scalaire(toutes, forme_ds) if forme_ds
+                 else _candidats_binaires(toutes)) \
+        if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
     if candidats:
         sigs = {e: _sig_multi(_callable_multi(e, nom, params), sondes) for e in candidats}
         for j, s in enumerate(sondes):

@@ -2986,6 +2986,21 @@ def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str |
     params = _IMM._params(arite)
     # SELF-IMPROVING : sert le registre appris de CETTE arité -> une brique déjà retenue redevient EXISTE_DEJA.
     existant = _BRIQUES_MULTI.existant(arite) if arite in (2, 3) else None
+    # FORMES HÉTÉROGÈNES (palier structurel) : le registre appris est semé des bases SCALAIRES — passé seul,
+    # il écraserait le registre de FORME (liste×scalaire, dict×scalaire) et une primitive (a.count(b), d[k])
+    # passerait pour « comportement nouveau » (fausse nouveauté). Même patron que le mono (store semé du
+    # registre complet) : UNION registre de la forme détectée ∪ appris — l'appris garde la priorité de nom.
+    if arite == 2 and existant is not None:
+        toutes = exemples + held
+        # même ordre de spécificité que le moteur : liste-de-dicts×clé (registre vide, rien à unir) d'abord.
+        if _IMM._forme_liste_dicts(toutes) is None:
+            forme = _IMM._forme_liste_scalaire(toutes)
+            if forme is not None:
+                existant = {**_IMM._registre_liste_scalaire(forme), **existant}
+            else:
+                forme_d = _IMM._forme_dict_scalaire(toutes)
+                if forme_d is not None:
+                    existant = {**_IMM._registre_dict_scalaire(forme_d), **existant}
     verdict = _IMM.examine_cible_multi(nom, exemples, held, existant=existant)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 
