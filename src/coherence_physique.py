@@ -76,6 +76,8 @@ L24 = ("loi d'Amdahl : l'accélération par parallélisation d'un problème de t
        "(s = fraction série) — la partie séquentielle plafonne le gain, quel que soit le nombre de processeurs")
 L25 = ("troisième principe de la thermodynamique : le zéro absolu (0 K) est inatteignable en un nombre fini "
        "d'étapes — on s'en approche asymptotiquement (chaque étape retire de moins en moins d'entropie), jamais atteint")
+L26 = ("limite quantique standard d'une horloge : l'instabilité fractionnaire ≥ 1/(2π·f₀·τ·√N) (bruit de projection "
+       "quantique, N atomes non intriqués) — sauf intrication (spin squeezing, vers la limite de Heisenberg 1/N)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -117,7 +119,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
                  "detection", "amplification", "echantillonnage", "tri", "recherche", "parallelisation",
-                 "cryogenie"):
+                 "cryogenie", "horloge"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -617,6 +619,25 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         if _nb(tk) and tk <= 0.0:
             return (VIOLE, f"température de refroidissement {tk} K ≤ 0 : le zéro absolu est inatteignable et rien "
                            f"n'est plus froid (3e principe) — impossible", L25)
+
+    # --- Limite quantique standard d'une horloge : instabilité ≥ 1/(2π·f₀·τ·√N). ---
+    # La mesure d'une fréquence sur N atomes non intriqués est limitée par le bruit de PROJECTION QUANTIQUE :
+    # l'instabilité fractionnaire (écart d'Allan) ≥ 1/(2π·f₀·τ·√N). EXCEPTION (flag) : des atomes INTRIQUÉS (spin
+    # squeezing) descendent sous la LQS vers la limite de Heisenberg (1/N) → on ne réfute qu'une horloge NON intriquée
+    # revendiquant une stabilité sous la LQS. CONSERVATEUR : une horloge réelle reste AU-DESSUS → jamais un faux positif.
+    if t == "horloge":
+        if spec.get("intrication") is not True:
+            f0 = spec.get("frequence_Hz")
+            tau = spec.get("temps_s")
+            n = spec.get("nb_atomes")
+            sig = spec.get("stabilite")
+            if (_nb(f0) and _nb(tau) and _nb(n) and _nb(sig)
+                    and f0 > 0 and tau > 0 and n >= 1 and sig > 0):
+                lqs = 1.0 / (2.0 * math.pi * f0 * tau * math.sqrt(n))
+                if sig < lqs * (1.0 - 1e-9):
+                    return (VIOLE, f"instabilité {sig} < limite quantique standard {lqs:.3e} (1/(2π·f₀·τ·√N), "
+                                   f"f₀={f0} Hz, τ={tau} s, N={n} atomes non intriqués) : sous le bruit de projection "
+                                   f"quantique — impossible sans intrication", L26)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

@@ -211,6 +211,11 @@ check(statut({"type": "cryogenie", "atteint_zero_absolu": True}) == P.VIOLE, "at
 check(loi({"type": "cryogenie", "atteint_zero_absolu": True}) == P.L25, "3e principe = L25")
 check(statut({"type": "cryogenie", "temperature_atteinte_K": 0.0}) == P.VIOLE, "0 K atteint -> VIOLE")
 check(statut({"type": "cryogenie", "temperature_atteinte_K": -1}) == P.VIOLE, "-1 K (sous 0) -> VIOLE")
+# limite quantique standard d'une horloge : stabilité sous 1/(2π·f₀·τ·√N) (non intriquée).
+check(statut({"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000,
+              "stabilite": 1e-19}) == P.VIOLE, "1e-19 < LQS ~3,2e-18 (non intriquée) -> VIOLE")
+check(loi({"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000,
+           "stabilite": 1e-19}) == P.L26, "limite quantique standard = L26")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -376,6 +381,12 @@ reels = [
     {"type": "cryogenie", "temperature_atteinte_K": 1e-9},                            # refroidissement laser/évaporatif (nK)
     {"type": "cryogenie", "temperature_atteinte_K": 2.7},                             # fond diffus cosmologique
     {"type": "cryogenie"},                                                            # vide -> PAS un faux positif
+    # horloges RÉELLES : au-dessus de la limite quantique standard (ou intriquées, exemptées).
+    {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-16},  # horloge optique (> LQS ~3,2e-18)
+    {"type": "horloge", "frequence_Hz": 9.19e9, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 1e-13},  # césium (> LQS ~1,7e-14)
+    {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-19, "intrication": True},  # spin squeezing -> PAS un faux positif
+    {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000},      # sans stabilité -> PAS un faux positif
+    {"type": "horloge"},                                                              # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
