@@ -715,12 +715,55 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "puissance_induite_ideale" in B.decompose("vol stationnaire"),
       "les 14 domaines précédents inchangés après l'ajout de l'éolien (isolation)")
 
+# ── 22) SEIZIÈME DOMAINE : propulsion spatiale (nouvelle loi L13 = équation de Tsiolkovski, Δv ≤ ve·ln(m₀/mf)) ──
+dfu = B.decompose("propulsion spatiale")
+check(dfu["statut"] == "decompose", "besoin propulsion spatiale connu -> decompose")
+check("tsiolkov" in dfu["objectif_reel"].lower() and "logarithm" in dfu["objectif_reel"].lower(),
+      "objectif réel fusée = Tsiolkovski, gain logarithmique")
+check("tsiolkovski" in dfu, "extras propres : l'équation de Tsiolkovski")
+fu_canaux = {c.canal for c in dfu["canaux"]}
+check(fu_canaux == {"vitesse d ejection", "etagement", "masse a vide", "momentum externe"},
+      f"4 canaux de la propulsion spatiale ({fu_canaux})")
+prfu = B.principes("propulsion spatiale")
+pfu = {e["nom"]: e for e in prfu["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : Δv au-dessus de Tsiolkovski, et Δv sans ergols
+dv30 = pfu["fusée chimique « à 30 km/s » (ve 4,5 km/s, rapport 20)"]
+check(dv30["atome"].statut == A.REFUTE, "30 km/s > Tsiolkovski -> RÉFUTÉ")
+check(A.est_refute(dv30["atome"].contenu), "contenu réfuté (30 km/s) dans la garde")
+sans_erg = pfu["fusée « qui accélère sans consommer d'ergols » (rapport de masse 1)"]
+check(sans_erg["atome"].statut == A.REFUTE, "Δv > 0 sans ergols (rapport 1) -> RÉFUTÉ")
+# procédés réels (dont la voile solaire à momentum externe) -> SUPPOSITIONS
+for nom in ("fusée chimique (référence)", "propulsion électrique / ionique (Isp élevé)",
+            "voile solaire (momentum externe)"):
+    e = pfu[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prfu["liste"]), "aucun principe de fusée promu en FAIT")
+check("candidat pour propulsion_spatiale" in pfu["fusée chimique (référence)"]["atome"].portee.condition,
+      "portée des principes de fusée nommant propulsion_spatiale")
+# la loi L13 : Δv au-dessus de Tsiolkovski réfuté, chimique réaliste cohérent
+st_fu, _, loi_fu = COH.juge_dispositif({"type": "fusee", "delta_v_m_s": 30000, "vitesse_ejection_m_s": 4500,
+                                        "rapport_masse": 20})
+check(st_fu == COH.VIOLE and loi_fu == COH.L13, "juge : 30 km/s chimique -> VIOLE via L13")
+check(COH.juge_dispositif({"type": "fusee", "delta_v_m_s": 13000, "vitesse_ejection_m_s": 4500,
+                           "rapport_masse": 20})[0] == COH.COHERENT_BORNE,
+      "chimique 13 km/s (< Tsiolkovski) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (salpe, raie manta)
+natfu = B.strategies_naturelles("propulsion spatiale")
+check(len(natfu) >= 4 and any("salpe" in s["exemple"].lower() for s in natfu), "stratégies fusée propres (salpe)")
+check(not any("calmar" in s["exemple"] for s in natfu) and not any("pissenlit" in s["exemple"] for s in natfu),
+      "pas de fuite des stratégies propulsion/éolien vers la fusée")
+# les QUINZE domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "limite_betz" in B.decompose("capter l energie du vent")
+      and "limite_abbe" in B.decompose("voir plus petit"),
+      "les 15 domaines précédents inchangés après l'ajout de la fusée (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
-                              "sustentation", "resolution_optique", "energie_eolienne"],
-      "quinze domaines modélisés, dans l'ordre d'enregistrement")
+                              "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale"],
+      "seize domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

@@ -1,5 +1,27 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 16e domaine « propulsion spatiale » + loi L13 (équation de Tsiolkovski)
+
+Atteindre une grande vitesse dans le vide. Nouvelle loi dure au juge (`L13`) : l'équation de TSIOLKOVSKI — Δv ≤
+ve·ln(m₀/mf). Le gain de vitesse ne croît qu'au LOGARITHME du rapport de masse (la « tyrannie de l'équation de la
+fusée »). CONSERVATEUR (FAUX=0) : on ne réfute que si Δv, vitesse d'éjection ET rapport de masse sont donnés ; le
+momentum EXTERNE (assistance gravitationnelle, voile solaire, ISRU) n'est pas borné par le propergol embarqué →
+une spec sans propergol n'est pas jugée. Distinct de L4 (quantité de mouvement). Gate `valide_coherence_physique`
+**198 → 213/213**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (chimique « à 30 km/s », fusée « sans
+ergols » rapport 1). Reframing : ne pas emporter plus de carburant (retours logarithmiques) mais augmenter la
+VITESSE D'ÉJECTION ve (Δv linéaire en ve), étager, alléger, ou exploiter un MOMENTUM EXTERNE. Couvre chimique,
+ionique/électrique, étagement, nucléaire thermique, nucléaire pulsé (Orion), voile solaire, assistance
+gravitationnelle, ravitaillement in situ. 4 stratégies naturelles propres (salpe = jet pulsé, concombre sauvage =
+éjection balistique, bombardier = jet chimique, raie manta = momentum externe). Gate `valide_besoin`
+**306 → 323/323** ; les 15 domaines précédents intacts.
+
+**JALON : 16 DOMAINES D'INVENTION, 13 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol, L11 diffraction d'Abbe,
+L12 limite de Betz, L13 équation de Tsiolkovski).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 15e domaine « capter l'énergie du vent » + loi L12 (limite de Betz)
 
 Énergie éolienne. Nouvelle loi dure au juge (`L12`) : la limite de BETZ — un rotor ouvert extrait au plus 16/27

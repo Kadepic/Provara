@@ -2394,6 +2394,142 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  SEIZIÈME DOMAINE : atteindre une grande vitesse dans le vide (propulsion spatiale). Nouvelle loi dure au juge
+#  (L13) : l'équation de TSIOLKOVSKI — Δv ≤ ve·ln(m₀/mf). Le gain de vitesse ne croît qu'au LOGARITHME du rapport
+#  de masse : embarquer toujours plus de propergol donne des retours décroissants (la « tyrannie de l'équation de
+#  la fusée »). REFRAMING machine : le levier n'est PAS d'ajouter du carburant mais d'augmenter la VITESSE
+#  D'ÉJECTION ve (impulsion spécifique — d'où l'électrique/ionique, le nucléaire), d'ÉTAGER (larguer la masse
+#  morte), ou d'exploiter un MOMENTUM EXTERNE (assistance gravitationnelle, voile solaire, ravitaillement in situ)
+#  qui n'est pas borné par le propergol embarqué. Distinct de L4 (conservation de la quantité de mouvement).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_FUSEE = "propulsion_spatiale"
+_ALIAS_FUSEE = {
+    "atteindre une grande vitesse dans le vide", "propulser un vaisseau spatial", "propulsion spatiale",
+    "accelerer une fusee", "voyager dans l espace", "gagner de la vitesse dans l espace",
+}
+
+# ── « Canaux » : les leviers du Δv atteignable ───────────────────────────────────────────────────────────────────
+_CANAUX_FUSEE = [
+    Canal("vitesse d ejection", "vitesse", "AUGMENTER la vitesse d'éjection ve (impulsion spécifique) : Δv est LINÉAIRE en ve",
+          True, "Δv = ve·ln(m₀/mf) : doubler ve double le Δv, alors qu'empiler du propergol ne l'augmente qu'en "
+                "logarithme → l'électrique/ionique (ve ~30 km/s) et le nucléaire écrasent le chimique (ve ~4,5 km/s)"),
+    Canal("etagement", "vitesse", "ÉTAGER : larguer les réservoirs vides pour ne plus accélérer de masse morte",
+          True, "chaque étage repart avec un meilleur rapport de masse effectif → contourne les retours "
+                "décroissants d'un réservoir unique géant ; complexité et fiabilité des séparations"),
+    Canal("masse a vide", "vitesse", "ALLÉGER la structure (masse à vide mf) : augmente le rapport de masse m₀/mf",
+          True, "moins de masse sèche = rapport de masse plus élevé = plus de Δv ; réservoirs et structures "
+                "ultralégers — mais le gain reste logarithmique, d'où la priorité à ve"),
+    Canal("momentum externe", "vitesse", "EXPLOITER un momentum EXTERNE : assistance gravitationnelle, voile solaire, ravitaillement in situ",
+          True, "un Δv qui ne vient PAS de ton propergol échappe entièrement à Tsiolkovski : fronde gravitationnelle "
+                "(gratuit), poussée du Soleil (voile), refaire le plein en route (ISRU) — le levier « ne pas tout emporter »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par l'équation de Tsiolkovski (type `fusee`, Δv ≤ ve·ln(m₀/mf)) ─────────────
+_PRINCIPES_FUSEE = [
+    _P("fusée chimique (référence)",
+       "propulsion spatiale : moteur chimique à forte poussée, vitesse d'éjection ~4,5 km/s",
+       {"type": "fusee", "delta_v_m_s": 13000, "vitesse_ejection_m_s": 4500, "rapport_masse": 20}, False, True,
+       "—", "mature",
+       0.65, "forte poussée pour décoller, MAIS faible ve (~4,5 km/s) → il faut un énorme rapport de masse pour peu "
+             "de Δv (retours logarithmiques) ; la référence dont la limite pousse à monter ve ou étager"),
+    _P("propulsion électrique / ionique (Isp élevé)",
+       "propulsion spatiale : moteur ionique éjectant à ~30 km/s, faible poussée mais très efficace",
+       {"type": "fusee", "delta_v_m_s": 12000, "vitesse_ejection_m_s": 30000, "rapport_masse": 1.5}, True, True,
+       "—", "mature (spatial)",
+       0.6, "ve ~7× le chimique → beaucoup de Δv pour peu de propergol (rapport de masse modeste) ; poussée "
+            "minuscule (accélération lente) → transferts longs — le levier « augmenter ve » incarné"),
+    _P("étagement (fusée multi-étages)",
+       "propulsion spatiale : larguer les étages vides pour améliorer le rapport de masse effectif",
+       {"type": "fusee", "delta_v_m_s": 18000, "vitesse_ejection_m_s": 4500, "rapport_masse": 60}, False, True,
+       "—", "mature",
+       0.55, "sans étagement, un rapport de masse de 60 est irréaliste (structure) ; en étageant, chaque étage "
+             "repart léger → Δv cumulé bien plus haut — le levier « larguer la masse morte », clé de l'orbite"),
+    _P("propulsion nucléaire thermique",
+       "propulsion spatiale : chauffer un propergol léger (hydrogène) par un réacteur, ve ~9 km/s",
+       {"type": "fusee", "delta_v_m_s": 14000, "vitesse_ejection_m_s": 9000, "rapport_masse": 5}, False, True,
+       "—", "recherche",
+       0.45, "double la ve du chimique en chauffant de l'hydrogène (bas poids moléculaire) → bon Δv à poussée "
+             "élevée ; masse du réacteur et sûreté — le compromis poussée/ve pour l'interplanétaire"),
+    _P("propulsion nucléaire pulsée (type Orion)",
+       "propulsion spatiale : impulsions d'explosions nucléaires derrière un bouclier, ve très élevée",
+       {"type": "fusee", "delta_v_m_s": 40000, "vitesse_ejection_m_s": 30000, "rapport_masse": 4}, False, True,
+       "—", "concept",
+       0.35, "ve énorme ET forte poussée simultanément → Δv très grand (interstellaire lent envisageable) ; "
+             "retombées et traité d'interdiction — concept borné par la physique, pas par elle interdit"),
+    _P("voile solaire (momentum externe)",
+       "propulsion spatiale : se laisser pousser par la pression de radiation du Soleil, sans propergol",
+       {"type": "fusee"}, True, True,
+       "—", "démontré",
+       0.5, "REFRAMING : le Δv vient du Soleil, PAS d'un propergol embarqué → échappe entièrement à Tsiolkovski "
+            "(accélération faible mais gratuite et sans fin) ; grande voile et faible poussée — « ne rien emporter »"),
+    _P("assistance gravitationnelle (fronde)",
+       "propulsion spatiale : gagner de la vitesse en frôlant une planète (échange de quantité de mouvement)",
+       {"type": "fusee"}, True, True,
+       "—", "mature",
+       0.5, "emprunte du momentum au mouvement orbital d'une planète → Δv « gratuit » hors du propergol ; exige un "
+            "alignement et un calcul de trajectoire précis — le levier « momentum externe » (Voyager, Cassini)"),
+    _P("ravitaillement en orbite / in situ (ISRU)",
+       "propulsion spatiale : refaire le plein en route (dépôts orbitaux, ergols produits sur place)",
+       {"type": "fusee"}, True, True,
+       "—", "émergent",
+       0.45, "remettre m₀ à son maximum en cours de route RÉINITIALISE l'équation → contourne le rapport de masse "
+             "d'un seul plein ; logistique de dépôts et production d'ergols (eau lunaire, CO₂ martien) à bâtir"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("fusée chimique « à 30 km/s » (ve 4,5 km/s, rapport 20)",
+       "propulsion spatiale : atteindre 30 km/s de Δv avec un moteur chimique (ve 4,5 km/s) et un rapport de masse de 20",
+       {"type": "fusee", "delta_v_m_s": 30000, "vitesse_ejection_m_s": 4500, "rapport_masse": 20}, False, True,
+       "—", "revendication",
+       0.3, "30 km/s > Δv max de Tsiolkovski (~13,5 km/s ici) — impossible avec ce propergol embarqué ; à réfuter"),
+    _P("fusée « qui accélère sans consommer d'ergols » (rapport de masse 1)",
+       "propulsion spatiale : gagner du Δv sans éjecter de masse (rapport de masse m₀/mf = 1)",
+       {"type": "fusee", "delta_v_m_s": 5000, "vitesse_ejection_m_s": 4500, "rapport_masse": 1}, False, True,
+       "—", "revendication",
+       0.25, "rapport de masse 1 → ln(1) = 0 → Δv max nul : sans éjecter de propergol, une fusée ne gagne aucun Δv "
+             "(à distinguer d'un momentum externe) — impossible"),
+]
+
+_OBJECTIF_FUSEE = ("Le but réel n'est pas d'« emporter plus de carburant » : l'équation de Tsiolkovski Δv = "
+                   "ve·ln(m₀/mf) montre que le Δv ne croît qu'au LOGARITHME du rapport de masse — les retours sont "
+                   "décroissants (la « tyrannie de l'équation de la fusée »). Leviers : augmenter la VITESSE "
+                   "D'ÉJECTION ve (Δv linéaire en ve → électrique/ionique, nucléaire) ; ÉTAGER (larguer la masse "
+                   "morte) ; alléger la structure ; et surtout exploiter un MOMENTUM EXTERNE (assistance "
+                   "gravitationnelle, voile solaire, ravitaillement in situ) qui échappe entièrement au propergol "
+                   "embarqué. Chaque principe reste jugé par l'équation de Tsiolkovski.")
+_LOI_FUSEE = ("équation de Tsiolkovski : Δv ≤ ve·ln(m₀/mf) — le gain de vitesse croît seulement au logarithme du "
+              "rapport de masse ; gains réels = augmenter la vitesse d'éjection ve (Δv linéaire en ve), étager, "
+              "alléger, et exploiter un momentum externe (fronde gravitationnelle, voile, ISRU) hors du propergol")
+
+# La nature propulse par jet pulsé (salpe), éjection balistique (concombre), jet chimique (bombardier), momentum externe (raie manta).
+_STRATEGIES_NATURE_FUSEE = [
+    _Nature("salpe / méduse (jet pulsé efficace)",
+            ["propulsion par pulsations à basse vitesse d'éjection", "très efficace pour de faibles gains de vitesse"],
+            "éjecter beaucoup de masse lentement quand on vise un petit Δv — le compromis ve/rapport de masse"),
+    _Nature("concombre sauvage (éjection balistique)",
+            ["libère graines et fluide en une impulsion violente", "toute l'énergie dans une éjection unique"],
+            "concentrer la poussée en une impulsion unique à haute vitesse d'éjection — le levier « ve élevée »"),
+    _Nature("coléoptère bombardier (jet chimique)",
+            ["réaction chimique explosive expulsant un jet dirigé", "réactifs stockés et mélangés à la demande"],
+            "emporter des réactifs denses et les convertir en jet à la demande — l'analogue du propergol chimique"),
+    _Nature("raie manta / planeur des courants (momentum externe)",
+            ["exploite les courants marins pour avancer sans dépenser", "glisse sur l'énergie du milieu"],
+            "emprunter le momentum du MILIEU plutôt que dépenser sa propre réserve — l'analogue de la fronde/voile"),
+]
+
+enregistre(Domaine(
+    nom=_FUSEE,
+    aliases=frozenset(_ALIAS_FUSEE),
+    objectif=_OBJECTIF_FUSEE,
+    canaux=_CANAUX_FUSEE,
+    principes=_PRINCIPES_FUSEE,
+    strategies=_STRATEGIES_NATURE_FUSEE,
+    loi=_LOI_FUSEE,
+    extras={"tsiolkovski": "Δv = ve·ln(m₀/mf)",
+            "note": "Δv logarithmique en rapport de masse ; leviers = vitesse d'éjection ve (Isp), étagement, "
+                    "momentum externe (fronde, voile, ISRU) hors du propergol embarqué"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
