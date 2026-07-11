@@ -56,6 +56,8 @@ L14 = ("plafond de rendement photosynthétique : la conversion solaire→biomass
        "respiration ; réalisé ~1–6 %) — bornée par la fraction utile du spectre et le rendement quantique")
 L15 = ("borne d'entropie (codage de source de Shannon) : une compression SANS PERTE ne descend pas sous l'entropie "
        "H de la source, et aucun compresseur sans perte ne réduit TOUTE entrée (argument de comptage)")
+L16 = ("plancher radiatif de Stefan-Boltzmann : pas d'isolant parfait — un objet à T>0 perd au moins "
+       "ε·σ·A·(T⁴−T_env⁴) par rayonnement (ε>0), même sans conduction ni convection")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -69,6 +71,7 @@ _RHO_AIR = 1.225             # kg/m³ : masse volumique de l'air au niveau de la
 _G_TERRE = 9.80665           # m/s² : pesanteur standard (poussée de sustentation = masse × g)
 _BETZ = 16.0 / 27.0          # ≈ 0,592593 : fraction maximale de la puissance du vent extractible (rotor ouvert)
 _RENDEMENT_PHOTO_MAX = 0.12  # plafond théorique de la conversion solaire->biomasse (réalisé ~1–6 % ; champ ~1–2 %)
+_SIGMA_SB = 5.670374419e-8   # W/m²K⁴ : constante de Stefan-Boltzmann (plancher radiatif de l'isolation)
 
 
 def _nb(x):
@@ -94,7 +97,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
-                 "photosynthese", "compression"):
+                 "photosynthese", "compression", "isolation_thermique"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -423,6 +426,29 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
             if _nb(h) and _nb(b) and h >= 0 and b < h * (1.0 - 1e-9):
                 return (VIOLE, f"débit {b} bits/symbole < entropie {h} bits/symbole (codage de source de Shannon) : "
                                f"compression sans perte sous l'entropie impossible", L15)
+
+    # --- Plancher radiatif de Stefan-Boltzmann : pas d'isolant parfait. ---
+    # On peut supprimer la conduction et la convection (vide) mais PAS le rayonnement : un objet à T > T_env perd au
+    # moins ε·σ·A·(T⁴−T_env⁴), et aucun matériau réel n'a une émissivité ε nulle. CONSERVATEUR : on ne réfute qu'une
+    # perte déclarée SOUS le plancher radiatif de l'émissivité DÉCLARÉE (la conduction/convection ne font qu'ajouter
+    # → la perte réelle est toujours ≥ ce plancher) → jamais un faux positif (un thermos réel perd plus que son
+    # plancher radiatif). ε ≤ 0 est réfuté d'office (pas d'isolant radiatif parfait).
+    if t == "isolation_thermique":
+        eps = spec.get("emissivite")
+        if _nb(eps) and eps <= 0.0:
+            return (VIOLE, f"émissivité {eps} ≤ 0 : aucun matériau réel n'a une émissivité nulle (pas d'isolant "
+                           f"radiatif parfait)", L16)
+        a_iso = spec.get("aire_m2")
+        to = spec.get("t_objet_K")
+        te = spec.get("t_env_K")
+        perte = spec.get("puissance_perdue_W")
+        if (_nb(eps) and _nb(a_iso) and _nb(to) and _nb(te) and _nb(perte)
+                and eps > 0 and a_iso > 0 and to > 0 and te > 0 and to > te):
+            p_min = eps * _SIGMA_SB * a_iso * (to ** 4 - te ** 4)
+            if perte < p_min * (1.0 - 1e-9):
+                return (VIOLE, f"perte déclarée {perte} W < plancher radiatif {round(p_min, 3)} W "
+                               f"(ε·σ·A·(T⁴−T_env⁴), ε={eps}, A={a_iso} m², {to}→{te} K) : un objet chaud rayonne "
+                               f"au moins cela — pas d'isolant parfait", L16)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

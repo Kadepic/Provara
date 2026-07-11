@@ -150,6 +150,13 @@ check(loi({"type": "compression", "sans_perte": True, "entropie_bits_par_symbole
            "bits_par_symbole": 1}) == P.L15, "codage de source = L15")
 check(statut({"type": "compression", "sans_perte": True, "compresse_toute_entree": True}) == P.VIOLE,
       "compresseur sans perte universel -> VIOLE")
+# plancher radiatif de Stefan-Boltzmann : perte sous εσA(T⁴−T_env⁴), et émissivité nulle.
+check(statut({"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373,
+              "t_env_K": 293, "puissance_perdue_W": 0.1}) == P.VIOLE, "0,1 W < plancher radiatif ~340 W -> VIOLE")
+check(loi({"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373,
+           "t_env_K": 293, "puissance_perdue_W": 0.1}) == P.L16, "Stefan-Boltzmann = L16")
+check(statut({"type": "isolation_thermique", "emissivite": 0.0, "aire_m2": 1, "t_objet_K": 373,
+              "t_env_K": 293}) == P.VIOLE, "émissivité 0 (isolant parfait) -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -257,6 +264,11 @@ reels = [
     {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 2.0},   # AU H (arithmétique, limite, ok)
     {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 0.5},  # AVEC PERTE (JPEG) sous H -> PAS un faux positif
     {"type": "compression"},                                                          # vide -> PAS un faux positif
+    # isolations thermiques RÉELLES : au-dessus du plancher radiatif (conduction/convection ajoutent).
+    {"type": "isolation_thermique", "emissivite": 0.05, "aire_m2": 0.1, "t_objet_K": 363, "t_env_K": 293, "puissance_perdue_W": 4},  # thermos (floor ~2,8 W)
+    {"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373, "t_env_K": 293, "puissance_perdue_W": 400},   # objet peint (> floor ~340)
+    {"type": "isolation_thermique", "emissivite": 0.02, "aire_m2": 1},                # sans perte/T : PAS un faux positif
+    {"type": "isolation_thermique"},                                                  # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
