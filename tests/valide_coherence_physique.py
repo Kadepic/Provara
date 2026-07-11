@@ -110,6 +110,13 @@ check(loi({"type": "electrolyse", "tension_cellule_V": 0.9, "t_K": 298.15,
            "reaction_anodique_standard": True}) == P.L9, "électrolyse (tension < E_rev) = L9")
 check(statut({"type": "electrolyse", "energie_kJ_par_mol_H2": 150}) == P.VIOLE, "150 kJ/mol H₂ < PCS 285,8 -> VIOLE")
 check(loi({"type": "electrolyse", "energie_kJ_par_mol_H2": 150}) == P.L9, "sous le PCS de H₂ = L9")
+# vol stationnaire : puissance sous la puissance induite idéale (théorie de la quantité de mouvement).
+check(statut({"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 5}) == P.VIOLE,
+      "drone 2 kg 0,05 m² à 5 W < P induite (~248 W) -> VIOLE")
+check(loi({"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 5}) == P.L10,
+      "vol stationnaire = L10")
+check(statut({"type": "sustentation", "poussee_N": 981, "aire_rotor_m2": 0.1, "puissance_W": 50}) == P.VIOLE,
+      "plateforme 100 kg 0,1 m² à 50 W < P induite (~62 kW) -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -178,6 +185,13 @@ reels = [
     {"type": "electrolyse", "energie_kJ_par_mol_H2": 400},                             # thermochimique (> ΔH)
     {"type": "electrolyse", "energie_kJ_par_mol_H2": 285.8},                           # AU plancher ΔH (limite, ok)
     {"type": "electrolyse"},                                                           # spec insuffisante -> PAS un faux positif
+    # sustentations RÉELLES : au-dessus de la puissance induite idéale.
+    {"type": "sustentation", "masse_kg": 2000, "aire_rotor_m2": 113, "puissance_W": 180000},  # hélico grand rotor (P_ideal ~165 kW)
+    {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 300},        # drone petit disque (inefficace mais réel)
+    {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.5, "puissance_W": 100},         # drone grand disque lent (levier aire)
+    {"type": "sustentation", "poussee_N": 19613, "aire_rotor_m2": 113, "puissance_W": 170000}, # au-dessus de P_ideal (poussée donnée)
+    {"type": "sustentation", "masse_kg": 2},                                                   # sans P/A : indéterminé -> PAS un faux positif
+    {"type": "sustentation"},                                                                  # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

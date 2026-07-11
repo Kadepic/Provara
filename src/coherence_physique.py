@@ -44,6 +44,8 @@ L8 = ("limite de Shockley-Queisser (rendement PV ≤ ~33,7 % pour une jonction s
       "plafond ABSOLU = exergie du rayonnement solaire (Landsberg ≈ 93,3 %, Carnot 1 − Ta/Ts)")
 L9 = ("électrolyse de l'eau : énergie électrique ≥ ΔG (tension de cellule ≥ E_rev(T) = ΔG(T)/nF, ~1,23 V à 25 °C) ; "
       "énergie TOTALE ≥ ΔH (PCS de H₂, ~285,8 kJ/mol)")
+L10 = ("vol stationnaire : puissance ≥ puissance induite idéale P = T^1,5 / √(2ρA) (théorie de la quantité de "
+       "mouvement / disque actuateur) — un rotor ne peut sustenter une poussée T sur un disque d'aire A pour moins")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -53,6 +55,8 @@ _T_SOLEIL_K = 5778.0         # température de corps noir effective du Soleil (p
 _DH_EAU = 285.8e3            # J/mol : enthalpie de dissociation de l'eau (PCS de H₂) — plancher 1er principe (énergie totale)
 _DG_EAU = 237.1e3            # J/mol : enthalpie libre de Gibbs à 25 °C — travail électrique minimal (2nd principe)
 _F_FARADAY = 96485.33        # C/mol ; n = 2 électrons par H₂ -> E_rev standard = ΔG/nF ≈ 1,229 V
+_RHO_AIR = 1.225             # kg/m³ : masse volumique de l'air au niveau de la mer (puissance induite du vol)
+_G_TERRE = 9.80665           # m/s² : pesanteur standard (poussée de sustentation = masse × g)
 
 
 def _nb(x):
@@ -77,7 +81,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
-                 "captation_solaire", "electrolyse"):
+                 "captation_solaire", "electrolyse", "sustentation"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -285,6 +289,33 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                         return (VIOLE, f"tension de cellule {V} V < tension réversible {round(e_rev, 3)} V "
                                        f"(ΔG(T)/2F à {tk} K, anode standard O₂) : le fractionnement net de l'eau "
                                        f"ne peut pas se produire", L9)
+
+    # --- Vol stationnaire : puissance ≥ puissance induite idéale (théorie de la quantité de mouvement). ---
+    # Pour maintenir une poussée T (= poids) en vol stationnaire, un rotor de disque d'aire A dans un fluide de masse
+    # volumique ρ délivre au fluide une puissance INDUITE idéale P = T·√(T/(2ρA)) = T^1,5/√(2ρA) (air libre, figure de
+    # mérite = 1). CONSERVATEUR (faux positif INTERDIT) : l'EFFET DE SOL réduit la puissance induite (le sol agit comme
+    # un rotor-image, aire effective jusqu'à ×2) — plancher absolu = P_ideal/√2, atteint au contact du sol. On ne
+    # réfute donc que si la puissance déclarée est SOUS ce plancher indépassable → jamais un faux positif (un aéronef
+    # réel, même en plein effet de sol, plane au-dessus). Il faut puissance, poussée (ou masse) ET aire de disque ;
+    # la portance STATIQUE (aérostat) n'a pas de disque → non jugée.
+    if t == "sustentation":
+        a_disk = spec.get("aire_rotor_m2")
+        rho = spec.get("rho_air", _RHO_AIR)
+        poussee = spec.get("poussee_N")
+        if poussee is None:
+            m = spec.get("masse_kg")
+            if _nb(m) and m > 0:
+                poussee = m * _G_TERRE
+        p_vol = spec.get("puissance_W")
+        if (_nb(p_vol) and p_vol > 0 and _nb(poussee) and poussee > 0
+                and _nb(a_disk) and a_disk > 0 and _nb(rho) and rho > 0):
+            p_ideal = poussee * math.sqrt(poussee / (2.0 * rho * a_disk))
+            p_floor = p_ideal / math.sqrt(2.0)                    # plancher indépassable (effet de sol maximal)
+            if p_vol < p_floor * (1.0 - 1e-9):
+                return (VIOLE, f"puissance de sustentation {p_vol} W < plancher indépassable {round(p_floor)} W "
+                               f"(= puissance induite idéale {round(p_ideal)} W / √2, effet de sol maximal ; "
+                               f"quantité de mouvement T^1,5/√(2ρA), T={round(poussee)} N, A={a_disk} m²) : "
+                               f"sous le minimum physique du vol stationnaire", L10)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:
