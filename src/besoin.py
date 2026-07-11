@@ -1682,6 +1682,154 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  ONZIÈME DOMAINE : capter l'énergie solaire. Nouvelle loi dure au juge (L8) : la limite de SHOCKLEY-QUEISSER —
+#  une cellule à jonction simple STANDARD (une paire électron-trou par photon, un seul seuil) plafonne à ~33,7 %
+#  sous 1 soleil ; et, toute architecture confondue, le rendement reste sous le plafond THERMODYNAMIQUE du solaire
+#  (exergie du rayonnement : Landsberg ~93 %, Carnot 1−Ta/Ts). REFRAMING machine : le but n'est pas de poser plus
+#  de surface mais de convertir une plus grande part de CHAQUE photon. Une jonction simple gaspille deux fois — les
+#  photons SOUS son gap la traversent, l'EXCÈS d'énergie des photons au-dessus part en chaleur (thermalisation).
+#  Leviers : empiler des jonctions accordées à des bandes (tandem, plafond ~86 %) ; CONCENTRER (monte la tension,
+#  remplace le semi-conducteur par de l'optique) ; récupérer la thermalisation (porteurs chauds / multi-excitons /
+#  bande intermédiaire) ; s'approcher de la limite RADIATIVE (matériaux purs, recyclage des photons).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_SOLAIRE = "captation_solaire"
+_ALIAS_SOLAIRE = {
+    "capter l energie solaire", "convertir la lumiere du soleil", "produire de l electricite solaire",
+    "capter le rayonnement solaire", "photovoltaique", "exploiter l energie du soleil",
+}
+
+# ── « Canaux » : les leviers du rendement de conversion solaire ──────────────────────────────────────────────────
+_CANAUX_SOLAIRE = [
+    Canal("spectre", "lumiere", "capter une PLUS GRANDE part du spectre : empiler des jonctions (tandem) accordées à des bandes différentes",
+          True, "une jonction simple perd les photons SOUS son gap ET l'excès des photons au-dessus (thermalisation) ; "
+                "empiler des gaps récupère les deux — le plus grand levier, plafond ~86 % en multi-jonction"),
+    Canal("concentration", "lumiere", "CONCENTRER la lumière (miroirs/lentilles) : plus de photons par cellule → tension plus haute",
+          True, "la concentration relève la limite de rendement (jusqu'à ~46 200 soleils) et remplace du semi-conducteur "
+                "cher par de l'optique ; exige un suivi précis et d'évacuer la chaleur"),
+    Canal("thermalisation", "lumiere", "récupérer l'excès d'énergie des photons chauds AVANT dissipation (porteurs chauds, bande intermédiaire, multi-excitons)",
+          True, "l'énergie au-dessus du gap est perdue en chaleur dans une cellule normale ; l'extraire (porteurs "
+                "chauds) ou la fractionner (MEG, bande intermédiaire) attaque la 2e grande perte — encore en labo"),
+    Canal("recombinaison", "lumiere", "s'approcher de la limite RADIATIVE : supprimer la recombinaison non-radiative (matériaux purs, passivation, recyclage des photons)",
+          True, "le meilleur émetteur est le meilleur absorbeur : une cellule qui ne perd de porteurs QUE par "
+                "rayonnement atteint la limite de Shockley-Queisser — le levier « qualité du matériau »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Shockley-Queisser / le plafond thermodynamique (type `captation_solaire`) ──
+_PRINCIPES_SOLAIRE = [
+    _P("cellule silicium mono-jonction (référence)",
+       "capter le solaire : cellule silicium à jonction unique sous lumière ambiante (1 soleil)",
+       {"type": "captation_solaire", "rendement": 0.27, "nb_jonctions": 1, "concentration_solaire": 1,
+        "bilan_detaille_standard": True}, True, True,
+       "—", "mature",
+       0.65, "la référence du marché (~27 % en labo, ~22 % en module) ; sous la limite de Shockley-Queisser (33,7 %) "
+             "— les gains restants passent par la tandem, pas par le silicium seul"),
+    _P("tandem pérovskite/silicium (multi-jonction)",
+       "capter le solaire : empiler une jonction pérovskite (gap large) sur le silicium pour capter plus du spectre",
+       {"type": "captation_solaire", "rendement": 0.33, "nb_jonctions": 2, "concentration_solaire": 1}, True, True,
+       "—", "émergent (industrialisation)",
+       0.6, "dépasse la limite mono-jonction : la jonction haute prend les photons bleus, le silicium les rouges ; "
+            "stabilité de la pérovskite à prouver — le levier « spectre » le plus proche du marché"),
+    _P("multi-jonction III-V sous concentration (CPV)",
+       "capter le solaire : cellule III-V à 3+ jonctions sous forte concentration optique",
+       {"type": "captation_solaire", "rendement": 0.47, "nb_jonctions": 3, "concentration_solaire": 500}, True, True,
+       "—", "mature (spatial/CPV)",
+       0.55, "record mondial (~47 %) : concentration ET plusieurs jonctions cumulent les deux leviers ; coût des "
+             "matériaux III-V et suivi solaire exigeant → spatial et CPV, pas le toit domestique"),
+    _P("cellule à porteurs chauds",
+       "capter le solaire : extraire les porteurs AVANT qu'ils ne thermalisent, pour récupérer l'excès d'énergie des photons bleus",
+       {"type": "captation_solaire", "rendement": 0.55, "nb_jonctions": 1, "concentration_solaire": 1000}, True, True,
+       "—", "recherche",
+       0.4, "attaque la 2e grande perte (thermalisation) SANS empiler de jonctions ; exige une extraction "
+            "ultra-rapide et des contacts sélectifs en énergie — horizon lointain mais dans les lois"),
+    _P("cellule à bande intermédiaire",
+       "capter le solaire : une bande d'énergie intermédiaire absorbe AUSSI les photons sous le gap principal",
+       {"type": "captation_solaire", "rendement": 0.45, "nb_jonctions": 1, "concentration_solaire": 100}, True, True,
+       "—", "recherche",
+       0.4, "récupère les photons infrarouges normalement perdus via un niveau intermédiaire, sans multiplier les "
+            "jonctions ; matériaux à points quantiques/impuretés à maîtriser — piste sous-exploitée"),
+    _P("génération multi-excitons (points quantiques)",
+       "capter le solaire : un photon très énergétique libère PLUSIEURS paires électron-trou au lieu d'une",
+       {"type": "captation_solaire", "rendement": 0.42, "nb_jonctions": 1, "concentration_solaire": 1}, True, True,
+       "—", "recherche",
+       0.35, "fractionne l'énergie d'un photon bleu en plusieurs porteurs au lieu de la perdre en chaleur (dépasse "
+             "SQ légitimement, hors régime standard) ; rendements quantiques >100 % démontrés sur points quantiques "
+             "mais courants faibles — exploratoire"),
+    _P("concentrateur luminescent / découpage spectral",
+       "capter le solaire : un guide fluorescent concentre et trie la lumière vers des cellules adaptées à chaque couleur",
+       {"type": "captation_solaire", "rendement": 0.20, "nb_jonctions": 1, "concentration_solaire": 1}, True, True,
+       "—", "recherche (BIPV)",
+       0.35, "capte la lumière diffuse et se pose en façade/fenêtre (pas besoin de suivi) ; pertes de ré-absorption "
+             "à réduire — le levier « intégration au bâti »"),
+    _P("thermophotovoltaïque solaire (absorbeur chaud + PV IR)",
+       "capter le solaire : chauffer un absorbeur qui ré-émet un spectre étroit adapté à une cellule infrarouge",
+       {"type": "captation_solaire", "rendement": 0.30, "nb_jonctions": 1, "concentration_solaire": 1000}, True, True,
+       "—", "recherche",
+       0.35, "met en forme le spectre pour l'accorder à la cellule et permet le STOCKAGE thermique (produire la "
+             "nuit) ; hautes températures et pertes radiatives à dompter — pont vers le stockage d'énergie"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("panneau mono-jonction « à 50 % » (1 soleil)",
+       "capter le solaire : cellule à jonction unique STANDARD revendiquant 50 % sous lumière non concentrée",
+       {"type": "captation_solaire", "rendement": 0.50, "nb_jonctions": 1, "concentration_solaire": 1,
+        "bilan_detaille_standard": True}, True, True,
+       "—", "revendication",
+       0.3, "50 % > limite de Shockley-Queisser (33,7 % pour une jonction simple standard sous 1 soleil) — à réfuter "
+            "par le bilan détaillé"),
+    _P("panneau solaire « 100 % efficace »",
+       "capter le solaire : convertir TOUTE l'énergie du rayonnement solaire en électricité",
+       {"type": "captation_solaire", "rendement": 1.0}, True, True,
+       "—", "revendication",
+       0.25, "100 % dépasse le plafond thermodynamique du solaire (exergie du rayonnement, Landsberg ~93 % / Carnot "
+             "~95 %) — impossible"),
+]
+
+_OBJECTIF_SOLAIRE = ("Le but réel n'est pas de poser plus de surface mais de convertir une plus grande part de "
+                     "CHAQUE photon. Une jonction simple gaspille deux fois : les photons SOUS son gap la traversent, "
+                     "et l'EXCÈS d'énergie des photons au-dessus part en chaleur (thermalisation) — d'où le plafond de "
+                     "Shockley-Queisser (~33,7 % sous 1 soleil). Leviers : empiler des jonctions accordées à des "
+                     "bandes différentes (tandem/multi-jonction, plafond ~86 %) ; CONCENTRER la lumière (monte la "
+                     "tension, remplace le semi-conducteur par de l'optique) ; récupérer la thermalisation (porteurs "
+                     "chauds, bande intermédiaire, multi-excitons) ; s'approcher de la limite RADIATIVE (matériaux "
+                     "purs, recyclage des photons). La borne indépassable de toute architecture reste thermodynamique "
+                     "(exergie du rayonnement solaire). Chaque principe reste jugé par ces limites.")
+_LOI_SOLAIRE = ("le rendement de conversion solaire est borné : une cellule à jonction simple en régime STANDARD "
+                "(une paire électron-trou par photon, un seul seuil) plafonne à la limite de Shockley-Queisser "
+                "(~33,7 % sous 1 soleil) ; la borne ABSOLUE de toute architecture est thermodynamique (exergie du "
+                "rayonnement, Landsberg ~93 %, Carnot 1−Ta/Ts) ; gains réels = empiler les jonctions (spectre), "
+                "concentrer, récupérer la thermalisation (porteurs chauds/MEG/bande intermédiaire), s'approcher de "
+                "la limite radiative")
+
+# La nature capte la lumière par une large antenne (photosynthèse), un piège (papillon), un anti-reflet (mite), un suivi (tournesol).
+_STRATEGIES_NATURE_SOLAIRE = [
+    _Nature("photosynthèse (antennes collectrices + centre réactionnel)",
+            ["large ANTENNE de pigments capte un spectre étendu", "transfert d'excitation quasi sans perte vers le centre",
+             "canalise l'énergie vers un seul site de conversion"],
+            "capter large PUIS canaliser l'énergie vers un convertisseur — le levier « spectre » + collecte"),
+    _Nature("aile de papillon noir (écailles piège-à-lumière)",
+            ["nanostructures qui piègent la lumière par réflexions multiples", "absorption quasi totale sur une couche mince"],
+            "PIÉGER la lumière dans une couche mince plutôt qu'épaissir l'absorbeur — le light-trapping"),
+    _Nature("œil de mite (nanostructures anti-reflet)",
+            ["réseau de bosses sub-longueur d'onde annulant la réflexion", "transition d'indice progressive"],
+            "ne rien RÉFLÉCHIR : capter les photons au lieu de les renvoyer — l'anti-reflet gratuit"),
+    _Nature("héliotropisme du tournesol (suivi solaire)",
+            ["orientation continue face au soleil", "maximise le flux reçu au fil du jour"],
+            "SUIVRE le soleil pour maximiser le flux capté — l'analogue du tracking et de la concentration"),
+]
+
+enregistre(Domaine(
+    nom=_SOLAIRE,
+    aliases=frozenset(_ALIAS_SOLAIRE),
+    objectif=_OBJECTIF_SOLAIRE,
+    canaux=_CANAUX_SOLAIRE,
+    principes=_PRINCIPES_SOLAIRE,
+    strategies=_STRATEGIES_NATURE_SOLAIRE,
+    loi=_LOI_SOLAIRE,
+    extras={"plafond_shockley_queisser": "≈ 33,7 % (jonction simple standard, 1 soleil)",
+            "plafond_absolu": "exergie du rayonnement solaire : Landsberg ~93,3 %, Carnot 1−Ta/Ts ~94,8 %",
+            "note": "multi-jonction + concentration cumulent les leviers (record ~47 % ; idéal ~86 %)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

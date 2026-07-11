@@ -1,5 +1,30 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 11e domaine « capter l'énergie solaire » + loi L8 (Shockley-Queisser)
+
+Capter l'énergie solaire. Nouvelle loi dure au juge (`L8`) : la **limite de Shockley-Queisser** — une cellule à
+jonction simple STANDARD (une paire électron-trou par photon, un seul seuil) plafonne à ~33,7 % sous 1 soleil ;
+et, toute architecture confondue, le rendement reste sous le **plafond thermodynamique** du solaire (exergie du
+rayonnement : Landsberg ~93,3 %, Carnot 1−Ta/Ts). CONSERVATEUR (FAUX=0) : la borne SQ ne réfute que si la spec
+DÉCLARE le régime standard (`bilan_detaille_standard`), une jonction simple et pas de concentration — car les
+mécanismes exotiques (multi-excitons, porteurs chauds, bande intermédiaire) et la concentration/les tandems la
+dépassent LÉGITIMEMENT ; la borne absolue (Carnot solaire ~94,8 %) s'applique à toute architecture. Gate
+`valide_coherence_physique` **114 → 132/132**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (mono-jonction standard « à 50 % »,
+panneau « 100 % efficace »). Reframing : ne pas poser plus de surface mais convertir une plus grande part de
+CHAQUE photon (une jonction simple perd les photons sous son gap ET l'excès des photons au-dessus =
+thermalisation). Leviers : empiler des jonctions (spectre, plafond ~86 %), CONCENTRER, récupérer la
+thermalisation (porteurs chauds/MEG/bande intermédiaire), s'approcher de la limite RADIATIVE. Couvre silicium
+mono, tandem pérovskite/Si, multi-jonction III-V concentrée (record ~47 %), porteurs chauds, bande intermédiaire,
+MEG, concentrateur luminescent, thermophotovoltaïque. 4 stratégies naturelles propres (photosynthèse = antenne +
+canalisation, papillon noir = piège-à-lumière, œil de mite = anti-reflet, tournesol = suivi solaire). Gate
+`valide_besoin` **220 → 238/238** ; les 10 domaines précédents intacts. Non-régression complète **797/797 PASS**.
+
+**JALON : 11 DOMAINES D'INVENTION, 8 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7
+Shannon, L8 Shockley-Queisser / exergie du rayonnement solaire).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 10e domaine « communication » + loi L7 (limite de Shannon)
 
 Communiquer/transmettre. Nouvelle loi dure au juge (`L7`) : la **limite de Shannon** — débit sans erreur ≤

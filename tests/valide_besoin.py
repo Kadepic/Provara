@@ -505,11 +505,54 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "limite_landauer_J_bit" in B.decompose("calculer efficacement"),
       "les 9 domaines précédents inchangés après l'ajout de la communication (isolation)")
 
+# ── 17) ONZIÈME DOMAINE : capter l'énergie solaire (nouvelle loi L8 = Shockley-Queisser / plafond thermodynamique) ──
+dso = B.decompose("capter l energie solaire")
+check(dso["statut"] == "decompose", "besoin captation solaire connu -> decompose")
+check("photon" in dso["objectif_reel"].lower() and "shockley" in dso["objectif_reel"].lower(),
+      "objectif réel solaire = convertir chaque photon, plafond Shockley-Queisser")
+check("plafond_shockley_queisser" in dso, "extras propres : le plafond de Shockley-Queisser")
+sol_canaux = {c.canal for c in dso["canaux"]}
+check(sol_canaux == {"spectre", "concentration", "thermalisation", "recombinaison"},
+      f"4 canaux du solaire ({sol_canaux})")
+prso = B.principes("capter l energie solaire")
+pso = {e["nom"]: e for e in prso["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : mono-jonction standard > SQ, et 100 % > plafond thermo
+mono50 = pso["panneau mono-jonction « à 50 % » (1 soleil)"]
+check(mono50["atome"].statut == A.REFUTE, "50 % mono-jonction standard > SQ 33,7 -> RÉFUTÉ")
+check(A.est_refute(mono50["atome"].contenu), "contenu réfuté (50 % mono-jonction) dans la garde")
+cent = pso["panneau solaire « 100 % efficace »"]
+check(cent["atome"].statut == A.REFUTE, "100 % > plafond thermodynamique -> RÉFUTÉ")
+# procédés réels (dont MEG qui dépasse SQ légitimement hors régime standard) -> SUPPOSITIONS
+for nom in ("cellule silicium mono-jonction (référence)", "tandem pérovskite/silicium (multi-jonction)",
+            "multi-jonction III-V sous concentration (CPV)", "génération multi-excitons (points quantiques)"):
+    e = pso[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prso["liste"]), "aucun principe solaire promu en FAIT")
+check("candidat pour captation_solaire" in pso["cellule silicium mono-jonction (référence)"]["atome"].portee.condition,
+      "portée des principes solaires nommant captation_solaire")
+# la loi L8 : mono-jonction standard > SQ réfuté, AU plafond SQ cohérent
+st_50, _, loi_50 = COH.juge_dispositif({"type": "captation_solaire", "rendement": 0.50, "nb_jonctions": 1,
+                                        "concentration_solaire": 1, "bilan_detaille_standard": True})
+check(st_50 == COH.VIOLE and loi_50 == COH.L8, "juge : 50 % mono-jonction standard -> VIOLE via L8")
+check(COH.juge_dispositif({"type": "captation_solaire", "rendement": 0.337, "nb_jonctions": 1,
+                           "concentration_solaire": 1, "bilan_detaille_standard": True})[0] == COH.COHERENT_BORNE,
+      "AU plafond SQ (33,7 %) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (photosynthèse, mite)
+natso = B.strategies_naturelles("capter l energie solaire")
+check(len(natso) >= 4 and any("photosynth" in s["exemple"].lower() for s in natso), "stratégies solaires propres (photosynthèse)")
+check(not any("baleine" in s["exemple"] for s in natso) and not any("cerveau" in s["exemple"] for s in natso),
+      "pas de fuite des stratégies communication/calcul vers le solaire")
+# les DIX domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "capacite_shannon" in B.decompose("transmettre de l information")
+      and "limite_landauer_J_bit" in B.decompose("calculer efficacement"),
+      "les 10 domaines précédents inchangés après l'ajout du solaire (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
-                              "calcul", "communication"],
-      "dix domaines modélisés, dans l'ordre d'enregistrement")
+                              "calcul", "communication", "captation_solaire"],
+      "onze domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
