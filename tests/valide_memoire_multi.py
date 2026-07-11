@@ -101,5 +101,27 @@ check("séparation : la brique binaire n'est JAMAIS servie à l'arité 3", "a * 
 check("idempotence : re-retenir la même brique -> False (déjà connue)",
       ma.retient("a * a + b * b", origine="sc3", params=["a", "b"], exemples=[((3, 5), 34)], held=[((7, 2), 53)]) is False)
 
+# ── (7) ARGS STRUCTURÉS (palier structurel, atome 24) ───────────────────────────────────────────────────
+# Une brique à arguments STRUCTURÉS (dicts à clés str) survit au cycle complet retient -> sauve -> charge
+# RE-JUGÉ (confiance zéro) ; un spec à clés ENTIÈRES (que JSON mangerait en str) est REFUSÉ à l'admission —
+# « son spec survit au disque » mord réellement, jamais un spec injugeable demain.
+with tempfile.TemporaryDirectory() as _d7:
+    _c7 = os.path.join(_d7, "briques_multi.json")
+    m7 = MemoireBriquesMulti(chemin=_c7, bases={2: IM.EXISTANT_BINAIRE})
+    _ex7 = [((dict(a), dict(b)), {k: v for k, v in a.items() if k not in b})
+            for a, b in [({"a": 1, "b": 2}, {"b": 9}), ({"x": 5}, {"y": 1}), ({"m": 4, "n": 6}, {"n": 0})]]
+    check("args structurés : brique dict×dict (clés str) RETENUE",
+          m7.retient("{_k: _v for _k, _v in a.items() if _k not in b}", origine="soustraction_dict",
+                     params=["a", "b"], exemples=_ex7[:2], held=_ex7[2:]) is True)
+    _ex7i = [((dict(a), dict(b)), {k: v for k, v in a.items() if k not in b})
+             for a, b in [({1: 10, 2: 20}, {2: 0}), ({3: 5}, {4: 1}), ({5: 4, 6: 6}, {6: 0})]]
+    check("args structurés : spec à clés ENTIÈRES refusé honnêtement (ne survivrait pas au disque)",
+          m7.retient("{_k: _v for _k, _v in a.items() if _k not in b}", origine="soustraction_dict_int",
+                     params=["a", "b"], exemples=_ex7i[:2], held=_ex7i[2:]) is False)
+    m7.sauve()
+    m7b = MemoireBriquesMulti(chemin=_c7, bases={2: IM.EXISTANT_BINAIRE})
+    check("args structurés : la brique survit à sauve -> charge RE-JUGÉ et est servie",
+          "soustraction_dict" in m7b.existant(2) and not m7b.quarantaine)
+
 print(f"\n== VALIDE_MEMOIRE_MULTI : {ok}/{total} ==")
 assert ok == total
