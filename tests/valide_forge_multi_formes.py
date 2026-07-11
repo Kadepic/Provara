@@ -81,7 +81,29 @@ check("dict×scalaire : INVENTION retenue via la façade",
       r3["statut"] == IM.INVENTION and r3["appris"] is True)
 check("sortie JSON-sérialisable (servable inter-moteurs)", json.dumps(r3) is not None)
 
-# (5) NON-RÉGRESSION : le chemin int×int de la façade ne bouge pas.
+# (5) ARITÉ 3 HÉTÉROGÈNE de bout en bout (atome 19) : invention retenue + matérialisée + rappelée ;
+# la primitive du registre de forme reste EXISTE_DEJA via la façade.
+RI = [(("le chat dort", "chien", "chat"), "le chien dort"), (("aaa", "b", "a"), "bbb"), (("xyz", "", "y"), "xz")]
+RIH = [(("bord de mer", "lac", "mer"), "bord de lac")]
+with tempfile.TemporaryDirectory() as d:
+    r5 = ia.forge_brique_multi("remplace_inverse_forge", RI, RIH, dossier=d)
+    check("arité 3 hét. : INVENTION complète (a.replace(c, b), appris + matérialisé)",
+          r5["statut"] == IM.INVENTION and r5["code"] == "a.replace(c, b)"
+          and r5["appris"] is True and r5["materialise"] is not None)
+    gates3 = glob.glob(os.path.join(d, "valide_*.py"))
+    p = subprocess.run([sys.executable, gates3[0]], capture_output=True, text=True, timeout=120)
+    check("arité 3 hét. : la gate matérialisée se re-prouve seule", p.returncode == 0)
+r6 = ia.forge_brique_multi("remplace_inverse_rappel", RI, RIH)
+check("arité 3 hét. : rappel self-improving (EXISTE_DEJA, code identique)",
+      r6["statut"] == IM.EXISTE_DEJA and r6["code"] == "a.replace(c, b)")
+r7 = ia.forge_brique_multi("remplace_forge",
+                           [(("le chat dort", "chat", "chien"), "le chien dort"), (("aaa", "a", "b"), "bbb"),
+                            (("xyz", "y", ""), "xz")],
+                           [(("bord de mer", "mer", "lac"), "bord de lac")])
+check("arité 3 hét. : la primitive (a.replace(b, c)) reste EXISTE_DEJA via la façade",
+      r7["statut"] == IM.EXISTE_DEJA and r7["code"] == "a.replace(b, c)")
+
+# (6) NON-RÉGRESSION : le chemin int×int de la façade ne bouge pas.
 r4 = ia.forge_brique_multi("difference_forge", [((7, 2), 5), ((9, 4), 5), ((3, 1), 2)], [((10, 6), 4)])
 check("int×int : difference reste EXISTE_DEJA via la façade", r4["statut"] == IM.EXISTE_DEJA and r4["code"] == "a - b")
 
