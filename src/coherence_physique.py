@@ -80,11 +80,14 @@ L26 = ("limite quantique standard d'une horloge : l'instabilité fractionnaire �
        "quantique, N atomes non intriqués) — sauf intrication (spin squeezing, vers la limite de Heisenberg 1/N)")
 L27 = ("limite de Margolus-Levitin : un système d'énergie E effectue au plus 2E/(πℏ) opérations élémentaires par "
        "seconde (~6×10³³ par joule) — la vitesse de calcul est bornée par l'énergie disponible")
+L28 = ("théorème de non-clonage : on ne peut pas copier PARFAITEMENT un état quantique INCONNU (le clonage "
+       "universel optimal 1→2 plafonne à une fidélité de 5/6) — seule l'information classique/connue se copie fidèlement")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
 _K_BOLTZMANN = 1.380649e-23  # J/K
 _HBAR = 1.054571817e-34      # J·s : constante de Planck réduite (limite de vitesse de calcul de Margolus-Levitin)
+_FIDELITE_CLONAGE_MAX = 5.0 / 6.0   # ≈ 0,833 : fidélité maximale du clonage quantique universel 1→2 (non-clonage)
 _RENDEMENT_SQ_MONO = 0.337   # limite de Shockley-Queisser (jonction simple standard, AM1.5, 1 soleil, gap ~1,34 eV)
 _T_SOLEIL_K = 5778.0         # température de corps noir effective du Soleil (pour le plafond de Carnot solaire)
 _DH_EAU = 285.8e3            # J/mol : enthalpie de dissociation de l'eau (PCS de H₂) — plancher 1er principe (énergie totale)
@@ -122,7 +125,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
                  "detection", "amplification", "echantillonnage", "tri", "recherche", "parallelisation",
-                 "cryogenie", "horloge", "vitesse_calcul"):
+                 "cryogenie", "horloge", "vitesse_calcul", "copie_quantique"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -656,6 +659,21 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
             if ops > ops_max * (1.0 + 1e-9):
                 return (VIOLE, f"{ops:.3e} opérations/s > limite de Margolus-Levitin {ops_max:.3e} (2E/πℏ pour "
                                f"E={e} J) : la vitesse de calcul est bornée par l'énergie — impossible", L27)
+
+    # --- Théorème de non-clonage : pas de copie PARFAITE d'un état quantique INCONNU. ---
+    # La linéarité de la mécanique quantique interdit un appareil qui copie un état quantique arbitraire INCONNU ; le
+    # clonage universel optimal 1→2 plafonne à une fidélité de 5/6 ≈ 0,833. EXCEPTION : l'information CLASSIQUE (ou un
+    # état quantique CONNU) se copie parfaitement → on ne réfute que pour un état déclaré INCONNU (`etat_inconnu`)
+    # revendiquant un clonage parfait ou une fidélité > 5/6. CONSERVATEUR : faux positif INTERDIT.
+    if t == "copie_quantique":
+        if spec.get("etat_inconnu") is True:
+            if spec.get("clonage_parfait") is True:
+                return (VIOLE, "clonage PARFAIT d'un état quantique INCONNU revendiqué : impossible (théorème de "
+                               "non-clonage — la linéarité l'interdit)", L28)
+            fid = spec.get("fidelite")
+            if _nb(fid) and fid > _FIDELITE_CLONAGE_MAX + 1e-9:
+                return (VIOLE, f"fidélité de clonage {fid} > {_FIDELITE_CLONAGE_MAX:.3f} (5/6) pour un état INCONNU : "
+                               f"au-delà du clonage quantique universel optimal — impossible", L28)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

@@ -223,6 +223,12 @@ check(loi({"type": "vitesse_calcul", "operations_par_seconde": 1e40, "energie_J"
       "Margolus-Levitin = L27")
 check(statut({"type": "vitesse_calcul", "operations_par_seconde": 1e60, "energie_J": 1e6}) == P.VIOLE,
       "1e60 ops/s avec 1e6 J > ML ~6e39 -> VIOLE")
+# théorème de non-clonage : copie parfaite / fidélité > 5/6 d'un état quantique inconnu.
+check(statut({"type": "copie_quantique", "etat_inconnu": True, "clonage_parfait": True}) == P.VIOLE,
+      "clonage parfait d'un état inconnu -> VIOLE")
+check(loi({"type": "copie_quantique", "etat_inconnu": True, "clonage_parfait": True}) == P.L28, "non-clonage = L28")
+check(statut({"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.95}) == P.VIOLE,
+      "fidélité 0,95 > 5/6 pour un état inconnu -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -399,6 +405,12 @@ reels = [
     {"type": "vitesse_calcul", "operations_par_seconde": 1e30, "energie_J": 1},       # au-dessous de ML (~6e33)
     {"type": "vitesse_calcul", "operations_par_seconde": 1e18},                       # sans énergie -> PAS un faux positif
     {"type": "vitesse_calcul"},                                                       # vide -> PAS un faux positif
+    # copies quantiques RÉELLES : classique/connue (parfaite ok), ou clonage approximatif ≤ 5/6.
+    {"type": "copie_quantique", "etat_inconnu": False, "clonage_parfait": True},      # copie d'info CLASSIQUE (parfaite ok)
+    {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.83},              # clonage approximatif optimal (≤ 5/6)
+    {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.8333},            # AU maximum 5/6 (limite, ok)
+    {"type": "copie_quantique", "etat_inconnu": True},                                # sans fidélité ni clonage parfait -> PAS un faux positif
+    {"type": "copie_quantique"},                                                      # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
