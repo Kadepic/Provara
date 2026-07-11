@@ -1012,14 +1012,56 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "secret_parfait" in B.decompose("chiffrer un message"),
       "les 21 domaines précédents inchangés après l'ajout de la détection (isolation)")
 
+# ── 29) VINGT-TROISIÈME DOMAINE : amplifier un signal (nouvelle loi L20 = facteur de bruit ≥ 1, pas d'amélioration du SNR) ──
+dam = B.decompose("amplifier un signal")
+check(dam["statut"] == "decompose", "besoin amplification connu -> decompose")
+check("bruit" in dam["objectif_reel"].lower() and "snr" in dam["objectif_reel"].lower(),
+      "objectif réel amplification = facteur de bruit, SNR préservé")
+check("facteur_de_bruit_min" in dam, "extras propres : le facteur de bruit minimal")
+am_canaux = {c.canal for c in dam["canaux"]}
+check(am_canaux == {"premier etage", "temperature", "position", "phase sensible"},
+      f"4 canaux de l'amplification ({am_canaux})")
+pram = B.principes("amplifier un signal")
+pam = {e["nom"]: e for e in pram["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : F < 1 et NF < 0 dB
+f05 = pam["amplificateur « à facteur de bruit 0,5 »"]
+check(f05["atome"].statut == A.REFUTE, "facteur de bruit 0,5 < 1 -> RÉFUTÉ")
+check(A.est_refute(f05["atome"].contenu), "contenu réfuté (F 0,5) dans la garde")
+nfm1 = pam["amplificateur « qui améliore le SNR » (NF −1 dB)"]
+check(nfm1["atome"].statut == A.REFUTE, "NF -1 dB -> RÉFUTÉ")
+# procédés réels (dont paramétrique à 0 dB) -> SUPPOSITIONS
+for nom in ("amplificateur faible bruit en tête (LNA, Friis)", "amplificateur cryogénique (refroidi)",
+            "amplificateur paramétrique / phase-sensible"):
+    e = pam[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in pram["liste"]), "aucun principe d'amplification promu en FAIT")
+check("candidat pour amplification_signal" in pam["amplificateur faible bruit en tête (LNA, Friis)"]["atome"].portee.condition,
+      "portée des principes d'amplification nommant amplification_signal")
+# la loi L20 : F < 1 réfuté, LNA réaliste cohérent
+st_am, _, loi_am = COH.juge_dispositif({"type": "amplification", "facteur_de_bruit": 0.5})
+check(st_am == COH.VIOLE and loi_am == COH.L20, "juge : facteur de bruit 0,5 -> VIOLE via L20")
+check(COH.juge_dispositif({"type": "amplification", "facteur_de_bruit_dB": 0.5})[0] == COH.COHERENT_BORNE,
+      "LNA NF 0,5 dB (> 0) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (cochlée, osselets)
+natam = B.strategies_naturelles("amplifier un signal")
+check(len(natam) >= 4 and any("cochlée" in s["exemple"].lower() for s in natam), "stratégies amplification propres (cochlée)")
+check(not any("bâtonnet" in s["exemple"] for s in natam) and not any("frégate" in s["exemple"] for s in natam),
+      "pas de fuite des stratégies détection/croisière vers l'amplification")
+# les VINGT-DEUX domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "bruit_grenaille" in B.decompose("detecter un signal faible")
+      and "trainee_induite_min" in B.decompose("voler loin"),
+      "les 22 domaines précédents inchangés après l'ajout de l'amplification (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
                               "production_alimentaire", "compression_information", "isolation_thermique",
-                              "confidentialite_information", "vol_croisiere", "detection_signal"],
-      "vingt-deux domaines modélisés, dans l'ordre d'enregistrement")
+                              "confidentialite_information", "vol_croisiere", "detection_signal",
+                              "amplification_signal"],
+      "vingt-trois domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

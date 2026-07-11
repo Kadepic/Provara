@@ -3366,6 +3366,141 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-TROISIÈME DOMAINE : amplifier un signal. Nouvelle loi dure au juge (L20) : un amplificateur N'AMÉLIORE
+#  PAS le rapport signal/bruit — le facteur de bruit F = SNR_entrée/SNR_sortie ≥ 1 (NF ≥ 0 dB). Amplifier
+#  multiplie le signal ET le bruit, et tout amplificateur ajoute son propre bruit. REFRAMING machine : gagner en
+#  amplitude ne gagne PAS en information ; ce qui compte, c'est de préserver le SNR. Leviers : mettre un
+#  amplificateur à FAIBLE BRUIT en TÊTE (Friis : le premier étage domine le bruit total) ; REFROIDIR l'étage
+#  d'entrée (bruit thermique) ; amplifier TÔT (au capteur, avant que le bruit de fond s'ajoute) ; amplification
+#  paramétrique / phase-sensible (approche 0 dB). Ne pas SUR-amplifier (on amplifie aussi le bruit).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_AMPLI = "amplification_signal"
+_ALIAS_AMPLI = {
+    "amplifier un signal", "amplifier sans ajouter de bruit", "augmenter l amplitude d un signal",
+    "amplifier a faible bruit", "renforcer un signal faible", "concevoir un amplificateur",
+}
+
+# ── « Canaux » : les leviers de l'amplification à faible bruit ───────────────────────────────────────────────────
+_CANAUX_AMPLI = [
+    Canal("premier etage", "information", "METTRE un amplificateur à FAIBLE BRUIT en tête (Friis : le 1er étage domine le bruit total)",
+          True, "le facteur de bruit total est dominé par le PREMIER étage (formule de Friis) → soigner l'entrée "
+                "(LNA) prime sur tout le reste de la chaîne ; le levier décisif de la sensibilité"),
+    Canal("temperature", "information", "REFROIDIR l'étage d'entrée : supprimer le bruit thermique (Johnson-Nyquist)",
+          True, "le bruit thermique ∝ température → refroidir l'amplificateur d'entrée (cryogénie) abaisse le "
+                "plancher de bruit ; radio-astronomie et calcul quantique en dépendent — le levier « froid »"),
+    Canal("position", "information", "AMPLIFIER TÔT : au plus près du capteur, avant que le bruit de fond s'ajoute",
+          True, "amplifier avant les pertes de câble et le bruit ambiant préserve le SNR d'origine → préamplificateur "
+                "intégré au capteur ; une fois le SNR dégradé, aucun gain ne le récupère — le levier « tôt »"),
+    Canal("phase sensible", "information", "AMPLIFICATION PARAMÉTRIQUE / phase-sensible : approcher le facteur de bruit 0 dB",
+          True, "un amplificateur paramétrique phase-sensible amplifie une quadrature sans ajouter le bruit d'un "
+                "amplificateur phase-insensible → approche F=1 (0 dB) ; utile en métrologie quantique — le levier « quantique »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le facteur de bruit (type `amplification`, F ≥ 1 / NF ≥ 0 dB) ──────────
+_PRINCIPES_AMPLI = [
+    _P("amplificateur faible bruit en tête (LNA, Friis)",
+       "amplifier : placer un amplificateur à très faible facteur de bruit en premier étage",
+       {"type": "amplification", "facteur_de_bruit_dB": 0.5}, True, True,
+       "—", "mature",
+       0.65, "la formule de Friis : le 1er étage domine le bruit total → un LNA soigné en entrée fixe la "
+             "sensibilité de toute la chaîne ; la référence de la conception radio — le levier « premier étage »"),
+    _P("amplificateur cryogénique (refroidi)",
+       "amplifier : refroidir l'étage d'entrée pour supprimer le bruit thermique",
+       {"type": "amplification", "facteur_de_bruit_dB": 0.2}, True, True,
+       "—", "mature (radio-astro / quantique)",
+       0.55, "à quelques kelvins, le bruit thermique s'effondre → facteur de bruit quasi idéal (récepteurs "
+             "radioastronomiques, qubits) ; cryogénie à payer — le levier « froid » poussé loin"),
+    _P("amplificateur paramétrique / phase-sensible",
+       "amplifier : amplifier une quadrature sans ajouter le bruit d'un amplificateur phase-insensible",
+       {"type": "amplification", "facteur_de_bruit": 1.0}, True, True,
+       "—", "recherche",
+       0.45, "approche le facteur de bruit idéal (0 dB) en n'amplifiant qu'une quadrature → métrologie quantique, "
+             "lecture de qubits ; bande étroite et pompe à fournir — le levier « phase-sensible »"),
+    _P("préamplificateur au capteur (amplifier tôt)",
+       "amplifier : intégrer le préamplificateur au plus près du capteur",
+       {"type": "amplification", "facteur_de_bruit_dB": 1.0}, True, True,
+       "—", "mature",
+       0.5, "amplifier avant les pertes de câble et le bruit ambiant préserve le SNR d'origine → capteurs actifs, "
+            "micros à électret ; intégration et alimentation locales — le levier « tôt »"),
+    _P("amplificateur transimpédance faible bruit (photodiode)",
+       "amplifier : convertir un faible photocourant en tension avec un minimum de bruit",
+       {"type": "amplification", "facteur_de_bruit_dB": 1.5}, True, True,
+       "—", "mature",
+       0.5, "adapte l'impédance et amplifie un courant minuscule (photodiode, capteur) sans le noyer → clé de la "
+            "détection optique ; compromis bande/bruit — préserver le peu de signal reçu"),
+    _P("amplificateur à faible bruit large bande (distribué)",
+       "amplifier : répartir le gain sur plusieurs cellules pour une large bande à bruit maîtrisé",
+       {"type": "amplification", "facteur_de_bruit_dB": 2.0}, True, True,
+       "—", "mature",
+       0.45, "gain réparti → large bande passante avec un facteur de bruit raisonnable ; plus de composants et de "
+            "consommation — le compromis « bande vs bruit »"),
+    _P("amplificateur optique (EDFA)",
+       "amplifier : amplifier directement un signal optique dans une fibre dopée à l'erbium",
+       {"type": "amplification", "facteur_de_bruit_dB": 3.0}, True, True,
+       "—", "mature",
+       0.5, "amplifie la lumière sans conversion optique-électrique (télécoms longue distance) → facteur de bruit "
+            "proche de la limite quantique (~3 dB) ; émission spontanée amplifiée à gérer — amplifier « en optique »"),
+    _P("amplificateur de puissance à haut rendement (GaN)",
+       "amplifier : amplifier en puissance avec un bon rendement énergétique (émission)",
+       {"type": "amplification", "facteur_de_bruit_dB": 4.0}, True, True,
+       "—", "mature",
+       0.4, "en sortie, le bruit compte moins que le rendement et la linéarité → GaN pour l'émission (5G, radar) ; "
+            "le faible bruit n'est crucial qu'en RÉCEPTION, pas en émission — le bon amplificateur au bon endroit"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("amplificateur « à facteur de bruit 0,5 »",
+       "amplifier : amplificateur revendiquant un facteur de bruit de 0,5 (NF −3 dB)",
+       {"type": "amplification", "facteur_de_bruit": 0.5}, True, True,
+       "—", "revendication",
+       0.3, "facteur de bruit 0,5 < 1 : le dispositif AMÉLIORERAIT le rapport signal/bruit → impossible (un "
+            "amplificateur ajoute toujours du bruit) ; à réfuter"),
+    _P("amplificateur « qui améliore le SNR » (NF −1 dB)",
+       "amplifier : amplificateur revendiquant un facteur de bruit négatif en dB",
+       {"type": "amplification", "facteur_de_bruit_dB": -1}, True, True,
+       "—", "revendication",
+       0.25, "NF −1 dB < 0 dB : aucun amplificateur ne peut améliorer le rapport signal/bruit — impossible"),
+]
+
+_OBJECTIF_AMPLI = ("Le but réel n'est pas de « rendre plus grand » mais de préserver l'INFORMATION : amplifier "
+                   "multiplie le signal ET le bruit, et tout amplificateur ajoute le sien → le facteur de bruit "
+                   "F = SNR_entrée/SNR_sortie ≥ 1 (NF ≥ 0 dB). Gagner en amplitude ne gagne pas en SNR. Leviers : "
+                   "mettre un amplificateur à FAIBLE BRUIT en TÊTE (Friis : le 1er étage domine) ; REFROIDIR l'étage "
+                   "d'entrée (bruit thermique) ; amplifier TÔT (au capteur, avant le bruit de fond) ; amplification "
+                   "paramétrique / phase-sensible (approche 0 dB). Ne pas sur-amplifier. Chaque principe reste jugé "
+                   "par le facteur de bruit.")
+_LOI_AMPLI = ("un amplificateur n'améliore pas le rapport signal/bruit : facteur de bruit F ≥ 1 (NF ≥ 0 dB) ; gains "
+              "réels = faible bruit au premier étage (Friis), refroidir l'entrée, amplifier tôt (au capteur), "
+              "amplification phase-sensible ; ne pas sur-amplifier")
+
+# La nature amplifie par l'amplificateur actif (cochlée), la résonance accordée, l'adaptation d'impédance (osselets), le levier mécanique (vibrisse).
+_STRATEGIES_NATURE_AMPLI = [
+    _Nature("cellule ciliée de la cochlée (amplificateur actif)",
+            ["amplifie activement les vibrations faibles près du seuil", "gain plus fort pour les sons ténus"],
+            "amplifier activement le signal faible sans le noyer — l'amplificateur à faible bruit du vivant"),
+    _Nature("résonance mécanique accordée (membrane basilaire)",
+            ["chaque zone résonne à une fréquence", "amplifie sélectivement une bande étroite"],
+            "amplifier SÉLECTIVEMENT une fréquence par résonance — le gain bande étroite à faible bruit"),
+    _Nature("osselets de l'oreille moyenne (adaptation d'impédance)",
+            ["couplent l'air au liquide de l'oreille interne", "gain par effet de levier et de surface"],
+            "adapter les impédances pour transférer le signal sans le perdre — un gain « propre » par couplage"),
+    _Nature("vibrisse / moustache (levier mécanique)",
+            ["long poil qui amplifie mécaniquement un contact minime", "transmet à une base très sensible"],
+            "amplifier mécaniquement un stimulus infime AVANT le capteur — amplifier tôt, à la source"),
+]
+
+enregistre(Domaine(
+    nom=_AMPLI,
+    aliases=frozenset(_ALIAS_AMPLI),
+    objectif=_OBJECTIF_AMPLI,
+    canaux=_CANAUX_AMPLI,
+    principes=_PRINCIPES_AMPLI,
+    strategies=_STRATEGIES_NATURE_AMPLI,
+    loi=_LOI_AMPLI,
+    extras={"facteur_de_bruit_min": "F ≥ 1 (NF ≥ 0 dB) — un amplificateur n'améliore jamais le SNR",
+            "note": "Friis : le 1er étage domine ; refroidir l'entrée ; amplifier tôt ; phase-sensible approche 0 dB"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 23e domaine « amplifier un signal » + loi L20 (facteur de bruit ≥ 1)
+
+Amplifier un signal. Nouvelle loi dure au juge (`L20`) : un amplificateur N'AMÉLIORE PAS le rapport signal/bruit —
+le facteur de bruit F = SNR_entrée/SNR_sortie ≥ 1 (NF ≥ 0 dB). Amplifier multiplie le signal ET le bruit, et tout
+amplificateur ajoute le sien. CONSERVATEUR (FAUX=0) : on ne réfute qu'un F < 1 (ou NF < 0 dB) déclaré → jamais un
+faux positif (même un amplificateur paramétrique idéal atteint F = 1). Gate `valide_coherence_physique`
+**281 → 294/294**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (F « 0,5 », NF « −1 dB »). Reframing :
+gagner en amplitude ne gagne pas en information ; préserver le SNR. Leviers : faible bruit en TÊTE (Friis : le 1er
+étage domine), refroidir l'étage d'entrée, amplifier TÔT (au capteur), amplification paramétrique/phase-sensible
+(approche 0 dB), ne pas sur-amplifier. Couvre LNA/Friis, cryogénique, paramétrique, préampli au capteur,
+transimpédance, distribué, optique (EDFA), puissance GaN. 4 stratégies naturelles propres (cochlée = amplificateur
+actif, résonance = gain sélectif, osselets = adaptation d'impédance, vibrisse = levier mécanique). Gate
+`valide_besoin` **425 → 442/442** ; les 22 domaines précédents intacts.
+
+**JALON : 23 DOMAINES D'INVENTION, 20 LOIS PHYSIQUES DANS LE JUGE** (… L19 bruit de grenaille, L20 facteur de bruit
+d'un amplificateur).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 22e domaine « détecter un signal faible » + loi L19 (bruit de grenaille)
 
 Détecter un signal lumineux faible / capteur. Nouvelle loi dure au juge (`L19`) : le BRUIT DE GRENAILLE — la
