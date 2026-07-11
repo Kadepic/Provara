@@ -3230,6 +3230,142 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-DEUXIÈME DOMAINE : détecter un signal lumineux faible. Nouvelle loi dure au juge (L19) : le BRUIT DE
+#  GRENAILLE — la lumière arrive en photons discrets (Poisson), donc compter N photons plafonne le rapport
+#  signal/bruit à √N ; et le rendement quantique ≤ 1 (un photon ne compte pas plus d'un électron). REFRAMING
+#  machine : on n'« amplifie » pas le signal au-delà de son grain ; le SNR est limité par le NOMBRE de photons
+#  collectés (√N). Leviers : collecter PLUS de photons (grande ouverture, longue intégration, source plus vive) ;
+#  réduire les AUTRES bruits (refroidir le capteur, faible bruit de lecture) pour atteindre la limite de grenaille ;
+#  monter le rendement quantique vers 1. La lumière COMPRIMÉE (squeezed) bat la limite quantique standard (LIGO).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_DETECT = "detection_signal"
+_ALIAS_DETECT = {
+    "detecter un signal faible", "detecter la lumiere", "capter un signal faible", "ameliorer la sensibilite",
+    "detecter peu de photons", "augmenter le rapport signal sur bruit",
+}
+
+# ── « Canaux » : les leviers de la sensibilité de détection ──────────────────────────────────────────────────────
+_CANAUX_DETECT = [
+    Canal("flux de photons", "information", "COLLECTER plus de photons : grande ouverture, longue intégration, source plus vive",
+          True, "le rapport signal/bruit croît en √N → doubler le SNR exige ×4 de photons ; grande pupille/miroir et "
+                "temps de pose sont les leviers directs, mais √N est irréductible en lumière classique"),
+    Canal("autres bruits", "information", "RÉDUIRE les bruits non fondamentaux : refroidir (bruit d'obscurité), faible bruit de lecture",
+          True, "un capteur réel est SOUS la limite de grenaille (bruit d'obscurité, de lecture) → le refroidir et "
+                "améliorer l'électronique le rapprochent du plafond √N, sans jamais le dépasser"),
+    Canal("rendement quantique", "information", "MONTER le rendement quantique vers 1 (illumination arrière, anti-reflet)",
+          True, "chaque photon perdu (réflexion, transmission) est du signal en moins → un QE proche de 1 "
+                "(capteurs back-illuminated ~0,95) récupère des photons rares ; ne peut dépasser 1"),
+    Canal("lumiere comprimee", "information", "LUMIÈRE COMPRIMÉE (squeezed) : redistribuer le bruit quantique sous la limite standard",
+          True, "en interférométrie, comprimer les fluctuations quantiques d'une quadrature descend SOUS la limite "
+                "de grenaille (LIGO gagne de la portée ainsi) ; exige des états non classiques — le levier « quantique »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le bruit de grenaille (type `detection`, SNR ≤ √N ; QE ≤ 1) ────────────
+_PRINCIPES_DETECT = [
+    _P("grande ouverture / télescope (collecter plus de photons)",
+       "détecter : agrandir la pupille/le miroir pour capter davantage de photons",
+       {"type": "detection", "nb_photons": 1000000, "rapport_signal_bruit": 900}, True, True,
+       "—", "mature",
+       0.65, "N ∝ surface collectrice → SNR ∝ √N : le grand miroir est le levier premier de la sensibilité "
+             "(astronomie) ; coût et masse de l'optique — collecter plus de photons, la seule vraie voie"),
+    _P("temps d'intégration long",
+       "détecter : accumuler le signal sur une longue pose pour augmenter N",
+       {"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 90}, True, True,
+       "—", "mature",
+       0.55, "poser plus longtemps accumule des photons (SNR ∝ √t) → révèle des sources faibles ; limité par le "
+             "bruit d'obscurité, le suivi et la stabilité — le levier « temps »"),
+    _P("capteur refroidi (bruit d'obscurité réduit)",
+       "détecter : refroidir le capteur pour supprimer les électrons thermiques parasites",
+       {"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 95}, True, True,
+       "—", "mature",
+       0.55, "le froid supprime le courant d'obscurité (électrons thermiques) → rapproche le capteur de la limite "
+             "de grenaille ; refroidissement à payer (Peltier, azote) — atteindre le plafond √N, pas le franchir"),
+    _P("faible bruit de lecture (EMCCD / sCMOS)",
+       "détecter : électronique à très faible bruit de lecture pour les signaux à peu de photons",
+       {"type": "detection", "nb_photons": 400, "rapport_signal_bruit": 19}, True, True,
+       "—", "mature",
+       0.5, "à faible flux, le bruit de lecture domine → le réduire (multiplication d'électrons, sCMOS) libère la "
+            "détection des signaux ténus ; plafonné par le grenaille — le levier « lecture propre »"),
+    _P("rendement quantique élevé (back-illuminated)",
+       "détecter : capteur à illumination arrière convertissant presque chaque photon (QE ~0,95)",
+       {"type": "detection", "rendement_quantique": 0.95}, True, True,
+       "—", "mature",
+       0.5, "récupère les photons perdus par réflexion/transmission → chaque photon rare compte ; QE ne peut "
+            "dépasser 1 — le levier « ne perdre aucun photon »"),
+    _P("comptage de photons (SPAD / PMT)",
+       "détecter : compter les photons un par un avec un détecteur à avalanche",
+       {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 9.9}, True, True,
+       "—", "mature",
+       0.5, "détecte le photon unique (avalanche) → sensibilité ultime à très bas flux, avec datation précise ; "
+            "temps mort et bruit de comptage — atteindre la statistique de Poisson (√N)"),
+    _P("moyennage / accumulation de trames",
+       "détecter : additionner de nombreuses acquisitions pour augmenter N effectif",
+       {"type": "detection", "nb_photons": 1000000, "rapport_signal_bruit": 950}, True, True,
+       "—", "mature",
+       0.45, "accumuler des trames augmente le N total (SNR ∝ √nombre de trames) → extrait un signal noyé dans le "
+             "bruit ; suppose une scène stable et recalée — le levier « accumuler »"),
+    _P("lumière comprimée (squeezed, interférométrie)",
+       "détecter : injecter un état de lumière comprimée pour passer sous la limite de grenaille",
+       {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 15, "lumiere_comprimee": True}, True, True,
+       "—", "recherche (LIGO)",
+       0.4, "REFRAMING quantique : comprimer les fluctuations d'une quadrature descend SOUS la limite standard "
+            "(LIGO gagne en portée) ; états non classiques fragiles → interférométrie de précision — le levier « quantique »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("capteur « à SNR 100 sur 100 photons »",
+       "détecter : atteindre un rapport signal/bruit de 100 en ne collectant que 100 photons (lumière classique)",
+       {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 100}, True, True,
+       "—", "revendication",
+       0.3, "SNR 100 > √N (=10 pour 100 photons) en lumière classique : au-delà du bruit de grenaille — impossible ; "
+            "à réfuter par la statistique de Poisson"),
+    _P("capteur « à rendement quantique 1,2 »",
+       "détecter : capteur revendiquant un rendement quantique de 1,2 (plus d'un électron par photon)",
+       {"type": "detection", "rendement_quantique": 1.2}, True, True,
+       "—", "revendication",
+       0.25, "un photon ne peut compter plus d'un électron (QE ≤ 1, hors multiplication déclarée) → 1,2 est "
+             "impossible"),
+]
+
+_OBJECTIF_DETECT = ("Le but réel n'est pas d'« amplifier » le signal au-delà de son grain mais de collecter et "
+                    "préserver des PHOTONS : la lumière arrive en quanta (Poisson), donc le rapport signal/bruit "
+                    "est plafonné à √N par le bruit de GRENAILLE, et le rendement quantique ≤ 1. Leviers : "
+                    "collecter PLUS de photons (grande ouverture, longue intégration, source plus vive) ; réduire "
+                    "les AUTRES bruits (refroidir le capteur, faible bruit de lecture) pour atteindre la limite de "
+                    "grenaille ; monter le rendement quantique vers 1. La lumière COMPRIMÉE (squeezed) descend sous "
+                    "la limite standard en interférométrie. Chaque principe reste jugé par le bruit de grenaille.")
+_LOI_DETECT = ("bruit de grenaille (photonique) : compter N photons plafonne le rapport signal/bruit à √N "
+               "(statistique de Poisson), et le rendement quantique ≤ 1 ; gains réels = collecter plus de photons "
+               "(√N), réduire les bruits non fondamentaux, monter le rendement quantique, ou lumière comprimée")
+
+# La nature détecte le faible signal par le comptage (bâtonnet), le second passage (tapetum), la sommation (œil composé), la cascade (photorécepteur).
+_STRATEGIES_NATURE_DETECT = [
+    _Nature("bâtonnet de la rétine (vision nocturne)",
+            ["répond au photon unique", "s'adapte à l'obscurité en accumulant"],
+            "compter les photons un à un et intégrer dans le noir — atteindre la limite de grenaille du vivant"),
+    _Nature("tapetum lucidum (couche réfléchissante de l'œil)",
+            ["renvoie la lumière non absorbée vers les photorécepteurs", "double la chance de capter chaque photon"],
+            "faire repasser la lumière pour ne perdre aucun photon — augmenter le rendement de capture"),
+    _Nature("œil composé sommateur (insectes nocturnes)",
+            ["additionne le signal de plusieurs ommatidies", "échange la résolution contre la sensibilité"],
+            "SOMMER le signal de plusieurs capteurs pour augmenter N — l'accumulation spatiale"),
+    _Nature("photorécepteur à cascade d'amplification",
+            ["une capture déclenche une cascade biochimique amplificatrice", "un photon → un signal détectable"],
+            "amplifier fidèlement une capture unique — lire le photon sans ajouter de bruit, comme un SPAD"),
+]
+
+enregistre(Domaine(
+    nom=_DETECT,
+    aliases=frozenset(_ALIAS_DETECT),
+    objectif=_OBJECTIF_DETECT,
+    canaux=_CANAUX_DETECT,
+    principes=_PRINCIPES_DETECT,
+    strategies=_STRATEGIES_NATURE_DETECT,
+    loi=_LOI_DETECT,
+    extras={"bruit_grenaille": "SNR ≤ √N (Poisson) ; rendement quantique ≤ 1",
+            "note": "la lumière comprimée (squeezed) bat la limite quantique standard en interférométrie (LIGO)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

@@ -971,14 +971,55 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "plancher_radiatif" in B.decompose("isoler thermiquement"),
       "les 20 domaines précédents inchangés après l'ajout de la croisière (isolation)")
 
+# ── 28) VINGT-DEUXIÈME DOMAINE : détecter un signal faible (nouvelle loi L19 = bruit de grenaille, SNR ≤ √N) ──
+dde = B.decompose("detecter un signal faible")
+check(dde["statut"] == "decompose", "besoin détection connu -> decompose")
+check("grenaille" in dde["objectif_reel"].lower() and "photons" in dde["objectif_reel"].lower(),
+      "objectif réel détection = bruit de grenaille, photons")
+check("bruit_grenaille" in dde, "extras propres : le bruit de grenaille")
+de_canaux = {c.canal for c in dde["canaux"]}
+check(de_canaux == {"flux de photons", "autres bruits", "rendement quantique", "lumiere comprimee"},
+      f"4 canaux de la détection ({de_canaux})")
+prde = B.principes("detecter un signal faible")
+pde = {e["nom"]: e for e in prde["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : SNR au-dessus de √N, et QE > 1
+snr100 = pde["capteur « à SNR 100 sur 100 photons »"]
+check(snr100["atome"].statut == A.REFUTE, "SNR 100 sur 100 photons -> RÉFUTÉ")
+check(A.est_refute(snr100["atome"].contenu), "contenu réfuté (SNR 100) dans la garde")
+qe12 = pde["capteur « à rendement quantique 1,2 »"]
+check(qe12["atome"].statut == A.REFUTE, "rendement quantique 1,2 -> RÉFUTÉ")
+# procédés réels (dont la lumière comprimée, exemptée) -> SUPPOSITIONS
+for nom in ("grande ouverture / télescope (collecter plus de photons)", "comptage de photons (SPAD / PMT)",
+            "lumière comprimée (squeezed, interférométrie)"):
+    e = pde[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prde["liste"]), "aucun principe de détection promu en FAIT")
+check("candidat pour detection_signal" in pde["comptage de photons (SPAD / PMT)"]["atome"].portee.condition,
+      "portée des principes de détection nommant detection_signal")
+# la loi L19 : SNR au-dessus de √N réfuté, capteur réel cohérent
+st_de, _, loi_de = COH.juge_dispositif({"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 100})
+check(st_de == COH.VIOLE and loi_de == COH.L19, "juge : SNR 100 sur 100 photons -> VIOLE via L19")
+check(COH.juge_dispositif({"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 80})[0]
+      == COH.COHERENT_BORNE, "SNR 80 sur 10000 photons (< √N) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (bâtonnet, tapetum)
+natde = B.strategies_naturelles("detecter un signal faible")
+check(len(natde) >= 4 and any("bâtonnet" in s["exemple"].lower() for s in natde), "stratégies détection propres (bâtonnet)")
+check(not any("aigle" in s["exemple"] for s in natde) and not any("frégate" in s["exemple"] for s in natde),
+      "pas de fuite des stratégies optique/croisière vers la détection")
+# les VINGT-ET-UN domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "trainee_induite_min" in B.decompose("voler loin")
+      and "secret_parfait" in B.decompose("chiffrer un message"),
+      "les 21 domaines précédents inchangés après l'ajout de la détection (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
                               "production_alimentaire", "compression_information", "isolation_thermique",
-                              "confidentialite_information", "vol_croisiere"],
-      "vingt-et-un domaines modélisés, dans l'ordre d'enregistrement")
+                              "confidentialite_information", "vol_croisiere", "detection_signal"],
+      "vingt-deux domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

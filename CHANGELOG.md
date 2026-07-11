@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 22e domaine « détecter un signal faible » + loi L19 (bruit de grenaille)
+
+Détecter un signal lumineux faible / capteur. Nouvelle loi dure au juge (`L19`) : le BRUIT DE GRENAILLE — la
+lumière arrive en photons discrets (Poisson), donc compter N photons plafonne le rapport signal/bruit à √N ; et le
+rendement quantique ≤ 1. CONSERVATEUR (FAUX=0) : la lumière COMPRIMÉE (squeezed) bat la limite quantique standard
+en interférométrie (LIGO) → on ne réfute SNR > √N qu'en lumière classique (`lumiere_comprimee` non déclaré) ; un
+capteur réel reste sous √N. Gate `valide_coherence_physique` **268 → 281/281**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (SNR « 100 sur 100 photons »,
+rendement quantique « 1,2 »). Reframing : on n'amplifie pas au-delà du grain ; le SNR est limité par le NOMBRE de
+photons (√N). Leviers : collecter plus de photons (grande ouverture, longue intégration), réduire les autres
+bruits (refroidir, faible bruit de lecture), monter le QE vers 1, lumière comprimée (quantique). Couvre grand
+télescope, intégration longue, capteur refroidi, faible bruit de lecture, QE élevé, comptage de photons (SPAD),
+moyennage, lumière comprimée. 4 stratégies naturelles propres (bâtonnet = comptage de photons, tapetum = second
+passage, œil composé = sommation, photorécepteur = cascade). Gate `valide_besoin` **408 → 425/425** ; les 21
+domaines précédents intacts.
+
+**JALON : 22 DOMAINES D'INVENTION, 19 LOIS PHYSIQUES DANS LE JUGE** (… L18 traînée induite minimale, L19 bruit de grenaille).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 21e domaine « voler loin / croisière » + loi L18 (traînée induite minimale)
 
 Voler loin / croisière efficace. Nouvelle loi dure au juge (`L18`) : la TRAÎNÉE INDUITE MINIMALE — produire une
