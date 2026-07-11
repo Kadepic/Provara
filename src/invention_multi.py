@@ -49,6 +49,88 @@ _COMBINE = ["{pa} + {pb}", "{pa} - {pb}", "{pa} * {pb}", "max({pa}, {pb})", "min
 _BASE_SUPPL = ["b - a", "b // a", "b % a", "b ** a", "a * a + b * b", "a * a - b * b",
                "a * b + a + b", "__import__('math').gcd(a, b)"]
 
+# FORME DE TYPE LISTE×SCALAIRE (palier structurel 2026-07-12) : l'arité 2 HÉTÉROGÈNE — un argument-STRUCTURE
+# (liste) + un paramètre scalaire (entier). Frontière MESURÉE : n_premiers, kieme_plus_grand, compte_superieurs,
+# rotation restaient brique_manquante (le vocabulaire binaire est scalaire pur). MÊME PATRON que les arités
+# (un registre + un générateur + des sondes), routé par FORME DE TYPE détectée sur TOUS les exemples — le
+# chemin entier×entier ne bouge pas. C'est la classe DeepCoder des opérateurs de premier ordre (take/drop/
+# access/count paramétrés). Templates {L}/{K} : instanciés selon l'ordre observé (liste, k) ou (k, liste) —
+# l'ordre des arguments est une donnée du spec, pas une convention.
+_LS_REGISTRE: dict[str, str] = {
+    "compte_occurrences": "{L}.count({K})",
+    "appartient": "{K} in {L}",
+    "element_a_l_indice": "{L}[{K}]",
+    "premier_indice": "{L}.index({K})",
+}
+# Générateur borné, sémantique EXACTE (pas d'aimant à coïncidences arithmétiques) : tranches des deux bords,
+# k-ième trié, rotations, comptages/filtres vs seuil, map paramétré, paquets de taille k.
+_LS_OPS = [
+    "{L}[:{K}]", "{L}[{K}:]", "{L}[-{K}:]", "{L}[:-{K}]",
+    "sorted({L})[-{K}]", "sorted({L})[{K} - 1]",
+    "sorted({L})[:{K}]", "sorted({L})[-{K}:]",
+    "{L}[{K}:] + {L}[:{K}]", "{L}[-{K}:] + {L}[:-{K}]",
+    "sum(1 for _e in {L} if _e > {K})", "sum(1 for _e in {L} if _e < {K})",
+    "sum(1 for _e in {L} if _e >= {K})",
+    "[_e for _e in {L} if _e > {K}]", "[_e for _e in {L} if _e < {K}]",
+    "[_e for _e in {L} if _e != {K}]",
+    "[_e + {K} for _e in {L}]", "[_e * {K} for _e in {L}]",
+    "[{L}[_i:_i + {K}] for _i in range(0, len({L}), {K})]",
+]
+
+
+def _forme_liste_scalaire(toutes):
+    """(liste, entier) ou (entier, liste) sur TOUS les exemples -> (var_liste, var_scalaire), sinon None."""
+    def _est(v, t):
+        return isinstance(v, t) and not isinstance(v, bool)
+    if all(len(a) == 2 and _est(a[0], list) and _est(a[1], int) for a, _ in toutes):
+        return ("a", "b")
+    if all(len(a) == 2 and _est(a[0], int) and _est(a[1], list) for a, _ in toutes):
+        return ("b", "a")
+    return None
+
+
+def _registre_liste_scalaire(forme) -> dict[str, str]:
+    L, K = forme
+    return {n: t.format(L=L, K=K) for n, t in _LS_REGISTRE.items()}
+
+
+def _candidats_liste_scalaire(exemples, forme) -> list[str]:
+    """Expressions liste×scalaire qui REPRODUISENT les exemples. Bornée, dédupliquée ; soundness par les gardes."""
+    L, K = forme
+    cands: set[str] = set(_registre_liste_scalaire(forme).values())
+    cands.update(t.format(L=L, K=K) for t in _LS_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_liste_scalaire(exemples, forme) -> list[tuple]:
+    """Sondes de FORME : liste RENVERSÉE (discrimine take vs sorted-take), liste TRIÉE, k±1 DANS le domaine,
+    doublon ajouté (discrimine comptage vs appartenance). Pas de SWAP : types invalides -> ERR uniforme sur
+    tous les candidats de la forme, aucune discrimination à y gagner."""
+    scal_premier = forme == ("b", "a")
+    out = []
+    for args, _ in exemples:
+        x, k = (args[1], args[0]) if scal_premier else (args[0], args[1])
+
+        def mk(xx, kk):
+            return (kk, xx) if scal_premier else (xx, kk)
+        out.append(mk(list(x), k))
+        out.append(mk(list(reversed(x)), k))
+        out.append(mk(sorted(x), k))
+        if 1 <= k + 1 <= len(x):
+            out.append(mk(list(x), k + 1))
+        if k - 1 >= 1:
+            out.append(mk(list(x), k - 1))
+        if x:
+            out.append(mk(list(x) + [x[0]], k))
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # Registre TERNAIRE : capacités connues à trois arguments entiers (rung suivant, patron identique au binaire).
 EXISTANT_TERNAIRE: dict[str, str] = {
     "somme3": "a + b + c",
@@ -222,8 +304,11 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
         return Verdict(INCOHERENT, nom, justification="arité incohérente entre les exemples")
     arite = arites.pop()
     params = _params(arite)
+    # FORME DE TYPE (palier structurel) : arité 2 hétérogène liste×scalaire -> registre/candidats/sondes de la
+    # forme ; sinon chemins scalaires INCHANGÉS. Un `existant` passé par l'appelant garde la priorité.
+    forme_ls = _forme_liste_scalaire(toutes) if arite == 2 else None
     if existant is None:
-        existant = _REGISTRES.get(arite, {})
+        existant = _registre_liste_scalaire(forme_ls) if forme_ls else _REGISTRES.get(arite, {})
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
     vus: dict = {}
@@ -233,7 +318,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
             return Verdict(INCOHERENT, nom, justification="deux sorties différentes pour la même entrée")
         vus[k] = o
 
-    sondes = _sondes_binaires(toutes) if arite == 2 else _sondes_ternaires(toutes) if arite == 3 \
+    sondes = (_sondes_liste_scalaire(toutes, forme_ls) if forme_ls else _sondes_binaires(toutes)) if arite == 2 \
+        else _sondes_ternaires(toutes) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
 
     # 1) EXISTE DÉJÀ : une capacité connue reproduit la cible ?
@@ -243,7 +329,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                            justification="déjà couvert par l'inventaire binaire existant")
 
     # 2) RÉALISABLE par recombinaison ? (arité 2 = binaire, arité 3 = ternaire ; patron reproductible)
-    candidats = _candidats_binaires(toutes) if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
+    candidats = (_candidats_liste_scalaire(toutes, forme_ls) if forme_ls else _candidats_binaires(toutes)) \
+        if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
     if candidats:
         sigs = {e: _sig_multi(_callable_multi(e, nom, params), sondes) for e in candidats}
         for j, s in enumerate(sondes):
