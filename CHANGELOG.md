@@ -1,5 +1,48 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — PHASE 2 (les 3 axes) LIVRÉE + cache de `_nonreg.py` réparé (~12 min → secondes)
+
+**Cache `_nonreg.py` (Tâche 1).** Cause racine : `imports_directs()` et `hash_fichiers()` ouvraient les `.py`
+relativement à la racine/`tests/` alors que les modules vivent dans `src/` (+ `interface/`, `ingestion/`,
+`outils/`) → OSError → `suspect=True` propagé aux 797 clôtures (cache TOUJOURS froid) ET hash `<absent>`
+(fingerprint insensible au contenu de `src/` — trou de soundness masqué). Fix : `_chemin_fichier()` (mêmes
+dossiers que `modules_locaux()`) branché dans LES DEUX fonctions. Prouvé : suspect **0/797**, run chaud
+**797 en cache en ~80 s de wall** (verdict 0–40 s, contre ~12 min), sonde de contenu sur `src/besoin.py` →
+seuls ses **45 dépendants** re-tournent. Le cache est désormais RAPIDE et SOUND.
+
+**Phase 2 — les 3 axes, câblés en briques 1ʳᵉ classe puis ASSEMBLÉS (5 commits atomiques, suite 797→798) :**
+  1. **Axe ① contrat d'atome universel** : `invention_atomes.atome_capacite`/`invente_capacite` — le moteur
+     d'invention de CAPACITÉS parle le contrat d'atome (INVENTION → SUPPOSITION générative, confiance = règle
+     de succession (n+1)/(n+2), + FAIT borné au spec avec Verdict d'exécution réelle + juge held-out ;
+     EXISTE_DEJA → fait borné seul ; AMBIGU/BRIQUE_MANQUANTE/INCOHERENT/spec vide → abstention). Gate DÉDIÉE
+     `valide_capacite_atomes` **21/21** (autonome, sans lecteur — elle tourne dans la suite, elle ne dort pas).
+  2. **Axe ② blackboard sous contrat** : `poste_atome`/`atomes`/`faits`/`suppositions` — le statut épistémique
+     voyage AVEC la valeur ; `faits()` ne rend QUE les atomes servables (invariants revalidés, portée couvrant
+     le contexte) — jamais une supposition, un réfuté, une valeur nue, ni un atome muté (défense en
+     profondeur). Gate `valide_blackboard` **8 → 18**.
+  3. **Axe ③ routeur multi-domaines** : registre de COMPOSITES dans `besoin.py` + `compose(besoin)` — un
+     besoin composite DÉCLARÉ est routé sous-besoin par sous-besoin vers SON domaine sous SA loi (PAS de
+     maillage N×M) ; sous-besoin non modélisé → `manques` (visible, jamais approximé par un domaine voisin).
+     2 composites : `centre_de_calcul` (Landauer+Shannon+Amdahl+stockage ; refroidissement industriel =
+     manque visible) et `maison_autonome` (4 domaines/4 lois, complet). Gate `valide_besoin` **578 → 591**.
+  4. **Intégration (« vérifier l'intégré, pas l'isolé »)** : `boucle_invention.invente_composite(besoin)` —
+     composite → principes JUGÉS en atomes par domaine → UN blackboard partagé (provenance par domaine) ;
+     relecture SOUS le contrat : `faits()` VIDE tant qu'aucun juge réel n'a promu (l'asymétrie tient de bout
+     en bout). Gate `valide_boucle_invention` **16 → 24**.
+  5. **Façade produit** : `ia.compose_besoin` + `ia.invente_composite` ; gate `valide_ia` **18 → 21**.
+
+**Corollaire du cache réparé — gates-SCANNERS (un défaut en cache un autre).** Le cache devenu effectif a
+révélé que 4 gates ont un verdict dépendant de fichiers HORS de leur clôture d'imports : `valide_surface_ia`
+(lit `src/ia.py` par CHEMIN — clôture de 2 fichiers, sans ia.py !), `valide_atomes` (orphelines : scanne tout
+src+tests+ingestion), `valide_cablage` (graphe d'imports de tout l'arbre), `valide_audit_ancres` (scanne
+tests/). Elles auraient DORMI sur les changements qu'elles surveillent. Fix : convention
+**`NONREG_SCAN_SOURCES = True`** (détectée par l'AST de `_nonreg.imports_directs`) → « toujours relancer »
+pour les 3 vraies scanners (coût ≤ 7 s en parallèle) ; dépendance statique `if False: import ia` pour
+`valide_surface_ia` (clôture PRÉCISE via la fermeture d'ia.py). Prouvé : 3 toujours-relancées exactement,
+`ia.py` dans la clôture de la gate de surface.
+
+Non-rég **798/798 PASS** après chaque brique (gate neuve auto-découverte : 797 → 798).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 31e domaine « copier de l'information quantique » + loi L28 (non-clonage)
 
 Copier de l'information quantique. Nouvelle loi dure au juge (`L28`) : le THÉORÈME DE NON-CLONAGE — on ne peut

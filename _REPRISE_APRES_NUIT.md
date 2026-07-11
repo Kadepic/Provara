@@ -1,5 +1,17 @@
 # REPRISE APRÈS /clear — 2026-07-12 (à coller dans la nouvelle session)
 
+> **ÉTAT 2026-07-12 (session de jour) : LES DEUX TÂCHES SONT FAITES.**
+> **Tâche 1 (cache `_nonreg.py`) : LIVRÉE** (commit `3497361`) — suspect 0/797, run chaud ~80 s de wall
+> (797 en cache), sonde de contenu sur `src/besoin.py` → seuls ses 45 dépendants re-tournent. Sound + rapide.
+> **Tâche 2 (Phase 2, les 3 axes) : LIVRÉE** en 5 commits atomiques (suite 797→798, verte à chaque pas) :
+> ① pont capacités→atomes `invention_atomes.atome_capacite`/`invente_capacite` + gate dédiée
+> `valide_capacite_atomes` 21/21 ; ② blackboard sous contrat (`poste_atome/atomes/faits/suppositions`),
+> `valide_blackboard` 18 ; ③ `besoin.compose()` + composites déclarés (centre_de_calcul avec manque visible,
+> maison_autonome complet), `valide_besoin` 591 ; ④ `boucle_invention.invente_composite` (les 3 axes
+> ASSEMBLÉS), `valide_boucle_invention` 24 ; ⑤ façades `ia.compose_besoin`/`ia.invente_composite`,
+> `valide_ia` 21. Détail : `CHANGELOG.md` (entrée 2026-07-12 Phase 2). **SUITE = Phase 3 (ingestion),
+> cf. `_REPRISE_MOTEUR_INVENTION.md` §PHASE 3.**
+
 Repo : `/mnt/c/Users/yohan/Download/Provara`. `PYTHONPATH=src` pour toute gate isolée.
 Commits atomiques `git commit --no-gpg-sign` — NE PAS `git push` (le release de Yohan pousse/merge).
 Garde inviolable partout : **FAUX=0**, non-régression complète `_nonreg.py` **797/797** verte après chaque changement.
