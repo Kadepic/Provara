@@ -85,6 +85,77 @@ _LS_OPS = [
 ]
 
 
+# FORME DE TYPE DICT×SCALAIRE (2e forme hétérogène, même patron) : un dict + une clé OU un seuil scalaire.
+# Frontière MESURÉE : valeur_de_cle, retrait de clé, get-avec-défaut, clés/comptes par seuil sur les VALEURS =
+# brique_manquante. Un scalaire ENTIER peut être clé OU seuil : les DEUX vocabulaires sont émis, les sondes
+# discriminent (spec faible -> AMBIGU honnête). Sorties ordonnées par sorted() : déterminisme.
+_DS_REGISTRE: dict[str, str] = {
+    "valeur_de_cle": "{L}[{K}]",
+    "appartient_cles": "{K} in {L}",
+}
+_DS_OPS = [
+    "{L}.get({K}, 0)",                                                    # lookup avec défaut (clé absente -> 0)
+    "{{_k2: _v for _k2, _v in {L}.items() if _k2 != {K}}}",               # retrait de la clé
+    "sorted(_k2 for _k2, _v in {L}.items() if _v > {K})",                 # clés dont la valeur dépasse le seuil
+    "sorted(_k2 for _k2, _v in {L}.items() if _v < {K})",
+    "sum(1 for _v in {L}.values() if _v > {K})",                          # comptes par seuil sur les valeurs
+    "sum(1 for _v in {L}.values() if _v < {K})",
+    "sum(1 for _v in {L}.values() if _v >= {K})",
+]
+
+
+def _forme_dict_scalaire(toutes):
+    """(dict, clé/seuil str|int) ou l'ordre inverse sur TOUS les exemples -> (var_dict, var_scalaire), sinon None."""
+    def _scal(v):
+        return isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool))
+    if all(len(a) == 2 and isinstance(a[0], dict) and _scal(a[1]) for a, _ in toutes):
+        return ("a", "b")
+    if all(len(a) == 2 and isinstance(a[1], dict) and _scal(a[0]) for a, _ in toutes):
+        return ("b", "a")
+    return None
+
+
+def _registre_dict_scalaire(forme) -> dict[str, str]:
+    L, K = forme
+    return {n: t.format(L=L, K=K) for n, t in _DS_REGISTRE.items()}
+
+
+def _candidats_dict_scalaire(exemples, forme) -> list[str]:
+    L, K = forme
+    cands: set[str] = set(_registre_dict_scalaire(forme).values())
+    cands.update(t.format(L=L, K=K) for t in _DS_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_dict_scalaire(exemples, forme) -> list[tuple]:
+    """Sondes de FORME : dict SANS la clé (discrimine d[k] vs get vs appartenance), valeur À la clé perturbée
+    (discrimine lecture de valeur vs structure), AUTRE clé du dict, seuil±1 pour les entiers (> vs >=)."""
+    scal_premier = forme == ("b", "a")
+    out = []
+    for args, _ in exemples:
+        d, k = (args[1], args[0]) if scal_premier else (args[0], args[1])
+
+        def mk(dd, kk):
+            return (kk, dd) if scal_premier else (dd, kk)
+        out.append(mk(dict(d), k))
+        out.append(mk({k2: v for k2, v in d.items() if k2 != k}, k))       # clé retirée
+        if k in d:
+            out.append(mk({**d, k: (d[k] + 1 if isinstance(d[k], int) else d[k])}, k))
+        autres = sorted((k2 for k2 in d if k2 != k), key=repr)
+        if autres:
+            out.append(mk(dict(d), autres[0]))                             # autre clé observée
+        if isinstance(k, int) and not isinstance(k, bool):
+            out.append(mk(dict(d), k + 1))
+            out.append(mk(dict(d), k - 1))
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 def _forme_liste_scalaire(toutes):
     """(liste, entier) ou (entier, liste) sur TOUS les exemples -> (var_liste, var_scalaire), sinon None."""
     def _est(v, t):
@@ -311,11 +382,14 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
         return Verdict(INCOHERENT, nom, justification="arité incohérente entre les exemples")
     arite = arites.pop()
     params = _params(arite)
-    # FORME DE TYPE (palier structurel) : arité 2 hétérogène liste×scalaire -> registre/candidats/sondes de la
-    # forme ; sinon chemins scalaires INCHANGÉS. Un `existant` passé par l'appelant garde la priorité.
+    # FORMES DE TYPE (palier structurel) : arité 2 hétérogène liste×scalaire ou dict×scalaire -> registre/
+    # candidats/sondes de la forme ; sinon chemins scalaires INCHANGÉS. `existant` de l'appelant prioritaire.
     forme_ls = _forme_liste_scalaire(toutes) if arite == 2 else None
+    forme_ds = _forme_dict_scalaire(toutes) if arite == 2 and not forme_ls else None
     if existant is None:
-        existant = _registre_liste_scalaire(forme_ls) if forme_ls else _REGISTRES.get(arite, {})
+        existant = (_registre_liste_scalaire(forme_ls) if forme_ls
+                    else _registre_dict_scalaire(forme_ds) if forme_ds
+                    else _REGISTRES.get(arite, {}))
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
     vus: dict = {}
@@ -325,7 +399,9 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
             return Verdict(INCOHERENT, nom, justification="deux sorties différentes pour la même entrée")
         vus[k] = o
 
-    sondes = (_sondes_liste_scalaire(toutes, forme_ls) if forme_ls else _sondes_binaires(toutes)) if arite == 2 \
+    sondes = (_sondes_liste_scalaire(toutes, forme_ls) if forme_ls
+              else _sondes_dict_scalaire(toutes, forme_ds) if forme_ds
+              else _sondes_binaires(toutes)) if arite == 2 \
         else _sondes_ternaires(toutes) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
 
@@ -336,7 +412,9 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                            justification="déjà couvert par l'inventaire binaire existant")
 
     # 2) RÉALISABLE par recombinaison ? (arité 2 = binaire, arité 3 = ternaire ; patron reproductible)
-    candidats = (_candidats_liste_scalaire(toutes, forme_ls) if forme_ls else _candidats_binaires(toutes)) \
+    candidats = (_candidats_liste_scalaire(toutes, forme_ls) if forme_ls
+                 else _candidats_dict_scalaire(toutes, forme_ds) if forme_ds
+                 else _candidats_binaires(toutes)) \
         if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
     if candidats:
         sigs = {e: _sig_multi(_callable_multi(e, nom, params), sondes) for e in candidats}
