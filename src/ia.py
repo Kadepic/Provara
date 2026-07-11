@@ -2895,9 +2895,18 @@ def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budg
                                 tours_cegis=tours_cegis, proprietes=proprietes)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 
+    # FRONTIÈRE DE SERVICE (atome 7) : ne JAMAIS servir à l'utilisateur/aux moteurs du code non audité.
+    # Le code des verdicts vient des familles etend_* (pures) et du registre (base + briques déjà gardées),
+    # donc c'est vrai en pratique ; ce garde-fou rend l'invariant EXPLICITE et résiste à toute évolution
+    # future du registre : un code non sûr n'est pas servi et la raison est dite.
+    import expression_sure as _ES
+    code = verdict.par if verdict.statut in (_MI.INVENTION, _MI.EXISTE_DEJA) else None
+    danger = _ES.raison_danger(code) if code is not None else None
+
     res = {
         "statut": verdict.statut,
-        "code": verdict.par if verdict.statut in (_MI.INVENTION, _MI.EXISTE_DEJA) else None,
+        "code": code if danger is None else None,
+        "code_refuse": danger,   # None si sûr ; sinon la raison (jamais de code hostile servi en silence)
         "fait_borne": fait.sert() if fait is not None else None,
         "supposition": sup.sert() if sup is not None else None,
         "force_spec": None,
@@ -2908,8 +2917,9 @@ def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budg
     if verdict.statut == _MI.AMBIGU and verdict.sonde is not None:
         res["besoin_a_renforcer"] = {"entree": verdict.sonde,
                                      "raison": "deux réalisations connues satisfont le spec et divergent sur cette entrée"}
-    if verdict.statut == _MI.INVENTION and verdict.par:
-        # RETENTION (self-improving) — admission gardée dans retient().
+    if verdict.statut == _MI.INVENTION and verdict.par and danger is None:
+        # RETENTION (self-improving) — admission gardée dans retient() (qui re-vérifie la sûreté). On ne
+        # RETIENT ni ne mute une réalisation non sûre (danger déjà écarté au-dessus) : rien d'hostile forgé.
         res["appris"] = _BRIQUES.retient(verdict.par, origine=nom, exemples=exemples, held=held)
         # SOLIDITÉ DU BESOIN : mutation testing sur la réalisation retenue.
         try:
