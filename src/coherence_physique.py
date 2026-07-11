@@ -60,6 +60,8 @@ L16 = ("plancher radiatif de Stefan-Boltzmann : pas d'isolant parfait — un obj
        "ε·σ·A·(T⁴−T_env⁴) par rayonnement (ε>0), même sans conduction ni convection")
 L17 = ("secret parfait de Shannon : une confidentialité PARFAITE (inconditionnelle) exige une entropie de clé ≥ "
        "l'entropie du message (le masque jetable l'atteint) — une clé plus courte ne garantit pas le secret parfait")
+L18 = ("traînée induite minimale : produire une portance L à la vitesse V avec une envergure b coûte une traînée "
+       "induite ≥ L²/(½ρV²πb²) (efficacité d'envergure ≤ 1) — le coût de la portance décroît en 1/b²")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -99,7 +101,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
-                 "photosynthese", "compression", "isolation_thermique", "chiffrement"):
+                 "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -465,6 +467,29 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                 return (VIOLE, f"entropie de clé {hk} bits < entropie du message {hm} bits pour un secret PARFAIT "
                                f"revendiqué : impossible (Shannon 1949 — la clé doit être au moins aussi longue que "
                                f"le message)", L17)
+
+    # --- Traînée induite minimale : produire de la portance coûte au moins L²/(½ρV²πb²). ---
+    # Faire de la portance crée un sillage tourbillonnaire : la traînée INDUITE ≥ L²/(½ρV²πb²), atteinte par la
+    # distribution elliptique (efficacité d'envergure e = 1) ; toute aile réelle a e < 1 → plus de traînée. On ne
+    # descend pas sous ce plancher (e > 1 impossible). CONSERVATEUR : on ne réfute qu'une traînée induite déclarée
+    # SOUS le minimum (e=1) ou une efficacité d'envergure > 1 → jamais un faux positif (avion réel toujours au-dessus).
+    if t == "vol_croisiere":
+        e_env = spec.get("efficacite_envergure")
+        if _nb(e_env) and e_env > 1.0 + 1e-9:
+            return (VIOLE, f"efficacité d'envergure {e_env} > 1 : impossible (la distribution elliptique e=1 est "
+                           f"l'optimum)", L18)
+        lift = spec.get("portance_N")
+        b_env = spec.get("envergure_m")
+        v_cr = spec.get("vitesse_m_s")
+        rho = spec.get("rho_air", _RHO_AIR)
+        di = spec.get("trainee_induite_N")
+        if (_nb(lift) and _nb(b_env) and _nb(v_cr) and _nb(rho) and _nb(di)
+                and lift > 0 and b_env > 0 and v_cr > 0 and rho > 0 and di >= 0):
+            di_min = (lift * lift) / (0.5 * rho * v_cr * v_cr * math.pi * b_env * b_env)
+            if di < di_min * (1.0 - 1e-9):
+                return (VIOLE, f"traînée induite {di} N < minimum {round(di_min)} N (L²/(½ρV²πb²), portance "
+                               f"{lift} N, envergure {b_env} m, V={v_cr} m/s) : en dessous il faudrait une "
+                               f"efficacité d'envergure > 1 — impossible", L18)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

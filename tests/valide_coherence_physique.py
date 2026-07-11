@@ -164,6 +164,12 @@ check(loi({"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits"
            "entropie_message_bits": 8e6}) == P.L17, "secret parfait = L17")
 check(statut({"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000,
               "entropie_message_bits": 2000}) == P.VIOLE, "two-time pad (clé réutilisée) -> VIOLE")
+# traînée induite minimale : traînée sous L²/(½ρV²πb²), et efficacité d'envergure > 1.
+check(statut({"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250,
+              "rho_air": 0.4, "trainee_induite_N": 0}) == P.VIOLE, "traînée induite 0 en portance -> VIOLE")
+check(loi({"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250,
+           "rho_air": 0.4, "trainee_induite_N": 0}) == P.L18, "traînée induite = L18")
+check(statut({"type": "vol_croisiere", "efficacite_envergure": 1.5}) == P.VIOLE, "efficacité d'envergure 1,5 > 1 -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -281,6 +287,11 @@ reels = [
     {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 500000},   # OTP clé plus longue (ok)
     {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 8e6},         # AES calculatoire (pas parfait) -> PAS un faux positif
     {"type": "chiffrement"},                                                          # vide -> PAS un faux positif
+    # vols de croisière RÉELS : au-dessus de la traînée induite minimale, efficacité d'envergure ≤ 1.
+    {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4, "trainee_induite_N": 5000, "efficacite_envergure": 0.8},  # avion de ligne (floor ~3329)
+    {"type": "vol_croisiere", "portance_N": 5000, "envergure_m": 20, "vitesse_m_s": 30, "rho_air": 1.0, "trainee_induite_N": 60, "efficacite_envergure": 0.9},        # planeur (floor ~44)
+    {"type": "vol_croisiere", "efficacite_envergure": 1.0},                           # e=1 (elliptique, limite, ok)
+    {"type": "vol_croisiere"},                                                        # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
