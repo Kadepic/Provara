@@ -221,6 +221,80 @@ def _sondes_liste_liste(exemples) -> list[tuple]:
     return res
 
 
+# FORME DE TYPE TABLE×TABLE (atome 11 du palier structurel) : la JOINTURE — deux tables (listes
+# d'enregistrements) en deux arguments. Referme l'algèbre relationnelle de base (colonne ✓, sélection ✓,
+# groupby/pivot/dégroupage ✓, jointure ✗->✓). La CLÉ de jointure est DÉCOUVERTE dans les données (champs
+# présents dans TOUS les enregistrements des DEUX tables, patron etend_synthese : constantes dirigées par
+# les exemples) puis cuite en littéral dans le candidat — les sondes (retrait d'une correspondance, valeur
+# de clé perturbée, doublon de clé = multiplicité) discriminent la bonne clé et la bonne variante.
+_TT_REGISTRE: dict[str, str] = {
+    "concatenation": "a + b",
+}
+_TT_OPS_PAR_CLE = [
+    "[{{**_da, **_db}} for _da in a for _db in b if _da[{K}] == _db[{K}]]",      # jointure interne
+    "sorted({{_d[{K}] for _d in a}} & {{_d[{K}] for _d in b}})",                 # clés communes
+    "[_da for _da in a if _da[{K}] in {{_d[{K}] for _d in b}}]",                 # semi-jointure
+    "[_da for _da in a if _da[{K}] not in {{_d[{K}] for _d in b}}]",             # anti-jointure
+]
+
+
+def _forme_table_table(toutes):
+    """(liste non vide de dicts, liste non vide de dicts) sur TOUS les exemples -> True, sinon None."""
+    def _table(v):
+        return isinstance(v, list) and v and all(isinstance(d, dict) for d in v)
+    if all(len(x) == 2 and _table(x[0]) and _table(x[1]) for x, _ in toutes):
+        return True
+    return None
+
+
+def _cles_communes_tables(exemples) -> list[str]:
+    """Champs présents dans TOUS les enregistrements des DEUX tables de TOUS les exemples (clés candidates)."""
+    communes = None
+    for (x, y), _ in exemples:
+        cles = set(x[0]) if x else set()
+        for d in x:
+            cles &= set(d)
+        for d in y:
+            cles &= set(d)
+        communes = cles if communes is None else communes & cles
+    return sorted(communes or (), key=repr)
+
+
+def _candidats_table_table(exemples) -> list[str]:
+    cands: set[str] = set(_TT_REGISTRE.values())
+    for k in _cles_communes_tables(exemples):
+        for t in _TT_OPS_PAR_CLE:
+            cands.add(t.format(K=repr(k)))
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_table_table(exemples) -> list[tuple]:
+    """Sondes de FORME : SWAP (ordre de fusion/colonnes), tables renversées, RETRAIT d'un enregistrement de b
+    (change la jointure), valeur de clé PERTURBÉE (casse une correspondance), DOUBLON de clé (multiplicité)."""
+    cles = _cles_communes_tables(exemples)
+    out = []
+    for (x, y), _ in exemples:
+        cx = [dict(d) for d in x]
+        cy = [dict(d) for d in y]
+        out.append((cx, cy))
+        out.append((cy, cx))                                    # SWAP
+        out.append((list(reversed(cx)), cy))
+        if len(cy) > 1:
+            out.append((cx, cy[:-1]))                           # retrait d'un enregistrement
+        if cy:
+            out.append((cx, cy + [dict(cy[0])]))                # doublon (multiplicité de jointure)
+        for k in cles[:1]:
+            if cy and isinstance(cy[0].get(k), int):
+                out.append((cx, [{**cy[0], k: cy[0][k] + 1}] + cy[1:]))   # correspondance cassée
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # FORME DE TYPE LISTE-DE-DICTS×CLÉ (3e forme hétérogène, atome 9 du palier structurel) : la COLONNE
 # relationnelle — une table (liste d'enregistrements) + un champ PARAMÈTRE. Frontière MESURÉE : colonne =
 # brique_manquante (etend_liste_dicts mono découvre le champ dans les DONNÉES ; ici le champ est un ARGUMENT —
@@ -514,12 +588,14 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     # FORMES DE TYPE (palier structurel) : arité 2 hétérogène liste-de-dicts×clé (la plus spécifique,
     # détectée en premier), liste×scalaire ou dict×scalaire -> registre/candidats/sondes de la forme ;
     # sinon chemins scalaires INCHANGÉS. `existant` de l'appelant prioritaire.
-    forme_ld = _forme_liste_dicts(toutes) if arite == 2 else None
-    forme_ls = _forme_liste_scalaire(toutes) if arite == 2 and not forme_ld else None
-    forme_ds = _forme_dict_scalaire(toutes) if arite == 2 and not forme_ld and not forme_ls else None
-    forme_ll = _forme_liste_liste(toutes) if arite == 2 and not (forme_ld or forme_ls or forme_ds) else None
+    forme_tt = _forme_table_table(toutes) if arite == 2 else None
+    forme_ld = _forme_liste_dicts(toutes) if arite == 2 and not forme_tt else None
+    forme_ls = _forme_liste_scalaire(toutes) if arite == 2 and not (forme_tt or forme_ld) else None
+    forme_ds = _forme_dict_scalaire(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls) else None
+    forme_ll = _forme_liste_liste(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds) else None
     if existant is None:
-        existant = ({} if forme_ld                       # registre VIDE honnête (rien ne servait la classe)
+        existant = (dict(_TT_REGISTRE) if forme_tt
+                    else {} if forme_ld                  # registre VIDE honnête (rien ne servait la classe)
                     else _registre_liste_scalaire(forme_ls) if forme_ls
                     else _registre_dict_scalaire(forme_ds) if forme_ds
                     else dict(_LL_REGISTRE) if forme_ll
@@ -533,7 +609,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
             return Verdict(INCOHERENT, nom, justification="deux sorties différentes pour la même entrée")
         vus[k] = o
 
-    sondes = (_sondes_liste_dicts(toutes, forme_ld) if forme_ld
+    sondes = (_sondes_table_table(toutes) if forme_tt
+              else _sondes_liste_dicts(toutes, forme_ld) if forme_ld
               else _sondes_liste_scalaire(toutes, forme_ls) if forme_ls
               else _sondes_dict_scalaire(toutes, forme_ds) if forme_ds
               else _sondes_liste_liste(toutes) if forme_ll
@@ -548,7 +625,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                            justification="déjà couvert par l'inventaire binaire existant")
 
     # 2) RÉALISABLE par recombinaison ? (arité 2 = binaire, arité 3 = ternaire ; patron reproductible)
-    candidats = (_candidats_liste_dicts(toutes, forme_ld) if forme_ld
+    candidats = (_candidats_table_table(toutes) if forme_tt
+                 else _candidats_liste_dicts(toutes, forme_ld) if forme_ld
                  else _candidats_liste_scalaire(toutes, forme_ls) if forme_ls
                  else _candidats_dict_scalaire(toutes, forme_ds) if forme_ds
                  else _candidats_liste_liste(toutes) if forme_ll
