@@ -156,6 +156,71 @@ def _sondes_dict_scalaire(exemples, forme) -> list[tuple]:
     return res
 
 
+# FORME DE TYPE LISTE×LISTE (atome 10 du palier structurel) : deux séquences HOMOGÈNES en deux ARGUMENTS
+# (vs etend_paire_listes mono qui reçoit [A, B] en UN argument). Frontière MESURÉE : intersection triée,
+# différence, zip/produit scalaire = brique_manquante — et la mesure a montré le PIÈGE de la forme : sans
+# routage, les capacités SCALAIRES tournent sur les listes (max(a, b) lexicographique a reproduit une
+# différence sans chevauchement). Registre honnête = les capacités scalaires VALIDES sur listes (concat,
+# max/min lexicographiques) ; sondes de forme = SWAP + injection de CHEVAUCHEMENT (tue les coïncidences
+# sans-recouvrement) + renversements. Classe canonique : set-ops + ZipWith (DSL DeepCoder).
+_LL_REGISTRE: dict[str, str] = {
+    "concatenation": "a + b",
+}
+_LL_OPS = [
+    # max/min lexicographiques en CANDIDATS (pas au registre) : au registre ils court-circuiteraient en
+    # EXISTE_DEJA un spec faible (différence sans recouvrement reproduite par max) ; en candidats, l'unicité
+    # sur sondes tranche -> AMBIGU honnête avec sonde discriminante (le spec faible est renvoyé à l'usager).
+    "max(a, b)", "min(a, b)",
+    "sorted(set(a) & set(b))", "sorted(set(a) | set(b))", "sorted(set(a) - set(b))",
+    "[_e for _e in a if _e in b]", "[_e for _e in a if _e not in b]",     # variantes PRÉSERVANT l'ordre
+    "[_x + _y for _x, _y in zip(a, b)]", "[_x - _y for _x, _y in zip(a, b)]",
+    "[_x * _y for _x, _y in zip(a, b)]", "[max(_x, _y) for _x, _y in zip(a, b)]",
+    "[min(_x, _y) for _x, _y in zip(a, b)]",
+    "sum(_x * _y for _x, _y in zip(a, b))",                               # produit scalaire
+    "sum(1 for _x, _y in zip(a, b) if _x == _y)",                         # positions d'accord
+]
+
+
+def _forme_liste_liste(toutes):
+    """(liste de scalaires, liste de scalaires) sur TOUS les exemples -> True, sinon None. Symétrique :
+    pas d'ordre L/K — l'asymétrie éventuelle de la cible est discriminée par la sonde SWAP."""
+    def _plate(v):
+        return (isinstance(v, list)
+                and all(not isinstance(e, (list, dict, set, tuple)) for e in v))
+    if all(len(x) == 2 and _plate(x[0]) and _plate(x[1]) for x, _ in toutes):
+        return True
+    return None
+
+
+def _candidats_liste_liste(exemples) -> list[str]:
+    cands: set[str] = set(_LL_REGISTRE.values()) | set(_LL_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_liste_liste(exemples) -> list[tuple]:
+    """Sondes de FORME : SWAP (différence/zip asymétriques), renversements (ordre interne), injection de
+    CHEVAUCHEMENT (a[0] ajouté à b : sépare set-ops des coïncidences sans-recouvrement), troncature."""
+    out = []
+    for (x, y), _ in exemples:
+        out.append((list(x), list(y)))
+        out.append((list(y), list(x)))                          # SWAP
+        out.append((list(reversed(x)), list(y)))
+        out.append((list(x), list(reversed(y))))
+        if x:
+            out.append((list(x), list(y) + [x[0]]))             # chevauchement injecté
+        if y:
+            out.append((list(x) + [y[0]], list(y)))
+        if len(y) > 1:
+            out.append((list(x), list(y[:-1])))                 # longueurs inégales (zip tronque)
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # FORME DE TYPE LISTE-DE-DICTS×CLÉ (3e forme hétérogène, atome 9 du palier structurel) : la COLONNE
 # relationnelle — une table (liste d'enregistrements) + un champ PARAMÈTRE. Frontière MESURÉE : colonne =
 # brique_manquante (etend_liste_dicts mono découvre le champ dans les DONNÉES ; ici le champ est un ARGUMENT —
@@ -452,10 +517,12 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     forme_ld = _forme_liste_dicts(toutes) if arite == 2 else None
     forme_ls = _forme_liste_scalaire(toutes) if arite == 2 and not forme_ld else None
     forme_ds = _forme_dict_scalaire(toutes) if arite == 2 and not forme_ld and not forme_ls else None
+    forme_ll = _forme_liste_liste(toutes) if arite == 2 and not (forme_ld or forme_ls or forme_ds) else None
     if existant is None:
         existant = ({} if forme_ld                       # registre VIDE honnête (rien ne servait la classe)
                     else _registre_liste_scalaire(forme_ls) if forme_ls
                     else _registre_dict_scalaire(forme_ds) if forme_ds
+                    else dict(_LL_REGISTRE) if forme_ll
                     else _REGISTRES.get(arite, {}))
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
@@ -469,6 +536,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     sondes = (_sondes_liste_dicts(toutes, forme_ld) if forme_ld
               else _sondes_liste_scalaire(toutes, forme_ls) if forme_ls
               else _sondes_dict_scalaire(toutes, forme_ds) if forme_ds
+              else _sondes_liste_liste(toutes) if forme_ll
               else _sondes_binaires(toutes)) if arite == 2 \
         else _sondes_ternaires(toutes) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
@@ -483,6 +551,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     candidats = (_candidats_liste_dicts(toutes, forme_ld) if forme_ld
                  else _candidats_liste_scalaire(toutes, forme_ls) if forme_ls
                  else _candidats_dict_scalaire(toutes, forme_ds) if forme_ds
+                 else _candidats_liste_liste(toutes) if forme_ll
                  else _candidats_binaires(toutes)) \
         if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
     if candidats:
