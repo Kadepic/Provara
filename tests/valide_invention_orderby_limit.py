@@ -77,6 +77,26 @@ check("tri stable (clés égales gardent l'ordre : a avant b)",
 check("valeurs_distinctes retire les doublons ([3,1,3] -> [1,3])",
       _fn2(realisations["valeurs_distinctes"])([{"g": 3}, {"g": 1}, {"g": 3}], "g") == [1, 3])
 
+# ORDER BY DESC + HAVING (atome 25 — la frontière se déplace, complétée dans la même famille).
+_ref_d = lambda t, k: sorted(t, key=lambda d: d[k], reverse=True)
+TD = [(([{"g": 1, "n": "a"}, {"g": 3, "n": "b"}, {"g": 1, "n": "c"}], "g"),),
+      (([{"g": 9, "n": "x"}, {"g": 5, "n": "y"}], "g"),),
+      (([{"t": 4, "n": "m"}, {"t": 0, "n": "p"}, {"t": 7, "n": "q"}], "t"),)]
+v = IM.examine_cible_multi("tri_desc",
+                           [((t, k), _ref_d(t, k)) for (t, k), in TD],
+                           [(([{"u": 7, "n": "r"}, {"u": 3, "n": "s"}], "u"),
+                             _ref_d([{"u": 7, "n": "r"}, {"u": 3, "n": "s"}], "u"))])
+check("tri DESC : frontière FERMÉE (INVENTION)", v.statut == IM.INVENTION)
+check("tri DESC : STABLE (clés égales gardent l'ordre d'origine : a avant c)",
+      _fn2(v.par)([{"g": 1, "n": "a"}, {"g": 3, "n": "b"}, {"g": 1, "n": "c"}], "g")
+      == [{"g": 3, "n": "b"}, {"g": 1, "n": "a"}, {"g": 1, "n": "c"}])
+_ref_h = lambda t, k: sorted(v for v in {d[k] for d in t} if sum(1 for d in t if d[k] == v) > 1)
+HV = [(([{"g": 0}, {"g": 1}, {"g": 0}], "g"),), (([{"g": 2}, {"g": 2}, {"g": 3}], "g"),), (([{"t": 4}, {"t": 5}], "t"),)]
+v = IM.examine_cible_multi("groupes_multiples",
+                           [((t, k), _ref_h(t, k)) for (t, k), in HV],
+                           [(([{"u": 7}, {"u": 7}, {"u": 1}], "u"), [7])])
+check("HAVING count>1 : frontière FERMÉE (INVENTION)", v.statut == IM.INVENTION)
+
 # DÉTERMINISME.
 _ref_0 = CIBLES[0][1]
 v2 = IM.examine_cible_multi("tri_par_champ",

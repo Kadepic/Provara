@@ -547,6 +547,10 @@ _LD_OPS = [
     "[_t[2] for _t in sorted((_d[{K}], _i, _d) for _i, _d in enumerate({L}))]",     # ORDER BY champ (stable)
     "sorted({{_d[{K}] for _d in {L}}})",                                            # DISTINCT champ
     "{L}[:{K}]", "{L}[{K}:]", "{L}[{K}]",                                           # LIMIT/OFFSET/n-ième (clé int)
+    # ORDER BY DESC (atome 25) : décoré (clé, -indice) + reverse -> ties en ordre d'ORIGINE (stable desc).
+    "[_t[2] for _t in sorted(((_d[{K}], -_i, _d) for _i, _d in enumerate({L})), reverse=True)]",
+    # HAVING count>1 (atome 25) : les valeurs de groupe MULTIPLES (l'analogue table des doublons).
+    "sorted(_v for _v in {{_d[{K}] for _d in {L}}} if sum(1 for _d2 in {L} if _d2[{K}] == _v) > 1)",
 ]
 
 
