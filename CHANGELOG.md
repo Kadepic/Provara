@@ -1,5 +1,26 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — FORGE DE BRIQUES, atome 5 : sortie de PREMIÈRE CLASSE (`ia.forge_brique`)
+
+Le mandat : « le générateur de briques doit servir le moteur d'invention EN SORTIE à l'utilisateur et aux
+autres moteurs — rendre tout ça parfait ». Nouvelle façade `ia.forge_brique` qui COMBINE, en UNE porte,
+tout ce que la forge sait dire d'une brique, CHAQUE affirmation étiquetée par son statut épistémique
+(« la puissance dans les combinaisons »). Elle assemble les atomes déjà livrés :
+- le verdict du moteur (INVENTION/EXISTE_DEJA/AMBIGU/BRIQUE_MANQUANTE/INCOHERENT) ;
+- le **FAIT borné** (atome 1 : ce qui est CERTAIN — « reproduit les n paires du spec », confiance 1.0,
+  jugé par exécution réelle) et la **SUPPOSITION générative** (ce qui est SUPPOSÉ — « comportement au-delà
+  du spec », confiance = règle de succession, JAMAIS 1.0), via `invention_atomes.atome_capacite` ;
+- la **force du spec** (atome 4 : mutation testing sur la réalisation retenue — solidité du besoin) ;
+- le **besoin à renforcer** UNIFIÉ : l'entrée discriminante actionnable, qu'elle vienne du moteur (AMBIGU :
+  deux réalisations connues divergent) OU de la mutation (spec faible : un mutant survit) — dans les deux
+  cas « ton besoin est sous-déterminé, ajoute cette entrée » ;
+- **self-improving** : rétention en mémoire persistante (atome 1), `appris` dit si la brique est neuve.
+
+Sortie entièrement JSON-sérialisable (servable à l'utilisateur ET à un autre moteur). SOUNDNESS prouvée :
+le FAIT est certain, la SUPPOSITION n'est jamais servie comme un fait ; un spec incohérent → abstention
+totale (ni code ni atomes). Gate `valide_forge_brique` **16/16**, suite **800 → 801**, non-rég 801/801.
+Câblage : ia.py (0 orphelin), surface d'ia verte.
+
 ## 2026-07-12 — FORGE DE BRIQUES, atome 4 : force du spec par mutation testing (« adapter les besoins »)
 
 Nouveau module `force_spec` : mesure si un BESOIN (spec = exemples+held) est assez FORT pour déterminer sa
