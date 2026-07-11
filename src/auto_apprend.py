@@ -644,6 +644,36 @@ class MoteurAutonome(MoteurOuvert):
                     ajoutes += 1
         return ajoutes
 
+    def etend_paires(self, exemples):
+        """Compositions TOUTES-PAIRES O(n²) : AGG sur les couples ordonnés (i<j) de la liste. Le mécanisme des
+        relations ENTRE éléments distants qu'aucune famille LOCALE (fenêtre glissante, fold) ne couvrait :
+        nb d'inversions (x[i]>x[j]), nb de paires égales, somme des produits/écarts de couples… Recherche
+        dirigée BORNÉE (une poignée de formes canoniques), validation CONTEXTUELLE. SÛR : les gardes
+        d'examine_cible (held-out + unicité + nouveauté) tranchent -> jamais de faux."""
+        P = "for _i in range(len(x)) for _j in range(_i + 1, len(x))"
+        FORMES = [
+            f"sum(1 {P} if x[_i] > x[_j])",              # nb d'inversions
+            f"sum(1 {P} if x[_i] < x[_j])",              # nb de couples croissants
+            f"sum(1 {P} if x[_i] == x[_j])",             # nb de paires égales
+            f"sum(x[_i] * x[_j] {P})",                   # somme des produits de couples
+            f"sum(abs(x[_i] - x[_j]) {P})",              # somme des écarts absolus (dispersion pairwise)
+        ]
+        existants = {e for e, _, _ in self.atomes}
+        ajoutes = 0
+        for expr in FORMES:
+            if expr in existants:
+                continue
+            try:
+                f = _fn(expr)
+                outs = [f(x) for x, _ in exemples]
+            except Exception:
+                continue
+            if all(isinstance(o, int) and not isinstance(o, bool) for o in outs):
+                self.atomes.append((expr, "list", "int"))
+                existants.add(expr)
+                ajoutes += 1
+        return ajoutes
+
     def etend_composition_liste(self, exemples):
         """Compositions LISTE-OP∘map -> LISTE : trier/renverser un map(f) (carres_tries = sorted∘map(carré),
         carres_renverses = map(carré)[::-1]). Complète etend_composition (qui ne fait que AGG∘map -> scalaire) :
