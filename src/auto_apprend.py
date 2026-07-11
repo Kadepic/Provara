@@ -607,6 +607,43 @@ class MoteurAutonome(MoteurOuvert):
                     ajoutes += 1
         return ajoutes
 
+    def etend_indexe(self, exemples):
+        """Compositions INDEXÉES : AGG(G for _i, _e in enumerate(x) [if COND]) où la transformation G ET la
+        condition COND peuvent référencer l'INDICE `_i`, pas seulement la valeur `_e`. C'est le mécanisme
+        qu'AUCUNE famille ne couvrait (compte des points fixes x[i]==i, somme des positions paires, somme
+        pondérée _e*_i, indice-dépendances). Recherche dirigée bornée (transfos × conds × agg = 6×6×4),
+        validation CONTEXTUELLE (tourne sur les entrées). SÛR : les gardes d'examine_cible (held-out +
+        unicité + nouveauté) tranchent -> jamais de faux ; un atome inapplicable échoue au juge."""
+        TRANSF = ["_e", "_i", "_e * _i", "_e + _i", "_e - _i", "1"]
+        CONDS = ["", " if _e == _i", " if _e > _i", " if _e < _i", " if _i % 2 == 0", " if _i % 2 == 1"]
+        FORMES = ["sum({G} for _i, _e in enumerate(x){C})",
+                  "max(({G} for _i, _e in enumerate(x){C}), default=0)",
+                  "min(({G} for _i, _e in enumerate(x){C}), default=0)",
+                  "[{G} for _i, _e in enumerate(x){C}]"]
+        existants = {e for e, _, _ in self.atomes}
+        ajoutes = 0
+        for G in TRANSF:
+            for C in CONDS:
+                for tmpl in FORMES:
+                    expr = tmpl.format(G=G, C=C)
+                    if expr in existants:
+                        continue
+                    try:
+                        f = _fn(expr)
+                        outs = [f(x) for x, _ in exemples]
+                    except Exception:
+                        continue
+                    if all(isinstance(o, int) and not isinstance(o, bool) for o in outs):
+                        to = "int"
+                    elif all(isinstance(o, list) for o in outs):
+                        to = "list"
+                    else:
+                        continue
+                    self.atomes.append((expr, "list", to))
+                    existants.add(expr)
+                    ajoutes += 1
+        return ajoutes
+
     def etend_composition_liste(self, exemples):
         """Compositions LISTE-OP∘map -> LISTE : trier/renverser un map(f) (carres_tries = sorted∘map(carré),
         carres_renverses = map(carré)[::-1]). Complète etend_composition (qui ne fait que AGG∘map -> scalaire) :
