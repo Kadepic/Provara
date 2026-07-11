@@ -2850,6 +2850,15 @@ def invente_et_retiens(nom: str, signature: str, exemples, exemples_held, budget
     return v
 
 
+def invente_multi(nom: str, exemples, exemples_held=None, *, existant=None):
+    """MOTEUR D'INVENTION MULTI-ARGUMENT (cap multi-arg) : tranche une cible à PLUSIEURS arguments f(a, b, …)
+    en EXISTE_DEJA / INVENTION / AMBIGU / BRIQUE_MANQUANTE / INCOHERENT. `exemples`/`exemples_held` = listes
+    de (args, sortie) où args est un tuple d'arguments. Chemin séparé du mono-arg (invente), MÊMES gardes de
+    soundness (unicité, held-out, nouveauté) → FAUX=0. Premier rung : arité 2 (binaire)."""
+    import invention_multi as _IMM
+    return _IMM.examine_cible_multi(nom, exemples, exemples_held, existant=existant)
+
+
 def force_du_spec(expr: str, exemples, exemples_held=None):
     """FORGE — mesure si un besoin (spec) est assez FORT pour déterminer sa brique (mutation testing).
     Renvoie le rapport de `force_spec.force_du_spec` : score de mutation ∈ [0,1], survivants non
