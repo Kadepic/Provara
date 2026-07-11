@@ -247,6 +247,8 @@ class MoteurAutonome(MoteurOuvert):
     _NOMBRES_LISTE = [
         "max(set(x), key=lambda _e: (x.count(_e), -_e))",         # mode (plus fréquent ; tie-break déterministe)
         "sum(1 for _e in set(x) if x.count(_e) > 1)",             # nb d'éléments en doublon
+        "sum(1 for _e in set(x) if x.count(_e) == 1)",           # nb d'éléments UNIQUES (hapax) — complète la famille fréquence
+        "max(x.count(_e) for _e in set(x))",                     # fréquence du mode (compte max) — complète la famille fréquence
         "__import__('functools').reduce(__import__('math').gcd, [abs(_e) for _e in x], 0)",  # pgcd de la liste
         # — STRUCTURE LOCALE (vague 6) : pics, plus longue série de valeurs égales consécutives —
         "sum(1 for _i in range(1, len(x) - 1) if x[_i - 1] < x[_i] > x[_i + 1])",            # nb de pics
@@ -298,6 +300,12 @@ class MoteurAutonome(MoteurOuvert):
         "[_v for _r in x for _v in _r]",         # aplatie
     ]
     _MAT_AGG = ["sum({P})", "max({P})", "min({P})", "__import__('math').prod({P})"]   # trace=sum∘diagonale, produit_diagonale=prod∘diagonale…
+    # LISTE-OP ∘ APLATIE -> LISTE : trier/renverser/dédoublonner l'aplatie de la matrice. Ferme les cibles dont
+    # la sortie est une LISTE réordonnée de l'aplatie (aplati_trie = sorted∘aplatie, aplati_unique = sorted∘set…).
+    # SCOPÉ à l'aplatie SEULE (pas à toutes les primitives) : c'est LA frontière mesurée ; l'appliquer partout
+    # ne créerait que des candidats coïncidents sur specs faibles (ambiguïtés spurieuses), pas de vraie capacité.
+    _MAT_APLATIE = "[_v for _r in x for _v in _r]"
+    _MAT_LISTE_OP = ["sorted({P})", "sorted({P}, reverse=True)", "list(dict.fromkeys({P}))", "sorted(set({P}))"]
     # Schémas DICT (mapping) — domaine SANS seed : acquis par schéma sur un gap dict. Listes-de-valeurs/clés à
     # agréger + argmax/argmin (clé du max/min). Validation contextuelle : x.values() erreur sur liste/matrice -> skip.
     _DICT_LIST = ["list(x.values())", "list(x.keys())", "sorted(x.values())", "sorted(x.keys())"]  # supports d'agrégat
@@ -607,6 +615,97 @@ class MoteurAutonome(MoteurOuvert):
                     ajoutes += 1
         return ajoutes
 
+    def etend_indexe(self, exemples):
+        """Compositions INDEXÉES : AGG(G for _i, _e in enumerate(x) [if COND]) où la transformation G ET la
+        condition COND peuvent référencer l'INDICE `_i`, pas seulement la valeur `_e`. C'est le mécanisme
+        qu'AUCUNE famille ne couvrait (compte des points fixes x[i]==i, somme des positions paires, somme
+        pondérée _e*_i, indice-dépendances). Recherche dirigée bornée (transfos × conds × agg = 6×6×4),
+        validation CONTEXTUELLE (tourne sur les entrées). SÛR : les gardes d'examine_cible (held-out +
+        unicité + nouveauté) tranchent -> jamais de faux ; un atome inapplicable échoue au juge."""
+        TRANSF = ["_e", "_i", "_e * _i", "_e + _i", "_e - _i", "1"]
+        CONDS = ["", " if _e == _i", " if _e > _i", " if _e < _i", " if _i % 2 == 0", " if _i % 2 == 1"]
+        FORMES = ["sum({G} for _i, _e in enumerate(x){C})",
+                  "max(({G} for _i, _e in enumerate(x){C}), default=0)",
+                  "min(({G} for _i, _e in enumerate(x){C}), default=0)",
+                  "[{G} for _i, _e in enumerate(x){C}]"]
+        existants = {e for e, _, _ in self.atomes}
+        ajoutes = 0
+        for G in TRANSF:
+            for C in CONDS:
+                for tmpl in FORMES:
+                    expr = tmpl.format(G=G, C=C)
+                    if expr in existants:
+                        continue
+                    try:
+                        f = _fn(expr)
+                        outs = [f(x) for x, _ in exemples]
+                    except Exception:
+                        continue
+                    if all(isinstance(o, int) and not isinstance(o, bool) for o in outs):
+                        to = "int"
+                    elif all(isinstance(o, list) for o in outs):
+                        to = "list"
+                    else:
+                        continue
+                    self.atomes.append((expr, "list", to))
+                    existants.add(expr)
+                    ajoutes += 1
+        return ajoutes
+
+    def etend_paires(self, exemples):
+        """Compositions TOUTES-PAIRES O(n²) : AGG sur les couples ordonnés (i<j) de la liste. Le mécanisme des
+        relations ENTRE éléments distants qu'aucune famille LOCALE (fenêtre glissante, fold) ne couvrait :
+        nb d'inversions (x[i]>x[j]), nb de paires égales, somme des produits/écarts de couples… Recherche
+        dirigée BORNÉE (une poignée de formes canoniques), validation CONTEXTUELLE. SÛR : les gardes
+        d'examine_cible (held-out + unicité + nouveauté) tranchent -> jamais de faux."""
+        P = "for _i in range(len(x)) for _j in range(_i + 1, len(x))"
+        FORMES = [
+            f"sum(1 {P} if x[_i] > x[_j])",              # nb d'inversions
+            f"sum(1 {P} if x[_i] < x[_j])",              # nb de couples croissants
+            f"sum(1 {P} if x[_i] == x[_j])",             # nb de paires égales
+            f"sum(x[_i] * x[_j] {P})",                   # somme des produits de couples
+            f"sum(abs(x[_i] - x[_j]) {P})",              # somme des écarts absolus (dispersion pairwise)
+        ]
+        existants = {e for e, _, _ in self.atomes}
+        ajoutes = 0
+        for expr in FORMES:
+            if expr in existants:
+                continue
+            try:
+                f = _fn(expr)
+                outs = [f(x) for x, _ in exemples]
+            except Exception:
+                continue
+            if all(isinstance(o, int) and not isinstance(o, bool) for o in outs):
+                self.atomes.append((expr, "list", "int"))
+                existants.add(expr)
+                ajoutes += 1
+        return ajoutes
+
+    def etend_sous_tableaux(self, exemples):
+        """Compositions SOUS-TABLEAUX CONTIGUS : AGG sur les sommes des tranches x[i:j] (i<j). Le mécanisme
+        du meilleur segment contigu (Kadane = max des sommes de sous-tableaux, min des sommes…) qu'aucune
+        famille ne couvrait — distinct de etend_paires (couples d'ÉLÉMENTS) et de accumulate (préfixes seuls).
+        Formes canoniques bornées, validation CONTEXTUELLE. SÛR : gardes d'examine_cible -> jamais de faux."""
+        S = "for _i in range(len(x)) for _j in range(_i + 1, len(x) + 1)"
+        FORMES = [f"max(sum(x[_i:_j]) {S})",              # Kadane : meilleur sous-tableau contigu
+                  f"min(sum(x[_i:_j]) {S})"]              # pire sous-tableau contigu
+        existants = {e for e, _, _ in self.atomes}
+        ajoutes = 0
+        for expr in FORMES:
+            if expr in existants:
+                continue
+            try:
+                f = _fn(expr)
+                outs = [f(x) for x, _ in exemples]
+            except Exception:
+                continue
+            if all(isinstance(o, int) and not isinstance(o, bool) for o in outs):
+                self.atomes.append((expr, "list", "int"))
+                existants.add(expr)
+                ajoutes += 1
+        return ajoutes
+
     def etend_composition_liste(self, exemples):
         """Compositions LISTE-OP∘map -> LISTE : trier/renverser un map(f) (carres_tries = sorted∘map(carré),
         carres_renverses = map(carré)[::-1]). Complète etend_composition (qui ne fait que AGG∘map -> scalaire) :
@@ -642,7 +741,9 @@ class MoteurAutonome(MoteurOuvert):
         ERREUR sur les entrées (= pas une matrice : zip(*scalaire), x[i][i] sur un int) est ignoré -> aucun
         faux. Câblé comme etend_vocabulaire/etend_composition (recherche dirigée, pas BFS large)."""
         existants = {e for e, _, _ in self.atomes}
-        cand = list(self._MAT_PRIMS) + [agg.format(P=p) for p in self._MAT_PRIMS for agg in self._MAT_AGG]
+        cand = (list(self._MAT_PRIMS)
+                + [agg.format(P=p) for p in self._MAT_PRIMS for agg in self._MAT_AGG]
+                + [op.format(P=self._MAT_APLATIE) for op in self._MAT_LISTE_OP])
         ajoutes = 0
         for expr in cand:
             if expr in existants:
