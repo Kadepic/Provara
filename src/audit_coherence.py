@@ -42,11 +42,14 @@ PAIRES_SEMANTIQUES = [
 _PREFIXE_DEBUT = "annee_debut_"
 _PREFIXE_FIN = "annee_fin_"
 
-# APPARIAGE VIE ↔ ACTIVITÉ : le début d'un mandat/règne d'une personne ne peut PAS précéder sa naissance
-# (contrainte dure : on ne prend pas ses fonctions avant de naître). Les relations ciblées ont pour ENTITÉ une
-# personne (nom), même espace que annee_naissance_personne -> jointure sound. Sélection par motif du nom.
+# APPARIAGE VIE ↔ ACTIVITÉ : l'activité (mandat/règne) d'une personne est ENCADRÉE par sa vie — on ne prend ni
+# ne quitte ses fonctions avant de naître ni après être mort (contraintes DURES). Les relations ciblées ont pour
+# ENTITÉ une personne (nom), même espace que naissance/décès -> jointure sound. Sélection par motif du nom.
+#   naissance ≤ début_activité   ;   début_activité ≤ décès   ;   fin_activité ≤ décès
 _RELATION_NAISSANCE = "annee_naissance_personne"
+_RELATION_DECES = "annee_deces_personne"
 _MOTIFS_DEBUT_ACTIVITE = ("annee_debut_mandat_", "annee_debut_regne")   # préfixe (mandat_*) OU nom exact (regne)
+_MOTIFS_FIN_ACTIVITE = ("annee_fin_mandat_", "annee_fin_regne")
 
 # Type ACYCLIQUE : une relation « x -> parent(x) » ENDOGÈNE (valeur du même type que l'entité) est un ordre
 # partiel STRICT -> sans cycle. Un cycle (A parent de B, B parent de A) est une contradiction dure. Sélection
@@ -77,17 +80,29 @@ def _auto_paires(relations: set) -> list:
     return out
 
 
+def _matche(r: str, motifs) -> bool:
+    """r correspond à un motif : préfixe si le motif finit par '_', sinon nom exact."""
+    return any(r.startswith(m) if m.endswith("_") else r == m for m in motifs)
+
+
 def _paires_vie(relations: set) -> list:
-    """Couples (annee_naissance_personne, annee_debut_mandat_*/regne) : le début d'activité d'une personne ne
-    peut pas précéder sa naissance. Généré pour toute relation d'activité présente, si la naissance l'est."""
-    if _RELATION_NAISSANCE not in relations:
-        return []
+    """Contraintes VIE↔ACTIVITÉ, générées pour chaque relation d'activité présente :
+      naissance ≤ début_activité ; début_activité ≤ décès ; fin_activité ≤ décès.
+    Toutes DURES (l'activité est encadrée par la vie). Entités = personnes -> jointure sound."""
+    a_naiss = _RELATION_NAISSANCE in relations
+    a_deces = _RELATION_DECES in relations
     out = []
     for r in sorted(relations):
-        est_activite = any(r.startswith(m) if m.endswith("_") else r == m for m in _MOTIFS_DEBUT_ACTIVITE)
-        if est_activite:
+        if _matche(r, _MOTIFS_DEBUT_ACTIVITE):
             suffixe = r[len(_PREFIXE_DEBUT):] if r.startswith(_PREFIXE_DEBUT) else r
-            out.append((_RELATION_NAISSANCE, r, f"naissance ≤ début ({suffixe})"))
+            if a_naiss:
+                out.append((_RELATION_NAISSANCE, r, f"naissance ≤ début ({suffixe})"))
+            if a_deces:
+                out.append((r, _RELATION_DECES, f"début ≤ décès ({suffixe})"))
+        elif _matche(r, _MOTIFS_FIN_ACTIVITE):
+            suffixe = r[len(_PREFIXE_FIN):] if r.startswith(_PREFIXE_FIN) else r
+            if a_deces:
+                out.append((r, _RELATION_DECES, f"fin ≤ décès ({suffixe})"))
     return out
 
 

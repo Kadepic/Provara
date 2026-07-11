@@ -59,14 +59,15 @@ with tempfile.TemporaryDirectory() as tmp:
         ("G", "-10"),
         ("H", "-99"),
     ])
-    # Couple SÉMANTIQUE naissance/décès (déclaré) : une violation dure.
-    _ecris(tmp, "annee_naissance_personne", [("Zoé", "1970"), ("Yann", "2005"), ("Iris", "1600")])
-    _ecris(tmp, "annee_deces_personne", [("Zoé", "1990"), ("Yann", "1405")])   # Yann : né après sa mort -> viol.
-    # Couple VIE↔ACTIVITÉ (auto-généré) : mandat qui débute AVANT la naissance -> violation dure.
-    _ecris(tmp, "annee_debut_mandat_ministre", [
-        ("Zoé", "1995"),    # 1970 <= 1995 -> COHÉRENT (mandat après naissance)
-        ("Iris", "1590"),   # 1600 >  1590 -> VIOLATION (ministre avant de naître)
-    ])
+    # VIE↔ACTIVITÉ : l'activité est encadrée par la vie. 4 personnes, chaque violation posée isolément.
+    #   Zoé : 1970 -> [1980, 1988] -> 1990   TOUT COHÉRENT (0 viol)
+    #   Yann: naissance 2005 > décès 1405     -> viol naissance≤décès (né après sa mort) ; pas de mandat
+    #   Iris: naissance 1600 > début 1590     -> viol naissance≤début (ministre avant de naître) ; pas de décès
+    #   Otto: 1800 -> [1900, 1910] mais décès 1850 -> viol début≤décès ET fin≤décès (mandat après sa mort)
+    _ecris(tmp, "annee_naissance_personne", [("Zoé", "1970"), ("Yann", "2005"), ("Iris", "1600"), ("Otto", "1800")])
+    _ecris(tmp, "annee_deces_personne", [("Zoé", "1990"), ("Yann", "1405"), ("Otto", "1850")])
+    _ecris(tmp, "annee_debut_mandat_ministre", [("Zoé", "1980"), ("Iris", "1590"), ("Otto", "1900")])
+    _ecris(tmp, "annee_fin_mandat_ministre", [("Zoé", "1988"), ("Otto", "1910")])
 
     os.environ["LECTEUR_DATASETS_DIR"] = tmp
     # Import APRÈS avoir posé l'env (le module fige _LECT à l'import).
@@ -85,32 +86,43 @@ with tempfile.TemporaryDirectory() as tmp:
     check("D" not in ents_viol, "valeur non-int (D) IGNORÉE, jamais violation (soundness)")
     check("E" not in ents_viol and "F" not in ents_viol, "entités non partagées (E, F) ignorées")
 
-    # -- appariage : les trois modes sont découverts (auto début/fin, vie↔activité, sémantique) --
+    # -- appariage : tous les modes sont découverts (auto début/fin, vie↔activité ×3, sémantique) --
     paires = {(a, b) for a, b, _ in AC.paires_disponibles()}
     check(("annee_debut_test", "annee_fin_test") in paires, "paire AUTO début/fin découverte par le nom")
+    check(("annee_debut_mandat_ministre", "annee_fin_mandat_ministre") in paires,
+          "paire AUTO début/fin de mandat (même suffixe)")
     check(("annee_naissance_personne", "annee_deces_personne") in paires, "paire SÉMANTIQUE déclarée découverte")
     check(("annee_naissance_personne", "annee_debut_mandat_ministre") in paires,
-          "paire VIE↔ACTIVITÉ auto-générée (naissance ≤ début de mandat)")
+          "vie↔activité : naissance ≤ début de mandat")
+    check(("annee_debut_mandat_ministre", "annee_deces_personne") in paires,
+          "vie↔activité : début de mandat ≤ décès")
+    check(("annee_fin_mandat_ministre", "annee_deces_personne") in paires,
+          "vie↔activité : fin de mandat ≤ décès")
 
-    # -- audit global : agrégation exacte --
+    # -- audit global : agrégation exacte (6 paires : test, début/fin mandat, naissance/décès, 3× vie) --
     g = AC.audit(details=True)
-    check(g["paires"] == 3, f"3 paires disponibles (obtenu {g['paires']})")
-    check(g["violations"] == 4, f"4 violations totales (B, H, Yann, Iris) (obtenu {g['violations']})")
-    check(g["paires_en_conflit"] == 3, "les 3 paires sont en conflit")
+    check(g["paires"] == 6, f"6 paires disponibles (obtenu {g['paires']})")
+    check(g["violations"] == 6, f"6 violations : B,H + Yann + Iris + Otto(début) + Otto(fin) (obtenu {g['violations']})")
+    check(g["paires_en_conflit"] == 5, "5 paires en conflit (début/fin mandat : 0 viol)")
     check(g["top"][0][3] >= g["top"][1][3], "top trié par nombre de violations décroissant")
     somme = sum(t[3] for t in g["top"])
     check(somme == g["violations"], "somme des violations par paire == total (aucune perdue/doublée)")
 
     # -- FRUGALITÉ : le sens de comparaison est correct quel que soit le fichier chargé (petit/grand) --
-    # naissance (2) plus petit que décès (2) : égalité de taille, on force l'autre sens en vérifiant le résultat.
     rn = AC.audite_paire("annee_naissance_personne", "annee_deces_personne")
     check(rn["violations"] == 1 and rn["exemples"][0][0] == "Yann",
-          "sens min/max correct : Yann (2005>1405) détecté, Zoé (1970<1990) non")
+          "sens min/max correct : Yann (2005>1405) détecté, Zoé/Otto non")
 
-    # -- VIE↔ACTIVITÉ : Iris (mandat 1590 avant naissance 1600) détectée, Zoé non --
+    # -- VIE↔ACTIVITÉ : chaque contrainte isole sa violation --
     rv = AC.audite_paire("annee_naissance_personne", "annee_debut_mandat_ministre")
     check(rv["violations"] == 1 and rv["exemples"][0][0] == "Iris",
-          "vie↔activité : Iris (naissance 1600 > début mandat 1590) détectée, Zoé (1970<1995) non")
+          "naissance ≤ début : Iris (1600 > 1590) détectée, Zoé/Otto non")
+    rd = AC.audite_paire("annee_debut_mandat_ministre", "annee_deces_personne")
+    check(rd["violations"] == 1 and rd["exemples"][0][0] == "Otto",
+          "début ≤ décès : Otto (mandat 1900 > décès 1850) détecté, Zoé (1980<1990) non")
+    rf = AC.audite_paire("annee_fin_mandat_ministre", "annee_deces_personne")
+    check(rf["violations"] == 1 and rf["exemples"][0][0] == "Otto",
+          "fin ≤ décès : Otto (fin 1910 > décès 1850) détecté, Zoé (1988<1990) non")
 
 # ─────────────────────────── 1bis) SOUNDNESS du type ACYCLIQUE sur fixture synthétique ───────────────────────────
 with tempfile.TemporaryDirectory() as tmp:
