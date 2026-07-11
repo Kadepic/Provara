@@ -68,6 +68,8 @@ L20 = ("un amplificateur n'améliore pas le rapport signal/bruit : facteur de br
        "toujours du bruit, jamais n'en retire")
 L21 = ("théorème d'échantillonnage de Nyquist-Shannon : reconstruire un signal de bande B exige un échantillonnage "
        "à fs ≥ 2B — en dessous, le repliement est irréversible (sauf signal parcimonieux / acquisition comprimée)")
+L22 = ("borne du tri par comparaison : trier n éléments par comparaisons exige au moins log₂(n!) ≈ n·log₂(n) "
+       "comparaisons (arbre de décision) — sauf tri non comparatif exploitant la structure des clés (radix, comptage)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -108,7 +110,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
-                 "detection", "amplification", "echantillonnage"):
+                 "detection", "amplification", "echantillonnage", "tri"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -545,6 +547,24 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                 return (VIOLE, f"fréquence d'échantillonnage {fs} Hz < 2·B ({2 * b} Hz) pour une reconstruction "
                                f"PARFAITE d'un signal de bande {b} Hz : repliement irréversible (Nyquist-Shannon) — "
                                f"impossible sans parcimonie", L21)
+
+    # --- Borne du tri par comparaison : ≥ log₂(n!) ≈ n·log₂(n) comparaisons. ---
+    # Un tri par COMPARAISON d'une entrée ARBITRAIRE doit distinguer les n! ordres possibles ; un arbre de décision
+    # binaire de profondeur d sépare au plus 2^d feuilles → il faut d ≥ log₂(n!) comparaisons dans le pire cas. DEUX
+    # exceptions écartées par flags : (a) un tri NON comparatif (radix, comptage) exploite la structure des clés → on
+    # exige `tri_par_comparaison` ; (b) un tri ADAPTATIF sur une entrée déjà structurée (presque triée) fait moins
+    # que log₂(n!) → on exige `entree_arbitraire` (tous les n! ordres possibles). On ne réfute donc que pour un tri
+    # PAR COMPARAISON d'une entrée ARBITRAIRE (pire cas). CONSERVATEUR : faux positif INTERDIT.
+    if t == "tri":
+        if bool(spec.get("tri_par_comparaison", False)) and spec.get("entree_arbitraire") is True:
+            n = spec.get("nb_elements")
+            c = spec.get("nb_comparaisons")
+            if _nb(n) and _nb(c) and n >= 2 and c >= 0:
+                borne = math.lgamma(n + 1.0) / math.log(2.0)      # log₂(n!)
+                if c < borne * (1.0 - 1e-9):
+                    return (VIOLE, f"{c} comparaisons < borne log₂(n!) ≈ {round(borne)} pour n={n} : un tri par "
+                                   f"comparaison ne peut distinguer n! ordres avec moins — impossible (sauf tri non "
+                                   f"comparatif)", L22)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

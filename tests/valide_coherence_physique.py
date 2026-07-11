@@ -186,6 +186,13 @@ check(loi({"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_ech
            "reconstruction_parfaite": True}) == P.L21, "Nyquist-Shannon = L21")
 check(statut({"type": "echantillonnage", "bande_passante_Hz": 1000, "frequence_echantillonnage_Hz": 1000,
               "reconstruction_parfaite": True}) == P.VIOLE, "fs = B < 2B -> VIOLE")
+# borne du tri par comparaison : moins de log2(n!) comparaisons (tri par comparaison, entrée arbitraire).
+check(statut({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+              "nb_comparaisons": 1000000}) == P.VIOLE, "1e6 comparaisons < log2(1e6!) ~1,85e7 -> VIOLE")
+check(loi({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+           "nb_comparaisons": 1000000}) == P.L22, "tri par comparaison = L22")
+check(statut({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 8,
+              "nb_comparaisons": 10}) == P.VIOLE, "10 < log2(8!)=15,3 -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -326,6 +333,13 @@ reels = [
     {"type": "echantillonnage", "bande_passante_Hz": 1000000, "frequence_echantillonnage_Hz": 500000, "reconstruction_parfaite": True, "signal_parcimonieux": True},  # acquisition comprimée -> PAS un faux positif
     {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000},  # sans reconstruction parfaite (avec pertes) -> PAS un faux positif
     {"type": "echantillonnage"},                                                      # vide -> PAS un faux positif
+    # tris RÉELS : au moins log2(n!) comparaisons (par comparaison, arbitraire), ou non comparatif/adaptatif (exemptés).
+    {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000, "nb_comparaisons": 20000000},  # mergesort (~n log n > 1,85e7)
+    {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 8, "nb_comparaisons": 16},              # petit tri (> 15,3)
+    {"type": "tri", "tri_par_comparaison": False, "nb_elements": 1000000, "nb_comparaisons": 1000000},  # radix (non comparatif) -> PAS un faux positif
+    {"type": "tri", "tri_par_comparaison": True, "nb_elements": 1000000, "nb_comparaisons": 1000000},   # adaptatif sur entrée non arbitraire -> PAS un faux positif
+    {"type": "tri", "nb_elements": 1000000},                                          # sans nb_comparaisons -> PAS un faux positif
+    {"type": "tri"},                                                                  # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
