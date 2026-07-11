@@ -3501,6 +3501,152 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-QUATRIÈME DOMAINE : numériser / échantillonner un signal. Nouvelle loi dure au juge (L21) : le théorème
+#  d'échantillonnage de NYQUIST-SHANNON — reconstruire parfaitement un signal de bande B exige un échantillonnage
+#  à fs ≥ 2B ; en dessous, le repliement (aliasing) mélange irréversiblement les fréquences. REFRAMING machine :
+#  numériser plus vite ne sert à rien au-delà de 2B (marge mise à part) ; ce qui compte est de couvrir la BANDE.
+#  Leviers : échantillonner à ≥ 2B avec un FILTRE anti-repliement en amont ; exploiter la PARCIMONIE (acquisition
+#  comprimée, bien sous Nyquist pour un signal creux) ; sous-échantillonner une bande étroite haute fréquence
+#  (échantillonnage passe-bande) ; mettre en forme le bruit (sigma-delta) pour gagner en résolution.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_ECH = "numerisation_signal"
+_ALIAS_ECH = {
+    "numeriser un signal", "echantillonner un signal", "convertir en numerique", "acquerir un signal",
+    "capturer un signal analogique", "reconstruire un signal echantillonne",
+}
+
+# ── « Canaux » : les leviers de la numérisation ──────────────────────────────────────────────────────────────────
+_CANAUX_ECH = [
+    Canal("frequence d echantillonnage", "information", "ÉCHANTILLONNER à fs ≥ 2B (Nyquist) pour couvrir toute la bande",
+          True, "la règle de base : au moins deux échantillons par période de la plus haute fréquence → au-delà de "
+                "2B (marge mise à part), échantillonner plus vite ne récupère aucune information — couvrir la bande"),
+    Canal("filtre anti-repliement", "information", "FILTRER avant d'échantillonner : supprimer les fréquences hors bande",
+          True, "sans filtre anti-repliement en amont, les fréquences au-dessus de fs/2 se replient dans la bande "
+                "utile et la polluent IRRÉVERSIBLEMENT → le filtre analogique d'entrée est indispensable"),
+    Canal("parcimonie", "information", "EXPLOITER la PARCIMONIE (acquisition comprimée) : reconstruire un signal creux sous Nyquist",
+          True, "si le signal est parcimonieux dans une base (peu de composantes), l'acquisition comprimée le "
+                "reconstruit avec BIEN moins d'échantillons que Nyquist (IRM accélérée, radio-astronomie) — le levier « structure »"),
+    Canal("passe bande", "information", "SOUS-ÉCHANTILLONNER une bande étroite haute fréquence (échantillonnage passe-bande)",
+          True, "un signal occupant une bande étroite CENTRÉE haut peut être échantillonné à ~2·(largeur de bande) "
+                "au lieu de 2·(fréquence max) → énorme économie en radio ; alignement des repliements à gérer"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par Nyquist-Shannon (type `echantillonnage`, fs ≥ 2B) ──────────────────────
+_PRINCIPES_ECH = [
+    _P("échantillonnage à la fréquence de Nyquist (2B)",
+       "numériser : échantillonner juste au-dessus de deux fois la bande du signal",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 44100,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature",
+       0.65, "la référence (CD audio 44,1 kHz pour 20 kHz de bande) : couvrir la bande suffit à reconstruire "
+             "parfaitement ; toute la marge sert au filtre — le point de fonctionnement optimal"),
+    _P("suréchantillonnage (marge + bruit étalé)",
+       "numériser : échantillonner bien au-dessus de 2B pour relâcher le filtre et étaler le bruit",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 96000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature",
+       0.5, "échantillonner plus vite étale le bruit de quantification et simplifie le filtre anti-repliement → "
+            "meilleure résolution effective ; coût en débit et en calcul — le levier « marge »"),
+    _P("filtre anti-repliement en amont",
+       "numériser : filtrer analogiquement les fréquences hors bande avant l'échantillonnage",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 44100,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature",
+       0.55, "indispensable : sans lui, tout ce qui dépasse fs/2 se replie et pollue la bande utile pour toujours → "
+             "protéger l'acquisition à la source ; raideur du filtre à concevoir — le levier « propreté d'entrée »"),
+    _P("acquisition comprimée (parcimonie)",
+       "numériser : reconstruire un signal parcimonieux avec bien moins d'échantillons que Nyquist",
+       {"type": "echantillonnage", "bande_passante_Hz": 1000000, "frequence_echantillonnage_Hz": 500000,
+        "reconstruction_parfaite": True, "signal_parcimonieux": True}, True, True,
+       "—", "recherche (IRM, radio-astro)",
+       0.45, "REFRAMING : si le signal est creux dans une base, on le reconstruit sous Nyquist (IRM 5–10× plus "
+             "rapide) ; suppose la parcimonie et un calcul de reconstruction — le levier « exploiter la structure »"),
+    _P("échantillonnage passe-bande (sous-échantillonnage)",
+       "numériser : sous-échantillonner une bande étroite centrée haut à ~2·(largeur de bande)",
+       {"type": "echantillonnage", "bande_passante_Hz": 10000, "frequence_echantillonnage_Hz": 25000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature (radio)",
+       0.45, "un signal radio étroit à haute fréquence n'exige que ~2·(largeur de bande) d'échantillonnage → "
+             "convertisseur bien plus lent ; le placement des repliements demande de la rigueur — le levier « passe-bande »"),
+    _P("modulation sigma-delta (mise en forme du bruit)",
+       "numériser : suréchantillonner fortement et rejeter le bruit de quantification hors bande",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 2800000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature (audio)",
+       0.5, "échange débit contre résolution : un fort suréchantillonnage + mise en forme du bruit donne 20+ bits "
+            "effectifs avec un comparateur 1 bit → l'audio haute résolution ; latence et calcul — le levier « bruit repoussé »"),
+    _P("échantillonnage non uniforme / événementiel",
+       "numériser : n'échantillonner que lorsque le signal change (déclenchement par niveau)",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 45000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "recherche",
+       0.4, "espacer les échantillons selon l'activité économise des données sur des signaux épars dans le temps "
+            "(capteurs basse conso) → moins d'échantillons utiles ; reconstruction plus complexe — le levier « à la demande »"),
+    _P("convertisseur pipeline haute résolution",
+       "numériser : convertir en plusieurs étages successifs pour un haut débit à bonne résolution",
+       {"type": "echantillonnage", "bande_passante_Hz": 100000000, "frequence_echantillonnage_Hz": 250000000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature",
+       0.45, "étage par étage, atteint des centaines de MHz à 12–16 bits (radio logicielle, instrumentation) ; "
+             "consommation et calibration — l'électronique de conversion, complément du théorème"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("reconstruction parfaite « d'un 20 kHz échantillonné à 30 kHz »",
+       "numériser : reconstruire parfaitement un signal de 20 kHz de bande échantillonné à seulement 30 kHz",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "revendication",
+       0.3, "30 kHz < 2·20 kHz = 40 kHz : le repliement est irréversible pour un signal non parcimonieux → "
+            "reconstruction parfaite impossible (Nyquist-Shannon) ; à réfuter"),
+    _P("numériser « sans perte à la fréquence de la bande » (fs = B)",
+       "numériser : reconstruire parfaitement en échantillonnant à la fréquence de la bande (fs = B)",
+       {"type": "echantillonnage", "bande_passante_Hz": 1000, "frequence_echantillonnage_Hz": 1000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "revendication",
+       0.25, "fs = B < 2B : deux fois trop lent → repliement irréversible ; il faut au moins 2B — impossible"),
+]
+
+_OBJECTIF_ECH = ("Le but réel n'est pas d'échantillonner « le plus vite possible » mais de COUVRIR la bande sans "
+                 "repliement : le théorème de Nyquist-Shannon impose fs ≥ 2B pour reconstruire parfaitement un "
+                 "signal de bande B — en dessous, l'aliasing mélange irréversiblement les fréquences. Leviers : "
+                 "échantillonner à ≥ 2B avec un FILTRE anti-repliement en amont ; exploiter la PARCIMONIE "
+                 "(acquisition comprimée, bien sous Nyquist pour un signal creux) ; sous-échantillonner une bande "
+                 "étroite haute fréquence (passe-bande) ; mettre en forme le bruit (sigma-delta) pour la résolution. "
+                 "Chaque principe reste jugé par le théorème d'échantillonnage.")
+_LOI_ECH = ("théorème de Nyquist-Shannon : reconstruire un signal de bande B exige fs ≥ 2B (en dessous, repliement "
+            "irréversible) ; gains réels = filtre anti-repliement, exploiter la parcimonie (acquisition comprimée), "
+            "échantillonnage passe-bande d'une bande étroite, mise en forme du bruit (sigma-delta)")
+
+# La nature échantillonne par la fusion de scintillement (vision), le pavage non uniforme (fovéa), le sondage actif (chauve-souris), le lissage (pré-filtrage).
+_STRATEGIES_NATURE_ECH = [
+    _Nature("vision (fusion de scintillement)",
+            ["au-delà d'une cadence, les images fusionnent en mouvement continu", "échantillonnage temporel de la scène"],
+            "un signal continu perçu à partir d'échantillons assez rapprochés — l'échantillonnage temporel du vivant"),
+    _Nature("fovéa (échantillonnage spatial non uniforme)",
+            ["densité de capteurs maximale au centre, éparse en périphérie", "concentre la résolution où elle compte"],
+            "échantillonner DENSE là où il faut, ÉPARS ailleurs — l'allocation non uniforme des échantillons"),
+    _Nature("écholocation de la chauve-souris (sondage actif)",
+            ["augmente la cadence des cris en phase d'approche", "adapte l'échantillonnage à la vitesse de la scène"],
+            "adapter la CADENCE d'échantillonnage au rythme de la scène — l'échantillonnage actif et adaptatif"),
+    _Nature("pré-filtrage neuronal (lissage avant transmission)",
+            ["lisse le signal avant de le transmettre", "évite de propager des variations trop rapides"],
+            "filtrer AVANT d'échantillonner pour éviter le repliement — l'anti-aliasing biologique"),
+]
+
+enregistre(Domaine(
+    nom=_ECH,
+    aliases=frozenset(_ALIAS_ECH),
+    objectif=_OBJECTIF_ECH,
+    canaux=_CANAUX_ECH,
+    principes=_PRINCIPES_ECH,
+    strategies=_STRATEGIES_NATURE_ECH,
+    loi=_LOI_ECH,
+    extras={"nyquist": "fs ≥ 2B (bande B)",
+            "note": "l'acquisition comprimée bat Nyquist pour un signal parcimonieux ; le passe-bande "
+                    "sous-échantillonne une bande étroite haute fréquence"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

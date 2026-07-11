@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 24e domaine « numériser / échantillonner » + loi L21 (Nyquist-Shannon)
+
+Numériser / échantillonner un signal. Nouvelle loi dure au juge (`L21`) : le théorème d'échantillonnage de
+NYQUIST-SHANNON — reconstruire parfaitement un signal de bande B exige fs ≥ 2B ; en dessous, le repliement
+(aliasing) est irréversible. CONSERVATEUR (FAUX=0) : l'acquisition comprimée (compressed sensing) reconstruit un
+signal PARCIMONIEUX sous Nyquist → on ne réfute fs < 2B que pour une reconstruction PARFAITE d'un signal non
+parcimonieux (`signal_parcimonieux` non déclaré). Distinct de L7/L15. Gate `valide_coherence_physique`
+**294 → 307/307**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (reconstruction parfaite 20 kHz à
+30 kHz, fs = B). Reframing : numériser plus vite ne sert à rien au-delà de 2B ; couvrir la BANDE sans repliement.
+Leviers : fs ≥ 2B + filtre anti-repliement, exploiter la parcimonie (acquisition comprimée), sous-échantillonner
+une bande étroite (passe-bande), mise en forme du bruit (sigma-delta). Couvre Nyquist, suréchantillonnage, filtre
+anti-repliement, acquisition comprimée, passe-bande, sigma-delta, non uniforme/événementiel, pipeline. 4
+stratégies naturelles propres (vision = fusion de scintillement, fovéa = échantillonnage non uniforme, écholocation
+= sondage actif, pré-filtrage neuronal = anti-aliasing). Gate `valide_besoin` **442 → 459/459** ; les 23 domaines
+précédents intacts.
+
+**JALON : 24 DOMAINES D'INVENTION, 21 LOIS PHYSIQUES DANS LE JUGE** (… L20 facteur de bruit, L21 Nyquist-Shannon).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 23e domaine « amplifier un signal » + loi L20 (facteur de bruit ≥ 1)
 
 Amplifier un signal. Nouvelle loi dure au juge (`L20`) : un amplificateur N'AMÉLIORE PAS le rapport signal/bruit —

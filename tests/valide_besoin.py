@@ -1053,6 +1053,50 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "trainee_induite_min" in B.decompose("voler loin"),
       "les 22 domaines précédents inchangés après l'ajout de l'amplification (isolation)")
 
+# ── 30) VINGT-QUATRIÈME DOMAINE : numériser / échantillonner (nouvelle loi L21 = Nyquist-Shannon, fs ≥ 2B) ──
+dech = B.decompose("numeriser un signal")
+check(dech["statut"] == "decompose", "besoin numérisation connu -> decompose")
+check("nyquist" in dech["objectif_reel"].lower() and "bande" in dech["objectif_reel"].lower(),
+      "objectif réel numérisation = Nyquist, couvrir la bande")
+check("nyquist" in dech, "extras propres : la fréquence de Nyquist")
+ech_canaux = {c.canal for c in dech["canaux"]}
+check(ech_canaux == {"frequence d echantillonnage", "filtre anti-repliement", "parcimonie", "passe bande"},
+      f"4 canaux de la numérisation ({ech_canaux})")
+prech = B.principes("numeriser un signal")
+pech = {e["nom"]: e for e in prech["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : sous 2B (reconstruction parfaite non parcimonieuse)
+sous2b = pech["reconstruction parfaite « d'un 20 kHz échantillonné à 30 kHz »"]
+check(sous2b["atome"].statut == A.REFUTE, "30k < 2*20k reconstruction parfaite -> RÉFUTÉ")
+check(A.est_refute(sous2b["atome"].contenu), "contenu réfuté (30 kHz) dans la garde")
+fseqb = pech["numériser « sans perte à la fréquence de la bande » (fs = B)"]
+check(fseqb["atome"].statut == A.REFUTE, "fs = B < 2B -> RÉFUTÉ")
+# procédés réels (dont l'acquisition comprimée parcimonieuse, exemptée) -> SUPPOSITIONS
+for nom in ("échantillonnage à la fréquence de Nyquist (2B)", "acquisition comprimée (parcimonie)",
+            "échantillonnage passe-bande (sous-échantillonnage)"):
+    e = pech[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prech["liste"]), "aucun principe de numérisation promu en FAIT")
+check("candidat pour numerisation_signal" in pech["échantillonnage à la fréquence de Nyquist (2B)"]["atome"].portee.condition,
+      "portée des principes de numérisation nommant numerisation_signal")
+# la loi L21 : reconstruction parfaite sous 2B réfutée, acquisition comprimée cohérente
+st_ech, _, loi_ech = COH.juge_dispositif({"type": "echantillonnage", "bande_passante_Hz": 20000,
+                                          "frequence_echantillonnage_Hz": 30000, "reconstruction_parfaite": True})
+check(st_ech == COH.VIOLE and loi_ech == COH.L21, "juge : 30 kHz pour 20 kHz -> VIOLE via L21")
+check(COH.juge_dispositif({"type": "echantillonnage", "bande_passante_Hz": 1000000,
+                           "frequence_echantillonnage_Hz": 500000, "reconstruction_parfaite": True,
+                           "signal_parcimonieux": True})[0] == COH.COHERENT_BORNE,
+      "acquisition comprimée (parcimonieux) sous Nyquist -> cohérent, pas de faux positif")
+# stratégies naturelles propres (vision, fovéa)
+natech = B.strategies_naturelles("numeriser un signal")
+check(len(natech) >= 4 and any("fovéa" in s["exemple"].lower() for s in natech), "stratégies numérisation propres (fovéa)")
+check(not any("cochlée" in s["exemple"] for s in natech) and not any("bâtonnet" in s["exemple"] for s in natech),
+      "pas de fuite des stratégies amplification/détection vers la numérisation")
+# les VINGT-TROIS domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "facteur_de_bruit_min" in B.decompose("amplifier un signal")
+      and "bruit_grenaille" in B.decompose("detecter un signal faible"),
+      "les 23 domaines précédents inchangés après l'ajout de la numérisation (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
@@ -1060,8 +1104,8 @@ check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
                               "production_alimentaire", "compression_information", "isolation_thermique",
                               "confidentialite_information", "vol_croisiere", "detection_signal",
-                              "amplification_signal"],
-      "vingt-trois domaines modélisés, dans l'ordre d'enregistrement")
+                              "amplification_signal", "numerisation_signal"],
+      "vingt-quatre domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
