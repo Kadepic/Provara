@@ -206,6 +206,11 @@ check(loi({"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 1
            "acceleration": 20}) == P.L24, "Amdahl = L24")
 check(statut({"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 100,
               "acceleration": 100}) == P.VIOLE, "accélération linéaire (100) avec s=0,05 -> VIOLE")
+# troisième principe : atteinte du zéro absolu / température ≤ 0 K.
+check(statut({"type": "cryogenie", "atteint_zero_absolu": True}) == P.VIOLE, "atteindre 0 K -> VIOLE")
+check(loi({"type": "cryogenie", "atteint_zero_absolu": True}) == P.L25, "3e principe = L25")
+check(statut({"type": "cryogenie", "temperature_atteinte_K": 0.0}) == P.VIOLE, "0 K atteint -> VIOLE")
+check(statut({"type": "cryogenie", "temperature_atteinte_K": -1}) == P.VIOLE, "-1 K (sous 0) -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -365,6 +370,12 @@ reels = [
     {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 1000, "acceleration": 100, "probleme_agrandi": True},  # Gustafson (weak scaling) -> PAS un faux positif
     {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16},        # sans accélération -> PAS un faux positif
     {"type": "parallelisation"},                                                      # vide -> PAS un faux positif
+    # cryogénies RÉELLES : température > 0 K (aussi basse soit-elle).
+    {"type": "cryogenie", "temperature_atteinte_K": 0.005},                           # réfrigérateur à dilution (~5 mK)
+    {"type": "cryogenie", "temperature_atteinte_K": 1e-6},                            # désaimantation nucléaire (µK)
+    {"type": "cryogenie", "temperature_atteinte_K": 1e-9},                            # refroidissement laser/évaporatif (nK)
+    {"type": "cryogenie", "temperature_atteinte_K": 2.7},                             # fond diffus cosmologique
+    {"type": "cryogenie"},                                                            # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

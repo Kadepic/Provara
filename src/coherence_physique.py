@@ -74,6 +74,8 @@ L23 = ("borne de la recherche : trouver un élément parmi n NON structurés exi
        "(classique, sans index) — sauf données indexées (tri/hachage, O(log n)/O(1)) ou recherche quantique (Grover √n)")
 L24 = ("loi d'Amdahl : l'accélération par parallélisation d'un problème de taille fixe est ≤ 1/(s + (1−s)/p) ≤ 1/s "
        "(s = fraction série) — la partie séquentielle plafonne le gain, quel que soit le nombre de processeurs")
+L25 = ("troisième principe de la thermodynamique : le zéro absolu (0 K) est inatteignable en un nombre fini "
+       "d'étapes — on s'en approche asymptotiquement (chaque étape retire de moins en moins d'entropie), jamais atteint")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -114,7 +116,8 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
-                 "detection", "amplification", "echantillonnage", "tri", "recherche", "parallelisation"):
+                 "detection", "amplification", "echantillonnage", "tri", "recherche", "parallelisation",
+                 "cryogenie"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -601,6 +604,19 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                     return (VIOLE, f"accélération {acc} > borne d'Amdahl {round(acc_max, 3)} (1/(s+(1−s)/p), fraction "
                                    f"série s={s}, p={p} processeurs) : la partie séquentielle plafonne le gain — "
                                    f"impossible à taille fixe", L24)
+
+    # --- Troisième principe : le zéro absolu (0 K) est inatteignable en un nombre fini d'étapes. ---
+    # Retirer toute l'entropie exigerait une infinité d'étapes (chaque étape en retire de moins en moins) : on
+    # approche 0 K asymptotiquement (nK atteints) mais on ne l'atteint jamais, et rien n'est plus froid que 0 K.
+    # CONSERVATEUR : on ne réfute qu'une atteinte DÉCLARÉE de 0 K, ou une température de refroidissement ≤ 0 K.
+    if t == "cryogenie":
+        if spec.get("atteint_zero_absolu") is True:
+            return (VIOLE, "atteinte du zéro absolu (0 K) revendiquée : impossible en un nombre fini d'étapes "
+                           "(3e principe) — on ne fait que s'en approcher asymptotiquement", L25)
+        tk = spec.get("temperature_atteinte_K")
+        if _nb(tk) and tk <= 0.0:
+            return (VIOLE, f"température de refroidissement {tk} K ≤ 0 : le zéro absolu est inatteignable et rien "
+                           f"n'est plus froid (3e principe) — impossible", L25)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:
