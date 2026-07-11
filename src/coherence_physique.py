@@ -46,6 +46,8 @@ L9 = ("électrolyse de l'eau : énergie électrique ≥ ΔG (tension de cellule 
       "énergie TOTALE ≥ ΔH (PCS de H₂, ~285,8 kJ/mol)")
 L10 = ("vol stationnaire : puissance ≥ puissance induite idéale P = T^1,5 / √(2ρA) (théorie de la quantité de "
        "mouvement / disque actuateur) — un rotor ne peut sustenter une poussée T sur un disque d'aire A pour moins")
+L11 = ("limite de diffraction d'Abbe : résolution ≥ λ/(2·NA) en champ lointain conventionnel (super-résolution "
+       "exceptée) ; ouverture numérique NA = n·sinθ ≤ n (indice du milieu)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -81,7 +83,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
-                 "captation_solaire", "electrolyse", "sustentation"):
+                 "captation_solaire", "electrolyse", "sustentation", "imagerie_optique"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -316,6 +318,27 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                                f"(= puissance induite idéale {round(p_ideal)} W / √2, effet de sol maximal ; "
                                f"quantité de mouvement T^1,5/√(2ρA), T={round(poussee)} N, A={a_disk} m²) : "
                                f"sous le minimum physique du vol stationnaire", L10)
+
+    # --- Limite de diffraction d'Abbe : résolution ≥ λ/(2·NA) (champ lointain conventionnel) ; NA ≤ n. ---
+    # Deux volets durs. (1) L'ouverture numérique NA = n·sinθ ne peut dépasser l'indice n du milieu (sinθ ≤ 1). (2)
+    # En champ lointain CONVENTIONNEL, on ne résout pas plus fin que la limite d'Abbe λ/(2·NA). La SUPER-RÉSOLUTION
+    # (champ proche/NSOM, localisation de molécules uniques PALM/STORM, illumination structurée SIM, déplétion STED)
+    # la dépasse LÉGITIMEMENT en exploitant des informations hors du régime d'Abbe → on ne réfute (2) que si la spec
+    # NE déclare PAS `super_resolution`. CONSERVATEUR : faux positif INTERDIT (un instrument réel conventionnel reste
+    # au-dessus de la limite ; un super-résolu est explicitement exempté).
+    if t == "imagerie_optique":
+        na = spec.get("ouverture_numerique")
+        n = spec.get("indice_milieu", 1.0)
+        lam = spec.get("longueur_onde_nm")
+        res = spec.get("resolution_nm")
+        if _nb(na) and _nb(n) and n > 0 and na > n + 1e-9:
+            return (VIOLE, f"ouverture numérique {na} > indice du milieu {n} (NA = n·sinθ ≤ n) : impossible", L11)
+        if (spec.get("super_resolution") is not True and _nb(lam) and _nb(na) and _nb(res)
+                and lam > 0 and na > 0 and res > 0):
+            d_abbe = lam / (2.0 * na)
+            if res < d_abbe * (1.0 - 1e-9):
+                return (VIOLE, f"résolution {res} nm < limite d'Abbe {round(d_abbe, 1)} nm (λ/2NA, λ={lam} nm, "
+                               f"NA={na}, champ lointain conventionnel) : impossible sans super-résolution", L11)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

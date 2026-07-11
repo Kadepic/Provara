@@ -117,6 +117,14 @@ check(loi({"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissa
       "vol stationnaire = L10")
 check(statut({"type": "sustentation", "poussee_N": 981, "aire_rotor_m2": 0.1, "puissance_W": 50}) == P.VIOLE,
       "plateforme 100 kg 0,1 m² à 50 W < P induite (~62 kW) -> VIOLE")
+# limite de diffraction d'Abbe : résolution sous λ/2NA (conventionnel) + NA > n.
+check(statut({"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4,
+              "resolution_nm": 50}) == P.VIOLE, "50 nm < Abbe ~196 (champ lointain conventionnel) -> VIOLE")
+check(loi({"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4,
+           "resolution_nm": 50}) == P.L11, "diffraction d'Abbe = L11")
+check(statut({"type": "imagerie_optique", "ouverture_numerique": 1.7, "indice_milieu": 1.0,
+              "longueur_onde_nm": 550, "resolution_nm": 300}) == P.VIOLE, "NA 1,7 dans l'air (n=1) -> VIOLE")
+check(loi({"type": "imagerie_optique", "ouverture_numerique": 1.7, "indice_milieu": 1.0}) == P.L11, "NA > n = L11")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -192,6 +200,15 @@ reels = [
     {"type": "sustentation", "poussee_N": 19613, "aire_rotor_m2": 113, "puissance_W": 170000}, # au-dessus de P_ideal (poussée donnée)
     {"type": "sustentation", "masse_kg": 2},                                                   # sans P/A : indéterminé -> PAS un faux positif
     {"type": "sustentation"},                                                                  # vide -> PAS un faux positif
+    # imageries optiques RÉELLES : au-dessus de la limite d'Abbe, ou super-résolues (exemptées), NA ≤ n.
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5, "resolution_nm": 200},  # optique standard (> Abbe ~196)
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5, "resolution_nm": 197},  # AU Abbe ~196,4 (limite, ok)
+    {"type": "imagerie_optique", "longueur_onde_nm": 250, "ouverture_numerique": 1.0, "indice_milieu": 1.0, "resolution_nm": 130},  # UV (λ court), Abbe ~125
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5, "resolution_nm": 30, "super_resolution": True},   # STED (exempté)
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5, "resolution_nm": 20, "super_resolution": True},   # PALM/STORM (exempté)
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 0.9, "resolution_nm": 50, "super_resolution": True},   # NSOM champ proche (exempté)
+    {"type": "imagerie_optique", "ouverture_numerique": 1.4, "indice_milieu": 1.5},   # NA < n, sans résolution : PAS un faux positif
+    {"type": "imagerie_optique"},                                                     # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
