@@ -247,6 +247,8 @@ class MoteurAutonome(MoteurOuvert):
     _NOMBRES_LISTE = [
         "max(set(x), key=lambda _e: (x.count(_e), -_e))",         # mode (plus fréquent ; tie-break déterministe)
         "sum(1 for _e in set(x) if x.count(_e) > 1)",             # nb d'éléments en doublon
+        "sum(1 for _e in set(x) if x.count(_e) == 1)",           # nb d'éléments UNIQUES (hapax) — complète la famille fréquence
+        "max(x.count(_e) for _e in set(x))",                     # fréquence du mode (compte max) — complète la famille fréquence
         "__import__('functools').reduce(__import__('math').gcd, [abs(_e) for _e in x], 0)",  # pgcd de la liste
         # — STRUCTURE LOCALE (vague 6) : pics, plus longue série de valeurs égales consécutives —
         "sum(1 for _i in range(1, len(x) - 1) if x[_i - 1] < x[_i] > x[_i + 1])",            # nb de pics
