@@ -78,10 +78,13 @@ L25 = ("troisième principe de la thermodynamique : le zéro absolu (0 K) est in
        "d'étapes — on s'en approche asymptotiquement (chaque étape retire de moins en moins d'entropie), jamais atteint")
 L26 = ("limite quantique standard d'une horloge : l'instabilité fractionnaire ≥ 1/(2π·f₀·τ·√N) (bruit de projection "
        "quantique, N atomes non intriqués) — sauf intrication (spin squeezing, vers la limite de Heisenberg 1/N)")
+L27 = ("limite de Margolus-Levitin : un système d'énergie E effectue au plus 2E/(πℏ) opérations élémentaires par "
+       "seconde (~6×10³³ par joule) — la vitesse de calcul est bornée par l'énergie disponible")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
 _K_BOLTZMANN = 1.380649e-23  # J/K
+_HBAR = 1.054571817e-34      # J·s : constante de Planck réduite (limite de vitesse de calcul de Margolus-Levitin)
 _RENDEMENT_SQ_MONO = 0.337   # limite de Shockley-Queisser (jonction simple standard, AM1.5, 1 soleil, gap ~1,34 eV)
 _T_SOLEIL_K = 5778.0         # température de corps noir effective du Soleil (pour le plafond de Carnot solaire)
 _DH_EAU = 285.8e3            # J/mol : enthalpie de dissociation de l'eau (PCS de H₂) — plancher 1er principe (énergie totale)
@@ -119,7 +122,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
                  "detection", "amplification", "echantillonnage", "tri", "recherche", "parallelisation",
-                 "cryogenie", "horloge"):
+                 "cryogenie", "horloge", "vitesse_calcul"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -638,6 +641,21 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                     return (VIOLE, f"instabilité {sig} < limite quantique standard {lqs:.3e} (1/(2π·f₀·τ·√N), "
                                    f"f₀={f0} Hz, τ={tau} s, N={n} atomes non intriqués) : sous le bruit de projection "
                                    f"quantique — impossible sans intrication", L26)
+
+    # --- Limite de Margolus-Levitin : ≤ 2E/(πℏ) opérations élémentaires par seconde pour une énergie E. ---
+    # Un système d'énergie E ne peut passer d'un état à un état orthogonal en moins de πℏ/(2E) : il effectue donc au
+    # plus 2E/(πℏ) ≈ 6×10³³ opérations par seconde et par joule. La vitesse de calcul est bornée par l'ÉNERGIE (pas
+    # seulement l'énergie par bit — c'est la dimension temps, complémentaire de Landauer). CONSERVATEUR : on ne réfute
+    # qu'un débit d'opérations DÉCLARÉ dépassant cette borne pour l'énergie déclarée → jamais un faux positif (une
+    # machine réelle, avec des joules d'énergie, en est à des ordres de grandeur en dessous).
+    if t == "vitesse_calcul":
+        ops = spec.get("operations_par_seconde")
+        e = spec.get("energie_J")
+        if _nb(ops) and _nb(e) and ops > 0 and e > 0:
+            ops_max = 2.0 * e / (math.pi * _HBAR)
+            if ops > ops_max * (1.0 + 1e-9):
+                return (VIOLE, f"{ops:.3e} opérations/s > limite de Margolus-Levitin {ops_max:.3e} (2E/πℏ pour "
+                               f"E={e} J) : la vitesse de calcul est bornée par l'énergie — impossible", L27)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

@@ -216,6 +216,13 @@ check(statut({"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes"
               "stabilite": 1e-19}) == P.VIOLE, "1e-19 < LQS ~3,2e-18 (non intriquée) -> VIOLE")
 check(loi({"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000,
            "stabilite": 1e-19}) == P.L26, "limite quantique standard = L26")
+# limite de Margolus-Levitin : plus d'opérations/s que 2E/πℏ.
+check(statut({"type": "vitesse_calcul", "operations_par_seconde": 1e40, "energie_J": 1}) == P.VIOLE,
+      "1e40 ops/s avec 1 J > ML ~6e33 -> VIOLE")
+check(loi({"type": "vitesse_calcul", "operations_par_seconde": 1e40, "energie_J": 1}) == P.L27,
+      "Margolus-Levitin = L27")
+check(statut({"type": "vitesse_calcul", "operations_par_seconde": 1e60, "energie_J": 1e6}) == P.VIOLE,
+      "1e60 ops/s avec 1e6 J > ML ~6e39 -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -387,6 +394,11 @@ reels = [
     {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-19, "intrication": True},  # spin squeezing -> PAS un faux positif
     {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000},      # sans stabilité -> PAS un faux positif
     {"type": "horloge"},                                                              # vide -> PAS un faux positif
+    # vitesses de calcul RÉELLES : bien sous la limite de Margolus-Levitin.
+    {"type": "vitesse_calcul", "operations_par_seconde": 1e18, "energie_J": 1000},    # supercalculateur (<< 6e36)
+    {"type": "vitesse_calcul", "operations_par_seconde": 1e30, "energie_J": 1},       # au-dessous de ML (~6e33)
+    {"type": "vitesse_calcul", "operations_par_seconde": 1e18},                       # sans énergie -> PAS un faux positif
+    {"type": "vitesse_calcul"},                                                       # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
