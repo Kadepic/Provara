@@ -323,6 +323,10 @@ class MoteurAutonome(MoteurOuvert):
         # PIVOT 2 NIVEAUX (canon pandas pivot_table : split sur une grille 2D) : liste de triplets
         # [a, b, c] -> {a: {b: c}} — sortie dict-de-dicts, distinctive, jamais coïncidente.
         "{_a: {_p[1]: _p[2] for _p in x if _p[0] == _a} for _a in sorted({_q[0] for _q in x})}",
+        # DÉGROUPAGE (atome 8, frontière mesurée) : l'INVERSE du groupby — dict-de-listes -> liste de paires
+        # [clé, valeur], clés triées (déterminisme). Referme l'aller-retour groupby/dégroupage (même patron
+        # que rle encode/decode : « la frontière se déplace vers l'inverse »).
+        "[[_k, _v] for _k in sorted(x) for _v in x[_k]]",
     ]
     # CHIFFRES d'un entier ; PRÉDICAT palindrome ; ARITHMÉTIQUE à 2 champs ([fait, total] -> %).
     _DIVERS_REEL = [
