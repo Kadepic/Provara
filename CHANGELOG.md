@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 31e domaine « copier de l'information quantique » + loi L28 (non-clonage)
+
+Copier de l'information quantique. Nouvelle loi dure au juge (`L28`) : le THÉORÈME DE NON-CLONAGE — on ne peut
+copier PARFAITEMENT un état quantique INCONNU (la linéarité de la mécanique quantique l'interdit) ; le clonage
+universel optimal 1→2 plafonne à une fidélité de 5/6. CONSERVATEUR (FAUX=0) : l'information CLASSIQUE (ou un état
+CONNU) se copie parfaitement → on ne réfute que pour un état déclaré INCONNU (`etat_inconnu`) revendiquant un
+clonage parfait ou une fidélité > 5/6. Gate `valide_coherence_physique` **385 → 398/398**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (cloneur universel parfait, cloneur « à
+95 % »). Reframing : ne pas « vaincre » le non-clonage (c'est la SÉCURITÉ de la QKD) mais travailler avec — copier
+l'info classique/connue (parfaite), cloner approximativement (≤ 5/6), téléporter (déplace sans copier),
+mesurer-préparer (base connue), stocker (mémoire quantique). Couvre copie classique, clonage universel 5/6,
+téléportation, mesure-préparation, états orthogonaux, amplificateur quantique, clonage asymétrique, mémoire
+quantique. 4 stratégies naturelles propres (réplication = info classique, mimétisme = copie approximative, empreinte
+= copie de surface, bouturage = propagation classique). Gate `valide_besoin` **561 → 578/578** ; les 30 domaines
+précédents intacts.
+
+**JALON : 31 DOMAINES D'INVENTION, 28 LOIS PHYSIQUES DANS LE JUGE** (… L27 Margolus-Levitin, L28 théorème de
+non-clonage).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 30e domaine « calculer vite » + loi L27 (limite de Margolus-Levitin)
 
 Calculer vite / vitesse de calcul maximale. Nouvelle loi dure au juge (`L27`) : la limite de MARGOLUS-LEVITIN — un

@@ -4470,6 +4470,143 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  TRENTE-ET-UNIÈME DOMAINE : copier de l'information quantique. Nouvelle loi dure au juge (L28) : le THÉORÈME DE
+#  NON-CLONAGE — on ne peut pas copier PARFAITEMENT un état quantique INCONNU (la linéarité de la mécanique
+#  quantique l'interdit) ; le clonage universel optimal 1→2 plafonne à une fidélité de 5/6. REFRAMING machine : le
+#  but n'est pas de « vaincre » le non-clonage (impossible et c'est la SÉCURITÉ de la cryptographie quantique) mais
+#  de travailler AVEC. Leviers : copier l'information CLASSIQUE (ou un état CONNU) — elle, se copie parfaitement ;
+#  cloner APPROXIMATIVEMENT (≤ 5/6) si des copies imparfaites suffisent ; TÉLÉPORTER (déplacer l'état, en
+#  détruisant l'original) ; MESURER-et-PRÉPARER si l'on connaît la base.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CLONE = "copie_information_quantique"
+_ALIAS_CLONE = {
+    "copier de l information quantique", "cloner un etat quantique", "dupliquer un qubit",
+    "copier un etat quantique", "reproduire une information quantique", "copier de l information",
+}
+
+# ── « Canaux » : les leviers pour « copier » dans les limites du non-clonage ──────────────────────────────────────
+_CANAUX_CLONE = [
+    Canal("information classique", "information", "COPIER l'information CLASSIQUE (ou un état CONNU) : elle se copie parfaitement",
+          True, "le non-clonage ne vise QUE les états quantiques inconnus → une information classique (bits) ou un "
+                "état dont on connaît la préparation se copie fidèlement à volonté ; le levier « rester classique »"),
+    Canal("clonage approximatif", "information", "CLONER APPROXIMATIVEMENT (fidélité ≤ 5/6) si des copies imparfaites suffisent",
+          True, "un cloneur quantique universel produit deux copies imparfaites (fidélité ≤ 5/6) → utile quand "
+                "l'imperfection est tolérable (diffusion, écoute partielle) ; le levier « approximation »"),
+    Canal("teleportation", "information", "TÉLÉPORTER : déplacer l'état exact vers un autre lieu, en DÉTRUISANT l'original",
+          True, "la téléportation quantique transfère l'état parfaitement mais ne le DUPLIQUE pas (l'original est "
+                "détruit) → déplacer sans copier, avec de l'intrication et un canal classique ; le levier « déplacer »"),
+    Canal("mesure preparation", "information", "MESURER-et-PRÉPARER si la BASE est connue : mesurer puis recréer l'état",
+          True, "si l'on connaît la base de préparation, mesurer donne le résultat et l'on prépare autant de copies "
+                "qu'on veut → « copie » légitime d'un état connu ; échoue sur un état inconnu — le levier « base connue »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le théorème de non-clonage (type `copie_quantique`, inconnu → fidélité ≤ 5/6) ──
+_PRINCIPES_CLONE = [
+    _P("copie d'information classique (parfaite)",
+       "copier : dupliquer des bits classiques (ou un état quantique connu) autant de fois que voulu",
+       {"type": "copie_quantique", "etat_inconnu": False, "clonage_parfait": True}, True, True,
+       "—", "mature",
+       0.6, "l'information CLASSIQUE se copie parfaitement (c'est le quotidien de l'informatique) → le non-clonage "
+            "ne s'y applique pas ; la référence : rester classique quand on peut — le levier « information classique »"),
+    _P("clonage quantique universel approximatif (5/6)",
+       "copier : produire deux copies imparfaites d'un état inconnu à la fidélité optimale",
+       {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.83}, True, True,
+       "—", "recherche",
+       0.5, "le cloneur universel optimal atteint 5/6 de fidélité par copie → utile quand l'imperfection est "
+            "tolérable (attaques d'écoute, diffusion quantique) ; jamais parfait — le levier « approximation »"),
+    _P("téléportation quantique (déplace, ne copie pas)",
+       "copier : transférer l'état exact ailleurs en détruisant l'original (pas une duplication)",
+       {"type": "copie_quantique", "etat_inconnu": True}, True, True,
+       "—", "mature (démontré)",
+       0.55, "REFRAMING : transfère l'état PARFAITEMENT sans le dupliquer (l'original est détruit → pas de "
+             "violation) ; exige de l'intrication et un canal classique — le levier « déplacer plutôt que copier »"),
+    _P("mesure-et-préparation (base connue)",
+       "copier : mesurer un état dans une base connue puis en préparer autant de copies",
+       {"type": "copie_quantique", "etat_inconnu": False, "clonage_parfait": True}, True, True,
+       "—", "mature",
+       0.5, "si la base de préparation est connue, mesurer révèle l'état et on le recrée à volonté → « copie » "
+            "légitime ; échoue sur un état INCONNU (la mesure le perturbe) — le levier « base connue »"),
+    _P("clonage à états orthogonaux connus",
+       "copier : copier parfaitement des états issus d'un ensemble ORTHOGONAL connu",
+       {"type": "copie_quantique", "etat_inconnu": False, "clonage_parfait": True}, True, True,
+       "—", "mature",
+       0.45, "des états mutuellement orthogonaux (donc distinguables) se copient parfaitement → le non-clonage ne "
+             "mord que sur des états NON orthogonaux inconnus ; le levier « états distinguables »"),
+    _P("amplificateur quantique (clonage approximatif)",
+       "copier : amplifier un état quantique, ce qui en produit des copies bruitées",
+       {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.8}, True, True,
+       "—", "recherche",
+       0.4, "amplifier ajoute du bruit obligatoire (lié au non-clonage) → copies imparfaites, jamais des clones "
+            "exacts ; cohérent avec la limite de bruit d'un amplificateur — le levier « amplification bruitée »"),
+    _P("clonage asymétrique (une bonne copie, une moins bonne)",
+       "copier : répartir la fidélité entre deux copies (l'une meilleure que l'autre)",
+       {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.75}, True, True,
+       "—", "recherche",
+       0.4, "on peut favoriser une copie au détriment de l'autre (fidélités asymétriques) sous la contrainte "
+            "globale du non-clonage → utile en écoute quantique ; jamais deux copies parfaites — le levier « répartir »"),
+    _P("mémoire quantique (stocke sans copier)",
+       "copier : stocker fidèlement un état inconnu pour le restituer (sans le dupliquer)",
+       {"type": "copie_quantique", "etat_inconnu": True}, True, True,
+       "—", "recherche",
+       0.5, "REFRAMING : conserver un état sans le CLONER (le déposer puis le récupérer) ne viole rien → mémoires "
+            "quantiques (atomes, cavités) ; cohérence à préserver — le levier « stocker plutôt que copier »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("cloneur quantique universel PARFAIT (état inconnu)",
+       "copier : appareil produisant deux copies PARFAITES d'un état quantique arbitraire inconnu",
+       {"type": "copie_quantique", "etat_inconnu": True, "clonage_parfait": True}, True, True,
+       "—", "revendication",
+       0.3, "copier parfaitement un état quantique INCONNU viole le théorème de non-clonage (la linéarité "
+            "l'interdit) — impossible ; à réfuter"),
+    _P("cloneur « à 95 % de fidélité » (état inconnu)",
+       "copier : cloner un état quantique inconnu avec 95 % de fidélité par copie",
+       {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.95}, True, True,
+       "—", "revendication",
+       0.25, "95 % > 5/6 (~83 %) pour un état inconnu : au-delà du clonage quantique universel optimal — impossible"),
+]
+
+_OBJECTIF_CLONE = ("Le but réel n'est pas de « vaincre » le non-clonage (impossible — et c'est justement ce qui "
+                   "SÉCURISE la cryptographie quantique) mais de travailler AVEC : on ne peut copier PARFAITEMENT un "
+                   "état quantique INCONNU (la linéarité l'interdit ; le clonage universel plafonne à une fidélité "
+                   "de 5/6). Leviers : copier l'information CLASSIQUE (ou un état CONNU), qui se copie parfaitement ; "
+                   "cloner APPROXIMATIVEMENT (≤ 5/6) si des copies imparfaites suffisent ; TÉLÉPORTER (déplacer "
+                   "l'état exact en détruisant l'original) ; MESURER-et-PRÉPARER si l'on connaît la base ; ou STOCKER "
+                   "sans copier (mémoire quantique). Chaque principe reste jugé par le théorème de non-clonage.")
+_LOI_CLONE = ("théorème de non-clonage : on ne peut copier PARFAITEMENT un état quantique INCONNU (clonage universel "
+              "optimal 1→2 : fidélité ≤ 5/6) ; gains réels = copier l'information classique/connue (parfaite), "
+              "clonage approximatif, téléportation (déplace sans copier), mesure-préparation (base connue), mémoire "
+              "quantique (stocke sans copier)")
+
+# La nature « copie » de l'information CLASSIQUE (réplication), l'approxime (mimétisme), la moule (empreinte), la propage (bouturage).
+_STRATEGIES_NATURE_CLONE = [
+    _Nature("réplication d'un patron (information classique)",
+            ["copie fidèlement une séquence classique", "chaque copie est identique"],
+            "l'information CLASSIQUE se copie parfaitement — le contraste qui délimite le non-clonage (quantique)"),
+    _Nature("mimétisme (copie approximative d'un modèle)",
+            ["imite un modèle sans le reproduire exactement", "ressemblance suffisante pour tromper"],
+            "une copie APPROXIMATIVE suffit souvent — l'analogue du clonage à fidélité bornée"),
+    _Nature("empreinte / moulage (copie par contact)",
+            ["reproduit une forme par contact direct", "copie de surface, pas de l'intérieur"],
+            "copier ce qui est ACCESSIBLE (la forme) sans accéder à l'inconnu — copier le connu, pas le caché"),
+    _Nature("bouturage / clonage végétal (propagation)",
+            ["un fragment régénère un organisme entier", "copie du programme classique (génome)"],
+            "propager une information CLASSIQUE complète — la duplication permise, côté classique"),
+]
+
+enregistre(Domaine(
+    nom=_CLONE,
+    aliases=frozenset(_ALIAS_CLONE),
+    objectif=_OBJECTIF_CLONE,
+    canaux=_CANAUX_CLONE,
+    principes=_PRINCIPES_CLONE,
+    strategies=_STRATEGIES_NATURE_CLONE,
+    loi=_LOI_CLONE,
+    extras={"non_clonage": "pas de copie parfaite d'un état inconnu ; clonage universel 1→2 : fidélité ≤ 5/6",
+            "note": "l'information classique/connue se copie parfaitement ; téléporter déplace sans copier ; "
+                    "le non-clonage est le fondement de la sécurité de la cryptographie quantique (QKD)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

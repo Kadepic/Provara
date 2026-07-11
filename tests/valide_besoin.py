@@ -1348,6 +1348,47 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "zero_absolu" in B.decompose("refroidir vers le zero absolu"),
       "les 29 domaines précédents inchangés après l'ajout de la vitesse de calcul (isolation)")
 
+# ── 37) TRENTE-ET-UNIÈME DOMAINE : copier de l'information quantique (nouvelle loi L28 = théorème de non-clonage) ──
+dcl = B.decompose("cloner un etat quantique")
+check(dcl["statut"] == "decompose", "besoin copie quantique connu -> decompose")
+check("quantique" in dcl["objectif_reel"].lower() and "clon" in dcl["objectif_reel"].lower(),
+      "objectif réel copie quantique = non-clonage")
+check("non_clonage" in dcl, "extras propres : le théorème de non-clonage")
+cl_canaux = {c.canal for c in dcl["canaux"]}
+check(cl_canaux == {"information classique", "clonage approximatif", "teleportation", "mesure preparation"},
+      f"4 canaux de la copie quantique ({cl_canaux})")
+prcl = B.principes("cloner un etat quantique")
+pcl = {e["nom"]: e for e in prcl["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : clonage parfait / fidélité > 5/6 d'un état inconnu
+cpar = pcl["cloneur quantique universel PARFAIT (état inconnu)"]
+check(cpar["atome"].statut == A.REFUTE, "clonage parfait d'un état inconnu -> RÉFUTÉ")
+check(A.est_refute(cpar["atome"].contenu), "contenu réfuté (clonage parfait) dans la garde")
+c95 = pcl["cloneur « à 95 % de fidélité » (état inconnu)"]
+check(c95["atome"].statut == A.REFUTE, "fidélité 95% > 5/6 -> RÉFUTÉ")
+# procédés réels (dont téléportation et clonage approximatif) -> SUPPOSITIONS
+for nom in ("copie d'information classique (parfaite)", "clonage quantique universel approximatif (5/6)",
+            "téléportation quantique (déplace, ne copie pas)"):
+    e = pcl[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prcl["liste"]), "aucun principe de copie quantique promu en FAIT")
+check("candidat pour copie_information_quantique" in pcl["copie d'information classique (parfaite)"]["atome"].portee.condition,
+      "portée des principes de copie quantique nommant copie_information_quantique")
+# la loi L28 : clonage parfait d'un état inconnu réfuté, clonage approximatif cohérent
+st_cl, _, loi_cl = COH.juge_dispositif({"type": "copie_quantique", "etat_inconnu": True, "clonage_parfait": True})
+check(st_cl == COH.VIOLE and loi_cl == COH.L28, "juge : clonage parfait inconnu -> VIOLE via L28")
+check(COH.juge_dispositif({"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.83})[0]
+      == COH.COHERENT_BORNE, "clonage approximatif 0,83 (≤ 5/6) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (réplication, mimétisme)
+natcl = B.strategies_naturelles("cloner un etat quantique")
+check(len(natcl) >= 4 and any("mimétisme" in s["exemple"].lower() for s in natcl), "stratégies copie quantique propres (mimétisme)")
+check(not any("atp synthase" in s["exemple"].lower() for s in natcl) and not any("circadienne" in s["exemple"] for s in natcl),
+      "pas de fuite des stratégies vitesse de calcul/horloge vers la copie quantique")
+# les TRENTE domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "margolus_levitin" in B.decompose("calculer vite")
+      and "limite_quantique_standard" in B.decompose("mesurer le temps"),
+      "les 30 domaines précédents inchangés après l'ajout de la copie quantique (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
@@ -1357,8 +1398,8 @@ check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "
                               "confidentialite_information", "vol_croisiere", "detection_signal",
                               "amplification_signal", "numerisation_signal", "tri_donnees", "recherche_donnees",
                               "parallelisation_calcul", "refroidissement_cryogenique", "mesure_temps",
-                              "vitesse_calcul"],
-      "trente domaines modélisés, dans l'ordre d'enregistrement")
+                              "vitesse_calcul", "copie_information_quantique"],
+      "trente-et-un domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
