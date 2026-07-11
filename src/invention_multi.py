@@ -921,6 +921,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                  else _candidats_matrice_matrice(toutes) if forme_mm
                  else _candidats_binaires(toutes)) \
         if arite == 2 else (_candidats_seq_int_int(toutes) if forme_t3
+                            else _candidats_ternaires_het(toutes, _SSS_REGISTRE, _SSS_OPS) if forme_sss
+                            else _candidats_ternaires_het(toutes, _DCD_REGISTRE, _DCD_OPS) if forme_dcd
                             else _candidats_ternaires(toutes)) if arite == 3 else []
     if candidats:
         sigs = {e: _sig_multi(_callable_multi(e, nom, params), sondes) for e in candidats}
