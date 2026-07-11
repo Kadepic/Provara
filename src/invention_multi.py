@@ -11,8 +11,10 @@ SYMÉTRIE (commutativité, le piège du multi-arg — cf. littérature synthèse
 toute sonde → jamais une fausse ambiguïté ; mais a−b ≠ b−a divergent sur une sonde ASYMÉTRIQUE (a≠b). Les
 sondes incluent donc le SWAP (b, a) et des paires asymétriques → l'ordre des arguments est discriminé, sound.
 
-Premier RUNG : l'arité 2 (binaire). Le vocabulaire de recombinaison est binaire ; une cible d'arité ≠ 2 non
-couverte par le registre tombe honnêtement en BRIQUE_MANQUANTE (l'arité 3+ est le rung suivant, patron identique).
+RUNGS couverts : arité 2 (binaire) et arité 3 (ternaire), chacun avec son registre (EXISTANT_BINAIRE /
+EXISTANT_TERNAIRE), son vocabulaire de recombinaison et ses sondes — PATRON REPRODUCTIBLE (ajouter une arité =
+ajouter un registre + un générateur + des sondes, sans toucher aux autres). Une arité non couverte tombe
+honnêtement en BRIQUE_MANQUANTE.
 """
 from __future__ import annotations
 
@@ -43,6 +45,21 @@ _COMBINE = ["{pa} + {pb}", "{pa} - {pb}", "{pa} * {pb}", "max({pa}, {pb})", "min
             "abs({pa} - {pb})", "{pa} // {pb}", "{pa} % {pb}", "{pa} ** {pb}"]
 _BASE_SUPPL = ["b - a", "b // a", "b % a", "b ** a", "a * a + b * b", "a * a - b * b",
                "a * b + a + b", "__import__('math').gcd(a, b)"]
+
+# Registre TERNAIRE : capacités connues à trois arguments entiers (rung suivant, patron identique au binaire).
+EXISTANT_TERNAIRE: dict[str, str] = {
+    "somme3": "a + b + c",
+    "produit3": "a * b * c",
+    "maximum3": "max(a, b, c)",
+    "minimum3": "min(a, b, c)",
+    "moyenne3_basse": "(a + b + c) // 3",
+    "mediane3": "a + b + c - max(a, b, c) - min(a, b, c)",
+    "amplitude3": "max(a, b, c) - min(a, b, c)",
+}
+# Combineurs binaires pour l'ASSEMBLAGE ternaire en arbre g2(g1(x, y), z).
+_COMBINE3 = ["{x} + {y}", "{x} - {y}", "{x} * {y}", "max({x}, {y})", "min({x}, {y})"]
+
+_REGISTRES = {2: EXISTANT_BINAIRE, 3: EXISTANT_TERNAIRE}
 
 
 def _params(arite: int) -> list[str]:
@@ -100,6 +117,60 @@ def _candidats_binaires(exemples) -> list[str]:
     return ok
 
 
+def _candidats_ternaires(exemples) -> list[str]:
+    """Expressions ternaires qui REPRODUISENT les exemples. Base curée + ASSEMBLAGE en arbre : deux vars
+    combinées puis avec la troisième, g2(g1(x, y), z), sur toutes les affectations (a,b,c). Bornée (6 perms
+    × 5 × 5 ≈ 150), dédupliquée. Soundness par les gardes d'examine_cible_multi."""
+    import itertools
+    cands: set[str] = set(EXISTANT_TERNAIRE.values())
+    cands.update(["a * a + b * b + c * c", "abs(a - b) + abs(b - c) + abs(a - c)"])
+    vs = ["a", "b", "c"]
+    for i, j, k in itertools.permutations(range(3)):
+        x, y, z = vs[i], vs[j], vs[k]
+        for g1 in _COMBINE3:
+            inner = "(" + g1.format(x=x, y=y) + ")"
+            for g2 in _COMBINE3:
+                cands.add(g2.format(x=inner, y=z))
+    ok = []
+    for e in cands:
+        if _reproduit_multi(_callable_multi(e, "f", ["a", "b", "c"]), exemples):
+            ok.append(e)
+    return ok
+
+
+def _sondes_ternaires(exemples) -> list[tuple]:
+    """Sondes de stress pour l'arité 3 : permutations (swaps adjacents, rotation, renversement — discriminent
+    l'ORDRE des trois arguments) + perturbations +1 par position DANS le domaine (signe gardé). Générique."""
+    ints = [v for args, _ in exemples for v in args if isinstance(v, int) and not isinstance(v, bool)]
+    signe = any(v < 0 for v in ints)
+    out = []
+    for args, _ in exemples:
+        if len(args) != 3:
+            continue
+        args = tuple(args)
+        out.append(args)
+        for i in range(len(args) - 1):                          # swaps adjacents
+            sw = list(args)
+            sw[i], sw[i + 1] = sw[i + 1], sw[i]
+            out.append(tuple(sw))
+        out.append(args[1:] + args[:1])                         # rotation
+        out.append(args[::-1])                                  # renversement
+        if all(isinstance(v, int) and not isinstance(v, bool) for v in args):
+            for i in range(len(args)):
+                p = list(args)
+                p[i] += 1
+                out.append(tuple(p))
+            if signe:
+                out.append(tuple(-v for v in args))
+    seen, res = set(), []
+    for s in out:
+        k = repr(s)
+        if k not in seen:
+            seen.add(k)
+            res.append(s)
+    return res
+
+
 def _sondes_binaires(exemples) -> list[tuple]:
     """Sondes de stress dérivées des exemples : SWAP (discrimine le non-commutatif) + perturbations DANS le
     domaine observé (signe gardé comme en mono-arg). Pas de sortie inventée : seulement des entrées."""
@@ -135,8 +206,8 @@ def _asserts_multi(nom: str, paires) -> str:
 def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None = None) -> Verdict:
     """Tranche une cible MULTI-ARGUMENT en EXISTE_DEJA / INVENTION / AMBIGU / BRIQUE_MANQUANTE / INCOHERENT.
     `exemples`/`exemples_held` = listes de (args, sortie) où args est un tuple/liste d'arguments. Mêmes garanties
-    de soundness que le mono-arg. `existant` = registre binaire (défaut EXISTANT_BINAIRE)."""
-    existant = EXISTANT_BINAIRE if existant is None else existant
+    de soundness que le mono-arg. `existant` = registre à utiliser (défaut : le registre de l'arité observée —
+    binaire (2) ou ternaire (3))."""
     exemples = [(tuple(a), o) for a, o in exemples]
     held = [(tuple(a), o) for a, o in (exemples_held or [])]
     toutes = exemples + held
@@ -148,6 +219,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
         return Verdict(INCOHERENT, nom, justification="arité incohérente entre les exemples")
     arite = arites.pop()
     params = _params(arite)
+    if existant is None:
+        existant = _REGISTRES.get(arite, {})
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
     vus: dict = {}
@@ -157,16 +230,17 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
             return Verdict(INCOHERENT, nom, justification="deux sorties différentes pour la même entrée")
         vus[k] = o
 
-    sondes = _sondes_binaires(toutes)
+    sondes = _sondes_binaires(toutes) if arite == 2 else _sondes_ternaires(toutes) if arite == 3 \
+        else [tuple(a) for a, _ in toutes]
 
-    # 1) EXISTE DÉJÀ : une capacité binaire connue reproduit la cible ?
+    # 1) EXISTE DÉJÀ : une capacité connue reproduit la cible ?
     for capa, expr in existant.items():
         if _reproduit_multi(_callable_multi(expr, nom, params), toutes):
             return Verdict(EXISTE_DEJA, nom, par=expr, proche_de=capa,
                            justification="déjà couvert par l'inventaire binaire existant")
 
-    # 2) RÉALISABLE par recombinaison binaire ? (rung actuel : arité 2)
-    candidats = _candidats_binaires(toutes) if arite == 2 else []
+    # 2) RÉALISABLE par recombinaison ? (arité 2 = binaire, arité 3 = ternaire ; patron reproductible)
+    candidats = _candidats_binaires(toutes) if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
     if candidats:
         sigs = {e: _sig_multi(_callable_multi(e, nom, params), sondes) for e in candidats}
         for j, s in enumerate(sondes):

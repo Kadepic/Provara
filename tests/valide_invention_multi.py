@@ -34,16 +34,25 @@ def check(nom, cond):
         raise AssertionError(nom)
 
 
-def _fn2(expr):
+def _fnn(expr, params):
     ns: dict = {}
-    exec(f"def _f(a, b):\n    return {expr}\n", ns)
+    exec(f"def _f({', '.join(params)}):\n    return {expr}\n", ns)
     return ns["_f"]
 
 
 def _reproduit2(expr, paires):
-    f = _fn2(expr)
+    f = _fnn(expr, ["a", "b"])
     for (a, b), o in paires:
         r = f(a, b)
+        if r != o or isinstance(r, bool) != isinstance(o, bool):
+            return False
+    return True
+
+
+def _reproduit3(expr, paires):
+    f = _fnn(expr, ["a", "b", "c"])
+    for (a, b, c), o in paires:
+        r = f(a, b, c)
         if r != o or isinstance(r, bool) != isinstance(o, bool):
             return False
     return True
@@ -108,6 +117,49 @@ check("façade : ia.invente_multi rend l'invention binaire (intégré, pas isol�
       vf.statut == MI.INVENTION and vf.par is not None and _reproduit2(vf.par, ps))
 check("façade : ia.invente_multi sur a+b -> EXISTE_DEJA (registre binaire câblé)",
       ia.invente_multi("s", P(lambda a, b: a + b, PAIRS)[:4], P(lambda a, b: a + b, PAIRS)[4:]).statut == MI.EXISTE_DEJA)
+
+# ══ RUNG ARITÉ 3 (TERNAIRE) — patron reproductible ═══════════════════════════════════════════════════════
+def P3(f, triples):
+    return [((a, b, c), f(a, b, c)) for a, b, c in triples]
+
+
+TR = [(3, 5, 2), (7, 2, 9), (4, 4, 1), (9, 1, 6), (2, 8, 3), (1, 6, 5), (0, 3, 7)]
+
+for nom, f in [("somme3", lambda a, b, c: a + b + c),
+               ("produit3", lambda a, b, c: a * b * c),
+               ("mediane3", lambda a, b, c: sorted([a, b, c])[1])]:
+    ps = P3(f, TR)
+    check(f"ternaire EXISTE_DEJA : {nom} couvert par le registre ternaire",
+          IM.examine_cible_multi(nom, ps[:5], ps[5:]).statut == MI.EXISTE_DEJA)
+
+ps = P3(lambda a, b, c: a * a + b * b + c * c, TR)
+vt = IM.examine_cible_multi("sommes_carres3", ps[:5], ps[5:])
+check("ternaire INVENTION : a²+b²+c² (nouveau)", vt.statut == MI.INVENTION)
+check("ternaire INVENTION : reproduit toutes les paires (hors moteur)", vt.par and _reproduit3(vt.par, ps))
+check("ternaire INVENTION : correcte sur des triplets FRAIS (pas une coïncidence)",
+      _reproduit3(vt.par, P3(lambda a, b, c: a * a + b * b + c * c, [(1, 0, 2), (5, 5, 5), (-1, 3, 2)])))
+
+ps = P3(lambda a, b, c: (a + b) * c, TR)
+vp = IM.examine_cible_multi("somme_fois_c", ps[:5], ps[5:])
+check("ternaire INVENTION : (a+b)*c (assemblage en arbre)", vp.statut == MI.INVENTION and _reproduit3(vp.par, ps))
+
+ps = P3(lambda a, b, c: a + 2 * b + 3 * c, TR)
+check("ternaire BRIQUE_MANQUANTE : a+2b+3c (affine hors vocabulaire) = frontière honnête",
+      IM.examine_cible_multi("affine3", ps[:5], ps[5:]).statut == MI.BRIQUE_MANQUANTE)
+
+check("ternaire INCOHERENT : même entrée, deux sorties",
+      IM.examine_cible_multi("inc3", [((1, 2, 3), 5)], [((1, 2, 3), 9)]).statut == MI.INCOHERENT)
+
+# ORDRE : a-b-c est sensible à l'ordre (a distingué de b,c) -> la réalisation dépend de l'ordre
+ps = P3(lambda a, b, c: a - b - c, TR)
+vo = IM.examine_cible_multi("a_moins_b_moins_c", ps[:5], ps[5:])
+check("ternaire ordre : a−b−c résolu, réalisation reproduit tout", vo.par and _reproduit3(vo.par, ps))
+fo = _fnn(vo.par, ["a", "b", "c"])
+check("ternaire ordre : la réalisation dépend BIEN de l'ordre (a↔b diffère)", fo(5, 1, 2) != fo(1, 5, 2))
+
+# SÉPARATION inter-arités : registre ternaire pas pollué par le binaire (somme3 ≠ EXISTANT_BINAIRE)
+check("séparation : le registre par arité est routé (binaire pour 2, ternaire pour 3)",
+      IM.EXISTANT_TERNAIRE is IM._REGISTRES[3] and IM.EXISTANT_BINAIRE is IM._REGISTRES[2])
 
 print(f"\n== VALIDE_INVENTION_MULTI : {ok}/{total} ==")
 assert ok == total
