@@ -665,11 +665,44 @@ def _sondes_liste_scalaire(exemples, forme) -> list[tuple]:
 # POSITION 0 (le cas canonique mesuré) — autre position -> chemin scalaire, brique_manquante honnête.
 _T3_REGISTRE: dict[str, str] = {
     "tranche": "a[b:c]",
+    # élément (ligne, colonne) d'une matrice — chaîne de primitives (atome 21) ; sur liste PLATE, a[b] est
+    # un scalaire -> [c] crashe -> jamais servie par coïncidence (validation contextuelle).
+    "element_ligne_colonne": "a[b][c]",
 }
 _T3_OPS = [
     "sum(a[b:c])", "max(a[b:c])", "min(a[b:c])",
     "a[c:b]",                                    # bornes inversées (l'ordre des bornes = donnée du spec)
+    "a[c][b]",                                   # élément (colonne, ligne) — l'ordre = donnée du spec
 ]
+
+# FORMES TERNAIRES HÉTÉROGÈNES SUPPLÉMENTAIRES (atome 21) — mesurées brique_manquante :
+# (table, clé, valeur) = la SÉLECTION WHERE relationnelle ; (str, séparateur, indice) = segment de découpe.
+_TCV_OPS = [
+    "[_d for _d in a if _d[b] == c]",            # WHERE k = v
+    "[_d for _d in a if _d[b] != c]",            # WHERE k ≠ v
+    "sum(1 for _d in a if _d[b] == c)",          # COUNT WHERE
+]
+_SSI_OPS = [
+    "a.split(b)[c]",                             # c-ième segment après découpe
+    "b.join(a.split(b)[:c])",                    # c premiers segments rejoints
+]
+
+
+def _forme_table_cle_valeur(toutes):
+    def _scal(v):
+        return isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool))
+    def _table(v):
+        return isinstance(v, list) and v and all(isinstance(d, dict) for d in v)
+    if all(len(x) == 3 and _table(x[0]) and _scal(x[1]) and _scal(x[2]) for x, _ in toutes):
+        return True
+    return None
+
+
+def _forme_str_str_int(toutes):
+    if all(len(x) == 3 and isinstance(x[0], str) and isinstance(x[1], str)
+           and isinstance(x[2], int) and not isinstance(x[2], bool) for x, _ in toutes):
+        return True
+    return None
 
 
 def _forme_seq_int_int(toutes):
@@ -931,6 +964,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     forme_t3 = _forme_seq_int_int(toutes) if arite == 3 else None
     forme_sss = _forme_str_str_str(toutes) if arite == 3 and not forme_t3 else None
     forme_dcd = _forme_dict_cle_defaut(toutes) if arite == 3 and not (forme_t3 or forme_sss) else None
+    forme_tcv = _forme_table_cle_valeur(toutes) if arite == 3 and not (forme_t3 or forme_sss or forme_dcd) else None
+    forme_ssi = _forme_str_str_int(toutes) if arite == 3 and not (forme_t3 or forme_sss or forme_dcd or forme_tcv) else None
     if existant is None:
         existant = (dict(_TT_REGISTRE) if forme_tt
                     else {} if forme_ld                  # registre VIDE honnête (rien ne servait la classe)
@@ -944,6 +979,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                     else dict(_T3_REGISTRE) if forme_t3
                     else dict(_SSS_REGISTRE) if forme_sss
                     else dict(_DCD_REGISTRE) if forme_dcd
+                    else {} if forme_tcv or forme_ssi
                     else _REGISTRES.get(arite, {}))
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
@@ -987,6 +1023,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
         if arite == 2 else (_candidats_seq_int_int(toutes) if forme_t3
                             else _candidats_ternaires_het(toutes, _SSS_REGISTRE, _SSS_OPS) if forme_sss
                             else _candidats_ternaires_het(toutes, _DCD_REGISTRE, _DCD_OPS) if forme_dcd
+                            else _candidats_ternaires_het(toutes, {}, _TCV_OPS) if forme_tcv
+                            else _candidats_ternaires_het(toutes, {}, _SSI_OPS) if forme_ssi
                             else _candidats_ternaires(toutes)) if arite == 3 else []
     if candidats:
         sigs = {e: _sig_multi(_callable_multi(e, nom, params), sondes) for e in candidats}
