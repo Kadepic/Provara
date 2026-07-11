@@ -1424,6 +1424,45 @@ check(B.decompose("rafraichir une piece")["charge_corps_W"] == 100 and len(B.pri
 # un besoin toujours inconnu reste HORS
 check(B.decompose("teleporter un objet")["statut"] == B.HORS, "besoin hors registre -> HORS (inchangé)")
 
+# ── (7) ROUTEUR MULTI-DOMAINES (Phase 2 axe ③) : composites déclarés, jamais de maillage N×M ──
+r = B.compose("maison autonome")
+check(r["statut"] == "compose" and r["complet"] is True and r["manques"] == [],
+      "composite complet : maison autonome = 4 domaines, aucun manque")
+check(len(r["sous"]) == 4 and all(s["statut"] == "decompose" for s in r["sous"]),
+      "chaque sous-besoin est décomposé par SON domaine")
+check(len(r["lois"]) == 4 and len(set(r["lois"])) == 4,
+      "4 lois structurantes DISTINCTES (une par domaine composé)")
+check([s["objectif_reel"] for s in r["sous"]] ==
+      [B.objectif_reel(sb) for sb in ("conserver la chaleur", "stockage d electricite",
+                                      "capter l energie solaire", "produire de l eau de l air")],
+      "le routage composite = exactement le routage mono-domaine de chaque sous-besoin (pas de réécriture)")
+check(B.compose("Maison Autonome !")["statut"] == "compose", "alias normalisé (casse/ponctuation)")
+
+r2 = B.compose("centre de calcul")
+check(r2["statut"] == "compose" and r2["complet"] is False,
+      "composite incomplet : le data-center se compose MAIS déclare son manque")
+check(r2["manques"] == ["evacuer la chaleur d un centre de calcul"],
+      "le refroidissement industriel non modélisé est un MANQUE VISIBLE (jamais routé vers le confort humain)")
+check(len(r2["sous"]) == 4 and len(r2["lois"]) == 4,
+      "les 4 sous-besoins modélisés sont routés (Landauer/Shannon/Amdahl/stockage)")
+
+check(B.compose("teleporter un objet")["statut"] == B.HORS, "besoin non déclaré composite -> HORS")
+check(B.compose("rafraichir une piece")["statut"] == B.HORS,
+      "un besoin SIMPLE n'est pas un composite : compose() -> HORS (il passe par decompose())")
+check(B.compose(None)["statut"] == B.HORS, "compose(None) -> HORS propre (jamais d'exception)")
+check(set(B.composites_connus()) == {"centre_de_calcul", "maison_autonome", "serre_agricole",
+                                     "observatoire_astronomique", "sonde_spatiale"},
+      "introspection des composites")
+for _nom_c, _alias_c in (("serre_agricole", "serre autonome"),
+                         ("observatoire_astronomique", "construire un observatoire"),
+                         ("sonde_spatiale", "sonde interplanetaire")):
+    _r = B.compose(_alias_c)
+    check(_r["statut"] == "compose" and _r["nom"] == _nom_c and _r["complet"] is True
+          and len(_r["sous"]) == 4 and len(set(_r["lois"])) == 4,
+          f"composite {_nom_c} : complet, 4 domaines routés sous 4 lois DISTINCTES")
+check(B.decompose("maison autonome")["statut"] == B.HORS,
+      "un composite n'est PAS un domaine simple : decompose() reste HORS dessus (pas de fusion des registres)")
+
 print(f"\n=== valide_besoin : {ok}/{ok + ko} ===")
 import sys
 

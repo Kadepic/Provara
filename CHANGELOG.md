@@ -1,5 +1,94 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — PHASE 3 (ingestion) : rémunération FRANCE ouverte (Dares×FAP), pont ROME→ISCO rejeté au held-out
+
+**La piste « DARES×FAP via le pont ROME » (runbook §4, jamais sondée) est OUVERTE ET EXPLOITÉE.**
+`ingestion/ingere_dares_fap.py` : chaîne métier -> code ROME v4 (store) -> FAP-2009 fine (table de passage
+OFFICIELLE Dares, part directe $FAP9RSQ seulement — l'affectation par QUALIFICATION $FAP9RAQ est écartée et
+comptée) -> salaire mensuel net MÉDIAN de la famille, France, 2017-2019 (série « salaire médian » des
+Portraits statistiques des métiers, d'après l'enquête Emploi Insee ; champ documenté : salariés à temps
+complet hors apprentis et stagiaires). **121 métiers publiés** (`salaire_median_fap_fr_metier`), granularité
+DITE (médiane PAR FAMILLE, jamais du métier), **cinquième démenti consécutif de « bloqué sur un corpus
+externe »**. Couverture mesurée : partiels 5 178 -> 5 239 (+61 métiers sans ISCO dont l'axe rémunération
+était à ZÉRO), non-traités 22 299 -> 22 238.
+
+- **COUTURE DE MILLÉSIME v3/v4 fermée par une GARDE DE STABILITÉ** (le piège tatoueur D1208 v3 / D1244 v4
+  documenté au runbook) : un code n'est accepté que si ses DEUX affectations Dares — FAP-2009 (écrite pour
+  ROME v3) et FAP-2021 (table « version V4 ») — portent le même intitulé de famille (égalité normalisée ou
+  inclusion). **154 codes-métiers écartés** ainsi (familles renommées : on ne « sauve » pas, au doute HORS) ;
+  371 écartés en amont (RAQ ou code absent de v3).
+- **MÉTHODE D'ACCÈS — le site Dares est derrière un anti-robot F5/TSPD** (curl et Save Page Now servent la
+  page de challenge) : les quatre fichiers STATIQUES sont servis par la **Wayback Machine, captures épinglées
+  par horodatage** (suffixe `id_` = octets d'origine). La définition de la série est citée de l'édition
+  1982-2011 (PDF data.gouv). Le portail PSM 2023+ (FAP-2021, données plus fraîches) reste inaccessible :
+  ses CSV n'ont jamais été archivés — à re-sonder si le TSPD tombe.
+- Gate DÉDIÉE `tests/valide_dares_fap.py` **14/14** (parseur $FAP9RSQ borné à `Other` — les clés RAQ à
+  6 caractères ne fuient pas ; garde de stabilité vraie/fausse sur cas réels ; granularité/période/champ DITS
+  dans la valeur ; médiane implausible -> ValueError ; sabotage cache -> SystemExit nommant le remède).
+  Ajoutée à `suite_conversation` (132 -> 133 gates). Axe câblé dans `couverture_borne._AXES_M` (union
+  US + FR, chaque part rend PARTIEL, aucune ne rend TRAITÉ — fixture étendue dans `valide_sujets` 79/79).
+  Intégré vérifié : `ia.donnee('salaire_median_fap_fr_metier', 'aide-soignant')` -> verifie ; fantôme -> hors.
+
+**Pont ROME→ISCO : SONDÉ, MESURÉ, REJETÉ (le juge held-out tranche, pas l'officialité).** France Travail
+publie bien `Correspondance_ROME_ISCO08.xlsx` (532 codes, mono-ISCO — hors du zip open-data, sur
+francetravail.org : le runbook disait « aucun pont publié », c'était vrai du zip seulement). Mesuré contre
+ESCO sur les 200 métiers de chevauchement du store : **70,5 % d'accord au groupe 4 chiffres** (75 % à 3,
+79,5 % à 2) — même zone que les heuristiques d'héritage rejetées (56-69 %). Les désaccords sont structurels
+(« menuisier » 7522 ébéniste vs 7115 bâtiment : deux lectures ISCO légitimes du même libellé ; « chasseur »
+capturé par le groom d'hôtel — homonyme). Publier les 177 métiers « nouveaux » injecterait ~30 % de faux.
+**NE PAS re-tenter** : la couture métier -> appellation -> fiche ROME ne porte pas la précision ISCO-4,
+qu'aucune officialité ne rachète. (La chaîne FAP, elle, passe : son assertion est PAR FAMILLE, granularité
+dite, et sa couture est certifiée code par code.)
+
+## 2026-07-12 — PHASE 2 (les 3 axes) LIVRÉE + cache de `_nonreg.py` réparé (~12 min → secondes)
+
+**Cache `_nonreg.py` (Tâche 1).** Cause racine : `imports_directs()` et `hash_fichiers()` ouvraient les `.py`
+relativement à la racine/`tests/` alors que les modules vivent dans `src/` (+ `interface/`, `ingestion/`,
+`outils/`) → OSError → `suspect=True` propagé aux 797 clôtures (cache TOUJOURS froid) ET hash `<absent>`
+(fingerprint insensible au contenu de `src/` — trou de soundness masqué). Fix : `_chemin_fichier()` (mêmes
+dossiers que `modules_locaux()`) branché dans LES DEUX fonctions. Prouvé : suspect **0/797**, run chaud
+**797 en cache en ~80 s de wall** (verdict 0–40 s, contre ~12 min), sonde de contenu sur `src/besoin.py` →
+seuls ses **45 dépendants** re-tournent. Le cache est désormais RAPIDE et SOUND.
+
+**Phase 2 — les 3 axes, câblés en briques 1ʳᵉ classe puis ASSEMBLÉS (5 commits atomiques, suite 797→798) :**
+  1. **Axe ① contrat d'atome universel** : `invention_atomes.atome_capacite`/`invente_capacite` — le moteur
+     d'invention de CAPACITÉS parle le contrat d'atome (INVENTION → SUPPOSITION générative, confiance = règle
+     de succession (n+1)/(n+2), + FAIT borné au spec avec Verdict d'exécution réelle + juge held-out ;
+     EXISTE_DEJA → fait borné seul ; AMBIGU/BRIQUE_MANQUANTE/INCOHERENT/spec vide → abstention). Gate DÉDIÉE
+     `valide_capacite_atomes` **21/21** (autonome, sans lecteur — elle tourne dans la suite, elle ne dort pas).
+  2. **Axe ② blackboard sous contrat** : `poste_atome`/`atomes`/`faits`/`suppositions` — le statut épistémique
+     voyage AVEC la valeur ; `faits()` ne rend QUE les atomes servables (invariants revalidés, portée couvrant
+     le contexte) — jamais une supposition, un réfuté, une valeur nue, ni un atome muté (défense en
+     profondeur). Gate `valide_blackboard` **8 → 18**.
+  3. **Axe ③ routeur multi-domaines** : registre de COMPOSITES dans `besoin.py` + `compose(besoin)` — un
+     besoin composite DÉCLARÉ est routé sous-besoin par sous-besoin vers SON domaine sous SA loi (PAS de
+     maillage N×M) ; sous-besoin non modélisé → `manques` (visible, jamais approximé par un domaine voisin).
+     2 composites : `centre_de_calcul` (Landauer+Shannon+Amdahl+stockage ; refroidissement industriel =
+     manque visible) et `maison_autonome` (4 domaines/4 lois, complet). Gate `valide_besoin` **578 → 591**.
+  4. **Intégration (« vérifier l'intégré, pas l'isolé »)** : `boucle_invention.invente_composite(besoin)` —
+     composite → principes JUGÉS en atomes par domaine → UN blackboard partagé (provenance par domaine) ;
+     relecture SOUS le contrat : `faits()` VIDE tant qu'aucun juge réel n'a promu (l'asymétrie tient de bout
+     en bout). Gate `valide_boucle_invention` **16 → 24**.
+  5. **Façade produit** : `ia.compose_besoin` + `ia.invente_composite` ; gate `valide_ia` **18 → 21**.
+
+**Élargissement du registre des composites (5 au total)** : + `serre_agricole` (photosynthèse ~12 % +
+Shockley-Queisser + Stefan-Boltzmann + séparation eau/air), `observatoire_astronomique` (Abbe + bruit de
+photon + Nyquist-Shannon + limite quantique d'horloge — la MESURE composée), `sonde_spatiale` (quantité de
+mouvement + Shannon + Shockley-Queisser + bruit). Chacun : 4 domaines routés sous 4 lois DISTINCTES,
+`complet=True`. Gate `valide_besoin` **591 → 594**.
+
+**Corollaire du cache réparé — gates-SCANNERS (un défaut en cache un autre).** Le cache devenu effectif a
+révélé que 4 gates ont un verdict dépendant de fichiers HORS de leur clôture d'imports : `valide_surface_ia`
+(lit `src/ia.py` par CHEMIN — clôture de 2 fichiers, sans ia.py !), `valide_atomes` (orphelines : scanne tout
+src+tests+ingestion), `valide_cablage` (graphe d'imports de tout l'arbre), `valide_audit_ancres` (scanne
+tests/). Elles auraient DORMI sur les changements qu'elles surveillent. Fix : convention
+**`NONREG_SCAN_SOURCES = True`** (détectée par l'AST de `_nonreg.imports_directs`) → « toujours relancer »
+pour les 3 vraies scanners (coût ≤ 7 s en parallèle) ; dépendance statique `if False: import ia` pour
+`valide_surface_ia` (clôture PRÉCISE via la fermeture d'ia.py). Prouvé : 3 toujours-relancées exactement,
+`ia.py` dans la clôture de la gate de surface.
+
+Non-rég **798/798 PASS** après chaque brique (gate neuve auto-découverte : 797 → 798).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 31e domaine « copier de l'information quantique » + loi L28 (non-clonage)
 
 Copier de l'information quantique. Nouvelle loi dure au juge (`L28`) : le THÉORÈME DE NON-CLONAGE — on ne peut

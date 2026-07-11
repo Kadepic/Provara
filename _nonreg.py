@@ -46,6 +46,22 @@ def _chemin(f):
     return cand if os.path.exists(os.path.join(HARN, cand)) else f
 
 
+_MODDIRS = ("", "src", "interface", "ingestion", "outils", "tests")
+
+
+def _chemin_fichier(f):
+    """Résout un .py (validateur OU module) vers son chemin réel relatif à HARN — mêmes dossiers que
+    `modules_locaux()`. Sans ça, l'open des modules de src/ échouait (OSError) → suspect=True propagé aux 797
+    clôtures (cache toujours froid) ET hash `<absent>` (fingerprint insensible au contenu de src/)."""
+    if "/" in f or os.sep in f:
+        return f
+    for d in _MODDIRS:
+        cand = os.path.join(d, f) if d else f
+        if os.path.exists(os.path.join(HARN, cand)):
+            return cand
+    return f
+
+
 def _env_pipeline(base=None):
     """Env avec le PYTHONPATH du pipeline (src+interface+ingestion) — sinon les validateurs de tests/ ne trouvent
     pas repond/conversation/ia. Préserve un PYTHONPATH éventuel existant.
@@ -459,8 +475,14 @@ def modules_locaux():
 
 
 def imports_directs(fichier, locaux):
-    """Modules LOCAUX importés directement par `fichier` (statique). Renvoie (set_modules, dynamique_suspect)."""
-    chemin = os.path.join(HARN, _chemin(fichier))
+    """Modules LOCAUX importés directement par `fichier` (statique). Renvoie (set_modules, dynamique_suspect).
+
+    CONVENTION `NONREG_SCAN_SOURCES = True` (2026-07-12) : une gate qui SCANNE l'arbre des sources par CHEMIN
+    (glob/os.walk/listdir sur src/tests/… — ex. valide_atomes, valide_cablage, valide_audit_ancres) a un verdict
+    qui dépend de fichiers HORS de sa clôture d'imports (un module ORPHELIN ajouté n'est importé par personne) ->
+    le cache la ferait dormir. Le marqueur, déclaré au niveau module de la gate, la range en « toujours relancer »
+    (suspect=True). Découvert quand le fix du cache a rendu la clôture effective — un défaut en cache un autre."""
+    chemin = os.path.join(HARN, _chemin_fichier(fichier))
     try:
         with open(chemin, "r", encoding="utf-8") as fh:
             src = fh.read()
@@ -469,6 +491,10 @@ def imports_directs(fichier, locaux):
         return set(), True
     mods, suspect = set(), False
     for n in ast.walk(arbre):
+        if isinstance(n, ast.Assign) and any(
+                isinstance(c, ast.Name) and c.id == "NONREG_SCAN_SOURCES" for c in n.targets):
+            if isinstance(n.value, ast.Constant) and n.value.value is True:
+                suspect = True            # gate-scanner déclarée : son verdict dépend de fichiers hors clôture
         if isinstance(n, ast.Import):
             for a in n.names:
                 base = a.name.split(".")[0]
@@ -517,7 +543,7 @@ def hash_fichiers(fichiers):
     for f in sorted(fichiers):
         h.update(f.encode())
         try:
-            with open(os.path.join(HARN, f), "rb") as fh:
+            with open(os.path.join(HARN, _chemin_fichier(f)), "rb") as fh:
                 h.update(fh.read())
         except OSError:
             h.update(b"<absent>")

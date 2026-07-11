@@ -344,9 +344,12 @@ _AXES_M = (
     (re.compile(r"formation, diplômes", re.I), "lookup_partiel", ("certification_rncp_metier",),
      "part FRANÇAISE fermée par RNCP×ROME ; les autres systèmes nationaux restent non couverts (sujet MIX)"),
     # MIX assumé : BLS OEWS ferme la part ÉTATS-UNIS (vraies MÉDIANES, par occupation SOC — granularité
-    # dite dans la valeur). La rémunération des autres pays (dont la France) reste non couverte.
-    (re.compile(r"rémunération médiane", re.I), "lookup_partiel", ("salaire_median_soc_us_metier",),
-     "part ÉTATS-UNIS fermée par BLS OEWS (médianes par occupation SOC) ; autres pays non couverts (sujet MIX)"),
+    # dite dans la valeur) ; Dares×FAP ferme la part FRANCE (médiane par famille professionnelle FAP-2009,
+    # garde de stabilité v3/v4 — cf. ingere_dares_fap). Les autres pays restent non couverts.
+    (re.compile(r"rémunération médiane", re.I), "lookup_partiel",
+     ("salaire_median_soc_us_metier", "salaire_median_fap_fr_metier"),
+     "parts ÉTATS-UNIS (BLS OEWS, médianes par occupation SOC) et FRANCE (Dares×FAP, médiane par famille) "
+     "fermées ; autres pays non couverts (sujet MIX)"),
     # MIX assumé : O*NET Job Zones donne le niveau de préparation par occupation SOC (marché US, granularité
     # dite). Hors de ce référentiel, le niveau n'est pas borné.
     (re.compile(r"niveau de préparation", re.I), "lookup_partiel", ("niveau_preparation_soc_metier",),

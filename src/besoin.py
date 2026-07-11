@@ -4607,6 +4607,104 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  COMPOSITES (Phase 2 axe ③ : routeur multi-domaines). Un besoin RÉEL est souvent composite (un centre de
+#  calcul = calculer + communiquer + paralléliser + stocker + évacuer la chaleur, chacun sous SA loi dure).
+#  PAS un maillage N×M (coût + bruit + casse FAUX=0/parcimonie) : seules les compositions DÉCLARÉES existent,
+#  chaque sous-besoin est routé vers SON domaine par le registre existant, et un sous-besoin non modélisé est
+#  LISTÉ dans `manques` (le manque visible — jamais fabriqué, jamais approximé par un domaine voisin : router
+#  « évacuer la chaleur d'un data-center » vers le confort humain serait un FAUX de portée).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+Composite = _nt("Composite", ["nom", "aliases", "sous_besoins", "note"])
+_COMPOSITES: list = []
+_INDEX_COMPOSITE: dict = {}
+
+
+def enregistre_composite(composite: "Composite") -> "Composite":
+    """Ajoute un besoin COMPOSITE au registre (idempotent par nom). Indexe ses alias normalisés."""
+    global _COMPOSITES
+    _COMPOSITES = [c for c in _COMPOSITES if c.nom != composite.nom] + [composite]
+    for a in composite.aliases:
+        _INDEX_COMPOSITE[_norm(a)] = composite
+    return composite
+
+
+def composites_connus() -> list[str]:
+    """Les noms des besoins composites déclarés (introspection)."""
+    return [c.nom for c in _COMPOSITES]
+
+
+def compose(besoin: str) -> dict:
+    """ROUTEUR MULTI-DOMAINES : décompose un besoin composite DÉCLARÉ en sous-besoins routés chacun vers son
+    domaine (decompose + SA loi structurante). Sous-besoin non modélisé -> `manques` (visible, jamais fabriqué).
+    Besoin non déclaré composite -> HORS (un besoin simple passe par decompose(), pas ici)."""
+    c = _INDEX_COMPOSITE.get(_norm(besoin))
+    if c is None:
+        return {"statut": HORS, "besoin": besoin,
+                "raison": "besoin composite non déclaré — composition à enregistrer (manque visible)"}
+    sous, lois, manques = [], [], []
+    for sb in c.sous_besoins:
+        d = _domaine(sb)
+        if d is None:
+            manques.append(sb)
+        else:
+            sous.append(decompose(sb))
+            lois.append(d.loi)
+    return {"statut": "compose", "besoin": besoin, "nom": c.nom, "note": c.note,
+            "sous": sous, "lois": lois, "manques": manques, "complet": not manques}
+
+
+# ── COMPOSITES DÉCLARÉS ──
+enregistre_composite(Composite(
+    nom="centre_de_calcul",
+    aliases=frozenset({"centre de calcul", "data center", "datacenter", "centre de donnees",
+                       "construire un centre de calcul"}),
+    sous_besoins=("calcul basse consommation", "communiquer a distance", "accelerer par parallelisation",
+                  "stockage d electricite", "evacuer la chaleur d un centre de calcul"),
+    note="calculer (Landauer) + communiquer (Shannon) + paralléliser (Amdahl) + stocker (1er/2nd principes) ; "
+         "le refroidissement INDUSTRIEL n'est pas modélisé (le confort humain n'est PAS son domaine) -> manque visible",
+))
+
+enregistre_composite(Composite(
+    nom="maison_autonome",
+    aliases=frozenset({"maison autonome", "habitat autonome", "maison autosuffisante",
+                       "rendre une maison autonome"}),
+    sous_besoins=("conserver la chaleur", "stockage d electricite", "capter l energie solaire",
+                  "produire de l eau de l air"),
+    note="isolation (Stefan-Boltzmann) + stockage (1er/2nd principes) + solaire (Shockley-Queisser) + "
+         "eau atmosphérique (travail minimal de séparation) — 4 domaines sous 4 lois dures",
+))
+
+enregistre_composite(Composite(
+    nom="serre_agricole",
+    aliases=frozenset({"serre agricole", "serre autonome", "serre agricole autonome",
+                       "cultiver sous serre"}),
+    sous_besoins=("faire pousser des aliments", "capter l energie solaire", "conserver la chaleur",
+                  "produire de l eau de l air"),
+    note="photosynthèse (plafond ~12 %) + solaire (Shockley-Queisser) + isolation (Stefan-Boltzmann) + "
+         "eau atmosphérique (travail minimal de séparation) — 4 domaines sous 4 lois dures",
+))
+
+enregistre_composite(Composite(
+    nom="observatoire_astronomique",
+    aliases=frozenset({"observatoire astronomique", "observatoire", "telescope de precision",
+                       "construire un observatoire"}),
+    sous_besoins=("depasser la limite de diffraction", "capter un signal faible",
+                  "capturer un signal analogique", "garder le temps precisement"),
+    note="résolution (Abbe) + détection (bruit de photon/facteur de bruit) + numérisation (Nyquist-Shannon) + "
+         "horloge (limite quantique standard) — la MESURE composée sous 4 lois dures",
+))
+
+enregistre_composite(Composite(
+    nom="sonde_spatiale",
+    aliases=frozenset({"sonde spatiale", "sonde interplanetaire", "concevoir une sonde spatiale"}),
+    sous_besoins=("avancer dans le vide", "communiquer a distance", "capter l energie solaire",
+                  "capter un signal faible"),
+    note="propulsion (quantité de mouvement) + liaison (Shannon) + énergie (Shockley-Queisser) + "
+         "réception (bruit) — 4 domaines sous 4 lois dures",
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

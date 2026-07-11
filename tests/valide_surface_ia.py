@@ -22,6 +22,10 @@ import os
 
 os.environ.setdefault("LECTEUR_AMORCE_SEULE", "1")   # ne jamais déclencher un full-load depuis cette gate
 
+if False:            # dépendance STATIQUE pour le cache de _nonreg : cette gate lit src/ia.py par CHEMIN (AST),
+    import ia        # jamais par import — sans cette déclaration, sa clôture ignore ia.py et elle DORMIRAIT
+                     # sur un changement de surface (défaut débusqué au fix du cache, 2026-07-12). Jamais exécuté.
+
 HARN = os.path.dirname(os.path.abspath(__file__))
 ok = 0
 total = 0

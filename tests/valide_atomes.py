@@ -22,6 +22,9 @@ from collections import Counter
 RACINE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(RACINE, "src"))
 
+NONREG_SCAN_SOURCES = True   # gate-SCANNER (parcourt l'arbre des sources par chemin) : le cache de _nonreg la relance toujours
+
+
 OK = 0
 TOTAL = 0
 ECHECS = []

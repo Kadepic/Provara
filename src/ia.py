@@ -677,6 +677,14 @@ def decompose_besoin(besoin: str) -> dict:
     return _BSN.decompose(besoin)
 
 
+def compose_besoin(besoin: str) -> dict:
+    """ROUTEUR MULTI-DOMAINES (Phase 2 axe ③) : décompose un besoin COMPOSITE déclaré (ex. « maison autonome »)
+    en sous-besoins routés chacun vers SON domaine (objectif + canaux + SA loi dure) ; un sous-besoin non modélisé
+    est LISTÉ dans `manques` (visible, jamais fabriqué). Non déclaré -> HORS. cf. besoin.py."""
+    import besoin as _BSN
+    return _BSN.compose(besoin)
+
+
 def objectif_reel(besoin: str) -> str:
     """REFRAMING machine : ce qu'un besoin veut VRAIMENT (ex. « rafraîchir » -> évacuer les ~100 W du corps, pas
     refroidir l'air), sans s'ancrer sur la solution humaine par défaut. HORS si inconnu. cf. besoin.py."""
@@ -754,6 +762,15 @@ def boucle_invention(besoin: str, faits_a_verifier=(), *, minimum: int = 2, juge
     boucle_invention.py / veille_corroboration.py / transfert.py / besoin.py."""
     import boucle_invention as _BI
     return _BI.boucle(besoin, faits_a_verifier, minimum=minimum, juge=juge, lecteur=_LEC.LECTEUR)
+
+
+def invente_composite(besoin: str) -> dict:
+    """LES 3 AXES DE LA PHASE 2 ASSEMBLÉS : un besoin COMPOSITE est routé vers ses domaines (compose), chaque
+    domaine émet ses principes JUGÉS en atomes (contrat), tous postés sur UN blackboard partagé (substrat commun)
+    — relecture SOUS le contrat : suppositions() = matière à travailler, faits() VIDE tant qu'aucun juge réel n'a
+    promu. Non composite -> HORS (le mono-domaine reste boucle_invention). cf. boucle_invention.py."""
+    import boucle_invention as _BI
+    return _BI.invente_composite(besoin)
 
 
 # ————————————————— GARDIEN DE BORNAGE (routeur de statut, anti-hallucination) —————————————————
