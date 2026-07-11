@@ -2861,7 +2861,7 @@ def force_du_spec(expr: str, exemples, exemples_held=None):
 
 
 def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budget: int = 2000,
-                 tours_cegis: int = 0):
+                 tours_cegis: int = 0, proprietes=()):
     """FORGE — SORTIE DE PREMIÈRE CLASSE (mandat Yohan : « servir le moteur d'invention en sortie à
     l'utilisateur et aux autres moteurs »). UNE porte qui COMBINE tout ce que la forge sait dire d'une
     brique, chaque affirmation étiquetée par son statut épistémique — jamais un fait qui n'en est pas.
@@ -2880,7 +2880,10 @@ def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budg
       • appris       : True si la brique vient d'être RETENUE en mémoire persistante (self-improving).
     `tours_cegis` (opt-in, défaut 0 = flux inchangé) : boucle CEGIS côté recherche — face à une frontière,
     promeut au spec le contre-exemple du held-out qui tue les candidats partiels et RELANCE la recherche
-    (au plus `tours_cegis` fois ; le held-out n'est jamais vidé) — cf. moteur_invention.examine_cible."""
+    (au plus `tours_cegis` fois ; le held-out n'est jamais vidé) — cf. moteur_invention.examine_cible.
+    `proprietes` (opt-in, défaut () = flux inchangé) : held-out durci MÉTAMORPHIQUE — exigences déclarées
+    du spec reliant f(T(x)) à f(x) sans oracle (catalogue metamorphique.PROPRIETES ou dicts custom) ;
+    écarte les réalisations violantes (témoin tracé) et peut résoudre un AMBIGU sans aller-retour."""
     global _BRIQUES
     if _BRIQUES is None:
         from memoire_briques import MemoireBriques
@@ -2889,7 +2892,7 @@ def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budg
     exemples = list(exemples)
     held = list(exemples_held or [])
     verdict = _MI.examine_cible(nom, signature, exemples, held, budget=budget, existant=_BRIQUES.existant(),
-                                tours_cegis=tours_cegis)
+                                tours_cegis=tours_cegis, proprietes=proprietes)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 
     res = {
