@@ -72,6 +72,8 @@ L22 = ("borne du tri par comparaison : trier n éléments par comparaisons exige
        "comparaisons (arbre de décision) — sauf tri non comparatif exploitant la structure des clés (radix, comptage)")
 L23 = ("borne de la recherche : trouver un élément parmi n NON structurés exige en moyenne ≥ n/2 examens "
        "(classique, sans index) — sauf données indexées (tri/hachage, O(log n)/O(1)) ou recherche quantique (Grover √n)")
+L24 = ("loi d'Amdahl : l'accélération par parallélisation d'un problème de taille fixe est ≤ 1/(s + (1−s)/p) ≤ 1/s "
+       "(s = fraction série) — la partie séquentielle plafonne le gain, quel que soit le nombre de processeurs")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -112,7 +114,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
-                 "detection", "amplification", "echantillonnage", "tri", "recherche"):
+                 "detection", "amplification", "echantillonnage", "tri", "recherche", "parallelisation"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -582,6 +584,23 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
             if _nb(n) and _nb(q) and n >= 2 and q >= 0 and q < (n / 2.0) * (1.0 - 1e-9):
                 return (VIOLE, f"{q} examens moyens < n/2 ({n / 2.0}) pour {n} éléments non indexés : on ne localise "
                                f"pas une cible sans regarder (classique) — impossible sans index ni quantique", L23)
+
+    # --- Loi d'Amdahl : accélération ≤ 1/(s + (1−s)/p), plafonnée par la fraction série s. ---
+    # Pour un problème de taille FIXE, la partie séquentielle (fraction s) ne s'accélère pas : l'accélération est
+    # bornée par 1/(s + (1−s)/p), donc ≤ 1/s même avec une infinité de processeurs. EXCEPTION (flag) : la loi de
+    # Gustafson (problème AGRANDI avec p, weak scaling) obtient une accélération quasi linéaire — métrique différente.
+    # On ne réfute donc qu'une accélération à taille FIXE (`probleme_agrandi` non déclaré) dépassant la borne d'Amdahl.
+    if t == "parallelisation":
+        if spec.get("probleme_agrandi") is not True:
+            s = spec.get("fraction_serie")
+            p = spec.get("nb_processeurs")
+            acc = spec.get("acceleration")
+            if _nb(s) and _nb(p) and _nb(acc) and 0.0 <= s <= 1.0 and p >= 1 and acc > 0:
+                acc_max = 1.0 / (s + (1.0 - s) / p)
+                if acc > acc_max * (1.0 + 1e-9):
+                    return (VIOLE, f"accélération {acc} > borne d'Amdahl {round(acc_max, 3)} (1/(s+(1−s)/p), fraction "
+                                   f"série s={s}, p={p} processeurs) : la partie séquentielle plafonne le gain — "
+                                   f"impossible à taille fixe", L24)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

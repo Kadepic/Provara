@@ -199,6 +199,13 @@ check(statut({"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes
 check(loi({"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20}) == P.L23, "recherche = L23")
 check(statut({"type": "recherche", "nb_elements": 1000000000, "nb_requetes_moyennes": 100}) == P.VIOLE,
       "100 examens << n/2 non indexé -> VIOLE")
+# loi d'Amdahl : accélération au-dessus de 1/(s+(1-s)/p) à taille fixe.
+check(statut({"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 1000,
+              "acceleration": 20}) == P.VIOLE, "accélération 20 > Amdahl ~9,9 (s=0,1) -> VIOLE")
+check(loi({"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 1000,
+           "acceleration": 20}) == P.L24, "Amdahl = L24")
+check(statut({"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 100,
+              "acceleration": 100}) == P.VIOLE, "accélération linéaire (100) avec s=0,05 -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -352,6 +359,12 @@ reels = [
     {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1, "donnees_indexees": True},    # table de hachage O(1) -> PAS un faux positif
     {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1000, "recherche_quantique": True},  # Grover √n -> PAS un faux positif
     {"type": "recherche"},                                                            # vide -> PAS un faux positif
+    # parallélisations RÉELLES : sous la borne d'Amdahl (ou problème agrandi, exempté).
+    {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16, "acceleration": 9},   # sous Amdahl (~9,14)
+    {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16, "acceleration": 9.14}, # AU max Amdahl (limite, ok)
+    {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 1000, "acceleration": 100, "probleme_agrandi": True},  # Gustafson (weak scaling) -> PAS un faux positif
+    {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16},        # sans accélération -> PAS un faux positif
+    {"type": "parallelisation"},                                                      # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
