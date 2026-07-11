@@ -170,6 +170,11 @@ check(statut({"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, 
 check(loi({"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250,
            "rho_air": 0.4, "trainee_induite_N": 0}) == P.L18, "traînée induite = L18")
 check(statut({"type": "vol_croisiere", "efficacite_envergure": 1.5}) == P.VIOLE, "efficacité d'envergure 1,5 > 1 -> VIOLE")
+# bruit de grenaille : SNR au-dessus de √N (lumière classique), et rendement quantique > 1.
+check(statut({"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 100}) == P.VIOLE,
+      "SNR 100 sur 100 photons (>√N=10) -> VIOLE")
+check(loi({"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 100}) == P.L19, "bruit de grenaille = L19")
+check(statut({"type": "detection", "rendement_quantique": 1.2}) == P.VIOLE, "rendement quantique 1,2 > 1 -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -292,6 +297,12 @@ reels = [
     {"type": "vol_croisiere", "portance_N": 5000, "envergure_m": 20, "vitesse_m_s": 30, "rho_air": 1.0, "trainee_induite_N": 60, "efficacite_envergure": 0.9},        # planeur (floor ~44)
     {"type": "vol_croisiere", "efficacite_envergure": 1.0},                           # e=1 (elliptique, limite, ok)
     {"type": "vol_croisiere"},                                                        # vide -> PAS un faux positif
+    # détections RÉELLES : au plus le bruit de grenaille (ou lumière comprimée, exemptée), QE ≤ 1.
+    {"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 100},          # limité par le grenaille (√N=100, limite, ok)
+    {"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 80},           # bruit de lecture en plus (< √N)
+    {"type": "detection", "rendement_quantique": 0.9},                                # QE réaliste
+    {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 50, "lumiere_comprimee": True},  # squeezed (LIGO) -> PAS un faux positif
+    {"type": "detection"},                                                            # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

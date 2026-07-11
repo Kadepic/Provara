@@ -62,6 +62,8 @@ L17 = ("secret parfait de Shannon : une confidentialité PARFAITE (inconditionne
        "l'entropie du message (le masque jetable l'atteint) — une clé plus courte ne garantit pas le secret parfait")
 L18 = ("traînée induite minimale : produire une portance L à la vitesse V avec une envergure b coûte une traînée "
        "induite ≥ L²/(½ρV²πb²) (efficacité d'envergure ≤ 1) — le coût de la portance décroît en 1/b²")
+L19 = ("bruit de grenaille (photonique) : compter N photons donne un rapport signal/bruit ≤ √N (statistique de "
+       "Poisson), et le rendement quantique ≤ 1 — sauf lumière comprimée (au-delà de la limite quantique standard)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -101,7 +103,8 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
-                 "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere"):
+                 "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
+                 "detection"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -490,6 +493,24 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                 return (VIOLE, f"traînée induite {di} N < minimum {round(di_min)} N (L²/(½ρV²πb²), portance "
                                f"{lift} N, envergure {b_env} m, V={v_cr} m/s) : en dessous il faudrait une "
                                f"efficacité d'envergure > 1 — impossible", L18)
+
+    # --- Bruit de grenaille (photonique) : SNR ≤ √N ; rendement quantique ≤ 1. ---
+    # La lumière arrive en photons discrets (Poisson) : compter N photons plafonne le rapport signal/bruit à √N
+    # (bruit de grenaille), et un photon ne crée pas plus d'un électron compté (QE ≤ 1, hors multiplication). EXCEPTION
+    # (flag) : la lumière COMPRIMÉE (squeezed) bat la limite quantique standard en interférométrie (LIGO) → on ne
+    # réfute SNR > √N qu'en lumière CLASSIQUE (pas de `lumiere_comprimee`). CONSERVATEUR : un capteur réel reste SOUS
+    # √N (bruits additionnels) → jamais un faux positif.
+    if t == "detection":
+        qe = spec.get("rendement_quantique")
+        if _nb(qe) and qe > 1.0 + 1e-9:
+            return (VIOLE, f"rendement quantique {qe} > 1 : un photon ne peut compter plus d'un électron (hors "
+                           f"multiplication déclarée) — impossible", L19)
+        if spec.get("lumiere_comprimee") is not True:
+            n = spec.get("nb_photons")
+            snr = spec.get("rapport_signal_bruit")
+            if _nb(n) and _nb(snr) and n > 0 and snr > math.sqrt(n) * (1.0 + 1e-9):
+                return (VIOLE, f"rapport signal/bruit {snr} > √N ({round(math.sqrt(n), 2)}) pour {n} photons : "
+                               f"au-delà de la limite de bruit de grenaille (lumière classique) — impossible", L19)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:
