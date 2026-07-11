@@ -70,6 +70,8 @@ L21 = ("théorème d'échantillonnage de Nyquist-Shannon : reconstruire un signa
        "à fs ≥ 2B — en dessous, le repliement est irréversible (sauf signal parcimonieux / acquisition comprimée)")
 L22 = ("borne du tri par comparaison : trier n éléments par comparaisons exige au moins log₂(n!) ≈ n·log₂(n) "
        "comparaisons (arbre de décision) — sauf tri non comparatif exploitant la structure des clés (radix, comptage)")
+L23 = ("borne de la recherche : trouver un élément parmi n NON structurés exige en moyenne ≥ n/2 examens "
+       "(classique, sans index) — sauf données indexées (tri/hachage, O(log n)/O(1)) ou recherche quantique (Grover √n)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -110,7 +112,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
-                 "detection", "amplification", "echantillonnage", "tri"):
+                 "detection", "amplification", "echantillonnage", "tri", "recherche"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -565,6 +567,21 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                     return (VIOLE, f"{c} comparaisons < borne log₂(n!) ≈ {round(borne)} pour n={n} : un tri par "
                                    f"comparaison ne peut distinguer n! ordres avec moins — impossible (sauf tri non "
                                    f"comparatif)", L22)
+
+    # --- Borne de la recherche : trouver parmi n non structurés exige en moyenne ≥ n/2 examens. ---
+    # Sans structure, chaque position de la cible est équiprobable : un algorithme classique doit inspecter en
+    # moyenne (n+1)/2 éléments avant de la trouver (on ne localise pas sans regarder). DEUX exceptions par flags :
+    # données INDEXÉES (triées/hachées → O(log n)/O(1)) ; recherche QUANTIQUE (Grover, ~√n). On ne réfute donc qu'une
+    # recherche CLASSIQUE et NON indexée revendiquant moins de n/2 examens moyens. CONSERVATEUR : faux positif INTERDIT.
+    if t == "recherche":
+        indexe = spec.get("donnees_indexees") is True
+        quantique = spec.get("recherche_quantique") is True
+        if not indexe and not quantique:
+            n = spec.get("nb_elements")
+            q = spec.get("nb_requetes_moyennes")
+            if _nb(n) and _nb(q) and n >= 2 and q >= 0 and q < (n / 2.0) * (1.0 - 1e-9):
+                return (VIOLE, f"{q} examens moyens < n/2 ({n / 2.0}) pour {n} éléments non indexés : on ne localise "
+                               f"pas une cible sans regarder (classique) — impossible sans index ni quantique", L23)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

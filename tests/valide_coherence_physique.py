@@ -193,6 +193,12 @@ check(loi({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True
            "nb_comparaisons": 1000000}) == P.L22, "tri par comparaison = L22")
 check(statut({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 8,
               "nb_comparaisons": 10}) == P.VIOLE, "10 < log2(8!)=15,3 -> VIOLE")
+# borne de la recherche : moins de n/2 examens (classique, non indexé).
+check(statut({"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20}) == P.VIOLE,
+      "20 examens < n/2 (5e5) non indexé -> VIOLE")
+check(loi({"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20}) == P.L23, "recherche = L23")
+check(statut({"type": "recherche", "nb_elements": 1000000000, "nb_requetes_moyennes": 100}) == P.VIOLE,
+      "100 examens << n/2 non indexé -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -340,6 +346,12 @@ reels = [
     {"type": "tri", "tri_par_comparaison": True, "nb_elements": 1000000, "nb_comparaisons": 1000000},   # adaptatif sur entrée non arbitraire -> PAS un faux positif
     {"type": "tri", "nb_elements": 1000000},                                          # sans nb_comparaisons -> PAS un faux positif
     {"type": "tri"},                                                                  # vide -> PAS un faux positif
+    # recherches RÉELLES : ≥ n/2 (non indexé), ou indexées/quantiques (exemptées).
+    {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 500000},    # scan linéaire (~n/2)
+    {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20, "donnees_indexees": True},   # recherche binaire (triée) -> PAS un faux positif
+    {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1, "donnees_indexees": True},    # table de hachage O(1) -> PAS un faux positif
+    {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1000, "recherche_quantique": True},  # Grover √n -> PAS un faux positif
+    {"type": "recherche"},                                                            # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
