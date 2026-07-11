@@ -31,6 +31,12 @@ seuls ses **45 dépendants** re-tournent. Le cache est désormais RAPIDE et SOUN
      en bout). Gate `valide_boucle_invention` **16 → 24**.
   5. **Façade produit** : `ia.compose_besoin` + `ia.invente_composite` ; gate `valide_ia` **18 → 21**.
 
+**Élargissement du registre des composites (5 au total)** : + `serre_agricole` (photosynthèse ~12 % +
+Shockley-Queisser + Stefan-Boltzmann + séparation eau/air), `observatoire_astronomique` (Abbe + bruit de
+photon + Nyquist-Shannon + limite quantique d'horloge — la MESURE composée), `sonde_spatiale` (quantité de
+mouvement + Shannon + Shockley-Queisser + bruit). Chacun : 4 domaines routés sous 4 lois DISTINCTES,
+`complet=True`. Gate `valide_besoin` **591 → 594**.
+
 **Corollaire du cache réparé — gates-SCANNERS (un défaut en cache un autre).** Le cache devenu effectif a
 révélé que 4 gates ont un verdict dépendant de fichiers HORS de leur clôture d'imports : `valide_surface_ia`
 (lit `src/ia.py` par CHEMIN — clôture de 2 fichiers, sans ia.py !), `valide_atomes` (orphelines : scanne tout

@@ -4675,6 +4675,35 @@ enregistre_composite(Composite(
          "eau atmosphérique (travail minimal de séparation) — 4 domaines sous 4 lois dures",
 ))
 
+enregistre_composite(Composite(
+    nom="serre_agricole",
+    aliases=frozenset({"serre agricole", "serre autonome", "serre agricole autonome",
+                       "cultiver sous serre"}),
+    sous_besoins=("faire pousser des aliments", "capter l energie solaire", "conserver la chaleur",
+                  "produire de l eau de l air"),
+    note="photosynthèse (plafond ~12 %) + solaire (Shockley-Queisser) + isolation (Stefan-Boltzmann) + "
+         "eau atmosphérique (travail minimal de séparation) — 4 domaines sous 4 lois dures",
+))
+
+enregistre_composite(Composite(
+    nom="observatoire_astronomique",
+    aliases=frozenset({"observatoire astronomique", "observatoire", "telescope de precision",
+                       "construire un observatoire"}),
+    sous_besoins=("depasser la limite de diffraction", "capter un signal faible",
+                  "capturer un signal analogique", "garder le temps precisement"),
+    note="résolution (Abbe) + détection (bruit de photon/facteur de bruit) + numérisation (Nyquist-Shannon) + "
+         "horloge (limite quantique standard) — la MESURE composée sous 4 lois dures",
+))
+
+enregistre_composite(Composite(
+    nom="sonde_spatiale",
+    aliases=frozenset({"sonde spatiale", "sonde interplanetaire", "concevoir une sonde spatiale"}),
+    sous_besoins=("avancer dans le vide", "communiquer a distance", "capter l energie solaire",
+                  "capter un signal faible"),
+    note="propulsion (quantité de mouvement) + liaison (Shannon) + énergie (Shockley-Queisser) + "
+         "réception (bruit) — 4 domaines sous 4 lois dures",
+))
+
 
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
