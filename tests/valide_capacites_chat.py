@@ -496,8 +496,13 @@ check(_A3.qualifie_texte("Défi accepté — test").statut == _A3.ECHANGE,
 # — CODE PROUVÉ EN NL (route Phase 2 2026-07-09 : l'axe code 0/5 tombait au fallback/lexique alors que les
 #   moteurs de synthèse sont prouvés au diagnostic — la route manquait) —
 r = R._cap_code_prouve("écris une fonction python qui additionne, exemples (2, 3) -> 5, (1, 1) -> 2 et (4, 5) -> 9")
-check(r is not None and r.startswith("Code PROUVÉ") and "sum(x)" in r and "en aveugle" in r,
-      "code python AVEC exemples -> code PROUVÉ (juge) + held-out aveugle dit")
+check(r is not None and r.startswith("Code PROUVÉ") and "a + b" in r and "en aveugle" in r,
+      "code python binaire -> MOTEUR MULTI-ARG (a + b, plus le mono-tuple sum(x)) + held-out aveugle dit")
+# le palier structurel est atteignable depuis la route : une cible LISTE×SCALAIRE en langage naturel
+r = R._cap_code_prouve("écris une fonction python, exemples ([3, 1, 4, 1, 5], 2) -> [3, 1], "
+                       "([2, 7, 6], 1) -> [2] et ([9, 8, 5, 3], 3) -> [9, 8, 5]")
+check(r is not None and r.startswith("Code PROUVÉ") and "a[:b]" in r,
+      "code python (liste, k) -> la FORME liste×scalaire est servie par la route (a[:b])")
 r = R._cap_code_prouve("écris une fonction python qui trouve le plus long palindrome d'une chaîne")
 check(r is not None and "exemples entrée → sortie" in r and "PROUVÉ" in r,
       "code SANS exemples -> demande ACTIONNABLE de la méthode (plus jamais fallback/lexique)")
