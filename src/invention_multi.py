@@ -34,6 +34,7 @@ EXISTANT_BINAIRE: dict[str, str] = {
     "reste": "a % b",
     "puissance": "a ** b",
     "pgcd": "__import__('math').gcd(a, b)",
+    "ppcm": "__import__('math').lcm(a, b)",
     "moyenne_basse": "(a + b) // 2",
 }
 
@@ -42,7 +43,9 @@ EXISTANT_BINAIRE: dict[str, str] = {
 # coïncidences (pas d'affine a+k·b généralisé). La soundness vient des gardes, pas de la petitesse du vocab.
 _UNAIRE = ["{v}", "abs({v})", "-{v}"]
 _COMBINE = ["{pa} + {pb}", "{pa} - {pb}", "{pa} * {pb}", "max({pa}, {pb})", "min({pa}, {pb})",
-            "abs({pa} - {pb})", "{pa} // {pb}", "{pa} % {pb}", "{pa} ** {pb}"]
+            "abs({pa} - {pb})", "{pa} // {pb}", "{pa} % {pb}", "{pa} ** {pb}",
+            # bit-à-bit (frontière mesurée : xor/and/or ; sémantique exacte, pas d'aimant à coïncidences).
+            "{pa} ^ {pb}", "{pa} & {pb}", "{pa} | {pb}"]
 _BASE_SUPPL = ["b - a", "b // a", "b % a", "b ** a", "a * a + b * b", "a * a - b * b",
                "a * b + a + b", "__import__('math').gcd(a, b)"]
 

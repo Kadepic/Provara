@@ -2777,6 +2777,7 @@ def conformite(scope: str, ident: str, cas: dict, base=None, date: str = _R.AUJO
 # et RETIENT ses inventions. N'altère ni `demande`/`invente` (stateless) ni le non-reg. Singletons en-process.
 _MEM = None
 _BRIQUES = None
+_BRIQUES_MULTI = None
 
 
 def memoire(racine: str | None = None):
@@ -2972,14 +2973,20 @@ def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str |
     `exemples`/`exemples_held` = listes de (args, sortie). `dossier` (optionnel) : grave l'artefact durable.
     La rétention self-improving (mémoire mono) n'est PAS câblée ici : une mémoire multi-arité est un concern
     distinct — l'honnêteté prime (on ne prétend pas apprendre dans un store d'arité incompatible)."""
+    global _BRIQUES_MULTI
     import expression_sure as _ES
     import invention_atomes as _IA
     import invention_multi as _IMM
+    if _BRIQUES_MULTI is None:
+        from memoire_briques_multi import MemoireBriquesMulti
+        _BRIQUES_MULTI = MemoireBriquesMulti(bases={2: _IMM.EXISTANT_BINAIRE, 3: _IMM.EXISTANT_TERNAIRE})
     exemples = [(tuple(a), o) for a, o in exemples]
     held = [(tuple(a), o) for a, o in (exemples_held or [])]
-    verdict = _IMM.examine_cible_multi(nom, exemples, held)
     arite = len((exemples or held)[0][0]) if (exemples or held) else 0
     params = _IMM._params(arite)
+    # SELF-IMPROVING : sert le registre appris de CETTE arité -> une brique déjà retenue redevient EXISTE_DEJA.
+    existant = _BRIQUES_MULTI.existant(arite) if arite in (2, 3) else None
+    verdict = _IMM.examine_cible_multi(nom, exemples, held, existant=existant)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 
     code = verdict.par if verdict.statut in (_MI.INVENTION, _MI.EXISTE_DEJA) else None
@@ -2994,11 +3001,14 @@ def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str |
         "force_spec": None,
         "besoin_a_renforcer": None,
         "materialise": None,
+        "appris": False,
     }
     if verdict.statut == _MI.AMBIGU and verdict.sonde is not None:
         res["besoin_a_renforcer"] = {"entree": verdict.sonde,
                                      "raison": "deux réalisations binaires satisfont le spec et divergent sur cette entrée"}
     if verdict.statut == _MI.INVENTION and code and danger is None:
+        # RÉTENTION self-improving (admission gardée dans retient() : sûreté + reproduction + spec sérialisable).
+        res["appris"] = _BRIQUES_MULTI.retient(code, origine=nom, params=params, exemples=exemples, held=held)
         try:
             fs = force_du_spec(code, exemples, held, params=params)
             res["force_spec"] = {k: fs[k] for k in ("mutants", "tues", "equivalents", "survivants", "score")}
