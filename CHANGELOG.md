@@ -1,5 +1,27 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 13e domaine « vol stationnaire » + loi L10 (puissance induite idéale)
+
+Voler sur place / se sustenter en vol stationnaire. Nouvelle loi dure au juge (`L10`) : la PUISSANCE INDUITE
+IDÉALE (théorie de la quantité de mouvement / disque actuateur) — pour sustenter une poussée T sur un disque
+d'aire A dans un air ρ, il faut au moins P = T^1,5/√(2ρA). CONSERVATEUR (FAUX=0) : l'effet de sol réduit la
+puissance induite (sol = rotor-image, aire effective ×2) → on ne réfute que SOUS le plancher absolu P/√2
+(indépassable même au ras du sol) → jamais un faux positif (aéronef réel toujours au-dessus, FM ~0,6–0,8). La
+portance STATIQUE (aérostat) n'a pas de disque → non jugée. Gate `valide_coherence_physique` **150 → 165/165**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (drone 2 kg « à 5 W », plateforme
+100 kg « à 50 W »). Reframing : l'ennemi est la CHARGE DU DISQUE (T/A) ; puissance ∝ 1/√A → un grand disque lent
+bat un petit jet rapide (d'où le grand rotor de l'hélico et l'inefficacité du drone à petites hélices). Leviers :
+agrandir le disque, alléger, effet de sol, et surtout PORTANCE STATIQUE (aérostat) qui contourne la puissance
+induite. Couvre hélico grand rotor, multirotor, grand disque lent, coaxial/tandem, aérostat, effet de sol, rotor
+caréné, propulsion distribuée (eVTOL). 4 stratégies naturelles propres (colibri = faible charge de disque, samare
+= autorotation, albatros = éviter le stationnaire, vessie natatoire = flottabilité). Gate `valide_besoin`
+**255 → 272/272** ; les 12 domaines précédents intacts.
+
+**JALON : 13 DOMAINES D'INVENTION, 10 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol stationnaire).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 12e domaine « produire de l'hydrogène » + loi L9 (électrolyse)
 
 Produire de l'hydrogène par électrolyse de l'eau. Nouvelle loi dure au juge (`L9`) : le travail ÉLECTRIQUE ≥ ΔG

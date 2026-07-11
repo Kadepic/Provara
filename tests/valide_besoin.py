@@ -590,11 +590,53 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "capacite_shannon" in B.decompose("transmettre de l information"),
       "les 11 domaines précédents inchangés après l'ajout de l'hydrogène (isolation)")
 
+# ── 19) TREIZIÈME DOMAINE : voler sur place / vol stationnaire (nouvelle loi L10 = puissance induite idéale) ──
+dvo = B.decompose("vol stationnaire")
+check(dvo["statut"] == "decompose", "besoin vol stationnaire connu -> decompose")
+check("disque" in dvo["objectif_reel"].lower() and "induite" in dvo["objectif_reel"].lower(),
+      "objectif réel vol = charge du disque, puissance induite")
+check("puissance_induite_ideale" in dvo, "extras propres : la puissance induite idéale")
+vol_canaux = {c.canal for c in dvo["canaux"]}
+check(vol_canaux == {"aire du disque", "charge du disque", "masse", "portance statique / effet de sol"},
+      f"4 canaux du vol stationnaire ({vol_canaux})")
+prvo = B.principes("vol stationnaire")
+pvo = {e["nom"]: e for e in prvo["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : puissances sous le plancher induit
+drone5 = pvo["drone 2 kg « qui plane à 5 W » (hélice 0,05 m²)"]
+check(drone5["atome"].statut == A.REFUTE, "drone 2 kg à 5 W < P induite -> RÉFUTÉ")
+check(A.est_refute(drone5["atome"].contenu), "contenu réfuté (5 W) dans la garde")
+plat = pvo["plateforme 100 kg « qui plane à 50 W » (disque 0,1 m²)"]
+check(plat["atome"].statut == A.REFUTE, "plateforme 100 kg à 50 W -> RÉFUTÉ")
+# procédés réels (dont l'aérostat à portance statique) -> SUPPOSITIONS
+for nom in ("hélicoptère à grand rotor (référence)", "drone à grand disque lent (rotor surdimensionné)",
+            "aérostat (portance statique, Archimède)"):
+    e = pvo[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prvo["liste"]), "aucun principe de vol promu en FAIT")
+check("candidat pour sustentation" in pvo["hélicoptère à grand rotor (référence)"]["atome"].portee.condition,
+      "portée des principes de vol nommant sustentation")
+# la loi L10 : puissance sous le plancher réfutée, grand disque lent cohérent
+st_vo, _, loi_vo = COH.juge_dispositif({"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 5})
+check(st_vo == COH.VIOLE and loi_vo == COH.L10, "juge : drone 5 W -> VIOLE via L10")
+check(COH.juge_dispositif({"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.5, "puissance_W": 100})[0]
+      == COH.COHERENT_BORNE, "grand disque lent 100 W -> cohérent, pas de faux positif")
+# stratégies naturelles propres (colibri, samare)
+natvo = B.strategies_naturelles("vol stationnaire")
+check(len(natvo) >= 4 and any("colibri" in s["exemple"].lower() for s in natvo), "stratégies vol propres (colibri)")
+check(not any("hydrogénase" in s["exemple"] for s in natvo) and not any("tournesol" in s["exemple"] for s in natvo),
+      "pas de fuite des stratégies hydrogène/solaire vers le vol")
+# les DOUZE domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "tension_reversible_V" in B.decompose("produire de l hydrogene")
+      and "plafond_shockley_queisser" in B.decompose("capter l energie solaire"),
+      "les 12 domaines précédents inchangés après l'ajout du vol (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
-                              "calcul", "communication", "captation_solaire", "production_hydrogene"],
-      "douze domaines modélisés, dans l'ordre d'enregistrement")
+                              "calcul", "communication", "captation_solaire", "production_hydrogene",
+                              "sustentation"],
+      "treize domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

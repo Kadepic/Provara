@@ -1971,6 +1971,145 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  TREIZIÈME DOMAINE : voler sur place / vol stationnaire. Nouvelle loi dure au juge (L10) : la PUISSANCE INDUITE
+#  IDÉALE (théorie de la quantité de mouvement / disque actuateur) — pour sustenter une poussée T sur un disque
+#  d'aire A dans un air de masse volumique ρ, il faut au moins P = T^1,5/√(2ρA) (plancher absolu P/√2 en effet de
+#  sol maximal). REFRAMING machine : l'ennemi est la CHARGE DU DISQUE (T/A) — la puissance croît en √(T/A), donc
+#  un GRAND disque lent bat un petit jet rapide (c'est pourquoi l'hélicoptère a un grand rotor et le drone est
+#  inefficace). Leviers : agrandir le disque (P ∝ 1/√A, de loin le plus gros) ; alléger (T = m·g) ; exploiter
+#  l'EFFET DE SOL ; et surtout la PORTANCE STATIQUE (aérostat, flottabilité d'Archimède) qui contourne
+#  entièrement la puissance induite — ne pas combattre la gravité avec un rotor, mais flotter.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_VOL = "sustentation"
+_ALIAS_VOL = {
+    "voler sur place", "se sustenter en vol", "vol stationnaire", "faire du vol stationnaire",
+    "planer en vol stationnaire", "soulever une charge en vol",
+}
+
+# ── « Canaux » : les leviers de la puissance de sustentation ─────────────────────────────────────────────────────
+_CANAUX_VOL = [
+    Canal("aire du disque", "portance", "AGRANDIR le disque rotor : la puissance induite décroît en 1/√A",
+          True, "de loin le plus gros levier : décupler l'aire divise la puissance par ~3 (√10) ; c'est pourquoi un "
+                "hélicoptère a un grand rotor lent et un quadricoptère à petites hélices est énergivore"),
+    Canal("charge du disque", "portance", "baisser la CHARGE DU DISQUE (poussée par unité d'aire T/A) : puissance ∝ √(T/A)",
+          True, "une faible charge de disque = air brassé lentement sur une grande surface = peu de puissance ; une "
+                "forte charge (petit jet rapide) coûte cher — la variable qui gouverne l'efficacité du vol stationnaire"),
+    Canal("masse", "portance", "ALLÉGER l'aéronef : la poussée requise T = m·g, et la puissance croît en T^1,5",
+          True, "chaque gramme économisé compte doublement (T^1,5) ; structures composites, batteries denses — le "
+                "levier « moins de poids à porter »"),
+    Canal("portance statique / effet de sol", "portance", "CONTOURNER la puissance induite : flottabilité (aérostat) ou effet de sol",
+          True, "la portance statique (Archimède, dirigeable) sustente à puissance quasi NULLE — elle échappe à la "
+                "puissance induite ; l'effet de sol la réduit (sol = rotor-image) — le levier « ne pas brasser d'air »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la puissance induite idéale (type `sustentation`, P ≥ T^1,5/√(2ρA)/√2) ──
+_PRINCIPES_VOL = [
+    _P("hélicoptère à grand rotor (référence)",
+       "voler sur place : un grand rotor unique brasse un large disque d'air à faible charge",
+       {"type": "sustentation", "masse_kg": 2000, "aire_rotor_m2": 113, "puissance_W": 180000}, False, False,
+       "air brassé vers le bas", "mature",
+       0.6, "la référence efficace : grand disque = faible charge = puissance induite modérée (~165 kW idéal pour "
+            "2 t) ; le grand rotor est précisément ce qui rend l'hélico viable — le levier « aire » incarné"),
+    _P("multirotor / drone (petites hélices)",
+       "voler sur place : plusieurs petites hélices à forte charge de disque",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 300}, False, False,
+       "air brassé vers le bas", "mature",
+       0.5, "simple et contrôlable, MAIS petites hélices = forte charge de disque = énergivore (autonomie courte) ; "
+            "réel mais loin de l'optimum — illustre le COÛT d'un petit disque"),
+    _P("drone à grand disque lent (rotor surdimensionné)",
+       "voler sur place : un rotor bien plus grand tournant lentement pour la même charge",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.5, "puissance_W": 100}, False, False,
+       "air brassé vers le bas", "émergent",
+       0.55, "×10 d'aire → puissance ÷~3 (√10) pour la même charge : le levier direct de l'efficacité ; encombrement "
+             "et fragilité du grand rotor à gérer — piste sous-exploitée en dronistique"),
+    _P("rotors coaxiaux / tandem (charge répartie)",
+       "voler sur place : deux rotors partageant la charge sur une plus grande aire effective",
+       {"type": "sustentation", "masse_kg": 2000, "aire_rotor_m2": 150, "puissance_W": 150000}, False, False,
+       "air brassé vers le bas", "mature",
+       0.5, "répartir la poussée sur plus de surface baisse la charge de disque effective et supprime le rotor de "
+            "queue ; complexité mécanique — variante du levier « aire »"),
+    _P("aérostat (portance statique, Archimède)",
+       "voler sur place : sustenter par flottabilité (gaz plus léger que l'air), sans brasser d'air",
+       {"type": "sustentation"}, True, True,
+       "aucun (portance statique)", "mature",
+       0.55, "REFRAMING : la portance STATIQUE contourne entièrement la puissance induite → sustentation à puissance "
+             "quasi nulle (silencieux, endurance énorme) ; volume encombrant et sensibilité au vent — ne pas "
+             "combattre la gravité avec un rotor, mais flotter"),
+    _P("effet de sol (vol au ras d'une surface)",
+       "voler sur place : exploiter la proximité du sol qui réduit la puissance induite (rotor-image)",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 200}, False, False,
+       "air brassé vers le bas (recyclé par le sol)", "mature",
+       0.45, "près du sol, l'aire effective augmente (image) → moins de puissance pour la même poussée ; limité à "
+             "une faible hauteur — le levier « laisser le sol aider »"),
+    _P("rotor caréné (ventilateur en conduit)",
+       "voler sur place : un carénage augmente l'aire effective et récupère la poussée de bord",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.08, "puissance_W": 250}, False, False,
+       "air brassé vers le bas", "mature",
+       0.45, "le carénage augmente la poussée pour un même disque et protège le rotor ; poids et traînée du conduit "
+             "en avancement — variante du levier « aire effective »"),
+    _P("propulsion distribuée (nombreux petits rotors répartis)",
+       "voler sur place : répartir la sustentation sur beaucoup de rotors couvrant une grande aire totale",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.2, "puissance_W": 150}, False, False,
+       "air brassé vers le bas", "émergent (eVTOL)",
+       0.45, "beaucoup de rotors couvrant une grande aire totale baissent la charge de disque et ajoutent la "
+             "redondance ; câblage et contrôle complexes — piste des eVTOL"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("drone 2 kg « qui plane à 5 W » (hélice 0,05 m²)",
+       "voler sur place : sustenter 2 kg avec 5 W et une hélice de 0,05 m²",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 5}, True, True,
+       "—", "revendication",
+       0.3, "5 W ≪ puissance induite idéale (~248 W pour cette charge de disque) — à réfuter par la théorie de la "
+            "quantité de mouvement"),
+    _P("plateforme 100 kg « qui plane à 50 W » (disque 0,1 m²)",
+       "voler sur place : sustenter 100 kg avec 50 W et un disque de 0,1 m²",
+       {"type": "sustentation", "poussee_N": 981, "aire_rotor_m2": 0.1, "puissance_W": 50}, True, True,
+       "—", "revendication",
+       0.25, "50 W ≪ puissance induite idéale (~62 kW pour cette charge de disque) — impossible"),
+]
+
+_OBJECTIF_VOL = ("Le but réel n'est pas de « pousser plus fort » mais de brasser de l'air EFFICACEMENT : la "
+                 "puissance induite idéale vaut T^1,5/√(2ρA), donc l'ennemi est la CHARGE DU DISQUE (poussée par "
+                 "unité d'aire T/A). Un GRAND disque lent bat un petit jet rapide (puissance ∝ 1/√A) — c'est "
+                 "pourquoi l'hélicoptère a un grand rotor et le drone à petites hélices est énergivore. Leviers : "
+                 "agrandir le disque (le plus gros, P ∝ 1/√A) ; alléger (T = m·g, P ∝ T^1,5) ; exploiter l'effet de "
+                 "sol ; et surtout la PORTANCE STATIQUE (aérostat, flottabilité) qui contourne entièrement la "
+                 "puissance induite. Chaque principe reste jugé par ce plancher (P ≥ puissance induite / √2).")
+_LOI_VOL = ("vol stationnaire : la puissance ≥ puissance induite idéale P = T^1,5/√(2ρA) (théorie de la quantité de "
+            "mouvement / disque actuateur ; plancher absolu P/√2 en effet de sol maximal) ; gains réels = agrandir "
+            "le disque (P ∝ 1/√A), baisser la charge de disque, alléger, et contourner par la portance statique")
+
+# La nature sustente par un grand disque battu (colibri), l'autorotation (samare), le vol plané (albatros), la flottabilité (vessie natatoire).
+_STRATEGIES_NATURE_VOL = [
+    _Nature("colibri (vol stationnaire battu)",
+            ["grand disque balayé par rapport à une masse minuscule (faible charge de disque)", "battement rapide symétrique",
+             "musculature et métabolisme extrêmes"],
+            "faible charge de disque (grande surface balayée / faible masse) — le levier « aire » du vivant"),
+    _Nature("samare d'érable (descente en autorotation)",
+            ["autorotation qui freine la chute sans énergie", "une seule aile portante en rotation"],
+            "extraire de la portance du mouvement de chute lui-même (autorotation) — sustenter sans moteur"),
+    _Nature("albatros (vol plané dynamique)",
+            ["exploite le gradient de vent au lieu de battre", "évite le vol stationnaire coûteux"],
+            "ÉVITER le stationnaire : glaner l'énergie du vent plutôt que la dépenser à brasser l'air"),
+    _Nature("vessie natatoire du poisson (flottabilité neutre)",
+            ["ajuste un volume de gaz pour flotter sans effort", "sustentation STATIQUE (Archimède)"],
+            "flotter par portance statique à énergie quasi nulle — l'analogue de l'aérostat"),
+]
+
+enregistre(Domaine(
+    nom=_VOL,
+    aliases=frozenset(_ALIAS_VOL),
+    objectif=_OBJECTIF_VOL,
+    canaux=_CANAUX_VOL,
+    principes=_PRINCIPES_VOL,
+    strategies=_STRATEGIES_NATURE_VOL,
+    loi=_LOI_VOL,
+    extras={"puissance_induite_ideale": "P = T^1,5/√(2ρA) (théorie de la quantité de mouvement)",
+            "note": "P ∝ 1/√A : un grand disque lent bat un petit jet rapide ; FM réel 0,6–0,8 ; la portance "
+                    "statique (aérostat) contourne entièrement la puissance induite"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
