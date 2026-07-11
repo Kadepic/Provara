@@ -50,6 +50,14 @@ PROPRIETES: dict[str, dict] = {
         "transformes": [lambda x: [e * 2 for e in x]],
         "relie": lambda y, yt: isinstance(y, int) and not isinstance(y, bool) and yt == 2 * y,
     },
+    # f([e+c]) == f(x) — mesures de DISPERSION PURE, insensibles au décalage additif (amplitude, écart-type,
+    # écart interquartile…). Sépare une mesure de dispersion d'une mesure de NIVEAU (max, somme, moyenne)
+    # que le spec par paires confond quand le minimum est constant (« additive MR », survey Segura 2016).
+    "invariance_translation": {
+        "s_applique": lambda x: _liste(x, 1) and all(isinstance(e, int) and not isinstance(e, bool) for e in x),
+        "transformes": [lambda x: [e + 7 for e in x], lambda x: [e - 3 for e in x]],
+        "relie": _egal_type_exact,
+    },
 }
 
 
