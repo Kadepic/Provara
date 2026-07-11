@@ -2670,6 +2670,142 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DIX-HUITIÈME DOMAINE : compresser l'information. Nouvelle loi dure au juge (L15) : la BORNE D'ENTROPIE (codage
+#  de source de Shannon) — une compression SANS PERTE ne descend pas sous l'entropie H de la source, et aucun
+#  compresseur sans perte ne réduit TOUTE entrée (argument de comptage/pigeonnier). Distinct de L7 (capacité de
+#  canal). REFRAMING machine : on ne « rétrécit » pas magiquement — on retire la REDONDANCE. Sans perte, la limite
+#  est l'entropie (mieux MODÉLISER la source pour l'approcher) ; il n'existe pas de compresseur universel ; et la
+#  compression AVEC PERTE ne gagne qu'en jetant de l'information imperceptible (fidélité contre taille).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_COMP = "compression_information"
+_ALIAS_COMP = {
+    "compresser des donnees", "compresser l information", "reduire la taille des donnees",
+    "stocker l information densement", "comprimer un fichier", "encoder efficacement",
+}
+
+# ── « Canaux » : les leviers de la compression ───────────────────────────────────────────────────────────────────
+_CANAUX_COMP = [
+    Canal("modele de source", "information", "MIEUX MODÉLISER la source pour approcher son entropie H (sans perte)",
+          True, "un meilleur modèle de probabilité (contextuel, prédictif) rapproche le débit de l'entropie réelle "
+                "→ le gain sans perte vient de la PRÉDICTION, pas d'un tour de passe-passe ; on ne descend jamais sous H"),
+    Canal("redondance", "information", "RETIRER la redondance et la répétition : dictionnaires, déduplication",
+          True, "remplacer les motifs répétés par des références (LZ, dédup) capture la structure → énorme sur des "
+                "données répétitives, nul sur du bruit (déjà à l'entropie) — le levier « ne pas se répéter »"),
+    Canal("perte controlee", "information", "JETER l'information imperceptible (compression AVEC PERTE)",
+          True, "abandonner ce que l'œil/l'oreille ne perçoit pas (perceptuel) descend SOUS l'entropie de la source "
+                "en échangeant de la fidélité contre de la taille → le seul moyen de passer sous H, mais irréversible"),
+    Canal("transformation", "information", "CHANGER de représentation (transformée) pour concentrer l'information",
+          True, "une transformée (DCT, ondelettes) concentre l'énergie dans peu de coefficients → l'essentiel tient "
+                "en peu de nombres, le reste est négligeable ; base du JPEG/MP3 — le levier « bonne représentation »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la borne d'entropie (type `compression`, sans perte ≥ H) ───────────────
+_PRINCIPES_COMP = [
+    _P("codage entropique (Huffman / arithmétique)",
+       "compresser : coder chaque symbole selon sa probabilité pour approcher l'entropie",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 2.05},
+       True, True, "—", "mature",
+       0.6, "atteint presque l'entropie H d'une source connue (arithmétique ~optimal) → la référence sans perte ; "
+            "les gains restants viennent d'un meilleur MODÈLE, pas d'un meilleur code"),
+    _P("dictionnaire / déduplication (LZ)",
+       "compresser : remplacer les motifs répétés par des références à un dictionnaire",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 1.0, "bits_par_symbole": 1.1},
+       True, True, "—", "mature",
+       0.55, "capture la répétition (gzip, zstd, dédup de sauvegardes) → très efficace sur des données structurées, "
+             "inutile sur du bruit (déjà incompressible) — le levier « redondance »"),
+    _P("modèle contextuel / prédictif (PPM, transformeur)",
+       "compresser : prédire le prochain symbole par le contexte, ne coder que la surprise",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 1.5, "bits_par_symbole": 1.55},
+       True, True, "—", "émergent (IA)",
+       0.55, "un meilleur prédicteur (grand modèle) abaisse l'entropie CONDITIONNELLE → compression sans perte "
+             "record, au prix du calcul ; « compresser, c'est comprendre » — le levier « modèle de source »"),
+    _P("déduplication à l'échelle (stockage)",
+       "compresser : détecter et partager les blocs identiques à l'échelle d'un système de stockage",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 4.0, "bits_par_symbole": 4.1},
+       True, True, "—", "mature",
+       0.5, "à l'échelle d'un data-center, la plupart des blocs sont dupliqués → gains massifs sans perte ; index "
+            "de hachage à maintenir — le levier « redondance » globalisé"),
+    _P("transformée (DCT / ondelettes)",
+       "compresser : changer de base pour concentrer l'information dans peu de coefficients (avec perte)",
+       {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0, "bits_par_symbole": 0.8},
+       True, True, "—", "mature",
+       0.5, "concentre l'énergie du signal dans quelques coefficients, on jette le reste → forte compression AVEC "
+            "perte (image/son) ; base du JPEG/MP3 — le levier « bonne représentation »"),
+    _P("codage perceptuel (MP3, JPEG)",
+       "compresser : supprimer ce que l'œil ou l'oreille ne perçoit pas (avec perte)",
+       {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0, "bits_par_symbole": 0.5},
+       True, True, "—", "mature",
+       0.5, "modélise la PERCEPTION humaine pour jeter l'imperceptible → descend bien sous l'entropie du signal en "
+            "gardant la qualité perçue ; irréversible — le levier « perte contrôlée »"),
+    _P("codage prédictif vidéo (ne coder que le changement)",
+       "compresser : ne transmettre que les différences entre images successives (avec perte)",
+       {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0, "bits_par_symbole": 0.1},
+       True, True, "—", "mature",
+       0.5, "l'essentiel d'une vidéo est redondant d'une image à l'autre → ne coder que le mouvement/résidu réduit "
+            "massivement le débit ; référence du streaming — redondance temporelle + perte contrôlée"),
+    _P("représentation apprise (autoencodeur / compression neuronale)",
+       "compresser : apprendre une représentation latente compacte des données (avec perte)",
+       {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0, "bits_par_symbole": 0.3},
+       True, True, "—", "recherche",
+       0.4, "un réseau apprend une base adaptée aux données (visages, texte) → meilleure que les transformées fixes "
+            "sur son domaine ; coût de calcul et généralisation hors domaine — le levier « représentation apprise »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("compresseur sans perte « à 1 bit/symbole » (source d'entropie 4)",
+       "compresser : coder SANS PERTE une source d'entropie 4 bits/symbole à 1 bit/symbole",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 4.0, "bits_par_symbole": 1.0},
+       True, True, "—", "revendication",
+       0.3, "1 < 4 bits/symbole : coder sans perte SOUS l'entropie de la source viole le codage de source de "
+            "Shannon — à réfuter"),
+    _P("compresseur sans perte « universel » (réduit tout fichier)",
+       "compresser : algorithme sans perte réduisant la taille de TOUTE entrée",
+       {"type": "compression", "sans_perte": True, "compresse_toute_entree": True},
+       True, True, "—", "revendication",
+       0.25, "aucun compresseur sans perte ne réduit TOUTE entrée (argument de comptage / pigeonnier : si certaines "
+             "rétrécissent, d'autres grandissent) — impossible"),
+]
+
+_OBJECTIF_COMP = ("Le but réel n'est pas de « rétrécir » magiquement mais de retirer la REDONDANCE, sous la borne "
+                  "d'entropie de Shannon : une compression SANS PERTE ne descend pas sous l'entropie H de la source, "
+                  "et aucun compresseur sans perte n'est universel (argument de comptage). Leviers : mieux MODÉLISER "
+                  "la source pour approcher H (codage contextuel/prédictif) ; retirer la redondance (dictionnaires, "
+                  "déduplication) ; changer de représentation (transformée) ; et, pour passer SOUS H, la perte "
+                  "contrôlée (jeter l'imperceptible, fidélité contre taille). Chaque principe reste jugé par la "
+                  "borne d'entropie.")
+_LOI_COMP = ("borne d'entropie (codage de source de Shannon) : une compression sans perte ≥ entropie H de la "
+             "source (bits/symbole), et aucun compresseur sans perte ne réduit toute entrée ; gains réels = mieux "
+             "modéliser la source, retirer la redondance, changer de représentation, ou accepter une perte contrôlée")
+
+# La nature compresse par la règle courte (fractale), le motif répété (cristal), le résumé (mémoire), la réutilisation (évolution).
+_STRATEGIES_NATURE_COMP = [
+    _Nature("fractale naturelle (fougère, chou romanesco)",
+            ["une règle de génération COURTE produit une structure complexe", "auto-similarité à toutes les échelles"],
+            "décrire une structure complexe par une règle courte — la compression algorithmique (Kolmogorov)"),
+    _Nature("cristal (maille répétée)",
+            ["une petite maille décrit tout le solide par répétition", "l'ordre périodique = description minimale"],
+            "décrire le tout par un MOTIF de base répété — le levier « redondance / périodicité »"),
+    _Nature("mémoire humaine (rétention du sens, pas des détails)",
+            ["garde le SENS (gist) et jette les détails littéraux", "reconstruit plausiblement le reste"],
+            "conserver l'essentiel et reconstruire le reste — la compression AVEC perte du vivant"),
+    _Nature("évolution modulaire (réutilisation de gènes)",
+            ["réutilise des modules (domaines protéiques, gènes) au lieu de tout réinventer", "un répertoire partagé"],
+            "réutiliser des modules d'un répertoire partagé plutôt que tout réencoder — le levier « dictionnaire »"),
+]
+
+enregistre(Domaine(
+    nom=_COMP,
+    aliases=frozenset(_ALIAS_COMP),
+    objectif=_OBJECTIF_COMP,
+    canaux=_CANAUX_COMP,
+    principes=_PRINCIPES_COMP,
+    strategies=_STRATEGIES_NATURE_COMP,
+    loi=_LOI_COMP,
+    extras={"borne_entropie": "sans perte ≥ H bits/symbole ; pas de compresseur sans perte universel",
+            "note": "L7 = capacité de canal ≠ L15 = codage de source ; la compression avec perte échange fidélité "
+                    "contre taille en descendant sous H"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

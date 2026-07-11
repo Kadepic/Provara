@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 18e domaine « compresser l'information » + loi L15 (borne d'entropie)
+
+Compresser l'information. Nouvelle loi dure au juge (`L15`), deux volets : (1) une compression SANS PERTE ne
+descend pas sous l'entropie H de la source (codage de source de Shannon) ; (2) aucun compresseur sans perte ne
+réduit TOUTE entrée (argument de comptage / pigeonnier). CONSERVATEUR (FAUX=0) : on ne juge que le SANS PERTE
+déclaré — la compression AVEC PERTE descend légitimement sous H en jetant de l'information → jamais réfutée.
+Distinct de L7 (capacité de canal). Gate `valide_coherence_physique` **224 → 235/235**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (sans perte « 1 bit sur entropie 4 »,
+compresseur sans perte « universel »). Reframing : on ne rétrécit pas magiquement, on retire la REDONDANCE — mieux
+modéliser la source pour approcher H, dictionnaires/déduplication, transformée, ou perte contrôlée (jeter
+l'imperceptible). Couvre codage entropique, LZ/dédup, modèle contextuel/prédictif (IA), déduplication à l'échelle,
+transformée, perceptuel (MP3/JPEG), prédictif vidéo, représentation apprise. 4 stratégies naturelles propres
+(fractale = règle courte, cristal = maille répétée, mémoire = rétention du gist, évolution modulaire =
+réutilisation). Gate `valide_besoin` **340 → 357/357** ; les 17 domaines précédents intacts.
+
+**JALON : 18 DOMAINES D'INVENTION, 15 LOIS PHYSIQUES DANS LE JUGE** (… L14 plafond photosynthétique, L15 borne
+d'entropie / codage de source).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 17e domaine « nourrir / cultiver » + loi L14 (plafond photosynthétique)
 
 Nourrir / cultiver. Nouvelle loi dure au juge (`L14`) : le PLAFOND de rendement PHOTOSYNTHÉTIQUE — la conversion

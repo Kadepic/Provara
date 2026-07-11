@@ -799,13 +799,56 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "limite_betz" in B.decompose("capter l energie du vent"),
       "les 16 domaines précédents inchangés après l'ajout de l'alimentaire (isolation)")
 
+# ── 24) DIX-HUITIÈME DOMAINE : compresser l'information (nouvelle loi L15 = borne d'entropie, codage de source) ──
+dco2 = B.decompose("compresser des donnees")
+check(dco2["statut"] == "decompose", "besoin compression connu -> decompose")
+check("entropie" in dco2["objectif_reel"].lower() and "shannon" in dco2["objectif_reel"].lower(),
+      "objectif réel compression = borne d'entropie de Shannon")
+check("borne_entropie" in dco2, "extras propres : la borne d'entropie")
+comp_canaux = {c.canal for c in dco2["canaux"]}
+check(comp_canaux == {"modele de source", "redondance", "perte controlee", "transformation"},
+      f"4 canaux de la compression ({comp_canaux})")
+prco2 = B.principes("compresser des donnees")
+pco2 = {e["nom"]: e for e in prco2["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : sous l'entropie, et universel
+sous_h = pco2["compresseur sans perte « à 1 bit/symbole » (source d'entropie 4)"]
+check(sous_h["atome"].statut == A.REFUTE, "1 bit sur entropie 4 sans perte -> RÉFUTÉ")
+check(A.est_refute(sous_h["atome"].contenu), "contenu réfuté (1 bit/symbole) dans la garde")
+univ = pco2["compresseur sans perte « universel » (réduit tout fichier)"]
+check(univ["atome"].statut == A.REFUTE, "compresseur sans perte universel -> RÉFUTÉ")
+# procédés réels (dont la compression avec perte) -> SUPPOSITIONS
+for nom in ("codage entropique (Huffman / arithmétique)", "dictionnaire / déduplication (LZ)",
+            "codage perceptuel (MP3, JPEG)"):
+    e = pco2[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prco2["liste"]), "aucun principe de compression promu en FAIT")
+check("candidat pour compression_information" in pco2["codage entropique (Huffman / arithmétique)"]["atome"].portee.condition,
+      "portée des principes de compression nommant compression_information")
+# la loi L15 : sous l'entropie (sans perte) réfuté, avec perte cohérent
+st_co, _, loi_co = COH.juge_dispositif({"type": "compression", "sans_perte": True,
+                                        "entropie_bits_par_symbole": 4.0, "bits_par_symbole": 1.0})
+check(st_co == COH.VIOLE and loi_co == COH.L15, "juge : 1 bit sur entropie 4 sans perte -> VIOLE via L15")
+check(COH.juge_dispositif({"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0,
+                           "bits_par_symbole": 0.5})[0] == COH.COHERENT_BORNE,
+      "compression AVEC PERTE sous H -> cohérent, pas de faux positif")
+# stratégies naturelles propres (fractale, cristal)
+natco = B.strategies_naturelles("compresser des donnees")
+check(len(natco) >= 4 and any("fractale" in s["exemple"].lower() for s in natco), "stratégies compression propres (fractale)")
+check(not any("phytoplancton" in s["exemple"] for s in natco) and not any("salpe" in s["exemple"] for s in natco),
+      "pas de fuite des stratégies alimentaire/fusée vers la compression")
+# les DIX-SEPT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "rendement_photo_max" in B.decompose("cultiver")
+      and "tsiolkovski" in B.decompose("propulsion spatiale"),
+      "les 17 domaines précédents inchangés après l'ajout de la compression (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
-                              "production_alimentaire"],
-      "dix-sept domaines modélisés, dans l'ordre d'enregistrement")
+                              "production_alimentaire", "compression_information"],
+      "dix-huit domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
