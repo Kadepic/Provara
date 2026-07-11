@@ -3010,8 +3010,14 @@ def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str |
             existant = {**_IMM._DD_REGISTRE, **existant}
         elif _IMM._forme_matrice_matrice(toutes):
             existant = {**_IMM._MM_REGISTRE, **existant}
-    elif arite == 3 and existant is not None and _IMM._forme_seq_int_int(exemples + held):
-        existant = {**_IMM._T3_REGISTRE, **existant}
+    elif arite == 3 and existant is not None:
+        toutes3 = exemples + held
+        if _IMM._forme_seq_int_int(toutes3):
+            existant = {**_IMM._T3_REGISTRE, **existant}
+        elif _IMM._forme_str_str_str(toutes3):
+            existant = {**_IMM._SSS_REGISTRE, **existant}
+        elif _IMM._forme_dict_cle_defaut(toutes3):
+            existant = {**_IMM._DCD_REGISTRE, **existant}
     verdict = _IMM.examine_cible_multi(nom, exemples, held, existant=existant)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 

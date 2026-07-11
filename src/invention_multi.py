@@ -651,6 +651,38 @@ def _sondes_seq_int_int(exemples) -> list[tuple]:
     return res
 
 
+# FORMES TERNAIRES HÉTÉROGÈNES PRIMITIVES (atome 18 du palier structurel) : remplace (str, motif, substitut)
+# et get-avec-défaut (dict, clé, défaut) — mesurées brique_manquante, ce sont des PRIMITIVES du langage ->
+# registres ; les variantes d'ORDRE en candidats (les sondes-permutations de l'arité 3 discriminent).
+_SSS_REGISTRE: dict[str, str] = {
+    "remplace": "a.replace(b, c)",
+}
+_SSS_OPS = ["a.replace(c, b)", "b.replace(a, c)", "c.join(a.split(b))"]
+_DCD_REGISTRE: dict[str, str] = {
+    "valeur_ou_defaut": "a.get(b, c)",
+}
+_DCD_OPS = ["a.get(c, b)"]
+
+
+def _forme_str_str_str(toutes):
+    if all(len(x) == 3 and all(isinstance(v, str) for v in x) for x, _ in toutes):
+        return True
+    return None
+
+
+def _forme_dict_cle_defaut(toutes):
+    def _scal(v):
+        return isinstance(v, str) or (isinstance(v, int) and not isinstance(v, bool))
+    if all(len(x) == 3 and isinstance(x[0], dict) and _scal(x[1]) and _scal(x[2]) for x, _ in toutes):
+        return True
+    return None
+
+
+def _candidats_ternaires_het(exemples, registre, ops) -> list[str]:
+    cands: set[str] = set(registre.values()) | set(ops)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b", "c"]), exemples)]
+
+
 # Registre TERNAIRE : capacités connues à trois arguments entiers (rung suivant, patron identique au binaire).
 EXISTANT_TERNAIRE: dict[str, str] = {
     "somme3": "a + b + c",
@@ -836,6 +868,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     forme_dd = _forme_dict_dict(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc) else None
     forme_mm = _forme_matrice_matrice(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc or forme_dd) else None
     forme_t3 = _forme_seq_int_int(toutes) if arite == 3 else None
+    forme_sss = _forme_str_str_str(toutes) if arite == 3 and not forme_t3 else None
+    forme_dcd = _forme_dict_cle_defaut(toutes) if arite == 3 and not (forme_t3 or forme_sss) else None
     if existant is None:
         existant = (dict(_TT_REGISTRE) if forme_tt
                     else {} if forme_ld                  # registre VIDE honnête (rien ne servait la classe)
@@ -846,6 +880,8 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                     else dict(_DD_REGISTRE) if forme_dd
                     else dict(_MM_REGISTRE) if forme_mm
                     else dict(_T3_REGISTRE) if forme_t3
+                    else dict(_SSS_REGISTRE) if forme_sss
+                    else dict(_DCD_REGISTRE) if forme_dcd
                     else _REGISTRES.get(arite, {}))
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
