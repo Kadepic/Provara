@@ -2935,6 +2935,23 @@ def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budg
     return res
 
 
+def materialise_brique(nom: str, signature: str, exemples, exemples_held=None, *, dossier: str,
+                       budget: int = 2000):
+    """SORTIE DURABLE (piste (a)) : forge une brique PUIS la GRAVE en artefact réutilisable hors processus —
+    un module `.py` importable (fonction + provenance) et sa gate auto-écrite qui re-prouve le spec. Ne grave
+    QUE si le verdict est INVENTION ou EXISTE_DEJA (une réalisation existe) ET que le code est audité sûr.
+
+    Renvoie {statut, ...forge, materialise: {ident, module, gate, n_verifie} | {refus} | None}. Sert le moteur
+    d'invention en une brique que d'autres moteurs peuvent IMPORTER, et l'utilisateur exécuter tel quel."""
+    res = forge_brique(nom, signature, exemples, exemples_held, budget=budget)
+    res["materialise"] = None
+    if res["code"] is not None:            # code déjà audité sûr par forge_brique (champ code_refuse)
+        import materialise as _MAT
+        res["materialise"] = _MAT.materialise_brique(
+            nom, res["code"], list(exemples), list(exemples_held or []), dossier, origine=nom)
+    return res
+
+
 if __name__ == "__main__":
     from garde_ressources import borne
     borne()
