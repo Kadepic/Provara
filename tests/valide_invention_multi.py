@@ -15,6 +15,12 @@ a−b par la sonde SWAP (jamais un faux EXISTE_DEJA=difference), et max(a,b) com
 """
 from __future__ import annotations
 
+import json
+import os
+import subprocess
+import sys
+import tempfile
+
 from garde_ressources import borne
 borne(max_cpu_s=400)
 import ia
@@ -160,6 +166,38 @@ check("ternaire ordre : la réalisation dépend BIEN de l'ordre (a↔b diffère)
 # SÉPARATION inter-arités : registre ternaire pas pollué par le binaire (somme3 ≠ EXISTANT_BINAIRE)
 check("séparation : le registre par arité est routé (binaire pour 2, ternaire pour 3)",
       IM.EXISTANT_TERNAIRE is IM._REGISTRES[3] and IM.EXISTANT_BINAIRE is IM._REGISTRES[2])
+
+# ══ FORGE MULTI-ARG : sortie de première classe (verdict + fait + supposition + force_spec + matérialisation) ══
+PB = [(3, 5), (7, 2), (4, 4), (9, 1), (2, 8), (6, 3)]
+psb = [((a, b), a * a + b * b) for a, b in PB]
+d = tempfile.mkdtemp(prefix="forge_multi_")
+fm = ia.forge_brique_multi("sommes_carres", psb[:4], psb[4:], dossier=d)
+check("forge_multi : INVENTION binaire servie avec code + arité",
+      fm["statut"] == MI.INVENTION and fm["code"] and fm["arite"] == 2)
+check("forge_multi : FAIT borné (certain) + SUPPOSITION cadrée présents",
+      fm["fait_borne"] is not None and fm["supposition"] is not None)
+check("forge_multi : force du spec mesurée (mutation testing multi-arg)",
+      fm["force_spec"] is not None and "score" in fm["force_spec"])
+check("forge_multi : code audité sûr (code_refuse None)", fm["code_refuse"] is None)
+check("forge_multi : sortie JSON-sérialisable (servable inter-moteurs)",
+      isinstance(json.dumps(fm, default=str), str))
+check("forge_multi : brique matérialisée gravée", fm["materialise"] and fm["materialise"]["refus"] is None)
+# la gate binaire matérialisée se re-prouve SEULE (subprocess, sans le moteur sur le PYTHONPATH)
+pg = subprocess.run([sys.executable, fm["materialise"]["gate"]], capture_output=True, text=True,
+                    env={**os.environ, "PYTHONPATH": d}, cwd=d, timeout=60)
+check("forge_multi : la gate .py binaire matérialisée passe SEULE (splat ident(*a))", pg.returncode == 0)
+
+# ternaire servi de bout en bout
+pt = [((1, 2, 3), 14), ((2, 0, 1), 5), ((3, 3, 3), 27), ((4, 1, 2), 21), ((5, 5, 5), 75)]
+ft = ia.forge_brique_multi("sc3", pt[:4], pt[4:])
+check("forge_multi : INVENTION ternaire servie (a²+b²+c², arité 3, force mesurée)",
+      ft["statut"] == MI.INVENTION and ft["arite"] == 3 and ft["force_spec"] is not None)
+
+# le MONO forge_brique reste intact (séparation)
+rm = ia.forge_brique("amplitude", "x", [([3, 1, 5], 4), ([2, 2], 0), ([10, 0, 3], 10)],
+                     [([0, 9, 4], 9), ([7], 0), ([5, 5, 1], 4)])
+check("forge_multi : le mono forge_brique reste intact (amplitude -> max-min)",
+      rm["statut"] == MI.INVENTION and rm["code"] is not None and "code_refuse" in rm)
 
 print(f"\n== VALIDE_INVENTION_MULTI : {ok}/{total} ==")
 assert ok == total
