@@ -1,5 +1,39 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — FORGE DE BRIQUES, atome 1 : mémoire de briques sous CONFIANCE ZÉRO AU DISQUE
+
+Lancement du chantier **générateur de briques sous juge d'exécution** (le levier validé — cf.
+`_REPRISE_FORGE_BRIQUES.md` pour la recherche : mutation testing 1978, version spaces 1982,
+superoptimisation 1987, metamorphic testing 1998, CEGIS 2006, STOKE 2013, DreamCoder 2021 — et la file
+d'atomes). Premier atome livré au niveau le plus fin : **`memoire_briques` v2**.
+
+**Le défaut (même famille que « le cache ne signait pas la clé »).** La v1 CROYAIT LE DISQUE :
+`charge()` réinjectait le JSON tel quel dans le registre `existant` — un fichier `briques.json` altéré
+faisait EXÉCUTER (exec au probing) et SERVIR (EXISTE_DEJA) des expressions jamais jugées. Et elle ne
+stockait que nom→expr : sans spec, une brique n'était NI re-jugeable NI servable à l'utilisateur (noms
+opaques `appris_N`).
+
+**Le fix (v2).**
+- **Re-jugement au chargement** : chaque brique porte son spec (exemples+held) et est RE-EXÉCUTÉE sur ce
+  spec à CHAQUE `charge()`. Échec, champ manquant, format v1 sans spec, version inconnue → QUARANTAINE
+  comptée et TRACÉE (`<chemin>.quarantaine`, append-only), JAMAIS injectée. JSON corrompu → pièce
+  préservée en `.corrompu` (l'évidence ne se détruit pas), chargement vide, refus dit. Le disque n'est
+  plus jamais cru sur parole.
+- **Spec à tuples fidèle au disque** : sérialisation `repr`/`ast.literal_eval` (jamais `eval`) avec
+  aller-retour vérifié — JSON nu aurait aplati les tuples en listes et le re-jugement aurait menti.
+- **Admission gardée DANS `retient()`** : l'expr doit reproduire exemples+held (exécution réelle, ici)
+  ET le spec doit être sérialisable — les appelants (`ia.invente_et_retiens`, `restitution.consolide`)
+  ne peuvent plus oublier la garde ; chaque refus est compté. Écriture atomique try/finally (zéro résidu
+  `.tmp`, leçon de la fuite du cache). Noms PARLANTS (origine, collision → suffixe, rien d'écrasé) +
+  `provenance()` servable (expr, origine, date, spec, held, n_verifie) = la **sortie de première classe**
+  demandée (la forge servira le moteur d'invention et l'utilisateur).
+
+Gate `valide_memoire` **10 → 28** (chaque mode d'échec du disque prouvé un par un : expr altérée →
+quarantaine + jamais servie + saines préservées ; JSON corrompu → `.corrompu` ; format v1 → non injecté ;
+tuples préservés ; admission refuse non-reproduit et spec vide ; dé-dup ; collision ; zéro `.tmp`).
+Callers mis à jour (`ia.py`, `restitution.py`), gates dépendantes vertes (restitution 29, bibliothèque 11,
+invention_atomes 18, ia 21). **Non-rég 799/799.**
+
 ## 2026-07-12 — PHASE 3 (ingestion) : rémunération FRANCE ouverte (Dares×FAP), pont ROME→ISCO rejeté au held-out
 
 **La piste « DARES×FAP via le pont ROME » (runbook §4, jamais sondée) est OUVERTE ET EXPLOITÉE.**

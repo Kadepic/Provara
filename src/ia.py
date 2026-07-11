@@ -2844,9 +2844,9 @@ def invente_et_retiens(nom: str, signature: str, exemples, exemples_held, budget
         from memoire_briques import MemoireBriques
         _BRIQUES = MemoireBriques(base=_MI.EXISTANT)
     v = _MI.examine_cible(nom, signature, exemples, exemples_held, budget=budget, existant=_BRIQUES.existant())
-    toutes = list(exemples) + list(exemples_held or [])
-    if v.statut == _MI.INVENTION and v.par and _MI._reproduit(_MI._callable(v.par, "f"), toutes):
-        _BRIQUES.retient(v.par)
+    if v.statut == _MI.INVENTION and v.par:
+        # l'admission est GARDÉE dans retient() (reproduit + spec sérialisable) : impossible d'oublier la garde.
+        _BRIQUES.retient(v.par, origine=nom, exemples=exemples, held=exemples_held or [])
     return v
 
 
