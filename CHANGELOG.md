@@ -1,5 +1,435 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 31e domaine « copier de l'information quantique » + loi L28 (non-clonage)
+
+Copier de l'information quantique. Nouvelle loi dure au juge (`L28`) : le THÉORÈME DE NON-CLONAGE — on ne peut
+copier PARFAITEMENT un état quantique INCONNU (la linéarité de la mécanique quantique l'interdit) ; le clonage
+universel optimal 1→2 plafonne à une fidélité de 5/6. CONSERVATEUR (FAUX=0) : l'information CLASSIQUE (ou un état
+CONNU) se copie parfaitement → on ne réfute que pour un état déclaré INCONNU (`etat_inconnu`) revendiquant un
+clonage parfait ou une fidélité > 5/6. Gate `valide_coherence_physique` **385 → 398/398**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (cloneur universel parfait, cloneur « à
+95 % »). Reframing : ne pas « vaincre » le non-clonage (c'est la SÉCURITÉ de la QKD) mais travailler avec — copier
+l'info classique/connue (parfaite), cloner approximativement (≤ 5/6), téléporter (déplace sans copier),
+mesurer-préparer (base connue), stocker (mémoire quantique). Couvre copie classique, clonage universel 5/6,
+téléportation, mesure-préparation, états orthogonaux, amplificateur quantique, clonage asymétrique, mémoire
+quantique. 4 stratégies naturelles propres (réplication = info classique, mimétisme = copie approximative, empreinte
+= copie de surface, bouturage = propagation classique). Gate `valide_besoin` **561 → 578/578** ; les 30 domaines
+précédents intacts.
+
+**JALON : 31 DOMAINES D'INVENTION, 28 LOIS PHYSIQUES DANS LE JUGE** (… L27 Margolus-Levitin, L28 théorème de
+non-clonage).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 30e domaine « calculer vite » + loi L27 (limite de Margolus-Levitin)
+
+Calculer vite / vitesse de calcul maximale. Nouvelle loi dure au juge (`L27`) : la limite de MARGOLUS-LEVITIN — un
+système d'énergie E effectue au plus 2E/(πℏ) ≈ 6×10³³ opérations élémentaires par seconde et par joule (un état ne
+bascule vers un état orthogonal qu'en un temps ≥ πℏ/2E). Dimension TEMPS, complémentaire de L6 (Landauer, énergie
+par bit). CONSERVATEUR (FAUX=0) : on ne réfute qu'un débit déclaré dépassant 2E/πℏ pour l'énergie déclarée (une
+machine réelle avec des joules en est à ~18 ordres de grandeur en dessous). Gate `valide_coherence_physique`
+**374 → 385/385**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (1e40 ops/s avec 1 J, 1e60 avec 1 MJ).
+Reframing : la vitesse est bornée par l'ÉNERGIE ; le mur réel est la DISSIPATION, pas encore la physique. Leviers :
+plus d'énergie (mais la chaleur explose), faire MOINS d'opérations (algorithme, calcul réversible), paralléliser,
+substrat rapide. Couvre processeur classique, réversible, montée en énergie, quantique, photonique, supraconducteur,
+ordinateur ultime de Lloyd (plafond 2mc²/πℏ), réduction algorithmique. 4 stratégies naturelles propres (ATP synthase
+= cadence bornée par l'énergie, flagelle, ribosome, canal ionique). Gate `valide_besoin` **544 → 561/561** ; les 29
+domaines précédents intacts.
+
+**JALON : 30 DOMAINES D'INVENTION, 27 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+min. séparation, L4 quantité de mouvement, L5 efficacité lumineuse, L6 Landauer, L7 Shannon capacité, L8
+Shockley-Queisser, L9 électrolyse, L10 puissance induite du vol, L11 diffraction d'Abbe, L12 Betz, L13 Tsiolkovski,
+L14 plafond photosynthétique, L15 borne d'entropie, L16 Stefan-Boltzmann, L17 secret parfait, L18 traînée induite,
+L19 bruit de grenaille, L20 facteur de bruit, L21 Nyquist-Shannon, L22 borne du tri, L23 borne de la recherche, L24
+Amdahl, L25 3e principe, L26 limite quantique standard, L27 Margolus-Levitin). Physique de l'information complète :
+L6 énergie/bit + L27 vitesse.
+
+## 2026-07-12 — MOTEUR D'INVENTION : 29e domaine « mesurer le temps » + loi L26 (limite quantique standard)
+
+Mesurer le temps / horloge de précision. Nouvelle loi dure au juge (`L26`) : la LIMITE QUANTIQUE STANDARD —
+l'instabilité fractionnaire d'une horloge à N atomes NON intriqués ≥ 1/(2π·f₀·τ·√N) (bruit de projection
+quantique). CONSERVATEUR (FAUX=0) : l'INTRICATION (spin squeezing) descend sous la LQS vers la limite de Heisenberg
+(1/N) → on ne réfute qu'une horloge NON intriquée revendiquant une stabilité sous la LQS. Gate
+`valide_coherence_physique` **362 → 374/374**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (optique « 1e-19 » non intriquée,
+césium « 1e-16 »). Reframing : la précision vient de moyenner le bruit quantique — monter la FRÉQUENCE f₀
+(optique/nucléaire), plus d'ATOMES (√N), interrogation de Ramsey plus longue (τ), ou INTRIQUER (spin squeezing).
+Couvre césium, optique, réseau optique, fontaine, plus d'atomes, Ramsey longue, intriquée, nucléaire (thorium). 4
+stratégies naturelles propres (horloge circadienne = oscillateur recalé, cigale = cycle premier long, pacemaker =
+oscillateur à rétroaction, migration = calage astronomique). Gate `valide_besoin` **527 → 544/544** ; les 28
+domaines précédents intacts.
+
+**JALON : 29 DOMAINES D'INVENTION, 26 LOIS PHYSIQUES DANS LE JUGE** (… L25 troisième principe, L26 limite quantique
+standard d'une horloge).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 28e domaine « cryogénie / zéro absolu » + loi L25 (troisième principe)
+
+Refroidir vers le zéro absolu / cryogénie. Nouvelle loi dure au juge (`L25`) : le TROISIÈME PRINCIPE — le zéro
+absolu (0 K) est INATTEIGNABLE en un nombre fini d'étapes (retirer toute l'entropie demanderait une infinité
+d'étapes ; chaque étape en retire de moins en moins). CONSERVATEUR (FAUX=0) : on ne réfute qu'une atteinte DÉCLARÉE
+de 0 K ou une température de refroidissement ≤ 0 K. Complète le trio thermodynamique (L1 conservation, L2 Carnot,
+L25 3e principe). Gate `valide_coherence_physique` **348 → 362/362**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (atteinte de 0 K, refroidissement « à
+−1 K »). Reframing : l'objectif n'est pas « d'atteindre 0 K » mais de descendre TOUJOURS PLUS BAS par ÉTAGES (chaque
+mécanisme prend le relais quand le précédent sature). Leviers : étager en cascade, désaimantation adiabatique
+(entropie de spin), refroidissement optique/évaporatif, détente de gaz. Couvre Joule-Thomson, dilution He³/He⁴,
+désaimantation adiabatique/nucléaire, refroidissement laser, évaporatif (BEC), cascade, optomécanique. 4 stratégies
+naturelles propres (nébuleuse du Boomerang = détente adiabatique, fond cosmologique = expansion, évaporation,
+Joule-Thomson). Gate `valide_besoin` **510 → 527/527** ; les 27 domaines précédents intacts.
+
+**JALON : 28 DOMAINES D'INVENTION, 25 LOIS PHYSIQUES DANS LE JUGE** (… L24 loi d'Amdahl, L25 troisième principe de
+la thermodynamique). Trio thermodynamique complet : L1 (1er principe), L2 (2nd principe/Carnot), L25 (3e principe).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 27e domaine « paralléliser un calcul » + loi L24 (loi d'Amdahl)
+
+Accélérer un calcul par parallélisation. Nouvelle loi dure au juge (`L24`) : la loi d'AMDAHL — pour un problème de
+taille FIXE, l'accélération est bornée par 1/(s + (1−s)/p) ≤ 1/s (s = fraction séquentielle), quel que soit le
+nombre de processeurs. CONSERVATEUR (FAUX=0) : la loi de Gustafson (problème AGRANDI, weak scaling,
+`probleme_agrandi`) obtient une accélération quasi linéaire — métrique différente → on ne réfute qu'une
+accélération à taille FIXE dépassant la borne d'Amdahl. Gate `valide_coherence_physique` **335 → 348/348**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (×20 avec 10 % de série, ×100 linéaire
+avec 5 %). Reframing : ajouter des cœurs ne sert à rien si une part reste séquentielle ; RÉDUIRE la fraction série.
+Leviers : réduire la part séquentielle (algorithme, verrous), agrandir le problème (Gustafson), recouvrir la
+communication, équilibrer la charge. Couvre réduction de série, GPU massif, réduction des verrous, équilibrage,
+Gustafson, pipeline calcul/comm, SIMD, map-reduce distribué. 4 stratégies naturelles propres (murmuration
+d'étourneaux = coordination distribuée, corail = croissance indépendante, meute = rôles répartis, moules =
+filtration parallèle). Gate `valide_besoin` **493 → 510/510** ; les 26 domaines précédents intacts.
+
+**JALON : 27 DOMAINES D'INVENTION, 24 LOIS PHYSIQUES DANS LE JUGE** (… L23 borne de la recherche, L24 loi d'Amdahl).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 26e domaine « rechercher dans des données » + loi L23 (borne de la recherche)
+
+Rechercher un élément dans des données. Nouvelle loi dure au juge (`L23`) : la BORNE DE LA RECHERCHE — trouver un
+élément parmi n NON structurés exige en moyenne ≥ n/2 examens (classique, sans index), chaque position étant
+équiprobable. CONSERVATEUR (FAUX=0), deux exceptions par flags : données INDEXÉES (`donnees_indexees` : tri →
+O(log n), hachage → O(1)) ; recherche QUANTIQUE (`recherche_quantique` : Grover, ~√n) → on ne réfute qu'une
+recherche classique NON indexée revendiquant moins de n/2. Gate `valide_coherence_physique` **322 → 335/335**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (1e6 non indexés en 20, 1e9 en 100).
+Reframing : la vitesse vient de PRÉ-STRUCTURER, pas de « chercher plus vite » — indexer (tri, hachage), index
+inversé, filtres probabilistes (Bloom), index approché (ANN), ou Grover (√n). Couvre parcours linéaire, recherche
+binaire, table de hachage, B-arbre, index inversé, filtre de Bloom, Grover, ANN. 4 stratégies naturelles propres
+(chien pisteur = gradient, pigeon = carte mentale, racine = tropisme, prédateur = zone probable). Gate
+`valide_besoin` **476 → 493/493** ; les 25 domaines précédents intacts.
+
+**JALON : 26 DOMAINES D'INVENTION, 23 LOIS PHYSIQUES DANS LE JUGE** (… L22 borne du tri, L23 borne de la recherche).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 25e domaine « trier des données » + loi L22 (borne du tri par comparaison)
+
+Trier / ordonner des données. Nouvelle loi dure au juge (`L22`) : la BORNE DU TRI PAR COMPARAISON — trier n
+éléments arbitraires par comparaisons exige au moins log₂(n!) ≈ n·log₂(n) comparaisons (arbre de décision qui doit
+distinguer les n! ordres). CONSERVATEUR (FAUX=0), deux exceptions par flags : un tri NON comparatif (radix,
+comptage, `tri_par_comparaison` False) exploite la structure des clés en O(n) ; un tri ADAPTATIF sur entrée
+structurée (`entree_arbitraire` non déclaré) exploite l'ordre préexistant → on ne réfute que pour un tri par
+comparaison d'une entrée ARBITRAIRE. Gate `valide_coherence_physique` **307 → 322/322**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (comparaison 1e6 en 1e6, 8 éléments
+en 10). Reframing : on ne bat pas n·log n en COMPARANT ; sortir du modèle — exploiter la structure des clés (radix,
+comptage), ne trier que le nécessaire (top-k), l'ordre préexistant (Timsort), paralléliser, tri externe. Couvre
+fusion/tas, quicksort, radix, comptage, tri externe, tri parallèle (GPU), top-k, adaptatif. 4 stratégies naturelles
+propres (rivière = tri granulométrique, sédimentation = par densité, hiérarchie = ordre émergent, croissance
+différentielle = top-k). Gate `valide_besoin` **459 → 476/476** ; les 24 domaines précédents intacts.
+
+**JALON : 25 DOMAINES D'INVENTION, 22 LOIS PHYSIQUES DANS LE JUGE** (… L21 Nyquist-Shannon, L22 borne du tri par
+comparaison).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 24e domaine « numériser / échantillonner » + loi L21 (Nyquist-Shannon)
+
+Numériser / échantillonner un signal. Nouvelle loi dure au juge (`L21`) : le théorème d'échantillonnage de
+NYQUIST-SHANNON — reconstruire parfaitement un signal de bande B exige fs ≥ 2B ; en dessous, le repliement
+(aliasing) est irréversible. CONSERVATEUR (FAUX=0) : l'acquisition comprimée (compressed sensing) reconstruit un
+signal PARCIMONIEUX sous Nyquist → on ne réfute fs < 2B que pour une reconstruction PARFAITE d'un signal non
+parcimonieux (`signal_parcimonieux` non déclaré). Distinct de L7/L15. Gate `valide_coherence_physique`
+**294 → 307/307**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (reconstruction parfaite 20 kHz à
+30 kHz, fs = B). Reframing : numériser plus vite ne sert à rien au-delà de 2B ; couvrir la BANDE sans repliement.
+Leviers : fs ≥ 2B + filtre anti-repliement, exploiter la parcimonie (acquisition comprimée), sous-échantillonner
+une bande étroite (passe-bande), mise en forme du bruit (sigma-delta). Couvre Nyquist, suréchantillonnage, filtre
+anti-repliement, acquisition comprimée, passe-bande, sigma-delta, non uniforme/événementiel, pipeline. 4
+stratégies naturelles propres (vision = fusion de scintillement, fovéa = échantillonnage non uniforme, écholocation
+= sondage actif, pré-filtrage neuronal = anti-aliasing). Gate `valide_besoin` **442 → 459/459** ; les 23 domaines
+précédents intacts.
+
+**JALON : 24 DOMAINES D'INVENTION, 21 LOIS PHYSIQUES DANS LE JUGE** (… L20 facteur de bruit, L21 Nyquist-Shannon).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 23e domaine « amplifier un signal » + loi L20 (facteur de bruit ≥ 1)
+
+Amplifier un signal. Nouvelle loi dure au juge (`L20`) : un amplificateur N'AMÉLIORE PAS le rapport signal/bruit —
+le facteur de bruit F = SNR_entrée/SNR_sortie ≥ 1 (NF ≥ 0 dB). Amplifier multiplie le signal ET le bruit, et tout
+amplificateur ajoute le sien. CONSERVATEUR (FAUX=0) : on ne réfute qu'un F < 1 (ou NF < 0 dB) déclaré → jamais un
+faux positif (même un amplificateur paramétrique idéal atteint F = 1). Gate `valide_coherence_physique`
+**281 → 294/294**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (F « 0,5 », NF « −1 dB »). Reframing :
+gagner en amplitude ne gagne pas en information ; préserver le SNR. Leviers : faible bruit en TÊTE (Friis : le 1er
+étage domine), refroidir l'étage d'entrée, amplifier TÔT (au capteur), amplification paramétrique/phase-sensible
+(approche 0 dB), ne pas sur-amplifier. Couvre LNA/Friis, cryogénique, paramétrique, préampli au capteur,
+transimpédance, distribué, optique (EDFA), puissance GaN. 4 stratégies naturelles propres (cochlée = amplificateur
+actif, résonance = gain sélectif, osselets = adaptation d'impédance, vibrisse = levier mécanique). Gate
+`valide_besoin` **425 → 442/442** ; les 22 domaines précédents intacts.
+
+**JALON : 23 DOMAINES D'INVENTION, 20 LOIS PHYSIQUES DANS LE JUGE** (… L19 bruit de grenaille, L20 facteur de bruit
+d'un amplificateur).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 22e domaine « détecter un signal faible » + loi L19 (bruit de grenaille)
+
+Détecter un signal lumineux faible / capteur. Nouvelle loi dure au juge (`L19`) : le BRUIT DE GRENAILLE — la
+lumière arrive en photons discrets (Poisson), donc compter N photons plafonne le rapport signal/bruit à √N ; et le
+rendement quantique ≤ 1. CONSERVATEUR (FAUX=0) : la lumière COMPRIMÉE (squeezed) bat la limite quantique standard
+en interférométrie (LIGO) → on ne réfute SNR > √N qu'en lumière classique (`lumiere_comprimee` non déclaré) ; un
+capteur réel reste sous √N. Gate `valide_coherence_physique` **268 → 281/281**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (SNR « 100 sur 100 photons »,
+rendement quantique « 1,2 »). Reframing : on n'amplifie pas au-delà du grain ; le SNR est limité par le NOMBRE de
+photons (√N). Leviers : collecter plus de photons (grande ouverture, longue intégration), réduire les autres
+bruits (refroidir, faible bruit de lecture), monter le QE vers 1, lumière comprimée (quantique). Couvre grand
+télescope, intégration longue, capteur refroidi, faible bruit de lecture, QE élevé, comptage de photons (SPAD),
+moyennage, lumière comprimée. 4 stratégies naturelles propres (bâtonnet = comptage de photons, tapetum = second
+passage, œil composé = sommation, photorécepteur = cascade). Gate `valide_besoin` **408 → 425/425** ; les 21
+domaines précédents intacts.
+
+**JALON : 22 DOMAINES D'INVENTION, 19 LOIS PHYSIQUES DANS LE JUGE** (… L18 traînée induite minimale, L19 bruit de grenaille).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 21e domaine « voler loin / croisière » + loi L18 (traînée induite minimale)
+
+Voler loin / croisière efficace. Nouvelle loi dure au juge (`L18`) : la TRAÎNÉE INDUITE MINIMALE — produire une
+portance L à la vitesse V avec une envergure b coûte au moins L²/(½ρV²πb²) de traînée induite (efficacité
+d'envergure ≤ 1, l'aile elliptique e=1 étant l'optimum). CONSERVATEUR (FAUX=0) : on ne réfute qu'une traînée
+induite déclarée sous ce plancher, ou une efficacité d'envergure > 1. Distinct de L10 (vol stationnaire, puissance
+induite). Gate `valide_coherence_physique` **257 → 268/268**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (aile « à traînée induite nulle »,
+efficacité d'envergure « 1,5 »). Reframing : l'ennemi du vol longue distance est le COÛT DE LA PORTANCE (sillage
+tourbillonnaire) ; comme D_i ∝ 1/b², une grande envergure fine est le levier maître (planeurs, albatros). Autres
+leviers : finesse L/D (Breguet portée ∝ L/D), altitude/vitesse optimale, fraction de carburant (∝ ln(W₀/W₁)),
+portance statique (dirigeable, contourne la traînée induite). Couvre grande envergure, winglet, aile elliptique,
+profil laminaire, vol en formation, plané dynamique/thermique, altitude optimale, dirigeable. 4 stratégies
+naturelles propres (frégate = envergure, vautour = ascendances, martinet = croisière efficace, bout d'aile fendu =
+winglet biologique). Gate `valide_besoin` **391 → 408/408** ; les 20 domaines précédents intacts.
+
+**JALON : 21 DOMAINES D'INVENTION, 18 LOIS PHYSIQUES DANS LE JUGE** (… L17 secret parfait, L18 traînée induite minimale).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 20e domaine « chiffrer / garder un secret » + loi L17 (secret parfait de Shannon)
+
+Chiffrer / garder un secret. Nouvelle loi dure au juge (`L17`) : le SECRET PARFAIT de Shannon (1949) — une
+confidentialité PARFAITE (inconditionnelle) exige une entropie de clé ≥ l'entropie du message (le masque jetable
+l'atteint). CONSERVATEUR (FAUX=0) : on ne juge QUE le secret PARFAIT déclaré — la sécurité CALCULATOIRE (AES, RSA),
+qui ne prétend pas à l'inconditionnel, n'est jamais réfutée. Troisième théorème de Shannon distinct (secret ≠
+capacité L7 ≠ source L15). Gate `valide_coherence_physique` **246 → 257/257**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (secret « parfait » clé 128 bits pour
+1 Mo, masque jetable réutilisé / two-time pad). Reframing : pas de secret parfait gratuit — payer une clé aussi
+longue que le message (inconditionnel) ou se rabattre sur le calculatoire (problème dur). Leviers : allonger la
+clé (OTP), réduire l'entropie du message (compresser avant), distribuer la clé sûrement (QKD), ou assumer
+l'hypothèse calculatoire. Couvre OTP, AES, RSA/ECC, QKD, compression pré-chiffrement, partage à seuil (Shamir),
+AEAD, homomorphe. 4 stratégies naturelles propres (seiche = camouflage, gymnote = signature privée, immunité =
+authentification soi/non-soi, phéromone = canal keyé). Gate `valide_besoin` **374 → 391/391** ; les 19 domaines
+précédents intacts.
+
+**JALON : 20 DOMAINES D'INVENTION, 17 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon
+capacité, L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol, L11
+diffraction d'Abbe, L12 Betz, L13 Tsiolkovski, L14 plafond photosynthétique, L15 borne d'entropie / codage source,
+L16 plancher radiatif Stefan-Boltzmann, L17 secret parfait de Shannon).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 19e domaine « isoler thermiquement » + loi L16 (plancher radiatif Stefan-Boltzmann)
+
+Isoler thermiquement / conserver la chaleur. Nouvelle loi dure au juge (`L16`) : le PLANCHER RADIATIF de
+Stefan-Boltzmann — pas d'isolant parfait. On peut supprimer conduction et convection (vide) mais PAS le
+rayonnement : un objet à T > T_env perd au moins ε·σ·A·(T⁴−T_env⁴), et aucun matériau réel n'a une émissivité
+nulle. CONSERVATEUR (FAUX=0) : on ne réfute qu'une perte déclarée SOUS le plancher radiatif de l'émissivité
+déclarée (conduction/convection ne font qu'ajouter → perte réelle ≥ plancher) ; ε ≤ 0 réfuté d'office. Gate
+`valide_coherence_physique` **235 → 246/246**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (isolation « parfaite » zéro perte,
+matériau « à émissivité nulle »). Reframing : pas de « R infini » ; attaquer CHAQUE voie séparément — vide
+(conduction/convection), basse émissivité/multicouches (rayonnement), géométrie compacte (aire/gradient), masse
+thermique (retarder). Couvre bouteille isotherme, MLI spatial, aérogel, VIP, double vitrage low-e, enveloppe
+réfléchissante, masse thermique/MCP, rupture de ponts thermiques. 4 stratégies naturelles propres (ours polaire =
+air piégé, manchot en huddle = aire réduite, blubber = couche épaisse, duvet réfléchissant = rayonnement). Gate
+`valide_besoin` **357 → 374/374** ; les 18 domaines précédents intacts.
+
+**JALON : 19 DOMAINES D'INVENTION, 16 LOIS PHYSIQUES DANS LE JUGE** (… L15 borne d'entropie, L16 plancher radiatif
+Stefan-Boltzmann).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 18e domaine « compresser l'information » + loi L15 (borne d'entropie)
+
+Compresser l'information. Nouvelle loi dure au juge (`L15`), deux volets : (1) une compression SANS PERTE ne
+descend pas sous l'entropie H de la source (codage de source de Shannon) ; (2) aucun compresseur sans perte ne
+réduit TOUTE entrée (argument de comptage / pigeonnier). CONSERVATEUR (FAUX=0) : on ne juge que le SANS PERTE
+déclaré — la compression AVEC PERTE descend légitimement sous H en jetant de l'information → jamais réfutée.
+Distinct de L7 (capacité de canal). Gate `valide_coherence_physique` **224 → 235/235**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (sans perte « 1 bit sur entropie 4 »,
+compresseur sans perte « universel »). Reframing : on ne rétrécit pas magiquement, on retire la REDONDANCE — mieux
+modéliser la source pour approcher H, dictionnaires/déduplication, transformée, ou perte contrôlée (jeter
+l'imperceptible). Couvre codage entropique, LZ/dédup, modèle contextuel/prédictif (IA), déduplication à l'échelle,
+transformée, perceptuel (MP3/JPEG), prédictif vidéo, représentation apprise. 4 stratégies naturelles propres
+(fractale = règle courte, cristal = maille répétée, mémoire = rétention du gist, évolution modulaire =
+réutilisation). Gate `valide_besoin` **340 → 357/357** ; les 17 domaines précédents intacts.
+
+**JALON : 18 DOMAINES D'INVENTION, 15 LOIS PHYSIQUES DANS LE JUGE** (… L14 plafond photosynthétique, L15 borne
+d'entropie / codage de source).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 17e domaine « nourrir / cultiver » + loi L14 (plafond photosynthétique)
+
+Nourrir / cultiver. Nouvelle loi dure au juge (`L14`) : le PLAFOND de rendement PHOTOSYNTHÉTIQUE — la conversion
+solaire→biomasse ≤ ~12 % (maximum théorique avant respiration ; réalisé ~1–6 %, champ ~1–2 %), bornée par la
+fraction utile du spectre (PAR) et le rendement quantique. CONSERVATEUR (FAUX=0) : le plancher de réfutation
+(12 %) est bien au-dessus du record (~8 % en pointe) → aucune culture/algue réelle n'est réfutée. Gate
+`valide_coherence_physique` **213 → 224/224**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (culture « à 25 % », biomasse
+over-unity). Reframing : pas la biomasse brute mais un maximum de CALORIES COMESTIBLES par surface/eau/intrant.
+Leviers : combler l'écart au plafond (C4, court-circuiter la photorespiration, canopée), SAUTER la photosynthèse
+(fermentation gazeuse H₂/CO₂ → protéine microbienne, découplée du sol/soleil), organismes plus efficaces
+(algues/cyanobactéries), environnement contrôlé, indice de récolte, manger BAS dans la chaîne trophique (−90 % par
+niveau). 4 stratégies naturelles propres (C4 = pompe à CO₂, CAM = stockage nocturne/eau, symbiose rhizobium =
+azote gratuit, phytoplancton = échelle). Gate `valide_besoin` **323 → 340/340** ; les 16 domaines précédents intacts.
+
+**JALON : 17 DOMAINES D'INVENTION, 14 LOIS PHYSIQUES DANS LE JUGE** (… L13 Tsiolkovski, L14 plafond photosynthétique).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 16e domaine « propulsion spatiale » + loi L13 (équation de Tsiolkovski)
+
+Atteindre une grande vitesse dans le vide. Nouvelle loi dure au juge (`L13`) : l'équation de TSIOLKOVSKI — Δv ≤
+ve·ln(m₀/mf). Le gain de vitesse ne croît qu'au LOGARITHME du rapport de masse (la « tyrannie de l'équation de la
+fusée »). CONSERVATEUR (FAUX=0) : on ne réfute que si Δv, vitesse d'éjection ET rapport de masse sont donnés ; le
+momentum EXTERNE (assistance gravitationnelle, voile solaire, ISRU) n'est pas borné par le propergol embarqué →
+une spec sans propergol n'est pas jugée. Distinct de L4 (quantité de mouvement). Gate `valide_coherence_physique`
+**198 → 213/213**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (chimique « à 30 km/s », fusée « sans
+ergols » rapport 1). Reframing : ne pas emporter plus de carburant (retours logarithmiques) mais augmenter la
+VITESSE D'ÉJECTION ve (Δv linéaire en ve), étager, alléger, ou exploiter un MOMENTUM EXTERNE. Couvre chimique,
+ionique/électrique, étagement, nucléaire thermique, nucléaire pulsé (Orion), voile solaire, assistance
+gravitationnelle, ravitaillement in situ. 4 stratégies naturelles propres (salpe = jet pulsé, concombre sauvage =
+éjection balistique, bombardier = jet chimique, raie manta = momentum externe). Gate `valide_besoin`
+**306 → 323/323** ; les 15 domaines précédents intacts.
+
+**JALON : 16 DOMAINES D'INVENTION, 13 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol, L11 diffraction d'Abbe,
+L12 limite de Betz, L13 équation de Tsiolkovski).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 15e domaine « capter l'énergie du vent » + loi L12 (limite de Betz)
+
+Énergie éolienne. Nouvelle loi dure au juge (`L12`) : la limite de BETZ — un rotor ouvert extrait au plus 16/27
+(≈ 59,3 %) de la puissance du vent ½ρAv³ traversant son disque (on ne peut arrêter tout l'air). CONSERVATEUR
+(FAUX=0) : une turbine CARÉNÉE / à diffuseur dépasse Betz PAR RAPPORT À L'AIRE DU ROTOR (le diffuseur aspire plus
+d'air), pas par rapport à l'aire frontale totale → on ne réfute que pour un rotor OUVERT (`avec_diffuseur` non
+déclaré). Deux voies de réfutation : coefficient de puissance Cp > 16/27, ou puissance extraite > 16/27·½ρAv³.
+Gate `valide_coherence_physique` **185 → 198/198**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (Cp 0,7 rotor ouvert, « 50 kW sur
+100 m² à 10 m/s »). Reframing : le mur n'est pas la taille des pales mais 59,3 % ; la puissance disponible est
+LINÉAIRE en aire balayée A et au CUBE de la vitesse v. Leviers : agrandir A (rotors géants), viser un site plus
+venté et monter le mât (v³ → offshore, altitude), approcher Betz (profils), caréner (par aire de rotor). Couvre
+tripale, grand rotor offshore, site venté, profil optimisé, carénée à diffuseur, axe vertical (VAWT), éolien
+aéroporté, multi-rotor. 4 stratégies naturelles propres (pissenlit = vortex de traînée, arbre flexible =
+reconfiguration, oiseau = vol dynamique/cisaillement, graminée = ondulation dissipative). Gate `valide_besoin`
+**289 → 306/306** ; les 14 domaines précédents intacts.
+
+**JALON : 15 DOMAINES D'INVENTION, 12 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol, L11 diffraction d'Abbe,
+L12 limite de Betz).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 14e domaine « voir plus petit » + loi L11 (diffraction d'Abbe)
+
+Résolution optique / voir plus petit. Nouvelle loi dure au juge (`L11`), deux volets : (1) l'ouverture numérique
+NA = n·sinθ ≤ n (indice du milieu) ; (2) en champ lointain CONVENTIONNEL, la résolution ≥ limite d'Abbe λ/(2·NA).
+CONSERVATEUR (FAUX=0) : la super-résolution (champ proche/NSOM, localisation PALM/STORM, illumination structurée
+SIM, déplétion STED) dépasse Abbe LÉGITIMEMENT en exploitant une information hors de son régime → on ne réfute le
+volet (2) que si la spec NE déclare PAS `super_resolution`. Gate `valide_coherence_physique` **165 → 185/185**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (microscope conventionnel « à 50 nm »,
+objectif « NA 1,7 dans l'air »). Reframing : ne pas « grossir » (agrandir l'image ne crée pas de détail) mais
+augmenter l'information spatiale — raccourcir λ (UV/X/électrons), monter NA (immersion, plafonné par l'indice), ou
+contourner le champ lointain (champ proche, localisation de molécules uniques, illumination structurée, déplétion).
+Couvre objectif à sec, immersion, UV, STED, PALM/STORM, SIM, NSOM, microscopie par expansion. 4 stratégies
+naturelles propres (aigle = grande pupille + rétine dense, œil GRIN = correction d'aberration, diatomée =
+nanostructures sous-λ, crevette-mante = multiplexage spectral). Gate `valide_besoin` **272 → 289/289** ; les 13
+domaines précédents intacts.
+
+**JALON : 14 DOMAINES D'INVENTION, 11 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol, L11 diffraction d'Abbe).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 13e domaine « vol stationnaire » + loi L10 (puissance induite idéale)
+
+Voler sur place / se sustenter en vol stationnaire. Nouvelle loi dure au juge (`L10`) : la PUISSANCE INDUITE
+IDÉALE (théorie de la quantité de mouvement / disque actuateur) — pour sustenter une poussée T sur un disque
+d'aire A dans un air ρ, il faut au moins P = T^1,5/√(2ρA). CONSERVATEUR (FAUX=0) : l'effet de sol réduit la
+puissance induite (sol = rotor-image, aire effective ×2) → on ne réfute que SOUS le plancher absolu P/√2
+(indépassable même au ras du sol) → jamais un faux positif (aéronef réel toujours au-dessus, FM ~0,6–0,8). La
+portance STATIQUE (aérostat) n'a pas de disque → non jugée. Gate `valide_coherence_physique` **150 → 165/165**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (drone 2 kg « à 5 W », plateforme
+100 kg « à 50 W »). Reframing : l'ennemi est la CHARGE DU DISQUE (T/A) ; puissance ∝ 1/√A → un grand disque lent
+bat un petit jet rapide (d'où le grand rotor de l'hélico et l'inefficacité du drone à petites hélices). Leviers :
+agrandir le disque, alléger, effet de sol, et surtout PORTANCE STATIQUE (aérostat) qui contourne la puissance
+induite. Couvre hélico grand rotor, multirotor, grand disque lent, coaxial/tandem, aérostat, effet de sol, rotor
+caréné, propulsion distribuée (eVTOL). 4 stratégies naturelles propres (colibri = faible charge de disque, samare
+= autorotation, albatros = éviter le stationnaire, vessie natatoire = flottabilité). Gate `valide_besoin`
+**255 → 272/272** ; les 12 domaines précédents intacts.
+
+**JALON : 13 DOMAINES D'INVENTION, 10 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol stationnaire).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 12e domaine « produire de l'hydrogène » + loi L9 (électrolyse)
+
+Produire de l'hydrogène par électrolyse de l'eau. Nouvelle loi dure au juge (`L9`) : le travail ÉLECTRIQUE ≥ ΔG
+(tension de cellule ≥ E_rev(T) = ΔG(T)/nF, ~1,23 V à 25 °C) ET l'énergie TOTALE ≥ ΔH (PCS de H₂, ~285,8 kJ/mol —
+sinon le H₂ restituerait à la combustion plus que reçu = création nette). CONSERVATEUR (FAUX=0) : la borne sur la
+tension ne vaut que si l'anode fait la réaction STANDARD (dégagement d'O₂, `reaction_anodique_standard`) — car
+l'électrolyse ASSISTÉE (oxydation sacrificielle) descend légitimement sous 1,23 V ; et le modèle E_rev(T) linéaire
+sous-estime le plancher aux hautes températures → un SOEC n'est jamais réfuté à tort. Gate
+`valide_coherence_physique` **132 → 150/150**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (0,9 V à anode standard, H₂ « à
+150 kJ/mol » sous le PCS). Reframing : l'ennemi n'est pas la faisabilité mais la SURTENSION (cellules réelles à
+1,8–2,0 V vs 1,23 V réversible ≈ 40 % de pertes) et le coût des catalyseurs nobles. Leviers : réduire la surtension
+(catalyseurs abondants), monter la TEMPÉRATURE (SOEC), changer la demi-réaction ANODIQUE (oxydation sacrificielle
+sous 1,23 V), coupler à la LUMIÈRE (photoélectrochimique). Couvre alcaline, PEM, SOEC, AEM, assistée, PEC,
+thermochimique S-I, catalyseurs non nobles. 4 stratégies naturelles propres (hydrogénase = catalyseur Fe/Ni
+abondant, photosystème II = oxydation de l'eau sous lumière, microbes = voie douce sacrificielle, membrane =
+séparation sélective). Gate `valide_besoin` **238 → 255/255** ; les 11 domaines précédents intacts.
+
+**JALON : 12 DOMAINES D'INVENTION, 9 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH).
+
+## 2026-07-12 — MOTEUR D'INVENTION : 11e domaine « capter l'énergie solaire » + loi L8 (Shockley-Queisser)
+
+Capter l'énergie solaire. Nouvelle loi dure au juge (`L8`) : la **limite de Shockley-Queisser** — une cellule à
+jonction simple STANDARD (une paire électron-trou par photon, un seul seuil) plafonne à ~33,7 % sous 1 soleil ;
+et, toute architecture confondue, le rendement reste sous le **plafond thermodynamique** du solaire (exergie du
+rayonnement : Landsberg ~93,3 %, Carnot 1−Ta/Ts). CONSERVATEUR (FAUX=0) : la borne SQ ne réfute que si la spec
+DÉCLARE le régime standard (`bilan_detaille_standard`), une jonction simple et pas de concentration — car les
+mécanismes exotiques (multi-excitons, porteurs chauds, bande intermédiaire) et la concentration/les tandems la
+dépassent LÉGITIMEMENT ; la borne absolue (Carnot solaire ~94,8 %) s'applique à toute architecture. Gate
+`valide_coherence_physique` **114 → 132/132**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (mono-jonction standard « à 50 % »,
+panneau « 100 % efficace »). Reframing : ne pas poser plus de surface mais convertir une plus grande part de
+CHAQUE photon (une jonction simple perd les photons sous son gap ET l'excès des photons au-dessus =
+thermalisation). Leviers : empiler des jonctions (spectre, plafond ~86 %), CONCENTRER, récupérer la
+thermalisation (porteurs chauds/MEG/bande intermédiaire), s'approcher de la limite RADIATIVE. Couvre silicium
+mono, tandem pérovskite/Si, multi-jonction III-V concentrée (record ~47 %), porteurs chauds, bande intermédiaire,
+MEG, concentrateur luminescent, thermophotovoltaïque. 4 stratégies naturelles propres (photosynthèse = antenne +
+canalisation, papillon noir = piège-à-lumière, œil de mite = anti-reflet, tournesol = suivi solaire). Gate
+`valide_besoin` **220 → 238/238** ; les 10 domaines précédents intacts. Non-régression complète **797/797 PASS**.
+
+**JALON : 11 DOMAINES D'INVENTION, 8 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7
+Shannon, L8 Shockley-Queisser / exergie du rayonnement solaire).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 10e domaine « communication » + loi L7 (limite de Shannon)
 
 Communiquer/transmettre. Nouvelle loi dure au juge (`L7`) : la **limite de Shannon** — débit sans erreur ≤

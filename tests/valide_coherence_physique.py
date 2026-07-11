@@ -95,6 +95,140 @@ check(loi({"type": "communication", "debit_bits_par_s": 20e6, "bande_passante_Hz
            "rapport_signal_bruit": 1000}) == P.L7, "capacité de canal = Shannon (L7)")
 check(statut({"type": "communication", "debit_bits_par_s": 1e6, "bande_passante_Hz": 0,
               "rapport_signal_bruit": 1000}) == P.VIOLE, "débit > 0 à bande passante NULLE -> VIOLE")
+# limite de Shockley-Queisser : jonction simple STANDARD sous 1 soleil > 33,7 %.
+check(statut({"type": "captation_solaire", "rendement": 0.50, "nb_jonctions": 1, "concentration_solaire": 1,
+              "bilan_detaille_standard": True}) == P.VIOLE, "PV 50% mono-jonction standard 1 soleil > SQ -> VIOLE")
+check(loi({"type": "captation_solaire", "rendement": 0.50, "nb_jonctions": 1, "concentration_solaire": 1,
+           "bilan_detaille_standard": True}) == P.L8, "Shockley-Queisser = L8")
+# plafond ABSOLU (exergie du rayonnement) : > Carnot solaire (~94,8 %) quelle que soit l'architecture.
+check(statut({"type": "captation_solaire", "rendement": 1.0}) == P.VIOLE, "PV 100% > plafond thermo -> VIOLE")
+check(loi({"type": "captation_solaire", "rendement": 1.0}) == P.L8, "plafond thermo solaire = L8")
+# électrolyse : tension SOUS E_rev (anode standard) + énergie totale SOUS le PCS de H₂.
+check(statut({"type": "electrolyse", "tension_cellule_V": 0.9, "t_K": 298.15,
+              "reaction_anodique_standard": True}) == P.VIOLE, "cellule 0,9 V (anode std, 25 °C) < E_rev 1,23 -> VIOLE")
+check(loi({"type": "electrolyse", "tension_cellule_V": 0.9, "t_K": 298.15,
+           "reaction_anodique_standard": True}) == P.L9, "électrolyse (tension < E_rev) = L9")
+check(statut({"type": "electrolyse", "energie_kJ_par_mol_H2": 150}) == P.VIOLE, "150 kJ/mol H₂ < PCS 285,8 -> VIOLE")
+check(loi({"type": "electrolyse", "energie_kJ_par_mol_H2": 150}) == P.L9, "sous le PCS de H₂ = L9")
+# vol stationnaire : puissance sous la puissance induite idéale (théorie de la quantité de mouvement).
+check(statut({"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 5}) == P.VIOLE,
+      "drone 2 kg 0,05 m² à 5 W < P induite (~248 W) -> VIOLE")
+check(loi({"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 5}) == P.L10,
+      "vol stationnaire = L10")
+check(statut({"type": "sustentation", "poussee_N": 981, "aire_rotor_m2": 0.1, "puissance_W": 50}) == P.VIOLE,
+      "plateforme 100 kg 0,1 m² à 50 W < P induite (~62 kW) -> VIOLE")
+# limite de diffraction d'Abbe : résolution sous λ/2NA (conventionnel) + NA > n.
+check(statut({"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4,
+              "resolution_nm": 50}) == P.VIOLE, "50 nm < Abbe ~196 (champ lointain conventionnel) -> VIOLE")
+check(loi({"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4,
+           "resolution_nm": 50}) == P.L11, "diffraction d'Abbe = L11")
+check(statut({"type": "imagerie_optique", "ouverture_numerique": 1.7, "indice_milieu": 1.0,
+              "longueur_onde_nm": 550, "resolution_nm": 300}) == P.VIOLE, "NA 1,7 dans l'air (n=1) -> VIOLE")
+check(loi({"type": "imagerie_optique", "ouverture_numerique": 1.7, "indice_milieu": 1.0}) == P.L11, "NA > n = L11")
+# limite de Betz : coefficient de puissance ou puissance extraite au-dessus de 16/27 (rotor ouvert).
+check(statut({"type": "eolienne", "coefficient_puissance": 0.7}) == P.VIOLE, "Cp 0,7 > Betz 0,593 -> VIOLE")
+check(loi({"type": "eolienne", "coefficient_puissance": 0.7}) == P.L12, "limite de Betz = L12")
+check(statut({"type": "eolienne", "puissance_W": 50000, "aire_balayee_m2": 100,
+              "vitesse_vent_m_s": 10}) == P.VIOLE, "50 kW > Betz ~36,3 kW (100 m², 10 m/s) -> VIOLE")
+# équation de Tsiolkovski : Δv au-dessus de ve·ln(rapport de masse).
+check(statut({"type": "fusee", "delta_v_m_s": 30000, "vitesse_ejection_m_s": 4500,
+              "rapport_masse": 20}) == P.VIOLE, "30 km/s > Tsiolkovski ~13,5 km/s -> VIOLE")
+check(loi({"type": "fusee", "delta_v_m_s": 30000, "vitesse_ejection_m_s": 4500,
+           "rapport_masse": 20}) == P.L13, "Tsiolkovski = L13")
+check(statut({"type": "fusee", "delta_v_m_s": 5000, "vitesse_ejection_m_s": 4500,
+              "rapport_masse": 1}) == P.VIOLE, "Δv > 0 sans ergols (rapport de masse 1) -> VIOLE")
+# plafond photosynthétique : rendement solaire→biomasse au-dessus de ~12 %.
+check(statut({"type": "photosynthese", "rendement_solaire_biomasse": 0.25}) == P.VIOLE,
+      "25 % solaire→biomasse > plafond ~12 % -> VIOLE")
+check(loi({"type": "photosynthese", "rendement_solaire_biomasse": 0.25}) == P.L14, "plafond photosynthétique = L14")
+check(statut({"type": "photosynthese", "rendement_solaire_biomasse": 1.5}) == P.VIOLE,
+      "150 % (over-unity végétale) -> VIOLE")
+# borne d'entropie : compression sans perte sous l'entropie, et compresseur sans perte universel.
+check(statut({"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 4,
+              "bits_par_symbole": 1}) == P.VIOLE, "1 < 4 bits/symbole sans perte -> VIOLE")
+check(loi({"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 4,
+           "bits_par_symbole": 1}) == P.L15, "codage de source = L15")
+check(statut({"type": "compression", "sans_perte": True, "compresse_toute_entree": True}) == P.VIOLE,
+      "compresseur sans perte universel -> VIOLE")
+# plancher radiatif de Stefan-Boltzmann : perte sous εσA(T⁴−T_env⁴), et émissivité nulle.
+check(statut({"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373,
+              "t_env_K": 293, "puissance_perdue_W": 0.1}) == P.VIOLE, "0,1 W < plancher radiatif ~340 W -> VIOLE")
+check(loi({"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373,
+           "t_env_K": 293, "puissance_perdue_W": 0.1}) == P.L16, "Stefan-Boltzmann = L16")
+check(statut({"type": "isolation_thermique", "emissivite": 0.0, "aire_m2": 1, "t_objet_K": 373,
+              "t_env_K": 293}) == P.VIOLE, "émissivité 0 (isolant parfait) -> VIOLE")
+# secret parfait de Shannon : entropie de clé sous l'entropie du message (secret parfait revendiqué).
+check(statut({"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 128,
+              "entropie_message_bits": 8e6}) == P.VIOLE, "clé 128 bits < message 8 Mb, secret parfait -> VIOLE")
+check(loi({"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 128,
+           "entropie_message_bits": 8e6}) == P.L17, "secret parfait = L17")
+check(statut({"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000,
+              "entropie_message_bits": 2000}) == P.VIOLE, "two-time pad (clé réutilisée) -> VIOLE")
+# traînée induite minimale : traînée sous L²/(½ρV²πb²), et efficacité d'envergure > 1.
+check(statut({"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250,
+              "rho_air": 0.4, "trainee_induite_N": 0}) == P.VIOLE, "traînée induite 0 en portance -> VIOLE")
+check(loi({"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250,
+           "rho_air": 0.4, "trainee_induite_N": 0}) == P.L18, "traînée induite = L18")
+check(statut({"type": "vol_croisiere", "efficacite_envergure": 1.5}) == P.VIOLE, "efficacité d'envergure 1,5 > 1 -> VIOLE")
+# bruit de grenaille : SNR au-dessus de √N (lumière classique), et rendement quantique > 1.
+check(statut({"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 100}) == P.VIOLE,
+      "SNR 100 sur 100 photons (>√N=10) -> VIOLE")
+check(loi({"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 100}) == P.L19, "bruit de grenaille = L19")
+check(statut({"type": "detection", "rendement_quantique": 1.2}) == P.VIOLE, "rendement quantique 1,2 > 1 -> VIOLE")
+# facteur de bruit d'un amplificateur : F < 1 (NF < 0 dB) améliorerait le SNR -> impossible.
+check(statut({"type": "amplification", "facteur_de_bruit": 0.5}) == P.VIOLE, "facteur de bruit 0,5 < 1 -> VIOLE")
+check(loi({"type": "amplification", "facteur_de_bruit": 0.5}) == P.L20, "facteur de bruit = L20")
+check(statut({"type": "amplification", "facteur_de_bruit_dB": -3}) == P.VIOLE, "NF -3 dB < 0 -> VIOLE")
+# théorème de Nyquist-Shannon : reconstruction parfaite sous 2B (signal non parcimonieux).
+check(statut({"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000,
+              "reconstruction_parfaite": True}) == P.VIOLE, "30k < 2·20k, reconstruction parfaite -> VIOLE")
+check(loi({"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000,
+           "reconstruction_parfaite": True}) == P.L21, "Nyquist-Shannon = L21")
+check(statut({"type": "echantillonnage", "bande_passante_Hz": 1000, "frequence_echantillonnage_Hz": 1000,
+              "reconstruction_parfaite": True}) == P.VIOLE, "fs = B < 2B -> VIOLE")
+# borne du tri par comparaison : moins de log2(n!) comparaisons (tri par comparaison, entrée arbitraire).
+check(statut({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+              "nb_comparaisons": 1000000}) == P.VIOLE, "1e6 comparaisons < log2(1e6!) ~1,85e7 -> VIOLE")
+check(loi({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+           "nb_comparaisons": 1000000}) == P.L22, "tri par comparaison = L22")
+check(statut({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 8,
+              "nb_comparaisons": 10}) == P.VIOLE, "10 < log2(8!)=15,3 -> VIOLE")
+# borne de la recherche : moins de n/2 examens (classique, non indexé).
+check(statut({"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20}) == P.VIOLE,
+      "20 examens < n/2 (5e5) non indexé -> VIOLE")
+check(loi({"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20}) == P.L23, "recherche = L23")
+check(statut({"type": "recherche", "nb_elements": 1000000000, "nb_requetes_moyennes": 100}) == P.VIOLE,
+      "100 examens << n/2 non indexé -> VIOLE")
+# loi d'Amdahl : accélération au-dessus de 1/(s+(1-s)/p) à taille fixe.
+check(statut({"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 1000,
+              "acceleration": 20}) == P.VIOLE, "accélération 20 > Amdahl ~9,9 (s=0,1) -> VIOLE")
+check(loi({"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 1000,
+           "acceleration": 20}) == P.L24, "Amdahl = L24")
+check(statut({"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 100,
+              "acceleration": 100}) == P.VIOLE, "accélération linéaire (100) avec s=0,05 -> VIOLE")
+# troisième principe : atteinte du zéro absolu / température ≤ 0 K.
+check(statut({"type": "cryogenie", "atteint_zero_absolu": True}) == P.VIOLE, "atteindre 0 K -> VIOLE")
+check(loi({"type": "cryogenie", "atteint_zero_absolu": True}) == P.L25, "3e principe = L25")
+check(statut({"type": "cryogenie", "temperature_atteinte_K": 0.0}) == P.VIOLE, "0 K atteint -> VIOLE")
+check(statut({"type": "cryogenie", "temperature_atteinte_K": -1}) == P.VIOLE, "-1 K (sous 0) -> VIOLE")
+# limite quantique standard d'une horloge : stabilité sous 1/(2π·f₀·τ·√N) (non intriquée).
+check(statut({"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000,
+              "stabilite": 1e-19}) == P.VIOLE, "1e-19 < LQS ~3,2e-18 (non intriquée) -> VIOLE")
+check(loi({"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000,
+           "stabilite": 1e-19}) == P.L26, "limite quantique standard = L26")
+# limite de Margolus-Levitin : plus d'opérations/s que 2E/πℏ.
+check(statut({"type": "vitesse_calcul", "operations_par_seconde": 1e40, "energie_J": 1}) == P.VIOLE,
+      "1e40 ops/s avec 1 J > ML ~6e33 -> VIOLE")
+check(loi({"type": "vitesse_calcul", "operations_par_seconde": 1e40, "energie_J": 1}) == P.L27,
+      "Margolus-Levitin = L27")
+check(statut({"type": "vitesse_calcul", "operations_par_seconde": 1e60, "energie_J": 1e6}) == P.VIOLE,
+      "1e60 ops/s avec 1e6 J > ML ~6e39 -> VIOLE")
+# théorème de non-clonage : copie parfaite / fidélité > 5/6 d'un état quantique inconnu.
+check(statut({"type": "copie_quantique", "etat_inconnu": True, "clonage_parfait": True}) == P.VIOLE,
+      "clonage parfait d'un état inconnu -> VIOLE")
+check(loi({"type": "copie_quantique", "etat_inconnu": True, "clonage_parfait": True}) == P.L28, "non-clonage = L28")
+check(statut({"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.95}) == P.VIOLE,
+      "fidélité 0,95 > 5/6 pour un état inconnu -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -145,6 +279,138 @@ reels = [
     {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},  # sous capacité
     {"type": "communication", "debit_bits_par_s": 9.9e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000}, # proche capacité
     {"type": "communication", "debit_bits_par_s": 1e6},                                # sans B/SNR : indéterminé, PAS un faux positif
+    # captations solaires RÉELLES : sous les limites.
+    {"type": "captation_solaire", "rendement": 0.27, "nb_jonctions": 1, "concentration_solaire": 1,
+     "bilan_detaille_standard": True},                                                 # silicium mono record (< SQ 33,7)
+    {"type": "captation_solaire", "rendement": 0.337, "nb_jonctions": 1, "concentration_solaire": 1,
+     "bilan_detaille_standard": True},                                                 # AU plafond SQ (limite, ok)
+    {"type": "captation_solaire", "rendement": 0.47, "nb_jonctions": 3, "concentration_solaire": 500},  # multi-jonction concentrée (record ~47%)
+    {"type": "captation_solaire", "rendement": 0.42, "nb_jonctions": 1, "concentration_solaire": 1},    # MEG mono-jonction (dépasse SQ légitimement : pas de flag standard) -> PAS un faux positif
+    {"type": "captation_solaire", "rendement": 0.40, "nb_jonctions": 1, "concentration_solaire": 1000},  # mono-jonction CONCENTRÉE (SQ relevée) -> PAS un faux positif
+    {"type": "captation_solaire", "rendement": 0.86},                                  # solaire idéal (< plafond absolu) -> PAS un faux positif
+    {"type": "captation_solaire"},                                                     # sans rendement : indéterminé, PAS un faux positif
+    # électrolyses RÉELLES : au-dessus des planchers.
+    {"type": "electrolyse", "tension_cellule_V": 1.9, "t_K": 353, "reaction_anodique_standard": True},   # alcaline (surtension normale)
+    {"type": "electrolyse", "tension_cellule_V": 1.8, "t_K": 343, "reaction_anodique_standard": True},    # PEM
+    {"type": "electrolyse", "tension_cellule_V": 1.3, "t_K": 1073, "reaction_anodique_standard": True},   # SOEC haute T (E_rev abaissée)
+    {"type": "electrolyse", "tension_cellule_V": 0.8, "t_K": 298.15},                  # assistée sacrificielle (pas d'anode std) -> PAS un faux positif
+    {"type": "electrolyse", "energie_kJ_par_mol_H2": 400},                             # thermochimique (> ΔH)
+    {"type": "electrolyse", "energie_kJ_par_mol_H2": 285.8},                           # AU plancher ΔH (limite, ok)
+    {"type": "electrolyse"},                                                           # spec insuffisante -> PAS un faux positif
+    # sustentations RÉELLES : au-dessus de la puissance induite idéale.
+    {"type": "sustentation", "masse_kg": 2000, "aire_rotor_m2": 113, "puissance_W": 180000},  # hélico grand rotor (P_ideal ~165 kW)
+    {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 300},        # drone petit disque (inefficace mais réel)
+    {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.5, "puissance_W": 100},         # drone grand disque lent (levier aire)
+    {"type": "sustentation", "poussee_N": 19613, "aire_rotor_m2": 113, "puissance_W": 170000}, # au-dessus de P_ideal (poussée donnée)
+    {"type": "sustentation", "masse_kg": 2},                                                   # sans P/A : indéterminé -> PAS un faux positif
+    {"type": "sustentation"},                                                                  # vide -> PAS un faux positif
+    # imageries optiques RÉELLES : au-dessus de la limite d'Abbe, ou super-résolues (exemptées), NA ≤ n.
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5, "resolution_nm": 200},  # optique standard (> Abbe ~196)
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5, "resolution_nm": 197},  # AU Abbe ~196,4 (limite, ok)
+    {"type": "imagerie_optique", "longueur_onde_nm": 250, "ouverture_numerique": 1.0, "indice_milieu": 1.0, "resolution_nm": 130},  # UV (λ court), Abbe ~125
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5, "resolution_nm": 30, "super_resolution": True},   # STED (exempté)
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5, "resolution_nm": 20, "super_resolution": True},   # PALM/STORM (exempté)
+    {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 0.9, "resolution_nm": 50, "super_resolution": True},   # NSOM champ proche (exempté)
+    {"type": "imagerie_optique", "ouverture_numerique": 1.4, "indice_milieu": 1.5},   # NA < n, sans résolution : PAS un faux positif
+    {"type": "imagerie_optique"},                                                     # vide -> PAS un faux positif
+    # éoliennes RÉELLES : sous la limite de Betz (ou carénée, exemptée).
+    {"type": "eolienne", "coefficient_puissance": 0.45},                              # turbine moderne (< Betz)
+    {"type": "eolienne", "coefficient_puissance": 0.592},                             # juste SOUS Betz (16/27 ~0,5926) (limite, ok)
+    {"type": "eolienne", "puissance_W": 27000, "aire_balayee_m2": 100, "vitesse_vent_m_s": 10},  # Cp ~0,44 (< Betz ~36,3 kW)
+    {"type": "eolienne", "coefficient_puissance": 0.7, "avec_diffuseur": True},       # carénée : Cp>Betz par aire rotor -> PAS un faux positif
+    {"type": "eolienne"},                                                             # vide -> PAS un faux positif
+    # propulsions spatiales RÉELLES : sous le Δv de Tsiolkovski (ou momentum externe non jugé).
+    {"type": "fusee", "delta_v_m_s": 13000, "vitesse_ejection_m_s": 4500, "rapport_masse": 20},   # chimique (max ~13481)
+    {"type": "fusee", "delta_v_m_s": 12000, "vitesse_ejection_m_s": 30000, "rapport_masse": 1.5}, # ionique (max ~12164)
+    {"type": "fusee", "delta_v_m_s": 18000, "vitesse_ejection_m_s": 4500, "rapport_masse": 60},   # étagé (max ~18424)
+    {"type": "fusee", "delta_v_m_s": 13480, "vitesse_ejection_m_s": 4500, "rapport_masse": 20},   # AU max ~13480,8 (limite, ok)
+    {"type": "fusee", "vitesse_ejection_m_s": 9000},                                  # sans Δv/rapport : PAS un faux positif
+    {"type": "fusee"},                                                                # vide (voile solaire, momentum externe) -> PAS un faux positif
+    # productions alimentaires RÉELLES : sous le plafond photosynthétique (ou découplées, non jugées).
+    {"type": "photosynthese", "rendement_solaire_biomasse": 0.01},                    # culture C3 en champ
+    {"type": "photosynthese", "rendement_solaire_biomasse": 0.06},                    # C4 / algue optimisée
+    {"type": "photosynthese", "rendement_solaire_biomasse": 0.12},                    # AU plafond théorique (limite, ok)
+    {"type": "photosynthese"},                                                        # sans rendement (fermentation gazeuse) -> PAS un faux positif
+    # compressions RÉELLES : au-dessus de l'entropie (sans perte), ou avec perte (non jugée).
+    {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 2.3},   # gzip texte (> H)
+    {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 2.0},   # AU H (arithmétique, limite, ok)
+    {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 0.5},  # AVEC PERTE (JPEG) sous H -> PAS un faux positif
+    {"type": "compression"},                                                          # vide -> PAS un faux positif
+    # isolations thermiques RÉELLES : au-dessus du plancher radiatif (conduction/convection ajoutent).
+    {"type": "isolation_thermique", "emissivite": 0.05, "aire_m2": 0.1, "t_objet_K": 363, "t_env_K": 293, "puissance_perdue_W": 4},  # thermos (floor ~2,8 W)
+    {"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373, "t_env_K": 293, "puissance_perdue_W": 400},   # objet peint (> floor ~340)
+    {"type": "isolation_thermique", "emissivite": 0.02, "aire_m2": 1},                # sans perte/T : PAS un faux positif
+    {"type": "isolation_thermique"},                                                  # vide -> PAS un faux positif
+    # chiffrements RÉELS : OTP (clé ≥ message) ou calculatoire (non jugé par le secret parfait).
+    {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 1000000},  # OTP (clé = message)
+    {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 500000},   # OTP clé plus longue (ok)
+    {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 8e6},         # AES calculatoire (pas parfait) -> PAS un faux positif
+    {"type": "chiffrement"},                                                          # vide -> PAS un faux positif
+    # vols de croisière RÉELS : au-dessus de la traînée induite minimale, efficacité d'envergure ≤ 1.
+    {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4, "trainee_induite_N": 5000, "efficacite_envergure": 0.8},  # avion de ligne (floor ~3329)
+    {"type": "vol_croisiere", "portance_N": 5000, "envergure_m": 20, "vitesse_m_s": 30, "rho_air": 1.0, "trainee_induite_N": 60, "efficacite_envergure": 0.9},        # planeur (floor ~44)
+    {"type": "vol_croisiere", "efficacite_envergure": 1.0},                           # e=1 (elliptique, limite, ok)
+    {"type": "vol_croisiere"},                                                        # vide -> PAS un faux positif
+    # détections RÉELLES : au plus le bruit de grenaille (ou lumière comprimée, exemptée), QE ≤ 1.
+    {"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 100},          # limité par le grenaille (√N=100, limite, ok)
+    {"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 80},           # bruit de lecture en plus (< √N)
+    {"type": "detection", "rendement_quantique": 0.9},                                # QE réaliste
+    {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 50, "lumiere_comprimee": True},  # squeezed (LIGO) -> PAS un faux positif
+    {"type": "detection"},                                                            # vide -> PAS un faux positif
+    # amplifications RÉELLES : facteur de bruit ≥ 1 (NF ≥ 0 dB).
+    {"type": "amplification", "facteur_de_bruit_dB": 0.5},                            # LNA faible bruit
+    {"type": "amplification", "facteur_de_bruit": 2.0},                              # NF ~3 dB (courant)
+    {"type": "amplification", "facteur_de_bruit": 1.0},                              # AU 0 dB (paramétrique idéal, limite, ok)
+    {"type": "amplification", "gain": 100},                                          # sans facteur de bruit : PAS un faux positif
+    {"type": "amplification"},                                                        # vide -> PAS un faux positif
+    # échantillonnages RÉELS : fs ≥ 2B, ou parcimonieux (exempté), ou sans reconstruction parfaite.
+    {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 44100, "reconstruction_parfaite": True},  # CD audio (> 2B)
+    {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 40000, "reconstruction_parfaite": True},  # AU Nyquist (limite, ok)
+    {"type": "echantillonnage", "bande_passante_Hz": 1000000, "frequence_echantillonnage_Hz": 500000, "reconstruction_parfaite": True, "signal_parcimonieux": True},  # acquisition comprimée -> PAS un faux positif
+    {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000},  # sans reconstruction parfaite (avec pertes) -> PAS un faux positif
+    {"type": "echantillonnage"},                                                      # vide -> PAS un faux positif
+    # tris RÉELS : au moins log2(n!) comparaisons (par comparaison, arbitraire), ou non comparatif/adaptatif (exemptés).
+    {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000, "nb_comparaisons": 20000000},  # mergesort (~n log n > 1,85e7)
+    {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 8, "nb_comparaisons": 16},              # petit tri (> 15,3)
+    {"type": "tri", "tri_par_comparaison": False, "nb_elements": 1000000, "nb_comparaisons": 1000000},  # radix (non comparatif) -> PAS un faux positif
+    {"type": "tri", "tri_par_comparaison": True, "nb_elements": 1000000, "nb_comparaisons": 1000000},   # adaptatif sur entrée non arbitraire -> PAS un faux positif
+    {"type": "tri", "nb_elements": 1000000},                                          # sans nb_comparaisons -> PAS un faux positif
+    {"type": "tri"},                                                                  # vide -> PAS un faux positif
+    # recherches RÉELLES : ≥ n/2 (non indexé), ou indexées/quantiques (exemptées).
+    {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 500000},    # scan linéaire (~n/2)
+    {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20, "donnees_indexees": True},   # recherche binaire (triée) -> PAS un faux positif
+    {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1, "donnees_indexees": True},    # table de hachage O(1) -> PAS un faux positif
+    {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1000, "recherche_quantique": True},  # Grover √n -> PAS un faux positif
+    {"type": "recherche"},                                                            # vide -> PAS un faux positif
+    # parallélisations RÉELLES : sous la borne d'Amdahl (ou problème agrandi, exempté).
+    {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16, "acceleration": 9},   # sous Amdahl (~9,14)
+    {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16, "acceleration": 9.14}, # AU max Amdahl (limite, ok)
+    {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 1000, "acceleration": 100, "probleme_agrandi": True},  # Gustafson (weak scaling) -> PAS un faux positif
+    {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16},        # sans accélération -> PAS un faux positif
+    {"type": "parallelisation"},                                                      # vide -> PAS un faux positif
+    # cryogénies RÉELLES : température > 0 K (aussi basse soit-elle).
+    {"type": "cryogenie", "temperature_atteinte_K": 0.005},                           # réfrigérateur à dilution (~5 mK)
+    {"type": "cryogenie", "temperature_atteinte_K": 1e-6},                            # désaimantation nucléaire (µK)
+    {"type": "cryogenie", "temperature_atteinte_K": 1e-9},                            # refroidissement laser/évaporatif (nK)
+    {"type": "cryogenie", "temperature_atteinte_K": 2.7},                             # fond diffus cosmologique
+    {"type": "cryogenie"},                                                            # vide -> PAS un faux positif
+    # horloges RÉELLES : au-dessus de la limite quantique standard (ou intriquées, exemptées).
+    {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-16},  # horloge optique (> LQS ~3,2e-18)
+    {"type": "horloge", "frequence_Hz": 9.19e9, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 1e-13},  # césium (> LQS ~1,7e-14)
+    {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-19, "intrication": True},  # spin squeezing -> PAS un faux positif
+    {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000},      # sans stabilité -> PAS un faux positif
+    {"type": "horloge"},                                                              # vide -> PAS un faux positif
+    # vitesses de calcul RÉELLES : bien sous la limite de Margolus-Levitin.
+    {"type": "vitesse_calcul", "operations_par_seconde": 1e18, "energie_J": 1000},    # supercalculateur (<< 6e36)
+    {"type": "vitesse_calcul", "operations_par_seconde": 1e30, "energie_J": 1},       # au-dessous de ML (~6e33)
+    {"type": "vitesse_calcul", "operations_par_seconde": 1e18},                       # sans énergie -> PAS un faux positif
+    {"type": "vitesse_calcul"},                                                       # vide -> PAS un faux positif
+    # copies quantiques RÉELLES : classique/connue (parfaite ok), ou clonage approximatif ≤ 5/6.
+    {"type": "copie_quantique", "etat_inconnu": False, "clonage_parfait": True},      # copie d'info CLASSIQUE (parfaite ok)
+    {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.83},              # clonage approximatif optimal (≤ 5/6)
+    {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.8333},            # AU maximum 5/6 (limite, ok)
+    {"type": "copie_quantique", "etat_inconnu": True},                                # sans fidélité ni clonage parfait -> PAS un faux positif
+    {"type": "copie_quantique"},                                                      # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

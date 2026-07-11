@@ -1682,6 +1682,2931 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  ONZIÈME DOMAINE : capter l'énergie solaire. Nouvelle loi dure au juge (L8) : la limite de SHOCKLEY-QUEISSER —
+#  une cellule à jonction simple STANDARD (une paire électron-trou par photon, un seul seuil) plafonne à ~33,7 %
+#  sous 1 soleil ; et, toute architecture confondue, le rendement reste sous le plafond THERMODYNAMIQUE du solaire
+#  (exergie du rayonnement : Landsberg ~93 %, Carnot 1−Ta/Ts). REFRAMING machine : le but n'est pas de poser plus
+#  de surface mais de convertir une plus grande part de CHAQUE photon. Une jonction simple gaspille deux fois — les
+#  photons SOUS son gap la traversent, l'EXCÈS d'énergie des photons au-dessus part en chaleur (thermalisation).
+#  Leviers : empiler des jonctions accordées à des bandes (tandem, plafond ~86 %) ; CONCENTRER (monte la tension,
+#  remplace le semi-conducteur par de l'optique) ; récupérer la thermalisation (porteurs chauds / multi-excitons /
+#  bande intermédiaire) ; s'approcher de la limite RADIATIVE (matériaux purs, recyclage des photons).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_SOLAIRE = "captation_solaire"
+_ALIAS_SOLAIRE = {
+    "capter l energie solaire", "convertir la lumiere du soleil", "produire de l electricite solaire",
+    "capter le rayonnement solaire", "photovoltaique", "exploiter l energie du soleil",
+}
+
+# ── « Canaux » : les leviers du rendement de conversion solaire ──────────────────────────────────────────────────
+_CANAUX_SOLAIRE = [
+    Canal("spectre", "lumiere", "capter une PLUS GRANDE part du spectre : empiler des jonctions (tandem) accordées à des bandes différentes",
+          True, "une jonction simple perd les photons SOUS son gap ET l'excès des photons au-dessus (thermalisation) ; "
+                "empiler des gaps récupère les deux — le plus grand levier, plafond ~86 % en multi-jonction"),
+    Canal("concentration", "lumiere", "CONCENTRER la lumière (miroirs/lentilles) : plus de photons par cellule → tension plus haute",
+          True, "la concentration relève la limite de rendement (jusqu'à ~46 200 soleils) et remplace du semi-conducteur "
+                "cher par de l'optique ; exige un suivi précis et d'évacuer la chaleur"),
+    Canal("thermalisation", "lumiere", "récupérer l'excès d'énergie des photons chauds AVANT dissipation (porteurs chauds, bande intermédiaire, multi-excitons)",
+          True, "l'énergie au-dessus du gap est perdue en chaleur dans une cellule normale ; l'extraire (porteurs "
+                "chauds) ou la fractionner (MEG, bande intermédiaire) attaque la 2e grande perte — encore en labo"),
+    Canal("recombinaison", "lumiere", "s'approcher de la limite RADIATIVE : supprimer la recombinaison non-radiative (matériaux purs, passivation, recyclage des photons)",
+          True, "le meilleur émetteur est le meilleur absorbeur : une cellule qui ne perd de porteurs QUE par "
+                "rayonnement atteint la limite de Shockley-Queisser — le levier « qualité du matériau »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Shockley-Queisser / le plafond thermodynamique (type `captation_solaire`) ──
+_PRINCIPES_SOLAIRE = [
+    _P("cellule silicium mono-jonction (référence)",
+       "capter le solaire : cellule silicium à jonction unique sous lumière ambiante (1 soleil)",
+       {"type": "captation_solaire", "rendement": 0.27, "nb_jonctions": 1, "concentration_solaire": 1,
+        "bilan_detaille_standard": True}, True, True,
+       "—", "mature",
+       0.65, "la référence du marché (~27 % en labo, ~22 % en module) ; sous la limite de Shockley-Queisser (33,7 %) "
+             "— les gains restants passent par la tandem, pas par le silicium seul"),
+    _P("tandem pérovskite/silicium (multi-jonction)",
+       "capter le solaire : empiler une jonction pérovskite (gap large) sur le silicium pour capter plus du spectre",
+       {"type": "captation_solaire", "rendement": 0.33, "nb_jonctions": 2, "concentration_solaire": 1}, True, True,
+       "—", "émergent (industrialisation)",
+       0.6, "dépasse la limite mono-jonction : la jonction haute prend les photons bleus, le silicium les rouges ; "
+            "stabilité de la pérovskite à prouver — le levier « spectre » le plus proche du marché"),
+    _P("multi-jonction III-V sous concentration (CPV)",
+       "capter le solaire : cellule III-V à 3+ jonctions sous forte concentration optique",
+       {"type": "captation_solaire", "rendement": 0.47, "nb_jonctions": 3, "concentration_solaire": 500}, True, True,
+       "—", "mature (spatial/CPV)",
+       0.55, "record mondial (~47 %) : concentration ET plusieurs jonctions cumulent les deux leviers ; coût des "
+             "matériaux III-V et suivi solaire exigeant → spatial et CPV, pas le toit domestique"),
+    _P("cellule à porteurs chauds",
+       "capter le solaire : extraire les porteurs AVANT qu'ils ne thermalisent, pour récupérer l'excès d'énergie des photons bleus",
+       {"type": "captation_solaire", "rendement": 0.55, "nb_jonctions": 1, "concentration_solaire": 1000}, True, True,
+       "—", "recherche",
+       0.4, "attaque la 2e grande perte (thermalisation) SANS empiler de jonctions ; exige une extraction "
+            "ultra-rapide et des contacts sélectifs en énergie — horizon lointain mais dans les lois"),
+    _P("cellule à bande intermédiaire",
+       "capter le solaire : une bande d'énergie intermédiaire absorbe AUSSI les photons sous le gap principal",
+       {"type": "captation_solaire", "rendement": 0.45, "nb_jonctions": 1, "concentration_solaire": 100}, True, True,
+       "—", "recherche",
+       0.4, "récupère les photons infrarouges normalement perdus via un niveau intermédiaire, sans multiplier les "
+            "jonctions ; matériaux à points quantiques/impuretés à maîtriser — piste sous-exploitée"),
+    _P("génération multi-excitons (points quantiques)",
+       "capter le solaire : un photon très énergétique libère PLUSIEURS paires électron-trou au lieu d'une",
+       {"type": "captation_solaire", "rendement": 0.42, "nb_jonctions": 1, "concentration_solaire": 1}, True, True,
+       "—", "recherche",
+       0.35, "fractionne l'énergie d'un photon bleu en plusieurs porteurs au lieu de la perdre en chaleur (dépasse "
+             "SQ légitimement, hors régime standard) ; rendements quantiques >100 % démontrés sur points quantiques "
+             "mais courants faibles — exploratoire"),
+    _P("concentrateur luminescent / découpage spectral",
+       "capter le solaire : un guide fluorescent concentre et trie la lumière vers des cellules adaptées à chaque couleur",
+       {"type": "captation_solaire", "rendement": 0.20, "nb_jonctions": 1, "concentration_solaire": 1}, True, True,
+       "—", "recherche (BIPV)",
+       0.35, "capte la lumière diffuse et se pose en façade/fenêtre (pas besoin de suivi) ; pertes de ré-absorption "
+             "à réduire — le levier « intégration au bâti »"),
+    _P("thermophotovoltaïque solaire (absorbeur chaud + PV IR)",
+       "capter le solaire : chauffer un absorbeur qui ré-émet un spectre étroit adapté à une cellule infrarouge",
+       {"type": "captation_solaire", "rendement": 0.30, "nb_jonctions": 1, "concentration_solaire": 1000}, True, True,
+       "—", "recherche",
+       0.35, "met en forme le spectre pour l'accorder à la cellule et permet le STOCKAGE thermique (produire la "
+             "nuit) ; hautes températures et pertes radiatives à dompter — pont vers le stockage d'énergie"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("panneau mono-jonction « à 50 % » (1 soleil)",
+       "capter le solaire : cellule à jonction unique STANDARD revendiquant 50 % sous lumière non concentrée",
+       {"type": "captation_solaire", "rendement": 0.50, "nb_jonctions": 1, "concentration_solaire": 1,
+        "bilan_detaille_standard": True}, True, True,
+       "—", "revendication",
+       0.3, "50 % > limite de Shockley-Queisser (33,7 % pour une jonction simple standard sous 1 soleil) — à réfuter "
+            "par le bilan détaillé"),
+    _P("panneau solaire « 100 % efficace »",
+       "capter le solaire : convertir TOUTE l'énergie du rayonnement solaire en électricité",
+       {"type": "captation_solaire", "rendement": 1.0}, True, True,
+       "—", "revendication",
+       0.25, "100 % dépasse le plafond thermodynamique du solaire (exergie du rayonnement, Landsberg ~93 % / Carnot "
+             "~95 %) — impossible"),
+]
+
+_OBJECTIF_SOLAIRE = ("Le but réel n'est pas de poser plus de surface mais de convertir une plus grande part de "
+                     "CHAQUE photon. Une jonction simple gaspille deux fois : les photons SOUS son gap la traversent, "
+                     "et l'EXCÈS d'énergie des photons au-dessus part en chaleur (thermalisation) — d'où le plafond de "
+                     "Shockley-Queisser (~33,7 % sous 1 soleil). Leviers : empiler des jonctions accordées à des "
+                     "bandes différentes (tandem/multi-jonction, plafond ~86 %) ; CONCENTRER la lumière (monte la "
+                     "tension, remplace le semi-conducteur par de l'optique) ; récupérer la thermalisation (porteurs "
+                     "chauds, bande intermédiaire, multi-excitons) ; s'approcher de la limite RADIATIVE (matériaux "
+                     "purs, recyclage des photons). La borne indépassable de toute architecture reste thermodynamique "
+                     "(exergie du rayonnement solaire). Chaque principe reste jugé par ces limites.")
+_LOI_SOLAIRE = ("le rendement de conversion solaire est borné : une cellule à jonction simple en régime STANDARD "
+                "(une paire électron-trou par photon, un seul seuil) plafonne à la limite de Shockley-Queisser "
+                "(~33,7 % sous 1 soleil) ; la borne ABSOLUE de toute architecture est thermodynamique (exergie du "
+                "rayonnement, Landsberg ~93 %, Carnot 1−Ta/Ts) ; gains réels = empiler les jonctions (spectre), "
+                "concentrer, récupérer la thermalisation (porteurs chauds/MEG/bande intermédiaire), s'approcher de "
+                "la limite radiative")
+
+# La nature capte la lumière par une large antenne (photosynthèse), un piège (papillon), un anti-reflet (mite), un suivi (tournesol).
+_STRATEGIES_NATURE_SOLAIRE = [
+    _Nature("photosynthèse (antennes collectrices + centre réactionnel)",
+            ["large ANTENNE de pigments capte un spectre étendu", "transfert d'excitation quasi sans perte vers le centre",
+             "canalise l'énergie vers un seul site de conversion"],
+            "capter large PUIS canaliser l'énergie vers un convertisseur — le levier « spectre » + collecte"),
+    _Nature("aile de papillon noir (écailles piège-à-lumière)",
+            ["nanostructures qui piègent la lumière par réflexions multiples", "absorption quasi totale sur une couche mince"],
+            "PIÉGER la lumière dans une couche mince plutôt qu'épaissir l'absorbeur — le light-trapping"),
+    _Nature("œil de mite (nanostructures anti-reflet)",
+            ["réseau de bosses sub-longueur d'onde annulant la réflexion", "transition d'indice progressive"],
+            "ne rien RÉFLÉCHIR : capter les photons au lieu de les renvoyer — l'anti-reflet gratuit"),
+    _Nature("héliotropisme du tournesol (suivi solaire)",
+            ["orientation continue face au soleil", "maximise le flux reçu au fil du jour"],
+            "SUIVRE le soleil pour maximiser le flux capté — l'analogue du tracking et de la concentration"),
+]
+
+enregistre(Domaine(
+    nom=_SOLAIRE,
+    aliases=frozenset(_ALIAS_SOLAIRE),
+    objectif=_OBJECTIF_SOLAIRE,
+    canaux=_CANAUX_SOLAIRE,
+    principes=_PRINCIPES_SOLAIRE,
+    strategies=_STRATEGIES_NATURE_SOLAIRE,
+    loi=_LOI_SOLAIRE,
+    extras={"plafond_shockley_queisser": "≈ 33,7 % (jonction simple standard, 1 soleil)",
+            "plafond_absolu": "exergie du rayonnement solaire : Landsberg ~93,3 %, Carnot 1−Ta/Ts ~94,8 %",
+            "note": "multi-jonction + concentration cumulent les leviers (record ~47 % ; idéal ~86 %)"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DOUZIÈME DOMAINE : produire de l'hydrogène (électrolyse de l'eau). Nouvelle loi dure au juge (L9) : le travail
+#  électrique minimal = l'enthalpie libre de Gibbs ΔG (tension de cellule ≥ E_rev ≈ 1,23 V à 25 °C) ET l'énergie
+#  TOTALE ≥ l'enthalpie ΔH (PCS de H₂, ~285,8 kJ/mol). REFRAMING machine : l'ennemi n'est pas la faisabilité (on
+#  sait scinder l'eau depuis 1800) mais la SURTENSION — les cellules réelles tournent à 1,8–2,0 V contre 1,23 V
+#  réversible, soit ~40 % d'énergie gaspillée — et le COÛT des catalyseurs nobles (Pt/Ir). Leviers : réduire la
+#  surtension (catalyseurs actifs abondants) ; monter la TEMPÉRATURE (SOEC : E_rev chute, une part de l'énergie
+#  vient de la chaleur) ; réaction ANODIQUE alternative (oxydation sacrificielle valorisant un sous-produit, sous
+#  1,23 V légitimement) ; coupler directement à la LUMIÈRE (photoélectrochimique).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_H2 = "production_hydrogene"
+_ALIAS_H2 = {
+    "produire de l hydrogene", "fabriquer de l hydrogene", "electrolyse de l eau",
+    "produire de l hydrogene vert", "fractionner l eau", "hydrogene par electrolyse",
+}
+
+# ── « Canaux » : les leviers pour rapprocher l'électrolyse de son minimum thermodynamique ────────────────────────
+_CANAUX_H2 = [
+    Canal("surtension", "energie", "réduire la SURTENSION : catalyseurs très actifs pour approcher E_rev (~1,23 V)",
+          True, "une cellule réelle à 1,8–2,0 V gaspille ~40 % en surtension ; chaque dixième de volt gagné est de "
+                "l'énergie directe — le plus gros levier de rendement à basse température"),
+    Canal("temperature", "energie", "monter la TEMPÉRATURE (électrolyse à oxyde solide) : E_rev baisse, la chaleur fournit une part",
+          True, "à haute température ΔG diminue (une part de l'énergie vient de la chaleur, souvent fatale/solaire) → "
+                "la demande ÉLECTRIQUE chute ; exige des matériaux céramiques tenant 700–900 °C"),
+    Canal("catalyseur", "energie", "remplacer les métaux NOBLES (Pt/Ir) par des catalyseurs abondants (Ni-Fe, sulfures)",
+          True, "attaque le COÛT et la rareté plus que l'énergie : des catalyseurs terrestres abondants rendent "
+                "l'électrolyse déployable à l'échelle du térawatt — le verrou industriel"),
+    Canal("anode", "energie", "réaction ANODIQUE alternative : oxyder un composé sacrificiel au lieu de dégager l'O₂",
+          True, "remplacer l'oxydation de l'eau (coûteuse) par celle d'un sous-produit (urée, alcools, biomasse) "
+                "abaisse la tension SOUS 1,23 V et valorise un déchet — le levier « changer la demi-réaction »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite d'électrolyse (type `electrolyse`, tension ≥ E_rev, énergie ≥ ΔH) ──
+_PRINCIPES_H2 = [
+    _P("électrolyse alcaline (référence)",
+       "produire H₂ : électrolyse alcaline classique (électrodes nickel dans une solution de potasse)",
+       {"type": "electrolyse", "tension_cellule_V": 1.9, "t_K": 353, "reaction_anodique_standard": True}, True, True,
+       "—", "mature",
+       0.65, "la technologie la plus déployée, robuste et sans métaux nobles ; tension ~1,8–2,0 V (surtension "
+             "notable) → la référence dont il faut réduire la surtension"),
+    _P("électrolyse PEM (membrane échangeuse de protons)",
+       "produire H₂ : électrolyseur à membrane polymère, réactif et compact, sous catalyseurs iridium/platine",
+       {"type": "electrolyse", "tension_cellule_V": 1.8, "t_K": 343, "reaction_anodique_standard": True}, True, True,
+       "—", "mature",
+       0.6, "densités de courant élevées et réponse rapide (adapté au renouvelable intermittent) ; dépend d'iridium "
+            "rare à l'anode → le verrou catalyseur"),
+    _P("électrolyse à oxyde solide (SOEC, haute température)",
+       "produire H₂ : électrolyse à 700–900 °C où une part de l'énergie est apportée par la chaleur",
+       {"type": "electrolyse", "tension_cellule_V": 1.3, "t_K": 1073, "reaction_anodique_standard": True}, True, True,
+       "—", "émergent",
+       0.55, "à haute température E_rev chute → demande électrique la plus basse, surtout si la chaleur est fatale "
+             "ou solaire ; dégradation des céramiques et cyclage thermique à maîtriser — le levier « température »"),
+    _P("électrolyse à membrane échangeuse d'anions (AEM)",
+       "produire H₂ : membrane alcaline solide combinant catalyseurs abondants et architecture compacte",
+       {"type": "electrolyse", "tension_cellule_V": 1.8, "t_K": 333, "reaction_anodique_standard": True}, True, True,
+       "—", "recherche (industrialisation)",
+       0.5, "vise le meilleur des deux mondes : catalyseurs non nobles (comme l'alcaline) et compacité (comme le "
+            "PEM) ; durabilité des membranes à prouver — piste industrielle sous-exploitée"),
+    _P("électrolyse assistée (oxydation sacrificielle à l'anode)",
+       "produire H₂ : remplacer le dégagement d'O₂ par l'oxydation d'un composé (urée, alcool, biomasse) sous 1,23 V",
+       {"type": "electrolyse", "tension_cellule_V": 0.8, "t_K": 298.15}, True, True,
+       "—", "recherche",
+       0.45, "descend LÉGITIMEMENT sous la tension réversible de l'eau car une AUTRE réaction fournit l'énergie et "
+             "valorise un déchet ; consomme le composé sacrificiel → pas universel, mais élégant en co-production"),
+    _P("cellule photoélectrochimique (scission directe par la lumière)",
+       "produire H₂ : un semi-conducteur immergé scinde l'eau directement sous l'éclairement solaire",
+       {"type": "electrolyse", "energie_kJ_par_mol_H2": 500}, True, True,
+       "—", "recherche",
+       0.4, "supprime l'étape électrique séparée (le photon fait le travail) → potentiellement simple et bon marché ; "
+            "rendements et stabilité des photo-électrodes encore faibles — horizon lointain, dans les lois"),
+    _P("cycle thermochimique (soufre-iode, chaleur haute température)",
+       "produire H₂ : scinder l'eau par une suite de réactions chimiques entraînées par la chaleur, sans électricité",
+       {"type": "electrolyse", "energie_kJ_par_mol_H2": 450}, True, True,
+       "—", "recherche",
+       0.4, "utilise directement de la chaleur haute température (nucléaire, solaire concentré) au lieu d'électricité ; "
+            "corrosion et complexité des boucles chimiques à dompter — voie « chaleur → H₂ »"),
+    _P("catalyseurs sans métaux nobles (Ni-Fe, sulfures, phosphures)",
+       "produire H₂ : électrolyse alcaline avec catalyseurs terrestres abondants réduisant la surtension",
+       {"type": "electrolyse", "tension_cellule_V": 1.7, "t_K": 353, "reaction_anodique_standard": True}, True, True,
+       "—", "recherche (regain)",
+       0.5, "attaque à la fois la surtension (matériaux plus actifs) et le coût (aucun métal rare) → condition du "
+            "déploiement massif ; stabilité en fonctionnement continu à prouver — levier « catalyseur abondant »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("électrolyseur « à 0,9 V » (anode standard, ambiant)",
+       "produire H₂ : cellule à anode standard (dégagement d'O₂) revendiquant 0,9 V à température ambiante",
+       {"type": "electrolyse", "tension_cellule_V": 0.9, "t_K": 298.15, "reaction_anodique_standard": True}, True, True,
+       "—", "revendication",
+       0.3, "0,9 V < tension réversible de l'eau (~1,23 V à 25 °C, anode O₂) — le fractionnement net ne peut pas se "
+            "produire ; à réfuter par le 2nd principe (ΔG)"),
+    _P("hydrogène « à 150 kJ/mol » (sous le PCS)",
+       "produire H₂ : fabriquer une mole de H₂ avec 150 kJ d'énergie totale",
+       {"type": "electrolyse", "energie_kJ_par_mol_H2": 150}, True, True,
+       "—", "revendication",
+       0.25, "150 kJ/mol < PCS de H₂ (285,8 kJ/mol, ΔH) : le H₂ restituerait à la combustion plus d'énergie qu'il "
+             "n'en a reçu = création nette — impossible"),
+]
+
+_OBJECTIF_H2 = ("Le but réel n'est pas de « savoir » scinder l'eau (acquis depuis 1800) mais de le faire au plus "
+                "près du minimum thermodynamique et avec des matériaux abondants. Deux planchers : le travail "
+                "ÉLECTRIQUE ≥ ΔG (enthalpie libre de Gibbs, tension ≥ E_rev ≈ 1,23 V à 25 °C) et l'énergie TOTALE "
+                "≥ ΔH (PCS de H₂, "
+                "~285,8 kJ/mol). L'ennemi est la SURTENSION (cellules réelles à 1,8–2,0 V ≈ 40 % de pertes) et le "
+                "coût des catalyseurs nobles. Leviers : réduire la surtension (catalyseurs actifs abondants) ; "
+                "monter la TEMPÉRATURE (SOEC : E_rev chute, la chaleur fournit une part) ; changer la réaction "
+                "ANODIQUE (oxydation sacrificielle sous 1,23 V, valorise un déchet) ; coupler directement à la "
+                "LUMIÈRE (photoélectrochimique). Chaque principe reste jugé par ces limites.")
+_LOI_H2 = ("électrolyse de l'eau : l'énergie électrique par mole de H₂ ≥ ΔG (tension de cellule ≥ E_rev(T) = "
+           "ΔG(T)/nF, ~1,23 V à 25 °C, abaissée à haute température) et l'énergie TOTALE ≥ ΔH (PCS de H₂, "
+           "~285,8 kJ/mol) ; gains réels = réduire la surtension, monter la température, changer la demi-réaction "
+           "anodique, catalyseurs abondants")
+
+# La nature scinde l'eau et fabrique H₂ : enzyme à métaux abondants, photosystème II, microbes, séparation membranaire.
+_STRATEGIES_NATURE_H2 = [
+    _Nature("hydrogénase (enzyme à fer/nickel)",
+            ["catalyse H⁺ ⇄ H₂ à très basse surtension", "site actif à base de fer/nickel ABONDANTS", "vitesse comparable au platine"],
+            "catalyser avec des métaux ABONDANTS aussi bien qu'avec le platine — le levier « catalyseur sans métal noble »"),
+    _Nature("photosystème II (oxydation de l'eau par la lumière)",
+            ["complexe au manganèse oxyde l'eau", "entraîné directement par les photons", "faible surtension à l'anode"],
+            "oxyder l'eau à l'anode à basse surtension et sous la lumière — le levier « photo-assistance + catalyseur d'O₂ »"),
+    _Nature("microbes producteurs d'H₂ (fermentation, nitrogénase)",
+            ["produisent H₂ à température et pression ambiantes", "à partir de biomasse/déchets"],
+            "produire H₂ en conditions douces à partir d'un déchet — la voie biologique sacrificielle"),
+    _Nature("membrane biologique (tri des gaz à mesure)",
+            ["sépare les gaz produits sélectivement", "évite la recombinaison H₂/O₂"],
+            "SÉPARER H₂ et O₂ dès leur formation pour éviter la recombinaison — le levier « membrane sélective »"),
+]
+
+enregistre(Domaine(
+    nom=_H2,
+    aliases=frozenset(_ALIAS_H2),
+    objectif=_OBJECTIF_H2,
+    canaux=_CANAUX_H2,
+    principes=_PRINCIPES_H2,
+    strategies=_STRATEGIES_NATURE_H2,
+    loi=_LOI_H2,
+    extras={"tension_reversible_V": "~1,23 V (25 °C, ΔG/2F ; abaissée à haute température)",
+            "pcs_h2_kJ_mol": "285,8 (ΔH, plancher de l'énergie totale)",
+            "note": "cellules réelles à 1,8–2,0 V ≈ 40 % de surtension ; SOEC et anode alternative rapprochent de E_rev"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  TREIZIÈME DOMAINE : voler sur place / vol stationnaire. Nouvelle loi dure au juge (L10) : la PUISSANCE INDUITE
+#  IDÉALE (théorie de la quantité de mouvement / disque actuateur) — pour sustenter une poussée T sur un disque
+#  d'aire A dans un air de masse volumique ρ, il faut au moins P = T^1,5/√(2ρA) (plancher absolu P/√2 en effet de
+#  sol maximal). REFRAMING machine : l'ennemi est la CHARGE DU DISQUE (T/A) — la puissance croît en √(T/A), donc
+#  un GRAND disque lent bat un petit jet rapide (c'est pourquoi l'hélicoptère a un grand rotor et le drone est
+#  inefficace). Leviers : agrandir le disque (P ∝ 1/√A, de loin le plus gros) ; alléger (T = m·g) ; exploiter
+#  l'EFFET DE SOL ; et surtout la PORTANCE STATIQUE (aérostat, flottabilité d'Archimède) qui contourne
+#  entièrement la puissance induite — ne pas combattre la gravité avec un rotor, mais flotter.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_VOL = "sustentation"
+_ALIAS_VOL = {
+    "voler sur place", "se sustenter en vol", "vol stationnaire", "faire du vol stationnaire",
+    "planer en vol stationnaire", "soulever une charge en vol",
+}
+
+# ── « Canaux » : les leviers de la puissance de sustentation ─────────────────────────────────────────────────────
+_CANAUX_VOL = [
+    Canal("aire du disque", "portance", "AGRANDIR le disque rotor : la puissance induite décroît en 1/√A",
+          True, "de loin le plus gros levier : décupler l'aire divise la puissance par ~3 (√10) ; c'est pourquoi un "
+                "hélicoptère a un grand rotor lent et un quadricoptère à petites hélices est énergivore"),
+    Canal("charge du disque", "portance", "baisser la CHARGE DU DISQUE (poussée par unité d'aire T/A) : puissance ∝ √(T/A)",
+          True, "une faible charge de disque = air brassé lentement sur une grande surface = peu de puissance ; une "
+                "forte charge (petit jet rapide) coûte cher — la variable qui gouverne l'efficacité du vol stationnaire"),
+    Canal("masse", "portance", "ALLÉGER l'aéronef : la poussée requise T = m·g, et la puissance croît en T^1,5",
+          True, "chaque gramme économisé compte doublement (T^1,5) ; structures composites, batteries denses — le "
+                "levier « moins de poids à porter »"),
+    Canal("portance statique / effet de sol", "portance", "CONTOURNER la puissance induite : flottabilité (aérostat) ou effet de sol",
+          True, "la portance statique (Archimède, dirigeable) sustente à puissance quasi NULLE — elle échappe à la "
+                "puissance induite ; l'effet de sol la réduit (sol = rotor-image) — le levier « ne pas brasser d'air »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la puissance induite idéale (type `sustentation`, P ≥ T^1,5/√(2ρA)/√2) ──
+_PRINCIPES_VOL = [
+    _P("hélicoptère à grand rotor (référence)",
+       "voler sur place : un grand rotor unique brasse un large disque d'air à faible charge",
+       {"type": "sustentation", "masse_kg": 2000, "aire_rotor_m2": 113, "puissance_W": 180000}, False, False,
+       "air brassé vers le bas", "mature",
+       0.6, "la référence efficace : grand disque = faible charge = puissance induite modérée (~165 kW idéal pour "
+            "2 t) ; le grand rotor est précisément ce qui rend l'hélico viable — le levier « aire » incarné"),
+    _P("multirotor / drone (petites hélices)",
+       "voler sur place : plusieurs petites hélices à forte charge de disque",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 300}, False, False,
+       "air brassé vers le bas", "mature",
+       0.5, "simple et contrôlable, MAIS petites hélices = forte charge de disque = énergivore (autonomie courte) ; "
+            "réel mais loin de l'optimum — illustre le COÛT d'un petit disque"),
+    _P("drone à grand disque lent (rotor surdimensionné)",
+       "voler sur place : un rotor bien plus grand tournant lentement pour la même charge",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.5, "puissance_W": 100}, False, False,
+       "air brassé vers le bas", "émergent",
+       0.55, "×10 d'aire → puissance ÷~3 (√10) pour la même charge : le levier direct de l'efficacité ; encombrement "
+             "et fragilité du grand rotor à gérer — piste sous-exploitée en dronistique"),
+    _P("rotors coaxiaux / tandem (charge répartie)",
+       "voler sur place : deux rotors partageant la charge sur une plus grande aire effective",
+       {"type": "sustentation", "masse_kg": 2000, "aire_rotor_m2": 150, "puissance_W": 150000}, False, False,
+       "air brassé vers le bas", "mature",
+       0.5, "répartir la poussée sur plus de surface baisse la charge de disque effective et supprime le rotor de "
+            "queue ; complexité mécanique — variante du levier « aire »"),
+    _P("aérostat (portance statique, Archimède)",
+       "voler sur place : sustenter par flottabilité (gaz plus léger que l'air), sans brasser d'air",
+       {"type": "sustentation"}, True, True,
+       "aucun (portance statique)", "mature",
+       0.55, "REFRAMING : la portance STATIQUE contourne entièrement la puissance induite → sustentation à puissance "
+             "quasi nulle (silencieux, endurance énorme) ; volume encombrant et sensibilité au vent — ne pas "
+             "combattre la gravité avec un rotor, mais flotter"),
+    _P("effet de sol (vol au ras d'une surface)",
+       "voler sur place : exploiter la proximité du sol qui réduit la puissance induite (rotor-image)",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 200}, False, False,
+       "air brassé vers le bas (recyclé par le sol)", "mature",
+       0.45, "près du sol, l'aire effective augmente (image) → moins de puissance pour la même poussée ; limité à "
+             "une faible hauteur — le levier « laisser le sol aider »"),
+    _P("rotor caréné (ventilateur en conduit)",
+       "voler sur place : un carénage augmente l'aire effective et récupère la poussée de bord",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.08, "puissance_W": 250}, False, False,
+       "air brassé vers le bas", "mature",
+       0.45, "le carénage augmente la poussée pour un même disque et protège le rotor ; poids et traînée du conduit "
+             "en avancement — variante du levier « aire effective »"),
+    _P("propulsion distribuée (nombreux petits rotors répartis)",
+       "voler sur place : répartir la sustentation sur beaucoup de rotors couvrant une grande aire totale",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.2, "puissance_W": 150}, False, False,
+       "air brassé vers le bas", "émergent (eVTOL)",
+       0.45, "beaucoup de rotors couvrant une grande aire totale baissent la charge de disque et ajoutent la "
+             "redondance ; câblage et contrôle complexes — piste des eVTOL"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("drone 2 kg « qui plane à 5 W » (hélice 0,05 m²)",
+       "voler sur place : sustenter 2 kg avec 5 W et une hélice de 0,05 m²",
+       {"type": "sustentation", "masse_kg": 2, "aire_rotor_m2": 0.05, "puissance_W": 5}, True, True,
+       "—", "revendication",
+       0.3, "5 W ≪ puissance induite idéale (~248 W pour cette charge de disque) — à réfuter par la théorie de la "
+            "quantité de mouvement"),
+    _P("plateforme 100 kg « qui plane à 50 W » (disque 0,1 m²)",
+       "voler sur place : sustenter 100 kg avec 50 W et un disque de 0,1 m²",
+       {"type": "sustentation", "poussee_N": 981, "aire_rotor_m2": 0.1, "puissance_W": 50}, True, True,
+       "—", "revendication",
+       0.25, "50 W ≪ puissance induite idéale (~62 kW pour cette charge de disque) — impossible"),
+]
+
+_OBJECTIF_VOL = ("Le but réel n'est pas de « pousser plus fort » mais de brasser de l'air EFFICACEMENT : la "
+                 "puissance induite idéale vaut T^1,5/√(2ρA), donc l'ennemi est la CHARGE DU DISQUE (poussée par "
+                 "unité d'aire T/A). Un GRAND disque lent bat un petit jet rapide (puissance ∝ 1/√A) — c'est "
+                 "pourquoi l'hélicoptère a un grand rotor et le drone à petites hélices est énergivore. Leviers : "
+                 "agrandir le disque (le plus gros, P ∝ 1/√A) ; alléger (T = m·g, P ∝ T^1,5) ; exploiter l'effet de "
+                 "sol ; et surtout la PORTANCE STATIQUE (aérostat, flottabilité) qui contourne entièrement la "
+                 "puissance induite. Chaque principe reste jugé par ce plancher (P ≥ puissance induite / √2).")
+_LOI_VOL = ("vol stationnaire : la puissance ≥ puissance induite idéale P = T^1,5/√(2ρA) (théorie de la quantité de "
+            "mouvement / disque actuateur ; plancher absolu P/√2 en effet de sol maximal) ; gains réels = agrandir "
+            "le disque (P ∝ 1/√A), baisser la charge de disque, alléger, et contourner par la portance statique")
+
+# La nature sustente par un grand disque battu (colibri), l'autorotation (samare), le vol plané (albatros), la flottabilité (vessie natatoire).
+_STRATEGIES_NATURE_VOL = [
+    _Nature("colibri (vol stationnaire battu)",
+            ["grand disque balayé par rapport à une masse minuscule (faible charge de disque)", "battement rapide symétrique",
+             "musculature et métabolisme extrêmes"],
+            "faible charge de disque (grande surface balayée / faible masse) — le levier « aire » du vivant"),
+    _Nature("samare d'érable (descente en autorotation)",
+            ["autorotation qui freine la chute sans énergie", "une seule aile portante en rotation"],
+            "extraire de la portance du mouvement de chute lui-même (autorotation) — sustenter sans moteur"),
+    _Nature("albatros (vol plané dynamique)",
+            ["exploite le gradient de vent au lieu de battre", "évite le vol stationnaire coûteux"],
+            "ÉVITER le stationnaire : glaner l'énergie du vent plutôt que la dépenser à brasser l'air"),
+    _Nature("vessie natatoire du poisson (flottabilité neutre)",
+            ["ajuste un volume de gaz pour flotter sans effort", "sustentation STATIQUE (Archimède)"],
+            "flotter par portance statique à énergie quasi nulle — l'analogue de l'aérostat"),
+]
+
+enregistre(Domaine(
+    nom=_VOL,
+    aliases=frozenset(_ALIAS_VOL),
+    objectif=_OBJECTIF_VOL,
+    canaux=_CANAUX_VOL,
+    principes=_PRINCIPES_VOL,
+    strategies=_STRATEGIES_NATURE_VOL,
+    loi=_LOI_VOL,
+    extras={"puissance_induite_ideale": "P = T^1,5/√(2ρA) (théorie de la quantité de mouvement)",
+            "note": "P ∝ 1/√A : un grand disque lent bat un petit jet rapide ; FM réel 0,6–0,8 ; la portance "
+                    "statique (aérostat) contourne entièrement la puissance induite"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  QUATORZIÈME DOMAINE : voir plus petit / résolution optique. Nouvelle loi dure au juge (L11) : la limite de
+#  DIFFRACTION d'Abbe — en champ lointain conventionnel, on ne résout pas plus fin que λ/(2·NA) ; et l'ouverture
+#  numérique NA = n·sinθ ≤ n (indice du milieu). REFRAMING machine : ne pas « grossir » davantage (grandir l'image
+#  ne crée pas de détail) mais AUGMENTER l'information spatiale — raccourcir λ, monter NA (immersion, plafonné par
+#  l'indice), ou CONTOURNER le champ lointain : champ proche (ondes évanescentes, NSOM), localisation temporelle
+#  de molécules uniques (PALM/STORM), illumination structurée (SIM), déplétion (STED). La super-résolution ne viole
+#  pas Abbe : elle exploite une information hors de son régime (d'où le prix Nobel 2014).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_OPT = "resolution_optique"
+_ALIAS_OPT = {
+    "voir plus petit", "resoudre en microscopie", "augmenter la resolution optique",
+    "observer des details fins", "depasser la limite de diffraction", "imager a l echelle nanometrique",
+}
+
+# ── « Canaux » : les leviers de la résolution optique ────────────────────────────────────────────────────────────
+_CANAUX_OPT = [
+    Canal("longueur d onde", "lumiere", "RACCOURCIR λ (UV, X, électrons) : la limite d'Abbe d = λ/2NA décroît avec λ",
+          True, "diviser λ par 2 divise la limite par 2 ; l'UV, les rayons X et les électrons (λ picométrique) "
+                "poussent la résolution bien plus bas — le levier direct sur le numérateur"),
+    Canal("ouverture numerique", "lumiere", "AUGMENTER NA (immersion, indice élevé) : d ∝ 1/NA, plafonné par NA ≤ n",
+          True, "l'immersion (huile n≈1,5) permet NA ~1,4 vs ~0,95 à sec ; mais NA = n·sinθ ne peut dépasser l'indice "
+                "du milieu → mur physique à ~1,5 en optique visible"),
+    Canal("champ proche", "lumiere", "capter les ondes ÉVANESCENTES (NSOM, superlentille) : contourne le champ lointain d'Abbe",
+          True, "les détails fins sont portés par des ondes évanescentes qui meurent en champ lointain ; les lire à "
+                "quelques nanomètres de l'objet (sonde à balayage) échappe à Abbe — le levier « rester tout près »"),
+    Canal("localisation / commutation", "lumiere", "LOCALISER dans le temps des émetteurs isolés (PALM/STORM), illumination structurée (SIM), déplétion (STED)",
+          True, "si les émetteurs s'allument un à un, on localise le CENTRE de chaque tache bien plus finement que sa "
+                "largeur ; SIM/STED reconfigurent l'éclairage — le levier « séparer dans le temps ce qu'on ne peut "
+                "séparer dans l'espace », cœur de la super-résolution"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite d'Abbe (type `imagerie_optique`, résolution ≥ λ/2NA ; NA ≤ n) ──
+_PRINCIPES_OPT = [
+    _P("microscope optique à sec (référence)",
+       "voir plus petit : objectif à sec (NA ~0,95) en lumière visible",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 0.95, "indice_milieu": 1.0,
+        "resolution_nm": 300}, True, True,
+       "—", "mature",
+       0.6, "la référence : à sec, NA plafonne vers 0,95 → résolution ~290 nm ; pour faire mieux il faut l'immersion, "
+            "raccourcir λ, ou la super-résolution — pas grossir davantage"),
+    _P("immersion à huile (NA élevé)",
+       "voir plus petit : objectif à immersion d'huile (n≈1,5, NA ~1,4)",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 200}, True, True,
+       "—", "mature",
+       0.55, "l'immersion relève NA à ~1,4 (résolution ~200 nm) ; mais NA ≤ n bute à ~1,5 en visible → le levier "
+             "« ouverture » est presque épuisé, d'où le besoin de changer de régime"),
+    _P("courte longueur d'onde (UV)",
+       "voir plus petit : imager dans l'ultraviolet pour réduire λ",
+       {"type": "imagerie_optique", "longueur_onde_nm": 250, "ouverture_numerique": 0.9, "indice_milieu": 1.0,
+        "resolution_nm": 150}, True, True,
+       "—", "mature (niche)",
+       0.5, "λ divisé par ~2 → résolution divisée par ~2 (~140 nm) ; optiques UV coûteuses et échantillons sensibles "
+            "— pousser encore (X, électrons) descend au nanomètre, le levier « raccourcir λ »"),
+    _P("STED (déplétion par émission stimulée)",
+       "voir plus petit : éteindre la fluorescence en couronne pour ne laisser émettre qu'un cœur sub-diffraction",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 30, "super_resolution": True}, True, True,
+       "—", "mature (super-résolution)",
+       0.55, "reconfigure l'éclairage pour rétrécir le point émetteur bien SOUS Abbe (~30 nm) sans le violer ; "
+             "puissances laser élevées et photoblanchiment — le levier « déplétion »"),
+    _P("PALM / STORM (localisation de molécules uniques)",
+       "voir plus petit : allumer les fluorophores un à un et localiser le centre de chaque tache",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 20, "super_resolution": True}, True, True,
+       "—", "mature (super-résolution)",
+       0.55, "sépare les émetteurs dans le TEMPS pour localiser chaque centre à ~20 nm ; long temps d'acquisition et "
+             "fluorophores commutables requis — le levier « localisation temporelle », cœur du Nobel 2014"),
+    _P("illumination structurée (SIM)",
+       "voir plus petit : éclairer par une grille connue et déplier le moiré pour doubler la résolution",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 100, "super_resolution": True}, True, True,
+       "—", "mature (super-résolution)",
+       0.5, "le moiré entre l'objet et une grille connue ramène des détails fins dans la bande passante (~×2, "
+            "~100 nm) ; gain plus modeste mais rapide et doux (cellules vivantes) — le levier « illumination »"),
+    _P("champ proche (NSOM / superlentille)",
+       "voir plus petit : lire les ondes évanescentes à quelques nanomètres de l'objet",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 0.9, "indice_milieu": 1.0,
+        "resolution_nm": 50, "super_resolution": True}, True, True,
+       "—", "recherche",
+       0.4, "capte les détails portés par les ondes évanescentes (perdues en champ lointain) → résolution ~λ/20, "
+            "indépendante d'Abbe ; exige une sonde à quelques nm de la surface (balayage lent) — le levier « champ proche »"),
+    _P("microscopie par expansion (ExM)",
+       "voir plus petit : gonfler physiquement l'échantillon dans un gel avant de l'imager",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 70, "super_resolution": True}, True, True,
+       "—", "émergent",
+       0.45, "au lieu d'améliorer l'optique, on AGRANDIT l'objet (gel gonflant ~4×) → les détails s'écartent au-delà "
+             "d'Abbe, imagés par un microscope ordinaire ; distorsions du gel à contrôler — le levier « agrandir l'objet »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("microscope conventionnel « résolvant 50 nm » (λ=550, NA=1,4)",
+       "voir plus petit : microscope à champ lointain CONVENTIONNEL revendiquant 50 nm à λ=550 nm, NA=1,4",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 50}, True, True,
+       "—", "revendication",
+       0.3, "50 nm < limite d'Abbe (~196 nm ici) sans super-résolution — à réfuter par la limite de diffraction"),
+    _P("objectif « à NA 1,7 dans l'air »",
+       "voir plus petit : objectif revendiquant une ouverture numérique de 1,7 dans l'air (n=1)",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.7, "indice_milieu": 1.0,
+        "resolution_nm": 300}, True, True,
+       "—", "revendication",
+       0.25, "NA = n·sinθ ≤ n : une ouverture numérique de 1,7 dans l'air (n=1) est impossible"),
+]
+
+_OBJECTIF_OPT = ("Le but réel n'est pas de « grossir » davantage (agrandir l'image ne crée aucun détail) mais "
+                 "d'augmenter l'INFORMATION spatiale, bornée par la limite de diffraction d'Abbe : résolution "
+                 "≥ λ/(2·NA), avec NA = n·sinθ ≤ n. Leviers : raccourcir λ (UV, X, électrons) ; monter NA "
+                 "(immersion, plafonné par l'indice) ; ou CONTOURNER le champ lointain — champ proche (ondes "
+                 "évanescentes, NSOM), localisation temporelle de molécules uniques (PALM/STORM), illumination "
+                 "structurée (SIM), déplétion (STED). La super-résolution ne viole pas Abbe : elle exploite une "
+                 "information hors de son régime. Chaque principe reste jugé par la limite de diffraction.")
+_LOI_OPT = ("limite de diffraction d'Abbe : en champ lointain conventionnel, résolution ≥ λ/(2·NA), et NA = "
+            "n·sinθ ≤ n (indice du milieu) ; gains réels = raccourcir λ, monter NA (jusqu'à l'indice), ou contourner "
+            "par le champ proche, la localisation de molécules uniques, l'illumination structurée, la déplétion")
+
+# La nature résout par une grande pupille (aigle), une lentille à gradient d'indice (céphalopode), des nanostructures (diatomée), du multiplexage (crevette-mante).
+_STRATEGIES_NATURE_OPT = [
+    _Nature("œil de l'aigle (grande pupille + rétine dense)",
+            ["grande ouverture (pupille) → limite de diffraction plus fine", "densité de photorécepteurs qui échantillonne finement",
+             "longue distance focale"],
+            "grande ouverture + échantillonnage fin : maximiser NA et le nombre de points — le levier « ouverture »"),
+    _Nature("œil à lentille à gradient d'indice (céphalopode, poisson)",
+            ["indice variant en volume (GRIN) qui corrige l'aberration sphérique", "image nette jusqu'au bord"],
+            "corriger l'aberration par un gradient d'indice pour ATTEINDRE la limite de diffraction, pas la dépasser"),
+    _Nature("diatomée (frustule à nanostructures sous la longueur d'onde)",
+            ["motifs de silice réguliers plus petits que λ", "manipulation de la lumière à l'échelle sous-longueur d'onde"],
+            "structurer la matière SOUS λ pour maîtriser la lumière (photonique) — parent du champ proche"),
+    _Nature("œil de la crevette-mante (multiplexage spectral/polarisation)",
+            ["seize canaux spectraux + détection de polarisation", "plus d'information par point, pas plus de points"],
+            "MULTIPLEXER l'information (couleur, polarisation) plutôt que la seule résolution spatiale — un autre axe"),
+]
+
+enregistre(Domaine(
+    nom=_OPT,
+    aliases=frozenset(_ALIAS_OPT),
+    objectif=_OBJECTIF_OPT,
+    canaux=_CANAUX_OPT,
+    principes=_PRINCIPES_OPT,
+    strategies=_STRATEGIES_NATURE_OPT,
+    loi=_LOI_OPT,
+    extras={"limite_abbe": "d = λ/(2·NA) (champ lointain conventionnel)",
+            "note": "NA = n·sinθ ≤ n ; la super-résolution (champ proche, localisation, SIM, STED) contourne le "
+                    "champ lointain sans violer Abbe"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  QUINZIÈME DOMAINE : capter l'énergie du vent (éolienne). Nouvelle loi dure au juge (L12) : la limite de BETZ —
+#  un rotor ouvert extrait au plus 16/27 (≈ 59,3 %) de la puissance cinétique du vent ½ρAv³ qui traverse son
+#  disque (on ne peut pas arrêter TOUT l'air : il doit continuer à s'écouler). REFRAMING machine : le mur n'est
+#  pas la taille des pales mais 59,3 % ; la puissance disponible croît LINÉAIREMENT avec l'aire balayée A et au
+#  CUBE de la vitesse du vent v. Leviers : agrandir l'aire balayée (A) ; choisir un site plus venté (v³, d'où
+#  l'offshore et la hauteur) ; approcher Betz (profils, vitesse spécifique) ; caréner (diffuseur : dépasse Betz par
+#  rapport à l'aire du rotor, pas à l'aire frontale totale).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_VENT = "energie_eolienne"
+_ALIAS_VENT = {
+    "capter l energie du vent", "produire de l electricite eolienne", "exploiter le vent",
+    "eolienne", "convertir l energie du vent", "recuperer l energie du vent",
+}
+
+# ── « Canaux » : les leviers de la puissance éolienne captée ─────────────────────────────────────────────────────
+_CANAUX_VENT = [
+    Canal("aire balayee", "vent", "AGRANDIR l'aire balayée A : la puissance disponible ½ρAv³ croît linéairement avec A",
+          True, "doubler le diamètre quadruple l'aire donc la puissance ; c'est le levier des rotors géants "
+                "offshore — mais la fraction extractible reste plafonnée à 16/27"),
+    Canal("vitesse du site", "vent", "CHOISIR un site plus venté (la puissance croît au CUBE de v)",
+          True, "+26 % de vent = ×2 de puissance (v³) → l'offshore et la hauteur de mât (le vent forcit avec "
+                "l'altitude) priment sur presque tout le reste ; le site est la variable reine"),
+    Canal("approche de Betz", "vent", "APPROCHER la limite de Betz : profils de pale et vitesse spécifique optimaux",
+          True, "un bon tripale atteint Cp ~0,45–0,50 sur 0,593 possible → il reste peu à grappiller sur le "
+                "coefficient ; l'essentiel des gains vient de A et v, pas du raffinement aérodynamique"),
+    Canal("carenage", "vent", "CARÉNER (diffuseur) : concentrer le flux pour dépasser Betz par rapport à l'aire du ROTOR",
+          True, "un diffuseur aspire plus d'air dans le rotor → Cp>0,593 par aire de rotor (mais pas par aire "
+                "frontale totale) ; poids et coût du carénage → surtout pour le petit éolien — le levier « concentrer le flux »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Betz (type `eolienne`, Cp ≤ 16/27 ; rotor ouvert) ──────────
+_PRINCIPES_VENT = [
+    _P("éolienne tripale à axe horizontal (référence)",
+       "capter le vent : rotor tripale rapide à axe horizontal face au vent",
+       {"type": "eolienne", "coefficient_puissance": 0.45}, False, True,
+       "—", "mature",
+       0.65, "la référence dominante : Cp ~0,45 sur 0,593 possible → déjà proche du mur de Betz ; les gains "
+             "viennent désormais de la taille et du site, pas du coefficient — la référence à comprendre"),
+    _P("grand rotor offshore",
+       "capter le vent : rotor de très grand diamètre en mer",
+       {"type": "eolienne", "coefficient_puissance": 0.48}, False, True,
+       "—", "mature",
+       0.6, "l'aire balayée (∝ D²) et un vent marin fort et régulier maximisent ½ρAv³ ; fondations et maintenance "
+            "en mer coûteuses — le levier « aire × site » incarné"),
+    _P("site très venté / mât haut (v³)",
+       "capter le vent : implanter là où le vent est fort et monter le mât (le vent forcit avec l'altitude)",
+       {"type": "eolienne", "coefficient_puissance": 0.46}, False, True,
+       "—", "mature",
+       0.6, "la puissance croît au CUBE de v : +26 % de vent double la production → le site et la hauteur priment ; "
+            "contraintes de raccordement et d'acceptation — le levier « vitesse » (le plus rentable)"),
+    _P("profil de pale optimisé (approcher Betz)",
+       "capter le vent : profils et vitesse spécifique optimaux pour approcher le coefficient de Betz",
+       {"type": "eolienne", "coefficient_puissance": 0.50}, True, True,
+       "—", "mature",
+       0.5, "raffiner l'aérodynamique gagne quelques points vers 0,593 (plafond) → rendement marginal décroissant ; "
+            "bruit et érosion de bord d'attaque à gérer — le levier « approcher Betz », bientôt épuisé"),
+    _P("éolienne carénée à diffuseur",
+       "capter le vent : un carénage/diffuseur concentre le flux et augmente la puissance par aire de rotor",
+       {"type": "eolienne", "coefficient_puissance": 0.7, "avec_diffuseur": True}, False, True,
+       "—", "recherche (petit éolien)",
+       0.4, "le diffuseur aspire plus d'air → dépasse Betz PAR AIRE DE ROTOR (pas par aire frontale totale) ; poids "
+            "et coût du carénage le réservent au petit éolien — le levier « concentrer le flux », sans violer Betz"),
+    _P("éolienne à axe vertical (VAWT)",
+       "capter le vent : rotor à axe vertical, omnidirectionnel, générateur au sol",
+       {"type": "eolienne", "coefficient_puissance": 0.35}, False, True,
+       "—", "mature (niche)",
+       0.45, "capte le vent de toute direction et met le générateur au sol (maintenance) ; Cp plus bas que le "
+             "tripale → densité de puissance moindre, mais robuste et compact (urbain, offshore flottant dense)"),
+    _P("éolien aéroporté (cerf-volant / aile captive)",
+       "capter le vent : une aile captive vole en altitude où le vent est plus fort et régulier",
+       {"type": "eolienne", "coefficient_puissance": 0.40}, True, True,
+       "—", "recherche",
+       0.4, "atteint des altitudes où le vent est bien plus fort (v³) avec très peu de matière (pas de mât ni de "
+            "grand rotor) ; pilotage automatique et fiabilité à prouver — le levier « monter chercher le vent »"),
+    _P("multi-rotor sur un même mât",
+       "capter le vent : plusieurs rotors moyens sur une structure partagée plutôt qu'un seul géant",
+       {"type": "eolienne", "coefficient_puissance": 0.44}, False, True,
+       "—", "recherche",
+       0.4, "des rotors plus petits, moins chers et interchangeables couvrent une grande aire totale ; complexité "
+            "structurelle et sillages entre rotors — variante du levier « aire »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("éolienne « à Cp 0,7 » (rotor ouvert)",
+       "capter le vent : rotor ouvert revendiquant un coefficient de puissance de 0,7",
+       {"type": "eolienne", "coefficient_puissance": 0.7}, False, True,
+       "—", "revendication",
+       0.3, "0,7 > limite de Betz (16/27 ≈ 0,593) pour un rotor ouvert — on ne peut extraire plus de 16/27 de la "
+            "puissance du vent ; à réfuter par la limite de Betz"),
+    _P("éolienne « 50 kW sur 100 m² à 10 m/s »",
+       "capter le vent : extraire 50 kW d'un vent de 10 m/s sur une aire balayée de 100 m²",
+       {"type": "eolienne", "puissance_W": 50000, "aire_balayee_m2": 100, "vitesse_vent_m_s": 10}, False, True,
+       "—", "revendication",
+       0.25, "la puissance du vent ici est ~61 kW (½ρAv³) ; Betz la plafonne à ~36 kW → 50 kW est impossible"),
+]
+
+_OBJECTIF_VENT = ("Le but réel n'est pas de « freiner le vent » au maximum (arrêter tout l'air annulerait le débit) "
+                  "mais d'extraire le plus de puissance possible sous la limite de BETZ : au plus 16/27 (≈ 59,3 %) "
+                  "de la puissance du vent ½ρAv³ traversant le disque. La puissance disponible croît LINÉAIREMENT "
+                  "avec l'aire balayée A et au CUBE de la vitesse v. Leviers : agrandir A (rotors géants) ; choisir "
+                  "un site plus venté et monter le mât (v³ → offshore, altitude) ; approcher Betz (profils, vitesse "
+                  "spécifique) ; caréner (diffuseur, qui dépasse Betz par aire de rotor mais pas par aire frontale "
+                  "totale). Chaque principe reste jugé par la limite de Betz.")
+_LOI_VENT = ("limite de Betz : une éolienne à rotor ouvert extrait au plus 16/27 (≈ 59,3 %) de la puissance du vent "
+             "½ρAv³ traversant son disque ; la puissance disponible est linéaire en aire balayée A et au cube de la "
+             "vitesse v ; gains réels = agrandir A, viser un site plus venté (v³), approcher Betz, caréner (par aire "
+             "de rotor)")
+
+# La nature capte le vent par la traînée (pissenlit), la flexibilité (arbre), le cisaillement (oiseau), l'ondulation (graminée).
+_STRATEGIES_NATURE_VENT = [
+    _Nature("akène de pissenlit (vortex de traînée)",
+            ["une aigrette poreuse crée un vortex stable qui capte la traînée du vent", "portance de traînée avec très peu de matière"],
+            "capter la force du vent avec un minimum de matière poreuse — l'efficacité par gramme"),
+    _Nature("arbre flexible (reconfiguration sous le vent)",
+            ["ploie et réoriente ses branches pour réduire la charge", "survit aux rafales en se déformant"],
+            "PLOIER pour réduire la charge et survivre aux extrêmes — la résilience structurelle face au vent"),
+    _Nature("oiseau en vol dynamique (cisaillement de vent)",
+            ["extrait l'énergie du GRADIENT de vitesse du vent en altitude", "parcourt de longues distances sans battre"],
+            "récolter l'énergie du CISAILLEMENT de vent en hauteur — le levier « monter chercher le vent »"),
+    _Nature("graminée / épillet (ondulation dissipative)",
+            ["ondule pour dissiper l'énergie du vent sans casser", "tige élancée à faible traînée"],
+            "onduler pour encaisser le vent sans rompre — capter/résister par la souplesse"),
+]
+
+enregistre(Domaine(
+    nom=_VENT,
+    aliases=frozenset(_ALIAS_VENT),
+    objectif=_OBJECTIF_VENT,
+    canaux=_CANAUX_VENT,
+    principes=_PRINCIPES_VENT,
+    strategies=_STRATEGIES_NATURE_VENT,
+    loi=_LOI_VENT,
+    extras={"limite_betz": "Cp ≤ 16/27 ≈ 0,593 (rotor ouvert)",
+            "note": "puissance disponible ½ρAv³ : linéaire en aire A, au cube de la vitesse v ; le carénage dépasse "
+                    "Betz par aire de rotor, pas par aire frontale totale"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  SEIZIÈME DOMAINE : atteindre une grande vitesse dans le vide (propulsion spatiale). Nouvelle loi dure au juge
+#  (L13) : l'équation de TSIOLKOVSKI — Δv ≤ ve·ln(m₀/mf). Le gain de vitesse ne croît qu'au LOGARITHME du rapport
+#  de masse : embarquer toujours plus de propergol donne des retours décroissants (la « tyrannie de l'équation de
+#  la fusée »). REFRAMING machine : le levier n'est PAS d'ajouter du carburant mais d'augmenter la VITESSE
+#  D'ÉJECTION ve (impulsion spécifique — d'où l'électrique/ionique, le nucléaire), d'ÉTAGER (larguer la masse
+#  morte), ou d'exploiter un MOMENTUM EXTERNE (assistance gravitationnelle, voile solaire, ravitaillement in situ)
+#  qui n'est pas borné par le propergol embarqué. Distinct de L4 (conservation de la quantité de mouvement).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_FUSEE = "propulsion_spatiale"
+_ALIAS_FUSEE = {
+    "atteindre une grande vitesse dans le vide", "propulser un vaisseau spatial", "propulsion spatiale",
+    "accelerer une fusee", "voyager dans l espace", "gagner de la vitesse dans l espace",
+}
+
+# ── « Canaux » : les leviers du Δv atteignable ───────────────────────────────────────────────────────────────────
+_CANAUX_FUSEE = [
+    Canal("vitesse d ejection", "vitesse", "AUGMENTER la vitesse d'éjection ve (impulsion spécifique) : Δv est LINÉAIRE en ve",
+          True, "Δv = ve·ln(m₀/mf) : doubler ve double le Δv, alors qu'empiler du propergol ne l'augmente qu'en "
+                "logarithme → l'électrique/ionique (ve ~30 km/s) et le nucléaire écrasent le chimique (ve ~4,5 km/s)"),
+    Canal("etagement", "vitesse", "ÉTAGER : larguer les réservoirs vides pour ne plus accélérer de masse morte",
+          True, "chaque étage repart avec un meilleur rapport de masse effectif → contourne les retours "
+                "décroissants d'un réservoir unique géant ; complexité et fiabilité des séparations"),
+    Canal("masse a vide", "vitesse", "ALLÉGER la structure (masse à vide mf) : augmente le rapport de masse m₀/mf",
+          True, "moins de masse sèche = rapport de masse plus élevé = plus de Δv ; réservoirs et structures "
+                "ultralégers — mais le gain reste logarithmique, d'où la priorité à ve"),
+    Canal("momentum externe", "vitesse", "EXPLOITER un momentum EXTERNE : assistance gravitationnelle, voile solaire, ravitaillement in situ",
+          True, "un Δv qui ne vient PAS de ton propergol échappe entièrement à Tsiolkovski : fronde gravitationnelle "
+                "(gratuit), poussée du Soleil (voile), refaire le plein en route (ISRU) — le levier « ne pas tout emporter »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par l'équation de Tsiolkovski (type `fusee`, Δv ≤ ve·ln(m₀/mf)) ─────────────
+_PRINCIPES_FUSEE = [
+    _P("fusée chimique (référence)",
+       "propulsion spatiale : moteur chimique à forte poussée, vitesse d'éjection ~4,5 km/s",
+       {"type": "fusee", "delta_v_m_s": 13000, "vitesse_ejection_m_s": 4500, "rapport_masse": 20}, False, True,
+       "—", "mature",
+       0.65, "forte poussée pour décoller, MAIS faible ve (~4,5 km/s) → il faut un énorme rapport de masse pour peu "
+             "de Δv (retours logarithmiques) ; la référence dont la limite pousse à monter ve ou étager"),
+    _P("propulsion électrique / ionique (Isp élevé)",
+       "propulsion spatiale : moteur ionique éjectant à ~30 km/s, faible poussée mais très efficace",
+       {"type": "fusee", "delta_v_m_s": 12000, "vitesse_ejection_m_s": 30000, "rapport_masse": 1.5}, True, True,
+       "—", "mature (spatial)",
+       0.6, "ve ~7× le chimique → beaucoup de Δv pour peu de propergol (rapport de masse modeste) ; poussée "
+            "minuscule (accélération lente) → transferts longs — le levier « augmenter ve » incarné"),
+    _P("étagement (fusée multi-étages)",
+       "propulsion spatiale : larguer les étages vides pour améliorer le rapport de masse effectif",
+       {"type": "fusee", "delta_v_m_s": 18000, "vitesse_ejection_m_s": 4500, "rapport_masse": 60}, False, True,
+       "—", "mature",
+       0.55, "sans étagement, un rapport de masse de 60 est irréaliste (structure) ; en étageant, chaque étage "
+             "repart léger → Δv cumulé bien plus haut — le levier « larguer la masse morte », clé de l'orbite"),
+    _P("propulsion nucléaire thermique",
+       "propulsion spatiale : chauffer un propergol léger (hydrogène) par un réacteur, ve ~9 km/s",
+       {"type": "fusee", "delta_v_m_s": 14000, "vitesse_ejection_m_s": 9000, "rapport_masse": 5}, False, True,
+       "—", "recherche",
+       0.45, "double la ve du chimique en chauffant de l'hydrogène (bas poids moléculaire) → bon Δv à poussée "
+             "élevée ; masse du réacteur et sûreté — le compromis poussée/ve pour l'interplanétaire"),
+    _P("propulsion nucléaire pulsée (type Orion)",
+       "propulsion spatiale : impulsions d'explosions nucléaires derrière un bouclier, ve très élevée",
+       {"type": "fusee", "delta_v_m_s": 40000, "vitesse_ejection_m_s": 30000, "rapport_masse": 4}, False, True,
+       "—", "concept",
+       0.35, "ve énorme ET forte poussée simultanément → Δv très grand (interstellaire lent envisageable) ; "
+             "retombées et traité d'interdiction — concept borné par la physique, pas par elle interdit"),
+    _P("voile solaire (momentum externe)",
+       "propulsion spatiale : se laisser pousser par la pression de radiation du Soleil, sans propergol",
+       {"type": "fusee"}, True, True,
+       "—", "démontré",
+       0.5, "REFRAMING : le Δv vient du Soleil, PAS d'un propergol embarqué → échappe entièrement à Tsiolkovski "
+            "(accélération faible mais gratuite et sans fin) ; grande voile et faible poussée — « ne rien emporter »"),
+    _P("assistance gravitationnelle (fronde)",
+       "propulsion spatiale : gagner de la vitesse en frôlant une planète (échange de quantité de mouvement)",
+       {"type": "fusee"}, True, True,
+       "—", "mature",
+       0.5, "emprunte du momentum au mouvement orbital d'une planète → Δv « gratuit » hors du propergol ; exige un "
+            "alignement et un calcul de trajectoire précis — le levier « momentum externe » (Voyager, Cassini)"),
+    _P("ravitaillement en orbite / in situ (ISRU)",
+       "propulsion spatiale : refaire le plein en route (dépôts orbitaux, ergols produits sur place)",
+       {"type": "fusee"}, True, True,
+       "—", "émergent",
+       0.45, "remettre m₀ à son maximum en cours de route RÉINITIALISE l'équation → contourne le rapport de masse "
+             "d'un seul plein ; logistique de dépôts et production d'ergols (eau lunaire, CO₂ martien) à bâtir"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("fusée chimique « à 30 km/s » (ve 4,5 km/s, rapport 20)",
+       "propulsion spatiale : atteindre 30 km/s de Δv avec un moteur chimique (ve 4,5 km/s) et un rapport de masse de 20",
+       {"type": "fusee", "delta_v_m_s": 30000, "vitesse_ejection_m_s": 4500, "rapport_masse": 20}, False, True,
+       "—", "revendication",
+       0.3, "30 km/s > Δv max de Tsiolkovski (~13,5 km/s ici) — impossible avec ce propergol embarqué ; à réfuter"),
+    _P("fusée « qui accélère sans consommer d'ergols » (rapport de masse 1)",
+       "propulsion spatiale : gagner du Δv sans éjecter de masse (rapport de masse m₀/mf = 1)",
+       {"type": "fusee", "delta_v_m_s": 5000, "vitesse_ejection_m_s": 4500, "rapport_masse": 1}, False, True,
+       "—", "revendication",
+       0.25, "rapport de masse 1 → ln(1) = 0 → Δv max nul : sans éjecter de propergol, une fusée ne gagne aucun Δv "
+             "(à distinguer d'un momentum externe) — impossible"),
+]
+
+_OBJECTIF_FUSEE = ("Le but réel n'est pas d'« emporter plus de carburant » : l'équation de Tsiolkovski Δv = "
+                   "ve·ln(m₀/mf) montre que le Δv ne croît qu'au LOGARITHME du rapport de masse — les retours sont "
+                   "décroissants (la « tyrannie de l'équation de la fusée »). Leviers : augmenter la VITESSE "
+                   "D'ÉJECTION ve (Δv linéaire en ve → électrique/ionique, nucléaire) ; ÉTAGER (larguer la masse "
+                   "morte) ; alléger la structure ; et surtout exploiter un MOMENTUM EXTERNE (assistance "
+                   "gravitationnelle, voile solaire, ravitaillement in situ) qui échappe entièrement au propergol "
+                   "embarqué. Chaque principe reste jugé par l'équation de Tsiolkovski.")
+_LOI_FUSEE = ("équation de Tsiolkovski : Δv ≤ ve·ln(m₀/mf) — le gain de vitesse croît seulement au logarithme du "
+              "rapport de masse ; gains réels = augmenter la vitesse d'éjection ve (Δv linéaire en ve), étager, "
+              "alléger, et exploiter un momentum externe (fronde gravitationnelle, voile, ISRU) hors du propergol")
+
+# La nature propulse par jet pulsé (salpe), éjection balistique (concombre), jet chimique (bombardier), momentum externe (raie manta).
+_STRATEGIES_NATURE_FUSEE = [
+    _Nature("salpe / méduse (jet pulsé efficace)",
+            ["propulsion par pulsations à basse vitesse d'éjection", "très efficace pour de faibles gains de vitesse"],
+            "éjecter beaucoup de masse lentement quand on vise un petit Δv — le compromis ve/rapport de masse"),
+    _Nature("concombre sauvage (éjection balistique)",
+            ["libère graines et fluide en une impulsion violente", "toute l'énergie dans une éjection unique"],
+            "concentrer la poussée en une impulsion unique à haute vitesse d'éjection — le levier « ve élevée »"),
+    _Nature("coléoptère bombardier (jet chimique)",
+            ["réaction chimique explosive expulsant un jet dirigé", "réactifs stockés et mélangés à la demande"],
+            "emporter des réactifs denses et les convertir en jet à la demande — l'analogue du propergol chimique"),
+    _Nature("raie manta / planeur des courants (momentum externe)",
+            ["exploite les courants marins pour avancer sans dépenser", "glisse sur l'énergie du milieu"],
+            "emprunter le momentum du MILIEU plutôt que dépenser sa propre réserve — l'analogue de la fronde/voile"),
+]
+
+enregistre(Domaine(
+    nom=_FUSEE,
+    aliases=frozenset(_ALIAS_FUSEE),
+    objectif=_OBJECTIF_FUSEE,
+    canaux=_CANAUX_FUSEE,
+    principes=_PRINCIPES_FUSEE,
+    strategies=_STRATEGIES_NATURE_FUSEE,
+    loi=_LOI_FUSEE,
+    extras={"tsiolkovski": "Δv = ve·ln(m₀/mf)",
+            "note": "Δv logarithmique en rapport de masse ; leviers = vitesse d'éjection ve (Isp), étagement, "
+                    "momentum externe (fronde, voile, ISRU) hors du propergol embarqué"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DIX-SEPTIÈME DOMAINE : nourrir / cultiver. Nouvelle loi dure au juge (L14) : le PLAFOND de rendement
+#  PHOTOSYNTHÉTIQUE — la conversion solaire→biomasse est bornée (~12 % théorique avant respiration ; réalisé
+#  ~1–6 % ; champ ~1–2 %) par la fraction utile du spectre (PAR ~48 %) et le rendement quantique. REFRAMING
+#  machine : le but n'est pas la biomasse brute mais un maximum de CALORIES COMESTIBLES par surface, par eau et
+#  par intrant. Leviers : combler l'écart au théorique (voie C4, court-circuiter la photorespiration, architecture
+#  de canopée) ; SAUTER la photosynthèse (fermentation gazeuse H₂/CO₂ → protéine microbienne, découplée du sol et
+#  du soleil) ; algues/cyanobactéries (plus efficaces) ; environnement contrôlé ; améliorer l'indice de récolte et
+#  manger BAS dans la chaîne trophique (chaque niveau perd ~90 %).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_NOURRIR = "production_alimentaire"
+_ALIAS_NOURRIR = {
+    "nourrir", "cultiver", "produire de la nourriture", "produire des calories",
+    "faire pousser des aliments", "produire de la biomasse alimentaire",
+}
+
+# ── « Canaux » : les leviers de la production de calories comestibles ─────────────────────────────────────────────
+_CANAUX_NOURRIR = [
+    Canal("rendement photosynthetique", "biomasse", "COMBLER l'écart au plafond théorique : voie C4, court-circuiter la photorespiration, canopée optimale",
+          True, "le champ (~1–2 %) est loin du théorique (~6 %) : réduire la photorespiration (Rubisco), concentrer "
+                "le CO₂ (C4), optimiser l'architecture foliaire — le levier « approcher le plafond »"),
+    Canal("decouplage", "biomasse", "SAUTER la photosynthèse : fermentation gazeuse (H₂/CO₂ → protéine microbienne)",
+          True, "produire des protéines à partir d'électricité, d'H₂ et de CO₂ (microbes) découple la nourriture du "
+                "sol et du soleil → rendement surfacique bien supérieur ; énergie et bioréacteurs à fournir"),
+    Canal("niveau trophique", "biomasse", "manger BAS dans la chaîne : chaque niveau trophique perd ~90 % de l'énergie",
+          True, "convertir la biomasse végétale en viande gaspille ~90 % de l'énergie par niveau → manger les "
+                "plantes (ou des microbes) directement multiplie les calories disponibles — le levier « chaîne courte »"),
+    Canal("indice de recolte", "biomasse", "augmenter la FRACTION COMESTIBLE (indice de récolte) et réduire les pertes",
+          True, "ne compte que ce qui finit dans l'assiette : maximiser la part comestible de la plante et réduire "
+                "les pertes post-récolte donne des calories sans plus de photosynthèse — le levier « moins de gaspillage »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le plafond photosynthétique (type `photosynthese`, rendement ≤ ~12 %) ───
+_PRINCIPES_NOURRIR = [
+    _P("grande culture C3 en plein champ (référence)",
+       "nourrir : culture C3 (blé, riz) en plein champ",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.01}, True, True,
+       "—", "mature",
+       0.65, "la référence mondiale : ~1 % du solaire en biomasse (photorespiration, saison, canopée) → loin du "
+             "théorique ~4,6 % ; l'écart est le gisement, pas un mur physique"),
+    _P("plante en C4 (maïs, canne, sorgho)",
+       "nourrir : culture C4 qui concentre le CO₂ autour de la Rubisco",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.03}, True, True,
+       "—", "mature",
+       0.6, "la voie C4 supprime la photorespiration en pompant le CO₂ → ~2–3× le rendement du C3 en climat chaud ; "
+            "porter le C4 dans le riz est un grand chantier — le levier « supprimer la photorespiration »"),
+    _P("microalgue en photobioréacteur",
+       "nourrir : cultiver des microalgues en réacteur éclairé",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.05}, True, True,
+       "—", "émergent",
+       0.5, "les microalgues approchent mieux le plafond (~5 %) et poussent sur des terres non arables/eau salée ; "
+            "coût de récolte et d'énergie du réacteur — le levier « organisme plus efficace »"),
+    _P("cyanobactérie optimisée",
+       "nourrir : cyanobactéries ingénierées pour la protéine et les lipides",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.06}, True, True,
+       "—", "recherche",
+       0.45, "proches du maximum réaliste (~6 %), croissance rapide, fixation directe du CO₂ ; passage à l'échelle "
+             "et stabilité des souches à prouver — pousser vers le plafond théorique"),
+    _P("ingénierie de la photorespiration (court-circuit)",
+       "nourrir : voie synthétique qui recycle le sous-produit de la photorespiration dans le chloroplaste",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.04}, True, True,
+       "—", "recherche",
+       0.45, "récupérer l'énergie perdue par la photorespiration a montré +20–40 % de biomasse au champ (essais "
+             "tabac) → gisement direct ; transfert aux céréales à valider — le levier « colmater les pertes »"),
+    _P("fermentation gazeuse (H₂/CO₂ → protéine microbienne)",
+       "nourrir : produire des protéines microbiennes à partir d'électricité, d'hydrogène et de CO₂",
+       {"type": "photosynthese"}, True, True,
+       "—", "émergent",
+       0.5, "REFRAMING : découple la nourriture du SOL et du SOLEIL (usine, pas champ) → rendement surfacique "
+            "colossal, insensible à la météo ; demande de l'énergie propre et des bioréacteurs — « sauter la photosynthèse »"),
+    _P("agriculture en environnement contrôlé (vertical, LED accordées)",
+       "nourrir : cultures empilées sous LED aux longueurs d'onde optimales, climat maîtrisé",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.05}, True, True,
+       "—", "mature (niche)",
+       0.4, "éclairage accordé à la photosynthèse, zéro pesticide, très peu d'eau, rendement surfacique élevé ; "
+            "MAIS l'électricité de la LED est un coût — gagnant si l'énergie est propre et bon marché"),
+    _P("bas niveau trophique / indice de récolte",
+       "nourrir : manger directement plantes/microbes et maximiser la fraction comestible récoltée",
+       {"type": "photosynthese"}, True, True,
+       "—", "mature (sous-exploité)",
+       0.5, "chaque niveau trophique perd ~90 % → manger bas dans la chaîne et augmenter la part comestible multiplie "
+            "les calories SANS plus de photosynthèse ; changement de régime et de variétés — le levier « chaîne courte »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("culture « à 25 % de rendement solaire »",
+       "nourrir : culture convertissant 25 % de l'énergie solaire en biomasse",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 0.25}, True, True,
+       "—", "revendication",
+       0.3, "25 % > plafond photosynthétique (~12 % théorique, ~6 % réalisé) — impossible ; à réfuter par le plafond "
+            "de rendement photosynthétique"),
+    _P("biomasse « produisant plus d'énergie que le soleil reçu »",
+       "nourrir : plante restituant plus d'énergie qu'elle n'en reçoit du soleil",
+       {"type": "photosynthese", "rendement_solaire_biomasse": 1.5}, True, True,
+       "—", "revendication",
+       0.25, "rendement 150 % : la biomasse contiendrait plus d'énergie que le rayonnement reçu = création nette — "
+             "impossible"),
+]
+
+_OBJECTIF_NOURRIR = ("Le but réel n'est pas la biomasse brute mais un maximum de CALORIES COMESTIBLES par surface, "
+                     "par eau et par intrant, sous le plafond de la photosynthèse : la conversion solaire→biomasse "
+                     "est bornée (~12 % théorique, ~1–6 % réalisé). Leviers : combler l'écart au plafond (voie C4, "
+                     "court-circuiter la photorespiration, canopée) ; SAUTER la photosynthèse (fermentation gazeuse "
+                     "H₂/CO₂ → protéine microbienne, découplée du sol et du soleil) ; organismes plus efficaces "
+                     "(algues/cyanobactéries) ; environnement contrôlé ; améliorer l'indice de récolte et manger BAS "
+                     "dans la chaîne trophique (chaque niveau perd ~90 %). Chaque principe reste jugé par le plafond "
+                     "photosynthétique.")
+_LOI_NOURRIR = ("plafond de rendement photosynthétique : la conversion solaire→biomasse ≤ ~12 % (théorique, avant "
+                "respiration ; réalisé ~1–6 %) ; gains réels = combler l'écart au plafond (C4, photorespiration, "
+                "canopée), sauter la photosynthèse (fermentation gazeuse), manger bas dans la chaîne trophique, "
+                "améliorer l'indice de récolte")
+
+# La nature nourrit par la concentration du CO₂ (C4), l'économie d'eau (CAM), la symbiose (rhizobium), l'échelle (phytoplancton).
+_STRATEGIES_NATURE_NOURRIR = [
+    _Nature("plante en C4 (pompe à CO₂ autour de la Rubisco)",
+            ["concentre le CO₂ sur le site de fixation", "supprime la photorespiration", "meilleur rendement en climat chaud"],
+            "concentrer le CO₂ pour supprimer la perte de photorespiration — le levier « approcher le plafond »"),
+    _Nature("plante CAM (stockage nocturne du CO₂)",
+            ["fixe le CO₂ la nuit pour ouvrir les stomates au frais", "économise l'eau en milieu aride"],
+            "séparer dans le TEMPS la capture du CO₂ et la photosynthèse pour économiser l'eau — cultiver le sec"),
+    _Nature("symbiose légumineuse-rhizobium (azote gratuit)",
+            ["bactéries fixant l'azote de l'air dans les racines", "fertilité sans engrais de synthèse"],
+            "externaliser la fourniture de nutriments à un partenaire — réduire l'intrant, pas le rendement brut"),
+    _Nature("phytoplancton océanique (fixation à grande échelle)",
+            ["fixe la moitié du carbone de la planète", "croissance rapide sur une immense surface d'eau"],
+            "produire de la biomasse à l'ÉCHELLE sur l'eau plutôt que sur des terres arables rares — le levier « surface »"),
+]
+
+enregistre(Domaine(
+    nom=_NOURRIR,
+    aliases=frozenset(_ALIAS_NOURRIR),
+    objectif=_OBJECTIF_NOURRIR,
+    canaux=_CANAUX_NOURRIR,
+    principes=_PRINCIPES_NOURRIR,
+    strategies=_STRATEGIES_NATURE_NOURRIR,
+    loi=_LOI_NOURRIR,
+    extras={"rendement_photo_max": "≈ 12 % (théorique, solaire→biomasse) ; réalisé ~1–6 %, champ ~1–2 %",
+            "note": "sauter la photosynthèse (fermentation gazeuse H₂/CO₂→protéine) découple du sol et du soleil ; "
+                    "manger bas dans la chaîne trophique évite la perte de ~90 % par niveau"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DIX-HUITIÈME DOMAINE : compresser l'information. Nouvelle loi dure au juge (L15) : la BORNE D'ENTROPIE (codage
+#  de source de Shannon) — une compression SANS PERTE ne descend pas sous l'entropie H de la source, et aucun
+#  compresseur sans perte ne réduit TOUTE entrée (argument de comptage/pigeonnier). Distinct de L7 (capacité de
+#  canal). REFRAMING machine : on ne « rétrécit » pas magiquement — on retire la REDONDANCE. Sans perte, la limite
+#  est l'entropie (mieux MODÉLISER la source pour l'approcher) ; il n'existe pas de compresseur universel ; et la
+#  compression AVEC PERTE ne gagne qu'en jetant de l'information imperceptible (fidélité contre taille).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_COMP = "compression_information"
+_ALIAS_COMP = {
+    "compresser des donnees", "compresser l information", "reduire la taille des donnees",
+    "stocker l information densement", "comprimer un fichier", "encoder efficacement",
+}
+
+# ── « Canaux » : les leviers de la compression ───────────────────────────────────────────────────────────────────
+_CANAUX_COMP = [
+    Canal("modele de source", "information", "MIEUX MODÉLISER la source pour approcher son entropie H (sans perte)",
+          True, "un meilleur modèle de probabilité (contextuel, prédictif) rapproche le débit de l'entropie réelle "
+                "→ le gain sans perte vient de la PRÉDICTION, pas d'un tour de passe-passe ; on ne descend jamais sous H"),
+    Canal("redondance", "information", "RETIRER la redondance et la répétition : dictionnaires, déduplication",
+          True, "remplacer les motifs répétés par des références (LZ, dédup) capture la structure → énorme sur des "
+                "données répétitives, nul sur du bruit (déjà à l'entropie) — le levier « ne pas se répéter »"),
+    Canal("perte controlee", "information", "JETER l'information imperceptible (compression AVEC PERTE)",
+          True, "abandonner ce que l'œil/l'oreille ne perçoit pas (perceptuel) descend SOUS l'entropie de la source "
+                "en échangeant de la fidélité contre de la taille → le seul moyen de passer sous H, mais irréversible"),
+    Canal("transformation", "information", "CHANGER de représentation (transformée) pour concentrer l'information",
+          True, "une transformée (DCT, ondelettes) concentre l'énergie dans peu de coefficients → l'essentiel tient "
+                "en peu de nombres, le reste est négligeable ; base du JPEG/MP3 — le levier « bonne représentation »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la borne d'entropie (type `compression`, sans perte ≥ H) ───────────────
+_PRINCIPES_COMP = [
+    _P("codage entropique (Huffman / arithmétique)",
+       "compresser : coder chaque symbole selon sa probabilité pour approcher l'entropie",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 2.05},
+       True, True, "—", "mature",
+       0.6, "atteint presque l'entropie H d'une source connue (arithmétique ~optimal) → la référence sans perte ; "
+            "les gains restants viennent d'un meilleur MODÈLE, pas d'un meilleur code"),
+    _P("dictionnaire / déduplication (LZ)",
+       "compresser : remplacer les motifs répétés par des références à un dictionnaire",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 1.0, "bits_par_symbole": 1.1},
+       True, True, "—", "mature",
+       0.55, "capture la répétition (gzip, zstd, dédup de sauvegardes) → très efficace sur des données structurées, "
+             "inutile sur du bruit (déjà incompressible) — le levier « redondance »"),
+    _P("modèle contextuel / prédictif (PPM, transformeur)",
+       "compresser : prédire le prochain symbole par le contexte, ne coder que la surprise",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 1.5, "bits_par_symbole": 1.55},
+       True, True, "—", "émergent (IA)",
+       0.55, "un meilleur prédicteur (grand modèle) abaisse l'entropie CONDITIONNELLE → compression sans perte "
+             "record, au prix du calcul ; « compresser, c'est comprendre » — le levier « modèle de source »"),
+    _P("déduplication à l'échelle (stockage)",
+       "compresser : détecter et partager les blocs identiques à l'échelle d'un système de stockage",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 4.0, "bits_par_symbole": 4.1},
+       True, True, "—", "mature",
+       0.5, "à l'échelle d'un data-center, la plupart des blocs sont dupliqués → gains massifs sans perte ; index "
+            "de hachage à maintenir — le levier « redondance » globalisé"),
+    _P("transformée (DCT / ondelettes)",
+       "compresser : changer de base pour concentrer l'information dans peu de coefficients (avec perte)",
+       {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0, "bits_par_symbole": 0.8},
+       True, True, "—", "mature",
+       0.5, "concentre l'énergie du signal dans quelques coefficients, on jette le reste → forte compression AVEC "
+            "perte (image/son) ; base du JPEG/MP3 — le levier « bonne représentation »"),
+    _P("codage perceptuel (MP3, JPEG)",
+       "compresser : supprimer ce que l'œil ou l'oreille ne perçoit pas (avec perte)",
+       {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0, "bits_par_symbole": 0.5},
+       True, True, "—", "mature",
+       0.5, "modélise la PERCEPTION humaine pour jeter l'imperceptible → descend bien sous l'entropie du signal en "
+            "gardant la qualité perçue ; irréversible — le levier « perte contrôlée »"),
+    _P("codage prédictif vidéo (ne coder que le changement)",
+       "compresser : ne transmettre que les différences entre images successives (avec perte)",
+       {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0, "bits_par_symbole": 0.1},
+       True, True, "—", "mature",
+       0.5, "l'essentiel d'une vidéo est redondant d'une image à l'autre → ne coder que le mouvement/résidu réduit "
+            "massivement le débit ; référence du streaming — redondance temporelle + perte contrôlée"),
+    _P("représentation apprise (autoencodeur / compression neuronale)",
+       "compresser : apprendre une représentation latente compacte des données (avec perte)",
+       {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 8.0, "bits_par_symbole": 0.3},
+       True, True, "—", "recherche",
+       0.4, "un réseau apprend une base adaptée aux données (visages, texte) → meilleure que les transformées fixes "
+            "sur son domaine ; coût de calcul et généralisation hors domaine — le levier « représentation apprise »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("compresseur sans perte « à 1 bit/symbole » (source d'entropie 4)",
+       "compresser : coder SANS PERTE une source d'entropie 4 bits/symbole à 1 bit/symbole",
+       {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 4.0, "bits_par_symbole": 1.0},
+       True, True, "—", "revendication",
+       0.3, "1 < 4 bits/symbole : coder sans perte SOUS l'entropie de la source viole le codage de source de "
+            "Shannon — à réfuter"),
+    _P("compresseur sans perte « universel » (réduit tout fichier)",
+       "compresser : algorithme sans perte réduisant la taille de TOUTE entrée",
+       {"type": "compression", "sans_perte": True, "compresse_toute_entree": True},
+       True, True, "—", "revendication",
+       0.25, "aucun compresseur sans perte ne réduit TOUTE entrée (argument de comptage / pigeonnier : si certaines "
+             "rétrécissent, d'autres grandissent) — impossible"),
+]
+
+_OBJECTIF_COMP = ("Le but réel n'est pas de « rétrécir » magiquement mais de retirer la REDONDANCE, sous la borne "
+                  "d'entropie de Shannon : une compression SANS PERTE ne descend pas sous l'entropie H de la source, "
+                  "et aucun compresseur sans perte n'est universel (argument de comptage). Leviers : mieux MODÉLISER "
+                  "la source pour approcher H (codage contextuel/prédictif) ; retirer la redondance (dictionnaires, "
+                  "déduplication) ; changer de représentation (transformée) ; et, pour passer SOUS H, la perte "
+                  "contrôlée (jeter l'imperceptible, fidélité contre taille). Chaque principe reste jugé par la "
+                  "borne d'entropie.")
+_LOI_COMP = ("borne d'entropie (codage de source de Shannon) : une compression sans perte ≥ entropie H de la "
+             "source (bits/symbole), et aucun compresseur sans perte ne réduit toute entrée ; gains réels = mieux "
+             "modéliser la source, retirer la redondance, changer de représentation, ou accepter une perte contrôlée")
+
+# La nature compresse par la règle courte (fractale), le motif répété (cristal), le résumé (mémoire), la réutilisation (évolution).
+_STRATEGIES_NATURE_COMP = [
+    _Nature("fractale naturelle (fougère, chou romanesco)",
+            ["une règle de génération COURTE produit une structure complexe", "auto-similarité à toutes les échelles"],
+            "décrire une structure complexe par une règle courte — la compression algorithmique (Kolmogorov)"),
+    _Nature("cristal (maille répétée)",
+            ["une petite maille décrit tout le solide par répétition", "l'ordre périodique = description minimale"],
+            "décrire le tout par un MOTIF de base répété — le levier « redondance / périodicité »"),
+    _Nature("mémoire humaine (rétention du sens, pas des détails)",
+            ["garde le SENS (gist) et jette les détails littéraux", "reconstruit plausiblement le reste"],
+            "conserver l'essentiel et reconstruire le reste — la compression AVEC perte du vivant"),
+    _Nature("évolution modulaire (réutilisation de gènes)",
+            ["réutilise des modules (domaines protéiques, gènes) au lieu de tout réinventer", "un répertoire partagé"],
+            "réutiliser des modules d'un répertoire partagé plutôt que tout réencoder — le levier « dictionnaire »"),
+]
+
+enregistre(Domaine(
+    nom=_COMP,
+    aliases=frozenset(_ALIAS_COMP),
+    objectif=_OBJECTIF_COMP,
+    canaux=_CANAUX_COMP,
+    principes=_PRINCIPES_COMP,
+    strategies=_STRATEGIES_NATURE_COMP,
+    loi=_LOI_COMP,
+    extras={"borne_entropie": "sans perte ≥ H bits/symbole ; pas de compresseur sans perte universel",
+            "note": "L7 = capacité de canal ≠ L15 = codage de source ; la compression avec perte échange fidélité "
+                    "contre taille en descendant sous H"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DIX-NEUVIÈME DOMAINE : isoler thermiquement / conserver la chaleur. Nouvelle loi dure au juge (L16) : le
+#  PLANCHER RADIATIF de Stefan-Boltzmann — pas d'isolant parfait. On peut supprimer la conduction et la convection
+#  (vide) mais PAS le rayonnement : un objet à T > T_env perd au moins ε·σ·A·(T⁴−T_env⁴), et aucun matériau réel
+#  n'a une émissivité nulle. REFRAMING machine : il n'existe pas de « R infini » ; on attaque CHAQUE voie de perte
+#  séparément (vide → conduction/convection ; faible émissivité / multicouche → rayonnement ; géométrie → aire et
+#  gradient), mais la perte ne tombe jamais à zéro tant que T > T_env.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_ISO = "isolation_thermique"
+_ALIAS_ISO = {
+    "isoler thermiquement", "conserver la chaleur", "limiter les pertes de chaleur", "garder au chaud",
+    "reduire les deperditions thermiques", "isoler du froid",
+}
+
+# ── « Canaux » : les leviers de la réduction des pertes thermiques ───────────────────────────────────────────────
+_CANAUX_ISO = [
+    Canal("conduction convection", "chaleur", "SUPPRIMER conduction et convection : créer un VIDE (ou un gaz lourd immobile)",
+          True, "le vide tue les deux voies matérielles d'un coup (bouteille isotherme, panneau sous vide) → il ne "
+                "reste que le rayonnement ; qualité du vide et tenue mécanique à assurer — le plus gros levier"),
+    Canal("emissivite", "chaleur", "BAISSER l'émissivité : surfaces réfléchissantes, multicouches (MLI)",
+          True, "des couches réfléchissantes (aluminisées) abaissent l'émissivité effective vers ~0 → attaquent le "
+                "rayonnement, la voie que le vide ne bloque pas ; mais ε>0 toujours — jamais zéro"),
+    Canal("aire gradient", "chaleur", "RÉDUIRE l'aire exposée et le gradient : compacité, moindre ΔT",
+          True, "la perte croît avec l'aire et (radiativement) en T⁴ : une forme compacte (rapport surface/volume "
+                "bas) et un moindre écart de température réduisent tout — le levier « géométrie »"),
+    Canal("masse thermique", "chaleur", "TAMPONNER avec de la masse thermique / un changement de phase (retarder, pas annuler)",
+          True, "une grande inertie (eau, MCP) lisse et RETARDE les variations sans réduire la perte en régime "
+                "établi → utile pour passer un pic ou une nuit, pas pour isoler indéfiniment"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le plancher radiatif (type `isolation_thermique`, perte ≥ εσA(T⁴−T_env⁴)) ──
+_PRINCIPES_ISO = [
+    _P("bouteille isotherme (vide + argenture)",
+       "isoler : double paroi sous vide aux surfaces argentées (Dewar)",
+       {"type": "isolation_thermique", "emissivite": 0.05, "aire_m2": 0.1, "t_objet_K": 363, "t_env_K": 293,
+        "puissance_perdue_W": 5}, True, True,
+       "—", "mature",
+       0.65, "le vide tue conduction/convection, l'argenture le rayonnement → il ne reste qu'un plancher radiatif "
+             "minuscule ; la référence de l'isolation quasi optimale — mais jamais zéro perte"),
+    _P("isolant multicouche (MLI, spatial)",
+       "isoler : dizaines de couches réfléchissantes sous vide (satellites)",
+       {"type": "isolation_thermique", "emissivite": 0.02, "aire_m2": 1, "t_objet_K": 300, "t_env_K": 100,
+        "puissance_perdue_W": 10}, True, True,
+       "—", "mature (spatial)",
+       0.6, "chaque couche réfléchit le rayonnement de la précédente → émissivité effective minuscule dans le vide "
+            "spatial ; inefficace hors vide (les couches se touchent) — le levier « émissivité » poussé loin"),
+    _P("aérogel (conduction quasi supprimée)",
+       "isoler : solide nanoporeux à conductivité extrêmement basse",
+       {"type": "isolation_thermique", "emissivite": 0.9, "aire_m2": 1, "t_objet_K": 323, "t_env_K": 293,
+        "puissance_perdue_W": 250}, True, True,
+       "—", "mature (niche)",
+       0.5, "les nanopores bloquent la conduction du gaz sans vide poussé → très isolant et léger ; coût et "
+            "fragilité, et le rayonnement reste (émissivité élevée) — le levier « conduction »"),
+    _P("panneau isolant sous vide (VIP)",
+       "isoler : coussin poreux mis sous vide et scellé (bâtiment, réfrigérateur)",
+       {"type": "isolation_thermique", "emissivite": 0.1, "aire_m2": 1, "t_objet_K": 293, "t_env_K": 273,
+        "puissance_perdue_W": 15}, True, True,
+       "—", "mature",
+       0.5, "combine cœur poreux et vide → très mince pour une forte résistance ; risque de perte du vide dans le "
+            "temps (perçage) — le levier « vide » en format plaque"),
+    _P("double vitrage à gaz lourd + low-e",
+       "isoler : deux verres séparés par un gaz lourd, une face à basse émissivité",
+       {"type": "isolation_thermique", "emissivite": 0.1, "aire_m2": 2, "t_objet_K": 293, "t_env_K": 273,
+        "puissance_perdue_W": 40}, True, True,
+       "—", "mature",
+       0.5, "le gaz lourd (argon/krypton) freine la convection, le revêtement low-e le rayonnement → attaque les "
+            "deux voies restantes ; référence du bâtiment — chaque voie traitée séparément"),
+    _P("enveloppe réfléchissante (faible émissivité)",
+       "isoler : recouvrir d'une surface à basse émissivité pour renvoyer le rayonnement",
+       {"type": "isolation_thermique", "emissivite": 0.05, "aire_m2": 1, "t_objet_K": 313, "t_env_K": 293,
+        "puissance_perdue_W": 20}, True, True,
+       "—", "mature",
+       0.45, "une feuille réfléchissante renvoie le rayonnement thermique → utile en complément (couverture de "
+             "survie, sous-toiture) ; ne fait rien contre la conduction directe — le levier « émissivité » simple"),
+    _P("masse thermique / matériau à changement de phase",
+       "isoler : tamponner les variations avec une grande inertie thermique (retarde, ne supprime pas)",
+       {"type": "isolation_thermique"}, True, True,
+       "—", "mature",
+       0.4, "lisse et RETARDE les pics (mur épais, MCP) sans réduire la perte en régime établi → complément de "
+            "l'isolation, pas un substitut ; utile pour passer une nuit/un pic — le levier « inertie »"),
+    _P("rupture des ponts thermiques",
+       "isoler : éliminer les chemins de conduction concentrés (fixations, jonctions)",
+       {"type": "isolation_thermique"}, True, True,
+       "—", "mature (sous-exploité)",
+       0.45, "un pont thermique (ossature, fixation métallique) court-circuite tout l'isolant autour → les traiter "
+             "récupère des pertes invisibles ; détail de conception souvent négligé — le levier « chemins parasites »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("isolation « parfaite » (zéro perte à 373 K vers 293 K)",
+       "isoler : maintenir un objet à 373 K dans un environnement à 293 K sans aucune perte de chaleur",
+       {"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373, "t_env_K": 293,
+        "puissance_perdue_W": 0}, True, True,
+       "—", "revendication",
+       0.3, "zéro perte < plancher radiatif (~340 W ici) : un objet chaud rayonne toujours vers un environnement "
+            "plus froid — pas d'isolant parfait ; à réfuter par Stefan-Boltzmann"),
+    _P("matériau « à émissivité nulle »",
+       "isoler : surface revendiquant une émissivité de 0 (aucun rayonnement)",
+       {"type": "isolation_thermique", "emissivite": 0.0, "aire_m2": 1, "t_objet_K": 373, "t_env_K": 293}, True, True,
+       "—", "revendication",
+       0.25, "aucun matériau réel n'a une émissivité strictement nulle (ε > 0 toujours) → pas d'isolant radiatif "
+             "parfait — impossible"),
+]
+
+_OBJECTIF_ISO = ("Le but réel n'est pas un « R infini » (il n'existe pas) mais de réduire CHAQUE voie de perte au "
+                 "minimum, sous le plancher fixé par le RAYONNEMENT : un objet à T > T_env perd au moins "
+                 "ε·σ·A·(T⁴−T_env⁴) (Stefan-Boltzmann), même parfaitement isolé de la conduction et de la "
+                 "convection. Leviers : supprimer conduction/convection par le VIDE ; baisser l'ÉMISSIVITÉ "
+                 "(surfaces réfléchissantes, multicouches) pour attaquer le rayonnement ; réduire l'AIRE et le "
+                 "gradient (géométrie compacte, moindre ΔT) ; tamponner par la masse thermique (retarder, pas "
+                 "annuler). La perte ne tombe jamais à zéro tant que T > T_env. Chaque principe reste jugé par le "
+                 "plancher radiatif.")
+_LOI_ISO = ("plancher radiatif de Stefan-Boltzmann : pas d'isolant parfait — un objet à T > T_env perd au moins "
+            "ε·σ·A·(T⁴−T_env⁴) par rayonnement (ε>0 toujours), même sans conduction ni convection ; gains réels = "
+            "vide (conduction/convection), basse émissivité (rayonnement), géométrie compacte, moindre gradient")
+
+# La nature isole par l'air piégé (ours polaire), la réduction d'aire (manchot), la couche épaisse (phoque), la réflexion (duvet).
+_STRATEGIES_NATURE_ISO = [
+    _Nature("ours polaire (poils creux piégeant l'air)",
+            ["poils creux et sous-poil dense piégeant une couche d'air immobile", "peau noire absorbant le rayonnement solaire"],
+            "piéger une couche d'air immobile pour tuer la convection — le levier « conduction/convection »"),
+    _Nature("manchot en tortue (huddle réduisant l'aire exposée)",
+            ["se serrent pour réduire la surface exposée au froid", "rotation pour partager le bord exposé"],
+            "réduire l'AIRE exposée collectivement — le levier « géométrie »"),
+    _Nature("graisse (blubber) du phoque",
+            ["couche épaisse à faible conductivité sous la peau", "isole même immergé dans l'eau glacée"],
+            "une couche épaisse à faible conductivité contre la conduction — l'isolant massif du vivant"),
+    _Nature("duvet / pruine réfléchissant",
+            ["surfaces claires ou cireuses renvoyant le rayonnement", "limite le gain ou la perte radiative"],
+            "renvoyer le rayonnement par une surface à basse émissivité — le levier « rayonnement »"),
+]
+
+enregistre(Domaine(
+    nom=_ISO,
+    aliases=frozenset(_ALIAS_ISO),
+    objectif=_OBJECTIF_ISO,
+    canaux=_CANAUX_ISO,
+    principes=_PRINCIPES_ISO,
+    strategies=_STRATEGIES_NATURE_ISO,
+    loi=_LOI_ISO,
+    extras={"plancher_radiatif": "ε·σ·A·(T⁴−T_env⁴), σ = 5,67e-8 W/m²K⁴",
+            "note": "le vide tue conduction/convection ; les multicouches baissent ε ; jamais zéro (ε>0), pas de "
+                    "résistance thermique infinie"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGTIÈME DOMAINE : chiffrer / garder un secret. Nouvelle loi dure au juge (L17) : le SECRET PARFAIT de Shannon
+#  — une confidentialité PARFAITE (inconditionnelle) exige une entropie de clé ≥ l'entropie du message (le masque
+#  jetable l'atteint). REFRAMING machine : il n'y a pas de secret parfait « gratuit ». Soit on paie une clé aussi
+#  longue que le message (secret INCONDITIONNEL, coûteux à distribuer), soit on se rabat sur la sécurité
+#  CALCULATOIRE (s'appuyer sur un problème réputé dur, non prouvé inconditionnel). Leviers : allonger la clé
+#  (jusqu'au masque jetable) ; réduire l'entropie du message (compresser avant de chiffrer) ; distribuer la clé
+#  sûrement (QKD) ; ou assumer l'hypothèse calculatoire (pratique, mais conditionnelle).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CRYPTO = "confidentialite_information"
+_ALIAS_CRYPTO = {
+    "chiffrer un message", "garder un secret", "proteger une information", "chiffrer des donnees",
+    "securiser une communication", "rendre un message confidentiel",
+}
+
+# ── « Canaux » : les leviers de la confidentialité ───────────────────────────────────────────────────────────────
+_CANAUX_CRYPTO = [
+    Canal("longueur de cle", "information", "ALLONGER la clé jusqu'au message (masque jetable) pour un secret INCONDITIONNEL",
+          True, "H(clé) ≥ H(message) est le prix du secret parfait ; le masque jetable (clé = message) est "
+                "incassable même par une puissance infinie — mais la clé est aussi lourde à distribuer que le message"),
+    Canal("hypothese calculatoire", "information", "S'APPUYER sur un problème réputé DUR (factorisation, log discret, réseaux)",
+          True, "la sécurité calculatoire échange l'inconditionnel contre le PRATIQUE : clé courte réutilisable, "
+                "mais reposant sur une hypothèse non prouvée (et menacée par le quantique pour RSA/ECC)"),
+    Canal("entropie du message", "information", "RÉDUIRE l'entropie du message : compresser/normaliser AVANT de chiffrer",
+          True, "moins de bits imprévisibles à protéger = moins de clé nécessaire (et pas de motif exploitable) → "
+                "compresser avant de chiffrer est le levier « moins à cacher »"),
+    Canal("distribution de cle", "information", "DISTRIBUER la clé sûrement : échange Diffie-Hellman, distribution quantique (QKD)",
+          True, "le point faible n'est souvent pas l'algorithme mais l'ACHEMINEMENT de la clé ; la QKD détecte "
+                "toute interception → clé fraîche prouvée sûre, à combiner avec le masque jetable — le levier « la clé »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le secret parfait (type `chiffrement`, parfait ⇒ H(clé) ≥ H(message)) ───
+_PRINCIPES_CRYPTO = [
+    _P("masque jetable (OTP)",
+       "chiffrer : combiner le message avec une clé aléatoire aussi longue, utilisée une seule fois",
+       {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 1000000},
+       True, True, "—", "mature",
+       0.6, "le SEUL secret prouvé parfait (inconditionnel), incassable par toute puissance de calcul ; MAIS clé "
+            "aussi longue que le message et jamais réutilisable → la distribution de clé est le vrai problème"),
+    _P("chiffrement symétrique (AES)",
+       "chiffrer : une même clé courte chiffre et déchiffre, sécurité reposant sur la difficulté de casse",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 8e6},
+       True, True, "—", "mature",
+       0.6, "clé courte réutilisable, rapide → la référence pratique ; sécurité CALCULATOIRE (pas inconditionnelle) "
+            "mais hors de portée de la force brute (2²⁵⁶) — le compromis qui fait tourner le monde"),
+    _P("chiffrement asymétrique (RSA / courbes elliptiques)",
+       "chiffrer : clé publique pour chiffrer, clé privée pour déchiffrer (résout la distribution)",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 3072, "entropie_message_bits": 8e6},
+       True, True, "—", "mature",
+       0.55, "résout la DISTRIBUTION (pas besoin de partager un secret d'avance) ; repose sur factorisation/log "
+             "discret → menacé par le quantique (Shor) — d'où la cryptographie post-quantique"),
+    _P("distribution quantique de clé (QKD)",
+       "chiffrer : distribuer une clé dont toute interception est détectable, puis masque jetable",
+       {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 1000000},
+       True, True, "—", "émergent",
+       0.45, "génère une clé fraîche PROUVÉE sûre (l'espion perturbe l'état quantique et se trahit) → alimente un "
+             "masque jetable inconditionnel ; portée et débit limités (fibre/satellite) — le levier « la clé »"),
+    _P("compresser avant de chiffrer",
+       "chiffrer : retirer la redondance du message avant chiffrement pour réduire l'entropie à protéger",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 4e6},
+       True, True, "—", "mature (sous-exploité)",
+       0.45, "moins de bits imprévisibles = moins de motif exploitable et moins de clé nécessaire → la compression "
+             "renforce le chiffrement ; attention aux fuites par la LONGUEUR (CRIME) — le levier « moins à cacher »"),
+    _P("partage de secret à seuil (Shamir)",
+       "chiffrer : découper le secret en parts dont k sur n suffisent à reconstruire, aucune seule n'informe",
+       {"type": "chiffrement"}, True, True,
+       "—", "mature",
+       0.45, "aucune part isolée ne révèle rien (secret parfait par part) → résilience et contrôle d'accès "
+             "réparti ; gestion des parts à organiser — le levier « pas de point unique »"),
+    _P("chiffrement authentifié (AEAD)",
+       "chiffrer : garantir à la fois la confidentialité ET l'intégrité/authenticité du message",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 8e6},
+       True, True, "—", "mature",
+       0.5, "le secret sans intégrité est fragile (un message chiffré peut être altéré) → lier chiffrement et "
+            "authentification est la bonne pratique — le levier « secret ET intégrité »"),
+    _P("chiffrement homomorphe (calculer sur le chiffré)",
+       "chiffrer : permettre des calculs sur les données chiffrées sans les déchiffrer",
+       {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 4096, "entropie_message_bits": 8e6},
+       True, True, "—", "recherche",
+       0.4, "traiter des données sans jamais les exposer en clair (cloud, santé) → confidentialité pendant le "
+            "CALCUL ; coût de calcul encore lourd — le levier « secret même en usage »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("secret « parfait » avec clé de 128 bits pour 1 Mo",
+       "chiffrer : garantir un secret PARFAIT d'un message de 1 Mo avec une clé de 128 bits",
+       {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 128, "entropie_message_bits": 8e6},
+       True, True, "—", "revendication",
+       0.3, "clé 128 bits < message 8 Mbits pour un secret PARFAIT revendiqué : impossible (Shannon — la clé doit "
+            "être au moins aussi longue que le message)"),
+    _P("masque jetable réutilisé (two-time pad)",
+       "chiffrer : réutiliser une même clé jetable pour deux messages en gardant le secret parfait",
+       {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000, "entropie_message_bits": 2000},
+       True, True, "—", "revendication",
+       0.25, "réutiliser la clé (deux messages pour une clé) casse le secret parfait : l'entropie de clé (1000) < "
+             "celle des messages combinés (2000) — impossible"),
+]
+
+_OBJECTIF_CRYPTO = ("Le but réel n'est pas un secret parfait « gratuit » (il n'existe pas) : la confidentialité "
+                    "PARFAITE de Shannon exige une entropie de clé ≥ l'entropie du message (le masque jetable "
+                    "l'atteint, clé = message). Soit on paie ce prix (secret INCONDITIONNEL, mais distribution de "
+                    "clé coûteuse), soit on se rabat sur la sécurité CALCULATOIRE (problème réputé dur, non prouvé "
+                    "inconditionnel). Leviers : allonger la clé (jusqu'au masque jetable) ; réduire l'entropie du "
+                    "message (compresser avant de chiffrer) ; distribuer la clé sûrement (QKD) ; ou assumer "
+                    "l'hypothèse calculatoire. Chaque principe reste jugé par le secret parfait de Shannon.")
+_LOI_CRYPTO = ("secret parfait de Shannon : une confidentialité PARFAITE (inconditionnelle) exige une entropie de "
+               "clé ≥ l'entropie du message (masque jetable) ; sinon on relève de la sécurité CALCULATOIRE "
+               "(conditionnelle) ; gains réels = allonger la clé, réduire l'entropie du message, sécuriser la "
+               "distribution de clé, ou assumer une hypothèse de difficulté")
+
+# La nature protège l'information par la dissimulation (seiche), la signature privée (gymnote), l'authentification (immunité), le canal keyé (phéromone).
+_STRATEGIES_NATURE_CRYPTO = [
+    _Nature("seiche / pieuvre (camouflage)",
+            ["se fond dans le décor pour ne pas être vue", "dissimule le signal plutôt que de le brouiller"],
+            "CACHER l'existence même du message (dissimulation/stéganographie) — un axe orthogonal au chiffrement"),
+    _Nature("gymnote (poisson électrique à décharge propre)",
+            ["signature de décharge propre à l'individu", "communique sur un canal que les autres ne décodent pas"],
+            "un canal à SIGNATURE privée que seul le bon récepteur interprète — l'analogue de la clé"),
+    _Nature("système immunitaire (reconnaissance soi / non-soi)",
+            ["distingue le soi du non-soi par des marqueurs", "rejette ce qui ne présente pas le bon marqueur"],
+            "AUTHENTIFIER par un marqueur partagé (soi/non-soi) — le pendant biologique de l'authentification"),
+    _Nature("phéromone spécifique d'espèce (canal keyé)",
+            ["molécule que seuls les congénères décodent", "message invisible aux autres espèces"],
+            "émettre sur un canal que seul le détenteur de la bonne « clé » (récepteur) peut lire — le canal keyé"),
+]
+
+enregistre(Domaine(
+    nom=_CRYPTO,
+    aliases=frozenset(_ALIAS_CRYPTO),
+    objectif=_OBJECTIF_CRYPTO,
+    canaux=_CANAUX_CRYPTO,
+    principes=_PRINCIPES_CRYPTO,
+    strategies=_STRATEGIES_NATURE_CRYPTO,
+    loi=_LOI_CRYPTO,
+    extras={"secret_parfait": "H(clé) ≥ H(message) (masque jetable)",
+            "note": "OTP = inconditionnel mais clé = message ; sinon sécurité calculatoire (problème dur, "
+                    "conditionnel) ; L17 (secret) ≠ L7 (capacité) ≠ L15 (source)"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-ET-UNIÈME DOMAINE : voler loin / croisière efficace. Nouvelle loi dure au juge (L18) : la TRAÎNÉE INDUITE
+#  MINIMALE — produire une portance L à la vitesse V avec une envergure b coûte au moins L²/(½ρV²πb²) de traînée
+#  induite (efficacité d'envergure ≤ 1, l'aile elliptique e=1 étant l'optimum). REFRAMING machine : l'ennemi du
+#  vol longue distance n'est pas la traînée de forme mais le COÛT DE LA PORTANCE (le sillage tourbillonnaire) ;
+#  comme D_i ∝ 1/b², une GRANDE ENVERGURE fine est le levier maître (planeurs, albatros). Portée = (V/c)·(L/D)·
+#  ln(W₀/W₁) (Breguet) : maximiser la finesse L/D et la fraction de carburant. Distinct de L10 (vol stationnaire).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CROISIERE = "vol_croisiere"
+_ALIAS_CRO = {
+    "voler loin", "voler en croisiere", "maximiser l autonomie en vol", "planer efficacement",
+    "reduire la trainee en vol", "voler longtemps",
+}
+
+# ── « Canaux » : les leviers de l'efficacité en croisière ────────────────────────────────────────────────────────
+_CANAUX_CRO = [
+    Canal("envergure", "portance", "AGRANDIR l'envergure b : la traînée induite décroît en 1/b²",
+          True, "de loin le plus gros levier : une aile longue et fine étale le sillage → moins de traînée induite ; "
+                "c'est pourquoi planeurs et albatros ont de très grandes envergures — mais masse et flexion à gérer"),
+    Canal("finesse", "portance", "MAXIMISER la finesse L/D (profils laminaires, surfaces propres) : la portée est linéaire en L/D",
+          True, "Breguet : portée ∝ L/D → un bon rapport portance/traînée (profil laminaire, état de surface, "
+                "compromis épaisseur) démultiplie l'autonomie ; l'aérodynamique fine, le levier « finesse »"),
+    Canal("altitude vitesse", "portance", "VOLER HAUT (air raréfié) à la vitesse de finesse maximale",
+          True, "en altitude l'air est moins dense → moins de traînée de forme pour la même portance, à la vitesse "
+                "qui maximise L/D ; contrainte de motorisation et de pressurisation — le levier « régime optimal »"),
+    Canal("fraction de carburant", "portance", "AUGMENTER la fraction de carburant (Breguet : portée ∝ ln(W₀/W₁))",
+          True, "la portée croît au logarithme du rapport de masse (comme la fusée) → structure légère et grande "
+                "réserve ; retours décroissants → l'essentiel se joue sur L/D et l'envergure, pas la masse"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la traînée induite minimale (type `vol_croisiere`, D_i ≥ L²/(½ρV²πb²)) ──
+_PRINCIPES_CRO = [
+    _P("aile longue et fine (grande envergure)",
+       "voler loin : aile de grand allongement (planeur) minimisant la traînée induite",
+       {"type": "vol_croisiere", "portance_N": 5000, "envergure_m": 20, "vitesse_m_s": 30, "rho_air": 1.0,
+        "trainee_induite_N": 60, "efficacite_envergure": 0.9}, True, True,
+       "—", "mature",
+       0.65, "le grand allongement étale le sillage → traînée induite minimale (finesse de planeur ~50) ; masse et "
+             "flexion de l'aile longue à maîtriser — le levier « envergure » incarné"),
+    _P("winglet / dispositif de bout d'aile",
+       "voler loin : ailette de bout d'aile réduisant le tourbillon marginal",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 5000, "efficacite_envergure": 0.85}, True, True,
+       "—", "mature",
+       0.55, "récupère une partie de l'énergie du tourbillon de bout d'aile → augmente l'efficacité d'envergure "
+             "effective sans allonger la voilure ; gain modéré, généralisé sur les avions de ligne — le levier « bout d'aile »"),
+    _P("aile à distribution elliptique (e ≈ 1)",
+       "voler loin : forme en plan elliptique approchant l'efficacité d'envergure optimale",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 3400, "efficacite_envergure": 0.98}, True, True,
+       "—", "mature",
+       0.5, "la distribution elliptique atteint presque l'optimum théorique (e=1) → traînée induite minimale pour "
+            "une envergure donnée ; fabrication complexe (Spitfire) — approcher le plancher, pas le franchir"),
+    _P("profil laminaire (finesse L/D élevée)",
+       "voler loin : profil et surfaces favorisant l'écoulement laminaire pour un bon rapport L/D",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 5500, "efficacite_envergure": 0.8}, True, True,
+       "—", "mature",
+       0.5, "retarde la transition turbulente → moins de traînée de frottement, meilleur L/D donc plus de portée "
+            "(Breguet) ; sensibilité aux salissures et insectes — le levier « finesse »"),
+    _P("vol en formation (profiter du sillage)",
+       "voler loin : voler dans le courant ascendant du sillage d'un autre appareil",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 4500, "efficacite_envergure": 0.9}, True, True,
+       "—", "recherche",
+       0.4, "l'ascendance du tourbillon du leader réduit la traînée induite des suiveurs (comme les oies) → "
+            "économies mesurées ; coordination et sécurité serrées — le levier « emprunter le sillage »"),
+    _P("plané dynamique / thermique (énergie de l'air)",
+       "voler loin : extraire l'énergie des ascendances ou du gradient de vent au lieu de propulser",
+       {"type": "vol_croisiere"}, True, True,
+       "—", "mature (planeurs, oiseaux)",
+       0.45, "REFRAMING : puiser l'énergie du MILIEU (thermiques, cisaillement de vent) → distance quasi illimitée "
+             "sans carburant ; dépend de la météo et du pilotage — « ne pas dépenser sa propre énergie »"),
+    _P("altitude de croisière optimale",
+       "voler loin : monter à l'altitude où l'air raréfié minimise la traînée à la vitesse de finesse maximale",
+       {"type": "vol_croisiere"}, True, True,
+       "—", "mature",
+       0.5, "l'air moins dense réduit la traînée de forme pour la même portance, à la vitesse qui maximise L/D → "
+            "consommation minimale ; motorisation et pressurisation à assurer — le levier « régime optimal »"),
+    _P("dirigeable / portance statique",
+       "voler loin : sustenter par flottabilité (gaz léger), sans créer de traînée induite",
+       {"type": "vol_croisiere"}, True, True,
+       "—", "mature (niche)",
+       0.4, "REFRAMING : la portance STATIQUE ne crée pas de sillage tourbillonnaire → pas de traînée induite, "
+            "endurance énorme à basse vitesse ; volume et sensibilité au vent — contourner le coût de la portance"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("aile « à traînée induite nulle » en portance",
+       "voler loin : aile portante ne produisant aucune traînée induite",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 0}, True, True,
+       "—", "revendication",
+       0.3, "produire de la portance crée un sillage tourbillonnaire : traînée induite nulle < minimum (~3329 N ici) "
+            "— impossible ; à réfuter par la traînée induite minimale"),
+    _P("aile « à efficacité d'envergure 1,5 »",
+       "voler loin : aile revendiquant une efficacité d'envergure de 1,5 (au-delà de l'elliptique)",
+       {"type": "vol_croisiere", "efficacite_envergure": 1.5}, True, True,
+       "—", "revendication",
+       0.25, "l'efficacité d'envergure ne peut dépasser 1 (la distribution elliptique est l'optimum) → 1,5 est "
+             "impossible"),
+]
+
+_OBJECTIF_CRO = ("Le but réel n'est pas de « pousser plus fort » mais de réduire le COÛT DE LA PORTANCE : produire "
+                 "de la portance crée un sillage tourbillonnaire dont la traînée INDUITE vaut au moins L²/(½ρV²πb²). "
+                 "Comme elle décroît en 1/b², une GRANDE ENVERGURE fine est le levier maître (planeurs, albatros). "
+                 "Autres leviers : maximiser la finesse L/D (profils laminaires — la portée de Breguet est linéaire "
+                 "en L/D) ; voler HAUT à la vitesse de finesse maximale ; augmenter la fraction de carburant (portée "
+                 "∝ ln(W₀/W₁)). La portance statique (dirigeable) contourne entièrement la traînée induite. Chaque "
+                 "principe reste jugé par la traînée induite minimale.")
+_LOI_CRO = ("traînée induite minimale : produire une portance L à la vitesse V avec une envergure b coûte une "
+            "traînée induite ≥ L²/(½ρV²πb²) (efficacité d'envergure ≤ 1) ; gains réels = grande envergure (∝ 1/b²), "
+            "finesse L/D élevée, altitude/vitesse optimale, fraction de carburant (Breguet), ou portance statique")
+
+# La nature vole loin par la grande envergure (frégate), les ascendances (vautour), la croisière efficace (martinet), le bout d'aile (rapace).
+_STRATEGIES_NATURE_CRO = [
+    _Nature("frégate (immense envergure, plané prolongé)",
+            ["très grand allongement pour une masse faible", "plane des jours sans battre"],
+            "une grande envergure fine minimise la traînée induite — le levier « envergure »"),
+    _Nature("vautour / condor (ascendances thermiques)",
+            ["exploite les colonnes d'air chaud pour monter sans effort", "grandes ailes à fentes de bout"],
+            "puiser l'énergie de l'air ascendant plutôt que la dépenser — planer pour presque rien"),
+    _Nature("martinet (croisière ultra-efficace)",
+            ["passe des mois en vol continu", "aile effilée à faible traînée"],
+            "une croisière soutenue très efficace (finesse et faible traînée) — voler longtemps pour peu"),
+    _Nature("bout d'aile fendu / relevé des rapaces",
+            ["plumes de bout écartées réduisant le tourbillon marginal", "winglet biologique"],
+            "réduire le tourbillon de bout d'aile — l'analogue naturel du winglet, augmente l'efficacité d'envergure"),
+]
+
+enregistre(Domaine(
+    nom=_CROISIERE,
+    aliases=frozenset(_ALIAS_CRO),
+    objectif=_OBJECTIF_CRO,
+    canaux=_CANAUX_CRO,
+    principes=_PRINCIPES_CRO,
+    strategies=_STRATEGIES_NATURE_CRO,
+    loi=_LOI_CRO,
+    extras={"trainee_induite_min": "L²/(½ρV²πb²), efficacité d'envergure ≤ 1",
+            "note": "D_i ∝ 1/b² → grande envergure ; portée de Breguet R = (V/c)·(L/D)·ln(W₀/W₁) ; distinct de L10 "
+                    "(vol stationnaire, puissance induite)"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-DEUXIÈME DOMAINE : détecter un signal lumineux faible. Nouvelle loi dure au juge (L19) : le BRUIT DE
+#  GRENAILLE — la lumière arrive en photons discrets (Poisson), donc compter N photons plafonne le rapport
+#  signal/bruit à √N ; et le rendement quantique ≤ 1 (un photon ne compte pas plus d'un électron). REFRAMING
+#  machine : on n'« amplifie » pas le signal au-delà de son grain ; le SNR est limité par le NOMBRE de photons
+#  collectés (√N). Leviers : collecter PLUS de photons (grande ouverture, longue intégration, source plus vive) ;
+#  réduire les AUTRES bruits (refroidir le capteur, faible bruit de lecture) pour atteindre la limite de grenaille ;
+#  monter le rendement quantique vers 1. La lumière COMPRIMÉE (squeezed) bat la limite quantique standard (LIGO).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_DETECT = "detection_signal"
+_ALIAS_DETECT = {
+    "detecter un signal faible", "detecter la lumiere", "capter un signal faible", "ameliorer la sensibilite",
+    "detecter peu de photons", "augmenter le rapport signal sur bruit",
+}
+
+# ── « Canaux » : les leviers de la sensibilité de détection ──────────────────────────────────────────────────────
+_CANAUX_DETECT = [
+    Canal("flux de photons", "information", "COLLECTER plus de photons : grande ouverture, longue intégration, source plus vive",
+          True, "le rapport signal/bruit croît en √N → doubler le SNR exige ×4 de photons ; grande pupille/miroir et "
+                "temps de pose sont les leviers directs, mais √N est irréductible en lumière classique"),
+    Canal("autres bruits", "information", "RÉDUIRE les bruits non fondamentaux : refroidir (bruit d'obscurité), faible bruit de lecture",
+          True, "un capteur réel est SOUS la limite de grenaille (bruit d'obscurité, de lecture) → le refroidir et "
+                "améliorer l'électronique le rapprochent du plafond √N, sans jamais le dépasser"),
+    Canal("rendement quantique", "information", "MONTER le rendement quantique vers 1 (illumination arrière, anti-reflet)",
+          True, "chaque photon perdu (réflexion, transmission) est du signal en moins → un QE proche de 1 "
+                "(capteurs back-illuminated ~0,95) récupère des photons rares ; ne peut dépasser 1"),
+    Canal("lumiere comprimee", "information", "LUMIÈRE COMPRIMÉE (squeezed) : redistribuer le bruit quantique sous la limite standard",
+          True, "en interférométrie, comprimer les fluctuations quantiques d'une quadrature descend SOUS la limite "
+                "de grenaille (LIGO gagne de la portée ainsi) ; exige des états non classiques — le levier « quantique »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le bruit de grenaille (type `detection`, SNR ≤ √N ; QE ≤ 1) ────────────
+_PRINCIPES_DETECT = [
+    _P("grande ouverture / télescope (collecter plus de photons)",
+       "détecter : agrandir la pupille/le miroir pour capter davantage de photons",
+       {"type": "detection", "nb_photons": 1000000, "rapport_signal_bruit": 900}, True, True,
+       "—", "mature",
+       0.65, "N ∝ surface collectrice → SNR ∝ √N : le grand miroir est le levier premier de la sensibilité "
+             "(astronomie) ; coût et masse de l'optique — collecter plus de photons, la seule vraie voie"),
+    _P("temps d'intégration long",
+       "détecter : accumuler le signal sur une longue pose pour augmenter N",
+       {"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 90}, True, True,
+       "—", "mature",
+       0.55, "poser plus longtemps accumule des photons (SNR ∝ √t) → révèle des sources faibles ; limité par le "
+             "bruit d'obscurité, le suivi et la stabilité — le levier « temps »"),
+    _P("capteur refroidi (bruit d'obscurité réduit)",
+       "détecter : refroidir le capteur pour supprimer les électrons thermiques parasites",
+       {"type": "detection", "nb_photons": 10000, "rapport_signal_bruit": 95}, True, True,
+       "—", "mature",
+       0.55, "le froid supprime le courant d'obscurité (électrons thermiques) → rapproche le capteur de la limite "
+             "de grenaille ; refroidissement à payer (Peltier, azote) — atteindre le plafond √N, pas le franchir"),
+    _P("faible bruit de lecture (EMCCD / sCMOS)",
+       "détecter : électronique à très faible bruit de lecture pour les signaux à peu de photons",
+       {"type": "detection", "nb_photons": 400, "rapport_signal_bruit": 19}, True, True,
+       "—", "mature",
+       0.5, "à faible flux, le bruit de lecture domine → le réduire (multiplication d'électrons, sCMOS) libère la "
+            "détection des signaux ténus ; plafonné par le grenaille — le levier « lecture propre »"),
+    _P("rendement quantique élevé (back-illuminated)",
+       "détecter : capteur à illumination arrière convertissant presque chaque photon (QE ~0,95)",
+       {"type": "detection", "rendement_quantique": 0.95}, True, True,
+       "—", "mature",
+       0.5, "récupère les photons perdus par réflexion/transmission → chaque photon rare compte ; QE ne peut "
+            "dépasser 1 — le levier « ne perdre aucun photon »"),
+    _P("comptage de photons (SPAD / PMT)",
+       "détecter : compter les photons un par un avec un détecteur à avalanche",
+       {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 9.9}, True, True,
+       "—", "mature",
+       0.5, "détecte le photon unique (avalanche) → sensibilité ultime à très bas flux, avec datation précise ; "
+            "temps mort et bruit de comptage — atteindre la statistique de Poisson (√N)"),
+    _P("moyennage / accumulation de trames",
+       "détecter : additionner de nombreuses acquisitions pour augmenter N effectif",
+       {"type": "detection", "nb_photons": 1000000, "rapport_signal_bruit": 950}, True, True,
+       "—", "mature",
+       0.45, "accumuler des trames augmente le N total (SNR ∝ √nombre de trames) → extrait un signal noyé dans le "
+             "bruit ; suppose une scène stable et recalée — le levier « accumuler »"),
+    _P("lumière comprimée (squeezed, interférométrie)",
+       "détecter : injecter un état de lumière comprimée pour passer sous la limite de grenaille",
+       {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 15, "lumiere_comprimee": True}, True, True,
+       "—", "recherche (LIGO)",
+       0.4, "REFRAMING quantique : comprimer les fluctuations d'une quadrature descend SOUS la limite standard "
+            "(LIGO gagne en portée) ; états non classiques fragiles → interférométrie de précision — le levier « quantique »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("capteur « à SNR 100 sur 100 photons »",
+       "détecter : atteindre un rapport signal/bruit de 100 en ne collectant que 100 photons (lumière classique)",
+       {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 100}, True, True,
+       "—", "revendication",
+       0.3, "SNR 100 > √N (=10 pour 100 photons) en lumière classique : au-delà du bruit de grenaille — impossible ; "
+            "à réfuter par la statistique de Poisson"),
+    _P("capteur « à rendement quantique 1,2 »",
+       "détecter : capteur revendiquant un rendement quantique de 1,2 (plus d'un électron par photon)",
+       {"type": "detection", "rendement_quantique": 1.2}, True, True,
+       "—", "revendication",
+       0.25, "un photon ne peut compter plus d'un électron (QE ≤ 1, hors multiplication déclarée) → 1,2 est "
+             "impossible"),
+]
+
+_OBJECTIF_DETECT = ("Le but réel n'est pas d'« amplifier » le signal au-delà de son grain mais de collecter et "
+                    "préserver des PHOTONS : la lumière arrive en quanta (Poisson), donc le rapport signal/bruit "
+                    "est plafonné à √N par le bruit de GRENAILLE, et le rendement quantique ≤ 1. Leviers : "
+                    "collecter PLUS de photons (grande ouverture, longue intégration, source plus vive) ; réduire "
+                    "les AUTRES bruits (refroidir le capteur, faible bruit de lecture) pour atteindre la limite de "
+                    "grenaille ; monter le rendement quantique vers 1. La lumière COMPRIMÉE (squeezed) descend sous "
+                    "la limite standard en interférométrie. Chaque principe reste jugé par le bruit de grenaille.")
+_LOI_DETECT = ("bruit de grenaille (photonique) : compter N photons plafonne le rapport signal/bruit à √N "
+               "(statistique de Poisson), et le rendement quantique ≤ 1 ; gains réels = collecter plus de photons "
+               "(√N), réduire les bruits non fondamentaux, monter le rendement quantique, ou lumière comprimée")
+
+# La nature détecte le faible signal par le comptage (bâtonnet), le second passage (tapetum), la sommation (œil composé), la cascade (photorécepteur).
+_STRATEGIES_NATURE_DETECT = [
+    _Nature("bâtonnet de la rétine (vision nocturne)",
+            ["répond au photon unique", "s'adapte à l'obscurité en accumulant"],
+            "compter les photons un à un et intégrer dans le noir — atteindre la limite de grenaille du vivant"),
+    _Nature("tapetum lucidum (couche réfléchissante de l'œil)",
+            ["renvoie la lumière non absorbée vers les photorécepteurs", "double la chance de capter chaque photon"],
+            "faire repasser la lumière pour ne perdre aucun photon — augmenter le rendement de capture"),
+    _Nature("œil composé sommateur (insectes nocturnes)",
+            ["additionne le signal de plusieurs ommatidies", "échange la résolution contre la sensibilité"],
+            "SOMMER le signal de plusieurs capteurs pour augmenter N — l'accumulation spatiale"),
+    _Nature("photorécepteur à cascade d'amplification",
+            ["une capture déclenche une cascade biochimique amplificatrice", "un photon → un signal détectable"],
+            "amplifier fidèlement une capture unique — lire le photon sans ajouter de bruit, comme un SPAD"),
+]
+
+enregistre(Domaine(
+    nom=_DETECT,
+    aliases=frozenset(_ALIAS_DETECT),
+    objectif=_OBJECTIF_DETECT,
+    canaux=_CANAUX_DETECT,
+    principes=_PRINCIPES_DETECT,
+    strategies=_STRATEGIES_NATURE_DETECT,
+    loi=_LOI_DETECT,
+    extras={"bruit_grenaille": "SNR ≤ √N (Poisson) ; rendement quantique ≤ 1",
+            "note": "la lumière comprimée (squeezed) bat la limite quantique standard en interférométrie (LIGO)"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-TROISIÈME DOMAINE : amplifier un signal. Nouvelle loi dure au juge (L20) : un amplificateur N'AMÉLIORE
+#  PAS le rapport signal/bruit — le facteur de bruit F = SNR_entrée/SNR_sortie ≥ 1 (NF ≥ 0 dB). Amplifier
+#  multiplie le signal ET le bruit, et tout amplificateur ajoute son propre bruit. REFRAMING machine : gagner en
+#  amplitude ne gagne PAS en information ; ce qui compte, c'est de préserver le SNR. Leviers : mettre un
+#  amplificateur à FAIBLE BRUIT en TÊTE (Friis : le premier étage domine le bruit total) ; REFROIDIR l'étage
+#  d'entrée (bruit thermique) ; amplifier TÔT (au capteur, avant que le bruit de fond s'ajoute) ; amplification
+#  paramétrique / phase-sensible (approche 0 dB). Ne pas SUR-amplifier (on amplifie aussi le bruit).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_AMPLI = "amplification_signal"
+_ALIAS_AMPLI = {
+    "amplifier un signal", "amplifier sans ajouter de bruit", "augmenter l amplitude d un signal",
+    "amplifier a faible bruit", "renforcer un signal faible", "concevoir un amplificateur",
+}
+
+# ── « Canaux » : les leviers de l'amplification à faible bruit ───────────────────────────────────────────────────
+_CANAUX_AMPLI = [
+    Canal("premier etage", "information", "METTRE un amplificateur à FAIBLE BRUIT en tête (Friis : le 1er étage domine le bruit total)",
+          True, "le facteur de bruit total est dominé par le PREMIER étage (formule de Friis) → soigner l'entrée "
+                "(LNA) prime sur tout le reste de la chaîne ; le levier décisif de la sensibilité"),
+    Canal("temperature", "information", "REFROIDIR l'étage d'entrée : supprimer le bruit thermique (Johnson-Nyquist)",
+          True, "le bruit thermique ∝ température → refroidir l'amplificateur d'entrée (cryogénie) abaisse le "
+                "plancher de bruit ; radio-astronomie et calcul quantique en dépendent — le levier « froid »"),
+    Canal("position", "information", "AMPLIFIER TÔT : au plus près du capteur, avant que le bruit de fond s'ajoute",
+          True, "amplifier avant les pertes de câble et le bruit ambiant préserve le SNR d'origine → préamplificateur "
+                "intégré au capteur ; une fois le SNR dégradé, aucun gain ne le récupère — le levier « tôt »"),
+    Canal("phase sensible", "information", "AMPLIFICATION PARAMÉTRIQUE / phase-sensible : approcher le facteur de bruit 0 dB",
+          True, "un amplificateur paramétrique phase-sensible amplifie une quadrature sans ajouter le bruit d'un "
+                "amplificateur phase-insensible → approche F=1 (0 dB) ; utile en métrologie quantique — le levier « quantique »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le facteur de bruit (type `amplification`, F ≥ 1 / NF ≥ 0 dB) ──────────
+_PRINCIPES_AMPLI = [
+    _P("amplificateur faible bruit en tête (LNA, Friis)",
+       "amplifier : placer un amplificateur à très faible facteur de bruit en premier étage",
+       {"type": "amplification", "facteur_de_bruit_dB": 0.5}, True, True,
+       "—", "mature",
+       0.65, "la formule de Friis : le 1er étage domine le bruit total → un LNA soigné en entrée fixe la "
+             "sensibilité de toute la chaîne ; la référence de la conception radio — le levier « premier étage »"),
+    _P("amplificateur cryogénique (refroidi)",
+       "amplifier : refroidir l'étage d'entrée pour supprimer le bruit thermique",
+       {"type": "amplification", "facteur_de_bruit_dB": 0.2}, True, True,
+       "—", "mature (radio-astro / quantique)",
+       0.55, "à quelques kelvins, le bruit thermique s'effondre → facteur de bruit quasi idéal (récepteurs "
+             "radioastronomiques, qubits) ; cryogénie à payer — le levier « froid » poussé loin"),
+    _P("amplificateur paramétrique / phase-sensible",
+       "amplifier : amplifier une quadrature sans ajouter le bruit d'un amplificateur phase-insensible",
+       {"type": "amplification", "facteur_de_bruit": 1.0}, True, True,
+       "—", "recherche",
+       0.45, "approche le facteur de bruit idéal (0 dB) en n'amplifiant qu'une quadrature → métrologie quantique, "
+             "lecture de qubits ; bande étroite et pompe à fournir — le levier « phase-sensible »"),
+    _P("préamplificateur au capteur (amplifier tôt)",
+       "amplifier : intégrer le préamplificateur au plus près du capteur",
+       {"type": "amplification", "facteur_de_bruit_dB": 1.0}, True, True,
+       "—", "mature",
+       0.5, "amplifier avant les pertes de câble et le bruit ambiant préserve le SNR d'origine → capteurs actifs, "
+            "micros à électret ; intégration et alimentation locales — le levier « tôt »"),
+    _P("amplificateur transimpédance faible bruit (photodiode)",
+       "amplifier : convertir un faible photocourant en tension avec un minimum de bruit",
+       {"type": "amplification", "facteur_de_bruit_dB": 1.5}, True, True,
+       "—", "mature",
+       0.5, "adapte l'impédance et amplifie un courant minuscule (photodiode, capteur) sans le noyer → clé de la "
+            "détection optique ; compromis bande/bruit — préserver le peu de signal reçu"),
+    _P("amplificateur à faible bruit large bande (distribué)",
+       "amplifier : répartir le gain sur plusieurs cellules pour une large bande à bruit maîtrisé",
+       {"type": "amplification", "facteur_de_bruit_dB": 2.0}, True, True,
+       "—", "mature",
+       0.45, "gain réparti → large bande passante avec un facteur de bruit raisonnable ; plus de composants et de "
+            "consommation — le compromis « bande vs bruit »"),
+    _P("amplificateur optique (EDFA)",
+       "amplifier : amplifier directement un signal optique dans une fibre dopée à l'erbium",
+       {"type": "amplification", "facteur_de_bruit_dB": 3.0}, True, True,
+       "—", "mature",
+       0.5, "amplifie la lumière sans conversion optique-électrique (télécoms longue distance) → facteur de bruit "
+            "proche de la limite quantique (~3 dB) ; émission spontanée amplifiée à gérer — amplifier « en optique »"),
+    _P("amplificateur de puissance à haut rendement (GaN)",
+       "amplifier : amplifier en puissance avec un bon rendement énergétique (émission)",
+       {"type": "amplification", "facteur_de_bruit_dB": 4.0}, True, True,
+       "—", "mature",
+       0.4, "en sortie, le bruit compte moins que le rendement et la linéarité → GaN pour l'émission (5G, radar) ; "
+            "le faible bruit n'est crucial qu'en RÉCEPTION, pas en émission — le bon amplificateur au bon endroit"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("amplificateur « à facteur de bruit 0,5 »",
+       "amplifier : amplificateur revendiquant un facteur de bruit de 0,5 (NF −3 dB)",
+       {"type": "amplification", "facteur_de_bruit": 0.5}, True, True,
+       "—", "revendication",
+       0.3, "facteur de bruit 0,5 < 1 : le dispositif AMÉLIORERAIT le rapport signal/bruit → impossible (un "
+            "amplificateur ajoute toujours du bruit) ; à réfuter"),
+    _P("amplificateur « qui améliore le SNR » (NF −1 dB)",
+       "amplifier : amplificateur revendiquant un facteur de bruit négatif en dB",
+       {"type": "amplification", "facteur_de_bruit_dB": -1}, True, True,
+       "—", "revendication",
+       0.25, "NF −1 dB < 0 dB : aucun amplificateur ne peut améliorer le rapport signal/bruit — impossible"),
+]
+
+_OBJECTIF_AMPLI = ("Le but réel n'est pas de « rendre plus grand » mais de préserver l'INFORMATION : amplifier "
+                   "multiplie le signal ET le bruit, et tout amplificateur ajoute le sien → le facteur de bruit "
+                   "F = SNR_entrée/SNR_sortie ≥ 1 (NF ≥ 0 dB). Gagner en amplitude ne gagne pas en SNR. Leviers : "
+                   "mettre un amplificateur à FAIBLE BRUIT en TÊTE (Friis : le 1er étage domine) ; REFROIDIR l'étage "
+                   "d'entrée (bruit thermique) ; amplifier TÔT (au capteur, avant le bruit de fond) ; amplification "
+                   "paramétrique / phase-sensible (approche 0 dB). Ne pas sur-amplifier. Chaque principe reste jugé "
+                   "par le facteur de bruit.")
+_LOI_AMPLI = ("un amplificateur n'améliore pas le rapport signal/bruit : facteur de bruit F ≥ 1 (NF ≥ 0 dB) ; gains "
+              "réels = faible bruit au premier étage (Friis), refroidir l'entrée, amplifier tôt (au capteur), "
+              "amplification phase-sensible ; ne pas sur-amplifier")
+
+# La nature amplifie par l'amplificateur actif (cochlée), la résonance accordée, l'adaptation d'impédance (osselets), le levier mécanique (vibrisse).
+_STRATEGIES_NATURE_AMPLI = [
+    _Nature("cellule ciliée de la cochlée (amplificateur actif)",
+            ["amplifie activement les vibrations faibles près du seuil", "gain plus fort pour les sons ténus"],
+            "amplifier activement le signal faible sans le noyer — l'amplificateur à faible bruit du vivant"),
+    _Nature("résonance mécanique accordée (membrane basilaire)",
+            ["chaque zone résonne à une fréquence", "amplifie sélectivement une bande étroite"],
+            "amplifier SÉLECTIVEMENT une fréquence par résonance — le gain bande étroite à faible bruit"),
+    _Nature("osselets de l'oreille moyenne (adaptation d'impédance)",
+            ["couplent l'air au liquide de l'oreille interne", "gain par effet de levier et de surface"],
+            "adapter les impédances pour transférer le signal sans le perdre — un gain « propre » par couplage"),
+    _Nature("vibrisse / moustache (levier mécanique)",
+            ["long poil qui amplifie mécaniquement un contact minime", "transmet à une base très sensible"],
+            "amplifier mécaniquement un stimulus infime AVANT le capteur — amplifier tôt, à la source"),
+]
+
+enregistre(Domaine(
+    nom=_AMPLI,
+    aliases=frozenset(_ALIAS_AMPLI),
+    objectif=_OBJECTIF_AMPLI,
+    canaux=_CANAUX_AMPLI,
+    principes=_PRINCIPES_AMPLI,
+    strategies=_STRATEGIES_NATURE_AMPLI,
+    loi=_LOI_AMPLI,
+    extras={"facteur_de_bruit_min": "F ≥ 1 (NF ≥ 0 dB) — un amplificateur n'améliore jamais le SNR",
+            "note": "Friis : le 1er étage domine ; refroidir l'entrée ; amplifier tôt ; phase-sensible approche 0 dB"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-QUATRIÈME DOMAINE : numériser / échantillonner un signal. Nouvelle loi dure au juge (L21) : le théorème
+#  d'échantillonnage de NYQUIST-SHANNON — reconstruire parfaitement un signal de bande B exige un échantillonnage
+#  à fs ≥ 2B ; en dessous, le repliement (aliasing) mélange irréversiblement les fréquences. REFRAMING machine :
+#  numériser plus vite ne sert à rien au-delà de 2B (marge mise à part) ; ce qui compte est de couvrir la BANDE.
+#  Leviers : échantillonner à ≥ 2B avec un FILTRE anti-repliement en amont ; exploiter la PARCIMONIE (acquisition
+#  comprimée, bien sous Nyquist pour un signal creux) ; sous-échantillonner une bande étroite haute fréquence
+#  (échantillonnage passe-bande) ; mettre en forme le bruit (sigma-delta) pour gagner en résolution.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_ECH = "numerisation_signal"
+_ALIAS_ECH = {
+    "numeriser un signal", "echantillonner un signal", "convertir en numerique", "acquerir un signal",
+    "capturer un signal analogique", "reconstruire un signal echantillonne",
+}
+
+# ── « Canaux » : les leviers de la numérisation ──────────────────────────────────────────────────────────────────
+_CANAUX_ECH = [
+    Canal("frequence d echantillonnage", "information", "ÉCHANTILLONNER à fs ≥ 2B (Nyquist) pour couvrir toute la bande",
+          True, "la règle de base : au moins deux échantillons par période de la plus haute fréquence → au-delà de "
+                "2B (marge mise à part), échantillonner plus vite ne récupère aucune information — couvrir la bande"),
+    Canal("filtre anti-repliement", "information", "FILTRER avant d'échantillonner : supprimer les fréquences hors bande",
+          True, "sans filtre anti-repliement en amont, les fréquences au-dessus de fs/2 se replient dans la bande "
+                "utile et la polluent IRRÉVERSIBLEMENT → le filtre analogique d'entrée est indispensable"),
+    Canal("parcimonie", "information", "EXPLOITER la PARCIMONIE (acquisition comprimée) : reconstruire un signal creux sous Nyquist",
+          True, "si le signal est parcimonieux dans une base (peu de composantes), l'acquisition comprimée le "
+                "reconstruit avec BIEN moins d'échantillons que Nyquist (IRM accélérée, radio-astronomie) — le levier « structure »"),
+    Canal("passe bande", "information", "SOUS-ÉCHANTILLONNER une bande étroite haute fréquence (échantillonnage passe-bande)",
+          True, "un signal occupant une bande étroite CENTRÉE haut peut être échantillonné à ~2·(largeur de bande) "
+                "au lieu de 2·(fréquence max) → énorme économie en radio ; alignement des repliements à gérer"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par Nyquist-Shannon (type `echantillonnage`, fs ≥ 2B) ──────────────────────
+_PRINCIPES_ECH = [
+    _P("échantillonnage à la fréquence de Nyquist (2B)",
+       "numériser : échantillonner juste au-dessus de deux fois la bande du signal",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 44100,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature",
+       0.65, "la référence (CD audio 44,1 kHz pour 20 kHz de bande) : couvrir la bande suffit à reconstruire "
+             "parfaitement ; toute la marge sert au filtre — le point de fonctionnement optimal"),
+    _P("suréchantillonnage (marge + bruit étalé)",
+       "numériser : échantillonner bien au-dessus de 2B pour relâcher le filtre et étaler le bruit",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 96000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature",
+       0.5, "échantillonner plus vite étale le bruit de quantification et simplifie le filtre anti-repliement → "
+            "meilleure résolution effective ; coût en débit et en calcul — le levier « marge »"),
+    _P("filtre anti-repliement en amont",
+       "numériser : filtrer analogiquement les fréquences hors bande avant l'échantillonnage",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 44100,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature",
+       0.55, "indispensable : sans lui, tout ce qui dépasse fs/2 se replie et pollue la bande utile pour toujours → "
+             "protéger l'acquisition à la source ; raideur du filtre à concevoir — le levier « propreté d'entrée »"),
+    _P("acquisition comprimée (parcimonie)",
+       "numériser : reconstruire un signal parcimonieux avec bien moins d'échantillons que Nyquist",
+       {"type": "echantillonnage", "bande_passante_Hz": 1000000, "frequence_echantillonnage_Hz": 500000,
+        "reconstruction_parfaite": True, "signal_parcimonieux": True}, True, True,
+       "—", "recherche (IRM, radio-astro)",
+       0.45, "REFRAMING : si le signal est creux dans une base, on le reconstruit sous Nyquist (IRM 5–10× plus "
+             "rapide) ; suppose la parcimonie et un calcul de reconstruction — le levier « exploiter la structure »"),
+    _P("échantillonnage passe-bande (sous-échantillonnage)",
+       "numériser : sous-échantillonner une bande étroite centrée haut à ~2·(largeur de bande)",
+       {"type": "echantillonnage", "bande_passante_Hz": 10000, "frequence_echantillonnage_Hz": 25000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature (radio)",
+       0.45, "un signal radio étroit à haute fréquence n'exige que ~2·(largeur de bande) d'échantillonnage → "
+             "convertisseur bien plus lent ; le placement des repliements demande de la rigueur — le levier « passe-bande »"),
+    _P("modulation sigma-delta (mise en forme du bruit)",
+       "numériser : suréchantillonner fortement et rejeter le bruit de quantification hors bande",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 2800000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature (audio)",
+       0.5, "échange débit contre résolution : un fort suréchantillonnage + mise en forme du bruit donne 20+ bits "
+            "effectifs avec un comparateur 1 bit → l'audio haute résolution ; latence et calcul — le levier « bruit repoussé »"),
+    _P("échantillonnage non uniforme / événementiel",
+       "numériser : n'échantillonner que lorsque le signal change (déclenchement par niveau)",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 45000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "recherche",
+       0.4, "espacer les échantillons selon l'activité économise des données sur des signaux épars dans le temps "
+            "(capteurs basse conso) → moins d'échantillons utiles ; reconstruction plus complexe — le levier « à la demande »"),
+    _P("convertisseur pipeline haute résolution",
+       "numériser : convertir en plusieurs étages successifs pour un haut débit à bonne résolution",
+       {"type": "echantillonnage", "bande_passante_Hz": 100000000, "frequence_echantillonnage_Hz": 250000000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "mature",
+       0.45, "étage par étage, atteint des centaines de MHz à 12–16 bits (radio logicielle, instrumentation) ; "
+             "consommation et calibration — l'électronique de conversion, complément du théorème"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("reconstruction parfaite « d'un 20 kHz échantillonné à 30 kHz »",
+       "numériser : reconstruire parfaitement un signal de 20 kHz de bande échantillonné à seulement 30 kHz",
+       {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "revendication",
+       0.3, "30 kHz < 2·20 kHz = 40 kHz : le repliement est irréversible pour un signal non parcimonieux → "
+            "reconstruction parfaite impossible (Nyquist-Shannon) ; à réfuter"),
+    _P("numériser « sans perte à la fréquence de la bande » (fs = B)",
+       "numériser : reconstruire parfaitement en échantillonnant à la fréquence de la bande (fs = B)",
+       {"type": "echantillonnage", "bande_passante_Hz": 1000, "frequence_echantillonnage_Hz": 1000,
+        "reconstruction_parfaite": True}, True, True,
+       "—", "revendication",
+       0.25, "fs = B < 2B : deux fois trop lent → repliement irréversible ; il faut au moins 2B — impossible"),
+]
+
+_OBJECTIF_ECH = ("Le but réel n'est pas d'échantillonner « le plus vite possible » mais de COUVRIR la bande sans "
+                 "repliement : le théorème de Nyquist-Shannon impose fs ≥ 2B pour reconstruire parfaitement un "
+                 "signal de bande B — en dessous, l'aliasing mélange irréversiblement les fréquences. Leviers : "
+                 "échantillonner à ≥ 2B avec un FILTRE anti-repliement en amont ; exploiter la PARCIMONIE "
+                 "(acquisition comprimée, bien sous Nyquist pour un signal creux) ; sous-échantillonner une bande "
+                 "étroite haute fréquence (passe-bande) ; mettre en forme le bruit (sigma-delta) pour la résolution. "
+                 "Chaque principe reste jugé par le théorème d'échantillonnage.")
+_LOI_ECH = ("théorème de Nyquist-Shannon : reconstruire un signal de bande B exige fs ≥ 2B (en dessous, repliement "
+            "irréversible) ; gains réels = filtre anti-repliement, exploiter la parcimonie (acquisition comprimée), "
+            "échantillonnage passe-bande d'une bande étroite, mise en forme du bruit (sigma-delta)")
+
+# La nature échantillonne par la fusion de scintillement (vision), le pavage non uniforme (fovéa), le sondage actif (chauve-souris), le lissage (pré-filtrage).
+_STRATEGIES_NATURE_ECH = [
+    _Nature("vision (fusion de scintillement)",
+            ["au-delà d'une cadence, les images fusionnent en mouvement continu", "échantillonnage temporel de la scène"],
+            "un signal continu perçu à partir d'échantillons assez rapprochés — l'échantillonnage temporel du vivant"),
+    _Nature("fovéa (échantillonnage spatial non uniforme)",
+            ["densité de capteurs maximale au centre, éparse en périphérie", "concentre la résolution où elle compte"],
+            "échantillonner DENSE là où il faut, ÉPARS ailleurs — l'allocation non uniforme des échantillons"),
+    _Nature("écholocation de la chauve-souris (sondage actif)",
+            ["augmente la cadence des cris en phase d'approche", "adapte l'échantillonnage à la vitesse de la scène"],
+            "adapter la CADENCE d'échantillonnage au rythme de la scène — l'échantillonnage actif et adaptatif"),
+    _Nature("pré-filtrage neuronal (lissage avant transmission)",
+            ["lisse le signal avant de le transmettre", "évite de propager des variations trop rapides"],
+            "filtrer AVANT d'échantillonner pour éviter le repliement — l'anti-aliasing biologique"),
+]
+
+enregistre(Domaine(
+    nom=_ECH,
+    aliases=frozenset(_ALIAS_ECH),
+    objectif=_OBJECTIF_ECH,
+    canaux=_CANAUX_ECH,
+    principes=_PRINCIPES_ECH,
+    strategies=_STRATEGIES_NATURE_ECH,
+    loi=_LOI_ECH,
+    extras={"nyquist": "fs ≥ 2B (bande B)",
+            "note": "l'acquisition comprimée bat Nyquist pour un signal parcimonieux ; le passe-bande "
+                    "sous-échantillonne une bande étroite haute fréquence"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-CINQUIÈME DOMAINE : trier / ordonner des données. Nouvelle loi dure au juge (L22) : la BORNE DU TRI PAR
+#  COMPARAISON — trier n éléments arbitraires par comparaisons exige au moins log₂(n!) ≈ n·log₂(n) comparaisons
+#  (arbre de décision qui doit distinguer les n! ordres). REFRAMING machine : on ne bat pas n·log n en COMPARANT ;
+#  pour aller plus vite, il faut sortir du modèle de comparaison. Leviers : exploiter la STRUCTURE des clés (tri
+#  non comparatif — radix, comptage — en O(n)) ; ne trier que le NÉCESSAIRE (top-k, tri partiel) ; exploiter l'ordre
+#  PRÉEXISTANT (tri adaptatif type Timsort) ; PARALLÉLISER (GPU, réseaux de tri) ou trier en EXTERNE (données > RAM).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_TRI = "tri_donnees"
+_ALIAS_TRI = {
+    "trier des donnees", "ordonner des elements", "classer des donnees", "trier une liste",
+    "ranger des elements", "mettre en ordre",
+}
+
+# ── « Canaux » : les leviers pour trier vite ─────────────────────────────────────────────────────────────────────
+_CANAUX_TRI = [
+    Canal("algorithme optimal", "information", "ATTEINDRE la borne n·log n avec un tri par comparaison optimal (fusion, tas)",
+          True, "log₂(n!) ≈ n·log₂(n) est le plancher du tri par comparaison → fusion et tas l'atteignent dans le "
+                "pire cas ; on ne fait pas mieux EN COMPARANT — la référence à ne pas espérer battre"),
+    Canal("structure des cles", "information", "SORTIR du modèle de comparaison : tri non comparatif (radix, comptage) en O(n)",
+          True, "si les clés sont bornées ou décomposables (entiers, chaînes), le radix/comptage les range par "
+                "leur STRUCTURE sans les comparer deux à deux → O(n), sous la borne n·log n — le levier « exploiter les clés »"),
+    Canal("tri partiel", "information", "NE TRIER que le nécessaire : top-k, sélection, tri partiel",
+          True, "si l'on ne veut que les k premiers (ou la médiane), la sélection le fait en O(n) sans trier le "
+                "reste → ne pas distinguer les n! ordres qu'on n'utilisera pas ; le levier « moins de travail »"),
+    Canal("ordre preexistant", "information", "EXPLOITER l'ordre PRÉEXISTANT (tri adaptatif) et PARALLÉLISER",
+          True, "sur une entrée presque triée, un tri adaptatif (Timsort) approche O(n) ; et la parallélisation "
+                "(réseaux de tri, GPU) répartit le travail → gains réels hors du pire cas arbitraire"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la borne du tri par comparaison (type `tri`, ≥ log₂(n!) si arbitraire) ──
+_PRINCIPES_TRI = [
+    _P("tri par fusion / par tas (n·log n optimal)",
+       "trier : tri par comparaison optimal atteignant n·log n dans le pire cas",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+        "nb_comparaisons": 20000000}, True, True,
+       "—", "mature",
+       0.65, "atteint la borne log₂(n!) dans le pire cas (fusion stable, tas en place) → l'optimum du tri par "
+             "comparaison ; on ne fait pas mieux en comparant — la référence"),
+    _P("tri rapide (quicksort)",
+       "trier : partitionnement récursif, très rapide en moyenne et en place",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+        "nb_comparaisons": 25000000}, True, True,
+       "—", "mature",
+       0.55, "n·log n en moyenne, en place et très efficace en cache → le tri généraliste par défaut ; pire cas "
+             "quadratique à protéger (pivot randomisé/introsort) — proche de la borne en pratique"),
+    _P("tri par base (radix, non comparatif)",
+       "trier : ranger les clés chiffre par chiffre sans les comparer",
+       {"type": "tri", "tri_par_comparaison": False, "nb_elements": 1000000, "nb_comparaisons": 3000000}, True, True,
+       "—", "mature",
+       0.55, "REFRAMING : en exploitant la STRUCTURE des clés (entiers, chaînes), range en O(n·longueur) → SOUS la "
+             "borne n·log n ; exige des clés décomposables — le levier « sortir du modèle de comparaison »"),
+    _P("tri par comptage (counting sort)",
+       "trier : compter les occurrences de chaque clé bornée puis reconstruire",
+       {"type": "tri", "tri_par_comparaison": False, "nb_elements": 1000000, "nb_comparaisons": 2000000}, True, True,
+       "—", "mature",
+       0.5, "O(n + k) pour des clés dans un petit intervalle [0, k] → linéaire, sans aucune comparaison ; mémoire "
+            "∝ k → réservé aux clés bornées — le levier « structure des clés » poussé au maximum"),
+    _P("tri externe (données plus grandes que la mémoire)",
+       "trier : trier des données qui ne tiennent pas en RAM par fusion multi-voies sur disque",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000000,
+        "nb_comparaisons": 30000000000}, True, True,
+       "—", "mature",
+       0.5, "découpe en runs triés puis fusionne en minimisant les entrées/sorties disque → trie des téraoctets ; "
+            "le coût dominant est l'I/O, pas les comparaisons — le levier « échelle »"),
+    _P("tri parallèle (GPU / réseau de tri)",
+       "trier : répartir le tri sur de nombreux cœurs (bitonic sort, sample sort)",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+        "nb_comparaisons": 25000000}, True, True,
+       "—", "mature",
+       0.45, "réduit le TEMPS (pas le nombre total de comparaisons) en les faisant en parallèle → tri massif rapide ; "
+             "réseaux de tri à structure fixe (bitonic) sur GPU — le levier « parallélisme »"),
+    _P("sélection / top-k (tri partiel)",
+       "trier : trouver les k plus grands (ou la médiane) sans trier le reste",
+       {"type": "tri", "tri_par_comparaison": True, "nb_elements": 1000000, "nb_comparaisons": 1000000}, True, True,
+       "—", "mature",
+       0.5, "REFRAMING : ne pas distinguer les n! ordres qu'on n'utilisera pas → quickselect/tas partiel en O(n) "
+            "pour les k premiers ; ne résout pas le tri complet — le levier « ne trier que le nécessaire »"),
+    _P("tri adaptatif (Timsort, exploite l'ordre préexistant)",
+       "trier : détecter les segments déjà ordonnés pour approcher O(n) sur des données presque triées",
+       {"type": "tri", "tri_par_comparaison": True, "nb_elements": 1000000, "nb_comparaisons": 1000000}, True, True,
+       "—", "mature",
+       0.5, "sur une entrée presque triée (fréquent en pratique), exploite les runs existants → bien SOUS n·log n "
+            "(la borne ne vaut que pour une entrée arbitraire) ; Python/Java l'emploient — le levier « ordre préexistant »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("tri par comparaison « d'un million d'éléments en un million de comparaisons »",
+       "trier : tri par comparaison d'un million d'éléments ARBITRAIRES en seulement un million de comparaisons",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+        "nb_comparaisons": 1000000}, True, True,
+       "—", "revendication",
+       0.3, "1 million < log₂(1e6!) ≈ 18,5 millions : un tri par comparaison d'une entrée arbitraire ne peut "
+            "distinguer 1e6! ordres avec si peu — impossible (sauf tri non comparatif) ; à réfuter"),
+    _P("tri par comparaison « de 8 éléments en 10 comparaisons »",
+       "trier : tri par comparaison de 8 éléments arbitraires en 10 comparaisons",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 8,
+        "nb_comparaisons": 10}, True, True,
+       "—", "revendication",
+       0.25, "10 < log₂(8!) ≈ 15,3 : impossible de trier 8 éléments arbitraires par comparaison en 10 — impossible"),
+]
+
+_OBJECTIF_TRI = ("Le but réel n'est pas de « comparer plus vite » mais de sortir du modèle de comparaison quand "
+                 "c'est possible : un tri par comparaison d'une entrée arbitraire exige au moins log₂(n!) ≈ "
+                 "n·log₂(n) comparaisons (il doit distinguer les n! ordres). Leviers : exploiter la STRUCTURE des "
+                 "clés (tri non comparatif — radix, comptage — en O(n)) ; ne trier que le NÉCESSAIRE (top-k, tri "
+                 "partiel) ; exploiter l'ordre PRÉEXISTANT (tri adaptatif) ; PARALLÉLISER ou trier en EXTERNE pour "
+                 "l'échelle. Chaque principe reste jugé par la borne du tri par comparaison.")
+_LOI_TRI = ("borne du tri par comparaison : trier n éléments arbitraires par comparaisons exige ≥ log₂(n!) ≈ "
+            "n·log₂(n) comparaisons ; gains réels = tri non comparatif exploitant la structure des clés (radix, "
+            "comptage, O(n)), tri partiel/top-k, tri adaptatif (ordre préexistant), parallélisme, tri externe")
+
+# La nature ordonne par le courant (rivière), la densité (sédimentation), les interactions (hiérarchie), la vitesse (croissance).
+_STRATEGIES_NATURE_TRI = [
+    _Nature("tri granulométrique en rivière",
+            ["le courant classe les grains par taille et densité", "dépôt ordonné sans comparateur central"],
+            "laisser un champ physique CLASSER par une propriété (taille/densité) — un tri non comparatif naturel"),
+    _Nature("sédimentation / gradient de densité",
+            ["les composants se rangent par densité en colonne", "séparation passive par gravité"],
+            "ranger par une clé physique (densité) sans comparer deux à deux — l'analogue du tri par comptage"),
+    _Nature("hiérarchie de dominance animale",
+            ["un ordre de rang émerge d'interactions locales", "pas de juge central"],
+            "établir un ordre par interactions LOCALES plutôt qu'un tri global — l'ordre émergent"),
+    _Nature("croissance différentielle vers la lumière",
+            ["les pousses les plus rapides prennent la tête", "compétition qui classe par vitesse"],
+            "faire émerger les premiers par compétition (top-k) sans classer tout le reste — le tri partiel"),
+]
+
+enregistre(Domaine(
+    nom=_TRI,
+    aliases=frozenset(_ALIAS_TRI),
+    objectif=_OBJECTIF_TRI,
+    canaux=_CANAUX_TRI,
+    principes=_PRINCIPES_TRI,
+    strategies=_STRATEGIES_NATURE_TRI,
+    loi=_LOI_TRI,
+    extras={"borne_tri": "≥ log₂(n!) ≈ n·log₂(n) comparaisons (entrée arbitraire)",
+            "note": "un tri non comparatif (radix/comptage) exploite la structure des clés → O(n) ; un tri adaptatif "
+                    "exploite l'ordre préexistant ; la borne ne vaut que pour une entrée arbitraire"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-SIXIÈME DOMAINE : rechercher un élément dans des données. Nouvelle loi dure au juge (L23) : la BORNE DE LA
+#  RECHERCHE — trouver un élément parmi n NON structurés exige en moyenne ≥ n/2 examens (classique, sans index) :
+#  chaque position étant équiprobable, on ne localise pas la cible sans regarder. REFRAMING machine : la vitesse de
+#  recherche ne vient pas de « chercher plus vite » mais de PRÉ-STRUCTURER les données. Leviers : INDEXER (trier →
+#  recherche binaire O(log n) ; HACHER → O(1)) ; filtres probabilistes (Bloom, rejet rapide des absents) ; index
+#  inversé (texte) ; recherche QUANTIQUE (Grover, ~√n). Sans structure, il faut TOUT regarder (n/2).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_RECH = "recherche_donnees"
+_ALIAS_RECH = {
+    "rechercher un element", "trouver une donnee", "chercher dans des donnees", "localiser un element",
+    "interroger une base", "retrouver une information",
+}
+
+# ── « Canaux » : les leviers de la recherche rapide ──────────────────────────────────────────────────────────────
+_CANAUX_RECH = [
+    Canal("index", "information", "INDEXER : trier pour la recherche binaire (O(log n)) ou construire un index",
+          True, "trier une fois puis chercher en O(log n) → l'investissement d'index se rembourse à chaque requête ; "
+                "le levier premier : payer la STRUCTURE d'avance pour ne plus tout parcourir"),
+    Canal("hachage", "information", "HACHER : accès direct en O(1) par fonction de hachage",
+          True, "une table de hachage transforme la clé en adresse → accès quasi immédiat sans parcourir ; coût "
+                "mémoire et collisions à gérer — le levier « adresse calculée »"),
+    Canal("filtre probabiliste", "information", "FILTRER les absents rapidement (filtre de Bloom) avant la recherche coûteuse",
+          True, "un filtre de Bloom répond « absent à coup sûr » ou « peut-être présent » en O(1) et peu de mémoire "
+                "→ évite la recherche coûteuse pour la majorité des absents ; faux positifs tolérés — le levier « rejet rapide »"),
+    Canal("quantique", "information", "RECHERCHE QUANTIQUE (Grover) : ~√n examens sur des données non structurées",
+          True, "l'algorithme de Grover trouve la cible en ~√n requêtes même SANS index (accélération quadratique) → "
+                "un million d'éléments en mille pas ; exige un calculateur quantique — le levier « quantique »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la borne de la recherche (type `recherche`, ≥ n/2 si non indexé) ───────
+_PRINCIPES_RECH = [
+    _P("parcours linéaire (sans structure)",
+       "rechercher : parcourir les éléments un à un jusqu'à trouver la cible",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 500000}, True, True,
+       "—", "mature",
+       0.6, "la référence sans structure : ~n/2 examens en moyenne → inévitable si les données ne sont pas "
+            "indexées ; simple mais lent à l'échelle — la borne dont il faut s'affranchir en pré-structurant"),
+    _P("recherche binaire (données triées)",
+       "rechercher : sur des données triées, diviser l'intervalle par deux à chaque étape",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.6, "l'index (le tri) permet O(log n) → 20 examens pour un million ; il faut payer le tri une fois → "
+            "rentable dès plusieurs requêtes — le levier « index » de base"),
+    _P("table de hachage (O(1))",
+       "rechercher : calculer l'adresse de la clé par une fonction de hachage",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.6, "accès direct quasi immédiat, indépendant de n → la recherche exacte la plus rapide ; mémoire et "
+            "collisions à gérer, pas d'ordre → le levier « adresse calculée »"),
+    _P("arbre de recherche / B-arbre",
+       "rechercher : structure arborescente équilibrée pour la recherche et les plages",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.55, "O(log n) avec en plus les requêtes par PLAGE et l'ordre → le cœur des index de bases de données "
+             "(B-arbre optimisé pour le disque) ; maintenance à l'insertion — le levier « index ordonné »"),
+    _P("index inversé (recherche textuelle)",
+       "rechercher : associer chaque terme à la liste des documents qui le contiennent",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 5, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.55, "renverse la relation document→termes en terme→documents → retrouve instantanément les documents d'un "
+             "mot (moteurs de recherche) ; taille de l'index et mise à jour — le levier « index adapté à la requête »"),
+    _P("filtre de Bloom (rejet rapide des absents)",
+       "rechercher : test d'appartenance probabiliste avant la recherche coûteuse",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.5, "élimine en O(1) et peu de mémoire la plupart des absents (« absent à coup sûr ») → évite des "
+            "recherches inutiles (bases, caches, blockchain) ; faux positifs à retester — le levier « rejet rapide »"),
+    _P("recherche quantique (Grover)",
+       "rechercher : algorithme de Grover trouvant la cible en ~√n sur des données non structurées",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1000, "recherche_quantique": True}, True, True,
+       "—", "recherche",
+       0.4, "REFRAMING : accélération quadratique SANS index (√n au lieu de n) → un million en mille pas ; exige un "
+            "calculateur quantique cohérent, gain « seulement » quadratique — le levier « quantique »"),
+    _P("recherche approximative de voisins (ANN)",
+       "rechercher : trouver les plus proches voisins en haute dimension sans examiner tout",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 50, "donnees_indexees": True}, True, True,
+       "—", "mature (IA)",
+       0.5, "en haute dimension (embeddings), un index approximatif (HNSW, LSH) trouve des voisins quasi optimaux "
+            "en sous-linéaire → cœur de la recherche sémantique/RAG ; précision échangée contre vitesse — le levier « index approché »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("recherche « dans un million de non indexés en 20 examens »",
+       "rechercher : trouver un élément parmi un million de données NON indexées en 20 examens (classique)",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20}, True, True,
+       "—", "revendication",
+       0.3, "20 examens < n/2 (500 000) : sans index ni quantique, on ne localise pas une cible parmi un million "
+            "sans en regarder la moitié en moyenne — impossible ; à réfuter par la borne de la recherche"),
+    _P("recherche « dans un milliard de non indexés en 100 examens »",
+       "rechercher : trouver un élément parmi un milliard de données NON indexées en 100 examens (classique)",
+       {"type": "recherche", "nb_elements": 1000000000, "nb_requetes_moyennes": 100}, True, True,
+       "—", "revendication",
+       0.25, "100 examens << n/2 (500 millions) : impossible sans index ni recherche quantique — à réfuter"),
+]
+
+_OBJECTIF_RECH = ("Le but réel n'est pas de « chercher plus vite » mais de PRÉ-STRUCTURER les données : trouver un "
+                  "élément parmi n NON STRUCTURÉS exige en moyenne ≥ n/2 examens (classique, sans index), car chaque "
+                  "position est équiprobable et on ne localise pas sans regarder. Leviers : INDEXER (trier → "
+                  "recherche binaire O(log n) ; HACHER → O(1)) ; index inversé (texte) ; filtres probabilistes "
+                  "(Bloom) pour rejeter les absents ; index approché (ANN) en haute dimension ; recherche QUANTIQUE "
+                  "(Grover, ~√n). Sans structure, il faut tout regarder. Chaque principe reste jugé par la borne de "
+                  "la recherche.")
+_LOI_RECH = ("borne de la recherche : trouver un élément parmi n non structurés exige en moyenne ≥ n/2 examens "
+             "(classique, sans index) ; gains réels = indexer (tri → O(log n), hachage → O(1)), index inversé, "
+             "filtres probabilistes, index approché (ANN), ou recherche quantique (Grover √n)")
+
+# La nature retrouve par le gradient (chien pisteur), la carte mentale (pigeon), le tropisme (racine), la zone probable (prédateur).
+_STRATEGIES_NATURE_RECH = [
+    _Nature("chien pisteur (gradient olfactif)",
+            ["suit la concentration croissante d'une odeur vers la source", "ne fouille pas tout, remonte la piste"],
+            "suivre un GRADIENT vers la cible au lieu de tout parcourir — une structure (le gradient) qui guide"),
+    _Nature("pigeon voyageur (carte mentale)",
+            ["se repère par une carte interne (champ magnétique, repères)", "va droit au but sans explorer au hasard"],
+            "utiliser une CARTE interne (un index spatial) pour aller droit au but — l'index du vivant"),
+    _Nature("racine vers l'eau (hydrotropisme)",
+            ["croît dans la direction de l'humidité", "oriente la recherche par un signal directionnel"],
+            "laisser un SIGNAL directionnel orienter la recherche — remonter une structure plutôt que fouiller"),
+    _Nature("prédateur à l'affût (zone probable)",
+            ["se poste là où la proie est la plus probable", "concentre l'effort sur une zone à forte densité"],
+            "chercher d'abord là où c'est PROBABLE — l'analogue du filtre qui écarte l'improbable"),
+]
+
+enregistre(Domaine(
+    nom=_RECH,
+    aliases=frozenset(_ALIAS_RECH),
+    objectif=_OBJECTIF_RECH,
+    canaux=_CANAUX_RECH,
+    principes=_PRINCIPES_RECH,
+    strategies=_STRATEGIES_NATURE_RECH,
+    loi=_LOI_RECH,
+    extras={"borne_recherche": "≥ n/2 examens (non indexé, classique)",
+            "note": "indexer (tri → O(log n), hachage → O(1)) bat la borne ; Grover → √n sans index ; la structure "
+                    "payée d'avance se rembourse à chaque requête"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-SEPTIÈME DOMAINE : accélérer un calcul par parallélisation. Nouvelle loi dure au juge (L24) : la LOI
+#  D'AMDAHL — pour un problème de taille FIXE, l'accélération est bornée par 1/(s + (1−s)/p), donc ≤ 1/s (s =
+#  fraction séquentielle), quel que soit le nombre de processeurs p. REFRAMING machine : ajouter des cœurs ne sert
+#  à rien si une part du travail reste séquentielle ; le levier est de RÉDUIRE la fraction série. Leviers : réduire
+#  la partie séquentielle (algorithme, verrous, synchronisation) ; AGRANDIR le problème (loi de Gustafson, weak
+#  scaling, où la part série s'amenuise) ; recouvrir calcul et communication ; équilibrer la charge.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_PARAL = "parallelisation_calcul"
+_ALIAS_PARAL = {
+    "accelerer un calcul", "paralleliser un calcul", "repartir un calcul sur plusieurs coeurs",
+    "accelerer par parallelisation", "distribuer un calcul", "gagner en vitesse de calcul",
+}
+
+# ── « Canaux » : les leviers de l'accélération parallèle ─────────────────────────────────────────────────────────
+_CANAUX_PARAL = [
+    Canal("fraction serie", "information", "RÉDUIRE la fraction séquentielle (algorithme, verrous) : elle plafonne le gain à 1/s",
+          True, "la partie qui ne se parallélise pas fixe le plafond (Amdahl : accélération ≤ 1/s) → attaquer les "
+                "verrous, les sections critiques et les dépendances prime sur l'ajout de cœurs — le levier maître"),
+    Canal("agrandir le probleme", "information", "AGRANDIR le problème avec p (loi de Gustafson) : la part série s'amenuise",
+          True, "si l'on traite un problème plus GRAND quand on a plus de cœurs (weak scaling), la fraction série "
+                "relative diminue → accélération quasi linéaire ; c'est le régime réel du calcul scientifique"),
+    Canal("communication", "information", "RÉDUIRE et RECOUVRIR la communication/synchronisation entre processeurs",
+          True, "l'échange de données et la synchronisation sont un surcoût qui grandit avec p → les minimiser et les "
+                "recouvrir avec le calcul évite que la parallélisation se paie en attente — le levier « moins d'attente »"),
+    Canal("equilibrage", "information", "ÉQUILIBRER la charge : éviter les traînards (le plus lent fixe le temps)",
+          True, "un seul processeur surchargé (straggler) fait attendre tous les autres → répartir finement le "
+                "travail et voler les tâches (work stealing) — le levier « pas de maillon lent »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la loi d'Amdahl (type `parallelisation`, accélération ≤ 1/(s+(1−s)/p)) ──
+_PRINCIPES_PARAL = [
+    _P("réduction de la fraction série (algorithme)",
+       "accélérer : refondre l'algorithme pour diminuer la part strictement séquentielle",
+       {"type": "parallelisation", "fraction_serie": 0.02, "nb_processeurs": 64, "acceleration": 27}, True, True,
+       "—", "mature",
+       0.65, "abaisser s relève le plafond 1/s → le gain le plus profond ; supprimer une dépendance vaut plus que "
+             "doubler les cœurs (Amdahl) — le levier « moins de série »"),
+    _P("parallélisme massif (GPU, milliers de cœurs)",
+       "accélérer : exécuter un noyau très parallèle sur des milliers de fils (GPU)",
+       {"type": "parallelisation", "fraction_serie": 0.01, "nb_processeurs": 1000, "acceleration": 90}, True, True,
+       "—", "mature",
+       0.6, "des milliers de cœurs sur une partie très parallèle (algèbre, IA) → énormes accélérations SI s est "
+            "minuscule ; transferts hôte↔GPU à masquer — le levier « beaucoup de cœurs sur peu de série »"),
+    _P("réduction des verrous / synchronisation",
+       "accélérer : remplacer les verrous par des structures sans verrou et moins de sections critiques",
+       {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 16, "acceleration": 9}, True, True,
+       "—", "mature",
+       0.55, "chaque section critique sérialise → structures lock-free, partitionnement des données réduisent la "
+             "part série effective ; justesse concurrente délicate — le levier « moins d'exclusion mutuelle »"),
+    _P("équilibrage de charge / vol de tâches",
+       "accélérer : répartir dynamiquement le travail pour éviter les processeurs oisifs",
+       {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 32, "acceleration": 12}, True, True,
+       "—", "mature",
+       0.5, "le temps est fixé par le processeur le plus lent → un ordonnancement dynamique (work stealing) évite "
+            "les traînards ; surcoût de coordination — le levier « pas de maillon lent »"),
+    _P("problème agrandi (loi de Gustafson, weak scaling)",
+       "accélérer : traiter un problème plus grand à mesure qu'on ajoute des cœurs",
+       {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 1000, "acceleration": 100,
+        "probleme_agrandi": True}, True, True,
+       "—", "mature (HPC)",
+       0.55, "REFRAMING : en agrandissant le problème avec p, la part série relative diminue → accélération quasi "
+             "linéaire (métrique de Gustafson, ≠ Amdahl à taille fixe) ; c'est le régime réel du HPC — « grandir avec les cœurs »"),
+    _P("recouvrement calcul / communication (pipeline)",
+       "accélérer : masquer les transferts en les recouvrant avec du calcul utile",
+       {"type": "parallelisation", "fraction_serie": 0.03, "nb_processeurs": 100, "acceleration": 25}, True, True,
+       "—", "mature",
+       0.5, "pendant qu'un bloc calcule, le suivant se transfère → la communication ne s'ajoute plus au temps ; "
+            "profondeur de pipeline à gérer — le levier « moins d'attente »"),
+    _P("parallélisme de données (SIMD / vectorisation)",
+       "accélérer : appliquer la même opération à plusieurs données par instruction",
+       {"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 8, "acceleration": 4}, True, True,
+       "—", "mature",
+       0.5, "une instruction traite un vecteur de données (SIMD, AVX) → accélération sur les boucles régulières, "
+            "sans threads ; dépend de la régularité des accès — le levier « une op, plusieurs données »"),
+    _P("calcul distribué (map-reduce)",
+       "accélérer : découper le calcul en tâches indépendantes réparties sur un cluster",
+       {"type": "parallelisation", "fraction_serie": 0.02, "nb_processeurs": 500, "acceleration": 40}, True, True,
+       "—", "mature",
+       0.5, "des tâches indépendantes (map) puis une agrégation (reduce) passent à l'échelle sur des milliers de "
+            "machines ; le reduce et le réseau sont la part série — le levier « échelle horizontale »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("accélération « ×20 » avec 10 % de série",
+       "accélérer : obtenir une accélération de 20 sur un problème à taille fixe dont 10 % est séquentiel",
+       {"type": "parallelisation", "fraction_serie": 0.1, "nb_processeurs": 1000, "acceleration": 20}, True, True,
+       "—", "revendication",
+       0.3, "avec 10 % de série, l'accélération est plafonnée à 1/0,1 = 10 (Amdahl) quel que soit p → 20 est "
+            "impossible à taille fixe ; à réfuter"),
+    _P("accélération LINÉAIRE (×100 sur 100 cœurs) avec 5 % de série",
+       "accélérer : obtenir une accélération de 100 sur 100 processeurs malgré 5 % de partie séquentielle",
+       {"type": "parallelisation", "fraction_serie": 0.05, "nb_processeurs": 100, "acceleration": 100}, True, True,
+       "—", "revendication",
+       0.25, "avec 5 % de série, la borne d'Amdahl à p=100 est ~16,8 → une accélération linéaire (100) est "
+             "impossible à taille fixe — à réfuter"),
+]
+
+_OBJECTIF_PARAL = ("Le but réel n'est pas d'« ajouter des cœurs » mais de réduire ce qui ne se parallélise pas : la "
+                   "loi d'Amdahl borne l'accélération à taille fixe par 1/(s + (1−s)/p), donc ≤ 1/s (s = fraction "
+                   "séquentielle), quel que soit le nombre de processeurs. Leviers : RÉDUIRE la part séquentielle "
+                   "(algorithme, verrous, synchronisation) ; AGRANDIR le problème (loi de Gustafson, weak scaling, "
+                   "où la part série s'amenuise) ; recouvrir calcul et communication ; équilibrer la charge (pas de "
+                   "traînard). Chaque principe reste jugé par la loi d'Amdahl.")
+_LOI_PARAL = ("loi d'Amdahl : l'accélération par parallélisation d'un problème de taille fixe ≤ 1/(s + (1−s)/p) ≤ "
+              "1/s (s = fraction série) ; gains réels = réduire la fraction série (algorithme, verrous), agrandir le "
+              "problème (Gustafson), recouvrir la communication, équilibrer la charge")
+
+# La nature parallélise par la coordination distribuée (étourneaux), la croissance indépendante (corail), les rôles répartis (loups), la filtration (moules).
+_STRATEGIES_NATURE_PARAL = [
+    _Nature("nuée d'étourneaux (murmuration)",
+            ["coordination distribuée sans chef", "chaque oiseau suit quelques voisins"],
+            "coordonner un grand nombre d'acteurs par des règles LOCALES, sans goulot central — minimiser la part série"),
+    _Nature("colonie de corail (croissance parallèle)",
+            ["chaque polype croît indépendamment", "aucune dépendance entre polypes"],
+            "des tâches TOTALEMENT indépendantes passent à l'échelle sans coordination — le cas idéal (s ≈ 0)"),
+    _Nature("meute de loups en chasse (rôles répartis)",
+            ["rôles distribués (rabatteurs, intercepteurs)", "une part de coordination reste nécessaire"],
+            "répartir les rôles tout en gardant une COORDINATION minimale — la fraction série incompressible"),
+    _Nature("banc de moules filtreuses",
+            ["chaque moule filtre l'eau en parallèle", "débit total ∝ nombre d'individus"],
+            "un travail massivement parallèle dont le débit croît avec le nombre — le weak scaling du vivant"),
+]
+
+enregistre(Domaine(
+    nom=_PARAL,
+    aliases=frozenset(_ALIAS_PARAL),
+    objectif=_OBJECTIF_PARAL,
+    canaux=_CANAUX_PARAL,
+    principes=_PRINCIPES_PARAL,
+    strategies=_STRATEGIES_NATURE_PARAL,
+    loi=_LOI_PARAL,
+    extras={"amdahl": "accélération ≤ 1/(s + (1−s)/p) ≤ 1/s (s = fraction série)",
+            "note": "la loi de Gustafson (problème agrandi, weak scaling) obtient une accélération quasi linéaire — "
+                    "métrique différente de l'Amdahl à taille fixe"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-HUITIÈME DOMAINE : refroidir vers le zéro absolu / cryogénie. Nouvelle loi dure au juge (L25) : le
+#  TROISIÈME PRINCIPE — le zéro absolu (0 K) est INATTEIGNABLE en un nombre fini d'étapes : retirer toute l'entropie
+#  exigerait une infinité d'étapes (chaque étape en retire de moins en moins). REFRAMING machine : l'objectif n'est
+#  pas « d'atteindre 0 K » (mur infranchissable) mais de descendre TOUJOURS PLUS BAS par ÉTAGES — chaque mécanisme
+#  prend le relais quand le précédent sature. Complète le trio thermodynamique (L1 conservation, L2 Carnot, L25 3e
+#  principe). Leviers : étager les mécanismes en cascade ; désaimantation adiabatique (retirer l'entropie de spin) ;
+#  refroidissement optique/évaporatif (retirer les atomes les plus chauds) ; détente de gaz.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CRYO = "refroidissement_cryogenique"
+_ALIAS_CRYO = {
+    "refroidir vers le zero absolu", "atteindre les tres basses temperatures", "refroidissement cryogenique",
+    "approcher le zero absolu", "atteindre le millikelvin", "refroidir a l extreme",
+}
+
+# ── « Canaux » : les leviers pour descendre toujours plus bas en température ──────────────────────────────────────
+_CANAUX_CRYO = [
+    Canal("etagement", "chaleur", "ÉTAGER les mécanismes en cascade : chaque étage prend le relais quand le précédent sature",
+          True, "aucun mécanisme ne couvre toute la plage → compresseur puis Joule-Thomson puis dilution puis "
+                "désaimantation puis laser, chacun sur sa gamme ; l'assemblage descend au nK — le levier « cascade »"),
+    Canal("desaimantation", "chaleur", "DÉSAIMANTATION adiabatique : retirer l'entropie de SPIN en démagnétisant",
+          True, "aligner des spins avec un champ (à T fixe) puis démagnétiser adiabatiquement refroidit le système ; "
+                "la version NUCLÉAIRE atteint le µK–nK ; retours décroissants près de 0 — le levier « entropie de spin »"),
+    Canal("refroidissement optique", "chaleur", "REFROIDISSEMENT laser / évaporatif : retirer les atomes les plus CHAUDS",
+          True, "des lasers ralentissent les atomes (refroidissement Doppler), puis l'évaporation laisse partir les "
+                "plus rapides (condensat de Bose-Einstein) → nK sur des gaz dilués ; réservé aux petits ensembles"),
+    Canal("detente de gaz", "chaleur", "DÉTENDRE un gaz (Joule-Thomson) : la détente refroidit",
+          True, "un gaz comprimé qui se détend se refroidit (effet Joule-Thomson) → la base de la liquéfaction (He, "
+                "N₂) et le premier étage de toute cascade ; le levier « détente », mais loin du nK"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le troisième principe (type `cryogenie`, T > 0 K, 0 K inatteignable) ───
+_PRINCIPES_CRYO = [
+    _P("détente de gaz (Joule-Thomson, liquéfaction)",
+       "cryogénie : liquéfier un gaz par compression puis détente (premier étage)",
+       {"type": "cryogenie", "temperature_atteinte_K": 4.0}, True, True,
+       "—", "mature",
+       0.6, "la base : liquéfie hélium (~4 K) et azote (~77 K) → l'étage d'entrée de toute cascade cryogénique ; "
+            "loin du nK, mais indispensable pour démarrer — le levier « détente »"),
+    _P("réfrigérateur à dilution (He³/He⁴)",
+       "cryogénie : exploiter la dilution de l'hélium-3 dans l'hélium-4 pour atteindre le millikelvin",
+       {"type": "cryogenie", "temperature_atteinte_K": 0.005}, True, True,
+       "—", "mature",
+       0.6, "le cheval de bataille du mK (calcul quantique, détecteurs) : refroidit en continu vers ~5 mK ; "
+            "complexe et coûteux → un étage clé de la cascade, mais pas la fin — vers plus bas encore"),
+    _P("désaimantation adiabatique (paramagnétique)",
+       "cryogénie : aimanter un sel paramagnétique puis le démagnétiser adiabatiquement",
+       {"type": "cryogenie", "temperature_atteinte_K": 0.001}, True, True,
+       "—", "mature",
+       0.55, "retire l'entropie de spin → descend sous le mK en une détente magnétique ; refroidissement par "
+             "IMPULSIONS (pas continu) → chaque cycle gagne moins — le levier « entropie de spin »"),
+    _P("désaimantation nucléaire (µK–nK)",
+       "cryogénie : désaimanter les spins NUCLÉAIRES pour atteindre le micro/nanokelvin",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-7}, True, True,
+       "—", "recherche",
+       0.45, "les spins nucléaires ont une entropie retirable à bien plus basse température → records du µK–nK "
+             "(matière condensée) ; temps et isolation extrêmes → près de 0, les gains s'effondrent (3e principe)"),
+    _P("refroidissement laser (Doppler / Sisyphe)",
+       "cryogénie : ralentir des atomes par pression de radiation laser accordée",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-6}, True, True,
+       "—", "mature (atomique)",
+       0.5, "des faisceaux laser freinent les atomes → µK sur des gaz piégés (horloges atomiques, atomes froids) ; "
+            "limité aux ensembles dilués — le levier « optique »"),
+    _P("refroidissement évaporatif (condensat de Bose-Einstein)",
+       "cryogénie : laisser s'échapper les atomes les plus énergétiques d'un piège",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-9}, True, True,
+       "—", "mature (recherche)",
+       0.5, "abaisser le piège laisse partir les plus chauds → le reste refroidit jusqu'au nK (condensat de "
+            "Bose-Einstein) ; on perd des atomes à chaque étape → rendement décroissant — le levier « évaporation »"),
+    _P("étagement en cascade complet",
+       "cryogénie : enchaîner compresseur → Joule-Thomson → dilution → désaimantation → laser",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-8}, True, True,
+       "—", "mature",
+       0.55, "chaque étage prend le relais quand le précédent sature → l'assemblage atteint des températures "
+             "qu'aucun étage seul n'obtient ; complexité et coût cumulés — le levier « cascade »"),
+    _P("refroidissement par bande latérale (optomécanique)",
+       "cryogénie : refroidir un résonateur mécanique vers son état fondamental par bande latérale résolue",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-5}, True, True,
+       "—", "recherche",
+       0.4, "extrait les phonons d'un oscillateur mécanique jusqu'à son état quantique fondamental (optomécanique, "
+            "circuits supraconducteurs) → refroidir un OBJET, pas un gaz ; encore proche des limites — piste émergente"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("atteinte du zéro absolu (0 K)",
+       "cryogénie : refroidir un système EXACTEMENT à 0 K",
+       {"type": "cryogenie", "atteint_zero_absolu": True}, True, True,
+       "—", "revendication",
+       0.3, "atteindre 0 K exigerait de retirer toute l'entropie en un nombre fini d'étapes → impossible (3e "
+            "principe) ; on ne fait que s'en approcher asymptotiquement — à réfuter"),
+    _P("refroidissement « à −1 K »",
+       "cryogénie : atteindre une température de −1 kelvin par refroidissement",
+       {"type": "cryogenie", "temperature_atteinte_K": -1}, True, True,
+       "—", "revendication",
+       0.25, "rien n'est plus froid que 0 K (par refroidissement) : une température de −1 K est impossible (3e "
+             "principe)"),
+]
+
+_OBJECTIF_CRYO = ("Le but réel n'est pas « d'atteindre 0 K » (mur infranchissable) mais de descendre TOUJOURS PLUS "
+                  "BAS : le troisième principe rend le zéro absolu inatteignable en un nombre fini d'étapes, car "
+                  "retirer toute l'ENTROPIE exigerait une infinité d'étapes (chaque étape en retire de moins en "
+                  "moins). On s'en approche asymptotiquement (nK atteints). Leviers : ÉTAGER les mécanismes en "
+                  "cascade (chacun prend le relais quand le précédent sature) ; DÉSAIMANTATION adiabatique (retirer "
+                  "l'entropie de spin) ; refroidissement OPTIQUE / évaporatif (retirer les atomes les plus chauds) ; "
+                  "détente de gaz. Chaque principe reste jugé par le troisième principe.")
+_LOI_CRYO = ("troisième principe de la thermodynamique : le zéro absolu (0 K) est inatteignable en un nombre fini "
+             "d'étapes (retirer toute l'entropie demanderait une infinité d'étapes) ; gains réels = étager les "
+             "mécanismes en cascade, désaimantation adiabatique (entropie de spin), refroidissement optique/"
+             "évaporatif, détente de gaz — on approche 0 K sans jamais l'atteindre")
+
+# La nature approche le froid extrême par la détente (nébuleuse), l'expansion (fond cosmologique), l'évaporation, la détente de gaz.
+_STRATEGIES_NATURE_CRYO = [
+    _Nature("nébuleuse du Boomerang (~1 K, plus froid naturel connu)",
+            ["un gaz s'échappe et se détend adiabatiquement", "se refroidit sous le fond cosmologique"],
+            "la DÉTENTE adiabatique d'un gaz refroidit — le mécanisme du plus froid endroit naturel"),
+    _Nature("fond diffus cosmologique (2,7 K)",
+            ["refroidi par l'expansion de l'univers", "baisse asymptotiquement avec le temps"],
+            "l'EXPANSION refroidit tout un volume — et s'approche du froid sans jamais l'annuler"),
+    _Nature("évaporation (les molécules rapides s'échappent)",
+            ["les plus énergétiques partent", "le reste voit sa température moyenne baisser"],
+            "laisser partir les plus CHAUDS pour refroidir le reste — l'analogue du refroidissement évaporatif"),
+    _Nature("détente de Joule-Thomson (gaz qui se détend)",
+            ["un gaz comprimé qui se détend se refroidit", "à la base de la liquéfaction"],
+            "détendre un gaz pour le refroidir — l'étage d'entrée de toute cascade cryogénique"),
+]
+
+enregistre(Domaine(
+    nom=_CRYO,
+    aliases=frozenset(_ALIAS_CRYO),
+    objectif=_OBJECTIF_CRYO,
+    canaux=_CANAUX_CRYO,
+    principes=_PRINCIPES_CRYO,
+    strategies=_STRATEGIES_NATURE_CRYO,
+    loi=_LOI_CRYO,
+    extras={"zero_absolu": "0 K inatteignable en un nombre fini d'étapes (3e principe)",
+            "note": "on approche asymptotiquement (nK atteints) ; les rendements s'effondrent près de 0 ; complète "
+                    "L1 (conservation) et L2 (Carnot)"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-NEUVIÈME DOMAINE : mesurer le temps / horloge de précision. Nouvelle loi dure au juge (L26) : la LIMITE
+#  QUANTIQUE STANDARD — l'instabilité fractionnaire d'une horloge à N atomes NON intriqués ≥ 1/(2π·f₀·τ·√N) (bruit
+#  de projection quantique). REFRAMING machine : la précision ne vient pas d'un meilleur « comptage » mais de
+#  moyenner le bruit quantique — plus d'ATOMES (√N), une FRÉQUENCE plus haute (optique > micro-onde), une
+#  INTERROGATION plus longue (τ). L'INTRICATION (spin squeezing) descend sous la LQS vers la limite de Heisenberg
+#  (1/N). Leviers : monter f₀ (horloge optique/nucléaire) ; plus d'atomes ; interrogation de Ramsey longue ; intriquer.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_HORLOGE = "mesure_temps"
+_ALIAS_HORLOGE = {
+    "mesurer le temps", "concevoir une horloge de precision", "ameliorer la stabilite d une horloge",
+    "mesurer une frequence precisement", "horloge atomique", "garder le temps precisement",
+}
+
+# ── « Canaux » : les leviers de la stabilité d'horloge ───────────────────────────────────────────────────────────
+_CANAUX_HORLOGE = [
+    Canal("frequence", "information", "MONTER la fréquence f₀ (horloge optique/nucléaire) : l'instabilité décroît en 1/f₀",
+          True, "une transition optique (~5e14 Hz) bat une micro-onde (~9e9 Hz) de ~10⁵ → les horloges optiques "
+                "surpassent le césium ; la fréquence nucléaire (thorium) irait plus haut encore — le levier « f₀ »"),
+    Canal("nombre d atomes", "information", "INTERROGER plus d'ATOMES : le bruit de projection décroît en 1/√N",
+          True, "moyenner sur N atomes indépendants réduit le bruit de projection quantique en √N → les réseaux "
+                "optiques interrogent des milliers d'atomes ; le levier « moyenner »"),
+    Canal("interrogation", "information", "ALLONGER l'interrogation de Ramsey (τ) : l'instabilité décroît en 1/τ",
+          True, "plus longtemps l'atome évolue librement, plus finement on mesure sa fréquence → limité par la "
+                "cohérence (bruit du laser d'interrogation) ; le levier « temps de Ramsey »"),
+    Canal("intrication", "information", "INTRIQUER les atomes (spin squeezing) : descendre SOUS la LQS vers Heisenberg (1/N)",
+          True, "des atomes intriqués corrèlent leur bruit quantique → l'instabilité décroît en 1/N au lieu de 1/√N "
+                "(limite de Heisenberg) ; états fragiles → métrologie quantique — le levier « quantique »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite quantique standard (type `horloge`, σ ≥ 1/(2π·f₀·τ·√N)) ──────
+_PRINCIPES_HORLOGE = [
+    _P("horloge à césium (référence micro-onde)",
+       "mesurer le temps : transition hyperfine du césium à 9,19 GHz (définition de la seconde)",
+       {"type": "horloge", "frequence_Hz": 9.19e9, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 1e-13}, True, True,
+       "—", "mature",
+       0.6, "la référence historique (définit la seconde) ; fréquence micro-onde relativement basse → surpassée par "
+            "les horloges optiques ; le levier restant est de monter en fréquence — la référence à dépasser"),
+    _P("horloge optique (fréquence plus haute)",
+       "mesurer le temps : transition optique (~5e14 Hz) interrogée par laser ultra-stable",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-16}, True, True,
+       "—", "mature",
+       0.6, "~10⁵× la fréquence du césium → gain direct de stabilité (1/f₀) ; record de précision (perdrait <1 s "
+            "sur l'âge de l'univers) ; laser d'interrogation à stabiliser — le levier « f₀ »"),
+    _P("horloge à réseau optique (nombreux atomes)",
+       "mesurer le temps : piéger des milliers d'atomes dans un réseau optique magique",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 5e-18}, True, True,
+       "—", "mature",
+       0.55, "interroge des milliers d'atomes simultanément (√N) à une longueur d'onde « magique » qui annule le "
+             "déplacement lumineux → stabilité record ; le levier « nombre d'atomes » + « f₀ »"),
+    _P("fontaine atomique (interrogation longue)",
+       "mesurer le temps : lancer les atomes en fontaine pour une interrogation de Ramsey longue",
+       {"type": "horloge", "frequence_Hz": 9.19e9, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 5e-14}, True, True,
+       "—", "mature",
+       0.5, "la chute libre allonge le temps d'interrogation (τ) → meilleure résolution que le jet thermique ; "
+            "gravité et taille de la fontaine → le levier « temps de Ramsey » en micro-onde"),
+    _P("davantage d'atomes (moyennage √N)",
+       "mesurer le temps : augmenter le nombre d'atomes interrogés pour réduire le bruit de projection",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 5e-18}, True, True,
+       "—", "mature",
+       0.5, "N×100 atomes → bruit de projection ÷10 (√N) ; densité limitée par les interactions entre atomes "
+            "(déplacement collisionnel) — le levier « moyenner » jusqu'à la LQS"),
+    _P("interrogation de Ramsey longue (laser ultra-stable)",
+       "mesurer le temps : prolonger l'évolution libre grâce à un laser d'interrogation très cohérent",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 10, "nb_atomes": 10000, "stabilite": 1e-17}, True, True,
+       "—", "recherche",
+       0.5, "τ×10 → instabilité ÷10 (1/τ), à condition d'un laser assez cohérent pour interroger si longtemps → "
+            "cavités cryogéniques ultra-stables ; le levier « temps » poussé par la cohérence du laser"),
+    _P("horloge intriquée (spin squeezing)",
+       "mesurer le temps : corréler les atomes par intrication pour descendre sous la limite quantique standard",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-18,
+        "intrication": True}, True, True,
+       "—", "recherche",
+       0.45, "REFRAMING : l'intrication (spin squeezing) fait décroître le bruit en 1/N au lieu de 1/√N (vers la "
+             "limite de Heisenberg) → SOUS la LQS ; états fragiles et gain modeste aujourd'hui — le levier « quantique »"),
+    _P("horloge nucléaire (thorium-229)",
+       "mesurer le temps : transition nucléaire (bien plus haute fréquence, insensible aux champs)",
+       {"type": "horloge", "frequence_Hz": 2e19, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-19}, True, True,
+       "—", "recherche",
+       0.4, "une transition NUCLÉAIRE (thorium-229) monte encore en fréquence et se blinde des perturbations "
+            "extérieures (noyau compact) → stabilité potentielle inédite ; excitation UV à maîtriser — le levier « f₀ » ultime"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("horloge « à 1e-19 » non intriquée (10⁴ atomes optiques)",
+       "mesurer le temps : horloge optique non intriquée revendiquant une instabilité de 1e-19 avec 10⁴ atomes",
+       {"type": "horloge", "frequence_Hz": 5e14, "temps_s": 1, "nb_atomes": 10000, "stabilite": 1e-19}, True, True,
+       "—", "revendication",
+       0.3, "1e-19 < limite quantique standard (~3,2e-18 ici) sans intrication : sous le bruit de projection "
+            "quantique — impossible ; à réfuter"),
+    _P("césium « à 1e-16 » non intriqué",
+       "mesurer le temps : horloge à césium non intriquée revendiquant une instabilité de 1e-16",
+       {"type": "horloge", "frequence_Hz": 9.19e9, "temps_s": 1, "nb_atomes": 1000000, "stabilite": 1e-16}, True, True,
+       "—", "revendication",
+       0.25, "1e-16 < limite quantique standard (~1,7e-14 pour cette fréquence micro-onde) sans intrication — "
+             "impossible sans monter en fréquence ou intriquer"),
+]
+
+_OBJECTIF_HORLOGE = ("Le but réel n'est pas un meilleur « comptage » mais de moyenner le BRUIT QUANTIQUE : "
+                     "l'instabilité fractionnaire d'une horloge à N atomes non intriqués est bornée par "
+                     "1/(2π·f₀·τ·√N) (limite quantique standard, bruit de projection quantique). Leviers : monter la "
+                     "FRÉQUENCE f₀ (horloge optique/nucléaire, ~10⁵× le césium) ; interroger plus d'ATOMES (√N) ; "
+                     "allonger l'INTERROGATION de Ramsey (τ, limitée par la cohérence du laser) ; INTRIQUER les "
+                     "atomes (spin squeezing) pour descendre sous la LQS vers la limite de Heisenberg (1/N). Chaque "
+                     "principe reste jugé par la limite quantique standard.")
+_LOI_HORLOGE = ("limite quantique standard d'une horloge : l'instabilité fractionnaire ≥ 1/(2π·f₀·τ·√N) (bruit de "
+                "projection quantique, N atomes non intriqués) ; gains réels = monter la fréquence f₀ (optique/"
+                "nucléaire), plus d'atomes (√N), interrogation plus longue (τ), ou intrication (spin squeezing, "
+                "vers Heisenberg 1/N)")
+
+# La nature garde le temps par l'oscillateur circadien, le cycle premier (cigale), le rythme cardiaque (pacemaker), le calage astronomique (migration).
+_STRATEGIES_NATURE_HORLOGE = [
+    _Nature("horloge circadienne (oscillateur biologique)",
+            ["oscillateur moléculaire robuste ~24 h", "se recale chaque jour sur la lumière"],
+            "un oscillateur stable RECALÉ périodiquement sur une référence — l'analogue de l'asservissement d'horloge"),
+    _Nature("cigale à cycle premier (13 / 17 ans)",
+            ["période très longue et en nombre premier", "évite la synchronisation avec les prédateurs"],
+            "une période longue et robuste pour un comptage fiable sur le long terme — la stabilité par la durée"),
+    _Nature("rythme cardiaque (pacemaker)",
+            ["cellules pacemaker à rétroaction", "cadence régulière ajustée aux besoins"],
+            "un oscillateur à rétroaction qui tient une cadence régulière — l'horloge locale du vivant"),
+    _Nature("calage astronomique de la migration",
+            ["timing calé sur la durée du jour et les repères célestes", "référence extérieure stable"],
+            "se caler sur une RÉFÉRENCE extérieure stable pour tenir le temps long — l'analogue de l'étalon"),
+]
+
+enregistre(Domaine(
+    nom=_HORLOGE,
+    aliases=frozenset(_ALIAS_HORLOGE),
+    objectif=_OBJECTIF_HORLOGE,
+    canaux=_CANAUX_HORLOGE,
+    principes=_PRINCIPES_HORLOGE,
+    strategies=_STRATEGIES_NATURE_HORLOGE,
+    loi=_LOI_HORLOGE,
+    extras={"limite_quantique_standard": "σ ≥ 1/(2π·f₀·τ·√N) (bruit de projection quantique)",
+            "note": "l'intrication (spin squeezing) descend sous la LQS vers la limite de Heisenberg (1/N) ; monter "
+                    "f₀ (optique/nucléaire) est le plus grand levier"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  TRENTIÈME DOMAINE : calculer VITE (vitesse de calcul maximale). Nouvelle loi dure au juge (L27) : la limite de
+#  MARGOLUS-LEVITIN — un système d'énergie E effectue au plus 2E/(πℏ) ≈ 6×10³³ opérations élémentaires par seconde
+#  et par joule (un état ne bascule vers un état orthogonal qu'en un temps ≥ πℏ/2E). REFRAMING machine : la vitesse
+#  de calcul est bornée par l'ÉNERGIE (dimension TEMPS, complémentaire de Landauer qui borne l'énergie par bit).
+#  Leviers : plus d'ÉNERGIE (puissance) pour plus d'opérations/s ; faire MOINS d'opérations (algorithme, calcul
+#  réversible) ; PARALLÉLISER pour additionner les débits ; le plafond ultime (Lloyd) = 2mc²/(πℏ) pour 1 kg.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_VCALC = "vitesse_calcul"
+_ALIAS_VCALC = {
+    "calculer vite", "accelerer la vitesse de calcul", "augmenter le nombre d operations par seconde",
+    "atteindre la vitesse de calcul maximale", "calculer plus vite", "maximiser le debit d operations",
+}
+
+# ── « Canaux » : les leviers de la vitesse de calcul ─────────────────────────────────────────────────────────────
+_CANAUX_VCALC = [
+    Canal("energie", "information", "FOURNIR plus d'ÉNERGIE (puissance) : le débit d'opérations est ≤ 2E/πℏ",
+          True, "la limite de Margolus-Levitin lie vitesse et énergie → plus de puissance permet plus d'opérations/s ; "
+                "mais la dissipation (Landauer) et le refroidissement bornent en pratique — le levier « énergie »"),
+    Canal("moins d operations", "information", "FAIRE MOINS d'opérations : meilleur algorithme, calcul réversible",
+          True, "la façon la plus sûre d'aller vite est d'avoir MOINS à calculer → algorithmes de meilleure "
+                "complexité, calcul réversible/adiabatique qui n'efface pas ; le levier « efficacité »"),
+    Canal("parallelisme", "information", "PARALLÉLISER : additionner les débits de nombreuses unités",
+          True, "chaque unité respecte la borne, mais N unités additionnent leur débit → le débit AGRÉGÉ croît avec "
+                "l'énergie totale ; borné par la loi d'Amdahl côté algorithme — le levier « en largeur »"),
+    Canal("substrat physique", "information", "CHOISIR un substrat rapide (photonique, supraconducteur, quantique)",
+          True, "des porteurs plus rapides (photons) ou moins dissipatifs (supraconducteurs) rapprochent de la borne "
+                "pour une énergie donnée ; le calcul quantique parallélise les états — le levier « substrat »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Margolus-Levitin (type `vitesse_calcul`, ops/s ≤ 2E/πℏ) ────
+_PRINCIPES_VCALC = [
+    _P("processeur classique (référence)",
+       "calculer vite : microprocesseur silicium à quelques GHz",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e18, "energie_J": 1000}, True, True,
+       "—", "mature",
+       0.6, "des exaflops (~1e18 op/s) pour des kilojoules → à ~18 ordres de grandeur SOUS la borne de "
+            "Margolus-Levitin ; le mur réel est la dissipation et le refroidissement, pas encore la physique — la référence"),
+    _P("calcul réversible (moins d'opérations dissipées)",
+       "calculer vite : logique réversible qui n'efface pas d'information",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e15, "energie_J": 1}, True, True,
+       "—", "recherche",
+       0.5, "en n'effaçant pas, échappe à Landauer et réduit la dissipation → permet plus d'opérations pour une "
+            "énergie donnée ; surcoût de portes — complémentaire de la vitesse brute"),
+    _P("montée en énergie / puissance",
+       "calculer vite : fournir plus de puissance pour augmenter le débit d'opérations",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e20, "energie_J": 100000}, True, True,
+       "—", "mature",
+       0.45, "plus d'énergie autorise plus d'opérations/s (Margolus-Levitin) → mais la chaleur à évacuer explose "
+             "(Landauer, Carnot) ; le levier « énergie » bute vite sur le refroidissement, pas sur la borne quantique"),
+    _P("calcul quantique (parallélisme d'états)",
+       "calculer vite : exploiter la superposition pour explorer plusieurs états à la fois",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e18, "energie_J": 1000}, True, True,
+       "—", "recherche",
+       0.45, "pour certaines tâches (factorisation, recherche), traite une superposition d'états → accélération "
+             "algorithmique, pas une violation de la borne physique ; décohérence à dompter — le levier « quantique »"),
+    _P("calcul photonique (porteurs rapides)",
+       "calculer vite : opérations portées par la lumière (produits matriciels optiques)",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e16, "energie_J": 10}, True, True,
+       "—", "émergent",
+       0.4, "des porteurs à la vitesse de la lumière et peu dissipatifs → rapide et efficace pour l'algèbre "
+            "linéaire (IA) ; conversions optique/électrique coûteuses — le levier « substrat rapide »"),
+    _P("logique supraconductrice (basse dissipation)",
+       "calculer vite : commutation à quantum de flux unique, très peu dissipative",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e17, "energie_J": 100}, True, True,
+       "—", "recherche",
+       0.4, "commutation ultra-rapide et faible dissipation à basse température → haut débit par joule ; le coût "
+            "cryogénique à amortir à grande échelle — le levier « substrat peu dissipatif »"),
+    _P("ordinateur ultime de Lloyd (1 kg à la borne)",
+       "calculer vite : la vitesse maximale d'un kilogramme de matière (2mc²/πℏ)",
+       {"type": "vitesse_calcul", "operations_par_seconde": 5e50, "energie_J": 9e16}, True, True,
+       "—", "théorique",
+       0.3, "le PLAFOND théorique (Seth Lloyd) : ~5×10⁵⁰ op/s pour 1 kg (E = mc²) → montre l'immense marge restante "
+            "avant la physique fondamentale ; irréalisable (plasma à la température de Planck) — la borne ultime"),
+    _P("réduction algorithmique (moins de calcul)",
+       "calculer vite : résoudre le problème avec une bien meilleure complexité",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e15, "energie_J": 1}, True, True,
+       "—", "mature",
+       0.55, "diviser le nombre d'opérations par un meilleur algorithme bat n'importe quel gain matériel → le levier "
+             "le plus profond et le moins cher ; suppose qu'un meilleur algorithme existe — « moins à calculer »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("processeur « à 1e40 opérations/s avec 1 J »",
+       "calculer vite : effectuer 10⁴⁰ opérations par seconde en ne disposant que d'un joule",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e40, "energie_J": 1}, True, True,
+       "—", "revendication",
+       0.3, "10⁴⁰ op/s > limite de Margolus-Levitin (~6×10³³ pour 1 J) : la vitesse de calcul est bornée par "
+            "l'énergie — impossible ; à réfuter"),
+    _P("calculateur « à 1e60 opérations/s avec 1 MJ »",
+       "calculer vite : 10⁶⁰ opérations par seconde avec un mégajoule",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e60, "energie_J": 1000000}, True, True,
+       "—", "revendication",
+       0.25, "10⁶⁰ op/s > limite de Margolus-Levitin (~6×10³⁹ pour 1 MJ) — impossible"),
+]
+
+_OBJECTIF_VCALC = ("Le but réel n'est pas d'« ajouter des GHz » à l'aveugle mais de comprendre ce qui borne la "
+                   "vitesse : la limite de Margolus-Levitin fixe qu'un système d'énergie E effectue au plus 2E/(πℏ) "
+                   "≈ 6×10³³ opérations par seconde et par joule (dimension TEMPS, complémentaire de Landauer qui "
+                   "borne l'énergie par bit). Les machines réelles en sont à ~18 ordres de grandeur en dessous : le "
+                   "vrai mur est la DISSIPATION et le refroidissement. Leviers : plus d'ÉNERGIE (mais la chaleur "
+                   "explose) ; faire MOINS d'opérations (algorithme, calcul réversible) ; PARALLÉLISER (additionner "
+                   "les débits) ; substrat rapide (photonique, supraconducteur). Chaque principe reste jugé par la "
+                   "limite de Margolus-Levitin.")
+_LOI_VCALC = ("limite de Margolus-Levitin : un système d'énergie E effectue au plus 2E/(πℏ) ≈ 6×10³³ opérations "
+              "élémentaires par seconde et par joule ; gains réels = plus d'énergie (borné par la dissipation), "
+              "moins d'opérations (algorithme, calcul réversible), parallélisme, substrat rapide/peu dissipatif")
+
+# La nature calcule vite (à énergie donnée) via des moteurs moléculaires (ATP synthase), le flagelle, le ribosome, le canal ionique.
+_STRATEGIES_NATURE_VCALC = [
+    _Nature("ATP synthase (moteur rotatif moléculaire)",
+            ["tourne à une cadence bornée par l'énergie chimique disponible", "convertit un flux de protons en rotation"],
+            "une cadence d'opérations fixée par l'ÉNERGIE fournie — l'analogue moléculaire de Margolus-Levitin"),
+    _Nature("moteur flagellaire bactérien",
+            ["rotation dont la vitesse dépend du gradient de protons", "plus d'énergie = plus de tours"],
+            "la vitesse d'un « calcul » mécanique croît avec l'énergie motrice disponible — le levier « énergie »"),
+    _Nature("ribosome (synthèse à cadence bornée)",
+            ["ajoute les acides aminés à un rythme fixé par la chimie", "vitesse limitée par les étapes énergétiques"],
+            "un débit d'opérations plafonné par le pas énergétique de chaque étape — la borne physique du vivant"),
+    _Nature("canal ionique (commutation rapide à faible énergie)",
+            ["s'ouvre et se ferme très vite pour peu d'énergie", "commutation efficace"],
+            "commuter vite pour peu d'énergie — approcher la borne pour un budget donné, le levier « efficacité »"),
+]
+
+enregistre(Domaine(
+    nom=_VCALC,
+    aliases=frozenset(_ALIAS_VCALC),
+    objectif=_OBJECTIF_VCALC,
+    canaux=_CANAUX_VCALC,
+    principes=_PRINCIPES_VCALC,
+    strategies=_STRATEGIES_NATURE_VCALC,
+    loi=_LOI_VCALC,
+    extras={"margolus_levitin": "≤ 2E/(πℏ) ≈ 6×10³³ opérations/s par joule",
+            "note": "dimension TEMPS (complémentaire de L6 Landauer, énergie/bit) ; plafond ultime de Lloyd = "
+                    "2mc²/πℏ pour 1 kg ; le mur réel est la dissipation, pas encore cette borne"},
+))
+
+
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  TRENTE-ET-UNIÈME DOMAINE : copier de l'information quantique. Nouvelle loi dure au juge (L28) : le THÉORÈME DE
+#  NON-CLONAGE — on ne peut pas copier PARFAITEMENT un état quantique INCONNU (la linéarité de la mécanique
+#  quantique l'interdit) ; le clonage universel optimal 1→2 plafonne à une fidélité de 5/6. REFRAMING machine : le
+#  but n'est pas de « vaincre » le non-clonage (impossible et c'est la SÉCURITÉ de la cryptographie quantique) mais
+#  de travailler AVEC. Leviers : copier l'information CLASSIQUE (ou un état CONNU) — elle, se copie parfaitement ;
+#  cloner APPROXIMATIVEMENT (≤ 5/6) si des copies imparfaites suffisent ; TÉLÉPORTER (déplacer l'état, en
+#  détruisant l'original) ; MESURER-et-PRÉPARER si l'on connaît la base.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CLONE = "copie_information_quantique"
+_ALIAS_CLONE = {
+    "copier de l information quantique", "cloner un etat quantique", "dupliquer un qubit",
+    "copier un etat quantique", "reproduire une information quantique", "copier de l information",
+}
+
+# ── « Canaux » : les leviers pour « copier » dans les limites du non-clonage ──────────────────────────────────────
+_CANAUX_CLONE = [
+    Canal("information classique", "information", "COPIER l'information CLASSIQUE (ou un état CONNU) : elle se copie parfaitement",
+          True, "le non-clonage ne vise QUE les états quantiques inconnus → une information classique (bits) ou un "
+                "état dont on connaît la préparation se copie fidèlement à volonté ; le levier « rester classique »"),
+    Canal("clonage approximatif", "information", "CLONER APPROXIMATIVEMENT (fidélité ≤ 5/6) si des copies imparfaites suffisent",
+          True, "un cloneur quantique universel produit deux copies imparfaites (fidélité ≤ 5/6) → utile quand "
+                "l'imperfection est tolérable (diffusion, écoute partielle) ; le levier « approximation »"),
+    Canal("teleportation", "information", "TÉLÉPORTER : déplacer l'état exact vers un autre lieu, en DÉTRUISANT l'original",
+          True, "la téléportation quantique transfère l'état parfaitement mais ne le DUPLIQUE pas (l'original est "
+                "détruit) → déplacer sans copier, avec de l'intrication et un canal classique ; le levier « déplacer »"),
+    Canal("mesure preparation", "information", "MESURER-et-PRÉPARER si la BASE est connue : mesurer puis recréer l'état",
+          True, "si l'on connaît la base de préparation, mesurer donne le résultat et l'on prépare autant de copies "
+                "qu'on veut → « copie » légitime d'un état connu ; échoue sur un état inconnu — le levier « base connue »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le théorème de non-clonage (type `copie_quantique`, inconnu → fidélité ≤ 5/6) ──
+_PRINCIPES_CLONE = [
+    _P("copie d'information classique (parfaite)",
+       "copier : dupliquer des bits classiques (ou un état quantique connu) autant de fois que voulu",
+       {"type": "copie_quantique", "etat_inconnu": False, "clonage_parfait": True}, True, True,
+       "—", "mature",
+       0.6, "l'information CLASSIQUE se copie parfaitement (c'est le quotidien de l'informatique) → le non-clonage "
+            "ne s'y applique pas ; la référence : rester classique quand on peut — le levier « information classique »"),
+    _P("clonage quantique universel approximatif (5/6)",
+       "copier : produire deux copies imparfaites d'un état inconnu à la fidélité optimale",
+       {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.83}, True, True,
+       "—", "recherche",
+       0.5, "le cloneur universel optimal atteint 5/6 de fidélité par copie → utile quand l'imperfection est "
+            "tolérable (attaques d'écoute, diffusion quantique) ; jamais parfait — le levier « approximation »"),
+    _P("téléportation quantique (déplace, ne copie pas)",
+       "copier : transférer l'état exact ailleurs en détruisant l'original (pas une duplication)",
+       {"type": "copie_quantique", "etat_inconnu": True}, True, True,
+       "—", "mature (démontré)",
+       0.55, "REFRAMING : transfère l'état PARFAITEMENT sans le dupliquer (l'original est détruit → pas de "
+             "violation) ; exige de l'intrication et un canal classique — le levier « déplacer plutôt que copier »"),
+    _P("mesure-et-préparation (base connue)",
+       "copier : mesurer un état dans une base connue puis en préparer autant de copies",
+       {"type": "copie_quantique", "etat_inconnu": False, "clonage_parfait": True}, True, True,
+       "—", "mature",
+       0.5, "si la base de préparation est connue, mesurer révèle l'état et on le recrée à volonté → « copie » "
+            "légitime ; échoue sur un état INCONNU (la mesure le perturbe) — le levier « base connue »"),
+    _P("clonage à états orthogonaux connus",
+       "copier : copier parfaitement des états issus d'un ensemble ORTHOGONAL connu",
+       {"type": "copie_quantique", "etat_inconnu": False, "clonage_parfait": True}, True, True,
+       "—", "mature",
+       0.45, "des états mutuellement orthogonaux (donc distinguables) se copient parfaitement → le non-clonage ne "
+             "mord que sur des états NON orthogonaux inconnus ; le levier « états distinguables »"),
+    _P("amplificateur quantique (clonage approximatif)",
+       "copier : amplifier un état quantique, ce qui en produit des copies bruitées",
+       {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.8}, True, True,
+       "—", "recherche",
+       0.4, "amplifier ajoute du bruit obligatoire (lié au non-clonage) → copies imparfaites, jamais des clones "
+            "exacts ; cohérent avec la limite de bruit d'un amplificateur — le levier « amplification bruitée »"),
+    _P("clonage asymétrique (une bonne copie, une moins bonne)",
+       "copier : répartir la fidélité entre deux copies (l'une meilleure que l'autre)",
+       {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.75}, True, True,
+       "—", "recherche",
+       0.4, "on peut favoriser une copie au détriment de l'autre (fidélités asymétriques) sous la contrainte "
+            "globale du non-clonage → utile en écoute quantique ; jamais deux copies parfaites — le levier « répartir »"),
+    _P("mémoire quantique (stocke sans copier)",
+       "copier : stocker fidèlement un état inconnu pour le restituer (sans le dupliquer)",
+       {"type": "copie_quantique", "etat_inconnu": True}, True, True,
+       "—", "recherche",
+       0.5, "REFRAMING : conserver un état sans le CLONER (le déposer puis le récupérer) ne viole rien → mémoires "
+            "quantiques (atomes, cavités) ; cohérence à préserver — le levier « stocker plutôt que copier »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("cloneur quantique universel PARFAIT (état inconnu)",
+       "copier : appareil produisant deux copies PARFAITES d'un état quantique arbitraire inconnu",
+       {"type": "copie_quantique", "etat_inconnu": True, "clonage_parfait": True}, True, True,
+       "—", "revendication",
+       0.3, "copier parfaitement un état quantique INCONNU viole le théorème de non-clonage (la linéarité "
+            "l'interdit) — impossible ; à réfuter"),
+    _P("cloneur « à 95 % de fidélité » (état inconnu)",
+       "copier : cloner un état quantique inconnu avec 95 % de fidélité par copie",
+       {"type": "copie_quantique", "etat_inconnu": True, "fidelite": 0.95}, True, True,
+       "—", "revendication",
+       0.25, "95 % > 5/6 (~83 %) pour un état inconnu : au-delà du clonage quantique universel optimal — impossible"),
+]
+
+_OBJECTIF_CLONE = ("Le but réel n'est pas de « vaincre » le non-clonage (impossible — et c'est justement ce qui "
+                   "SÉCURISE la cryptographie quantique) mais de travailler AVEC : on ne peut copier PARFAITEMENT un "
+                   "état quantique INCONNU (la linéarité l'interdit ; le clonage universel plafonne à une fidélité "
+                   "de 5/6). Leviers : copier l'information CLASSIQUE (ou un état CONNU), qui se copie parfaitement ; "
+                   "cloner APPROXIMATIVEMENT (≤ 5/6) si des copies imparfaites suffisent ; TÉLÉPORTER (déplacer "
+                   "l'état exact en détruisant l'original) ; MESURER-et-PRÉPARER si l'on connaît la base ; ou STOCKER "
+                   "sans copier (mémoire quantique). Chaque principe reste jugé par le théorème de non-clonage.")
+_LOI_CLONE = ("théorème de non-clonage : on ne peut copier PARFAITEMENT un état quantique INCONNU (clonage universel "
+              "optimal 1→2 : fidélité ≤ 5/6) ; gains réels = copier l'information classique/connue (parfaite), "
+              "clonage approximatif, téléportation (déplace sans copier), mesure-préparation (base connue), mémoire "
+              "quantique (stocke sans copier)")
+
+# La nature « copie » de l'information CLASSIQUE (réplication), l'approxime (mimétisme), la moule (empreinte), la propage (bouturage).
+_STRATEGIES_NATURE_CLONE = [
+    _Nature("réplication d'un patron (information classique)",
+            ["copie fidèlement une séquence classique", "chaque copie est identique"],
+            "l'information CLASSIQUE se copie parfaitement — le contraste qui délimite le non-clonage (quantique)"),
+    _Nature("mimétisme (copie approximative d'un modèle)",
+            ["imite un modèle sans le reproduire exactement", "ressemblance suffisante pour tromper"],
+            "une copie APPROXIMATIVE suffit souvent — l'analogue du clonage à fidélité bornée"),
+    _Nature("empreinte / moulage (copie par contact)",
+            ["reproduit une forme par contact direct", "copie de surface, pas de l'intérieur"],
+            "copier ce qui est ACCESSIBLE (la forme) sans accéder à l'inconnu — copier le connu, pas le caché"),
+    _Nature("bouturage / clonage végétal (propagation)",
+            ["un fragment régénère un organisme entier", "copie du programme classique (génome)"],
+            "propager une information CLASSIQUE complète — la duplication permise, côté classique"),
+]
+
+enregistre(Domaine(
+    nom=_CLONE,
+    aliases=frozenset(_ALIAS_CLONE),
+    objectif=_OBJECTIF_CLONE,
+    canaux=_CANAUX_CLONE,
+    principes=_PRINCIPES_CLONE,
+    strategies=_STRATEGIES_NATURE_CLONE,
+    loi=_LOI_CLONE,
+    extras={"non_clonage": "pas de copie parfaite d'un état inconnu ; clonage universel 1→2 : fidélité ≤ 5/6",
+            "note": "l'information classique/connue se copie parfaitement ; téléporter déplace sans copier ; "
+                    "le non-clonage est le fondement de la sécurité de la cryptographie quantique (QKD)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
