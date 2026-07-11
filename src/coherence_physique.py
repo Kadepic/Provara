@@ -50,6 +50,8 @@ L11 = ("limite de diffraction d'Abbe : résolution ≥ λ/(2·NA) en champ loint
        "exceptée) ; ouverture numérique NA = n·sinθ ≤ n (indice du milieu)")
 L12 = ("limite de Betz : une éolienne extrait au plus 16/27 (≈ 59,3 %) de la puissance du vent ½ρAv³ traversant "
        "son disque (rotor ouvert) — on ne peut pas arrêter tout l'air")
+L13 = ("équation de Tsiolkovski : Δv ≤ ve·ln(m₀/mf) — le gain de vitesse d'une fusée croît seulement au "
+       "logarithme du rapport de masse (le propergol embarqué donne des retours décroissants)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -86,7 +88,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
-                 "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne"):
+                 "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -365,6 +367,28 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
             if p_ext > _BETZ * p_dispo * (1.0 + 1e-9):
                 return (VIOLE, f"puissance extraite {p_ext} W > limite de Betz {round(_BETZ * p_dispo)} W "
                                f"(16/27 de ½ρAv³, A={a_bal} m², v={v_vent} m/s, rotor ouvert) : impossible", L12)
+
+    # --- Équation de Tsiolkovski : Δv ≤ ve·ln(m₀/mf) — la « tyrannie de l'équation de la fusée ». ---
+    # Le gain de vitesse d'une fusée croît seulement au LOGARITHME du rapport de masse : embarquer plus de propergol
+    # donne des retours décroissants. Un Δv revendiqué au-delà de ve·ln(m₀/mf) est impossible AVEC LE PROPERGOL
+    # EMBARQUÉ. CONSERVATEUR : on ne réfute que si Δv, vitesse d'éjection ET rapport de masse (ou masses) sont donnés.
+    # Le momentum EXTERNE (assistance gravitationnelle, voile solaire, tether) n'est pas borné par ce propergol → une
+    # spec sans propergol n'est pas jugée ici (pas de faux positif sur une voile solaire). Distinct de L4.
+    if t == "fusee":
+        dv = spec.get("delta_v_m_s")
+        ve = spec.get("vitesse_ejection_m_s")
+        ratio = spec.get("rapport_masse")
+        if ratio is None:
+            m0 = spec.get("masse_initiale_kg")
+            mf = spec.get("masse_finale_kg")
+            if _nb(m0) and _nb(mf) and m0 > 0 and mf > 0:
+                ratio = m0 / mf
+        if _nb(dv) and dv > 0 and _nb(ve) and ve > 0 and _nb(ratio) and ratio >= 1.0:
+            dv_max = ve * math.log(ratio)
+            if dv > dv_max * (1.0 + 1e-9):
+                return (VIOLE, f"Δv {dv} m/s > Δv max de Tsiolkovski {round(dv_max)} m/s (ve·ln(m₀/mf), "
+                               f"ve={ve} m/s, rapport de masse {round(ratio, 3)}) : impossible avec ce propergol "
+                               f"embarqué", L13)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

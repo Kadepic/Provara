@@ -130,6 +130,13 @@ check(statut({"type": "eolienne", "coefficient_puissance": 0.7}) == P.VIOLE, "Cp
 check(loi({"type": "eolienne", "coefficient_puissance": 0.7}) == P.L12, "limite de Betz = L12")
 check(statut({"type": "eolienne", "puissance_W": 50000, "aire_balayee_m2": 100,
               "vitesse_vent_m_s": 10}) == P.VIOLE, "50 kW > Betz ~36,3 kW (100 m², 10 m/s) -> VIOLE")
+# équation de Tsiolkovski : Δv au-dessus de ve·ln(rapport de masse).
+check(statut({"type": "fusee", "delta_v_m_s": 30000, "vitesse_ejection_m_s": 4500,
+              "rapport_masse": 20}) == P.VIOLE, "30 km/s > Tsiolkovski ~13,5 km/s -> VIOLE")
+check(loi({"type": "fusee", "delta_v_m_s": 30000, "vitesse_ejection_m_s": 4500,
+           "rapport_masse": 20}) == P.L13, "Tsiolkovski = L13")
+check(statut({"type": "fusee", "delta_v_m_s": 5000, "vitesse_ejection_m_s": 4500,
+              "rapport_masse": 1}) == P.VIOLE, "Δv > 0 sans ergols (rapport de masse 1) -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -220,6 +227,13 @@ reels = [
     {"type": "eolienne", "puissance_W": 27000, "aire_balayee_m2": 100, "vitesse_vent_m_s": 10},  # Cp ~0,44 (< Betz ~36,3 kW)
     {"type": "eolienne", "coefficient_puissance": 0.7, "avec_diffuseur": True},       # carénée : Cp>Betz par aire rotor -> PAS un faux positif
     {"type": "eolienne"},                                                             # vide -> PAS un faux positif
+    # propulsions spatiales RÉELLES : sous le Δv de Tsiolkovski (ou momentum externe non jugé).
+    {"type": "fusee", "delta_v_m_s": 13000, "vitesse_ejection_m_s": 4500, "rapport_masse": 20},   # chimique (max ~13481)
+    {"type": "fusee", "delta_v_m_s": 12000, "vitesse_ejection_m_s": 30000, "rapport_masse": 1.5}, # ionique (max ~12164)
+    {"type": "fusee", "delta_v_m_s": 18000, "vitesse_ejection_m_s": 4500, "rapport_masse": 60},   # étagé (max ~18424)
+    {"type": "fusee", "delta_v_m_s": 13480, "vitesse_ejection_m_s": 4500, "rapport_masse": 20},   # AU max ~13480,8 (limite, ok)
+    {"type": "fusee", "vitesse_ejection_m_s": 9000},                                  # sans Δv/rapport : PAS un faux positif
+    {"type": "fusee"},                                                                # vide (voile solaire, momentum externe) -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
