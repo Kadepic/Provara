@@ -18,6 +18,9 @@ import os
 import re
 import sys
 
+NONREG_SCAN_SOURCES = True   # gate-SCANNER (parcourt l'arbre des sources par chemin) : le cache de _nonreg la relance toujours
+
+
 _ICI = os.path.dirname(os.path.abspath(__file__))
 _RACINE = os.path.dirname(_ICI)
 

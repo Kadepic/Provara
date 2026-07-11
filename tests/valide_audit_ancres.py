@@ -12,6 +12,9 @@ import sys
 _ICI = os.path.dirname(os.path.abspath(__file__)) or "."
 sys.path.insert(0, _ICI)
 
+NONREG_SCAN_SOURCES = True   # gate-SCANNER (parcourt l'arbre des sources par chemin) : le cache de _nonreg la relance toujours
+
+
 # ─── GARDE « BASE COMPLÈTE » (2026-07-12) — SKIP propre sur l'échantillon ───
 # Gate de classe BASE RÉELLE : elle exige > 10 M de faits et > 1000 relations, absents de l'échantillon
 # committé. Marqueur de base réelle : occupation_personne (2,35 M, jamais committé). Base réelle vérifiée

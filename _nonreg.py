@@ -475,7 +475,13 @@ def modules_locaux():
 
 
 def imports_directs(fichier, locaux):
-    """Modules LOCAUX importés directement par `fichier` (statique). Renvoie (set_modules, dynamique_suspect)."""
+    """Modules LOCAUX importés directement par `fichier` (statique). Renvoie (set_modules, dynamique_suspect).
+
+    CONVENTION `NONREG_SCAN_SOURCES = True` (2026-07-12) : une gate qui SCANNE l'arbre des sources par CHEMIN
+    (glob/os.walk/listdir sur src/tests/… — ex. valide_atomes, valide_cablage, valide_audit_ancres) a un verdict
+    qui dépend de fichiers HORS de sa clôture d'imports (un module ORPHELIN ajouté n'est importé par personne) ->
+    le cache la ferait dormir. Le marqueur, déclaré au niveau module de la gate, la range en « toujours relancer »
+    (suspect=True). Découvert quand le fix du cache a rendu la clôture effective — un défaut en cache un autre."""
     chemin = os.path.join(HARN, _chemin_fichier(fichier))
     try:
         with open(chemin, "r", encoding="utf-8") as fh:
@@ -485,6 +491,10 @@ def imports_directs(fichier, locaux):
         return set(), True
     mods, suspect = set(), False
     for n in ast.walk(arbre):
+        if isinstance(n, ast.Assign) and any(
+                isinstance(c, ast.Name) and c.id == "NONREG_SCAN_SOURCES" for c in n.targets):
+            if isinstance(n.value, ast.Constant) and n.value.value is True:
+                suspect = True            # gate-scanner déclarée : son verdict dépend de fichiers hors clôture
         if isinstance(n, ast.Import):
             for a in n.names:
                 base = a.name.split(".")[0]
