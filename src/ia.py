@@ -2844,10 +2844,77 @@ def invente_et_retiens(nom: str, signature: str, exemples, exemples_held, budget
         from memoire_briques import MemoireBriques
         _BRIQUES = MemoireBriques(base=_MI.EXISTANT)
     v = _MI.examine_cible(nom, signature, exemples, exemples_held, budget=budget, existant=_BRIQUES.existant())
-    toutes = list(exemples) + list(exemples_held or [])
-    if v.statut == _MI.INVENTION and v.par and _MI._reproduit(_MI._callable(v.par, "f"), toutes):
-        _BRIQUES.retient(v.par)
+    if v.statut == _MI.INVENTION and v.par:
+        # l'admission est GARDÉE dans retient() (reproduit + spec sérialisable) : impossible d'oublier la garde.
+        _BRIQUES.retient(v.par, origine=nom, exemples=exemples, held=exemples_held or [])
     return v
+
+
+def force_du_spec(expr: str, exemples, exemples_held=None):
+    """FORGE — mesure si un besoin (spec) est assez FORT pour déterminer sa brique (mutation testing).
+    Renvoie le rapport de `force_spec.force_du_spec` : score de mutation ∈ [0,1], survivants non
+    équivalents, et — si le spec est sous-déterminé — un `discriminant` (entrée, sortie attendue) à
+    ajouter pour le renforcer (boucle CEGIS). Sortie de première classe : servable au moteur d'invention
+    ET à l'utilisateur (« ton exemple manque une distinction : essaie %s »)."""
+    from force_spec import force_du_spec as _fds
+    return _fds(expr, exemples, exemples_held or [])
+
+
+def forge_brique(nom: str, signature: str, exemples, exemples_held=None, *, budget: int = 2000):
+    """FORGE — SORTIE DE PREMIÈRE CLASSE (mandat Yohan : « servir le moteur d'invention en sortie à
+    l'utilisateur et aux autres moteurs »). UNE porte qui COMBINE tout ce que la forge sait dire d'une
+    brique, chaque affirmation étiquetée par son statut épistémique — jamais un fait qui n'en est pas.
+
+    Renvoie un dict servable (JSON-compatible) :
+      • statut       : INVENTION / EXISTE_DEJA / AMBIGU / BRIQUE_MANQUANTE / INCOHERENT (verdict du moteur) ;
+      • code         : la réalisation (expr) si INVENTION/EXISTE_DEJA, sinon None ;
+      • fait_borne   : rendu de l'ATOME FAIT (« reproduit les n paires du spec », confiance 1.0, jugé par
+                       exécution réelle) ou None — ce qui est CERTAIN ;
+      • supposition  : rendu de l'ATOME SUPPOSITION générative (« comportement général au-delà du spec »,
+                       confiance = règle de succession, jamais 1.0) ou None — ce qui est SUPPOSÉ ;
+      • force_spec   : pour une INVENTION, le rapport de mutation (score, survivants) — la solidité du besoin ;
+      • besoin_a_renforcer : l'ENTRÉE discriminante actionnable UNIFIÉE — qu'elle vienne du moteur (AMBIGU :
+                       deux réalisations connues divergent) ou de la mutation (spec faible : un mutant survit).
+                       Dans les DEUX cas : « ton besoin est sous-déterminé, ajoute cette entrée pour trancher » ;
+      • appris       : True si la brique vient d'être RETENUE en mémoire persistante (self-improving)."""
+    global _BRIQUES
+    if _BRIQUES is None:
+        from memoire_briques import MemoireBriques
+        _BRIQUES = MemoireBriques(base=_MI.EXISTANT)
+    import invention_atomes as _IA
+    exemples = list(exemples)
+    held = list(exemples_held or [])
+    verdict = _MI.examine_cible(nom, signature, exemples, held, budget=budget, existant=_BRIQUES.existant())
+    sup, fait = _IA.atome_capacite(verdict, exemples, held)
+
+    res = {
+        "statut": verdict.statut,
+        "code": verdict.par if verdict.statut in (_MI.INVENTION, _MI.EXISTE_DEJA) else None,
+        "fait_borne": fait.sert() if fait is not None else None,
+        "supposition": sup.sert() if sup is not None else None,
+        "force_spec": None,
+        "besoin_a_renforcer": None,
+        "appris": False,
+    }
+    # le besoin sous-déterminé, source #1 : le moteur a vu ≥2 réalisations connues diverger (AMBIGU).
+    if verdict.statut == _MI.AMBIGU and verdict.sonde is not None:
+        res["besoin_a_renforcer"] = {"entree": verdict.sonde,
+                                     "raison": "deux réalisations connues satisfont le spec et divergent sur cette entrée"}
+    if verdict.statut == _MI.INVENTION and verdict.par:
+        # RETENTION (self-improving) — admission gardée dans retient().
+        res["appris"] = _BRIQUES.retient(verdict.par, origine=nom, exemples=exemples, held=held)
+        # SOLIDITÉ DU BESOIN : mutation testing sur la réalisation retenue.
+        try:
+            fs = force_du_spec(verdict.par, exemples, held)
+            res["force_spec"] = {k: fs[k] for k in ("mutants", "tues", "equivalents", "survivants", "score")}
+            # le besoin sous-déterminé, source #2 : un mutant a survécu (le spec ne le distingue pas).
+            if fs["discriminant"] is not None and res["besoin_a_renforcer"] is None:
+                res["besoin_a_renforcer"] = {
+                    "entree": fs["discriminant"][0], "sortie_attendue": fs["discriminant"][1],
+                    "raison": "une variation de la réalisation (mutant) reproduit le spec mais diffère sur cette entrée"}
+        except ValueError:
+            pass
+    return res
 
 
 if __name__ == "__main__":

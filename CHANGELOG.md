@@ -1,5 +1,105 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — FORGE DE BRIQUES, atome 5 : sortie de PREMIÈRE CLASSE (`ia.forge_brique`)
+
+Le mandat : « le générateur de briques doit servir le moteur d'invention EN SORTIE à l'utilisateur et aux
+autres moteurs — rendre tout ça parfait ». Nouvelle façade `ia.forge_brique` qui COMBINE, en UNE porte,
+tout ce que la forge sait dire d'une brique, CHAQUE affirmation étiquetée par son statut épistémique
+(« la puissance dans les combinaisons »). Elle assemble les atomes déjà livrés :
+- le verdict du moteur (INVENTION/EXISTE_DEJA/AMBIGU/BRIQUE_MANQUANTE/INCOHERENT) ;
+- le **FAIT borné** (atome 1 : ce qui est CERTAIN — « reproduit les n paires du spec », confiance 1.0,
+  jugé par exécution réelle) et la **SUPPOSITION générative** (ce qui est SUPPOSÉ — « comportement au-delà
+  du spec », confiance = règle de succession, JAMAIS 1.0), via `invention_atomes.atome_capacite` ;
+- la **force du spec** (atome 4 : mutation testing sur la réalisation retenue — solidité du besoin) ;
+- le **besoin à renforcer** UNIFIÉ : l'entrée discriminante actionnable, qu'elle vienne du moteur (AMBIGU :
+  deux réalisations connues divergent) OU de la mutation (spec faible : un mutant survit) — dans les deux
+  cas « ton besoin est sous-déterminé, ajoute cette entrée » ;
+- **self-improving** : rétention en mémoire persistante (atome 1), `appris` dit si la brique est neuve.
+
+Sortie entièrement JSON-sérialisable (servable à l'utilisateur ET à un autre moteur). SOUNDNESS prouvée :
+le FAIT est certain, la SUPPOSITION n'est jamais servie comme un fait ; un spec incohérent → abstention
+totale (ni code ni atomes). Gate `valide_forge_brique` **16/16**, suite **800 → 801**, non-rég 801/801.
+Câblage : ia.py (0 orphelin), surface d'ia verte.
+
+## 2026-07-12 — FORGE DE BRIQUES, atome 4 : force du spec par mutation testing (« adapter les besoins »)
+
+Nouveau module `force_spec` : mesure si un BESOIN (spec = exemples+held) est assez FORT pour déterminer sa
+brique de façon unique, par **mutation testing** (DeMillo-Lipton-Sayward 1978). Il MUTE la réalisation
+retenue (constantes ±1/0, opérateurs binaires voisins, comparaisons inversées, and/or) et compte les
+mutants que le spec échoue à tuer. Un survivant NON équivalent = une variation que le besoin ne distingue
+pas = spec sous-déterminé sur cet axe → le module rend un **discriminant** (entrée, sortie attendue) qui,
+ajouté au spec, tue ce survivant (boucle CEGIS mécanisée). C'est le TEST DU DIABLE rendu mesurable.
+
+- **Problème du mutant équivalent (Budd-Angluin 1982) géré** : un mutant sémantiquement identique survit
+  toujours — ce n'est PAS une faiblesse. Neutralisé par SONDAGE COMPORTEMENTAL (un mutant qui coïncide
+  partout, hors spec compris, est exclu du dénominateur). Au doute, jamais de fausse faiblesse.
+- **Optimisation chirurgicale — sondes ASYMÉTRIQUES** : les sondes structurelles auto gardent les éléments
+  ÉGAUX ([2,2]→[3,3]), si bien qu'un échange d'index (`x[1]` au lieu de `x[0]`) ou un mauvais doublement y
+  coïncide par accident et passe pour « équivalent ». Une entrée à valeurs DISTINCTES [1,…,n] (+ sa
+  renversée) brise cette symétrie et démasque le survivant. STRICTEMENT plus de faiblesses vues, ZÉRO
+  fausse faiblesse sur un spec fort (prouvé). Type-safe : jamais de sonde hors du domaine observé.
+- **Bug d'énumération tué** : `_nb_graines` sous-comptait les points de mutation des `BinOp` (1 au lieu du
+  nombre de voisins) et `Compare` (1 par opérateur), si bien que les mutants d'index élevé — dont
+  l'échange Add→Mult `x[0]*x[1]` — n'étaient JAMAIS générés. Compte aligné sur les appels `_tour()` des
+  visiteurs → énumération exhaustive.
+
+Câblé en façade `ia.force_du_spec` (sortie de première classe : servable au moteur d'invention et à
+l'utilisateur — « ton exemple manque une distinction : essaie X »), `valide_cablage` 589 modules 0
+orphelin. Gate `valide_force_spec` **22/22**, ajoutée à la suite (**799 → 800**). Non-rég 800/800.
+
+## 2026-07-12 — FORGE DE BRIQUES, atome 2 : sommeil généralisé (compression MDL, DreamCoder)
+
+Le « sommeil » (phase où l'IA s'améliore au niveau BIBLIOTHÈQUE) ne promouvait qu'UNE abstraction — la
+plus réutilisée (`map[F]`). Généralisé : **toutes les abstractions qui COMPRESSENT sont promues**, sous le
+score MDL de DreamCoder `MDL = L(bibliothèque) + Σ L(programmes | bibliothèque)`.
+
+- `gain_mdl(transform, k)` : gain de compression (en nœuds AST) = `s·(k−1) − k` où `s` = taille du map
+  `[transform for _e in x]` et `k` = nb de cibles qui le réutilisent (la bibliothèque le stocke UNE fois,
+  chaque cible le référence pour un coût 1). Promotion ssi > 0 — mesuré, pas inventé (le garde-fou mord à
+  `k=1` : une abstraction non réutilisée ne compresse pas et n'entre pas).
+- `promeut_abstractions(inv)` : TOUTES les abstractions à gain positif, triées par gain décroissant ;
+  `etend_bibliotheque` les ajoute toutes (additif, idempotent). `promeut_abstraction` (singulier, compat)
+  rend toujours la plus payante. Chaque capacité promue est extraite d'une solution VÉRIFIÉE et réutilisée
+  par ≥2 cibles (sound, cf. chercheur_invention) — le seuil MDL est objectif.
+
+Gate `valide_bibliotheque_invention` **11 → 20** (formule MDL mesurée, seuil qui mord à k=1, monotonie ;
+promotion MULTIPLE prouvée sur inventaire à 2 abstractions, tri par gain, les 2 capacités correctes ;
+compat du singulier). Appelants inchangés en interface (`ia.apprend`), non-rég **799/799**.
+
+## 2026-07-12 — FORGE DE BRIQUES, atome 1 : mémoire de briques sous CONFIANCE ZÉRO AU DISQUE
+
+Lancement du chantier **générateur de briques sous juge d'exécution** (le levier validé — cf.
+`_REPRISE_FORGE_BRIQUES.md` pour la recherche : mutation testing 1978, version spaces 1982,
+superoptimisation 1987, metamorphic testing 1998, CEGIS 2006, STOKE 2013, DreamCoder 2021 — et la file
+d'atomes). Premier atome livré au niveau le plus fin : **`memoire_briques` v2**.
+
+**Le défaut (même famille que « le cache ne signait pas la clé »).** La v1 CROYAIT LE DISQUE :
+`charge()` réinjectait le JSON tel quel dans le registre `existant` — un fichier `briques.json` altéré
+faisait EXÉCUTER (exec au probing) et SERVIR (EXISTE_DEJA) des expressions jamais jugées. Et elle ne
+stockait que nom→expr : sans spec, une brique n'était NI re-jugeable NI servable à l'utilisateur (noms
+opaques `appris_N`).
+
+**Le fix (v2).**
+- **Re-jugement au chargement** : chaque brique porte son spec (exemples+held) et est RE-EXÉCUTÉE sur ce
+  spec à CHAQUE `charge()`. Échec, champ manquant, format v1 sans spec, version inconnue → QUARANTAINE
+  comptée et TRACÉE (`<chemin>.quarantaine`, append-only), JAMAIS injectée. JSON corrompu → pièce
+  préservée en `.corrompu` (l'évidence ne se détruit pas), chargement vide, refus dit. Le disque n'est
+  plus jamais cru sur parole.
+- **Spec à tuples fidèle au disque** : sérialisation `repr`/`ast.literal_eval` (jamais `eval`) avec
+  aller-retour vérifié — JSON nu aurait aplati les tuples en listes et le re-jugement aurait menti.
+- **Admission gardée DANS `retient()`** : l'expr doit reproduire exemples+held (exécution réelle, ici)
+  ET le spec doit être sérialisable — les appelants (`ia.invente_et_retiens`, `restitution.consolide`)
+  ne peuvent plus oublier la garde ; chaque refus est compté. Écriture atomique try/finally (zéro résidu
+  `.tmp`, leçon de la fuite du cache). Noms PARLANTS (origine, collision → suffixe, rien d'écrasé) +
+  `provenance()` servable (expr, origine, date, spec, held, n_verifie) = la **sortie de première classe**
+  demandée (la forge servira le moteur d'invention et l'utilisateur).
+
+Gate `valide_memoire` **10 → 28** (chaque mode d'échec du disque prouvé un par un : expr altérée →
+quarantaine + jamais servie + saines préservées ; JSON corrompu → `.corrompu` ; format v1 → non injecté ;
+tuples préservés ; admission refuse non-reproduit et spec vide ; dé-dup ; collision ; zéro `.tmp`).
+Callers mis à jour (`ia.py`, `restitution.py`), gates dépendantes vertes (restitution 29, bibliothèque 11,
+invention_atomes 18, ia 21). **Non-rég 799/799.**
+
 ## 2026-07-12 — PHASE 3 (ingestion) : rémunération FRANCE ouverte (Dares×FAP), pont ROME→ISCO rejeté au held-out
 
 **La piste « DARES×FAP via le pont ROME » (runbook §4, jamais sondée) est OUVERTE ET EXPLOITÉE.**

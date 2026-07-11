@@ -201,7 +201,8 @@ class MoteurRestitution:
             # la règle reproduit-elle TOUS les faits ? (neuve OU déjà connue : dans les deux cas ils deviennent
             # dérivables -> on les évince = compression. On note seulement si la brique est NOUVELLE pour la mémoire.)
             if v.par and MI._reproduit(MI._callable(v.par, "f"), faits):
-                neuve = self.briques.retient(v.par)     # True si la mémoire ne la connaissait pas encore
+                # True si la mémoire ne la connaissait pas encore (admission re-gardée dans retient()).
+                neuve = self.briques.retient(v.par, origine="regle_consolidee", exemples=ex, held=held)
                 rapport["regles_neuves"] = 1 if neuve else 0
                 rapport["regle_reutilisee"] = not neuve
                 rapport["derivables"] = len(faits)
