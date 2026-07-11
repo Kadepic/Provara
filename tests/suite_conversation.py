@@ -29,6 +29,7 @@ GATES = [
     "valide_graphe_roues", "valide_sujets", "valide_oracle_metier", "valide_rome_rncp", "valide_regprof",
     "valide_bls_oes", "valide_dares_fap", "valide_onet", "valide_onet_jobzones", "valide_onet_interets", "valide_bls_soii", "valide_isco_wikidata", "valide_oracle_domaine",
     "valide_cles_canoniques", "valide_collision_relations", "valide_capacites", "valide_cache_tmp", "valide_progression",
+    "valide_force_spec",
     # VAGUE A (2026-07-10 nuit, mandat « traiter tout le backlog des sujets ») : 19 briques conceptuelles
     # neuves, chacune avec mécanisme exact, abstention structurelle et gate à ancres NON CIRCULAIRES.
     # Elles ferment à ZÉRO le backlog des PARTIES I et II (14 + 21 sujets non traités -> 0).

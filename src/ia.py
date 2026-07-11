@@ -2850,6 +2850,16 @@ def invente_et_retiens(nom: str, signature: str, exemples, exemples_held, budget
     return v
 
 
+def force_du_spec(expr: str, exemples, exemples_held=None):
+    """FORGE — mesure si un besoin (spec) est assez FORT pour déterminer sa brique (mutation testing).
+    Renvoie le rapport de `force_spec.force_du_spec` : score de mutation ∈ [0,1], survivants non
+    équivalents, et — si le spec est sous-déterminé — un `discriminant` (entrée, sortie attendue) à
+    ajouter pour le renforcer (boucle CEGIS). Sortie de première classe : servable au moteur d'invention
+    ET à l'utilisateur (« ton exemple manque une distinction : essaie %s »)."""
+    from force_spec import force_du_spec as _fds
+    return _fds(expr, exemples, exemples_held or [])
+
+
 if __name__ == "__main__":
     from garde_ressources import borne
     borne()

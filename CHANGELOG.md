@@ -1,5 +1,31 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — FORGE DE BRIQUES, atome 4 : force du spec par mutation testing (« adapter les besoins »)
+
+Nouveau module `force_spec` : mesure si un BESOIN (spec = exemples+held) est assez FORT pour déterminer sa
+brique de façon unique, par **mutation testing** (DeMillo-Lipton-Sayward 1978). Il MUTE la réalisation
+retenue (constantes ±1/0, opérateurs binaires voisins, comparaisons inversées, and/or) et compte les
+mutants que le spec échoue à tuer. Un survivant NON équivalent = une variation que le besoin ne distingue
+pas = spec sous-déterminé sur cet axe → le module rend un **discriminant** (entrée, sortie attendue) qui,
+ajouté au spec, tue ce survivant (boucle CEGIS mécanisée). C'est le TEST DU DIABLE rendu mesurable.
+
+- **Problème du mutant équivalent (Budd-Angluin 1982) géré** : un mutant sémantiquement identique survit
+  toujours — ce n'est PAS une faiblesse. Neutralisé par SONDAGE COMPORTEMENTAL (un mutant qui coïncide
+  partout, hors spec compris, est exclu du dénominateur). Au doute, jamais de fausse faiblesse.
+- **Optimisation chirurgicale — sondes ASYMÉTRIQUES** : les sondes structurelles auto gardent les éléments
+  ÉGAUX ([2,2]→[3,3]), si bien qu'un échange d'index (`x[1]` au lieu de `x[0]`) ou un mauvais doublement y
+  coïncide par accident et passe pour « équivalent ». Une entrée à valeurs DISTINCTES [1,…,n] (+ sa
+  renversée) brise cette symétrie et démasque le survivant. STRICTEMENT plus de faiblesses vues, ZÉRO
+  fausse faiblesse sur un spec fort (prouvé). Type-safe : jamais de sonde hors du domaine observé.
+- **Bug d'énumération tué** : `_nb_graines` sous-comptait les points de mutation des `BinOp` (1 au lieu du
+  nombre de voisins) et `Compare` (1 par opérateur), si bien que les mutants d'index élevé — dont
+  l'échange Add→Mult `x[0]*x[1]` — n'étaient JAMAIS générés. Compte aligné sur les appels `_tour()` des
+  visiteurs → énumération exhaustive.
+
+Câblé en façade `ia.force_du_spec` (sortie de première classe : servable au moteur d'invention et à
+l'utilisateur — « ton exemple manque une distinction : essaie X »), `valide_cablage` 589 modules 0
+orphelin. Gate `valide_force_spec` **22/22**, ajoutée à la suite (**799 → 800**). Non-rég 800/800.
+
 ## 2026-07-12 — FORGE DE BRIQUES, atome 2 : sommeil généralisé (compression MDL, DreamCoder)
 
 Le « sommeil » (phase où l'IA s'améliore au niveau BIBLIOTHÈQUE) ne promouvait qu'UNE abstraction — la
