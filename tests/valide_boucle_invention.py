@@ -119,5 +119,23 @@ check(len(r["faits"]["refuses"]) == 1 and not s.d, "juge externe négatif -> gro
 r = BI.boucle("rafraichir une piece")
 check("SUPPOSITION" in r["note"] and "survécu" in r["note"], "note = distinction claire supposition/fait vérifié")
 
+# ── 9) LES 3 AXES ASSEMBLÉS (Phase 2) : composite -> atomes jugés -> blackboard partagé ──
+r = BI.invente_composite("maison autonome")
+check(r["statut"] == BI.PROPOSE and len(r["sujets"]) == 4, "composite routé : 4 sujets (un par domaine) au tableau")
+check(r["n_suppositions"] > 0, "le tableau porte la matière à travailler (suppositions jugées)")
+bb = r["blackboard"]
+check(all(bb.faits(s) == [] for s in r["sujets"]),
+      "AUCUN fait relu du tableau : rien n'a été promu par un juge réel (asymétrie de bout en bout)")
+check(all(e.source.startswith("besoin.principes(") for s in r["sujets"] for e in bb.atomes(s)),
+      "chaque atome posté porte sa provenance (le domaine qui l'a émis)")
+check(len(r["lois"]) == 4, "les 4 lois dures des domaines composés accompagnent la proposition")
+
+r2 = BI.invente_composite("centre de calcul")
+check(r2["statut"] == BI.PROPOSE and r2["manques"] == ["evacuer la chaleur d un centre de calcul"],
+      "composite incomplet : le manque reste VISIBLE dans la proposition intégrée")
+check(BI.invente_composite("rafraichir une piece")["statut"] == BI.HORS,
+      "besoin simple -> HORS d'invente_composite (la boucle mono-domaine reste boucle())")
+check(BI.invente_composite(None)["statut"] == BI.HORS, "invente_composite(None) -> HORS propre")
+
 print(f"\n=== valide_boucle_invention : {ok}/{ok + ko} ===")
 sys.exit(0 if ko == 0 else 1)

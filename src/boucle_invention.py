@@ -44,6 +44,44 @@ def _serialise_candidat(c) -> dict:
     }
 
 
+def invente_composite(besoin: str) -> dict:
+    """LES 3 AXES ASSEMBLÉS (Phase 2) : un besoin COMPOSITE est routé vers ses domaines (axe ③ compose),
+    chaque domaine émet ses principes JUGÉS en atomes (axe ① contrat), tous postés sur UN blackboard partagé
+    (axe ② substrat commun) — d'où toute capacité aval relit SOUS le contrat : suppositions() = la matière à
+    travailler ; faits() = RIEN tant qu'aucun juge réel n'a promu (asymétrie préservée de bout en bout).
+    Besoin non composite -> HORS (la boucle mono-domaine reste boucle()). Ne lève pas."""
+    import blackboard as _BB
+    comp = _B.compose(besoin)
+    if comp.get("statut") != "compose":
+        return {"statut": HORS, "etape": "composition", "besoin": besoin,
+                "raison": "besoin composite non déclaré — abstention plutôt que fabriquer une composition"}
+    bb = _BB.Blackboard()
+    refutes = 0
+    for sous in comp["sous"]:
+        sb = sous["besoin"]
+        p = _B.principes(sb)
+        if p.get("statut") != "principes":
+            continue                                   # domaine sans catalogue : déjà visible via comp['manques']
+        for e in p["liste"]:
+            bb.poste_atome(f"{comp['nom']}/{sb}", e["atome"], source=f"besoin.principes({sb})")
+            refutes += e["atome"].statut == "refute"
+    sujets = sorted(bb.sujets())
+    return {
+        "statut": PROPOSE,
+        "etape": "complet",
+        "besoin": besoin,
+        "nom": comp["nom"],
+        "blackboard": bb,
+        "sujets": sujets,
+        "lois": comp["lois"],
+        "manques": comp["manques"],
+        "n_suppositions": sum(len(bb.suppositions(s)) for s in sujets),
+        "n_refutes": refutes,
+        "note": "chaque principe est une SUPPOSITION jugée (ou un RÉFUTÉ) posté au tableau ; faits() reste vide "
+                "tant qu'aucun juge réel n'a promu — l'asymétrie du contrat tient de bout en bout.",
+    }
+
+
 def boucle(besoin: str, faits_a_verifier=(), *, minimum: int = 2, juge=None, persiste=None, lecteur=None) -> dict:
     """Exécute la boucle d'invention pour `besoin`. `faits_a_verifier` = itérable de dicts
     {relation, entite, valeur, observations, [categorie], [source]} = les affirmations FACTUELLES de grounding à
