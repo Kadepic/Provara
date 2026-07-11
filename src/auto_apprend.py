@@ -316,6 +316,13 @@ class MoteurAutonome(MoteurOuvert):
         # pivot liste-de-paires -> dict (direct et inversé ; une paire ASYMÉTRIQUE les discrimine)
         "{_p[0]: _p[1] for _p in x}",
         "{_p[1]: _p[0] for _p in x}",
+        # GROUPBY GÉNÉRALISÉ (atome 7, frontière mesurée après l'atome 2) : clé = f(élément) au-delà des
+        # modulos — premier élément/lettre (mots ET listes), signe. Même sémantique clés OBSERVÉES.
+        "{_k: [_e for _e in x if _e[0] == _k] for _k in sorted({_v[0] for _v in x})}",
+        "{_k: [_e for _e in x if (_e > 0) - (_e < 0) == _k] for _k in sorted({(_v > 0) - (_v < 0) for _v in x})}",
+        # PIVOT 2 NIVEAUX (canon pandas pivot_table : split sur une grille 2D) : liste de triplets
+        # [a, b, c] -> {a: {b: c}} — sortie dict-de-dicts, distinctive, jamais coïncidente.
+        "{_a: {_p[1]: _p[2] for _p in x if _p[0] == _a} for _a in sorted({_q[0] for _q in x})}",
     ]
     # CHIFFRES d'un entier ; PRÉDICAT palindrome ; ARITHMÉTIQUE à 2 champs ([fait, total] -> %).
     _DIVERS_REEL = [
