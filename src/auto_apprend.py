@@ -328,6 +328,18 @@ class MoteurAutonome(MoteurOuvert):
         # que rle encode/decode : « la frontière se déplace vers l'inverse »).
         "[[_k, _v] for _k in sorted(x) for _v in x[_k]]",
     ]
+    # DICT PROFOND (atome 15, frontière mesurée) : dict-de-dicts — agrégats des valeurs PROFONDES,
+    # aplatissement, et DÉPIVOT = l'inverse du pivot 2 niveaux (referme l'aller-retour pivot/dépivot,
+    # comme groupby/dégroupage). Validation contextuelle : sur un dict PLAT, _sd.values() crashe -> filtré.
+    _DICT_PROFOND = [
+        "sum(_v for _sd in x.values() for _v in _sd.values())",             # somme des valeurs profondes
+        "max(_v for _sd in x.values() for _v in _sd.values())",
+        "min(_v for _sd in x.values() for _v in _sd.values())",
+        "sum(len(_sd) for _sd in x.values())",                              # nb d'entrées profondes
+        "{_k2: _v for _sd in x.values() for _k2, _v in _sd.items()}",       # aplatissement (fusion des sous-dicts)
+        "[[_k, _k2, _v] for _k in sorted(x) for _k2, _v in sorted(x[_k].items())]",   # dépivot -> triplets triés
+        "{_k: sum(_sd.values()) for _k, _sd in sorted(x.items())}",         # agrégat par groupe (somme des sous-dicts)
+    ]
     # CHIFFRES d'un entier ; PRÉDICAT palindrome ; ARITHMÉTIQUE à 2 champs ([fait, total] -> %).
     _DIVERS_REEL = [
         "sum(int(_d) for _d in str(x))",                           # somme des chiffres
@@ -396,6 +408,7 @@ class MoteurAutonome(MoteurOuvert):
                    + self._FOLDS + self._FENETRE + self._FILTRE_LISTE + self._INDEX
                    + self._ELEM_AGG + self._SORT_INDEX + self._MAP_COND + self._SCAN + self._DEDUP_WINDOW
                    + self._NOMBRES_LISTE + self._GROUPBY + self._EXPANSION + self._ARBRE + self._SORTIE_STRUCTUREE
+                   + self._DICT_PROFOND
                    + self._DECOUPE + self._CONTROLE + self._BASE + self._DIVERS_REEL + self._STR)
         existants = {e for e, _, _ in self.atomes}
         ajoutes = 0
