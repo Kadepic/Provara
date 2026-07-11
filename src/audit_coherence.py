@@ -42,6 +42,12 @@ PAIRES_SEMANTIQUES = [
 _PREFIXE_DEBUT = "annee_debut_"
 _PREFIXE_FIN = "annee_fin_"
 
+# APPARIAGE VIE ↔ ACTIVITÉ : le début d'un mandat/règne d'une personne ne peut PAS précéder sa naissance
+# (contrainte dure : on ne prend pas ses fonctions avant de naître). Les relations ciblées ont pour ENTITÉ une
+# personne (nom), même espace que annee_naissance_personne -> jointure sound. Sélection par motif du nom.
+_RELATION_NAISSANCE = "annee_naissance_personne"
+_MOTIFS_DEBUT_ACTIVITE = ("annee_debut_mandat_", "annee_debut_regne")   # préfixe (mandat_*) OU nom exact (regne)
+
 # Type ACYCLIQUE : une relation « x -> parent(x) » ENDOGÈNE (valeur du même type que l'entité) est un ordre
 # partiel STRICT -> sans cycle. Un cycle (A parent de B, B parent de A) est une contradiction dure. Sélection
 # par mot-clé dans le nom ; le détecteur est intrinsèquement SOUND (il ne peut boucler que si les valeurs
@@ -71,11 +77,26 @@ def _auto_paires(relations: set) -> list:
     return out
 
 
+def _paires_vie(relations: set) -> list:
+    """Couples (annee_naissance_personne, annee_debut_mandat_*/regne) : le début d'activité d'une personne ne
+    peut pas précéder sa naissance. Généré pour toute relation d'activité présente, si la naissance l'est."""
+    if _RELATION_NAISSANCE not in relations:
+        return []
+    out = []
+    for r in sorted(relations):
+        est_activite = any(r.startswith(m) if m.endswith("_") else r == m for m in _MOTIFS_DEBUT_ACTIVITE)
+        if est_activite:
+            suffixe = r[len(_PREFIXE_DEBUT):] if r.startswith(_PREFIXE_DEBUT) else r
+            out.append((_RELATION_NAISSANCE, r, f"naissance ≤ début ({suffixe})"))
+    return out
+
+
 def paires_disponibles() -> list:
-    """Toutes les paires ORDRE dont les deux relations sont présentes dans le store (auto + sémantiques),
-    dé-doublonnées par (rel_min, rel_max)."""
+    """Toutes les paires ORDRE dont les deux relations sont présentes dans le store (auto début/fin + vie↔activité
+    + sémantiques), dé-doublonnées par (rel_min, rel_max)."""
     presentes = _relations_presentes()
     paires = _auto_paires(presentes)
+    paires += _paires_vie(presentes)
     for rmin, rmax, etiq in PAIRES_SEMANTIQUES:
         if rmin in presentes and rmax in presentes:
             paires.append((rmin, rmax, etiq))

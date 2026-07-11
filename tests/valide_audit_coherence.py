@@ -60,8 +60,13 @@ with tempfile.TemporaryDirectory() as tmp:
         ("H", "-99"),
     ])
     # Couple SÉMANTIQUE naissance/décès (déclaré) : une violation dure.
-    _ecris(tmp, "annee_naissance_personne", [("Zoé", "1970"), ("Yann", "2005")])
+    _ecris(tmp, "annee_naissance_personne", [("Zoé", "1970"), ("Yann", "2005"), ("Iris", "1600")])
     _ecris(tmp, "annee_deces_personne", [("Zoé", "1990"), ("Yann", "1405")])   # Yann : né après sa mort -> viol.
+    # Couple VIE↔ACTIVITÉ (auto-généré) : mandat qui débute AVANT la naissance -> violation dure.
+    _ecris(tmp, "annee_debut_mandat_ministre", [
+        ("Zoé", "1995"),    # 1970 <= 1995 -> COHÉRENT (mandat après naissance)
+        ("Iris", "1590"),   # 1600 >  1590 -> VIOLATION (ministre avant de naître)
+    ])
 
     os.environ["LECTEUR_DATASETS_DIR"] = tmp
     # Import APRÈS avoir posé l'env (le module fige _LECT à l'import).
@@ -80,16 +85,18 @@ with tempfile.TemporaryDirectory() as tmp:
     check("D" not in ents_viol, "valeur non-int (D) IGNORÉE, jamais violation (soundness)")
     check("E" not in ents_viol and "F" not in ents_viol, "entités non partagées (E, F) ignorées")
 
-    # -- appariage : la paire auto ET la paire sémantique sont découvertes --
+    # -- appariage : les trois modes sont découverts (auto début/fin, vie↔activité, sémantique) --
     paires = {(a, b) for a, b, _ in AC.paires_disponibles()}
     check(("annee_debut_test", "annee_fin_test") in paires, "paire AUTO début/fin découverte par le nom")
     check(("annee_naissance_personne", "annee_deces_personne") in paires, "paire SÉMANTIQUE déclarée découverte")
+    check(("annee_naissance_personne", "annee_debut_mandat_ministre") in paires,
+          "paire VIE↔ACTIVITÉ auto-générée (naissance ≤ début de mandat)")
 
     # -- audit global : agrégation exacte --
     g = AC.audit(details=True)
-    check(g["paires"] == 2, f"2 paires disponibles (obtenu {g['paires']})")
-    check(g["violations"] == 3, f"3 violations totales (B, H, Yann) (obtenu {g['violations']})")
-    check(g["paires_en_conflit"] == 2, "les 2 paires sont en conflit")
+    check(g["paires"] == 3, f"3 paires disponibles (obtenu {g['paires']})")
+    check(g["violations"] == 4, f"4 violations totales (B, H, Yann, Iris) (obtenu {g['violations']})")
+    check(g["paires_en_conflit"] == 3, "les 3 paires sont en conflit")
     check(g["top"][0][3] >= g["top"][1][3], "top trié par nombre de violations décroissant")
     somme = sum(t[3] for t in g["top"])
     check(somme == g["violations"], "somme des violations par paire == total (aucune perdue/doublée)")
@@ -99,6 +106,11 @@ with tempfile.TemporaryDirectory() as tmp:
     rn = AC.audite_paire("annee_naissance_personne", "annee_deces_personne")
     check(rn["violations"] == 1 and rn["exemples"][0][0] == "Yann",
           "sens min/max correct : Yann (2005>1405) détecté, Zoé (1970<1990) non")
+
+    # -- VIE↔ACTIVITÉ : Iris (mandat 1590 avant naissance 1600) détectée, Zoé non --
+    rv = AC.audite_paire("annee_naissance_personne", "annee_debut_mandat_ministre")
+    check(rv["violations"] == 1 and rv["exemples"][0][0] == "Iris",
+          "vie↔activité : Iris (naissance 1600 > début mandat 1590) détectée, Zoé (1970<1995) non")
 
 # ─────────────────────────── 1bis) SOUNDNESS du type ACYCLIQUE sur fixture synthétique ───────────────────────────
 with tempfile.TemporaryDirectory() as tmp:
