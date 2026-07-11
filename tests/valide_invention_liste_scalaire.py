@@ -93,11 +93,13 @@ v = IM.examine_cible_multi("n_premiers_spec_faible",
 check("spec faible (listes triées) : AMBIGU honnête avec sonde discriminante",
       v.statut == IM.AMBIGU and v.sonde is not None)
 
-# HONNÊTETÉ BRIQUE_MANQUANTE : cible HORS vocabulaire (somme des k plus grands).
-_ref_skg = lambda x, k: sum(sorted(x)[-k:])
-v = IM.examine_cible_multi("somme_k_plus_grands",
-                           [((x, k), _ref_skg(x, k)) for x, k in HB],
-                           [((x, k), _ref_skg(x, k)) for x, k in HB_HELD])
+# HONNÊTETÉ BRIQUE_MANQUANTE : cible HORS vocabulaire — nb d'INVERSIONS parmi les k premiers (principe
+# toutes-paires O(n²), hors de la forme). NB : somme_k_plus_grands, l'ancien témoin, a été COMBLÉ par
+# l'atome AGG∘tranche (la frontière se déplace) — cf. valide_invention_agg_tranche.
+_ref_inv = lambda x, k: sum(1 for i in range(min(k, len(x))) for j in range(i + 1, min(k, len(x))) if x[i] > x[j])
+v = IM.examine_cible_multi("nb_inversions_k_premiers",
+                           [((x, k), _ref_inv(x, k)) for x, k in HB],
+                           [((x, k), _ref_inv(x, k)) for x, k in HB_HELD])
 check("cible hors vocabulaire : BRIQUE_MANQUANTE honnête", v.statut == IM.BRIQUE_MANQUANTE)
 
 # DÉTERMINISME.

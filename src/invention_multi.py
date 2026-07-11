@@ -75,6 +75,13 @@ _LS_OPS = [
     "[_e for _e in {L} if _e != {K}]",
     "[_e + {K} for _e in {L}]", "[_e * {K} for _e in {L}]",
     "[{L}[_i:_i + {K}] for _i in range(0, len({L}), {K})]",
+    # AGG∘TRANCHE (frontière MESURÉE après le 1er lot : somme_k_plus_grands & co = brique_manquante) — la
+    # classe canonique top-k (sum/max/min d'une tranche brute ou triée). EXCLUES les identités déguisées
+    # max(sorted[-k:]) ≡ max et min(sorted[:k]) ≡ min (k-invariantes, jamais une capacité neuve — même esprit
+    # que le filtre identité de composition_filtree).
+    "sum({L}[:{K}])", "sum({L}[{K}:])", "sum(sorted({L})[:{K}])", "sum(sorted({L})[-{K}:])",
+    "max({L}[:{K}])", "max({L}[{K}:])", "max(sorted({L})[:{K}])",
+    "min({L}[:{K}])", "min({L}[{K}:])", "min(sorted({L})[-{K}:])",
 ]
 
 
