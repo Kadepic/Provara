@@ -296,6 +296,27 @@ class MoteurAutonome(MoteurOuvert):
         # profondeur d'imbrication (catamorphisme distinct : 1 + max des profondeurs des sous-listes)
         "(lambda _g: _g(_g, x))(lambda _g, _l: 1 + max((_g(_g, _e) for _e in _l if isinstance(_e, list)), default=0))",
     ]
+    # SORTIES STRUCTURÉES (palier structurel, atome 2) — frontière MESURÉE (sonde 2026-07-12) : partition par
+    # prédicat, groupby par clé CALCULÉE et pivot liste-de-paires -> dict restaient brique_manquante
+    # (paquets_de_2, lui, était déjà couvert). Ce sont les opérateurs de PREMIÈRE CLASSE de la littérature
+    # table-manipulation (GroupBy/Pivot/Partition — synthèse SQL par exemples, migration hiérarchique->relationnel),
+    # pas de la recombinaison libre. Famille dirigée BORNÉE, sémantique exacte ; sorties DISTINCTIVES
+    # (liste-de-2-listes, dict-de-listes, dict) -> ne matchent jamais une cible plate par coïncidence ;
+    # groupby = sémantique clés OBSERVÉES (celles présentes dans les données, le canon du groupby).
+    _SORTIE_STRUCTUREE = [
+        # partition par prédicat -> [[ceux qui satisfont], [les autres]] (les 2 ordres : le spec tranche)
+        "[[_e for _e in x if _e % 2 == 0], [_e for _e in x if _e % 2 == 1]]",
+        "[[_e for _e in x if _e % 2 == 1], [_e for _e in x if _e % 2 == 0]]",
+        "[[_e for _e in x if _e >= 0], [_e for _e in x if _e < 0]]",
+        "[[_e for _e in x if _e < 0], [_e for _e in x if _e >= 0]]",
+        # groupby par clé calculée -> {clé observée: [éléments]}
+        "{_k: [_e for _e in x if _e % 2 == _k] for _k in sorted({_v % 2 for _v in x})}",
+        "{_k: [_e for _e in x if _e % 3 == _k] for _k in sorted({_v % 3 for _v in x})}",
+        "{_k: [_e for _e in x if len(_e) == _k] for _k in sorted({len(_v) for _v in x})}",   # par longueur (mots)
+        # pivot liste-de-paires -> dict (direct et inversé ; une paire ASYMÉTRIQUE les discrimine)
+        "{_p[0]: _p[1] for _p in x}",
+        "{_p[1]: _p[0] for _p in x}",
+    ]
     # CHIFFRES d'un entier ; PRÉDICAT palindrome ; ARITHMÉTIQUE à 2 champs ([fait, total] -> %).
     _DIVERS_REEL = [
         "sum(int(_d) for _d in str(x))",                           # somme des chiffres
@@ -363,7 +384,7 @@ class MoteurAutonome(MoteurOuvert):
                    + [f"x[:{k}]" for k in (2, 3)] + [f"x[{k}:]" for k in (2, 3)] + ["x[1:-1]"]
                    + self._FOLDS + self._FENETRE + self._FILTRE_LISTE + self._INDEX
                    + self._ELEM_AGG + self._SORT_INDEX + self._MAP_COND + self._SCAN + self._DEDUP_WINDOW
-                   + self._NOMBRES_LISTE + self._GROUPBY + self._EXPANSION + self._ARBRE
+                   + self._NOMBRES_LISTE + self._GROUPBY + self._EXPANSION + self._ARBRE + self._SORTIE_STRUCTUREE
                    + self._DECOUPE + self._CONTROLE + self._BASE + self._DIVERS_REEL + self._STR)
         existants = {e for e, _, _ in self.atomes}
         ajoutes = 0
