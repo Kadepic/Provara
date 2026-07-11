@@ -2257,6 +2257,143 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  QUINZIÈME DOMAINE : capter l'énergie du vent (éolienne). Nouvelle loi dure au juge (L12) : la limite de BETZ —
+#  un rotor ouvert extrait au plus 16/27 (≈ 59,3 %) de la puissance cinétique du vent ½ρAv³ qui traverse son
+#  disque (on ne peut pas arrêter TOUT l'air : il doit continuer à s'écouler). REFRAMING machine : le mur n'est
+#  pas la taille des pales mais 59,3 % ; la puissance disponible croît LINÉAIREMENT avec l'aire balayée A et au
+#  CUBE de la vitesse du vent v. Leviers : agrandir l'aire balayée (A) ; choisir un site plus venté (v³, d'où
+#  l'offshore et la hauteur) ; approcher Betz (profils, vitesse spécifique) ; caréner (diffuseur : dépasse Betz par
+#  rapport à l'aire du rotor, pas à l'aire frontale totale).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_VENT = "energie_eolienne"
+_ALIAS_VENT = {
+    "capter l energie du vent", "produire de l electricite eolienne", "exploiter le vent",
+    "eolienne", "convertir l energie du vent", "recuperer l energie du vent",
+}
+
+# ── « Canaux » : les leviers de la puissance éolienne captée ─────────────────────────────────────────────────────
+_CANAUX_VENT = [
+    Canal("aire balayee", "vent", "AGRANDIR l'aire balayée A : la puissance disponible ½ρAv³ croît linéairement avec A",
+          True, "doubler le diamètre quadruple l'aire donc la puissance ; c'est le levier des rotors géants "
+                "offshore — mais la fraction extractible reste plafonnée à 16/27"),
+    Canal("vitesse du site", "vent", "CHOISIR un site plus venté (la puissance croît au CUBE de v)",
+          True, "+26 % de vent = ×2 de puissance (v³) → l'offshore et la hauteur de mât (le vent forcit avec "
+                "l'altitude) priment sur presque tout le reste ; le site est la variable reine"),
+    Canal("approche de Betz", "vent", "APPROCHER la limite de Betz : profils de pale et vitesse spécifique optimaux",
+          True, "un bon tripale atteint Cp ~0,45–0,50 sur 0,593 possible → il reste peu à grappiller sur le "
+                "coefficient ; l'essentiel des gains vient de A et v, pas du raffinement aérodynamique"),
+    Canal("carenage", "vent", "CARÉNER (diffuseur) : concentrer le flux pour dépasser Betz par rapport à l'aire du ROTOR",
+          True, "un diffuseur aspire plus d'air dans le rotor → Cp>0,593 par aire de rotor (mais pas par aire "
+                "frontale totale) ; poids et coût du carénage → surtout pour le petit éolien — le levier « concentrer le flux »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Betz (type `eolienne`, Cp ≤ 16/27 ; rotor ouvert) ──────────
+_PRINCIPES_VENT = [
+    _P("éolienne tripale à axe horizontal (référence)",
+       "capter le vent : rotor tripale rapide à axe horizontal face au vent",
+       {"type": "eolienne", "coefficient_puissance": 0.45}, False, True,
+       "—", "mature",
+       0.65, "la référence dominante : Cp ~0,45 sur 0,593 possible → déjà proche du mur de Betz ; les gains "
+             "viennent désormais de la taille et du site, pas du coefficient — la référence à comprendre"),
+    _P("grand rotor offshore",
+       "capter le vent : rotor de très grand diamètre en mer",
+       {"type": "eolienne", "coefficient_puissance": 0.48}, False, True,
+       "—", "mature",
+       0.6, "l'aire balayée (∝ D²) et un vent marin fort et régulier maximisent ½ρAv³ ; fondations et maintenance "
+            "en mer coûteuses — le levier « aire × site » incarné"),
+    _P("site très venté / mât haut (v³)",
+       "capter le vent : implanter là où le vent est fort et monter le mât (le vent forcit avec l'altitude)",
+       {"type": "eolienne", "coefficient_puissance": 0.46}, False, True,
+       "—", "mature",
+       0.6, "la puissance croît au CUBE de v : +26 % de vent double la production → le site et la hauteur priment ; "
+            "contraintes de raccordement et d'acceptation — le levier « vitesse » (le plus rentable)"),
+    _P("profil de pale optimisé (approcher Betz)",
+       "capter le vent : profils et vitesse spécifique optimaux pour approcher le coefficient de Betz",
+       {"type": "eolienne", "coefficient_puissance": 0.50}, True, True,
+       "—", "mature",
+       0.5, "raffiner l'aérodynamique gagne quelques points vers 0,593 (plafond) → rendement marginal décroissant ; "
+            "bruit et érosion de bord d'attaque à gérer — le levier « approcher Betz », bientôt épuisé"),
+    _P("éolienne carénée à diffuseur",
+       "capter le vent : un carénage/diffuseur concentre le flux et augmente la puissance par aire de rotor",
+       {"type": "eolienne", "coefficient_puissance": 0.7, "avec_diffuseur": True}, False, True,
+       "—", "recherche (petit éolien)",
+       0.4, "le diffuseur aspire plus d'air → dépasse Betz PAR AIRE DE ROTOR (pas par aire frontale totale) ; poids "
+            "et coût du carénage le réservent au petit éolien — le levier « concentrer le flux », sans violer Betz"),
+    _P("éolienne à axe vertical (VAWT)",
+       "capter le vent : rotor à axe vertical, omnidirectionnel, générateur au sol",
+       {"type": "eolienne", "coefficient_puissance": 0.35}, False, True,
+       "—", "mature (niche)",
+       0.45, "capte le vent de toute direction et met le générateur au sol (maintenance) ; Cp plus bas que le "
+             "tripale → densité de puissance moindre, mais robuste et compact (urbain, offshore flottant dense)"),
+    _P("éolien aéroporté (cerf-volant / aile captive)",
+       "capter le vent : une aile captive vole en altitude où le vent est plus fort et régulier",
+       {"type": "eolienne", "coefficient_puissance": 0.40}, True, True,
+       "—", "recherche",
+       0.4, "atteint des altitudes où le vent est bien plus fort (v³) avec très peu de matière (pas de mât ni de "
+            "grand rotor) ; pilotage automatique et fiabilité à prouver — le levier « monter chercher le vent »"),
+    _P("multi-rotor sur un même mât",
+       "capter le vent : plusieurs rotors moyens sur une structure partagée plutôt qu'un seul géant",
+       {"type": "eolienne", "coefficient_puissance": 0.44}, False, True,
+       "—", "recherche",
+       0.4, "des rotors plus petits, moins chers et interchangeables couvrent une grande aire totale ; complexité "
+            "structurelle et sillages entre rotors — variante du levier « aire »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("éolienne « à Cp 0,7 » (rotor ouvert)",
+       "capter le vent : rotor ouvert revendiquant un coefficient de puissance de 0,7",
+       {"type": "eolienne", "coefficient_puissance": 0.7}, False, True,
+       "—", "revendication",
+       0.3, "0,7 > limite de Betz (16/27 ≈ 0,593) pour un rotor ouvert — on ne peut extraire plus de 16/27 de la "
+            "puissance du vent ; à réfuter par la limite de Betz"),
+    _P("éolienne « 50 kW sur 100 m² à 10 m/s »",
+       "capter le vent : extraire 50 kW d'un vent de 10 m/s sur une aire balayée de 100 m²",
+       {"type": "eolienne", "puissance_W": 50000, "aire_balayee_m2": 100, "vitesse_vent_m_s": 10}, False, True,
+       "—", "revendication",
+       0.25, "la puissance du vent ici est ~61 kW (½ρAv³) ; Betz la plafonne à ~36 kW → 50 kW est impossible"),
+]
+
+_OBJECTIF_VENT = ("Le but réel n'est pas de « freiner le vent » au maximum (arrêter tout l'air annulerait le débit) "
+                  "mais d'extraire le plus de puissance possible sous la limite de BETZ : au plus 16/27 (≈ 59,3 %) "
+                  "de la puissance du vent ½ρAv³ traversant le disque. La puissance disponible croît LINÉAIREMENT "
+                  "avec l'aire balayée A et au CUBE de la vitesse v. Leviers : agrandir A (rotors géants) ; choisir "
+                  "un site plus venté et monter le mât (v³ → offshore, altitude) ; approcher Betz (profils, vitesse "
+                  "spécifique) ; caréner (diffuseur, qui dépasse Betz par aire de rotor mais pas par aire frontale "
+                  "totale). Chaque principe reste jugé par la limite de Betz.")
+_LOI_VENT = ("limite de Betz : une éolienne à rotor ouvert extrait au plus 16/27 (≈ 59,3 %) de la puissance du vent "
+             "½ρAv³ traversant son disque ; la puissance disponible est linéaire en aire balayée A et au cube de la "
+             "vitesse v ; gains réels = agrandir A, viser un site plus venté (v³), approcher Betz, caréner (par aire "
+             "de rotor)")
+
+# La nature capte le vent par la traînée (pissenlit), la flexibilité (arbre), le cisaillement (oiseau), l'ondulation (graminée).
+_STRATEGIES_NATURE_VENT = [
+    _Nature("akène de pissenlit (vortex de traînée)",
+            ["une aigrette poreuse crée un vortex stable qui capte la traînée du vent", "portance de traînée avec très peu de matière"],
+            "capter la force du vent avec un minimum de matière poreuse — l'efficacité par gramme"),
+    _Nature("arbre flexible (reconfiguration sous le vent)",
+            ["ploie et réoriente ses branches pour réduire la charge", "survit aux rafales en se déformant"],
+            "PLOIER pour réduire la charge et survivre aux extrêmes — la résilience structurelle face au vent"),
+    _Nature("oiseau en vol dynamique (cisaillement de vent)",
+            ["extrait l'énergie du GRADIENT de vitesse du vent en altitude", "parcourt de longues distances sans battre"],
+            "récolter l'énergie du CISAILLEMENT de vent en hauteur — le levier « monter chercher le vent »"),
+    _Nature("graminée / épillet (ondulation dissipative)",
+            ["ondule pour dissiper l'énergie du vent sans casser", "tige élancée à faible traînée"],
+            "onduler pour encaisser le vent sans rompre — capter/résister par la souplesse"),
+]
+
+enregistre(Domaine(
+    nom=_VENT,
+    aliases=frozenset(_ALIAS_VENT),
+    objectif=_OBJECTIF_VENT,
+    canaux=_CANAUX_VENT,
+    principes=_PRINCIPES_VENT,
+    strategies=_STRATEGIES_NATURE_VENT,
+    loi=_LOI_VENT,
+    extras={"limite_betz": "Cp ≤ 16/27 ≈ 0,593 (rotor ouvert)",
+            "note": "puissance disponible ½ρAv³ : linéaire en aire A, au cube de la vitesse v ; le carénage dépasse "
+                    "Betz par aire de rotor, pas par aire frontale totale"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

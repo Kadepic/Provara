@@ -1,5 +1,28 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 15e domaine « capter l'énergie du vent » + loi L12 (limite de Betz)
+
+Énergie éolienne. Nouvelle loi dure au juge (`L12`) : la limite de BETZ — un rotor ouvert extrait au plus 16/27
+(≈ 59,3 %) de la puissance du vent ½ρAv³ traversant son disque (on ne peut arrêter tout l'air). CONSERVATEUR
+(FAUX=0) : une turbine CARÉNÉE / à diffuseur dépasse Betz PAR RAPPORT À L'AIRE DU ROTOR (le diffuseur aspire plus
+d'air), pas par rapport à l'aire frontale totale → on ne réfute que pour un rotor OUVERT (`avec_diffuseur` non
+déclaré). Deux voies de réfutation : coefficient de puissance Cp > 16/27, ou puissance extraite > 16/27·½ρAv³.
+Gate `valide_coherence_physique` **185 → 198/198**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (Cp 0,7 rotor ouvert, « 50 kW sur
+100 m² à 10 m/s »). Reframing : le mur n'est pas la taille des pales mais 59,3 % ; la puissance disponible est
+LINÉAIRE en aire balayée A et au CUBE de la vitesse v. Leviers : agrandir A (rotors géants), viser un site plus
+venté et monter le mât (v³ → offshore, altitude), approcher Betz (profils), caréner (par aire de rotor). Couvre
+tripale, grand rotor offshore, site venté, profil optimisé, carénée à diffuseur, axe vertical (VAWT), éolien
+aéroporté, multi-rotor. 4 stratégies naturelles propres (pissenlit = vortex de traînée, arbre flexible =
+reconfiguration, oiseau = vol dynamique/cisaillement, graminée = ondulation dissipative). Gate `valide_besoin`
+**289 → 306/306** ; les 14 domaines précédents intacts.
+
+**JALON : 15 DOMAINES D'INVENTION, 12 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol, L11 diffraction d'Abbe,
+L12 limite de Betz).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 14e domaine « voir plus petit » + loi L11 (diffraction d'Abbe)
 
 Résolution optique / voir plus petit. Nouvelle loi dure au juge (`L11`), deux volets : (1) l'ouverture numérique

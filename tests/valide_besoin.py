@@ -674,12 +674,53 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "tension_reversible_V" in B.decompose("produire de l hydrogene"),
       "les 13 domaines précédents inchangés après l'ajout de l'optique (isolation)")
 
+# ── 21) QUINZIÈME DOMAINE : capter l'énergie du vent (nouvelle loi L12 = limite de Betz, Cp ≤ 16/27) ──
+dve = B.decompose("capter l energie du vent")
+check(dve["statut"] == "decompose", "besoin énergie éolienne connu -> decompose")
+check("betz" in dve["objectif_reel"].lower() and "vent" in dve["objectif_reel"].lower(),
+      "objectif réel éolien = limite de Betz sur la puissance du vent")
+check("limite_betz" in dve, "extras propres : la limite de Betz")
+vent_canaux = {c.canal for c in dve["canaux"]}
+check(vent_canaux == {"aire balayee", "vitesse du site", "approche de Betz", "carenage"},
+      f"4 canaux de l'éolien ({vent_canaux})")
+prve = B.principes("capter l energie du vent")
+pve = {e["nom"]: e for e in prve["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : Cp et puissance au-dessus de Betz (rotor ouvert)
+cp07 = pve["éolienne « à Cp 0,7 » (rotor ouvert)"]
+check(cp07["atome"].statut == A.REFUTE, "Cp 0,7 rotor ouvert > Betz -> RÉFUTÉ")
+check(A.est_refute(cp07["atome"].contenu), "contenu réfuté (Cp 0,7) dans la garde")
+p50 = pve["éolienne « 50 kW sur 100 m² à 10 m/s »"]
+check(p50["atome"].statut == A.REFUTE, "50 kW > Betz ~36 kW -> RÉFUTÉ")
+# procédés réels (dont la carénée à diffuseur, exemptée) -> SUPPOSITIONS
+for nom in ("éolienne tripale à axe horizontal (référence)", "éolienne carénée à diffuseur",
+            "éolien aéroporté (cerf-volant / aile captive)"):
+    e = pve[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prve["liste"]), "aucun principe éolien promu en FAIT")
+check("candidat pour energie_eolienne" in pve["éolienne tripale à axe horizontal (référence)"]["atome"].portee.condition,
+      "portée des principes éoliens nommant energie_eolienne")
+# la loi L12 : Cp au-dessus de Betz réfuté, carénée (diffuseur) cohérente
+st_ve, _, loi_ve = COH.juge_dispositif({"type": "eolienne", "coefficient_puissance": 0.7})
+check(st_ve == COH.VIOLE and loi_ve == COH.L12, "juge : Cp 0,7 rotor ouvert -> VIOLE via L12")
+check(COH.juge_dispositif({"type": "eolienne", "coefficient_puissance": 0.7, "avec_diffuseur": True})[0]
+      == COH.COHERENT_BORNE, "carénée à diffuseur Cp 0,7 -> cohérent (par aire de rotor), pas de faux positif")
+# stratégies naturelles propres (pissenlit, arbre flexible)
+natve = B.strategies_naturelles("capter l energie du vent")
+check(len(natve) >= 4 and any("pissenlit" in s["exemple"].lower() for s in natve), "stratégies éoliennes propres (pissenlit)")
+check(not any("colibri" in s["exemple"] for s in natve) and not any("aigle" in s["exemple"] for s in natve),
+      "pas de fuite des stratégies vol/optique vers l'éolien")
+# les QUATORZE domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "limite_abbe" in B.decompose("voir plus petit")
+      and "puissance_induite_ideale" in B.decompose("vol stationnaire"),
+      "les 14 domaines précédents inchangés après l'ajout de l'éolien (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
-                              "sustentation", "resolution_optique"],
-      "quatorze domaines modélisés, dans l'ordre d'enregistrement")
+                              "sustentation", "resolution_optique", "energie_eolienne"],
+      "quinze domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
