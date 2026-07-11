@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 25e domaine « trier des données » + loi L22 (borne du tri par comparaison)
+
+Trier / ordonner des données. Nouvelle loi dure au juge (`L22`) : la BORNE DU TRI PAR COMPARAISON — trier n
+éléments arbitraires par comparaisons exige au moins log₂(n!) ≈ n·log₂(n) comparaisons (arbre de décision qui doit
+distinguer les n! ordres). CONSERVATEUR (FAUX=0), deux exceptions par flags : un tri NON comparatif (radix,
+comptage, `tri_par_comparaison` False) exploite la structure des clés en O(n) ; un tri ADAPTATIF sur entrée
+structurée (`entree_arbitraire` non déclaré) exploite l'ordre préexistant → on ne réfute que pour un tri par
+comparaison d'une entrée ARBITRAIRE. Gate `valide_coherence_physique` **307 → 322/322**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (comparaison 1e6 en 1e6, 8 éléments
+en 10). Reframing : on ne bat pas n·log n en COMPARANT ; sortir du modèle — exploiter la structure des clés (radix,
+comptage), ne trier que le nécessaire (top-k), l'ordre préexistant (Timsort), paralléliser, tri externe. Couvre
+fusion/tas, quicksort, radix, comptage, tri externe, tri parallèle (GPU), top-k, adaptatif. 4 stratégies naturelles
+propres (rivière = tri granulométrique, sédimentation = par densité, hiérarchie = ordre émergent, croissance
+différentielle = top-k). Gate `valide_besoin` **459 → 476/476** ; les 24 domaines précédents intacts.
+
+**JALON : 25 DOMAINES D'INVENTION, 22 LOIS PHYSIQUES DANS LE JUGE** (… L21 Nyquist-Shannon, L22 borne du tri par
+comparaison).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 24e domaine « numériser / échantillonner » + loi L21 (Nyquist-Shannon)
 
 Numériser / échantillonner un signal. Nouvelle loi dure au juge (`L21`) : le théorème d'échantillonnage de

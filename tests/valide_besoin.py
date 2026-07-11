@@ -1097,6 +1097,49 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "bruit_grenaille" in B.decompose("detecter un signal faible"),
       "les 23 domaines précédents inchangés après l'ajout de la numérisation (isolation)")
 
+# ── 31) VINGT-CINQUIÈME DOMAINE : trier des données (nouvelle loi L22 = borne du tri par comparaison, ≥ log₂(n!)) ──
+dtr = B.decompose("trier des donnees")
+check(dtr["statut"] == "decompose", "besoin tri connu -> decompose")
+check("comparaison" in dtr["objectif_reel"].lower() and "log" in dtr["objectif_reel"].lower(),
+      "objectif réel tri = borne log₂(n!) du tri par comparaison")
+check("borne_tri" in dtr, "extras propres : la borne du tri")
+tr_canaux = {c.canal for c in dtr["canaux"]}
+check(tr_canaux == {"algorithme optimal", "structure des cles", "tri partiel", "ordre preexistant"},
+      f"4 canaux du tri ({tr_canaux})")
+prtr = B.principes("trier des donnees")
+ptr = {e["nom"]: e for e in prtr["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : tri par comparaison arbitraire sous log₂(n!)
+tr1m = ptr["tri par comparaison « d'un million d'éléments en un million de comparaisons »"]
+check(tr1m["atome"].statut == A.REFUTE, "1e6 comparaisons < log2(1e6!) -> RÉFUTÉ")
+check(A.est_refute(tr1m["atome"].contenu), "contenu réfuté (1e6 comparaisons) dans la garde")
+tr8 = ptr["tri par comparaison « de 8 éléments en 10 comparaisons »"]
+check(tr8["atome"].statut == A.REFUTE, "8 éléments en 10 comparaisons -> RÉFUTÉ")
+# procédés réels (dont radix non comparatif et adaptatif, exemptés) -> SUPPOSITIONS
+for nom in ("tri par fusion / par tas (n·log n optimal)", "tri par base (radix, non comparatif)",
+            "tri adaptatif (Timsort, exploite l'ordre préexistant)"):
+    e = ptr[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prtr["liste"]), "aucun principe de tri promu en FAIT")
+check("candidat pour tri_donnees" in ptr["tri par fusion / par tas (n·log n optimal)"]["atome"].portee.condition,
+      "portée des principes de tri nommant tri_donnees")
+# la loi L22 : tri par comparaison arbitraire sous la borne réfuté, radix cohérent
+st_tr, _, loi_tr = COH.juge_dispositif({"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True,
+                                        "nb_elements": 1000000, "nb_comparaisons": 1000000})
+check(st_tr == COH.VIOLE and loi_tr == COH.L22, "juge : 1e6 comparaisons arbitraire -> VIOLE via L22")
+check(COH.juge_dispositif({"type": "tri", "tri_par_comparaison": False, "nb_elements": 1000000,
+                           "nb_comparaisons": 1000000})[0] == COH.COHERENT_BORNE,
+      "radix (non comparatif) O(n) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (rivière, sédimentation)
+nattr = B.strategies_naturelles("trier des donnees")
+check(len(nattr) >= 4 and any("rivière" in s["exemple"].lower() for s in nattr), "stratégies tri propres (rivière)")
+check(not any("fovéa" in s["exemple"] for s in nattr) and not any("cochlée" in s["exemple"] for s in nattr),
+      "pas de fuite des stratégies numérisation/amplification vers le tri")
+# les VINGT-QUATRE domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "nyquist" in B.decompose("numeriser un signal")
+      and "facteur_de_bruit_min" in B.decompose("amplifier un signal"),
+      "les 24 domaines précédents inchangés après l'ajout du tri (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
@@ -1104,8 +1147,8 @@ check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
                               "production_alimentaire", "compression_information", "isolation_thermique",
                               "confidentialite_information", "vol_croisiere", "detection_signal",
-                              "amplification_signal", "numerisation_signal"],
-      "vingt-quatre domaines modélisés, dans l'ordre d'enregistrement")
+                              "amplification_signal", "numerisation_signal", "tri_donnees"],
+      "vingt-cinq domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

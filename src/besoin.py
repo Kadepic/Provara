@@ -3647,6 +3647,146 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-CINQUIÈME DOMAINE : trier / ordonner des données. Nouvelle loi dure au juge (L22) : la BORNE DU TRI PAR
+#  COMPARAISON — trier n éléments arbitraires par comparaisons exige au moins log₂(n!) ≈ n·log₂(n) comparaisons
+#  (arbre de décision qui doit distinguer les n! ordres). REFRAMING machine : on ne bat pas n·log n en COMPARANT ;
+#  pour aller plus vite, il faut sortir du modèle de comparaison. Leviers : exploiter la STRUCTURE des clés (tri
+#  non comparatif — radix, comptage — en O(n)) ; ne trier que le NÉCESSAIRE (top-k, tri partiel) ; exploiter l'ordre
+#  PRÉEXISTANT (tri adaptatif type Timsort) ; PARALLÉLISER (GPU, réseaux de tri) ou trier en EXTERNE (données > RAM).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_TRI = "tri_donnees"
+_ALIAS_TRI = {
+    "trier des donnees", "ordonner des elements", "classer des donnees", "trier une liste",
+    "ranger des elements", "mettre en ordre",
+}
+
+# ── « Canaux » : les leviers pour trier vite ─────────────────────────────────────────────────────────────────────
+_CANAUX_TRI = [
+    Canal("algorithme optimal", "information", "ATTEINDRE la borne n·log n avec un tri par comparaison optimal (fusion, tas)",
+          True, "log₂(n!) ≈ n·log₂(n) est le plancher du tri par comparaison → fusion et tas l'atteignent dans le "
+                "pire cas ; on ne fait pas mieux EN COMPARANT — la référence à ne pas espérer battre"),
+    Canal("structure des cles", "information", "SORTIR du modèle de comparaison : tri non comparatif (radix, comptage) en O(n)",
+          True, "si les clés sont bornées ou décomposables (entiers, chaînes), le radix/comptage les range par "
+                "leur STRUCTURE sans les comparer deux à deux → O(n), sous la borne n·log n — le levier « exploiter les clés »"),
+    Canal("tri partiel", "information", "NE TRIER que le nécessaire : top-k, sélection, tri partiel",
+          True, "si l'on ne veut que les k premiers (ou la médiane), la sélection le fait en O(n) sans trier le "
+                "reste → ne pas distinguer les n! ordres qu'on n'utilisera pas ; le levier « moins de travail »"),
+    Canal("ordre preexistant", "information", "EXPLOITER l'ordre PRÉEXISTANT (tri adaptatif) et PARALLÉLISER",
+          True, "sur une entrée presque triée, un tri adaptatif (Timsort) approche O(n) ; et la parallélisation "
+                "(réseaux de tri, GPU) répartit le travail → gains réels hors du pire cas arbitraire"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la borne du tri par comparaison (type `tri`, ≥ log₂(n!) si arbitraire) ──
+_PRINCIPES_TRI = [
+    _P("tri par fusion / par tas (n·log n optimal)",
+       "trier : tri par comparaison optimal atteignant n·log n dans le pire cas",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+        "nb_comparaisons": 20000000}, True, True,
+       "—", "mature",
+       0.65, "atteint la borne log₂(n!) dans le pire cas (fusion stable, tas en place) → l'optimum du tri par "
+             "comparaison ; on ne fait pas mieux en comparant — la référence"),
+    _P("tri rapide (quicksort)",
+       "trier : partitionnement récursif, très rapide en moyenne et en place",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+        "nb_comparaisons": 25000000}, True, True,
+       "—", "mature",
+       0.55, "n·log n en moyenne, en place et très efficace en cache → le tri généraliste par défaut ; pire cas "
+             "quadratique à protéger (pivot randomisé/introsort) — proche de la borne en pratique"),
+    _P("tri par base (radix, non comparatif)",
+       "trier : ranger les clés chiffre par chiffre sans les comparer",
+       {"type": "tri", "tri_par_comparaison": False, "nb_elements": 1000000, "nb_comparaisons": 3000000}, True, True,
+       "—", "mature",
+       0.55, "REFRAMING : en exploitant la STRUCTURE des clés (entiers, chaînes), range en O(n·longueur) → SOUS la "
+             "borne n·log n ; exige des clés décomposables — le levier « sortir du modèle de comparaison »"),
+    _P("tri par comptage (counting sort)",
+       "trier : compter les occurrences de chaque clé bornée puis reconstruire",
+       {"type": "tri", "tri_par_comparaison": False, "nb_elements": 1000000, "nb_comparaisons": 2000000}, True, True,
+       "—", "mature",
+       0.5, "O(n + k) pour des clés dans un petit intervalle [0, k] → linéaire, sans aucune comparaison ; mémoire "
+            "∝ k → réservé aux clés bornées — le levier « structure des clés » poussé au maximum"),
+    _P("tri externe (données plus grandes que la mémoire)",
+       "trier : trier des données qui ne tiennent pas en RAM par fusion multi-voies sur disque",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000000,
+        "nb_comparaisons": 30000000000}, True, True,
+       "—", "mature",
+       0.5, "découpe en runs triés puis fusionne en minimisant les entrées/sorties disque → trie des téraoctets ; "
+            "le coût dominant est l'I/O, pas les comparaisons — le levier « échelle »"),
+    _P("tri parallèle (GPU / réseau de tri)",
+       "trier : répartir le tri sur de nombreux cœurs (bitonic sort, sample sort)",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+        "nb_comparaisons": 25000000}, True, True,
+       "—", "mature",
+       0.45, "réduit le TEMPS (pas le nombre total de comparaisons) en les faisant en parallèle → tri massif rapide ; "
+             "réseaux de tri à structure fixe (bitonic) sur GPU — le levier « parallélisme »"),
+    _P("sélection / top-k (tri partiel)",
+       "trier : trouver les k plus grands (ou la médiane) sans trier le reste",
+       {"type": "tri", "tri_par_comparaison": True, "nb_elements": 1000000, "nb_comparaisons": 1000000}, True, True,
+       "—", "mature",
+       0.5, "REFRAMING : ne pas distinguer les n! ordres qu'on n'utilisera pas → quickselect/tas partiel en O(n) "
+            "pour les k premiers ; ne résout pas le tri complet — le levier « ne trier que le nécessaire »"),
+    _P("tri adaptatif (Timsort, exploite l'ordre préexistant)",
+       "trier : détecter les segments déjà ordonnés pour approcher O(n) sur des données presque triées",
+       {"type": "tri", "tri_par_comparaison": True, "nb_elements": 1000000, "nb_comparaisons": 1000000}, True, True,
+       "—", "mature",
+       0.5, "sur une entrée presque triée (fréquent en pratique), exploite les runs existants → bien SOUS n·log n "
+            "(la borne ne vaut que pour une entrée arbitraire) ; Python/Java l'emploient — le levier « ordre préexistant »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("tri par comparaison « d'un million d'éléments en un million de comparaisons »",
+       "trier : tri par comparaison d'un million d'éléments ARBITRAIRES en seulement un million de comparaisons",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 1000000,
+        "nb_comparaisons": 1000000}, True, True,
+       "—", "revendication",
+       0.3, "1 million < log₂(1e6!) ≈ 18,5 millions : un tri par comparaison d'une entrée arbitraire ne peut "
+            "distinguer 1e6! ordres avec si peu — impossible (sauf tri non comparatif) ; à réfuter"),
+    _P("tri par comparaison « de 8 éléments en 10 comparaisons »",
+       "trier : tri par comparaison de 8 éléments arbitraires en 10 comparaisons",
+       {"type": "tri", "tri_par_comparaison": True, "entree_arbitraire": True, "nb_elements": 8,
+        "nb_comparaisons": 10}, True, True,
+       "—", "revendication",
+       0.25, "10 < log₂(8!) ≈ 15,3 : impossible de trier 8 éléments arbitraires par comparaison en 10 — impossible"),
+]
+
+_OBJECTIF_TRI = ("Le but réel n'est pas de « comparer plus vite » mais de sortir du modèle de comparaison quand "
+                 "c'est possible : un tri par comparaison d'une entrée arbitraire exige au moins log₂(n!) ≈ "
+                 "n·log₂(n) comparaisons (il doit distinguer les n! ordres). Leviers : exploiter la STRUCTURE des "
+                 "clés (tri non comparatif — radix, comptage — en O(n)) ; ne trier que le NÉCESSAIRE (top-k, tri "
+                 "partiel) ; exploiter l'ordre PRÉEXISTANT (tri adaptatif) ; PARALLÉLISER ou trier en EXTERNE pour "
+                 "l'échelle. Chaque principe reste jugé par la borne du tri par comparaison.")
+_LOI_TRI = ("borne du tri par comparaison : trier n éléments arbitraires par comparaisons exige ≥ log₂(n!) ≈ "
+            "n·log₂(n) comparaisons ; gains réels = tri non comparatif exploitant la structure des clés (radix, "
+            "comptage, O(n)), tri partiel/top-k, tri adaptatif (ordre préexistant), parallélisme, tri externe")
+
+# La nature ordonne par le courant (rivière), la densité (sédimentation), les interactions (hiérarchie), la vitesse (croissance).
+_STRATEGIES_NATURE_TRI = [
+    _Nature("tri granulométrique en rivière",
+            ["le courant classe les grains par taille et densité", "dépôt ordonné sans comparateur central"],
+            "laisser un champ physique CLASSER par une propriété (taille/densité) — un tri non comparatif naturel"),
+    _Nature("sédimentation / gradient de densité",
+            ["les composants se rangent par densité en colonne", "séparation passive par gravité"],
+            "ranger par une clé physique (densité) sans comparer deux à deux — l'analogue du tri par comptage"),
+    _Nature("hiérarchie de dominance animale",
+            ["un ordre de rang émerge d'interactions locales", "pas de juge central"],
+            "établir un ordre par interactions LOCALES plutôt qu'un tri global — l'ordre émergent"),
+    _Nature("croissance différentielle vers la lumière",
+            ["les pousses les plus rapides prennent la tête", "compétition qui classe par vitesse"],
+            "faire émerger les premiers par compétition (top-k) sans classer tout le reste — le tri partiel"),
+]
+
+enregistre(Domaine(
+    nom=_TRI,
+    aliases=frozenset(_ALIAS_TRI),
+    objectif=_OBJECTIF_TRI,
+    canaux=_CANAUX_TRI,
+    principes=_PRINCIPES_TRI,
+    strategies=_STRATEGIES_NATURE_TRI,
+    loi=_LOI_TRI,
+    extras={"borne_tri": "≥ log₂(n!) ≈ n·log₂(n) comparaisons (entrée arbitraire)",
+            "note": "un tri non comparatif (radix/comptage) exploite la structure des clés → O(n) ; un tri adaptatif "
+                    "exploite l'ordre préexistant ; la borne ne vaut que pour une entrée arbitraire"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
