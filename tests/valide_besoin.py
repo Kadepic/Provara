@@ -842,13 +842,56 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "tsiolkovski" in B.decompose("propulsion spatiale"),
       "les 17 domaines précédents inchangés après l'ajout de la compression (isolation)")
 
+# ── 25) DIX-NEUVIÈME DOMAINE : isoler thermiquement (nouvelle loi L16 = plancher radiatif de Stefan-Boltzmann) ──
+dis = B.decompose("isoler thermiquement")
+check(dis["statut"] == "decompose", "besoin isolation thermique connu -> decompose")
+check("rayonnement" in dis["objectif_reel"].lower() and "stefan" in dis["objectif_reel"].lower(),
+      "objectif réel isolation = plancher radiatif de Stefan-Boltzmann")
+check("plancher_radiatif" in dis, "extras propres : le plancher radiatif")
+iso_canaux = {c.canal for c in dis["canaux"]}
+check(iso_canaux == {"conduction convection", "emissivite", "aire gradient", "masse thermique"},
+      f"4 canaux de l'isolation ({iso_canaux})")
+pris = B.principes("isoler thermiquement")
+pis = {e["nom"]: e for e in pris["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : zéro perte, et émissivité nulle
+zero = pis["isolation « parfaite » (zéro perte à 373 K vers 293 K)"]
+check(zero["atome"].statut == A.REFUTE, "zéro perte < plancher radiatif -> RÉFUTÉ")
+check(A.est_refute(zero["atome"].contenu), "contenu réfuté (zéro perte) dans la garde")
+eps0 = pis["matériau « à émissivité nulle »"]
+check(eps0["atome"].statut == A.REFUTE, "émissivité nulle -> RÉFUTÉ")
+# procédés réels -> SUPPOSITIONS
+for nom in ("bouteille isotherme (vide + argenture)", "isolant multicouche (MLI, spatial)",
+            "panneau isolant sous vide (VIP)"):
+    e = pis[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in pris["liste"]), "aucun principe d'isolation promu en FAIT")
+check("candidat pour isolation_thermique" in pis["bouteille isotherme (vide + argenture)"]["atome"].portee.condition,
+      "portée des principes d'isolation nommant isolation_thermique")
+# la loi L16 : zéro perte réfuté, thermos réel cohérent
+st_is, _, loi_is = COH.juge_dispositif({"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1,
+                                        "t_objet_K": 373, "t_env_K": 293, "puissance_perdue_W": 0})
+check(st_is == COH.VIOLE and loi_is == COH.L16, "juge : zéro perte -> VIOLE via L16")
+check(COH.juge_dispositif({"type": "isolation_thermique", "emissivite": 0.05, "aire_m2": 0.1, "t_objet_K": 363,
+                           "t_env_K": 293, "puissance_perdue_W": 5})[0] == COH.COHERENT_BORNE,
+      "thermos 5 W (> plancher) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (ours polaire, phoque)
+natis = B.strategies_naturelles("isoler thermiquement")
+check(len(natis) >= 4 and any("ours polaire" in s["exemple"].lower() for s in natis), "stratégies isolation propres (ours polaire)")
+check(not any("fractale" in s["exemple"] for s in natis) and not any("phytoplancton" in s["exemple"] for s in natis),
+      "pas de fuite des stratégies compression/alimentaire vers l'isolation")
+# les DIX-HUIT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "borne_entropie" in B.decompose("compresser des donnees")
+      and "rendement_photo_max" in B.decompose("cultiver"),
+      "les 18 domaines précédents inchangés après l'ajout de l'isolation (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
-                              "production_alimentaire", "compression_information"],
-      "dix-huit domaines modélisés, dans l'ordre d'enregistrement")
+                              "production_alimentaire", "compression_information", "isolation_thermique"],
+      "dix-neuf domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

@@ -1,5 +1,25 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 19e domaine « isoler thermiquement » + loi L16 (plancher radiatif Stefan-Boltzmann)
+
+Isoler thermiquement / conserver la chaleur. Nouvelle loi dure au juge (`L16`) : le PLANCHER RADIATIF de
+Stefan-Boltzmann — pas d'isolant parfait. On peut supprimer conduction et convection (vide) mais PAS le
+rayonnement : un objet à T > T_env perd au moins ε·σ·A·(T⁴−T_env⁴), et aucun matériau réel n'a une émissivité
+nulle. CONSERVATEUR (FAUX=0) : on ne réfute qu'une perte déclarée SOUS le plancher radiatif de l'émissivité
+déclarée (conduction/convection ne font qu'ajouter → perte réelle ≥ plancher) ; ε ≤ 0 réfuté d'office. Gate
+`valide_coherence_physique` **235 → 246/246**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (isolation « parfaite » zéro perte,
+matériau « à émissivité nulle »). Reframing : pas de « R infini » ; attaquer CHAQUE voie séparément — vide
+(conduction/convection), basse émissivité/multicouches (rayonnement), géométrie compacte (aire/gradient), masse
+thermique (retarder). Couvre bouteille isotherme, MLI spatial, aérogel, VIP, double vitrage low-e, enveloppe
+réfléchissante, masse thermique/MCP, rupture de ponts thermiques. 4 stratégies naturelles propres (ours polaire =
+air piégé, manchot en huddle = aire réduite, blubber = couche épaisse, duvet réfléchissant = rayonnement). Gate
+`valide_besoin` **357 → 374/374** ; les 18 domaines précédents intacts.
+
+**JALON : 19 DOMAINES D'INVENTION, 16 LOIS PHYSIQUES DANS LE JUGE** (… L15 borne d'entropie, L16 plancher radiatif
+Stefan-Boltzmann).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 18e domaine « compresser l'information » + loi L15 (borne d'entropie)
 
 Compresser l'information. Nouvelle loi dure au juge (`L15`), deux volets : (1) une compression SANS PERTE ne

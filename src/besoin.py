@@ -2806,6 +2806,150 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DIX-NEUVIÈME DOMAINE : isoler thermiquement / conserver la chaleur. Nouvelle loi dure au juge (L16) : le
+#  PLANCHER RADIATIF de Stefan-Boltzmann — pas d'isolant parfait. On peut supprimer la conduction et la convection
+#  (vide) mais PAS le rayonnement : un objet à T > T_env perd au moins ε·σ·A·(T⁴−T_env⁴), et aucun matériau réel
+#  n'a une émissivité nulle. REFRAMING machine : il n'existe pas de « R infini » ; on attaque CHAQUE voie de perte
+#  séparément (vide → conduction/convection ; faible émissivité / multicouche → rayonnement ; géométrie → aire et
+#  gradient), mais la perte ne tombe jamais à zéro tant que T > T_env.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_ISO = "isolation_thermique"
+_ALIAS_ISO = {
+    "isoler thermiquement", "conserver la chaleur", "limiter les pertes de chaleur", "garder au chaud",
+    "reduire les deperditions thermiques", "isoler du froid",
+}
+
+# ── « Canaux » : les leviers de la réduction des pertes thermiques ───────────────────────────────────────────────
+_CANAUX_ISO = [
+    Canal("conduction convection", "chaleur", "SUPPRIMER conduction et convection : créer un VIDE (ou un gaz lourd immobile)",
+          True, "le vide tue les deux voies matérielles d'un coup (bouteille isotherme, panneau sous vide) → il ne "
+                "reste que le rayonnement ; qualité du vide et tenue mécanique à assurer — le plus gros levier"),
+    Canal("emissivite", "chaleur", "BAISSER l'émissivité : surfaces réfléchissantes, multicouches (MLI)",
+          True, "des couches réfléchissantes (aluminisées) abaissent l'émissivité effective vers ~0 → attaquent le "
+                "rayonnement, la voie que le vide ne bloque pas ; mais ε>0 toujours — jamais zéro"),
+    Canal("aire gradient", "chaleur", "RÉDUIRE l'aire exposée et le gradient : compacité, moindre ΔT",
+          True, "la perte croît avec l'aire et (radiativement) en T⁴ : une forme compacte (rapport surface/volume "
+                "bas) et un moindre écart de température réduisent tout — le levier « géométrie »"),
+    Canal("masse thermique", "chaleur", "TAMPONNER avec de la masse thermique / un changement de phase (retarder, pas annuler)",
+          True, "une grande inertie (eau, MCP) lisse et RETARDE les variations sans réduire la perte en régime "
+                "établi → utile pour passer un pic ou une nuit, pas pour isoler indéfiniment"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le plancher radiatif (type `isolation_thermique`, perte ≥ εσA(T⁴−T_env⁴)) ──
+_PRINCIPES_ISO = [
+    _P("bouteille isotherme (vide + argenture)",
+       "isoler : double paroi sous vide aux surfaces argentées (Dewar)",
+       {"type": "isolation_thermique", "emissivite": 0.05, "aire_m2": 0.1, "t_objet_K": 363, "t_env_K": 293,
+        "puissance_perdue_W": 5}, True, True,
+       "—", "mature",
+       0.65, "le vide tue conduction/convection, l'argenture le rayonnement → il ne reste qu'un plancher radiatif "
+             "minuscule ; la référence de l'isolation quasi optimale — mais jamais zéro perte"),
+    _P("isolant multicouche (MLI, spatial)",
+       "isoler : dizaines de couches réfléchissantes sous vide (satellites)",
+       {"type": "isolation_thermique", "emissivite": 0.02, "aire_m2": 1, "t_objet_K": 300, "t_env_K": 100,
+        "puissance_perdue_W": 10}, True, True,
+       "—", "mature (spatial)",
+       0.6, "chaque couche réfléchit le rayonnement de la précédente → émissivité effective minuscule dans le vide "
+            "spatial ; inefficace hors vide (les couches se touchent) — le levier « émissivité » poussé loin"),
+    _P("aérogel (conduction quasi supprimée)",
+       "isoler : solide nanoporeux à conductivité extrêmement basse",
+       {"type": "isolation_thermique", "emissivite": 0.9, "aire_m2": 1, "t_objet_K": 323, "t_env_K": 293,
+        "puissance_perdue_W": 250}, True, True,
+       "—", "mature (niche)",
+       0.5, "les nanopores bloquent la conduction du gaz sans vide poussé → très isolant et léger ; coût et "
+            "fragilité, et le rayonnement reste (émissivité élevée) — le levier « conduction »"),
+    _P("panneau isolant sous vide (VIP)",
+       "isoler : coussin poreux mis sous vide et scellé (bâtiment, réfrigérateur)",
+       {"type": "isolation_thermique", "emissivite": 0.1, "aire_m2": 1, "t_objet_K": 293, "t_env_K": 273,
+        "puissance_perdue_W": 15}, True, True,
+       "—", "mature",
+       0.5, "combine cœur poreux et vide → très mince pour une forte résistance ; risque de perte du vide dans le "
+            "temps (perçage) — le levier « vide » en format plaque"),
+    _P("double vitrage à gaz lourd + low-e",
+       "isoler : deux verres séparés par un gaz lourd, une face à basse émissivité",
+       {"type": "isolation_thermique", "emissivite": 0.1, "aire_m2": 2, "t_objet_K": 293, "t_env_K": 273,
+        "puissance_perdue_W": 40}, True, True,
+       "—", "mature",
+       0.5, "le gaz lourd (argon/krypton) freine la convection, le revêtement low-e le rayonnement → attaque les "
+            "deux voies restantes ; référence du bâtiment — chaque voie traitée séparément"),
+    _P("enveloppe réfléchissante (faible émissivité)",
+       "isoler : recouvrir d'une surface à basse émissivité pour renvoyer le rayonnement",
+       {"type": "isolation_thermique", "emissivite": 0.05, "aire_m2": 1, "t_objet_K": 313, "t_env_K": 293,
+        "puissance_perdue_W": 20}, True, True,
+       "—", "mature",
+       0.45, "une feuille réfléchissante renvoie le rayonnement thermique → utile en complément (couverture de "
+             "survie, sous-toiture) ; ne fait rien contre la conduction directe — le levier « émissivité » simple"),
+    _P("masse thermique / matériau à changement de phase",
+       "isoler : tamponner les variations avec une grande inertie thermique (retarde, ne supprime pas)",
+       {"type": "isolation_thermique"}, True, True,
+       "—", "mature",
+       0.4, "lisse et RETARDE les pics (mur épais, MCP) sans réduire la perte en régime établi → complément de "
+            "l'isolation, pas un substitut ; utile pour passer une nuit/un pic — le levier « inertie »"),
+    _P("rupture des ponts thermiques",
+       "isoler : éliminer les chemins de conduction concentrés (fixations, jonctions)",
+       {"type": "isolation_thermique"}, True, True,
+       "—", "mature (sous-exploité)",
+       0.45, "un pont thermique (ossature, fixation métallique) court-circuite tout l'isolant autour → les traiter "
+             "récupère des pertes invisibles ; détail de conception souvent négligé — le levier « chemins parasites »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("isolation « parfaite » (zéro perte à 373 K vers 293 K)",
+       "isoler : maintenir un objet à 373 K dans un environnement à 293 K sans aucune perte de chaleur",
+       {"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373, "t_env_K": 293,
+        "puissance_perdue_W": 0}, True, True,
+       "—", "revendication",
+       0.3, "zéro perte < plancher radiatif (~340 W ici) : un objet chaud rayonne toujours vers un environnement "
+            "plus froid — pas d'isolant parfait ; à réfuter par Stefan-Boltzmann"),
+    _P("matériau « à émissivité nulle »",
+       "isoler : surface revendiquant une émissivité de 0 (aucun rayonnement)",
+       {"type": "isolation_thermique", "emissivite": 0.0, "aire_m2": 1, "t_objet_K": 373, "t_env_K": 293}, True, True,
+       "—", "revendication",
+       0.25, "aucun matériau réel n'a une émissivité strictement nulle (ε > 0 toujours) → pas d'isolant radiatif "
+             "parfait — impossible"),
+]
+
+_OBJECTIF_ISO = ("Le but réel n'est pas un « R infini » (il n'existe pas) mais de réduire CHAQUE voie de perte au "
+                 "minimum, sous le plancher fixé par le RAYONNEMENT : un objet à T > T_env perd au moins "
+                 "ε·σ·A·(T⁴−T_env⁴) (Stefan-Boltzmann), même parfaitement isolé de la conduction et de la "
+                 "convection. Leviers : supprimer conduction/convection par le VIDE ; baisser l'ÉMISSIVITÉ "
+                 "(surfaces réfléchissantes, multicouches) pour attaquer le rayonnement ; réduire l'AIRE et le "
+                 "gradient (géométrie compacte, moindre ΔT) ; tamponner par la masse thermique (retarder, pas "
+                 "annuler). La perte ne tombe jamais à zéro tant que T > T_env. Chaque principe reste jugé par le "
+                 "plancher radiatif.")
+_LOI_ISO = ("plancher radiatif de Stefan-Boltzmann : pas d'isolant parfait — un objet à T > T_env perd au moins "
+            "ε·σ·A·(T⁴−T_env⁴) par rayonnement (ε>0 toujours), même sans conduction ni convection ; gains réels = "
+            "vide (conduction/convection), basse émissivité (rayonnement), géométrie compacte, moindre gradient")
+
+# La nature isole par l'air piégé (ours polaire), la réduction d'aire (manchot), la couche épaisse (phoque), la réflexion (duvet).
+_STRATEGIES_NATURE_ISO = [
+    _Nature("ours polaire (poils creux piégeant l'air)",
+            ["poils creux et sous-poil dense piégeant une couche d'air immobile", "peau noire absorbant le rayonnement solaire"],
+            "piéger une couche d'air immobile pour tuer la convection — le levier « conduction/convection »"),
+    _Nature("manchot en tortue (huddle réduisant l'aire exposée)",
+            ["se serrent pour réduire la surface exposée au froid", "rotation pour partager le bord exposé"],
+            "réduire l'AIRE exposée collectivement — le levier « géométrie »"),
+    _Nature("graisse (blubber) du phoque",
+            ["couche épaisse à faible conductivité sous la peau", "isole même immergé dans l'eau glacée"],
+            "une couche épaisse à faible conductivité contre la conduction — l'isolant massif du vivant"),
+    _Nature("duvet / pruine réfléchissant",
+            ["surfaces claires ou cireuses renvoyant le rayonnement", "limite le gain ou la perte radiative"],
+            "renvoyer le rayonnement par une surface à basse émissivité — le levier « rayonnement »"),
+]
+
+enregistre(Domaine(
+    nom=_ISO,
+    aliases=frozenset(_ALIAS_ISO),
+    objectif=_OBJECTIF_ISO,
+    canaux=_CANAUX_ISO,
+    principes=_PRINCIPES_ISO,
+    strategies=_STRATEGIES_NATURE_ISO,
+    loi=_LOI_ISO,
+    extras={"plancher_radiatif": "ε·σ·A·(T⁴−T_env⁴), σ = 5,67e-8 W/m²K⁴",
+            "note": "le vide tue conduction/convection ; les multicouches baissent ε ; jamais zéro (ε>0), pas de "
+                    "résistance thermique infinie"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
