@@ -103,6 +103,13 @@ check(loi({"type": "captation_solaire", "rendement": 0.50, "nb_jonctions": 1, "c
 # plafond ABSOLU (exergie du rayonnement) : > Carnot solaire (~94,8 %) quelle que soit l'architecture.
 check(statut({"type": "captation_solaire", "rendement": 1.0}) == P.VIOLE, "PV 100% > plafond thermo -> VIOLE")
 check(loi({"type": "captation_solaire", "rendement": 1.0}) == P.L8, "plafond thermo solaire = L8")
+# électrolyse : tension SOUS E_rev (anode standard) + énergie totale SOUS le PCS de H₂.
+check(statut({"type": "electrolyse", "tension_cellule_V": 0.9, "t_K": 298.15,
+              "reaction_anodique_standard": True}) == P.VIOLE, "cellule 0,9 V (anode std, 25 °C) < E_rev 1,23 -> VIOLE")
+check(loi({"type": "electrolyse", "tension_cellule_V": 0.9, "t_K": 298.15,
+           "reaction_anodique_standard": True}) == P.L9, "électrolyse (tension < E_rev) = L9")
+check(statut({"type": "electrolyse", "energie_kJ_par_mol_H2": 150}) == P.VIOLE, "150 kJ/mol H₂ < PCS 285,8 -> VIOLE")
+check(loi({"type": "electrolyse", "energie_kJ_par_mol_H2": 150}) == P.L9, "sous le PCS de H₂ = L9")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -163,6 +170,14 @@ reels = [
     {"type": "captation_solaire", "rendement": 0.40, "nb_jonctions": 1, "concentration_solaire": 1000},  # mono-jonction CONCENTRÉE (SQ relevée) -> PAS un faux positif
     {"type": "captation_solaire", "rendement": 0.86},                                  # solaire idéal (< plafond absolu) -> PAS un faux positif
     {"type": "captation_solaire"},                                                     # sans rendement : indéterminé, PAS un faux positif
+    # électrolyses RÉELLES : au-dessus des planchers.
+    {"type": "electrolyse", "tension_cellule_V": 1.9, "t_K": 353, "reaction_anodique_standard": True},   # alcaline (surtension normale)
+    {"type": "electrolyse", "tension_cellule_V": 1.8, "t_K": 343, "reaction_anodique_standard": True},    # PEM
+    {"type": "electrolyse", "tension_cellule_V": 1.3, "t_K": 1073, "reaction_anodique_standard": True},   # SOEC haute T (E_rev abaissée)
+    {"type": "electrolyse", "tension_cellule_V": 0.8, "t_K": 298.15},                  # assistée sacrificielle (pas d'anode std) -> PAS un faux positif
+    {"type": "electrolyse", "energie_kJ_par_mol_H2": 400},                             # thermochimique (> ΔH)
+    {"type": "electrolyse", "energie_kJ_par_mol_H2": 285.8},                           # AU plancher ΔH (limite, ok)
+    {"type": "electrolyse"},                                                           # spec insuffisante -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

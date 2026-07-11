@@ -42,12 +42,17 @@ L6 = "limite de Landauer (≥ k·T·ln2 dissipés par bit d'information effacé)
 L7 = "limite de Shannon (débit ≤ B·log₂(1 + S/N))"
 L8 = ("limite de Shockley-Queisser (rendement PV ≤ ~33,7 % pour une jonction simple standard sous 1 soleil) ; "
       "plafond ABSOLU = exergie du rayonnement solaire (Landsberg ≈ 93,3 %, Carnot 1 − Ta/Ts)")
+L9 = ("électrolyse de l'eau : énergie électrique ≥ ΔG (tension de cellule ≥ E_rev(T) = ΔG(T)/nF, ~1,23 V à 25 °C) ; "
+      "énergie TOTALE ≥ ΔH (PCS de H₂, ~285,8 kJ/mol)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
 _K_BOLTZMANN = 1.380649e-23  # J/K
 _RENDEMENT_SQ_MONO = 0.337   # limite de Shockley-Queisser (jonction simple standard, AM1.5, 1 soleil, gap ~1,34 eV)
 _T_SOLEIL_K = 5778.0         # température de corps noir effective du Soleil (pour le plafond de Carnot solaire)
+_DH_EAU = 285.8e3            # J/mol : enthalpie de dissociation de l'eau (PCS de H₂) — plancher 1er principe (énergie totale)
+_DG_EAU = 237.1e3            # J/mol : enthalpie libre de Gibbs à 25 °C — travail électrique minimal (2nd principe)
+_F_FARADAY = 96485.33        # C/mol ; n = 2 électrons par H₂ -> E_rev standard = ΔG/nF ≈ 1,229 V
 
 
 def _nb(x):
@@ -72,7 +77,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
-                 "captation_solaire"):
+                 "captation_solaire", "electrolyse"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -253,6 +258,33 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                     and _nb(conc) and conc <= 1.0 + 1e-9 and eff > _RENDEMENT_SQ_MONO + 1e-9):
                 return (VIOLE, f"rendement {eff} > limite de Shockley-Queisser {_RENDEMENT_SQ_MONO} "
                                f"(jonction simple standard, 1 soleil) : au-delà du bilan détaillé", L8)
+
+    # --- Électrolyse de l'eau : travail électrique ≥ ΔG (tension ≥ E_rev), énergie totale ≥ ΔH (PCS de H₂). ---
+    if t == "electrolyse":
+        # (1) 1er principe : l'énergie TOTALE par mole de H₂ ≥ ΔH (PCS de H₂) — sinon le H₂ produit restituerait à la
+        #     combustion (son PCS = ΔH) PLUS d'énergie qu'il n'en a reçu = création nette. T-indépendant, plancher sûr.
+        e_tot = spec.get("energie_kJ_par_mol_H2")
+        if _nb(e_tot) and e_tot > 0 and e_tot < _DH_EAU / 1000.0 - 1e-9:
+            return (VIOLE, f"énergie totale {e_tot} kJ/mol H₂ < PCS de H₂ {_DH_EAU / 1000:.1f} kJ/mol (ΔH) : "
+                           f"le H₂ restituerait plus d'énergie qu'il n'en reçoit (création nette)", L9)
+        # (2) 2nd principe : tension de cellule ≥ tension réversible E_rev(T) = ΔG(T)/(nF), ΔG(T) ≈ ΔH − T·ΔS.
+        #     CONSERVATEUR : ne vaut QUE si l'anode fait la réaction STANDARD (dégagement d'O₂). L'électrolyse ASSISTÉE
+        #     (oxydation sacrificielle d'un composé à l'anode) descend légitimement SOUS E_rev (une autre réaction
+        #     fournit l'énergie manquante) → on ne réfute que si `reaction_anodique_standard` est déclaré vrai. Le
+        #     modèle E_rev(T) linéaire SOUS-estime le plancher aux hautes températures → un SOEC (E_rev abaissée)
+        #     n'est jamais réfuté à tort (faux positif INTERDIT).
+        V = spec.get("tension_cellule_V")
+        if spec.get("reaction_anodique_standard") is True and _nb(V) and V > 0:
+            tk = spec.get("t_K", 298.15)
+            if _nb(tk) and tk > 0:
+                dS = (_DH_EAU - _DG_EAU) / 298.15
+                dG_T = _DH_EAU - tk * dS
+                if dG_T > 0:
+                    e_rev = dG_T / (2.0 * _F_FARADAY)
+                    if V < e_rev - 1e-6:
+                        return (VIOLE, f"tension de cellule {V} V < tension réversible {round(e_rev, 3)} V "
+                                       f"(ΔG(T)/2F à {tk} K, anode standard O₂) : le fractionnement net de l'eau "
+                                       f"ne peut pas se produire", L9)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:
