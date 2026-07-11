@@ -5272,7 +5272,9 @@ def _cap_code_prouve(texte: str):
     lang = {"js": "javascript", "shell": "bash"}.get(mlang.group(1), mlang.group(1)) if mlang else "python"
     import ast
     exemples = []
-    for m in re.finditer(r"\(([^()]*)\)\s*(?:->|=>|→|devient|donne)\s*([-\w.\"'\[\]]+)", texte):
+    # la SORTIE peut être une structure plate « [3, 1] » (virgules/espaces entre crochets) — pas seulement
+    # un scalaire ; sans l'alternative crochets, une cible liste×scalaire était illisible depuis la route.
+    for m in re.finditer(r"\(([^()]*)\)\s*(?:->|=>|→|devient|donne)\s*(\[[^\[\]]*\]|[-\w.\"']+)", texte):
         try:
             exemples.append((ast.literal_eval("(%s,)" % m.group(1).rstrip(",")), ast.literal_eval(m.group(2))))
         except (ValueError, SyntaxError):
@@ -5287,6 +5289,22 @@ def _cap_code_prouve(texte: str):
     try:
         if lang == "python":
             import ia as _I
+            # MULTI-ARGUMENT d'abord (palier structurel 2026-07-12) : des exemples « (a, b) -> r » vont au
+            # moteur MULTI (arités 2-3, formes de type : listes/dicts/chaînes/tables) — avant cette route,
+            # ils tombaient au mono avec x = tuple, aveugle à tout le vocabulaire des formes. Rétention
+            # self-improving via forge_brique_multi (parité avec invente_et_retiens). Mono INCHANGÉ en repli.
+            arite = len(vis[0][0]) if isinstance(vis[0][0], tuple) else 1
+            if 2 <= arite <= 3 and all(isinstance(a, tuple) and len(a) == arite for a, _ in exemples):
+                rm = _I.forge_brique_multi("fonction_demandee", vis, held)
+                if rm.get("code") and rm.get("statut") in ("invention", "existe_deja"):
+                    params = ", ".join(["a", "b", "c"][:arite])
+                    src_multi = (rm["code"] if rm["code"].lstrip().startswith("def ")
+                                 else "def f(%s):\n    return %s" % (params, rm["code"]))
+                    return ("Code PROUVÉ — mon juge l'a exécuté sur tes %d exemple(s)%s :\n```python\n%s\n```\n"
+                            "(%d arguments · statut : %s)"
+                            % (len(vis), (" + %d en aveugle" % len(held)) if held else "", src_multi,
+                               arite, "invention nouvelle" if rm["statut"] == "invention"
+                               else "capacité déjà connue"))
             sig = "%s->%s" % (type(vis[0][0][0]).__name__, type(vis[0][1]).__name__)
             v = _I.invente_et_retiens("fonction_demandee", sig, vis, held)
             if v is not None and getattr(v, "par", None) and v.statut in ("invention", "existe_deja"):

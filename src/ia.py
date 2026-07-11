@@ -2992,15 +2992,32 @@ def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str |
     # registre complet) : UNION registre de la forme détectée ∪ appris — l'appris garde la priorité de nom.
     if arite == 2 and existant is not None:
         toutes = exemples + held
-        # même ordre de spécificité que le moteur : liste-de-dicts×clé (registre vide, rien à unir) d'abord.
-        if _IMM._forme_liste_dicts(toutes) is None:
-            forme = _IMM._forme_liste_scalaire(toutes)
-            if forme is not None:
-                existant = {**_IMM._registre_liste_scalaire(forme), **existant}
-            else:
-                forme_d = _IMM._forme_dict_scalaire(toutes)
-                if forme_d is not None:
-                    existant = {**_IMM._registre_dict_scalaire(forme_d), **existant}
+        # même ordre de spécificité que le moteur (table×table > liste-de-dicts×clé > séquence×scalaire >
+        # dict×scalaire > liste×liste > chaîne×chaîne) : union du registre de la forme détectée.
+        if _IMM._forme_table_table(toutes):
+            existant = {**_IMM._TT_REGISTRE, **existant}
+        elif _IMM._forme_liste_dicts(toutes):
+            pass                                         # registre de forme VIDE : rien à unir
+        elif (forme := _IMM._forme_liste_scalaire(toutes)) is not None:
+            existant = {**_IMM._registre_liste_scalaire(forme), **existant}
+        elif (forme_d := _IMM._forme_dict_scalaire(toutes)) is not None:
+            existant = {**_IMM._registre_dict_scalaire(forme_d), **existant}
+        elif _IMM._forme_liste_liste(toutes):
+            existant = {**_IMM._LL_REGISTRE, **existant}
+        elif _IMM._forme_chaine_chaine(toutes):
+            existant = {**_IMM._CC_REGISTRE, **existant}
+        elif _IMM._forme_dict_dict(toutes):
+            existant = {**_IMM._DD_REGISTRE, **existant}
+        elif _IMM._forme_matrice_matrice(toutes):
+            existant = {**_IMM._MM_REGISTRE, **existant}
+    elif arite == 3 and existant is not None:
+        toutes3 = exemples + held
+        if _IMM._forme_seq_int_int(toutes3):
+            existant = {**_IMM._T3_REGISTRE, **existant}
+        elif _IMM._forme_str_str_str(toutes3):
+            existant = {**_IMM._SSS_REGISTRE, **existant}
+        elif _IMM._forme_dict_cle_defaut(toutes3):
+            existant = {**_IMM._DCD_REGISTRE, **existant}
     verdict = _IMM.examine_cible_multi(nom, exemples, held, existant=existant)
     sup, fait = _IA.atome_capacite(verdict, exemples, held)
 
