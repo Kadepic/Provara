@@ -66,6 +66,8 @@ L19 = ("bruit de grenaille (photonique) : compter N photons donne un rapport sig
        "Poisson), et le rendement quantique ≤ 1 — sauf lumière comprimée (au-delà de la limite quantique standard)")
 L20 = ("un amplificateur n'améliore pas le rapport signal/bruit : facteur de bruit ≥ 1 (NF ≥ 0 dB) — il ajoute "
        "toujours du bruit, jamais n'en retire")
+L21 = ("théorème d'échantillonnage de Nyquist-Shannon : reconstruire un signal de bande B exige un échantillonnage "
+       "à fs ≥ 2B — en dessous, le repliement est irréversible (sauf signal parcimonieux / acquisition comprimée)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -106,7 +108,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
-                 "detection", "amplification"):
+                 "detection", "amplification", "echantillonnage"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -529,6 +531,20 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         if _nb(nf_db) and nf_db < -1e-9:
             return (VIOLE, f"facteur de bruit {nf_db} dB < 0 dB : un amplificateur n'améliore jamais le rapport "
                            f"signal/bruit — impossible", L20)
+
+    # --- Théorème d'échantillonnage de Nyquist-Shannon : fs ≥ 2B pour une reconstruction parfaite. ---
+    # Reconstruire parfaitement un signal de bande B exige un échantillonnage à fs ≥ 2B ; en dessous, le repliement
+    # (aliasing) mélange irréversiblement les fréquences. EXCEPTION (flag) : l'acquisition comprimée (compressed
+    # sensing) reconstruit un signal PARCIMONIEUX bien sous Nyquist (IRM, radio-astronomie) → on ne réfute fs < 2B
+    # que pour une reconstruction PARFAITE déclarée d'un signal NON parcimonieux. CONSERVATEUR : faux positif INTERDIT.
+    if t == "echantillonnage":
+        if bool(spec.get("reconstruction_parfaite", False)) and spec.get("signal_parcimonieux") is not True:
+            b = spec.get("bande_passante_Hz")
+            fs = spec.get("frequence_echantillonnage_Hz")
+            if _nb(b) and _nb(fs) and b > 0 and fs >= 0 and fs < 2.0 * b * (1.0 - 1e-9):
+                return (VIOLE, f"fréquence d'échantillonnage {fs} Hz < 2·B ({2 * b} Hz) pour une reconstruction "
+                               f"PARFAITE d'un signal de bande {b} Hz : repliement irréversible (Nyquist-Shannon) — "
+                               f"impossible sans parcimonie", L21)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

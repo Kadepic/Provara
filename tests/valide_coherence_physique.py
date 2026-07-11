@@ -179,6 +179,13 @@ check(statut({"type": "detection", "rendement_quantique": 1.2}) == P.VIOLE, "ren
 check(statut({"type": "amplification", "facteur_de_bruit": 0.5}) == P.VIOLE, "facteur de bruit 0,5 < 1 -> VIOLE")
 check(loi({"type": "amplification", "facteur_de_bruit": 0.5}) == P.L20, "facteur de bruit = L20")
 check(statut({"type": "amplification", "facteur_de_bruit_dB": -3}) == P.VIOLE, "NF -3 dB < 0 -> VIOLE")
+# théorème de Nyquist-Shannon : reconstruction parfaite sous 2B (signal non parcimonieux).
+check(statut({"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000,
+              "reconstruction_parfaite": True}) == P.VIOLE, "30k < 2·20k, reconstruction parfaite -> VIOLE")
+check(loi({"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000,
+           "reconstruction_parfaite": True}) == P.L21, "Nyquist-Shannon = L21")
+check(statut({"type": "echantillonnage", "bande_passante_Hz": 1000, "frequence_echantillonnage_Hz": 1000,
+              "reconstruction_parfaite": True}) == P.VIOLE, "fs = B < 2B -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -313,6 +320,12 @@ reels = [
     {"type": "amplification", "facteur_de_bruit": 1.0},                              # AU 0 dB (paramétrique idéal, limite, ok)
     {"type": "amplification", "gain": 100},                                          # sans facteur de bruit : PAS un faux positif
     {"type": "amplification"},                                                        # vide -> PAS un faux positif
+    # échantillonnages RÉELS : fs ≥ 2B, ou parcimonieux (exempté), ou sans reconstruction parfaite.
+    {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 44100, "reconstruction_parfaite": True},  # CD audio (> 2B)
+    {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 40000, "reconstruction_parfaite": True},  # AU Nyquist (limite, ok)
+    {"type": "echantillonnage", "bande_passante_Hz": 1000000, "frequence_echantillonnage_Hz": 500000, "reconstruction_parfaite": True, "signal_parcimonieux": True},  # acquisition comprimée -> PAS un faux positif
+    {"type": "echantillonnage", "bande_passante_Hz": 20000, "frequence_echantillonnage_Hz": 30000},  # sans reconstruction parfaite (avec pertes) -> PAS un faux positif
+    {"type": "echantillonnage"},                                                      # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
