@@ -73,4 +73,38 @@ inv_sans_reuse = C.inventorie([
 check("pas d'abstraction réutilisée -> promotion = None", B.promeut_abstraction(inv_sans_reuse) is None)
 check("extension sans réutilisation = no-op", B.etend_bibliotheque(base, inv_sans_reuse) == base)
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════
+# ATOME 2 — SOMMEIL GÉNÉRALISÉ : promotion MULTIPLE sous score MDL (DreamCoder), plus seulement le top-1.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════
+
+# (f) LE SCORE MDL est la formule s·(k−1) − k et son SEUIL mord à la bonne place.
+#     s = taille (nœuds AST) du map `[F for _e in x]` ; promouvoir ssi le gain de compression est > 0.
+s_carre = B._taille("[_e * _e for _e in x]")
+check("gain_mdl = s·(k−1) − k (mesuré, non inventé)", B.gain_mdl("_e * _e", 3) == s_carre * 2 - 3)
+check("MDL : réutilisée par 2 -> compresse (gain > 0)", B.gain_mdl("_e * _e", 2) > 0)
+check("MDL : réutilisée par 1 seule -> NE compresse PAS (gain ≤ 0, le garde-fou mord)",
+      B.gain_mdl("_e * _e", 1) <= 0)
+check("MDL monotone : plus de réutilisation = plus de gain",
+      B.gain_mdl("_e * _e", 4) > B.gain_mdl("_e * _e", 3) > B.gain_mdl("_e * _e", 2))
+
+# (g) PROMOTION MULTIPLE : un inventaire à DEUX abstractions réutilisées -> DEUX capacités promues,
+#     triées par gain décroissant (le v0 n'en promouvait qu'UNE). Inventaire construit directement
+#     (dataclass) pour un test déterministe, indépendant de ce que la recherche extrait.
+inv_multi = C.Inventaire(
+    par_statut={}, inventions={},
+    abstractions=[("_e + _e", ["a", "b"]), ("_e * _e", ["c", "d", "e"])])
+promues = B.promeut_abstractions(inv_multi)
+check("les DEUX abstractions réutilisées sont promues (pas seulement le top-1)", len(promues) == 2)
+check("tri par gain décroissant : le carré (3 usages) avant le double (2 usages)",
+      promues[0][0] == "map[_e * _e]" and promues[1][0] == "map[_e + _e]" and promues[0][2] > promues[1][2])
+etendue_multi = B.etend_bibliotheque(MI.EXISTANT, inv_multi)
+check("etend_bibliotheque ajoute LES DEUX capacités",
+      len(etendue_multi) == len(MI.EXISTANT) + 2
+      and "map[_e * _e]" in etendue_multi and "map[_e + _e]" in etendue_multi)
+check("promeut_abstraction (compat) rend toujours la plus payante", B.promeut_abstraction(inv_multi) == ("map[_e * _e]", "[_e * _e for _e in x]"))
+# chaque capacité promue est CORRECTE (reproduit sa transformation) — jamais une brique fausse en bibliothèque
+fplus = MI._callable(etendue_multi["map[_e + _e]"], "f")
+check("la 2e capacité promue reproduit bien le doublement élément-par-élément",
+      fplus([1, 2, 3]) == [2, 4, 6] and fplus([-4, 5]) == [-8, 10])
+
 print(f"\nBIBLIOTHEQUE_INVENTION VALIDÉ — {ok}/{total}." if ok == total else f"\nÉCHEC {ok}/{total}")

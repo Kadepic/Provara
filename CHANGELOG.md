@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — FORGE DE BRIQUES, atome 2 : sommeil généralisé (compression MDL, DreamCoder)
+
+Le « sommeil » (phase où l'IA s'améliore au niveau BIBLIOTHÈQUE) ne promouvait qu'UNE abstraction — la
+plus réutilisée (`map[F]`). Généralisé : **toutes les abstractions qui COMPRESSENT sont promues**, sous le
+score MDL de DreamCoder `MDL = L(bibliothèque) + Σ L(programmes | bibliothèque)`.
+
+- `gain_mdl(transform, k)` : gain de compression (en nœuds AST) = `s·(k−1) − k` où `s` = taille du map
+  `[transform for _e in x]` et `k` = nb de cibles qui le réutilisent (la bibliothèque le stocke UNE fois,
+  chaque cible le référence pour un coût 1). Promotion ssi > 0 — mesuré, pas inventé (le garde-fou mord à
+  `k=1` : une abstraction non réutilisée ne compresse pas et n'entre pas).
+- `promeut_abstractions(inv)` : TOUTES les abstractions à gain positif, triées par gain décroissant ;
+  `etend_bibliotheque` les ajoute toutes (additif, idempotent). `promeut_abstraction` (singulier, compat)
+  rend toujours la plus payante. Chaque capacité promue est extraite d'une solution VÉRIFIÉE et réutilisée
+  par ≥2 cibles (sound, cf. chercheur_invention) — le seuil MDL est objectif.
+
+Gate `valide_bibliotheque_invention` **11 → 20** (formule MDL mesurée, seuil qui mord à k=1, monotonie ;
+promotion MULTIPLE prouvée sur inventaire à 2 abstractions, tri par gain, les 2 capacités correctes ;
+compat du singulier). Appelants inchangés en interface (`ia.apprend`), non-rég **799/799**.
+
 ## 2026-07-12 — FORGE DE BRIQUES, atome 1 : mémoire de briques sous CONFIANCE ZÉRO AU DISQUE
 
 Lancement du chantier **générateur de briques sous juge d'exécution** (le levier validé — cf.
