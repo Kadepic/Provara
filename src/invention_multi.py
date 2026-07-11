@@ -230,6 +230,58 @@ def _sondes_liste_liste(exemples) -> list[tuple]:
     return res
 
 
+# FORME DE TYPE MATRICE×MATRICE (atome 17 du palier structurel) : deux matrices en deux arguments.
+# Frontière MESURÉE : somme élément à élément et PRODUIT MATRICIEL = brique_manquante. Registre = concat
+# (a + b, listes) ; ops = arithmétique élément à élément (somme/différence/Hadamard) + produit matriciel.
+# Le produit est NON COMMUTATIF -> la sonde SWAP le discrimine de la version b·a.
+_MM_REGISTRE: dict[str, str] = {
+    "concatenation": "a + b",
+}
+_MM_OPS = [
+    "[[_x + _y for _x, _y in zip(_ra, _rb)] for _ra, _rb in zip(a, b)]",
+    "[[_x - _y for _x, _y in zip(_ra, _rb)] for _ra, _rb in zip(a, b)]",
+    "[[_x * _y for _x, _y in zip(_ra, _rb)] for _ra, _rb in zip(a, b)]",     # Hadamard
+    "[[sum(a[_i][_k] * b[_k][_j] for _k in range(len(b))) for _j in range(len(b[0]))] for _i in range(len(a))]",
+    "[[sum(b[_i][_k] * a[_k][_j] for _k in range(len(a))) for _j in range(len(a[0]))] for _i in range(len(b))]",
+]
+
+
+def _forme_matrice_matrice(toutes):
+    """(matrice, matrice) — deux listes non vides de listes de scalaires — sur TOUS les exemples, sinon None."""
+    def _mat(v):
+        return (isinstance(v, list) and v
+                and all(isinstance(r, list) and all(not isinstance(e, (list, dict, set, tuple)) for e in r)
+                        for r in v))
+    if all(len(x) == 2 and _mat(x[0]) and _mat(x[1]) for x, _ in toutes):
+        return True
+    return None
+
+
+def _candidats_matrice_matrice(exemples) -> list[str]:
+    cands: set[str] = set(_MM_REGISTRE.values()) | set(_MM_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_matrice_matrice(exemples) -> list[tuple]:
+    """Sondes de FORME : SWAP (le produit matriciel est non commutatif), lignes renversées, élément perturbé."""
+    out = []
+    for (x, y), _ in exemples:
+        cx = [list(r) for r in x]
+        cy = [list(r) for r in y]
+        out.append((cx, cy))
+        out.append((cy, cx))                                    # SWAP
+        out.append(([list(r) for r in reversed(x)], cy))
+        if y and y[0] and isinstance(y[0][0], int):
+            out.append((cx, [[y[0][0] + 1] + list(y[0][1:])] + [list(r) for r in y[1:]]))
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # FORME DE TYPE DICT×DICT (atome 13 du palier structurel) : deux mappings en deux arguments. Frontière
 # MESURÉE : clés communes, soustraction/restriction = brique_manquante — et la fusion était servie par le
 # vocab SCALAIRE (a | b, union dict exacte) : une fois la forme routée, ce chemin disparaît -> la fusion
@@ -782,6 +834,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     forme_ll = _forme_liste_liste(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds) else None
     forme_cc = _forme_chaine_chaine(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll) else None
     forme_dd = _forme_dict_dict(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc) else None
+    forme_mm = _forme_matrice_matrice(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll or forme_cc or forme_dd) else None
     forme_t3 = _forme_seq_int_int(toutes) if arite == 3 else None
     if existant is None:
         existant = (dict(_TT_REGISTRE) if forme_tt
@@ -791,6 +844,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                     else dict(_LL_REGISTRE) if forme_ll
                     else dict(_CC_REGISTRE) if forme_cc
                     else dict(_DD_REGISTRE) if forme_dd
+                    else dict(_MM_REGISTRE) if forme_mm
                     else dict(_T3_REGISTRE) if forme_t3
                     else _REGISTRES.get(arite, {}))
 
@@ -809,6 +863,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
               else _sondes_liste_liste(toutes) if forme_ll
               else _sondes_chaine_chaine(toutes) if forme_cc
               else _sondes_dict_dict(toutes) if forme_dd
+              else _sondes_matrice_matrice(toutes) if forme_mm
               else _sondes_binaires(toutes)) if arite == 2 \
         else (_sondes_seq_int_int(toutes) if forme_t3 else _sondes_ternaires(toutes)) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
@@ -827,6 +882,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                  else _candidats_liste_liste(toutes) if forme_ll
                  else _candidats_chaine_chaine(toutes) if forme_cc
                  else _candidats_dict_dict(toutes) if forme_dd
+                 else _candidats_matrice_matrice(toutes) if forme_mm
                  else _candidats_binaires(toutes)) \
         if arite == 2 else (_candidats_seq_int_int(toutes) if forme_t3
                             else _candidats_ternaires(toutes)) if arite == 3 else []

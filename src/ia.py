@@ -3008,6 +3008,8 @@ def forge_brique_multi(nom: str, exemples, exemples_held=None, *, dossier: str |
             existant = {**_IMM._CC_REGISTRE, **existant}
         elif _IMM._forme_dict_dict(toutes):
             existant = {**_IMM._DD_REGISTRE, **existant}
+        elif _IMM._forme_matrice_matrice(toutes):
+            existant = {**_IMM._MM_REGISTRE, **existant}
     elif arite == 3 and existant is not None and _IMM._forme_seq_int_int(exemples + held):
         existant = {**_IMM._T3_REGISTRE, **existant}
     verdict = _IMM.examine_cible_multi(nom, exemples, held, existant=existant)
