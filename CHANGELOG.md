@@ -1,5 +1,26 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 14e domaine « voir plus petit » + loi L11 (diffraction d'Abbe)
+
+Résolution optique / voir plus petit. Nouvelle loi dure au juge (`L11`), deux volets : (1) l'ouverture numérique
+NA = n·sinθ ≤ n (indice du milieu) ; (2) en champ lointain CONVENTIONNEL, la résolution ≥ limite d'Abbe λ/(2·NA).
+CONSERVATEUR (FAUX=0) : la super-résolution (champ proche/NSOM, localisation PALM/STORM, illumination structurée
+SIM, déplétion STED) dépasse Abbe LÉGITIMEMENT en exploitant une information hors de son régime → on ne réfute le
+volet (2) que si la spec NE déclare PAS `super_resolution`. Gate `valide_coherence_physique` **165 → 185/185**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (microscope conventionnel « à 50 nm »,
+objectif « NA 1,7 dans l'air »). Reframing : ne pas « grossir » (agrandir l'image ne crée pas de détail) mais
+augmenter l'information spatiale — raccourcir λ (UV/X/électrons), monter NA (immersion, plafonné par l'indice), ou
+contourner le champ lointain (champ proche, localisation de molécules uniques, illumination structurée, déplétion).
+Couvre objectif à sec, immersion, UV, STED, PALM/STORM, SIM, NSOM, microscopie par expansion. 4 stratégies
+naturelles propres (aigle = grande pupille + rétine dense, œil GRIN = correction d'aberration, diatomée =
+nanostructures sous-λ, crevette-mante = multiplexage spectral). Gate `valide_besoin` **272 → 289/289** ; les 13
+domaines précédents intacts.
+
+**JALON : 14 DOMAINES D'INVENTION, 11 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH, L10 puissance induite du vol, L11 diffraction d'Abbe).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 13e domaine « vol stationnaire » + loi L10 (puissance induite idéale)
 
 Voler sur place / se sustenter en vol stationnaire. Nouvelle loi dure au juge (`L10`) : la PUISSANCE INDUITE

@@ -2110,6 +2110,153 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  QUATORZIÈME DOMAINE : voir plus petit / résolution optique. Nouvelle loi dure au juge (L11) : la limite de
+#  DIFFRACTION d'Abbe — en champ lointain conventionnel, on ne résout pas plus fin que λ/(2·NA) ; et l'ouverture
+#  numérique NA = n·sinθ ≤ n (indice du milieu). REFRAMING machine : ne pas « grossir » davantage (grandir l'image
+#  ne crée pas de détail) mais AUGMENTER l'information spatiale — raccourcir λ, monter NA (immersion, plafonné par
+#  l'indice), ou CONTOURNER le champ lointain : champ proche (ondes évanescentes, NSOM), localisation temporelle
+#  de molécules uniques (PALM/STORM), illumination structurée (SIM), déplétion (STED). La super-résolution ne viole
+#  pas Abbe : elle exploite une information hors de son régime (d'où le prix Nobel 2014).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_OPT = "resolution_optique"
+_ALIAS_OPT = {
+    "voir plus petit", "resoudre en microscopie", "augmenter la resolution optique",
+    "observer des details fins", "depasser la limite de diffraction", "imager a l echelle nanometrique",
+}
+
+# ── « Canaux » : les leviers de la résolution optique ────────────────────────────────────────────────────────────
+_CANAUX_OPT = [
+    Canal("longueur d onde", "lumiere", "RACCOURCIR λ (UV, X, électrons) : la limite d'Abbe d = λ/2NA décroît avec λ",
+          True, "diviser λ par 2 divise la limite par 2 ; l'UV, les rayons X et les électrons (λ picométrique) "
+                "poussent la résolution bien plus bas — le levier direct sur le numérateur"),
+    Canal("ouverture numerique", "lumiere", "AUGMENTER NA (immersion, indice élevé) : d ∝ 1/NA, plafonné par NA ≤ n",
+          True, "l'immersion (huile n≈1,5) permet NA ~1,4 vs ~0,95 à sec ; mais NA = n·sinθ ne peut dépasser l'indice "
+                "du milieu → mur physique à ~1,5 en optique visible"),
+    Canal("champ proche", "lumiere", "capter les ondes ÉVANESCENTES (NSOM, superlentille) : contourne le champ lointain d'Abbe",
+          True, "les détails fins sont portés par des ondes évanescentes qui meurent en champ lointain ; les lire à "
+                "quelques nanomètres de l'objet (sonde à balayage) échappe à Abbe — le levier « rester tout près »"),
+    Canal("localisation / commutation", "lumiere", "LOCALISER dans le temps des émetteurs isolés (PALM/STORM), illumination structurée (SIM), déplétion (STED)",
+          True, "si les émetteurs s'allument un à un, on localise le CENTRE de chaque tache bien plus finement que sa "
+                "largeur ; SIM/STED reconfigurent l'éclairage — le levier « séparer dans le temps ce qu'on ne peut "
+                "séparer dans l'espace », cœur de la super-résolution"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite d'Abbe (type `imagerie_optique`, résolution ≥ λ/2NA ; NA ≤ n) ──
+_PRINCIPES_OPT = [
+    _P("microscope optique à sec (référence)",
+       "voir plus petit : objectif à sec (NA ~0,95) en lumière visible",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 0.95, "indice_milieu": 1.0,
+        "resolution_nm": 300}, True, True,
+       "—", "mature",
+       0.6, "la référence : à sec, NA plafonne vers 0,95 → résolution ~290 nm ; pour faire mieux il faut l'immersion, "
+            "raccourcir λ, ou la super-résolution — pas grossir davantage"),
+    _P("immersion à huile (NA élevé)",
+       "voir plus petit : objectif à immersion d'huile (n≈1,5, NA ~1,4)",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 200}, True, True,
+       "—", "mature",
+       0.55, "l'immersion relève NA à ~1,4 (résolution ~200 nm) ; mais NA ≤ n bute à ~1,5 en visible → le levier "
+             "« ouverture » est presque épuisé, d'où le besoin de changer de régime"),
+    _P("courte longueur d'onde (UV)",
+       "voir plus petit : imager dans l'ultraviolet pour réduire λ",
+       {"type": "imagerie_optique", "longueur_onde_nm": 250, "ouverture_numerique": 0.9, "indice_milieu": 1.0,
+        "resolution_nm": 150}, True, True,
+       "—", "mature (niche)",
+       0.5, "λ divisé par ~2 → résolution divisée par ~2 (~140 nm) ; optiques UV coûteuses et échantillons sensibles "
+            "— pousser encore (X, électrons) descend au nanomètre, le levier « raccourcir λ »"),
+    _P("STED (déplétion par émission stimulée)",
+       "voir plus petit : éteindre la fluorescence en couronne pour ne laisser émettre qu'un cœur sub-diffraction",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 30, "super_resolution": True}, True, True,
+       "—", "mature (super-résolution)",
+       0.55, "reconfigure l'éclairage pour rétrécir le point émetteur bien SOUS Abbe (~30 nm) sans le violer ; "
+             "puissances laser élevées et photoblanchiment — le levier « déplétion »"),
+    _P("PALM / STORM (localisation de molécules uniques)",
+       "voir plus petit : allumer les fluorophores un à un et localiser le centre de chaque tache",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 20, "super_resolution": True}, True, True,
+       "—", "mature (super-résolution)",
+       0.55, "sépare les émetteurs dans le TEMPS pour localiser chaque centre à ~20 nm ; long temps d'acquisition et "
+             "fluorophores commutables requis — le levier « localisation temporelle », cœur du Nobel 2014"),
+    _P("illumination structurée (SIM)",
+       "voir plus petit : éclairer par une grille connue et déplier le moiré pour doubler la résolution",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 100, "super_resolution": True}, True, True,
+       "—", "mature (super-résolution)",
+       0.5, "le moiré entre l'objet et une grille connue ramène des détails fins dans la bande passante (~×2, "
+            "~100 nm) ; gain plus modeste mais rapide et doux (cellules vivantes) — le levier « illumination »"),
+    _P("champ proche (NSOM / superlentille)",
+       "voir plus petit : lire les ondes évanescentes à quelques nanomètres de l'objet",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 0.9, "indice_milieu": 1.0,
+        "resolution_nm": 50, "super_resolution": True}, True, True,
+       "—", "recherche",
+       0.4, "capte les détails portés par les ondes évanescentes (perdues en champ lointain) → résolution ~λ/20, "
+            "indépendante d'Abbe ; exige une sonde à quelques nm de la surface (balayage lent) — le levier « champ proche »"),
+    _P("microscopie par expansion (ExM)",
+       "voir plus petit : gonfler physiquement l'échantillon dans un gel avant de l'imager",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 70, "super_resolution": True}, True, True,
+       "—", "émergent",
+       0.45, "au lieu d'améliorer l'optique, on AGRANDIT l'objet (gel gonflant ~4×) → les détails s'écartent au-delà "
+             "d'Abbe, imagés par un microscope ordinaire ; distorsions du gel à contrôler — le levier « agrandir l'objet »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("microscope conventionnel « résolvant 50 nm » (λ=550, NA=1,4)",
+       "voir plus petit : microscope à champ lointain CONVENTIONNEL revendiquant 50 nm à λ=550 nm, NA=1,4",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4, "indice_milieu": 1.5,
+        "resolution_nm": 50}, True, True,
+       "—", "revendication",
+       0.3, "50 nm < limite d'Abbe (~196 nm ici) sans super-résolution — à réfuter par la limite de diffraction"),
+    _P("objectif « à NA 1,7 dans l'air »",
+       "voir plus petit : objectif revendiquant une ouverture numérique de 1,7 dans l'air (n=1)",
+       {"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.7, "indice_milieu": 1.0,
+        "resolution_nm": 300}, True, True,
+       "—", "revendication",
+       0.25, "NA = n·sinθ ≤ n : une ouverture numérique de 1,7 dans l'air (n=1) est impossible"),
+]
+
+_OBJECTIF_OPT = ("Le but réel n'est pas de « grossir » davantage (agrandir l'image ne crée aucun détail) mais "
+                 "d'augmenter l'INFORMATION spatiale, bornée par la limite de diffraction d'Abbe : résolution "
+                 "≥ λ/(2·NA), avec NA = n·sinθ ≤ n. Leviers : raccourcir λ (UV, X, électrons) ; monter NA "
+                 "(immersion, plafonné par l'indice) ; ou CONTOURNER le champ lointain — champ proche (ondes "
+                 "évanescentes, NSOM), localisation temporelle de molécules uniques (PALM/STORM), illumination "
+                 "structurée (SIM), déplétion (STED). La super-résolution ne viole pas Abbe : elle exploite une "
+                 "information hors de son régime. Chaque principe reste jugé par la limite de diffraction.")
+_LOI_OPT = ("limite de diffraction d'Abbe : en champ lointain conventionnel, résolution ≥ λ/(2·NA), et NA = "
+            "n·sinθ ≤ n (indice du milieu) ; gains réels = raccourcir λ, monter NA (jusqu'à l'indice), ou contourner "
+            "par le champ proche, la localisation de molécules uniques, l'illumination structurée, la déplétion")
+
+# La nature résout par une grande pupille (aigle), une lentille à gradient d'indice (céphalopode), des nanostructures (diatomée), du multiplexage (crevette-mante).
+_STRATEGIES_NATURE_OPT = [
+    _Nature("œil de l'aigle (grande pupille + rétine dense)",
+            ["grande ouverture (pupille) → limite de diffraction plus fine", "densité de photorécepteurs qui échantillonne finement",
+             "longue distance focale"],
+            "grande ouverture + échantillonnage fin : maximiser NA et le nombre de points — le levier « ouverture »"),
+    _Nature("œil à lentille à gradient d'indice (céphalopode, poisson)",
+            ["indice variant en volume (GRIN) qui corrige l'aberration sphérique", "image nette jusqu'au bord"],
+            "corriger l'aberration par un gradient d'indice pour ATTEINDRE la limite de diffraction, pas la dépasser"),
+    _Nature("diatomée (frustule à nanostructures sous la longueur d'onde)",
+            ["motifs de silice réguliers plus petits que λ", "manipulation de la lumière à l'échelle sous-longueur d'onde"],
+            "structurer la matière SOUS λ pour maîtriser la lumière (photonique) — parent du champ proche"),
+    _Nature("œil de la crevette-mante (multiplexage spectral/polarisation)",
+            ["seize canaux spectraux + détection de polarisation", "plus d'information par point, pas plus de points"],
+            "MULTIPLEXER l'information (couleur, polarisation) plutôt que la seule résolution spatiale — un autre axe"),
+]
+
+enregistre(Domaine(
+    nom=_OPT,
+    aliases=frozenset(_ALIAS_OPT),
+    objectif=_OBJECTIF_OPT,
+    canaux=_CANAUX_OPT,
+    principes=_PRINCIPES_OPT,
+    strategies=_STRATEGIES_NATURE_OPT,
+    loi=_LOI_OPT,
+    extras={"limite_abbe": "d = λ/(2·NA) (champ lointain conventionnel)",
+            "note": "NA = n·sinθ ≤ n ; la super-résolution (champ proche, localisation, SIM, STED) contourne le "
+                    "champ lointain sans violer Abbe"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

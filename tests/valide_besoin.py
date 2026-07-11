@@ -631,12 +631,55 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "plafond_shockley_queisser" in B.decompose("capter l energie solaire"),
       "les 12 domaines précédents inchangés après l'ajout du vol (isolation)")
 
+# ── 20) QUATORZIÈME DOMAINE : voir plus petit / résolution optique (nouvelle loi L11 = limite de diffraction d'Abbe) ──
+dop = B.decompose("voir plus petit")
+check(dop["statut"] == "decompose", "besoin résolution optique connu -> decompose")
+check("diffraction" in dop["objectif_reel"].lower() and "abbe" in dop["objectif_reel"].lower(),
+      "objectif réel optique = limite de diffraction d'Abbe")
+check("limite_abbe" in dop, "extras propres : la limite d'Abbe")
+opt_canaux = {c.canal for c in dop["canaux"]}
+check(opt_canaux == {"longueur d onde", "ouverture numerique", "champ proche", "localisation / commutation"},
+      f"4 canaux de la résolution optique ({opt_canaux})")
+prop = B.principes("voir plus petit")
+pop = {e["nom"]: e for e in prop["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : sous Abbe (conventionnel) et NA > n
+sous_abbe = pop["microscope conventionnel « résolvant 50 nm » (λ=550, NA=1,4)"]
+check(sous_abbe["atome"].statut == A.REFUTE, "50 nm conventionnel < Abbe -> RÉFUTÉ")
+check(A.est_refute(sous_abbe["atome"].contenu), "contenu réfuté (50 nm) dans la garde")
+na_sup = pop["objectif « à NA 1,7 dans l'air »"]
+check(na_sup["atome"].statut == A.REFUTE, "NA 1,7 dans l'air (n=1) -> RÉFUTÉ")
+# procédés réels (dont la super-résolution, exemptée) -> SUPPOSITIONS
+for nom in ("immersion à huile (NA élevé)", "STED (déplétion par émission stimulée)",
+            "PALM / STORM (localisation de molécules uniques)"):
+    e = pop[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prop["liste"]), "aucun principe optique promu en FAIT")
+check("candidat pour resolution_optique" in pop["immersion à huile (NA élevé)"]["atome"].portee.condition,
+      "portée des principes optiques nommant resolution_optique")
+# la loi L11 : sous Abbe (conventionnel) réfuté, super-résolution cohérente
+st_op, _, loi_op = COH.juge_dispositif({"type": "imagerie_optique", "longueur_onde_nm": 550,
+                                        "ouverture_numerique": 1.4, "resolution_nm": 50})
+check(st_op == COH.VIOLE and loi_op == COH.L11, "juge : 50 nm conventionnel -> VIOLE via L11")
+check(COH.juge_dispositif({"type": "imagerie_optique", "longueur_onde_nm": 550, "ouverture_numerique": 1.4,
+                           "indice_milieu": 1.5, "resolution_nm": 30, "super_resolution": True})[0]
+      == COH.COHERENT_BORNE, "STED 30 nm super-résolu -> cohérent, pas de faux positif")
+# stratégies naturelles propres (aigle, diatomée)
+natop = B.strategies_naturelles("voir plus petit")
+check(len(natop) >= 4 and any("aigle" in s["exemple"].lower() for s in natop), "stratégies optiques propres (aigle)")
+check(not any("colibri" in s["exemple"] for s in natop) and not any("tournesol" in s["exemple"] for s in natop),
+      "pas de fuite des stratégies vol/solaire vers l'optique")
+# les TREIZE domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "puissance_induite_ideale" in B.decompose("vol stationnaire")
+      and "tension_reversible_V" in B.decompose("produire de l hydrogene"),
+      "les 13 domaines précédents inchangés après l'ajout de l'optique (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
-                              "sustentation"],
-      "treize domaines modélisés, dans l'ordre d'enregistrement")
+                              "sustentation", "resolution_optique"],
+      "quatorze domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
