@@ -76,4 +76,14 @@ check("invente_physique pression→lumière -> INVENTION (piézo+LED)",
       ia.invente_physique("pression", "lumiere").statut == PH.INVENTION)
 check("inventaire_physique non vide (concepts cohérents nouveaux)", len(ia.inventaire_physique()) > 0)
 
+# Phase 2 (les 3 axes) via la façade : routeur multi-domaines + boucle composite sous contrat d'atome
+rc = ia.compose_besoin("maison autonome")
+check("compose_besoin composite -> 4 domaines sous 4 lois distinctes, complet",
+      rc["statut"] == "compose" and rc["complet"] and len(set(rc["lois"])) == 4)
+check("compose_besoin besoin simple -> HORS (pas de maillage)", ia.compose_besoin("rafraichir une piece")["statut"] == "hors")
+ric = ia.invente_composite("centre de calcul")
+check("invente_composite -> blackboard partagé, aucun fait promu, manque visible",
+      ric["statut"] == "propose" and ric["n_suppositions"] > 0 and ric["manques"] != []
+      and all(ric["blackboard"].faits(s) == [] for s in ric["sujets"]))
+
 print(f"\nIA VALIDÉ — {ok}/{total}." if ok == total else f"\nÉCHEC {ok}/{total}")
