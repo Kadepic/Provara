@@ -928,14 +928,57 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "borne_entropie" in B.decompose("compresser des donnees"),
       "les 19 domaines précédents inchangés après l'ajout du chiffrement (isolation)")
 
+# ── 27) VINGT-ET-UNIÈME DOMAINE : voler loin / croisière (nouvelle loi L18 = traînée induite minimale) ──
+dcro = B.decompose("voler loin")
+check(dcro["statut"] == "decompose", "besoin vol de croisière connu -> decompose")
+check("envergure" in dcro["objectif_reel"].lower() and "induite" in dcro["objectif_reel"].lower(),
+      "objectif réel croisière = envergure, traînée induite")
+check("trainee_induite_min" in dcro, "extras propres : la traînée induite minimale")
+cro_canaux = {c.canal for c in dcro["canaux"]}
+check(cro_canaux == {"envergure", "finesse", "altitude vitesse", "fraction de carburant"},
+      f"4 canaux de la croisière ({cro_canaux})")
+prcro = B.principes("voler loin")
+pcro = {e["nom"]: e for e in prcro["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : traînée induite nulle, et e > 1
+di0 = pcro["aile « à traînée induite nulle » en portance"]
+check(di0["atome"].statut == A.REFUTE, "traînée induite nulle en portance -> RÉFUTÉ")
+check(A.est_refute(di0["atome"].contenu), "contenu réfuté (traînée nulle) dans la garde")
+e15 = pcro["aile « à efficacité d'envergure 1,5 »"]
+check(e15["atome"].statut == A.REFUTE, "efficacité d'envergure 1,5 -> RÉFUTÉ")
+# procédés réels (dont le dirigeable à portance statique) -> SUPPOSITIONS
+for nom in ("aile longue et fine (grande envergure)", "winglet / dispositif de bout d'aile",
+            "dirigeable / portance statique"):
+    e = pcro[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prcro["liste"]), "aucun principe de croisière promu en FAIT")
+check("candidat pour vol_croisiere" in pcro["aile longue et fine (grande envergure)"]["atome"].portee.condition,
+      "portée des principes de croisière nommant vol_croisiere")
+# la loi L18 : traînée induite nulle réfutée, planeur réaliste cohérent
+st_cro, _, loi_cro = COH.juge_dispositif({"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60,
+                                          "vitesse_m_s": 250, "rho_air": 0.4, "trainee_induite_N": 0})
+check(st_cro == COH.VIOLE and loi_cro == COH.L18, "juge : traînée induite nulle -> VIOLE via L18")
+check(COH.juge_dispositif({"type": "vol_croisiere", "portance_N": 5000, "envergure_m": 20, "vitesse_m_s": 30,
+                           "rho_air": 1.0, "trainee_induite_N": 60, "efficacite_envergure": 0.9})[0]
+      == COH.COHERENT_BORNE, "planeur (> plancher) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (frégate, martinet)
+natcro = B.strategies_naturelles("voler loin")
+check(len(natcro) >= 4 and any("frégate" in s["exemple"].lower() for s in natcro), "stratégies croisière propres (frégate)")
+check(not any("albatros" in s["exemple"] for s in natcro) and not any("seiche" in s["exemple"] for s in natcro),
+      "pas de fuite des stratégies vol stationnaire/chiffrement vers la croisière")
+# les VINGT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "secret_parfait" in B.decompose("chiffrer un message")
+      and "plancher_radiatif" in B.decompose("isoler thermiquement"),
+      "les 20 domaines précédents inchangés après l'ajout de la croisière (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
                               "calcul", "communication", "captation_solaire", "production_hydrogene",
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
                               "production_alimentaire", "compression_information", "isolation_thermique",
-                              "confidentialite_information"],
-      "vingt domaines modélisés, dans l'ordre d'enregistrement")
+                              "confidentialite_information", "vol_croisiere"],
+      "vingt-et-un domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

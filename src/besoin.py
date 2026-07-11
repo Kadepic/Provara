@@ -3088,6 +3088,148 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-ET-UNIÈME DOMAINE : voler loin / croisière efficace. Nouvelle loi dure au juge (L18) : la TRAÎNÉE INDUITE
+#  MINIMALE — produire une portance L à la vitesse V avec une envergure b coûte au moins L²/(½ρV²πb²) de traînée
+#  induite (efficacité d'envergure ≤ 1, l'aile elliptique e=1 étant l'optimum). REFRAMING machine : l'ennemi du
+#  vol longue distance n'est pas la traînée de forme mais le COÛT DE LA PORTANCE (le sillage tourbillonnaire) ;
+#  comme D_i ∝ 1/b², une GRANDE ENVERGURE fine est le levier maître (planeurs, albatros). Portée = (V/c)·(L/D)·
+#  ln(W₀/W₁) (Breguet) : maximiser la finesse L/D et la fraction de carburant. Distinct de L10 (vol stationnaire).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CROISIERE = "vol_croisiere"
+_ALIAS_CRO = {
+    "voler loin", "voler en croisiere", "maximiser l autonomie en vol", "planer efficacement",
+    "reduire la trainee en vol", "voler longtemps",
+}
+
+# ── « Canaux » : les leviers de l'efficacité en croisière ────────────────────────────────────────────────────────
+_CANAUX_CRO = [
+    Canal("envergure", "portance", "AGRANDIR l'envergure b : la traînée induite décroît en 1/b²",
+          True, "de loin le plus gros levier : une aile longue et fine étale le sillage → moins de traînée induite ; "
+                "c'est pourquoi planeurs et albatros ont de très grandes envergures — mais masse et flexion à gérer"),
+    Canal("finesse", "portance", "MAXIMISER la finesse L/D (profils laminaires, surfaces propres) : la portée est linéaire en L/D",
+          True, "Breguet : portée ∝ L/D → un bon rapport portance/traînée (profil laminaire, état de surface, "
+                "compromis épaisseur) démultiplie l'autonomie ; l'aérodynamique fine, le levier « finesse »"),
+    Canal("altitude vitesse", "portance", "VOLER HAUT (air raréfié) à la vitesse de finesse maximale",
+          True, "en altitude l'air est moins dense → moins de traînée de forme pour la même portance, à la vitesse "
+                "qui maximise L/D ; contrainte de motorisation et de pressurisation — le levier « régime optimal »"),
+    Canal("fraction de carburant", "portance", "AUGMENTER la fraction de carburant (Breguet : portée ∝ ln(W₀/W₁))",
+          True, "la portée croît au logarithme du rapport de masse (comme la fusée) → structure légère et grande "
+                "réserve ; retours décroissants → l'essentiel se joue sur L/D et l'envergure, pas la masse"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la traînée induite minimale (type `vol_croisiere`, D_i ≥ L²/(½ρV²πb²)) ──
+_PRINCIPES_CRO = [
+    _P("aile longue et fine (grande envergure)",
+       "voler loin : aile de grand allongement (planeur) minimisant la traînée induite",
+       {"type": "vol_croisiere", "portance_N": 5000, "envergure_m": 20, "vitesse_m_s": 30, "rho_air": 1.0,
+        "trainee_induite_N": 60, "efficacite_envergure": 0.9}, True, True,
+       "—", "mature",
+       0.65, "le grand allongement étale le sillage → traînée induite minimale (finesse de planeur ~50) ; masse et "
+             "flexion de l'aile longue à maîtriser — le levier « envergure » incarné"),
+    _P("winglet / dispositif de bout d'aile",
+       "voler loin : ailette de bout d'aile réduisant le tourbillon marginal",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 5000, "efficacite_envergure": 0.85}, True, True,
+       "—", "mature",
+       0.55, "récupère une partie de l'énergie du tourbillon de bout d'aile → augmente l'efficacité d'envergure "
+             "effective sans allonger la voilure ; gain modéré, généralisé sur les avions de ligne — le levier « bout d'aile »"),
+    _P("aile à distribution elliptique (e ≈ 1)",
+       "voler loin : forme en plan elliptique approchant l'efficacité d'envergure optimale",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 3400, "efficacite_envergure": 0.98}, True, True,
+       "—", "mature",
+       0.5, "la distribution elliptique atteint presque l'optimum théorique (e=1) → traînée induite minimale pour "
+            "une envergure donnée ; fabrication complexe (Spitfire) — approcher le plancher, pas le franchir"),
+    _P("profil laminaire (finesse L/D élevée)",
+       "voler loin : profil et surfaces favorisant l'écoulement laminaire pour un bon rapport L/D",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 5500, "efficacite_envergure": 0.8}, True, True,
+       "—", "mature",
+       0.5, "retarde la transition turbulente → moins de traînée de frottement, meilleur L/D donc plus de portée "
+            "(Breguet) ; sensibilité aux salissures et insectes — le levier « finesse »"),
+    _P("vol en formation (profiter du sillage)",
+       "voler loin : voler dans le courant ascendant du sillage d'un autre appareil",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 4500, "efficacite_envergure": 0.9}, True, True,
+       "—", "recherche",
+       0.4, "l'ascendance du tourbillon du leader réduit la traînée induite des suiveurs (comme les oies) → "
+            "économies mesurées ; coordination et sécurité serrées — le levier « emprunter le sillage »"),
+    _P("plané dynamique / thermique (énergie de l'air)",
+       "voler loin : extraire l'énergie des ascendances ou du gradient de vent au lieu de propulser",
+       {"type": "vol_croisiere"}, True, True,
+       "—", "mature (planeurs, oiseaux)",
+       0.45, "REFRAMING : puiser l'énergie du MILIEU (thermiques, cisaillement de vent) → distance quasi illimitée "
+             "sans carburant ; dépend de la météo et du pilotage — « ne pas dépenser sa propre énergie »"),
+    _P("altitude de croisière optimale",
+       "voler loin : monter à l'altitude où l'air raréfié minimise la traînée à la vitesse de finesse maximale",
+       {"type": "vol_croisiere"}, True, True,
+       "—", "mature",
+       0.5, "l'air moins dense réduit la traînée de forme pour la même portance, à la vitesse qui maximise L/D → "
+            "consommation minimale ; motorisation et pressurisation à assurer — le levier « régime optimal »"),
+    _P("dirigeable / portance statique",
+       "voler loin : sustenter par flottabilité (gaz léger), sans créer de traînée induite",
+       {"type": "vol_croisiere"}, True, True,
+       "—", "mature (niche)",
+       0.4, "REFRAMING : la portance STATIQUE ne crée pas de sillage tourbillonnaire → pas de traînée induite, "
+            "endurance énorme à basse vitesse ; volume et sensibilité au vent — contourner le coût de la portance"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("aile « à traînée induite nulle » en portance",
+       "voler loin : aile portante ne produisant aucune traînée induite",
+       {"type": "vol_croisiere", "portance_N": 686000, "envergure_m": 60, "vitesse_m_s": 250, "rho_air": 0.4,
+        "trainee_induite_N": 0}, True, True,
+       "—", "revendication",
+       0.3, "produire de la portance crée un sillage tourbillonnaire : traînée induite nulle < minimum (~3329 N ici) "
+            "— impossible ; à réfuter par la traînée induite minimale"),
+    _P("aile « à efficacité d'envergure 1,5 »",
+       "voler loin : aile revendiquant une efficacité d'envergure de 1,5 (au-delà de l'elliptique)",
+       {"type": "vol_croisiere", "efficacite_envergure": 1.5}, True, True,
+       "—", "revendication",
+       0.25, "l'efficacité d'envergure ne peut dépasser 1 (la distribution elliptique est l'optimum) → 1,5 est "
+             "impossible"),
+]
+
+_OBJECTIF_CRO = ("Le but réel n'est pas de « pousser plus fort » mais de réduire le COÛT DE LA PORTANCE : produire "
+                 "de la portance crée un sillage tourbillonnaire dont la traînée INDUITE vaut au moins L²/(½ρV²πb²). "
+                 "Comme elle décroît en 1/b², une GRANDE ENVERGURE fine est le levier maître (planeurs, albatros). "
+                 "Autres leviers : maximiser la finesse L/D (profils laminaires — la portée de Breguet est linéaire "
+                 "en L/D) ; voler HAUT à la vitesse de finesse maximale ; augmenter la fraction de carburant (portée "
+                 "∝ ln(W₀/W₁)). La portance statique (dirigeable) contourne entièrement la traînée induite. Chaque "
+                 "principe reste jugé par la traînée induite minimale.")
+_LOI_CRO = ("traînée induite minimale : produire une portance L à la vitesse V avec une envergure b coûte une "
+            "traînée induite ≥ L²/(½ρV²πb²) (efficacité d'envergure ≤ 1) ; gains réels = grande envergure (∝ 1/b²), "
+            "finesse L/D élevée, altitude/vitesse optimale, fraction de carburant (Breguet), ou portance statique")
+
+# La nature vole loin par la grande envergure (frégate), les ascendances (vautour), la croisière efficace (martinet), le bout d'aile (rapace).
+_STRATEGIES_NATURE_CRO = [
+    _Nature("frégate (immense envergure, plané prolongé)",
+            ["très grand allongement pour une masse faible", "plane des jours sans battre"],
+            "une grande envergure fine minimise la traînée induite — le levier « envergure »"),
+    _Nature("vautour / condor (ascendances thermiques)",
+            ["exploite les colonnes d'air chaud pour monter sans effort", "grandes ailes à fentes de bout"],
+            "puiser l'énergie de l'air ascendant plutôt que la dépenser — planer pour presque rien"),
+    _Nature("martinet (croisière ultra-efficace)",
+            ["passe des mois en vol continu", "aile effilée à faible traînée"],
+            "une croisière soutenue très efficace (finesse et faible traînée) — voler longtemps pour peu"),
+    _Nature("bout d'aile fendu / relevé des rapaces",
+            ["plumes de bout écartées réduisant le tourbillon marginal", "winglet biologique"],
+            "réduire le tourbillon de bout d'aile — l'analogue naturel du winglet, augmente l'efficacité d'envergure"),
+]
+
+enregistre(Domaine(
+    nom=_CROISIERE,
+    aliases=frozenset(_ALIAS_CRO),
+    objectif=_OBJECTIF_CRO,
+    canaux=_CANAUX_CRO,
+    principes=_PRINCIPES_CRO,
+    strategies=_STRATEGIES_NATURE_CRO,
+    loi=_LOI_CRO,
+    extras={"trainee_induite_min": "L²/(½ρV²πb²), efficacité d'envergure ≤ 1",
+            "note": "D_i ∝ 1/b² → grande envergure ; portée de Breguet R = (V/c)·(L/D)·ln(W₀/W₁) ; distinct de L10 "
+                    "(vol stationnaire, puissance induite)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

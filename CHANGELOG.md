@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 21e domaine « voler loin / croisière » + loi L18 (traînée induite minimale)
+
+Voler loin / croisière efficace. Nouvelle loi dure au juge (`L18`) : la TRAÎNÉE INDUITE MINIMALE — produire une
+portance L à la vitesse V avec une envergure b coûte au moins L²/(½ρV²πb²) de traînée induite (efficacité
+d'envergure ≤ 1, l'aile elliptique e=1 étant l'optimum). CONSERVATEUR (FAUX=0) : on ne réfute qu'une traînée
+induite déclarée sous ce plancher, ou une efficacité d'envergure > 1. Distinct de L10 (vol stationnaire, puissance
+induite). Gate `valide_coherence_physique` **257 → 268/268**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (aile « à traînée induite nulle »,
+efficacité d'envergure « 1,5 »). Reframing : l'ennemi du vol longue distance est le COÛT DE LA PORTANCE (sillage
+tourbillonnaire) ; comme D_i ∝ 1/b², une grande envergure fine est le levier maître (planeurs, albatros). Autres
+leviers : finesse L/D (Breguet portée ∝ L/D), altitude/vitesse optimale, fraction de carburant (∝ ln(W₀/W₁)),
+portance statique (dirigeable, contourne la traînée induite). Couvre grande envergure, winglet, aile elliptique,
+profil laminaire, vol en formation, plané dynamique/thermique, altitude optimale, dirigeable. 4 stratégies
+naturelles propres (frégate = envergure, vautour = ascendances, martinet = croisière efficace, bout d'aile fendu =
+winglet biologique). Gate `valide_besoin` **391 → 408/408** ; les 20 domaines précédents intacts.
+
+**JALON : 21 DOMAINES D'INVENTION, 18 LOIS PHYSIQUES DANS LE JUGE** (… L17 secret parfait, L18 traînée induite minimale).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 20e domaine « chiffrer / garder un secret » + loi L17 (secret parfait de Shannon)
 
 Chiffrer / garder un secret. Nouvelle loi dure au juge (`L17`) : le SECRET PARFAIT de Shannon (1949) — une
