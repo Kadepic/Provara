@@ -298,6 +298,12 @@ class MoteurAutonome(MoteurOuvert):
         "[_v for _r in x for _v in _r]",         # aplatie
     ]
     _MAT_AGG = ["sum({P})", "max({P})", "min({P})", "__import__('math').prod({P})"]   # trace=sum∘diagonale, produit_diagonale=prod∘diagonale…
+    # LISTE-OP ∘ APLATIE -> LISTE : trier/renverser/dédoublonner l'aplatie de la matrice. Ferme les cibles dont
+    # la sortie est une LISTE réordonnée de l'aplatie (aplati_trie = sorted∘aplatie, aplati_unique = sorted∘set…).
+    # SCOPÉ à l'aplatie SEULE (pas à toutes les primitives) : c'est LA frontière mesurée ; l'appliquer partout
+    # ne créerait que des candidats coïncidents sur specs faibles (ambiguïtés spurieuses), pas de vraie capacité.
+    _MAT_APLATIE = "[_v for _r in x for _v in _r]"
+    _MAT_LISTE_OP = ["sorted({P})", "sorted({P}, reverse=True)", "list(dict.fromkeys({P}))", "sorted(set({P}))"]
     # Schémas DICT (mapping) — domaine SANS seed : acquis par schéma sur un gap dict. Listes-de-valeurs/clés à
     # agréger + argmax/argmin (clé du max/min). Validation contextuelle : x.values() erreur sur liste/matrice -> skip.
     _DICT_LIST = ["list(x.values())", "list(x.keys())", "sorted(x.values())", "sorted(x.keys())"]  # supports d'agrégat
@@ -709,7 +715,9 @@ class MoteurAutonome(MoteurOuvert):
         ERREUR sur les entrées (= pas une matrice : zip(*scalaire), x[i][i] sur un int) est ignoré -> aucun
         faux. Câblé comme etend_vocabulaire/etend_composition (recherche dirigée, pas BFS large)."""
         existants = {e for e, _, _ in self.atomes}
-        cand = list(self._MAT_PRIMS) + [agg.format(P=p) for p in self._MAT_PRIMS for agg in self._MAT_AGG]
+        cand = (list(self._MAT_PRIMS)
+                + [agg.format(P=p) for p in self._MAT_PRIMS for agg in self._MAT_AGG]
+                + [op.format(P=self._MAT_APLATIE) for op in self._MAT_LISTE_OP])
         ajoutes = 0
         for expr in cand:
             if expr in existants:
