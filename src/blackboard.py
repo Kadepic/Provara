@@ -74,3 +74,29 @@ class Blackboard:
 
     def sujets(self) -> set:
         return set(self._entrees)
+
+    # ── COUCHE ATOMES (Phase 2 axes ①+② : le substrat partagé parle le contrat d'atome) ──
+    def poste_atome(self, sujet, atome, source: str):
+        """Dépose un ATOME (contrat atome.py) : le statut épistémique voyage AVEC la valeur sur le tableau.
+        Refuse tout non-Atome (une valeur nue passe par poste() — mais elle ne sera jamais relue comme fait).
+        La confiance de l'entrée = celle de l'atome (une seule vérité, pas deux)."""
+        import atome as A
+        if not isinstance(atome, A.Atome):
+            raise ValueError("poste_atome() exige un Atome (contrat atome.py) — pour une valeur nue, poste()")
+        return self.poste(sujet, atome, source, confiance=atome.confiance)
+
+    def atomes(self, sujet) -> list:
+        """Les entrées d'un sujet dont la valeur est un Atome (dans l'ordre de dépôt)."""
+        import atome as A
+        return [e for e in self.lis(sujet) if isinstance(e.valeur, A.Atome)]
+
+    def faits(self, sujet, contexte: dict = None) -> list:
+        """SEULS les atomes du sujet SERVABLES COMME FAIT (invariants revalidés, statut fait/convention, portée
+        couvrant `contexte` s'il est fourni). Une supposition / un réfuté / un atome muté n'en sort JAMAIS —
+        la garde FAUX=0 de la RELECTURE : le tableau ne blanchit rien."""
+        return [e for e in self.atomes(sujet) if e.valeur.est_servable_comme_fait(contexte)]
+
+    def suppositions(self, sujet) -> list:
+        """Les atomes SUPPOSITION du sujet (matière à travailler, jamais des faits)."""
+        import atome as A
+        return [e for e in self.atomes(sujet) if e.valeur.statut == A.SUPPOSITION]
