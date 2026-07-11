@@ -538,6 +538,9 @@ _LD_OPS = [
     "min(_d[{K}] for _d in {L})",
     "sorted(_d[{K}] for _d in {L})",                 # colonne triée
     "[_d for _d in {L} if {K} in _d]",               # sélection des enregistrements possédant le champ
+    # GROUP BY par champ (atome 22, frontière mesurée) : {valeur du champ: [enregistrements]} + comptes.
+    "{{_v: [_d for _d in {L} if _d[{K}] == _v] for _v in sorted({{_d2[{K}] for _d2 in {L}}})}}",
+    "{{_v: sum(1 for _d in {L} if _d[{K}] == _v) for _v in sorted({{_d2[{K}] for _d2 in {L}}})}}",
 ]
 
 
@@ -681,6 +684,11 @@ _TCV_OPS = [
     "[_d for _d in a if _d[b] == c]",            # WHERE k = v
     "[_d for _d in a if _d[b] != c]",            # WHERE k ≠ v
     "sum(1 for _d in a if _d[b] == c)",          # COUNT WHERE
+    # GROUP BY b + AGRÉGAT du champ c (atome 22) : le c est un CHAMP ici, pas une valeur — les deux
+    # lectures coexistent en candidats, la validation contextuelle et les sondes discriminent.
+    "{_v: sum(_d[c] for _d in a if _d[b] == _v) for _v in sorted({_d2[b] for _d2 in a})}",
+    "{_v: max(_d[c] for _d in a if _d[b] == _v) for _v in sorted({_d2[b] for _d2 in a})}",
+    "{_v: [_d[c] for _d in a if _d[b] == _v] for _v in sorted({_d2[b] for _d2 in a})}",
 ]
 _SSI_OPS = [
     "a.split(b)[c]",                             # c-ième segment après découpe
