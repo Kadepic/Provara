@@ -1,5 +1,30 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 30e domaine « calculer vite » + loi L27 (limite de Margolus-Levitin)
+
+Calculer vite / vitesse de calcul maximale. Nouvelle loi dure au juge (`L27`) : la limite de MARGOLUS-LEVITIN — un
+système d'énergie E effectue au plus 2E/(πℏ) ≈ 6×10³³ opérations élémentaires par seconde et par joule (un état ne
+bascule vers un état orthogonal qu'en un temps ≥ πℏ/2E). Dimension TEMPS, complémentaire de L6 (Landauer, énergie
+par bit). CONSERVATEUR (FAUX=0) : on ne réfute qu'un débit déclaré dépassant 2E/πℏ pour l'énergie déclarée (une
+machine réelle avec des joules en est à ~18 ordres de grandeur en dessous). Gate `valide_coherence_physique`
+**374 → 385/385**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (1e40 ops/s avec 1 J, 1e60 avec 1 MJ).
+Reframing : la vitesse est bornée par l'ÉNERGIE ; le mur réel est la DISSIPATION, pas encore la physique. Leviers :
+plus d'énergie (mais la chaleur explose), faire MOINS d'opérations (algorithme, calcul réversible), paralléliser,
+substrat rapide. Couvre processeur classique, réversible, montée en énergie, quantique, photonique, supraconducteur,
+ordinateur ultime de Lloyd (plafond 2mc²/πℏ), réduction algorithmique. 4 stratégies naturelles propres (ATP synthase
+= cadence bornée par l'énergie, flagelle, ribosome, canal ionique). Gate `valide_besoin` **544 → 561/561** ; les 29
+domaines précédents intacts.
+
+**JALON : 30 DOMAINES D'INVENTION, 27 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+min. séparation, L4 quantité de mouvement, L5 efficacité lumineuse, L6 Landauer, L7 Shannon capacité, L8
+Shockley-Queisser, L9 électrolyse, L10 puissance induite du vol, L11 diffraction d'Abbe, L12 Betz, L13 Tsiolkovski,
+L14 plafond photosynthétique, L15 borne d'entropie, L16 Stefan-Boltzmann, L17 secret parfait, L18 traînée induite,
+L19 bruit de grenaille, L20 facteur de bruit, L21 Nyquist-Shannon, L22 borne du tri, L23 borne de la recherche, L24
+Amdahl, L25 3e principe, L26 limite quantique standard, L27 Margolus-Levitin). Physique de l'information complète :
+L6 énergie/bit + L27 vitesse.
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 29e domaine « mesurer le temps » + loi L26 (limite quantique standard)
 
 Mesurer le temps / horloge de précision. Nouvelle loi dure au juge (`L26`) : la LIMITE QUANTIQUE STANDARD —

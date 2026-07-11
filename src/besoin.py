@@ -4334,6 +4334,142 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  TRENTIÈME DOMAINE : calculer VITE (vitesse de calcul maximale). Nouvelle loi dure au juge (L27) : la limite de
+#  MARGOLUS-LEVITIN — un système d'énergie E effectue au plus 2E/(πℏ) ≈ 6×10³³ opérations élémentaires par seconde
+#  et par joule (un état ne bascule vers un état orthogonal qu'en un temps ≥ πℏ/2E). REFRAMING machine : la vitesse
+#  de calcul est bornée par l'ÉNERGIE (dimension TEMPS, complémentaire de Landauer qui borne l'énergie par bit).
+#  Leviers : plus d'ÉNERGIE (puissance) pour plus d'opérations/s ; faire MOINS d'opérations (algorithme, calcul
+#  réversible) ; PARALLÉLISER pour additionner les débits ; le plafond ultime (Lloyd) = 2mc²/(πℏ) pour 1 kg.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_VCALC = "vitesse_calcul"
+_ALIAS_VCALC = {
+    "calculer vite", "accelerer la vitesse de calcul", "augmenter le nombre d operations par seconde",
+    "atteindre la vitesse de calcul maximale", "calculer plus vite", "maximiser le debit d operations",
+}
+
+# ── « Canaux » : les leviers de la vitesse de calcul ─────────────────────────────────────────────────────────────
+_CANAUX_VCALC = [
+    Canal("energie", "information", "FOURNIR plus d'ÉNERGIE (puissance) : le débit d'opérations est ≤ 2E/πℏ",
+          True, "la limite de Margolus-Levitin lie vitesse et énergie → plus de puissance permet plus d'opérations/s ; "
+                "mais la dissipation (Landauer) et le refroidissement bornent en pratique — le levier « énergie »"),
+    Canal("moins d operations", "information", "FAIRE MOINS d'opérations : meilleur algorithme, calcul réversible",
+          True, "la façon la plus sûre d'aller vite est d'avoir MOINS à calculer → algorithmes de meilleure "
+                "complexité, calcul réversible/adiabatique qui n'efface pas ; le levier « efficacité »"),
+    Canal("parallelisme", "information", "PARALLÉLISER : additionner les débits de nombreuses unités",
+          True, "chaque unité respecte la borne, mais N unités additionnent leur débit → le débit AGRÉGÉ croît avec "
+                "l'énergie totale ; borné par la loi d'Amdahl côté algorithme — le levier « en largeur »"),
+    Canal("substrat physique", "information", "CHOISIR un substrat rapide (photonique, supraconducteur, quantique)",
+          True, "des porteurs plus rapides (photons) ou moins dissipatifs (supraconducteurs) rapprochent de la borne "
+                "pour une énergie donnée ; le calcul quantique parallélise les états — le levier « substrat »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite de Margolus-Levitin (type `vitesse_calcul`, ops/s ≤ 2E/πℏ) ────
+_PRINCIPES_VCALC = [
+    _P("processeur classique (référence)",
+       "calculer vite : microprocesseur silicium à quelques GHz",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e18, "energie_J": 1000}, True, True,
+       "—", "mature",
+       0.6, "des exaflops (~1e18 op/s) pour des kilojoules → à ~18 ordres de grandeur SOUS la borne de "
+            "Margolus-Levitin ; le mur réel est la dissipation et le refroidissement, pas encore la physique — la référence"),
+    _P("calcul réversible (moins d'opérations dissipées)",
+       "calculer vite : logique réversible qui n'efface pas d'information",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e15, "energie_J": 1}, True, True,
+       "—", "recherche",
+       0.5, "en n'effaçant pas, échappe à Landauer et réduit la dissipation → permet plus d'opérations pour une "
+            "énergie donnée ; surcoût de portes — complémentaire de la vitesse brute"),
+    _P("montée en énergie / puissance",
+       "calculer vite : fournir plus de puissance pour augmenter le débit d'opérations",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e20, "energie_J": 100000}, True, True,
+       "—", "mature",
+       0.45, "plus d'énergie autorise plus d'opérations/s (Margolus-Levitin) → mais la chaleur à évacuer explose "
+             "(Landauer, Carnot) ; le levier « énergie » bute vite sur le refroidissement, pas sur la borne quantique"),
+    _P("calcul quantique (parallélisme d'états)",
+       "calculer vite : exploiter la superposition pour explorer plusieurs états à la fois",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e18, "energie_J": 1000}, True, True,
+       "—", "recherche",
+       0.45, "pour certaines tâches (factorisation, recherche), traite une superposition d'états → accélération "
+             "algorithmique, pas une violation de la borne physique ; décohérence à dompter — le levier « quantique »"),
+    _P("calcul photonique (porteurs rapides)",
+       "calculer vite : opérations portées par la lumière (produits matriciels optiques)",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e16, "energie_J": 10}, True, True,
+       "—", "émergent",
+       0.4, "des porteurs à la vitesse de la lumière et peu dissipatifs → rapide et efficace pour l'algèbre "
+            "linéaire (IA) ; conversions optique/électrique coûteuses — le levier « substrat rapide »"),
+    _P("logique supraconductrice (basse dissipation)",
+       "calculer vite : commutation à quantum de flux unique, très peu dissipative",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e17, "energie_J": 100}, True, True,
+       "—", "recherche",
+       0.4, "commutation ultra-rapide et faible dissipation à basse température → haut débit par joule ; le coût "
+            "cryogénique à amortir à grande échelle — le levier « substrat peu dissipatif »"),
+    _P("ordinateur ultime de Lloyd (1 kg à la borne)",
+       "calculer vite : la vitesse maximale d'un kilogramme de matière (2mc²/πℏ)",
+       {"type": "vitesse_calcul", "operations_par_seconde": 5e50, "energie_J": 9e16}, True, True,
+       "—", "théorique",
+       0.3, "le PLAFOND théorique (Seth Lloyd) : ~5×10⁵⁰ op/s pour 1 kg (E = mc²) → montre l'immense marge restante "
+            "avant la physique fondamentale ; irréalisable (plasma à la température de Planck) — la borne ultime"),
+    _P("réduction algorithmique (moins de calcul)",
+       "calculer vite : résoudre le problème avec une bien meilleure complexité",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e15, "energie_J": 1}, True, True,
+       "—", "mature",
+       0.55, "diviser le nombre d'opérations par un meilleur algorithme bat n'importe quel gain matériel → le levier "
+             "le plus profond et le moins cher ; suppose qu'un meilleur algorithme existe — « moins à calculer »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("processeur « à 1e40 opérations/s avec 1 J »",
+       "calculer vite : effectuer 10⁴⁰ opérations par seconde en ne disposant que d'un joule",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e40, "energie_J": 1}, True, True,
+       "—", "revendication",
+       0.3, "10⁴⁰ op/s > limite de Margolus-Levitin (~6×10³³ pour 1 J) : la vitesse de calcul est bornée par "
+            "l'énergie — impossible ; à réfuter"),
+    _P("calculateur « à 1e60 opérations/s avec 1 MJ »",
+       "calculer vite : 10⁶⁰ opérations par seconde avec un mégajoule",
+       {"type": "vitesse_calcul", "operations_par_seconde": 1e60, "energie_J": 1000000}, True, True,
+       "—", "revendication",
+       0.25, "10⁶⁰ op/s > limite de Margolus-Levitin (~6×10³⁹ pour 1 MJ) — impossible"),
+]
+
+_OBJECTIF_VCALC = ("Le but réel n'est pas d'« ajouter des GHz » à l'aveugle mais de comprendre ce qui borne la "
+                   "vitesse : la limite de Margolus-Levitin fixe qu'un système d'énergie E effectue au plus 2E/(πℏ) "
+                   "≈ 6×10³³ opérations par seconde et par joule (dimension TEMPS, complémentaire de Landauer qui "
+                   "borne l'énergie par bit). Les machines réelles en sont à ~18 ordres de grandeur en dessous : le "
+                   "vrai mur est la DISSIPATION et le refroidissement. Leviers : plus d'ÉNERGIE (mais la chaleur "
+                   "explose) ; faire MOINS d'opérations (algorithme, calcul réversible) ; PARALLÉLISER (additionner "
+                   "les débits) ; substrat rapide (photonique, supraconducteur). Chaque principe reste jugé par la "
+                   "limite de Margolus-Levitin.")
+_LOI_VCALC = ("limite de Margolus-Levitin : un système d'énergie E effectue au plus 2E/(πℏ) ≈ 6×10³³ opérations "
+              "élémentaires par seconde et par joule ; gains réels = plus d'énergie (borné par la dissipation), "
+              "moins d'opérations (algorithme, calcul réversible), parallélisme, substrat rapide/peu dissipatif")
+
+# La nature calcule vite (à énergie donnée) via des moteurs moléculaires (ATP synthase), le flagelle, le ribosome, le canal ionique.
+_STRATEGIES_NATURE_VCALC = [
+    _Nature("ATP synthase (moteur rotatif moléculaire)",
+            ["tourne à une cadence bornée par l'énergie chimique disponible", "convertit un flux de protons en rotation"],
+            "une cadence d'opérations fixée par l'ÉNERGIE fournie — l'analogue moléculaire de Margolus-Levitin"),
+    _Nature("moteur flagellaire bactérien",
+            ["rotation dont la vitesse dépend du gradient de protons", "plus d'énergie = plus de tours"],
+            "la vitesse d'un « calcul » mécanique croît avec l'énergie motrice disponible — le levier « énergie »"),
+    _Nature("ribosome (synthèse à cadence bornée)",
+            ["ajoute les acides aminés à un rythme fixé par la chimie", "vitesse limitée par les étapes énergétiques"],
+            "un débit d'opérations plafonné par le pas énergétique de chaque étape — la borne physique du vivant"),
+    _Nature("canal ionique (commutation rapide à faible énergie)",
+            ["s'ouvre et se ferme très vite pour peu d'énergie", "commutation efficace"],
+            "commuter vite pour peu d'énergie — approcher la borne pour un budget donné, le levier « efficacité »"),
+]
+
+enregistre(Domaine(
+    nom=_VCALC,
+    aliases=frozenset(_ALIAS_VCALC),
+    objectif=_OBJECTIF_VCALC,
+    canaux=_CANAUX_VCALC,
+    principes=_PRINCIPES_VCALC,
+    strategies=_STRATEGIES_NATURE_VCALC,
+    loi=_LOI_VCALC,
+    extras={"margolus_levitin": "≤ 2E/(πℏ) ≈ 6×10³³ opérations/s par joule",
+            "note": "dimension TEMPS (complémentaire de L6 Landauer, énergie/bit) ; plafond ultime de Lloyd = "
+                    "2mc²/πℏ pour 1 kg ; le mur réel est la dissipation, pas encore cette borne"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

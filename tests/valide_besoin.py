@@ -1307,6 +1307,47 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "amdahl" in B.decompose("accelerer un calcul"),
       "les 28 domaines précédents inchangés après l'ajout de l'horloge (isolation)")
 
+# ── 36) TRENTIÈME DOMAINE : calculer vite (nouvelle loi L27 = limite de Margolus-Levitin, ops/s ≤ 2E/πℏ) ──
+dvc = B.decompose("calculer vite")
+check(dvc["statut"] == "decompose", "besoin vitesse de calcul connu -> decompose")
+check("margolus" in dvc["objectif_reel"].lower() and "seconde" in dvc["objectif_reel"].lower(),
+      "objectif réel vitesse de calcul = Margolus-Levitin, opérations par seconde")
+check("margolus_levitin" in dvc, "extras propres : la limite de Margolus-Levitin")
+vc_canaux = {c.canal for c in dvc["canaux"]}
+check(vc_canaux == {"energie", "moins d operations", "parallelisme", "substrat physique"},
+      f"4 canaux de la vitesse de calcul ({vc_canaux})")
+prvc = B.principes("calculer vite")
+pvc = {e["nom"]: e for e in prvc["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : ops/s au-dessus de 2E/πℏ
+op40 = pvc["processeur « à 1e40 opérations/s avec 1 J »"]
+check(op40["atome"].statut == A.REFUTE, "1e40 ops/s avec 1 J > ML -> RÉFUTÉ")
+check(A.est_refute(op40["atome"].contenu), "contenu réfuté (1e40 ops) dans la garde")
+op60 = pvc["calculateur « à 1e60 opérations/s avec 1 MJ »"]
+check(op60["atome"].statut == A.REFUTE, "1e60 ops/s avec 1 MJ > ML -> RÉFUTÉ")
+# procédés réels (dont l'ordinateur ultime de Lloyd, à la borne) -> SUPPOSITIONS
+for nom in ("processeur classique (référence)", "ordinateur ultime de Lloyd (1 kg à la borne)",
+            "réduction algorithmique (moins de calcul)"):
+    e = pvc[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prvc["liste"]), "aucun principe de vitesse de calcul promu en FAIT")
+check("candidat pour vitesse_calcul" in pvc["processeur classique (référence)"]["atome"].portee.condition,
+      "portée des principes de vitesse de calcul nommant vitesse_calcul")
+# la loi L27 : ops/s au-dessus de ML réfutée, supercalculateur cohérent
+st_vc, _, loi_vc = COH.juge_dispositif({"type": "vitesse_calcul", "operations_par_seconde": 1e40, "energie_J": 1})
+check(st_vc == COH.VIOLE and loi_vc == COH.L27, "juge : 1e40 ops/s avec 1 J -> VIOLE via L27")
+check(COH.juge_dispositif({"type": "vitesse_calcul", "operations_par_seconde": 1e18, "energie_J": 1000})[0]
+      == COH.COHERENT_BORNE, "supercalculateur 1e18 ops/s (<< ML) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (ATP synthase, ribosome)
+natvc = B.strategies_naturelles("calculer vite")
+check(len(natvc) >= 4 and any("atp synthase" in s["exemple"].lower() for s in natvc), "stratégies vitesse de calcul propres (ATP synthase)")
+check(not any("circadienne" in s["exemple"] for s in natvc) and not any("boomerang" in s["exemple"].lower() for s in natvc),
+      "pas de fuite des stratégies horloge/cryogénie vers la vitesse de calcul")
+# les VINGT-NEUF domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "limite_quantique_standard" in B.decompose("mesurer le temps")
+      and "zero_absolu" in B.decompose("refroidir vers le zero absolu"),
+      "les 29 domaines précédents inchangés après l'ajout de la vitesse de calcul (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
@@ -1315,8 +1356,9 @@ check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "
                               "production_alimentaire", "compression_information", "isolation_thermique",
                               "confidentialite_information", "vol_croisiere", "detection_signal",
                               "amplification_signal", "numerisation_signal", "tri_donnees", "recherche_donnees",
-                              "parallelisation_calcul", "refroidissement_cryogenique", "mesure_temps"],
-      "vingt-neuf domaines modélisés, dans l'ordre d'enregistrement")
+                              "parallelisation_calcul", "refroidissement_cryogenique", "mesure_temps",
+                              "vitesse_calcul"],
+      "trente domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
