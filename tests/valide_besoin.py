@@ -1140,6 +1140,46 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "facteur_de_bruit_min" in B.decompose("amplifier un signal"),
       "les 24 domaines précédents inchangés après l'ajout du tri (isolation)")
 
+# ── 32) VINGT-SIXIÈME DOMAINE : rechercher dans des données (nouvelle loi L23 = borne de la recherche, ≥ n/2) ──
+dre = B.decompose("rechercher un element")
+check(dre["statut"] == "decompose", "besoin recherche connu -> decompose")
+check("index" in dre["objectif_reel"].lower() and "structur" in dre["objectif_reel"].lower(),
+      "objectif réel recherche = pré-structurer / indexer")
+check("borne_recherche" in dre, "extras propres : la borne de la recherche")
+re_canaux = {c.canal for c in dre["canaux"]}
+check(re_canaux == {"index", "hachage", "filtre probabiliste", "quantique"}, f"4 canaux de la recherche ({re_canaux})")
+prre = B.principes("rechercher un element")
+pre = {e["nom"]: e for e in prre["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : recherche non indexée sous n/2
+re20 = pre["recherche « dans un million de non indexés en 20 examens »"]
+check(re20["atome"].statut == A.REFUTE, "20 examens < n/2 non indexé -> RÉFUTÉ")
+check(A.est_refute(re20["atome"].contenu), "contenu réfuté (20 examens) dans la garde")
+re100 = pre["recherche « dans un milliard de non indexés en 100 examens »"]
+check(re100["atome"].statut == A.REFUTE, "100 examens << n/2 -> RÉFUTÉ")
+# procédés réels (dont indexés et quantique, exemptés) -> SUPPOSITIONS
+for nom in ("parcours linéaire (sans structure)", "table de hachage (O(1))", "recherche quantique (Grover)"):
+    e = pre[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prre["liste"]), "aucun principe de recherche promu en FAIT")
+check("candidat pour recherche_donnees" in pre["parcours linéaire (sans structure)"]["atome"].portee.condition,
+      "portée des principes de recherche nommant recherche_donnees")
+# la loi L23 : recherche non indexée sous n/2 réfutée, table de hachage cohérente
+st_re, _, loi_re = COH.juge_dispositif({"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20})
+check(st_re == COH.VIOLE and loi_re == COH.L23, "juge : 20 examens non indexé -> VIOLE via L23")
+check(COH.juge_dispositif({"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1,
+                           "donnees_indexees": True})[0] == COH.COHERENT_BORNE,
+      "hachage O(1) (indexé) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (chien pisteur, pigeon)
+natre = B.strategies_naturelles("rechercher un element")
+check(len(natre) >= 4 and any("pisteur" in s["exemple"].lower() for s in natre), "stratégies recherche propres (chien pisteur)")
+check(not any("rivière" in s["exemple"] for s in natre) and not any("fovéa" in s["exemple"] for s in natre),
+      "pas de fuite des stratégies tri/numérisation vers la recherche")
+# les VINGT-CINQ domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "borne_tri" in B.decompose("trier des donnees")
+      and "nyquist" in B.decompose("numeriser un signal"),
+      "les 25 domaines précédents inchangés après l'ajout de la recherche (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
@@ -1147,8 +1187,8 @@ check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "
                               "sustentation", "resolution_optique", "energie_eolienne", "propulsion_spatiale",
                               "production_alimentaire", "compression_information", "isolation_thermique",
                               "confidentialite_information", "vol_croisiere", "detection_signal",
-                              "amplification_signal", "numerisation_signal", "tri_donnees"],
-      "vingt-cinq domaines modélisés, dans l'ordre d'enregistrement")
+                              "amplification_signal", "numerisation_signal", "tri_donnees", "recherche_donnees"],
+      "vingt-six domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

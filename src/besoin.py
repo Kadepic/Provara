@@ -3787,6 +3787,141 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-SIXIÈME DOMAINE : rechercher un élément dans des données. Nouvelle loi dure au juge (L23) : la BORNE DE LA
+#  RECHERCHE — trouver un élément parmi n NON structurés exige en moyenne ≥ n/2 examens (classique, sans index) :
+#  chaque position étant équiprobable, on ne localise pas la cible sans regarder. REFRAMING machine : la vitesse de
+#  recherche ne vient pas de « chercher plus vite » mais de PRÉ-STRUCTURER les données. Leviers : INDEXER (trier →
+#  recherche binaire O(log n) ; HACHER → O(1)) ; filtres probabilistes (Bloom, rejet rapide des absents) ; index
+#  inversé (texte) ; recherche QUANTIQUE (Grover, ~√n). Sans structure, il faut TOUT regarder (n/2).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_RECH = "recherche_donnees"
+_ALIAS_RECH = {
+    "rechercher un element", "trouver une donnee", "chercher dans des donnees", "localiser un element",
+    "interroger une base", "retrouver une information",
+}
+
+# ── « Canaux » : les leviers de la recherche rapide ──────────────────────────────────────────────────────────────
+_CANAUX_RECH = [
+    Canal("index", "information", "INDEXER : trier pour la recherche binaire (O(log n)) ou construire un index",
+          True, "trier une fois puis chercher en O(log n) → l'investissement d'index se rembourse à chaque requête ; "
+                "le levier premier : payer la STRUCTURE d'avance pour ne plus tout parcourir"),
+    Canal("hachage", "information", "HACHER : accès direct en O(1) par fonction de hachage",
+          True, "une table de hachage transforme la clé en adresse → accès quasi immédiat sans parcourir ; coût "
+                "mémoire et collisions à gérer — le levier « adresse calculée »"),
+    Canal("filtre probabiliste", "information", "FILTRER les absents rapidement (filtre de Bloom) avant la recherche coûteuse",
+          True, "un filtre de Bloom répond « absent à coup sûr » ou « peut-être présent » en O(1) et peu de mémoire "
+                "→ évite la recherche coûteuse pour la majorité des absents ; faux positifs tolérés — le levier « rejet rapide »"),
+    Canal("quantique", "information", "RECHERCHE QUANTIQUE (Grover) : ~√n examens sur des données non structurées",
+          True, "l'algorithme de Grover trouve la cible en ~√n requêtes même SANS index (accélération quadratique) → "
+                "un million d'éléments en mille pas ; exige un calculateur quantique — le levier « quantique »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la borne de la recherche (type `recherche`, ≥ n/2 si non indexé) ───────
+_PRINCIPES_RECH = [
+    _P("parcours linéaire (sans structure)",
+       "rechercher : parcourir les éléments un à un jusqu'à trouver la cible",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 500000}, True, True,
+       "—", "mature",
+       0.6, "la référence sans structure : ~n/2 examens en moyenne → inévitable si les données ne sont pas "
+            "indexées ; simple mais lent à l'échelle — la borne dont il faut s'affranchir en pré-structurant"),
+    _P("recherche binaire (données triées)",
+       "rechercher : sur des données triées, diviser l'intervalle par deux à chaque étape",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.6, "l'index (le tri) permet O(log n) → 20 examens pour un million ; il faut payer le tri une fois → "
+            "rentable dès plusieurs requêtes — le levier « index » de base"),
+    _P("table de hachage (O(1))",
+       "rechercher : calculer l'adresse de la clé par une fonction de hachage",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.6, "accès direct quasi immédiat, indépendant de n → la recherche exacte la plus rapide ; mémoire et "
+            "collisions à gérer, pas d'ordre → le levier « adresse calculée »"),
+    _P("arbre de recherche / B-arbre",
+       "rechercher : structure arborescente équilibrée pour la recherche et les plages",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.55, "O(log n) avec en plus les requêtes par PLAGE et l'ordre → le cœur des index de bases de données "
+             "(B-arbre optimisé pour le disque) ; maintenance à l'insertion — le levier « index ordonné »"),
+    _P("index inversé (recherche textuelle)",
+       "rechercher : associer chaque terme à la liste des documents qui le contiennent",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 5, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.55, "renverse la relation document→termes en terme→documents → retrouve instantanément les documents d'un "
+             "mot (moteurs de recherche) ; taille de l'index et mise à jour — le levier « index adapté à la requête »"),
+    _P("filtre de Bloom (rejet rapide des absents)",
+       "rechercher : test d'appartenance probabiliste avant la recherche coûteuse",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1, "donnees_indexees": True}, True, True,
+       "—", "mature",
+       0.5, "élimine en O(1) et peu de mémoire la plupart des absents (« absent à coup sûr ») → évite des "
+            "recherches inutiles (bases, caches, blockchain) ; faux positifs à retester — le levier « rejet rapide »"),
+    _P("recherche quantique (Grover)",
+       "rechercher : algorithme de Grover trouvant la cible en ~√n sur des données non structurées",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 1000, "recherche_quantique": True}, True, True,
+       "—", "recherche",
+       0.4, "REFRAMING : accélération quadratique SANS index (√n au lieu de n) → un million en mille pas ; exige un "
+            "calculateur quantique cohérent, gain « seulement » quadratique — le levier « quantique »"),
+    _P("recherche approximative de voisins (ANN)",
+       "rechercher : trouver les plus proches voisins en haute dimension sans examiner tout",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 50, "donnees_indexees": True}, True, True,
+       "—", "mature (IA)",
+       0.5, "en haute dimension (embeddings), un index approximatif (HNSW, LSH) trouve des voisins quasi optimaux "
+            "en sous-linéaire → cœur de la recherche sémantique/RAG ; précision échangée contre vitesse — le levier « index approché »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("recherche « dans un million de non indexés en 20 examens »",
+       "rechercher : trouver un élément parmi un million de données NON indexées en 20 examens (classique)",
+       {"type": "recherche", "nb_elements": 1000000, "nb_requetes_moyennes": 20}, True, True,
+       "—", "revendication",
+       0.3, "20 examens < n/2 (500 000) : sans index ni quantique, on ne localise pas une cible parmi un million "
+            "sans en regarder la moitié en moyenne — impossible ; à réfuter par la borne de la recherche"),
+    _P("recherche « dans un milliard de non indexés en 100 examens »",
+       "rechercher : trouver un élément parmi un milliard de données NON indexées en 100 examens (classique)",
+       {"type": "recherche", "nb_elements": 1000000000, "nb_requetes_moyennes": 100}, True, True,
+       "—", "revendication",
+       0.25, "100 examens << n/2 (500 millions) : impossible sans index ni recherche quantique — à réfuter"),
+]
+
+_OBJECTIF_RECH = ("Le but réel n'est pas de « chercher plus vite » mais de PRÉ-STRUCTURER les données : trouver un "
+                  "élément parmi n NON STRUCTURÉS exige en moyenne ≥ n/2 examens (classique, sans index), car chaque "
+                  "position est équiprobable et on ne localise pas sans regarder. Leviers : INDEXER (trier → "
+                  "recherche binaire O(log n) ; HACHER → O(1)) ; index inversé (texte) ; filtres probabilistes "
+                  "(Bloom) pour rejeter les absents ; index approché (ANN) en haute dimension ; recherche QUANTIQUE "
+                  "(Grover, ~√n). Sans structure, il faut tout regarder. Chaque principe reste jugé par la borne de "
+                  "la recherche.")
+_LOI_RECH = ("borne de la recherche : trouver un élément parmi n non structurés exige en moyenne ≥ n/2 examens "
+             "(classique, sans index) ; gains réels = indexer (tri → O(log n), hachage → O(1)), index inversé, "
+             "filtres probabilistes, index approché (ANN), ou recherche quantique (Grover √n)")
+
+# La nature retrouve par le gradient (chien pisteur), la carte mentale (pigeon), le tropisme (racine), la zone probable (prédateur).
+_STRATEGIES_NATURE_RECH = [
+    _Nature("chien pisteur (gradient olfactif)",
+            ["suit la concentration croissante d'une odeur vers la source", "ne fouille pas tout, remonte la piste"],
+            "suivre un GRADIENT vers la cible au lieu de tout parcourir — une structure (le gradient) qui guide"),
+    _Nature("pigeon voyageur (carte mentale)",
+            ["se repère par une carte interne (champ magnétique, repères)", "va droit au but sans explorer au hasard"],
+            "utiliser une CARTE interne (un index spatial) pour aller droit au but — l'index du vivant"),
+    _Nature("racine vers l'eau (hydrotropisme)",
+            ["croît dans la direction de l'humidité", "oriente la recherche par un signal directionnel"],
+            "laisser un SIGNAL directionnel orienter la recherche — remonter une structure plutôt que fouiller"),
+    _Nature("prédateur à l'affût (zone probable)",
+            ["se poste là où la proie est la plus probable", "concentre l'effort sur une zone à forte densité"],
+            "chercher d'abord là où c'est PROBABLE — l'analogue du filtre qui écarte l'improbable"),
+]
+
+enregistre(Domaine(
+    nom=_RECH,
+    aliases=frozenset(_ALIAS_RECH),
+    objectif=_OBJECTIF_RECH,
+    canaux=_CANAUX_RECH,
+    principes=_PRINCIPES_RECH,
+    strategies=_STRATEGIES_NATURE_RECH,
+    loi=_LOI_RECH,
+    extras={"borne_recherche": "≥ n/2 examens (non indexé, classique)",
+            "note": "indexer (tri → O(log n), hachage → O(1)) bat la borne ; Grover → √n sans index ; la structure "
+                    "payée d'avance se rembourse à chaque requête"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

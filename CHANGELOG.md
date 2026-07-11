@@ -1,5 +1,22 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 26e domaine « rechercher dans des données » + loi L23 (borne de la recherche)
+
+Rechercher un élément dans des données. Nouvelle loi dure au juge (`L23`) : la BORNE DE LA RECHERCHE — trouver un
+élément parmi n NON structurés exige en moyenne ≥ n/2 examens (classique, sans index), chaque position étant
+équiprobable. CONSERVATEUR (FAUX=0), deux exceptions par flags : données INDEXÉES (`donnees_indexees` : tri →
+O(log n), hachage → O(1)) ; recherche QUANTIQUE (`recherche_quantique` : Grover, ~√n) → on ne réfute qu'une
+recherche classique NON indexée revendiquant moins de n/2. Gate `valide_coherence_physique` **322 → 335/335**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (1e6 non indexés en 20, 1e9 en 100).
+Reframing : la vitesse vient de PRÉ-STRUCTURER, pas de « chercher plus vite » — indexer (tri, hachage), index
+inversé, filtres probabilistes (Bloom), index approché (ANN), ou Grover (√n). Couvre parcours linéaire, recherche
+binaire, table de hachage, B-arbre, index inversé, filtre de Bloom, Grover, ANN. 4 stratégies naturelles propres
+(chien pisteur = gradient, pigeon = carte mentale, racine = tropisme, prédateur = zone probable). Gate
+`valide_besoin` **476 → 493/493** ; les 25 domaines précédents intacts.
+
+**JALON : 26 DOMAINES D'INVENTION, 23 LOIS PHYSIQUES DANS LE JUGE** (… L22 borne du tri, L23 borne de la recherche).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 25e domaine « trier des données » + loi L22 (borne du tri par comparaison)
 
 Trier / ordonner des données. Nouvelle loi dure au juge (`L22`) : la BORNE DU TRI PAR COMPARAISON — trier n
