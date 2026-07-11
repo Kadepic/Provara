@@ -51,6 +51,11 @@ _RELATION_DECES = "annee_deces_personne"
 _MOTIFS_DEBUT_ACTIVITE = ("annee_debut_mandat_", "annee_debut_regne")   # préfixe (mandat_*) OU nom exact (regne)
 _MOTIFS_FIN_ACTIVITE = ("annee_fin_mandat_", "annee_fin_regne")
 
+# EXISTENCE ↔ DISSOLUTION : une entité (organisation, parti, pays, état…) ne peut être fondée/créée APRÈS sa
+# dissolution (contrainte dure). annee_dissolution est la relation générique de fin d'existence, partagée.
+_RELATION_DISSOLUTION = "annee_dissolution"
+_MOTIFS_FONDATION = ("annee_fondation_", "annee_creation_organisation")
+
 # Type ACYCLIQUE : une relation « x -> parent(x) » ENDOGÈNE (valeur du même type que l'entité) est un ordre
 # partiel STRICT -> sans cycle. Un cycle (A parent de B, B parent de A) est une contradiction dure. Sélection
 # par mot-clé dans le nom ; le détecteur est intrinsèquement SOUND (il ne peut boucler que si les valeurs
@@ -106,12 +111,26 @@ def _paires_vie(relations: set) -> list:
     return out
 
 
+def _paires_existence(relations: set) -> list:
+    """Couples (annee_fondation_*/creation_organisation, annee_dissolution) : une entité ne peut être fondée
+    après sa dissolution. Généré pour toute relation de fondation présente, si la dissolution l'est."""
+    if _RELATION_DISSOLUTION not in relations:
+        return []
+    out = []
+    for r in sorted(relations):
+        if _matche(r, _MOTIFS_FONDATION):
+            suffixe = r[len("annee_fondation_"):] if r.startswith("annee_fondation_") else r
+            out.append((r, _RELATION_DISSOLUTION, f"fondation ≤ dissolution ({suffixe})"))
+    return out
+
+
 def paires_disponibles() -> list:
     """Toutes les paires ORDRE dont les deux relations sont présentes dans le store (auto début/fin + vie↔activité
-    + sémantiques), dé-doublonnées par (rel_min, rel_max)."""
+    + existence↔dissolution + sémantiques), dé-doublonnées par (rel_min, rel_max)."""
     presentes = _relations_presentes()
     paires = _auto_paires(presentes)
     paires += _paires_vie(presentes)
+    paires += _paires_existence(presentes)
     for rmin, rmax, etiq in PAIRES_SEMANTIQUES:
         if rmin in presentes and rmax in presentes:
             paires.append((rmin, rmax, etiq))

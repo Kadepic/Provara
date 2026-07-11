@@ -68,6 +68,9 @@ with tempfile.TemporaryDirectory() as tmp:
     _ecris(tmp, "annee_deces_personne", [("Zoé", "1990"), ("Yann", "1405"), ("Otto", "1850")])
     _ecris(tmp, "annee_debut_mandat_ministre", [("Zoé", "1980"), ("Iris", "1590"), ("Otto", "1900")])
     _ecris(tmp, "annee_fin_mandat_ministre", [("Zoé", "1988"), ("Otto", "1910")])
+    # EXISTENCE↔DISSOLUTION : un parti ne peut être fondé après sa dissolution.
+    _ecris(tmp, "annee_fondation_parti_politique", [("PartiA", "1900"), ("PartiB", "2000")])
+    _ecris(tmp, "annee_dissolution", [("PartiA", "1950"), ("PartiB", "1980")])  # PartiB : fondé 2000 > dissous 1980
 
     os.environ["LECTEUR_DATASETS_DIR"] = tmp
     # Import APRÈS avoir posé l'env (le module fige _LECT à l'import).
@@ -98,12 +101,15 @@ with tempfile.TemporaryDirectory() as tmp:
           "vie↔activité : début de mandat ≤ décès")
     check(("annee_fin_mandat_ministre", "annee_deces_personne") in paires,
           "vie↔activité : fin de mandat ≤ décès")
+    check(("annee_fondation_parti_politique", "annee_dissolution") in paires,
+          "existence↔dissolution : fondation ≤ dissolution")
 
-    # -- audit global : agrégation exacte (6 paires : test, début/fin mandat, naissance/décès, 3× vie) --
+    # -- audit global : agrégation exacte (7 paires : test, début/fin mandat, naissance/décès, 3× vie, fondation) --
     g = AC.audit(details=True)
-    check(g["paires"] == 6, f"6 paires disponibles (obtenu {g['paires']})")
-    check(g["violations"] == 6, f"6 violations : B,H + Yann + Iris + Otto(début) + Otto(fin) (obtenu {g['violations']})")
-    check(g["paires_en_conflit"] == 5, "5 paires en conflit (début/fin mandat : 0 viol)")
+    check(g["paires"] == 7, f"7 paires disponibles (obtenu {g['paires']})")
+    check(g["violations"] == 7,
+          f"7 violations : B,H + Yann + Iris + Otto(début) + Otto(fin) + PartiB (obtenu {g['violations']})")
+    check(g["paires_en_conflit"] == 6, "6 paires en conflit (début/fin mandat : 0 viol)")
     check(g["top"][0][3] >= g["top"][1][3], "top trié par nombre de violations décroissant")
     somme = sum(t[3] for t in g["top"])
     check(somme == g["violations"], "somme des violations par paire == total (aucune perdue/doublée)")
@@ -123,6 +129,11 @@ with tempfile.TemporaryDirectory() as tmp:
     rf = AC.audite_paire("annee_fin_mandat_ministre", "annee_deces_personne")
     check(rf["violations"] == 1 and rf["exemples"][0][0] == "Otto",
           "fin ≤ décès : Otto (fin 1910 > décès 1850) détecté, Zoé (1988<1990) non")
+
+    # -- EXISTENCE↔DISSOLUTION : PartiB (fondé 2000 après dissolution 1980) détecté, PartiA non --
+    re = AC.audite_paire("annee_fondation_parti_politique", "annee_dissolution")
+    check(re["violations"] == 1 and re["exemples"][0][0] == "PartiB",
+          "fondation ≤ dissolution : PartiB (2000 > 1980) détecté, PartiA (1900<1950) non")
 
 # ─────────────────────────── 1bis) SOUNDNESS du type ACYCLIQUE sur fixture synthétique ───────────────────────────
 with tempfile.TemporaryDirectory() as tmp:
