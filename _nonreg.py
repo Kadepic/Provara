@@ -46,6 +46,22 @@ def _chemin(f):
     return cand if os.path.exists(os.path.join(HARN, cand)) else f
 
 
+_MODDIRS = ("", "src", "interface", "ingestion", "outils", "tests")
+
+
+def _chemin_fichier(f):
+    """Résout un .py (validateur OU module) vers son chemin réel relatif à HARN — mêmes dossiers que
+    `modules_locaux()`. Sans ça, l'open des modules de src/ échouait (OSError) → suspect=True propagé aux 797
+    clôtures (cache toujours froid) ET hash `<absent>` (fingerprint insensible au contenu de src/)."""
+    if "/" in f or os.sep in f:
+        return f
+    for d in _MODDIRS:
+        cand = os.path.join(d, f) if d else f
+        if os.path.exists(os.path.join(HARN, cand)):
+            return cand
+    return f
+
+
 def _env_pipeline(base=None):
     """Env avec le PYTHONPATH du pipeline (src+interface+ingestion) — sinon les validateurs de tests/ ne trouvent
     pas repond/conversation/ia. Préserve un PYTHONPATH éventuel existant.
@@ -460,7 +476,7 @@ def modules_locaux():
 
 def imports_directs(fichier, locaux):
     """Modules LOCAUX importés directement par `fichier` (statique). Renvoie (set_modules, dynamique_suspect)."""
-    chemin = os.path.join(HARN, _chemin(fichier))
+    chemin = os.path.join(HARN, _chemin_fichier(fichier))
     try:
         with open(chemin, "r", encoding="utf-8") as fh:
             src = fh.read()
@@ -517,7 +533,7 @@ def hash_fichiers(fichiers):
     for f in sorted(fichiers):
         h.update(f.encode())
         try:
-            with open(os.path.join(HARN, f), "rb") as fh:
+            with open(os.path.join(HARN, _chemin_fichier(f)), "rb") as fh:
                 h.update(fh.read())
         except OSError:
             h.update(b"<absent>")
