@@ -175,6 +175,10 @@ check(statut({"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 10
       "SNR 100 sur 100 photons (>√N=10) -> VIOLE")
 check(loi({"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 100}) == P.L19, "bruit de grenaille = L19")
 check(statut({"type": "detection", "rendement_quantique": 1.2}) == P.VIOLE, "rendement quantique 1,2 > 1 -> VIOLE")
+# facteur de bruit d'un amplificateur : F < 1 (NF < 0 dB) améliorerait le SNR -> impossible.
+check(statut({"type": "amplification", "facteur_de_bruit": 0.5}) == P.VIOLE, "facteur de bruit 0,5 < 1 -> VIOLE")
+check(loi({"type": "amplification", "facteur_de_bruit": 0.5}) == P.L20, "facteur de bruit = L20")
+check(statut({"type": "amplification", "facteur_de_bruit_dB": -3}) == P.VIOLE, "NF -3 dB < 0 -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -303,6 +307,12 @@ reels = [
     {"type": "detection", "rendement_quantique": 0.9},                                # QE réaliste
     {"type": "detection", "nb_photons": 100, "rapport_signal_bruit": 50, "lumiere_comprimee": True},  # squeezed (LIGO) -> PAS un faux positif
     {"type": "detection"},                                                            # vide -> PAS un faux positif
+    # amplifications RÉELLES : facteur de bruit ≥ 1 (NF ≥ 0 dB).
+    {"type": "amplification", "facteur_de_bruit_dB": 0.5},                            # LNA faible bruit
+    {"type": "amplification", "facteur_de_bruit": 2.0},                              # NF ~3 dB (courant)
+    {"type": "amplification", "facteur_de_bruit": 1.0},                              # AU 0 dB (paramétrique idéal, limite, ok)
+    {"type": "amplification", "gain": 100},                                          # sans facteur de bruit : PAS un faux positif
+    {"type": "amplification"},                                                        # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")

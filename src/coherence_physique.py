@@ -64,6 +64,8 @@ L18 = ("traînée induite minimale : produire une portance L à la vitesse V ave
        "induite ≥ L²/(½ρV²πb²) (efficacité d'envergure ≤ 1) — le coût de la portance décroît en 1/b²")
 L19 = ("bruit de grenaille (photonique) : compter N photons donne un rapport signal/bruit ≤ √N (statistique de "
        "Poisson), et le rendement quantique ≤ 1 — sauf lumière comprimée (au-delà de la limite quantique standard)")
+L20 = ("un amplificateur n'améliore pas le rapport signal/bruit : facteur de bruit ≥ 1 (NF ≥ 0 dB) — il ajoute "
+       "toujours du bruit, jamais n'en retire")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -104,7 +106,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
                  "photosynthese", "compression", "isolation_thermique", "chiffrement", "vol_croisiere",
-                 "detection"):
+                 "detection", "amplification"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -511,6 +513,22 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
             if _nb(n) and _nb(snr) and n > 0 and snr > math.sqrt(n) * (1.0 + 1e-9):
                 return (VIOLE, f"rapport signal/bruit {snr} > √N ({round(math.sqrt(n), 2)}) pour {n} photons : "
                                f"au-delà de la limite de bruit de grenaille (lumière classique) — impossible", L19)
+
+    # --- Un amplificateur n'améliore pas le SNR : facteur de bruit ≥ 1 (NF ≥ 0 dB). ---
+    # Amplifier multiplie le signal ET le bruit, et tout amplificateur réel ajoute son propre bruit : le facteur de
+    # bruit F = SNR_entrée/SNR_sortie ≥ 1 (NF ≥ 0 dB). Un F < 1 (le dispositif AMÉLIORERAIT le SNR) est impossible.
+    # CONSERVATEUR : on ne réfute qu'un F < 1 (ou NF < 0 dB) DÉCLARÉ → jamais un faux positif (même un amplificateur
+    # paramétrique idéal atteint F = 1, pas moins ; l'amplification phase-sensible d'UNE quadrature est un cas à part
+    # qui ne viole pas F ≥ 1 sur l'information totale).
+    if t == "amplification":
+        f = spec.get("facteur_de_bruit")
+        if _nb(f) and f < 1.0 - 1e-9:
+            return (VIOLE, f"facteur de bruit {f} < 1 : un amplificateur n'améliore jamais le rapport signal/bruit "
+                           f"(il ajoute du bruit) — impossible", L20)
+        nf_db = spec.get("facteur_de_bruit_dB")
+        if _nb(nf_db) and nf_db < -1e-9:
+            return (VIOLE, f"facteur de bruit {nf_db} dB < 0 dB : un amplificateur n'améliore jamais le rapport "
+                           f"signal/bruit — impossible", L20)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:
