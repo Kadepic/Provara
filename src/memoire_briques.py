@@ -119,6 +119,14 @@ class MemoireBriques:
             if not paires:
                 self._quarantaine(nom, "spec vide : rien ne prouve la brique", rec)
                 continue
+            # INNOCUITÉ AVANT RE-JUGEMENT (atome 7, défense en profondeur) : un briques.json altéré peut
+            # porter une expr à effet de bord. On la juge SÛRE statiquement AVANT de l'exécuter (_reproduit
+            # ci-dessous la lancerait) — non sûre = quarantaine, jamais exécutée, jamais injectée.
+            import expression_sure as ES
+            raison = ES.raison_danger(rec["expr"])
+            if raison is not None:
+                self._quarantaine(nom, f"expression non sûre ({raison})", rec)
+                continue
             # LE RE-JUGEMENT : l'expr doit reproduire, ICI et MAINTENANT, le spec qui l'a prouvée.
             if not MI._reproduit(MI._callable(rec["expr"], "f"), paires):
                 self._quarantaine(nom, "ne reproduit plus son spec enregistré (expr ou spec altérés)", rec)
@@ -164,6 +172,12 @@ class MemoireBriques:
         n = _normalise(par)
         if n in self._exprs:
             return False                            # déjà connue : ni refus ni apprentissage
+        # INNOCUITÉ AVANT CORRECTION (atome 7) : on juge la SÛRETÉ statiquement AVANT toute exécution —
+        # sinon `_reproduit` ci-dessous LANCE une expr à effet de bord et déclenche l'attaque à l'admission.
+        import expression_sure as ES
+        if not ES.est_sure(par):
+            self.refus_admission += 1               # brique correcte mais NON SÛRE : jamais admise ni exécutée
+            return False
         exemples, held = list(exemples), list(held or [])
         import moteur_invention as MI
         if not (exemples or held) or not MI._reproduit(MI._callable(par, "f"), exemples + held):

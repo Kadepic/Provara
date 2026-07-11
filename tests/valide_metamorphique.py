@@ -5,7 +5,11 @@ Le trou mesuré : le spec par paires ne voit que les entrées étiquetées. Une 
 spec, pas un fait) relie f(T(x)) à f(x) SANS oracle : elle juge des entrées neuves gratuitement. Une
 propriété erronée rend le moteur PLUS CONSERVATEUR (refus/frontière), jamais un faux servi : FAUX=0.
 
-Prouve : (1) CATALOGUE sound — permutation/duplication/homogénéité jugent correctement somme/max/len/x[0],
+Extension (piste (a) 2026-07-12) : relation `invariance_translation` (mesure de dispersion pure) — gap
+mesuré en (9) : le spec par paires servait un FAUX existe_deja=max ; translation+permutation le corrige.
+
+Prouve : (1) CATALOGUE sound — permutation/duplication/homogénéité/translation jugent correctement
+somme/max/len/x[0]/amplitude,
 témoin lisible, nom inconnu = ValueError (jamais ignoré en silence), custom accepté, sémantique d'erreur
 (f(x) passe mais f(T(x)) erre = violation ; f muet sur x = probe muet) ; (2) TRANCHER — un AMBIGU réel se
 résout en INVENTION quand la propriété tue les candidats non conformes (résolution SANS aller-retour
@@ -68,6 +72,11 @@ check("catalogue : somme VIOLE duplication (sum(x+x)=2·sum), témoin (nom, x, t
       not okv and temoin[0] == "invariance_duplication" and temoin[2] == temoin[1] + temoin[1])
 check("catalogue : max respecte duplication ; len viole homogénéité",
       MM.respecte(_fn("max(x)"), R_DUP, PROBES)[0] and not MM.respecte(_fn("len(x)"), R_HOM, PROBES)[0])
+R_TRA = MM.resoud(["invariance_translation"])
+check("catalogue : amplitude (dispersion) invariante par translation ; somme et max (niveau) NON",
+      MM.respecte(_fn("max(x) - min(x)"), R_TRA, PROBES)[0]
+      and not MM.respecte(_fn("sum(x)"), R_TRA, PROBES)[0]
+      and not MM.respecte(_fn("max(x)"), R_TRA, PROBES)[0])
 okv, temoin = MM.respecte(_fn("x[0] + x[1]"), R_PERM, PROBES)
 check("catalogue : x[0]+x[1] viole permutation, témoin porte l'entrée transformée",
       not okv and temoin[0] == "invariance_permutation")
@@ -142,6 +151,24 @@ fb = ia.forge_brique(NOM + "_dup", "x", EX, HELD,
                      proprietes=("invariance_permutation", "invariance_duplication"))
 check("forge_brique : durcir servi (brique_manquante, aucun code)",
       fb["statut"] == MI.BRIQUE_MANQUANTE and fb["code"] is None)
+
+# ── (9) GAIN COMPOSÉ : dispersion pure (translation + permutation) là où les paires servaient un FAUX ────
+# min = 0 partout -> amplitude coïncide avec max sur toutes les paires : le spec par paires seul sert un
+# FAUX existe_deja = max(x). Les deux relations ensemble sculptent l'unique dispersion pure : max viole la
+# translation, x[0]-min viole la permutation -> il ne reste que max-min -> INVENTION correcte.
+DEX = [([5, 0], 5), ([3, 0, 1], 3), ([7, 2, 0], 7)]
+DHELD = [([9, 0, 4], 9), ([6, 0], 6)]
+vd0 = MI.examine_cible("dispersion", "x", DEX, DHELD)
+check("gain : défaut sert un FAUX existe_deja = max (dispersion confondue avec niveau)",
+      vd0.statut == MI.EXISTE_DEJA and vd0.par == "max(x)")
+vd1 = MI.examine_cible("dispersion", "x", DEX, DHELD, proprietes=("invariance_translation",))
+check("gain : translation seule écarte le niveau -> AMBIGU sound (le faux n'est plus servi)",
+      vd1.statut == MI.AMBIGU)
+vd2 = MI.examine_cible("dispersion", "x", DEX, DHELD,
+                       proprietes=("invariance_translation", "invariance_permutation"))
+check("gain : translation + permutation -> INVENTION de la dispersion pure (max-min)",
+      vd2.statut == MI.INVENTION and vd2.par is not None
+      and MM.respecte(_fn(vd2.par), R_TRA + R_PERM, [[5, 0], [2, 9, 5], [3, 3]]) == (True, None))
 
 print(f"\n== VALIDE_METAMORPHIQUE : {ok}/{total} ==")
 assert ok == total

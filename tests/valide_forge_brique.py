@@ -77,7 +77,10 @@ try:
 except (TypeError, ValueError):
     check("sortie entièrement JSON-sérialisable (première classe, inter-moteurs)", False)
 check("la sortie contient exactement les champs de première classe attendus",
-      set(r) == {"statut", "code", "fait_borne", "supposition", "force_spec", "besoin_a_renforcer", "appris"})
+      set(r) == {"statut", "code", "code_refuse", "fait_borne", "supposition",
+                 "force_spec", "besoin_a_renforcer", "appris"})
+# atome 7 : frontière de service — le code d'une invention pure est audité sûr (code_refuse None).
+check("le code servi est audité sûr (code_refuse None pour une invention pure)", r["code_refuse"] is None)
 
 # ── (7) ABSTENTION : un spec incohérent ne rend NI code NI atomes (FAUX=0) ───────────────────────────────
 inc = ia.forge_brique("absurde", "x", [([1, 2], 5)], [([1, 2], 9)])
