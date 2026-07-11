@@ -541,6 +541,12 @@ _LD_OPS = [
     # GROUP BY par champ (atome 22, frontière mesurée) : {valeur du champ: [enregistrements]} + comptes.
     "{{_v: [_d for _d in {L} if _d[{K}] == _v] for _v in sorted({{_d2[{K}] for _d2 in {L}}})}}",
     "{{_v: sum(1 for _d in {L} if _d[{K}] == _v) for _v in sorted({{_d2[{K}] for _d2 in {L}}})}}",
+    # ORDER BY / DISTINCT / LIMIT (atome 23, frontières mesurées — les dernières clauses SQL). Le tri est
+    # DÉCORE-TRIE-PROJETTE sans lambda (l'indice casse les égalités AVANT de comparer les dicts -> stable,
+    # et l'expression reste dans la liste blanche d'innocuité, pas de nœud Lambda).
+    "[_t[2] for _t in sorted((_d[{K}], _i, _d) for _i, _d in enumerate({L}))]",     # ORDER BY champ (stable)
+    "sorted({{_d[{K}] for _d in {L}}})",                                            # DISTINCT champ
+    "{L}[:{K}]", "{L}[{K}:]", "{L}[{K}]",                                           # LIMIT/OFFSET/n-ième (clé int)
 ]
 
 
