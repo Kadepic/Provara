@@ -221,6 +221,61 @@ def _sondes_liste_liste(exemples) -> list[tuple]:
     return res
 
 
+# FORME DE TYPE CHAÎNE×CHAÎNE (atome 12 du palier structurel) : deux chaînes en deux arguments — la classe
+# FlashFill/BlinkFill des transformations de paires de chaînes. Frontière MESURÉE : préfixe commun (canonique,
+# l'edit distance le saute en linéaire), concat avec séparateur, Hamming, mots communs = brique_manquante.
+# Registre = primitives du langage (concat, appartenance, comptage, position) ; sondes = SWAP + renversement
+# + préfixe forcé + cas égalité.
+_CC_REGISTRE: dict[str, str] = {
+    "concatenation": "a + b",
+    "contient": "b in a",
+    "compte_sous_chaine": "a.count(b)",
+    "position_sous_chaine": "a.find(b)",
+}
+_CC_OPS = [
+    "a[:max(_i for _i in range(min(len(a), len(b)) + 1) if a[:_i] == b[:_i])]",   # préfixe commun
+    "a[len(a) - max(_i for _i in range(min(len(a), len(b)) + 1) if a[len(a) - _i:] == b[len(b) - _i:]):]",  # suffixe commun
+    "a + ' ' + b",                                                                 # concat avec séparateur canonique
+    "b + ' ' + a",
+    "a.replace(b, '')",                                                            # retrait des occurrences
+    "sum(1 for _x, _y in zip(a, b) if _x != _y)",                                  # distance de Hamming (préfixe zip)
+    "a.startswith(b)", "a.endswith(b)",
+    "' '.join(sorted(set(a.split()) & set(b.split())))",                           # mots communs (triés)
+]
+
+
+def _forme_chaine_chaine(toutes):
+    """(chaîne, chaîne) sur TOUS les exemples -> True, sinon None. Le SWAP discrimine l'asymétrie."""
+    if all(len(x) == 2 and isinstance(x[0], str) and isinstance(x[1], str) for x, _ in toutes):
+        return True
+    return None
+
+
+def _candidats_chaine_chaine(exemples) -> list[str]:
+    cands: set[str] = set(_CC_REGISTRE.values()) | set(_CC_OPS)
+    return [e for e in cands if _reproduit_multi(_callable_multi(e, "f", ["a", "b"]), exemples)]
+
+
+def _sondes_chaine_chaine(exemples) -> list[tuple]:
+    """Sondes de FORME : SWAP (asymétrie), renversements, b devenu PRÉFIXE de a (sépare préfixe-commun de
+    contient/startswith), cas d'ÉGALITÉ a==a."""
+    out = []
+    for (x, y), _ in exemples:
+        out.append((x, y))
+        out.append((y, x))                                      # SWAP
+        out.append((x[::-1], y))
+        out.append((x, y[::-1]))
+        out.append((y + x, y))                                  # b préfixe de a
+        out.append((x, x))                                      # égalité
+    seen, res = set(), []
+    for s in out:
+        c = repr(s)
+        if c not in seen:
+            seen.add(c)
+            res.append(s)
+    return res
+
+
 # FORME DE TYPE TABLE×TABLE (atome 11 du palier structurel) : la JOINTURE — deux tables (listes
 # d'enregistrements) en deux arguments. Referme l'algèbre relationnelle de base (colonne ✓, sélection ✓,
 # groupby/pivot/dégroupage ✓, jointure ✗->✓). La CLÉ de jointure est DÉCOUVERTE dans les données (champs
@@ -360,12 +415,17 @@ def _sondes_liste_dicts(exemples, forme) -> list[tuple]:
 
 
 def _forme_liste_scalaire(toutes):
-    """(liste, entier) ou (entier, liste) sur TOUS les exemples -> (var_liste, var_scalaire), sinon None."""
-    def _est(v, t):
-        return isinstance(v, t) and not isinstance(v, bool)
-    if all(len(a) == 2 and _est(a[0], list) and _est(a[1], int) for a, _ in toutes):
+    """(SÉQUENCE, entier) ou (entier, SÉQUENCE) sur TOUS les exemples -> (var_seq, var_scalaire), sinon None.
+    Séquence = liste OU chaîne (atome 12 : les tranches/rotations/paquets valent verbatim pour str — mesuré
+    n_premiers_car/rotation_chaine = brique_manquante) ; les ops inapplicables à l'un des types (comparaisons
+    _e > k sur str, sum) crashent à la validation contextuelle -> filtrées, jamais un faux."""
+    def _est_int(v):
+        return isinstance(v, int) and not isinstance(v, bool)
+    def _seq(v):
+        return isinstance(v, (list, str))
+    if all(len(a) == 2 and _seq(a[0]) and _est_int(a[1]) for a, _ in toutes):
         return ("a", "b")
-    if all(len(a) == 2 and _est(a[0], int) and _est(a[1], list) for a, _ in toutes):
+    if all(len(a) == 2 and _est_int(a[0]) and _seq(a[1]) for a, _ in toutes):
         return ("b", "a")
     return None
 
@@ -394,15 +454,17 @@ def _sondes_liste_scalaire(exemples, forme) -> list[tuple]:
 
         def mk(xx, kk):
             return (kk, xx) if scal_premier else (xx, kk)
-        out.append(mk(list(x), k))
-        out.append(mk(list(reversed(x)), k))
-        out.append(mk(sorted(x), k))
+        est_str = isinstance(x, str)                            # sondes fidèles au TYPE (séquence = liste ou str)
+        copie = (lambda s: s) if est_str else list
+        out.append(mk(copie(x), k))
+        out.append(mk(x[::-1], k))
+        out.append(mk("".join(sorted(x)) if est_str else sorted(x), k))
         if 1 <= k + 1 <= len(x):
-            out.append(mk(list(x), k + 1))
+            out.append(mk(copie(x), k + 1))
         if k - 1 >= 1:
-            out.append(mk(list(x), k - 1))
+            out.append(mk(copie(x), k - 1))
         if x:
-            out.append(mk(list(x) + [x[0]], k))
+            out.append(mk(x + x[0] if est_str else list(x) + [x[0]], k))
     seen, res = set(), []
     for s in out:
         c = repr(s)
@@ -593,12 +655,14 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
     forme_ls = _forme_liste_scalaire(toutes) if arite == 2 and not (forme_tt or forme_ld) else None
     forme_ds = _forme_dict_scalaire(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls) else None
     forme_ll = _forme_liste_liste(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds) else None
+    forme_cc = _forme_chaine_chaine(toutes) if arite == 2 and not (forme_tt or forme_ld or forme_ls or forme_ds or forme_ll) else None
     if existant is None:
         existant = (dict(_TT_REGISTRE) if forme_tt
                     else {} if forme_ld                  # registre VIDE honnête (rien ne servait la classe)
                     else _registre_liste_scalaire(forme_ls) if forme_ls
                     else _registre_dict_scalaire(forme_ds) if forme_ds
                     else dict(_LL_REGISTRE) if forme_ll
+                    else dict(_CC_REGISTRE) if forme_cc
                     else _REGISTRES.get(arite, {}))
 
     # 0) COHÉRENCE : même entrée -> deux sorties = contradiction.
@@ -614,6 +678,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
               else _sondes_liste_scalaire(toutes, forme_ls) if forme_ls
               else _sondes_dict_scalaire(toutes, forme_ds) if forme_ds
               else _sondes_liste_liste(toutes) if forme_ll
+              else _sondes_chaine_chaine(toutes) if forme_cc
               else _sondes_binaires(toutes)) if arite == 2 \
         else _sondes_ternaires(toutes) if arite == 3 \
         else [tuple(a) for a, _ in toutes]
@@ -630,6 +695,7 @@ def examine_cible_multi(nom: str, exemples, exemples_held, existant: dict | None
                  else _candidats_liste_scalaire(toutes, forme_ls) if forme_ls
                  else _candidats_dict_scalaire(toutes, forme_ds) if forme_ds
                  else _candidats_liste_liste(toutes) if forme_ll
+                 else _candidats_chaine_chaine(toutes) if forme_cc
                  else _candidats_binaires(toutes)) \
         if arite == 2 else _candidats_ternaires(toutes) if arite == 3 else []
     if candidats:
