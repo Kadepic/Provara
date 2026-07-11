@@ -99,7 +99,8 @@ def liste_validateurs():
               "valide_consolidation.py", "valide_mesure.py", "valide_assistant.py",
               "valide_budget.py", "valide_demande.py", "valide_auto_synthese.py",
               "valide_surface_ia.py",                    # gate statique : surface P2 de ia.py (alias + attributs)
-              "valide_audit_ancres.py"]                  # méta : couverture d'ancrage du store (diagnostic sound)
+              "valide_audit_ancres.py",                  # méta : couverture d'ancrage du store (diagnostic sound)
+              "valide_audit_coherence.py"]               # méta : cohérence ORDRE inter-relations (diagnostic sound)
     invention = ["valide_invention_gap.py", "valide_chercheur_invention.py",
                  "valide_bibliotheque_invention.py", "valide_rapport_invention.py"]
     domaines = ["valide_audit_code.py", "valide_chimie.py", "valide_coherence_physique.py",

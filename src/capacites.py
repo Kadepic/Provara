@@ -5036,6 +5036,12 @@ def _p_audit_ancres():
     return _relations_referencees({}) == set() or isinstance(_relations_referencees({}), set)
 
 
+def _p_audit_coherence():
+    from audit_coherence import _entier, audite_paire
+    # SOUNDNESS unitaire, sans store : le parseur d'entier ignore le non-comparable (jamais une fausse violation).
+    return _entier("1990") == 1990 and _entier("vers 1720") is None and callable(audite_paire)
+
+
 def _p_auto_invention():
     from auto_invention import _empreinte
     return _empreinte("args[0] * 2", (1, 2)) == (2, 4) and _empreinte("args[0] +", (1,)) is None
@@ -5885,6 +5891,7 @@ REGISTRE.update({
     "Session d'entraînement (orchestrateur complet)": ("Mini-session réelle : 2 tours, journal produit. cf. session.py", _p_session),
     "Daemon lecteur (protocole Q-R)": ("Requête d'op inconnue -> réponse structurée. cf. lecteur_daemon.py", _p_lecteur_daemon),
     "Audit des ancres de vérité": ("Références externes calculées sur un état vide. cf. audit_ancres.py", _p_audit_ancres),
+    "Audit de cohérence inter-relations": ("Contradiction d'ordre naissance/décès, début/fin ; non-int ignoré. cf. audit_coherence.py", _p_audit_coherence),
     "Auto-invention (empreintes comportementales)": ("args[0]*2 sur (1,2) -> (2,4) ; expression cassée -> None. cf. auto_invention.py", _p_auto_invention),
     "Rapport d'invention unifié": ("Rapport réel sur un mini-corpus + texte rendu. cf. rapport_invention.py", _p_rapport_invention),
     "Conversion kaikki (Wiktionnaire -> lexique)": ("chat -> mammifère extrait d'un dump réel minimal. cf. convertit_kaikki.py", _p_convertit_kaikki),
