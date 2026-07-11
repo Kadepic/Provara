@@ -54,6 +54,8 @@ L13 = ("équation de Tsiolkovski : Δv ≤ ve·ln(m₀/mf) — le gain de vitess
        "logarithme du rapport de masse (le propergol embarqué donne des retours décroissants)")
 L14 = ("plafond de rendement photosynthétique : la conversion solaire→biomasse ≤ ~12 % (maximum théorique avant "
        "respiration ; réalisé ~1–6 %) — bornée par la fraction utile du spectre et le rendement quantique")
+L15 = ("borne d'entropie (codage de source de Shannon) : une compression SANS PERTE ne descend pas sous l'entropie "
+       "H de la source, et aucun compresseur sans perte ne réduit TOUTE entrée (argument de comptage)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -92,7 +94,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
-                 "photosynthese"):
+                 "photosynthese", "compression"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -404,6 +406,23 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         if _nb(r) and r > _RENDEMENT_PHOTO_MAX + 1e-9:
             return (VIOLE, f"rendement solaire→biomasse {r} > plafond photosynthétique {_RENDEMENT_PHOTO_MAX} "
                            f"(maximum théorique ; réalisé ~1–6 %) : impossible", L14)
+
+    # --- Borne d'entropie (codage de source de Shannon) : compression sans perte ≥ entropie ; pas d'universel. ---
+    # (1) Une compression SANS PERTE ne peut représenter une source à moins de bits/symbole que son entropie H
+    #     (théorème du codage de source). (2) Aucun compresseur sans perte ne réduit TOUTE entrée : par comptage
+    #     (pigeonnier), si certaines entrées rétrécissent, d'autres doivent grandir. CONSERVATEUR : on ne juge que
+    #     le SANS PERTE déclaré (la compression AVEC PERTE descend légitimement sous H en jetant de l'information →
+    #     jamais réfutée). Distinct de L7 (capacité de canal). Faux positif INTERDIT.
+    if t == "compression":
+        if bool(spec.get("sans_perte", False)):
+            if spec.get("compresse_toute_entree") is True:
+                return (VIOLE, "compression SANS PERTE réduisant TOUTE entrée : impossible (argument de comptage / "
+                               "pigeonnier — si certaines entrées rétrécissent, d'autres doivent grandir)", L15)
+            h = spec.get("entropie_bits_par_symbole")
+            b = spec.get("bits_par_symbole")
+            if _nb(h) and _nb(b) and h >= 0 and b < h * (1.0 - 1e-9):
+                return (VIOLE, f"débit {b} bits/symbole < entropie {h} bits/symbole (codage de source de Shannon) : "
+                               f"compression sans perte sous l'entropie impossible", L15)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

@@ -143,6 +143,13 @@ check(statut({"type": "photosynthese", "rendement_solaire_biomasse": 0.25}) == P
 check(loi({"type": "photosynthese", "rendement_solaire_biomasse": 0.25}) == P.L14, "plafond photosynthétique = L14")
 check(statut({"type": "photosynthese", "rendement_solaire_biomasse": 1.5}) == P.VIOLE,
       "150 % (over-unity végétale) -> VIOLE")
+# borne d'entropie : compression sans perte sous l'entropie, et compresseur sans perte universel.
+check(statut({"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 4,
+              "bits_par_symbole": 1}) == P.VIOLE, "1 < 4 bits/symbole sans perte -> VIOLE")
+check(loi({"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 4,
+           "bits_par_symbole": 1}) == P.L15, "codage de source = L15")
+check(statut({"type": "compression", "sans_perte": True, "compresse_toute_entree": True}) == P.VIOLE,
+      "compresseur sans perte universel -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -245,6 +252,11 @@ reels = [
     {"type": "photosynthese", "rendement_solaire_biomasse": 0.06},                    # C4 / algue optimisée
     {"type": "photosynthese", "rendement_solaire_biomasse": 0.12},                    # AU plafond théorique (limite, ok)
     {"type": "photosynthese"},                                                        # sans rendement (fermentation gazeuse) -> PAS un faux positif
+    # compressions RÉELLES : au-dessus de l'entropie (sans perte), ou avec perte (non jugée).
+    {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 2.3},   # gzip texte (> H)
+    {"type": "compression", "sans_perte": True, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 2.0},   # AU H (arithmétique, limite, ok)
+    {"type": "compression", "sans_perte": False, "entropie_bits_par_symbole": 2.0, "bits_par_symbole": 0.5},  # AVEC PERTE (JPEG) sous H -> PAS un faux positif
+    {"type": "compression"},                                                          # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
