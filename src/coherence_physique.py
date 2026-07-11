@@ -58,6 +58,8 @@ L15 = ("borne d'entropie (codage de source de Shannon) : une compression SANS PE
        "H de la source, et aucun compresseur sans perte ne réduit TOUTE entrée (argument de comptage)")
 L16 = ("plancher radiatif de Stefan-Boltzmann : pas d'isolant parfait — un objet à T>0 perd au moins "
        "ε·σ·A·(T⁴−T_env⁴) par rayonnement (ε>0), même sans conduction ni convection")
+L17 = ("secret parfait de Shannon : une confidentialité PARFAITE (inconditionnelle) exige une entropie de clé ≥ "
+       "l'entropie du message (le masque jetable l'atteint) — une clé plus courte ne garantit pas le secret parfait")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
@@ -97,7 +99,7 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
                  "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
                  "captation_solaire", "electrolyse", "sustentation", "imagerie_optique", "eolienne", "fusee",
-                 "photosynthese", "compression", "isolation_thermique"):
+                 "photosynthese", "compression", "isolation_thermique", "chiffrement"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -449,6 +451,20 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
                 return (VIOLE, f"perte déclarée {perte} W < plancher radiatif {round(p_min, 3)} W "
                                f"(ε·σ·A·(T⁴−T_env⁴), ε={eps}, A={a_iso} m², {to}→{te} K) : un objet chaud rayonne "
                                f"au moins cela — pas d'isolant parfait", L16)
+
+    # --- Secret parfait de Shannon : confidentialité inconditionnelle ⇒ entropie de clé ≥ entropie du message. ---
+    # Une confidentialité PARFAITE (théorie de l'information, inconditionnelle) impose H(clé) ≥ H(message) (Shannon
+    # 1949 ; le masque jetable l'atteint, clé = message). Une clé plus courte, ou réutilisée (two-time pad), ne peut
+    # garantir le secret parfait. CONSERVATEUR : on ne juge QUE le secret PARFAIT déclaré — la sécurité CALCULATOIRE
+    # (AES, RSA), qui ne prétend PAS à l'inconditionnel, n'est jamais réfutée. Faux positif INTERDIT.
+    if t == "chiffrement":
+        if bool(spec.get("securite_parfaite", False)):
+            hk = spec.get("entropie_cle_bits")
+            hm = spec.get("entropie_message_bits")
+            if _nb(hk) and _nb(hm) and hk >= 0 and hm >= 0 and hk < hm * (1.0 - 1e-9):
+                return (VIOLE, f"entropie de clé {hk} bits < entropie du message {hm} bits pour un secret PARFAIT "
+                               f"revendiqué : impossible (Shannon 1949 — la clé doit être au moins aussi longue que "
+                               f"le message)", L17)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

@@ -157,6 +157,13 @@ check(loi({"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_ob
            "t_env_K": 293, "puissance_perdue_W": 0.1}) == P.L16, "Stefan-Boltzmann = L16")
 check(statut({"type": "isolation_thermique", "emissivite": 0.0, "aire_m2": 1, "t_objet_K": 373,
               "t_env_K": 293}) == P.VIOLE, "émissivité 0 (isolant parfait) -> VIOLE")
+# secret parfait de Shannon : entropie de clé sous l'entropie du message (secret parfait revendiqué).
+check(statut({"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 128,
+              "entropie_message_bits": 8e6}) == P.VIOLE, "clé 128 bits < message 8 Mb, secret parfait -> VIOLE")
+check(loi({"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 128,
+           "entropie_message_bits": 8e6}) == P.L17, "secret parfait = L17")
+check(statut({"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000,
+              "entropie_message_bits": 2000}) == P.VIOLE, "two-time pad (clé réutilisée) -> VIOLE")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -269,6 +276,11 @@ reels = [
     {"type": "isolation_thermique", "emissivite": 0.5, "aire_m2": 1, "t_objet_K": 373, "t_env_K": 293, "puissance_perdue_W": 400},   # objet peint (> floor ~340)
     {"type": "isolation_thermique", "emissivite": 0.02, "aire_m2": 1},                # sans perte/T : PAS un faux positif
     {"type": "isolation_thermique"},                                                  # vide -> PAS un faux positif
+    # chiffrements RÉELS : OTP (clé ≥ message) ou calculatoire (non jugé par le secret parfait).
+    {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 1000000},  # OTP (clé = message)
+    {"type": "chiffrement", "securite_parfaite": True, "entropie_cle_bits": 1000000, "entropie_message_bits": 500000},   # OTP clé plus longue (ok)
+    {"type": "chiffrement", "securite_parfaite": False, "entropie_cle_bits": 256, "entropie_message_bits": 8e6},         # AES calculatoire (pas parfait) -> PAS un faux positif
+    {"type": "chiffrement"},                                                          # vide -> PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
