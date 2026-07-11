@@ -1,5 +1,24 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 28e domaine « cryogénie / zéro absolu » + loi L25 (troisième principe)
+
+Refroidir vers le zéro absolu / cryogénie. Nouvelle loi dure au juge (`L25`) : le TROISIÈME PRINCIPE — le zéro
+absolu (0 K) est INATTEIGNABLE en un nombre fini d'étapes (retirer toute l'entropie demanderait une infinité
+d'étapes ; chaque étape en retire de moins en moins). CONSERVATEUR (FAUX=0) : on ne réfute qu'une atteinte DÉCLARÉE
+de 0 K ou une température de refroidissement ≤ 0 K. Complète le trio thermodynamique (L1 conservation, L2 Carnot,
+L25 3e principe). Gate `valide_coherence_physique` **348 → 362/362**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (atteinte de 0 K, refroidissement « à
+−1 K »). Reframing : l'objectif n'est pas « d'atteindre 0 K » mais de descendre TOUJOURS PLUS BAS par ÉTAGES (chaque
+mécanisme prend le relais quand le précédent sature). Leviers : étager en cascade, désaimantation adiabatique
+(entropie de spin), refroidissement optique/évaporatif, détente de gaz. Couvre Joule-Thomson, dilution He³/He⁴,
+désaimantation adiabatique/nucléaire, refroidissement laser, évaporatif (BEC), cascade, optomécanique. 4 stratégies
+naturelles propres (nébuleuse du Boomerang = détente adiabatique, fond cosmologique = expansion, évaporation,
+Joule-Thomson). Gate `valide_besoin` **510 → 527/527** ; les 27 domaines précédents intacts.
+
+**JALON : 28 DOMAINES D'INVENTION, 25 LOIS PHYSIQUES DANS LE JUGE** (… L24 loi d'Amdahl, L25 troisième principe de
+la thermodynamique). Trio thermodynamique complet : L1 (1er principe), L2 (2nd principe/Carnot), L25 (3e principe).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 27e domaine « paralléliser un calcul » + loi L24 (loi d'Amdahl)
 
 Accélérer un calcul par parallélisation. Nouvelle loi dure au juge (`L24`) : la loi d'AMDAHL — pour un problème de

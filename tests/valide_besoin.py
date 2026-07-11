@@ -1223,6 +1223,47 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "borne_tri" in B.decompose("trier des donnees"),
       "les 26 domaines précédents inchangés après l'ajout de la parallélisation (isolation)")
 
+# ── 34) VINGT-HUITIÈME DOMAINE : cryogénie / zéro absolu (nouvelle loi L25 = troisième principe, 0 K inatteignable) ──
+dcy = B.decompose("refroidir vers le zero absolu")
+check(dcy["statut"] == "decompose", "besoin cryogénie connu -> decompose")
+check("absolu" in dcy["objectif_reel"].lower() and "entropie" in dcy["objectif_reel"].lower(),
+      "objectif réel cryogénie = zéro absolu inatteignable, entropie")
+check("zero_absolu" in dcy, "extras propres : le zéro absolu inatteignable")
+cy_canaux = {c.canal for c in dcy["canaux"]}
+check(cy_canaux == {"etagement", "desaimantation", "refroidissement optique", "detente de gaz"},
+      f"4 canaux de la cryogénie ({cy_canaux})")
+prcy = B.principes("refroidir vers le zero absolu")
+pcy = {e["nom"]: e for e in prcy["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : atteindre 0 K, refroidir sous 0
+z0 = pcy["atteinte du zéro absolu (0 K)"]
+check(z0["atome"].statut == A.REFUTE, "atteindre 0 K -> RÉFUTÉ")
+check(A.est_refute(z0["atome"].contenu), "contenu réfuté (0 K) dans la garde")
+tm1 = pcy["refroidissement « à −1 K »"]
+check(tm1["atome"].statut == A.REFUTE, "-1 K -> RÉFUTÉ")
+# procédés réels -> SUPPOSITIONS
+for nom in ("réfrigérateur à dilution (He³/He⁴)", "refroidissement évaporatif (condensat de Bose-Einstein)",
+            "étagement en cascade complet"):
+    e = pcy[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prcy["liste"]), "aucun principe de cryogénie promu en FAIT")
+check("candidat pour refroidissement_cryogenique" in pcy["réfrigérateur à dilution (He³/He⁴)"]["atome"].portee.condition,
+      "portée des principes de cryogénie nommant refroidissement_cryogenique")
+# la loi L25 : atteindre 0 K réfuté, nK réel cohérent
+st_cy, _, loi_cy = COH.juge_dispositif({"type": "cryogenie", "atteint_zero_absolu": True})
+check(st_cy == COH.VIOLE and loi_cy == COH.L25, "juge : atteindre 0 K -> VIOLE via L25")
+check(COH.juge_dispositif({"type": "cryogenie", "temperature_atteinte_K": 1e-9})[0] == COH.COHERENT_BORNE,
+      "1 nK (> 0) -> cohérent, pas de faux positif")
+# stratégies naturelles propres (nébuleuse du Boomerang, fond cosmologique)
+natcy = B.strategies_naturelles("refroidir vers le zero absolu")
+check(len(natcy) >= 4 and any("boomerang" in s["exemple"].lower() for s in natcy), "stratégies cryogénie propres (Boomerang)")
+check(not any("étourneaux" in s["exemple"] for s in natcy) and not any("forêt" in s["exemple"] for s in natcy),
+      "pas de fuite des stratégies parallélisation/cooling vers la cryogénie")
+# les VINGT-SEPT domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "amdahl" in B.decompose("accelerer un calcul")
+      and "borne_recherche" in B.decompose("rechercher un element"),
+      "les 27 domaines précédents inchangés après l'ajout de la cryogénie (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
@@ -1231,8 +1272,8 @@ check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "
                               "production_alimentaire", "compression_information", "isolation_thermique",
                               "confidentialite_information", "vol_croisiere", "detection_signal",
                               "amplification_signal", "numerisation_signal", "tri_donnees", "recherche_donnees",
-                              "parallelisation_calcul"],
-      "vingt-sept domaines modélisés, dans l'ordre d'enregistrement")
+                              "parallelisation_calcul", "refroidissement_cryogenique"],
+      "vingt-huit domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")

@@ -4058,6 +4058,144 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  VINGT-HUITIÈME DOMAINE : refroidir vers le zéro absolu / cryogénie. Nouvelle loi dure au juge (L25) : le
+#  TROISIÈME PRINCIPE — le zéro absolu (0 K) est INATTEIGNABLE en un nombre fini d'étapes : retirer toute l'entropie
+#  exigerait une infinité d'étapes (chaque étape en retire de moins en moins). REFRAMING machine : l'objectif n'est
+#  pas « d'atteindre 0 K » (mur infranchissable) mais de descendre TOUJOURS PLUS BAS par ÉTAGES — chaque mécanisme
+#  prend le relais quand le précédent sature. Complète le trio thermodynamique (L1 conservation, L2 Carnot, L25 3e
+#  principe). Leviers : étager les mécanismes en cascade ; désaimantation adiabatique (retirer l'entropie de spin) ;
+#  refroidissement optique/évaporatif (retirer les atomes les plus chauds) ; détente de gaz.
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_CRYO = "refroidissement_cryogenique"
+_ALIAS_CRYO = {
+    "refroidir vers le zero absolu", "atteindre les tres basses temperatures", "refroidissement cryogenique",
+    "approcher le zero absolu", "atteindre le millikelvin", "refroidir a l extreme",
+}
+
+# ── « Canaux » : les leviers pour descendre toujours plus bas en température ──────────────────────────────────────
+_CANAUX_CRYO = [
+    Canal("etagement", "chaleur", "ÉTAGER les mécanismes en cascade : chaque étage prend le relais quand le précédent sature",
+          True, "aucun mécanisme ne couvre toute la plage → compresseur puis Joule-Thomson puis dilution puis "
+                "désaimantation puis laser, chacun sur sa gamme ; l'assemblage descend au nK — le levier « cascade »"),
+    Canal("desaimantation", "chaleur", "DÉSAIMANTATION adiabatique : retirer l'entropie de SPIN en démagnétisant",
+          True, "aligner des spins avec un champ (à T fixe) puis démagnétiser adiabatiquement refroidit le système ; "
+                "la version NUCLÉAIRE atteint le µK–nK ; retours décroissants près de 0 — le levier « entropie de spin »"),
+    Canal("refroidissement optique", "chaleur", "REFROIDISSEMENT laser / évaporatif : retirer les atomes les plus CHAUDS",
+          True, "des lasers ralentissent les atomes (refroidissement Doppler), puis l'évaporation laisse partir les "
+                "plus rapides (condensat de Bose-Einstein) → nK sur des gaz dilués ; réservé aux petits ensembles"),
+    Canal("detente de gaz", "chaleur", "DÉTENDRE un gaz (Joule-Thomson) : la détente refroidit",
+          True, "un gaz comprimé qui se détend se refroidit (effet Joule-Thomson) → la base de la liquéfaction (He, "
+                "N₂) et le premier étage de toute cascade ; le levier « détente », mais loin du nK"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par le troisième principe (type `cryogenie`, T > 0 K, 0 K inatteignable) ───
+_PRINCIPES_CRYO = [
+    _P("détente de gaz (Joule-Thomson, liquéfaction)",
+       "cryogénie : liquéfier un gaz par compression puis détente (premier étage)",
+       {"type": "cryogenie", "temperature_atteinte_K": 4.0}, True, True,
+       "—", "mature",
+       0.6, "la base : liquéfie hélium (~4 K) et azote (~77 K) → l'étage d'entrée de toute cascade cryogénique ; "
+            "loin du nK, mais indispensable pour démarrer — le levier « détente »"),
+    _P("réfrigérateur à dilution (He³/He⁴)",
+       "cryogénie : exploiter la dilution de l'hélium-3 dans l'hélium-4 pour atteindre le millikelvin",
+       {"type": "cryogenie", "temperature_atteinte_K": 0.005}, True, True,
+       "—", "mature",
+       0.6, "le cheval de bataille du mK (calcul quantique, détecteurs) : refroidit en continu vers ~5 mK ; "
+            "complexe et coûteux → un étage clé de la cascade, mais pas la fin — vers plus bas encore"),
+    _P("désaimantation adiabatique (paramagnétique)",
+       "cryogénie : aimanter un sel paramagnétique puis le démagnétiser adiabatiquement",
+       {"type": "cryogenie", "temperature_atteinte_K": 0.001}, True, True,
+       "—", "mature",
+       0.55, "retire l'entropie de spin → descend sous le mK en une détente magnétique ; refroidissement par "
+             "IMPULSIONS (pas continu) → chaque cycle gagne moins — le levier « entropie de spin »"),
+    _P("désaimantation nucléaire (µK–nK)",
+       "cryogénie : désaimanter les spins NUCLÉAIRES pour atteindre le micro/nanokelvin",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-7}, True, True,
+       "—", "recherche",
+       0.45, "les spins nucléaires ont une entropie retirable à bien plus basse température → records du µK–nK "
+             "(matière condensée) ; temps et isolation extrêmes → près de 0, les gains s'effondrent (3e principe)"),
+    _P("refroidissement laser (Doppler / Sisyphe)",
+       "cryogénie : ralentir des atomes par pression de radiation laser accordée",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-6}, True, True,
+       "—", "mature (atomique)",
+       0.5, "des faisceaux laser freinent les atomes → µK sur des gaz piégés (horloges atomiques, atomes froids) ; "
+            "limité aux ensembles dilués — le levier « optique »"),
+    _P("refroidissement évaporatif (condensat de Bose-Einstein)",
+       "cryogénie : laisser s'échapper les atomes les plus énergétiques d'un piège",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-9}, True, True,
+       "—", "mature (recherche)",
+       0.5, "abaisser le piège laisse partir les plus chauds → le reste refroidit jusqu'au nK (condensat de "
+            "Bose-Einstein) ; on perd des atomes à chaque étape → rendement décroissant — le levier « évaporation »"),
+    _P("étagement en cascade complet",
+       "cryogénie : enchaîner compresseur → Joule-Thomson → dilution → désaimantation → laser",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-8}, True, True,
+       "—", "mature",
+       0.55, "chaque étage prend le relais quand le précédent sature → l'assemblage atteint des températures "
+             "qu'aucun étage seul n'obtient ; complexité et coût cumulés — le levier « cascade »"),
+    _P("refroidissement par bande latérale (optomécanique)",
+       "cryogénie : refroidir un résonateur mécanique vers son état fondamental par bande latérale résolue",
+       {"type": "cryogenie", "temperature_atteinte_K": 1e-5}, True, True,
+       "—", "recherche",
+       0.4, "extrait les phonons d'un oscillateur mécanique jusqu'à son état quantique fondamental (optomécanique, "
+            "circuits supraconducteurs) → refroidir un OBJET, pas un gaz ; encore proche des limites — piste émergente"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("atteinte du zéro absolu (0 K)",
+       "cryogénie : refroidir un système EXACTEMENT à 0 K",
+       {"type": "cryogenie", "atteint_zero_absolu": True}, True, True,
+       "—", "revendication",
+       0.3, "atteindre 0 K exigerait de retirer toute l'entropie en un nombre fini d'étapes → impossible (3e "
+            "principe) ; on ne fait que s'en approcher asymptotiquement — à réfuter"),
+    _P("refroidissement « à −1 K »",
+       "cryogénie : atteindre une température de −1 kelvin par refroidissement",
+       {"type": "cryogenie", "temperature_atteinte_K": -1}, True, True,
+       "—", "revendication",
+       0.25, "rien n'est plus froid que 0 K (par refroidissement) : une température de −1 K est impossible (3e "
+             "principe)"),
+]
+
+_OBJECTIF_CRYO = ("Le but réel n'est pas « d'atteindre 0 K » (mur infranchissable) mais de descendre TOUJOURS PLUS "
+                  "BAS : le troisième principe rend le zéro absolu inatteignable en un nombre fini d'étapes, car "
+                  "retirer toute l'ENTROPIE exigerait une infinité d'étapes (chaque étape en retire de moins en "
+                  "moins). On s'en approche asymptotiquement (nK atteints). Leviers : ÉTAGER les mécanismes en "
+                  "cascade (chacun prend le relais quand le précédent sature) ; DÉSAIMANTATION adiabatique (retirer "
+                  "l'entropie de spin) ; refroidissement OPTIQUE / évaporatif (retirer les atomes les plus chauds) ; "
+                  "détente de gaz. Chaque principe reste jugé par le troisième principe.")
+_LOI_CRYO = ("troisième principe de la thermodynamique : le zéro absolu (0 K) est inatteignable en un nombre fini "
+             "d'étapes (retirer toute l'entropie demanderait une infinité d'étapes) ; gains réels = étager les "
+             "mécanismes en cascade, désaimantation adiabatique (entropie de spin), refroidissement optique/"
+             "évaporatif, détente de gaz — on approche 0 K sans jamais l'atteindre")
+
+# La nature approche le froid extrême par la détente (nébuleuse), l'expansion (fond cosmologique), l'évaporation, la détente de gaz.
+_STRATEGIES_NATURE_CRYO = [
+    _Nature("nébuleuse du Boomerang (~1 K, plus froid naturel connu)",
+            ["un gaz s'échappe et se détend adiabatiquement", "se refroidit sous le fond cosmologique"],
+            "la DÉTENTE adiabatique d'un gaz refroidit — le mécanisme du plus froid endroit naturel"),
+    _Nature("fond diffus cosmologique (2,7 K)",
+            ["refroidi par l'expansion de l'univers", "baisse asymptotiquement avec le temps"],
+            "l'EXPANSION refroidit tout un volume — et s'approche du froid sans jamais l'annuler"),
+    _Nature("évaporation (les molécules rapides s'échappent)",
+            ["les plus énergétiques partent", "le reste voit sa température moyenne baisser"],
+            "laisser partir les plus CHAUDS pour refroidir le reste — l'analogue du refroidissement évaporatif"),
+    _Nature("détente de Joule-Thomson (gaz qui se détend)",
+            ["un gaz comprimé qui se détend se refroidit", "à la base de la liquéfaction"],
+            "détendre un gaz pour le refroidir — l'étage d'entrée de toute cascade cryogénique"),
+]
+
+enregistre(Domaine(
+    nom=_CRYO,
+    aliases=frozenset(_ALIAS_CRYO),
+    objectif=_OBJECTIF_CRYO,
+    canaux=_CANAUX_CRYO,
+    principes=_PRINCIPES_CRYO,
+    strategies=_STRATEGIES_NATURE_CRYO,
+    loi=_LOI_CRYO,
+    extras={"zero_absolu": "0 K inatteignable en un nombre fini d'étapes (3e principe)",
+            "note": "on approche asymptotiquement (nK atteints) ; les rendements s'effondrent près de 0 ; complète "
+                    "L1 (conservation) et L2 (Carnot)"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")
