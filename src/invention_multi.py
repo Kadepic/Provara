@@ -82,6 +82,15 @@ _LS_OPS = [
     "sum({L}[:{K}])", "sum({L}[{K}:])", "sum(sorted({L})[:{K}])", "sum(sorted({L})[-{K}:])",
     "max({L}[:{K}])", "max({L}[{K}:])", "max(sorted({L})[:{K}])",
     "min({L}[:{K}])", "min({L}[{K}:])", "min(sorted({L})[-{K}:])",
+    # MATRICE×ENTIER (atome 16, frontière mesurée : colonne_k / agrégats ligne-colonne = brique_manquante ;
+    # la ligne m[k] était déjà au registre). Sur liste PLATE d'entiers ces ops crashent (int non itérable)
+    # -> validation contextuelle, jamais une coïncidence.
+    "[_r[{K}] for _r in {L}]",                                            # colonne k
+    "sum({L}[{K}])", "max({L}[{K}])", "min({L}[{K}])",                    # agrégats de la ligne k
+    "sum(_r[{K}] for _r in {L})", "max(_r[{K}] for _r in {L})",           # agrégats de la colonne k
+    "min(_r[{K}] for _r in {L})",
+    # LISTE×SÉPARATEUR (atome 16, frontière mesurée : join paramétré = brique_manquante). Scalaire str.
+    "{K}.join({L})",
 ]
 
 
@@ -475,11 +484,17 @@ def _forme_liste_scalaire(toutes):
     _e > k sur str, sum) crashent à la validation contextuelle -> filtrées, jamais un faux."""
     def _est_int(v):
         return isinstance(v, int) and not isinstance(v, bool)
+    def _scal(v):
+        return _est_int(v) or isinstance(v, str)
     def _seq(v):
         return isinstance(v, (list, str))
-    if all(len(a) == 2 and _seq(a[0]) and _est_int(a[1]) for a, _ in toutes):
+    # (str, str) est la forme CHAÎNE×CHAÎNE, pas séquence×scalaire : une LISTE accepte un scalaire str
+    # (join, count, in) mais une chaîne n'accepte qu'un entier (tranches/rotations).
+    if all(len(a) == 2 and _seq(a[0]) and _scal(a[1])
+           and not (isinstance(a[0], str) and isinstance(a[1], str)) for a, _ in toutes):
         return ("a", "b")
-    if all(len(a) == 2 and _est_int(a[0]) and _seq(a[1]) for a, _ in toutes):
+    if all(len(a) == 2 and _scal(a[0]) and _seq(a[1])
+           and not (isinstance(a[1], str) and isinstance(a[0], str)) for a, _ in toutes):
         return ("b", "a")
     return None
 
@@ -513,10 +528,13 @@ def _sondes_liste_scalaire(exemples, forme) -> list[tuple]:
         out.append(mk(copie(x), k))
         out.append(mk(x[::-1], k))
         out.append(mk("".join(sorted(x)) if est_str else sorted(x), k))
-        if 1 <= k + 1 <= len(x):
-            out.append(mk(copie(x), k + 1))
-        if k - 1 >= 1:
-            out.append(mk(copie(x), k - 1))
+        if isinstance(k, int) and not isinstance(k, bool):
+            if 1 <= k + 1 <= len(x):
+                out.append(mk(copie(x), k + 1))
+            if k - 1 >= 1:
+                out.append(mk(copie(x), k - 1))
+        else:                                                   # scalaire str (séparateur/élément) : le varier
+            out.append(mk(copie(x), k + "·"))
         if x:
             out.append(mk(x + x[0] if est_str else list(x) + [x[0]], k))
     seen, res = set(), []
