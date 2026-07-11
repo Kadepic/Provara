@@ -1,5 +1,28 @@
 # Journal des modifications — Provara
 
+## 2026-07-12 — MOTEUR D'INVENTION : 12e domaine « produire de l'hydrogène » + loi L9 (électrolyse)
+
+Produire de l'hydrogène par électrolyse de l'eau. Nouvelle loi dure au juge (`L9`) : le travail ÉLECTRIQUE ≥ ΔG
+(tension de cellule ≥ E_rev(T) = ΔG(T)/nF, ~1,23 V à 25 °C) ET l'énergie TOTALE ≥ ΔH (PCS de H₂, ~285,8 kJ/mol —
+sinon le H₂ restituerait à la combustion plus que reçu = création nette). CONSERVATEUR (FAUX=0) : la borne sur la
+tension ne vaut que si l'anode fait la réaction STANDARD (dégagement d'O₂, `reaction_anodique_standard`) — car
+l'électrolyse ASSISTÉE (oxydation sacrificielle) descend légitimement sous 1,23 V ; et le modèle E_rev(T) linéaire
+sous-estime le plancher aux hautes températures → un SOEC n'est jamais réfuté à tort. Gate
+`valide_coherence_physique` **132 → 150/150**.
+
+`enregistre(...)`, rien d'autre. **10 principes**, 8 suppositions + 2 RÉFUTÉS (0,9 V à anode standard, H₂ « à
+150 kJ/mol » sous le PCS). Reframing : l'ennemi n'est pas la faisabilité mais la SURTENSION (cellules réelles à
+1,8–2,0 V vs 1,23 V réversible ≈ 40 % de pertes) et le coût des catalyseurs nobles. Leviers : réduire la surtension
+(catalyseurs abondants), monter la TEMPÉRATURE (SOEC), changer la demi-réaction ANODIQUE (oxydation sacrificielle
+sous 1,23 V), coupler à la LUMIÈRE (photoélectrochimique). Couvre alcaline, PEM, SOEC, AEM, assistée, PEC,
+thermochimique S-I, catalyseurs non nobles. 4 stratégies naturelles propres (hydrogénase = catalyseur Fe/Ni
+abondant, photosystème II = oxydation de l'eau sous lumière, microbes = voie douce sacrificielle, membrane =
+séparation sélective). Gate `valide_besoin` **238 → 255/255** ; les 11 domaines précédents intacts.
+
+**JALON : 12 DOMAINES D'INVENTION, 9 LOIS PHYSIQUES DANS LE JUGE** (L1 conservation énergie, L2 Carnot, L3 travail
+minimal de séparation, L4 quantité de mouvement + v≤c, L5 efficacité lumineuse ≤ 683 lm/W, L6 Landauer, L7 Shannon,
+L8 Shockley-Queisser / exergie solaire, L9 électrolyse ΔG/ΔH).
+
 ## 2026-07-12 — MOTEUR D'INVENTION : 11e domaine « capter l'énergie solaire » + loi L8 (Shockley-Queisser)
 
 Capter l'énergie solaire. Nouvelle loi dure au juge (`L8`) : la **limite de Shockley-Queisser** — une cellule à

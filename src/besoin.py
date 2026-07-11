@@ -1830,6 +1830,147 @@ enregistre(Domaine(
 ))
 
 
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+#  DOUZIÈME DOMAINE : produire de l'hydrogène (électrolyse de l'eau). Nouvelle loi dure au juge (L9) : le travail
+#  électrique minimal = l'enthalpie libre de Gibbs ΔG (tension de cellule ≥ E_rev ≈ 1,23 V à 25 °C) ET l'énergie
+#  TOTALE ≥ l'enthalpie ΔH (PCS de H₂, ~285,8 kJ/mol). REFRAMING machine : l'ennemi n'est pas la faisabilité (on
+#  sait scinder l'eau depuis 1800) mais la SURTENSION — les cellules réelles tournent à 1,8–2,0 V contre 1,23 V
+#  réversible, soit ~40 % d'énergie gaspillée — et le COÛT des catalyseurs nobles (Pt/Ir). Leviers : réduire la
+#  surtension (catalyseurs actifs abondants) ; monter la TEMPÉRATURE (SOEC : E_rev chute, une part de l'énergie
+#  vient de la chaleur) ; réaction ANODIQUE alternative (oxydation sacrificielle valorisant un sous-produit, sous
+#  1,23 V légitimement) ; coupler directement à la LUMIÈRE (photoélectrochimique).
+# ══════════════════════════════════════════════════════════════════════════════════════════════════════════════
+_H2 = "production_hydrogene"
+_ALIAS_H2 = {
+    "produire de l hydrogene", "fabriquer de l hydrogene", "electrolyse de l eau",
+    "produire de l hydrogene vert", "fractionner l eau", "hydrogene par electrolyse",
+}
+
+# ── « Canaux » : les leviers pour rapprocher l'électrolyse de son minimum thermodynamique ────────────────────────
+_CANAUX_H2 = [
+    Canal("surtension", "energie", "réduire la SURTENSION : catalyseurs très actifs pour approcher E_rev (~1,23 V)",
+          True, "une cellule réelle à 1,8–2,0 V gaspille ~40 % en surtension ; chaque dixième de volt gagné est de "
+                "l'énergie directe — le plus gros levier de rendement à basse température"),
+    Canal("temperature", "energie", "monter la TEMPÉRATURE (électrolyse à oxyde solide) : E_rev baisse, la chaleur fournit une part",
+          True, "à haute température ΔG diminue (une part de l'énergie vient de la chaleur, souvent fatale/solaire) → "
+                "la demande ÉLECTRIQUE chute ; exige des matériaux céramiques tenant 700–900 °C"),
+    Canal("catalyseur", "energie", "remplacer les métaux NOBLES (Pt/Ir) par des catalyseurs abondants (Ni-Fe, sulfures)",
+          True, "attaque le COÛT et la rareté plus que l'énergie : des catalyseurs terrestres abondants rendent "
+                "l'électrolyse déployable à l'échelle du térawatt — le verrou industriel"),
+    Canal("anode", "energie", "réaction ANODIQUE alternative : oxyder un composé sacrificiel au lieu de dégager l'O₂",
+          True, "remplacer l'oxydation de l'eau (coûteuse) par celle d'un sous-produit (urée, alcools, biomasse) "
+                "abaisse la tension SOUS 1,23 V et valorise un déchet — le levier « changer la demi-réaction »"),
+]
+
+# ── PRINCIPES candidats — chacun JUGÉ par la limite d'électrolyse (type `electrolyse`, tension ≥ E_rev, énergie ≥ ΔH) ──
+_PRINCIPES_H2 = [
+    _P("électrolyse alcaline (référence)",
+       "produire H₂ : électrolyse alcaline classique (électrodes nickel dans une solution de potasse)",
+       {"type": "electrolyse", "tension_cellule_V": 1.9, "t_K": 353, "reaction_anodique_standard": True}, True, True,
+       "—", "mature",
+       0.65, "la technologie la plus déployée, robuste et sans métaux nobles ; tension ~1,8–2,0 V (surtension "
+             "notable) → la référence dont il faut réduire la surtension"),
+    _P("électrolyse PEM (membrane échangeuse de protons)",
+       "produire H₂ : électrolyseur à membrane polymère, réactif et compact, sous catalyseurs iridium/platine",
+       {"type": "electrolyse", "tension_cellule_V": 1.8, "t_K": 343, "reaction_anodique_standard": True}, True, True,
+       "—", "mature",
+       0.6, "densités de courant élevées et réponse rapide (adapté au renouvelable intermittent) ; dépend d'iridium "
+            "rare à l'anode → le verrou catalyseur"),
+    _P("électrolyse à oxyde solide (SOEC, haute température)",
+       "produire H₂ : électrolyse à 700–900 °C où une part de l'énergie est apportée par la chaleur",
+       {"type": "electrolyse", "tension_cellule_V": 1.3, "t_K": 1073, "reaction_anodique_standard": True}, True, True,
+       "—", "émergent",
+       0.55, "à haute température E_rev chute → demande électrique la plus basse, surtout si la chaleur est fatale "
+             "ou solaire ; dégradation des céramiques et cyclage thermique à maîtriser — le levier « température »"),
+    _P("électrolyse à membrane échangeuse d'anions (AEM)",
+       "produire H₂ : membrane alcaline solide combinant catalyseurs abondants et architecture compacte",
+       {"type": "electrolyse", "tension_cellule_V": 1.8, "t_K": 333, "reaction_anodique_standard": True}, True, True,
+       "—", "recherche (industrialisation)",
+       0.5, "vise le meilleur des deux mondes : catalyseurs non nobles (comme l'alcaline) et compacité (comme le "
+            "PEM) ; durabilité des membranes à prouver — piste industrielle sous-exploitée"),
+    _P("électrolyse assistée (oxydation sacrificielle à l'anode)",
+       "produire H₂ : remplacer le dégagement d'O₂ par l'oxydation d'un composé (urée, alcool, biomasse) sous 1,23 V",
+       {"type": "electrolyse", "tension_cellule_V": 0.8, "t_K": 298.15}, True, True,
+       "—", "recherche",
+       0.45, "descend LÉGITIMEMENT sous la tension réversible de l'eau car une AUTRE réaction fournit l'énergie et "
+             "valorise un déchet ; consomme le composé sacrificiel → pas universel, mais élégant en co-production"),
+    _P("cellule photoélectrochimique (scission directe par la lumière)",
+       "produire H₂ : un semi-conducteur immergé scinde l'eau directement sous l'éclairement solaire",
+       {"type": "electrolyse", "energie_kJ_par_mol_H2": 500}, True, True,
+       "—", "recherche",
+       0.4, "supprime l'étape électrique séparée (le photon fait le travail) → potentiellement simple et bon marché ; "
+            "rendements et stabilité des photo-électrodes encore faibles — horizon lointain, dans les lois"),
+    _P("cycle thermochimique (soufre-iode, chaleur haute température)",
+       "produire H₂ : scinder l'eau par une suite de réactions chimiques entraînées par la chaleur, sans électricité",
+       {"type": "electrolyse", "energie_kJ_par_mol_H2": 450}, True, True,
+       "—", "recherche",
+       0.4, "utilise directement de la chaleur haute température (nucléaire, solaire concentré) au lieu d'électricité ; "
+            "corrosion et complexité des boucles chimiques à dompter — voie « chaleur → H₂ »"),
+    _P("catalyseurs sans métaux nobles (Ni-Fe, sulfures, phosphures)",
+       "produire H₂ : électrolyse alcaline avec catalyseurs terrestres abondants réduisant la surtension",
+       {"type": "electrolyse", "tension_cellule_V": 1.7, "t_K": 353, "reaction_anodique_standard": True}, True, True,
+       "—", "recherche (regain)",
+       0.5, "attaque à la fois la surtension (matériaux plus actifs) et le coût (aucun métal rare) → condition du "
+            "déploiement massif ; stabilité en fonctionnement continu à prouver — levier « catalyseur abondant »"),
+    # ── PRINCIPES IMPOSSIBLES (à RÉFUTER) ──
+    _P("électrolyseur « à 0,9 V » (anode standard, ambiant)",
+       "produire H₂ : cellule à anode standard (dégagement d'O₂) revendiquant 0,9 V à température ambiante",
+       {"type": "electrolyse", "tension_cellule_V": 0.9, "t_K": 298.15, "reaction_anodique_standard": True}, True, True,
+       "—", "revendication",
+       0.3, "0,9 V < tension réversible de l'eau (~1,23 V à 25 °C, anode O₂) — le fractionnement net ne peut pas se "
+            "produire ; à réfuter par le 2nd principe (ΔG)"),
+    _P("hydrogène « à 150 kJ/mol » (sous le PCS)",
+       "produire H₂ : fabriquer une mole de H₂ avec 150 kJ d'énergie totale",
+       {"type": "electrolyse", "energie_kJ_par_mol_H2": 150}, True, True,
+       "—", "revendication",
+       0.25, "150 kJ/mol < PCS de H₂ (285,8 kJ/mol, ΔH) : le H₂ restituerait à la combustion plus d'énergie qu'il "
+             "n'en a reçu = création nette — impossible"),
+]
+
+_OBJECTIF_H2 = ("Le but réel n'est pas de « savoir » scinder l'eau (acquis depuis 1800) mais de le faire au plus "
+                "près du minimum thermodynamique et avec des matériaux abondants. Deux planchers : le travail "
+                "ÉLECTRIQUE ≥ ΔG (enthalpie libre de Gibbs, tension ≥ E_rev ≈ 1,23 V à 25 °C) et l'énergie TOTALE "
+                "≥ ΔH (PCS de H₂, "
+                "~285,8 kJ/mol). L'ennemi est la SURTENSION (cellules réelles à 1,8–2,0 V ≈ 40 % de pertes) et le "
+                "coût des catalyseurs nobles. Leviers : réduire la surtension (catalyseurs actifs abondants) ; "
+                "monter la TEMPÉRATURE (SOEC : E_rev chute, la chaleur fournit une part) ; changer la réaction "
+                "ANODIQUE (oxydation sacrificielle sous 1,23 V, valorise un déchet) ; coupler directement à la "
+                "LUMIÈRE (photoélectrochimique). Chaque principe reste jugé par ces limites.")
+_LOI_H2 = ("électrolyse de l'eau : l'énergie électrique par mole de H₂ ≥ ΔG (tension de cellule ≥ E_rev(T) = "
+           "ΔG(T)/nF, ~1,23 V à 25 °C, abaissée à haute température) et l'énergie TOTALE ≥ ΔH (PCS de H₂, "
+           "~285,8 kJ/mol) ; gains réels = réduire la surtension, monter la température, changer la demi-réaction "
+           "anodique, catalyseurs abondants")
+
+# La nature scinde l'eau et fabrique H₂ : enzyme à métaux abondants, photosystème II, microbes, séparation membranaire.
+_STRATEGIES_NATURE_H2 = [
+    _Nature("hydrogénase (enzyme à fer/nickel)",
+            ["catalyse H⁺ ⇄ H₂ à très basse surtension", "site actif à base de fer/nickel ABONDANTS", "vitesse comparable au platine"],
+            "catalyser avec des métaux ABONDANTS aussi bien qu'avec le platine — le levier « catalyseur sans métal noble »"),
+    _Nature("photosystème II (oxydation de l'eau par la lumière)",
+            ["complexe au manganèse oxyde l'eau", "entraîné directement par les photons", "faible surtension à l'anode"],
+            "oxyder l'eau à l'anode à basse surtension et sous la lumière — le levier « photo-assistance + catalyseur d'O₂ »"),
+    _Nature("microbes producteurs d'H₂ (fermentation, nitrogénase)",
+            ["produisent H₂ à température et pression ambiantes", "à partir de biomasse/déchets"],
+            "produire H₂ en conditions douces à partir d'un déchet — la voie biologique sacrificielle"),
+    _Nature("membrane biologique (tri des gaz à mesure)",
+            ["sépare les gaz produits sélectivement", "évite la recombinaison H₂/O₂"],
+            "SÉPARER H₂ et O₂ dès leur formation pour éviter la recombinaison — le levier « membrane sélective »"),
+]
+
+enregistre(Domaine(
+    nom=_H2,
+    aliases=frozenset(_ALIAS_H2),
+    objectif=_OBJECTIF_H2,
+    canaux=_CANAUX_H2,
+    principes=_PRINCIPES_H2,
+    strategies=_STRATEGIES_NATURE_H2,
+    loi=_LOI_H2,
+    extras={"tension_reversible_V": "~1,23 V (25 °C, ΔG/2F ; abaissée à haute température)",
+            "pcs_h2_kJ_mol": "285,8 (ΔH, plancher de l'énergie totale)",
+            "note": "cellules réelles à 1,8–2,0 V ≈ 40 % de surtension ; SOEC et anode alternative rapprochent de E_rev"},
+))
+
+
 if __name__ == "__main__":
     print("OBJECTIF RÉEL :", objectif_reel("rafraichir une piece"), "\n")
     d = decompose("rafraichir une piece")

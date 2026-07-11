@@ -548,11 +548,53 @@ check(len(B.principes("rafraichir une piece")["liste"]) == 18
       and "limite_landauer_J_bit" in B.decompose("calculer efficacement"),
       "les 10 domaines précédents inchangés après l'ajout du solaire (isolation)")
 
+# ── 18) DOUZIÈME DOMAINE : produire de l'hydrogène (nouvelle loi L9 = électrolyse, tension ≥ E_rev, énergie ≥ ΔH) ──
+dh2 = B.decompose("produire de l hydrogene")
+check(dh2["statut"] == "decompose", "besoin production hydrogène connu -> decompose")
+check("surtension" in dh2["objectif_reel"].lower() and "gibbs" in dh2["objectif_reel"].lower(),
+      "objectif réel H₂ = approcher ΔG (Gibbs) contre la surtension")
+check("tension_reversible_V" in dh2, "extras propres : la tension réversible ~1,23 V")
+h2_canaux = {c.canal for c in dh2["canaux"]}
+check(h2_canaux == {"surtension", "temperature", "catalyseur", "anode"}, f"4 canaux de l'électrolyse ({h2_canaux})")
+prh2 = B.principes("produire de l hydrogene")
+ph2 = {e["nom"]: e for e in prh2["liste"]}
+# l'IMPOSSIBLE est RÉFUTÉ : 0,9 V (anode standard) < E_rev, et 150 kJ/mol < PCS
+sous_erev = ph2["électrolyseur « à 0,9 V » (anode standard, ambiant)"]
+check(sous_erev["atome"].statut == A.REFUTE, "0,9 V anode standard < E_rev 1,23 -> RÉFUTÉ")
+check(A.est_refute(sous_erev["atome"].contenu), "contenu réfuté (0,9 V) dans la garde")
+sous_pcs = ph2["hydrogène « à 150 kJ/mol » (sous le PCS)"]
+check(sous_pcs["atome"].statut == A.REFUTE, "150 kJ/mol < PCS 285,8 -> RÉFUTÉ")
+# procédés réels (dont l'électrolyse assistée qui descend sous 1,23 V légitimement) -> SUPPOSITIONS
+for nom in ("électrolyse alcaline (référence)", "électrolyse à oxyde solide (SOEC, haute température)",
+            "électrolyse assistée (oxydation sacrificielle à l'anode)"):
+    e = ph2[nom]
+    check(e["atome"].statut == A.SUPPOSITION, f"{nom} -> SUPPOSITION")
+check(all(e["atome"].statut in (A.SUPPOSITION, A.REFUTE) for e in prh2["liste"]), "aucun principe d'électrolyse promu en FAIT")
+check("candidat pour production_hydrogene" in ph2["électrolyse alcaline (référence)"]["atome"].portee.condition,
+      "portée des principes H₂ nommant production_hydrogene")
+# la loi L9 : tension sous E_rev (anode standard) réfutée, SOEC haute T cohérente
+st_09, _, loi_09 = COH.juge_dispositif({"type": "electrolyse", "tension_cellule_V": 0.9, "t_K": 298.15,
+                                        "reaction_anodique_standard": True})
+check(st_09 == COH.VIOLE and loi_09 == COH.L9, "juge : 0,9 V anode standard -> VIOLE via L9")
+check(COH.juge_dispositif({"type": "electrolyse", "tension_cellule_V": 1.3, "t_K": 1073,
+                           "reaction_anodique_standard": True})[0] == COH.COHERENT_BORNE,
+      "SOEC 1,3 V à haute température -> cohérent (E_rev abaissée), pas de faux positif")
+# stratégies naturelles propres (hydrogénase, photosystème II)
+nath2 = B.strategies_naturelles("produire de l hydrogene")
+check(len(nath2) >= 4 and any("hydrogénase" in s["exemple"].lower() for s in nath2), "stratégies H₂ propres (hydrogénase)")
+check(not any("tournesol" in s["exemple"] for s in nath2) and not any("baleine" in s["exemple"] for s in nath2),
+      "pas de fuite des stratégies solaire/communication vers l'hydrogène")
+# les ONZE domaines précédents restent INTACTS
+check(len(B.principes("rafraichir une piece")["liste"]) == 18
+      and "plafond_shockley_queisser" in B.decompose("capter l energie solaire")
+      and "capacite_shannon" in B.decompose("transmettre de l information"),
+      "les 11 domaines précédents inchangés après l'ajout de l'hydrogène (isolation)")
+
 # ── 16) REGISTRE DE DOMAINES (généralisation 2026-07-12) : ajouter un domaine = l'enregistrer, RIEN d'autre ──
 check(B.domaines_connus() == ["rafraichissement_confort", "chauffage_confort", "dessalement_eau",
                               "stockage_energie", "capture_co2", "eau_potable_air", "propulsion", "eclairage",
-                              "calcul", "communication", "captation_solaire"],
-      "onze domaines modélisés, dans l'ordre d'enregistrement")
+                              "calcul", "communication", "captation_solaire", "production_hydrogene"],
+      "douze domaines modélisés, dans l'ordre d'enregistrement")
 # on enregistre un domaine de TEST et on vérifie que TOUTES les fonctions publiques dispatchent vers lui
 _TESTP = B._P("principe bidon", "faire X : mécanisme Y", {"type": "refroidissement", "cop": 2}, True, True,
               "puits", "test", 0.5, "base test")
