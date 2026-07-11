@@ -40,10 +40,14 @@ L4 = "conservation de la quantité de mouvement (3e loi de Newton) / vitesse d'�
 L5 = "efficacité lumineuse ≤ 683 lm/W (maximum spectral à 555 nm, rendement radiant 100 %)"
 L6 = "limite de Landauer (≥ k·T·ln2 dissipés par bit d'information effacé)"
 L7 = "limite de Shannon (débit ≤ B·log₂(1 + S/N))"
+L8 = ("limite de Shockley-Queisser (rendement PV ≤ ~33,7 % pour une jonction simple standard sous 1 soleil) ; "
+      "plafond ABSOLU = exergie du rayonnement solaire (Landsberg ≈ 93,3 %, Carnot 1 − Ta/Ts)")
 
 _C_LUMIERE = 299_792_458.0  # m/s
 _EFFICACITE_LUM_MAX = 683.0  # lm/W : maximum théorique (monochromatique 555 nm, tout le rayonnement converti)
 _K_BOLTZMANN = 1.380649e-23  # J/K
+_RENDEMENT_SQ_MONO = 0.337   # limite de Shockley-Queisser (jonction simple standard, AM1.5, 1 soleil, gap ~1,34 eV)
+_T_SOLEIL_K = 5778.0         # température de corps noir effective du Soleil (pour le plafond de Carnot solaire)
 
 
 def _nb(x):
@@ -67,7 +71,8 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
         return (HORS, "spec absente ou invalide", None)
     t = spec.get("type")
     if t not in ("conversion", "refroidissement", "moteur_thermique", "pompe_chaleur",
-                 "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication"):
+                 "dessalement", "separation", "propulsion", "eclairage", "calcul", "communication",
+                 "captation_solaire"):
         return (HORS, "type de dispositif inconnu ou non précisé", None)
 
     pe = spec.get("puissance_entree")
@@ -220,6 +225,34 @@ def juge_dispositif(spec: dict) -> tuple[str, str, str | None]:
             if debit > capacite + 1e-6:
                 return (VIOLE, f"débit {debit} bit/s > capacité de Shannon {capacite:.4g} bit/s "
                                f"(B={b} Hz, S/N={snr}) : impossible", L7)
+
+    # --- Limite de Shockley-Queisser / plafond thermodynamique du solaire : rendement de conversion borné. ---
+    # Deux bornes, toutes deux CONSERVATRICES (faux positif INTERDIT) :
+    #  (1) plafond ABSOLU, toute architecture : un convertisseur solaire est un moteur entre le Soleil (Ts ≈ 5778 K)
+    #      et l'ambiance (Ta). Son rendement ne peut dépasser le facteur de Carnot 1 − Ta/Ts (borne LÂCHE — la vraie
+    #      limite d'exergie du rayonnement, Landsberg ~93,3 %, est encore plus basse). Même le solaire IDÉAL
+    #      (jonctions infinies + pleine concentration, ~86 %) reste sous cette borne → jamais de faux positif.
+    #  (2) limite de SHOCKLEY-QUEISSER (~33,7 %) : ne vaut QUE pour une cellule à jonction simple en régime STANDARD
+    #      (une paire électron-trou par photon, un seul seuil, 1 soleil). Les mécanismes exotiques (multi-excitons,
+    #      porteurs chauds, bande intermédiaire) ou la concentration/les tandems la DÉPASSENT légitimement. On ne
+    #      réfute donc via SQ que si la spec DÉCLARE ce régime standard (`bilan_detaille_standard`), une jonction
+    #      simple et pas de concentration — sinon on ne tranche pas (conservateur).
+    if t == "captation_solaire":
+        eff = spec.get("rendement")
+        if _nb(eff):
+            ts = spec.get("t_soleil_K", _T_SOLEIL_K)
+            ta = spec.get("t_ambiante_K", 300.0)
+            if _nb(ts) and _nb(ta) and ts > 0 and ta > 0 and ta < ts:
+                plafond_abs = 1.0 - ta / ts
+                if eff > plafond_abs + 1e-9:
+                    return (VIOLE, f"rendement solaire {eff} > plafond thermodynamique {round(plafond_abs, 4)} "
+                                   f"(Carnot Ts={ts} K, Ta={ta} K) : au-delà de l'exergie du rayonnement solaire", L8)
+            jonctions = spec.get("nb_jonctions")
+            conc = spec.get("concentration_solaire", 1.0)
+            if (spec.get("bilan_detaille_standard") is True and jonctions == 1
+                    and _nb(conc) and conc <= 1.0 + 1e-9 and eff > _RENDEMENT_SQ_MONO + 1e-9):
+                return (VIOLE, f"rendement {eff} > limite de Shockley-Queisser {_RENDEMENT_SQ_MONO} "
+                               f"(jonction simple standard, 1 soleil) : au-delà du bilan détaillé", L8)
 
     # --- Drapeaux explicites de pseudo-science (énergie libre / mouvement perpétuel). ---
     if spec.get("mouvement_perpetuel") is True:

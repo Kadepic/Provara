@@ -95,6 +95,14 @@ check(loi({"type": "communication", "debit_bits_par_s": 20e6, "bande_passante_Hz
            "rapport_signal_bruit": 1000}) == P.L7, "capacité de canal = Shannon (L7)")
 check(statut({"type": "communication", "debit_bits_par_s": 1e6, "bande_passante_Hz": 0,
               "rapport_signal_bruit": 1000}) == P.VIOLE, "débit > 0 à bande passante NULLE -> VIOLE")
+# limite de Shockley-Queisser : jonction simple STANDARD sous 1 soleil > 33,7 %.
+check(statut({"type": "captation_solaire", "rendement": 0.50, "nb_jonctions": 1, "concentration_solaire": 1,
+              "bilan_detaille_standard": True}) == P.VIOLE, "PV 50% mono-jonction standard 1 soleil > SQ -> VIOLE")
+check(loi({"type": "captation_solaire", "rendement": 0.50, "nb_jonctions": 1, "concentration_solaire": 1,
+           "bilan_detaille_standard": True}) == P.L8, "Shockley-Queisser = L8")
+# plafond ABSOLU (exergie du rayonnement) : > Carnot solaire (~94,8 %) quelle que soit l'architecture.
+check(statut({"type": "captation_solaire", "rendement": 1.0}) == P.VIOLE, "PV 100% > plafond thermo -> VIOLE")
+check(loi({"type": "captation_solaire", "rendement": 1.0}) == P.L8, "plafond thermo solaire = L8")
 
 # 2) DISPOSITIFS RÉELS / LÉGAUX -> JAMAIS VIOLE (cœur soundness : pas de faux positif).
 reels = [
@@ -145,6 +153,16 @@ reels = [
     {"type": "communication", "debit_bits_par_s": 8e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000},  # sous capacité
     {"type": "communication", "debit_bits_par_s": 9.9e6, "bande_passante_Hz": 1e6, "rapport_signal_bruit": 1000}, # proche capacité
     {"type": "communication", "debit_bits_par_s": 1e6},                                # sans B/SNR : indéterminé, PAS un faux positif
+    # captations solaires RÉELLES : sous les limites.
+    {"type": "captation_solaire", "rendement": 0.27, "nb_jonctions": 1, "concentration_solaire": 1,
+     "bilan_detaille_standard": True},                                                 # silicium mono record (< SQ 33,7)
+    {"type": "captation_solaire", "rendement": 0.337, "nb_jonctions": 1, "concentration_solaire": 1,
+     "bilan_detaille_standard": True},                                                 # AU plafond SQ (limite, ok)
+    {"type": "captation_solaire", "rendement": 0.47, "nb_jonctions": 3, "concentration_solaire": 500},  # multi-jonction concentrée (record ~47%)
+    {"type": "captation_solaire", "rendement": 0.42, "nb_jonctions": 1, "concentration_solaire": 1},    # MEG mono-jonction (dépasse SQ légitimement : pas de flag standard) -> PAS un faux positif
+    {"type": "captation_solaire", "rendement": 0.40, "nb_jonctions": 1, "concentration_solaire": 1000},  # mono-jonction CONCENTRÉE (SQ relevée) -> PAS un faux positif
+    {"type": "captation_solaire", "rendement": 0.86},                                  # solaire idéal (< plafond absolu) -> PAS un faux positif
+    {"type": "captation_solaire"},                                                     # sans rendement : indéterminé, PAS un faux positif
 ]
 for sp in reels:
     check(statut(sp) != P.VIOLE, f"dispositif réel NON déclaré impossible: {sp}")
